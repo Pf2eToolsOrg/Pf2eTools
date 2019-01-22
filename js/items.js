@@ -52,6 +52,7 @@ const typeFilter = new Filter({header: "Type", deselFn: (it) => DEFAULT_HIDDEN_T
 const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"]});
 const propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});
 const costFilter = new RangeFilter({header: "Cost", min: 0, max: 100, allowGreater: true, suffix: "gp"});
+const focusFilter = new Filter({header: "Spellcasting Focus", items: ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"]});
 const attachedSpellsFilter = new Filter({header: "Attached Spells", displayFn: (it) => it.split("|")[0].toTitleCase()});
 let filterBox;
 async function populateTablesAndFilters (data) {
@@ -67,7 +68,7 @@ async function populateTablesAndFilters (data) {
 	});
 	const miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Magic", "Mundane", "Sentient"]});
 
-	filterBox = await pInitFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, costFilter, miscFilter, attachedSpellsFilter);
+	filterBox = await pInitFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, costFilter, focusFilter, miscFilter, attachedSpellsFilter);
 
 	const mundaneOptions = {
 		valueNames: ["name", "type", "cost", "weight", "source", "uniqueid"],
@@ -226,6 +227,28 @@ function addItems (data) {
 		if (curitem.ability) curitem._fMisc.push("Ability Score Adjustment");
 		if (curitem.charges) curitem._fMisc.push("Charges");
 		curitem._fCost = Parser.coinValueToNumber(curitem.value);
+		if (curitem.focus || curitem.type === "INS" || curitem.type === "SCF") {
+			curitem._fFocus = curitem.focus ? curitem.focus === true ? ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"] : [...curitem.focus] : [];
+			if (curitem.type === "INS" && !curitem._fFocus.includes("Bard")) curitem._fFocus.push("Bard");
+			if (curitem.type === "SCF") {
+				switch (curitem.scfType) {
+					case "arcane": {
+						if (!curitem._fFocus.includes("Sorcerer")) curitem._fFocus.push("Sorcerer");
+						if (!curitem._fFocus.includes("Warlock")) curitem._fFocus.push("Warlock");
+						if (!curitem._fFocus.includes("Wizard")) curitem._fFocus.push("Wizard");
+						break;
+					}
+					case "druid": {
+						if (!curitem._fFocus.includes("Druid")) curitem._fFocus.push("Druid");
+						break;
+					}
+					case "holy":
+						if (!curitem._fFocus.includes("Cleric")) curitem._fFocus.push("Cleric");
+						if (!curitem._fFocus.includes("Paladin")) curitem._fFocus.push("Paladin");
+						break;
+				}
+			}
+		}
 
 		if (isMundane) {
 			liList["mundane"] += `
@@ -315,6 +338,7 @@ function handleFilterChange () {
 			i.attunementCategory,
 			i.category,
 			i._fCost,
+			i._fFocus,
 			i._fMisc,
 			i.attachedSpells
 		);

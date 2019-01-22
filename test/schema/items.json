@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"type": "object",
 	"definitions": {
 		"item": {
@@ -249,6 +249,21 @@
 							"type": "integer"
 						}
 					}
+				},
+				"focus": {
+					"description": "Item can be used as a spellcasting focus",
+					"oneOf": [
+						{
+							"type": "boolean"
+						},
+						{
+							"type": "array",
+							"items": {
+								"type": "string",
+								"enum": ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"]
+							}
+						}
+					]
 				}
 			},
 			"required": [

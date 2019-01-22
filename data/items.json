@@ -3971,6 +3971,9 @@
 						"You can try to cast a cantrip that you don't know. The cantrip must be on the warlock spell list, and you must make a DC 10 Intelligence ({@skill Arcana}) check. If the check succeeds, you cast the spell. If the check fails, so does the spell, and the action used to cast the spell is wasted. In either case, you can't use this property again until you finish a long rest."
 					]
 				}
+			],
+			"focus": [
+				"Warlock"
 			]
 		},
 		{
@@ -7002,6 +7005,9 @@
 						"You can try to cast a cantrip that you don't know. The cantrip must be on the wizard spell list, and you must make a DC 10 Intelligence ({@skill Arcana}) check. If the check succeeds, you cast the spell. If the check fails, so does the spell, and the action used to cast the spell is wasted. In either case, you can't use this property again until you finish a long rest."
 					]
 				}
+			],
+			"focus": [
+				"Wizard"
 			]
 		},
 		{
@@ -13065,7 +13071,8 @@
 			"reqAttune": "by a Spellcaster",
 			"entries": [
 				"Etched with eldritch runes, this 1\u2014inch-diameter ruby allows you to use a simple or martial weapon as a spellcasting focus for your spells. For this property to work, you must attach the ruby to the weapon by pressing the ruby against it for at least 10 minutes. Thereafter, the ruby can't be removed unless you detach it as an action or the weapon is destroyed. Not even an {@spell antimagic field} causes it to fall off. The ruby does fall off the weapon if your attunement to the ruby ends."
-			]
+			],
+			"focus": true
 		},
 		{
 			"name": "Ryath Root",
@@ -15924,6 +15931,9 @@
 				"If you can attune to this item, you can use it as a spellbook and an arcane focus. In addition, while holding the tome, you can use a bonus action to cast a spell you have written in this tome, without expending a spell slot or using any verbal or somatic component Once used, this property of the tome can't be used again until the next dawn.",
 				"While attuned to the book, you can remove the tongue from the book's cover. If you do so, all spells written in the book are permanently erased.",
 				"Vecna watches anyone using this tome. He can also write cryptic messages in the book. These messages appear at midnight and fade away after they are read."
+			],
+			"focus": [
+				"Wizard"
 			]
 		},
 		{
@@ -19664,6 +19674,11 @@
 			],
 			"attachedSpells": [
 				"thunderwave"
+			],
+			"focus": [
+				"Sorcerer",
+				"Warlock",
+				"Wizard"
 			]
 		},
 		{
@@ -20165,6 +20180,11 @@
 						]
 					]
 				}
+			],
+			"focus": [
+				"Sorcerer",
+				"Warlock",
+				"Wizard"
 			]
 		},
 		{
@@ -21285,12 +21305,17 @@
 				"Rod|phb",
 				"Staff|phb",
 				"Wand|phb"
+			],
+			"focus": [
+				"Sorcerer",
+				"Warlock",
+				"Wizard"
 			]
 		},
 		{
 			"name": "Druidic Focus",
 			"type": "SCF",
-			"scfType": "arcane",
+			"scfType": "druid",
 			"rarity": "None",
 			"source": "PHB",
 			"page": 151,
@@ -21299,6 +21324,9 @@
 				"Totem|phb",
 				"Wooden staff|phb",
 				"Yew wand|phb"
+			],
+			"focus": [
+				"Druid"
 			]
 		},
 		{
@@ -21312,6 +21340,10 @@
 				"Amulet|phb",
 				"Emblem|phb",
 				"Reliquary|phb"
+			],
+			"focus": [
+				"Cleric",
+				"Paladin"
 			]
 		},
 		{

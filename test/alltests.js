@@ -108,10 +108,10 @@ if (fs.existsSync("./img")) {
 
 	results = [];
 	expected.forEach(function (i) {
-		if (existing.indexOf(i) === -1) results.push(`${i} is missing`);
+		if (existing.indexOf(i) === -1) results.push(`[MISSING] ${i}`);
 	});
 	existing.forEach(function (i) {
-		if (expected.indexOf(i) === -1) results.push(`${i} is extra`);
+		if (expected.indexOf(i) === -1) results.push(`[  EXTRA] ${i}`);
 	});
 	Object.keys(expectedDirs).forEach(k => results.push(`Directory ${k} doesn't exist!`));
 	results.sort(function (a, b) {

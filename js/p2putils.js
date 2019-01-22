@@ -37,7 +37,12 @@ await PeerUtil.pConnectClientsToServers(serverInfo, `[02:16] Client Username 1: 
 serverInfo.forEach(s => s.server.sendMessage("Hello world"));
  */
 
-const STUN_SERVER = `stun1.l.google.com:19302`;
+const STUN_SERVERS = [
+	`stun1.l.google.com:19302`,
+	`stun2.l.google.com:19302`,
+	`stun3.l.google.com:19302`,
+	`stun4.l.google.com:19302`
+];
 
 class Peer {
 	constructor (role) {
@@ -59,7 +64,7 @@ class Peer {
 		const thisMsgHandler = msgHandler.bind(this);
 		const thisErrHandler = errHandler.bind(this);
 
-		const pc = new RTCPeerConnection({iceServers: [{url: `stun:${STUN_SERVER}`}]});
+		const pc = new RTCPeerConnection({iceServers: STUN_SERVERS.map(url => ({url: `stun:${url}`}))});
 
 		this._pChannel = new Promise(resolve => {
 			pc.addEventListener("datachannel", evt => {

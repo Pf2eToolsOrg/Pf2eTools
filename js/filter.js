@@ -971,25 +971,16 @@ class FilterBox {
 				$wrp.data(
 					"setValues",
 					function (toVal) {
-						if (filter.labels) {
-							const idxs = toVal.map(it => {
-								const idx = filter.items.indexOf(it);
-								return ~idx ? idx : 0;
-							});
-							const min = Math.min(...idxs);
-							const max = Math.max(...idxs);
-							$sld.slider("values", [min, max]);
-						} else {
-							const min = toVal.filter(it => it.startsWith("min")).map(it => it.slice(3));
-							const max = toVal.filter(it => it.startsWith("max")).map(it => it.slice(3));
-							$sld.slider(
-								"values",
-								[
-									min.length ? Math.max(min[0], filter.min) : filter.min,
-									max.length ? Math.min(max[0], filter.max) : filter.max
-								]
-							);
-						}
+						// labelled values are encoded as min/max; no need for specific implementation
+						const min = toVal.filter(it => it.startsWith("min")).map(it => it.slice(3));
+						const max = toVal.filter(it => it.startsWith("max")).map(it => it.slice(3));
+						$sld.slider(
+							"values",
+							[
+								min.length ? Math.max(min[0], filter.min) : filter.min,
+								max.length ? Math.min(max[0], filter.max) : filter.max
+							]
+						);
 						checkUpdateMiniPills();
 					}
 				);
