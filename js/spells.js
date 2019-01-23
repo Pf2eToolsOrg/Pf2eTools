@@ -432,7 +432,7 @@ function pPageInit (loadedSources) {
 		handleFilterChange
 	);
 
-	$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
+	$("#filtertools").find("button.sort").click(function () {
 		const $this = $(this);
 		if ($this.attr("sortby") === "asc") {
 			$this.attr("sortby", "desc");

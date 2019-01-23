@@ -227,6 +227,7 @@ class InitiativeTracker {
 									$iptText.addClass("error-background");
 								} else {
 									const connected = await PeerUtil.pConnectClientsToServers(p2pMeta.serverInfo, txt);
+									board.doBindAlertOnNavigation();
 									connected.forEach(serverInfo => {
 										serverInfo.rowMeta.$iptTokenClient.val(serverInfo._tempTokenToDisplay || "").attr("disabled", true);
 										serverInfo.rowMeta.$btnAcceptClientToken.attr("disabled", true);
@@ -393,6 +394,7 @@ class InitiativeTracker {
 							if (PeerUtil.isValidToken(token)) {
 								try {
 									await PeerUtil.pConnectClientsToServers([rowMeta.serverInfo], token);
+									board.doBindAlertOnNavigation();
 									$iptTokenClient.prop("disabled", true);
 									$btnAcceptClientToken.prop("disabled", true);
 									sendStateToClientsDebounced();

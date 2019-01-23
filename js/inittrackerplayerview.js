@@ -106,6 +106,14 @@ class InitiativeTrackerPlayer {
 		this._$meta = $(`.initp__meta`);
 		this._$head = $(`.initp__header`);
 		this._$rows = $(`.initp__rows`);
+
+		$(window).on("beforeunload", evt => {
+			if (this._clientData.client.isActive) {
+				const message = `The connection will be closed`;
+				(evt || window.event).message = message;
+				return message;
+			}
+		});
 	}
 
 	handleMessage (msg) {
@@ -129,7 +137,7 @@ class InitiativeTrackerPlayer {
 			<div class="initp__h_name">Creature/Status</div>
 			<div class="initp__h_hp">Health</div>
 			${(data.c || []).map(statCol => `<div class="initp_h_stat">${statCol.a || ""}</div>`).join("")}
-			<div class="initp__h_score">Score</div>
+			<div class="initp__h_score">Init.</div>
 		`);
 
 		(data.r || []).forEach(rowData => {

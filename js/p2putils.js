@@ -171,7 +171,10 @@ class PeerClient extends Peer {
 
 			this._ctx.pc.setRemoteDescription(offer).then(() => {
 				this._ctx.pc.addEventListener("icecandidate", evt => {
-					if (!evt.candidate) resolve(this._ctx.pc.localDescription.sdp);
+					if (!evt.candidate) {
+						this._isActive = true;
+						resolve(this._ctx.pc.localDescription.sdp);
+					}
 				});
 
 				this._ctx.pc.createAnswer()

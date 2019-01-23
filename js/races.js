@@ -1,7 +1,6 @@
 "use strict";
 
 const JSON_URL = "data/races.json";
-const JSON_FLUFF_URL = "data/fluff-races.json";
 
 const ASI_SORT_POS = {
 	Strength: 0,
@@ -413,14 +412,14 @@ function loadhash (id) {
 
 		const fluff = {type: "section"};
 
-		const addFluff = (fluffToAdd, addBaseName) => {
+		const addFluff = (fluffToAdd, isBase) => {
 			if (fluffToAdd.entries) {
 				fluff.entries = fluff.entries || [];
 				const toAdd = {type: "section", entries: MiscUtil.copy(fluffToAdd.entries)};
-				if (addBaseName && !fluffToAdd.entries.length) toAdd.name = race._baseName;
+				if (isBase && !fluffToAdd.entries.length) toAdd.name = race._baseName;
 				fluff.entries.push(toAdd);
 			}
-			if (fluffToAdd.images) {
+			if (fluffToAdd.images && !(isBase && subFluff && subFluff._excludeBaseImages)) {
 				fluff.images = fluff.images || [];
 				fluff.images.push(...MiscUtil.copy(fluffToAdd.images));
 			}
@@ -429,7 +428,7 @@ function loadhash (id) {
 				if (toAppend.entries) {
 					fluff.entries = fluff.entries || [];
 					const toAdd = {type: "section", entries: MiscUtil.copy(toAppend.entries)};
-					if (addBaseName && !fluffToAdd.entries.length) toAdd.name = race._baseName;
+					if (isBase && !fluffToAdd.entries.length) toAdd.name = race._baseName;
 					fluff.entries.push(toAdd);
 				}
 				if (toAppend.images) {

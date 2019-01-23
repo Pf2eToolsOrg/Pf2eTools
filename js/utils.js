@@ -45,7 +45,6 @@ EVNT_MOUSEOVER = "mouseover";
 EVNT_MOUSEOUT = "mouseout";
 EVNT_MOUSELEAVE = "mouseleave";
 EVNT_MOUSEENTER = "mouseenter";
-EVNT_CLICK = "click";
 
 ATB_ID = "id";
 ATB_CLASS = "class";

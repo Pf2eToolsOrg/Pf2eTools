@@ -41,6 +41,7 @@ class Board {
 		this.isFullscreen = false;
 		this.isLocked = false;
 		this.reactor = new Reactor();
+		this.isAlertOnNav = false;
 
 		this.nextId = 1;
 		this.hoveringPanel = null;
@@ -506,6 +507,18 @@ class Board {
 
 	doStopMovingPanels () {
 		Object.values(this.panels).forEach(p => p.toggleMoving(false));
+	}
+
+	doBindAlertOnNavigation () {
+		if (this.isAlertOnNav) return;
+		this.isAlertOnNav = true;
+		$(window).on("beforeunload", evt => {
+			if (this._clientData.client.isActive) {
+				const message = `Temporary data and connections will be lost.`;
+				(evt || window.event).message = message;
+				return message;
+			}
+		});
 	}
 }
 
@@ -2841,7 +2854,7 @@ class RuleLoader {
 		const $$$ = RuleLoader.cache;
 		if ($$$[book]) return $$$[book];
 
-		const data = DataUtil.loadJSON(`data/generated/${book}.json`);
+		const data = await DataUtil.loadJSON(`data/generated/${book}.json`);
 		Object.keys(data.data).forEach(b => {
 			const ref = data.data[b];
 			if (!$$$[b]) $$$[b] = {};

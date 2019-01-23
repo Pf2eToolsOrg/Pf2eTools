@@ -860,12 +860,19 @@ function EntryRenderer () {
 								path: `${page}.html`,
 								hash: HASH_BLANK,
 								subhashes: filters.map(f => {
-									const [fname, fvals] = f.split("=").map(s => s.trim()).filter(s => s);
-									return {
+									const [fname, fvals, fopts] = f.split("=").map(s => s.trim()).filter(s => s);
+									const out = {
 										key: `filter${fname}`,
 										value: fvals.split(";").map(s => s.trim()).filter(s => s).join(HASH_SUB_LIST_SEP)
+									};
+									if (fopts && fopts === "&") {
+										return [out, {
+											key: `flmeta${fname}`,
+											value: `and${HASH_SUB_LIST_SEP}or`
+										}];
 									}
-								})
+									return out;
+								}).reduce((acc, val) => acc.concat(val), []) // Node.js doesn't like .flat()
 							}
 						};
 						self._recursiveEntryRender(fauxEntry, textStack, depth);

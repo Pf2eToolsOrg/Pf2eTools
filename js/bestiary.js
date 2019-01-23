@@ -338,7 +338,7 @@ function pPageInit (loadedSources) {
 	);
 
 	// sorting headers
-	$("#filtertools").find("button.sort").on(EVNT_CLICK, function () {
+	$("#filtertools").find("button.sort").click(function () {
 		const $this = $(this);
 		let direction = $this.data("sortby") === "desc" ? "asc" : "desc";
 
@@ -450,7 +450,7 @@ function calculateListEncounterXp (playerCount) {
 		if (mon.cr) {
 			return {
 				cr: Parser.crToNumber($(it.elm).find(".cr").text()),
-				count: Number($(it.elm).find(".count").text())
+				count: Number($(it.elm).find(".count").first().text())
 			}
 		}
 	}).filter(it => it.cr !== 100).sort((a, b) => SortUtil.ascSort(b.cr, a.cr));
