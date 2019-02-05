@@ -60,6 +60,7 @@ function addAdventures (data) {
 
 	adventures = adventures.concat(data.adventure);
 	BookUtil.bookIndex = adventures;
+	BookUtil.contentType = "adventure";
 
 	const adventuresList = $("ul.contents");
 	let tempString = "";

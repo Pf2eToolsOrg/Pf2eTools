@@ -20,6 +20,7 @@ window.onload = function load () {
 
 function onJsonLoad (data) {
 	reference = [data.reference["bookref-quick"]];
+	BookUtil.contentType = "document";
 
 	const allContents = $("ul.contents");
 	let tempString = "";

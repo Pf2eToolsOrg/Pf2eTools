@@ -59,6 +59,7 @@ function addBooks (data) {
 
 	books = books.concat(data.book);
 	BookUtil.bookIndex = books;
+	BookUtil.contentType = "book";
 
 	const allContents = $("ul.contents");
 	let tempString = "";

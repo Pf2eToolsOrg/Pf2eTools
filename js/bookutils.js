@@ -300,25 +300,29 @@ const BookUtil = {
 
 				const showPrev = ~chapter && chapter > 0;
 				(BookUtil.curRender.controls.$btnsPrv = BookUtil.curRender.controls.$btnsPrv || [])
-					.push($(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-chevron-left"></span>Previous</button>`)
+					.push($(`<button class="btn btn-xs btn-default bk__nav-head-foot-item"><span class="glyphicon glyphicon-chevron-left"></span>Previous</button>`)
 						.click(() => goToPage(-1))
 						.toggle(showPrev)
 						.appendTo($wrpControls));
 				(BookUtil.curRender.controls.$divsPrv = BookUtil.curRender.controls.$divsPrv || [])
-					.push($(`<div/>`)
+					.push($(`<div class="bk__nav-head-foot-item"/>`)
 						.toggle(!showPrev)
 						.appendTo($wrpControls));
 
-				if (!isTop) $(`<button class="btn btn-xs btn-default">Back to Top</button>`).click(() => MiscUtil.scrollPageTop()).appendTo($wrpControls);
+				if (isTop) {
+					$(`<button class="btn btn-xs btn-default ${~BookUtil.curRender.chapter ? "" : "active"}" title="Warning: Slow">View Entire ${BookUtil.contentType.uppercaseFirst()}</button>`).click(() => {
+						window.location.href = (~BookUtil.curRender.chapter ? BookUtil.thisContents.children(`.bk__contents_show_all`) : BookUtil.thisContents.children(`.bk__contents_header_link`)).attr("href");
+					}).appendTo($wrpControls);
+				} else $(`<button class="btn btn-xs btn-default">Back to Top</button>`).click(() => MiscUtil.scrollPageTop()).appendTo($wrpControls);
 
 				const showNxt = ~chapter && chapter < data.length - 1;
 				(BookUtil.curRender.controls.$btnsNxt = BookUtil.curRender.controls.$btnsNxt || [])
-					.push($(`<button class="btn btn-xs btn-default">Next<span class="glyphicon glyphicon-chevron-right"></span></button>`)
+					.push($(`<button class="btn btn-xs btn-default bk__nav-head-foot-item">Next<span class="glyphicon glyphicon-chevron-right"></span></button>`)
 						.click(() => goToPage(1))
 						.toggle(showNxt)
 						.appendTo($wrpControls));
-				(BookUtil.curRender.controls.$divsNxt = BookUtil.curRender.controls.$divNxt || [])
-					.push($(`<div/>`)
+				(BookUtil.curRender.controls.$divsNxt = BookUtil.curRender.controls.$divsNxt || [])
+					.push($(`<div class="bk__nav-head-foot-item"/>`)
 						.toggle(!showNxt)
 						.appendTo($wrpControls));
 			};
@@ -367,8 +371,8 @@ const BookUtil = {
 					const headerIx = chap.headers.findIndex(it => BookUtil.getHeaderText(it).toLowerCase() === BookUtil.curRender.lastRefHeader);
 					const renderPrev = chapter > 0 || (~headerIx && headerIx > 0);
 					const renderNxt = chapter < data.length - 1 || (~headerIx && headerIx < chap.headers.length - 1);
-					cnt.$btnsPrv.forEach($it => $it.toggle(renderPrev));
-					cnt.$btnsNxt.forEach($it => $it.toggle(renderNxt));
+					cnt.$btnsPrv.forEach($it => $it.toggle(!!renderPrev));
+					cnt.$btnsNxt.forEach($it => $it.toggle(!!renderNxt));
 					cnt.$divsPrv.forEach($it => $it.toggle(!renderPrev));
 					cnt.$divsNxt.forEach($it => $it.toggle(!renderNxt));
 				} else {
@@ -427,6 +431,7 @@ const BookUtil = {
 	renderArea: null,
 	referenceId: false,
 	isHashReload: false,
+	contentType: null, // one of "book" "adventure" or "document"
 	// custom loading to serve multiple sources
 	booksHashChange () {
 		function cleanName (name) {
@@ -764,7 +769,7 @@ const BookUtil = {
 			<a id="${ix}" href="#${UrlUtil.encodeForHash(book.id)}" class="bk__contents_header_link" title="${book.name}">
 				<span class="name">${book.name}</span>
 			</a>
-			<a href="#${UrlUtil.encodeForHash(book.id)},-1" class="bk__contents_show_all" title="View Entire Book (Warning: Slow)">
+			<a href="#${UrlUtil.encodeForHash(book.id)},-1" class="bk__contents_show_all" title="View Entire ${BookUtil.contentType.uppercaseFirst()} (Warning: Slow)">
 				<span class="glyphicon glyphicon glyphicon-book" style="top: 0;"/>
 			</a>
 			${BookUtil.makeContentsBlock(options)}
