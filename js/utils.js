@@ -87,6 +87,7 @@ RNG_CONE = "cone";
 RNG_RADIUS = "radius";
 RNG_SPHERE = "sphere";
 RNG_HEMISPHERE = "hemisphere";
+RNG_CYLINDER = "cylinder"; // homebrew only
 RNG_SELF = "self";
 RNG_SIGHT = "sight";
 RNG_UNLIMITED = "unlimited";
@@ -189,18 +190,6 @@ String.prototype.toCamelCase = String.prototype.toCamelCase ||
 			if (index === 0) return word.toLowerCase();
 			return `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`;
 		}).join("");
-	};
-
-// FIXME remove polyfill at ~the end of October 2018
-String.prototype.trimStart = String.prototype.trimStart ||
-	function () {
-		return this.replace(/^\s+/, "");
-	};
-
-// FIXME remove polyfill at ~the end of October 2018
-String.prototype.trimEnd = String.prototype.trimEnd ||
-	function () {
-		return this.replace(/\s+$/, "");
 	};
 
 String.prototype.escapeQuotes = String.prototype.escapeQuotes ||
@@ -913,14 +902,17 @@ Parser.spSchoolAbvToShort = function (school) {
 	return out;
 };
 
+Parser.getOrdinalForm = function (i) {
+	const j = i % 10; const k = i % 100;
+	if (j === 1 && k !== 11) return `${i}st`;
+	if (j === 2 && k !== 12) return `${i}nd`;
+	if (j === 3 && k !== 13) return `${i}rd`;
+	return `${i}th`;
+};
+
 Parser.spLevelToFull = function (level) {
-	switch (level) {
-		case 0: return STR_CANTRIP;
-		case 1: return `${level}st`;
-		case 2: return `${level}nd`;
-		case 3: return `${level}rd`;
-		default: return `${level}th`;
-	}
+	if (level === 0) return STR_CANTRIP;
+	else return Parser.getOrdinalForm(level);
 };
 
 Parser.spellLevelToArticle = function (level) {
@@ -964,6 +956,7 @@ Parser.spRangeToFull = function (range) {
 		case RNG_RADIUS:
 		case RNG_SPHERE:
 		case RNG_HEMISPHERE:
+		case RNG_CYLINDER:
 			return renderArea();
 	}
 
@@ -989,7 +982,7 @@ Parser.spRangeToFull = function (range) {
 
 	function renderArea () {
 		const size = range.distance;
-		return `Self (${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()})`;
+		return `Self (${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()}${range.type === RNG_CYLINDER ? `, ${size.amountSecondary}-${Parser.getSingletonUnit(size.typeSecondary)}-high cylinder` : ""})`;
 
 		function getAreaStyleStr () {
 			switch (range.type) {
@@ -997,6 +990,9 @@ Parser.spRangeToFull = function (range) {
 					return " radius";
 				case RNG_HEMISPHERE:
 					return `-radius ${range.type}`;
+				case RNG_CYLINDER:
+					return "-radius";
+
 				default:
 					return ` ${range.type}`;
 			}
@@ -1214,6 +1210,24 @@ Parser.MON_SENSE_TAG_TO_FULL = {
 };
 Parser.monSenseTagToFull = function (tag) {
 	return Parser._parse_aToB(Parser.MON_SENSE_TAG_TO_FULL, tag);
+};
+
+Parser.MON_SPELLCASTING_TAG_TO_FULL = {
+	"P": "Psionics",
+	"I": "Innate",
+	"F": "Form Only",
+	"S": "Shared",
+	"CB": "Class, Bard",
+	"CC": "Class, Cleric",
+	"CD": "Class, Druid",
+	"CP": "Class, Paladin",
+	"CR": "Class, Ranger",
+	"CS": "Class, Sorcerer",
+	"CL": "Class, Warlock",
+	"CW": "Class, Wizard"
+};
+Parser.monSpellcastingTagToFull = function (tag) {
+	return Parser._parse_aToB(Parser.MON_SPELLCASTING_TAG_TO_FULL, tag);
 };
 
 // psi-prefix functions are for parsing psionic data, and shared with the roll20 script
@@ -2328,6 +2342,11 @@ JqueryUtil = {
 				}
 
 				return this;
+			},
+
+			disableSpellcheck: function () {
+				this.attr("autocomplete", "off").attr("autocapitalize", "off").attr("spellcheck", "false");
+				return this;
 			}
 		});
 
@@ -2399,15 +2418,15 @@ JqueryUtil = {
 		if (!JqueryUtil._dropdownInit) {
 			JqueryUtil._dropdownInit = true;
 			document.addEventListener("click", () => [...document.querySelectorAll(`.open`)].filter(ele => !(ele.className || "").split(" ").includes(`dropdown--navbar`)).forEach(ele => ele.classList.remove("open")));
-			$ele.click(() => setTimeout(() => $ele.parent().addClass("open"), 1)); // defer to allow the above to complete
 		}
+		$ele.click(() => setTimeout(() => $ele.parent().addClass("open"), 1)); // defer to allow the above to complete
 	},
 
 	_activeToast: [],
 	/**
-	 * @param options A string of content, or an object of options, which are:
-	 *   - `content` Toast contents. Support jQuery objects.
-	 *   - `type` Toast type. Can be any Bootstrap alert type ("success", "info", "warning", or "danger")
+	 * @param {Object} options
+	 * @param {(jQuery|string)} options.content Toast contents. Support jQuery objects.
+	 * @param {string} options.type Toast type. Can be any Bootstrap alert type ("success", "info", "warning", or "danger")
 	 */
 	doToast (options) {
 		if (typeof options === "string") {
@@ -2416,6 +2435,7 @@ JqueryUtil = {
 				type: "info"
 			};
 		}
+		options.type = options.type || "info";
 
 		const doCleanup = ($toast) => {
 			$toast.removeClass("toast--animate");
@@ -2427,7 +2447,7 @@ JqueryUtil = {
 			.click(() => doCleanup($toast));
 
 		const $toast = $(`
-				<div class="toast alert-${options.type || "info"}">
+				<div class="toast alert-${options.type}">
 					<div class="toast__wrp-content"><div data-r="$content"/></div>
 					<div class="toast__wrp-control"><div data-r="$btnToastDismiss"/></div>
 				</div>
@@ -3033,14 +3053,14 @@ ListUtil = {
 				evt.preventDefault();
 				if (evt.offsetY > $ele.height() - BORDER_SIZE) {
 					mousePos = evt.clientY;
-					$doc.on(`mousemove.sublist_resize_${MOUSE_MOVE_ID}`, resize);
+					$doc.on(`mousemove.sublist_resize-${MOUSE_MOVE_ID}`, resize);
 				}
 			}
 		});
 
 		$doc.on("mouseup", (evt) => {
 			if (evt.which === 1) {
-				$(document).off(`mousemove.sublist_resize_${MOUSE_MOVE_ID}`);
+				$(document).off(`mousemove.sublist_resize-${MOUSE_MOVE_ID}`);
 				StorageUtil.pSetForPage(STORAGE_KEY, $ele.css("height"));
 			}
 		});
@@ -3585,10 +3605,10 @@ ListUtil = {
 	},
 
 	showTable (title, dataList, colTransforms, filter, sorter) {
-		const $modal = $(`<div class="modal-outer dropdown-menu"/>`);
-		const $wrpModal = $(`<div class="modal-wrapper">`).appendTo($(`body`)).click(() => $wrpModal.remove());
+		const $modal = $(`<div class="modal__outer dropdown-menu"/>`);
+		const $wrpModal = $(`<div class="modal__wrp">`).appendTo($(`body`)).click(() => $wrpModal.remove());
 		$modal.appendTo($wrpModal);
-		const $modalInner = $(`<div class="modal-inner"/>`).appendTo($modal).click((evt) => evt.stopPropagation());
+		const $modalInner = $(`<div class="modal__inner"/>`).appendTo($modal).click((evt) => evt.stopPropagation());
 
 		const $pnlControl = $(`<div class="split my-3"/>`).appendTo($modalInner);
 		const $pnlCols = $(`<div class="flex" style="align-items: center;"/>`).appendTo($pnlControl);
@@ -4075,7 +4095,7 @@ DataUtil = {
 		return data;
 	},
 
-	async pDoMetaMerge (data) {
+	async pDoMetaMerge (data, options) {
 		if (data._meta && data._meta.dependencies) {
 			await Promise.all(Object.entries(data._meta.dependencies).map(async ([prop, sources]) => {
 				if (!data[prop]) return; // if e.g. monster dependencies are declared, but there are no monsters to merge with, bail out
@@ -4087,7 +4107,7 @@ DataUtil = {
 					if (entry._copy) {
 						switch (prop) {
 							case "monster": {
-								return EntryRenderer.monster.pMergeCopy(flatDependencyData, entry);
+								return EntryRenderer.monster.pMergeCopy(flatDependencyData, entry, options);
 							}
 							default: throw new Error(`No _copy merge strategy specified for property "${prop}"`);
 						}
@@ -4272,9 +4292,10 @@ RollerUtil = {
 	},
 
 	randomise: (max, min = 1) => {
+		if (min > max) return 0;
 		if (max === min) return max;
 		if (RollerUtil.isCrypto()) {
-			return RollerUtil._randomise(min, max + min);
+			return RollerUtil._randomise(min, max + 1);
 		} else {
 			return RollerUtil.roll(max) + min;
 		}
@@ -5738,6 +5759,20 @@ Array.prototype.equals = Array.prototype.equals ||
 			if (this[i] !== that[i]) return false;
 		}
 		return true;
+	};
+
+Array.prototype.partition = Array.prototype.partition ||
+	function (fnIsValid) {
+		return this.reduce(([pass, fail], elem) => fnIsValid(elem) ? [[...pass, elem], fail] : [pass, [...fail, elem]], [[], []]);
+	};
+
+// FIXME remove polyfill after ~March 2019
+Array.prototype.flat = Array.prototype.flat ||
+	function () {
+		function flattenDeep (arr) {
+			return arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flattenDeep(val)) : acc.concat(val), []);
+		}
+		return flattenDeep(this);
 	};
 
 // OVERLAY VIEW ========================================================================================================

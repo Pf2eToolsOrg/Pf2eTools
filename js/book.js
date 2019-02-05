@@ -65,13 +65,7 @@ function addBooks (data) {
 	for (; bkI < books.length; bkI++) {
 		const book = books[bkI];
 
-		tempString +=
-			`<li class="contents-item" data-bookid="${UrlUtil.encodeForHash(book.id)}">
-				<a id="${bkI}" href='#${book.id},0' title="${book.name}">
-					<span class='name'>${book.name}</span>
-				</a>
-				${BookUtil.makeContentsBlock({book: book, addOnclick: true, defaultHeadersHidden: true})}
-			</li>`;
+		tempString += BookUtil.getContentsItem(bkI, book, {book, addOnclick: true, defaultHeadersHidden: true});
 	}
 	allContents.append(tempString);
 }

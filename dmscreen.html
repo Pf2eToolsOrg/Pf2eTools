@@ -67,8 +67,9 @@
 
 		.panel-control-bar {
 			position: absolute;
-			right: 0;
+			right: 11px;
 			border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
 			padding-left: 3px;
 			opacity: 0.2;
 			z-index: 56;
@@ -157,7 +158,6 @@
 			position: relative;
 			width: 100%;
 			height: 100%;
-			overflow-y: auto;
 			padding-right: -9px;
 			box-sizing: content-box;
 			box-shadow: inset 0 0 10px 0 #909090b0;
@@ -227,6 +227,16 @@
 		.panel-content-wrapper-inner {
 			height: 100%;
 			width: 100%;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		.panel-content-wrapper-inner::-webkit-scrollbar-track {
+			background: #f0f0f0;
+		}
+
+		.night-mode .panel-content-wrapper-inner::-webkit-scrollbar-track {
+			background: #222222;
 		}
 
 		.panel-control {
@@ -1076,19 +1086,27 @@
 			padding: 0 2px;
 			margin: -1px 1px;
 		}
+
+		.dms__tab_hidden {
+			display: none !important;
+		}
+
+		.panel-content-wrapper table.stats.stats-book--hover {
+			box-shadow: none;
+		}
 	</style>
 </head>
 
 <body>
 <div class="viewport-wrapper">
-	<header class="hidden-xs hidden-sm">
+	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
 
-			<h1>DM Screen</h1>
-			<p>Build a personalised DM screen</p>
+			<h1 class="page__title">DM Screen</h1>
+			<p class="page__subtitle">Build a personalised DM screen</p>
 		</div>
 	</header>
-	<nav class="container" id="navigation">
+	<nav class="container page__nav" id="navigation">
 		<ul class="nav nav-pills" id="navbar">
 		</ul>
 	</nav>
@@ -1116,10 +1134,11 @@
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/entryrender.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/initiativetrackerutils.js"></script>
 <script type="text/javascript" src="js/dmscreen.js"></script>
 <script type="text/javascript" src="js/dmscreen-initiativetracker.js"></script>
+<script type="text/javascript" src="js/dmscreen-playerinitiativetracker.js"></script>
 <script type="text/javascript" src="js/dmscreen-moneyconverter.js"></script>
-<script type="text/javascript" src="js/initiativetrackerutils.js"></script>
 <script type="text/javascript" src="js/history.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/bootstrap-tooltip.js"></script>

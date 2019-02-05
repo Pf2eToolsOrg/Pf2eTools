@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.9.0",
+	"version": "1.9.1",
 	"title": "Bestiary Schema",
 	"id": "/Bestiary",
 	"type": "object",
@@ -1169,6 +1169,13 @@
 				"items": {
 					"type": "string",
 					"enum": ["B", "D", "SD", "T", "U"]
+				}
+			},
+			"spellcastingTags": {
+				"type": "array",
+				"items": {
+					"type": "string",
+					"enum": ["I", "P", "S"]
 				}
 			},
 			"footer": {

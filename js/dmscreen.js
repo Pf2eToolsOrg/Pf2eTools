@@ -26,6 +26,7 @@ const PANEL_TYP_TWITCH = 11;
 const PANEL_TYP_TWITCH_CHAT = 12;
 const PANEL_TYP_ADVENTURES = 13;
 const PANEL_TYP_BOOKS = 14;
+const PANEL_TYP_INITIATIVE_TRACKER_PLAYER = 15;
 const PANEL_TYP_IMAGE = 20;
 const PANEL_TYP_GENERIC_EMBED = 90;
 
@@ -308,7 +309,6 @@ class Board {
 
 			// add tabs
 			const omniTab = new AddMenuSearchTab(this.availContent);
-			omniTab.setSpotlight(true);
 			const ruleTab = new AddMenuSearchTab(this.availRules, "rules");
 			const adventureTab = new AddMenuSearchTab(this.availAdventures, "adventures");
 			const bookTab = new AddMenuSearchTab(this.availBooks, "books");
@@ -513,12 +513,14 @@ class Board {
 		if (this.isAlertOnNav) return;
 		this.isAlertOnNav = true;
 		$(window).on("beforeunload", evt => {
-			if (this._clientData.client.isActive) {
-				const message = `Temporary data and connections will be lost.`;
-				(evt || window.event).message = message;
-				return message;
-			}
+			const message = `Temporary data and connections will be lost.`;
+			(evt || window.event).message = message;
+			return message;
 		});
+	}
+
+	getPanelsByType (type) {
+		return Object.values(this.panels).filter(p => p.tabDatas.length && p.tabDatas.find(td => td.type === type));
 	}
 }
 
@@ -573,6 +575,7 @@ class SideMenu {
 		$btnLockPanels.on("click", () => {
 			this.board.isLocked = !this.board.isLocked;
 			if (this.board.isLocked) {
+				this.board.doStopMovingPanels();
 				$(`body`).addClass(`dm-screen-locked`);
 				$btnLockPanels.removeClass(`btn-danger`).addClass(`btn-success`);
 			} else {
@@ -807,6 +810,9 @@ class Panel {
 					return p;
 				case PANEL_TYP_INITIATIVE_TRACKER:
 					p.doPopulate_InitiativeTracker(saved.s);
+					return p;
+				case PANEL_TYP_INITIATIVE_TRACKER_PLAYER:
+					p.doPopulate_InitiativeTrackerPlayer(saved.s);
 					return p;
 				case PANEL_TYP_UNIT_CONVERTER:
 					p.doPopulate_UnitConverter(saved.s);
@@ -1106,6 +1112,15 @@ class Panel {
 			PANEL_TYP_INITIATIVE_TRACKER,
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTracker.make$Tracker(this.board, state)),
+			"Initiative Tracker"
+		);
+	}
+
+	doPopulate_InitiativeTrackerPlayer (state = {}) {
+		this.set$ContentTab(
+			PANEL_TYP_INITIATIVE_TRACKER_PLAYER,
+			state,
+			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTrackerPlayer.make$tracker(this.board, state)),
 			"Initiative Tracker"
 		);
 	}
@@ -1517,7 +1532,7 @@ class Panel {
 			$ctrlMove.on("click", () => {
 				this.toggleMoving();
 			});
-			const $ctrlEmpty = $(`<div class="panel-control-icon glyphicon glyphicon-remove" title="Empty"/>`).appendTo($ctrlBar);
+			const $ctrlEmpty = $(`<div class="panel-control-icon glyphicon glyphicon-remove" title="Close"/>`).appendTo($ctrlBar);
 			$ctrlEmpty.on("click", () => {
 				this.getReplacementPanel();
 			});
@@ -1615,9 +1630,17 @@ class Panel {
 		this.tabCanRename = tabCanRename;
 		this.tabRenamed = tabRenamed;
 
-		this.$pnlWrpContent.children().detach();
-		if ($content === null) this.$pnlWrpContent.append(this.$btnAdd);
-		else this.$pnlWrpContent.append($content);
+		if ($content === null) {
+			this.$pnlWrpContent.children().detach();
+			this.$pnlWrpContent.append(this.$btnAdd);
+		} else {
+			this.$pnlWrpContent.find(`.panel-add`).remove(); // clean up any "add panel" wrappers
+			this.$pnlWrpContent.find(`.panel-tab-message.loading-spinner`).remove(); // clean up any temp "loading" panels
+			this.$pnlWrpContent.children().addClass("dms__tab_hidden");
+			$content.removeClass("dms__tab_hidden");
+			if (!this.$pnlWrpContent.has($content[0]).length) this.$pnlWrpContent.append($content);
+		}
+
 		this.$pnl.attr("empty", !$content);
 		this.doRenderTitle();
 		this.doRenderTabs();
@@ -1865,6 +1888,13 @@ class Panel {
 						t: type,
 						r: toSaveTitle,
 						s: $content.find(`.dm-init`).data("getState")()
+					};
+				}
+				case PANEL_TYP_INITIATIVE_TRACKER_PLAYER: {
+					return {
+						t: type,
+						r: toSaveTitle,
+						s: {}
 					};
 				}
 				case PANEL_TYP_UNIT_CONVERTER: {
@@ -2275,7 +2305,6 @@ class AddMenu {
 			this.tabs.forEach(t => {
 				t.render();
 				const $head = $(`<button class="btn btn-default panel-addmenu-tab-head">${t.label}</button>`).appendTo($tabBar);
-				if (t.getSpotlight()) $head.addClass("btn-spotlight");
 				const $body = $(`<div class="panel-addmenu-tab-body"/>`).appendTo($tabBar);
 				$body.append(t.get$Tab);
 				t.$head = $head;
@@ -2308,7 +2337,6 @@ class AddMenu {
 class AddMenuTab {
 	constructor (label) {
 		this.label = label;
-		this.spotlight = false;
 
 		this.$tab = null;
 		this.menu = null;
@@ -2324,14 +2352,6 @@ class AddMenuTab {
 
 	setMenu (menu) {
 		this.menu = menu;
-	}
-
-	setSpotlight (spotlight) {
-		this.spotlight = spotlight;
-	}
-
-	getSpotlight () {
-		return this.spotlight;
 	}
 }
 
@@ -2547,6 +2567,17 @@ class AddMenuSpecialTab extends AddMenuTab {
 				this.menu.pnl.doPopulate_InitiativeTracker();
 				this.menu.doClose();
 			});
+
+			$(`<div class="tab-body-row"><span>Initiative Tracker Player View</span><div data-r="$btnTrackerPlayer"/></div>`)
+				.swap({
+					$btnTrackerPlayer: $(`<button class="btn btn-primary">Add</button>`)
+						.click(() => {
+							this.menu.pnl.doPopulate_InitiativeTrackerPlayer();
+							this.menu.doClose();
+						})
+				})
+				.appendTo($tab);
+
 			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
 
 			const $wrpText = $(`<div class="tab-body-row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, embed a Google Doc or similar)</i></span></div>`).appendTo($tab);

@@ -976,9 +976,10 @@ class StatblockConverter {
 		);
 		TagAttack.tryTagAttacks(stats, (atk) => this._ui.showWarning(`Manual attack tagging required for "${atk}"`));
 		TagHit.tryTagHits(stats);
-		TraitsActionsTag.tryRun(stats);
+		TraitActionTag.tryRun(stats);
 		LanguageTag.tryRun(stats);
-		SensesTag.tryRun(stats);
+		SenseTag.tryRun(stats);
+		SpellcastingTypeTag.tryRun(stats);
 		doCleanup();
 	}
 

@@ -365,10 +365,7 @@ function EntryRenderer () {
 						$(ele).find('.dataCreature__name').toggle(); 
 						$(ele).find('.dataCreature__showHide').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
 						$(ele).closest('table').find('tbody').toggle()
-					})(this)">
-						<span style="display: none;" class="dataCreature__name">${entry.dataCreature.name}</span>
-						<span class="dataCreature__showHide">[\u2013]</span>
-					</th></tr></thead><tbody>`;
+					})(this)"><span style="display: none;" class="dataCreature__name">${entry.dataCreature.name}</span><span class="dataCreature__showHide">[\u2013]</span></th></tr></thead><tbody>`;
 					textStack[0] += EntryRenderer.monster.getCompactRenderedString(entry.dataCreature, this);
 					textStack[0] += `</tbody></table>`;
 					renderSuffix();
@@ -407,9 +404,7 @@ function EntryRenderer () {
 						} else {
 							markerText = "(See removed content)";
 						}
-						textStack[0] += `<span class="homebrew-old-content" href="#${window.location.hash}" ${mouseOver}>
-								${markerText}
-							</span>`;
+						textStack[0] += `<span class="homebrew-old-content" href="#${window.location.hash}" ${mouseOver}>${markerText}</span>`;
 					}
 
 					textStack[0] += `<span class="homebrew-notice"></span>`;
@@ -469,13 +464,7 @@ function EntryRenderer () {
 			} else if (entry.href.type === "external") {
 				href = entry.href.url;
 			}
-			textStack[0] += `
-					<div class="img__wrapper">
-						<a href="${href}" target="_blank" rel="noopener" ${entry.title ? `title="${entry.title}"` : ""}>
-							<img src="${href}" onload="EntryRenderer._onImgLoad()" ${entry.altText ? `alt="${entry.altText}"` : ""}>
-						</a>
-					</div>
-			`;
+			textStack[0] += `<div class="img__wrapper"><a href="${href}" target="_blank" rel="noopener" ${entry.title ? `title="${entry.title}"` : ""}><img src="${href}" onload="EntryRenderer._onImgLoad()" ${entry.altText ? `alt="${entry.altText}"` : ""}></a></div>`;
 			if (entry.title) textStack[0] += `<div class="img-title"><span class="img-title__inner">${entry.title}</span></div>`;
 			textStack[0] += `</div>`;
 			renderSuffix();
@@ -647,11 +636,7 @@ function EntryRenderer () {
 			const dataString = getDataString();
 			const preReqText = getPreReqText(self);
 			if (entry.name != null) self._handleTrackTitles(entry.name);
-			const headerSpan = entry.name ? `
-				<span class="entry-title" data-title-index="${self._headerIndex++}" ${self._getEnumeratedTitleRel(entry.name)}>
-				<span class="entry-title-inner">
-					${self.renderEntry({type: "inline", entries: [entry.name]})}${inlineTitle ? "." : ""}
-				</span>${pagePart}</span> ` : "";
+			const headerSpan = entry.name ? `<span class="entry-title" data-title-index="${self._headerIndex++}" ${self._getEnumeratedTitleRel(entry.name)}> <span class="entry-title-inner">${self.renderEntry({type: "inline", entries: [entry.name]})}${inlineTitle ? "." : ""}</span>${pagePart}</span> ` : "";
 
 			if (depth === -1) {
 				if (!self._firstSection) {
@@ -872,7 +857,7 @@ function EntryRenderer () {
 										}];
 									}
 									return out;
-								}).reduce((acc, val) => acc.concat(val), []) // Node.js doesn't like .flat()
+								}).flat()
 							}
 						};
 						self._recursiveEntryRender(fauxEntry, textStack, depth);
@@ -963,7 +948,7 @@ function EntryRenderer () {
 						} else {
 							const area = BookUtil.curRender.headerMap[areaCode] || {entry: {name: ""}}; // default to prevent rendering crash on bad tag
 							const onMouseOver = EntryRenderer.hover.createOnMouseHoverEntry(area.entry, true);
-							textStack[0] += `<a href="#${BookUtil.curRender.curAdvId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}" ${onMouseOver} onclick="BookUtil.handleReNav(this)">${renderText}</a>`;
+							textStack[0] += `<a href="#${BookUtil.curRender.curBookId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}" ${onMouseOver} onclick="BookUtil.handleReNav(this)">${renderText}</a>`;
 						}
 					} else if (tag === "@deity") {
 						const [name, pantheon, source, displayText, ...others] = text.split("|");
@@ -1887,21 +1872,13 @@ EntryRenderer.condition = {
 };
 
 EntryRenderer.background = {
-	getCompactRenderedString: (bg) => {
-		const renderer = EntryRenderer.getDefaultRenderer();
-		const renderStack = [];
-
-		renderStack.push(`
-			${EntryRenderer.utils.getNameTr(bg, true)}
-			<tr class="text"><td colspan="6">
-		`);
-		if (bg.skillProficiencies) {
-			renderer.recursiveEntryRender({name: "Skill Proficiencies", entries: [EntryRenderer.background.getSkillSummary(bg.skillProficiencies)]}, renderStack, 2);
-		}
-		renderer.recursiveEntryRender({entries: bg.entries.filter(it => it.data && it.data.isFeature)}, renderStack, 1);
-		renderStack.push(`</td></tr>`);
-
-		return renderStack.join("");
+	getCompactRenderedString (bg) {
+		return `
+		${EntryRenderer.utils.getNameTr(bg, true)}
+		<tr class="text"><td colspan="6">
+		${EntryRenderer.getDefaultRenderer().renderEntry({type: "entries", entries: bg.entries})}
+		</td></tr>
+		`;
 	},
 
 	getSkillSummary (skillProfsArr, short, collectIn) {
@@ -2170,7 +2147,7 @@ EntryRenderer.deity = {
 		return `
 			${EntryRenderer.utils.getNameTr(deity, true, "", deity.title ? `, ${deity.title.toTitleCase()}` : "")}
 			<tr><td colspan="6">
-				<div class="summary-flexer">${EntryRenderer.deity.getOrderedParts(deity, `<p>`, `</p>`)}</div>
+				<div class="rend__compact-stat">${EntryRenderer.deity.getOrderedParts(deity, `<p>`, `</p>`)}</div>
 			</td>
 			${deity.entries ? `<tr><td colspan="6"><div class="border"></div></td></tr><tr><td colspan="6">${renderer.renderEntry({entries: deity.entries}, 1)}</td></tr>` : ""}
 		`;
@@ -2388,7 +2365,7 @@ EntryRenderer.monster = {
 		page: true
 	},
 	_mergeCache: null,
-	async pMergeCopy (monList, mon) {
+	async pMergeCopy (monList, mon, options) {
 		function search () {
 			return monList.find(it => {
 				EntryRenderer.monster._mergeCache[UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](it)] = it;
@@ -2400,15 +2377,17 @@ EntryRenderer.monster = {
 			const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](mon._copy);
 			if (!EntryRenderer.monster._mergeCache) {
 				EntryRenderer.monster._mergeCache = {};
-				return EntryRenderer.monster._pApplyCopy(search(), mon);
+				return EntryRenderer.monster._pApplyCopy(search(), mon, options);
 			} else {
-				if (EntryRenderer.monster._mergeCache[hash]) return EntryRenderer.monster._pApplyCopy(MiscUtil.copy(EntryRenderer.monster._mergeCache[hash]), mon);
-				else return EntryRenderer.monster._pApplyCopy(search(), mon);
+				if (EntryRenderer.monster._mergeCache[hash]) return EntryRenderer.monster._pApplyCopy(MiscUtil.copy(EntryRenderer.monster._mergeCache[hash]), mon, options);
+				else return EntryRenderer.monster._pApplyCopy(search(), mon, options);
 			}
 		}
 	},
 
-	async _pApplyCopy (copyFrom, copyTo) {
+	async _pApplyCopy (copyFrom, copyTo, options = {}) {
+		if (options.doKeepCopy) copyTo.__copy = MiscUtil.copy(copyFrom);
+
 		// convert everything to arrays
 		function normaliseMods (obj) {
 			Object.entries(obj._mod).forEach(([k, v]) => {
@@ -2690,7 +2669,7 @@ EntryRenderer.monster = {
 
 	getCompactRenderedStringSection (mon, renderer, title, key, depth) {
 		return mon[key] ? `
-		<tr class="mon-sect-header"><td colspan="6"><span>${title}</span></td></tr>
+		<tr class="mon__stat-header-underline"><td colspan="6"><span class="mon__sect-header-inner">${title}</span></td></tr>
 		<tr class="text compact"><td colspan="6">
 		${key === "legendary" && mon.legendary ? `<p>${EntryRenderer.monster.getLegendaryActionIntro(mon)}</p>` : ""}
 		${mon[key].map(it => it.rendered || renderer.renderEntry(it, depth)).join("")}
@@ -2758,7 +2737,7 @@ EntryRenderer.monster = {
 			</td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
-				<div class="summary-flexer">
+				<div class="rend__compact-stat">
 					${mon.save ? `<p><b>Saving Throws:</b> ${Object.keys(mon.save).map(s => EntryRenderer.monster.getSave(renderer, s, mon.save[s])).join(", ")}</p>` : ""}
 					${mon.skill ? `<p><b>Skills:</b> ${EntryRenderer.monster.getSkillsString(renderer, mon)}</p>` : ""}
 					<p><b>Senses:</b> ${mon.senses ? `${mon.senses}, ` : ""}passive Perception ${mon.passive}</p>
@@ -3633,7 +3612,7 @@ EntryRenderer.ship = {
 		const renderer = EntryRenderer.getDefaultRenderer();
 
 		function getSectionTitle (title) {
-			return `<tr class="stat__header_underline"><td colspan="6"><span>${title}</span></td></tr>`
+			return `<tr class="mon__stat-header-underline"><td colspan="6"><span>${title}</span></td></tr>`
 		}
 
 		function getSectionHpPart (sect, each) {
@@ -3647,7 +3626,7 @@ EntryRenderer.ship = {
 		function getControlSection (control) {
 			if (!control) return "";
 			return `
-				<tr class="stat__header_underline"><td colspan="6"><span>Control: ${control.name}</span></td></tr>
+				<tr class="mon__stat-header-underline"><td colspan="6"><span>Control: ${control.name}</span></td></tr>
 				<tr><td colspan="6">
 				${getSectionHpPart(control)}
 				<div>${renderer.renderEntry({entries: control.entries})}</div>
@@ -3673,7 +3652,7 @@ EntryRenderer.ship = {
 			}
 
 			return `
-				<tr class="stat__header_underline"><td colspan="6"><span>${move.isControl ? `Control and ` : ""}Movement: ${move.name}</span></td></tr>
+				<tr class="mon__stat-header-underline"><td colspan="6"><span>${move.isControl ? `Control and ` : ""}Movement: ${move.name}</span></td></tr>
 				<tr><td colspan="6">
 				${getSectionHpPart(move)}
 				${move.locomotion.map(getLocomotionSection)}
@@ -3683,7 +3662,7 @@ EntryRenderer.ship = {
 
 		function getWeaponSection (weap) {
 			return `
-				<tr class="stat__header_underline"><td colspan="6"><span>Weapons: ${weap.name}${weap.count ? ` (${weap.count})` : ""}</span></td></tr>
+				<tr class="mon__stat-header-underline"><td colspan="6"><span>Weapons: ${weap.name}${weap.count ? ` (${weap.count})` : ""}</span></td></tr>
 				<tr><td colspan="6">
 				${getSectionHpPart(weap, !!weap.count)}
 				${renderer.renderEntry({entries: weap.entries})}
@@ -3693,7 +3672,7 @@ EntryRenderer.ship = {
 
 		function getOtherSection (oth) {
 			return `
-				<tr class="stat__header_underline"><td colspan="6"><span>${oth.name}</span></td></tr>
+				<tr class="mon__stat-header-underline"><td colspan="6"><span>${oth.name}</span></td></tr>
 				<tr><td colspan="6">
 				${getSectionHpPart(oth)}
 				${renderer.renderEntry({entries: oth.entries})}
@@ -4083,8 +4062,8 @@ EntryRenderer.hover = {
 		const fromBottom = vpOffsetT > $(window).height() / 2;
 		const fromRight = vpOffsetL > $(window).width() / 2;
 
-		const $hov = $(`<div class="hoverbox" style="right: -600px"/>`);
-		const $wrpStats = $(`<div class="hoverbox__table_wrp"/>`);
+		const $hov = $(`<div class="hwin" style="right: -600px"/>`);
+		const $wrpStats = $(`<div class="hwin__wrp-table"/>`);
 
 		const $body = $(`body`);
 		const $ele = $(ele);
@@ -4156,39 +4135,39 @@ EntryRenderer.hover = {
 			$hov.parent().append($hov); // ...and properly bring it to the front
 		}
 
-		const $brdrTopRightResize = $(`<div class="hoverborder__resize_ne"/>`)
+		const $brdrTopRightResize = $(`<div class="hoverborder__resize-ne"/>`)
 			.on("mousedown", (evt) => handleDragMousedown(evt, 1))
 			.on("click", handleDragClick);
 
-		const $brdrRightResize = $(`<div class="hoverborder__resize_e"/>`)
+		const $brdrRightResize = $(`<div class="hoverborder__resize-e"/>`)
 			.on("mousedown", (evt) => handleDragMousedown(evt, 2))
 			.on("click", handleDragClick);
 
-		const $brdrBottomRightResize = $(`<div class="hoverborder__resize_se"/>`)
+		const $brdrBottomRightResize = $(`<div class="hoverborder__resize-se"/>`)
 			.on("mousedown", (evt) => handleDragMousedown(evt, 3))
 			.on("click", handleDragClick);
 
-		const $brdrBtm = $(`<div class="hoverborder hoverborder--btm ${isBookContent ? "hoverborder-book" : ""}"><div class="hoverborder__resize_s"/></div>`)
+		const $brdrBtm = $(`<div class="hoverborder hoverborder--btm ${isBookContent ? "hoverborder-book" : ""}"><div class="hoverborder__resize-s"/></div>`)
 			.on("mousedown", (evt) => handleDragMousedown(evt, 4))
 			.on("click", handleDragClick);
 
-		const $brdrBtmLeftResize = $(`<div class="hoverborder__resize_sw"/>`)
+		const $brdrBtmLeftResize = $(`<div class="hoverborder__resize-sw"/>`)
 			.on("mousedown", (evt) => handleDragMousedown(evt, 5))
 			.on("click", handleDragClick);
 
-		const $brdrLeftResize = $(`<div class="hoverborder__resize_w"/>`)
+		const $brdrLeftResize = $(`<div class="hoverborder__resize-w"/>`)
 			.on("mousedown", (evt) => handleDragMousedown(evt, 6))
 			.on("click", handleDragClick);
 
-		const $brdrTopLeftResize = $(`<div class="hoverborder__resize_nw"/>`)
+		const $brdrTopLeftResize = $(`<div class="hoverborder__resize-nw"/>`)
 			.on("mousedown", (evt) => handleDragMousedown(evt, 7))
 			.on("click", handleDragClick);
 
-		const $brdrTopResize = $(`<div class="hoverborder__resize_n"/>`)
+		const $brdrTopResize = $(`<div class="hoverborder__resize-n"/>`)
 			.on("mousedown", (evt) => handleDragMousedown(evt, 8))
 			.on("click", handleDragClick);
 
-		const $brdrTop = $(`<div class="hoverborder top ${isBookContent ? "hoverborder-book" : ""}" ${permanent ? `data-perm="true"` : ""} data-hover-id="${hoverId}"/>`)
+		const $brdrTop = $(`<div class="hoverborder hoverborder--top ${isBookContent ? "hoverborder-book" : ""}" ${permanent ? `data-perm="true"` : ""} data-hover-id="${hoverId}"/>`)
 			.on("mousedown", (evt) => handleDragMousedown(evt, 9))
 			.on("click", handleDragClick)
 			.on("contextmenu", (evt) => {
@@ -4306,7 +4285,7 @@ EntryRenderer.hover = {
 			const curState = $brdrTop.attr("data-display-title");
 			$brdrTop.attr("data-display-title", curState === "false");
 			$brdrTop.attr("data-perm", true);
-			$hov.toggleClass("hoverbox--minified", curState === "false");
+			$hov.toggleClass("hwin--minified", curState === "false");
 			delete EntryRenderer.hover._active[hoverId];
 		});
 		$brdrTop.append($hovTitle);
@@ -4337,7 +4316,7 @@ EntryRenderer.hover = {
 							body { overflow-y: scroll; }
 						</style>
 					</head><body>
-					<div class="hoverbox hoverbox--popout" style="max-width: initial; max-height: initial; box-shadow: initial;">
+					<div class="hwin hoverbox--popout" style="max-width: initial; max-height: initial; box-shadow: initial;">
 					${$stats[0].outerHTML}
 					</div>
 					</body></html>
@@ -4370,11 +4349,11 @@ EntryRenderer.hover = {
 			};
 		}
 
-		if (fromBottom) $hov.css("top", vpOffsetT - $hov.height());
-		else $hov.css("top", vpOffsetT + $(ele).height() + 6);
+		if (fromBottom) $hov.css("top", vpOffsetT - ($hov.height() + 10));
+		else $hov.css("top", vpOffsetT + $(ele).height() + 10);
 
-		if (fromRight) $hov.css("left", (clientX || vpOffsetL) - ($hov.width() + 6));
-		else $hov.css("left", (clientX || (vpOffsetL + $(ele).width())) + 6);
+		if (fromRight) $hov.css("left", (clientX || vpOffsetL) - ($hov.width() + 10));
+		else $hov.css("left", (clientX || (vpOffsetL + $(ele).width())) + 10);
 
 		adjustPosition(true);
 
@@ -4473,6 +4452,7 @@ EntryRenderer.hover = {
 	// used in hover strings
 	mouseOverHoverTooltip (evt, ele, id, isBookContent) {
 		const data = EntryRenderer.hover._mouseHovers[id];
+		if (data == null) return setTimeout(() => { throw new Error(`No "data" found for hover ID ${id}`) }); // this should never occur, but does on other platforms
 		EntryRenderer.hover.show({evt, ele, page: "hover", source: data, hash: "", isBookContent});
 	},
 
@@ -4896,7 +4876,7 @@ EntryRenderer.dice = {
 		}
 
 		function attemptToGetName () {
-			const $hov = $ele.closest(`.hoverbox`);
+			const $hov = $ele.closest(`.hwin`);
 			if ($hov.length) {
 				return $hov.find(`.stats-name`).first().text();
 			}

@@ -26,7 +26,7 @@ class InitiativeTracker {
 			statsCols: state.c || []
 		};
 
-		const $wrpTracker = $(`<div class="dm-init"/>`);
+		const $wrpTracker = $(`<div class="dm-init dms__data_anchor"/>`);
 
 		// Unused; to be considered for other applications
 		const handleResize = () => {
@@ -148,18 +148,6 @@ class InitiativeTracker {
 		$(`<button class="btn btn-primary btn-xs mr-2" title="Player Window"><span class="glyphicon glyphicon-user"/></button>`)
 			.appendTo($wrpUtils)
 			.click(() => {
-				// nop on receiving a message; we want to send only
-				// TODO expand this, to allow e.g. players to set statuses or assign damage/healing (at DM approval?)
-				const _DM_MESSAGE_RECEIVER = () => {};
-				const _DM_ERROR_HANDLER = function (err) {
-					if (!this.isClosed) {
-						JqueryUtil.doToast({
-							content: `Server error:\n${err ? err.message || err : "(Unknown error)"}`,
-							type: "danger"
-						});
-					}
-				};
-
 				const $modalInner = DmScreenUtil.getShow$Modal({
 					title: "Configure Player View",
 					fullWidth: true,
@@ -266,82 +254,8 @@ class InitiativeTracker {
 
 				DmScreenUtil.addModal$Sep($modalInner);
 
-				const pHandleGenerateButtonPress = async rowMetas => {
-					const targetRows = rowMetas.filter(it => !it.isDeleted).filter(it => !it.isActive);
-					if (targetRows.every(it => it.isActive)) {
-						return JqueryUtil.doToast({
-							content: "No rows require Server Token generation!",
-							type: "warning"
-						});
-					}
-
-					let anyInvalidNames = false;
-					targetRows.forEach(r => {
-						r.$iptName.removeClass("error-background");
-						if (!r.$iptName.val().trim()) {
-							anyInvalidNames = true;
-							r.$iptName.addClass("error-background");
-						}
-					});
-					if (anyInvalidNames) return;
-
-					const names = targetRows.map(r => {
-						r.isActive = true;
-
-						r.$iptName.attr("disabled", true);
-						r.$btnGenServerToken.attr("disabled", true);
-
-						return r.$iptName.val();
-					});
-
-					if (p2pMeta.serverInfo) {
-						await p2pMeta.serverInfo;
-
-						const serverInfo = await PeerUtil.pInitialiseServersAddToExisting(
-							names,
-							p2pMeta.serverInfo,
-							_DM_MESSAGE_RECEIVER,
-							_DM_ERROR_HANDLER,
-							{shortTokens: !!cfg.playerInitShortTokens}
-						);
-
-						return targetRows.map((r, i) => {
-							r.name = serverInfo[i].name;
-							r.serverInfo = serverInfo[i];
-							r.$iptTokenServer.val(serverInfo[i].textifiedSdp).attr("disabled", false);
-
-							serverInfo[i].rowMeta = r;
-
-							r.$iptTokenClient.attr("disabled", false);
-							r.$btnAcceptClientToken.attr("disabled", false);
-
-							return serverInfo[i].textifiedSdp;
-						});
-					} else {
-						p2pMeta.serverInfo = new Promise(async resolve => {
-							p2pMeta.serverInfo = await PeerUtil.pInitialiseServers(names, _DM_MESSAGE_RECEIVER, _DM_ERROR_HANDLER, {shortTokens: !!cfg.playerInitShortTokens});
-
-							targetRows.forEach((r, i) => {
-								r.name = p2pMeta.serverInfo[i].name;
-								r.serverInfo = p2pMeta.serverInfo[i];
-								r.$iptTokenServer.val(p2pMeta.serverInfo[i].textifiedSdp).attr("disabled", false);
-
-								p2pMeta.serverInfo[i].rowMeta = r;
-
-								r.$iptTokenClient.attr("disabled", false);
-								r.$btnAcceptClientToken.attr("disabled", false);
-							});
-
-							resolve();
-						});
-
-						await p2pMeta.serverInfo;
-						return targetRows.map(r => r.serverInfo.textifiedSdp);
-					}
-				};
-
 				const $btnGenServerTokens = $(`<button class="btn btn-primary btn-xs">Generate All</button>`)
-					.click(() => pHandleGenerateButtonPress(p2pMeta.rows));
+					.click(() => pGetServerTokens(p2pMeta.rows));
 
 				DmScreenUtil._getAdd$Row($modalInner, "div")
 					.append(`
@@ -377,16 +291,16 @@ class InitiativeTracker {
 						.click(async () => {
 							await MiscUtil.pCopyTextToClipboard($iptTokenServer.val());
 							JqueryUtil.showCopiedEffect($iptTokenServer);
-						});
+						}).disableSpellcheck();
 
 					const $btnGenServerToken = $(`<button class="btn btn-xs btn-primary" title="Generate Server Token">Generate</button>`)
-						.click(() => pHandleGenerateButtonPress([rowMeta]));
+						.click(() => pGetServerTokens([rowMeta]));
 
 					const $iptTokenClient = $(`<input class="form-control input-sm code" disabled>`)
 						.keydown(evt => {
 							$iptTokenClient.removeClass("error-background");
 							if (evt.which === 13) $btnAcceptClientToken.click();
-						});
+						}).disableSpellcheck();
 
 					const $btnAcceptClientToken = $(`<button class="btn btn-xs btn-primary" title="Accept Client Token" disabled>Accept Client</button>`)
 						.click(async () => {
@@ -435,6 +349,8 @@ class InitiativeTracker {
 					rowMeta.$iptTokenClient = $iptTokenClient;
 					rowMeta.$btnAcceptClientToken = $btnAcceptClientToken;
 					p2pMeta.rows.push(rowMeta);
+
+					return rowMeta;
 				};
 
 				const $wrpRows = DmScreenUtil._getAdd$Row($modalInner, "div");
@@ -443,6 +359,117 @@ class InitiativeTracker {
 				if (p2pMeta.rows.length) p2pMeta.rows.forEach(row => row.$row.appendTo($wrpRowsInner));
 				else addClientRow();
 			});
+
+		// nop on receiving a message; we want to send only
+		// TODO expand this, to allow e.g. players to set statuses or assign damage/healing (at DM approval?)
+		const _DM_MESSAGE_RECEIVER = () => {};
+		const _DM_ERROR_HANDLER = function (err) {
+			if (!this.isClosed) {
+				JqueryUtil.doToast({
+					content: `Server error:\n${err ? err.message || err : "(Unknown error)"}`,
+					type: "danger"
+				});
+			}
+		};
+
+		const pGetServerTokens = async rowMetas => {
+			const targetRows = rowMetas.filter(it => !it.isDeleted).filter(it => !it.isActive);
+			if (targetRows.every(it => it.isActive)) {
+				return JqueryUtil.doToast({
+					content: "No rows require Server Token generation!",
+					type: "warning"
+				});
+			}
+
+			let anyInvalidNames = false;
+			targetRows.forEach(r => {
+				r.$iptName.removeClass("error-background");
+				if (!r.$iptName.val().trim()) {
+					anyInvalidNames = true;
+					r.$iptName.addClass("error-background");
+				}
+			});
+			if (anyInvalidNames) return;
+
+			const names = targetRows.map(r => {
+				r.isActive = true;
+
+				r.$iptName.attr("disabled", true);
+				r.$btnGenServerToken.attr("disabled", true);
+
+				return r.$iptName.val();
+			});
+
+			if (p2pMeta.serverInfo) {
+				await p2pMeta.serverInfo;
+
+				const serverInfo = await PeerUtil.pInitialiseServersAddToExisting(
+					names,
+					p2pMeta.serverInfo,
+					_DM_MESSAGE_RECEIVER,
+					_DM_ERROR_HANDLER,
+					{shortTokens: !!cfg.playerInitShortTokens}
+				);
+
+				return targetRows.map((r, i) => {
+					r.name = serverInfo[i].name;
+					r.serverInfo = serverInfo[i];
+					r.$iptTokenServer.val(serverInfo[i].textifiedSdp).attr("disabled", false);
+
+					serverInfo[i].rowMeta = r;
+
+					r.$iptTokenClient.attr("disabled", false);
+					r.$btnAcceptClientToken.attr("disabled", false);
+
+					return serverInfo[i].textifiedSdp;
+				});
+			} else {
+				p2pMeta.serverInfo = new Promise(async resolve => {
+					p2pMeta.serverInfo = await PeerUtil.pInitialiseServers(names, _DM_MESSAGE_RECEIVER, _DM_ERROR_HANDLER, {shortTokens: !!cfg.playerInitShortTokens});
+
+					targetRows.forEach((r, i) => {
+						r.name = p2pMeta.serverInfo[i].name;
+						r.serverInfo = p2pMeta.serverInfo[i];
+						r.$iptTokenServer.val(p2pMeta.serverInfo[i].textifiedSdp).attr("disabled", false);
+
+						p2pMeta.serverInfo[i].rowMeta = r;
+
+						r.$iptTokenClient.attr("disabled", false);
+						r.$btnAcceptClientToken.attr("disabled", false);
+					});
+
+					resolve();
+				});
+
+				await p2pMeta.serverInfo;
+				return targetRows.map(r => r.serverInfo.textifiedSdp);
+			}
+		};
+
+		$wrpTracker.data("doConnectLocal", async (clientView) => {
+			// generate a stub/fake row meta
+			const rowMeta = {
+				id: CryptUtil.uid(),
+				$row: $(),
+				$iptName: $(`<input value="local">`),
+				$iptTokenServer: $(),
+				$btnGenServerToken: $(),
+				$iptTokenClient: $(),
+				$btnAcceptClientToken: $()
+			};
+
+			p2pMeta.rows.push(rowMeta);
+
+			const serverTokens = await pGetServerTokens([rowMeta]);
+			const clientData = await PeerUtil.pInitialiseClient(
+				serverTokens[0],
+				msg => clientView.handleMessage(msg),
+				() => {} // ignore local errors
+			);
+			clientView.clientData = clientData;
+			await PeerUtil.pConnectClientsToServers([rowMeta.serverInfo], clientData.textifiedSdp);
+			sendStateToClientsDebounced();
+		});
 
 		const $wrpLockSettings = $(`<div class="btn-group flex"/>`).appendTo($wrpUtils);
 		const $btnLock = $(`<button class="btn btn-danger btn-xs" title="Lock Tracker"><span class="glyphicon glyphicon-lock"></span></button>`).appendTo($wrpLockSettings);
@@ -861,6 +888,10 @@ class InitiativeTracker {
 		}
 
 		$wrpTracker.data("getState", getSaveableState);
+		$wrpTracker.data("getSummary", () => {
+			const nameList = $wrpEntries.find(`.dm-init-row`).map((i, e) => $(e).find(`input.name`).val()).get();
+			return `${nameList.length} creature${nameList.length === 1 ? "" : "s"} ${nameList.length ? `(${nameList.slice(0, 3).join(", ")}${nameList.length > 3 ? "..." : ""})` : ""}`
+		});
 
 		function setNextActive () {
 			const $rows = $wrpEntries.find(`.dm-init-row`);
@@ -1002,7 +1033,7 @@ class InitiativeTracker {
 					const $modal = $(`<div class="panel-addmenu-inner dropdown-menu" style="height: initial"/>`);
 					const $wrpModal = $(`<div class="panel-addmenu">`).appendTo($(`body`)).click(() => $wrpModal.remove());
 					$modal.appendTo($wrpModal);
-					const $modalInner = $(`<div class="modal-inner"/>`).appendTo($modal).click((evt) => evt.stopPropagation());
+					const $modalInner = $(`<div class="modal__inner"/>`).appendTo($modal).click((evt) => evt.stopPropagation());
 
 					const $wrpRows = $(`<div class="dm-init-modal-wrp-rows"/>`).appendTo($modalInner);
 

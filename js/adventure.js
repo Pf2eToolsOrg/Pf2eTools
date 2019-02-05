@@ -66,13 +66,7 @@ function addAdventures (data) {
 	for (; adI < adventures.length; adI++) {
 		const adv = adventures[adI];
 
-		tempString +=
-			`<li class="contents-item" data-bookid="${UrlUtil.encodeForHash(adv.id)}" style="display: none;">
-				<a id="${adI}" href="#${adv.id},0" title="${adv.name}">
-					<span class='name'>${adv.name}</span>
-				</a>
-				${BookUtil.makeContentsBlock({book: adv, addOnclick: true, defaultHeadersHidden: true})}
-			</li>`;
+		tempString += BookUtil.getContentsItem(adI, adv, {book: adv, addOnclick: true, defaultHeadersHidden: true});
 	}
 	adventuresList.append(tempString);
 }

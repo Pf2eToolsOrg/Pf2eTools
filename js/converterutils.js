@@ -370,7 +370,7 @@ class TagUtil {
 }
 TagUtil.NONE_EMPTY_REGEX = /^(([-\u2014\u2013\u2221])+|none)$/gi;
 
-class TraitsActionsTag {
+class TraitActionTag {
 	static tryRun (m, cbMan) {
 		function doTag (prop, outProp) {
 			function isTraits () {
@@ -383,7 +383,7 @@ class TraitsActionsTag {
 					t.name = t.name.trim();
 
 					const cleanName = t.name.toLowerCase();
-					const mapped = TraitsActionsTag.tags[prop][cleanName];
+					const mapped = TraitActionTag.tags[prop][cleanName];
 					if (mapped) {
 						m[outProp] = m[outProp] || [];
 						if (mapped === true) {
@@ -419,7 +419,7 @@ class TraitsActionsTag {
 		if (m.actionTags && !m.actionTags.length) delete m.actionTags;
 	}
 }
-TraitsActionsTag.tags = { // true = map directly; string = map to this string
+TraitActionTag.tags = { // true = map directly; string = map to this string
 	trait: {
 		"turn immunity": true,
 		"brute": true,
@@ -631,7 +631,7 @@ LanguageTag.LANGUAGE_MAP = {
 	"any language": "X"
 };
 
-class SensesTag {
+class SenseTag {
 	static tryRun (m, cbAll) {
 		if (m.senses) {
 			if (TagUtil.isNoneOrEmpty(m.senses)) {
@@ -640,7 +640,7 @@ class SensesTag {
 				const senseTags = new Set();
 				m.senses.toLowerCase().split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX).map(it => it.trim())
 					.forEach(s => {
-						Object.entries(SensesTag.TAGS).forEach(([k, v]) => {
+						Object.entries(SenseTag.TAGS).forEach(([k, v]) => {
 							if (s.includes(k)) {
 								if (v === "D" && /\d\d\d ft/.exec(s)) senseTags.add("SD");
 								else senseTags.add(v);
@@ -656,11 +656,54 @@ class SensesTag {
 		}
 	}
 }
-SensesTag.TAGS = {
+SenseTag.TAGS = {
 	"blindsight": "B",
 	"darkvision": "D",
 	"tremorsense": "T",
 	"truesight": "U"
+};
+
+class SpellcastingTypeTag {
+	static tryRun (m, cbAll) {
+		if (!m.spellcasting) {
+			delete m.spellcastingTags;
+		} else {
+			const tags = new Set();
+			m.spellcasting.forEach(sc => {
+				if (!sc.name) return;
+				if (/(^|[^a-zA-Z])psionics([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("P");
+				if (/(^|[^a-zA-Z])innate([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("I");
+				if (/(^|[^a-zA-Z])form([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("F");
+				if (/(^|[^a-zA-Z])shared([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("S");
+
+				if (sc.headerEntries) {
+					const strHeader = JSON.stringify(sc.headerEntries);
+					Object.entries(SpellcastingTypeTag.CLASSES).forEach(([tag, regex]) => {
+						regex.lastIndex = 0;
+						const match = regex.exec(strHeader);
+						if (match) {
+							tags.add(tag);
+							cbAll(match[0]);
+						}
+					});
+				}
+
+				cbAll(sc.name);
+			});
+			if (tags.size) m.spellcastingTags = [...tags];
+			else delete m.spellcastingTags;
+		}
+	}
+}
+SpellcastingTypeTag.CLASSES = {
+	"CB": /(^|[^a-zA-Z])bard([^a-zA-Z]|$)/gi,
+	"CC": /(^|[^a-zA-Z])cleric([^a-zA-Z]|$)/gi,
+	"CD": /(^|[^a-zA-Z])druid([^a-zA-Z]|$)/gi,
+	"CP": /(^|[^a-zA-Z])paladin([^a-zA-Z]|$)/gi,
+	"CR": /(^|[^a-zA-Z])ranger([^a-zA-Z]|$)/gi,
+	"CS": /(^|[^a-zA-Z])sorcerer([^a-zA-Z]|$)/gi,
+	"CL": /(^|[^a-zA-Z])warlock([^a-zA-Z]|$)/gi,
+	"CW": /(^|[^a-zA-Z])wizard([^a-zA-Z]|$)/gi
 };
 
 class TextClean {
@@ -693,9 +736,10 @@ if (typeof module !== "undefined") {
 		TagAttack,
 		TagHit,
 		AlignmentConvert,
-		TraitsActionsTag,
+		TraitActionTag,
 		LanguageTag,
-		SensesTag,
+		SenseTag,
+		SpellcastingTypeTag,
 		TextClean
 	};
 }

@@ -14,6 +14,7 @@ window.onload = function load () {
 	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
 
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+	Omnisearch.addScrollTopFloat();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
@@ -25,13 +26,7 @@ function onJsonLoad (data) {
 	for (let i = 0; i < reference.length; i++) {
 		const book = reference[i];
 
-		tempString +=
-			`<li class="contents-item" data-bookid="${UrlUtil.encodeForHash(book.id)}">
-				<a id="${i}" href="#${book.id},0" title="${book.name}">
-					<span class='name'>${book.name}</span>
-				</a>
-				${BookUtil.makeContentsBlock({book: book, addOnclick: true})}
-			</li>`;
+		tempString += BookUtil.getContentsItem(i, book, {book, addOnclick: true});
 	}
 	allContents.append(tempString);
 
@@ -51,6 +46,6 @@ function onJsonLoad (data) {
 	if (window.location.hash.length) {
 		BookUtil.booksHashChange();
 	} else {
-		window.location.hash = "#bookref-quick,0";
+		window.location.hash = "#bookref-quick";
 	}
 }

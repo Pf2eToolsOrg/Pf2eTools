@@ -187,7 +187,7 @@ class LinkCheck {
 	static checkString (file, str) {
 		let match;
 		// eslint-disable-next-line no-cond-assign
-		while (match = LinkCheck.re.exec(str)) {
+		while ((match = LinkCheck.re.exec(str))) {
 			const tag = match[1];
 			const toEncode = [match[2]];
 
@@ -206,16 +206,14 @@ class LinkCheck {
 			}
 		}
 
-		// eslint-disable-next-line no-cond-assign
-		while (match = LinkCheck.skillRe.exec(str)) {
+		while ((match = LinkCheck.skillRe.exec(str))) {
 			const skill = match[1];
 			if (!VALID_SKILLS.has(skill)) {
 				MSG.LinkCheck += `Unknown skill: ${match[0]} in file ${file} (evaluates to "${skill}")\n`
 			}
 		}
 
-		// eslint-disable-next-line no-cond-assign
-		while (match = LinkCheck.actionRe.exec(str)) {
+		while ((match = LinkCheck.actionRe.exec(str))) {
 			const action = match[1];
 			if (!VALID_ACTIONS.has(action)) {
 				MSG.LinkCheck += `Unknown action: ${match[0]} in file ${file} (evaluates to "${action}")\n`
