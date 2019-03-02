@@ -692,10 +692,10 @@ Parser.skillToShort = function (skill) {
 };
 
 Parser.dragonColorToFull = function (c) {
-	return Parser._parse_aToB(DRAGON_COLOR_TO_FULL, c);
+	return Parser._parse_aToB(Parser.DRAGON_COLOR_TO_FULL, c);
 };
 
-DRAGON_COLOR_TO_FULL = {
+Parser.DRAGON_COLOR_TO_FULL = {
 	B: "black",
 	U: "blue",
 	G: "green",
@@ -718,6 +718,7 @@ Parser.acToFull = function (ac) {
 		const nxt = ac[i + 1];
 
 		if (cur.ac) {
+			if (i === 0 && cur.braces) stack += "(";
 			stack += cur.ac;
 			if (cur.from) stack += ` (${cur.from.map(it => renderer.renderEntry(it)).join(", ")})`;
 			if (cur.condition) stack += ` ${renderer.renderEntry(cur.condition)}`;
@@ -1230,6 +1231,8 @@ Parser.monSpellcastingTagToFull = function (tag) {
 	return Parser._parse_aToB(Parser.MON_SPELLCASTING_TAG_TO_FULL, tag);
 };
 
+Parser.ENVIRONMENTS = ["arctic", "coastal", "desert", "forest", "grassland", "hill", "mountain", "swamp", "underdark", "underwater", "urban"];
+
 // psi-prefix functions are for parsing psionic data, and shared with the roll20 script
 Parser.PSI_ABV_TYPE_TALENT = "T";
 Parser.PSI_ABV_TYPE_DISCIPLINE = "D";
@@ -1275,6 +1278,7 @@ Parser.prereqPatronToShort = function (patron) {
 
 // NOTE: These need to be reflected in omnidexer.js to be indexed
 Parser.OPT_FEATURE_TYPE_TO_FULL = {
+	AI: "Artificer Infusion",
 	ED: "Elemental Discipline",
 	EI: "Eldritch Invocation",
 	MM: "Metamagic",
@@ -1299,7 +1303,7 @@ Parser.optFeatureTypeToFull = function (type) {
 
 Parser.alignmentAbvToFull = function (alignment) {
 	if (typeof alignment === "object") {
-		if (alignment.special) {
+		if (alignment.special != null) {
 			// use in MTF Sacred Statue
 			return alignment.special;
 		} else {
@@ -1334,31 +1338,34 @@ Parser.alignmentAbvToFull = function (alignment) {
 };
 
 Parser.alignmentListToFull = function (alignList) {
-	// assume all single-length arrays can be simply parsed
-	if (alignList.length === 1) return Parser.alignmentAbvToFull(alignList[0]);
-	// two-length arrays can be:
-	// 1. "[object] or [object]"
-	// 2. a pair of abv's, e.g. "L" "G"
-	if (alignList.length === 2) {
-		if (typeof alignList[0] === "object" && typeof alignList[1] === "object") return `${Parser.alignmentAbvToFull(alignList[0])} or ${Parser.alignmentAbvToFull(alignList[1]).toLowerCase()}`;
-		else if (typeof alignList[0] === "string" && typeof alignList[1] === "string") return alignList.map(a => Parser.alignmentAbvToFull(a)).join(" ");
-		else throw new Error(`Malformed alignment pair: ${JSON.stringify(alignList)}`);
+	if (alignList.some(it => typeof it !== "string")) {
+		if (alignList.some(it => typeof it === "string")) throw new Error(`Mixed alignment types: ${JSON.stringify(alignList)}`);
+		return alignList.map(it => it.special != null || it.chance != null ? Parser.alignmentAbvToFull(it) : Parser.alignmentListToFull(it.alignment)).join(" or ");
+	} else {
+		// assume all single-length arrays can be simply parsed
+		if (alignList.length === 1) return Parser.alignmentAbvToFull(alignList[0]);
+		// a pair of abv's, e.g. "L" "G"
+		if (alignList.length === 2) {
+			return alignList.map(a => Parser.alignmentAbvToFull(a)).join(" ");
+		}
+		if (alignList.length === 3) {
+			if (alignList.includes("NX") && alignList.includes("NY") && alignList.includes("N")) return "Any Neutral Alignment";
+		}
+		// longer arrays should have a custom mapping
+		if (alignList.length === 5) {
+			if (!alignList.includes("G")) return "Any Non-Good Alignment";
+			if (!alignList.includes("E")) return "Any Non-Evil Alignment";
+			if (!alignList.includes("L")) return "Any Non-Lawful Alignment";
+			if (!alignList.includes("C")) return "Any Non-Chaotic Alignment";
+		}
+		if (alignList.length === 4) {
+			if (!alignList.includes("L") && !alignList.includes("NX")) return "Any Chaotic Alignment";
+			if (!alignList.includes("G") && !alignList.includes("NY")) return "Any Evil Alignment";
+			if (!alignList.includes("C") && !alignList.includes("NX")) return "Any Lawful Alignment";
+			if (!alignList.includes("E") && !alignList.includes("NY")) return "Any Good Alignment";
+		}
+		throw new Error(`Unmapped alignment: ${JSON.stringify(alignList)}`);
 	}
-	// longer arrays should have a custom mapping
-	// available options are:
-	// "L", "NX", "C" ("NX" = "neutral X" = neutral law/chaos axis)
-	// "G", "NY", "E" ("NY" = "neutral Y" = neutral good/evil axis)
-	if (alignList.length === 5) {
-		if (!alignList.includes("G")) return "any non-good alignment";
-		if (!alignList.includes("L")) return "any non-lawful alignment";
-	}
-	if (alignList.length === 4) {
-		if (!alignList.includes("L") && !alignList.includes("NX")) return "any chaotic alignment";
-		if (!alignList.includes("G") && !alignList.includes("NY")) return "any evil alignment";
-		if (!alignList.includes("C") && !alignList.includes("NX")) return "any lawful alignment";
-		if (!alignList.includes("E") && !alignList.includes("NY")) return "any good alignment";
-	}
-	throw new Error(`Unmapped alignment: ${JSON.stringify(alignList)}`);
 };
 
 Parser.CAT_ID_CREATURE = 1;
@@ -1394,6 +1401,7 @@ Parser.CAT_ID_CLASS_FEATURE = 30;
 Parser.CAT_ID_SHIP = 31;
 Parser.CAT_ID_PACT_BOON = 32;
 Parser.CAT_ID_ELEMENTAL_DISCIPLINE = 33;
+Parser.CAT_ID_ARTIFICER_INFUSION = 34;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1657,6 +1665,7 @@ TP_MONSTROSITY = "monstrosity";
 TP_OOZE = "ooze";
 TP_PLANT = "plant";
 TP_UNDEAD = "undead";
+Parser.MON_TYPES = [TP_ABERRATION, TP_BEAST, TP_CELESTIAL, TP_CONSTRUCT, TP_DRAGON, TP_ELEMENTAL, TP_FEY, TP_FIEND, TP_GIANT, TP_HUMANOID, TP_MONSTROSITY, TP_OOZE, TP_PLANT, TP_UNDEAD];
 Parser.MON_TYPE_TO_PLURAL = {};
 Parser.MON_TYPE_TO_PLURAL[TP_ABERRATION] = "aberrations";
 Parser.MON_TYPE_TO_PLURAL[TP_BEAST] = "beasts";
@@ -1683,6 +1692,7 @@ SZ_HUGE = "H";
 SZ_GARGANTUAN = "G";
 SZ_COLOSSAL = "C";
 SZ_VARIES = "V";
+Parser.SIZE_ABVS = [SZ_TINY, SZ_SMALL, SZ_MEDIUM, SZ_LARGE, SZ_HUGE, SZ_GARGANTUAN, SZ_VARIES];
 Parser.SIZE_ABV_TO_FULL = {};
 Parser.SIZE_ABV_TO_FULL[SZ_FINE] = "Fine";
 Parser.SIZE_ABV_TO_FULL[SZ_DIMINUTIVE] = "Diminutive";
@@ -1839,6 +1849,7 @@ SRC_UARoR = SRC_UA_PREFIX + "RacesOfRavnica";
 SRC_UAWGE = SRC_UA_PREFIX + "WGE";
 SRC_UAOSS = SRC_UA_PREFIX + "OfShipsAndSea";
 SRC_UASIK = SRC_UA_PREFIX + "Sidekicks";
+SRC_UAAR = SRC_UA_PREFIX + "ArtificerRevisited";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -1945,6 +1956,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UARoR] = UA_PREFIX + "Races of Ravnica";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAWGE] = "Wayfinder's Guide to Eberron";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAOSS] = UA_PREFIX + "Of Ships and the Sea";
 Parser.SOURCE_JSON_TO_FULL[SRC_UASIK] = UA_PREFIX + "Sidekicks";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAAR] = UA_PREFIX + "Artificer Revisited";
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -2041,6 +2053,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UARoR] = "UARoR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAWGE] = "WGE";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAOSS] = "UAOSS";
 Parser.SOURCE_JSON_TO_ABV[SRC_UASIK] = "UASIK";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAAR] = "UAAR";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -2082,6 +2095,9 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 	"R": "radiant",
 	"S": "slashing"
 };
+
+Parser.DMG_TYPES = ["acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"];
+Parser.CONDITIONS = ["blinded", "charmed", "deafened", "exhaustion", "frightened", "grappled", "incapacitated", "invisible", "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious"];
 
 Parser.SKILL_JSON_TO_FULL = {
 	"Acrobatics": [
@@ -2319,6 +2335,38 @@ function isEmpty (obj) {
 JqueryUtil = {
 	initEnhancements () {
 		JqueryUtil.addSelectors();
+
+		/**
+		 * Template strings which can contain jQuery objects.
+		 * Usage: $$`<div>Press this button: ${$btn}</div>`
+		 */
+		window.$$ = function (parts, ...args) { // TODO use this instead of .swap()
+			const $eles = [];
+			let ixArg = 0;
+
+			const handleArg = (arg) => {
+				if (arg instanceof $) {
+					// TODO inject appropriate elements for the parent and remove "slot" specifier on replace selector
+					// the places where these would be inserted usually can't support <slot>
+					// TODO also doesn't work inside <select>
+					if (arg.is("tr") || arg.is("td") || arg.is("th")) throw new Error(`Unsupported element type "${arg[0].tagName}"!`);
+					$eles.push(arg);
+					return `<slot data-r=true></slot>`;
+				} else if (arg instanceof HTMLElement) {
+					return handleArg($(arg));
+				} else return arg
+			};
+
+			const raw = parts.reduce((html, p) => {
+				const myIxArg = ixArg++;
+				if (args[myIxArg] == null) return `${html}${p}`;
+				if (args[myIxArg] instanceof Array) return `${html}${args[myIxArg].map(arg => handleArg(arg)).join("")}${p}`;
+				else return `${html}${handleArg(args[myIxArg])}${p}`;
+			});
+			const $res = $(raw);
+			$res.find(`slot[data-r=true]`).replaceWith(i => $eles[i]);
+			return $res;
+		};
 
 		$.fn.extend({
 			/**
@@ -2736,6 +2784,9 @@ ContextUtil = {
 		return position;
 	},
 
+	_lastMenuId: 1,
+	getNextGenericMenuId () { return `contextMenu_${ContextUtil._lastMenuId++}`; },
+
 	doInitContextMenu: (menuId, clickFn, labels) => {
 		ContextUtil._ctxClick[menuId] = clickFn;
 		ContextUtil._handlePreInitContextMenu(menuId);
@@ -2753,6 +2804,13 @@ ContextUtil = {
 		tempString += `</ul>`;
 		$(`#${menuId}`).remove();
 		$("body").append(tempString);
+	},
+
+	doTeardownContextMenu (menuId) {
+		delete ContextUtil._ctxInit[menuId];
+		delete ContextUtil._ctxClick[menuId];
+		delete ContextUtil._ctxOpenRefs[menuId];
+		$(`#${menuId}`).remove();
 	},
 
 	handleOpenContextMenu: (evt, ele, menuId, closeHandler) => {
@@ -3096,7 +3154,7 @@ ListUtil = {
 			.attr("title", "Pin (Toggle)");
 	},
 
-	_genericAddButtonHandler (evt, options = {}) {
+	genericAddButtonHandler (evt, options = {}) {
 		if (evt.shiftKey) ListUtil.pDoSublistAdd(History.lastLoadedId, true, options.shiftCount || 20);
 		else ListUtil.pDoSublistAdd(History.lastLoadedId, true);
 	},
@@ -3104,10 +3162,10 @@ ListUtil = {
 		ListUtil.getOrTabRightButton(`btn-sublist-add`, `plus`)
 			.off("click")
 			.attr("title", `Add (SHIFT for ${options.shiftCount || 20})`)
-			.on("click", handlerGenerator ? handlerGenerator() : ListUtil._genericAddButtonHandler);
+			.on("click", handlerGenerator ? handlerGenerator() : ListUtil.genericAddButtonHandler);
 	},
 
-	_genericSubtractButtonHandler (evt, options = {}) {
+	genericSubtractButtonHandler (evt, options = {}) {
 		if (evt.shiftKey) ListUtil.pDoSublistSubtract(History.lastLoadedId, options.shiftCount || 20);
 		else ListUtil.pDoSublistSubtract(History.lastLoadedId);
 	},
@@ -3115,7 +3173,7 @@ ListUtil = {
 		ListUtil.getOrTabRightButton(`btn-sublist-subtract`, `minus`)
 			.off("click")
 			.attr("title", `Subtract (SHIFT for ${options.shiftCount || 20})`)
-			.on("click", handlerGenerator ? handlerGenerator() : ListUtil._genericSubtractButtonHandler);
+			.on("click", handlerGenerator ? handlerGenerator() : ListUtil.genericSubtractButtonHandler);
 	},
 
 	bindDownloadButton: () => {
@@ -3123,12 +3181,12 @@ ListUtil = {
 		$btn.off("click")
 			.on("click", async evt => {
 				if (evt.shiftKey) {
-					const toEncode = JSON.stringify(ListUtil._getExportableSublist());
+					const toEncode = JSON.stringify(ListUtil.getExportableSublist());
 					const parts = [window.location.href, (UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], true))];
 					await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
 					JqueryUtil.showCopiedEffect($btn);
 				} else {
-					DataUtil.userDownload(ListUtil._getDownloadName(), JSON.stringify(ListUtil._getExportableSublist(), null, "\t"));
+					DataUtil.userDownload(ListUtil._getDownloadName(), JSON.stringify(ListUtil.getExportableSublist(), null, "\t"));
 				}
 			})
 			.attr("title", "Download List (SHIFT for Link)");
@@ -3201,13 +3259,13 @@ ListUtil = {
 	_getPinnedCount (index, data) {
 		const base = ListUtil._pinned[index];
 		if (!base) return null;
-		if (data) return base[data.uid];
+		if (data && data.uid) return base[data.uid];
 		return base._;
 	},
 
 	_setPinnedCount (index, count, data) {
 		const base = ListUtil._pinned[index];
-		const key = data ? data.uid : "_";
+		const key = data && data.uid ? data.uid : "_";
 		if (base) base[key] = count;
 		else (ListUtil._pinned[index] = {})[key] = count;
 	},
@@ -3215,7 +3273,7 @@ ListUtil = {
 	_deletePinnedCount (index, data) {
 		const base = ListUtil._pinned[index];
 		if (base) {
-			if (data) delete base[data.uid];
+			if (data && data.uid) delete base[data.uid];
 			else delete base._;
 		}
 	},
@@ -3268,7 +3326,7 @@ ListUtil = {
 	},
 
 	_setViewCount: (index, newCount, data) => {
-		const $cnt = $(ListUtil.sublist.get(data ? "uid" : "id", data ? data.uid : index)[0].elm).find(".count");
+		const $cnt = $(ListUtil.sublist.get(data && data.uid ? "uid" : "id", data && data.uid ? data.uid : index)[0].elm).find(".count");
 		if ($cnt.find("input").length) $cnt.find("input").val(newCount);
 		else $cnt.text(newCount);
 	},
@@ -3280,7 +3338,7 @@ ListUtil = {
 		ListUtil._handleCallUpdateFn();
 	},
 
-	_getExportableSublist: () => {
+	getExportableSublist: () => {
 		const sources = new Set();
 		const toSave = ListUtil.sublist.items
 			.map(it => {
@@ -3292,7 +3350,7 @@ ListUtil = {
 	},
 
 	async _pSaveSublist () {
-		await StorageUtil.pSetForPage("sublist", ListUtil._getExportableSublist());
+		await StorageUtil.pSetForPage("sublist", ListUtil.getExportableSublist());
 	},
 
 	_updateSublistVisibility: () => {
@@ -3534,7 +3592,7 @@ ListUtil = {
 		return `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
 	},
 
-	_genericPinKeyMapper (pMapUid = ListUtil._pUidHandler) {
+	genericPinKeyMapper (pMapUid = ListUtil._pUidHandler) {
 		return Object.entries(ListUtil.getSublisted()).map(([id, it]) => {
 			return Object.keys(it).map(k => {
 				const it = ListUtil._allItems[id];
@@ -3545,7 +3603,7 @@ ListUtil = {
 
 	_handleJsonDownload () {
 		if (ListUtil._pUidHandler) {
-			const promises = ListUtil._genericPinKeyMapper();
+			const promises = ListUtil.genericPinKeyMapper();
 
 			Promise.all(promises).then(data => {
 				data.forEach(cpy => DataUtil.cleanJson(cpy));
@@ -3829,7 +3887,7 @@ UrlUtil = {
 					return UrlUtil.packSubHash(hK, hV, true);
 				});
 				if (evt.shiftKey) {
-					const toEncode = JSON.stringify(ListUtil._getExportableSublist());
+					const toEncode = JSON.stringify(ListUtil.getExportableSublist());
 					const part2 = UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], true);
 					parts = parts.concat(part2);
 				}
@@ -4002,7 +4060,7 @@ SortUtil = {
 		if (!b) return 1;
 		if (a.toLowerCase().trim() === "special equipment") return -1;
 		if (b.toLowerCase().trim() === "special equipment") return 1;
-		return SortUtil.ascSort(a, b);
+		return SortUtil.ascSortLower(a, b);
 	},
 
 	_alignFirst: ["L", "C"],
@@ -4073,10 +4131,10 @@ DataUtil = {
 						DataUtil._loaded[toUrl] = data;
 						resolve(data, otherData);
 					} catch (e) {
-						reject(new Error(`Could not parse JSON from ${toUrl}: ${e}`));
+						reject(new Error(`Could not parse JSON from ${toUrl}: ${e.message}`));
 					}
 				};
-				request.onerror = (e) => reject(new Error(`Error during JSON request: ${e}`));
+				request.onerror = (e) => reject(new Error(`Error during JSON request: ${e.target.status}`));
 				return request;
 			}
 
@@ -4155,6 +4213,10 @@ DataUtil = {
 		$a.remove();
 	},
 
+	getCleanFilename (filename) {
+		return filename.replace(/[^-_a-zA-Z0-9]/g, "_");
+	},
+
 	getCsv (headers, rows) {
 		function escapeCsv (str) {
 			return `"${str.replace(/"/g, `""`).replace(/ +/g, " ").replace(/\n\n+/gi, "\n\n")}"`;
@@ -4195,8 +4257,21 @@ DataUtil = {
 
 	cleanJson (cpy) {
 		cpy.name = cpy._displayName || cpy.name;
-		Object.keys(cpy).filter(k => k.startsWith("_") || !cpy[k] || (cpy[k] instanceof Array && !cpy[k].length)).forEach(k => delete cpy[k]);
+		DataUtil.__cleanJsonObject(cpy)
 		return cpy;
+	},
+
+	__cleanJsonObject (obj) {
+		if (typeof obj === "object") {
+			if (obj instanceof Array) {
+				obj.forEach(it => DataUtil.__cleanJsonObject(it));
+			} else {
+				Object.entries(obj).forEach(([k, v]) => {
+					if (k.startsWith("_") || k === "uniqueId") delete obj[k];
+					else DataUtil.__cleanJsonObject(v);
+				});
+			}
+		}
 	},
 
 	async pGetLoadableByMeta (key, value) {
@@ -4224,7 +4299,7 @@ DataUtil = {
 	},
 
 	deity: {
-		doPostLoad: function (data, callbackFn) {
+		doPostLoad: function (data) {
 			const PRINT_ORDER = [
 				SRC_PHB,
 				SRC_DMG,
@@ -4257,16 +4332,12 @@ DataUtil = {
 				laterPrinting.push(src);
 			});
 			data.deity.forEach(g => g._isEnhanced = true);
-
-			callbackFn(data);
 		},
 
-		loadJSON: function (baseUrl = "") {
-			return new Promise((resolve) => {
-				DataUtil.loadJSON(`${baseUrl}data/deities.json`).then((data) => {
-					DataUtil.deity.doPostLoad(data, resolve);
-				});
-			});
+		loadJSON: async function (baseUrl = "") {
+			const data = await DataUtil.loadJSON(`${baseUrl}data/deities.json`);
+			DataUtil.deity.doPostLoad(data);
+			return data;
 		}
 	},
 
@@ -4360,9 +4431,10 @@ RollerUtil = {
 		$(`#filter-search-input-group`).find(`#reset`).before($btnRoll);
 	},
 
-	isRollCol (string) {
-		if (typeof string !== "string") return false;
-		return !!/^({@dice )?(\d+)?d\d+(\s*[+-]\s*(\d+)?d\d+)*(\s*[-+]\s*\d+)?(})?$/.exec(string.trim());
+	isRollCol (colLabel) {
+		if (typeof colLabel !== "string") return false;
+		if (/^{@dice [^}]+}$/.test(colLabel.trim())) return true;
+		return !!EntryRenderer.dice.parseToTree(colLabel);
 	},
 
 	_DICE_REGEX_STR: "((([1-9]\\d*)?d([1-9]\\d*)(\\s*?[-+×x*]\\s*?(\\d,\\d|\\d)+)?))+?"
@@ -5256,14 +5328,44 @@ BrewUtil = {
 		BrewUtil._pRenderBrewScreen($body, $overlay, $window, true);
 	},
 
+	async pAddEntry (prop, obj) {
+		BrewUtil._mutUniqueId(obj);
+		(BrewUtil.homebrew[prop] = BrewUtil.homebrew[prop] || []).push(obj);
+		await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
+		return BrewUtil.homebrew[prop].length - 1;
+	},
+
+	async pRemoveEntry (prop, obj) {
+		const ix = (BrewUtil.homebrew[prop] = BrewUtil.homebrew[prop] || []).findIndex(it => it.uniqueId === obj.uniqueId);
+		if (~ix) {
+			BrewUtil.homebrew[prop].splice(ix, 1);
+			return StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
+		} else throw new Error(`Could not find object with ID "${obj.uniqueId}" in "${prop}" list`);
+	},
+
+	getEntryIxByName (prop, obj) {
+		return (BrewUtil.homebrew[prop] = BrewUtil.homebrew[prop] || []).findIndex(it => it.name === obj.name && it.source === obj.source);
+	},
+
+	async pUpdateEntryByIx (prop, ix, obj) {
+		if (~ix && ix < BrewUtil.homebrew[prop].length) {
+			BrewUtil._mutUniqueId(obj);
+			BrewUtil.homebrew[prop].splice(ix, 1, obj);
+			return StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
+		} else throw new Error(`Index "${ix}" was not valid!`);
+	},
+
+	_mutUniqueId (obj) {
+		delete obj.uniqueId; // avoid basing the hash on the previous hash
+		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
+	},
+
 	_DIRS: ["spell", "class", "subclass", "creature", "background", "feat", "optionalfeature", "race", "object", "trap", "hazard", "deity", "item", "reward", "psionic", "variantrule", "condition", "disease", "adventure", "book", "ship", "magicvariant"],
 	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "deity", "item", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "ship"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		function storePrep (arrName) {
 			if (json[arrName]) {
-				json[arrName].forEach(it => {
-					it.uniqueId = CryptUtil.md5(JSON.stringify(it));
-				});
+				json[arrName].forEach(it => BrewUtil._mutUniqueId(it));
 			} else json[arrName] = [];
 		}
 
@@ -5424,7 +5526,7 @@ BrewUtil = {
 	_buildSourceCache () {
 		function doBuild () {
 			if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.sources) {
-				BrewUtil.homebrewMeta.sources.forEach(src => BrewUtil._sourceCache[src.json] = ({abbreviation: src.abbreviation, full: src.full}));
+				BrewUtil.homebrewMeta.sources.forEach(src => BrewUtil._sourceCache[src.json] = ({...src}));
 			}
 		}
 
@@ -5471,6 +5573,31 @@ BrewUtil = {
 	sourceJsonToAbv (source) {
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].abbreviation || source : source;
+	},
+
+	sourceJsonToSource (source) {
+		BrewUtil._buildSourceCache();
+		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source] : null;
+	},
+
+	addSource (source) {
+		BrewUtil._resetSourceCache();
+		const exists = BrewUtil.homebrewMeta.sources.some(it => it.json === source.json);
+		if (exists) throw new Error(`Source "${source.json}" already exists!`);
+		(BrewUtil.homebrewMeta.sources = BrewUtil.homebrewMeta.sources || []).push(source);
+		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
+	},
+
+	updateSource (source) {
+		BrewUtil._resetSourceCache();
+		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json === source.json);
+		if (!~ix) throw new Error(`Source "${source.json}" does not exist!`);
+		const json = BrewUtil.homebrewMeta.sources[ix].json;
+		BrewUtil.homebrewMeta.sources[ix] = {
+			...source,
+			json
+		};
+		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
 	},
 
 	/**
@@ -5698,31 +5825,6 @@ CollectionUtil = {
 		values () {
 			return this.map.values();
 		}
-	},
-
-	arrayEq (array1, array2) {
-		if (!array1 && !array2) return true;
-		else if ((!array1 && array2) || (array1 && !array2)) return false;
-
-		let temp = [];
-		if ((!array1[0]) || (!array2[0])) return false;
-		if (array1.length !== array2.length) return false;
-		let key;
-		// Put all the elements from array1 into a "tagged" array
-		for (let i = 0; i < array1.length; i++) {
-			key = (typeof array1[i]) + "~" + array1[i]; // Use "typeof" so a number 1 isn't equal to a string "1".
-			if (temp[key]) temp[key]++;
-			else temp[key] = 1;
-		}
-		// Go through array2 - if same tag missing in "tagged" array, not equal
-		for (let i = 0; i < array2.length; i++) {
-			key = (typeof array2[i]) + "~" + array2[i];
-			if (temp[key]) {
-				if (temp[key] === 0) return false;
-				else temp[key]--;
-			} else return false;
-		}
-		return true;
 	},
 
 	setEq (set1, set2) {

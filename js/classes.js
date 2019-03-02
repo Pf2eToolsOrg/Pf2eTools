@@ -1082,7 +1082,7 @@ class SubClassLoader {
 			}
 		}
 
-		if (!CollectionUtil.arrayEq(SubClassLoader.prevSub, sub)) { // checking array equality is faster than hitting the DOM
+		if (!(SubClassLoader.prevSub === sub && SubClassLoader.prevSub.equals(sub))) { // checking array equality is faster than hitting the DOM
 			setTimeout(() => {
 				const $nav = $(`#sticky-nav`);
 				const $hr = $nav.find(`hr`);
@@ -1387,7 +1387,7 @@ async function doPageInit () {
 
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
-			.then(BrewUtil.pAddLocalBrewData)
+			.then(() => BrewUtil.pAddLocalBrewData())
 			.catch(BrewUtil.pPurgeBrew)
 			.then(() => {
 				RollerUtil.addListRollButton();

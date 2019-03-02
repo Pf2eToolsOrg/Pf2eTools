@@ -103,7 +103,7 @@ class InitiativeTrackerPlayer {
 							.appendTo($wrpInitial);
 					}
 				} else {
-					JqueryUtil.doToast("No local trackers detected!");
+					JqueryUtil.doToast({content: "No local trackers detected!", type: "warning"});
 				}
 			});
 

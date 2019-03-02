@@ -64,16 +64,16 @@ class InitiativeTracker {
 		};
 
 		const makeImportSettingsModal = () => {
-			const $modalInner = DmScreenUtil.getShow$Modal("Import Settings", () => doUpdateExternalStates());
-			DmScreenUtil.addModal$Sep($modalInner);
-			DmScreenUtil.getAddModal$RowCb($modalInner, "Roll creature hit points", cfg, "isRollHp");
-			DmScreenUtil.getAddModal$RowCb($modalInner, "Roll groups of creatures together", cfg, "importIsRollGroups");
-			DmScreenUtil.getAddModal$RowCb($modalInner, "Add players", cfg, "importIsAddPlayers");
-			DmScreenUtil.getAddModal$RowCb($modalInner, "Add to existing tracker state", cfg, "importIsAppend");
+			const $modalInner = UiUtil.getShow$Modal("Import Settings", () => doUpdateExternalStates());
+			UiUtil.addModal$Sep($modalInner);
+			UiUtil.getAddModal$RowCb($modalInner, "Roll creature hit points", cfg, "isRollHp");
+			UiUtil.getAddModal$RowCb($modalInner, "Roll groups of creatures together", cfg, "importIsRollGroups");
+			UiUtil.getAddModal$RowCb($modalInner, "Add players", cfg, "importIsAddPlayers");
+			UiUtil.getAddModal$RowCb($modalInner, "Add to existing tracker state", cfg, "importIsAppend");
 		};
 
 		// initialise "upload" context menu
-		const contextId = `trackerLoader${RollerUtil.randomise(100000)}`;
+		const contextId = ContextUtil.getNextGenericMenuId();
 		ContextUtil.doInitContextMenu(contextId, (evt, ele, $invokedOn, $selectedMenu) => {
 			switch (Number($selectedMenu.data("ctx-id"))) {
 				case 0:
@@ -148,7 +148,7 @@ class InitiativeTracker {
 		$(`<button class="btn btn-primary btn-xs mr-2" title="Player Window"><span class="glyphicon glyphicon-user"/></button>`)
 			.appendTo($wrpUtils)
 			.click(() => {
-				const $modalInner = DmScreenUtil.getShow$Modal({
+				const $modalInner = UiUtil.getShow$Modal({
 					title: "Configure Player View",
 					fullWidth: true,
 					fullHeight: true,
@@ -157,7 +157,7 @@ class InitiativeTracker {
 					}
 				});
 
-				const $wrpHelp = DmScreenUtil._getAdd$Row($modalInner, "div");
+				const $wrpHelp = UiUtil._getAdd$Row($modalInner, "div");
 				const $btnAltGenAll = $(`<button class="btn btn-primary btn-text-insert">Generate All</button>`).click(() => $btnGenServerTokens.click());
 				const $btnAltCopyAll = $(`<button class="btn btn-primary btn-text-insert">Copy Server Tokens</button>`).click(() => $btnCopyServers.click());
 				$(`<div class="row full-width">
@@ -180,9 +180,9 @@ class InitiativeTracker {
 					</div>
 				</div>`).swap({$btnAltGenAll, $btnAltCopyAll}).appendTo($wrpHelp);
 
-				DmScreenUtil.addModal$Sep($modalInner);
+				UiUtil.addModal$Sep($modalInner);
 
-				const $wrpTop = DmScreenUtil._getAdd$Row($modalInner, "div");
+				const $wrpTop = UiUtil._getAdd$Row($modalInner, "div");
 
 				const $btnAddClient = $(`<button class="btn btn-xs btn-primary" title="Add Client">Add Player</button>`).click(() => addClientRow());
 
@@ -202,7 +202,7 @@ class InitiativeTracker {
 
 				const $btnAcceptClients = $(`<button class="btn btn-xs btn-primary" title="Open a prompt into which text containing client tokens can be pasted">Accept Multiple Clients</button>`)
 					.click(() => {
-						const $modalInnerAccept = DmScreenUtil.getShow$Modal({title: "Accept Multiple Clients"});
+						const $modalInnerAccept = UiUtil.getShow$Modal({title: "Accept Multiple Clients"});
 
 						const $iptText = $(`<textarea class="form-control dm_init__pl_textarea block mb-2"/>`)
 							.keydown(() => $iptText.removeClass("error-background"));
@@ -252,12 +252,12 @@ class InitiativeTracker {
 					</div>
 				`).swap({$btnAddClient, $btnCopyServers, $btnAcceptClients}).appendTo($wrpTop);
 
-				DmScreenUtil.addModal$Sep($modalInner);
+				UiUtil.addModal$Sep($modalInner);
 
 				const $btnGenServerTokens = $(`<button class="btn btn-primary btn-xs">Generate All</button>`)
 					.click(() => pGetServerTokens(p2pMeta.rows));
 
-				DmScreenUtil._getAdd$Row($modalInner, "div")
+				UiUtil._getAdd$Row($modalInner, "div")
 					.append(`
 					<div class="row full-width">
 						<div class="col-2 bold">Player Name</div>
@@ -315,7 +315,7 @@ class InitiativeTracker {
 								} catch (e) {
 									JqueryUtil.doToast({
 										content: `Failed to accept client token! Are you sure it was valid? (See the log for more details.)`,
-										type: "error"
+										type: "danger"
 									});
 									setTimeout(() => { throw e; });
 								}
@@ -353,7 +353,7 @@ class InitiativeTracker {
 					return rowMeta;
 				};
 
-				const $wrpRows = DmScreenUtil._getAdd$Row($modalInner, "div");
+				const $wrpRows = UiUtil._getAdd$Row($modalInner, "div");
 				const $wrpRowsInner = $(`<div class="full-width"/>`).appendTo($wrpRows);
 
 				if (p2pMeta.rows.length) p2pMeta.rows.forEach(row => row.$row.appendTo($wrpRowsInner));
@@ -490,25 +490,25 @@ class InitiativeTracker {
 		$(`<button class="btn btn-default btn-xs mr-2"><span class="glyphicon glyphicon-cog"></span></button>`)
 			.appendTo($wrpLockSettings)
 			.click(() => {
-				const $modalInner = DmScreenUtil.getShow$Modal(
+				const $modalInner = UiUtil.getShow$Modal(
 					"Settings",
 					() => {
 						handleStatColsChange();
 						doUpdateExternalStates();
 					}
 				);
-				DmScreenUtil.addModal$Sep($modalInner);
-				DmScreenUtil.getAddModal$RowCb($modalInner, "Roll hit points", cfg, "isRollHp");
-				DmScreenUtil.addModal$Sep($modalInner);
-				DmScreenUtil.getAddModal$RowCb($modalInner, "Player View: Show exact HP", cfg, "playerInitShowExactHp");
-				DmScreenUtil.getAddModal$RowCb($modalInner, "Player View: Auto-hide new monsters", cfg, "playerInitHideNewMonster");
-				DmScreenUtil.getAddModal$RowCb($modalInner, "Player View: Show ordinals", cfg, "playerInitShowOrdinals", "For example, if you add two Goblins, one will be Goblin (1) and the other Goblin (2), rather than having identical names.");
-				DmScreenUtil.getAddModal$RowCb($modalInner, "Player View: Shorten server tokens", cfg, "playerInitShortTokens", "Server tokens will be roughly half as many characters, but will contain non-standard characters.");
-				DmScreenUtil.addModal$Sep($modalInner);
+				UiUtil.addModal$Sep($modalInner);
+				UiUtil.getAddModal$RowCb($modalInner, "Roll hit points", cfg, "isRollHp");
+				UiUtil.addModal$Sep($modalInner);
+				UiUtil.getAddModal$RowCb($modalInner, "Player View: Show exact HP", cfg, "playerInitShowExactHp");
+				UiUtil.getAddModal$RowCb($modalInner, "Player View: Auto-hide new monsters", cfg, "playerInitHideNewMonster");
+				UiUtil.getAddModal$RowCb($modalInner, "Player View: Show ordinals", cfg, "playerInitShowOrdinals", "For example, if you add two Goblins, one will be Goblin (1) and the other Goblin (2), rather than having identical names.");
+				UiUtil.getAddModal$RowCb($modalInner, "Player View: Shorten server tokens", cfg, "playerInitShortTokens", "Server tokens will be roughly half as many characters, but will contain non-standard characters.");
+				UiUtil.addModal$Sep($modalInner);
 
-				const $cbStats = DmScreenUtil.getAddModal$RowCb($modalInner, "Additional Columns", cfg, "statsAddColumns");
-				const $wrpTblStatsHead = DmScreenUtil._getAdd$Row($modalInner, "div")
-					.addClass("tab-body-row--stats-header")
+				const $cbStats = UiUtil.getAddModal$RowCb($modalInner, "Additional Columns", cfg, "statsAddColumns");
+				const $wrpTblStatsHead = UiUtil._getAdd$Row($modalInner, "div")
+					.addClass("ui-modal__row--stats-header")
 					// intentional difference in column widths compared to the rows, to position the long header
 					//  ("Editable?") correctly
 					.append(`
@@ -519,7 +519,7 @@ class InitiativeTracker {
 							<div class="col-1-7 text-align-center">Editable?</div>
 						</div>
 					`);
-				const $wrpTblStats = DmScreenUtil._getAdd$Row($modalInner, "div").addClass("tab-body-row--stats");
+				const $wrpTblStats = UiUtil._getAdd$Row($modalInner, "div").addClass("ui-modal__row--stats");
 
 				(() => {
 					const $wrpStatsRows = $(`<div class="dm_init__stats_rows mb-2"/>`).appendTo($wrpTblStats);
@@ -668,50 +668,50 @@ class InitiativeTracker {
 				isWait: false
 			};
 
-			const $modal = $(`<div class="panel-addmenu">`);
-			const $modalInner = $(`<div class="panel-addmenu-inner dropdown-menu">`).appendTo($modal);
+			const $modal = $(`<div class="ui-modal__overlay">`);
+			const $modalInner = $(`<div class="ui-modal__inner dropdown-menu">`).appendTo($modal);
 			const doClose = () => $modal.remove();
 			$modal.on("click", doClose);
 			$modalInner.on("click", (e) => e.stopPropagation());
 			$(`body`).append($modal);
 
 			const $controls = $(`<div class="split" style="flex-shrink: 0"/>`).appendTo($modalInner);
-			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($controls);
+			const $srch = $(`<input class="ui-search__ipt-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($controls);
 			const $wrpCount = $(`
-				<div class="panel-tab-search-sub-wrp" style="padding-right: 0;">
+				<div class="ui-search__ipt-search-sub-wrp" style="padding-right: 0;">
 					<div style="margin-right: 7px;">Add</div>
-					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="1" checked> 1</label>
-					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="2"> 2</label>
-					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="3"> 3</label>
-					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="5"> 5</label>
-					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="8"> 8</label>
-					<label class="panel-tab-search-sub-lbl"><input type="radio" name="mon-count" class="panel-tab-search-sub-ipt" value="-1"> <input type="number" class="form-control panel-tab-search-sub-ipt-custom" value="13" min="1"></label>
+					<label class="ui-search__ipt-search-sub-lbl"><input type="radio" name="mon-count" class="ui-search__ipt-search-sub-ipt" value="1" checked> 1</label>
+					<label class="ui-search__ipt-search-sub-lbl"><input type="radio" name="mon-count" class="ui-search__ipt-search-sub-ipt" value="2"> 2</label>
+					<label class="ui-search__ipt-search-sub-lbl"><input type="radio" name="mon-count" class="ui-search__ipt-search-sub-ipt" value="3"> 3</label>
+					<label class="ui-search__ipt-search-sub-lbl"><input type="radio" name="mon-count" class="ui-search__ipt-search-sub-ipt" value="5"> 5</label>
+					<label class="ui-search__ipt-search-sub-lbl"><input type="radio" name="mon-count" class="ui-search__ipt-search-sub-ipt" value="8"> 8</label>
+					<label class="ui-search__ipt-search-sub-lbl"><input type="radio" name="mon-count" class="ui-search__ipt-search-sub-ipt" value="-1"> <input type="number" class="form-control ui-search__ipt-search-sub-ipt-custom" value="13" min="1"></label>
 				</div>
 			`).appendTo($controls);
-			$wrpCount.find(`.panel-tab-search-sub-ipt-custom`).click(function () {
-				$wrpCount.find(`.panel-tab-search-sub-ipt[value=-1]`).prop("checked", true);
+			$wrpCount.find(`.ui-search__ipt-search-sub-ipt-custom`).click(function () {
+				$wrpCount.find(`.ui-search__ipt-search-sub-ipt[value=-1]`).prop("checked", true);
 				$(this).select();
 			});
 			const getCount = () => {
 				const val = $wrpCount.find(`[name="mon-count"]`).filter(":checked").val();
-				if (val === "-1") return Number($wrpCount.find(`.panel-tab-search-sub-ipt-custom`).val());
+				if (val === "-1") return Number($wrpCount.find(`.ui-search__ipt-search-sub-ipt-custom`).val());
 				return Number(val);
 			};
 
-			const $wrpCbRoll = $(`<label class="panel-tab-search-sub-wrp"> Roll HP</label>`).appendTo($controls);
+			const $wrpCbRoll = $(`<label class="ui-search__ipt-search-sub-wrp"> Roll HP</label>`).appendTo($controls);
 			const $cbRoll = $(`<input type="checkbox">`).prop("checked", cfg.isRollHp).on("change", () => cfg.isRollHp = $cbRoll.prop("checked")).prependTo($wrpCbRoll);
-			const $results = $(`<div class="panel-tab-results"/>`).appendTo($modalInner);
+			const $results = $(`<div class="ui-search__wrp-results"/>`).appendTo($modalInner);
 
 			const showMsgIpt = () => {
 				flags.isWait = true;
-				$results.empty().append(DmScreenUtil.getSearchEnter());
+				$results.empty().append(UiUtil.getSearchEnter());
 			};
 
-			const showMsgDots = () => $results.empty().append(DmScreenUtil.getSearchLoading());
+			const showMsgDots = () => $results.empty().append(UiUtil.getSearchLoading());
 
 			const showNoResults = () => {
 				flags.isWait = true;
-				$results.empty().append(DmScreenUtil.getSearchNoResults());
+				$results.empty().append(UiUtil.getSearchNoResults());
 			};
 
 			const doSearch = () => {
@@ -760,7 +760,7 @@ class InitiativeTracker {
 
 					const get$Row = (r) => {
 						return $(`
-							<div class="panel-tab-results-row">
+							<div class="ui-search__row">
 								<span>${r.doc.n}</span>
 								<span>${r.doc.s ? `<i title="${Parser.sourceJsonToFull(r.doc.s)}">${Parser.sourceJsonToAbv(r.doc.s)}${r.doc.p ? ` p${r.doc.p}` : ""}</i>` : ""}</span>
 							</div>
@@ -779,7 +779,7 @@ class InitiativeTracker {
 
 					if (resultCount > MAX_RESULTS) {
 						const diff = resultCount - MAX_RESULTS;
-						$results.append(`<div class="panel-tab-results-row panel-tab-results-row-display-only">...${diff} more result${diff === 1 ? " was" : "s were"} hidden. Refine your search!</div>`);
+						$results.append(`<div class="ui-search__row ui-search__row--readonly">...${diff} more result${diff === 1 ? " was" : "s were"} hidden. Refine your search!</div>`);
 					}
 				} else {
 					if (!srch.trim()) showMsgIpt();
@@ -787,7 +787,7 @@ class InitiativeTracker {
 				}
 			};
 
-			DmScreenUtil.bindAutoSearch($srch, {
+			UiUtil.bindAutoSearch($srch, {
 				flags: flags,
 				search: doSearch,
 				showWait: showMsgDots
@@ -1030,8 +1030,8 @@ class InitiativeTracker {
 			$(`<button class="btn btn-warning btn-xs dm-init-row-btn dm-init-row-btn-flag" title="Add Condition" tabindex="-1"><span class="glyphicon glyphicon-flag"/></button>`)
 				.appendTo($wrpConds)
 				.on("click", () => {
-					const $modal = $(`<div class="panel-addmenu-inner dropdown-menu" style="height: initial"/>`);
-					const $wrpModal = $(`<div class="panel-addmenu">`).appendTo($(`body`)).click(() => $wrpModal.remove());
+					const $modal = $(`<div class="ui-modal__inner dropdown-menu" style="height: initial"/>`);
+					const $wrpModal = $(`<div class="ui-modal__overlay">`).appendTo($(`body`)).click(() => $wrpModal.remove());
 					$modal.appendTo($wrpModal);
 					const $modalInner = $(`<div class="modal__inner"/>`).appendTo($modal).click((evt) => evt.stopPropagation());
 
@@ -1470,6 +1470,9 @@ class InitiativeTracker {
 					}
 				}
 			}
+
+			// convert Bestiary sublist files
+			if (bestiaryList.items && bestiaryList.sources) bestiaryList.l = {items: bestiaryList.items, sources: bestiaryList.sources};
 
 			if (bestiaryList.l && bestiaryList.l.items) {
 				Promise.all(bestiaryList.l.items.map(it => {

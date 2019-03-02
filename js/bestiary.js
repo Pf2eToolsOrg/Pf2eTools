@@ -50,10 +50,6 @@ function getAllImmRest (toParse, key) {
 	return out;
 }
 
-function basename (str, sep) {
-	return str.substr(str.lastIndexOf(sep) + 1);
-}
-
 const meta = {};
 const languages = {};
 
@@ -106,7 +102,7 @@ function pPostLoad () {
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
 			.then(() => BrewUtil.bind({list}))
-			.then(BrewUtil.pAddLocalBrewData)
+			.then(() => BrewUtil.pAddLocalBrewData())
 			.catch(BrewUtil.pPurgeBrew)
 			.then(async () => {
 				BrewUtil.makeBrewButton("manage-brew");
@@ -188,22 +184,7 @@ const acFilter = new RangeFilter({header: "Armor Class"});
 const averageHpFilter = new RangeFilter({header: "Average Hit Points"});
 const typeFilter = new Filter({
 	header: "Type",
-	items: [
-		"aberration",
-		"beast",
-		"celestial",
-		"construct",
-		"dragon",
-		"elemental",
-		"fey",
-		"fiend",
-		"giant",
-		"humanoid",
-		"monstrosity",
-		"ooze",
-		"plant",
-		"undead"
-	],
+	items: Parser.MON_TYPES,
 	displayFn: StrUtil.toTitleCase
 });
 const tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst});
@@ -370,7 +351,7 @@ function pPageInit (loadedSources) {
 			if (lastRendered.isScaled) {
 				if (evt.shiftKey) ListUtil.pDoSublistAdd(History.lastLoadedId, true, 5, getScaledData());
 				else ListUtil.pDoSublistAdd(History.lastLoadedId, true, 1, getScaledData());
-			} else ListUtil._genericAddButtonHandler(evt, baseHandlerOptions);
+			} else ListUtil.genericAddButtonHandler(evt, baseHandlerOptions);
 		};
 	}
 	function subtractHandlerGenerator () {
@@ -379,7 +360,7 @@ function pPageInit (loadedSources) {
 			if (lastRendered.isScaled) {
 				if (evt.shiftKey) ListUtil.pDoSublistSubtract(History.lastLoadedId, 5, getScaledData());
 				else ListUtil.pDoSublistSubtract(History.lastLoadedId, 1, getScaledData());
-			} else ListUtil._genericSubtractButtonHandler(evt, baseHandlerOptions);
+			} else ListUtil.genericSubtractButtonHandler(evt, baseHandlerOptions);
 		};
 	}
 	ListUtil.bindAddButton(addHandlerGenerator, baseHandlerOptions);
@@ -390,7 +371,7 @@ function pPageInit (loadedSources) {
 	printBookView = new BookModeView("bookview", $(`#btn-printbook`), "If you wish to view multiple creatures, please first make a list",
 		($tbl) => {
 			return new Promise(resolve => {
-				const promises = ListUtil._genericPinKeyMapper();
+				const promises = ListUtil.genericPinKeyMapper();
 
 				Promise.all(promises).then(toShow => {
 					toShow.sort((a, b) => SortUtil.ascSort(a._displayName || a.name, b._displayName || b.name));
@@ -574,11 +555,6 @@ function getUid (name, source, scaledCr) {
 	return `${name}_${source}_${scaledCr}`.toLowerCase();
 }
 
-function _initParsed (mon) {
-	mon._pTypes = Parser.monTypeToFullObj(mon.type); // store the parsed type
-	mon._pCr = mon.cr === undefined ? "Unknown" : (mon.cr.cr || mon.cr);
-}
-
 const _NEUT_ALIGNS = ["NX", "NY"];
 const _addedHashes = new Set();
 function addMonsters (data) {
@@ -595,9 +571,9 @@ function addMonsters (data) {
 		if (_addedHashes.has(monHash)) continue;
 		_addedHashes.add(monHash);
 		if (ExcludeUtil.isExcluded(mon.name, "monster", mon.source)) continue;
-		_initParsed(mon);
+		RenderBestiary.initParsed(mon);
 		mon._fSpeedType = Object.keys(mon.speed).filter(k => mon.speed[k]);
-		if (mon._fSpeedType.length) mon._fSpeed = mon._fSpeedType.map(k => mon.speed[k]).sort((a, b) => SortUtil.ascSort(b, a))[0];
+		if (mon._fSpeedType.length) mon._fSpeed = mon._fSpeedType.map(k => mon.speed[k].number || mon.speed[k]).sort((a, b) => SortUtil.ascSort(b, a))[0];
 		else mon._fSpeed = 0;
 		if (mon.speed.canHover) mon._fSpeedType.push("hover");
 		mon._fAc = mon.ac.map(it => it.ac || it);
@@ -660,7 +636,7 @@ function addMonsters (data) {
 				}
 			});
 		}
-		if (mon.isNPC) mon._fMisc.push("Named NPC");
+		if (mon.isNpc) mon._fMisc.push("Named NPC");
 		if (mon.legendaryGroup && (meta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name]) {
 			if ((meta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name].lairActions) mon._fMisc.push("Lair Actions");
 			if ((meta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name].regionalEffects) mon._fMisc.push("Regional Effects");
@@ -747,7 +723,7 @@ function pGetSublistItem (mon, pinId, addCount, data = {}) {
 
 		pMon.then(mon => {
 			const subHash = data.scaled ? `${HASH_PART_SEP}${MON_HASH_SCALED}${HASH_SUB_KV_SEP}${data.scaled}` : "";
-			_initParsed(mon);
+			RenderBestiary.initParsed(mon);
 
 			resolve(`
 				<li class="row row--bestiary_sublist" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
@@ -844,73 +820,7 @@ function renderStatblock (mon, isScaled) {
 			.click(() => History.setSubhash(MON_HASH_SCALED, null))
 			.toggle(isScaled);
 
-		$(`
-		${EntryRenderer.utils.getBorderTr()}
-		<tr><th class="name mon__name--token" colspan="6">Name <span class="source" title="Source book">SRC</span></th></tr>
-		<tr><td colspan="6" class="mon__size-type-alignment">
-			<i>${Parser.sizeAbvToFull(mon.size)} ${mon._pTypes.asText}, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}</i>
-		</td></tr>
-		<tr><td class="divider" colspan="6"><div></div></td></tr>
-		
-		<tr><td colspan="6"><strong>Armor Class</strong> ${Parser.acToFull(mon.ac)}</td></tr>
-		<tr><td colspan="6"><div class="mon__wrp_hp"><strong>Hit Points</strong> ${EntryRenderer.monster.getRenderedHp(mon.hp)}</div></td></tr>
-		<tr><td colspan="6"><strong>Speed</strong> ${Parser.getSpeedString(mon)}</td></tr>
-		<tr><td class="divider" colspan="6"><div></div></td></tr>
-		
-		<tr class="mon__ability-names">
-			<th>STR</th><th>DEX</th><th>CON</th><th>INT</th><th>WIS</th><th>CHA</th>
-		</tr>
-		<tr class="mon__ability-scores">
-			<td>${EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${Parser.getAbilityModifier(mon.str)}|${mon.str} (${Parser.getAbilityModifier(mon.str)})|Strength}`)}</td>
-			<td>${EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${Parser.getAbilityModifier(mon.dex)}|${mon.dex} (${Parser.getAbilityModifier(mon.dex)})|Dexterity}`)}</td>
-			<td>${EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${Parser.getAbilityModifier(mon.con)}|${mon.con} (${Parser.getAbilityModifier(mon.con)})|Constitution}`)}</td>
-			<td>${EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${Parser.getAbilityModifier(mon.int)}|${mon.int} (${Parser.getAbilityModifier(mon.int)})|Intelligence}`)}</td>
-			<td>${EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${Parser.getAbilityModifier(mon.wis)}|${mon.wis} (${Parser.getAbilityModifier(mon.wis)})|Wisdom}`)}</td>
-			<td>${EntryRenderer.getDefaultRenderer().renderEntry(`{@d20 ${Parser.getAbilityModifier(mon.cha)}|${mon.cha} (${Parser.getAbilityModifier(mon.cha)})|Charisma}`)}</td>
-		</tr>
-		<tr><td class="divider" colspan="6"><div></div></td></tr>
-		
-		${mon.save ? `<tr><td colspan="6"><strong>Saving Throws</strong> ${Object.keys(mon.save).map(it => EntryRenderer.monster.getSave(renderer, it, mon.save[it])).join(", ")}</td></tr>` : ""}
-		${mon.skill ? `<tr><td colspan="6"><strong>Skills</strong> ${EntryRenderer.monster.getSkillsString(renderer, mon)}</td></tr>` : ""}
-		${mon.vulnerable ? `<tr><td colspan="6"><strong>Damage Vulnerabilities</strong> ${Parser.monImmResToFull(mon.vulnerable)}</td></tr>` : ""}
-		${mon.resist ? `<tr><td colspan="6"><strong>Damage Resistances</strong> ${Parser.monImmResToFull(mon.resist)}</td></tr>` : ""}
-		${mon.immune ? `<tr><td colspan="6"><strong>Damage Immunities</strong> ${Parser.monImmResToFull(mon.immune)}</td></tr>` : ""}
-		${mon.conditionImmune ? `<tr><td colspan="6"><strong>Condition Immunities</strong> ${Parser.monCondImmToFull(mon.conditionImmune)}</td></tr>` : ""}
-		<tr><td colspan="6"><strong>Senses</strong> ${mon.senses ? `${EntryRenderer.monster.getRenderedSenses(mon.senses)},` : ""} passive Perception ${mon.passive || "\u2014"}</td></tr>
-		<tr><td colspan="6"><strong>Languages</strong> ${mon.languages || "\u2014"}</td></tr>
-		
-		<tr><td colspan="6" style="position: relative;"><strong>Challenge</strong>
-			<span>${Parser.monCrToFull(mon.cr)}</span>
-			<div data-r="$btnScaleCr"/>
-			<div data-r="$btnResetScaleCr"/>
-		</td></tr>
-		
-		<tr id="traits"><td class="divider" colspan="6"><div></div></td></tr>
-		<tr id="actions"><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Actions</span></td></tr>
-		<tr id="reactions"><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Reactions</span></td></tr>
-		<tr id="legendaries"><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Legendary Actions</span></td></tr>
-		<tr id="lairactions"><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Lair Actions</span></td></tr>
-		<tr id="regionaleffects"><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Regional Effects</span></td></tr>
-		
-		<tr id="variants"></tr>
-		<tr id="source"></tr>
-		${EntryRenderer.utils.getBorderTr()}
-		`).swap({$btnScaleCr, $btnResetScaleCr}).appendTo($content);
-
-		let renderStack = [];
-		const displayName = mon._displayName || mon.name;
-		const source = Parser.sourceJsonToAbv(mon.source);
-		const sourceFull = Parser.sourceJsonToFull(mon.source);
-
-		function getPronunciationButton () {
-			return `<button class="btn btn-xs btn-default btn-name-pronounce">
-				<span class="glyphicon glyphicon-volume-up name-pronounce-icon"></span>
-				<audio class="name-pronounce">
-				   <source src="${mon.soundClip}" type="audio/mpeg">
-				   <source src="audio/bestiary/${basename(mon.soundClip, '/')}" type="audio/mpeg">
-				</audio>
-			</button>`;
-		}
+		$content.append(RenderBestiary.$getRenderedCreature(mon, meta, {$btnScaleCr, $btnResetScaleCr}));
 
 		const $floatToken = $(`#float-token`).empty();
 		if (mon.tokenUrl || !mon.uniqueId) {
@@ -922,115 +832,12 @@ function renderStatblock (mon, isScaled) {
 			);
 		} else imgError();
 
-		$content.find(".mon__name--token").html(
-			`<span class="stats-name copyable" onclick="EntryRenderer.utils._pHandleNameClick(this, '${mon.source.escapeQuotes()}')">${displayName}</span>
-			${mon.soundClip ? getPronunciationButton() : ""}
-			<span class="stats-source ${Parser.sourceJsonToColor(mon.source)}" title="${sourceFull}${EntryRenderer.utils.getSourceSubText(mon)}">${source}</span>`
-		);
-
-		// TODO most of this could be rolled into the string template above
-
-		let trait = EntryRenderer.monster.getOrderedTraits(mon, renderer);
-		if (trait) renderSection("trait", trait, 1);
-
-		const action = mon.action;
-		$content.find("tr#actions").hide();
-		if (action) renderSection("action", action, 1);
-
-		const reaction = mon.reaction;
-		$content.find("tr#reactions").hide();
-		if (reaction) renderSection("reaction", reaction, 1);
-
-		const dragonVariant = EntryRenderer.monster.getDragonCasterVariant(renderer, mon);
-		const variants = mon.variant;
-		const variantSect = $content.find(`#variants`);
-		if (!variants && !dragonVariant) variantSect.hide();
-		else {
-			const rStack = [];
-			(variants || []).forEach(v => renderer.recursiveEntryRender(v, rStack));
-			if (dragonVariant) rStack.push(dragonVariant);
-			variantSect.html(`<td colspan=6>${rStack.join("")}</td>`);
-			variantSect.show();
-		}
-
-		const srcCpy = {
-			source: mon.source,
-			sourceSub: mon.sourceSub,
-			page: mon.page,
-			otherSources: mon.otherSources,
-			additionalSources: mon.additionalSources,
-			externalSources: mon.externalSources
-		};
-		const additional = mon.additionalSources ? JSON.parse(JSON.stringify(mon.additionalSources)) : [];
-		if (mon.variant && mon.variant.length > 1) {
-			mon.variant.forEach(v => {
-				if (v.variantSource) {
-					additional.push({
-						source: v.variantSource.source,
-						page: v.variantSource.page
-					})
-				}
-			})
-		}
-		srcCpy.additionalSources = additional;
-		const $trSource = $content.find(`#source`);
-		const $tdSource = $(EntryRenderer.utils.getPageTr(srcCpy));
-		$trSource.append($tdSource);
-		if (mon.environment && mon.environment.length) {
-			$tdSource.attr("colspan", 4);
-			$trSource.append(`<td colspan="2" class="text-align-right mr-2"><i>Environment: ${mon.environment.sort(SortUtil.ascSortLower).map(it => it.toTitleCase()).join(", ")}</i></td>`)
-		}
-
-		const legendary = mon.legendary;
-		$content.find("tr#legendaries").hide();
-		if (legendary) {
-			renderSection("legendary", legendary, 1);
-			$content.find("tr#legendaries").after(`<tr class='legendary'><td colspan='6' class='legendary'><span class='name'></span> <span>${EntryRenderer.monster.getLegendaryActionIntro(mon)}</span></td></tr>`);
-		}
-
-		const legGroup = mon.legendaryGroup;
-		$content.find("tr#lairactions").hide();
-		$content.find("tr#regionaleffects").hide();
-		if (legGroup) {
-			const thisGroup = (meta[legGroup.source] || {})[legGroup.name];
-			if (thisGroup.lairActions) renderSection("lairaction", thisGroup.lairActions, -1);
-			if (thisGroup.regionalEffects) renderSection("regionaleffect", thisGroup.regionalEffects, -1);
-		}
-
-		function renderSection (sectionTrClass, sectionEntries, sectionLevel) {
-			let pluralSectionTrClass = sectionTrClass === `legendary` ? `legendaries` : `${sectionTrClass}s`;
-			$content.find(`tr#${pluralSectionTrClass}`).show();
-			renderStack = [];
-			if (sectionTrClass === "legendary") {
-				const cpy = MiscUtil.copy(sectionEntries).map(it => {
-					if (it.name && it.entries) {
-						it.name = `${it.name}.`;
-						it.type = it.type || "item";
-					}
-					return it;
-				});
-				const toRender = {type: "list", style: "list-hang-notitle", items: cpy};
-				renderer.recursiveEntryRender(toRender, renderStack, sectionLevel);
-			} else {
-				sectionEntries.forEach(e => {
-					if (e.rendered) renderStack.push(e.rendered);
-					else renderer.recursiveEntryRender(e, renderStack, sectionLevel + 1);
-				});
-			}
-			$content.find(`tr#${pluralSectionTrClass}`).after(`<tr class='${sectionTrClass}'><td colspan='6' class="mon__sect-row-inner">${renderStack.join("")}</td></tr>`);
-		}
-
-		// add click links for rollables
-		$content.find(".mon__ability-scores td").each(function () {
-			$(this).wrapInner(`<span class="roller" data-roll="1d20${$(this).children(".mod").html()}" title="${Parser.attAbvToFull($(this).prop("id"))}"></span>`);
-		});
-
+		// inline rollers //////////////////////////////////////////////////////////////////////////////////////////////
 		const isProfDiceMode = PROF_DICE_MODE === PROF_MODE_DICE;
 		function _addSpacesToDiceExp (exp) {
 			return exp.replace(/([^0-9d])/gi, " $1 ").replace(/\s+/g, " ");
 		}
-		// inline rollers
-		// /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
 		// this is not 100% accurate; for example, ghouls don't get their prof bonus on bite attacks
 		// fixing it would probably involve machine learning though; we need an AI to figure it out on-the-fly

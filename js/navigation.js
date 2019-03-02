@@ -98,6 +98,7 @@ class NavBar {
 		addLi(ulUtils, "inittrackerplayerview.html", "Initiative Tracker Player View");
 		addLi(ulUtils, "managebrew.html", "Manage All Homebrew");
 		addDivider(ulUtils);
+		addLi(ulUtils, "makebrew.html", "Homebrew Builder");
 		addLi(ulUtils, "demo.html", "Renderer Demo");
 		addLi(ulUtils, "converter.html", "Text Converter");
 		addDivider(ulUtils);

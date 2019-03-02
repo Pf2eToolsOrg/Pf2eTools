@@ -27,6 +27,8 @@ $link-blue: #337ab7;
 $border-grey: #ccc;
 $border-grey--trans: #cccccca0;
 
+$modal-overlay-grey: #45454588;
+
 /* Z-Indices */
 $z-token-image: 10;
 
@@ -120,6 +122,12 @@ $z-temp-effect: 2000;
 	justify-content: space-between;
 }
 
+.split-v-center {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 .split-child {
 	width: 50%;
 	flex-shrink: 0;
@@ -141,10 +149,21 @@ $z-temp-effect: 2000;
 	align-items: center;
 }
 
+.flex-v-baseline {
+	display: flex;
+	align-items: baseline;
+}
+
 .flex-vh-center {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.flex-vh-center-around {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 
 .flex-inline-v-center {
@@ -262,12 +281,14 @@ body::-webkit-scrollbar {
 	&wrp {
 		position: fixed;
 		z-index: $z-modal-wrapper;
+		top: 0;
+		left: 0;
 		width: 100vw;
 		height: 100vh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: rgba(69, 69, 69, 0.51);
+		background-color: $modal-overlay-grey;
 	}
 
 	&outer {
@@ -289,6 +310,218 @@ body::-webkit-scrollbar {
 		width: 100%;
 		height: 100%;
 	}
+}
+
+.ui-modal__overlay {
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $modal-overlay-grey;
+}
+
+.ui-modal__inner {
+	position: relative;
+	z-index: $z-modal-inner;
+	top: initial;
+	left: initial;
+	margin: 60px auto;
+	padding: 5px 10px;
+	height: 400px;
+	float: none;
+	display: flex;
+	flex-direction: column;
+	min-width: 600px;
+
+	@media (max-width: 767px) {
+		min-width: 0;
+	}
+
+	@media (min-width: 768px) {
+		max-width: 750px;
+	}
+
+	@media (min-width: 992px) {
+		max-width: 970px;
+	}
+
+	@media (min-width: 1200px) {
+		max-width: 1170px;
+	}
+}
+
+.ui-modal__inner--modal {
+	height: initial;
+	max-height: 400px;
+}
+
+.ui-modal__inner--large {
+	width: 100%;
+	max-height: 90vh;
+}
+
+.ui-modal__scroller {
+	height: 100%;
+	width: 100%;
+	min-height: 0;
+	overflow-y: auto;
+}
+
+.ui-modal__row {
+	margin-bottom: 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: initial;
+	min-height: 30px;
+}
+
+.ui-modal__row--cb {
+	padding: 0 3px;
+	border-radius: 3px;
+
+	&:hover {
+		background: whitesmoke;
+	}
+
+	input[type=checkbox] {
+		margin: 0;
+	}
+}
+
+.ui-modal__row--stats-header {
+	min-height: initial;
+	font-weight: bold;
+	font-size: 12px;
+	margin-bottom: 0;
+}
+
+.ui-modal__row--stats {
+	flex-direction: column;
+}
+
+.ui-modal__row:first-of-type {
+	margin-top: -1px;
+}
+
+.ui-modal__row-sep {
+	height: 1px;
+	width: calc(100% - 12px);
+	margin: 2px 2px 7px;
+	background: $border-grey;
+}
+
+.ui-modal__row > * {
+	margin-right: 5px;
+}
+
+.ui-modal__row > *:last-child {
+	margin-right: 0;
+}
+
+.ui-search__wrp-output {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.ui-search__wrp-controls {
+	width: 100%;
+	display: flex;
+	z-index: 10002;
+
+	&--in-tabs {
+		margin-top: -1px;
+	}
+}
+
+.ui-search__wrp-results {
+	position: relative;
+	padding: 3px;
+	transform: translateZ(0);
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	font-size: 0.8em;
+}
+
+.ui-search__row {
+	cursor: pointer;
+	font-weight: bold;
+	padding: 1px 2px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.ui-search__sel-category {
+	border-radius: 0;
+	max-width: 180px;
+	flex-shrink: 0;
+	border-right: 0;
+}
+
+input.ui-search__ipt-search {
+	border-radius: 0;
+	width: 100%;
+}
+
+.ui-search__ipt-search-sub-wrp {
+	flex-shrink: 0;
+	margin-bottom: 0;
+	padding: 5px;
+	font-weight: normal;
+	border: 1px solid #ccc;
+	height: 34px;
+	border-left: 0;
+	display: flex;
+}
+
+.ui-search__ipt-search-sub-lbl {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+.ui-search__ipt-search-sub-lbl:not(:last-child) {
+	margin-right: 7px;
+}
+
+input.ui-search__ipt-search-sub-ipt[type=radio] {
+	display: inline-block;
+	margin: 0 3px 0 0;
+}
+
+input.ui-search__ipt-search-sub-ipt-custom[type=number]::-webkit-inner-spin-button {
+	margin: 0;
+	/* stylelint-disable-next-line property-no-vendor-prefix */
+	-webkit-appearance: none;
+}
+
+.ui-search__ipt-search-sub-ipt-custom {
+	max-width: 50px;
+	border-radius: 0;
+	margin-right: -1px;
+	border-right-color: #e0e0e0;
+	border-left-color: #e0e0e0;
+}
+
+.ui-search__message {
+	font-size: 1.4rem;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Andada', serif;
+	font-variant: small-caps;
+	font-weight: 500;
 }
 
 #legal-notice {
@@ -405,17 +638,6 @@ body::-webkit-scrollbar {
 
 	&__row {
 		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 5px;
-	}
-
-	&__row--alt {
-		width: 100%;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
 		margin-bottom: 5px;
 	}
 
@@ -427,7 +649,7 @@ body::-webkit-scrollbar {
 	}
 
 	&__row__divider {
-		background: $border-grey;
+		background: $border-grey--trans;
 
 		height: 1px;
 		width: calc(100% - 16px);
@@ -1033,7 +1255,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 .homebrew-overlay {
 	position: fixed;
 	z-index: $z-modal-wrapper;
-	background-color: rgba(69, 69, 69, 0.51);
+	background-color: $modal-overlay-grey;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -1232,10 +1454,6 @@ footer {
 
 .float-end {
 	float: none;
-}
-
-input.search {
-	width: 62%;
 }
 
 .filtertools,
@@ -2181,10 +2399,6 @@ table.stats.stats-book table.printbook-bestiary-entry {
 	border: 1px solid $border-grey;
 }
 
-.panel-addmenu {
-	background-color: rgba(69, 69, 69, 0.51);
-}
-
 .panel-addmenu-tab-head[active='true'] {
 	background-color: #e6e6e6;
 	border-color: #adadad;
@@ -2216,16 +2430,12 @@ table.stats.stats-book table.printbook-bestiary-entry {
 	border-top: 1px solid $border-grey;
 }
 
-.panel-tab-results-row {
+.ui-search__row {
 	border-bottom: 1px solid #ddd;
 }
 
 .panel-content-wrapper-inner td div.border {
 	background-color: $name-red;
-}
-
-.tab-body-row-sep {
-	background: $border-grey;
 }
 
 .panel-history-control-remove {
@@ -2327,8 +2537,8 @@ table.stats.stats-book table.printbook-bestiary-entry {
 		text-align: center;
 	}
 
-	.initp_h_stat,
-	.initp_r_stat {
+	&h_stat,
+	&r_stat {
 		width: 40px;
 		text-align: center;
 		flex-shrink: 0;
@@ -2524,7 +2734,7 @@ select.input-xs {
 
 .form-control--minimal {
 	border-radius: 0;
-	padding: 0 1px;
+	padding: 0 2px;
 }
 
 .flex-label {
@@ -3223,9 +3433,42 @@ select.input-xs {
 	margin-bottom: $spacer * 3 !important;
 }
 
+.mb-0 {
+	margin-bottom: 0 !important;
+}
+
+.mt-1 {
+	margin-top: ($spacer * 0.25) !important;
+}
+
+.mt-2 {
+	margin-top: ($spacer * 0.5) !important;
+}
+
+.mt-3 {
+	margin-top: $spacer !important;
+}
+
+.mt-4 {
+	margin-top: $spacer * 1.5 !important;
+}
+
+.mt-5 {
+	margin-top: $spacer * 3 !important;
+}
+
+.mx-2 {
+	margin-right: ($spacer * 0.5) !important;
+	margin-left: ($spacer * 0.5) !important;
+}
+
 .my-3 {
 	margin-top: $spacer !important;
 	margin-bottom: $spacer !important;
+}
+
+.ml-auto {
+	margin-left: auto !important;
 }
 
 .ml-1 {
@@ -3248,6 +3491,10 @@ select.input-xs {
 	margin-right: $spacer !important;
 }
 
+.mr-4 {
+	margin-right: $spacer * 1.5 !important;
+}
+
 .px-2 {
 	padding-right: ($spacer * 0.5) !important;
 	padding-left: ($spacer * 0.5) !important;
@@ -3256,6 +3503,18 @@ select.input-xs {
 .px-4 {
 	padding-right: ($spacer * 1.5) !important;
 	padding-left: ($spacer * 1.5) !important;
+}
+
+.p-2 {
+	padding: ($spacer * 0.5) !important;
+}
+
+.pr-1 {
+	padding-right: ($spacer * 0.25) !important;
+}
+
+.pr-2 {
+	padding-right: ($spacer * 0.5) !important;
 }
 
 .dropdown-menu > li > a.dropdown-ext-link {
@@ -3708,17 +3967,11 @@ input[type=checkbox].readonly {
 	text-decoration: none;
 
 	&.bk__contents_header_link {
-		margin-right: 28px;
-		height: 19px;
+		padding: 0;
 	}
 
 	&.bk__contents_show_all {
-		position: absolute;
-		top: 1px;
-		right: 0;
-		height: 19px;
-		width: 28px;
-		padding: 0 8px;
+		padding: 0;
 	}
 }
 
@@ -4476,23 +4729,38 @@ tr.legendary td {
 	color: black;
 }
 
-.bk__nav-head-foot-item {
-	min-width: 75px;
-}
+.bk__ {
+	&contents-header {
+		color: inherit;
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+		margin-top: -1px;
+		padding: 1px 9px 1px 5px;
+		text-decoration: none;
+		border-bottom: 1px solid #ddd;
+		border-top: 1px solid #ddd;
+		justify-content: space-between;
+	}
 
-.bk__to-top {
-	display: none;
+	&nav-head-foot-item {
+		min-width: 75px;
+	}
 
-	&--scrolled {
-		display: block;
-		position: fixed;
-		z-index: $z-omnisearch;
-		top: 42px;
-		right: 10px;
-		padding: 2px 0;
+	&to-top {
+		display: none;
 
-		@media (max-width: 768px) {
-			display: none;
+		&--scrolled {
+			display: block;
+			position: fixed;
+			z-index: $z-omnisearch;
+			top: 42px;
+			right: 10px;
+			padding: 2px 0;
+
+			@media (max-width: 768px) {
+				display: none;
+			}
 		}
 	}
 }
@@ -4740,7 +5008,7 @@ table.stats tr.homebrew-hover {
 	position: fixed;
 	z-index: $z-temp-effect;
 	top: -50px;
-	height: 40px;
+	min-height: 40px;
 	min-width: 600px;
 	max-width: 850px;
 	display: flex;
@@ -4926,11 +5194,16 @@ table.stats tr.homebrew-hover {
 		border-color: $link-blue;
 	}
 
-	.btn-default:active:focus,
-	.btn-default:active:hover,
-	.btn-default {
+	.btn-default,
+	.btn-default:hover,
+	.btn-default:focus {
 		background-color: transparent;
 		color: $font-color;
+	}
+
+	.btn-default.active {
+		background-color: #444;
+		box-shadow: inset 0 3px 5px #000c;
 	}
 
 	.btn-nowrap {
@@ -4950,9 +5223,12 @@ table.stats tr.homebrew-hover {
 			color: $font-color;
 		}
 
-		&:not(.active) > a:hover {
-			background-color: #383838;
-			color: white;
+		&:not(.active) > a {
+			&:focus,
+			&:hover {
+				background-color: #383838;
+				color: white;
+			}
 		}
 	}
 
@@ -4960,6 +5236,11 @@ table.stats tr.homebrew-hover {
 	input {
 		background-color: transparent;
 		color: $font-color;
+	}
+
+	select option {
+		color: $font-color;
+		background: $bg-color;
 	}
 
 	/* Bootstrap overrides */
@@ -5534,7 +5815,7 @@ table.stats tr.homebrew-hover {
 		color: $class-main-color;
 	}
 
-	.tab-body-row-sep {
+	.ui-modal__row-sep {
 		background: #999;
 	}
 
@@ -5624,7 +5905,7 @@ table.stats tr.homebrew-hover {
 
 	/* side menu */
 	.sidemenu__row__divider {
-		background: #999;
+		background: #9998;
 	}
 
 	.sidemenu {
@@ -5643,6 +5924,12 @@ table.stats tr.homebrew-hover {
 	/* player init tracker */
 	.initp__r--active {
 		background: #8dc1ff20;
+	}
+	/* *** */
+
+	/* generic UI */
+	.ui-modal__row--cb:hover {
+		background: #383838;
 	}
 	/* *** */
 }

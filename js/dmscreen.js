@@ -188,8 +188,7 @@ class Board {
 	}
 
 	async pLoadIndex () {
-		elasticlunr.clearStopWords();
-		await EntryRenderer.item.populatePropertyAndTypeReference();
+		await SearchUiUtil.pDoGlobalInit();
 
 		// rules
 		await (async () => {
@@ -259,78 +258,31 @@ class Board {
 		await pDoBuildAdvantureOrAdventureIndex(`data/books.json`, "book", this.availBooks, "b");
 
 		// search
-		await (async () => {
-			const data = await DataUtil.loadJSON("search/index.json");
+		this.availContent = await SearchUiUtil.pGetContentIndices();
 
-			function hasBadCat (d) {
-				return d.c === Parser.CAT_ID_ADVENTURE || d.c === Parser.CAT_ID_CLASS || d.c === Parser.CAT_ID_QUICKREF || d.c === Parser.CAT_ID_CLASS_FEATURE;
-			}
+		// add tabs
+		const omniTab = new AddMenuSearchTab(this.availContent);
+		const ruleTab = new AddMenuSearchTab(this.availRules, "rules");
+		const adventureTab = new AddMenuSearchTab(this.availAdventures, "adventures");
+		const bookTab = new AddMenuSearchTab(this.availBooks, "books");
+		const embedTab = new AddMenuVideoTab();
+		const imageTab = new AddMenuImageTab();
+		const specialTab = new AddMenuSpecialTab();
 
-			function fromDeepIndex (d) {
-				return d.d; // flag for "deep indexed" content that refers to the same item
-			}
+		this.menu
+			.addTab(omniTab)
+			.addTab(ruleTab)
+			.addTab(adventureTab)
+			.addTab(bookTab)
+			.addTab(imageTab)
+			.addTab(embedTab)
+			.addTab(specialTab);
 
-			this.availContent.ALL = elasticlunr(function () {
-				this.addField("n");
-				this.addField("s");
-				this.setRef("id");
-			});
-			SearchUtil.removeStemmer(this.availContent.ALL);
-			// Add main site index
-			let ixMax = 0;
-			data.forEach(d => {
-				if (hasBadCat(d) || fromDeepIndex(d)) return;
-				d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
-				if (!this.availContent[d.cf]) {
-					this.availContent[d.cf] = elasticlunr(function () {
-						this.addField("n");
-						this.addField("s");
-						this.setRef("id");
-					});
-					SearchUtil.removeStemmer(this.availContent[d.cf]);
-				}
-				this.availContent.ALL.addDoc(d);
-				this.availContent[d.cf].addDoc(d);
-				ixMax = Math.max(ixMax, d.id);
-			});
+		this.menu.render();
 
-			// Add homebrew
-			Omnisearch.highestId = Math.max(ixMax, Omnisearch.highestId);
+		this.sideMenu.render();
 
-			const brewIndex = await BrewUtil.pGetSearchIndex();
-
-			brewIndex.forEach(d => {
-				if (hasBadCat(d) || fromDeepIndex(d)) return;
-				d.cf = Parser.pageCategoryToFull(d.c);
-				d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
-				this.availContent.ALL.addDoc(d);
-				this.availContent[d.cf].addDoc(d);
-			});
-
-			// add tabs
-			const omniTab = new AddMenuSearchTab(this.availContent);
-			const ruleTab = new AddMenuSearchTab(this.availRules, "rules");
-			const adventureTab = new AddMenuSearchTab(this.availAdventures, "adventures");
-			const bookTab = new AddMenuSearchTab(this.availBooks, "books");
-			const embedTab = new AddMenuVideoTab();
-			const imageTab = new AddMenuImageTab();
-			const specialTab = new AddMenuSpecialTab();
-
-			this.menu
-				.addTab(omniTab)
-				.addTab(ruleTab)
-				.addTab(adventureTab)
-				.addTab(bookTab)
-				.addTab(imageTab)
-				.addTab(embedTab)
-				.addTab(specialTab);
-
-			this.menu.render();
-
-			this.sideMenu.render();
-
-			this.doHideLoading();
-		})();
+		this.doHideLoading();
 	}
 
 	getPanel (x, y) {
@@ -543,13 +495,13 @@ class SideMenu {
 	render () {
 		const renderDivider = () => this.$mnu.append(`<hr class="sidemenu__row__divider">`);
 
-		const $wrpResizeW = $(`<div class="sidemenu__row"><div class="sidemenu__row__label">Width</div></div>`).appendTo(this.$mnu);
+		const $wrpResizeW = $(`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Width</div></div>`).appendTo(this.$mnu);
 		const $iptWidth = $(`<input class="form-control" type="number" value="${this.board.width}">`).appendTo($wrpResizeW);
 		this.$iptWidth = $iptWidth;
-		const $wrpResizeH = $(`<div class="sidemenu__row"><div class="sidemenu__row__label">Height</div></div>`).appendTo(this.$mnu);
+		const $wrpResizeH = $(`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Height</div></div>`).appendTo(this.$mnu);
 		const $iptHeight = $(`<input class="form-control" type="number" value="${this.board.height}">`).appendTo($wrpResizeH);
 		this.$iptHeight = $iptHeight;
-		const $wrpSetDim = $(`<div class="sidemenu__row"/>`).appendTo(this.$mnu);
+		const $wrpSetDim = $(`<div class="sidemenu__row split-v-center"/>`).appendTo(this.$mnu);
 		const $btnSetDim = $(`<button class="btn btn-primary" style="width: 100%;">Set Dimensions</div>`).appendTo($wrpSetDim);
 		$btnSetDim.on("click", () => {
 			const w = Number($iptWidth.val());
@@ -559,7 +511,7 @@ class SideMenu {
 		});
 		renderDivider();
 
-		const $wrpFullscreen = $(`<div class="sidemenu__row--alt"></div>`).appendTo(this.$mnu);
+		const $wrpFullscreen = $(`<div class="sidemenu__row flex-vh-center-around"></div>`).appendTo(this.$mnu);
 		const $btnFullscreen = $(`<button class="btn btn-primary">Toggle Fullscreen</button>`).appendTo($wrpFullscreen);
 		this.board.$btnFullscreen = $btnFullscreen;
 		$btnFullscreen.on("click", () => {
@@ -587,7 +539,7 @@ class SideMenu {
 		renderDivider();
 
 		const $wrpSaveLoad = $(`<div class="sidemenu__row--vert"/>`).appendTo(this.$mnu);
-		const $wrpSaveLoadFile = $(`<div class="sidemenu__row--alt"/>`).appendTo($wrpSaveLoad);
+		const $wrpSaveLoadFile = $(`<div class="sidemenu__row flex-vh-center-around"/>`).appendTo($wrpSaveLoad);
 		const $btnSaveFile = $(`<button class="btn btn-primary">Save to File</button>`).appendTo($wrpSaveLoadFile);
 		$btnSaveFile.on("click", () => {
 			DataUtil.userDownload(`dm-screen`, this.board.getSaveableState());
@@ -599,7 +551,7 @@ class SideMenu {
 				this.board.doLoadStateFrom(json);
 			});
 		});
-		const $wrpSaveLoadUrl = $(`<div class="sidemenu__row--alt"/>`).appendTo($wrpSaveLoad);
+		const $wrpSaveLoadUrl = $(`<div class="sidemenu__row flex-vh-center-around"/>`).appendTo($wrpSaveLoad);
 		const $btnSaveLink = $(`<button class="btn btn-primary">Save to URL</button>`).appendTo($wrpSaveLoadUrl);
 		$btnSaveLink.on("click", async () => {
 			const encoded = `${window.location.href.split("#")[0]}#${encodeURIComponent(JSON.stringify(this.board.getSaveableState()))}`;
@@ -608,11 +560,11 @@ class SideMenu {
 		});
 		renderDivider();
 
-		const $wrpCbConfirm = $(`<div class="sidemenu__row"><label class="sidemenu__row__label sidemenu__row__label--cb-label"><span>Confirm on Tab Close</span></label></div>`).appendTo(this.$mnu);
+		const $wrpCbConfirm = $(`<div class="sidemenu__row split-v-center"><label class="sidemenu__row__label sidemenu__row__label--cb-label"><span>Confirm on Tab Close</span></label></div>`).appendTo(this.$mnu);
 		this.board.$cbConfirmTabClose = $(`<input type="checkbox" class="sidemenu__row__label__cb">`).appendTo($wrpCbConfirm.find(`label`));
 		renderDivider();
 
-		const $wrpReset = $(`<div class="sidemenu__row"/>`).appendTo(this.$mnu);
+		const $wrpReset = $(`<div class="sidemenu__row split-v-center"/>`).appendTo(this.$mnu);
 		const $btnReset = $(`<button class="btn btn-danger" style="width: 100%;">Reset Screen</button>`).appendTo($wrpReset);
 		$btnReset.on("click", () => {
 			if (window.confirm("Are you sure?")) {
@@ -633,7 +585,7 @@ class SideMenu {
 		this.board.exiledPanels.forEach(p => p.get$ContentWrapper().detach());
 		this.$wrpHistory.children().remove();
 		if (this.board.exiledPanels.length) {
-			const $wrpHistHeader = $(`<div class="sidemenu__row"><span style="font-variant: small-caps;">Recently Removed</span></div>`).appendTo(this.$wrpHistory);
+			const $wrpHistHeader = $(`<div class="sidemenu__row split-v-center"><span style="font-variant: small-caps;">Recently Removed</span></div>`).appendTo(this.$wrpHistory);
 			const $btnHistClear = $(`<button class="btn btn-danger">Clear</button>`).appendTo($wrpHistHeader);
 			$btnHistClear.on("click", () => {
 				this.board.exiledPanels = [];
@@ -771,7 +723,8 @@ class Panel {
 					const page = saved.c.p;
 					const source = saved.c.s;
 					const hash = saved.c.u;
-					p.doPopulate_Stats(page, source, hash, skipSetTab); // FIXME skipSetTab is never used
+					p.doPopulate_Stats(page, source, hash, skipSetTab, saved.r);
+					handleTabRenamed(p);
 					return p;
 				}
 				case PANEL_TYP_CREATURE_SCALED_CR: {
@@ -779,49 +732,59 @@ class Panel {
 					const source = saved.c.s;
 					const hash = saved.c.u;
 					const cr = saved.c.cr;
-					p.doPopulate_StatsScaledCr(page, source, hash, cr, skipSetTab); // FIXME skipSetTab is never used
+					p.doPopulate_StatsScaledCr(page, source, hash, cr, skipSetTab, saved.r);
+					handleTabRenamed(p);
 					return p;
 				}
 				case PANEL_TYP_RULES: {
 					const book = saved.c.b;
 					const chapter = saved.c.c;
 					const header = saved.c.h;
-					p.doPopulate_Rules(book, chapter, header, skipSetTab); // FIXME skipSetTab is never used
+					p.doPopulate_Rules(book, chapter, header, skipSetTab, saved.r);
+					handleTabRenamed(p);
 					return p;
 				}
 				case PANEL_TYP_ADVENTURES: {
 					const adventure = saved.c.a;
 					const chapter = saved.c.c;
-					p.doPopulate_Adventures(adventure, chapter, skipSetTab); // FIXME skipSetTab is never used
+					p.doPopulate_Adventures(adventure, chapter, skipSetTab, saved.r);
+					handleTabRenamed(p);
 					return p;
 				}
 				case PANEL_TYP_BOOKS: {
 					const book = saved.c.b;
 					const chapter = saved.c.c;
-					p.doPopulate_Books(book, chapter, skipSetTab); // FIXME skipSetTab is never used
+					p.doPopulate_Books(book, chapter, skipSetTab, saved.r);
+					handleTabRenamed(p);
 					return p;
 				}
 				case PANEL_TYP_ROLLBOX:
-					EntryRenderer.dice.bindDmScreenPanel(p);
+					EntryRenderer.dice.bindDmScreenPanel(p, saved.r);
+					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_TEXTBOX:
 					p.doPopulate_TextBox(saved.s.x, saved.r);
 					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_INITIATIVE_TRACKER:
-					p.doPopulate_InitiativeTracker(saved.s);
+					p.doPopulate_InitiativeTracker(saved.s, saved.r);
+					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_INITIATIVE_TRACKER_PLAYER:
-					p.doPopulate_InitiativeTrackerPlayer(saved.s);
+					p.doPopulate_InitiativeTrackerPlayer(saved.s, saved.r);
+					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_UNIT_CONVERTER:
-					p.doPopulate_UnitConverter(saved.s);
+					p.doPopulate_UnitConverter(saved.s, saved.r);
+					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_MONEY_CONVERTER:
-					p.doPopulate_MoneyConverter(saved.s);
+					p.doPopulate_MoneyConverter(saved.s, saved.r);
+					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_SUNDIAL:
-					p.doPopulate_Sundial(saved.s);
+					p.doPopulate_Sundial(saved.s, saved.r);
+					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_TUBE:
 					p.doPopulate_YouTube(saved.c.u, saved.r);
@@ -860,7 +823,7 @@ class Panel {
 	}
 
 	static _get$eleLoading (message = "Loading") {
-		return $(`<div class="panel-content-wrapper-inner"><div class="panel-tab-message loading-spinner"><i>${message}...</i></div></div>`);
+		return $(`<div class="panel-content-wrapper-inner"><div class="ui-search__message loading-spinner"><i>${message}...</i></div></div>`);
 	}
 
 	static setMovingCss (evt, $ele, w, h, offsetX, offsetY, zIndex) {
@@ -919,7 +882,7 @@ class Panel {
 		);
 	}
 
-	doPopulate_Stats (page, source, hash) {
+	doPopulate_Stats (page, source, hash, skipSetTab, title) { // FIXME skipSetTab is never used
 		const meta = {p: page, s: source, u: hash};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_STATS,
@@ -944,7 +907,8 @@ class Panel {
 					PANEL_TYP_STATS,
 					meta,
 					$contentInner,
-					it.name
+					title || it.name,
+					true
 				);
 			}
 		);
@@ -974,7 +938,8 @@ class Panel {
 						originalCr ? PANEL_TYP_STATS : PANEL_TYP_CREATURE_SCALED_CR,
 						nxtMeta,
 						$contentInner,
-						toRender._displayName || toRender.name
+						toRender._displayName || toRender.name,
+						true
 					);
 				};
 
@@ -992,12 +957,13 @@ class Panel {
 				PANEL_TYP_STATS,
 				meta,
 				$contentInner,
-				mon.name
+				mon.name,
+				true
 			);
 		});
 	}
 
-	doPopulate_StatsScaledCr (page, source, hash, targetCr) {
+	doPopulate_StatsScaledCr (page, source, hash, targetCr, skipSetTab, title) { // FIXME skipSetTab is never used
 		const meta = {p: page, s: source, u: hash, cr: targetCr};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_CREATURE_SCALED_CR,
@@ -1021,14 +987,15 @@ class Panel {
 						PANEL_TYP_CREATURE_SCALED_CR,
 						meta,
 						$contentInner,
-						initialRender._displayName || initialRender.name
+						title || initialRender._displayName || initialRender.name,
+						true
 					);
 				});
 			}
 		);
 	}
 
-	doPopulate_Rules (book, chapter, header) {
+	doPopulate_Rules (book, chapter, header, skipSetTab, title) { // FIXME skipSetTab is never used
 		const meta = {b: book, c: chapter, h: header};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_RULES,
@@ -1042,12 +1009,13 @@ class Panel {
 				PANEL_TYP_RULES,
 				meta,
 				$(`<div class="panel-content-wrapper-inner"><table class="stats">${it}</table></div>`),
-				rule.name || ""
+				title || rule.name || "",
+				true
 			);
 		});
 	}
 
-	doPopulate_Adventures (adventure, chapter) {
+	doPopulate_Adventures (adventure, chapter, skipSetTAb, title) { // FIXME skipSetTab is never used
 		const meta = {a: adventure, c: chapter};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_ADVENTURES,
@@ -1065,12 +1033,13 @@ class Panel {
 				PANEL_TYP_ADVENTURES,
 				meta,
 				$(`<div class="panel-content-wrapper-inner"><table class="stats stats-book--hover">${it}</table></div>`),
-				data.name || ""
+				title || data.name || "",
+				true
 			);
 		});
 	}
 
-	doPopulate_Books (book, chapter) {
+	doPopulate_Books (book, chapter, skipSetTab, title) { // FIXME skipSetTab is never used
 		const meta = {b: book, c: chapter};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_BOOKS,
@@ -1088,7 +1057,8 @@ class Panel {
 				PANEL_TYP_BOOKS,
 				meta,
 				$(`<div class="panel-content-wrapper-inner"><table class="stats stats-book--hover">${it}</table></div>`),
-				data.name || ""
+				data.name || "",
+				true
 			);
 		});
 	}
@@ -1098,57 +1068,63 @@ class Panel {
 		return this.set$Tab(ix, type, contentMeta, $content, title, tabCanRename, tabRenamed);
 	}
 
-	doPopulate_Rollbox () {
+	doPopulate_Rollbox (title) {
 		this.set$ContentTab(
 			PANEL_TYP_ROLLBOX,
 			null,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(EntryRenderer.dice.get$Roller().addClass("rollbox-panel")),
-			"Dice Roller"
+			title || "Dice Roller",
+			true
 		);
 	}
 
-	doPopulate_InitiativeTracker (state = {}) {
+	doPopulate_InitiativeTracker (state = {}, title) {
 		this.set$ContentTab(
 			PANEL_TYP_INITIATIVE_TRACKER,
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTracker.make$Tracker(this.board, state)),
-			"Initiative Tracker"
+			title || "Initiative Tracker",
+			true
 		);
 	}
 
-	doPopulate_InitiativeTrackerPlayer (state = {}) {
+	doPopulate_InitiativeTrackerPlayer (state = {}, title) {
 		this.set$ContentTab(
 			PANEL_TYP_INITIATIVE_TRACKER_PLAYER,
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTrackerPlayer.make$tracker(this.board, state)),
-			"Initiative Tracker"
+			title || "Initiative Tracker",
+			true
 		);
 	}
 
-	doPopulate_UnitConverter (state = {}) {
+	doPopulate_UnitConverter (state = {}, title) {
 		this.set$ContentTab(
 			PANEL_TYP_UNIT_CONVERTER,
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(UnitConverter.make$Converter(this.board, state)),
-			"Unit Converter"
+			title || "Unit Converter",
+			true
 		);
 	}
 
-	doPopulate_MoneyConverter (state = {}) {
+	doPopulate_MoneyConverter (state = {}, title) {
 		this.set$ContentTab(
 			PANEL_TYP_MONEY_CONVERTER,
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(MoneyConverter.make$Converter(this.board, state)),
-			"Money Converter"
+			title || "Money Converter",
+			true
 		);
 	}
 
-	doPopulate_Sundial (state = {}) {
+	doPopulate_Sundial (state = {}, title) {
 		this.set$ContentTab(
 			PANEL_TYP_SUNDIAL,
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(Sundial.make$Sundail(this.board, state)),
-			"Sundial"
+			title || "Sundial",
+			true
 		);
 	}
 
@@ -1635,7 +1611,7 @@ class Panel {
 			this.$pnlWrpContent.append(this.$btnAdd);
 		} else {
 			this.$pnlWrpContent.find(`.panel-add`).remove(); // clean up any "add panel" wrappers
-			this.$pnlWrpContent.find(`.panel-tab-message.loading-spinner`).remove(); // clean up any temp "loading" panels
+			this.$pnlWrpContent.find(`.ui-search__message.loading-spinner`).remove(); // clean up any temp "loading" panels
 			this.$pnlWrpContent.children().addClass("dms__tab_hidden");
 			$content.removeClass("dms__tab_hidden");
 			if (!this.$pnlWrpContent.has($content[0]).length) this.$pnlWrpContent.append($content);
@@ -1700,6 +1676,7 @@ class Panel {
 							this.title = nuTitle;
 							this.tabRenamed = true;
 						}
+						this.board.doSaveStateDebounced();
 					}
 					evt.stopPropagation();
 					evt.preventDefault();
@@ -2295,9 +2272,9 @@ class AddMenu {
 
 	render () {
 		if (!this.$menu) {
-			const $menu = $(`<div class="panel-addmenu">`);
+			const $menu = $(`<div class="ui-modal__overlay">`);
 			this.$menu = $menu;
-			const $menuInner = $(`<div class="panel-addmenu-inner dropdown-menu">`).appendTo($menu);
+			const $menuInner = $(`<div class="ui-modal__inner dropdown-menu">`).appendTo($menu);
 			const $tabBar = $(`<div class="panel-addmenu-bar"/>`).appendTo($menuInner);
 			const $tabView = $(`<div class="panel-addmenu-view"/>`).appendTo($menuInner);
 			this.$tabView = $tabView;
@@ -2363,9 +2340,9 @@ class AddMenuVideoTab extends AddMenuTab {
 
 	render () {
 		if (!this.$tab) {
-			const $tab = $(`<div class="panel-tab-list-wrapper underline-tabs" id="${this.tabId}"/>`);
+			const $tab = $(`<div class="ui-search__wrp-output underline-tabs" id="${this.tabId}"/>`);
 
-			const $wrpYT = $(`<div class="tab-body-row"/>`).appendTo($tab);
+			const $wrpYT = $(`<div class="ui-modal__row"/>`).appendTo($tab);
 			const $iptUrlYT = $(`<input class="form-control" placeholder="Paste YouTube URL">`)
 				.on("keydown", (e) => {
 					if (e.which === 13) $btnAddYT.click();
@@ -2388,7 +2365,7 @@ class AddMenuVideoTab extends AddMenuTab {
 				}
 			});
 
-			const $wrpTwitch = $(`<div class="tab-body-row"/>`).appendTo($tab);
+			const $wrpTwitch = $(`<div class="ui-modal__row"/>`).appendTo($tab);
 			const $iptUrlTwitch = $(`<input class="form-control" placeholder="Paste Twitch URL">`)
 				.on("keydown", (e) => {
 					if (e.which === 13) $btnAddTwitch.click();
@@ -2431,7 +2408,7 @@ class AddMenuVideoTab extends AddMenuTab {
 				}
 			});
 
-			const $wrpGeneric = $(`<div class="tab-body-row"/>`).appendTo($tab);
+			const $wrpGeneric = $(`<div class="ui-modal__row"/>`).appendTo($tab);
 			const $iptUrlGeneric = $(`<input class="form-control" placeholder="Paste any URL">`)
 				.on("keydown", (e) => {
 					if (e.which === 13) $iptUrlGeneric.click();
@@ -2464,9 +2441,9 @@ class AddMenuImageTab extends AddMenuTab {
 
 	render () {
 		if (!this.$tab) {
-			const $tab = $(`<div class="panel-tab-list-wrapper underline-tabs" id="${this.tabId}"/>`);
+			const $tab = $(`<div class="ui-search__wrp-output underline-tabs" id="${this.tabId}"/>`);
 
-			const $wrpImgur = $(`<div class="tab-body-row"/>`).appendTo($tab);
+			const $wrpImgur = $(`<div class="ui-modal__row"/>`).appendTo($tab);
 			$(`<span>Imgur (Anonymous Upload) <i class="text-muted">(accepts <a href="https://help.imgur.com/hc/articles/115000083326" target="_blank" rel="noopener">imgur-friendly formats</a>)</i></span>`).appendTo($wrpImgur);
 			const $iptFile = $(`<input type="file" class="hidden">`).on("change", (evt) => {
 				const input = evt.target;
@@ -2516,9 +2493,9 @@ class AddMenuImageTab extends AddMenuTab {
 			$btnAdd.on("click", () => {
 				$iptFile.click();
 			});
-			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
+			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
-			const $wrpUtl = $(`<div class="tab-body-row"/>`).appendTo($tab);
+			const $wrpUtl = $(`<div class="ui-modal__row"/>`).appendTo($tab);
 			const $iptUrl = $(`<input class="form-control" placeholder="Paste image URL">`)
 				.on("keydown", (e) => {
 					if (e.which === 13) $btnAddUrl.click();
@@ -2551,24 +2528,24 @@ class AddMenuSpecialTab extends AddMenuTab {
 
 	render () {
 		if (!this.$tab) {
-			const $tab = $(`<div class="panel-tab-list-wrapper underline-tabs" id="${this.tabId}"/>`);
+			const $tab = $(`<div class="ui-search__wrp-output underline-tabs" id="${this.tabId}"/>`);
 
-			const $wrpRoller = $(`<div class="tab-body-row"><span>Dice Roller <i class="text-muted">(pins the existing dice roller to a panel)</i></span></div>`).appendTo($tab);
+			const $wrpRoller = $(`<div class="ui-modal__row"><span>Dice Roller <i class="text-muted">(pins the existing dice roller to a panel)</i></span></div>`).appendTo($tab);
 			const $btnRoller = $(`<button class="btn btn-primary">Pin</button>`).appendTo($wrpRoller);
 			$btnRoller.on("click", () => {
 				EntryRenderer.dice.bindDmScreenPanel(this.menu.pnl);
 				this.menu.doClose();
 			});
-			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
+			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
-			const $wrpTracker = $(`<div class="tab-body-row"><span>Initiative Tracker</span></div>`).appendTo($tab);
+			const $wrpTracker = $(`<div class="ui-modal__row"><span>Initiative Tracker</span></div>`).appendTo($tab);
 			const $btnTracker = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpTracker);
 			$btnTracker.on("click", () => {
 				this.menu.pnl.doPopulate_InitiativeTracker();
 				this.menu.doClose();
 			});
 
-			$(`<div class="tab-body-row"><span>Initiative Tracker Player View</span><div data-r="$btnTrackerPlayer"/></div>`)
+			$(`<div class="ui-modal__row"><span>Initiative Tracker Player View</span><div data-r="$btnTrackerPlayer"/></div>`)
 				.swap({
 					$btnTrackerPlayer: $(`<button class="btn btn-primary">Add</button>`)
 						.click(() => {
@@ -2578,24 +2555,24 @@ class AddMenuSpecialTab extends AddMenuTab {
 				})
 				.appendTo($tab);
 
-			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
+			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
-			const $wrpText = $(`<div class="tab-body-row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, embed a Google Doc or similar)</i></span></div>`).appendTo($tab);
+			const $wrpText = $(`<div class="ui-modal__row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, embed a Google Doc or similar)</i></span></div>`).appendTo($tab);
 			const $btnText = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpText);
 			$btnText.on("click", () => {
 				this.menu.pnl.doPopulate_TextBox();
 				this.menu.doClose();
 			});
-			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
+			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
-			const $wrpUnitConverter = $(`<div class="tab-body-row"><span>Imperial-Metric Unit Converter</span></div>`).appendTo($tab);
+			const $wrpUnitConverter = $(`<div class="ui-modal__row"><span>Imperial-Metric Unit Converter</span></div>`).appendTo($tab);
 			const $btnUnitConverter = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpUnitConverter);
 			$btnUnitConverter.on("click", () => {
 				this.menu.pnl.doPopulate_UnitConverter();
 				this.menu.doClose();
 			});
 
-			const $wrpMoneyConverter = $(`<div class="tab-body-row"><span>Coin Converter</span></div>`).appendTo($tab);
+			const $wrpMoneyConverter = $(`<div class="ui-modal__row"><span>Coin Converter</span></div>`).appendTo($tab);
 			const $btnMoneyConverter = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpMoneyConverter);
 			$btnMoneyConverter.on("click", () => {
 				this.menu.pnl.doPopulate_MoneyConverter();
@@ -2604,9 +2581,9 @@ class AddMenuSpecialTab extends AddMenuTab {
 
 			// TODO enable this
 			/*
-			$(`<hr class="tab-body-row-sep"/>`).appendTo($tab);
+			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
-			const $wrpSundial = $(`<div class="tab-body-row"><span>In-Game Clock</span></div>`).appendTo($tab);
+			const $wrpSundial = $(`<div class="ui-modal__row"><span>In-Game Clock</span></div>`).appendTo($tab);
 			const $btnSundial = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpSundial);
 			$btnSundial.on("click", () => {
 				this.menu.pnl.doPopulate_Sundial();
@@ -2630,8 +2607,8 @@ class AddMenuListTab extends AddMenuTab {
 
 	render () {
 		if (!this.$tab) {
-			const $tab = $(`<div class="panel-tab-list-wrapper" id="${this.tabId}"/>`);
-			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search list...">`).appendTo($tab);
+			const $tab = $(`<div class="ui-search__wrp-output" id="${this.tabId}"/>`);
+			const $srch = $(`<input class="ui-search__ipt-search search form-control" autocomplete="off" placeholder="Search list...">`).appendTo($tab);
 			const $list = $(`<div class="list panel-tab-list"/>`).appendTo($tab);
 			let temp = "";
 			this.content.forEach(d => {
@@ -2716,20 +2693,20 @@ class AddMenuSearchTab extends AddMenuTab {
 	_get$Row (r) {
 		switch (this.subType) {
 			case "content": return $(`
-				<div class="panel-tab-results-row">
+				<div class="ui-search__row">
 					<span>${r.doc.n}</span>
 					<span>${r.doc.s ? `<i title="${Parser.sourceJsonToFull(r.doc.s)}">${Parser.sourceJsonToAbv(r.doc.s)}${r.doc.p ? ` p${r.doc.p}` : ""}</i>` : ""}</span>
 				</div>
 			`);
 			case "rules": return $(`
-				<div class="panel-tab-results-row">
+				<div class="ui-search__row">
 					<span>${r.doc.h}</span>
 					<span><i>${r.doc.n}, ${r.doc.s}</i></span>
 				</div>
 			`);
 			case "adventures":
 			case "books": return $(`
-				<div class="panel-tab-results-row">
+				<div class="ui-search__row">
 					<span>${r.doc.c}</span>
 					<span><i>${r.doc.n}${r.doc.o ? `, ${r.doc.o}` : ""}</i></span>
 				</div>
@@ -2766,27 +2743,26 @@ class AddMenuSearchTab extends AddMenuTab {
 
 		this.showMsgIpt = () => {
 			flags.isWait = true;
-			this.$results.empty().append(DmScreenUtil.getSearchEnter());
+			this.$results.empty().append(UiUtil.getSearchEnter());
 		};
 
 		const showMsgDots = () => {
-			this.$results.empty().append(DmScreenUtil.getSearchLoading());
+			this.$results.empty().append(UiUtil.getSearchLoading());
 		};
 
 		const showNoResults = () => {
 			flags.isWait = true;
-			this.$results.empty().append(DmScreenUtil.getSearchEnter());
+			this.$results.empty().append(UiUtil.getSearchEnter());
 		};
 
 		this.doSearch = () => {
 			const srch = this.$srch.val().trim();
-			const MAX_RESULTS = 75; // hard cap results
 
 			const searchOptions = this._getSearchOptions();
 			const index = this.indexes[this.cat];
 			const results = index.search(srch, searchOptions);
 			const resultCount = results.length ? results.length : index.documentStore.length;
-			const toProcess = results.length ? results : Object.values(index.documentStore.docs).slice(0, 75).map(it => ({doc: it}));
+			const toProcess = results.length ? results : Object.values(index.documentStore.docs).slice(0, UiUtil.SEARCH_RESULTS_CAP).map(it => ({doc: it}));
 
 			this.$results.empty();
 			if (toProcess.length) {
@@ -2823,15 +2799,15 @@ class AddMenuSearchTab extends AddMenuTab {
 					return;
 				}
 
-				const res = toProcess.slice(0, MAX_RESULTS); // hard cap at 75 results
+				const res = toProcess.slice(0, UiUtil.SEARCH_RESULTS_CAP);
 
 				res.forEach(r => {
 					this._get$Row(r).on("click", () => handleClick(r)).appendTo(this.$results);
 				});
 
-				if (resultCount > MAX_RESULTS) {
-					const diff = resultCount - MAX_RESULTS;
-					this.$results.append(`<div class="panel-tab-results-row panel-tab-results-row-display-only">...${diff} more result${diff === 1 ? " was" : "s were"} hidden. Refine your search!</div>`);
+				if (resultCount > UiUtil.SEARCH_RESULTS_CAP) {
+					const diff = resultCount - UiUtil.SEARCH_RESULTS_CAP;
+					this.$results.append(`<div class="ui-search__row ui-search__row--readonly">...${diff} more result${diff === 1 ? " was" : "s were"} hidden. Refine your search!</div>`);
 				}
 			} else {
 				if (!srch.trim()) this.showMsgIpt();
@@ -2840,11 +2816,11 @@ class AddMenuSearchTab extends AddMenuTab {
 		};
 
 		if (!this.$tab) {
-			const $tab = $(`<div class="panel-tab-list-wrapper" id="${this.tabId}"/>`);
-			const $wrpCtrls = $(`<div class="panel-tab-controls"/>`).appendTo($tab);
+			const $tab = $(`<div class="ui-search__wrp-output" id="${this.tabId}"/>`);
+			const $wrpCtrls = $(`<div class="ui-search__wrp-controls ui-search__wrp-controls--in-tabs"/>`).appendTo($tab);
 
 			const $selCat = $(`
-				<select class="form-control panel-tab-cat">
+				<select class="form-control ui-search__sel-category">
 					<option value="ALL">${this._getAllTitle()}</option>
 				</select>
 			`).appendTo($wrpCtrls).toggle(Object.keys(this.indexes).length !== 1);
@@ -2856,10 +2832,10 @@ class AddMenuSearchTab extends AddMenuTab {
 				this.doSearch();
 			});
 
-			const $srch = $(`<input class="panel-tab-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($wrpCtrls);
-			const $results = $(`<div class="panel-tab-results"/>`).appendTo($tab);
+			const $srch = $(`<input class="ui-search__ipt-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($wrpCtrls);
+			const $results = $(`<div class="ui-search__wrp-results"/>`).appendTo($tab);
 
-			DmScreenUtil.bindAutoSearch($srch, {
+			UiUtil.bindAutoSearch($srch, {
 				flags: flags,
 				search: this.doSearch,
 				showWait: showMsgDots
@@ -3119,7 +3095,7 @@ class UnitConverter {
 			board.doSaveStateDebounced();
 		};
 
-		DmScreenUtil.bindTypingEnd($iptLeft, handleInput);
+		UiUtil.bindTypingEnd($iptLeft, handleInput);
 
 		updateDisplay();
 
@@ -3157,126 +3133,6 @@ class Sundial {
 		return $wrpConverter;
 	}
 }
-
-class DmScreenUtil {
-	static getSearchNoResults () {
-		return `<div class="panel-tab-message"><i>No results.</i></div>`;
-	}
-
-	static getSearchLoading () {
-		return `<div class="panel-tab-message"><i>\u2022\u2022\u2022</i></div>`;
-	}
-
-	static getSearchEnter () {
-		return `<div class="panel-tab-message"><i>Enter a search.</i></div>`;
-	}
-
-	/**
-	 * @param $srch input element
-	 * @param opt should contain:
-	 *  `search` -- function which runs search
-	 *  `flags` -- object which contains:
-	 *    `isWait` -- flag tracking "waiting for user to stop typing"
-	 *    `doClickFirst` -- flag tracking "should first result get clicked"
-	 *  `showWait` -- function which displays loading dots
-	 */
-	static bindAutoSearch ($srch, opt) {
-		DmScreenUtil.bindTypingEnd(
-			$srch,
-			() => {
-				opt.search();
-			},
-			(e) => {
-				if (e.which === 13) {
-					opt.flags.doClickFirst = true;
-					opt.search();
-				}
-			},
-			() => {
-				if (opt.flags.isWait) {
-					opt.flags.isWait = false;
-					opt.showWait();
-				}
-			},
-			() => {
-				if ($srch.val() && $srch.val().trim().length) opt.search();
-			}
-		);
-	}
-
-	static bindTypingEnd ($ipt, fnKeyup, fnKeypress, fnKeydown, fnClick) {
-		let typeTimer;
-		$ipt.on("keyup", (e) => {
-			clearTimeout(typeTimer);
-			typeTimer = setTimeout(() => {
-				fnKeyup(e);
-			}, DmScreenUtil.TYPE_TIMEOUT_MS);
-		});
-		$ipt.on("keypress", (e) => {
-			if (fnKeypress) fnKeypress(e);
-		});
-		$ipt.on("keydown", (e) => {
-			if (fnKeydown) fnKeydown(e);
-			clearTimeout(typeTimer);
-		});
-		$ipt.on("click", () => {
-			if (fnClick) fnClick();
-		});
-	}
-
-	/**
-	 * @param titleOrOpts Modal title, or an object of options, which are:
-	 *   - `title` The modal title.
-	 *   - `fullHeight` If the modal should take up (almost) the full height of the screen.
-	 *   - `fullWidth` if the modal should take up (almost) the full width of the screen.
-	 *   - `cbClose` Callback run when the modal is closed.
-	 * @param cbClose Callback run when the modal is closed.
-	 * @returns JQuery Modal inner wrapper, to have content added as required.
-	 */
-	static getShow$Modal (titleOrOpts, cbClose) {
-		const opts = typeof titleOrOpts === "string" ? {} : titleOrOpts;
-		if (typeof titleOrOpts === "string") {
-			opts.title = titleOrOpts;
-			opts.cbClose = cbClose;
-		}
-
-		const addStyles = [];
-		if (opts.fullHeight) {
-			addStyles.push(`height: 100%`);
-		}
-
-		const $modal = $(`<div class="panel-addmenu">`);
-		const $scroller = $(`<div class="panel-addmenu-modal-scroller"/>`).data("close", () => $modal.click());
-		const $modalInner = $(`<div class="panel-addmenu-inner panel-addmenu-inner--modal dropdown-menu${opts.fullWidth ? ` panel-addmenu-inner--large-modal` : ""}"${addStyles.length ? ` style="${addStyles.join(";")}"` : ""}><h4>${opts.title}</h4><div data-r/></div>`).swap($scroller)
-			.appendTo($modal).click(e => e.stopPropagation());
-		const doClose = () => $modal.remove();
-		$modal.click(() => {
-			if (opts.cbClose) opts.cbClose();
-			doClose();
-		});
-		$(`body`).append($modal);
-		return $scroller;
-	}
-
-	static addModal$Sep ($modalInner) {
-		$modalInner.append(`<hr class="tab-body-row-sep">`);
-	}
-
-	static _getAdd$Row ($modalInner, tag = "div") {
-		return $(`<${tag} class="tab-body-row"/>`).appendTo($modalInner);
-	}
-
-	static getAddModal$RowCb ($modalInner, labelText, objectWithProp, propName, helpText) {
-		const $row = DmScreenUtil._getAdd$Row($modalInner, "label").addClass(`tab-body-row--cb`);
-		if (helpText) $row.attr("title", helpText);
-		$row.append(`<span>${labelText}</span>`);
-		const $cb = $(`<input type="checkbox">`).appendTo($row)
-			.prop("checked", objectWithProp[propName])
-			.on("change", () => objectWithProp[propName] = $cb.prop("checked"));
-		return $cb;
-	}
-}
-DmScreenUtil.TYPE_TIMEOUT_MS = 100; // auto-search after 100ms
 
 window.addEventListener("load", () => {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search

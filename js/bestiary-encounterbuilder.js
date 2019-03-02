@@ -7,6 +7,8 @@ class EncounterBuilder {
 		this._lastPlayerCount = null;
 		this._advanced = false;
 
+		this._cachedTitle = null;
+
 		this.doSaveStateDebounced = MiscUtil.debounce(this.doSaveState, 50);
 	}
 
@@ -198,7 +200,7 @@ class EncounterBuilder {
 	getSaveableState () {
 		const out = {
 			p: this.getParty(),
-			l: ListUtil._getExportableSublist(),
+			l: ListUtil.getExportableSublist(),
 			a: this._advanced
 		};
 		if (this._advanced) {
@@ -227,7 +229,7 @@ class EncounterBuilder {
 		if (this._cache == null) {
 			this._cache = (() => {
 				const out = {};
-				list.visibleItems.map(it => monsters[Number(it.elm.getAttribute("filterid"))]).filter(m => !m.isNPC).forEach(m => {
+				list.visibleItems.map(it => monsters[Number(it.elm.getAttribute("filterid"))]).filter(m => !m.isNpc).forEach(m => {
 					const mXp = Parser.crToXpNumber(m.cr.cr || m.cr);
 					if (mXp) (out[mXp] = out[mXp] || []).push(m);
 				});
@@ -386,7 +388,7 @@ class EncounterBuilder {
 				c: `${creatureType.count}`,
 				uid: creatureType.uid || undefined
 			})),
-			sources: ListUtil._getExportableSublist().sources
+			sources: ListUtil.getExportableSublist().sources
 		});
 	}
 
@@ -567,17 +569,24 @@ class EncounterBuilder {
 	}
 
 	show () {
+		this._cachedTitle = this._cachedTitle || document.title;
+		document.title = "Encounter Builder - 5etools";
 		$(`body`).addClass("ecgen_active");
 		this.updateDifficulty();
 	}
 
 	hide () {
+		if (this._cachedTitle) {
+			document.title = this._cachedTitle;
+			this._cachedTitle = null;
+		}
 		$(`body`).removeClass("ecgen_active");
 	}
 
-	handleClick (evt, ix, add) {
-		if (add) ListUtil.pDoSublistAdd(ix, true, evt.shiftKey ? 5 : 1, lastRendered.isScaled ? getScaledData() : undefined);
-		else ListUtil.pDoSublistSubtract(ix, evt.shiftKey ? 5 : 1, lastRendered.isScaled ? getScaledData() : undefined);
+	handleClick (evt, ix, add, ele) {
+		const data = ele ? {uid: $(ele).closest(`li.row`).find(`.uid`).text()} : undefined;
+		if (add) ListUtil.pDoSublistAdd(ix, true, evt.shiftKey ? 5 : 1, data);
+		else ListUtil.pDoSublistSubtract(ix, evt.shiftKey ? 5 : 1, data);
 	}
 
 	handleShuffleClick (evt, ix) {
@@ -585,7 +594,7 @@ class EncounterBuilder {
 		const xp = Parser.crToXpNumber(mon.cr.cr || mon.cr);
 		if (!xp) return; // if Unknown/etc
 
-		const curr = ListUtil._getExportableSublist();
+		const curr = ListUtil.getExportableSublist();
 		const hash = UrlUtil.autoEncodeHash(mon);
 		const itemToSwitch = curr.items.find(it => it.h === hash);
 
@@ -796,7 +805,7 @@ class EncounterBuilder {
 
 			if (targetCrNum === scaledTo) return;
 
-			const state = ListUtil._getExportableSublist();
+			const state = ListUtil.getExportableSublist();
 			const toFindHash = UrlUtil.autoEncodeHash(mon);
 
 			const toFindUid = !(scaledTo == null || baseCrNum === scaledTo) ? getUid(mon.name, mon.source, scaledTo) : null;
@@ -919,14 +928,14 @@ class EncounterBuilder {
 	static getButtons (monId, isSublist) {
 		return `
 			<span class="ecgen__visible ${isSublist ? "col-1-5" : "col-1"} no-wrap" onclick="event.preventDefault()">
-				<button title="Add (SHIFT for 5)" class="btn btn-success btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 1)" oncontextmenu="encounterBuilder.handleContext(event)">
+				<button title="Add (SHIFT for 5)" class="btn btn-success btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 1${isSublist ? `, this` : ""})">
 					<span class="glyphicon glyphicon-plus"></span>
 				</button>
-				<button title="Subtract (SHIFT for 5)" class="btn btn-danger btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 0)" oncontextmenu="encounterBuilder.handleContext(event)">
+				<button title="Subtract (SHIFT for 5)" class="btn btn-danger btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 0${isSublist ? `, this` : ""})">
 					<span class="glyphicon glyphicon-minus"></span>
 				</button>
 				${isSublist ? `
-				<button title="Randomize Monster" class="btn btn-default btn-xs ecgen__btn_list" onclick="encounterBuilder.handleShuffleClick(event, ${monId}, this)" oncontextmenu="encounterBuilder.handleContext(event)">
+				<button title="Randomize Monster" class="btn btn-default btn-xs ecgen__btn_list" onclick="encounterBuilder.handleShuffleClick(event, ${monId}, this)">
 					<span class="glyphicon glyphicon-random" style="right: 1px"></span>
 				</button>
 				` : ""}

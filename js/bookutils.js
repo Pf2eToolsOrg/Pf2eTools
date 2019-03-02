@@ -311,7 +311,7 @@ const BookUtil = {
 
 				if (isTop) {
 					$(`<button class="btn btn-xs btn-default ${~BookUtil.curRender.chapter ? "" : "active"}" title="Warning: Slow">View Entire ${BookUtil.contentType.uppercaseFirst()}</button>`).click(() => {
-						window.location.href = (~BookUtil.curRender.chapter ? BookUtil.thisContents.children(`.bk__contents_show_all`) : BookUtil.thisContents.children(`.bk__contents_header_link`)).attr("href");
+						window.location.href = (~BookUtil.curRender.chapter ? BookUtil.thisContents.find(`.bk__contents_show_all`) : BookUtil.thisContents.find(`.bk__contents_header_link`)).attr("href");
 					}).appendTo($wrpControls);
 				} else $(`<button class="btn btn-xs btn-default">Back to Top</button>`).click(() => MiscUtil.scrollPageTop()).appendTo($wrpControls);
 
@@ -766,12 +766,14 @@ const BookUtil = {
 
 	getContentsItem (ix, book, options) {
 		return `<li class="contents-item" data-bookid="${UrlUtil.encodeForHash(book.id)}" style="display: none;">
-			<a id="${ix}" href="#${UrlUtil.encodeForHash(book.id)}" class="bk__contents_header_link" title="${book.name}">
-				<span class="name">${book.name}</span>
-			</a>
-			<a href="#${UrlUtil.encodeForHash(book.id)},-1" class="bk__contents_show_all" title="View Entire ${BookUtil.contentType.uppercaseFirst()} (Warning: Slow)">
-				<span class="glyphicon glyphicon glyphicon-book" style="top: 0;"/>
-			</a>
+			<div class="bk__contents-header">
+				<a id="${ix}" href="#${UrlUtil.encodeForHash(book.id)}" class="bk__contents_header_link" title="${book.name}">
+					<span class="name">${book.name}</span>
+				</a>
+				<a href="#${UrlUtil.encodeForHash(book.id)},-1" class="bk__contents_show_all" title="View Entire ${BookUtil.contentType.uppercaseFirst()} (Warning: Slow)">
+					<span class="glyphicon glyphicon glyphicon-book" style="top: 0;"/>
+				</a>
+			</div>
 			${BookUtil.makeContentsBlock(options)}
 		</li>`;
 	}

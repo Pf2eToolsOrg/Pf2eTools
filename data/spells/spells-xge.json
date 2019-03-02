@@ -3854,9 +3854,6 @@
 				"Casting this spell on the same spot once every 7 days for a year makes the fortress permanent."
 			],
 			"page": 161,
-			"damageInflict": [
-				"psychic"
-			],
 			"damageImmune": [
 				"poison",
 				"psychic"
@@ -4475,7 +4472,7 @@
 					"type": "entries",
 					"name": "At Higher Levels",
 					"entries": [
-						"When you cast this spell using a 3rd- or 4th-level spell slot, the damage increases to {@scaledice 2d8|2-9|3d8}. When you cast it using a 5th- or 6th-level spell slot, the damage increases to {@scaledice 2d8|2-9|4d8}. When you cast it using a spell slot of 7th level or higher, the damage increases to {@scaledice 2d8|2-9|5d8}."
+						"When you cast this spell using a 3rd- or 4th-level spell slot, the damage increases to {@dice 3d8}. When you cast it using a 5th- or 6th-level spell slot, the damage increases to {@dice 4d8}. When you cast it using a spell slot of 7th level or higher, the damage increases to {@dice 5d8}."
 					]
 				}
 			],
@@ -6272,7 +6269,7 @@
 				{
 					"type": "list",
 					"items": [
-						"It deafens you and other creatures in its area.",
+						"It {@condition deafened|phb|deafens} you and other creatures in its area.",
 						"It extinguishes unprotected flames in its area that are torch-sized or smaller.",
 						"It hedges out vapor, gas, and fog that can be dispersed by strong wind.",
 						"The area is difficult terrain for creatures other than you.",
