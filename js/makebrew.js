@@ -448,7 +448,7 @@ class BuilderUi {
 		if (options.nullable == null) options.nullable = true;
 
 		const initialState = MiscUtil.getProperty(state, ...path);
-		const $ipt = $(`<textarea class="form-control input-xs form-control--minimal mkbru__ipt-textarea"/>`)
+		const $ipt = $(`<textarea class="form-control input-xs form-control--minimal mkbru__ipt-textarea" ${options.placeholder ? `placeholder="${options.placeholder}"` : ""}/>`)
 			.val(BuilderUi.getEntriesAsText(initialState))
 			.change(() => {
 				const raw = $ipt.val().trim();
@@ -509,7 +509,7 @@ class BuilderUi {
 		if (options.nullable == null) options.nullable = true;
 
 		const initialState = MiscUtil.getProperty(state, ...path);
-		const $ipt = $(`<input class="form-control input-xs form-control--minimal" type="number">`)
+		const $ipt = $(`<input class="form-control input-xs form-control--minimal" type="number" ${options.placeholder ? `placeholder="${options.placeholder}"` : ""}>`)
 			.val(initialState)
 			.change(() => {
 				const raw = $ipt.val().trim();

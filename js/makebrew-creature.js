@@ -231,6 +231,7 @@ class CreatureBuilder extends Builder {
 		}).appendTo($wrpControls);
 
 		BuilderUi.$getResetButton().click(() => {
+			if (!confirm("Are you sure?")) return;
 			this.setStateFromLoaded({s: this._getInitialState(), m: {}});
 			this.renderInput();
 			this.renderOutput();
@@ -281,13 +282,13 @@ class CreatureBuilder extends Builder {
 		this.__$getTraitInput(cb).appendTo($wrp);
 		this.__$getActionInput(cb).appendTo($wrp);
 		this.__$getReactionInput(cb).appendTo($wrp);
-		this.__$getLegendaryActionInput(cb).appendTo($wrp);
 		BuilderUi.$getStateIptNumber(
 			"Legendary Action Count",
 			cb,
 			this._state,
 			{
-				title: "If specified, this will override the default number (3) of legendary actions available for the creature."
+				title: "If specified, this will override the default number (3) of legendary actions available for the creature.",
+				placeholder: "If left blank, defaults to 3."
 			},
 			"legendaryActions"
 		).appendTo($wrp);
@@ -305,10 +306,12 @@ class CreatureBuilder extends Builder {
 			cb,
 			this._state,
 			{
-				title: "If specified, this custom legendary action intro text will override the default."
+				title: "If specified, this custom legendary action intro text will override the default.",
+				placeholder: "If left blank, defaults to a generic intro."
 			},
 			"legendaryHeader"
 		).appendTo($wrp);
+		this.__$getLegendaryActionInput(cb).appendTo($wrp);
 		this.__$getLegendaryGroupInput(cb).appendTo($wrp);
 		this.__$getVariantInput(cb).appendTo($wrp);
 		BuilderUi.$getStateIptBooleanArray("Environment", cb, this._state, {vals: Parser.ENVIRONMENTS, fnDisplay: StrUtil.uppercaseFirst}, "environment").appendTo($wrp);
@@ -913,7 +916,7 @@ class CreatureBuilder extends Builder {
 					cb();
 				});
 
-			if ((this._state.save || {})[prop]) $iptSave.val(this._state.save[prop]);
+			if ((this._state.save || {})[prop]) $iptSave.val(this._state.save[prop].replace(/^\+/, "")); // remove leading plus sign
 
 			return $$`<div class="flex-v-center mb-2">
 			<span class="mr-2 mkbru__sub-name--33">${name}</span>
@@ -947,7 +950,7 @@ class CreatureBuilder extends Builder {
 					cb();
 				});
 
-			if ((this._state.skill || {})[prop]) $iptSkill.val(this._state.skill[prop]);
+			if ((this._state.skill || {})[prop]) $iptSkill.val(this._state.skill[prop].replace(/^\+/, "")); // remove leading plus sign
 
 			return $$`<div class="flex-v-center mb-2">
 			<span class="mr-2 mkbru__sub-name--33">${name}</span>
