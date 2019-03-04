@@ -253,7 +253,7 @@ class TagAttack {
 						const out = str.replace(/([\t ]")((?:(?:[A-Z][a-z]*|or) )*Attack:) /g, (...m) => {
 							const lower = m[2].toLowerCase();
 							if (TagAttack.MAP[lower]) {
-								return `${m[1]}${lower} `;
+								return `${m[1]}${TagAttack.MAP[lower]} `;
 							} else {
 								if (cbMan) cbMan(m[2]);
 								return m[0];

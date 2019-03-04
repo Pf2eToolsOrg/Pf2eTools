@@ -7,6 +7,10 @@ class CreatureBuilder extends Builder {
 		this._bestiaryMetaCache = null;
 		this._legendaryGroups = null;
 
+		this._sourcesCache = []; // the JSON sources from the main UI
+		this._$selSource = null;
+		this._cbCache = null;
+
 		this._state = this._getInitialState();
 		this._meta = {}; // meta state
 
@@ -28,6 +32,17 @@ class CreatureBuilder extends Builder {
 		this._legendaryGroups = [...this._bestiaryMetaRaw.legendaryGroup, ...(BrewUtil.homebrew.legendaryGroup || [])];
 		this._bestiaryMetaCache = {};
 		this._legendaryGroups.forEach(it => (this._bestiaryMetaCache[it.source] = (this._bestiaryMetaCache[it.source] || {}))[it.name] = it);
+
+		this._jsonCreature = await DataUtil.loadJSON("data/makebrew-creature.json");
+		this._indexedTraits = elasticlunr(function () {
+			this.addField("n");
+			this.setRef("id");
+		});
+		SearchUtil.removeStemmer(this._indexedTraits);
+		this._jsonCreature.trait.forEach((it, i) => this._indexedTraits.addDoc({
+			n: it.name,
+			id: i
+		}));
 	}
 
 	renderSideMenu () {
@@ -91,23 +106,54 @@ class CreatureBuilder extends Builder {
 					this._saveTemp();
 				});
 
-			const $btnClone = $(`<button class="btn btn-xs btn-default mr-2" title="Duplicate"><span class="glyphicon glyphicon-duplicate"/></button>`)
-				.click(async () => {
-					const copy = MiscUtil.copy(mon);
+			const contextId = ContextUtil.getNextGenericMenuId();
+			const _CONTEXT_OPTIONS = [
+				{
+					name: "Duplicate",
+					action: async () => {
+						const copy = MiscUtil.copy(mon);
 
-					const m = /^(.*?) \((\d+)\)$/.exec(mon.name.trim());
-					if (m) copy.name = `${m[1]} (${Number(m[2]) + 1})`;
-					else copy.name = `${copy.name} (1)`;
-					await BrewUtil.pAddEntry("monster", copy);
-					this._doUpdateSidemenu();
-				});
+						const m = /^(.*?) \((\d+)\)$/.exec(mon.name.trim());
+						if (m) copy.name = `${m[1]} (${Number(m[2]) + 1})`;
+						else copy.name = `${copy.name} (1)`;
+						await BrewUtil.pAddEntry("monster", copy);
+						this._doUpdateSidemenu();
+					}
+				},
+				{
+					name: "Move to source...",
+					action: async () => {
+						const sources = MiscUtil.copy(BrewUtil.homebrewMeta.sources || []);
 
-			const $btnDownload = $(`<button class="btn btn-xs btn-default mr-2" title="Download"><span class="glyphicon glyphicon-download"/></button>`)
-				.click(() => {
-					const out = this._ui._getJsonOutputTemplate();
-					out.monster = [DataUtil.cleanJson(MiscUtil.copy(mon))];
-					DataUtil.userDownload(DataUtil.getCleanFilename(mon.name), out);
-				});
+						const selection = await InputUiUtil.pGetUserEnum({
+							values: sources.map(it => it.full),
+							title: "Select a Source",
+							default: sources.findIndex(it => this._ui.source === it.json)
+						});
+
+						if (selection != null) {
+							this._ui.source = sources[selection].json;
+							this.doHandleSourceUpdate();
+							await this._pSaveBrew();
+						}
+					}
+				},
+				{
+					name: "Download JSON",
+					action: () => {
+						const out = this._ui._getJsonOutputTemplate();
+						out.monster = [DataUtil.cleanJson(MiscUtil.copy(mon))];
+						DataUtil.userDownload(DataUtil.getCleanFilename(mon.name), out);
+					}
+				}
+			];
+			ContextUtil.doInitContextMenu(contextId, (evt, ele, $invokedOn, $selectedMenu) => {
+				const val = Number($selectedMenu.data("ctx-id"));
+				_CONTEXT_OPTIONS[val].action();
+			}, _CONTEXT_OPTIONS.map(it => it.name));
+
+			const $btnBurger = $(`<button class="btn btn-xs btn-default mr-2" title="More Options"><span class="glyphicon glyphicon-option-vertical"/></button>`)
+				.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnBurger, contextId));
 
 			const $btnDelete = $(`<button class="btn btn-xs btn-danger" title="Delete"><span class="glyphicon glyphicon-trash"/></button>`)
 				.click(async () => {
@@ -124,7 +170,7 @@ class CreatureBuilder extends Builder {
 
 			$$`<div class="flex-v-center split px-2 mb-2">
 			<span>${mon.name}</span>
-			<div>${$btnEdit}${$btnClone}${$btnDownload}${$btnDelete}</div>
+			<div>${$btnEdit}${$btnBurger}${$btnDelete}</div>
 			</div>`.appendTo(this._$sideMenuWrpList);
 		});
 	}
@@ -158,7 +204,10 @@ class CreatureBuilder extends Builder {
 	getSaveableState () {
 		return {
 			s: this._state,
-			m: this._meta
+			m: this._meta,
+			_m: {
+				isEntrySaved: this.isEntrySaved
+			}
 		}
 	}
 
@@ -168,7 +217,16 @@ class CreatureBuilder extends Builder {
 			this._state = state.s;
 			this._meta = state.m;
 
-			this.isEntrySaved = state.m.ixBrew != null;
+			// validate ixBrew
+			if (state.m.ixBrew != null) {
+				const expectedIx = (BrewUtil.homebrewMeta.sources || []).findIndex(it => it.json === state.s.source);
+				if (!~expectedIx) state.m.ixBrew = null;
+				else if (expectedIx !== state.m.ixBrew) state.m.ixBrew = expectedIx;
+			}
+
+			if (state._m && this.isEntrySaved != null) this.isEntrySaved = !!state._m.isEntrySaved;
+			else this.isEntrySaved = state.m.ixBrew != null;
+
 			this._mutSavedButtonText();
 			this._saveTemp();
 		}
@@ -197,7 +255,18 @@ class CreatureBuilder extends Builder {
 	}
 
 	doHandleSourceUpdate () {
-		this._state.source = this._ui.source;
+		const nuSource = this._ui.source;
+
+		// if the source we were using is gone, update
+		if (!this._sourcesCache.includes(nuSource)) {
+			this._state.source = nuSource;
+			this._sourcesCache = MiscUtil.copy(this._ui.allSources);
+
+			const $cache = this._$selSource;
+			this._$selSource = this.__$getSourceInput(this._cbCache);
+			$cache.replaceWith(this._$selSource);
+		}
+
 		this.renderInput();
 		this.renderOutput();
 		this.renderSideMenu();
@@ -242,6 +311,8 @@ class CreatureBuilder extends Builder {
 	_renderInputMain () {
 		const $wrp = this._ui.$wrpInput.empty();
 
+		this._sourcesCache = MiscUtil.copy(this._ui.allSources);
+
 		const cb = () => {
 			RenderBestiary.updateParsed(this._state);
 
@@ -259,8 +330,10 @@ class CreatureBuilder extends Builder {
 			this.isEntrySaved = false;
 			this._mutSavedButtonText();
 		};
+		this._cbCache = cb; // cache for use when updating sources
 
 		BuilderUi.$getStateIptString("Name", cb, this._state, {nullable: false, callback: () => this.renderSideMenu()}, "name").appendTo($wrp);
+		this._$selSource = this.__$getSourceInput(cb).appendTo($wrp);
 		BuilderUi.$getStateIptEnum("Size", cb, this._state, {vals: Parser.SIZE_ABVS, fnDisplay: Parser.sizeAbvToFull, type: "string", nullable: false}, "size").appendTo($wrp);
 		this.__$getTypeInput(cb).appendTo($wrp);
 		this.__$getAlignmentInput(cb).appendTo($wrp);
@@ -344,6 +417,18 @@ class CreatureBuilder extends Builder {
 
 		// excluded fields:
 		// - otherSources: requires meta support
+	}
+
+	__$getSourceInput (cb) {
+		return BuilderUi.$getStateIptEnum(
+			"Source",
+			cb,
+			this._state,
+			{
+				vals: this._sourcesCache, fnDisplay: Parser.sourceJsonToFull, type: "string", nullable: false
+			},
+			"source"
+		);
 	}
 
 	__$getTypeInput (cb) {
@@ -1189,22 +1274,26 @@ class CreatureBuilder extends Builder {
 			.change(() => doUpdateState());
 		if (this._state.languages && this._state.languages.trim()) $iptLanguages.val(this._state.languages);
 
-		const contextId = ContextUtil.getNextGenericMenuId();
-		const _CONTEXT_ENTRIES = Object.entries(this._bestiaryMetaRaw.language).filter(([k, v]) => !CreatureBuilder._LANGUAGE_BLACKLIST.has(k)).map(([k, v]) => v);
-		ContextUtil.doInitContextMenu(contextId, async (evt, ele, $invokedOn, $selectedMenu) => {
-			const val = Number($selectedMenu.data("ctx-id"));
-			const language = _CONTEXT_ENTRIES[val];
-
-			const curr = $iptLanguages.val().trim();
-			$iptLanguages.val(curr ? `${curr}, ${language}` : language);
-
-			doUpdateState();
-		}, _CONTEXT_ENTRIES);
+		const availLanguages = Object.entries(this._bestiaryMetaRaw.language).filter(([k, v]) => !CreatureBuilder._LANGUAGE_BLACKLIST.has(k))
+			.map(([k, v]) => v === "Telepathy" ? "telepathy" : v); // lowercase telepathy
 
 		const $btnAddGeneric = $(`<button class="btn btn-xs btn-default mr-2 mkbru_mon__btn-add-sense-language">Add Language</button>`)
-			.click((evt) => ContextUtil.handleOpenContextMenu(evt, $btnAddGeneric, contextId));
+			.click(async () => {
+				const language = await InputUiUtil.pGetUserString({
+					title: "Enter a Language",
+					default: "Common",
+					autocomplete: availLanguages
+				});
 
-		const $btnSort = BuilderUi.$getSplitCommasSortButton($iptLanguages, doUpdateState);
+				if (language != null) {
+					const curr = $iptLanguages.val().trim();
+					$iptLanguages.val(curr ? `${curr}, ${language}` : language);
+
+					doUpdateState();
+				}
+			});
+
+		const $btnSort = BuilderUi.$getSplitCommasSortButton($iptLanguages, doUpdateState, {bottom: [/telepathy/i]});
 
 		$$`<div class="flex-v-center">${$iptLanguages}${$btnAddGeneric}${$btnSort}</div>`.appendTo($rowInner);
 
@@ -1696,11 +1785,201 @@ class CreatureBuilder extends Builder {
 	}
 
 	__$getTraitInput (cb) {
-		return this.__$getGenericEntryInput(cb, {name: "Traits", shortName: "Trait", prop: "trait", canReorder: false});
+		return this.__$getGenericEntryInput(cb, {
+			name: "Traits",
+			shortName: "Trait",
+			prop: "trait",
+			canReorder: false,
+			generators: [
+				{
+					name: "Add Predefined Trait",
+					action: () => {
+						let traitIndex;
+						return new Promise(resolve => {
+							const searchItems = new SearchWidget(
+								{Trait: this._indexedTraits},
+								async (ix) => {
+									traitIndex = ix;
+									$modalInner.data("close")(true);
+								},
+								{
+									defaultCategory: "Trait",
+									searchOptions: {
+										fields: {
+											n: {boost: 5, expand: true}
+										},
+										expand: true
+									},
+									fnTransform: (doc) => doc.id
+								}
+							);
+							const $modalInner = UiUtil.getShow$Modal(
+								"Select a Trait",
+								(isDataEntered) => {
+									searchItems.$wrpSearch.detach();
+									if (!isDataEntered) return resolve(null);
+									const trait = MiscUtil.copy(this._jsonCreature.trait[traitIndex]);
+									trait.entries = JSON.parse(JSON.stringify(trait.entries).replace(/<\$name\$>/gi, this._state.name));
+									resolve(trait);
+								}
+							);
+							$modalInner.append(searchItems.$wrpSearch)
+						})
+					}
+				}
+			]
+		});
 	}
 
 	__$getActionInput (cb) {
-		return this.__$getGenericEntryInput(cb, {name: "Actions", shortName: "Action", prop: "action"});
+		return this.__$getGenericEntryInput(cb,
+			{
+				name: "Actions",
+				shortName: "Action",
+				prop: "action",
+				generators: [
+					{
+						name: "Generate Attack",
+						action: () => {
+							return new Promise(resolve => {
+								const $modalInner = UiUtil.getShow$Modal({
+									title: "Generate Attack",
+									cbClose: async (isDataEntered) => {
+										if (!isDataEntered) return resolve(null);
+										const data = await getFormData();
+										if (!data) return resolve(null);
+										resolve(data);
+									},
+									fullHeight: true
+								});
+
+								const $iptName = $(`<input class="form-control form-control--minimal input-xs mr-2" placeholder="Weapon">`);
+								const $cbMelee = $(`<input type="checkbox" class="mkbru__ipt-cb--plain">`)
+									.change(() => $stageMelee.toggle($cbMelee.prop("checked")))
+									.prop("checked", true);
+								const $cbRanged = $(`<input type="checkbox" class="mkbru__ipt-cb--plain">`)
+									.change(() => $stageRanged.toggle($cbRanged.prop("checked")));
+								const $cbFinesse = $(`<input type="checkbox" class="mkbru__ipt-cb--plain">`);
+								const $cbVersatile = $(`<input type="checkbox" class="mkbru__ipt-cb--plain">`)
+									.change(() => $stageVersatile.toggle($cbVersatile.prop("checked")));
+								const $cbBonusDamage = $(`<input type="checkbox" class="mkbru__ipt-cb--plain">`)
+									.change(() => $stageBonusDamage.toggle($cbBonusDamage.prop("checked")));
+
+								const $iptMeleeRange = $(`<input class="form-control form-control--minimal input-xs" type="number" value="5">`);
+								const $iptMeleeDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Number of Dice" min="1" value="1">`);
+								const $iptMeleeDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="6">`);
+								const $iptMeleeDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Melee Damage Type" autocomplete="off">`)
+									.typeahead({source: Parser.DMG_TYPES});
+								const $stageMelee = $$`<div class="flex-col"><hr class="hr--sm">
+								<div class="flex-v-center mb-2"><span class="mr-2 no-shrink">Melee Range (ft.)</span>${$iptMeleeRange}</div>
+								<div class="flex-v-center mb-2">${$iptMeleeDamDiceCount}<span class="mr-2">d</span>${$iptMeleeDamDiceNum}${$iptMeleeDamType}</div>
+								</div>`;
+
+								const $iptRangedShort = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number">`);
+								const $iptRangedLong = $(`<input class="form-control form-control--minimal input-xs" type="number">`);
+								const $iptRangedDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Number of Dice" min="1" value="1">`);
+								const $iptRangedDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="6">`);
+								const $iptRangedDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Ranged Damage Type">`)
+									.typeahead({source: Parser.DMG_TYPES});
+								const $stageRanged = $$`<div class="flex-col"><hr class="hr--sm">
+								<div class="flex-v-center mb-2">
+									<span class="mr-2 no-shrink">Short Range (ft.)</span>${$iptRangedShort}
+									<span class="mr-2 no-shrink">Long Range (ft.)</span>${$iptRangedLong}
+								</div>
+								<div class="flex-v-center mb-2">${$iptRangedDamDiceCount}<span class="mr-2">d</span>${$iptRangedDamDiceNum}${$iptRangedDamType}</div>
+								</div>`.hide();
+
+								const $iptVersatileDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Number of Dice" min="1" value="1">`);
+								const $iptVersatileDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="8">`);
+								const $iptVersatileDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Two-Handed Damage Type">`)
+									.typeahead({source: Parser.DMG_TYPES});
+								const $stageVersatile = $$`<div class="flex-col"><hr class="hr--sm">
+								<div class="flex-v-center mb-2">${$iptVersatileDamDiceCount}<span class="mr-2">d</span>${$iptVersatileDamDiceNum}${$iptVersatileDamType}</div>
+								</div>`.hide();
+
+								const $iptBonusDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Number of Dice" min="1" value="1">`);
+								const $iptBonusDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="6">`);
+								const $iptBonusDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Bonus Damage Type">`)
+									.typeahead({source: Parser.DMG_TYPES});
+								const $stageBonusDamage = $$`<div class="flex-col"><hr class="hr--sm">
+								<div class="flex-v-center mb-2">${$iptBonusDamDiceCount}<span class="mr-2">d</span>${$iptBonusDamDiceNum}${$iptBonusDamType}</div>
+								</div>`.hide();
+
+								const $btnConfirm = $(`<button class="btn btn-sm btn-default">Add</button>`)
+									.click(() => {
+										if (!$cbMelee.prop("checked") && !$cbRanged.prop("checked")) {
+											return JqueryUtil.doToast({type: "warning", content: "At least one of 'Melee' or 'Ranged' must be selected!"});
+										} else $modalInner.data("close")(true);
+									});
+
+								const getFormData = async () => {
+									const cr = this._state.cr.cr || this._state.cr;
+									const pb = await InputUiUtil.pGetUserNumber({
+										title: "Enter Proficiency Bonus",
+										min: 2,
+										int: true,
+										default: Parser.crToPb(cr) || 2
+									});
+									const abilMod = Parser.getAbilityModNumber($cbFinesse.prop("checked") ? this._state.dex : this._state.str);
+									const [melee, ranged] = [$cbMelee.prop("checked") ? "mw" : false, $cbRanged.prop("checked") ? "rw" : false];
+
+									const ptAtk = `{@atk ${[melee ? "mw" : null, ranged ? "rw" : null].filter(Boolean).join(",")}}`;
+									const ptHit = `{@hit ${pb + abilMod}} to hit`;
+									const ptRange = [
+										melee ? `reach ${$iptMeleeRange.val().trim() || 5} ft.` : null,
+										ranged ? (() => {
+											const vShort = $iptRangedShort.val().trim();
+											const vLong = $iptRangedLong.val().trim();
+											if (!vShort && !vLong) return `unlimited range`;
+											if (!vShort) return `range ${vLong}/${vLong} ft.`;
+											if (!vLong) return `range ${vShort}/${vShort} ft.`;
+											return `range ${vShort}/${vLong} ft.`;
+										})() : null
+									].filter(Boolean).join(" or ");
+
+									const getDamageDicePt = ($iptNum, $iptFaces) => {
+										const num = Number($iptNum.val()) || 1;
+										const faces = Number($iptFaces.val()) || 6;
+										return `${Math.floor(num * ((faces + 1) / 2))} (${num}d${faces})`;
+									};
+									const getDamageTypePt = ($ipDamType) => $ipDamType.val().trim() ? ` ${$ipDamType.val().trim()}` : "";
+									const ptDamage = [
+										$cbMelee.prop("checked") ? `${getDamageDicePt($iptMeleeDamDiceCount, $iptMeleeDamDiceNum)}${getDamageTypePt($iptMeleeDamType)} damage${$cbRanged.prop("checked") ? ` in melee` : ""}` : null,
+										$cbRanged.prop("checked") ? `${getDamageDicePt($iptRangedDamDiceCount, $iptRangedDamDiceNum)}${getDamageTypePt($iptRangedDamType)} damage${$cbMelee.prop("checked") ? ` at range` : ""}` : null,
+										$cbVersatile.prop("checked") ? `${getDamageDicePt($iptVersatileDamDiceCount, $iptVersatileDamDiceNum)}${getDamageTypePt($iptVersatileDamType)} damage if used with both hands` : null
+									].filter(Boolean).join(", or ");
+									const ptDamageFull = $cbBonusDamage.prop("checked") ? `${ptDamage}, plus ${getDamageDicePt($iptBonusDamDiceCount, $iptBonusDamDiceNum)}${getDamageTypePt($iptBonusDamType)} damage` : ptDamage;
+
+									return {
+										name: $iptName.val().trim() || "Unarmed Strike",
+										entries: [
+											`${ptAtk} ${ptHit}, ${ptRange}, one target. {@h}${ptDamageFull}.`
+										]
+									};
+								};
+
+								$$`<div class="flex-col">
+								<div class="flex-v-center mb-2">
+									${$iptName}
+									<label class="flex-v-center mr-2"><span class="mr-2">Melee</span>${$cbMelee}</label>
+									<label class="flex-v-center"><span class="mr-2">Ranged</span>${$cbRanged}</label>
+								</div>
+								<div class="flex-v-center">
+									<label class="flex-v-center mr-2"><span class="mr-2">Finesse</span>${$cbFinesse}</label>
+									<label class="flex-v-center mr-2"><span class="mr-2">Versatile</span>${$cbVersatile}</label>
+									<label class="flex-v-center"><span class="mr-2">Bonus Damage</span>${$cbBonusDamage}</label>
+								</div>
+								${$stageMelee}
+								${$stageRanged}
+								${$stageVersatile}
+								${$stageBonusDamage}
+								<div class="flex-v-center mt-2">${$btnConfirm}</div>
+								</div>`.appendTo($modalInner)
+							});
+						}
+					}
+				]
+			});
 	}
 
 	__$getReactionInput (cb) {
@@ -1740,6 +2019,21 @@ class CreatureBuilder extends Builder {
 				this.__$getGenericEntryInput__getEntryRow(doUpdateState, doUpdateOrder, {prop: options.prop, shortName: options.shortName}, entryRows).$ele.appendTo($wrpRows);
 				doUpdateState();
 			});
+
+		if (options.generators) {
+			options.generators.forEach(gen => {
+				$(`<button class="btn btn-xs btn-default ml-2">${gen.name}</button>`)
+					.appendTo($wrpBtnAdd)
+					.click(async () => {
+						const entry = await gen.action();
+						if (entry != null) {
+							this.__$getGenericEntryInput__getEntryRow(doUpdateState, doUpdateOrder, {prop: options.prop, shortName: options.shortName}, entryRows, entry)
+								.$ele.appendTo($wrpRows);
+							doUpdateState();
+						}
+					});
+			})
+		}
 
 		if (this._state[options.prop]) this._state[options.prop].forEach(entry => this.__$getGenericEntryInput__getEntryRow(doUpdateState, doUpdateOrder, {prop: options.prop, shortName: options.shortName}, entryRows, entry).$ele.appendTo($wrpRows));
 
@@ -1816,6 +2110,8 @@ class CreatureBuilder extends Builder {
 
 			const $selVariantSource = $(`<select class="form-control input-xs"><option value="">(Same as creature)</option></select>`)
 				.change(() => doUpdateState());
+
+			// TODO this should update on global source changes
 			this._ui.allSources.forEach(srcJson => $selVariantSource.append(`<option value="${srcJson.escapeQuotes()}">${Parser.sourceJsonToFull(srcJson).escapeQuotes()}</option>`));
 
 			const $iptPage = $(`<input type="number" class="form-control form-control--minimal input-xs" min="0">`)

@@ -5632,9 +5632,9 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 				this.b = b;
 				this.pr = false;
 
-				this.evl = meta => this.evl(meta, "evl");
+				this.evl = meta => this._get(meta, "evl");
 
-				this.avg = meta => this.evl(meta, "avg");
+				this.avg = meta => this._get(meta, "avg");
 
 				this._nxt = function* () {
 					const genL = a.nxt();
@@ -5744,9 +5744,9 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 				this.e = e;
 				this.pr = false;
 
-				this.evl = (meta) => this.evl(meta, "evl");
+				this.evl = (meta) => this._get(meta, "evl");
 
-				this.avg = meta => this.evl(meta, "avg");
+				this.avg = meta => this._get(meta, "avg");
 
 				this._hasNext = true;
 				this._nxt = function* () {

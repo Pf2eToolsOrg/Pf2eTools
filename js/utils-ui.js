@@ -81,19 +81,21 @@ class UiUtil {
 			opts.cbClose = cbClose;
 		} else if (cbClose) opts.cbClose = cbClose;
 
-		const handleCloseClick = (...args) => {
-			if (opts.cbClose) opts.cbClose(...args);
-			doClose();
+		// if the user closed the modal by clicking the "cancel" background, isDataEntered is false
+		const handleCloseClick = async (isDataEntered, ...args) => {
+			if (opts.cbClose) await opts.cbClose(isDataEntered, ...args);
+			$modal.remove();
 		};
 
 		const $modal = $(`<div class="ui-modal__overlay">`);
 		const $scroller = $(`<div class="ui-modal__scroller"/>`).data("close", (...args) => handleCloseClick(...args));
-		const $modalInner = $(`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu${opts.fullWidth ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? " full-height" : ""}"><h4>${opts.title}</h4><div data-r/></div>`).swap($scroller)
+		const $modalInner = $(`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu${opts.fullWidth ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? " full-height" : ""}"><h4>${opts.title}</h4><div data-r/></div>`)
+			.swap($scroller)
 			.appendTo($modal).click(e => e.stopPropagation());
-		const doClose = () => $modal.remove();
-		$modal.click(() => {
-			handleCloseClick();
-		});
+		if (opts.noMinHeight) $modalInner.css("height", "initial");
+
+		$modal.click(() => handleCloseClick(false));
+
 		$(`body`).append($modal);
 		return $scroller;
 	}
@@ -218,15 +220,16 @@ class InputUiUtil {
 			const $iptNumber = $(`<input class="form-control mb-2 text-align-right" type="number" ${options.min ? `min="${options.min}"` : ""} ${options.max ? `max="${options.max}"` : ""} ${options.default != null ? `value="${options.default}"` : ""}>`)
 				.keydown(evt => {
 					// return key
-					if (evt.which === 13) $modalInner.data("close")();
+					if (evt.which === 13) $modalInner.data("close")(true);
 					evt.stopPropagation();
 				});
 			const $btnOk = $(`<button class="btn btn-default">Enter</button>`)
-				.click(() => $modalInner.data("close")());
+				.click(() => $modalInner.data("close")(true));
 			const $modalInner = UiUtil.getShow$Modal({
 				title: options.title || "Enter a Number",
 				noMinHeight: true,
-				cbClose: () => {
+				cbClose: (isDataEntered) => {
+					if (!isDataEntered) resolve(null);
 					const raw = $iptNumber.val();
 					if (!raw.trim()) return null;
 					let num = Number(raw) || 0;
@@ -240,6 +243,82 @@ class InputUiUtil {
 			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
 			$iptNumber.focus();
 			$iptNumber.select();
+		});
+	}
+
+	/**
+	 * @param options Options.
+	 * @param options.values Array of enum values.
+	 * @param options.placeholder Placeholder text.
+	 * @param options.title Prompt title.
+	 * @param options.default Default selected index.
+	 * @return {Promise<number>} A promise which resolves to the index of the item the user selected, or null otherwise.
+	 */
+	static pGetUserEnum (options) {
+		options = options || {};
+		return new Promise(resolve => {
+			const $selEnum = $(`<select class="form-control mb-2"><option value="-1" disabled>${options.placeholder || "Select..."}</option></select>`);
+
+			options.values.forEach((v, i) => $(`<option value="${i}"/>`).text(v).appendTo($selEnum));
+			if (options.default != null) $selEnum.val(options.default);
+			else $selEnum[0].selectedIndex = 0;
+
+			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
+				.click(() => $modalInner.data("close")(true));
+
+			const $modalInner = UiUtil.getShow$Modal({
+				title: options.title || "Select an Option",
+				noMinHeight: true,
+				cbClose: (isDataEntered) => {
+					if (!isDataEntered) resolve(null);
+					const ix = Number($selEnum.val());
+					resolve(~ix ? ix : null);
+				}
+			});
+			$selEnum.appendTo($modalInner);
+			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+			$selEnum.focus();
+		});
+	}
+
+	/**
+	 * @param options Options.
+	 * @param options.title Prompt title.
+	 * @param options.default Default value.
+	 * @param options.autocomplete Array of autocomplete strings. REQUIRES INCLUSION OF THE TYPEAHEAD LIBRARY.
+	 * @return {Promise<String>} A promise which resolves to the string if the user entered one, or null otherwise.
+	 */
+	static pGetUserString (options) {
+		options = options || {};
+		return new Promise(resolve => {
+			const $iptStr = $(`<input class="form-control mb-2" ${options.default != null ? `value="${options.default}"` : ""}>`)
+				.keydown(async evt => {
+					if (options.autocomplete) {
+						// prevent double-binding the return key if we have autocomplete enabled
+						await MiscUtil.pDelay(17); // arbitrary delay to allow dropdown to render (~1000/60, i.e. 1 60 FPS frame)
+						if ($modalInner.find(`.typeahead.dropdown-menu`).is(":visible")) return;
+					}
+					// return key
+					if (evt.which === 13) $modalInner.data("close")(true);
+					evt.stopPropagation();
+				});
+			if (options.autocomplete && options.autocomplete.length) $iptStr.typeahead({source: options.autocomplete});
+			const $btnOk = $(`<button class="btn btn-default">Enter</button>`)
+				.click(() => $modalInner.data("close")(true));
+			const $modalInner = UiUtil.getShow$Modal({
+				title: options.title || "Enter Text",
+				noMinHeight: true,
+				cbClose: (isDataEntered) => {
+					if (!isDataEntered) resolve(null);
+					const raw = $iptStr.val();
+					if (!raw.trim()) return null;
+					else resolve(raw);
+				}
+			});
+			$iptStr.appendTo($modalInner);
+			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+			$iptStr.focus();
+			$iptStr.select();
 		});
 	}
 }

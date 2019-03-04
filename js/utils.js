@@ -2750,6 +2750,10 @@ MiscUtil = {
 			timeout = setTimeout(later, waitTime);
 			if (callNow) func.apply(context, args);
 		};
+	},
+
+	pDelay (msecs) {
+		return new Promise(resolve => setTimeout(() => resolve(), msecs));
 	}
 };
 

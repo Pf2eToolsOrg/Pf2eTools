@@ -39,6 +39,12 @@ class PageUi {
 
 	get allSources () { return this._allSources; }
 
+	set source (json) {
+		this._$selSource.val(json);
+		this._settings.activeSource = json;
+		this._doHandleUpdateSource();
+	}
+
 	_doSave () {
 		this.__saveableStates = this.__saveableStates || {builders: {}};
 
@@ -623,14 +629,14 @@ class BuilderUi {
 				{alt_Spell: SearchWidget.CONTENT_INDICES.alt_Spell},
 				(page, source, hash) => {
 					const [encName, encSource] = hash.split(HASH_LIST_SEP);
-					$modalInner.data("close")(false);
+					$modalInner.data("close")(false); // "cancel" close
 					resolve(`{@spell ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_PHB) ? `|${decodeURIComponent(encSource)}` : ""}}`)
 				},
 				searchOpts
 			);
 			const $modalInner = UiUtil.getShow$Modal(
 				"Select Spell",
-				(doResolve = true) => {
+				(doResolve) => {
 					searchItems.$wrpSearch.detach();
 					if (doResolve) resolve(null); // ensure resolution
 				}
@@ -639,11 +645,36 @@ class BuilderUi {
 		});
 	}
 
-	static $getSplitCommasSortButton ($ipt, cb) {
+	/**
+	 * @param $ipt The input to sort.
+	 * @param cb Callback function.
+	 * @param sortOptions Sort order options.
+	 * @param sortOptions.bottom Regex patterns that, should a token match, that token should be sorted to the end. Warning: slow.
+	 */
+	static $getSplitCommasSortButton ($ipt, cb, sortOptions) {
+		sortOptions = sortOptions || {};
 		return $(`<button class="btn btn-xs btn-default">Sort</button>`)
 			.click(() => {
 				const spl = $ipt.val().split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX);
-				$ipt.val(spl.sort(SortUtil.ascSortLower).join(", "));
+				$ipt.val(spl.sort((a, b) => {
+					if (sortOptions.bottom) {
+						const ixA = sortOptions.bottom.findIndex(re => {
+							const m = re.test(a);
+							re.lastIndex = 0;
+							return m;
+						});
+						const ixB = sortOptions.bottom.findIndex(re => {
+							const m = re.test(b);
+							re.lastIndex = 0;
+							return m;
+						});
+
+						if (~ixA && ~ixB) return 0;
+						else if (~ixA) return 1;
+						else if (~ixB) return -1;
+						else return SortUtil.ascSortLower(a, b);
+					} else return SortUtil.ascSortLower(a, b);
+				}).join(", "));
 				cb();
 			});
 	}
@@ -651,6 +682,15 @@ class BuilderUi {
 
 // based on DM screen's AddMenuSearchTab
 class SearchWidget {
+	/**
+	 * @param indexes An object with index names (categories) as the keys, and indexes as the values.
+	 * @param cbSearch Callback to run on user clicking a search result.
+	 * @param options Options object.
+	 * @param options.defaultCategory Default search category.
+	 * @param options.resultFilter Function which takes a document and returns false if it is to be filtered out of the results.
+	 * @param options.searchOptions Override for default elasticlunr search options.
+	 * @param options.fnTransform Override for default document transformation before being passed to cbSearch.
+	 */
 	constructor (indexes, cbSearch, options) {
 		options = options || {};
 
@@ -658,6 +698,8 @@ class SearchWidget {
 		this._cat = options.defaultCategory || "ALL";
 		this._cbSearch = cbSearch;
 		this._resultFilter = options.resultFilter || null;
+		this._searchOptions = options.searchOptions || null;
+		this._fnTransform = options.fnTransform || null;
 
 		this._flags = {
 			doClickFirst: false,
@@ -671,8 +713,8 @@ class SearchWidget {
 		this._$rendered = null;
 	}
 
-	static __getSearchOptions () {
-		return {
+	__getSearchOptions () {
+		return this._searchOptions || {
 			fields: {
 				n: {boost: 5, expand: true},
 				s: {expand: true}
@@ -720,7 +762,7 @@ class SearchWidget {
 		const searchInput = this._$iptSearch.val().trim();
 
 		const index = this._indexes[this._cat];
-		const results = index.search(searchInput, SearchWidget.__getSearchOptions());
+		const results = index.search(searchInput, this.__getSearchOptions());
 
 		const {toProcess, resultCount} = (() => {
 			if (results.length) {
@@ -746,7 +788,7 @@ class SearchWidget {
 				} else {
 					return {
 						toProcess: Object.values(index.documentStore.docs).slice(0, UiUtil.SEARCH_RESULTS_CAP).map(it => ({doc: it})),
-						resultCount: index.documentStore.docs.length
+						resultCount: Object.values(index.documentStore.docs).length
 					}
 				}
 			}
@@ -755,11 +797,14 @@ class SearchWidget {
 		this._$wrpResults.empty();
 		if (toProcess.length) {
 			const handleClick = (r) => {
-				const page = UrlUtil.categoryToPage(r.doc.c);
-				const source = r.doc.s;
-				const hash = r.doc.u;
+				if (this._fnTransform) this._cbSearch(this._fnTransform(r.doc));
+				else {
+					const page = UrlUtil.categoryToPage(r.doc.c);
+					const source = r.doc.s;
+					const hash = r.doc.u;
 
-				this._cbSearch(page, source, hash);
+					this._cbSearch(page, source, hash);
+				}
 			};
 
 			if (this._flags.doClickFirst) {
