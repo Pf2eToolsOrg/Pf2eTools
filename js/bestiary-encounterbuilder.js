@@ -9,6 +9,11 @@ class EncounterBuilder {
 
 		this._cachedTitle = null;
 
+		this._savedEncounters = null;
+		this._savedName = null;
+		this._lastClickedSave = null;
+		this._selectedSavedEncounter = null;
+
 		this.doSaveStateDebounced = MiscUtil.debounce(this.doSaveState, 50);
 	}
 
@@ -56,18 +61,23 @@ class EncounterBuilder {
 			JqueryUtil.showCopiedEffect($btnSvUrl);
 		});
 		$(`.ecgen__sv_file`).click(() => DataUtil.userDownload(`encounter`, this.getSaveableState()));
-		$(`.ecgen__ld_file`).click(() => {
-			DataUtil.userUpload((json) => {
-				if (json.items && json.sources) { // if it's a bestiary sublist
-					json.l = {
-						items: json.items,
-						sources: json.sources
-					}
+		$(`.ecgen__ld_file`).click(async () => {
+			const json = await DataUtil.pUserUpload();
+			if (json.items && json.sources) { // if it's a bestiary sublist
+				json.l = {
+					items: json.items,
+					sources: json.sources
 				}
-				this.pDoLoadState(json);
-			});
+			}
+			this.pDoLoadState(json);
 		});
 		$(`.ecgen__reset`).click(() => confirm("Are you sure?") && encounterBuilder.pReset());
+
+		// local save browser
+		$('.ecgen__ld-browser').click(() => encounterBuilder.doToggleBrowserUi(true));
+		$('.ecgen__sv-cancel').click(() => encounterBuilder.doToggleBrowserUi(false));
+		$(".ecgen__sv-new-save-name").keydown(evt => { if (evt.which === 13) this.handleSaveClick(true); });
+		window.addEventListener("popstate", () => this.doToggleBrowserUi(false)); // exits load/save menu upon browser history change
 	}
 
 	_initRandomHandlers () {
@@ -145,12 +155,13 @@ class EncounterBuilder {
 		}
 	}
 
-	initState () {
+	async initState () {
 		EncounterUtil.pGetSavedState().then(async savedState => {
 			if (savedState) await this.pDoLoadState(savedState.data, savedState.type === "local");
 			else this.addInitialPlayerRows();
 			this.stateInit = true;
 		});
+		await this._initSavedEncounters();
 	}
 
 	addInitialPlayerRows (first) {
@@ -190,6 +201,11 @@ class EncounterBuilder {
 			if (savedState.l && !playersOnly) {
 				ListUtil.doJsonLoad(savedState.l, false, sublistFuncPreload);
 			}
+
+			if (savedState.name) {
+				this._savedName = savedState.name;
+			}
+
 			this.updateDifficulty();
 		} catch (e) {
 			JqueryUtil.doToast({content: `Could not load encounter! Was the file valid?`, type: "danger"});
@@ -203,6 +219,7 @@ class EncounterBuilder {
 			l: ListUtil.getExportableSublist(),
 			a: this._advanced
 		};
+		if (this._savedName !== null) out.name = this._savedName;
 		if (this._advanced) {
 			out.c = $(`.ecgen__players_head_advanced`).find(`.ecgen__player_advanced_extra_head`).map((i, e) => $(e).val()).get();
 			out.d = $(`.ecgen__player_advanced`).map((i, e) => {
@@ -632,10 +649,6 @@ class EncounterBuilder {
 		} // else can't reroll
 	}
 
-	handleContext (evt) {
-		evt.stopPropagation();
-	}
-
 	handleSubhash () {
 		// loading state from the URL is instead handled as part of EncounterUtil.pGetSavedState
 		if (History.getSubHash(EncounterBuilder.HASH_KEY) === "true") this.show();
@@ -684,7 +697,7 @@ class EncounterBuilder {
 			$(`.ecgen__rating`).text(`Difficulty: ${difficulty}`);
 			$(`.ecgen__raw_total`).text(`Total XP: ${xp.encounter.baseXp.toLocaleString()}`);
 			$(`.ecgen__raw_per_player`).text(`(${Math.floor(xp.encounter.baseXp / xp.party.count).toLocaleString()} per player)`);
-			const infoHover = EntryRenderer.hover.bindOnMouseHoverEntry(
+			const infoHover = Renderer.hover.bindOnMouseHoverEntry(
 				{
 					entries: [
 						`{@b Adjusted by a ${xp.encounter.meta.playerAdjustedXpMult}× multiplier, based on a minimum challenge rating threshold of approximately ${`${xp.encounter.meta.crCutoff.toFixed(2)}`.replace(/[,.]?0+$/, "")}*&dagger;, and a party size of ${xp.encounter.meta.playerCount} players.}`,
@@ -773,20 +786,20 @@ class EncounterBuilder {
 		const mon = monsters[ixMon];
 		if (scaledTo != null) {
 			const scaled = await ScaleCreature.scale(mon, scaledTo);
-			EntryRenderer.hover.mouseOverPreloaded(evt, ele, scaled, UrlUtil.PG_BESTIARY, mon.source, UrlUtil.autoEncodeHash(mon));
+			Renderer.hover.mouseOverPreloaded(evt, ele, scaled, UrlUtil.PG_BESTIARY, mon.source, UrlUtil.autoEncodeHash(mon));
 		} else {
-			EntryRenderer.hover.mouseOver(evt, ele, UrlUtil.PG_BESTIARY, mon.source, UrlUtil.autoEncodeHash(mon));
+			Renderer.hover.mouseOver(evt, ele, UrlUtil.PG_BESTIARY, mon.source, UrlUtil.autoEncodeHash(mon));
 		}
 	}
 
 	static getTokenMouseOver (mon) {
-		return EntryRenderer.hover.createOnMouseHoverEntry(
+		return Renderer.hover.createOnMouseHoverEntry(
 			{
 				name: `Token \u2014 ${mon.name}`,
 				type: "image",
 				href: {
 					type: "external",
-					url: EntryRenderer.monster.getTokenUrl(mon)
+					url: Renderer.monster.getTokenUrl(mon)
 				}
 			},
 			true
@@ -813,19 +826,24 @@ class EncounterBuilder {
 				if (scaledTo == null || scaledTo === baseCrNum) return it.uid == null && it.h === toFindHash;
 				else return it.uid === toFindUid;
 			});
-			if (!~ixCurrItem) throw new Error(`Could not find previously sublisted item! 🐛`);
+			if (!~ixCurrItem) throw new Error(`Could not find previously sublisted item!`);
 
 			const toFindNxtUid = baseCrNum !== targetCrNum ? getUid(mon.name, mon.source, targetCrNum) : null;
 			const nextItem = state.items.find(it => {
 				if (targetCrNum === baseCrNum) return it.uid == null && it.h === toFindHash;
 				else return it.uid === toFindNxtUid;
 			});
+
 			// if there's an existing item with a matching UID (or lack of), merge into it
 			if (nextItem) {
 				const curr = state.items[ixCurrItem];
 				nextItem.c = `${Number(nextItem.c || 1) + Number(curr.c || 1)}`;
 				state.items.splice(ixCurrItem, 1);
-			} else state.items[ixCurrItem].uid = getUid(mon.name, mon.source, targetCrNum);
+			} else {
+				// if we're returning to the original CR, wipe the existing UID. Otherwise, adjust it
+				if (targetCrNum === baseCrNum) delete state.items[ixCurrItem].uid;
+				else state.items[ixCurrItem].uid = getUid(mon.name, mon.source, targetCrNum);
+			}
 
 			this._loadSublist(state);
 		} else {
@@ -866,7 +884,6 @@ class EncounterBuilder {
 			$($(e).find(`.ecgen__player_advanced_extra`)[pos]).remove();
 		});
 		$($(`.ecgen__players_head_advanced .ecgen__player_advanced_extra_head`)[pos]).remove();
-		// debugger
 	}
 
 	static getAdvancedPlayerDetailHeader (name) {
@@ -941,6 +958,116 @@ class EncounterBuilder {
 				` : ""}
 			</span>
 		`;
+	}
+
+	async _initSavedEncounters () {
+		this._savedEncounters = await EncounterUtil.pGetAllSaves();
+	}
+
+	pSetSavedEncounters () {
+		return StorageUtil.pSet(EncounterUtil.SAVED_ENCOUNTER_SAVE_LOCATION, this._savedEncounters);
+	}
+
+	doToggleBrowserUi (state) {
+		$("#loadsaves").toggle(state);
+		$("#contentwrapper").toggle(!state);
+		if (state) this.renderBrowser();
+	}
+
+	setBrowserButtonsState (isReload = false, isDisabled = true) {
+		if (isReload) {
+			$(".ecgen__sv-save").prop("disabled", isDisabled).text("Update Save");
+			$(".ecgen__sv-load").prop("disabled", isDisabled).text("Reload");
+		} else {
+			$(".ecgen__sv-save").prop("disabled", isDisabled).text("Save");
+			$(".ecgen__sv-load").prop("disabled", isDisabled).text("Load");
+		}
+	}
+
+	renderBrowser () {
+		const names = Object.keys(this._savedEncounters);
+		const anyName = !!names.length;
+
+		const $lstSaves = $("#listofsaves").empty();
+		if (names.length) {
+			names.forEach(name => {
+				const $btnDel = $(`<button class="btn btn-danger btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-trash"/></button>`)
+					.click(() => this.handleDeleteClick(name));
+
+				const $li = $$`<li class="${name === this._savedName ? "list-multi-selected" : ""}">
+					<div class="row">
+						<span class="col-4 name">${name}</span>
+						<span class="col-7-4"></span>
+						<span class="no-wrap col-0-6" onclick="event.preventDefault()">${$btnDel}</span>
+					</div>
+				</li>`.click(() => this._handleSavedClick($li, name)).appendTo($lstSaves)
+			});
+		} else {
+			$lstSaves.append(`<div class="px-2" style="font-size: 14px;"><i>No saved encounters found.</i></div>`);
+		}
+
+		this.setBrowserButtonsState(anyName, !anyName);
+	}
+
+	_handleSavedClick ($li, key) {
+		this._selectedSavedEncounter = this._savedEncounters[key];
+		this._lastClickedSave = key;
+
+		$("#listofsaves").children("li").removeClass("list-multi-selected");
+		$li.addClass("list-multi-selected");
+
+		if (this._savedName === this._lastClickedSave) this.setBrowserButtonsState(true, false);
+		else this.setBrowserButtonsState(false, false);
+	}
+
+	async handleSaveClick (isNew) {
+		const name = (() => {
+			if (isNew) {
+				const $iptName = $(".ecgen__sv-new-save-name");
+				const outName = $iptName.val().trim();
+
+				if (!outName) {
+					JqueryUtil.doToast({content: "Please enter an encounter name!", type: "warning"});
+					return null;
+				}
+
+				if (this._savedEncounters[outName] != null && !confirm(`Are you sure you want to overwrite the saved encounter "${name}"?`)) return null;
+				else {
+					$iptName.val("");
+					return outName;
+				}
+			} else if (this._savedName === this._lastClickedSave) return this._savedName;
+			else if (confirm(`Are you sure you want to overwrite the saved encounter "${this._lastClickedSave}"?`)) return this._savedName;
+		})();
+
+		if (!name) return;
+
+		this._savedName = name;
+		this._savedEncounters[name] = this.getSaveableState();
+		this.pSetSavedEncounters();
+		this.doSaveState();
+		this.renderBrowser();
+	}
+
+	async handleLoadClick () {
+		await this.pDoLoadState(this._selectedSavedEncounter);
+		this.doToggleBrowserUi(false);
+	}
+
+	handleDeleteClick (name) {
+		delete this._savedEncounters[name];
+		if (name === this._savedName) this._savedName = null;
+		this.pSetSavedEncounters();
+		this.renderBrowser();
+	}
+
+	handleResetEncounterSavesClick () {
+		if (confirm("Are you sure?")) {
+			this._savedEncounters = {};
+			this.pSetSavedEncounters();
+			this._lastClickedSave = null;
+			this.renderBrowser();
+		}
 	}
 }
 EncounterBuilder.HASH_KEY = "encounterbuilder";

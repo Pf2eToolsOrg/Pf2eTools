@@ -116,7 +116,7 @@ class GenTables {
 				} else if (it.data && it.data.tableName) {
 					it.name = it.data.tableName;
 				} else if (it.caption) {
-					if (GenTables._isSectionInTitle(cleanSections, it.caption)) {
+					if (GenTables._isSectionInTitle(cleanSections, it.caption) || (it.data && it.data.skipSectionPrefix)) {
 						it.name = it.caption;
 					} else {
 						it.name = `${cleanSections.last()}; ${it.caption}`;

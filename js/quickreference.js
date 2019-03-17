@@ -8,10 +8,10 @@ let reference;
 window.onload = function load () {
 	BookUtil.renderArea = $(`#pagecontent`);
 
-	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
+	BookUtil.renderArea.append(Renderer.utils.getBorderTr());
 	if (window.location.hash.length) BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message">Loading...</td></tr>`);
 	else BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message">Select a section to begin</td></tr>`);
-	BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
+	BookUtil.renderArea.append(Renderer.utils.getBorderTr());
 
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	Omnisearch.addScrollTopFloat();

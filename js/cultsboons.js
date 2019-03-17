@@ -101,7 +101,7 @@ function handleFilterChange () {
 	FilterBox.nextIfHidden(cultsAndBoonsList);
 }
 
-const renderer = EntryRenderer.getDefaultRenderer();
+const renderer = Renderer.get();
 function loadhash (id) {
 	renderer.setFirstSection(true);
 
@@ -109,27 +109,27 @@ function loadhash (id) {
 
 	const renderStack = [];
 	if (it._type === "c") {
-		EntryRenderer.cultboon.doRenderCultParts(it, renderer, renderStack);
-		renderer.recursiveEntryRender({entries: it.entries}, renderStack, 2);
+		Renderer.cultboon.doRenderCultParts(it, renderer, renderStack);
+		renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 2});
 
 		$("#pagecontent").html(`
-			${EntryRenderer.utils.getBorderTr()}
-			${EntryRenderer.utils.getNameTr(it)}
+			${Renderer.utils.getBorderTr()}
+			${Renderer.utils.getNameTr(it)}
 			<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
 			<tr class='text'><td colspan='6' class='text'>${renderStack.join("")}</td></tr>
-			${EntryRenderer.utils.getPageTr(it)}
-			${EntryRenderer.utils.getBorderTr()}
+			${Renderer.utils.getPageTr(it)}
+			${Renderer.utils.getBorderTr()}
 		`);
 	} else if (it._type === "b") {
 		it._displayName = it._displayName || `Demonic Boon: ${it.name}`;
-		EntryRenderer.cultboon.doRenderBoonParts(it, renderer, renderStack);
-		renderer.recursiveEntryRender({entries: it.entries}, renderStack, 1);
+		Renderer.cultboon.doRenderBoonParts(it, renderer, renderStack);
+		renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
 		$("#pagecontent").html(`
-			${EntryRenderer.utils.getBorderTr()}
-			${EntryRenderer.utils.getNameTr(it)}
+			${Renderer.utils.getBorderTr()}
+			${Renderer.utils.getNameTr(it)}
 			<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>
-			${EntryRenderer.utils.getPageTr(it)}
-			${EntryRenderer.utils.getBorderTr()}
+			${Renderer.utils.getPageTr(it)}
+			${Renderer.utils.getBorderTr()}
 		`);
 	}
 

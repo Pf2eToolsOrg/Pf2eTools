@@ -232,7 +232,7 @@
 			"entries": [
 				"In most campaigns, you can use or wear any equipment that you find on your adventures, within the bounds of common sense. For example, a burly half-orc won't fit in a halfling's leather armor, and a gnome would be swallowed up in a cloud giant's elegant robe.",
 				"The DM can impose mare realism. For example, a suit of plate armor made for one human might not fit another one without significant alterations, and a guard's uniform might be visibly ill-fitting when an adventurer tries to wear it as a disguise.",
-				"Using this variant, when adventurers find armor, clothing, and similar items that are made to be worn, they might need to visit an armorsmith, tailor, leatherworker, or similar expert to make the item wearable. The cost for such work varies from 10 to 40 percent of the market price of the item. The DM can either roll 1d4 × 10 or determine the increase in cost based on the extent of the alterations required."
+				"Using this variant, when adventurers find armor, clothing, and similar items that are made to be worn, they might need to visit an armorsmith, tailor, leatherworker, or similar expert to make the item wearable. The cost for such work varies from 10 to 40 percent of the market price of the item. The DM can either roll {@dice 1d4 × 10} or determine the increase in cost based on the extent of the alterations required."
 			],
 			"source": "PHB",
 			"page": 145
@@ -336,7 +336,7 @@
 					"type": "entries",
 					"name": "Bomb",
 					"entries": [
-						"As an action, a character can light this bomb and throw it at a point up to 60 feet away. Each creature within 5 feet of that point must succeed on a DC 12 Dexterity saving throw or take 3d6 fire damage."
+						"As an action, a character can light this bomb and throw it at a point up to 60 feet away. Each creature within 5 feet of that point must succeed on a DC 12 Dexterity saving throw or take {@dice 3d6} fire damage."
 					]
 				},
 				{
@@ -344,15 +344,15 @@
 					"name": "Gunpowder",
 					"entries": [
 						"Gunpowder is chiefly used to propel a bullet out of the barrel of a pistol or rifle, or it is formed into a bomb. Gunpowder is sold in small wooden kegs and in water-resistant powder horns.",
-						"Setting fire to a container full of gunpowder can cause it to explode, dealing fire damage to creatures within 10 feet of it (3d6 for a powder horn, 7d6 for a keg). A successful DC 12 Dexterity saving throw halves the damage. Setting fire to an ounce of gunpowder causes it to flare for 1 round, shedding bright light in a 30-foot radius and dim light for an additional 30 feet."
+						"Setting fire to a container full of gunpowder can cause it to explode, dealing fire damage to creatures within 10 feet of it ({@dice 3d6} for a powder horn, {@dice 7d6} for a keg). A successful DC 12 Dexterity saving throw halves the damage. Setting fire to an ounce of gunpowder causes it to flare for 1 round, shedding bright light in a 30-foot radius and dim light for an additional 30 feet."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Dynamite",
 					"entries": [
-						"As an action, a creature can light a stick of dynamite and throw it at a point up to 60 feet away. Each creature within 5 feet of that point must make a DC 12 Dexterity saving throw, taking 3d6 bludgeoning damage on a failed save, or half as much damage on a successful one.",
-						"A character can bind sticks of dynamite together so they explode at the same time. Each additional stick increases the damage by 1d6 (to a maximum of 10d6) and the burst radius by 5 feet (to a maximum of 20 feet).",
+						"As an action, a creature can light a stick of dynamite and throw it at a point up to 60 feet away. Each creature within 5 feet of that point must make a DC 12 Dexterity saving throw, taking {@dice 3d6} bludgeoning damage on a failed save, or half as much damage on a successful one.",
+						"A character can bind sticks of dynamite together so they explode at the same time. Each additional stick increases the damage by {@dice 1d6} (to a maximum of {@dice 10d6}) and the burst radius by 5 feet (to a maximum of 20 feet).",
 						"Dynamite can be rigged with a longer fuse to explode after a set amount of time, usually 1 to 6 rounds. Roll initiative for the dynamite. After the set number of rounds goes by, the dynamite explodes on that initiative."
 					]
 				},
@@ -361,7 +361,7 @@
 					"name": "Grenades",
 					"entries": [
 						"As an action, a character can throw a grenade at a point up to 60 feet away. With a grenade launcher, the character can propel the grenade up to 120 feet away.",
-						"Each creature within 20 feet of an exploding fragmentation grenade must make a DC 15 Dexterity saving throw, taking 5d6 piercing damage on a failed save, or half as much damage on a successful one.",
+						"Each creature within 20 feet of an exploding fragmentation grenade must make a DC 15 Dexterity saving throw, taking {@dice 5d6} piercing damage on a failed save, or half as much damage on a successful one.",
 						"One round after a smoke grenade lands, it emits a cloud of smoke that creates a heavily obscured area in a 20-foot radius. A moderate wind (at least 10 miles per hour) disperses the smoke in 4 rounds; a strong wind (20 or more miles per hour) disperses it in 1 round."
 					]
 				}
@@ -447,7 +447,7 @@
 			"entries": [
 				"Hero points work well in epic fantasy and mythic campaigns in which the characters are meant to be more like superheroes than the average adventurer is.",
 				"With this option, a character starts with 5 hero point at 1st level. Each time the character gains a level, he or she loses any unspent hero points and gains a new total equal to 5 + half the character's level.",
-				"A player can spend a hero point whenever he or she makes an attack roll, an ability check, or a saving throw The player can spend the hero point after the roll is made but before any of its results are applied. Spending the hero point allows the player to roll a d6 and add it to the d20, possibly turning a failure into a success. A player can spend only 1 hero point per roll.",
+				"A player can spend a hero point whenever he or she makes an attack roll, an ability check, or a saving throw The player can spend the hero point after the roll is made but before any of its results are applied. Spending the hero point allows the player to roll a {@dice d6} and add it to the {@dice d20}, possibly turning a failure into a success. A player can spend only 1 hero point per roll.",
 				"In addition, whenever a character fails a death saving throw, the player can spend one hero point to turn the failure into a success."
 			],
 			"source": "DMG",
@@ -580,7 +580,7 @@
 					"name": "Side Initiative",
 					"entries": [
 						"Recording initiative for each PC and monster, arranging everyone in the correct order, and remembering where you are in the list can bog the game down. If you want quicker combats, at the risk of those combats becoming unbalanced, try using the side initiative rule.",
-						"Under this variant, the players roll a d20 for their initiative as a group, or side. You also roll a d20. Neither roll receives any modifiers. Whoever rolls highest wins initiative. In case of a tie, keep rerolling until the tie is broken.",
+						"Under this variant, the players roll a {@dice d20} for their initiative as a group, or side. You also roll a {@dice d20}. Neither roll receives any modifiers. Whoever rolls highest wins initiative. In case of a tie, keep rerolling until the tie is broken.",
 						"When it's a side's turn, the members of that side can act in any order they choose. Once everyone on the side has taken a turn, the other side goes. A round ends when both sides have completed their turns.",
 						"If more than two sides take part in a battle, each side rolls for initiative. Sides act from the highest roll to lowest. Combat continues in the initiative order until the battle is complete.",
 						"This variant encourages teamwork and makes your life as a DM easier, since you can more easily coordinate monsters. On the downside, the side that wins initiative can gang up on enemies and take them out before they have a chance to act."
@@ -813,7 +813,7 @@
 							"name": "Heroism",
 							"entries": [
 								"You can use inspiration to encourage player characters to take risks. A fighter might not normally hurl himself over a balcony to land in the mid of a pack of hungry ghouls, but you can reward the character's daring maneuver with inspiration. Such a reward tells the players that you want them to embrace swashbuckling action.",
-								"This approach is great for campaigns that emphasize action-packed heroics. For such campaigns, consider allowing inspiration to be spent after a d20 roll, rather than before. This approach turns inspiration into a cushion against failure\u2014and a guarantee that it comes into play only when a player is faced directly by failure. Such an assurance makes risky tactics less daunting."
+								"This approach is great for campaigns that emphasize action-packed heroics. For such campaigns, consider allowing inspiration to be spent after a {@dice d20} roll, rather than before. This approach turns inspiration into a cushion against failure\u2014and a guarantee that it comes into play only when a player is faced directly by failure. Such an assurance makes risky tactics less daunting."
 							]
 						},
 						{
@@ -856,7 +856,7 @@
 					"type": "entries",
 					"name": "Tracking Inspiration",
 					"entries": [
-						"A player typically notes on a character sheet whether he or she has inspiration, or you can use poker chips or some other token. Alternatively, you can hand out special d20s to represent inspiration. When a player spends inspiration, he or she rolls the die and then hands it back to you. If the player instead gives the inspiration to someone else, the d20 can go to that other person."
+						"A player typically notes on a character sheet whether he or she has inspiration, or you can use poker chips or some other token. Alternatively, you can hand out special d20s to represent inspiration. When a player spends inspiration, he or she rolls the die and then hands it back to you. If the player instead gives the inspiration to someone else, the {@dice d20} can go to that other person."
 					]
 				},
 				{
@@ -906,8 +906,8 @@
 					"name": "Tracking Loyalty",
 					"entries": [
 						"Keep track of an NPC's loyalty score in secret so that the players won't know for sure whether an NPC party member is loyal or disloyal (even if the NPC is currently under a player's control).",
-						"An NPC's loyalty score increases by 1d4 if other party members help the NPC achieve a goal tied to its bond. Likewise, an NPC's loyalty score increases by 1d4 if the NPC is treated particularly well (for example, given a magic weapon as a gift) or rescued by another party member. An NPC 's loyalty score can never be raised above its maximum.",
-						"When other party members act in a manner that runs counter to the NPC's alignment or bond, reduce the PC's loyalty score by 1d4. Reduce the NPC's loyalty score by 2d4 if the character is abused, misled, or endangered by other party members for purely selfish reasons.",
+						"An NPC's loyalty score increases by {@dice 1d4} if other party members help the NPC achieve a goal tied to its bond. Likewise, an NPC's loyalty score increases by {@dice 1d4} if the NPC is treated particularly well (for example, given a magic weapon as a gift) or rescued by another party member. An NPC 's loyalty score can never be raised above its maximum.",
+						"When other party members act in a manner that runs counter to the NPC's alignment or bond, reduce the PC's loyalty score by {@dice 1d4}. Reduce the NPC's loyalty score by {@dice 2d4} if the character is abused, misled, or endangered by other party members for purely selfish reasons.",
 						"An NPC whose loyalty score drops to 0 is no longer loyal to the party and might part ways with them. A loyalty score can never drop below 0.",
 						"An NPC with a loyalty score of 10 or higher risks life and limb to help fellow party members. If the NPC's loyalty score is between 1 and 10, its loyalty is tenuous. An NPC whose loyalty drops to 0 no longer acts in the party's best interests. The disloyal NPC either leaves the party (attacking characters who attempt to intervene) or works in secret to bring about the party's downfall."
 					]
@@ -1003,7 +1003,7 @@
 					"rows": [
 						[
 							"01",
-							"The mixture creates a magical explosion, dealing 6d10 force damage to the mixer and 1d10 force damage to each creature within 5 feet of the mixer."
+							"The mixture creates a magical explosion, dealing {@dice 6d10} force damage to the mixer and {@dice 1d10} force damage to each creature within 5 feet of the mixer."
 						],
 						[
 							"02-08",
@@ -1164,7 +1164,7 @@
 					"name": "Hit Points and Hit Dice",
 					"entries": [
 						"You gain the hit points from your new class as described for levels after 1st. You gain the 1st-level hit points for a class only when you are a 1st-level character.",
-						"You add together the Hit Dice granted by all your classes to form your pool of Hit Dice. if the Hit Dice are the same die type, you can simply pool them together. For example, both the fighter and the paladin have a d10, so if you are a paladin 5/fighter 5, you have ten d10 Hit Dice. If your classes give you Hit Dice of different types, keep track of them separately. If you are a paladin 5/cleric 5, for example, you have five d10 Hit Dice and five d8 Hit Dice."
+						"You add together the Hit Dice granted by all your classes to form your pool of Hit Dice. if the Hit Dice are the same die type, you can simply pool them together. For example, both the fighter and the paladin have a {@dice d10}, so if you are a paladin 5/fighter 5, you have ten {@dice d10} Hit Dice. If your classes give you Hit Dice of different types, keep track of them separately. If you are a paladin 5/cleric 5, for example, you have five {@dice d10} Hit Dice and five {@dice d8} Hit Dice."
 					]
 				},
 				{
@@ -1781,7 +1781,7 @@
 					"name": "Shadowfell: Shadowfell Despair",
 					"entries": [
 						"A melancholic atmosphere pervades the Shadowfell. Extended forays to this plane can afflict characters with despair, as reflected in this optional rule.",
-						"When you deem it appropriate, though usually not more than once per day, you can require a character not native to the Shadowfell to make a DC 10 Wisdom saving throw. On a failure, the character is affected by despair. Roll a d6 to determine the effects, using the Shadowfell Despair table. You can substitute different despair effects of your own creation.",
+						"When you deem it appropriate, though usually not more than once per day, you can require a character not native to the Shadowfell to make a DC 10 Wisdom saving throw. On a failure, the character is affected by despair. Roll a {@dice d6} to determine the effects, using the Shadowfell Despair table. You can substitute different despair effects of your own creation.",
 						{
 							"type": "table",
 							"caption": "Shadowfell Despair",
@@ -1830,7 +1830,7 @@
 					"type": "entries",
 					"name": "Bytopia: Pervasive Goodwill",
 					"entries": [
-						"At the end of each long rest taken on this plane, a visitor that is neither lawful good nor neutral good must make a DC 10 Wisdom saving throw. On a failed save, the creature's alignment changes to lawful good or neutral good (whichever is closer to the creature's current alignment). The change becomes permanent if the creature doesn't leave the plane within 1d4 days. Otherwise, the creature's alignment reverts to normal after one day spent on a plane other than Bytopia. Casting the {@spell dispel evil and good} spell on the creature also restores its original alignment."
+						"At the end of each long rest taken on this plane, a visitor that is neither lawful good nor neutral good must make a DC 10 Wisdom saving throw. On a failed save, the creature's alignment changes to lawful good or neutral good (whichever is closer to the creature's current alignment). The change becomes permanent if the creature doesn't leave the plane within {@dice 1d4} days. Otherwise, the creature's alignment reverts to normal after one day spent on a plane other than Bytopia. Casting the {@spell dispel evil and good} spell on the creature also restores its original alignment."
 					]
 				},
 				{
@@ -1890,7 +1890,7 @@
 					"entries": [
 						"A non-evil visitor that finishes a long rest in the Abyss must make a DC 10 Charisma saving throw. On a failure, the creature becomes corrupted. Refer to the Abyssal Corruption table to determine the effects of this corruption. You can substitute different corruption effects of your own creation.",
 						"After finishing a long rest, a corrupted creature can make a DC 15 Charisma saving throw. On a successful save, the corruption effect ends. A dispel evil and good spell or any magic that removes a curse also ends the effect.",
-						"If a corrupted creature doesn't leave the plane within 1d4+2 days, its alignment changes to chaotic evil. Casting the {@spell dispel evil and good} spell on the creature restores its original alignment.",
+						"If a corrupted creature doesn't leave the plane within {@dice 1d4 + 2} days, its alignment changes to chaotic evil. Casting the {@spell dispel evil and good} spell on the creature restores its original alignment.",
 						{
 							"type": "table",
 							"caption": "Abyssal Corruption",
@@ -1950,7 +1950,7 @@
 					"type": "entries",
 					"name": "The Nine Hells: Pervasive Evil",
 					"entries": [
-						"Evil pervades the Nine Hells, and visitors to this plane feel its influence. At the end of each long rest taken on this plane, a visitor that isn't evil must make a DC 10 Wisdom saving throw. On a failed save, the creature's alignment changes to lawful evil. The change becomes permanent if the creature doesn't leave the plane within 1d4 days. Otherwise, the creature's alignment reverts to normal after one day spent on a plane other than the Nine Hells. Casting the {@spell dispel evil and good} spell on the creature also restores its original alignment."
+						"Evil pervades the Nine Hells, and visitors to this plane feel its influence. At the end of each long rest taken on this plane, a visitor that isn't evil must make a DC 10 Wisdom saving throw. On a failed save, the creature's alignment changes to lawful evil. The change becomes permanent if the creature doesn't leave the plane within {@dice 1d4} days. Otherwise, the creature's alignment reverts to normal after one day spent on a plane other than the Nine Hells. Casting the {@spell dispel evil and good} spell on the creature also restores its original alignment."
 					]
 				},
 				{
@@ -1964,7 +1964,7 @@
 					"type": "entries",
 					"name": "Mechanus: Law of Averages",
 					"entries": [
-						"While on Mechanus, creatures always use the average damage result for attacks and spells. For example, an attack that normally deals 1d10 + 5 damage always deals 10 damage on Mechanus."
+						"While on Mechanus, creatures always use the average damage result for attacks and spells. For example, an attack that normally deals {@dice 1d10 + 5} damage always deals 10 damage on Mechanus."
 					]
 				},
 				{
@@ -2129,27 +2129,27 @@
 						[
 							"1st-4th",
 							"+2",
-							"1d4"
+							"{@dice 1d4}"
 						],
 						[
 							"5th-8th",
 							"+3",
-							"1d6"
+							"{@dice 1d6}"
 						],
 						[
 							"9th-12th",
 							"+4",
-							"1d8"
+							"{@dice 1d8}"
 						],
 						[
 							"13th-16th",
 							"+5",
-							"1d10"
+							"{@dice 1d10}"
 						],
 						[
 							"17th-20th",
 							"+6",
-							"1d12"
+							"{@dice 1d12}"
 						]
 					]
 				}
@@ -2300,7 +2300,7 @@
 					"rows": [
 						[
 							"1",
-							"A surge of magical energy deals the caster 1d6 force damage per level of the spell."
+							"A surge of magical energy deals the caster {@dice 1d6} force damage per level of the spell."
 						],
 						[
 							"2",
@@ -2316,11 +2316,11 @@
 						],
 						[
 							"5",
-							"The caster suffers a minor but bizarre effect related to the spell. Such effects last only as long as the original spell's duration, or 1d10 minutes for spells that take effect instantaneously. For example, a fireball might cause smoke to billow from the caster's ears for 1d10 minutes. "
+							"The caster suffers a minor but bizarre effect related to the spell. Such effects last only as long as the original spell's duration, or {@dice 1d10} minutes for spells that take effect instantaneously. For example, a fireball might cause smoke to billow from the caster's ears for {@dice 1d10} minutes. "
 						],
 						[
 							"6",
-							"The spell activates after 1d12 hours. If the caster was the intended target, the spell takes effect normally. If the caster was not the intended target, the spell goes off in the general direction of the intended target, up to the spell's maximum range, if the target has moved away."
+							"The spell activates after {@dice 1d12} hours. If the caster was the intended target, the spell takes effect normally. If the caster was not the intended target, the spell goes off in the general direction of the intended target, up to the spell's maximum range, if the target has moved away."
 						]
 					]
 				}
@@ -2584,14 +2584,14 @@
 						"A defense roll has a bonus equal to the character's AC - 10. The DC for the roll equals the attacker's attack bonus + 11.",
 						"On a successful defense roll, the attack misses because it was dodged, absorbed by the character's armor, and so on. If a character fails a defense roll, the attack hits.",
 						"If the attacker would normally have advantage on the attack roll, you instead apply disadvantage to the defense roll, and vice versa if the attacker would have disadvantage.",
-						"If the defense roll comes up as a 1 on the d20, then the attack is a critical hit. If the attacker would normally score a critical hit on a roll of 19 or 20, then the attack is a critical hit on a 1 or 2, and so forth for broader critical ranges."
+						"If the defense roll comes up as a 1 on the {@dice d20}, then the attack is a critical hit. If the attacker would normally score a critical hit on a roll of 19 or 20, then the attack is a critical hit on a 1 or 2, and so forth for broader critical ranges."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Saving Throws",
 					"entries": [
-						"When a character forces an opponent to make a saving throw, that player instead makes a saving throw check. The bonus to the d20 roll for a saving throw check equals the effect's save DC -8.",
+						"When a character forces an opponent to make a saving throw, that player instead makes a saving throw check. The bonus to the {@dice d20} roll for a saving throw check equals the effect's save DC -8.",
 						"The DC for this check equals 11 + the target's saving throw modifier. On a successful check, the character overcomes the target's resistance and treats the target as if it failed its saving throw. On a failed check, the target is treated as if it succeeded on its save.",
 						"As with attacks, the saving throw check has advantage if the target would have disadvantage on its saving throw, and vice versa."
 					]
@@ -2600,7 +2600,7 @@
 					"type": "entries",
 					"name": "Contests and Checks",
 					"entries": [
-						"Whenever an NPC or monster would normally make an ability check, roll initiative, or take part in a contest, neither you nor the players roll the d20. Instead, use the rules for passive checks to determine the result. See chapter 7, \"Using Ability Scores,\" of the Player's Handbook for more information on passive checks."
+						"Whenever an NPC or monster would normally make an ability check, roll initiative, or take part in a contest, neither you nor the players roll the {@dice d20}. Instead, use the rules for passive checks to determine the result. See chapter 7, \"Using Ability Scores,\" of the Player's Handbook for more information on passive checks."
 					]
 				}
 			],
@@ -2882,7 +2882,7 @@
 					"type": "entries",
 					"name": "Morale Rating",
 					"entries": [
-						"Morale is a rating like an ability score modifier. It ranges from -10 to +10. These rules sometimes require a unit to make a check using its morale rating; roll a d20, add the unit's morale rating, and compare the total to the relevant DC, just as for an ability check.",
+						"Morale is a rating like an ability score modifier. It ranges from -10 to +10. These rules sometimes require a unit to make a check using its morale rating; roll a {@dice d20}, add the unit's morale rating, and compare the total to the relevant DC, just as for an ability check.",
 						"You select a morale rating for each unit involved in a battle. Assign the rating based on how the unit has been treated by its allies and commanders, the stakes of the battle, the unit's investment in the outcome, and any other factors that you think should play a role.",
 						{
 							"type": "table",
@@ -3056,7 +3056,7 @@
 							"entries": [
 								"Attacks in the mass combat rules use opposed BR checks to determine which side has the upper hand.",
 								"A unit can attack an adjacent enemy unit if any creature in the unit is within 5 feet of the target. It can make an attack at range if all its members can make ranged attacks that can reach the target.",
-								"When a unit attacks a target, the attacking unit rolls a d20 and adds its BR, as does the target. You then compare the results to determine the result of the fight:",
+								"When a unit attacks a target, the attacking unit rolls a {@dice d20} and adds its BR, as does the target. You then compare the results to determine the result of the fight:",
 								{
 									"type": "list",
 									"style": "list-hang-notitle",
@@ -3388,7 +3388,7 @@
 									"type": "entries",
 									"name": "Initiative Dice",
 									"entries": [
-										"Rather than making a d20 roll for initiative, characters and monsters might roll a variety of initiative dice\u2014normally d4 to d10. If you roll more than one initiative die, you add the results together to determine your initiative. The number and type of initiative dice you roll depend on the types of activities you want your character to undertake during the next round."
+										"Rather than making a {@dice d20} roll for initiative, characters and monsters might roll a variety of initiative dice\u2014normally {@dice d4} to {@dice d10}. If you roll more than one initiative die, you add the results together to determine your initiative. The number and type of initiative dice you roll depend on the types of activities you want your character to undertake during the next round."
 									]
 								},
 								{
@@ -3416,7 +3416,7 @@
 									"type": "entries",
 									"name": "Durations",
 									"entries": [
-										"Any effect that normally lasts until the end of a turn instead lasts until the end of the round during which that turn takes place. Similarly, any effect that normally lasts until the start of a turn now lasts until the start of the round during which that turn takes place. If the order in which effects end is important for some reason, roll a d20 for each effect (rerolling any ties). The effect with the lowest roll ends first, with the others ending in order of their results from lowest to highest."
+										"Any effect that normally lasts until the end of a turn instead lasts until the end of the round during which that turn takes place. Similarly, any effect that normally lasts until the start of a turn now lasts until the start of the round during which that turn takes place. If the order in which effects end is important for some reason, roll a {@dice d20} for each effect (rerolling any ties). The effect with the lowest roll ends first, with the others ending in order of their results from lowest to highest."
 									]
 								}
 							]
@@ -3448,11 +3448,11 @@
 									],
 									"rows": [
 										[
-											"d4",
+											"{@dice d4}",
 											"Ranged attack"
 										],
 										[
-											"d6",
+											"{@dice d6}",
 											"Movement"
 										],
 										[
@@ -3464,11 +3464,11 @@
 											"Any other action"
 										],
 										[
-											"d8",
+											"{@dice d8}",
 											"Melee attack"
 										],
 										[
-											"d10",
+											"{@dice d10}",
 											"Cast a spell"
 										]
 									]
@@ -3477,14 +3477,14 @@
 									"type": "entries",
 									"name": "Multiple Dice",
 									"entries": [
-										"It is common for characters to roll multiple dice for initiative. If you want to move in toward a foe and make a melee attack, you roll and add together 1d6 for movement and 1d8 for the attack. The result is your initiative."
+										"It is common for characters to roll multiple dice for initiative. If you want to move in toward a foe and make a melee attack, you roll and add together {@dice 1d6} for movement and {@dice 1d8} for the attack. The result is your initiative."
 									]
 								},
 								{
 									"type": "inset",
 									"name": "Variant: Weapon Speed",
 									"entries": [
-										"If you want to add more distinction to weapons at the cost of speed, replace rolling a d4 for ranged attacks and a d8 for melee attacks with the following:",
+										"If you want to add more distinction to weapons at the cost of speed, replace rolling a {@dice d4} for ranged attacks and a {@dice d8} for melee attacks with the following:",
 										"When determining initiative, a creature attacking with a weapon rolls initiative dice equal to the damage dice rolled for the weapon. Use the base damage listed in the Weapons table in chapter 5 of the {@i Player's Handbook}, ignoring additional damage granted by spells, magical effects, feats, and so on."
 									]
 								},
@@ -3520,7 +3520,7 @@
 									"type": "entries",
 									"name": "Swapping Gear",
 									"entries": [
-										"If you want to sheathe or drop a weapon, you roll an additional 1d6 for your initiative. You can decide to swap your gear at any point during your turn."
+										"If you want to sheathe or drop a weapon, you roll an additional {@dice 1d6} for your initiative. You can decide to swap your gear at any point during your turn."
 									]
 								}
 							]
@@ -3571,7 +3571,7 @@
 									"type": "entries",
 									"name": "Initiative Bonuses or Penalties",
 									"entries": [
-										"Though this system does not apply a creature's Dexterity modifier to its initiative rolls, other effects can alter initiative. If an effect would grant you a bonus to your initiative roll under the standard system, instead reduce the size of one die you roll for initiative, so that a d6 becomes a d4, a d4 becomes a d3, and so on. In the case of a penalty to your initiative, you apply the reverse process, increasing the size of one die rolled instead."
+										"Though this system does not apply a creature's Dexterity modifier to its initiative rolls, other effects can alter initiative. If an effect would grant you a bonus to your initiative roll under the standard system, instead reduce the size of one die you roll for initiative, so that a {@dice d6} becomes a {@dice d4}, a {@dice d4} becomes a {@dice d3}, and so on. In the case of a penalty to your initiative, you apply the reverse process, increasing the size of one die rolled instead."
 									]
 								},
 								{
@@ -4005,7 +4005,7 @@
 									"type": "entries",
 									"name": "Temporary Shelter",
 									"entries": [
-										"As part of a long rest, you can construct a lean-to or a similar shelter to keep your group dry and in the shade for the duration of the rest. Because it was fashioned quickly from whatever wood was available, the shelter collapses 1d3 days after being assembled."
+										"As part of a long rest, you can construct a lean-to or a similar shelter to keep your group dry and in the shade for the duration of the rest. Because it was fashioned quickly from whatever wood was available, the shelter collapses {@dice 1d3} days after being assembled."
 									]
 								},
 								{
@@ -5764,39 +5764,39 @@
 									"rows": [
 										[
 											"1\u20145",
-											"Roll 1d6 times on Magic Item Table A."
+											"Roll {@dice 1d6} times on {@table Magic Item Table A}."
 										],
 										[
 											"6\u201410",
-											"Roll 1d4 times on Magic Item Table B."
+											"Roll {@dice 1d4} times on {@table Magic Item Table B}."
 										],
 										[
 											"11\u201415",
-											"Roll 1d4 times on Magic Item Table C."
+											"Roll {@dice 1d4} times on {@table Magic Item Table C}."
 										],
 										[
 											"16\u201420",
-											"Roll 1d4 times on Magic Item Table D."
+											"Roll {@dice 1d4} times on {@table Magic Item Table D}."
 										],
 										[
 											"21\u201425",
-											"Roll 1d4 times on Magic Item Table E."
+											"Roll {@dice 1d4} times on {@table Magic Item Table E}."
 										],
 										[
 											"26\u201430",
-											"Roll 1d4 times on Magic Item Table F."
+											"Roll {@dice 1d4} times on {@table Magic Item Table F}."
 										],
 										[
 											"31\u201435",
-											"Roll 1d4 times on Magic Item Table G."
+											"Roll {@dice 1d4} times on {@table Magic Item Table G}."
 										],
 										[
 											"36\u201440",
-											"Roll 1d4 times on Magic Item Table H."
+											"Roll {@dice 1d4} times on {@table Magic Item Table H}."
 										],
 										[
 											"41+",
-											"Roll 1d4 times on Magic Item Table I."
+											"Roll {@dice 1d4} times on {@table Magic Item Table I}."
 										]
 									]
 								},
@@ -5814,23 +5814,23 @@
 									"rows": [
 										[
 											"Common",
-											"(1d6+1) × 10 gp"
+											"({@dice 1d6 + 1}) × 10 gp"
 										],
 										[
 											"Uncommon",
-											"1d6 × 100 gp"
+											"{@dice 1d6 × 100} gp"
 										],
 										[
 											"Rare",
-											"2d10 × 1,000 gp"
+											"{@dice 2d10 × 1,000} gp"
 										],
 										[
 											"Very rare",
-											"(1d4+1) × 10,000 gp"
+											"({@dice 1d4 + 1}) × 10,000 gp"
 										],
 										[
 											"Legendary",
-											"2d6 × 25,000 gp"
+											"{@dice 2d6 × 25,000} gp"
 										]
 									],
 									"footnotes": [
@@ -5994,7 +5994,7 @@
 											"rows": [
 												[
 													"1",
-													"A pickpocket lifts 1d10 × 5 gp from you.*"
+													"A pickpocket lifts {@dice 1d10 × 5} gp from you.*"
 												],
 												[
 													"2",
@@ -6491,7 +6491,7 @@
 									"name": "Resolution",
 									"entries": [
 										"The character must make a series of checks, with a DC determined at random based on the quality of the competition that the character runs into. Part of the risk of gambling is that one never knows who might end up sitting across the table.",
-										"The character makes three checks: Wisdom (Insight), Charisma (Deception), and Charisma (Intimidation). If the character has proficiency with an appropriate gaming set, that tool proficiency can replace the relevant skill in any of the checks. The DC for each of the checks is 5 + 2d10; generate a separate DC for each one. Consult the Gambling Results table to see how the character did.",
+										"The character makes three checks: Wisdom (Insight), Charisma (Deception), and Charisma (Intimidation). If the character has proficiency with an appropriate gaming set, that tool proficiency can replace the relevant skill in any of the checks. The DC for each of the checks is {@dice 5 + 2d10}; generate a separate DC for each one. Consult the Gambling Results table to see how the character did.",
 										{
 											"type": "table",
 											"caption": "Gambling Results",
@@ -6591,7 +6591,7 @@
 									"name": "Resolution",
 									"entries": [
 										"The character must make a series of checks, with a DC determined at random based on the quality of the opposition that the character runs into. A big part of the challenge in pit fighting lies in the unknown nature of a character's opponents.",
-										"The character makes three checks: Strength (Athletics), Dexterity (Acrobatics), and a special Constitution check that has a bonus equal to a roll of the character's largest Hit Die (this roll doesn't spend that die). If desired, the character can replace one of these skill checks with an attack roll using one of the character's weapons. The DC for each of the checks is 5 + 2d10; generate a separate DC for each one. Consult the Pit Fighting Results table to see how the character did.",
+										"The character makes three checks: Strength (Athletics), Dexterity (Acrobatics), and a special Constitution check that has a bonus equal to a roll of the character's largest Hit Die (this roll doesn't spend that die). If desired, the character can replace one of these skill checks with an attack roll using one of the character's weapons. The DC for each of the checks is {@dice 5 + 2d10}; generate a separate DC for each one. Consult the Pit Fighting Results table to see how the character did.",
 										{
 											"type": "table",
 											"caption": "Pit Fighting Results",
@@ -7628,15 +7628,15 @@
 					"name": "Madness Effects",
 					"entries": [
 						"Madness can be short-term, long-term, or indefinite. Most relatively mundane effects impose short-term madness, which lasts for just a few minutes. More horrific effects or cumulative effects can result in long-term or indefinite madness.",
-						"A character afflicted with {@b short-term madness} is subjected to an effect from the Short-Term Madness table for 1d10 minutes.",
-						"A character afflicted with {@b long-term madness} is subjected to an effect from the Long-Term Madness table for 1d10 × 10 hours.",
+						"A character afflicted with {@b short-term madness} is subjected to an effect from the Short-Term Madness table for {@dice 1d10} minutes.",
+						"A character afflicted with {@b long-term madness} is subjected to an effect from the Long-Term Madness table for {@dice 1d10 × 10} hours.",
 						"A character afflicted with {@b indefinite madness} gains a new character flaw from the Indefinite Madness table that lasts until cured.",
 						{
 							"type": "table",
 							"caption": "Short-Term Madness",
 							"colLabels": [
 								"d100",
-								"Effects (lasts 1d10 minutes)"
+								"Effects (lasts {@dice 1d10} minutes)"
 							],
 							"colStyles": [
 								"col-2 text-align-center",
@@ -7690,7 +7690,7 @@
 							"caption": "Long-Term Madness",
 							"colLabels": [
 								"d100",
-								"Effects (lasts 1d10 × 10 hours)"
+								"Effects (lasts {@dice 1d10 × 10} hours)"
 							],
 							"colStyles": [
 								"col-2 text-align-center",
@@ -7828,7 +7828,7 @@
 				{
 					"type": "inlineBlock",
 					"entries": [
-						"The Eberron campaign setting introduced this concept to reflect characters who are larger-than-life heroes destined for great things. Action points allow a player to add a bonus on any d20 roll so that characters can dodge or at least mitigate the effects of bad luck. This rule inspired the \"",
+						"The Eberron campaign setting introduced this concept to reflect characters who are larger-than-life heroes destined for great things. Action points allow a player to add a bonus on any {@dice d20} roll so that characters can dodge or at least mitigate the effects of bad luck. This rule inspired the \"",
 						{
 							"type": "link",
 							"href": {
@@ -7842,7 +7842,7 @@
 					]
 				},
 				"You start with 5 action points at 1st level. Each time you gain a level, you lose any unspent action points and gain a new total equal to 5 + half your level.",
-				"You can spend an action point whenever you roll a d20 to make an attack roll, an ability check, or a saving throw. You don't have to decide until after you make the roll and learn if it succeeded or failed. If you spend an action point, roll a d6 and add it to your d20 result, possibly changing a failure into a success. You can spend only 1 action point per roll.",
+				"You can spend an action point whenever you roll a {@dice d20} to make an attack roll, an ability check, or a saving throw. You don't have to decide until after you make the roll and learn if it succeeded or failed. If you spend an action point, roll a {@dice d6} and add it to your {@dice d20} result, possibly changing a failure into a success. You can spend only 1 action point per roll.",
 				"In addition, whenever you fail a death saving throw, you can spend an action point to make it a success."
 			],
 			"source": "UAEberron",

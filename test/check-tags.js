@@ -1,8 +1,9 @@
 const fs = require('fs');
-const ut = require('../js/utils.js');
-const er = require('../js/entryrender.js');
+require('../js/utils.js');
+require('../js/render.js');
 const utS = require("../node/util-search-index");
 const bu = require("../js/bookutils");
+const ut = require("../node/util.js");
 
 const TIME_TAG = "\tRun duration";
 console.time(TIME_TAG);
@@ -119,59 +120,6 @@ const PRIMITIVE_HANDLERS = {
 	string: [],
 	object: []
 };
-function dataRecurse (file, obj, primitiveHandlers, lastType, lastKey) {
-	const to = typeof obj;
-	if (obj == null) return;
-
-	switch (to) {
-		case undefined:
-			if (primitiveHandlers.undefined) {
-				primitiveHandlers.undefined instanceof Array
-					? primitiveHandlers.undefined.forEach(ph => ph(file, obj, lastType, lastKey))
-					: primitiveHandlers.undefined(file, obj, lastType, lastKey);
-			}
-			break;
-		case "boolean":
-			if (primitiveHandlers.boolean) {
-				primitiveHandlers.boolean instanceof Array
-					? primitiveHandlers.boolean.forEach(ph => ph(file, obj, lastType, lastKey))
-					: primitiveHandlers.boolean(file, obj, lastType, lastKey);
-			}
-			break;
-		case "number":
-			if (primitiveHandlers.number) {
-				primitiveHandlers.number instanceof Array
-					? primitiveHandlers.number.forEach(ph => ph(file, obj, lastType, lastKey))
-					: primitiveHandlers.number(file, obj, lastType, lastKey);
-			}
-			break;
-		case "string":
-			if (primitiveHandlers.string) {
-				primitiveHandlers.string instanceof Array
-					? primitiveHandlers.string.forEach(ph => ph(file, obj, lastType, lastKey))
-					: primitiveHandlers.string(file, obj, lastType, lastKey);
-			}
-			break;
-		case "object": {
-			if (obj instanceof Array) {
-				obj.forEach(it => dataRecurse(file, it, primitiveHandlers, lastType, lastKey));
-			} else {
-				if (primitiveHandlers.object) {
-					primitiveHandlers.object instanceof Array
-						? primitiveHandlers.object.forEach(ph => ph(file, obj, lastType, lastKey))
-						: primitiveHandlers.object(file, obj, lastType, lastKey);
-				}
-				Object.keys(obj).forEach(k => {
-					const v = obj[k];
-					obj[k] = dataRecurse(file, v, primitiveHandlers, lastType, k)
-				});
-			}
-			break;
-		}
-		default:
-			console.warn("Unhandled type?!", to);
-	}
-}
 
 function getSimilar (url) {
 	// scan for a list of similar entries, to aid debugging
@@ -364,7 +312,7 @@ class StripTagTest {
 
 	static checkString (file, str) {
 		try {
-			EntryRenderer.stripTags(str)
+			Renderer.stripTags(str)
 		} catch (e) {
 			if (!StripTagTest._seenErrors.has(e.message)) {
 				StripTagTest._seenErrors.add(e.message);
@@ -382,12 +330,12 @@ class TableDiceTest {
 	}
 
 	static checkTable (file, obj) {
-		if (obj.type === "table" && EntryRenderer.isRollableTable(obj)) {
+		if (obj.type === "table" && Renderer.isRollableTable(obj)) {
 			const possibleResults = new Set();
 			const errors = [];
 			const cbErr = (cell, e) => MSG.TableDiceTest += `Row parse failed! Cell was: "${cell}"; error was: "${e.message}"\n`;
 			obj.rows.forEach(r => {
-				const row = EntryRenderer.getRollableRow(r, cbErr);
+				const row = Renderer.getRollableRow(r, cbErr);
 				const cell = row[0].roll;
 				if (!cell) return;
 				if (cell.exact != null) {
@@ -397,7 +345,7 @@ class TableDiceTest {
 				} else {
 					if (cell.max === 0) cell.max = 100;
 					// convert +inf to a reasonable range (no official table goes to 250+ as of 2019-03-01)
-					if (cell.max === EntryRenderer.dice.POS_INFINITE) cell.max = 250;
+					if (cell.max === Renderer.dice.POS_INFINITE) cell.max = 250;
 					for (let i = cell.min; i <= cell.max; ++i) {
 						if (possibleResults.has(i)) errors.push(`"min-max" value "${i}" was repeated!`);
 						possibleResults.add(i);
@@ -412,7 +360,7 @@ class TableDiceTest {
 			cleanHeader.split(";").forEach(rollable => {
 				if (rollable.includes("#$prompt_")) hasPrompt = true;
 
-				const rollTree = EntryRenderer.dice.parseToTree(rollable);
+				const rollTree = Renderer.dice.parseToTree(rollable);
 				if (rollTree) {
 					const genRolls = rollTree.nxt();
 					let gen;
@@ -471,7 +419,7 @@ class AreaCheck {
 		AreaCheck.errorSet = new Set();
 		const contents = JSON.parse(fs.readFileSync(file, 'utf8'));
 		AreaCheck._buildMap(file, contents.data);
-		dataRecurse(file, contents, {string: AreaCheck.checkString});
+		ut.dataRecurse(file, contents, {string: AreaCheck.checkString});
 		if (AreaCheck.errorSet.size) {
 			MSG.AreaCheck += `Errors in ${file}! See below:\n`;
 
@@ -535,7 +483,7 @@ async function main () {
 
 	fileRecurse("./data", (file) => {
 		const contents = JSON.parse(fs.readFileSync(file, 'utf8'));
-		dataRecurse(file, contents, PRIMITIVE_HANDLERS);
+		ut.dataRecurse(file, contents, PRIMITIVE_HANDLERS);
 	});
 
 	AttachedSpellAndGroupItemsCheck.run();

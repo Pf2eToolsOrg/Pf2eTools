@@ -107,7 +107,7 @@ function addShips (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	EntryRenderer.hover.bindPopoutButton(shipList);
+	Renderer.hover.bindPopoutButton(shipList);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
@@ -138,9 +138,9 @@ function getSublistItem (it, pinId) {
 }
 
 function loadhash (jsonIndex) {
-	EntryRenderer.getDefaultRenderer().setFirstSection(true);
+	Renderer.get().setFirstSection(true);
 	const it = shipList[jsonIndex];
 	const $content = $(`#pagecontent`).empty();
-	$content.append(EntryRenderer.ship.getRenderedString(it));
+	$content.append(Renderer.ship.getRenderedString(it));
 	ListUtil.updateSelected();
 }

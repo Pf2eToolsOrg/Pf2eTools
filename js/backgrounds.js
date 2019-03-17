@@ -2,7 +2,7 @@
 
 const JSON_URL = "data/backgrounds.json";
 const JSON_FLUFF_URL = "data/fluff-backgrounds.json";
-const renderer = EntryRenderer.getDefaultRenderer();
+const renderer = Renderer.get();
 
 let list;
 const sourceFilter = getSourceFilter();
@@ -81,9 +81,9 @@ function addBackgrounds (data) {
 		const bg = bgList[bgI];
 		if (ExcludeUtil.isExcluded(bg.name, "background", bg.source)) continue;
 
-		const skillDisplay = EntryRenderer.background.getSkillSummary(bg.skillProficiencies, true, bg._fSkills = []);
-		EntryRenderer.background.getToolSummary(bg.toolProficiencies, true, bg._fTools = []);
-		EntryRenderer.background.getLanguageSummary(bg.languageProficiencies, true, bg._fLangs = []);
+		const skillDisplay = Renderer.background.getSkillSummary(bg.skillProficiencies, true, bg._fSkills = []);
+		Renderer.background.getToolSummary(bg.toolProficiencies, true, bg._fTools = []);
+		Renderer.background.getLanguageSummary(bg.languageProficiencies, true, bg._fLangs = []);
 
 		// populate table
 		tempString +=
@@ -124,7 +124,7 @@ function addBackgrounds (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	EntryRenderer.hover.bindPopoutButton(bgList);
+	Renderer.hover.bindPopoutButton(bgList);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
@@ -150,7 +150,7 @@ function getSublistItem (bg, pinId) {
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(bg)}" title="${bg.name}">
 				<span class="name col-4">${bg.name}</span>
-				<span class="name col-8">${EntryRenderer.background.getSkillSummary(bg.skillProficiencies || [], true)}</span>
+				<span class="name col-8">${Renderer.background.getSkillSummary(bg.skillProficiencies || [], true)}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
@@ -165,25 +165,25 @@ function loadhash (id) {
 	function buildStatsTab () {
 		const renderStack = [];
 		const entryList = {type: "entries", entries: bg.entries};
-		renderer.recursiveEntryRender(entryList, renderStack);
+		renderer.recursiveRender(entryList, renderStack);
 
 		$pgContent.append(`
-			${EntryRenderer.utils.getBorderTr()}
-			${EntryRenderer.utils.getNameTr(bg)}
+			${Renderer.utils.getBorderTr()}
+			${Renderer.utils.getNameTr(bg)}
 			<tr><td class="divider" colspan="6"><div></div></td></tr>
 			<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>
-			${EntryRenderer.utils.getPageTr(bg)}
-			${EntryRenderer.utils.getBorderTr()}
+			${Renderer.utils.getPageTr(bg)}
+			${Renderer.utils.getBorderTr()}
 		`);
 	}
 
-	const traitTab = EntryRenderer.utils.tabButton(
+	const traitTab = Renderer.utils.tabButton(
 		"Traits",
 		() => {},
 		buildStatsTab
 	);
 
-	const infoTab = EntryRenderer.utils.tabButton(
+	const infoTab = Renderer.utils.tabButton(
 		"Info",
 		() => {},
 		() => {
@@ -194,21 +194,21 @@ function loadhash (id) {
 				return $(`<td colspan="6" class="text">`);
 			}
 
-			$pgContent.append(EntryRenderer.utils.getBorderTr());
-			$pgContent.append(EntryRenderer.utils.getNameTr(bg));
+			$pgContent.append(Renderer.utils.getBorderTr());
+			$pgContent.append(Renderer.utils.getNameTr(bg));
 			let $tr = get$Tr();
 			let $td = get$Td().appendTo($tr);
 			$pgContent.append($tr);
-			$pgContent.append(EntryRenderer.utils.getBorderTr());
+			$pgContent.append(Renderer.utils.getBorderTr());
 
 			DataUtil.loadJSON(JSON_FLUFF_URL).then((data) => {
 				const baseFluff = data.background.find(it => it.name.toLowerCase() === bg.name.toLowerCase() && it.source.toLowerCase() === bg.source.toLowerCase());
 				if (bg.fluff && bg.fluff.entries) { // override; for homebrew usage only
 					renderer.setFirstSection(true);
-					$td.append(renderer.renderEntry({type: "section", entries: bg.fluff.entries}));
+					$td.append(renderer.render({type: "section", entries: bg.fluff.entries}));
 				} else if (baseFluff && baseFluff.entries) {
 					renderer.setFirstSection(true);
-					$td.append(renderer.renderEntry({type: "section", entries: baseFluff.entries}));
+					$td.append(renderer.render({type: "section", entries: baseFluff.entries}));
 				} else {
 					$td.empty();
 					$td.append(HTML_NO_INFO);
@@ -216,7 +216,7 @@ function loadhash (id) {
 			});
 		}
 	);
-	EntryRenderer.utils.bindTabButtons(traitTab, infoTab);
+	Renderer.utils.bindTabButtons(traitTab, infoTab);
 
 	ListUtil.updateSelected();
 }

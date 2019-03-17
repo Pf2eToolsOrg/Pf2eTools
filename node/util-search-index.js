@@ -1,5 +1,5 @@
 const ut = require('../js/utils.js');
-const er = require('../js/entryrender.js');
+const er = require('../js/render.js');
 const od = require('../js/omnidexer.js');
 
 UtilSearchIndex = {};
@@ -9,13 +9,13 @@ UtilSearchIndex._node_pGetBasicVariantItems = async function (rawVariants) {
 	if (!this.basicVariantItems) {
 		const rawBasics = require(`../data/basicitems.json`);
 
-		const basicItems = await EntryRenderer.item._pGetAndProcBasicItems(rawBasics);
-		const genericVariants = await EntryRenderer.item._pGetAndProcGenericVariants(rawVariants);
-		const genericAndSpecificVariants = EntryRenderer.item._createSpecificVariants(basicItems, genericVariants);
+		const basicItems = await Renderer.item._pGetAndProcBasicItems(rawBasics);
+		const [genericVariants, linkedLootTables] = await Renderer.item._pGetAndProcGenericVariants(rawVariants);
+		const genericAndSpecificVariants = Renderer.item._createSpecificVariants(basicItems, genericVariants, linkedLootTables);
 
 		const revNames = [];
 		genericAndSpecificVariants.forEach(item => {
-			const revName = EntryRenderer.item.modifierPostToPre(MiscUtil.copy(item));
+			const revName = Renderer.item.modifierPostToPre(MiscUtil.copy(item));
 			if (revName) revNames.push(revName);
 		});
 

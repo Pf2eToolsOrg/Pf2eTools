@@ -59,19 +59,18 @@ class StatGen {
 			.click(() => DataUtil.userDownload(`statgen-pointbuy`, this.getSaveableState()));
 
 		$(`#pbuy__load_file`)
-			.click(() => {
-				DataUtil.userUpload((json) => {
-					if (StatGen.isValidState(json)) {
-						this.doLoadStateFrom(json);
-						this.doSaveDebounced();
-						this.handleCostChanges();
-					} else {
-						return JqueryUtil.doToast({
-							content: `Invalid save file!`,
-							type: "danger"
-						});
-					}
-				});
+			.click(async () => {
+				const json = await DataUtil.userUpload();
+				if (StatGen.isValidState(json)) {
+					this.doLoadStateFrom(json);
+					this.doSaveDebounced();
+					this.handleCostChanges();
+				} else {
+					return JqueryUtil.doToast({
+						content: `Invalid save file!`,
+						type: "danger"
+					});
+				}
 			});
 
 		const $btnSaveUrl = $(`#pbuy__save_url`)
@@ -157,7 +156,7 @@ class StatGen {
 			return BrewUtil.pPurgeBrew();
 		}
 
-		this.raceData = EntryRenderer.race.mergeSubraces(data.race);
+		this.raceData = Renderer.race.mergeSubraces(data.race);
 		if (brew.race) this.raceData = this.raceData.concat(brew.race);
 		this.raceData = this.raceData.filter(it => !ExcludeUtil.isExcluded(it.name, "race", it.source));
 
@@ -434,7 +433,7 @@ class StatGen {
 	rollStats () {
 		const formula = $(`#stats-formula`).val();
 
-		const tree = EntryRenderer.dice._parse2(formula);
+		const tree = Renderer.dice._parse2(formula);
 
 		const $rolled = $("#rolled");
 		if (!tree) {

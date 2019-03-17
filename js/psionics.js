@@ -89,14 +89,14 @@ async function onJsonLoad (data) {
 			const stack = [];
 			const renderSpell = (p) => {
 				stack.push(`<table class="spellbook-entry"><tbody>`);
-				stack.push(EntryRenderer.psionic.getCompactRenderedString(p));
+				stack.push(Renderer.psionic.getCompactRenderedString(p));
 				stack.push(`</tbody></table>`);
 			};
 
 			const renderType = (type) => {
 				const toRender = toShow.filter(p => p.type === type);
 				if (toRender.length) {
-					stack.push(EntryRenderer.utils.getBorderTr(`<span class="spacer-name">${Parser.psiTypeToFull(type)}</span>`));
+					stack.push(Renderer.utils.getBorderTr(`<span class="spacer-name">${Parser.psiTypeToFull(type)}</span>`));
 
 					stack.push(`<tr class="spellbook-level"><td>`);
 					toRender.forEach(p => renderSpell(p));
@@ -136,7 +136,7 @@ async function onJsonLoad (data) {
 				{
 					name: {name: "Name", transform: true},
 					source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}">${Parser.sourceJsonToAbv(it)}</span>`},
-					_text: {name: "Text", transform: (it) => it.type === "T" ? EntryRenderer.psionic.getTalentText(it, renderer) : EntryRenderer.psionic.getDisciplineText(it, renderer), flex: 3}
+					_text: {name: "Text", transform: (it) => it.type === "T" ? Renderer.psionic.getTalentText(it, renderer) : Renderer.psionic.getDisciplineText(it, renderer), flex: 3}
 				},
 				{generator: ListUtil.basicFilterGenerator},
 				(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source)
@@ -203,7 +203,7 @@ function addPsionics (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	EntryRenderer.hover.bindPopoutButton(psionicList);
+	Renderer.hover.bindPopoutButton(psionicList);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
@@ -238,22 +238,22 @@ function getSublistItem (p, pinId) {
 
 let renderer;
 function loadhash (jsonIndex) {
-	if (!renderer) renderer = EntryRenderer.getDefaultRenderer();
+	if (!renderer) renderer = Renderer.get();
 	renderer.setFirstSection(true);
 	const $content = $(`#pagecontent`).empty();
 
 	const psi = psionicList[jsonIndex];
 
 	$content.append(`
-		${EntryRenderer.utils.getBorderTr()}
-		${EntryRenderer.utils.getNameTr(psi)}
+		${Renderer.utils.getBorderTr()}
+		${Renderer.utils.getNameTr(psi)}
 		<tr>
 			<td colspan="6"><i>${psi.type === "T" ? Parser.psiTypeToFull(psi[JSON_ITEM_TYPE]) : `${psi._fOrder} ${Parser.psiTypeToFull(psi[JSON_ITEM_TYPE])}`}</i><span id="order"></span> <span id="type"></span></td>
 		</tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
-		<tr class="text"><td colspan="6" id="text">${psi.type === "T" ? EntryRenderer.psionic.getTalentText(psi, renderer) : EntryRenderer.psionic.getDisciplineText(psi, renderer)}</td></tr>
-		${EntryRenderer.utils.getPageTr(psi)}
-		${EntryRenderer.utils.getBorderTr()}
+		<tr class="text"><td colspan="6" id="text">${psi.type === "T" ? Renderer.psionic.getTalentText(psi, renderer) : Renderer.psionic.getDisciplineText(psi, renderer)}</td></tr>
+		${Renderer.utils.getPageTr(psi)}
+		${Renderer.utils.getBorderTr()}
 	`);
 
 	loadsub([]);

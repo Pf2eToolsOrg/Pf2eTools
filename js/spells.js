@@ -270,8 +270,8 @@ function pPostLoad () {
 						range: {name: "Range", transform: (it) => Parser.spRangeToFull(it)},
 						components: {name: "Components", transform: (it) => Parser.spComponentsToFull(it)},
 						classes: {name: "Classes", transform: (it) => Parser.spMainClassesToFull(it)},
-						entries: {name: "Text", transform: (it) => EntryRenderer.getDefaultRenderer().renderEntry({type: "entries", entries: it}, 1), flex: 3},
-						entriesHigherLevel: {name: "At Higher Levels", transform: (it) => EntryRenderer.getDefaultRenderer().renderEntry({type: "entries", entries: (it || [])}, 1), flex: 2}
+						entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}, 1), flex: 3},
+						entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}, 1), flex: 2}
 					},
 					{generator: ListUtil.basicFilterGenerator},
 					(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source)
@@ -462,7 +462,7 @@ function pPageInit (loadedSources) {
 			const stack = [];
 			const renderSpell = (sp) => {
 				stack.push(`<table class="spellbook-entry"><tbody>`);
-				stack.push(EntryRenderer.spell.getCompactRenderedString(sp));
+				stack.push(Renderer.spell.getCompactRenderedString(sp));
 				stack.push(`</tbody></table>`);
 			};
 
@@ -470,7 +470,7 @@ function pPageInit (loadedSources) {
 				const atLvl = toShow.filter(sp => sp.level === i);
 				if (atLvl.length) {
 					const levelText = i === 0 ? `${Parser.spLevelToFull(i)}s` : `${Parser.spLevelToFull(i)}-level Spells`;
-					stack.push(EntryRenderer.utils.getBorderTr(`<span class="spacer-name">${levelText}</span>`));
+					stack.push(Renderer.utils.getBorderTr(`<span class="spacer-name">${levelText}</span>`));
 
 					stack.push(`<tr class="spellbook-level"><td>`);
 					atLvl.forEach(sp => renderSpell(sp));
@@ -640,14 +640,24 @@ function addSpells (data) {
 			});
 		}
 
-		// add high elf
-		if (spell.level === 0 && spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Wizard")) {
-			(spell.races || (spell.races = [])).push({
-				name: "Elf (High)",
-				source: SRC_PHB,
-				baseName: "Elf",
-				baseSource: SRC_PHB
-			});
+		if (spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Wizard")) {
+			// add high elf
+			if (spell.level === 0) {
+				(spell.races || (spell.races = [])).push({
+					name: "Elf (High)",
+					source: SRC_PHB,
+					baseName: "Elf",
+					baseSource: SRC_PHB
+				});
+			}
+
+			// add arcana cleric
+			if (spell.level >= 6) {
+				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
+					class: {name: STR_CLERIC, source: SRC_PHB},
+					subclass: {name: "Arcana", source: SRC_SCAG}
+				});
+			}
 		}
 
 		// add homebrew class/subclass
@@ -730,7 +740,7 @@ function addSpells (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	EntryRenderer.hover.bindPopoutButton(spellList);
+	Renderer.hover.bindPopoutButton(spellList);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton(sublistFuncPreload);
@@ -810,12 +820,12 @@ function sortSpells (a, b, o) {
 	}
 }
 
-const renderer = EntryRenderer.getDefaultRenderer();
+const renderer = Renderer.get();
 function loadhash (id) {
 	renderer.setFirstSection(true);
 	const $pageContent = $("#pagecontent").empty();
 	const spell = spellList[id];
-	$pageContent.append(EntryRenderer.spell.getRenderedString(spell, renderer));
+	$pageContent.append(Renderer.spell.getRenderedString(spell, renderer));
 	loadsub([]);
 
 	ListUtil.updateSelected();

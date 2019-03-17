@@ -157,8 +157,8 @@ function addOptionalfeatures (data) {
 				<a id="${ivI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 					<span class="name col-3-2">${it.name}</span>
 					<span class="type col-1-5 text-align-center type" title="${it._dFeatureType}">${it._lFeatureType}</span>
-					<span class="prerequisite col-4-8">${EntryRenderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
-					<span class="level col-1 text-align-center">${EntryRenderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
+					<span class="prerequisite col-4-8">${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
+					<span class="level col-1 text-align-center">${Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
 					<span class="source col-1-5 ${Parser.sourceJsonToColor(it.source)} text-align-center" title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
 					
 					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : ivI}</span>
@@ -191,7 +191,7 @@ function addOptionalfeatures (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	EntryRenderer.hover.bindPopoutButton(optfList);
+	Renderer.hover.bindPopoutButton(optfList);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
@@ -223,8 +223,8 @@ function getSublistItem (it, pinId) {
 			<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 				<span class="name col-4">${it.name}</span>
 				<span class="source col-2 text-align-center type" title="${Parser.optFeatureTypeToFull(it.featureType)}">${it.featureType}</span>
-				<span class="prerequisite col-4-5">${EntryRenderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
-				<span class="level col-1-5">${EntryRenderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
+				<span class="prerequisite col-4-5">${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
+				<span class="level col-1-5">${Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
@@ -232,7 +232,7 @@ function getSublistItem (it, pinId) {
 }
 
 function loadhash (jsonIndex) {
-	EntryRenderer.getDefaultRenderer().setFirstSection(true);
+	Renderer.get().setFirstSection(true);
 	const $content = $(`#pagecontent`).empty();
 	const it = optfList[jsonIndex];
 
@@ -261,14 +261,14 @@ function loadhash (jsonIndex) {
 	}
 
 	$content.append(`
-		${EntryRenderer.utils.getBorderTr()}
-		${EntryRenderer.utils.getNameTr(it)}
-		${it.prerequisite ? `<tr><td colspan="6"><i>${EntryRenderer.optionalfeature.getPrerequisiteText(it.prerequisite)}</i></td></tr>` : ""}
+		${Renderer.utils.getBorderTr()}
+		${Renderer.utils.getNameTr(it)}
+		${it.prerequisite ? `<tr><td colspan="6"><i>${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite)}</i></td></tr>` : ""}
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
-		<tr><td colspan="6">${EntryRenderer.getDefaultRenderer().renderEntry({entries: it.entries}, 1)}</td></tr>
-		${EntryRenderer.optionalfeature.getPreviouslyPrintedText(it)}
-		${EntryRenderer.utils.getPageTr(it)}
-		${EntryRenderer.utils.getBorderTr()}
+		<tr><td colspan="6">${Renderer.get().render({entries: it.entries}, 1)}</td></tr>
+		${Renderer.optionalfeature.getPreviouslyPrintedText(it)}
+		${Renderer.utils.getPageTr(it)}
+		${Renderer.utils.getBorderTr()}
 	`);
 
 	ListUtil.updateSelected();

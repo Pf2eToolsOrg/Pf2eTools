@@ -1225,7 +1225,7 @@
 	_getModBeingScaled (strMod, dexMod, modFromAbil, name, content) {
 		const guessMod = () => {
 			name = name.toLowerCase();
-			content = content.replace(/{@atk ([A-Za-z,]+)}/gi, (_, p1) => EntryRenderer.attackTagToFull(p1)).toLowerCase();
+			content = content.replace(/{@atk ([A-Za-z,]+)}/gi, (_, p1) => Renderer.attackTagToFull(p1)).toLowerCase();
 
 			const isMeleeOrRangedWep = content.includes("melee or ranged weapon attack:");
 			if (isMeleeOrRangedWep) {
@@ -1368,8 +1368,6 @@
 		checkSetTempMod("dex");
 	},
 
-	_DAMAGE_REGEX_DICE: new RegExp(/(\d+)( \((?:{@dice |{@damage ))([-+0-9d ]*)(}\) [a-z]+( or [a-z]+)? damage)/, "ig"),
-	_DAMAGE_REGEX_FLAT: new RegExp(/(Hit: |{@h})([0-9]*)( [a-z]+( or [a-z]+)? damage)/, "ig"),
 	_adjustDpr (mon, crIn, crOut) {
 		const idealDprRangeIn = this._crDprRanges[crIn];
 		const idealDprRangeOut = this._crDprRanges[crOut];
@@ -1409,7 +1407,7 @@
 						const toUpdate = JSON.stringify(it.entries);
 
 						// handle flat values first, as we may convert dice values to flats
-						let out = toUpdate.replace(this._DAMAGE_REGEX_FLAT, (m0, prefix, flatVal, suffix) => {
+						let out = toUpdate.replace(RollerUtil.REGEX_DAMAGE_FLAT, (m0, prefix, flatVal, suffix) => {
 							const adjDpr = getAdjustedDpr(flatVal);
 							return `${prefix}${adjDpr}${suffix}`;
 						});
@@ -1420,7 +1418,7 @@
 						// pre-calculate enchanted weapon offsets
 						const offsetEnchant = this._getEnchantmentBonus(it.name);
 
-						out = out.replace(this._DAMAGE_REGEX_DICE, (m0, average, prefix, diceExp, suffix) => {
+						out = out.replace(RollerUtil.REGEX_DAMAGE_DICE, (m0, average, prefix, diceExp, suffix) => {
 							diceExp = diceExp.replace(/\s+/g, "");
 							const avgDpr = getAvgDpr(diceExp);
 							const adjustedDpr = getAdjustedDpr(avgDpr);
@@ -1550,7 +1548,7 @@
 
 									if (adjustedDpr < tempAvgDpr) {
 										while (diceFacesTemp > 4 && tempAvgDpr >= targetDprRange[0]) {
-											diceFacesTemp = EntryRenderer.dice.getPreviousDice(diceFacesTemp);
+											diceFacesTemp = Renderer.dice.getPreviousDice(diceFacesTemp);
 											tempAvgDpr = getAvgDpr(getDiceExp(undefined, diceFacesTemp));
 
 											if (inRange(getAvgDpr(getDiceExp(numDice, diceFacesTemp, modOut)))) {
@@ -1563,7 +1561,7 @@
 										}
 									} else {
 										while (diceFacesTemp < 20 && tempAvgDpr <= targetDprRange[1]) {
-											diceFacesTemp = EntryRenderer.dice.getNextDice(diceFacesTemp);
+											diceFacesTemp = Renderer.dice.getNextDice(diceFacesTemp);
 											tempAvgDpr = getAvgDpr(getDiceExp(undefined, diceFacesTemp));
 
 											if (inRange(getAvgDpr(getDiceExp(numDice, diceFacesTemp, modOut)))) {

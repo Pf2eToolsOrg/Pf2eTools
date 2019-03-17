@@ -106,6 +106,10 @@
 		.ecgen__advanced_help {
 			display: none;
 		}
+
+		#listofsaves {
+			height: initial;
+		}
 	</style>
 </head>
 
@@ -123,6 +127,9 @@
 		</ul>
 	</nav>
 
+	<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
+	<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--single"><!--5ETOOLS_AD_RIGHT_1--></div>
+
 	<div class="container view-col-wrapper">
 		<div class="view-col" id="listcontainer">
 			<div class="input-group" id="filter-search-input-group">
@@ -133,15 +140,42 @@
 			</div>
 
 			<div id="filtertools" class="sortlabel btn-group">
-				<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-				<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type <span class="caret_wrp"></span></button>
-				<button class="col-1-7 sort btn btn-default btn-xs" data-sort="cr">CR  <span class="caret_wrp"></span></button>
-				<button class="col-2 sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
+				<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name<span class="caret_wrp"></span></button>
+				<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type<span class="caret_wrp"></span></button>
+				<button class="col-1-7 sort btn btn-default btn-xs" data-sort="cr">CR<span class="caret_wrp"></span></button>
+				<button class="col-2 sort btn btn-default btn-xs" data-sort="source">Source<span class="caret_wrp"></span></button>
 			</div>
 
 			<ul class="list monsters">
 				<!-- populate with JS -->
 			</ul>
+		</div>
+
+		<div id="loadsaves" style="display: none;" class="view-col">
+			<h3>Saved Encounters</h3>
+			<div class="mb-4">
+				<ul class="list" id="listofsaves">
+					<!-- populate with JS -->
+				</ul>
+				<hr>
+				<div class="row">
+					<div class="col-10-4">
+						<input class="ecgen__sv-new-save-name form-control input-xs" placeholder="Encounter Name">
+					</div>
+					<div class="col-1-6">
+						<button class="btn btn-primary mr-2 btn-xs" onclick="encounterBuilder.handleSaveClick(true)">Save</button>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-12 flex-vh-center">
+						<button class="btn btn-primary btn-xs mr-4 ecgen__sv-cancel">Back</button>
+						<button class="btn btn-primary btn-xs mr-2 ecgen__sv-load" onclick="encounterBuilder.handleLoadClick()" disabled>Load</button>
+						<button class="btn btn-primary btn-xs mr-4 ecgen__sv-save"  onclick="encounterBuilder.handleSaveClick()" disabled>Save</button>
+						<button class="btn btn-danger btn-xs mr-2" onclick="encounterBuilder.handleResetEncounterSavesClick()">Delete All</button>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div id="contentwrapper" class="view-col">
@@ -292,11 +326,10 @@
 				<hr>
 				<div class="row">
 					<div class="col-12 flex" style="justify-content: center">
-						<button class="btn btn-primary btn-xs mr-2 ecgen__sv_url">Save to URL</button>
-						<div style="width: 10px; height: 1px;"></div>
+						<button class="btn btn-primary btn-xs mr-4 ecgen__ld-browser">Manage Encounters</button>
+						<button class="btn btn-primary btn-xs mr-4 ecgen__sv_url">Save to URL</button>
 						<button class="btn btn-primary btn-xs mr-2 ecgen__sv_file">Save to File</button>
-						<button class="btn btn-primary btn-xs mr-2 ecgen__ld_file">Load from File</button>
-						<div style="width: 10px; height: 1px;"></div>
+						<button class="btn btn-primary btn-xs mr-4 ecgen__ld_file">Load from File</button>
 						<button class="btn btn-danger btn-xs ecgen__reset">Reset</button>
 					</div>
 				</div>
@@ -322,8 +355,8 @@
 <script type="text/javascript" src="js/history.js"></script>
 <script type="text/javascript" src="js/multisource.js"></script>
 <script type="text/javascript" src="js/filter.js"></script>
-<script type="text/javascript" src="js/entryrender.js"></script>
-<script type="text/javascript" src="js/entryrender-bestiary.js"></script>
+<script type="text/javascript" src="js/render.js"></script>
+<script type="text/javascript" src="js/render-bestiary.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/bestiary.js"></script>
 <script type="text/javascript" src="js/bestiary-encounterbuilder.js"></script>

@@ -1,5 +1,30 @@
 {
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		}
+	},
 	"monster": [
+		{
+			"name": "Sandesyl Morgia",
+			"_copy": {
+				"name": "Vampire",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the vampire",
+						"with": "Sandesyl",
+						"flags": "i"
+					}
+				}
+			},
+			"isNpc": true,
+			"source": "HotDQ",
+			"page": 81
+		},
 		{
 			"name": "Ambush Drake",
 			"size": "M",
@@ -72,6 +97,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"damageTags": [
+				"P"
 			]
 		},
 		{
@@ -205,6 +233,9 @@
 			],
 			"spellcastingTags": [
 				"CW"
+			],
+			"damageTags": [
+				"P"
 			]
 		},
 		{
@@ -348,6 +379,9 @@
 			"spellcastingTags": [
 				"I",
 				"CW"
+			],
+			"damageTags": [
+				"P"
 			]
 		},
 		{
@@ -442,6 +476,10 @@
 				"C",
 				"DR",
 				"GI"
+			],
+			"damageTags": [
+				"B",
+				"P"
 			]
 		},
 		{
@@ -590,6 +628,10 @@
 			],
 			"spellcastingTags": [
 				"CW"
+			],
+			"damageTags": [
+				"S",
+				"P"
 			]
 		},
 		{
@@ -707,6 +749,9 @@
 			],
 			"spellcastingTags": [
 				"CC"
+			],
+			"damageTags": [
+				"B"
 			]
 		},
 		{
@@ -831,6 +876,9 @@
 			],
 			"spellcastingTags": [
 				"CW"
+			],
+			"damageTags": [
+				"P"
 			]
 		},
 		{
@@ -936,6 +984,11 @@
 			"senseTags": [
 				"B",
 				"D"
+			],
+			"damageTags": [
+				"S",
+				"P",
+				"L"
 			]
 		},
 		{
@@ -1089,6 +1142,168 @@
 			],
 			"spellcastingTags": [
 				"CD"
+			],
+			"damageTags": [
+				"P",
+				"I"
+			]
+		},
+		{
+			"name": "Rath Modar",
+			"isNpc": true,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"source": "HotDQ",
+			"otherSources": [
+				{
+					"source": "RoT",
+					"page": 91
+				}
+			],
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				13,
+				{
+					"ac": 16,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
+			"hp": {
+				"average": 71,
+				"formula": "11d8 + 22"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 11,
+			"dex": 16,
+			"con": 14,
+			"int": 18,
+			"wis": 14,
+			"cha": 10,
+			"save": {
+				"int": "+7",
+				"wis": "+5"
+			},
+			"skill": {
+				"arcana": "+7",
+				"deception": "+3",
+				"insight": "+5",
+				"stealth": "+6"
+			},
+			"passive": 12,
+			"languages": "Common, Draconic, Infernal, Primordial, Thayan",
+			"cr": "6",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Rath is an 11th-level spellcaster who uses Intelligence as his spellcasting ability (spell save DC 15, {@hit 7} to hit with spell attacks). Rath has the following spells prepared from the wizard spell list:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell minor illusion}",
+								"{@spell prestidigitation}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell chromatic orb}",
+								"{@spell color spray}",
+								"{@spell mage armor}",
+								"{@spell magic missile}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell mirror image}",
+								"{@spell phantasmal force}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fireball}",
+								"{@spell major image}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell confusion}",
+								"{@spell greater invisibility}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell mislead}",
+								"{@spell seeming}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell globe of invulnerability}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
+			"trait": [
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Rath has a {@item staff of fire}, and scrolls of {@spell dimension door}, {@spell feather fall}, and {@spell fireball}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Quarterstaff",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d8}) bludgeoning damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Illusory Self (Recharges on a Short or Long Rest)",
+					"entries": [
+						"When a creature Rath can see makes an attack roll against him, he can interpose an illusory duplicate between the attacker and him. The attack automatically misses Rath, then the illusion dissipates."
+					]
+				}
+			],
+			"page": 92,
+			"languageTags": [
+				"C",
+				"DR",
+				"I",
+				"P",
+				"OTH"
+			],
+			"spellcastingTags": [
+				"CW"
+			],
+			"damageTags": [
+				"B"
 			]
 		},
 		{
@@ -1241,6 +1456,11 @@
 			"senseTags": [
 				"B",
 				"SD"
+			],
+			"damageTags": [
+				"S",
+				"N",
+				"A"
 			]
 		},
 		{
@@ -1393,6 +1613,10 @@
 			],
 			"spellcastingTags": [
 				"CC"
+			],
+			"damageTags": [
+				"P",
+				"C"
 			]
 		},
 		{
@@ -1480,6 +1704,10 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"damageTags": [
+				"P",
+				"S"
 			]
 		}
 	]

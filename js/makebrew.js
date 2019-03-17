@@ -83,7 +83,7 @@ class PageUi {
 		this._doInitNavHandler();
 
 		if (!this._settings.activeSource || !BrewUtil.homebrewMeta.sources.some(it => it.json === this._settings.activeSource)) {
-			this._doRebuildStageSource();
+			this._doRebuildStageSource({mode: "add"});
 			this.__setStageSource();
 		} else {
 			this.__setStageMain();
@@ -104,146 +104,33 @@ class PageUi {
 	}
 
 	_doRebuildStageSource (options) {
-		options = options || {};
-		const $wrp = this._$wrpSource.empty();
-
-		const isNewSource = options.mode !== "edit";
-		const isAddSource = options.mode === "add";
-
-		let jsonDirty = false;
-		const $iptName = $(`<input class="form-control mkbru_source__ipt-named">`)
-			.change(() => {
-				if (!jsonDirty && isNewSource) $iptJson.val($iptName.val().replace(/[^-_a-zA-Z]/g, ""));
-				$iptName.removeClass("error-background");
-			});
-		if (options.source) $iptName.val(options.source.full);
-		const $iptAbv = $(`<input class="form-control mkbru_source__ipt-named">`)
-			.change(() => {
-				$iptAbv.removeClass("error-background");
-			});
-		if (options.source) $iptAbv.val(options.source.abbreviation);
-		const $iptJson = $(`<input class="form-control mkbru_source__ipt-named" ${isNewSource ? "" : "disabled"}>`)
-			.change(() => {
-				jsonDirty = true;
-				$iptJson.removeClass("error-background");
-			});
-		if (options.source) $iptJson.val(options.source.json);
-		const $iptUrl = $(`<input class="form-control mkbru_source__ipt-named">`);
-		if (options.source) $iptUrl.val(options.source.url);
-		const $iptAuthors = $(`<input class="form-control mkbru_source__ipt-named">`);
-		if (options.source) $iptAuthors.val((options.source.authors || []).join(", "));
-		const $iptConverters = $(`<input class="form-control mkbru_source__ipt-named">`);
-		if (options.source) $iptConverters.val((options.source.convertedBy || []).join(", "));
-
-		const $btnConfirm = $(`<button class="btn btn-default">Confirm</button>`)
-			.click(() => {
-				let incomplete = false;
-				[$iptName, $iptAbv, $iptJson].forEach($ipt => {
-					const val = $ipt.val();
-					if (!val || !val.trim()) (incomplete = true) && $ipt.addClass("error-background");
-				});
-				if (incomplete) return;
-
-				const jsonVal = $iptJson.val().trim();
-				if (isNewSource && BrewUtil.hasSourceJson(jsonVal)) {
-					$iptJson.addClass("error-background");
-					JqueryUtil.doToast({content: `The JSON identifier "${jsonVal}" already exists!`, type: "danger"});
-					return;
-				}
-
-				const source = {
-					json: jsonVal,
-					abbreviation: $iptAbv.val().trim(),
-					full: $iptName.val().trim(),
-					url: $iptUrl.val().trim(),
-					authors: $iptAuthors.val().trim().split(",").map(it => it.trim()).filter(Boolean),
-					convertedBy: $iptConverters.val().trim().split(",").map(it => it.trim()).filter(Boolean)
-				};
+		SourceUiUtil.render({
+			...options,
+			$parent: this._$wrpSource,
+			cbConfirm: (source) => {
+				const isNewSource = options.mode !== "edit";
 
 				if (isNewSource) BrewUtil.addSource(source);
 				else BrewUtil.updateSource(source);
 
-				this._settings.activeSource = jsonVal;
+				this._settings.activeSource = source.json;
 
 				if (isNewSource) this._doAddSourceOption(source);
 				this._doHandleUpdateSource();
 				this._sideMenuEnabled = true;
 				this.__setStageMain();
-			});
-
-		const $btnCancel = isAddSource || !isNewSource ? $(`<button class="btn btn-default mr-2">Cancel</button>`)
-			.click(() => {
+			},
+			cbConfirmExisting: (source) => {
+				this._settings.activeSource = source.json;
+				this._doHandleUpdateSource();
 				this._sideMenuEnabled = true;
 				this.__setStageMain();
-			}) : null;
-
-		const $btnUseExisting = $(`<button class="btn btn-default">Use an Existing Source</button>`)
-			.click(() => {
-				$stageInitial.hide();
-				$stageExisting.show();
-
-				// cleanup
-				[$iptName, $iptAbv, $iptJson].forEach($ipt => $ipt.removeClass("error-background"));
-			});
-
-		const $stageInitial = $$`<div class="full-height full-width flex-vh-center"><div>
-			<h3 class="text-align-center">${isNewSource ? "Add a Homebrew Source" : "Edit Homebrew Source"}</h3>
-			<div class="row mkbru_source__row mb-2"><div class="col-12 flex-v-center">
-				<span class="mr-2 mkbru_source__name help" title="The name or title for the homebrew you wish to create. This could be the name of a book or PDF; for example, 'Monster Manual'">Title</span>
-				${$iptName}
-			</div></div>
-			<div class="row mkbru_source__row mb-2"><div class="col-12 flex-v-center">
-				<span class="mr-2 mkbru_source__name help" title="An abbreviated form of the title. This will be shown in lists on the site, and in the top-right corner of statblocks or data entries; for example, 'MM'">Abbreviation</span>
-				${$iptAbv}
-			</div></div>
-			<div class="row mkbru_source__row mb-2"><div class="col-12 flex-v-center">
-				<span class="mr-2 mkbru_source__name help" title="This will be used to identify your homebrew universally, so should be unique to you and you alone">JSON Identifier</span>
-				${$iptJson}
-			</div></div>
-			<div class="row mkbru_source__row mb-2"><div class="col-12 flex-v-center">
-				<span class="mr-2 mkbru_source__name help" title="A link to the original homebrew, e.g. a GM Binder page">Source URL</span>
-				${$iptUrl}
-			</div></div>
-			<div class="row mkbru_source__row mb-2"><div class="col-12 flex-v-center">
-				<span class="mr-2 mkbru_source__name help" title="A comma-separated list of authors, e.g. 'John Doe, Joe Bloggs'">Author(s)</span>
-				${$iptAuthors}
-			</div></div>
-			<div class="row mkbru_source__row mb-2"><div class="col-12 flex-v-center">
-				<span class="mr-2 mkbru_source__name help" title="A comma-separated list of people who converted the homebrew to 5etools' format, e.g. 'John Doe, Joe Bloggs'">Converted By</span>
-				${$iptConverters}
-			</div></div>
-			<div class="text-align-center mb-2">${$btnCancel}${$btnConfirm}</div>
-			
-			${isNewSource && !isAddSource && BrewUtil.homebrewMeta.sources && BrewUtil.homebrewMeta.sources.length ? $$`<div class="flex-vh-center mb-3 mt-3"><span class="mkbru_source__divider"/>or<span class="mkbru_source__divider"/></div>
-			<div class="flex-vh-center">${$btnUseExisting}</div>` : ""}
-		</div></div>`.appendTo($wrp);
-
-		const $selExisting = $$`<select class="form-control input-sm">
-			<option disabled>Select</option>
-			${(BrewUtil.homebrewMeta.sources || []).sort((a, b) => SortUtil.ascSortLower(a.full, b.full)).map(s => `<option value="${s.json.escapeQuotes()}">${s.full.escapeQuotes()}</option>`)}
-		</select>`.change(() => $selExisting.removeClass("error-background"));
-		$selExisting[0].selectedIndex = 0;
-
-		const $btnConfirmExisting = $(`<button class="btn btn-default btn-sm">Confirm</button>`)
-			.click(() => {
-				if ($selExisting[0].selectedIndex !== 0) {
-					this._settings.activeSource = $selExisting.val();
-					this._doHandleUpdateSource();
-					this._sideMenuEnabled = true;
-					this.__setStageMain();
-
-					// cleanup
-					$selExisting[0].selectedIndex = 0;
-					$stageExisting.hide();
-					$stageInitial.show();
-				} else $selExisting.addClass("error-background");
-			});
-
-		const $stageExisting = $$`<div class="full-height full-width flex-vh-center" style="display: none;"><div>
-			<h3 class="text-align-center">Select a Homebrew Source</h3>
-			<div class="row mb-2"><div class="col-12 flex-vh-center">${$selExisting}</div></div>
-			<div class="row"><div class="col-12 flex-vh-center">${$btnConfirmExisting}</div></div>
-		</div></div>`.appendTo($wrp);
+			},
+			cbCancel: () => {
+				this._sideMenuEnabled = true;
+				this.__setStageMain();
+			}
+		});
 	}
 
 	_initLhs () {
@@ -266,8 +153,7 @@ class PageUi {
 				<option value="creatureBuilder">Creature</option>
 			</select>
 		`).appendTo($wrpMode).change(() => {
-			const builder = $selMode.val();
-			this._settings.activeBuilder = builder;
+			this._settings.activeBuilder = $selMode.val();
 			this._builders[this._settings.activeBuilder].renderSideMenu();
 			this._saveSettingsDebounced();
 		});
@@ -348,7 +234,7 @@ class PageUi {
 	}
 
 	_getJsonOutputTemplate () {
-		return {_meta: MiscUtil.copy(BrewUtil.sourceJsonToSource(this._settings.activeSource))};
+		return {_meta: {sources: [MiscUtil.copy(BrewUtil.sourceJsonToSource(this._settings.activeSource))]}};
 	}
 }
 PageUi.STORAGE_STATE = "brewbuilderState";
@@ -430,7 +316,7 @@ class BuilderUi {
 		const eleType = options.eleType || "div";
 
 		return $$`<div class="mb-2 mkbru__row"><${eleType} class="mkbru__wrp-row flex-v-center">
-		<span class="mr-2 mkbru__row-name ${options.title ? "help--subtle" : ""}" ${options.title ? `title="${options.title}"` : ""}>${name}</span>
+		<span class="mr-2 mkbru__row-name ${options.title ? "help" : ""}" ${options.title ? `title="${options.title}"` : ""}>${name}</span>
 		${$ipt}
 		<${eleType}/></div>`
 	}
@@ -454,7 +340,7 @@ class BuilderUi {
 		if (options.nullable == null) options.nullable = true;
 
 		const initialState = MiscUtil.getProperty(state, ...path);
-		const $ipt = $(`<textarea class="form-control input-xs form-control--minimal mkbru__ipt-textarea" ${options.placeholder ? `placeholder="${options.placeholder}"` : ""}/>`)
+		const $ipt = $(`<textarea class="form-control form-control--minimal mkbru__ipt-textarea" ${options.placeholder ? `placeholder="${options.placeholder}"` : ""}/>`)
 			.val(BuilderUi.getEntriesAsText(initialState))
 			.change(() => {
 				const raw = $ipt.val().trim();
@@ -625,7 +511,7 @@ class BuilderUi {
 			const searchOpts = {defaultCategory: "alt_Spell"};
 			if (options.level != null) searchOpts.resultFilter = (result) => result.lvl === options.level;
 
-			const searchItems = new SearchWidget(
+			const searchWidget = new SearchWidget(
 				{alt_Spell: SearchWidget.CONTENT_INDICES.alt_Spell},
 				(page, source, hash) => {
 					const [encName, encSource] = hash.split(HASH_LIST_SEP);
@@ -637,11 +523,12 @@ class BuilderUi {
 			const $modalInner = UiUtil.getShow$Modal(
 				"Select Spell",
 				(doResolve) => {
-					searchItems.$wrpSearch.detach();
+					searchWidget.$wrpSearch.detach();
 					if (doResolve) resolve(null); // ensure resolution
 				}
 			);
-			$modalInner.append(searchItems.$wrpSearch);
+			$modalInner.append(searchWidget.$wrpSearch);
+			searchWidget.doFocus();
 		});
 	}
 
@@ -853,6 +740,10 @@ class SearchWidget {
 
 			this.__doSearch();
 		}
+	}
+
+	doFocus () {
+		this._$iptSearch.focus();
 	}
 }
 SearchWidget.CONTENT_INDICES = {};

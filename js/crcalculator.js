@@ -89,7 +89,7 @@ function addMonsterFeatures (mfData) {
 					<input type="checkbox" id="mf-${Parser.stringToSlug(f.name)}" title="${f.name}" data-hp="${f.hp}" data-ac="${f.ac}" data-dpr="${f.dpr}" data-attackbonus="${f.attackbonus}" class="crc__mon_feature_cb">${numBox}
 				</div>
 				<div class="col-xs-2">${f.name}</div>
-				<div class="col-xs-2">${EntryRenderer.getDefaultRenderer().renderEntry(`{@creature ${f.example}}`)}</div>
+				<div class="col-xs-2">${Renderer.get().render(`{@creature ${f.example}}`)}</div>
 				<div class="col-xs-7"><span title="${effectOnCr.join(", ")}" class="explanation">${f.effect}</span></div>
 			</label>
 		`);

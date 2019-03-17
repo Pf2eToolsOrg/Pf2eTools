@@ -74,7 +74,7 @@ class InitiativeTracker {
 
 		// initialise "upload" context menu
 		const contextId = ContextUtil.getNextGenericMenuId();
-		ContextUtil.doInitContextMenu(contextId, (evt, ele, $invokedOn, $selectedMenu) => {
+		ContextUtil.doInitContextMenu(contextId, async (evt, ele, $invokedOn, $selectedMenu) => {
 			switch (Number($selectedMenu.data("ctx-id"))) {
 				case 0:
 					EncounterUtil.pGetSavedState().then(savedState => {
@@ -87,16 +87,26 @@ class InitiativeTracker {
 						}
 					});
 					break;
-				case 1:
-					DataUtil.userUpload((json) => {
-						if (json) convertAndLoadBestiaryList(json);
+				case 1: {
+					const allSaves = Object.values(await EncounterUtil.pGetAllSaves());
+					const selected = await InputUiUtil.pGetUserEnum({
+						values: allSaves.map(it => it.name),
+						placeholder: "Select a save",
+						title: "Whatever"
 					});
+					if (selected != null) convertAndLoadBestiaryList(allSaves[selected]);
 					break;
-				case 2:
+				}
+				case 2: {
+					const json = await DataUtil.userUpload();
+					if (json) convertAndLoadBestiaryList(json);
+					break;
+				}
+				case 3:
 					makeImportSettingsModal();
 					break;
 			}
-		}, ["From Current Bestiary Encounter", "From Bestiary Encounter File", null, "Import Settings"]);
+		}, ["From Current Bestiary Encounter", "From Saved Bestiary Encounter", "From Bestiary Encounter File", null, "Import Settings"]);
 
 		const $wrpTop = $(`<div class="dm-init-wrp-header-outer"/>`).appendTo($wrpTracker);
 		const $wrpHeader = $(`
@@ -514,9 +524,9 @@ class InitiativeTracker {
 					.append(`
 						<div class="row dm_init__stats_row">
 							<div class="col-1-3"/>
-							<div class="col-4-9">Auto-Fill With...</div>
+							<div class="col-4-9">Contains...</div>
 							<div class="col-2-5">Abbreviation</div>
-							<div class="col-1-7 text-align-center">Editable?</div>
+							<div class="col-1-7 text-align-center help" title="Only affects creatures. Players are always editable.">Editable?</div>
 						</div>
 					`);
 				const $wrpTblStats = UiUtil._getAdd$Row($modalInner, "div").addClass("ui-modal__row--stats");
@@ -529,19 +539,21 @@ class InitiativeTracker {
 						if (!thisCfg) { // if new row
 							thisCfg = {
 								id: CryptUtil.uid(),
+								v: false, // is player-visible
+								o: cfg.statsCols.filter(it => !it.isDeleted).length + 1, // order
+								e: true, // editable
+
+								// input data
 								p: "", // populate with...
 								po: null, // populate with... (previous value)
-								a: "", // abbreviation
-								e: true, // editable
-								v: false, // is player-visible
-								o: cfg.statsCols.filter(it => !it.isDeleted).length + 1 // order
+								a: "" // abbreviation
 							};
 							cfg.statsCols.push(thisCfg);
 						}
 
 						const $selPre = $(`
 								<select class="form-control input-xs">
-									<option value="">(None)</option>
+									<option value="">(Empty)</option>
 									${Object.entries(InitiativeTracker.STAT_COLUMNS).map(([k, v]) => v.isHr ? `<option disabled>\u2014</option>` : `<option value="${k}">${v.name}</option>`)}
 								</select>
 							`).change(() => {
@@ -610,25 +622,23 @@ class InitiativeTracker {
 							}
 						});
 
-						const $row = $(`
+						const $row = $$`
 							<div class="row dm_init__stats_row dm_init__stats_row--item" data-id="${thisCfg.id}">
-								<div class="col-1-3 btn-group text-align-center dm_init__stats_up_down"><div data-r="$btnUp"/><div data-r="$btnDown"/></div>
+								<div class="col-1-3 btn-group text-align-center dm_init__stats_up_down">${$btnUp}${$btnDown}</div>
 								<div class="col-1-3 dm_init__stats_up_down--spacer"></div>
 
-								<div class="col-4-9"><div data-r="$selPre"/></div>
-								<div class="col-2-8"><div data-r="$iptAbv"/></div>
-								<div class="col-1 text-align-center"><div data-r="$cbEditable"/></div>
-								<div class="col-1 text-align-center"><div data-r="$btnVisible"/></div>
-								<div class="col-1 text-align-center dm_init__stats_del"><div data-r="$btnDel"/></div>
+								<div class="col-4-9">${$selPre}</div>
+								<div class="col-2-8">${$iptAbv}</div>
+								<div class="col-1 text-align-center">${$cbEditable}</div>
+								<div class="col-1 text-align-center">${$btnVisible}</div>
+								<div class="col-1 text-align-center dm_init__stats_del">${$btnDel}</div>
 							</div>
-						`).appendTo($wrpStatsRows).swap({$selPre, $iptAbv, $cbEditable, $btnVisible, $btnDel, $btnUp, $btnDown});
+						`.appendTo($wrpStatsRows);
 					};
 
 					$(`<button class="btn btn-xs btn-default"><span class="glyphicon-plus glyphicon dm_init__stats_add"/></button>`)
 						.appendTo($wrpBtn)
-						.click(() => {
-							addRow();
-						});
+						.click(() => addRow());
 
 					if (!cfg.statsCols.length) addRow();
 					else cfg.statsCols.forEach(it => addRow(it));
@@ -799,8 +809,10 @@ class InitiativeTracker {
 
 		function getStatColsState ($row) {
 			return $row.find(`.dm_init__stat`).map((i, e) => {
+				const $ipt = $(e).find(`input`);
+				const isCb = $ipt.attr("type") === "checkbox";
 				return {
-					v: $(e).find(`input`).val(),
+					v: isCb ? $ipt.prop("checked") : $ipt.val(),
 					id: $(e).attr("data-id")
 				};
 			}).get();
@@ -916,7 +928,7 @@ class InitiativeTracker {
 					// if names and initiatives are the same, skip forwards (groups of monsters)
 					if ($curr.find(`input.name`).val() === $nxt.find(`input.name`).val() &&
 						$curr.find(`input.score`).val() === $nxt.find(`input.score`).val()) {
-						$curr.addClass(`dm-init-row-active`);
+						handleTurnStart($curr);
 						const curr = $rows.get(ix++);
 						if (curr) $curr = $(curr);
 						else $curr = null;
@@ -924,6 +936,22 @@ class InitiativeTracker {
 				} while ($curr);
 			} else checkSetFirstActive();
 			doUpdateExternalStates();
+		}
+
+		function handleTurnStart ($row) {
+			$row.addClass(`dm-init-row-active`);
+			if (cfg.statsAddColumns) {
+				const cbMetas = cfg.statsCols.filter(c => c.p && (InitiativeTracker.isCheckboxColAuto(c.p)));
+
+				cbMetas.forEach(c => {
+					const $lbl = $row.find(`[data-id=${c.id}]`);
+					if (c.p === "cbAutoLow") {
+						$lbl.find(`input`).prop("checked", false);
+					} else if (c.p === "cbAutoHigh") {
+						$lbl.find(`input`).prop("checked", true);
+					}
+				});
+			}
 		}
 
 		function makeRow (opts) {
@@ -962,7 +990,10 @@ class InitiativeTracker {
 
 			const $wrpLhs = $(`<div class="dm-init-row-lhs"/>`).appendTo($wrpRow);
 			const $iptName = $(`<input class="form-control input-sm name dm-init-name dm-init-lockable dm-init-row-input ${isMon ? "hidden" : ""}" placeholder="Name" value="${name}">`).appendTo($wrpLhs);
-			$iptName.on("change", () => doSort(ALPHA));
+			$iptName.on("change", () => {
+				doSort(ALPHA);
+				doUpdateExternalStates();
+			});
 			if (isMon) {
 				const $rows = $wrpEntries.find(`.dm-init-row`);
 				const curMon = $rows.find(".init-wrp-creature").filter((i, e) => $(e).parent().find(`input.name`).val() === name && $(e).parent().find(`input.source`).val() === source);
@@ -978,10 +1009,10 @@ class InitiativeTracker {
 				}
 
 				const getLink = () => {
-					if (typeof nameOrMeta === "string" || nameOrMeta.scaledTo == null) return EntryRenderer.getDefaultRenderer().renderEntry(`{@creature ${name}|${source}}`);
+					if (typeof nameOrMeta === "string" || nameOrMeta.scaledTo == null) return Renderer.get().render(`{@creature ${name}|${source}}`);
 					else {
 						const parts = [name, source, displayName, Parser.numberToCr(nameOrMeta.scaledTo)];
-						return EntryRenderer.getDefaultRenderer().renderEntry(`{@creature ${parts.join("|")}}`);
+						return Renderer.get().render(`{@creature ${parts.join("|")}}`);
 					}
 				};
 
@@ -1129,7 +1160,7 @@ class InitiativeTracker {
 
 			if (isMon && (hpVals.curHp === "" || hpVals.maxHp === "" || init === "")) {
 				const doUpdate = () => {
-					const m = EntryRenderer.hover._getFromCache(UrlUtil.PG_BESTIARY, source, hash);
+					const m = Renderer.hover._getFromCache(UrlUtil.PG_BESTIARY, source, hash);
 
 					// set or roll HP
 					if (!rollHp && m.hp.average) {
@@ -1137,7 +1168,7 @@ class InitiativeTracker {
 						$iptHp.val(hpVals.curHp);
 						$iptHpMax.val(hpVals.maxHp);
 					} else if (rollHp && m.hp.formula) {
-						const roll = EntryRenderer.dice.roll2(m.hp.formula, {
+						const roll = Renderer.dice.roll2(m.hp.formula, {
 							user: false,
 							name: getRollName(m),
 							label: "HP"
@@ -1156,9 +1187,9 @@ class InitiativeTracker {
 				};
 
 				const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY]({name: name, source: source});
-				if (EntryRenderer.hover._isCached(UrlUtil.PG_BESTIARY, source, hash)) doUpdate();
+				if (Renderer.hover._isCached(UrlUtil.PG_BESTIARY, source, hash)) doUpdate();
 				else {
-					EntryRenderer.hover._doFillThenCall(UrlUtil.PG_BESTIARY, source, hash, () => {
+					Renderer.hover._doFillThenCall(UrlUtil.PG_BESTIARY, source, hash, () => {
 						if (!hpVals.curHp) doUpdate();
 					});
 				}
@@ -1220,8 +1251,10 @@ class InitiativeTracker {
 					$mid.find(`.dm_init__stat`).each((i, e) => {
 						const $e = $(e);
 						const id = $e.attr("data-id");
+						const $ipt = $e.find(`input`);
+						const isCb = $ipt.attr("type") === "checkbox";
 						existing[id] = {
-							v: $e.find(`input`).val(),
+							v: isCb ? $ipt.prop("checked") : $ipt.val(),
 							id
 						};
 					});
@@ -1232,31 +1265,57 @@ class InitiativeTracker {
 			$mid.empty();
 
 			cfg.statsCols.forEach(c => {
-				const $ipt = $(`<input class="form-control input-sm dm_init__stat_ipt text-align-center" ${!cfg.isLocked && (c.e || !isMon) ? "" : "disabled"}>`)
-					.change(() => doUpdateExternalStates());
+				const isCheckbox = c.p && (InitiativeTracker.isCheckboxCol(c.p));
+				const $ipt = (() => {
+					if (isCheckbox) {
+						const $cb = $(`<input type="checkbox" class="dm_init__stat_ipt" ${!cfg.isLocked && (c.e || !isMon) ? "" : "disabled"}>`)
+							.change(() => doUpdateExternalStates());
 
-				const populateFromBlock = () => {
-					const meta = InitiativeTracker.STAT_COLUMNS[c.p];
-					if (isMon && meta) {
-						const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY]({name: name, source: source});
-						const populateStats = async () => {
-							const mon = await EntryRenderer.hover.pCacheAndGet(UrlUtil.PG_BESTIARY, source, hash);
-							$ipt.val(meta.get(mon));
+						const populate = () => {
+							const meta = InitiativeTracker.STAT_COLUMNS[c.p];
+							$cb.prop("checked", meta.get());
 							doUpdateExternalStates();
 						};
-						populateStats();
+
+						if (c.p && c.po && isMon) { // on changing populate type, re-populate
+							populate();
+						} else if (existing[c.id]) { // otherwise (or for players) use existing value
+							$cb.prop("checked", existing[c.id].v);
+						} else if (c.p) { // otherwise, populate
+							populate();
+						}
+
+						return $cb;
+					} else {
+						const $ipt = $(`<input class="form-control input-sm dm_init__stat_ipt text-align-center" ${!cfg.isLocked && (c.e || !isMon) ? "" : "disabled"}>`)
+							.change(() => doUpdateExternalStates());
+
+						const populateFromBlock = () => {
+							const meta = InitiativeTracker.STAT_COLUMNS[c.p];
+							if (isMon && meta) {
+								const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY]({name: name, source: source});
+								const populateStats = async () => {
+									const mon = await Renderer.hover.pCacheAndGet(UrlUtil.PG_BESTIARY, source, hash);
+									$ipt.val(meta.get(mon));
+									doUpdateExternalStates();
+								};
+								populateStats();
+							}
+						};
+
+						if (c.p && c.po && isMon) { // on changing populate type, re-populate
+							populateFromBlock();
+						} else if (existing[c.id]) { // otherwise (or for players) use existing value
+							$ipt.val(existing[c.id].v);
+						} else if (c.p) { // otherwise, populate
+							populateFromBlock();
+						}
+						return $ipt;
 					}
-				};
+				})();
 
-				if (c.p && c.po && isMon) { // on changing populate type, re-populate
-					populateFromBlock();
-				} else if (existing[c.id]) { // otherwise (or for players) use existing value
-					$ipt.val(existing[c.id].v);
-				} else if (c.p) { // otherwise, populate
-					populateFromBlock();
-				}
-
-				$mid.append(`<div class="dm_init__stat" data-id="${c.id}"><div data-r/></div>`).swap($ipt);
+				const eleType = isCheckbox ? "label" : "div";
+				$$`<${eleType} class="dm_init__stat ${isCheckbox ? "flex-vh-center" : ""}" data-id="${c.id}">${$ipt}</${eleType}>`.appendTo($mid);
 			});
 		};
 
@@ -1283,16 +1342,17 @@ class InitiativeTracker {
 			if ($wrpEntries.find(`.dm-init-row`).length && !$wrpEntries.find(`.dm-init-row-active`).length) {
 				const $rows = $wrpEntries.find(`.dm-init-row`);
 				const $first = $($rows.get(0));
-				$first.addClass(`dm-init-row-active`);
+				handleTurnStart($first);
 				if ($rows.length > 1) {
 					for (let i = 1; i < $rows.length; ++i) {
 						const $nxt = $($rows.get(i));
 						if ($nxt.find(`input.name`).val() === $first.find(`input.name`).val() &&
 							$nxt.find(`input.score`).val() === $first.find(`input.score`).val()) {
-							$nxt.addClass(`dm-init-row-active`);
+							handleTurnStart($nxt);
 						} else break;
 					}
 				}
+
 				$iptRound.val(Number($iptRound.val() || 0) + 1);
 
 				doUpdateExternalStates();
@@ -1370,7 +1430,7 @@ class InitiativeTracker {
 		}
 
 		function rollInitiative (monster) {
-			return EntryRenderer.dice.roll2(`1d20${Parser.getAbilityModifier(monster.dex)}`, {
+			return Renderer.dice.roll2(`1d20${Parser.getAbilityModifier(monster.dex)}`, {
 				user: false,
 				name: getRollName(monster),
 				label: "Initiative"
@@ -1381,7 +1441,7 @@ class InitiativeTracker {
 			if (!cfg.isRollHp && monster.hp.average) {
 				return `${monster.hp.average}`;
 			} else if (cfg.isRollHp && monster.hp.formula) {
-				return `${EntryRenderer.dice.roll2(monster.hp.formula, {
+				return `${Renderer.dice.roll2(monster.hp.formula, {
 					user: false,
 					name: getRollName(monster),
 					label: "HP"
@@ -1418,12 +1478,14 @@ class InitiativeTracker {
 
 							const newCol = {
 								id: CryptUtil.uid(),
-								p: "", // populate with...
-								po: null, // populate with... (previous value)
-								a: colName || "", // abbreviation
 								e: true, // editable
 								v: false, // player-visible
-								o: i
+								o: i, // order
+
+								// input data
+								p: "", // populate with...
+								po: null, // populate with... (previous value)
+								a: colName || "" // abbreviation
 							};
 							colIndex[i] = newCol;
 							cfg.statsCols.push(newCol);
@@ -1488,7 +1550,7 @@ class InitiativeTracker {
 					})();
 					const source = hash.split(HASH_LIST_SEP)[1];
 					return new Promise(resolve => {
-						EntryRenderer.hover.pCacheAndGet(UrlUtil.PG_BESTIARY, source, hash)
+						Renderer.hover.pCacheAndGet(UrlUtil.PG_BESTIARY, source, hash)
 							.then(mon => {
 								if (scaling != null) {
 									ScaleCreature.scale(mon, scaling).then(scaled => {
@@ -1551,9 +1613,18 @@ class InitiativeTracker {
 			});
 		return $btnVisible;
 	}
+
+	static isCheckboxCol (key) {
+		return key === "cbAutoLow" || key === "cbNeutral" || key === "cbAutoHigh";
+	}
+
+	static isCheckboxColAuto (key) {
+		return key === "cbAutoLow" || key === "cbAutoHigh";
+	}
 }
 InitiativeTracker._GET_STAT_COLUMN_HR = () => ({isHr: true});
 InitiativeTracker.STAT_COLUMNS = {
+	hr0: InitiativeTracker._GET_STAT_COLUMN_HR(),
 	hpFormula: {
 		name: "HP Formula",
 		get: mon => (mon.hp || {}).formula
@@ -1593,7 +1664,7 @@ InitiativeTracker.STAT_COLUMNS = {
 		abv: "LA",
 		get: mon => mon.legendaryActions || mon.legendary ? 3 : null
 	},
-	hr0: InitiativeTracker._GET_STAT_COLUMN_HR(),
+	hr1: InitiativeTracker._GET_STAT_COLUMN_HR(),
 	...(() => {
 		const out = {};
 		Parser.ABIL_ABVS.forEach(it => {
@@ -1605,7 +1676,7 @@ InitiativeTracker.STAT_COLUMNS = {
 		});
 		return out;
 	})(),
-	hr1: InitiativeTracker._GET_STAT_COLUMN_HR(),
+	hr2: InitiativeTracker._GET_STAT_COLUMN_HR(),
 	...(() => {
 		const out = {};
 		Parser.ABIL_ABVS.forEach(it => {
@@ -1617,7 +1688,7 @@ InitiativeTracker.STAT_COLUMNS = {
 		});
 		return out;
 	})(),
-	hr2: InitiativeTracker._GET_STAT_COLUMN_HR(),
+	hr3: InitiativeTracker._GET_STAT_COLUMN_HR(),
 	...(() => {
 		const out = {};
 		Parser.ABIL_ABVS.forEach(it => {
@@ -1629,7 +1700,7 @@ InitiativeTracker.STAT_COLUMNS = {
 		});
 		return out;
 	})(),
-	hr3: InitiativeTracker._GET_STAT_COLUMN_HR(),
+	hr4: InitiativeTracker._GET_STAT_COLUMN_HR(),
 	...(() => {
 		const out = {};
 		Object.keys(Parser.SKILL_TO_ATB_ABV).sort(SortUtil.ascSort).forEach(s => {
@@ -1640,5 +1711,23 @@ InitiativeTracker.STAT_COLUMNS = {
 			};
 		});
 		return out;
-	})()
+	})(),
+	hr5: InitiativeTracker._GET_STAT_COLUMN_HR(),
+	cbAutoLow: {
+		name: "Checkbox; clears at start of turn",
+		isCb: true,
+		autoMode: -1,
+		get: () => false
+	},
+	cbNeutral: {
+		name: "Checkbox",
+		isCb: true,
+		get: () => false
+	},
+	cbAutoHigh: {
+		name: "Checkbox; ticks at start of turn",
+		isCb: true,
+		autoMode: 1,
+		get: () => true
+	}
 };

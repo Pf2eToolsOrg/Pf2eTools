@@ -110,7 +110,7 @@ function addRewards (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	EntryRenderer.hover.bindPopoutButton(rewardList);
+	Renderer.hover.bindPopoutButton(rewardList);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
@@ -141,17 +141,17 @@ function getSublistItem (reward, pinId) {
 }
 
 function loadhash (id) {
-	EntryRenderer.getDefaultRenderer().setFirstSection(true);
+	Renderer.get().setFirstSection(true);
 	const $content = $("#pagecontent").empty();
 	const reward = rewardList[id];
 
 	$content.append(`
-		${EntryRenderer.utils.getBorderTr()}
-		${EntryRenderer.utils.getNameTr(reward)}
+		${Renderer.utils.getBorderTr()}
+		${Renderer.utils.getNameTr(reward)}
 		<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
-		${EntryRenderer.reward.getRenderedString(reward)}
-		${EntryRenderer.utils.getPageTr(reward)}
-		${EntryRenderer.utils.getBorderTr()}
+		${Renderer.reward.getRenderedString(reward)}
+		${Renderer.utils.getPageTr(reward)}
+		${Renderer.utils.getBorderTr()}
 	`);
 
 	ListUtil.updateSelected();

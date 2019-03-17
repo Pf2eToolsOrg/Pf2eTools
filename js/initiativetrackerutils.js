@@ -97,7 +97,7 @@ class InitiativeTrackerUtil {
 				$cond.on("mouseover", (evt) => {
 					if (evt.shiftKey) {
 						evt.shiftKey = false;
-						EntryRenderer.hover.mouseOver(
+						Renderer.hover.mouseOver(
 							evt,
 							$cond[0],
 							UrlUtil.PG_CONDITIONS_DISEASES,
@@ -381,7 +381,9 @@ class InitiativeTrackerPlayerMessageHandler {
 				<div class="initp__r_hp">
 					<div class="initp__r_hp_pill" style="background: ${hpColor};">${hpText}</div>
 				</div>
-				${(rowData.k || []).map(statVal => `<div class="initp__r_stat">${statVal.v}</div>`).join("")}
+				${(rowData.k || []).map(statVal => `<div class="initp__r_stat flex-vh-center">
+					${statVal.v === true ? `<span class="text-success glyphicon glyphicon-ok"/>` : statVal.v === false ? `<span class="text-danger glyphicon glyphicon-remove"/>` : statVal.v}
+				</div>`).join("")}
 				<div class="initp__r_score${this._isCompact ? " initp__r_score--compact" : ""}">${rowData.i}</div>
 			</div>
 		`).swap({$conds});

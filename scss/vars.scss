@@ -1,0 +1,55 @@
+@font-face {
+	font-family: 'Convergence';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Convergence-Regular'), url('../fonts/Convergence-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Glyphicons Halflings';
+	font-style: normal;
+	font-weight: 400;
+	src: local('glyphicons-halflings-regular'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype');
+}
+
+$spacer: 1rem;
+
+$active-blue: #337ab7;
+$active-blue--light: #7398b7;
+$active-red: #8a1a1b;
+$active-red--light: #8a4b4b;
+
+$name-red: #822000;
+$bg-orange: #fdf1dc;
+
+$link-blue: #337ab7;
+
+$border-grey: #ccc;
+$border-grey--trans: #cccccca0;
+
+$modal-overlay-grey: #45454588;
+
+/* Z-Indices */
+$z-token-image: 10;
+
+$z-side-menu: 60;
+
+$z-omnisearch: 100;
+$z-book-find: 100;
+$z-bookmode: 100;
+$z-rollerbox-hidden: 100;
+$z-rollerbox-active: 110;
+
+$z-hwin: 200;
+
+$z-modal-wrapper: 1000;
+$z-modal-inner: 1001;
+$z-modal-legal: 1000;
+
+$z-temp-effect: 2000;
+
+/* *** */
+
+@mixin shadow-1 () {
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}

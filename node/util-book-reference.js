@@ -1,5 +1,5 @@
 const ut = require('../js/utils.js');
-const er = require('../js/entryrender.js');
+const er = require('../js/render.js');
 
 UtilBookReference = {
 	getSections (refId) {

@@ -555,7 +555,7 @@ Parser.getSpeedString = (it) => {
 	}
 
 	function getCond (speedProp) {
-		return speedProp.condition ? ` ${EntryRenderer.getDefaultRenderer().renderEntry(speedProp.condition)}` : "";
+		return speedProp.condition ? ` ${Renderer.get().render(speedProp.condition)}` : "";
 	}
 
 	const stack = [];
@@ -623,7 +623,10 @@ Parser._greatestCommonDivisor = function (a, b) {
 	if (b < Number.EPSILON) return a;
 	return Parser._greatestCommonDivisor(b, Math.floor(a % b));
 };
-Parser.numberToCr = function (number) {
+Parser.numberToCr = function (number, safe) {
+	// avoid dying if already-converted number is passed in
+	if (safe && typeof number === "string" && Parser.CRS.includes(number)) return number;
+
 	const len = number.toString().length - 2;
 	let denominator = Math.pow(10, len);
 	let numerator = number * denominator;
@@ -711,7 +714,7 @@ Parser.DRAGON_COLOR_TO_FULL = {
 Parser.acToFull = function (ac) {
 	if (typeof ac === "string") return ac; // handle classic format
 
-	const renderer = EntryRenderer.getDefaultRenderer();
+	const renderer = Renderer.get();
 	let stack = "";
 	for (let i = 0; i < ac.length; ++i) {
 		const cur = ac[i];
@@ -720,8 +723,8 @@ Parser.acToFull = function (ac) {
 		if (cur.ac) {
 			if (i === 0 && cur.braces) stack += "(";
 			stack += cur.ac;
-			if (cur.from) stack += ` (${cur.from.map(it => renderer.renderEntry(it)).join(", ")})`;
-			if (cur.condition) stack += ` ${renderer.renderEntry(cur.condition)}`;
+			if (cur.from) stack += ` (${cur.from.map(it => renderer.render(it)).join(", ")})`;
+			if (cur.condition) stack += ` ${renderer.render(cur.condition)}`;
 			if (cur.braces) stack += ")";
 		} else {
 			stack += cur;
@@ -938,7 +941,7 @@ Parser.spLevelSchoolMetaToFull = function (level, school, meta, subschools) {
 };
 
 Parser.spTimeListToFull = function (times) {
-	return times.map(t => `${Parser.getTimeToFull(t)}${t.condition ? `, ${EntryRenderer.getDefaultRenderer().renderEntry(t.condition)}` : ""}`).join(" or ");
+	return times.map(t => `${Parser.getTimeToFull(t)}${t.condition ? `, ${Renderer.get().render(t.condition)}` : ""}`).join(" or ");
 };
 
 Parser.getTimeToFull = function (time) {
@@ -1193,7 +1196,7 @@ Parser.monImmResToFull = function (toParse) {
 
 Parser.monCondImmToFull = function (condImm) {
 	function render (condition) {
-		return EntryRenderer.getDefaultRenderer().renderEntry(`{@condition ${condition}}`);
+		return Renderer.get().render(`{@condition ${condition}}`);
 	}
 	return condImm.map(it => {
 		if (it.special) return it.special;
@@ -1256,9 +1259,9 @@ Parser.levelToFull = function (level) {
 };
 
 Parser.prereqSpellToFull = function (spell) {
-	if (spell === "eldritch blast") return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}} cantrip`);
-	else if (spell === "hex/curse") return EntryRenderer.getDefaultRenderer().renderEntry("{@spell hex} spell or a warlock feature that curses");
-	else if (spell) return EntryRenderer.getDefaultRenderer().renderEntry(`{@spell ${spell}}`);
+	if (spell === "eldritch blast") return Renderer.get().render(`{@spell ${spell}} cantrip`);
+	else if (spell === "hex/curse") return Renderer.get().render("{@spell hex} spell or a warlock feature that curses");
+	else if (spell) return Renderer.get().render(`{@spell ${spell}}`);
 	return STR_NONE;
 };
 
@@ -1437,6 +1440,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS_FEATURE] = "Class Feature";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SHIP] = "Ship";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PACT_BOON] = "Pact Boon";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "Elemental Discipline";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARTIFICER_INFUSION] = "Infusion";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1473,6 +1477,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_METAMAGIC] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PACT_BOON] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARTIFICER_INFUSION] = "optionalfeature";
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -2089,11 +2094,19 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 };
 
 Parser.DMGTYPE_JSON_TO_FULL = {
+	"A": "acid",
 	"B": "bludgeoning",
+	"C": "cold",
+	"F": "fire",
+	"O": "force",
+	"L": "lightning",
 	"N": "necrotic",
 	"P": "piercing",
+	"I": "poison",
+	"Y": "psychic",
 	"R": "radiant",
-	"S": "slashing"
+	"S": "slashing",
+	"T": "thunder"
 };
 
 Parser.DMG_TYPES = ["acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"];
@@ -3317,6 +3330,8 @@ ListUtil = {
 		if (count > subtractCount) {
 			ListUtil._setPinnedCount(index, count - subtractCount, data);
 			ListUtil._setViewCount(index, count - subtractCount, data);
+			ListUtil.sublist.reIndex();
+			await ListUtil._pSaveSublist();
 			ListUtil._handleCallUpdateFn();
 		} else if (count) await ListUtil.pDoSublistRemove(index, data);
 	},
@@ -3473,7 +3488,7 @@ ListUtil = {
 		const itId = Number($invokedOn.attr(FLTR_ID));
 		switch (Number($selectedMenu.data("ctx-id"))) {
 			case 0:
-				EntryRenderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
+				Renderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
 				break;
 			case 1:
 				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelected(l, (it) => ListUtil.isSublisted(it) ? Promise.resolve() : ListUtil.pDoSublistAdd(it)))))
@@ -3531,7 +3546,7 @@ ListUtil = {
 		const itId = Number($invokedOn.attr(FLTR_ID));
 		switch (Number($selectedMenu.data("ctx-id"))) {
 			case 0:
-				EntryRenderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
+				Renderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
 				break;
 			case 1:
 				ListUtil.pDoSublistRemove(itId);
@@ -3557,7 +3572,7 @@ ListUtil = {
 		const itId = Number($invokedOn.attr(FLTR_ID));
 		switch (Number($selectedMenu.data("ctx-id"))) {
 			case 0:
-				EntryRenderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
+				Renderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
 				break;
 			case 1:
 				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelected(l, (it) => ListUtil.pDoSublistAdd(it)))))
@@ -3574,7 +3589,7 @@ ListUtil = {
 		const uid = $invokedOn.find(`.uid`).text();
 		switch (Number($selectedMenu.data("ctx-id"))) {
 			case 0:
-				EntryRenderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
+				Renderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
 				break;
 			case 1:
 				if (uid) ListUtil.pDoSublistRemove(itId, {uid: uid});
@@ -3986,6 +4001,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE_GROUP] = UrlUtil.PG_TABLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SHIP] = UrlUtil.PG_SHIPS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PACT_BOON] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = UrlUtil.PG_OPT_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARTIFICER_INFUSION] = UrlUtil.PG_OPT_FEATURES;
 
 if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
 	// for local testing, hotkey to get a link to the current page on the main site
@@ -4169,7 +4185,7 @@ DataUtil = {
 					if (entry._copy) {
 						switch (prop) {
 							case "monster": {
-								return EntryRenderer.monster.pMergeCopy(flatDependencyData, entry, options);
+								return Renderer.monster.pMergeCopy(flatDependencyData, entry, options);
 							}
 							default: throw new Error(`No _copy merge strategy specified for property "${prop}"`);
 						}
@@ -4240,28 +4256,27 @@ DataUtil = {
 		$a.remove();
 	},
 
-	userUpload (fnCallback) {
-		function loadSaved (event) {
-			const input = event.target;
+	pUserUpload () {
+		return new Promise(resolve => {
+			const $iptAdd = $(`<input type="file" accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`).on("change", (evt) => {
+				const input = evt.target;
 
-			const reader = new FileReader();
-			reader.onload = () => {
-				const text = reader.result;
-				const json = JSON.parse(text);
-				fnCallback(json);
-			};
-			reader.readAsText(input.files[0]);
-		}
+				const reader = new FileReader();
+				reader.onload = () => {
+					const text = reader.result;
+					const json = JSON.parse(text);
+					resolve(json);
+				};
 
-		const $iptAdd = $(`<input type="file" accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`).on("change", (evt) => {
-			loadSaved(evt);
-		}).appendTo($(`body`));
-		$iptAdd.click();
+				reader.readAsText(input.files[0]);
+			}).appendTo($(`body`));
+			$iptAdd.click();
+		});
 	},
 
 	cleanJson (cpy) {
 		cpy.name = cpy._displayName || cpy.name;
-		DataUtil.__cleanJsonObject(cpy)
+		DataUtil.__cleanJsonObject(cpy);
 		return cpy;
 	},
 
@@ -4438,12 +4453,14 @@ RollerUtil = {
 	isRollCol (colLabel) {
 		if (typeof colLabel !== "string") return false;
 		if (/^{@dice [^}]+}$/.test(colLabel.trim())) return true;
-		return !!EntryRenderer.dice.parseToTree(colLabel);
+		return !!Renderer.dice.parseToTree(colLabel);
 	},
 
 	_DICE_REGEX_STR: "((([1-9]\\d*)?d([1-9]\\d*)(\\s*?[-+×x*]\\s*?(\\d,\\d|\\d)+)?))+?"
 };
 RollerUtil.DICE_REGEX = new RegExp(RollerUtil._DICE_REGEX_STR, "g");
+RollerUtil.REGEX_DAMAGE_DICE = /(\d+)( \((?:{@dice |{@damage ))([-+0-9d ]*)(}\) [a-z]+( or [a-z]+)? damage)/gi;
+RollerUtil.REGEX_DAMAGE_FLAT = /(Hit: |{@h})([0-9]+)( [a-z]+( or [a-z]+)? damage)/gi;
 
 // STORAGE =============================================================================================================
 // Dependency: localforage
@@ -4525,6 +4542,7 @@ StorageUtil = {
 
 	syncSet (key, value) {
 		StorageUtil.getSyncStorage().setItem(key, JSON.stringify(value));
+		StorageUtil._syncTrackKey(key)
 	},
 
 	syncSetForPage (key, value) {
@@ -4533,10 +4551,29 @@ StorageUtil = {
 
 	syncRemove (key) {
 		StorageUtil.getSyncStorage().removeItem(key);
+		StorageUtil._syncTrackKey(key, true);
 	},
 
 	isSyncFake () {
 		return !!StorageUtil.getSyncStorage().isSyncFake
+	},
+
+	_syncTrackKey (key, isRemove) {
+		const meta = StorageUtil.syncGet(StorageUtil._META_KEY) || {};
+		if (isRemove) delete meta[key];
+		else meta[key] = 1;
+		StorageUtil.getSyncStorage().setItem(StorageUtil._META_KEY, JSON.stringify(meta));
+	},
+
+	syncGetDump () {
+		const out = {};
+		const meta = StorageUtil.syncGet(StorageUtil._META_KEY) || {};
+		Object.entries(meta).filter(([key, isPresent]) => isPresent).forEach(([key]) => out[key] = StorageUtil.syncGet(key));
+		return out;
+	},
+
+	syncSetFromDump (dump) {
+		Object.entries(dump).forEach(([k, v]) => StorageUtil.syncSet(k, v));
 	},
 	// END SYNC METHODS ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -4551,6 +4588,7 @@ StorageUtil = {
 	},
 
 	async pSet (key, value) {
+		StorageUtil._pTrackKey(key);
 		const storage = await StorageUtil.getAsyncStorage();
 		return storage.setItem(key, value);
 	},
@@ -4571,10 +4609,31 @@ StorageUtil = {
 	},
 
 	async pRemove (key) {
+		StorageUtil._pTrackKey(key, true);
 		const storage = await StorageUtil.getAsyncStorage();
 		return storage.removeItem(key);
+	},
+
+	async _pTrackKey (key, isRemove) {
+		const storage = await StorageUtil.getAsyncStorage();
+		const meta = (await StorageUtil.pGet(StorageUtil._META_KEY)) || {};
+		if (isRemove) delete meta[key];
+		else meta[key] = 1;
+		storage.setItem(StorageUtil._META_KEY, meta);
+	},
+
+	async pGetDump () {
+		const out = {};
+		const meta = (await StorageUtil.pGet(StorageUtil._META_KEY)) || {};
+		await Promise.all(Object.entries(meta).filter(([key, isPresent]) => isPresent).map(async ([key]) => out[key] = await StorageUtil.pGet(key)));
+		return out;
+	},
+
+	async pSetFromDump (dump) {
+		return Promise.all(Object.entries(dump).map(([k, v]) => StorageUtil.pSet(k, v)));
 	}
 };
+StorageUtil._META_KEY = "_STORAGE_META_STORAGE";
 
 // TODO transition cookie-like storage items over to this
 SessionStorageUtil = {
@@ -4684,7 +4743,7 @@ BrewUtil = {
 
 	async pAddLocalBrewData (callbackFn = async (d, page) => BrewUtil.pDoHandleBrewJson(d, page, null)) {
 		if (!IS_ROLL20 && !IS_DEPLOYED) {
-			return DataUtil.loadJSON(`${EntryRenderer.getDefaultRenderer().baseUrl}${JSON_HOMEBREW_INDEX}`).then(async (data) => {
+			return DataUtil.loadJSON(`${Renderer.get().baseUrl}${JSON_HOMEBREW_INDEX}`).then(async (data) => {
 				// auto-load from `homebrew/`, for custom versions of the site
 				if (data.toImport.length) {
 					const page = UrlUtil.getCurrentPage();
@@ -4973,7 +5032,7 @@ BrewUtil = {
 								out.extraInfo = ` (${Parser.psiTypeToFull(bru.type)})`;
 								break;
 							case "itemProperty": {
-								if (bru.entries) out.name = EntryRenderer.findName(bru.entries);
+								if (bru.entries) out.name = Renderer.findName(bru.entries);
 								if (!out.name) out.name = bru.abbreviation;
 								break;
 							}
@@ -5374,7 +5433,7 @@ BrewUtil = {
 		}
 
 		// prepare for storage
-		if (json.race && json.race.length) json.race = EntryRenderer.race.mergeSubraces(json.race);
+		if (json.race && json.race.length) json.race = Renderer.race.mergeSubraces(json.race);
 		BrewUtil._STORABLE.forEach(storePrep);
 
 		const bookPairs = [
@@ -5949,7 +6008,7 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 			$msgRow.find(`td`).append($(`<button class="btn btn-default">Close</button>`).on("click", () => {
 				hashTeardown();
 			}));
-			$bkTbl.append($tblRow).append($msgRow).append(EntryRenderer.utils.getBorderTr());
+			$bkTbl.append($tblRow).append($msgRow).append(Renderer.utils.getBorderTr());
 
 			$wrpBook.append($bkTbl);
 			$body.append($wrpBook);
@@ -6107,9 +6166,15 @@ EncounterUtil = {
 
 	async pDoSaveState (toSave) {
 		StorageUtil.pSet(ENCOUNTER_STORAGE, toSave);
+	},
+
+	async pGetAllSaves () {
+		const saved = await StorageUtil.pGet(EncounterUtil.SAVED_ENCOUNTER_SAVE_LOCATION);
+		return saved || {};
 	}
 };
 EncounterUtil.SUB_HASH_PREFIX = "encounter";
+EncounterUtil.SAVED_ENCOUNTER_SAVE_LOCATION = "ENCOUNTER_SAVED_STORAGE";
 
 // REACTOR =============================================================================================================
 class Reactor {
@@ -6172,6 +6237,8 @@ if (!IS_ROLL20 && typeof window !== "undefined") {
 }
 
 _Donate = {
+	// TAG Disabled until further notice
+	/*
 	init () {
 		if (IS_DEPLOYED) {
 			DataUtil.loadJSON(`https://get.5etools.com/money.php`).then(dosh => {
@@ -6195,5 +6262,27 @@ _Donate = {
 		const isFake = await StorageUtil.pIsAsyncFake();
 		const isNotDonating = await StorageUtil.pGet("notDonating");
 		return isFake || isNotDonating;
+	},
+	*/
+
+	// region Test code, please ignore
+	cycleLeader (ele) {
+		const modes = [{width: 970, height: 90}, {width: 970, height: 250}, {width: 320, height: 50}, {width: 728, height: 90}];
+		_Donate._cycleMode(ele, modes);
+	},
+
+	cycleSide (ele) {
+		const modes = [{width: 300, height: 250}, {width: 300, height: 600}];
+		_Donate._cycleMode(ele, modes);
+	},
+
+	_cycleMode (ele, modes) {
+		const $e = $(ele);
+		const pos = $e.data("pos") || 0;
+		const mode = modes[pos];
+		$e.css(mode);
+		$e.text(`${mode.width}*${mode.height}`);
+		$e.data("pos", (pos + 1) % modes.length)
 	}
+	// endregion
 };

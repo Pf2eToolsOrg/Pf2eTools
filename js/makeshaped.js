@@ -244,7 +244,7 @@ class ShapedConverter {
 			.replace(/{@hit (\d+)}/g, '+$1')
 			.replace(/{@chance (\d+)[^}]+}/g, '$1 percent')
 			.replace(/{@recharge(?: (\d))?}/g, (m, lower) => `(Recharge ${lower ? `${Number(lower)}\u2013` : ""}6)`)
-			.replace(/{(@atk [A-Za-z,]+})/g, (m, p1) => EntryRenderer.attackTagToFull(p1))
+			.replace(/{(@atk [A-Za-z,]+})/g, (m, p1) => Renderer.attackTagToFull(p1))
 			.replace(/{@h}/g, "Hit: ")
 			.replace(/{@\w+ ((?:[^|}]+\|?){0,3})}/g, (m, p1) => {
 				const parts = p1.split('|');

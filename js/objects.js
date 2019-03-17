@@ -30,7 +30,7 @@ function onJsonLoad (data) {
 		sortFunction: SortUtil.listSort
 	});
 
-	EntryRenderer.hover.bindPopoutButton(objectsList);
+	Renderer.hover.bindPopoutButton(objectsList);
 
 	const subList = ListUtil.initSublist({
 		valueNames: ["name", "size", "id"],
@@ -101,7 +101,7 @@ function addObjects (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	EntryRenderer.hover.bindPopoutButton(objectsList);
+	Renderer.hover.bindPopoutButton(objectsList);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
 }
@@ -118,7 +118,7 @@ function getSublistItem (obj, pinId) {
 	`;
 }
 
-const renderer = EntryRenderer.getDefaultRenderer();
+const renderer = Renderer.get();
 function loadhash (jsonIndex) {
 	renderer.setFirstSection(true);
 
@@ -126,13 +126,13 @@ function loadhash (jsonIndex) {
 
 	const renderStack = [];
 
-	if (obj.entries) renderer.recursiveEntryRender({entries: obj.entries}, renderStack, 2);
-	if (obj.actionEntries) renderer.recursiveEntryRender({entries: obj.actionEntries}, renderStack, 2);
+	if (obj.entries) renderer.recursiveRender({entries: obj.entries}, renderStack, {depth: 2});
+	if (obj.actionEntries) renderer.recursiveRender({entries: obj.actionEntries}, renderStack, {depth: 2});
 
 	const $content = $(`#pagecontent`).empty();
 	$content.append(`
-		${EntryRenderer.utils.getBorderTr()}
-		${EntryRenderer.utils.getNameTr(obj)}
+		${Renderer.utils.getBorderTr()}
+		${Renderer.utils.getNameTr(obj)}
 		<tr class="text"><td colspan="6"><i>${obj.type !== "GEN" ? `${Parser.sizeAbvToFull(obj.size)} object` : `Variable size object`}</i><br></td></tr>
 		<tr class="text"><td colspan="6">
 			<b>Armor Class:</b> ${obj.ac}<br>
@@ -142,8 +142,8 @@ function loadhash (jsonIndex) {
 			${obj.vulnerable ? `<b>Damage Vulnerabilities:</b> ${obj.vulnerable}<br>` : ""}
 		</td></tr>
 		<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>
-		${EntryRenderer.utils.getPageTr(obj)}
-		${EntryRenderer.utils.getBorderTr()}
+		${Renderer.utils.getPageTr(obj)}
+		${Renderer.utils.getBorderTr()}
 	`);
 
 	const $floatToken = $(`#float-token`).empty();

@@ -262,9 +262,9 @@ class HashLoad {
 		if (ClassDisplay.curClass.hd) {
 			$("td#hp").show();
 			const hdEntry = {toRoll: `${ClassDisplay.curClass.hd.number}d${ClassDisplay.curClass.hd.faces}`, rollable: true};
-			$("td#hp div#hitdice span").html(EntryRenderer.getEntryDice(hdEntry, "Hit die"));
+			$("td#hp div#hitdice span").html(Renderer.getEntryDice(hdEntry, "Hit die"));
 			$("td#hp div#hp1stlevel span").html(ClassDisplay.curClass.hd.faces + " + your Constitution modifier");
-			$("td#hp div#hphigherlevels span").html(`${EntryRenderer.getEntryDice(hdEntry, "Hit die")} (or ${
+			$("td#hp div#hphigherlevels span").html(`${Renderer.getEntryDice(hdEntry, "Hit die")} (or ${
 				(ClassDisplay.curClass.hd.faces / 2 + 1)}) + your Constitution modifier per ${ClassDisplay.curClass.name} level after 1st`);
 		} else {
 			$("td#hp").hide();
@@ -293,7 +293,7 @@ class HashLoad {
 
 		function getSkillProfString (skills) {
 			const numString = Parser.numberToString(skills.choose);
-			return skills.from.length === 18 ? `Choose any ${numString}.` : `Choose ${numString} from ${skills.from.map(it => EntryRenderer.getDefaultRenderer().renderEntry(`{@skill ${it}}`)).joinConjunct(", ", " and ")}.`
+			return skills.from.length === 18 ? `Choose any ${numString}.` : `Choose ${numString} from ${skills.from.map(it => Renderer.get().render(`{@skill ${it}}`)).joinConjunct(", ", " and ")}.`
 		}
 
 		// starting equipment
@@ -301,8 +301,8 @@ class HashLoad {
 			const $equipment = $("#equipment").show();
 			const sEquip = ClassDisplay.curClass.startingEquipment;
 			const fromBackground = sEquip.additionalFromBackground ? "<p>You start with the following items, plus anything provided by your background.</p>" : "";
-			const defList = sEquip.default.length === 0 ? "" : `<ul><li>${sEquip.default.map(it => EntryRenderer.getDefaultRenderer().renderEntry(it)).join("</li><li>")}</ul>`;
-			const goldAlt = sEquip.goldAlternative === undefined ? "" : `<p>Alternatively, you may start with ${EntryRenderer.getDefaultRenderer().renderEntry(sEquip.goldAlternative)} gp to buy your own equipment.</p>`;
+			const defList = sEquip.default.length === 0 ? "" : `<ul><li>${sEquip.default.map(it => Renderer.get().render(it)).join("</li><li>")}</ul>`;
+			const goldAlt = sEquip.goldAlternative === undefined ? "" : `<p>Alternatively, you may start with ${Renderer.get().render(sEquip.goldAlternative)} gp to buy your own equipment.</p>`;
 			$equipment.find("div").html(`${fromBackground}${defList}${goldAlt}`);
 		} else {
 			$("#equipment").hide();
@@ -413,7 +413,7 @@ class HashLoad {
 				groupHeaders.append(`<th ${hasTitle ? `class="colGroupTitle"` : ""} colspan="${tGroup.colLabels.length}" ${subclassData}>${hasTitle ? tGroup.title : ""}</th>`);
 
 				for (let j = 0; j < tGroup.colLabels.length; j++) {
-					let lbl = `<div class="cls__squash_header">${renderer.renderEntry(tGroup.colLabels[j])}</div>`;
+					let lbl = `<div class="cls__squash_header">${renderer.render(tGroup.colLabels[j])}</div>`;
 					colHeaders.append(`<th class="centred-col" ${subclassData}>${lbl}</th>`)
 				}
 
@@ -422,7 +422,7 @@ class HashLoad {
 						let entry = tGroup.rows[j][k];
 						if (entry === 0) entry = "\u2014";
 						const stack = [];
-						renderer.recursiveEntryRender(entry, stack);
+						renderer.recursiveRender(entry, stack);
 						$levelTrs[j].append(`<td class="centred-col" ${subclassData}>${stack.join("")}</td>`)
 					}
 				}
@@ -445,7 +445,7 @@ class HashLoad {
 					toRender.entries = MiscUtil.copy(toRender.entries);
 					toRender.entries.unshift(`{@note The following information is from ${Parser.sourceJsonToFull(f.source)}${f.page ? `, page ${f.page}` : ""}.}`)
 				}
-				renderer.recursiveEntryRender(toRender, renderStack, 0);
+				renderer.recursiveRender(toRender, renderStack);
 			});
 			renderStack.push(`</td></tr>`);
 		}
@@ -483,7 +483,9 @@ class HashLoad {
 				const styleClasses = [CLSS_CLASS_FEATURE, "linked-titles--classes"];
 				if (feature.gainSubclassFeature) styleClasses.push(CLSS_GAIN_SUBCLASS_FEATURE);
 
-				renderer.recursiveEntryRender(feature, renderStack, 0, {prefix: `<tr id="${featureId}" class="${styleClasses.join(" ")}"><td colspan="6">`, suffix: `</td></tr>`, forcePrefixSuffix: true});
+				renderStack.push(`<tr id="${featureId}" class="${styleClasses.join(" ")}"><td colspan="6">`);
+				renderer.recursiveRender(feature, renderStack);
+				renderStack.push(`</td></tr>`);
 
 				// add subclass features to render stack if appropriate
 				if (feature.gainSubclassFeature) {
@@ -507,12 +509,9 @@ class HashLoad {
 							}
 
 							const styleClasses = FeatureDescription.getSubclassStyles(subClass);
-							renderer.recursiveEntryRender(subFeature, renderStack, 0, {
-								prefix: `<tr class="text ${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${
-									ClassData.cleanScSource(subClass.source)}"><td colspan="6">`,
-								suffix: `</td></tr>`,
-								forcePrefixSuffix: true
-							});
+							renderStack.push(`<tr class="text ${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${ClassData.cleanScSource(subClass.source)}"><td colspan="6">`);
+							renderer.recursiveRender(subFeature, renderStack);
+							renderStack.push(`</td></tr>`);
 						}
 					}
 					subclassIndex++;
@@ -879,7 +878,7 @@ class SubClassLoader {
 				});
 
 				const $spicy_NotScFeature_NoSubclassNoSource = otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`:not([${ATB_DATA_SC}]):not([${ATB_DATA_SRC}])`);
-				const $spicy_NotScFeature_NoneSubclassNoneSource = otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${EntryRenderer.DATA_NONE}"][${ATB_DATA_SRC}="${EntryRenderer.DATA_NONE}"]`);
+				const $spicy_NotScFeature_NoneSubclassNoneSource = otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${Renderer.DATA_NONE}"][${ATB_DATA_SRC}="${Renderer.DATA_NONE}"]`);
 				if (hideAllSources) {
 					$spicy_NotScFeature_NoSubclassNoSource.hide();
 					$spicy_NotScFeature_NoneSubclassNoneSource.hide();
@@ -1057,13 +1056,13 @@ class SubClassLoader {
 		function makeScroller ($nav, idTr, parentTr, idClass, displayText, scrollTo) {
 			let navClass;
 			switch (idClass) {
-				case "statsBlockSectionHead":
+				case Renderer.HEAD_NEG_1:
 					navClass = "n1";
 					break;
-				case "statsBlockHead":
+				case Renderer.HEAD_0:
 					navClass = "n2";
 					break;
-				case "statsBlockSubHead":
+				case Renderer.HEAD_1:
 					navClass = "n3";
 					break;
 			}
@@ -1094,11 +1093,11 @@ class SubClassLoader {
 					const nextState = Number(!Number($navHead.attr("data-state")));
 					$navHead.attr("data-state", nextState);
 				});
-				const $titles = $(`.entry-title`);
+				const $titles = $(`.rd__h`);
 				$titles.each((i, e) => {
 					const $e = $(e);
 					const pClass = $e.parent().attr("class").trim();
-					if (pClass === "statsInlineHead") return; // consider enabling these for e.g. maneuvers?
+					if (pClass === Renderer.HEAD_2) return; // consider enabling these for e.g. maneuvers?
 					if (!$e.is(":visible")) return;
 					const idTr = $e.closest(`tr[id]`);
 					const pTr = $e.closest(`tr`);
@@ -1130,7 +1129,7 @@ function initCompareMode () {
 				ClassDisplay.curClass.subclasses.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source)).forEach((sc, j) => {
 					renderStack.push(`<td class="subclass-features-${j} ${FeatureDescription.getSubclassStyles(sc).join(" ")}">`);
 					sc.subclassFeatures[i].forEach(f => {
-						renderer.recursiveEntryRender(f, renderStack);
+						renderer.recursiveRender(f, renderStack);
 					});
 					renderStack.push(`</td>`);
 				});
@@ -1194,12 +1193,14 @@ class ClassBookView {
 
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		renderer.recursiveEntryRender({type: "section", name: ClassDisplay.curClass.name}, renderStack, 0, {prefix: `<tr><td colspan="6">`, suffix: `</td></tr>`, forcePrefixSuffix: true});
+		renderStack.push(`<tr><td colspan="6">`);
+		renderer.recursiveRender({type: "section", name: ClassDisplay.curClass.name}, renderStack);
+		renderStack.push(`</td></tr>`)
 
 		renderStack.push(`<tr class="text class-features"><td colspan="6">`);
 		ClassDisplay.curClass.classFeatures.forEach(lvl => {
 			lvl.forEach(cf => {
-				renderer.recursiveEntryRender(cf, renderStack);
+				renderer.recursiveRender(cf, renderStack);
 			});
 		});
 		renderStack.push(`</td></tr>`);
@@ -1208,12 +1209,12 @@ class ClassBookView {
 			renderStack.push(`<tr class="subclass-features-${i} ${FeatureDescription.getSubclassStyles(sc).join(" ")}"><td colspan="6">`);
 			sc.subclassFeatures.forEach(lvl => {
 				lvl.forEach(f => {
-					renderer.recursiveEntryRender(f, renderStack);
+					renderer.recursiveRender(f, renderStack);
 				});
 			});
 			renderStack.push(`</td></tr>`);
 		});
-		renderStack.push(EntryRenderer.utils.getBorderTr());
+		renderStack.push(Renderer.utils.getBorderTr());
 		$bkTbl.append(renderStack.join(""));
 		$pnlContent.append($bkTbl);
 
@@ -1320,8 +1321,8 @@ ClassBookView._$scToggles = {};
 
 function initLinkGrabbers () {
 	const $body = $(`body`);
-	$body.on(`mousedown`, `.linked-titles--classes > td > * > .entry-title .entry-title-inner`, (evt) => evt.preventDefault());
-	$body.on(`click`, `.linked-titles--classes > td > * > .entry-title .entry-title-inner`, async function (evt) {
+	$body.on(`mousedown`, `.linked-titles--classes > td > * > .rd__h .entry-title-inner`, (evt) => evt.preventDefault());
+	$body.on(`click`, `.linked-titles--classes > td > * > .rd__h .entry-title-inner`, async function (evt) {
 		const $this = $(this);
 
 		if (evt.shiftKey) {
@@ -1339,7 +1340,7 @@ function initLinkGrabbers () {
 	});
 }
 
-const renderer = EntryRenderer.getDefaultRenderer();
+const renderer = Renderer.get();
 
 const sourceFilter = new Filter({
 	header: FilterBox.SOURCE_HEADER,
@@ -1397,4 +1398,4 @@ async function doPageInit () {
 	});
 }
 
-doPageInit();
+window.addEventListener("load", () => doPageInit());

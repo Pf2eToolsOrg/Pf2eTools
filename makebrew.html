@@ -24,9 +24,9 @@
 		#content_input {
 			width: 100%;
 			height: 100%;
-			overflow-y: auto;
-			overflow-x: hidden;
 			padding-right: 3px;
+			display: flex;
+			flex-direction: column;
 		}
 
 		#content_input::-webkit-scrollbar {
@@ -57,6 +57,22 @@
 			height: 100px;
 		}
 
+		.mkbru__wrp-tab-heads--border {
+			border-bottom: 1px solid #ccc;
+		}
+
+		.mkbru__wrp-tab-body {
+			width: 100%;
+			height: 100%;
+			overflow-y: auto;
+			overflow-x: hidden;
+			display: none;
+		}
+
+		.mkbru__wrp-tab-body--border {
+			padding: 3px 0;
+		}
+
 		.hr--sm {
 			margin-top: 10px;
 			margin-bottom: 10px;
@@ -77,25 +93,6 @@
 			color: initial;
 		}
 
-		/* Source overlay */
-		.mkbru_source__row {
-			margin-left: calc(-96px - 0.5rem);
-		}
-
-		.mkbru_source__name {
-			min-width: 96px;
-			white-space: nowrap;
-			text-align: right;
-		}
-
-		.mkbru_source__divider {
-			height: 1px;
-			width: 30px;
-			background: #ccc;
-			display: inline-block;
-			margin: 0 3px;
-		}
-
 		/* Control bar */
 		.mkbru__cnt-save {
 			min-width: 48px;
@@ -107,7 +104,7 @@
 			border-radius: 5px;
 		}
 
-		.mkbru__row:nth-child(odd) {
+		.mkbru__row:nth-child(even) {
 			background: #88888818;
 		}
 
@@ -181,6 +178,25 @@
 		.mkbru__wrp-btn-xxs {
 			padding-right: 3px;
 		}
+
+		.mkbru__drag-patch {
+			cursor: move;
+			user-select: none;
+			display: flex;
+			flex-shrink: 0;
+			padding: 5px 3px;
+		}
+
+		.mkbru__drag-patch-col {
+			display: flex;
+			flex-direction: column;
+			flex-shrink: 0;
+		}
+
+		.mkbru__drag-patch-col > div {
+			line-height: 4px;
+			text-align: center;
+		}
 		/* *** */
 
 		/* CREATURE STYLES */
@@ -192,6 +208,7 @@
 		.mkbru_mon__wrp-rows--removable:only-child .mkbru_mon__btn-rm-row,
 		.mkbru_mon__wrp-rows--removable:only-child .mkbru_mon__btn-up-row,
 		.mkbru_mon__wrp-rows--removable:only-child .mkbru_mon__btn-down-row,
+		.mkbru_mon__wrp-rows--removable:only-child .mkbru_mon__btn-drag-row,
 			/* CSS hacks to support nesting */
 		.mkbru_mon__wrp-rows--removable-nested-1:only-child .mkbru_mon__btn-rm-row--nested-1 {
 			display: none;
@@ -200,6 +217,22 @@
 		.mkbru_mon__wrp-rows--removable:first-child .mkbru_mon__btn-up-row,
 		.mkbru_mon__wrp-rows--removable:last-child .mkbru_mon__btn-down-row {
 			display: none;
+		}
+
+		.mkbru_mon__wrp-drag-block {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+
+		.mkbru_mon__wrp-drag-dummy--highlight {
+			background: #cfe5ff78;
+		}
+
+		.mkbru_mon__wrp-drag-dummy--lowlight {
+			background: #8882;
 		}
 
 		.mkbru_mon__ac-split {
@@ -241,7 +274,8 @@
 			padding: 1px 0.3em;
 		}
 
-		.mon__wrp_hp {
+		.mon__wrp-size-type-align,
+		.mon__wrp-hp {
 			max-width: none;
 		}
 		/* *** */
@@ -268,6 +302,9 @@
 
 	<nav class="container page__nav" id="navigation"><ul class="nav nav-pills" id="navbar"></ul></nav>
 
+	<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
+	<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--single"><!--5ETOOLS_AD_RIGHT_1--></div>
+
 	<div id="page_loading" class="container view-col-wrapper">
 		<div class="full-height full-width flex-vh-center"><span class="initial-message">Loading...</span></div>
 	</div>
@@ -290,8 +327,8 @@
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
-<script type="text/javascript" src="js/entryrender.js"></script>
-<script type="text/javascript" src="js/entryrender-bestiary.js"></script>
+<script type="text/javascript" src="js/render.js"></script>
+<script type="text/javascript" src="js/render-bestiary.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/converterutils.js"></script>
 <script type="text/javascript" src="js/makebrew.js"></script>

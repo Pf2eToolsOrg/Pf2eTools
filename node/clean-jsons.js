@@ -1,6 +1,7 @@
 "use strict";
 
 const fs = require("fs");
+const ut = require("./util");
 
 function isDirectory (path) {
 	return fs.lstatSync(path).isDirectory();
@@ -29,19 +30,6 @@ function listFiles (dir) {
 	}, [])
 }
 
-const replacements = {
-	"—": "\\u2014",
-	"–": "\\u2013",
-	"−": "\\u2212",
-	"’": "'",
-	"“": '\\"',
-	"”": '\\"',
-	"…": "...",
-	" ": " " // non-breaking space
-};
-
-const replacementRegex = new RegExp(Object.keys(replacements).join("|"), 'g');
-
 function cleanFolder (folder) {
 	console.log(`Cleaning directory ${folder}...`);
 	const files = listFiles(folder);
@@ -49,11 +37,7 @@ function cleanFolder (folder) {
 		.filter(file => file.endsWith(".json"))
 		.forEach(file => {
 			console.log(`\tCleaning ${file}...`);
-			let contents = readJSON(file);
-			contents = JSON.stringify(contents, null, "\t") + "\n";
-			contents = contents.replace(replacementRegex, (match) => replacements[match]);
-			contents = contents.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1");
-			fs.writeFileSync(file, contents);
+			fs.writeFileSync(file, ut.getCleanStringJson(readJSON(file)));
 		})
 }
 

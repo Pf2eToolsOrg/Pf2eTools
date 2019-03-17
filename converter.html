@@ -59,7 +59,7 @@
 		}
 
 		.conv__out_control__wrp {
-			padding: 0 2rem 0 0;
+			padding: 0 3rem 0 0;
 			flex-shrink: 0;
 		}
 	</style>
@@ -86,6 +86,9 @@
 		<ul class="nav nav-pills" id="navbar">
 		</ul>
 	</nav>
+
+	<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
+
 	<div class="view-col-wrapper">
 
 		<div class="view-col">
@@ -104,7 +107,10 @@
 
 			<div class="split conv__out_control__wrp">
 				<button id="editable" class="btn btn-sm btn-default">Enable Editing</button>
-				<button id="download" class="btn btn-sm btn-default">Download JSON</button>
+				<div>
+					<button id="save_local" class="btn btn-sm btn-default" style="display: none">Save to Homebrew</button>
+					<button id="download" class="btn btn-sm btn-default">Download JSON</button>
+				</div>
 			</div>
 
 			<div id="lastWarnings" class="code"></div>
@@ -120,7 +126,7 @@
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
-<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/render.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/converterutils.js"></script>
 <script type="text/javascript" src="js/converter.js"></script>

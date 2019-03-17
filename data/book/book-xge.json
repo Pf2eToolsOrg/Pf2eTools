@@ -925,7 +925,7 @@
 													"type": "table",
 													"caption": "Childhood Home",
 													"colLabels": [
-														"d100 + #$prompt_number:title=Enter Lifestyle Modifier$#",
+														"{@dice d100 + #$prompt_number:title=Enter Lifestyle Modifier$#}",
 														"Home"
 													],
 													"colStyles": [
@@ -975,7 +975,7 @@
 													"type": "table",
 													"caption": "Childhood Memories",
 													"colLabels": [
-														"3d6 + #$prompt_number:title=Enter Charisma Modifier$#",
+														"{@dice 3d6 + #$prompt_number:title=Enter Charisma Modifier$#}",
 														"Memory"
 													],
 													"colStyles": [
@@ -3354,7 +3354,9 @@
 													"href": {
 														"type": "internal",
 														"path": "variantrules/001.png"
-													}
+													},
+													"width": 723,
+													"height": 1000
 												}
 											]
 										}
@@ -3379,14 +3381,18 @@
 													"href": {
 														"type": "internal",
 														"path": "variantrules/002.png"
-													}
+													},
+													"width": 723,
+													"height": 1000
 												},
 												{
 													"type": "image",
 													"href": {
 														"type": "internal",
 														"path": "variantrules/003.png"
-													}
+													},
+													"width": 1500,
+													"height": 1376
 												}
 											]
 										},
@@ -5255,39 +5261,39 @@
 											"rows": [
 												[
 													"1\u20145",
-													"Roll {@dice 1d6} times on Magic Item Table A."
+													"Roll {@dice 1d6} times on {@table Magic Item Table A}."
 												],
 												[
 													"6\u201410",
-													"Roll {@dice 1d4} times on Magic Item Table B."
+													"Roll {@dice 1d4} times on {@table Magic Item Table B}."
 												],
 												[
 													"11\u201415",
-													"Roll {@dice 1d4} times on Magic Item Table C."
+													"Roll {@dice 1d4} times on {@table Magic Item Table C}."
 												],
 												[
 													"16\u201420",
-													"Roll {@dice 1d4} times on Magic Item Table D."
+													"Roll {@dice 1d4} times on {@table Magic Item Table D}."
 												],
 												[
 													"21\u201425",
-													"Roll {@dice 1d4} times on Magic Item Table E."
+													"Roll {@dice 1d4} times on {@table Magic Item Table E}."
 												],
 												[
 													"26\u201430",
-													"Roll {@dice 1d4} times on Magic Item Table F."
+													"Roll {@dice 1d4} times on {@table Magic Item Table F}."
 												],
 												[
 													"31\u201435",
-													"Roll {@dice 1d4} times on Magic Item Table G."
+													"Roll {@dice 1d4} times on {@table Magic Item Table G}."
 												],
 												[
 													"36\u201440",
-													"Roll {@dice 1d4} times on Magic Item Table H."
+													"Roll {@dice 1d4} times on {@table Magic Item Table H}."
 												],
 												[
 													"41+",
-													"Roll {@dice 1d4} times on Magic Item Table I."
+													"Roll {@dice 1d4} times on {@table Magic Item Table I}."
 												]
 											]
 										},

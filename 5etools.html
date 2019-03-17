@@ -49,9 +49,12 @@
 	<ul class="nav nav-pills" id="navbar">
 	</ul>
 </nav>
+
+<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
+<div class="cancer__wrp-sidebar-rhs"><!--5ETOOLS_AD_RIGHT_1--><!--5ETOOLS_AD_RIGHT_2--></div>
+
 <main class="container">
 	<div class="alert alert-warning"><p><strong>Note:</strong> this is an unofficial/personal mirror, and is not guaranteed to be up-to-date. It is not supported by the 5etools team. Use at your own risk. Unless you have no other alternative, please use the main site at <a class="alert-link" href="https://5e.tools/" target="_blank">5e.tools</a>.</p></div>
-	<!--CANCER_ANCHOR-->
 	<!--<div class="alert alert-warning">-->
 		<!--<p><strong>Discord update:</strong> A recent bot-hijack resulted in many accounts being banned from our Discord server, along with a general server reset. Besides bans, no user accounts were affected, and the server has largely been restored to its former state. <a class="alert-link" href="https://discord.gg/AzyBjtQ" target="_blank" rel="noopener">You can rejoin here.</a></p>-->
 	<!--</div>-->
@@ -243,8 +246,8 @@
 <footer class="container">
 	<p class="text-align-center">
 		Version
-		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.71.2<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
-		| <span style="text-decoration: red line-through">&nbsp;&copy;&nbsp;</span>2018 5etools
+		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.73.1<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
+		| <span style="text-decoration: red line-through">&nbsp;&copy;&nbsp;</span><span id="current_year">2019</span> 5etools
 		<br>
 		<i>5etools&reg; is a Registered Trademark of The Norr Group, LLC. All rights reserved.</i>
 	</p>
@@ -255,7 +258,7 @@
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
-<script type="text/javascript" src="js/entryrender.js"></script>
+<script type="text/javascript" src="js/render.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery-ui.js"></script>
@@ -265,8 +268,12 @@
 	ExcludeUtil.pInitialise();
 
 	const $demoRoller = $(`#demo_roller`);
-	$demoRoller.html(EntryRenderer.getDefaultRenderer().renderEntry(`{@dice ${$demoRoller.html()}}`));
+	$demoRoller.html(Renderer.get().render(`{@dice ${$demoRoller.html()}}`));
 
+	$(`#current_year`).text((new Date).getFullYear());
+
+	// TAG Disabled until further notice
+	/*
 	(async () => {
 		if (!await _Donate.pNotDonating()) {
 			const $wrpDon = $(`#don-wrapper`).show();
@@ -282,6 +289,7 @@
 			_Donate.init();
 		}
 	})();
+	*/
 </script>
 </body>
 </html>

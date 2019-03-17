@@ -94,8 +94,8 @@ function addTrapsHazards (data) {
 	let tempString = "";
 	for (; thI < trapsAndHazardsList.length; thI++) {
 		const it = trapsAndHazardsList[thI];
-		if (!EntryRenderer.traphazard.isTrap(it.trapHazType) && ExcludeUtil.isExcluded(it.name, "hazard", it.source)) continue;
-		else if (EntryRenderer.traphazard.isTrap(it.trapHazType) && ExcludeUtil.isExcluded(it.name, "trap", it.source)) continue;
+		if (!Renderer.traphazard.isTrap(it.trapHazType) && ExcludeUtil.isExcluded(it.name, "hazard", it.source)) continue;
+		else if (Renderer.traphazard.isTrap(it.trapHazType) && ExcludeUtil.isExcluded(it.name, "trap", it.source)) continue;
 		const abvSource = Parser.sourceJsonToAbv(it.source);
 
 		tempString += `
@@ -131,7 +131,7 @@ function addTrapsHazards (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	EntryRenderer.hover.bindPopoutButton(trapsAndHazardsList);
+	Renderer.hover.bindPopoutButton(trapsAndHazardsList);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
@@ -163,26 +163,26 @@ function getSublistItem (it, pinId) {
 	`;
 }
 
-const renderer = EntryRenderer.getDefaultRenderer();
+const renderer = Renderer.get();
 function loadhash (jsonIndex) {
 	renderer.setFirstSection(true);
 	const it = trapsAndHazardsList[jsonIndex];
 
 	const renderStack = [];
 
-	renderer.recursiveEntryRender({entries: it.entries}, renderStack, 2);
+	renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 2});
 
-	const simplePart = EntryRenderer.traphazard.getSimplePart(renderer, it);
-	const complexPart = EntryRenderer.traphazard.getComplexPart(renderer, it);
-	const subtitle = EntryRenderer.traphazard.getSubtitle(it);
+	const simplePart = Renderer.traphazard.getSimplePart(renderer, it);
+	const complexPart = Renderer.traphazard.getComplexPart(renderer, it);
+	const subtitle = Renderer.traphazard.getSubtitle(it);
 	const $content = $(`#pagecontent`).empty();
 	$content.append(`
-		${EntryRenderer.utils.getBorderTr()}
-		${EntryRenderer.utils.getNameTr(it)}
-		${subtitle ? `<tr class="text"><td colspan="6"><i>${EntryRenderer.traphazard.getSubtitle(it)}</i></td>` : ""}
+		${Renderer.utils.getBorderTr()}
+		${Renderer.utils.getNameTr(it)}
+		${subtitle ? `<tr class="text"><td colspan="6"><i>${Renderer.traphazard.getSubtitle(it)}</i></td>` : ""}
 		<tr class="text"><td colspan="6">${renderStack.join("")}${simplePart || ""}${complexPart || ""}</td></tr>
-		${EntryRenderer.utils.getPageTr(it)}
-		${EntryRenderer.utils.getBorderTr()}
+		${Renderer.utils.getPageTr(it)}
+		${Renderer.utils.getBorderTr()}
 	`);
 
 	ListUtil.updateSelected();

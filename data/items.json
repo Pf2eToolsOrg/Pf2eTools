@@ -210,6 +210,9 @@
 						]
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -271,6 +274,9 @@
 			},
 			"entries": [
 				"Your Constitution score is 19 while you wear this amulet. It has no effect on you if your Constitution score is already 19 or higher without it."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -284,6 +290,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While wearing this amulet, you are hidden from {@filter divination|spells|school=D} magic. You can't be targeted by such magic or perceived through magical scrying sensors."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -366,6 +375,9 @@
 			],
 			"attachedSpells": [
 				"plane shift"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -380,6 +392,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While holding this shield, you can speak its command word as a bonus action to cause it to animate. The shield leaps into the air and hovers in your space to protect you as if you were wielding it, leaving your hands free. The shield remains animated for 1 minute, until you use a bonus action to end this effect, or until you are {@condition incapacitated} or die, at which point the shield falls to the ground or into your hand if you have one free."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -404,10 +419,32 @@
 			"entries": [
 				"This item first appears to be a Large sealed iron barrel weighing 500 pounds. The barrel has a hidden catch, which can be found with a successful DC 20 Intelligence ({@skill Investigation}) check. Releasing the catch unlocks a hatch at one end of the barrel, allowing two Medium or smaller creatures to crawl inside. Ten levers are set in a row at the far end, each in a neutral position, able to move either up or down. When certain levers are used, the apparatus transforms to resemble a giant lobster.",
 				"The apparatus of Kwalish is a Large object with the following statistics:",
-				"{@bold Armor Class:} 20",
-				"{@bold Hit Points:} 200",
-				"{@bold Speed:} 30 ft., swim 30 ft. (or 0 ft. for both if the legs and tail aren't extended)",
-				"{@bold Damage Immunities:} poison, psychic",
+				{
+				    "type": "list",
+					"style": "list-hang-notitle",
+				    "items": [
+						{
+						    "type": "item",
+						    "name": "Armor Class:",
+						    "entry": "20"
+						},
+						{
+						    "type": "item",
+						    "name": "Hit Points:",
+						    "entry": "200"
+						},
+						{
+						    "type": "item",
+						    "name": "Speed:",
+						    "entry": "30 ft., swim 30 ft. (or 0 ft. for both if the legs and tail aren't extended)"
+						},
+						{
+						    "type": "item",
+						    "name": "Damage Immunities:",
+						    "entry": "poison, psychic"
+						}
+				    ]
+				},
 				"To be used as a vehicle, the apparatus requires one pilot. While the apparatus's hatch is closed, the compartment is airtight and watertight. The compartment holds enough air for 10 hours of breathing, divided by the number of breathing creatures inside.",
 				" The apparatus floats on water. It can also go underwater to a depth of 900 feet. Below that, the vehicle takes {@dice 2d6} bludgeoning damage per minute from pressure.",
 				"A creature in the compartment can use an action to move as many as two of the apparatus's levers up or down. After each use, a lever goes back to its neutral position. Each lever, from left to right, functions as shown in the Apparatus of Kwalish Levers table.",
@@ -475,6 +512,9 @@
 						]
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -503,6 +543,9 @@
 			"reqAttune": true,
 			"entries": [
 				"You have resistance to nonmagical damage while you wear this armor. Additionally, you can use an action to make yourself immune to nonmagical damage for 10 minutes or until you are no longer wearing the armor. Once this special action is used, it can't be used again until the next dawn."
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -595,6 +638,9 @@
 			"reqAttune": true,
 			"entries": [
 				"You gain a +2 bonus to AC against ranged attacks while you wield this shield. This bonus is in addition to the shield's normal bonus to AC. In addition, whenever an attacker makes a ranged attack against a target within 5 feet of you, you can use your reaction to become the target of the attack instead."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -816,6 +862,9 @@
 						]
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -875,6 +924,9 @@
 				"The extradimensional creature attached to the bag can sense whatever is placed inside the bag. Animal or vegetable matter placed wholly in the bag is devoured and lost forever. When part of a living creature is placed in the bag, as happens when someone reaches inside it, there is a {@chance 50} chance that the creature is pulled inside the bag. A creature inside the bag can use its action to try to escape with a successful DC 15 Strength check. Another creature can use its action to reach into the bag to pull a creature out, doing so with a successful DC 20 Strength check (provided it isn't pulled inside the bag first). Any creature that starts its turn inside the bag is devoured, its body destroyed.",
 				"Inanimate objects can be stored in the bag, which can hold a cubic foot of such material. However, once each day, the bag swallows any objects inside it and spits them out into another plane of existence. The DM determines the time and plane.",
 				"If the bag is pierced or torn, it is destroyed, and anything contained within it is transported to a random location on the Astral Plane."
+			],
+			"lootTables": [
+				"Magic Item Table D"
 			]
 		},
 		{
@@ -889,6 +941,10 @@
 				"This bag has an interior space considerably larger than its outside dimensions, roughly 2 feet in diameter at the mouth and 4 feet deep. The bag can hold up to 500 pounds, not exceeding a volume of 64 cubic feet. The bag weighs 15 pounds, regardless of its contents. Retrieving an item from the bag requires an action.",
 				"If the bag is overloaded, pierced, or torn, it ruptures and is destroyed, and its contents are scattered in the Astral Plane. If the bag is turned inside out, its contents spill forth, unharmed, but the bag must be put right before it can be used again. Breathing creatures inside the bag can survive up to a number of minutes equal to 10 divided by the number of creatures (minimum 1 minute), after which time they begin to suffocate.",
 				"Placing a bag of holding inside an extradimensional space created by a {@item Heward's handy haversack}, {@item portable hole}, or similar item instantly destroys both items and opens a gate to the Astral Plane. The gate originates where the one item was placed inside the other. Any creature within 10 feet of the gate is sucked through it to a random location on the Astral Plane. The gate then closes. The gate is one-way only and can't be reopened."
+			],
+			"lootTables": [
+				"Magic Item Table A",
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -949,6 +1005,9 @@
 						]
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -1009,6 +1068,9 @@
 						]
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -1069,6 +1131,9 @@
 						]
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -1256,6 +1321,9 @@
 				"This small black sphere measures ¾ of an inch in diameter and weighs an ounce. Typically, {@dice 1d4 + 4} {@italic beads of force} are found together.",
 				"You can use an action to throw the bead up to 60 feet. The bead explodes on impact and is destroyed. Each creature within a 10-foot radius of where the bead landed must succeed on a DC 15 Dexterity saving throw or take {@dice 5d4} force damage. A sphere of transparent force then encloses the area for 1 minute. Any creature that failed the save and is completely within the area is trapped inside this sphere. Creatures that succeeded on the save, or are partially within the area, are pushed away from the center of the sphere until they are no longer inside it. Only breathable air can pass through the sphere's wall. No attack or other effect can.",
 				"An enclosed creature can use its action to push against the sphere's wall, moving the sphere up to half the creature's walking speed. The sphere can be picked up, and its magic causes it to weigh only 1 pound, regardless of the weight of creatures inside."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -1320,6 +1388,9 @@
 			},
 			"entries": [
 				"While wearing this belt, your Strength score changes to 27. The item has no effect on you if your Strength without the belt is equal to or greater than the belt's score."
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -1361,6 +1432,9 @@
 						null
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -1378,6 +1452,9 @@
 			},
 			"entries": [
 				"While wearing this belt, your Strength score changes to 25. The item has no effect on you if your Strength without the belt is equal to or greater than the belt's score."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -1395,6 +1472,9 @@
 			},
 			"entries": [
 				"While wearing this belt, your Strength score changes to 23. The item has no effect on you if your Strength without the belt is equal to or greater than the belt's score."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -1412,6 +1492,9 @@
 			},
 			"entries": [
 				"While wearing this belt, your Strength score changes to 21. The item has no effect on you if your Strength without the belt is equal to or greater than the belt's score."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -1429,6 +1512,9 @@
 			},
 			"entries": [
 				"While wearing this belt, your Strength score changes to 23. The item has no effect on you if your Strength without the belt is equal to or greater than the belt's score."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -1446,6 +1532,9 @@
 			},
 			"entries": [
 				"While wearing this belt, your Strength score changes to 29. The item has no effect on you if your Strength without the belt is equal to or greater than the belt's score."
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -2068,6 +2157,9 @@
 			"page": 155,
 			"entries": [
 				"While you wear these boots, your steps make no sound, regardless of the surface you are moving across. You also have advantage on Dexterity ({@skill Stealth}) checks that rely on moving silently."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -2094,6 +2186,9 @@
 			],
 			"attachedSpells": [
 				"levitate"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -2107,6 +2202,9 @@
 			"entries": [
 				"While you wear these boots, you can use a bonus action and click the boots' heels together. If you do, the boots double your walking speed, and any creature that makes an opportunity attack against you has disadvantage on the attack roll. If you click your heels together again, you end the effect.",
 				"When the boots' property has been used for a total of 10 minutes, the magic ceases to function until you finish a long rest."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -2119,6 +2217,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While you wear these boots, your walking speed becomes 30 feet, unless your walking speed is higher, and your speed isn't reduced if you are encumbered or wearing heavy armor. In addition, you can jump three times the normal distance, though you can't jump farther than your remaining movement would allow."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -2139,6 +2240,9 @@
 						"You can tolerate temperatures as low as -50 degrees Fahrenheit without any additional protection. If you wear heavy clothes, you can tolerate temperatures as low as -100 degrees Fahrenheit."
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -2178,6 +2282,9 @@
 			],
 			"attachedSpells": [
 				"conjure elemental"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -2222,6 +2329,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While wearing these bracers, you have proficiency with the longbow and shortbow, and you gain a +2 bonus to damage rolls on ranged attacks made with such weapons."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -2243,6 +2353,9 @@
 						null
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -2284,6 +2397,9 @@
 			],
 			"attachedSpells": [
 				"conjure elemental"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -2400,6 +2516,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While wearing this brooch, you have resistance to force damage, and you have immunity to damage from the {@spell magic missile} spell."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -2413,6 +2532,9 @@
 			"entries": [
 				"This wooden broom, which weighs 3 pounds, functions like a mundane broom until you stand astride it and speak its command word. It then hovers beneath you and can be ridden in the air. It has a flying speed of 50 feet. It can carry up to 400 pounds, but its flying speed becomes 30 feet while carrying over 200 pounds. The broom stops hovering when you land.",
 				"You can send the broom to travel alone to a destination within 1 mile of you if you speak the command word, name the location, and are familiar with that place. The broom comes back to you when you speak another command word, provided that the broom is still within 1 mile of you."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -2668,6 +2790,9 @@
 			],
 			"attachedSpells": [
 				"gate"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -2712,6 +2837,9 @@
 			"page": 157,
 			"entries": [
 				"While wearing this cap underwater, you can speak its command word as an action to create a bubble of air around your head. It allows you to breathe normally underwater. This bubble stays with you until you speak the command word again, the cap is removed, or you are no longer underwater."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -2727,6 +2855,9 @@
 			],
 			"attachedSpells": [
 				"dimension door"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -3037,6 +3168,9 @@
 			],
 			"attachedSpells": [
 				"conjure elemental"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -3130,6 +3264,9 @@
 			"entries": [
 				"This hollow metal tube measures about 1 foot long and weighs 1 pound. You can strike it as an action, pointing it at an object within 120 feet of you that can be opened, such as a door, lid, or lock. The chime issues a clear tone, and one lock or latch on the object opens unless the sound can't reach the object. If no locks or latches remain, the object itself opens.",
 				"The chime can be used ten times. After the tenth time it cracks and becomes useless."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -3175,6 +3312,9 @@
 			],
 			"attachedSpells": [
 				"scorching ray"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -3279,6 +3419,9 @@
 			],
 			"attachedSpells": [
 				"web"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -3302,6 +3445,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While you wear this cloak, it projects an illusion that makes you appear to be standing in a place near your actual location, causing any creature to have disadvantage on attack rolls against you. If you take damage, the property ceases to function until the start of your next turn. This property is suppressed while you are {@condition incapacitated}, {@condition restrained}, or otherwise unable to move."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -3314,6 +3460,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While you wear this cloak with its hood up, Wisdom ({@skill Perception}) checks made to see you have disadvantage. and you have advantage on Dexterity ({@skill Stealth}) checks made to hide, as the cloak's color shifts to camouflage you. Pulling the hood up or down requires an action."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -3327,6 +3476,9 @@
 			"entries": [
 				"While wearing this cloak, you can pull its hood over your head to cause yourself to become {@condition invisible}. While you are {@condition invisible}, anything you are carrying or wearing is {@condition invisible} with you. You become visible when you cease wearing the hood. Pulling the hood up or down requires an action.",
 				"Deduct the time you are invisible, in increments of 1 minute, from the cloak's maximum duration of 2 hours. After 2 hours of use, the cloak ceases to function. For every uninterrupted period of 12 hours the cloak goes unused, it regains 1 hour of duration."
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -3350,6 +3502,9 @@
 			"reqAttune": true,
 			"entries": [
 				"You gain a +1 bonus to AC and saving throws while you wear this cloak."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -3366,6 +3521,9 @@
 			],
 			"attachedSpells": [
 				"polymorph"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -3377,6 +3535,9 @@
 			"page": 159,
 			"entries": [
 				"While wearing this cloak with its hood up, you can breathe underwater, and you have a swimming speed of 60 feet. Pulling the hood up or down requires an action."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -3738,6 +3899,9 @@
 			],
 			"attachedSpells": [
 				"scrying"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -3756,6 +3920,9 @@
 			"attachedSpells": [
 				"scrying",
 				"detect thoughts"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -3774,6 +3941,9 @@
 			"attachedSpells": [
 				"scrying",
 				"suggestion"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -3791,6 +3961,9 @@
 			],
 			"attachedSpells": [
 				"scrying"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -3885,7 +4058,10 @@
 					]
 				}
 			],
-			"charges": 36
+			"charges": 36,
+			"lootTables": [
+				"Magic Item Table G"
+			]
 		},
 		{
 			"name": "Cubic Gate",
@@ -3903,6 +4079,9 @@
 			"attachedSpells": [
 				"gate",
 				"plane shift"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -3917,6 +4096,9 @@
 				"The fortress is a square tower, 20 feet on a side and 30 feet high, with arrow slits on all sides and a battlement atop it. Its interior is divided into two floors. with a ladder running along one wall to connect them. The ladder ends at a trapdoor leading to the roof. When activated, the tower has a small door on the side facing you. The door opens only at your command, which you can speak as a bonus action. It is immune to the {@spell knock} spell and similar magic, such as that of a {@item chime of opening}.",
 				"Each creature in the area where the fortress appears must make a DC 15 Dexterity saving throw, taking {@dice 10d10} bludgeoning damage on a failed save, or half as much damage on a successful one. In either case, the creature is pushed to an unoccupied space outside but next to the fortress. Objects in the area that aren't being worn or carried take this damage and are pushed automatically.",
 				"The tower is made of adamantine, and its magic prevents it from being tipped over. The roof, the door, and the walls each have 100 hit points, immunity to damage from nonmagical weapons excluding siege weapons, and resistance to all other damage. Only a {@spell wish} spell can repair the fortress (this use of the spell counts as replicating a spell of 8th level or lower). Each casting of {@spell wish} causes the roof, the door, or one wall to regain 50 hit points."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -3940,6 +4122,9 @@
 			"entries": [
 				"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
 				"You can use an action to cause thick, black poison to coat the blade. The poison remains for 1 minute or until an attack using this weapon hits a creature. That creature must succeed on a DC 15 Constitution saving throw or take {@dice 2d10} poison damage and become {@condition poisoned} for 1 minute. The dagger can't be used this way again until the next dawn."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -4039,6 +4224,9 @@
 						"\"Geyser\" produces 30 gallons of water that gushes forth in a geyser 30 feet long and 1 foot wide. As a bonus action while holding the decanter, you can aim the geyser at a creature you can see within 30 feet of you. The target must succeed on a DC 13 Strength saving throw or take {@dice 1d4} bludgeoning damage and fall {@condition prone}. Instead of a creature, you can target an object that isn't being worn or carried and that weighs no more than 200 pounds. The object is either knocked over or pushed up to 15 feet away from you."
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -4396,6 +4584,9 @@
 						]
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -4690,6 +4881,9 @@
 			],
 			"attachedSpells": [
 				"wish"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -4715,6 +4909,9 @@
 						"Once you don this cursed armor, you can't doff it unless you are targeted by the {@spell remove curse} spell or similar magic. While wearing the armor, you have disadvantage on attack rolls against demons and on saving throws against their spells and special abilities."
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -4837,6 +5034,9 @@
 			"entries": [
 				"You can use an action to place these shackles on an {@condition incapacitated} creature. The shackles adjust to fit a creature of Small to Large size. In addition to serving as mundane manacles, the shackles prevent a creature bound by them from using any method of extradimensional movement, including teleportation or travel to a different plane of existence. They don't prevent the creature from passing-through an interdimensional portal.",
 				"You and any creature you designate when you use the shackles can use an action to remove them. Once every 30 days, the bound creature can make a DC 30 Strength ({@skill Athletics}) check. On a success, the creature breaks free and destroys the shackles."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -5104,6 +5304,10 @@
 			"attachedSpells": [
 				"light",
 				"daylight"
+			],
+			"lootTables": [
+				"Magic Item Table A",
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -5226,6 +5430,9 @@
 			"page": 166,
 			"entries": [
 				"Found in a small packet, this powder resembles very fine sand. There is enough of it for one use. When you use an action to throw the dust into the air, you and each creature and object within 10 feet of you become {@condition invisible} for {@dice 2d4} minutes. The duration is the same for all subjects, and the dust is consumed when its magic takes effect. If a creature affected by the dust attacks or casts a spell, the invisibility ends for that creature."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -5239,6 +5446,9 @@
 				"This small packet contains {@dice 1d6+4} pinches of dust. You can use an action to sprinkle a pinch of it over water. The dust turns a cube of water 15 feet on a side into one marble-sized pellet, which floats or rests near where the dust was sprinkled. The pellet's weight is negligible.",
 				"Someone can use an action to smash the pellet against a hard surface, causing the pellet to shatter and release the water the dust absorbed. Doing so ends that pellet's magic.",
 				"An elemental composed mostly of water that is exposed to a pinch of the dust must make a DC 13 Constitution saving throw, taking {@dice 10d6} necrotic damage on a failed save, or half as much damage on a successful one."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -5251,6 +5461,9 @@
 			"entries": [
 				"Found in a small container, this powder resembles very fine sand. It appears to be {@item dust of disappearance}, and an {@spell identify} spell reveals it to be such. There is enough of it for one use.",
 				"When you use an action to throw a handful of the dust into the air, you and each creature that needs to breathe within 30 feet of you must succeed on a DC 15 Constitution saving throw or become unable to breathe while sneezing uncontrollably. A creature affected in this way is {@condition incapacitated} and suffocating. As long as it is conscious, a creature can repeat the saving throw at the end of each of its turns, ending the effect on it on a success. The {@spell lesser restoration} spell can also end the effect on a creature."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -5267,6 +5480,9 @@
 			"page": 167,
 			"entries": [
 				"While wearing this armor, you gain a +2 bonus to AC. In addition, if an effect moves you against your will along the ground, you can use your reaction to reduce the distance you are moved by up to 10 feet."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -5290,6 +5506,9 @@
 			"reqAttune": "by a Dwarf",
 			"entries": [
 				"You gain a +3 bonus to attack and damage rolls made with this magic weapon. It has the thrown property with a normal range of 20 feet and a long range of 60 feet. When you hit with a ranged attack using this weapon, it deals an extra {@dice 1d8} damage or, if the target is a giant, {@dice 2d8} damage. Immediately after the attack, the weapon flies back to your hand."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -5367,6 +5586,9 @@
 			],
 			"attachedSpells": [
 				"wish"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -5393,6 +5615,9 @@
 						null
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -5488,6 +5713,9 @@
 			"page": 168,
 			"entries": [
 				"When you drink this potion, it cures any disease afflicting you, and it removes the {@condition blinded}, {@condition deafened}, {@condition paralyzed}, and {@condition poisoned} conditions. The clear red liquid has tiny bubbles of light in it."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -5502,6 +5730,9 @@
 			"page": 209,
 			"entries": [
 				"You gain a +1 bonus to AC while you wear this armor. You are considered proficient with this armor even if you lack proficiency with medium armor."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -5628,6 +5859,9 @@
 			"entries": [
 				"Smoke leaks from the lead-stoppered mouth of this brass bottle, which weighs 1 pound. When you use an action to remove the stopper, a cloud of thick smoke pours out in a 60-foot radius from the bottle. The cloud's area is heavily obscured. Each minute the bottle remains open and within the cloud, the radius increases by 10 feet until it reaches its maximum radius of 120 feet.",
 				"The cloud persists as long as the bottle is open. Closing the bottle requires you to speak its command word as an action. Once the bottle is closed, the cloud disperses after 10 minutes. A moderate wind (11 to 20 miles per hour) can also disperse the smoke after 1 minute, and a strong wind (21 or more miles per hour) can do so after 1 round."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -5780,6 +6014,9 @@
 			"charges": 3,
 			"attachedSpells": [
 				"charm person"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -5791,6 +6028,9 @@
 			"page": 168,
 			"entries": [
 				"These crystal lenses fit over the eyes. While wearing them, you can see much better than normal out to a range of 1 foot. You have advantage on Intelligence ({@skill Investigation}) checks that rely on sight while searching an area or studying an object within that range."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -5803,6 +6043,9 @@
 			"reqAttune": true,
 			"entries": [
 				"These crystal lenses fit over the eyes. While wearing them, you have advantage on Wisdom ({@skill Perception}) checks that rely on sight. In conditions of clear visibility, you can make out details of even extremely distant creatures and objects as small as 2 feet across."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -5837,6 +6080,9 @@
 				"The creature exists for a duration specific to each figurine. At the end of the duration, the creature reverts to its figurine form. It reverts to a figurine early if it drops to 0 hit points or if you use an action to speak the command word again while touching it. When the creature becomes a figurine again, its property can't be used again until a certain amount of time has passed, as specified in the figurine's description.",
 				"{@creature griffon|mm|Bronze Griffon}.",
 				"This bronze statuette is of a {@creature griffon} rampant. It can become a {@creature griffon} for up to 6 hours. Once it has been used, it can't be used again until 5 days have passed."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -5852,6 +6098,9 @@
 				"The creature exists for a duration specific to each figurine. At the end of the duration, the creature reverts to its figurine form. It reverts to a figurine early if it drops to 0 hit points or if you use an action to speak the command word again while touching it. When the creature becomes a figurine again, its property can't be used again until a certain amount of time has passed, as specified in the figurine's description.",
 				"{@creature giant fly|dmg|Ebony Fly}.",
 				"This ebony statuette is carved in the likeness of a horsefly. It can become a {@creature giant fly|dmg} for up to 12 hours and can be ridden as a mount. Once it has been used, it can't be used again until 2 days have passed."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -5867,6 +6116,9 @@
 				"The creature exists for a duration specific to each figurine. At the end of the duration, the creature reverts to its figurine form. It reverts to a figurine early if it drops to 0 hit points or if you use an action to speak the command word again while touching it. When the creature becomes a figurine again, its property can't be used again until a certain amount of time has passed, as specified in the figurine's description.",
 				"{@creature lion|mm|Golden Lions}.",
 				"These gold statuettes of lions are always created in pairs. You can use one figurine or both simultaneously. Each can become a {@creature lion} for up to 1 hour. Once a {@creature lion} has been used, it can't be used again until 7 days have passed."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -5891,7 +6143,10 @@
 					]
 				}
 			],
-			"charges": 24
+			"charges": 24,
+			"lootTables": [
+				"Magic Item Table G"
+			]
 		},
 		{
 			"name": "Figurine of Wondrous Power, Marble Elephant",
@@ -5906,6 +6161,9 @@
 				"The creature exists for a duration specific to each figurine. At the end of the duration, the creature reverts to its figurine form. It reverts to a figurine early if it drops to 0 hit points or if you use an action to speak the command word again while touching it. When the creature becomes a figurine again, its property can't be used again until a certain amount of time has passed, as specified in the figurine's description.",
 				"{@creature elephant|mm|Marble Elephant}.",
 				"This marble statuette is about 4 inches high and long. It can become an {@creature elephant} for up to 24 hours. Once it has been used, it can't be used again until 7 days have passed."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -5922,6 +6180,9 @@
 				"{@creature nightmare|mm|Obsidian Steed}.",
 				"This polished obsidian horse can become a {@creature nightmare} for up to 24 hours. The {@creature nightmare} fights only to defend itself. Once it has been used, it can't be used again until 5 days have passed.",
 				"If you have a good alignment, the figurine has a {@chance 10} chance each time you use it to ignore your orders, including a command to revert to figurine form. If you mount the {@creature nightmare} while it is ignoring your orders, you and the {@creature nightmare} are instantly transported to a random location on the plane of Hades, where the {@creature nightmare} reverts to figurine form."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -5937,6 +6198,9 @@
 				"The creature exists for a duration specific to each figurine. At the end of the duration, the creature reverts to its figurine form. It reverts to a figurine early if it drops to 0 hit points or if you use an action to speak the command word again while touching it. When the creature becomes a figurine again, its property can't be used again until a certain amount of time has passed, as specified in the figurine's description.",
 				"{@creature mastiff|mm|Onyx Dog}.",
 				"This onyx statuette of a dog can become a {@creature mastiff} for up to 6 hours. The {@creature mastiff} has an Intelligence of 8 and can speak Common. It also has dark vision out to a range of 60 feet and can see {@condition invisible} creatures and objects within that range. Once it has been used, it can't be used again until 7 days have passed."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -5952,6 +6216,9 @@
 				"The creature exists for a duration specific to each figurine. At the end of the duration, the creature reverts to its figurine form. It reverts to a figurine early if it drops to 0 hit points or if you use an action to speak the command word again while touching it. When the creature becomes a figurine again, its property can't be used again until a certain amount of time has passed, as specified in the figurine's description.",
 				"{@creature giant owl|mm|Serpentine Owl}.",
 				"This serpentine statuette of an owl can become a {@creature giant owl} for up to 8 hours. Once it has been used, it can't be used again until 2 days have passed. The owl can telepathically communicate with you at any range if you and it are on the same plane of existence."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -5970,6 +6237,9 @@
 			],
 			"attachedSpells": [
 				"animal messenger"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -6056,6 +6326,9 @@
 				"The second command word causes the box to unfold into a ship 24 feet long, 8 feet wide; and 6 feet deep. The ship has a deck, rowing seats, five sets of oars, a steering oar, an anchor, a deck cabin, and a mast with a square sail. The ship can hold fifteen Medium creatures comfortably.",
 				"When the box becomes a vessel, its weight becomes that of a normal vessel its size, and anything that was stored in the box remains in the boat.",
 				"The third command word causes the folding boat to fold back into a box, provided that no creatures are aboard. Any objects in the vessel that can't fit inside the box remain outside the box as it folds. Any objects in the vessel that can fit inside the box do so."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -6203,6 +6476,9 @@
 			},
 			"entries": [
 				"Your Strength score is 19 while you wear these gauntlets. They have no effect on you if your Strength is already 19 or higher without them."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -6258,7 +6534,10 @@
 				},
 				"When all of the gem's charges are expended, the gem becomes a nonmagical jewel worth 50 gp."
 			],
-			"charges": 50
+			"charges": 50,
+			"lootTables": [
+				"Magic Item Table F"
+			]
 		},
 		{
 			"name": "Gem of Seeing",
@@ -6273,7 +6552,10 @@
 				"This gem has 3 charges. As an action, you can speak the gem's command word and expend 1 charge. For the next 10 minutes, you have truesight out to 120 feet when you peer through the gem.",
 				"The gem regains {@dice 1d3} expended charges daily at dawn."
 			],
-			"charges": 3
+			"charges": 3,
+			"lootTables": [
+				"Magic Item Table G"
+			]
 		},
 		{
 			"name": "Ghost Lantern",
@@ -6318,7 +6600,7 @@
 			"type": "LA",
 			"armor": true,
 			"weight": "13",
-			"ac": 13,
+			"ac": 12,
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6334,6 +6616,9 @@
 						null
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -6436,6 +6721,9 @@
 			"reqAttune": true,
 			"entries": [
 				"These gloves seem to almost meld into your hands when you don them. When a ranged weapon attack hits you while you're wearing them, you can use your reaction to reduce the damage by {@dice 1d10} + your Dexterity modifier, provided that you have a free hand. If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in that hand."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -6448,6 +6736,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While wearing these gloves, climbing and swimming don't cost you extra movement, and you gain a +5 bonus to Strength ({@skill Athletics}) checks made to climb or swim."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -6459,6 +6750,9 @@
 			"page": 172,
 			"entries": [
 				"These gloves are {@condition invisible} while worn. While wearing them, you gain a +5 bonus to Dexterity ({@skill Sleight of Hand}) checks and Dexterity checks made to pick locks."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -6478,6 +6772,9 @@
 			"page": 172,
 			"entries": [
 				"While wearing these dark lenses, you have darkvision out to a range of 60 feet. If you already have darkvision. wearing the goggles increases its range by 60 feet."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -6865,7 +7162,10 @@
 				},
 				"The hammer also has 5 charges. While attuned to it, you can expend 1 charge and make a ranged weapon attack with the hammer, hurling it as if it had the thrown property with a normal range of 20 feet and a long range of 60 feet. If the attack hits, the hammer unleashes a thunderclap audible out to 300 feet. The target and every creature within 30 feet of it must succeed on a DC 17 Constitution saving throw or be {@condition stunned} until the end of your next turn. The hammer regains {@dice 1d4+1} expended charges daily at dawn."
 			],
-			"charges": 5
+			"charges": 5,
+			"lootTables": [
+				"Magic Item Table I"
+			]
 		},
 		{
 			"name": "Hand Drum",
@@ -6974,6 +7274,9 @@
 			],
 			"attachedSpells": [
 				"disguise self"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -7073,6 +7376,9 @@
 			},
 			"entries": [
 				"Your Intelligence score is 19 while you wear this headband. It has no effect on you if your Intelligence is already 19 or higher without it."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -7138,6 +7444,9 @@
 				"fireball",
 				"prismatic spray",
 				"wall of fire"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -7152,6 +7461,9 @@
 			],
 			"attachedSpells": [
 				"comprehend languages"
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -7169,6 +7481,9 @@
 			"attachedSpells": [
 				"detect thoughts",
 				"suggestion"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -7185,6 +7500,9 @@
 			"charges": 3,
 			"attachedSpells": [
 				"teleport"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -7308,6 +7626,9 @@
 				"Placing an object in the haversack follows the normal rules for interacting with objects. Retrieving an item from the haversack requires you to use an action. When you reach into the haversack for a specific item, the item is always magically on top.",
 				"The haversack has a few limitations. If it is overloaded, or if a sharp object pierces it or tears it, the haversack ruptures and is destroyed. If the haversack is destroyed, its contents are lost forever, although an artifact always turns up again somewhere. If the haversack is turned inside out, its contents spill forth, unharmed, and the haversack must be put right before it can be used again. If a breathing creature is placed within the haversack, the creature can survive for up to 10 minutes, after which time it begins to suffocate.",
 				"Placing the haversack inside an extradimensional space created by a {@item bag of holding}, {@item portable hole}, or similar item instantly destroys both items and opens a gate to the Astral Plane. The gate originates where the one item was placed inside the other. Any creature within 10-feet of the gate is sucked through it and deposited in a random location on the Astral Plane. The gate then closes. The gate is one-way only and can't be reopened."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -7402,6 +7723,9 @@
 			"entries": [
 				"You can use an action to speak the horn's command word and then blow the horn, which emits a thunderous blast in a 30-foot cone that is audible 600 feet away. Each creature in the cone must make a DC 15 Constitution saving throw. On a failed save, a creature takes {@dice 5d6} thunder damage and is {@condition deafened} for 1 minute. On a successful save, a creature takes half as much damage and isn't {@condition deafened}. Creatures and objects made of glass or crystal have disadvantage on the saving throw and take {@dice 10d6} thunder damage instead of {@dice 5d6}.",
 				"Each use of the horn's magic has a {@chance 20} chance of causing the horn to explode. The explosion deals {@dice 10d6} fire damage to the blower and destroys the horn."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -7428,6 +7752,9 @@
 				"You can use an action to blow this horn. In response, warrior spirits from the plane of Ysgard appear within 60 feet of you. These spirits use the {@creature berserker} statistics. They return to Ysgard after 1 hour or when they drop to 0 hit points. Once you use the horn, it can't be used again until 7 days have passed.",
 				"A brass horn summons {@dice 3d4+3} {@creature berserker|MM|berserkers}. To use the brass horn, you must be proficient with all simple weapons.",
 				"If you blow the horn without meeting its requirement, the summoned {@creature berserker|MM|berserkers} attack you. If you meet the requirement, they are friendly to you and your companions and follow your commands."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -7442,6 +7769,9 @@
 				"You can use an action to blow this horn. In response, warrior spirits from the plane of Ysgard appear within 60 feet of you. These spirits use the {@creature berserker} statistics. They return to Ysgard after 1 hour or when they drop to 0 hit points. Once you use the horn, it can't be used again until 7 days have passed.",
 				"A bronze horn summons {@dice 4d4+4} {@creature berserker|MM|berserkers}. To use the bronze horn, you must be proficient with medium armor.",
 				"If you blow the horn without meeting its requirement, the summoned {@creature berserker|MM|berserkers} attack you. If you meet the requirement, they are friendly to you and your companions and follow your commands."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -7456,6 +7786,9 @@
 				"You can use an action to blow this horn. In response, warrior spirits from the plane of Ysgard appear within 60 feet of you. These spirits use the {@creature berserker} statistics. They return to Ysgard after 1 hour or when they drop to 0 hit points. Once you use the horn, it can't be used again until 7 days have passed.",
 				"The iron horn summons {@dice 5d4+5} {@creature berserker|MM|berserkers}. To use the iron horn, you must be proficient with all martial weapons.",
 				"If you blow the horn without meeting its requirement, the summoned {@creature berserker|MM|berserkers} attack you. If you meet the requirement, they are friendly to you and your companions and follow your commands."
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -7470,6 +7803,9 @@
 				"You can use an action to blow this horn. In response, warrior spirits from the plane of Ysgard appear within 60 feet of you. These spirits use the {@creature berserker} statistics. They return to Ysgard after 1 hour or when they drop to 0 hit points. Once you use the horn, it can't be used again until 7 days have passed.",
 				"The silver horn summons {@dice 2d4+2} {@creature berserker|MM|berserkers}.",
 				"The {@creature berserker|MM|berserkers} are friendly to you and your companions and follow your commands."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -7481,6 +7817,9 @@
 			"page": 175,
 			"entries": [
 				"These iron horseshoes come in a set of four. While all four shoes are affixed to the hooves of a horse or similar creature, they allow the creature to move normally while floating 4 inches above the ground. This effect means the creature can cross or stand above nonsolid or unstable surfaces, such as water or lava. The creature leaves no tracks and ignores difficult terrain. In addition, the creature can move at normal speed for up to 12 hours a day without suffering {@condition exhaustion} from a forced march."
+			],
+			"lootTables": [
+				"Magic Item Table D"
 			]
 		},
 		{
@@ -7492,6 +7831,9 @@
 			"page": 175,
 			"entries": [
 				"These iron horseshoes come in a set of four. While all four shoes are affixed to the hooves of a horse or similar creature, they increase the creature's walking speed by 30 feet."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -7564,6 +7906,9 @@
 			"page": 175,
 			"entries": [
 				"This flat iron rod has a button on one end. You can use an action to press the button, which causes the rod to become magically fixed in place. Until you or another creature uses an action to push the button again, the rod doesn't move, even if it is defying gravity. The rod can hold up to 8,000 pounds of weight. More weight causes the rod to deactivate and fall. A creature can use an action to make a DC 30 Strength check, moving the fixed rod up to 10 feet on a success"
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -7754,6 +8099,9 @@
 				"protection from evil and good",
 				"cure wounds",
 				"wall of thorns"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -7781,6 +8129,9 @@
 				"protection from evil and good",
 				"dispel magic",
 				"protection from energy"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -7808,6 +8159,9 @@
 				"protection from evil and good",
 				"wall of fire",
 				"wind wall"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -7835,6 +8189,9 @@
 				"protection from evil and good",
 				"protection from energy",
 				"protection from poison"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -7863,6 +8220,9 @@
 				"faerie fire",
 				"shillelagh",
 				"speak with animals"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -7890,6 +8250,9 @@
 				"protection from evil and good",
 				"cure wounds",
 				"fog cloud"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -7917,6 +8280,9 @@
 				"protection from evil and good",
 				"control weather",
 				"fire storm"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -7933,6 +8299,9 @@
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
 				"While this pale lavender ellipsoid orbits your head, you can use your reaction to cancel a spell of 4th level or lower cast by a creature you can see and targeting only you.",
 				"Once the stone has canceled 20 levels of spells, it burns out and turns dull gray, losing its magic. If you are targeted by a spell whose level is higher than the number of spell levels the stone has left, the stone can't cancel it."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -7951,6 +8320,9 @@
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
 				"Your Dexterity score increases by 2, to a maximum of 20, while this deep red sphere orbits your head."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -7966,6 +8338,9 @@
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
 				"You can't be surprised while this dark blue rhomboid orbits your head."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -7984,6 +8359,9 @@
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
 				"Your Constitution score increases by 2, to a maximum of 20, while this pink rhomboid orbits your head."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -7999,6 +8377,9 @@
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
 				"While this marbled lavender and green ellipsoid orbits your head, you can use your reaction to cancel a spell of 8th level or lower cast by a creature you can see and targeting only you. Once the stone has canceled 50 levels of spells, it burns out and turns dull gray, losing its magic. If you are targeted by a spell whose level is higher than the number of spell levels the stone has left, the stone can't cancel it."
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -8017,6 +8398,9 @@
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
 				"Your Wisdom score increases by 2, to a maximum of 20, while this incandescent blue sphere orbits your head."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -8035,6 +8419,9 @@
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
 				"Your Intelligence score increases by 2, to a maximum of 20, while this marbled scarlet and blue sphere orbits your head."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -8053,6 +8440,9 @@
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
 				"Your Charisma score increases by 2, to a maximum of 20, while this marbled pink and green sphere orbits your head."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -8068,6 +8458,9 @@
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
 				"Your proficiency bonus increases by 1 while this pale green prism orbits your head."
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -8083,6 +8476,9 @@
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
 				"You gain a +1 bonus to AC while this dusty rose prism orbits your head."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -8098,6 +8494,9 @@
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
 				"You regain 15 hit points at the end of each hour this pearly white spindle orbits your head, provided that you have at least 1 hit point."
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -8115,6 +8514,9 @@
 				"This vibrant purple prism stores spells cast into it, holding them until you use them. The stone can store up to 3 levels worth of spells at a time. When found, it contains {@dice 1d4-1} levels of stored spells chosen by the DM.",
 				"Any creature can cast a spell of 1st through 3rd level into the stone by touching it as the spell is cast. The spell has no effect, other than to be stored in the stone. If the stone can't hold the spell, the spell is expended without effect. The level of the slot used to cast the spell determines how much space it uses.",
 				"While this stone orbits your head, you can cast any spell stored in it. The spell uses the slot level, spell save DC, spell attack bonus, and spellcasting ability of the original caster, but is otherwise treated as if you cast the spell. The spell cast from the stone is no longer stored in it, freeing up space."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -8133,6 +8535,9 @@
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
 				"Your Strength score increases by 2, to a maximum of 20, while this pale blue rhomboid orbits your head."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -8148,6 +8553,9 @@
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
 				"A stone has AC 24, 10 hit points, and resistance to all damage. It is considered to be an object that is being worn while it orbits your head.",
 				"You don't need to eat or drink while this clear spindle orbits your head."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -8172,6 +8580,9 @@
 				"Make a ranged attack roll with an attack bonus equal to your Dexterity modifier plus your proficiency bonus. On a hit, the target is {@condition restrained} until you take a bonus action to speak the command word again to release it. Doing so, or missing with the attack, causes the bands to contract and become a sphere once more.",
 				"A creature, including the one {@condition restrained}, can use an action to make a DC 20 Strength check to break the iron bands. On a success, the item is destroyed, and the {@condition restrained} creature is freed. If the check fails, any further attempts made by that creature automatically fail until 24 hours have elapsed.",
 				"Once the bands are used, they can't be used again until the next dawn."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -8319,6 +8730,9 @@
 						]
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -8500,6 +8914,9 @@
 			"entries": [
 				"This javelin is a magic weapon. When you hurl it and speak its command word, it transforms into a bolt of lightning, forming a line 5 feet wide that extends out from you to a target within 120 feet. Each creature in the line excluding you and the target must make a DC 13 Dexterity saving throw, taking {@dice 4d6} lightning damage on a failed save, and half as much damage on a successful one. The lightning bolt turns back into a javelin when it reaches the target. Make a ranged weapon attack against the target. On a hit, the target takes damage from the javelin plus {@dice 4d6} lightning damage.",
 				"The javelin's property can't be used again until the next dawn. In the meantime, the javelin can still be used as a magic weapon."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -8644,6 +9061,9 @@
 			"entries": [
 				"This glass jar, 3 inches in diameter, contains {@dice 1d4+1} doses of a thick mixture that smells faintly of aloe. The jar and its contents weigh ½ pound.",
 				"As an action, one dose of the ointment can be swallowed or applied to the skin. The creature that receives it regains {@dice 2d8+2} hit points, ceases to be {@condition poisoned}, and is cured of any disease."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -8720,6 +9140,9 @@
 			"page": 179,
 			"entries": [
 				"While lit, this {@item hooded lantern|phb} burns for 6 hours on 1 pint of oil, shedding bright light in a 30-foot radius and dim light for an additional 30 feet. {@condition Invisible} creatures and objects are visible as long as they are in the lantern's bright light. You can use an action to lower the hood, reducing the light to dim light in a 5-foot radius."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -9004,6 +9427,9 @@
 			"entries": [
 				"When you hit a fiend or an undead with this magic weapon, that creature takes an extra {@dice 2d6} radiant damage. If the target has 25 hit points or fewer after taking this damage, it must succeed on a DC 15 Wisdom saving throw or be destroyed. On a successful save, the creature becomes {@condition frightened} of you until the end of your next turn.",
 				"While you hold this weapon, it sheds bright light in a 20-foot radius and dim light for an additional 20 feet."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -9021,6 +9447,9 @@
 			"entries": [
 				"You gain a +1 bonus to attack and damage rolls made with this magic weapon. The bonus increases to +3 when you use the mace to attack a construct.",
 				"When you roll a 20 on an attack roll made with this weapon, the target takes an extra 7 bludgeoning damage, or an extra 14 bludgeoning damage if it's a construct. If a construct has 25 hit points or fewer after taking this damage, it is destroyed."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -9040,7 +9469,10 @@
 				"This magic weapon has 3 charges. While holding it, you can use an action and expend 1 charge to release a wave of terror. Each creature of your choice in a 30-foot radius extending from you must succeed on a DC 15 Wisdom saving throw or become {@condition frightened} of you for 1 minute. While it is {@condition frightened} in this way, a creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action it can use only the {@action Dash} action or try to escape from an effect that prevents it from moving. If it has nowhere it can move, the creature can use the {@action Dodge} action. At the end of each of its turns, a creature can repeat the saving throw, ending the effect on itself on a success.",
 				"The mace regains {@dice 1d3} expended charges daily at dawn."
 			],
-			"charges": 3
+			"charges": 3,
+			"lootTables": [
+				"Magic Item Table G"
+			]
 		},
 		{
 			"name": "Magnifying Glass",
@@ -9098,6 +9530,9 @@
 			"reqAttune": true,
 			"entries": [
 				"You have advantage on saving throws against spells while you wear this cloak."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -9113,6 +9548,9 @@
 			},
 			"entries": [
 				"This book contains health and diet tips, and its words are charged with magic. If you spend 48 hours over a period of 6 days or fewer studying the book's contents and practicing its guidelines, your Constitution score increases by 2, as does your maximum for that score. The manual then loses its magic, but regains it in a century."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -9154,6 +9592,9 @@
 			},
 			"entries": [
 				"This book describes fitness exercises, and its words are charged with magic. If you spend 48 hours over a period of 6 days or fewer studying the book's contents and practicing its guidelines, your Strength score increases by 2, as does your maximum for that score. The manual then loses its magic, but regains it in a century."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -9182,6 +9623,9 @@
 			},
 			"entries": [
 				"This book contains coordination and balance exercises, and its words are charged with magic. If you spend 48 hours over a period of 6 days or fewer studying the book's contents and practicing its guidelines, your Dexterity score increases by 2, as does your maximum for that score. The manual then loses its magic, but regains it in a century."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -9354,6 +9798,9 @@
 			"charges": 3,
 			"attachedSpells": [
 				"detect thoughts"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -9460,6 +9907,9 @@
 				"If the mirror traps a creature but its twelve extradimensional cells are already occupied, the mirror frees one trapped creature at random to accommodate the new prisoner. A freed creature appears in an unoccupied space within sight of the mirror but facing away from it. If the mirror is shattered, all creatures it contains are freed and appear in unoccupied spaces near it.",
 				"While within 5 feet of the mirror, you can use an action to speak the name of one creature trapped in it or call out a particular cell by number. The creature named or contained in the named cell appears as an image on the mirror's surface. You and the creature can then communicate normally.",
 				"In a similar way, you can use an action to speak a second command word and free one creature trapped in the mirror. The freed creature appears, along with its possessions, in the unoccupied space nearest to the mirror and facing away from it."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -9739,6 +10189,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While wearing this necklace, you can breathe normally in any environment, and you have advantage on saving throws made against harmful gases and vapors (such as {@spell cloudkill} and {@spell stinking cloud} effects, inhaled poisons, and the breath weapons of some dragons)."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -9755,6 +10208,9 @@
 			],
 			"attachedSpells": [
 				"fireball"
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -9823,6 +10279,9 @@
 				"branding smite",
 				"planar ally",
 				"wind walk"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -9863,6 +10322,9 @@
 				"When you complete the painting, the object or terrain feature depicted becomes a real, nonmagical object. Thus, painting a door on a wall creates an actual door that can be opened to whatever is beyond. Painting a pit on a floor creates a real pit, and its depth counts against the total area of objects you create.",
 				"Nothing created by the pigments can have a value greater than 25 gp. If you paint an object of greater value (such as a diamond or a pile of gold), the object looks authentic, but close inspection reveals it is made from paste, bone, or some other worthless material.",
 				"If you paint a form of energy such as fire or lightning, the energy appears but dissipates as soon as you complete the painting, doing no harm to anything."
+			],
+			"lootTables": [
+				"Magic Item Table D"
 			]
 		},
 		{
@@ -9888,6 +10350,9 @@
 				"When you nock an arrow on this bow, it whispers in Elvish, \"Swift defeat to my enemies.\" When you use this weapon to make a ranged attack, you can, as a command phrase, say, \"Swift death to you who have wronged me.\" The target of your attack becomes your sworn enemy until it dies or until dawn seven days later. You can have only one such sworn enemy at a time. When your sworn enemy dies, you can choose a new one after the next dawn.",
 				"When you make a ranged attack roll with this weapon against your sworn enemy, you have advantage on the roll. In addition, your target gains no benefit from cover, other than total cover, and you suffer no disadvantage due to long range. If the attack hits, your sworn enemy takes an extra {@dice 3d6} piercing damage.",
 				"While your sworn enemy lives, you have disadvantage on attack rolls with all other weapons."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -9934,6 +10399,9 @@
 			],
 			"attachedSpells": [
 				"etherealness"
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -9946,6 +10414,9 @@
 			"page": 184,
 			"entries": [
 				"This clear, gelatinous oil sparkles with tiny, ultrathin silver shards. The oil can coat one slashing or piercing weapon or up to 5 pieces of slashing or piercing ammunition. Applying the oil takes 1 minute. For 1 hour, the coated item is magical and has a +3 bonus to attack and damage rolls."
+			],
+			"lootTables": [
+				"Magic Item Table D"
 			]
 		},
 		{
@@ -9962,6 +10433,9 @@
 			],
 			"attachedSpells": [
 				"freedom of movement"
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -10419,6 +10893,9 @@
 			"reqAttune": "by a Spellcaster",
 			"entries": [
 				"While this pearl is on your person, you can use an action to speak its command word and regain one expended spell slot. If the expended slot was of 4th level or higher, the new slot is 3rd level. Once you have used the pearl, it can't be used again until the next dawn."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -10525,6 +11002,9 @@
 			"page": 184,
 			"entries": [
 				"You are immune to contracting any disease while you wear this pendant. If you are already infected with a disease, the effects of the disease are suppressed while you wear the pendant."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -10537,6 +11017,9 @@
 			"page": 184,
 			"entries": [
 				"This delicate silver chain has a brilliant-cut black gem pendant. While you wear it, poisons have no effect on you. You are immune to the {@condition poisoned} condition and have immunity to poison damage."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -10550,6 +11033,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While you wear this pendant, you stabilize whenever you are dying at the start of your turn. In addition, whenever you roll a Hit Die to regain hit points, double the number of hit points it restores."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -10573,6 +11059,9 @@
 			"page": 184,
 			"entries": [
 				"The next time you see a creature within 10 minutes after drinking this philter, you become {@condition charmed} by that creature for 1 hour. If the creature is of a species and gender you are normally attracted to, you regard it as your true love while you are {@condition charmed}. This potion's rose-hued, effervescent liquid contains one easy-to-miss bubble shaped like a heart."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -10606,7 +11095,10 @@
 			"entries": [
 				"You must be proficient with wind instruments to use these pipes. They have 3 charges. You can use an action to play them and expend 1 charge to create an eerie, spellbinding tune. Each creature within 30 feet of you that hears you play must succeed on a DC 15 Wisdom saving throw or become {@condition frightened} of you for 1 minute. If you wish, all creatures in the area that aren't hostile toward you automatically succeed on the saving throw. A creature that fails the saving throw can repeat it at the end of each of its turns, ending the effect on itself on a success. A creature that succeeds on its saving throw is immune to the effect of these pipes for 24 hours. The pipes regain {@dice 1d3} expended charges daily at dawn."
 			],
-			"charges": 3
+			"charges": 3,
+			"lootTables": [
+				"Magic Item Table F"
+			]
 		},
 		{
 			"name": "Pipes of the Sewers",
@@ -10623,7 +11115,10 @@
 				"The pipes have 3 charges. If you play the pipes as an action, you can use a bonus action to expend 1 to 3 charges, calling forth one swarm of {@creature rat|mm|rats} with each expended charge, provided that enough rats are within half a mile of you to be called in this fashion (as determined by the DM). If there aren't enough rats to form a swarm, the charge is wasted. Called swarms move toward the music by the shortest available route but aren't under your control otherwise. The pipes regain {@dice 1d3} expended charges daily at dawn.",
 				"Whenever a {@creature swarm of rats} that isn't under another creature's control comes within 30 feet of you while you are playing the pipes, you can make a Charisma check contested by the swarm's Wisdom check. If you lose the contest, the swarm behaves as it normally would and can't be swayed by the pipes' music for the next 24 hours. If you win the contest, the swarm is swayed by the pipes' music and becomes friendly to you and your companions for as long as you continue to play the pipes each round as an action. A friendly swarm obeys your commands. If you issue no commands to a friendly swarm, it defends itself but otherwise takes no actions. If a friendly swarm starts its turn and can't hear the pipes' music, your control over that swarm ends, and the swarm behaves as it normally would and can't be swayed by the pipes' music for the next 24 hours."
 			],
-			"charges": 3
+			"charges": 3,
+			"lootTables": [
+				"Magic Item Table F"
+			]
 		},
 		{
 			"name": "Pitcher",
@@ -10689,6 +11184,9 @@
 			],
 			"attachedSpells": [
 				"etherealness"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -10873,6 +11371,9 @@
 				"You can use an action to close a portable hole by taking hold of the edges of the cloth and folding it up. Folding the cloth closes the hole, and any creatures or objects within remain in the extradimensional space. No matter what's in it, the hole weighs next to nothing.",
 				"If the hole is folded up, a creature within the hole's extradimensional space can use an action to make a DC 10 Strength check. On a successful check, the creature forces its way out and appears within 5 feet of the portable hole or the creature carrying it. A breathing creature within a closed portable hole can survive for up to 10 minutes, after which time it begins to suffocate.",
 				"Placing a portable hole inside an extradimensional space created by a {@item bag of holding}, {@item Heward's handy haversack}, or similar item instantly destroys both items and opens a gate to the Astral Plane. The gate originates where the one item was placed inside the other. Any creature within 10 feet of the gate is sucked through it and deposited in a random location on the Astral Plane. The gate then closes. The gate is one-way only and can't be reopened."
+			],
+			"lootTables": [
+				"Magic Item Table D"
 			]
 		},
 		{
@@ -10922,6 +11423,9 @@
 			],
 			"attachedSpells": [
 				"animal friendship"
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -10937,6 +11441,9 @@
 			],
 			"attachedSpells": [
 				"clairvoyance"
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -10949,6 +11456,9 @@
 			"page": 187,
 			"entries": [
 				"When you drink this potion, you gain a climbing speed equal to your walking speed for 1 hour. During this time, you have advantage on Strength ({@skill Athletics}) checks you make to climb. The potion is separated into brown, silver, and gray layers resembling bands of stone. Shaking the bottle fails to mix the colors."
+			],
+			"lootTables": [
+				"Magic Item Table A"
 			]
 		},
 		{
@@ -10967,6 +11477,9 @@
 			"entries": [
 				"When you drink this potion, your Strength score changes to 27 for 1 hour. The potion has no effect on you if your Strength is equal to or greater than that score.",
 				"This potion's transparent liquid has floating in it a sliver of fingernail from a {@creature cloud giant}."
+			],
+			"lootTables": [
+				"Magic Item Table D"
 			]
 		},
 		{
@@ -10992,6 +11505,9 @@
 			],
 			"attachedSpells": [
 				"enlarge/reduce"
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -11004,6 +11520,9 @@
 			"page": 187,
 			"entries": [
 				"After drinking this potion, you can use a bonus action to exhale fire at a target within 30 feet of you. The target must make a DC 13 Dexterity saving throw, taking {@dice 4d6} fire damage on a failed save, or half as much damage on a successful one. The effect ends after you exhale the fire three times or when 1 hour has passed. This potion's orange liquid flickers, and smoke fills the top of the container and wafts out whenever it is opened."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -11022,6 +11541,9 @@
 			"entries": [
 				"When you drink this potion, your Strength score changes to 25 for 1 hour. The potion has no effect on you if your Strength is equal to or greater than that score.",
 				"This potion's transparent liquid has floating in it a sliver of fingernail from a {@creature fire giant}."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -11044,6 +11566,9 @@
 			"page": 187,
 			"entries": [
 				"When you drink this potion, you gain a flying speed equal to your walking speed for 1 hour and can hover. If you're in the air when the potion wears off, you fall unless you have some other means of staying aloft. This potion's clear liquid floats at the top of its container and has cloudy white impurities drifting in it."
+			],
+			"lootTables": [
+				"Magic Item Table D"
 			]
 		},
 		{
@@ -11072,6 +11597,9 @@
 			"entries": [
 				"When you drink this potion, your Strength score changes to 23 for 1 hour. The potion has no effect on you if your Strength is equal to or greater than that score.",
 				"This potion's transparent liquid has floating in it a sliver of fingernail from a {@creature frost giant}."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -11087,6 +11615,9 @@
 			],
 			"attachedSpells": [
 				"gaseous form"
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -11111,6 +11642,10 @@
 			"page": 187,
 			"entries": [
 				"You regain {@dice 4d4+4} hit points when you drink this potion. The potion's red liquid glimmers when agitated."
+			],
+			"lootTables": [
+				"Magic Item Table A",
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -11126,6 +11661,9 @@
 			],
 			"attachedSpells": [
 				"enlarge/reduce"
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -11139,7 +11677,10 @@
 			"entries": [
 				"You regain {@dice 2d4+2} hit points when you drink this potion. The potion's red liquid glimmers when agitated."
 			],
-			"value": "50 gp"
+			"value": "50 gp",
+			"lootTables": [
+				"Magic Item Table A"
+			]
 		},
 		{
 			"name": "Potion of Heroism",
@@ -11154,6 +11695,9 @@
 			],
 			"attachedSpells": [
 				"bless"
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -11172,6 +11716,9 @@
 			"entries": [
 				"When you drink this potion, your Strength score changes to 21 for 1 hour. The potion has no effect on you if your Strength is equal to or greater than that score.",
 				"This potion's transparent liquid has floating in it a sliver of fingernail from a {@creature hill giant}."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -11184,6 +11731,9 @@
 			"page": 188,
 			"entries": [
 				"This potion's container looks empty but feels as though it holds liquid. When you drink it, you become {@condition invisible} for 1 hour. Anything you wear or carry is {@condition invisible} with you. The effect ends early if you attack or cast a spell."
+			],
+			"lootTables": [
+				"Magic Item Table D"
 			]
 		},
 		{
@@ -11196,6 +11746,9 @@
 			"page": 188,
 			"entries": [
 				"For 1 minute after you drink this potion, you have resistance to all damage. The potion's syrupy liquid looks like liquefied iron."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -11218,6 +11771,9 @@
 			"page": 188,
 			"entries": [
 				"When you drink this potion, your physical age is reduced by {@dice 1d6+6} years, to a minimum of 13 years. Each time you subsequently drink a potion of longevity, there is 10 percent cumulative chance that you instead age by {@dice 1d6+6} years. Suspended in this amber liquid are a scorpion's tail, an adder's fang, a dead spider, and a tiny heart that, against all reason, is still beating. These ingredients vanish when the potion is opened."
+			],
+			"lootTables": [
+				"Magic Item Table D"
 			]
 		},
 		{
@@ -11278,6 +11834,9 @@
 			],
 			"attachedSpells": [
 				"detect thoughts"
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -11301,6 +11860,9 @@
 			"entries": [
 				"This concoction looks, smells, and tastes like a {@item potion of healing} or other beneficial potion. However, it is actually poison masked by illusion magic. An {@spell identify} spell reveals its true nature.",
 				"If you drink it, you take {@dice 3d6} poison damage, and you must succeed on a DC 13 Constitution saving throw or be {@condition poisoned}. At the start of each of your turns while you are {@condition poisoned} in this way, you take {@dice 3d6} poison damage. At the end of each of your turns, you can repeat the saving throw. On a successful save, the poison damage you take on your subsequent turns decreases by {@dice 1d6}. The poison ends when the damage decreases to 0."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -11346,6 +11908,9 @@
 			],
 			"attachedSpells": [
 				"haste"
+			],
+			"lootTables": [
+				"Magic Item Table D"
 			]
 		},
 		{
@@ -11364,6 +11929,9 @@
 			"entries": [
 				"When you drink this potion, your Strength score changes to 23 for 1 hour. The potion has no effect on you if your Strength is equal to or greater than that score.",
 				"This potion's transparent liquid has floating in it a sliver of fingernail from a {@creature stone giant}."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -11382,6 +11950,9 @@
 			"entries": [
 				"When you drink this potion, your Strength score changes to 29 for 1 hour. The potion has no effect on you if your Strength is equal to or greater than that score.",
 				"This potion's transparent liquid has floating in it a sliver of fingernail from a {@creature storm giant}."
+			],
+			"lootTables": [
+				"Magic Item Table E"
 			]
 		},
 		{
@@ -11394,6 +11965,9 @@
 			"page": 187,
 			"entries": [
 				"You regain {@dice 8d4+8} hit points when you drink this potion. The potion's red liquid glimmers when agitated."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -11406,6 +11980,10 @@
 			"page": 187,
 			"entries": [
 				"You regain {@dice 10d4+20} hit points when you drink this potion. The potion's red liquid glimmers when agitated."
+			],
+			"lootTables": [
+				"Magic Item Table D",
+				"Magic Item Table E"
 			]
 		},
 		{
@@ -11428,6 +12006,9 @@
 			"page": 188,
 			"entries": [
 				"When you drink this potion, it removes any {@condition exhaustion} you are suffering and cures any disease or poison affecting you. For the next 24 hours, you regain the maximum number of hit points for any Hit Die you spend. The potion's crimson liquid regularly pulses with dull light, calling to mind a heartbeat."
+			],
+			"lootTables": [
+				"Magic Item Table D"
 			]
 		},
 		{
@@ -11440,6 +12021,9 @@
 			"page": 188,
 			"entries": [
 				"You can breathe underwater for 1 hour after drinking this potion. Its cloudy green fluid smells of the sea and has a jellyfish-like bubble floating in it."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -11708,6 +12292,9 @@
 			"entries": [
 				"Each of the quiver's three compartments connects to an extradimensional space that allows the quiver to hold numerous items while never weighing more than 2 pounds. The shortest compartment can hold up to sixty arrows, bolts, or similar objects. The midsize compartment holds up to eighteen javelins or similar objects. The longest compartment holds up to six long objects, such as bows, quarterstaffs, or spears.",
 				"You can draw any item the quiver contains as if doing so from a regular quiver or scabbard."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -11921,6 +12508,9 @@
 				"chain lightning",
 				"gust of wind",
 				"wind wall"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -11946,6 +12536,9 @@
 				"animal friendship",
 				"fear",
 				"speak with animals"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -11970,6 +12563,9 @@
 				"While wearing this ring, you can speak its command word as an action to summon a particular {@creature djinni} from the Elemental Plane of Air. The {@creature djinni} appears in an unoccupied space you choose within 120 feet of you. It remains as long as you concentrate (as if concentrating on a spell), to a maximum of 1 hour, or until it drops to 0 hit points. It then returns to its home plane.",
 				"While summoned, the {@creature djinni} is friendly to you and your companions. It obeys any commands you give it, no matter what language you use. If you fail to command it, the {@creature djinni} defends itself against attackers but takes no other actions.",
 				"After the {@creature djinni} departs, it can't be summoned again for 24 hours, and the ring becomes nonmagical if the {@creature djinni} dies."
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -12000,6 +12596,9 @@
 				"stone shape",
 				"stoneskin",
 				"wall of stone"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -12013,7 +12612,10 @@
 			"entries": [
 				"This ring has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. When you fail a Dexterity saving throw while wearing it, you can use your reaction to expend 1 of its charges to succeed on that saving throw instead."
 			],
-			"charges": 3
+			"charges": 3,
+			"lootTables": [
+				"Magic Item Table G"
+			]
 		},
 		{
 			"name": "Ring of Feather Falling",
@@ -12025,6 +12627,9 @@
 			"reqAttune": true,
 			"entries": [
 				"When you fall while wearing this ring, you descend 60 feet per round and take no damage from falling."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -12054,6 +12659,9 @@
 				"burning hands",
 				"fireball",
 				"wall of fire"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -12086,6 +12694,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While you wear this ring, difficult terrain doesn't cost you extra movement. In addition, magic can neither reduce your speed nor cause you to be {@condition paralyzed} or {@condition restrained}."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -12098,6 +12709,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While wearing this ring, you can turn {@condition invisible} as an action. Anything you are wearing or carrying is {@condition invisible} with you. You remain {@condition invisible} until the ring is removed, until you attack or cast a spell, or until you use a bonus action to become visible again."
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -12113,6 +12727,9 @@
 			],
 			"attachedSpells": [
 				"jump"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -12137,6 +12754,9 @@
 				"While wearing this ring, you are immune to magic that allows other creatures to read your thoughts, determine whether you are lying, know your alignment, or know your creature type. Creatures can telepathically communicate with you only if you allow it.",
 				"You can use an action to cause the ring to become {@condition invisible} until you use another action to make it visible, until you remove the ring, or until you die.",
 				"If you die while wearing the ring, your soul enters it, unless it already houses a soul. You can remain in the ring or depart for the afterlife. As long as your soul is in the ring, you can telepathically communicate with any creature wearing it. A wearer can't prevent this telepathic communication."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -12185,6 +12805,9 @@
 						null
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -12217,6 +12840,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While wearing this ring, you regain {@dice 1d6} hit points every 10 minutes, provided that you have at least 1 hit point. If you lose a body part, the ring causes the missing part to regrow and return to full functionality after {@dice 1d6+1} days if you have at least 1 hit point the whole time."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -12260,6 +12886,9 @@
 				"dancing lights",
 				"faerie fire",
 				"light"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -12274,6 +12903,9 @@
 				"This ring stores spells cast into it, holding them until the attuned wearer uses them. The ring can store up to 5 levels worth of spells at a time. When found, it contains {@dice 1d6-1} levels of stored spells chosen by the DM.",
 				"Any creature can cast a spell of 1st through 5th level into the ring by touching the ring as the spell is cast. The spell has no effect, other than to be stored in the ring. If the ring can't hold the spell, the spell is expended without effect. The level of the slot used to cast the spell determines how much space it uses.",
 				"While wearing this ring, you can cast any spell stored in it. The spell uses the slot level, spell save DC, spell attack bonus, and spellcasting ability of the original caster, but is otherwise treated as if you cast the spell. The spell cast from the ring is no longer stored in it, freeing up space."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -12286,6 +12918,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While wearing this ring, you have advantage on saving throws against any spell that targets only you (not in an area of effect). In addition, if you roll a 20 for the save and the spell is 7th level or lower, the spell has no effect on you and instead targets the caster, using the slot level, spell save DC, attack bonus, and spellcasting ability of the caster."
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -12297,6 +12932,9 @@
 			"page": 193,
 			"entries": [
 				"You have a swimming speed of 40 feet while wearing this ring."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -12312,6 +12950,9 @@
 			],
 			"attachedSpells": [
 				"telekinesis"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -12326,7 +12967,10 @@
 				"This ring has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While wearing the ring, you can use an action to expend 1 to 3 of its charges to attack one creature you can see within 60 feet of you. The ring produces a spectral ram's head and makes its attack roll with a +7 bonus. On a hit, for each charge you spend, the target takes {@dice 2d10} force damage and is pushed 5 feet away from you.",
 				"Alternatively, you can expend 1 to 3 of the ring's charges as an action to try to break an object you can see within 60 feet of you that isn't being worn or carried. The ring makes a Strength check with a +5 bonus for each charge you spend."
 			],
-			"charges": 3
+			"charges": 3,
+			"lootTables": [
+				"Magic Item Table G"
+			]
 		},
 		{
 			"name": "Ring of Three Wishes",
@@ -12340,6 +12984,9 @@
 			],
 			"attachedSpells": [
 				"wish"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -12362,6 +13009,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While wearing this ring, you have resistance to cold damage. In addition, you and everything you wear and carry are unharmed by temperatures as low as -50 degrees Fahrenheit."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -12392,6 +13042,9 @@
 				"control water",
 				"ice storm",
 				"wall of ice"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -12403,6 +13056,9 @@
 			"page": 193,
 			"entries": [
 				"While wearing this ring, you can stand on and move across any liquid surface as if it were solid ground."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -12498,6 +13154,9 @@
 			"entries": [
 				"While wearing this ring, you can use an action to speak its command word. When you do so, you can see into and through solid matter for 1 minute. This vision has a radius of 30 feet. To you, solid objects within that radius appear transparent and don't prevent light from passing through them. The vision can penetrate 1 foot of stone, 1 inch of common metal, or up to 3 feet of wood or dirt. Thicker substances block the vision, as does a thin sheet of lead.",
 				"Whenever you use the ring again before taking a long rest, you must succeed on a DC 15 Constitution saving throw or gain one level of {@condition exhaustion}."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -12531,6 +13190,9 @@
 				},
 				"The eyes on the robe can't be closed or averted. Although you can close or avert your own eyes, you are never considered to be doing so while wearing this robe.",
 				"A {@spell light} spell cast on the robe or a {@spell daylight} spell cast within 5 feet of the robe causes you to be {@condition blinded} for 1 minute. At the end of each of your turns, you can make a Constitution saving throw (DC 11 for {@spell light} or DC 15 for {@spell daylight}), ending the blindness on a success."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -12544,7 +13206,10 @@
 			"entries": [
 				"This robe has 3 charges, and it regains {@dice 1d3} expended charges daily at dawn. While you wear it, you can use an action and expend 1 charge to cause the garment to display a shifting pattern of dazzling hues until the end of your next turn. During this time, the robe sheds bright light in a 30-foot radius and dim light for an additional 30 feet. Creatures that can see you have disadvantage on attack rolls against you. In addition, any creature in the bright light that can see you when the robe's power is activated must succeed on a DC 15 Wisdom saving throw or become {@condition stunned} until the effect ends."
 			],
-			"charges": 3
+			"charges": 3,
+			"lootTables": [
+				"Magic Item Table H"
+			]
 		},
 		{
 			"name": "Robe of Serpents",
@@ -12582,6 +13247,9 @@
 			],
 			"attachedSpells": [
 				"magic missile"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -12638,6 +13306,9 @@
 						null
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -12727,6 +13398,9 @@
 						]
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -12752,6 +13426,9 @@
 				"When you become attuned to the rod, you know how many levels of energy the rod has absorbed over the course of its existence, and how many levels of spell energy it currently has stored.",
 				"If you are a spellcaster holding the rod, you can convert energy stored in it into spell slots to cast spells you have prepared or know. You can create spell slots only of a level equal to or lower than your own spell slots, up to a maximum of 5th level. You use the stored levels in place of your slots, but otherwise cast the spell as normal. For example, you can use 3 levels stored in the rod as a 3rd-level spell slot.",
 				"A newly found rod has {@dice 1d10} levels of spell energy stored in it already. A rod that can no longer absorb spell energy and has no energy remaining becomes nonmagical."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -12793,6 +13470,9 @@
 				"detect magic",
 				"detect poison and disease",
 				"see invisibility"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -12840,6 +13520,9 @@
 						"While holding the rod, you can use an action to force each creature you can see within 30 feet of you to make a DC 17 Wisdom saving throw. On a failure, a target is {@condition frightened} of you for 1 minute. A {@condition frightened} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. This property can't be used again until the next dawn."
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -12859,6 +13542,9 @@
 			"attachedSpells": [
 				"heal",
 				"resurrection"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -12872,6 +13558,9 @@
 			"reqAttune": true,
 			"entries": [
 				"You can use an action to present the rod and command obedience from each creature of your choice that you can see within 120 feet of you. Each target must succeed on a DC 15 Wisdom saving throw or be {@condition charmed} by you for 8 hours. While {@condition charmed} in this way, the creature regards you as its trusted leader. If harmed by you or your companions, or commanded to do something contrary to its nature, a target ceases to be {@condition charmed} in this way. The rod can't be used again until the next dawn."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -12886,6 +13575,9 @@
 				"While holding this rod, you can use an action to activate it. The rod then instantly transports you and up to 199 other willing creatures you can see to a paradise that exists in an extraplanar space. You choose the form that the paradise takes. It could be a tranquil garden, lovely glade, cheery tavern, immense palace, tropical island, fantastic carnival, or whatever else you can imagine. Regardless of its nature, the paradise contains enough water and food to sustain its visitors. Everything else that can be interacted with inside the extraplanar space can exist only there. For example, a flower picked from a garden in the paradise disappears if it is taken outside the extraplanar space.",
 				"For each hour spent in the paradise, a visitor regains hit points as if it had spent 1 Hit Die. Also, creatures don't age while in the paradise, although time passes normally. Visitors can remain in the paradise for up to 200 days divided by the number of creatures present (round down).",
 				"When the time runs out or you use an action to end it, all visitors reappear in the location they occupied when you activated the rod, or an unoccupied space nearest that location. The rod can't be used again until ten days have passed."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -12916,6 +13608,9 @@
 						null
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -12946,6 +13641,9 @@
 						null
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -12976,6 +13674,9 @@
 						null
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -13006,6 +13707,9 @@
 				"This 60-foot length of silk rope weighs 3 pounds and can hold up to 3,000 pounds. If you hold one end of the rope and use an action to speak the command word, the rope animates. As a bonus action, you can command the other end to move toward a destination you choose. That end moves 10 feet on your turn when you first command it and 10 feet on each of your turns until reaching its destination, up to its maximum length away, or until you tell it to stop. You can also tell the rope to fasten itself securely to an object or to unfasten itself, to knot or unknot itself, or to coil itself for carrying.",
 				"If you tell the rope to knot, large knots appear at 1-foot intervals along the rope. While knotted, the rope shortens to a 50-foot length and grants advantage on checks made to climb it.",
 				"The rope has AC 20 and 20 hit points. It regains 1 hit point every 5 minutes as long as it has at least 1 hit point. If the rope drops to 0 hit points, it is destroyed."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -13020,6 +13724,9 @@
 				"This rope is 30 feet long and weighs 3 pounds. If you hold one end of the rope and use an action to speak its command word, the other end darts forward to entangle a creature you can see within 20 feet of you. The target must succeed on a DC 15 Dexterity saving throw or become {@condition restrained}.",
 				"You can release the creature by using a bonus action to speak a second command word. A target {@condition restrained} by the rope can use an action to make a DC 15 Strength or Dexterity check (target's choice). On a success, the creature is no longer {@condition restrained} by the rope.",
 				"The rope has AC 20 and 20 hit points. It regains 1 hit point every 5 minutes as long as it has at least 1 hit point. If the rope drops to 0 hit points, it is destroyed."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -13107,6 +13814,9 @@
 			"page": 199,
 			"entries": [
 				"While in this saddle on a mount, you can't be dismounted against your will if you're conscious, and attack rolls against the mount have disadvantage."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -13199,7 +13909,10 @@
 					]
 				}
 			],
-			"charges": 12
+			"charges": 12,
+			"lootTables": [
+				"Magic Item Table I"
+			]
 		},
 		{
 			"name": "Scholar's Pack",
@@ -13244,6 +13957,9 @@
 			"reqAttune": true,
 			"entries": [
 				"You gain a +2 bonus to attack and damage rolls made with this magic weapon. In addition, you can make one attack with it as a bonus action on each of your turns."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -13418,6 +14134,9 @@
 			],
 			"attachedSpells": [
 				"sending"
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -13440,6 +14159,9 @@
 						null
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -13612,6 +14334,9 @@
 						"This shield is cursed. Attuning to it curses you until you are targeted by the {@spell remove curse} spell or similar magic. Removing the shield fails to end the curse on you. Whenever a ranged weapon attack is made against a target within 10 feet of you, the curse causes you to become the target instead."
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -13749,7 +14474,7 @@
 			"name": "Silver Dragon Shield +2",
 			"type": "S",
 			"weight": "6",
-			"ac": 4,
+			"ac": 2,
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "CoS",
@@ -13825,6 +14550,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While you wear these light shoes, you can move up, down, and across vertical surfaces and upside down along ceilings, while leaving your hands free. You have a climbing speed equal to your walking speed. However, the slippers don't allow you to move this way on a slippery surface, such as one covered by ice or oil."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -13972,6 +14700,9 @@
 			"entries": [
 				"This viscous, milky-white substance can form a permanent adhesive bond between any two objects. It must be stored in a jar or flask that has been coated inside with {@item oil of slipperiness}. When found, a container contains {@dice 1d6+1} ounces.",
 				"One ounce of the glue can cover a 1-foot square surface. The glue takes 1 minute to set. Once it has done so, the bond it creates can be broken only by the application of {@item universal solvent} or {@item oil of etherealness}, or with a {@spell wish} spell."
+			],
+			"lootTables": [
+				"Magic Item Table E"
 			]
 		},
 		{
@@ -14168,6 +14899,9 @@
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 13 and an attack bonus of {@hit 5}.",
 				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 11 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+			],
+			"lootTables": [
+				"Magic Item Table A"
 			]
 		},
 		{
@@ -14183,6 +14917,10 @@
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 13 and an attack bonus of {@hit 5}.",
 				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 12 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+			],
+			"lootTables": [
+				"Magic Item Table A",
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -14198,6 +14936,9 @@
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 15 and an attack bonus of {@hit 7}.",
 				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 13 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -14213,6 +14954,9 @@
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 15 and an attack bonus of {@hit 7}.",
 				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 14 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -14228,6 +14972,9 @@
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 17 and an attack bonus of {@hit 9}.",
 				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 15 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -14243,6 +14990,9 @@
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 17 and an attack bonus of {@hit 9}.",
 				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 16 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+			],
+			"lootTables": [
+				"Magic Item Table D"
 			]
 		},
 		{
@@ -14258,6 +15008,9 @@
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 18 and an attack bonus of {@hit 10}.",
 				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 17 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+			],
+			"lootTables": [
+				"Magic Item Table D"
 			]
 		},
 		{
@@ -14273,6 +15026,10 @@
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 18 and an attack bonus of {@hit 10}.",
 				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 18 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+			],
+			"lootTables": [
+				"Magic Item Table D",
+				"Magic Item Table E"
 			]
 		},
 		{
@@ -14288,6 +15045,9 @@
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 19 and an attack bonus of {@hit 11}.",
 				"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on a DC 19 Intelligence ({@skill Arcana}) check. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+			],
+			"lootTables": [
+				"Magic Item Table E"
 			]
 		},
 		{
@@ -14302,6 +15062,9 @@
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 13 and an attack bonus of {@hit 5}."
+			],
+			"lootTables": [
+				"Magic Item Table A"
 			]
 		},
 		{
@@ -14338,6 +15101,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While holding this shield, you have advantage on saving throws against spells and other magical effects, and spell attacks have disadvantage against you"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -14389,6 +15155,9 @@
 						]
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -14492,6 +15261,9 @@
 				"charm person",
 				"command",
 				"comprehend languages"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -14533,6 +15305,9 @@
 				"burning hands",
 				"fireball",
 				"wall of fire"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -14567,6 +15342,9 @@
 				"fog cloud",
 				"ice storm",
 				"wall of ice"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -14587,6 +15365,9 @@
 				"lesser restoration",
 				"mass cure wounds",
 				"cure wounds"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -14660,6 +15441,9 @@
 				"magic missile",
 				"ray of enfeeblement",
 				"wall of force"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -14675,7 +15459,10 @@
 				"This staff can be wielded as a magic quarterstaff that grants a +3 bonus to attack and damage rolls made with it.",
 				"The staff has 10 charges. When you hit with a melee attack using it, you can expend up to 3 of its charges. For each charge you expend, the target takes an extra {@dice 1d6} force damage. The staff regains {@dice 1d6+4} expended charges daily at dawn. If you expend the last charge, roll a {@dice d20}. On a 1, the staff becomes a nonmagical quarterstaff."
 			],
-			"charges": 10
+			"charges": 10,
+			"lootTables": [
+				"Magic Item Table H"
+			]
 		},
 		{
 			"name": "Staff of Swarming Insects",
@@ -14707,6 +15494,9 @@
 			"attachedSpells": [
 				"giant insect",
 				"insect plague"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -14722,6 +15512,9 @@
 				"You can use a bonus action to speak this staff's command word and make the head of the staff become that of an animate poisonous snake for 1 minute. By using another bonus action to speak the command word again, you return the staff to its normal inanimate form.",
 				"You can make a melee attack using the snake head, which has a reach of 5 feet. Your proficiency bonus applies to the attack roll. On a hit, the target takes {@dice 1d6} piercing damage and must succeed on a DC 15 Constitution saving throw or take {@dice 3d6} poison damage.",
 				"The snake head can be attacked while it is animate. It has an Armor Class of 15 and 20 hit points. If the head drops to 0 hit points, the staff is destroyed. As long as it's not destroyed, the staff regains all lost hit points when it reverts to its inanimate form."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -14865,6 +15658,9 @@
 				"light",
 				"mage hand",
 				"protection from evil and good"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -14880,6 +15676,9 @@
 				"You can use an action to speak this staff's command word and throw the staff on the ground within 10 feet of you. The staff becomes a {@creature giant constrictor snake} under your control and acts on its own initiative count. By using a bonus action to speak the command word again, you return the staff to its normal form in a space formerly occupied by the snake.",
 				"On your turn, you can mentally command the snake if it is within 60 feet of you and you aren't {@condition incapacitated}. You decide what action the snake takes and where it moves during its next turn, or you can issue it a general command, such as to attack your enemies or guard a location.",
 				"If the snake is reduced to 0 hit points, it dies and reverts to its staff form. The staff then shatters and is destroyed. If the snake reverts to staff form before losing all its hit points, it regains all of them."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -14920,6 +15719,9 @@
 				"speak with animals",
 				"speak with plants",
 				"wall of thorns"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -14968,6 +15770,9 @@
 						"You can use an action to use the Lightning Strike and Thunderclap properties at the same time. Doing so doesn't expend the daily use of those properties, only the use of this one."
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -14983,7 +15788,10 @@
 				"This staff has 3 charges and regains {@dice 1d3} expended charges daily at dawn.",
 				"The staff can be wielded as a magic quarterstaff. On a hit, it deals damage as a normal quarterstaff, and you can expend 1 charge to deal an extra {@dice 2d10} necrotic damage to the target. In addition, the target must succeed on a DC 15 Constitution saving throw or have disadvantage for 1 hour on any ability check or saving throw that uses Strength or Constitution."
 			],
-			"charges": 3
+			"charges": 3,
+			"lootTables": [
+				"Magic Item Table G"
+			]
 		},
 		{
 			"name": "Star rose quartz",
@@ -15051,6 +15859,9 @@
 			],
 			"attachedSpells": [
 				"conjure elemental"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -15072,6 +15883,9 @@
 						null
 					]
 				}
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -15171,6 +15985,9 @@
 				"This item appears to be a longsword hilt. While grasping the hilt, you can use a bonus action to cause a blade of pure radiance to spring into existence, or make the blade disappear. While the blade exists, this magic longsword has the finesse property. If you are proficient with {@item shortsword|phb|shortswords} or {@item longsword|phb|longswords}, you are proficient with the sun blade.",
 				"You gain a +2 bonus to attack and damage rolls made with this weapon, which deals radiant damage instead of slashing damage. When you hit an undead with it, that target takes an extra {@dice 1d8} radiant damage.",
 				"The sword's luminous blade emits bright light in a 15-foot radius and dim light for an additional 15 feet. The light is sunlight. While the blade persists, you can use an action to expand or reduce its radius of bright and dim light by 5 feet each, to a maximum of 30 feet each or a minimum of 10 feet each."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -15533,7 +16350,10 @@
 				"If you are a good cleric or paladin, you can use the talisman as a holy symbol, and you gain a +2 bonus to spell attack rolls while you wear or hold it.",
 				"The talisman has 7 charges. If you are wearing or holding it, you can use an action to expend 1 charge from it and choose one creature you can see on the ground within 120 feet of you. If the target is of evil alignment, a flaming fissure opens under it. The target must succeed on a DC 20 Dexterity saving throw or fall into the fissure and be destroyed, leaving no remains. The fissure then closes, leaving no trace of its existence. When you expend the last charge, the talisman disperses into motes of golden light and is destroyed."
 			],
-			"charges": 7
+			"charges": 7,
+			"lootTables": [
+				"Magic Item Table I"
+			]
 		},
 		{
 			"name": "Talisman of the Sphere",
@@ -15546,6 +16366,9 @@
 			"reqAttune": true,
 			"entries": [
 				"When you make an Intelligence ({@skill Arcana}) check to control a {@item sphere of annihilation} while you are holding this talisman, you double your proficiency bonus on the check. In addition, when you start your turn with control over a {@item sphere of annihilation}, you can use an action to levitate it 10 feet plus a number of additional feet equal to 10 × your Intelligence modifier."
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -15562,7 +16385,10 @@
 				"If you are an evil cleric or paladin, you can use the talisman as a holy symbol, and you gain a +2 bonus to spell attack rolls while you wear or hold it.",
 				"The talisman has 6 charges. If you are wearing or holding it, you can use an action to expend 1 charge from the talisman and choose one creature you can see on the ground within 120 feet of you. If the target is of good alignment, a flaming fissure opens under it. The target must succeed on a DC 20 Dexterity saving throw or fall into the fissure and be destroyed, leaving no remains. The fissure then closes, leaving no trace of its existence. When you expend the last charge, the talisman dissolves into foul-smelling slime and is destroyed."
 			],
-			"charges": 6
+			"charges": 6,
+			"lootTables": [
+				"Magic Item Table I"
+			]
 		},
 		{
 			"name": "Talking Doll",
@@ -15631,6 +16457,9 @@
 			"reqAttune": true,
 			"entries": [
 				"Made by the {@creature drow}, this rod is a magic weapon that ends in three rubbery tentacles. While holding the rod, you can use an action to direct each tentacle to attack a creature you can see within 15 feet of you. Each tentacle makes a melee attack roll with a +9 bonus. On a hit, the tentacle deals {@dice 1d6} bludgeoning damage. If you hit a target with all three tentacles, it must make a DC 15 Constitution saving throw. On a failure, the creature's speed is halved, it has disadvantage on Dexterity saving throws, and it can't use reactions for 1 minute. Moreover, on each of its turns, it can take either an action or a bonus action, but not both. At the end of each of its turns, it can repeat the saving throw, ending the effect on itself on a success."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -15889,6 +16718,9 @@
 			},
 			"entries": [
 				"This book contains memory and logic exercises, and its words are charged with magic. If you spend 48 hours over a period of 6 days or fewer studying the book's contents and practicing its guidelines, your Intelligence score increases by 2, as does your maximum for that score. The manual then loses its magic, but regains it in a century."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -15904,6 +16736,9 @@
 			},
 			"entries": [
 				"This book contains guidelines for influencing and charming others, and its words are charged with magic. If you spend 48 hours over a period of 6 days or fewer studying the book's contents and practicing its guidelines, your Charisma score increases by 2, as does your maximum for that score. The manual then loses its magic, but regains it in a century."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -15934,6 +16769,9 @@
 			],
 			"focus": [
 				"Wizard"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -15949,6 +16787,9 @@
 			},
 			"entries": [
 				"This book contains intuition and insight exercises, and its words are charged with magic. If you spend 48 hours over a period of 6 days or fewer studying the book's contents and practicing its guidelines, your Wisdom score increases by 2, as does your maximum for that score. The manual then loses its magic, but regains it in a century."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -16040,6 +16881,9 @@
 			"charges": 3,
 			"attachedSpells": [
 				"dominate beast"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -17172,6 +18016,9 @@
 			"page": 209,
 			"entries": [
 				"This tube holds milky liquid with a strong alcohol smell. You can use an action to pour the contents of the tube onto a surface within reach. The liquid instantly dissolves up to 1 square foot of adhesive it touches, including {@item sovereign glue}."
+			],
+			"lootTables": [
+				"Magic Item Table E"
 			]
 		},
 		{
@@ -17244,6 +18091,9 @@
 			"attachedSpells": [
 				"hold monster",
 				"hold person"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -17272,7 +18122,10 @@
 				" This wand has 7 charges. While holding it, you can use an action and expend 1 charge to speak its command word. For the next minute, you know the direction of the nearest creature hostile to you within 60 feet, but not its distance from you. The wand can sense the presence of hostile creatures that are ethereal, {@condition invisible}, disguised, or hidden, as well as those in plain sight. The effect ends if you stop holding the wand.",
 				"The wand regains {@dice 1d6+1} expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand crumbles into ashes and is destroyed."
 			],
-			"charges": 7
+			"charges": 7,
+			"lootTables": [
+				"Magic Item Table G"
+			]
 		},
 		{
 			"name": "Wand of Entangle",
@@ -17320,6 +18173,9 @@
 			"charges": 7,
 			"attachedSpells": [
 				"command"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -17338,6 +18194,9 @@
 			"charges": 7,
 			"attachedSpells": [
 				"fireball"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -17356,6 +18215,9 @@
 			"charges": 7,
 			"attachedSpells": [
 				"lightning bolt"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -17372,6 +18234,9 @@
 			"charges": 3,
 			"attachedSpells": [
 				"detect magic"
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -17389,6 +18254,9 @@
 			"charges": 7,
 			"attachedSpells": [
 				"magic missile"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -17518,7 +18386,10 @@
 				" This wand has 7 charges. While holding it, you can use an action to expend 1 of its charges to cause a thin blue ray to streak from the tip toward a creature you can see within 60 feet of you. The target must succeed on a DC 15 Constitution saving throw or be {@condition paralyzed} for 1 minute. At the end of each of the target's turns, it can repeat the saving throw, ending the effect on itself on a success.",
 				"The wand regains {@dice 1d6+1} expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand crumbles into ashes and is destroyed."
 			],
-			"charges": 7
+			"charges": 7,
+			"lootTables": [
+				"Magic Item Table G"
+			]
 		},
 		{
 			"name": "Wand of Polymorph",
@@ -17536,6 +18407,9 @@
 			"charges": 7,
 			"attachedSpells": [
 				"polymorph"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -17575,7 +18449,10 @@
 			"entries": [
 				"The wand has 3 charges. While holding it. you can use an action to expend 1 of its charges, and if a secret door or trap is within 30 feet of you, the wand pulses and points at the one nearest to you. The wand regains {@dice 1d3} expended charges daily at dawn."
 			],
-			"charges": 3
+			"charges": 3,
+			"lootTables": [
+				"Magic Item Table B"
+			]
 		},
 		{
 			"name": "Wand of Smiles",
@@ -17601,6 +18478,9 @@
 			"reqAttune": "by a Spellcaster",
 			"entries": [
 				"While you are holding this wand, you gain a +1 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -17614,6 +18494,9 @@
 			"reqAttune": "by a Spellcaster",
 			"entries": [
 				"While you are holding this wand, you gain a +2 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -17627,6 +18510,9 @@
 			"reqAttune": "by a Spellcaster",
 			"entries": [
 				"While you are holding this wand, you gain a +3 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -17660,6 +18546,9 @@
 			"charges": 7,
 			"attachedSpells": [
 				"web"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -17808,6 +18697,9 @@
 				"darkness",
 				"fireball",
 				"invisibility"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -18063,6 +18955,9 @@
 			"entries": [
 				"This fine black cloth, soft as silk, is folded up to the dimensions of a handkerchief. It unfolds into a circular sheet 6 feet in diameter.",
 				"You can use an action to unfold and place the well of many worlds on a solid surface, whereupon it creates a two-way portal to another world or plane of existence. Each time the item opens a portal, the DM decides where it leads. You can use an action to close an open portal by taking hold of the edges of the cloth and folding it up. Once well of many worlds has opened a portal, it can't do so again for {@dice 1d8} hours."
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -18268,6 +19163,9 @@
 			],
 			"attachedSpells": [
 				"gust of wind"
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -18337,6 +19235,9 @@
 			"entries": [
 				"While you wear these boots, you have a flying speed equal to your walking speed. You can use the boots to fly for up to 4 hours, all at once or in several shorter flights, each one using a minimum of 1 minute from the duration. If you are flying when the duration expires, you descend at a rate of 30 feet per round until you land.",
 				"The boots regain 2 hours of flying capability for every 12 hours they aren't in use."
+			],
+			"lootTables": [
+				"Magic Item Table F"
 			]
 		},
 		{
@@ -18349,6 +19250,9 @@
 			"reqAttune": true,
 			"entries": [
 				"While wearing this cloak, you can use an action to speak its command word. This turns the cloak into a pair of bat wings or bird wings on your back for 1 hour or until you repeat the command word as an action. The wings give you a flying speed of 60 feet. When they disappear, you can't use them again for {@dice 1d12} hours."
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -18782,7 +19686,8 @@
 				"ray of enfeeblement",
 				"wall of force",
 				"dispel magic"
-			]
+			],
+			"sentient": true
 		},
 		{
 			"name": "Bracer of Flying Daggers",
@@ -20994,7 +21899,7 @@
 			"weight": "10",
 			"rarity": "Very Rare",
 			"source": "LLK",
-			"ac": 12,
+			"ac": 11,
 			"page": 55,
 			"entries": [
 				"A number of Kwalish's experiments were attempts to research the works of the legendary mage Heward, who first crafted what he named hireling armor. While wearing this armor, you gain a +1 bonus to AC. In addition, the armor's animated straps can assist with the drawing and sheathing of weapons, such that you can draw or stow two one-handed weapons when you would normally be able to draw or stow only one.",
@@ -21096,7 +22001,7 @@
 			"reqAttune": true,
 			"curse": true,
 			"source": "LLK",
-			"ac": 12,
+			"ac": 11,
 			"page": 55,
 			"entries": [
 				"Strange rituals have repurposed the body of a flesh golem into this partially sentient suit of leather armor. While wearing this armor, you gain a +1 bonus to AC and to saving throws against spells and other magical effects. In addition, you gain the following properties:",
@@ -21364,6 +22269,9 @@
 				"Potion of Psychic Resistance",
 				"Potion of Radiant Resistance",
 				"Potion of Thunder Resistance"
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -21401,6 +22309,9 @@
 				"Scroll of Protection from Fiends",
 				"Scroll of Protection from Plants",
 				"Scroll of Protection from Undead"
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -21418,6 +22329,9 @@
 				"Elemental Gem, Emerald",
 				"Elemental Gem, Red Corundum",
 				"Elemental Gem, Yellow Diamond"
+			],
+			"lootTables": [
+				"Magic Item Table B"
 			]
 		},
 		{
@@ -21443,6 +22357,9 @@
 				"Red Dragon Scale Mail",
 				"Silver Dragon Scale Mail",
 				"White Dragon Scale Mail"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -21485,6 +22402,9 @@
 				"Ring of Psychic Resistance",
 				"Ring of Radiant Resistance",
 				"Ring of Thunder Resistance"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		},
 		{
@@ -21514,6 +22434,9 @@
 				"Sword of Answering (Retorter)",
 				"Sword of Answering (Scather)",
 				"Sword of Answering (Squelcher)"
+			],
+			"lootTables": [
+				"Magic Item Table I"
 			]
 		},
 		{
@@ -21528,6 +22451,9 @@
 				"Carpet of Flying, 4 ft. × 6 ft.",
 				"Carpet of Flying, 5 ft. × 7 ft.",
 				"Carpet of Flying, 6 ft. × 9 ft."
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -21589,6 +22515,9 @@
 				"Manual of Flesh Golems",
 				"Manual of Iron Golems",
 				"Manual of Stone Golems"
+			],
+			"lootTables": [
+				"Magic Item Table H"
 			]
 		},
 		{
@@ -21635,6 +22564,9 @@
 				"Quaal's Feather Token, Swan Boat",
 				"Quaal's Feather Token, Tree",
 				"Quaal's Feather Token, Whip"
+			],
+			"lootTables": [
+				"Magic Item Table C"
 			]
 		},
 		{
@@ -21775,6 +22707,9 @@
 				"Armor of Vulnerability (Bludgeoning)",
 				"Armor of Vulnerability (Piercing)",
 				"Armor of Vulnerability (Slashing)"
+			],
+			"lootTables": [
+				"Magic Item Table G"
 			]
 		}
 	]

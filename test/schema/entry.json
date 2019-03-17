@@ -5,7 +5,7 @@
 	"id": "/Entry",
 	"description": "A recursively renderable object.",
 	"type": ["string", "integer", "object"],
-	"version": "1.2.8",
+	"version": "1.2.10",
 
 	"definitions" : {
 		"entry": {
@@ -893,6 +893,12 @@
 							"enum": [
 								"map"
 							]
+						},
+						"width": {
+							"type": "integer"
+						},
+						"height": {
+							"type": "integer"
 						}
 					},
 					"required": ["href"],
@@ -981,6 +987,14 @@
 			"required": [
 				"type",
 				"dataCreature"
+			]
+		},
+		"entryHr": {
+			"properties": {
+				"type": {"const": "hr"}
+			},
+			"required": [
+				"type"
 			]
 		},
 
@@ -1133,6 +1147,7 @@
 		{"$ref": "#/definitions/entryAttack"},
 		{"$ref": "#/definitions/entryAttack"},
 		{"$ref": "#/definitions/entryDataCreature"},
+		{"$ref": "#/definitions/entryHr"},
 		{"type": "string"},
 		{"type": "integer"}
 	]

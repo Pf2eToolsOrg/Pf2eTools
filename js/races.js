@@ -93,7 +93,7 @@ async function onJsonLoad (data) {
 		listClass: "races"
 	});
 
-	const jsonRaces = EntryRenderer.race.mergeSubraces(data.race);
+	const jsonRaces = Renderer.race.mergeSubraces(data.race);
 	const speedFilter = new Filter({header: "Speed", items: ["Climb", "Fly", "Swim", "Walk (Fast)", "Walk", "Walk (Slow)"]});
 	const traitFilter = new Filter({
 		header: "Traits",
@@ -296,7 +296,7 @@ function addRaces (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	EntryRenderer.hover.bindPopoutButton(raceList);
+	Renderer.hover.bindPopoutButton(raceList);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
@@ -338,7 +338,7 @@ function getSublistItem (race, pinId) {
 	`;
 }
 
-const renderer = EntryRenderer.getDefaultRenderer();
+const renderer = Renderer.get();
 function loadhash (id) {
 	renderer.setFirstSection(true);
 	const $pgContent = $("#pagecontent").empty();
@@ -357,9 +357,9 @@ function loadhash (id) {
 
 		$pgContent.append(`
 		<tbody>
-		${EntryRenderer.utils.getBorderTr()}
+		${Renderer.utils.getBorderTr()}
 		<tr><th class="name" colspan="6">
-		<span class="stats-name copyable" onclick="EntryRenderer.utils._pHandleNameClick(this, '${race.source.escapeQuotes()}')">${race.name}</span>
+		<span class="stats-name copyable" onclick="Renderer.utils._pHandleNameClick(this, '${race.source.escapeQuotes()}')">${race.name}</span>
 		${race.soundClip ? getPronunciationButton() : ""}
 		<span class="stats-source ${Parser.sourceJsonToColor(race.source)}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
 		</th></tr>
@@ -367,28 +367,26 @@ function loadhash (id) {
 		<tr><td colspan="6"><b>Size:</b> ${Parser.sizeAbvToFull(race.size)}</td></tr>
 		<tr><td colspan="6"><b>Speed:</b> ${Parser.getSpeedString(race)}</td></tr>
 		<tr id="traits"><td class="divider" colspan="6"><div></div></td></tr>
-		${EntryRenderer.utils.getBorderTr()}
+		${Renderer.utils.getBorderTr()}
 		</tbody>
 		`);
 
 		const renderStack = [];
 		renderStack.push("<tr class='text'><td colspan='6'>");
-		renderer.recursiveEntryRender({type: "entries", entries: race.entries}, renderStack, 1);
+		renderer.recursiveRender({type: "entries", entries: race.entries}, renderStack, {depth: 1});
 		renderStack.push("</td></tr>");
 		if (race.traitTags && race.traitTags.includes("NPC Race")) {
 			renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
-			renderer.recursiveEntryRender(
-				`{@i Note: This race is listed in the {@i Dungeon Master's Guide} as an option for creating NPCs. It is not designed for use as a playable race.}`
-				, renderStack, 2);
+			renderer.recursiveRender(`{@i Note: This race is listed in the {@i Dungeon Master's Guide} as an option for creating NPCs. It is not designed for use as a playable race.}`, renderStack, {depth: 2});
 			renderStack.push(`</section></td></tr>`);
 		}
-		renderStack.push(EntryRenderer.utils.getPageTr(race));
+		renderStack.push(Renderer.utils.getPageTr(race));
 
 		$pgContent.find('tbody tr:last').before(renderStack.join(""));
 	}
 
 	function buildFluffTab (isImageTab) {
-		return EntryRenderer.utils.buildFluffTab(
+		return Renderer.utils.buildFluffTab(
 			isImageTab,
 			$pgContent,
 			race,
@@ -399,7 +397,7 @@ function loadhash (id) {
 	}
 
 	function getFluff (fluffJson) {
-		const predefined = EntryRenderer.utils.getPredefinedFluff(race, "raceFluff");
+		const predefined = Renderer.utils.getPredefinedFluff(race, "raceFluff");
 		if (predefined) return predefined;
 
 		const subFluff = race._baseName && race.name.toLowerCase() === race._baseName.toLowerCase() ? "" : fluffJson.race.find(it => it.name.toLowerCase() === race.name.toLowerCase() && it.source.toLowerCase() === race.source.toLowerCase());
@@ -469,23 +467,23 @@ function loadhash (id) {
 		return fluff;
 	}
 
-	const traitTab = EntryRenderer.utils.tabButton(
+	const traitTab = Renderer.utils.tabButton(
 		"Traits",
 		() => {},
 		buildStatsTab
 	);
-	const infoTab = EntryRenderer.utils.tabButton(
+	const infoTab = Renderer.utils.tabButton(
 		"Info",
 		() => {},
 		buildFluffTab
 	);
-	const picTab = EntryRenderer.utils.tabButton(
+	const picTab = Renderer.utils.tabButton(
 		"Images",
 		() => {},
 		buildFluffTab.bind(null, true)
 	);
 
-	EntryRenderer.utils.bindTabButtons(traitTab, infoTab, picTab);
+	Renderer.utils.bindTabButtons(traitTab, infoTab, picTab);
 
 	ListUtil.updateSelected();
 }

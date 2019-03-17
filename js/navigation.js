@@ -107,7 +107,47 @@ class NavBar {
 
 		addLi(navBar, "donate.html", "Donate");
 
-		addNightModeToggle(navBar);
+		const ulSettings = addDropdown(navBar, "Settings");
+		addButton(
+			ulSettings,
+			{
+				html: styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_DAY ? "Night Mode" : "Day Mode",
+				click: (evt) => {
+					evt.preventDefault();
+					styleSwitcher.toggleActiveStyleSheet();
+				},
+				className: "nightModeToggle"
+			}
+		);
+		addButton(
+			ulSettings,
+			{
+				html: "Save State to File",
+				click: async (evt) => {
+					evt.preventDefault();
+					const sync = StorageUtil.syncGetDump();
+					const async = await StorageUtil.pGetDump();
+					const dump = {sync, async};
+					DataUtil.userDownload("5etools", dump);
+				},
+				title: "Save any locally-stored data (loaded homebrew, active blacklists, DM Screen configuration,...) to a file."
+			}
+		);
+		addButton(
+			ulSettings,
+			{
+				html: "Load State from File",
+				click: async (evt) => {
+					evt.preventDefault();
+					const dump = await DataUtil.pUserUpload();
+
+					StorageUtil.syncSetFromDump(dump.sync);
+					await StorageUtil.pSetFromDump(dump.async);
+					location.reload();
+				},
+				title: "Load previously-saved data (loaded homebrew, active blacklists, DM Screen configuration,...) from a file."
+			}
+		);
 
 		/**
 		 * Adds a new item to the navigation bar. Can be used either in root, or in a different UL.
@@ -185,17 +225,25 @@ class NavBar {
 		}
 
 		/**
-		 * Special LI for the Day/Night Switcher
+		 * Special LI for buttong
+		 * @param appendTo The element to append to.
+		 * @param options Options.
+		 * @param options.html Button text.
+		 * @param options.click Button click handler.
+		 * @param options.title Button title.
+		 * @param options.className Additional button classes.
 		 */
-		function addNightModeToggle (appendTo) {
+		function addButton (appendTo, options) {
 			const li = document.createElement("li");
 			li.setAttribute("role", "presentation");
 
 			const a = document.createElement("a");
 			a.href = "#";
-			a.className = "nightModeToggle";
-			a.onclick = function (event) { event.preventDefault(); styleSwitcher.toggleActiveStyleSheet(); };
-			a.innerHTML = styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_DAY ? "Night Mode" : "Day Mode";
+			if (options.className) a.className = options.className;
+			a.onclick = options.click;
+			a.innerHTML = options.html;
+
+			if (options.title) li.setAttribute("title", options.title);
 
 			li.appendChild(a);
 			appendTo.appendChild(li);

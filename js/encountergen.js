@@ -3,7 +3,7 @@
 const JSON_URL = "data/encounters.json";
 
 let encounterList;
-const renderer = EntryRenderer.getDefaultRenderer();
+const renderer = Renderer.get();
 
 function makeContentsBlock (i, loc) {
 	let out = "<ul>";
@@ -97,7 +97,7 @@ function pad (number) {
 function getRenderedText (rawText) {
 	if (rawText.indexOf("{@") !== -1) {
 		const stack = [];
-		renderer.recursiveEntryRender(rawText, stack);
+		renderer.recursiveRender(rawText, stack);
 		return stack.join("");
 	} else return rawText;
 }
@@ -124,16 +124,16 @@ function rollAgainstTable (iLoad, jLoad) {
 
 	// add dice results
 	result = result.replace(RollerUtil.DICE_REGEX, function (match) {
-		const r = EntryRenderer.dice.parseRandomise2(match);
+		const r = Renderer.dice.parseRandomise2(match);
 		return `<span class="roller" onmousedown="event.preventDefault()" onclick="reroll(this)">${match}</span> (<span class="result">${r}</span>)`
 	});
 
-	EntryRenderer.dice.addRoll({name: `${location.location} (${table.minlvl}-${table.maxlvl})`}, `<span><strong>${pad(roll)}</strong> ${result}</span>`);
+	Renderer.dice.addRoll({name: `${location.location} (${table.minlvl}-${table.maxlvl})`}, `<span><strong>${pad(roll)}</strong> ${result}</span>`);
 }
 
 function reroll (ele) {
 	const $ele = $(ele);
-	const resultRoll = EntryRenderer.dice.parseRandomise2($ele.html());
+	const resultRoll = Renderer.dice.parseRandomise2($ele.html());
 	const $result = $ele.next(".result");
 	const oldText = $result.text().replace(/\(\)/g, "");
 	$result.html(resultRoll);

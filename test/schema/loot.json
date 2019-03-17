@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"definitions": {
 		"cr": {
 			"type": "integer",
@@ -94,6 +94,55 @@
 					"type",
 					"table"
 				],
+				"additionalProperties": false
+			}
+		},
+		"table": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"properties": {
+					"min": {
+						"$ref": "#/definitions/d100"
+					},
+					"max": {
+						"$ref": "#/definitions/d100"
+					},
+					"item": {
+						"type": "string"
+					},
+					"spellLevel": {
+						"type": "integer"
+					},
+					"table": {
+						"$ref": "#/definitions/table"
+					},
+					"choose": {
+						"type": "object",
+						"properties": {
+							"fromGroup": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							},
+							"fromGeneric": {
+								"type":  "array",
+								"items": {
+									"type":  "string"
+								}
+							},
+							"fromItems": {
+								"type":  "array",
+								"items": {
+									"type":  "string"
+								}
+							}
+						},
+						"additionalProperties": false
+					}
+				},
 				"additionalProperties": false
 			}
 		}
@@ -248,25 +297,7 @@
 						"type": "string"
 					},
 					"table": {
-						"type": "array",
-						"uniqueItems": true,
-						"items": {
-							"type": "object",
-							"properties": {
-								"min": {
-									"$ref": "#/definitions/d100"
-								},
-								"max": {
-									"$ref": "#/definitions/d100"
-								},
-								"item": {
-									"type": "string"
-								},
-								"spellLevel": {
-									"type": "integer"
-								}
-							}
-						}
+						"$ref": "#/definitions/table"
 					}
 				},
 				"required": [

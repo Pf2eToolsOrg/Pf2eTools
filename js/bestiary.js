@@ -5,7 +5,7 @@ const META_URL = "meta.json";
 const FLUFF_INDEX = "fluff-index.json";
 const JSON_LIST_NAME = "monster";
 const ECGEN_BASE_PLAYERS = 4; // assume a party size of four
-const renderer = EntryRenderer.getDefaultRenderer();
+const renderer = Renderer.get();
 
 window.PROF_MODE_BONUS = "bonus";
 window.PROF_MODE_DICE = "dice";
@@ -14,7 +14,8 @@ window.PROF_DICE_MODE = PROF_MODE_BONUS;
 function imgError (x) {
 	if (x) $(x).remove();
 	$(`#pagecontent th.name`).css("padding-right", "0.3em");
-	$(`.mon__wrp_hp`).css("max-width", "none");
+	$(`.mon__wrp-size-type-align`).css("max-width", "none");
+	$(`.mon__wrp-hp`).css("max-width", "none");
 }
 
 function handleStatblockScroll (event, ele) {
@@ -136,6 +137,7 @@ window.onload = async function load () {
 		skillFilter,
 		senseFilter,
 		languageFilter,
+		damageTypeFilter,
 		acFilter,
 		averageHpFilter,
 		abilityScoreFilter
@@ -198,6 +200,11 @@ const languageFilter = new Filter({
 	displayFn: (k) => languages[k],
 	umbrellaItems: ["X", "XX"],
 	umbrellaExcludes: ["CS"]
+});
+const damageTypeFilter = new Filter({
+	header: "Damage Inflicted",
+	displayFn: (it) => Parser.dmgTypeToFull(it).toTitleCase(),
+	items: ["A", "B", "C", "F", "O", "L", "N", "P", "I", "Y", "R", "S", "T"]
 });
 const senseFilter = new Filter({
 	header: "Senses",
@@ -342,7 +349,7 @@ function pPageInit (loadedSources) {
 		sortFunction: sortMonsters,
 		onUpdate: onSublistChange,
 		uidHandler: (mon, uid) => ScaleCreature.scale(mon, Number(uid.split("_").last())),
-		uidUnpacker: (uid) => ({scaled: Number(uid.split("_").last()), uid})
+		uidUnpacker: getUnpackedUid
 	});
 	const baseHandlerOptions = {shiftCount: 5};
 	function addHandlerGenerator () {
@@ -382,12 +389,12 @@ function pPageInit (loadedSources) {
 
 					const renderCreature = (mon) => {
 						stack.push(`<table class="printbook-bestiary-entry"><tbody>`);
-						stack.push(EntryRenderer.monster.getCompactRenderedString(mon, renderer));
+						stack.push(Renderer.monster.getCompactRenderedString(mon, renderer));
 						if (mon.legendaryGroup) {
 							const thisGroup = (meta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name];
 							if (thisGroup) {
-								stack.push(EntryRenderer.monster.getCompactRenderedStringSection(thisGroup, renderer, "Lair Actions", "lairActions", 0));
-								stack.push(EntryRenderer.monster.getCompactRenderedStringSection(thisGroup, renderer, "Regional Effects", "regionalEffects", 0));
+								stack.push(Renderer.monster.getCompactRenderedStringSection(thisGroup, renderer, "Lair Actions", "lairActions", 0));
+								stack.push(Renderer.monster.getCompactRenderedStringSection(thisGroup, renderer, "Regional Effects", "regionalEffects", 0));
 							}
 						}
 						stack.push(`</tbody></table>`);
@@ -438,11 +445,13 @@ class EncounterBuilderUtils {
 		return ListUtil.sublist.items.map(it => {
 			const mon = monsters[Number(it._values.id)];
 			if (mon.cr) {
+				const crScaled = it._values.uid ? Number(getUnpackedUid(it._values.uid).scaled) : null;
 				return {
-					cr: Parser.crToNumber(it._values.cr),
+					cr: it._values.cr,
 					count: Number(it._values.count),
 
 					// used for encounter adjuster
+					crScaled: crScaled,
 					uid: it._values.uid,
 					hash: UrlUtil.autoEncodeHash(mon)
 				}
@@ -455,14 +464,14 @@ class EncounterBuilderUtils {
 	}
 
 	static getCrCutoff (data) {
-		data = data.filter(it => it.cr !== 100).sort((a, b) => SortUtil.ascSort(b.cr, a.cr));
+		data = data.filter(it => getCr(it) !== 100).sort((a, b) => SortUtil.ascSort(getCr(b), getCr(a)));
 
 		// "When making this calculation, don't count any monsters whose challenge rating is significantly below the average
 		// challenge rating of the other monsters in the group unless you think the weak monsters significantly contribute
 		// to the difficulty of the encounter." -- DMG, p. 82
 
 		// no cutoff for CR 0-2
-		return data[0].cr <= 2 ? 0 : data[0].cr / 2;
+		return getCr(data[0]) <= 2 ? 0 : getCr(data[0]) / 2;
 	}
 
 	/**
@@ -470,7 +479,8 @@ class EncounterBuilderUtils {
 	 * @param playerCount number of players in the party
 	 */
 	static calculateEncounterXp (data, playerCount = ECGEN_BASE_PLAYERS) {
-		data = data.filter(it => it.cr !== 100).sort((a, b) => SortUtil.ascSort(b.cr, a.cr));
+		data = data.filter(it => getCr(it) !== 100)
+			.sort((a, b) => SortUtil.ascSort(getCr(b), getCr(a)));
 
 		let baseXp = 0;
 		let relevantCount = 0;
@@ -478,8 +488,8 @@ class EncounterBuilderUtils {
 
 		const crCutoff = EncounterBuilderUtils.getCrCutoff(data);
 		data.forEach(it => {
-			if (it.cr >= crCutoff) relevantCount += it.count;
-			baseXp += Parser.crToXpNumber(Parser.numberToCr(it.cr)) * it.count;
+			if (getCr(it) >= crCutoff) relevantCount += it.count;
+			baseXp += Parser.crToXpNumber(Parser.numberToCr(getCr(it))) * it.count;
 		});
 
 		const playerAdjustedXpMult = Parser.numMonstersToXpMult(relevantCount, playerCount);
@@ -527,6 +537,7 @@ function handleFilterChange () {
 			m._fSkill,
 			m.senseTags,
 			m.languageTags,
+			m.damageTags,
 			m._fAc,
 			m._fHp,
 			[
@@ -602,7 +613,7 @@ function addMonsters (data) {
 					<span class="ecgen__name name col-4-2">${mon.name}</span>
 					<span class="type col-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
 					<span class="col-1-7 text-align-center cr">${mon._pCr}</span>
-					<span title="${Parser.sourceJsonToFull(mon.source)}${EntryRenderer.utils.getSourceSubText(mon)}" class="col-2 source text-align-center ${Parser.sourceJsonToColor(mon.source)}">${abvSource}</span>
+					<span title="${Parser.sourceJsonToFull(mon.source)}${Renderer.utils.getSourceSubText(mon)}" class="col-2 source text-align-center ${Parser.sourceJsonToColor(mon.source)}">${abvSource}</span>
 					
 					${mon.group ? `<span class="group hidden">${mon.group}</span>` : ""}
 					<span class="alias hidden">${(mon.alias || []).map(it => `"${it}"`).join(",")}</span>
@@ -673,15 +684,15 @@ function addMonsters (data) {
 	function popoutHandlerGenerator (toList, $btnPop, popoutCodeId) {
 		return (evt) => {
 			if (evt.shiftKey) {
-				EntryRenderer.hover.handlePopoutCode(evt, toList, $btnPop, popoutCodeId);
+				Renderer.hover.handlePopoutCode(evt, toList, $btnPop, popoutCodeId);
 			} else {
-				if (lastRendered.mon != null && lastRendered.isScaled) EntryRenderer.hover.doPopoutPreloaded($btnPop, lastRendered.mon, evt.clientX);
-				else if (History.lastLoadedId !== null) EntryRenderer.hover.doPopout($btnPop, toList, History.lastLoadedId, evt.clientX);
+				if (lastRendered.mon != null && lastRendered.isScaled) Renderer.hover.doPopoutPreloaded($btnPop, lastRendered.mon, evt.clientX);
+				else if (History.lastLoadedId !== null) Renderer.hover.doPopout($btnPop, toList, History.lastLoadedId, evt.clientX);
 			}
 		};
 	}
 
-	EntryRenderer.hover.bindPopoutButton(monsters, popoutHandlerGenerator);
+	Renderer.hover.bindPopoutButton(monsters, popoutHandlerGenerator);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton(sublistFuncPreload);
@@ -722,6 +733,7 @@ function pGetSublistItem (mon, pinId, addCount, data = {}) {
 		const pMon = data.scaled ? ScaleCreature.scale(mon, data.scaled) : Promise.resolve(mon);
 
 		pMon.then(mon => {
+			RenderBestiary.updateParsed(mon);
 			const subHash = data.scaled ? `${HASH_PART_SEP}${MON_HASH_SCALED}${HASH_SUB_KV_SEP}${data.scaled}` : "";
 			RenderBestiary.initParsed(mon);
 
@@ -732,7 +744,7 @@ function pGetSublistItem (mon, pinId, addCount, data = {}) {
 						<span class="type col-3">${mon._pTypes.asText.uppercaseFirst()}</span>
 						<span class="cr col-2 text-align-center">${mon._pCr}</span>						
 						<span class="count col-2 text-align-center">${addCount || 1}</span>
-						<span class="id hidden">${data.uid ? "" : pinId}</span>
+						<span class="id hidden">${pinId}</span>
 						<span class="uid hidden">${data.uid || ""}</span>
 					</a>
 					
@@ -807,7 +819,7 @@ function renderStatblock (mon, isScaled) {
 				evt.stopPropagation();
 				const mon = monsters[History.lastLoadedId];
 				const lastCr = lastRendered.mon ? lastRendered.mon.cr.cr || lastRendered.mon.cr : mon.cr.cr || mon.cr;
-				EntryRenderer.monster.getCrScaleTarget($btnScaleCr, lastCr, (targetCr) => {
+				Renderer.monster.getCrScaleTarget($btnScaleCr, lastCr, (targetCr) => {
 					if (targetCr === Parser.crToNumber(mon.cr)) renderStatblock(mon);
 					else History.setSubhash(MON_HASH_SCALED, targetCr);
 				});
@@ -824,7 +836,7 @@ function renderStatblock (mon, isScaled) {
 
 		const $floatToken = $(`#float-token`).empty();
 		if (mon.tokenUrl || !mon.uniqueId) {
-			const imgLink = EntryRenderer.monster.getTokenUrl(mon);
+			const imgLink = Renderer.monster.getTokenUrl(mon);
 			$floatToken.append(`
 				<a href="${imgLink}" target="_blank" rel="noopener">
 					<img src="${imgLink}" id="token_image" class="token" onerror="imgError(this)" alt="${mon.name}">
@@ -882,7 +894,7 @@ function renderStatblock (mon, isScaled) {
 						const nu = `
 							(function(it) {
 								if (PROF_DICE_MODE === PROF_MODE_DICE) {
-									EntryRenderer.dice.rollerClick(event, it, '{"type":"dice","rollable":true,"toRoll":"1d20 + ${profDiceString}"}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
+									Renderer.dice.rollerClick(event, it, '{"type":"dice","rollable":true,"toRoll":"1d20 + ${profDiceString}"}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
 								} else {
 									${cached.replace(/this/g, "it")}
 								}
@@ -920,18 +932,18 @@ function renderStatblock (mon, isScaled) {
 	}
 
 	function buildFluffTab (isImageTab) {
-		return EntryRenderer.utils.buildFluffTab(
+		return Renderer.utils.buildFluffTab(
 			isImageTab,
 			$content,
 			mon,
-			EntryRenderer.monster.getFluff.bind(null, mon, meta),
+			Renderer.monster.getFluff.bind(null, mon, meta),
 			`${JSON_DIR}${ixFluff[mon.source]}`,
 			() => ixFluff[mon.source]
 		);
 	}
 
 	// reset tabs
-	const statTab = EntryRenderer.utils.tabButton(
+	const statTab = Renderer.utils.tabButton(
 		"Statblock",
 		() => {
 			$wrpBtnProf.append(profBtn);
@@ -939,7 +951,7 @@ function renderStatblock (mon, isScaled) {
 		},
 		buildStatsTab
 	);
-	const infoTab = EntryRenderer.utils.tabButton(
+	const infoTab = Renderer.utils.tabButton(
 		"Info",
 		() => {
 			profBtn = profBtn || $wrpBtnProf.children().detach();
@@ -947,7 +959,7 @@ function renderStatblock (mon, isScaled) {
 		},
 		buildFluffTab
 	);
-	const picTab = EntryRenderer.utils.tabButton(
+	const picTab = Renderer.utils.tabButton(
 		"Images",
 		() => {
 			profBtn = profBtn || $wrpBtnProf.children().detach();
@@ -955,7 +967,7 @@ function renderStatblock (mon, isScaled) {
 		},
 		() => buildFluffTab(true)
 	);
-	EntryRenderer.utils.bindTabButtons(statTab, infoTab, picTab);
+	Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
 }
 
 function handleUnknownHash (link, sub) {
@@ -975,7 +987,16 @@ function dcRollerClick (event, ele, exp) {
 		rollable: true,
 		toRoll: exp
 	};
-	EntryRenderer.dice.rollerClick(event, ele, JSON.stringify(it));
+	Renderer.dice.rollerClick(event, ele, JSON.stringify(it));
+}
+
+function getUnpackedUid (uid) {
+	return {scaled: Number(uid.split("_").last()), uid};
+}
+
+function getCr (obj) {
+	if (obj.crScaled != null) return obj.crScaled;
+	return typeof obj.cr === "string" ? obj.cr.includes("/") ? Parser.crToNumber(obj.cr) : Number(obj.cr) : obj.cr;
 }
 
 function loadsub (sub) {

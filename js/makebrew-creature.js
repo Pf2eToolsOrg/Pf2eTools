@@ -9,12 +9,17 @@ class CreatureBuilder extends Builder {
 
 		this._sourcesCache = []; // the JSON sources from the main UI
 		this._$selSource = null;
+		this._$iptProfBonus = null;
 		this._cbCache = null;
 
 		this._state = this._getInitialState();
-		this._meta = {}; // meta state
+		// meta state
+		this._meta = CreatureBuilder._getInitialMetaState();
 
 		this._$btnSave = null;
+
+		this._tabMetaInput = [];
+		this._tabMetaOutput = [];
 
 		this._$eles = {};
 
@@ -22,6 +27,8 @@ class CreatureBuilder extends Builder {
 
 		this._$sideMenuStageSaved = null;
 		this._$sideMenuWrpList = null;
+
+		this._generateAttackCache = null;
 	}
 
 	get ixBrew () { return this._meta.ixBrew; }
@@ -48,15 +55,15 @@ class CreatureBuilder extends Builder {
 	renderSideMenu () {
 		this._ui.$wrpSideMenu.empty();
 
-		const $btnSearchCreature = $(`<button class="btn btn-xs btn-default">Load Official Creature</button>`)
+		const $btnSearchCreature = $(`<button class="btn btn-xs btn-default">Load Existing Creature</button>`)
 			.click(() => {
-				const searchItems = new SearchWidget(
+				const searchWidget = new SearchWidget(
 					{Creature: SearchWidget.CONTENT_INDICES.Creature},
 					async (page, source, hash) => {
 						$modalInner.data("close")();
-						const creature = MiscUtil.copy(await EntryRenderer.hover.pCacheAndGet(page, source, hash));
+						const creature = MiscUtil.copy(await Renderer.hover.pCacheAndGet(page, source, hash));
 						creature.source = this._ui.source;
-						this.setStateFromLoaded({s: creature, m: {}});
+						this.setStateFromLoaded({s: creature, m: CreatureBuilder._getInitialMetaState()});
 						this.renderInput();
 						this.renderOutput();
 					},
@@ -64,9 +71,10 @@ class CreatureBuilder extends Builder {
 				);
 				const $modalInner = UiUtil.getShow$Modal(
 					"Select Creature",
-					() => searchItems.$wrpSearch.detach()
+					() => searchWidget.$wrpSearch.detach()
 				);
-				$modalInner.append(searchItems.$wrpSearch)
+				$modalInner.append(searchWidget.$wrpSearch);
+				searchWidget.doFocus();
 			});
 		$$`<div class="sidemenu__row">${$btnSearchCreature}</div>`.appendTo(this._ui.$wrpSideMenu);
 
@@ -100,7 +108,7 @@ class CreatureBuilder extends Builder {
 			const $btnEdit = $(`<button class="btn btn-xs btn-default mr-2" title="Edit"><span class="glyphicon glyphicon-pencil"/></button>`)
 				.click(() => {
 					if (this.getOnNavMessage() && !confirm("You have unsaved changes. Are you sure?")) return;
-					this.setStateFromLoaded({s: MiscUtil.copy(mon), m: {ixBrew}});
+					this.setStateFromLoaded({s: MiscUtil.copy(mon), m: {...CreatureBuilder._getInitialMetaState(), ixBrew}});
 					this.renderInput();
 					this.renderOutput();
 					this._saveTemp();
@@ -118,24 +126,6 @@ class CreatureBuilder extends Builder {
 						else copy.name = `${copy.name} (1)`;
 						await BrewUtil.pAddEntry("monster", copy);
 						this._doUpdateSidemenu();
-					}
-				},
-				{
-					name: "Move to source...",
-					action: async () => {
-						const sources = MiscUtil.copy(BrewUtil.homebrewMeta.sources || []);
-
-						const selection = await InputUiUtil.pGetUserEnum({
-							values: sources.map(it => it.full),
-							title: "Select a Source",
-							default: sources.findIndex(it => this._ui.source === it.json)
-						});
-
-						if (selection != null) {
-							this._ui.source = sources[selection].json;
-							this.doHandleSourceUpdate();
-							await this._pSaveBrew();
-						}
 					}
 				},
 				{
@@ -201,6 +191,13 @@ class CreatureBuilder extends Builder {
 		}
 	}
 
+	static _getInitialMetaState () {
+		return {
+			isHpDirty: false,
+			isProfBonusDirty: false
+		};
+	}
+
 	getSaveableState () {
 		return {
 			s: this._state,
@@ -219,7 +216,7 @@ class CreatureBuilder extends Builder {
 
 			// validate ixBrew
 			if (state.m.ixBrew != null) {
-				const expectedIx = (BrewUtil.homebrewMeta.sources || []).findIndex(it => it.json === state.s.source);
+				const expectedIx = (BrewUtil.homebrew.monster || []).findIndex(it => it.source === state.s.source && it.name === state.s.name);
 				if (!~expectedIx) state.m.ixBrew = null;
 				else if (expectedIx !== state.m.ixBrew) state.m.ixBrew = expectedIx;
 			}
@@ -301,17 +298,19 @@ class CreatureBuilder extends Builder {
 
 		BuilderUi.$getResetButton().click(() => {
 			if (!confirm("Are you sure?")) return;
-			this.setStateFromLoaded({s: this._getInitialState(), m: {}});
+			this.setStateFromLoaded({s: this._getInitialState(), m: CreatureBuilder._getInitialMetaState()});
 			this.renderInput();
 			this.renderOutput();
+			this.isEntrySaved = true;
+			this._mutSavedButtonText();
 			this._saveTemp();
 		}).appendTo($wrpControls);
 	}
 
 	_renderInputMain () {
-		const $wrp = this._ui.$wrpInput.empty();
-
 		this._sourcesCache = MiscUtil.copy(this._ui.allSources);
+
+		const $wrp = this._ui.$wrpInput.empty();
 
 		const cb = () => {
 			RenderBestiary.updateParsed(this._state);
@@ -332,29 +331,48 @@ class CreatureBuilder extends Builder {
 		};
 		this._cbCache = cb; // cache for use when updating sources
 
-		BuilderUi.$getStateIptString("Name", cb, this._state, {nullable: false, callback: () => this.renderSideMenu()}, "name").appendTo($wrp);
-		this._$selSource = this.__$getSourceInput(cb).appendTo($wrp);
-		BuilderUi.$getStateIptEnum("Size", cb, this._state, {vals: Parser.SIZE_ABVS, fnDisplay: Parser.sizeAbvToFull, type: "string", nullable: false}, "size").appendTo($wrp);
-		this.__$getTypeInput(cb).appendTo($wrp);
-		this.__$getAlignmentInput(cb).appendTo($wrp);
-		this.__$getAcInput(cb).appendTo($wrp);
-		this.__$getHpInput(cb).appendTo($wrp);
-		this.__$getSpeedInput(cb).appendTo($wrp);
-		this.__$getAbilityScoreInput(cb).appendTo($wrp);
-		this.__$getSaveInput(cb).appendTo($wrp);
-		this.__$getSkillInput(cb).appendTo($wrp);
-		BuilderUi.$getStateIptNumber("Passive Perception", cb, this._state, {}, "passive").appendTo($wrp);
-		this.__$getVulnerableInput(cb).appendTo($wrp);
-		this.__$getResistInput(cb).appendTo($wrp);
-		this.__$getImmuneInput(cb).appendTo($wrp);
-		this.__$getCondImmuneInput(cb).appendTo($wrp);
-		this.__$getSenseInput(cb).appendTo($wrp);
-		this.__$getLanguageInput(cb).appendTo($wrp);
-		this.__$getCrInput(cb).appendTo($wrp);
-		this.__$getSpellcastingInput(cb).appendTo($wrp);
-		this.__$getTraitInput(cb).appendTo($wrp);
-		this.__$getActionInput(cb).appendTo($wrp);
-		this.__$getReactionInput(cb).appendTo($wrp);
+		// initialise tabs
+		this._tabMetaInput = [];
+		this._meta.activeTabInput = this._meta.activeTabInput || 0;
+		const tabs = ["Info", "Race", "Core", "Defence", "Abilities", "Flavor/Misc"].map((it, ix) => this._getTab(ix, it, {isActive: ix === this._meta.activeTabInput, hasBorder: true}));
+		const [infoTab, raceTab, coreTab, defenseTab, abilTab, miscTab] = tabs;
+		$$`<div class="flex-v-center full-width no-shrink mkbru__wrp-tab-heads--border">${tabs.map(it => it.$btnTab)}</div>`.appendTo($wrp);
+		tabs.forEach(it => it.$wrpTab.appendTo($wrp));
+
+		// INFO
+		BuilderUi.$getStateIptString("Name", cb, this._state, {nullable: false, callback: () => this.renderSideMenu()}, "name").appendTo(infoTab.$wrpTab);
+		this._$selSource = this.__$getSourceInput(cb).appendTo(infoTab.$wrpTab);
+		BuilderUi.$getStateIptNumber("Page", cb, this._state, {}, "page").appendTo(infoTab.$wrpTab);
+		this.__$getAlignmentInput(cb).appendTo(infoTab.$wrpTab);
+		this.__$getCrInput(cb).appendTo(infoTab.$wrpTab);
+		this.__$getProfBonusInput(cb).appendTo(infoTab.$wrpTab);
+
+		// RACE
+		BuilderUi.$getStateIptEnum("Size", cb, this._state, {vals: Parser.SIZE_ABVS, fnDisplay: Parser.sizeAbvToFull, type: "string", nullable: false}, "size").appendTo(raceTab.$wrpTab);
+		this.__$getTypeInput(cb).appendTo(raceTab.$wrpTab);
+		this.__$getSpeedInput(cb).appendTo(raceTab.$wrpTab);
+		this.__$getSenseInput(cb).appendTo(raceTab.$wrpTab);
+		this.__$getLanguageInput(cb).appendTo(raceTab.$wrpTab);
+
+		// CORE
+		this.__$getAbilityScoreInput(cb).appendTo(coreTab.$wrpTab);
+		this.__$getSaveInput(cb).appendTo(coreTab.$wrpTab);
+		this.__$getSkillInput(cb).appendTo(coreTab.$wrpTab);
+		this.__$getPassivePerceptionInput(cb).appendTo(coreTab.$wrpTab);
+
+		// DEFENCE
+		this.__$getAcInput(cb).appendTo(defenseTab.$wrpTab);
+		this.__$getHpInput(cb).appendTo(defenseTab.$wrpTab);
+		this.__$getVulnerableInput(cb).appendTo(defenseTab.$wrpTab);
+		this.__$getResistInput(cb).appendTo(defenseTab.$wrpTab);
+		this.__$getImmuneInput(cb).appendTo(defenseTab.$wrpTab);
+		this.__$getCondImmuneInput(cb).appendTo(defenseTab.$wrpTab);
+
+		// ABILITIES
+		this.__$getSpellcastingInput(cb).appendTo(abilTab.$wrpTab);
+		this.__$getTraitInput(cb).appendTo(abilTab.$wrpTab);
+		this.__$getActionInput(cb).appendTo(abilTab.$wrpTab);
+		this.__$getReactionInput(cb).appendTo(abilTab.$wrpTab);
 		BuilderUi.$getStateIptNumber(
 			"Legendary Action Count",
 			cb,
@@ -364,7 +382,7 @@ class CreatureBuilder extends Builder {
 				placeholder: "If left blank, defaults to 3."
 			},
 			"legendaryActions"
-		).appendTo($wrp);
+		).appendTo(abilTab.$wrpTab);
 		BuilderUi.$getStateIptBoolean(
 			"Name is Proper Noun",
 			cb,
@@ -373,7 +391,7 @@ class CreatureBuilder extends Builder {
 				title: "If selected, the legendary action intro text for this creature will be formatted as though the creature's name is a proper noun (e.g. 'Tiamat can take...' vs 'The dragon can take...')."
 			},
 			"isNamedCreature"
-		).appendTo($wrp);
+		).appendTo(abilTab.$wrpTab);
 		BuilderUi.$getStateIptEntries(
 			"Legendary Action Intro",
 			cb,
@@ -383,13 +401,17 @@ class CreatureBuilder extends Builder {
 				placeholder: "If left blank, defaults to a generic intro."
 			},
 			"legendaryHeader"
-		).appendTo($wrp);
-		this.__$getLegendaryActionInput(cb).appendTo($wrp);
-		this.__$getLegendaryGroupInput(cb).appendTo($wrp);
-		this.__$getVariantInput(cb).appendTo($wrp);
-		BuilderUi.$getStateIptBooleanArray("Environment", cb, this._state, {vals: Parser.ENVIRONMENTS, fnDisplay: StrUtil.uppercaseFirst}, "environment").appendTo($wrp);
-		BuilderUi.$getStateIptString("Group", cb, this._state, {title: "The family this creature belongs to, e.g. 'Modrons' in the case of a Duodrone."}, "group").appendTo($wrp);
-		BuilderUi.$getStateIptString("Sound Clip URL", cb, this._state, {type: "url"}, "soundClip").appendTo($wrp);
+		).appendTo(abilTab.$wrpTab);
+		this.__$getLegendaryActionInput(cb).appendTo(abilTab.$wrpTab);
+		this.__$getLegendaryGroupInput(cb).appendTo(abilTab.$wrpTab);
+		this.__$getVariantInput(cb).appendTo(abilTab.$wrpTab);
+
+		// FLAVOR/MISC
+		BuilderUi.$getStateIptString("Token Image URL", cb, this._state, {type: "url"}, "tokenUrl").appendTo(miscTab.$wrpTab);
+		this.__$getFluffInput(cb).appendTo(miscTab.$wrpTab);
+		BuilderUi.$getStateIptBooleanArray("Environment", cb, this._state, {vals: Parser.ENVIRONMENTS, fnDisplay: StrUtil.uppercaseFirst}, "environment").appendTo(miscTab.$wrpTab);
+		BuilderUi.$getStateIptString("Group", cb, this._state, {title: "The family this creature belongs to, e.g. 'Modrons' in the case of a Duodrone."}, "group").appendTo(miscTab.$wrpTab);
+		BuilderUi.$getStateIptString("Sound Clip URL", cb, this._state, {type: "url"}, "soundClip").appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptEnum(
 			"Dragon Casting Color",
 			cb,
@@ -400,9 +422,9 @@ class CreatureBuilder extends Builder {
 				type: "string"
 			},
 			"dragonCastingColor"
-		).appendTo($wrp);
-		BuilderUi.$getStateIptBoolean("NPC", cb, this._state, {title: "If selected, this creature will be filtered out from the Bestiary list by default."}, "isNpc").appendTo($wrp);
-		BuilderUi.$getStateIptBoolean("Familiar", cb, this._state, {title: "If selected, this creature will be included when filtering for 'Familiar' in the Bestiary."}, "familiar").appendTo($wrp);
+		).appendTo(miscTab.$wrpTab);
+		BuilderUi.$getStateIptBoolean("NPC", cb, this._state, {title: "If selected, this creature will be filtered out from the Bestiary list by default."}, "isNpc").appendTo(miscTab.$wrpTab);
+		BuilderUi.$getStateIptBoolean("Familiar", cb, this._state, {title: "If selected, this creature will be included when filtering for 'Familiar' in the Bestiary."}, "familiar").appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptStringArray(
 			"Search Aliases",
 			cb,
@@ -412,11 +434,33 @@ class CreatureBuilder extends Builder {
 				title: "Alternate names for this creature, e.g. 'Illithid' as an alternative for 'Mind Flayer,' which can be searched in the Bestiary."
 			},
 			"alias"
-		).appendTo($wrp);
-		BuilderUi.$getStateIptNumber("Page", cb, this._state, {}, "page").appendTo($wrp);
+		).appendTo(miscTab.$wrpTab);
 
 		// excluded fields:
 		// - otherSources: requires meta support
+	}
+
+	_getTab (ix, name, options) {
+		options = options || {};
+		const tabMeta = options.isOutput ? this._tabMetaOutput : this._tabMetaInput;
+		const $btnTab = $(`<button class="btn btn-default stat-tab ${options.isActive ? "stat-tab-sel" : ""}">${name}</button>`)
+			.click(() => {
+				const activeProp = options.isOutput ? "activeTabOutput" : "activeTabInput";
+				const prevTab = tabMeta[this._meta[activeProp]];
+				prevTab.$btnTab.removeClass("stat-tab-sel");
+				prevTab.$wrpTab.hide();
+
+				this._meta[activeProp] = ix;
+				$btnTab.addClass("stat-tab-sel");
+				$wrpTab.show();
+				this._saveTemp();
+			});
+
+		const $wrpTab = $(`<div class="mkbru__wrp-tab-body ${options.hasBorder ? "mkbru__wrp-tab-body--border" : ""}" ${options.isActive ? `style="display: block;"` : ""}/>`);
+
+		const out = {ix, $btnTab, $wrpTab};
+		tabMeta[ix] = out;
+		return out;
 	}
 
 	__$getSourceInput (cb) {
@@ -568,23 +612,23 @@ class CreatureBuilder extends Builder {
 		const $wrpRows = $(`<div/>`).appendTo($rowInner);
 
 		if (this._state.alignment.some(it => it.special != null || it.alignment) || !~CreatureBuilder.__$getAlignmentInput__getAlignmentIx(this._state.alignment)) {
-			this._state.alignment.forEach(alignment => CreatureBuilder.__$getAlignmentInput__getAlignmentRow(alignment, alignmentRows, doUpdateState).$wrp.appendTo($wrpRows));
+			this._state.alignment.forEach(alignment => CreatureBuilder.__$getAlignmentInput__getAlignmentRow(doUpdateState, alignmentRows, alignment).$wrp.appendTo($wrpRows));
 		} else {
-			CreatureBuilder.__$getAlignmentInput__getAlignmentRow(this._state.alignment, alignmentRows, doUpdateState).$wrp.appendTo($wrpRows)
+			CreatureBuilder.__$getAlignmentInput__getAlignmentRow(doUpdateState, alignmentRows, this._state.alignment).$wrp.appendTo($wrpRows)
 		}
 
 		const $wrpBtnAdd = $(`<div/>`).appendTo($rowInner);
 		$(`<button class="btn btn-xs btn-default">Add Alignment</button>`)
 			.appendTo($wrpBtnAdd)
 			.click(() => {
-				CreatureBuilder.__$getAlignmentInput__getAlignmentRow(null, alignmentRows, doUpdateState).$wrp.appendTo($wrpRows);
+				CreatureBuilder.__$getAlignmentInput__getAlignmentRow(doUpdateState, alignmentRows).$wrp.appendTo($wrpRows);
 				doUpdateState();
 			});
 
 		return $row;
 	}
 
-	static __$getAlignmentInput__getAlignmentRow (alignment, alignmentRows, doUpdateState) {
+	static __$getAlignmentInput__getAlignmentRow (doUpdateState, alignmentRows, alignment) {
 		const initialMode = alignment && alignment.chance ? "1" : alignment && alignment.special ? "2" : "0";
 
 		const getAlignment = () => {
@@ -700,11 +744,12 @@ class CreatureBuilder extends Builder {
 
 			const getBaseAC = () => {
 				if (condition) {
-					return {
+					const out = {
 						ac: acVal,
-						condition,
-						braces
-					}
+						condition
+					};
+					if (braces) out.braces = true;
+					return out;
 				} else return acVal;
 			};
 
@@ -717,10 +762,10 @@ class CreatureBuilder extends Builder {
 					if (froms.length) {
 						const out = {
 							ac: acVal,
-							braces,
 							from: froms
 						};
 						if (condition) out.condition = condition;
+						if (braces) out.braces = true;
 						return out;
 					} else return getBaseAC();
 				}
@@ -812,7 +857,7 @@ class CreatureBuilder extends Builder {
 
 		const $btnSearchItem = $(`<button class="btn btn-default btn-xs">Item</button>`)
 			.click(() => {
-				const searchItems = new SearchWidget(
+				const searchWidget = new SearchWidget(
 					{Item: SearchWidget.CONTENT_INDICES.Item},
 					(page, source, hash) => {
 						const [encName, encSource] = hash.split(HASH_LIST_SEP);
@@ -824,9 +869,10 @@ class CreatureBuilder extends Builder {
 				);
 				const $modalInner = UiUtil.getShow$Modal(
 					"Select Item",
-					() => searchItems.$wrpSearch.detach() // guarantee survival of rendered element
+					() => searchWidget.$wrpSearch.detach() // guarantee survival of rendered element
 				);
-				$modalInner.append(searchItems.$wrpSearch)
+				$modalInner.append(searchWidget.$wrpSearch);
+				searchWidget.doFocus();
 			});
 
 		const $btnRemove = $(`<button class="btn btn-xs btn-danger mkbru_mon__btn-rm-row--nested-1 ml-2" title="Remove AC Feature/Item"><span class="glyphicon glyphicon-trash"/></button>`)
@@ -880,16 +926,15 @@ class CreatureBuilder extends Builder {
 		// FORMULA STAGE
 		const $iptFormula = $(`<input class="form-control form-control--minimal input-xs text-align-right">`)
 			.change(() => {
-				if (!averageDirty) {
-					const avg = EntryRenderer.dice.parseAverage($iptFormula.val());
+				if (!this._meta.isHpDirty) {
+					const avg = Renderer.dice.parseAverage($iptFormula.val());
 					if (avg != null) $iptAverage.val(Math.floor(avg));
 				}
 				doUpdateState();
 			});
-		let averageDirty = false;
 		const $iptAverage = $(`<input class="form-control form-control--minimal input-xs" type="number">`)
 			.change(() => {
-				averageDirty = true;
+				this._meta.isHpDirty = true;
 				doUpdateState();
 			});
 		const $wrpFormula = $$`<div class="flex-col">
@@ -981,69 +1026,82 @@ class CreatureBuilder extends Builder {
 	}
 
 	__$getSaveInput (cb) {
-		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Saving Throws", {isMarked: true});
+		return this.__$getSaveSkillInput(cb, "save");
+	}
+
+	__$getSkillInput (cb) {
+		return this.__$getSaveSkillInput(cb, "skill");
+	}
+
+	__$getSaveSkillInput (cb, mode) {
+		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple(mode === "save" ? "Saving Throws" : "Skills", {isMarked: true});
 
 		const $getRow = (name, prop) => {
-			const $iptSave = $(`<input class="form-control form-control--minimal input-xs" type="number">`)
+			const $iptVal = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number">`)
 				.change(() => {
-					const raw = $iptSave.val();
+					const raw = $iptVal.val();
 					if (raw && raw.trim()) {
 						const num = Number(raw);
-						const formatted = num < 0 ? `${num}` : `+${num}`;
-						if (this._state.save) this._state.save[prop] = formatted;
-						else this._state.save = {[prop]: formatted};
+						(this._state[mode] = this._state[mode] || {})[prop] = num < 0 ? `${num}` : `+${num}`;
 					} else {
-						if (this._state.save) {
-							delete this._state.save[prop];
-							if (Object.keys(this._state.save).length === 0) delete this._state.save;
+						if (this._state[mode]) {
+							delete this._state[mode][prop];
+							if (Object.keys(this._state[mode]).length === 0) delete this._state[mode];
 						}
 					}
 					cb();
 				});
 
-			if ((this._state.save || {})[prop]) $iptSave.val(this._state.save[prop].replace(/^\+/, "")); // remove leading plus sign
+			const _handleButtonPress = (isExpert) => {
+				const abilProp = mode === "save" ? prop : Parser.skillToAbilityAbv(prop);
+				const total = Parser.getAbilityModNumber(this._state[abilProp]) + (this._getProfBonus() * (2 - !isExpert));
+				(this._state[mode] = this._state[mode] || {})[prop] = total < 0 ? `${total}` : `+${total}`;
+				$iptVal.val(total);
+				cb();
+			};
+
+			const $btnProf = $(`<button class="btn btn-xs btn-default" title="Is Proficient">Prof.</button>`)
+				.click(() => _handleButtonPress());
+
+			const $btnExpert = mode === "save" ? null : $(`<button class="btn btn-xs btn-default ml-2" title="Has Expertise">Expert.</button>`)
+				.click(() => _handleButtonPress(true));
+
+			if ((this._state[mode] || {})[prop]) $iptVal.val(`${this._state[mode][prop]}`.replace(/^\+/, "")); // remove leading plus sign
 
 			return $$`<div class="flex-v-center mb-2">
 			<span class="mr-2 mkbru__sub-name--33">${name}</span>
-			${$iptSave}
+			${$iptVal}${$btnProf}${$btnExpert}
 			</div>`;
 		};
 
-		Parser.ABIL_ABVS.forEach(abv => $getRow(Parser.attAbvToFull(abv), abv).appendTo($rowInner));
+		if (mode === "save") {
+			Parser.ABIL_ABVS.forEach(abv => $getRow(Parser.attAbvToFull(abv), abv).appendTo($rowInner));
+		} else {
+			Object.keys(Parser.SKILL_TO_ATB_ABV).sort(SortUtil.ascSort).forEach(skill => $getRow(skill.toTitleCase(), skill).appendTo($rowInner));
+		}
 
 		return $row;
 	}
 
-	__$getSkillInput (cb) {
-		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Skills", {isMarked: true});
+	__$getPassivePerceptionInput (cb) {
+		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Passive Perception");
 
-		const $getRow = (name, prop) => {
-			const $iptSkill = $(`<input class="form-control form-control--minimal input-xs" type="number">`)
-				.change(() => {
-					const raw = $iptSkill.val();
-					if (raw && raw.trim()) {
-						const num = Number(raw);
-						const formatted = num < 0 ? `${num}` : `+${num}`;
-						if (this._state.skill) this._state.skill[prop] = formatted;
-						else this._state.skill = {[prop]: formatted};
-					} else {
-						if (this._state.skill) {
-							delete this._state.skill[prop];
-							if (Object.keys(this._state.skill).length === 0) delete this._state.skill;
-						}
-					}
-					cb();
-				});
+		const $iptPerception = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number">`)
+			.change(() => {
+				this._state.passive = Math.round(Number($iptPerception.val()));
+				cb();
+			})
+			.val(this._state.passive || 0);
 
-			if ((this._state.skill || {})[prop]) $iptSkill.val(this._state.skill[prop].replace(/^\+/, "")); // remove leading plus sign
+		const $btnAuto = $(`<button class="btn btn-default btn-xs" title="Auto-Calculate Passive Perception"><span class="glyphicon glyphicon-refresh"/></button>`)
+			.click(() => {
+				const calcPerception = (this._state.skill && this._state.skill.perception != null && this._state.skill.perception.trim() ? Number(this._state.skill.perception) : Parser.getAbilityModNumber(this._state.wis)) + 10;
+				this._state.passive = calcPerception;
+				$iptPerception.val(calcPerception);
+				cb();
+			});
 
-			return $$`<div class="flex-v-center mb-2">
-			<span class="mr-2 mkbru__sub-name--33">${name}</span>
-			${$iptSkill}
-			</div>`;
-		};
-
-		Object.keys(Parser.SKILL_TO_ATB_ABV).sort(SortUtil.ascSort).forEach(skill => $getRow(skill.toTitleCase(), skill).appendTo($rowInner));
+		$$`<div class="flex-v-center">${$iptPerception}${$btnAuto}</div>`.appendTo($rowInner);
 
 		return $row;
 	}
@@ -1157,7 +1215,7 @@ class CreatureBuilder extends Builder {
 			.change(() => doUpdateState());
 		const $iptNotePost = $(`<input class="form-control input-xs form-control--minimal mr-2" placeholder="Post- note">`)
 			.change(() => doUpdateState());
-		const $btnRemove = $(`<button class="btn btn-xs btn-danger ${depth ? "" : "mkbru_mon__btn-rm-row"}" title="Remove ${shortName} Group"><span class="glyphicon glyphicon-trash"/></button>`)
+		const $btnRemove = $(`<button class="btn btn-xs btn-danger mkbru_mon__btn-rm-row" title="Remove ${shortName} Group"><span class="glyphicon glyphicon-trash"/></button>`)
 			.click(() => {
 				groups.splice(groups.indexOf(out), 1);
 				$ele.remove();
@@ -1168,7 +1226,7 @@ class CreatureBuilder extends Builder {
 		const $wrpControls = $$`<div class="mb-2 flex-v-center">${$btnAddChild}${$btnAddChildGroup}${$iptNotePre}${$iptNotePost}${$btnRemove}</div>`;
 
 		const $ele = (() => {
-			const $base = $$`<div class="flex-col ${depth ? "" : "mkbru_mon__wrp-rows mkbru_mon__wrp-rows--removable"}">${$wrpControls}${$wrpChildren}</div>`;
+			const $base = $$`<div class="flex-col ${depth ? "" : "mkbru_mon__wrp-rows"}">${$wrpControls}${$wrpChildren}</div>`;
 			if (!depth) return $base;
 			else return $$`<div class="flex-v-center full-width"><div class="mkbru_mon__row-indent"/>${$base}</div>`
 		})();
@@ -1341,6 +1399,13 @@ class CreatureBuilder extends Builder {
 			.val(this._state.cr.cr || this._state.cr).change(() => {
 				if ($selMode.val() === "0") this._state.cr = $selCr.val();
 				else this._state.cr.cr = $selCr.val();
+
+				// update proficiency bonus input as required
+				if (!this._meta.isProfBonusDirty) {
+					const pb = Parser.crToPb($selCr.val());
+					this._$iptProfBonus.val(pb);
+					this._meta.profBonus = pb;
+				}
 				cb();
 			});
 		$$`<div>${$selCr}</div>`.appendTo($rowInner);
@@ -1368,6 +1433,27 @@ class CreatureBuilder extends Builder {
 		return $row;
 	}
 
+	// this doesn't directly affect state, but is used as a helper for other inputs
+	__$getProfBonusInput (cb) {
+		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Proficiency Bonus");
+
+		this._$iptProfBonus = $(`<input class="form-control form-control--minimal input-xs" type="number" min="0">`)
+			.val(this._getProfBonus())
+			.change(() => {
+				this._meta.profBonus = Math.round(Number(this._$iptProfBonus.val()));
+				this._meta.isProfBonusDirty = Parser.crToPb(this._state.cr.cr || this._state.cr) !== this._meta.profBonus;
+				cb();
+			})
+			.appendTo($rowInner);
+
+		return $row;
+	}
+
+	_getProfBonus () {
+		if (this._meta.profBonus != null) return this._meta.profBonus || 0;
+		else return Parser.crToPb(this._state.cr.cr || this._state.cr);
+	}
+
 	__$getSpellcastingInput (cb) {
 		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Spellcasting", {isMarked: true});
 
@@ -1384,7 +1470,11 @@ class CreatureBuilder extends Builder {
 
 		const doUpdateState = () => {
 			if (!traitRows.length) delete this._state.spellcasting;
-			else this._state.spellcasting = traitRows.map(r => r.getState());
+			else {
+				const spellcastingTraits = traitRows.map(r => r.getState()).filter(Boolean);
+				if (spellcastingTraits.length) this._state.spellcasting = spellcastingTraits;
+				else delete this._state.spellcasting;
+			}
 			cb();
 		};
 
@@ -1436,6 +1526,8 @@ class CreatureBuilder extends Builder {
 				if (/can innately cast {@spell /i.test(strHeader)) out.hidden = [/per day/i.test(strHeader) ? "daily" : "will"];
 				else delete out.hidden;
 			} else delete out.hidden;
+
+			if (!Object.keys(out).some(it => it !== "name")) return null;
 
 			return out;
 		};
@@ -1556,6 +1648,12 @@ class CreatureBuilder extends Builder {
 
 		const $btnRemove = $(`<button class="btn btn-xs btn-danger" title="Remove Trait"><span class="glyphicon glyphicon-trash"/></button>`)
 			.click(() => {
+				const currState = getState();
+				if (currState) {
+					delete currState.name; // ignore name key
+					if ((currState.headerEntries || currState.footerEntries || Object.keys(currState).some(it => it !== "headerEntries" && it !== "footerEntries")) && !confirm("Are you sure?")) return;
+				}
+
 				traitRows.splice(traitRows.indexOf(out), 1);
 				$ele.empty().remove();
 				doUpdateState();
@@ -1642,7 +1740,7 @@ class CreatureBuilder extends Builder {
 			rowItems.push(item);
 
 			// sort the rows and re-arrange them as required
-			rowItems.forEach(it => it._sortString = EntryRenderer.stripTags(it.getState())); // should always return an entry string
+			rowItems.forEach(it => it._sortString = Renderer.stripTags(it.getState())); // should always return an entry string
 			rowItems.sort((a, b) => SortUtil.ascSortLower(a._sortString, b._sortString) || b.order - a.order)
 				.forEach(rowItem => {
 					rowItem.$ele.detach();
@@ -1746,7 +1844,7 @@ class CreatureBuilder extends Builder {
 	}
 
 	static __$getSpellcastingInput__getSpellGenericRow__getRowItem (rowItems, doUpdateState, spellEntry) {
-		const getHtml = () => `&bull; ${EntryRenderer.getDefaultRenderer().renderEntry(spellEntry)}`;
+		const getHtml = () => `&bull; ${Renderer.get().render(spellEntry)}`;
 
 		const $iptSpell = $(`<input class="form-control form-control--minimal input-xs mr-2">`)
 			.val(spellEntry)
@@ -1796,7 +1894,7 @@ class CreatureBuilder extends Builder {
 					action: () => {
 						let traitIndex;
 						return new Promise(resolve => {
-							const searchItems = new SearchWidget(
+							const searchWidget = new SearchWidget(
 								{Trait: this._indexedTraits},
 								async (ix) => {
 									traitIndex = ix;
@@ -1816,14 +1914,15 @@ class CreatureBuilder extends Builder {
 							const $modalInner = UiUtil.getShow$Modal(
 								"Select a Trait",
 								(isDataEntered) => {
-									searchItems.$wrpSearch.detach();
+									searchWidget.$wrpSearch.detach();
 									if (!isDataEntered) return resolve(null);
 									const trait = MiscUtil.copy(this._jsonCreature.trait[traitIndex]);
 									trait.entries = JSON.parse(JSON.stringify(trait.entries).replace(/<\$name\$>/gi, this._state.name));
 									resolve(trait);
 								}
 							);
-							$modalInner.append(searchItems.$wrpSearch)
+							$modalInner.append(searchWidget.$wrpSearch);
+							searchWidget.doFocus();
 						})
 					}
 				}
@@ -1844,9 +1943,10 @@ class CreatureBuilder extends Builder {
 							return new Promise(resolve => {
 								const $modalInner = UiUtil.getShow$Modal({
 									title: "Generate Attack",
-									cbClose: async (isDataEntered) => {
+									cbClose: (isDataEntered) => {
+										this._generateAttackCache = getState();
 										if (!isDataEntered) return resolve(null);
-										const data = await getFormData();
+										const data = getFormData();
 										if (!data) return resolve(null);
 										resolve(data);
 									},
@@ -1912,14 +2012,36 @@ class CreatureBuilder extends Builder {
 										} else $modalInner.data("close")(true);
 									});
 
-								const getFormData = async () => {
-									const cr = this._state.cr.cr || this._state.cr;
-									const pb = await InputUiUtil.pGetUserNumber({
-										title: "Enter Proficiency Bonus",
-										min: 2,
-										int: true,
-										default: Parser.crToPb(cr) || 2
+								const $btnReset = $(`<button class="btn btn-sm btn-danger">Reset</button>`)
+									.click(() => {
+										if (!confirm("Are you sure?")) return;
+										setState({
+											iptName: "",
+											cbMelee: true,
+											cbRanged: false,
+											cbFinesse: false,
+											cbVersatile: false,
+											cbBonusDamage: false,
+											iptMeleeRange: "5",
+											iptMeleeDamDiceCount: "1",
+											iptMeleeDamDiceNum: "6",
+											iptMeleeDamType: "",
+											iptRangedShort: "",
+											iptRangedLong: "",
+											iptRangedDamDiceCount: "1",
+											iptRangedDamDiceNum: "6",
+											iptRangedDamType: "",
+											iptVersatileDamDiceCount: "1",
+											iptVersatileDamDiceNum: "8",
+											iptVersatileDamType: "",
+											iptBonusDamDiceCount: "1",
+											iptBonusDamDiceNum: "6",
+											iptBonusDamType: ""
+										});
 									});
+
+								const getFormData = () => {
+									const pb = this._getProfBonus();
 									const abilMod = Parser.getAbilityModNumber($cbFinesse.prop("checked") ? this._state.dex : this._state.str);
 									const [melee, ranged] = [$cbMelee.prop("checked") ? "mw" : false, $cbRanged.prop("checked") ? "rw" : false];
 
@@ -1958,6 +2080,56 @@ class CreatureBuilder extends Builder {
 									};
 								};
 
+								const getState = () => ({
+									iptName: $iptName.val(),
+									cbMelee: $cbMelee.prop("checked"),
+									cbRanged: $cbRanged.prop("checked"),
+									cbFinesse: $cbFinesse.prop("checked"),
+									cbVersatile: $cbVersatile.prop("checked"),
+									cbBonusDamage: $cbBonusDamage.prop("checked"),
+									iptMeleeRange: $iptMeleeRange.val(),
+									iptMeleeDamDiceCount: $iptMeleeDamDiceCount.val(),
+									iptMeleeDamDiceNum: $iptMeleeDamDiceNum.val(),
+									iptMeleeDamType: $iptMeleeDamType.val(),
+									iptRangedShort: $iptRangedShort.val(),
+									iptRangedLong: $iptRangedLong.val(),
+									iptRangedDamDiceCount: $iptRangedDamDiceCount.val(),
+									iptRangedDamDiceNum: $iptRangedDamDiceNum.val(),
+									iptRangedDamType: $iptRangedDamType.val(),
+									iptVersatileDamDiceCount: $iptVersatileDamDiceCount.val(),
+									iptVersatileDamDiceNum: $iptVersatileDamDiceNum.val(),
+									iptVersatileDamType: $iptVersatileDamType.val(),
+									iptBonusDamDiceCount: $iptBonusDamDiceCount.val(),
+									iptBonusDamDiceNum: $iptBonusDamDiceNum.val(),
+									iptBonusDamType: $iptBonusDamType.val()
+								});
+
+								const setState = (state) => {
+									$iptName.val(state.iptName);
+									$cbMelee.prop("checked", state.cbMelee).change();
+									$cbRanged.prop("checked", state.cbRanged).change();
+									$cbFinesse.prop("checked", state.cbFinesse).change();
+									$cbVersatile.prop("checked", state.cbVersatile).change();
+									$cbBonusDamage.prop("checked", state.cbBonusDamage).change();
+									$iptMeleeRange.val(state.iptMeleeRange);
+									$iptMeleeDamDiceCount.val(state.iptMeleeDamDiceCount);
+									$iptMeleeDamDiceNum.val(state.iptMeleeDamDiceNum);
+									$iptMeleeDamType.val(state.iptMeleeDamType);
+									$iptRangedShort.val(state.iptRangedShort);
+									$iptRangedLong.val(state.iptRangedLong);
+									$iptRangedDamDiceCount.val(state.iptRangedDamDiceCount);
+									$iptRangedDamDiceNum.val(state.iptRangedDamDiceNum);
+									$iptRangedDamType.val(state.iptRangedDamType);
+									$iptVersatileDamDiceCount.val(state.iptVersatileDamDiceCount);
+									$iptVersatileDamDiceNum.val(state.iptVersatileDamDiceNum);
+									$iptVersatileDamType.val(state.iptVersatileDamType);
+									$iptBonusDamDiceCount.val(state.iptBonusDamDiceCount);
+									$iptBonusDamDiceNum.val(state.iptBonusDamDiceNum);
+									$iptBonusDamType.val(state.iptBonusDamType);
+								};
+
+								if (this._generateAttackCache) setState(this._generateAttackCache);
+
 								$$`<div class="flex-col">
 								<div class="flex-v-center mb-2">
 									${$iptName}
@@ -1973,7 +2145,7 @@ class CreatureBuilder extends Builder {
 								${$stageRanged}
 								${$stageVersatile}
 								${$stageBonusDamage}
-								<div class="flex-v-center mt-2">${$btnConfirm}</div>
+								<div class="split flex-v-center mt-2">${$btnConfirm}${$btnReset}</div>
 								</div>`.appendTo($modalInner)
 							});
 						}
@@ -2010,13 +2182,15 @@ class CreatureBuilder extends Builder {
 
 		const entryRows = [];
 
-		const $wrpRows = $(`<div/>`).appendTo($rowInner);
+		const $wrpRowsOuter = $(`<div class="relative"/>`).appendTo($rowInner);
+		const $wrpRows = $(`<div/>`).appendTo($wrpRowsOuter);
+		const rowOptions = {prop: options.prop, shortName: options.shortName, $wrpRowsOuter};
 
 		const $wrpBtnAdd = $(`<div/>`).appendTo($rowInner);
 		$(`<button class="btn btn-xs btn-default">Add ${options.shortName}</button>`)
 			.appendTo($wrpBtnAdd)
 			.click(() => {
-				this.__$getGenericEntryInput__getEntryRow(doUpdateState, doUpdateOrder, {prop: options.prop, shortName: options.shortName}, entryRows).$ele.appendTo($wrpRows);
+				this.__$getGenericEntryInput__getEntryRow(doUpdateState, doUpdateOrder, rowOptions, entryRows).$ele.appendTo($wrpRows);
 				doUpdateState();
 			});
 
@@ -2027,7 +2201,7 @@ class CreatureBuilder extends Builder {
 					.click(async () => {
 						const entry = await gen.action();
 						if (entry != null) {
-							this.__$getGenericEntryInput__getEntryRow(doUpdateState, doUpdateOrder, {prop: options.prop, shortName: options.shortName}, entryRows, entry)
+							this.__$getGenericEntryInput__getEntryRow(doUpdateState, doUpdateOrder, rowOptions, entryRows, entry)
 								.$ele.appendTo($wrpRows);
 							doUpdateState();
 						}
@@ -2035,7 +2209,7 @@ class CreatureBuilder extends Builder {
 			})
 		}
 
-		if (this._state[options.prop]) this._state[options.prop].forEach(entry => this.__$getGenericEntryInput__getEntryRow(doUpdateState, doUpdateOrder, {prop: options.prop, shortName: options.shortName}, entryRows, entry).$ele.appendTo($wrpRows));
+		if (this._state[options.prop]) this._state[options.prop].forEach(entry => this.__$getGenericEntryInput__getEntryRow(doUpdateState, doUpdateOrder, rowOptions, entryRows, entry).$ele.appendTo($wrpRows));
 
 		return $row;
 	}
@@ -2085,6 +2259,60 @@ class CreatureBuilder extends Builder {
 				doUpdateOrder();
 			}) : null;
 
+		const dragMeta = {};
+		const doDragCleanup = () => {
+			dragMeta.on = false;
+			dragMeta.$wrap.remove();
+			dragMeta.$dummies.forEach($d => $d.remove());
+		};
+		const doDragRender = () => {
+			if (dragMeta.on) {
+				doDragCleanup();
+			}
+
+			dragMeta.on = true;
+			dragMeta.$wrap = $(`<div class="flex-col mkbru_mon__wrp-drag-block"/>`).appendTo(options.$wrpRowsOuter);
+			dragMeta.$dummies = [];
+
+			const ixOut = entryRows.indexOf(out);
+
+			entryRows.forEach((row, i) => {
+				const dimensions = {w: row.$ele.outerWidth(true), h: row.$ele.outerHeight(true)};
+				const $dummy = $(`<div class="mkbru_mon__wrp-drag-dummy ${i === ixOut ? "mkbru_mon__wrp-drag-dummy--highlight" : "mkbru_mon__wrp-drag-dummy--lowlight"}"/>`)
+					.width(dimensions.w).height(dimensions.h)
+					.mouseup(() => {
+						if (dragMeta.on) {
+							doDragCleanup();
+						}
+					})
+					.appendTo(dragMeta.$wrap);
+				dragMeta.$dummies.push($dummy);
+
+				if (i !== ixOut) { // on entering other areas, swap positions
+					$dummy.mouseenter(() => {
+						const cache = entryRows[i];
+						entryRows[i] = out;
+						entryRows[ixOut] = cache;
+
+						// swap textarea dimensions to prevent flickering
+						const cacheDim = {h: cache.$iptEntries.css("height")};
+						cache.$iptEntries.css({height: out.$iptEntries.css("height")});
+						out.$iptEntries.css({height: cacheDim.h});
+
+						doUpdateOrder();
+						doDragRender();
+					});
+				}
+			});
+		};
+		const $dragOrder = doUpdateOrder ? $(`<div class="ml-2 mkbru__drag-patch" title="Drag to Reorder">
+			<div class="mkbru__drag-patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
+			<div class="mkbru__drag-patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
+			</div>`)
+			.mousedown(() => {
+				doDragRender();
+			}) : null;
+
 		const $iptEntries = $(`<textarea class="form-control form-control--minimal mkbru__ipt-textarea mb-2"/>`)
 			.change(() => doUpdateState());
 
@@ -2092,6 +2320,8 @@ class CreatureBuilder extends Builder {
 
 		const $btnRemove = $(`<button class="btn btn-xs btn-danger mb-2" title="Remove ${options.shortName}"><span class="glyphicon glyphicon-trash"/></button>`)
 			.click(() => {
+				const currState = getState();
+				if (currState && currState.entries && !confirm("Are you sure?")) return;
 				entryRows.splice(entryRows.indexOf(out), 1);
 				$ele.empty().remove();
 				doUpdateState();
@@ -2135,14 +2365,14 @@ class CreatureBuilder extends Builder {
 		const $ele = $$`<div class="flex-col mkbru_mon__wrp-rows mkbru_mon__wrp-rows--removable">
 		<div class="split flex-v-center mb-2">
 			${$iptName}
-			<div class="flex-v-center">${$btnUp}${$btnDown}</div>
+			<div class="flex-v-center">${$btnUp}${$btnDown}${$dragOrder}</div>
 		</div>
 		${sourceControls ? sourceControls.$ele : null}
 		<div class="flex-v-center">${$iptEntries}</div>
 		<div class="text-align-right">${$btnRemove}</div>
 		</div>`;
 
-		const out = {$ele, getState};
+		const out = {$ele, getState, $iptEntries};
 		entryRows.push(out);
 		return out;
 	}
@@ -2177,40 +2407,85 @@ class CreatureBuilder extends Builder {
 		return this.__$getGenericEntryInput(cb, {name: "Variants", shortName: "Variant", prop: "variant"});
 	}
 
-	__$getEnvironmentInput (cb) {
-		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Environment");
+	__$getFluffInput (cb) {
+		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Flavour Info");
+
+		const imageRows = [];
 
 		const doUpdateState = () => {
-			const raw = $iptEnvironment.val().trim();
-			if (!raw) delete this._state.environment;
-			else this._state.environment = raw;
+			const out = {};
+
+			const entries = BuilderUi.getTextAsEntries($iptEntries.val());
+			if (entries && entries.length) out.entries = entries;
+
+			const images = imageRows.map(it => it.getState()).filter(Boolean);
+
+			if (images.length) out.images = images;
+
+			if (out.entries || out.images) this._state.fluff = out;
+			else delete this._state.fluff;
+
 			cb();
 		};
 
-		const $iptEnvironment = $(`<input class="form-control input-xs form-control--minimal mr-2">`)
+		const $iptEntries = $(`<textarea class="form-control form-control--minimal mkbru__ipt-textarea mb-2"/>`)
 			.change(() => doUpdateState());
-		if (this._state.environment && this._state.environment.trim()) $iptEnvironment.val(this._state.environment);
 
-		const contextId = ContextUtil.getNextGenericMenuId();
-		const _CONTEXT_ENTRIES = ["arctic", "coastal", "desert", "forest", "grassland", "hill", "mountain", "swamp", "underdark", "underwater", "urban"];
-		ContextUtil.doInitContextMenu(contextId, async (evt, ele, $invokedOn, $selectedMenu) => {
-			const val = Number($selectedMenu.data("ctx-id"));
-			const env = _CONTEXT_ENTRIES[val].toLowerCase();
+		const $btnAddImage = $(`<button class="btn btn-xs btn-default">Add Image</button>`)
+			.click(async () => {
+				const url = await InputUiUtil.pGetUserString({title: "Enter a URL"});
+				if (!url) return;
+				CreatureBuilder.__$getFluffInput__getImageRow(doUpdateState, imageRows, {href: {url: url}}).$wrp.appendTo($wrpRows);
+				doUpdateState();
+			});
 
-			const curr = $iptEnvironment.val().trim();
-			$iptEnvironment.val(curr ? `${curr}, ${env}` : env);
+		const $wrpRows = $(`<div class="flex-col"/>`);
 
-			doUpdateState();
-		}, _CONTEXT_ENTRIES);
+		$$`<div class="flex-col">
+		${$iptEntries}
+		${$wrpRows}
+		<div>${$btnAddImage}</div>
+		</div>`.appendTo($rowInner);
 
-		const $btnAddGeneric = $(`<button class="btn btn-xs btn-default mr-2">Add Environment</button>`)
-			.click((evt) => ContextUtil.handleOpenContextMenu(evt, $btnAddGeneric, contextId));
-
-		const $btnSort = BuilderUi.$getSplitCommasSortButton($iptEnvironment, doUpdateState);
-
-		$$`<div class="flex-v-center">${$iptEnvironment}${$btnAddGeneric}${$btnSort}</div>`.appendTo($rowInner);
+		if (this._state.fluff) {
+			if (this._state.fluff.entries) $iptEntries.val(BuilderUi.getEntriesAsText(this._state.fluff.entries));
+			if (this._state.fluff.images) this._state.fluff.images.forEach(img => CreatureBuilder.__$getFluffInput__getImageRow(doUpdateState, imageRows, img).$wrp.appendTo($wrpRows));
+		}
 
 		return $row;
+	}
+
+	static __$getFluffInput__getImageRow (doUpdateState, imageRows, image) {
+		const getState = () => {
+			const rawUrl = $iptUrl.val().trim();
+			return rawUrl ? {type: "image", href: {type: "external", url: rawUrl}} : null;
+		};
+
+		const $iptUrl = $(`<input class="form-control form-control--minimal input-xs mr-2">`)
+			.change(() => doUpdateState());
+		if (image) $iptUrl.val(((image || {}).href || {}).url);
+
+		const $btnPreview = $(`<button class="btn btn-xs btn-default mr-2" title="Preview Image"><span class="glyphicon glyphicon-fullscreen"/></button>`)
+			.click((evt) => {
+				const toRender = getState();
+				if (!toRender) return JqueryUtil.doToast({content: "Please enter an image URL", type: "warning"});
+				const fauxEvent = {shiftKey: true, clientX: 500};
+				const data = {data: {hoverTitle: "Image Preview"}, entries: [toRender]};
+				Renderer.hover.show({evt: fauxEvent, ele: $btnPreview[0], page: "hover", source: data, hash: "", isBookContent: true});
+			});
+
+		const $btnRemove = $(`<button class="btn btn-xs btn-danger" title="Remove Image"><span class="glyphicon glyphicon-trash"/></button>`)
+			.click(() => {
+				imageRows.splice(imageRows.indexOf(out), 1);
+				$wrp.empty().remove();
+				doUpdateState();
+			});
+
+		const $wrp = $$`<div class="flex-v-center mb-2">${$iptUrl}${$btnPreview}${$btnRemove}</div>`;
+		const out = {$wrp, getState};
+		imageRows.push(out);
+
+		return out;
 	}
 
 	renderOutput () {
@@ -2221,8 +2496,35 @@ class CreatureBuilder extends Builder {
 	_renderOutput () {
 		const $wrp = this._ui.$wrpOutput.empty();
 
-		const $tblMon = $(`<table class="stats monster/">`).appendTo($wrp);
+		// initialise tabs
+		this._tabMetaOutput = [];
+		this._meta.activeTabOutput = this._meta.activeTabOutput || 0;
+		const tabs = ["Statblock", "Info", "Images"].map((it, ix) => this._getTab(ix, it, {isActive: ix === this._meta.activeTabOutput, isOutput: true}));
+		const [statTab, infoTab, imageTab] = tabs;
+		$$`<div class="flex-v-center full-width no-shrink">${tabs.map(it => it.$btnTab)}</div>`.appendTo($wrp);
+		tabs.forEach(it => it.$wrpTab.appendTo($wrp));
+
+		// statblock
+		const $tblMon = $(`<table class="stats monster/">`).appendTo(statTab.$wrpTab);
 		RenderBestiary.$getRenderedCreature(this._state, this._bestiaryMetaCache).appendTo($tblMon);
+
+		// info
+		const $tblInfo = $(`<table class="stats">`).appendTo(infoTab.$wrpTab);
+		Renderer.utils.buildFluffTab(
+			false,
+			$tblInfo,
+			this._state,
+			Renderer.monster.getFluff.bind(null, this._state, this._bestiaryMetaCache)
+		);
+
+		// images
+		const $tblImages = $(`<table class="stats">`).appendTo(imageTab.$wrpTab);
+		Renderer.utils.buildFluffTab(
+			true,
+			$tblImages,
+			this._state,
+			Renderer.monster.getFluff.bind(null, this._state, this._bestiaryMetaCache)
+		);
 	}
 }
 CreatureBuilder._ALIGNMENTS = [

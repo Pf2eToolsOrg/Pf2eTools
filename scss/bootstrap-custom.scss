@@ -1,0 +1,1066 @@
+@import 'vars';
+
+/* Generic/utilities */
+.code {
+	font-family: 'Courier New', monospace;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.copyable {
+	cursor: copy;
+}
+
+.unselectable {
+	user-select: none;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.help,
+.help--hover {
+	cursor: help;
+	text-decoration: underline;
+	text-decoration-style: dotted;
+}
+
+.help--subtle {
+	cursor: help;
+}
+
+.help--hover {
+	// This should approx. match the hover cutoff defined in renderer (768px).
+	// Approximate, since jQuery calculates window width differently, offset likely varies with e.g. scrollbar width.
+	@media (max-width: 780px) {
+		cursor: default;
+		text-decoration: none;
+	}
+}
+
+.roller {
+	color: $link-blue;
+	cursor: pointer;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.full-height {
+	height: 100%;
+}
+
+.flex {
+	display: flex;
+}
+
+.relative {
+	position: relative;
+}
+
+.flex-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.inline-flex {
+	display: inline-flex;
+}
+
+.block {
+	display: block;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.flex-1 {
+	flex: 1;
+}
+
+.flex-2 {
+	flex: 2;
+}
+
+.flex-3 {
+	flex: 3;
+}
+
+.no-shrink {
+	flex-shrink: 0;
+}
+
+.split {
+	display: flex;
+	justify-content: space-between;
+}
+
+.split-v-center {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.split-child {
+	width: 50%;
+	flex-shrink: 0;
+	flex-grow: 0;
+}
+
+.split-column {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+}
+
+.split-column--inline {
+	display: inline-flex;
+}
+
+.flex-v-center {
+	display: flex;
+	align-items: center;
+}
+
+.flex-v-baseline {
+	display: flex;
+	align-items: baseline;
+}
+
+.flex-vh-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.flex-vh-center-around {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.flex-inline-v-center {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.columns-2 {
+	column-count: 2;
+
+	@media (max-width: 768px) {
+		column-count: 1;
+	}
+}
+
+.columns-3 {
+	column-count: 3;
+
+	@media (max-width: 768px) {
+		column-count: 2;
+	}
+
+	@media (max-width: 480px) {
+		column-count: 1;
+	}
+}
+
+.columns-4 {
+	column-count: 4;
+
+	@media (max-width: 768px) {
+		column-count: 3;
+	}
+
+	@media (max-width: 480px) {
+		column-count: 2;
+	}
+}
+
+/* *** */
+
+/* Base elements */
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+
+	&.is-fullscreen .page__header {
+		display: none;
+	}
+
+	&.is-fullscreen .page__nav {
+		display: none;
+	}
+}
+
+main {
+	padding: 10px 15px;
+}
+
+footer {
+	padding: 20px 15px;
+	font-size: 90%;
+}
+
+/* custom scrollbars */
+::-webkit-scrollbar {
+	width: 9px;
+	height: 9px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #cbcbcb;
+}
+
+// thicker scrollbar for the body only
+body::-webkit-scrollbar {
+	width: 15px;
+}
+
+/* *** */
+
+/* Bootstrap overrides */
+.container {
+	position: relative;
+}
+
+.tooltip-inner {
+	white-space: nowrap;
+}
+
+.input-xs {
+	height: 22px;
+	padding: 1px 5px;
+	font-size: 12px;
+	line-height: 1.5;
+	border-radius: 3px;
+}
+
+select.input-xs {
+	height: 22px;
+	line-height: 22px;
+}
+
+.form-control--minimal {
+	border-radius: 0;
+	padding: 0 2px;
+}
+
+.flex-label {
+	display: inline-flex;
+	align-items: center;
+
+	> input[type=checkbox],
+	> input[type=radio] {
+		margin: 0 0 0 5px;
+	}
+}
+
+.fade {
+	transition: opacity 0.05s linear;
+}
+
+.dropdown-menu--side {
+	top: -10px;
+	left: 100%;
+}
+
+.nav > li {
+	> a {
+		padding: 5px 15px 6px;
+
+		@media (min-width: 992px) {
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+	}
+
+	@media (max-width: 991px) {
+		margin-top: 2px;
+		margin-bottom: 2px;
+	}
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
+	background-color: #006bc4;
+	border-top: 0;
+
+	@media (min-width: 992px) {
+		border-bottom: 1px solid #999;
+	}
+}
+
+.nav > li > a:focus,
+.nav > li > a:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.nav .open > a,
+.nav .open > a:focus,
+.nav .open > a:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* recreate the base Bootstrap col-xs-X class */
+%col-base {
+	position: relative;
+	min-height: 1px;
+	padding-right: 7px;
+	padding-left: 7px;
+	float: left;
+}
+
+.row {
+	margin-right: -7px;
+	margin-left: -7px;
+}
+
+.col-12 {
+	@extend %col-base;
+	width: 100%;
+}
+
+.col-11 {
+	@extend %col-base;
+	width: 91.66666666666667%;
+}
+
+.col-11-9 {
+	@extend %col-base;
+	width: 99.16666666666667%;
+}
+
+.col-11-8 {
+	@extend %col-base;
+	width: 98.33333333333333%;
+}
+
+.col-11-7 {
+	@extend %col-base;
+	width: 97.5%;
+}
+
+.col-11-6 {
+	@extend %col-base;
+	width: 96.66666666666667%;
+}
+
+.col-11-5 {
+	@extend %col-base;
+	width: 95.83333333333333%;
+}
+
+.col-11-4 {
+	@extend %col-base;
+	width: 95%;
+}
+
+.col-11-3 {
+	@extend %col-base;
+	width: 94.16666666666667%;
+}
+
+.col-11-2 {
+	@extend %col-base;
+	width: 93.33333333333333%;
+}
+
+.col-11-1 {
+	@extend %col-base;
+	width: 92.5%;
+}
+
+.col-10 {
+	@extend %col-base;
+	width: 83.33333333333333%;
+}
+
+.col-10-9 {
+	@extend %col-base;
+	width: 90.83333333333333%;
+}
+
+.col-10-8 {
+	@extend %col-base;
+	width: 90%;
+}
+
+.col-10-7 {
+	@extend %col-base;
+	width: 89.16666666666667%;
+}
+
+.col-10-6 {
+	@extend %col-base;
+	width: 88.33333333333333%;
+}
+
+.col-10-5 {
+	@extend %col-base;
+	width: 87.5%;
+}
+
+.col-10-4 {
+	@extend %col-base;
+	width: 86.66666666666667%;
+}
+
+.col-10-3 {
+	@extend %col-base;
+	width: 85.83333333333333%;
+}
+
+.col-10-2 {
+	@extend %col-base;
+	width: 85%;
+}
+
+.col-10-1 {
+	@extend %col-base;
+	width: 84.16666666666667%;
+}
+
+.col-9 {
+	@extend %col-base;
+	width: 75%;
+}
+
+.col-9-9 {
+	@extend %col-base;
+	width: 82.5%;
+}
+
+.col-9-8 {
+	@extend %col-base;
+	width: 81.66666666666667%;
+}
+
+.col-9-7 {
+	@extend %col-base;
+	width: 80.83333333333333%;
+}
+
+.col-9-6 {
+	@extend %col-base;
+	width: 80%;
+}
+
+.col-9-5 {
+	@extend %col-base;
+	width: 79.16666666666667%;
+}
+
+.col-9-4 {
+	@extend %col-base;
+	width: 78.33333333333333%;
+}
+
+.col-9-3 {
+	@extend %col-base;
+	width: 77.5%;
+}
+
+.col-9-2 {
+	@extend %col-base;
+	width: 76.66666666666667%;
+}
+
+.col-9-1 {
+	@extend %col-base;
+	width: 75.83333333333333%;
+}
+
+.col-8 {
+	@extend %col-base;
+	width: 66.666666666666667%;
+}
+
+.col-8-9 {
+	@extend %col-base;
+	width: 74.16666666666667%;
+}
+
+.col-8-8 {
+	@extend %col-base;
+	width: 73.33333333333333%;
+}
+
+.col-8-7 {
+	@extend %col-base;
+	width: 72.5%;
+}
+
+.col-8-6 {
+	@extend %col-base;
+	width: 71.66666666666667%;
+}
+
+.col-8-5 {
+	@extend %col-base;
+	width: 70.83333333333333%;
+}
+
+.col-8-4 {
+	@extend %col-base;
+	width: 70%;
+}
+
+.col-8-3 {
+	@extend %col-base;
+	width: 69.16666666666667%;
+}
+
+.col-8-2 {
+	@extend %col-base;
+	width: 68.33333333333333%;
+}
+
+.col-8-1 {
+	@extend %col-base;
+	width: 67.5%;
+}
+
+.col-7 {
+	@extend %col-base;
+	width: 58.33333333333333%;
+}
+
+.col-7-9 {
+	@extend %col-base;
+	width: 65.83333333333333%;
+}
+
+.col-7-8 {
+	@extend %col-base;
+	width: 65%;
+}
+
+.col-7-7 {
+	@extend %col-base;
+	width: 64.16666666666667%;
+}
+
+.col-7-6 {
+	@extend %col-base;
+	width: 63.33333333333333%;
+}
+
+.col-7-5 {
+	@extend %col-base;
+	width: 62.5%;
+}
+
+.col-7-4 {
+	@extend %col-base;
+	width: 61.66666666666667%;
+}
+
+.col-7-3 {
+	@extend %col-base;
+	width: 60.83333333333333%;
+}
+
+.col-7-2 {
+	@extend %col-base;
+	width: 60%;
+}
+
+.col-7-1 {
+	@extend %col-base;
+	width: 59.16666666666667%;
+}
+
+.col-6 {
+	@extend %col-base;
+	width: 50%;
+}
+
+.col-6-9 {
+	@extend %col-base;
+	width: 57.5%;
+}
+
+.col-6-8 {
+	@extend %col-base;
+	width: 56.66666666666667%;
+}
+
+.col-6-7 {
+	@extend %col-base;
+	width: 55.83333333333333%;
+}
+
+.col-6-6 {
+	@extend %col-base;
+	width: 55%;
+}
+
+.col-6-5 {
+	@extend %col-base;
+	width: 54.16666666666667%;
+}
+
+.col-6-4 {
+	@extend %col-base;
+	width: 53.33333333333333%;
+}
+
+.col-6-3 {
+	@extend %col-base;
+	width: 52.5%;
+}
+
+.col-6-2 {
+	@extend %col-base;
+	width: 51.66666666666667%;
+}
+
+.col-6-1 {
+	@extend %col-base;
+	width: 50.83333333333333%;
+}
+
+.col-5 {
+	@extend %col-base;
+	width: 41.66666666666667%;
+}
+
+.col-5-9 {
+	@extend %col-base;
+	width: 49.16666666666667%;
+}
+
+.col-5-8 {
+	@extend %col-base;
+	width: 48.33333333333333%;
+}
+
+.col-5-7 {
+	@extend %col-base;
+	width: 47.5%;
+}
+
+.col-5-6 {
+	@extend %col-base;
+	width: 46.66666666666667%;
+}
+
+.col-5-5 {
+	@extend %col-base;
+	width: 45.83333333333333%;
+}
+
+.col-5-4 {
+	@extend %col-base;
+	width: 45%;
+}
+
+.col-5-3 {
+	@extend %col-base;
+	width: 44.16666666666667%;
+}
+
+.col-5-2 {
+	@extend %col-base;
+	width: 43.33333333333333%;
+}
+
+.col-5-1 {
+	@extend %col-base;
+	width: 42.5%;
+}
+
+.col-4 {
+	@extend %col-base;
+	width: 33.33333333333333%;
+}
+
+.col-4-9 {
+	@extend %col-base;
+	width: 40.83333333333333%;
+}
+
+.col-4-8 {
+	@extend %col-base;
+	width: 40%;
+}
+
+.col-4-7 {
+	@extend %col-base;
+	width: 39.16666666666667%;
+}
+
+.col-4-6 {
+	@extend %col-base;
+	width: 38.33333333333333%;
+}
+
+.col-4-5 {
+	@extend %col-base;
+	width: 37.5%;
+}
+
+.col-4-4 {
+	@extend %col-base;
+	width: 36.66666666666667%;
+}
+
+.col-4-3 {
+	@extend %col-base;
+	width: 35.83333333333333%;
+}
+
+.col-4-2 {
+	@extend %col-base;
+	width: 35%;
+}
+
+.col-4-1 {
+	@extend %col-base;
+	width: 34.16666666666667%;
+}
+
+.col-3 {
+	@extend %col-base;
+	width: 25%;
+}
+
+.col-3-9 {
+	@extend %col-base;
+	width: 32.5%;
+}
+
+.col-3-8 {
+	@extend %col-base;
+	width: 31.66666666666667%;
+}
+
+.col-3-7 {
+	@extend %col-base;
+	width: 30.83333333333333%;
+}
+
+.col-3-6 {
+	@extend %col-base;
+	width: 30%;
+}
+
+.col-3-5 {
+	@extend %col-base;
+	width: 29.16666666666667%;
+}
+
+.col-3-4 {
+	@extend %col-base;
+	width: 28.33333333333333%;
+}
+
+.col-3-3 {
+	@extend %col-base;
+	width: 27.5%;
+}
+
+.col-3-2 {
+	@extend %col-base;
+	width: 26.66666666666667%;
+}
+
+.col-3-1 {
+	@extend %col-base;
+	width: 25.83333333333333%;
+}
+
+.col-2 {
+	@extend %col-base;
+	width: 16.66666666666667%;
+}
+
+.col-2-9 {
+	@extend %col-base;
+	width: 24.16666666666667%;
+}
+
+.col-2-8 {
+	@extend %col-base;
+	width: 23.33333333333333%;
+}
+
+.col-2-7 {
+	@extend %col-base;
+	width: 22.5%;
+}
+
+.col-2-6 {
+	@extend %col-base;
+	width: 21.66666666666667%;
+}
+
+.col-2-5 {
+	@extend %col-base;
+	width: 20.83333333333333%;
+}
+
+.col-2-4 {
+	@extend %col-base;
+	width: 20%;
+}
+
+.col-2-3 {
+	@extend %col-base;
+	width: 19.16666666666667%;
+}
+
+.col-2-2 {
+	@extend %col-base;
+	width: 18.33333333333333%;
+}
+
+.col-2-1 {
+	@extend %col-base;
+	width: 17.5%;
+}
+
+.col-1 {
+	@extend %col-base;
+	width: 8.33333333333333%;
+}
+
+.col-1-9 {
+	@extend %col-base;
+	width: 15.83333333333333%;
+}
+
+.col-1-8 {
+	@extend %col-base;
+	width: 15%;
+}
+
+.col-1-7 {
+	@extend %col-base;
+	width: 14.16666666666667%;
+}
+
+.col-1-6 {
+	@extend %col-base;
+	width: 13.33333333333333%;
+}
+
+.col-1-5 {
+	@extend %col-base;
+	width: 12.5%;
+}
+
+.col-1-4 {
+	@extend %col-base;
+	width: 11.66666666666667%;
+}
+
+.col-1-3 {
+	@extend %col-base;
+	width: 10.83333333333333%;
+}
+
+.col-1-2 {
+	@extend %col-base;
+	width: 10%;
+}
+
+.col-1-1 {
+	@extend %col-base;
+	width: 9.16666666666667%;
+}
+
+.col-0-9 {
+	@extend %col-base;
+	width: 7.5%;
+}
+
+.col-0-8 {
+	@extend %col-base;
+	width: 6.66666666666667%;
+}
+
+.col-0-7 {
+	@extend %col-base;
+	width: 5.83333333333333%;
+}
+
+.col-0-6 {
+	@extend %col-base;
+	width: 5%;
+}
+
+.col-0-5 {
+	@extend %col-base;
+	width: 4.16666666666667%;
+}
+
+.col-0-4 {
+	@extend %col-base;
+	width: 3.33333333333333%;
+}
+
+.col-0-3 {
+	@extend %col-base;
+	width: 2.5%;
+}
+
+.col-0-2 {
+	@extend %col-base;
+	width: 1.66666666666667%;
+}
+
+.col-0-1 {
+	@extend %col-base;
+	width: 0.83333333333333%;
+}
+
+
+.mb-0 {
+	margin-bottom: 0 !important;
+}
+
+.mb-1 {
+	margin-bottom: ($spacer * 0.25) !important;
+}
+
+.mb-2 {
+	margin-bottom: ($spacer * 0.5) !important;
+}
+
+.mb-3 {
+	margin-bottom: $spacer !important;
+}
+
+.mb-4 {
+	margin-bottom: $spacer * 1.5 !important;
+}
+
+.mb-5 {
+	margin-bottom: $spacer * 3 !important;
+}
+
+.mb-0 {
+	margin-bottom: 0 !important;
+}
+
+.mt-1 {
+	margin-top: ($spacer * 0.25) !important;
+}
+
+.mt-2 {
+	margin-top: ($spacer * 0.5) !important;
+}
+
+.mt-3 {
+	margin-top: $spacer !important;
+}
+
+.mt-4 {
+	margin-top: $spacer * 1.5 !important;
+}
+
+.mt-5 {
+	margin-top: $spacer * 3 !important;
+}
+
+.mx-2 {
+	margin-right: ($spacer * 0.5) !important;
+	margin-left: ($spacer * 0.5) !important;
+}
+
+.my-3 {
+	margin-top: $spacer !important;
+	margin-bottom: $spacer !important;
+}
+
+.ml-auto {
+	margin-left: auto !important;
+}
+
+.ml-1 {
+	margin-left: ($spacer * 0.25) !important;
+}
+
+.ml-2 {
+	margin-left: ($spacer * 0.5) !important;
+}
+
+.mr-1 {
+	margin-right: ($spacer * 0.25) !important;
+}
+
+.mr-2 {
+	margin-right: ($spacer * 0.5) !important;
+}
+
+.mr-3 {
+	margin-right: $spacer !important;
+}
+
+.mr-4 {
+	margin-right: $spacer * 1.5 !important;
+}
+
+.px-2 {
+	padding-right: ($spacer * 0.5) !important;
+	padding-left: ($spacer * 0.5) !important;
+}
+
+.px-4 {
+	padding-right: ($spacer * 1.5) !important;
+	padding-left: ($spacer * 1.5) !important;
+}
+
+.px-5 {
+	padding-right: ($spacer * 3) !important;
+	padding-left: ($spacer * 3) !important;
+}
+
+.p-2 {
+	padding: ($spacer * 0.5) !important;
+}
+
+.pr-1 {
+	padding-right: ($spacer * 0.25) !important;
+}
+
+.pr-2 {
+	padding-right: ($spacer * 0.5) !important;
+}
+
+.dropdown-menu > li > a.dropdown-ext-link {
+	display: flex;
+	justify-content: space-between;
+}
+
+.dropdown-menu > li > a.dropdown-ext-link:hover {
+	padding-right: 10px;
+}
+
+.dropdown-ext-link > .glyphicon {
+	top: 3px;
+	display: none;
+}
+
+.dropdown-ext-link:hover > .glyphicon {
+	display: inline-block;
+}

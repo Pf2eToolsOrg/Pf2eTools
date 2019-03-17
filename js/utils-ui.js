@@ -89,7 +89,7 @@ class UiUtil {
 
 		const $modal = $(`<div class="ui-modal__overlay">`);
 		const $scroller = $(`<div class="ui-modal__scroller"/>`).data("close", (...args) => handleCloseClick(...args));
-		const $modalInner = $(`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu${opts.fullWidth ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? " full-height" : ""}"><h4>${opts.title}</h4><div data-r/></div>`)
+		const $modalInner = $(`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu${opts.fullWidth ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? " full-height" : ""}">${opts.title ? `<h4>${opts.title}</h4>` : ""}<div data-r/></div>`)
 			.swap($scroller)
 			.appendTo($modal).click(e => e.stopPropagation());
 		if (opts.noMinHeight) $modalInner.css("height", "initial");
@@ -124,7 +124,7 @@ UiUtil.TYPE_TIMEOUT_MS = 100; // auto-search after 100ms
 class SearchUiUtil {
 	static async pDoGlobalInit () {
 		elasticlunr.clearStopWords();
-		await EntryRenderer.item.populatePropertyAndTypeReference();
+		await Renderer.item.populatePropertyAndTypeReference();
 	}
 
 	static _isNoHoverCat (cat) {
@@ -320,5 +320,156 @@ class InputUiUtil {
 			$iptStr.focus();
 			$iptStr.select();
 		});
+	}
+}
+
+class SourceUiUtil {
+	static _getValidOptions (options) {
+		if (!options) throw new Error(`No options were specified!`);
+		if (!options.$parent || !options.cbConfirm || !options.cbConfirmExisting || !options.cbCancel) throw new Error(`Missing options!`);
+		options.mode = options.mode || "add";
+		return options;
+	}
+
+	/**
+	 * @param options Options object.
+	 * @param options.$parent Parent element.
+	 * @param options.cbConfirm Confirmation callback for inputting new sources.
+	 * @param options.cbConfirmExisting Confirmation callback for selecting existing sources.
+	 * @param options.cbCancel Cancellation callback.
+	 * @param options.mode (Optional) Mode to build in, either "edit" or "add". Defaults to "add".
+	 * @param options.source (Optional) Homebrew source object.
+	 */
+	static render (options) {
+		options = SourceUiUtil._getValidOptions(options);
+		options.$parent.empty();
+
+		const isNewSource = options.mode !== "edit";
+		const isAddSource = options.mode === "add";
+
+		let jsonDirty = false;
+		const $iptName = $(`<input class="form-control ui-source__ipt-named">`)
+			.change(() => {
+				if (!jsonDirty && isNewSource) $iptJson.val($iptName.val().replace(/[^-_a-zA-Z]/g, ""));
+				$iptName.removeClass("error-background");
+			});
+		if (options.source) $iptName.val(options.source.full);
+		const $iptAbv = $(`<input class="form-control ui-source__ipt-named">`)
+			.change(() => {
+				$iptAbv.removeClass("error-background");
+			});
+		if (options.source) $iptAbv.val(options.source.abbreviation);
+		const $iptJson = $(`<input class="form-control ui-source__ipt-named" ${isNewSource ? "" : "disabled"}>`)
+			.change(() => {
+				jsonDirty = true;
+				$iptJson.removeClass("error-background");
+			});
+		if (options.source) $iptJson.val(options.source.json);
+		const $iptUrl = $(`<input class="form-control ui-source__ipt-named">`);
+		if (options.source) $iptUrl.val(options.source.url);
+		const $iptAuthors = $(`<input class="form-control ui-source__ipt-named">`);
+		if (options.source) $iptAuthors.val((options.source.authors || []).join(", "));
+		const $iptConverters = $(`<input class="form-control ui-source__ipt-named">`);
+		if (options.source) $iptConverters.val((options.source.convertedBy || []).join(", "));
+
+		const $btnConfirm = $(`<button class="btn btn-default">Confirm</button>`)
+			.click(() => {
+				let incomplete = false;
+				[$iptName, $iptAbv, $iptJson].forEach($ipt => {
+					const val = $ipt.val();
+					if (!val || !val.trim()) (incomplete = true) && $ipt.addClass("error-background");
+				});
+				if (incomplete) return;
+
+				const jsonVal = $iptJson.val().trim();
+				if (isNewSource && BrewUtil.hasSourceJson(jsonVal)) {
+					$iptJson.addClass("error-background");
+					JqueryUtil.doToast({content: `The JSON identifier "${jsonVal}" already exists!`, type: "danger"});
+					return;
+				}
+
+				const source = {
+					json: jsonVal,
+					abbreviation: $iptAbv.val().trim(),
+					full: $iptName.val().trim(),
+					url: $iptUrl.val().trim(),
+					authors: $iptAuthors.val().trim().split(",").map(it => it.trim()).filter(Boolean),
+					convertedBy: $iptConverters.val().trim().split(",").map(it => it.trim()).filter(Boolean)
+				};
+
+				options.cbConfirm(source);
+			});
+
+		const $btnCancel = isAddSource || !isNewSource ? $(`<button class="btn btn-default mr-2">Cancel</button>`)
+			.click(() => {
+				options.cbCancel();
+			}) : null;
+
+		const $btnUseExisting = $(`<button class="btn btn-default">Use an Existing Source</button>`)
+			.click(() => {
+				$stageInitial.hide();
+				$stageExisting.show();
+
+				// cleanup
+				[$iptName, $iptAbv, $iptJson].forEach($ipt => $ipt.removeClass("error-background"));
+			});
+
+		const $stageInitial = $$`<div class="full-height full-width flex-vh-center"><div>
+			<h3 class="text-align-center">${isNewSource ? "Add a Homebrew Source" : "Edit Homebrew Source"}</h3>
+			<div class="row ui-source__row mb-2"><div class="col-12 flex-v-center">
+				<span class="mr-2 ui-source__name help" title="The name or title for the homebrew you wish to create. This could be the name of a book or PDF; for example, 'Monster Manual'">Title</span>
+				${$iptName}
+			</div></div>
+			<div class="row ui-source__row mb-2"><div class="col-12 flex-v-center">
+				<span class="mr-2 ui-source__name help" title="An abbreviated form of the title. This will be shown in lists on the site, and in the top-right corner of statblocks or data entries; for example, 'MM'">Abbreviation</span>
+				${$iptAbv}
+			</div></div>
+			<div class="row ui-source__row mb-2"><div class="col-12 flex-v-center">
+				<span class="mr-2 ui-source__name help" title="This will be used to identify your homebrew universally, so should be unique to you and you alone">JSON Identifier</span>
+				${$iptJson}
+			</div></div>
+			<div class="row ui-source__row mb-2"><div class="col-12 flex-v-center">
+				<span class="mr-2 ui-source__name help" title="A link to the original homebrew, e.g. a GM Binder page">Source URL</span>
+				${$iptUrl}
+			</div></div>
+			<div class="row ui-source__row mb-2"><div class="col-12 flex-v-center">
+				<span class="mr-2 ui-source__name help" title="A comma-separated list of authors, e.g. 'John Doe, Joe Bloggs'">Author(s)</span>
+				${$iptAuthors}
+			</div></div>
+			<div class="row ui-source__row mb-2"><div class="col-12 flex-v-center">
+				<span class="mr-2 ui-source__name help" title="A comma-separated list of people who converted the homebrew to 5etools' format, e.g. 'John Doe, Joe Bloggs'">Converted By</span>
+				${$iptConverters}
+			</div></div>
+			<div class="text-align-center mb-2">${$btnCancel}${$btnConfirm}</div>
+			
+			${isNewSource && !isAddSource && BrewUtil.homebrewMeta.sources && BrewUtil.homebrewMeta.sources.length ? $$`<div class="flex-vh-center mb-3 mt-3"><span class="ui-source__divider"/>or<span class="ui-source__divider"/></div>
+			<div class="flex-vh-center">${$btnUseExisting}</div>` : ""}
+		</div></div>`.appendTo(options.$parent);
+
+		const $selExisting = $$`<select class="form-control input-sm">
+			<option disabled>Select</option>
+			${(BrewUtil.homebrewMeta.sources || []).sort((a, b) => SortUtil.ascSortLower(a.full, b.full)).map(s => `<option value="${s.json.escapeQuotes()}">${s.full.escapeQuotes()}</option>`)}
+		</select>`.change(() => $selExisting.removeClass("error-background"));
+		$selExisting[0].selectedIndex = 0;
+
+		const $btnConfirmExisting = $(`<button class="btn btn-default btn-sm">Confirm</button>`)
+			.click(() => {
+				if ($selExisting[0].selectedIndex !== 0) {
+					const jsonSource = $selExisting.val();
+					const source = BrewUtil.sourceJsonToSource(jsonSource);
+					options.cbConfirmExisting(source);
+
+					// cleanup
+					$selExisting[0].selectedIndex = 0;
+					$stageExisting.hide();
+					$stageInitial.show();
+				} else $selExisting.addClass("error-background");
+			});
+
+		const $stageExisting = $$`<div class="full-height full-width flex-vh-center" style="display: none;"><div>
+			<h3 class="text-align-center">Select a Homebrew Source</h3>
+			<div class="row mb-2"><div class="col-12 flex-vh-center">${$selExisting}</div></div>
+			<div class="row"><div class="col-12 flex-vh-center">${$btnConfirmExisting}</div></div>
+		</div></div>`.appendTo(options.$parent);
 	}
 }

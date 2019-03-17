@@ -701,6 +701,38 @@ SpellcastingTypeTag.CLASSES = {
 	"CW": /(^|[^a-zA-Z])wizard([^a-zA-Z]|$)/gi
 };
 
+class DamageTypeTag {
+	static _handleProp (m, prop, typeSet) {
+		if (m[prop]) {
+			m[prop].forEach(it => {
+				if (it.entries) {
+					const str = JSON.stringify(it.entries, null, "\t");
+					str.replace(RollerUtil.REGEX_DAMAGE_DICE, (m0, average, prefix, diceExp, suffix) => {
+						suffix.replace(DamageTypeTag._TYPE_REGEX, (m0, type) => typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]));
+					});
+				}
+			})
+		}
+	}
+
+	static tryRun (m) {
+		if (!DamageTypeTag._isInit) {
+			DamageTypeTag._isInit = true;
+			Object.entries(Parser.DMGTYPE_JSON_TO_FULL).forEach(([k, v]) => DamageTypeTag._TYPE_LOOKUP[v] = k);
+		}
+		const typeSet = new Set();
+		DamageTypeTag._handleProp(m, "action", typeSet);
+		DamageTypeTag._handleProp(m, "reaction", typeSet);
+		DamageTypeTag._handleProp(m, "trait", typeSet);
+		DamageTypeTag._handleProp(m, "legendary", typeSet);
+		DamageTypeTag._handleProp(m, "variant", typeSet);
+		if (typeSet.size) m.damageTags = [...typeSet];
+	}
+}
+DamageTypeTag._isInit = false;
+DamageTypeTag._TYPE_REGEX = /(acid|bludgeoning|cold|fire|force|lightning|necrotic|piercing|poison|psychic|radiant|slashing|thunder)/gi;
+DamageTypeTag._TYPE_LOOKUP = {};
+
 class SpellcastingTraitConvert {
 	static async pGetSpellData () {
 		const spellIndex = await DataUtil.loadJSON(`data/spells/index.json`);
@@ -937,6 +969,7 @@ if (typeof module !== "undefined") {
 		LanguageTag,
 		SenseTag,
 		SpellcastingTypeTag,
+		DamageTypeTag,
 		TextClean,
 		SpellcastingTraitConvert,
 		DiceConvert,

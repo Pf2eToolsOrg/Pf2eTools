@@ -13,7 +13,7 @@ function loadJson () {
 async function initDemo (data) {
 	const defaultJson = data.data[0];
 
-	const renderer = new EntryRenderer();
+	const renderer = new Renderer();
 	const $msg = $(`#message`);
 	const $in = $(`#jsoninput`);
 	const $out = $(`#pagecontent`);
@@ -44,7 +44,7 @@ async function initDemo (data) {
 
 		renderer.setFirstSection(true);
 		renderer.resetHeaderIndex();
-		renderer.recursiveEntryRender(json, renderStack);
+		renderer.recursiveRender(json, renderStack);
 		$out.html(`
 			<tr><th class="border" colspan="6"></th></tr>
 			<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>

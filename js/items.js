@@ -2,7 +2,7 @@
 
 window.onload = async function load () {
 	await ExcludeUtil.pInitialise();
-	EntryRenderer.item.buildList((incItemList) => {
+	Renderer.item.buildList((incItemList) => {
 		populateTablesAndFilters({item: incItemList});
 	}, {}, true);
 };
@@ -54,6 +54,8 @@ const propertyFilter = new Filter({header: "Property", displayFn: StrUtil.upperc
 const costFilter = new RangeFilter({header: "Cost", min: 0, max: 100, allowGreater: true, suffix: "gp"});
 const focusFilter = new Filter({header: "Spellcasting Focus", items: ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"]});
 const attachedSpellsFilter = new Filter({header: "Attached Spells", displayFn: (it) => it.split("|")[0].toTitleCase()});
+const lootTableFilter = new Filter({header: "Found On", items: ["Magic Item Table A", "Magic Item Table B", "Magic Item Table C", "Magic Item Table D", "Magic Item Table E", "Magic Item Table F", "Magic Item Table G", "Magic Item Table H", "Magic Item Table I"]});
+
 let filterBox;
 async function populateTablesAndFilters (data) {
 	const rarityFilter = new Filter({
@@ -68,7 +70,7 @@ async function populateTablesAndFilters (data) {
 	});
 	const miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Magic", "Mundane", "Sentient"]});
 
-	filterBox = await pInitFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, costFilter, focusFilter, miscFilter, attachedSpellsFilter);
+	filterBox = await pInitFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, costFilter, focusFilter, miscFilter, lootTableFilter, attachedSpellsFilter);
 
 	const mundaneOptions = {
 		valueNames: ["name", "type", "cost", "weight", "source", "uniqueid"],
@@ -190,7 +192,7 @@ async function populateTablesAndFilters (data) {
 }
 
 async function handleBrew (homebrew) {
-	const itemList = await EntryRenderer.item.getItemsFromHomebrew(homebrew);
+	const itemList = await Renderer.item.getItemsFromHomebrew(homebrew);
 	addItems({item: itemList});
 }
 
@@ -206,7 +208,7 @@ function addItems (data) {
 		const curitem = itemList[itI];
 		if (ExcludeUtil.isExcluded(curitem.name, "item", curitem.source)) continue;
 		if (curitem.noDisplay) continue;
-		EntryRenderer.item.enhanceItem(curitem);
+		Renderer.item.enhanceItem(curitem);
 
 		const name = curitem.name;
 		const rarity = curitem.rarity;
@@ -287,6 +289,7 @@ function addItems (data) {
 		tierTags.forEach(tt => tierFilter.addIfAbsent(tt));
 		curitem._fProperties.forEach(p => propertyFilter.addIfAbsent(p));
 		attachedSpellsFilter.addIfAbsent(curitem.attachedSpells);
+		lootTableFilter.addIfAbsent(curitem.lootTables);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(mundanelist, magiclist);
 	// populate table
@@ -318,7 +321,7 @@ function addItems (data) {
 	});
 	ListUtil.bindAddButton();
 	ListUtil.bindSubtractButton();
-	EntryRenderer.hover.bindPopoutButton(itemList);
+	Renderer.hover.bindPopoutButton(itemList);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
@@ -340,6 +343,7 @@ function handleFilterChange () {
 			i._fCost,
 			i._fFocus,
 			i._fMisc,
+			i.lootTables,
 			i.attachedSpells
 		);
 	}
@@ -378,7 +382,7 @@ function getSublistItem (item, pinId, addCount) {
 	`;
 }
 
-const renderer = EntryRenderer.getDefaultRenderer();
+const renderer = Renderer.get();
 function loadhash (id) {
 	renderer.setFirstSection(true);
 	const $content = $(`#pagecontent`).empty();
@@ -386,16 +390,16 @@ function loadhash (id) {
 
 	function buildStatsTab () {
 		const $toAppend = $(`
-		${EntryRenderer.utils.getBorderTr()}
-		${EntryRenderer.utils.getNameTr(item)}
-		<tr><td class="typerarityattunement" colspan="6">${EntryRenderer.item.getTypeRarityAndAttunementText(item)}</td></tr>
+		${Renderer.utils.getBorderTr()}
+		${Renderer.utils.getNameTr(item)}
+		<tr><td class="typerarityattunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td></tr>
 		<tr>
 			<td id="valueweight" colspan="2"><span id="value">10gp</span> <span id="weight">45 lbs.</span></td>
 			<td id="damageproperties" class="damageproperties" colspan="4"><span id="damage">Damage</span> <span id="damagetype">type</span> <span id="properties">(versatile)</span></td>
 		</tr>
 		<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
-		${EntryRenderer.utils.getPageTr(item)}
-		${EntryRenderer.utils.getBorderTr()}
+		${Renderer.utils.getPageTr(item)}
+		${Renderer.utils.getBorderTr()}
 	`);
 		$content.append($toAppend);
 
@@ -415,7 +419,7 @@ function loadhash (id) {
 		$content.find("td span#value").html(item.value ? item.value + (item.weight ? ", " : "") : "");
 		$content.find("td span#weight").html(item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") + (item.weightNote ? ` ${item.weightNote}` : "") : "");
 
-		const [damage, damageType, propertiesTxt] = EntryRenderer.item.getDamageAndPropertiesText(item);
+		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item);
 		$content.find("span#damage").html(damage);
 		$content.find("span#damagetype").html(damageType);
 		$content.find("span#properties").html(propertiesTxt);
@@ -424,23 +428,16 @@ function loadhash (id) {
 		const renderStack = [];
 		if (item.entries && item.entries.length) {
 			const entryList = {type: "entries", entries: item.entries};
-			renderer.recursiveEntryRender(entryList, renderStack, 1);
+			renderer.recursiveRender(entryList, renderStack, {depth: 1});
 		}
 
-		// tools, artisan tools, instruments, gaming sets
-		if (type === "T" || type === "AT" || type === "INS" || type === "GS") {
-			renderStack.push(`<p class="text-align-center"><i>See the <a href="${renderer.baseUrl}variantrules.html#${UrlUtil.encodeForHash(["Tool Proficiencies", "XGE"])}">Tool Proficiencies</a> entry of the Variant and Optional rules page for more information</i></p>`);
-			if (type === "INS") {
-				const additionEntriesList = {type: "entries", entries: TOOL_INS_ADDITIONAL_ENTRIES};
-				renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
-			} else if (type === "GS") {
-				const additionEntriesList = {type: "entries", entries: TOOL_GS_ADDITIONAL_ENTRIES};
-				renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
-			}
-		}
 		if (item.additionalEntries) {
 			const additionEntriesList = {type: "entries", entries: item.additionalEntries};
-			renderer.recursiveEntryRender(additionEntriesList, renderStack, 1);
+			renderer.recursiveRender(additionEntriesList, renderStack, {depth: 1});
+		}
+
+		if (item.lootTables) {
+			renderStack.push(`<div><span class="bold">Found On: </span>${item.lootTables.sort(SortUtil.ascSortLower).map(tbl => renderer.render(`{@table ${tbl}}`)).join(", ")}</div>`);
 		}
 
 		const renderedText = renderStack.join("")
@@ -460,7 +457,7 @@ function loadhash (id) {
 	}
 
 	function buildFluffTab (isImageTab) {
-		return EntryRenderer.utils.buildFluffTab(
+		return Renderer.utils.buildFluffTab(
 			isImageTab,
 			$content,
 			item,
@@ -470,25 +467,25 @@ function loadhash (id) {
 		);
 	}
 
-	const statTab = EntryRenderer.utils.tabButton(
+	const statTab = Renderer.utils.tabButton(
 		"Item",
 		() => {},
 		buildStatsTab
 	);
-	const infoTab = EntryRenderer.utils.tabButton(
+	const infoTab = Renderer.utils.tabButton(
 		"Info",
 		() => {},
 		buildFluffTab
 	);
-	const picTab = EntryRenderer.utils.tabButton(
+	const picTab = Renderer.utils.tabButton(
 		"Images",
 		() => {},
 		() => buildFluffTab(true)
 	);
 
 	// only display the "Info" tab if there's some fluff info--currently (2018-12-13), no official item has text fluff
-	if (item.fluff && item.fluff.entries) EntryRenderer.utils.bindTabButtons(statTab, infoTab, picTab);
-	else EntryRenderer.utils.bindTabButtons(statTab, picTab);
+	if (item.fluff && item.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
+	else Renderer.utils.bindTabButtons(statTab, picTab);
 
 	ListUtil.updateSelected();
 }
@@ -499,88 +496,9 @@ function loadsub (sub) {
 }
 
 const TOOL_INS_ADDITIONAL_ENTRIES = [
-	"Proficiency with a musical instrument indicates you are familiar with the techniques used to play it. You also have knowledge of some songs commonly performed with that instrument.",
-	{
-		"type": "entries",
-		"name": "History",
-		"entries": [
-			"Your expertise aids you in recalling lore related to your instrument."
-		]
-	},
-	{
-		"type": "entries",
-		"name": "Performance",
-		"entries": [
-			"Your ability to put on a good show is improved when you incorporate an instrument into your act."
-		]
-	},
-	{
-		"type": "entries",
-		"name": "Compose a Tune",
-		"entries": [
-			"As part of a long rest, you can compose a new tune and lyrics for your instrument. You might use this ability to impress a noble or spread scandalous rumors with a catchy tune."
-		]
-	},
-	{
-		"type": "table",
-		"caption": "Musical Instrument",
-		"colLabels": [
-			"Activity", "DC"
-		],
-		"colStyles": [
-			"col-10",
-			"col-2 text-align-center"
-		],
-		"rows": [
-			["Identify a tune", "10"],
-			["Improvise a tune", "20"]
-		]
-	}
+
 ];
 
 const TOOL_GS_ADDITIONAL_ENTRIES = [
-	"Proficiency with a gaming set applies to one type of game, such as Three-Dragon Ante or games of chance that use dice.",
-	{
-		"type": "entries",
-		"name": "Components",
-		"entries": [
-			"A gaming set has all the pieces needed to play a specific game or type of game, such as a complete deck of cards or a board and tokens."
-		]
-	},
-	{
-		"type": "entries",
-		"name": "History",
-		"entries": [
-			"Your mastery of a game includes knowledge of its history, as well as of important events it was connected to or prominent historical figures involved with it."
-		]
-	},
-	{
-		"type": "entries",
-		"name": "Insight",
-		"entries": [
-			"Playing games with someone is a good way to gain understanding of their personality, granting you a better ability to discern their lies from their truths and read their mood."
-		]
-	},
-	{
-		"type": "entries",
-		"name": "Sleight of Hand",
-		"entries": [
-			"Sleight of Hand is a useful skill for cheating at a game, as it allows you to swap pieces, palm cards, or alter a die roll. Alternatively, engrossing a target in a game by manipulating the components with dexterous movements is a great distraction for a pickpocketing attempt."
-		]
-	},
-	{
-		"type": "table",
-		"caption": "Gaming Set",
-		"colLabels": [
-			"Activity", "DC"
-		],
-		"colStyles": [
-			"col-10",
-			"col-2 text-align-center"
-		],
-		"rows": [
-			["Catch a player cheating", "15"],
-			["Gain insight into an opponent's personality", "15"]
-		]
-	}
+
 ];

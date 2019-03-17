@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.3.2",
+	"version": "1.3.3",
 	"title": "Spells",
 	"type": "object",
 
@@ -237,6 +237,21 @@
 								"type": "string"
 							},
 							"baseSource": {
+								"type": "string"
+							}
+						},
+						"required": ["name", "source"]
+					}
+				},
+				"backgrounds": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"source": {
 								"type": "string"
 							}
 						},

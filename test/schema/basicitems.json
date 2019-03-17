@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"definitions": {
 		"itemLookup": {
 			"type": "array",
@@ -182,6 +182,24 @@
 		},
 		"itemType": {
 			"$ref": "#/definitions/itemLookup"
+		},
+		"itemTypeAdditionalEntries": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"appliesTo": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "/Entry"
+						}
+					}
+				},
+				"additionalProperties": false
+			}
 		}
 	},
 	"additionalProperties": false

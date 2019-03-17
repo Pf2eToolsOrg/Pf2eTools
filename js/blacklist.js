@@ -78,10 +78,10 @@ class Blacklist {
 				Promise.resolve();
 			}).then(() => {
 				const promises = FILES.map(url => DataUtil.loadJSON(`data/${url}`));
-				promises.push(EntryRenderer.item.promiseData({}, true));
+				promises.push(Renderer.item.promiseData({}, true));
 				return Promise.all(promises).then(retData => {
 					retData.forEach(d => {
-						if (d.race) d.race = EntryRenderer.race.mergeSubraces(d.race);
+						if (d.race) d.race = Renderer.race.mergeSubraces(d.race);
 						mergeData(d);
 					});
 					const sourceSet = new Set();

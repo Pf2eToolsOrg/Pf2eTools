@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"type": "object",
 	"properties": {
 		"variant": {
@@ -140,6 +140,25 @@
 								"items": {
 									"type": "string"
 								}
+							},
+							"lootTables": {
+								"type": "array",
+								"items": {
+									"oneOf": [
+										{
+											"type": "string"
+										},
+										{
+											"type": "object",
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"type": "string"
+											}
+										}
+									]
+								}
 							}
 						},
 						"required": [
@@ -192,6 +211,14 @@
 					"inherits"
 				],
 				"additionalProperties": false
+			}
+		},
+		"linkedLootTables": {
+			"type": "object",
+			"properties": {
+				"DMG": {
+					"type": "object"
+				}
 			}
 		}
 	},

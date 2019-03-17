@@ -12,6 +12,8 @@ class GenUtil {
 			}
 		});
 		if (it.display && !it.result) it.result = it.display;
+		if (it.display) it.display = Renderer.get().render(it.display);
+		if (it.result) it.result = Renderer.get().render(it.result);
 		return it;
 	}
 }

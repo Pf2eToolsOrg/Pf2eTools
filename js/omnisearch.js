@@ -149,7 +149,7 @@ const Omnisearch = {
 
 			function renderLinks () {
 				function getHoverStr (category, url, src) {
-					return `onmouseover="EntryRenderer.hover.mouseOver(event, this, '${UrlUtil.categoryToPage(category)}', '${src}', '${url.replace(/'/g, "\\'")}')" ${EntryRenderer.hover._getPreventTouchString()}`;
+					return `onmouseover="Renderer.hover.mouseOver(event, this, '${UrlUtil.categoryToPage(category)}', '${src}', '${url.replace(/'/g, "\\'")}')" ${Renderer.hover._getPreventTouchString()}`;
 				}
 
 				$searchOut.empty();

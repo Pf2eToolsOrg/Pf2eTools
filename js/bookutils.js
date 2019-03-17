@@ -7,11 +7,11 @@ const BookUtil = {
 
 	_getSelectors (scrollTo) {
 		return [
-			`.statsBlockSectionHead > .entry-title > .entry-title-inner:textEquals("${scrollTo}")`,
-			`.statsBlockHead > .entry-title > .entry-title-inner:textEquals("${scrollTo}")`,
-			`.statsBlockSubHead > .entry-title > .entry-title-inner:textEquals("${scrollTo}")`,
-			`.statsBlockInset > .entry-title > .entry-title-inner:textEquals("${scrollTo}")`,
-			`.statsInlineHead > .entry-title > .entry-title-inner:textEquals("${scrollTo}.")`
+			`.rd__h--0 > .entry-title-inner:textEquals("${scrollTo}")`,
+			`.rd__h--1 > .entry-title-inner:textEquals("${scrollTo}")`,
+			`.rd__h--2 > .entry-title-inner:textEquals("${scrollTo}")`,
+			`.rd__h--2-inset > .entry-title-inner:textEquals("${scrollTo}")`,
+			`.rd__h--3 > .entry-title-inner:textEquals("${scrollTo}.")`
 		];
 	},
 
@@ -56,7 +56,7 @@ const BookUtil = {
 		if (ele && !~BookUtil.curRender.chapter) {
 			const ix = BookUtil.thisContents.children("ul").children("li").children("a").index(ele);
 			if (~ix) {
-				const ele = $(`#pagecontent tr.text td`).children(`.statsBlockSectionHead`)[ix];
+				const ele = $(`#pagecontent tr.text td`).children(`.${Renderer.HEAD_NEG_1}`)[ix];
 				if (ele) ele.scrollIntoView();
 				else setTimeout(() => { throw new Error(`Failed to find header scroll target with index "${ix}"`) });
 			} else setTimeout(() => { throw new Error(`Failed to find element within contents items`) });
@@ -195,8 +195,8 @@ const BookUtil = {
 	},
 	showBookContent (data, fromIndex, bookId, hashParts) {
 		function handleQuickReferenceShowAll () {
-			$(`div.statsBlockSectionHead`).show();
-			$(`hr.section-break`).show();
+			$(`.${Renderer.HEAD_NEG_1}`).show();
+			$(`.rd__hr--section`).show();
 		}
 
 		/**
@@ -206,17 +206,17 @@ const BookUtil = {
 		function handleQuickReferenceShow (sectionHeader) {
 			handleQuickReferenceShowAll();
 			if (sectionHeader && ~BookUtil.curRender.chapter) {
-				const $allSects = $(`div.statsBlockSectionHead`);
+				const $allSects = $(`.${Renderer.HEAD_NEG_1}`);
 				const $toShow = $allSects.filter((i, e) => {
 					const $e = $(e);
-					const $match = $e.children(`.entry-title`).find(`span.entry-title-inner`).filter(`:textEquals("${sectionHeader}")`);
+					const $match = $e.children(`.rd__h`).find(`span.entry-title-inner`).filter(`:textEquals("${sectionHeader}")`);
 					return $match.length;
 				});
 
 				if ($toShow.length) {
 					BookUtil.curRender.lastRefHeader = sectionHeader.toLowerCase();
 					$allSects.hide();
-					$(`hr.section-break`).hide();
+					$(`hr.rd__hr--section`).hide();
 					$toShow.show();
 					MiscUtil.scrollPageTop();
 				} else BookUtil.curRender.lastRefHeader = null;
@@ -328,17 +328,20 @@ const BookUtil = {
 			};
 
 			BookUtil.curRender.controls = {};
-			BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
+			BookUtil.renderArea.append(Renderer.utils.getBorderTr());
 			renderNavButtons(true);
 			const textStack = [];
 			BookUtil._renderer.setFirstSection(true);
+			BookUtil._renderer.setLazyImages(true);
 			BookUtil._renderer.resetHeaderIndex();
-			if (chapter === -1) data.forEach(d => BookUtil._renderer.recursiveEntryRender(d, textStack));
-			else BookUtil._renderer.recursiveEntryRender(data[chapter], textStack);
+			if (chapter === -1) data.forEach(d => BookUtil._renderer.recursiveRender(d, textStack));
+			else BookUtil._renderer.recursiveRender(data[chapter], textStack);
 			BookUtil.renderArea.append(`<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>`);
+			Renderer.initLazyImageLoaders();
+			BookUtil._renderer.setLazyImages(false);
 			renderNavButtons();
 
-			BookUtil.renderArea.append(EntryRenderer.utils.getBorderTr());
+			BookUtil.renderArea.append(Renderer.utils.getBorderTr());
 
 			if (scrollTo) {
 				let handled = false;
@@ -487,7 +490,7 @@ const BookUtil = {
 		} else handleNotFound();
 	},
 
-	_renderer: new EntryRenderer().setEnumerateTitlesRel(true),
+	_renderer: new Renderer().setEnumerateTitlesRel(true),
 	async pLoadBook (fromIndex, bookId, hashParts, homebrewData) {
 		function doPopulate (data) {
 			const allContents = $(`.contents-item`);
@@ -651,7 +654,7 @@ const BookUtil = {
 
 			let lastName;
 			if (isNamedEntry(obj)) {
-				lastName = EntryRenderer.stripTags(obj.name);
+				lastName = Renderer.stripTags(obj.name);
 				const matches = isPageMode ? obj.page === cleanTerm : lastName.toLowerCase().includes(cleanTerm);
 				if (matches) {
 					appendTo.push({
@@ -684,7 +687,7 @@ const BookUtil = {
 				if (isPageMode) return;
 
 				const renderStack = [];
-				BookUtil._renderer.recursiveEntryRender(obj, renderStack);
+				BookUtil._renderer.recursiveRender(obj, renderStack);
 				const rendered = $(`<p>${renderStack.join("")}</p>`).text();
 
 				const toCheck = typeof obj === "number" ? String(rendered) : rendered.toLowerCase();

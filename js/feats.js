@@ -84,7 +84,7 @@ function addFeats (data) {
 		const ability = utils_getAbilityData(feat.ability);
 		if (!ability.asText) ability.asText = STR_NONE;
 		feat._fAbility = ability.asCollection.filter(a => !ability.areNegative.includes(a)); // used for filtering
-		let prereqText = EntryRenderer.feat.getPrerequisiteText(feat.prerequisite, true);
+		let prereqText = Renderer.feat.getPrerequisiteText(feat.prerequisite, true);
 		if (!prereqText) prereqText = STR_NONE;
 
 		const preSet = new Set();
@@ -127,7 +127,7 @@ function addFeats (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	EntryRenderer.hover.bindPopoutButton(featList);
+	Renderer.hover.bindPopoutButton(featList);
 	UrlUtil.bindLinkExportButton(filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
@@ -161,7 +161,7 @@ function getSublistItem (feat, pinId) {
 	`;
 }
 
-const renderer = EntryRenderer.getDefaultRenderer();
+const renderer = Renderer.get();
 function loadhash (id) {
 	renderer.setFirstSection(true);
 
@@ -169,19 +169,19 @@ function loadhash (id) {
 
 	const feat = featList[id];
 
-	const prerequisite = EntryRenderer.feat.getPrerequisiteText(feat.prerequisite);
-	EntryRenderer.feat.mergeAbilityIncrease(feat);
+	const prerequisite = Renderer.feat.getPrerequisiteText(feat.prerequisite);
+	Renderer.feat.mergeAbilityIncrease(feat);
 	const renderStack = [];
-	renderer.recursiveEntryRender({entries: feat.entries}, renderStack, 2);
+	renderer.recursiveRender({entries: feat.entries}, renderStack, {depth: 2});
 
 	$content.append(`
-		${EntryRenderer.utils.getBorderTr()}
-		${EntryRenderer.utils.getNameTr(feat)}
+		${Renderer.utils.getBorderTr()}
+		${Renderer.utils.getNameTr(feat)}
 		${prerequisite ? `<tr><td colspan="6"><span class="prerequisite">Prerequisite: ${prerequisite}</span></td></tr>` : ""}
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>
-		${EntryRenderer.utils.getPageTr(feat)}
-		${EntryRenderer.utils.getBorderTr()}
+		${Renderer.utils.getPageTr(feat)}
+		${Renderer.utils.getBorderTr()}
 	`);
 
 	ListUtil.updateSelected();
