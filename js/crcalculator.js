@@ -81,16 +81,16 @@ function addMonsterFeatures (mfData) {
 		if (f.dpr) effectOnCr.push(`DPR: ${f.dpr}`);
 		if (f.attackbonus) effectOnCr.push(`AB: ${f.attackbonus}`);
 
-		const numBox = f.numbox ? `<input type="number" value="0" min="0" class="crc__mon_feature_num">` : "";
+		const numBox = f.numbox ? `<input type="number" value="0" min="0" class="form-control form-control--minimal crc__mon_feature_num input-xs ml-2">` : "";
 
 		$wrpMonFeatures.append(`
 			<label class="row crc__mon_feature">
-				<div class="col-xs-1 crc__mon_feature_wrp_cb">
+				<div class="col-1 crc__mon_feature_wrp_cb">
 					<input type="checkbox" id="mf-${Parser.stringToSlug(f.name)}" title="${f.name}" data-hp="${f.hp}" data-ac="${f.ac}" data-dpr="${f.dpr}" data-attackbonus="${f.attackbonus}" class="crc__mon_feature_cb">${numBox}
 				</div>
-				<div class="col-xs-2">${f.name}</div>
-				<div class="col-xs-2">${Renderer.get().render(`{@creature ${f.example}}`)}</div>
-				<div class="col-xs-7"><span title="${effectOnCr.join(", ")}" class="explanation">${f.effect}</span></div>
+				<div class="col-2">${f.name}</div>
+				<div class="col-2">${Renderer.get().render(`{@creature ${f.example}}`)}</div>
+				<div class="col-7"><span title="${effectOnCr.join(", ")}" class="explanation">${f.effect}</span></div>
 			</label>
 		`);
 	});

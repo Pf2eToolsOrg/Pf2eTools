@@ -420,30 +420,30 @@
 				"This item first appears to be a Large sealed iron barrel weighing 500 pounds. The barrel has a hidden catch, which can be found with a successful DC 20 Intelligence ({@skill Investigation}) check. Releasing the catch unlocks a hatch at one end of the barrel, allowing two Medium or smaller creatures to crawl inside. Ten levers are set in a row at the far end, each in a neutral position, able to move either up or down. When certain levers are used, the apparatus transforms to resemble a giant lobster.",
 				"The apparatus of Kwalish is a Large object with the following statistics:",
 				{
-				    "type": "list",
+					"type": "list",
 					"style": "list-hang-notitle",
-				    "items": [
+					"items": [
 						{
-						    "type": "item",
-						    "name": "Armor Class:",
-						    "entry": "20"
+							"type": "item",
+							"name": "Armor Class:",
+							"entry": "20"
 						},
 						{
-						    "type": "item",
-						    "name": "Hit Points:",
-						    "entry": "200"
+							"type": "item",
+							"name": "Hit Points:",
+							"entry": "200"
 						},
 						{
-						    "type": "item",
-						    "name": "Speed:",
-						    "entry": "30 ft., swim 30 ft. (or 0 ft. for both if the legs and tail aren't extended)"
+							"type": "item",
+							"name": "Speed:",
+							"entry": "30 ft., swim 30 ft. (or 0 ft. for both if the legs and tail aren't extended)"
 						},
 						{
-						    "type": "item",
-						    "name": "Damage Immunities:",
-						    "entry": "poison, psychic"
+							"type": "item",
+							"name": "Damage Immunities:",
+							"entry": "poison, psychic"
 						}
-				    ]
+					]
 				},
 				"To be used as a vehicle, the apparatus requires one pilot. While the apparatus's hatch is closed, the compartment is airtight and watertight. The compartment holds enough air for 10 hours of breathing, divided by the number of breathing creatures inside.",
 				" The apparatus floats on water. It can also go underwater to a depth of 900 feet. Below that, the vehicle takes {@dice 2d6} bludgeoning damage per minute from pressure.",
@@ -16763,7 +16763,7 @@
 			"reqAttune": "by a Wizard",
 			"entries": [
 				"This thick leather-bound volume has a desiccated tongue pinned to the front cover. Five of these tomes exist, and it's unknown which one is the original. The grisly cover decoration on the first tome of the stilled tongue once belonged to a treacherous former servant of the lich-god Vecna, keeper of secrets. The tongues pinned to the covers of the four copies came from other spellcasters who crossed Vecna. The first few pages of each tome are filled with indecipherable scrawls. The remaining pages are blank and pristine.",
-				"If you can attune to this item, you can use it as a spellbook and an arcane focus. In addition, while holding the tome, you can use a bonus action to cast a spell you have written in this tome, without expending a spell slot or using any verbal or somatic component Once used, this property of the tome can't be used again until the next dawn.",
+				"If you can attune to this item, you can use it as a spellbook and an arcane focus. In addition, while holding the tome, you can use a bonus action to cast a spell you have written in this tome, without expending a spell slot or using any verbal or somatic component. Once used, this property of the tome can't be used again until the next dawn.",
 				"While attuned to the book, you can remove the tongue from the book's cover. If you do so, all spells written in the book are permanently erased.",
 				"Vecna watches anyone using this tome. He can also write cryptic messages in the book. These messages appear at midnight and fade away after they are read."
 			],
@@ -21894,6 +21894,7 @@
 		{
 			"name": "Heward's Hireling Armor",
 			"type": "LA",
+			"reqAttune": true,
 			"armor": true,
 			"baseItem": "leather armor|phb",
 			"weight": "10",

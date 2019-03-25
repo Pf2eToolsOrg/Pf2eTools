@@ -60,7 +60,7 @@ class StatGen {
 
 		$(`#pbuy__load_file`)
 			.click(async () => {
-				const json = await DataUtil.userUpload();
+				const json = await DataUtil.pUserUpload();
 				if (StatGen.isValidState(json)) {
 					this.doLoadStateFrom(json);
 					this.doSaveDebounced();

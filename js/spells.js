@@ -641,13 +641,18 @@ function addSpells (data) {
 		}
 
 		if (spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Wizard")) {
-			// add high elf
 			if (spell.level === 0) {
+				// add high elf
 				(spell.races || (spell.races = [])).push({
 					name: "Elf (High)",
 					source: SRC_PHB,
 					baseName: "Elf",
 					baseSource: SRC_PHB
+				});
+				// add arcana cleric
+				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
+					class: {name: STR_CLERIC, source: SRC_PHB},
+					subclass: {name: "Arcana", source: SRC_SCAG}
 				});
 			}
 
@@ -656,6 +661,16 @@ function addSpells (data) {
 				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
 					class: {name: STR_CLERIC, source: SRC_PHB},
 					subclass: {name: "Arcana", source: SRC_SCAG}
+				});
+			}
+		}
+
+		if (spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Druid")) {
+			if (spell.level === 0) {
+				// add nature cleric
+				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
+					class: {name: STR_CLERIC, source: SRC_PHB},
+					subclass: {name: "Nature", source: SRC_PHB}
 				});
 			}
 		}

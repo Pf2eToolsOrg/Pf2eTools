@@ -275,7 +275,6 @@ Array.prototype.peek = Array.prototype.peek ||
 	};
 
 StrUtil = {
-	NAME_REGEX: /^(([A-Z0-9ota][a-z0-9'’`:]+|[aI])( \(.*\)| |-)?)+([.!])+/g,
 	COMMAS_NOT_IN_PARENTHESES_REGEX: /,\s?(?![^(]*\))/g,
 
 	uppercaseFirst: function (string) {
@@ -4459,8 +4458,8 @@ RollerUtil = {
 	_DICE_REGEX_STR: "((([1-9]\\d*)?d([1-9]\\d*)(\\s*?[-+×x*]\\s*?(\\d,\\d|\\d)+)?))+?"
 };
 RollerUtil.DICE_REGEX = new RegExp(RollerUtil._DICE_REGEX_STR, "g");
-RollerUtil.REGEX_DAMAGE_DICE = /(\d+)( \((?:{@dice |{@damage ))([-+0-9d ]*)(}\) [a-z]+( or [a-z]+)? damage)/gi;
-RollerUtil.REGEX_DAMAGE_FLAT = /(Hit: |{@h})([0-9]+)( [a-z]+( or [a-z]+)? damage)/gi;
+RollerUtil.REGEX_DAMAGE_DICE = /(\d+)( \((?:{@dice |{@damage ))([-+0-9d ]*)(}\) [a-z]+( \([-a-zA-Z0-9 ]+\))?( or [a-z]+( \([-a-zA-Z0-9 ]+\))?)? damage)/gi;
+RollerUtil.REGEX_DAMAGE_FLAT = /(Hit: |{@h})([0-9]+)( [a-z]+( \([-a-zA-Z0-9 ]+\))?( or [a-z]+( \([-a-zA-Z0-9 ]+\))?)? damage)/gi;
 
 // STORAGE =============================================================================================================
 // Dependency: localforage
@@ -6220,11 +6219,9 @@ class ReactorEvent {
 // LEGAL NOTICE ========================================================================================================
 if (!IS_ROLL20 && typeof window !== "undefined") {
 	// add an obnoxious banner
+	// FIXME is this something we want? If so, uncomment
+	/*
 	window.addEventListener("load", async () => {
-		// FIXME is this something we want? If so, delete this
-		/* eslint-disable */
-		return;
-
 		if (!StorageUtil.isSyncFake() && await StorageUtil.pGet("seenLegal")) return;
 		const $wrpBanner = $(`<div id="legal-notice"><span>Don't go posting this shit to Reddit</span></div>`);
 		$(`<button class="btn btn-sm btn-default">Whatever, kid</button>`).on("click", () => {
@@ -6232,8 +6229,8 @@ if (!IS_ROLL20 && typeof window !== "undefined") {
 			$wrpBanner.remove();
 		}).appendTo($wrpBanner);
 		$(`body`).append($wrpBanner);
-		/* eslint-enable */
 	});
+	*/
 }
 
 _Donate = {

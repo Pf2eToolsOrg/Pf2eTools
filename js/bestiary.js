@@ -82,14 +82,8 @@ function addLegendaryGroups (toAdd) {
 }
 
 let ixFluff = {};
-function pLoadFluffIndex () {
-	return new Promise(resolve => {
-		DataUtil.loadJSON(JSON_DIR + FLUFF_INDEX)
-			.then((data) => {
-				ixFluff = data;
-				resolve();
-			});
-	});
+async function pLoadFluffIndex () {
+	ixFluff = await DataUtil.loadJSON(JSON_DIR + FLUFF_INDEX);
 }
 
 function handleBrew (homebrew) {
@@ -656,6 +650,7 @@ function addMonsters (data) {
 		if (mon.variant) mon._fMisc.push("Has Variants");
 		traitFilter.addIfAbsent(mon.traitTags);
 		actionReactionFilter.addIfAbsent(mon.actionTags);
+		environmentFilter.addIfAbsent(mon.environment);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	table.append(textStack);
@@ -697,11 +692,7 @@ function addMonsters (data) {
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton(sublistFuncPreload);
 
-	$(`body`).on("click", ".btn-name-pronounce", function () {
-		const audio = $(this).find(`.name-pronounce`)[0];
-		audio.currentTime = 0;
-		audio.play();
-	});
+	Renderer.utils.bindPronounceButtons();
 }
 
 function sublistFuncPreload (json, funcOnload) {

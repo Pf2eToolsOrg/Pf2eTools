@@ -546,7 +546,7 @@ class SideMenu {
 		});
 		const $btnLoadFile = $(`<button class="btn btn-primary">Load from File</button>`).appendTo($wrpSaveLoadFile);
 		$btnLoadFile.on("click", async () => {
-			const json = await DataUtil.userUpload();
+			const json = await DataUtil.pUserUpload();
 			this.board.doReset();
 			this.board.doLoadStateFrom(json);
 		});

@@ -383,11 +383,8 @@ class TraitActionTag {
 					const mapped = TraitActionTag.tags[prop][cleanName];
 					if (mapped) {
 						m[outProp] = m[outProp] || [];
-						if (mapped === true) {
-							m[outProp].push(t.name);
-						} else {
-							m[outProp].push(mapped)
-						}
+						if (mapped === true) m[outProp].push(t.name);
+						else m[outProp].push(mapped)
 					} else if (isTraits() && cleanName.startsWith("keen ")) {
 						m[outProp] = m[outProp] || [];
 						m[outProp].push("Keen Senses");
@@ -958,6 +955,77 @@ TextClean.REPLACEMENTS = {
 	"…": "..."
 };
 TextClean.REPLACEMENT_REGEX = new RegExp(Object.keys(TextClean.REPLACEMENTS).join("|"), 'g');
+
+class ConvertUtil {
+	/**
+	 * Checks if a line of text starts with a name, e.g.
+	 * "Big Attack. Lorem ipsum..." vs "Lorem ipsum..."
+	 */
+	static isNameLine (line) {
+		const spl = line.split(/[.!?]/);
+		if (spl.length === 1) return false;
+
+		// ignore everything inside parentheses
+		const namePart = ConvertUtil.getWithoutParens(spl[0]);
+
+		const reStopwords = new RegExp(`^(${StrUtil.TITLE_LOWER_WORDS.join("|")})$`, "i");
+		const tokens = namePart.split(/([ ,;:]+)/g);
+		const cleanTokens = tokens.filter(it => {
+			const isStopword = reStopwords.test(it.trim());
+			reStopwords.lastIndex = 0;
+			return !isStopword;
+		});
+
+		// if it's in title case after removing all stopwords, it's a name
+		const namePartNoStopwords = cleanTokens.join("");
+		return namePartNoStopwords.toTitleCase() === namePartNoStopwords;
+	}
+
+	/**
+	 * Takes a string containing parenthesized parts, and removes them.
+	 */
+	static getWithoutParens (string) {
+		let skipSpace = false;
+		let char;
+		let cleanString = "";
+
+		const len = string.length;
+		for (let i = 0; i < len; ++i) {
+			char = string[i];
+
+			switch (char) {
+				case ")": {
+					// scan back through the stack, remove last parens
+					let foundOpen = -1;
+					for (let j = cleanString.length - 1; j >= 0; --j) {
+						if (cleanString[j] === "(") {
+							foundOpen = j;
+							break;
+						}
+					}
+
+					if (~foundOpen) {
+						cleanString = cleanString.substring(0, foundOpen);
+						skipSpace = true;
+					} else {
+						cleanString += ")"
+					}
+					break;
+				}
+				case " ":
+					if (skipSpace) skipSpace = false;
+					else cleanString += " ";
+					break;
+				default:
+					skipSpace = false;
+					cleanString += char;
+					break;
+			}
+		}
+
+		return cleanString;
+	}
+}
 
 if (typeof module !== "undefined") {
 	module.exports = {

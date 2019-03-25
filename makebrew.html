@@ -98,6 +98,11 @@
 			min-width: 48px;
 		}
 
+		/* Sidebar */
+		.mkbru__sidebar-entry:nth-child(odd) {
+			background: #bbbbbb18;
+		}
+
 		/* Maker UI */
 		.mkbru__row {
 			padding: 2px;
@@ -179,6 +184,22 @@
 			padding-right: 3px;
 		}
 
+		.mkbru__wrp-drag-block {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+
+		.mkbru__wrp-drag-dummy--highlight {
+			background: #cfe5ff78;
+		}
+
+		.mkbru__wrp-drag-dummy--lowlight {
+			background: #8882;
+		}
+
 		.mkbru__drag-patch {
 			cursor: move;
 			user-select: none;
@@ -206,33 +227,17 @@
 		}
 
 		.mkbru_mon__wrp-rows--removable:only-child .mkbru_mon__btn-rm-row,
-		.mkbru_mon__wrp-rows--removable:only-child .mkbru_mon__btn-up-row,
-		.mkbru_mon__wrp-rows--removable:only-child .mkbru_mon__btn-down-row,
-		.mkbru_mon__wrp-rows--removable:only-child .mkbru_mon__btn-drag-row,
+		.mkbru_mon__wrp-rows--removable:only-child .mkbru__btn-up-row,
+		.mkbru_mon__wrp-rows--removable:only-child .mkbru__btn-down-row,
+		.mkbru_mon__wrp-rows--removable:only-child .mkbru__btn-drag-row,
 			/* CSS hacks to support nesting */
 		.mkbru_mon__wrp-rows--removable-nested-1:only-child .mkbru_mon__btn-rm-row--nested-1 {
 			display: none;
 		}
 
-		.mkbru_mon__wrp-rows--removable:first-child .mkbru_mon__btn-up-row,
-		.mkbru_mon__wrp-rows--removable:last-child .mkbru_mon__btn-down-row {
+		.mkbru_mon__wrp-rows--removable:first-child .mkbru__btn-up-row,
+		.mkbru_mon__wrp-rows--removable:last-child .mkbru__btn-down-row {
 			display: none;
-		}
-
-		.mkbru_mon__wrp-drag-block {
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-		}
-
-		.mkbru_mon__wrp-drag-dummy--highlight {
-			background: #cfe5ff78;
-		}
-
-		.mkbru_mon__wrp-drag-dummy--lowlight {
-			background: #8882;
 		}
 
 		.mkbru_mon__ac-split {
@@ -270,6 +275,18 @@
 			background: #ccc;
 		}
 
+		.mkbru_mon__cb-environment[type=checkbox] {
+			margin: 0 2px 0 0;
+		}
+
+		.mkbru_mon__skill-attrib-label {
+			min-width: 40px;
+			flex-shrink: 0;
+			text-align: center;
+		}
+		/* *** */
+
+		/* STATBLOCK OUTPUT STYLES */
 		tr th.mon__name--token {
 			padding: 1px 0.3em;
 		}

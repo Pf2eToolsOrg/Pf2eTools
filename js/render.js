@@ -161,7 +161,6 @@ function Renderer () {
 		meta = meta || {};
 		meta._typeStack = [];
 		meta.depth = meta.depth == null ? 0 : meta.depth;
-		if (entry.type === "section") meta.depth = -1;
 
 		this._recursiveRender(entry, textStack, meta);
 		textStack.reverse();
@@ -179,6 +178,7 @@ function Renderer () {
 	 */
 	this._recursiveRender = function (entry, textStack, meta, options) {
 		if (!meta) throw new Error("Missing metadata!");
+		if (entry.type === "section") meta.depth = -1;
 
 		options = options || {};
 
@@ -228,6 +228,7 @@ function Renderer () {
 
 				// entire data records
 				case "dataCreature": this._renderDataCreature(entry, textStack, meta, options); break;
+				case "dataSpell": this._renderDataSpell(entry, textStack, meta, options); break;
 
 				// images
 				case "image": this._renderImage(entry, textStack, meta, options); break;
@@ -299,12 +300,12 @@ function Renderer () {
 	};
 
 	this._renderList_getListCssClasses = function (entry, textStack, meta, options) {
+		const out = [`rd__list`];
 		if (entry.style || entry.columns) {
-			const out = [];
-			if (entry.style) out.push(`rd__${entry.style}`);
+			if (entry.style) out.push(...entry.style.split(" ").map(it => `rd__${it}`));
 			if (entry.columns) out.push(`columns-${entry.columns}`);
-			return out.join(" ");
-		} else return null;
+		}
+		return out.join(" ");
 	};
 
 	this._renderTableGroup = function (entry, textStack, meta, options) {
@@ -694,12 +695,25 @@ function Renderer () {
 	this._renderDataCreature = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		textStack[0] += `<table class="rd__b-data">`;
-		textStack[0] += `<thead><tr><th class="dataCreature__header" colspan="6" onclick="((ele) => {
-						$(ele).find('.dataCreature__name').toggle(); 
-						$(ele).find('.dataCreature__showHide').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
+		textStack[0] += `<thead><tr><th class="rd__data-embed-header" colspan="6" onclick="((ele) => {
+						$(ele).find('.rd__data-embed-name').toggle(); 
+						$(ele).find('.rd__data-embed-toggle').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
 						$(ele).closest('table').find('tbody').toggle()
-					})(this)"><span style="display: none;" class="dataCreature__name">${entry.dataCreature.name}</span><span class="dataCreature__showHide">[\u2013]</span></th></tr></thead><tbody>`;
+					})(this)"><span style="display: none;" class="rd__data-embed-name">${entry.dataCreature.name}</span><span class="rd__data-embed-toggle">[\u2013]</span></th></tr></thead><tbody>`;
 		textStack[0] += Renderer.monster.getCompactRenderedString(entry.dataCreature, this);
+		textStack[0] += `</tbody></table>`;
+		this._renderSuffix(entry, textStack, meta, options);
+	};
+
+	this._renderDataSpell = function (entry, textStack, meta, options) {
+		this._renderPrefix(entry, textStack, meta, options);
+		textStack[0] += `<table class="rd__b-data">`;
+		textStack[0] += `<thead><tr><th class="rd__data-embed-header" colspan="6" onclick="((ele) => {
+						$(ele).find('.rd__data-embed-name').toggle(); 
+						$(ele).find('.rd__data-embed-toggle').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
+						$(ele).closest('table').find('tbody').toggle()
+					})(this)"><span style="display: none;" class="rd__data-embed-name">${entry.dataSpell.name}</span><span class="rd__data-embed-toggle">[\u2013]</span></th></tr></thead><tbody>`;
+		textStack[0] += Renderer.spell.getCompactRenderedString(entry.dataSpell, this);
 		textStack[0] += `</tbody></table>`;
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -747,7 +761,9 @@ function Renderer () {
 	};
 
 	this._renderCode = function (entry, textStack, meta, options) {
-		textStack[0] += `<pre>${entry.preformatted}</pre>`;
+		textStack[0] += `<button class="btn btn-default btn-xs mb-1" onclick="{const $e = $(this).next('pre'); MiscUtil.pCopyTextToClipboard($e.text());JqueryUtil.showCopiedEffect($e)}">Copy Code</button>
+			<pre>${entry.preformatted}</pre>
+		`;
 	};
 
 	this._renderHr = function (entry, textStack, meta, options) {
@@ -1434,7 +1450,6 @@ Renderer.splitFirstSpace = function (string) {
 Renderer._splitByTagsBase = function (leadingCharacter) {
 	return function (string) {
 		let tagDepth = 0;
-		let inTag = false;
 		let char, char2;
 		const out = [];
 		let curStr = "";
@@ -1447,24 +1462,22 @@ Renderer._splitByTagsBase = function (leadingCharacter) {
 			switch (char) {
 				case "{":
 					if (char2 === leadingCharacter) {
-						inTag = true;
 						if (tagDepth++ > 0) {
-							curStr += char;
+							curStr += "{";
 						} else {
 							out.push(curStr);
 							curStr = "";
 						}
-					} else curStr += char;
+					} else curStr += "{";
 					break;
 
 				case "}":
-					if (!inTag) {
-						curStr += char;
+					if (tagDepth === 0) {
+						curStr += "}";
 					} else if (--tagDepth === 0) {
-						inTag = false;
 						out.push(curStr);
 						curStr = "";
-					} else curStr += char;
+					} else curStr += "}";
 					break;
 
 				default: curStr += char; break;
@@ -1481,16 +1494,20 @@ Renderer.splitByTags = Renderer._splitByTagsBase("@");
 Renderer.splitByPropertyInjectors = Renderer._splitByTagsBase("=");
 
 Renderer.getEntryDice = function (entry, name) {
+	function legacyDiceToString (array) {
+		let stack = "";
+		array.forEach(r => {
+			stack += `${r.neg ? "-" : stack === "" ? "" : "+"}${r.number || 1}d${r.faces}${r.mod ? r.mod > 0 ? `+${r.mod}` : r.mod : ""}`
+		});
+		return stack;
+	}
+
 	function getDiceAsStr () {
 		if (entry.successThresh) return `${entry.successThresh} percent`;
 		else if (typeof entry.toRoll === "string") return entry.toRoll;
 		else {
 			// handle legacy format
-			let stack = "";
-			entry.toRoll.forEach(r => {
-				stack += `${r.neg ? "-" : stack === "" ? "" : "+"}${r.number || 1}d${r.faces}${r.mod ? r.mod > 0 ? `+${r.mod}` : r.mod : ""}`
-			});
-			return stack;
+			return legacyDiceToString(entry.toRoll)
 		}
 	}
 
@@ -1500,8 +1517,15 @@ Renderer.getEntryDice = function (entry, name) {
 
 	const toDisplay = entry.displayText ? entry.displayText : getDiceAsStr();
 
-	if (entry.rollable === true) return `<span class='roller render-roller' title="${name ? `${name.escapeQuotes()}` : ""}" onmousedown="event.preventDefault()" onclick="Renderer.dice.rollerClickUseData(event, this)" data-packed-dice=${pack(entry)}>${toDisplay}</span>`;
-	else return toDisplay;
+	if (entry.rollable === true) {
+		const toPack = MiscUtil.copy(entry);
+		if (typeof toPack.toRoll !== "string") {
+			// handle legacy format
+			toPack.toRoll = legacyDiceToString(toPack.toRoll);
+		}
+
+		return `<span class='roller render-roller' title="${name ? `${name.escapeQuotes()}` : ""}" onmousedown="event.preventDefault()" onclick="Renderer.dice.rollerClickUseData(event, this)" data-packed-dice=${pack(toPack)}>${toDisplay}</span>`;
+	} else return toDisplay;
 };
 
 Renderer.utils = {
@@ -1616,6 +1640,17 @@ Renderer.utils = {
 
 		toAdd.reverse().forEach($t => $wrpTab.prepend($t));
 		(initialTab || toAdd[toAdd.length - 1]).click();
+	},
+
+	_pronounceButtonsBound: false,
+	bindPronounceButtons () {
+		if (Renderer.utils._pronounceButtonsBound) return;
+		Renderer.utils._pronounceButtonsBound = true;
+		$(`body`).on("click", ".btn-name-pronounce", function () {
+			const audio = $(this).find(`.name-pronounce`)[0];
+			audio.currentTime = 0;
+			audio.play();
+		});
 	},
 
 	/**
@@ -2876,7 +2911,7 @@ Renderer.monster = {
 			</td></tr>
 			${mon.trait || mon.spellcasting ? `<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr class="text compact"><td colspan="6">
-			${Renderer.monster.getOrderedTraits(mon, renderer).map(it => it.rendered || renderer.render(it, 3)).join("")}
+			${Renderer.monster.getOrderedTraits(mon, renderer).map(it => it.rendered || renderer.render(it, 2)).join("")}
 			</td></tr>` : ""}
 			${Renderer.monster.getCompactRenderedStringSection(mon, renderer, "Actions", "action", 2)}
 			${Renderer.monster.getCompactRenderedStringSection(mon, renderer, "Reactions", "reaction", 2)}
@@ -4805,7 +4840,7 @@ Renderer.hover = {
 		Renderer.hover.__updateOnMouseHoverEntry(popoutCodeId, {
 			type: "code",
 			name: `${data.name} \u2014 Source Data`,
-			preformatted: JSON.stringify(cleanCopy, null, 2)
+			preformatted: JSON.stringify(cleanCopy, null, "\t")
 		});
 		$btnPop.attr("data-hover-active", false);
 		Renderer.hover.mouseOverHoverTooltip({shiftKey: true, clientX: evt.clientX}, $btnPop.get(0), popoutCodeId, true);
@@ -4902,23 +4937,23 @@ Renderer.dice = {
 	},
 
 	getNextDice (faces) {
-		const idx = Renderer.dice._DICE.indexOf(faces);
+		const idx = Renderer.dice.DICE.indexOf(faces);
 		if (~idx) {
-			return Renderer.dice._DICE[idx + 1];
+			return Renderer.dice.DICE[idx + 1];
 		} else return null;
 	},
 
 	getPreviousDice (faces) {
-		const idx = Renderer.dice._DICE.indexOf(faces);
+		const idx = Renderer.dice.DICE.indexOf(faces);
 		if (~idx) {
-			return Renderer.dice._DICE[idx - 1];
+			return Renderer.dice.DICE[idx - 1];
 		} else return null;
 	},
 
-	_DICE: [4, 6, 8, 10, 12, 20, 100],
+	DICE: [4, 6, 8, 10, 12, 20, 100],
 	_randomPlaceholder: () => {
 		const count = RollerUtil.randomise(10);
-		const faces = Renderer.dice._DICE[RollerUtil.randomise(Renderer.dice._DICE.length - 1)];
+		const faces = Renderer.dice.DICE[RollerUtil.randomise(Renderer.dice.DICE.length - 1)];
 		const mod = (RollerUtil.randomise(3) - 2) * RollerUtil.randomise(10);
 		const drop = (count > 1) && RollerUtil.randomise(5) === 5;
 		const dropDir = drop ? RollerUtil.randomise(2) === 2 ? "h" : "l" : "";

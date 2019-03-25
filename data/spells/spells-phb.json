@@ -4580,7 +4580,7 @@
 			},
 			"source": "PHB",
 			"entries": [
-				"This spell grows an inert duplicate of a living creature as a safeguard against death. This clone forms inside a sealed vessel and grows to full size and maturity after 120 days; you can also choose to have the clone be a younger version of the same creature. It remains inert and endures indefinitely, as long as its vessel remains undisturbed.",
+				"This spell grows an inert duplicate of a living, Medium creature as a safeguard against death. This clone forms inside a sealed vessel and grows to full size and maturity after 120 days; you can also choose to have the clone be a younger version of the same creature. It remains inert and endures indefinitely, as long as its vessel remains undisturbed.",
 				"At any time after the clone matures, if the original creature dies, its soul transfers to the clone, provided that the soul is free and willing to return. The clone is physically identical to the original and has the same personality, memories, and abilities, but none of the original's equipment. The original creature's physical remains, if they still exist, become inert and can't thereafter be restored to life, since the creature's soul is elsewhere."
 			],
 			"page": 222,
@@ -15019,31 +15019,31 @@
 					"type": "entries",
 					"name": "Doors",
 					"entries": [
-						"All doors in the warded area are magically locked, as if sealed by an arcane lock spell. In addition, you can cover up to ten doors with an illusion (equivalent to the illusory object function of the minor illusion spell) to make them appear as plain sections of wall."
+						"All doors in the warded area are magically locked, as if sealed by an {@spell arcane lock} spell. In addition, you can cover up to ten doors with an illusion (equivalent to the illusory object function of the minor illusion spell) to make them appear as plain sections of wall."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Stairs",
 					"entries": [
-						"Webs fill all stairs in the warded area from top to bottom, as the web spell. These strands regrow in 10 minutes if they are burned or torn away while guards and wards lasts."
+						"Webs fill all stairs in the warded area from top to bottom, as the {@spell web} spell. These strands regrow in 10 minutes if they are burned or torn away while guards and wards lasts."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Other Spell Effect",
 					"entries": [
-						"You can place your choice of one of the following magical effects within the warded area of the stronghold."
-					]
-				},
-				{
-					"type": "list",
-					"items": [
-						"Place dancing lights in four corridors. You can designate a simple program that the lights repeat as long as guards and wards lasts.",
-						"Place magic mouth in two locations.",
-						"Place stinking cloud in two locations. The vapors appear in the places you designate; they return within 10 minutes if dispersed by wind while guards and wards lasts.",
-						"Place a constant gust of wind in one corridor or room.",
-						"Place a suggestion in one location. You select an area of up to 5 feet square, and any creature that enters or passes through the area receives the suggestion mentally."
+						"You can place your choice of one of the following magical effects within the warded area of the stronghold.",
+						{
+							"type": "list",
+							"items": [
+								"Place {@spell dancing lights} in four corridors. You can designate a simple program that the lights repeat as long as guards and wards lasts.",
+								"Place {@spell magic mouth} in two locations.",
+								"Place {@spell stinking cloud} in two locations. The vapors appear in the places you designate; they return within 10 minutes if dispersed by wind while guards and wards lasts.",
+								"Place a constant {@spell gust of wind} in one corridor or room.",
+								"Place a {@spell suggestion} in one location. You select an area of up to 5 feet square, and any creature that enters or passes through the area receives the suggestion mentally."
+							]
+						}
 					]
 				},
 				"The whole warded area radiates magic. A {@spell dispel magic} cast on a specific effect, if successful, removes only that effect.",
@@ -20024,7 +20024,7 @@
 						"source": "PHB"
 					}
 				],
-				"fromSubclass":  [
+				"fromSubclass": [
 					{
 						"class": {
 							"name": "Cleric",

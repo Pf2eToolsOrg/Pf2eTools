@@ -162,7 +162,7 @@ class FilterBox {
 		};
 
 		const $hdrLine = $(`<li class="filter-item"/>`);
-		const $hdrLineInner = $(`<div class="h-wrap"/>`).appendTo($hdrLine);
+		const $hdrLineInner = $(`<div class="fltr__h"/>`).appendTo($hdrLine);
 		if (this.filterList.length > 1) {
 			const $btnAndOr = $(`<button class="btn btn-default btn-xs" style="width: 3em;">${this.modeAndOr}</button>`)
 				.data("andor", this.modeAndOr)
@@ -369,8 +369,8 @@ class FilterBox {
 		}
 
 		function makeHeaderLine (idx, $grid) {
-			const minimalClass = filter.minimalUI ? "filter-minimal" : "";
-			const $line = $(`<div class="h-wrap ${minimalClass} multi-compact-hidden"/>`);
+			const minimalClass = filter.minimalUI ? "fltr__minimal-hide" : "";
+			const $line = $(`<div class="fltr__h ${minimalClass} multi-compact-hidden"/>`);
 			_addGroupLabel(idx, $line);
 
 			function makeAndOrBtn (defState, tooltip) {
@@ -411,28 +411,29 @@ class FilterBox {
 				setStateRed("OR");
 			});
 
-			const $quickBtns = $(`<span class="btn-group quick-btns" style="margin-left: auto;"/>`).appendTo($line);
+			const $wrpRhs = $(`<div class="flex-v-center"/>`).appendTo($line);
+
+			const $quickBtns = $(`<span class="btn-group quick-btns ml-2"/>`).appendTo($wrpRhs);
 			const $all = $(`<button class="btn btn-default btn-xs btn-meta ${minimalClass}">All</button>`).appendTo($quickBtns);
 			const $clear = $(`<button class="btn btn-default btn-xs btn-meta ${minimalClass}">Clear</button>`).appendTo($quickBtns);
 			const $none = $(`<button class="btn btn-default btn-xs btn-meta ${minimalClass}">None</button>`).appendTo($quickBtns);
 			const $default = $(`<button class="btn btn-default btn-xs btn-meta ${minimalClass}">Default</button>`).appendTo($quickBtns);
 
-			const $summary = $(`<span class="summary"/>`).appendTo($line);
+			const $summary = $(`<span class="summary ml-2"/>`).appendTo($wrpRhs);
 			const $summaryInclude = $(`<span class="filter__summary_item filter__summary_item--include" title="Hidden includes"/>`).appendTo($summary);
 			const $summarySpacer = $(`<span class="filter__summary_item_spacer"/>`).appendTo($summary);
 			const $summaryExclude = $(`<span class="filter__summary_item filter__summary_item--exclude" title="Hidden excludes"/>`).appendTo($summary);
 			$summary.hide();
 
-			const $logicBtns = $(`<span class="btn-group andor-btns" style="margin-left: 5px;"/>`).append($btnAndOrBlue).append($btnAndOrRed).appendTo($line);
+			const $logicBtns = $(`<span class="btn-group andor-btns ml-2"/>`).append($btnAndOrBlue).append($btnAndOrRed).appendTo($wrpRhs);
 
-			const $showHide = $(`<button class="btn btn-default btn-xs btn-meta show-hide-button ${minimalClass}" style="margin-left: 5px;">Hide</button>`).appendTo($line);
+			const $showHide = $(`<button class="btn btn-default btn-xs btn-meta show-hide-button ${minimalClass} ml-2">Hide</button>`).appendTo($wrpRhs);
 
 			// FIXME this bugs out in some unknown cases
 			const doShow = () => {
 				$showHide.text("Hide");
 				$grid.show();
 				$quickBtns.show();
-				$logicBtns.css("margin-left", "5px");
 				$summary.hide();
 			};
 			const doHide = () => {
@@ -463,10 +464,8 @@ class FilterBox {
 					} else {
 						$summaryExclude.hide();
 					}
-					$logicBtns.css("margin-left", "5px");
 					$summary.show();
 				} else {
-					$logicBtns.css("margin-left", "auto");
 					$summary.hide();
 				}
 			};
@@ -778,6 +777,8 @@ class FilterBox {
 						blue: this.headers[filter.header].getAndOrBlue(),
 						red: this.headers[filter.header].getAndOrRed()
 					};
+					// if there's any items selected/deselected
+					out._isActive = out._totals.yes + out._totals.no > 0;
 					return out;
 				}
 			);
@@ -847,7 +848,7 @@ class FilterBox {
 		}
 
 		function makeSliderHeaderLine (idx, $wrpSlide) {
-			const $line = $(`<div class="h-wrap multi-compact-hidden"/>`);
+			const $line = $(`<div class="fltr__h multi-compact-hidden"/>`);
 			_addGroupLabel(idx, $line);
 
 			const $quickBtns = $(`<span class="btn-group quick-btns" style="margin-left: auto;"/>`).appendTo($line);
@@ -972,6 +973,7 @@ class FilterBox {
 					out.max = max;
 					out.isMinVal = min === filter.min;
 					out.isMaxVal = max === filter.max;
+					out._isActive = !(out.isMinVal && out.isMaxVal)
 					return out;
 				}
 			);
@@ -1313,10 +1315,16 @@ class FilterBox {
 	}
 
 	toDisplay (curr, ...vals) {
-		const res = this.filterList.map((f, i) => {
-			return f._isMulti ? f.toDisplay(curr, ...vals[i]) : f.toDisplay(curr, vals[i])
-		});
-		return this.modeAndOr === "AND" ? res.every(it => it) : res.find(it => it);
+		if (this.modeAndOr === "AND") {
+			const res = this.filterList.map((f, i) => f._isMulti ? f.toDisplay(curr, ...vals[i]) : f.toDisplay(curr, vals[i]));
+			return res.every(it => it);
+		} else {
+			const res = this.filterList.map((f, i) => {
+				if (!curr[f.header] || !curr[f.header]._isActive) return false; // filter out "ignored" filter (i.e. all white)
+				return f._isMulti ? f.toDisplay(curr, ...vals[i]) : f.toDisplay(curr, vals[i]);
+			});
+			return res.find(it => it);
+		}
 	}
 
 	/**

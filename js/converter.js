@@ -117,7 +117,30 @@ class ConverterUi {
 						return;
 					}
 
-					const overwriteMeta = entries.map(it => {
+					// ignore duplicates
+					const _dupes = {};
+					const dupes = [];
+					const dedupedEntries = entries.map(it => {
+						const lSource = it.source.toLowerCase();
+						const lName = it.name.toLowerCase();
+						_dupes[lSource] = _dupes[lSource] || {};
+						if (_dupes[lSource][lName]) {
+							dupes.push(it.name);
+							return null;
+						} else {
+							_dupes[lSource][lName] = true;
+							return it;
+						}
+					}).filter(Boolean);
+					if (dupes.length) {
+						JqueryUtil.doToast({
+							type: "warning",
+							content: `Ignored ${dupes.length} duplicate entr${dupes.length === 1 ? "y" : "ies"}`
+						})
+					}
+
+					// handle overwrites
+					const overwriteMeta = dedupedEntries.map(it => {
 						const ix = (BrewUtil.homebrew[prop] || []).findIndex(bru => bru.name.toLowerCase() === it.name.toLowerCase() && bru.source.toLowerCase() === it.source.toLowerCase());
 						if (~ix) {
 							return {
@@ -139,11 +162,19 @@ class ConverterUi {
 							return BrewUtil.pAddEntry(prop, MiscUtil.copy(meta.entry));
 						}
 					}));
+
+					JqueryUtil.doToast({
+						type: "success",
+						content: `Saved!`
+					});
+
+					Omnisearch.pAddToIndex("monster", overwriteMeta.filter(meta => !meta.isOverwrite).map(meta => meta.entry));
 				} catch (e) {
 					JqueryUtil.doToast({
 						content: `Current output was not valid JSON!`,
 						type: "danger"
 					});
+					setTimeout(() => { throw e });
 				}
 			} else {
 				JqueryUtil.doToast({
@@ -166,6 +197,7 @@ class ConverterUi {
 						type: "warning"
 					});
 					DataUtil.userDownloadText(`converter-output.txt`, output);
+					setTimeout(() => { throw e; });
 				}
 			} else {
 				JqueryUtil.doToast({
@@ -521,11 +553,11 @@ class StatblockConverter {
 			const clean = StatblockConverter._getCleanInput(inText);
 			const spl = clean.split(/(Challenge)/i);
 			spl[0] = spl[0]
-				.replace(/(\d\d?\s+\([-+]\d\)\s*)+/gi, (...m) => `${m[0].replace(/\n/g, " ").replace(/\s+/g, " ")}\n`) // collapse multi-line ability scores
+				.replace(/(\d\d?\s+\([-—+]\d\)\s*)+/gi, (...m) => `${m[0].replace(/\n/g, " ").replace(/\s+/g, " ")}\n`); // collapse multi-line ability scores
 			return spl.join("").split("\n");
 		})();
 		const stats = {};
-		stats.source = options.source;
+		stats.source = options.source || "";
 		// for the user to fill out
 		stats.page = options.pageNumber;
 
@@ -545,7 +577,7 @@ class StatblockConverter {
 
 			// size type alignment
 			if (i === 1) {
-				StatblockConverter._setCleanSizeTypeAlignment(stats, curLine);
+				StatblockConverter._setCleanSizeTypeAlignment(stats, curLine, options);
 				continue;
 			}
 
@@ -570,7 +602,7 @@ class StatblockConverter {
 			if (i === 5) continue;
 			// ability scores
 			if (i === 6) {
-				const abilities = curLine.split(/ ?\(([+\-–‒])?[0-9]*\) ?/g);
+				const abilities = curLine.split(/ ?\(([+\-—])?[0-9]*\) ?/g);
 				stats.str = StatblockConverter._tryConvertNumber(abilities[0]);
 				stats.dex = StatblockConverter._tryConvertNumber(abilities[2]);
 				stats.con = StatblockConverter._tryConvertNumber(abilities[4]);
@@ -651,47 +683,46 @@ class StatblockConverter {
 				stats.reaction = [];
 				stats.legendary = [];
 
-				let curtrait = {};
+				let curTrait = {};
 
-				let ontraits = true;
-				let onactions = false;
-				let onreactions = false;
-				let onlegendaries = false;
-				let onlegendarydescription = false;
+				let isTraits = true;
+				let isActions = false;
+				let isReactions = false;
+				let isLegendaryActions = false;
+				let isLegendaryDescription = false;
 
 				// keep going through traits til we hit actions
 				while (i < toConvert.length) {
 					if (startNextPhase(curLine)) {
-						ontraits = false;
-						onactions = !curLine.toUpperCase().indexOf_handleColon("ACTIONS");
-						onreactions = !curLine.toUpperCase().indexOf_handleColon("REACTIONS");
-						onlegendaries = !curLine.toUpperCase().indexOf_handleColon("LEGENDARY ACTIONS");
-						onlegendarydescription = onlegendaries;
+						isTraits = false;
+						isActions = !curLine.toUpperCase().indexOf_handleColon("ACTIONS");
+						isReactions = !curLine.toUpperCase().indexOf_handleColon("REACTIONS");
+						isLegendaryActions = !curLine.toUpperCase().indexOf_handleColon("LEGENDARY ACTIONS");
+						isLegendaryDescription = isLegendaryActions;
 						i++;
 						curLine = toConvert[i];
 					}
 
-					// get the name
-					curtrait.name = "";
-					curtrait.entries = [];
+					curTrait.name = "";
+					curTrait.entries = [];
 
-					const parseAction = line => {
-						curtrait.name = line.split(/([.!])/g)[0];
-						curtrait.entries.push(line.split(".").splice(1).join(".").trim());
+					const parseFirstLine = line => {
+						curTrait.name = line.split(/([.!?])/g)[0];
+						curTrait.entries.push(line.substring(curTrait.name.length + 1, line.length).trim());
 					};
 
-					if (onlegendarydescription) {
+					if (isLegendaryDescription) {
 						// usually the first paragraph is a description of how many legendary actions the creature can make
 						// but in the case that it's missing the substring "legendary" and "action" it's probably an action
 						const compressed = curLine.replace(/\s*/g, "").toLowerCase();
-						if (!compressed.includes("legendary") && !compressed.includes("action")) onlegendarydescription = false;
+						if (!compressed.includes("legendary") && !compressed.includes("action")) isLegendaryDescription = false;
 					}
 
-					if (onlegendarydescription) {
-						curtrait.entries.push(curLine.trim());
-						onlegendarydescription = false;
+					if (isLegendaryDescription) {
+						curTrait.entries.push(curLine.trim());
+						isLegendaryDescription = false;
 					} else {
-						parseAction(curLine);
+						parseFirstLine(curLine);
 					}
 
 					i++;
@@ -701,34 +732,34 @@ class StatblockConverter {
 					// connecting words can start with: o ("of", "or"); t ("the"); a ("and", "at"). Accept numbers, e.g. (Costs 2 Actions)
 					// allow numbers
 					// allow "a" and "I" as single-character words
-					while (curLine && curLine.match(StrUtil.NAME_REGEX) === null && !startNextPhase(curLine)) {
-						curtrait.entries.push(curLine.trim());
+					while (curLine && !ConvertUtil.isNameLine(curLine) && !startNextPhase(curLine)) {
+						curTrait.entries.push(curLine.trim());
 						i++;
 						curLine = toConvert[i];
 					}
 
-					if (curtrait.name || curtrait.entries) {
+					if (curTrait.name || curTrait.entries) {
 						// convert dice tags
-						DiceConvert.convertTraitActionDice(curtrait);
+						DiceConvert.convertTraitActionDice(curTrait);
 
 						// convert spellcasting
-						if (ontraits) {
-							if (curtrait.name.toLowerCase().includes("spellcasting")) {
-								curtrait = this._tryParseSpellcasting(curtrait, false, options);
-								if (curtrait.success) {
+						if (isTraits) {
+							if (curTrait.name.toLowerCase().includes("spellcasting")) {
+								curTrait = this._tryParseSpellcasting(curTrait, false, options);
+								if (curTrait.success) {
 									// merge in e.g. innate spellcasting
-									if (stats.spellcasting) stats.spellcasting = stats.spellcasting.concat(curtrait.out);
-									else stats.spellcasting = curtrait.out;
-								} else stats.trait.push(curtrait.out);
+									if (stats.spellcasting) stats.spellcasting = stats.spellcasting.concat(curTrait.out);
+									else stats.spellcasting = curTrait.out;
+								} else stats.trait.push(curTrait.out);
 							} else {
-								if (StatblockConverter._hasEntryContent(curtrait)) stats.trait.push(curtrait);
+								if (StatblockConverter._hasEntryContent(curTrait)) stats.trait.push(curTrait);
 							}
 						}
-						if (onactions && StatblockConverter._hasEntryContent(curtrait)) stats.action.push(curtrait);
-						if (onreactions && StatblockConverter._hasEntryContent(curtrait)) stats.reaction.push(curtrait);
-						if (onlegendaries && StatblockConverter._hasEntryContent(curtrait)) stats.legendary.push(curtrait);
+						if (isActions && StatblockConverter._hasEntryContent(curTrait)) stats.action.push(curTrait);
+						if (isReactions && StatblockConverter._hasEntryContent(curTrait)) stats.reaction.push(curTrait);
+						if (isLegendaryActions && StatblockConverter._hasEntryContent(curTrait)) stats.legendary.push(curTrait);
 					}
-					curtrait = {};
+					curTrait = {};
 				}
 
 				// Remove keys if they are empty
@@ -930,7 +961,7 @@ class StatblockConverter {
 			// size type alignment
 			if (parsed === 1) {
 				curLine = curLine.replace(/^\**(.*?)\**$/, "$1");
-				StatblockConverter._setCleanSizeTypeAlignment(stats, curLine);
+				StatblockConverter._setCleanSizeTypeAlignment(stats, curLine, options);
 				parsed++;
 				continue;
 			}
@@ -1137,7 +1168,7 @@ class StatblockConverter {
 
 	static _tryConvertNumber (strNumber) {
 		try {
-			return Number(strNumber)
+			return Number(strNumber.replace(/—/g, "-"))
 		} catch (e) {
 			return strNumber;
 		}
@@ -1203,7 +1234,7 @@ class StatblockConverter {
 	// SHARED PARSING FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
 	static _getCleanInput (ipt) {
 		return ipt
-			.replace(/[−–]/g, "-") // convert minus signs to hyphens
+			.replace(/[−–‒]/g, "-") // convert minus signs to hyphens
 		;
 	}
 
@@ -1211,13 +1242,13 @@ class StatblockConverter {
 		return options.isTitleCaseName ? line.toLowerCase().toTitleCase() : line;
 	}
 
-	static _setCleanSizeTypeAlignment (stats, line) {
+	static _setCleanSizeTypeAlignment (stats, line, options) {
 		stats.size = line[0].toUpperCase();
 		stats.type = line.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX)[0].split(" ").splice(1).join(" ");
 		stats.type = StatblockConverter._tryParseType(stats.type);
 
 		stats.alignment = line.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX)[1].toLowerCase();
-		AlignmentConvert.tryConvertAlignment(stats);
+		AlignmentConvert.tryConvertAlignment(stats, (ali) => options.cbWarning(`Alignment "${ali}" requires manual conversion`));
 	}
 
 	static _setCleanHp (stats, line) {

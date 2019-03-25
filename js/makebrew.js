@@ -211,6 +211,8 @@ class PageUi {
 	}
 
 	_doInitNavHandler () {
+		// More obnoxious than useful (the form is auto-saved automatically); disabled until further notice
+		/*
 		$(window).on("beforeunload", evt => {
 			const message = this._builders[this._settings.activeBuilder].getOnNavMessage();
 			if (message) {
@@ -218,6 +220,7 @@ class PageUi {
 				return message;
 			}
 		});
+		*/
 	}
 
 	_doAddSourceOption (source) {
@@ -300,12 +303,20 @@ class BuilderUi {
 		}
 	}
 
+	/**
+	 *
+	 * @param name Row name.
+	 * @param options Options object.
+	 * @param options.eleType HTML element to use.
+	 * @param options.isMarked If a "group" vertical marker should be displayed between the name and the row body.
+	 * @param options.isRow If the row body should use flex row (instead of flex col).
+	 */
 	static getLabelledRowTuple (name, options) {
 		options = options || {};
 
 		const eleType = options.eleType || "div";
 
-		const $rowInner = $(`<div class="flex-col full-width"/>`);
+		const $rowInner = $(`<div class="${options.isRow ? "flex" : "flex-col"} full-width"/>`);
 		const $row = $$`<div class="mb-2 mkbru__row"><${eleType} class="mkbru__wrp-row flex-v-center"><span class="mr-2 mkbru__row-name ${options.isMarked ? `mkbru__row-name--marked` : ""}">${name}</span>${options.isMarked ? `<div class="mkbru__row-mark mr-2"/>` : ""}${$rowInner}</${eleType}></div>`;
 		return [$row, $rowInner];
 	}
@@ -565,6 +576,78 @@ class BuilderUi {
 				cb();
 			});
 	}
+
+	static $getUpButton (cbUpdate, rows, myRow) {
+		return $(`<button class="btn btn-xs btn-default mkbru__btn-up-row ml-2" title="Move Up"><span class="glyphicon glyphicon-arrow-up"/></button>`)
+			.click(() => {
+				const ix = rows.indexOf(myRow);
+				const cache = rows[ix - 1];
+				rows[ix - 1] = myRow;
+				rows[ix] = cache;
+				cbUpdate();
+			})
+	}
+
+	static $getDownButton (cbUpdate, rows, myRow) {
+		return $(`<button class="btn btn-xs btn-default mkbru__btn-down-row ml-2" title="Move Down"><span class="glyphicon glyphicon-arrow-down"/></button>`)
+			.click(() => {
+				const ix = rows.indexOf(myRow);
+				const cache = rows[ix + 1];
+				rows[ix + 1] = myRow;
+				rows[ix] = cache;
+				cbUpdate();
+			})
+	}
+
+	static $getDragPad (cbUpdate, rows, myRow, options) {
+		const dragMeta = {};
+		const doDragCleanup = () => {
+			dragMeta.on = false;
+			dragMeta.$wrap.remove();
+			dragMeta.$dummies.forEach($d => $d.remove());
+		};
+
+		const doDragRender = () => {
+			if (dragMeta.on) doDragCleanup();
+
+			dragMeta.on = true;
+			dragMeta.$wrap = $(`<div class="flex-col mkbru__wrp-drag-block"/>`).appendTo(options.$wrpRowsOuter);
+			dragMeta.$dummies = [];
+
+			const ixRow = rows.indexOf(myRow);
+
+			rows.forEach((row, i) => {
+				const dimensions = {w: row.$ele.outerWidth(true), h: row.$ele.outerHeight(true)};
+				const $dummy = $(`<div class="mkbru__wrp-drag-dummy ${i === ixRow ? "mkbru__wrp-drag-dummy--highlight" : "mkbru__wrp-drag-dummy--lowlight"}"/>`)
+					.width(dimensions.w).height(dimensions.h)
+					.mouseup(() => {
+						if (dragMeta.on) {
+							doDragCleanup();
+						}
+					})
+					.appendTo(dragMeta.$wrap);
+				dragMeta.$dummies.push($dummy);
+
+				if (i !== ixRow) { // on entering other areas, swap positions
+					$dummy.mouseenter(() => {
+						const cache = rows[i];
+						rows[i] = myRow;
+						rows[ixRow] = cache;
+
+						if (options.cbSwap) options.cbSwap(cache);
+
+						cbUpdate();
+						doDragRender();
+					});
+				}
+			});
+		};
+
+		return $(`<div class="ml-2 mkbru__drag-patch" title="Drag to Reorder">
+		<div class="mkbru__drag-patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
+		<div class="mkbru__drag-patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
+		</div>`).mousedown(() => doDragRender());
+	}
 }
 
 // based on DM screen's AddMenuSearchTab
@@ -745,6 +828,26 @@ class SearchWidget {
 	doFocus () {
 		this._$iptSearch.focus();
 	}
+
+	static addToIndexes (prop, entry) {
+		const nextId = Object.values(SearchWidget.CONTENT_INDICES.ALL.documentStore.docs).length;
+
+		const indexer = new Omnidexer(nextId);
+
+		const toIndex = {[prop]: [entry]};
+
+		Omnidexer.TO_INDEX__FROM_INDEX_JSON.filter(it => it.listProp === prop)
+			.forEach(it => indexer.addToIndex(it, toIndex));
+		Omnidexer.TO_INDEX.filter(it => it.listProp === prop)
+			.forEach(it => indexer.addToIndex(it, toIndex));
+
+		const toAdd = indexer.getIndex();
+		toAdd.forEach(d => {
+			d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
+			SearchWidget.CONTENT_INDICES.ALL.addDoc(d);
+			SearchWidget.CONTENT_INDICES[d.cf].addDoc(d);
+		});
+	}
 }
 SearchWidget.CONTENT_INDICES = {};
 
@@ -760,6 +863,7 @@ async function doPageInit () {
 	await SearchUiUtil.pDoGlobalInit();
 	SearchWidget.CONTENT_INDICES = await SearchUiUtil.pGetContentIndices({additionalIndices: ["item"], alternateIndices: ["spell"]});
 	await Builder.pInitAll();
+	Renderer.utils.bindPronounceButtons();
 	return ui.init();
 }
 

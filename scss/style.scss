@@ -355,6 +355,11 @@ input.ui-search__ipt-search-sub-ipt-custom[type=number]::-webkit-inner-spin-butt
 	display: flex;
 	flex-direction: column;
 	padding: 3px;
+	overflow-y: auto;
+
+	> * {
+		flex-shrink: 0;
+	}
 
 	&__toggle {
 		@include shadow-1();
@@ -1382,11 +1387,6 @@ th.name {
 	color: $name-red;
 }
 
-.stats ul {
-	margin: 0 0 10px;
-	padding: 0 20px;
-}
-
 .stats li {
 	margin: 0 0 5px;
 }
@@ -1565,11 +1565,6 @@ tr th.mon__name--token {
 		width: 6em;
 	}
 
-	select {
-		margin-left: -1.1em;
-		border-radius: 3px;
-	}
-
 	input[type=checkbox] {
 		width: auto;
 	}
@@ -1580,7 +1575,7 @@ tr th.mon__name--token {
 	}
 
 	span#hdval {
-		width: 2em;
+		width: 2.1em;
 		text-align: center;
 		display: inline-block;
 	}
@@ -1631,7 +1626,7 @@ tr th.mon__name--token {
 
 #croutput {
 	padding: 0.2em 0.7em;
-	border-radius: 0.2em;
+	border-radius: 7px;
 }
 
 #instructions p {
@@ -1646,8 +1641,6 @@ td span.prerequisite {
 	font-style: italic;
 	display: block;
 }
-
-/* end section: class features */
 
 #classtable {
 	overflow-x: auto;
@@ -2335,39 +2328,43 @@ tr.printbook-bestiary > td {
 	}
 }
 
-.filter-minimal {
-	display: none;
-}
+.fltr__ {
+	&minimal-hide {
 
-.h-wrap {
-	display: flex;
-}
+		display: none;
+	}
 
-.h-wrap > .btn-group.quick-btns .btn:first-child {
-	text-decoration: underline;
-	text-decoration-color: #337ab7;
-}
+	&h {
+		display: flex;
+		justify-content: space-between;
 
-.h-wrap > .btn-group.quick-btns .btn:nth-child(2) {
-	text-decoration: underline;
-	text-decoration-color: #c3c3c3;
-}
+		.quick-btns .btn:first-child {
+			text-decoration: underline;
+			text-decoration-color: #337ab7;
+		}
 
-.h-wrap > .btn-group.quick-btns .btn:nth-child(3) {
-	text-decoration: underline;
-	text-decoration-color: #b52e10;
-}
+		.quick-btns .btn:nth-child(2) {
+			text-decoration: underline;
+			text-decoration-color: #c3c3c3;
+		}
 
-.h-wrap > .btn-group.andor-btns .btn {
-	font-weight: bold;
-}
+		.quick-btns .btn:nth-child(3) {
+			text-decoration: underline;
+			text-decoration-color: #b52e10;
+		}
 
-.h-wrap > .btn-group.andor-btns .btn:nth-child(1) {
-	color: #337ab7;
-}
+		.andor-btns .btn {
+			font-weight: bold;
+		}
 
-.h-wrap > .btn-group.andor-btns .btn:nth-child(2) {
-	color: #b52e10;
+		.andor-btns .btn:nth-child(1) {
+			color: #337ab7;
+		}
+
+		.andor-btns .btn:nth-child(2) {
+			color: #b52e10;
+		}
+	}
 }
 
 .filter-item > div:not(.pill-grid) {
@@ -2911,6 +2908,12 @@ tr.regionaleffect {
 		}
 	}
 
+	&list {
+		margin-top: 5px;
+		margin-bottom: 10px;
+		padding-left: 24px;
+	}
+
 	&compact-stats {
 		display: flex;
 		flex-wrap: wrap;
@@ -2998,6 +3001,7 @@ tr.regionaleffect {
 				margin: 0 0 3px;
 			}
 
+			// fixme?
 			> ul {
 				text-indent: 0;
 			}
@@ -3007,10 +3011,19 @@ tr.regionaleffect {
 	&list-hang {
 		list-style: none;
 
+		// fixme?
 		> li > * {
 			text-indent: -1.1em;
 			margin-left: 1.1em;
 		}
+	}
+
+	&list-decimal {
+		list-style: decimal;
+	}
+
+	&list-lower-roman {
+		list-style: lower-roman;
 	}
 
 	&list-no-bullets {
@@ -3075,13 +3088,12 @@ tr.regionaleffect {
 		margin-bottom: 3px;
 	}
 
-	&b--3 > *,
-	&b--4 > * {
+	&b--3 > p,
+	&b--4 > p {
 		text-indent: 0.7em;
 		margin-bottom: 0;
 
-		// first two elements should be inline (header and first line of text)
-		&:nth-child(-n + 2) {
+		&:first-of-type {
 			display: inline;
 		}
 	}
@@ -3112,6 +3124,25 @@ tr.regionaleffect {
 		box-shadow: 0 0 4px 0 rgb(152, 142, 124);
 		border: 1px solid #656565;
 		background-color: rgba(156, 150, 120, 0.1);
+	}
+
+	&data-embed {
+		&-header {
+			cursor: pointer;
+			font-family: 'Andada', serif;
+			font-variant: small-caps;
+			text-transform: uppercase;
+			font-weight: bold;
+
+			&:hover {
+				background: rgba(100, 100, 100, 0.08);
+			}
+		}
+
+		&-toggle {
+			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			float: right;
+		}
 	}
 }
 
@@ -3168,27 +3199,8 @@ tr.regionaleffect {
 		margin: 0 0 15px;
 	}
 
-	ul {
+	.rd__list {
 		margin-bottom: 15px;
-	}
-}
-
-.dataCreature {
-	&__header {
-		cursor: pointer;
-		font-family: 'Andada', serif;
-		font-variant: small-caps;
-		text-transform: uppercase;
-		font-weight: bold;
-
-		&:hover {
-			background: rgba(100, 100, 100, 0.08);
-		}
-	}
-
-	&__showHide {
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		float: right;
 	}
 }
 
@@ -3927,7 +3939,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.form-control {
-		background-color: transparent;
+		background-color: $bg-color;
 		color: $font-color;
 	}
 
@@ -3963,13 +3975,14 @@ ul.list.books > li > a > span.name:hover {
 	.btn-default,
 	.btn-default:hover,
 	.btn-default:focus {
-		background-color: transparent;
+		background-color: $bg-color;
 		color: $font-color;
 	}
 
 	.btn-default.active {
-		background-color: #444;
-		box-shadow: inset 0 3px 5px #000c;
+		background-color: #888;
+		box-shadow: inset 0 3px 7px #111e;
+		color: #222;
 	}
 
 	.btn-nowrap {
@@ -4004,7 +4017,7 @@ ul.list.books > li > a > span.name:hover {
 
 	select,
 	input {
-		background-color: transparent;
+		background-color: $bg-color;
 		color: $font-color;
 	}
 
@@ -4029,7 +4042,7 @@ ul.list.books > li > a > span.name:hover {
 
 	.input-group-addon,
 	.form-control {
-		background: transparent;
+		background: $bg-color;
 		color: #bbb;
 	}
 
@@ -4414,7 +4427,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.dropdown-menu-filter .pill-grid .filter-pill[state=ignore] {
-		background: transparent;
+		background: $bg-color;
 	}
 
 	.dropdown-menu-filter .pill-grid .filter-pill:hover:not([state]) {
@@ -4422,7 +4435,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.ui-slider {
-		background: transparent;
+		background: $bg-color;
 	}
 
 	.ui-slider .ui-slider-tip {

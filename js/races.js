@@ -301,11 +301,7 @@ function addRaces (data) {
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton();
 
-	$(`body`).on("click", ".btn-name-pronounce", function () {
-		const audio = $(this).find(`.name-pronounce`)[0];
-		audio.currentTime = 0;
-		audio.play();
-	});
+	Renderer.utils.bindPronounceButtons();
 }
 
 function handleFilterChange () {

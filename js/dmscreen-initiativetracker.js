@@ -98,7 +98,7 @@ class InitiativeTracker {
 					break;
 				}
 				case 2: {
-					const json = await DataUtil.userUpload();
+					const json = await DataUtil.pUserUpload();
 					if (json) convertAndLoadBestiaryList(json);
 					break;
 				}

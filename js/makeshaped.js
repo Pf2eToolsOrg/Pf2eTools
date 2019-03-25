@@ -496,7 +496,14 @@ class ShapedConverter {
 					const text = variant.entries.map(entry => {
 						if (isString(entry)) return entry;
 						else if (entry.type === "table") return this.processTable(entry);
-						else return entry.items.map(item => `${item.name} ${item.entry}`).join('\n');
+						else if (entry.type === "list") return entry.items.map(item => `${item.name} ${item.entry}`).join('\n');
+						else {
+							const recursiveFlatten = (ent) => {
+								if (ent.entries) return `${ent.name ? `${ent.name}. ` : ""}${ent.entries.map(it => recursiveFlatten(it)).join("\n")}`;
+								else if (isString(ent)) return ent;
+								else return JSON.stringify(ent);
+							};
+						}
 					}).join('\n');
 					addVariant(baseName, text, output);
 				} else if (variant.entries.find(entry => entry.type === 'entries')) {
