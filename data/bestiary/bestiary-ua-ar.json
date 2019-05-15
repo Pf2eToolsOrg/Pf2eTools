@@ -92,6 +92,89 @@
 			"senseTags": [
 				"D"
 			]
+		},
+		{
+			"source": "UAArtificerRevisited",
+			"page": 11,
+			"name": "Iron Defender",
+			"size": "M",
+			"type": "construct",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "equal to five times your level in this class + your Intelligence modifier + the iron defender's Constitution modifier"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 14,
+			"dex": 12,
+			"con": 14,
+			"int": 4,
+			"wis": 10,
+			"cha": 6,
+			"skill": {
+				"perception": "+4"
+			},
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"poisoned"
+			],
+			"passive": 10,
+			"senses": "darkvision 60 ft.",
+			"languages": "understands the languages you speak",
+			"cr": "Unknown",
+			"trait": [
+				{
+					"name": "Might of the Master",
+					"entries": [
+						"The following numbers increase by 1 when your proficiency bonus increases by 1: the iron defender's skill bonuses, the bonuses to hit and damage of its bite, and the number of hit points restored by its Repair action."
+					]
+				},
+				{
+					"name": "Vigilant",
+					"entries": [
+						"The iron defender can't be surprised."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target you can see. {@h}{@dice 1d8 + 2} piercing damage."
+					]
+				},
+				{
+					"name": "Repair (3/Day)",
+					"entries": [
+						"The magical mechanisms inside the iron defender restore {@dice 2d8 + 2} hit points to itself or to one construct or object within 5 feet of it.",
+						"Reaction"
+					]
+				},
+				{
+					"name": "Defensive Pounce",
+					"entries": [
+						"The iron defender imposes disadvantage on the attack roll of one creature it can see that is within 5 feet of it, provided the attack roll is against a creature other than the iron defender."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			]
 		}
 	]
 }

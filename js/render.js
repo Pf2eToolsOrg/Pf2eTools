@@ -228,7 +228,6 @@ function Renderer () {
 
 				// entire data records
 				case "dataCreature": this._renderDataCreature(entry, textStack, meta, options); break;
-				case "dataSpell": this._renderDataSpell(entry, textStack, meta, options); break;
 
 				// images
 				case "image": this._renderImage(entry, textStack, meta, options); break;
@@ -695,25 +694,12 @@ function Renderer () {
 	this._renderDataCreature = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		textStack[0] += `<table class="rd__b-data">`;
-		textStack[0] += `<thead><tr><th class="rd__data-embed-header" colspan="6" onclick="((ele) => {
-						$(ele).find('.rd__data-embed-name').toggle(); 
-						$(ele).find('.rd__data-embed-toggle').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
+		textStack[0] += `<thead><tr><th class="dataCreature__header" colspan="6" onclick="((ele) => {
+						$(ele).find('.dataCreature__name').toggle(); 
+						$(ele).find('.dataCreature__showHide').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
 						$(ele).closest('table').find('tbody').toggle()
-					})(this)"><span style="display: none;" class="rd__data-embed-name">${entry.dataCreature.name}</span><span class="rd__data-embed-toggle">[\u2013]</span></th></tr></thead><tbody>`;
+					})(this)"><span style="display: none;" class="dataCreature__name">${entry.dataCreature.name}</span><span class="dataCreature__showHide">[\u2013]</span></th></tr></thead><tbody>`;
 		textStack[0] += Renderer.monster.getCompactRenderedString(entry.dataCreature, this);
-		textStack[0] += `</tbody></table>`;
-		this._renderSuffix(entry, textStack, meta, options);
-	};
-
-	this._renderDataSpell = function (entry, textStack, meta, options) {
-		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `<table class="rd__b-data">`;
-		textStack[0] += `<thead><tr><th class="rd__data-embed-header" colspan="6" onclick="((ele) => {
-						$(ele).find('.rd__data-embed-name').toggle(); 
-						$(ele).find('.rd__data-embed-toggle').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
-						$(ele).closest('table').find('tbody').toggle()
-					})(this)"><span style="display: none;" class="rd__data-embed-name">${entry.dataSpell.name}</span><span class="rd__data-embed-toggle">[\u2013]</span></th></tr></thead><tbody>`;
-		textStack[0] += Renderer.spell.getCompactRenderedString(entry.dataSpell, this);
 		textStack[0] += `</tbody></table>`;
 		this._renderSuffix(entry, textStack, meta, options);
 	};

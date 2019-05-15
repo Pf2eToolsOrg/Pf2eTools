@@ -1189,7 +1189,7 @@
 									"type": "entries",
 									"name": "Spell Slots",
 									"entries": [
-										"Add half your levels (rounded down) in the artificer class to the appropriate levels from other"
+										"Add half your levels (rounded up) in the artificer class to the appropriate levels from other classes to determine your available spell slots."
 									]
 								}
 							]
@@ -1326,7 +1326,7 @@
 					{
 						"name": "Artificer Specialist",
 						"entries": [
-							"At 3rd level, you choose the type of specialist you are: Alchemist or Artillerist, each of which is detailed at the end of the class's description. Your choice grants you features at 3rd level and again at 6th and 14th level.",
+							"At 3rd level, you choose the type of specialist you are: Alchemist, Archivist, or Artillerist, or Battle Smith, each of which is detailed at the end of the class's description. Your choice grants you features at 3rd level and again at 6th and 14th level.",
 							{
 								"type": "inset",
 								"name": "Variant: Crafting",
@@ -1554,7 +1554,7 @@
 										"type": "entries",
 										"name": "Chemical Savant",
 										"entries": [
-											"By 14th level, you have been exposed to so many chemicals and unlocked their secrets that they pose little risk to you, and you can use them to quickly end certain ailments. You gain resistance to acid damage and poison damage, and you are now immune to the poisoned condition.",
+											"By 14th level, you have been exposed to so many chemicals and unlocked their secrets that they pose little risk to you, and you can use them to quickly end certain ailments. You gain resistance to acid damage and poison damage, and you are now immune to the {@condition poisoned} condition.",
 											"In addition, you can cast {@spell greater restoration} once without expending a spell slot and without providing the material component, provided you use {@item alchemist's supplies|phb} as the spellcasting focus. You regain the ability to do so when you finish a long rest."
 										]
 									}
@@ -1565,6 +1565,210 @@
 					"source": "UAArtificerRevisited",
 					"shortName": "Alchemist",
 					"page": 6
+				},
+				{
+					"name": "Archivist",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Archivist",
+								"entries": [
+									"What are the best ways to store vast amounts of information? That question has occupied chroniclers and librarians for centuries. Scrolls and books were the finest information-storing methods for a long time, but the first Archivists imagined something greater: storing information in a real or an artificial mind. What library could match a mental archive capable of accessing information in seconds? As they work towards this goal, Archivists have become masters of storing knowledge and creating artificial intelligences fueled by magic. These techniques have yet to be perfected and institutionalized, and of all artificers, archivists are on the cutting edge of arcane science.",
+									{
+										"type": "entries",
+										"name": "Tools of the Trade",
+										"entries": [
+											"By the time you adopt this specialty at 3rd level, you're deeply familiar with employing its tools.",
+											{
+												"type": "entries",
+												"name": "Proficiencies",
+												"entries": [
+													"You gain proficiency with calligrapher's supplies and the forgery kit, assuming you don't already have them. You also gain calligrapher's supplies and a forgery kit for free\u2014the result of tinkering you've done as you've prepared for this specialization."
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Crafting",
+												"entries": [
+													"If you craft a magic item in the scroll category, it takes you a quarter of the normal time, and it costs you half as much of the usual gold."
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Archivist Spells",
+										"entries": [
+											"Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Archivist Spells table. These spells count as artificer spells for you, but they don't count against the number of artificer spells you prepare.",
+											{
+												"type": "table",
+												"caption": "Archivist Spells",
+												"colLabels": [
+													"Artificer Level",
+													"Spell"
+												],
+												"colStyles": [
+													"col-xs-2 text-align-center",
+													"col-xs-10"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell comprehend languages}, {@spell dissonant whispers}"
+													],
+													[
+														"5th",
+														"{@spell detect thoughts}, {@spell locate object}"
+													],
+													[
+														"9th",
+														"{@spell hypnotic pattern}, {@spell tongues}"
+													],
+													[
+														"13th",
+														"{@spell locate creature}, {@spell phantasmal killer}"
+													],
+													[
+														"17th",
+														"{@spell legend lore}, {@spell modify memory}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Artificial Mind",
+										"entries": [
+											"At 3rd level, you discover how to awaken a mind inside an object. Whenever you finish a long rest and your calligrapher's supplies are with you, you can magically rouse a keen mind within a Tiny, nonmagical object on which you write mystical symbols. The object is a magic item while the mind is inside it, and you can use it as a spellcasting focus. If you already have an artificial mind from this feature, the first one immediately dissipates.",
+											"The magic item has the following properties.",
+											{
+												"type": "entries",
+												"name": "Telepathic Advisor",
+												"entries": [
+													"The artificial mind telepathically supplies you with advice and information about certain topics: while the item is on your person, you have proficiency in two skills of your choice; the item's main material determines which skills you can choose from, as shown on the Artificial Mind table in the Skill Proficiencies column, for the nature of the object affects the mind's knowledge."
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Manifest Mind",
+												"entries": [
+													"As a bonus action while the item is on your person, you can cause the mind to manifest as a Tiny spectral presence, hovering in an unoccupied space of your choice within 60 feet of you. This presence is intangible and invulnerable, and it sheds dim light in a 10-foot radius. You determine its appearance; the Artificial Mind table offers suggested appearances based on the object's main material.",
+													"While manifested, the spectral mind can hear and see, and it has darkvision with a range of 60 feet. As an action, you can hear and see using the mind's senses, instead of your own, until your concentration ends (as if concentrating on a spell).",
+													"As a bonus action, you can cause the spectral mind to hover up to 30 feet to an unoccupied space that you or it can see. It can pass through creatures but not objects. The spectral mind stops manifesting if it is ever more than 300 feet away from its magic item or if you dismiss it as a bonus action.",
+													"When you cast an artificer spell on your turn, you can cast it as if you were in the spectral mind's space, instead of your own, using its senses. You can do so a number of times per day equal to your Intelligence modifier (at least once), and you regain all expended uses when you finish a long rest."
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Information Overload",
+												"entries": [
+													"As an action while the item is on your person, you can try to magically overload the thoughts of one creature you or the mind can see that is within 5 feet of the manifested mind, channeling a jumble of information from the artificial mind. Unless the target succeeds on an Intelligence saving throw against your spell save DC, the target takes {@dice 1d8} psychic damage, and the next attack roll against it before the end of your next turn has advantage, since it is temporarily too distracted to defend itself well. The damage increases by {@dice 1d8} when you reach 5th level ({@dice 2d8}), 11th level ({@dice 3d8}), and 17th level ({@dice 4d8}) in this class.",
+													"Whenever you deal damage with this feature, you can expend a spell slot to deal extra damage to the target. The extra damage is {@dice 2d8} for a 1st-level spell slot, plus {@dice 1d8} for each spell level higher than first."
+												]
+											},
+											{
+												"type": "table",
+												"caption": "Artificial Mind",
+												"colLabels": [
+													"Main Material",
+													"Skill Proficiencies",
+													"Suggested Appearance"
+												],
+												"colStyles": [
+													"col-xs-3",
+													"col-xs-5",
+													"col-xs-4"
+												],
+												"rows": [
+													[
+														"Animal (parchment, leather, bone)",
+														"{@skill Animal Handling}, {@skill Insight}, {@skill Medicine}, {@skill Perception}, {@skill Survival}",
+														"A beast or a humanoid visage with antlers"
+													],
+													[
+														"Mineral (glass, stone, metal)",
+														"{@skill Deception}, {@skill Intimidation}, {@skill Performance}, {@skill Persuasion}",
+														"A robotic or golem-like face"
+													],
+													[
+														"Plant (paper, wood)",
+														"{@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Nature}, {@skill Religion}",
+														"A bespectacled visage or a treant"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "inset",
+										"name": "The First Warforged Minds",
+										"entries": [
+											"Warforged were originally created by House Cannith to fight as subservient beings, having limited self-awareness. The development of the autonomous warforged consciousness has been presented as an accidental breakthrough. However, rumors abound that it was the work of pioneering archivist Aaren d'Cannith, who planted the seed of autonomy in the warforged mind. This fact is now difficult to verify, for the development team's records were destroyed and Aaren d'Cannith disappeared under mysterious circumstances. Many believe that Aaren is still determined to help the warforged evolve and that he might be working with the sinister Lord of Blades."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Mind Network",
+										"entries": [
+											"At 6th level, you've learned how to use your artifices to access minds, both to communicate and to harm.",
+											{
+												"type": "entries",
+												"name": "Magical Telephony",
+												"entries": [
+													"While you have your Artificial Mind item on your person, you can communicate telepathically with anyone carrying an item bearing one of your artificer infusions, as the mind transmits your thoughts to each other. That person can also communicate telepathically with you as long as they have the item. This two-way communication can even cross planar boundaries."
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Psychic Damage",
+												"entries": [
+													"When you make a psychic damage roll for an artificer spell or for Information Overload, you gain a bonus to the damage roll equal to your Intelligence modifier (minimum bonus of +1)."
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Pure Information",
+										"entries": [
+											"At 14th level, your Artificial Mind is able to receive and transmit more information than ever before.",
+											{
+												"type": "entries",
+												"name": "Mind Overload",
+												"entries": [
+													"When you expend a spell slot to increase the damage of Information Overload, the target must succeed on an Intelligence saving throw against your spell save DC or be {@condition stunned} until the end of your next turn."
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Infoportation",
+												"entries": [
+													"As an action while your Artificial Mind magic item is on your person, you cause the mind to turn you into pure information, teleporting you to the unoccupied space nearest to the spectral mind or to an item bearing one of your artificer infusions, where you physically reappear.",
+													"You can teleport in this way once for free and must finish a long rest before doing so again. You can also use this special ability by expending a spell slot of 2nd level or higher."
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					],
+					"shortName": "Archivist",
+					"page": 7,
+					"source": "UAArtificerRevisited"
 				},
 				{
 					"name": "Artillerist",
@@ -1641,7 +1845,7 @@
 										"type": "entries",
 										"name": "Arcane Turret",
 										"entries": [
-											"At 3rd level, you learn how to create a magical turret. With your smith's tools in hand, you can take an action to magically summon a Medium turret in an unoccupied space on a horizontal surface within 5 feet of you.",
+											"At 3rd level, you learn how to create a magical turret. With your {@item smith's tools|phb} in hand, you can take an action to magically summon a Medium turret in an unoccupied space on a horizontal surface within 5 feet of you.",
 											"The turret is a magical object that occupies its space and that has crablike legs. It has an AC of 18 and a number of hit points equal to five times your artificer level. It is immune to poison damage, psychic damage, and all conditions. If it is forced to make an ability check or a saving throw, treat all its ability scores as 10 (+0). If the {@spell mending} spell is cast on it, it regains {@dice 2d6} hit points. It disappears if it is reduced to 0 hit points or after 10 minutes. You can dismiss it early as an action.",
 											"When you summon the turret, you decide which type it is, choosing from the options on the Arcane Turrets table. On each of your turns, you can take a bonus action to cause the turret to activate if you are within 60 feet of it. As part of the same action, you can direct the turret to walk or climb up to 15 feet to an unoccupied space.",
 											"You can summon a turret once for free and must finish a long rest before doing so again. You can also summon the turret by expending a spell slot of 1st level or higher. If you summon a second turret, the first turret disappears.",
@@ -1708,7 +1912,153 @@
 						]
 					],
 					"shortName": "Artillerist",
-					"page": 7,
+					"page": 9,
+					"source": "UAArtificerRevisited"
+				},
+				{
+					"name": "Battle Smith",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Battle Smith",
+								"entries": [
+									"Armies require protection, and someone has to put things back together if defenses fail. A combination of protector and medic, a Battle Smith is an expert at defending others and repairing both materiel and personnel. To aid in their work, Battle Smiths are usually accompanied by an iron defender, a protective companion of their own creation. Many soldiers tell stories of nearly dying before being saved by a Battle Smith and an iron defender.",
+									"Battle Smiths played a key role in House Cannith's work on battle constructs and the original warforged, and after the Last War, these artificers led efforts to aid those who were injured in the war's horrific battles.",
+									{
+										"type": "entries",
+										"name": "Tools of the Trade",
+										"entries": [
+											"By the time you adopt this specialty at 3rd level, you're deeply familiar with employing its tools.",
+											{
+												"type": "entries",
+												"name": "Proficiencies",
+												"entries": [
+													"You gain proficiency with {@item leatherworker's tools|phb} and {@item smith's tools|phb}, assuming you don't already have them. You also gain {@item leatherworker's tools|phb} and {@item smith's tools|phb} for free\u2014the result of tinkering you've done as you've prepared for this specialization."
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Crafting",
+												"entries": [
+													"If you craft a magic item in the armor category, it takes you a quarter of the normal time, and it costs you half as much of the usual gold."
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Battle Smith Spells",
+										"entries": [
+											"Starting at 3rd level, you always have certain spells prepared after you reach particular levels in this class, as shown in the Battle Smith Spells table. These spells count as artificer spells for you, but they don't count against the number of artificer spells you prepare.",
+											{
+												"type": "table",
+												"caption": "Battle Smith Spells",
+												"colLabels": [
+													"Artificer Level",
+													"Spell"
+												],
+												"colStyles": [
+													"col-xs-2 text-align-center",
+													"col-xs-10"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell heroism}, {@spell searing smite}"
+													],
+													[
+														"5th",
+														"{@spell branding smite}, {@spell warding bond}"
+													],
+													[
+														"9th",
+														"{@spell aura of vitality}, {@spell blinding smite}"
+													],
+													[
+														"13th",
+														"{@spell aura of purity}, {@spell staggering smite}"
+													],
+													[
+														"17th",
+														"{@spell banishing smite}, {@spell mass cure wounds}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Battle Ready",
+										"entries": [
+											"When you reach 3rd level, your combat training and your experiments with magic and have paid off in two ways:",
+											{
+												"type": "list",
+												"items": [
+													"You gain proficiency with martial weapons.",
+													"When you attack with a magic weapon, you can use your Intelligence modifier, instead of Strength or Dexterity, for the attack and damage rolls."
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Iron Defender",
+										"entries": [
+											"By 3rd level, the tinkering in your free time has borne you a faithful companion, an iron defender. This metallic creature resembles a hound, a cougar, a bear, or another four-legged creature of your choice. It is friendly to you and your companions, and it obeys your commands. See this creature's game statistics in the {@creature iron defender|uaartificerrevisited} stat block.",
+											"In combat, the iron defender shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the {@action Dodge} action, unless you take a bonus action on your turn to command it to take one of the actions in its stat block or the {@action Dash}, {@action Disengage}, or {@action Help} action.",
+											"If the {@spell mending} spell is cast on it, it regains {@dice 2d6} hit points. If it has died within the last hour, you can use your {@item smith's tools|phb} as an action to revive it, provided you are within 5 feet of it and you expend a spell slot of 1st level or higher. The iron defender returns to life after 1 minute with all its hit points restored.",
+											"At the end of a long rest, you can create a new iron defender if you have your {@item smith's tools|phb} with you. If you already have an iron defender from this feature, the first one immediately perishes."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Arcane Jolt",
+										"entries": [
+											"At 6th level, you learn new ways to channel arcane energy through your weapon attacks and your iron defender.",
+											"First, your iron defender's bite attack is now considered magical for the purposes of bypassing resistances and immunities, thanks to enhancements you've made to the creature in your free time.",
+											"Second, when you or your iron defender hits a target with a magic weapon attack, you can channel magical energy through the strike to create one of the following effects:",
+											{
+												"type": "list",
+												"items": [
+													"The target takes an extra {@dice 2d4} force damage.",
+													"Choose one creature or object you can see within 30 feet of the target. Healing energy flows into the chosen recipient, restoring {@dice 2d4} hit points to it."
+												]
+											},
+											"You can channel this magical energy a number of times equal to your Intelligence modifier (minimum of once), but you can do so no more than once on a turn. You regain all expended uses of this feature when you finish a long rest."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Improved Defender",
+										"entries": [
+											"At 14th level, your Arcane Jolt and iron defender become more powerful:",
+											{
+												"type": "list",
+												"items": [
+													"The extra damage and the healing of your Arcane Jolt both increase to {@dice 4d4}.",
+													"Whenever your iron defender uses its Defensive Pounce, the attacker takes force damage equal to {@dice 1d4} + your Intelligence modifier."
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					],
+					"shortName": "Battle Smith",
+					"page": 11,
 					"source": "UAArtificerRevisited"
 				}
 			]
