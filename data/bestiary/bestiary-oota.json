@@ -1,4 +1,14 @@
 {
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		},
+		"internalCopies": [
+			"monster"
+		]
+	},
 	"monster": [
 		{
 			"name": "Awakened Zurkhwood",
@@ -36,9 +46,13 @@
 			"vulnerable": [
 				"fire"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 10,
-			"languages": "one language known by its creator",
+			"languages": [
+				"one language known by its creator"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -71,6 +85,10 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -139,15 +157,20 @@
 				"frightened",
 				"poisoned"
 			],
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"passive": 24,
-			"languages": "all, telepathy 120 ft.",
+			"languages": [
+				"all",
+				"telepathy 120 ft."
+			],
 			"cr": "23",
 			"trait": [
 				{
 					"name": "Charge",
 					"entries": [
-						"If Baphomet moves at least 10 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 22 ({@damage 4d10}) piercing damage. If the target is a creature, it must succeed on a DC 25 Strength saving throw or be pushed up to 10 feet away and knocked {@condition prone}."
+						"If Baphomet moves at least 10 feet straight toward a target and then hits it with a gore attack on the same turn, the target takes an extra 22 ({@damage 4d10}) piercing damage. If the target is a creature, it must succeed on a {@dc 25} Strength saving throw or be pushed up to 10 feet away and knocked {@condition prone}."
 					]
 				},
 				{
@@ -209,7 +232,7 @@
 				{
 					"name": "Frightful Presence",
 					"entries": [
-						"Each creature of Baphomet's choice within 120 feet of him and aware of him must succeed on a DC 18 Wisdom saving throw or become {@condition frightened} for 1 minute. A {@condition frightened} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. These later saves have disadvantage if Baphomet is within line of sight of the creature.",
+						"Each creature of Baphomet's choice within 120 feet of him and aware of him must succeed on a {@dc 18} Wisdom saving throw or become {@condition frightened} for 1 minute. A {@condition frightened} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. These later saves have disadvantage if Baphomet is within line of sight of the creature.",
 						"If a creature succeeds on any of these saves or the effect ends on it, the creature is immune is Baphomet's Frightful Presence for the next 24 hours."
 					]
 				}
@@ -237,7 +260,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Baphomet's spellcasting ability is Charisma (spell save DC 18). He can innately cast the following spells, requiring no material components:"
+						"Baphomet's spellcasting ability is Charisma (spell save {@dc 18}). He can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell detect magic}"
@@ -282,6 +305,10 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -314,9 +341,13 @@
 			"int": 14,
 			"wis": 8,
 			"cha": 18,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 9,
-			"languages": "understands Abyssal but can't speak",
+			"languages": [
+				"understands Abyssal but can't speak"
+			],
 			"cr": "1/8",
 			"trait": [
 				{
@@ -330,13 +361,13 @@
 				{
 					"name": "Hallucination Spores",
 					"entries": [
-						"The bridesmaid ejects spores at one creature it can see within 5 feet of it. The target must succeed on a DC 10 Constitution saving throw or be {@condition poisoned} for 1 minute. While {@condition poisoned} in this way, the target is {@condition incapacitated}. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"The bridesmaid ejects spores at one creature it can see within 5 feet of it. The target must succeed on a {@dc 10} Constitution saving throw or be {@condition poisoned} for 1 minute. While {@condition poisoned} in this way, the target is {@condition incapacitated}. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				},
 				{
 					"name": "Infestation Spores (1/Day)",
 					"entries": [
-						"The bridesmaid releases spores that burst out in a cloud that fills a 10-foot-radius sphere centered on it, and the cloud lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a DC 10 Constitution saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the spores of Zuggtmoy and also gains a random form of indefinite madness (determined by rolling on the Madness of Zuggtmoy table in appendix D) that lasts until the creature is cured of the disease or dies. While infected in this way, the creature can't be reinfected, and it must be repeat the saving throw at the end of every 24 hours, ending the infection on a success. On a failure, the infected creature's body is slowly taken over by fungal growth, and after three such failed saves, the creature dies and is reanimated as a spore servant if it's a type of creature that can be (see the \"Myconids\" entry in the Monster Manual)."
+						"The bridesmaid releases spores that burst out in a cloud that fills a 10-foot-radius sphere centered on it, and the cloud lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a {@dc 10} Constitution saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the spores of Zuggtmoy and also gains a random form of indefinite madness (determined by rolling on the Madness of Zuggtmoy table in appendix D) that lasts until the creature is cured of the disease or dies. While infected in this way, the creature can't be reinfected, and it must be repeat the saving throw at the end of every 24 hours, ending the infection on a success. On a failure, the infected creature's body is slowly taken over by fungal growth, and after three such failed saves, the creature dies and is reanimated as a spore servant if it's a type of creature that can be (see the \"Myconids\" entry in the Monster Manual)."
 					]
 				}
 			],
@@ -347,6 +378,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"miscTags": [
+				"AOE"
 			]
 		},
 		{
@@ -383,9 +417,14 @@
 				"bludgeoning",
 				"piercing"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 9,
-			"languages": "Abyssal, Undercommon",
+			"languages": [
+				"Abyssal",
+				"Undercommon"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -397,7 +436,7 @@
 				{
 					"name": "Poison Spores",
 					"entries": [
-						"Whenever the chamberlain takes damage, it releases a cloud of spores. Creatures within 5 feet of the chamberlain when this happens must succeed on a DC 12 Constitution saving throw or be {@condition poisoned} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on a success."
+						"Whenever the chamberlain takes damage, it releases a cloud of spores. Creatures within 5 feet of the chamberlain when this happens must succeed on a {@dc 12} Constitution saving throw or be {@condition poisoned} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on a success."
 					]
 				}
 			],
@@ -405,7 +444,7 @@
 				{
 					"name": "Hallucination Spores",
 					"entries": [
-						"The bridesmaid ejects spores at one creature it can see within 5 feet of it. The target must succeed on a DC 10 Constitution saving throw or be {@condition poisoned} for 1 minute. While {@condition poisoned} in this way, the target is {@condition incapacitated}. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"The bridesmaid ejects spores at one creature it can see within 5 feet of it. The target must succeed on a {@dc 10} Constitution saving throw or be {@condition poisoned} for 1 minute. While {@condition poisoned} in this way, the target is {@condition incapacitated}. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				},
 				{
@@ -423,7 +462,7 @@
 				{
 					"name": "Infestation Spores (1/Day)",
 					"entries": [
-						"The chamberlain releases spores that burst out in a cloud that fills a 10-foot-radius sphere centered on it, and the cloud lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a DC 12 Constitution saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the spores of Zuggtmoy and also gains a random form of indefinite madness (determined by rolling on the Madness of Zuggtmoy table in appendix D) that lasts until the creature is cured of the disease or dies. While infected in this way, the creature can't be reinfected, and it must be repeat the saving throw at the end of every 24 hours, ending the infection on a success. On a failure, the infected creature's body is slowly taken over by fungal growth, and after three such failed saves, the creature dies and is reanimated as a spore servant if it's a type of creature that can be (see the \"Myconids\" entry in the Monster Manual)."
+						"The chamberlain releases spores that burst out in a cloud that fills a 10-foot-radius sphere centered on it, and the cloud lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a {@dc 12} Constitution saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the spores of Zuggtmoy and also gains a random form of indefinite madness (determined by rolling on the Madness of Zuggtmoy table in appendix D) that lasts until the creature is cured of the disease or dies. While infected in this way, the creature can't be reinfected, and it must be repeat the saving throw at the end of every 24 hours, ending the infection on a success. On a failure, the infected creature's body is slowly taken over by fungal growth, and after three such failed saves, the creature dies and is reanimated as a spore servant if it's a type of creature that can be (see the \"Myconids\" entry in the Monster Manual)."
 					]
 				}
 			],
@@ -440,6 +479,10 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"AOE"
 			]
 		},
 		{
@@ -482,7 +525,9 @@
 				"paralyzed",
 				"poisoned"
 			],
-			"senses": "blindsight 30 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
 			"passive": 8,
 			"cr": "4",
 			"action": [
@@ -495,7 +540,7 @@
 				{
 					"name": "Pincer",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d6 + 4}) bludgeoning damage. The target is {@condition grappled} (Escape DC 14) if it is a Large or smaller creature and the spore servant doesn't have two other creatures {@condition grappled}."
+						"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d6 + 4}) bludgeoning damage. The target is {@condition grappled} (Escape {@dc 14}) if it is a Large or smaller creature and the spore servant doesn't have two other creatures {@condition grappled}."
 					]
 				}
 			],
@@ -508,6 +553,10 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -551,7 +600,11 @@
 				"wis": "+2"
 			},
 			"passive": 10,
-			"languages": "Draconic, Giant, and Dwarvish",
+			"languages": [
+				"Draconic",
+				"Giant",
+				"Dwarvish"
+			],
 			"cr": "3",
 			"trait": [
 				{
@@ -610,7 +663,7 @@
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"Horgar magically turns {@condition invisible} until he attacks, casts a spell, or uses his Enlarge, or until his concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment Horgar wears or carries is invisible with him."
+						"Horgar magically turns {@condition invisible} until he attacks, casts a spell, or uses his Enlarge, or until his concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment Horgar wears or carries is {@condition invisible} with him."
 					]
 				},
 				{
@@ -662,6 +715,11 @@
 			"damageTags": [
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -732,9 +790,14 @@
 				"frightened",
 				"poisoned"
 			],
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"passive": 29,
-			"languages": "all, telepathy 120 ft.",
+			"languages": [
+				"all",
+				"telepathy 120 ft."
+			],
 			"cr": "26",
 			"trait": [
 				{
@@ -772,13 +835,13 @@
 				{
 					"name": "Tentacle",
 					"entries": [
-						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. {@h}35 ({@damage 4d12 + 9}) bludgeoning damage. If the target is a creature, it must succeed on a DC 23 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. {@h}35 ({@damage 4d12 + 9}) bludgeoning damage. If the target is a creature, it must succeed on a {@dc 23} Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				},
 				{
 					"name": "Gaze",
 					"entries": [
-						"Demogorgon turns his magical gaze toward one creature that he can see within 120 feet of him. That target must make a DC 23 Wisdom saving throw. Unless the target is {@condition incapacitated}, it can avert its eyes to avoid the gaze and to automatically succeed on the save. If the target does so, it can't see Demogorgon until the start of his next turn. If the target looks at him in the meantime, it must immediately make the save.",
+						"Demogorgon turns his magical gaze toward one creature that he can see within 120 feet of him. That target must make a {@dc 23} Wisdom saving throw. Unless the target is {@condition incapacitated}, it can avert its eyes to avoid the gaze and to automatically succeed on the save. If the target does so, it can't see Demogorgon until the start of his next turn. If the target looks at him in the meantime, it must immediately make the save.",
 						"If the target fails the save, the target suffers one of the following effects of Demogorgon's choice or at random:",
 						"1. Beguiling Gaze. The target is {@condition stunned} until the start of Demogorgon's next turn or until Demogorgon is no longer within line of sight.",
 						"2. Hypnotic Gaze. The target is {@condition charmed} by Demogorgon until the start of Demogorgon's next turn. Demogorgon chooses how the {@condition charmed} target uses its actions, reactions, and movement. Because this gaze requires Demogorgon to focus both heads on the target, he can't use his Maddening Gaze legendary action until the start of his next turn.",
@@ -810,7 +873,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Demogorgon's spellcasting ability is Charisma (spell save DC 23). Demogorgon can innately cast the following spells, requiring no material components:"
+						"Demogorgon's spellcasting ability is Charisma (spell save {@dc 23}). Demogorgon can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell detect magic}",
@@ -853,6 +916,10 @@
 			"damageTags": [
 				"B",
 				"N"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -893,9 +960,14 @@
 			"skill": {
 				"stealth": "+4"
 			},
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 7,
-			"languages": "Dwarvish, Undercommon",
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "1/4",
 			"trait": [
 				{
@@ -921,7 +993,7 @@
 				{
 					"name": "Hooked Shortspear",
 					"entries": [
-						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall {@condition prone}."
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a {@dc 9} Strength saving throw or fall {@condition prone}."
 					]
 				},
 				{
@@ -946,6 +1018,10 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
 			]
 		},
 		{
@@ -986,9 +1062,14 @@
 			"skill": {
 				"stealth": "+4"
 			},
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 7,
-			"languages": "Dwarvish, Undercommon",
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "3",
 			"trait": [
 				{
@@ -1014,7 +1095,7 @@
 				{
 					"name": "Hooked Shortspear",
 					"entries": [
-						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a DC 9 Strength saving throw or fall {@condition prone}."
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) piercing damage. If the target is a creature, the derro can choose to deal no damage and try to trip the target instead, in which case the target must succeed on a {@dc 9} Strength saving throw or fall {@condition prone}."
 					]
 				},
 				{
@@ -1029,7 +1110,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The derro is a 5th-level spellcaster. It's spellcasting ability is Charisma (save DC 12, {@hit 4} to hit with spell attacks). The derro knows the following sorcerer spells:"
+						"The derro is a 5th-level spellcaster. It's spellcasting ability is Charisma (save {@dc 12}, {@hit 4} to hit with spell attacks). The derro knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -1084,6 +1165,10 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
 			]
 		},
 		{
@@ -1128,9 +1213,14 @@
 			"skill": {
 				"stealth": "+5"
 			},
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 7,
-			"languages": "Dwarvish, Undercommon",
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -1174,7 +1264,7 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage. The sword is coated with serpent venom that wears off after the first hit. A target subjected to the venom must make a DC 11 Constitution saving throw, taking 10 ({@damage 3d6}) poison damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage. The sword is coated with serpent venom that wears off after the first hit. A target subjected to the venom must make a {@dc 11} Constitution saving throw, taking 10 ({@damage 3d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -1191,7 +1281,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Droki's innate spellcasting ability is Charisma (spell save DC 13). He can innately cast the following spells, requiring no material components:"
+						"Droki's innate spellcasting ability is Charisma (spell save {@dc 13}). He can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell minor illusion}"
@@ -1228,6 +1318,9 @@
 			"damageTags": [
 				"P",
 				"I"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1265,7 +1358,9 @@
 				"frightened",
 				"paralyzed"
 			],
-			"senses": "blindsight 30 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
 			"passive": 8,
 			"cr": "1/8",
 			"action": [
@@ -1282,6 +1377,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1323,9 +1421,14 @@
 			"resist": [
 				"poison"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 10,
-			"languages": "Dwarvish, Undercommon",
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -1363,7 +1466,7 @@
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is {@condition invisible} with it."
 					]
 				}
 			],
@@ -1372,7 +1475,7 @@
 				{
 					"name": "Innate Spellcasting (Psionics)",
 					"headerEntries": [
-						"The darkhaft's innate spellcasting ability is Intelligence (spell save DC 10) it can innately cast the following spells, requiring no components:"
+						"The darkhaft's innate spellcasting ability is Intelligence (spell save {@dc 10}) it can innately cast the following spells, requiring no components:"
 					],
 					"will": [
 						"{@spell friends}",
@@ -1403,6 +1506,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -1444,9 +1552,14 @@
 			"resist": [
 				"poison"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 10,
-			"languages": "Dwarvish, Undercommon",
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -1502,7 +1615,7 @@
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is {@condition invisible} with it."
 					]
 				}
 			],
@@ -1520,6 +1633,12 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW",
+				"RNG"
 			]
 		},
 		{
@@ -1561,9 +1680,14 @@
 			"resist": [
 				"poison"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 10,
-			"languages": "Dwarvish, Undercommon",
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -1601,7 +1725,7 @@
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is {@condition invisible} with it."
 					]
 				}
 			],
@@ -1610,7 +1734,7 @@
 				{
 					"name": "Innate Spellcasting (Psionics)",
 					"headerEntries": [
-						"The Keeper of the Flame's innate spellcasting ability is Wisdom (spell save DC 12.) It can innately cast the following spells, requiring no components:"
+						"The Keeper of the Flame's innate spellcasting ability is Wisdom (spell save {@dc 12}.) It can innately cast the following spells, requiring no components:"
 					],
 					"will": [
 						"{@spell friends}",
@@ -1626,7 +1750,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The Keeper of the Flame is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). The Keeper of the Flame has the following cleric spells prepared:"
+						"The Keeper of the Flame is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save {@dc 12}, {@hit 4} to hit with spell attacks). The Keeper of the Flame has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -1672,6 +1796,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -1712,9 +1841,14 @@
 			"resist": [
 				"poison"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 10,
-			"languages": "Dwarvish, Undercommon",
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "1",
 			"trait": [
 				{
@@ -1752,7 +1886,7 @@
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is {@condition invisible} with it."
 					]
 				}
 			],
@@ -1761,7 +1895,7 @@
 				{
 					"name": "Innate Spellcasting (Psionics)",
 					"headerEntries": [
-						"The duergar's innate spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). It can innately cast the following spells, requiring no components:"
+						"The duergar's innate spellcasting ability is Wisdom (spell save {@dc 12}, {@hit 4} to hit with spell attacks). It can innately cast the following spells, requiring no components:"
 					],
 					"will": [
 						"{@spell blade ward}",
@@ -1793,6 +1927,9 @@
 			],
 			"damageTags": [
 				"O"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1834,7 +1971,9 @@
 				"frightened",
 				"paralyzed"
 			],
-			"senses": "blindsight 30 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
 			"passive": 8,
 			"cr": "1/2",
 			"action": [
@@ -1851,6 +1990,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1892,9 +2034,14 @@
 			"resist": [
 				"poison"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 10,
-			"languages": "Dwarvish, Undercommon",
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -1932,7 +2079,7 @@
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is {@condition invisible} with it."
 					]
 				}
 			],
@@ -1950,6 +2097,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -1990,9 +2142,14 @@
 			"resist": [
 				"poison"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 10,
-			"languages": "Dwarvish, Undercommon",
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -2024,13 +2181,13 @@
 				{
 					"name": "Fire Spray {@recharge 5}",
 					"entries": [
-						"From its fire lance, the duergar shoots a 15-foot cone of fire or a line of fire 30 feet long and 5 feet wide. Each creature in that area must make a DC 12 Dexterity saving throw, taking 10 ({@damage 3d6}) fire damage on a failed save, or half as much damage on a successful one."
+						"From its fire lance, the duergar shoots a 15-foot cone of fire or a line of fire 30 feet long and 5 feet wide. Each creature in that area must make a {@dc 12} Dexterity saving throw, taking 10 ({@damage 3d6}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is {@condition invisible} with it."
 					]
 				}
 			],
@@ -2049,6 +2206,11 @@
 			"damageTags": [
 				"P",
 				"F"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"AOE"
 			]
 		},
 		{
@@ -2095,9 +2257,14 @@
 			"resist": [
 				"poison"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 15,
-			"languages": "Common, Dwarvish",
+			"languages": [
+				"Common",
+				"Dwarvish"
+			],
 			"cr": "1/2",
 			"trait": [
 				{
@@ -2149,6 +2316,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -2184,7 +2356,9 @@
 			"skill": {
 				"stealth": "+7"
 			},
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 10,
 			"cr": "1",
 			"trait": [
@@ -2205,13 +2379,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. {@h}7 ({@damage 1d8 + 3}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 9 ({@damage 2d8}) acid damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. {@h}7 ({@damage 1d8 + 3}) piercing damage, and the target must make a {@dc 12} Constitution saving throw, taking 9 ({@damage 2d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Sticky Leg (Recharges when the Steeder Has No Creatures Grappled)",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one Medium or smaller creature. {@h}The target is stuck on the steeder's leg and {@condition grappled} until it escapes (escape DC 12)"
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one Medium or smaller creature. {@h}The target is stuck on the steeder's leg and {@condition grappled} until it escapes (escape {@dc 12})"
 					]
 				}
 			],
@@ -2226,6 +2400,9 @@
 			"damageTags": [
 				"P",
 				"A"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2297,9 +2474,14 @@
 				"frightened",
 				"poisoned"
 			],
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"passive": 24,
-			"languages": "all, telepathy 120 ft.",
+			"languages": [
+				"all",
+				"telepathy 120 ft."
+			],
 			"cr": "23",
 			"trait": [
 				{
@@ -2355,7 +2537,7 @@
 				{
 					"name": "Tail",
 					"entries": [
-						"{@atk mw} {@hit 16} to hit, reach 15 ft., one target. {@h}31 ({@damage 4d10 + 9}) bludgeoning damage. If the target is a Large or smaller creature, it is also {@condition grappled} (escape DC 24). The {@condition grappled} target is also {@condition restrained}. Fraz-Urb'luu can grapple only one creature with his tail at a time."
+						"{@atk mw} {@hit 16} to hit, reach 15 ft., one target. {@h}31 ({@damage 4d10 + 9}) bludgeoning damage. If the target is a Large or smaller creature, it is also {@condition grappled} (escape {@dc 24}). The {@condition grappled} target is also {@condition restrained}. Fraz-Urb'luu can grapple only one creature with his tail at a time."
 					]
 				},
 				{
@@ -2370,7 +2552,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Fraz-Urb'luu's spellcasting ability is Charisma (spell save DC 23). Fraz-Urb'luu can innately cast the following spells, requiring no material components:"
+						"Fraz-Urb'luu's spellcasting ability is Charisma (spell save {@dc 23}). Fraz-Urb'luu can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell alter self} (can become Medium-sized when changing his appearance)",
@@ -2417,6 +2599,10 @@
 			"damageTags": [
 				"P",
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -2449,7 +2635,9 @@
 			"int": 2,
 			"wis": 10,
 			"cha": 5,
-			"senses": "darkvision 30 ft.",
+			"senses": [
+				"darkvision 30 ft."
+			],
 			"passive": 10,
 			"cr": "1/4",
 			"trait": [
@@ -2477,6 +2665,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2548,9 +2739,14 @@
 				"frightened",
 				"poisoned"
 			],
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"passive": 22,
-			"languages": "all, telepathy 120 ft.",
+			"languages": [
+				"all",
+				"telepathy 120 ft."
+			],
 			"cr": "24",
 			"trait": [
 				{
@@ -2633,7 +2829,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Graz'zt's spellcasting ability is Charisma (spell save DC 23). Graz'zt can innately cast the following spells, requiring no material components:"
+						"Graz'zt's spellcasting ability is Charisma (spell save {@dc 23}). Graz'zt can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell charm person}",
@@ -2683,6 +2879,10 @@
 			"damageTags": [
 				"S",
 				"A"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -2734,7 +2934,10 @@
 				"religion": "+2"
 			},
 			"passive": 12,
-			"languages": "Common, Undercommon",
+			"languages": [
+				"Common",
+				"Undercommon"
+			],
 			"cr": "2",
 			"action": [
 				{
@@ -2755,7 +2958,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Grisha is a 6th-level-spellcaster. His spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). He has the following cleric spells prepared:"
+						"Grisha is a 6th-level-spellcaster. His spellcasting ability is Wisdom (spell save {@dc 12}, {@hit 4} to hit with spell attacks). He has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -2809,6 +3012,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2850,7 +3056,9 @@
 				"frightened",
 				"paralyzed"
 			],
-			"senses": "blindsight 30 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
 			"passive": 8,
 			"cr": "3",
 			"action": [
@@ -2876,6 +3084,10 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -2909,9 +3121,14 @@
 			"int": 12,
 			"wis": 13,
 			"cha": 7,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 11,
-			"languages": "Abyssal, Ixitxachitl",
+			"languages": [
+				"Abyssal",
+				"Ixitxachitl"
+			],
 			"cr": "1/4",
 			"action": [
 				{
@@ -2940,6 +3157,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2973,9 +3193,14 @@
 			"int": 12,
 			"wis": 13,
 			"cha": 7,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 11,
-			"languages": "Abyssal, Ixitxachitl",
+			"languages": [
+				"Abyssal",
+				"Ixitxachitl"
+			],
 			"cr": "1/4",
 			"action": [
 				{
@@ -2999,7 +3224,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The ixitxachitl is a 5th-level spellcaster that uses Wisdom as its spellcasting ability (spell save DC 11, {@hit 3} to hit with spell attacks). The ixitxachitl has the following cleric spells prepared:"
+						"The ixitxachitl is a 5th-level spellcaster that uses Wisdom as its spellcasting ability (spell save {@dc 11}, {@hit 3} to hit with spell attacks). The ixitxachitl has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -3045,6 +3270,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3121,15 +3349,20 @@
 				"stunned",
 				"unconscious"
 			],
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"passive": 22,
-			"languages": "all, telepathy 120 ft.",
+			"languages": [
+				"all",
+				"telepathy 120 ft."
+			],
 			"cr": "23",
 			"trait": [
 				{
 					"name": "Foul",
 					"entries": [
-						"Any creature, other than an ooze, that starts its turn within 10 feet of Juiblex must succeed on a DC 21 Constitution saving throw or be {@condition poisoned} until the start of the creature's next turn."
+						"Any creature, other than an ooze, that starts its turn within 10 feet of Juiblex must succeed on a {@dc 21} Constitution saving throw or be {@condition poisoned} until the start of the creature's next turn."
 					]
 				},
 				{
@@ -3179,7 +3412,7 @@
 				{
 					"name": "Eject Slime {@recharge 5}",
 					"entries": [
-						"Juiblex spews out a corrosive slime, targeting one creature that it can see within 60 feet of it. The target must make a DC 21 Dexterity saving throw. On a failure, the target takes 55 ({@damage 10d10}) acid damage. Unless the target avoids taking any of this damage, any metal armor worn by the target takes a permanent \u22121 penalty to the AC it offers, and any metal weapon it is carrying or wearing takes a permanent \u22121 penalty to damage rolls. The penalty worsens each time a target is subjected to this effect. If the penalty on an object drops to \u22125, the object is destroyed."
+						"Juiblex spews out a corrosive slime, targeting one creature that it can see within 60 feet of it. The target must make a {@dc 21} Dexterity saving throw. On a failure, the target takes 55 ({@damage 10d10}) acid damage. Unless the target avoids taking any of this damage, any metal armor worn by the target takes a permanent \u22121 penalty to the AC it offers, and any metal weapon it is carrying or wearing takes a permanent \u22121 penalty to damage rolls. The penalty worsens each time a target is subjected to this effect. If the penalty on an object drops to \u22125, the object is destroyed."
 					]
 				}
 			],
@@ -3212,7 +3445,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Juiblex's spellcasting ability is Charisma (spell save DC 18, {@hit 10} to hit with spell attacks). Juiblex can innately cast the following spells, requiring no material components:"
+						"Juiblex's spellcasting ability is Charisma (spell save {@dc 18}, {@hit 10} to hit with spell attacks). Juiblex can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell acid splash} (17th level)",
@@ -3252,6 +3485,10 @@
 			"damageTags": [
 				"A",
 				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -3293,7 +3530,9 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 12,
 			"cr": "1/4",
 			"trait": [
@@ -3318,6 +3557,10 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -3364,7 +3607,10 @@
 				"stealth": "+4"
 			},
 			"passive": 16,
-			"languages": "Common, Dwarvish",
+			"languages": [
+				"Common",
+				"Dwarvish"
+			],
 			"cr": "1",
 			"trait": [
 				{
@@ -3413,6 +3659,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -3448,7 +3699,9 @@
 			"skill": {
 				"stealth": "+5"
 			},
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 10,
 			"cr": "1/4",
 			"trait": [
@@ -3469,13 +3722,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}7 ({@damage 1d8 + 2}) piercing damage, and the target must make a DC 12 Constitution saving throw, taking 4 ({@damage 1d8}) acid damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}7 ({@damage 1d8 + 2}) piercing damage, and the target must make a {@dc 12} Constitution saving throw, taking 4 ({@damage 1d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Sticky Leg (Recharges when the Steeder Has No Creatures Grappled)",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one Small or Tiny creature. {@h}The target is stuck on the steeder's leg and {@condition grappled} until it escapes (escape DC 12)"
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one Small or Tiny creature. {@h}The target is stuck on the steeder's leg and {@condition grappled} until it escapes (escape {@dc 12})"
 					]
 				}
 			],
@@ -3490,6 +3743,9 @@
 			"damageTags": [
 				"P",
 				"A"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3532,9 +3788,14 @@
 				"arcana": "+4",
 				"stealth": "+4"
 			},
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 7,
-			"languages": "Dwarvish, Undercommon",
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -3581,7 +3842,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Narrak is a 5th-level spellcaster. His spellcasting ability is Charisma (Save DC 13, {@hit 5} to hit with spell attacks) Narrak has two 2nd-level spell slots, which he regains after finishing a short or long rest, and knows the following Warlock spells:"
+						"Narrak is a 5th-level spellcaster. His spellcasting ability is Charisma (Save {@dc 13}, {@hit 5} to hit with spell attacks) Narrak has two 2nd-level spell slots, which he regains after finishing a short or long rest, and knows the following Warlock spells:"
 					],
 					"spells": {
 						"0": {
@@ -3627,6 +3888,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3697,9 +3961,14 @@
 				"frightened",
 				"poisoned"
 			],
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"passive": 22,
-			"languages": "all, telepathy 120 ft.",
+			"languages": [
+				"all",
+				"telepathy 120 ft."
+			],
 			"cr": "26",
 			"trait": [
 				{
@@ -3783,7 +4052,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Orcus's spellcasting ability is Charisma (spell save DC 23, {@hit 15} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
+						"Orcus's spellcasting ability is Charisma (spell save {@dc 23}, {@hit 15} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell chill touch} (17th level)",
@@ -3825,6 +4094,11 @@
 				"N",
 				"P",
 				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"AOE"
 			]
 		},
 		{
@@ -3865,7 +4139,10 @@
 				"stealth": "+7",
 				"perception": "+4"
 			},
-			"senses": "blindsight 10 ft., darkvision 60 ft.",
+			"senses": [
+				"blindsight 10 ft.",
+				"darkvision 60 ft."
+			],
 			"passive": 14,
 			"cr": "1",
 			"trait": [
@@ -3898,13 +4175,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. {@h}7 ({@damage 1d8 + 3}) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 9 ({@damage 2d8}) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but {@condition poisoned} for 1 hour, even after regaining hit points, and is {@condition paralyzed} while {@condition poisoned} in this way."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. {@h}7 ({@damage 1d8 + 3}) piercing damage, and the target must make a {@dc 11} Constitution saving throw, taking 9 ({@damage 2d8}) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but {@condition poisoned} for 1 hour, even after regaining hit points, and is {@condition paralyzed} while {@condition poisoned} in this way."
 					]
 				},
 				{
 					"name": "Web {@recharge 5}",
 					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 30/60 ft., one creature. {@h}The target is {@condition restrained} by webbing. As an action, the {@condition restrained} target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
+						"{@atk rw} {@hit 5} to hit, range 30/60 ft., one creature. {@h}The target is {@condition restrained} by webbing. As an action, the {@condition restrained} target can make a {@dc 12} Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
 					]
 				}
 			],
@@ -3921,6 +4198,10 @@
 			"damageTags": [
 				"P",
 				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
 			]
 		},
 		{
@@ -3977,9 +4258,16 @@
 			"conditionImmune": [
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 12,
-			"languages": "Abyssal, Gnomish, Terran, Undercommon",
+			"languages": [
+				"Abyssal",
+				"Gnomish",
+				"Terran",
+				"Undercommon"
+			],
 			"cr": "4",
 			"trait": [
 				{
@@ -4026,7 +4314,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The Pudding King's innate spellcasting ability is Intelligence (spell save DC 12). He can innately cast the following spells, requiring no material components:"
+						"The Pudding King's innate spellcasting ability is Intelligence (spell save {@dc 12}). He can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell nondetection} (self only)"
@@ -4043,7 +4331,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The Pudding King is a 9th-level spellcaster. His spellcasting ability is Charisma (spell save DC 14, {@hit 6} to hit with spell attacks). The Pudding King knows the following sorcerer spells:"
+						"The Pudding King is a 9th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 14}, {@hit 6} to hit with spell attacks). The Pudding King knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -4110,6 +4398,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4152,9 +4443,13 @@
 				"intimidation": "+3",
 				"stealth": "+3"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 11,
-			"languages": "Troglodyte",
+			"languages": [
+				"Troglodyte"
+			],
 			"cr": "3",
 			"trait": [
 				{
@@ -4166,7 +4461,7 @@
 				{
 					"name": "Stench",
 					"entries": [
-						"Any creature other than a troglodyte that starts its turn within 5 feet of the troglodyte must succeed on a DC 14 Constitution saving throw or be {@condition poisoned} until the start of the creature's next turn. On a successful saving throw, the creature is immune to the stench of all troglodytes for 1 hour."
+						"Any creature other than a troglodyte that starts its turn within 5 feet of the troglodyte must succeed on a {@dc 14} Constitution saving throw or be {@condition poisoned} until the start of the creature's next turn. On a successful saving throw, the creature is immune to the stench of all troglodytes for 1 hour."
 					]
 				},
 				{
@@ -4204,7 +4499,7 @@
 				{
 					"name": "Acid Spray {@recharge}",
 					"entries": [
-						"The troglodyte spits acid in a line 15 feet long and 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 10 ({@damage 3d6}) acid damage on a failed save, or half as much damage on a successful one."
+						"The troglodyte spits acid in a line 15 feet long and 5 feet wide. Each creature in that line must make a {@dc 14} Dexterity saving throw, taking 10 ({@damage 3d6}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -4226,6 +4521,9 @@
 				"S",
 				"B",
 				"A"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4259,15 +4557,20 @@
 			"int": 12,
 			"wis": 13,
 			"cha": 7,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 11,
-			"languages": "Abyssal, Ixitxachitl",
+			"languages": [
+				"Abyssal",
+				"Ixitxachitl"
+			],
 			"cr": "2",
 			"action": [
 				{
 					"name": "Vampiric Bite",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage. The target must succeed on a {@dc 11} Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				}
 			],
@@ -4290,6 +4593,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4323,15 +4629,20 @@
 			"int": 12,
 			"wis": 13,
 			"cha": 7,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 11,
-			"languages": "Abyssal, Ixitxachitl",
+			"languages": [
+				"Abyssal",
+				"Ixitxachitl"
+			],
 			"cr": "2",
 			"action": [
 				{
 					"name": "Vampiric Bite",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage. The target must succeed on a DC 11 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage. The target must succeed on a {@dc 11} Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				}
 			],
@@ -4349,7 +4660,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The ixitxachitl is a 5th-level spellcaster that uses Wisdom as its spellcasting ability (Spell save DC 11, {@hit 3} to hit with spell attacks). The ixitxachitl has the following cleric spells prepared:"
+						"The ixitxachitl is a 5th-level spellcaster that uses Wisdom as its spellcasting ability (Spell save {@dc 11}, {@hit 3} to hit with spell attacks). The ixitxachitl has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -4395,6 +4706,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4437,7 +4751,10 @@
 				"perception": "+2"
 			},
 			"passive": 12,
-			"languages": "Common, Dwarvish",
+			"languages": [
+				"Common",
+				"Dwarvish"
+			],
 			"cr": "3",
 			"action": [
 				{
@@ -4476,6 +4793,11 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -4544,9 +4866,14 @@
 				"frightened",
 				"poisoned"
 			],
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"passive": 24,
-			"languages": "all, telepathy 120 ft.",
+			"languages": [
+				"all",
+				"telepathy 120 ft."
+			],
 			"cr": "24",
 			"trait": [
 				{
@@ -4580,8 +4907,8 @@
 					"entries": [
 						"Yeenoghu makes three flail attacks. If an attack hits, he can cause it to create an additional effect of his choice or at random (each effect can be used only once per Multi attack):",
 						"1. The attack deals an extra 13 ({@damage 2d12}) bludgeoning damage.",
-						"2. The target must succeed on a DC 17 Constitution saving throw or be {@condition paralyzed} until the start of Yeenoghu's next turn.",
-						"3. The target must succeed on a DC 17 Wisdom saving throw or be affected by the {@spell confusion} spell until the start of Yeenoghu's next turn."
+						"2. The target must succeed on a {@dc 17} Constitution saving throw or be {@condition paralyzed} until the start of Yeenoghu's next turn.",
+						"3. The target must succeed on a {@dc 17} Wisdom saving throw or be affected by the {@spell confusion} spell until the start of Yeenoghu's next turn."
 					]
 				},
 				{
@@ -4611,7 +4938,7 @@
 				{
 					"name": "Swat Away",
 					"entries": [
-						"Yeenoghu makes a flail attack. If the attack hits, the target must succeed on a DC 24 Strength saving throw or be pushed 15 feet in a straight line away from Yeenoghu. If the saving throw fails by 5 or more, the target falls {@condition prone}."
+						"Yeenoghu makes a flail attack. If the attack hits, the target must succeed on a {@dc 24} Strength saving throw or be pushed 15 feet in a straight line away from Yeenoghu. If the saving throw fails by 5 or more, the target falls {@condition prone}."
 					]
 				},
 				{
@@ -4626,7 +4953,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Yeenoghu's spellcasting ability is Charisma (spell save DC 17, {@hit 9} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
+						"Yeenoghu's spellcasting ability is Charisma (spell save {@dc 17}, {@hit 9} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell detect magic}",
@@ -4668,6 +4995,10 @@
 			"damageTags": [
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -4706,9 +5037,14 @@
 			"conditionImmune": [
 				"poisoned"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 12,
-			"languages": "Abyssal, telepathy 60 ft.",
+			"languages": [
+				"Abyssal",
+				"telepathy 60 ft."
+			],
 			"cr": "4",
 			"trait": [
 				{
@@ -4728,13 +5064,13 @@
 				{
 					"name": "Caustic Spores (1/Day)",
 					"entries": [
-						"Yestabrod releases spores in a 30-foot cone. Each creature in that area must succeed on a DC 12 Dexterity saving throw or take {@dice 1d6} acid damage at the start of each of Yestabrod's turns. A creature can repeat the saving throw at the end of each of its turn, ending the effect on itself on a success."
+						"Yestabrod releases spores in a 30-foot cone. Each creature in that area must succeed on a {@dc 12} Dexterity saving throw or take {@dice 1d6} acid damage at the start of each of Yestabrod's turns. A creature can repeat the saving throw at the end of each of its turn, ending the effect on itself on a success."
 					]
 				},
 				{
 					"name": "Infestation Spores (1/Day)",
 					"entries": [
-						"Yestabrod releases spores that burst out in a cloud that fills a 10-foot-radius sphere centered on it, and the cloud lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a DC 12 Constitution saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the spores of Zuggtmoy and also gains a random form of indefinite madness (determined by rolling on the Madness of Zuggtmoy table in appendix D) that lasts until the creature is cured of the disease or dies. While infected in this way, the creature can't be reinfected, and it must be repeat the saving throw at the end of every 24 hours, ending the infection on a success. On a failure, the infected creature's body is slowly taken over by fungal growth, and after three such failed saves, the creature dies and is reanimated as a spore servant if it's a type of creature that can be (see the \"Myconids\" entry in the Monster Manual)."
+						"Yestabrod releases spores that burst out in a cloud that fills a 10-foot-radius sphere centered on it, and the cloud lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a {@dc 12} Constitution saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the spores of Zuggtmoy and also gains a random form of indefinite madness (determined by rolling on the Madness of Zuggtmoy table in appendix D) that lasts until the creature is cured of the disease or dies. While infected in this way, the creature can't be reinfected, and it must be repeat the saving throw at the end of every 24 hours, ending the infection on a success. On a failure, the infected creature's body is slowly taken over by fungal growth, and after three such failed saves, the creature dies and is reanimated as a spore servant if it's a type of creature that can be (see the \"Myconids\" entry in the Monster Manual)."
 					]
 				}
 			],
@@ -4743,7 +5079,7 @@
 				{
 					"name": "Corpse Burst",
 					"entries": [
-						"Gore, offal, and acid erupt from a corpse within 20 feet of Yestabrod. Creatures within 10 feet of the corpse must succeed on a DC 12 Dexterity saving throw or take 7 ({@damage 2d6}) acid damage."
+						"Gore, offal, and acid erupt from a corpse within 20 feet of Yestabrod. Creatures within 10 feet of the corpse must succeed on a {@dc 12} Dexterity saving throw or take 7 ({@damage 2d6}) acid damage."
 					]
 				},
 				{
@@ -4769,6 +5105,10 @@
 				"B",
 				"I",
 				"A"
+			],
+			"miscTags": [
+				"MW",
+				"AOE"
 			]
 		},
 		{
@@ -4848,6 +5188,11 @@
 			"damageTags": [
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -4915,9 +5260,14 @@
 				"frightened",
 				"poisoned"
 			],
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"passive": 21,
-			"languages": "all, telepathy 120 ft.",
+			"languages": [
+				"all",
+				"telepathy 120 ft."
+			],
 			"cr": "23",
 			"trait": [
 				{
@@ -4955,13 +5305,13 @@
 				{
 					"name": "Infestation Spores (3/Day)",
 					"entries": [
-						"Zuggtmoy releases spores that burst out in cloud fills a 20-foot-radius sphere centered on her, and it lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a DC 19 Constitution saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the spores of Zuggtmoy and also gains a random form of madness (determined by rolling on the Madness of Zuggtmoy table) that lasts until the creature is cured of the disease or dies. While infected in this way, the creature can't be reinfected, and it must repeat the saving throw at the end of every 24 hours, ending the infection on a success. On a failure, the infected creature's body is slowly taken over by fungal growth, and after three such failed saves, the creature dies and is reanimated as a spore servant if it's a type of creature that can be (see the \"Myconids\" entry in the Monster Manual)."
+						"Zuggtmoy releases spores that burst out in cloud fills a 20-foot-radius sphere centered on her, and it lingers for 1 minute. Any flesh-and-blood creature in the cloud when it appears, or that enters it later, must make a {@dc 19} Constitution saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the spores of Zuggtmoy and also gains a random form of madness (determined by rolling on the Madness of Zuggtmoy table) that lasts until the creature is cured of the disease or dies. While infected in this way, the creature can't be reinfected, and it must repeat the saving throw at the end of every 24 hours, ending the infection on a success. On a failure, the infected creature's body is slowly taken over by fungal growth, and after three such failed saves, the creature dies and is reanimated as a spore servant if it's a type of creature that can be (see the \"Myconids\" entry in the Monster Manual)."
 					]
 				},
 				{
 					"name": "Mind Control Spores {@recharge 5}",
 					"entries": [
-						"Zuggtmoy releases spores that burst out in a cloud that fills a 20-foot-radius sphere centered on her, and it lingers for 1 minute. Humanoids and beasts in the cloud when it appears, or that enter it later, must make a DC 19 Wisdom saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the influence of Zuggtmoy for 24 hours. While infected, the creature is {@condition charmed} by her and can't be reinfected by these spores."
+						"Zuggtmoy releases spores that burst out in a cloud that fills a 20-foot-radius sphere centered on her, and it lingers for 1 minute. Humanoids and beasts in the cloud when it appears, or that enter it later, must make a {@dc 19} Wisdom saving throw. On a successful save, the creature can't be infected by these spores for 24 hours. On a failed save, the creature is infected with a disease called the influence of Zuggtmoy for 24 hours. While infected, the creature is {@condition charmed} by her and can't be reinfected by these spores."
 					]
 				}
 			],
@@ -4988,7 +5338,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Zuggtmoy's spellcasting ability is Charisma (spell save DC 22). She can innately cast the following spells, requiring no material components:"
+						"Zuggtmoy's spellcasting ability is Charisma (spell save {@dc 22}). She can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell detect magic}",
@@ -5032,6 +5382,107 @@
 			"damageTags": [
 				"B",
 				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"AOE"
+			]
+		},
+		{
+			"name": "Buppido",
+			"isNpc": true,
+			"source": "OotA",
+			"_copy": {
+				"name": "Derro",
+				"source": "OotA",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the derro",
+						"with": "Buppido",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Prince Derendil",
+			"isNpc": true,
+			"source": "OotA",
+			"_copy": {
+				"name": "Quaggoth",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the quaggoth",
+						"with": "Prince Derendil",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Eldeth Feldrun",
+			"isNpc": true,
+			"source": "OotA",
+			"_copy": {
+				"name": "Scout",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the scout",
+						"with": "Eldeth",
+						"flags": "i"
+					}
+				},
+				"_trait": {
+					"name": "Mountain Dwarf",
+					"source": "PHB"
+				}
+			},
+			"languageTags": [
+				"C",
+				"X",
+				"D"
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"name": "Giant Rocktopus",
+			"source": "OotA",
+			"_copy": {
+				"name": "Giant Octopus",
+				"source": "MM",
+				"_mod": {
+					"trait": [
+						{
+							"mode": "replaceArr",
+							"replace": "Underwater Camouflage",
+							"items": {
+								"name": "Camouflage",
+								"entries": [
+									"The octopus has advantage on Dexterity (Stealth) checks."
+								]
+							}
+						},
+						{
+							"mode": "removeArr",
+							"names": "Hold Breath"
+						}
+					]
+				}
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 10
+			},
+			"traitTags": [
+				"Water Breathing"
 			]
 		}
 	]

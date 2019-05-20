@@ -55,7 +55,7 @@ class EncounterBuilder {
 		});
 
 		const $btnSvUrl = $(`.ecgen__sv_url`).click(async () => {
-			const encounterPart = UrlUtil.packSubHash(EncounterUtil.SUB_HASH_PREFIX, [JSON.stringify(this.getSaveableState())], true);
+			const encounterPart = UrlUtil.packSubHash(EncounterUtil.SUB_HASH_PREFIX, [JSON.stringify(this.getSaveableState())], {isEncodeBoth: true});
 			const parts = [location.href, encounterPart];
 			await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
 			JqueryUtil.showCopiedEffect($btnSvUrl);
@@ -72,6 +72,20 @@ class EncounterBuilder {
 			this.pDoLoadState(json);
 		});
 		$(`.ecgen__reset`).click(() => confirm("Are you sure?") && encounterBuilder.pReset());
+
+		const $btnSvTxt = $(`.ecgen__sv_text`).click(() => {
+			let xpTotal = 0;
+			const toCopyCreatures = ListUtil.sublist.items
+				.map(it => it.values())
+				.sort((a, b) => SortUtil.ascSortLower(a.name, b.name))
+				.map(it => {
+					xpTotal += Parser.crToXpNumber(it.cr) * it.count;
+					return `${it.count}× ${it.name}`;
+				})
+				.join(", ");
+			MiscUtil.pCopyTextToClipboard(`${toCopyCreatures} (${xpTotal.toLocaleString()} XP)`);
+			JqueryUtil.showCopiedEffect($btnSvTxt);
+		});
 
 		// local save browser
 		$('.ecgen__ld-browser').click(() => encounterBuilder.doToggleBrowserUi(true));
@@ -178,6 +192,7 @@ class EncounterBuilder {
 
 	async pDoLoadState (savedState, playersOnly) {
 		await this.pReset(false, playersOnly);
+		if (!savedState) return;
 		try {
 			if (savedState.a) {
 				this._advanced = true;
@@ -247,7 +262,7 @@ class EncounterBuilder {
 			this._cache = (() => {
 				const out = {};
 				list.visibleItems.map(it => monsters[Number(it.elm.getAttribute("filterid"))]).filter(m => !m.isNpc).forEach(m => {
-					const mXp = Parser.crToXpNumber(m.cr.cr || m.cr);
+					const mXp = Parser.crToXpNumber(m.cr);
 					if (mXp) (out[mXp] = out[mXp] || []).push(m);
 				});
 				return out;
@@ -352,7 +367,7 @@ class EncounterBuilder {
 						else if (xp < targetMin) return targetMin - xp;
 						else return 0;
 					})()
-				})).sort((a, b) => SortUtil.ascSort(a.distance, b.distance))[0];
+				})).sort((a, b) => SortUtil.ascSort(a.distance, b.distance))[0].encounter;
 			}
 
 			const belowCrCutoff = currentEncounter.filter(it => it.cr < crCutoff);
@@ -608,7 +623,7 @@ class EncounterBuilder {
 
 	handleShuffleClick (evt, ix) {
 		const mon = monsters[ix];
-		const xp = Parser.crToXpNumber(mon.cr.cr || mon.cr);
+		const xp = Parser.crToXpNumber(mon.cr);
 		if (!xp) return; // if Unknown/etc
 
 		const curr = ListUtil.getExportableSublist();

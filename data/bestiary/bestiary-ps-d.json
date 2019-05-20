@@ -36,9 +36,13 @@
 				"perception": "+4",
 				"stealth": "+3"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 14,
-			"languages": "Homarid",
+			"languages": [
+				"Homarid"
+			],
 			"cr": "1",
 			"trait": [
 				{
@@ -58,7 +62,7 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d8 + 1}) slashing damage, and the target is {@condition grappled} (escape DC 11). The homarid has two claws, each of which can grapple only one target."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d8 + 1}) slashing damage, and the target is {@condition grappled} (escape {@dc 11}). The homarid has two claws, each of which can grapple only one target."
 					]
 				}
 			],
@@ -76,6 +80,9 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -113,15 +120,19 @@
 				"perception": "+4",
 				"stealth": "+5"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 14,
-			"languages": "understands Elvish",
+			"languages": [
+				"understands Elvish"
+			],
 			"cr": "2",
 			"trait": [
 				{
 					"name": "Pounce",
 					"entries": [
-						"If the kavu moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the kavu can make one bite attack against it as a bonus action."
+						"If the kavu moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a {@dc 14} Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the kavu can make one bite attack against it as a bonus action."
 					]
 				}
 			],
@@ -160,6 +171,9 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -195,15 +209,19 @@
 			"skill": {
 				"perception": "+4"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 14,
-			"languages": "understands Elvish",
+			"languages": [
+				"understands Elvish"
+			],
 			"cr": "4",
 			"trait": [
 				{
 					"name": "Raking Charge",
 					"entries": [
-						"If the kavu moves at least 20 feet straight toward a creature and then hits it with a bite attack on the same turn, that target must succeed on a DC 15 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the kavu can make one rend attack against it as a bonus action."
+						"If the kavu moves at least 20 feet straight toward a creature and then hits it with a bite attack on the same turn, that target must succeed on a {@dc 15} Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the kavu can make one rend attack against it as a bonus action."
 					]
 				}
 			],
@@ -230,6 +248,9 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		}
 	]

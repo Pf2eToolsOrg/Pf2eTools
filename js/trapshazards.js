@@ -8,6 +8,12 @@ window.onload = async function load () {
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
+function filterTypeSort (a, b) {
+	a = a.item;
+	b = b.item;
+	return SortUtil.ascSortLower(Parser.trapHazTypeToFull(a), Parser.trapHazTypeToFull(b));
+}
+
 const sourceFilter = getSourceFilter();
 let filterBox;
 let list;
@@ -31,16 +37,17 @@ async function onJsonLoad (data) {
 			"WLD",
 			"GEN"
 		],
-		displayFn: Parser.trapHazTypeToFull
+		displayFn: Parser.trapHazTypeToFull,
+		itemSortFn: filterTypeSort
 	});
-	typeFilter.items.sort((a, b) => SortUtil.ascSortLower(Parser.trapHazTypeToFull(a), Parser.trapHazTypeToFull(b)));
 	filterBox = await pInitFilterBox(
 		sourceFilter,
 		typeFilter
 	);
 
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
 
 	// filtering function
@@ -111,13 +118,10 @@ function addTrapsHazards (data) {
 		`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(it.source);
+		sourceFilter.addItem(it.source);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$(`#trapsHazardsList`).append(tempString);
-
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -148,7 +152,7 @@ function handleFilterChange () {
 			it.trapHazType
 		);
 	});
-	FilterBox.nextIfHidden(trapsAndHazardsList);
+	FilterBox.selectFirstVisible(trapsAndHazardsList);
 }
 
 function getSublistItem (it, pinId) {
@@ -186,4 +190,9 @@ function loadhash (jsonIndex) {
 	`);
 
 	ListUtil.updateSelected();
+}
+
+function loadsub (sub) {
+	sub = filterBox.setFromSubHashes(sub);
+	ListUtil.setFromSubHashes(sub);
 }

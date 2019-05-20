@@ -10,6 +10,7 @@ const META_ADD_S = "Somatic";
 const META_ADD_M = "Material";
 const META_ADD_M_COST = "Material with Cost";
 const META_ADD_M_CONSUMED = "Material is Consumed";
+const META_ADD_MB_SIGHT = "Requires Sight";
 const META_ADD_MB_PERMANENT = "Permanent Effects";
 const META_ADD_MB_SCALING = "Scaling Effects";
 const META_ADD_MB_SUMMONS = "Summons Creature";
@@ -49,8 +50,6 @@ const F_RNG_SELF_AREA = "Self (Area)";
 const F_RNG_SELF = "Self";
 const F_RNG_TOUCH = "Touch";
 const F_RNG_SPECIAL = "Special";
-
-let tableDefault;
 
 function getFltrSpellLevelStr (level) {
 	return level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + " level";
@@ -225,10 +224,11 @@ function getMetaFilterObj (s) {
 	if (s.components && s.components.m) out.push(META_ADD_M);
 	if (s.components && s.components.m && s.components.m.cost) out.push(META_ADD_M_COST);
 	if (s.components && s.components.m && s.components.m.consume) out.push(META_ADD_M_CONSUMED);
-	if (s.permanentEffects || s.duration.filter(it => it.type === "permanent").length) out.push(META_ADD_MB_PERMANENT);
-	if (s.scalingEffects || s.entriesHigherLevel) out.push(META_ADD_MB_SCALING);
-	if (s.isHeal) out.push(META_ADD_MB_HEAL);
-	if (s.isSummon) out.push(META_ADD_MB_SUMMONS);
+	if ((s.miscTags && s.miscTags.includes("PRM")) || s.duration.filter(it => it.type === "permanent").length) out.push(META_ADD_MB_PERMANENT);
+	if ((s.miscTags && s.miscTags.includes("SCL")) || s.entriesHigherLevel) out.push(META_ADD_MB_SCALING);
+	if (s.miscTags && s.miscTags.includes("HL")) out.push(META_ADD_MB_HEAL);
+	if (s.miscTags && s.miscTags.includes("SMN")) out.push(META_ADD_MB_SUMMONS);
+	if (s.miscTags && s.miscTags.includes("SGT")) out.push(META_ADD_MB_SIGHT);
 	return out;
 }
 
@@ -288,6 +288,7 @@ window.onload = async function load () {
 		levelFilter,
 		classAndSubclassFilter,
 		raceFilter,
+		backgroundFilter,
 		metaFilter,
 		schoolFilter,
 		subSchoolFilter,
@@ -322,16 +323,17 @@ const levelFilter = new Filter({
 	displayFn: getFltrSpellLevelStr
 });
 const classFilter = new Filter({header: "Class"});
-const subclassFilter = new GroupedFilter({
+const subclassFilter = new Filter({
 	header: "Subclass",
-	numGroups: 2,
-	displayFn: (item) => `${item.nest}: ${item.item}`
+	nests: {},
+	groupFn: (it) => SourceUtil.hasBeenReprinted(it.userData.subClass.name, it.userData.subClass.source) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(PS_PREFIX)
 });
-const classAndSubclassFilter = new MultiFilter({name: "Classes"}, classFilter, subclassFilter);
+const classAndSubclassFilter = new MultiFilter({header: "Classes", filters: [classFilter, subclassFilter]});
 const raceFilter = new Filter({header: "Race"});
+const backgroundFilter = new Filter({header: "Background"});
 const metaFilter = new Filter({
 	header: "Components & Miscellaneous",
-	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_M_CONSUMED, META_ADD_MB_HEAL, META_ADD_MB_PERMANENT, META_ADD_MB_SCALING, META_ADD_MB_SUMMONS, META_RITUAL, META_TECHNOMAGIC]
+	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_M_CONSUMED, META_ADD_MB_HEAL, META_ADD_MB_SIGHT, META_ADD_MB_PERMANENT, META_ADD_MB_SCALING, META_ADD_MB_SUMMONS, META_RITUAL, META_TECHNOMAGIC]
 });
 const schoolFilter = new Filter({
 	header: "School",
@@ -419,18 +421,19 @@ const areaTypeFilter = new Filter({
 let filterBox;
 
 function pPageInit (loadedSources) {
-	tableDefault = $("#pagecontent").html();
-
-	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem({item: src, changeFn: loadSource(JSON_LIST_NAME, addSpells)}));
-	sourceFilter.items.sort(SortUtil.ascSort);
+	Object.keys(loadedSources)
+		.map(src => new FilterItem({item: src, changeFn: loadSource(JSON_LIST_NAME, addSpells)}))
+		.forEach(fi => sourceFilter.addItem(fi));
 
 	list = ListUtil.search({
 		valueNames: ["name", "source", "level", "time", "school", "range", "concentration", "classes", "uniqueid"],
 		listClass: "spells",
 		sortFunction: sortSpells
 	});
+
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
 
 	// filtering function
@@ -563,6 +566,7 @@ function handleFilterChange () {
 			s.level,
 			[s._fClasses, s._fSubclasses],
 			s._fRaces,
+			s._fBackgrounds,
 			s._fMeta,
 			s.school,
 			s.subschools,
@@ -698,13 +702,19 @@ function addSpells (data) {
 		spell._fClasses = spell.classes.fromClassList ? spell.classes.fromClassList.map(c => getClassFilterStr(c)) : [];
 		spell._fSubclasses = spell.classes.fromSubclass
 			? spell.classes.fromSubclass.map(c => new FilterItem({
-				item: getClassFilterStr(c.subclass),
-				group: SourceUtil.hasBeenReprinted(c.subclass.name, c.subclass.source) || Parser.sourceJsonToFull(c.subclass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(c.subclass.source).startsWith(PS_PREFIX),
+				item: `${c.class.name}: ${getClassFilterStr(c.subclass)}`,
 				nest: c.class.name,
-				nestHidden: true
+				userData: {
+					subClass: {
+						name: c.subclass.name,
+						source: c.subclass.source
+					},
+					className: c.class.name
+				}
 			}))
 			: [];
 		spell._fRaces = spell.races ? spell.races.map(r => r.baseName || r.name) : [];
+		spell._fBackgrounds = spell.backgrounds ? spell.backgrounds.map(bg => bg.name) : [];
 		spell._fTimeType = spell.time.map(t => t.unit);
 		spell._fDurationType = spell.duration.map(t => t.type);
 		spell._fRangeType = getRangeType(spell.range);
@@ -727,21 +737,19 @@ function addSpells (data) {
 			</li>`;
 
 		// populate filters
-		if (spell.level > 9) levelFilter.addIfAbsent(spell.level);
-		sourceFilter.addIfAbsent(spell._fSources);
-		raceFilter.addIfAbsent(spell._fRaces);
-		spell._fClasses.forEach(c => classFilter.addIfAbsent(c));
-		spell._fSubclasses.forEach(sc => subclassFilter.addIfAbsent(sc));
-		subSchoolFilter.addIfAbsent(spell.subschools);
+		if (spell.level > 9) levelFilter.addItem(spell.level);
+		sourceFilter.addItem(spell._fSources);
+		raceFilter.addItem(spell._fRaces);
+		backgroundFilter.addItem(spell._fBackgrounds);
+		spell._fClasses.forEach(c => classFilter.addItem(c));
+		spell._fSubclasses.forEach(sc => {
+			subclassFilter.addNest(sc.userData.className, {isHidden: true});
+			subclassFilter.addItem(sc);
+		});
+		subSchoolFilter.addItem(spell.subschools);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	spellTable.append(tempString);
-
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
-	classFilter.items.sort(SortUtil.ascSort);
-	subclassFilter.items.sort(SortUtil.ascSort);
-	raceFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -859,7 +867,7 @@ function handleUnknownHash (link, sub) {
 }
 
 function loadsub (sub) {
-	filterBox.setFromSubHashes(sub);
+	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub, sublistFuncPreload);
 
 	spellBookView.handleSub(sub);

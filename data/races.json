@@ -698,12 +698,12 @@
 										{
 											"type": "item",
 											"name": "Autumn",
-											"entry": "Immediately after you use your Fey Step, up to two creatures of your choice that you can see within 10 feet of you must succeed on a Wisdom saving throw or be charmed by you for 1 minute, or until you or your companions deal any damage to it."
+											"entry": "Immediately after you use your Fey Step, up to two creatures of your choice that you can see within 10 feet of you must succeed on a Wisdom saving throw or be {@condition charmed} by you for 1 minute, or until you or your companions deal any damage to it."
 										},
 										{
 											"type": "item",
 											"name": "Winter",
-											"entry": "When you use your Fey Step, one creature of your choice that you can see within 5 feet of you before you teleport must succeed on a Wisdom saving throw or be frightened of you until the end of your next turn."
+											"entry": "When you use your Fey Step, one creature of your choice that you can see within 5 feet of you before you teleport must succeed on a Wisdom saving throw or be {@condition frightened} of you until the end of your next turn."
 										},
 										{
 											"type": "item",
@@ -897,14 +897,14 @@
 							"type": "entries",
 							"name": "Shape Shadows",
 							"entries": [
-								"You know the {@spell minor illusion} cantrip. Charisma is your spellcasting ability for this trait."
+								"You know the {@spell minor illusion} cantrip. Charisma is your spellcasting ability for this spell."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Slip Into Shadow",
 							"entries": [
-								"You can use the Hide action as a bonus action, even if you have no cover or if you're under observation. Regardless of whether you succeed or fail, once you use this ability, you can't use it again until you finish a short or long rest."
+								"You can use the {@condition Hide} action as a bonus action, even if you have no cover or if you're under observation. Regardless of whether you succeed or fail, once you use this ability, you can't use it again until you finish a short or long rest."
 							]
 						}
 					],
@@ -1337,7 +1337,7 @@
 						{
 							"name": "Stone Camouflage",
 							"entries": [
-								"You have advantage on Dexterity (Stealth) checks to hide in rocky terrain."
+								"You have advantage on Dexterity ({@condition Stealth}) checks to hide in rocky terrain."
 							],
 							"type": "entries"
 						},
@@ -1482,7 +1482,7 @@
 						{
 							"name": "Stone Camouflage",
 							"entries": [
-								"You have advantage on Dexterity (Stealth) checks to hide in rocky terrain."
+								"You have advantage on Dexterity ({@condition Stealth}) checks to hide in rocky terrain."
 							],
 							"type": "entries"
 						},
@@ -1529,7 +1529,7 @@
 							"type": "entries",
 							"name": "Whispering Wind",
 							"entries": [
-								"You know the cantrip {@spell message}. Intelligence is your spellcasting ability when casting it."
+								"You know the cantrip {@spell message}. Intelligence is your spellcasting ability for this spell."
 							]
 						},
 						{
@@ -2132,7 +2132,7 @@
 							"type": "entries",
 							"name": "Sea Monkey",
 							"entries": [
-								"Your base walking speed is 30 feet, and you have a swim speed of 30 feet."
+								"You have a swimming speed of 30 feet."
 							],
 							"data": {
 								"overwrite": "Skill Versatility"
@@ -2298,7 +2298,7 @@
 						{
 							"name": "Imprint Prey",
 							"entries": [
-								"As a bonus action, choose one creature you can see within 30 feet of you. The target is imprinted in your mind until it dies or you use this trait again. Alternatively, you can imprint a creature as your quarry whenever you succeed on a Wisdom (Survival) check to track it. When tracking your quarry, double the result of your Intuition die. When your quarry is within 60 feet of you, you have a sense of its location: it can't be hidden from you, gains no benefit from invisibility, and your attacks against it ignore half cover. Once you use this trait, you cannot use it again until you finish a short or long rest."
+								"As a bonus action, choose one creature you can see within 30 feet of you. The target is imprinted in your mind until it dies or you use this trait again. Alternatively, you can imprint a creature as your quarry whenever you succeed on a Wisdom ({@condition Survival}) check to track it. When tracking your quarry, double the result of your Intuition die. When your quarry is within 60 feet of you, you have a sense of its location: it can't be hidden from you, gains no benefit from invisibility, and your attacks against it ignore half cover. Once you use this trait, you cannot use it again until you finish a short or long rest."
 							],
 							"data": {
 								"overwrite": "Relentless Endurance"
@@ -2663,77 +2663,6 @@
 					]
 				},
 				{
-					"name": "Mark of Finding",
-					"source": "UAWGE",
-					"page": 98,
-					"darkvision": 60,
-					"ability": {
-						"dex": 1,
-						"wis": 1,
-						"choose": [
-							{
-								"from": [
-									"str",
-									"dex",
-									"con",
-									"int",
-									"wis",
-									"cha"
-								],
-								"count": 1
-							}
-						]
-					},
-					"entries": [
-						{
-							"name": "Darkvision",
-							"entries": [
-								"You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Hunter's Intuition",
-							"entries": [
-								"Your mark sharpens your senses and helps you find your prey. When you make a Wisdom ({@skill Perception}) or Wisdom ({@skill Survival}) check, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Imprint Prey",
-							"entries": [
-								"As a bonus action, choose one creature you can see within 30 feet of you. The target is imprinted in your mind until it dies or you use this trait again. Alternatively, you can imprint a creature as your quarry whenever you succeed on a Wisdom ({@skill Survival}) check to track it. When tracking your quarry, double the result of your Intuition die. When your quarry is within 60 feet of you, you have a sense of its location: it can't be hidden from you, gains no benefit from invisibility, and your attacks against it ignore half cover. Once you use this trait, you cannot use it again until you finish a short or long rest."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Nature's Voice",
-							"entries": [
-								"When you reach 3rd level you gain the ability to cast {@spell locate animals or plants}, but only as a ritual."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Languages",
-							"entries": [
-								"You can speak, read, and write Common and Goblin."
-							],
-							"data": {
-								"overwrite": "Languages"
-							},
-							"type": "entries"
-						}
-					],
-					"traitTags": [
-						"Spellcasting",
-						"Dragonmark"
-					],
-					"languageTags": [
-						"Common",
-						"Goblin"
-					]
-				},
-				{
 					"name": "Mark of Handling",
 					"source": "UAWGE",
 					"page": 98,
@@ -2765,7 +2694,7 @@
 						{
 							"name": "Expert Handling",
 							"entries": [
-								"You can use the Help action to aid an ally animal companion or mount within 30 feet of you, rather than 5 feet of you."
+								"You can use the {@condition Help} action to aid an ally animal companion or mount within 30 feet of you, rather than 5 feet of you."
 							],
 							"type": "entries"
 						},
@@ -2810,7 +2739,7 @@
 						{
 							"name": "Artisan's Intuition",
 							"entries": [
-								"When you make an ability check with artisan's tools, roll 1d4 and add it to the result."
+								"When you make an ability check with artisan's tools, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
 							],
 							"type": "entries"
 						},
@@ -3162,6 +3091,13 @@
 								"As an action, you can draw power from your dragonmark to spend one of your Hit Dice and revitalize yourself or a creature you touch. Roll the die, add your Wisdom modifier, and the creature regains a number of hit points equal to the total. Once you use this trait, you can't use it again until you finish a short or long rest."
 							],
 							"type": "entries"
+						},
+						{
+							"name": "Jorasco's Blessing",
+							"entries": [
+								"You know the cantrip {@spell spare the dying}. Charisma is your spellcasting ability for this."
+							],
+							"type": "entries"
 						}
 					],
 					"traitTags": [
@@ -3179,7 +3115,7 @@
 						{
 							"name": "Innkeeper's Charms",
 							"entries": [
-								"You know the cantrips {@spell friends} and {@spell prestidigitation}. Charisma is your spellcasting ability for them."
+								"You know the cantrips {@spell friends} and {@spell prestidigitation}. Charisma is your spellcasting ability for these spells."
 							],
 							"type": "entries"
 						},
@@ -4455,7 +4391,7 @@
 				{
 					"name": "Mimicry",
 					"entries": [
-						"You can mimic sounds you have heard, including voices. A creature that hears the sounds can tell they are imitations with a successful Wisdom (Insight) check opposed by your Charisma (Deception) check."
+						"You can mimic sounds you have heard, including voices. A creature that hears the sounds can tell they are imitations with a successful Wisdom ({@condition Insight}) check opposed by your Charisma ({@condition Deception}) check."
 					],
 					"type": "entries"
 				},
@@ -5230,7 +5166,7 @@
 				{
 					"name": "Hammering Horns",
 					"entries": [
-						"When you use the Attack action during your turn to make a melee attack, you can attempt to shove a creature with your horns as a bonus action. You cannot use this shove attempt to knock a creature {@condition prone}."
+						"When you use the {@condition Attack} action during your turn to make a melee attack, you can attempt to shove a creature with your horns as a bonus action. You cannot use this shove attempt to knock a creature {@condition prone}."
 					],
 					"type": "entries"
 				},
@@ -5486,7 +5422,7 @@
 						{
 							"name": "Lavastep Grit",
 							"entries": [
-								"You have advantage on Dexterity (Stealth) checks made to hide in rocky or subterranean environments."
+								"You have advantage on Dexterity ({@condition Stealth}) checks made to hide in rocky or subterranean environments."
 							],
 							"type": "entries"
 						}
@@ -6769,7 +6705,7 @@
 						{
 							"name": "Githyanki Psionics",
 							"entries": [
-								"You know the {@spell mage hand} cantrip, and the hand is invisible when you cast the cantrip with this trait.",
+								"You know the {@spell mage hand} cantrip, and the hand is {@condition invisible} when you cast the cantrip with this trait.",
 								"When you reach 3rd level, you can cast {@spell jump} once with this trait, and you regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell misty step} spell once with this trait, and you regain the ability to do so when you finish a long rest.",
 								"Intelligence is your spellcasting ability for these spells. When you cast them with this trait, they don't require components."
 							],
@@ -6805,7 +6741,7 @@
 						{
 							"name": "Githzerai Psionics",
 							"entries": [
-								"You know the {@spell mage hand} cantrip, and the hand is invisible when you cast the cantrip with this trait.",
+								"You know the {@spell mage hand} cantrip, and the hand is {@condition invisible} when you cast the cantrip with this trait.",
 								"When you reach 3rd level, you can cast {@spell shield} once with this trait, and you regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell detect thoughts} spell once with this trait, and you regain the ability to do so when you finish a long rest.",
 								"Wisdom is your spellcasting ability for these spells. When you cast them with this trait, they don't require components."
 							],
@@ -7033,7 +6969,7 @@
 					"name": "Swamp Camouflage",
 					"type": "entries",
 					"entries": [
-						"You have advantage on Dexterity (Stealth) checks made to hide in swampy terrain."
+						"You have advantage on Dexterity ({@condition Stealth}) checks made to hide in swampy terrain."
 					]
 				},
 				{
@@ -7112,7 +7048,7 @@
 				{
 					"name": "Blindsight",
 					"entries": [
-						"You have no eyes, and cannot be blinded. You can perceive your surroundings within 30 ft., or 10 ft. while deafened. You are considered blind beyond this radius."
+						"You have no eyes, and cannot be {@condition blinded}. You can perceive your surroundings within 30 ft., or 10 ft. while {@condition deafened}. You are considered blind beyond this radius."
 					],
 					"type": "entries"
 				},
@@ -7127,7 +7063,7 @@
 					"type": "entries",
 					"name": "Stone Camouflage",
 					"entries": [
-						"You have advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
+						"You have advantage on Dexterity ({@condition Stealth}) checks made to hide in rocky terrain."
 					]
 				},
 				{
@@ -7157,7 +7093,7 @@
 					"type": "entries",
 					"name": "Martial Advantage",
 					"entries": [
-						"Once per turn, you can deal an extra {@dice 2d6} damage to a creature you hit with a weapon attack if that creature is within 5 ft. of an ally of yours that isn't incapacitated."
+						"Once per turn, you can deal an extra {@dice 2d6} damage to a creature you hit with a weapon attack if that creature is within 5 ft. of an ally of yours that isn't {@condition incapacitated}."
 					]
 				},
 				{
@@ -7310,7 +7246,7 @@
 					"name": "Chameleon Skin",
 					"type": "entries",
 					"entries": [
-						"You have advantage on Dexterity (Stealth) checks made to hide."
+						"You have advantage on Dexterity ({@condition Stealth}) checks made to hide."
 					]
 				},
 				{
@@ -7985,7 +7921,7 @@
 				{
 					"name": "Hammering Horns",
 					"entries": [
-						"Immediately after you hit a creature with a melee attack as part of the Attack action on your turn, you can attempt to shove that creature with your horns using your reaction. The creature must be no more than one size larger than you and within 5 feet of you. It must make a Strength saving throw against a DC equal to 8 + your proficiency bonus + your Strength modifier. If it fails, you push it up to 5 feet away from you."
+						"Immediately after you hit a creature with a melee attack as part of the {@condition Attack} action on your turn, you can attempt to shove that creature with your horns using your reaction. The creature must be no more than one size larger than you and within 5 feet of you. It must make a Strength saving throw against a DC equal to 8 + your proficiency bonus + your Strength modifier. If it fails, you push it up to 5 feet away from you."
 					],
 					"type": "entries"
 				},
@@ -8161,6 +8097,13 @@
 					"type": "entries"
 				},
 				{
+					"name": "Darkvision",
+					"entries": [
+						"Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+					],
+					"type": "entries"
+				},
+				{
 					"name": "Languages",
 					"entries": [
 						"You can speak, read, and write Common and Goblin."
@@ -8197,7 +8140,7 @@
 				{
 					"name": "Mimicry",
 					"entries": [
-						"You can mimic any sounds you have heard, including voices. A creature that hears the sounds can tell they are imitations with a successful DC 14 Wisdom (Insight) check."
+						"You can mimic any sounds you have heard, including voices. A creature that hears the sounds can tell they are imitations with a successful DC 14 Wisdom ({@condition Insight}) check."
 					],
 					"type": "entries"
 				},
@@ -8240,6 +8183,13 @@
 					"name": "Sunlight Sensitivity",
 					"entries": [
 						"You have disadvantage on attack rolls and on Wisdom ({@skill Perception}) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Darkvision",
+					"entries": [
+						"Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
 					],
 					"type": "entries"
 				},
@@ -8357,6 +8307,13 @@
 					"type": "entries"
 				},
 				{
+					"name": "Darkvision",
+					"entries": [
+						"Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+					],
+					"type": "entries"
+				},
+				{
 					"name": "Languages",
 					"entries": [
 						"You can speak, read, and write Common and Orc."
@@ -8424,7 +8381,7 @@
 					"entries": [
 						"As an action, you can transform your appearance or revert to your natural form. You can't duplicate the appearance of a creature you've never seen, and you revert to your natural form if you die.",
 						"You decide what you look like, including your height, weight, facial features, the sound of your voice, coloration, hair length, sex, and any other distinguishing characteristics. You can make yourself appear as a member of another race, though none of your game statistics change. You also can't appear as a creature of a different size than you, and your basic shape stays the same; if you're bipedal, you can't use this trait to become quadrupedal, for instance. Your clothing and other equipment don't change in appearance, size, or shape to match your new form, requiring you to keep a few extra outfits on hand to make the most compelling disguise possible.",
-						"Even to the most astute observers, your ruse is usually indiscernible. If you rouse suspicion, or if a wary creature suspects something is amiss, you have advantage on any Charisma (Deception) check you make to avoid detection."
+						"Even to the most astute observers, your ruse is usually indiscernible. If you rouse suspicion, or if a wary creature suspects something is amiss, you have advantage on any Charisma ({@condition Deception}) check you make to avoid detection."
 					]
 				},
 				{
@@ -8816,7 +8773,7 @@
 								"You have advantage on saving throws against being {@condition poisoned}, and you have resistance to poison damage.",
 								"You are immune to disease.",
 								"You don't need to eat, drink, or breathe.",
-								"You don't need to sleep and don't suffer the effects of exhaustion due to lack of rest, and magic can't put you to sleep."
+								"You don't need to sleep and don't suffer the effects of {@condition exhaustion} due to lack of rest, and magic can't put you to sleep."
 							]
 						}
 					]
@@ -8825,7 +8782,7 @@
 					"type": "entries",
 					"name": "Sentry's Rest",
 					"entries": [
-						"When you take a long rest, you must spend at least six hours of it in an inactive, motionless state, rather than sleeping. In this state, you appear inert, but it doesn't render you unconscious, and you can see and hear as normal."
+						"When you take a long rest, you must spend at least six hours of it in an inactive, motionless state, rather than sleeping. In this state, you appear inert, but it doesn't render you {@condition unconscious}, and you can see and hear as normal."
 					]
 				},
 				{
@@ -9036,7 +8993,7 @@
 					"type": "entries",
 					"name": "Loxodon Bravery",
 					"entries": [
-						"You have advantage on saving throws against being frightened."
+						"You have advantage on saving throws against being {@condition frightened}."
 					]
 				},
 				{
@@ -9158,7 +9115,7 @@
 								{
 									"type": "item",
 									"name": "Manta Glide",
-									"entry": "Your ray-like wings can slow your fall and allow you to glide. When you fall and aren't incapacitated, you can subtract up to 100 feet from the fall when calculating falling damage, and you can move up to 2 feet horizontally for every 1 foot you descend."
+									"entry": "Your ray-like wings can slow your fall and allow you to glide. When you fall and aren't {@condition incapacitated}, you can subtract up to 100 feet from the fall when calculating falling damage, and you can move up to 2 feet horizontally for every 1 foot you descend."
 								},
 								{
 									"type": "item",
@@ -9583,7 +9540,7 @@
 				{
 					"name": "Hammering Horns",
 					"entries": [
-						"Immediately after you hit a creature with a melee attack as part of the Attack action on your turn, you can use a bonus action to attempt to shove that target with your horns. The target must be no more than one size larger than you and within 5 feet of you. Unless it succeeds on a Strength saving throw against a DC equal to 8 + your proficiency bonus + your Strength modifier, you push it up to 10 feet away from you."
+						"Immediately after you hit a creature with a melee attack as part of the {@condition Attack} action on your turn, you can use a bonus action to attempt to shove that target with your horns. The target must be no more than one size larger than you and within 5 feet of you. Unless it succeeds on a Strength saving throw against a DC equal to 8 + your proficiency bonus + your Strength modifier, you push it up to 10 feet away from you."
 					],
 					"type": "entries"
 				},
@@ -9684,7 +9641,7 @@
 								{
 									"type": "item",
 									"name": "Manta Glide",
-									"entry": "You have ray-like fins that you can use as wings to slow your fall or allow you to glide. When you fall and aren't incapacitated, you can subtract up to 100 feet from the fall when calculating falling damage, and you can move up to 2 feet horizontally for every 1 foot you descend."
+									"entry": "You have ray-like fins that you can use as wings to slow your fall or allow you to glide. When you fall and aren't {@condition incapacitated}, you can subtract up to 100 feet from the fall when calculating falling damage, and you can move up to 2 feet horizontally for every 1 foot you descend."
 								},
 								{
 									"type": "item",

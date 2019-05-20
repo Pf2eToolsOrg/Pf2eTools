@@ -316,13 +316,15 @@
 
 	<div class="row">
 		<div class="col-sm-3" id="listcontainer">
-			<div class="input-group" id="filter-search-input-group">
-				<input type="search" id="search" class="search form-control" placeholder="Find class...">
-				<span class="input-group-btn">
-						<button class="btn btn-default" id="reset">Reset</button>
-					</span>
+			<div class="lst__form-top" id="filter-search-input-group">
+				<div class="full-width relative">
+					<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
+					<div class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+					<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+				</div>
+				<button class="btn btn-default" id="reset">Reset</button>
 			</div>
-			<div id="filtertools" class="sortlabel btn-group">
+			<div id="filtertools" class="sortlabel lst__form-bottom">
 				<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
 				<button class="col-4 sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
 			</div>

@@ -25,7 +25,7 @@ const LIST_MODE_LIST = "mode-list";
 
 function getHiddenModeList (psionic) {
 	const modeList = psionic[JSON_ITEM_MODES];
-	if (modeList === undefined) return STR_EMPTY;
+	if (modeList === undefined) return "";
 	const outArray = [];
 	for (let i = 0; i < modeList.length; ++i) {
 		outArray.push(`"${modeList[i].name}"`);
@@ -65,8 +65,10 @@ async function onJsonLoad (data) {
 		listClass: CLS_PSIONICS,
 		sortFunction: SortUtil.listSort
 	});
+
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
 
 	// filtering function
@@ -173,7 +175,7 @@ function addPsionics (data) {
 				<a id='${psI}' href='#${UrlUtil.autoEncodeHash(p)}' title="${p[JSON_ITEM_NAME]}">
 					<span class='${LIST_NAME} ${CLS_COL1}'>${p[JSON_ITEM_NAME]}</span>
 					<span class='${LIST_TYPE} ${CLS_COL3}'>${Parser.psiTypeToFull(p[JSON_ITEM_TYPE])}</span>
-					<span class='${LIST_ORDER} ${CLS_COL4} ${p._fOrder === STR_NONE ? CLS_LI_NONE : STR_EMPTY}'>${p._fOrder}</span>
+					<span class='${LIST_ORDER} ${CLS_COL4} ${p._fOrder === STR_NONE ? CLS_LI_NONE : ""}'>${p._fOrder}</span>
 					<span class='${LIST_SOURCE} ${CLS_COL2} text-align-center' title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
 					
 					<span class='${LIST_MODE_LIST} ${CLS_HIDDEN}'>${getHiddenModeList(p)}</span>
@@ -183,13 +185,10 @@ function addPsionics (data) {
 		`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(p[JSON_ITEM_SOURCE]);
+		sourceFilter.addItem(p[JSON_ITEM_SOURCE]);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$(`#${ID_PSIONICS_LIST}`).append(tempString);
-
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -220,7 +219,7 @@ function handleFilterChange () {
 			p._fOrder
 		);
 	});
-	FilterBox.nextIfHidden(psionicList);
+	FilterBox.selectFirstVisible(psionicList);
 }
 
 function getSublistItem (p, pinId) {
@@ -262,7 +261,7 @@ function loadhash (jsonIndex) {
 }
 
 function loadsub (sub) {
-	filterBox.setFromSubHashes(sub);
+	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 
 	psionicsBookView.handleSub(sub);

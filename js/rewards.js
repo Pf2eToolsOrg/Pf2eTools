@@ -26,8 +26,10 @@ async function onJsonLoad (data) {
 		valueNames: ["name", "source", "uniqueid"],
 		listClass: "rewards"
 	});
+
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
 
 	// filtering function
@@ -88,15 +90,11 @@ function addRewards (data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(reward.source);
-		typeFilter.addIfAbsent(reward.type);
+		sourceFilter.addItem(reward.source);
+		typeFilter.addItem(reward.type);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$("ul.rewards").append(tempString);
-
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
-	typeFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -126,7 +124,7 @@ function handleFilterChange () {
 			r.type
 		);
 	});
-	FilterBox.nextIfHidden(rewardList);
+	FilterBox.selectFirstVisible(rewardList);
 }
 
 function getSublistItem (reward, pinId) {
@@ -158,6 +156,6 @@ function loadhash (id) {
 }
 
 function loadsub (sub) {
-	filterBox.setFromSubHashes(sub);
+	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

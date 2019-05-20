@@ -4,7 +4,7 @@
 
 Visit the [main site](https://5e.tools/5etools.html) or go to the unofficial GitHub [mirror](5etools.html).
 
-[Join the 5etools Discord here!](https://discord.gg/AzyBjtQ)
+[Join the 5etools Discord here!](https://discord.gg/nGvRCDs)
 
 ## Running 5etools Locally (Offline Copy)
 There are several options for running a local/offline copy of 5etools, including:

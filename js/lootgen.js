@@ -102,22 +102,22 @@ class LootGen {
 
 				const primaryLink = await LootGen.p$ParseLink(it);
 				const range = it.min === it.max ? it.min : `${it.min}-${it.max}`;
-				const primary$Element = $(`<tr>
+				const primary$Element = $$`<tr>
 					<td class="text-align-center">${range}</td>
-					<td><div data-r/>${it.table ? ` (roll <span class="roller" onclick="lootGen.pRollAgainstTable(${arrayEntry}, ${it.min})">d${LootGen.getMaxRoll(it.table)}</span>)` : ""}</td>
-				</tr>`).swap(primaryLink);
+					<td>${primaryLink}${it.table ? ` (roll <span class="roller" onclick="lootGen.pRollAgainstTable(${arrayEntry}, ${it.min})">d${LootGen.getMaxRoll(it.table)}</span>)` : ""}</td>
+				</tr>`;
 				$out.push(primary$Element);
 
 				if (it.table) {
 					const subPromises = it.table.map(async r => {
 						const subLink = await LootGen.p$ParseLink(r);
-						return $(`<tr>
+						return $$`<tr>
 							<td/>
 							<td>
 								<span style="display: inline-block; min-width: 40px;">${r.min}${r.max ? `\u2212${r.max}` : ""}</span>
-								<div data-r/>
+								${subLink}
 							</td>
-						</tr>`).swap(subLink);
+						</tr>`;
 					});
 					const sub$Elements = await Promise.all(subPromises);
 					sub$Elements.forEach($e => $out.push($e));
@@ -140,10 +140,10 @@ class LootGen {
 
 		async function p$GetMessage () {
 			const $item = await LootGen.p$ParseLink(row, {rollSpellScroll: true, rollChoices: true});
-			return $(`<ul><li class="split">
-				<span><div data-r/> (rolled ${rowRoll})</span>
+			return $$`<ul><li class="split">
+				<span>${$item} (rolled ${rowRoll})</span>
 				<span class="roller" onclick="lootGen.pRerollItem(this, ${ixTable})">[reroll]</span>
-			</li></ul>`).swap($item);
+			</li></ul>`;
 		}
 
 		async function p$GetMessageSub () {
@@ -152,10 +152,10 @@ class LootGen {
 			const rolled = GenUtil.getFromTable(row.table, roll);
 			const $item = await LootGen.p$ParseLink(rolled, {rollSpellScroll: true, rollChoices: true});
 
-			return $(`<ul><li class="split">
-				<span><div data-r/> (rolled ${roll})</span>
+			return $$`<ul><li class="split">
+				<span>${$item} (rolled ${roll})</span>
 				<span class="roller" onclick="lootGen.pRerollItem(this, ${ixTable})">[reroll]</span>
-			</li></ul>`).swap($item);
+			</li></ul>`;
 		}
 
 		return row.table ? p$GetMessageSub() : p$GetMessage();
@@ -206,11 +206,11 @@ class LootGen {
 				const roll = Renderer.dice.parseRandomise2(artAndGems.amount);
 				const gems = [];
 				for (let i = 0; i < roll; i++) gems.push(artAndGemsTable.table[LootGen.randomNumber(0, artAndGemsTable.table.length - 1)]);
-				$(`
+				$$`
 					<li>${Parser._addCommas(artAndGems.type)} gp ${loot.artobjects ? "art object" : "gemstone"}${roll > 1 ? "s" : ""}${roll > 1 ? ` (${MULT_SIGN}${roll})` : ""}:
-					<ul data-r/>
+					${lootGen.$getSortedDeduplicatedList(gems)}
 					</li>
-				`).swap(lootGen.$getSortedDeduplicatedList(gems)).appendTo($el);
+				`.appendTo($el);
 			}
 
 			if (loot.magicitems) {
@@ -247,14 +247,14 @@ class LootGen {
 					}
 					const magicItemResults = await Promise.all(magicItems.map(it => it.$render));
 					magicItems.forEach((it, i) => it.$render = magicItemResults[i]);
-					$(`
+					$$`
 						<li>
 							Magic Item${roll > 1 ? "s" : ""}
 							(<span class="roller" onclick="MiscUtil.scrollPageTop() || lootGen.pDisplayTable(${tableArrayEntry}, true);">Table ${curType}</span>)
 							${magicItems.length > 1 ? ` (${MULT_SIGN}${magicItems.length})` : ""}:
-							<ul data-r/>
+							${lootGen.$getSortedItemList(magicItems)}
 						</li>
-					`).swap(lootGen.$getSortedItemList(magicItems)).appendTo($el)
+					`.appendTo($el)
 				}
 			}
 			for (let i = 0; i < treasure.length; i++) $el.prepend(`<li>${treasure[i]}</li>`);
@@ -314,15 +314,10 @@ class LootGen {
 				current.$render = new$Render;
 			});
 
-			$(`<li class="split">
-					<span><span data-r="$render"/> <span data-r="$rollPart"/></span>
-					<span data-r="$reroll"/>
-			</li>`)
-				.swap({
-					$render: current.$render,
-					$rollPart,
-					$reroll
-				})
+			$$`<li class="split">
+					<span>${current.$render} ${$rollPart}</span>
+					${$reroll}
+			</li>`
 				.appendTo($ulOut)
 		});
 
@@ -488,20 +483,16 @@ class LootGen {
 		const $roll = $(`<span class="roller" onmousedown="event.preventDefault()">[reroll]</span>`).click(() => handleReroll());
 		const $wrpItem = $(`<span/>`).append(renderer.render(getRandomItem()));
 
-		return $(`<em>(<span><span data-r="$wrpItem"/> <span data-r="$roll"/></span>)</em>`)
-			.swap({
-				$wrpItem,
-				$roll
-			});
+		return $$`<em>(<span>${$wrpItem} ${$roll}</span>)</em>`;
 	}
 
 	getSpell$ele (level) {
 		if (this.hasLoadedSpells()) {
 			const $roll = $(`<span class="roller" onmousedown="event.preventDefault()">[reroll]</span>`).click(() => this.loadRollSpell($roll.parent(), level));
-			return $(`<em>(<span>${renderer.render(this.getRandomSpell(level))} <div data-r/></span> or ${LootGen._getOrViewSpellsPart(level)})</em>`).swap($roll);
+			return $$`<em>(<span>${renderer.render(this.getRandomSpell(level))} ${$roll}</span> or ${LootGen._getOrViewSpellsPart(level)})</em>`;
 		}
 		const $spnRoll = $(`<span class="roller">roll</span>`).click(() => this.loadRollSpell($spnRoll.parent(), level));
-		return $(`<em>(<div data-r/> or ${LootGen._getOrViewSpellsPart(level)})</em>`).swap($spnRoll);
+		return $$`<em>(${$spnRoll} or ${LootGen._getOrViewSpellsPart(level)})</em>`;
 	}
 
 	loadRollSpell ($ele, level) {
@@ -615,7 +606,9 @@ const randomLootTables = {
 	},
 
 	async init () {
-		const stockItems = await Renderer.item.buildList();
+		const stockItems = await Renderer.item.pBuildList({
+			isBlacklistVariants: true
+		});
 		let brewItems = [];
 		try {
 			const homebrew = await BrewUtil.pAddBrewData();
@@ -838,12 +831,12 @@ const randomLootTables = {
 	async p$GetRandomItemHtml (tier, rarity) {
 		const {roll, item} = randomLootTables.getRandomItem(tier, rarity);
 		const $link = await randomLootTables.p$CreateLink(item);
-		return $(`
+		return $$`
 			<li class="split">
-				<span><span data-r/> <span class="text-muted">(Rolled ${roll + 1})</span></span>
+				<span>${$link} <span class="text-muted">(Rolled ${roll + 1})</span></span>
 				<span class="roller" onclick="randomLootTables.pRerollItem(this)">[reroll]</span>
 			</li>
-		`).swap($link);
+		`;
 	},
 
 	async pRerollItem (ele) {

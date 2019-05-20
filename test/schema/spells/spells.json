@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.3.3",
+	"version": "1.4.0",
 	"title": "Spells",
 	"type": "object",
 
@@ -345,10 +345,6 @@
 						]
 					}
 				},
-				"permanentEffects": {
-					"description": "Used to flag spells that can/will have permanent effects, but are not listed as having permanent duration",
-					"type": "boolean"
-				},
 				"spellAttack": {
 					"type": "array",
 					"items": {
@@ -358,20 +354,19 @@
 						]
 					}
 				},
-				"scalingEffects": {
-					"type": "boolean"
-				},
-				"isHeal": {
-					"type": "boolean"
-				},
-				"isSummon": {
-					"type": "boolean"
-				},
 				"areaTags": {
 					"type": "array",
 					"items": {
 						"type": "string",
 						"enum": ["ST", "MT", "R", "N", "C","Y", "H", "L", "S", "Q", "W"]
+					}
+				},
+				"miscTags": {
+					"type": "array",
+					"description": "PRM = permanentEffects = 'Used to flag spells that can/will have permanent effects, but are not listed as having permanent duration'; SCL = scalingEffects; HL = isHeal; SMN = isSummon; SGT = requiresSight",
+					"items": {
+						"type": "string",
+						"enum": ["PRM", "SCL", "HL", "SMN", "SGT"]
 					}
 				}
 			},

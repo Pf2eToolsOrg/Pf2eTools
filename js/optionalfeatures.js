@@ -8,14 +8,6 @@ window.onload = async function load () {
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
-function getLevelFilterNestedItem (prereqLevel) {
-	return new FilterItem({
-		item: `${prereqLevel.class.name}${prereqLevel.subclass ? ` (${prereqLevel.subclass.name})` : ""} Level ${prereqLevel.level}`,
-		nest: prereqLevel.class.name,
-		nestHidden: true
-	})
-}
-
 function optFeatSort (itemA, itemB, options) {
 	if (options.valueName === "level") {
 		const aValue = Number(itemA.values().level.toLowerCase()) || 0;
@@ -25,12 +17,17 @@ function optFeatSort (itemA, itemB, options) {
 	return SortUtil.listSort(itemA, itemB, options);
 }
 
+function filterFeatureTypeSort (a, b) {
+	return SortUtil.ascSort(Parser.optFeatureTypeToFull(a.item), Parser.optFeatureTypeToFull(b.item))
+}
+
 let list;
 const sourceFilter = getSourceFilter();
 const typeFilter = new Filter({
 	header: "Feature Type",
 	items: ["AI", "ED", "EI", "MM", "MV:B", "OTH", "FS:F", "FS:B", "FS:P", "FS:R", "PB"],
-	displayFn: Parser.optFeatureTypeToFull
+	displayFn: Parser.optFeatureTypeToFull,
+	itemSortFn: filterFeatureTypeSort
 });
 const pactFilter = new Filter({
 	header: "Pact Boon",
@@ -52,9 +49,11 @@ const featureFilter = new Filter({
 	displayFn: StrUtil.toTitleCase
 });
 const levelFilter = new Filter({
-	header: "Level"
+	header: "Level",
+	itemSortFn: SortUtil.ascSortNumericalSuffix,
+	nests: []
 });
-const prerequisiteFilter = new MultiFilter({name: "Prerequisite"}, pactFilter, patronFilter, spellFilter, levelFilter, featureFilter);
+const prerequisiteFilter = new MultiFilter({header: "Prerequisite", filters: [pactFilter, patronFilter, spellFilter, levelFilter, featureFilter]});
 let filterBox;
 async function onJsonLoad (data) {
 	filterBox = await pInitFilterBox(sourceFilter, typeFilter, prerequisiteFilter);
@@ -64,8 +63,10 @@ async function onJsonLoad (data) {
 		listClass: "optfeatures",
 		sortFunction: optFeatSort
 	});
+
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
 
 	// filtering function
@@ -121,24 +122,28 @@ function addOptionalfeatures (data) {
 		if (it.prerequisite) {
 			it._sPrereq = true;
 			it._fPrereqPact = it.prerequisite.filter(it => it.type === "prereqPact").map(it => {
-				pactFilter.addIfAbsent(it.entry);
+				pactFilter.addItem(it.entry);
 				return it.entry;
 			});
 			it._fPrereqPatron = it.prerequisite.filter(it => it.type === "prereqPatron").map(it => {
-				patronFilter.addIfAbsent(it.entry);
+				patronFilter.addItem(it.entry);
 				return it.entry;
 			});
 			it._fprereqSpell = it.prerequisite.filter(it => it.type === "prereqSpell").map(it => {
-				spellFilter.addIfAbsent(it.entries);
+				spellFilter.addItem(it.entries);
 				return it.entries;
 			});
 			it._fprereqFeature = it.prerequisite.filter(it => it.type === "prereqFeature").map(it => {
-				featureFilter.addIfAbsent(it.entries);
+				featureFilter.addItem(it.entries);
 				return it.entries;
 			});
 			it._fPrereqLevel = it.prerequisite.filter(it => it.type === "prereqLevel").map(lvl => {
-				const item = getLevelFilterNestedItem(lvl);
-				levelFilter.addIfAbsent(item);
+				const item = new FilterItem({
+					item: `${lvl.class.name}${lvl.subclass ? ` (${lvl.subclass.name})` : ""} Level ${lvl.level}`,
+					nest: lvl.class.name
+				});
+				levelFilter.addNest(lvl.class.name, {isHidden: true});
+				levelFilter.addItem(item);
 				return item;
 			});
 		}
@@ -167,17 +172,11 @@ function addOptionalfeatures (data) {
 		`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(it.source);
-		typeFilter.addIfAbsent(it.featureType);
+		sourceFilter.addItem(it.source);
+		typeFilter.addItem(it.featureType);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$(`#optfeaturesList`).append(tempString);
-
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
-	spellFilter.items.sort(SortUtil.ascSort);
-	levelFilter.items.sort(SortUtil.ascSortNumericalSuffix);
-	typeFilter.items.sort((a, b) => SortUtil.ascSort(Parser.optFeatureTypeToFull(a), Parser.optFeatureTypeToFull(b)));
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -214,7 +213,7 @@ function handleFilterChange () {
 			]
 		);
 	});
-	FilterBox.nextIfHidden(optfList);
+	FilterBox.selectFirstVisible(optfList);
 }
 
 function getSublistItem (it, pinId) {
@@ -246,7 +245,7 @@ function loadhash (jsonIndex) {
 			if (i > 0) $wrpOptFeatType.append("/");
 			$(`<span class="roller">${Parser.optFeatureTypeToFull(ft).substring(commonPrefix.length)}</span>`)
 				.click(() => {
-					filterBox.setFromValues({"Feature Type": [ft.toLowerCase()]});
+					filterBox.setFromValues({"Feature Type": {[ft]: 1}});
 					handleFilterChange();
 				})
 				.appendTo($wrpOptFeatType);
@@ -254,7 +253,7 @@ function loadhash (jsonIndex) {
 	} else {
 		$(`<span class="roller">${Parser.optFeatureTypeToFull(it.featureType)}</span>`)
 			.click(() => {
-				filterBox.setFromValues({"Feature Type": [it.featureType.toLowerCase()]});
+				filterBox.setFromValues({"Feature Type": {[it.featureType]: 1}});
 				handleFilterChange();
 			})
 			.appendTo($wrpOptFeatType);
@@ -275,6 +274,6 @@ function loadhash (jsonIndex) {
 }
 
 function loadsub (sub) {
-	filterBox.setFromSubHashes(sub);
+	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

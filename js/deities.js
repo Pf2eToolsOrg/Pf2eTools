@@ -82,9 +82,11 @@ async function onJsonLoad (data) {
 
 	filterBox = await pInitFilterBox(sourceFilter, alignmentFilter, pantheonFilter, categoryFilter, domainFilter, miscFilter);
 
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
+
 	// filtering function
 	$(filterBox).on(
 		FilterBox.EVNT_VALCHANGE,
@@ -155,15 +157,12 @@ function addDeities (data) {
 			</li>
 		`;
 
-		sourceFilter.addIfAbsent(g.source);
-		pantheonFilter.addIfAbsent(g.pantheon);
-		categoryFilter.addIfAbsent(g.category);
+		sourceFilter.addItem(g.source);
+		pantheonFilter.addItem(g.pantheon);
+		categoryFilter.addItem(g.category);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$(`#deitiesList`).append(tempString);
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
-	categoryFilter.items.sort();
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -197,7 +196,7 @@ function handleFilterChange () {
 			g._fReprinted
 		);
 	});
-	FilterBox.nextIfHidden(deitiesList);
+	FilterBox.selectFirstVisible(deitiesList);
 }
 
 function getSublistItem (g, pinId) {
@@ -256,6 +255,6 @@ function loadhash (jsonIndex) {
 }
 
 function loadsub (sub) {
-	filterBox.setFromSubHashes(sub);
+	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

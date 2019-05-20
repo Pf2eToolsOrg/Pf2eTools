@@ -89,8 +89,7 @@ class UiUtil {
 
 		const $modal = $(`<div class="ui-modal__overlay">`);
 		const $scroller = $(`<div class="ui-modal__scroller"/>`).data("close", (...args) => handleCloseClick(...args));
-		const $modalInner = $(`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu${opts.fullWidth ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? " full-height" : ""}">${opts.title ? `<h4>${opts.title}</h4>` : ""}<div data-r/></div>`)
-			.swap($scroller)
+		const $modalInner = $$`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu${opts.fullWidth ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? " full-height" : ""}">${opts.title ? `<h4>${opts.title}</h4>` : ""}${$scroller}</div>`
 			.appendTo($modal).click(e => e.stopPropagation());
 		if (opts.noMinHeight) $modalInner.css("height", "initial");
 
@@ -100,16 +99,23 @@ class UiUtil {
 		return $scroller;
 	}
 
-	static addModal$Sep ($modalInner) {
+	static addModalSep ($modalInner) {
 		$modalInner.append(`<hr class="ui-modal__row-sep">`);
 	}
 
-	static _getAdd$Row ($modalInner, tag = "div") {
+	static $getAddModalRow ($modalInner, tag = "div") {
 		return $(`<${tag} class="ui-modal__row"/>`).appendTo($modalInner);
 	}
 
-	static getAddModal$RowCb ($modalInner, labelText, objectWithProp, propName, helpText) {
-		const $row = UiUtil._getAdd$Row($modalInner, "label").addClass(`ui-modal__row--cb`);
+	static $getAddModalRowHeader ($modalInner, headerText, helpText) {
+		const $row = UiUtil.$getAddModalRow($modalInner, "h5").addClass("bold");
+		$row.text(headerText);
+		if (helpText) $row.attr("title", helpText);
+		return $row;
+	}
+
+	static $getAddModalRowCb ($modalInner, labelText, objectWithProp, propName, helpText) {
+		const $row = UiUtil.$getAddModalRow($modalInner, "label").addClass(`ui-modal__row--cb`);
 		if (helpText) $row.attr("title", helpText);
 		$row.append(`<span>${labelText}</span>`);
 		const $cb = $(`<input type="checkbox">`).appendTo($row)
@@ -121,6 +127,7 @@ class UiUtil {
 UiUtil.SEARCH_RESULTS_CAP = 75;
 UiUtil.TYPE_TIMEOUT_MS = 100; // auto-search after 100ms
 
+// TODO have this respect the blacklist?
 class SearchUiUtil {
 	static async pDoGlobalInit () {
 		elasticlunr.clearStopWords();
@@ -136,16 +143,16 @@ class SearchUiUtil {
 
 		const availContent = {};
 
-		const data = await DataUtil.loadJSON("search/index.json");
+		const data = Omnidexer.decompressIndex(await DataUtil.loadJSON("search/index.json"));
 
 		const additionalData = {};
 		if (options.additionalIndices) {
-			await Promise.all(options.additionalIndices.map(async add => additionalData[add] = await DataUtil.loadJSON(`search/index-${add}.json`)));
+			await Promise.all(options.additionalIndices.map(async add => additionalData[add] = Omnidexer.decompressIndex(await DataUtil.loadJSON(`search/index-${add}.json`))));
 		}
 
 		const alternateData = {};
 		if (options.alternateIndices) {
-			await Promise.all(options.alternateIndices.map(async alt => alternateData[alt] = await DataUtil.loadJSON(`search/index-alt-${alt}.json`)));
+			await Promise.all(options.alternateIndices.map(async alt => alternateData[alt] = Omnidexer.decompressIndex(await DataUtil.loadJSON(`search/index-alt-${alt}.json`))));
 		}
 
 		const fromDeepIndex = (d) => d.d; // flag for "deep indexed" content that refers to the same item
@@ -200,8 +207,7 @@ class SearchUiUtil {
 SearchUiUtil.NO_HOVER_CATEGORIES = new Set([
 	Parser.CAT_ID_ADVENTURE,
 	Parser.CAT_ID_CLASS,
-	Parser.CAT_ID_QUICKREF,
-	Parser.CAT_ID_CLASS_FEATURE
+	Parser.CAT_ID_QUICKREF
 ]);
 
 class InputUiUtil {
@@ -339,6 +345,7 @@ class SourceUiUtil {
 	 * @param options.cbCancel Cancellation callback.
 	 * @param options.mode (Optional) Mode to build in, either "edit" or "add". Defaults to "add".
 	 * @param options.source (Optional) Homebrew source object.
+	 * @param options.isRequired (Optional) True if a source must be selected.
 	 */
 	static render (options) {
 		options = SourceUiUtil._getValidOptions(options);
@@ -400,7 +407,7 @@ class SourceUiUtil {
 				options.cbConfirm(source);
 			});
 
-		const $btnCancel = isAddSource || !isNewSource ? $(`<button class="btn btn-default mr-2">Cancel</button>`)
+		const $btnCancel = !options.isRequired && (isAddSource || !isNewSource) ? $(`<button class="btn btn-default mr-2">Cancel</button>`)
 			.click(() => {
 				options.cbCancel();
 			}) : null;

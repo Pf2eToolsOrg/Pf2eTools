@@ -29,8 +29,9 @@ function onJsonLoad (data) {
 		listClass: "backgrounds"
 	});
 
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
 
 	$(filterBox).on(
@@ -98,19 +99,13 @@ function addBackgrounds (data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(bg.source);
-		skillFilter.addIfAbsent(bg._fSkills);
-		toolFilter.addIfAbsent(bg._fTools);
-		languageFilter.addIfAbsent(bg._fLangs);
+		sourceFilter.addItem(bg.source);
+		skillFilter.addItem(bg._fSkills);
+		toolFilter.addItem(bg._fTools);
+		languageFilter.addItem(bg._fLangs);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	bgTable.append(tempString);
-
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
-	skillFilter.items.sort(SortUtil.ascSort);
-	toolFilter.items.sort(SortUtil.ascSort);
-	languageFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -142,7 +137,7 @@ function handleFilterChange () {
 			bg._fLangs
 		);
 	});
-	FilterBox.nextIfHidden(bgList);
+	FilterBox.selectFirstVisible(bgList);
 }
 
 function getSublistItem (bg, pinId) {
@@ -222,6 +217,6 @@ function loadhash (id) {
 }
 
 function loadsub (sub) {
-	filterBox.setFromSubHashes(sub);
+	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

@@ -1,4 +1,11 @@
 {
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		}
+	},
 	"monster": [
 		{
 			"name": "Flying Horror",
@@ -44,7 +51,9 @@
 			"passive": 14,
 			"cr": "3",
 			"page": 203,
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Fear Frenzy",
@@ -63,13 +72,13 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d6 + 5}) slashing damage plus 14 ({@damage 4d6}) psychic damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d6 + 5}) slashing damage plus 14 ({@damage 4d6}) psychic damage."
 					]
 				},
 				{
 					"name": "Frightening Screech {@recharge 5}",
 					"entries": [
-						"The horror screeches. Each creature within 30 feet of it that can hear it must succeed on a DC 13 Wisdom saving throw or be {@condition frightened} of it for 1 minute. The {@condition frightened} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the horror's Frightening Screech for the next 24 hours."
+						"The horror screeches. Each creature within 30 feet of it that can hear it must succeed on a {@dc 13} Wisdom saving throw or be {@condition frightened} of it for 1 minute. The {@condition frightened} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the horror's Frightening Screech for the next 24 hours."
 					]
 				}
 			],
@@ -82,6 +91,9 @@
 			"damageTags": [
 				"S",
 				"Y"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -122,7 +134,9 @@
 			"passive": 17,
 			"cr": "9",
 			"page": 205,
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Incorporeal Movement",
@@ -159,19 +173,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 21 ({@damage 4d8 + 3}) piercing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}21 ({@damage 4d8 + 3}) piercing damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 13 ({@damage 3d6 + 3}) slashing damage, and the target must succeed on a DC 16 Wisdom saving throw or be {@condition frightened} of the horror until the end of the target's next turn."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}13 ({@damage 3d6 + 3}) slashing damage, and the target must succeed on a {@dc 16} Wisdom saving throw or be {@condition frightened} of the horror until the end of the target's next turn."
 					]
 				},
 				{
 					"name": "Lashing Shadows {@recharge 5}",
 					"entries": [
-						"Each creature within 60 feet of the horror, except other horrors, must succeed on a DC 16 Dexterity saving throw or take 27 ({@damage 6d8}) necrotic damage."
+						"Each creature within 60 feet of the horror, except other horrors, must succeed on a {@dc 16} Dexterity saving throw or take 27 ({@damage 6d8}) necrotic damage."
 					]
 				}
 			],
@@ -190,6 +204,9 @@
 				"S",
 				"N",
 				"O"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -236,7 +253,9 @@
 			"passive": 17,
 			"cr": "15",
 			"page": 205,
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Spider Climb",
@@ -255,19 +274,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. Hit: 28 ({@damage 4d10 + 6}) piercing damage."
+						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. {@h}28 ({@damage 4d10 + 6}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. Hit: 24 ({@damage 4d8 + 6}) slashing damage."
+						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. {@h}24 ({@damage 4d8 + 6}) slashing damage."
 					]
 				},
 				{
 					"name": "Maddening Presence",
 					"entries": [
-						"The horror targets one creature it can see within 30 feet of it. If the target can see or hear the horror, the target must make a DC 17 Wisdom saving throw. On a failed saving throw, the target becomes {@condition paralyzed} until the end of its next turn. If a creature's saving throw is successful, the creature is immune to the horror's Maddening Presence for the next 24 hours."
+						"The horror targets one creature it can see within 30 feet of it. If the target can see or hear the horror, the target must make a {@dc 17} Wisdom saving throw. On a failed saving throw, the target becomes {@condition paralyzed} until the end of its next turn. If a creature's saving throw is successful, the creature is immune to the horror's Maddening Presence for the next 24 hours."
 					]
 				}
 			],
@@ -283,6 +302,10 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -340,10 +363,14 @@
 				"frightened"
 			],
 			"passive": 20,
-			"languages": "All",
+			"languages": [
+				"All"
+			],
 			"cr": "14",
 			"page": 192,
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Eye of the Law",
@@ -368,13 +395,13 @@
 				{
 					"name": "Hammer of Justice",
 					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. Hit: 12 ({@damage 2d6 + 5}) bludgeoning damage plus 18 ({@damage 4d8}) force damage. If the target is a creature, it must succeed on a DC 18 Strength saving throw or be knocked {@condition prone}."
+						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. {@h}12 ({@damage 2d6 + 5}) bludgeoning damage plus 18 ({@damage 4d8}) force damage. If the target is a creature, it must succeed on a {@dc 18} Strength saving throw or be knocked {@condition prone}."
 					]
 				},
 				{
 					"name": "Pacifying Presence",
 					"entries": [
-						"Each creature of the archon's choice that the archon can see within 120 feet of it must succeed on a DC 18 Wisdom saving throw, or else the target drops any weapons it is holding, ends its concentration on any spells or other effects, and becomes {@condition charmed} by the archon for 1 minute. The {@condition charmed} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the archon's Pacifying Presence for the next 24 hours."
+						"Each creature of the archon's choice that the archon can see within 120 feet of it must succeed on a {@dc 18} Wisdom saving throw, or else the target drops any weapons it is holding, ends its concentration on any spells or other effects, and becomes {@condition charmed} by the archon for 1 minute. The {@condition charmed} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the archon's Pacifying Presence for the next 24 hours."
 					]
 				}
 			],
@@ -394,7 +421,7 @@
 				{
 					"name": "Detention (Costs 3 Actions)",
 					"entries": [
-						"The archon targets a creature it can see within 60 feet of it. The target must succeed on a DC 18 Charisma saving throw or be magically teleported to a harmless demiplane until the end of the archon's next turn, whereupon the target reappears in the space it left or the nearest unoccupied space if that space is occupied."
+						"The archon targets a creature it can see within 60 feet of it. The target must succeed on a {@dc 18} Charisma saving throw or be magically teleported to a harmless demiplane until the end of the archon's next turn, whereupon the target reappears in the space it left or the nearest unoccupied space if that space is occupied."
 					]
 				}
 			],
@@ -402,7 +429,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The archon's innate spellcasting ability is Wisdom (spell save DC 18, {@hit 10} to hit with spell attacks). The archon can innately cast the following spells, requiring no material components:"
+						"The archon's innate spellcasting ability is Wisdom (spell save {@dc 18}, {@hit 10} to hit with spell attacks). The archon can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell calm emotions}",
@@ -415,9 +442,6 @@
 			"actionTags": [
 				"Multiattack"
 			],
-			"languageTags": [
-				"XX"
-			],
 			"senseTags": [
 				"SD"
 			],
@@ -427,6 +451,9 @@
 			"damageTags": [
 				"B",
 				"O"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -478,10 +505,15 @@
 				"frightened"
 			],
 			"passive": 16,
-			"languages": "all",
+			"languages": [
+				"all"
+			],
 			"cr": "5",
 			"page": 189,
-			"senses": "darkvision 120 ft., truesight 120 ft.",
+			"senses": [
+				"darkvision 120 ft.",
+				"truesight 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Flyby",
@@ -506,7 +538,7 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) slashing damage, or 8 ({@damage 1d10 + 3}) slashing damage if used with two hands, plus 18 ({@damage 4d8}) radiant damage. If the target is within 5 feet of any of the angel's allies, the target takes an extra 2 ({@damage 1d4}) radiant damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage, or 8 ({@damage 1d10 + 3}) slashing damage if used with two hands, plus 18 ({@damage 4d8}) radiant damage. If the target is within 5 feet of any of the angel's allies, the target takes an extra 2 ({@damage 1d4}) radiant damage."
 					]
 				},
 				{
@@ -533,6 +565,9 @@
 			"damageTags": [
 				"S",
 				"R"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -595,10 +630,14 @@
 				"frightened"
 			],
 			"passive": 20,
-			"languages": "all",
+			"languages": [
+				"all"
+			],
 			"cr": "14",
 			"page": 192,
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Exploitation of the Debtors",
@@ -629,13 +668,13 @@
 				{
 					"name": "Scythe",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 10 ft., one target. Hit: 9 ({@damage 2d4 + 4}) slashing damage plus 27 ({@damage 6d8}) necrotic damage."
+						"{@atk mw} {@hit 9} to hit, reach 10 ft., one target. {@h}9 ({@damage 2d4 + 4}) slashing damage plus 27 ({@damage 6d8}) necrotic damage."
 					]
 				},
 				{
 					"name": "Chains of Obligation",
 					"entries": [
-						"The angel targets one creature {@condition charmed} by it that it can see within 90 feet of it. The target must succeed on a DC 19 Charisma saving throw or become {@condition paralyzed} for 1 minute or until it takes any damage."
+						"The angel targets one creature {@condition charmed} by it that it can see within 90 feet of it. The target must succeed on a {@dc 19} Charisma saving throw or become {@condition paralyzed} for 1 minute or until it takes any damage."
 					]
 				}
 			],
@@ -643,7 +682,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The angel's innate spellcasting ability is Charisma (spell save DC 19, {@hit 11} to hit with spell attacks). The angel can innately cast the following spells, requiring no material components:"
+						"The angel's innate spellcasting ability is Charisma (spell save {@dc 19}, {@hit 11} to hit with spell attacks). The angel can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell command} (as a 2nd-level spell)",
@@ -681,6 +720,10 @@
 			"damageTags": [
 				"S",
 				"N"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -723,10 +766,14 @@
 				"perception": "+6"
 			},
 			"passive": 16,
-			"languages": "understands Celestial and Common but can't speak",
+			"languages": [
+				"understands Celestial and Common but can't speak"
+			],
 			"cr": "5",
 			"page": 199,
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Bonding",
@@ -743,7 +790,7 @@
 				{
 					"name": "Pounce",
 					"entries": [
-						"If the felidar moves at least 20 feet straight toward a creature and hits it with a claw attack on the same turn, that target must succeed on a DC 15 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the felidar can make one claw attack against it as a bonus action."
+						"If the felidar moves at least 20 feet straight toward a creature and hits it with a claw attack on the same turn, that target must succeed on a {@dc 15} Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the felidar can make one claw attack against it as a bonus action."
 					]
 				}
 			],
@@ -757,13 +804,22 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 17 ({@damage 3d8 + 4}) piercing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}17 ({@damage 3d8 + 4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 14 ({@damage 3d6 + 4}) slashing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}14 ({@damage 3d6 + 4}) slashing damage."
+					]
+				}
+			],
+			"variant": [
+				{
+					"type": "inset",
+					"name": "Winged Felidars",
+					"entries": [
+						"Some felidars boast huge, feathered wings. A winged felidar uses the same stat block as an ordinary felidar, with the addition of a flying speed of 40 feet."
 					]
 				}
 			],
@@ -785,6 +841,9 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -845,10 +904,14 @@
 				"frightened"
 			],
 			"passive": 16,
-			"languages": "all",
+			"languages": [
+				"all"
+			],
 			"cr": "12",
 			"page": 190,
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Flyby",
@@ -879,7 +942,7 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. Hit: 10 ({@damage 1d8 + 6}) slashing damage, or 11 ({@damage 1d10 + 6}) slashing damage if used with two hands, plus 22 ({@damage 5d8}) fire or radiant damage (angel's choice)."
+						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. {@h}10 ({@damage 1d8 + 6}) slashing damage, or 11 ({@damage 1d10 + 6}) slashing damage if used with two hands, plus 22 ({@damage 5d8}) fire or radiant damage (angel's choice)."
 					]
 				}
 			],
@@ -887,7 +950,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The angel's innate spellcasting ability is Charisma (spell save DC 18, {@hit 10} to hit with spell attacks). The angel can innately cast the following spells, requiring no material components:"
+						"The angel's innate spellcasting ability is Charisma (spell save {@dc 18}, {@hit 10} to hit with spell attacks). The angel can innately cast the following spells, requiring no material components:"
 					],
 					"daily": {
 						"3e": [
@@ -922,6 +985,9 @@
 				"S",
 				"F",
 				"R"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -992,10 +1058,14 @@
 				"poisoned"
 			],
 			"passive": 24,
-			"languages": "all",
+			"languages": [
+				"all"
+			],
 			"cr": "23",
 			"page": 230,
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Legendary Resistance (3/Day)",
@@ -1020,7 +1090,7 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"{@atk mw} {@hit 15} to hit, reach 5 ft., one target. Hit: 12 ({@damage 1d8 + 8}) slashing damage, or 13 ({@damage 1d10 + 8}) slashing damage when used with two hands, plus 27 ({@damage 6d8}) radiant damage."
+						"{@atk mw} {@hit 15} to hit, reach 5 ft., one target. {@h}12 ({@damage 1d8 + 8}) slashing damage, or 13 ({@damage 1d10 + 8}) slashing damage when used with two hands, plus 27 ({@damage 6d8}) radiant damage."
 					]
 				},
 				{
@@ -1032,7 +1102,7 @@
 				{
 					"name": "Warleader's Helix {@recharge 5}",
 					"entries": [
-						"{@atk rs} {@hit 17} to hit, range 60 ft., one creature. Hit: 54 ({@damage 12d8}) radiant damage, and Aurelia can choose another creature she can see within 10 feet of the target. The second creature regains 27 ({@dice 6d8}) hit points."
+						"{@atk rs} {@hit 17} to hit, range 60 ft., one creature. {@h}54 ({@damage 12d8}) radiant damage, and Aurelia can choose another creature she can see within 10 feet of the target. The second creature regains 27 ({@dice 6d8}) hit points."
 					]
 				}
 			],
@@ -1052,7 +1122,7 @@
 				{
 					"name": "Frighten Foes (Costs 3 Actions)",
 					"entries": [
-						"Aurelia targets up to five creatures she can see within 30 feet of her. Each target must succeed on a DC 25 Wisdom saving throw or be {@condition frightened} of her until the end of her next turn. Any target within 5 feet of Aurelia has disadvantage on the saving throw."
+						"Aurelia targets up to five creatures she can see within 30 feet of her. Each target must succeed on a {@dc 25} Wisdom saving throw or be {@condition frightened} of her until the end of her next turn. Any target within 5 feet of Aurelia has disadvantage on the saving throw."
 					]
 				}
 			],
@@ -1088,6 +1158,9 @@
 			"damageTags": [
 				"S",
 				"R"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1122,15 +1195,19 @@
 				"poisoned"
 			],
 			"passive": 8,
-			"languages": "understands Common but can't speak",
+			"languages": [
+				"understands Common but can't speak"
+			],
 			"cr": "1/4",
 			"page": 221,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"action": [
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 5 ({@damage 1d8 + 1}) slashing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d8 + 1}) slashing damage."
 					]
 				}
 			],
@@ -1151,6 +1228,9 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1189,21 +1269,25 @@
 				"poisoned"
 			],
 			"passive": 9,
-			"languages": "understands Common but can't speak",
+			"languages": [
+				"understands Common but can't speak"
+			],
 			"cr": "1/2",
 			"page": 221,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"action": [
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 7 ({@damage 2d4 + 2}) slashing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}7 ({@damage 2d4 + 2}) slashing damage."
 					]
 				},
 				{
 					"name": "Rock",
 					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 20/60 ft., one target. Hit: 5 ({@damage 1d6 + 2}) bludgeoning damage."
+						"{@atk rw} {@hit 4} to hit, range 20/60 ft., one target. {@h}5 ({@damage 1d6 + 2}) bludgeoning damage."
 					]
 				}
 			],
@@ -1225,6 +1309,10 @@
 			"damageTags": [
 				"S",
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
 			]
 		},
 		{
@@ -1282,10 +1370,16 @@
 				"charmed"
 			],
 			"passive": 21,
-			"languages": "Common, Draconic",
+			"languages": [
+				"Common",
+				"Draconic"
+			],
 			"cr": "26",
 			"page": 241,
-			"senses": "blindsight 60 ft., darkvision 120 ft.",
+			"senses": [
+				"blindsight 60 ft.",
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Legendary Resistance (3/Day)",
@@ -1322,25 +1416,25 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 17} to hit, reach 15 ft., one target. Hit: 18 ({@damage 2d8 + 9}) piercing damage plus 14 ({@damage 4d6}) fire damage."
+						"{@atk mw} {@hit 17} to hit, reach 15 ft., one target. {@h}18 ({@damage 2d8 + 9}) piercing damage plus 14 ({@damage 4d6}) fire damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. Hit: 14 ({@damage 2d4 + 9}) slashing damage."
+						"{@atk mw} {@hit 17} to hit, reach 10 ft., one target. {@h}14 ({@damage 2d4 + 9}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"{@atk mw} {@hit 17} to hit, reach 20 ft., one target. Hit: 16 ({@damage 2d6 + 9}) bludgeoning damage."
+						"{@atk mw} {@hit 17} to hit, reach 20 ft., one target. {@h}16 ({@damage 2d6 + 9}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Fire Breath {@recharge 5}",
 					"entries": [
-						"Niv-Mizzet exhales fire in a 90-foot cone. Each creature in that area must make a DC 25 Dexterity saving throw, taking 91 ({@damage 26d6}) fire damage on a failed save, or half as much damage on a successful one."
+						"Niv-Mizzet exhales fire in a 90-foot cone. Each creature in that area must make a {@dc 25} Dexterity saving throw, taking 91 ({@damage 26d6}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -1360,7 +1454,7 @@
 				{
 					"name": "Wing Attack (Costs 2 Actions)",
 					"entries": [
-						"Niv-Mizzet beats his wings. Each creature within 15 feet of him must succeed on a DC 25 Dexterity saving throw or take 14 ({@damage 2d4 + 9}) bludgeoning damage and be knocked {@condition prone}. Niv-Mizzet can then fly up to half his flying speed."
+						"Niv-Mizzet beats his wings. Each creature within 15 feet of him must succeed on a {@dc 25} Dexterity saving throw or take 14 ({@damage 2d4 + 9}) bludgeoning damage and be knocked {@condition prone}. Niv-Mizzet can then fly up to half his flying speed."
 					]
 				},
 				{
@@ -1374,7 +1468,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Niv-Mizzet is a 20th-level Izzet spellcaster. His spellcasting ability is Intelligence (spell save DC 26, {@hit 18} to hit with spell attacks). He has the following wizard spells prepared:"
+						"Niv-Mizzet is a 20th-level Izzet spellcaster. His spellcasting ability is Intelligence (spell save {@dc 26}, {@hit 18} to hit with spell attacks). He has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -1490,6 +1584,11 @@
 				"F",
 				"S",
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"AOE"
 			]
 		},
 		{
@@ -1548,7 +1647,9 @@
 			"passive": 11,
 			"cr": "12",
 			"page": 193,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Flyby",
@@ -1577,7 +1678,7 @@
 				{
 					"name": "Crackling Death",
 					"entries": [
-						"When the arclight phoenix dies, it explodes. Each creature within 30 feet of it must make a DC 18 Dexterity saving throw, taking 36 ({@damage 8d8}) lightning damage on a failed save, or half as much damage on a successful one. The explosion destroys the phoenix but leaves behind a Tiny, warm egg with a mizzium shell. The egg contains the embryo of a new arclight phoenix. It hatches when it is in the area of a spell that deals lightning damage, or if a creature touches the egg and expends spell slots whose combined levels equal 13 or more. When it hatches, the egg releases a new arclight phoenix that appears in the egg's space."
+						"When the arclight phoenix dies, it explodes. Each creature within 30 feet of it must make a {@dc 18} Dexterity saving throw, taking 36 ({@damage 8d8}) lightning damage on a failed save, or half as much damage on a successful one. The explosion destroys the phoenix but leaves behind a Tiny, warm egg with a mizzium shell. The egg contains the embryo of a new arclight phoenix. It hatches when it is in the area of a spell that deals lightning damage, or if a creature touches the egg and expends spell slots whose combined levels equal 13 or more. When it hatches, the egg releases a new arclight phoenix that appears in the egg's space."
 					]
 				}
 			],
@@ -1585,7 +1686,7 @@
 				{
 					"name": "Arclight Touch",
 					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. Hit: 27 ({@damage 6d8}) lightning damage, and lightning jumps from the target to one creature of the phoenix's choice that it can see within 30 feet of the target. That second creature must succeed on a DC 18 Dexterity saving throw or take 27 ({@damage 6d8}) lightning damage."
+						"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. {@h}27 ({@damage 6d8}) lightning damage, and lightning jumps from the target to one creature of the phoenix's choice that it can see within 30 feet of the target. That second creature must succeed on a {@dc 18} Dexterity saving throw or take 27 ({@damage 6d8}) lightning damage."
 					]
 				}
 			],
@@ -1599,6 +1700,10 @@
 			"damageTags": [
 				"L",
 				"O"
+			],
+			"miscTags": [
+				"MW",
+				"AOE"
 			]
 		},
 		{
@@ -1653,15 +1758,19 @@
 				"unconscious"
 			],
 			"passive": 10,
-			"languages": "Draconic",
+			"languages": [
+				"Draconic"
+			],
 			"cr": "4",
 			"page": 207,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Feed on Fire",
 					"entries": [
-						"If the weird takes fire damage from a spell or other magical effect, its size increases by one category. If there isn't enough room for the weird to increase in size, it attains the maximum size possible in the space available. While the weird is Large or bigger, it makes Strength checks and saving throws with advantage. If the weird starts its turn at Gargantuan size, the weird releases energy in an explosion. Each creature within 30 feet of the weird must make a DC 12 Dexterity saving throw, taking 28 ({@damage 8d6}) fire damage on a failed save, or half as much damage on a successful one. The explosion ignites flammable objects in the area that aren't being worn or carried. The weird's size then becomes Medium."
+						"If the weird takes fire damage from a spell or other magical effect, its size increases by one category. If there isn't enough room for the weird to increase in size, it attains the maximum size possible in the space available. While the weird is Large or bigger, it makes Strength checks and saving throws with advantage. If the weird starts its turn at Gargantuan size, the weird releases energy in an explosion. Each creature within 30 feet of the weird must make a {@dc 12} Dexterity saving throw, taking 28 ({@damage 8d6}) fire damage on a failed save, or half as much damage on a successful one. The explosion ignites flammable objects in the area that aren't being worn or carried. The weird's size then becomes Medium."
 					]
 				},
 				{
@@ -1687,7 +1796,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) bludgeoning damage plus 7 ({@damage 2d6}) fire damage, or 11 ({@damage 2d8 + 3}) bludgeoning damage plus 14 ({@damage 4d6}) fire damage if the weird is Large or bigger."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) bludgeoning damage plus 7 ({@damage 2d6}) fire damage, or 11 ({@damage 2d8 + 3}) bludgeoning damage plus 14 ({@damage 4d6}) fire damage if the weird is Large or bigger."
 					]
 				}
 			],
@@ -1703,6 +1812,10 @@
 			"damageTags": [
 				"B",
 				"F"
+			],
+			"miscTags": [
+				"MW",
+				"AOE"
 			]
 		},
 		{
@@ -1762,10 +1875,14 @@
 				"unconscious"
 			],
 			"passive": 10,
-			"languages": "Draconic",
+			"languages": [
+				"Draconic"
+			],
 			"cr": "7",
 			"page": 208,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Amplify Lightning",
@@ -1784,13 +1901,13 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 10 ft., one target. Hit: 13 ({@damage 2d8 + 4}) bludgeoning damage plus 10 ({@damage 3d6}) fire damage."
+						"{@atk mw} {@hit 7} to hit, reach 10 ft., one target. {@h}13 ({@damage 2d8 + 4}) bludgeoning damage plus 10 ({@damage 3d6}) fire damage."
 					]
 				},
 				{
 					"name": "Arc Lightning",
 					"entries": [
-						"{@atk rs} {@hit 7} to hit, range 30 ft., one target. Hit: 16 ({@damage 3d10}) lightning damage, and lightning jumps from the target to one creature of the fluxcharger's choice that it can see within 30 feet of the target. That second creature must succeed on a DC 15 Dexterity saving throw or take 13 ({@damage 3d8}) lightning damage. Hit or Miss: The fluxcharger takes 5 ({@damage 1d10}) force damage after resolving the attack."
+						"{@atk rs} {@hit 7} to hit, range 30 ft., one target. {@h}16 ({@damage 3d10}) lightning damage, and lightning jumps from the target to one creature of the fluxcharger's choice that it can see within 30 feet of the target. That second creature must succeed on a {@dc 15} Dexterity saving throw or take 13 ({@damage 3d8}) lightning damage. Hit or Miss: The fluxcharger takes 5 ({@damage 1d10}) force damage after resolving the attack."
 					]
 				}
 			],
@@ -1808,6 +1925,10 @@
 				"F",
 				"L",
 				"O"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -1868,12 +1989,14 @@
 			"passive": 10,
 			"cr": "1",
 			"page": 209,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Death Burst",
 					"entries": [
-						"When the galvanice weird dies, it explodes in a burst of ice and lightning. Each creature within 10 feet of the exploding weird must make a DC 13 Dexterity saving throw, taking 7 ({@damage 2d6}) lightning damage on a failed save, or half as much damage on a successful one."
+						"When the galvanice weird dies, it explodes in a burst of ice and lightning. Each creature within 10 feet of the exploding weird must make a {@dc 13} Dexterity saving throw, taking 7 ({@damage 2d6}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -1881,7 +2004,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@damage 1d6 + 2}) bludgeoning damage plus 5 ({@damage 2d4}) lightning damage. If the target is a creature, it must succeed on a DC 13 Constitution saving throw or lose the ability to use reactions until the start of the weird's next turn."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) bludgeoning damage plus 5 ({@damage 2d4}) lightning damage. If the target is a creature, it must succeed on a {@dc 13} Constitution saving throw or lose the ability to use reactions until the start of the weird's next turn."
 					]
 				}
 			],
@@ -1894,6 +2017,9 @@
 			"damageTags": [
 				"B",
 				"L"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1937,10 +2063,16 @@
 				"perception": "+9"
 			},
 			"passive": 19,
-			"languages": "Common, Elvish, Sylvan",
+			"languages": [
+				"Common",
+				"Elvish",
+				"Sylvan"
+			],
 			"cr": "9",
 			"page": 194,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Magic Resistance",
@@ -1966,13 +2098,13 @@
 				{
 					"name": "Vine Staff",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. Hit: 12 ({@damage 2d6 + 5}) bludgeoning damage. If the target is a creature, it must succeed on a DC 17 Dexterity saving throw or become {@condition restrained} by twisting vines for 1 minute. A target {@condition restrained} in this way can use an action to make a DC 17 Strength (Athletics) or Dexterity (Acrobatics) check, ending the effect on itself on a success."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}12 ({@damage 2d6 + 5}) bludgeoning damage. If the target is a creature, it must succeed on a {@dc 17} Dexterity saving throw or become {@condition restrained} by twisting vines for 1 minute. A target {@condition restrained} in this way can use an action to make a {@dc 17} Strength (Athletics) or Dexterity (Acrobatics) check, ending the effect on itself on a success."
 					]
 				},
 				{
 					"name": "Longbow",
 					"entries": [
-						"{@atk rw} {@hit 8} to hit, range 150/600 ft., one target. Hit: 8 ({@damage 1d8 + 4}) piercing damage."
+						"{@atk rw} {@hit 8} to hit, range 150/600 ft., one target. {@h}8 ({@damage 1d8 + 4}) piercing damage."
 					]
 				},
 				{
@@ -1992,7 +2124,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The dryad's innate spellcasting ability is Charisma (spell save DC 17). The dryad can innately cast the following spells, requiring no material components:"
+						"The dryad's innate spellcasting ability is Charisma (spell save {@dc 17}). The dryad can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell druidcraft}"
@@ -2033,6 +2165,11 @@
 			"damageTags": [
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -2082,10 +2219,17 @@
 				"grappled"
 			],
 			"passive": 26,
-			"languages": "Common, Druidic, Elvish, Sylvan",
+			"languages": [
+				"Common",
+				"Druidic",
+				"Elvish",
+				"Sylvan"
+			],
 			"cr": "18",
 			"page": 252,
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Legendary Resistance (3/Day)",
@@ -2128,19 +2272,19 @@
 				{
 					"name": "Constrict",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 5 ft., one creature. Hit: 15 ({@damage 3d6 + 5}) bludgeoning damage, and the target is {@condition grappled} (escape DC 19). Until this grapple ends, the target is {@condition restrained}. Trostani can grapple no more than three targets at a time."
+						"{@atk mw} {@hit 11} to hit, reach 5 ft., one creature. {@h}15 ({@damage 3d6 + 5}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 19}). Until this grapple ends, the target is {@condition restrained}. Trostani can grapple no more than three targets at a time."
 					]
 				},
 				{
 					"name": "Touch of Order",
 					"entries": [
-						"{@atk ms} {@hit 16} to hit, reach 5 ft., one creature. Hit: 23 ({@damage 3d8 + 10}) radiant damage, and Trostani can choose one magic item she can see in the target's possession. Unless it's an artifact, the item's magic is suppressed until the start of Trostani's next turn."
+						"{@atk ms} {@hit 16} to hit, reach 5 ft., one creature. {@h}23 ({@damage 3d8 + 10}) radiant damage, and Trostani can choose one magic item she can see in the target's possession. Unless it's an artifact, the item's magic is suppressed until the start of Trostani's next turn."
 					]
 				},
 				{
 					"name": "Wrath of Mat'Selesnya {@recharge 5}",
 					"entries": [
-						"Trostani conjures a momentary whirl of branches and vines at a point she can see within 60 feet of her. Each creature in a 30-foot cube on that point must make a DC 24 Dexterity saving throw, taking 21 ({@damage 6d6}) bludgeoning damage and 21 ({@damage 6d6}) slashing damage on a failed save, or half as much damage on a successful one."
+						"Trostani conjures a momentary whirl of branches and vines at a point she can see within 60 feet of her. Each creature in a 30-foot cube on that point must make a {@dc 24} Dexterity saving throw, taking 21 ({@damage 6d6}) bludgeoning damage and 21 ({@damage 6d6}) slashing damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -2180,7 +2324,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Trostani's innate spellcasting ability is Wisdom (spell save DC 24). She can innately cast the following spells, requiring no material components:"
+						"Trostani's innate spellcasting ability is Wisdom (spell save {@dc 24}). She can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell dispel magic}",
@@ -2229,6 +2373,10 @@
 				"B",
 				"R",
 				"S"
+			],
+			"miscTags": [
+				"MW",
+				"AOE"
 			]
 		},
 		{
@@ -2291,21 +2439,26 @@
 				"poisoned"
 			],
 			"passive": 10,
-			"languages": "Abyssal, Common",
+			"languages": [
+				"Abyssal",
+				"Common"
+			],
 			"cr": "1/2",
 			"page": 195,
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Last Laugh",
 					"entries": [
-						"When the cackler dies, it releases a dying laugh that scars the minds of other nearby creatures. Each creature within 10 feet of the cackler must succeed on a DC 11 Wisdom saving throw or take 2 ({@damage 1d4}) psychic damage."
+						"When the cackler dies, it releases a dying laugh that scars the minds of other nearby creatures. Each creature within 10 feet of the cackler must succeed on a {@dc 11} Wisdom saving throw or take 2 ({@damage 1d4}) psychic damage."
 					]
 				},
 				{
 					"name": "Mimicry",
 					"entries": [
-						"The cackler can mimic any sounds it has heard, including voices. A creature that hears the sounds can tell they are imitations with a successful DC 11 Wisdom (Insight) check."
+						"The cackler can mimic any sounds it has heard, including voices. A creature that hears the sounds can tell they are imitations with a successful {@dc 11} Wisdom (Insight) check."
 					]
 				}
 			],
@@ -2313,13 +2466,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 5 ({@damage 1d4 + 3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
 					]
 				},
 				{
 					"name": "Spiked Chain",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. Hit: 6 ({@damage 1d6 + 3}) slashing damage."
+						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
 					]
 				}
 			],
@@ -2327,7 +2480,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The cackler's innate spellcasting ability is Charisma (spell save DC 11, {@hit 3} to hit with spell attacks). The cackler can innately cast the following spells, requiring no material components:"
+						"The cackler's innate spellcasting ability is Charisma (spell save {@dc 11}, {@hit 3} to hit with spell attacks). The cackler can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell fire bolt}"
@@ -2354,6 +2507,10 @@
 				"P",
 				"S",
 				"Y"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -2423,15 +2580,21 @@
 				"poisoned"
 			],
 			"passive": 13,
-			"languages": "Abyssal, Common, telepathy 120 ft.",
+			"languages": [
+				"Abyssal",
+				"Common",
+				"telepathy 120 ft."
+			],
 			"cr": "9",
 			"page": 196,
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Aura of Blood Lust",
 					"entries": [
-						"When any other creature starts its turn within 30 feet of the master, that creature must succeed on a DC 17 Wisdom saving throw, or it must immediately take the Attack action, making one melee attack against a random creature within reach. If no creatures are within reach, it makes a ranged attack against a random creature within range, throwing its weapon if necessary."
+						"When any other creature starts its turn within 30 feet of the master, that creature must succeed on a {@dc 17} Wisdom saving throw, or it must immediately take the Attack action, making one melee attack against a random creature within reach. If no creatures are within reach, it makes a ranged attack against a random creature within range, throwing its weapon if necessary."
 					]
 				},
 				{
@@ -2457,13 +2620,13 @@
 				{
 					"name": "Spear",
 					"entries": [
-						"{@atk mw,rw} {@hit 8} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 11 ({@damage 2d6 + 4}) piercing damage, or 13 ({@damage 2d8 + 4}) piercing damage if used with two hands to make a melee attack, plus 13 ({@damage 3d8}) psychic damage."
+						"{@atk mw,rw} {@hit 8} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}11 ({@damage 2d6 + 4}) piercing damage, or 13 ({@damage 2d8 + 4}) piercing damage if used with two hands to make a melee attack, plus 13 ({@damage 3d8}) psychic damage."
 					]
 				},
 				{
 					"name": "Captivating Presence {@recharge}",
 					"entries": [
-						"Each creature within 120 feet of the master must succeed on a DC 17 Wisdom saving throw or be {@condition charmed} by the master for 1 hour. While {@condition charmed} in this way, a creature's speed is 0. If the {@condition charmed} creature takes damage, it can repeat the saving throw, ending the effect on itself on a success. A target that succeeds on the saving throw is immune to the Captivating Presence of all masters of cruelties for the next 24 hours."
+						"Each creature within 120 feet of the master must succeed on a {@dc 17} Wisdom saving throw or be {@condition charmed} by the master for 1 hour. While {@condition charmed} in this way, a creature's speed is 0. If the {@condition charmed} creature takes damage, it can repeat the saving throw, ending the effect on itself on a success. A target that succeeds on the saving throw is immune to the Captivating Presence of all masters of cruelties for the next 24 hours."
 					]
 				}
 			],
@@ -2471,7 +2634,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The master's innate spellcasting ability is Charisma (spell save DC 17). The master can innately cast the following spells, requiring no material components:"
+						"The master's innate spellcasting ability is Charisma (spell save {@dc 17}). The master can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell charm person} (as a 3rd-level spell)",
@@ -2505,6 +2668,11 @@
 			"damageTags": [
 				"P",
 				"Y"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -2576,15 +2744,20 @@
 				"poisoned"
 			],
 			"passive": 14,
-			"languages": "Abyssal, Common",
+			"languages": [
+				"Abyssal",
+				"Common"
+			],
 			"cr": "24",
 			"page": 247,
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Captivating Presence",
 					"entries": [
-						"Any creature that starts its turn within 30 feet of Rakdos must make a DC 25 Wisdom saving throw. On a failed save, the creature becomes {@condition charmed} by Rakdos for 1 minute or until the creature is farther than 30 feet away from him. On a successful save, the creature becomes immune to Rakdos's Captivating Presence for 24 hours."
+						"Any creature that starts its turn within 30 feet of Rakdos must make a {@dc 25} Wisdom saving throw. On a failed save, the creature becomes {@condition charmed} by Rakdos for 1 minute or until the creature is farther than 30 feet away from him. On a successful save, the creature becomes immune to Rakdos's Captivating Presence for 24 hours."
 					]
 				},
 				{
@@ -2622,13 +2795,13 @@
 				{
 					"name": "Curtain-Call Scythe",
 					"entries": [
-						"{@atk mw} {@hit 15} to hit, reach 10 ft., one target. Hit: 24 ({@damage 3d10 + 8}) slashing damage plus 13 ({@damage 3d8}) fire damage."
+						"{@atk mw} {@hit 15} to hit, reach 10 ft., one target. {@h}24 ({@damage 3d10 + 8}) slashing damage plus 13 ({@damage 3d8}) fire damage."
 					]
 				},
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 15} to hit, reach 10 ft., one target. Hit: 17 ({@damage 2d8 + 8}) slashing damage."
+						"{@atk mw} {@hit 15} to hit, reach 10 ft., one target. {@h}17 ({@damage 2d8 + 8}) slashing damage."
 					]
 				}
 			],
@@ -2648,7 +2821,7 @@
 				{
 					"name": "Touch of Pain (Costs 3 Actions)",
 					"entries": [
-						"Rakdos makes a claw attack against one creature within 10 feet of him. The target must succeed on a DC 25 Constitution saving throw or be {@condition poisoned} for 1 minute. While {@condition poisoned} in this way, the creature can't maintain concentration on a spell or any other effect that requires concentration. The {@condition poisoned} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"Rakdos makes a claw attack against one creature within 10 feet of him. The target must succeed on a {@dc 25} Constitution saving throw or be {@condition poisoned} for 1 minute. While {@condition poisoned} in this way, the creature can't maintain concentration on a spell or any other effect that requires concentration. The {@condition poisoned} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				}
 			],
@@ -2656,7 +2829,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Rakdos's spellcasting ability is Charisma (spell save DC 25). He can innately cast {@spell hellish rebuke} (at 5th level) at will, requiring no material components."
+						"Rakdos's spellcasting ability is Charisma (spell save {@dc 25}). He can innately cast {@spell hellish rebuke} (at 5th level) at will, requiring no material components."
 					],
 					"will": [
 						"{@spell hellish rebuke}"
@@ -2689,6 +2862,10 @@
 			"damageTags": [
 				"S",
 				"F"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -2756,15 +2933,21 @@
 				"poisoned"
 			],
 			"passive": 14,
-			"languages": "Abyssal, Common, telepathy 120 ft.",
+			"languages": [
+				"Abyssal",
+				"Common",
+				"telepathy 120 ft."
+			],
 			"cr": "12",
 			"page": 197,
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Aura of Mind Erosion",
 					"entries": [
-						"Any creature that starts its turn within 30 feet of the sire must make a DC 18 Wisdom saving throw. On a successful save, the creature is immune to this aura for the next 24 hours. On a failed save, the creature has disadvantage for 1 minute on Wisdom and Charisma checks and on Wisdom and Charisma saves. At the start of each of its turns, the sire can suppress this aura until the start of its next turn."
+						"Any creature that starts its turn within 30 feet of the sire must make a {@dc 18} Wisdom saving throw. On a successful save, the creature is immune to this aura for the next 24 hours. On a failed save, the creature has disadvantage for 1 minute on Wisdom and Charisma checks and on Wisdom and Charisma saves. At the start of each of its turns, the sire can suppress this aura until the start of its next turn."
 					]
 				},
 				{
@@ -2784,13 +2967,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 5 ft., one creature. Hit: 25 ({@damage 3d12 + 6}) piercing damage plus 16 ({@damage 3d10}) psychic damage."
+						"{@atk mw} {@hit 10} to hit, reach 5 ft., one creature. {@h}25 ({@damage 3d12 + 6}) piercing damage plus 16 ({@damage 3d10}) psychic damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. Hit: 10 ({@damage 1d8 + 6}) slashing damage plus 9 ({@damage 2d8}) psychic damage."
+						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. {@h}10 ({@damage 1d8 + 6}) slashing damage plus 9 ({@damage 2d8}) psychic damage."
 					]
 				}
 			],
@@ -2798,7 +2981,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The sire's innate spellcasting ability is Charisma (spell save DC 18, {@hit 10} to hit with spell attacks). The sire can innately cast the following spells, requiring no material components:"
+						"The sire's innate spellcasting ability is Charisma (spell save {@dc 18}, {@hit 10} to hit with spell attacks). The sire can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell clairvoyance}",
@@ -2836,6 +3019,10 @@
 				"P",
 				"Y",
 				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -2878,20 +3065,22 @@
 				"perception": "+2"
 			},
 			"passive": 12,
-			"languages": "Giant",
+			"languages": [
+				"Giant"
+			],
 			"cr": "6",
 			"page": 200,
 			"action": [
 				{
 					"name": "Chain",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 20 ft., one target. Hit: 16 ({@damage 3d6 + 6}) bludgeoning damage. If the target is a creature, it is {@condition grappled} (escape DC 17). Until the grapple ends, the target is {@condition restrained}, and the giant can't use this attack on anyone else."
+						"{@atk mw} {@hit 9} to hit, reach 20 ft., one target. {@h}16 ({@damage 3d6 + 6}) bludgeoning damage. If the target is a creature, it is {@condition grappled} (escape {@dc 17}). Until the grapple ends, the target is {@condition restrained}, and the giant can't use this attack on anyone else."
 					]
 				},
 				{
 					"name": "Rock",
 					"entries": [
-						"{@atk rw} {@hit 9} to hit, range 60/240 ft., one target. Hit: 16 ({@damage 3d6 + 6}) bludgeoning damage."
+						"{@atk rw} {@hit 9} to hit, range 60/240 ft., one target. {@h}16 ({@damage 3d6 + 6}) bludgeoning damage."
 					]
 				}
 			],
@@ -2908,6 +3097,11 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW"
 			]
 		},
 		{
@@ -2959,10 +3153,15 @@
 				"frightened"
 			],
 			"passive": 13,
-			"languages": "Common, Giant",
+			"languages": [
+				"Common",
+				"Giant"
+			],
 			"cr": "18",
 			"page": 238,
-			"senses": "tremorsense 60 ft.",
+			"senses": [
+				"tremorsense 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Legendary Resistance (3/Day)",
@@ -2993,25 +3192,25 @@
 				{
 					"name": "Maul",
 					"entries": [
-						"{@atk mw} {@hit 13} to hit, reach 10 ft., one target. Hit: 28 ({@damage 6d6 + 7}) bludgeoning damage. If the target is a creature, it must succeed on a DC 21 Strength saving throw or be knocked {@condition prone}."
+						"{@atk mw} {@hit 13} to hit, reach 10 ft., one target. {@h}28 ({@damage 6d6 + 7}) bludgeoning damage. If the target is a creature, it must succeed on a {@dc 21} Strength saving throw or be knocked {@condition prone}."
 					]
 				},
 				{
 					"name": "Stomp",
 					"entries": [
-						"{@atk mw} {@hit 13} to hit, reach 5 ft., one target. Hit: 18 ({@damage 2d10 + 7}) bludgeoning damage."
+						"{@atk mw} {@hit 13} to hit, reach 5 ft., one target. {@h}18 ({@damage 2d10 + 7}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Rock",
 					"entries": [
-						"{@atk rw} {@hit 13} to hit, range 30/120 ft., one target. Hit: 29 ({@damage 4d10 + 7}) bludgeoning damage."
+						"{@atk rw} {@hit 13} to hit, range 30/120 ft., one target. {@h}29 ({@damage 4d10 + 7}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Frightful Presence",
 					"entries": [
-						"Each creature of Borborygmos's choice that is within 60 feet of him and can see or hear him must succeed on a DC 17 Wisdom saving throw or become {@condition frightened} of him for 1 minute. The {@condition frightened} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to Borborygmos's Frightful Presence for the next 24 hours."
+						"Each creature of Borborygmos's choice that is within 60 feet of him and can see or hear him must succeed on a {@dc 17} Wisdom saving throw or become {@condition frightened} of him for 1 minute. The {@condition frightened} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to Borborygmos's Frightful Presence for the next 24 hours."
 					]
 				}
 			],
@@ -3025,13 +3224,13 @@
 				{
 					"name": "Bellow (Costs 2 Actions)",
 					"entries": [
-						"Borborygmos yells menacingly at one creature he can see within 60 feet of him. That creature must succeed on a DC 17 Wisdom saving throw or become {@condition frightened} of him for 1 minute. If the creature is already {@condition frightened}, it becomes {@condition stunned} instead. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to Borborygmos's Bellow for the next 24 hours."
+						"Borborygmos yells menacingly at one creature he can see within 60 feet of him. That creature must succeed on a {@dc 17} Wisdom saving throw or become {@condition frightened} of him for 1 minute. If the creature is already {@condition frightened}, it becomes {@condition stunned} instead. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to Borborygmos's Bellow for the next 24 hours."
 					]
 				},
 				{
 					"name": "Wide Berth (Costs 3 Actions)",
 					"entries": [
-						"Borborygmos moves up to half his speed and can move through the space of any creature smaller than Huge. The first time Borborygmos enters a creature's space during this move, the creature must make a DC 21 Dexterity saving throw. If the saving throw succeeds, the creature is pushed 5 feet away from Borborygmos. If the saving throw fails, that creature is knocked {@condition prone}, and Borborygmos can make a stomp attack against it."
+						"Borborygmos moves up to half his speed and can move through the space of any creature smaller than Huge. The first time Borborygmos enters a creature's space during this move, the creature must make a {@dc 21} Dexterity saving throw. If the saving throw succeeds, the creature is pushed 5 feet away from Borborygmos. If the saving throw fails, that creature is knocked {@condition prone}, and Borborygmos can make a stomp attack against it."
 					]
 				}
 			],
@@ -3053,6 +3252,11 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW"
 			]
 		},
 		{
@@ -3095,7 +3299,10 @@
 				"perception": "+10"
 			},
 			"passive": 20,
-			"languages": "Common, Giant",
+			"languages": [
+				"Common",
+				"Giant"
+			],
 			"cr": "8",
 			"page": 201,
 			"trait": [
@@ -3116,7 +3323,7 @@
 				{
 					"name": "Spear",
 					"entries": [
-						"{@atk mw,rw} {@hit 10} to hit, reach 10 ft. or range 60/240 ft., one target. Hit: 17 ({@damage 3d6 + 7}) piercing damage, or 20 ({@damage 3d8 + 7}) piercing damage if used with two hands to make a melee attack."
+						"{@atk mw,rw} {@hit 10} to hit, reach 10 ft. or range 60/240 ft., one target. {@h}17 ({@damage 3d6 + 7}) piercing damage, or 20 ({@damage 3d8 + 7}) piercing damage if used with two hands to make a melee attack."
 					]
 				}
 			],
@@ -3137,6 +3344,12 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"RCH",
+				"THW"
 			]
 		},
 		{
@@ -3185,10 +3398,15 @@
 				"poisoned"
 			],
 			"passive": 10,
-			"languages": "Common, Giant",
+			"languages": [
+				"Common",
+				"Giant"
+			],
 			"cr": "8",
 			"page": 216,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Magic Resistance",
@@ -3207,7 +3425,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. Hit: 23 ({@damage 3d10 + 7}) bludgeoning damage."
+						"{@atk mw} {@hit 10} to hit, reach 10 ft., one target. {@h}23 ({@damage 3d10 + 7}) bludgeoning damage."
 					]
 				}
 			],
@@ -3234,6 +3452,10 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -3272,10 +3494,15 @@
 				"wis": "+4"
 			},
 			"passive": 11,
-			"languages": "Common, Giant",
+			"languages": [
+				"Common",
+				"Giant"
+			],
 			"cr": "6",
 			"page": 202,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Focus",
@@ -3294,13 +3521,13 @@
 				{
 					"name": "Greataxe",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 10 ft., one target. Hit: 25 ({@damage 3d12 + 6}) slashing damage. If the Orzhov giant scores a critical hit, it rolls the damage dice three times, instead of twice."
+						"{@atk mw} {@hit 9} to hit, reach 10 ft., one target. {@h}25 ({@damage 3d12 + 6}) slashing damage. If the Orzhov giant scores a critical hit, it rolls the damage dice three times, instead of twice."
 					]
 				},
 				{
 					"name": "Rock",
 					"entries": [
-						"{@atk rw} {@hit 9} to hit, range 60/240 ft., one target. Hit: 28 ({@damage 4d10 + 6}) bludgeoning damage."
+						"{@atk rw} {@hit 9} to hit, range 60/240 ft., one target. {@h}28 ({@damage 4d10 + 6}) bludgeoning damage."
 					]
 				}
 			],
@@ -3317,6 +3544,11 @@
 			"damageTags": [
 				"S",
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW"
 			]
 		},
 		{
@@ -3359,10 +3591,14 @@
 				"perception": "+5"
 			},
 			"passive": 15,
-			"languages": "Giant",
+			"languages": [
+				"Giant"
+			],
 			"cr": "10",
 			"page": 202,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Reckless",
@@ -3393,13 +3629,13 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 15 ft., one target. Hit: 24 ({@damage 4d8 + 6}) bludgeoning damage."
+						"{@atk mw} {@hit 10} to hit, reach 15 ft., one target. {@h}24 ({@damage 4d8 + 6}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Rock",
 					"entries": [
-						"{@atk rw} {@hit 10} to hit, range 60/240 ft., one target. Hit: 28 ({@damage 4d10 + 6}) bludgeoning damage. If the target is a creature, it must succeed on a DC 18 Strength saving throw or be knocked {@condition prone}."
+						"{@atk rw} {@hit 10} to hit, range 60/240 ft., one target. {@h}28 ({@damage 4d10 + 6}) bludgeoning damage. If the target is a creature, it must succeed on a {@dc 18} Strength saving throw or be knocked {@condition prone}."
 					]
 				}
 			],
@@ -3418,6 +3654,11 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW"
 			]
 		},
 		{
@@ -3456,7 +3697,9 @@
 			"wis": 11,
 			"cha": 9,
 			"passive": 10,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "2",
 			"page": 217,
 			"trait": [
@@ -3477,7 +3720,7 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d6 + 4}) slashing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) slashing damage."
 					]
 				}
 			],
@@ -3493,6 +3736,9 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3530,7 +3776,9 @@
 				"acid"
 			],
 			"passive": 10,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "2",
 			"page": 217,
 			"action": [
@@ -3543,13 +3791,13 @@
 				{
 					"name": "Javelin",
 					"entries": [
-						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 6 ({@damage 1d6 + 3}) piercing damage."
+						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 30/120 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage."
 					]
 				},
 				{
 					"name": "Spit Acid",
 					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 20/60 ft., one target. Hit: 10 ({@damage 4d4}) acid damage."
+						"{@atk rw} {@hit 5} to hit, range 20/60 ft., one target. {@h}10 ({@damage 4d4}) acid damage."
 					]
 				}
 			],
@@ -3563,6 +3811,11 @@
 			"damageTags": [
 				"P",
 				"A"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -3611,10 +3864,14 @@
 				"poisoned"
 			],
 			"passive": 13,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "1",
 			"page": 217,
-			"senses": "darkvision 30 ft.",
+			"senses": [
+				"darkvision 30 ft."
+			],
 			"trait": [
 				{
 					"name": "Assassinate",
@@ -3633,7 +3890,7 @@
 				{
 					"name": "Toxic Touch",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@damage 2d6}) bludgeoning damage, and the target must succeed on a DC 12 Constitution saving throw or become {@condition poisoned} for 1 minute. At the end of each of the {@condition poisoned} target's turns, it must repeat the save, taking 3 ({@damage 1d6}) poison damage on a failed save, or ending the effect on itself on a successful one."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}7 ({@damage 2d6}) bludgeoning damage, and the target must succeed on a {@dc 12} Constitution saving throw or become {@condition poisoned} for 1 minute. At the end of each of the {@condition poisoned} target's turns, it must repeat the save, taking 3 ({@damage 1d6}) poison damage on a failed save, or ending the effect on itself on a successful one."
 					]
 				}
 			],
@@ -3647,6 +3904,9 @@
 			"damageTags": [
 				"B",
 				"I"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3683,7 +3943,9 @@
 				"lightning"
 			],
 			"passive": 11,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "1",
 			"page": 218,
 			"trait": [
@@ -3710,13 +3972,13 @@
 				{
 					"name": "Shocking Touch",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 9 ({@damage 2d8}) lightning damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}9 ({@damage 2d8}) lightning damage."
 					]
 				},
 				{
 					"name": "Tentacles",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 15 ft., one creature. Hit: The target is {@condition grappled} (escape DC 11), and the hybrid pulls the target up to 15 feet straight toward it. Until this grapple ends, the target takes 5 ({@damage 1d10}) lightning damage at the start of each of its turns, and the hybrid shocker can't use its tentacles on another creature."
+						"{@atk mw} {@hit 4} to hit, reach 15 ft., one creature. {@h}The target is {@condition grappled} (escape {@dc 11}), and the hybrid pulls the target up to 15 feet straight toward it. Until this grapple ends, the target takes 5 ({@damage 1d10}) lightning damage at the start of each of its turns, and the hybrid shocker can't use its tentacles on another creature."
 					]
 				}
 			],
@@ -3733,6 +3995,11 @@
 			],
 			"damageTags": [
 				"L"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"AOE"
 			]
 		},
 		{
@@ -3771,10 +4038,14 @@
 				"stealth": "+5"
 			},
 			"passive": 14,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "1/2",
 			"page": 218,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Chameleon Skin",
@@ -3799,7 +4070,7 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d6 + 3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage."
 					]
 				}
 			],
@@ -3818,6 +4089,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3864,7 +4138,9 @@
 				"nature": "+9"
 			},
 			"passive": 12,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "10",
 			"page": 256,
 			"trait": [
@@ -3885,7 +4161,7 @@
 				{
 					"name": "Scimitar",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 5 ({@damage 1d6 + 2}) slashing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) slashing damage."
 					]
 				}
 			],
@@ -3893,7 +4169,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The biomancer is a 16th-level Simic spellcaster. Its spellcasting ability is Intelligence (spell save DC 17, {@hit 9} to hit with spell attacks). The biomancer has the following wizard spells prepared:"
+						"The biomancer is a 16th-level Simic spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 17}, {@hit 9} to hit with spell attacks). The biomancer has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -3982,6 +4258,9 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4033,15 +4312,19 @@
 				"psychic"
 			],
 			"passive": 12,
-			"languages": "Abyssal plus any one language (usually Common)",
+			"languages": [
+				"Abyssal plus any one language (usually Common)"
+			],
 			"cr": "7",
 			"page": 248,
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Blood Witch Dance",
 					"entries": [
-						"The witch can use a bonus action to control the movement of one creature cursed by its hex spell that it can see within 30 feet of it. The creature must succeed on a DC 15 Charisma saving throw or use its reaction to move up to 30 feet in a direction of the witch's choice."
+						"The witch can use a bonus action to control the movement of one creature cursed by its hex spell that it can see within 30 feet of it. The creature must succeed on a {@dc 15} Charisma saving throw or use its reaction to move up to 30 feet in a direction of the witch's choice."
 					]
 				},
 				{
@@ -4061,13 +4344,13 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) slashing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage."
 					]
 				},
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d6 + 3}) piercing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage."
 					]
 				}
 			],
@@ -4075,7 +4358,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The witch's innate spellcasting ability is Charisma (spell save DC 15, {@hit 7} to hit with spell attacks). The witch can innately cast the following spells, requiring no material components:"
+						"The witch's innate spellcasting ability is Charisma (spell save {@dc 15}, {@hit 7} to hit with spell attacks). The witch can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell alter self}",
@@ -4120,6 +4403,9 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4167,7 +4453,9 @@
 				"perception": "+1"
 			},
 			"passive": 11,
-			"languages": "any one language (usually Common)",
+			"languages": [
+				"any one language (usually Common)"
+			],
 			"cr": "4",
 			"page": 242,
 			"trait": [
@@ -4188,7 +4476,7 @@
 				{
 					"name": "Warhammer",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d8 + 2}) bludgeoning damage, or 7 ({@damage 1d10 + 2}) bludgeoning damage if used with two hands."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) bludgeoning damage, or 7 ({@damage 1d10 + 2}) bludgeoning damage if used with two hands."
 					]
 				}
 			],
@@ -4196,7 +4484,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The blastseeker's innate spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). The blastseeker can innately cast the following spells, requiring no components other than its Izzet gear, which doesn't function for others:"
+						"The blastseeker's innate spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). The blastseeker can innately cast the following spells, requiring no components other than its Izzet gear, which doesn't function for others:"
 					],
 					"daily": {
 						"2": [
@@ -4220,6 +4508,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4266,7 +4557,9 @@
 				"perception": "+2"
 			},
 			"passive": 12,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "2",
 			"page": 242,
 			"trait": [
@@ -4281,7 +4574,7 @@
 				{
 					"name": "Rapier",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
 					]
 				}
 			],
@@ -4289,7 +4582,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The blastseeker's innate spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). The blastseeker can innately cast the following spells, requiring no components other than its Izzet gear, which doesn't function for others:"
+						"The blastseeker's innate spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). The blastseeker can innately cast the following spells, requiring no components other than its Izzet gear, which doesn't function for others:"
 					],
 					"daily": {
 						"3e": [
@@ -4315,6 +4608,10 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"AOE"
 			]
 		},
 		{
@@ -4363,7 +4660,10 @@
 				"survival": "+8"
 			},
 			"passive": 18,
-			"languages": "Common, Druidic",
+			"languages": [
+				"Common",
+				"Druidic"
+			],
 			"cr": "7",
 			"page": 239,
 			"trait": [
@@ -4384,7 +4684,7 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@damage 1d6}) bludgeoning damage, or 4 ({@damage 1d8}) bludgeoning damage if used with two hands."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d6}) bludgeoning damage, or 4 ({@damage 1d8}) bludgeoning damage if used with two hands."
 					]
 				}
 			],
@@ -4392,7 +4692,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The druid is a 12th-level Gruul spellcaster. Its spellcasting ability is Wisdom (spell save DC 16, {@hit 8} to hit with spell attacks). It has the following druid spells prepared:"
+						"The druid is a 12th-level Gruul spellcaster. Its spellcasting ability is Wisdom (spell save {@dc 16}, {@hit 8} to hit with spell attacks). It has the following druid spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -4466,6 +4766,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4512,7 +4815,9 @@
 				"religion": "+3"
 			},
 			"passive": 13,
-			"languages": "any one language (usually Common)",
+			"languages": [
+				"any one language (usually Common)"
+			],
 			"cr": "7",
 			"page": 231,
 			"action": [
@@ -4525,7 +4830,7 @@
 				{
 					"name": "Greatsword",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 10 ({@damage 2d6 + 3}) slashing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) slashing damage."
 					]
 				}
 			],
@@ -4541,7 +4846,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The firefist is a 9th-level Boros spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, {@hit 6} to hit with spell attacks). It has the following cleric spells prepared:"
+						"The firefist is a 9th-level Boros spellcaster. Its spellcasting ability is Wisdom (spell save {@dc 14}, {@hit 6} to hit with spell attacks). It has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -4605,6 +4910,9 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4651,14 +4959,16 @@
 				"perception": "+2"
 			},
 			"passive": 12,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "5",
 			"page": 242,
 			"trait": [
 				{
 					"name": "Fluxbending Overcast {@recharge 5}",
 					"entries": [
-						"The blastseeker can create an additional effect immediately after casting a spell. Roll a {@dice d6} to determine the effect: 1-3. The blastseeker teleports, swapping places with a creature it can see within 30 feet of it. 4-6. The blastseeker and each creature within 10 feet of it must succeed on a DC 16 Constitution saving throw or take 11 ({@damage 2d10}) thunder damage."
+						"The blastseeker can create an additional effect immediately after casting a spell. Roll a {@dice d6} to determine the effect: 1-3. The blastseeker teleports, swapping places with a creature it can see within 30 feet of it. 4-6. The blastseeker and each creature within 10 feet of it must succeed on a {@dc 16} Constitution saving throw or take 11 ({@damage 2d10}) thunder damage."
 					]
 				}
 			],
@@ -4666,7 +4976,7 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 3 ({@damage 1d6}) bludgeoning damage, or 4 ({@damage 1d8}) bludgeoning damage if used with two hands."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d6}) bludgeoning damage, or 4 ({@damage 1d8}) bludgeoning damage if used with two hands."
 					]
 				}
 			],
@@ -4674,7 +4984,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The blastseeker's innate spellcasting ability is Intelligence (spell save DC 16, {@hit 8} to hit with spell attacks). The blastseeker can innately cast the following spells, requiring no components other than its Izzet gear, which doesn't function for others:"
+						"The blastseeker's innate spellcasting ability is Intelligence (spell save {@dc 16}, {@hit 8} to hit with spell attacks). The blastseeker can innately cast the following spells, requiring no components other than its Izzet gear, which doesn't function for others:"
 					],
 					"daily": {
 						"3e": [
@@ -4702,6 +5012,9 @@
 			"damageTags": [
 				"B",
 				"T"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4745,14 +5058,16 @@
 				"perception": "+3"
 			},
 			"passive": 13,
-			"languages": "any one language (usually Common)",
+			"languages": [
+				"any one language (usually Common)"
+			],
 			"cr": "1/4",
 			"page": 231,
 			"action": [
 				{
 					"name": "Spear",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@damage 1d6 + 2}) piercing damage, or 6 ({@damage 1d8 + 2}) piercing damage if used with two hands to make a melee attack."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage, or 6 ({@damage 1d8 + 2}) piercing damage if used with two hands to make a melee attack."
 					]
 				}
 			],
@@ -4760,7 +5075,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The medic is a 3rd-level Boros spellcaster. Its spellcasting ability is Wisdom (spell save DC 11). The medic has the following cleric spells prepared:"
+						"The medic is a 3rd-level Boros spellcaster. Its spellcasting ability is Wisdom (spell save {@dc 11}). The medic has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -4797,6 +5112,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -4842,7 +5162,10 @@
 				"thunder"
 			],
 			"passive": 13,
-			"languages": "Common and Primordial, plus any one language",
+			"languages": [
+				"Common and Primordial",
+				"plus any one language"
+			],
 			"cr": "5",
 			"page": 243,
 			"trait": [
@@ -4869,7 +5192,7 @@
 				{
 					"name": "Spear",
 					"entries": [
-						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 3 ({@damage 1d6}) piercing damage, or 4 ({@damage 1d8}) piercing damage if used with two hands to make a melee attack."
+						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}3 ({@damage 1d6}) piercing damage, or 4 ({@damage 1d8}) piercing damage if used with two hands to make a melee attack."
 					]
 				}
 			],
@@ -4877,7 +5200,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The blastseeker's innate spellcasting ability is Intelligence (spell save DC 15, {@hit 7} to hit with spell attacks). The blastseeker can innately cast the following spells, requiring no components other than its Izzet gear, which doesn't function for others:"
+						"The blastseeker's innate spellcasting ability is Intelligence (spell save {@dc 15}, {@hit 7} to hit with spell attacks). The blastseeker can innately cast the following spells, requiring no components other than its Izzet gear, which doesn't function for others:"
 					],
 					"daily": {
 						"1": [
@@ -4904,6 +5227,11 @@
 				"P",
 				"O",
 				"L"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -4947,7 +5275,9 @@
 				"perception": "+4"
 			},
 			"passive": 14,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "1",
 			"page": 253,
 			"trait": [
@@ -4968,7 +5298,7 @@
 				{
 					"name": "Staff",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 4 ({@damage 1d6 + 1}) piercing damage, or 5 ({@damage 1d8 + 1}) bludgeoning damage if used with two hands."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) piercing damage, or 5 ({@damage 1d8 + 1}) bludgeoning damage if used with two hands."
 					]
 				},
 				{
@@ -4982,7 +5312,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The horncaller's innate spellcasting ability is Wisdom (spell save DC 14). The horncaller can innately cast the following spells, requiring no material components:"
+						"The horncaller's innate spellcasting ability is Wisdom (spell save {@dc 14}). The horncaller can innately cast the following spells, requiring no material components:"
 					],
 					"daily": {
 						"1e": [
@@ -5006,6 +5336,9 @@
 			"damageTags": [
 				"P",
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -5053,14 +5386,16 @@
 				"persuasion": "+4"
 			},
 			"passive": 15,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "6",
 			"page": 228,
 			"action": [
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 4 ({@damage 1d6 + 1}) bludgeoning damage, or 5 ({@damage 1d8 + 1}) bludgeoning damage if used with two hands."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) bludgeoning damage, or 5 ({@damage 1d8 + 1}) bludgeoning damage if used with two hands."
 					]
 				}
 			],
@@ -5068,7 +5403,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The lawmage is an 8th-level Azorius spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). The lawmage has the following wizard spells prepared:"
+						"The lawmage is an 8th-level Azorius spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). The lawmage has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -5123,6 +5458,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -5171,14 +5509,16 @@
 				"persuasion": "+6"
 			},
 			"passive": 12,
-			"languages": "Common plus any four languages",
+			"languages": [
+				"Common plus any four languages"
+			],
 			"cr": "5",
 			"page": 233,
 			"trait": [
 				{
 					"name": "Special Equipment",
 					"entries": [
-						"The mage wears a spies' murmur (see chapter 5)."
+						"The mage wears a {@item Spies' Murmur|GGR|spies' murmur} (see chapter 5)."
 					]
 				}
 			],
@@ -5186,7 +5526,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@damage 1d4 + 2}) piercing damage."
+						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
 					]
 				}
 			],
@@ -5194,7 +5534,7 @@
 				{
 					"name": "Innate Spellcasting (Psionics)",
 					"headerEntries": [
-						"The mage's spellcasting ability is Intelligence (spell save DC 16). It can innately cast the following spells, requiring no components:"
+						"The mage's spellcasting ability is Intelligence (spell save {@dc 16}). It can innately cast the following spells, requiring no components:"
 					],
 					"will": [
 						"{@spell encode thoughts|GGR} (see chapter 2)",
@@ -5227,6 +5567,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -5272,21 +5617,25 @@
 				"perception": "+3"
 			},
 			"passive": 13,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "3",
 			"page": 228,
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"action": [
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"{@atk mw} {@hit 1} to hit, reach 5 ft., one target. Hit: 2 ({@damage 1d6 - 1}) bludgeoning damage, or 3 ({@damage 1d8 - 1}) bludgeoning damage if used with two hands."
+						"{@atk mw} {@hit 1} to hit, reach 5 ft., one target. {@h}2 ({@damage 1d6 - 1}) bludgeoning damage, or 3 ({@damage 1d8 - 1}) bludgeoning damage if used with two hands."
 					]
 				},
 				{
 					"name": "Glimpse the Temporal Flood {@recharge 5}",
 					"entries": [
-						"The mage targets one creature within 120 feet of it that it can see. The target takes 18 ({@damage 4d8}) psychic damage, and it must succeed on a DC 14 Intelligence saving throw or be {@condition stunned} until the end of its next turn."
+						"The mage targets one creature within 120 feet of it that it can see. The target takes 18 ({@damage 4d8}) psychic damage, and it must succeed on a {@dc 14} Intelligence saving throw or be {@condition stunned} until the end of its next turn."
 					]
 				}
 			],
@@ -5302,7 +5651,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The mage's innate spellcasting ability is Intelligence (spell save DC 14). It can cast the following spells, requiring no material components:"
+						"The mage's innate spellcasting ability is Intelligence (spell save {@dc 14}). It can cast the following spells, requiring no material components:"
 					],
 					"daily": {
 						"3": [
@@ -5330,6 +5679,9 @@
 			"damageTags": [
 				"B",
 				"Y"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -5372,14 +5724,16 @@
 				"performance": "+6"
 			},
 			"passive": 9,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "2",
 			"page": 248,
 			"action": [
 				{
 					"name": "Club",
 					"entries": [
-						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. Hit: 2 ({@damage 1d4}) bludgeoning damage."
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}2 ({@damage 1d4}) bludgeoning damage."
 					]
 				}
 			],
@@ -5387,7 +5741,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The lampooner is a 4th-level Rakdos spellcaster. Its spellcasting ability is Charisma (spell save DC 14, {@hit 6} to hit with spell attacks). It knows the following bard spells:"
+						"The lampooner is a 4th-level Rakdos spellcaster. Its spellcasting ability is Charisma (spell save {@dc 14}, {@hit 6} to hit with spell attacks). It knows the following bard spells:"
 					],
 					"spells": {
 						"0": {
@@ -5428,6 +5782,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -5470,7 +5827,9 @@
 				"performance": "+4"
 			},
 			"passive": 9,
-			"languages": "any one language (usually Common)",
+			"languages": [
+				"any one language (usually Common)"
+			],
 			"cr": "1",
 			"page": 249,
 			"trait": [
@@ -5491,7 +5850,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@damage 1d4 + 3}) piercing damage."
+						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
 					]
 				}
 			],
@@ -5504,6 +5863,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -5546,7 +5910,9 @@
 				"performance": "+4"
 			},
 			"passive": 9,
-			"languages": "any one language (usually Common)",
+			"languages": [
+				"any one language (usually Common)"
+			],
 			"cr": "1",
 			"page": 249,
 			"trait": [
@@ -5567,13 +5933,13 @@
 				{
 					"name": "Bladed Chain",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. Hit: 6 ({@damage 1d6 + 3}) slashing damage."
+						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
 					]
 				},
 				{
 					"name": "Spew Flame {@recharge 4}",
 					"entries": [
-						"The fire eater exhales flames. Each creature in a 15-foot cone must make a DC 13 Dexterity saving throw, taking 9 ({@damage 2d8}) fire damage on a failed save, or half as much damage on a successful one."
+						"The fire eater exhales flames. Each creature in a 15-foot cone must make a {@dc 13} Dexterity saving throw, taking 9 ({@damage 2d8}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -5587,6 +5953,11 @@
 			"damageTags": [
 				"S",
 				"F"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"AOE"
 			]
 		},
 		{
@@ -5629,7 +6000,9 @@
 				"performance": "+4"
 			},
 			"passive": 9,
-			"languages": "any one language (usually Common)",
+			"languages": [
+				"any one language (usually Common)"
+			],
 			"cr": "1",
 			"page": 249,
 			"trait": [
@@ -5650,7 +6023,7 @@
 				{
 					"name": "Barbed Pole",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) piercing damage, and the acrobat can jump up to 20 feet. This movement doesn't provoke opportunity attacks."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage, and the acrobat can jump up to 20 feet. This movement doesn't provoke opportunity attacks."
 					]
 				}
 			],
@@ -5663,6 +6036,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -5706,7 +6082,9 @@
 				"perception": "+3"
 			},
 			"passive": 13,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "4",
 			"page": 231,
 			"trait": [
@@ -5721,7 +6099,7 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) slashing damage, or 8 ({@damage 1d10 + 3}) slashing damage if used with two hands."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage, or 8 ({@damage 1d10 + 3}) slashing damage if used with two hands."
 					]
 				}
 			],
@@ -5737,7 +6115,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The reckoner is a 5th-level Boros spellcaster. Its spellcasting ability is Intelligence (spell save DC 12, {@hit 4} to hit with spell attacks). The reckoner has the following wizard spells prepared:"
+						"The reckoner is a 5th-level Boros spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 12}, {@hit 4} to hit with spell attacks). The reckoner has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -5783,6 +6161,9 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -5827,7 +6208,9 @@
 				"stealth": "+4"
 			},
 			"passive": 14,
-			"languages": "any one language (usually Common)",
+			"languages": [
+				"any one language (usually Common)"
+			],
 			"cr": "1/2",
 			"page": 239,
 			"trait": [
@@ -5866,7 +6249,7 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk m} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@damage 1d6 + 2}) piercing damage."
+						"{@atk m} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
 					]
 				}
 			],
@@ -5921,14 +6304,16 @@
 			"wis": 9,
 			"cha": 10,
 			"passive": 9,
-			"languages": "any one language (usually Common)",
+			"languages": [
+				"any one language (usually Common)"
+			],
 			"cr": "1/2",
 			"page": 243,
 			"trait": [
 				{
 					"name": "Explosive Tank",
 					"entries": [
-						"When the guard dies, or if it rolls a 1 when checking whether its Scorchbringer action recharges, the tank on its back explodes in a 10-foot radius sphere. Each creature in that area must make a DC 12 Dexterity saving throw, taking 7 ({@damage 2d6}) fire damage on a failed save, or half as much damage on a successful one. The explosion ignites flammable objects that aren't being worn or carried, and it destroys the scorchbringer."
+						"When the guard dies, or if it rolls a 1 when checking whether its Scorchbringer action recharges, the tank on its back explodes in a 10-foot radius sphere. Each creature in that area must make a {@dc 12} Dexterity saving throw, taking 7 ({@damage 2d6}) fire damage on a failed save, or half as much damage on a successful one. The explosion ignites flammable objects that aren't being worn or carried, and it destroys the scorchbringer."
 					]
 				}
 			],
@@ -5936,13 +6321,13 @@
 				{
 					"name": "Light Hammer",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@damage 1d4 + 2}) bludgeoning damage."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Scorchbringer {@recharge 4}",
 					"entries": [
-						"The guard's scorchbringer spouts a stream of flame in a line that is 30 feet long and 5 feet wide. Each creature in the line must make a DC 12 Dexterity saving throw, taking 7 ({@damage 2d6}) fire damage on a failed save, or half as much damage on a successful one."
+						"The guard's scorchbringer spouts a stream of flame in a line that is 30 feet long and 5 feet wide. Each creature in the line must make a {@dc 12} Dexterity saving throw, taking 7 ({@damage 2d6}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -5953,6 +6338,12 @@
 			"damageTags": [
 				"B",
 				"F"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW",
+				"AOE"
 			]
 		},
 		{
@@ -5995,7 +6386,9 @@
 				"athletics": "+3"
 			},
 			"passive": 12,
-			"languages": "any one language (usually Common)",
+			"languages": [
+				"any one language (usually Common)"
+			],
 			"cr": "1/2",
 			"page": 226,
 			"trait": [
@@ -6016,7 +6409,7 @@
 				{
 					"name": "Longsword",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d8 + 2}) slashing damage, or 7 ({@damage 1d10 + 2}) slashing damage if used with two hands."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) slashing damage, or 7 ({@damage 1d10 + 2}) slashing damage if used with two hands."
 					]
 				}
 			],
@@ -6029,6 +6422,9 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -6075,10 +6471,14 @@
 				"stealth": "+4"
 			},
 			"passive": 13,
-			"languages": "Common plus any one language",
+			"languages": [
+				"Common plus any one language"
+			],
 			"cr": "1",
 			"page": 233,
-			"senses": "darkvision 30 ft.",
+			"senses": [
+				"darkvision 30 ft."
+			],
 			"trait": [
 				{
 					"name": "Cunning Action",
@@ -6097,13 +6497,13 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 ({@damage 1d4 + 2}) piercing damage."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
 					]
 				},
 				{
 					"name": "Rapier",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d8 + 2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage."
 					]
 				}
 			],
@@ -6111,7 +6511,7 @@
 				{
 					"name": "Innate Spellcasting (Psionics)",
 					"headerEntries": [
-						"The thought spy's innate spellcasting ability is Intelligence (spell save DC 13). The thought spy can innately cast the following spells, requiring no components:"
+						"The thought spy's innate spellcasting ability is Intelligence (spell save {@dc 13}). The thought spy can innately cast the following spells, requiring no components:"
 					],
 					"will": [
 						"{@spell charm person}",
@@ -6144,6 +6544,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -6192,10 +6597,15 @@
 				"religion": "+4"
 			},
 			"passive": 13,
-			"languages": "Common, Elvish",
+			"languages": [
+				"Common",
+				"Elvish"
+			],
 			"cr": "5",
 			"page": 236,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Fey Ancestry",
@@ -6208,13 +6618,13 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@damage 1d6 + 2}) bludgeoning damage, or 6 ({@damage 1d8 + 2}) bludgeoning damage if used with two hands."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) bludgeoning damage, or 6 ({@damage 1d8 + 2}) bludgeoning damage if used with two hands."
 					]
 				},
 				{
 					"name": "Fungal Rot",
 					"entries": [
-						"{@atk ms} {@hit 6} to hit, reach 5 ft., one target. Hit: 9 ({@damage 2d8}) necrotic damage, and the target must make a DC 14 Constitution saving throw, taking 18 ({@damage 4d8}) poison damage on a failed save, or half as much damage on a successful one."
+						"{@atk ms} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 2d8}) necrotic damage, and the target must make a {@dc 14} Constitution saving throw, taking 18 ({@damage 4d8}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -6230,7 +6640,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The shaman is an 8th-level Golgari spellcaster. Its spellcasting ability is Wisdom (spell save DC 14, {@hit 6} to hit with spell attacks). The shaman has the following druid spells prepared:"
+						"The shaman is an 8th-level Golgari spellcaster. Its spellcasting ability is Wisdom (spell save {@dc 14}, {@hit 6} to hit with spell attacks). The shaman has the following druid spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -6292,6 +6702,9 @@
 				"B",
 				"N",
 				"I"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -6341,10 +6754,15 @@
 				"religion": "+3"
 			},
 			"passive": 12,
-			"languages": "Common, Kraul",
+			"languages": [
+				"Common",
+				"Kraul"
+			],
 			"cr": "4",
 			"page": 214,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Feed on Death",
@@ -6381,7 +6799,7 @@
 				{
 					"name": "Quarterstaff",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d6 + 3}) bludgeoning damage, or 7 ({@damage 1d8 + 3}) bludgeoning damage if used with two hands."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) bludgeoning damage, or 7 ({@damage 1d8 + 3}) bludgeoning damage if used with two hands."
 					]
 				}
 			],
@@ -6389,7 +6807,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The kraul's innate spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). The kraul can innately cast the following spells, requiring no material components:"
+						"The kraul's innate spellcasting ability is Wisdom (spell save {@dc 12}, {@hit 4} to hit with spell attacks). The kraul can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell chill touch}",
@@ -6427,6 +6845,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -6466,10 +6887,15 @@
 			"wis": 11,
 			"cha": 8,
 			"passive": 10,
-			"languages": "Kraul, understands Common but can't speak it",
+			"languages": [
+				"Kraul",
+				"understands Common but can't speak it"
+			],
 			"cr": "1/2",
 			"page": 213,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Hive Mind",
@@ -6494,7 +6920,16 @@
 				{
 					"name": "Spear",
 					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 ({@damage 1d6 + 2}) piercing damage, or 6 ({@damage 1d8 + 2}) piercing damage if used with two hands to make a melee attack."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage, or 6 ({@damage 1d8 + 2}) piercing damage if used with two hands to make a melee attack."
+					]
+				}
+			],
+			"variant": [
+				{
+					"type": "inset",
+					"name": "Winged Kraul Warriors",
+					"entries": [
+						"Some kraul warriors have a flying speed of 40 feet, as a result of possessing gossamer wings. Their wings give them a higher station among the kraul soldiers. Winged kraul warriors serve the guild as scouts and shock troops."
 					]
 				}
 			],
@@ -6511,6 +6946,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -6563,10 +7003,16 @@
 				"poison"
 			],
 			"passive": 19,
-			"languages": "Common, Elvish, Merfolk",
+			"languages": [
+				"Common",
+				"Elvish",
+				"Merfolk"
+			],
 			"cr": "16",
 			"page": 255,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Amphibious",
@@ -6591,13 +7037,13 @@
 				{
 					"name": "Prime Speaker's Trident",
 					"entries": [
-						"{@atk mw,rw} {@hit 10} to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 12 ({@damage 2d6 + 5}) piercing damage, and the trident emits a thunderous boom. Each creature in a 15-foot cube originating from the prongs of the trident must make a DC 18 Constitution saving throw. On a failed save, the creature takes 9 ({@damage 2d8}) thunder damage and is pushed 10 feet away from Zegana. If the creature is underwater, the damage is increased to 13 ({@dice 3d8}). On a successful save, the creature takes half as much damage and isn't pushed."
+						"{@atk mw,rw} {@hit 10} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}12 ({@damage 2d6 + 5}) piercing damage, and the trident emits a thunderous boom. Each creature in a 15-foot cube originating from the prongs of the trident must make a {@dc 18} Constitution saving throw. On a failed save, the creature takes 9 ({@damage 2d8}) thunder damage and is pushed 10 feet away from Zegana. If the creature is underwater, the damage is increased to 13 ({@dice 3d8}). On a successful save, the creature takes half as much damage and isn't pushed."
 					]
 				},
 				{
 					"name": "Deluge {@recharge 4}",
 					"entries": [
-						"Zegana conjures a wave of water that crashes down on an area within 120 feet of her. The area can be up to 30 feet long, up to 10 feet wide, and up to 10 feet tall. Each creature in that area must make a DC 18 Dexterity saving throw. On a failed save, a creature takes 18 ({@damage 4d8}) bludgeoning damage and is knocked {@condition prone}. On a successful save, a creature takes half as much damage and isn't knocked {@condition prone}. The water spreads out across the ground, extinguishing unprotected flames it comes in contact with, and then vanishes."
+						"Zegana conjures a wave of water that crashes down on an area within 120 feet of her. The area can be up to 30 feet long, up to 10 feet wide, and up to 10 feet tall. Each creature in that area must make a {@dc 18} Dexterity saving throw. On a failed save, a creature takes 18 ({@damage 4d8}) bludgeoning damage and is knocked {@condition prone}. On a successful save, a creature takes half as much damage and isn't knocked {@condition prone}. The water spreads out across the ground, extinguishing unprotected flames it comes in contact with, and then vanishes."
 					]
 				}
 			],
@@ -6631,7 +7077,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Zegana is a 15th-level Simic spellcaster. Her spellcasting ability is Intelligence (spell save DC 18, {@hit 10} to hit with spell attacks). She has the following wizard spells prepared:"
+						"Zegana is a 15th-level Simic spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 18}, {@hit 10} to hit with spell attacks). She has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -6726,6 +7172,12 @@
 				"P",
 				"T",
 				"B"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"AOE",
+				"THW"
 			]
 		},
 		{
@@ -6778,13 +7230,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. Hit: 8 ({@damage 1d10 + 3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. {@h}8 ({@damage 1d10 + 3}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) slashing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage."
 					]
 				}
 			],
@@ -6797,6 +7249,9 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -6849,13 +7304,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one creature. Hit: 17 ({@damage 2d12 + 4}) piercing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one creature. {@h}17 ({@damage 2d12 + 4}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 17 ({@damage 2d12 + 4}) slashing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}17 ({@damage 2d12 + 4}) slashing damage."
 					]
 				}
 			],
@@ -6868,6 +7323,9 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -6920,19 +7378,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 10 ft., one creature. Hit: 27 ({@damage 6d6 + 6}) piercing damage."
+						"{@atk mw} {@hit 11} to hit, reach 10 ft., one creature. {@h}27 ({@damage 6d6 + 6}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. Hit: 22 ({@damage 3d10 + 6}) slashing damage."
+						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. {@h}22 ({@damage 3d10 + 6}) slashing damage."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 15 ft., one target. Hit: 33 ({@damage 6d8 + 6}) bludgeoning damage. If the target is a creature, it must succeed on a DC 19 Strength saving throw or be knocked {@condition prone}."
+						"{@atk mw} {@hit 11} to hit, reach 15 ft., one target. {@h}33 ({@damage 6d8 + 6}) bludgeoning damage. If the target is a creature, it must succeed on a {@dc 19} Strength saving throw or be knocked {@condition prone}."
 					]
 				}
 			],
@@ -6946,6 +7404,10 @@
 				"P",
 				"S",
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -7007,10 +7469,15 @@
 				"frightened"
 			],
 			"passive": 25,
-			"languages": "Common, Sphinx",
+			"languages": [
+				"Common",
+				"Sphinx"
+			],
 			"cr": "21",
 			"page": 227,
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Inscrutable",
@@ -7041,13 +7508,13 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 12} to hit, reach 5 ft., one target. Hit: 21 ({@damage 3d10 + 5}) slashing damage. If the target is a creature, it must succeed on a DC 23 Wisdom saving throw or take 14 ({@damage 4d6}) psychic damage after each attack it makes against Isperia before the start of her next turn."
+						"{@atk mw} {@hit 12} to hit, reach 5 ft., one target. {@h}21 ({@damage 3d10 + 5}) slashing damage. If the target is a creature, it must succeed on a {@dc 23} Wisdom saving throw or take 14 ({@damage 4d6}) psychic damage after each attack it makes against Isperia before the start of her next turn."
 					]
 				},
 				{
 					"name": "Supreme Legal Authority",
 					"entries": [
-						"Isperia chooses up to three creatures she can see within 90 feet of her. Each target must succeed on a DC 23 Intelligence saving throw or Isperia chooses an action for that target: Attack, Cast a Spell, Dash, Disengage, Dodge, Help, Hide, Ready, Search, or Use an Object. The affected target can't take that action for 1 minute. At the end of each of the target's turns, it can end the effect on itself with a successful DC 23 Intelligence saving throw. A target that succeeds on the saving throw becomes immune to Isperia's Supreme Legal Authority for 24 hours."
+						"Isperia chooses up to three creatures she can see within 90 feet of her. Each target must succeed on a {@dc 23} Intelligence saving throw or Isperia chooses an action for that target: Attack, Cast a Spell, Dash, Disengage, Dodge, Help, Hide, Ready, Search, or Use an Object. The affected target can't take that action for 1 minute. At the end of each of the target's turns, it can end the effect on itself with a successful {@dc 23} Intelligence saving throw. A target that succeeds on the saving throw becomes immune to Isperia's Supreme Legal Authority for 24 hours."
 					]
 				}
 			],
@@ -7075,7 +7542,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Isperia's innate spellcasting ability is Wisdom (spell save DC 23). Isperia can innately cast {@spell imprisonment} twice per day, requiring no material components."
+						"Isperia's innate spellcasting ability is Wisdom (spell save {@dc 23}). Isperia can innately cast {@spell imprisonment} twice per day, requiring no material components."
 					],
 					"daily": {
 						"2": [
@@ -7090,7 +7557,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Isperia is a 15th-level Azorius spellcaster. Her spellcasting ability is Wisdom (spell save DC 23, {@hit 14} to hit with spell attacks). Isperia has the following cleric spells prepared:"
+						"Isperia is a 15th-level Azorius spellcaster. Her spellcasting ability is Wisdom (spell save {@dc 23}, {@hit 14} to hit with spell attacks). Isperia has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -7191,6 +7658,9 @@
 			"damageTags": [
 				"S",
 				"Y"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -7251,13 +7721,13 @@
 				{
 					"name": "Beak",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 9 ({@damage 1d8 + 5}) piercing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d8 + 5}) piercing damage."
 					]
 				},
 				{
 					"name": "Talons",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 10 ({@damage 2d4 + 5}) slashing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d4 + 5}) slashing damage."
 					]
 				}
 			],
@@ -7270,6 +7740,9 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -7329,13 +7802,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. Hit: 22 ({@damage 3d10 + 6}) piercing damage. If the target is a Large or smaller creature, it must succeed on a DC 19 Dexterity saving throw or be swallowed by the skyswimmer. A swallowed creature is {@condition blinded} and {@condition restrained}, it has total cover against attacks and other effects outside the skyswimmer, and it takes 21 ({@damage 6d6}) acid damage at the start of each of the skyswimmer's turns. If the skyswimmer takes 30 damage or more on a single turn from the swallowed creature, the skyswimmer must succeed on a DC 18 Constitution saving throw at the end of that turn or regurgitate the creature, which falls {@condition prone} in a space within 10 feet of the skyswimmer. If the skyswimmer dies, a swallowed creature is no longer {@condition restrained} by it and can escape from the corpse by using 15 feet of movement, exiting {@condition prone}."
+						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. {@h}22 ({@damage 3d10 + 6}) piercing damage. If the target is a Large or smaller creature, it must succeed on a {@dc 19} Dexterity saving throw or be swallowed by the skyswimmer. A swallowed creature is {@condition blinded} and {@condition restrained}, it has total cover against attacks and other effects outside the skyswimmer, and it takes 21 ({@damage 6d6}) acid damage at the start of each of the skyswimmer's turns. If the skyswimmer takes 30 damage or more on a single turn from the swallowed creature, the skyswimmer must succeed on a {@dc 18} Constitution saving throw at the end of that turn or regurgitate the creature, which falls {@condition prone} in a space within 10 feet of the skyswimmer. If the skyswimmer dies, a swallowed creature is no longer {@condition restrained} by it and can escape from the corpse by using 15 feet of movement, exiting {@condition prone}."
 					]
 				},
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 30 ft., one target. Hit: 19 ({@damage 2d12 + 6}) bludgeoning damage."
+						"{@atk mw} {@hit 11} to hit, reach 30 ft., one target. {@h}19 ({@damage 2d12 + 6}) bludgeoning damage."
 					]
 				}
 			],
@@ -7349,6 +7822,10 @@
 				"P",
 				"A",
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -7388,10 +7865,15 @@
 				"stealth": "+7"
 			},
 			"passive": 14,
-			"languages": "Common, Elvish",
+			"languages": [
+				"Common",
+				"Elvish"
+			],
 			"cr": "6",
 			"page": 222,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Magic Resistance",
@@ -7416,13 +7898,13 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 13 ({@damage 2d8 + 4}) slashing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}13 ({@damage 2d8 + 4}) slashing damage."
 					]
 				},
 				{
 					"name": "Petrifying Gaze",
 					"entries": [
-						"The medusa fixes its gaze on one creature within 60 feet of it that it can see and that can see its eyes. The target must make a DC 14 Constitution saving throw. If the saving throw fails by 5 or more, the creature is instantly {@condition petrified}. Otherwise, a creature that fails the save begins to turn to stone and is {@condition restrained}. The {@condition restrained} creature must repeat the saving throw at the end of its next turn, becoming {@condition petrified} on a failure or ending the effect on a success. The petrification lasts until the creature is freed by a greater restoration spell or similar magic."
+						"The medusa fixes its gaze on one creature within 60 feet of it that it can see and that can see its eyes. The target must make a {@dc 14} Constitution saving throw. If the saving throw fails by 5 or more, the creature is instantly {@condition petrified}. Otherwise, a creature that fails the save begins to turn to stone and is {@condition restrained}. The {@condition restrained} creature must repeat the saving throw at the end of its next turn, becoming {@condition petrified} on a failure or ending the effect on a success. The petrification lasts until the creature is freed by a {@spell greater restoration} spell or similar magic."
 					]
 				}
 			],
@@ -7430,7 +7912,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The medusa's innate spellcasting ability is Intelligence (spell save DC 14). The medusa can innately cast the following spells, requiring no material components:"
+						"The medusa's innate spellcasting ability is Intelligence (spell save {@dc 14}). The medusa can innately cast the following spells, requiring no material components:"
 					],
 					"daily": {
 						"1e": [
@@ -7460,6 +7942,9 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -7499,7 +7984,10 @@
 			"passive": 11,
 			"cr": "14",
 			"page": 225,
-			"senses": "blindsight 60 ft., tremorsense 60 ft.",
+			"senses": [
+				"blindsight 60 ft.",
+				"tremorsense 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Siege Monster",
@@ -7510,7 +7998,7 @@
 				{
 					"name": "Earth Tremors",
 					"entries": [
-						"The wurm creates earth tremors as it moves overland or underground. Any creature that comes within 30 feet of the moving wurm for the first time on a turn must succeed on a DC 20 Dexterity saving throw or take 10 ({@damage 3d6}) bludgeoning damage and fall {@condition prone}. Any structure or object anchored to the ground that comes within 30 feet of the moving wurm for the first time on a turn takes 10 ({@damage 3d6}) force damage. Siege Monster. The wurm deals double damage to objects and structures."
+						"The wurm creates earth tremors as it moves overland or underground. Any creature that comes within 30 feet of the moving wurm for the first time on a turn must succeed on a {@dc 20} Dexterity saving throw or take 10 ({@damage 3d6}) bludgeoning damage and fall {@condition prone}. Any structure or object anchored to the ground that comes within 30 feet of the moving wurm for the first time on a turn takes 10 ({@damage 3d6}) force damage."
 					]
 				},
 				{
@@ -7524,7 +8012,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 12} to hit, reach 10 ft., one target. Hit: 24 ({@damage 5d6 + 7}) piercing damage. If the target is a Medium or smaller creature, it must succeed on a DC 20 Dexterity saving throw or be swallowed by the wurm. A swallowed creature is {@condition blinded} and {@condition restrained}, has total cover against attacks and other effects outside the wurm, and takes 17 ({@damage 5d6}) acid damage at the start of each of the wurm's turns. If the wurm takes 30 damage or more on a single turn from a creature inside it, the wurm must succeed on a DC 21 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall {@condition prone} in a space within 10 feet of the wurm. If the wurm dies, a swallowed creature is no longer {@condition restrained} by it and can escape from the corpse by using 20 feet of movement, exiting {@condition prone}."
+						"{@atk mw} {@hit 12} to hit, reach 10 ft., one target. {@h}24 ({@damage 5d6 + 7}) piercing damage. If the target is a Medium or smaller creature, it must succeed on a {@dc 20} Dexterity saving throw or be swallowed by the wurm. A swallowed creature is {@condition blinded} and {@condition restrained}, has total cover against attacks and other effects outside the wurm, and takes 17 ({@damage 5d6}) acid damage at the start of each of the wurm's turns. If the wurm takes 30 damage or more on a single turn from a creature inside it, the wurm must succeed on a {@dc 21} Constitution saving throw at the end of that turn or regurgitate all swallowed creatures, which fall {@condition prone} in a space within 10 feet of the wurm. If the wurm dies, a swallowed creature is no longer {@condition restrained} by it and can escape from the corpse by using 20 feet of movement, exiting {@condition prone}."
 					]
 				}
 			],
@@ -7540,6 +8028,10 @@
 				"A",
 				"B",
 				"O"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -7602,10 +8094,15 @@
 				"poisoned"
 			],
 			"passive": 21,
-			"languages": "Common, Thieves' cant",
+			"languages": [
+				"Common",
+				"Thieves' cant"
+			],
 			"cr": "17",
 			"page": 232,
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Elusive",
@@ -7642,7 +8139,7 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 13} to hit, reach 5 ft., one target. Hit: 10 ({@damage 1d6 + 7}) piercing damage plus 10 ({@damage 3d6}) psychic damage, and the target has disadvantage on the next attack roll it makes before Lazav's next turn."
+						"{@atk mw} {@hit 13} to hit, reach 5 ft., one target. {@h}10 ({@damage 1d6 + 7}) piercing damage plus 10 ({@damage 3d6}) psychic damage, and the target has disadvantage on the next attack roll it makes before Lazav's next turn."
 					]
 				}
 			],
@@ -7662,7 +8159,7 @@
 				{
 					"name": "Shifting Nightmare (Costs 3 Actions)",
 					"entries": [
-						"Lazav rapidly takes the form of several nightmarish creatures, lashing out at all nearby. Each creature within 10 feet of Lazav must succeed on a DC 21 Dexterity saving throw or take 18 ({@dice 4d8}) damage of a type chosen by Lazav: acid, cold, fire, lightning, or necrotic."
+						"Lazav rapidly takes the form of several nightmarish creatures, lashing out at all nearby. Each creature within 10 feet of Lazav must succeed on a {@dc 21} Dexterity saving throw or take 18 ({@dice 4d8}) damage of a type chosen by Lazav: acid, cold, fire, lightning, or necrotic."
 					]
 				}
 			],
@@ -7670,7 +8167,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Lazav's innate spellcasting ability is Intelligence (spell save DC 20). He can innately cast the following spells, requiring no material components:"
+						"Lazav's innate spellcasting ability is Intelligence (spell save {@dc 20}). He can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell detect thoughts}",
@@ -7712,6 +8209,9 @@
 			"damageTags": [
 				"P",
 				"Y"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -7754,7 +8254,9 @@
 				"survival": "+2"
 			},
 			"passive": 12,
-			"languages": "any one language (usually Common)",
+			"languages": [
+				"any one language (usually Common)"
+			],
 			"cr": "1/4",
 			"page": 239,
 			"trait": [
@@ -7775,7 +8277,7 @@
 				{
 					"name": "Spiked Club",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 6 ({@damage 1d8 + 2}) piercing damage, or 7 ({@damage 1d10 + 2}) piercing damage if used with two hands."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage, or 7 ({@damage 1d10 + 2}) piercing damage if used with two hands."
 					]
 				}
 			],
@@ -7789,6 +8291,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -7848,10 +8353,14 @@
 				}
 			],
 			"passive": 14,
-			"languages": "the languages it knew in life",
+			"languages": [
+				"the languages it knew in life"
+			],
 			"cr": "8",
 			"page": 223,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -7862,19 +8371,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by the vampire, {@condition incapacitated}, or {@condition restrained}. Hit: 7 ({@damage 1d6 + 4}) piercing damage plus 7 ({@damage 2d6}) necrotic damage. If the target is humanoid, it must succeed on a DC 15 Charisma saving throw or be {@condition charmed} by the vampire for 1 minute. While {@condition charmed} in this way, the target is infatuated with the vampire. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and the vampire regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by the vampire, {@condition incapacitated}, or {@condition restrained}. {@h}7 ({@damage 1d6 + 4}) piercing damage plus 7 ({@damage 2d6}) necrotic damage. If the target is humanoid, it must succeed on a {@dc 15} Charisma saving throw or be {@condition charmed} by the vampire for 1 minute. While {@condition charmed} in this way, the target is infatuated with the vampire. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and the vampire regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				},
 				{
 					"name": "Rapier",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d8 + 4}) piercing damage."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) piercing damage."
 					]
 				},
 				{
 					"name": "Unarmed Strike",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 7 ({@damage 1d8 + 3}) bludgeoning damage. The vampire can also grapple the target (escape DC 14) if it is a creature and the vampire has a hand free."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) bludgeoning damage. The vampire can also grapple the target (escape {@dc 14}) if it is a creature and the vampire has a hand free."
 					]
 				}
 			],
@@ -7897,6 +8406,9 @@
 				"P",
 				"N",
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -7961,10 +8473,16 @@
 				"poisoned"
 			],
 			"passive": 18,
-			"languages": "Common, Elvish, Kraul",
+			"languages": [
+				"Common",
+				"Elvish",
+				"Kraul"
+			],
 			"cr": "14",
 			"page": 198,
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Legendary Resistance (3/Day)",
@@ -7995,7 +8513,7 @@
 				{
 					"name": "Noxious Touch",
 					"entries": [
-						"{@atk ms} {@hit 9} to hit, reach 5 ft., one creature. Hit: 14 ({@damage 4d6}) poison damage, and the target must succeed on a DC 17 Constitution saving throw or be {@condition poisoned} for 1 minute. The {@condition poisoned} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"{@atk ms} {@hit 9} to hit, reach 5 ft., one creature. {@h}14 ({@damage 4d6}) poison damage, and the target must succeed on a {@dc 17} Constitution saving throw or be {@condition poisoned} for 1 minute. The {@condition poisoned} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				}
 			],
@@ -8015,7 +8533,7 @@
 				{
 					"name": "Disrupt Life (Costs 3 Actions)",
 					"entries": [
-						"Each creature within 30 feet of the lich must make a DC 17 Constitution saving throw, taking 21 ({@damage 6d6}) necrotic damage on a failed save, or half as much damage on a successful one."
+						"Each creature within 30 feet of the lich must make a {@dc 17} Constitution saving throw, taking 21 ({@damage 6d6}) necrotic damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -8023,7 +8541,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The lich is a 14th-level Golgari spellcaster. Its spellcasting ability is Intelligence (spell save DC 17, {@hit 9} to hit with spell attacks). The lich has the following wizard spells prepared:"
+						"The lich is a 14th-level Golgari spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 17}, {@hit 9} to hit with spell attacks). The lich has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -8173,10 +8691,14 @@
 				"poisoned"
 			],
 			"passive": 13,
-			"languages": "understands Common",
+			"languages": [
+				"understands Common"
+			],
 			"cr": "8",
 			"page": 215,
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Death Link",
@@ -8207,13 +8729,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 18 ({@damage 3d8 + 5}) piercing damage."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}18 ({@damage 3d8 + 5}) piercing damage."
 					]
 				},
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. Hit: 15 ({@damage 3d6 + 5}) slashing damage."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}15 ({@damage 3d6 + 5}) slashing damage."
 					]
 				}
 			],
@@ -8233,6 +8755,9 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -8295,7 +8820,9 @@
 				"restrained"
 			],
 			"passive": 11,
-			"languages": "the languages it knew in life",
+			"languages": [
+				"the languages it knew in life"
+			],
 			"cr": "1",
 			"page": 206,
 			"trait": [
@@ -8310,7 +8837,7 @@
 				{
 					"name": "Withering Touch",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. Hit: 10 ({@damage 3d6}) necrotic damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}10 ({@damage 3d6}) necrotic damage."
 					]
 				}
 			],
@@ -8320,6 +8847,9 @@
 			"damageTags": [
 				"N",
 				"O"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -8384,10 +8914,16 @@
 				"poisoned"
 			],
 			"passive": 20,
-			"languages": "Common, Elvish, Kraul",
+			"languages": [
+				"Common",
+				"Elvish",
+				"Kraul"
+			],
 			"cr": "22",
 			"page": 235,
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Legendary Resistance (3/Day)",
@@ -8436,13 +8972,13 @@
 				{
 					"name": "Noxious Touch",
 					"entries": [
-						"{@atk ms} {@hit 12} to hit, reach 5 ft., one creature. Hit: 28 ({@damage 8d6}) poison damage, and the target must succeed on a DC 20 Constitution saving throw or be {@condition poisoned} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"{@atk ms} {@hit 12} to hit, reach 5 ft., one creature. {@h}28 ({@damage 8d6}) poison damage, and the target must succeed on a {@dc 20} Constitution saving throw or be {@condition poisoned} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				},
 				{
 					"name": "Staff of Svogthir",
 					"entries": [
-						"{@atk mw} {@hit 12} to hit, reach 5 ft., one target. Hit: 12 ({@damage 2d6 + 5}) bludgeoning damage plus 13 ({@damage 3d8}) poison damage and 13 ({@damage 3d8}) necrotic damage."
+						"{@atk mw} {@hit 12} to hit, reach 5 ft., one target. {@h}12 ({@damage 2d6 + 5}) bludgeoning damage plus 13 ({@damage 3d8}) poison damage and 13 ({@damage 3d8}) necrotic damage."
 					]
 				}
 			],
@@ -8462,7 +8998,7 @@
 				{
 					"name": "Disrupt Life (Costs 3 Actions)",
 					"entries": [
-						"Each creature within 30 feet of Jarad must make a DC 20 Constitution saving throw, taking 35 ({@damage 10d6}) necrotic damage on a failed save, or half as much damage on a successful one."
+						"Each creature within 30 feet of Jarad must make a {@dc 20} Constitution saving throw, taking 35 ({@damage 10d6}) necrotic damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -8470,7 +9006,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Jarad is a 14th-level Golgari spellcaster. His spellcasting ability is Intelligence (spell save DC 20, {@hit 12} to hit with spell attacks). Jarad has the following wizard spells prepared:"
+						"Jarad is a 14th-level Golgari spellcaster. His spellcasting ability is Intelligence (spell save {@dc 20}, {@hit 12} to hit with spell attacks). Jarad has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -8565,6 +9101,9 @@
 				"I",
 				"B",
 				"N"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -8612,10 +9151,14 @@
 				"necrotic"
 			],
 			"passive": 13,
-			"languages": "the languages it knew in life",
+			"languages": [
+				"the languages it knew in life"
+			],
 			"cr": "4",
 			"page": 224,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Shadow Stealth",
@@ -8640,19 +9183,19 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by the vampire, {@condition incapacitated}, or {@condition restrained}. Hit: 7 ({@damage 1d6 + 4}) piercing damage plus 7 ({@damage 2d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and the vampire regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one willing creature, or a creature that is {@condition grappled} by the vampire, {@condition incapacitated}, or {@condition restrained}. {@h}7 ({@damage 1d6 + 4}) piercing damage plus 7 ({@damage 2d6}) necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and the vampire regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
 					]
 				},
 				{
 					"name": "Unarmed Strike",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d8 + 4}) bludgeoning damage. The vampire can also grapple the target (escape DC 13) if it is a creature and the vampire has a hand free."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) bludgeoning damage. The vampire can also grapple the target (escape {@dc 13}) if it is a creature and the vampire has a hand free."
 					]
 				},
 				{
 					"name": "Mind Siphon {@recharge 5}",
 					"entries": [
-						"The vampire targets a creature it can see within 30 feet of it. The target must make a DC 14 Intelligence saving throw, with disadvantage if the vampire has previously consumed the target's blood. On a failed save, the target takes 28 ({@damage 8d6}) psychic damage, and the vampire discerns the target's surface emotions and thoughts. On a successful save, the target takes half as much damage, and the vampire discerns the target's general emotional state but not its thoughts."
+						"The vampire targets a creature it can see within 30 feet of it. The target must make a {@dc 14} Intelligence saving throw, with disadvantage if the vampire has previously consumed the target's blood. On a failed save, the target takes 28 ({@damage 8d6}) psychic damage, and the vampire discerns the target's surface emotions and thoughts. On a successful save, the target takes half as much damage, and the vampire discerns the target's general emotional state but not its thoughts."
 					]
 				}
 			],
@@ -8660,7 +9203,7 @@
 				{
 					"name": "Innate Spellcasting (Psionics)",
 					"headerEntries": [
-						"The vampire's innate spellcasting ability is Intelligence (spell save DC 14). It can innately cast the following spells, requiring no components:"
+						"The vampire's innate spellcasting ability is Intelligence (spell save {@dc 14}). It can innately cast the following spells, requiring no components:"
 					],
 					"will": [
 						"{@spell message}"
@@ -8698,6 +9241,9 @@
 				"N",
 				"B",
 				"Y"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -8760,10 +9306,14 @@
 				"poisoned"
 			],
 			"passive": 17,
-			"languages": "understands Common but can't speak",
+			"languages": [
+				"understands Common but can't speak"
+			],
 			"cr": "10",
 			"page": 215,
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Mount",
@@ -8782,19 +9332,19 @@
 				{
 					"name": "Scythe",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. Hit: 11 ({@damage 2d6 + 4}) slashing damage plus 13 ({@damage 3d8}) psychic damage."
+						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d6 + 4}) slashing damage plus 13 ({@damage 3d8}) psychic damage."
 					]
 				},
 				{
 					"name": "Mind Twist {@recharge 5}",
 					"entries": [
-						"The specter magically emits psychic energy in a 60-foot cone. Each creature in that area must succeed on a DC 15 Wisdom saving throw or take 22 ({@damage 5d8}) psychic damage and be {@condition stunned} for 1 minute. The {@condition stunned} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"The specter magically emits psychic energy in a 60-foot cone. Each creature in that area must succeed on a {@dc 15} Wisdom saving throw or take 22 ({@damage 5d8}) psychic damage and be {@condition stunned} for 1 minute. The {@condition stunned} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				},
 				{
 					"name": "Reap Memory (3/Day)",
 					"entries": [
-						"The specter touches one {@condition incapacitated} creature and chooses 1 hour from among the past 24. Unless the creature succeeds on a DC 15 Intelligence saving throw, the creature loses all memory of that hour. The creature regains the memory only if the specter dies within the next 24 hours."
+						"The specter touches one {@condition incapacitated} creature and chooses 1 hour from among the past 24. Unless the creature succeeds on a {@dc 15} Intelligence saving throw, the creature loses all memory of that hour. The creature regains the memory only if the specter dies within the next 24 hours."
 					]
 				}
 			],
@@ -8811,6 +9361,11 @@
 			"damageTags": [
 				"S",
 				"Y"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"AOE"
 			]
 		},
 		{
@@ -8887,10 +9442,14 @@
 				"restrained"
 			],
 			"passive": 18,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "8",
 			"page": 245,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Council of Five",
@@ -8923,7 +9482,7 @@
 								{
 									"type": "item",
 									"name": "Xil Xaxosz: Lingering Spite.",
-									"entry": "When Xil Xaxosz is reduced to 0 hit points, his incorporeal form explodes in a burst of necrotic energy. Each creature within 5 feet of him must make a DC 16 Constitution saving throw, taking 14 ({@damage 4d6}) necrotic damage on a failed save, or half as much damage on a successful one."
+									"entry": "When Xil Xaxosz is reduced to 0 hit points, his incorporeal form explodes in a burst of necrotic energy. Each creature within 5 feet of him must make a {@dc 16} Constitution saving throw, taking 14 ({@damage 4d6}) necrotic damage on a failed save, or half as much damage on a successful one."
 								}
 							]
 						}
@@ -8952,7 +9511,7 @@
 				{
 					"name": "Life Drain",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one creature. Hit: 18 ({@damage 4d8}) necrotic damage, and the ghost regains hit points equal to half the amount of damage the target takes. The target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. The target dies if its hit point maximum is reduced to 0. This reduction to the target's hit point maximum lasts until the target finishes a long rest."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one creature. {@h}18 ({@damage 4d8}) necrotic damage, and the ghost regains hit points equal to half the amount of damage the target takes. The target must succeed on a {@dc 13} Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. The target dies if its hit point maximum is reduced to 0. This reduction to the target's hit point maximum lasts until the target finishes a long rest."
 					]
 				},
 				{
@@ -8969,7 +9528,7 @@
 				{
 					"name": "Forced Obedience",
 					"entries": [
-						"A target that all of the Obzedat ghosts can see must succeed on a DC 16 Wisdom saving throw or bow until the end of its next turn. Until this bow ends, the target can't take actions or reactions, and its speed is 0 and can't be increased."
+						"A target that all of the Obzedat ghosts can see must succeed on a {@dc 16} Wisdom saving throw or bow until the end of its next turn. Until this bow ends, the target can't take actions or reactions, and its speed is 0 and can't be increased."
 					]
 				},
 				{
@@ -8983,7 +9542,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The ghost's innate spellcasting ability is Wisdom (spell save DC 16, {@hit 8} to hit with spell attacks). It can innately cast the following spells, requiring no components:"
+						"The ghost's innate spellcasting ability is Wisdom (spell save {@dc 16}, {@hit 8} to hit with spell attacks). It can innately cast the following spells, requiring no components:"
 					],
 					"will": [
 						"{@spell chill touch} (at 5th level, and the ghost regains hit points equal to half the amount of damage the target takes)"
@@ -9013,7 +9572,94 @@
 			"damageTags": [
 				"N",
 				"O"
+			],
+			"miscTags": [
+				"MW"
 			]
+		},
+		{
+			"name": "Simic Merfolk",
+			"source": "GGR",
+			"_copy": {
+				"name": "Merfolk",
+				"source": "MM"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 40
+			},
+			"languages": [
+				"Common",
+				"Merfolk"
+			],
+			"languageTags": [
+				"C"
+			],
+			"page": 187
+		},
+		{
+			"name": "Sphinx of Judgment",
+			"source": "GGR",
+			"_copy": {
+				"name": "Gynosphinx",
+				"source": "MM"
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The sphinx is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 16}, {@hit 8} to hit with spell attacks). It requires no material components to cast its spells. The sphinx has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell friends}",
+								"{@spell mage hand}",
+								"{@spell message}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell command}",
+								"{@spell ensnaring strike}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell calm emotions}",
+								"{@spell hold person}",
+								"{@spell suggestion}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell clairvoyance}",
+								"{@spell counterspell}",
+								"{@spell dispel magic}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell banishment}",
+								"{@spell divination}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell dominate person}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
+			"page": 183
 		}
 	]
 }

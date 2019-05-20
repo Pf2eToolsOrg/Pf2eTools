@@ -1,28 +1,53 @@
 @import 'vars';
 
+.roller {
+	color: $link-blue;
+	cursor: pointer;
+}
+
 /* Generic/utilities */
 .code {
 	font-family: 'Courier New', monospace;
 }
 
 .clickable {
-	cursor: pointer;
+	cursor: pointer !important;
 }
 
 .copyable {
-	cursor: copy;
+	cursor: copy !important;
 }
 
 .unselectable {
-	user-select: none;
+	user-select: none !important;
 }
 
 .bold {
-	font-weight: bold;
+	font-weight: bold !important;
 }
 
 .italic {
-	font-style: italic;
+	font-style: italic !important;
+}
+
+.text-align-center {
+	text-align: center !important;
+}
+
+.text-align-right {
+	text-align: right !important;
+}
+
+.no-wrap {
+	white-space: nowrap !important;
+}
+
+.no-events {
+	pointer-events: none !important;
+}
+
+.smooth-scroll {
+	transform: translateZ(0) !important;
 }
 
 .help,
@@ -45,17 +70,12 @@
 	}
 }
 
-.roller {
-	color: $link-blue;
-	cursor: pointer;
-}
-
 .full-width {
-	width: 100%;
+	width: 100% !important;
 }
 
 .full-height {
-	height: 100%;
+	height: 100% !important;
 }
 
 .flex {
@@ -97,6 +117,10 @@
 
 .no-shrink {
 	flex-shrink: 0;
+}
+
+.grow {
+	flex-grow: 1;
 }
 
 .flex-wrap {
@@ -156,6 +180,10 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.flex-h-right {
+	justify-content: flex-end;
 }
 
 .columns-2 {
@@ -278,6 +306,13 @@ select.input-xs {
 	> input[type=radio] {
 		margin: 0 0 0 5px;
 	}
+}
+
+.btn-xxs {
+	padding: 0 2px;
+	font-size: 12px;
+	line-height: 1.5;
+	border-radius: 3px;
 }
 
 .fade {
@@ -941,6 +976,13 @@ select.input-xs {
 	width: 0.83333333333333%;
 }
 
+.m-0 {
+	margin: 0 !important;
+}
+
+.m-1 {
+	margin: ($spacer * 0.25) !important;
+}
 
 .mb-0 {
 	margin-bottom: 0 !important;
@@ -966,8 +1008,8 @@ select.input-xs {
 	margin-bottom: $spacer * 3 !important;
 }
 
-.mb-0 {
-	margin-bottom: 0 !important;
+.mt-0 {
+	margin-top: 0 !important;
 }
 
 .mt-1 {
@@ -1012,6 +1054,10 @@ select.input-xs {
 	margin-left: ($spacer * 0.5) !important;
 }
 
+.ml-3 {
+	margin-left: $spacer !important;
+}
+
 .mr-1 {
 	margin-right: ($spacer * 0.25) !important;
 }
@@ -1026,6 +1072,11 @@ select.input-xs {
 
 .mr-4 {
 	margin-right: $spacer * 1.5 !important;
+}
+
+.px-1 {
+	padding-right: ($spacer * 0.25) !important;
+	padding-left: ($spacer * 0.25) !important;
 }
 
 .px-2 {

@@ -65,11 +65,11 @@ class InitiativeTracker {
 
 		const makeImportSettingsModal = () => {
 			const $modalInner = UiUtil.getShow$Modal("Import Settings", () => doUpdateExternalStates());
-			UiUtil.addModal$Sep($modalInner);
-			UiUtil.getAddModal$RowCb($modalInner, "Roll creature hit points", cfg, "isRollHp");
-			UiUtil.getAddModal$RowCb($modalInner, "Roll groups of creatures together", cfg, "importIsRollGroups");
-			UiUtil.getAddModal$RowCb($modalInner, "Add players", cfg, "importIsAddPlayers");
-			UiUtil.getAddModal$RowCb($modalInner, "Add to existing tracker state", cfg, "importIsAppend");
+			UiUtil.addModalSep($modalInner);
+			UiUtil.$getAddModalRowCb($modalInner, "Roll creature hit points", cfg, "isRollHp");
+			UiUtil.$getAddModalRowCb($modalInner, "Roll groups of creatures together", cfg, "importIsRollGroups");
+			UiUtil.$getAddModalRowCb($modalInner, "Add players", cfg, "importIsAddPlayers");
+			UiUtil.$getAddModalRowCb($modalInner, "Add to existing tracker state", cfg, "importIsAppend");
 		};
 
 		// initialise "upload" context menu
@@ -167,16 +167,16 @@ class InitiativeTracker {
 					}
 				});
 
-				const $wrpHelp = UiUtil._getAdd$Row($modalInner, "div");
+				const $wrpHelp = UiUtil.$getAddModalRow($modalInner, "div");
 				const $btnAltGenAll = $(`<button class="btn btn-primary btn-text-insert">Generate All</button>`).click(() => $btnGenServerTokens.click());
 				const $btnAltCopyAll = $(`<button class="btn btn-primary btn-text-insert">Copy Server Tokens</button>`).click(() => $btnCopyServers.click());
-				$(`<div class="row full-width">
+				$$`<div class="row full-width">
 					<div class="col-12">
 						<p>
 						The Player View is part of a peer-to-peer (i.e., serverless) system to allow players to connect to a DM's initiative tracker. Players should use the <a href="inittrackerplayerview.html">Initiative Tracker Player View</a> page to connect to the DM's instance. As a DM, the usage is as follows:
 						<ol>
 								<li>Add the required number of players, and input (preferably unique) player names.</li>
-								<li>Click "<div data-r="$btnAltGenAll"/>," which will generate a "server token" per player. You can click "<div data-r="$btnAltCopyAll"/>" to copy them all as a single block of text, or click on the "Server Token" values to copy them individually. Distribute these tokens to your players (via a messaging service of your choice; we recommend <a href="https://discordapp.com/">Discord</a>). Each player should paste their token into the <a href="inittrackerplayerview.html">Initiative Tracker Player View</a>, following the instructions provided therein.</li>
+								<li>Click "${$btnAltGenAll}," which will generate a "server token" per player. You can click "${$btnAltCopyAll}" to copy them all as a single block of text, or click on the "Server Token" values to copy them individually. Distribute these tokens to your players (via a messaging service of your choice; we recommend <a href="https://discordapp.com/">Discord</a>). Each player should paste their token into the <a href="inittrackerplayerview.html">Initiative Tracker Player View</a>, following the instructions provided therein.</li>
 								<li>
 									Get a resulting "client token" from each player via a messaging service of your choice. Then, either:
 									<ol type="a">
@@ -188,11 +188,11 @@ class InitiativeTracker {
 						</p>
 						<p>Once a player's client has been "accepted," it will receive updates from the DM's tracker. <i>Please note that this system is highly experimental. Your experience may vary.</i></p>
 					</div>
-				</div>`).swap({$btnAltGenAll, $btnAltCopyAll}).appendTo($wrpHelp);
+				</div>`.appendTo($wrpHelp);
 
-				UiUtil.addModal$Sep($modalInner);
+				UiUtil.addModalSep($modalInner);
 
-				const $wrpTop = UiUtil._getAdd$Row($modalInner, "div");
+				const $wrpTop = UiUtil.$getAddModalRow($modalInner, "div");
 
 				const $btnAddClient = $(`<button class="btn btn-xs btn-primary" title="Add Client">Add Player</button>`).click(() => addClientRow());
 
@@ -236,57 +236,62 @@ class InitiativeTracker {
 								}
 							});
 
-						$(`<div>
+						$$`<div>
 							<p>Paste text containing one or more client tokens, and click "Accept Multiple Clients"</p>
-							<div data-r="$iptText"/>
-							<div class="flex-vh-center"><div data-r="$btnAccept"/></div>
-						</div>`).swap({$iptText, $btnAccept}).appendTo($modalInnerAccept)
+							${$iptText}
+							<div class="flex-vh-center">${$btnAccept}</div>
+						</div>`.appendTo($modalInnerAccept)
 					});
 
-				$(`
+				$$`
 					<div class="row full-width">
 						<div class="col-12">
 							<div class="flex-inline-v-center mr-2">
 								<span class="mr-1">Add a player (client):</span>
-								<div data-r="$btnAddClient"/>
+								${$btnAddClient}
 							</div>
 							<div class="flex-inline-v-center mr-2">
 								<span class="mr-1">Copy all un-paired server tokens:</span>
-								<div data-r="$btnCopyServers"/>
+								${$btnCopyServers}
 							</div>
 							<div class="flex-inline-v-center mr-2">
 								<span class="mr-1">Mass-accept clients:</span>
-								<div data-r="$btnAcceptClients"/>
+								${$btnAcceptClients}
 							</div>
 						</div>
 					</div>
-				`).swap({$btnAddClient, $btnCopyServers, $btnAcceptClients}).appendTo($wrpTop);
+				`.appendTo($wrpTop);
 
-				UiUtil.addModal$Sep($modalInner);
+				UiUtil.addModalSep($modalInner);
 
 				const $btnGenServerTokens = $(`<button class="btn btn-primary btn-xs">Generate All</button>`)
 					.click(() => pGetServerTokens(p2pMeta.rows));
 
-				UiUtil._getAdd$Row($modalInner, "div")
-					.append(`
+				UiUtil.$getAddModalRow($modalInner, "div")
+					.append($$`
 					<div class="row full-width">
 						<div class="col-2 bold">Player Name</div>
 						<div class="col-3-5 bold">Server Token</div>
-						<div class="col-1 text-align-center"><div data-r="$btnGenServerTokens"/></div>
+						<div class="col-1 text-align-center">${$btnGenServerTokens}</div>
 						<div class="col-3-5 bold">Client Token</div>
 					</div>
-				`).swap({$btnGenServerTokens});
-
-				const _get$rowTemplate = () => $(`
-					<div class="row full-width mb-2 flex">
-						<div class="col-2"><div data-r="$iptName"/></div>
-						<div class="col-3-5"><div data-r="$iptTokenServer"/></div>
-						<div class="col-1 flex-vh-center"><div data-r="$btnGenServerToken"/></div>
-						<div class="col-3-5"><div data-r="$iptTokenClient"/></div>
-						<div class="col-1-5 flex-vh-center"><div data-r="$btnAcceptClientToken"/></div>
-						<div class="col-0-5 flex-vh-center"><div data-r="$btnDeleteClient"/></div>
-					</div>
 				`);
+
+				const _get$rowTemplate = (
+					$iptName,
+					$iptTokenServer,
+					$btnGenServerToken,
+					$iptTokenClient,
+					$btnAcceptClientToken,
+					$btnDeleteClient
+				) => $$`<div class="row full-width mb-2 flex">
+					<div class="col-2">${$iptName}</div>
+					<div class="col-3-5">${$iptTokenServer}</div>
+					<div class="col-1 flex-vh-center">${$btnGenServerToken}</div>
+					<div class="col-3-5">${$iptTokenClient}</div>
+					<div class="col-1-5 flex-vh-center">${$btnAcceptClientToken}</div>
+					<div class="col-0-5 flex-vh-center">${$btnDeleteClient}</div>
+				</div>`;
 
 				const addClientRow = () => {
 					const rowMeta = {id: CryptUtil.uid()};
@@ -344,14 +349,14 @@ class InitiativeTracker {
 							if (!$wrpRowsInner.find(`.row`).length) addClientRow();
 						});
 
-					rowMeta.$row = _get$rowTemplate().swap({
+					rowMeta.$row = _get$rowTemplate(
 						$iptName,
 						$iptTokenServer,
 						$btnGenServerToken,
 						$iptTokenClient,
 						$btnAcceptClientToken,
 						$btnDeleteClient
-					}).appendTo($wrpRowsInner);
+					).appendTo($wrpRowsInner);
 
 					rowMeta.$iptName = $iptName;
 					rowMeta.$iptTokenServer = $iptTokenServer;
@@ -363,7 +368,7 @@ class InitiativeTracker {
 					return rowMeta;
 				};
 
-				const $wrpRows = UiUtil._getAdd$Row($modalInner, "div");
+				const $wrpRows = UiUtil.$getAddModalRow($modalInner, "div");
 				const $wrpRowsInner = $(`<div class="full-width"/>`).appendTo($wrpRows);
 
 				if (p2pMeta.rows.length) p2pMeta.rows.forEach(row => row.$row.appendTo($wrpRowsInner));
@@ -507,17 +512,17 @@ class InitiativeTracker {
 						doUpdateExternalStates();
 					}
 				);
-				UiUtil.addModal$Sep($modalInner);
-				UiUtil.getAddModal$RowCb($modalInner, "Roll hit points", cfg, "isRollHp");
-				UiUtil.addModal$Sep($modalInner);
-				UiUtil.getAddModal$RowCb($modalInner, "Player View: Show exact HP", cfg, "playerInitShowExactHp");
-				UiUtil.getAddModal$RowCb($modalInner, "Player View: Auto-hide new monsters", cfg, "playerInitHideNewMonster");
-				UiUtil.getAddModal$RowCb($modalInner, "Player View: Show ordinals", cfg, "playerInitShowOrdinals", "For example, if you add two Goblins, one will be Goblin (1) and the other Goblin (2), rather than having identical names.");
-				UiUtil.getAddModal$RowCb($modalInner, "Player View: Shorten server tokens", cfg, "playerInitShortTokens", "Server tokens will be roughly half as many characters, but will contain non-standard characters.");
-				UiUtil.addModal$Sep($modalInner);
+				UiUtil.addModalSep($modalInner);
+				UiUtil.$getAddModalRowCb($modalInner, "Roll hit points", cfg, "isRollHp");
+				UiUtil.addModalSep($modalInner);
+				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show exact HP", cfg, "playerInitShowExactHp");
+				UiUtil.$getAddModalRowCb($modalInner, "Player View: Auto-hide new monsters", cfg, "playerInitHideNewMonster");
+				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show ordinals", cfg, "playerInitShowOrdinals", "For example, if you add two Goblins, one will be Goblin (1) and the other Goblin (2), rather than having identical names.");
+				UiUtil.$getAddModalRowCb($modalInner, "Player View: Shorten server tokens", cfg, "playerInitShortTokens", "Server tokens will be roughly half as many characters, but will contain non-standard characters.");
+				UiUtil.addModalSep($modalInner);
 
-				const $cbStats = UiUtil.getAddModal$RowCb($modalInner, "Additional Columns", cfg, "statsAddColumns");
-				const $wrpTblStatsHead = UiUtil._getAdd$Row($modalInner, "div")
+				const $cbStats = UiUtil.$getAddModalRowCb($modalInner, "Additional Columns", cfg, "statsAddColumns");
+				const $wrpTblStatsHead = UiUtil.$getAddModalRow($modalInner, "div")
 					.addClass("ui-modal__row--stats-header")
 					// intentional difference in column widths compared to the rows, to position the long header
 					//  ("Editable?") correctly
@@ -529,7 +534,7 @@ class InitiativeTracker {
 							<div class="col-1-7 text-align-center help" title="Only affects creatures. Players are always editable.">Editable?</div>
 						</div>
 					`);
-				const $wrpTblStats = UiUtil._getAdd$Row($modalInner, "div").addClass("ui-modal__row--stats");
+				const $wrpTblStats = UiUtil.$getAddModalRow($modalInner, "div").addClass("ui-modal__row--stats");
 
 				(() => {
 					const $wrpStatsRows = $(`<div class="dm_init__stats_rows mb-2"/>`).appendTo($wrpTblStats);
@@ -708,8 +713,8 @@ class InitiativeTracker {
 				return Number(val);
 			};
 
-			const $wrpCbRoll = $(`<label class="ui-search__ipt-search-sub-wrp"> Roll HP</label>`).appendTo($controls);
-			const $cbRoll = $(`<input type="checkbox">`).prop("checked", cfg.isRollHp).on("change", () => cfg.isRollHp = $cbRoll.prop("checked")).prependTo($wrpCbRoll);
+			const $wrpCbRoll = $(`<label class="ui-search__ipt-search-sub-wrp flex-vh-center"> <span>Roll HP</span></label>`).appendTo($controls);
+			const $cbRoll = $(`<input class="mr-1" type="checkbox">`).prop("checked", cfg.isRollHp).on("change", () => cfg.isRollHp = $cbRoll.prop("checked")).prependTo($wrpCbRoll);
 			const $results = $(`<div class="ui-search__wrp-results"/>`).appendTo($modalInner);
 
 			const showMsgIpt = () => {
@@ -963,7 +968,7 @@ class InitiativeTracker {
 				isActive,
 				source,
 				conditions,
-				rollHp,
+				isRollHp,
 				statsCols,
 				isVisible
 			} = Object.assign({
@@ -972,7 +977,7 @@ class InitiativeTracker {
 				hpMax: "",
 				init: "",
 				conditions: [],
-				rollHp: false,
+				isRollHp: false,
 				isVisible: !cfg.playerInitHideNewMonster
 			}, opts || {});
 
@@ -1032,7 +1037,7 @@ class InitiativeTracker {
 							init: evt.shiftKey ? "" : $iptScore.val(),
 							isActive: $wrpRow.hasClass("dm-init-row-active"),
 							source,
-							rollHp: cfg.isRollHp,
+							isRollHp: cfg.isRollHp,
 							statsCols: evt.shiftKey ? null : getStatColsState($wrpRow),
 							isVisible: $wrpRow.find(`.dm_init__btn_eye`).hasClass("btn-primary")
 						});
@@ -1163,11 +1168,11 @@ class InitiativeTracker {
 					const m = Renderer.hover._getFromCache(UrlUtil.PG_BESTIARY, source, hash);
 
 					// set or roll HP
-					if (!rollHp && m.hp.average) {
+					if (!isRollHp && m.hp.average) {
 						hpVals.curHp = hpVals.maxHp = m.hp.average;
 						$iptHp.val(hpVals.curHp);
 						$iptHpMax.val(hpVals.maxHp);
-					} else if (rollHp && m.hp.formula) {
+					} else if (isRollHp && m.hp.formula) {
 						const roll = Renderer.dice.roll2(m.hp.formula, {
 							user: false,
 							name: getRollName(m),

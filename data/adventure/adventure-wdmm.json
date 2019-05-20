@@ -4800,25 +4800,27 @@
 											]
 										},
 										{
-											"type": "entries",
-											"name": "Fear Ray",
-											"entries": [
-												"The target must succeed on a DC 15 Wisdom saving throw or be {@condition frightened} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+											"type": "list",
+											"style": "list-hang-notitle",
+											"items": [
+												{
+													"type": "item",
+													"name": "Fear Ray.",
+													"entry": "The target must succeed on a DC 15 Wisdom saving throw or be {@condition frightened} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+												},
+												{
+													"type": "item",
+													"name": "Paralyzing Ray.",
+													"entry": "The target must succeed on a DC 15 Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+												}
 											]
 										},
+										"If the characters promise not to harm her, Preeta shares two Undermountain secrets with them. Determine each secret by drawing a card from the Secrets Deck (see {@adventure appendix C|WDMM|27}).",
 										{
-											"type": "entries",
-											"name": "Paralyzing Ray",
+											"type": "inset",
+											"name": "Side Quest: Free Alussiarr",
 											"entries": [
-												"The target must succeed on a DC 15 Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
-												"If the characters promise not to harm her, Preeta shares two Undermountain secrets with them. Determine each secret by drawing a card from the Secrets Deck (see {@adventure appendix C|WDMM|27}).",
-												{
-													"type": "inset",
-													"name": "Side Quest: Free Alussiarr",
-													"entries": [
-														"Preeta Kreepa knows that Arcturia uses the blood of a \"magical man\" named Alussiarr as a material component in her horrid transformation rituals. She suggests that the characters free this man to prevent Arcturia from creating new abominations. Preeta knows that Alussiarr is a prisoner in Arcturiadoom, the fourteenth level of Undermountain, but she doesn't know that Alussiarr is a rakshasa."
-													]
-												}
+												"Preeta Kreepa knows that Arcturia uses the blood of a \"magical man\" named Alussiarr as a material component in her horrid transformation rituals. She suggests that the characters free this man to prevent Arcturia from creating new abominations. Preeta knows that Alussiarr is a prisoner in Arcturiadoom, the fourteenth level of Undermountain, but she doesn't know that Alussiarr is a rakshasa."
 											]
 										},
 										{
@@ -13745,7 +13747,7 @@
 											"entries": [
 												"The behir can take three legendary actions, choosing from the options below. It can take only one legendary action at a time and only at the end of another creature's turn. The behir regains spent legendary actions at the start of its turn. Its spellcasting ability is Charisma (spell save DC 13).",
 												"{@b Lesser Magic}. The behir casts {@spell color spray} or {@spell sleep}, requiring no components.",
-												"{@b Greater Magic (Costs 2 Actions}). The behir casts {@spell invisibility} or {@spell misty step}, requiring no components."
+												"{@b Greater Magic (Costs 2 Actions)}. The behir casts {@spell invisibility} or {@spell misty step}, requiring no components."
 											]
 										}
 									]
@@ -14923,7 +14925,7 @@
 									"type": "entries",
 									"name": "Metal Wasps",
 									"entries": [
-										"The metal wasps are programmed to attack Medium humanoids; they ignore other creatures unless attacked by them. They are {@creature Giant Wasp|MM|giant wasps}, with these changes:",
+										"The {@creature metal wasp|wdmm|metal wasps} are programmed to attack Medium humanoids; they ignore other creatures unless attacked by them. They are {@creature Giant Wasp|MM|giant wasps}, with these changes:",
 										{
 											"type": "list",
 											"items": [
@@ -25359,16 +25361,22 @@
 											"name": "Spellcasting",
 											"entries": [
 												"Trobriand is an 18th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 20, +12 to hit with spell attacks). He has the following wizard spells prepared:",
-												"Cantrips (at will): {@spell fire bolt}, {@spell mage hand}, {@spell prestidigitation}",
-												"1st level (4 slots): {@spell detect magic}, {@spell magic missile}, {@spell shield}",
-												"2nd level (3 slots): {@spell blur}, {@spell detect thoughts}, {@spell misty step}, {@spell shatter}",
-												"3rd level (3 slots): {@spell counterspell}, {@spell dispel magic}, {@spell fireball}, {@spell haste}",
-												"4th level (3 slots): {@spell blight}, {@spell greater invisibility}",
-												"5th level (3 slots): {@spell animate objects}, {@spell Bigby's Hand|PHB|Bigby's hand}, {@spell scrying}",
-												"6th level (1 slot): {@spell chain lightning}, {@spell globe of invulnerability}",
-												"7th level (1 slot): {@spell finger of death}, {@spell forcecage}",
-												"8th level (1 slot): {@spell incendiary cloud}, {@spell power word stun}",
-												"9th level (1 slot): {@spell power word kill}",
+												{
+													"type": "list",
+													"style": "list-hang-notitle",
+													"items": [
+														"Cantrips (at will): {@spell fire bolt}, {@spell mage hand}, {@spell prestidigitation}",
+														"1st level (4 slots): {@spell detect magic}, {@spell magic missile}, {@spell shield}",
+														"2nd level (3 slots): {@spell blur}, {@spell detect thoughts}, {@spell misty step}, {@spell shatter}",
+														"3rd level (3 slots): {@spell counterspell}, {@spell dispel magic}, {@spell fireball}, {@spell haste}",
+														"4th level (3 slots): {@spell blight}, {@spell greater invisibility}",
+														"5th level (3 slots): {@spell animate objects}, {@spell Bigby's Hand|PHB|Bigby's hand}, {@spell scrying}",
+														"6th level (1 slot): {@spell chain lightning}, {@spell globe of invulnerability}",
+														"7th level (1 slot): {@spell finger of death}, {@spell forcecage}",
+														"8th level (1 slot): {@spell incendiary cloud}, {@spell power word stun}",
+														"9th level (1 slot): {@spell power word kill}"
+													]
+												},
 												"Deactivating or destroying one or more of the pillars, destroying the golem, or forcing the golem out of the room causes Trobriand's spirit to vacate the golem and attempt to reunite with his normal body, which is hidden in {@adventure area 11c|WDMM|23|11c. Trobriand's Body}. If the characters have not destroyed his body, Trobriand's spirit returns to it immediately, and he awakens in {@adventure area 11c|WDMM|23|11c. Trobriand's Body} as an {@creature archmage} with the same spell list as in his golem form and the same spell slots remaining as he had when he left his golem body. His primary goal thereafter is to destroy the characters for meddling in his affairs.",
 												"If the golem in this room has not been destroyed when Trobriand's spirit leaves it, the golem becomes an ordinary {@creature iron golem} under the Metal Mage's command and attacks intruders on sight.",
 												"If the characters have already destroyed Trobriand's body in {@adventure area 11c|WDMM|23|11c. Trobriand's Body}, and then they deactivate or destroy at least one of the pillars in this room, Trobriand's spirit is forced to leave the golem but has nowhere to go, effectively killing him."

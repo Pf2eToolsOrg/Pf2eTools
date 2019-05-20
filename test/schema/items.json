@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.2.3",
+	"version": "1.3.0",
 	"type": "object",
 	"definitions": {
 		"item": {
@@ -95,29 +95,6 @@
 						"$ref": "/Entry"
 					}
 				},
-				"modifier": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"_category": {
-								"type": "string"
-							},
-							"__text": {
-								"type": "string"
-							},
-							"toString": {
-								"type": "array"
-							}
-						},
-						"required": [
-							"_category",
-							"__text",
-							"toString"
-						],
-						"additionalProperties": false
-					}
-				},
 				"property": {
 					"type": "array",
 					"items": {
@@ -162,14 +139,20 @@
 				"sword": {
 					"type": "boolean"
 				},
-				"technology": {
-					"type": "string"
+				"firearm": {
+					"type": "boolean"
+				},
+				"staff": {
+					"type": "boolean"
 				},
 				"tier": {
 					"type": "string"
 				},
 				"value": {
 					"type": "string"
+				},
+				"valueMult": {
+					"type": "number"
 				},
 				"weapon": {
 					"type": "boolean"
@@ -178,7 +161,10 @@
 					"type": "string"
 				},
 				"weight": {
-					"type": "string"
+					"type": "number"
+				},
+				"weightMult": {
+					"type": "number"
 				},
 				"weightNote": {
 					"type": "string"

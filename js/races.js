@@ -60,12 +60,51 @@ function getSpeedRating (speed) {
 	return speed > 30 ? "Walk (Fast)" : speed < 30 ? "Walk (Slow)" : "Walk";
 }
 
+function filterAscSortSize (a, b) {
+	a = a.item;
+	b = b.item;
+
+	return SortUtil.ascSort(toNum(a), toNum(b));
+
+	function toNum (size) {
+		switch (size) {
+			case "M":
+				return 0;
+			case "S":
+				return -1;
+			case "V":
+				return 1;
+		}
+	}
+}
+
+function filterAscSortAsi (a, b) {
+	a = a.item;
+	b = b.item;
+
+	if (a === "Player Choice") return -1;
+	else if (a.startsWith("Any") && b.startsWith("Any")) {
+		const aAbil = a.replace("Any", "").replace("Increase", "").trim();
+		const bAbil = b.replace("Any", "").replace("Increase", "").trim();
+		return ASI_SORT_POS[aAbil] - ASI_SORT_POS[bAbil];
+	} else if (a.startsWith("Any")) {
+		return -1;
+	} else if (b.startsWith("Any")) {
+		return 1;
+	} else {
+		const [aAbil, aScore] = a.split(" ");
+		const [bAbil, bScore] = b.split(" ");
+		return (ASI_SORT_POS[aAbil] - ASI_SORT_POS[bAbil]) || (Number(bScore) - Number(aScore));
+	}
+}
+
 let list;
 const sourceFilter = getSourceFilter();
-const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull});
+const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull, itemSortFn: filterAscSortSize});
 const asiFilter = new Filter({
 	header: "Ability Bonus (Including Subrace)",
 	items: [
+		"Player Choice",
 		"Any Strength Increase",
 		"Any Dexterity Increase",
 		"Any Constitution Increase",
@@ -84,7 +123,8 @@ const asiFilter = new Filter({
 		"Wisdom +1",
 		"Charisma +2",
 		"Charisma +1"
-	]
+	],
+	itemSortFn: filterAscSortAsi
 });
 let filterBox;
 async function onJsonLoad (data) {
@@ -154,8 +194,9 @@ async function onJsonLoad (data) {
 		languageFilter
 	);
 
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
 
 	// filtering function
@@ -207,13 +248,14 @@ function addRaces (data) {
 		const race = raceList[rcI];
 		if (ExcludeUtil.isExcluded(race.name, "race", race.source)) continue;
 
-		const ability = race.ability ? utils_getAbilityData(race.ability) : {asTextShort: "None"};
+		const ability = race.ability ? Renderer.getAbilityData(race.ability) : {asTextShort: "None"};
 		if (race.ability) {
 			const abils = getAbilityObjs(race.ability);
 			race._fAbility = abils.map(a => mapAbilityObjToFull(a));
 			const increases = {};
 			abils.filter(it => it.amount > 0).forEach(it => increases[it.asi] = true);
 			Object.keys(increases).forEach(it => race._fAbility.push(`Any ${Parser.attAbvToFull(it)} Increase`));
+			if (race.ability.choose) race._fAbility.push("Player Choice");
 		} else race._fAbility = [];
 		race._fSpeed = race.speed.walk ? [race.speed.climb ? "Climb" : null, race.speed.fly ? "Fly" : null, race.speed.swim ? "Swim" : null, getSpeedRating(race.speed.walk)].filter(it => it) : getSpeedRating(race.speed);
 		race._fMisc = [
@@ -241,48 +283,12 @@ function addRaces (data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(race._fSources);
-		sizeFilter.addIfAbsent(race.size);
-		asiFilter.addIfAbsent(race._fAbility);
+		sourceFilter.addItem(race._fSources);
+		sizeFilter.addItem(race.size);
+		asiFilter.addItem(race._fAbility);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	racesTable.append(tempString);
-
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
-	sizeFilter.items.sort(ascSortSize);
-	asiFilter.items.sort(ascSortAsi);
-
-	function ascSortSize (a, b) {
-		return SortUtil.ascSort(toNum(a), toNum(b));
-
-		function toNum (size) {
-			switch (size) {
-				case "M":
-					return 0;
-				case "S":
-					return -1;
-				case "V":
-					return 1;
-			}
-		}
-	}
-
-	function ascSortAsi (a, b) {
-		if (a.startsWith("Any") && b.startsWith("Any")) {
-			const aAbil = a.replace("Any", "").replace("Increase", "").trim();
-			const bAbil = b.replace("Any", "").replace("Increase", "").trim();
-			return ASI_SORT_POS[aAbil] - ASI_SORT_POS[bAbil];
-		} else if (a.startsWith("Any")) {
-			return -1;
-		} else if (b.startsWith("Any")) {
-			return 1;
-		} else {
-			const [aAbil, aScore] = a.split(" ");
-			const [bAbil, bScore] = b.split(" ");
-			return (ASI_SORT_POS[aAbil] - ASI_SORT_POS[bAbil]) || (Number(bScore) - Number(aScore));
-		}
-	}
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -318,7 +324,7 @@ function handleFilterChange () {
 			r.languageTags
 		);
 	});
-	FilterBox.nextIfHidden(raceList);
+	FilterBox.selectFirstVisible(raceList);
 }
 
 function getSublistItem (race, pinId) {
@@ -359,7 +365,7 @@ function loadhash (id) {
 		${race.soundClip ? getPronunciationButton() : ""}
 		<span class="stats-source ${Parser.sourceJsonToColor(race.source)}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
 		</th></tr>
-		<tr><td colspan="6"><b>Ability Scores:</b> ${(race.ability ? utils_getAbilityData(race.ability) : {asText: "None"}).asText}</td></tr>
+		<tr><td colspan="6"><b>Ability Scores:</b> ${(race.ability ? Renderer.getAbilityData(race.ability) : {asText: "None"}).asText}</td></tr>
 		<tr><td colspan="6"><b>Size:</b> ${Parser.sizeAbvToFull(race.size)}</td></tr>
 		<tr><td colspan="6"><b>Speed:</b> ${Parser.getSpeedString(race)}</td></tr>
 		<tr id="traits"><td class="divider" colspan="6"><div></div></td></tr>
@@ -485,6 +491,6 @@ function loadhash (id) {
 }
 
 function loadsub (sub) {
-	filterBox.setFromSubHashes(sub);
+	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

@@ -92,22 +92,6 @@
 				"entries": [
 					"You have a {=genericBonus} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
 				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "ranged attacks +1",
-						"toString": [
-							null
-						]
-					},
-					{
-						"_category": "bonus",
-						"__text": "ranged damage +1",
-						"toString": [
-							null
-						]
-					}
-				],
 				"lootTables": [
 					"Magic Item Table B"
 				]
@@ -131,22 +115,6 @@
 				"entries": [
 					"You have a {=genericBonus} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
 				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "ranged attacks +2",
-						"toString": [
-							null
-						]
-					},
-					{
-						"_category": "bonus",
-						"__text": "ranged damage +2",
-						"toString": [
-							null
-						]
-					}
-				],
 				"lootTables": [
 					"Magic Item Table C"
 				]
@@ -169,22 +137,6 @@
 				"nameSuffix": " +3",
 				"entries": [
 					"You have a {=genericBonus} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
-				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "ranged attacks +3",
-						"toString": [
-							null
-						]
-					},
-					{
-						"_category": "bonus",
-						"__text": "ranged damage +3",
-						"toString": [
-							null
-						]
-					}
 				],
 				"lootTables": [
 					"Magic Item Table D"
@@ -210,7 +162,13 @@
 				"nameSuffix": " Armblade",
 				"entries": [
 					"An armblade is a weapon designed to integrate with the forearm of a warforged. If you're a warforged, you can attach an armblade by attuning to it. An attached armblade cannot be disarmed or removed from you against your will, but while the weapon is attached you cannot use that hand for other actions. You can spend one minute to end the attunement and remove the armblade.",
-					"An armblade isn't inherently considered to be a magic weapon for purposes of overcoming damage resistance. However, any sort of magical melee weapon could be created as an armblade, so you could acquire a vicious armblade or a vorpal armblade."
+					{
+						"type": "inset",
+						"name": "Magic Armblades",
+						"entries": [
+							"An armblade isn't inherently considered to be a magic weapon for purposes of overcoming damage resistance. However, any sort of magical melee weapon could be created as an armblade, so you could acquire a vicious armblade or a vorpal armblade."
+						]
+					}
 				]
 			}
 		},
@@ -231,15 +189,6 @@
 				"nameSuffix": " +1",
 				"entries": [
 					"You have a {=genericBonus} bonus to AC while wearing this armor."
-				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "ac +1",
-						"toString": [
-							null
-						]
-					}
 				]
 			}
 		},
@@ -260,15 +209,6 @@
 				"nameSuffix": " +2",
 				"entries": [
 					"You have a {=genericBonus} bonus to AC while wearing this armor."
-				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "ac +2",
-						"toString": [
-							null
-						]
-					}
 				]
 			}
 		},
@@ -289,15 +229,6 @@
 				"nameSuffix": " +3",
 				"entries": [
 					"You have a {=genericBonus} bonus to AC while wearing this armor."
-				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "ac +3",
-						"toString": [
-							null
-						]
-					}
 				]
 			}
 		},
@@ -555,22 +486,6 @@
 					},
 					"Whenever a hostile creature damages you while the axe is in your possession, you must succeed on a DC 15 Wisdom saving throw or go berserk. While berserk, you must use your action each round to attack the creature nearest to you with the axe. If you can make extra attacks as part of the Attack action, you use those extra attacks, moving to attack the next nearest creature after you fell your current target. If you have multiple possible targets, you attack one at random. You are berserk until you start your turn with no creatures within 60 feet of you that you can see or hear."
 				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "melee attacks +1",
-						"toString": [
-							null
-						]
-					},
-					{
-						"_category": "bonus",
-						"__text": "melee damage +1",
-						"toString": [
-							null
-						]
-					}
-				],
 				"lootTables": [
 					"Magic Item Table G"
 				]
@@ -662,22 +577,6 @@
 					"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
 					"When you hit a dragon with this weapon, the dragon takes an extra {@dice 3d6} damage of the weapon's type. For the purpose of this weapon, \"dragon\" refers to any creature with the dragon type, including dragon turtles and wyverns."
 				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "melee attacks +1",
-						"toString": [
-							null
-						]
-					},
-					{
-						"_category": "bonus",
-						"__text": "melee damage +1",
-						"toString": [
-							null
-						]
-					}
-				],
 				"lootTables": [
 					"Magic Item Table G"
 				]
@@ -752,22 +651,6 @@
 					"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
 					"When you hit a giant with it, the giant takes an extra {@dice 2d6} damage of the weapon's type and must succeed on a DC 15 Strength saving throw or fall {@condition prone}. For the purpose of this weapon, \"giant\" refers to any creature with the giant type, including ettins and trolls."
 				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "melee attacks +1",
-						"toString": [
-							null
-						]
-					},
-					{
-						"_category": "bonus",
-						"__text": "melee damage +1",
-						"toString": [
-							null
-						]
-					}
-				],
 				"lootTables": [
 					"Magic Item Table G"
 				]
@@ -791,22 +674,6 @@
 				"entries": [
 					"You gain a +3 bonus to attack and damage rolls made with this magic weapon. When you hit a fiend or an undead with it, that creature takes an extra {@dice 2d10} radiant damage.",
 					"While you hold the drawn sword, it creates an aura in a 10-foot radius around you. You and all creatures friendly to you in the aura have advantage on saving throws against spells and other magical effects. If you have 17 or more levels in the paladin class, the radius of the aura increases to 30 feet."
-				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "melee attacks +3",
-						"toString": [
-							null
-						]
-					},
-					{
-						"_category": "bonus",
-						"__text": "melee damage +3",
-						"toString": [
-							null
-						]
-					}
 				],
 				"lootTables": [
 					"Magic Item Table I"
@@ -1114,29 +981,6 @@
 						]
 					}
 				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "melee attacks +1",
-						"toString": [
-							null
-						]
-					},
-					{
-						"_category": "bonus",
-						"__text": "melee damage +1",
-						"toString": [
-							null
-						]
-					},
-					{
-						"_category": "bonus",
-						"__text": "saving throws +1",
-						"toString": [
-							null
-						]
-					}
-				],
 				"charges": "{@dice 1d4-1}",
 				"attachedSpells": [
 					"wish"
@@ -1277,22 +1121,6 @@
 					"You gain a +2 bonus to attack and damage rolls made with this magic weapon.",
 					"The sword has {@dice 1d8+1} charges. If you score a critical hit against a creature that has fewer than 100 hit points, it must succeed on a DC 15 Constitution saving throw or be slain instantly as the sword tears its life force from its body (a construct or an undead is immune). The sword loses 1 charge if the creature is slain. When the sword has no charges remaining, it loses this property."
 				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "melee attacks +2",
-						"toString": [
-							null
-						]
-					},
-					{
-						"_category": "bonus",
-						"__text": "melee damage +2",
-						"toString": [
-							null
-						]
-					}
-				],
 				"charges": "{@dice 1d8+1}",
 				"lootTables": [
 					"Magic Item Table H"
@@ -1323,7 +1151,7 @@
 				"reqAttune": true,
 				"namePrefix": "Fernian Basalt ",
 				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take damage of the type associated with the material your orb is made from, you can use your reaction to reduce the damage by {@dice 1d4}."
+					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take fire damage, you can use your reaction to reduce the damage by {@dice 1d4}."
 				]
 			}
 		},
@@ -1351,7 +1179,7 @@
 				"reqAttune": true,
 				"namePrefix": "Irian Quartz ",
 				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take damage of the type associated with the material your orb is made from, you can use your reaction to reduce the damage by {@dice 1d4}."
+					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take radiant damage, you can use your reaction to reduce the damage by {@dice 1d4}."
 				]
 			}
 		},
@@ -1379,7 +1207,7 @@
 				"reqAttune": true,
 				"namePrefix": "Kythrian Skarn ",
 				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take damage of the type associated with the material your orb is made from, you can use your reaction to reduce the damage by {@dice 1d4}."
+					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take acid or poison damage, you can use your reaction to reduce the damage by {@dice 1d4}."
 				]
 			}
 		},
@@ -1407,7 +1235,7 @@
 				"reqAttune": true,
 				"namePrefix": "Lamannian Flint ",
 				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take damage of the type associated with the material your orb is made from, you can use your reaction to reduce the damage by {@dice 1d4}."
+					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take lightning or thunder damage, you can use your reaction to reduce the damage by {@dice 1d4}."
 				]
 			}
 		},
@@ -1435,7 +1263,7 @@
 				"reqAttune": true,
 				"namePrefix": "Mabaran Obsidian ",
 				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take damage of the type associated with the material your orb is made from, you can use your reaction to reduce the damage by {@dice 1d4}."
+					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take necrotic damage, you can use your reaction to reduce the damage by {@dice 1d4}."
 				]
 			}
 		},
@@ -1463,7 +1291,7 @@
 				"reqAttune": true,
 				"namePrefix": "Quori Celestine ",
 				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take damage of the type associated with the material your orb is made from, you can use your reaction to reduce the damage by {@dice 1d4}."
+					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take psychic damage, you can use your reaction to reduce the damage by {@dice 1d4}."
 				]
 			}
 		},
@@ -1491,7 +1319,7 @@
 				"reqAttune": true,
 				"namePrefix": "Risian Shale ",
 				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take damage of the type associated with the material your orb is made from, you can use your reaction to reduce the damage by {@dice 1d4}."
+					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take cold damage, you can use your reaction to reduce the damage by {@dice 1d4}."
 				]
 			}
 		},
@@ -1519,7 +1347,7 @@
 				"reqAttune": true,
 				"namePrefix": "Shavaran Chert ",
 				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take damage of the type associated with the material your orb is made from, you can use your reaction to reduce the damage by {@dice 1d4}."
+					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take force damage, you can use your reaction to reduce the damage by {@dice 1d4}."
 				]
 			}
 		},
@@ -1547,7 +1375,7 @@
 				"reqAttune": true,
 				"namePrefix": "Xorian Marble ",
 				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take damage of the type associated with the material your orb is made from, you can use your reaction to reduce the damage by {@dice 1d4}."
+					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take psychic damage, you can use your reaction to reduce the damage by {@dice 1d4}."
 				]
 			}
 		},
@@ -1568,15 +1396,6 @@
 				"nameSuffix": " +1",
 				"entries": [
 					"While holding this shield, you have a {=genericBonus} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
-				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "ac +1",
-						"toString": [
-							null
-						]
-					}
 				]
 			}
 		},
@@ -1597,15 +1416,6 @@
 				"nameSuffix": " +2",
 				"entries": [
 					"While holding this shield, you have a {=genericBonus} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
-				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "ac +2",
-						"toString": [
-							null
-						]
-					}
 				]
 			}
 		},
@@ -1626,15 +1436,6 @@
 				"nameSuffix": " +3",
 				"entries": [
 					"While holding this shield, you have a {=genericBonus} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
-				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "ac +3",
-						"toString": [
-							null
-						]
-					}
 				]
 			}
 		},
@@ -1777,22 +1578,6 @@
 						]
 					}
 				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "melee attacks +1",
-						"toString": [
-							null
-						]
-					},
-					{
-						"_category": "bonus",
-						"__text": "melee damage +1",
-						"toString": [
-							null
-						]
-					}
-				],
 				"lootTables": [
 					"Magic Item Table F"
 				]
@@ -1871,22 +1656,6 @@
 				"entries": [
 					"You gain a +3 bonus to attack and damage rolls made with this magic weapon. In addition, the weapon ignores resistance to slashing damage.",
 					"When you attack a creature that has at least one head with this weapon and roll a 20 on the attack roll, you cut off one of the creature's heads. The creature dies if it can't survive without the lost head. A creature is immune to this effect if it is immune to slashing damage, doesn't have or need a head, has legendary actions, or the DM decides that the creature is too big for its head to be cut off with this weapon. Such a creature instead takes an extra {@dice 6d8} slashing damage from the hit."
-				],
-				"modifier": [
-					{
-						"_category": "bonus",
-						"__text": "melee attacks +3",
-						"toString": [
-							null
-						]
-					},
-					{
-						"_category": "bonus",
-						"__text": "melee damage +3",
-						"toString": [
-							null
-						]
-					}
 				],
 				"lootTables": [
 					"Magic Item Table I"
@@ -2161,7 +1930,7 @@
 				}
 			],
 			"inherits": {
-				"rarity": "Rare",
+				"rarity": "Very Rare",
 				"source": "LLK",
 				"page": 56,
 				"reqAttune": true,

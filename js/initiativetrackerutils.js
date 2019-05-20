@@ -372,11 +372,11 @@ class InitiativeTrackerPlayerMessageHandler {
 		};
 		const {hpText, hpColor} = getHpContent();
 
-		return $(`
+		return $$`
 			<div class="initp__r${rowData.a ? ` initp__r--active` : ""}">
 				<div class="initp__r_name">
 					<div>${(rowData.n || "").escapeQuotes()}${rowData.o != null ? ` (${rowData.o})` : ""}</div>
-					<div data-r="$conds"/>
+					${$conds}
 				</div>
 				<div class="initp__r_hp">
 					<div class="initp__r_hp_pill" style="background: ${hpColor};">${hpText}</div>
@@ -386,6 +386,6 @@ class InitiativeTrackerPlayerMessageHandler {
 				</div>`).join("")}
 				<div class="initp__r_score${this._isCompact ? " initp__r_score--compact" : ""}">${rowData.i}</div>
 			</div>
-		`).swap({$conds});
+		`;
 	}
 }

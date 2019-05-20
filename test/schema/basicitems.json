@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.3",
+	"version": "1.1.0",
 	"definitions": {
 		"itemLookup": {
 			"type": "array",
@@ -148,11 +148,17 @@
 					"sword": {
 						"type": "boolean"
 					},
-					"technology": {
-						"type": "string"
+					"firearm": {
+						"type": "boolean"
+					},
+					"staff": {
+						"type": "boolean"
 					},
 					"value": {
 						"type": "string"
+					},
+					"valueMult": {
+						"type": "number"
 					},
 					"weapon": {
 						"type": "boolean"
@@ -161,7 +167,10 @@
 						"type": "string"
 					},
 					"weight": {
-						"type": "string"
+						"type": "number"
+					},
+					"weightMult": {
+						"type": "number"
 					},
 					"quantity": {
 						"type": "integer"

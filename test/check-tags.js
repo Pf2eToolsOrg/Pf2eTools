@@ -2,6 +2,7 @@ const fs = require('fs');
 require('../js/utils.js');
 require('../js/render.js');
 const utS = require("../node/util-search-index");
+const od = require('../js/omnidexer.js');
 const bu = require("../js/bookutils");
 const ut = require("../node/util.js");
 
@@ -347,7 +348,10 @@ class TableDiceTest {
 					// convert +inf to a reasonable range (no official table goes to 250+ as of 2019-03-01)
 					if (cell.max === Renderer.dice.POS_INFINITE) cell.max = 250;
 					for (let i = cell.min; i <= cell.max; ++i) {
-						if (possibleResults.has(i)) errors.push(`"min-max" value "${i}" was repeated!`);
+						if (possibleResults.has(i)) {
+							// if the table is e.g. 0-110, avoid double-counting the 0
+							if (!(i === 100 && cell.max > 100)) errors.push(`"min-max" value "${i}" was repeated!`);
+						}
 						possibleResults.add(i);
 					}
 				}
@@ -468,10 +472,10 @@ class LootCheck {
 LootCheck.file = `data/loot.json`;
 
 async function main () {
-	const primaryIndex = await utS.UtilSearchIndex.pGetIndex(false, true);
+	const primaryIndex = od.Omnidexer.decompressIndex(await utS.UtilSearchIndex.pGetIndex(false, true));
 	primaryIndex.forEach(it => ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${it.u.toLowerCase().trim()}`));
 	const highestId = primaryIndex.last().id;
-	const secondaryIndexItem = await utS.UtilSearchIndex.pGetIndexAdditionalItem(highestId + 1, false);
+	const secondaryIndexItem = od.Omnidexer.decompressIndex(await utS.UtilSearchIndex.pGetIndexAdditionalItem(highestId + 1, false));
 	secondaryIndexItem.forEach(it => ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${it.u.toLowerCase().trim()}`));
 
 	LinkCheck.addHandlers();
@@ -500,4 +504,4 @@ async function main () {
 	console.timeEnd(TIME_TAG);
 }
 
-return main();
+module.exports = main();

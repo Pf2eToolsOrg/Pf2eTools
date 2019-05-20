@@ -6,11 +6,11 @@ class InitiativeTrackerPlayer {
 		const $head = $(`<div class="initp__header"/>`).hide();
 		const $rows = $(`<div class="initp__rows"/>`).hide();
 
-		const $wrpTracker = $(`<div class="initp__wrp_active">
-			<div data-r="$meta"/>
-			<div data-r="$head"/>
-			<div data-r="$rows"/>
-		</div>`).swap({$meta, $head, $rows});
+		const $wrpTracker = $$`<div class="initp__wrp_active">
+			${$meta}
+			${$head}
+			${$rows}
+		</div>`;
 
 		const view = new InitiativeTrackerPlayerMessageHandlerScreen();
 		view.setElements($meta, $head, $rows);
@@ -32,29 +32,29 @@ class InitiativeTrackerPlayer {
 						$wrpInitial.append($btnConnectRemote).append($btnConnectLocal);
 					});
 
-				const $wrpClient = $(`<div class="flex-col full-width">
+				const $wrpClient = $$`<div class="flex-col full-width">
 					<div class="flex-vh-center px-4 mb-2">
 						<span style="min-width: fit-content;" class="mr-2">Server Token</span>
-						<div data-r="$iptServerToken"/>
+						${$iptServerToken}
 					</div>
 					
 					<div class="split px-4 mb-2">
 						<label class="flex-label">
 								<span class="mr-2 help" title="Turning this off will produce a client token which is roughly twice as long, but contains only standard characters.">Short client token</span>
-								<div data-r="$cbShortToken"/>
+								${$cbShortToken}
 						</label>
-						<div data-r="$btnGenClientToken"/>					
+						${$btnGenClientToken}					
 					</div>
 					
 					<div class="flex-vh-center px-4 mb-2">
 						<span style="min-width: fit-content;" class="mr-2">Client Token</span>
-						<div data-r="$iptClientToken"/>
+						${$iptClientToken}
 					</div>
 					
 					<div class="flex-vh-center px-4">
-						<div data-r="$btnCancel"/>
+						${$btnCancel}
 					</div>
-				</div>`).swap({$iptServerToken, $btnGenClientToken, $iptClientToken, $cbShortToken, $btnCancel}).appendTo($wrpInitial);
+				</div>`.appendTo($wrpInitial);
 
 				const ui = new InitiativeTrackerPlayerUi(view, $iptServerToken, $btnGenClientToken, $iptClientToken, $cbShortToken);
 				ui.init();
@@ -89,10 +89,10 @@ class InitiativeTrackerPlayer {
 								$wrpInitial.append($btnConnectRemote).append($btnConnectLocal);
 							});
 
-						const $wrpSel = $(`<div class="flex-vh-center mb-2">
-							<div data-r="$selTracker"/>
-							<div data-r="$btnOk"/>
-						</div>`).swap({$selTracker, $btnOk}).appendTo($wrpInitial);
+						const $wrpSel = $$`<div class="flex-vh-center mb-2">
+							${$selTracker}
+							${$btnOk}
+						</div>`.appendTo($wrpInitial);
 
 						const $btnCancel = $(`<button class="btn btn-default btn-xs">Back</button>`)
 							.click(() => {
@@ -107,10 +107,10 @@ class InitiativeTrackerPlayer {
 				}
 			});
 
-		view.$wrpInitial = $(`<div class="flex-vh-center full-height flex-col">
-			<div data-r="$btnConnectRemote"/>
-			<div data-r="$btnConnectLocal"/>
-		</div>`).swap({$btnConnectRemote, $btnConnectLocal}).appendTo($wrpTracker);
+		view.$wrpInitial = $$`<div class="flex-vh-center full-height flex-col">
+			${$btnConnectRemote}
+			${$btnConnectLocal}
+		</div>`.appendTo($wrpTracker);
 
 		return $wrpTracker;
 	}

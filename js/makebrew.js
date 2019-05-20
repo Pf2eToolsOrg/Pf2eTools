@@ -83,7 +83,7 @@ class PageUi {
 		this._doInitNavHandler();
 
 		if (!this._settings.activeSource || !BrewUtil.homebrewMeta.sources.some(it => it.json === this._settings.activeSource)) {
-			this._doRebuildStageSource({mode: "add"});
+			this._doRebuildStageSource({mode: "add", isRequired: true});
 			this.__setStageSource();
 		} else {
 			this.__setStageMain();
@@ -255,6 +255,7 @@ class Builder {
 		this._isEntrySaved = true;
 
 		Builder._BUILDERS.push(this);
+		ProxyUtil.decorate(this);
 	}
 
 	set ui (ui) { this._ui = ui; }
@@ -818,7 +819,7 @@ class SearchWidget {
 			UiUtil.bindAutoSearch(this._$iptSearch, {
 				flags: this._flags,
 				search: this.__doSearch.bind(this),
-				showWait: this.__showMsgWait
+				showWait: this.__showMsgWait.bind(this)
 			});
 
 			this.__doSearch();
@@ -841,7 +842,7 @@ class SearchWidget {
 		Omnidexer.TO_INDEX.filter(it => it.listProp === prop)
 			.forEach(it => indexer.addToIndex(it, toIndex));
 
-		const toAdd = indexer.getIndex();
+		const toAdd = Omnidexer.decompressIndex(indexer.getIndex());
 		toAdd.forEach(d => {
 			d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
 			SearchWidget.CONTENT_INDICES.ALL.addDoc(d);

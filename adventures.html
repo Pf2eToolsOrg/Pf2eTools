@@ -53,12 +53,12 @@
 
 <div class="container view-col-wrapper">
 	<div class="view-col" id="listcontainer">
-		<div class="input-group">
-			<input type="search" id="search" class="search form-control" placeholder="Find adventure...">
-			<span class="input-group-btn"><button class="btn btn-default" id="reset">Reset</button></span>
+		<div class="lst__form-top">
+			<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control" placeholder="Find adventure...">
+			<button class="btn btn-default" id="reset">Reset</button>
 		</div>
 
-		<div id="filtertools" class="sortlabel btn-group">
+		<div id="filtertools" class="sortlabel lst__form-bottom">
 			<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
 			<button class="col-2-5 sort btn btn-default btn-xs" data-sort="storyline">Storyline <span class="caret_wrp"></span></button>
 			<button class="col-1-3 sort btn btn-default btn-xs" data-sort="level">Levels <span class="caret_wrp"></span></button>

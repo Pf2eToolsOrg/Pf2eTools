@@ -42,23 +42,16 @@ function loadhash (id) {
 
 // Exported to history.js
 function loadsub (sub) {
+	sub = filterBox.setFromSubHashes(sub);
 	SubClassLoader.loadsub(sub);
 }
 
-// Exported to utils.js
-function addClassData (data) {
-	ClassData.addClassData(data);
-}
-
-// Exported to utils.js
-function addSubclassData (data) {
-	ClassData.addSubclassData(data)
-}
-
-class ClassDisplay {
-
-}
+class ClassDisplay {}
 ClassDisplay.curClass = null;
+
+function _isNonStandardSource (entry) {
+	return !entry._isStandardSource && SourceUtil.isNonstandardSource(entry.source);
+}
 
 class FeatureTable {
 	/**
@@ -106,20 +99,24 @@ class ClassList {
 			const curClass = newClasses[i];
 			if (ExcludeUtil.isExcluded(curClass.name, "class", curClass.source)) continue;
 
-			curClass._fSource = curClass.source === SRC_UASIK ? "Sidekicks" : BrewUtil.hasSourceJson(curClass.source) ? "Homebrew" : SourceUtil.isNonstandardSource(curClass.source) ? "Others" : "Core";
-			sourceFilter.addIfAbsent(curClass._fSource);
+			if (curClass.source === SRC_UASIK) curClass._fSource = "Sidekicks";
+			else if (BrewUtil.hasSourceJson(curClass.source)) curClass._fSource = "Homebrew";
+			else if (curClass._isStandardSource) curClass._fSource = "Core";
+			else if (SourceUtil.isNonstandardSource(curClass.source)) curClass._fSource = "Others";
+			else curClass._fSource = "Core";
+
+			sourceFilter.addItem(curClass._fSource);
 			const id = i + previousClassAmount;
 			tempString += ClassList._renderClass(curClass, id);
 		}
-		sourceFilter.items.sort(SortUtil.ascSort);
 		$classTable.append(tempString);
 	}
 
 	static _renderClass (classToRender, id) {
 		return `<li class="row" ${FLTR_ID}="${id}" ${classToRender.uniqueId ? `data-unique-id="${classToRender.uniqueId}"` : ""}>
-				<a id='${id}' href="${HashLoad.getClassHash(classToRender)}" title="${classToRender.name}">
-					<span class='name col-8'>${classToRender.name}</span>
-					<span class='source col-4 text-align-center ${Parser.sourceJsonToColor(classToRender.source)}' title="${Parser.sourceJsonToFull(classToRender.source)}">
+				<a id="${id}" href="${HashLoad.getClassHash(classToRender)}" title="${classToRender.name}">
+					<span class="name col-8">${classToRender.name}</span>
+					<span class="source col-4 text-align-center ${Parser.sourceJsonToColor(classToRender.source)}" title="${Parser.sourceJsonToFull(classToRender.source)}">
 						${Parser.sourceJsonToAbv(classToRender.source)}
 					</span>
 					<span class="uniqueid hidden">${classToRender.uniqueId ? classToRender.uniqueId : id}</span>
@@ -154,9 +151,7 @@ class ClassData {
 			if (data.class.some(c => c.uniqueId)) {
 				const filterVals = filterBox.getValues();
 				filterVals.Source.Homebrew = 1;
-				filterBox.setFromValues({
-					Source: Object.entries(filterVals.Source).filter(([k, v]) => v !== 0).map(([k, v]) => `${~v ? "" : "!"}${k.toLowerCase()}`)
-				});
+				filterBox.setFromValues({Source: filterVals.Source});
 			}
 			History.hashChange();
 		}
@@ -168,7 +163,7 @@ class ClassData {
 		const scData = data.subclass;
 		scData.forEach(subClass => {
 			// get the class
-			const c = ClassData.classes.find(c => c.name.toLowerCase() === subClass.class.toLowerCase() && (c.source.source || c.source).toLowerCase() === (subClass.classSource || SRC_PHB).toLowerCase());
+			const c = ClassData.classes.find(c => c.name.toLowerCase() === subClass.class.toLowerCase() && c.source.toLowerCase() === (subClass.classSource || SRC_PHB).toLowerCase());
 			if (!c) {
 				JqueryUtil.doToast({
 					content: `Could not add subclass; could not find class with name: ${subClass.class}`,
@@ -195,8 +190,8 @@ class ClassData {
 	}
 
 	static markSameSourceSubclassesAndFluffAsForceStandard (clazz) {
-		if (clazz.fluff) clazz.fluff.filter(f => f.source === clazz.source).forEach(f => f.source = {source: f.source, forceStandard: true});
-		clazz.subclasses.filter(subClass => subClass.source === clazz.source).forEach(subClass => subClass.source = {source: subClass.source, forceStandard: true});
+		if (clazz.fluff) clazz.fluff.filter(f => f.source === clazz.source).forEach(f => f._isStandardSource = true);
+		clazz.subclasses.filter(subClass => subClass.source === clazz.source).forEach(subClass => subClass._isStandardSource = true);
 	}
 
 	static cleanScSource (source) {
@@ -208,7 +203,7 @@ ClassData.classes = [];
 class FeatureDescription {
 	static getSubclassStyles (sc) {
 		const styleClasses = [CLSS_SUBCLASS_FEATURE];
-		const nonStandard = SourceUtil.isNonstandardSource(sc.source) || SourceUtil.hasBeenReprinted(sc.shortName, sc.source) || (sc.source.source || sc.source) === SRC_DMG;
+		const nonStandard = _isNonStandardSource(sc) || SourceUtil.hasBeenReprinted(sc.shortName, sc.source) || sc.source === SRC_DMG;
 		if (nonStandard) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
 		if (FeatureDescription.subclassIsFreshUa(sc)) styleClasses.push(CLSS_FRESH_UA);
 		if (BrewUtil.hasSourceJson(ClassData.cleanScSource(sc.source))) styleClasses.push(CLSS_HOMEBREW_SOURCE);
@@ -217,7 +212,7 @@ class FeatureDescription {
 
 	static subclassIsFreshUa (sc) {
 		// only tag reprinted UA
-		if (SourceUtil.isNonstandardSource(sc.source) || SourceUtil.hasBeenReprinted(sc.shortName, sc.source)) {
+		if (_isNonStandardSource(sc) || SourceUtil.hasBeenReprinted(sc.shortName, sc.source)) {
 			// special cases
 			if (sc.name === "Knowledge Domain (PSA)" && sc.source === SRC_PSA) return false;
 			if (sc.name === "Deep Stalker (UA)" && sc.source === SRC_UALDR) return false;
@@ -225,7 +220,7 @@ class FeatureDescription {
 			if (sc.name === "Shadow (UA)" && sc.source === SRC_UALDR) return false;
 			if (sc.name === "The Undying Light (UA)" && sc.source === SRC_UALDR) return false;
 
-			const nonUa = ClassDisplay.curClass.subclasses.find(pub => !SourceUtil.isNonstandardSource(pub.source) && sc.name.replace(/(v\d+)?\s*\((UA|SCAG|PSA|Livestream)\)/, "").trim() === pub.name);
+			const nonUa = ClassDisplay.curClass.subclasses.find(sc => !_isNonStandardSource(sc) && sc.name.replace(/(v\d+)?\s*\((UA|SCAG|PSA|Livestream)\)/, "").trim() === sc.name);
 			if (nonUa) return false;
 		}
 		return true;
@@ -321,7 +316,7 @@ class HashLoad {
 					.append(`<strong>Ability Score Minimum:</strong> <span>${[orPart, basePart].filter(Boolean).join("; ")}</span>`);
 			}
 			if (mc.proficienciesGained) {
-				$(`#multiclassing_profs`).html(`<div ${mc.requirements ? `style="margin-top: 1.7em;"` : ""}>When you gain a level in a class other than your first, you gain only some of that class's starting proficiencies.</div>`)
+				$(`#multiclassing_profs`).html(`<div ${mc.requirements ? `style="margin-top: 1.7em;"` : ""}>When you gain a level in a class other than your first, you gain only some of that class's starting proficiencies.</div>`);
 				const $mcProfArmor = $(`#multiclassing_profs_armor`).toggle(mc.proficienciesGained.armor != null).find("span").html(mc.proficienciesGained.armor ? renderArmorProfs(mc.proficienciesGained.armor) : "");
 				const $mcProfWeapons = $(`#multiclassing_profs_weapons`).toggle(mc.proficienciesGained.weapons != null).find("span").html(mc.proficienciesGained.weapons ? renderWeaponsProfs(mc.proficienciesGained.weapons) : "");
 				const $mcProfTools = $(`#multiclassing_profs_tools`).toggle(mc.proficienciesGained.tools != null).find("span").html(mc.proficienciesGained.tools ? renderToolsProfs(mc.proficienciesGained.tools) : "");
@@ -551,27 +546,22 @@ class HashLoad {
 		// subclass pills
 		const subClasses = ClassDisplay.curClass.subclasses
 			.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source))
-			.map(sc => ({name: sc.name, source: sc.source, shortName: sc.shortName}))
-			.sort(function (a, b) {
-				return SortUtil.ascSort(a.shortName, b.shortName)
-			});
+			.sort((a, b) => SortUtil.ascSort(a.shortName, b.shortName));
 		for (let i = 0; i < subClasses.length; i++) {
-			const subClass = subClasses[i];
-			const nonStandardSource = SourceUtil.isNonstandardSource(subClass.source) || SourceUtil.hasBeenReprinted(subClass.shortName, subClass.source) || (subClass.source.source || subClass.source) === SRC_DMG;
+			const sc = subClasses[i];
+			const nonStandardSource = _isNonStandardSource(sc) || SourceUtil.hasBeenReprinted(sc.shortName, sc.source) || sc.source === SRC_DMG;
 			const styleClasses = [CLSS_ACTIVE, CLSS_SUBCLASS_PILL, "sc_pill"];
 			if (nonStandardSource) styleClasses.push(CLSS_NON_STANDARD_SOURCE);
-			if (FeatureDescription.subclassIsFreshUa(subClass)) styleClasses.push(CLSS_FRESH_UA);
-			if (BrewUtil.hasSourceJson(ClassData.cleanScSource(subClass.source))) styleClasses.push(CLSS_HOMEBREW_SOURCE);
-			const reprinted = SourceUtil.hasBeenReprinted(subClass.shortName, subClass.source);
-			const pillText = reprinted ? `${subClass.shortName} (${Parser.sourceJsonToAbv(subClass.source)})` : subClass.shortName;
-			const pillPostText = reprinted || SourceUtil.isNonstandardSource(subClass.source) ? "" : ` (${Parser.sourceJsonToAbv(subClass.source)})`;
-			const pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${
-				ClassData.cleanScSource(subClass.source)}" title="Source: ${Parser.sourceJsonToFull(subClass.source)}"><span>${pillText}<span class="sc_pill__source_suffix">${pillPostText}</span></span></span>`);
-			pill.click(function () {
-				HashLoad.handleSubclassClick($(this).hasClass(CLSS_ACTIVE), subClasses[i].name, ClassData.cleanScSource(subClasses[i].source));
-			});
-			if (nonStandardSource) pill.hide();
-			HashLoad.subclassPillWrapper.append(pill);
+			if (FeatureDescription.subclassIsFreshUa(sc)) styleClasses.push(CLSS_FRESH_UA);
+			if (BrewUtil.hasSourceJson(ClassData.cleanScSource(sc.source))) styleClasses.push(CLSS_HOMEBREW_SOURCE);
+			const reprinted = SourceUtil.hasBeenReprinted(sc.shortName, sc.source);
+			const pillText = reprinted ? `${sc.shortName} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
+			const pillPostText = reprinted || _isNonStandardSource(sc) ? "" : ` (${Parser.sourceJsonToAbv(sc.source)})`;
+			const $pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${sc.name}" ${ATB_DATA_SRC}="${
+				ClassData.cleanScSource(sc.source)}" title="Source: ${Parser.sourceJsonToFull(sc.source)}"><span>${pillText}<span class="sc_pill__source_suffix">${pillPostText}</span></span></span>`);
+			$pill.click(() => HashLoad.handleSubclassClick($pill.hasClass(CLSS_ACTIVE), subClasses[i].name, ClassData.cleanScSource(subClasses[i].source)));
+			if (nonStandardSource) $pill.hide();
+			HashLoad.subclassPillWrapper.append($pill);
 		}
 
 		// spacer before "Feeling Lucky" pill
@@ -756,6 +746,8 @@ HashLoad.subclassPillWrapper = undefined;
 
 class SubClassLoader {
 	static loadsub (sub) {
+		const $pgContent = $(`#pagecontent`);
+
 		let subclasses = null;
 		let feature = null;
 		let hideClassFeatures = null;
@@ -851,16 +843,16 @@ class SubClassLoader {
 			if ($toShow.length === 0) {
 				SubClassLoader.hideAllSubclasses(sub, hideAllSources);
 			} else {
-				const otherSrcSubFeat = $(`#pagecontent`).find(`div.${CLSS_NON_STANDARD_SOURCE}`);
+				const $otherSrcSubFeat = $pgContent.find(`div.${CLSS_NON_STANDARD_SOURCE}`);
 				const shownInTable = [];
 
 				$.each($toShow, function (i, v) {
 					v.addClass(CLSS_ACTIVE);
 					$(`.${CLSS_SUBCLASS_FEATURE}[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
 					if (hideAllSources || hideSomeSources) {
-						otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
+						$otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
 					} else {
-						otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
+						$otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
 					}
 
 					const asInTable = FeatureTable.getTableDataScData(v.attr(ATB_DATA_SC), v.attr(ATB_DATA_SRC));
@@ -871,14 +863,14 @@ class SubClassLoader {
 				$.each($toHide, function (i, v) {
 					v.removeClass(CLSS_ACTIVE);
 					$(`.${CLSS_SUBCLASS_FEATURE}[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
-					otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
+					$otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
 
 					const asInTable = FeatureTable.getTableDataScData(v.attr(ATB_DATA_SC), v.attr(ATB_DATA_SRC));
 					SubClassLoader.handleTableGroups(shownInTable, asInTable, false);
 				});
 
-				const $spicy_NotScFeature_NoSubclassNoSource = otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`:not([${ATB_DATA_SC}]):not([${ATB_DATA_SRC}])`);
-				const $spicy_NotScFeature_NoneSubclassNoneSource = otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${Renderer.DATA_NONE}"][${ATB_DATA_SRC}="${Renderer.DATA_NONE}"]`);
+				const $spicy_NotScFeature_NoSubclassNoSource = $otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`:not([${ATB_DATA_SC}]):not([${ATB_DATA_SRC}])`);
+				const $spicy_NotScFeature_NoneSubclassNoneSource = $otherSrcSubFeat.not(`.${CLSS_SUBCLASS_FEATURE}`).filter(`[${ATB_DATA_SC}="${Renderer.DATA_NONE}"][${ATB_DATA_SRC}="${Renderer.DATA_NONE}"]`);
 				if (hideAllSources) {
 					$spicy_NotScFeature_NoSubclassNoSource.hide();
 					$spicy_NotScFeature_NoneSubclassNoneSource.hide();
@@ -889,67 +881,63 @@ class SubClassLoader {
 			}
 
 			// show subclass prefixes if we're displaying more than 1 subclass
-			if ($toShow.length !== 1) {
-				$(`.${CLSS_SUBCLASS_PREFIX}`).show();
-			} else {
-				$(`.${CLSS_SUBCLASS_PREFIX}`).hide();
-			}
+			$(`.${CLSS_SUBCLASS_PREFIX}`).toggle($toShow.length > 1);
 		} else {
 			SubClassLoader.hideAllSubclasses(sub, hideAllSources);
 			ClassBookView.updateVisible([], $(`.${CLSS_SUBCLASS_PILL}`).map((i, e) => $(e)).get());
 		}
 
 		// hide class features as required
-		const cfToggle = $(`#${ID_CLASS_FEATURES_TOGGLE}`);
-		const allCf = $(`#pagecontent`).find(`.${CLSS_CLASS_FEATURE}`);
-		const toToggleCf = allCf.not(`.${CLSS_GAIN_SUBCLASS_FEATURE}`);
+		const $cfToggle = $(`#${ID_CLASS_FEATURES_TOGGLE}`);
+		const $allCf = $pgContent.find(`.${CLSS_CLASS_FEATURE}`);
+		const $toToggleCf = $allCf.not(`.${CLSS_GAIN_SUBCLASS_FEATURE}`);
 		const isHideClassFeatures = hideClassFeatures !== null && hideClassFeatures;
 		// if showing no subclass and hiding class features, hide the "gain a feature at this level" labels
 		if (isHideClassFeatures && subclasses === null) {
-			allCf.hide();
+			$allCf.hide();
 			if (!showFluff) {
 				$(`#please-select-message`).addClass("showing");
 			} else {
 				$(`#please-select-message`).removeClass("showing");
 			}
 		} else {
-			allCf.show();
+			$allCf.show();
 			$(`#please-select-message`).removeClass("showing");
 		}
 		if (isHideClassFeatures) {
-			cfToggle.removeClass(CLSS_CLASS_FEATURES_ACTIVE);
-			toToggleCf.hide();
+			$cfToggle.removeClass(CLSS_CLASS_FEATURES_ACTIVE);
+			$toToggleCf.hide();
 		} else {
-			cfToggle.addClass(CLSS_CLASS_FEATURES_ACTIVE);
-			toToggleCf.show();
+			$cfToggle.addClass(CLSS_CLASS_FEATURES_ACTIVE);
+			$toToggleCf.show();
 		}
 
 		// show fluff as required
-		const fluffToggle = $(`#${ID_FLUFF_TOGGLE}`);
-		const fluff = $(`#pagecontent`).find(`.${CLSS_CLASS_FLUFF}`);
+		const $fluffToggle = $(`#${ID_FLUFF_TOGGLE}`);
+		const $fluff = $pgContent.find(`.${CLSS_CLASS_FLUFF}`);
 		if (!showFluff) {
-			fluffToggle.removeClass(CLSS_FLUFF_ACTIVE);
-			fluff.hide();
+			$fluffToggle.removeClass(CLSS_FLUFF_ACTIVE);
+			$fluff.hide();
 		} else {
-			fluffToggle.addClass(CLSS_FLUFF_ACTIVE);
-			fluff.show();
+			$fluffToggle.addClass(CLSS_FLUFF_ACTIVE);
+			$fluff.show();
 		}
 
 		// show UA/etc pills as required
-		const srcToggle = $(`#${ID_OTHER_SOURCES_TOGGLE}`);
-		const toToggleSrc = $(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_PANEL_LINK}`);
+		const $btnToggleSrcMode = $(`#${ID_OTHER_SOURCES_TOGGLE}`);
+		const $elesToToggle = $(`.${CLSS_SUBCLASS_PILL}.${CLSS_NON_STANDARD_SOURCE}`).not(`.${CLSS_PANEL_LINK}`);
 		if (hideAllSources) {
-			srcToggle.find(`span`).text(STRS_SOURCE_STATES[0]);
-			srcToggle.attr("data-state", STR_SOURCES_OFFICIAL);
-			toToggleSrc.hide();
+			$btnToggleSrcMode.find(`span`).text(STRS_SOURCE_STATES[0]);
+			$btnToggleSrcMode.attr("data-state", STR_SOURCES_OFFICIAL);
+			$elesToToggle.hide();
 		} else if (hideSomeSources) {
-			srcToggle.find(`span`).text(STRS_SOURCE_STATES[1]);
-			srcToggle.attr("data-state", STR_SOURCES_MIXED);
-			toToggleSrc.show().not(`.${CLSS_FRESH_UA}`).hide();
+			$btnToggleSrcMode.find(`span`).text(STRS_SOURCE_STATES[1]);
+			$btnToggleSrcMode.attr("data-state", STR_SOURCES_MIXED);
+			$elesToToggle.show().not(`.${CLSS_FRESH_UA}`).hide();
 		} else {
-			srcToggle.find(`span`).text(STRS_SOURCE_STATES[2]);
-			srcToggle.attr("data-state", STR_SOURCES_ALL);
-			toToggleSrc.show();
+			$btnToggleSrcMode.find(`span`).text(STRS_SOURCE_STATES[2]);
+			$btnToggleSrcMode.attr("data-state", STR_SOURCES_ALL);
+			$elesToToggle.show();
 		}
 
 		// scroll to the linked feature if required
@@ -961,17 +949,11 @@ class SubClassLoader {
 		SubClassLoader.updateClassTableLinks();
 		SubClassLoader.updateNavLinks(sub);
 
-		if (bookView) {
-			ClassBookView.open();
-		} else {
-			ClassBookView.teardown();
-		}
+		if (bookView) ClassBookView.open();
+		else ClassBookView.teardown();
 
-		if (comparisonView && subclassComparisonView) {
-			subclassComparisonView.open();
-		} else if (subclassComparisonView) {
-			subclassComparisonView.teardown();
-		}
+		if (comparisonView && subclassComparisonView) subclassComparisonView.open();
+		else if (subclassComparisonView) subclassComparisonView.teardown();
 
 		$(`.sc_pill__source_suffix`).toggle(!!showPillSources);
 		$(`.sc_pill__source`).toggleClass(CLSS_ACTIVE, !!showPillSources);
@@ -996,11 +978,7 @@ class SubClassLoader {
 				for (let i = 0; i < scs.length; i++) {
 					const sc = scs[i];
 					if (sc === tableDataTag) {
-						if (show) {
-							$this.show();
-						} else {
-							$this.hide();
-						}
+						$this.toggle(!!show);
 						break;
 					}
 				}
@@ -1053,23 +1031,21 @@ class SubClassLoader {
 	}
 
 	static updateNavLinks (sub) {
-		function makeScroller ($nav, idTr, parentTr, idClass, displayText, scrollTo) {
-			let navClass;
-			switch (idClass) {
-				case Renderer.HEAD_NEG_1:
-					navClass = "n1";
-					break;
-				case Renderer.HEAD_0:
-					navClass = "n2";
-					break;
-				case Renderer.HEAD_1:
-					navClass = "n3";
-					break;
-			}
-			if (typeof navClass !== "undefined") {
+		function makeScroller ($nav, $ele, idTr, parentTr, idClasses, displayText, scrollTo) {
+			const navClass = idClasses.split(" ").map(idClass => {
+				switch (idClass) {
+					case Renderer.HEAD_NEG_1: return "n1";
+					case Renderer.HEAD_0: return "n2";
+					case Renderer.HEAD_1: return "n3";
+				}
+			}).filter(Boolean)[0];
+			if (navClass != null) {
 				const subClass = parentTr.length ? parentTr.hasClass("subclass-feature") : false;
-				const ua = parentTr.length ? parentTr.hasClass("spicy-sauce") : false;
-				const brew = parentTr.length ? parentTr.hasClass("refreshing-brew") : false;
+				// either the element itself or the root feature can be a special colour
+				const ua = $ele.parent().hasClass("spicy-sauce") ? true
+					: parentTr.length ? parentTr.hasClass("spicy-sauce") : false;
+				const brew = $ele.parent().hasClass("refreshing-brew") ? true
+					: parentTr.length ? parentTr.hasClass("refreshing-brew") : false;
 				$(`<div class="nav-item ${navClass} ${brew ? "purple" : ua ? "green" : subClass ? "blue" : ""}">${displayText}</div>`).on("click", () => {
 					if (idTr.length) {
 						window.location.hash = SubClassLoader.getFeatureLink(idTr.attr("id"))
@@ -1097,7 +1073,7 @@ class SubClassLoader {
 				$titles.each((i, e) => {
 					const $e = $(e);
 					const pClass = $e.parent().attr("class").trim();
-					if (pClass === Renderer.HEAD_2) return; // consider enabling these for e.g. maneuvers?
+					if (pClass.split(" ").includes(Renderer.HEAD_2)) return; // consider enabling these for e.g. maneuvers?
 					if (!$e.is(":visible")) return;
 					const idTr = $e.closest(`tr[id]`);
 					const pTr = $e.closest(`tr`);
@@ -1107,7 +1083,7 @@ class SubClassLoader {
 					if (!textNodes.length) return;
 					const displayText = textNodes[0].nodeValue.trim().replace(/[:.]$/g, "");
 					const scrollTo = $e.data("title-index");
-					makeScroller($navBody, idTr, pTr, pClass, displayText, scrollTo);
+					makeScroller($navBody, $e, idTr, pTr, pClass, displayText, scrollTo);
 				});
 			}, 5); // delay hack to allow rendering to catch up
 		}
@@ -1140,12 +1116,10 @@ function initCompareMode () {
 
 			let numShown = 0;
 			ClassDisplay.curClass.subclasses.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source)).forEach((sc, i) => {
-				const $pill = $(`.${CLSS_SUBCLASS_PILL}[data-subclass="${sc.name}"][data-source="${sc.source.source || sc.source}"]`);
+				const $pill = $(`.${CLSS_SUBCLASS_PILL}[data-subclass="${sc.name}"][data-source="${sc.source}"]`);
 				if (!($pill.hasClass(CLSS_ACTIVE))) {
 					$tbl.find(`.subclass-features-${i}`).hide();
-				} else {
-					numShown++;
-				}
+				} else numShown++;
 			});
 
 			$tbl.find(`tr > td > div`).css("width", "400px");
@@ -1185,9 +1159,7 @@ class ClassBookView {
 		ClassBookView._$bkTbl = $bkTbl;
 		const $brdTop = $(`<tr><th class="border close-border" colspan="6"><div/></th></tr>`);
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
-			.on("click", () => {
-				hashTeardown();
-			});
+			.on("click", () => hashTeardown());
 		$brdTop.find(`div`).append($btnClose);
 		$bkTbl.append($brdTop);
 
@@ -1195,7 +1167,7 @@ class ClassBookView {
 		renderer.setFirstSection(true);
 		renderStack.push(`<tr><td colspan="6">`);
 		renderer.recursiveRender({type: "section", name: ClassDisplay.curClass.name}, renderStack);
-		renderStack.push(`</td></tr>`)
+		renderStack.push(`</td></tr>`);
 
 		renderStack.push(`<tr class="text class-features"><td colspan="6">`);
 		ClassDisplay.curClass.classFeatures.forEach(lvl => {
@@ -1236,10 +1208,10 @@ class ClassBookView {
 		ClassDisplay.curClass.subclasses.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source)).forEach((sc, i) => {
 			const name = SourceUtil.hasBeenReprinted(sc.shortName, sc.source) ? `${sc.shortName} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
 			const styles = FeatureDescription.getSubclassStyles(sc);
-			const $pill = $(`.${CLSS_SUBCLASS_PILL}[data-subclass="${sc.name}"][data-source="${sc.source.source || sc.source}"]`);
+			const $pill = $(`.${CLSS_SUBCLASS_PILL}[data-subclass="${sc.name}"][data-source="${sc.source}"]`);
 
 			const $scToggle = $(`<span class="pnl-link active ${styles.join(" ")}" title="Source: ${Parser.sourceJsonToFull(sc.source)}" data-i="${i}" data-bk-subclass="${
-				sc.name}" data-bk-source="${sc.source.source || sc.source}">${name}</span>`).on("click", () => {
+				sc.name}" data-bk-source="${sc.source}">${name}</span>`).on("click", () => {
 				ClassBookView._toggleSubclass($bkTbl, $scToggle, i);
 				$pill.click();
 			});
@@ -1344,7 +1316,7 @@ const renderer = Renderer.get();
 
 const sourceFilter = new Filter({
 	header: FilterBox.SOURCE_HEADER,
-	minimalUI: true,
+	minimalUi: true,
 	items: ["Core", "Others"],
 	selFn: (it) => it === "Core" || it === "Homebrew"
 });
@@ -1354,8 +1326,8 @@ let statsProfDefault = $("#statsprof").html();
 let classTableDefault = $("#classtable").html();
 
 function handleBrew (homebrew) {
-	addClassData(homebrew);
-	addSubclassData(homebrew);
+	ClassData.addClassData(homebrew);
+	ClassData.addSubclassData(homebrew);
 	return Promise.resolve();
 }
 
@@ -1369,7 +1341,7 @@ async function doPageInit () {
 	);
 
 	ClassList.classList = ListUtil.search({
-		valueNames: ['name', 'source', 'uniqueid'],
+		valueNames: ["name", "source", "uniqueid"],
 		listClass: "classes"
 	});
 
@@ -1384,7 +1356,7 @@ async function doPageInit () {
 	Omnisearch.addScrollTopFloat();
 
 	DataUtil.class.loadJSON().then((data) => {
-		addClassData(data);
+		ClassData.addClassData(data);
 
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)

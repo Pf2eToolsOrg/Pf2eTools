@@ -5273,7 +5273,37 @@
 							"entries": [
 								"Seven {@creature centaur|MM|centaurs} have come to Grandfather Tree for its restorative powers. The centaurs fell victim to a curse as they explored some ancient ruins in the High Forest. Until the curse is lifted, the centaurs exude a charnel stench, can't regain hit points, and can't eat or drink anything without making themselves sick. The centaurs are not spoiling for a fight and prefer to be left alone.",
 								"Four {@creature dryad|MM|dryads} live in the smaller oak trees that encircle Grandfather Tree. They emerge from their trees when one or more characters approach within 50 feet of Grandfather Tree's base, demanding in Elvish that the characters leave at once. The dryads know nothing of the giant relic hidden among Grandfather Tree's roots and have no attachment to it. With a successful DC 14 Charisma (Intimidation or Persuasion) check, a character can convince the dryads to let the party search for the relic and take it away. The check is made with disadvantage if the dryads can't understand the character's words. If the party conducts a search without the dryads' consent, the dryads attempt to charm the characters and command them to return whence they came. The dryads attack intruders who resist their charms or refuse to leave, calling on the centaurs to aid them (which the centaurs are more than happy to do).",
-								"Whenever a dryad is killed, one or more conjured animals rise up out of the ground within 30 feet of her and join the fray, acting on the dryad's initiative count. Roll on the Avenging Animals table to determine what appears. A conjured animal can distinguish enemies from allies, and it gains the benefit of Grandfather Tree's bless spell. It disappears after 1 hour, or when it drops to 0 hit points, or when it is dispelled (DC 15)."
+								"Whenever a dryad is killed, one or more conjured animals rise up out of the ground within 30 feet of her and join the fray, acting on the dryad's initiative count. Roll on the Avenging Animals table to determine what appears. A conjured animal can distinguish enemies from allies, and it gains the benefit of Grandfather Tree's bless spell. It disappears after 1 hour, or when it drops to 0 hit points, or when it is dispelled (DC 15).",
+								{
+									"type": "table",
+									"caption": "Avenging Animals",
+									"colLabels": [
+										"d4",
+										"Animal(s)"
+									],
+									"colStyles": [
+										"col-xs-2",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"1",
+											"2 {@creature brown bear|mm|brown bears}"
+										],
+										[
+											"2",
+											"2 {@creature dire wolf|mm|dire wolves}"
+										],
+										[
+											"3",
+											"1 {@creature giant boar}"
+										],
+										[
+											"4",
+											"1 {@creature giant elk}"
+										]
+									]
+								}
 							]
 						}
 					]
@@ -5568,6 +5598,52 @@
 							"entries": [
 								"When in this region, use the Random Encounters in Icewind Dale table instead of the Random Wilderness Encounters table earlier in this chapter.",
 								{
+									"type": "table",
+									"caption": "Random Encounters in Icewind Dale",
+									"colLabels": [
+										"d20",
+										"Encounter"
+									],
+									"colStyles": [
+										"col-xs-2",
+										"col-xs-10"
+									],
+									"rows": [
+										[
+											"1",
+											"1 {@creature ancient white dragon}"
+										],
+										[
+											"2\u20135",
+											"{@dice 1d4 + 2} {@creature crag cat|SKT|crag cats}"
+										],
+										[
+											"6\u20138",
+											"{@dice 1d3} {@creature frost giant|MM|frost giants}"
+										],
+										[
+											"9\u201312",
+											"Reghed barbarians ({@creature berserker} and {@creature tribal warrior|MM|tribal warriors})"
+										],
+										[
+											"13\u201315",
+											"{@dice 3d8} reindeer ({@creature elk})"
+										],
+										[
+											"16\u201317",
+											"Ten-Towners ({@creature scout|MM|scouts})"
+										],
+										[
+											"18\u201319",
+											"{@dice 1d6} {@creature yeti}"
+										],
+										[
+											"20",
+											"1 {@creature young remorhaz}"
+										]
+									]
+								},
+								{
 									"type": "entries",
 									"name": "Ancient White Dragon",
 									"entries": [
@@ -5810,11 +5886,11 @@
 											"type": "list",
 											"style": "list-hang-notitle",
 											"items": [
-												"Cantrips (at will): {@spell druidcraft|PHB}, {@spell mending|PHB}, {@spell produce flame|PHB}",
-												"1st level (4 slots): {@spell cure wounds|PHB}, {@spell detect magic|PHB}, {@spell entangle|PHB}, {@spell speak with animals|PHB}",
-												"2nd level (3 slots): {@spell animal messenger|PHB}, {@spell pass without trace|PHB}",
-												"3rd level (3 slots): {@spell dispel magic|PHB}, {@spell plant growth|PHB}",
-												"4th level (2 slots): {@spell blight|PHB}, {@spell locate creature|PHB}, {@spell stoneskin|PHB}"
+												"Cantrips (at will): {@spell druidcraft}, {@spell mending}, {@spell produce flame}",
+												"1st level (4 slots): {@spell cure wounds}, {@spell detect magic}, {@spell entangle}, {@spell speak with animals}",
+												"2nd level (3 slots): {@spell animal messenger}, {@spell pass without trace}",
+												"3rd level (3 slots): {@spell dispel magic}, {@spell plant growth}",
+												"4th level (2 slots): {@spell blight}, {@spell locate creature}, {@spell stoneskin}"
 											]
 										}
 									]
@@ -6506,12 +6582,12 @@
 									"type": "list",
 									"style": "list-hang-notitle",
 									"items": [
-										"Cantrips (at will): {@spell druidcraft|PHB}, {@spell guidance|PHB}, {@spell resistance|PHB}",
-										"1st level (4 slots): {@spell detect magic|PHB}, {@spell entangle|PHB}, {@spell goodberry|PHB}, {@spell speak with animals|PHB}",
-										"2nd level (3 slots): {@spell animal messenger|PHB}, {@spell gust of wind|PHB}, {@spell pass without trace|PHB}",
-										"3rd level (3 slots): {@spell plant growth|PHB}, {@spell speak with plants|PHB}",
-										"4th level (3 slots): {@spell conjure woodland beings|PHB}, {@spell hallucinatory terrain|PHB}",
-										"5th level (1 slot): {@spell commune with nature|PHB}"
+										"Cantrips (at will): {@spell druidcraft}, {@spell guidance}, {@spell resistance}",
+										"1st level (4 slots): {@spell detect magic}, {@spell entangle}, {@spell goodberry}, {@spell speak with animals}",
+										"2nd level (3 slots): {@spell animal messenger}, {@spell gust of wind}, {@spell pass without trace}",
+										"3rd level (3 slots): {@spell plant growth}, {@spell speak with plants}",
+										"4th level (3 slots): {@spell conjure woodland beings}, {@spell hallucinatory terrain}",
+										"5th level (1 slot): {@spell commune with nature}"
 									]
 								}
 							]
@@ -9302,7 +9378,7 @@
 									"type": "inset",
 									"name": "Olach Morrah",
 									"entries": [
-										"The giant meditates for 1 hour, during which time it can do nothing else. At the end of the hour, provided the giant's meditation has been uninterrupted, it becomes petrified for 8 hours. At the end of this time, the giant is no longer petrified and gains tremorsense out to a range of 30 feet, as well as a measure of innate spellcasting ability based on Wisdom. For the next 24 hours, it can innately cast the following spells, requiring no material components:",
+										"The giant meditates for 1 hour, during which time it can do nothing else. At the end of the hour, provided the giant's meditation has been uninterrupted, it becomes {@condition petrified} for 8 hours. At the end of this time, the giant is no longer petrified and gains tremorsense out to a range of 30 feet, as well as a measure of innate spellcasting ability based on Wisdom. For the next 24 hours, it can innately cast the following spells, requiring no material components:",
 										"3/day: {@spell meld into stone|PHB}, {@spell stone shape|PHB}",
 										"1/day: {@spell stoneskin|PHB}, {@spell time stop|PHB}",
 										"The adventure notes which giants have recently completed the meditation and emerged from their petrified state with tremorsense and the ability to cast spells."
@@ -13262,12 +13338,12 @@
 									"type": "list",
 									"style": "list-hang-notitle",
 									"items": [
-										"Cantrips (at will): {@spell druidcraft|PHB}, {@spell mending|PHB}, {@spell produce flame|PHB}",
-										"1st level (4 slots): {@spell cure wounds|PHB}, {@spell entangle|PHB}, {@spell thunderwave|PHB}",
-										"2nd level (3 slots): {@spell animal messenger|PHB}, {@spell barkskin|PHB}, {@spell gust of wind|PHB}",
-										"3rd level (3 slots): {@spell call lightning|PHB}, {@spell conjure animals|PHB}, {@spell speak with plants|PHB}",
-										"4th level (3 slots): {@spell freedom of movement|PHB}, {@spell grasping vine|PHB}",
-										"5th level (1 slot): {@spell conjure elemental|PHB}"
+										"Cantrips (at will): {@spell druidcraft}, {@spell mending}, {@spell produce flame}",
+										"1st level (4 slots): {@spell cure wounds}, {@spell entangle}, {@spell thunderwave}",
+										"2nd level (3 slots): {@spell animal messenger}, {@spell barkskin}, {@spell gust of wind}",
+										"3rd level (3 slots): {@spell call lightning}, {@spell conjure animals}, {@spell speak with plants}",
+										"4th level (3 slots): {@spell freedom of movement}, {@spell grasping vine}",
+										"5th level (1 slot): {@spell conjure elemental}"
 									]
 								}
 							]
@@ -14100,7 +14176,7 @@
 							"entries": [
 								"Maelstrom's throne room resembles an amphitheater. Stone bleachers overlook an oblong chamber with a 50-foot-deep pool of seawater near its center. In the middle of the bleachers is an archway with two doors in it. A submerged passageway that leads from the bottom of the pool to the sinkhole ({@area 11>1}) is designed to serve as an escape route. At the far end of the passageway is a lowered portcullis that bars access to the sinkhole.",
 								"Facing the pool and the doors are three enormous thrones. The middle one is carved from a solid chunk of obsidian, has four blue dragon skulls affixed to its base, and floats 1 foot above the floor. Characters who succeed on a DC 18 Intelligence (Arcana) or Intelligence (History) check recognize this object as the {@item Wyrmskull Throne|SKT}. The two smaller thrones that flank it are made of coral and giant seashells.",
-								"Serissa sits on the {@item Wyrmskull Throne|SKT}, flanked by her two advisors, Imperator Uthor and {@creature iymrith, ancient blue dragon|SKT|Iymrith}. Serissa wears the {@item Korolnor Scepter|SKT} (see \"Treasure\") as a pendant, tied to a kelp necklace.",
+								"Serissa sits on the {@item Wyrmskull Throne|SKT}, flanked by her two advisors, Imperator Uthor and {@creature Iymrith|SKT}. Serissa wears the {@item Korolnor Scepter|SKT} (see \"Treasure\") as a pendant, tied to a kelp necklace.",
 								"Serissa is a {@creature storm giant|MM}, with the following changes:",
 								{
 									"type": "list",
@@ -15408,7 +15484,7 @@
 					"entries": [
 						"Two rows of sandstone pillars support the ceiling of this vast chamber. Before Iymrith claimed it as her own, this room was once a secret temple belonging to a sect of desert-dwelling yuan-ti mystics called the Serpents of the Sands. These mystics worship Dendar the Night Serpent (see the yuan-ti entry in the {@i Monster Manual} for more information on this deity). Iymrith invited the mystics here to contact their demon-god, hoping it might provide guidance on how to crush her enemies. Because she has become desperate, Iymrith is willing to trust the mystics' interpretations of the Night Serpent's whispers, which she doesn't understand.",
 						"Floor-to-ceiling piles of sand have been pushed up in three of the room's corners. One of the piles conceals a hole in the western wall (see \"Dragon Bolt-Holes\"). Unless Iymrith was drawn to the surface and defeated there, the ancient blue dragon is lurking under the pile of sand in the southeast corner of the room. Only her eyes and her horn are visible, and only to characters who have a passive Wisdom (Perception) score of 17 or higher. Any character who searches that corner of the room spots the dragon automatically.",
-						"{@creature iymrith, ancient blue dragon|SKT|Iymrith} avails herself of her lair actions here.",
+						"{@creature Iymrith|SKT} avails herself of her lair actions here.",
 						{
 							"type": "entries",
 							"name": "Demonic Snake Statue",
@@ -16129,7 +16205,7 @@
 				},
 				{
 					"type": "entries",
-					"name": "{@creature Iymrith, Ancient Blue Dragon|skt|Iymrith the Dragon}",
+					"name": "{@creature Iymrith|skt|Iymrith the Dragon}",
 					"entries": [
 						"The treacherous Iymrith is an ancient blue dragon, with the following changes:",
 						{

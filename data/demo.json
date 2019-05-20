@@ -59,7 +59,7 @@
 							"type": "inset",
 							"name": "Filter Tag",
 							"entries": [
-								"Another tag that appears occasionally in the data is the @filter tag. This tag can be tricky to use, and generally relies on knowledge of the internals of each page. As such, use with caution, and if you're not sure about something, don't be afraid to drop by our {@link Discord|https://discord.gg/v3AXzcW} and ask questions.",
+								"Another tag that appears occasionally in the data is the @filter tag. This tag can be tricky to use, and generally relies on knowledge of the internals of each page. As such, use with caution, and if you're not sure about something, don't be afraid to drop by our {@link Discord|https://discord.gg/nGvRCDs} and ask questions.",
 								"The syntax for the @filter tag is as follows:",
 								"(open curly brace)@filter display text|page_without_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;...(close curly brace)",
 								"The purpose of this tag is to open the given page, pre-filtered with the specified filtering options. There's one major caveat that makes this tricky to use for aspiring JSONtranauts\u2014the filter values use the {@i internal} version, as you'd find in the data. So, for example, ...|school=D|... would filter spells to Divination school spells, as 'D' is the Divination identifier in the data. Trying to do e.g. ...|school=Divination|... will not work.",
@@ -72,6 +72,7 @@
 								"{@filter Divination and Evocation spells|spells|school=D;V}",
 								"{@filter All uncommon magic items|items|source=null|type=null|rarity=uncommon|miscellaneous=Magic}",
 								"{@filter Simple melee weapons|items|source=phb|category=basic|type=simple weapon;melee weapon=&}",
+								"Meta-options can be set; inline for individual filters, and using 'fbmt' for filtering meta-options {@filter filter meta example|spells|level=1;2=b1~sor~sand|fbmt=sor}",
 								{
 									"type": "entries",
 									"name": "Note",
@@ -105,7 +106,7 @@
 									"type": "list",
 									"items": [
 										"Internal links: {@5etools This Is Your Life|lifegen.html}",
-										"External links: {@link https://discord.gg/v3AXzcW} or {@link Discord|https://discord.gg/v3AXzcW}"
+										"External links: {@link https://discord.gg/nGvRCDs} or {@link Discord|https://discord.gg/nGvRCDs}"
 									]
 								},
 								"Page specific/other tags:",
@@ -163,7 +164,7 @@
 				{
 					"type": "inline",
 					"entries": [
-						"Entries can be inlined, useful for e.g. links outwith the tags listed above, ",
+						"Entries can be inlined, useful for e.g. links beyond the tags listed above, ",
 						{
 							"type": "link",
 							"href": {
@@ -583,15 +584,22 @@
 							"paralyzed",
 							"poisoned"
 						],
-						"senses": "darkvision 60 ft.",
+						"senses": [
+							"darkvision 60 ft."
+						],
 						"passive": 13,
-						"languages": "Celestial, Elvish, Sylvan, telepathy 60 ft.",
+						"languages": [
+							"Celestial",
+							"Elvish",
+							"Sylvan",
+							"telepathy 60 ft."
+						],
 						"cr": "5",
 						"trait": [
 							{
 								"name": "Charge",
 								"entries": [
-									"If the unicorn moves at least 20 ft. straight toward a target and then hits it with a horn attack on the same turn, the target takes an extra 9 ({@dice 2d8}) piercing damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
+									"If the unicorn moves at least 20 ft. straight toward a target and then hits it with a horn attack on the same turn, the target takes an extra 9 ({@dice 2d8}) piercing damage. If the target is a creature, it must succeed on a {@dc 15} Strength saving throw or be knocked prone."
 								]
 							},
 							{
@@ -665,7 +673,7 @@
 							{
 								"name": "Innate Spellcasting",
 								"headerEntries": [
-									"The unicorn's innate spellcasting ability is Charisma (spell save DC 14). The unicorn can innately cast the following spells, requiring no components:"
+									"The unicorn's innate spellcasting ability is Charisma (spell save {@dc 14}). The unicorn can innately cast the following spells, requiring no components:"
 								],
 								"will": [
 									"{@spell detect evil and good}",
@@ -694,6 +702,107 @@
 						"actionTags": [
 							"Multiattack"
 						]
+					}
+				},
+				"Spells; as above:",
+				{
+					"type": "dataSpell",
+					"dataSpell": {
+						"name": "Fireball",
+						"level": 3,
+						"school": "V",
+						"time": [
+							{
+								"number": 1,
+								"unit": "action"
+							}
+						],
+						"range": {
+							"type": "point",
+							"distance": {
+								"type": "feet",
+								"amount": 150
+							}
+						},
+						"components": {
+							"v": true,
+							"s": true,
+							"m": "a tiny ball of bat guano and sulfur"
+						},
+						"duration": [
+							{
+								"type": "instant"
+							}
+						],
+						"classes": {
+							"fromClassList": [
+								{
+									"name": "Sorcerer",
+									"source": "PHB"
+								},
+								{
+									"name": "Wizard",
+									"source": "PHB"
+								}
+							],
+							"fromSubclass": [
+								{
+									"class": {
+										"name": "Cleric",
+										"source": "PHB"
+									},
+									"subclass": {
+										"name": "Light",
+										"source": "PHB"
+									}
+								},
+								{
+									"class": {
+										"name": "Warlock",
+										"source": "PHB"
+									},
+									"subclass": {
+										"name": "Fiend",
+										"source": "PHB"
+									}
+								},
+								{
+									"class": {
+										"name": "Cleric",
+										"source": "PHB"
+									},
+									"subclass": {
+										"name": "Zeal (PSA)",
+										"source": "PSA"
+									}
+								},
+								{
+									"class": {
+										"name": "Cleric",
+										"source": "PHB"
+									},
+									"subclass": {
+										"name": "Destruction (Stream)",
+										"source": "Twitter"
+									}
+								}
+							]
+						},
+						"source": "PHB",
+						"entries": [
+							"A bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot-radius sphere centered on that point must make a Dexterity saving throw. A target takes {@dice 8d6} fire damage on a failed save, or half as much damage on a successful one.",
+							"The fire spreads around corners. It ignites flammable objects in the area that aren't being worn or carried."
+						],
+						"entriesHigherLevel": [
+							{
+								"type": "entries",
+								"name": "At Higher Levels",
+								"entries": [
+									"When you cast this spell using a spell slot of 4th level or higher, the damage increases by {@scaledice 8d6|3-9|1d6} for each slot level above 3rd."
+								]
+							}
+						],
+						"page": 241
 					}
 				},
 				"There exist a few homebrew features (generally) for use in custom copies of the site:",

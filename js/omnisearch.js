@@ -10,7 +10,7 @@ const Omnisearch = {
 	init: function () {
 		const $nav = $(`#navbar`);
 
-		const $searchIn = $(`<input class="form-control search omni__input" placeholder="${Omnisearch._PLACEHOLDER_TEXT}" title="Disclaimer: unlikely to search everywhere. Use with caution.">`);
+		const $searchIn = $(`<input class="form-control search omni__input" placeholder="${Omnisearch._PLACEHOLDER_TEXT}" title="Disclaimer: unlikely to search everywhere. Use with caution.">`).disableSpellcheck();
 		const $searchSubmit = $(`<button class="btn btn-default omni__submit" tabindex="-1"><span class="glyphicon glyphicon-search"></span></button>`);
 
 		const $searchInputWrapper = $$`
@@ -55,6 +55,7 @@ const Omnisearch = {
 		const TYPE_TIMEOUT_MS = 100;
 		let typeTimer;
 		$searchIn.on("keyup", (e) => {
+			clickFirst = false;
 			if (e.which >= 37 && e.which <= 40) return;
 			clearTimeout(typeTimer);
 			typeTimer = setTimeout(() => $searchSubmit.click(), TYPE_TIMEOUT_MS);
@@ -120,8 +121,8 @@ const Omnisearch = {
 			if (!doHideBlacklisted() && ExcludeUtil.getList().length) {
 				results = results.filter(r => {
 					if (r.doc.c === Parser.CAT_ID_QUICKREF) return true;
-					let bCat = Parser.pageCategoryToProp(r.doc.c);
-					let bName = bCat !== "variantrule" ? r.doc.n : r.doc.n.split(";")[0];
+					const bCat = Parser.pageCategoryToProp(r.doc.c);
+					const bName = bCat !== "variantrule" ? r.doc.n : r.doc.n.split(";")[0];
 					return !ExcludeUtil.isExcluded(bName, bCat, r.doc.s);
 				});
 			}
@@ -140,14 +141,14 @@ const Omnisearch = {
 
 				$searchOut.empty();
 				const showUa = doShowUaEtc();
-				const $btnUaEtc = $(`<button class="btn btn-default btn-xs btn-file" title="Filter Unearthed Arcana and other unofficial source results" tabindex="-1">${showUa ? "Exclude" : "Include"} UA, etc</button>`)
+				const $btnUaEtc = $(`<button class="btn btn-default btn-xs btn-file ${showUa ? "active" : ""}" title="Filter Unearthed Arcana and other unofficial source results" tabindex="-1">Include UA, etc</button>`)
 					.on("click", () => {
 						setShowUaEtc(!showUa);
 						pDoSearch();
 					});
 
 				const hideBlacklisted = doHideBlacklisted();
-				const $btnBlacklist = $(`<button class="btn btn-default btn-xs btn-file" style="margin-left: 6px;" title="Filter blacklisted content results" tabindex="-1">${hideBlacklisted ? "Exclude" : "Include"} Blacklisted</button>`)
+				const $btnBlacklist = $(`<button class="btn btn-default btn-xs btn-file ${hideBlacklisted ? "active" : ""}" style="margin-left: 6px;" title="Filter blacklisted content results" tabindex="-1">Include Blacklisted</button>`)
 					.on("click", () => {
 						setShowBlacklisted(!hideBlacklisted);
 						pDoSearch();
@@ -159,10 +160,10 @@ const Omnisearch = {
 					const r = results[i].doc;
 					const $link = $(`<a href="${UrlUtil.categoryToPage(r.c)}#${r.u}" ${r.h ? getHoverStr(r.c, r.u, r.s) : ""}>${r.cf}: ${r.n}</a>`)
 						.keydown(evt => Omnisearch.handleLinkKeyDown(evt, $link, $searchOut));
-					$(`<p>
-						<span data-r="$link"/>
+					$$`<p>
+						${$link}
 						${r.s ? `<i title="${Parser.sourceJsonToFull(r.s)}">${Parser.sourceJsonToAbv(r.s)}${r.p ? ` p${r.p}` : ""}</i>` : ""}
-					</p>`).swap({$link}).appendTo($searchOut);
+					</p>`.appendTo($searchOut);
 				}
 				$searchOutWrapper.css("display", "flex");
 
@@ -260,7 +261,7 @@ const Omnisearch = {
 
 	_pDoSearchLoad: async function () {
 		if (Omnisearch._pLoadSearch) return;
-		const data = await DataUtil.loadJSON("search/index.json");
+		const data = Omnidexer.decompressIndex(await DataUtil.loadJSON("search/index.json"));
 
 		elasticlunr.clearStopWords();
 		Omnisearch._searchIndex = elasticlunr(function () {
@@ -293,7 +294,7 @@ const Omnisearch = {
 		Omnidexer.TO_INDEX.filter(it => it.listProp === prop)
 			.forEach(it => indexer.addToIndex(it, toIndex));
 
-		const toAdd = indexer.getIndex();
+		const toAdd = Omnidexer.decompressIndex(indexer.getIndex());
 		toAdd.forEach(Omnisearch._addToIndex);
 		if (toAdd.length) Omnisearch.highestId = toAdd.last().id
 	},

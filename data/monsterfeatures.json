@@ -78,7 +78,7 @@
 			"name": "Frightful Presence",
 			"example": "Ancient Gold Dragon",
 			"effect": "Each creature of the creature's choice within range must make a Wisdom saving throw or be frightened for 1 minute.",
-			"hp": "Math.floor((expectedcr <= 10) ? hp * 0.25 : 0)",
+			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)",
 			"ac": "",
 			"dpr": "",
 			"attackbonus": ""
@@ -97,7 +97,7 @@
 			"name": "Horrifying Visage",
 			"example": "Banshee",
 			"effect": "Each non-undead creature of the creature's choice within range must make a Wisdom saving throw or be frightened for 1 minute.",
-			"hp": "Math.floor((expectedcr <= 10) ? hp * 0.25 : 0)",
+			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)",
 			"ac": "",
 			"dpr": "",
 			"attackbonus": ""
@@ -106,7 +106,7 @@
 			"name": "Legendary Resistance",
 			"example": "Tarrasque",
 			"effect": "If the creature fails a saving throw, it can choose to succeed instead. Input the number of uses per day.",
-			"hp": "((expectedcr >= 0 && expectedcr <= 4) ? 10*trait : ((expectedcr >= 5 && expectedcr <= 10) ? 20*trait : ((expectedcr >= 11) ? 30*trait : 0)))",
+			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 10*trait : ((expectedCr >= 5 && expectedCr <= 10) ? 20*trait : ((expectedCr >= 11) ? 30*trait : 0)))",
 			"ac": "",
 			"dpr": "",
 			"attackbonus": "",
@@ -181,7 +181,7 @@
 			"name": "Relentless",
 			"example": "Boar",
 			"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1.",
-			"hp": "((expectedcr >= 0 && expectedcr <= 4) ? 7 : ((expectedcr >= 5 && expectedcr <= 10) ? 14 : ((expectedcr >= 11 && expectedcr <= 16) ? 21 : ((expectedcr >= 17) ? 28 : 0))))",
+			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 7 : ((expectedCr >= 5 && expectedCr <= 10) ? 14 : ((expectedCr >= 11 && expectedCr <= 16) ? 21 : ((expectedCr >= 17) ? 28 : 0))))",
 			"ac": "",
 			"dpr": "",
 			"attackbonus": ""
@@ -217,7 +217,7 @@
 			"name": "Undead Fortitude",
 			"example": "Zombie",
 			"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1. This feature is negated if the damage is from radiant nature.",
-			"hp": "((expectedcr >= 0 && expectedcr <= 4) ? 7 : ((expectedcr >= 5 && expectedcr <= 10) ? 14 : ((expectedcr >= 11 && expectedcr <= 16) ? 21 : ((expectedcr >= 17) ? 28 : 0))))",
+			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 7 : ((expectedCr >= 5 && expectedCr <= 10) ? 14 : ((expectedCr >= 11 && expectedCr <= 16) ? 21 : ((expectedCr >= 17) ? 28 : 0))))",
 			"ac": "",
 			"dpr": "",
 			"attackbonus": ""

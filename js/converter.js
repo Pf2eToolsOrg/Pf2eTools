@@ -211,19 +211,21 @@ class ConverterUi {
 		 * Wrap a function in an error handler which will wipe the error output, and append future errors to it.
 		 * @param toRun
 		 */
-		function catchErrors (toRun) {
+		const catchErrors = (toRun) => {
 			try {
 				$(`#lastWarnings`).hide().html("");
 				$(`#lastError`).hide().html("");
-				toRun()
+				this._editorOut.resize();
+				toRun();
 			} catch (x) {
 				const splitStack = x.stack.split("\n");
 				const atPos = splitStack.length > 1 ? splitStack[1].trim() : "(Unknown location)";
 				const message = `[Error] ${x.message} ${atPos}`;
 				$(`#lastError`).show().html(message);
+				this._editorOut.resize();
 				setTimeout(() => { throw x });
 			}
-		}
+		};
 
 		$("#parsestatblock").on("click", () => {
 			catchErrors(() => {
@@ -406,7 +408,7 @@ class ConverterUi {
 				});
 
 			const _getStatblockParseOptions = (isAppend) => ({
-				cbWarning: this.showWarning,
+				cbWarning: this.showWarning.bind(this),
 				cbOutput: (stats, append) => {
 					this.doCleanAndOutput(stats, append);
 				},
@@ -464,7 +466,7 @@ class ConverterUi {
 				});
 
 			const _getTableParseOptions = (isAppend) => ({
-				cbWarning: this.showWarning,
+				cbWarning: this.showWarning.bind(this),
 				cbOutput: (table, append) => {
 					this.doCleanAndOutput(table, append);
 				},
@@ -494,6 +496,7 @@ class ConverterUi {
 
 	showWarning (text) {
 		$(`#lastWarnings`).show().append(`<div>[Warning] ${text}</div>`);
+		this._editorOut.resize();
 	}
 
 	doCleanAndOutput (obj, append) {
@@ -783,7 +786,8 @@ class StatblockConverter {
 		})();
 
 		this._doStatblockPostProcess(stats, options);
-		options.cbOutput(stats, options.isAppend);
+		const statsOut = PropOrder.getOrdered(stats, "monster");
+		options.cbOutput(statsOut, options.isAppend);
 	}
 
 	/**
@@ -839,7 +843,8 @@ class StatblockConverter {
 			if (trait != null) doAddFromParsed();
 			if (stats) {
 				this._doStatblockPostProcess(stats, options);
-				options.cbOutput(stats, options.isAppend);
+				const statsOut = PropOrder.getOrdered(stats, "monster");
+				options.cbOutput(statsOut, options.isAppend);
 			}
 			stats = getNewStatblock();
 			if (hasMultipleBlocks) options.isAppend = true; // append any further blocks we find in this parse
@@ -1158,11 +1163,14 @@ class StatblockConverter {
 		);
 		TagAttack.tryTagAttacks(stats, (atk) => options.cbWarning(`Manual attack tagging required for "${atk}"`));
 		TagHit.tryTagHits(stats);
+		TagDc.tryTagDcs(stats);
+		TagCondition.tryTagConditions(stats);
 		TraitActionTag.tryRun(stats);
 		LanguageTag.tryRun(stats);
 		SenseTag.tryRun(stats);
 		SpellcastingTypeTag.tryRun(stats);
 		DamageTypeTag.tryRun(stats);
+		MiscTag.tryRun(stats);
 		doCleanup();
 	}
 
@@ -1266,64 +1274,8 @@ class StatblockConverter {
 	}
 
 	_setCleanSpeed (stats, line, options) {
-		line = line.toLowerCase().trim().replace(/^speed:?\s*/, "");
-		const ALLOWED = ["walk", "fly", "swim", "climb", "burrow"];
-
-		function splitSpeed (str) {
-			let c;
-			let ret = [];
-			let stack = "";
-			let para = 0;
-			for (let i = 0; i < str.length; ++i) {
-				c = str.charAt(i);
-				switch (c) {
-					case ",":
-						if (para === 0) {
-							ret.push(stack);
-							stack = "";
-						}
-						break;
-					case "(": para++; stack += c; break;
-					case ")": para--; stack += c; break;
-					default: stack += c;
-				}
-			}
-			if (stack) ret.push(stack);
-			return ret.map(it => it.trim()).filter(it => it);
-		}
-
-		const out = {};
-		let byHand = false;
-
-		splitSpeed(line.toLowerCase()).map(it => it.trim()).forEach(s => {
-			const m = /^(\w+?\s+)?(\d+)\s*ft\.?( .*)?$/.exec(s);
-			if (!m) {
-				byHand = true;
-				return;
-			}
-
-			if (m[1]) m[1] = m[1].trim();
-			else m[1] = "walk";
-
-			if (ALLOWED.includes(m[1])) {
-				if (m[3]) {
-					out[m[1]] = {
-						number: Number(m[2]),
-						condition: m[3].trim()
-					};
-				} else out[m[1]] = Number(m[2]);
-			} else byHand = true;
-		});
-
-		// flag speed as invalid
-		if (Object.values(out).filter(s => (s.number != null ? s.number : s) % 5 !== 0).length) out.INVALID_SPEED = true;
-
-		// flag speed as needing hand-parsing
-		if (byHand) {
-			out.UNPARSED_SPEED = line;
-			options.cbWarning(`Speed requires manual conversion: "${line}"`);
-		}
-		stats.speed = out;
+		stats.speed = line;
+		SpeedConvert.tryConvertSpeed(stats, options.cbWarning);
 	}
 
 	static _setCleanSaves (stats, line) {
@@ -1382,20 +1334,21 @@ class StatblockConverter {
 	static _setCleanSenses (stats, line) {
 		const senses = line.toLowerCase().split_handleColon("senses", 1)[1].trim();
 		const tempSenses = [];
-		senses.split(",").forEach(s => {
+		senses.split(StrUtil.COMMA_SPACE_NOT_IN_PARENTHESES_REGEX).forEach(s => {
 			s = s.trim();
 			if (s) {
 				if (s.includes("passive perception")) stats.passive = StatblockConverter._tryConvertNumber(s.split("passive perception")[1].trim());
 				else tempSenses.push(s.trim());
 			}
 		});
-		if (tempSenses.length) stats.senses = tempSenses.join(", ");
+		if (tempSenses.length) stats.senses = tempSenses;
 		else delete stats.senses;
 	}
 
 	static _setCleanLanguages (stats, line) {
 		stats.languages = line.split_handleColon("Languages", 1)[1].trim();
 		if (stats.languages && /^([-–‒—]|\\u201\d)$/.exec(stats.languages.trim())) delete stats.languages;
+		else stats.languages = stats.languages.split(StrUtil.COMMA_SPACE_NOT_IN_PARENTHESES_REGEX);
 	}
 
 	static _setCleanCr (stats, line) {

@@ -3,17 +3,17 @@ const Validator = require('jsonschema').Validator;
 const validator = new Validator();
 const helperFile = "entry.json";
 const bestiaryFile = "bestiary/bestiary.json";
+const spellsFile = "spells/spells.json";
 validator.addSchema(require(`./schema/${helperFile}`), "/Entry");
 validator.addSchema(require(`./schema/${bestiaryFile}`), "/Bestiary");
+validator.addSchema(require(`./schema/${spellsFile}`), "/Spells");
 const TESTS_PASSED = 0;
 const TESTS_FAILED = 1;
 let results = [];
-const expected = [];
-const expectedDirs = {};
-const existing = [];
 
 require("../js/utils");
 require("./check-tags");
+require("./check-images");
 
 function loadJSON (file) {
 	const data = fs.readFileSync(file, "utf8")
@@ -53,73 +53,6 @@ if (process.argv[2] !== "noschema") {
 		});
 
 	console.log(`All schema tests passed.`);
-}
-
-// Loop through each bestiary-related img directory and push the list of files in each.
-if (fs.existsSync("./img")) {
-	console.log(`##### Reconciling the PNG tokens against the bestiary JSON #####`);
-
-	// Loop through each bestiary JSON file push the list of expected PNG files.
-	fs.readdirSync("./data/bestiary")
-		.filter(file => file.startsWith("bestiary") && file.endsWith(".json"))
-		.forEach(file => {
-			const result = JSON.parse(fs.readFileSync(`./data/bestiary/${file}`));
-			result.monster.forEach(m => {
-				const source = Parser.sourceJsonToAbv(m.source);
-				if (fs.existsSync(`./img/${source}`)) expected.push(`${source}/${m.name.replace(/"/g, "")}.png`);
-				else expectedDirs[source] = true;
-			});
-		});
-
-	const IGNORED_PREFIXES = [
-		".",
-		"_"
-	];
-
-	const IGNORED_EXTENSIONS = [
-		".git",
-		".gitignore",
-		".png",
-		".txt"
-	];
-
-	const IGNORED_DIRS = new Set([
-		"adventure",
-		"deities",
-		"variantrules",
-		"rules",
-		"objects",
-		"bestiary",
-		"roll20",
-		"book",
-		"items",
-		"races"
-	]);
-
-	fs.readdirSync("./img")
-		.filter(file => !(IGNORED_PREFIXES.some(it => file.startsWith(it) || IGNORED_EXTENSIONS.some(it => file.endsWith(it)))))
-		.forEach(dir => {
-			if (!IGNORED_DIRS.has(dir)) {
-				fs.readdirSync(`./img/${dir}`).forEach(file => {
-					existing.push(`${dir.replace("(", "").replace(")", "")}/${file}`);
-				})
-			}
-		});
-
-	results = [];
-	expected.forEach(function (i) {
-		if (existing.indexOf(i) === -1) results.push(`[MISSING] ${i}`);
-	});
-	existing.forEach(function (i) {
-		if (expected.indexOf(i) === -1) results.push(`[  EXTRA] ${i}`);
-	});
-	Object.keys(expectedDirs).forEach(k => results.push(`Directory ${k} doesn't exist!`));
-	results.sort(function (a, b) {
-		return a.toLowerCase().localeCompare(b.toLowerCase());
-	}).forEach(function (i) {
-		console.log(i);
-	});
-	if (!expected.length) console.log("Tokens are as expected.");
 }
 
 process.exit(TESTS_PASSED);

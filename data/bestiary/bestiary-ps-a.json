@@ -22,7 +22,7 @@
 					"action": {
 						"mode": "replaceArr",
 						"replace": "Mace",
-						"with": {
+						"items": {
 							"name": "Staff",
 							"entries": [
 								"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 4}) bludgeoning damage plus 18 ({@damage 4d8}) radiant damage, and the target is {@condition grappled} (escape DC 17). Until this grapple ends, the target is {@condition restrained}, and the angel can't attack another target with its staff."
@@ -244,7 +244,7 @@
 					"action": {
 						"mode": "replaceArr",
 						"replace": "Bite",
-						"with": {
+						"items": {
 							"name": "Bite",
 							"entries": [
 								"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. {@h}7 ({@damage 1d4 + 5}) piercing damage, and the target must make on a DC 16 Constitution saving throw, taking 7 ({@damage 2d6}) poison damage on a failed save, or half as much damage on a successful one."
@@ -309,7 +309,7 @@
 					"action": {
 						"mode": "replaceArr",
 						"replace": "Gore",
-						"with": {
+						"items": {
 							"name": "Bite",
 							"entries": [
 								"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}19 ({@damage 3d8 + 6}) piercing damage."
@@ -421,9 +421,14 @@
 				"charmed",
 				"frightened"
 			],
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"passive": 18,
-			"languages": "understands Common, Sphinx",
+			"languages": [
+				"understands Common",
+				"Sphinx"
+			],
 			"cr": "13",
 			"trait": [
 				{
@@ -489,6 +494,9 @@
 			"damageTags": [
 				"B",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -525,7 +533,9 @@
 			"skill": {
 				"perception": "+4"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 14,
 			"cr": "5",
 			"action": [
@@ -550,7 +560,7 @@
 				{
 					"name": "Stinger",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d6 + 4}) piercing damage. The target must make a DC 14 Constitution saving throw, taking 24 ({@damage 7d6}) poison damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 7} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d6 + 4}) piercing damage. The target must make a {@dc 14} Constitution saving throw, taking 24 ({@damage 7d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -564,6 +574,10 @@
 				"P",
 				"S",
 				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -607,7 +621,7 @@
 				{
 					"name": "Pounce",
 					"entries": [
-						"If the serpopard moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the serpopard can make one bite attack against it as a bonus action."
+						"If the serpopard moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a {@dc 14} Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the serpopard can make one bite attack against it as a bonus action."
 					]
 				}
 			],
@@ -615,7 +629,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d10 + 4}) piercing damage, and the target must make a DC 14 Constitution saving throw, taking 10 ({@damage 3d6}) poison damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d10 + 4}) piercing damage, and the target must make a {@dc 14} Constitution saving throw, taking 10 ({@damage 3d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -626,6 +640,9 @@
 			"damageTags": [
 				"P",
 				"I"
+			],
+			"miscTags": [
+				"MW"
 			]
 		}
 	]

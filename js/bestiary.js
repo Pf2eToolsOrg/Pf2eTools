@@ -11,24 +11,10 @@ window.PROF_MODE_BONUS = "bonus";
 window.PROF_MODE_DICE = "dice";
 window.PROF_DICE_MODE = PROF_MODE_BONUS;
 
-function imgError (x) {
-	if (x) $(x).remove();
-	$(`#pagecontent th.name`).css("padding-right", "0.3em");
-	$(`.mon__wrp-size-type-align`).css("max-width", "none");
-	$(`.mon__wrp-hp`).css("max-width", "none");
-}
-
-function handleStatblockScroll (event, ele) {
-	$(`#token_image`)
-		.toggle(ele.scrollTop < 32)
-		.css({
-			opacity: (32 - ele.scrollTop) / 32,
-			top: -ele.scrollTop
-		});
-}
-
 const _MISC_FILTER_SPELLCASTER = "Spellcaster, ";
 function ascSortMiscFilter (a, b) {
+	a = a.item;
+	b = b.item;
 	if (a.includes(_MISC_FILTER_SPELLCASTER) && b.includes(_MISC_FILTER_SPELLCASTER)) {
 		a = Parser.attFullToAbv(a.replace(_MISC_FILTER_SPELLCASTER, ""));
 		b = Parser.attFullToAbv(b.replace(_MISC_FILTER_SPELLCASTER, ""));
@@ -65,7 +51,8 @@ function pLoadMeta () {
 				});
 
 				Object.keys(data.language).forEach(k => languages[k] = data.language[k]);
-				languageFilter.items = Object.keys(languages).sort((a, b) => SortUtil.ascSortLower(languages[a], languages[b]));
+				Object.keys(languages).sort((a, b) => SortUtil.ascSortLower(languages[a], languages[b]))
+					.forEach(la => languageFilter.addItem(la));
 				resolve();
 			});
 	});
@@ -153,7 +140,12 @@ window.onload = async function load () {
 let list;
 let printBookView;
 const sourceFilter = getSourceFilter();
-const crFilter = new RangeFilter({header: "Challenge Rating", labels: true});
+const crFilter = new RangeFilter({
+	header: "Challenge Rating",
+	isLabelled: true,
+	labelSortFn: SortUtil.ascSortCr,
+	labels: [...Parser.CRS]
+});
 const sizeFilter = new Filter({
 	header: "Size",
 	items: [
@@ -165,7 +157,8 @@ const sizeFilter = new Filter({
 		SZ_GARGANTUAN,
 		SZ_VARIES
 	],
-	displayFn: Parser.sizeAbvToFull
+	displayFn: Parser.sizeAbvToFull,
+	itemSortFn: SortUtil.ascSortCr
 });
 const speedFilter = new RangeFilter({header: "Speed", min: 30, max: 30});
 const speedTypeFilter = new Filter({header: "Speed Type", items: ["walk", "burrow", "climb", "fly", "hover", "swim"], displayFn: StrUtil.uppercaseFirst});
@@ -175,13 +168,18 @@ const constitutionFilter = new RangeFilter({header: "Constitution", min: 1, max:
 const intelligenceFilter = new RangeFilter({header: "Intelligence", min: 1, max: 30});
 const wisdomFilter = new RangeFilter({header: "Wisdom", min: 1, max: 30});
 const charismaFilter = new RangeFilter({header: "Charisma", min: 1, max: 30});
-const abilityScoreFilter = new MultiFilter({name: "Ability Scores", compact: true, mode: "and"}, strengthFilter, dexterityFilter, constitutionFilter, intelligenceFilter, wisdomFilter, charismaFilter);
+const abilityScoreFilter = new MultiFilter({
+	header: "Ability Scores",
+	mode: "and",
+	filters: [strengthFilter, dexterityFilter, constitutionFilter, intelligenceFilter, wisdomFilter, charismaFilter]
+});
 const acFilter = new RangeFilter({header: "Armor Class"});
 const averageHpFilter = new RangeFilter({header: "Average Hit Points"});
 const typeFilter = new Filter({
 	header: "Type",
 	items: Parser.MON_TYPES,
-	displayFn: StrUtil.toTitleCase
+	displayFn: StrUtil.toTitleCase,
+	itemSortFn: SortUtil.ascSortLower
 });
 const tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst});
 const alignmentFilter = new Filter({
@@ -278,7 +276,7 @@ const immuneFilter = new Filter({
 	items: DMG_TYPES,
 	displayFn: dispImmFilter
 });
-const defenceFilter = new MultiFilter({name: "Damage", mode: "and"}, vulnerableFilter, resistFilter, immuneFilter);
+const defenceFilter = new MultiFilter({header: "Damage", mode: "and", filters: [vulnerableFilter, resistFilter, immuneFilter]});
 const conditionImmuneFilter = new Filter({
 	header: "Condition Immunity",
 	items: CONDS,
@@ -298,9 +296,10 @@ const actionReactionFilter = new Filter({
 });
 const miscFilter = new Filter({
 	header: "Miscellaneous",
-	items: ["Familiar", "Lair Actions", "Legendary", "Named NPC", "Spellcaster", "Regional Effects", "Reactions", "Swarm", "Has Variants"],
-	displayFn: StrUtil.uppercaseFirst,
-	deselFn: (it) => it === "Named NPC"
+	items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Lair Actions", "Legendary", "Named NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${_MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Swarm", "Has Variants"],
+	displayFn: (it) => Parser.monMiscTagToFull(it).uppercaseFirst(),
+	deselFn: (it) => it === "Named NPC",
+	itemSortFn: ascSortMiscFilter
 });
 const spellcastingTypeFilter = new Filter({
 	header: "Spellcasting Type",
@@ -309,16 +308,18 @@ const spellcastingTypeFilter = new Filter({
 });
 
 function pPageInit (loadedSources) {
-	sourceFilter.items = Object.keys(loadedSources).map(src => new FilterItem({item: src, changeFn: loadSource(JSON_LIST_NAME, addMonsters)}));
-	sourceFilter.items.sort(SortUtil.ascSort);
+	Object.keys(loadedSources)
+		.map(src => new FilterItem({item: src, changeFn: loadSource(JSON_LIST_NAME, addMonsters)}))
+		.forEach(fi => sourceFilter.addItem(fi));
 
 	list = ListUtil.search({
 		valueNames: ["name", "source", "type", "cr", "group", "alias", "uniqueid"],
 		listClass: "monsters",
 		sortFunction: sortMonsters
 	});
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
 
 	// filtering function
@@ -616,29 +617,25 @@ function addMonsters (data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(mon._fSources);
-		crFilter.addIfAbsent(mon._pCr);
-		strengthFilter.addIfAbsent(mon.str);
-		dexterityFilter.addIfAbsent(mon.dex);
-		constitutionFilter.addIfAbsent(mon.con);
-		intelligenceFilter.addIfAbsent(mon.int);
-		wisdomFilter.addIfAbsent(mon.wis);
-		charismaFilter.addIfAbsent(mon.cha);
-		speedFilter.addIfAbsent(mon._fSpeed);
-		mon.ac.forEach(it => acFilter.addIfAbsent(it.ac || it));
-		if (mon.hp.average) averageHpFilter.addIfAbsent(mon.hp.average);
-		mon._pTypes.tags.forEach(t => tagFilter.addIfAbsent(t));
+		sourceFilter.addItem(mon._fSources);
+		crFilter.addItem(mon._pCr);
+		strengthFilter.addItem(mon.str);
+		dexterityFilter.addItem(mon.dex);
+		constitutionFilter.addItem(mon.con);
+		intelligenceFilter.addItem(mon.int);
+		wisdomFilter.addItem(mon.wis);
+		charismaFilter.addItem(mon.cha);
+		speedFilter.addItem(mon._fSpeed);
+		mon.ac.forEach(it => acFilter.addItem(it.ac || it));
+		if (mon.hp.average) averageHpFilter.addItem(mon.hp.average);
+		mon._pTypes.tags.forEach(t => tagFilter.addItem(t));
 		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
 		if (mon.familiar) mon._fMisc.push("Familiar");
 		if (mon.type.swarmSize) mon._fMisc.push("Swarm");
 		if (mon.spellcasting) {
 			mon._fMisc.push("Spellcaster");
 			mon.spellcasting.forEach(sc => {
-				if (sc.ability) {
-					const scAbility = `${_MISC_FILTER_SPELLCASTER}${Parser.attAbvToFull(sc.ability)}`;
-					mon._fMisc.push(scAbility);
-					miscFilter.addIfAbsent(scAbility);
-				}
+				if (sc.ability) mon._fMisc.push(`${_MISC_FILTER_SPELLCASTER}${Parser.attAbvToFull(sc.ability)}`);
 			});
 		}
 		if (mon.isNpc) mon._fMisc.push("Named NPC");
@@ -648,21 +645,13 @@ function addMonsters (data) {
 		}
 		if (mon.reaction) mon._fMisc.push("Reactions");
 		if (mon.variant) mon._fMisc.push("Has Variants");
-		traitFilter.addIfAbsent(mon.traitTags);
-		actionReactionFilter.addIfAbsent(mon.actionTags);
-		environmentFilter.addIfAbsent(mon.environment);
+		if (mon.miscTags) mon._fMisc.push(...mon.miscTags);
+		traitFilter.addItem(mon.traitTags);
+		actionReactionFilter.addItem(mon.actionTags);
+		environmentFilter.addItem(mon.environment);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	table.append(textStack);
-
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
-	crFilter.items.sort(SortUtil.ascSortCr);
-	typeFilter.items.sort(SortUtil.ascSortLower);
-	tagFilter.items.sort(SortUtil.ascSort);
-	miscFilter.items.sort(ascSortMiscFilter);
-	traitFilter.items.sort(SortUtil.ascSort);
-	actionReactionFilter.items.sort(SortUtil.ascSortCr);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -825,15 +814,126 @@ function renderStatblock (mon, isScaled) {
 
 		$content.append(RenderBestiary.$getRenderedCreature(mon, meta, {$btnScaleCr, $btnResetScaleCr}));
 
-		const $floatToken = $(`#float-token`).empty();
-		if (mon.tokenUrl || !mon.uniqueId) {
-			const imgLink = Renderer.monster.getTokenUrl(mon);
-			$floatToken.append(`
-				<a href="${imgLink}" target="_blank" rel="noopener">
-					<img src="${imgLink}" id="token_image" class="token" onerror="imgError(this)" alt="${mon.name}">
-				</a>`
-			);
-		} else imgError();
+		// tokens
+		(() => {
+			const $tokenImages = [];
+
+			// statblock scrolling handler
+			$(`#wrp-pagecontent`).off("scroll").on("scroll", function () {
+				$tokenImages.forEach($img => {
+					$img
+						.toggle(this.scrollTop < 32)
+						.css({
+							opacity: (32 - this.scrollTop) / 32,
+							top: -this.scrollTop
+						});
+				});
+			});
+
+			const $floatToken = $(`#float-token`).empty();
+
+			function imgError (ele) {
+				if (ele) $(ele).parent().remove();
+				$(`#pagecontent th.name`).css("padding-right", "0.3em");
+				$(`.mon__wrp-size-type-align`).css("max-width", "none");
+				$(`.mon__wrp-avoid-token`).css("max-width", "none");
+			}
+
+			if (mon.tokenUrl || !mon.uniqueId) {
+				const imgLink = Renderer.monster.getTokenUrl(mon);
+				const $img = $(`<img src="${imgLink}" class="mon__token" alt="${mon.name}">`)
+					.on("error", () => imgError($img));
+				$tokenImages.push($img);
+				const $lnkToken = $$`<a href="${imgLink}" class="mon__wrp-token" target="_blank" rel="noopener">${$img}</a>`.appendTo($floatToken);
+
+				const altArtMeta = [];
+
+				if (mon.altArt) altArtMeta.push(...MiscUtil.copy(mon.altArt));
+				if (mon.variant) {
+					const variantTokens = mon.variant.filter(it => it.token).map(it => it.token);
+					if (variantTokens.length) altArtMeta.push(...MiscUtil.copy(variantTokens).map(it => ({...it, displayName: `Variant; ${it.name}`})));
+				}
+
+				if (altArtMeta.length) {
+					// make a fake entry for the original token
+					altArtMeta.unshift({$ele: $lnkToken});
+
+					const buildEle = (meta) => {
+						if (!meta.$ele) {
+							const imgLink = Renderer.monster.getTokenUrl({name: meta.name, source: meta.source});
+							const $img = $(`<img src="${imgLink}" class="mon__token" alt="${meta.displayName || meta.name}">`)
+								.on("error", () => {
+									$img.attr(
+										"src",
+										`data:image/svg+xml,${encodeURIComponent(`
+											<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+												<circle cx="200" cy="200" r="175" fill="#b00"/>
+												<rect x="190" y="40" height="320" width="20" fill="#ddd" transform="rotate(45 200 200)"/>
+												<rect x="190" y="40" height="320" width="20" fill="#ddd" transform="rotate(135 200 200)"/>
+											</svg>`
+										)}`
+									);
+								});
+							$tokenImages.push($img);
+							meta.$ele = $$`<a href="${imgLink}" class="mon__wrp-token" target="_blank" rel="noopener">${$img}</a>`
+								.hide()
+								.css("max-width", "100%") // hack to ensure the token gets shown at max width on first look
+								.appendTo($floatToken);
+						}
+					};
+					altArtMeta.forEach(buildEle);
+
+					let ix = 0;
+					const handleClick = (evt, direction) => {
+						evt.stopPropagation();
+						evt.preventDefault();
+
+						// avoid going off the edge of the list
+						if (ix === 0 && !~direction) return;
+						if (ix === altArtMeta.length - 1 && ~direction) return;
+
+						ix += direction;
+
+						if (!~direction) { // left
+							if (ix === 0) {
+								$btnLeft.hide();
+								$wrpFooter.hide();
+							}
+							$btnRight.show();
+						} else {
+							$btnLeft.show();
+							$wrpFooter.show();
+							if (ix === altArtMeta.length - 1) {
+								$btnRight.hide();
+							}
+						}
+						altArtMeta.filter(it => it.$ele).forEach(it => it.$ele.hide());
+
+						const meta = altArtMeta[ix];
+						meta.$ele.show();
+						setTimeout(() => meta.$ele.css("max-width", ""), 10); // hack to clear the earlier 100% width
+
+						if (meta.name && meta.source) $footer.html(`<div>${meta.displayName || meta.name}; <span title="${Parser.sourceJsonToFull(meta.source)}">${Parser.sourceJsonToAbv(meta.source)}${meta.page ? ` p${meta.page}` : ""}</span></div>`);
+						else $footer.html("");
+
+						$wrpFooter.detach().appendTo(meta.$ele);
+						$btnLeft.detach().appendTo(meta.$ele);
+						$btnRight.detach().appendTo(meta.$ele);
+					};
+
+					// append footer first to be behind buttons
+					const $footer = $(`<div class="mon__token-footer"/>`);
+					const $wrpFooter = $$`<div class="mon__wrp-token-footer">${$footer}</div>`.hide().appendTo($lnkToken);
+
+					const $btnLeft = $$`<div class="mon__btn-token-cycle mon__btn-token-cycle--left"><span class="glyphicon glyphicon-chevron-left"/></div>`
+						.click(evt => handleClick(evt, -1)).appendTo($lnkToken)
+						.hide();
+
+					const $btnRight = $$`<div class="mon__btn-token-cycle mon__btn-token-cycle--right"><span class="glyphicon glyphicon-chevron-right"/></div>`
+						.click(evt => handleClick(evt, 1)).appendTo($lnkToken);
+				}
+			} else imgError();
+		})();
 
 		// inline rollers //////////////////////////////////////////////////////////////////////////////////////////////
 		const isProfDiceMode = PROF_DICE_MODE === PROF_MODE_DICE;
@@ -905,21 +1005,28 @@ function renderStatblock (mon, isScaled) {
 			});
 
 		$content.find("p").each(function () {
-			$(this).html($(this).html().replace(/DC\s*(\d+)/g, function (match, capture) {
-				const dc = Number(capture);
+			$(this).find(`.rd__dc`).each((i, e) => {
+				const $e = $(e);
+				const dc = Number($e.html());
 
 				const expectedPB = Parser.crToPb(mon.cr);
-
 				if (expectedPB > 0) {
 					const withoutPB = dc - expectedPB;
 					const profDiceString = _addSpacesToDiceExp(`1d${(expectedPB * 2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`);
 
-					return `DC <span class="dc-roller" mode="${isProfDiceMode ? "dice" : ""}" onmousedown="window.PROF_DICE_MODE === window.PROF_MODE_DICE &&  event.preventDefault()" onclick="dcRollerClick(event, this, '${profDiceString}')" data-roll-prof-bonus="${capture}" data-roll-prof-dice="${profDiceString}">${isProfDiceMode ? profDiceString : capture}</span>`;
-				} else {
-					return match; // if there was no proficiency bonus to work with, fall back on this
+					$e
+						.addClass("dc-roller")
+						.attr("mode", isProfDiceMode ? "dice" : "")
+						.mousedown((evt) => window.PROF_DICE_MODE === window.PROF_MODE_DICE && evt.preventDefault())
+						.attr("onclick", `dcRollerClick(event, this, '${profDiceString}')`)
+						.attr("data-roll-prof-bonus", `${dc}`)
+						.attr("data-roll-prof-dice", profDiceString)
+						.html(isProfDiceMode ? profDiceString : dc)
 				}
-			}));
+			});
 		});
+
+		$(`#wrp-pagecontent`).scroll();
 	}
 
 	function buildFluffTab (isImageTab) {
@@ -991,7 +1098,7 @@ function getCr (obj) {
 }
 
 function loadsub (sub) {
-	filterBox.setFromSubHashes(sub);
+	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub, sublistFuncPreload);
 
 	printBookView.handleSub(sub);

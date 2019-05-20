@@ -22,8 +22,9 @@ async function onJsonLoad (data) {
 		sourceFilter
 	);
 
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
 
 	// filtering function
@@ -87,13 +88,10 @@ function addShips (data) {
 		`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(it.source);
+		sourceFilter.addItem(it.source);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$(`#shipList`).append(tempString);
-
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -123,7 +121,7 @@ function handleFilterChange () {
 			it.source
 		);
 	});
-	FilterBox.nextIfHidden(shipList);
+	FilterBox.selectFirstVisible(shipList);
 }
 
 function getSublistItem (it, pinId) {
@@ -143,4 +141,9 @@ function loadhash (jsonIndex) {
 	const $content = $(`#pagecontent`).empty();
 	$content.append(Renderer.ship.getRenderedString(it));
 	ListUtil.updateSelected();
+}
+
+function loadsub (sub) {
+	sub = filterBox.setFromSubHashes(sub);
+	ListUtil.setFromSubHashes(sub);
 }

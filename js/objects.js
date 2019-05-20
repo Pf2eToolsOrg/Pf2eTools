@@ -3,7 +3,7 @@
 const JSON_URL = "data/objects.json";
 
 function imgError (x) {
-	if (x) $(x).remove();
+	if (x) $(x).parent().remove();
 	$(`.rnd-name`).find(`span.stats-source`).css("margin-right", "0");
 }
 
@@ -157,4 +157,8 @@ function loadhash (jsonIndex) {
 	} else imgError();
 
 	ListUtil.updateSelected();
+}
+
+function loadsub (sub) {
+	ListUtil.setFromSubHashes(sub);
 }

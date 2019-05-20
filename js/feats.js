@@ -13,7 +13,7 @@ const sourceFilter = getSourceFilter();
 let filterBox;
 async function onJsonLoad (data) {
 	list = ListUtil.search({
-		valueNames: ['name', 'source', 'ability', 'prerequisite', "uniqueid"],
+		valueNames: ["name", "source", "ability", "prerequisite", "uniqueid"],
 		listClass: "feats"
 	});
 
@@ -28,8 +28,9 @@ async function onJsonLoad (data) {
 		prereqFilter
 	);
 
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
 
 	// filtering function
@@ -81,7 +82,7 @@ function addFeats (data) {
 		const feat = featList[ftI];
 		if (ExcludeUtil.isExcluded(feat.name, "feat", feat.source)) continue;
 		const name = feat.name;
-		const ability = utils_getAbilityData(feat.ability);
+		const ability = Renderer.getAbilityData(feat.ability);
 		if (!ability.asText) ability.asText = STR_NONE;
 		feat._fAbility = ability.asCollection.filter(a => !ability.areNegative.includes(a)); // used for filtering
 		let prereqText = Renderer.feat.getPrerequisiteText(feat.prerequisite, true);
@@ -107,13 +108,10 @@ function addFeats (data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(feat.source);
+		sourceFilter.addItem(feat.source);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	featTable.append(tempString);
-
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -145,7 +143,7 @@ function handleFilterChange () {
 			ft._fPrereq
 		);
 	});
-	FilterBox.nextIfHidden(featList);
+	FilterBox.selectFirstVisible(featList);
 }
 
 function getSublistItem (feat, pinId) {
@@ -188,6 +186,6 @@ function loadhash (id) {
 }
 
 function loadsub (sub) {
-	filterBox.setFromSubHashes(sub);
+	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

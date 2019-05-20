@@ -95,8 +95,8 @@ class NavBar {
 
 		const ulUtils = addDropdown(navBar, "Utilities");
 		addLi(ulUtils, "blacklist.html", "Content Blacklist");
+		addLi(ulUtils, "managebrew.html", "Homebrew Manager");
 		addLi(ulUtils, "inittrackerplayerview.html", "Initiative Tracker Player View");
-		addLi(ulUtils, "managebrew.html", "Manage All Homebrew");
 		addDivider(ulUtils);
 		addLi(ulUtils, "makebrew.html", "Homebrew Builder");
 		addLi(ulUtils, "demo.html", "Renderer Demo");

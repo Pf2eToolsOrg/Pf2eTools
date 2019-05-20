@@ -1,4 +1,20 @@
 {
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		},
+		"internalCopies": [
+			"monster"
+		],
+		"otherSources": {
+			"monster": {
+				"MM": "PotA",
+				"VGM": "PotA"
+			}
+		}
+	},
 	"monster": [
 		{
 			"name": "Aerisi Kalinoth",
@@ -44,9 +60,15 @@
 			"resist": [
 				"lightning"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 13,
-			"languages": "Auran, Common, Elvish",
+			"languages": [
+				"Auran",
+				"Common",
+				"Elvish"
+			],
 			"cr": "7",
 			"trait": [
 				{
@@ -85,7 +107,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Aerisi is a 12th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). Aerisi has the following wizard spells prepared:"
+						"Aerisi is a 12th-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). Aerisi has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -165,6 +187,10 @@
 			"damageTags": [
 				"P",
 				"L"
+			],
+			"miscTags": [
+				"RW",
+				"MW"
 			]
 		},
 		{
@@ -218,9 +244,14 @@
 				"poisoned",
 				"prone"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 10,
-			"languages": "Auran, one language of its creator's choice",
+			"languages": [
+				"Auran",
+				"one language of its creator's choice"
+			],
 			"cr": "7",
 			"trait": [
 				{
@@ -246,7 +277,7 @@
 				{
 					"name": "Lightning Strike {@recharge}",
 					"entries": [
-						"The myrmidon makes one flail attack. If the attack hits, it deals an extra 18 ({@damage 4d8}) lightning damage, and the target must succeed on a DC 14 Constitution saving throw or be {@condition stunned} until the end of the myrmidon's next turn."
+						"The myrmidon makes one flail attack. If the attack hits, it deals an extra 18 ({@damage 4d8}) lightning damage, and the target must succeed on a {@dc 14} Constitution saving throw or be {@condition stunned} until the end of the myrmidon's next turn."
 					]
 				}
 			],
@@ -267,6 +298,9 @@
 			"damageTags": [
 				"B",
 				"L"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -312,9 +346,14 @@
 			"resist": [
 				"fire"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 9,
-			"languages": "Common, Ignan",
+			"languages": [
+				"Common",
+				"Ignan"
+			],
 			"cr": "8",
 			"action": [
 				{
@@ -329,7 +368,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Bastian's innate spellcasting ability is Constitution (spell save DC 13, {@hit 5} to hit with spell attacks). He can innately cast the following spells:"
+						"Bastian's innate spellcasting ability is Constitution (spell save {@dc 13}, {@hit 5} to hit with spell attacks). He can innately cast the following spells:"
 					],
 					"will": [
 						"{@spell produce flame}"
@@ -344,7 +383,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Bastian is a 9th-level spellcaster. His spellcasting ability is Charisma (spell save DC 15, {@hit 7} to hit with spell attacks). Bastian knows the following sorcerer spells:"
+						"Bastian is a 9th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 15}, {@hit 7} to hit with spell attacks). Bastian knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -408,6 +447,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -450,7 +494,9 @@
 				"perception": "+2"
 			},
 			"passive": 12,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "2",
 			"action": [
 				{
@@ -483,6 +529,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -526,7 +575,10 @@
 				"persuasion": "+5"
 			},
 			"passive": 10,
-			"languages": "Common, Terran",
+			"languages": [
+				"Common",
+				"Terran"
+			],
 			"cr": "3",
 			"action": [
 				{
@@ -555,7 +607,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -604,6 +656,10 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -648,7 +704,9 @@
 				"perception": "+2"
 			},
 			"passive": 12,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "4",
 			"trait": [
 				{
@@ -689,6 +747,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -732,7 +795,10 @@
 				"stealth": "+2"
 			},
 			"passive": 10,
-			"languages": "Aquan, Common",
+			"languages": [
+				"Aquan",
+				"Common"
+			],
 			"cr": "2",
 			"action": [
 				{
@@ -747,7 +813,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -794,6 +860,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -836,7 +905,9 @@
 				"stealth": "+4"
 			},
 			"passive": 10,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "1/2",
 			"action": [
 				{
@@ -859,6 +930,11 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -896,7 +972,9 @@
 				"stealth": "+7"
 			},
 			"passive": 10,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "3",
 			"trait": [
 				{
@@ -952,6 +1030,10 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -998,9 +1080,14 @@
 				"cold",
 				"poison"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 9,
-			"languages": "Common, Dwarvish",
+			"languages": [
+				"Common",
+				"Dwarvish"
+			],
 			"cr": "7",
 			"trait": [
 				{
@@ -1070,6 +1157,9 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1120,9 +1210,14 @@
 				"poisoned",
 				"prone"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 10,
-			"languages": "Terran, one language of its creator's choice",
+			"languages": [
+				"Terran",
+				"one language of its creator's choice"
+			],
 			"cr": "7",
 			"trait": [
 				{
@@ -1148,7 +1243,7 @@
 				{
 					"name": "Thunderous Strike {@recharge}",
 					"entries": [
-						"The myrmidon makes one maul attack. If the attack hits, it deals an extra 16 ({@damage 3d10}) thunder damage, and the target must succeed on a DC 14 Strength saving throw or be knocked {@condition prone}."
+						"The myrmidon makes one maul attack. If the attack hits, it deals an extra 16 ({@damage 3d10}) thunder damage, and the target must succeed on a {@dc 14} Strength saving throw or be knocked {@condition prone}."
 					]
 				}
 			],
@@ -1169,6 +1264,9 @@
 			"damageTags": [
 				"B",
 				"T"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1212,7 +1310,10 @@
 				"deception": "+3"
 			},
 			"passive": 14,
-			"languages": "Common, Druidic",
+			"languages": [
+				"Common",
+				"Druidic"
+			],
 			"cr": "5",
 			"trait": [
 				{
@@ -1235,7 +1336,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Elizar is a 7th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 15, {@hit 7} to hit with spell attacks). Elizar has the following druid spells prepared:"
+						"Elizar is a 7th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc 15}, {@hit 7} to hit with spell attacks). Elizar has the following druid spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -1290,6 +1391,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -1340,7 +1446,9 @@
 				"fire"
 			],
 			"passive": 12,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -1381,6 +1489,11 @@
 				"S",
 				"P",
 				"F"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -1427,7 +1540,10 @@
 				"fire"
 			],
 			"passive": 10,
-			"languages": "Common, Ignan",
+			"languages": [
+				"Common",
+				"Ignan"
+			],
 			"cr": "3",
 			"action": [
 				{
@@ -1442,7 +1558,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -1488,6 +1604,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -1531,7 +1652,10 @@
 				"stealth": "+4"
 			},
 			"passive": 14,
-			"languages": "Aquan, Common",
+			"languages": [
+				"Aquan",
+				"Common"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -1552,7 +1676,7 @@
 				{
 					"name": "Constrict (Serpent Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}9 ({@damage 2d6 + 2}) bludgeoning damage. If the target is Medium or smaller, it is {@condition grappled} (escape DC 12). Until the grapple ends, the target is {@condition restrained}, and the fathomer can't constrict another target."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}9 ({@damage 2d6 + 2}) bludgeoning damage. If the target is Medium or smaller, it is {@condition grappled} (escape {@dc 12}). Until the grapple ends, the target is {@condition restrained}, and the fathomer can't constrict another target."
 					]
 				},
 				{
@@ -1567,7 +1691,7 @@
 				{
 					"name": "Spellcasting (Human Form Only)",
 					"headerEntries": [
-						"The fathomer is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, {@hit 4} to hit with spell attacks). It has two 3rd-level spell slots, which it regains after finishing a short or long rest, and knows the following warlock spells:"
+						"The fathomer is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). It has two 3rd-level spell slots, which it regains after finishing a short or long rest, and knows the following warlock spells:"
 					],
 					"spells": {
 						"0": {
@@ -1612,6 +1736,11 @@
 			"damageTags": [
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -1654,7 +1783,10 @@
 				"history": "+2"
 			},
 			"passive": 10,
-			"languages": "Auran, Common",
+			"languages": [
+				"Auran",
+				"Common"
+			],
 			"cr": "1",
 			"action": [
 				{
@@ -1681,7 +1813,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The knight is a 1st-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, {@hit 4} to hit with spell attacks). It knows the following sorcerer spell:"
+						"The knight is a 1st-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). It knows the following sorcerer spell:"
 					],
 					"spells": {
 						"0": {
@@ -1716,6 +1848,11 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -1767,9 +1904,14 @@
 				"poisoned",
 				"prone"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 10,
-			"languages": "Ignan, one language of its creator's choice",
+			"languages": [
+				"Ignan",
+				"one language of its creator's choice"
+			],
 			"cr": "7",
 			"trait": [
 				{
@@ -1830,6 +1972,10 @@
 				"S",
 				"F",
 				"C"
+			],
+			"miscTags": [
+				"MW",
+				"AOE"
 			]
 		},
 		{
@@ -1875,7 +2021,10 @@
 				"fire"
 			],
 			"passive": 10,
-			"languages": "Common, Ignan",
+			"languages": [
+				"Common",
+				"Ignan"
+			],
 			"cr": "6",
 			"trait": [
 				{
@@ -1898,7 +2047,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The flamewrath is a 7th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 14, {@hit 6} to hit with spell attacks). It knows the following sorcerer spells:"
+						"The flamewrath is a 7th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 14}, {@hit 6} to hit with spell attacks). It knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -1951,6 +2100,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -1998,7 +2152,10 @@
 				"cold"
 			],
 			"passive": 14,
-			"languages": "Aquan, Common",
+			"languages": [
+				"Aquan",
+				"Common"
+			],
 			"cr": "9",
 			"trait": [
 				{
@@ -2036,7 +2193,7 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 2d6 + 2}) bludgeoning damage, and the target is {@condition grappled} (escape DC 13). Until the grapple ends, Gar can't attack other creatures with his claw."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 2d6 + 2}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 13}). Until the grapple ends, Gar can't attack other creatures with his claw."
 					]
 				},
 				{
@@ -2055,7 +2212,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Gar is a 9th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 16, {@hit 8} to hit with spell attacks). He has the following druid spells prepared:"
+						"Gar is a 9th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc 16}, {@hit 8} to hit with spell attacks). He has the following druid spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -2125,6 +2282,10 @@
 				"B",
 				"P",
 				"C"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
 			]
 		},
 		{
@@ -2174,9 +2335,14 @@
 				"insight": "+4",
 				"perception": "+7"
 			},
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 17,
-			"languages": "Common, Sahuagin",
+			"languages": [
+				"Common",
+				"Sahuagin"
+			],
 			"cr": "7",
 			"trait": [
 				{
@@ -2226,7 +2392,7 @@
 				{
 					"name": "Garrote",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one Medium or Small creature against which Ghald has advantage on the attack roll. {@h}9 ({@damage 2d4 + 4}) bludgeoning damage, and the target is {@condition grappled} (escape DC 15). Until the grapple ends, the target can't breathe, and Ghald has advantage on attack rolls against it."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one Medium or Small creature against which Ghald has advantage on the attack roll. {@h}9 ({@damage 2d4 + 4}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 15}). Until the grapple ends, the target can't breathe, and Ghald has advantage on attack rolls against it."
 					]
 				}
 			],
@@ -2247,6 +2413,9 @@
 			"damageTags": [
 				"P",
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2293,9 +2462,14 @@
 				"blinded",
 				"poisoned"
 			],
-			"senses": "blindsight 60 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
 			"passive": 15,
-			"languages": "Common, Terran",
+			"languages": [
+				"Common",
+				"Terran"
+			],
 			"cr": "5",
 			"trait": [
 				{
@@ -2307,7 +2481,7 @@
 				{
 					"name": "Stunning Strike {@recharge 5}",
 					"entries": [
-						"When Hellenrae hits a target with a melee weapon attack, the target must succeed on a DC 13 Constitution saving throw or be {@condition stunned} until the end of Hellenrae's next turn."
+						"When Hellenrae hits a target with a melee weapon attack, the target must succeed on a {@dc 13} Constitution saving throw or be {@condition stunned} until the end of Hellenrae's next turn."
 					]
 				},
 				{
@@ -2358,6 +2532,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2401,7 +2578,9 @@
 				"stealth": "+4"
 			},
 			"passive": 9,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "1/8",
 			"trait": [
 				{
@@ -2434,6 +2613,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -2477,7 +2661,10 @@
 				"religion": "+4"
 			},
 			"passive": 10,
-			"languages": "Auran, Common",
+			"languages": [
+				"Auran",
+				"Common"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -2512,7 +2699,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, {@hit 4} to hit with spell attacks). It knows the following sorcerer spells:"
+						"The priest is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). It knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -2565,6 +2752,11 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -2601,7 +2793,10 @@
 				"acrobatics": "+5"
 			},
 			"passive": 11,
-			"languages": "Auran, Common",
+			"languages": [
+				"Auran",
+				"Common"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -2644,7 +2839,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The hurricane is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 11, {@hit 3} to hit with spell attacks). It knows the following sorcerer spells:"
+						"The hurricane is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save {@dc 11}, {@hit 3} to hit with spell attacks). It knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -2685,6 +2880,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2741,9 +2939,14 @@
 				"prone",
 				"restrained"
 			],
-			"senses": "blindsight 120 ft.",
+			"senses": [
+				"blindsight 120 ft."
+			],
 			"passive": 13,
-			"languages": "Common, Ignan",
+			"languages": [
+				"Common",
+				"Ignan"
+			],
 			"cr": "19",
 			"trait": [
 				{
@@ -2813,7 +3016,7 @@
 				{
 					"name": "Heat Wave",
 					"entries": [
-						"Imix creates a blast of heat within 300 feet of himself. Each creature in the area in physical contact with metal objects (for example, carrying metal weapons or wearing metal armor) takes 9 ({@damage 2d8}) fire damage. Each creature in the area that isn't resistant or immune to fire damage must make a DC 21 Constitution saving throw or gain one level of {@condition exhaustion}."
+						"Imix creates a blast of heat within 300 feet of himself. Each creature in the area in physical contact with metal objects (for example, carrying metal weapons or wearing metal armor) takes 9 ({@damage 2d8}) fire damage. Each creature in the area that isn't resistant or immune to fire damage must make a {@dc 21} Constitution saving throw or gain one level of {@condition exhaustion}."
 					]
 				},
 				{
@@ -2825,7 +3028,7 @@
 				{
 					"name": "Combustion (Costs 3 Actions)",
 					"entries": [
-						"Imix causes one creature he can see within 30 feet of him to burst into flames. The target must make a DC 21 Constitution saving throw. On a failed save, the target takes 70 ({@damage 20d6}) fire damage and catches fire. A target on fire takes 10 ({@damage 3d6}) fire damage when it starts its turn, and remains on fire until it or another creature takes an action to douse the flames. On a successful save, the target takes half as much damage and doesn't catch fire."
+						"Imix causes one creature he can see within 30 feet of him to burst into flames. The target must make a {@dc 21} Constitution saving throw. On a failed save, the target takes 70 ({@damage 20d6}) fire damage and catches fire. A target on fire takes 10 ({@damage 3d6}) fire damage when it starts its turn, and remains on fire until it or another creature takes an action to douse the flames. On a successful save, the target takes half as much damage and doesn't catch fire."
 					]
 				}
 			],
@@ -2838,7 +3041,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Imix's innate spellcasting ability is Charisma (spell save DC 20, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
+						"Imix's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell fireball}",
@@ -2876,6 +3079,11 @@
 			"damageTags": [
 				"B",
 				"F"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"AOE"
 			]
 		},
 		{
@@ -2917,9 +3125,15 @@
 			"resist": [
 				"acid"
 			],
-			"senses": "darkvision 60 ft., tremorsense 60 ft.",
+			"senses": [
+				"darkvision 60 ft.",
+				"tremorsense 60 ft."
+			],
 			"passive": 14,
-			"languages": "Common, Terran",
+			"languages": [
+				"Common",
+				"Terran"
+			],
 			"cr": "8",
 			"trait": [
 				{
@@ -2943,7 +3157,7 @@
 				{
 					"name": "Petrifying Gaze",
 					"entries": [
-						"When a creature that can see Marlos's eyes starts its turn within 30 feet of him, Marlos can force it to make a DC 14 Constitution saving throw if Marlos isn't {@condition incapacitated} and can see the creature. If the saving throw fails by 5 or more, the creature is instantly {@condition petrified}. Otherwise, a creature that fails the save begins to turn to stone and is {@condition restrained}. The {@condition restrained} creature must repeat the saving throw at the end of its next turn, becoming {@condition petrified} on a failure or ending the effect on a success. The petrification lasts until the creature is freed by the {@spell greater restoration} spell or other magic.",
+						"When a creature that can see Marlos's eyes starts its turn within 30 feet of him, Marlos can force it to make a {@dc 14} Constitution saving throw if Marlos isn't {@condition incapacitated} and can see the creature. If the saving throw fails by 5 or more, the creature is instantly {@condition petrified}. Otherwise, a creature that fails the save begins to turn to stone and is {@condition restrained}. The {@condition restrained} creature must repeat the saving throw at the end of its next turn, becoming {@condition petrified} on a failure or ending the effect on a success. The petrification lasts until the creature is freed by the {@spell greater restoration} spell or other magic.",
 						"Unless surprised, a creature can avert its eyes to avoid the saving throw at the start of its turn. If the creature does so, it can't see Marlos until the start of its next turn, when it can decide to avert its eyes again. If the creature looks at Marlos in the meantime, it must immediately make the save.",
 						"If Marlos sees himself reflected on a polished surface within 30 feet of him and in an area of bright light, Marlos is, due to his curse, affected by his own gaze."
 					]
@@ -2992,6 +3206,9 @@
 				"P",
 				"I",
 				"T"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3035,7 +3252,10 @@
 				"deception": "+7"
 			},
 			"passive": 10,
-			"languages": "Common, Primordial",
+			"languages": [
+				"Common",
+				"Primordial"
+			],
 			"cr": "6",
 			"trait": [
 				{
@@ -3058,7 +3278,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Miraj's innate spellcasting ability is Constitution (spell save DC 14). He can innately cast the following spell, requiring no material components:"
+						"Miraj's innate spellcasting ability is Constitution (spell save {@dc 14}). He can innately cast the following spell, requiring no material components:"
 					],
 					"daily": {
 						"1": [
@@ -3070,7 +3290,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Miraj is an 11th-level spellcaster. His spellcasting ability is Charisma (spell save DC 15, {@hit 7} to hit with spell attacks). He knows the following sorcerer spells:"
+						"Miraj is an 11th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 15}, {@hit 7} to hit with spell attacks). He knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -3139,6 +3359,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3198,9 +3421,15 @@
 				"poisoned",
 				"prone"
 			],
-			"senses": "blindsight 120 ft., tremorsense 120 ft.",
+			"senses": [
+				"blindsight 120 ft.",
+				"tremorsense 120 ft."
+			],
 			"passive": 12,
-			"languages": "Common, Terran",
+			"languages": [
+				"Common",
+				"Terran"
+			],
 			"cr": "20",
 			"trait": [
 				{
@@ -3244,7 +3473,7 @@
 				{
 					"name": "Boulder",
 					"entries": [
-						"{@atk rw} {@hit 6} to hit, range 500 ft., one target. {@h}46 ({@damage 7d10 + 8}) bludgeoning damage. If the target is a creature, it must succeed on a DC 23 Strength saving throw or be knocked {@condition prone}."
+						"{@atk rw} {@hit 6} to hit, range 500 ft., one target. {@h}46 ({@damage 7d10 + 8}) bludgeoning damage. If the target is a creature, it must succeed on a {@dc 23} Strength saving throw or be knocked {@condition prone}."
 					]
 				},
 				{
@@ -3264,7 +3493,7 @@
 				{
 					"name": "Stomp (Costs 2 Actions)",
 					"entries": [
-						"Ogrémoch stomps the ground, creating an earth tremor that extends in a 30-foot radius. Other creatures standing on the ground in that radius must succeed on a DC 23 Dexterity saving throw or fall {@condition prone}."
+						"Ogrémoch stomps the ground, creating an earth tremor that extends in a 30-foot radius. Other creatures standing on the ground in that radius must succeed on a {@dc 23} Dexterity saving throw or fall {@condition prone}."
 					]
 				},
 				{
@@ -3283,7 +3512,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Ogrémoch's innate spellcasting ability is Charisma (spell save DC 20, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
+						"Ogrémoch's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell meld into stone}",
@@ -3315,6 +3544,12 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW",
+				"AOE"
 			]
 		},
 		{
@@ -3378,9 +3613,13 @@
 				"prone",
 				"restrained"
 			],
-			"senses": "blindsight 120 ft.",
+			"senses": [
+				"blindsight 120 ft."
+			],
 			"passive": 14,
-			"languages": "Aquan",
+			"languages": [
+				"Aquan"
+			],
 			"cr": "18",
 			"trait": [
 				{
@@ -3418,13 +3657,13 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. {@h}21 ({@damage 3d10 + 5}) bludgeoning damage, and the target is {@condition grappled} (escape DC 19). Olhydra can grapple up to four targets. When Olhydra moves, all creatures she is grappling move with her."
+						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. {@h}21 ({@damage 3d10 + 5}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 19}). Olhydra can grapple up to four targets. When Olhydra moves, all creatures she is grappling move with her."
 					]
 				},
 				{
 					"name": "Water Jet",
 					"entries": [
-						"{@atk rw} {@hit 12} to hit, range 120 ft., one target. {@h}21 ({@damage 6d6}) bludgeoning damage, and the target is knocked {@condition prone} if it fails a DC 19 Strength saving throw."
+						"{@atk rw} {@hit 12} to hit, range 120 ft., one target. {@h}21 ({@damage 6d6}) bludgeoning damage, and the target is knocked {@condition prone} if it fails a {@dc 19} Strength saving throw."
 					]
 				},
 				{
@@ -3463,7 +3702,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Olhydra's innate spellcasting ability is Charisma (spell save DC 20, {@hit 12} to hit with spell attacks). She can innately cast the following spells, requiring no material components:"
+						"Olhydra's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). She can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell wall of ice}"
@@ -3499,6 +3738,11 @@
 			"damageTags": [
 				"B",
 				"A"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW"
 			]
 		},
 		{
@@ -3545,7 +3789,9 @@
 				"cold"
 			],
 			"passive": 13,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "3",
 			"trait": [
 				{
@@ -3565,7 +3811,7 @@
 				{
 					"name": "Eye of Frost",
 					"entries": [
-						"The one-eyed shiver casts ray of frost from its missing eye. If it hits, the target is also {@condition restrained}. A target {@condition restrained} in this way can end the condition by using an action, succeeding on a DC 13 Strength check."
+						"The one-eyed shiver casts ray of frost from its missing eye. If it hits, the target is also {@condition restrained}. A target {@condition restrained} in this way can end the condition by using an action, succeeding on a {@dc 13} Strength check."
 					]
 				}
 			],
@@ -3574,7 +3820,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The one-eyed shiver is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+						"The one-eyed shiver is a 5th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -3617,6 +3863,9 @@
 			"damageTags": [
 				"P",
 				"C"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3664,7 +3913,10 @@
 				"medicine": "+1"
 			},
 			"passive": 9,
-			"languages": "Abyssal, Common",
+			"languages": [
+				"Abyssal",
+				"Common"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -3693,7 +3945,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Oreioth is a 6th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 13, {@hit 5} to hit with spell attacks). He has the following wizard spells prepared:"
+						"Oreioth is a 6th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 13}, {@hit 5} to hit with spell attacks). He has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -3740,6 +3992,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3785,7 +4040,10 @@
 				"fire"
 			],
 			"passive": 13,
-			"languages": "Common, Ignan",
+			"languages": [
+				"Common",
+				"Ignan"
+			],
 			"cr": "5",
 			"trait": [
 				{
@@ -3797,7 +4055,7 @@
 				{
 					"name": "Shrapnel Explosion",
 					"entries": [
-						"When the razerblast drops to 0 hit points, a flaming orb in its chest explodes, destroying the razerblast's body and scattering its armor as shrapnel. Creatures within 10 feet of the razerblast when it explodes must succeed on a DC 12 Dexterity saving throw, taking 21 ({@damage 6d6}) piercing damage on a failed save, or half as much damage on a successful one."
+						"When the razerblast drops to 0 hit points, a flaming orb in its chest explodes, destroying the razerblast's body and scattering its armor as shrapnel. Creatures within 10 feet of the razerblast when it explodes must succeed on a {@dc 12} Dexterity saving throw, taking 21 ({@damage 6d6}) piercing damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -3826,6 +4084,11 @@
 			"damageTags": [
 				"P",
 				"F"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -3863,9 +4126,13 @@
 				"athletics": "+3",
 				"perception": "+4"
 			},
-			"senses": "tremorsense 10 ft.",
+			"senses": [
+				"tremorsense 10 ft."
+			],
 			"passive": 14,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "1/2",
 			"trait": [
 				{
@@ -3916,6 +4183,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3965,7 +4235,10 @@
 				"acid"
 			],
 			"passive": 10,
-			"languages": "Aquan, Common",
+			"languages": [
+				"Aquan",
+				"Common"
+			],
 			"cr": "4",
 			"trait": [
 				{
@@ -3988,7 +4261,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Shoalar's innate spellcasting ability is Constitution (spell save DC 13, {@hit 5} to hit with spell attacks). He can innately cast the following spells:"
+						"Shoalar's innate spellcasting ability is Constitution (spell save {@dc 13}, {@hit 5} to hit with spell attacks). He can innately cast the following spells:"
 					],
 					"will": [
 						"{@spell shape water|xge}"
@@ -4003,7 +4276,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Shoalar is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). He knows the following sorcerer spells:"
+						"Shoalar is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). He knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -4053,6 +4326,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -4095,7 +4373,10 @@
 				"persuasion": "+5"
 			},
 			"passive": 10,
-			"languages": "Auran, Common",
+			"languages": [
+				"Auran",
+				"Common"
+			],
 			"cr": "3",
 			"action": [
 				{
@@ -4110,7 +4391,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The Skyweaver is a 6th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+						"The Skyweaver is a 6th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -4157,6 +4438,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -4198,15 +4484,20 @@
 				"intimidation": "+5",
 				"perception": "+2"
 			},
-			"senses": "tremorsense 30 ft.",
+			"senses": [
+				"tremorsense 30 ft."
+			],
 			"passive": 12,
-			"languages": "Common, Terran",
+			"languages": [
+				"Common",
+				"Terran"
+			],
 			"cr": "4",
 			"trait": [
 				{
 					"name": "Death Burst",
 					"entries": [
-						"When the Stonemelder dies, it turns to stone and explodes in a burst of rock shards, becoming a smoking pile of rubble. Each creature within 10 feet of the exploding Stonemelder must make a DC 14 Dexterity saving throw, taking 11 ({@damage 2d10}) bludgeoning damage on a failed save, or half as much damage on a successful one."
+						"When the Stonemelder dies, it turns to stone and explodes in a burst of rock shards, becoming a smoking pile of rubble. Each creature within 10 feet of the exploding Stonemelder must make a {@dc 14} Dexterity saving throw, taking 11 ({@damage 2d10}) bludgeoning damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -4223,7 +4514,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The Stonemelder is a 7th-level spellcaster. Its spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+						"The Stonemelder is a 7th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -4282,6 +4573,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4327,7 +4621,10 @@
 				"persuasion": "+4"
 			},
 			"passive": 10,
-			"languages": "Auran, Common",
+			"languages": [
+				"Auran",
+				"Common"
+			],
 			"cr": "3",
 			"action": [
 				{
@@ -4362,7 +4659,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Thurl is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save DC 12, {@hit 4} to hit with spell attacks). Thurl knows the following sorcerer spells:"
+						"Thurl is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). Thurl knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -4413,6 +4710,10 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -4459,9 +4760,15 @@
 			"immune": [
 				"fire"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 11,
-			"languages": "Common, Ignan, Infernal",
+			"languages": [
+				"Common",
+				"Ignan",
+				"Infernal"
+			],
 			"cr": "9",
 			"trait": [
 				{
@@ -4500,7 +4807,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Vanifer is a 10th-level spellcaster. Her spellcasting ability is Charisma (spell save DC 16, {@hit 8} to hit with spell attacks). Vanifer knows the following sorcerer spells:"
+						"Vanifer is a 10th-level spellcaster. Her spellcasting ability is Charisma (spell save {@dc 16}, {@hit 8} to hit with spell attacks). Vanifer knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -4576,6 +4883,10 @@
 			"damageTags": [
 				"P",
 				"F"
+			],
+			"miscTags": [
+				"RW",
+				"MW"
 			]
 		},
 		{
@@ -4628,9 +4939,14 @@
 				"poisoned",
 				"prone"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 10,
-			"languages": "Aquan, one language of its creator's choice",
+			"languages": [
+				"Aquan",
+				"one language of its creator's choice"
+			],
 			"cr": "7",
 			"trait": [
 				{
@@ -4677,6 +4993,9 @@
 			"damageTags": [
 				"P",
 				"C"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4720,7 +5039,10 @@
 				"insight": "+4"
 			},
 			"passive": 12,
-			"languages": "Common, Halfling",
+			"languages": [
+				"Common",
+				"Halfling"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -4749,7 +5071,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Wiggan is a 4th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). He has the following cleric spells prepared:"
+						"Wiggan is a 4th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc 12}, {@hit 4} to hit with spell attacks). He has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -4795,6 +5117,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4840,9 +5165,15 @@
 				"performance": "+7",
 				"stealth": "+5"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 10,
-			"languages": "Auran, Common, Elvish",
+			"languages": [
+				"Auran",
+				"Common",
+				"Elvish"
+			],
 			"cr": "3",
 			"trait": [
 				{
@@ -4871,7 +5202,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Windharrow is an 8th-level spellcaster. His spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). Windharrow knows the following bard spells:"
+						"Windharrow is an 8th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). Windharrow knows the following bard spells:"
 					],
 					"spells": {
 						"0": {
@@ -4935,6 +5266,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4999,9 +5333,13 @@
 				"prone",
 				"restrained"
 			],
-			"senses": "blindsight 120 ft.",
+			"senses": [
+				"blindsight 120 ft."
+			],
 			"passive": 15,
-			"languages": "Auran",
+			"languages": [
+				"Auran"
+			],
 			"cr": "18",
 			"trait": [
 				{
@@ -5045,7 +5383,7 @@
 				{
 					"name": "Thundercrack (Recharges after a Short or Long Rest)",
 					"entries": [
-						"Yan-C-Bin unleashes a terrible thundercrack in a 100-foot-radius sphere centered on himself. All other creatures in the area must succeed on a DC 24 Constitution saving throw or take 31 ({@damage 9d6}) thunder damage and be {@condition deafened} for 1 minute. On a successful save, a creature takes half as much damage and is {@condition deafened} until the start of Yan-C-Bin's next turn."
+						"Yan-C-Bin unleashes a terrible thundercrack in a 100-foot-radius sphere centered on himself. All other creatures in the area must succeed on a {@dc 24} Constitution saving throw or take 31 ({@damage 9d6}) thunder damage and be {@condition deafened} for 1 minute. On a successful save, a creature takes half as much damage and is {@condition deafened} until the start of Yan-C-Bin's next turn."
 					]
 				},
 				{
@@ -5077,7 +5415,7 @@
 				{
 					"name": "Suffocate (Costs 3 Actions)",
 					"entries": [
-						"Yan-C-Bin steals the air of one breathing creature he can see within 60 feet of him. The target must make a DC 21 Constitution saving throw. On a failed save, the target drops to 0 hit points and is dying. On a successful save, the target can't breathe or speak until the start of its next turn."
+						"Yan-C-Bin steals the air of one breathing creature he can see within 60 feet of him. The target must make a {@dc 21} Constitution saving throw. On a failed save, the target drops to 0 hit points and is dying. On a successful save, the target can't breathe or speak until the start of its next turn."
 					]
 				}
 			],
@@ -5090,7 +5428,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Yan-C-Bin's innate spellcasting ability is Charisma (spell save DC 20, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
+						"Yan-C-Bin's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell gust of wind}",
@@ -5128,6 +5466,599 @@
 				"O",
 				"L",
 				"T"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"AOE"
+			]
+		},
+		{
+			"name": "Aquatic Ghoul",
+			"source": "PotA",
+			"_copy": {
+				"name": "Ghoul",
+				"source": "MM"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			}
+		},
+		{
+			"name": "Aquatic Troll",
+			"source": "PotA",
+			"_copy": {
+				"name": "Troll",
+				"source": "MM"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 40
+			}
+		},
+		{
+			"name": "Braelen Hatherhand",
+			"isNpc": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 2,
+				"formula": "1d8"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"action": null
+		},
+		{
+			"name": "Bronzefume",
+			"isNpc": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Dragon Turtle",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 220,
+				"formula": "22d20 + 110"
+			}
+		},
+		{
+			"name": "Cavil Zaltobar",
+			"isNpc": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Mage",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Darathra Shendrel",
+			"isNpc": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Knight",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Deseyna Majarra",
+			"isNpc": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Noble",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"action": null
+		},
+		{
+			"name": "Emberhorn Minotaur",
+			"source": "PotA",
+			"_copy": {
+				"name": "Minotaur",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Burning Breath {@recharge 5}",
+							"entries": [
+								"The minotaur exhales a cloud of burning embers in a 15-foot cone. Each creature in that area must succeed on a DC 14 Dexterity saving throw, taking 21 ({@damage 6d6}) fire damage on a failed save, or half as much damage on a successful one."
+							]
+						}
+					}
+				}
+			},
+			"immune": [
+				"fire"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			],
+			"damageTags": [
+				"F",
+				"S",
+				"P"
+			]
+		},
+		{
+			"name": "Zegdar",
+			"isNpc": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Emberhorn Minotaur",
+				"source": "PotA"
+			},
+			"hp": {
+				"average": 117,
+				"formula": "9d10 + 27"
+			},
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item chain mail|phb}"
+					]
+				}
+			],
+			"int": 11
+		},
+		{
+			"name": "Fennor",
+			"isNpc": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Berserker",
+				"source": "MM"
+			},
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item chain shirt|phb}"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Fennor makes two attacks with her greatsword"
+					]
+				},
+				{
+					"name": "Greatsword",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) slashing damage."
+					]
+				}
+			],
+			"cr": "3",
+			"actionTags": [
+				"Multiattack"
+			]
+		},
+		{
+			"name": "Grumink the Renegade",
+			"isNpc": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Assassin",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"alignment": [
+				"C",
+				"E"
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"name": "Lyzandra \"Lyzzie\" Calderos",
+			"isNpc": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Mage",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Lyzandra is a 9th-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). Lyzandra has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell mage armor}",
+								"{@spell magic missile}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell misty step}",
+								"{@spell suggestion}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fireball}",
+								"{@spell fly}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell greater invisibility}",
+								"{@spell wall of fire}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell immolation|xge}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			]
+		},
+		{
+			"name": "Maegla Tarnlar",
+			"isNpc": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Molten Magma Roper",
+			"source": "PotA",
+			"_copy": {
+				"name": "Roper",
+				"source": "MM",
+				"_mod": {
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Tendril",
+							"items": {
+								"name": "Tendril",
+								"entries": [
+									"{@atk mw} {@hit 7} to hit, reach 50 ft., one creature. {@h}4 ({@damage 1d8}) fire damage and the target is {@condition grappled} (escape DC 15). Until the grapple ends, the target is {@condition restrained} and has disadvantage on Strength checks and Strength saving throws, and the roper can't use the same tendril on another target. A creature takes 4 ({@damage 1d8}) fire damage each time it ends its turn grappled by the roper."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Bite",
+							"items": {
+								"name": "Bite",
+								"entries": [
+									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}22 ({@damage 4d8 + 4}) fire damage."
+								]
+							}
+						}
+					]
+				}
+			},
+			"immune": [
+				"fire"
+			],
+			"vulnerable": [
+				"cold"
+			],
+			"damageTags": [
+				"F"
+			]
+		},
+		{
+			"name": "Nurvureem, The Dark Lady",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Adult Black Dragon",
+				"source": "MM",
+				"_trait": {
+					"name": "Shadow Dragon",
+					"source": "MM"
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"damageTags": [
+				"P",
+				"N",
+				"S",
+				"B"
+			],
+			"traitTags": [
+				"Amphibious",
+				"Legendary Resistances",
+				"Sunlight Sensitivity"
+			]
+		},
+		{
+			"name": "Padraich",
+			"isNpc": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Berserker",
+				"source": "MM"
+			},
+			"action": [
+				{
+					"name": "Maul",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) bludgeoning damage."
+					]
+				}
+			],
+			"damageTags": [
+				"B"
+			]
+		},
+		{
+			"name": "Renwick",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Lich",
+				"source": "MM"
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Renwick is an 18th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 20}, {@hit 12} to hit with spell attacks). Renwick has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell magic missile}",
+								"{@spell shield}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell detect thoughts}",
+								"{@spell invisibility}",
+								"{@spell Melf's acid arrow}",
+								"{@spell mirror image}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell animate dead}",
+								"{@spell counterspell}",
+								"{@spell dispel magic}",
+								"{@spell fireball}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell blight}",
+								"{@spell dimension door}"
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								"{@spell cloudkill}",
+								"{@spell scrying}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell disintegrate}",
+								"{@spell globe of invulnerability}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell finger of death}",
+								"{@spell plane shift}"
+							]
+						},
+						"8": {
+							"slots": 1,
+							"spells": [
+								"{@spell dominate monster}",
+								"{@spell power word stun}"
+							]
+						},
+						"9": {
+							"slots": 1,
+							"spells": [
+								"{@spell time stop}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			]
+		},
+		{
+			"name": "Rhundorth",
+			"isNpc": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Guard",
+				"source": "MM"
+			},
+			"ac": [
+				11
+			],
+			"str": 18,
+			"action": [
+				{
+					"name": "Warhammer",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d8 + 4}) bludgeoning damage, or 10 ({@damage 1d10 + 4}) bludgeoning damage if used with two hands."
+					]
+				}
+			],
+			"miscTags": [
+				"MW"
+			],
+			"damageTags": [
+				"B"
+			]
+		},
+		{
+			"name": "Stone Warrior",
+			"source": "PotA",
+			"_copy": {
+				"name": "Stone Golem",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "removeArr",
+						"names": "Multiattack"
+					}
+				}
+			},
+			"cr": "4"
+		},
+		{
+			"name": "Tornscale",
+			"isNpc": true,
+			"source": "PotA",
+			"_copy": {
+				"name": "Lizardfolk",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 36,
+				"formula": "4d8 + 4"
+			}
+		},
+		{
+			"name": "Young Purple Worm",
+			"source": "PotA",
+			"_copy": {
+				"name": "Purple Worm",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 184,
+				"formula": "15d20 + 90"
+			}
+		},
+		{
+			"name": "Young Bulette",
+			"source": "PotA",
+			"_copy": {
+				"name": "Rhinoceros",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "rhinoceros",
+						"with": "bulette"
+					}
+				}
+			},
+			"hp": {
+				"average": 184,
+				"formula": "15d20 + 90"
+			},
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}14 ({@damage 2d8 + 5}) piercing damage."
+					]
+				}
+			],
+			"damageTags": [
+				"P",
+				"B"
 			]
 		}
 	]

@@ -34,8 +34,9 @@ async function onJsonLoad (data) {
 		sourceFilter
 	);
 
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
 
 	// filtering function
@@ -101,13 +102,10 @@ function addTables (data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(it.source);
+		sourceFilter.addItem(it.source);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	tablesTable.append(tempString);
-
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -148,7 +146,7 @@ function handleFilterChange () {
 			it.source
 		);
 	});
-	FilterBox.nextIfHidden(tableList);
+	FilterBox.selectFirstVisible(tableList);
 }
 
 function loadhash (id) {
@@ -169,4 +167,9 @@ function loadhash (id) {
 	`);
 
 	ListUtil.updateSelected();
+}
+
+function loadsub (sub) {
+	sub = filterBox.setFromSubHashes(sub);
+	ListUtil.setFromSubHashes(sub);
 }

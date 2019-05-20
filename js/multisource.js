@@ -32,7 +32,7 @@ function _onIndexLoad (src2UrlMap, jsonDir, dataProp, pPageInit, addFn, pOptiona
 		const hashSourceRaw = History.getHashSource();
 		const hashSource = hashSourceRaw ? Object.keys(src2UrlMap).find(it => it.toLowerCase() === hashSourceRaw.toLowerCase()) : null;
 		const userSel = [...new Set(
-			(await FilterBox.pGetSelectedSources() || []).concat(await ListUtil.pGetSelectedSources() || []).concat(hashSource ? [hashSource] : [])
+			(await FilterBox.pGetStoredActiveSources() || []).concat(await ListUtil.pGetSelectedSources() || []).concat(hashSource ? [hashSource] : [])
 		)];
 
 		const allSources = [];
@@ -114,5 +114,5 @@ function loadSource (jsonListName, dataFn) {
 }
 
 function onFilterChangeMulti (multiList) {
-	FilterBox.nextIfHidden(multiList);
+	FilterBox.selectFirstVisible(multiList);
 }

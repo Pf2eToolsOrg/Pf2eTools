@@ -56,15 +56,20 @@
 				"exhaustion",
 				"frightened"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 19,
-			"languages": "all, telepathy 120 ft.",
+			"languages": [
+				"all",
+				"telepathy 120 ft."
+			],
 			"cr": "10",
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The archon's innate spellcasting ability is Charisma (spell save DC 17). The archon can innately cast the following spells, requiring only verbal components:"
+						"The archon's innate spellcasting ability is Charisma (spell save {@dc 17}). The archon can innately cast the following spells, requiring only verbal components:"
 					],
 					"will": [
 						"{@spell detect evil and good}"
@@ -144,6 +149,10 @@
 				"S",
 				"R",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -180,15 +189,20 @@
 				"paralyzed",
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 13,
-			"languages": "Celestial, telepathy 60 ft.",
+			"languages": [
+				"Celestial",
+				"telepathy 60 ft."
+			],
 			"cr": "5",
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The felidar's innate spellcasting ability is Charisma (spell save DC 14). The felidar can innately cast the following spells, requiring no components:"
+						"The felidar's innate spellcasting ability is Charisma (spell save {@dc 14}). The felidar can innately cast the following spells, requiring no components:"
 					],
 					"will": [
 						"{@spell detect evil and good}",
@@ -209,7 +223,7 @@
 				{
 					"name": "Pounce",
 					"entries": [
-						"If the felidar moves at least 20 feet straight toward a creature and then hits it with a claws attack on the same turn, the target must succeed on a DC 15 Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the felidar can make one bite attack against it as a bonus action."
+						"If the felidar moves at least 20 feet straight toward a creature and then hits it with a claws attack on the same turn, the target must succeed on a {@dc 15} Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the felidar can make one bite attack against it as a bonus action."
 					]
 				},
 				{
@@ -298,6 +312,9 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -343,15 +360,19 @@
 				"lightning",
 				"thunder"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 19,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "13",
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The kraken's innate spellcasting ability is Charisma (spell save DC 17). The kraken can innately cast the following spells, requiring no components:"
+						"The kraken's innate spellcasting ability is Charisma (spell save {@dc 17}). The kraken can innately cast the following spells, requiring no components:"
 					],
 					"daily": {
 						"3e": [
@@ -386,13 +407,13 @@
 				{
 					"name": "Tentacles",
 					"entries": [
-						"{@atk mw} {@hit 14} to hit, reach 20 ft., one target. {@h}30 ({@damage 6d6 + 9}) bludgeoning damage, and the target is {@condition grappled} (escape DC 17). Until this grapple ends, the target is {@condition restrained}."
+						"{@atk mw} {@hit 14} to hit, reach 20 ft., one target. {@h}30 ({@damage 6d6 + 9}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 17}). Until this grapple ends, the target is {@condition restrained}."
 					]
 				},
 				{
 					"name": "Lightning Strike {@recharge 5}",
 					"entries": [
-						"The kraken hurls a magical lightning bolt at a point it can see within 500 feet of it. Each creature within 10 feet of that point must make a DC 17 Dexterity saving throw, taking 54 ({@damage 12d8}) lightning damage on a failed save, or half as much damage on a successful one."
+						"The kraken hurls a magical lightning bolt at a point it can see within 500 feet of it. Each creature within 10 feet of that point must make a {@dc 17} Dexterity saving throw, taking 54 ({@damage 12d8}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -417,6 +438,10 @@
 				"S",
 				"B",
 				"L"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		}
 	]

@@ -2,10 +2,9 @@
 // Strict mode should not be used, as the roll20 script depends on this file //
 // Do not use classes                                                        //
 // ************************************************************************* //
-
-// in deployment, `_IS_DEPLOYED = "<version number>";` should be prepended here
-IS_DEPLOYED = typeof _IS_DEPLOYED !== "undefined" && _IS_DEPLOYED;
-VERSION_NUMBER = IS_DEPLOYED ? _IS_DEPLOYED : "-1";
+// in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
+IS_DEPLOYED = undefined;
+VERSION_NUMBER = IS_DEPLOYED || "-1";
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_ROLL20 = false;
@@ -21,9 +20,7 @@ HASH_SUBCLASS = "sub:";
 HASH_BLANK = "blankhash";
 HASH_SUB_NONE = "null";
 
-STR_EMPTY = "";
 STR_VOID_LINK = "javascript:void(0)";
-STR_SLUG_DASH = "-";
 STR_APOSTROPHE = "\u2019";
 
 HTML_NO_INFO = "<i>No information available.</i>";
@@ -31,33 +28,6 @@ HTML_NO_IMAGES = "<i>No images available.</i>";
 
 ID_SEARCH_BAR = "filter-search-input-group";
 ID_RESET_BUTTON = "reset";
-
-ELE_SPAN = "span";
-ELE_UL = "ul";
-ELE_LI = "li";
-ELE_A = "a";
-ELE_P = "p";
-ELE_DIV = "div";
-ELE_BUTTON = "button";
-ELE_INPUT = "input";
-
-EVNT_MOUSEOVER = "mouseover";
-EVNT_MOUSEOUT = "mouseout";
-EVNT_MOUSELEAVE = "mouseleave";
-EVNT_MOUSEENTER = "mouseenter";
-
-ATB_ID = "id";
-ATB_CLASS = "class";
-ATB_TITLE = "title";
-ATB_VALUE = "value";
-ATB_HREF = "href";
-ATB_STYLE = "style";
-ATB_CHECKED = "checked";
-ATB_TYPE = "type";
-ATB_ONCLICK = "onclick";
-
-STL_DISPLAY_INITIAL = "display: initial";
-STL_DISPLAY_NONE = "display: none";
 
 FLTR_ID = "filterId";
 
@@ -96,14 +66,6 @@ RNG_TOUCH = "touch";
 
 UNT_FEET = "feet";
 UNT_MILES = "miles";
-
-ABIL_STR = "Strength";
-ABIL_DEX = "Dexterity";
-ABIL_CON = "Constitution";
-ABIL_INT = "Intelligence";
-ABIL_WIS = "Wisdom";
-ABIL_CHA = "Charisma";
-ABIL_CH_ANY = "Choose Any";
 
 HOMEBREW_STORAGE = "HOMEBREW_STORAGE";
 HOMEBREW_META_STORAGE = "HOMEBREW_META_STORAGE";
@@ -276,6 +238,7 @@ Array.prototype.peek = Array.prototype.peek ||
 
 StrUtil = {
 	COMMAS_NOT_IN_PARENTHESES_REGEX: /,\s?(?![^(]*\))/g,
+	COMMA_SPACE_NOT_IN_PARENTHESES_REGEX: /, (?![^(]*\))/g,
 
 	uppercaseFirst: function (string) {
 		return string.uppercaseFirst();
@@ -313,136 +276,6 @@ StrUtil = {
 RegExp.escape = function (string) {
 	return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 };
-
-// TEXT COMBINING ======================================================================================================
-class AbilityData {
-	constructor (asText, asTextShort, asCollection, areNegative) {
-		this.asText = asText;
-		this.asTextShort = asTextShort;
-		this.asCollection = asCollection;
-		this.areNegative = areNegative;
-	}
-}
-
-function utils_getAbilityData (abObj) {
-	const ABILITIES = Parser.ABIL_ABVS.map(it => it.uppercaseFirst());
-	const mainAbs = [];
-	const asCollection = [];
-	const areNegative = [];
-	const toConvertToText = [];
-	const toConvertToShortText = [];
-	if (abObj !== undefined) {
-		handleAllAbilities(abObj);
-		handleAbilitiesChoose();
-		return new AbilityData(toConvertToText.join("; "), toConvertToShortText.join("; "), asCollection, areNegative);
-	}
-	return new AbilityData("", "", [], []);
-
-	function handleAllAbilities (abilityList, targetList) {
-		for (let a = 0; a < ABILITIES.length; ++a) {
-			handleAbility(abilityList, ABILITIES[a], targetList);
-		}
-	}
-
-	function handleAbility (parent, ab, optToConvertToTextStorage) {
-		if (parent[ab.toLowerCase()] !== undefined) {
-			const isNegMod = parent[ab.toLowerCase()] < 0;
-			const toAdd = `${ab} ${(isNegMod ? "" : "+")}${parent[ab.toLowerCase()]}`;
-
-			if (optToConvertToTextStorage) {
-				optToConvertToTextStorage.push(toAdd);
-			} else {
-				toConvertToText.push(toAdd);
-				toConvertToShortText.push(toAdd);
-			}
-
-			mainAbs.push(ab);
-			asCollection.push(ab.toLowerCase());
-			if (isNegMod) areNegative.push(ab.toLowerCase());
-		}
-	}
-
-	function handleAbilitiesChoose () {
-		if (abObj.choose !== undefined) {
-			for (let i = 0; i < abObj.choose.length; ++i) {
-				const item = abObj.choose[i];
-				let outStack = "";
-				if (item.predefined !== undefined) {
-					for (let j = 0; j < item.predefined.length; ++j) {
-						const subAbs = [];
-						handleAllAbilities(item.predefined[j], subAbs);
-						outStack += subAbs.join(", ") + (j === item.predefined.length - 1 ? "" : " or ");
-					}
-				} else if (item.weighted) {
-					const w = item.weighted;
-					const areIncreaseShort = [];
-					const areIncrease = w.weights.filter(it => it >= 0).sort(SortUtil.ascSort).reverse().map(it => {
-						areIncreaseShort.push(`+${it}`);
-						return `one ability to increase by ${it}`;
-					});
-					const areReduceShort = [];
-					const areReduce = w.weights.filter(it => it < 0).map(it => -it).sort(SortUtil.ascSort).map(it => {
-						areReduceShort.push(`-${it}`);
-						return `one ability to decrease by ${it}`;
-					});
-					const froms = w.from.map(it => it.uppercaseFirst());
-					toConvertToText.push(`From ${froms.joinConjunct(", ", " and ")} choose ${areIncrease.concat(areReduce).joinConjunct(", ", " and ")}`);
-					toConvertToShortText.push(`${areIncreaseShort.concat(areReduceShort).join("/")} from ${froms.join("/")}`);
-					continue;
-				} else {
-					const allAbilities = item.from.length === 6;
-					const allAbilitiesWithParent = isAllAbilitiesWithParent(item);
-					let amount = item.amount === undefined ? 1 : item.amount;
-					amount = (amount < 0 ? "" : "+") + amount;
-					if (allAbilities) {
-						outStack += "any ";
-					} else if (allAbilitiesWithParent) {
-						outStack += "any other ";
-					}
-					if (item.count !== undefined && item.count > 1) {
-						outStack += Parser.numberToText(item.count) + " ";
-					}
-					if (allAbilities || allAbilitiesWithParent) {
-						outStack += amount;
-					} else {
-						for (let j = 0; j < item.from.length; ++j) {
-							let suffix = "";
-							if (item.from.length > 1) {
-								if (j === item.from.length - 2) {
-									suffix = " or ";
-								} else if (j < item.from.length - 2) {
-									suffix = ", ";
-								}
-							}
-							let thsAmount = " " + amount;
-							if (item.from.length > 1) {
-								if (j !== item.from.length - 1) {
-									thsAmount = "";
-								}
-							}
-							outStack += item.from[j].uppercaseFirst() + thsAmount + suffix;
-						}
-					}
-				}
-				toConvertToText.push("Choose " + outStack);
-				toConvertToShortText.push(outStack.uppercaseFirst());
-			}
-		}
-	}
-
-	function isAllAbilitiesWithParent (chooseAbs) {
-		const tempAbilities = [];
-		for (let i = 0; i < mainAbs.length; ++i) {
-			tempAbilities.push(mainAbs[i].toLowerCase());
-		}
-		for (let i = 0; i < chooseAbs.from.length; ++i) {
-			const ab = chooseAbs.from[i].toLowerCase();
-			if (!tempAbilities.includes(ab)) tempAbilities.push(ab);
-			if (!asCollection.includes(ab.toLowerCase)) asCollection.push(ab.toLowerCase());
-		}
-		return tempAbilities.length === 6;
-	}
-}
 
 // PARSING =============================================================================================================
 Parser = {};
@@ -580,17 +413,22 @@ Parser._addCommas = function (intNum) {
 };
 
 Parser.crToXp = function (cr) {
-	if (cr === "Unknown" || cr === undefined) return "Unknown";
-	if (cr === "0") return "0 or 10";
-	if (cr === "1/8") return "25";
-	if (cr === "1/4") return "50";
-	if (cr === "1/2") return "100";
-	return Parser._addCommas(Parser.XP_CHART[parseInt(cr) - 1]);
+	if (cr.xp) return Parser._addCommas(cr.xp);
+
+	const toConvert = cr.cr || cr;
+	if (toConvert === "Unknown" || toConvert == null) return "Unknown";
+	if (toConvert === "0") return "0 or 10";
+	if (toConvert === "1/8") return "25";
+	if (toConvert === "1/4") return "50";
+	if (toConvert === "1/2") return "100";
+	return Parser._addCommas(Parser.XP_CHART[parseInt(toConvert) - 1]);
 };
 
 Parser.crToXpNumber = function (cr) {
-	if (cr === "Unknown" || cr === undefined) return null;
-	return Parser.XP_CHART_ALT[cr];
+	if (cr.xp) return cr.xp;
+	const toConvert = cr.cr || cr;
+	if (toConvert === "Unknown" || toConvert == null) return null;
+	return Parser.XP_CHART_ALT[toConvert];
 };
 
 LEVEL_TO_XP_EASY = [0, 25, 50, 75, 125, 250, 300, 350, 450, 550, 600, 800, 1000, 1100, 1250, 1400, 1600, 2000, 2100, 2400, 2800];
@@ -789,19 +627,25 @@ Parser.sourceJsonToColor = function (source) {
 };
 
 Parser.stringToSlug = function (str) {
-	return str.trim().toLowerCase().replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
+	return str.trim().toLowerCase().replace(/[^\w ]+/g, "").replace(/ +/g, "-");
 };
 
 Parser.stringToCasedSlug = function (str) {
-	return str.replace(/[^\w ]+/g, STR_EMPTY).replace(/ +/g, STR_SLUG_DASH);
+	return str.replace(/[^\w ]+/g, "").replace(/ +/g, "-");
 };
 
 Parser.itemTypeToAbv = function (type) {
 	return Parser._parse_aToB(Parser.ITEM_TYPE_JSON_TO_ABV, type);
 };
 
-Parser.itemWeightToFull = function (item) {
-	return item.weight ? item.weight + (Number(item.weight) === 1 ? " lb." : " lbs.") + (item.weightNote ? ` ${item.weightNote}` : "") : "";
+Parser.itemValueToFull = function (item, isShortForm) {
+	return item.value ? item.value : item.valueMult ? isShortForm ? `×${item.valueMult}` : `base value ×${item.valueMult}` : "";
+};
+
+Parser.itemWeightToFull = function (item, isShortForm) {
+	return item.weight
+		? `${item.weight}${(Number(item.weight) === 1 ? " lb." : " lbs.")}${(item.weightNote ? ` ${item.weightNote}` : "")}`
+		: item.weightMult ? isShortForm ? `×${item.weightMult}` : `base weight ×${item.weightMult}` : "";
 };
 
 Parser._coinValueToNumberMultipliers = {
@@ -818,7 +662,7 @@ Parser._costSplitRegexp = Parser._decimalSeparator === "." ? new RegExp(/(\d+(\.
 Parser.coinValueToNumber = function (value) {
 	if (!value) return 0;
 	// handle oddities
-	if (value === "x4" || value === "Varies") return 0;
+	if (value === "Varies") return 0;
 
 	// input e.g. "25gp", "1,000pp"
 	value = value.replace(Parser._numberCleanRegexp, "").toLowerCase();
@@ -829,8 +673,6 @@ Parser.coinValueToNumber = function (value) {
 
 Parser.weightValueToNumber = function (value) {
 	if (!value) return 0;
-	// handle oddities
-	if (/[x×]\s*\d+/i.test(value.trim())) return 0;
 
 	if (Number(value)) return Number(value);
 	else throw new Error(`Badly formatted value ${value}`);
@@ -1141,10 +983,10 @@ Parser.monTypeToPlural = function (type) {
 	return Parser._parse_aToB(Parser.MON_TYPE_TO_PLURAL, type);
 };
 
-Parser.monCrToFull = function (cr) {
-	if (typeof cr === "string" || !cr) return `${cr || "Unknown"} (${Parser.crToXp(cr)} XP)`;
+Parser.monCrToFull = function (cr, xp) {
+	if (typeof cr === "string" || !cr) return `${cr || "Unknown"} (${xp != null ? Parser._addCommas(xp) : Parser.crToXp(cr)} XP)`;
 	else {
-		const stack = [Parser.monCrToFull(cr.cr)];
+		const stack = [Parser.monCrToFull(cr.cr, cr.xp)];
 		if (cr.lair) stack.push(`${Parser.monCrToFull(cr.lair)} when encountered in lair`);
 		if (cr.coven) stack.push(`${Parser.monCrToFull(cr.coven)} when part of a coven`);
 		return stack.join(" or ");
@@ -1231,6 +1073,18 @@ Parser.MON_SPELLCASTING_TAG_TO_FULL = {
 };
 Parser.monSpellcastingTagToFull = function (tag) {
 	return Parser._parse_aToB(Parser.MON_SPELLCASTING_TAG_TO_FULL, tag);
+};
+
+Parser.MON_MISC_TAG_TO_FULL = {
+	"AOE": "Has Areas of Effect",
+	"MW": "Has Melee Weapon Attacks",
+	"RW": "Has Ranged Weapon Attacks",
+	"RNG": "Has Ranged Weapons",
+	"RCH": "Has Reach Attacks",
+	"THW": "Has Thrown Weapons"
+};
+Parser.monMiscTagToFull = function (tag) {
+	return Parser._parse_aToB(Parser.MON_MISC_TAG_TO_FULL, tag);
 };
 
 Parser.ENVIRONMENTS = ["arctic", "coastal", "desert", "forest", "grassland", "hill", "mountain", "swamp", "underdark", "underwater", "urban"];
@@ -1602,6 +1456,13 @@ Parser.bookOrdinalToAbv = (ordinal, preNoSuff) => {
 		case "level": return `${preNoSuff ? " " : ""}Level ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
 		default: throw new Error(`Unhandled ordinal type "${ordinal.type}"`);
 	}
+};
+
+Parser.nameToTokenName = function (name) {
+	return name
+		.normalize("NFD") // replace diactrics with their individual graphemes
+		.replace(/[\u0300-\u036f]/g, "") // remove accent graphemes
+		.replace(/"/g, "");
 };
 
 SKL_ABV_ABJ = "A";
@@ -2087,8 +1948,9 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"T": "Tool",
 	"TAH": "Tack and Harness",
 	"TG": "Trade Good",
-	"VEH": "Vehicle",
-	"SHP": "Vehicle",
+	"VEH": "Vehicle (land)",
+	"SHP": "Vehicle (water)",
+	"AIR": "Vehicle (air)",
 	"WD": "Wand"
 };
 
@@ -2236,13 +2098,6 @@ Parser.NUMBERS_TEENS = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fift
 // SOURCES =============================================================================================================
 SourceUtil = {
 	hasBeenReprinted (shortName, source) {
-		/* can accept sources of the form:
-		{
-			"source": "UAExample",
-			"forceStandard": true
-		}
-		 */
-		if (source && source.source) source = source.source;
 		return (shortName !== undefined && shortName !== null && source !== undefined && source !== null) &&
 			(
 				(shortName === "Sun Soul" && source === SRC_SCAG) ||
@@ -2254,16 +2109,6 @@ SourceUtil = {
 	},
 
 	isNonstandardSource (source) {
-		/* can accept sources of the form:
-		{
-			"source": "UAExample",
-			"forceStandard": true
-		}
-		 */
-		if (source && source.forceStandard !== undefined) {
-			return !source.forceStandard;
-		}
-		if (source && source.source) source = source.source;
 		return (source !== undefined && source !== null) && !BrewUtil.hasSourceJson(source) && (SourceUtil._isNonstandardSourceWiz(source) || SourceUtil._isNonstandardSource3pp(source));
 	},
 
@@ -2276,8 +2121,8 @@ SourceUtil = {
 	},
 
 	getFilterGroup (source) {
-		if (BrewUtil.hasSourceJson(source)) return 2;
-		return Number(SourceUtil.isNonstandardSource(source));
+		if (BrewUtil.hasSourceJson(source.item)) return 2;
+		return Number(SourceUtil.isNonstandardSource(source.item));
 	}
 };
 
@@ -2352,18 +2197,14 @@ JqueryUtil = {
 		 * Template strings which can contain jQuery objects.
 		 * Usage: $$`<div>Press this button: ${$btn}</div>`
 		 */
-		window.$$ = function (parts, ...args) { // TODO use this instead of .swap()
+		window.$$ = function (parts, ...args) {
 			const $eles = [];
 			let ixArg = 0;
 
 			const handleArg = (arg) => {
 				if (arg instanceof $) {
-					// TODO inject appropriate elements for the parent and remove "slot" specifier on replace selector
-					// the places where these would be inserted usually can't support <slot>
-					// TODO also doesn't work inside <select>
-					if (arg.is("tr") || arg.is("td") || arg.is("th")) throw new Error(`Unsupported element type "${arg[0].tagName}"!`);
 					$eles.push(arg);
-					return `<slot data-r=true></slot>`;
+					return `<${arg.tag()} data-r=true></${arg.tag()}>`;
 				} else if (arg instanceof HTMLElement) {
 					return handleArg($(arg));
 				} else return arg
@@ -2376,37 +2217,18 @@ JqueryUtil = {
 				else return `${html}${handleArg(args[myIxArg])}${p}`;
 			});
 			const $res = $(raw);
-			$res.find(`slot[data-r=true]`).replaceWith(i => $eles[i]);
+			$res.find(`[data-r=true]`).replaceWith(i => $eles[i]);
 			return $res;
 		};
 
 		$.fn.extend({
-			/**
-			 * Has two modes; either:
-			 * Takes a jQuery object and replaces elements with `data-r-<n>` with the nth position arg, e.g.
-			 * $(`<div><div>my <span>initial</span> html <div data-r="0"/> <div data-r="1"/></div>`)
-			 *
-			 * or:
-			 * Takes a jQuery object and replaces elements with `data-r-<id>` with the element at key id
-			 * $(`<div><div>my <span>initial</span> html <div data-r="foo"/> <div data-r="bar"/></div>`)
-			 */
-			swap: function (...$toSwap) {
-				if ($toSwap.length === 1 && !($toSwap[0] instanceof jQuery)) {
-					Object.entries($toSwap[0]).forEach(([k, $v]) => {
-						this.find(`[data-r="${k}"]`).replaceWith($v);
-					});
-				} else {
-					$toSwap.forEach(ts => {
-						this.find(`[data-r]`).first().replaceWith(ts);
-					});
-				}
-
-				return this;
-			},
-
 			disableSpellcheck: function () {
 				this.attr("autocomplete", "off").attr("autocapitalize", "off").attr("spellcheck", "false");
 				return this;
+			},
+
+			tag: function () {
+				return this.prop("tagName").toLowerCase();
 			}
 		});
 
@@ -2506,13 +2328,12 @@ JqueryUtil = {
 		const $btnToastDismiss = $(`<button class="btn toast__btn-close"><span class="glyphicon glyphicon-remove"/></button>`)
 			.click(() => doCleanup($toast));
 
-		const $toast = $(`
+		const $toast = $$`
 				<div class="toast alert-${options.type}">
-					<div class="toast__wrp-content"><div data-r="$content"/></div>
-					<div class="toast__wrp-control"><div data-r="$btnToastDismiss"/></div>
+					<div class="toast__wrp-content">${options.content}</div>
+					<div class="toast__wrp-control">${$btnToastDismiss}</div>
 				</div>
-			`)
-			.swap({$content: options.content, $btnToastDismiss})
+			`
 			.prependTo($(`body`))
 			.data("pos", 0);
 
@@ -3198,7 +3019,7 @@ ListUtil = {
 			.on("click", async evt => {
 				if (evt.shiftKey) {
 					const toEncode = JSON.stringify(ListUtil.getExportableSublist());
-					const parts = [window.location.href, (UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], true))];
+					const parts = [window.location.href, (UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], {isEncodeBoth: true}))];
 					await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
 					JqueryUtil.showCopiedEffect($btn);
 				} else {
@@ -3781,7 +3602,7 @@ function getSourceFilter (options = {}) {
 		groupFn: SourceUtil.getFilterGroup
 	};
 	Object.assign(baseOptions, options);
-	return new GroupedFilter(baseOptions);
+	return new Filter(baseOptions);
 }
 
 function defaultSourceDeselFn (val) {
@@ -3814,7 +3635,7 @@ function getFilterWithMergedOptions (baseOptions, addOptions) {
 }
 
 async function pInitFilterBox (...filterList) {
-	const filterBox = new FilterBox(document.getElementById(ID_SEARCH_BAR), document.getElementById(ID_RESET_BUTTON), filterList);
+	const filterBox = new FilterBox($(`#${ID_SEARCH_BAR}`), $(`#${ID_RESET_BUTTON}`), filterList);
 	await filterBox.pDoLoadState();
 	return filterBox;
 }
@@ -3880,12 +3701,24 @@ UrlUtil = {
 		}
 	},
 
-	packSubHash (key, values, encode) {
-		if (encode) {
-			key = encodeURIComponent(key.toLowerCase());
-			values = values.map(it => encodeURIComponent(it.toLowerCase()));
-		}
+	/**
+	 * @param key The subhash key.
+	 * @param values The subhash values.
+	 * @param [opts] Options object.
+	 * @param [opts.isEncodeBoth] If both the key and values should be URl encoded.
+	 * @param [opts.isEncodeKey] If the key should be URL encoded.
+	 * @param [opts.isEncodeValues] If the values should be URL encoded.
+	 * @returns {string}
+	 */
+	packSubHash (key, values, opts) {
+		opts = opts || {};
+		if (opts.isEncodeBoth || opts.isEncodeKey) key = UrlUtil.pack(key);
+		if (opts.isEncodeBoth || opts.isEncodeValues) values = values.map(it => UrlUtil.pack(it));
 		return `${key}${HASH_SUB_KV_SEP}${values.join(HASH_SUB_LIST_SEP)}`;
+	},
+
+	pack (part) {
+		return encodeURIComponent(part.toLowerCase());
 	},
 
 	categoryToPage (category) {
@@ -3899,22 +3732,86 @@ UrlUtil = {
 			.on("click", async evt => {
 				let url = window.location.href;
 
-				const toHash = filterBox.getAsSubHashes();
-				let parts = Object.keys(toHash).map(hK => {
-					const hV = toHash[hK];
-					return UrlUtil.packSubHash(hK, hV, true);
-				});
+				const parts = filterBox.getSubHashes();
+				parts.unshift(url);
+
 				if (evt.shiftKey) {
 					const toEncode = JSON.stringify(ListUtil.getExportableSublist());
-					const part2 = UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], true);
-					parts = parts.concat(part2);
+					const part2 = UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], {isEncodeBoth: true});
+					parts.push(part2);
 				}
-				parts.unshift(url);
 
 				await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
 				JqueryUtil.showCopiedEffect($btn);
 			})
 			.attr("title", "Get Link to Filters (SHIFT adds List)")
+	},
+
+	class: {
+		getIndexedEntries (cls) {
+			const out = [];
+			let scFeatureI = 0;
+			(cls.classFeatures || []).forEach((lvlFeatureList, i) => {
+				// class features
+				lvlFeatureList
+					.filter(feature => !feature.gainSubclassFeature && feature.name !== "Ability Score Improvement") // don't add "you gain a subclass feature" or ASI's
+					.forEach(feature => {
+						const name = Renderer.findName(feature);
+						if (!name) throw new Error("No name!");
+						out.push({
+							_type: "classFeature",
+							source: cls.source.source || cls.source,
+							name,
+							hash: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(`${feature.name} ${i + 1}`)}`,
+							entry: feature,
+							level: i + 1
+						})
+					});
+
+				// subclass features
+				const gainSubclassFeatures = lvlFeatureList.filter(feature => feature.gainSubclassFeature);
+				if (gainSubclassFeatures.length === 1) {
+					const gainFeatureHash = `${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(`${gainSubclassFeatures[0].name} ${i + 1}`)}`;
+					cls.subclasses.forEach(sc => {
+						const features = ((sc.subclassFeatures || [])[scFeatureI] || []);
+						features.forEach(feature => {
+							const baseSubclassUrl = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`;
+							const name = Renderer.findName(feature);
+							if (!name) throw new Error("No name!");
+							const subclassFeatureHash = `${baseSubclassUrl}${HASH_PART_SEP}${gainFeatureHash}`;
+							out.push({
+								_type: "subclassFeature",
+								name,
+								subclassShortName: sc.shortName,
+								source: sc.source.source || sc.source,
+								hash: subclassFeatureHash,
+								entry: feature,
+								level: i + 1
+							});
+
+							if (feature.entries) {
+								const namedFeatureParts = feature.entries.filter(it => it.name);
+								namedFeatureParts.forEach(it => {
+									out.push({
+										_type: "subclassFeaturePart",
+										name: it.name,
+										subclassShortName: sc.shortName,
+										source: sc.source.source || sc.source,
+										hash: subclassFeatureHash,
+										entry: feature,
+										level: i + 1
+									});
+								});
+							}
+						});
+					});
+					scFeatureI++;
+				} else if (gainSubclassFeatures.length > 1) {
+					setTimeout(() => { throw new Error(`Multiple subclass features gained at level ${i + 1} for class "${cls.name}" from source "${cls.source}"!`) });
+				}
+			});
+			return out;
+		}
 	}
 };
 
@@ -4017,19 +3914,30 @@ if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
 // SORTING =============================================================================================================
 SortUtil = {
 	ascSort: (a, b) => {
-		// to handle `FilterItem`s
-		if (a.hasOwnProperty("item") && b.hasOwnProperty("item")) {
-			return SortUtil._ascSort(a.item, b.item);
+		if (typeof FilterItem !== "undefined") {
+			if (a instanceof FilterItem) a = a.item;
+			if (b instanceof FilterItem) b = b.item;
 		}
+
 		return SortUtil._ascSort(a, b);
 	},
 
 	ascSortLower: (a, b) => {
+		if (typeof FilterItem !== "undefined") {
+			if (a instanceof FilterItem) a = a.item;
+			if (b instanceof FilterItem) b = b.item;
+		}
+
 		return SortUtil._ascSort(a.toLowerCase(), b.toLowerCase());
 	},
 
 	// warning: slow
 	ascSortNumericalSuffix (a, b) {
+		if (typeof FilterItem !== "undefined") {
+			if (a instanceof FilterItem) a = a.item;
+			if (b instanceof FilterItem) b = b.item;
+		}
+
 		function popEndNumber (str) {
 			const spl = str.split(" ");
 			return spl.last().isNumeric() ? [spl.slice(0, -1).join(" "), Number(spl.last().replace(Parser._numberCleanRegexp, ""))] : [spl.join(" "), 0];
@@ -4094,6 +4002,10 @@ SortUtil = {
 	},
 
 	ascSortCr (a, b) {
+		if (typeof FilterItem !== "undefined") {
+			if (a instanceof FilterItem) a = a.item;
+			if (b instanceof FilterItem) b = b.item;
+		}
 		// always put unknown values last
 		if (a === "Unknown" || a === undefined) a = "999";
 		if (b === "Unknown" || b === undefined) b = "999";
@@ -4173,25 +4085,45 @@ DataUtil = {
 	},
 
 	async pDoMetaMerge (data, options) {
-		if (data._meta && data._meta.dependencies) {
-			await Promise.all(Object.entries(data._meta.dependencies).map(async ([prop, sources]) => {
-				if (!data[prop]) return; // if e.g. monster dependencies are declared, but there are no monsters to merge with, bail out
+		if (data._meta) {
+			if (data._meta.dependencies) {
+				await Promise.all(Object.entries(data._meta.dependencies).map(async ([prop, sources]) => {
+					if (!data[prop]) return; // if e.g. monster dependencies are declared, but there are no monsters to merge with, bail out
 
-				const toLoads = await Promise.all(sources.map(async source => DataUtil.pGetLoadableByMeta(prop, source)));
-				const dependencyData = await Promise.all(toLoads.map(toLoad => DataUtil.loadJSON(toLoad)));
-				const flatDependencyData = dependencyData.map(dd => dd[prop]).flat();
-				await Promise.all(data[prop].map(async entry => {
-					if (entry._copy) {
-						switch (prop) {
-							case "monster": {
-								return Renderer.monster.pMergeCopy(flatDependencyData, entry, options);
+					const toLoads = await Promise.all(sources.map(async source => DataUtil.pGetLoadableByMeta(prop, source)));
+					const dependencyData = await Promise.all(toLoads.map(toLoad => DataUtil.loadJSON(toLoad)));
+					const flatDependencyData = dependencyData.map(dd => dd[prop]).flat();
+					await Promise.all(data[prop].map(async entry => {
+						if (entry._copy) {
+							switch (prop) {
+								case "monster": {
+									return Renderer.monster.pMergeCopy(flatDependencyData, entry, options);
+								}
+								default: throw new Error(`No _copy merge strategy specified for property "${prop}"`);
 							}
-							default: throw new Error(`No _copy merge strategy specified for property "${prop}"`);
 						}
-					}
+					}));
 				}));
-			}));
-			delete data._meta.dependencies;
+				delete data._meta.dependencies;
+			}
+
+			if (data._meta.internalCopies) {
+				Promise.all(data._meta.internalCopies.map(async prop => {
+					if (!data[prop]) return;
+
+					await Promise.all(data[prop].map(async entry => {
+						if (entry._copy) {
+							switch (prop) {
+								case "monster": {
+									return Renderer.monster.pMergeCopy(data[prop], entry, options);
+								}
+								default: throw new Error(`No _copy merge strategy specified for property "${prop}"`);
+							}
+						}
+					}));
+				}));
+				delete data._meta.internalCopies;
+			}
 		}
 
 		if (data._meta && data._meta.otherSources) {
@@ -4226,10 +4158,11 @@ DataUtil = {
 
 	userDownload: function (filename, data) {
 		if (typeof data !== "string") data = JSON.stringify(data, null, "\t");
-		const $a = $(`<a href="data:text/json;charset=utf-8,${encodeURIComponent(data)}" download="${filename}.json" style="display: none;">DL</a>`);
-		$(`body`).append($a);
-		$a[0].click();
-		$a.remove();
+		const a = document.createElement('a');
+		const t = new Blob([data], {type: 'text/json'});
+		a.href = URL.createObjectURL(t);
+		a.download = `${filename}.json`;
+		a.click();
 	},
 
 	getCleanFilename (filename) {
@@ -4841,13 +4774,13 @@ BrewUtil = {
 				<div id="brewlistcontainer" class="listcontainer homebrew-window dropdown-menu">
 					<h4><span>Get Homebrew</span></h4>
 					<p><i>A list of homebrew available in the public repository. Click a name to load the homebrew, or view the source directly.<br>
-					Contributions are welcome; see the <a href="https://github.com/TheGiddyLimit/homebrew/blob/master/README.md" target="_blank" rel="noopener">README</a>, or stop by our <a href="https://discord.gg/WH6kdUn" target="_blank" rel="noopener">Discord</a>.</i></p>
+					Contributions are welcome; see the <a href="https://github.com/TheGiddyLimit/homebrew/blob/master/README.md" target="_blank" rel="noopener">README</a>, or stop by our <a href="https://discord.gg/nGvRCDs" target="_blank" rel="noopener">Discord</a>.</i></p>
 					<hr class="manbrew__hr">
 					<div class="manbrew__load_all_wrp">
 						<button class="btn btn-default btn-xs manbrew__load_all" disabled title="(Excluding samples)">Add All</button>
 					</div>
 					<input type="search" class="search manbrew__search form-control" placeholder="Find homebrew..." style="width: 100%">
-					<div class="filtertools manbrew__filtertools sortlabel btn-group">
+					<div class="filtertools manbrew__filtertools sortlabel btn-group lst__form-bottom">
 						<button class="col-4 sort btn btn-default btn-xs" data-sort="name">Name</button>
 						<button class="col-3 sort btn btn-default btn-xs" data-sort="author">Author</button>
 						<button class="col-2 sort btn btn-default btn-xs" data-sort="category">Category</button>
@@ -5112,7 +5045,7 @@ BrewUtil = {
 				const $lst = $(`
 					<div id="outerbrewlistcontainer" class="listcontainer">
 						<input type="search" class="search manbrew__search form-control" placeholder="Search homebrew..." style="width: calc(100% - 3px)">
-						<div class="filtertools manbrew__filtertools sortlabel btn-group">
+						<div class="filtertools manbrew__filtertools sortlabel btn-group lst__form-bottom">
 							<button class="col-5 sort btn btn-default btn-xs" data-sort="source">Source</button>
 							<button class="col-4 sort btn btn-default btn-xs" data-sort="authors">Authors</button>
 							<button class="col-1 btn btn-default btn-xs" disabled>Origin</button>
@@ -5278,7 +5211,7 @@ BrewUtil = {
 			if (BrewUtil._filterBox) BrewUtil._filterBox.render();
 			await pRefreshBrewList();
 			window.location.hash = "";
-			if (BrewUtil._filterBox) BrewUtil._filterBox._fireValChangeEvent();
+			if (BrewUtil._filterBox) BrewUtil._filterBox.fireChangeEvent();
 		}
 	},
 
@@ -5568,12 +5501,10 @@ BrewUtil = {
 				if (toSet._totals.yes || toSet._totals.no) {
 					if (page === UrlUtil.PG_CLASSES) toSet["Core"] = 1;
 					else sourcesToAdd.forEach(src => toSet[src.json] = 1);
-
-					const toSetValues = Object.keys(toSet).filter(k => !k.startsWith("_")).filter(k => toSet[k]).map(k => `${!~toSet[k] ? "!" : ""}${k}`.toLowerCase());
-					BrewUtil._filterBox.setFromValues({Source: toSetValues});
+					BrewUtil._filterBox.setFromValues({Source: toSet});
 				}
 			}
-			BrewUtil._filterBox._fireValChangeEvent();
+			if (BrewUtil._filterBox) BrewUtil._filterBox.fireChangeEvent();
 		}
 	},
 
@@ -5674,7 +5605,7 @@ BrewUtil = {
 			Omnidexer.TO_INDEX__FROM_INDEX_JSON.filter(ti => BrewUtil.homebrew[ti.listProp]).forEach(ti => indexer.addToIndex(ti, BrewUtil.homebrew));
 			Omnidexer.TO_INDEX.filter(ti => BrewUtil.homebrew[ti.listProp]).forEach(ti => indexer.addToIndex(ti, BrewUtil.homebrew));
 		}
-		return indexer.getIndex();
+		return Omnidexer.decompressIndex(indexer.getIndex());
 	}
 };
 
@@ -5897,6 +5828,40 @@ CollectionUtil = {
 
 	setDiff (set1, set2) {
 		return new Set([...set1].filter(it => !set2.has(it)));
+	},
+
+	deepEquals (obj1, obj2) {
+		if (obj1 === null && obj2 === null) return true;
+		if ((obj1 === null && obj2 !== null) || (obj1 !== null && obj2 === null)) return false;
+
+		if (isNaN(obj1) && isNaN(obj2)) return true;
+		if ((isNaN(obj1) && !isNaN(obj2)) || (!isNaN(obj1) && isNaN(obj2))) return false;
+
+		if (obj1 === undefined && obj2 === undefined) return true;
+		if ((obj1 === undefined && obj2 !== undefined) || (obj1 !== undefined && obj2 === undefined)) return false;
+
+		const to1 = typeof obj1;
+		const to2 = typeof obj2;
+
+		if (to1 !== to2) return false;
+		switch (to1) {
+			case "object": {
+				if (obj1 instanceof Array) {
+					if (!(obj2 instanceof Array)) return false;
+					return obj1.equals(obj2);
+				} else {
+					if (obj2 instanceof Array) return true;
+					const keys1 = Object.keys(obj1);
+					const keys2 = Object.keys(obj2);
+					if (!CollectionUtil.setEq(new Set(keys1), new Set(keys2))) return false;
+					return keys1.every(k => CollectionUtil.deepEquals(obj1[k], obj2[k]));
+				}
+			}
+			case "string":
+			case "number":
+			case "boolean":
+				return obj1 === obj2;
+		}
 	}
 };
 
@@ -5915,12 +5880,28 @@ Array.prototype.filterIndex = Array.prototype.filterIndex ||
 	};
 
 Array.prototype.equals = Array.prototype.equals ||
-	function (that) {
-		if (!that) return false;
-		const len = this.length;
-		if (len !== that.length) return false;
-		for (let i = 0; i < len; ++i) {
-			if (this[i] !== that[i]) return false;
+	function (array2) {
+		const array1 = this;
+		if (!array1 && !array2) return true;
+		else if ((!array1 && array2) || (array1 && !array2)) return false;
+
+		let temp = [];
+		if ((!array1[0]) || (!array2[0])) return false;
+		if (array1.length !== array2.length) return false;
+		let key;
+		// Put all the elements from array1 into a "tagged" array
+		for (let i = 0; i < array1.length; i++) {
+			key = (typeof array1[i]) + "~" + array1[i]; // Use "typeof" so a number 1 isn't equal to a string "1".
+			if (temp[key]) temp[key]++;
+			else temp[key] = 1;
+		}
+		// Go through array2 - if same tag missing in "tagged" array, not equal
+		for (let i = 0; i < array2.length; i++) {
+			key = (typeof array2[i]) + "~" + array2[i];
+			if (temp[key]) {
+				if (temp[key] === 0) return false;
+				else temp[key]--;
+			} else return false;
 		}
 		return true;
 	};
@@ -5928,15 +5909,6 @@ Array.prototype.equals = Array.prototype.equals ||
 Array.prototype.partition = Array.prototype.partition ||
 	function (fnIsValid) {
 		return this.reduce(([pass, fail], elem) => fnIsValid(elem) ? [[...pass, elem], fail] : [pass, [...fail, elem]], [[], []]);
-	};
-
-// FIXME remove polyfill after ~March 2019
-Array.prototype.flat = Array.prototype.flat ||
-	function () {
-		function flattenDeep (arr) {
-			return arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flattenDeep(val)) : acc.concat(val), []);
-		}
-		return flattenDeep(this);
 	};
 
 // OVERLAY VIEW ========================================================================================================
@@ -6067,7 +6039,7 @@ ExcludeUtil = {
 
 	_excludeCount: 0,
 	isExcluded (name, category, source) {
-		if (!ExcludeUtil._excludes) return false;
+		if (!ExcludeUtil._excludes || !ExcludeUtil._excludes.length) return false;
 		source = source.source || source;
 		const out = !!ExcludeUtil._excludes.find(row => (row.source === "*" || row.source === source) && (row.category === "*" || row.category === category) && (row.name === "*" || row.name === name));
 		if (out) ++ExcludeUtil._excludeCount;
@@ -6216,10 +6188,50 @@ class ReactorEvent {
 	}
 }
 
+// STATE PROXY =========================================================================================================
+ProxyUtil = {
+	decorate (obj) {
+		if (obj.__hooks) return;
+
+		obj.__hooks = {};
+
+		obj._getProxy = function (toProxy, hookProp) {
+			return new Proxy(toProxy, {
+				set: (object, prop, value) => {
+					object[prop] = value;
+					if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, value));
+					return true;
+				},
+				deleteProperty: (object, prop) => {
+					delete object[prop];
+					if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, null));
+					return true;
+				}
+			});
+		};
+
+		/**
+		 * Register a hook versus a root property on the state object. **INTERNAL CHANGES TO CHILD OBJECTS ON THE STATE
+		 *   OBJECT ARE NOT TRACKED**.
+		 * @param hookProp The state object.
+		 * @param prop The root property to track.
+		 * @param hook The hook to run. Will be called with two arguments; the property and the value of the property being
+		 *   modified.
+		 */
+		obj._registerHook = function (hookProp, prop, hook) {
+			((this.__hooks[hookProp] = this.__hooks[hookProp] || {})[prop] = (this.__hooks[hookProp][prop] || [])).push(hook);
+		};
+
+		obj._resetHooks = function (hookProp) {
+			delete this.__hooks[hookProp];
+		};
+	}
+};
+
 // LEGAL NOTICE ========================================================================================================
 if (!IS_ROLL20 && typeof window !== "undefined") {
 	// add an obnoxious banner
-	// FIXME is this something we want? If so, uncomment
+	// TODO is this something we want? If so, uncomment
 	/*
 	window.addEventListener("load", async () => {
 		if (!StorageUtil.isSyncFake() && await StorageUtil.pGet("seenLegal")) return;

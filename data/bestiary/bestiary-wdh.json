@@ -2,11 +2,16 @@
 	"_meta": {
 		"dependencies": {
 			"monster": [
-				"MM"
+				"MM",
+				"VGM"
 			]
 		},
+		"internalCopies": [
+			"monster"
+		],
 		"otherSources": {
 			"monster": {
+				"MM": "WDH",
 				"VGM": "WDH"
 			}
 		}
@@ -42,7 +47,9 @@
 				"N",
 				"G"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
@@ -55,7 +62,10 @@
 					"ability": "con"
 				}
 			],
-			"languages": "Common, Primordial",
+			"languages": [
+				"Common",
+				"Primordial"
+			],
 			"senseTags": [
 				"D"
 			],
@@ -113,10 +123,17 @@
 			"resist": [
 				"acid"
 			],
-			"languages": "Common, Primordial",
+			"languages": [
+				"Common",
+				"Primordial"
+			],
 			"languageTags": [
 				"C",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"AOE"
 			]
 		},
 		{
@@ -165,7 +182,10 @@
 				"persuasion": "+5"
 			},
 			"passive": 13,
-			"languages": "Common, Infernal",
+			"languages": [
+				"Common",
+				"Infernal"
+			],
 			"cr": "1/8",
 			"senses": "",
 			"action": [
@@ -193,6 +213,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -233,9 +256,14 @@
 				"persuasion": "+5"
 			},
 			"passive": 12,
-			"languages": "Common, Elvish",
+			"languages": [
+				"Common",
+				"Elvish"
+			],
 			"cr": "0",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Fey Ancestry",
@@ -275,10 +303,13 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
-			"name": "Dining Table",
+			"name": "Dining Table Mimic",
 			"size": "L",
 			"type": {
 				"type": "monstrosity",
@@ -323,7 +354,9 @@
 			],
 			"passive": 11,
 			"cr": "3",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Shapechanger",
@@ -334,7 +367,7 @@
 				{
 					"name": "Adhesive (Object Form Only)",
 					"entries": [
-						"The mimic adheres to anything that touches it. A Huge or smaller creature adhered to the mimic is also {@condition grappled} by it (escape DC 13). Ability checks made to escape this grapple have disadvantage."
+						"The mimic adheres to anything that touches it. A Huge or smaller creature adhered to the mimic is also {@condition grappled} by it (escape {@dc 13}). Ability checks made to escape this grapple have disadvantage."
 					]
 				},
 				{
@@ -383,6 +416,9 @@
 				"B",
 				"P",
 				"A"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -439,7 +475,9 @@
 			],
 			"passive": 7,
 			"cr": "1/4",
-			"senses": "blindsight 60 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
 			"trait": [
 				{
 					"name": "Antimagic Susceptibility",
@@ -471,6 +509,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -519,7 +560,9 @@
 			],
 			"passive": 11,
 			"cr": "1/4",
-			"senses": "blindsight 60 ft.",
+			"senses": [
+				"blindsight 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Swarm",
@@ -541,6 +584,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -588,9 +634,18 @@
 				"history": "+11"
 			},
 			"passive": 12,
-			"languages": "Common, Draconic, Goblin, Infernal, Orc, Undercommon",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Goblin",
+				"Infernal",
+				"Orc",
+				"Undercommon"
+			],
 			"cr": "8",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"action": [
 				{
 					"name": "Metal Fist",
@@ -676,6 +731,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -726,9 +784,14 @@
 				"stealth": "+8"
 			},
 			"passive": 13,
-			"languages": "Elvish, Undercommon",
+			"languages": [
+				"Elvish",
+				"Undercommon"
+			],
 			"cr": "4",
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Fey Ancestry",
@@ -821,6 +884,10 @@
 				"S",
 				"P",
 				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
 			]
 		},
 		{
@@ -869,7 +936,9 @@
 				"persuasion": "+6"
 			},
 			"passive": 10,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "3",
 			"senses": "",
 			"trait": [
@@ -914,6 +983,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -945,7 +1017,9 @@
 			"cha": 2,
 			"passive": 8,
 			"cr": "0",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Water Breathing",
@@ -967,6 +1041,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1023,7 +1100,9 @@
 				"stunned",
 				"poisoned"
 			],
-			"senses": "blindsight 10 ft.",
+			"senses": [
+				"blindsight 10 ft."
+			],
 			"passive": 8,
 			"cr": "1/2",
 			"trait": [
@@ -1076,6 +1155,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1104,9 +1186,13 @@
 			"int": 10,
 			"wis": 10,
 			"cha": 4,
-			"senses": "darkvision 30 ft.",
+			"senses": [
+				"darkvision 30 ft."
+			],
 			"passive": 10,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "0",
 			"trait": [
 				{
@@ -1133,6 +1219,9 @@
 			],
 			"senseTags": [
 				"D"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1171,7 +1260,10 @@
 			"wis": 10,
 			"cha": 10,
 			"passive": 10,
-			"languages": "Common, Halfling",
+			"languages": [
+				"Common",
+				"Halfling"
+			],
 			"cr": "0",
 			"senses": "",
 			"trait": [
@@ -1239,9 +1331,14 @@
 				"fire"
 			],
 			"passive": 11,
-			"languages": "Common, Infernal",
+			"languages": [
+				"Common",
+				"Infernal"
+			],
 			"cr": "2",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Dark Devotion",
@@ -1323,6 +1420,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1371,9 +1471,14 @@
 				"fire"
 			],
 			"passive": 11,
-			"languages": "Common, Infernal",
+			"languages": [
+				"Common",
+				"Infernal"
+			],
 			"cr": "2",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Dark Devotion",
@@ -1455,6 +1560,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1503,9 +1611,14 @@
 				"fire"
 			],
 			"passive": 11,
-			"languages": "Common, Infernal",
+			"languages": [
+				"Common",
+				"Infernal"
+			],
 			"cr": "2",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Dark Devotion",
@@ -1587,6 +1700,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1638,7 +1754,12 @@
 				"history": "+6"
 			},
 			"passive": 11,
-			"languages": "Common, Draconic, Dwarvish, Elvish",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Dwarvish",
+				"Elvish"
+			],
 			"cr": "6",
 			"senses": "",
 			"trait": [
@@ -1724,6 +1845,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1773,9 +1897,14 @@
 				"performance": "+6"
 			},
 			"passive": 15,
-			"languages": "Common, Elvish",
+			"languages": [
+				"Common",
+				"Elvish"
+			],
 			"cr": "2",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Fey Ancestry",
@@ -1792,7 +1921,7 @@
 				{
 					"name": "Taunt (2/Day)",
 					"entries": [
-						"Kalain can use a bonus action on her turn to target one creature within 30 feet of it. If the target can hear Kalain, the target must succeed on a DC 12 Charisma saving throw or have disadvantage on ability checks, attack rolls, and saving throws until the start of Kalain's next turn."
+						"Kalain can use a bonus action on her turn to target one creature within 30 feet of it. If the target can hear Kalain, the target must succeed on a {@dc 12} Charisma saving throw or have disadvantage on ability checks, attack rolls, and saving throws until the start of Kalain's next turn."
 					]
 				}
 			],
@@ -1860,6 +1989,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -1914,9 +2048,13 @@
 				"poisoned"
 			],
 			"passive": 10,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "2",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "False Appearance",
@@ -1960,6 +2098,9 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2011,7 +2152,10 @@
 				"history": "+6"
 			},
 			"passive": 11,
-			"languages": "Common, Halfling",
+			"languages": [
+				"Common",
+				"Halfling"
+			],
 			"cr": "6",
 			"senses": "",
 			"trait": [
@@ -2101,6 +2245,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2146,9 +2293,14 @@
 				"perception": "+4"
 			},
 			"passive": 14,
-			"languages": "Common, Elvish",
+			"languages": [
+				"Common",
+				"Elvish"
+			],
 			"cr": "2",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Fey Ancestry",
@@ -2214,6 +2366,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2260,9 +2415,14 @@
 				"stealth": "+5"
 			},
 			"passive": 14,
-			"languages": "Elvish, Undercommon",
+			"languages": [
+				"Elvish",
+				"Undercommon"
+			],
 			"cr": "7",
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Fey Ancestry",
@@ -2277,9 +2437,9 @@
 					]
 				},
 				{
-					"name": "Special equipment",
+					"name": "Special Equipment",
 					"entries": [
-						"Nar'l carries a vial containing three doses of eyescratch, a contact poison. A creature that comes into contact with the poison must succeed on a DC 14 Constitution saving throw or be {@condition poisoned} for 1 hour and {@condition blinded} while {@condition poisoned} in this way. A lesser restoration spell or similar magic ends the effect."
+						"Nar'l carries a vial containing three doses of eyescratch, a contact poison. A creature that comes into contact with the poison must succeed on a {@dc 14} Constitution saving throw or be {@condition poisoned} for 1 hour and {@condition blinded} while {@condition poisoned} in this way. A lesser restoration spell or similar magic ends the effect."
 					]
 				}
 			],
@@ -2388,6 +2548,9 @@
 			"damageTags": [
 				"B",
 				"I"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2434,9 +2597,14 @@
 				"poison"
 			],
 			"passive": 10,
-			"languages": "Common, Dwarvish",
+			"languages": [
+				"Common",
+				"Dwarvish"
+			],
 			"cr": "1/2",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Pack Tactics",
@@ -2493,6 +2661,11 @@
 			"damageTags": [
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -2532,9 +2705,13 @@
 				"perception": "+3"
 			},
 			"passive": 13,
-			"languages": "Aquan",
+			"languages": [
+				"Aquan"
+			],
 			"cr": "5",
-			"senses": "blindsight 60 ft.",
+			"senses": [
+				"blindsight 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Blood Frenzy",
@@ -2568,6 +2745,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2616,7 +2796,9 @@
 				"persuasion": "+5"
 			},
 			"passive": 12,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "1/8",
 			"senses": "",
 			"action": [
@@ -2643,6 +2825,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2683,7 +2868,10 @@
 				"poison"
 			],
 			"passive": 10,
-			"languages": "Common, Dwarvish",
+			"languages": [
+				"Common",
+				"Dwarvish"
+			],
 			"cr": "1/4",
 			"senses": "",
 			"trait": [
@@ -2737,6 +2925,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2778,9 +2969,14 @@
 				"history": "+4"
 			},
 			"passive": 10,
-			"languages": "Common, Gnomish",
+			"languages": [
+				"Common",
+				"Gnomish"
+			],
 			"cr": "1/4",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Gnome Cunning",
@@ -2835,6 +3031,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2878,7 +3077,10 @@
 				"fire"
 			],
 			"passive": 10,
-			"languages": "Common, Draconic",
+			"languages": [
+				"Common",
+				"Draconic"
+			],
 			"cr": "2",
 			"senses": "",
 			"trait": [
@@ -2899,7 +3101,7 @@
 				{
 					"name": "Breath Weapon (1/Day)",
 					"entries": [
-						"Thrakkus can use his action to exhale a 15-foot cone of fire. Each creature in the cone must make a DC 13 Dexterity saving throw, taking 6 ({@damage 2d6}) fire damage on a failed save, or half as much damage on a successful one."
+						"Thrakkus can use his action to exhale a 15-foot cone of fire. Each creature in the cone must make a {@dc 13} Dexterity saving throw, taking 6 ({@damage 2d6}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -2913,6 +3115,10 @@
 			"damageTags": [
 				"S",
 				"F"
+			],
+			"miscTags": [
+				"MW",
+				"AOE"
 			]
 		},
 		{
@@ -2969,7 +3175,11 @@
 				"poison"
 			],
 			"passive": 13,
-			"languages": "Common, Orc, Thieves' cant",
+			"languages": [
+				"Common",
+				"Orc",
+				"Thieves' cant"
+			],
 			"cr": "8",
 			"senses": "",
 			"trait": [
@@ -3002,13 +3212,13 @@
 				{
 					"name": "Shortsword",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage, and the target must make a DC 15 Constitution saving throw, taking 24 ({@damage 7d6}) poison damage on a failed save, or half as much damage on a successful one."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage, and the target must make a {@dc 15} Constitution saving throw, taking 24 ({@damage 7d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Light Crossbow",
 					"entries": [
-						"{@atk rw} {@hit 6} to hit, range 80/320 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage, and the target must make a DC 15 Constitution saving throw, taking 24 ({@damage 7d6}) poison damage on a failed save, or half as much damage on a successful one."
+						"{@atk rw} {@hit 6} to hit, range 80/320 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage, and the target must make a {@dc 15} Constitution saving throw, taking 24 ({@damage 7d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -3026,6 +3236,11 @@
 			"damageTags": [
 				"P",
 				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -3073,7 +3288,10 @@
 				"lightning"
 			],
 			"passive": 13,
-			"languages": "Common, Draconic",
+			"languages": [
+				"Common",
+				"Draconic"
+			],
 			"cr": "2",
 			"senses": "",
 			"trait": [
@@ -3088,7 +3306,7 @@
 				{
 					"name": "Breathe Weapon",
 					"entries": [
-						"Valetta can use her action to exhale a 5-foot-wide, 30-foot line of lightning (but can't do this again until she finishes a short or long rest); each creature in the line must make a DC 11 Dexterity saving throw, taking {@dice 2d6} lightning damage on a failed save, or half as much damage on a successful one."
+						"Valetta can use her action to exhale a 5-foot-wide, 30-foot line of lightning (but can't do this again until she finishes a short or long rest); each creature in the line must make a {@dc 11} Dexterity saving throw, taking {@dice 2d6} lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
@@ -3148,6 +3366,10 @@
 			"damageTags": [
 				"B",
 				"R"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
 			]
 		},
 		{
@@ -3190,9 +3412,14 @@
 				"intimidation": "+2"
 			},
 			"passive": 10,
-			"languages": "Common, Orc",
+			"languages": [
+				"Common",
+				"Orc"
+			],
 			"cr": "1/2",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Relentless Endurance",
@@ -3249,6 +3476,11 @@
 			"damageTags": [
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -3292,9 +3524,14 @@
 				"intimidation": "+2"
 			},
 			"passive": 10,
-			"languages": "Common, Orc",
+			"languages": [
+				"Common",
+				"Orc"
+			],
 			"cr": "1/2",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Pack Tactics",
@@ -3345,6 +3582,11 @@
 			"damageTags": [
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -3374,7 +3616,9 @@
 			"wis": 11,
 			"cha": 7,
 			"passive": 10,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "1/4",
 			"senses": "",
 			"action": [
@@ -3390,6 +3634,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3428,9 +3675,14 @@
 				"poison"
 			],
 			"passive": 13,
-			"languages": "Common, Dwarvish",
+			"languages": [
+				"Common",
+				"Dwarvish"
+			],
 			"cr": "0",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Dwarven Resilience",
@@ -3456,6 +3708,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3504,7 +3759,9 @@
 				"intimidation": "+4"
 			},
 			"passive": 12,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "3",
 			"senses": "",
 			"action": [
@@ -3542,6 +3799,11 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -3589,12 +3851,17 @@
 				"poison"
 			],
 			"passive": 10,
-			"languages": "Common, Dwarvish",
+			"languages": [
+				"Common",
+				"Dwarvish"
+			],
 			"cr": "1/8",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
-					"name": "Dwarven resilience",
+					"name": "Dwarven Resilience",
 					"entries": [
 						"Ott has advantage on saving throws against poison and resistance to poison damage."
 					]
@@ -3623,6 +3890,9 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3665,7 +3935,10 @@
 				"stealth": "+5"
 			},
 			"passive": 13,
-			"languages": "Common, Halfling",
+			"languages": [
+				"Common",
+				"Halfling"
+			],
 			"cr": "3",
 			"senses": "",
 			"trait": [
@@ -3702,9 +3975,9 @@
 						{
 							"type": "list",
 							"items": [
-								"The target must succeed on a DC 13 Strength saving throw or drop one item it is holding (adept's choice).",
-								"The target must succeed on a DC 13 Dexterity saving throw or be knocked {@condition prone}.",
-								"The target must succeed on a DC 13 Constitution saving throw or be {@condition stunned} until the end of the adept's next turn."
+								"The target must succeed on a {@dc 13} Strength saving throw or drop one item it is holding (adept's choice).",
+								"The target must succeed on a {@dc 13} Dexterity saving throw or be knocked {@condition prone}.",
+								"The target must succeed on a {@dc 13} Constitution saving throw or be {@condition stunned} until the end of the adept's next turn."
 							]
 						}
 					]
@@ -3734,6 +4007,11 @@
 			"damageTags": [
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -3785,7 +4063,10 @@
 				"history": "+6"
 			},
 			"passive": 11,
-			"languages": "Common, Halfling",
+			"languages": [
+				"Common",
+				"Halfling"
+			],
 			"cr": "6",
 			"senses": "",
 			"trait": [
@@ -3875,6 +4156,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3924,9 +4208,15 @@
 				}
 			],
 			"passive": 12,
-			"languages": "Common, Halfling, Thieves' cant",
+			"languages": [
+				"Common",
+				"Halfling",
+				"Thieves' cant"
+			],
 			"cr": "2",
-			"senses": "darkvision 60 ft. (rat form only)",
+			"senses": [
+				"darkvision 60 ft. (rat form only)"
+			],
 			"trait": [
 				{
 					"name": "Shapechanger",
@@ -3963,7 +4253,7 @@
 				{
 					"name": "Bite (Rat or Hybrid Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage. If the target is a humanoid, it must succeed on a DC 11 Constitution saving throw or be cursed with wererat lycanthropy."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage. If the target is a humanoid, it must succeed on a {@dc 11} Constitution saving throw or be cursed with wererat lycanthropy."
 					]
 				},
 				{
@@ -3993,10 +4283,15 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
-			"name": "Rishaal",
+			"name": "Rishaal the Page-Turner",
 			"isNpc": true,
 			"size": "M",
 			"type": {
@@ -4043,14 +4338,19 @@
 				"fire"
 			],
 			"passive": 11,
-			"languages": "Common, Draconic, Dwarvish, Elvish",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Dwarvish",
+				"Elvish"
+			],
 			"cr": "6",
 			"senses": "",
 			"action": [
 				{
 					"name": "Breath Weapon",
 					"entries": [
-						"Rishaal can use his action to exhale a 15-foot cone of fire (but can't do this again until he finishes a short or long rest); each creature in the cone must make a DC 10 Dexterity saving throw, taking {@dice 2d6} fire damage on a failed save, or half as much damage on a successful one."
+						"Rishaal can use his action to exhale a 15-foot cone of fire (but can't do this again until he finishes a short or long rest); each creature in the cone must make a {@dc 10} Dexterity saving throw, taking {@dice 2d6} fire damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
@@ -4127,6 +4427,10 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
 			]
 		},
 		{
@@ -4175,9 +4479,15 @@
 				"perception": "+4"
 			},
 			"passive": 14,
-			"languages": "Druidic, Common, Elvish",
+			"languages": [
+				"Druidic",
+				"Common",
+				"Elvish"
+			],
 			"cr": "2",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Fey Ancestry",
@@ -4244,6 +4554,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4279,9 +4592,14 @@
 			"wis": 10,
 			"cha": 10,
 			"passive": 10,
-			"languages": "Common, Elvish",
+			"languages": [
+				"Common",
+				"Elvish"
+			],
 			"cr": "0",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Fey Ancestry",
@@ -4310,6 +4628,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4349,9 +4670,14 @@
 				"history": "+4"
 			},
 			"passive": 10,
-			"languages": "Common, Orc",
+			"languages": [
+				"Common",
+				"Orc"
+			],
 			"cr": "1/4",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Relentless Endurance",
@@ -4406,6 +4732,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4458,9 +4787,15 @@
 				"poison"
 			],
 			"passive": 16,
-			"languages": "Common, Dwarvish, Undercommon",
+			"languages": [
+				"Common",
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "9",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Dwarven Resilience",
@@ -4521,6 +4856,11 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -4577,7 +4917,12 @@
 				"poisoned"
 			],
 			"passive": 11,
-			"languages": "Common, Draconic, Elvish, Infernal",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Elvish",
+				"Infernal"
+			],
 			"cr": "5",
 			"senses": "",
 			"action": [
@@ -4592,7 +4937,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Ammalia is a 9th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). She has the following wizard spells prepared:"
+						"Ammalia is a 9th-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). She has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -4655,6 +5000,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4705,7 +5053,12 @@
 				"perception": "+4"
 			},
 			"passive": 14,
-			"languages": "Common, Draconic, Dwarvish, Halfling",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Dwarvish",
+				"Halfling"
+			],
 			"cr": "2",
 			"senses": "",
 			"trait": [
@@ -4728,7 +5081,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Barnibus is a 7th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 13, {@hit 5} to hit with spell attacks) He has the following wizard spells prepared:"
+						"Barnibus is a 7th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 13}, {@hit 5} to hit with spell attacks) He has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -4785,6 +5138,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -4836,7 +5194,10 @@
 				"stealth": "+7"
 			},
 			"passive": 13,
-			"languages": "Common, Thieves' cant",
+			"languages": [
+				"Common",
+				"Thieves' cant"
+			],
 			"cr": "5",
 			"senses": "",
 			"trait": [
@@ -4899,6 +5260,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -4949,9 +5315,16 @@
 				"performance": "+6"
 			},
 			"passive": 14,
-			"languages": "Common, Draconic, Dwarvish, Elvish",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Dwarvish",
+				"Elvish"
+			],
 			"cr": "6",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Fey Ancestry",
@@ -4972,7 +5345,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Davil is a 12th-level spellcaster. His spellcasting ability is Charisma (spell save DC 14, {@hit 6} to hit with spell attacks) He has the following bard spells prepared:"
+						"Davil is a 12th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 14}, {@hit 6} to hit with spell attacks) He has the following bard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -5049,6 +5422,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -5097,9 +5473,14 @@
 				"stealth": "+8"
 			},
 			"passive": 13,
-			"languages": "Elvish, Undercommon",
+			"languages": [
+				"Elvish",
+				"Undercommon"
+			],
 			"cr": "4",
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Fey Ancestry",
@@ -5144,7 +5525,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The drow's spellcasting ability is Charisma (spell save DC 12) It can innately cast the following spells, requiring no material components:"
+						"The drow's spellcasting ability is Charisma (spell save {@dc 12}) It can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell dancing lights}"
@@ -5179,6 +5560,10 @@
 			"damageTags": [
 				"P",
 				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
 			]
 		},
 		{
@@ -5226,7 +5611,10 @@
 				"perception": "+5"
 			},
 			"passive": 15,
-			"languages": "Common, Dwarvish",
+			"languages": [
+				"Common",
+				"Dwarvish"
+			],
 			"cr": "9",
 			"senses": "",
 			"trait": [
@@ -5279,6 +5667,10 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
 			]
 		},
 		{
@@ -5322,7 +5714,9 @@
 				"perception": "+3"
 			},
 			"passive": 13,
-			"languages": "any one language (usually Common)",
+			"languages": [
+				"any one language (usually Common)"
+			],
 			"cr": "2",
 			"senses": "",
 			"action": [
@@ -5351,6 +5745,10 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -5407,7 +5805,9 @@
 				"poisoned"
 			],
 			"passive": 15,
-			"languages": "all spoken languages",
+			"languages": [
+				"all spoken languages"
+			],
 			"cr": "16",
 			"senses": "",
 			"trait": [
@@ -5441,9 +5841,9 @@
 					"name": "Unarmed Strike",
 					"entries": [
 						"{@atk mw} {@hit 12} to hit, reach 5 ft., one target. {@h}12 ({@dice 1d10 + 7}) bludgeoning, magic damage. If the target is a creature, Hlam can choose one of the following additional effects:",
-						"The target must succeed on a DC 18 Strength saving throw or drop one item it is holding (Hlam's choice).",
-						"The target must succeed on a DC 18 Dexterity saving throw or be knocked {@condition prone}.",
-						"The target must succeed on a DC 18 Constitution saving throw or be {@condition stunned} until the end of Hlam's next turn."
+						"The target must succeed on a {@dc 18} Strength saving throw or drop one item it is holding (Hlam's choice).",
+						"The target must succeed on a {@dc 18} Dexterity saving throw or be knocked {@condition prone}.",
+						"The target must succeed on a {@dc 18} Constitution saving throw or be {@condition stunned} until the end of Hlam's next turn."
 					]
 				},
 				{
@@ -5455,7 +5855,7 @@
 				{
 					"name": "Quivering Palm {@recharge}",
 					"entries": [
-						"{@atk mw} {@hit 12} to hit, reach 5 ft., one creature. {@h}The target must make a DC 18 Constitution saving throw. On a failed save, the target is reduced to 0 hit points. On a successful save, the target takes 55 ({@damage 10d10}) necrotic damage."
+						"{@atk mw} {@hit 12} to hit, reach 5 ft., one creature. {@h}The target must make a {@dc 18} Constitution saving throw. On a failed save, the target is reduced to 0 hit points. On a successful save, the target takes 55 ({@damage 10d10}) necrotic damage."
 					]
 				},
 				{
@@ -5489,7 +5889,7 @@
 				{
 					"name": "Deflect Missile",
 					"entries": [
-						"In response to being hit by a ranged weapon attack, Hlam deflects the missile. The damage he takes from the attack is reduced by {@dice 1d10    +    27}. If the damage is reduced to 0, Hlam catches the missile if it's small enough to hold in one hand and he has a hand free."
+						"In response to being hit by a ranged weapon attack, Hlam deflects the missile. The damage he takes from the attack is reduced by {@dice 1d10 + 27}. If the damage is reduced to 0, Hlam catches the missile if it's small enough to hold in one hand and he has a hand free."
 					]
 				},
 				{
@@ -5503,7 +5903,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Hlam is a 5th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 18, {@hit 10} to hit with spell attacks) He has the following cleric spells prepared:"
+						"Hlam is a 5th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc 18}, {@hit 10} to hit with spell attacks) He has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -5556,6 +5956,11 @@
 			"damageTags": [
 				"P",
 				"N"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -5600,9 +6005,14 @@
 				"perception": "+5"
 			},
 			"passive": 15,
-			"languages": "Common, Orc",
+			"languages": [
+				"Common",
+				"Orc"
+			],
 			"cr": "5",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Indomitable (2/Day)",
@@ -5649,6 +6059,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -5700,9 +6113,14 @@
 				"poison"
 			],
 			"passive": 13,
-			"languages": "Common, Dwarvish",
+			"languages": [
+				"Common",
+				"Dwarvish"
+			],
 			"cr": "8",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Dwarven Resilience",
@@ -5735,7 +6153,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Istrid is a 9th-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 14, {@hit 6} to hit with spell attacks) She has the following cleric spells prepared:"
+						"Istrid is a 9th-level spellcaster. Her spellcasting ability is Wisdom (spell save {@dc 14}, {@hit 6} to hit with spell attacks) She has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -5812,6 +6230,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -5861,7 +6282,10 @@
 				"survival": "+4"
 			},
 			"passive": 12,
-			"languages": "Common, Elvish",
+			"languages": [
+				"Common",
+				"Elvish"
+			],
 			"cr": "4",
 			"senses": "",
 			"trait": [
@@ -5916,6 +6340,9 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -5969,9 +6396,18 @@
 				"stealth": "+16"
 			},
 			"passive": 18,
-			"languages": "Abyssal, Common, Draconic, Dwarvish, Elvish, Undercommon",
+			"languages": [
+				"Abyssal",
+				"Common",
+				"Draconic",
+				"Dwarvish",
+				"Elvish",
+				"Undercommon"
+			],
 			"cr": "15",
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Special Equipment",
@@ -6060,7 +6496,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Jarlaxle's innate spellcasting ability is Charisma (spell save DC 17, {@hit 9} to hit with spell attacks) He can innately cast the following spells, requiring no material components:"
+						"Jarlaxle's innate spellcasting ability is Charisma (spell save {@dc 17}, {@hit 9} to hit with spell attacks) He can innately cast the following spells, requiring no material components:"
 					],
 					"will": [
 						"{@spell dancing lights}"
@@ -6101,6 +6537,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -6161,9 +6602,18 @@
 				"poisoned"
 			],
 			"passive": 21,
-			"languages": "Common, Draconic, Dwarvish, Elvish, Giant, Infernal",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Dwarvish",
+				"Elvish",
+				"Giant",
+				"Infernal"
+			],
 			"cr": "17",
-			"senses": "truesight 60 ft.",
+			"senses": [
+				"truesight 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Special Equipment",
@@ -6188,7 +6638,7 @@
 				{
 					"name": "Silver Hair",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 5 ft., one target. {@h}7 ({@damage 2d6}) force damage, and the target must succeed on a DC 19 Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"{@atk mw} {@hit 11} to hit, reach 5 ft., one target. {@h}7 ({@damage 2d6}) force damage, and the target must succeed on a {@dc 19} Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				},
 				{
@@ -6216,7 +6666,7 @@
 							"items": [
 								"Cast the {@spell cure wounds} spell. The target regains {@dice 1d8 + 5} hit points. After Laeral takes this action, roll a {@dice d6}. On a roll of 1, the silver fire disappears.",
 								"Cast the {@spell revivify} spell without material components. After Laeral takes this action, roll a {@dice d6}. On a roll of 1-2, the silver fire disappears.",
-								"Release a 60-foot line of silver fire that is 5 feet wide or a 30-foot cone of silver fire. Objects in the area that aren't being worn or carried take 26 ({@damage 4d12}) fire damage. Each creature in the area must succeed on a DC 21 Dexterity saving throw, taking 26 ({@damage 4d12}) fire damage on a failed save, or half as much damage on a successful one. After Laeral takes this action, roll a {@dice d6}. On a roll of 1-3, the silver fire disappears."
+								"Release a 60-foot line of silver fire that is 5 feet wide or a 30-foot cone of silver fire. Objects in the area that aren't being worn or carried take 26 ({@damage 4d12}) fire damage. Each creature in the area must succeed on a {@dc 21} Dexterity saving throw, taking 26 ({@damage 4d12}) fire damage on a failed save, or half as much damage on a successful one. After Laeral takes this action, roll a {@dice d6}. On a roll of 1-3, the silver fire disappears."
 							]
 						}
 					]
@@ -6226,7 +6676,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Laeral is a 19th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 21, {@hit 13} to hit with spell attacks). Laeral has the following wizard spells prepared:"
+						"Laeral is a 19th-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 21}, {@hit 13} to hit with spell attacks). Laeral has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -6333,6 +6783,10 @@
 				"O",
 				"S",
 				"F"
+			],
+			"miscTags": [
+				"MW",
+				"AOE"
 			]
 		},
 		{
@@ -6386,9 +6840,18 @@
 				"history": "+11"
 			},
 			"passive": 12,
-			"languages": "Common, Draconic, Goblin, Infernal, Orc, Undercommon",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Goblin",
+				"Infernal",
+				"Orc",
+				"Undercommon"
+			],
 			"cr": "13",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Special Equipment",
@@ -6421,7 +6884,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Manshoon is an 18th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 21, {@hit 15} to hit with spell attacks). He has the following wizard spells prepared:"
+						"Manshoon is an 18th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 21}, {@hit 15} to hit with spell attacks). He has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -6526,6 +6989,9 @@
 			"damageTags": [
 				"B",
 				"O"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -6574,9 +7040,15 @@
 				"survival": "+6"
 			},
 			"passive": 12,
-			"languages": "Common, Deep Speech, telepathy 60 ft.",
+			"languages": [
+				"Common",
+				"Deep Speech",
+				"telepathy 60 ft."
+			],
 			"cr": "9",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Special Equipment",
@@ -6675,7 +7147,10 @@
 				"stealth": "+8"
 			},
 			"passive": 15,
-			"languages": "Common, Dwarvish",
+			"languages": [
+				"Common",
+				"Dwarvish"
+			],
 			"cr": "9",
 			"senses": "",
 			"trait": [
@@ -6747,6 +7222,9 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -6803,9 +7281,13 @@
 				"poisoned"
 			],
 			"passive": 12,
-			"languages": "understands one language known to its creator but can't speak",
+			"languages": [
+				"understands one language known to its creator but can't speak"
+			],
 			"cr": "4",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Magic Resistance",
@@ -6876,6 +7358,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -6926,9 +7411,17 @@
 				"persuasion": "+7"
 			},
 			"passive": 12,
-			"languages": "Common, Draconic, Dwarvish, Elvish, Halfling",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Dwarvish",
+				"Elvish",
+				"Halfling"
+			],
 			"cr": "9",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Special Equipment",
@@ -6961,7 +7454,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Remallia is a 13th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 16, {@hit 8} to hit with spell attacks). She has the following wizard spells prepared:"
+						"Remallia is a 13th-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 16}, {@hit 8} to hit with spell attacks). She has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -7047,6 +7540,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -7097,9 +7593,16 @@
 				"performance": "+5"
 			},
 			"passive": 14,
-			"languages": "Abyssal, Common, Gnomish, Undercommon",
+			"languages": [
+				"Abyssal",
+				"Common",
+				"Gnomish",
+				"Undercommon"
+			],
 			"cr": "6",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Gnome Cunning",
@@ -7120,7 +7623,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Skeemo is a 9th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks) He has the following wizard spells prepared:"
+						"Skeemo is a 9th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks) He has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -7186,6 +7689,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -7234,7 +7740,9 @@
 				"perception": "+6"
 			},
 			"passive": 16,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "9",
 			"senses": "",
 			"trait": [
@@ -7286,6 +7794,11 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -7338,7 +7851,14 @@
 				"history": "+10"
 			},
 			"passive": 10,
-			"languages": "Common, Dwarvish, Elvish, Giant, Halfling, Undercommon",
+			"languages": [
+				"Common",
+				"Dwarvish",
+				"Elvish",
+				"Giant",
+				"Halfling",
+				"Undercommon"
+			],
 			"cr": "13",
 			"senses": "",
 			"trait": [
@@ -7373,7 +7893,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Vajra is an 18th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 18, {@hit 12} to hit with spell attacks). She has the following wizard spells prepared:"
+						"Vajra is an 18th-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 18}, {@hit 12} to hit with spell attacks). She has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -7473,6 +7993,9 @@
 			],
 			"damageTags": [
 				"O"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -7530,9 +8053,16 @@
 				"poisoned"
 			],
 			"passive": 13,
-			"languages": "Common, Draconic, Elvish, Infernal",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Elvish",
+				"Infernal"
+			],
 			"cr": "10",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"trait": [
 				{
 					"name": "Special Equipment",
@@ -7549,7 +8079,7 @@
 				{
 					"name": "Rod of Rulership",
 					"entries": [
-						"Victoro can use an action to present the rod and command obedience from each creature of his choice that he can see within 120 feet of him. Each target must succeed on a DC 15 Wisdom saving throw or be {@condition charmed} for 8 hours by Victoro. While {@condition charmed} in this way, the creature regards Victoro as its trusted leader. If harmed by Victoro or his companions, or commanded to do something contrary to its nature, a target ceases to be {@condition charmed} in this way. The rod can't be used again until the next dawn."
+						"Victoro can use an action to present the rod and command obedience from each creature of his choice that he can see within 120 feet of him. Each target must succeed on a {@dc 15} Wisdom saving throw or be {@condition charmed} for 8 hours by Victoro. While {@condition charmed} in this way, the creature regards Victoro as its trusted leader. If harmed by Victoro or his companions, or commanded to do something contrary to its nature, a target ceases to be {@condition charmed} in this way. The rod can't be used again until the next dawn."
 					]
 				}
 			],
@@ -7583,7 +8113,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Victoro is a 15th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 15, {@hit 7} to hit with spell attacks). Victoro has the following cleric spells prepared:"
+						"Victoro is a 15th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc 15}, {@hit 7} to hit with spell attacks). Victoro has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -7687,6 +8217,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -7747,12 +8280,14 @@
 			],
 			"passive": 10,
 			"cr": "18",
-			"senses": "truesight 120 ft.",
+			"senses": [
+				"truesight 120 ft."
+			],
 			"trait": [
 				{
 					"name": "Crumbling Colossus",
 					"entries": [
-						"When the statue drops to 0 hit points, it crumbles and is destroyed. Any creature on the ground within 30 feet of the crumbling statue must make a DC 22 Dexterity saving throw, taking 22 ({@damage 4d10}) bludgeoning damage on a failed save, or half as much damage on a successful one."
+						"When the statue drops to 0 hit points, it crumbles and is destroyed. Any creature on the ground within 30 feet of the crumbling statue must make a {@dc 22} Dexterity saving throw, taking 22 ({@damage 4d10}) bludgeoning damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
@@ -7807,6 +8342,10 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
 			]
 		},
 		{
@@ -7857,9 +8396,14 @@
 				"survival": "+5"
 			},
 			"passive": 12,
-			"languages": "Common, Orc",
+			"languages": [
+				"Common",
+				"Orc"
+			],
 			"cr": "8",
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"action": [
 				{
 					"name": "Multiattack",
@@ -7882,7 +8426,7 @@
 				{
 					"name": "Dreadful Aspect (Recharges after a Short or Long Rest)",
 					"entries": [
-						"Ziraj exudes magical menace. Each enemy within 30 feet of him must succeed on a DC 13 Wisdom saving throw or be {@condition frightened} for 1 minute of Ziraj. If a {@condition frightened} enemy ends its turn more than 30 feet away from Ziraj, the enemy can repeat the saving throw, ending the effect on itself on a success."
+						"Ziraj exudes magical menace. Each enemy within 30 feet of him must succeed on a {@dc 13} Wisdom saving throw or be {@condition frightened} for 1 minute of Ziraj. If a {@condition frightened} enemy ends its turn more than 30 feet away from Ziraj, the enemy can repeat the saving throw, ending the effect on itself on a success."
 					]
 				}
 			],
@@ -7935,7 +8479,664 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
+		},
+		{
+			"name": "Aurinax",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Adult Gold Dragon",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the dragon",
+						"with": "Aurinax",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Blinded Troll",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Troll",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Blinded",
+							"entries": [
+								"The troll is wearing an eyeless helm, and is {@condition blinded}."
+							]
+						}
+					}
+				}
+			},
+			"speed": {
+				"walk": 20
+			},
+			"cr": "4"
+		},
+		{
+			"name": "Bonnie",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Doppelganger",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the doppelganger",
+						"with": "Bonnie",
+						"flags": "i"
+					}
+				}
+			},
+			"speed": {
+				"walk": 20
+			},
+			"cr": "4"
+		},
+		{
+			"name": "Diatryma",
+			"source": "WDH",
+			"_copy": {
+				"name": "Axe Beak",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "axe beak",
+						"with": "diatryma"
+					}
+				}
+			},
+			"action": [
+				{
+					"name": "Beak",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage."
+					]
+				}
+			],
+			"damageTags": [
+				"P"
+			]
+		},
+		{
+			"name": "Elzerina Cassalanter",
+			"size": "S",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"isNpc": true,
+			"source": "WDH",
+			"ac": [
+				10
+			],
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"alignment": [
+				"N"
+			],
+			"hp": {
+				"special": "1"
+			},
+			"passive": 10,
+			"cr": "Unknown",
+			"languages": [
+				"Common"
+			],
+			"languageTags": [
+				"C"
+			]
+		},
+		{
+			"name": "Terenzio Cassalanter",
+			"size": "S",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"isNpc": true,
+			"source": "WDH",
+			"ac": [
+				10
+			],
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"alignment": [
+				"N"
+			],
+			"hp": {
+				"special": "1"
+			},
+			"passive": 10,
+			"cr": "Unknown",
+			"languages": [
+				"Common"
+			],
+			"languageTags": [
+				"C"
+			]
+		},
+		{
+			"name": "Emmek Frewn",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Falcon",
+			"source": "WDH",
+			"_copy": {
+				"name": "Hawk",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "hawk",
+						"with": "falcon",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Fel'rekt Lafeen",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Drow Gunslinger",
+				"source": "WDH",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the drow",
+						"with": "Fel'rekt",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"G"
+			]
+		},
+		{
+			"name": "Krebbyg Masq'il'yr",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Drow Gunslinger",
+				"source": "WDH",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the drow",
+						"with": "Krebbyg",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"N"
+			]
+		},
+		{
+			"name": "Floon Blagmaar",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"alignment": [
+				"N",
+				"G"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Grinda Garloth",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mage",
+						"with": "Grinda",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"N"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"languages": [
+				"Common",
+				"Dwarvish",
+				"Halfling",
+				"Undercommon"
+			],
+			"languageTags": [
+				"C",
+				"D",
+				"H",
+				"U"
+			]
+		},
+		{
+			"name": "Hester Barch",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Acolyte",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the acolyte",
+						"with": "Hester",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"skill": {
+				"medicine": "+4",
+				"religion": "+2",
+				"insight": "+4"
+			}
+		},
+		{
+			"name": "Jenks",
+			"size": "S",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"isNpc": true,
+			"source": "WDH",
+			"ac": [
+				10
+			],
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"alignment": [
+				"N"
+			],
+			"hp": {
+				"special": 1
+			},
+			"passive": 10,
+			"cr": "Unknown"
+		},
+		{
+			"name": "Nat",
+			"size": "S",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"isNpc": true,
+			"source": "WDH",
+			"ac": [
+				10
+			],
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"alignment": [
+				"N"
+			],
+			"hp": {
+				"special": 1
+			},
+			"passive": 10,
+			"cr": "Unknown"
+		},
+		{
+			"name": "Squiddly",
+			"size": "S",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"tiefling"
+				]
+			},
+			"isNpc": true,
+			"source": "WDH",
+			"ac": [
+				10
+			],
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"alignment": [
+				"N"
+			],
+			"hp": {
+				"special": 1
+			},
+			"passive": 10,
+			"cr": "Unknown"
+		},
+		{
+			"name": "Mattrim \"Threestrings\" Mereg",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Bard",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the bard",
+						"with": "Mattrim",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Mechanical Bird",
+			"size": "T",
+			"type": "construct",
+			"isNpc": true,
+			"source": "WDH",
+			"ac": [
+				15
+			],
+			"speed": {
+				"fly": 60
+			},
+			"str": 10,
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"alignment": [
+				"N"
+			],
+			"hp": {
+				"special": 1
+			},
+			"passive": 10,
+			"cr": "Unknown",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"action": [
+				{
+					"name": "Slam",
+					"entries": [
+						"{@atk mw} {@hit 0} to hit, reach 5 ft., one target. {@h}2 ({@damage 1d3}) piercing damage, and the bird is destroyed by the impact."
+					]
+				}
+			],
+			"miscTags": [
+				"MW"
+			],
+			"damageTags": [
+				"P"
+			]
+		},
+		{
+			"name": "Nihiloor",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Mind Flayer",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mind flayer",
+						"with": "Nihiloor",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Obaya Uday",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Priest",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the priest",
+						"with": "Obaya",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"G"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Osvaldo Cassalanter",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Chain Devil",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the devil",
+						"with": "Osvaldo",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Samara Strongbones",
+			"isNpc": true,
+			"source": "WDH",
+			"_copy": {
+				"name": "Spy",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the spy",
+						"with": "Samara",
+						"flags": "i"
+					}
+				},
+				"_trait": {
+					"name": "Stout Halfling",
+					"source": "PHB"
+				}
+			},
+			"languageTags": [
+				"X",
+				"H"
+			]
+		},
+		{
+			"name": "Sergeant",
+			"source": "WDH",
+			"_copy": {
+				"name": "Guard",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Vincent Trench",
+			"source": "WDH",
+			"_copy": {
+				"name": "Rakshasa",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the rakshasa",
+						"with": "Vincent",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Willifort Crowelle",
+			"source": "WDH",
+			"_copy": {
+				"name": "Doppelganger",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the doppelganger",
+						"with": "Willifort",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Xanathar",
+			"source": "WDH",
+			"_copy": {
+				"name": "Beholder",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the beholder",
+						"with": "Xanathar",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Special Equipment",
+							"entries": [
+								"Xanathar wears a {@item ring of invisibility}, a {@item ring of mind shielding}, and a {@item ring of force resistance|DMG|ring of resistance (force)}."
+							]
+						}
+					}
+				}
+			}
 		}
 	]
 }

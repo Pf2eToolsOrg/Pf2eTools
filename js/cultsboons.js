@@ -33,8 +33,9 @@ async function onJsonLoad (data) {
 		typeFilter
 	);
 
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
 
 	// filtering function
@@ -43,6 +44,16 @@ async function onJsonLoad (data) {
 		handleFilterChange
 	);
 
+	const subList = ListUtil.initSublist({
+		valueNames: ["type", "name", "source", "id"],
+		listClass: "subcultsboons",
+		getSublistRow: getSublistItem
+	});
+	ListUtil.initGenericPinnable();
+
+	RollerUtil.addListRollButton();
+	ListUtil.addListShowHide();
+
 	data.cult.forEach(it => it._type = "c");
 	data.boon.forEach(it => it._type = "b");
 	cultsAndBoonsList = data.cult.concat(data.boon);
@@ -50,7 +61,7 @@ async function onJsonLoad (data) {
 	let tempString = "";
 	cultsAndBoonsList.forEach((it, bcI) => {
 		tempString += `
-			<li class="row" ${FLTR_ID}="${bcI}" onclick="ListUtil.toggleSelected(event, this)">
+			<li class="row" ${FLTR_ID}="${bcI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${bcI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 					<span class="type col-3 text-align-center">${cultBoonTypeToFull(it._type)}</span>
 					<span class="name col-7">${it.name}</span>
@@ -61,13 +72,10 @@ async function onJsonLoad (data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(it.source);
+		sourceFilter.addItem(it.source);
 	});
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$("ul.cultsboons").append(tempString);
-
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -80,9 +88,11 @@ async function onJsonLoad (data) {
 		itemList: cultsAndBoonsList,
 		primaryLists: [list]
 	});
-
-	RollerUtil.addListRollButton();
-	ListUtil.addListShowHide();
+	ListUtil.bindPinButton();
+	Renderer.hover.bindPopoutButton(cultsAndBoonsList);
+	UrlUtil.bindLinkExportButton(filterBox);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton();
 
 	History.init(true);
 }
@@ -98,7 +108,18 @@ function handleFilterChange () {
 			cb._type
 		);
 	});
-	FilterBox.nextIfHidden(cultsAndBoonsList);
+	FilterBox.selectFirstVisible(cultsAndBoonsList);
+}
+
+function getSublistItem (it, pinId) {
+	return `
+		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+			<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
+				<span class="name col-12">${it.name}</span>
+				<span class="id hidden">${pinId}</span>
+			</a>
+		</li>
+	`;
 }
 
 const renderer = Renderer.get();
@@ -134,4 +155,9 @@ function loadhash (id) {
 	}
 
 	ListUtil.updateSelected();
+}
+
+function loadsub (sub) {
+	sub = filterBox.setFromSubHashes(sub);
+	ListUtil.setFromSubHashes(sub);
 }

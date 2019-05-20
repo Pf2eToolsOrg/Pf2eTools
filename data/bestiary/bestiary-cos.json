@@ -1,4 +1,19 @@
 {
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		},
+		"internalCopies": [
+			"monster"
+		],
+		"otherSources": {
+			"monster": {
+				"MM": "CoS"
+			}
+		}
+	},
 	"monster": [
 		{
 			"name": "Baba Lysaga",
@@ -45,13 +60,19 @@
 				"religion": "+13"
 			},
 			"passive": 13,
-			"languages": "Abyssal, Common, Draconic, Dwarvish, Giant",
+			"languages": [
+				"Abyssal",
+				"Common",
+				"Draconic",
+				"Dwarvish",
+				"Giant"
+			],
 			"cr": "11",
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Baba Lysaga is a 16th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 17, {@hit 9} to hit with spell attacks). Baba Lysaga has the following wizard spells prepared:"
+						"Baba Lysaga is a 16th-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 17}, {@hit 9} to hit with spell attacks). Baba Lysaga has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -181,6 +202,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -232,7 +256,9 @@
 				"petrified",
 				"prone"
 			],
-			"senses": "blindsight 120 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 120 ft. (blind beyond this radius)"
+			],
 			"passive": 6,
 			"cr": "11",
 			"trait": [
@@ -289,6 +315,11 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW"
 			]
 		},
 		{
@@ -325,15 +356,19 @@
 				"arcana": "+4",
 				"perception": "+2"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 12,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "1/2",
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The witch is a 3rd-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 12, {@hit 4} to hit with spell attacks). The witch has the following wizard spells prepared:"
+						"The witch is a 3rd-level spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 12}, {@hit 4} to hit with spell attacks). The witch has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -389,6 +424,11 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -440,7 +480,9 @@
 				"poisoned",
 				"prone"
 			],
-			"senses": "blindsight 30 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
 			"passive": 7,
 			"cr": "1/4",
 			"trait": [
@@ -499,6 +541,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -553,13 +598,16 @@
 				"survival": "+6"
 			},
 			"passive": 16,
-			"languages": "Common, Elvish",
+			"languages": [
+				"Common",
+				"Elvish"
+			],
 			"cr": "8",
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Ezmerelda is a 7th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 14, {@hit 6} to hit with spell attacks). Ezmerelda has the following wizard spells prepared:"
+						"Ezmerelda is a 7th-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). Ezmerelda has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -640,13 +688,13 @@
 				{
 					"name": "Curse (Recharges after a Long Rest)",
 					"entries": [
-						"Ezmerelda targets one creature that she can see within 30 feet of her. The target must succeed on a DC 14 Wisdom saving throw or be cursed. While cursed, the target has vulnerability to one type of damage of Ezmerelda's choice. The curse lasts until ended with a {@spell greater restoration} spell, a {@spell remove curse} spell, or similar magic. When the curse ends, Ezmerelda takes {@dice 3d6} psychic damage."
+						"Ezmerelda targets one creature that she can see within 30 feet of her. The target must succeed on a {@dc 14} Wisdom saving throw or be cursed. While cursed, the target has vulnerability to one type of damage of Ezmerelda's choice. The curse lasts until ended with a {@spell greater restoration} spell, a {@spell remove curse} spell, or similar magic. When the curse ends, Ezmerelda takes {@dice 3d6} psychic damage."
 					]
 				},
 				{
 					"name": "Evil Eye (Recharges after a Short or Long Rest)",
 					"entries": [
-						"Ezmerelda targets one creature that she can see within 10 feet of her and casts one of the following spells on the target (save DC 14), requiring neither somatic nor material components to do so: animal friendship, charm person, or hold person. If the target succeeds on the initial saving throw, Ezmerelda is {@condition blinded} until the end of her next turn. Once a target succeeds on a saving throw against this effect, it is immune to the Evil Eye power of all Vistani for 24 hours."
+						"Ezmerelda targets one creature that she can see within 10 feet of her and casts one of the following spells on the target (save {@dc 14}), requiring neither somatic nor material components to do so: animal friendship, charm person, or hold person. If the target succeeds on the initial saving throw, Ezmerelda is {@condition blinded} until the end of her next turn. Once a target succeeds on a saving throw against this effect, it is immune to the Evil Eye power of all Vistani for 24 hours."
 					]
 				}
 			],
@@ -664,6 +712,11 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -709,15 +762,20 @@
 				"prone",
 				"restrained"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 10,
-			"languages": "Common, plus up to two other languages",
+			"languages": [
+				"Common",
+				"plus up to two other languages"
+			],
 			"cr": "1",
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The portrait's innate spellcasting ability is Intelligence (spell save DC 12). The portrait can innately cast the following spells, requiring no material components:"
+						"The portrait's innate spellcasting ability is Intelligence (spell save {@dc 12}). The portrait can innately cast the following spells, requiring no material components:"
 					],
 					"daily": {
 						"3e": [
@@ -808,7 +866,9 @@
 				"perception": "+2"
 			},
 			"passive": 12,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "5",
 			"trait": [
 				{
@@ -851,6 +911,9 @@
 			"damageTags": [
 				"S",
 				"F"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -896,13 +959,18 @@
 				"religion": "+7"
 			},
 			"passive": 19,
-			"languages": "Abyssal, Common, Elvish, Infernal",
+			"languages": [
+				"Abyssal",
+				"Common",
+				"Elvish",
+				"Infernal"
+			],
 			"cr": "10",
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Madam Eva is a 16th-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 17, {@hit 9} to hit with spell attacks). Madam Eva has the following cleric spells prepared:"
+						"Madam Eva is a 16th-level spellcaster. Her spellcasting ability is Wisdom (spell save {@dc 17}, {@hit 9} to hit with spell attacks). Madam Eva has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -988,13 +1056,13 @@
 				{
 					"name": "Curse (Recharges after a Long Rest)",
 					"entries": [
-						"Madam Eva targets one creature that she can see within 30 feet of her. The target must succeed on a DC 17 Wisdom saving throw or be cursed. While cursed, the target is {@condition blinded} and {@condition deafened}. The curse lasts until ended with a greater restoration spell, a remove curse spell, or similar magic. When the curse ends, Madam Eva takes {@dice 5d6} psychic damage."
+						"Madam Eva targets one creature that she can see within 30 feet of her. The target must succeed on a {@dc 17} Wisdom saving throw or be cursed. While cursed, the target is {@condition blinded} and {@condition deafened}. The curse lasts until ended with a greater restoration spell, a {@spell remove curse} spell, or similar magic. When the curse ends, Madam Eva takes {@dice 5d6} psychic damage."
 					]
 				},
 				{
 					"name": "Evil Eye (Recharges after a Short or Long Rest)",
 					"entries": [
-						"Madam Eva targets one creature that she can see within 10 feet of her and casts one of the following spells on the target (save DC 17), requiring neither somatic nor material components to do so: {@spell animal friendship}, {@spell charm person}, or {@spell hold person}. If the target succeeds on the initial saving throw, Madam Eva is {@condition blinded} until the end of her next turn. Once a target succeeds on a saving throw against this effect, it is immune to the Evil Eye power of all Vistani for 24 hours."
+						"Madam Eva targets one creature that she can see within 10 feet of her and casts one of the following spells on the target (save {@dc 17}), requiring neither somatic nor material components to do so: {@spell animal friendship}, {@spell charm person}, or {@spell hold person}. If the target succeeds on the initial saving throw, Madam Eva is {@condition blinded} until the end of her next turn. Once a target succeeds on a saving throw against this effect, it is immune to the Evil Eye power of all Vistani for 24 hours."
 					]
 				}
 			],
@@ -1010,6 +1078,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1052,7 +1123,9 @@
 				"stealth": "+3"
 			},
 			"passive": 12,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "1/4",
 			"trait": [
 				{
@@ -1071,7 +1144,7 @@
 				{
 					"name": "Mimicry",
 					"entries": [
-						"The mongrelfolk can mimic any sounds it has heard, including voices. A creature that hears the sounds can tell they are imitations with a successful DC 12 Wisdom (Insight) check."
+						"The mongrelfolk can mimic any sounds it has heard, including voices. A creature that hears the sounds can tell they are imitations with a successful {@dc 12} Wisdom (Insight) check."
 					]
 				}
 			],
@@ -1111,6 +1184,11 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -1167,9 +1245,13 @@
 				"prone",
 				"restrained"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 12,
-			"languages": "any languages it knew in life",
+			"languages": [
+				"any languages it knew in life"
+			],
 			"cr": "3",
 			"trait": [
 				{
@@ -1223,6 +1305,9 @@
 			],
 			"damageTags": [
 				"O"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1268,7 +1353,9 @@
 				"poisoned"
 			],
 			"passive": 11,
-			"languages": "understands Common but doesn't speak and can't read or write",
+			"languages": [
+				"understands Common but doesn't speak and can't read or write"
+			],
 			"cr": "1/4",
 			"trait": [
 				{
@@ -1302,6 +1389,11 @@
 			"damageTags": [
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -1351,9 +1443,14 @@
 				"perception": "+11",
 				"stealth": "+14"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 21,
-			"languages": "Common, Elvish",
+			"languages": [
+				"Common",
+				"Elvish"
+			],
 			"cr": "10",
 			"spellcasting": [
 				{
@@ -1378,7 +1475,7 @@
 				{
 					"name": "Deathly Choir",
 					"entries": [
-						"Any creature within 10 feet of Rahadin that isn't protected by a {@spell mind blank} spell hears in its mind the screams of the thousands of people Rahadin has killed. As a bonus action, Rahadin can force all creatures that can hear the screams to make a DC 16 Wisdom saving throw. Each creature takes 16 ({@damage 3d10}) psychic damage on a failed save, or half as much damage on a successful one."
+						"Any creature within 10 feet of Rahadin that isn't protected by a {@spell mind blank} spell hears in its mind the screams of the thousands of people Rahadin has killed. As a bonus action, Rahadin can force all creatures that can hear the screams to make a {@dc 16} Wisdom saving throw. Each creature takes 16 ({@damage 3d10}) psychic damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
@@ -1436,6 +1533,11 @@
 				"P",
 				"I",
 				"Y"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -1487,13 +1589,18 @@
 				"sleight of hand": "+4"
 			},
 			"passive": 17,
-			"languages": "Abyssal, Common, Elvish, Infernal",
+			"languages": [
+				"Abyssal",
+				"Common",
+				"Elvish",
+				"Infernal"
+			],
 			"cr": "5",
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Rictavio is a 9th-level spellcaster. His spellcasting ability is Wisdom (spell save DC 15, {@hit 7} to hit with spell attacks). Rictavio has the following cleric spells prepared:"
+						"Rictavio is a 9th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc 15}, {@hit 7} to hit with spell attacks). Rictavio has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -1589,6 +1696,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1648,15 +1758,24 @@
 					"note": "from nonmagical attacks"
 				}
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 22,
-			"languages": "Abyssal, Common, Draconic, Elvish, Giant, Infernal",
+			"languages": [
+				"Abyssal",
+				"Common",
+				"Draconic",
+				"Elvish",
+				"Giant",
+				"Infernal"
+			],
 			"cr": "15",
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Strahd is a 9th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 18, {@hit 10} to hit with spell attacks). He has the following wizard spells prepared:"
+						"Strahd is a 9th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 18}, {@hit 10} to hit with spell attacks). He has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -1764,7 +1883,7 @@
 				{
 					"name": "Unarmed Strike (Vampire Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) bludgeoning damage, plus 14 ({@damage 4d6}) necrotic damage. If the target is a creature, Strahd can grapple it (escape DC 18) instead of dealing the bludgeoning damage."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) bludgeoning damage, plus 14 ({@damage 4d6}) necrotic damage. If the target is a creature, Strahd can grapple it (escape {@dc 18}) instead of dealing the bludgeoning damage."
 					]
 				},
 				{
@@ -1776,7 +1895,7 @@
 				{
 					"name": "Charm",
 					"entries": [
-						"Strahd targets one humanoid he can see within 30 feet of him. If the target can see Strahd, the target must succeed on a DC 17 Wisdom saving throw against this magic or be {@condition charmed}. The {@condition charmed} target regards Strahd as a trusted friend to be heeded and protected. The target isn't under Strahd's control, but it takes Strahd's requests and actions in the most favorable way and lets Strahd bite it.",
+						"Strahd targets one humanoid he can see within 30 feet of him. If the target can see Strahd, the target must succeed on a {@dc 17} Wisdom saving throw against this magic or be {@condition charmed}. The {@condition charmed} target regards Strahd as a trusted friend to be heeded and protected. The target isn't under Strahd's control, but it takes Strahd's requests and actions in the most favorable way and lets Strahd bite it.",
 						"Each time Strahd or his companions do anything harmful to the target, it can repeat the saving throw, ending the effect on itself on a success. Otherwise, the effect lasts 24 hours or until Strahd is destroyed, is on a different plane of existence than the target, or takes a bonus action to end the effect."
 					]
 				},
@@ -1838,6 +1957,9 @@
 				"B",
 				"N",
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1873,9 +1995,13 @@
 			"conditionImmune": [
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 8,
-			"languages": "understands the languages it knew in life but can't speak",
+			"languages": [
+				"understands the languages it knew in life but can't speak"
+			],
 			"cr": "1",
 			"trait": [
 				{
@@ -1926,6 +2052,9 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1979,9 +2108,13 @@
 				"petrified",
 				"poisoned"
 			],
-			"senses": "blindsight 60 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
 			"passive": 13,
-			"languages": "understands Common but can't speak",
+			"languages": [
+				"understands Common but can't speak"
+			],
 			"cr": "6",
 			"trait": [
 				{
@@ -2042,6 +2175,9 @@
 			"damageTags": [
 				"S",
 				"L"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2078,9 +2214,13 @@
 				"blinded",
 				"deafened"
 			],
-			"senses": "blindsight 60 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
 			"passive": 10,
-			"languages": "understands Common and Druidic but doesn't speak",
+			"languages": [
+				"understands Common and Druidic but doesn't speak"
+			],
 			"cr": "7",
 			"trait": [
 				{
@@ -2118,7 +2258,7 @@
 				{
 					"name": "Grasping Root",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 15 ft., one creature not {@condition grappled} by the blight. {@h}The target is {@condition grappled} (escape DC 15). Until the grapple ends, the target takes 9 ({@damage 1d6 + 6}) bludgeoning damage at the start of each of its turns. The root has AC 15 and can be severed by dealing 6 slashing damage or more to it at once. Cutting the root doesn't hurt the blight, but ends the grapple."
+						"{@atk mw} {@hit 9} to hit, reach 15 ft., one creature not {@condition grappled} by the blight. {@h}The target is {@condition grappled} (escape {@dc 15}). Until the grapple ends, the target takes 9 ({@damage 1d6 + 6}) bludgeoning damage at the start of each of its turns. The root has AC 15 and can be severed by dealing 6 slashing damage or more to it at once. Cutting the root doesn't hurt the blight, but ends the grapple."
 					]
 				}
 			],
@@ -2140,6 +2280,10 @@
 			"damageTags": [
 				"P",
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -2194,9 +2338,14 @@
 				"poisoned",
 				"stunned"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 13,
-			"languages": "Common, Draconic",
+			"languages": [
+				"Common",
+				"Draconic"
+			],
 			"cr": "7",
 			"trait": [
 				{
@@ -2240,7 +2389,7 @@
 				{
 					"name": "Fist",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) bludgeoning damage. Strahd, the target of Vladimir's sworn vengeance, takes an extra 14 ({@damage 4d6}) bludgeoning damage. Instead of dealing damage, Vladimir can grapple the target (escape DC 14) provided the target is Large or smaller."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) bludgeoning damage. Strahd, the target of Vladimir's sworn vengeance, takes an extra 14 ({@damage 4d6}) bludgeoning damage. Instead of dealing damage, Vladimir can grapple the target (escape {@dc 14}) provided the target is Large or smaller."
 					]
 				},
 				{
@@ -2252,7 +2401,7 @@
 				{
 					"name": "Vengeful Glare",
 					"entries": [
-						"Vladimir can target Strahd within 30 feet provided he can see Strahd. Strahd must make a DC 15 Wisdom saving throw. One a failure, Strahd is {@condition paralyzed} until Vladimir deals damage to him, or until the end of Vladimir's next turn. When the paralysis ends, Strahd is {@condition frightened} of Vladimir for 1 minute. Strahd can repeat the saving throw at the end of each of his turns, with disadvantage if he can see Vladimir, ending the {@condition frightened} condition on itself on a success."
+						"Vladimir can target Strahd within 30 feet provided he can see Strahd. Strahd must make a {@dc 15} Wisdom saving throw. One a failure, Strahd is {@condition paralyzed} until Vladimir deals damage to him, or until the end of Vladimir's next turn. When the paralysis ends, Strahd is {@condition frightened} of Vladimir for 1 minute. Strahd can repeat the saving throw at the end of each of his turns, with disadvantage if he can see Vladimir, ending the {@condition frightened} condition on itself on a success."
 					]
 				}
 			],
@@ -2275,6 +2424,9 @@
 			"damageTags": [
 				"B",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2327,7 +2479,9 @@
 				}
 			],
 			"passive": 16,
-			"languages": "Common (can't speak in raven form)",
+			"languages": [
+				"Common (can't speak in raven form)"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -2339,7 +2493,7 @@
 				{
 					"name": "Mimicry",
 					"entries": [
-						"The wereraven can mimic simple sounds it has heard, such as a person whispering, a baby crying, or an animal chittering. A creature that hears the sounds can tell they are imitations with a successful DC 10 Wisdom (Insight) check."
+						"The wereraven can mimic simple sounds it has heard, such as a person whispering, a baby crying, or an animal chittering. A creature that hears the sounds can tell they are imitations with a successful {@dc 10} Wisdom (Insight) check."
 					]
 				}
 			],
@@ -2353,7 +2507,7 @@
 				{
 					"name": "Beak (Raven or Hybrid Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}1 piercing damage in raven form, or 4 ({@damage 1d4 + 2}) piercing damage in hybrid form. If the target is humanoid, it must succeed on a DC 10 Constitution saving throw or be cursed with wereraven lycanthropy."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}1 piercing damage in raven form, or 4 ({@damage 1d4 + 2}) piercing damage in hybrid form. If the target is humanoid, it must succeed on a {@dc 10} Constitution saving throw or be cursed with wereraven lycanthropy."
 					]
 				},
 				{
@@ -2379,7 +2533,1422 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
+		},
+		{
+			"name": "Amber Golem",
+			"source": "CoS",
+			"_copy": {
+				"name": "Stone Golem",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Ludmilla Vilisevic",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Vampire Spawn",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Anastrasya Karelova",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Vampire Spawn",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Volenta Popofsky",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Vampire Spawn",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Animated Halberd",
+			"source": "CoS",
+			"_copy": {
+				"name": "Flying Sword",
+				"source": "MM"
+			},
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Halberd",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d10 + 1}) slashing damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Arabelle",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_mod": {
+					"action": "remove"
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"N"
+			],
+			"hp": {
+				"average": 2,
+				"formula": "1d8"
+			}
+		},
+		{
+			"name": "Armored Saber-Toothed Tiger",
+			"source": "CoS",
+			"_copy": {
+				"name": "Saber-Toothed Tiger",
+				"source": "MM"
+			},
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item half plate armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 84,
+				"formula": "7d10 + 14"
+			},
+			"cr": "3"
+		},
+		{
+			"name": "Arrigal",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Assassin",
+				"source": "MM"
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Baron Vargas Vallakovich",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Noble",
+				"source": "MM"
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Barovian Commoner",
+			"source": "CoS",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"action": [
+				{
+					"name": "Pitchfork",
+					"entries": [
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d6}) piercing damage."
+					]
+				}
+			],
+			"damageTags": [
+				"P"
+			]
+		},
+		{
+			"name": "Barovian Scout",
+			"source": "CoS",
+			"_copy": {
+				"name": "Scout",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Longbow",
+						"items": {
+							"name": "Light Crossbows",
+							"entries": [
+								"{@atk rw} {@hit 4} to hit, ranged 80/320 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage."
+							]
+						}
+					}
+				}
+			},
+			"miscTags": [
+				"MW",
+				"RW"
+			]
+		},
+		{
+			"name": "Beucephalus",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Nightmare",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 104,
+				"formula": "8d10 + 24"
+			}
+		},
+		{
+			"name": "Bluto Krogarov",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Clovin Belview",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Mongrelfolk",
+				"source": "CoS",
+				"_mod": {
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Extraordinary Feature",
+						"items": {
+							"name": "Two-Headed",
+							"entries": [
+								"The mongrelfolk has advantage on Wisdom ({@skill Perception}) checks and on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, or knocked {@condition unconscious}."
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
+			"name": "Cyrus Belview",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Mongrelfolk",
+				"source": "CoS",
+				"_mod": {
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Extraordinary Feature",
+						"items": {
+							"name": "Keen Hearing and Smell",
+							"entries": [
+								"The mongrelfolk has advantage on Wisdom ({@skill Perception}) checks that rely on hearing or smell."
+							]
+						}
+					}
+				}
+			},
+			"traitTags": [
+				"Keen Senses"
+			]
+		},
+		{
+			"name": "Davian Martikov",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Wereraven",
+				"source": "CoS"
+			}
+		},
+		{
+			"name": "Distended Corpse",
+			"source": "CoS",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"speed": {
+				"walk": 20
+			},
+			"conditionImmune": [
+				"charmed",
+				"frightened"
+			],
+			"trait": [
+				{
+					"name": "Snake-Swollen",
+					"entries": [
+						"When a corpse is reduced to 0 hit points, it splits open, disgorging a {@creature swarm of poisonous snakes}. The snakes are hungry and fight until slain."
+					]
+				}
+			]
+		},
+		{
+			"name": "Donavich",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Acolyte",
+				"source": "MM"
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Doru",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Vampire Spawn",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Emil Toranescu",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Werewolf",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 72,
+				"formula": "9d8 + 18"
+			}
+		},
+		{
+			"name": "Escher",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Vampire Spawn",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Exethanter",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Lich",
+				"source": "MM",
+				"_mod": {}
+			},
+			"cr": "10",
+			"hp": {
+				"average": 99,
+				"formula": "18d8 + 54"
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The lich is an 18th-level spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 20}, {@hit 12} to hit with spell attacks). The lich has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			]
+		},
+		{
+			"name": "Gadof Blinsky",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"alignment": [
+				"C",
+				"G"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Gertruda",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"alignment": [
+				"N",
+				"G"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Helga Ruvak",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Vampire Spawn",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Henrik van der Voort",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Ireena Kolyana",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Noble",
+				"source": "MM"
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"hp": {
+				"average": 14,
+				"formula": "2d8"
+			}
+		},
+		{
+			"name": "Ismark Kolyanovich",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Veteran",
+				"source": "MM"
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Kasimir Velikov",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Fey Ancestry",
+								"entries": [
+									"Kasimir has advantage on saving throws against being {@condition charmed}, and magic can't put the him to sleep."
+								]
+							},
+							{
+								"name": "Special Equipment",
+								"entries": [
+									"Kasimir wears a {@item ring of warmth} and carries a spellbook containing all the spells he has prepared plus the following spells: {@spell arcane lock}, {@spell comprehend languages}, {@spell hold person}, {@spell identify}, {@spell locate object}, {@spell nondetection}, {@spell polymorph}, {@spell protection from evil and good}, {@spell ray of frost}, and {@spell wall of stone}."
+								]
+							}
+						]
+					}
+				}
+			},
+			"alignment": [
+				"N"
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dusk elf"
+				]
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Kasimir is a 9th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). Kasimir has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell mage armor}",
+								"{@spell magic missile}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell misty step}",
+								"{@spell suggestion}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fireball}",
+								"{@spell fly}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell greater invisibility}",
+								"{@spell ice storm}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell cone of cold}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"traitTags": [
+				"Fey Ancestry"
+			]
+		},
+		{
+			"name": "Kiril Stoyanovich",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Werewolf",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 90,
+				"formula": "9d8 + 18"
+			}
+		},
+		{
+			"name": "Lady Fiona Wachter",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Priest",
+				"source": "MM"
+			},
+			"ac": [
+				10
+			],
+			"alignment": [
+				"L",
+				"E"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Lady Lydia Petrovna",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Lief Lipsiege",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Luvash",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Bandit Captain",
+				"source": "MM"
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Mad Mary",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"alignment": [
+				"C",
+				"N"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Majesto",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Imp",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Marzena Belview",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Mongrelfolk",
+				"source": "CoS",
+				"_mod": {
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Extraordinary Feature",
+						"items": {
+							"name": "Flight",
+							"entries": [
+								"The mongrelfolk has leathery wings and a flying speed of 40 feet."
+							]
+						}
+					}
+				}
+			},
+			"speed": {
+				"walk": 20,
+				"fly": 40
+			}
+		},
+		{
+			"name": "Milivoj",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"alignment": [
+				"N"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Mishka Belview",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Mongrelfolk",
+				"source": "CoS",
+				"_mod": {
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Extraordinary Feature",
+						"items": {
+							"name": "Spider Climb",
+							"entries": [
+								"The mongrelfolk can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"traitTags": [
+				"Spider Climb"
+			]
+		},
+		{
+			"name": "Morgantha",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Night Hag",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Nikolai Wachter",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Noble",
+				"source": "MM"
+			},
+			"alignment": [
+				"L",
+				"N"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "Otto Belview",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Mongrelfolk",
+				"source": "CoS",
+				"_mod": {
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Extraordinary Feature",
+						"items": {
+							"name": "Standing Leap",
+							"entries": [
+								"The mongrelfolk's long jump is up to 20 feet and its high jump up to 10 feet, with or without a running start."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Zygfrek Belview",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Mongrelfolk",
+				"source": "CoS",
+				"_mod": {
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Extraordinary Feature",
+						"items": {
+							"name": "Darkvision",
+							"entries": [
+								"The mongrelfolk has darkvision out to a range of 60 feet."
+							]
+						}
+					}
+				}
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"name": "Parriwimple",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Gladiator",
+				"source": "MM"
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"int": 6,
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			]
+		},
+		{
+			"name": "Patrina Velikovna",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Archmage",
+				"source": "MM"
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dusk elf"
+				]
+			}
+		},
+		{
+			"name": "Piccolo",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Baboon",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Rosavalda \"Rose\" Durst",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Ghost",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "removeArr",
+						"names": "Horrifying Visage"
+					}
+				}
+			},
+			"size": "S",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"hp": {
+				"average": 35,
+				"formula": "10d6"
+			},
+			"languages": [
+				"Common"
+			],
+			"cr": "3",
+			"languageTags": [
+				"C"
+			]
+		},
+		{
+			"name": "Thornboldt \"Thorn\" Durst",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Ghost",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "removeArr",
+						"names": "Horrifying Visage"
+					}
+				}
+			},
+			"size": "S",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"hp": {
+				"average": 35,
+				"formula": "10d6"
+			},
+			"languages": [
+				"Common"
+			],
+			"cr": "3",
+			"languageTags": [
+				"C"
+			]
+		},
+		{
+			"name": "Sangzor",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Giant Goat",
+				"source": "MM"
+			},
+			"int": 6,
+			"hp": {
+				"average": 33,
+				"formula": "3d10 + 3"
+			},
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"cr": "1"
+		},
+		{
+			"name": "Savid",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Scout",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dusk elf"
+				]
+			},
+			"alignment": [
+				"N"
+			]
+		},
+		{
+			"name": "Sir Godfrey Gwilym",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Revenant",
+				"source": "MM"
+			},
+			"cr": "6",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Sir Godfrey is a 16th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 15}, {@hit 7} to hit with spell attacks). He has the following paladin spells prepared:"
+					],
+					"spells": {
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell command}",
+								"{@spell divine favor}",
+								"{@spell thunderous smite}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell branding smite}",
+								"{@spell magic weapon}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell blinding smite}",
+								"{@spell dispel magic}"
+							]
+						},
+						"4": {
+							"slots": 2,
+							"spells": [
+								"{@spell staggering smite}"
+							]
+						}
+					},
+					"ability": "cha"
+				}
+			],
+			"spellcastingTags": [
+				"CP"
+			]
+		},
+		{
+			"name": "Snow Maiden",
+			"source": "CoS",
+			"_copy": {
+				"name": "Specter",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Life Drain",
+						"items": {
+							"name": "Life Drain",
+							"entries": [
+								"{@atk ms} {@hit 4} to hit, reach 5 ft., one creature. {@h}10 ({@damage 3d6}) cold damage. The target must succeed on a DC 10 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the creature finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+							]
+						}
+					}
+				}
+			},
+			"immune": [
+				"cold",
+				"necrotic",
+				"poison"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dusk elf"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"damageTags": [
+				"C",
+				"O"
+			]
+		},
+		{
+			"name": "Stanimir",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Mage",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"C",
+				"N"
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The mage is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). The mage has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell friends}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell mage armor}",
+								"{@spell shield}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell misty step}",
+								"{@spell suggestion}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell bestow curse}",
+								"{@spell phantom steed}",
+								"{@spell vampiric touch}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell greater invisibility}",
+								"{@spell stoneskin}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell dominate person}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			]
+		},
+		{
+			"name": "Stella Wachter",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"C",
+				"G"
+			]
+		},
+		{
+			"name": "Szoldar Szoldarovich",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Scout",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N"
+			]
+		},
+		{
+			"name": "Yevgeni Krushkin",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Scout",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N"
+			]
+		},
+		{
+			"name": "The Abbot",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Deva",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Vasilka",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Flesh Golem",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "The Mad Mage of Mount Baratok",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Archmage",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The mad mage is an 18th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 17}, {@hit 9} to hit with spell attacks). He can cast disguise self and invisibility at will and has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell mage armor}",
+								"{@spell magic missile}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell mirror image}",
+								"{@spell misty step}",
+								"{@spell web}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fly}",
+								"{@spell lightning bolt}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell Mordenkainen's faithful hound}",
+								"{@spell polymorph}",
+								"{@spell stoneskin}"
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								"{@spell Bigby's hand}",
+								"{@spell cone of cold}",
+								"{@spell scrying}"
+							]
+						},
+						"6": {
+							"slots": 1,
+							"spells": [
+								"{@spell true seeing}"
+							]
+						},
+						"7": {
+							"slots": 1,
+							"spells": [
+								"{@spell Mordenkainen's magnificent mansion}"
+							]
+						},
+						"8": {
+							"slots": 1,
+							"spells": [
+								"{@spell mind blank}"
+							]
+						},
+						"9": {
+							"slots": 1,
+							"spells": [
+								"{@spell time stop}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
+			"alignment": [
+				"C",
+				"N"
+			]
+		},
+		{
+			"name": "Victor Vallakovich",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Mage",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
+			"name": "Vilnius",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Mage",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
+			"name": "Zuleika Toranescu",
+			"isNpc": true,
+			"source": "CoS",
+			"_copy": {
+				"name": "Werewolf",
+				"source": "MM"
+			}
 		}
 	]
 }

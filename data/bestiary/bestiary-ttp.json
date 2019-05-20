@@ -35,7 +35,9 @@
 				"perception": "+2",
 				"stealth": "+4"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 12,
 			"cr": "4",
 			"action": [
@@ -54,7 +56,7 @@
 				{
 					"name": "Tentacles",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}24 ({@damage 9d4 + 2}) bludgeoning damage or 14 ({@damage 5d4 + 2}) bludgeoning damage if the decapus is grappling a creature other than the target or if the decapus is on the ground or floor. The target is also {@condition grappled} (escape DC 14) unless the decapus is already grappling a creature. Until this grapple ends, the target is {@condition restrained}."
+						"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}24 ({@damage 9d4 + 2}) bludgeoning damage or 14 ({@damage 5d4 + 2}) bludgeoning damage if the decapus is grappling a creature other than the target or if the decapus is on the ground or floor. The target is also {@condition grappled} (escape {@dc 14}) unless the decapus is already grappling a creature. Until this grapple ends, the target is {@condition restrained}."
 					]
 				}
 			],
@@ -69,6 +71,10 @@
 			"damageTags": [
 				"P",
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -104,7 +110,10 @@
 				"perception": "+4",
 				"stealth": "+2"
 			},
-			"senses": "darkvision 60 ft., tremorsense 30 ft.",
+			"senses": [
+				"darkvision 60 ft.",
+				"tremorsense 30 ft."
+			],
 			"passive": 14,
 			"cr": "1/4",
 			"trait": [
@@ -136,6 +145,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -172,8 +184,14 @@
 			"skill": {
 				"perception": "+3"
 			},
-			"senses": "darkvision 60 ft.",
-			"languages": "Abyssal, Aquan, Common",
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"languages": [
+				"Abyssal",
+				"Aquan",
+				"Common"
+			],
 			"passive": 13,
 			"cr": "3",
 			"trait": [
@@ -200,7 +218,7 @@
 				{
 					"name": "Tentacles",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 10 ft., one creature. {@h}4 ({@damage 1d4 + 2}) poison damage, and the target must succeed on a DC 13 Constitution saving throw or be {@condition poisoned} for 1 minute. Until this poison ends, the target is {@condition paralyzed}. The target can repeat the saving throw at the end of each of its turns, ending the poison on itself on a success."
+						"{@atk mw} {@hit 8} to hit, reach 10 ft., one creature. {@h}4 ({@damage 1d4 + 2}) poison damage, and the target must succeed on a {@dc 13} Constitution saving throw or be {@condition poisoned} for 1 minute. Until this poison ends, the target is {@condition paralyzed}. The target can repeat the saving throw at the end of each of its turns, ending the poison on itself on a success."
 					]
 				},
 				{
@@ -222,7 +240,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The slug's innate spellcasting ability is Wisdom (spell save DC 11, {@hit 3} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+						"The slug's innate spellcasting ability is Wisdom (spell save {@dc 11}, {@hit 3} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
 					],
 					"daily": {
 						"1e": [
@@ -258,6 +276,10 @@
 				"I",
 				"P",
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -299,8 +321,12 @@
 			"conditionImmune": [
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
-			"languages": "understands the languages it knew in life but can't speak",
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"languages": [
+				"understands the languages it knew in life but can't speak"
+			],
 			"passive": 10,
 			"cr": "1/2",
 			"trait": [
@@ -321,7 +347,7 @@
 				{
 					"name": "Venomous Claws",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) slashing damage plus 2 ({@damage 1d4}) poison damage, and the target must succeed on a DC 11 Constitution saving throw or be {@condition poisoned} until the end of the target's next turn."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) slashing damage plus 2 ({@damage 1d4}) poison damage, and the target must succeed on a {@dc 11} Constitution saving throw or be {@condition poisoned} until the end of the target's next turn."
 					]
 				}
 			],
@@ -339,6 +365,9 @@
 			"damageTags": [
 				"S",
 				"I"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -380,7 +409,10 @@
 				"athletics": "+4",
 				"survival": "+3"
 			},
-			"languages": "Aquan, Common",
+			"languages": [
+				"Aquan",
+				"Common"
+			],
 			"passive": 11,
 			"cr": "1/4",
 			"trait": [
@@ -430,6 +462,11 @@
 				"S",
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -472,14 +509,17 @@
 				"nature": "+2",
 				"survival": "+4"
 			},
-			"languages": "Aquan, Common",
+			"languages": [
+				"Aquan",
+				"Common"
+			],
 			"passive": 12,
 			"cr": "2",
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The tortle is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). It has the following druid spells prepared:"
+						"The tortle is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save {@dc 12}, {@hit 4} to hit with spell attacks). It has the following druid spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -552,6 +592,9 @@
 			"damageTags": [
 				"S",
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		}
 	]

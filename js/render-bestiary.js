@@ -113,8 +113,8 @@ class RenderBestiary {
 		</td></tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		
-		<tr><td colspan="6"><strong>Armor Class</strong> ${Parser.acToFull(mon.ac)}</td></tr>
-		<tr><td colspan="6"><div class="mon__wrp-hp"><strong>Hit Points</strong> ${Renderer.monster.getRenderedHp(mon.hp)}</div></td></tr>
+		<tr><td colspan="6"><div class="mon__wrp-avoid-token"><strong>Armor Class</strong> ${Parser.acToFull(mon.ac)}</div></td></tr>
+		<tr><td colspan="6"><div class="mon__wrp-avoid-token"><strong>Hit Points</strong> ${Renderer.monster.getRenderedHp(mon.hp)}</div></td></tr>
 		<tr><td colspan="6"><strong>Speed</strong> ${Parser.getSpeedString(mon)}</td></tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		
@@ -138,13 +138,15 @@ class RenderBestiary {
 		${mon.immune ? `<tr><td colspan="6"><strong>Damage Immunities</strong> ${Parser.monImmResToFull(mon.immune)}</td></tr>` : ""}
 		${mon.conditionImmune ? `<tr><td colspan="6"><strong>Condition Immunities</strong> ${Parser.monCondImmToFull(mon.conditionImmune)}</td></tr>` : ""}
 		<tr><td colspan="6"><strong>Senses</strong> ${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses)},` : ""} passive Perception ${mon.passive || "\u2014"}</td></tr>
-		<tr><td colspan="6"><strong>Languages</strong> ${mon.languages || "\u2014"}</td></tr>
+		<tr><td colspan="6"><strong>Languages</strong> ${Renderer.monster.getRenderedLanguages(mon.languages)}</td></tr>
 		
-		<tr><td colspan="6" style="position: relative;"><strong>Challenge</strong>
+		<tr>${Parser.crToNumber(mon.cr) !== 100 ? $$`
+		<td colspan="6" style="position: relative;"><strong>Challenge</strong>
 			<span>${Parser.monCrToFull(mon.cr)}</span>
 			${options.$btnScaleCr || ""}
 			${options.$btnResetScaleCr || ""}
-		</td></tr>
+		</td>
+		` : ""}</tr>
 		
 		${trait ? `<tr><td class="divider" colspan="6"><div></div></td></tr>${RenderBestiary._getRenderedSection("trait", trait, 1)}` : ""}
 		${mon.action ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Actions</span></td></tr>

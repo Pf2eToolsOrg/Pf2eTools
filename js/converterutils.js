@@ -11,6 +11,12 @@
  * data, or common errors which should be corrected prior to running the parser).
  */
 
+const CREATURE_SUB_ENTRY_PROPS = [
+	"entries",
+	"headerEntries",
+	"footerEntries"
+];
+
 class AcConvert {
 	static tryPostProcessAc (m, cbMan, cbErr) {
 		let nuAc = [];
@@ -308,14 +314,81 @@ class TagHit {
 	}
 }
 
+class TagDc {
+	static tryTagDcs (m) {
+		const handleProp = (prop) => {
+			if (m[prop]) {
+				m[prop] = m[prop].map(it => {
+					const str = JSON.stringify(it, null, "\t");
+					const out = str.replace(/DC (\d+)/g, "{@dc $1}");
+					return JSON.parse(out);
+				})
+			}
+		};
+
+		handleProp("action");
+		handleProp("reaction");
+		handleProp("trait");
+		handleProp("legendary");
+		handleProp("variant");
+		handleProp("spellcasting");
+	}
+}
+
+class TagCondition {
+	static tryTagConditions (m) {
+		const handleProp = (prop) => {
+			if (m[prop]) {
+				m[prop].forEach(it => {
+					CREATURE_SUB_ENTRY_PROPS.forEach(subProp => {
+						if (it[subProp]) {
+							let str = JSON.stringify(it[subProp], null, "\t");
+
+							TagCondition._CONDITION_MATCHERS.forEach(r => str = str.replace(r, (...mt) => `${mt[1]}{@condition ${mt[2]}}${mt[3]}`));
+
+							it[subProp] = JSON.parse(str);
+						}
+					});
+				})
+			}
+		};
+
+		handleProp("action");
+		handleProp("reaction");
+		handleProp("trait");
+		handleProp("legendary");
+		handleProp("variant");
+	}
+}
+TagCondition._CONDITIONS = [
+	"blinded",
+	"charmed",
+	"deafened",
+	"exhaustion",
+	"frightened",
+	"grappled",
+	"incapacitated",
+	"invisible",
+	"paralyzed",
+	"petrified",
+	"poisoned",
+	"prone",
+	"restrained",
+	"stunned",
+	"unconscious"
+];
+TagCondition._CONDITION_MATCHERS = TagCondition._CONDITIONS.map(it => new RegExp(`([^\\w])(${it})([^\\w}|])`, "gi"));
+
 class AlignmentConvert {
 	static tryConvertAlignment (m, cbMan) {
-		const a = m.alignment;
-		if (!AlignmentConvert.ALIGNMENTS[a]) {
-			if (cbMan) cbMan(a);
-		} else {
-			m.alignment = AlignmentConvert.ALIGNMENTS[a];
-		}
+		const match = Object.values(AlignmentConvert.ALIGNMENTS).find(it => {
+			const out = it.regex.test(m.alignment);
+			it.regex.lastIndex = 0;
+			return out;
+		});
+
+		if (match) m.alignment = match.output;
+		else if (cbMan) cbMan(m.alignment);
 	}
 }
 AlignmentConvert.ALIGNMENTS = {
@@ -338,26 +411,32 @@ AlignmentConvert.ALIGNMENTS = {
 
 	"any alignment": ["A"],
 
-	"any non-good alignment": ["L", "NX", "C", "NY", "E"],
-	"any non-lawful alignment": ["NX", "C", "G", "NY", "E"],
-	"any non-evil alignment": ["L", "NX", "C", "NY", "G"],
-	"any non-chaotic alignment": ["NX", "L", "G", "NY", "E"],
+	"any non-good( alignment)?": ["L", "NX", "C", "NY", "E"],
+	"any non-lawful( alignment)?": ["NX", "C", "G", "NY", "E"],
+	"any non-evil( alignment)?": ["L", "NX", "C", "NY", "G"],
+	"any non-chaotic( alignment)?": ["NX", "L", "G", "NY", "E"],
 
-	"any chaotic alignment": ["C", "G", "NY", "E"],
-	"any evil alignment": ["L", "NX", "C", "E"],
-	"any lawful alignment": ["L", "G", "NY", "E"],
-	"any good alignment": ["L", "NX", "C", "G"],
+	"any chaotic( alignment)?": ["C", "G", "NY", "E"],
+	"any evil( alignment)?": ["L", "NX", "C", "E"],
+	"any lawful( alignment)?": ["L", "G", "NY", "E"],
+	"any good( alignment)?": ["L", "NX", "C", "G"],
 
-	"any neutral alignment": ["NX", "NY", "N"],
+	"any neutral( alignment)?": ["NX", "NY", "N"],
 
 	// TODO general auto-detect for percentage-weighted alignments
-	"neutral good (50%) or neutral evil (50%)": [{alignment: ["N", "G"], chance: 50}, {alignment: ["N", "E"], chance: 50}],
-	"chaotic good (75%) or neutral evil (25%)": [{alignment: ["C", "G"], chance: 75}, {alignment: ["N", "E"], chance: 25}],
-	"chaotic good (75%) or chaotic evil (25%)": [{alignment: ["C", "G"], chance: 75}, {alignment: ["C", "E"], chance: 25}],
+	"neutral good \\(50%\\) or neutral evil \\(50%\\)": [{alignment: ["N", "G"], chance: 50}, {alignment: ["N", "E"], chance: 50}],
+	"chaotic good \\(75%\\) or neutral evil \\(25%\\)": [{alignment: ["C", "G"], chance: 75}, {alignment: ["N", "E"], chance: 25}],
+	"chaotic good \\(75%\\) or chaotic evil \\(25%\\)": [{alignment: ["C", "G"], chance: 75}, {alignment: ["C", "E"], chance: 25}],
 	"chaotic good or chaotic neutral": [{alignment: ["C", "G"]}, {alignment: ["C", "N"]}],
 	"lawful neutral or lawful evil": [{alignment: ["L", "N"]}, {alignment: ["L", "E"]}],
-	"neutral evil (50%) or lawful evil (50%)": [{alignment: ["N", "E"], chance: 50}, {alignment: ["L", "E"], chance: 50}]
+	"neutral evil \\(50%\\) or lawful evil \\(50%\\)": [{alignment: ["N", "E"], chance: 50}, {alignment: ["L", "E"], chance: 50}]
 };
+Object.entries(AlignmentConvert.ALIGNMENTS).forEach(([k, v]) => {
+	AlignmentConvert.ALIGNMENTS[k] = {
+		output: v,
+		regex: RegExp(`^${k}$`)
+	}
+});
 
 class TagUtil {
 	static isNoneOrEmpty (str) {
@@ -510,18 +589,29 @@ TraitActionTag.tags = { // true = map directly; string = map to this string
 };
 
 class LanguageTag {
-	static tryRun (m, cbAll, cbTracked) {
+	/**
+	 * @param m A creature statblock.
+	 * @param opt Options object.
+	 * @param opt.cbAll Callback to run on every parsed language.
+	 * @param opt.cbTracked Callback to run on every tracked language.
+	 * @param opt.isAppendOnly If tags should only be added, not removed.
+	 */
+	static tryRun (m, opt) {
+		opt = opt || {};
+
+		const tags = new Set();
+
 		if (m.languages) {
-			m.languages = m.languages.trim();
-			if (TagUtil.isNoneOrEmpty(m.languages)) {
+			m.languages = m.languages.map(it => it.trim()).filter(it => !TagUtil.isNoneOrEmpty(it));
+			if (!m.languages.length) {
 				delete m.languages;
 				return;
 			} else {
-				m.languages = m.languages.replace(/but can(not|'t) speak/ig, "but can't speak")
+				m.languages = m.languages.map(it => it.replace(/but can(not|'t) speak/ig, "but can't speak"));
 			}
 
-			m.languages.split(", ").map(it => it.trim()).filter(it => it).forEach(l => {
-				if (cbAll) cbAll(l);
+			m.languages.forEach(l => {
+				if (opt.cbAll) opt.cbAll(l);
 
 				Object.keys(LanguageTag.LANGUAGE_MAP).forEach(k => {
 					const v = LanguageTag.LANGUAGE_MAP[k];
@@ -532,16 +622,20 @@ class LanguageTag {
 						if ((v === "XX" || v === "X") && (l.includes("knew in life") || l.includes("spoke in life"))) return;
 						if (/(one|the) languages? of its creator/i.exec(l)) return;
 
-						if (cbTracked) cbTracked(v);
-
-						m.languageTags = m.languageTags || [];
-						if (!m.languageTags.includes(v)) {
-							m.languageTags.push(v);
-						}
+						if (opt.cbTracked) opt.cbTracked(v);
+						tags.add(v);
 					}
 				})
 			});
 		}
+
+		if (tags.size) {
+			if (!opt.isAppendOnly) m.languageTags = [...tags];
+			else {
+				(m.languageTags || []).forEach(t => tags.add(t));
+				m.languageTags = [...tags];
+			}
+		} else if (!opt.isAppendOnly) delete m.languageTags;
 	}
 }
 LanguageTag.LANGUAGE_MAP = {
@@ -626,11 +720,11 @@ LanguageTag.LANGUAGE_MAP = {
 class SenseTag {
 	static tryRun (m, cbAll) {
 		if (m.senses) {
-			if (TagUtil.isNoneOrEmpty(m.senses)) {
-				delete m.senses;
-			} else {
+			m.senses = m.senses.filter(it => !TagUtil.isNoneOrEmpty(it));
+			if (!m.senses.length) delete m.senses;
+			else {
 				const senseTags = new Set();
-				m.senses.toLowerCase().split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX).map(it => it.trim())
+				m.senses.map(it => it.trim().toLowerCase())
 					.forEach(s => {
 						Object.entries(SenseTag.TAGS).forEach(([k, v]) => {
 							if (s.includes(k)) {
@@ -729,6 +823,76 @@ class DamageTypeTag {
 DamageTypeTag._isInit = false;
 DamageTypeTag._TYPE_REGEX = /(acid|bludgeoning|cold|fire|force|lightning|necrotic|piercing|poison|psychic|radiant|slashing|thunder)/gi;
 DamageTypeTag._TYPE_LOOKUP = {};
+
+class MiscTag {
+	static _handleProp (m, prop, tagSet) {
+		if (m[prop]) {
+			m[prop].forEach(it => {
+				let hasRangedAttack = false;
+				if (it.entries) {
+					const str = JSON.stringify(it.entries, null, "\t");
+
+					// Weapon attacks
+					// - any melee/ranged attack
+					str.replace(/{@atk ([^}]+)}/g, (...mx) => {
+						const spl = mx[1].split(",");
+						if (spl.includes("rw")) {
+							tagSet.add("RW");
+							hasRangedAttack = true;
+						}
+						if (spl.includes("mw")) tagSet.add("MW");
+					});
+
+					// - reach
+					str.replace(/reach (\d+) ft\./g, (...m) => {
+						if (Number(m[1]) > 5) tagSet.add("RCH");
+					});
+
+					// AoE effects
+					str.replace(/\d+-foot[- ](line|cube|cone|radius|sphere|hemisphere|cylinder)/g, () => tagSet.add("AOE"));
+				}
+
+				if (it.name) {
+					// thrown weapon (PHB only)
+					if (hasRangedAttack) MiscTag._THROWN_WEAPON_MATCHERS.forEach(r => it.name.replace(r, () => tagSet.add("THW")));
+					// other ranged weapon (PHB only)
+					MiscTag._RANGED_WEAPON_MATCHERS.forEach(r => it.name.replace(r, () => tagSet.add("RNG")));
+				}
+			})
+		}
+	}
+
+	static tryRun (m) {
+		const typeSet = new Set();
+		MiscTag._handleProp(m, "action", typeSet);
+		MiscTag._handleProp(m, "trait", typeSet);
+		MiscTag._handleProp(m, "reaction", typeSet);
+		MiscTag._handleProp(m, "legendary", typeSet);
+		if (typeSet.size) m.miscTags = [...typeSet];
+		else delete m.miscTags;
+	}
+}
+MiscTag._THROWN_WEAPONS = [
+	"dagger",
+	"handaxe",
+	"javelin",
+	"light hammer",
+	"spear",
+	"trident",
+	"dart",
+	"net"
+];
+MiscTag._THROWN_WEAPON_MATCHERS = MiscTag._THROWN_WEAPONS.map(it => new RegExp(`(^|[^\\w])(${it})([^\\w]|$)`, "gi"));
+MiscTag._RANGED_WEAPONS = [
+	"light crossbow",
+	"shortbow",
+	"sling",
+	"blowgun",
+	"hand crossbow",
+	"heavy crossbow",
+	"longbow"
+];
+MiscTag._RANGED_WEAPON_MATCHERS = MiscTag._RANGED_WEAPONS.map(it => new RegExp(`(^|[^\\w])(${it})([^\\w]|$)`, "gi"));
 
 class SpellcastingTraitConvert {
 	static async pGetSpellData () {
@@ -932,6 +1096,81 @@ class RechargeConvert {
 	}
 }
 
+class SpeedConvert {
+	static _splitSpeed (str) {
+		let c;
+		let ret = [];
+		let stack = "";
+		let para = 0;
+		for (let i = 0; i < str.length; ++i) {
+			c = str.charAt(i);
+			switch (c) {
+				case ",":
+					if (para === 0) {
+						ret.push(stack);
+						stack = "";
+					}
+					break;
+				case "(": para++; stack += c; break;
+				case ")": para--; stack += c; break;
+				default: stack += c;
+			}
+		}
+		if (stack) ret.push(stack);
+		return ret.map(it => it.trim()).filter(it => it);
+	}
+
+	static _tagHover (m) {
+		if (m.speed && m.speed.fly && m.speed.fly.condition) {
+			m.speed.fly.condition = m.speed.fly.condition.trim();
+
+			if (m.speed.fly.condition.toLowerCase().includes("hover")) m.speed.canHover = true;
+		}
+	}
+
+	static tryConvertSpeed (m, cbMan) {
+		if (typeof m.speed === "string") {
+			let line = m.speed.toLowerCase().trim().replace(/^speed:?\s*/, "");
+
+			const out = {};
+			let byHand = false;
+
+			SpeedConvert._splitSpeed(line.toLowerCase()).map(it => it.trim()).forEach(s => {
+				const m = /^(\w+?\s+)?(\d+)\s*ft\.?( .*)?$/.exec(s);
+				if (!m) {
+					byHand = true;
+					return;
+				}
+
+				if (m[1]) m[1] = m[1].trim();
+				else m[1] = "walk";
+
+				if (SpeedConvert._SPEED_TYPES.has(m[1])) {
+					if (m[3]) {
+						out[m[1]] = {
+							number: Number(m[2]),
+							condition: m[3].trim()
+						};
+					} else out[m[1]] = Number(m[2]);
+				} else byHand = true;
+			});
+
+			// flag speed as invalid
+			if (Object.values(out).filter(s => (s.number != null ? s.number : s) % 5 !== 0).length) out.INVALID_SPEED = true;
+
+			// flag speed as needing hand-parsing
+			if (byHand) {
+				out.UNPARSED_SPEED = line;
+				if (cbMan) cbMan(`Speed requires manual conversion: "${line}"`);
+			}
+
+			m.speed = out;
+			SpeedConvert._tagHover(m);
+		}
+	}
+}
+SpeedConvert._SPEED_TYPES = new Set(["walk", "fly", "swim", "climb", "burrow"]);
+
 class TextClean {
 	static getCleanedJson (str) {
 		str = str.replace(TextClean.REPLACEMENT_REGEX, (match) => TextClean.REPLACEMENTS[match]);
@@ -1032,15 +1271,19 @@ if (typeof module !== "undefined") {
 		AcConvert,
 		TagAttack,
 		TagHit,
+		TagDc,
+		TagCondition,
 		AlignmentConvert,
 		TraitActionTag,
 		LanguageTag,
 		SenseTag,
 		SpellcastingTypeTag,
 		DamageTypeTag,
+		MiscTag,
 		TextClean,
 		SpellcastingTraitConvert,
 		DiceConvert,
-		RechargeConvert
+		RechargeConvert,
+		SpeedConvert
 	};
 }

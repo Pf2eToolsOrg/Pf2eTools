@@ -1,106 +1,21 @@
 {
 	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		},
+		"internalCopies": [
+			"monster"
+		],
 		"otherSources": {
 			"monster": {
-				"HotDQ": "RoT"
+				"HotDQ": "RoT",
+				"MM": "RoT"
 			}
 		}
 	},
 	"monster": [
-		{
-			"name": "Dragonclaw",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"source": "RoT",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"{@item leather armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 16,
-				"formula": "3d8 + 3"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 9,
-			"dex": 16,
-			"con": 13,
-			"int": 11,
-			"wis": 10,
-			"cha": 12,
-			"save": {
-				"wis": "+2"
-			},
-			"skill": {
-				"deception": "+3",
-				"stealth": "+5"
-			},
-			"passive": 10,
-			"languages": "Common, Draconic",
-			"cr": "1",
-			"trait": [
-				{
-					"name": "Dragon Fanatic",
-					"entries": [
-						"The dragonclaw has advantage on saving throws against being {@condition charmed} or {@condition frightened}. While the dragonclaw can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonclaw ignores the effects of being {@condition charmed} or {@condition frightened}."
-					]
-				},
-				{
-					"name": "Fanatic Advantage",
-					"entries": [
-						"Once per turn, if the dragonclaw makes a weapon attack with advantage on the attack roll and hits, it deals an extra 7 ({@dice 2d6}) damage."
-					]
-				},
-				{
-					"name": "Pack Tactics",
-					"entries": [
-						"The dragonclaw has advantage on an attack roll against a creature if at least one of the dragonclaw's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The dragonclaw attacks twice with its scimitar."
-					]
-				},
-				{
-					"name": "Scimitar",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
-					]
-				}
-			],
-			"page": 89,
-			"traitTags": [
-				"Pack Tactics"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C",
-				"DR"
-			],
-			"damageTags": [
-				"S"
-			]
-		},
 		{
 			"name": "Dragonfang",
 			"size": "M",
@@ -156,7 +71,11 @@
 				}
 			],
 			"passive": 11,
-			"languages": "Common, Draconic, Infernal",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Infernal"
+			],
 			"cr": "5",
 			"trait": [
 				{
@@ -209,6 +128,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -266,7 +188,11 @@
 				}
 			],
 			"passive": 11,
-			"languages": "Common, Draconic, Infernal",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Infernal"
+			],
 			"cr": "7",
 			"trait": [
 				{
@@ -328,194 +254,9 @@
 			],
 			"damageTags": [
 				"P"
-			]
-		},
-		{
-			"name": "Dragonwing",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"source": "RoT",
-			"alignment": [
-				"L",
-				"E"
 			],
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"{@item leather armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 33,
-				"formula": "6d8 + 6"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 11,
-			"dex": 16,
-			"con": 13,
-			"int": 11,
-			"wis": 11,
-			"cha": 13,
-			"save": {
-				"wis": "+2"
-			},
-			"skill": {
-				"deception": "+3",
-				"stealth": "+5"
-			},
-			"resist": [
-				{
-					"resist": [
-						"acid",
-						"cold",
-						"fire",
-						"lightning",
-						"poison"
-					],
-					"preNote": "one of the following:"
-				}
-			],
-			"passive": 10,
-			"languages": "Common, Draconic",
-			"cr": "2",
-			"trait": [
-				{
-					"name": "Dragon Fanatic",
-					"entries": [
-						"The dragonwing has advantage on saving throws against being {@condition charmed} or {@condition frightened}. While the dragonwing can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonwing ignores the effects of being {@condition charmed} or {@condition frightened}."
-					]
-				},
-				{
-					"name": "Fanatic Advantage",
-					"entries": [
-						"Once per turn, if the dragonwing makes a weapon attack with advantage on the attack roll and hits, the target takes an extra 7 ({@dice 2d6}) damage."
-					]
-				},
-				{
-					"name": "Limited Flight",
-					"entries": [
-						"The dragonwing can use a bonus action to gain a flying speed of 30 feet until the end of its turn."
-					]
-				},
-				{
-					"name": "Pack Tactics",
-					"entries": [
-						"The dragonwing has advantage on an attack roll against a creature if at least one of the dragonwing's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The dragonwing attacks twice with its scimitar."
-					]
-				},
-				{
-					"name": "Scimitar",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage plus 3 ({@dice 1d6}) damage of the type to which the cultist has resistance."
-					]
-				}
-			],
-			"page": 90,
-			"traitTags": [
-				"Pack Tactics"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C",
-				"DR"
-			],
-			"damageTags": [
-				"S"
-			]
-		},
-		{
-			"name": "Guard Drake",
-			"size": "M",
-			"type": "dragon",
-			"source": "RoT",
-			"alignment": [
-				"U"
-			],
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 52,
-				"formula": "7d8 + 21"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 16,
-			"dex": 11,
-			"con": 16,
-			"int": 4,
-			"wis": 10,
-			"cha": 7,
-			"skill": {
-				"perception": "+2"
-			},
-			"resist": [
-				"lightning"
-			],
-			"senses": "darkvision 60 ft.",
-			"passive": 12,
-			"languages": "understands Draconic but can't speak it",
-			"cr": "2",
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The drake attacks twice, once with its bite and once with its tail."
-					]
-				},
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
-					]
-				},
-				{
-					"name": "Tail",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) bludgeoning damage."
-					]
-				}
-			],
-			"page": 90,
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/254/guard-drake.mp3",
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"DR",
-				"CS"
-			],
-			"senseTags": [
-				"D"
-			],
-			"damageTags": [
-				"P",
-				"B"
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -554,9 +295,13 @@
 			"immune": [
 				"cold"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 12,
-			"languages": "Ice Toad",
+			"languages": [
+				"Ice Toad"
+			],
 			"cr": "1",
 			"trait": [
 				{
@@ -582,7 +327,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d8}) cold damage. If the target is a Medium or smaller creature it is {@condition grappled} (escape DC 11). Until this grapple ends, the toad can't bite another target."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d8}) cold damage. If the target is a Medium or smaller creature it is {@condition grappled} (escape {@dc 11}). Until this grapple ends, the toad can't bite another target."
 					]
 				}
 			],
@@ -598,6 +343,9 @@
 			],
 			"damageTags": [
 				"C"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -657,9 +405,14 @@
 				"exhaustion",
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 16,
-			"languages": "Common, Draconic",
+			"languages": [
+				"Common",
+				"Draconic"
+			],
 			"cr": "11",
 			"trait": [
 				{
@@ -679,7 +432,7 @@
 				{
 					"name": "Life Drain",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}20 ({@damage 5d6 + 3}) necrotic damage. The target must succeed on a DC 15 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}20 ({@damage 5d6 + 3}) necrotic damage. The target must succeed on a {@dc 15} Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
 					]
 				},
 				{
@@ -713,6 +466,11 @@
 				"N",
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -762,9 +520,16 @@
 				"frightened",
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 15,
-			"languages": "Common, Draconic, Elvish, Infernal",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Elvish",
+				"Infernal"
+			],
 			"cr": "9",
 			"trait": [
 				{
@@ -802,7 +567,7 @@
 				{
 					"name": "Poisonous Cloud (2/Day)",
 					"entries": [
-						"Poison gas fills a 20-foot-radius sphere centered on a point Neronvain can see within 50 feet of him. The gas spreads around corners and remains until the start of Neronvain's next turn. Each creature that starts its turn in the gas must succeed on a DC 16 Constitution saving throw or be {@condition poisoned} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"Poison gas fills a 20-foot-radius sphere centered on a point Neronvain can see within 50 feet of him. The gas spreads around corners and remains until the start of Neronvain's next turn. Each creature that starts its turn in the gas must succeed on a {@dc 16} Constitution saving throw or be {@condition poisoned} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				}
 			],
@@ -826,6 +591,10 @@
 				"P",
 				"I",
 				"O"
+			],
+			"miscTags": [
+				"MW",
+				"AOE"
 			]
 		},
 		{
@@ -903,9 +672,15 @@
 					"preNote": "While wearing the mask of the Dragon Queen:"
 				}
 			],
-			"senses": "While wearing the Mask of the Dragon Queen: darkvision 60 ft.",
+			"senses": [
+				"While wearing the Mask of the Dragon Queen: darkvision 60 ft."
+			],
 			"passive": 11,
-			"languages": "Common, Draconic, Infernal",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Infernal"
+			],
 			"cr": "11",
 			"trait": [
 				{
@@ -949,7 +724,7 @@
 				{
 					"name": "Scorching Burst",
 					"entries": [
-						"Severin chooses a point he can see within 60 feet of him. Each creature within 5 feet of that point must make a DC 17 Dexterity saving throw, taking 18 ({@damage 4d8}) fire damage on a failed save, or half as much damage on a successful one."
+						"Severin chooses a point he can see within 60 feet of him. Each creature within 5 feet of that point must make a {@dc 17} Dexterity saving throw, taking 18 ({@damage 4d8}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -974,7 +749,7 @@
 				{
 					"name": "Hellish Chains (Costs 3 Actions)",
 					"entries": [
-						"Severin targets one creature he can see within 30 feet of him. The target is wrapped in magical chains of fire and {@condition restrained}. The {@condition restrained} target takes 21 ({@damage 6d6}) fire damage at the start of each of its turns. At the end of its turns, the target can make a DC 17 Strength saving throw, ending the effect on itself on a success."
+						"Severin targets one creature he can see within 30 feet of him. The target is wrapped in magical chains of fire and {@condition restrained}. The {@condition restrained} target takes 21 ({@damage 6d6}) fire damage at the start of each of its turns. At the end of its turns, the target can make a {@dc 17} Strength saving throw, ending the effect on itself on a success."
 					]
 				}
 			],
@@ -1060,15 +835,22 @@
 				"poisoned",
 				"stunned"
 			],
-			"senses": "darkvision 240 ft., truesight 120 ft.",
+			"senses": [
+				"darkvision 240 ft.",
+				"truesight 120 ft."
+			],
 			"passive": 36,
-			"languages": "Common, Draconic, Infernal",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Infernal"
+			],
 			"cr": "30",
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Tiamat can innately cast the following spell, her spellcasting ability is Charisma (spell save DC 26):"
+						"Tiamat can innately cast the following spell, her spellcasting ability is Charisma (spell save {@dc 26}):"
 					],
 					"daily": {
 						"3": [
@@ -1138,7 +920,7 @@
 				{
 					"name": "Frightful Presence",
 					"entries": [
-						"Each creature of Tiamat's choice that is within 240 feet of Tiamat and aware of her must succeed on a DC 26 Wisdom saving throw or become {@condition frightened} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to Tiamat's Frightful Presence for the next 24 hours."
+						"Each creature of Tiamat's choice that is within 240 feet of Tiamat and aware of her must succeed on a {@dc 26} Wisdom saving throw or become {@condition frightened} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to Tiamat's Frightful Presence for the next 24 hours."
 					]
 				}
 			],
@@ -1158,31 +940,31 @@
 				{
 					"name": "Black Dragon Head: Acid Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes acid in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 27 Dexterity saving throw, taking 67 ({@damage 15d8}) acid damage on a failed save, or half as much damage on a successful one."
+						"Tiamat breathes acid in a 120-foot line that is 10 feet wide. Each creature in that line must make a {@dc 27} Dexterity saving throw, taking 67 ({@damage 15d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Blue Dragon Head: Lightning Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes lightning in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 27 Dexterity saving throw, taking 88 ({@damage 16d10}) lightning damage on a failed save, or half as much damage on a successful one."
+						"Tiamat breathes lightning in a 120-foot line that is 10 feet wide. Each creature in that line must make a {@dc 27} Dexterity saving throw, taking 88 ({@damage 16d10}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Green Dragon Head: Poison Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes poisonous gas in a 90-foot cone. Each creature in that area must make a DC 27 Constitution saving throw, taking 77 ({@damage 22d6}) poison damage on a failed save, or half as much damage on a successful one."
+						"Tiamat breathes poisonous gas in a 90-foot cone. Each creature in that area must make a {@dc 27} Constitution saving throw, taking 77 ({@damage 22d6}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "Red Dragon Head: Fire Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes fire in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 91 ({@damage 26d6}) fire damage on a failed save, or half as much damage on a successful one."
+						"Tiamat breathes fire in a 90-foot cone. Each creature in that area must make a {@dc 27} Dexterity saving throw, taking 91 ({@damage 26d6}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
 					"name": "White Dragon Head: Cold Breath (Costs 2 Actions)",
 					"entries": [
-						"Tiamat breathes an icy blast in a 90-foot cone. Each creature in that area must make a DC 27 Dexterity saving throw, taking 72 ({@damage 16d8}) cold damage on a failed save, or half as much damage on a successful one."
+						"Tiamat breathes an icy blast in a 90-foot cone. Each creature in that area must make a {@dc 27} Dexterity saving throw, taking 72 ({@damage 16d8}) cold damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -1217,6 +999,495 @@
 				"I",
 				"F",
 				"C"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"AOE"
+			]
+		},
+		{
+			"name": "Ice Troll",
+			"source": "RoT",
+			"_copy": {
+				"name": "Troll",
+				"source": "MM"
+			},
+			"resist": [
+				"cold"
+			]
+		},
+		{
+			"name": "Aquatic Troll",
+			"source": "RoT",
+			"_copy": {
+				"name": "Troll",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Water Breathing",
+							"entries": [
+								"The troll can breathe underwater."
+							]
+						}
+					}
+				}
+			},
+			"resist": [
+				"cold"
+			],
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"traitTags": [
+				"Keen Senses",
+				"Regeneration",
+				"Water Breathing"
+			]
+		},
+		{
+			"name": "Animated Tile Chimera",
+			"source": "RoT",
+			"_copy": {
+				"name": "Chimera",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Rejuvenation",
+							"entries": [
+								"If destroyed, the tile creature regains all its hit points and becomes active again in 24 hours unless at least half its tiles are collected and kept separate from the rest of the creature's tiles."
+							]
+						}
+					},
+					"reaction": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Narrow Dodge",
+							"entries": [
+								"When targeted by a melee attack, the tile creature can take a reaction to turn its narrowest aspect toward the attacker. The attacker has disadvantage on the attack roll."
+							]
+						}
+					}
+				}
+			},
+			"resist": [
+				"piercing"
+			],
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"traitTags": [
+				"Rejuvenation"
+			]
+		},
+		{
+			"name": "Carnivorous Flower",
+			"source": "RoT",
+			"_copy": {
+				"name": "Otyugh",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "otyugh",
+						"with": "plant"
+					}
+				}
+			},
+			"type": "plant",
+			"speed": {
+				"walk": 0
+			}
+		},
+		{
+			"name": "Half-Blue Dragon Gladiator",
+			"source": "RoT",
+			"_copy": {
+				"name": "Gladiator",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "gladiator",
+						"with": "half-dragon"
+					}
+				},
+				"_trait": {
+					"name": "Large or Smaller Half-Blue Dragon",
+					"source": "MM"
+				}
+			},
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW",
+				"AOE"
+			],
+			"damageTags": [
+				"P",
+				"B",
+				"L"
+			],
+			"languageTags": [
+				"C",
+				"X",
+				"DR"
+			],
+			"senseTags": [
+				"B",
+				"D"
+			]
+		},
+		{
+			"name": "Half-Red Dragon Gladiator",
+			"source": "RoT",
+			"_copy": {
+				"name": "Gladiator",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "gladiator",
+						"with": "half-dragon"
+					}
+				},
+				"_trait": {
+					"name": "Large or Smaller Half-Red Dragon",
+					"source": "MM"
+				}
+			},
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW",
+				"AOE"
+			],
+			"damageTags": [
+				"P",
+				"B",
+				"F"
+			],
+			"languageTags": [
+				"C",
+				"X",
+				"DR"
+			],
+			"senseTags": [
+				"B",
+				"D"
+			]
+		},
+		{
+			"name": "Half-Green Dragon Assassin",
+			"source": "RoT",
+			"_copy": {
+				"name": "Assassin",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "assassin",
+						"with": "half-dragon"
+					}
+				},
+				"_trait": {
+					"name": "Large or Smaller Half-Green Dragon",
+					"source": "MM"
+				}
+			},
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG",
+				"AOE"
+			],
+			"languageTags": [
+				"X",
+				"TC",
+				"DR"
+			],
+			"senseTags": [
+				"B",
+				"D"
+			]
+		},
+		{
+			"name": "Ice Troll",
+			"source": "RoT",
+			"_copy": {
+				"name": "Troll",
+				"source": "MM"
+			},
+			"immune": [
+				"cold"
+			]
+		},
+		{
+			"name": "Galvan",
+			"isNpc": true,
+			"source": "RoT",
+			"_copy": {
+				"name": "Dragonsoul",
+				"source": "RoT",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the dragonsoul",
+						"with": "Galvan",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": [
+							{
+								"name": "5etools Note",
+								"entries": [
+									"While Galvan is not presented in an encounter in {@adventure The Rise of Tiamat|RoT}, the {@creature dragonsoul|RoT} stat block has been provided here for ease of use, with optional alterations for the {@item Blue Dragon Mask|RoT}."
+								]
+							},
+							{
+								"name": "Special Equipment",
+								"entries": [
+									"Galvan has the {@item Blue Dragon Mask|hotdq}."
+								]
+							},
+							{
+								"name": "Draconic Majesty",
+								"entries": [
+									"While wearing no armor and wearing the Blue Dragon Mask, Galvan adds his Charisma bonus to her AC (included)."
+								]
+							},
+							{
+								"name": "Lingering Shock",
+								"entries": [
+									"If Galvan deals lightning damage to a creature while wearing the Blue Dragon Mask, that creature can't take reactions until its next turn."
+								]
+							},
+							{
+								"name": "Legendary Resistance (1/Day)",
+								"entries": [
+									"If Galvan fails a saving throw while wearing the Blue Dragon Mask, he can choose to succeed instead."
+								]
+							}
+						]
+					}
+				}
+			},
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				},
+				{
+					"ac": 15,
+					"condition": "with the Black Dragon Mask",
+					"braces": true
+				}
+			],
+			"immune": [
+				"lightning"
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			],
+			"traitTags": [
+				"Legendary Resistances",
+				"Pack Tactics"
+			]
+		},
+		{
+			"name": "Iskander",
+			"isNpc": true,
+			"source": "RoT",
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "5etools Note",
+							"entries": [
+								"Iskander is presented in {@adventure The Rise of Tiamat|RoT} as a neutral evil male human wizard. The {@creature mage} statblock has been provided here for ease of use."
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
+			"name": "Maccath the Crimson",
+			"isNpc": true,
+			"source": "RoT",
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "5etools Note",
+							"entries": [
+								"Maccath the Crimson is presented in {@adventure The Rise of Tiamat|RoT} as a female tiefling sorcerer and member of the Arcane Brotherhood. The {@creature mage} statblock, modified with tiefling racial traits, has been provided here for ease of use."
+							]
+						}
+					}
+				},
+				"_trait": {
+					"name": "Tiefling",
+					"source": "PHB"
+				}
+			},
+			"languageTags": [
+				"X",
+				"I"
+			],
+			"senseTags": [
+				"D"
+			],
+			"spellcastingTags": [
+				"CW",
+				"I"
+			]
+		},
+		{
+			"name": "Marfulb",
+			"isNpc": true,
+			"source": "RoT",
+			"_copy": {
+				"name": "Ice Toad",
+				"source": "RoT"
+			},
+			"int": 13
+		},
+		{
+			"name": "Mend-nets",
+			"isNpc": true,
+			"source": "RoT",
+			"_copy": {
+				"name": "Tribal Warrior",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Paper Whirlwind",
+			"source": "RoT",
+			"_copy": {
+				"name": "Swarm of Ravens",
+				"source": "MM"
+			},
+			"type": {
+				"type": "construct",
+				"swarmSize": "T"
+			},
+			"vulnerable": [
+				"fire"
+			]
+		},
+		{
+			"name": "Red Wizard",
+			"source": "RoT",
+			"_copy": {
+				"name": "Mage",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Sled Dog",
+			"source": "RoT",
+			"_copy": {
+				"name": "Wolf",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Snake Horror",
+			"source": "RoT",
+			"_copy": {
+				"name": "Helmed Horror",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "helmed horror",
+						"with": "snake horror"
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Longsword",
+						"items": {
+							"name": "Longsword",
+							"entries": [
+								"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) slashing damage, or 9 ({@damage 1d10 + 4}) slashing damage if used with two hands, and the target must make a DC 12 Constitution saving throw, taking 9 ({@damage 2d8}) poison damage on a failed save, or half as much damage on a successful one."
+							]
+						}
+					}
+				}
+			},
+			"damageTags": [
+				"S",
+				"I"
+			]
+		},
+		{
+			"name": "Varram",
+			"isNpc": true,
+			"source": "RoT",
+			"_copy": {
+				"name": "Dragonsoul",
+				"source": "RoT",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the dragonsoul",
+						"with": "Varram",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "5etools Note",
+							"entries": [
+								"Varram is presented in {@adventure The Rise of Tiamat|RoT} as a male dwarf. The {@creature dragonsoul|RoT} statblock, modified with dwarf racial traits, has been provided here for ease of use."
+							]
+						}
+					}
+				},
+				"_trait": {
+					"name": "Mountain Dwarf",
+					"source": "PHB"
+				}
+			},
+			"languageTags": [
+				"C",
+				"DR",
+				"I",
+				"D"
+			],
+			"senseTags": [
+				"D"
 			]
 		}
 	]

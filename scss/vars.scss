@@ -14,10 +14,13 @@
 
 $spacer: 1rem;
 
-$active-blue: #337ab7;
 $active-blue--light: #7398b7;
-$active-red: #8a1a1b;
+$active-blue: #337ab7;
+$active-blue--dark: #2a6496;
 $active-red--light: #8a4b4b;
+$active-red: #8a1a1b;
+$active-red--dark: #711617;
+$inactive-grey: #c3c3c3;
 
 $name-red: #822000;
 $bg-orange: #fdf1dc;
@@ -28,6 +31,8 @@ $border-grey: #ccc;
 $border-grey--trans: #cccccca0;
 
 $modal-overlay-grey: #45454588;
+$shadow-grey: rgba(0, 0, 0, 0.175);
+$shadow-grey-dark: rgba(0, 0, 0, 0.475);
 
 /* Z-Indices */
 $z-token-image: 10;
@@ -51,5 +56,5 @@ $z-temp-effect: 2000;
 /* *** */
 
 @mixin shadow-1 () {
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	box-shadow: 0 6px 12px $shadow-grey;
 }

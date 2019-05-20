@@ -43,7 +43,9 @@
 				"exhaustion",
 				"frightened"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 10,
 			"cr": "6",
 			"trait": [
@@ -64,7 +66,7 @@
 				{
 					"name": "Mind Blast {@recharge 5}",
 					"entries": [
-						"The brain in a jar magically emits psychic energy in a 60-foot cone. Each creature in that area must succeed on a DC 15 Intelligence saving throw or take 13 ({@damage 2d8 + 4}) psychic damage and be {@condition stunned} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"The brain in a jar magically emits psychic energy in a 60-foot cone. Each creature in that area must succeed on a {@dc 15} Intelligence saving throw or take 13 ({@damage 2d8 + 4}) psychic damage and be {@condition stunned} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				}
 			],
@@ -73,7 +75,7 @@
 				{
 					"name": "Innate Spellcasting (Psionics)",
 					"headerEntries": [
-						"The brain in a jar's innate spellcasting ability is Intelligence (spell save DC 15). It can innately cast the following spells, requiring no components:"
+						"The brain in a jar's innate spellcasting ability is Intelligence (spell save {@dc 15}). It can innately cast the following spells, requiring no components:"
 					],
 					"will": [
 						"{@spell detect thoughts}",
@@ -108,6 +110,9 @@
 			],
 			"damageTags": [
 				"Y"
+			],
+			"miscTags": [
+				"AOE"
 			]
 		},
 		{
@@ -163,9 +168,13 @@
 				"petrified",
 				"poisoned"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 10,
-			"languages": "understands the languages of its creator but can't speak",
+			"languages": [
+				"understands the languages of its creator but can't speak"
+			],
 			"cr": "10",
 			"trait": [
 				{
@@ -208,6 +217,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -250,7 +262,12 @@
 				"persuasion": "+5"
 			},
 			"passive": 11,
-			"languages": "Abyssal, Common, Infernal, Thieves' Cant",
+			"languages": [
+				"Abyssal",
+				"Common",
+				"Infernal",
+				"Thieves' cant"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -262,7 +279,7 @@
 				{
 					"name": "Bardic Inspiration (3/Day)",
 					"entries": [
-						"As a bonus action, Garret can give one chosen creature (other than him) a d6 inspiration die. The chosen creature must be within 60 feet of Garret and able to hear him. Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. The creature can use the inspiration die after the roll is made but before the DM says whether it succeeds or fails. Once the inspiration die is rolled, it is lost. A creature can have only one inspiration die at a time."
+						"As a bonus action, Garret can give one chosen creature (other than him) a {@dice d6} inspiration die. The chosen creature must be within 60 feet of Garret and able to hear him. Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. The creature can use the inspiration die after the roll is made but before the DM says whether it succeeds or fails. Once the inspiration die is rolled, it is lost. A creature can have only one inspiration die at a time."
 					]
 				},
 				{
@@ -291,7 +308,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Garret is a 2nd-level spellcaster. His spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). He has the following bard spells prepared:"
+						"Garret is a 2nd-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). He has the following bard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -328,6 +345,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -374,7 +394,14 @@
 				"religion": "+4"
 			},
 			"passive": 12,
-			"languages": "Abyssal, Celestial, Common, Elvish, Infernal, Sylvan",
+			"languages": [
+				"Abyssal",
+				"Celestial",
+				"Common",
+				"Elvish",
+				"Infernal",
+				"Sylvan"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -386,7 +413,7 @@
 				{
 					"name": "Fey Presence (Recharges after a Short Rest)",
 					"entries": [
-						"Mary can cause each creature within 10 feet of her to succeed on a DC 12 Wisdom saving throw or become {@condition charmed} or {@condition frightened} by her (Mary's choice) until the end of her next turn."
+						"Mary can cause each creature within 10 feet of her to succeed on a {@dc 12} Wisdom saving throw or become {@condition charmed} or {@condition frightened} by her (Mary's choice) until the end of her next turn."
 					]
 				},
 				{
@@ -409,7 +436,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Mary is a 5th-level spellcaster. Her spellcasting ability is Charisma (spell save DC 12, {@hit 4} to hit with spell attacks). She regains her expended spell slots when she finishes a short or long rest. She knows the following warlock spells:"
+						"Mary is a 5th-level spellcaster. Her spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). She regains her expended spell slots when she finishes a short or long rest. She knows the following warlock spells:"
 					],
 					"spells": {
 						"0": {
@@ -440,8 +467,8 @@
 			],
 			"languageTags": [
 				"AB",
-				"C",
 				"CE",
+				"C",
 				"E",
 				"I",
 				"S"
@@ -451,6 +478,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -490,14 +520,16 @@
 				"frightened",
 				"prone"
 			],
-			"senses": "blindsight 60 ft.",
+			"senses": [
+				"blindsight 60 ft."
+			],
 			"passive": 8,
 			"cr": "1/2",
 			"trait": [
 				{
 					"name": "Transparent",
 					"entries": [
-						"Even when an ooze-folk is in plain sight, it takes a DC 12 Wisdom ({@skill Perception}) check to spot an ooze-folk that has neither moved nor attacked. A creature that tries to enter the ooze-folk's space while unaware of the ooze-folk is surprised by the ooze-folk."
+						"Even when an ooze-folk is in plain sight, it takes a {@dc 12} Wisdom ({@skill Perception}) check to spot an ooze-folk that has neither moved nor attacked. A creature that tries to enter the ooze-folk's space while unaware of the ooze-folk is surprised by the ooze-folk."
 					]
 				},
 				{
@@ -537,6 +569,9 @@
 			"damageTags": [
 				"S",
 				"A"
+			],
+			"miscTags": [
+				"MW"
 			]
 		}
 	]

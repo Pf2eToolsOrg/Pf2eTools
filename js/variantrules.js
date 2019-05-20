@@ -22,9 +22,11 @@ async function onJsonLoad (data) {
 
 	filterBox = await pInitFilterBox(sourceFilter);
 
+	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
-		filterBox.setCount(list.visibleItems.length, list.items.length);
+		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
 	});
+
 	// filtering function
 	$(filterBox).on(
 		FilterBox.EVNT_VALCHANGE,
@@ -88,12 +90,10 @@ function addVariantRules (data) {
 			</li>`;
 
 		// populate filters
-		sourceFilter.addIfAbsent(curRule.source);
+		sourceFilter.addItem(curRule.source);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$("ul.variantRules").append(tempString);
-	// sort filters
-	sourceFilter.items.sort(SortUtil.ascSort);
 
 	list.reIndex();
 	if (lastSearch) list.search(lastSearch);
@@ -127,7 +127,7 @@ function handleFilterChange () {
 		const r = rulesList[$(item.elm).attr(FLTR_ID)];
 		return filterBox.toDisplay(f, r.source);
 	});
-	FilterBox.nextIfHidden(rulesList);
+	FilterBox.selectFirstVisible(rulesList);
 }
 
 function loadhash (id) {
@@ -151,6 +151,9 @@ function loadhash (id) {
 
 function loadsub (sub) {
 	if (!sub.length) return;
+
+	sub = filterBox.setFromSubHashes(sub);
+	ListUtil.setFromSubHashes(sub);
 
 	const $title = $(`.rd__h[data-title-index="${sub[0]}"]`);
 	if ($title.length) $title[0].scrollIntoView();

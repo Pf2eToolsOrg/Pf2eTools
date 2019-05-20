@@ -1,4 +1,21 @@
 {
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM",
+				"VGM"
+			]
+		},
+		"internalCopies": [
+			"monster"
+		],
+		"otherSources": {
+			"monster": {
+				"MM": "TftYP",
+				"VGM": "TftYP"
+			}
+		}
+	},
 	"monster": [
 		{
 			"source": "TftYP",
@@ -43,7 +60,9 @@
 				"petrified",
 				"poisoned"
 			],
-			"senses": "blindsight 60 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
 			"passive": 6,
 			"cr": "2",
 			"trait": [
@@ -62,7 +81,7 @@
 				{
 					"name": "Charge",
 					"entries": [
-						"If the table moves at least 20 feet straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 9 ({@damage 2d8}) bludgeoning damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked {@condition prone}."
+						"If the table moves at least 20 feet straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 9 ({@damage 2d8}) bludgeoning damage. If the target is a creature, it must succeed on a {@dc 15} Strength saving throw or be knocked {@condition prone}."
 					]
 				}
 			],
@@ -85,6 +104,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -128,13 +150,15 @@
 				"perception": "+4"
 			},
 			"passive": 14,
-			"languages": "Druidic plus any two languages",
+			"languages": [
+				"Druidic plus any two languages"
+			],
 			"cr": "2",
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The druid is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). It has the following druid spells prepared:"
+						"The druid is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save {@dc 12}, {@hit 4} to hit with spell attacks). It has the following druid spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -182,6 +206,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -231,9 +258,14 @@
 			"immune": [
 				"cold"
 			],
-			"senses": "blindsight 10 ft., darkvision 60 ft.",
+			"senses": [
+				"blindsight 10 ft.",
+				"darkvision 60 ft."
+			],
 			"passive": 14,
-			"languages": "Draconic",
+			"languages": [
+				"Draconic"
+			],
 			"cr": "2",
 			"action": [
 				{
@@ -245,7 +277,7 @@
 				{
 					"name": "Cold Breath {@recharge 5}",
 					"entries": [
-						"The dragon exhales an icy blast of hail in a 15-foot cone. Each creature in that area must make a DC 12 Constitution saving throw, taking 22 ({@damage 5d8}) cold damage on a failed save, or half as much damage on a successful one."
+						"The dragon exhales an icy blast of hail in a 15-foot cone. Each creature in that area must make a {@dc 12} Constitution saving throw, taking 22 ({@damage 5d8}) cold damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -260,6 +292,10 @@
 			"damageTags": [
 				"P",
 				"C"
+			],
+			"miscTags": [
+				"MW",
+				"AOE"
 			]
 		},
 		{
@@ -319,9 +355,14 @@
 				"paralyzed",
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 12,
-			"languages": "Common, Sylvan",
+			"languages": [
+				"Common",
+				"Sylvan"
+			],
 			"cr": "6",
 			"trait": [
 				{
@@ -347,13 +388,13 @@
 				{
 					"name": "Hooves",
 					"entries": [
-						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}12 ({@damage 2d6 + 5}) piercing damage plus 10 ({@damage 3d6}) necrotic damage. If the target is a creature, it must succeed on a DC 14 Constitution saving throw or be cursed with mummy rot. The cursed target can't regain hit points, and its hit point maximum decreases by 10 ({@dice 3d6}) for every 24 hours that elapse. If the curse reduces the target's hit point maximum to 0, the target dies, and its body turns to dust. The curse lasts until removed by the remove curse spell or similar magic."
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}12 ({@damage 2d6 + 5}) piercing damage plus 10 ({@damage 3d6}) necrotic damage. If the target is a creature, it must succeed on a {@dc 14} Constitution saving throw or be cursed with mummy rot. The cursed target can't regain hit points, and its hit point maximum decreases by 10 ({@dice 3d6}) for every 24 hours that elapse. If the curse reduces the target's hit point maximum to 0, the target dies, and its body turns to dust. The curse lasts until removed by the {@spell remove curse} spell or similar magic."
 					]
 				},
 				{
 					"name": "Dreadful Glare",
 					"entries": [
-						"The centaur mummy targets one creature it can see within 60 feet of it. If the target can see the mummy, the target must succeed on a DC 12 Wisdom saving throw against this magic or become {@condition frightened} until the end of the mummy's next turn. If the target fails the saving throw by 5 or more, it is also {@condition paralyzed} for the same duration. A target that succeeds on the saving throw is immune to the Dreadful Glare of all mummies (but not mummy lords) for the next 24 hours."
+						"The centaur mummy targets one creature it can see within 60 feet of it. If the target can see the mummy, the target must succeed on a {@dc 12} Wisdom saving throw against this magic or become {@condition frightened} until the end of the mummy's next turn. If the target fails the saving throw by 5 or more, it is also {@condition paralyzed} for the same duration. A target that succeeds on the saving throw is immune to the Dreadful Glare of all mummies (but not mummy lords) for the next 24 hours."
 					]
 				}
 			],
@@ -374,6 +415,10 @@
 			"damageTags": [
 				"P",
 				"N"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -409,9 +454,13 @@
 			"skill": {
 				"stealth": "+6"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 11,
-			"languages": "Deep Speech",
+			"languages": [
+				"Deep Speech"
+			],
 			"cr": "1",
 			"trait": [
 				{
@@ -437,7 +486,7 @@
 				{
 					"name": "Tentacle",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. {@h}5 ({@damage 1d4 + 3}) bludgeoning damage plus 3 ({@damage 1d6}) piercing damage. If the target is a Large or smaller creature, it is {@condition grappled} (escape DC 15). Until this grapple ends, the target is {@condition restrained}, and the choker can't use this tentacle on another target (the choker has two tentacles). If this attack is a critical hit, the target also can't breathe or speak until the grapple ends."
+						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. {@h}5 ({@damage 1d4 + 3}) bludgeoning damage plus 3 ({@damage 1d6}) piercing damage. If the target is a Large or smaller creature, it is {@condition grappled} (escape {@dc 15}). Until this grapple ends, the target is {@condition restrained}, and the choker can't use this tentacle on another target (the choker has two tentacles). If this attack is a critical hit, the target also can't breathe or speak until the grapple ends."
 					]
 				}
 			],
@@ -459,6 +508,10 @@
 			"damageTags": [
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -516,15 +569,19 @@
 				"exhaustion",
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 14,
-			"languages": "the languages it knew in life",
+			"languages": [
+				"the languages it knew in life"
+			],
 			"cr": "3",
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"The wight's innate spellcasting ability is Charisma (spell save DC 13). It can innately cast the following spells, requiring no verbal or material components:"
+						"The wight's innate spellcasting ability is Charisma (spell save {@dc 13}). It can innately cast the following spells, requiring no verbal or material components:"
 					],
 					"will": [
 						"{@spell detect magic}",
@@ -565,7 +622,7 @@
 				{
 					"name": "Life Drain",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}9 ({@damage 2d6 + 2}) necrotic damage. The target must succeed on a DC 13 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken.",
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}9 ({@damage 2d6 + 2}) necrotic damage. The target must succeed on a {@dc 13} Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken.",
 						"This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0. A humanoid slain by this attack rises 24 hours later as a zombie under the wight's control, unless the humanoid is restored to life or its body is destroyed. The wight can have no more than twelve zombies under its control at one time."
 					]
 				}
@@ -586,6 +643,9 @@
 			],
 			"damageTags": [
 				"N"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -633,9 +693,13 @@
 				"exhaustion",
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 13,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "1",
 			"trait": [
 				{
@@ -681,6 +745,11 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -730,9 +799,14 @@
 			"resist": [
 				"poison"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 14,
-			"languages": "Dwarvish, Undercommon",
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -788,7 +862,7 @@
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The spy magically turns {@condition invisible} until it attacks, deals damage, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the spy wears or carries is invisible with it."
+						"The spy magically turns {@condition invisible} until it attacks, deals damage, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the spy wears or carries is {@condition invisible} with it."
 					]
 				}
 			],
@@ -809,6 +883,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -848,9 +927,14 @@
 			"int": 10,
 			"wis": 10,
 			"cha": 9,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 10,
-			"languages": "Common, Goblin",
+			"languages": [
+				"Common",
+				"Goblin"
+			],
 			"cr": "1",
 			"trait": [
 				{
@@ -885,6 +969,11 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -921,15 +1010,22 @@
 				"medicine": "+4",
 				"religion": "+2"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 12,
-			"languages": "Common, Draconic, Gnomish, and Goblin",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Gnomish",
+				"Goblin"
+			],
 			"cr": "1/4",
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, {@hit 4} to hit with spell attacks). The acolyte has following cleric spells prepared:"
+						"The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save {@dc 12}, {@hit 4} to hit with spell attacks). The acolyte has following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -961,7 +1057,7 @@
 				{
 					"name": "Channel Divinity: Turn Undead (1/Short Rest)",
 					"entries": [
-						"Erky presents his holy Symbol and speaks a prayer censuring the Undead. Each Undead that can see or hear Erky within 30 feet of him must make a DC 12 Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.",
+						"Erky presents his holy Symbol and speaks a prayer censuring the Undead. Each Undead that can see or hear Erky within 30 feet of him must make a {@dc 12} Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.",
 						"A turned creature must spend its turns trying to move as far away from Erky as it can, and it can't willingly move to a space within 30 feet of him. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action."
 					]
 				}
@@ -981,6 +1077,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1032,9 +1131,13 @@
 				"petrified",
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 10,
-			"languages": "Terran",
+			"languages": [
+				"Terran"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -1080,6 +1183,9 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1115,7 +1221,9 @@
 			"skill": {
 				"stealth": "+3"
 			},
-			"senses": "blindsight 30 ft.",
+			"senses": [
+				"blindsight 30 ft."
+			],
 			"passive": 9,
 			"cr": "2",
 			"trait": [
@@ -1136,7 +1244,7 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d10 + 2}) bludgeoning damage, and the target is {@condition grappled} (escape DC 12). The crayfish has two claws, each of which can grapple only one target."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d10 + 2}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 12}). The crayfish has two claws, each of which can grapple only one target."
 					]
 				}
 			],
@@ -1152,6 +1260,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1186,9 +1297,13 @@
 			"immune": [
 				"cold"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 10,
-			"languages": "Ice Toad",
+			"languages": [
+				"Ice Toad"
+			],
 			"cr": "3",
 			"trait": [
 				{
@@ -1214,7 +1329,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) piercing damage, and the target is {@condition grappled} (escape DC 13). Until this grapple ends, the target is {@condition restrained}, and the toad can't bite another target."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) piercing damage, and the target is {@condition grappled} (escape {@dc 13}). Until this grapple ends, the target is {@condition restrained}, and the toad can't bite another target."
 					]
 				},
 				{
@@ -1242,6 +1357,9 @@
 				"P",
 				"A",
 				"C"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1272,7 +1390,9 @@
 			"resist": [
 				"lightning"
 			],
-			"senses": "blindsight 60 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
 			"passive": 11,
 			"cr": "3",
 			"trait": [
@@ -1299,7 +1419,7 @@
 				{
 					"name": "Lightning Jolt {@recharge 5}",
 					"entries": [
-						"One creature the eel touches within 5 feet of it outside water, or each creature within 15 feet of it in a body of water, must make a DC 12 Constitution saving throw. On failed save, a target takes 13 ({@damage 3d8}) lightning damage. If the target takes any of this damage, the target is {@condition stunned} until the end of the eel's next turn. On a successful save, a target takes half as much damage and isn't {@condition stunned}."
+						"One creature the eel touches within 5 feet of it outside water, or each creature within 15 feet of it in a body of water, must make a {@dc 12} Constitution saving throw. On failed save, a target takes 13 ({@damage 3d8}) lightning damage. If the target takes any of this damage, the target is {@condition stunned} until the end of the eel's next turn. On a successful save, a target takes half as much damage and isn't {@condition stunned}."
 					]
 				}
 			],
@@ -1316,6 +1436,9 @@
 			"damageTags": [
 				"P",
 				"L"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1355,9 +1478,13 @@
 				"exhaustion",
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 8,
-			"languages": "understands Giant but can't speak",
+			"languages": [
+				"understands Giant but can't speak"
+			],
 			"cr": "7",
 			"trait": [
 				{
@@ -1402,14 +1529,18 @@
 				"Multiattack"
 			],
 			"languageTags": [
-				"GI",
-				"CS"
+				"CS",
+				"GI"
 			],
 			"senseTags": [
 				"D"
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -1457,13 +1588,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}16 ({@damage 2d10 + 5}) piercing damage and the target is {@condition grappled} (escape DC 15). Until this grapple ends, the target is {@condition restrained}, and the lizard can't bite another target."
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}16 ({@damage 2d10 + 5}) piercing damage and the target is {@condition grappled} (escape {@dc 15}). Until this grapple ends, the target is {@condition restrained}, and the lizard can't bite another target."
 					]
 				},
 				{
 					"name": "Tail",
 					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 10 ft., one target. {@h}12 ({@damage 2d6 + 5}) piercing damage. If the target is a creature, it must succeed on a DC 15 Strength saving throw or be knocked {@condition prone}."
+						"{@atk mw} {@hit 7} to hit, reach 10 ft., one target. {@h}12 ({@damage 2d6 + 5}) piercing damage. If the target is a creature, it must succeed on a {@dc 15} Strength saving throw or be knocked {@condition prone}."
 					]
 				},
 				{
@@ -1482,6 +1613,10 @@
 			"damageTags": [
 				"P",
 				"A"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -1531,9 +1666,13 @@
 				"paralyzed",
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 8,
-			"languages": "understands the languages it knew in life but can't speak",
+			"languages": [
+				"understands the languages it knew in life but can't speak"
+			],
 			"cr": "5",
 			"trait": [
 				{
@@ -1580,6 +1719,9 @@
 			"damageTags": [
 				"B",
 				"N"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1622,9 +1764,14 @@
 			"skill": {
 				"stealth": "+6"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 9,
-			"languages": "Common, Goblin",
+			"languages": [
+				"Common",
+				"Goblin"
+			],
 			"cr": "1/4",
 			"trait": [
 				{
@@ -1653,7 +1800,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Grenl is a 1st-level spellcaster. Her spellcasting ability is Wisdom (spell save DC 11, {@hit 3} to hit with spell attacks). She has the following cleric spells prepared:"
+						"Grenl is a 1st-level spellcaster. Her spellcasting ability is Wisdom (spell save {@dc 11}, {@hit 3} to hit with spell attacks). She has the following cleric spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -1685,6 +1832,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
 			]
 		},
 		{
@@ -1712,14 +1864,16 @@
 			"int": 2,
 			"wis": 10,
 			"cha": 4,
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 10,
 			"cr": "1/4",
 			"action": [
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage. If the target is a creature, it must succeed on a DC 10 Constitution saving throw or contract a disease. Until the disease is cured, the target can't regain hit points except by magical means, and the target's hit point maximum decreases by 3 ({@dice 1d6}) every 24 hours. If the target's hit point maximum drops to 0 as a result of this disease, the target dies."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage. If the target is a creature, it must succeed on a {@dc 10} Constitution saving throw or contract a disease. Until the disease is cured, the target can't regain hit points except by magical means, and the target's hit point maximum decreases by 3 ({@dice 1d6}) every 24 hours. If the target's hit point maximum drops to 0 as a result of this disease, the target dies."
 					]
 				}
 			],
@@ -1729,6 +1883,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1769,7 +1926,9 @@
 				"frightened",
 				"paralyzed"
 			],
-			"senses": "blindsight 30 ft.",
+			"senses": [
+				"blindsight 30 ft."
+			],
 			"passive": 9,
 			"cr": "8",
 			"trait": [
@@ -1790,7 +1949,7 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 10 ft., one target. {@h}27 ({@damage 4d10 + 5}) bludgeoning damage, and the target is {@condition grappled}, escape DC 14. The crab has two claws, each of which can grapple only one target."
+						"{@atk mw} {@hit 9} to hit, reach 10 ft., one target. {@h}27 ({@damage 4d10 + 5}) bludgeoning damage, and the target is {@condition grappled}, escape {@dc 14}. The crab has two claws, each of which can grapple only one target."
 					]
 				}
 			],
@@ -1803,6 +1962,10 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -1844,9 +2007,14 @@
 			"skill": {
 				"stealth": "+2"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 10,
-			"languages": "Draconic, Troglodyte",
+			"languages": [
+				"Draconic",
+				"Troglodyte"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -1858,7 +2026,7 @@
 				{
 					"name": "Stench",
 					"entries": [
-						"Any creature other than a troglodyte that starts its turn within 5 ft. of the troglodyte must succeed on a DC 12 Constitution saving throw or be {@condition poisoned} until the start of the creature's next turn. On a successful saving throw, the creature is immune to the stench of all troglodytes for 1 hour."
+						"Any creature other than a troglodyte that starts its turn within 5 ft. of the troglodyte must succeed on a {@dc 12} Constitution saving throw or be {@condition poisoned} until the start of the creature's next turn. On a successful saving throw, the creature is immune to the stench of all troglodytes for 1 hour."
 					]
 				},
 				{
@@ -1893,7 +2061,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Kaarghaz is a 4th-level spellcaster. His spellcasting ability is Charisma (spell save DC 12, {@hit 4} to hit with spell attacks). He knows the following sorcerer spells:"
+						"Kaarghaz is a 4th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). He knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -1943,6 +2111,9 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1981,9 +2152,13 @@
 				"insight": "+5",
 				"stealth": "+3"
 			},
-			"senses": "blindsight 30 ft.",
+			"senses": [
+				"blindsight 30 ft."
+			],
 			"passive": 13,
-			"languages": "Olman",
+			"languages": [
+				"Olman"
+			],
 			"cr": "3",
 			"trait": [
 				{
@@ -2015,7 +2190,7 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) bludgeoning damage, and if the target is a Medium or smaller creature, it is {@condition grappled} (escape DC 13). Until this grapple ends, the target is {@condition restrained}. Kalka-Kylla has two claws, each of which can grapple only one target."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) bludgeoning damage, and if the target is a Medium or smaller creature, it is {@condition grappled} (escape {@dc 13}). Until this grapple ends, the target is {@condition restrained}. Kalka-Kylla has two claws, each of which can grapple only one target."
 					]
 				}
 			],
@@ -2035,6 +2210,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2082,9 +2260,14 @@
 				"deafened",
 				"exhaustion"
 			],
-			"senses": "blindsight 60 ft.",
+			"senses": [
+				"blindsight 60 ft."
+			],
 			"passive": 13,
-			"languages": "Common, Sylvan",
+			"languages": [
+				"Common",
+				"Sylvan"
+			],
 			"cr": "4",
 			"trait": [
 				{
@@ -2116,13 +2299,13 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d8 + 2}) piercing damage. If the target is a Medium or smaller creature, it is {@condition grappled} (escape DC 12)."
+						"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d8 + 2}) piercing damage. If the target is a Medium or smaller creature, it is {@condition grappled} (escape {@dc 12})."
 					]
 				},
 				{
 					"name": "Drowning Hypnosis",
 					"entries": [
-						"The kelpie chooses one humanoid it can see within 150 feet of it. If the target can see the kelpie, the target must succeed on a DC 11 Wisdom saving throw or be magically {@condition charmed} while the kelpie maintains concentration, up to 10 minutes (as if concentrating on a spell). The {@condition charmed} target is {@condition incapacitated}, and instead of holding its breath underwater, it tries to breathe normally and immediately runs out of breath, unless it can breathe water. If the {@condition charmed} target is more than 5 feet away from the kelpie, the target must move on its turn toward the kelpie by the most direct route, trying to get within 5 feet. It doesn't avoid opportunity attacks.",
+						"The kelpie chooses one humanoid it can see within 150 feet of it. If the target can see the kelpie, the target must succeed on a {@dc 11} Wisdom saving throw or be magically {@condition charmed} while the kelpie maintains concentration, up to 10 minutes (as if concentrating on a spell). The {@condition charmed} target is {@condition incapacitated}, and instead of holding its breath underwater, it tries to breathe normally and immediately runs out of breath, unless it can breathe water. If the {@condition charmed} target is more than 5 feet away from the kelpie, the target must move on its turn toward the kelpie by the most direct route, trying to get within 5 feet. It doesn't avoid opportunity attacks.",
 						"Before moving into damaging terrain, such as lava or a pit, and whenever it takes damage from a source other than the kelpie or drowning, the target can repeat the saving throw. A {@condition charmed} target can also repeat the saving throw at the end of each of its turns. If the saving throw is successful, the effect ends on it.",
 						"A target that successfully saves is immune to this kelpie's hypnosis for the next 24 hours."
 					]
@@ -2145,6 +2328,10 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -2202,9 +2389,13 @@
 				"frightened",
 				"paralyzed"
 			],
-			"senses": "truesight 60 ft.",
+			"senses": [
+				"truesight 60 ft."
+			],
 			"passive": 12,
-			"languages": "understands Common but can't speak; telepathy 60 ft.",
+			"languages": [
+				"understands Common but can't speak; telepathy 60 ft."
+			],
 			"cr": "10",
 			"trait": [
 				{
@@ -2236,19 +2427,19 @@
 				{
 					"name": "Tentacle",
 					"entries": [
-						"{@atk mw} {@hit 11} to hit, reach 20 ft., one target. {@h}14 ({@damage 2d6 + 7}) bludgeoning damage, and the target is {@condition grappled} (escape DC 16). Until this grapple ends, the target is {@condition restrained}. The kraken has ten tentacles, each of which can grapple one target."
+						"{@atk mw} {@hit 11} to hit, reach 20 ft., one target. {@h}14 ({@damage 2d6 + 7}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 16}). Until this grapple ends, the target is {@condition restrained}. The kraken has ten tentacles, each of which can grapple one target."
 					]
 				},
 				{
 					"name": "Fling",
 					"entries": [
-						"One Medium or smaller object held or creature {@condition grappled} by the kraken 's tentacles is thrown up to 60 feet in a random direction and knocked {@condition prone}. If a thrown target strikes a solid surface, the target takes 3 ({@damage 1d6}) bludgeoning damage for every 10 feet it was thrown. If the target is thrown at another creature, that creature must succeed on a DC 16 Dexterity saving throw or take the same damage and be knocked {@condition prone}."
+						"One Medium or smaller object held or creature {@condition grappled} by the kraken 's tentacles is thrown up to 60 feet in a random direction and knocked {@condition prone}. If a thrown target strikes a solid surface, the target takes 3 ({@damage 1d6}) bludgeoning damage for every 10 feet it was thrown. If the target is thrown at another creature, that creature must succeed on a {@dc 16} Dexterity saving throw or take the same damage and be knocked {@condition prone}."
 					]
 				},
 				{
 					"name": "Lightning Storm",
 					"entries": [
-						"The kraken creates three bolts of lightning, each of which can strike a target the kraken can see within 150 feet of it. A target must make a DC 16 Dexterity saving throw, taking 16 ({@damage 3d10}) lightning damage on a failed save, or half as much damage on a successful one."
+						"The kraken creates three bolts of lightning, each of which can strike a target the kraken can see within 150 feet of it. A target must make a {@dc 16} Dexterity saving throw, taking 16 ({@damage 3d10}) lightning damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -2263,8 +2454,8 @@
 			],
 			"languageTags": [
 				"C",
-				"TP",
-				"CS"
+				"CS",
+				"TP"
 			],
 			"senseTags": [
 				"U"
@@ -2273,6 +2464,10 @@
 				"P",
 				"B",
 				"L"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -2313,9 +2508,13 @@
 			"conditionImmune": [
 				"charmed"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 11,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "3",
 			"trait": [
 				{
@@ -2373,6 +2572,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2409,9 +2611,16 @@
 				"stealth": "+5",
 				"survival": "+4"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 12,
-			"languages": "Aquan, Common, Elvish, Sylvan",
+			"languages": [
+				"Aquan",
+				"Common",
+				"Elvish",
+				"Sylvan"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -2455,13 +2664,13 @@
 				{
 					"name": "Drowning Kiss {@recharge 5}",
 					"entries": [
-						"The nereid touches one creature it can see within 5 feet of it. The target must succeed on a DC 13 Constitution saving throw or take 22 ({@damage 3d12 + 3}) acid damage. On a failure, it also runs out of breath and can't speak for 1 minute. At the end of each of its turns, it can repeat the save, ending the effect on itself on a success."
+						"The nereid touches one creature it can see within 5 feet of it. The target must succeed on a {@dc 13} Constitution saving throw or take 22 ({@damage 3d12 + 3}) acid damage. On a failure, it also runs out of breath and can't speak for 1 minute. At the end of each of its turns, it can repeat the save, ending the effect on itself on a success."
 					]
 				},
 				{
 					"name": "Water Lash",
 					"entries": [
-						"The nereid causes a 5-foot cube of water within 60 feet of it to take a shape of its choice and strike one target it can see within 5 feet of that water. The target must make a DC 13 Strength saving throw. On a failed save, it takes 17 ({@damage 4d6 + 3}) bludgeoning damage, and if it is a Large or smaller creature, it is pushed up to 15 feet in a straight line or is knocked {@condition prone} (nereid's choice). On a successful save, the target takes half as much damage and isn't pushed or knocked {@condition prone}."
+						"The nereid causes a 5-foot cube of water within 60 feet of it to take a shape of its choice and strike one target it can see within 5 feet of that water. The target must make a {@dc 13} Strength saving throw. On a failed save, it takes 17 ({@damage 4d6 + 3}) bludgeoning damage, and if it is a Large or smaller creature, it is pushed up to 15 feet in a straight line or is knocked {@condition prone} (nereid's choice). On a successful save, the target takes half as much damage and isn't pushed or knocked {@condition prone}."
 					]
 				}
 			],
@@ -2481,6 +2690,9 @@
 			"damageTags": [
 				"A",
 				"B"
+			],
+			"miscTags": [
+				"AOE"
 			]
 		},
 		{
@@ -2522,9 +2734,14 @@
 			"resist": [
 				"poison"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 10,
-			"languages": "Dwarvish, Undercommon",
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "3",
 			"trait": [
 				{
@@ -2574,7 +2791,7 @@
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is {@condition invisible} with it."
 					]
 				}
 			],
@@ -2595,6 +2812,11 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -2663,9 +2885,15 @@
 				"poisoned",
 				"prone"
 			],
-			"senses": "blindsight 120 ft.",
+			"senses": [
+				"blindsight 120 ft."
+			],
 			"passive": 10,
-			"languages": "Common, Primordial, Thayan",
+			"languages": [
+				"Common",
+				"Primordial",
+				"Thayan"
+			],
 			"cr": "10",
 			"trait": [
 				{
@@ -2700,7 +2928,7 @@
 				{
 					"name": "Instinctive Charm",
 					"entries": [
-						"If a creature the Ooze Master can see makes an attack roll against it while within 30 feet of it, the Ooze Master can use a reaction to divert the attack if another creature is within the attack's range. The attacker must make a DC 15 Wisdom saving throw. On a failed save, the attacker targets the creature that is closest to it, not including itself or the Ooze Master. If multiple creatures are closest, the attacker chooses which one to target. On a successful save, the attacker is immune to this Instinctive Charm for 24 hours. Creatures that can't be {@condition charmed} are immune to this effect."
+						"If a creature the Ooze Master can see makes an attack roll against it while within 30 feet of it, the Ooze Master can use a reaction to divert the attack if another creature is within the attack's range. The attacker must make a {@dc 15} Wisdom saving throw. On a failed save, the attacker targets the creature that is closest to it, not including itself or the Ooze Master. If multiple creatures are closest, the attacker chooses which one to target. On a successful save, the attacker is immune to this Instinctive Charm for 24 hours. Creatures that can't be {@condition charmed} are immune to this effect."
 					]
 				}
 			],
@@ -2709,7 +2937,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The Ooze Master is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 15, {@hit 7} to hit with spell attacks). It has the following wizard spells prepared:"
+						"The Ooze Master is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 15}, {@hit 7} to hit with spell attacks). It has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -2779,6 +3007,10 @@
 			"damageTags": [
 				"B",
 				"A"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -2874,6 +3106,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -2918,7 +3153,11 @@
 				"persuasion": "+1"
 			},
 			"passive": 12,
-			"languages": "Common, Draconic, Goblin",
+			"languages": [
+				"Common",
+				"Draconic",
+				"Goblin"
+			],
 			"cr": "1/2",
 			"trait": [
 				{
@@ -2953,7 +3192,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Sharwyn is a 1st-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 13, {@hit 5} to hit with spell attacks). She has the following wizard spells prepared:"
+						"Sharwyn is a 1st-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 13}, {@hit 5} to hit with spell attacks). She has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -2986,6 +3225,9 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3030,7 +3272,9 @@
 				"perception": "+3"
 			},
 			"passive": 13,
-			"languages": "Common",
+			"languages": [
+				"Common"
+			],
 			"cr": "1/2",
 			"trait": [
 				{
@@ -3074,6 +3318,9 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3109,9 +3356,15 @@
 				"stealth": "+6",
 				"survival": "+4"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 12,
-			"languages": "Common, Elvish, Sylvan",
+			"languages": [
+				"Common",
+				"Elvish",
+				"Sylvan"
+			],
 			"cr": "3",
 			"trait": [
 				{
@@ -3137,7 +3390,7 @@
 				{
 					"name": "Stupefying Touch",
 					"entries": [
-						"Siren touches one creature she can see within 5 feet of her. The creature must succeed on a DC 13 Intelligence saving throw or take 13 ({@damage 3d6 + 3}) psychic damage and be {@condition stunned} until the start of Siren's next turn."
+						"Siren touches one creature she can see within 5 feet of her. The creature must succeed on a {@dc 13} Intelligence saving throw or take 13 ({@damage 3d6 + 3}) psychic damage and be {@condition stunned} until the start of Siren's next turn."
 					]
 				}
 			],
@@ -3146,7 +3399,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Siren's innate spellcasting ability is Charisma (spell save DC 13). She can innately cast the following spells, requiring no material components:"
+						"Siren's innate spellcasting ability is Charisma (spell save {@dc 13}). She can innately cast the following spells, requiring no material components:"
 					],
 					"daily": {
 						"1e": [
@@ -3177,6 +3430,9 @@
 			"damageTags": [
 				"P",
 				"Y"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -3239,7 +3495,9 @@
 				}
 			],
 			"passive": 14,
-			"languages": "Common (can't speak in wolf form)",
+			"languages": [
+				"Common (can't speak in wolf form)"
+			],
 			"cr": "5",
 			"trait": [
 				{
@@ -3265,7 +3523,7 @@
 				{
 					"name": "Bite (Wolf or Hybrid Form Only)",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage. If the target is a humanoid, it must succeed on a DC 12 Constitution saving throw or be cursed with werewolf lycanthropy."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage. If the target is a humanoid, it must succeed on a {@dc 12} Constitution saving throw or be cursed with werewolf lycanthropy."
 					]
 				},
 				{
@@ -3286,7 +3544,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Snarla is a 6th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 14, +6 to hit with spell attacks). She has the following wizard spells prepared:"
+						"Snarla is a 6th-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 14}, +6 to hit with spell attacks). She has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -3339,6 +3597,11 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -3381,9 +3644,14 @@
 			"resist": [
 				"poison"
 			],
-			"senses": "darkvision 120 ft.",
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 10,
-			"languages": "Dwarvish, Undercommon",
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -3421,7 +3689,7 @@
 				{
 					"name": "Invisibility (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is invisible with it."
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is {@condition invisible} with it."
 					]
 				}
 			],
@@ -3430,7 +3698,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Snurrevin is a 3rd-level spellcaster. His spellcasting ability is Intelligence (spell save DC 12, {@hit 4} to hit with spell attacks). He has the following wizard spells prepared:"
+						"Snurrevin is a 3rd-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 12}, {@hit 4} to hit with spell attacks). He has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -3475,6 +3743,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -3542,9 +3815,17 @@
 				"paralyzed",
 				"poisoned"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 17,
-			"languages": "Abyssal, Common, Infernal, Primordial, Thayan",
+			"languages": [
+				"Abyssal",
+				"Common",
+				"Infernal",
+				"Primordial",
+				"Thayan"
+			],
 			"cr": "13",
 			"trait": [
 				{
@@ -3576,7 +3857,7 @@
 				{
 					"name": "Paralyzing Touch",
 					"entries": [
-						"{@atk ms} {@hit 9} to hit, reach 5 ft., one creature. {@h}10 ({@damage 3d6}) cold damage. The target must succeed on a DC 17 Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"{@atk ms} {@hit 9} to hit, reach 5 ft., one creature. {@h}10 ({@damage 3d6}) cold damage. The target must succeed on a {@dc 17} Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				},
 				{
@@ -3602,7 +3883,7 @@
 				{
 					"name": "Frightening Gaze (Costs 2 Actions)",
 					"entries": [
-						"Var fixes his gaze on one creature he can see within 10 feet of him. The target must succeed on a DC 17 Wisdom saving throw against this magic or become {@condition frightened} for 1 minute. The {@condition frightened} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to Var's gaze for the next 24 hours."
+						"Var fixes his gaze on one creature he can see within 10 feet of him. The target must succeed on a {@dc 17} Wisdom saving throw against this magic or become {@condition frightened} for 1 minute. The {@condition frightened} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to Var's gaze for the next 24 hours."
 					]
 				}
 			],
@@ -3611,7 +3892,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Var is a 12th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 17, {@hit 9} to hit with spell attacks). He has the following wizard spells prepared:",
+						"Var is a 12th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 17}, {@hit 9} to hit with spell attacks). He has the following wizard spells prepared:",
 						"*Conjuration spell of 1st level or higher"
 					],
 					"spells": {
@@ -3744,9 +4025,14 @@
 			"immune": [
 				"acid"
 			],
-			"senses": "blindsight 30 ft.",
+			"senses": [
+				"blindsight 30 ft."
+			],
 			"passive": 13,
-			"languages": "Olman, Primal",
+			"languages": [
+				"Olman",
+				"Primal"
+			],
 			"cr": "4",
 			"trait": [
 				{
@@ -3790,7 +4076,7 @@
 				{
 					"name": "Spit Acid {@recharge 4}",
 					"entries": [
-						"Tecuziztecatl exhales acid in a 30-foot line that is 5 feet wide. Each creature in that line must make a DC 13 Dexterity saving throw, taking 18 ({@damage 4d8}) acid damage on a failed save, or half as much damage on a successful one."
+						"Tecuziztecatl exhales acid in a 30-foot line that is 5 feet wide. Each creature in that line must make a {@dc 13} Dexterity saving throw, taking 18 ({@damage 4d8}) acid damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			],
@@ -3811,6 +4097,11 @@
 			"damageTags": [
 				"B",
 				"A"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"AOE"
 			]
 		},
 		{
@@ -3855,7 +4146,10 @@
 				"arcana": "+4"
 			},
 			"passive": 11,
-			"languages": "Common, Thayan",
+			"languages": [
+				"Common",
+				"Thayan"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -3878,7 +4172,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"The apprentice is a 4th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 12, {@hit 4} to hit with spell attacks). It has the following wizard spells prepared:"
+						"The apprentice is a 4th-level spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 12}, {@hit 4} to hit with spell attacks). It has the following wizard spells prepared:"
 					],
 					"spells": {
 						"0": {
@@ -3918,6 +4212,11 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"RW",
+				"MW",
+				"THW"
 			]
 		},
 		{
@@ -3963,7 +4262,10 @@
 				"perception": "+2"
 			},
 			"passive": 12,
-			"languages": "Common, Thayan",
+			"languages": [
+				"Common",
+				"Thayan"
+			],
 			"cr": "2",
 			"trait": [
 				{
@@ -4013,6 +4315,11 @@
 			"damageTags": [
 				"S",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -4044,14 +4351,16 @@
 				"deafened",
 				"frightened"
 			],
-			"senses": "blindsight 60 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
 			"passive": 10,
 			"cr": "1/2",
 			"trait": [
 				{
 					"name": "Adhesive Blossoms",
 					"entries": [
-						"The thorn slinger adheres to anything that touches it. A Medium or smaller creature adhered to the thorn slinger is also {@condition grappled} by it (escape DC 11). Ability checks made to escape this grapple have disadvantage.",
+						"The thorn slinger adheres to anything that touches it. A Medium or smaller creature adhered to the thorn slinger is also {@condition grappled} by it (escape {@dc 11}). Ability checks made to escape this grapple have disadvantage.",
 						"At the end of each of the thorn slinger's turns, anything {@condition grappled} by it takes 3 ({@damage 1d6}) acid damage."
 					]
 				},
@@ -4080,6 +4389,10 @@
 			"damageTags": [
 				"P",
 				"A"
+			],
+			"miscTags": [
+				"RW",
+				"MW"
 			]
 		},
 		{
@@ -4132,9 +4445,13 @@
 					"note": "from nonmagical attacks"
 				}
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 13,
-			"languages": "the languages it knew in life",
+			"languages": [
+				"the languages it knew in life"
+			],
 			"cr": "5",
 			"trait": [
 				{
@@ -4182,7 +4499,7 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one creature. {@h}8 ({@damage 2d4 + 3}) slashing damage. Instead of dealing damage, the vampire can grapple the target, escape DC 13."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one creature. {@h}8 ({@damage 2d4 + 3}) slashing damage. Instead of dealing damage, the vampire can grapple the target, escape {@dc 13}."
 					]
 				},
 				{
@@ -4203,7 +4520,7 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Tloques can cast {@spell hold person} (DC 14) at will, requiring no components, but his target must be able to see him."
+						"Tloques can cast {@spell hold person} ({@dc 14}) at will, requiring no components, but his target must be able to see him."
 					],
 					"hidden": [
 						"will"
@@ -4229,6 +4546,9 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -4292,7 +4612,9 @@
 				"prone",
 				"restrained"
 			],
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 11,
 			"cr": "3",
 			"trait": [
@@ -4325,7 +4647,7 @@
 				{
 					"name": "Blood Drain",
 					"entries": [
-						"One creature in the vampiric mist's space must make a DC 13 Constitution saving throw (undead and constructs automatically succeed). On a failed save, the target takes 10 ({@damage 2d6 + 3}) necrotic damage, its hit point maximum is reduced by an amount equal to the necrotic damage taken, and the mist regains hit points equal to that amount. This reduction to the target's hit point maximum lasts until the target finishes a long rest. It dies if this effect reduces its hit point maximum to 0."
+						"One creature in the vampiric mist's space must make a {@dc 13} Constitution saving throw (undead and constructs automatically succeed). On a failed save, the target takes 10 ({@damage 2d6 + 3}) necrotic damage, its hit point maximum is reduced by an amount equal to the necrotic damage taken, and the mist regains hit points equal to that amount. This reduction to the target's hit point maximum lasts until the target finishes a long rest. It dies if this effect reduces its hit point maximum to 0."
 					]
 				}
 			],
@@ -4384,9 +4706,13 @@
 				"poisoned",
 				"prone"
 			],
-			"senses": "blindsight 60 ft. (blind beyond this radius)",
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
 			"passive": 10,
-			"languages": "telepathy 50 ft.",
+			"languages": [
+				"telepathy 50 ft."
+			],
 			"cr": "10",
 			"trait": [
 				{
@@ -4437,6 +4763,10 @@
 			"damageTags": [
 				"B",
 				"A"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
@@ -4480,9 +4810,14 @@
 				"insight": "+2",
 				"stealth": "+4"
 			},
-			"senses": "darkvision 60 ft.",
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 10,
-			"languages": "Common, Draconic",
+			"languages": [
+				"Common",
+				"Draconic"
+			],
 			"cr": "1",
 			"trait": [
 				{
@@ -4511,7 +4846,7 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Yusdrayl is a 2nd-level spellcaster. Her spellcasting ability is Charisma (spell save DC 13, {@hit 5} to hit with spell attacks). She knows the following sorcerer spells:"
+						"Yusdrayl is a 2nd-level spellcaster. Her spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). She knows the following sorcerer spells:"
 					],
 					"spells": {
 						"0": {
@@ -4550,7 +4885,1878 @@
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
+		},
+		{
+			"name": "Amphisbaena",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Giant Constrictor Snake",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Multiattack",
+							"entries": [
+								"The amphisbaena makes two attacks, only one of which can be a constrict attack."
+							]
+						}
+					}
+				}
+			},
+			"cr": "3",
+			"actionTags": [
+				"Multiattack"
+			]
+		},
+		{
+			"name": "Ashdra",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				}
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"languageTags": [
+				"C",
+				"X",
+				"E"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"traitTags": [
+				"Fey Ancestry",
+				"Sunlight Sensitivity"
+			],
+			"spellcastingTags": [
+				"I"
+			]
+		},
+		{
+			"name": "Bandagh",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Orc",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Bugbear Gardener",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Bugbear",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Morningstar",
+						"items": {
+							"name": "Glaive",
+							"entries": [
+								"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}13 ({@damage 2d10 + 2}) slashing damage."
+							]
+						}
+					}
+				}
+			},
+			"damageTags": [
+				"S",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW",
+				"THW"
+			]
+		},
+		{
+			"name": "Bugbear Lieutenant",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Bugbear",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Morningstar",
+						"items": {
+							"name": "Longsword",
+							"entries": [
+								"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d8 + 2}) slashing damage, or 13 ({@damage 2d10 + 2}) slashing damage if used with both hands."
+							]
+						}
+					}
+				}
+			},
+			"damageTags": [
+				"S",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW",
+				"THW"
+			]
+		},
+		{
+			"name": "Chief Nosnra",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Frost Giant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the giant",
+						"with": "Chief Nosnra",
+						"flags": "i"
+					}
+				}
+			},
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item splint armor|phb}"
+					]
+				}
+			],
+			"immune": null
+		},
+		{
+			"name": "Grutha",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Hill Giant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the giant",
+						"with": "Grutha",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Hill Giant Subchief",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Stone Giant",
+				"source": "MM"
+			},
+			"trait": null
+		},
+		{
+			"name": "Hill Giant Sergeant",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Hill Giant",
+				"source": "MM"
+			},
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item chain mail|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 115,
+				"formula": "10d12 + 40"
+			}
+		},
+		{
+			"name": "Hill Giant Servant",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Ogre",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "ogre",
+						"with": "giant"
+					}
+				}
+			}
+		},
+		{
+			"name": "Cloud Giant Noble",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Cloud Giant",
+				"source": "MM"
+			},
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item chain mail|phb}"
+					]
+				}
+			]
+		},
+		{
+			"name": "Curran Corvalin",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Stout Halfling",
+					"source": "PHB"
+				}
+			},
+			"languageTags": [
+				"C",
+				"X",
+				"H"
+			]
+		},
+		{
+			"name": "Dragonpriest",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Troll",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "troll",
+						"with": "dragonpriest",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Regeneration",
+						"items": {
+							"name": "Regeneration",
+							"entries": [
+								"The dragonpriest regains 5 hit points at the start of its turn. If the dragonpriest takes acid or fire damage, this trait doesn't function at the start of the dragonpriest's next turn. The dragonpriest dies only if it starts its turn with 0 hit points and doesn't regenerate."
+							]
+						}
+					},
+					"action": {
+						"mode": "removeArr",
+						"names": "Multiattack"
+					}
+				}
+			}
+		},
+		{
+			"name": "Drevin",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Spy",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the spy",
+						"with": "Drevin",
+						"flags": "i"
+					}
+				},
+				"_trait": {
+					"name": "Stout Halfling",
+					"source": "PHB"
+				}
+			},
+			"languageTags": [
+				"X",
+				"H"
+			]
+		},
+		{
+			"name": "Drow Commander",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Drow Elite Warrior",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Special Equipment",
+							"entries": [
+								"The drow carries three magical bolts, as follows:",
+								{
+									"type": "list",
+									"items": [
+										"A {@i bolt of holding}, which casts {@spell hold person} on a target hit with the bolt, as well as up to two other targets within 30 feet of that target",
+										"A {@i bolt of blinding}, which casts {@spell blindness/deafness} to blind on a target hit with the bolt, as well as up to two other targets within 30 feet of that target",
+										"A {@i bolt of vapors}, which casts {@spell stinking cloud} centered on the point it hits"
+									]
+								},
+								"Each of these effects has a spell save DC of 15 and a duration of 1 minute."
+							]
+						}
+					},
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Shortsword",
+							"items": {
+								"name": "Shortsword +2",
+								"entries": [
+									"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d6 + 6}) piercing damage plus 10 ({@damage 3d6}) poison damage."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Hand Crossbow",
+							"items": {
+								"name": "Hand Crossbow +1",
+								"entries": [
+									"{@atk rw} {@hit 8} to hit, range 30/120 ft., one target. {@h}8 ({@damage 1d6 + 5}) piercing damage, and the target must succeed on a DC 13 Constitution saving throw or be {@condition poisoned} for 1 hour. If the saving throw fails by 5 or more, the target is also {@condition unconscious} while {@condition poisoned} in this way. The target wakes up if it takes damage or if another creature takes an action to shake it awake."
+								]
+							}
+						}
+					]
+				}
+			},
+			"hp": {
+				"average": 110,
+				"formula": "11d8 + 22"
+			}
+		},
+		{
+			"name": "Eira",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Druid",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the druid",
+						"with": "Eira",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Elder Black Pudding",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Black Pudding",
+				"source": "MM"
+			},
+			"size": "H",
+			"hp": {
+				"average": 130,
+				"formula": "10d12 + 30"
+			}
+		},
+		{
+			"name": "Elder Giant Lizard",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Giant Crocodile",
+				"source": "MM"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"name": "Jarl Grugnur",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Cloud Giant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the giant",
+						"with": "Grugnur",
+						"flags": "i"
+					},
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"Grugnur makes two longsword attacks."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Morningstar",
+							"items": {
+								"name": "Longsword +2",
+								"entries": [
+									"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. {@h}23 ({@damage 3d8 + 10}) slashing damage, or 26 ({@damage 3d10 + 10}) slashing damage if used with both hands."
+								]
+							}
+						}
+					]
+				}
+			},
+			"immune": [
+				"cold"
+			],
+			"spellcasting": null,
+			"trait": null,
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item chain mail|phb}",
+						"{@item arrow-catching shield}"
+					]
+				},
+				{
+					"ac": 20,
+					"condition": "against ranged attacks",
+					"braces": true
+				}
+			],
+			"damageTags": [
+				"S",
+				"B"
+			]
+		},
+		{
+			"name": "Estia",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Cloud Giant",
+				"source": "MM",
+				"*": {
+					"mode": "replaceTxt",
+					"replace": "the giant",
+					"with": "Estia",
+					"flags": "i"
+				},
+				"action": [
+					{
+						"mode": "replaceArr",
+						"replace": "Morningstar",
+						"items": {
+							"name": "Morningstar +2",
+							"entries": [
+								"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. {@h}23 ({@damage 3d8 + 10}) piercing damage."
+							]
+						}
+					}
+				]
+			},
+			"immune": [
+				"cold"
+			],
+			"spellcasting": null,
+			"trait": null
+		},
+		{
+			"name": "Fire Giant Royal Headsman",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Fire Giant",
+				"source": "MM",
+				"action": [
+					{
+						"mode": "replaceArr",
+						"replace": "Multiattack",
+						"items": {
+							"name": "Multiattack",
+							"entries": [
+								"The giant makes two greataxe attacks."
+							]
+						}
+					},
+					{
+						"mode": "replaceArr",
+						"replace": "Greatsword",
+						"items": {
+							"name": "Greataxe +2",
+							"entries": [
+								"{@atk mw} {@hit 13} to hit, reach 10 ft., one target. {@h}28 ({@damage 3d12 + 9}) slashing damage."
+							]
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Fire Giant Servant",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Hill Giant",
+				"source": "MM",
+				"action": [
+					{
+						"mode": "replaceArr",
+						"replace": "Multiattack",
+						"items": {
+							"name": "Multiattack",
+							"entries": [
+								"The giant makes two longsword attacks."
+							]
+						}
+					},
+					{
+						"mode": "replaceArr",
+						"replace": "Greatsword",
+						"items": {
+							"name": "Longsword",
+							"entries": [
+								"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. {@h}18 ({@damage 3d8 + 5}) slashing damage, or 21 ({@damage 3d10 + 5}) slashing damage if used with both hands."
+							]
+						}
+					}
+				]
+			},
+			"immune": [
+				"fire"
+			]
+		},
+		{
+			"name": "Flying Shield",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Flying Sword",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "sword",
+						"with": "shield",
+						"flags": "i"
+					}
+				}
+			},
+			"action": null
+		},
+		{
+			"name": "Frost Giant Servant",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Hill Giant",
+				"source": "MM"
+			},
+			"immune": [
+				"cold"
+			]
+		},
+		{
+			"name": "Young Frost Giant",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Ogre",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "ogre",
+						"with": "giant",
+						"flags": "i"
+					}
+				}
+			},
+			"immune": [
+				"cold"
+			]
+		},
+		{
+			"name": "Gargantuan Rug of Smothering",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Rug of Smothering",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 63,
+				"formula": "6d20"
+			},
+			"size": "G"
+		},
+		{
+			"name": "Goblin Commoner",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Goblin",
+					"source": "DMG"
+				}
+			},
+			"str": 8,
+			"hp": {
+				"average": 3,
+				"formula": "1d6"
+			},
+			"action": [
+				{
+					"name": "Club",
+					"entries": [
+						"{@atk mw} {@hit 1} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) bludgeoning damage."
+					]
+				}
+			],
+			"languageTags": [
+				"C",
+				"X",
+				"GO"
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"name": "Gorvan Ironheart",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Priest",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the priest",
+						"with": "Gorvan",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Great Ulfe",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Ogre",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the ogre",
+						"with": "Ulfe",
+						"flags": "i"
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Greatclub",
+						"items": {
+							"name": "Greataxe",
+							"entries": [
+								"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}17 ({@damage 2d12 + 4}) slashing damage."
+							]
+						}
+					}
+				}
+			},
+			"damageTags": [
+				"S",
+				"P"
+			]
+		},
+		{
+			"name": "Hedrun",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Deathlock Wight",
+				"source": "TftYP",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the wight",
+						"with": "Hedrun",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Huge Ochre Jelly",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Ochre Jelly",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 51,
+				"formula": "6d12 + 12"
+			},
+			"size": "H"
+		},
+		{
+			"name": "Huge Polar Bear",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Polar Bear",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 65,
+				"formula": "5d12 + 15"
+			},
+			"size": "H"
+		},
+		{
+			"name": "Irisoth",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Half-Elf",
+					"source": "PHB"
+				}
+			},
+			"languageTags": [
+				"C",
+				"X",
+				"E"
+			],
+			"senseTags": [
+				"D"
+			],
+			"traitTags": [
+				"Fey Ancestry"
+			]
+		},
+		{
+			"name": "Jot",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Quasit",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the quasit",
+						"with": "Jot",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Keeper",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Stone Giant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "giant",
+						"with": "Keeper",
+						"flags": "i"
+					},
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"The Keeper makes two battleaxe attacks."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Greatclub",
+							"items": {
+								"name": "Battleaxe +2",
+								"entries": [
+									"{@atk mw} {@hit 10} to hit, reach 15 ft., one target. {@h}20 ({@damage 3d8 + 7}) slashing damage, or 23 ({@damage 3d10 + 7}) slashing damage if used with both hands."
+								]
+							}
+						}
+					]
+				}
+			},
+			"trait": null,
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item chain mail|phb}"
+					]
+				}
+			],
+			"damageTags": [
+				"S",
+				"B"
+			]
+		},
+		{
+			"name": "Kelson Darktreader",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Half-Elf",
+					"source": "PHB"
+				}
+			},
+			"languageTags": [
+				"C",
+				"X",
+				"E"
+			],
+			"senseTags": [
+				"D"
+			],
+			"traitTags": [
+				"Fey Ancestry"
+			]
+		},
+		{
+			"name": "Kieren",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "King Snurre",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Fire Giant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the giant",
+						"with": "Snurre",
+						"flags": "i"
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Greatsword",
+						"items": {
+							"name": "Greatsword",
+							"entries": [
+								"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. {@h}28 ({@damage 6d6 + 7}) slashing damage plus 7 ({@damage 2d6}) fire damage."
+							]
+						}
+					}
+				}
+			},
+			"hp": {
+				"average": 187,
+				"formula": "15d12 + 90"
+			},
+			"resist": [
+				"cold"
+			],
+			"languages": [
+				"Common",
+				"Giant"
+			],
+			"cr": "11",
+			"damageTags": [
+				"S",
+				"F",
+				"B"
+			],
+			"languageTags": [
+				"C",
+				"GI"
+			]
+		},
+		{
+			"name": "Kobold Commoner",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Kobold",
+					"source": "DMG"
+				}
+			},
+			"hp": {
+				"average": 3,
+				"formula": "1d6"
+			},
+			"action": [
+				{
+					"name": "Club",
+					"entries": [
+						"{@atk mw} {@hit 1} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) bludgeoning damage."
+					]
+				}
+			],
+			"languageTags": [
+				"C",
+				"X",
+				"DR"
+			],
+			"senseTags": [
+				"D"
+			],
+			"traitTags": [
+				"Sunlight Sensitivity",
+				"Pack Tactics"
+			]
+		},
+		{
+			"name": "Kobold Elite",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Kobold",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 7,
+				"formula": "2d6 - 2"
+			}
+		},
+		{
+			"name": "Lacedon",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Ghoul",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "ghoul",
+						"with": "lacedon",
+						"flags": "i"
+					}
+				}
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			}
+		},
+		{
+			"name": "Lahnis",
+			"source": "TftYP",
+			"isNpc": true,
+			"_copy": {
+				"name": "Evoker",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the evoker",
+						"with": "Lahnis",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Lesser Mummy Lord",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Mummy Lord",
+				"source": "MM"
+			},
+			"spellcasting": null
+		},
+		{
+			"name": "Lumalia",
+			"source": "TftYP",
+			"isNpc": true,
+			"_copy": {
+				"name": "Deva",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the deva",
+						"with": "Lumalia",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Mennek Ariz",
+			"source": "TftYP",
+			"isNpc": true,
+			"_copy": {
+				"name": "Enchanter",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the enchanter",
+						"with": "Mennek",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Nedylene",
+			"source": "TftYP",
+			"isNpc": true,
+			"_copy": {
+				"name": "Drow Priestess of Lolth",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the drow",
+						"with": "Nedylene",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Special Equipment",
+							"entries": [
+								"Nedylene carries a {@item staff of swarming insects}."
+							]
+						}
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Scourge",
+						"items": {
+							"name": "Scourge +2",
+							"entries": [
+								"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) piercing damage plus 17 ({@damage 5d6}) poison damage."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Obmi",
+			"source": "TftYP",
+			"isNpc": true,
+			"_copy": {
+				"name": "Assassin",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the assassin",
+						"with": "Obmi",
+						"flags": "i"
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Multiattack",
+						"items": {
+							"name": "Multiattack",
+							"entries": [
+								"Obmi makes three shortsword attacks."
+							]
+						}
+					}
+				}
+			},
+			"str": 16,
+			"cha": 16
+		},
+		{
+			"name": "Ogre Skeleton",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Ogre",
+				"source": "MM",
+				"_trait": {
+					"name": "Skeleton",
+					"source": "DMG"
+				}
+			},
+			"languageTags": [
+				"C",
+				"GI",
+				"CS"
+			]
+		},
+		{
+			"name": "Orc Commoner",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Orc",
+					"source": "DMG"
+				}
+			},
+			"languageTags": [
+				"C",
+				"X",
+				"O"
+			],
+			"senseTags": [
+				"D"
+			],
+			"traitTags": [
+				"Aggressive"
+			]
+		},
+		{
+			"name": "Oussa",
+			"source": "TftYP",
+			"isNpc": true,
+			"_copy": {
+				"name": "Yuan-ti Malison (Type 3)",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the yuan-ti",
+						"with": "Oussa",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Phaia",
+			"source": "TftYP",
+			"isNpc": true,
+			"_copy": {
+				"name": "Necromancer",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the necromancer",
+						"with": "Phaia",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Aboleth",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Aboleth",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Basilisk",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Basilisk",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Remorhaz",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Remorhaz",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Darkmantle",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Darkmantle",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Ettercap",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Ettercap",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			},
+			"damageTags": [
+				"P",
+				"I",
+				"S"
+			]
+		},
+		{
+			"name": "Reduced-Threat Carrion Crawler",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Carrion Crawler",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Behir",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Behir",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "removeArr",
+						"names": [
+							"Constrict",
+							"Swallow"
+						]
+					}
+				},
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			},
+			"damageTags": [
+				"P",
+				"L"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
+		},
+		{
+			"name": "Reduced-Threat Hook Horror",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Hook Horror",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Wyvern",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Wyvern",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Beholder",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Beholder",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Black Pudding",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Black Pudding",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Clay Golem",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Clay Golem",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Displacer Beast",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Displacer Beast",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Dragon Turtle",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Dragon Turtle",
+				"source": "MM",
+				"_mod": {
+					"action": [
+						{
+							"mode": "removeArr",
+							"names": [
+								"Tail"
+							]
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"The dragon turtle makes three attacks: one with its bite and two with its claws."
+								]
+							}
+						}
+					]
+				},
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			},
+			"damageTags": [
+				"P",
+				"S",
+				"F"
+			]
+		},
+		{
+			"name": "Reduced-Threat Flesh Golem",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Flesh Golem",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Glabrezu",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Glabrezu",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Gray Ooze",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Gray Ooze",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			},
+			"damageTags": [
+				"B",
+				"A"
+			]
+		},
+		{
+			"name": "Reduced-Threat Helmed Horror",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Helmed Horror",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Hezrou",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Hezrou",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Ochre Jelly",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Ochre Jelly",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Otyugh",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Otyugh",
+				"source": "MM",
+				"_mod": {
+					"action": [
+						{
+							"mode": "removeArr",
+							"names": [
+								"Tentacle Slam"
+							]
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Tentacle",
+							"items": {
+								"name": "Tentacle",
+								"entries": [
+									"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. {@h}7 ({@damage 1d8 + 3}) bludgeoning damage plus 4 ({@damage 1d8}) piercing damage."
+								]
+							}
+						}
+					]
+				},
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Owlbear",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Owlbear",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Peryton",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Peryton",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Stone Golem",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Stone Golem",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Vrock",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Vrock",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Wight",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Wight",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Scrag",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Troll",
+				"source": "MM"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			}
+		},
+		{
+			"name": "Sentient Gray Ooze",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Gray Ooze",
+				"source": "MM",
+				"_mod": {
+					"conditionImmune": {
+						"mode": "removeArr",
+						"items": "charmed"
+					}
+				}
+			},
+			"int": 5,
+			"languages": [
+				"Common"
+			],
+			"damageTags": [
+				"B",
+				"A"
+			],
+			"languageTags": [
+				"C"
+			]
+		},
+		{
+			"name": "Sentient Ochre Jelly",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Ochre Jelly",
+				"source": "MM",
+				"_mod": {
+					"conditionImmune": {
+						"mode": "removeArr",
+						"items": "charmed"
+					}
+				}
+			},
+			"int": 5,
+			"languages": [
+				"Common"
+			],
+			"languageTags": [
+				"C"
+			]
+		},
+		{
+			"name": "Shalendra Floshin",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Knight",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Snow Leopard",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Tiger",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "tiger",
+						"with": "leopard",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Snow Dragon Statue",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Stone Golem",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "golem",
+						"with": "statue",
+						"flags": "i"
+					}
+				}
+			},
+			"action": [
+				{
+					"name": "Steam Breath",
+					"entries": [
+						"The statue exhales steam in a line that is 30 ft. long and 10 ft. wide. Each creature in that area must make a {@dc 15} Constitution saving throw, taking 7 ({@damage 2d4 + 2}) fire damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"damageTags": [
+				"F"
+			]
+		},
+		{
+			"name": "Therzt",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				}
+			},
+			"languageTags": [
+				"C",
+				"X",
+				"E"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"traitTags": [
+				"Fey Ancestry",
+				"Sunlight Sensitivity"
+			],
+			"spellcastingTags": [
+				"I"
+			]
+		},
+		{
+			"name": "Torlin Silvershield",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Wight",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the wight",
+						"with": "Torlin",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Werejaguar",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Weretiger",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "tiger",
+						"with": "jaguar",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Xilonen",
+			"isNpc": true,
+			"source": "TftYP",
+			"_copy": {
+				"name": "Roper",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the roper",
+						"with": "Xilonen",
+						"flags": "i"
+					}
+				}
+			},
+			"int": 2
+		},
+		{
+			"name": "Yeti Leader",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Yeti",
+				"source": "MM",
+				"_mod": {
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"The yeti can use its Chilling Gaze and makes two greatsword attacks."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Claw",
+							"items": {
+								"name": "Frost Brand Greatsword",
+								"entries": [
+									"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) slashing damage plus 3 ({@damage 1d6}) cold damage."
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Young Fire Giant",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Ogre",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "ogre",
+						"with": "giant",
+						"flags": "i"
+					}
+				}
+			},
+			"immune": [
+				"fire"
+			]
+		},
+		{
+			"name": "Young Hill Giant",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Orc",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "orc",
+						"with": "giant",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Young Ogre Servant",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Orc",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "orc",
+						"with": "ogre",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Young Troglodyte",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Kobold",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "kobold",
+						"with": "troglodyte",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Young Winter Wolf",
+			"source": "TftYP",
+			"_copy": {
+				"name": "Dire Wolf",
+				"source": "MM"
+			}
 		}
 	]
 }

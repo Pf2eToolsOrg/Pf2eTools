@@ -8,6 +8,7 @@ UtilSearchIndex = {};
 UtilSearchIndex._node_pGetBasicVariantItems = async function (rawVariants) {
 	if (!this.basicVariantItems) {
 		const rawBasics = require(`../data/basicitems.json`);
+		Renderer.item.LINK_SPECIFIC_TO_GENERIC_DIRECTION = -1;
 
 		const basicItems = await Renderer.item._pGetAndProcBasicItems(rawBasics);
 		const [genericVariants, linkedLootTables] = await Renderer.item._pGetAndProcGenericVariants(rawVariants);
@@ -15,6 +16,7 @@ UtilSearchIndex._node_pGetBasicVariantItems = async function (rawVariants) {
 
 		const revNames = [];
 		genericAndSpecificVariants.forEach(item => {
+			if (item.variants) delete item.variants; // prevent circular references
 			const revName = Renderer.item.modifierPostToPre(MiscUtil.copy(item));
 			if (revName) revNames.push(revName);
 		});
@@ -87,7 +89,7 @@ UtilSearchIndex.pGetIndexAdditionalItem = async function (baseIndex = 0, doLoggi
 		async function pAddData (j) {
 			if (ti.additionalIndexes && ti.additionalIndexes.item) {
 				if (doLogging) console.log(`indexing ${f}`);
-				const extra = await ti.additionalIndexes.item(j);
+				const extra = await ti.additionalIndexes.item(indexer, j);
 				extra.forEach(add => indexer.pushToIndex(add));
 			}
 		}

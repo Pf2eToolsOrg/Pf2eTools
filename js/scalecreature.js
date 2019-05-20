@@ -378,11 +378,13 @@
 		};
 
 		const handleDc = (str) => {
-			return str.replace(/DC (\d+)/g, (m0, m1) => {
-				const curDc = Number(m1);
-				const outDc = curDc + pbDelta;
-				return `DC ${outDc}`;
-			});
+			return str
+				.replace(/DC (\d+)/g, (m0, m1) => `{@dc ${m1}}`)
+				.replace(/{@dc (\d+)}/g, (m0, m1) => {
+					const curDc = Number(m1);
+					const outDc = curDc + pbDelta;
+					return `DC ${outDc}`;
+				});
 		};
 
 		if (mon.spellcasting) {
@@ -1302,23 +1304,25 @@
 		const getAdjustedDcFlat = (dcIn) => dcIn + (idealDcOut - idealDcIn);
 
 		const handleDc = (str, castingAbility) => {
-			return str.replace(/DC (\d+)/g, (m0, m1) => {
-				const curDc = Number(m1);
-				const origDc = curDc + pbIn - pbOut;
-				const outDc = Math.max(10, getAdjustedDcFlat(origDc));
-				if (curDc === outDc) return m0;
+			return str
+				.replace(/DC (\d+)/g, (m0, m1) => `{@dc ${m1}}`)
+				.replace(/{@dc (\d+)}/g, (m0, m1) => {
+					const curDc = Number(m1);
+					const origDc = curDc + pbIn - pbOut;
+					const outDc = Math.max(10, getAdjustedDcFlat(origDc));
+					if (curDc === outDc) return m0;
 
-				if (["int", "wis", "cha"].includes(castingAbility)) {
-					const oldKey = `${castingAbility}Old`;
-					if (mon[oldKey] == null) {
-						mon[oldKey] = mon[castingAbility];
-						const dcDiff = outDc - origDc;
-						const curMod = Parser.getAbilityModNumber(mon[castingAbility]);
-						mon[castingAbility] = this._calcNewAbility(mon, castingAbility, curMod + dcDiff);
+					if (["int", "wis", "cha"].includes(castingAbility)) {
+						const oldKey = `${castingAbility}Old`;
+						if (mon[oldKey] == null) {
+							mon[oldKey] = mon[castingAbility];
+							const dcDiff = outDc - origDc;
+							const curMod = Parser.getAbilityModNumber(mon[castingAbility]);
+							mon[castingAbility] = this._calcNewAbility(mon, castingAbility, curMod + dcDiff);
+						}
 					}
-				}
-				return `DC ${outDc}`;
-			});
+					return `DC ${outDc}`;
+				});
 		};
 
 		if (mon.spellcasting) {

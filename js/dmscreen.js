@@ -2549,15 +2549,16 @@ class AddMenuSpecialTab extends AddMenuTab {
 				this.menu.doClose();
 			});
 
-			$(`<div class="ui-modal__row"><span>Initiative Tracker Player View</span><div data-r="$btnTrackerPlayer"/></div>`)
-				.swap({
-					$btnTrackerPlayer: $(`<button class="btn btn-primary">Add</button>`)
-						.click(() => {
-							this.menu.pnl.doPopulate_InitiativeTrackerPlayer();
-							this.menu.doClose();
-						})
-				})
-				.appendTo($tab);
+			const $btnPlayertracker = $(`<button class="btn btn-primary">Add</button>`)
+				.click(() => {
+					this.menu.pnl.doPopulate_InitiativeTrackerPlayer();
+					this.menu.doClose();
+				});
+
+			$$`<div class="ui-modal__row">
+			<span>Initiative Tracker Player View</span>
+			${$btnPlayertracker}
+			</div>`.appendTo($tab);
 
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
@@ -3148,9 +3149,14 @@ class AdventureOrBookView {
 
 		this._$wrpContent = null;
 		this._$wrpContentOuter = null;
+		this._$titlePrev = null;
+		this._$titleNext = null;
 	}
 
 	$getEle () {
+		this._$titlePrev = $(`<div class="dm-book__controls-title text-align-right"/>`);
+		this._$titleNext = $(`<div class="dm-book__controls-title"/>`);
+
 		const $btnPrev = $(`<button class="btn btn-xs btn-default mr-2" title="Previous Chapter"><span class="glyphicon glyphicon-chevron-left"/></button>`)
 			.click(() => this._handleButtonClick(-1));
 		const $btnNext = $(`<button class="btn btn-xs btn-default" title="Next Chapter"><span class="glyphicon glyphicon-chevron-right"/></button>`)
@@ -3163,7 +3169,7 @@ class AdventureOrBookView {
 
 		const $wrp = $$`<div class="flex-col full-height">
 		${this._$wrpContentOuter}
-		<div class="flex no-shrink dm-book__wrp-controls">${$btnPrev}${$btnNext}</div>
+		<div class="flex no-shrink dm-book__wrp-controls">${this._$titlePrev}${$btnPrev}${$btnNext}${this._$titleNext}</div>
 		</div>`;
 
 		// assumes the data has already been loaded/cached
@@ -3184,10 +3190,20 @@ class AdventureOrBookView {
 		}
 	}
 
+	_getData (chapter) {
+		return this._loader.getFromCache(this._state[this._type], chapter);
+	}
+
 	_render () {
-		const data = this._loader.getFromCache(this._state[this._type], this._state.chapter);
+		const data = this._getData(this._state.chapter);
 		if (!data) return null;
 		this._$wrpContent.empty().append(Renderer.get().setFirstSection(true).render(data));
+
+		const dataPrev = this._getData(this._state.chapter - 1);
+		const dataNext = this._getData(this._state.chapter + 1);
+		this._$titlePrev.text(dataPrev ? dataPrev.name : "").attr("title", dataPrev ? dataPrev.name : "");
+		this._$titleNext.text(dataNext ? dataNext.name : "").attr("title", dataNext ? dataNext.name : "");
+
 		return data;
 	}
 }

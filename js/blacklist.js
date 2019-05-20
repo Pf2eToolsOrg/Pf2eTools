@@ -4,6 +4,7 @@ class Blacklist {
 	static getDisplayCategory (cat) {
 		if (cat === "variantrule") return "Variant Rule";
 		if (cat === "optionalfeature") return "Optional Feature";
+		if (cat === "variant") return "Magic Item Variant";
 		return cat.uppercaseFirst();
 	}
 
@@ -19,7 +20,7 @@ class Blacklist {
 			.forEach(({name, category, source}) => Blacklist._addListItem(name, category, source));
 	}
 
-	static initialise () {
+	static async pInitialise () {
 		Blacklist._list = new List("listcontainer", {
 			valueNames: ["id", "source", "category", "name"],
 			listClass: "blacklist",
@@ -33,6 +34,7 @@ class Blacklist {
 			"cultsboons.json",
 			"deities.json",
 			"feats.json",
+			"magicvariants.json",
 			"optionalfeatures.json",
 			"objects.json",
 			"psionics.json",
@@ -47,93 +49,89 @@ class Blacklist {
 		const $selName = $(`#bl-name`);
 
 		const data = {};
-		function isFilteredKey (k) {
-			return k === "_meta";
-		}
 
 		function mergeData (fromRec) {
-			Object.keys(fromRec).filter(it => !isFilteredKey(it)).forEach(k => data[k] ? data[k] = data[k].concat(fromRec[k]) : data[k] = fromRec[k])
+			Object.keys(fromRec).filter(it => !Blacklist.IGNORED_CATEGORIES.has(it))
+				.forEach(k => data[k] ? data[k] = data[k].concat(fromRec[k]) : data[k] = fromRec[k])
 		}
 
-		DataUtil.loadJSON(`data/bestiary/index.json`)
-			.then(index => Promise.all(Object.values(index).map(f => DataUtil.loadJSON(`data/bestiary/${f}`))))
-			.then(monData => {
-				monData.forEach(d => {
-					mergeData(d);
+		// LOAD DATA ===============================================================================
+		// bestiary
+		const ixBestiary = await DataUtil.loadJSON(`data/bestiary/index.json`);
+		const allBestiaryData = await Promise.all(Object.values(ixBestiary).map(f => DataUtil.loadJSON(`data/bestiary/${f}`)));
+		allBestiaryData.forEach(d => mergeData(d));
+
+		// spells
+		const ixSpells = await DataUtil.loadJSON(`data/spells/index.json`);
+		const allSpellData = await Promise.all(Object.values(ixSpells).map(f => DataUtil.loadJSON(`data/spells/${f}`)));
+		allSpellData.forEach(d => mergeData(d));
+
+		// classes
+		const classData = await DataUtil.class.loadJSON();
+		classData.class.forEach(c => (c.subclasses || []).forEach(sc => sc.class = c.name));
+		classData.subclass = classData.subclass || [];
+		classData.class.forEach(c => classData.subclass = classData.subclass.concat(c.subclasses || []));
+		mergeData(classData);
+
+		// everything else
+		const promises = FILES.map(url => DataUtil.loadJSON(`data/${url}`));
+		promises.push(async () => ({item: await Renderer.items.pBuildList({isAddGroups: true})}));
+		const contentData = await Promise.all(promises);
+		contentData.forEach(d => {
+			if (d.race) d.race = Renderer.race.mergeSubraces(d.race);
+			if (d.variant) d.variant.forEach(it => it.source = it.source || it.inherits.source);
+			mergeData(d);
+		});
+
+		// PROCESS DATA ============================================================================
+		const sourceSet = new Set();
+		const catSet = new Set();
+		Object.keys(data).forEach(cat => {
+			catSet.add(cat);
+			const arr = data[cat];
+			arr.forEach(it => sourceSet.has(it.source) || sourceSet.add(it.source));
+		});
+
+		[...sourceSet]
+			.sort((a, b) => SortUtil.ascSort(Parser.sourceJsonToFull(a), Parser.sourceJsonToFull(b)))
+			.forEach(source => $selSource.append(`<option value="${source}">${Parser.sourceJsonToFull(source)}</option>`));
+
+		[...catSet]
+			.sort((a, b) => SortUtil.ascSort(Blacklist.getDisplayCategory(a), Blacklist.getDisplayCategory(b)))
+			.forEach(cat => $selCategory.append(`<option value="${cat}">${Blacklist.getDisplayCategory(cat)}</option>`));
+
+		function onSelChange () {
+			function populateName (arr, cat) {
+				const copy = cat === "subclass"
+					? arr.map(it => ({name: it.name, source: it.source, class: it.class})).sort((a, b) => SortUtil.ascSort(a.class, b.class) || SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source))
+					: arr.map(({name, source}) => ({name, source})).sort((a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source));
+				const dupes = new Set();
+				let temp = "";
+				copy.forEach((it, i) => {
+					temp += `<option value="${it.name}|${it.source}">${cat === "subclass" ? `${it.class}: ` : ""}${it.name}${(dupes.has(it.name) || (copy[i + 1] && copy[i + 1].name === it.name)) ? ` (${Parser.sourceJsonToAbv(it.source)})` : ""}</option>`;
+					dupes.add(it.name);
 				});
-				Promise.resolve();
-			}).then(() => DataUtil.loadJSON(`data/spells/index.json`))
-			.then(index => Promise.all(Object.values(index).map(f => DataUtil.loadJSON(`data/spells/${f}`))))
-			.then(spellData => {
-				spellData.forEach(d => {
-					mergeData(d);
-				});
-				Promise.resolve();
-			}).then(() => DataUtil.class.loadJSON())
-			.then(classData => {
-				classData.class.forEach(c => (c.subclasses || []).forEach(sc => sc.class = c.name));
-				classData.subclass = classData.subclass || [];
-				classData.class.forEach(c => classData.subclass = classData.subclass.concat(c.subclasses || []));
-				mergeData(classData);
-				Promise.resolve();
-			}).then(() => {
-				const promises = FILES.map(url => DataUtil.loadJSON(`data/${url}`));
-				promises.push(Renderer.item.promiseData({}, true));
-				return Promise.all(promises).then(retData => {
-					retData.forEach(d => {
-						if (d.race) d.race = Renderer.race.mergeSubraces(d.race);
-						mergeData(d);
-					});
-					const sourceSet = new Set();
-					const catSet = new Set();
-					Object.keys(data).forEach(cat => {
-						catSet.has(cat) || catSet.add(cat);
-						const arr = data[cat];
-						arr.forEach(it => sourceSet.has(it.source) || sourceSet.add(it.source));
-					});
+				$selName.append(temp);
+			}
 
-					[...sourceSet]
-						.sort((a, b) => SortUtil.ascSort(Parser.sourceJsonToFull(a), Parser.sourceJsonToFull(b)))
-						.forEach(source => $selSource.append(`<option value="${source}">${Parser.sourceJsonToFull(source)}</option>`));
+			const cat = $selCategory.val();
+			$selName.empty();
+			$selName.append(`<option value="*">*</option>`);
+			if (cat !== "*") {
+				const source = $selSource.val();
+				if (source === "*") populateName(data[cat], cat);
+				else populateName(data[cat].filter(it => it.source === source), cat);
+			}
+		}
 
-					[...catSet]
-						.sort((a, b) => SortUtil.ascSort(Blacklist.getDisplayCategory(a), Blacklist.getDisplayCategory(b)))
-						.forEach(cat => $selCategory.append(`<option value="${cat}">${Blacklist.getDisplayCategory(cat)}</option>`));
+		$selSource.change(onSelChange);
+		$selCategory.change(onSelChange);
 
-					function onSelChange () {
-						function populateName (arr, cat) {
-							const copy = cat === "subclass"
-								? arr.map(it => ({name: it.name, source: it.source, class: it.class})).sort((a, b) => SortUtil.ascSort(a.class, b.class) || SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source))
-								: arr.map(({name, source}) => ({name, source})).sort((a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source));
-							const dupes = new Set();
-							let temp = "";
-							copy.forEach((it, i) => {
-								temp += `<option value="${it.name}|${it.source}">${cat === "subclass" ? `${it.class}: ` : ""}${it.name}${(dupes.has(it.name) || (copy[i + 1] && copy[i + 1].name === it.name)) ? ` (${Parser.sourceJsonToAbv(it.source)})` : ""}</option>`;
-								dupes.add(it.name);
-							});
-							$selName.append(temp);
-						}
+		Blacklist._renderList();
 
-						const cat = $selCategory.val();
-						$selName.empty();
-						$selName.append(`<option value="*">*</option>`);
-						if (cat !== "*") {
-							const source = $selSource.val();
-							if (source === "*") populateName(data[cat], cat);
-							else populateName(data[cat].filter(it => it.source === source), cat);
-						}
-					}
-
-					$selSource.change(onSelChange);
-					$selCategory.change(onSelChange);
-
-					Blacklist._renderList();
-
-					const $page = $(`#main_content`);
-					$page.find(`.loading`).prop("disabled", false);
-					$page.find(`.loading-temp`).remove();
-				})
-			});
+		const $page = $(`#main_content`);
+		$page.find(`.loading`).prop("disabled", false);
+		$page.find(`.loading-temp`).remove();
 	}
 
 	static _addListItem (name, category, source) {
@@ -141,7 +139,7 @@ class Blacklist {
 		const added = Blacklist._list.add([
 			{id: Blacklist._listId++, name: name, category: display.displayCategory, source: display.displaySource}
 		]);
-		$(`<button class="btn btn-xs btn-danger">Remove</button>`).click(() => {
+		$(`<button class="btn btn-xs btn-danger m-1">Remove</button>`).click(() => {
 			Blacklist.pRemove(name, category, source);
 		}).appendTo($(added[0].elm).find(`.actions`));
 	}
@@ -228,8 +226,12 @@ class Blacklist {
 		Blacklist._list.reIndex();
 	}
 }
+Blacklist.IGNORED_CATEGORIES = new Set([
+	"_meta",
+	"linkedLootTables"
+]);
 
 window.addEventListener("load", async () => {
 	await ExcludeUtil.pInitialise();
-	Blacklist.initialise();
+	Blacklist.pInitialise();
 });

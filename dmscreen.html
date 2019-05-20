@@ -456,7 +456,11 @@
 
 		body.is-fullscreen .sidemenu__toggle {
 			top: 12px;
-			left: -12px;
+			left: -31px;
+		}
+
+		body.is-fullscreen .sidemenu__hotzone {
+			width: 3px;
 		}
 
 		.sidemenu__history {
@@ -900,11 +904,19 @@
 		}
 
 		.dm-book__wrp-controls {
-			padding-top: 2px;
-			padding-right: 2px;
-			padding-bottom: 1px;
+			padding: 2px 2px 1px 21px;
 			border-top: 1px solid #ccc;
 			justify-content: flex-end;
+		}
+
+		.dm-book__controls-title {
+			height: 20px;
+			padding: 0 3px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			width: 50%;
+			flex-grow: 0;
 		}
 	</style>
 </head>

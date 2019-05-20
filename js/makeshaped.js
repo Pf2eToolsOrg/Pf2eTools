@@ -246,6 +246,7 @@ class ShapedConverter {
 			.replace(/{@recharge(?: (\d))?}/g, (m, lower) => `(Recharge ${lower ? `${Number(lower)}\u2013` : ""}6)`)
 			.replace(/{(@atk [A-Za-z,]+})/g, (m, p1) => Renderer.attackTagToFull(p1))
 			.replace(/{@h}/g, "Hit: ")
+			.replace(/{@dc (\d+)}/g, "DC $1")
 			.replace(/{@\w+ ((?:[^|}]+\|?){0,3})}/g, (m, p1) => {
 				const parts = p1.split('|');
 				return parts.length === 3 ? parts[2] : parts[0];
@@ -434,8 +435,8 @@ class ShapedConverter {
 		if (monster.conditionImmune) {
 			output.conditionImmunities = Parser.monCondImmToFull(monster.conditionImmune);
 		}
-		output.senses = monster.senses;
-		output.languages = monster.languages;
+		output.senses = (monster.senses || []).join(", ");
+		output.languages = (monster.languages || []).join(", ");
 		output.challenge = this.processChallenge(monster.cr.cr || monster.cr);
 
 		const traits = [];
