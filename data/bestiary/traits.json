@@ -795,6 +795,83 @@
 			}
 		},
 		{
+			"name": "Lizardfolk",
+			"source": "DMG",
+			"page": 282,
+			"ref": "{@race Lizardfolk|DMG}",
+			"apply": {
+				"_root": {
+					"speed": {
+						"walk": 30,
+						"swim": 30
+					},
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"lizardfolk"
+						]
+					}
+				},
+				"_mod": {
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"type": "entries",
+								"name": "Hold Breath",
+								"entries": [
+									"<$title_name$> can hold their breath for up to 15 minutes at a time."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Merfolk",
+			"source": "DMG",
+			"page": 282,
+			"ref": "{@race Merfolk|dmg}",
+			"apply": {
+				"_root": {
+					"speed": {
+						"walk": 10,
+						"swim": 40
+					},
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"merfolk"
+						]
+					}
+				},
+				"_mod": {
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Amphibious",
+								"entries": [
+									"<$title_name$> can breathe air and water."
+								]
+							}
+						]
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Aquan",
+						"items": "Aquan"
+					}
+				}
+			}
+		},
+		{
 			"name": "Reduced Threat",
 			"source": "TftYP",
 			"page": 113,

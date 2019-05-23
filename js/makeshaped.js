@@ -202,11 +202,17 @@ class ShapedConverter {
 	}
 
 	static processLeveledSpells (spellObj) {
-		return Object.keys(spellObj).map(levelString => {
-			const level = parseInt(levelString, 10);
-			const levelInfo = spellObj[level];
-			return `${Parser.spLevelToFullLevelText(level)} (${this.slotString(levelInfo.slots)}): ${this.makeSpellList(levelInfo.spells)}`;
-		});
+		return Object.keys(spellObj)
+			.map(levelString => {
+				if (levelString === "hidden") return null;
+				else if (levelString === "will") {
+					return `At-will: ${this.makeSpellList(spellObj[levelString])}`;
+				} else {
+					const level = parseInt(levelString, 10);
+					const levelInfo = spellObj[level];
+					return `${Parser.spLevelToFullLevelText(level)} (${this.slotString(levelInfo.slots)}): ${this.makeSpellList(levelInfo.spells)}`;
+				}
+			}).filter(Boolean);
 	}
 
 	static normalSpellProc (spellcasting) {
@@ -486,7 +492,7 @@ class ShapedConverter {
 			if (isString(entry)) {
 				return entry;
 			}
-			const entryText = `${entry.entries.map(subEntry => entryStringifier(subEntry)).join('\n')}`;
+			const entryText = `${(entry.entries || entry.headerEntries).map(subEntry => entryStringifier(subEntry)).join('\n')}`;
 			return omitName ? entryText : `${entry.name}. ${entryText}`;
 		};
 

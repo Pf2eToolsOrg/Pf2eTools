@@ -1650,6 +1650,7 @@ SRC_WDMM = "WDMM";
 SRC_GGR = "GGR";
 SRC_KKW = "KKW";
 SRC_LLK = "LLK";
+SRC_GoS = "GoS";
 SRC_AL = "AL";
 SRC_SCREEN = "Screen";
 
@@ -1764,6 +1765,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_WDMM] = "Waterdeep: Dungeon of the Mad Mage";
 Parser.SOURCE_JSON_TO_FULL[SRC_GGR] = "Guildmasters' Guide to Ravnica";
 Parser.SOURCE_JSON_TO_FULL[SRC_KKW] = "Krenko's Way";
 Parser.SOURCE_JSON_TO_FULL[SRC_LLK] = "Lost Laboratory of Kwalish";
+Parser.SOURCE_JSON_TO_FULL[SRC_GoS] = "Ghosts of Saltmarsh";
 Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
@@ -1861,6 +1863,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_WDMM] = "WDMM";
 Parser.SOURCE_JSON_TO_ABV[SRC_GGR] = "GGR";
 Parser.SOURCE_JSON_TO_ABV[SRC_KKW] = "KKW";
 Parser.SOURCE_JSON_TO_ABV[SRC_LLK] = "LLK";
+Parser.SOURCE_JSON_TO_ABV[SRC_GoS] = "GoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
@@ -3541,7 +3544,7 @@ ListUtil = {
 
 		if (typeof filter === "object" && filter.generator) filter = filter.generator();
 
-		let temp = `<table class="table-striped stats stats-book" style="width: 100%;"><thead><tr>${Object.values(colTransforms).map((c, i) => `<th class="col_${i} px-2" colspan="${c.flex || 1}">${c.name}</th>`).join("")}</tr></thead><tbody>`;
+		let temp = `<table class="table-striped stats stats-book stats-book--large" style="width: 100%;"><thead><tr>${Object.values(colTransforms).map((c, i) => `<th class="col_${i} px-2" colspan="${c.flex || 1}">${c.name}</th>`).join("")}</tr></thead><tbody>`;
 		const listCopy = JSON.parse(JSON.stringify(dataList)).filter((it, i) => filter ? filter(i) : it);
 		if (sorter) listCopy.sort(sorter);
 		listCopy.forEach(it => {
@@ -5958,7 +5961,7 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 		$body.css("overflow", "hidden");
 		$body.addClass("book-mode-active");
 
-		const $bkTbl = $(`<table class="stats stats-book" style="font-size: 1.0em; font-family: inherit;"/>`);
+		const $bkTbl = $(`<table class="stats stats-book stats-book--large" style="font-size: 1.0em; font-family: inherit;"/>`);
 		const $brdTop = $(`<tr><th class="border close-border" style="width: 100%;"><div/></th></tr>`);
 		const $hdTxt = $(`<span class="spacer-name"/>`); // pass this to the content function to allow it to set a main header
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
@@ -5968,7 +5971,7 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 		$brdTop.find(`div`).append($hdTxt).append($btnClose);
 		$bkTbl.append($brdTop);
 
-		const $tbl = $(`<table class="stats stats-book" style="width: auto; margin: 0 auto; font-family: inherit;"/>`);
+		const $tbl = $(`<table class="stats stats-book stats-book--large" style="width: auto; margin: 0 auto; font-family: inherit;"/>`);
 
 		const numShownWrp = self.popTblGetNumShown($tbl, $hdTxt);
 

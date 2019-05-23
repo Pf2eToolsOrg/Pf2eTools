@@ -75,6 +75,7 @@ class UiUtil {
 	 * @returns JQuery Modal inner wrapper, to have content added as required.
 	 */
 	static getShow$Modal (titleOrOpts, cbClose) {
+		titleOrOpts = titleOrOpts || {};
 		const opts = typeof titleOrOpts === "string" ? {} : titleOrOpts;
 		if (typeof titleOrOpts === "string") {
 			opts.title = titleOrOpts;

@@ -296,7 +296,7 @@ const actionReactionFilter = new Filter({
 });
 const miscFilter = new Filter({
 	header: "Miscellaneous",
-	items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Lair Actions", "Legendary", "Named NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${_MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Swarm", "Has Variants"],
+	items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Lair Actions", "Legendary", "Named NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${_MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Swarm", "Has Variants", "Modified Copy"],
 	displayFn: (it) => Parser.monMiscTagToFull(it).uppercaseFirst(),
 	deselFn: (it) => it === "Named NPC",
 	itemSortFn: ascSortMiscFilter
@@ -646,6 +646,7 @@ function addMonsters (data) {
 		if (mon.reaction) mon._fMisc.push("Reactions");
 		if (mon.variant) mon._fMisc.push("Has Variants");
 		if (mon.miscTags) mon._fMisc.push(...mon.miscTags);
+		if (mon._isCopy) mon._fMisc.push("Modified Copy");
 		traitFilter.addItem(mon.traitTags);
 		actionReactionFilter.addItem(mon.actionTags);
 		environmentFilter.addItem(mon.environment);

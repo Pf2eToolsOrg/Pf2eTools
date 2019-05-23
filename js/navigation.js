@@ -73,6 +73,7 @@ class NavBar {
 		addLi(ulAdventures, "adventure.html", "Lost Laboratory of Kwalish", true, "LLK");
 		addLi(ulAdventures, "adventure.html", "Waterdeep: Dungeon of the Mad Mage", true, "WDMM");
 		addLi(ulAdventures, "adventure.html", "Krenko's Way", true, "KKW");
+		addLi(ulAdventures, "adventure.html", "Ghosts of Saltmarsh", true, "GoS");
 		addDivider(ulAdventures);
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
 		addLi(ulDms, "cultsboons.html", "Cults & Demonic Boons");

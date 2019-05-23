@@ -137,9 +137,42 @@ function getSublistItem (it, pinId) {
 
 function loadhash (jsonIndex) {
 	Renderer.get().setFirstSection(true);
-	const it = shipList[jsonIndex];
+	const ship = shipList[jsonIndex];
 	const $content = $(`#pagecontent`).empty();
-	$content.append(Renderer.ship.getRenderedString(it));
+
+	function buildStatsTab () {
+		$content.append(Renderer.ship.getRenderedString(ship));
+	}
+
+	function buildFluffTab (isImageTab) {
+		return Renderer.utils.buildFluffTab(
+			isImageTab,
+			$content,
+			ship,
+			(fluffJson) => ship.fluff || fluffJson.ship.find(it => it.name === ship.name && it.source === ship.source),
+			`data/fluff-ships.json`,
+			() => true
+		);
+	}
+
+	const statTab = Renderer.utils.tabButton(
+		"Item",
+		() => {},
+		buildStatsTab
+	);
+	const infoTab = Renderer.utils.tabButton(
+		"Info",
+		() => {},
+		buildFluffTab
+	);
+	const picTab = Renderer.utils.tabButton(
+		"Images",
+		() => {},
+		() => buildFluffTab(true)
+	);
+
+	Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
+
 	ListUtil.updateSelected();
 }
 

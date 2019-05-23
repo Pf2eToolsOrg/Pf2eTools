@@ -683,12 +683,8 @@ class InitiativeTracker {
 				isWait: false
 			};
 
-			const $modal = $(`<div class="ui-modal__overlay">`);
-			const $modalInner = $(`<div class="ui-modal__inner dropdown-menu">`).appendTo($modal);
-			const doClose = () => $modal.remove();
-			$modal.on("click", doClose);
-			$modalInner.on("click", (e) => e.stopPropagation());
-			$(`body`).append($modal);
+			const $modalInner = UiUtil.getShow$Modal()
+				.addClass("flex-col");
 
 			const $controls = $(`<div class="split" style="flex-shrink: 0"/>`).appendTo($modalInner);
 			const $srch = $(`<input class="ui-search__ipt-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($controls);
@@ -770,7 +766,7 @@ class InitiativeTracker {
 						doSort(cfg.sort);
 						checkSetFirstActive();
 						doUpdateExternalStates();
-						doClose();
+						$modalInner.data("close")();
 					};
 
 					const get$Row = (r) => {
@@ -1066,10 +1062,7 @@ class InitiativeTracker {
 			$(`<button class="btn btn-warning btn-xs dm-init-row-btn dm-init-row-btn-flag" title="Add Condition" tabindex="-1"><span class="glyphicon glyphicon-flag"/></button>`)
 				.appendTo($wrpConds)
 				.on("click", () => {
-					const $modal = $(`<div class="ui-modal__inner dropdown-menu" style="height: initial"/>`);
-					const $wrpModal = $(`<div class="ui-modal__overlay">`).appendTo($(`body`)).click(() => $wrpModal.remove());
-					$modal.appendTo($wrpModal);
-					const $modalInner = $(`<div class="modal__inner"/>`).appendTo($modal).click((evt) => evt.stopPropagation());
+					const $modalInner = UiUtil.getShow$Modal({noMinHeight: true});
 
 					const $wrpRows = $(`<div class="dm-init-modal-wrp-rows"/>`).appendTo($modalInner);
 

@@ -1,20 +1,88 @@
+/*
+Shared UI components
+ */
+
 @import 'vars';
 
 /* Source overlay */
-.ui-source__row {
-	margin-left: calc(-96px - 0.5rem);
+.ui-source__ {
+	&row {
+		margin-left: calc(-96px - 0.5rem);
+	}
+
+	&name {
+		min-width: 96px;
+		white-space: nowrap;
+		text-align: right;
+	}
+
+	&divider {
+		height: 1px;
+		width: 30px;
+		background: #ccc;
+		display: inline-block;
+		margin: 0 3px;
+	}
 }
 
-.ui-source__name {
-	min-width: 96px;
-	white-space: nowrap;
-	text-align: right;
-}
+/* Modals */
 
-.ui-source__divider {
-	height: 1px;
-	width: 30px;
-	background: #ccc;
-	display: inline-block;
-	margin: 0 3px;
+.ui-modal__ {
+	&overlay {
+		position: fixed;
+		z-index: 1000;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $modal-overlay-grey;
+	}
+
+	&inner {
+		position: relative;
+		z-index: $z-modal-inner;
+		top: initial;
+		left: initial;
+		margin: 60px auto;
+		padding: 5px 10px;
+		height: 400px;
+		float: none;
+		display: flex;
+		flex-direction: column;
+		min-width: 600px;
+		max-height: 400px;
+
+		@media (max-width: 767px) {
+			min-width: 0;
+		}
+
+		@media (min-width: 768px) {
+			max-width: 750px;
+		}
+
+		@media (min-width: 992px) {
+			max-width: 970px;
+		}
+
+		@media (min-width: 1200px) {
+			max-width: 1170px;
+		}
+
+		&--large {
+			width: 100%;
+			margin: 60px auto;
+			max-height: calc(100% - 120px);
+			height: initial;
+		}
+	}
+
+	&scroller {
+		height: 100%;
+		width: 100%;
+		min-height: 0;
+		overflow-y: auto;
+	}
 }

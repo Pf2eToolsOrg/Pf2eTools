@@ -1403,7 +1403,7 @@ class RangeFilter extends FilterBase {
 		if (!filterState) return true; // discount any filters which were not rendered
 
 		// match everything if filter is set to complete range
-		if (entryVal == null) return filterState.min === this.min && filterState.max === this.max;
+		if (entryVal == null) return filterState.min === this._state.min && filterState.max === this._state.max;
 
 		if (this._labels) {
 			const slice = this._labels.slice(filterState.min, filterState.max + 1);
@@ -1415,7 +1415,7 @@ class RangeFilter extends FilterBase {
 		} else {
 			const isGtMin = entryVal instanceof Array ? filterState.min <= Math.min(...entryVal) : filterState.min <= entryVal;
 			const isLtMax = entryVal instanceof Array ? filterState.max >= Math.max(...entryVal) : filterState.max >= entryVal;
-			if (this._isAllowGreater) return isGtMin && (isLtMax || filterState.max === this.max);
+			if (this._isAllowGreater) return isGtMin && (isLtMax || filterState.max === this._state.max);
 			return isGtMin && isLtMax;
 		}
 	}
@@ -1440,7 +1440,7 @@ class RangeFilter extends FilterBase {
 		if (number >= this._state.min && number <= this._state.max) return; // it's already in the range
 		if (this._state.min == null && this._state.max == null) this._state.min = this._state.max = number;
 		else {
-			const old = {...this._state};
+			const old = {...this.__state};
 
 			if (number < old.min) this._state.min = number;
 			if (number > old.max) this._state.max = number;

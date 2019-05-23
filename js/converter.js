@@ -627,7 +627,7 @@ class StatblockConverter {
 
 			// saves (optional)
 			if (!curLine.indexOf_handleColon("Saving Throws ")) {
-				StatblockConverter._setCleanSaves(stats, curLine);
+				StatblockConverter._setCleanSaves(stats, curLine, options);
 				continue;
 			}
 
@@ -1008,7 +1008,7 @@ class StatblockConverter {
 			if (parsed === 8) {
 				// saves (optional)
 				if (~curLine.indexOf("Saving Throws")) {
-					StatblockConverter._setCleanSaves(stats, stripDashStarStar(curLine));
+					StatblockConverter._setCleanSaves(stats, stripDashStarStar(curLine), options);
 					continue;
 				}
 
@@ -1278,15 +1278,19 @@ class StatblockConverter {
 		SpeedConvert.tryConvertSpeed(stats, options.cbWarning);
 	}
 
-	static _setCleanSaves (stats, line) {
+	static _setCleanSaves (stats, line, options) {
 		stats.save = line.split_handleColon("Saving Throws", 1)[1].trim();
 		// convert to object format
 		if (stats.save && stats.save.trim()) {
 			const spl = stats.save.split(",").map(it => it.trim().toLowerCase()).filter(it => it);
 			const nu = {};
 			spl.forEach(it => {
-				const sv = it.split(" ");
-				nu[sv[0]] = sv[1];
+				const m = /(\w+)\s*([-+])\s*(\d+)/.exec(it);
+				if (m) {
+					nu[m[1]] = `${m[2]}${m[3]}`;
+				} else {
+					options.cbWarning(`Save "${it}" requires manual conversion`);
+				}
 			});
 			stats.save = nu;
 		}

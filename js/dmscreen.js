@@ -3164,7 +3164,7 @@ class AdventureOrBookView {
 
 		this._$wrpContent = $(`<div class="full-height"/>`);
 		this._$wrpContentOuter = $$`<div class="full-height dm-book__wrp-content">
-			<table class="stats stats-book--hover"><tr class="text"><td colspan="6">${this._$wrpContent}</td></tr></table>
+			<table class="stats stats-book stats-book--hover"><tr class="text"><td colspan="6">${this._$wrpContent}</td></tr></table>
 		</div>`;
 
 		const $wrp = $$`<div class="flex-col full-height">

@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"type": "object",
 
 	"definitions": {
@@ -72,6 +72,12 @@
 						"$ref": "/Entry#/definitions/dataDamImmune"
 					}
 				},
+				"action": {
+					"type": "array",
+					"items": {
+						"$ref": "/Entry"
+					}
+				},
 				"hull": {
 					"type": "object",
 					"properties": {
@@ -140,6 +146,26 @@
 								"type": "integer"
 							},
 							"locomotion": {
+								"description": "Legacy format, from the original UA release.",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"mode": {
+											"type": "string"
+										},
+										"entries": {
+											"type": "array",
+											"items": {
+												"$ref": "/Entry"
+											}
+										}
+									},
+									"required": ["mode", "entries"],
+									"additionalProperties": false
+								}
+							},
+							"speed": {
 								"type": "array",
 								"items": {
 									"type": "object",
@@ -159,7 +185,7 @@
 								}
 							}
 						},
-						"required": ["ac", "hp", "locomotion"],
+						"required": ["ac", "hp"],
 						"additionalProperties": false
 					}
 				},

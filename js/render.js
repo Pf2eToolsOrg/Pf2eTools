@@ -297,6 +297,7 @@ function Renderer () {
 			: null;
 		textStack[0] += `<div class="rd__wrp-image"><a href="${href}" target="_blank" rel="noopener" ${entry.title ? `title="${entry.title}"` : ""}><img class="rd__image" src="${svg || href}" ${entry.altText ? `alt="${entry.altText}"` : ""} ${svg ? `data-src="${href}"` : ""}></a></div>`;
 		if (entry.title) textStack[0] += `<div class="rd__image-title"><div class="rd__image-title-inner">${entry.title}</div></div>`;
+		else if (entry._galleryTitlePad) textStack[0] += `<div class="rd__image-title">&nbsp;</div>`;
 		textStack[0] += `</div>`;
 		this._renderSuffix(entry, textStack, meta, options);
 		if (entry.imageType === "map") textStack[0] += `</div>`;
@@ -325,7 +326,7 @@ function Renderer () {
 			}
 		}
 
-		textStack[0] += `<table class="${entry.style || "striped-odd"}">`;
+		textStack[0] += `<table class="${entry.style} ${entry.isStriped === false ? "" : "striped-odd"}">`;
 
 		if (entry.caption != null) {
 			textStack[0] += `<caption>${entry.caption}</caption>`;
@@ -783,8 +784,10 @@ function Renderer () {
 	this._renderGallery = function (entry, textStack, meta, options) {
 		textStack[0] += `<div class="rd__wrp-gallery">`;
 		const len = entry.images.length;
+		const anyNamed = entry.images.find(it => it.title);
 		for (let i = 0; i < len; ++i) {
 			const img = MiscUtil.copy(entry.images[i]);
+			if (anyNamed && !img.title) img._galleryTitlePad = true; // force un-title images to pad to match their siblings
 			delete img.imageType;
 			this._recursiveRender(img, textStack, meta);
 		}
@@ -1364,10 +1367,10 @@ function Renderer () {
 							case "@ship":
 								fauxEntry.href.path = UrlUtil.PG_SHIPS;
 								// enable this if/when there's a printed source with ships
-								// if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_DMG;
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_GoS;
 								fauxEntry.href.hover = {
 									page: UrlUtil.PG_SHIPS,
-									source: source || "NONE" // || SRC_DMG // this too
+									source: source || SRC_GoS
 								};
 								this._recursiveRender(fauxEntry, textStack, meta);
 								break;
@@ -3106,6 +3109,9 @@ Renderer.monster = {
 			});
 		}
 
+		// add filter tag
+		copyTo._isCopy = true;
+
 		// cleanup
 		delete copyTo._copy;
 	},
@@ -4213,6 +4219,10 @@ Renderer.ship = {
 			return `<tr class="mon__stat-header-underline"><td colspan="6"><span>${title}</span></td></tr>`
 		}
 
+		function getActionPart () {
+			return renderer.render({entries: ship.action});
+		}
+
 		function getSectionHpPart (sect, each) {
 			if (!sect.ac && !sect.hp) return "";
 			return `
@@ -4249,11 +4259,27 @@ Renderer.ship = {
 				return `<div>${renderer.render(asList)}</div>`;
 			}
 
+			function getSpeedSection (spd) {
+				const asList = {
+					type: "list",
+					style: "list-hang-notitle",
+					items: [
+						{
+							type: "item",
+							name: `Speed (${spd.mode})`,
+							entries: spd.entries
+						}
+					]
+				};
+				return `<div>${renderer.render(asList)}</div>`;
+			}
+
 			return `
 				<tr class="mon__stat-header-underline"><td colspan="6"><span>${move.isControl ? `Control and ` : ""}Movement: ${move.name}</span></td></tr>
 				<tr><td colspan="6">
 				${getSectionHpPart(move)}
-				${move.locomotion.map(getLocomotionSection)}
+				${(move.locomotion || []).map(getLocomotionSection)}
+				${(move.speed || []).map(getSpeedSection)}
 				</td></tr>
 			`;
 		}
@@ -4311,6 +4337,8 @@ Renderer.ship = {
 				${ship.immune ? `<div><b>Damage Immunities</b> ${Parser.monImmResToFull(ship.immune)}</div>` : ""}
 				${ship.conditionImmune ? `<div><b>Condition Immunities</b> ${Parser.monCondImmToFull(ship.conditionImmune)}</div>` : ""}
 			</td></tr>
+			${ship.action ? getSectionTitle("Actions") : ""}
+			${ship.action ? `<tr><td colspan="6">${getActionPart()}</td></tr>` : ""}
 			${getSectionTitle("Hull")}
 			<tr><td colspan="6">
 			${getSectionHpPart(ship.hull)}
@@ -4674,7 +4702,7 @@ Renderer.hover = {
 		});
 
 		const $hovTitle = $(`<span class="window-title">${toRender._displayName || toRender.name}</span>`);
-		const $stats = $(`<table class="stats ${isBookContent ? "stats-book--hover" : ""}"/>`);
+		const $stats = $(`<table class="stats ${isBookContent ? "stats-book stats-book--hover" : ""}"/>`);
 		$stats.append(content);
 
 		$stats.off("click", ".mon__btn-scale-cr").on("click", ".mon__btn-scale-cr", function (evt) {
@@ -5353,6 +5381,8 @@ Renderer.dice = {
 
 		$(`body`).append($minRoll).append($wrpRoll);
 
+		$wrpRoll.on("click", ".out-roll-item-code", (evt) => Renderer.dice._$iptRoll.val(evt.target.innerHTML).focus());
+
 		Renderer.dice.storage = await StorageUtil.pGet(ROLLER_MACRO_STORAGE) || {};
 	},
 
@@ -5573,6 +5603,11 @@ Renderer.dice = {
 		if (str.startsWith("/")) Renderer.dice._handleCommand(str, rolledBy);
 		else if (str.startsWith("#")) return Renderer.dice._handleSavedRoll(str, rolledBy);
 		else {
+			const [head, ...tail] = str.split(":");
+			if (tail.length) {
+				str = tail.join(":");
+				rolledBy.label = head;
+			}
 			const tree = Renderer.dice._parse2(str);
 			return Renderer.dice._handleRoll2(tree, rolledBy);
 		}
@@ -5653,10 +5688,11 @@ Renderer.dice = {
 			Renderer.dice._showMessage(
 				`Drop highest (<span class="out-roll-item-code">2d4dh1</span>) and lowest (<span class="out-roll-item-code">4d6dl1</span>) are supported.<br>
 				Up and down arrow keys cycle input history.<br>
+				Anything before a colon is treated as a label (<span class="out-roll-item-code">Fireball: 8d6</span>)<br>
 Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved macros.<br>
 				Use <span class="out-roll-item-code">${PREF_MACRO} add myName 1d2+3</span> to add (or update) a macro. Macro names should not contain spaces or hashes.<br>
 				Use <span class="out-roll-item-code">${PREF_MACRO} remove myName</span> to remove a macro.<br>
-				Use <span class="out-roll-item-code">#myName</span> to roll a macro.
+				Use <span class="out-roll-item-code">#myName</span> to roll a macro.<br>
 				Use <span class="out-roll-item-code">/clear</span> to clear the roller.`,
 				Renderer.dice.SYSTEM_USER
 			);
@@ -5721,6 +5757,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 		id = id.replace(/^#/, "");
 		const macro = Renderer.dice.storage[id];
 		if (macro) {
+			rolledBy.label = id;
 			const tree = Renderer.dice._parse2(macro);
 			return Renderer.dice._handleRoll2(tree, rolledBy);
 		} else Renderer.dice._showMessage(`Macro <span class="out-roll-item-code">#${id}</span> not found`, Renderer.dice.SYSTEM_USER);
