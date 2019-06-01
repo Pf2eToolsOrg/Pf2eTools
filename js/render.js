@@ -326,70 +326,86 @@ function Renderer () {
 			}
 		}
 
-		textStack[0] += `<table class="${entry.style} ${entry.isStriped === false ? "" : "striped-odd"}">`;
-
-		if (entry.caption != null) {
-			textStack[0] += `<caption>${entry.caption}</caption>`;
-		}
-		textStack[0] += "<thead>";
-		textStack[0] += "<tr>";
+		textStack[0] += `<table class="${entry.style || ""} ${entry.isStriped === false ? "" : "striped-odd"}">`;
 
 		const autoMkRoller = Renderer.isRollableTable(entry);
-		if (entry.colLabels) {
-			const len = entry.colLabels.length;
-			for (let i = 0; i < len; ++i) {
-				const lbl = entry.colLabels[i];
-				textStack[0] += `<th ${this._renderTable_getTableThClassText(entry, i)}>`;
-				this._recursiveRender(autoMkRoller && i === 0 && !lbl.includes("@dice") ? `{@dice ${lbl}}` : lbl, textStack, meta);
-				textStack[0] += `</th>`;
-			}
-		}
 
-		textStack[0] += "</tr>";
-		textStack[0] += "</thead>";
-		textStack[0] += "<tbody>";
+		// caption
+		if (entry.caption != null) textStack[0] += `<caption>${entry.caption}</caption>`;
 
+		// body -- temporarily build this to own string; append after headers
+		const rollCols = [];
+		let bodyStack = [""];
+		bodyStack[0] += "<tbody>";
 		const len = entry.rows.length;
-		for (let i = 0; i < len; ++i) {
-			textStack[0] += "<tr>";
-			const r = entry.rows[i];
+		for (let ixRow = 0; ixRow < len; ++ixRow) {
+			bodyStack[0] += "<tr>";
+			const r = entry.rows[ixRow];
 			let roRender = r.type === "row" ? r.row : r;
+
 			const len = roRender.length;
-			for (let j = 0; j < len; ++j) {
+			for (let ixCell = 0; ixCell < len; ++ixCell) {
+				rollCols[ixCell] = rollCols[ixCell] || false;
+
 				// preconvert rollables
-				if (autoMkRoller && j === 0) roRender = Renderer.getRollableRow(roRender);
+				if (autoMkRoller && ixCell === 0) {
+					roRender = Renderer.getRollableRow(roRender);
+					rollCols[ixCell] = true;
+				}
 
 				let toRenderCell;
-				if (roRender[j].type === "cell") {
-					if (roRender[j].entry) {
-						toRenderCell = roRender[j].entry;
-					} else if (roRender[j].roll) {
-						if (roRender[j].roll.entry) {
-							toRenderCell = roRender[j].roll.entry;
-						} else if (roRender[j].roll.exact != null) {
-							toRenderCell = roRender[j].roll.pad ? StrUtil.padNumber(roRender[j].roll.exact, 2, "0") : roRender[j].roll.exact;
+				if (roRender[ixCell].type === "cell") {
+					if (roRender[ixCell].entry) {
+						toRenderCell = roRender[ixCell].entry;
+					} else if (roRender[ixCell].roll) {
+						if (roRender[ixCell].roll.entry) {
+							toRenderCell = roRender[ixCell].roll.entry;
+						} else if (roRender[ixCell].roll.exact != null) {
+							toRenderCell = roRender[ixCell].roll.pad ? StrUtil.padNumber(roRender[ixCell].roll.exact, 2, "0") : roRender[ixCell].roll.exact;
 						} else {
-							if (roRender[j].roll.max === Renderer.dice.POS_INFINITE) {
-								toRenderCell = roRender[j].roll.pad ? `${StrUtil.padNumber(roRender[j].roll.min, 2, "0")}+` : `${roRender[j].roll.min}+`;
+							if (roRender[ixCell].roll.max === Renderer.dice.POS_INFINITE) {
+								toRenderCell = roRender[ixCell].roll.pad
+									? `${StrUtil.padNumber(roRender[ixCell].roll.min, 2, "0")}+`
+									: `${roRender[ixCell].roll.min}+`;
 							} else {
-								toRenderCell = roRender[j].roll.pad ? `${StrUtil.padNumber(roRender[j].roll.min, 2, "0")}-${StrUtil.padNumber(roRender[j].roll.max, 2, "0")}` : `${roRender[j].roll.min}-${roRender[j].roll.max}`;
+								toRenderCell = roRender[ixCell].roll.pad
+									? `${StrUtil.padNumber(roRender[ixCell].roll.min, 2, "0")}-${StrUtil.padNumber(roRender[ixCell].roll.max, 2, "0")}`
+									: `${roRender[ixCell].roll.min}-${roRender[ixCell].roll.max}`;
 							}
 						}
 					}
 				} else {
-					toRenderCell = roRender[j];
+					toRenderCell = roRender[ixCell];
 				}
-				textStack[0] += `<td ${this._renderTable_makeTableTdClassText(entry, j)} ${this._renderTable_getCellDataStr(roRender[j])} ${roRender[j].width ? `colspan="${roRender[j].width}"` : ""}>`;
-				if (r.style === "row-indent-first" && j === 0) textStack[0] += `<div class="rd__tab-indent"/>`;
+				bodyStack[0] += `<td ${this._renderTable_makeTableTdClassText(entry, ixCell)} ${this._renderTable_getCellDataStr(roRender[ixCell])} ${roRender[ixCell].width ? `colspan="${roRender[ixCell].width}"` : ""}>`;
+				if (r.style === "row-indent-first" && ixCell === 0) bodyStack[0] += `<div class="rd__tab-indent"/>`;
 				const cacheDepth = this._adjustDepth(meta, 1);
-				this._recursiveRender(toRenderCell, textStack, meta);
+				this._recursiveRender(toRenderCell, bodyStack, meta);
 				meta.depth = cacheDepth;
-				textStack[0] += "</td>";
+				bodyStack[0] += "</td>";
 			}
-			textStack[0] += "</tr>";
+			bodyStack[0] += "</tr>";
 		}
+		bodyStack[0] += "</tbody>";
 
-		textStack[0] += "</tbody>";
+		// header
+		textStack[0] += "<thead>";
+		textStack[0] += "<tr>";
+		if (entry.colLabels) {
+			const len = entry.colLabels.length;
+			for (let i = 0; i < len; ++i) {
+				const lbl = entry.colLabels[i];
+				textStack[0] += `<th ${this._renderTable_getTableThClassText(entry, i)} data-isroller="${rollCols[i]}">`;
+				this._recursiveRender(autoMkRoller && i === 0 && !lbl.includes("@dice") ? `{@dice ${lbl}}` : lbl, textStack, meta);
+				textStack[0] += `</th>`;
+			}
+		}
+		textStack[0] += "</tr>";
+		textStack[0] += "</thead>";
+
+		textStack[0] += bodyStack[0];
+
+		// footer
 		if (entry.footnotes != null) {
 			textStack[0] += "<tfoot>";
 			const len = entry.footnotes.length;
@@ -440,7 +456,7 @@ function Renderer () {
 
 	this._renderEntriesSubtypes = function (entry, textStack, meta, options, incDepth) {
 		const isInlineTitle = meta.depth >= 2;
-		const pagePart = !isInlineTitle && entry.page ? ` <span class="rd__title-link">${entry.source ? `<span class="help--subtle" title="${Parser.sourceJsonToFull(entry.source)}">${Parser.sourceJsonToAbv(entry.source)}</span> ` : ""}p${entry.page}</span>` : "";
+		const pagePart = !isInlineTitle && entry.page > 0 ? ` <span class="rd__title-link">${entry.source ? `<span class="help--subtle" title="${Parser.sourceJsonToFull(entry.source)}">${Parser.sourceJsonToAbv(entry.source)}</span> ` : ""}p${entry.page}</span>` : "";
 		const nextDepth = incDepth && meta.depth < 2 ? meta.depth + 1 : meta.depth;
 		const styleString = this._renderEntriesSubtypes_getStyleString(entry, meta, isInlineTitle);
 		const dataString = this._renderEntriesSubtypes_getDataString(entry);
@@ -1017,11 +1033,31 @@ function Renderer () {
 								subhashes: filters.map(f => {
 									const [fname, fvals, fopts] = f.split("=").map(s => s.trim()).filter(s => s);
 									const key = fname.startsWith("fb") ? fname : `flst${UrlUtil.encodeForHash(fname)}`;
+
+									let value;
+									if (fvals.startsWith("[") && fvals.endsWith("]")) { // range
+										const [min, max] = fvals.substring(1, fvals.length - 1).split(";").map(it => it.trim());
+										if (max == null) { // shorthand version, with only one value, becomes min _and_ max
+											value = [
+												`min=${min}`,
+												`max=${min}`
+											].join(HASH_SUB_LIST_SEP);
+										} else {
+											value = [
+												min ? `min=${min}` : "",
+												max ? `max=${max}` : ""
+											].filter(Boolean).join(HASH_SUB_LIST_SEP);
+										}
+									} else {
+										value = fvals.split(";").map(s => s.trim()).filter(s => s).map(s => `${UrlUtil.encodeForHash(s)}=1`).join(HASH_SUB_LIST_SEP);
+									}
+
 									const out = {
 										key,
-										value: fvals.split(";").map(s => s.trim()).filter(s => s).map(s => `${UrlUtil.encodeForHash(s)}=1`).join(HASH_SUB_LIST_SEP),
+										value,
 										preEncoded: true
 									};
+
 									if (fopts) {
 										return [out, {
 											key: `flmt${UrlUtil.encodeForHash(fname)}`,
@@ -1666,8 +1702,11 @@ Renderer.getAbilityData = function (abObj) {
 						return `one ability to decrease by ${it}`;
 					});
 					const froms = w.from.map(it => it.uppercaseFirst());
-					toConvertToText.push(`From ${froms.joinConjunct(", ", " and ")} choose ${areIncrease.concat(areReduce).joinConjunct(", ", " and ")}`);
-					toConvertToShortText.push(`${areIncreaseShort.concat(areReduceShort).join("/")} from ${froms.join("/")}`);
+					const startText = froms.length === 6
+						? `Choose `
+						: `From ${froms.joinConjunct(", ", " and ")} choose `;
+					toConvertToText.push(`${startText}${areIncrease.concat(areReduce).joinConjunct(", ", " and ")}`);
+					toConvertToShortText.push(`${froms.length === 6 ? "Any combination " : ""}${areIncreaseShort.concat(areReduceShort).join("/")}${froms.length === 6 ? "" : ` from ${froms.join("/")}`}`);
 					continue;
 				} else {
 					const allAbilities = item.from.length === 6;
@@ -1750,7 +1789,7 @@ Renderer.utils = {
 						<div class="name-inner">
 							<span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this, '${it.source.escapeQuotes()}')">${prefix || ""}${it._displayName || it.name}${suffix || ""}</span>
 							<span class="stats-source source${it.source}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}">
-								${Parser.sourceJsonToAbv(it.source)}${addPageNum && it.page ? ` p${it.page}` : ""}
+								${Parser.sourceJsonToAbv(it.source)}${addPageNum && it.page > 0 ? ` p${it.page}` : ""}
 							</span>
 						</div>
 					</th>
@@ -1773,13 +1812,13 @@ Renderer.utils = {
 					if (as.entry) {
 						return Renderer.get().render(as.entry);
 					} else {
-						return `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>${as.page ? `, page ${as.page}` : ""}`;
+						return `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>${as.page > 0 ? `, page ${as.page}` : ""}`;
 					}
 				}).join("; ")}`
 			} else return "";
 		}
 		const sourceSub = Renderer.utils.getSourceSubText(it);
-		const baseText = it.page ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}` : "";
+		const baseText = it.page > 0 ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}` : "";
 		const addSourceText = getAltSourceText("additionalSources", "Additional information from");
 		const otherSourceText = getAltSourceText("otherSources", "Also found in");
 		const externalSourceText = getAltSourceText("externalSources", "External sources:");
@@ -3581,6 +3620,10 @@ Renderer.item = {
 				a = (i > 0 ? ", " : item.dmg1 ? "- " : "") + a;
 				propertiesTxt += a;
 			}
+		} else {
+			const parts = [];
+			if (item.range) parts.push(`range ${item.range} ft.`);
+			propertiesTxt += `${item.dmg1 ? " - " : ""}${parts.join(", ")}`;
 		}
 		return [damage, damageType, propertiesTxt];
 	},
@@ -5570,7 +5613,7 @@ Renderer.dice = {
 		};
 
 		function doRoll (toRoll = entry) {
-			if ($ele.parent().is("th")) Renderer.dice.rollEntry(toRoll, rolledBy, getThRoll);
+			if ($ele.parent().is("th") && $ele.parent().attr("data-isroller") === "true") Renderer.dice.rollEntry(toRoll, rolledBy, getThRoll);
 			else Renderer.dice.rollEntry(toRoll, rolledBy);
 		}
 

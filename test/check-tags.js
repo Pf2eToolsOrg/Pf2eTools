@@ -266,8 +266,23 @@ class FilterCheck {
 			} else {
 				const missingEq = [];
 				for (let i = 2; i < spl.length; ++i) {
-					if (!spl[i].includes("=")) {
-						missingEq.push(spl[i]);
+					const part = spl[i];
+					if (!part.includes("=")) {
+						missingEq.push(part);
+					}
+
+					const hasOpenRange = part.startsWith("[");
+					const hasCloseRange = part.startsWith("]");
+					if (hasOpenRange || hasCloseRange) {
+						if (!(hasOpenRange && hasCloseRange)) {
+							MSG.FilterCheck += `Malformed range expression in filter tag "${str}"`;
+						}
+
+						const [header, values] = part.split("=");
+						const valuesSpl = values.replace(/^\[/, "").replace(/]$/, "").split(";");
+						if (valuesSpl.length > 2) {
+							MSG.FilterCheck += `Too many values in range expression in filter tag "${str}" (expected 1-2)`;
+						}
 					}
 				}
 				if (missingEq.length) {

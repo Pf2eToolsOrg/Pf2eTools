@@ -1,29 +1,27 @@
 const fs = require('fs');
-const ut = require("../js/utils");
+require("../js/utils");
 
 class GenTables {
 	constructor () {
 		this.sectionOrders = {};
 	}
 
-	static get BOOK_BLACKLIST () {
-		return [];
-	}
-
-	loadBooks () {
-		/*
-		const temp = JSON.parse(fs.readFileSync(`path/to/some/file`, "utf-8"));
-		temp.book[0].bookData = temp.bookData[0];
-		return [temp.book[0]];
-		 */
-
-		const index = JSON.parse(fs.readFileSync(`./data/books.json`, "utf-8"));
-		return index.book.map(idx => {
+	doLoad () {
+		const out = JSON.parse(fs.readFileSync(`./data/books.json`, "utf-8")).book.map(idx => {
 			if (!GenTables.BOOK_BLACKLIST[idx.id]) {
 				idx.bookData = JSON.parse(fs.readFileSync(`./data/book/book-${idx.id.toLowerCase()}.json`, "utf-8"));
 				return idx;
 			}
 		}).filter(it => it);
+
+		out.push(...JSON.parse(fs.readFileSync(`./data/adventures.json`, "utf-8")).adventure.map(idx => {
+			if (GenTables.ADVENTURE_WHITELIST[idx.id]) {
+				idx.adventureData = JSON.parse(fs.readFileSync(`./data/adventure/adventure-${idx.id.toLowerCase()}.json`, "utf-8"));
+				return idx;
+			}
+		}).filter(it => it));
+
+		return out;
 	}
 
 	getTableSectionIndex (chapterName, sectionName, dryRun) {
@@ -35,23 +33,25 @@ class GenTables {
 		return val;
 	}
 
-	search (path, chapterMeta, section, data, outStacks) {
+	search (path, chapterMeta, section, data, outStacks, isAdventure) {
 		if (data.data && data.data.tableIgnore) return;
 		if (data.entries) {
 			const nxtSection = data.name || section;
 			if (data.name) path.push(data.name);
-			data.entries.forEach(ent => this.search(path, chapterMeta, nxtSection, ent, outStacks));
+			data.entries.forEach(ent => this.search(path, chapterMeta, nxtSection, ent, outStacks, isAdventure));
 			if (data.name) path.pop();
 		} else if (data.items) {
 			if (data.name) path.push(data.name);
-			data.items.forEach(item => this.search(path, chapterMeta, section, item, outStacks));
+			data.items.forEach(item => this.search(path, chapterMeta, section, item, outStacks, isAdventure));
 			if (data.name) path.pop();
 		} else if (data.type === "table") {
+			if (isAdventure && !(data.data && data.data.tableInclude)) return;
 			const cpy = MiscUtil.copy(data);
 			const pathCpy = MiscUtil.copy(path);
 			this._search__setMeta(cpy, chapterMeta, pathCpy, section);
 			outStacks.table.push(cpy);
 		} else if (data.type === "tableGroup") {
+			if (isAdventure && !(data.data && data.data.tableInclude)) return;
 			const cpy = MiscUtil.copy(data);
 			const pathCpy = MiscUtil.copy(path);
 			this._search__setMeta(cpy, chapterMeta, pathCpy, section);
@@ -95,17 +95,22 @@ class GenTables {
 	}
 
 	run () {
-		const books = this.loadBooks();
+		const docs = this.doLoad();
 		let tables = [];
 		let tableGroups = [];
 
-		books.forEach(book => {
+		docs.forEach(doc => {
 			const stacks = {table: [], tableGroup: []};
-			book.bookData.data.forEach((chapter, i) => {
-				const chapterMeta = book.contents[i];
-				chapterMeta.index = i;
-				const path = [];
-				this.search(path, chapterMeta, book.name, chapter, stacks);
+
+			const _PROPS = ["bookData", "adventureData"];
+			_PROPS.forEach(prop => {
+				if (!doc[prop]) return;
+				doc[prop].data.forEach((chapter, i) => {
+					const chapterMeta = doc.contents[i];
+					chapterMeta.index = i;
+					const path = [];
+					this.search(path, chapterMeta, doc.name, chapter, stacks, prop === "adventureData");
+				});
 			});
 
 			const tablesToAdd = stacks.table.map(it => {
@@ -129,7 +134,7 @@ class GenTables {
 					}
 				}
 
-				it.source = book.id;
+				it.source = doc.id;
 				GenTables._cleanData(it);
 				return it;
 			});
@@ -142,7 +147,7 @@ class GenTables {
 					it.name = `${cleanSections.last()}; ${it.name}`;
 				}
 
-				it.source = book.id;
+				it.source = doc.id;
 				GenTables._cleanData(it);
 				return it;
 			});
@@ -155,6 +160,8 @@ class GenTables {
 		fs.writeFileSync(`./data/generated/gendata-tables.json`, toSave, "utf-8");
 	}
 }
+GenTables.BOOK_BLACKLIST = {};
+GenTables.ADVENTURE_WHITELIST = {GoS: true};
 
 const generator = new GenTables();
 generator.run();

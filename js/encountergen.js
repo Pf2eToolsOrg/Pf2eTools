@@ -10,7 +10,7 @@ function makeContentsBlock (i, loc) {
 	loc.tables.forEach((t, j) => {
 		const tableName = getTableName(loc, t);
 		out += `<li>
-			<a id="${i},${j}" href="#${UrlUtil.encodeForHash([loc.location, loc.source, t.minlvl + "-" + t.maxlvl])}" title="${tableName}">${tableName}</a>
+			<a id="${i},${j}" href="#${UrlUtil.encodeForHash([loc.name, loc.source, t.minlvl + "-" + t.maxlvl])}" title="${tableName}">${tableName}</a>
 		</li>`;
 	});
 	out += "</ul>";
@@ -18,7 +18,7 @@ function makeContentsBlock (i, loc) {
 }
 
 function getTableName (loc, table) {
-	return `${loc.location} Encounters (Levels ${table.minlvl}\u2014${table.maxlvl})`;
+	return `${loc.name} Encounters (Levels ${table.minlvl}\u2014${table.maxlvl})`;
 }
 
 window.onload = function load () {
@@ -36,7 +36,7 @@ function onJsonLoad (data) {
 
 		tempString +=
 			`<li>
-				<span class="name" onclick="showHideList(this)" title="Source: ${Parser.sourceJsonToFull(loc.source)}">${loc.location}</span>
+				<span class="name" onclick="showHideList(this)" title="Source: ${Parser.sourceJsonToFull(loc.source)}">${loc.name}</span>
 				${makeContentsBlock(i, loc)}
 			</li>`;
 	}
@@ -80,7 +80,7 @@ function loadhash (id) {
 
 	for (let i = 0; i < table.length; i++) {
 		const range = table[i].min === table[i].max ? pad(table[i].min) : `${pad(table[i].min)}-${pad(table[i].max)}`;
-		htmlText += `<tr><td class="text-align-center">${range}</td><td>${getRenderedText(table[i].enc)}</td></tr>`;
+		htmlText += `<tr><td class="text-align-center">${range}</td><td>${getRenderedText(table[i].result)}</td></tr>`;
 	}
 
 	htmlText += `
@@ -117,7 +117,7 @@ function rollAgainstTable (iLoad, jLoad) {
 		const trueMin = row.max != null && row.max < row.min ? row.max : row.min;
 		const trueMax = row.max != null && row.max > row.min ? row.max : row.min;
 		if (roll >= trueMin && roll <= trueMax) {
-			result = getRenderedText(row.enc);
+			result = getRenderedText(row.result);
 			break;
 		}
 	}
@@ -128,7 +128,7 @@ function rollAgainstTable (iLoad, jLoad) {
 		return `<span class="roller" onmousedown="event.preventDefault()" onclick="reroll(this)">${match}</span> (<span class="result">${r}</span>)`
 	});
 
-	Renderer.dice.addRoll({name: `${location.location} (${table.minlvl}-${table.maxlvl})`}, `<span><strong>${pad(roll)}</strong> ${result}</span>`);
+	Renderer.dice.addRoll({name: `${location.name} (${table.minlvl}-${table.maxlvl})`}, `<span><strong>${pad(roll)}</strong> ${result}</span>`);
 }
 
 function reroll (ele) {

@@ -54,7 +54,8 @@ if (fs.existsSync("./img")) {
 		"roll20",
 		"book",
 		"items",
-		"races"
+		"races",
+		"ships"
 	]);
 
 	fs.readdirSync("./img")
@@ -78,7 +79,7 @@ if (fs.existsSync("./img")) {
 	results.sort(function (a, b) {
 		return a.toLowerCase().localeCompare(b.toLowerCase());
 	}).forEach(function (i) {
-		console.log(i);
+		console.warn(i);
 	});
 	if (!expected.length) console.log("Tokens are as expected.");
 }

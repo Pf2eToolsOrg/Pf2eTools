@@ -24,10 +24,26 @@ find . -type f -name '*.html' -print0 |
 		sed -n -i '/js\/navigation.js/!p' $line
     done
 
+echo "Optimizing the JS."
+# Improve cache performance by gluing these together. Order is important. `echo`s add newlines.
+cat js/utils.js <(echo ";") js/utils-ui.js <(echo ";") js/omnidexer.js <(echo ";") js/omnisearch.js <(echo ";") js/render.js <(echo ";") js/scalecreature.js > js/shared.js
+rm js/utils.js js/utils-ui.js js/omnidexer.js js/omnisearch.js js/render.js js/scalecreature.js
+
+# Replace the files with the minified version we made above
+find . -type f -name '*.html' -print0 |
+    while IFS= read -r -d $'\0' line; do
+        sed -i -e 's;js/utils.js;js/shared.js;g' $line
+		sed -n -i '/js\/utils-ui.js/!p' $line
+		sed -n -i '/js\/omnidexer.js/!p' $line
+		sed -n -i '/js\/omnisearch.js/!p' $line
+		sed -n -i '/js\/render.js/!p' $line
+		sed -n -i '/js\/scalecreature.js/!p' $line
+    done
+
 echo "Replacing local files with combined jsdelivr."
 
 # Set the IS_DEPLOYED variable for production.
-sed -i 's/IS_DEPLOYED="undefined"/IS_DEPLOYED='"\"${version}\""'/g' js/utils.js
+sed -i 's/IS_DEPLOYED\s*=\s*undefined/IS_DEPLOYED='"\"${version}\""'/g' js/utils.js
 
 find . -type f -name '*.html' -print0 |
     while IFS= read -r -d $'\0' line; do

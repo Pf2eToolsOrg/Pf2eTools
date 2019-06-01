@@ -31,11 +31,12 @@ class FilterBox {
 	static async pGetStoredActiveSources () {
 		const stored = await StorageUtil.pGetForPage(FilterBox._STORAGE_KEY);
 		if (stored) {
-			const sources = stored[FilterBox.SOURCE_HEADER];
-			if (sources) {
+			const sourceFilterData = stored.filters[FilterBox.SOURCE_HEADER];
+			if (sourceFilterData) {
+				const state = sourceFilterData.state;
 				const blue = [];
 				const white = [];
-				Object.entries(sources).forEach(([src, mode]) => {
+				Object.entries(state).forEach(([src, mode]) => {
 					if (mode === 1) blue.push(src);
 					else if (mode !== -1) white.push(src);
 				});
@@ -255,8 +256,11 @@ class FilterBox {
 		});
 		const urlHeaderToFilter = {};
 		this._filters.forEach(f => {
-			urlHeaderToFilter[f.header.toLowerCase()] = f;
-			f.getChildFilters().forEach(f => urlHeaderToFilter[f.header.toLowerCase()] = f);
+			const childFilters = f.getChildFilters();
+			// avoid adding parent filters, as resetting them (if no modification occurs) resets all their children
+			//  alternately, we could track when a child is modified, and add the parent to the list of filter to be left as-is
+			if (childFilters.length) childFilters.forEach(f => urlHeaderToFilter[f.header.toLowerCase()] = f);
+			else urlHeaderToFilter[f.header.toLowerCase()] = f;
 		});
 		const updatedUrlHeaders = new Set();
 		const consumed = new Set();
@@ -268,7 +272,7 @@ class FilterBox {
 				const prefix = hashKey.substring(0, FilterUtil.SUB_HASH_PREFIX_LENGTH);
 				const urlHeader = hashKey.substring(FilterUtil.SUB_HASH_PREFIX_LENGTH);
 
-				if (urlHeaderToFilter[urlHeader]) {
+				if (FilterUtil.SUB_HASH_PREFIXES.has(prefix) && urlHeaderToFilter[urlHeader]) {
 					(statePerFilter[urlHeader] = statePerFilter[urlHeader] || {})[prefix] = data.clean;
 					updatedUrlHeaders.add(urlHeader);
 					consumed.add(data.raw);
@@ -887,6 +891,7 @@ class Filter extends FilterBase {
 			this.resetBase();
 			this._resetNestsHidden();
 		}
+		Object.keys(this._state).forEach(k => delete this._state[k]);
 		this._items.forEach(it => this._defaultItemState(it));
 	}
 
@@ -1172,8 +1177,16 @@ class RangeFilter extends FilterBase {
 			if (prop === "state") {
 				hasState = true;
 				vals.forEach(v => {
-					const [prop, numStr] = v.split("=");
-					const num = Number(numStr);
+					const [prop, val] = v.split("=");
+					if (val.startsWith("&") && !this._labels) throw new Error(`Could not dereference label: "${val}"`);
+
+					let num;
+					if (val.startsWith("&")) { // prefixed with "&" for "address (index) of..."
+						const clean = val.replace("&", "");
+						num = this._labels.findIndex(it => String(it) === clean);
+						if (!~num) throw new Error(`Could not find index for label "${clean}"`);
+					} else num = Number(val);
+
 					switch (prop) {
 						case "min":
 							if (num < this._state.min) this._state.min = num;

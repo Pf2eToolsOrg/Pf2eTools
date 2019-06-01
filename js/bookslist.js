@@ -23,7 +23,7 @@ class BooksList {
 	onJsonLoad (data) {
 		const sortFunction = (a, b, o) => self.sortFn(self.dataList, a, b, o);
 		this.list = new List("listcontainer", {
-			valueNames: ["name"],
+			valueNames: ["name", "uniqueid"],
 			listClass: "books",
 			sortFunction
 		});
@@ -60,6 +60,7 @@ class BooksList {
 		this.addData(data);
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
+			.then(() => BrewUtil.bind({list: this.list}))
 			.then(() => BrewUtil.pAddLocalBrewData())
 			.catch(BrewUtil.pPurgeBrew)
 			.then(() => BrewUtil.makeBrewButton("manage-brew"));
@@ -84,6 +85,7 @@ class BooksList {
 					</span>
 					<span class="showhide" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>
 					<span class="source" style="display: none">${it.id}</span>
+					<span class="uniqueid" style="display: none">${it.uniqueId}</span>
 				</a>
 				${BookUtil.makeContentsBlock({book: it, addPrefix: this.rootPage, defaultHidden: true})}
 			</li>`;

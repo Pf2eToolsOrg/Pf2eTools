@@ -152,6 +152,7 @@ async function onJsonLoad (data) {
 			"Spellcasting",
 			"Tool Proficiency",
 			"Unarmed Strike",
+			"Uncommon Race",
 			"Weapon Proficiency"
 		],
 		deselFn: (it) => {

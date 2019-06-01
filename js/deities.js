@@ -225,7 +225,7 @@ function loadhash (jsonIndex) {
 		${reprintIndex ? `
 			<tr><td colspan="6">
 			<i class="text-muted">
-			${reprintIndex === 1 ? `This deity is a reprint.` : ""} The version below was printed in an older publication (${Parser.sourceJsonToFull(deity.source)}${deity.page ? `, page ${deity.page}` : ""}).
+			${reprintIndex === 1 ? `This deity is a reprint.` : ""} The version below was printed in an older publication (${Parser.sourceJsonToFull(deity.source)}${deity.page > 0 ? `, page ${deity.page}` : ""}).
 			</i>
 			</td></tr>
 		` : ""}

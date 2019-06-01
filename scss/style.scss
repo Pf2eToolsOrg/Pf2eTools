@@ -37,6 +37,57 @@
 		position: relative;
 		min-height: 0;
 		flex-shrink: 0;
+
+		// Display a dropdown menu on mobile
+		@media (max-width: $width-screen-sm) {
+			&::before {
+				content: 'Menu';
+				margin: 3px 7px 0;
+				padding: 5px;
+				width: calc(100% - 14px);
+				display: block;
+				border-radius: 3px;
+				text-align: center;
+				border: 1px solid $border-grey;
+
+				&:hover {
+					opacity: 0;
+				}
+			}
+
+			&:hover {
+				.page__nav-inner {
+					display: flex;
+				}
+			}
+		}
+
+		@media (max-width: $width-screen-sm) {
+			width: 100%;
+		}
+	}
+
+	&nav-inner {
+		@media (max-width: $width-screen-sm) {
+			margin-top: 10px;
+			flex-direction: column;
+			display: none;
+		}
+	}
+}
+
+@media (max-width: $width-screen-sm) {
+	.nav > li > a {
+		border: 1px solid $border-grey;
+	}
+
+	.nav .caret--right {
+		transform: none;
+	}
+
+	.nav .dropdown-menu--side {
+		top: 100%;
+		left: 0;
 	}
 }
 
@@ -259,8 +310,10 @@ input.ui-search__ipt-search-sub-ipt-custom[type=number]::-webkit-inner-spin-butt
 	display: flex;
 	flex-flow: column nowrap;
 	overflow: auto;
+	height: 100vh;
+	width: 100vw;
 
-	@media (max-width: 991px) {
+	@media (max-width: $width-screen-md) {
 		bottom: auto;
 	}
 }
@@ -272,7 +325,7 @@ input.ui-search__ipt-search-sub-ipt-custom[type=number]::-webkit-inner-spin-butt
 	height: 100%;
 	min-height: 0;
 
-	@media (max-width: 991px) {
+	@media (max-width: $width-screen-md) {
 		flex-direction: column;
 		max-height: none;
 		height: auto;
@@ -437,12 +490,12 @@ input[type=checkbox].sidemenu__row__label__cb {
 			min-width: 270px;
 		}
 
-		@media only screen and (min-width: 480px) {
+		@media only screen and (min-width: $width-screen-xs) {
 			max-width: 460px;
 			min-width: 430px;
 		}
 
-		@media only screen and (min-width: 768px) {
+		@media only screen and (min-width: $width-screen-sm) {
 			max-width: 740px;
 			min-width: 500px;
 		}
@@ -455,7 +508,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 			padding: 0 0 4px 2px;
 		}
 
-		@media (max-width: 991px) {
+		@media (max-width: $width-screen-md) {
 			padding-top: 2px;
 		}
 
@@ -989,7 +1042,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 	float: none;
 	display: block;
 
-	@media (min-width: 768px) {
+	@media (min-width: $width-screen-sm) {
 		width: 750px;
 	}
 
@@ -997,7 +1050,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 		width: 970px;
 	}
 
-	@media (min-width: 1200px) {
+	@media (min-width: $width-screen-lg) {
 		width: 1170px;
 	}
 }
@@ -1166,7 +1219,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 	clear: both;
 	font-size: 0.8em;
 
-	@media (max-width: 991px) {
+	@media (max-width: $width-screen-md) {
 		max-height: 40em;
 	}
 
@@ -2354,7 +2407,7 @@ tr.printbook-bestiary > td {
 }
 
 /**** Search and filter bar ****/
-@media (max-width: 991px) {
+@media (max-width: $width-screen-md) {
 	.dropdown-menu-filter {
 		max-height: calc(40em - 35px);
 	}
@@ -2642,7 +2695,7 @@ $flt-2stripe: 22px;
 
 		// restyle plugin junk
 		&.ui-slider-pips {
-			margin: 5px 25px 35px;
+			margin: 5px 40px 35px;
 		}
 
 		&:not(.ui-slider-disabled) .ui-slider-pip:hover .ui-slider-label,
@@ -2998,14 +3051,6 @@ span.showhide {
 	padding: 1px 7px;
 }
 
-.caret--right {
-	transform: rotate(270deg);
-}
-
-.caret--reverse {
-	transform: rotate(180deg);
-}
-
 /* ENTRY RENDERING CSS */
 // TODO refactor everything
 tr.trait,
@@ -3241,28 +3286,28 @@ tr.regionaleffect {
 	padding: 0 20px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: $width-screen-lg) {
 	.f-all-wrapper {
 		right: calc((50vw - (970px / 2)) + 1.5em);
 		left: calc(((100vw - (970px * (4 / 6))) / 2) + 1.5em);
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: $width-screen-md) {
 	.f-all-wrapper {
 		right: calc(((100vw - 750px) / 2) + 1.5em);
 		left: calc(((100vw - 750px) / 2) + 1.5em);
 	}
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: $width-screen-sm) {
 	.f-all-wrapper {
 		right: calc(((100vw - 750px) / 2) + 1.5em);
 		left: calc(((100vw - 750px) / 2) + 1.5em);
 	}
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: $width-screen-xs) {
 	.f-all-wrapper {
 		right: calc(3.5em);
 		left: calc(3.5em);
@@ -3364,7 +3409,7 @@ ul.list li:hover {
 		vertical-align: top;
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: $width-screen-sm) {
 		flex-direction: column;
 	}
 
@@ -3439,7 +3484,7 @@ tr.legendary td {
 			right: 10px;
 			padding: 2px 0;
 
-			@media (max-width: 768px) {
+			@media (max-width: $width-screen-sm) {
 				display: none;
 			}
 		}
@@ -3772,9 +3817,9 @@ ul.list.books > li > a > span.name:hover {
 		}
 	}
 
-	.nav-pills > li.active > a,
-	.nav-pills > li.active > a:focus,
-	.nav-pills > li.active > a:hover {
+	.page__nav-inner > li.active > a,
+	.page__nav-inner > li.active > a:focus,
+	.page__nav-inner > li.active > a:hover {
 		background-color: $link-blue;
 		border-top: 0;
 		border-color: transparent;
@@ -4573,6 +4618,7 @@ ul.list.books > li > a > span.name:hover {
 		flex-shrink: 0;
 		flex-grow: 0;
 		min-height: 0;
+		overflow: hidden;
 	}
 
 	&wrp-sidebar-rhs {
@@ -4593,6 +4639,11 @@ ul.list.books > li > a > span.name:hover {
 		@media (max-width: 1800px) {
 			display: none;
 		}
+	}
+
+	&sidebar-rhs-inner {
+		position: sticky;
+		top: 20px;
 	}
 }
 

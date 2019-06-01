@@ -221,12 +221,9 @@
 /* *** */
 
 /* Base elements */
-html {
-	height: 100%;
-}
-
 body {
 	min-height: 100%;
+	position: relative;
 
 	&.is-fullscreen .page__header {
 		display: none;
@@ -340,9 +337,9 @@ select.input-xs {
 	}
 }
 
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:focus,
-.nav-pills > li.active > a:hover {
+.page__nav-inner > li.active > a,
+.page__nav-inner > li.active > a:focus,
+.page__nav-inner > li.active > a:hover {
 	background-color: #006bc4;
 	border-top: 0;
 
@@ -1127,4 +1124,12 @@ select.input-xs {
 
 .dropdown-ext-link:hover > .glyphicon {
 	display: inline-block;
+}
+
+.caret--right {
+	transform: rotate(270deg);
+}
+
+.caret--reverse {
+	transform: rotate(180deg);
 }

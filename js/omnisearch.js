@@ -8,6 +8,8 @@ const Omnisearch = {
 	highestId: -1,
 
 	init: function () {
+		if (IS_ROLL20) return;
+
 		const $nav = $(`#navbar`);
 
 		const $searchIn = $(`<input class="form-control search omni__input" placeholder="${Omnisearch._PLACEHOLDER_TEXT}" title="Disclaimer: unlikely to search everywhere. Use with caution.">`).disableSpellcheck();

@@ -39,7 +39,6 @@ class NavBar {
 
 		const ulPlayers = addDropdown(navBar, "Player Options");
 		addLi(ulPlayers, "classes.html", "Classes");
-		addLi(ulPlayers, "optionalfeatures.html", "Class Feature Options");
 		addLi(ulPlayers, "backgrounds.html", "Backgrounds");
 		addLi(ulPlayers, "feats.html", "Feats");
 		addLi(ulPlayers, "races.html", "Races");
@@ -90,6 +89,7 @@ class NavBar {
 		addLi(ulReferences, "conditionsdiseases.html", "Conditions & Diseases");
 		addLi(ulReferences, "deities.html", "Deities");
 		addLi(ulReferences, "items.html", "Items");
+		addLi(ulReferences, "optionalfeatures.html", "Other Options and Features");
 		addLi(ulReferences, "rewards.html", "Other Rewards");
 		addLi(ulReferences, "psionics.html", "Psionics");
 		addLi(ulReferences, "spells.html", "Spells");
@@ -303,7 +303,9 @@ class NavBar {
 		event.preventDefault();
 		event.stopPropagation();
 		if (isSide) return;
-		NavBar._openDropdown(ele);
+		const isOpen = ele.parentNode.classList.contains("open");
+		if (isOpen) NavBar._dropdowns.forEach(ele => ele.classList.remove("open"));
+		else NavBar._openDropdown(ele);
 	}
 
 	static _openDropdown (fromLink) {

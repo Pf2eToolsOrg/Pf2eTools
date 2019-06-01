@@ -398,7 +398,7 @@ AlignmentConvert.ALIGNMENTS = {
 	"chaotic neutral": ["C", "N"],
 	"lawful evil": ["L", "E"],
 	"lawful neutral": ["L", "N"],
-	"neutral evil": ["N", "E"], // TODO this was mistakenly marked as "L" "E" before; do a validation pass for all LE creatures -> check if NE
+	"neutral evil": ["N", "E"],
 	"chaotic evil": ["C", "E"],
 
 	"good": ["G"],
@@ -1057,8 +1057,8 @@ class DiceConvert {
 		str = str.replace(/{@(?:dice|damage) ([^}]*)}/gi, "$1");
 
 		// re-tag + format dice
-		str = str.replace(/((\s*[-+]\s*)?(([1-9]\d*)?d([1-9]\d*)(\s*?[-+×x]\s*?\d+)?))+/gi, (...m) => {
-			const expanded = m[0].replace(/([^0-9d])/gi, " $1 ").replace(/\s+/g, " ");
+		str = str.replace(/((\s*[-+]\s*)?(([1-9]\d*)?d([1-9]\d*)(\s*?[-+×x*÷/]\s*?(\d,\d|\d)+(\.\d+)?)?))+/gi, (...m) => {
+			const expanded = m[0].replace(/([^0-9d.,])/gi, " $1 ").replace(/\s+/g, " ");
 			return `{@dice ${expanded}}`;
 		});
 

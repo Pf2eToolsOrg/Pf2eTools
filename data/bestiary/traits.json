@@ -200,6 +200,14 @@
 			"page": 42,
 			"ref": "{@race Tiefling}",
 			"apply": {
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"tiefling"
+						]
+					}
+				},
 				"_mod": {
 					"spellcasting": {
 						"mode": "appendArr",
@@ -779,7 +787,7 @@
 								"name": "Swamp Camouflage",
 								"type": "entries",
 								"entries": [
-									"<$title_name$> has advantage on Dexterity ({@condition Stealth}) checks made to hide in swampy terrain."
+									"<$title_name$> has advantage on Dexterity ({@skill Stealth}) checks made to hide in swampy terrain."
 								]
 							},
 							{

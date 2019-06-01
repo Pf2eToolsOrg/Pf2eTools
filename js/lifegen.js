@@ -1,7 +1,5 @@
 "use strict";
 
-const JSON_URL = "data/life.json";
-
 const RNG = RollerUtil.randomise;
 
 // usage: _testRng(() => GenUtil.getFromTable(PARENTS_TIEFLING, RNG(8)))
@@ -38,7 +36,15 @@ function rollSuppStatus () {
 	return GenUtil.getFromTable(SUPP_STATUS, RNG(6) + RNG(6) + RNG(6));
 }
 
-function getPersonDetails (doRace, isParent) {
+/**
+ * @param opts Options object.
+ * @param opts.isParent If this person is a parent.
+ * @param opts.gender The gender of this person.
+ * @param opts.parentRaces List of parent races for this person.
+ */
+function getPersonDetails (opts) {
+	opts = opts || {};
+
 	const status = rollSuppStatus();
 	const align = rollSuppAlignment().result;
 	const occ = rollSuppOccupation().result;
@@ -48,12 +54,50 @@ function getPersonDetails (doRace, isParent) {
 		`<b>Occupation:</b> ${occ}`,
 		`<b>Relationship:</b> ${relate}`
 	];
-	if (!isParent) {
+	if (!opts.isParent) {
 		out.push(`<b>Status:</b> ${status.result}`);
 	}
-	if (doRace) {
-		const race = rollSuppRace().result;
-		out.splice(index, 0, race);
+
+	if (!opts.isParent) {
+		const race = opts.parentRaces ? (() => {
+			const useParent = RNG(100) > 10;
+			if (useParent) return rollOnArray(opts.parentRaces);
+			else return rollSuppRace().result;
+		})() : rollSuppRace().result;
+
+		out.unshift(`<i><b>Race:</b> ${race}</i>`);
+		const gender = opts.gender ? opts.gender : rollUnofficialGender().result;
+		out.unshift(`<i><b>Gender:</b> ${gender}</i>`);
+
+		const raceSlug = Parser.stringToSlug(race);
+		if (nameTables[raceSlug]) {
+			const availNameTables = nameTables[raceSlug];
+
+			const maleFirstTables = [];
+			const femaleFirstTables = [];
+			const surnameTables = [];
+
+			availNameTables.tables.forEach(tbl => {
+				const nameParts = tbl.option.replace(/,/g, " ").toLowerCase().split(/\s+/);
+				if (nameParts.includes("male")) maleFirstTables.push(tbl);
+				else if (nameParts.includes("female")) femaleFirstTables.push(tbl);
+				else if (!nameParts.includes("child")) surnameTables.push(tbl);
+			});
+
+			const chooseFrom = gender === "Other"
+				? maleFirstTables.concat(femaleFirstTables)
+				: gender === "Male" ? maleFirstTables : femaleFirstTables;
+			const nameTableMeta = rollOnArray(chooseFrom);
+			const resultFirst = GenUtil.getFromTable(nameTableMeta.table, RNG(nameTableMeta.diceType));
+			const resultLast = (() => {
+				if (surnameTables.length) {
+					const nameTableMeta = rollOnArray(chooseFrom);
+					return GenUtil.getFromTable(nameTableMeta.table, RNG(nameTableMeta.diceType));
+				} else return null;
+			})();
+
+			out.unshift(`<i><b title="Generated using the random name tables found in Xanathar's Guide to Everything">Name:</b> ${resultFirst.result}${resultLast ? ` ${resultLast.result}` : ""}</i>`);
+		}
 	}
 	return out;
 }
@@ -86,6 +130,15 @@ function rollEvtWeird () {
 	return GenUtil.getFromTable(LIFE_EVENTS_WEIRD_STUFF, RNG(12));
 }
 
+function rollUnofficialGender () {
+	const GENDERS = [
+		{min: 1, max: 49, result: "Male"},
+		{min: 50, max: 98, result: "Female"},
+		{min: 98, max: 100, result: "Other"}
+	];
+	return GenUtil.getFromTable(GENDERS, RNG(100));
+}
+
 function choose (...lst) {
 	return fmtChoice(rollOnArray(lst));
 }
@@ -106,24 +159,24 @@ function rollOnArray (lst) {
 const RACES_SELECTABLE = ["Dwarf", "Elf", "Half-Elf", "Half-Orc", "Tiefling"];
 
 const PARENTS_HALF_ELF = [
-	{min: 1, max: 5, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an elf and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.` }, display: "One parent was an elf and the other was a human."},
-	{min: 6, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an elf and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-elf.` }, display: "One parent was an elf and the other was a half-elf."},
-	{min: 7, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-elf.` }, display: "One parent was a human and the other was a half-elf."},
-	{min: 8, result: "Both parents were half-elves."}
+	{min: 1, max: 5, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an elf and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.` }, display: "One parent was an elf and the other was a human.", _races: ["Elf", "Human"]},
+	{min: 6, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an elf and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-elf.` }, display: "One parent was an elf and the other was a half-elf.", _races: ["Elf", "Half-Elf"]},
+	{min: 7, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-elf.` }, display: "One parent was a human and the other was a half-elf.", _races: ["Half-Elf", "Human"]},
+	{min: 8, result: "Both parents were half-elves.", _races: ["Half-Elf", "Half-Elf"]}
 ];
 
 const PARENTS_HALF_ORC = [
-	{min: 1, max: 3, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an orc and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.` }, display: "One parent was an orc and the other was a human."},
-	{min: 4, max: 5, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an orc and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-orc.` }, display: "One parent was an orc and the other was a half-orc."},
-	{min: 6, max: 7, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-orc.` }, display: "One parent was a human and the other was a half-orc."},
-	{min: 8, display: "Both parents were half-orcs."}
+	{min: 1, max: 3, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an orc and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.` }, display: "One parent was an orc and the other was a human.", _races: ["Orc", "Human"]},
+	{min: 4, max: 5, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an orc and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-orc.` }, display: "One parent was an orc and the other was a half-orc.", _races: ["Orc", "Half-Orc"]},
+	{min: 6, max: 7, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a half-orc.` }, display: "One parent was a human and the other was a half-orc.", _races: ["Human", "Half-Orc"]},
+	{min: 8, display: "Both parents were half-orcs.", _races: ["Half-Orc", "Half-Orc"]}
 ];
 
 const PARENTS_TIEFLING = [
-	{min: 1, max: 4, display: "Both parents were humans, their infernal heritage dormant until you came along."},
-	{min: 5, max: 6, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a tiefling and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.` }, display: "One parent was a tiefling and the other was a human."},
-	{min: 7, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a tiefling and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a devil.` }, display: "One parent was a tiefling and the other was a devil."},
-	{min: 8, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a devil.` }, display: "One parent was a human and the other was a devil."}
+	{min: 1, max: 4, display: "Both parents were humans, their infernal heritage dormant until you came along.", _races: ["Human", "Human"]},
+	{min: 5, max: 6, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a tiefling and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.` }, display: "One parent was a tiefling and the other was a human.", _races: ["Human", "Tiefling"]},
+	{min: 7, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a tiefling and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a devil.` }, display: "One parent was a tiefling and the other was a devil.", _races: ["Devil", "Tiefling"]},
+	{min: 8, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was a human and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a devil.` }, display: "One parent was a human and the other was a devil.", _races: ["Human", "Devil"]}
 ];
 
 const BIRTHPLACES = [
@@ -473,36 +526,35 @@ const SUPP_STATUS = [
 	{min: 18, result: "Alive and famous"}
 ];
 
-window.onload = function load () {
-	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-};
-
 let classList;
 let bgList;
 let trinketList;
+let nameTables;
 let $selCha;
 let $selRace;
 let $selBg;
 let $selClass;
+let $selAge;
 
 function rollTrinket () {
 	return rollOnArray(trinketList);
 }
 
-function onJsonLoad (data) {
-	bgList = data.lifeBackground.sort((a, b) => SortUtil.ascSort(a.name, b.name));
-	classList = data.lifeClass.sort((a, b) => SortUtil.ascSort(a.name, b.name));
-	trinketList = data.lifeTrinket;
+function onJsonLoad (lifeData, nameData) {
+	bgList = lifeData.lifeBackground.sort((a, b) => SortUtil.ascSort(a.name, b.name));
+	classList = lifeData.lifeClass.sort((a, b) => SortUtil.ascSort(a.name, b.name));
+	trinketList = lifeData.lifeTrinket;
 
-	$selRace = $(`#race`);
-	$selCha = $(`#cha`);
-	$selBg = $(`#background`);
-	$selClass = $(`#class`);
+	$selRace = $(`#race`).empty().attr("disabled", false);
+	$selCha = $(`#cha`).empty().attr("disabled", false);
+	$selBg = $(`#background`).empty().attr("disabled", false);
+	$selClass = $(`#class`).empty().attr("disabled", false);
+	$selAge = $(`#age`).empty().attr("disabled", false);
 
 	$selRace.append(`<option value="Random" selected>Random</option>`);
 	$selRace.append(`<option value="Other">Other</option>`);
 	RACES_SELECTABLE.forEach(r => $selRace.append(`<option value="${r}">${r}</option>`));
+	$selCha.append(`<option value="Random">Random</option>`);
 	for (let i = -5; i <= 5; ++i) {
 		$selCha.append(`<option value="${i}" ${i === 0 ? "selected" : ""}>${i >= 0 ? "+" : ""}${i}</option>`)
 	}
@@ -510,6 +562,28 @@ function onJsonLoad (data) {
 	bgList.forEach((b, i) => $selBg.append(`<option value="${i}">${b.name}</option>`));
 	$selClass.append(`<option value="-1" selected>Random</option>`);
 	classList.forEach((c, i) => $selClass.append(`<option value="${i}">${c.name}</option>`));
+
+	[
+		{val: "", text: "Random", style: "font-style: normal;"},
+		{val: "1", text: "20 years or younger", class: "italic"},
+		{val: "21", text: "21&mdash;30 years", class: "italic"},
+		{val: "60", text: "31&mdash;40 years", class: "italic"},
+		{val: "70", text: "41&mdash;50 years", class: "italic"},
+		{val: "90", text: "51&mdash;60 years", class: "italic"},
+		{val: "100", text: "61 years or older", class: "italic"}
+	].forEach(age => $selAge.append(`<option value="${age.val}" ${age.style ? `style="${age.style}"` : ""} ${age.class ? `class="${age.class}"` : ""}>${age.text}</option>`));
+
+	nameTables = {};
+	nameData.name.filter(it => it.source === SRC_XGE)
+		.forEach(nameMeta => {
+			nameTables[Parser.stringToSlug(nameMeta.name)] = nameMeta;
+
+			if (nameMeta.name === "Elf" || nameMeta.name === "Human") {
+				const cpy = MiscUtil.copy(nameMeta);
+				if (nameTables["half-elf"]) nameTables["half-elf"].tables.push(...cpy.tables);
+				else nameTables["half-elf"] = cpy;
+			}
+		});
 }
 
 function concatSentences (...lst) {
@@ -540,6 +614,7 @@ function addN (name) {
 // generated in Parents, but used throughout
 let knowParents;
 let race;
+let parentRaces;
 // PARENTS
 function sectParents () {
 	knowParents = RNG(100) > 5;
@@ -561,15 +636,24 @@ function sectParents () {
 	let parentage = null;
 	if (knowParents) {
 		switch (race.toLowerCase()) {
-			case "half-elf":
-				parentage = `<b>${race} parents:</b> ${GenUtil.getFromTable(PARENTS_HALF_ELF, RNG(8)).result}`;
+			case "half-elf": {
+				const rolled = GenUtil.getFromTable(PARENTS_HALF_ELF, RNG(8));
+				parentage = `<b>${race} parents:</b> ${rolled.result}`;
+				parentRaces = rolled._races;
 				break;
-			case "half-orc":
-				parentage = `<b>${race} parents:</b> ${GenUtil.getFromTable(PARENTS_HALF_ORC, RNG(8)).result}`;
+			}
+			case "half-orc": {
+				const rolled = GenUtil.getFromTable(PARENTS_HALF_ORC, RNG(8));
+				parentage = `<b>${race} parents:</b> ${rolled.result}`;
+				parentRaces = rolled._races;
 				break;
-			case "tiefling":
-				parentage = `<b>${race} parents:</b> ${GenUtil.getFromTable(PARENTS_TIEFLING, RNG(8)).result}`;
+			}
+			case "tiefling": {
+				const rolled = GenUtil.getFromTable(PARENTS_TIEFLING, RNG(8));
+				parentage = `<b>${race} parents:</b> ${rolled.result}`;
+				parentRaces = rolled._races;
 				break;
+			}
 		}
 	}
 
@@ -580,8 +664,8 @@ function sectParents () {
 	}
 
 	if (knowParents) {
-		const mum = getPersonDetails(false, true);
-		const dad = getPersonDetails(false, true);
+		const mum = getPersonDetails({isParent: true});
+		const dad = getPersonDetails({isParent: true});
 		$parents.append(`<h5>Mother</h5>`);
 		$parents.append(joinParaList(mum));
 		$parents.append(`<h5>Father</h5>`);
@@ -637,8 +721,12 @@ function sectSiblings () {
 		$siblings.empty();
 		$siblings.append(`<p>You have ${sibCount} sibling${sibCount > 1 ? "s" : ""}.</p>`);
 		for (let i = 0; i < sibCount; ++i) {
-			$siblings.append(`<h5>${getBirthOrder()} sibling ${chooseRender("brother", "sister")}</h5>`);
-			$siblings.append(joinParaList(getPersonDetails()));
+			const siblingType = rollOnArray(["brother", "sister"]);
+			$siblings.append(`<h5>${getBirthOrder()} sibling ${fmtChoice(siblingType, true)}</h5>`);
+			$siblings.append(joinParaList(getPersonDetails({
+				gender: siblingType === "brother" ? "Male" : "Female",
+				parentRaces: parentRaces
+			})));
 		}
 	} else {
 		$siblings.html("You are an only child.");
@@ -647,6 +735,12 @@ function sectSiblings () {
 
 // FAMILY
 function sectFamily () {
+	function getChaVal () {
+		const raw = $selCha.val();
+		if (raw === "Random") return RollerUtil.randomise(11) - 6;
+		else return Number(raw);
+	}
+
 	const $family = $(`#family`);
 	$family.empty();
 	$family.append(`<b>Family:</b> ${GenUtil.getFromTable(FAMILY, RNG(100)).result}<br>`);
@@ -668,7 +762,7 @@ function sectFamily () {
 	const rollFamHomeRes = GenUtil.getFromTable(CHILDHOOD_HOME, rollFamHome).result;
 	$family.append(`<b>Childhood Home:</b> ${rollFamHomeRes}<br>`);
 
-	const rollChildMems = Math.min(Math.max(RNG(6) + RNG(6) + RNG(6) + Number($selCha.val()), 3), 18);
+	const rollChildMems = Math.min(Math.max(RNG(6) + RNG(6) + RNG(6) + getChaVal(), 3), 18);
 	$family.append(`<b>Childhood memories</b>: ${GenUtil.getFromTable(CHILDHOOD_MEMORIES, rollChildMems).result}`);
 }
 
@@ -694,7 +788,6 @@ function sectClassTraining () {
 function sectLifeEvents () {
 	const $events = $(`#events`).empty();
 	marriageIndex = 0;
-	const $selAge = $(`#age`);
 	const age = GenUtil.getFromTable(LIFE_EVENTS_AGE, Number($selAge.val()) || RNG(100));
 	$events.append(`<b>Current age:</b> ${age.result} ${fmtChoice(`${age.age} year${age.age > 1 ? "s" : ""} old`, true)}`);
 	for (let i = 0; i < age.events; ++i) {
@@ -729,7 +822,14 @@ function roll () {
 	sectLifeEvents();
 }
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+	const [lifeData, nameData] = await Promise.all([
+		DataUtil.loadJSON("data/life.json"),
+		DataUtil.loadJSON("data/names.json")
+	]);
+	onJsonLoad(lifeData, nameData);
+
 	$(`#age`).on("change", function () {
 		if ($(this).val()) {
 			$(this).addClass("italic")

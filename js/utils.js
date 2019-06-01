@@ -1148,7 +1148,12 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 	"FS:B": "Fighting Style; Bard",
 	"FS:P": "Fighting Style; Paladin",
 	"FS:R": "Fighting Style; Ranger",
-	"PB": "Pact Boon"
+	"PB": "Pact Boon",
+	"SHP:H": "Ship Upgrade, Hull",
+	"SHP:M": "Ship Upgrade, Movement",
+	"SHP:W": "Ship Upgrade, Weapon",
+	"SHP:F": "Ship Upgrade, Figurehead",
+	"SHP:O": "Ship Upgrade, Miscellaneous"
 };
 
 Parser.optFeatureTypeToFull = function (type) {
@@ -1258,6 +1263,7 @@ Parser.CAT_ID_SHIP = 31;
 Parser.CAT_ID_PACT_BOON = 32;
 Parser.CAT_ID_ELEMENTAL_DISCIPLINE = 33;
 Parser.CAT_ID_ARTIFICER_INFUSION = 34;
+Parser.CAT_ID_SHIP_UPGRADE = 35;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1294,6 +1300,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SHIP] = "Ship";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PACT_BOON] = "Pact Boon";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "Elemental Discipline";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARTIFICER_INFUSION] = "Infusion";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SHIP_UPGRADE] = "Ship Upgrade";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1331,6 +1338,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PACT_BOON] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARTIFICER_INFUSION] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SHIP_UPGRADE] = "optionalfeature";
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -3777,12 +3785,13 @@ UrlUtil = {
 					const gainFeatureHash = `${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(`${gainSubclassFeatures[0].name} ${i + 1}`)}`;
 					cls.subclasses.forEach(sc => {
 						const features = ((sc.subclassFeatures || [])[scFeatureI] || []);
+						const tempStack = [];
 						features.forEach(feature => {
 							const baseSubclassUrl = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`;
 							const name = Renderer.findName(feature);
 							if (!name) throw new Error("No name!");
 							const subclassFeatureHash = `${baseSubclassUrl}${HASH_PART_SEP}${gainFeatureHash}`;
-							out.push({
+							tempStack.push({
 								_type: "subclassFeature",
 								name,
 								subclassShortName: sc.shortName,
@@ -3795,18 +3804,21 @@ UrlUtil = {
 							if (feature.entries) {
 								const namedFeatureParts = feature.entries.filter(it => it.name);
 								namedFeatureParts.forEach(it => {
-									out.push({
+									const lvl = i + 1;
+									if (tempStack.find(existing => it.name === existing.name && lvl === existing.level)) return;
+									tempStack.push({
 										_type: "subclassFeaturePart",
 										name: it.name,
 										subclassShortName: sc.shortName,
 										source: sc.source.source || sc.source,
 										hash: subclassFeatureHash,
 										entry: feature,
-										level: i + 1
+										level: lvl
 									});
 								});
 							}
 						});
+						out.push(...tempStack);
 					});
 					scFeatureI++;
 				} else if (gainSubclassFeatures.length > 1) {
@@ -4216,6 +4228,7 @@ DataUtil = {
 	},
 
 	__cleanJsonObject (obj) {
+		if (obj == null) return obj;
 		if (typeof obj === "object") {
 			if (obj instanceof Array) {
 				obj.forEach(it => DataUtil.__cleanJsonObject(it));
@@ -4391,7 +4404,7 @@ RollerUtil = {
 		return !!Renderer.dice.parseToTree(colLabel);
 	},
 
-	_DICE_REGEX_STR: "((([1-9]\\d*)?d([1-9]\\d*)(\\s*?[-+×x*]\\s*?(\\d,\\d|\\d)+)?))+?"
+	_DICE_REGEX_STR: "((([1-9]\\d*)?d([1-9]\\d*)(\\s*?[-+×x*÷/]\\s*?(\\d,\\d|\\d)+(\\.\\d+)?)?))+?"
 };
 RollerUtil.DICE_REGEX = new RegExp(RollerUtil._DICE_REGEX_STR, "g");
 RollerUtil.REGEX_DAMAGE_DICE = /(\d+)( \((?:{@dice |{@damage ))([-+0-9d ]*)(}\) [a-z]+( \([-a-zA-Z0-9 ]+\))?( or [a-z]+( \([-a-zA-Z0-9 ]+\))?)? damage)/gi;
@@ -5375,12 +5388,12 @@ BrewUtil = {
 			["adventure", "adventureData"],
 			["book", "bookData"]
 		];
-		bookPairs.forEach(bp => {
-			if (json[bp[0]] && json[bp[1]]) {
-				json[bp[0]].forEach(adv => {
-					const data = json[bp[1]].find(it => it.id === adv.id);
+		bookPairs.forEach(([bookMetaKey, bookDataKey]) => {
+			if (json[bookMetaKey] && json[bookDataKey]) {
+				json[bookMetaKey].forEach(book => {
+					const data = json[bookDataKey].find(it => it.id === book.id);
 					if (data) {
-						data.parentUniqueId = adv.uniqueId;
+						data.parentUniqueId = book.uniqueId;
 					}
 				});
 			}
@@ -6246,6 +6259,14 @@ if (!IS_ROLL20 && typeof window !== "undefined") {
 		$(`body`).append($wrpBanner);
 	});
 	*/
+
+	// Hack to lock the ad space at original size--prevents the screen from shifting around once loaded
+	setTimeout(() => {
+		const $wrp = $(`.cancer__wrp-leaderboard`);
+		const w = $wrp.outerWidth();
+		const h = $wrp.outerHeight();
+		$wrp.css({width: w, height: h});
+	}, 5000);
 }
 
 _Donate = {

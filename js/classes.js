@@ -438,7 +438,7 @@ class HashLoad {
 				if (i === 0 && !toRender.name) toRender.name = ClassDisplay.curClass.name;
 				if (f.source && f.source !== SRC_PHB && toRender.entries) {
 					toRender.entries = MiscUtil.copy(toRender.entries);
-					toRender.entries.unshift(`{@note The following information is from ${Parser.sourceJsonToFull(f.source)}${f.page ? `, page ${f.page}` : ""}.}`)
+					toRender.entries.unshift(`{@note The following information is from ${Parser.sourceJsonToFull(f.source)}${f.page > 0 ? `, page ${f.page}` : ""}.}`)
 				}
 				renderer.recursiveRender(toRender, renderStack);
 			});

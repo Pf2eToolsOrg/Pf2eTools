@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.0",
+	"version": "1.2.0",
 	"title": "EncounterArray",
 	"type": "object",
 
@@ -13,14 +13,14 @@
 				"max": {
 					"type": "integer"
 				},
-				"enc": {
+				"result": {
 					"$ref": "/Entry"
 				}
 			},
 			"required": [
 				"min",
 				"max",
-				"enc"
+				"result"
 			],
 			"additionalProperties": false
 		},
@@ -48,7 +48,7 @@
 
 		"encounter": {
 			"properties": {
-				"location": {
+				"name": {
 					"type": "string"
 				},
 				"source": {
@@ -59,10 +59,13 @@
 					"items": {
 						"$ref": "#/definitions/encounterTable"
 					}
+				},
+				"page": {
+					"type": "integer"
 				}
 			},
 			"required": [
-				"location",
+				"name",
 				"source",
 				"tables"
 			],

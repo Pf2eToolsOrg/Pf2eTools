@@ -296,7 +296,7 @@ const actionReactionFilter = new Filter({
 });
 const miscFilter = new Filter({
 	header: "Miscellaneous",
-	items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Lair Actions", "Legendary", "Named NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${_MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Swarm", "Has Variants", "Modified Copy"],
+	items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Lair Actions", "Legendary", "Named NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${_MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Swarm", "Has Variants", "Modified Copy", "Has Alternate Token"],
 	displayFn: (it) => Parser.monMiscTagToFull(it).uppercaseFirst(),
 	deselFn: (it) => it === "Named NPC",
 	itemSortFn: ascSortMiscFilter
@@ -647,6 +647,7 @@ function addMonsters (data) {
 		if (mon.variant) mon._fMisc.push("Has Variants");
 		if (mon.miscTags) mon._fMisc.push(...mon.miscTags);
 		if (mon._isCopy) mon._fMisc.push("Modified Copy");
+		if (mon.altArt) mon._fMisc.push("Has Alternate Token");
 		traitFilter.addItem(mon.traitTags);
 		actionReactionFilter.addItem(mon.actionTags);
 		environmentFilter.addItem(mon.environment);
@@ -914,7 +915,7 @@ function renderStatblock (mon, isScaled) {
 						meta.$ele.show();
 						setTimeout(() => meta.$ele.css("max-width", ""), 10); // hack to clear the earlier 100% width
 
-						if (meta.name && meta.source) $footer.html(`<div>${meta.displayName || meta.name}; <span title="${Parser.sourceJsonToFull(meta.source)}">${Parser.sourceJsonToAbv(meta.source)}${meta.page ? ` p${meta.page}` : ""}</span></div>`);
+						if (meta.name && meta.source) $footer.html(`<div>${meta.displayName || meta.name}; <span title="${Parser.sourceJsonToFull(meta.source)}">${Parser.sourceJsonToAbv(meta.source)}${meta.page > 0 ? ` p${meta.page}` : ""}</span></div>`);
 						else $footer.html("");
 
 						$wrpFooter.detach().appendTo(meta.$ele);

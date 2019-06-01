@@ -12,6 +12,7 @@ class StatGen {
 	}
 
 	async init () {
+		this.raceStats = null;
 		this.raceChoiceAmount = null;
 		this.raceChoiceCount = null;
 		this.raceData = null;
@@ -166,11 +167,33 @@ class StatGen {
 		const titleStr = isCrypto ? "Numbers will be generated using Crypto.getRandomValues()" : "Numbers will be generated using Math.random()";
 		$(`#roller-mode`).html(`Cryptographically strong random generation: <span title="${titleStr}" class="crypto-${isCrypto}">${isCrypto ? `<span class="glyphicon glyphicon-lock"></span> enabled` : `<span class="glyphicon glyphicon-ban-circle"></span> not available`}</span>`);
 
-		$("#reset").click(() => {
+		const doReset = () => {
 			$(".base").val(this.statMin);
 			$(".pbuy__user_add").val(0);
 			$(".choose").prop("checked", false);
 			this.changeBase();
+		};
+
+		$("#reset").click(() => doReset());
+
+		$("#randomise").click(() => {
+			doReset();
+
+			let tries = 999;
+			const $iptAttrs = [...$(".base")].map(ele => $(ele));
+			while (tries > 0) {
+				tries--;
+
+				const $toBump = RollerUtil.rollOnArray($iptAttrs);
+				const oldVal = Number($toBump.val());
+				$toBump.val(oldVal + 1);
+				this.changeBase();
+
+				const constBudget = this.getCostAndBudget();
+				const remain = constBudget.budget - constBudget.cost;
+				if (remain === 0) return;
+				else if (remain < 0) $toBump.val(oldVal);
+			}
 		});
 
 		$(".base").on("input", () => this.changeBase());
@@ -349,8 +372,9 @@ class StatGen {
 		if (this.raceChoiceAmount == null) return;
 		if ($("input.choose:checked").length > this.raceChoiceCount) return ele.checked = false;
 
+		const baseStat = this.raceStats[$(ele).closest("tr").attr("id")] || 0;
 		$(".racial", ele.parentNode.parentNode)
-			.val(ele.checked ? this.raceChoiceAmount : 0);
+			.val(ele.checked ? baseStat + this.raceChoiceAmount : baseStat);
 		if (updateTotal) this.changeTotal();
 	}
 
@@ -370,6 +394,7 @@ class StatGen {
 				return;
 			}
 
+			this.raceStats = stats;
 			const {from} = stats.choose[0];
 			this.raceChoiceAmount = stats.choose[0].amount || 1;
 			this.raceChoiceCount = stats.choose[0].count;

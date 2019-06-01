@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.0",
+	"version": "1.2.0",
 	"title": "NameArray",
 	"type": "object",
 
@@ -13,14 +13,14 @@
 				"max": {
 					"type": "integer"
 				},
-				"enc": {
+				"result": {
 					"type": "string"
 				}
 			},
 			"required": [
 				"min",
 				"max",
-				"enc"
+				"result"
 			],
 			"additionalProperties": false
 		},
@@ -47,11 +47,14 @@
 
 		"name": {
 			"properties": {
-				"race": {
+				"name": {
 					"type": "string"
 				},
 				"source": {
 					"type": "string"
+				},
+				"page": {
+					"type": "integer"
 				},
 				"tables": {
 					"type": "array",
@@ -61,7 +64,7 @@
 				}
 			},
 			"required": [
-				"race",
+				"name",
 				"source",
 				"tables"
 			],
