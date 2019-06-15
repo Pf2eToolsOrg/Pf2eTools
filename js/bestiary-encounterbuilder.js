@@ -689,11 +689,15 @@ class EncounterBuilder {
 		const $elmed = $(`.ecgen__medium`).removeClass("bold").text(`Medium: ${xp.party.medium.toLocaleString()} XP`);
 		const $elHard = $(`.ecgen__hard`).removeClass("bold").text(`Hard: ${xp.party.hard.toLocaleString()} XP`);
 		const $elDeadly = $(`.ecgen__deadly`).removeClass("bold").text(`Deadly: ${xp.party.deadly.toLocaleString()} XP`);
+		const $elAbsurd = $(`.ecgen__absurd`).removeClass("bold").text(`Absurd: ${xp.party.absurd.toLocaleString()} XP`);
 
 		$(`.ecgen__daily_budget`).removeClass("bold").text(`Daily Budget: ${xp.party.daily.toLocaleString()} XP`);
 
 		let difficulty = "Trivial";
-		if (xp.encounter.adjustedXp >= xp.party.deadly) {
+		if (xp.encounter.adjustedXp >= xp.party.absurd) {
+			difficulty = "Absurd";
+			$elAbsurd.addClass("bold");
+		} else if (xp.encounter.adjustedXp >= xp.party.deadly) {
 			difficulty = "Deadly";
 			$elDeadly.addClass("bold");
 		} else if (xp.encounter.adjustedXp >= xp.party.hard) {
@@ -786,7 +790,7 @@ class EncounterBuilder {
 			deadly: 0,
 			daily: 0
 		});
-		totals.yikes = totals.deadly + (totals.deadly - totals.hard);
+		totals.absurd = totals.deadly + (totals.deadly - totals.hard);
 		this._lastPlayerCount = totals.count;
 		return totals;
 	}
@@ -819,6 +823,48 @@ class EncounterBuilder {
 			},
 			true
 		);
+	}
+
+	static async doImageMouseOver (evt, ele, ixMon) {
+		const mon = monsters[ixMon];
+
+		const renderNoImages = () => {
+			const toShow = {
+				type: "entries",
+				entries: [
+					HTML_NO_IMAGES
+				],
+				data: {
+					hoverTitle: `Image \u2014 ${mon.name}`
+				}
+			};
+			Renderer.hover.doHover(evt, ele, toShow);
+		};
+
+		const renderImages = (data) => {
+			const fluff = Renderer.monster.getFluff(mon, meta, data);
+			if (fluff && fluff.images && fluff.images.length) {
+				const toShow = {
+					type: "image",
+					href: fluff.images[0].href,
+					data: {
+						hoverTitle: `Image \u2014 ${mon.name}`
+					}
+				};
+				Renderer.hover.doHover(evt, ele, toShow);
+			} else return renderNoImages();
+		};
+
+		if (ixFluff[mon.source] || mon.fluff) {
+			if (mon.fluff) {
+				return renderImages();
+			} else {
+				const data = await DataUtil.loadJSON(`${JSON_DIR}${ixFluff[mon.source]}`);
+				return renderImages(data);
+			}
+		} else {
+			return renderNoImages();
+		}
 	}
 
 	doCrChange (ele, ixMon, scaledTo) {
@@ -959,7 +1005,7 @@ class EncounterBuilder {
 
 	static getButtons (monId, isSublist) {
 		return `
-			<span class="ecgen__visible ${isSublist ? "col-1-5" : "col-1"} no-wrap" onclick="event.preventDefault()">
+			<span class="ecgen__visible ${isSublist ? "col-1-5" : "col-1"} no-wrap pl-0" onclick="event.preventDefault()">
 				<button title="Add (SHIFT for 5)" class="btn btn-success btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 1${isSublist ? `, this` : ""})">
 					<span class="glyphicon glyphicon-plus"></span>
 				</button>
@@ -1086,4 +1132,4 @@ class EncounterBuilder {
 	}
 }
 EncounterBuilder.HASH_KEY = "encounterbuilder";
-EncounterBuilder.TIERS = ["easy", "medium", "hard", "deadly", "yikes"];
+EncounterBuilder.TIERS = ["easy", "medium", "hard", "deadly", "absurd"];

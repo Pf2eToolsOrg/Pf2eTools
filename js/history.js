@@ -75,17 +75,18 @@ class History {
 	}
 
 	static _getListElem (link, getIndex) {
-		const toFind = `a[href="#${link.toLowerCase()}"]`;
 		const listWrapper = $("#listcontainer");
+		const searchFor = `#${link}`;
 		if (listWrapper.data("lists")) {
 			for (let x = 0; x < listWrapper.data("lists").length; ++x) {
 				const list = listWrapper.data("lists")[x];
 				for (let y = 0; y < list.items.length; ++y) {
 					const item = list.items[y];
-					const $elm = $(item.elm).find(toFind);
-					if ($elm[0]) {
-						if (getIndex) return {$el: $elm, x: x, y: y};
-						return $elm
+					const $elm = $(item.elm).find(`a[id]`);
+					const foundEle = $elm.get().find(ele => ele.getAttribute("href").split(HASH_PART_SEP)[0] === searchFor);
+					if (foundEle) {
+						if (getIndex) return {$el: $(foundEle), x: x, y: y};
+						return $(foundEle);
 					}
 				}
 			}

@@ -755,17 +755,49 @@
 					"entries": [
 						"Here is a quick summary of the most important NPCs in Phandalin, and their relevance to the adventure.",
 						{
-							"type": "list",
-							"items": [
-								"{@b Toblen Stonehill} Innkeeper.",
-								"{@b Elmar Barthen} Owns a trading post - owes money to the party if you are using the \"Meet Me in Phandalin\" adventure hook.",
-								"{@b Daran Edermath} Member of the Order of the Gauntlet with a quest for the party.",
-								"{@b Linene Graywind} Runs a trading post and offers a reward for retrieving her supplies.",
-								"{@b Halia Thornton} Member of the Zhentarim with a quest for the party.",
-								"{@b Qelline Alderleaf} Helpful halfling farmer whose son, Carp, knows a secret way into the Redbrands' hideout.",
-								"{@b Sister Garaele} Elf cleric of Tymora and Harper agent with a quest for the party.",
-								"{@b Harbin Wester} Townmaster of Phandalin with a quest for the party.",
-								"{@b Sildar Hallwinter} Sildar Hallwinter is a retired soldier and sellsword who hails from the city of Neverwinter. He is a loyal member of the Lords' Alliance, a political organization that unites the various free cities and towns of the North."
+							"type": "table",
+							"colStyles": [
+								"col-2 bold",
+								"col-10"
+							],
+							"isStriped": false,
+							"rows": [
+								[
+									"Toblen Stonehill",
+									"Innkeeper."
+								],
+								[
+									"Elmar Barthen",
+									"Owns a trading post - owes money to the party if you are using the \"Meet Me in Phandalin\" adventure hook."
+								],
+								[
+									"Daran Edermath",
+									"Member of the Order of the Gauntlet with a quest for the party."
+								],
+								[
+									"Linene Graywind",
+									"Runs a trading post and offers a reward for retrieving her supplies."
+								],
+								[
+									"Halia Thornton",
+									"Member of the Zhentarim with a quest for the party."
+								],
+								[
+									"Qelline Alderleaf",
+									"Helpful halfling farmer whose son, Carp, knows a secret way into the Redbrands' hideout."
+								],
+								[
+									"Sister Garaele",
+									"Elf cleric of Tymora and Harper agent with a quest for the party."
+								],
+								[
+									"Harbin Wester",
+									"Townmaster of Phandalin with a quest for the party."
+								],
+								[
+									"Sildar Hallwinter",
+									"Sildar Hallwinter is a retired soldier and sellsword who hails from the city of Neverwinter. He is a loyal member of the Lords' Alliance, a political organization that unites the various free cities and towns of the North."
+								]
 							]
 						},
 						{
@@ -1931,8 +1963,13 @@
 							"name": "Awarding Experience Points",
 							"entries": [
 								"The characters gain experience for successfully persuading Agatha to answer a question. If they do, divide 200 XP equally among the characters.",
-								"{@b Where's the Map?}",
-								"No maps are provided for Agatha's lair, Old Owl Well, or Wyvern Tor. These adventure locations contain only one or two points of interest, and you don't need maps to run the encounters effectively. If you feel the need for a map, create your own using the adventure text as a guide."
+								{
+									"type": "inset",
+									"name": "Where's the Map?",
+									"entries": [
+										"No maps are provided for Agatha's lair, Old Owl Well, or Wyvern Tor. These adventure locations contain only one or two points of interest, and you don't need maps to run the encounters effectively. If you feel the need for a map, create your own using the adventure text as a guide."
+									]
+								}
 							]
 						}
 					]

@@ -372,7 +372,7 @@ class InitiativeTrackerPlayerMessageHandler {
 		};
 		const {hpText, hpColor} = getHpContent();
 
-		const $namePart = $(`<div/>`).text(`${(rowData.n || "")}${rowData.o != null ? ` (${rowData.o})` : ""}`);
+		const $namePart = $(`<div/>`).text(`${(rowData.m || rowData.n || "")}${rowData.o != null ? ` (${rowData.o})` : ""}`);
 
 		return $$`
 			<div class="initp__r${rowData.a ? ` initp__r--active` : ""}">

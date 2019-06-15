@@ -14,6 +14,16 @@ Renderer
 	align-items: center;
 }
 
+@keyframes rd__spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
 .rd__ {
 	&hr {
 		border-color: #aaa6;
@@ -259,6 +269,25 @@ Renderer
 		&-toggle {
 			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 			float: right;
+		}
+	}
+
+	&wrp-loadbrew--ready {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+
+	&loadbrew-icon {
+		text-indent: 0;
+		margin-left: 2px;
+		transition-property: transform;
+		transition-duration: 1s;
+
+		&--active {
+			animation-name: rd__spin;
+			animation-duration: 1.2s;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
 		}
 	}
 }

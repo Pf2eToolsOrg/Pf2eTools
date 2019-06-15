@@ -74,14 +74,13 @@ function addObjects (data) {
 	for (; obI < objectsList.length; obI++) {
 		const obj = objectsList[obI];
 		if (ExcludeUtil.isExcluded(obj.name, "object", obj.source)) continue;
-		const abvSource = Parser.sourceJsonToAbv(obj.source);
 
 		tempString += `
 			<li class="row" ${FLTR_ID}="${obI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${obI}" href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
-					<span class="name col-8">${obj.name}</span>
+					<span class="name col-8 pl-0">${obj.name}</span>
 					<span class="size col-2">${Parser.sizeAbvToFull(obj.size)}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(obj.source)}" title="${Parser.sourceJsonToFull(obj.source)}">${abvSource}</span>
+					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(obj.source)} pr-0" title="${Parser.sourceJsonToFull(obj.source)}" ${BrewUtil.sourceJsonToStyle(obj.source)}>${Parser.sourceJsonToAbv(obj.source)}</span>
 					
 					<span class="uniqueid hidden">${obj.uniqueId ? obj.uniqueId : obI}</span>
 				</a>
@@ -110,8 +109,8 @@ function getSublistItem (obj, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
-				<span class="name col-9">${obj.name}</span>
-				<span class="ability col-3">${Parser.sizeAbvToFull(obj.size)}</span>
+				<span class="name col-9 pl-0">${obj.name}</span>
+				<span class="ability col-3 pr-0">${Parser.sizeAbvToFull(obj.size)}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

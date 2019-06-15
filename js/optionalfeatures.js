@@ -56,7 +56,7 @@ const levelFilter = new Filter({
 const prerequisiteFilter = new MultiFilter({header: "Prerequisite", filters: [pactFilter, patronFilter, spellFilter, levelFilter, featureFilter]});
 let filterBox;
 async function onJsonLoad (data) {
-	filterBox = await pInitFilterBox(sourceFilter, typeFilter, prerequisiteFilter);
+	filterBox = await pInitFilterBox({filters: [sourceFilter, typeFilter, prerequisiteFilter]});
 
 	list = ListUtil.search({
 		valueNames: ["name", "source", "prerequisite", "level", "type", "uniqueid"],
@@ -160,11 +160,11 @@ function addOptionalfeatures (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${ivI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${ivI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class="name col-3-2">${it.name}</span>
+					<span class="name col-3-2 pl-0">${it.name}</span>
 					<span class="type col-1-5 text-align-center type" title="${it._dFeatureType}">${it._lFeatureType}</span>
 					<span class="prerequisite col-4-8">${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
 					<span class="level col-1 text-align-center">${Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
-					<span class="source col-1-5 ${Parser.sourceJsonToColor(it.source)} text-align-center" title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
+					<span class="source col-1-5 ${Parser.sourceJsonToColor(it.source)} text-align-center pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
 					
 					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : ivI}</span>
 				</a>
@@ -220,10 +220,11 @@ function getSublistItem (it, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-				<span class="name col-4">${it.name}</span>
+				<span class="name col-4 pl-0">${it.name}</span>
 				<span class="source col-2 text-align-center type" title="${Parser.optFeatureTypeToFull(it.featureType)}">${it.featureType}</span>
 				<span class="prerequisite col-4-5">${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
-				<span class="level col-1-5">${Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
+				<span class="level col-1-5 pr-0">${Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
+				
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

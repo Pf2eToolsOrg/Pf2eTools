@@ -307,10 +307,10 @@ class BuilderUi {
 	/**
 	 *
 	 * @param name Row name.
-	 * @param options Options object.
-	 * @param options.eleType HTML element to use.
-	 * @param options.isMarked If a "group" vertical marker should be displayed between the name and the row body.
-	 * @param options.isRow If the row body should use flex row (instead of flex col).
+	 * @param [options] Options object.
+	 * @param [options.eleType] HTML element to use.
+	 * @param [options.isMarked] If a "group" vertical marker should be displayed between the name and the row body.
+	 * @param [options.isRow] If the row body should use flex row (instead of flex col).
 	 */
 	static getLabelledRowTuple (name, options) {
 		options = options || {};

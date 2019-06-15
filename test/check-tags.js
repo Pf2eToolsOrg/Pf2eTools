@@ -18,7 +18,8 @@ const MSG = {
 	StripTagTest: "",
 	AreaCheck: "",
 	LootCheck: "",
-	TableDiceTest: ""
+	TableDiceTest: "",
+	SpellClassCheck: ""
 };
 
 const TAG_TO_PAGE = {
@@ -486,6 +487,50 @@ class LootCheck {
 }
 LootCheck.file = `data/loot.json`;
 
+class SpellClassCheck {
+	static run () {
+		const classIndex = JSON.parse(fs.readFileSync(SpellClassCheck._FILE_CLASS_INDEX, "utf8"));
+		Object.values(classIndex).forEach(f => {
+			const data = JSON.parse(fs.readFileSync(`data/class/${f}`, "utf8"));
+			data.class.forEach(c => {
+				const classMeta = {name: c.name, source: c.source};
+				if (c.subclasses) {
+					classMeta.subclasses = c.subclasses.map(sc => ({name: sc.shortName, source: sc.source}));
+				}
+				SpellClassCheck._CLASS_LIST.push(classMeta);
+			});
+		});
+
+		const spellIndex = JSON.parse(fs.readFileSync(SpellClassCheck._FILE_SPELL_INDEX, "utf8"));
+		Object.values(spellIndex).forEach(f => {
+			const data = JSON.parse(fs.readFileSync(`data/spells/${f}`, "utf8"));
+			data.spell.filter(sp => sp.classes).forEach(sp => {
+				if (sp.classes.fromClassList) {
+					const invalidClasses = sp.classes.fromClassList
+						.filter(c => !SpellClassCheck._IGNORED_CLASSES.some(it => it.name === c.name && it.source === c.source))
+						.filter(c => !SpellClassCheck._CLASS_LIST.some(it => it.name === c.name && it.source === c.source));
+					invalidClasses.forEach(ic => MSG.SpellClassCheck += `Invalid class: ${JSON.stringify(ic)} in spell "${sp.name}" in file "${f}"\n`);
+				}
+
+				if (sp.classes.fromSubclass) {
+					sp.classes.fromSubclass.forEach(sc => {
+						const clazz = SpellClassCheck._CLASS_LIST.find(it => it.name === sc.class.name && it.source === sc.class.source);
+						if (!clazz) return MSG.SpellClassCheck += `Invalid subclass class: ${JSON.stringify(sc)} in spell "${sp.name}" in file "${f}"\n`;
+						if (!clazz.subclasses) return MSG.SpellClassCheck += `Subclass class has no known subclasses: ${JSON.stringify(sc)} in spell "${sp.name}" in file "${f}"\n`;
+
+						const isValidSubclass = clazz.subclasses.some(it => it.name === sc.subclass.name && it.source === sc.subclass.source);
+						if (!isValidSubclass) return MSG.SpellClassCheck += `Subclass (shortName) does not exist: ${JSON.stringify(sc)} in spell "${sp.name}" in file "${f}"\n`;
+					});
+				}
+			});
+		});
+	}
+}
+SpellClassCheck._IGNORED_CLASSES = [{name: "Psion", source: "Stream"}];
+SpellClassCheck._FILE_CLASS_INDEX = `data/class/index.json`;
+SpellClassCheck._FILE_SPELL_INDEX = `data/spells/index.json`;
+SpellClassCheck._CLASS_LIST = [];
+
 async function main () {
 	const primaryIndex = od.Omnidexer.decompressIndex(await utS.UtilSearchIndex.pGetIndex(false, true));
 	primaryIndex.forEach(it => ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${it.u.toLowerCase().trim()}`));
@@ -508,6 +553,7 @@ async function main () {
 	AttachedSpellAndGroupItemsCheck.run();
 	AreaCheck.run();
 	LootCheck.run();
+	SpellClassCheck.run();
 
 	let outMessage = "";
 	Object.entries(MSG).forEach(([k, v]) => {

@@ -4,17 +4,6 @@ const JSON_URL = "data/psionics.json";
 
 const ID_PSIONICS_LIST = "psionicsList";
 
-const JSON_ITEM_NAME = "name";
-const JSON_ITEM_SOURCE = "source";
-const JSON_ITEM_TYPE = "type";
-const JSON_ITEM_MODES = "modes";
-const JSON_ITEM_SUBMODES = "submodes";
-const CLS_PSIONICS = "psionics";
-const CLS_COL1 = "col-6";
-const CLS_COL2 = "col-2";
-const CLS_COL3 = "col-2";
-const CLS_COL4 = "col-2";
-const CLS_HIDDEN = "hidden";
 const CLS_LI_NONE = "list-entry-none";
 
 const LIST_NAME = "name";
@@ -24,13 +13,13 @@ const LIST_ORDER = "order";
 const LIST_MODE_LIST = "mode-list";
 
 function getHiddenModeList (psionic) {
-	const modeList = psionic[JSON_ITEM_MODES];
+	const modeList = psionic.modes;
 	if (modeList === undefined) return "";
 	const outArray = [];
 	for (let i = 0; i < modeList.length; ++i) {
 		outArray.push(`"${modeList[i].name}"`);
-		if (modeList[i][JSON_ITEM_SUBMODES] !== undefined) {
-			const subModes = modeList[i][JSON_ITEM_SUBMODES];
+		if (modeList[i].submodes != null) {
+			const subModes = modeList[i].submodes;
 			for (let j = 0; j < subModes.length; ++j) {
 				outArray.push(`"${subModes[j].name}"`)
 			}
@@ -58,11 +47,11 @@ async function onJsonLoad (data) {
 		items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", Parser.PSI_ORDER_NONE]
 	});
 
-	filterBox = await pInitFilterBox(sourceFilter, typeFilter, orderFilter);
+	filterBox = await pInitFilterBox({filters: [sourceFilter, typeFilter, orderFilter]});
 
 	list = ListUtil.search({
 		valueNames: [LIST_NAME, LIST_SOURCE, LIST_TYPE, LIST_ORDER, LIST_MODE_LIST, "uniqueid"],
-		listClass: CLS_PSIONICS,
+		listClass: "psionics",
 		sortFunction: SortUtil.listSort
 	});
 
@@ -137,7 +126,7 @@ async function onJsonLoad (data) {
 				psionicList,
 				{
 					name: {name: "Name", transform: true},
-					source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}">${Parser.sourceJsonToAbv(it)}</span>`},
+					source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>`},
 					_text: {name: "Text", transform: (it) => it.type === "T" ? Renderer.psionic.getTalentText(it, renderer) : Renderer.psionic.getDisciplineText(it, renderer), flex: 3}
 				},
 				{generator: ListUtil.basicFilterGenerator},
@@ -171,21 +160,21 @@ function addPsionics (data) {
 		p._fOrder = Parser.psiOrderToFull(p.order);
 
 		tempString += `
-			<li class='row' ${FLTR_ID}="${psI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id='${psI}' href='#${UrlUtil.autoEncodeHash(p)}' title="${p[JSON_ITEM_NAME]}">
-					<span class='${LIST_NAME} ${CLS_COL1}'>${p[JSON_ITEM_NAME]}</span>
-					<span class='${LIST_TYPE} ${CLS_COL3}'>${Parser.psiTypeToFull(p[JSON_ITEM_TYPE])}</span>
-					<span class='${LIST_ORDER} ${CLS_COL4} ${p._fOrder === STR_NONE ? CLS_LI_NONE : ""}'>${p._fOrder}</span>
-					<span class='${LIST_SOURCE} ${CLS_COL2} text-align-center' title="${Parser.sourceJsonToFull(p[JSON_ITEM_SOURCE])}">${Parser.sourceJsonToAbv(p[JSON_ITEM_SOURCE])}</span>
+			<li class="row" ${FLTR_ID}="${psI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
+				<a id="${psI}" href="#${UrlUtil.autoEncodeHash(p)}" title="${p.name}">
+					<span class="${LIST_NAME} col-6">${p.name}</span>
+					<span class="${LIST_TYPE} col-2">${Parser.psiTypeToFull(p.type)}</span>
+					<span class="${LIST_ORDER} col-2 ${p._fOrder === STR_NONE ? CLS_LI_NONE : ""}">${p._fOrder}</span>
+					<span class="${LIST_SOURCE} col-2 text-align-center" title="${Parser.sourceJsonToFull(p.source)}" ${BrewUtil.sourceJsonToStyle(p.source)}>${Parser.sourceJsonToAbv(p.source)}</span>
 					
-					<span class='${LIST_MODE_LIST} ${CLS_HIDDEN}'>${getHiddenModeList(p)}</span>
+					<span class="${LIST_MODE_LIST} hidden">${getHiddenModeList(p)}</span>
 					<span class="uniqueid hidden">${p.uniqueId ? p.uniqueId : psI}</span>
 				</a>
 			</li>
 		`;
 
 		// populate filters
-		sourceFilter.addItem(p[JSON_ITEM_SOURCE]);
+		sourceFilter.addItem(p.source);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$(`#${ID_PSIONICS_LIST}`).append(tempString);
@@ -226,9 +215,9 @@ function getSublistItem (p, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(p)}" title="${p.name}">
-				<span class="name col-6">${p.name}</span>
+				<span class="name col-6 pl-0">${p.name}</span>
 				<span class="type col-3">${Parser.psiTypeToFull(p.type)}</span>
-				<span class="order col-3 ${p._fOrder === STR_NONE ? CLS_LI_NONE : ""}">${p._fOrder}</span>
+				<span class="order col-3 ${p._fOrder === STR_NONE ? CLS_LI_NONE : ""} pr-0">${p._fOrder}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
@@ -247,7 +236,7 @@ function loadhash (jsonIndex) {
 		${Renderer.utils.getBorderTr()}
 		${Renderer.utils.getNameTr(psi)}
 		<tr>
-			<td colspan="6"><i>${psi.type === "T" ? Parser.psiTypeToFull(psi[JSON_ITEM_TYPE]) : `${psi._fOrder} ${Parser.psiTypeToFull(psi[JSON_ITEM_TYPE])}`}</i><span id="order"></span> <span id="type"></span></td>
+			<td colspan="6"><i>${psi.type === "T" ? Parser.psiTypeToFull(psi.type) : `${psi._fOrder} ${Parser.psiTypeToFull(psi.type)}`}</i><span id="order"></span> <span id="type"></span></td>
 		</tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		<tr class="text"><td colspan="6" id="text">${psi.type === "T" ? Renderer.psionic.getTalentText(psi, renderer) : Renderer.psionic.getDisciplineText(psi, renderer)}</td></tr>

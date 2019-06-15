@@ -51,6 +51,8 @@ const F_RNG_SELF = "Self";
 const F_RNG_TOUCH = "Touch";
 const F_RNG_SPECIAL = "Special";
 
+const SUBCLASS_LOOKUP = {};
+
 function getFltrSpellLevelStr (level) {
 	return level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + " level";
 }
@@ -241,6 +243,35 @@ function getFilterAbilityCheck (ability) {
 }
 
 function handleBrew (homebrew) {
+	if (homebrew.class) {
+		homebrew.class.filter(it => it.subclasses).forEach(c => {
+			(SUBCLASS_LOOKUP[c.source] =
+				SUBCLASS_LOOKUP[c.source] || {})[c.name] =
+				SUBCLASS_LOOKUP[c.source][c.name] || {};
+
+			const target = SUBCLASS_LOOKUP[c.source][c.name];
+			c.subclasses.forEach(sc => {
+				(target[sc.source] =
+					target[sc.source] || {})[sc.shortName || sc.name] =
+					target[sc.source][sc.shortName || sc.name] || sc.name
+			});
+		})
+	}
+
+	if (homebrew.subclass) {
+		homebrew.subclass.forEach(sc => {
+			const clSrc = sc.classSource || SRC_PHB;
+			(SUBCLASS_LOOKUP[clSrc] =
+				SUBCLASS_LOOKUP[clSrc] || {})[sc.class] =
+				SUBCLASS_LOOKUP[clSrc][sc.class] || {};
+
+			const target = SUBCLASS_LOOKUP[clSrc][sc.class];
+			(target[sc.source] =
+				target[sc.source] || {})[sc.shortName || sc.name] =
+				target[sc.source][sc.shortName || sc.name] || sc.name
+		})
+	}
+
 	addSpells(homebrew.spell);
 	return Promise.resolve();
 }
@@ -263,7 +294,7 @@ function pPostLoad () {
 					spellList,
 					{
 						name: {name: "Name", transform: true},
-						source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}">${Parser.sourceJsonToAbv(it)}</span>`},
+						source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>`},
 						level: {name: "Level", transform: (it) => Parser.spLevelToFull(it)},
 						time: {name: "Casting Time", transform: (it) => getTblTimeStr(it[0])},
 						_school: {name: "School", transform: (sp) => `<span class="school_${sp.school}">${Parser.spSchoolAndSubschoolsAbvsToFull(sp.school, sp.subschools)}</span>`},
@@ -283,26 +314,33 @@ function pPostLoad () {
 }
 
 window.onload = async function load () {
-	filterBox = await pInitFilterBox(
-		sourceFilter,
-		levelFilter,
-		classAndSubclassFilter,
-		raceFilter,
-		backgroundFilter,
-		metaFilter,
-		schoolFilter,
-		subSchoolFilter,
-		damageFilter,
-		conditionFilter,
-		spellAttackFilter,
-		saveFilter,
-		checkFilter,
-		timeFilter,
-		durationFilter,
-		rangeFilter,
-		areaTypeFilter
-	);
-	await ExcludeUtil.pInitialise();
+	let subclassLookup;
+	[filterBox, subclassLookup] = await Promise.all([
+		pInitFilterBox({
+			filters: [
+				sourceFilter,
+				levelFilter,
+				classAndSubclassFilter,
+				raceFilter,
+				backgroundFilter,
+				metaFilter,
+				schoolFilter,
+				subSchoolFilter,
+				damageFilter,
+				conditionFilter,
+				spellAttackFilter,
+				saveFilter,
+				checkFilter,
+				timeFilter,
+				durationFilter,
+				rangeFilter,
+				areaTypeFilter
+			]
+		}),
+		DataUtil.loadJSON(`data/generated/gendata-subclass-lookup.json`),
+		ExcludeUtil.pInitialise()
+	]);
+	Object.assign(SUBCLASS_LOOKUP, subclassLookup);
 	SortUtil.initHandleFilterButtonClicks();
 	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addSpells, pPostLoad)
 		.then(() => {
@@ -544,12 +582,13 @@ function getSublistItem (spell, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}">
-				<span class="name col-3-2">${spell.name}</span>
+				<span class="name col-3-2 pl-0">${spell.name}</span>
 				<span class="level col-1-5">${Parser.spLevelToFull(spell.level)}</span>
 				<span class="time col-1-8">${getTblTimeStr(spell.time[0])}</span>
 				<span class="school col-1-6 school_${spell.school}" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}">${Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools)}</span>
 				<span class="concentration concentration--sublist col-0-7" title="Concentration">${spell._isConc ? "×" : ""}</span>
-				<span class="range col-3-2">${Parser.spRangeToFull(spell.range)}</span>
+				<span class="range col-3-2 pr-0">${Parser.spRangeToFull(spell.range)}</span>
+				
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
@@ -587,6 +626,7 @@ function handleFilterChange () {
 let spellList = [];
 let spI = 0;
 
+const _addedHashes = new Set();
 function addSpells (data) {
 	if (!data || !data.length) return;
 
@@ -596,6 +636,9 @@ function addSpells (data) {
 	let tempString = "";
 	for (; spI < spellList.length; spI++) {
 		const spell = spellList[spI];
+		const spHash = UrlUtil.autoEncodeHash(spell);
+		if (!spell.uniqueId && _addedHashes.has(spHash)) continue;
+		_addedHashes.add(spHash);
 		if (ExcludeUtil.isExcluded(spell.name, "spell", spell.source)) continue;
 
 		let levelText = Parser.spLevelToFull(spell.level);
@@ -697,7 +740,7 @@ function addSpells (data) {
 		spell._normalisedRange = getNormalisedRange(spell.range);
 
 		// used for filtering
-		spell._fSources = ListUtil.getCompleteSources(spell);
+		spell._fSources = ListUtil.getCompleteFilterSources(spell);
 		spell._fMeta = getMetaFilterObj(spell);
 		spell._fClasses = spell.classes.fromClassList ? spell.classes.fromClassList.map(c => getClassFilterStr(c)) : [];
 		spell._fSubclasses = spell.classes.fromSubclass
@@ -722,14 +765,14 @@ function addSpells (data) {
 		// populate table
 		tempString += `
 			<li class="row" ${FLTR_ID}="${spI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${spI}" href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}">
-					<span class="name col-2-9">${spell.name}</span>
+				<a id="${spI}" href="#${spHash}" title="${spell.name}">
+					<span class="name col-2-9 pl-0">${spell.name}</span>
 					<span class="level col-1-5">${levelText}</span>
 					<span class="time col-1-7">${getTblTimeStr(spell.time[0])}</span>
 					<span class="school col-1-2 school_${spell.school}" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}">${Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools)}</span>
 					<span class="concentration col-0-6" title="Concentration">${spell._isConc ? "×" : ""}</span>
 					<span class="range col-2-4">${Parser.spRangeToFull(spell.range)}</span>
-					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}">${Parser.sourceJsonToAbv(spell.source)}</span>
+					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(spell.source)} pr-0" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${Parser.sourceJsonToAbv(spell.source)}</span>
 
 					<span class="classes" style="display: none">${Parser.spClassesToFull(spell.classes, true)}</span>
 					<span class="uniqueid hidden">${spell.uniqueId ? spell.uniqueId : spI}</span>
@@ -848,7 +891,7 @@ function loadhash (id) {
 	renderer.setFirstSection(true);
 	const $pageContent = $("#pagecontent").empty();
 	const spell = spellList[id];
-	$pageContent.append(Renderer.spell.getRenderedString(spell, renderer));
+	$pageContent.append(Renderer.spell.getRenderedString(spell, renderer, SUBCLASS_LOOKUP));
 	loadsub([]);
 
 	ListUtil.updateSelected();

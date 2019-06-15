@@ -33,6 +33,16 @@
 			display: block;
 		}
 
+		.cls__btn-toggle-sidebar {
+			cursor: pointer;
+			font-size: initial;
+			color: black;
+		}
+
+		.night-mode .cls__btn-toggle-sidebar {
+			color: #bbb;
+		}
+
 		table#stats > tbody > tr > td {
 			padding: 0 0.8em;
 		}
@@ -98,13 +108,14 @@
 			margin-top: 15px;
 			max-height: calc(100vh - 30px);
 			padding-right: 9px;
+			padding-left: 9px;
 			font-family: 'Andada', serif;
 			font-variant: small-caps;
 			font-weight: 500;
 		}
 
 		#sticky-nav:hover {
-			overflow-y: auto;
+			overflow-y: scroll;
 			padding-right: 0;
 		}
 
@@ -116,8 +127,8 @@
 			color: #bbbbbb40;
 		}
 
-		#sticky-nav .nav-head[data-state="1"] .nav-outline:hover::after {
-			content: " (Hide)";
+		.nav-head[data-state="0"] .pg-cls__btn-toggle-outline::after {
+			content: " [+]";
 			font-weight: initial;
 		}
 
@@ -125,8 +136,8 @@
 			color: inherit;
 		}
 
-		#sticky-nav .nav-head[data-state="0"] .nav-outline:hover::after {
-			content: " (Show)";
+		.nav-head[data-state="1"] .pg-cls__btn-toggle-outline::after {
+			content: "[\2013]";
 			font-weight: initial;
 		}
 
@@ -322,14 +333,14 @@
 					<div class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
 					<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
 				</div>
-				<button class="btn btn-default" id="reset">Reset</button>
+				<button class="btn btn-default" id="reset"><span class="glyphicon glyphicon-refresh"></span></button>
 			</div>
 			<div id="filtertools" class="sortlabel lst__form-bottom">
 				<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
 				<button class="col-4 sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
 			</div>
 
-			<ul class="list classes">
+			<ul class="list list--stats classes">
 
 			</ul>
 			<p class="text-align-center">
@@ -470,8 +481,8 @@
 				<tr><th class="border" colspan="6"></th></tr>
 				<tr><th id="nameSummary" colspan="6">Name</th></tr>
 				<tr><th id="author" colspan="6">Author</th></tr>
-				<tr id="statsprof_divider"><td class="divider" colspan="6"><div style="margin: 0;"></div></td></tr>
-				<tr>
+				<tr class="cls__sidebar-visible" id="statsprof_divider"><td class="divider" colspan="6"><div style="margin: 0;"></div></td></tr>
+				<tr class="cls__sidebar-visible">
 					<td id="hp" colspan="6">
 						<h5>Hit Points</h5>
 						<div id="hitdice">
@@ -485,7 +496,7 @@
 						</div>
 					</td>
 				</tr>
-				<tr>
+				<tr class="cls__sidebar-visible">
 					<td id="prof" colspan="6">
 						<h5>Proficiencies</h5>
 						<div id="armor">
@@ -505,13 +516,13 @@
 						</div>
 					</td>
 				</tr>
-				<tr>
+				<tr class="cls__sidebar-visible">
 					<td id="equipment" colspan="6">
 						<h5>Starting Equipment</h5>
 						<div></div>
 					</td>
 				</tr>
-				<tr>
+				<tr class="cls__sidebar-visible">
 					<td id="multiclassing" colspan="6">
 						<h5>Multiclassing</h5>
 						<div id="multiclassing_prereqs"></div>
@@ -534,7 +545,7 @@
 			</table>
 
 			<div id="sticky-nav">
-				<div class="nav-head" data-state="1"><div class="nav-outline">Outline</div><hr></div>
+				<div class="nav-head" data-state="1"><div class="nav-outline split"><div>Outline</div><div class="pg-cls__btn-toggle-outline"></div></div><hr></div>
 				<div class="nav-body"><!-- populate with JS --></div>
 			</div>
 		</div>

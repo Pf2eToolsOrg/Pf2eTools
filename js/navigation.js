@@ -16,24 +16,34 @@ class NavBar {
 	static initElements () {
 		const navBar = document.getElementById("navbar");
 
-		addLi(navBar, "5etools.html", "Home");
+		// create mobile "Menu" button
+		const btnShowHide = document.createElement("button");
+		btnShowHide.className = "btn btn-default page__btn-toggle-nav";
+		btnShowHide.innerHTML = "Menu";
+		btnShowHide.onclick = () => {
+			$(btnShowHide).toggleClass("active");
+			$(`.page__nav-hidden-mobile`).toggleClass("block", $(btnShowHide).hasClass("active"));
+		};
+		document.getElementById("navigation").prepend(btnShowHide);
+
+		addLi(navBar, "5etools.html", "Home", {isRoot: true});
 
 		const ulRules = addDropdown(navBar, "Rules");
 		addLi(ulRules, "quickreference.html", "Quick Reference");
 		addLi(ulRules, "variantrules.html", "Variant & Optional Rules/Misc");
 		addLi(ulRules, "tables.html", "Tables");
 		addDivider(ulRules);
-		addLi(ulRules, "book.html", "Dungeon Master's Guide", false, "DMG");
-		addLi(ulRules, "book.html", "Monster Manual", false, "MM");
-		addLi(ulRules, "book.html", "Player's Handbook", false, "PHB");
+		addLi(ulRules, "book.html", "Dungeon Master's Guide", {aHash: "DMG"});
+		addLi(ulRules, "book.html", "Monster Manual", {aHash: "MM"});
+		addLi(ulRules, "book.html", "Player's Handbook", {aHash: "PHB"});
 		addDivider(ulRules);
-		addLi(ulRules, "book.html", "Guildmasters' Guide to Ravnica", false, "GGR");
-		addLi(ulRules, "book.html", "Mordenkainen's Tome of Foes", false, "MTF");
-		addLi(ulRules, "book.html", "Sword Coast Adventurer's Guide", false, "SCAG");
-		addLi(ulRules, "book.html", "Volo's Guide to Monsters", false, "VGM");
-		addLi(ulRules, "book.html", "Xanathar's Guide to Everything", false, "XGE");
+		addLi(ulRules, "book.html", "Guildmasters' Guide to Ravnica", {aHash: "GGR"});
+		addLi(ulRules, "book.html", "Mordenkainen's Tome of Foes", {aHash: "MTF"});
+		addLi(ulRules, "book.html", "Sword Coast Adventurer's Guide", {aHash: "SCAG"});
+		addLi(ulRules, "book.html", "Volo's Guide to Monsters", {aHash: "VGM"});
+		addLi(ulRules, "book.html", "Xanathar's Guide to Everything", {aHash: "XGE"});
 		addDivider(ulRules);
-		addLi(ulRules, "book.html", "Adventurers League", false, "AL");
+		addLi(ulRules, "book.html", "Adventurers League", {aHash: "AL"});
 		addDivider(ulRules);
 		addLi(ulRules, "books.html", "View All/Homebrew");
 
@@ -52,27 +62,27 @@ class NavBar {
 		addLi(ulDms, "dmscreen.html", "DM Screen");
 		addDivider(ulDms);
 		const ulAdventures = addDropdown(ulDms, "Adventures", true);
-		addLi(ulAdventures, "adventure.html", "Lost Mines of Phandelver", true, "LMoP");
-		addLi(ulAdventures, "adventure.html", "Hoard of the Dragon Queen", true, "HotDQ");
-		addLi(ulAdventures, "adventure.html", "Rise of Tiamat", true, "RoT");
-		addLi(ulAdventures, "adventure.html", "Princes of the Apocalypse", true, "PotA");
-		addLi(ulAdventures, "adventure.html", "Out of the Abyss", true, "OotA");
-		addLi(ulAdventures, "adventure.html", "Curse of Strahd", true, "CoS");
-		addLi(ulAdventures, "adventure.html", "Storm King's Thunder", true, "SKT");
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Sunless Citadel", true, "TftYP-TSC");
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Forge of Fury", true, "TftYP-TFoF");
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Hidden Shrine of Tamoachan", true, "TftYP-THSoT");
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: White Plume Mountain", true, "TftYP-WPM");
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Dead in Thay", true, "TftYP-DiT");
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Against the Giants", true, "TftYP-AtG");
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Tomb of Horrors", true, "TftYP-ToH");
-		addLi(ulAdventures, "adventure.html", "Tomb of Annihilation", true, "ToA");
-		addLi(ulAdventures, "adventure.html", "The Tortle Package", true, "TTP");
-		addLi(ulAdventures, "adventure.html", "Waterdeep: Dragon Heist", true, "WDH");
-		addLi(ulAdventures, "adventure.html", "Lost Laboratory of Kwalish", true, "LLK");
-		addLi(ulAdventures, "adventure.html", "Waterdeep: Dungeon of the Mad Mage", true, "WDMM");
-		addLi(ulAdventures, "adventure.html", "Krenko's Way", true, "KKW");
-		addLi(ulAdventures, "adventure.html", "Ghosts of Saltmarsh", true, "GoS");
+		addLi(ulAdventures, "adventure.html", "Lost Mines of Phandelver", {isSide: true, aHash: "LMoP"});
+		addLi(ulAdventures, "adventure.html", "Hoard of the Dragon Queen", {isSide: true, aHash: "HotDQ"});
+		addLi(ulAdventures, "adventure.html", "Rise of Tiamat", {isSide: true, aHash: "RoT"});
+		addLi(ulAdventures, "adventure.html", "Princes of the Apocalypse", {isSide: true, aHash: "PotA"});
+		addLi(ulAdventures, "adventure.html", "Out of the Abyss", {isSide: true, aHash: "OotA"});
+		addLi(ulAdventures, "adventure.html", "Curse of Strahd", {isSide: true, aHash: "CoS"});
+		addLi(ulAdventures, "adventure.html", "Storm King's Thunder", {isSide: true, aHash: "SKT"});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Sunless Citadel", {isSide: true, aHash: "TftYP-TSC"});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Forge of Fury", {isSide: true, aHash: "TftYP-TFoF"});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Hidden Shrine of Tamoachan", {isSide: true, aHash: "TftYP-THSoT"});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: White Plume Mountain", {isSide: true, aHash: "TftYP-WPM"});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Dead in Thay", {isSide: true, aHash: "TftYP-DiT"});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Against the Giants", {isSide: true, aHash: "TftYP-AtG"});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Tomb of Horrors", {isSide: true, aHash: "TftYP-ToH"});
+		addLi(ulAdventures, "adventure.html", "Tomb of Annihilation", {isSide: true, aHash: "ToA"});
+		addLi(ulAdventures, "adventure.html", "The Tortle Package", {isSide: true, aHash: "TTP"});
+		addLi(ulAdventures, "adventure.html", "Waterdeep: Dragon Heist", {isSide: true, aHash: "WDH"});
+		addLi(ulAdventures, "adventure.html", "Lost Laboratory of Kwalish", {isSide: true, aHash: "LLK"});
+		addLi(ulAdventures, "adventure.html", "Waterdeep: Dungeon of the Mad Mage", {isSide: true, aHash: "WDMM"});
+		addLi(ulAdventures, "adventure.html", "Krenko's Way", {isSide: true, aHash: "KKW"});
+		addLi(ulAdventures, "adventure.html", "Ghosts of Saltmarsh", {isSide: true, aHash: "GoS"});
 		addDivider(ulAdventures);
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
 		addLi(ulDms, "cultsboons.html", "Cults & Demonic Boons");
@@ -106,7 +116,7 @@ class NavBar {
 		addLi(ulUtils, "roll20.html", "Roll20 Script Help");
 		addLi(ulUtils, "makeshaped.html", "Roll20 Shaped Sheet JS Builder");
 
-		addLi(navBar, "donate.html", "Donate");
+		addLi(navBar, "donate.html", "Donate", {isRoot: true});
 
 		const ulSettings = addDropdown(navBar, "Settings");
 		addButton(
@@ -155,17 +165,21 @@ class NavBar {
 		 * @param appendTo - Element to append this link to.
 		 * @param aHref - Where does this link to.
 		 * @param aText - What text does this link have.
-		 * @param [isSide] - True if this item
-		 * @param [aHash] - Optional hash to be appended to the base href
+		 * @param [opts] - Options object.
+		 * @param [opts.isSide] - True if this item is part of a side menu.
+		 * @param [opts.aHash] - Optional hash to be appended to the base href
+		 * @param [opts.isRoot] - If the item is a root navbar element.
 		 */
-		function addLi (appendTo, aHref, aText, isSide, aHash) {
-			const hashPart = aHash ? `#${aHash}`.toLowerCase() : "";
+		function addLi (appendTo, aHref, aText, opts) {
+			opts = opts || {};
+			const hashPart = opts.aHash ? `#${opts.aHash}`.toLowerCase() : "";
 
 			const li = document.createElement("li");
 			li.setAttribute("role", "presentation");
 			li.setAttribute("id", aText.toLowerCase().replace(/\s+/g, ""));
 			li.setAttribute("data-page", `${aHref}${hashPart}`);
-			if (isSide) {
+			if (opts.isRoot) li.classList.add("page__nav-hidden-mobile");
+			if (opts.isSide) {
 				li.onmouseenter = function () { NavBar.handleSideItemMouseEnter(this) }
 			} else {
 				li.onmouseenter = function () { NavBar.handleItemMouseEnter(this) };
@@ -197,7 +211,7 @@ class NavBar {
 		function addDropdown (appendTo, text, isSide = false) {
 			const li = document.createElement("li");
 			li.setAttribute("role", "presentation");
-			li.className = "dropdown dropdown--navbar";
+			li.className = "dropdown dropdown--navbar page__nav-hidden-mobile";
 			if (isSide) {
 				li.onmouseenter = function () { NavBar.handleSideItemMouseEnter(this); };
 			} else {

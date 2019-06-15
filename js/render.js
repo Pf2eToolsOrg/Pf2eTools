@@ -639,13 +639,12 @@ function Renderer () {
 			for (let lvl = 0; lvl < 10; ++lvl) {
 				const spells = entry.spells[lvl];
 				if (spells) {
-					const lower = spells.lower;
 					let levelCantrip = `${Parser.spLevelToFull(lvl)}${(lvl === 0 ? "s" : " level")}`;
 					let slotsAtWill = ` (at will)`;
 					const slots = spells.slots;
 					if (slots >= 0) slotsAtWill = slots > 0 ? ` (${slots} slot${slots > 1 ? "s" : ""})` : ``;
-					if (lower) {
-						levelCantrip = `${Parser.spLevelToFull(lower)}-${levelCantrip}`;
+					if (spells.lower && spells.lower !== lvl) {
+						levelCantrip = `${Parser.spLevelToFull(spells.lower)}-${levelCantrip}`;
 						if (slots >= 0) slotsAtWill = slots > 0 ? ` (${slots} ${Parser.spLevelToFull(lvl)}-level slot${slots > 1 ? "s" : ""})` : ``;
 					}
 					tempList.items.push({type: "itemSpell", name: `${levelCantrip} ${slotsAtWill}:`, entry: spells.spells.join(", ")})
@@ -1049,7 +1048,11 @@ function Renderer () {
 											].filter(Boolean).join(HASH_SUB_LIST_SEP);
 										}
 									} else {
-										value = fvals.split(";").map(s => s.trim()).filter(s => s).map(s => `${UrlUtil.encodeForHash(s)}=1`).join(HASH_SUB_LIST_SEP);
+										value = fvals.split(";").map(s => s.trim()).filter(s => s).map(s => {
+											const spl = s.split("!");
+											if (spl.length === 2) return `${UrlUtil.encodeForHash(spl[1])}=2`
+											return `${UrlUtil.encodeForHash(s)}=1`
+										}).join(HASH_SUB_LIST_SEP);
 									}
 
 									const out = {
@@ -1213,6 +1216,14 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 
+						break;
+					}
+
+					// HOMEBREW LOADING ////////////////////////////////////////////////////////////////////////////////
+					case "@loader": {
+						const [name, file] = text.split("|");
+						const path = /^.*?:\/\//.test(file) ? file : `https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/${file}`;
+						textStack[0] += `<span onclick="BrewUtil.handleLoadbrewClick(this, '${path.escapeQuotes()}', '${name.escapeQuotes()}')" class="rd__wrp-loadbrew--ready" title="Click to install homebrew">${name}<span class="glyphicon glyphicon-download-alt rd__loadbrew-icon rd__loadbrew-icon"/></span>`;
 						break;
 					}
 
@@ -1783,17 +1794,29 @@ Renderer.utils = {
 		return it.sourceSub ? ` \u2014 ${it.sourceSub}` : "";
 	},
 
-	getNameTr: (it, addPageNum, prefix, suffix) => {
+	/**
+	 * @param it Entity to render the name row for.
+	 * @param [opts] Options object.
+	 * @param [opts.isAddPageNum] True if the name row should include the page number.
+	 * @param [opts.prefix] Prefix to display before the name.
+	 * @param [opts.suffix] Suffix to display after the name.
+	 * @param [opts.pronouncePart] Suffix to display after the name.
+	 */
+	getNameTr: (it, opts) => {
+		opts = opts || {};
 		return `<tr>
-					<th class="rnd-name name" colspan="6">
-						<div class="name-inner">
-							<span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this, '${it.source.escapeQuotes()}')">${prefix || ""}${it._displayName || it.name}${suffix || ""}</span>
-							<span class="stats-source source${it.source}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}">
-								${Parser.sourceJsonToAbv(it.source)}${addPageNum && it.page > 0 ? ` p${it.page}` : ""}
-							</span>
-						</div>
-					</th>
-				</tr>`;
+			<th class="rnd-name name" colspan="6">
+				<div class="name-inner">
+					<div class="flex-v-center">
+						<span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this, '${it.source.escapeQuotes()}')">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>
+						${opts.pronouncePart || ""}
+					</div>
+					<span class="stats-source ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>
+						${Parser.sourceJsonToAbv(it.source)}${opts.isAddPageNum && it.page > 0 ? ` p${it.page}` : ""}
+					</span>
+				</div>
+			</th>
+		</tr>`;
 	},
 
 	async _pHandleNameClick (ele) {
@@ -2135,7 +2158,7 @@ Renderer.feat = {
 		const prerequisite = Renderer.feat.getPrerequisiteText(feat.prerequisite);
 		Renderer.feat.mergeAbilityIncrease(feat);
 		renderStack.push(`
-			${Renderer.utils.getNameTr(feat, true)}
+			${Renderer.utils.getNameTr(feat, {isAddPageNum: true})}
 			<tr class='text'><td colspan='6' class='text'>
 			${prerequisite ? `<p><i>Prerequisite: ${prerequisite}</i></p>` : ""}
 		`);
@@ -2157,7 +2180,7 @@ Renderer.spell = {
 		const renderStack = [];
 
 		renderStack.push(`
-			${Renderer.utils.getNameTr(spell, true)}
+			${Renderer.utils.getNameTr(spell, {isAddPageNum: true})}
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
@@ -2197,7 +2220,7 @@ Renderer.spell = {
 		return renderStack.join("");
 	},
 
-	getRenderedString: (spell, renderer) => {
+	getRenderedString: (spell, renderer, subclassLookup) => {
 		const renderStack = [];
 
 		renderStack.push(`
@@ -2223,7 +2246,7 @@ Renderer.spell = {
 		renderStack.push(`<tr class="text"><td class="classes" colspan="6"><span class="bold">Classes: </span>${Parser.spMainClassesToFull(spell.classes)}</td></tr>`);
 
 		if (spell.classes.fromSubclass) {
-			const currentAndLegacy = Parser.spSubclassesToCurrentAndLegacyFull(spell.classes);
+			const currentAndLegacy = Parser.spSubclassesToCurrentAndLegacyFull(spell.classes, subclassLookup);
 			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Subclasses: </span>${currentAndLegacy[0]}</td></tr>`);
 			if (currentAndLegacy[1]) {
 				renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted"><span class="bold">Subclasses (legacy): </span>${currentAndLegacy[1]}</section></td></tr>`);
@@ -2259,7 +2282,7 @@ Renderer.condition = {
 		const renderStack = [];
 
 		renderStack.push(`
-			${Renderer.utils.getNameTr(cond, true)}
+			${Renderer.utils.getNameTr(cond, {isAddPageNum: true})}
 			<tr class="text"><td colspan="6">
 		`);
 		renderer.recursiveRender({entries: cond.entries}, renderStack);
@@ -2272,7 +2295,7 @@ Renderer.condition = {
 Renderer.background = {
 	getCompactRenderedString (bg) {
 		return `
-		${Renderer.utils.getNameTr(bg, true)}
+		${Renderer.utils.getNameTr(bg, {isAddPageNum: true})}
 		<tr class="text"><td colspan="6">
 		${Renderer.get().render({type: "entries", entries: bg.entries})}
 		</td></tr>
@@ -2354,18 +2377,19 @@ Renderer.optionalfeature = {
 				case "prereqPatron":
 					return listMode ? `${Parser.prereqPatronToShort(it.entry)} patron` : `${it.entry} patron`;
 				case "prereqSpell":
-					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.map(sp => Parser.prereqSpellToFull(sp)).joinConjunct(", ", " or ");
+					return listMode ? it.entries.map(x => x.split("|")[0].toTitleCase()).join("; ") : it.entries.map(sp => Parser.prereqSpellToFull(sp)).joinConjunct(", ", " or ");
 				case "prereqFeature":
 					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.joinConjunct(", ", " or ");
 				case "prereqItem":
 					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.joinConjunct(", ", " or ");
 				case "prereqSpecial":
-					return listMode ? (it.entrySummary || it.entry) : it.entry;
+					return listMode ? (it.entrySummary || Renderer.stripTags(it.entry)) : Renderer.get().render(it.entry);
 				default: // string
 					return it;
 			}
 		});
 
+		if (!outList.filter(Boolean).length) return listMode ? "\u2014" : STR_NONE;
 		return listMode ? outList.filter(Boolean).join(", ") : `Prerequisites: ${outList.join(", ")}`;
 	},
 
@@ -2383,7 +2407,7 @@ Renderer.optionalfeature = {
 		const renderStack = [];
 
 		renderStack.push(`
-			${Renderer.utils.getNameTr(it, true)}
+			${Renderer.utils.getNameTr(it, {isAddPageNum: true})}
 			<tr class="text"><td colspan="6">
 			${it.prerequisite ? `<p><i>${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite)}</i></p>` : ""}
 		`);
@@ -2405,7 +2429,7 @@ Renderer.reward = {
 
 	getCompactRenderedString: (reward) => {
 		return `
-			${Renderer.utils.getNameTr(reward, true)}
+			${Renderer.utils.getNameTr(reward, {isAddPageNum: true})}
 			${Renderer.reward.getRenderedString(reward)}
 		`;
 	}
@@ -2418,7 +2442,7 @@ Renderer.race = {
 
 		const ability = Renderer.getAbilityData(race.ability);
 		renderStack.push(`
-			${Renderer.utils.getNameTr(race, true)}
+			${Renderer.utils.getNameTr(race, {isAddPageNum: true})}
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
@@ -2549,7 +2573,7 @@ Renderer.deity = {
 	getCompactRenderedString: (deity) => {
 		const renderer = Renderer.get();
 		return `
-			${Renderer.utils.getNameTr(deity, true, "", deity.title ? `, ${deity.title.toTitleCase()}` : "")}
+			${Renderer.utils.getNameTr(deity, {isAddPageNum: true, suffix: deity.title ? `, ${deity.title.toTitleCase()}` : ""})}
 			<tr><td colspan="6">
 				<div class="rd__compact-stat">${Renderer.deity.getOrderedParts(deity, `<p>`, `</p>`)}</div>
 			</td>
@@ -2563,7 +2587,7 @@ Renderer.object = {
 		const renderer = Renderer.get();
 		const row2Width = 12 / ((!!obj.resist + !!obj.vulnerable) || 1);
 		return `
-			${Renderer.utils.getNameTr(obj, true)}
+			${Renderer.utils.getNameTr(obj, {isAddPageNum: true})}
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
@@ -2681,7 +2705,7 @@ Renderer.traphazard = {
 		const renderer = Renderer.get();
 		const subtitle = Renderer.traphazard.getSubtitle(it);
 		return `
-			${Renderer.utils.getNameTr(it, true)}
+			${Renderer.utils.getNameTr(it, {isAddPageNum: true})}
 			${subtitle ? `<tr class="text"><td colspan="6"><i>${subtitle}</i>${Renderer.traphazard.getSimplePart(renderer, it)}${Renderer.traphazard.getComplexPart(renderer, it)}</td>` : ""}
 			<tr class="text"><td colspan="6">${renderer.render({entries: it.entries}, 2)}</td></tr>
 		`;
@@ -2749,13 +2773,13 @@ Renderer.cultboon = {
 		if (it._type === "c") {
 			Renderer.cultboon.doRenderCultParts(it, renderer, renderStack);
 			renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 2});
-			return `${Renderer.utils.getNameTr(it, true)}
+			return `${Renderer.utils.getNameTr(it, {isAddPageNum: true})}
 				<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
 				<tr class='text'><td colspan='6' class='text'>${renderStack.join("")}</td></tr>`;
 		} else if (it._type === "b") {
 			Renderer.cultboon.doRenderBoonParts(it, renderer, renderStack);
 			renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
-			return `${Renderer.utils.getNameTr(it, true)}
+			return `${Renderer.utils.getNameTr(it, {isAddPageNum: true})}
 			<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`;
 		}
 	}
@@ -2769,7 +2793,8 @@ Renderer.monster = {
 		page: true,
 		altArt: true,
 		otherSources: true,
-		variant: true
+		variant: true,
+		dragonCastingColor: true
 	},
 	_mergeCache: null,
 	async pMergeCopy (monList, mon, options) {
@@ -3310,7 +3335,7 @@ Renderer.monster = {
 		const isCrHidden = Parser.crToNumber(mon.cr) === 100;
 
 		renderStack.push(`
-			${Renderer.utils.getNameTr(mon, true)}
+			${Renderer.utils.getNameTr(mon, {isAddPageNum: true})}
 			<tr><td colspan="6"><i>${Parser.sizeAbvToFull(mon.size)}, ${Parser.monTypeToFullObj(mon.type).asText}, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}</i></td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
@@ -3367,7 +3392,7 @@ Renderer.monster = {
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
 				<div class="rd__compact-stat">
-					${mon.save ? `<p><b>Saving Throws:</b> ${Object.keys(mon.save).map(s => Renderer.monster.getSave(renderer, s, mon.save[s])).join(", ")}</p>` : ""}
+					${mon.save ? `<p><b>Saving Throws:</b> ${Object.keys(mon.save).sort(SortUtil.ascSortAtts).map(s => Renderer.monster.getSave(renderer, s, mon.save[s])).join(", ")}</p>` : ""}
 					${mon.skill ? `<p><b>Skills:</b> ${Renderer.monster.getSkillsString(renderer, mon)}</p>` : ""}
 					<p><b>Senses:</b> ${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses)}, ` : ""}passive Perception ${mon.passive}</p>
 					<p><b>Languages:</b> ${Renderer.monster.getRenderedLanguages(mon.languages)}</p>
@@ -3445,15 +3470,16 @@ Renderer.monster = {
 			return joinWithOr ? toJoin.joinConjunct(", ", " or ") : toJoin.join(", ")
 		}
 
-		const skills = doSortMapJoinSkillKeys(mon.skill, Object.keys(mon.skill).filter(k => k !== "other"));
-		if (mon.skill.other) {
-			const others = mon.skill.other.map(it => {
+		const skills = doSortMapJoinSkillKeys(mon.skill, Object.keys(mon.skill).filter(k => k !== "other" && k !== "special"));
+		if (mon.skill.other || mon.skill.special) {
+			const others = mon.skill.other && mon.skill.other.map(it => {
 				if (it.oneOf) {
 					return `plus one of the following: ${doSortMapJoinSkillKeys(it.oneOf, Object.keys(it.oneOf), true)}`
 				}
 				throw new Error(`Unhandled monster "other" skill properties!`)
 			});
-			return `${skills}, ${others.join(", ")}`
+			const special = mon.skill.special && Renderer.get().render(mon.skill.special);
+			return [skills, others, special].filter(Boolean).join(", ");
 		} else return skills;
 	},
 
@@ -3641,7 +3667,7 @@ Renderer.item = {
 
 		const renderStack = [];
 
-		renderStack.push(Renderer.utils.getNameTr(item, true));
+		renderStack.push(Renderer.utils.getNameTr(item, {isAddPageNum: true}));
 
 		renderStack.push(`<tr><td class="typerarityattunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td>`);
 
@@ -3704,10 +3730,10 @@ Renderer.item = {
 				.catch(BrewUtil.pPurgeBrew);
 		});
 	},
-	_addBasicPropertiesAndTypes (basicItemData) {
+	_addBasePropertiesAndTypes (baseItemData) {
 		// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
-		basicItemData.itemProperty.forEach(p => Renderer.item._addProperty(p));
-		basicItemData.itemType.forEach(t => {
+		baseItemData.itemProperty.forEach(p => Renderer.item._addProperty(p));
+		baseItemData.itemType.forEach(t => {
 			// air/water vehicles share a type
 			if (t.abbreviation === "SHP") {
 				const cpy = MiscUtil.copy(t);
@@ -3716,7 +3742,7 @@ Renderer.item = {
 			}
 			Renderer.item._addType(t);
 		});
-		basicItemData.itemTypeAdditionalEntries.forEach(e => Renderer.item._addAdditionalEntries(e));
+		baseItemData.itemTypeAdditionalEntries.forEach(e => Renderer.item._addAdditionalEntries(e));
 	},
 	/**
 	 * Runs callback with itemList as argument
@@ -3741,14 +3767,14 @@ Renderer.item = {
 
 		// allows URLs to be overridden (used by roll20 script)
 		const itemUrl = opts.urls.items || `${Renderer.get().baseUrl}data/items.json`;
-		const basicItemUrl = opts.urls.basicitems || `${Renderer.get().baseUrl}data/basicitems.json`;
+		const baseItemUrl = opts.urls.baseitems || `${Renderer.get().baseUrl}data/items-base.json`;
 		const magicVariantUrl = opts.urls.magicvariants || `${Renderer.get().baseUrl}data/magicvariants.json`;
 
 		const itemList = await pLoadItems();
-		const basicItems = await Renderer.item._pGetAndProcBasicItems(await DataUtil.loadJSON(basicItemUrl));
+		const baseItems = await Renderer.item._pGetAndProcBaseItems(await DataUtil.loadJSON(baseItemUrl));
 		const [genericVariants, linkedLootTables] = await Renderer.item._pGetAndProcGenericVariants(await DataUtil.loadJSON(magicVariantUrl), true);
-		const genericAndSpecificVariants = Renderer.item._createSpecificVariants(basicItems, genericVariants, linkedLootTables);
-		const allItems = itemList.concat(basicItems).concat(genericAndSpecificVariants);
+		const genericAndSpecificVariants = Renderer.item._createSpecificVariants(baseItems, genericVariants, linkedLootTables);
+		const allItems = itemList.concat(baseItems).concat(genericAndSpecificVariants);
 		Renderer.item._enhanceItems(allItems);
 		Renderer.item._builtLists[kBlacklist] = allItems;
 		if (opts.fnCallback) return opts.fnCallback(allItems);
@@ -3762,10 +3788,10 @@ Renderer.item = {
 		}
 	},
 
-	async _pGetAndProcBasicItems (basicItemData) {
-		Renderer.item._addBasicPropertiesAndTypes(basicItemData);
+	async _pGetAndProcBaseItems (baseItemData) {
+		Renderer.item._addBasePropertiesAndTypes(baseItemData);
 		await Renderer.item._pAddBrewPropertiesAndTypes();
-		return basicItemData.basicitem;
+		return baseItemData.baseitem;
 	},
 
 	async _pGetAndProcGenericVariants (variantData, isRespectBlacklist) {
@@ -3779,7 +3805,7 @@ Renderer.item = {
 		return [variantData.variant, variantData.linkedLootTables];
 	},
 
-	_createSpecificVariants (basicItems, genericVariants, linkedLootTables) {
+	_createSpecificVariants (baseItems, genericVariants, linkedLootTables) {
 		function isMissingRequiredProperty (baseItem, genericVariant) {
 			return !~genericVariant.requires.findIndex(req => !~Object.keys(req).findIndex(reqK => baseItem[reqK] !== req[reqK]));
 		}
@@ -3836,7 +3862,7 @@ Renderer.item = {
 		}
 
 		const genericAndSpecificVariants = [...genericVariants];
-		basicItems.forEach((curBaseItem) => {
+		baseItems.forEach((curBaseItem) => {
 			curBaseItem.category = "Basic";
 			if (curBaseItem.entries == null) curBaseItem.entries = [];
 
@@ -3857,15 +3883,16 @@ Renderer.item = {
 		return allItems;
 	},
 
-	async pGetGenericAndSpecificVariants (variants, basicItemsUrl) {
-		basicItemsUrl = basicItemsUrl || `${Renderer.get().baseUrl}data/basicitems.json`;
+	async pGetGenericAndSpecificVariants (variants, opts) {
+		opts = opts || {};
+		opts.baseItemsUrl = opts.baseItemsUrl || `${Renderer.get().baseUrl}data/items-base.json`;
 
-		const basicItemData = await DataUtil.loadJSON(basicItemsUrl);
-		const basicItems = basicItemData.basicitem;
-		Renderer.item._addBasicPropertiesAndTypes(basicItemData);
+		const baseItemData = await DataUtil.loadJSON(opts.baseItemsUrl);
+		const baseItems = baseItemData.baseitem.concat(opts.additionalBaseItems || []);
+		Renderer.item._addBasePropertiesAndTypes(baseItemData);
 		await Renderer.item._pAddBrewPropertiesAndTypes();
 		variants.forEach(Renderer.item._genericVariants_addInheritedPropertiesToSelf);
-		const genericAndSpecificVariants = Renderer.item._createSpecificVariants(basicItems, variants);
+		const genericAndSpecificVariants = Renderer.item._createSpecificVariants(baseItems, variants);
 		return Renderer.item._enhanceItems(genericAndSpecificVariants);
 	},
 
@@ -4059,9 +4086,13 @@ Renderer.item = {
 	async getItemsFromHomebrew (homebrew) {
 		(homebrew.itemProperty || []).forEach(p => Renderer.item._addProperty(p));
 		(homebrew.itemType || []).forEach(t => Renderer.item._addType(t));
-		let items = homebrew.item || [];
+		let items = (homebrew.baseitem || []).concat(homebrew.item || []);
+		Renderer.item._enhanceItems(items);
 		if (homebrew.variant && homebrew.variant.length) {
-			const variants = await Renderer.item.pGetGenericAndSpecificVariants(homebrew.variant);
+			const variants = await Renderer.item.pGetGenericAndSpecificVariants(
+				homebrew.variant,
+				{additionalBaseItems: homebrew.baseitem || []}
+			);
 			items = items.concat(variants);
 		}
 		return items;
@@ -4078,7 +4109,7 @@ Renderer.item = {
 	populatePropertyAndTypeReference: () => {
 		if (Renderer.item._isRefPopulated) return Promise.resolve();
 		return new Promise((resolve, reject) => {
-			DataUtil.loadJSON(`${Renderer.get().baseUrl}data/basicitems.json`)
+			DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items-base.json`)
 				.then(data => {
 					if (Renderer.item._isRefPopulated) {
 						resolve();
@@ -4098,6 +4129,26 @@ Renderer.item = {
 					}
 				});
 		});
+	},
+
+	// fetch every possible indexable item from official data
+	async getAllIndexableItems (rawVariants, rawBaseItems) {
+		Renderer.item.LINK_SPECIFIC_TO_GENERIC_DIRECTION = -1;
+
+		const basicItems = await Renderer.item._pGetAndProcBaseItems(rawBaseItems);
+		const [genericVariants, linkedLootTables] = await Renderer.item._pGetAndProcGenericVariants(rawVariants);
+		const genericAndSpecificVariants = Renderer.item._createSpecificVariants(basicItems, genericVariants, linkedLootTables);
+
+		const revNames = [];
+		genericAndSpecificVariants.forEach(item => {
+			if (item.variants) delete item.variants; // prevent circular references
+			const revName = Renderer.item.modifierPostToPre(MiscUtil.copy(item));
+			if (revName) revNames.push(revName);
+		});
+
+		genericAndSpecificVariants.push(...revNames);
+
+		return genericAndSpecificVariants;
 	}
 };
 
@@ -4209,7 +4260,7 @@ Renderer.psionic = {
 		const bodyStr = psionic.type === "T" ? Renderer.psionic.getTalentText(psionic, renderer) : Renderer.psionic.getDisciplineText(psionic, renderer);
 
 		return `
-			${Renderer.utils.getNameTr(psionic, true)}
+			${Renderer.utils.getNameTr(psionic, {isAddPageNum: true})}
 			<tr class="text"><td colspan="6">
 			<p><i>${typeOrderStr}</i></p>
 			${bodyStr}
@@ -4577,6 +4628,7 @@ Renderer.hover = {
 		}
 
 		switch (page) {
+			case "generic":
 			case "hover": callbackFn(); break;
 			case UrlUtil.PG_CLASSES: {
 				if (!Renderer.hover._isCached(page, source, hash)) {
@@ -4600,10 +4652,10 @@ Renderer.hover = {
 						fnCallback: (allItems) => {
 							// populate brew once the main item properties have been loaded
 							BrewUtil.pAddBrewData()
-								.then((data) => {
-									if (!data.item) return;
-									data.item.forEach(it => {
-										Renderer.item.enhanceItem(it);
+								.then(async (data) => {
+									const itemList = await Renderer.item.getItemsFromHomebrew(data);
+									if (!itemList.length) return;
+									itemList.forEach(it => {
 										const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
 										Renderer.hover._addToCache(page, it.source, itHash, it);
 										const revName = Renderer.item.modifierPostToPre(it);
@@ -4744,7 +4796,9 @@ Renderer.hover = {
 			}
 		});
 
-		const $hovTitle = $(`<span class="window-title">${toRender._displayName || toRender.name}</span>`);
+		const windowTitle = page === "generic" ? (preLoaded.data || {}).hoverTitle || "" : toRender._displayName || toRender.name;
+
+		const $hovTitle = $(`<span class="window-title">${windowTitle}</span>`);
 		const $stats = $(`<table class="stats ${isBookContent ? "stats-book stats-book--hover" : ""}"/>`);
 		$stats.append(content);
 
@@ -5088,6 +5142,7 @@ Renderer.hover = {
 
 	_pageToRenderFn (page) {
 		switch (page) {
+			case "generic":
 			case "hover": return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_CLASSES: return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_SPELLS: return Renderer.spell.getCompactRenderedString;
@@ -5136,6 +5191,13 @@ Renderer.hover = {
 
 	mouseOverPreloaded (evt, ele, preLoaded, page, source, hash, isPopout) {
 		Renderer.hover.show({evt, ele, preLoaded, page, source, hash, isPopout});
+	},
+
+	/**
+	 * The most basic hover display possible. Creates a new window which displays the thing.
+	 */
+	doHover (evt, ele, entries) {
+		Renderer.hover.show({evt, ele, preLoaded: entries, page: "generic"});
 	},
 
 	_doInit () {
@@ -6610,7 +6672,8 @@ Renderer.stripTags = function (str) {
 					case "@filter":
 					case "@footnote":
 					case "@link":
-					case "@scaledice": {
+					case "@scaledice":
+					case "@loader": {
 						const parts = text.split("|");
 						return parts[0];
 					}

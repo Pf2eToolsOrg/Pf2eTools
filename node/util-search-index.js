@@ -4,30 +4,6 @@ const od = require('../js/omnidexer.js');
 
 UtilSearchIndex = {};
 
-// store this here, as it should never be loaded by frontend code
-UtilSearchIndex._node_pGetBasicVariantItems = async function (rawVariants) {
-	if (!this.basicVariantItems) {
-		const rawBasics = require(`../data/basicitems.json`);
-		Renderer.item.LINK_SPECIFIC_TO_GENERIC_DIRECTION = -1;
-
-		const basicItems = await Renderer.item._pGetAndProcBasicItems(rawBasics);
-		const [genericVariants, linkedLootTables] = await Renderer.item._pGetAndProcGenericVariants(rawVariants);
-		const genericAndSpecificVariants = Renderer.item._createSpecificVariants(basicItems, genericVariants, linkedLootTables);
-
-		const revNames = [];
-		genericAndSpecificVariants.forEach(item => {
-			if (item.variants) delete item.variants; // prevent circular references
-			const revName = Renderer.item.modifierPostToPre(MiscUtil.copy(item));
-			if (revName) revNames.push(revName);
-		});
-
-		genericAndSpecificVariants.push(...revNames);
-
-		this.basicVariantItems = genericAndSpecificVariants;
-	}
-	return this.basicVariantItems;
-};
-
 UtilSearchIndex.pGetIndex = async function (doLogging = true, noFilter = false) {
 	return UtilSearchIndex._pGetIndex({}, doLogging, noFilter);
 };

@@ -29,6 +29,8 @@ function onJsonLoad (data) {
 	BookUtil.homebrewData = "bookData";
 	BookUtil.initLinkGrabbers();
 
+	BookUtil.contentType = "book";
+
 	addBooks(data);
 
 	$(`.book-head-message`).text(`Select a book from the list on the left`);
@@ -59,7 +61,6 @@ function addBooks (data) {
 
 	books = books.concat(data.book);
 	BookUtil.bookIndex = books;
-	BookUtil.contentType = "book";
 
 	const allContents = $("ul.contents");
 	let tempString = "";

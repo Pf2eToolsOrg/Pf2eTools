@@ -31,6 +31,7 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
+let list;
 function onJsonLoad (data) {
 	nameList = data.name;
 
@@ -47,7 +48,7 @@ function onJsonLoad (data) {
 	}
 	namesList.append(tempString);
 
-	const list = ListUtil.search({
+	list = ListUtil.search({
 		valueNames: ["name"],
 		listClass: "names"
 	});
@@ -93,6 +94,11 @@ function loadhash (id) {
 			</td>
 		</tr>`;
 	$("#pagecontent").html(htmlText);
+
+	// update list highlights
+	$(list.list).find(`.list-multi-selected`).removeClass("list-multi-selected");
+	const $listEle = History.getSelectedListElement().parent();
+	$($listEle).addClass("list-multi-selected");
 }
 
 function pad (number) {

@@ -1,17 +1,15 @@
 {
 	"name": "5etools",
 	"author": "TheGiddyLimit",
-	"version": "1.75.6",
+	"version": "1.75.16",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
 		"dev-server": "autoreload-server -r **/*.{html,css,js,png,jpg}",
 		"version-bump": "npm version -m \"chore(version): bump\"",
-		"gen-index": "node node/generate-search-index.js",
+		"gen-all": "node node/generate-all.js",
 		"clean-jsons": "node node/clean-jsons.js",
-		"gen-reference": "node node/generate-quick-reference.js && node node/generate-dmscreen-reference.js",
-		"gen-data": "node node/generate-tables-data",
-		"uglifyjs": "uglifyjs",
+		"minify": "minify",
 		"test:js": "eslint js node test",
 		"test:styles": "stylelint scss/*.scss",
 		"test:data": "node test/alltests.js",
@@ -19,7 +17,7 @@
 		"build:css": "node-sass --source-map=true --output-style=compressed scss/main.scss css/style.css && postcss ./css/style.css --use autoprefixer -r",
 		"build:deploy:dev": "bash build/deploy-dev.sh",
 		"build:deploy:prod": "bash build/deploy-prod.sh",
-		"build": "npm run clean-jsons && npm run gen-index && npm run gen-reference && npm run gen-data && npm run build:css",
+		"build": "npm run clean-jsons && npm run gen-all && npm run build:css",
 		"preversion": "npm test",
 		"version": "node node/version-bump.js"
 	},
@@ -29,6 +27,7 @@
 	},
 	"devDependencies": {
 		"autoprefixer": "^8.6.5",
+		"babel-minify": "^0.5.0",
 		"eslint": "^4.19.1",
 		"eslint-plugin-json": "^1.4.0",
 		"jsonschema": "1.2.0",
@@ -36,12 +35,11 @@
 		"postcss-cli": "^5.0.1",
 		"postcss-syntax": "^0.34.0",
 		"probe-image-size": "^4.0.0",
+		"readline-sync": "^1.4.9",
 		"simple-autoreload-server": "^0.2.7",
 		"simple-git": "^1.113.0",
 		"stylelint": "^9.10.1",
-		"stylelint-config-sass-guidelines": "^5.4.0",
-		"uglify-es": "^3.3.10",
-		"readline-sync": "^1.4.9"
+		"stylelint-config-sass-guidelines": "^5.4.0"
 	},
 	"dependencies": {},
 	"bugs": {

@@ -14,6 +14,10 @@
 	cursor: pointer !important;
 }
 
+.not-clickable {
+	cursor: default !important;
+}
+
 .copyable {
 	cursor: copy !important;
 }
@@ -74,12 +78,16 @@
 	width: 100% !important;
 }
 
+.width-30 {
+	width: 30% !important;
+}
+
 .full-height {
 	height: 100% !important;
 }
 
 .flex {
-	display: flex;
+	display: flex !important;
 }
 
 .relative {
@@ -96,7 +104,7 @@
 }
 
 .block {
-	display: block;
+	display: block !important;
 }
 
 .inline-block {
@@ -359,6 +367,11 @@ select.input-xs {
 	background-color: rgba(0, 0, 0, 0.1);
 }
 
+.row {
+	margin-right: 0;
+	margin-left: 0;
+}
+
 /* recreate the base Bootstrap col-xs-X class */
 %col-base {
 	position: relative;
@@ -366,11 +379,6 @@ select.input-xs {
 	padding-right: 7px;
 	padding-left: 7px;
 	float: left;
-}
-
-.row {
-	margin-right: -7px;
-	margin-left: -7px;
 }
 
 .col-12 {
@@ -1071,6 +1079,11 @@ select.input-xs {
 	margin-right: $spacer * 1.5 !important;
 }
 
+.px-0 {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+}
+
 .px-1 {
 	padding-right: ($spacer * 0.25) !important;
 	padding-left: ($spacer * 0.25) !important;
@@ -1100,12 +1113,20 @@ select.input-xs {
 	padding: ($spacer * 0.5) !important;
 }
 
+.pr-0 {
+	padding-right: 0 !important;
+}
+
 .pr-1 {
 	padding-right: ($spacer * 0.25) !important;
 }
 
 .pr-2 {
 	padding-right: ($spacer * 0.5) !important;
+}
+
+.pl-0 {
+	padding-left: 0 !important;
 }
 
 .dropdown-menu > li > a.dropdown-ext-link {

@@ -18,7 +18,7 @@ function ascSortMiscFilter (a, b) {
 	if (a.includes(_MISC_FILTER_SPELLCASTER) && b.includes(_MISC_FILTER_SPELLCASTER)) {
 		a = Parser.attFullToAbv(a.replace(_MISC_FILTER_SPELLCASTER, ""));
 		b = Parser.attFullToAbv(b.replace(_MISC_FILTER_SPELLCASTER, ""));
-		return SortUtil.ascSortAtts(b, a);
+		return SortUtil.ascSortAtts(a, b);
 	} else return SortUtil.ascSort(a, b);
 }
 
@@ -98,31 +98,33 @@ function pPostLoad () {
 let filterBox;
 let encounterBuilder;
 window.onload = async function load () {
-	filterBox = await pInitFilterBox(
-		sourceFilter,
-		crFilter,
-		typeFilter,
-		tagFilter,
-		environmentFilter,
-		defenceFilter,
-		conditionImmuneFilter,
-		traitFilter,
-		actionReactionFilter,
-		miscFilter,
-		spellcastingTypeFilter,
-		sizeFilter,
-		speedFilter,
-		speedTypeFilter,
-		alignmentFilter,
-		saveFilter,
-		skillFilter,
-		senseFilter,
-		languageFilter,
-		damageTypeFilter,
-		acFilter,
-		averageHpFilter,
-		abilityScoreFilter
-	);
+	filterBox = await pInitFilterBox({
+		filters: [
+			sourceFilter,
+			crFilter,
+			typeFilter,
+			tagFilter,
+			environmentFilter,
+			defenceFilter,
+			conditionImmuneFilter,
+			traitFilter,
+			actionReactionFilter,
+			miscFilter,
+			spellcastingTypeFilter,
+			sizeFilter,
+			speedFilter,
+			speedTypeFilter,
+			alignmentFilter,
+			saveFilter,
+			skillFilter,
+			senseFilter,
+			languageFilter,
+			damageTypeFilter,
+			acFilter,
+			averageHpFilter,
+			abilityScoreFilter
+		]
+	});
 	encounterBuilder = new EncounterBuilder();
 	await ExcludeUtil.pInitialise();
 	SortUtil.initHandleFilterButtonClicks();
@@ -574,7 +576,7 @@ function addMonsters (data) {
 	for (; mI < monsters.length; mI++) {
 		const mon = monsters[mI];
 		const monHash = UrlUtil.autoEncodeHash(mon);
-		if (_addedHashes.has(monHash)) continue;
+		if (!mon.uniqueId && _addedHashes.has(monHash)) continue;
 		_addedHashes.add(monHash);
 		if (ExcludeUtil.isExcluded(mon.name, "monster", mon.source)) continue;
 		RenderBestiary.initParsed(mon);
@@ -597,18 +599,16 @@ function addMonsters (data) {
 		mon._fCondImm = mon.conditionImmune ? getAllImmRest(mon.conditionImmune, "conditionImmune") : [];
 		mon._fSave = mon.save ? Object.keys(mon.save) : [];
 		mon._fSkill = mon.skill ? Object.keys(mon.skill) : [];
-		mon._fSources = ListUtil.getCompleteSources(mon);
-
-		const abvSource = Parser.sourceJsonToAbv(mon.source);
+		mon._fSources = ListUtil.getCompleteFilterSources(mon);
 
 		textStack +=
 			`<li class="row" ${FLTR_ID}="${mI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id=${mI} href="#${monHash}" title="${mon.name}">
 					${EncounterBuilder.getButtons(mI)}
-					<span class="ecgen__name name col-4-2">${mon.name}</span>
+					<span class="ecgen__name name col-4-2 pl-0">${mon.name}</span>
 					<span class="type col-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
 					<span class="col-1-7 text-align-center cr">${mon._pCr}</span>
-					<span title="${Parser.sourceJsonToFull(mon.source)}${Renderer.utils.getSourceSubText(mon)}" class="col-2 source text-align-center ${Parser.sourceJsonToColor(mon.source)}">${abvSource}</span>
+					<span title="${Parser.sourceJsonToFull(mon.source)}${Renderer.utils.getSourceSubText(mon)}" class="col-2 source text-align-center ${Parser.sourceJsonToColor(mon.source)} pr-0" ${BrewUtil.sourceJsonToStyle(mon.source)}>${Parser.sourceJsonToAbv(mon.source)}</span>
 					
 					${mon.group ? `<span class="group hidden">${mon.group}</span>` : ""}
 					<span class="alias hidden">${(mon.alias || []).map(it => `"${it}"`).join(",")}</span>
@@ -722,10 +722,11 @@ function pGetSublistItem (mon, pinId, addCount, data = {}) {
 			resolve(`
 				<li class="row row--bestiary_sublist" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 					<a href="#${UrlUtil.autoEncodeHash(mon)}${subHash}" title="${mon._displayName || mon.name}" draggable="false" class="ecgen__hidden">
-						<span class="name col-5">${mon._displayName || mon.name}</span>
-						<span class="type col-3">${mon._pTypes.asText.uppercaseFirst()}</span>
-						<span class="cr col-2 text-align-center">${mon._pCr}</span>						
+						<span class="name col-5 pl-0">${mon._displayName || mon.name}</span>
+						<span class="type col-3-8">${mon._pTypes.asText.uppercaseFirst()}</span>
+						<span class="cr col-1-2 text-align-center">${mon._pCr}</span>
 						<span class="count col-2 text-align-center">${addCount || 1}</span>
+
 						<span class="id hidden">${pinId}</span>
 						<span class="uid hidden">${data.uid || ""}</span>
 					</a>
@@ -733,14 +734,15 @@ function pGetSublistItem (mon, pinId, addCount, data = {}) {
 					<div class="list__item_inner ecgen__visible--flex">
 						${EncounterBuilder.getButtons(pinId, true)}
 						<span class="ecgen__name--sub col-5">${mon._displayName || mon.name}</span>
-						<span class="col-1-5 help--hover ecgen__visible" onmouseover="EncounterBuilder.doStatblockMouseOver(event, this, ${pinId}, ${mon._isScaledCr})">Statblock</span>
-						<span class="col-1-5 ecgen__visible help--hover" ${EncounterBuilder.getTokenMouseOver(mon)}>Token</span>
+						<span class="col-1-4 help--hover ecgen__visible" onmouseover="EncounterBuilder.doStatblockMouseOver(event, this, ${pinId}, ${mon._isScaledCr})">Statblock</span>
+						<span class="col-1-2 ecgen__visible help--hover" ${EncounterBuilder.getTokenMouseOver(mon)}>Token</span>
+						<span class="col-1-2 ecgen__visible help--hover" onmouseover="EncounterBuilder.doImageMouseOver(event, this, ${pinId})">Image</span>
 						${mon._pCr !== "Unknown" ? `
-							<span class="col-2 text-align-center">
+							<span class="col-1-2 text-align-center">
 								<input value="${mon._pCr}" onchange="encounterBuilder.doCrChange(this, ${pinId}, ${mon._isScaledCr})" class="ecgen__cr_input form-control form-control--minimal input-xs">
 							</span>
-						` : `<span class="col-2 text-align-center">${mon._pCr}</span>`}
-						<span class="col-2 text-align-center count">${addCount || 1}</span>
+						` : `<span class="col-1-2 text-align-center">${mon._pCr}</span>`}
+						<span class="col-2 pr-0 text-align-center count">${addCount || 1}</span>
 					</div>
 				</li>
 			`);

@@ -24,7 +24,7 @@ class RenderBestiary {
 	static _getPronunciationButton (mon) {
 		const basename = mon.soundClip.substr(mon.soundClip.lastIndexOf("/") + 1);
 
-		return `<button class="btn btn-xs btn-default btn-name-pronounce">
+		return `<button class="btn btn-xs btn-default btn-name-pronounce" style="margin-top: 5px;">
 			<span class="glyphicon glyphicon-volume-up name-pronounce-icon"></span>
 			<audio class="name-pronounce">
 			   <source src="${mon.soundClip}" type="audio/mpeg">
@@ -106,7 +106,7 @@ class RenderBestiary {
 		<tr><th class="name mon__name--token" colspan="6">
 			<span class="stats-name copyable" onclick="Renderer.utils._pHandleNameClick(this, '${mon.source.escapeQuotes()}')">${mon._displayName || mon.name}</span>
 			${mon.soundClip ? RenderBestiary._getPronunciationButton(mon) : ""}
-			<span class="stats-source ${Parser.sourceJsonToColor(mon.source)}" title="${Parser.sourceJsonToFull(mon.source)}${Renderer.utils.getSourceSubText(mon)}">${Parser.sourceJsonToAbv(mon.source)}</span>
+			<span class="stats-source ${Parser.sourceJsonToColor(mon.source)}" title="${Parser.sourceJsonToFull(mon.source)}${Renderer.utils.getSourceSubText(mon)}" ${BrewUtil.sourceJsonToStyle(mon.source)}>${Parser.sourceJsonToAbv(mon.source)}</span>
 		</th></tr>
 		<tr><td colspan="6">
 			<div class="mon__wrp-size-type-align"><i>${Parser.sizeAbvToFull(mon.size)} ${mon._pTypes.asText}, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}</i></div>
@@ -131,7 +131,7 @@ class RenderBestiary {
 		</tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		
-		${mon.save ? `<tr><td colspan="6"><strong>Saving Throws</strong> ${Object.keys(mon.save).map(it => Renderer.monster.getSave(renderer, it, mon.save[it])).join(", ")}</td></tr>` : ""}
+		${mon.save ? `<tr><td colspan="6"><strong>Saving Throws</strong> ${Object.keys(mon.save).sort(SortUtil.ascSortAtts).map(it => Renderer.monster.getSave(renderer, it, mon.save[it])).join(", ")}</td></tr>` : ""}
 		${mon.skill ? `<tr><td colspan="6"><strong>Skills</strong> ${Renderer.monster.getSkillsString(renderer, mon)}</td></tr>` : ""}
 		${mon.vulnerable ? `<tr><td colspan="6"><strong>Damage Vulnerabilities</strong> ${Parser.monImmResToFull(mon.vulnerable)}</td></tr>` : ""}
 		${mon.resist ? `<tr><td colspan="6"><strong>Damage Resistances</strong> ${Parser.monImmResToFull(mon.resist)}</td></tr>` : ""}

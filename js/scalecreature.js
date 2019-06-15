@@ -1731,11 +1731,12 @@
 			const idealClvlIn = this._crToCasterLevel(crIn);
 			const idealClvlOut = this._crToCasterLevel(crOut);
 
-			mon.spellcasting.forEach(sc => {
-				// favor the first result as primary
-				let primaryInLevel = null;
-				let primaryOutLevel = null;
+			const isWarlock = this._adjustSpellcasting_isWarlock(mon);
+			// favor the first result as primary
+			let primaryInLevel = null;
+			let primaryOutLevel = null;
 
+			mon.spellcasting.forEach(sc => {
 				// attempt to ascertain class spells
 				let spellsFromClass = null;
 
@@ -1750,7 +1751,7 @@
 						if (anyChange) {
 							if (primaryInLevel == null) primaryInLevel = level;
 							if (primaryOutLevel == null) primaryOutLevel = outLevel;
-							return `${Parser.spellLevelToArticle(outLevel)} ${Parser.spLevelToFull(outLevel)}-level`;
+							return `${Parser.getArticle(outLevel)} ${Parser.spLevelToFull(outLevel)}-level`;
 						} else return m[0];
 					});
 
@@ -1770,13 +1771,17 @@
 					maxSpellLevel = Math.min(9, Math.ceil(primaryOutLevel / 2));
 
 					// cap half-caster slots at 5
-					if (/paladin|ranger/i.exec(spellsFromClass)) {
+					if (/paladin|ranger|warlock/i.exec(spellsFromClass)) {
 						maxSpellLevel = Math.min(5, primaryOutLevel);
 					}
 				}
 
 				if (sc.spells && primaryOutLevel != null) {
 					const spells = sc.spells;
+
+					// "lower" is the property defining a set of spell slots as having a lower bound, e.g. "1st-5th level"
+					const isWarlockCasting = /warlock/i.exec(spellsFromClass) && Object.values(spells).filter(it => it.slots && it.lower).length === 1;
+
 					// cantrips
 					if (spells[0]) {
 						const curCantrips = spells[0].spells.length;
@@ -1809,53 +1814,152 @@
 					}
 
 					// spells
-					let lastRatio = 1; // adjust for higher/lower than regular spell slot counts
-					for (let i = 1; i < 10; ++i) {
-						const atLevel = spells[i];
-						const idealSlotsIn = getSlotsAtLevel(primaryInLevel, i);
-						const idealSlotsOut = getSlotsAtLevel(primaryOutLevel, i);
+					if (isWarlockCasting) {
+						const curCastingLevel = Object.keys(spells).find(k => spells[k].lower);
+						if (maxSpellLevel === Number(curCastingLevel)) return;
+						if (maxSpellLevel === 0) {
+							Object.keys(spells).filter(lvl => lvl !== "0").forEach(lvl => delete spells[lvl]);
+							return;
+						}
 
-						if (atLevel) {
-							if (atLevel.slots) { // no "slots" signifies at-wills
-								const adjustedSlotsOut = this._getScaledToRatio(atLevel.slots, idealSlotsIn, idealSlotsOut);
-								lastRatio = adjustedSlotsOut / idealSlotsOut;
+						const numSpellsKnown = this._adjustSpellcasting_getWarlockNumSpellsKnown(primaryOutLevel);
+						const warlockSpells = this._spells[SRC_PHB].warlock;
+						let spellList = [];
+						for (let i = 1; i < maxSpellLevel + 1; ++i) {
+							spellList = spellList.concat(Object.keys(warlockSpells[i]).map(sp => sp.toSpellCase()));
+						}
+						const spellsKnown = []; // TODO maintain original spell list if possible -- add them to this list, and remove them from the list being rolled against
+						for (let i = 0; i < numSpellsKnown; ++i) {
+							const ix = RollerUtil.roll(spellList.length, this._rng);
+							spellsKnown.push(spellList[ix]);
+							spellList.splice(ix, 1);
+						}
+						Object.keys(spells).filter(lvl => lvl !== "0").forEach(lvl => delete spells[lvl]);
+						const slots = this._adjustSpellcasting_getWarlockNumSpellSlots(maxSpellLevel);
+						spells[maxSpellLevel] = {
+							slots,
+							lower: 1,
+							spells: [
+								`A selection of ${maxSpellLevel === 1 ? `{@filter 1st-level warlock spells|spells|level=${1}|class=warlock}.` : `{@filter 1st- to ${Parser.spLevelToFull(maxSpellLevel)}-level warlock spells|spells|level=${[...new Array(maxSpellLevel)].map((_, i) => i + 1).join(";")}|class=warlock}.`}  Examples include: ${spellsKnown.sort(SortUtil.ascSortLower).map(it => `{@spell ${it}}`).joinConjunct(", ", " and ")}`
+							]
+						}
+					} else {
+						let lastRatio = 1; // adjust for higher/lower than regular spell slot counts
+						for (let i = 1; i < 10; ++i) {
+							const atLevel = spells[i];
+							const idealSlotsIn = getSlotsAtLevel(primaryInLevel, i);
+							const idealSlotsOut = getSlotsAtLevel(primaryOutLevel, i);
 
-								atLevel.slots = adjustedSlotsOut;
-								if (adjustedSlotsOut <= 0) {
-									delete spells[i];
+							if (atLevel) {
+								// TODO grow/shrink the spell list at this level as required
+								if (atLevel.slots) { // no "slots" signifies at-wills
+									const adjustedSlotsOut = this._getScaledToRatio(atLevel.slots, idealSlotsIn, idealSlotsOut);
+									lastRatio = adjustedSlotsOut / idealSlotsOut;
+
+									atLevel.slots = adjustedSlotsOut;
+									if (adjustedSlotsOut <= 0) {
+										delete spells[i];
+									}
 								}
-							}
-						} else if (i <= maxSpellLevel) {
-							const slots = Math.max(1, Math.round(idealSlotsOut * lastRatio));
-							if (spellsFromClass && (this._spells[SRC_PHB][spellsFromClass.toLowerCase()] || {})[i]) {
-								const examples = [];
-								const levelSpells = Object.keys(this._spells[SRC_PHB][spellsFromClass.toLowerCase()][i]).map(it => it.toLowerCase());
-								const numExamples = Math.min(5, levelSpells.length);
-								for (let n = 0; n < numExamples; ++n) {
-									const ix = RollerUtil.roll(levelSpells.length, this._rng);
-									examples.push(levelSpells[ix]);
-									levelSpells.splice(ix, 1);
+							} else if (i <= maxSpellLevel) {
+								const slots = Math.max(1, Math.round(idealSlotsOut * lastRatio));
+								if (spellsFromClass && (this._spells[SRC_PHB][spellsFromClass.toLowerCase()] || {})[i]) {
+									const examples = [];
+									const levelSpells = Object.keys(this._spells[SRC_PHB][spellsFromClass.toLowerCase()][i]).map(it => it.toSpellCase());
+									const numExamples = Math.min(5, levelSpells.length);
+									for (let n = 0; n < numExamples; ++n) {
+										const ix = RollerUtil.roll(levelSpells.length, this._rng);
+										examples.push(levelSpells[ix]);
+										levelSpells.splice(ix, 1);
+									}
+									spells[i] = {
+										slots,
+										spells: [
+											`A selection of {@filter ${Parser.spLevelToFull(i)}-level ${spellsFromClass} spells|spells|level=${i}|class=${spellsFromClass}}. Examples include: ${examples.sort(SortUtil.ascSortLower).map(it => `{@spell ${it}}`).joinConjunct(", ", " and ")}`
+										]
+									};
+								} else {
+									spells[i] = {
+										slots,
+										spells: [
+											`A selection of {@filter ${Parser.spLevelToFull(i)}-level spells|spells|level=${i}}`
+										]
+									};
 								}
-								spells[i] = {
-									slots,
-									spells: [
-										`A selection of {@filter ${Parser.spLevelToFull(i)}-level ${spellsFromClass} spells|spells|level=${i}|class=${spellsFromClass}}. Examples include: ${examples.map(it => `{@spell ${it}}`).joinConjunct(", ", " and ")}`
-									]
-								};
 							} else {
-								spells[i] = {
-									slots,
-									spells: [
-										`A selection of {@filter ${Parser.spLevelToFull(i)}-level spells|spells|level=${i}}`
-									]
-								};
+								delete spells[i];
 							}
-						} else {
-							delete spells[i];
 						}
 					}
 				}
 			});
+
+			mon.spellcasting.forEach(sc => {
+				// adjust Mystic Arcanum spells
+				if (isWarlock && sc.daily && sc.daily["1e"]) {
+					const numArcanum = this._adjustSpellcasting_getWarlockNumArcanum(primaryOutLevel);
+
+					const curNumSpells = sc.daily["1e"].length;
+
+					if (sc.daily["1e"].length === numArcanum) return;
+					if (numArcanum === 0) return delete sc.daily["1e"];
+
+					if (curNumSpells > numArcanum) {
+						// map each existing spell e.g. `{@spell gate}` to an object of the form `{original: "{@spell gate}", level: 9}`
+						const curSpells = sc.daily["1e"].map(it => {
+							const m = /{@spell ([^|}]+)(?:\|([^|}]+))?[|}]/.exec(it);
+							if (m) {
+								const nameTag = m[1].toLowerCase();
+								const srcTag = (m[2] || SRC_PHB).toLowerCase();
+
+								const src = Object.keys(this._spells).find(it => it.toLowerCase() === srcTag);
+								if (src) {
+									const levelStr = Object.keys(this._spells[src].warlock || {}).find(lvl => Object.keys((this._spells[src].warlock || {})[lvl]).some(nm => nm.toLowerCase() === nameTag));
+
+									if (levelStr) return {original: it, level: Number(levelStr)};
+								}
+							}
+							return {original: it, level: null};
+						});
+
+						for (let i = 9; i > 5; --i) {
+							const ixToRemove = curSpells.map(it => it.level === i ? curSpells.indexOf(it) : -1).filter(it => ~it);
+							while (ixToRemove.length && curSpells.length > numArcanum) {
+								curSpells.splice(ixToRemove.pop(), 1);
+							}
+							if (curSpells.length === numArcanum) break;
+						}
+
+						sc.daily["1e"] = curSpells.map(it => it.original);
+					} else {
+						for (let i = 5 + curNumSpells; i < 5 + numArcanum; ++i) {
+							const rollOn = Object.keys(this._spells[SRC_PHB].warlock[i]);
+							const ix = RollerUtil.roll(rollOn.length, this._rng);
+							sc.daily["1e"].push(`{@spell ${rollOn[ix].toSpellCase()}}`);
+						}
+
+						sc.daily["1e"].sort(SortUtil.ascSortLower);
+					}
+				}
+			});
 		}
+	},
+
+	_adjustSpellcasting_isWarlock (mon) {
+		if (mon.spellcasting) {
+			return mon.spellcasting.some(sc => sc.headerEntries && /warlock spells?|warlock('s)? spell list/i.test(JSON.stringify(sc.headerEntries)))
+		}
+	},
+
+	_adjustSpellcasting_getWarlockNumSpellsKnown (level) {
+		return level <= 9 ? level + 1 : 10 + Math.ceil((level - 10) / 2);
+	},
+
+	_adjustSpellcasting_getWarlockNumSpellSlots (level) {
+		return level === 1 ? 1 : level < 11 ? 2 : level < 17 ? 3 : 4;
+	},
+
+	_adjustSpellcasting_getWarlockNumArcanum (level) {
+		return level < 11 ? 0 : level < 13 ? 1 : level < 15 ? 2 : level < 17 ? 3 : 4;
 	}
 };

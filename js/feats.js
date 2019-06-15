@@ -22,11 +22,13 @@ async function onJsonLoad (data) {
 		header: "Prerequisite",
 		items: ["Ability", "Race", "Proficiency", "Spellcasting"]
 	});
-	filterBox = await pInitFilterBox(
-		sourceFilter,
-		asiFilter,
-		prereqFilter
-	);
+	filterBox = await pInitFilterBox({
+		filters: [
+			sourceFilter,
+			asiFilter,
+			prereqFilter
+		]
+	});
 
 	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
@@ -98,10 +100,10 @@ function addFeats (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${ftI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${ftI}" href="#${UrlUtil.autoEncodeHash(feat)}" title="${name}">
-					<span class="name col-3-8">${name}</span>
+					<span class="name col-3-8 pl-0">${name}</span>
 					<span class="ability col-3-5 ${ability.asText === STR_NONE ? "list-entry-none " : ""}">${ability.asText}</span>
 					<span class="prerequisite col-3 ${(prereqText === STR_NONE ? "list-entry-none " : "")}">${prereqText}</span>
-					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(feat.source)}" title="${Parser.sourceJsonToFull(feat.source)}">${Parser.sourceJsonToAbv(feat.source)}</span>
+					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${Parser.sourceJsonToAbv(feat.source)}</span>
 					
 					<span class="uniqueid hidden">${feat.uniqueId ? feat.uniqueId : ftI}</span>
 				</a>
@@ -150,9 +152,9 @@ function getSublistItem (feat, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(feat)}" title="${feat.name}">
-				<span class="name col-4">${feat.name}</span>
+				<span class="name col-4 pl-0">${feat.name}</span>
 				<span class="ability col-4 ${feat._slAbility === STR_NONE ? "list-entry-none" : ""}">${feat._slAbility}</span>
-				<span class="prerequisite col-4 ${feat._slPrereq === STR_NONE ? "list-entry-none" : ""}">${feat._slPrereq}</span>
+				<span class="prerequisite col-4 ${feat._slPrereq === STR_NONE ? "list-entry-none" : ""} pr-0">${feat._slPrereq}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

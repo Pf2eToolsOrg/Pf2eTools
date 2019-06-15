@@ -453,7 +453,7 @@ const BookUtil = {
 		function handleNotFound () {
 			if (!window.location.hash) window.history.back();
 			else {
-				$(`.initial-message`).text(`Loading failed\u2014could not find a book with id "${bookId}"`);
+				$(`.initial-message`).text(`Loading failed\u2014could not find ${Parser.getArticle(BookUtil.contentType)} ${BookUtil.contentType} with ID "${bookId}." You may need to load it as homebrew.`);
 				throw new Error(`No book with ID: ${bookId}`);
 			}
 		}

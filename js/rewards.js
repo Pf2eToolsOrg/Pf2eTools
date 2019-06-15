@@ -20,7 +20,7 @@ const typeFilter = new Filter({
 });
 let filterBox;
 async function onJsonLoad (data) {
-	filterBox = await pInitFilterBox(sourceFilter, typeFilter);
+	filterBox = await pInitFilterBox({filters: [sourceFilter, typeFilter]});
 
 	list = ListUtil.search({
 		valueNames: ["name", "source", "uniqueid"],
@@ -80,10 +80,10 @@ function addRewards (data) {
 		if (ExcludeUtil.isExcluded(reward.name, "reward", reward.source)) continue;
 
 		tempString += `
-			<li class='row' ${FLTR_ID}='${rwI}' onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id='${rwI}' href="#${UrlUtil.autoEncodeHash(reward)}" title="${reward.name}">
-					<span class='name col-10'>${reward.name}</span>
-					<span class='source col-2 text-align-center ${Parser.sourceJsonToColor(reward.source)}' title="${Parser.sourceJsonToFull(reward.source)}">${Parser.sourceJsonToAbv(reward.source)}</span>
+			<li class="row" ${FLTR_ID}="${rwI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
+				<a id="${rwI}" href="#${UrlUtil.autoEncodeHash(reward)}" title="${reward.name}">
+					<span class="name col-10 pl-0">${reward.name}</span>
+					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(reward.source)} pr-0" title="${Parser.sourceJsonToFull(reward.source)}" ${BrewUtil.sourceJsonToStyle(reward.source)}>${Parser.sourceJsonToAbv(reward.source)}</span>
 					
 					<span class="uniqueid hidden">${reward.uniqueId ? reward.uniqueId : rwI}</span>
 				</a>
@@ -131,7 +131,7 @@ function getSublistItem (reward, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(reward)}" title="${reward.name}">
-				<span class="name col-12">${reward.name}</span>
+				<span class="name col-12 px-0">${reward.name}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

@@ -186,14 +186,16 @@ async function onJsonLoad (data) {
 		umbrellaItems: ["Choose"]
 	});
 
-	filterBox = await pInitFilterBox(
-		sourceFilter,
-		asiFilter,
-		sizeFilter,
-		speedFilter,
-		traitFilter,
-		languageFilter
-	);
+	filterBox = await pInitFilterBox({
+		filters: [
+			sourceFilter,
+			asiFilter,
+			sizeFilter,
+			speedFilter,
+			traitFilter,
+			languageFilter
+		]
+	});
 
 	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
@@ -263,7 +265,7 @@ function addRaces (data) {
 			race.darkvision === 120 ? "Superior Darkvision" : race.darkvision ? "Darkvision" : null,
 			race.hasSpellcasting ? "Spellcasting" : null
 		].filter(it => it).concat(race.traitTags || []);
-		race._fSources = ListUtil.getCompleteSources(race);
+		race._fSources = ListUtil.getCompleteFilterSources(race);
 
 		race._slAbility = ability.asTextShort;
 
@@ -271,12 +273,12 @@ function addRaces (data) {
 		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(race.name);
 
 		tempString +=
-			`<li class="row" ${FLTR_ID}='${rcI}' onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id='${rcI}' href="#${UrlUtil.autoEncodeHash(race)}" title="${race.name}">
-					<span class='name col-4'>${race.name}</span>
-					<span class='ability col-4'>${ability.asTextShort}</span>
-					<span class='size col-2'>${Parser.sizeAbvToFull(race.size)}</span>
-					<span class='source col-2 text-align-center ${Parser.sourceJsonToColor(race.source)}' title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
+			`<li class="row" ${FLTR_ID}="${rcI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
+				<a id="${rcI}" href="#${UrlUtil.autoEncodeHash(race)}" title="${race.name}">
+					<span class="name col-4 pl-0">${race.name}</span>
+					<span class="ability col-4">${ability.asTextShort}</span>
+					<span class="size col-2">${Parser.sizeAbvToFull(race.size)}</span>
+					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(race.source)} pr-0" title="${Parser.sourceJsonToFull(race.source)}" ${BrewUtil.sourceJsonToStyle(race.source)}>${Parser.sourceJsonToAbv(race.source)}</span>
 					${bracketMatch ? `<span class="clean-name hidden">${bracketMatch[2]} ${bracketMatch[1]}</span>` : ""}
 					
 					<span class="uniqueid hidden">${race.uniqueId ? race.uniqueId : rcI}</span>
@@ -332,9 +334,9 @@ function getSublistItem (race, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(race)}" title="${race.name}">
-				<span class="name col-5">${race.name}</span>
+				<span class="name col-5 pl-0">${race.name}</span>
 				<span class="ability col-5">${race._slAbility}</span>
-				<span class="size col-2">${Parser.sizeAbvToFull(race.size)}</span>
+				<span class="size col-2 pr-0">${Parser.sizeAbvToFull(race.size)}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
@@ -361,11 +363,7 @@ function loadhash (id) {
 		$pgContent.append(`
 		<tbody>
 		${Renderer.utils.getBorderTr()}
-		<tr><th class="name" colspan="6">
-		<span class="stats-name copyable" onclick="Renderer.utils._pHandleNameClick(this, '${race.source.escapeQuotes()}')">${race.name}</span>
-		${race.soundClip ? getPronunciationButton() : ""}
-		<span class="stats-source ${Parser.sourceJsonToColor(race.source)}" title="${Parser.sourceJsonToFull(race.source)}">${Parser.sourceJsonToAbv(race.source)}</span>
-		</th></tr>
+		${Renderer.utils.getNameTr(race, {pronouncePart: race.soundClip ? getPronunciationButton() : ""})}
 		<tr><td colspan="6"><b>Ability Scores:</b> ${(race.ability ? Renderer.getAbilityData(race.ability) : {asText: "None"}).asText}</td></tr>
 		<tr><td colspan="6"><b>Size:</b> ${Parser.sizeAbvToFull(race.size)}</td></tr>
 		<tr><td colspan="6"><b>Speed:</b> ${Parser.getSpeedString(race)}</td></tr>

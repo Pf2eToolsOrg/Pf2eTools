@@ -28,10 +28,12 @@ async function onJsonLoad (data) {
 		displayFn: conditionDiseaseTypeToFull,
 		deselFn: (it) => it === "d"
 	});
-	filterBox = await pInitFilterBox(
-		sourceFilter,
-		typeFilter
-	);
+	filterBox = await pInitFilterBox({
+		filters: [
+			sourceFilter,
+			typeFilter
+		]
+	});
 
 	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
@@ -91,9 +93,9 @@ function addConditions (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${cdI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id='${cdI}' href='#${UrlUtil.autoEncodeHash(it)}' title="${it.name}">
-					<span class="type col-3 text-align-center">${conditionDiseaseTypeToFull(it._type)}</span>
-					<span class='name col-7'>${it.name}</span>
-					<span class='source col-2 text-align-center ${Parser.sourceJsonToColor(it.source)}' title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
+					<span class="type col-3 text-align-center pl-0">${conditionDiseaseTypeToFull(it._type)}</span>
+					<span class="name col-7">${it.name}</span>
+					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
 					
 					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : cdI}</span>
 				</a>
@@ -127,7 +129,7 @@ function getSublistItem (cond, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(cond)}">
-				<span class="name col-12">${cond.name}</span>
+				<span class="name col-12 px-0">${cond.name}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

@@ -40,10 +40,12 @@ async function onJsonLoad (data) {
 		displayFn: Parser.trapHazTypeToFull,
 		itemSortFn: filterTypeSort
 	});
-	filterBox = await pInitFilterBox(
-		sourceFilter,
-		typeFilter
-	);
+	filterBox = await pInitFilterBox({
+		filters: [
+			sourceFilter,
+			typeFilter
+		]
+	});
 
 	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
@@ -103,14 +105,13 @@ function addTrapsHazards (data) {
 		const it = trapsAndHazardsList[thI];
 		if (!Renderer.traphazard.isTrap(it.trapHazType) && ExcludeUtil.isExcluded(it.name, "hazard", it.source)) continue;
 		else if (Renderer.traphazard.isTrap(it.trapHazType) && ExcludeUtil.isExcluded(it.name, "trap", it.source)) continue;
-		const abvSource = Parser.sourceJsonToAbv(it.source);
 
 		tempString += `
 			<li class="row" ${FLTR_ID}="${thI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${thI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class="name col-6">${it.name}</span>
+					<span class="name col-6 pl-0">${it.name}</span>
 					<span class="trapType col-4">${Parser.trapHazTypeToFull(it.trapHazType)}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(abvSource)}" title="${Parser.sourceJsonToFull(it.source)}">${abvSource}</span>
+					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
 					
 					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : thI}</span>
 				</a>
@@ -159,8 +160,8 @@ function getSublistItem (it, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-				<span class="name col-8">${it.name}</span>
-				<span class="type col-4">${Parser.trapHazTypeToFull(it.trapHazType)}</span>
+				<span class="name col-8 pl-0">${it.name}</span>
+				<span class="type col-4 pr-0">${Parser.trapHazTypeToFull(it.trapHazType)}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

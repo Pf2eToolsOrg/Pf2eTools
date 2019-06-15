@@ -824,12 +824,13 @@ class InitiativeTracker {
 				const $row = $(e);
 				const $conds = $row.find(`.init__cond`);
 				const $iptDisplayName = $row.find(`input.displayName`);
+				const customName = $row.hasClass(`dm-init-row-rename`) ? $row.find(`.dm-init-row-link-name`).text() : null;
 				const n = $iptDisplayName.length ? {
 					n: $row.find(`input.name`).val(),
 					d: $iptDisplayName.val(),
 					s: $row.find(`input.scaledCr`).val() || ""
 				} : $row.find(`input.name`).val();
-				return {
+				const out = {
 					n,
 					k: getStatColsState($row),
 					h: $row.find(`input.hp`).val(),
@@ -839,7 +840,9 @@ class InitiativeTracker {
 					s: $row.find(`input.source`).val(),
 					c: $conds.length ? $conds.map((i, e) => $(e).data("getState")()).get() : [],
 					v: $row.find(`.dm_init__btn_eye`).hasClass(`btn-primary`)
-				}
+				};
+				if (customName) out.m = customName;
+				return out;
 			}).get();
 			return {
 				r: rows,
@@ -880,6 +883,8 @@ class InitiativeTracker {
 					c: $conds.length ? $conds.map((i, e) => $(e).data("getState")()).get() : [],
 					k: statsVals
 				};
+
+				if ($row.hasClass("dm-init-row-rename")) out.m = $row.find(`.dm-init-row-link-name`).text();
 
 				const hp = Number($row.find(`input.hp`).val());
 				const hpMax = Number($row.find(`input.hp-max`).val());
@@ -958,6 +963,7 @@ class InitiativeTracker {
 		function makeRow (opts) {
 			let {
 				nameOrMeta,
+				customName,
 				hp,
 				hpMax,
 				init,
@@ -969,6 +975,7 @@ class InitiativeTracker {
 				isVisible
 			} = Object.assign({
 				nameOrMeta: "",
+				customName: "",
 				hp: "",
 				hpMax: "",
 				init: "",
@@ -1027,6 +1034,23 @@ class InitiativeTracker {
 						</span>
 					</div>
 				`).appendTo($wrpLhs);
+
+				const setCustomName = (name) => {
+					$monName.find(`a`).addClass("dm-init-row-link-name").text(name);
+					$wrpRow.addClass("dm-init-row-rename");
+				};
+
+				if (customName) setCustomName(customName);
+
+				const $wrpBtnsRhs = $(`<div/>`).appendTo($monName);
+				$(`<button class="btn btn-default btn-xs dm-init-lockable" title="Rename" tabindex="-1"><span class="glyphicon glyphicon-pencil"></span></button>`)
+					.click(async () => {
+						if (cfg.isLocked) return;
+						const nuName = await InputUiUtil.pGetUserString({title: "Enter Name"});
+						if (nuName == null || !nuName.trim()) return;
+						setCustomName(nuName);
+						doSort(cfg.sort);
+					}).appendTo($wrpBtnsRhs);
 				$(`<button class="btn btn-success btn-xs dm-init-lockable" title="Add Another (SHIFT for Roll New)" tabindex="-1"><span class="glyphicon glyphicon-plus"></span></button>`)
 					.click((evt) => {
 						if (cfg.isLocked) return;
@@ -1040,7 +1064,8 @@ class InitiativeTracker {
 							isVisible: $wrpRow.find(`.dm_init__btn_eye`).hasClass("btn-primary")
 						});
 						doSort(cfg.sort);
-					}).appendTo($monName);
+					}).appendTo($wrpBtnsRhs);
+
 				$(`<input class="source hidden" value="${source}">`).appendTo($wrpLhs);
 
 				if (nameOrMeta instanceof Object && nameOrMeta.scaledTo) {
@@ -1252,6 +1277,10 @@ class InitiativeTracker {
 						const $e = $(e);
 						const id = $e.attr("data-id");
 						const $ipt = $e.find(`input`);
+
+						// avoid race conditions -- the input is still to be populated
+						if ($ipt.attr("populate-running") === "true") return;
+
 						const isCb = $ipt.attr("type") === "checkbox";
 						existing[id] = {
 							v: isCb ? $ipt.prop("checked") : $ipt.val(),
@@ -1291,12 +1320,14 @@ class InitiativeTracker {
 							.change(() => doUpdateExternalStates());
 
 						const populateFromBlock = () => {
+							$ipt.attr("populate-running", true);
 							const meta = InitiativeTracker.STAT_COLUMNS[c.p];
 							if (isMon && meta) {
 								const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY]({name: name, source: source});
 								const populateStats = async () => {
 									const mon = await Renderer.hover.pCacheAndGet(UrlUtil.PG_BESTIARY, source, hash);
 									$ipt.val(meta.get(mon));
+									$ipt.removeAttr("populate-running");
 									doUpdateExternalStates();
 								};
 								populateStats();
@@ -1332,9 +1363,7 @@ class InitiativeTracker {
 			}
 
 			const $rows = $wrpEntries.find(`.dm-init-row`);
-			$rows.each((i, e) => {
-				populateRowStatCols($(e));
-			});
+			$rows.each((i, e) => populateRowStatCols($(e)));
 			cfg.statsCols.forEach(c => c.po = null);
 		};
 
@@ -1362,8 +1391,16 @@ class InitiativeTracker {
 		function doSort (mode) {
 			if (cfg.sort !== mode) return;
 			const sorted = $wrpEntries.find(`.dm-init-row`).sort((a, b) => {
-				let aVal = $(a).find(`input.${cfg.sort === ALPHA ? "name" : "score"}`).val();
-				let bVal = $(b).find(`input.${cfg.sort === ALPHA ? "name" : "score"}`).val();
+				let aVal;
+				let bVal;
+
+				if (cfg.sort === ALPHA && $(a).hasClass("dm-init-row-rename")) {
+					aVal = $(a).find(".dm-init-row-link-name").text();
+				} else aVal = $(a).find(`input.${cfg.sort === ALPHA ? "name" : "score"}`).val();
+				if (cfg.sort === ALPHA && $(b).hasClass("dm-init-row-rename")) {
+					bVal = $(b).find(".dm-init-row-link-name").text();
+				} else bVal = $(b).find(`input.${cfg.sort === ALPHA ? "name" : "score"}`).val();
+
 				let first = 0;
 				let second = 0;
 				if (cfg.sort === NUM) {
@@ -1379,7 +1416,7 @@ class InitiativeTracker {
 					const $bNum = $(b).find(`span[data-number]`);
 					if ($bNum.length) bVal2 = $bNum.data("number");
 
-					first = cfg.dir === ASC ? SortUtil.ascSort(aVal, bVal) : SortUtil.ascSort(bVal, aVal);
+					first = cfg.dir === ASC ? SortUtil.ascSortLower(aVal, bVal) : SortUtil.ascSortLower(bVal, aVal);
 					second = cfg.dir === ASC ? SortUtil.ascSort(aVal2, bVal2) : SortUtil.ascSort(bVal2, aVal2);
 				}
 				return first || second;
@@ -1408,6 +1445,7 @@ class InitiativeTracker {
 			(state.r || []).forEach(r => {
 				makeRow({
 					nameOrMeta: r.n,
+					customName: r.m,
 					hp: r.h,
 					hpMax: r.g,
 					init: r.i,
@@ -1589,11 +1627,9 @@ class InitiativeTracker {
 						});
 					});
 					loadState(toLoad, cfg.importIsAppend);
-					handleStatColsChange();
 				});
 			} else {
 				loadState(toLoad, cfg.importIsAppend);
-				handleStatColsChange();
 			}
 		}
 

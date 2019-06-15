@@ -20,7 +20,7 @@ async function onJsonLoad (data) {
 		listClass: "variantRules"
 	});
 
-	filterBox = await pInitFilterBox(sourceFilter);
+	filterBox = await pInitFilterBox({filters: [sourceFilter]});
 
 	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
@@ -71,26 +71,26 @@ function addVariantRules (data) {
 
 	let tempString = "";
 	for (; rlI < rulesList.length; rlI++) {
-		const curRule = rulesList[rlI];
-		if (ExcludeUtil.isExcluded(curRule.name, "variantrule", curRule.source)) continue;
+		const rule = rulesList[rlI];
+		if (ExcludeUtil.isExcluded(rule.name, "variantrule", rule.source)) continue;
 
 		const searchStack = [];
-		for (const e1 of curRule.entries) {
+		for (const e1 of rule.entries) {
 			Renderer.getNames(searchStack, e1);
 		}
 
 		// populate table
 		tempString += `
 			<li class="row" ${FLTR_ID}="${rlI}" onclick="ListUtil.toggleSelected(event, this)">
-				<a id="${rlI}" href="#${UrlUtil.autoEncodeHash(curRule)}" title="${curRule.name}">
-					<span class="name col-10">${curRule.name}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(curRule.source)}" title="${Parser.sourceJsonToFull(curRule.source)}">${Parser.sourceJsonToAbv(curRule.source)}</span>
+				<a id="${rlI}" href="#${UrlUtil.autoEncodeHash(rule)}" title="${rule.name}">
+					<span class="name col-10 pl-0">${rule.name}</span>
+					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(rule.source)} pr-0" title="${Parser.sourceJsonToFull(rule.source)}" ${BrewUtil.sourceJsonToStyle(rule.source)}>${Parser.sourceJsonToAbv(rule.source)}</span>
 					<span class="search hidden">${searchStack.join(",")}</span>
 				</a>
 			</li>`;
 
 		// populate filters
-		sourceFilter.addItem(curRule.source);
+		sourceFilter.addItem(rule.source);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	$("ul.variantRules").append(tempString);
@@ -108,13 +108,16 @@ function addVariantRules (data) {
 	});
 	ListUtil.bindPinButton();
 	Renderer.hover.bindPopoutButton(rulesList);
+	UrlUtil.bindLinkExportButton(filterBox);
+	ListUtil.bindDownloadButton();
+	ListUtil.bindUploadButton();
 }
 
 function getSublistItem (rule, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(rule)}" title="${rule.name}">
-				<span class="name col-12">${rule.name}</span>
+				<span class="name col-12 px-0">${rule.name}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

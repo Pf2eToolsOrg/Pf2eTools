@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"type": "object",
 	"properties": {
 		"adventure": {
@@ -12,6 +12,34 @@
 						"type": "string"
 					},
 					"id": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"alAveragePlayerLevel": {
+						"description": "Adventurers League APL; for use in homebrew.",
+						"type": "integer"
+					},
+					"alLength": {
+						"description": "Adventurers League length (in hours); for use in homebrew.",
+						"type": "object",
+						"oneOf": [
+							{
+								"properties": {
+									"min": {"type": "integer"},
+									"max": {"type": "integer"}
+								}
+							},
+							{
+								"properties": {
+									"exact": {"type": "integer"}
+								}
+							}
+						]
+					},
+					"alId": {
+						"description": "Adventurers League ID; for use in homebrew.",
 						"type": "string"
 					},
 					"contents": {
@@ -128,6 +156,7 @@
 				"required": [
 					"name",
 					"id",
+					"source",
 					"contents",
 					"level",
 					"published",

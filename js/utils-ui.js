@@ -108,10 +108,19 @@ class UiUtil {
 		return $(`<${tag} class="ui-modal__row"/>`).appendTo($modalInner);
 	}
 
-	static $getAddModalRowHeader ($modalInner, headerText, helpText) {
+	/**
+	 * @param $modalInner Element this row should be added to.
+	 * @param headerText Header text.
+	 * @param [opts] Options object.
+	 * @param [opts.helpText] Help text (title) of select dropdown.
+	 * @param [opts.$eleRhs] Element to attach to the right-hand side of the header.
+	 */
+	static $getAddModalRowHeader ($modalInner, headerText, opts) {
+		opts = opts || {};
 		const $row = UiUtil.$getAddModalRow($modalInner, "h5").addClass("bold");
-		$row.text(headerText);
-		if (helpText) $row.attr("title", helpText);
+		if (opts.$eleRhs) $$`<div class="split flex-v-center full-width pr-1"><span>${headerText}</span>${opts.$eleRhs}</div>`.appendTo($row);
+		else $row.text(headerText);
+		if (opts.helpText) $row.attr("title", opts.helpText);
 		return $row;
 	}
 
@@ -124,9 +133,84 @@ class UiUtil {
 			.on("change", () => objectWithProp[propName] = $cb.prop("checked"));
 		return $cb;
 	}
+
+	/**
+	 *
+	 * @param $modalInner Element this row should be added to.
+	 * @param labelText Row label.
+	 * @param objectWithProp Object to mutate when changing select values.
+	 * @param propName Property to set in `objectWithProp`.
+	 * @param values Values to display in select dropdown.
+	 * @param [opts] Options object.
+	 * @param [opts.helpText] Help text (title) of select dropdown.
+	 * @param [opts.fnDisplay] Function used to map values to displayable versions.
+	 */
+	static $getAddModalRowSel ($modalInner, labelText, objectWithProp, propName, values, opts) {
+		opts = opts || {};
+		const $row = UiUtil.$getAddModalRow($modalInner, "label").addClass(`ui-modal__row--sel`);
+		if (opts.helpText) $row.attr("title", opts.helpText);
+		$row.append(`<span>${labelText}</span>`);
+		const $sel = $(`<select class="form-control input-xs width-30">`).appendTo($row);
+		values.forEach((val, i) => $(`<option value="${i}"/>`).text(opts.fnDisplay ? opts.fnDisplay(val) : val).appendTo($sel));
+		// N.B. this doesn't support null values
+		const ix = values.indexOf(objectWithProp[propName]);
+		$sel.val(`${~ix ? ix : 0}`)
+			.change(() => objectWithProp[propName] = values[$sel.val()]);
+		return $sel;
+	}
 }
 UiUtil.SEARCH_RESULTS_CAP = 75;
 UiUtil.TYPE_TIMEOUT_MS = 100; // auto-search after 100ms
+
+class TabUiUtil {
+	static decorate (obj) {
+		obj.__tabMetas = {};
+
+		/**
+		 * @param ix The tabs ordinal index.
+		 * @param name The name to display on the tab.
+		 * @param opts Options object.
+		 * @param opts.tabGroup User-defined string identifying which group of tabs this belongs to.
+		 * @param opts.stateObj The state object in which this tab should track/set its active status. Usually a proxy.
+		 * @param [opts.hasBorder] True if the tab should compensate for having a top border; i.e. pad itself.
+		 * @param [opts.cbTabChange] Callback function to call on tab change.
+		 */
+		obj._getTab = function (ix, name, opts) {
+			opts.tabGroup = opts.tabGroup || "_default";
+
+			const activeProp = `activeTab__${opts.tabGroup}`;
+
+			if (!obj.__tabMetas[opts.tabGroup]) obj.__tabMetas[opts.tabGroup] = [];
+			const tabMeta = obj.__tabMetas[opts.tabGroup];
+			opts.stateObj[activeProp] = opts.stateObj[activeProp] || 0;
+
+			const isActive = opts.stateObj[activeProp] === ix;
+
+			const $btnTab = $(`<button class="btn btn-default stat-tab ${isActive ? "stat-tab-sel" : ""}">${name}</button>`)
+				.click(() => {
+					const prevTab = tabMeta[opts.stateObj[activeProp]];
+					prevTab.$btnTab.removeClass("stat-tab-sel");
+					prevTab.$wrpTab.hide();
+
+					opts.stateObj[activeProp] = ix;
+					$btnTab.addClass("stat-tab-sel");
+					$wrpTab.show();
+					if (opts.cbTabChange) opts.cbTabChange();
+				});
+
+			const $wrpTab = $(`<div class="ui-tab__wrp-tab-body ${opts.hasBorder ? "ui-tab__wrp-tab-body--border" : ""}" ${isActive ? `style="display: block;"` : ""}/>`);
+
+			const out = {ix, $btnTab, $wrpTab};
+			tabMeta[ix] = out;
+			return out;
+		};
+
+		obj._resetTabs = function (tabGroup) {
+			tabGroup = tabGroup || "_default";
+			obj.__tabMetas[tabGroup] = [];
+		};
+	}
+}
 
 // TODO have this respect the blacklist?
 class SearchUiUtil {
@@ -148,12 +232,22 @@ class SearchUiUtil {
 
 		const additionalData = {};
 		if (options.additionalIndices) {
-			await Promise.all(options.additionalIndices.map(async add => additionalData[add] = Omnidexer.decompressIndex(await DataUtil.loadJSON(`search/index-${add}.json`))));
+			await Promise.all(options.additionalIndices.map(async add => {
+				additionalData[add] = Omnidexer.decompressIndex(await DataUtil.loadJSON(`search/index-${add}.json`));
+				const maxId = additionalData[add].last().id;
+				const brewIndex = await BrewUtil.pGetAdditionalSearchIndices(maxId, add);
+				if (brewIndex.length) additionalData[add] = additionalData[add].concat(brewIndex);
+			}));
 		}
 
 		const alternateData = {};
 		if (options.alternateIndices) {
-			await Promise.all(options.alternateIndices.map(async alt => alternateData[alt] = Omnidexer.decompressIndex(await DataUtil.loadJSON(`search/index-alt-${alt}.json`))));
+			await Promise.all(options.alternateIndices.map(async alt => {
+				alternateData[alt] = Omnidexer.decompressIndex(await DataUtil.loadJSON(`search/index-alt-${alt}.json`));
+				const maxId = alternateData[alt].last().id;
+				const brewIndex = await BrewUtil.pGetAlternateSearchIndices(maxId, alt);
+				if (brewIndex.length) alternateData[alt] = alternateData[alt].concat(brewIndex);
+			}));
 		}
 
 		const fromDeepIndex = (d) => d.d; // flag for "deep indexed" content that refers to the same item

@@ -115,8 +115,8 @@ class ClassList {
 	static _renderClass (classToRender, id) {
 		return `<li class="row" ${FLTR_ID}="${id}" ${classToRender.uniqueId ? `data-unique-id="${classToRender.uniqueId}"` : ""}>
 				<a id="${id}" href="${HashLoad.getClassHash(classToRender)}" title="${classToRender.name}">
-					<span class="name col-8">${classToRender.name}</span>
-					<span class="source col-4 text-align-center ${Parser.sourceJsonToColor(classToRender.source)}" title="${Parser.sourceJsonToFull(classToRender.source)}">
+					<span class="name col-8 pl-0">${classToRender.name}</span>
+					<span class="source col-4 text-align-center ${Parser.sourceJsonToColor(classToRender.source)}" title="${Parser.sourceJsonToFull(classToRender.source)} pr-0" ${BrewUtil.sourceJsonToStyle(classToRender.source)}>
 						${Parser.sourceJsonToAbv(classToRender.source)}
 					</span>
 					<span class="uniqueid hidden">${classToRender.uniqueId ? classToRender.uniqueId : id}</span>
@@ -220,7 +220,7 @@ class FeatureDescription {
 			if (sc.name === "Shadow (UA)" && sc.source === SRC_UALDR) return false;
 			if (sc.name === "The Undying Light (UA)" && sc.source === SRC_UALDR) return false;
 
-			const nonUa = ClassDisplay.curClass.subclasses.find(sc => !_isNonStandardSource(sc) && sc.name.replace(/(v\d+)?\s*\((UA|SCAG|PSA|Livestream)\)/, "").trim() === sc.name);
+			const nonUa = ClassDisplay.curClass.subclasses.find(it => !_isNonStandardSource(it) && it.name.replace(/(v\d+)?\s*\((UA|SCAG|PSA|Livestream)\)/, "").trim() === sc.name);
 			if (nonUa) return false;
 		}
 		return true;
@@ -244,8 +244,18 @@ class HashLoad {
 		ClassDisplay.curClass = ClassData.classes[id];
 
 		// name
+		const $btnShowHideSidebar = $(`<div class="cls__btn-toggle-sidebar">[\u2012]</div>`)
+			.click(() => {
+				const nxtShow = $btnShowHideSidebar.text().includes("+");
+				$(`.cls__sidebar-visible`).toggle(nxtShow);
+				$btnShowHideSidebar.text(`[${nxtShow ? "\u2012" : "+"}]`);
+			});
+
 		$("th#nameTable").html(ClassDisplay.curClass.name);
-		$("th#nameSummary").html(ClassDisplay.curClass.name);
+		$("th#nameSummary").empty().append($$`<div class="split flex-v-center">
+			<div>${ClassDisplay.curClass.name}</div>
+			<div>${$btnShowHideSidebar}</div>
+		</div>`);
 		if (ClassDisplay.curClass.authors) {
 			$("th#author").html(`By ${ClassDisplay.curClass.authors.join(", ")}`).show();
 		} else {
@@ -559,7 +569,13 @@ class HashLoad {
 			const pillPostText = reprinted || _isNonStandardSource(sc) ? "" : ` (${Parser.sourceJsonToAbv(sc.source)})`;
 			const $pill = $(`<span class="${styleClasses.join(" ")}" ${ATB_DATA_SC}="${sc.name}" ${ATB_DATA_SRC}="${
 				ClassData.cleanScSource(sc.source)}" title="Source: ${Parser.sourceJsonToFull(sc.source)}"><span>${pillText}<span class="sc_pill__source_suffix">${pillPostText}</span></span></span>`);
-			$pill.click(() => HashLoad.handleSubclassClick($pill.hasClass(CLSS_ACTIVE), subClasses[i].name, ClassData.cleanScSource(subClasses[i].source)));
+			const handlePillClick = () => HashLoad.handleSubclassClick($pill.hasClass(CLSS_ACTIVE), subClasses[i].name, ClassData.cleanScSource(subClasses[i].source));
+			$pill.click(handlePillClick)
+				.contextmenu(evt => {
+					if (evt.ctrlKey) return;
+					evt.preventDefault();
+					handlePillClick();
+				});
 			if (nonStandardSource) $pill.hide();
 			HashLoad.subclassPillWrapper.append($pill);
 		}
@@ -584,6 +600,14 @@ class HashLoad {
 			$pill.attr("data-state", state);
 			$pill.find(`span`).text(STRS_SOURCE_STATES[state]);
 			HashLoad.setSourceState(state);
+		}).contextmenu(evt => {
+			if (evt.ctrlKey) return;
+			evt.preventDefault();
+			let state = Number($pill.attr("data-state"));
+			if (--state < 0) state = STRS_SOURCE_STATES.length - 1;
+			$pill.attr("data-state", state);
+			$pill.find(`span`).text(STRS_SOURCE_STATES[state]);
+			HashLoad.setSourceState(state);
 		});
 	}
 
@@ -592,11 +616,14 @@ class HashLoad {
 		const pill = $(`<span title="${title}" id="${pillId}" class="sc_pill"><span>${pillText}</span></span>`);
 		if (defaultActive) pill.addClass(pillActiveClass);
 		HashLoad.subclassPillWrapper.append(pill);
-		pill.click(function () {
+		const onPillClick = function (evt) {
+			if (evt.ctrlKey) return;
+			evt.preventDefault();
 			let active = $(this).hasClass(pillActiveClass);
 			if (!defaultActive) active = !active;
 			handleToggleFeaturesClicks(active)
-		});
+		};
+		pill.click(onPillClick).contextmenu(onPillClick);
 		return pill;
 
 		function handleToggleFeaturesClicks (isPillActive) {
@@ -916,9 +943,20 @@ class SubClassLoader {
 		const $fluffToggle = $(`#${ID_FLUFF_TOGGLE}`);
 		const $fluff = $pgContent.find(`.${CLSS_CLASS_FLUFF}`);
 		if (!showFluff) {
+			ClassList.classList.items.forEach(it => {
+				const $e = $(it.elm).find("a");
+				const nuHref = $e.attr("href").split(HASH_PART_SEP)[0];
+				$e.attr("href", nuHref);
+			});
 			$fluffToggle.removeClass(CLSS_FLUFF_ACTIVE);
 			$fluff.hide();
 		} else {
+			ClassList.classList.items.forEach(it => {
+				const $e = $(it.elm).find("a");
+				const nuHrefBase = $e.attr("href").split(HASH_PART_SEP)[0];
+				const nuHref = [nuHrefBase, `${HASH_SHOW_FLUFF}${true}`].join(HASH_PART_SEP);
+				$e.attr("href", nuHref);
+			});
 			$fluffToggle.addClass(CLSS_FLUFF_ACTIVE);
 			$fluff.show();
 		}
@@ -1063,7 +1101,7 @@ class SubClassLoader {
 				const $hr = $nav.find(`hr`);
 				const $navBody = $nav.find(`.nav-body`).empty();
 				const $navHead = $nav.find(`.nav-head`);
-				$navHead.find(`div`).off("click").on("click", () => {
+				$navHead.find(`.nav-outline`).off("click").on("click", () => {
 					$navBody.toggle();
 					$hr.toggle();
 					const nextState = Number(!Number($navHead.attr("data-state")));
@@ -1332,7 +1370,7 @@ function handleBrew (homebrew) {
 }
 
 async function doPageInit () {
-	filterBox = await pInitFilterBox(sourceFilter);
+	filterBox = await pInitFilterBox({filters: [sourceFilter], isCompact: true});
 
 	// filtering function
 	$(filterBox).on(

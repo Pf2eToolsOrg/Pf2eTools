@@ -8,6 +8,7 @@ const BLACKLIST_FILE_PREFIXES = [
 
 	// specific files
 	"roll20-tables.json",
+	"roll20-items.json",
 	"makebrew-creature.json",
 	"srd-spells.json",
 	"srd-monsters.json",

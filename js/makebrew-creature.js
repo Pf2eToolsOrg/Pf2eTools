@@ -6,6 +6,7 @@ class CreatureBuilder extends Builder {
 
 		this._bestiaryMetaRaw = null;
 		this._bestiaryFluffIndex = null;
+		this._bestiaryTypeTags = null;
 		// FUTURE mechanism to update this select/etc if the user creates/edits homebrew legendary groups
 		this._bestiaryMetaCache = null;
 		this._legendaryGroups = null;
@@ -24,8 +25,7 @@ class CreatureBuilder extends Builder {
 
 		this._$btnSave = null;
 
-		this._tabMetaInput = [];
-		this._tabMetaOutput = [];
+		TabUiUtil.decorate(this);
 
 		this._$eles = {};
 
@@ -41,14 +41,21 @@ class CreatureBuilder extends Builder {
 	set ixBrew (val) { this._metaProxy.ixBrew = val; }
 
 	async pInit () {
-		this._bestiaryMetaRaw = await DataUtil.loadJSON("data/bestiary/meta.json");
+		const [bestiaryMetaRaw, bestiaryFluffIndex, jsonCreature, bestiaryIndex] = await Promise.all([
+			DataUtil.loadJSON("data/bestiary/meta.json"),
+			DataUtil.loadJSON("data/bestiary/fluff-index.json"),
+			DataUtil.loadJSON("data/makebrew-creature.json"),
+			DataUtil.loadJSON("data/bestiary/index.json")
+		]);
+
+		this._bestiaryFluffIndex = bestiaryFluffIndex;
+
+		this._bestiaryMetaRaw = bestiaryMetaRaw;
 		this._legendaryGroups = [...this._bestiaryMetaRaw.legendaryGroup, ...(BrewUtil.homebrew.legendaryGroup || [])];
 		this._bestiaryMetaCache = {};
 		this._legendaryGroups.forEach(it => (this._bestiaryMetaCache[it.source] = (this._bestiaryMetaCache[it.source] || {}))[it.name] = it);
 
-		this._bestiaryFluffIndex = await DataUtil.loadJSON("data/bestiary/fluff-index.json");
-
-		this._jsonCreature = await DataUtil.loadJSON("data/makebrew-creature.json");
+		this._jsonCreature = await jsonCreature;
 		this._indexedTraits = elasticlunr(function () {
 			this.addField("n");
 			this.setRef("id");
@@ -58,6 +65,11 @@ class CreatureBuilder extends Builder {
 			n: it.name,
 			id: i
 		}));
+
+		const allTypes = new Set();
+		const bestiaryData = await Promise.all(Object.values(bestiaryIndex).map(file => DataUtil.loadJSON(`data/bestiary/${file}`)));
+		bestiaryData.forEach(it => it.monster.forEach(mon => mon.type && mon.type.tags ? mon.type.tags.forEach(tp => allTypes.add(tp.tag || tp)) : ""));
+		this._bestiaryTypeTags = [...allTypes];
 	}
 
 	renderSideMenu () {
@@ -463,11 +475,10 @@ class CreatureBuilder extends Builder {
 		this._cbCache = cb; // cache for use when updating sources
 
 		// initialise tabs
-		this._tabMetaInput = [];
-		this._metaProxy.activeTabInput = this._metaProxy.activeTabInput || 0;
-		const tabs = ["Info", "Race", "Core", "Defence", "Abilities", "Flavor/Misc"].map((it, ix) => this._getTab(ix, it, {isActive: ix === this._metaProxy.activeTabInput, hasBorder: true}));
+		this._resetTabs("input");
+		const tabs = ["Info", "Race", "Core", "Defence", "Abilities", "Flavor/Misc"].map((it, ix) => this._getTab(ix, it, {hasBorder: true, tabGroup: "input", stateObj: this._metaProxy, cbTabChange: this._saveTemp.bind(this)}));
 		const [infoTab, raceTab, coreTab, defenseTab, abilTab, miscTab] = tabs;
-		$$`<div class="flex-v-center full-width no-shrink mkbru__wrp-tab-heads--border">${tabs.map(it => it.$btnTab)}</div>`.appendTo($wrp);
+		$$`<div class="flex-v-center full-width no-shrink ui-tab__wrp-tab-heads--border">${tabs.map(it => it.$btnTab)}</div>`.appendTo($wrp);
 		tabs.forEach(it => it.$wrpTab.appendTo($wrp));
 
 		// INFO
@@ -572,29 +583,6 @@ class CreatureBuilder extends Builder {
 		// - otherSources: requires meta support
 	}
 
-	_getTab (ix, name, options) {
-		options = options || {};
-		const tabMeta = options.isOutput ? this._tabMetaOutput : this._tabMetaInput;
-		const $btnTab = $(`<button class="btn btn-default stat-tab ${options.isActive ? "stat-tab-sel" : ""}">${name}</button>`)
-			.click(() => {
-				const activeProp = options.isOutput ? "activeTabOutput" : "activeTabInput";
-				const prevTab = tabMeta[this._metaProxy[activeProp]];
-				prevTab.$btnTab.removeClass("stat-tab-sel");
-				prevTab.$wrpTab.hide();
-
-				this._metaProxy[activeProp] = ix;
-				$btnTab.addClass("stat-tab-sel");
-				$wrpTab.show();
-				this._saveTemp();
-			});
-
-		const $wrpTab = $(`<div class="mkbru__wrp-tab-body ${options.hasBorder ? "mkbru__wrp-tab-body--border" : ""}" ${options.isActive ? `style="display: block;"` : ""}/>`);
-
-		const out = {ix, $btnTab, $wrpTab};
-		tabMeta[ix] = out;
-		return out;
-	}
-
 	__$getSourceInput (cb) {
 		return BuilderUi.$getStateIptEnum(
 			"Source",
@@ -673,11 +661,11 @@ class CreatureBuilder extends Builder {
 
 		const $btnAddTag = $(`<button class="btn btn-xs btn-default">Add Tag</button>`)
 			.click(() => {
-				const $tagRow = CreatureBuilder.__$getTypeInput__getTagRow(null, tagRows, setStateCreature);
+				const $tagRow = this.__$getTypeInput__getTagRow(null, tagRows, setStateCreature);
 				$wrpTagRows.append($tagRow.$wrp);
 			});
 
-		const $initialTagRows = initial.tags ? initial.tags.map(tag => CreatureBuilder.__$getTypeInput__getTagRow(tag, tagRows, setStateCreature)) : null;
+		const $initialTagRows = initial.tags ? initial.tags.map(tag => this.__$getTypeInput__getTagRow(tag, tagRows, setStateCreature)) : null;
 
 		const $wrpTagRows = $$`<div>${$initialTagRows ? $initialTagRows.map(it => it.$wrp) : ""}</div>`;
 		const $stageType = $$`<div class="mt-2">
@@ -699,7 +687,7 @@ class CreatureBuilder extends Builder {
 		return $row;
 	}
 
-	static __$getTypeInput__getTagRow (tag, tagRows, setStateCreature) {
+	__$getTypeInput__getTagRow (tag, tagRows, setStateCreature) {
 		const $iptPrefix = $(`<input class="form-control input-xs form-control--minimal mr-2" placeholder="Prefix">`)
 			.change(() => {
 				$iptTag.removeClass("error-background");
@@ -713,13 +701,25 @@ class CreatureBuilder extends Builder {
 				setStateCreature();
 			});
 		if (tag) $iptTag.val(tag.tag || tag);
+		const $btnAddGeneric = $(`<button class="btn btn-xs btn-default mr-2">Add Tag...</button>`)
+			.click(async () => {
+				const tag = await InputUiUtil.pGetUserString({
+					title: "Enter a Tag",
+					autocomplete: this._bestiaryTypeTags
+				});
+
+				if (tag != null) {
+					$iptTag.val(tag);
+					setStateCreature();
+				}
+			});
 		const $btnRemove = $(`<button class="btn btn-xs btn-danger" title="Remove Row"><span class="glyphicon glyphicon-trash"/></button>`)
 			.click(() => {
 				tagRows.splice(tagRows.indexOf(out), 1);
 				$wrp.empty().remove();
 				setStateCreature();
 			});
-		const $wrp = $$`<div class="flex mb-2">${$iptPrefix}${$iptTag}${$btnRemove}</div>`;
+		const $wrp = $$`<div class="flex mb-2">${$iptPrefix}${$iptTag}${$btnAddGeneric}${$btnRemove}</div>`;
 		const out = {$wrp, $iptPrefix, $iptTag};
 		tagRows.push(out);
 		return out;
@@ -1091,7 +1091,7 @@ class CreatureBuilder extends Builder {
 			}
 		};
 
-		this._registerHook("state", "con", conHook);
+		this._addHook("state", "con", conHook);
 
 		const hpSimpleAverageHook = () => { // no proxy required, due to being inside a child object
 			if (this._metaProxy.autoCalc.hpAverageSimple) {
@@ -1341,8 +1341,8 @@ class CreatureBuilder extends Builder {
 			const hook = () => {
 				if (this._metaProxy.profSave[prop] === 1) _setFromAbility();
 			};
-			this._registerHook("state", prop, hook);
-			this._registerHook("meta", "profBonus", hook);
+			this._addHook("state", prop, hook);
+			this._addHook("meta", "profBonus", hook);
 
 			return $$`<div class="flex-v-center flex-col mr-1 mb-2">
 			<span class="mr-2 bold">${prop.toUpperCase()}</span>
@@ -1421,8 +1421,8 @@ class CreatureBuilder extends Builder {
 				if (this._metaProxy.profSkill[prop] === 1) _setFromAbility();
 				else if (this._metaProxy.profSkill[prop] === 2) _setFromAbility(true);
 			};
-			this._registerHook("state", abilProp, hook);
-			this._registerHook("meta", "profBonus", hook);
+			this._addHook("state", abilProp, hook);
+			this._addHook("meta", "profBonus", hook);
 
 			return $$`<div class="flex-v-center mb-2">
 			<span class="mr-2 mkbru__sub-name--33">${name}</span>
@@ -1437,14 +1437,19 @@ class CreatureBuilder extends Builder {
 	}
 
 	__$getSaveSkillInput__handleValChange (cb, mode, $iptVal, prop) {
+		// ensure to overwrite the entire object, so that any hooks trigger
 		const raw = $iptVal.val();
 		if (raw && raw.trim()) {
 			const num = Number(raw);
-			(this._stateProxy[mode] = this._stateProxy[mode] || {})[prop] = num < 0 ? `${num}` : `+${num}`;
+			const nextState = {...this._stateProxy[mode]} || {};
+			nextState[prop] = num < 0 ? `${num}` : `+${num}`;
+			this._stateProxy[mode] = nextState;
 		} else {
 			if (this._stateProxy[mode]) {
-				delete this._stateProxy[mode][prop];
-				if (Object.keys(this._stateProxy[mode]).length === 0) delete this._stateProxy[mode];
+				const nextState = {...this._stateProxy[mode]};
+				delete nextState[prop];
+				if (Object.keys(nextState).length === 0) delete this._stateProxy[mode];
+				else this._stateProxy[mode] = nextState;
 			}
 		}
 		cb();
@@ -1465,8 +1470,8 @@ class CreatureBuilder extends Builder {
 				cb();
 			}
 		};
-		this._registerHook("state", "wis", hook);
-		this._registerHook("state", "skill", hook);
+		this._addHook("state", "wis", hook);
+		this._addHook("state", "skill", hook);
 
 		const $iptPerception = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number">`)
 			.change(() => {
@@ -1835,7 +1840,7 @@ class CreatureBuilder extends Builder {
 				cb();
 			}
 		};
-		this._registerHook("state", "cr", hook);
+		this._addHook("state", "cr", hook);
 
 		const $iptProfBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" min="0">`)
 			.val(this._getProfBonus())
@@ -2945,9 +2950,8 @@ class CreatureBuilder extends Builder {
 		const $wrp = this._ui.$wrpOutput.empty();
 
 		// initialise tabs
-		this._tabMetaOutput = [];
-		this._metaProxy.activeTabOutput = this._metaProxy.activeTabOutput || 0;
-		const tabs = ["Statblock", "Info", "Images"].map((it, ix) => this._getTab(ix, it, {isActive: ix === this._metaProxy.activeTabOutput, isOutput: true}));
+		this._resetTabs("output");
+		const tabs = ["Statblock", "Info", "Images"].map((it, ix) => this._getTab(ix, it, {tabGroup: "output", stateObj: this._metaProxy, cbTabChange: this._saveTemp.bind(this)}));
 		const [statTab, infoTab, imageTab] = tabs;
 		$$`<div class="flex-v-center full-width no-shrink">${tabs.map(it => it.$btnTab)}</div>`.appendTo($wrp);
 		tabs.forEach(it => it.$wrpTab.appendTo($wrp));

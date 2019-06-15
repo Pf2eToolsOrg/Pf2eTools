@@ -57,13 +57,11 @@ class Omnidexer {
 	 * @param arbiter The indexer arbiter.
 	 * @param json A raw JSON object of a file, typically containing an array to be indexed.
 	 * @param options Options object.
-	 * @param options.idOffset An offset for the ID.
 	 * @param options.isNoFilter If filtering rules are to be ignored (e.g. for tests).
 	 * @param options.alt Sub-options for alternate indices.
 	 */
 	addToIndex (arbiter, json, options) {
 		options = options || {};
-		if (options.idOffset) this.id += options.idOffset;
 		const index = this._index;
 		let id = this.id;
 
@@ -256,8 +254,8 @@ Omnidexer.TO_INDEX = [
 	},
 	{
 		category: Parser.CAT_ID_ITEM,
-		file: "basicitems.json",
-		listProp: "basicitem",
+		file: "items-base.json",
+		listProp: "baseitem",
 		baseUrl: "items.html",
 		hover: true
 	},
@@ -465,7 +463,16 @@ Omnidexer.TO_INDEX = [
 		},
 		additionalIndexes: {
 			item: async (indexer, rawVariants) => {
-				const specVars = await UtilSearchIndex._node_pGetBasicVariantItems(rawVariants);
+				const specVars = await (async () => {
+					if (typeof module !== "undefined") return Renderer.item.getAllIndexableItems(rawVariants, require(`../data/items-base.json`));
+					else {
+						const baseItemJson = await DataUtil.loadJSON(`data/items-base.json`);
+						const rawBaseItems = {...baseItemJson, baseitem: [...baseItemJson.baseitem]};
+						const brew = await BrewUtil.pAddBrewData();
+						if (brew.baseitem) rawBaseItems.baseitem.push(...brew.baseitem);
+						return Renderer.item.getAllIndexableItems(rawVariants, rawBaseItems);
+					}
+				})();
 				return specVars.map(sv => {
 					const out = {
 						c: Parser.CAT_ID_ITEM,

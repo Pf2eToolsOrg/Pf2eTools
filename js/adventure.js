@@ -30,6 +30,8 @@ function onJsonLoad (data) {
 	BookUtil.homebrewData = "adventureData";
 	BookUtil.initLinkGrabbers();
 
+	BookUtil.contentType = "adventure";
+
 	addAdventures(data);
 
 	$(`.book-head-message`).text(`Select an adventure from the list on the left`);
@@ -60,7 +62,6 @@ function addAdventures (data) {
 
 	adventures = adventures.concat(data.adventure);
 	BookUtil.bookIndex = adventures;
-	BookUtil.contentType = "adventure";
 
 	const adventuresList = $("ul.contents");
 	let tempString = "";

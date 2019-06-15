@@ -46,8 +46,8 @@ function sortItems (a, b, o) {
 	} else return 0;
 }
 
-let mundanelist;
-let magiclist;
+let mundaneList;
+let magicList;
 const sourceFilter = getSourceFilter();
 const DEFAULT_HIDDEN_TYPES = new Set(["$", "Futuristic", "Modern", "Renaissance"]);
 const typeFilter = new Filter({header: "Type", deselFn: (it) => DEFAULT_HIDDEN_TYPES.has(it)});
@@ -72,7 +72,7 @@ async function populateTablesAndFilters (data) {
 	});
 	const miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Magic", "Mundane", "Sentient"]});
 
-	filterBox = await pInitFilterBox(sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, costFilter, focusFilter, miscFilter, lootTableFilter, attachedSpellsFilter);
+	filterBox = await pInitFilterBox({filters: [sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, costFilter, focusFilter, miscFilter, lootTableFilter, attachedSpellsFilter]});
 
 	const mundaneOptions = {
 		valueNames: ["name", "type", "cost", "weight", "source", "uniqueid"],
@@ -80,14 +80,14 @@ async function populateTablesAndFilters (data) {
 		sortClass: "none",
 		sortFunction: sortItems
 	};
-	mundanelist = ListUtil.search(mundaneOptions);
+	mundaneList = ListUtil.search(mundaneOptions);
 	const magicOptions = {
 		valueNames: ["name", "type", "weight", "rarity", "source", "uniqueid"],
 		listClass: "magic",
 		sortClass: "none",
 		sortFunction: sortItems
 	};
-	magiclist = ListUtil.search(magicOptions);
+	magicList = ListUtil.search(magicOptions);
 
 	const mundaneWrapper = $(`.ele-mundane`);
 	const magicWrapper = $(`.ele-magic`);
@@ -100,18 +100,18 @@ async function populateTablesAndFilters (data) {
 		handleFilterChange();
 	});
 	const $outVisibleResults = $(`.lst__wrp-search-visible`);
-	mundanelist.__listVisible = true;
-	mundanelist.on("updated", () => {
-		hideListIfEmpty(mundanelist, mundaneWrapper);
-		const current = mundanelist.visibleItems.length + magiclist.visibleItems.length;
-		const total = mundanelist.items.length + magiclist.items.length;
+	mundaneList.__listVisible = true;
+	mundaneList.on("updated", () => {
+		hideListIfEmpty(mundaneList, mundaneWrapper);
+		const current = mundaneList.visibleItems.length + magicList.visibleItems.length;
+		const total = mundaneList.items.length + magicList.items.length;
 		$outVisibleResults.html(`${current}/${total}`);
 	});
-	magiclist.__listVisible = true;
-	magiclist.on("updated", () => {
-		hideListIfEmpty(magiclist, magicWrapper);
-		const current = mundanelist.visibleItems.length + magiclist.visibleItems.length;
-		const total = mundanelist.items.length + magiclist.items.length;
+	magicList.__listVisible = true;
+	magicList.on("updated", () => {
+		hideListIfEmpty(magicList, magicWrapper);
+		const current = mundaneList.visibleItems.length + magicList.visibleItems.length;
+		const total = mundaneList.items.length + magicList.items.length;
 		$outVisibleResults.html(`${current}/${total}`);
 	});
 
@@ -139,7 +139,7 @@ async function populateTablesAndFilters (data) {
 		const direction = $this.data("sortby") === "asc" ? "desc" : "asc";
 		$this.data("sortby", direction);
 		SortUtil.handleFilterButtonClick.call(this, "#filtertools-mundane", $this, direction);
-		mundanelist.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortItems});
+		mundaneList.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortItems});
 	});
 
 	$("#filtertools-magic").find("button.sort").on("click", function (evt) {
@@ -149,7 +149,7 @@ async function populateTablesAndFilters (data) {
 
 		$this.data("sortby", direction);
 		SortUtil.handleFilterButtonClick.call(this, "#filtertools-magic", $this, direction);
-		magiclist.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortItems});
+		magicList.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortItems});
 	});
 
 	$("#itemcontainer").find("h3").not(":has(input)").click(function () {
@@ -188,7 +188,7 @@ async function populateTablesAndFilters (data) {
 		.catch(BrewUtil.pPurgeBrew)
 		.then(async () => {
 			BrewUtil.makeBrewButton("manage-brew");
-			BrewUtil.bind({lists: [mundanelist, magiclist], filterBox, sourceFilter});
+			BrewUtil.bind({lists: [mundaneList, magicList], filterBox, sourceFilter});
 			await ListUtil.pLoadState();
 			RollerUtil.addListRollButton();
 			ListUtil.addListShowHide();
@@ -218,11 +218,6 @@ function addItems (data) {
 		Renderer.item.enhanceItem(item);
 
 		const name = item.name;
-		const rarity = item.rarity;
-		const category = item.category;
-		const source = item.source;
-		const sourceAbv = Parser.sourceJsonToAbv(source);
-		const sourceFull = Parser.sourceJsonToFull(source);
 		const tierTags = [];
 		tierTags.push(item.tier ? item.tier : "None");
 
@@ -231,7 +226,7 @@ function addItems (data) {
 		item._fProperties = item.property ? item.property.map(p => item._allPropertiesPtr[p].name).filter(n => n) : [];
 		item._fMisc = item.sentient ? ["Sentient"] : [];
 		if (item.curse) item._fMisc.push("Cursed");
-		const isMundane = rarity === "None" || rarity === "Unknown" || category === "Basic";
+		const isMundane = item.rarity === "None" || item.rarity === "Unknown" || item.category === "Basic";
 		item._fMisc.push(isMundane ? "Mundane" : "Magic");
 		if (item.ability) item._fMisc.push("Ability Score Adjustment");
 		if (item.charges) item._fMisc.push("Charges");
@@ -263,14 +258,14 @@ function addItems (data) {
 			liList["mundane"] += `
 			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(item)}" title="${name}">
-					<span class="name col-3">${name}</span>
+					<span class="name col-3 pl-0">${name}</span>
 					<span class="type col-4-3">${item.typeListText}</span>
 					<span class="col-1-5 text-align-center">${item.value || item.valueMult ? Parser.itemValueToFull(item, true).replace(/ +/g, "\u00A0") : "\u2014"}</span>
 					<span class="col-1-5 text-align-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
-					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(item.source)}" title="${sourceFull}">${sourceAbv}</span>
+					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${Parser.sourceJsonToAbv(item.source)}</span>
+					
 					<span class="cost hidden">${item._fCost}</span>
 					<span class="weight hidden">${Parser.weightValueToNumber(item.weight)}</span>
-					
 					<span class="uniqueid hidden">${item.uniqueId ? item.uniqueId : itI}</span>
 				</a>
 			</li>`;
@@ -278,27 +273,27 @@ function addItems (data) {
 			liList["magic"] += `
 			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(item)}" title="${name}">
-					<span class="name col-3-5">${name}</span>
+					<span class="name col-3-5 pl-0">${name}</span>
 					<span class="type col-3-3">${item.typeListText}</span>
 					<span class="col-1-5 text-align-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
-					<span class="rarity col-2">${rarity}</span>
-					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(item.source)}" title="${sourceFull}">${sourceAbv}</span>
-					<span class="weight hidden">${Parser.weightValueToNumber(item.weight)}</span>
+					<span class="rarity col-2">${item.rarity}</span>
+					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}">${Parser.sourceJsonToAbv(item.source)}</span>
 					
+					<span class="weight hidden">${Parser.weightValueToNumber(item.weight)}</span>
 					<span class="uniqueid hidden">${item.uniqueId ? item.uniqueId : itI}</span>
 				</a>
 			</li>`;
 		}
 
 		// populate filters
-		sourceFilter.addItem(source);
+		sourceFilter.addItem(item.source);
 		item.procType.forEach(t => typeFilter.addItem(t));
 		tierTags.forEach(tt => tierFilter.addItem(tt));
 		item._fProperties.forEach(p => propertyFilter.addItem(p));
 		attachedSpellsFilter.addItem(item.attachedSpells);
 		lootTableFilter.addItem(item.lootTables);
 	}
-	const lastSearch = ListUtil.getSearchTermAndReset(mundanelist, magiclist);
+	const lastSearch = ListUtil.getSearchTermAndReset(mundaneList, magicList);
 	// populate table
 	$("ul.list.mundane").append(liList.mundane);
 	$("ul.list.magic").append(liList.magic);
@@ -306,21 +301,21 @@ function addItems (data) {
 	$(`h3.ele-mundane span.side-label`).text("Mundane");
 	$(`h3.ele-magic span.side-label`).text("Magic");
 
-	mundanelist.reIndex();
-	magiclist.reIndex();
+	mundaneList.reIndex();
+	magicList.reIndex();
 	if (lastSearch) {
-		mundanelist.search(lastSearch);
-		magiclist.search(lastSearch);
+		mundaneList.search(lastSearch);
+		magicList.search(lastSearch);
 	}
-	mundanelist.sort("name", {order: "desc"});
-	magiclist.sort("name", {order: "desc"});
+	mundaneList.sort("name", {order: "desc"});
+	magicList.sort("name", {order: "desc"});
 	filterBox.render();
 	handleFilterChange();
 
 	ListUtil.setOptions({
 		itemList: itemList,
 		getSublistRow: getSublistItem,
-		primaryLists: [mundanelist, magiclist]
+		primaryLists: [mundaneList, magicList]
 	});
 	ListUtil.bindAddButton();
 	ListUtil.bindSubtractButton();
@@ -350,8 +345,8 @@ function handleFilterChange () {
 			i.attachedSpells
 		);
 	}
-	mundanelist.filter(listFilter);
-	magiclist.filter(listFilter);
+	mundaneList.filter(listFilter);
+	magicList.filter(listFilter);
 	FilterBox.selectFirstVisible(itemList);
 }
 
@@ -374,10 +369,11 @@ function getSublistItem (item, pinId, addCount) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(item)}" title="${item.name}">
-				<span class="name col-6">${item.name}</span>
+				<span class="name col-6 pl-0">${item.name}</span>
 				<span class="weight text-align-center col-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
 				<span class="price text-align-center col-2">${item.value ? item.value.replace(/ +/g, "\u00A0") : "\u2014"}</span>
-				<span class="count text-align-center col-2">${addCount || 1}</span>
+				<span class="count text-align-center col-2 pr-0">${addCount || 1}</span>
+				
 				<span class="cost hidden">${item._fCost}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>

@@ -12,12 +12,14 @@ const languageFilter = new Filter({header: "Language Proficiencies", displayFn: 
 let filterBox;
 
 window.onload = async function load () {
-	filterBox = await pInitFilterBox(
-		sourceFilter,
-		skillFilter,
-		toolFilter,
-		languageFilter
-	);
+	filterBox = await pInitFilterBox({
+		filters: [
+			sourceFilter,
+			skillFilter,
+			toolFilter,
+			languageFilter
+		]
+	});
 	await ExcludeUtil.pInitialise();
 	SortUtil.initHandleFilterButtonClicks();
 	onJsonLoad(await DataUtil.loadJSON(JSON_URL));
@@ -90,9 +92,9 @@ function addBackgrounds (data) {
 		tempString +=
 			`<li class="row" ${FLTR_ID}="${bgI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${bgI}" href="#${UrlUtil.autoEncodeHash(bg)}" title="${bg.name}">
-					<span class="name col-4">${bg.name.replace("Variant ", "")}</span>
+					<span class="name col-4 pl-0">${bg.name.replace("Variant ", "")}</span>
 					<span class="skills col-6">${skillDisplay}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(bg.source)}" title="${Parser.sourceJsonToFull(bg.source)}">${Parser.sourceJsonToAbv(bg.source)}</span>
+					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(bg.source)}" title="${Parser.sourceJsonToFull(bg.source)} pr-0" ${BrewUtil.sourceJsonToStyle(bg.source)}>${Parser.sourceJsonToAbv(bg.source)}</span>
 					
 					<span class="uniqueid hidden">${bg.uniqueId ? bg.uniqueId : bgI}</span>
 				</a>
@@ -144,8 +146,8 @@ function getSublistItem (bg, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(bg)}" title="${bg.name}">
-				<span class="name col-4">${bg.name}</span>
-				<span class="name col-8">${Renderer.background.getSkillSummary(bg.skillProficiencies || [], true)}</span>
+				<span class="name col-4 pl-0">${bg.name}</span>
+				<span class="name col-8 pr-0">${Renderer.background.getSkillSummary(bg.skillProficiencies || [], true)}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>

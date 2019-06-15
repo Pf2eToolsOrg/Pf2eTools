@@ -80,7 +80,9 @@ async function onJsonLoad (data) {
 		deselFn: (it) => { return it === STR_REPRINTED }
 	});
 
-	filterBox = await pInitFilterBox(sourceFilter, alignmentFilter, pantheonFilter, categoryFilter, domainFilter, miscFilter);
+	filterBox = await pInitFilterBox({
+		filters: [sourceFilter, alignmentFilter, pantheonFilter, categoryFilter, domainFilter, miscFilter]
+	});
 
 	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
@@ -134,7 +136,6 @@ function addDeities (data) {
 	for (; dtI < deitiesList.length; dtI++) {
 		const g = deitiesList[dtI];
 		if (ExcludeUtil.isExcluded(g.name, "deity", g.source)) continue;
-		const abvSource = Parser.sourceJsonToAbv(g.source);
 
 		g._fAlign = unpackAlignment(g);
 		if (!g.category) g.category = STR_NONE;
@@ -146,11 +147,11 @@ function addDeities (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${dtI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${dtI}" href="#${UrlUtil.autoEncodeHash(g)}" title="${g.name}">
-					<span class="name col-3">${g.name}</span>
+					<span class="name col-3 pl-0">${g.name}</span>
 					<span class="pantheon col-2 text-align-center">${g.pantheon}</span>
 					<span class="alignment col-2 text-align-center">${g.alignment.join("")}</span>
 					<span class="domains col-3 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""}">${g.domains.join(", ")}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(abvSource)}" title="${Parser.sourceJsonToFull(g.source)}">${abvSource}</span>
+					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(g.source)} pr-0" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${Parser.sourceJsonToAbv(g.source)}</span>
 					
 					<span class="uniqueid hidden">${g.uniqueId ? g.uniqueId : dtI}</span>
 				</a>
@@ -203,10 +204,10 @@ function getSublistItem (g, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(g)}" title="${g.name}">
-				<span class="name col-4">${g.name}</span>
+				<span class="name col-4 pl-0">${g.name}</span>
 				<span class="pantheon col-2">${g.pantheon}</span>
 				<span class="alignment col-2">${g.alignment.join("")}</span>
-				<span class="domains col-4 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""}">${g.domains.join(", ")}</span>
+				<span class="domains col-4 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""} pr-0">${g.domains.join(", ")}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
@@ -240,7 +241,7 @@ function loadhash (jsonIndex) {
 	const $content = $(`#pagecontent`).empty();
 	$content.append(`
 		${Renderer.utils.getBorderTr()}
-		${Renderer.utils.getNameTr(deity, false, "", deity.title ? `, ${deity.title.toTitleCase()}` : "")}
+		${Renderer.utils.getNameTr(deity, {suffix: deity.title ? `, ${deity.title.toTitleCase()}` : ""})}
 		${getDeityBody(deity)}
 		${deity.reprinted ? `<tr class="text"><td colspan="6"><i class="text-muted">Note: this deity has been reprinted in a newer publication.</i></td></tr>` : ""}
 		${Renderer.utils.getPageTr(deity)}

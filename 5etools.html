@@ -187,7 +187,7 @@
 			<p>Get Tampermonkey (<a
 					href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo">Chrome</a>/<a
 					href="https://addons.mozilla.org/firefox/addon/tampermonkey/">Firefox</a>), and install the 5etools companion script using
-				this <a href="https://get.5e.tools/script/betteR20-5etools.user.js">link</a>! This
+				this <a href="https://get.5e.tools/script/betteR20-5etools.user.js" id="betteR20_link">link</a>! This
 				userscript allows you to import much of 5etools' data without paying a dime.</p>
 			<p><b>Please note: the script currently depends on <a href="https://ssstormy.github.io/roll20-enhancement-suite/">
 				Roll20 Enhancement Suite</a>, an external browser extension, to function.</b> Please ensure you have the
@@ -246,7 +246,7 @@
 <footer class="container">
 	<p class="text-align-center">
 		Version
-		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.75.6<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
+		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.75.16<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
 		| <span style="text-decoration: red line-through">&nbsp;&copy;&nbsp;</span><span id="current_year">2019</span> 5etools
 		<br>
 		<i>5etools&reg; is a Registered Trademark of The Norr Group Ltd. All rights reserved.</i>
@@ -271,6 +271,9 @@
 	$demoRoller.html(Renderer.get().render(`{@dice ${$demoRoller.html()}}`));
 
 	$(`#current_year`).text((new Date).getFullYear());
+
+	const $lnkB20 = $(`#betteR20_link`);
+	$lnkB20.attr("href", `${$lnkB20.attr("href")}?ver=${VERSION_NUMBER}`);
 
 	// TAG Disabled until further notice
 	/*

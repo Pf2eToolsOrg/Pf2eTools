@@ -2,19 +2,20 @@
 
 version=$1
 
+# Set the IS_DEPLOYED variable for production.
+sed -i 's/IS_DEPLOYED\s*=\s*undefined/IS_DEPLOYED='"\"${version}\""'/g' js/utils.js
+
 echo "Making the javascript cry (Minifying)."
 for f in js/*.js
 do
-    # utils.js minification is broken. Remove this 'if' when fixed.
-    if [ "$f" == "utils.js" ] ; then
-          continue;
-    fi
-    npm run uglifyjs -- --compress --mangle -o "$f" -- "$f"
+    npm run minify -- "$f" --out-file "$f"
 done
 
 echo "Optimizing the header."
 # Header / Day-Night mode
-npm run uglifyjs -- js/styleswitch.js js/navigation.js -o js/header.js -c -m
+npm run minify -- js/styleswitch.js --out-file js/styleswitch.js
+npm run minify -- js/navigation.js --out-file js/navigation.js
+cat js/styleswitch.js <(echo ";") js/navigation.js > js/header.js
 rm js/styleswitch.js js/navigation.js
 
 # Replace the files with the minified version we made above
@@ -41,9 +42,6 @@ find . -type f -name '*.html' -print0 |
     done
 
 echo "Replacing local files with combined jsdelivr."
-
-# Set the IS_DEPLOYED variable for production.
-sed -i 's/IS_DEPLOYED\s*=\s*undefined/IS_DEPLOYED='"\"${version}\""'/g' js/utils.js
 
 find . -type f -name '*.html' -print0 |
     while IFS= read -r -d $'\0' line; do

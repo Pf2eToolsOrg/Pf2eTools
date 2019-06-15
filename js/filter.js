@@ -58,10 +58,18 @@ class FilterBox {
 		}
 	}
 
-	constructor ($wrpFormTop, $btnReset, filters) {
-		this._$wrpFormTop = $wrpFormTop;
-		this._$btnReset = $btnReset;
-		this._filters = filters;
+	/**
+	 * @param opts Options object.
+	 * @param opts.$wrpFormTop Form input group.
+	 * @param opts.$btnReset Form reset button.
+	 * @param opts.filters Array of filters to be included in this box.
+	 * @param [opts.isCompact] True if this box should have a compact/reduced UI.
+	 */
+	constructor (opts) {
+		this._$wrpFormTop = opts.$wrpFormTop;
+		this._$btnReset = opts.$btnReset;
+		this._filters = opts.filters;
+		this._isCompact = opts.isCompact;
 
 		this._doSaveStateDebounced = MiscUtil.debounce(() => this._pDoSaveState(), 50);
 		ProxyUtil.decorate(this);
@@ -69,12 +77,14 @@ class FilterBox {
 		this._meta = this._getProxy(this.__meta, "meta");
 		this.__minisHidden = {};
 		this._minisHidden = this._getProxy(this.__minisHidden, "minisHidden");
+		this.__combineAs = {};
+		this._combineAs = this._getProxy(this.__combineAs, "combineAs");
 		this._$body = $(`body`);
 		this._$overlay = null;
 	}
 
 	registerMinisHiddenHook (prop, hook) {
-		this._registerHook("minisHidden", prop, hook);
+		this._addHook("minisHidden", prop, hook);
 	}
 
 	isMinisHidden (header) {
@@ -92,6 +102,7 @@ class FilterBox {
 	_setStateFromLoaded (state) {
 		Object.assign(this._meta, state.meta);
 		Object.assign(this._minisHidden, state.minisHidden);
+		Object.assign(this._combineAs, state.combineAs);
 	}
 
 	async _pDoSaveState () {
@@ -100,7 +111,8 @@ class FilterBox {
 		const toSave = {
 			box: {
 				meta: {...this.__meta},
-				minisHidden: {...this.__minisHidden}
+				minisHidden: {...this.__minisHidden},
+				combineAs: {...this.__combineAs}
 			},
 			filters: filterOut
 		};
@@ -129,10 +141,20 @@ class FilterBox {
 			const $btnSettings = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-cog"/></button>`)
 				.click(() => this._openSettingsModal());
 
-			const $btnCombineFiltersAs = $(`<button class="btn btn-xs btn-default mr-3"/>`)
-				.click(() => this._meta.modeAndOr = this._meta.modeAndOr === "and" ? "or" : "and");
-			const hook = () => $btnCombineFiltersAs.text(this._meta.modeAndOr.toUpperCase());
-			this._registerHook("meta", "modeAndOr", hook);
+			const $wrpBtnCombineFilters = $(`<div class="btn-group mr-3"></div>`);
+			const $btnCombineFilterSettings = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-cog"/></button>`)
+				.click(() => this._openCombineAsModal());
+
+			const $btnCombineFiltersAs = $(`<button class="btn btn-xs btn-default"/>`)
+				.appendTo($wrpBtnCombineFilters)
+				.click(() => this._meta.modeCombineFilters = FilterBox._COMBINE_MODES.getNext(this._meta.modeCombineFilters));
+			const hook = () => {
+				$btnCombineFiltersAs.text(this._meta.modeCombineFilters === "custom" ? this._meta.modeCombineFilters.uppercaseFirst() : this._meta.modeCombineFilters.toUpperCase());
+				if (this._meta.modeCombineFilters === "custom") $wrpBtnCombineFilters.append($btnCombineFilterSettings);
+				else $btnCombineFilterSettings.detach();
+				this._doSaveStateDebounced();
+			};
+			this._addHook("meta", "modeCombineFilters", hook);
 			hook();
 
 			$$`<div class="ui-modal__inner ui-modal__inner--large dropdown-menu">
@@ -140,7 +162,7 @@ class FilterBox {
 				<h4 class="m-0">Filters</h4>
 				<div class="flex-v-center">
 					<div class="mr-2">Combine filters as...</div>
-					${$btnCombineFiltersAs}
+					${$wrpBtnCombineFilters}
 					<div class="btn-group mr-2">
 						${$btnShowAllFilters}
 						${$btnHideAllFilters}
@@ -163,20 +185,22 @@ class FilterBox {
 				.attr("title", "Reset filters. SHIFT to reset everything.")
 				.click((evt) => this.reset(evt.shiftKey));
 
-			const $btnToggleSummaryHidden = $(`<button class="btn btn-default" title="Toggle Filter Summary Display"><span class="glyphicon glyphicon-resize-small"/></button>`)
-				.click(() => {
-					this._meta.isSummaryHidden = !this._meta.isSummaryHidden;
-					this._doSaveStateDebounced();
-				})
-				.prependTo(this._$wrpFormTop);
-			const summaryHiddenHook = () => {
-				$btnToggleSummaryHidden.toggleClass("active", !!this._meta.isSummaryHidden);
-				$wrpMini.toggleClass("hidden", !!this._meta.isSummaryHidden);
-			};
-			this._registerHook("meta", "isSummaryHidden", summaryHiddenHook);
-			summaryHiddenHook();
+			if (!this._isCompact) {
+				const $btnToggleSummaryHidden = $(`<button class="btn btn-default" title="Toggle Filter Summary Display"><span class="glyphicon glyphicon-resize-small"/></button>`)
+					.click(() => {
+						this._meta.isSummaryHidden = !this._meta.isSummaryHidden;
+						this._doSaveStateDebounced();
+					})
+					.prependTo(this._$wrpFormTop);
+				const summaryHiddenHook = () => {
+					$btnToggleSummaryHidden.toggleClass("active", !!this._meta.isSummaryHidden);
+					$wrpMini.toggleClass("hidden", !!this._meta.isSummaryHidden);
+				};
+				this._addHook("meta", "isSummaryHidden", summaryHiddenHook);
+				summaryHiddenHook();
+			}
 
-			$(`<button class="btn btn-default">Filter</button>`)
+			$(`<button class="btn btn-default ${this._isCompact ? "px-2" : ""}">Filter</button>`)
 				.click(() => this.show())
 				.prependTo(this._$wrpFormTop);
 		}
@@ -191,11 +215,22 @@ class FilterBox {
 	}
 
 	_openSettingsModal () {
-		const $modalInner = UiUtil.getShow$Modal({
-			title: "Settings"
-		});
-		UiUtil.$getAddModalRowHeader($modalInner, "Hide summary for filter...", "The summary is the small red and blue button panel which appear below the search bar.");
+		const $modalInner = UiUtil.getShow$Modal({title: "Settings"});
+		UiUtil.$getAddModalRowHeader($modalInner, "Hide summary for filter...", {helpText: "The summary is the small red and blue button panel which appear below the search bar."});
 		this._filters.forEach(f => UiUtil.$getAddModalRowCb($modalInner, f.header, this._minisHidden, f.header));
+	}
+
+	_openCombineAsModal () {
+		const $modalInner = UiUtil.getShow$Modal({title: "Filter Combination Logic"});
+		const $btnReset = $(`<button class="btn btn-xs btn-default">Reset</button>`)
+			.click(() => {
+				Object.keys(this._combineAs).forEach(k => {
+					this._combineAs[k] = "and";
+					$sels.forEach($sel => $sel.val("0"));
+				});
+			});
+		UiUtil.$getAddModalRowHeader($modalInner, "Combine filters as...", {$eleRhs: $btnReset});
+		const $sels = this._filters.map(f => UiUtil.$getAddModalRowSel($modalInner, f.header, this._combineAs, f.header, ["and", "or"], {fnDisplay: (it) => it.toUpperCase()}));
 	}
 
 	getValues () {
@@ -216,11 +251,16 @@ class FilterBox {
 		Object.keys(this._minisHidden).forEach(k => this._minisHidden[k] = false);
 	}
 
+	_reset_combineAs () {
+		Object.keys(this._combineAs).forEach(k => this._combineAs[k] = "and");
+	}
+
 	reset (isResetAll) {
 		this._filters.forEach(f => f.reset(isResetAll));
 		if (isResetAll) {
 			this._reset_meta();
 			this._reset_minisHidden();
+			this._reset_combineAs();
 		}
 		this.render();
 		this.fireChangeEvent();
@@ -321,6 +361,7 @@ class FilterBox {
 	_setFromSubHashState (urlHeaderToFilter, filterBoxState) {
 		let hasMeta = false;
 		let hasMinisHidden = false;
+		let hasCombineAs = false;
 
 		Object.entries(filterBoxState).forEach(([k, vals]) => {
 			const mappedK = Parser._parse_bToA(FilterBox._SUB_HASH_PREFIXES, k);
@@ -342,11 +383,23 @@ class FilterBox {
 					});
 					break;
 				}
+				case "combineAs": {
+					hasCombineAs = true;
+					Object.keys(this._combineAs).forEach(k => this._combineAs[k] = "and");
+					vals.forEach(v => {
+						const [urlHeader, ixCombineMode] = v.split("=");
+						const filter = urlHeaderToFilter[urlHeader];
+						if (!filter) throw new Error(`Could not find filter with name "${urlHeader}"`);
+						this._combineAs[filter.header] = FilterBox._COMBINE_MODES[ixCombineMode] || FilterBox._COMBINE_MODES[0];
+					});
+					break;
+				}
 			}
 		});
 
 		if (!hasMeta) this._reset_meta();
 		if (!hasMinisHidden) this._reset_minisHidden();
+		if (!hasCombineAs) this._reset_combineAs();
 	}
 
 	getSubHashes () {
@@ -373,6 +426,12 @@ class FilterBox {
 			out.push(UrlUtil.packSubHash(FilterBox._getSubhashPrefix("minisHidden"), setMinisHidden));
 		}
 
+		// serialize combineAs as `key=value` pairs
+		const setCombineAs = Object.entries(this._combineAs).filter(([k, v]) => v !== FilterBox._COMBINE_MODES[0]).map(([k]) => `${UrlUtil.pack(k)}=${FilterBox._COMBINE_MODES.indexOf(v)}`);
+		if (setCombineAs.length) {
+			out.push(UrlUtil.packSubHash(FilterBox._getSubhashPrefix("combineAs"), setCombineAs));
+		}
+
 		return out.length ? out : null;
 	}
 
@@ -381,16 +440,45 @@ class FilterBox {
 	}
 
 	toDisplay (boxState, ...entryVals) {
-		if (this._meta.modeAndOr === "and") {
-			return this._filters.map((f, i) => f.toDisplay(boxState, entryVals[i]))
+		const isAndDisplay = (filters, vals = entryVals) => {
+			return filters
+				.map((f, i) => f.toDisplay(boxState, vals[i]))
 				.every(it => it);
-		} else {
-			const res = this._filters.map((f, i) => {
+		};
+
+		const isOrDisplay = (filters, vals = entryVals) => {
+			const res = filters.map((f, i) => {
 				// filter out "ignored" filter (i.e. all white)
 				if (!boxState[f.header] || !boxState[f.header]._isActive) return null;
-				return f.toDisplay(boxState, entryVals[i]);
+				return f.toDisplay(boxState, vals[i]);
 			}).filter(it => it != null);
 			return res.length === 0 || res.find(it => it);
+		};
+
+		switch (this._meta.modeCombineFilters) {
+			case "and": return isAndDisplay(this._filters);
+			case "or": return isOrDisplay(this._filters);
+			case "custom": {
+				const andFilters = [];
+				const andValues = [];
+				const orFilters = [];
+				const orValues = [];
+
+				if (entryVals.length !== this._filters.length) throw new Error(`Number of filters and number of values did not match!`);
+				for (let i = 0; i < this._filters.length; ++i) {
+					const f = this._filters[i];
+					if (!this._combineAs[f.header] || this._combineAs[f.header] === "and") { // default to "and" if undefined
+						andFilters.push(f);
+						andValues.push(entryVals[i])
+					} else {
+						orFilters.push(f);
+						orValues.push(entryVals[i])
+					}
+				}
+
+				return isAndDisplay(andFilters, andValues) && isOrDisplay(orFilters, orValues);
+			}
+			default: throw new Error(`Unhandled combining mode "${this._meta.modeCombineFilters}"`);
 		}
 	}
 
@@ -408,30 +496,34 @@ class FilterBox {
 FilterBox.EVNT_VALCHANGE = "valchange";
 FilterBox.SOURCE_HEADER = "Source";
 FilterBox._PILL_STATES = ["ignore", "yes", "no"];
+FilterBox._COMBINE_MODES = ["and", "or", "custom"];
 FilterBox._STORAGE_KEY = "filterBoxState";
 FilterBox._DEFAULT_META = {
-	modeAndOr: "and",
+	modeCombineFilters: "and",
 	isSummaryHidden: false
 };
 
 // These are assumed to be the same length (4 characters)
 FilterBox._SUB_HASH_BOX_META_PREFIX = "fbmt";
 FilterBox._SUB_HASH_BOX_MINIS_HIDDEN_PREFIX = "fbmh";
+FilterBox._SUB_HASH_BOX_COMBINE_AS_PREFIX = "fbca";
 FilterBox._SUB_HASH_PREFIXES = {
 	meta: FilterBox._SUB_HASH_BOX_META_PREFIX,
-	minisHidden: FilterBox._SUB_HASH_BOX_MINIS_HIDDEN_PREFIX
+	minisHidden: FilterBox._SUB_HASH_BOX_MINIS_HIDDEN_PREFIX,
+	combineAs: FilterBox._SUB_HASH_BOX_COMBINE_AS_PREFIX
 };
 
 class FilterItem {
 	/**
 	 * An alternative to string `Filter.items` with a change-handling function
 	 * @param options containing:
-	 * @param options.item the item string
-	 * @param options.changeFn (optional) function to call when filter is changed
-	 * @param options.group (optional) group this item belongs to.
-	 * @param options.nest (optional) nest this item belongs to
-	 * @param options.nestHidden (optional) if nested, default visibility state
-	 * @param options.userData (optional) extra data to be stored as part of the item
+	 * @param [options.item] the item string
+	 * @param [options.changeFn] (optional) function to call when filter is changed
+	 * @param [options.group] (optional) group this item belongs to.
+	 * @param [options.nest] (optional) nest this item belongs to
+	 * @param [options.nestHidden] (optional) if nested, default visibility state
+	 * @param [options.isIgnoreRed] (optional) if this item should be ignored when negative filtering
+	 * @param [options.userData] (optional) extra data to be stored as part of the item
 	 */
 	constructor (options) {
 		this.item = options.item;
@@ -439,6 +531,7 @@ class FilterItem {
 		this.group = options.group;
 		this.nest = options.nest;
 		this.nestHidden = options.nestHidden;
+		this.isIgnoreRed = options.isIgnoreRed;
 		this.userData = options.userData;
 
 		this.$rendered = null;
@@ -704,7 +797,7 @@ class Filter extends FilterBase {
 			$btnPill.attr("state", val);
 			if (item.changeFn) item.changeFn(item.item, val);
 		};
-		this._registerHook("state", item.item, hook);
+		this._addHook("state", item.item, hook);
 		hook();
 
 		return $btnPill;
@@ -720,7 +813,7 @@ class Filter extends FilterBase {
 				this._filterBox.fireChangeEvent();
 			});
 		const hook = () => $btnMini.attr("state", FilterBox._PILL_STATES[this._state[item.item]]);
-		this._registerHook("state", item.item, hook);
+		this._addHook("state", item.item, hook);
 		hook();
 
 		const hideHook = () => $btnMini.toggleClass("hidden", this._filterBox.isMinisHidden(this.header));
@@ -762,13 +855,13 @@ class Filter extends FilterBase {
 		const $btnCombineBlue = $$`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn-logic--blue fltr__h-btn-logic" title="Positive matches mode for this filter. AND requires all blues to match, OR requires at least one blue to match."/>`
 			.click(() => this._meta.combineBlue = this._meta.combineBlue === "or" ? "and" : "or");
 		const hookCombineBlue = () => $btnCombineBlue.text(this._meta.combineBlue.toUpperCase());
-		this._registerHook("meta", "combineBlue", hookCombineBlue);
+		this._addHook("meta", "combineBlue", hookCombineBlue);
 		hookCombineBlue();
 
 		const $btnCombineRed = $$`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn-logic--red fltr__h-btn-logic" title="Negative match mode for this filter. AND requires all reds to match, OR requires at least one red to match."/>`
 			.click(() => this._meta.combineRed = this._meta.combineRed === "or" ? "and" : "or");
 		const hookCombineRed = () => $btnCombineRed.text(this._meta.combineRed.toUpperCase());
-		this._registerHook("meta", "combineRed", hookCombineRed);
+		this._addHook("meta", "combineRed", hookCombineRed);
 		hookCombineRed();
 
 		const $btnShowHide = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} ml-2">Hide</button>`)
@@ -797,7 +890,7 @@ class Filter extends FilterBase {
 				.toggle(!!cur._totals.no)
 				.appendTo($wrpSummary);
 		};
-		this._registerHook("meta", "isHidden", hookShowHide);
+		this._addHook("meta", "isHidden", hookShowHide);
 		hookShowHide();
 
 		return $$`
@@ -827,7 +920,7 @@ class Filter extends FilterBase {
 
 		this.__$wrpPills = $$`<div class="fltr__wrp-pills ${this._groupFn ? "fltr__wrp-subs" : ""}"/>`;
 		const hook = () => this.__$wrpPills.toggle(!this._meta.isHidden);
-		this._registerHook("meta", "isHidden", hook);
+		this._addHook("meta", "isHidden", hook);
 		hook();
 
 		if (this._nests) {
@@ -874,7 +967,10 @@ class Filter extends FilterBase {
 
 	getValues () {
 		const state = MiscUtil.copy(this._state);
+		// remove state for any currently-absent filters
+		Object.keys(state).filter(k => !this._items.some(it => `${it.item}` === k)).forEach(k => delete state[k]);
 		const out = {...state};
+
 		// add helper data
 		out._isActive = Object.values(state).some(Boolean);
 		out._totals = {yes: 0, no: 0, ignored: 0};
@@ -901,7 +997,7 @@ class Filter extends FilterBase {
 				it.$rendered = this._$getPill(it);
 				if (it.nest) {
 					const hook = () => it.$rendered.toggle(!this._nestsHidden[it.nest]);
-					this._registerHook("nestsHidden", it.nest, hook);
+					this._addHook("nestsHidden", it.nest, hook);
 					hook();
 				}
 			}
@@ -932,7 +1028,7 @@ class Filter extends FilterBase {
 						// bind group dividers to show/hide depending on nest visibility state
 						Object.keys(this._nests).forEach(nestName => {
 							const hook = () => this._pillGroupsMeta[group].toggleDividerFromNestVisibility();
-							this._registerHook("nestsHidden", nestName, hook);
+							this._addHook("nestsHidden", nestName, hook);
 							hook();
 							this._pillGroupsMeta[group].toggleDividerFromNestVisibility();
 						});
@@ -988,10 +1084,10 @@ class Filter extends FilterBase {
 					this._items
 						.filter(it => it.nest === nestName)
 						.find(it => {
-							this._registerHook("state", it.item, hook);
+							this._addHook("state", it.item, hook);
 						});
 
-					this._registerHook("nestsHidden", nestName, hook);
+					this._addHook("nestsHidden", nestName, hook);
 					hook();
 				}
 				nestMeta._$btnNest.appendTo(this.__$wrpNestHeadInner);
@@ -1020,7 +1116,7 @@ class Filter extends FilterBase {
 	addItem (item) {
 		if (item == null) return;
 		if (item instanceof Array) item.forEach(it => this.addItem(it));
-		else if (!this._items.find(it => Filter._addItem_checkItemMatches(it, item))) {
+		else if (!this._items.find(it => Filter._isItemsEqual(it, item))) {
 			item = item instanceof FilterItem ? item : new FilterItem({item});
 			Filter._validateItemNests([item], this._nests);
 
@@ -1030,8 +1126,21 @@ class Filter extends FilterBase {
 		}
 	}
 
-	static _addItem_checkItemMatches (existing, toAdd) {
-		return existing.item === (toAdd instanceof FilterItem ? toAdd.item : toAdd);
+	static _isItemsEqual (item1, item2) {
+		return (item1 instanceof FilterItem ? item1.item : item1) === (item2 instanceof FilterItem ? item2.item : item2);
+	}
+
+	removeItem (item) {
+		const ixItem = this._items.findIndex(it => Filter._isItemsEqual(it, item));
+		if (~ixItem) {
+			const item = this._items[ixItem];
+
+			// FIXME this doesn't remove any associated hooks, and is therefore a minor memory leak
+			this._isItemsDirty = true;
+			item.$rendered.detach();
+			item.$mini.detach();
+			this._items.splice(ixItem, 1);
+		}
 	}
 
 	addNest (nestName, nestMeta) {
@@ -1046,7 +1155,7 @@ class Filter extends FilterBase {
 			if (this._groupFn) {
 				Object.keys(this._pillGroupsMeta).forEach(group => {
 					const hook = () => this._pillGroupsMeta[group].toggleDividerFromNestVisibility();
-					this._registerHook("nestsHidden", nestName, hook);
+					this._addHook("nestsHidden", nestName, hook);
 					hook();
 					this._pillGroupsMeta[group].toggleDividerFromNestVisibility();
 				});
@@ -1061,7 +1170,7 @@ class Filter extends FilterBase {
 		const totals = filterState._totals;
 
 		if (!(entryVal instanceof Array)) entryVal = [entryVal];
-		entryVal = entryVal.map(it => it instanceof FilterItem ? it.item : it);
+		entryVal = entryVal.map(it => it instanceof FilterItem ? it : new FilterItem({item: it}));
 
 		const isUmbrella = () => {
 			if (this._umbrellaItems) {
@@ -1082,17 +1191,17 @@ class Filter extends FilterBase {
 			if (totals.yes === 0) display = true;
 
 			// if any are 1 (blue) include if they match
-			display = display || entryVal.some(tc => filterState[tc] === 1 || isUmbrella());
+			display = display || entryVal.some(fi => filterState[fi.item] === 1 || isUmbrella());
 		} else {
-			const totalYes = entryVal.filter(tc => filterState[tc] === 1).length;
+			const totalYes = entryVal.filter(fi => filterState[fi.item] === 1).length;
 			display = !totals.yes || totals.yes === totalYes;
 		}
 
 		if (filterState._andOr.red === "or") {
 			// if any are 2 (red) exclude if they match
-			hide = hide || entryVal.some(tc => filterState[tc] === 2);
+			hide = hide || entryVal.filter(fi => !fi.isIgnoreRed).some(fi => filterState[fi.item] === 2);
 		} else {
-			const totalNo = entryVal.filter(tc => filterState[tc] === 2).length;
+			const totalNo = entryVal.filter(fi => !fi.isIgnoreRed).filter(fi => filterState[fi.item] === 2).length;
 			hide = totals.no && totals.no === totalNo;
 		}
 
@@ -1146,6 +1255,7 @@ class RangeFilter extends FilterBase {
 	setStateFromLoaded (filterState) {
 		if (filterState && filterState[this.header]) {
 			const toLoad = filterState[this.header];
+			this.setBaseStateFromLoaded(toLoad);
 			Object.assign(this._state, toLoad.state);
 		}
 	}
@@ -1239,7 +1349,7 @@ class RangeFilter extends FilterBase {
 				.attr("title", isRange ? `Hidden range` : isCapped ? `Hidden limit` : "")
 				.text(isRange ? `${cur.min}-${cur.max}` : !cur.isMinVal ? `≥ ${cur.min}` : !cur.isMaxVal ? `≤ ${cur.max}` : "")
 		};
-		this._registerHook("meta", "isHidden", hook);
+		this._addHook("meta", "isHidden", hook);
 		hook();
 
 		return $$`
@@ -1265,7 +1375,7 @@ class RangeFilter extends FilterBase {
 
 		this.__$wrpSlider = $$`<div class="fltr__wrp-pills fltr__wrp-pills--flex"/>`;
 		const hook = () => this.__$wrpSlider.toggle(!this._meta.isHidden);
-		this._registerHook("meta", "isHidden", hook);
+		this._addHook("meta", "isHidden", hook);
 		hook();
 
 		// prepare slider options
@@ -1362,10 +1472,10 @@ class RangeFilter extends FilterBase {
 			handleMiniUpdate();
 		};
 
-		this._registerHook("state", "min", handleLimitUpdate);
-		this._registerHook("state", "max", handleLimitUpdate);
-		this._registerHook("state", "curMin", handleCurUpdate);
-		this._registerHook("state", "curMax", handleCurUpdate);
+		this._addHook("state", "min", handleLimitUpdate);
+		this._addHook("state", "max", handleLimitUpdate);
+		this._addHook("state", "curMin", handleCurUpdate);
+		this._addHook("state", "curMax", handleCurUpdate);
 		handleCurUpdate();
 		handleLimitUpdate();
 
@@ -1495,6 +1605,7 @@ class MultiFilter extends FilterBase {
 	setStateFromLoaded (filterState) {
 		if (filterState && filterState[this.header]) {
 			const toLoad = filterState[this.header];
+			this.setBaseStateFromLoaded(toLoad);
 			Object.assign(this._state, toLoad.state);
 			this._filters.forEach(it => it.setStateFromLoaded(filterState));
 		}
@@ -1543,7 +1654,7 @@ class MultiFilter extends FilterBase {
 		const $btnAndOr = $(`<div class="fltr__group-comb-toggle text-muted"/>`)
 			.click(() => this._state.mode = this._state.mode === "and" ? "or" : "and");
 		const hookAndOr = () => $btnAndOr.text(`(group ${this._state.mode.toUpperCase()})`);
-		this._registerHook("state", "mode", hookAndOr);
+		this._addHook("state", "mode", hookAndOr);
 		hookAndOr();
 
 		const $children = this._filters.map((it, i) => it.$render({...opts, isMulti: true, isFirst: i === 0}));
@@ -1571,7 +1682,7 @@ class MultiFilter extends FilterBase {
 					.text(`(${numActive})`);
 			}
 		};
-		this._registerHook("meta", "isHidden", hookShowHide);
+		this._addHook("meta", "isHidden", hookShowHide);
 		hookShowHide();
 
 		return $$`<div class="flex-col">

@@ -28,10 +28,12 @@ async function onJsonLoad (data) {
 		items: ["b", "c"],
 		displayFn: cultBoonTypeToFull
 	});
-	filterBox = await pInitFilterBox(
-		sourceFilter,
-		typeFilter
-	);
+	filterBox = await pInitFilterBox({
+		filters: [
+			sourceFilter,
+			typeFilter
+		]
+	});
 
 	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	list.on("updated", () => {
@@ -63,9 +65,9 @@ async function onJsonLoad (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${bcI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${bcI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class="type col-3 text-align-center">${cultBoonTypeToFull(it._type)}</span>
+					<span class="type col-3 text-align-center pl-0">${cultBoonTypeToFull(it._type)}</span>
 					<span class="name col-7">${it.name}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}">${Parser.sourceJsonToAbv(it.source)}</span>
+					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
 					
 					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : bcI}</span>
 				</a>
@@ -115,7 +117,7 @@ function getSublistItem (it, pinId) {
 	return `
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-				<span class="name col-12">${it.name}</span>
+				<span class="name col-12 px-0">${it.name}</span>
 				<span class="id hidden">${pinId}</span>
 			</a>
 		</li>
