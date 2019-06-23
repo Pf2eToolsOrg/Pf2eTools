@@ -36,40 +36,15 @@
 <main class="container">
 	<div class="row">
 		<div class="col-12">
-			<h4 class="text-align-center">5etools, LLC. gratefully accepts donations.</h4>
 			<p>
-				Any monies raised are used to help cover the costs associated with running the site. These costs come from renting servers, and the bandwidth they consume every month. Any donation, no matter the size, is greatly appreciated.
-			</p>
-			<p>
-				Server upkeep donation addresses (note that the development team <b>does not</b> receive any payments made to these addresses; donations go directly to the host responsible for keeping the site online):
+				The cost of running the 5etools sever is covered by the advertisements run on <a href="https://5etools.com">5etools.com</a>, but if you wish to toss some spare gold at the development team (of one), you are welcome to do so. Donations are done through cryptocurrency for the safety of both parties; <a href="https://www.coinbase.com/">Coinbase</a> is a reputable site where you can exchange money for crypto and carry out transactions.
 			</p>
 			<p class="code">
-				BTC: <a href="bitcoin:1Dxu1fCs37dJQH3mGudQdCkWhhUXyhrpPC">1Dxu1fCs37dJQH3mGudQdCkWhhUXyhrpPC</a>
+				BTC: <a href="bitcoin:1Mj3SWAddbwq9X8yg155Fwt6Hd73K5WQsZ">1Mj3SWAddbwq9X8yg155Fwt6Hd73K5WQsZ</a>
 				<br>
-				BCH: <a href="bitcoincash:1MwxNNTcGsGe3jtttZs5y17xG5xg8x2WDk">1MwxNNTcGsGe3jtttZs5y17xG5xg8x2WDk</a>
+				ETH: <a href="ethereum:0x8247D70C092C9834790E580655Ab1FdEe26bdeee">0x8247D70C092C9834790E580655Ab1FdEe26bdeee</a>
 				<br>
-				ETH: <a href="ethereum:0x26873a33EACA07dc2C3173576353b7F9800a3B5e">0x26873a33EACA07dc2C3173576353b7F9800a3B5e</a>
-				<br>
-				LTC: <a href="litecoin:LbZXdmw5HGUQe6KuDD3B5Htd61M7FPP9Gx">LbZXdmw5HGUQe6KuDD3B5Htd61M7FPP9Gx</a>
-			</p>
-		</div>
-	</div>
-	<hr>
-	<div class="row" id="don-wrapper">
-		<div class="col-12">
-			<p>
-				Below is the current amount donated versus the total cost for this quarter:
-			</p>
-			<div class="don__bar">
-				<div class="don__bar_inner"></div>
-			</div>
-			<div class="split">
-				<span>€0.00</span>
-				<span id="don-total">Loading...</span>
-			</div>
-			<p>
-				<br>
-				<i>Please note that all values here are estimations, and, due to the nature of our donation &quot;system,&quot; are not updated automatically.</i>
+				LTC: <a href="litecoin:MSUXsUS1DwejDvovb1NDtDsdErPF2d7Txb">MSUXsUS1DwejDvovb1NDtDsdErPF2d7Txb</a>
 			</p>
 		</div>
 	</div>
@@ -91,20 +66,6 @@
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 <script>
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-	DataUtil.loadJSON(`https://get.5etools.com/money.php`).then(dosh => {
-		const pct = Number(dosh.donated) / Number(dosh.Goal);
-		$(`#don-total`).text(`€${dosh.Goal}`);
-		if (isNaN(pct)) {
-			throw new Error(`Was not a number! Values were ${dosh.donated} and ${dosh.Goal}`);
-		} else {
-			const $bar = $(`.don__bar_inner`);
-			$bar.css("width", `${Math.min(Math.ceil(100 * pct), 100)}%`).html(pct !== 0 ? `€${dosh.donated}&nbsp;` : "");
-			if (pct >= 1) $bar.css("background-color", "lightgreen");
-		}
-	}).catch(noDosh => {
-		$(`#don-wrapper`).remove();
-		throw noDosh;
-	})
 </script>
 
 </body>

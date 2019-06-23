@@ -658,7 +658,7 @@ class Filter extends FilterBase {
 		this._displayFn = opts.displayFn;
 		this._selFn = opts.selFn;
 		this._deselFn = opts.deselFn;
-		this._itemSortFn = opts.itemSortFn || SortUtil.ascSort;
+		this._itemSortFn = opts.itemSortFn === undefined ? SortUtil.ascSort : opts.itemSortFn;
 		this._groupFn = opts.groupFn;
 		this._minimalUi = opts.minimalUi;
 		this._umbrellaItems = Filter._getAsFilterItems(opts.umbrellaItems);
@@ -670,6 +670,7 @@ class Filter extends FilterBase {
 		this.__state = {};
 		this._state = this._getProxy(this.__state, "state");
 		this._items.forEach(it => this._defaultItemState(it));
+		this.__$wrpFilter = null;
 		this.__$wrpPills = null;
 		this.__$wrpMini = null;
 		this.__$wrpNestHeadInner = null;
@@ -955,7 +956,7 @@ class Filter extends FilterBase {
 		this._doRenderPills();
 		this._doRenderMiniPills();
 
-		return $$`<div>
+		this.__$wrpFilter = $$`<div>
 			${opts.isFirst ? "" : `<div class="fltr__dropdown-divider ${opts.isMulti ? "fltr__dropdown-divider--indented" : ""} mb-1"/>`}
 			<div class="split fltr__h ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
 				<div class="ml-2">${opts.isMulti ? "\u2012" : ""} ${this.header}</div>
@@ -963,6 +964,10 @@ class Filter extends FilterBase {
 			</div>
 			${this.__$wrpPills}
 		</div>`;
+
+		this._doToggleDisplay();
+
+		return this.__$wrpFilter;
 	}
 
 	getValues () {
@@ -992,7 +997,8 @@ class Filter extends FilterBase {
 	}
 
 	_doRenderPills () {
-		this._items.sort(this._itemSortFn).forEach(it => {
+		if (this._itemSortFn) this._items.sort(this._itemSortFn);
+		this._items.forEach(it => {
 			if (!it.$rendered) {
 				it.$rendered = this._$getPill(it);
 				if (it.nest) {
@@ -1045,6 +1051,11 @@ class Filter extends FilterBase {
 			// re-append existing elements to sort them
 			(it.$mini = it.$mini || this._$getMini(it)).appendTo(this.__$wrpMini);
 		});
+	}
+
+	_doToggleDisplay () {
+		// if there are no items, hide everything
+		this.__$wrpFilter.toggleClass("fltr__no-items", !this._items.length);
 	}
 
 	_doRenderNests () {
@@ -1111,6 +1122,7 @@ class Filter extends FilterBase {
 
 		// always render the mini-pills, to ensure the overall order in the grid stays correct (shared between multiple filters)
 		this._doRenderMiniPills();
+		this._doToggleDisplay();
 	}
 
 	addItem (item) {

@@ -936,6 +936,7 @@ class SpellcastingTraitConvert {
 			let spellcastingEntry = {"name": name, "headerEntries": [parseToHit(trait.entries[0])]};
 			let doneHeader = false;
 			trait.entries.forEach((thisLine, i) => {
+				thisLine = thisLine.replace(/,\s*\*/g, ",*"); // put asterisks on the correct side of commas
 				if (i === 0) return;
 				if (thisLine.includes("/rest")) {
 					doneHeader = true;
@@ -969,11 +970,25 @@ class SpellcastingTraitConvert {
 				} else if (thisLine.includes(" level") && thisLine.includes(": ")) {
 					doneHeader = true;
 					let property = thisLine.substr(0, 1);
-					const value = getParsedSpells(thisLine);
-					if (!spellcastingEntry.spells) spellcastingEntry.spells = {};
-					let slots = thisLine.includes(" slot") ? parseInt(thisLine.substr(11, 1)) : 0;
-					spellcastingEntry.spells[property] = {"slots": slots, "spells": value};
-					if (!spellcastingEntry.spells[property]) delete spellcastingEntry.spells[property];
+					const allSpells = getParsedSpells(thisLine);
+					spellcastingEntry.spells = spellcastingEntry.spells || {};
+
+					const out = {};
+					if (thisLine.includes(" slot")) {
+						const mWarlock = /^(\d)..-(\d).. level \((\d) \d..-level slots?\)/.exec(thisLine);
+						if (mWarlock) {
+							out.lower = parseInt(mWarlock[1]);
+							out.slots = parseInt(mWarlock[2]);
+						} else {
+							const mSlots = /\((\d) slots?\)/.exec(thisLine);
+							if (!mSlots) throw new Error(`Could not find slot count!`);
+							out.slots = parseInt(mSlots[1]);
+						}
+					}
+					// add these last, to have nicer ordering
+					out.spells = allSpells;
+
+					spellcastingEntry.spells[property] = out;
 				} else {
 					if (doneHeader) {
 						if (!spellcastingEntry.footerEntries) spellcastingEntry.footerEntries = [];

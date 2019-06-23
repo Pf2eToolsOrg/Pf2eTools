@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/draft-06/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
 	"version": "1.0.0",
 	"type": "object",
 	"properties": {
@@ -57,7 +57,7 @@
 					"entries": {
 						"type": "array",
 						"items": {
-							"$ref": "/Entry"
+							"$ref": "entry.json"
 						}
 					}
 				},
@@ -91,7 +91,7 @@
 						"type": "object",
 						"properties": {
 							"entry": {
-								"$ref": "/Entry"
+								"$ref": "entry.json"
 							}
 						},
 						"required": [
@@ -103,7 +103,7 @@
 						"type": "object",
 						"properties": {
 							"entry": {
-								"$ref": "/Entry"
+								"$ref": "entry.json"
 							}
 						},
 						"required": [
@@ -115,7 +115,7 @@
 						"type": "array",
 						"uniqueItems": true,
 						"items": {
-							"$ref": "/Entry"
+							"$ref": "entry.json"
 						}
 					}
 				},

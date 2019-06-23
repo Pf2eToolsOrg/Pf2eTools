@@ -94,7 +94,7 @@ function addTables (data) {
 			<li class="row" ${FLTR_ID}="${cdI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${cdI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 					<span class="name col-10 pl-0">${it.name}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
+					<span class="source col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
 					<span class="hidden sort-name">${sortName}</span>
 				</a>
 			</li>`;
@@ -147,7 +147,7 @@ function handleFilterChange () {
 	FilterBox.selectFirstVisible(tableList);
 }
 
-function loadhash (id) {
+function loadHash (id) {
 	renderer.setFirstSection(true);
 	const $content = $("#pagecontent").empty();
 	const it = tableList[id];
@@ -167,7 +167,7 @@ function loadhash (id) {
 	ListUtil.updateSelected();
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

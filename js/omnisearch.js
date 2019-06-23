@@ -156,7 +156,7 @@ const Omnisearch = {
 						pDoSearch();
 					});
 
-				$searchOut.append($(`<div class="text-align-right"/>`).append([$btnUaEtc, $btnBlacklist]));
+				$searchOut.append($(`<div class="text-right"/>`).append([$btnUaEtc, $btnBlacklist]));
 				const base = page * MAX_RESULTS;
 				for (let i = base; i < Math.max(Math.min(results.length, MAX_RESULTS + base), base); ++i) {
 					const r = results[i].doc;

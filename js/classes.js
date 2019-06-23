@@ -36,14 +36,14 @@ let subclassComparisonView;
 let filterBox;
 
 // Exported to history.js, gets called on hash change
-function loadhash (id) {
-	HashLoad.loadhash(id);
+function loadHash (id) {
+	HashLoad.loadHash(id);
 }
 
 // Exported to history.js
-function loadsub (sub) {
+function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
-	SubClassLoader.loadsub(sub);
+	SubClassLoader.loadSubHash(sub);
 }
 
 class ClassDisplay {}
@@ -116,7 +116,7 @@ class ClassList {
 		return `<li class="row" ${FLTR_ID}="${id}" ${classToRender.uniqueId ? `data-unique-id="${classToRender.uniqueId}"` : ""}>
 				<a id="${id}" href="${HashLoad.getClassHash(classToRender)}" title="${classToRender.name}">
 					<span class="name col-8 pl-0">${classToRender.name}</span>
-					<span class="source col-4 text-align-center ${Parser.sourceJsonToColor(classToRender.source)}" title="${Parser.sourceJsonToFull(classToRender.source)} pr-0" ${BrewUtil.sourceJsonToStyle(classToRender.source)}>
+					<span class="source col-4 text-center ${Parser.sourceJsonToColor(classToRender.source)}" title="${Parser.sourceJsonToFull(classToRender.source)} pr-0" ${BrewUtil.sourceJsonToStyle(classToRender.source)}>
 						${Parser.sourceJsonToAbv(classToRender.source)}
 					</span>
 					<span class="uniqueid hidden">${classToRender.uniqueId ? classToRender.uniqueId : id}</span>
@@ -228,7 +228,7 @@ class FeatureDescription {
 }
 
 class HashLoad {
-	static loadhash (id) {
+	static loadHash (id) {
 		renderer.setFirstSection(true);
 
 		$("#pagecontent").html(tableDefault);
@@ -586,8 +586,8 @@ class HashLoad {
 		HashLoad.makeToggleSourcesPill();
 		HashLoad.makeResetPill();
 
-		// call loadsub with a blank sub-hash, to ensure the right content is displayed
-		loadsub([]);
+		// call loadSubHash with a blank sub-hash, to ensure the right content is displayed
+		loadSubHash([]);
 	}
 
 	static makeSourceCyclePill () {
@@ -772,7 +772,7 @@ class HashLoad {
 HashLoad.subclassPillWrapper = undefined;
 
 class SubClassLoader {
-	static loadsub (sub) {
+	static loadSubHash (sub) {
 		const $pgContent = $(`#pagecontent`);
 
 		let subclasses = null;

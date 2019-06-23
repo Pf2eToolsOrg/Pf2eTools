@@ -162,7 +162,7 @@ class GenTables {
 	}
 }
 GenTables.BOOK_BLACKLIST = {};
-GenTables.ADVENTURE_WHITELIST = {GoS: true};
+GenTables.ADVENTURE_WHITELIST = {};
 
 const generator = new GenTables();
 generator.run();

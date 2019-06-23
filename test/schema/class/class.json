@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/draft-06/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
 	"version": "1.2.2",
 
 	"title": "ClassArray",
@@ -30,7 +30,7 @@
 				"colLabels": {
 					"type": "array",
 					"items": {
-						"anyOf": [{"type": "string"}]
+						"type": "string"
 					}
 				},
 				"rows": {
@@ -38,7 +38,7 @@
 					"items": {
 						"type": "array",
 						"items": {
-							"$ref": "/Entry"
+							"$ref": "entry.json"
 						}
 					}
 				}
@@ -58,7 +58,7 @@
 				"entries": {
 					"type": "array",
 					"items": {
-						"$ref": "/Entry"
+						"$ref": "entry.json"
 					}
 				},
 				"gainSubclassFeature": {
@@ -79,7 +79,7 @@
 				"entries": {
 					"type": "array",
 					"items": {
-						"$ref": "/Entry"
+						"$ref": "entry.json"
 					}
 				}
 			},
@@ -353,7 +353,7 @@
 						"properties": {
 							"entries": {
 								"type": "array",
-								"items": {"$ref": "/Entry"}
+								"items": {"$ref": "entry.json"}
 							},
 							"page": {
 								"type": "integer"

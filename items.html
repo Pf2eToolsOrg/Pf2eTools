@@ -69,6 +69,12 @@
 				max-height: 20em;
 			}
 		}
+
+		.itm__list-divider {
+			width: 100%;
+			height: 1px;
+			background: #ccc;
+		}
 	</style>
 </head>
 
@@ -99,7 +105,7 @@
 				</div>
 				<button class="btn btn-default" id="reset">Reset</button>
 			</div>
-			<div id="filtertools-mundane" class="ele-mundane sortlabel btn-group">
+			<div id="filtertools-mundane" class="ele-mundane sortlabel lst__form-bottom">
 				<button class="col-3 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
 				<button class="col-4-3 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
 				<button class="col-1-5 sort btn btn-default btn-xs" data-sort="cost" data-sortby="asc">Cost <span class="caret_wrp"></span></button>
@@ -110,7 +116,8 @@
 			<ul class="list list--stats mundane ele-mundane"></ul>
 			<h3 class="ele-mundane"><span class="side-label side-label--mundane clickable"></span></h3>
 
-			<div id="filtertools-magic" class="ele-magic sortlabel btn-group">
+			<div class="ele-mundane no-shrink itm__list-divider" style=""></div>
+			<div id="filtertools-magic" class="ele-magic sortlabel lst__form-bottom">
 				<button class="fullborder col-3-5 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
 				<button class="fullborder col-3-3 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
 				<button class="fullborder col-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight <span class="caret_wrp"></span></button>
@@ -134,9 +141,9 @@
 					<!-- populate with JS -->
 				</ul>
 				<div class="row">
-					<span class="col-6 text-align-right">Total:</span>
-					<span class="col-2 text-align-center no-wrap" id="totalweight"></span>
-					<span class="col-2 text-align-center no-wrap" id="totalvalue"></span>
+					<span class="col-6 text-right">Total:</span>
+					<span class="col-2 text-center no-wrap" id="totalweight"></span>
+					<span class="col-2 text-center no-wrap" id="totalvalue"></span>
 				</div>
 			</div>
 
@@ -152,7 +159,7 @@
 				</table>
 			</div>
 
-			<div class="text-align-center wrp-footer-buttons">
+			<div class="text-center wrp-footer-buttons">
 				<button class="btn btn-default btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
 			</div>
 		</div>

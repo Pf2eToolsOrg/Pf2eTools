@@ -488,8 +488,8 @@
 										"Cantrip"
 									],
 									"colStyles": [
-										"col-6 text-align-center",
-										"col-6 text-align-center"
+										"col-6 text-center",
+										"col-6 text-center"
 									],
 									"rows": [
 										[
@@ -800,7 +800,7 @@
 					]
 				},
 				{
-					"name": "Aereni",
+					"name": "High; Aereni",
 					"source": "UAWGE",
 					"page": 73,
 					"speed": 30,
@@ -809,16 +809,16 @@
 					},
 					"entries": [
 						{
-							"name": "Aereni Proficiency",
+							"name": "Aereni Training",
 							"entries": [
-								"An Aereni elf can choose one skill or tool proficiency. Your proficiency bonus is doubled for any ability check you make that uses this chosen proficiency."
+								"Choose one skill or tool proficiency. Your proficiency bonus is doubled for any ability check you make that uses this chosen proficiency."
 							],
 							"type": "entries"
 						},
 						{
 							"name": "Cantrip",
 							"entries": [
-								"You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it."
+								"You know one {@filter cantrip of your choice from the wizard spell list|spells|level=0|class=Wizard}. Intelligence is your spellcasting ability for it."
 							],
 							"type": "entries"
 						},
@@ -837,7 +837,7 @@
 					]
 				},
 				{
-					"name": "Valenar",
+					"name": "Wood; Aereni",
 					"source": "UAWGE",
 					"page": 73,
 					"speed": 35,
@@ -846,7 +846,78 @@
 					},
 					"entries": [
 						{
-							"name": "Valenar Proficiency",
+							"name": "Aereni Training",
+							"entries": [
+								"Choose one skill or tool proficiency. Your proficiency bonus is doubled for any ability check you make that uses this chosen proficiency."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Fleet of Foot",
+							"entries": [
+								"Your base walking speed increases to 35 feet."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Mask of the Wild",
+							"entries": [
+								"You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
+							],
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Weapon Proficiency"
+					]
+				},
+				{
+					"name": "High; Valenar",
+					"source": "UAWGE",
+					"page": 73,
+					"speed": 30,
+					"ability": {
+						"int": 1
+					},
+					"entries": [
+						{
+							"name": "Valenar Weapon Training",
+							"entries": [
+								"A Valenar elf gains proficiency with the {@item scimitar|phb}, {@item Double-Bladed Scimitar|uawge|double scimitar}, {@item longbow|phb}, and {@item shortbow|phb}."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Cantrip",
+							"entries": [
+								"You know one {@filter cantrip of your choice from the wizard spell list|spells|level=0|class=Wizard}. Intelligence is your spellcasting ability for it."
+							],
+							"type": "entries"
+						},
+						{
+							"name": "Extra Language",
+							"entries": [
+								"You can speak, read, and write one extra language of your choosing."
+							],
+							"type": "entries"
+						}
+					],
+					"traitTags": [
+						"Weapon Proficiency",
+						"Spellcasting"
+					]
+				},
+				{
+					"name": "Wood; Valenar",
+					"source": "UAWGE",
+					"page": 73,
+					"speed": 35,
+					"ability": {
+						"wis": 1
+					},
+					"entries": [
+						{
+							"name": "Valenar Weapon Training",
 							"entries": [
 								"A Valenar elf gains proficiency with the {@item scimitar|phb}, {@item Double-Bladed Scimitar|uawge|double scimitar}, {@item longbow|phb}, and {@item shortbow|phb}."
 							],
@@ -1604,8 +1675,8 @@
 								"Breath Weapon"
 							],
 							"colStyles": [
-								"col-3 text-align-center",
-								"col-3 text-align-center",
+								"col-3 text-center",
+								"col-3 text-center",
 								"col-6"
 							],
 							"rows": [
@@ -3449,7 +3520,7 @@
 										"5th Level"
 									],
 									"colStyles": [
-										"col-1 text-align-center",
+										"col-1 text-center",
 										"col-3-67",
 										"col-3-67",
 										"col-3-67"
@@ -9763,6 +9834,83 @@
 			"languageTags": [
 				"Common",
 				"Other",
+				"Choose"
+			]
+		},
+		{
+			"name": "Verdan",
+			"source": "AI",
+			"page": 72,
+			"size": "V",
+			"speed": 30,
+			"ability": {
+				"con": 1,
+				"cha": 2
+			},
+			"entries": [
+				{
+					"name": "Age",
+					"type": "entries",
+					"entries": [
+						"Verdan reach adulthood at around the age of 24, and it is thought that they might live to nearly 200 years old. However, because no verdan has died of old age since the race's initial creation, their upper age limits remain subject to speculation."
+					]
+				},
+				{
+					"name": "Alignment",
+					"type": "entries",
+					"entries": [
+						"Verdan are generally good, although their absence of racial identity and shared history can sometimes see individual verdan become untethered from any moral or ethical framework."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Verdan start out similar in size to the goblins they were created from, ranging from 3 to 4 feet in height. But at some point after reaching maturity, each verdan undergoes a sudden growth spurt of 2 feet or more. At 1st level, you are a Small creature. When you reach 5th level, you become a Medium creature."
+					]
+				},
+				{
+					"name": "Black Blood Healing",
+					"entries": [
+						"The black blood that is a sign of your people's connection to That-Which-Endures boosts your natural healing. When you roll a 1 or 2 on any Hit Die you spend at the end of a short rest, you can reroll the die and must use the new roll."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Limited Telepathy",
+					"entries": [
+						"You can telepathically speak to any creature you can see within 30 feet of you. You don't need to share a language with the creature for it to understand your telepathy, but it must be able to understand at least one language. This process of communication is slow and limited, allowing you to transmit and receive only simple ideas and straightforward concepts."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Persuasive",
+					"entries": [
+						"Your people's lack of history makes you trustworthy and humble. You have proficiency in the Persuasion skill."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Telepathic Insight",
+					"entries": [
+						"Your mind's connection to the world around you strengthens your will. You have advantage on all Wisdom and Charisma saving throws."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Language",
+					"entries": [
+						"You speak, read, and write Common, Goblin, and one additional language of your choice. This language typically has some connection to one of the areas or cultures that has been part of your life."
+					],
+					"type": "entries"
+				}
+			],
+			"traitTags": [
+				"Skill Proficiency"
+			],
+			"languageTags": [
+				"Common",
+				"Goblin",
 				"Choose"
 			]
 		}

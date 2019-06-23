@@ -677,9 +677,9 @@ class ShapedConverter {
 
 		const formattedRows = rows.map(row => `| ${row.map(cellProc).join(' | ')} |`);
 		const styleToColDefinition = style => {
-			if (style.includes('text-align-center')) {
+			if (style.includes('text-center')) {
 				return ':----:';
-			} else if (style.includes('text-align-right')) {
+			} else if (style.includes('text-right')) {
 				return '----:';
 			}
 			return ':----';

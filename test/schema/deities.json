@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/draft-06/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
 	"version": "1.0.2",
 	"type": "object",
 	"properties": {
@@ -77,7 +77,7 @@
 					"entries": {
 						"type": "array",
 						"items": {
-							"$ref": "/Entry"
+							"$ref": "entry.json"
 						}
 					},
 					"page": {
@@ -109,7 +109,7 @@
 						}
 					},
 					"symbolImg": {
-						"$ref": "/Entry#/definitions/entryImage"
+						"$ref": "entry.json#/definitions/entryImage"
 					}
 				},
 				"additionalProperties": false,

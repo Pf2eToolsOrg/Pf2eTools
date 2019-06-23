@@ -34,14 +34,6 @@
 	font-style: italic !important;
 }
 
-.text-align-center {
-	text-align: center !important;
-}
-
-.text-align-right {
-	text-align: right !important;
-}
-
 .no-wrap {
 	white-space: nowrap !important;
 }
@@ -121,6 +113,10 @@
 
 .flex-3 {
 	flex: 3;
+}
+
+.flex-fill {
+	flex-basis: 100%;
 }
 
 .no-shrink {
@@ -255,7 +251,15 @@ pre {
 	tab-size: 2;
 }
 
+hr {
+	flex-shrink: 0;
+}
+
 /* custom scrollbars */
+* {
+	scrollbar-width: thin;
+}
+
 ::-webkit-scrollbar {
 	width: 9px;
 	height: 9px;
@@ -270,6 +274,10 @@ pre {
 }
 
 // thicker scrollbar for the body only
+body {
+	scrollbar-width: auto;
+}
+
 body::-webkit-scrollbar {
 	width: 15px;
 }
@@ -1094,6 +1102,11 @@ select.input-xs {
 	padding-left: ($spacer * 0.5) !important;
 }
 
+.px-3 {
+	padding-right: $spacer !important;
+	padding-left: $spacer !important;
+}
+
 .px-4 {
 	padding-right: ($spacer * 1.5) !important;
 	padding-left: ($spacer * 1.5) !important;
@@ -1129,6 +1142,22 @@ select.input-xs {
 	padding-left: 0 !important;
 }
 
+.pl-2 {
+	padding-left: ($spacer * 0.5) !important;
+}
+
+.hr-2 {
+	margin-top: ($spacer * 0.5) !important;
+	margin-bottom: ($spacer * 0.5) !important;
+	width: 100%;
+}
+
+.hr-3 {
+	margin-top: $spacer;
+	margin-bottom: $spacer;
+	width: 100%;
+}
+
 .dropdown-menu > li > a.dropdown-ext-link {
 	display: flex;
 	justify-content: space-between;
@@ -1153,4 +1182,32 @@ select.input-xs {
 
 .caret--reverse {
 	transform: rotate(180deg);
+}
+
+.dnd-font {
+	font-family: 'Andada', serif;
+	font-variant: small-caps;
+	font-weight: 500;
+}
+
+.stripe- {
+	&even {
+		&:nth-child(even) {
+			background: $stripe-grey;
+		}
+
+		&--faint:nth-child(even) {
+			background: $stripe-grey--faint;
+		}
+	}
+
+	&odd {
+		&:nth-child(odd) {
+			background: $stripe-grey;
+		}
+
+		&--faint:nth-child(odd) {
+			background: $stripe-grey--faint;
+		}
+	}
 }

@@ -1,88 +1,39 @@
 "use strict";
 
-const JSON_URL = "data/feats.json";
-let list;
-
-window.onload = async function load () {
-	await ExcludeUtil.pInitialise();
-	SortUtil.initHandleFilterButtonClicks();
-	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-};
-
-const sourceFilter = getSourceFilter();
-let filterBox;
-async function onJsonLoad (data) {
-	list = ListUtil.search({
-		valueNames: ["name", "source", "ability", "prerequisite", "uniqueid"],
-		listClass: "feats"
-	});
-
-	const asiFilter = getAsiFilter();
-	const prereqFilter = new Filter({
-		header: "Prerequisite",
-		items: ["Ability", "Race", "Proficiency", "Spellcasting"]
-	});
-	filterBox = await pInitFilterBox({
-		filters: [
-			sourceFilter,
-			asiFilter,
-			prereqFilter
-		]
-	});
-
-	const $outVisibleResults = $(`.lst__wrp-search-visible`);
-	list.on("updated", () => {
-		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
-	});
-
-	// filtering function
-	$(filterBox).on(
-		FilterBox.EVNT_VALCHANGE,
-		handleFilterChange
-	);
-
-	const subList = ListUtil.initSublist({
-		valueNames: ["name", "ability", "prerequisite", "id"],
-		listClass: "subfeats",
-		getSublistRow: getSublistItem
-	});
-	ListUtil.initGenericPinnable();
-
-	addFeats(data);
-	BrewUtil.pAddBrewData()
-		.then(handleBrew)
-		.then(() => BrewUtil.bind({list}))
-		.then(() => BrewUtil.pAddLocalBrewData())
-		.catch(BrewUtil.pPurgeBrew)
-		.then(async () => {
-			BrewUtil.makeBrewButton("manage-brew");
-			BrewUtil.bind({filterBox, sourceFilter});
-			await ListUtil.pLoadState();
-			RollerUtil.addListRollButton();
-			ListUtil.addListShowHide();
-
-			History.init(true);
-			ExcludeUtil.checkShowAllExcluded(featList, $(`#pagecontent`));
+class FeatsPage extends ListPage {
+	constructor () {
+		const sourceFilter = getSourceFilter();
+		const asiFilter = getAsiFilter();
+		const prereqFilter = new Filter({
+			header: "Prerequisite",
+			items: ["Ability", "Race", "Proficiency", "Spellcasting"]
 		});
-}
 
-function handleBrew (homebrew) {
-	addFeats(homebrew);
-	return Promise.resolve();
-}
+		super({
+			urlData: "data/feats.json",
 
-let featList = [];
-let ftI = 0;
-function addFeats (data) {
-	if (!data.feat || !data.feat.length) return;
+			filters: [
+				sourceFilter,
+				asiFilter,
+				prereqFilter
+			],
+			filterSource: sourceFilter,
 
-	featList = featList.concat(data.feat);
+			listValueNames: ["name", "source", "ability", "prerequisite", "uniqueid"],
+			listClass: "feats",
 
-	const featTable = $("ul.feats");
-	let tempString = "";
-	for (; ftI < featList.length; ftI++) {
-		const feat = featList[ftI];
-		if (ExcludeUtil.isExcluded(feat.name, "feat", feat.source)) continue;
+			sublistValueNames: ["name", "ability", "prerequisite", "id"],
+			sublistClass: "subfeats",
+
+			dataProp: "feat"
+		});
+
+		this._sourceFilter = sourceFilter;
+		this._asiFilter = asiFilter;
+		this._prereqFilter = prereqFilter;
+	}
+
+	getListItem (feat, ftI) {
 		const name = feat.name;
 		const ability = Renderer.getAbilityData(feat.ability);
 		if (!ability.asText) ability.asText = STR_NONE;
@@ -97,84 +48,62 @@ function addFeats (data) {
 		feat._slAbility = ability.asText;
 		feat._slPrereq = prereqText;
 
-		tempString += `
-			<li class="row" ${FLTR_ID}="${ftI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${ftI}" href="#${UrlUtil.autoEncodeHash(feat)}" title="${name}">
-					<span class="name col-3-8 pl-0">${name}</span>
-					<span class="ability col-3-5 ${ability.asText === STR_NONE ? "list-entry-none " : ""}">${ability.asText}</span>
-					<span class="prerequisite col-3 ${(prereqText === STR_NONE ? "list-entry-none " : "")}">${prereqText}</span>
-					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${Parser.sourceJsonToAbv(feat.source)}</span>
-					
-					<span class="uniqueid hidden">${feat.uniqueId ? feat.uniqueId : ftI}</span>
-				</a>
-			</li>`;
-
 		// populate filters
-		sourceFilter.addItem(feat.source);
-	}
-	const lastSearch = ListUtil.getSearchTermAndReset(list);
-	featTable.append(tempString);
+		this._sourceFilter.addItem(feat.source);
 
-	list.reIndex();
-	if (lastSearch) list.search(lastSearch);
-	list.sort("name");
-	filterBox.render();
-	handleFilterChange();
-
-	ListUtil.setOptions({
-		itemList: featList,
-		getSublistRow: getSublistItem,
-		primaryLists: [list]
-	});
-	ListUtil.bindPinButton();
-	Renderer.hover.bindPopoutButton(featList);
-	UrlUtil.bindLinkExportButton(filterBox);
-	ListUtil.bindDownloadButton();
-	ListUtil.bindUploadButton();
-}
-
-// filtering function
-function handleFilterChange () {
-	const f = filterBox.getValues();
-	list.filter(function (item) {
-		const ft = featList[$(item.elm).attr(FLTR_ID)];
-		return filterBox.toDisplay(
-			f,
-			ft.source,
-			ft._fAbility,
-			ft._fPrereq
-		);
-	});
-	FilterBox.selectFirstVisible(featList);
-}
-
-function getSublistItem (feat, pinId) {
-	return `
-		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-			<a href="#${UrlUtil.autoEncodeHash(feat)}" title="${feat.name}">
-				<span class="name col-4 pl-0">${feat.name}</span>
-				<span class="ability col-4 ${feat._slAbility === STR_NONE ? "list-entry-none" : ""}">${feat._slAbility}</span>
-				<span class="prerequisite col-4 ${feat._slPrereq === STR_NONE ? "list-entry-none" : ""} pr-0">${feat._slPrereq}</span>
-				<span class="id hidden">${pinId}</span>
+		return `
+		<li class="row" ${FLTR_ID}="${ftI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
+			<a id="${ftI}" href="#${UrlUtil.autoEncodeHash(feat)}" title="${name}">
+				<span class="name col-3-8 pl-0">${name}</span>
+				<span class="ability col-3-5 ${ability.asText === STR_NONE ? "list-entry-none " : ""}">${ability.asText}</span>
+				<span class="prerequisite col-3 ${(prereqText === STR_NONE ? "list-entry-none " : "")}">${prereqText}</span>
+				<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${Parser.sourceJsonToAbv(feat.source)}</span>
+				
+				<span class="uniqueid hidden">${feat.uniqueId ? feat.uniqueId : ftI}</span>
 			</a>
-		</li>
-	`;
-}
+		</li>`;
+	}
 
-const renderer = Renderer.get();
-function loadhash (id) {
-	renderer.setFirstSection(true);
+	handleFilterChange () {
+		const f = this._filterBox.getValues();
+		this._list.filter((item) => {
+			const ft = this._dataList[$(item.elm).attr(FLTR_ID)];
+			return this._filterBox.toDisplay(
+				f,
+				ft.source,
+				ft._fAbility,
+				ft._fPrereq
+			);
+		});
+		FilterBox.selectFirstVisible(this._dataList);
+	}
 
-	const $content = $("#pagecontent").empty();
+	getSublistItem (feat, pinId) {
+		return `
+			<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+				<a href="#${UrlUtil.autoEncodeHash(feat)}" title="${feat.name}">
+					<span class="name col-4 pl-0">${feat.name}</span>
+					<span class="ability col-4 ${feat._slAbility === STR_NONE ? "list-entry-none" : ""}">${feat._slAbility}</span>
+					<span class="prerequisite col-4 ${feat._slPrereq === STR_NONE ? "list-entry-none" : ""} pr-0">${feat._slPrereq}</span>
+					<span class="id hidden">${pinId}</span>
+				</a>
+			</li>
+		`;
+	}
 
-	const feat = featList[id];
+	doLoadHash (id) {
+		this._renderer.setFirstSection(true);
 
-	const prerequisite = Renderer.feat.getPrerequisiteText(feat.prerequisite);
-	Renderer.feat.mergeAbilityIncrease(feat);
-	const renderStack = [];
-	renderer.recursiveRender({entries: feat.entries}, renderStack, {depth: 2});
+		const $content = $("#pagecontent").empty();
 
-	$content.append(`
+		const feat = this._dataList[id];
+
+		const prerequisite = Renderer.feat.getPrerequisiteText(feat.prerequisite);
+		Renderer.feat.mergeAbilityIncrease(feat);
+		const renderStack = [];
+		this._renderer.recursiveRender({entries: feat.entries}, renderStack, {depth: 2});
+
+		$content.append(`
 		${Renderer.utils.getBorderTr()}
 		${Renderer.utils.getNameTr(feat)}
 		${prerequisite ? `<tr><td colspan="6"><span class="prerequisite">Prerequisite: ${prerequisite}</span></td></tr>` : ""}
@@ -184,10 +113,17 @@ function loadhash (id) {
 		${Renderer.utils.getBorderTr()}
 	`);
 
-	ListUtil.updateSelected();
+		ListUtil.updateSelected();
+	}
+
+	doLoadSubHash (sub) {
+		sub = this._filterBox.setFromSubHashes(sub);
+		ListUtil.setFromSubHashes(sub);
+	}
 }
 
-function loadsub (sub) {
-	sub = filterBox.setFromSubHashes(sub);
-	ListUtil.setFromSubHashes(sub);
-}
+const featsPage = new FeatsPage();
+
+window.onload = function load () {
+	featsPage.pOnLoad();
+};

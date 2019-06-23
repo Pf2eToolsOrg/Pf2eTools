@@ -160,7 +160,7 @@ const sizeFilter = new Filter({
 		SZ_VARIES
 	],
 	displayFn: Parser.sizeAbvToFull,
-	itemSortFn: SortUtil.ascSortCr
+	itemSortFn: null
 });
 const speedFilter = new RangeFilter({header: "Speed", min: 30, max: 30});
 const speedTypeFilter = new Filter({header: "Speed Type", items: ["walk", "burrow", "climb", "fly", "hover", "swim"], displayFn: StrUtil.uppercaseFirst});
@@ -187,7 +187,8 @@ const tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst})
 const alignmentFilter = new Filter({
 	header: "Alignment",
 	items: ["L", "NX", "C", "G", "NY", "E", "N", "U", "A"],
-	displayFn: Parser.alignmentAbvToFull
+	displayFn: Parser.alignmentAbvToFull,
+	itemSortFn: null
 });
 const languageFilter = new Filter({
 	header: "Languages",
@@ -213,7 +214,8 @@ const skillFilter = new Filter({
 const saveFilter = new Filter({
 	header: "Saves",
 	displayFn: Parser.attAbvToFull,
-	items: [...Parser.ABIL_ABVS]
+	items: [...Parser.ABIL_ABVS],
+	itemSortFn: null
 });
 const environmentFilter = new Filter({
 	header: "Environment",
@@ -607,8 +609,8 @@ function addMonsters (data) {
 					${EncounterBuilder.getButtons(mI)}
 					<span class="ecgen__name name col-4-2 pl-0">${mon.name}</span>
 					<span class="type col-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
-					<span class="col-1-7 text-align-center cr">${mon._pCr}</span>
-					<span title="${Parser.sourceJsonToFull(mon.source)}${Renderer.utils.getSourceSubText(mon)}" class="col-2 source text-align-center ${Parser.sourceJsonToColor(mon.source)} pr-0" ${BrewUtil.sourceJsonToStyle(mon.source)}>${Parser.sourceJsonToAbv(mon.source)}</span>
+					<span class="col-1-7 text-center cr">${mon._pCr}</span>
+					<span title="${Parser.sourceJsonToFull(mon.source)}${Renderer.utils.getSourceSubText(mon)}" class="col-2 source text-center ${Parser.sourceJsonToColor(mon.source)} pr-0" ${BrewUtil.sourceJsonToStyle(mon.source)}>${Parser.sourceJsonToAbv(mon.source)}</span>
 					
 					${mon.group ? `<span class="group hidden">${mon.group}</span>` : ""}
 					<span class="alias hidden">${(mon.alias || []).map(it => `"${it}"`).join(",")}</span>
@@ -724,8 +726,8 @@ function pGetSublistItem (mon, pinId, addCount, data = {}) {
 					<a href="#${UrlUtil.autoEncodeHash(mon)}${subHash}" title="${mon._displayName || mon.name}" draggable="false" class="ecgen__hidden">
 						<span class="name col-5 pl-0">${mon._displayName || mon.name}</span>
 						<span class="type col-3-8">${mon._pTypes.asText.uppercaseFirst()}</span>
-						<span class="cr col-1-2 text-align-center">${mon._pCr}</span>
-						<span class="count col-2 text-align-center">${addCount || 1}</span>
+						<span class="cr col-1-2 text-center">${mon._pCr}</span>
+						<span class="count col-2 text-center">${addCount || 1}</span>
 
 						<span class="id hidden">${pinId}</span>
 						<span class="uid hidden">${data.uid || ""}</span>
@@ -738,11 +740,11 @@ function pGetSublistItem (mon, pinId, addCount, data = {}) {
 						<span class="col-1-2 ecgen__visible help--hover" ${EncounterBuilder.getTokenMouseOver(mon)}>Token</span>
 						<span class="col-1-2 ecgen__visible help--hover" onmouseover="EncounterBuilder.doImageMouseOver(event, this, ${pinId})">Image</span>
 						${mon._pCr !== "Unknown" ? `
-							<span class="col-1-2 text-align-center">
+							<span class="col-1-2 text-center">
 								<input value="${mon._pCr}" onchange="encounterBuilder.doCrChange(this, ${pinId}, ${mon._isScaledCr})" class="ecgen__cr_input form-control form-control--minimal input-xs">
 							</span>
-						` : `<span class="col-1-2 text-align-center">${mon._pCr}</span>`}
-						<span class="col-2 pr-0 text-align-center count">${addCount || 1}</span>
+						` : `<span class="col-1-2 text-center">${mon._pCr}</span>`}
+						<span class="col-2 pr-0 text-center count">${addCount || 1}</span>
 					</div>
 				</li>
 			`);
@@ -772,12 +774,12 @@ function sortMonsters (a, b, o) {
 
 let profBtn = null;
 // load selected monster stat block
-function loadhash (id) {
+function loadHash (id) {
 	const mon = monsters[id];
 
 	renderStatblock(mon);
 
-	loadsub([]);
+	loadSubHash([]);
 	ListUtil.updateSelected();
 }
 
@@ -1101,7 +1103,7 @@ function getCr (obj) {
 	return typeof obj.cr === "string" ? obj.cr.includes("/") ? Parser.crToNumber(obj.cr) : Number(obj.cr) : obj.cr;
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub, sublistFuncPreload);
 

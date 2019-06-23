@@ -63,7 +63,7 @@
 								"Another tag that appears occasionally in the data is the @filter tag. This tag can be tricky to use, and generally relies on knowledge of the internals of each page. As such, use with caution, and if you're not sure about something, don't be afraid to drop by our {@link Discord|https://discord.gg/nGvRCDs} and ask questions.",
 								"The syntax for the @filter tag is as follows:",
 								"(open curly brace)@filter display text|page_without_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;...(close curly brace)",
-								"The purpose of this tag is to open the given page, pre-filtered with the specified filtering options. There's one major caveat that makes this tricky to use for aspiring JSONtranauts\u2014the filter values use the {@i internal} version, as you'd find in the data. So, for example, ...|school=D|... would filter spells to Divination school spells, as 'D' is the Divination identifier in the data. Trying to do e.g. ...|school=Divination|... will not work.",
+								"The purpose of this tag is to open the given page, pre-filtered with the specified filtering options. There's one major caveat that makes this tricky to use for aspiring JSONtranauts\u2014the filter values use the {@i internal} version, as you'd find in the data. So, for example, ..|school=D|.. would filter spells to Divination school spells, as 'D' is the Divination identifier in the data. Trying to do e.g. ..|school=Divination|.. will not work.",
 								"The 'filter_name_X' here matches the literal text name of the filter, as displayed in the dropdown.",
 								"Some examples of the tag in action:",
 								"{@filter Races that have a bonus to Intelligence|races|Ability Bonus (Including Subrace)=Intelligence +2;Intelligence +1}",
@@ -78,7 +78,7 @@
 									"type": "entries",
 									"name": "Note",
 									"entries": [
-										"Setting a filter to null, i.e. ...|school=null|... is equivalent to 'clear the filter,' resetting it to all-white.",
+										"Setting a filter to null, i.e. ..|school=null|.. is equivalent to 'clear the filter,' resetting it to all-white.",
 										"The pages that support this functionality are those with the 'magnet' button; the link this button exports will give clues as to what one could do with the filter tag."
 									]
 								}
@@ -221,8 +221,8 @@
 						"Third Col"
 					],
 					"colStyles": [
-						"col-6 text-align-center",
-						"col-4-5 text-align-right ",
+						"col-6 text-center",
+						"col-4-5 text-right ",
 						"col-1-5"
 					],
 					"intro": [
@@ -239,7 +239,7 @@
 						],
 						[
 							"The 'colStyles' list is literally used as CSS classes",
-							"Column widths can be specified in 12ths, as `col-[1 to 12]` (e.g. col-12 is 100% width, and col-xs-6 is 50% width)",
+							"Column widths can be specified in 12ths, as `col-[1 to 12]` (e.g. col-12 is 100% width, and col-6 is 50% width)",
 							"**"
 						],
 						[
@@ -277,7 +277,7 @@
 						"Item"
 					],
 					"colStyles": [
-						"col-1 text-align-center",
+						"col-1 text-center",
 						"col-11"
 					],
 					"rows": [
@@ -649,7 +649,10 @@
 								]
 							}
 						],
-						"legendaryGroup": "Unicorn",
+						"legendaryGroup": {
+							"name": "Unicorn",
+							"source": "MM"
+						},
 						"legendary": [
 							{
 								"name": "Hooves",

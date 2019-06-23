@@ -93,9 +93,9 @@ function addConditions (data) {
 		tempString += `
 			<li class="row" ${FLTR_ID}="${cdI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id='${cdI}' href='#${UrlUtil.autoEncodeHash(it)}' title="${it.name}">
-					<span class="type col-3 text-align-center pl-0">${conditionDiseaseTypeToFull(it._type)}</span>
+					<span class="type col-3 text-center pl-0">${conditionDiseaseTypeToFull(it._type)}</span>
 					<span class="name col-7">${it.name}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
+					<span class="source col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
 					
 					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : cdI}</span>
 				</a>
@@ -150,7 +150,7 @@ function handleFilterChange () {
 	FilterBox.selectFirstVisible(conditionList);
 }
 
-function loadhash (id) {
+function loadHash (id) {
 	entryRenderer.setFirstSection(true);
 	const $content = $("#pagecontent").empty();
 	const it = conditionList[id];
@@ -169,7 +169,7 @@ function loadhash (id) {
 	ListUtil.updateSelected();
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

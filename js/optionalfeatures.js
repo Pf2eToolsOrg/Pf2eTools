@@ -161,10 +161,10 @@ function addOptionalfeatures (data) {
 			<li class="row" ${FLTR_ID}="${ivI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${ivI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 					<span class="name col-3-2 pl-0">${it.name}</span>
-					<span class="type col-1-5 text-align-center type" title="${it._dFeatureType}">${it._lFeatureType}</span>
+					<span class="type col-1-5 text-center type" title="${it._dFeatureType}">${it._lFeatureType}</span>
 					<span class="prerequisite col-4-8">${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
-					<span class="level col-1 text-align-center">${Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
-					<span class="source col-1-5 ${Parser.sourceJsonToColor(it.source)} text-align-center pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
+					<span class="level col-1 text-center">${Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
+					<span class="source col-1-5 ${Parser.sourceJsonToColor(it.source)} text-center pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
 					
 					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : ivI}</span>
 				</a>
@@ -221,7 +221,7 @@ function getSublistItem (it, pinId) {
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 				<span class="name col-4 pl-0">${it.name}</span>
-				<span class="source col-2 text-align-center type" title="${Parser.optFeatureTypeToFull(it.featureType)}">${it.featureType}</span>
+				<span class="source col-2 text-center type" title="${Parser.optFeatureTypeToFull(it.featureType)}">${it.featureType}</span>
 				<span class="prerequisite col-4-5">${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
 				<span class="level col-1-5 pr-0">${Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
 				
@@ -231,7 +231,7 @@ function getSublistItem (it, pinId) {
 	`;
 }
 
-function loadhash (jsonIndex) {
+function loadHash (jsonIndex) {
 	Renderer.get().setFirstSection(true);
 	const $content = $(`#pagecontent`).empty();
 	const it = optfList[jsonIndex];
@@ -274,7 +274,7 @@ function loadhash (jsonIndex) {
 	ListUtil.updateSelected();
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

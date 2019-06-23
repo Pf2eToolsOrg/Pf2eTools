@@ -907,7 +907,8 @@ class Panel {
 					meta,
 					$contentInner,
 					title || it.name,
-					true
+					true,
+					!!title
 				);
 			}
 		);
@@ -987,7 +988,8 @@ class Panel {
 						meta,
 						$contentInner,
 						title || initialRender._displayName || initialRender.name,
-						true
+						true,
+						!!title
 					);
 				});
 			}
@@ -1009,7 +1011,8 @@ class Panel {
 				meta,
 				$(`<div class="panel-content-wrapper-inner"><table class="stats">${it}</table></div>`),
 				title || rule.name || "",
-				true
+				true,
+				!!title
 			);
 		});
 	}
@@ -1029,7 +1032,8 @@ class Panel {
 				meta,
 				$(`<div class="panel-content-wrapper-inner"></div>`).append(view.$getEle()),
 				title || data.name || "",
-				true
+				true,
+				!!title
 			);
 		});
 	}
@@ -1049,7 +1053,8 @@ class Panel {
 				meta,
 				$(`<div class="panel-content-wrapper-inner"></div>`).append(view.$getEle()),
 				title || data.name || "",
-				true
+				true,
+				!!title
 			);
 		});
 	}
@@ -1065,7 +1070,8 @@ class Panel {
 			null,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(Renderer.dice.get$Roller().addClass("rollbox-panel")),
 			title || "Dice Roller",
-			true
+			true,
+			!!title
 		);
 	}
 
@@ -1650,7 +1656,7 @@ class Panel {
 
 	_get$BtnSelTab (ix, title, tabCanRename) {
 		title = title || "[Untitled]";
-		const $btnSelTab = $(`<span class="btn btn-default content-tab ${tabCanRename ? "content-tab-can-rename" : ""}"><span class="content-tab-title">${title}</span></span>`)
+		const $btnSelTab = $(`<span class="btn btn-default content-tab flex ${tabCanRename ? "content-tab-can-rename" : ""}"><span class="content-tab-title" title="${title}">${title}</span></span>`)
 			.on("mousedown", (evt) => {
 				if (evt.which === 1) {
 					this.setActiveTab(ix);
@@ -1681,7 +1687,7 @@ class Panel {
 	setTabTitle (ix, nuTitle) {
 		const tabData = this.tabDatas[ix];
 
-		tabData.$tabButton.find(`.content-tab-title`).text(nuTitle);
+		tabData.$tabButton.find(`.content-tab-title`).text(nuTitle).attr("title", nuTitle);
 		this.$pnlTitle.text(nuTitle);
 		const x = this.tabDatas[ix];
 		x.title = nuTitle;
@@ -1721,7 +1727,7 @@ class Panel {
 			};
 
 			if (!this.tabDatas[ix].$tabButton) this.tabDatas[ix].$tabButton = doAdd$BtnSelTab(ix, title);
-			else this.tabDatas[ix].$tabButton.find(`.content-tab-title`).text(title);
+			else this.tabDatas[ix].$tabButton.find(`.content-tab-title`).text(title).attr("title", title);
 
 			this.tabDatas[ix].$tabButton.toggleClass("content-tab-can-rename", tabCanRename);
 		}
@@ -3154,7 +3160,7 @@ class AdventureOrBookView {
 	}
 
 	$getEle () {
-		this._$titlePrev = $(`<div class="dm-book__controls-title text-align-right"/>`);
+		this._$titlePrev = $(`<div class="dm-book__controls-title text-right"/>`);
 		this._$titleNext = $(`<div class="dm-book__controls-title"/>`);
 
 		const $btnPrev = $(`<button class="btn btn-xs btn-default mr-2" title="Previous Chapter"><span class="glyphicon glyphicon-chevron-left"/></button>`)
@@ -3213,5 +3219,10 @@ window.addEventListener("load", () => {
 	// expose it for dbg purposes
 	window.DM_SCREEN = new Board();
 	Renderer.hover.bindDmScreen(window.DM_SCREEN);
-	window.DM_SCREEN.pInitialise();
+	window.DM_SCREEN.pInitialise()
+		.catch(err => {
+			JqueryUtil.doToast({content: `Failed to load with error "${err.message}". See the console for details.`, type: "danger"});
+			$(`.dm-screen-loading`).find(`.initial-message`).text("Failed!");
+			setTimeout(() => { throw err; });
+		});
 });

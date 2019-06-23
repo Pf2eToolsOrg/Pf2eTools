@@ -80,7 +80,7 @@ function addObjects (data) {
 				<a id="${obI}" href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
 					<span class="name col-8 pl-0">${obj.name}</span>
 					<span class="size col-2">${Parser.sizeAbvToFull(obj.size)}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(obj.source)} pr-0" title="${Parser.sourceJsonToFull(obj.source)}" ${BrewUtil.sourceJsonToStyle(obj.source)}>${Parser.sourceJsonToAbv(obj.source)}</span>
+					<span class="source col-2 text-center ${Parser.sourceJsonToColor(obj.source)} pr-0" title="${Parser.sourceJsonToFull(obj.source)}" ${BrewUtil.sourceJsonToStyle(obj.source)}>${Parser.sourceJsonToAbv(obj.source)}</span>
 					
 					<span class="uniqueid hidden">${obj.uniqueId ? obj.uniqueId : obI}</span>
 				</a>
@@ -118,7 +118,7 @@ function getSublistItem (obj, pinId) {
 }
 
 const renderer = Renderer.get();
-function loadhash (jsonIndex) {
+function loadHash (jsonIndex) {
 	renderer.setFirstSection(true);
 
 	const obj = objectsList[jsonIndex];
@@ -158,6 +158,6 @@ function loadhash (jsonIndex) {
 	ListUtil.updateSelected();
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	ListUtil.setFromSubHashes(sub);
 }

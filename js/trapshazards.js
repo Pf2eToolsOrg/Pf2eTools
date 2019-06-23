@@ -111,7 +111,7 @@ function addTrapsHazards (data) {
 				<a id="${thI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 					<span class="name col-6 pl-0">${it.name}</span>
 					<span class="trapType col-4">${Parser.trapHazTypeToFull(it.trapHazType)}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
+					<span class="source col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
 					
 					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : thI}</span>
 				</a>
@@ -169,7 +169,7 @@ function getSublistItem (it, pinId) {
 }
 
 const renderer = Renderer.get();
-function loadhash (jsonIndex) {
+function loadHash (jsonIndex) {
 	renderer.setFirstSection(true);
 	const it = trapsAndHazardsList[jsonIndex];
 
@@ -193,7 +193,7 @@ function loadhash (jsonIndex) {
 	ListUtil.updateSelected();
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

@@ -268,8 +268,8 @@
 	_calcNewAbility (mon, prop, modifier) {
 		// at least 1
 		return Math.max(1,
-			((modifier + 5) * 2) +
-			(mon[prop] % 2) // add trailing odd numbers from the original ability, just for fun
+			((modifier + 5) * 2)
+			+ (mon[prop] % 2) // add trailing odd numbers from the original ability, just for fun
 		);
 	},
 

@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/draft-06/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
 	"version": "1.0.0",
 	"type": "object",
 	"properties": {
@@ -78,23 +78,16 @@
 					"rows": {
 						"type": "array",
 						"items": {
-							"oneOf": [
-								{
-									"type": "array",
-									"items": {
-										"$ref": "/Entry"
-									}
-								},
-								{
-									"$ref": "/Entry#/definitions/entryTableRow"
-								}
-							]
+							"type": "array",
+							"items": {
+								"$ref": "entry.json"
+							}
 						}
 					},
 					"footnotes": {
 						"type": "array",
 						"items": {
-							"$ref": "/Entry"
+							"$ref": "entry.json"
 						}
 					},
 					"data": {

@@ -1,6 +1,7 @@
 {
-	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.4.0",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "spells.json",
+	"version": "1.4.1",
 	"title": "Spells",
 	"type": "object",
 
@@ -152,6 +153,10 @@
 									"type": ["boolean", "string"]
 								}
 							]
+						},
+						"r": {
+							"description": "\"Royalty\" components, as introduced in Acquisitions Incorporated",
+							"type": "boolean"
 						}
 					},
 					"additionalProperties": false
@@ -163,13 +168,13 @@
 				"entries": {
 					"type": "array",
 					"items": {
-						"$ref": "/Entry"
+						"$ref": "entry.json"
 					}
 				},
 				"entriesHigherLevel": {
 					"type": "array",
 					"items": {
-						"$ref": "/Entry"
+						"$ref": "entry.json"
 					}
 				},
 				"classes": {

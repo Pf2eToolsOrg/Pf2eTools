@@ -105,3 +105,93 @@ Shared UI components
 		border-bottom: 1px solid $border-grey;
 	}
 }
+
+/* Proficiency */
+.ui-prof__ {
+	&btn-cycle {
+		width: 16px;
+		height: 16px;
+		padding: 0;
+		flex-shrink: 0;
+		flex-grow: 0;
+		display: inline-block;
+		cursor: pointer;
+		border: 1px solid $border-grey;
+		border-radius: 4px;
+		outline: none;
+		user-select: none;
+
+		&:active {
+			box-shadow: 0 0 2px 0 #000b;
+		}
+
+		&[data-state='0'] {
+			background: #ccc8;
+		}
+
+		&[data-state='1'] {
+			background: #555;
+			border-color: #555;
+		}
+
+		&[data-state='2'] {
+			border-color: #555;
+			background: #555;
+			display: flex;
+			line-height: 16px;
+
+			&::after {
+				display: block;
+				content: '\002a';
+				font-family: 'Glyphicons Halflings';
+				font-style: normal;
+				line-height: 1;
+				-webkit-font-smoothing: antialiased;
+				color: white;
+				-moz-osx-font-smoothing: grayscale;
+				font-size: 14px;
+				font-weight: 400;
+				margin-left: 0.5px;
+			}
+		}
+
+		&[data-state='3'] {
+			background: repeating-linear-gradient(45deg, #555, #555 10px, white 10px, white 20px);
+			border-color: #555;
+		}
+	}
+}
+
+.night-mode {
+	.ui-prof__ {
+		&btn-cycle {
+			&:active {
+				box-shadow: 0 0 3px 0 #fffb;
+			}
+
+			&[data-state='0'] {
+				background: $night-bg-color;
+			}
+
+			&[data-state='1'] {
+				background: $border-grey;
+				border-color: #aaa;
+			}
+
+			&[data-state='2'] {
+				background: $border-grey;
+				border-color: #aaa;
+
+				&::after {
+					color: $night-bg-color;
+					font-weight: bold;
+				}
+			}
+
+			&[data-state='3'] {
+				background: repeating-linear-gradient(45deg, $border-grey, $border-grey 10px, $night-bg-color 10px, $night-bg-color 20px);
+				border-color: $border-grey;
+			}
+		}
+	}
+}

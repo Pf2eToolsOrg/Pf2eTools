@@ -37,6 +37,7 @@ class NavBar {
 		addLi(ulRules, "book.html", "Monster Manual", {aHash: "MM"});
 		addLi(ulRules, "book.html", "Player's Handbook", {aHash: "PHB"});
 		addDivider(ulRules);
+		addLi(ulRules, "book.html", "Acquisitions Incorporated", {aHash: "AI"});
 		addLi(ulRules, "book.html", "Guildmasters' Guide to Ravnica", {aHash: "GGR"});
 		addLi(ulRules, "book.html", "Mordenkainen's Tome of Foes", {aHash: "MTF"});
 		addLi(ulRules, "book.html", "Sword Coast Adventurer's Guide", {aHash: "SCAG"});
@@ -83,6 +84,7 @@ class NavBar {
 		addLi(ulAdventures, "adventure.html", "Waterdeep: Dungeon of the Mad Mage", {isSide: true, aHash: "WDMM"});
 		addLi(ulAdventures, "adventure.html", "Krenko's Way", {isSide: true, aHash: "KKW"});
 		addLi(ulAdventures, "adventure.html", "Ghosts of Saltmarsh", {isSide: true, aHash: "GoS"});
+		addLi(ulAdventures, "adventure.html", "The Orrery of the Wanderer", {isSide: true, aHash: "AI"});
 		addDivider(ulAdventures);
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
 		addLi(ulDms, "cultsboons.html", "Cults & Demonic Boons");

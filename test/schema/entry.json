@@ -1,11 +1,10 @@
 {
-	"$schema": "http://json-schema.org/draft-06/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "entry.json",
 
 	"title": "Entry",
-	"id": "/Entry",
 	"description": "A recursively renderable object.",
-	"type": ["string", "integer", "object"],
-	"version": "1.2.14",
+	"version": "1.2.15",
 
 	"definitions" : {
 		"_arrayOfString": {
@@ -93,7 +92,7 @@
 						"entries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						},
 						"data": {
@@ -123,16 +122,16 @@
 						"entries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						},
 						"movedTo": {
-							"$ref": "/Entry"
+							"$ref": "#"
 						},
 						"oldEntries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						},
 						"data": {
@@ -152,7 +151,7 @@
 						"entries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						},
 						"by": {
@@ -176,7 +175,7 @@
 						"entries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						}
 					},
@@ -194,7 +193,7 @@
 						"entries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						}
 					},
@@ -215,7 +214,7 @@
 						"entries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						}
 					},
@@ -235,14 +234,14 @@
 							"description": "Primarily for homebrew use.",
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						},
 						"outro": {
 							"description": "Primarily for homebrew use.",
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						},
 						"isStriped": {"type": "boolean"},
@@ -261,16 +260,16 @@
 						},
 						"rowStyles": {
 							"type": "array",
-							"items": {"type" : "string"}
+							"items": {"type": "string"}
 						},
 						"rows": {
 							"type": "array",
 							"items": {
-								"oneOf" : [
+								"anyOf": [
 									{
 										"type": "array",
 										"items": {
-											"$ref": "/Entry"
+											"$ref": "entry.json"
 										}
 									},
 									{
@@ -282,7 +281,7 @@
 						"footnotes": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						},
 						"data": {
@@ -332,11 +331,12 @@
 						"row": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						}
 					},
 					"required": [
+						"type",
 						"row"
 					],
 					"additionalProperties": false
@@ -356,24 +356,13 @@
 						},
 						"roll": {
 							"type": "object",
+							"oneOf": [
+								{"required": ["min", "max"]},
+								{"required": ["exact"]}
+							],
 							"properties": {
-								"oneOf": [
-									{
-										"min": {
-											"type": "integer"
-										},
-										"max": {
-											"type": "integer"
-										}
-									},
-									{
-										"exact": {
-											"type": "integer"
-										}
-									}
-								],
 								"entry": {
-									"$ref": "/Entry"
+									"$ref": "#"
 								},
 								"pad": {
 									"type": "boolean"
@@ -381,7 +370,7 @@
 							}
 						},
 						"entry": {
-							"$ref": "/Entry"
+							"$ref": "#"
 						}
 					},
 					"additionalProperties": false
@@ -407,7 +396,7 @@
 						"items": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						}
 					},
@@ -696,7 +685,7 @@
 						"entries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						},
 						"data": {
@@ -723,7 +712,7 @@
 						"entries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						},
 						"page": {
@@ -749,7 +738,7 @@
 						"entries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						},
 						"variantSource": {
@@ -782,7 +771,7 @@
 						"entries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						}
 					},
@@ -803,7 +792,7 @@
 									"type": "string"
 								},
 								"entry": {
-									"$ref": "/Entry"
+									"$ref": "#"
 								}
 							},
 							"required": ["name", "entry"],
@@ -818,7 +807,7 @@
 								"entries": {
 									"type": "array",
 									"items": {
-										"$ref": "/Entry"
+										"$ref": "#"
 									}
 								}
 							},
@@ -839,7 +828,7 @@
 							"type": "string"
 						},
 						"entry": {
-							"$ref": "/Entry"
+							"$ref": "#"
 						}
 					},
 					"required": ["name", "entry"],
@@ -857,7 +846,7 @@
 							"type": "string"
 						},
 						"entry": {
-							"$ref": "/Entry"
+							"$ref": "#"
 						}
 					},
 					"required": ["name", "entry"],
@@ -913,6 +902,10 @@
 						},
 						"height": {
 							"type": "integer"
+						},
+						"maxWidth": {
+							"description": "Specify the max desired display width of the images, as opposed to \"width\" which should only be used for the _real_ width.",
+							"type": "integer"
 						}
 					},
 					"required": ["href"],
@@ -949,7 +942,7 @@
 						"entries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						}
 					},
@@ -971,13 +964,13 @@
 						"attackEntries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						},
 						"hitEntries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						}
 					},
@@ -995,7 +988,7 @@
 			"properties": {
 				"type": {"const": "dataCreature"},
 				"dataCreature": {
-					"$ref" : "/Bestiary#/definitions/creature"
+					"$ref" : "bestiary.json#/definitions/creature"
 				}
 			},
 			"required": [
@@ -1007,7 +1000,7 @@
 			"properties": {
 				"type": {"const": "dataSpell"},
 				"dateSpell": {
-					"$ref" : "/Spells#/definitions/spell"
+					"$ref" : "spells.json#/definitions/spell"
 				}
 			},
 			"required": [
@@ -1036,7 +1029,7 @@
 						"headerEntries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						},
 						"constant": {
@@ -1121,7 +1114,7 @@
 						"footerEntries": {
 							"type": "array",
 							"items": {
-								"$ref": "/Entry"
+								"$ref": "#"
 							}
 						},
 						"ability": {
@@ -1244,7 +1237,7 @@
 						"immune": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/damImmune"
+								"$ref": "#/definitions/dataDamImmune"
 							}
 						},
 						"note": {

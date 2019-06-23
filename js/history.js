@@ -30,13 +30,13 @@ class History {
 				else {
 					const id = $el.attr("id");
 					History.lastLoadedId = id;
-					loadhash(id);
+					loadHash(id);
 					document.title = decodeURIComponent($el.attr("title")) + " - 5etools";
 				}
 			}
 		}
 
-		if (typeof loadsub === "function" && (sub.length > 0 || forceLoad)) loadsub(sub);
+		if (typeof loadSubHash === "function" && (sub.length > 0 || forceLoad)) loadSubHash(sub);
 		if (blankFilterLoad) {
 			History._freshLoad();
 		}

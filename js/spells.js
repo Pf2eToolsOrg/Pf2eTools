@@ -8,6 +8,7 @@ const META_ADD_CONC = "Concentration";
 const META_ADD_V = "Verbal";
 const META_ADD_S = "Somatic";
 const META_ADD_M = "Material";
+const META_ADD_R = "Royalty";
 const META_ADD_M_COST = "Material with Cost";
 const META_ADD_M_CONSUMED = "Material is Consumed";
 const META_ADD_MB_SIGHT = "Requires Sight";
@@ -224,6 +225,7 @@ function getMetaFilterObj (s) {
 	if (s.components && s.components.v) out.push(META_ADD_V);
 	if (s.components && s.components.s) out.push(META_ADD_S);
 	if (s.components && s.components.m) out.push(META_ADD_M);
+	if (s.components && s.components.r) out.push(META_ADD_R);
 	if (s.components && s.components.m && s.components.m.cost) out.push(META_ADD_M_COST);
 	if (s.components && s.components.m && s.components.m.consume) out.push(META_ADD_M_CONSUMED);
 	if ((s.miscTags && s.miscTags.includes("PRM")) || s.duration.filter(it => it.type === "permanent").length) out.push(META_ADD_MB_PERMANENT);
@@ -299,7 +301,7 @@ function pPostLoad () {
 						time: {name: "Casting Time", transform: (it) => getTblTimeStr(it[0])},
 						_school: {name: "School", transform: (sp) => `<span class="school_${sp.school}">${Parser.spSchoolAndSubschoolsAbvsToFull(sp.school, sp.subschools)}</span>`},
 						range: {name: "Range", transform: (it) => Parser.spRangeToFull(it)},
-						components: {name: "Components", transform: (it) => Parser.spComponentsToFull(it)},
+						_components: {name: "Components", transform: (sp) => Parser.spComponentsToFull(sp)},
 						classes: {name: "Classes", transform: (it) => Parser.spMainClassesToFull(it)},
 						entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}, 1), flex: 3},
 						entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}, 1), flex: 2}
@@ -371,7 +373,8 @@ const raceFilter = new Filter({header: "Race"});
 const backgroundFilter = new Filter({header: "Background"});
 const metaFilter = new Filter({
 	header: "Components & Miscellaneous",
-	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_M_CONSUMED, META_ADD_MB_HEAL, META_ADD_MB_SIGHT, META_ADD_MB_PERMANENT, META_ADD_MB_SCALING, META_ADD_MB_SUMMONS, META_RITUAL, META_TECHNOMAGIC]
+	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_M_CONSUMED, META_ADD_MB_HEAL, META_ADD_MB_SIGHT, META_ADD_MB_PERMANENT, META_ADD_MB_SCALING, META_ADD_MB_SUMMONS, META_RITUAL, META_TECHNOMAGIC],
+	itemSortFn: null
 });
 const schoolFilter = new Filter({
 	header: "School",
@@ -407,17 +410,20 @@ const conditionFilter = new Filter({
 const spellAttackFilter = new Filter({
 	header: "Spell Attack",
 	items: ["M", "R", "O"],
-	displayFn: Parser.spAttackTypeToFull
+	displayFn: Parser.spAttackTypeToFull,
+	itemSortFn: null
 });
 const saveFilter = new Filter({
 	header: "Saving Throw",
 	items: ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"],
-	displayFn: getFilterAbilitySave
+	displayFn: getFilterAbilitySave,
+	itemSortFn: null
 });
 const checkFilter = new Filter({
 	header: "Opposed Ability Check",
 	items: ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"],
-	displayFn: getFilterAbilityCheck
+	displayFn: getFilterAbilityCheck,
+	itemSortFn: null
 });
 const timeFilter = new Filter({
 	header: "Cast Time",
@@ -429,7 +435,8 @@ const timeFilter = new Filter({
 		TM_MINS,
 		TM_HRS
 	],
-	displayFn: getTimeDisplay
+	displayFn: getTimeDisplay,
+	itemSortFn: null
 });
 const durationFilter = new Filter({
 	header: "Duration",
@@ -439,7 +446,8 @@ const durationFilter = new Filter({
 		"permanent",
 		"special"
 	],
-	displayFn: StrUtil.uppercaseFirst
+	displayFn: StrUtil.uppercaseFirst,
+	itemSortFn: null
 });
 const rangeFilter = new Filter({
 	header: "Range",
@@ -449,12 +457,14 @@ const rangeFilter = new Filter({
 		F_RNG_POINT,
 		F_RNG_SELF_AREA,
 		F_RNG_SPECIAL
-	]
+	],
+	itemSortFn: null
 });
 const areaTypeFilter = new Filter({
 	header: "Area Style",
 	items: ["ST", "MT", "R", "N", "C", "Y", "H", "L", "S", "Q", "W"],
-	displayFn: Parser.spAreaTypeToFull
+	displayFn: Parser.spAreaTypeToFull,
+	itemSortFn: null
 });
 let filterBox;
 
@@ -583,11 +593,11 @@ function getSublistItem (spell, pinId) {
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}">
 				<span class="name col-3-2 pl-0">${spell.name}</span>
-				<span class="level col-1-5">${Parser.spLevelToFull(spell.level)}</span>
-				<span class="time col-1-8">${getTblTimeStr(spell.time[0])}</span>
-				<span class="school col-1-6 school_${spell.school}" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}">${Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools)}</span>
-				<span class="concentration concentration--sublist col-0-7" title="Concentration">${spell._isConc ? "×" : ""}</span>
-				<span class="range col-3-2 pr-0">${Parser.spRangeToFull(spell.range)}</span>
+				<span class="level col-1-5 text-center">${Parser.spLevelToFull(spell.level)}</span>
+				<span class="time col-1-8 text-center">${getTblTimeStr(spell.time[0])}</span>
+				<span class="school col-1-6 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}">${Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools)}</span>
+				<span class="concentration concentration--sublist col-0-7 text-center" title="Concentration">${spell._isConc ? "×" : ""}</span>
+				<span class="range col-3-2 pr-0 text-right">${Parser.spRangeToFull(spell.range)}</span>
 				
 				<span class="id hidden">${pinId}</span>
 			</a>
@@ -767,12 +777,12 @@ function addSpells (data) {
 			<li class="row" ${FLTR_ID}="${spI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${spI}" href="#${spHash}" title="${spell.name}">
 					<span class="name col-2-9 pl-0">${spell.name}</span>
-					<span class="level col-1-5">${levelText}</span>
-					<span class="time col-1-7">${getTblTimeStr(spell.time[0])}</span>
-					<span class="school col-1-2 school_${spell.school}" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}">${Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools)}</span>
-					<span class="concentration col-0-6" title="Concentration">${spell._isConc ? "×" : ""}</span>
-					<span class="range col-2-4">${Parser.spRangeToFull(spell.range)}</span>
-					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(spell.source)} pr-0" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${Parser.sourceJsonToAbv(spell.source)}</span>
+					<span class="level col-1-5 text-center">${levelText}</span>
+					<span class="time col-1-7 text-center">${getTblTimeStr(spell.time[0])}</span>
+					<span class="school col-1-2 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}">${Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools)}</span>
+					<span class="concentration col-0-6 text-center" title="Concentration">${spell._isConc ? "×" : ""}</span>
+					<span class="range col-2-4 text-right">${Parser.spRangeToFull(spell.range)}</span>
+					<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(spell.source)} pr-0" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${Parser.sourceJsonToAbv(spell.source)}</span>
 
 					<span class="classes" style="display: none">${Parser.spClassesToFull(spell.classes, true)}</span>
 					<span class="uniqueid hidden">${spell.uniqueId ? spell.uniqueId : spI}</span>
@@ -887,12 +897,12 @@ function sortSpells (a, b, o) {
 }
 
 const renderer = Renderer.get();
-function loadhash (id) {
+function loadHash (id) {
 	renderer.setFirstSection(true);
 	const $pageContent = $("#pagecontent").empty();
 	const spell = spellList[id];
 	$pageContent.append(Renderer.spell.getRenderedString(spell, renderer, SUBCLASS_LOOKUP));
-	loadsub([]);
+	loadSubHash([]);
 
 	ListUtil.updateSelected();
 }
@@ -909,7 +919,7 @@ function handleUnknownHash (link, sub) {
 	}
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub, sublistFuncPreload);
 

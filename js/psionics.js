@@ -165,7 +165,7 @@ function addPsionics (data) {
 					<span class="${LIST_NAME} col-6">${p.name}</span>
 					<span class="${LIST_TYPE} col-2">${Parser.psiTypeToFull(p.type)}</span>
 					<span class="${LIST_ORDER} col-2 ${p._fOrder === STR_NONE ? CLS_LI_NONE : ""}">${p._fOrder}</span>
-					<span class="${LIST_SOURCE} col-2 text-align-center" title="${Parser.sourceJsonToFull(p.source)}" ${BrewUtil.sourceJsonToStyle(p.source)}>${Parser.sourceJsonToAbv(p.source)}</span>
+					<span class="${LIST_SOURCE} col-2 text-center" title="${Parser.sourceJsonToFull(p.source)}" ${BrewUtil.sourceJsonToStyle(p.source)}>${Parser.sourceJsonToAbv(p.source)}</span>
 					
 					<span class="${LIST_MODE_LIST} hidden">${getHiddenModeList(p)}</span>
 					<span class="uniqueid hidden">${p.uniqueId ? p.uniqueId : psI}</span>
@@ -225,7 +225,7 @@ function getSublistItem (p, pinId) {
 }
 
 let renderer;
-function loadhash (jsonIndex) {
+function loadHash (jsonIndex) {
 	if (!renderer) renderer = Renderer.get();
 	renderer.setFirstSection(true);
 	const $content = $(`#pagecontent`).empty();
@@ -244,12 +244,12 @@ function loadhash (jsonIndex) {
 		${Renderer.utils.getBorderTr()}
 	`);
 
-	loadsub([]);
+	loadSubHash([]);
 
 	ListUtil.updateSelected();
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 

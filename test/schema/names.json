@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/draft-06/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
 	"version": "1.2.0",
 	"title": "NameArray",
 	"type": "object",
@@ -35,7 +35,9 @@
 				},
 				"table": {
 					"type": "array",
-					"items": "#/definitions/nameTableRow"
+					"items": {
+						"$ref": "#/definitions/nameTableRow"
+					}
 				}
 			},
 			"required": [
@@ -81,6 +83,6 @@
 		}
 	},
 
-	"required": "name",
+	"required": ["name"],
 	"additionalProperties": false
 }

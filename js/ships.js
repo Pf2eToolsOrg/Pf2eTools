@@ -77,7 +77,7 @@ function addShips (data) {
 			<li class="row" ${FLTR_ID}="${shI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${shI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 					<span class="name col-10 pl-0">${it.name}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
+					<span class="source col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
 					
 					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : shI}</span>
 				</a>
@@ -132,7 +132,7 @@ function getSublistItem (it, pinId) {
 	`;
 }
 
-function loadhash (jsonIndex) {
+function loadHash (jsonIndex) {
 	Renderer.get().setFirstSection(true);
 	const ship = shipList[jsonIndex];
 	const $content = $(`#pagecontent`).empty();
@@ -173,7 +173,7 @@ function loadhash (jsonIndex) {
 	ListUtil.updateSelected();
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

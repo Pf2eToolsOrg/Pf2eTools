@@ -80,7 +80,9 @@ const replacementRegex = new RegExp(Object.keys(replacements).join("|"), 'g');
 function getCleanJson (data, minify = false) {
 	data = minify ? JSON.stringify(data) : JSON.stringify(data, null, "\t") + "\n";
 	data = data.replace(replacementRegex, (match) => replacements[match]);
-	return data.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1");
+	return data
+		.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1")
+		.replace(/\s*(\.\.\.)/g, "$1");
 }
 
 function readJson (path) {

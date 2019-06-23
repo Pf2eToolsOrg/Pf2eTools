@@ -282,6 +282,10 @@ function Renderer () {
 	};
 
 	this._renderImage = function (entry, textStack, meta, options) {
+		function getStylePart () {
+			return entry.maxWidth ? `style="max-width: ${entry.maxWidth}px"` : "";
+		}
+
 		if (entry.imageType === "map") textStack[0] += `<div class="rd__wrp-map">`;
 		this._renderPrefix(entry, textStack, meta, options);
 		textStack[0] += `<div class="${meta._typeStack.includes("gallery") ? "rd__wrp-gallery-image" : ""}">`;
@@ -295,7 +299,7 @@ function Renderer () {
 		const svg = this._lazyImages && entry.width != null && entry.height != null
 			? `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${entry.width}" height="${entry.height}"><rect width="100%" height="100%" fill="#ccc3"/></svg>`)}`
 			: null;
-		textStack[0] += `<div class="rd__wrp-image"><a href="${href}" target="_blank" rel="noopener" ${entry.title ? `title="${entry.title}"` : ""}><img class="rd__image" src="${svg || href}" ${entry.altText ? `alt="${entry.altText}"` : ""} ${svg ? `data-src="${href}"` : ""}></a></div>`;
+		textStack[0] += `<div class="rd__wrp-image"><a href="${href}" target="_blank" rel="noopener" ${entry.title ? `title="${entry.title}"` : ""}><img class="rd__image" src="${svg || href}" ${entry.altText ? `alt="${entry.altText}"` : ""} ${svg ? `data-src="${href}"` : ""} ${getStylePart()}></a></div>`;
 		if (entry.title) textStack[0] += `<div class="rd__image-title"><div class="rd__image-title-inner">${entry.title}</div></div>`;
 		else if (entry._galleryTitlePad) textStack[0] += `<div class="rd__image-title">&nbsp;</div>`;
 		textStack[0] += `</div>`;
@@ -476,9 +480,11 @@ function Renderer () {
 			this._renderEntriesSubtypes_renderPreReqText(entry, textStack, meta);
 			if (entry.entries) {
 				const cacheDepth = meta.depth;
-				meta.depth = nextDepth;
 				const len = entry.entries.length;
-				for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
+				for (let i = 0; i < len; ++i) {
+					meta.depth = nextDepth;
+					this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
+				}
 				meta.depth = cacheDepth;
 			}
 			textStack[0] += `</${this.wrapperTag}>`;
@@ -683,19 +689,19 @@ function Renderer () {
 
 	this._renderAbilityDc = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `<div class='text-align-center'><b>${entry.name} save DC</b> = 8 + your proficiency bonus + your ${Parser.attrChooseToFull(entry.attributes)}</div>`;
+		textStack[0] += `<div class='text-center'><b>${entry.name} save DC</b> = 8 + your proficiency bonus + your ${Parser.attrChooseToFull(entry.attributes)}</div>`;
 		this._renderSuffix(entry, textStack, meta, options);
 	};
 
 	this._renderAbilityAttackMod = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `<div class='text-align-center'><b>${entry.name} attack modifier</b> = your proficiency bonus + your ${Parser.attrChooseToFull(entry.attributes)}</div>`;
+		textStack[0] += `<div class='text-center'><b>${entry.name} attack modifier</b> = your proficiency bonus + your ${Parser.attrChooseToFull(entry.attributes)}</div>`;
 		this._renderSuffix(entry, textStack, meta, options);
 	};
 
 	this._renderAbilityGeneric = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `<div class='text-align-center'>${entry.name ? `<b>${entry.name}</b>  = ` : ""}${entry.text}${entry.attributes ? ` ${Parser.attrChooseToFull(entry.attributes)}` : ""}</div>`;
+		textStack[0] += `<div class='text-center'>${entry.name ? `<b>${entry.name}</b>  = ` : ""}${entry.text}${entry.attributes ? ` ${Parser.attrChooseToFull(entry.attributes)}` : ""}</div>`;
 		this._renderSuffix(entry, textStack, meta, options);
 	};
 
@@ -1530,7 +1536,7 @@ Renderer.applyProperties._leadingAn = new Set(["a", "e", "i", "o", "u"]);
 
 Renderer.attackTagToFull = function (tagStr) {
 	function renderTag (tags) {
-		return `${tags.includes("m") ? "Melee " : tags.includes("r") ? "Ranged " : tags.includes("a") ? "Area " : ""}${tags.includes("w") ? "Weapon " : tags.includes("s") ? "Spell " : ""}`;
+		return `${tags.includes("m") ? "Melee " : tags.includes("r") ? "Ranged " : tags.includes("g") ? "Magical " : tags.includes("a") ? "Area " : ""}${tags.includes("w") ? "Weapon " : tags.includes("s") ? "Spell " : ""}`;
 	}
 
 	const tagGroups = tagStr.toLowerCase().split(",").map(it => it.trim()).filter(it => it).map(it => it.split(""));
@@ -1984,7 +1990,7 @@ Renderer.utils = {
 			const fluff = fnFluffBuilder(data);
 
 			if (!fluff) {
-				$td.empty().append(HTML_NO_INFO);
+				$td.empty().append(isImageTab ? HTML_NO_IMAGES : HTML_NO_INFO);
 				return;
 			}
 
@@ -2200,7 +2206,7 @@ Renderer.spell = {
 						<th colspan="2">Duration</th>
 					</tr>	
 					<tr>
-						<td colspan="4">${Parser.spComponentsToFull(spell.components)}</td>
+						<td colspan="4">${Parser.spComponentsToFull(spell)}</td>
 						<td colspan="2">${Parser.spDurationToFull(spell.duration)}</td>
 					</tr>
 				</table>
@@ -2229,7 +2235,7 @@ Renderer.spell = {
 			<tr><td class="levelschoolritual" colspan="6"><span>${Parser.spLevelSchoolMetaToFull(spell.level, spell.school, spell.meta, spell.subschools)}</span></td></tr>
 			<tr><td class="castingtime" colspan="6"><span class="bold">Casting Time: </span>${Parser.spTimeListToFull(spell.time)}</td></tr>
 			<tr><td class="range" colspan="6"><span class="bold">Range: </span>${Parser.spRangeToFull(spell.range)}</td></tr>
-			<tr><td class="components" colspan="6"><span class="bold">Components: </span>${Parser.spComponentsToFull(spell.components)}</td></tr>
+			<tr><td class="components" colspan="6"><span class="bold">Components: </span>${Parser.spComponentsToFull(spell)}</td></tr>
 			<tr><td class="range" colspan="6"><span class="bold">Duration: </span>${Parser.spDurationToFull(spell.duration)}</td></tr>
 			${Renderer.utils.getDividerTr()}
 		`);
@@ -2446,14 +2452,14 @@ Renderer.race = {
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
-						<th class="col-4 text-align-center">Ability Scores</th>
-						<th class="col-4 text-align-center">Size</th>
-						<th class="col-4 text-align-center">Speed</th>
+						<th class="col-4 text-center">Ability Scores</th>
+						<th class="col-4 text-center">Size</th>
+						<th class="col-4 text-center">Speed</th>
 					</tr>
 					<tr>
-						<td class="text-align-center">${ability.asText}</td>
-						<td class="text-align-center">${Parser.sizeAbvToFull(race.size)}</td>
-						<td class="text-align-center">${Parser.getSpeedString(race)}</td>
+						<td class="text-center">${ability.asText}</td>
+						<td class="text-center">${Parser.sizeAbvToFull(race.size)}</td>
+						<td class="text-center">${Parser.getSpeedString(race)}</td>
 					</tr>
 				</table>
 			</td></tr>
@@ -2591,25 +2597,25 @@ Renderer.object = {
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
-						<th colspan="3" class="text-align-center">Type</th>
-						<th colspan="2" class="text-align-center">AC</th>
-						<th colspan="2" class="text-align-center">HP</th>
-						<th colspan="5" class="text-align-center">Damage Imm.</th>
+						<th colspan="3" class="text-center">Type</th>
+						<th colspan="2" class="text-center">AC</th>
+						<th colspan="2" class="text-center">HP</th>
+						<th colspan="5" class="text-center">Damage Imm.</th>
 					</tr>
 					<tr>
-						<td colspan="3" class="text-align-center">${Parser.sizeAbvToFull(obj.size)} object</td>					
-						<td colspan="2" class="text-align-center">${obj.ac}</td>
-						<td colspan="2" class="text-align-center">${obj.hp}</td>
-						<td colspan="5" class="text-align-center">${obj.immune}</td>
+						<td colspan="3" class="text-center">${Parser.sizeAbvToFull(obj.size)} object</td>					
+						<td colspan="2" class="text-center">${obj.ac}</td>
+						<td colspan="2" class="text-center">${obj.hp}</td>
+						<td colspan="5" class="text-center">${obj.immune}</td>
 					</tr>
 					${obj.resist || obj.vulnerable ? `
 					<tr>
-						${obj.resist ? `<th colspan="${row2Width}" class="text-align-center">Damage Res.</th>` : ""}
-						${obj.vulnerable ? `<th colspan="${row2Width}" class="text-align-center">Damage Vuln.</th>` : ""}
+						${obj.resist ? `<th colspan="${row2Width}" class="text-center">Damage Res.</th>` : ""}
+						${obj.vulnerable ? `<th colspan="${row2Width}" class="text-center">Damage Vuln.</th>` : ""}
 					</tr>
 					<tr>
-						${obj.resist ? `<td colspan="${row2Width}" class="text-align-center">${obj.resist}</td>` : ""}
-						${obj.vulnerable ? `<td colspan="${row2Width}" class="text-align-center">${obj.vulnerable}</td>` : ""}
+						${obj.resist ? `<td colspan="${row2Width}" class="text-center">${obj.resist}</td>` : ""}
+						${obj.vulnerable ? `<td colspan="${row2Width}" class="text-center">${obj.vulnerable}</td>` : ""}
 					</tr>
 					` : ""}
 				</table>			
@@ -3160,6 +3166,22 @@ Renderer.monster = {
 									if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
 									return 8 + Parser.getAbilityModNumber(Number(copyTo[parts[1]])) + Parser.crToPb(copyTo.cr);
 								}
+								case "to_hit": {
+									if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
+									const total = Parser.crToPb(copyTo.cr) + Parser.getAbilityModNumber(Number(copyTo[parts[1]]));
+									return total >= 0 ? `+${total}` : total;
+								}
+								case "damage_mod": {
+									if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
+									const total = Parser.getAbilityModNumber(Number(copyTo[parts[1]]));
+									return total === 0 ? "" : total > 0 ? ` +${total}` : ` ${total}`;
+								}
+								case "damage_avg": {
+									const replaced = parts[1].replace(/(str|dex|con|int|wis|cha)/gi, (...m2) => Parser.getAbilityModNumber(Number(copyTo[m2[0]])))
+									const clean = replaced.replace(/[^-+/*0-9.,]+/g, "");
+									// eslint-disable-next-line no-eval
+									return Math.floor(eval(clean));
+								}
 								default: return m[0];
 							}
 						})
@@ -3372,20 +3394,20 @@ Renderer.monster = {
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
-						<th class="col-2 text-align-center">STR</th>
-						<th class="col-2 text-align-center">DEX</th>
-						<th class="col-2 text-align-center">CON</th>
-						<th class="col-2 text-align-center">INT</th>
-						<th class="col-2 text-align-center">WIS</th>
-						<th class="col-2 text-align-center">CHA</th>
+						<th class="col-2 text-center">STR</th>
+						<th class="col-2 text-center">DEX</th>
+						<th class="col-2 text-center">CON</th>
+						<th class="col-2 text-center">INT</th>
+						<th class="col-2 text-center">WIS</th>
+						<th class="col-2 text-center">CHA</th>
 					</tr>	
 					<tr>
-						<td class="text-align-center">${Renderer.utils.getAbilityRoller(mon, "str")}</td>
-						<td class="text-align-center">${Renderer.utils.getAbilityRoller(mon, "dex")}</td>
-						<td class="text-align-center">${Renderer.utils.getAbilityRoller(mon, "con")}</td>
-						<td class="text-align-center">${Renderer.utils.getAbilityRoller(mon, "int")}</td>
-						<td class="text-align-center">${Renderer.utils.getAbilityRoller(mon, "wis")}</td>
-						<td class="text-align-center">${Renderer.utils.getAbilityRoller(mon, "cha")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "str")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "dex")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "con")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "int")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "wis")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "cha")}</td>
 					</tr>
 				</table>
 			</td></tr>
@@ -3674,7 +3696,7 @@ Renderer.item = {
 		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item);
 		renderStack.push(`<tr>
 			<td colspan="2">${[Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
-			<td class="text-align-right" colspan="4">${damage} ${damageType} ${propertiesTxt}</td>
+			<td class="text-right" colspan="4">${damage} ${damageType} ${propertiesTxt}</td>
 		</tr>`);
 
 		if (item.entries && item.entries.length) {
@@ -4404,26 +4426,26 @@ Renderer.ship = {
 			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(ship.size)} vehicle${ship.dimensions ? `, (${ship.dimensions.join(" by ")})` : ""}</i><br></td></tr>
 			<tr class="text"><td colspan="6">
 				<div><b>Creature Capacity</b> ${ship.capCrew} crew${ship.capPassenger ? `, ${ship.capPassenger} passengers` : ""}</div>
-				${ship.capCargo ? `<div><b>Cargo Capacity</b> ${ship.capCargo} ton${ship.capCargo === 1 ? "" : "s"}</div>` : ""}
+				${ship.capCargo ? `<div><b>Cargo Capacity</b> ${typeof ship.capCargo === "string" ? ship.capCargo : `${ship.capCargo} ton${ship.capCargo === 1 ? "" : "s"}`}</div>` : ""}
 				<div><b>Travel Pace</b> ${ship.pace} miles per hour (${ship.pace * 24} miles per day)</div>
 			</td></tr>
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
-						<th class="col-2 text-align-center">STR</th>
-						<th class="col-2 text-align-center">DEX</th>
-						<th class="col-2 text-align-center">CON</th>
-						<th class="col-2 text-align-center">INT</th>
-						<th class="col-2 text-align-center">WIS</th>
-						<th class="col-2 text-align-center">CHA</th>
+						<th class="col-2 text-center">STR</th>
+						<th class="col-2 text-center">DEX</th>
+						<th class="col-2 text-center">CON</th>
+						<th class="col-2 text-center">INT</th>
+						<th class="col-2 text-center">WIS</th>
+						<th class="col-2 text-center">CHA</th>
 					</tr>	
 					<tr>
-						<td class="text-align-center">${Renderer.utils.getAbilityRoller(ship, "str")}</td>
-						<td class="text-align-center">${Renderer.utils.getAbilityRoller(ship, "dex")}</td>
-						<td class="text-align-center">${Renderer.utils.getAbilityRoller(ship, "con")}</td>
-						<td class="text-align-center">${Renderer.utils.getAbilityRoller(ship, "int")}</td>
-						<td class="text-align-center">${Renderer.utils.getAbilityRoller(ship, "wis")}</td>
-						<td class="text-align-center">${Renderer.utils.getAbilityRoller(ship, "cha")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "str")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "dex")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "con")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "int")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "wis")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "cha")}</td>
 					</tr>
 				</table>
 			</td></tr>
@@ -5198,6 +5220,14 @@ Renderer.hover = {
 	 */
 	doHover (evt, ele, entries) {
 		Renderer.hover.show({evt, ele, preLoaded: entries, page: "generic"});
+	},
+
+	/**
+	 * As above, but designed to be used with e.g. button clicks, as opposed to hover.
+	 */
+	doOpenWindow (evt, ele, entries) {
+		const fauxEvent = {shiftKey: true, clientX: evt.clientX, clientY: evt.clientY};
+		Renderer.hover.show({evt: fauxEvent, ele, preLoaded: entries, page: "generic"});
 	},
 
 	_doInit () {
@@ -6607,7 +6637,8 @@ Renderer.stripTags = function (str) {
 		const tagSplit = Renderer.splitByTags(str);
 		return tagSplit.filter(it => it).map(it => {
 			if (it.startsWith("@")) {
-				const [tag, text] = Renderer.splitFirstSpace(it);
+				let [tag, text] = Renderer.splitFirstSpace(it);
+				text = text.replace(/<\$([^$]+)\$>/gi, ""); // remove any variable tags
 				switch (tag) {
 					case "@b":
 					case "@bold":

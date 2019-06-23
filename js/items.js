@@ -51,7 +51,7 @@ let magicList;
 const sourceFilter = getSourceFilter();
 const DEFAULT_HIDDEN_TYPES = new Set(["$", "Futuristic", "Modern", "Renaissance"]);
 const typeFilter = new Filter({header: "Type", deselFn: (it) => DEFAULT_HIDDEN_TYPES.has(it)});
-const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"]});
+const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"], itemSortFn: null});
 const propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});
 const costFilter = new RangeFilter({header: "Cost", min: 0, max: 100, isAllowGreater: true, suffix: "gp"});
 const focusFilter = new Filter({header: "Spellcasting Focus", items: ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"]});
@@ -62,13 +62,15 @@ let filterBox;
 async function populateTablesAndFilters (data) {
 	const rarityFilter = new Filter({
 		header: "Rarity",
-		items: ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown", "Unknown (Magic)", "Other"]
+		items: ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown", "Unknown (Magic)", "Other"],
+		itemSortFn: null
 	});
-	const attunementFilter = new Filter({header: "Attunement", items: ["Yes", "By...", "Optional", "No"]});
+	const attunementFilter = new Filter({header: "Attunement", items: ["Yes", "By...", "Optional", "No"], itemSortFn: null});
 	const categoryFilter = new Filter({
 		header: "Category",
 		items: ["Basic", "Generic Variant", "Specific Variant", "Other"],
-		deselFn: (it) => it === "Specific Variant"
+		deselFn: (it) => it === "Specific Variant",
+		itemSortFn: null
 	});
 	const miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Magic", "Mundane", "Sentient"]});
 
@@ -260,9 +262,9 @@ function addItems (data) {
 				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(item)}" title="${name}">
 					<span class="name col-3 pl-0">${name}</span>
 					<span class="type col-4-3">${item.typeListText}</span>
-					<span class="col-1-5 text-align-center">${item.value || item.valueMult ? Parser.itemValueToFull(item, true).replace(/ +/g, "\u00A0") : "\u2014"}</span>
-					<span class="col-1-5 text-align-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
-					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${Parser.sourceJsonToAbv(item.source)}</span>
+					<span class="col-1-5 text-center">${item.value || item.valueMult ? Parser.itemValueToFull(item, true).replace(/ +/g, "\u00A0") : "\u2014"}</span>
+					<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
+					<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${Parser.sourceJsonToAbv(item.source)}</span>
 					
 					<span class="cost hidden">${item._fCost}</span>
 					<span class="weight hidden">${Parser.weightValueToNumber(item.weight)}</span>
@@ -275,9 +277,9 @@ function addItems (data) {
 				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(item)}" title="${name}">
 					<span class="name col-3-5 pl-0">${name}</span>
 					<span class="type col-3-3">${item.typeListText}</span>
-					<span class="col-1-5 text-align-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
+					<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
 					<span class="rarity col-2">${item.rarity}</span>
-					<span class="source col-1-7 text-align-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}">${Parser.sourceJsonToAbv(item.source)}</span>
+					<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${Parser.sourceJsonToAbv(item.source)}</span>
 					
 					<span class="weight hidden">${Parser.weightValueToNumber(item.weight)}</span>
 					<span class="uniqueid hidden">${item.uniqueId ? item.uniqueId : itI}</span>
@@ -370,9 +372,9 @@ function getSublistItem (item, pinId, addCount) {
 		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
 			<a href="#${UrlUtil.autoEncodeHash(item)}" title="${item.name}">
 				<span class="name col-6 pl-0">${item.name}</span>
-				<span class="weight text-align-center col-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
-				<span class="price text-align-center col-2">${item.value ? item.value.replace(/ +/g, "\u00A0") : "\u2014"}</span>
-				<span class="count text-align-center col-2 pr-0">${addCount || 1}</span>
+				<span class="weight text-center col-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
+				<span class="price text-center col-2">${item.value ? item.value.replace(/ +/g, "\u00A0") : "\u2014"}</span>
+				<span class="count text-center col-2 pr-0">${addCount || 1}</span>
 				
 				<span class="cost hidden">${item._fCost}</span>
 				<span class="id hidden">${pinId}</span>
@@ -382,7 +384,7 @@ function getSublistItem (item, pinId, addCount) {
 }
 
 const renderer = Renderer.get();
-function loadhash (id) {
+function loadHash (id) {
 	renderer.setFirstSection(true);
 	const $content = $(`#pagecontent`).empty();
 	const item = itemList[id];
@@ -396,7 +398,7 @@ function loadhash (id) {
 		<tr><td class="typerarityattunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td></tr>
 		<tr>
 			<td colspan="2">${[Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
-			<td class="text-align-right" colspan="4"><span>${damage}</span> <span>${damageType}</span> <span>${propertiesTxt}</span></td>
+			<td class="text-right" colspan="4"><span>${damage}</span> <span>${damageType}</span> <span>${propertiesTxt}</span></td>
 		</tr>
 		<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
 		${Renderer.utils.getPageTr(item)}
@@ -473,7 +475,7 @@ function loadhash (id) {
 	const picTab = Renderer.utils.tabButton(
 		"Images",
 		() => {},
-		() => buildFluffTab(true)
+		buildFluffTab.bind(null, true)
 	);
 
 	// only display the "Info" tab if there's some fluff info--currently (2018-12-13), no official item has text fluff
@@ -483,7 +485,7 @@ function loadhash (id) {
 	ListUtil.updateSelected();
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

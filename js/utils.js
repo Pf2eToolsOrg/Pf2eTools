@@ -143,7 +143,7 @@ String.prototype.toSentenceCase = String.prototype.toSentenceCase ||
 
 String.prototype.toSpellCase = String.prototype.toSpellCase ||
 	function () {
-		return this.toLowerCase().replace(/(^|of )(bigby|otiluke|mordenkainen|evard|hadar|agatys|abi-dalzim|aganazzar|drawmij|leomund|maximilian|melf|nystul|otto|rary|snilloc|tasha|tenser)('s|$| )/g, (...m) => `${m[1]}${m[2].toTitleCase()}${m[3]}`);
+		return this.toLowerCase().replace(/(^|of )(bigby|otiluke|mordenkainen|evard|hadar|agatys|abi-dalzim|aganazzar|drawmij|leomund|maximilian|melf|nystul|otto|rary|snilloc|tasha|tenser|jim)('s|$| )/g, (...m) => `${m[1]}${m[2].toTitleCase()}${m[3]}`);
 	};
 
 String.prototype.toCamelCase = String.prototype.toCamelCase ||
@@ -860,12 +860,14 @@ Parser.getSingletonUnit = function (unit) {
 	}
 };
 
-Parser.spComponentsToFull = function (comp) {
+Parser.spComponentsToFull = function (spell) {
+	const comp = spell.components;
 	if (!comp) return "None";
 	const out = [];
 	if (comp.v) out.push("V");
 	if (comp.s) out.push("S");
-	if (comp.m) out.push("M" + (comp.m !== true ? ` (${comp.m.text || comp.m})` : ""));
+	if (comp.m) out.push(`M${comp.m !== true ? ` (${comp.m.text || comp.m})` : ""}`);
+	if (comp.r) out.push(`R (${spell.level} gp)`);
 	return out.join(", ");
 };
 
@@ -1475,6 +1477,7 @@ Parser.nameToTokenName = function (name) {
 	return name
 		.normalize("NFD") // replace diactrics with their individual graphemes
 		.replace(/[\u0300-\u036f]/g, "") // remove accent graphemes
+		.replace(/Æ/g, "AE").replace(/æ/g, "ae")
 		.replace(/"/g, "");
 };
 
@@ -1664,6 +1667,7 @@ SRC_GGR = "GGR";
 SRC_KKW = "KKW";
 SRC_LLK = "LLK";
 SRC_GoS = "GoS";
+SRC_AI = "AI";
 SRC_AL = "AL";
 SRC_SCREEN = "Screen";
 
@@ -1779,6 +1783,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_GGR] = "Guildmasters' Guide to Ravnica";
 Parser.SOURCE_JSON_TO_FULL[SRC_KKW] = "Krenko's Way";
 Parser.SOURCE_JSON_TO_FULL[SRC_LLK] = "Lost Laboratory of Kwalish";
 Parser.SOURCE_JSON_TO_FULL[SRC_GoS] = "Ghosts of Saltmarsh";
+Parser.SOURCE_JSON_TO_FULL[SRC_AI] = "Acquisitions Incorporated";
 Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
@@ -1877,6 +1882,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_GGR] = "GGR";
 Parser.SOURCE_JSON_TO_ABV[SRC_KKW] = "KKW";
 Parser.SOURCE_JSON_TO_ABV[SRC_LLK] = "LLK";
 Parser.SOURCE_JSON_TO_ABV[SRC_GoS] = "GoS";
+Parser.SOURCE_JSON_TO_ABV[SRC_AI] = "AI";
 Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
@@ -2322,7 +2328,7 @@ JqueryUtil = {
 
 	_activeToast: [],
 	/**
-	 * @param {Object} options
+	 * @param {Object|string} options
 	 * @param {(jQuery|string)} options.content Toast contents. Support jQuery objects.
 	 * @param {string} options.type Toast type. Can be any Bootstrap alert type ("success", "info", "warning", or "danger")
 	 */
@@ -3651,7 +3657,8 @@ function getAsiFilter (options) {
 			"wis",
 			"cha"
 		],
-		displayFn: Parser.attAbvToFull
+		displayFn: Parser.attAbvToFull,
+		itemSortFn: null
 	};
 	return getFilterWithMergedOptions(baseOptions, options);
 }
@@ -3791,7 +3798,10 @@ UrlUtil = {
 					.filter(feature => !feature.gainSubclassFeature && feature.name !== "Ability Score Improvement") // don't add "you gain a subclass feature" or ASI's
 					.forEach(feature => {
 						const name = Renderer.findName(feature);
-						if (!name) throw new Error("No name!");
+						if (!name) { // tolerate missing names in homebrew
+							if (BrewUtil.hasSourceJson(cls.source)) return;
+							else throw new Error("No name!");
+						}
 						out.push({
 							_type: "classFeature",
 							source: cls.source.source || cls.source,
@@ -3808,11 +3818,15 @@ UrlUtil = {
 					const gainFeatureHash = `${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(`${gainSubclassFeatures[0].name} ${i + 1}`)}`;
 					cls.subclasses.forEach(sc => {
 						const features = ((sc.subclassFeatures || [])[scFeatureI] || []);
+						sc.source = sc.source || cls.source; // default to class source if required
 						const tempStack = [];
 						features.forEach(feature => {
 							const baseSubclassUrl = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`;
 							const name = Renderer.findName(feature);
-							if (!name) throw new Error("No name!");
+							if (!name) { // tolerate missing names in homebrew
+								if (BrewUtil.hasSourceJson(sc.source)) return;
+								else throw new Error("No name!");
+							}
 							const subclassFeatureHash = `${baseSubclassUrl}${HASH_PART_SEP}${gainFeatureHash}`;
 							tempStack.push({
 								_type: "subclassFeature",
@@ -3883,7 +3897,7 @@ UrlUtil.PG_SHIPS = "ships.html";
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BACKGROUNDS] = (it) => UrlUtil.encodeForHash([it.name, Parser.sourceJsonToAbv(it.source)]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BACKGROUNDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS_DISEASES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -4203,7 +4217,9 @@ DataUtil = {
 		const t = new Blob([data], {type: 'text/json'});
 		a.href = URL.createObjectURL(t);
 		a.download = `${filename}.json`;
+		document.body.appendChild(a);
 		a.click();
+		document.body.removeChild(a);
 	},
 
 	getCleanFilename (filename) {
@@ -4494,7 +4510,7 @@ StorageUtil = {
 				async getItem (k) {
 					return StorageUtil.__fakeStorageAsync[k];
 				},
-				async remove (k) {
+				async removeItem (k) {
 					delete StorageUtil.__fakeStorageAsync[k];
 				}
 			};
@@ -4659,6 +4675,7 @@ BrewUtil = {
 	_sourceCache: null,
 	_filterBox: null,
 	_sourceFilter: null,
+	_pHandleBrew: null,
 
 	bind (options) {
 		// provide ref to List.js instance
@@ -4667,6 +4684,8 @@ BrewUtil = {
 		// provide ref to FilterBox and Filter instance
 		if (options.filterBox) BrewUtil._filterBox = options.filterBox;
 		if (options.sourceFilter) BrewUtil._sourceFilter = options.sourceFilter;
+		// allow external source for handleBrew
+		if (options.pHandleBrew) this._pHandleBrew = options.pHandleBrew;
 	},
 
 	async pAddBrewData () {
@@ -4720,7 +4739,7 @@ BrewUtil = {
 
 		const $topBar = isModal
 			? $(`<h4 class="split"><span>Manage Homebrew</span></h4>`).appendTo($window)
-			: $(`<div class="mb-3 text-align-center"/>`).appendTo($window);
+			: $(`<div class="mb-3 text-center"/>`).appendTo($window);
 		$window.append(`<hr class="manbrew__hr">`);
 
 		const $brewList = $(`<div class="manbrew__current_brew"/>`);
@@ -4884,9 +4903,9 @@ BrewUtil = {
 										<section>
 											<span class="col-4 name manbrew__load_from_url pl-0 clickable" onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").escapeQuotes()}', true)">${it._brewName}</span>
 											<span class="col-3 author">${it._brewAuthor}</span>
-											<span class="col-2 category text-align-center">${it._brewCat}</span>
-											<span class="col-2 timestamp text-align-center">${it._brewAdded ? MiscUtil.dateToStr(new Date(it._brewAdded * 1000), true) : ""}</span>
-											<span class="col-1 source manbrew__source text-align-center pr-0"><a href="${it.download_url}" target="_blank" rel="noopener">View Raw</a></span>
+											<span class="col-2 category text-center">${it._brewCat}</span>
+											<span class="col-2 timestamp text-center">${it._brewAdded ? MiscUtil.dateToStr(new Date(it._brewAdded * 1000), true) : ""}</span>
+											<span class="col-1 source manbrew__source text-center pr-0"><a href="${it.download_url}" target="_blank" rel="noopener">View Raw</a></span>
 										</section>
 									</li>`;
 							});
@@ -4917,8 +4936,8 @@ BrewUtil = {
 			});
 		if (isModal) $btnDelAll.appendTo($topBar);
 
-		const $btnWrp = isModal ? $(`<div class="text-align-center"/>`).appendTo($window) : $topBar;
-		$$`<div ${isModal ? `class="text-align-center"` : ""}>
+		const $btnWrp = isModal ? $(`<div class="text-center"/>`).appendTo($window) : $topBar;
+		$$`<div ${isModal ? `class="text-center"` : ""}>
 			${$btnGet}
 			<label role="button" class="btn btn-default btn-sm btn-file">Upload File${$iptAdd}</label>
 			${$btnLoadFromUrl}
@@ -5042,8 +5061,8 @@ BrewUtil = {
 							stack += `
 									<li><section onclick="ListUtil.toggleCheckbox(event, this)">
 										<span class="col-6 name">${it.name}</span>
-										<span class="col-5 category text-align-center">${BrewUtil._pRenderBrewScreen_getDisplayCat(cat, true)}${it.extraInfo}</span>
-										<span class="col-1 text-align-center"><input type="checkbox" onclick="event.stopPropagation()"></span>
+										<span class="col-5 category text-center">${BrewUtil._pRenderBrewScreen_getDisplayCat(cat, true)}${it.extraInfo}</span>
+										<span class="col-1 text-center"><input type="checkbox" onclick="event.stopPropagation()"></span>
 										<span class="hidden uid">${it.uniqueId}</span>
 										<span class="category_raw hidden">${cat}</span>
 									</section></li>
@@ -5052,7 +5071,7 @@ BrewUtil = {
 				});
 				$ulRows.empty();
 				if (stack) $ulRows.append(stack);
-				else $ulRows.append(`<h5 class="text-align-center">No results found.</h5>`);
+				else $ulRows.append(`<h5 class="text-center">No results found.</h5>`);
 			}
 			populateList();
 
@@ -5110,7 +5129,7 @@ BrewUtil = {
 			const $ulGroup = $lst.find(`ul.brew-list--groups`).empty();
 
 			const createButtons = (src, $row) => {
-				const $btns = $(`<span class="col-2 text-align-right"/>`).appendTo($row);
+				const $btns = $(`<span class="col-2 text-right"/>`).appendTo($row);
 				$(`<button class="btn btn-sm btn-default">View/Manage</button>`)
 					.on("click", () => {
 						const $nxt = BrewUtil._pRenderBrewScreen_makeInnerOverlay($appendTo, $overlay);
@@ -5169,7 +5188,7 @@ BrewUtil = {
 				const $row = $(`<li class="row manbrew__row">
 						<span class="col-5 manbrew__col--tall source manbrew__source">${isGroup ? "<i>" : ""}${src.full}${isGroup ? "</i>" : ""}</span>
 						<span class="col-4 manbrew__col--tall authors">${validAuthors}</span>
-						<${src.url ? "a" : "span"} class="col-1 manbrew__col--tall text-align-center" ${src.url ? `href="${src.url}" target="_blank" rel="noopener"` : ""}>${src.url ? "View Source" : ""}</${src.url ? "a" : "span"}>
+						<${src.url ? "a" : "span"} class="col-1 manbrew__col--tall text-center" ${src.url ? `href="${src.url}" target="_blank" rel="noopener"` : ""}>${src.url ? "View Source" : ""}</${src.url ? "a" : "span"}>
 					</li>`);
 				createButtons(src, $row);
 				$ul.append($row);
@@ -5177,7 +5196,7 @@ BrewUtil = {
 
 			const createGroupRow = (fullText, modeProp) => {
 				const $row = $(`<li class="row manbrew__row" style="border-bottom: 0">
-						<span class="col-10 manbrew__col--tall source manbrew__source text-align-right"><i>${fullText}</i></span>
+						<span class="col-10 manbrew__col--tall source manbrew__source text-right"><i>${fullText}</i></span>
 					</li>`);
 				createButtons({[modeProp]: true}, $row);
 				$ulGroup.append($row);
@@ -5503,7 +5522,7 @@ BrewUtil = {
 			case UrlUtil.PG_MAKE_SHAPED:
 			case UrlUtil.PG_TABLES:
 			case UrlUtil.PG_SHIPS:
-				handleBrew(toAdd);
+				(BrewUtil._pHandleBrew || handleBrew)(toAdd);
 				break;
 			case UrlUtil.PG_MANAGE_BREW:
 			case UrlUtil.PG_DEMO:
@@ -6015,8 +6034,8 @@ Array.prototype.getNext = Array.prototype.getNext ||
 // OVERLAY VIEW ========================================================================================================
 /**
  * Relies on:
- * - page implementing HashUtil's `loadsub` with handling to show/hide the book view based on hashKey changes
- * - page running no-argument `loadsub` when `hashchange` occurs
+ * - page implementing HashUtil's `loadSubHash` with handling to show/hide the book view based on hashKey changes
+ * - page running no-argument `loadSubHash` when `hashchange` occurs
  *
  * @param hashKey to use in the URL so that forward/back can open/close the view
  * @param $openBtn jQuery-selected button to bind click open/close
@@ -6076,7 +6095,7 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 		const handleNumShown = (numShown) => {
 			const $tblRow = $(`<tr/>`);
 			$tblRow.append($(`<div class="wrp-content" style="${!numShown && !doShowEmpty ? "display: none;" : ""}"/>`).append($tbl));
-			const $msgRow = $(`<tr class="noprint" ${numShown ? `style="display: none;"` : ""}><td class="text-align-center"><span class="initial-message">${self.noneVisibleMsg}</span><br></td></tr>`);
+			const $msgRow = $(`<tr class="noprint" ${numShown ? `style="display: none;"` : ""}><td class="text-center"><span class="initial-message">${self.noneVisibleMsg}</span><br></td></tr>`);
 			$msgRow.find(`td`).append($(`<button class="btn btn-default">Close</button>`).on("click", () => {
 				hashTeardown();
 			}));

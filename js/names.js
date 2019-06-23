@@ -61,7 +61,7 @@ function showHideList (ele) {
 	$ele.next(`ul`).toggle();
 }
 
-function loadhash (id) {
+function loadHash (id) {
 	renderer.setFirstSection(true);
 
 	const [iLoad, jLoad] = id.split(",").map(n => Number(n));
@@ -77,7 +77,7 @@ function loadhash (id) {
 					<caption>${tableName}</caption>
 					<thead>
 						<tr>
-							<th class="col-2 text-align-center">
+							<th class="col-2 text-center">
 								<span class="roller" onclick="rollAgainstTable('${iLoad}', '${jLoad}')">d${diceType}</span>
 							</th>
 							<th class="col-10">Name</th>
@@ -86,7 +86,7 @@ function loadhash (id) {
 
 	for (let i = 0; i < table.length; i++) {
 		const range = table[i].min === table[i].max ? pad(table[i].min) : `${pad(table[i].min)}-${pad(table[i].max)}`;
-		htmlText += `<tr><td class="text-align-center">${range}</td><td>${getRenderedText(table[i].result)}</td></tr>`;
+		htmlText += `<tr><td class="text-center">${range}</td><td>${getRenderedText(table[i].result)}</td></tr>`;
 	}
 
 	htmlText += `

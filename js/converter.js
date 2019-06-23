@@ -557,7 +557,7 @@ class StatblockConverter {
 			const spl = clean.split(/(Challenge)/i);
 			spl[0] = spl[0]
 				.replace(/(\d\d?\s+\([-—+]\d\)\s*)+/gi, (...m) => `${m[0].replace(/\n/g, " ").replace(/\s+/g, " ")}\n`); // collapse multi-line ability scores
-			return spl.join("").split("\n");
+			return spl.join("").split("\n").filter(it => it && it.trim());
 		})();
 		const stats = {};
 		stats.source = options.source || "";
@@ -1603,11 +1603,11 @@ class TableConverter {
 					if (cells.every(c => !c || !!/^:?\s*---+\s*:?$/.exec(c))) { // a header break
 						alignment = cells.map(c => {
 							if (c.startsWith(":") && c.endsWith(":")) {
-								return "text-align-center";
+								return "text-center";
 							} else if (c.startsWith(":")) {
 								return "text-align-left";
 							} else if (c.endsWith(":")) {
-								return "text-align-right";
+								return "text-right";
 							} else {
 								return "";
 							}
@@ -1716,7 +1716,7 @@ class TableConverter {
 			tbl.rows.forEach(r => {
 				if (isNaN(Number(r[0]))) isDiceCol0 = false;
 			});
-			if (isDiceCol0 && !tbl.colStyles.includes("text-align-center")) tbl.colStyles[0] += " text-align-center";
+			if (isDiceCol0 && !tbl.colStyles.includes("text-center")) tbl.colStyles[0] += " text-center";
 		})();
 
 		(function tagRowDice () {

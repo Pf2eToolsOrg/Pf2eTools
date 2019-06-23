@@ -88,7 +88,7 @@ class LootGen {
 					<caption>${itemsTable.name}</caption>
 					<tbody>
 					<tr>
-						<th class="col-2 text-align-center"><span class="roller" onclick="lootGen.pRollAgainstTable(${arrayEntry});">d100</span></th>
+						<th class="col-2 text-center"><span class="roller" onclick="lootGen.pRollAgainstTable(${arrayEntry});">d100</span></th>
 						<th class="col-10">Magic Item</th>
 					</tr>
 					</tbody>
@@ -103,7 +103,7 @@ class LootGen {
 				const primaryLink = await LootGen.p$ParseLink(it);
 				const range = it.min === it.max ? it.min : `${it.min}-${it.max}`;
 				const primary$Element = $$`<tr>
-					<td class="text-align-center">${range}</td>
+					<td class="text-center">${range}</td>
 					<td>${primaryLink}${it.table ? ` (roll <span class="roller" onclick="lootGen.pRollAgainstTable(${arrayEntry}, ${it.min})">d${LootGen.getMaxRoll(it.table)}</span>)` : ""}</td>
 				</tr>`;
 				$out.push(primary$Element);
@@ -856,13 +856,13 @@ const randomLootTables = {
 				<caption>Table for ${tier} Magic items that are ${rarity}</caption>
 				<tbody>
 				<tr>
-					<th class="col-2 text-align-center"><span class="roller" onclick="randomLootTables.getRandomItem('${tier}', '${rarity}');">d${itemsArray.length}</span></th>
+					<th class="col-2 text-center"><span class="roller" onclick="randomLootTables.getRandomItem('${tier}', '${rarity}');">d${itemsArray.length}</span></th>
 					<th class="col-10">${tier} ${rarity} Magic Items</th>
 				</tr>
 				</tbody>
 			</table>`);
 			itemsArray.forEach((item, index) => {
-				html.find("tbody").append(`<tr><td class="text-align-center">${index + 1}</td><td>${Renderer.get().render(`{@item ${item.name}|${item.source}}`)}`);
+				html.find("tbody").append(`<tr><td class="text-center">${index + 1}</td><td>${Renderer.get().render(`{@item ${item.name}|${item.source}}`)}`);
 			});
 			$("div#classtable").html(html);
 		}

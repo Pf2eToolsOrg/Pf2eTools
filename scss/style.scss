@@ -1233,12 +1233,8 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 	&--stats {
 		@media (min-width: $width-screen-md) {
-			overflow-y: hidden;
-
-			&:hover {
-				overflow-y: scroll;
-				margin-right: -9px;
-			}
+			overflow-y: scroll;
+			margin-right: -9px;
 		}
 	}
 
@@ -1394,6 +1390,10 @@ th.name {
 
 	&GoS {
 		color: #3d695a;
+	}
+
+	&AI {
+		color: #5baf04;
 	}
 
 	&AL {
@@ -2443,6 +2443,10 @@ $flt-2stripe: 22px;
 .fltr__ {
 	&minimal-hide {
 		display: none;
+	}
+
+	&no-items {
+		display: none !important;
 	}
 
 	&h {
@@ -3809,8 +3813,6 @@ ul.list.books > li > a > span.name:hover {
 
 /* Night Mode */
 .night-mode {
-	$font-color: #bbb;
-	$bg-color: #222;
 	$link-color: #7db6e8;
 	$class-main-color: #d29a38;
 	$class-main-color-alt: #d2cabd;
@@ -3819,8 +3821,8 @@ ul.list.books > li > a > span.name:hover {
 	$btn-active-color: #ffffff40;
 
 	body {
-		color: $font-color;
-		background: $bg-color url('data:image/png;base64,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') repeat scroll left top !important;
+		color: $night-font-color;
+		background: $night-bg-color url('data:image/png;base64,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') repeat scroll left top !important;
 	}
 
 	.page__ {
@@ -3857,7 +3859,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.text-muted {
-		color: darken($font-color, 15%);
+		color: darken($night-font-color, 15%);
 	}
 
 	header p.lead {
@@ -3870,17 +3872,17 @@ ul.list.books > li > a > span.name:hover {
 	h4,
 	h5,
 	h6 {
-		color: $font-color;
+		color: $night-font-color;
 	}
 
 	pre {
-		color: $font-color;
-		background: $bg-color;
+		color: $night-font-color;
+		background: $night-bg-color;
 	}
 
 	.form-control {
-		background-color: $bg-color;
-		color: $font-color;
+		background-color: $night-bg-color;
+		color: $night-font-color;
 	}
 
 	.form-control[disabled] {
@@ -3915,8 +3917,8 @@ ul.list.books > li > a > span.name:hover {
 	.btn-default,
 	.btn-default:hover,
 	.btn-default:focus {
-		background-color: $bg-color;
-		color: $font-color;
+		background-color: $night-bg-color;
+		color: $night-font-color;
 	}
 
 	.fltr__h-btn-logic--blue {
@@ -3953,13 +3955,13 @@ ul.list.books > li > a > span.name:hover {
 	dialog.dialog-modal,
 	.dropdown-menu {
 		background: #232323;
-		color: $font-color;
+		color: $night-font-color;
 		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.56);
 	}
 
 	.dropdown-menu > li {
 		> a {
-			color: $font-color;
+			color: $night-font-color;
 		}
 
 		&:not(.active) > a {
@@ -3973,13 +3975,13 @@ ul.list.books > li > a > span.name:hover {
 
 	select,
 	input {
-		background-color: $bg-color;
-		color: $font-color;
+		background-color: $night-bg-color;
+		color: $night-font-color;
 	}
 
 	select option {
-		color: $font-color;
-		background: $bg-color;
+		color: $night-font-color;
+		background: $night-bg-color;
 	}
 
 	/* Bootstrap overrides */
@@ -3993,26 +3995,26 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.don__bar {
-		background: $bg-color;
+		background: $night-bg-color;
 	}
 
 	.input-group-addon,
 	.form-control {
-		background: $bg-color;
+		background: $night-bg-color;
 		color: #bbb;
 	}
 
 	/* *** */
 
 	.omni__input {
-		background-color: $bg-color;
+		background-color: $night-bg-color;
 	}
 
 	.omni__submit.btn-default:active:focus,
 	.omni__submit.btn-default:active:hover,
 	.omni__submit.btn-default {
-		background-color: $bg-color;
-		color: $font-color;
+		background-color: $night-bg-color;
+		color: $night-font-color;
 	}
 
 	.omni__wrp-input {
@@ -4076,7 +4078,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.hwin__wrp-table {
-		background: $bg-color;
+		background: $night-bg-color;
 	}
 
 	.wrp-stats-table {
@@ -4090,21 +4092,21 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	tr.text td {
-		color: $font-color !important;
+		color: $night-font-color !important;
 	}
 
 	td.typerarityattunement,
 	td.levelschoolritual {
-		color: $font-color;
+		color: $night-font-color;
 	}
 
 	tr.text td {
-		color: $font-color !important;
+		color: $night-font-color !important;
 	}
 
 	.mon__ {
 		&wrp-size-type-align {
-			color: $font-color;
+			color: $night-font-color;
 		}
 
 		&btn-token-cycle {
@@ -4112,7 +4114,7 @@ ul.list.books > li > a > span.name:hover {
 			background: rgba(255, 255, 255, 0.15);
 
 			&:hover {
-				color: $font-color;
+				color: $night-font-color;
 			}
 		}
 
@@ -4126,7 +4128,7 @@ ul.list.books > li > a > span.name:hover {
 	tr.action td,
 	tr.reaction td,
 	tr.legendary td {
-		color: $font-color !important;
+		color: $night-font-color !important;
 	}
 
 	.output,
@@ -4151,7 +4153,7 @@ ul.list.books > li > a > span.name:hover {
 
 	#crcalc label span.explanation {
 		border: 1px solid black;
-		background: $bg-color;
+		background: $night-bg-color;
 	}
 
 	#msbcr tr:nth-child(even) {
@@ -4167,7 +4169,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	#classtable table th {
-		color: $font-color;
+		color: $night-font-color;
 	}
 
 	.stats th {
@@ -4349,7 +4351,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	#rulescontent caption {
-		color: $font-color;
+		color: $night-font-color;
 	}
 
 	span.pnl-link,
@@ -4381,7 +4383,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	tr.trait td {
-		color: $font-color !important;
+		color: $night-font-color !important;
 	}
 
 	::-webkit-scrollbar-thumb {
@@ -4395,7 +4397,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.fltr__pill[state=ignore] {
-		background: $bg-color;
+		background: $night-bg-color;
 	}
 
 	.fltr__pill:hover:not([state]) {
@@ -4403,12 +4405,12 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.ui-slider {
-		background: $bg-color;
+		background: $night-bg-color;
 	}
 
 	.ui-slider .ui-slider-tip {
 		background: #333;
-		color: $font-color;
+		color: $night-font-color;
 	}
 
 	.ui-slider-pips .ui-slider-pip {
@@ -4453,11 +4455,11 @@ ul.list.books > li > a > span.name:hover {
 
 	.hwin table.summary-noback th,
 	.hwin table.summary th {
-		color: $font-color;
+		color: $night-font-color;
 	}
 
 	.hwin .hoverborder .window-title {
-		color: $font-color;
+		color: $night-font-color;
 	}
 
 	.rollbox {
@@ -4519,7 +4521,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.panel-content-wrapper-inner {
-		background: $bg-color;
+		background: $night-bg-color;
 	}
 
 	.panel-addmenu-tab-head[active='true'] {
@@ -4540,7 +4542,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.panel-content-textarea {
-		background: $bg-color;
+		background: $night-bg-color;
 	}
 
 	.dm-init-row.dm-init-row-active input,
@@ -4549,11 +4551,11 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.dm-init {
-		background: $bg-color;
+		background: $night-bg-color;
 	}
 
 	.content-tab-bar {
-		background: $bg-color;
+		background: $night-bg-color;
 	}
 
 	.homebrew-section {
@@ -4612,7 +4614,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.sidemenu {
-		background: $bg-color;
+		background: $night-bg-color;
 	}
 
 	.sidemenu__toggle {
@@ -4620,7 +4622,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.sidemenu__burger {
-		background: $bg-color;
+		background: $night-bg-color;
 	}
 	/* *** */
 

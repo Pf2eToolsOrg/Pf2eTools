@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/draft-06/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
 	"version": "1.2.0",
 	"title": "EncounterArray",
 	"type": "object",
@@ -14,7 +14,7 @@
 					"type": "integer"
 				},
 				"result": {
-					"$ref": "/Entry"
+					"$ref": "entry.json"
 				}
 			},
 			"required": [
@@ -35,7 +35,9 @@
 				},
 				"table": {
 					"type": "array",
-					"items": "#/definitions/encounterTableRow"
+					"items": {
+						"$ref": "#/definitions/encounterTableRow"
+					}
 				}
 			},
 			"required": [
@@ -82,6 +84,6 @@
 		}
 	},
 
-	"required": "encounter",
+	"required": ["encounter"],
 	"additionalProperties": false
 }

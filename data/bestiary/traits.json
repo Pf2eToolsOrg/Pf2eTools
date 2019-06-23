@@ -567,6 +567,55 @@
 			}
 		},
 		{
+			"name": "Tabaxi",
+			"source": "VGM",
+			"page": 113,
+			"ref": "{@race Tabaxi|VGM}",
+			"apply": {
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"tabaxi"
+						]
+					}
+				},
+				"_mod": {
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Feline Agility",
+								"entries": [
+									"When <$title_name$> moves on its turn in combat, they can double their speed until the end of the turn. Once they uses this ability, <$title_name$> can't use it again until they moves 0 feet on one of their turns."
+								]
+							}
+						]
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Claws",
+								"entries": [
+									"{@atk mw} {@hit <$to_hit__str$>} to hit, reach 5 ft., one target. {@h}<$damage_avg__2.5+str$> ({@damage 1d4<$damage_mod__str$>}) slashing damage."
+								]
+							}
+						]
+					},
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": {
+								"type": "darkvision",
+								"range": 60
+							}
+						}
+					]
+				}
+			}
+		},
+		{
 			"name": "Stout Halfling",
 			"source": "PHB",
 			"page": 35,

@@ -1,6 +1,6 @@
 {
-	"$schema": "http://json-schema.org/draft-06/schema#",
-	"version": "1.1.0",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"version": "1.1.1",
 	"type": "object",
 
 	"definitions": {
@@ -37,7 +37,7 @@
 					"type": "integer"
 				},
 				"capCargo": {
-					"type": "number"
+					"type": ["number", "string"]
 				},
 				"pace": {
 					"type": "integer"
@@ -63,19 +63,19 @@
 				"conditionImmune": {
 					"type": "array",
 					"items": {
-						"$ref": "/Entry#/definitions/dataCondImmune"
+						"$ref": "entry.json#/definitions/dataCondImmune"
 					}
 				},
 				"immune": {
 					"type": "array",
 					"items": {
-						"$ref": "/Entry#/definitions/dataDamImmune"
+						"$ref": "entry.json#/definitions/dataDamImmune"
 					}
 				},
 				"action": {
 					"type": "array",
 					"items": {
-						"$ref": "/Entry"
+						"$ref": "entry.json"
 					}
 				},
 				"hull": {
@@ -114,7 +114,7 @@
 							"entries": {
 								"type": "array",
 								"items": {
-									"$ref": "/Entry"
+									"$ref": "entry.json"
 								}
 							}
 						},
@@ -157,7 +157,7 @@
 										"entries": {
 											"type": "array",
 											"items": {
-												"$ref": "/Entry"
+												"$ref": "entry.json"
 											}
 										}
 									},
@@ -176,7 +176,7 @@
 										"entries": {
 											"type": "array",
 											"items": {
-												"$ref": "/Entry"
+												"$ref": "entry.json"
 											}
 										}
 									},
@@ -212,7 +212,7 @@
 							"entries": {
 								"type": "array",
 								"items": {
-									"$ref": "/Entry"
+									"$ref": "entry.json"
 								}
 							}
 						},
@@ -231,7 +231,7 @@
 							"entries": {
 								"type": "array",
 								"items": {
-									"$ref": "/Entry"
+									"$ref": "entry.json"
 								}
 							}
 						},

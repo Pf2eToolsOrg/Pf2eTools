@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/draft-06/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
 	"version": "1.2.0",
 	"definitions": {
 		"itemLookup": {
@@ -23,36 +23,14 @@
 					"entries": {
 						"type": "array",
 						"items": {
-							"$ref": "/Entry"
+							"$ref": "entry.json"
 						}
 					}
 				},
-				"anyOf" : [
-					{
-						"required": [
-							"abbreviation",
-							"source",
-							"page",
-							"name",
-							"entries"
-						]
-					},
-					{
-						"required": [
-							"abbreviation",
-							"source",
-							"page",
-							"entries"
-						]
-					},
-					{
-						"required": [
-							"abbreviation",
-							"source",
-							"page",
-							"name"
-						]
-					}
+				"required": [
+					"abbreviation",
+					"source",
+					"page"
 				],
 				"additionalProperties": false
 			}
@@ -120,7 +98,7 @@
 					"entries": {
 						"type": "array",
 						"items": {
-							"$ref": "/Entry"
+							"$ref": "entry.json"
 						}
 					},
 					"property": {
@@ -203,7 +181,7 @@
 					"entries": {
 						"type": "array",
 						"items": {
-							"$ref": "/Entry"
+							"$ref": "entry.json"
 						}
 					}
 				},

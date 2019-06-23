@@ -83,7 +83,7 @@ function addRewards (data) {
 			<li class="row" ${FLTR_ID}="${rwI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${rwI}" href="#${UrlUtil.autoEncodeHash(reward)}" title="${reward.name}">
 					<span class="name col-10 pl-0">${reward.name}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(reward.source)} pr-0" title="${Parser.sourceJsonToFull(reward.source)}" ${BrewUtil.sourceJsonToStyle(reward.source)}>${Parser.sourceJsonToAbv(reward.source)}</span>
+					<span class="source col-2 text-center ${Parser.sourceJsonToColor(reward.source)} pr-0" title="${Parser.sourceJsonToFull(reward.source)}" ${BrewUtil.sourceJsonToStyle(reward.source)}>${Parser.sourceJsonToAbv(reward.source)}</span>
 					
 					<span class="uniqueid hidden">${reward.uniqueId ? reward.uniqueId : rwI}</span>
 				</a>
@@ -138,7 +138,7 @@ function getSublistItem (reward, pinId) {
 	`;
 }
 
-function loadhash (id) {
+function loadHash (id) {
 	Renderer.get().setFirstSection(true);
 	const $content = $("#pagecontent").empty();
 	const reward = rewardList[id];
@@ -155,7 +155,7 @@ function loadhash (id) {
 	ListUtil.updateSelected();
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

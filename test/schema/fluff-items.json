@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/draft-06/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
 	"version": "1.0.0",
 	"type": "object",
 	"properties": {
@@ -17,13 +17,13 @@
 					"images": {
 						"type": "array",
 						"items": {
-							"$ref": "/Entry#/definitions/entryImage"
+							"$ref": "entry.json#/definitions/entryImage"
 						}
 					},
 					"entries": {
 						"type": "array",
 						"items": {
-							"$ref": "/Entry"
+							"$ref": "entry.json"
 						}
 					},
 					"_copy": {

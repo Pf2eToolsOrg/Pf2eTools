@@ -24,7 +24,7 @@ class Blacklist {
 		Blacklist._list = new List("listcontainer", {
 			valueNames: ["id", "source", "category", "name"],
 			listClass: "blacklist",
-			item: `<li class="row no-click"><span class="id hidden"></span><span class="source col-3"></span><span class="category col-3"></span><span class="name col-3"></span><span class="actions col-3 text-align-center"></span></li>`
+			item: `<li class="row no-click"><span class="id hidden"></span><span class="source col-3"></span><span class="category col-3"></span><span class="name col-3"></span><span class="actions col-3 text-center"></span></li>`
 		});
 		Blacklist._listId = 1;
 		ListUtil.bindEscapeKey(Blacklist._list, $(`#search`));

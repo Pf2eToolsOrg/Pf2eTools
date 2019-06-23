@@ -217,7 +217,7 @@ class InitiativeTracker {
 						const $iptText = $(`<textarea class="form-control dm_init__pl_textarea block mb-2"/>`)
 							.keydown(() => $iptText.removeClass("error-background"));
 
-						const $btnAccept = $(`<button class="btn btn-xs btn-primary block text-align-center" title="Add Client">Accept Multiple Clients</button>`)
+						const $btnAccept = $(`<button class="btn btn-xs btn-primary block text-center" title="Add Client">Accept Multiple Clients</button>`)
 							.click(async () => {
 								$iptText.removeClass("error-background");
 								const txt = $iptText.val();
@@ -272,7 +272,7 @@ class InitiativeTracker {
 					<div class="row full-width">
 						<div class="col-2 bold">Player Name</div>
 						<div class="col-3-5 bold">Server Token</div>
-						<div class="col-1 text-align-center">${$btnGenServerTokens}</div>
+						<div class="col-1 text-center">${$btnGenServerTokens}</div>
 						<div class="col-3-5 bold">Client Token</div>
 					</div>
 				`);
@@ -531,14 +531,14 @@ class InitiativeTracker {
 							<div class="col-1-3"/>
 							<div class="col-4-9">Contains...</div>
 							<div class="col-2-5">Abbreviation</div>
-							<div class="col-1-7 text-align-center help" title="Only affects creatures. Players are always editable.">Editable?</div>
+							<div class="col-1-7 text-center help" title="Only affects creatures. Players are always editable.">Editable?</div>
 						</div>
 					`);
 				const $wrpTblStats = UiUtil.$getAddModalRow($modalInner, "div").addClass("ui-modal__row--stats");
 
 				(() => {
 					const $wrpStatsRows = $(`<div class="dm_init__stats_rows mb-2"/>`).appendTo($wrpTblStats);
-					const $wrpBtn = $(`<div class="text-align-center"/>`).appendTo($wrpTblStats);
+					const $wrpBtn = $(`<div class="text-center"/>`).appendTo($wrpTblStats);
 
 					const addRow = (thisCfg) => {
 						if (!thisCfg) { // if new row
@@ -629,14 +629,14 @@ class InitiativeTracker {
 
 						const $row = $$`
 							<div class="row dm_init__stats_row dm_init__stats_row--item" data-id="${thisCfg.id}">
-								<div class="col-1-3 btn-group text-align-center dm_init__stats_up_down">${$btnUp}${$btnDown}</div>
+								<div class="col-1-3 btn-group text-center dm_init__stats_up_down">${$btnUp}${$btnDown}</div>
 								<div class="col-1-3 dm_init__stats_up_down--spacer"></div>
 
 								<div class="col-4-9">${$selPre}</div>
 								<div class="col-2-8">${$iptAbv}</div>
-								<div class="col-1 text-align-center">${$cbEditable}</div>
-								<div class="col-1 text-align-center">${$btnVisible}</div>
-								<div class="col-1 text-align-center dm_init__stats_del">${$btnDel}</div>
+								<div class="col-1 text-center">${$cbEditable}</div>
+								<div class="col-1 text-center">${$btnVisible}</div>
+								<div class="col-1 text-center dm_init__stats_del">${$btnDel}</div>
 							</div>
 						`.appendTo($wrpStatsRows);
 					};
@@ -1097,7 +1097,7 @@ class InitiativeTracker {
 					for (let i = 0; i < conds.length; i += 3) {
 						const $row = $(`<div class="row mb-2"/>`).appendTo($wrpRows);
 						const populateCol = (cond) => {
-							const $col = $(`<div class="col-4 text-align-center"/>`).appendTo($row);
+							const $col = $(`<div class="col-4 text-center"/>`).appendTo($row);
 							if (cond) {
 								$(`<button class="btn btn-default btn-xs btn-dm-init-cond" style="background-color: ${cond.color} !important;">${cond.name}</button>`).appendTo($col).click(() => {
 									$iptName.val(cond.name);
@@ -1112,11 +1112,11 @@ class InitiativeTracker {
 
 					$(`<div class="row mb-2">
 						<div class="col-5">Name (optional)</div>
-						<div class="col-2 text-align-center">Color</div>
+						<div class="col-2 text-center">Color</div>
 						<div class="col-5">Duration (optional)</div>
 					</div>`).appendTo($wrpRows);
 					const $controls = $(`<div class="row mb-2"/>`).appendTo($wrpRows);
-					const [$wrpName, $wrpColor, $wrpTurns] = [...new Array(3)].map((it, i) => $(`<div class="col-${i === 1 ? 2 : 5} text-align-center"/>`).appendTo($controls));
+					const [$wrpName, $wrpColor, $wrpTurns] = [...new Array(3)].map((it, i) => $(`<div class="col-${i === 1 ? 2 : 5} text-center"/>`).appendTo($controls));
 					const $iptName = $(`<input class="form-control">`)
 						.on("keydown", (e) => {
 							if (e.which === 13) $btnAdd.click();
@@ -1129,7 +1129,7 @@ class InitiativeTracker {
 						})
 						.appendTo($wrpTurns);
 					const $wrpAdd = $(`<div class="row">`).appendTo($wrpRows);
-					const $wrpAddInner = $(`<div class="col-12 text-align-center">`).appendTo($wrpAdd);
+					const $wrpAddInner = $(`<div class="col-12 text-center">`).appendTo($wrpAdd);
 					const $btnAdd = $(`<button class="btn btn-primary">Set Condition</button>`)
 						.click(() => {
 							addCondition($iptName.val().trim(), $iptColor.val(), $iptTurns.val());
@@ -1158,7 +1158,7 @@ class InitiativeTracker {
 				}
 			};
 
-			const $iptHp = $(`<input class="form-control input-sm hp dm-init-row-input text-align-right dm_init__hp dm_init__hp--current" value="${hpVals.curHp}">`)
+			const $iptHp = $(`<input class="form-control input-sm hp dm-init-row-input text-right dm_init__hp dm_init__hp--current" value="${hpVals.curHp}">`)
 				.change(() => {
 					handleMathInput($iptHp, "curHp");
 					doUpdateExternalStates();
@@ -1178,7 +1178,7 @@ class InitiativeTracker {
 
 			doUpdateHpColors();
 
-			const $iptScore = $(`<input class="form-control input-sm score dm-init-lockable dm-init-row-input text-align-center dm_init__ipt--rhs" type="number" value="${init}">`)
+			const $iptScore = $(`<input class="form-control input-sm score dm-init-lockable dm-init-row-input text-center dm_init__ipt--rhs" type="number" value="${init}">`)
 				.on("change", () => doSort(NUM))
 				.click(() => $iptScore.select())
 				.appendTo($wrpRhs);
@@ -1316,7 +1316,7 @@ class InitiativeTracker {
 
 						return $cb;
 					} else {
-						const $ipt = $(`<input class="form-control input-sm dm_init__stat_ipt text-align-center" ${!cfg.isLocked && (c.e || !isMon) ? "" : "disabled"}>`)
+						const $ipt = $(`<input class="form-control input-sm dm_init__stat_ipt text-center" ${!cfg.isLocked && (c.e || !isMon) ? "" : "disabled"}>`)
 							.change(() => doUpdateExternalStates());
 
 						const populateFromBlock = () => {

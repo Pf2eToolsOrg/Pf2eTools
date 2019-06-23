@@ -84,7 +84,7 @@ function addVariantRules (data) {
 			<li class="row" ${FLTR_ID}="${rlI}" onclick="ListUtil.toggleSelected(event, this)">
 				<a id="${rlI}" href="#${UrlUtil.autoEncodeHash(rule)}" title="${rule.name}">
 					<span class="name col-10 pl-0">${rule.name}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(rule.source)} pr-0" title="${Parser.sourceJsonToFull(rule.source)}" ${BrewUtil.sourceJsonToStyle(rule.source)}>${Parser.sourceJsonToAbv(rule.source)}</span>
+					<span class="source col-2 text-center ${Parser.sourceJsonToColor(rule.source)} pr-0" title="${Parser.sourceJsonToFull(rule.source)}" ${BrewUtil.sourceJsonToStyle(rule.source)}>${Parser.sourceJsonToAbv(rule.source)}</span>
 					<span class="search hidden">${searchStack.join(",")}</span>
 				</a>
 			</li>`;
@@ -133,7 +133,7 @@ function handleFilterChange () {
 	FilterBox.selectFirstVisible(rulesList);
 }
 
-function loadhash (id) {
+function loadHash (id) {
 	const curRule = rulesList[id];
 
 	entryRenderer.setFirstSection(true);
@@ -147,12 +147,12 @@ function loadhash (id) {
 		${Renderer.utils.getBorderTr()}
 	`);
 
-	loadsub([]);
+	loadSubHash([]);
 
 	ListUtil.updateSelected();
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	if (!sub.length) return;
 
 	sub = filterBox.setFromSubHashes(sub);

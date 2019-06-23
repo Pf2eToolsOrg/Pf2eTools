@@ -1946,7 +1946,7 @@
 							"New Form"
 						],
 						"colStyles": [
-							"col-2 text-align-center",
+							"col-2 text-center",
 							"col-10"
 						],
 						"rows": [
@@ -2040,6 +2040,63 @@
 							"This weapon is cursed, and becoming attuned to it extends the curse to you. Until the curse is broken with a {@spell remove curse} spell or similar magic, you are unwilling to part with the weapon. Whenever you attack a creature with this weapon and roll a 1 on the attack roll, you suffer the effect of a {@spell polymorph} spell for 1 hour, rolling on the table to determine your new form."
 						]
 					}
+				]
+			}
+		},
+		{
+			"name": "Vicious Weapon +1",
+			"type": "GV",
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
+			"excludes": {
+				"name": "Net"
+			},
+			"entries": [
+				"When you roll a 20 with this magic weapon, the target takes an extra 7 damage of the weapon's type.",
+				"{@i Note: According to the SRD, it is an extra {@dice 2d6} damage.}"
+			],
+			"inherits": {
+				"genericBonus": "+1",
+				"rarity": "Rare",
+				"source": "AI",
+				"page": 149,
+				"namePrefix": "Vicious ",
+				"nameSuffix": " +1",
+				"entries": [
+					"You have a {=genericBonus} bonus to attack and damage rolls made with this weapon.",
+					"When you roll a 20 with this magic weapon, the target takes an extra 7 {=dmgType} damage.",
+					"{@i Note: According to the SRD, it is an extra {@dice 2d6} {=dmgType} damage.}"
+				]
+			}
+		},
+		{
+			"name": "Mithral Armor +1",
+			"type": "GV",
+			"requires": [
+				{
+					"type": "HA"
+				},
+				{
+					"type": "MA"
+				}
+			],
+			"excludes": {
+				"name": "Hide Armor"
+			},
+			"inherits": {
+				"genericBonus": "+1",
+				"rarity": "Rare",
+				"source": "AI",
+				"page": 156,
+				"stealth": false,
+				"namePrefix": "Mithral ",
+				"nameSuffix": " +1",
+				"entries": [
+					"You have a {=genericBonus} bonus to AC while wearing this armor.",
+					"Mithral is a light, flexible metal. A mithral chain shirt or breastplate can be worn under normal clothes. If the armor normally imposes disadvantage on Dexterity ({@skill Stealth}) checks or has a Strength requirement, the mithral version of the armor doesn't."
 				]
 			}
 		}

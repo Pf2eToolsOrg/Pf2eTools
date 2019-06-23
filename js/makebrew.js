@@ -318,7 +318,7 @@ class BuilderUi {
 		const eleType = options.eleType || "div";
 
 		const $rowInner = $(`<div class="${options.isRow ? "flex" : "flex-col"} full-width"/>`);
-		const $row = $$`<div class="mb-2 mkbru__row"><${eleType} class="mkbru__wrp-row flex-v-center"><span class="mr-2 mkbru__row-name ${options.isMarked ? `mkbru__row-name--marked` : ""}">${name}</span>${options.isMarked ? `<div class="mkbru__row-mark mr-2"/>` : ""}${$rowInner}</${eleType}></div>`;
+		const $row = $$`<div class="mb-2 mkbru__row stripe-even"><${eleType} class="mkbru__wrp-row flex-v-center"><span class="mr-2 mkbru__row-name ${options.isMarked ? `mkbru__row-name--marked` : ""}">${name}</span>${options.isMarked ? `<div class="mkbru__row-mark mr-2"/>` : ""}${$rowInner}</${eleType}></div>`;
 		return [$row, $rowInner];
 	}
 
@@ -327,7 +327,7 @@ class BuilderUi {
 
 		const eleType = options.eleType || "div";
 
-		return $$`<div class="mb-2 mkbru__row"><${eleType} class="mkbru__wrp-row flex-v-center">
+		return $$`<div class="mb-2 mkbru__row stripe-even"><${eleType} class="mkbru__wrp-row flex-v-center">
 		<span class="mr-2 mkbru__row-name ${options.title ? "help" : ""}" ${options.title ? `title="${options.title}"` : ""}>${name}</span>
 		${$ipt}
 		<${eleType}/></div>`
@@ -471,7 +471,7 @@ class BuilderUi {
 					fnRender();
 				});
 			inputs.push({$ipt: $cb, val});
-			$$`<label class="flex-v-center split mkbru__multi-cb-row"><span>${options.fnDisplay ? options.fnDisplay(val) : val}</span>${$cb}</label>`.appendTo($wrpIpts);
+			$$`<label class="flex-v-center split stripe-odd--faint"><span>${options.fnDisplay ? options.fnDisplay(val) : val}</span>${$cb}</label>`.appendTo($wrpIpts);
 		});
 
 		const getState = () => {
@@ -651,208 +651,8 @@ class BuilderUi {
 	}
 }
 
-// based on DM screen's AddMenuSearchTab
-class SearchWidget {
-	/**
-	 * @param indexes An object with index names (categories) as the keys, and indexes as the values.
-	 * @param cbSearch Callback to run on user clicking a search result.
-	 * @param options Options object.
-	 * @param options.defaultCategory Default search category.
-	 * @param options.resultFilter Function which takes a document and returns false if it is to be filtered out of the results.
-	 * @param options.searchOptions Override for default elasticlunr search options.
-	 * @param options.fnTransform Override for default document transformation before being passed to cbSearch.
-	 */
-	constructor (indexes, cbSearch, options) {
-		options = options || {};
-
-		this._indexes = indexes;
-		this._cat = options.defaultCategory || "ALL";
-		this._cbSearch = cbSearch;
-		this._resultFilter = options.resultFilter || null;
-		this._searchOptions = options.searchOptions || null;
-		this._fnTransform = options.fnTransform || null;
-
-		this._flags = {
-			doClickFirst: false,
-			isWait: false
-		};
-
-		this._$selCat = null;
-		this._$iptSearch = null;
-		this._$wrpResults = null;
-
-		this._$rendered = null;
-	}
-
-	__getSearchOptions () {
-		return this._searchOptions || {
-			fields: {
-				n: {boost: 5, expand: true},
-				s: {expand: true}
-			},
-			bool: "AND",
-			expand: true
-		};
-	}
-
-	static __get$Row (r) {
-		return $(`<div class="ui-search__row">
-			<span>${r.doc.n}</span>
-			<span>${r.doc.s ? `<i title="${Parser.sourceJsonToFull(r.doc.s)}">${Parser.sourceJsonToAbv(r.doc.s)}${r.doc.p ? ` p${r.doc.p}` : ""}</i>` : ""}</span>
-		</div>`);
-	}
-
-	static __getAllTitle () {
-		return "All Categories";
-	}
-
-	static __getCatOptionText (it) {
-		return it;
-	}
-
-	get $wrpSearch () {
-		if (!this._$rendered) this._render();
-		return this._$rendered
-	}
-
-	__showMsgInputRequired () {
-		this._flags.isWait = true;
-		this._$wrpResults.empty().append(UiUtil.getSearchEnter());
-	}
-
-	__showMsgWait () {
-		this._$wrpResults.empty().append(UiUtil.getSearchLoading())
-	}
-
-	__showMsgNoResults () {
-		this._flags.isWait = true;
-		this._$wrpResults.empty().append(UiUtil.getSearchEnter());
-	}
-
-	__doSearch () {
-		const searchInput = this._$iptSearch.val().trim();
-
-		const index = this._indexes[this._cat];
-		const results = index.search(searchInput, this.__getSearchOptions());
-
-		const {toProcess, resultCount} = (() => {
-			if (results.length) {
-				if (this._resultFilter) {
-					const filtered = results.filter(it => this._resultFilter(it.doc));
-					return {
-						toProcess: filtered.slice(0, UiUtil.SEARCH_RESULTS_CAP),
-						resultCount: filtered.length
-					}
-				} else {
-					return {
-						toProcess: results.slice(0, UiUtil.SEARCH_RESULTS_CAP),
-						resultCount: results.length
-					}
-				}
-			} else {
-				if (this._resultFilter) {
-					const filtered = Object.values(index.documentStore.docs).filter(it => this._resultFilter(it)).map(it => ({doc: it}));
-					return {
-						toProcess: filtered.slice(0, UiUtil.SEARCH_RESULTS_CAP),
-						resultCount: filtered.length
-					}
-				} else {
-					return {
-						toProcess: Object.values(index.documentStore.docs).slice(0, UiUtil.SEARCH_RESULTS_CAP).map(it => ({doc: it})),
-						resultCount: Object.values(index.documentStore.docs).length
-					}
-				}
-			}
-		})();
-
-		this._$wrpResults.empty();
-		if (toProcess.length) {
-			const handleClick = (r) => {
-				if (this._fnTransform) this._cbSearch(this._fnTransform(r.doc));
-				else {
-					const page = UrlUtil.categoryToPage(r.doc.c);
-					const source = r.doc.s;
-					const hash = r.doc.u;
-
-					this._cbSearch(page, source, hash);
-				}
-			};
-
-			if (this._flags.doClickFirst) {
-				handleClick(toProcess[0]);
-				this._flags.doClickFirst = false;
-				return;
-			}
-
-			const res = toProcess.slice(0, UiUtil.SEARCH_RESULTS_CAP);
-
-			res.forEach(r => SearchWidget.__get$Row(r).on("click", () => handleClick(r)).appendTo(this._$wrpResults));
-
-			if (resultCount > UiUtil.SEARCH_RESULTS_CAP) {
-				const diff = resultCount - UiUtil.SEARCH_RESULTS_CAP;
-				this._$wrpResults.append(`<div class="ui-search__row ui-search__row--readonly">...${diff} more result${diff === 1 ? " was" : "s were"} hidden. Refine your search!</div>`);
-			}
-		} else {
-			if (!searchInput.trim()) this.__showMsgInputRequired();
-			else this.__showMsgNoResults();
-		}
-	}
-
-	_render () {
-		if (!this._$rendered) {
-			this._$rendered = $(`<div class="ui-search__wrp-output"/>`);
-			const $wrpControls = $(`<div class="ui-search__wrp-controls"/>`).appendTo(this._$rendered);
-
-			this._$selCat = $(`<select class="form-control ui-search__sel-category">
-				<option value="ALL">${SearchWidget.__getAllTitle()}</option>
-				${Object.keys(this._indexes).sort().filter(it => it !== "ALL").map(it => `<option value="${it}">${SearchWidget.__getCatOptionText(it)}</option>`).join("")}
-			</select>`)
-				.appendTo($wrpControls).toggle(Object.keys(this._indexes).length !== 1)
-				.on("change", () => {
-					this._cat = this._$selCat.val();
-					this.__doSearch();
-				});
-
-			this._$iptSearch = $(`<input class="ui-search__ipt-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($wrpControls);
-			this._$wrpResults = $(`<div class="ui-search__wrp-results"/>`).appendTo(this._$rendered);
-
-			UiUtil.bindAutoSearch(this._$iptSearch, {
-				flags: this._flags,
-				search: this.__doSearch.bind(this),
-				showWait: this.__showMsgWait.bind(this)
-			});
-
-			this.__doSearch();
-		}
-	}
-
-	doFocus () {
-		this._$iptSearch.focus();
-	}
-
-	static addToIndexes (prop, entry) {
-		const nextId = Object.values(SearchWidget.CONTENT_INDICES.ALL.documentStore.docs).length;
-
-		const indexer = new Omnidexer(nextId);
-
-		const toIndex = {[prop]: [entry]};
-
-		Omnidexer.TO_INDEX__FROM_INDEX_JSON.filter(it => it.listProp === prop)
-			.forEach(it => indexer.addToIndex(it, toIndex));
-		Omnidexer.TO_INDEX.filter(it => it.listProp === prop)
-			.forEach(it => indexer.addToIndex(it, toIndex));
-
-		const toAdd = Omnidexer.decompressIndex(indexer.getIndex());
-		toAdd.forEach(d => {
-			d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
-			SearchWidget.CONTENT_INDICES.ALL.addDoc(d);
-			SearchWidget.CONTENT_INDICES[d.cf].addDoc(d);
-		});
-	}
-}
-SearchWidget.CONTENT_INDICES = {};
-
 async function doPageInit () {
+	// generic init
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	try {
 		await BrewUtil.pAddBrewData();
@@ -862,7 +662,9 @@ async function doPageInit () {
 		setTimeout(() => { throw e });
 	}
 	await SearchUiUtil.pDoGlobalInit();
-	SearchWidget.CONTENT_INDICES = await SearchUiUtil.pGetContentIndices({additionalIndices: ["item"], alternateIndices: ["spell"]});
+	await SearchWidget.pDoGlobalInit();
+
+	// page-specific init
 	await Builder.pInitAll();
 	Renderer.utils.bindPronounceButtons();
 	return ui.init();

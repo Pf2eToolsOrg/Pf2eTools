@@ -126,6 +126,7 @@ const asiFilter = new Filter({
 	],
 	itemSortFn: filterAscSortAsi
 });
+const baseRaceFilter = new Filter({header: "Base Race"});
 let filterBox;
 async function onJsonLoad (data) {
 	list = ListUtil.search({
@@ -193,7 +194,8 @@ async function onJsonLoad (data) {
 			sizeFilter,
 			speedFilter,
 			traitFilter,
-			languageFilter
+			languageFilter,
+			baseRaceFilter
 		]
 	});
 
@@ -278,7 +280,7 @@ function addRaces (data) {
 					<span class="name col-4 pl-0">${race.name}</span>
 					<span class="ability col-4">${ability.asTextShort}</span>
 					<span class="size col-2">${Parser.sizeAbvToFull(race.size)}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(race.source)} pr-0" title="${Parser.sourceJsonToFull(race.source)}" ${BrewUtil.sourceJsonToStyle(race.source)}>${Parser.sourceJsonToAbv(race.source)}</span>
+					<span class="source col-2 text-center ${Parser.sourceJsonToColor(race.source)} pr-0" title="${Parser.sourceJsonToFull(race.source)}" ${BrewUtil.sourceJsonToStyle(race.source)}>${Parser.sourceJsonToAbv(race.source)}</span>
 					${bracketMatch ? `<span class="clean-name hidden">${bracketMatch[2]} ${bracketMatch[1]}</span>` : ""}
 					
 					<span class="uniqueid hidden">${race.uniqueId ? race.uniqueId : rcI}</span>
@@ -289,6 +291,7 @@ function addRaces (data) {
 		sourceFilter.addItem(race._fSources);
 		sizeFilter.addItem(race.size);
 		asiFilter.addItem(race._fAbility);
+		baseRaceFilter.addItem(race._baseName);
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(list);
 	racesTable.append(tempString);
@@ -324,7 +327,8 @@ function handleFilterChange () {
 			r.size,
 			r._fSpeed,
 			r._fMisc,
-			r.languageTags
+			r.languageTags,
+			r._baseName
 		);
 	});
 	FilterBox.selectFirstVisible(raceList);
@@ -344,7 +348,7 @@ function getSublistItem (race, pinId) {
 }
 
 const renderer = Renderer.get();
-function loadhash (id) {
+function loadHash (id) {
 	renderer.setFirstSection(true);
 	const $pgContent = $("#pagecontent").empty();
 	const race = raceList[id];
@@ -489,7 +493,7 @@ function loadhash (id) {
 	ListUtil.updateSelected();
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/draft-06/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
 	"version": "1.1.2",
 	"type": "object",
 
@@ -29,9 +29,7 @@
 					"type": "integer"
 				},
 				{
-					"type": {
-						"const": "Varies"
-					}
+					"const": "Varies"
 				}
 			]
 		},
@@ -220,7 +218,7 @@
 					"entries": {
 						"type": "array",
 						"items": {
-							"$ref": "/Entry"
+							"$ref": "entry.json"
 						}
 					},
 					"soundClip": {
@@ -268,7 +266,7 @@
 								"entries": {
 									"type": "array",
 									"items": {
-										"$ref": "/Entry"
+										"$ref": "entry.json"
 									}
 								},
 								"darkvision": {

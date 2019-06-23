@@ -42,7 +42,8 @@ const categoryFilter = new Filter({
 		"The Gods of Good",
 		"The Gods of Neutrality",
 		"The Sovereign Host"
-	]
+	],
+	itemSortFn: null
 });
 
 function unpackAlignment (g) {
@@ -67,7 +68,8 @@ async function onJsonLoad (data) {
 	const alignmentFilter = new Filter({
 		header: "Alignment",
 		items: ["L", "NX", "C", "G", "NY", "E", "N"],
-		displayFn: Parser.alignmentAbvToFull
+		displayFn: Parser.alignmentAbvToFull,
+		itemSortFn: null
 	});
 	const domainFilter = new Filter({
 		header: "Domain",
@@ -148,10 +150,10 @@ function addDeities (data) {
 			<li class="row" ${FLTR_ID}="${dtI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${dtI}" href="#${UrlUtil.autoEncodeHash(g)}" title="${g.name}">
 					<span class="name col-3 pl-0">${g.name}</span>
-					<span class="pantheon col-2 text-align-center">${g.pantheon}</span>
-					<span class="alignment col-2 text-align-center">${g.alignment.join("")}</span>
+					<span class="pantheon col-2 text-center">${g.pantheon}</span>
+					<span class="alignment col-2 text-center">${g.alignment.join("")}</span>
 					<span class="domains col-3 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""}">${g.domains.join(", ")}</span>
-					<span class="source col-2 text-align-center ${Parser.sourceJsonToColor(g.source)} pr-0" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${Parser.sourceJsonToAbv(g.source)}</span>
+					<span class="source col-2 text-center ${Parser.sourceJsonToColor(g.source)} pr-0" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${Parser.sourceJsonToAbv(g.source)}</span>
 					
 					<span class="uniqueid hidden">${g.uniqueId ? g.uniqueId : dtI}</span>
 				</a>
@@ -215,7 +217,7 @@ function getSublistItem (g, pinId) {
 }
 
 const renderer = Renderer.get();
-function loadhash (jsonIndex) {
+function loadHash (jsonIndex) {
 	renderer.setFirstSection(true);
 	const deity = deitiesList[jsonIndex];
 
@@ -255,7 +257,7 @@ function loadhash (jsonIndex) {
 	ListUtil.updateSelected();
 }
 
-function loadsub (sub) {
+function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
 	ListUtil.setFromSubHashes(sub);
 }

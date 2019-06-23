@@ -550,7 +550,7 @@ class CreatureBuilder extends Builder {
 		this.__$getVariantInput(cb).appendTo(abilTab.$wrpTab);
 
 		// FLAVOR/MISC
-		BuilderUi.$getStateIptString("Token Image URL", cb, this._stateProxy, {type: "url"}, "tokenUrl").appendTo(miscTab.$wrpTab);
+		this.__$getTokenInput(cb).appendTo(miscTab.$wrpTab);
 		this.__$getFluffInput(cb).appendTo(miscTab.$wrpTab);
 		this.__$getEnvironmentInput(cb).appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptString("Group", cb, this._stateProxy, {title: "The family this creature belongs to, e.g. 'Modrons' in the case of a Duodrone."}, "group").appendTo(miscTab.$wrpTab);
@@ -831,7 +831,7 @@ class CreatureBuilder extends Builder {
 				doUpdateState();
 			});
 
-		const $wrp = $$`<div class="flex-col mkbru_mon__wrp-rows mkbru_mon__wrp-rows--removable">${$selMode}${$stageSingle}${$stageMultiple}${$stageSpecial}${$$`<div class="text-align-right">${$btnRemove}</div>`}</div>`;
+		const $wrp = $$`<div class="flex-col mkbru_mon__wrp-rows mkbru_mon__wrp-rows--removable">${$selMode}${$stageSingle}${$stageMultiple}${$stageSpecial}${$$`<div class="text-right">${$btnRemove}</div>`}</div>`;
 		const out = {$wrp, getAlignment};
 		alignmentRows.push(out);
 		return out;
@@ -963,7 +963,7 @@ class CreatureBuilder extends Builder {
 			${$$`<div>${$stageFrom}</div>`}
 			<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--50">Condition</span>${$iptCond}</div>
 			<label class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--50">Surround with brackets</span>${$cbBraces}</label>
-			${$$`<div class="text-align-right">${$btnRemove}</div>`}
+			${$$`<div class="text-right">${$btnRemove}</div>`}
 			</div>`;
 		const out = {$wrp, getAc};
 		acRows.push(out);
@@ -1112,7 +1112,7 @@ class CreatureBuilder extends Builder {
 				doUpdateState();
 			});
 
-		const $iptSimpleMod = $(`<input class="form-control form-control--minimal input-xs text-align-right mr-2" type="number">`)
+		const $iptSimpleMod = $(`<input class="form-control form-control--minimal input-xs text-right mr-2" type="number">`)
 			.change(() => {
 				if (this._metaProxy.autoCalc.hpModifier) {
 					this._metaProxy.autoCalc.hpModifier = false;
@@ -1180,7 +1180,7 @@ class CreatureBuilder extends Builder {
 			}
 		};
 
-		const $iptComplexFormula = $(`<input class="form-control form-control--minimal input-xs text-align-right">`)
+		const $iptComplexFormula = $(`<input class="form-control form-control--minimal input-xs text-right">`)
 			.change(() => {
 				hpComplexAverageHook();
 				doUpdateState();
@@ -2080,7 +2080,7 @@ class CreatureBuilder extends Builder {
 		const $ele = $$`<div class="flex-col mkbru_mon__wrp-rows">
 		${$wrpControls}
 		${$wrpSubRowsOuter}
-		<div class="text-align-right mb-2">${$btnRemove}</div>
+		<div class="text-right mb-2">${$btnRemove}</div>
 		</div>`;
 
 		if (trait) {
@@ -2388,7 +2388,7 @@ class CreatureBuilder extends Builder {
 								const $iptMeleeDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="6">`);
 								const $iptMeleeDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Melee Damage Type" autocomplete="off">`)
 									.typeahead({source: Parser.DMG_TYPES});
-								const $stageMelee = $$`<div class="flex-col"><hr class="hr--sm">
+								const $stageMelee = $$`<div class="flex-col"><hr class="hr-3">
 								<div class="flex-v-center mb-2"><span class="mr-2 no-shrink">Melee Range (ft.)</span>${$iptMeleeRange}</div>
 								<div class="flex-v-center mb-2">${$iptMeleeDamDiceCount}<span class="mr-2">d</span>${$iptMeleeDamDiceNum}${$iptMeleeDamType}</div>
 								</div>`;
@@ -2399,7 +2399,7 @@ class CreatureBuilder extends Builder {
 								const $iptRangedDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="6">`);
 								const $iptRangedDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Ranged Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
-								const $stageRanged = $$`<div class="flex-col"><hr class="hr--sm">
+								const $stageRanged = $$`<div class="flex-col"><hr class="hr-3">
 								<div class="flex-v-center mb-2">
 									<span class="mr-2 no-shrink">Short Range (ft.)</span>${$iptRangedShort}
 									<span class="mr-2 no-shrink">Long Range (ft.)</span>${$iptRangedLong}
@@ -2411,7 +2411,7 @@ class CreatureBuilder extends Builder {
 								const $iptVersatileDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="8">`);
 								const $iptVersatileDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Two-Handed Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
-								const $stageVersatile = $$`<div class="flex-col"><hr class="hr--sm">
+								const $stageVersatile = $$`<div class="flex-col"><hr class="hr-3">
 								<div class="flex-v-center mb-2">${$iptVersatileDamDiceCount}<span class="mr-2">d</span>${$iptVersatileDamDiceNum}${$iptVersatileDamType}</div>
 								</div>`.hide();
 
@@ -2419,7 +2419,7 @@ class CreatureBuilder extends Builder {
 								const $iptBonusDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="6">`);
 								const $iptBonusDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Bonus Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
-								const $stageBonusDamage = $$`<div class="flex-col"><hr class="hr--sm">
+								const $stageBonusDamage = $$`<div class="flex-col"><hr class="hr-3">
 								<div class="flex-v-center mb-2">${$iptBonusDamDiceCount}<span class="mr-2">d</span>${$iptBonusDamDiceNum}${$iptBonusDamType}</div>
 								</div>`.hide();
 
@@ -2730,7 +2730,7 @@ class CreatureBuilder extends Builder {
 		</div>
 		${sourceControls ? sourceControls.$ele : null}
 		<div class="flex-v-center">${$iptEntries}</div>
-		<div class="text-align-right">${$btnRemove}</div>
+		<div class="text-right">${$btnRemove}</div>
 		</div>`;
 
 		out.$ele = $ele;
@@ -2768,6 +2768,46 @@ class CreatureBuilder extends Builder {
 
 	__$getVariantInput (cb) {
 		return this.__$getGenericEntryInput(cb, {name: "Variants", shortName: "Variant", prop: "variant"});
+	}
+
+	__$getTokenInput (cb) {
+		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Token Image URL");
+
+		const $iptUrl = $(`<input class="form-control form-control--minimal input-xs mr-2">`)
+			.change(() => doUpdateState())
+			.val(this._stateProxy.tokenUrl || "");
+
+		const $btnPreview = $(`<button class="btn btn-xs btn-default mr-2" title="Preview Token"><span class="glyphicon glyphicon-fullscreen"/></button>`)
+			.click((evt) => {
+				const val = $iptUrl.val().trim();
+				if (!val) return JqueryUtil.doToast({content: "Please enter an image URL", type: "warning"});
+				Renderer.hover.doOpenWindow(
+					evt,
+					$btnPreview[0],
+					{
+						type: "image",
+						href: {
+							type: "external",
+							url: val
+						},
+						data: {
+							hoverTitle: `Token Preview`
+						}
+					}
+				);
+			});
+
+		const doUpdateState = () => {
+			const val = $iptUrl.val().trim();
+			if (val) this._stateProxy.tokenUrl = val;
+			else delete this._stateProxy.tokenUrl;
+
+			cb();
+		};
+
+		$$`<div class="flex">${$iptUrl}${$btnPreview}</div>`.appendTo($rowInner);
+
+		return $row;
 	}
 
 	__$getFluffInput (cb) {
@@ -2889,7 +2929,7 @@ class CreatureBuilder extends Builder {
 				.prop("checked", this._stateProxy.environment && this._stateProxy.environment.includes(val))
 				.change(() => doUpdateState());
 			inputs.push({$ipt: $cb, getVal: () => val});
-			$$`<label class="flex-v-center split mkbru__multi-cb-row"><span>${StrUtil.toTitleCase(val)}</span>${$cb}</label>`.appendTo($wrpIpts);
+			$$`<label class="flex-v-center split stripe-odd--faint"><span>${StrUtil.toTitleCase(val)}</span>${$cb}</label>`.appendTo($wrpIpts);
 		});
 
 		const additionalEnvs = (this._stateProxy.environment || []).filter(it => !Parser.ENVIRONMENTS.includes(it)).filter(it => it && it.trim());
@@ -2934,7 +2974,7 @@ class CreatureBuilder extends Builder {
 				const raw = $iptEnv.val().toLowerCase().trim();
 				return raw || false;
 			},
-			$ele: $$`<label class="flex-v-center split mkbru__multi-cb-row mt-2"><span>${$iptEnv}</span>${$cb}${$btnRemove}</label>`
+			$ele: $$`<label class="flex-v-center split stripe-odd--faint mt-2"><span>${$iptEnv}</span>${$cb}${$btnRemove}</label>`
 		};
 
 		envRows.push(out);

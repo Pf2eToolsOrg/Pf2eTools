@@ -134,7 +134,7 @@ module.exports = {
 		"no-with": "error",
 		"object-property-newline": ["error", {"allowMultiplePropertiesPerLine": true}],
 		"one-var": ["error", {"initialized": "never"}],
-		"operator-linebreak": ["error", "after", {"overrides": {"?": "before", ":": "before"}}],
+		"operator-linebreak": ["error", "after", {"overrides": {"?": "before", ":": "before", "+": "before", "-": "before", "*": "before", "/": "before"}}],
 		"padded-blocks": ["error", {"blocks": "never", "switches": "never", "classes": "never"}],
 		"prefer-promise-reject-errors": "error",
 		"rest-spread-spacing": ["error", "never"],
