@@ -38,6 +38,7 @@ PropOrder.MONSTER = [
 
 	"_copy",
 
+	"level",
 	"size",
 	"type",
 	"alignment",

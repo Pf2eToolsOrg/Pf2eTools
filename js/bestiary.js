@@ -565,6 +565,24 @@ function getUid (name, source, scaledCr) {
 	return `${name}_${source}_${scaledCr}`.toLowerCase();
 }
 
+function handleBestiaryLiClick (evt, ele, ixMon) {
+	if (encounterBuilder.isActive()) {
+		const mon = monsters[ixMon];
+		const fakeEvt = {clientX: evt.clientX, clientY: evt.clientY, shiftKey: true};
+		Renderer.hover.mouseOver(fakeEvt, ele, UrlUtil.PG_BESTIARY, mon.source, UrlUtil.autoEncodeHash(mon));
+	} else ListUtil.toggleSelected(evt, ele)
+}
+
+function handleBestiaryLiContext (evt, ele) {
+	if (!encounterBuilder.isActive()) ListUtil.openContextMenu(evt, ele);
+}
+
+function handleBestiaryLinkClick (evt) {
+	if (encounterBuilder.isActive()) {
+		evt.preventDefault();
+	}
+}
+
 const _NEUT_ALIGNS = ["NX", "NY"];
 const _addedHashes = new Set();
 function addMonsters (data) {
@@ -588,13 +606,17 @@ function addMonsters (data) {
 		if (mon.speed.canHover) mon._fSpeedType.push("hover");
 		mon._fAc = mon.ac.map(it => it.ac || it);
 		mon._fHp = mon.hp.average;
-		const tempAlign = typeof mon.alignment[0] === "object"
-			? Array.prototype.concat.apply([], mon.alignment.map(a => a.alignment))
-			: [...mon.alignment];
-		if (tempAlign.includes("N") && !tempAlign.includes("G") && !tempAlign.includes("E")) tempAlign.push("NY");
-		else if (tempAlign.includes("N") && !tempAlign.includes("L") && !tempAlign.includes("C")) tempAlign.push("NX");
-		else if (tempAlign.length === 1 && tempAlign.includes("N")) Array.prototype.push.apply(tempAlign, _NEUT_ALIGNS);
-		mon._fAlign = tempAlign;
+		if (mon.alignment) {
+			const tempAlign = typeof mon.alignment[0] === "object"
+				? Array.prototype.concat.apply([], mon.alignment.map(a => a.alignment))
+				: [...mon.alignment];
+			if (tempAlign.includes("N") && !tempAlign.includes("G") && !tempAlign.includes("E")) tempAlign.push("NY");
+			else if (tempAlign.includes("N") && !tempAlign.includes("L") && !tempAlign.includes("C")) tempAlign.push("NX");
+			else if (tempAlign.length === 1 && tempAlign.includes("N")) Array.prototype.push.apply(tempAlign, _NEUT_ALIGNS);
+			mon._fAlign = tempAlign;
+		} else {
+			mon._fAlign = null;
+		}
 		mon._fVuln = mon.vulnerable ? getAllImmRest(mon.vulnerable, "vulnerable") : [];
 		mon._fRes = mon.resist ? getAllImmRest(mon.resist, "resist") : [];
 		mon._fImm = mon.immune ? getAllImmRest(mon.immune, "immune") : [];
@@ -604,8 +626,8 @@ function addMonsters (data) {
 		mon._fSources = ListUtil.getCompleteFilterSources(mon);
 
 		textStack +=
-			`<li class="row" ${FLTR_ID}="${mI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id=${mI} href="#${monHash}" title="${mon.name}">
+			`<li class="row" ${FLTR_ID}="${mI}" onclick="handleBestiaryLiClick(event, this, ${mI})" oncontextmenu="handleBestiaryLiContext(event, this)">
+				<a id=${mI} href="#${monHash}" title="${mon.name}" onclick="handleBestiaryLinkClick(event)">
 					${EncounterBuilder.getButtons(mI)}
 					<span class="ecgen__name name col-4-2 pl-0">${mon.name}</span>
 					<span class="type col-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>

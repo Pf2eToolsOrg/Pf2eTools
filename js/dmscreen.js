@@ -614,8 +614,8 @@ class SideMenu {
 				const w = $contents.width();
 				const h = $contents.height();
 				const offset = $contents.offset();
-				const offsetX = e.clientX - offset.left;
-				const offsetY = e.clientY - offset.top;
+				const offsetX = EventUtil.getClientX(e) - offset.left;
+				const offsetY = EventUtil.getClientY(e) - offset.top;
 
 				$body.append($contents);
 				$(`.panel-control`).hide();
@@ -830,8 +830,8 @@ class Panel {
 			width: w,
 			height: h,
 			position: "fixed",
-			top: evt.clientY - offsetY,
-			left: evt.clientX - offsetX,
+			top: EventUtil.getClientY(evt) - offsetY,
+			left: EventUtil.getClientX(evt) - offsetX,
 			zIndex: zIndex,
 			pointerEvents: "none",
 			transform: "rotate(-4deg)",
@@ -858,8 +858,8 @@ class Panel {
 		$(document).on(`mousemove${EVT_NAMESPACE} touchmove${EVT_NAMESPACE}`, (e) => {
 			board.setVisiblyHoveringPanel(true);
 			$content.css({
-				top: e.clientY - offsetY,
-				left: e.clientX - offsetX
+				top: EventUtil.getClientY(e) - offsetY,
+				left: EventUtil.getClientX(e) - offsetX
 			});
 		});
 	}
@@ -1957,6 +1957,7 @@ class JoystickMenu {
 		this.$ctrls = [$ctrlMove, $ctrlXpandUp, $ctrlXpandRight, $ctrlXpandDown, $ctrlXpandLeft, $ctrlBg];
 
 		$ctrlMove.on("mousedown touchstart", (e) => {
+			e.preventDefault();
 			this.panel.board.setVisiblyHoveringPanel(true);
 			const $body = $(`body`);
 			MiscUtil.clearSelection();
@@ -1967,8 +1968,8 @@ class JoystickMenu {
 			const h = this.panel.$content.height();
 			const childH = this.panel.$content.children().first().height();
 			const offset = this.panel.$content.offset();
-			const offsetX = e.clientX - offset.left;
-			const offsetY = h > childH ? childH / 2 : (e.clientY - offset.top);
+			const offsetX = EventUtil.getClientX(e) - offset.left;
+			const offsetY = h > childH ? childH / 2 : (EventUtil.getClientY(e) - offset.top);
 
 			$body.append(this.panel.$content);
 			$(`.panel-control`).hide();
@@ -2013,7 +2014,8 @@ class JoystickMenu {
 			});
 		});
 
-		function xpandHandler (dir) {
+		function xpandHandler (dir, evt) {
+			evt.preventDefault();
 			MiscUtil.clearSelection();
 			$(`body`).css("userSelect", "none");
 			$(`.panel-control`).hide();
@@ -2056,16 +2058,16 @@ class JoystickMenu {
 				const px = axis === AX_X ? dim.pxWidth : dim.pxHeight;
 				switch (dir) {
 					case UP:
-						delta = pos.top - e.clientY;
+						delta = pos.top - EventUtil.getClientY(e);
 						break;
 					case RIGHT:
-						delta = e.clientX - (pos.left + (px * this.panel.width));
+						delta = EventUtil.getClientX(e) - (pos.left + (px * this.panel.width));
 						break;
 					case DOWN:
-						delta = e.clientY - (pos.top + (px * this.panel.height));
+						delta = EventUtil.getClientY(e) - (pos.top + (px * this.panel.height));
 						break;
 					case LEFT:
-						delta = pos.left - e.clientX;
+						delta = pos.left - EventUtil.getClientX(e);
 						break;
 				}
 

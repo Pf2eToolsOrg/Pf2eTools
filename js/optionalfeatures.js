@@ -1,13 +1,5 @@
 "use strict";
 
-const JSON_URL = "data/optionalfeatures.json";
-
-window.onload = async function load () {
-	await ExcludeUtil.pInitialise();
-	SortUtil.initHandleFilterButtonClicks();
-	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-};
-
 function optFeatSort (itemA, itemB, options) {
 	if (options.valueName === "level") {
 		const aValue = Number(itemA.values().level.toLowerCase()) || 0;
@@ -21,120 +13,93 @@ function filterFeatureTypeSort (a, b) {
 	return SortUtil.ascSort(Parser.optFeatureTypeToFull(a.item), Parser.optFeatureTypeToFull(b.item))
 }
 
-let list;
-const sourceFilter = getSourceFilter();
-const typeFilter = new Filter({
-	header: "Feature Type",
-	items: ["AI", "ED", "EI", "MM", "MV:B", "OTH", "FS:F", "FS:B", "FS:P", "FS:R", "PB"],
-	displayFn: Parser.optFeatureTypeToFull,
-	itemSortFn: filterFeatureTypeSort
-});
-const pactFilter = new Filter({
-	header: "Pact Boon",
-	items: ["Blade", "Chain", "Tome"],
-	displayFn: Parser.prereqPactToFull
-});
-const patronFilter = new Filter({
-	header: "Otherworldly Patron",
-	items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Kraken", "The Raven Queen", "The Seeker"],
-	displayFn: Parser.prereqPatronToShort
-});
-const spellFilter = new Filter({
-	header: "Spell",
-	items: ["eldritch blast", "hex/curse"],
-	displayFn: StrUtil.toTitleCase
-});
-const featureFilter = new Filter({
-	header: "Feature",
-	displayFn: StrUtil.toTitleCase
-});
-const levelFilter = new Filter({
-	header: "Level",
-	itemSortFn: SortUtil.ascSortNumericalSuffix,
-	nests: []
-});
-const prerequisiteFilter = new MultiFilter({header: "Prerequisite", filters: [pactFilter, patronFilter, spellFilter, levelFilter, featureFilter]});
-let filterBox;
-async function onJsonLoad (data) {
-	filterBox = await pInitFilterBox({filters: [sourceFilter, typeFilter, prerequisiteFilter]});
-
-	list = ListUtil.search({
-		valueNames: ["name", "source", "prerequisite", "level", "type", "uniqueid"],
-		listClass: "optfeatures",
-		sortFunction: optFeatSort
-	});
-
-	const $outVisibleResults = $(`.lst__wrp-search-visible`);
-	list.on("updated", () => {
-		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
-	});
-
-	// filtering function
-	$(filterBox).on(
-		FilterBox.EVNT_VALCHANGE,
-		handleFilterChange
-	);
-
-	const subList = ListUtil.initSublist({
-		valueNames: ["name", "ability", "prerequisite", "level", "id"],
-		listClass: "suboptfeatures",
-		getSublistRow: getSublistItem,
-		sortFunction: optFeatSort
-	});
-	ListUtil.initGenericPinnable();
-
-	addOptionalfeatures(data);
-	BrewUtil.pAddBrewData()
-		.then(handleBrew)
-		.then(() => BrewUtil.bind({list}))
-		.then(() => BrewUtil.pAddLocalBrewData())
-		.catch(BrewUtil.pPurgeBrew)
-		.then(async () => {
-			BrewUtil.makeBrewButton("manage-brew");
-			BrewUtil.bind({filterBox, sourceFilter});
-			await ListUtil.pLoadState();
-			RollerUtil.addListRollButton();
-			ListUtil.addListShowHide();
-
-			History.init(true);
-			ExcludeUtil.checkShowAllExcluded(optfList, $(`#pagecontent`));
+class OptionalFeaturesPage extends ListPage {
+	constructor () {
+		const sourceFilter = getSourceFilter();
+		const typeFilter = new Filter({
+			header: "Feature Type",
+			items: ["AI", "ED", "EI", "MM", "MV:B", "OTH", "FS:F", "FS:B", "FS:P", "FS:R", "PB"],
+			displayFn: Parser.optFeatureTypeToFull,
+			itemSortFn: filterFeatureTypeSort
 		});
-}
+		const pactFilter = new Filter({
+			header: "Pact Boon",
+			items: ["Blade", "Chain", "Tome"],
+			displayFn: Parser.prereqPactToFull
+		});
+		const patronFilter = new Filter({
+			header: "Otherworldly Patron",
+			items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Kraken", "The Raven Queen", "The Seeker"],
+			displayFn: Parser.prereqPatronToShort
+		});
+		const spellFilter = new Filter({
+			header: "Spell",
+			items: ["eldritch blast", "hex/curse"],
+			displayFn: StrUtil.toTitleCase
+		});
+		const featureFilter = new Filter({
+			header: "Feature",
+			displayFn: StrUtil.toTitleCase
+		});
+		const levelFilter = new Filter({
+			header: "Level",
+			itemSortFn: SortUtil.ascSortNumericalSuffix,
+			nests: []
+		});
+		const prerequisiteFilter = new MultiFilter({header: "Prerequisite", filters: [pactFilter, patronFilter, spellFilter, levelFilter, featureFilter]});
 
-function handleBrew (homebrew) {
-	addOptionalfeatures(homebrew);
-	return Promise.resolve();
-}
+		super({
+			dataSource: "data/optionalfeatures.json",
 
-let optfList = [];
-let ivI = 0;
-function addOptionalfeatures (data) {
-	if (!data.optionalfeature || !data.optionalfeature.length) return;
+			filters: [
+				sourceFilter,
+				typeFilter,
+				prerequisiteFilter
+			],
+			filterSource: sourceFilter,
 
-	optfList = optfList.concat(data.optionalfeature);
+			listValueNames: ["name", "source", "prerequisite", "level", "type", "uniqueid"],
+			listClass: "optfeatures",
+			listOptions: {
+				sortFunction: optFeatSort
+			},
 
-	let tempString = "";
-	for (; ivI < optfList.length; ivI++) {
-		const it = optfList[ivI];
-		if (ExcludeUtil.isExcluded(it.name, "optionalfeature", it.source)) continue;
+			sublistValueNames: ["name", "ability", "prerequisite", "level", "id"],
+			sublistClass: "suboptfeatures",
+			sublistOptions: {
+				sortFunction: optFeatSort
+			},
 
+			dataProps: ["optionalfeature"]
+		});
+
+		this._sourceFilter = sourceFilter;
+		this._typeFilter = typeFilter;
+		this._pactFilter = pactFilter;
+		this._patronFilter = patronFilter;
+		this._spellFilter = spellFilter;
+		this._featureFilter = featureFilter;
+		this._levelFilter = levelFilter;
+	}
+
+	getListItem (it, ivI) {
 		it.featureType = it.featureType || "OTH";
 		if (it.prerequisite) {
 			it._sPrereq = true;
 			it._fPrereqPact = it.prerequisite.filter(it => it.type === "prereqPact").map(it => {
-				pactFilter.addItem(it.entry);
+				this._pactFilter.addItem(it.entry);
 				return it.entry;
 			});
 			it._fPrereqPatron = it.prerequisite.filter(it => it.type === "prereqPatron").map(it => {
-				patronFilter.addItem(it.entry);
+				this._patronFilter.addItem(it.entry);
 				return it.entry;
 			});
 			it._fprereqSpell = it.prerequisite.filter(it => it.type === "prereqSpell").map(it => {
-				spellFilter.addItem(it.entries);
+				this._spellFilter.addItem(it.entries);
 				return it.entries;
 			});
 			it._fprereqFeature = it.prerequisite.filter(it => it.type === "prereqFeature").map(it => {
-				featureFilter.addItem(it.entries);
+				this._featureFilter.addItem(it.entries);
 				return it.entries;
 			});
 			it._fPrereqLevel = it.prerequisite.filter(it => it.type === "prereqLevel").map(lvl => {
@@ -142,8 +107,8 @@ function addOptionalfeatures (data) {
 					item: `${lvl.class.name}${lvl.subclass ? ` (${lvl.subclass.name})` : ""} Level ${lvl.level}`,
 					nest: lvl.class.name
 				});
-				levelFilter.addNest(lvl.class.name, {isHidden: true});
-				levelFilter.addItem(item);
+				this._levelFilter.addNest(lvl.class.name, {isHidden: true});
+				this._levelFilter.addItem(item);
 				return item;
 			});
 		}
@@ -157,7 +122,11 @@ function addOptionalfeatures (data) {
 			it._lFeatureType = it.featureType;
 		}
 
-		tempString += `
+		// populate filters
+		this._sourceFilter.addItem(it.source);
+		this._typeFilter.addItem(it.featureType);
+
+		return `
 			<li class="row" ${FLTR_ID}="${ivI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${ivI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
 					<span class="name col-3-2 pl-0">${it.name}</span>
@@ -170,97 +139,73 @@ function addOptionalfeatures (data) {
 				</a>
 			</li>
 		`;
-
-		// populate filters
-		sourceFilter.addItem(it.source);
-		typeFilter.addItem(it.featureType);
 	}
-	const lastSearch = ListUtil.getSearchTermAndReset(list);
-	$(`#optfeaturesList`).append(tempString);
 
-	list.reIndex();
-	if (lastSearch) list.search(lastSearch);
-	list.sort("name");
-	filterBox.render();
-	handleFilterChange();
+	handleFilterChange () {
+		const f = this._filterBox.getValues();
+		this._list.filter(item => {
+			const it = this._dataList[$(item.elm).attr(FLTR_ID)];
+			return this._filterBox.toDisplay(
+				f,
+				it.source,
+				it.featureType,
+				[
+					it._fPrereqPact,
+					it._fPrereqPatron,
+					it._fprereqSpell,
+					it._fPrereqLevel,
+					it._fprereqFeature
+				]
+			);
+		});
+		FilterBox.selectFirstVisible(this._dataList);
+	}
 
-	ListUtil.setOptions({
-		itemList: optfList,
-		getSublistRow: getSublistItem,
-		primaryLists: [list]
-	});
-	ListUtil.bindPinButton();
-	Renderer.hover.bindPopoutButton(optfList);
-	UrlUtil.bindLinkExportButton(filterBox);
-	ListUtil.bindDownloadButton();
-	ListUtil.bindUploadButton();
-}
+	getSublistItem (it, pinId) {
+		return `
+			<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+				<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
+					<span class="name col-4 pl-0">${it.name}</span>
+					<span class="source col-2 text-center type" title="${Parser.optFeatureTypeToFull(it.featureType)}">${it.featureType}</span>
+					<span class="prerequisite col-4-5">${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
+					<span class="level col-1-5 pr-0">${Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
+					
+					<span class="id hidden">${pinId}</span>
+				</a>
+			</li>
+		`;
+	}
 
-function handleFilterChange () {
-	const f = filterBox.getValues();
-	list.filter(function (item) {
-		const it = optfList[$(item.elm).attr(FLTR_ID)];
-		return filterBox.toDisplay(
-			f,
-			it.source,
-			it.featureType,
-			[
-				it._fPrereqPact,
-				it._fPrereqPatron,
-				it._fprereqSpell,
-				it._fPrereqLevel,
-				it._fprereqFeature
-			]
-		);
-	});
-	FilterBox.selectFirstVisible(optfList);
-}
+	doLoadHash (id) {
+		Renderer.get().setFirstSection(true);
+		const $content = $(`#pagecontent`).empty();
+		const it = this._dataList[id];
 
-function getSublistItem (it, pinId) {
-	return `
-		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-			<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-				<span class="name col-4 pl-0">${it.name}</span>
-				<span class="source col-2 text-center type" title="${Parser.optFeatureTypeToFull(it.featureType)}">${it.featureType}</span>
-				<span class="prerequisite col-4-5">${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
-				<span class="level col-1-5 pr-0">${Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
-				
-				<span class="id hidden">${pinId}</span>
-			</a>
-		</li>
-	`;
-}
-
-function loadHash (jsonIndex) {
-	Renderer.get().setFirstSection(true);
-	const $content = $(`#pagecontent`).empty();
-	const it = optfList[jsonIndex];
-
-	const $wrpTab = $(`#stat-tabs`);
-	$wrpTab.find(`.opt-feature-type`).remove();
-	const $wrpOptFeatType = $(`<div class="opt-feature-type"/>`).prependTo($wrpTab);
-	if (it.featureType instanceof Array) {
-		const commonPrefix = MiscUtil.findCommonPrefix(it.featureType.map(fs => Parser.optFeatureTypeToFull(fs)));
-		if (commonPrefix) $wrpOptFeatType.append(`${commonPrefix.trim()} `);
-		it.featureType.forEach((ft, i) => {
-			if (i > 0) $wrpOptFeatType.append("/");
-			$(`<span class="roller">${Parser.optFeatureTypeToFull(ft).substring(commonPrefix.length)}</span>`)
+		const $wrpTab = $(`#stat-tabs`);
+		$wrpTab.find(`.opt-feature-type`).remove();
+		const $wrpOptFeatType = $(`<div class="opt-feature-type"/>`).prependTo($wrpTab);
+		if (it.featureType instanceof Array) {
+			const commonPrefix = MiscUtil.findCommonPrefix(it.featureType.map(fs => Parser.optFeatureTypeToFull(fs)));
+			if (commonPrefix) $wrpOptFeatType.append(`${commonPrefix.trim()} `);
+			it.featureType.forEach((ft, i) => {
+				if (i > 0) $wrpOptFeatType.append("/");
+				$(`<span class="roller">${Parser.optFeatureTypeToFull(ft).substring(commonPrefix.length)}</span>`)
+					.click(() => {
+						filterBox.setFromValues({"Feature Type": {[ft]: 1}});
+						handleFilterChange();
+					})
+					.appendTo($wrpOptFeatType);
+			});
+		} else {
+			$(`<span class="roller">${Parser.optFeatureTypeToFull(it.featureType)}</span>`)
 				.click(() => {
-					filterBox.setFromValues({"Feature Type": {[ft]: 1}});
+					filterBox.setFromValues({"Feature Type": {[it.featureType]: 1}});
 					handleFilterChange();
 				})
 				.appendTo($wrpOptFeatType);
-		});
-	} else {
-		$(`<span class="roller">${Parser.optFeatureTypeToFull(it.featureType)}</span>`)
-			.click(() => {
-				filterBox.setFromValues({"Feature Type": {[it.featureType]: 1}});
-				handleFilterChange();
-			})
-			.appendTo($wrpOptFeatType);
-	}
+		}
 
-	$content.append(`
+		$content.append(`
 		${Renderer.utils.getBorderTr()}
 		${Renderer.utils.getNameTr(it)}
 		${it.prerequisite ? `<tr><td colspan="6"><i>${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite)}</i></td></tr>` : ""}
@@ -271,10 +216,14 @@ function loadHash (jsonIndex) {
 		${Renderer.utils.getBorderTr()}
 	`);
 
-	ListUtil.updateSelected();
+		ListUtil.updateSelected();
+	}
+
+	doLoadSubHash (sub) {
+		sub = this._filterBox.setFromSubHashes(sub);
+		ListUtil.setFromSubHashes(sub);
+	}
 }
 
-function loadSubHash (sub) {
-	sub = filterBox.setFromSubHashes(sub);
-	ListUtil.setFromSubHashes(sub);
-}
+const optionalFeaturesPage = new OptionalFeaturesPage();
+window.addEventListener("load", () => optionalFeaturesPage.pOnLoad());

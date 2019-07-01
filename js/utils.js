@@ -1112,10 +1112,11 @@ Parser.psiOrderToFull = (order) => {
 
 Parser.levelToFull = function (level) {
 	if (isNaN(level)) return "";
-	if (level === "2") return level + "nd";
-	if (level === "3") return level + "rd";
-	if (level === "1") return level + "st";
-	return level + "th";
+	level = Number(level);
+	if (level === 1) return `${level}st`;
+	if (level === 2) return `${level}nd`;
+	if (level === 3) return `${level}rd`;
+	return `${level}th`;
 };
 
 Parser.prereqSpellToFull = function (spell) {
@@ -1170,6 +1171,7 @@ Parser.optFeatureTypeToFull = function (type) {
 };
 
 Parser.alignmentAbvToFull = function (alignment) {
+	if (!alignment) return null; // used in sidekicks
 	if (typeof alignment === "object") {
 		if (alignment.special != null) {
 			// use in MTF Sacred Statue
@@ -1208,6 +1210,8 @@ Parser.alignmentAbvToFull = function (alignment) {
 Parser.alignmentListToFull = function (alignList) {
 	if (alignList.some(it => typeof it !== "string")) {
 		if (alignList.some(it => typeof it === "string")) throw new Error(`Mixed alignment types: ${JSON.stringify(alignList)}`);
+		// filter out any nonexistent alignments, as we don't care about "alignment does not exist" if there are other alignments
+		alignList = alignList.filter(it => it.alignment === undefined || it.alignment != null);
 		return alignList.map(it => it.special != null || it.chance != null ? Parser.alignmentAbvToFull(it) : Parser.alignmentListToFull(it.alignment)).join(" or ");
 	} else {
 		// assume all single-length arrays can be simply parsed
@@ -1668,6 +1672,8 @@ SRC_KKW = "KKW";
 SRC_LLK = "LLK";
 SRC_GoS = "GoS";
 SRC_AI = "AI";
+SRC_OoW = "OoW";
+SRC_DIP = "DIP";
 SRC_AL = "AL";
 SRC_SCREEN = "Screen";
 
@@ -1784,6 +1790,8 @@ Parser.SOURCE_JSON_TO_FULL[SRC_KKW] = "Krenko's Way";
 Parser.SOURCE_JSON_TO_FULL[SRC_LLK] = "Lost Laboratory of Kwalish";
 Parser.SOURCE_JSON_TO_FULL[SRC_GoS] = "Ghosts of Saltmarsh";
 Parser.SOURCE_JSON_TO_FULL[SRC_AI] = "Acquisitions Incorporated";
+Parser.SOURCE_JSON_TO_FULL[SRC_OoW] = "The Orrery of the Wanderer";
+Parser.SOURCE_JSON_TO_FULL[SRC_DIP] = "Dragon of Icespire Peak";
 Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
@@ -1883,6 +1891,8 @@ Parser.SOURCE_JSON_TO_ABV[SRC_KKW] = "KKW";
 Parser.SOURCE_JSON_TO_ABV[SRC_LLK] = "LLK";
 Parser.SOURCE_JSON_TO_ABV[SRC_GoS] = "GoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_AI] = "AI";
+Parser.SOURCE_JSON_TO_ABV[SRC_OoW] = "OoW";
+Parser.SOURCE_JSON_TO_ABV[SRC_DIP] = "DIP";
 Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
@@ -2619,6 +2629,12 @@ MiscUtil = {
 		return new Promise(resolve => setTimeout(() => resolve(), msecs));
 	}
 };
+
+// EVENT HANDLERS ======================================================================================================
+EventUtil = {
+	getClientX (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientX : evt.clientX; },
+	getClientY (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientY : evt.clientY; }
+}
 
 // CONTEXT MENUS =======================================================================================================
 ContextUtil = {

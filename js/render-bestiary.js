@@ -109,7 +109,7 @@ class RenderBestiary {
 			<span class="stats-source ${Parser.sourceJsonToColor(mon.source)}" title="${Parser.sourceJsonToFull(mon.source)}${Renderer.utils.getSourceSubText(mon)}" ${BrewUtil.sourceJsonToStyle(mon.source)}>${Parser.sourceJsonToAbv(mon.source)}</span>
 		</th></tr>
 		<tr><td colspan="6">
-			<div class="mon__wrp-size-type-align"><i>${Parser.sizeAbvToFull(mon.size)} ${mon._pTypes.asText}, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}</i></div>
+			<div class="mon__wrp-size-type-align"><i>${mon.level ? `${Parser.levelToFull(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${mon._pTypes.asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}` : ""}</i></div>
 		</td></tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		

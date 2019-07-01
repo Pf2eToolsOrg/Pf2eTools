@@ -1,7 +1,5 @@
 ## 5e.tools
 
-[![Build Status](https://ci.develop.5etools.com/api/badges/5eTools/5etoolsR20/status.svg)](https://ci.develop.5etools.com/5eTools/5etoolsR20)
-
 Visit the [main site](https://5e.tools/5etools.html) or go to the unofficial GitHub [mirror](5etools.html).
 
 [Join the 5etools Discord here!](https://discord.gg/nGvRCDs)
@@ -52,7 +50,6 @@ Targeting ES6 was the original intent, but more modern features have long since 
 	- Only tag references which are _intended as references_. For example, the Wizard class in `You gain one cantrip of your choice from the wizard spell list` should be tagged, whereas the Wizard class in `Together, a group of seven powerful wizards sought to contain the demon` should not be tagged. One is a reference to the mechanical class, one is merely the casual usage of the word "wizard." 
 	- In a similar vein, never tag anything within a `quote`-type block. Even if the quote directly refers to a specific creature, we can assume the quote is from a universe/perspective in which (for example) statblocks don't exist, and therefore the tag should be omitted to maintain the flavour of the quote.
 	- Within data from a source, avoid referencing content from a source printed after the publication of that source. For example, MTF content might reference SCAG deities, but SCAG deities should refrain from referencing MTF content.
-	- Use `@skill` tags sparingly. Only tag "loose" skill references, those without specific use or reference in the surrounding text. For example, `You have proficiency in the Perception skill` should be tagged, as the generalised text provided in the tooltip is a useful addition. `You have advantage on Dexterity (Stealth) checks made to hide in rocky environments`, however, should not be tagged, as the text already specifies exactly what the skill means in this case: your ability to hide in rocky environments. Likewise, `You have advantage on any Strength (Athletics) or Dexterity (Acrobatics) check you make to escape from being grappled` should not be tagged, as a specific use of the skill is already well defined in the text.
 
 ### JSON Cleaning
 #### Trailing commas

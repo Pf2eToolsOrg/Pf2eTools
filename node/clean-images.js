@@ -1,4 +1,6 @@
 /**
+ * Rename bestiary fluff images to match the source they originate from.
+ *
  * This script assumes the user has a symlink to the image repo as "img".
  */
 

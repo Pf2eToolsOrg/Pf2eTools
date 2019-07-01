@@ -1,7 +1,5 @@
 "use strict";
 
-const JSON_URL = "data/objects.json";
-
 function imgError (x) {
 	if (x) $(x).parent().remove();
 	$(`.rnd-name`).find(`span.stats-source`).css("margin-right", "0");
@@ -16,66 +14,34 @@ function handleStatblockScroll (event, ele) {
 		})
 }
 
-window.onload = async function load () {
-	await ExcludeUtil.pInitialise();
-	SortUtil.initHandleFilterButtonClicks();
-	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-};
+class ObjectsPage extends ListPage {
+	constructor () {
+		const sourceFilter = getSourceFilter();
 
-let list;
-function onJsonLoad (data) {
-	list = ListUtil.search({
-		valueNames: ["name", "size", "source", "uniqueid"],
-		listClass: "objects",
-		sortFunction: SortUtil.listSort
-	});
+		super({
+			dataSource: "data/objects.json",
 
-	Renderer.hover.bindPopoutButton(objectsList);
+			filters: [
+				sourceFilter
+			],
+			filterSource: sourceFilter,
 
-	const subList = ListUtil.initSublist({
-		valueNames: ["name", "size", "id"],
-		listClass: "subobjects",
-		itemList: objectsList,
-		getSublistRow: getSublistItem,
-		primaryLists: [list]
-	});
-	ListUtil.initGenericPinnable();
+			listValueNames: ["name", "size", "source", "uniqueid"],
+			listClass: "objects",
 
-	addObjects(data);
-	BrewUtil.pAddBrewData()
-		.then(handleBrew)
-		.then(() => BrewUtil.bind({list}))
-		.then(() => BrewUtil.pAddLocalBrewData())
-		.catch(BrewUtil.pPurgeBrew)
-		.then(async () => {
-			BrewUtil.makeBrewButton("manage-brew");
-			BrewUtil.bind({list});
-			await ListUtil.pLoadState();
-			ListUtil.addListShowHide();
+			sublistValueNames: ["name", "size", "id"],
+			sublistClass: "subobjects",
 
-			History.init(true);
-			ExcludeUtil.checkShowAllExcluded(objectsList, $(`#pagecontent`));
+			dataProps: ["object"]
 		});
-}
 
-function handleBrew (homebrew) {
-	addObjects(homebrew);
-	return Promise.resolve();
-}
+		this._sourceFilter = sourceFilter;
+	}
 
-let objectsList = [];
-let obI = 0;
-function addObjects (data) {
-	if (!data.object || !data.object.length) return;
+	getListItem (obj, obI) {
+		this._sourceFilter.addItem(obj.source);
 
-	objectsList = objectsList.concat(data.object);
-
-	let tempString = "";
-	for (; obI < objectsList.length; obI++) {
-		const obj = objectsList[obI];
-		if (ExcludeUtil.isExcluded(obj.name, "object", obj.source)) continue;
-
-		tempString += `
+		return `
 			<li class="row" ${FLTR_ID}="${obI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${obI}" href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
 					<span class="name col-8 pl-0">${obj.name}</span>
@@ -87,49 +53,43 @@ function addObjects (data) {
 			</li>
 		`;
 	}
-	const lastSearch = ListUtil.getSearchTermAndReset(list);
-	$(`#objectsList`).append(tempString);
 
-	list.reIndex();
-	if (lastSearch) list.search(lastSearch);
-	list.sort("name");
+	handleFilterChange () {
+		const f = this._filterBox.getValues();
+		this._list.filter((item) => {
+			const it = this._dataList[$(item.elm).attr(FLTR_ID)];
+			return this._filterBox.toDisplay(
+				f,
+				it.source
+			);
+		});
+		FilterBox.selectFirstVisible(this._dataList);
+	}
 
-	ListUtil.setOptions({
-		itemList: objectsList,
-		getSublistRow: getSublistItem,
-		primaryLists: [list]
-	});
-	ListUtil.bindPinButton();
-	Renderer.hover.bindPopoutButton(objectsList);
-	ListUtil.bindDownloadButton();
-	ListUtil.bindUploadButton();
-}
+	getSublistItem (obj, pinId) {
+		return `
+			<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
+				<a href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
+					<span class="name col-9 pl-0">${obj.name}</span>
+					<span class="ability col-3 pr-0">${Parser.sizeAbvToFull(obj.size)}</span>
+					<span class="id hidden">${pinId}</span>
+				</a>
+			</li>
+		`;
+	}
 
-function getSublistItem (obj, pinId) {
-	return `
-		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-			<a href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
-				<span class="name col-9 pl-0">${obj.name}</span>
-				<span class="ability col-3 pr-0">${Parser.sizeAbvToFull(obj.size)}</span>
-				<span class="id hidden">${pinId}</span>
-			</a>
-		</li>
-	`;
-}
+	doLoadHash (id) {
+		this._renderer.setFirstSection(true);
 
-const renderer = Renderer.get();
-function loadHash (jsonIndex) {
-	renderer.setFirstSection(true);
+		const obj = this._dataList[id];
 
-	const obj = objectsList[jsonIndex];
+		const renderStack = [];
 
-	const renderStack = [];
+		if (obj.entries) this._renderer.recursiveRender({entries: obj.entries}, renderStack, {depth: 2});
+		if (obj.actionEntries) this._renderer.recursiveRender({entries: obj.actionEntries}, renderStack, {depth: 2});
 
-	if (obj.entries) renderer.recursiveRender({entries: obj.entries}, renderStack, {depth: 2});
-	if (obj.actionEntries) renderer.recursiveRender({entries: obj.actionEntries}, renderStack, {depth: 2});
-
-	const $content = $(`#pagecontent`).empty();
-	$content.append(`
+		const $content = $(`#pagecontent`).empty();
+		$content.append(`
 		${Renderer.utils.getBorderTr()}
 		${Renderer.utils.getNameTr(obj)}
 		<tr class="text"><td colspan="6"><i>${obj.type !== "GEN" ? `${Parser.sizeAbvToFull(obj.size)} object` : `Variable size object`}</i><br></td></tr>
@@ -145,19 +105,24 @@ function loadHash (jsonIndex) {
 		${Renderer.utils.getBorderTr()}
 	`);
 
-	const $floatToken = $(`#float-token`).empty();
-	if (obj.tokenUrl || !obj.uniqueId) {
-		const imgLink = obj.tokenUrl || UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
-		$floatToken.append(`
+		const $floatToken = $(`#float-token`).empty();
+		if (obj.tokenUrl || !obj.uniqueId) {
+			const imgLink = obj.tokenUrl || UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
+			$floatToken.append(`
 			<a href="${imgLink}" target="_blank" rel="noopener">
 				<img src="${imgLink}" id="token_image" class="token" onerror="imgError(this)" alt="${obj.name}">
 			</a>`
-		);
-	} else imgError();
+			);
+		} else imgError();
 
-	ListUtil.updateSelected();
+		ListUtil.updateSelected();
+	}
+
+	doLoadSubHash (sub) {
+		sub = this._filterBox.setFromSubHashes(sub);
+		ListUtil.setFromSubHashes(sub);
+	}
 }
 
-function loadSubHash (sub) {
-	ListUtil.setFromSubHashes(sub);
-}
+const objecsPage = new ObjectsPage();
+window.addEventListener("load", () => objecsPage.pOnLoad());

@@ -433,134 +433,22 @@ class EncounterBuilder {
 
 		this.generateCache();
 
-		const generateClosestEncounter = () => {
-			const _xps = Object.keys(this._cache).map(it => Number(it)).sort(SortUtil.ascSort).reverse();
-			/*
-			Sorted array of:
-			{
-				cr: "1/2",
-				xp: 50,
-				crNum: 0.5
-			}
-			 */
-			const _meta = Object.entries(Parser.XP_CHART_ALT).map(([cr, xp]) => ({cr, xp, crNum: Parser.crToNumber(cr)}))
-				.sort((a, b) => SortUtil.ascSort(b.crNum, a.crNum));
-			const getXps = budget => _xps.filter(it => it <= budget);
-
-			const calcNextBudget = (encounter) => {
-				const data = encounter.map(it => ({cr: Parser.crToNumber(it.mon.cr.cr || it.mon.cr), count: it.count}));
-				if (!data.length) return budget;
-
-				const curr = EncounterBuilderUtils.calculateEncounterXp(data, xp.party.count);
-				const budgetRemaining = budget - curr.adjustedXp;
-
-				const meta = _meta.filter(it => it.xp <= budgetRemaining);
-				// if the highest CR creature has CR greater than the cutoff, adjust for next multiplier
-				if (meta.length && meta[0].crNum >= curr.meta.crCutoff) {
-					const nextMult = Parser.numMonstersToXpMult(curr.relevantCount + 1, xp.party.count);
-					return Math.floor((budget - (nextMult * curr.baseXp)) / nextMult);
-				}
-				// otherwise, no creature has CR greater than the cutoff, don't worry about multipliers
-				return budgetRemaining;
-			};
-
-			const addToEncounter = (encounter, xp) => {
-				const existing = encounter.filter(it => it.xp === xp);
-				if (existing.length && RollerUtil.roll(100) < 85) { // 85% chance to add another copy of an existing monster
-					RollerUtil.rollOnArray(existing).count++;
-				} else {
-					const rolled = RollerUtil.rollOnArray(this._cache[xp]);
-					// add to an existing group, if present
-					const existing = encounter.find(it => it.mon.source === rolled.source && it.mon.name === rolled.name);
-					if (existing) existing.count++;
-					else {
-						encounter.push({
-							xp: xp,
-							mon: rolled,
-							count: 1
-						});
-					}
-				}
-			};
-
-			let skipCount = 0;
-			const doSkip = (xps, encounter, xp) => {
-				// if there are existing entries at this XP, don't skip
-				const existing = encounter.filter(it => it.xp === xp);
-				if (existing.length) return false;
-
-				// skip 70% of the time by default, less 13% chance per item skipped
-				if (xps.length > 1) {
-					const isSkip = RollerUtil.roll(100) < (70 - (13 * skipCount));
-					if (isSkip) {
-						skipCount++;
-						const maxSkip = xps.length - 1;
-						// flip coins; so long as we get heads, keep skipping
-						for (let i = 0; i < maxSkip; ++i) {
-							if (RollerUtil.roll(2) === 0) {
-								return i;
-							}
-						}
-						return maxSkip - 1;
-					} else return 0;
-				} else return false;
-			};
-
-			const doInitialSkip = xps => {
-				// 50% of the time, skip the first 0-1/3rd of available CRs
-				if (xps.length > 4 && RollerUtil.roll(2) === 1) {
-					const skips = RollerUtil.roll(Math.ceil(xps.length / 3));
-					return xps.slice(skips);
-				} else return xps;
-			};
-
-			const doFind = (budget) => {
-				const enc = [];
-				const xps = doInitialSkip(getXps(budget));
-
-				let nextBudget = budget;
-				let skips = 0;
-				let steps = 0;
-				while (xps.length) {
-					if (steps++ > 100) break;
-
-					if (skips) {
-						skips--;
-						xps.shift();
-						continue;
-					}
-
-					const xp = xps[0];
-
-					if (xp > nextBudget) {
-						xps.shift();
-						continue;
-					}
-
-					skips = doSkip(xps, enc, xp);
-					if (skips) {
-						skips--;
-						xps.shift();
-						continue;
-					}
-
-					addToEncounter(enc, xp);
-
-					nextBudget = calcNextBudget(enc);
-				}
-
-				return enc;
-			};
-
-			return doFind(budget);
-		};
-
-		const closestSolution = generateClosestEncounter();
+		const closestSolution = (() => {
+			// If there are enough players that single-monster XP is halved, try generating a range of solutions.
+			if (xp.party.count > 5) {
+				const NUM_SAMPLES = 10; // should ideally be divisible by 2
+				const solutions = [...new Array(NUM_SAMPLES)]
+					.map((_, i) => this._pDoGenerateEncounter_generateClosestEncounter(xp, budget * ((i >= Math.floor(NUM_SAMPLES / 2)) + 1)));
+				const validSolutions = solutions.filter(it => it.adjustedXp >= (budget * 0.6) && it.adjustedXp <= (budget * 1.1));
+				if (validSolutions.length) return RollerUtil.rollOnArray(validSolutions);
+				return null;
+			} else return this._pDoGenerateEncounter_generateClosestEncounter(xp, budget);
+		})();
 
 		if (closestSolution) {
 			const toLoad = {items: []};
 			const sources = new Set();
-			closestSolution.forEach(it => {
+			closestSolution.encounter.forEach(it => {
 				toLoad.items.push({h: UrlUtil.autoEncodeHash(it.mon), c: String(it.count)});
 				sources.add(it.mon.source);
 			});
@@ -570,6 +458,133 @@ class EncounterBuilder {
 			await ListUtil.pDoSublistRemoveAll();
 			this.updateDifficulty();
 		}
+	}
+
+	_pDoGenerateEncounter_generateClosestEncounter (xp, budget) {
+		const _xps = Object.keys(this._cache).map(it => Number(it)).sort(SortUtil.ascSort).reverse();
+		/*
+		Sorted array of:
+		{
+			cr: "1/2",
+			xp: 50,
+			crNum: 0.5
+		}
+		 */
+		const _meta = Object.entries(Parser.XP_CHART_ALT).map(([cr, xp]) => ({cr, xp, crNum: Parser.crToNumber(cr)}))
+			.sort((a, b) => SortUtil.ascSort(b.crNum, a.crNum));
+		const getXps = budget => _xps.filter(it => it <= budget);
+
+		const getCurrentEncounterMeta = (encounter) => {
+			const data = encounter.map(it => ({cr: Parser.crToNumber(it.mon.cr.cr || it.mon.cr), count: it.count}));
+			return EncounterBuilderUtils.calculateEncounterXp(data, xp.party.count);
+		};
+
+		const calcNextBudget = (encounter) => {
+			if (!encounter.length) return budget;
+
+			const curr = getCurrentEncounterMeta(encounter);
+			const budgetRemaining = budget - curr.adjustedXp;
+
+			const meta = _meta.filter(it => it.xp <= budgetRemaining);
+			// if the highest CR creature has CR greater than the cutoff, adjust for next multiplier
+			if (meta.length && meta[0].crNum >= curr.meta.crCutoff) {
+				const nextMult = Parser.numMonstersToXpMult(curr.relevantCount + 1, xp.party.count);
+				return Math.floor((budget - (nextMult * curr.baseXp)) / nextMult);
+			}
+			// otherwise, no creature has CR greater than the cutoff, don't worry about multipliers
+			return budgetRemaining;
+		};
+
+		const addToEncounter = (encounter, xp) => {
+			const existing = encounter.filter(it => it.xp === xp);
+			if (existing.length && RollerUtil.roll(100) < 85) { // 85% chance to add another copy of an existing monster
+				RollerUtil.rollOnArray(existing).count++;
+			} else {
+				const rolled = RollerUtil.rollOnArray(this._cache[xp]);
+				// add to an existing group, if present
+				const existing = encounter.find(it => it.mon.source === rolled.source && it.mon.name === rolled.name);
+				if (existing) existing.count++;
+				else {
+					encounter.push({
+						xp: xp,
+						mon: rolled,
+						count: 1
+					});
+				}
+			}
+		};
+
+		let skipCount = 0;
+		const doSkip = (xps, encounter, xp) => {
+			// if there are existing entries at this XP, don't skip
+			const existing = encounter.filter(it => it.xp === xp);
+			if (existing.length) return false;
+
+			// skip 70% of the time by default, less 13% chance per item skipped
+			if (xps.length > 1) {
+				const isSkip = RollerUtil.roll(100) < (70 - (13 * skipCount));
+				if (isSkip) {
+					skipCount++;
+					const maxSkip = xps.length - 1;
+					// flip coins; so long as we get heads, keep skipping
+					for (let i = 0; i < maxSkip; ++i) {
+						if (RollerUtil.roll(2) === 0) {
+							return i;
+						}
+					}
+					return maxSkip - 1;
+				} else return 0;
+			} else return false;
+		};
+
+		const doInitialSkip = xps => {
+			// 50% of the time, skip the first 0-1/3rd of available CRs
+			if (xps.length > 4 && RollerUtil.roll(2) === 1) {
+				const skips = RollerUtil.roll(Math.ceil(xps.length / 3));
+				return xps.slice(skips);
+			} else return xps;
+		};
+
+		const doFind = (budget) => {
+			const enc = [];
+			const xps = doInitialSkip(getXps(budget));
+
+			let nextBudget = budget;
+			let skips = 0;
+			let steps = 0;
+			while (xps.length) {
+				if (steps++ > 100) break;
+
+				if (skips) {
+					skips--;
+					xps.shift();
+					continue;
+				}
+
+				const xp = xps[0];
+
+				if (xp > nextBudget) {
+					xps.shift();
+					continue;
+				}
+
+				skips = doSkip(xps, enc, xp);
+				if (skips) {
+					skips--;
+					xps.shift();
+					continue;
+				}
+
+				addToEncounter(enc, xp);
+
+				nextBudget = calcNextBudget(enc);
+			}
+
+			return enc;
+		};
+
+		const encounter = doFind(budget);
+		return {encounter, adjustedXp: getCurrentEncounterMeta(encounter).adjustedXp};
 	}
 
 	_loadSublist (toLoad) {
@@ -1005,7 +1020,7 @@ class EncounterBuilder {
 
 	static getButtons (monId, isSublist) {
 		return `
-			<span class="ecgen__visible ${isSublist ? "col-1-5" : "col-1"} no-wrap pl-0" onclick="event.preventDefault()">
+			<span class="ecgen__visible ${isSublist ? "col-1-5" : "col-1"} no-wrap pl-0" onclick="event.preventDefault(); event.stopPropagation()">
 				<button title="Add (SHIFT for 5)" class="btn btn-success btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 1${isSublist ? `, this` : ""})">
 					<span class="glyphicon glyphicon-plus"></span>
 				</button>

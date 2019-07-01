@@ -541,13 +541,13 @@
 						if (f._) f = f._; // if a previous loop modified it
 
 						// normalise to "true name" format
-						// e.g. {@item +1 chain mail} -> {@item chain mail +1|dmg|+1 chain mail}
+						// e.g. {@item +1 chain mail} -> {@item chain mail +1||+1 chain mail}
 						const pre = /@item (\+\d+)([^+\d}]+)/gi.exec(f);
 						if (pre) {
 							const [_, bonus, name, rest] = pre.map(it => it.trim());
 							const restSpl = (rest || "").split("|");
 							const restPart = restSpl.length > 1 ? restSpl.last() : null;
-							f = `{@item ${name} ${bonus}|dmg|${restPart || `${bonus} ${name}`}}`;
+							f = `{@item ${name} ${bonus}||${restPart || `${bonus} ${name}`}}`;
 						}
 
 						const m = /@item ([^+\d]+)(\+\d+)\|([^|}]+)/gi.exec(f); // e.g. {@item chain mail +1|dmg|+1 chain mail}

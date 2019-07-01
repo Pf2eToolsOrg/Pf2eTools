@@ -8,8 +8,8 @@ class BackgroundPage extends ListPage {
 		const languageFilter = new Filter({header: "Language Proficiencies", displayFn: StrUtil.toTitleCase});
 
 		super({
-			urlData: "data/backgrounds.json",
-			urlFluff: "data/fluff-backgrounds.json",
+			dataSource: "data/backgrounds.json",
+			dataSourceFluff: "data/fluff-backgrounds.json",
 
 			filters: [
 				sourceFilter,
@@ -25,7 +25,7 @@ class BackgroundPage extends ListPage {
 			sublistValueNames: ["name", "skills", "id"],
 			sublistClass: "subbackgrounds",
 
-			dataProp: "background"
+			dataProps: ["background"]
 		});
 
 		this._sourceFilter = sourceFilter;
@@ -110,7 +110,7 @@ class BackgroundPage extends ListPage {
 				$pgContent,
 				bg,
 				(fluffJson) => bg.fluff || fluffJson.background.find(it => it.name === bg.name && it.source === bg.source),
-				this._urlFluff,
+				this._dataSourcefluff,
 				() => true
 			);
 		};
@@ -143,7 +143,4 @@ class BackgroundPage extends ListPage {
 }
 
 const backgroundsPage = new BackgroundPage();
-
-window.onload = function load () {
-	backgroundsPage.pOnLoad();
-};
+window.addEventListener("load", () => backgroundsPage.pOnLoad());

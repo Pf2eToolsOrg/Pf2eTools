@@ -44,29 +44,6 @@ const TAG_TO_PAGE = {
 	"variantrule": UrlUtil.PG_VARIATNRULES
 };
 
-const TAG_TO_DEFAULT_SOURCE = {
-	"spell": "phb",
-	"item": "dmg",
-	"class": "phb",
-	"creature": "mm",
-	"condition": "phb",
-	"disease": "dmg",
-	"background": "phb",
-	"race": "phb",
-	"optfeature": "phb",
-	"reward": "dmg",
-	"feat": "phb",
-	"psionic": "UATheMysticClass",
-	"object": "dmg",
-	"cult": "mtf",
-	"boon": "mtf",
-	"trap": "dmg",
-	"hazard": "dmg",
-	"deity": "phb",
-	"variantrule": "dmg",
-	"ship": "NONE"
-};
-
 const VALID_SKILLS = new Set([
 	"Acrobatics",
 	"Animal Handling",
@@ -148,9 +125,9 @@ class LinkCheck {
 			if (tag === "deity") {
 				toEncode.push();
 				toEncode.push(match[4] || "forgotten realms");
-				toEncode.push(match[6] || TAG_TO_DEFAULT_SOURCE[tag]);
+				toEncode.push(match[6] || ut.TAG_TO_DEFAULT_SOURCE[tag]);
 			} else {
-				toEncode.push(match[4] || TAG_TO_DEFAULT_SOURCE[tag]);
+				toEncode.push(match[4] || ut.TAG_TO_DEFAULT_SOURCE[tag]);
 			}
 
 			const url = `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash(toEncode)}`.toLowerCase().trim()
@@ -183,7 +160,7 @@ class AttachedSpellAndGroupItemsCheck {
 	static run () {
 		function getEncoded (str, tag) {
 			const [name, source] = str.split("|");
-			return `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash([name, source || TAG_TO_DEFAULT_SOURCE[tag]])}`.toLowerCase().trim();
+			return `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash([name, source || ut.TAG_TO_DEFAULT_SOURCE[tag]])}`.toLowerCase().trim();
 		}
 
 		function checkRoot (file, root, name, source) {

@@ -489,6 +489,7 @@ class CreatureBuilder extends Builder {
 		this.__$getAlignmentInput(cb).appendTo(infoTab.$wrpTab);
 		this.__$getCrInput(cb).appendTo(infoTab.$wrpTab);
 		this.__$getProfBonusInput(cb).appendTo(infoTab.$wrpTab);
+		BuilderUi.$getStateIptNumber("Level", cb, this._stateProxy, {title: "Used for Sidekicks only"}, "level").appendTo(infoTab.$wrpTab);
 
 		// RACE
 		BuilderUi.$getStateIptEnum("Size", cb, this._stateProxy, {vals: Parser.SIZE_ABVS, fnDisplay: Parser.sizeAbvToFull, type: "string", nullable: false}, "size").appendTo(raceTab.$wrpTab);
@@ -730,9 +731,9 @@ class CreatureBuilder extends Builder {
 
 		const doUpdateState = () => {
 			const raw = alignmentRows.map(row => row.getAlignment());
-			if (raw.some(it => it.special != null || it.alignment) || raw.length > 1) {
+			if (raw.some(it => it && (it.special != null || it.alignment !== undefined)) || raw.length > 1) {
 				this._stateProxy.alignment = raw.map(it => {
-					if (it.special != null || it.alignment) return it;
+					if (it && (it.special != null || it.alignment)) return it;
 					else return {alignment: it};
 				})
 			} else this._stateProxy.alignment = raw[0];
@@ -743,7 +744,7 @@ class CreatureBuilder extends Builder {
 
 		const $wrpRows = $(`<div/>`).appendTo($rowInner);
 
-		if (this._stateProxy.alignment.some(it => it.special != null || it.alignment) || !~CreatureBuilder.__$getAlignmentInput__getAlignmentIx(this._stateProxy.alignment)) {
+		if ((this._stateProxy.alignment && this._stateProxy.alignment.some(it => it && (it.special != null || it.alignment !== undefined))) || !~CreatureBuilder.__$getAlignmentInput__getAlignmentIx(this._stateProxy.alignment)) {
 			this._stateProxy.alignment.forEach(alignment => CreatureBuilder.__$getAlignmentInput__getAlignmentRow(doUpdateState, alignmentRows, alignment).$wrp.appendTo($wrpRows));
 		} else {
 			CreatureBuilder.__$getAlignmentInput__getAlignmentRow(doUpdateState, alignmentRows, this._stateProxy.alignment).$wrp.appendTo($wrpRows)
@@ -761,7 +762,7 @@ class CreatureBuilder extends Builder {
 	}
 
 	static __$getAlignmentInput__getAlignmentRow (doUpdateState, alignmentRows, alignment) {
-		const initialMode = alignment && alignment.chance ? "1" : alignment && alignment.special ? "2" : "0";
+		const initialMode = alignment && alignment.chance ? "1" : alignment && alignment.special ? "2" : (alignment === null || (alignment && alignment.alignment === null)) ? "3" : "0";
 
 		const getAlignment = () => {
 			switch ($selMode.val()) {
@@ -778,6 +779,9 @@ class CreatureBuilder extends Builder {
 					const specials = $iptSpecial.val().trim().split(",").map(it => it.trim()).filter(Boolean);
 					return specials.length ? specials.map(it => ({special: it})) : {special: ""};
 				}
+				case "3": {
+					return null;
+				}
 			}
 		};
 
@@ -785,6 +789,7 @@ class CreatureBuilder extends Builder {
 				<option value="0">Basic Alignment</option>
 				<option value="1">Chance-Based Alignment</option>
 				<option value="2">Special Alignment</option>
+				<option value="3">No Alignment (Sidekick)</option>
 			</select>`).val(initialMode).change(() => {
 			switch ($selMode.val()) {
 				case "0": {
@@ -799,6 +804,11 @@ class CreatureBuilder extends Builder {
 				}
 				case "2": {
 					$stageSingle.hide(); $stageMultiple.hide(); $stageSpecial.show();
+					doUpdateState();
+					break;
+				}
+				case "3": {
+					$stageSingle.hide(); $stageMultiple.hide(); $stageSpecial.hide();
 					doUpdateState();
 					break;
 				}

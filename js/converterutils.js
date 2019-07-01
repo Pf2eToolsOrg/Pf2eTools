@@ -181,28 +181,28 @@ class AcConvert {
 
 						// TODO general auto-detect for enchanted versions of items
 						case "+3 plate armor":
-							from.push("{@item plate armor +3|dmg|+3 plate armor}");
+							from.push("{@item plate armor +3||+3 plate armor}");
 							break;
 						case "half plate armor +1":
-							from.push("{@item half plate armor +1|dmg|+1 half-plate armor}");
+							from.push("{@item half plate armor +1||+1 half-plate armor}");
 							break;
 						case "scale mail +1":
-							from.push("{@item scale mail +1|dmg|+1 scale mail}");
+							from.push("{@item scale mail +1||+1 scale mail}");
 							break;
 						case "scale mail +2":
-							from.push("{@item scale mail +2|dmg|+2 scale mail}");
+							from.push("{@item scale mail +2||+2 scale mail}");
 							break;
 						case "splint mail +2":
-							from.push("{@item splint armor +2|dmg|+2 splint armor}");
+							from.push("{@item splint armor +2||+2 splint armor}");
 							break;
 						case "studded leather armor +1":
-							from.push("{@item studded leather armor +1|dmg|+1 studded leather armor}");
+							from.push("{@item studded leather armor +1||+1 studded leather armor}");
 							break;
 						case "+2 leather armor":
-							from.push("{@item leather armor +2|dmg|+2 leather armor}");
+							from.push("{@item leather armor +2||+2 leather armor}");
 							break;
 						case "+3 leather armor":
-							from.push("{@item leather armor +3|dmg|+3 leather armor}");
+							from.push("{@item leather armor +3||+3 leather armor}");
 							break;
 
 						default: {

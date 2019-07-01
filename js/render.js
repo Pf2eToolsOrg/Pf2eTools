@@ -3358,7 +3358,7 @@ Renderer.monster = {
 
 		renderStack.push(`
 			${Renderer.utils.getNameTr(mon, {isAddPageNum: true})}
-			<tr><td colspan="6"><i>${Parser.sizeAbvToFull(mon.size)}, ${Parser.monTypeToFullObj(mon.type).asText}, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}</i></td></tr>
+			<tr><td colspan="6"><i>${mon.level ? `${Parser.levelToFull(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${Parser.monTypeToFullObj(mon.type).asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}` : ""}</i></td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
 				<table class="summary-noback" style="position: relative;">
@@ -4438,7 +4438,7 @@ Renderer.ship = {
 						<th class="col-2 text-center">INT</th>
 						<th class="col-2 text-center">WIS</th>
 						<th class="col-2 text-center">CHA</th>
-					</tr>	
+					</tr>
 					<tr>
 						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "str")}</td>
 						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "dex")}</td>
@@ -4859,8 +4859,8 @@ Renderer.hover = {
 				"animation": "initial"
 			});
 			drag.type = type;
-			drag.startX = Renderer.hover._getClientX(evt);
-			drag.startY = Renderer.hover._getClientY(evt);
+			drag.startX = EventUtil.getClientX(evt);
+			drag.startY = EventUtil.getClientY(evt);
 			drag.baseTop = parseFloat($hov.css("top"));
 			drag.baseLeft = parseFloat($hov.css("left"));
 			drag.baseHeight = $wrpStats.height();
@@ -4919,40 +4919,40 @@ Renderer.hover = {
 		const resizeId = `resize.${hoverId}`;
 
 		function isOverHoverTarget (evt, target) {
-			return Renderer.hover._getClientX(evt) >= target.left &&
-				Renderer.hover._getClientX(evt) <= target.left + target.width &&
-				Renderer.hover._getClientY(evt) >= target.top &&
-				Renderer.hover._getClientY(evt) <= target.top + target.height;
+			return EventUtil.getClientX(evt) >= target.left &&
+				EventUtil.getClientX(evt) <= target.left + target.width &&
+				EventUtil.getClientY(evt) >= target.top &&
+				EventUtil.getClientY(evt) <= target.top + target.height;
 		}
 
 		function handleNorthDrag (evt) {
-			const diffY = Math.max(drag.startY - Renderer.hover._getClientY(evt), 80 - drag.baseHeight); // prevent <80 height, as this will cause the box to move downwards
+			const diffY = Math.max(drag.startY - EventUtil.getClientY(evt), 80 - drag.baseHeight); // prevent <80 height, as this will cause the box to move downwards
 			$wrpStats.css("height", drag.baseHeight + diffY);
 			$hov.css("top", drag.baseTop - diffY);
-			drag.startY = Renderer.hover._getClientY(evt);
+			drag.startY = EventUtil.getClientY(evt);
 			drag.baseHeight = $wrpStats.height();
 			drag.baseTop = parseFloat($hov.css("top"));
 		}
 
 		function handleEastDrag (evt) {
-			const diffX = drag.startX - Renderer.hover._getClientX(evt);
+			const diffX = drag.startX - EventUtil.getClientX(evt);
 			$hov.css("width", drag.baseWidth - diffX);
-			drag.startX = Renderer.hover._getClientX(evt);
+			drag.startX = EventUtil.getClientX(evt);
 			drag.baseWidth = $hov.width();
 		}
 
 		function handleSouthDrag (evt) {
-			const diffY = drag.startY - Renderer.hover._getClientY(evt);
+			const diffY = drag.startY - EventUtil.getClientY(evt);
 			$wrpStats.css("height", drag.baseHeight - diffY);
-			drag.startY = Renderer.hover._getClientY(evt);
+			drag.startY = EventUtil.getClientY(evt);
 			drag.baseHeight = $wrpStats.height();
 		}
 
 		function handleWestDrag (evt) {
-			const diffX = Math.max(drag.startX - Renderer.hover._getClientX(evt), 150 - drag.baseWidth);
+			const diffX = Math.max(drag.startX - EventUtil.getClientX(evt), 150 - drag.baseWidth);
 			$hov.css("width", drag.baseWidth + diffX)
 				.css("left", drag.baseLeft - diffX);
-			drag.startX = Renderer.hover._getClientX(evt);
+			drag.startX = EventUtil.getClientX(evt);
 			drag.baseWidth = $hov.width();
 			drag.baseLeft = parseFloat($hov.css("left"));
 		}
@@ -4977,7 +4977,7 @@ Renderer.hover = {
 
 						// handle DM screen integration
 						if (this._dmScreen) {
-							const panel = this._dmScreen.getPanelPx(Renderer.hover._getClientX(evt), Renderer.hover._getClientY(evt));
+							const panel = this._dmScreen.getPanelPx(EventUtil.getClientX(evt), EventUtil.getClientY(evt));
 							if (!panel) return;
 							this._dmScreen.setHoveringPanel(panel);
 							const target = panel.getAddButtonPos();
@@ -5004,18 +5004,18 @@ Renderer.hover = {
 					case 7: handleNorthDrag(evt); handleWestDrag(evt); break;
 					case 8: handleNorthDrag(evt); break;
 					case 9: {
-						const diffX = drag.startX - Renderer.hover._getClientX(evt);
-						const diffY = drag.startY - Renderer.hover._getClientY(evt);
+						const diffX = drag.startX - EventUtil.getClientX(evt);
+						const diffY = drag.startY - EventUtil.getClientY(evt);
 						$hov.css("left", drag.baseLeft - diffX)
 							.css("top", drag.baseTop - diffY);
-						drag.startX = Renderer.hover._getClientX(evt);
-						drag.startY = Renderer.hover._getClientY(evt);
+						drag.startX = EventUtil.getClientX(evt);
+						drag.startY = EventUtil.getClientY(evt);
 						drag.baseTop = parseFloat($hov.css("top"));
 						drag.baseLeft = parseFloat($hov.css("left"));
 
 						// handle DM screen integration
 						if (this._dmScreen) {
-							const panel = this._dmScreen.getPanelPx(Renderer.hover._getClientX(evt), Renderer.hover._getClientY(evt));
+							const panel = this._dmScreen.getPanelPx(EventUtil.getClientX(evt), EventUtil.getClientY(evt));
 							if (!panel) return;
 							this._dmScreen.setHoveringPanel(panel);
 							const target = panel.getAddButtonPos();
@@ -5309,7 +5309,7 @@ Renderer.hover = {
 			cSource: source,
 			cHash: hash,
 			permanent: evt.shiftKey,
-			clientX: Renderer.hover._getClientX(evt),
+			clientX: EventUtil.getClientX(evt),
 			isBookContent
 		};
 
@@ -5784,7 +5784,7 @@ Renderer.dice = {
 						${cbMessage ? `<span class="message">${cbMessage(result)}</span>` : ""}
 					</div>
 					<div class="out-roll-item-button-wrp">
-						<button title="Copy to input" class="btn btn-xs btn-copy-roll" onclick="Renderer.dice._$iptRoll.val('${tree._asString.replace(/\s+/g, "")}')"><span class="glyphicon glyphicon-pencil"></span></button>
+						<button title="Copy to input" class="btn btn-default btn-xs btn-copy-roll" onclick="Renderer.dice._$iptRoll.val('${tree._asString.replace(/\s+/g, "")}'); Renderer.dice._$iptRoll.focus()"><span class="glyphicon glyphicon-pencil"></span></button>
 					</div>
 				</div>`);
 

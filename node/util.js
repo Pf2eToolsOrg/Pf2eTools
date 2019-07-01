@@ -137,10 +137,34 @@ function listFiles (opts) {
 	}, []);
 }
 
+const TAG_TO_DEFAULT_SOURCE = {
+	"spell": "phb",
+	"item": "dmg",
+	"class": "phb",
+	"creature": "mm",
+	"condition": "phb",
+	"disease": "dmg",
+	"background": "phb",
+	"race": "phb",
+	"optfeature": "phb",
+	"reward": "dmg",
+	"feat": "phb",
+	"psionic": "UATheMysticClass",
+	"object": "dmg",
+	"cult": "mtf",
+	"boon": "mtf",
+	"trap": "dmg",
+	"hazard": "dmg",
+	"deity": "phb",
+	"variantrule": "dmg",
+	"ship": "gos"
+};
+
 module.exports = {
 	dataRecurse,
 	getCleanStringJson: getCleanJson,
 	readJson,
 	listFiles,
-	FILE_PREFIX_BLACKLIST
+	FILE_PREFIX_BLACKLIST,
+	TAG_TO_DEFAULT_SOURCE
 };

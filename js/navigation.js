@@ -84,12 +84,12 @@ class NavBar {
 		addLi(ulAdventures, "adventure.html", "Waterdeep: Dungeon of the Mad Mage", {isSide: true, aHash: "WDMM"});
 		addLi(ulAdventures, "adventure.html", "Krenko's Way", {isSide: true, aHash: "KKW"});
 		addLi(ulAdventures, "adventure.html", "Ghosts of Saltmarsh", {isSide: true, aHash: "GoS"});
-		addLi(ulAdventures, "adventure.html", "The Orrery of the Wanderer", {isSide: true, aHash: "AI"});
+		addLi(ulAdventures, "adventure.html", "The Orrery of the Wanderer", {isSide: true, aHash: "OoW"});
+		addLi(ulAdventures, "adventure.html", "Dragon of Icespire Peak", {isSide: true, aHash: "DIP"});
 		addDivider(ulAdventures);
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
 		addLi(ulDms, "cultsboons.html", "Cults & Demonic Boons");
 		addLi(ulDms, "objects.html", "Objects");
-		addLi(ulDms, "ships.html", "Ships");
 		addLi(ulDms, "trapshazards.html", "Traps & Hazards");
 		addDivider(ulDms);
 		addLi(ulDms, "crcalculator.html", "CR Calculator");
@@ -104,6 +104,7 @@ class NavBar {
 		addLi(ulReferences, "optionalfeatures.html", "Other Options and Features");
 		addLi(ulReferences, "rewards.html", "Other Rewards");
 		addLi(ulReferences, "psionics.html", "Psionics");
+		addLi(ulReferences, "ships.html", "Vehicles");
 		addLi(ulReferences, "spells.html", "Spells");
 
 		const ulUtils = addDropdown(navBar, "Utilities");
@@ -180,7 +181,10 @@ class NavBar {
 			li.setAttribute("role", "presentation");
 			li.setAttribute("id", aText.toLowerCase().replace(/\s+/g, ""));
 			li.setAttribute("data-page", `${aHref}${hashPart}`);
-			if (opts.isRoot) li.classList.add("page__nav-hidden-mobile");
+			if (opts.isRoot) {
+				li.classList.add("page__nav-hidden-mobile");
+				li.classList.add("page__btn-nav-root");
+			}
 			if (opts.isSide) {
 				li.onmouseenter = function () { NavBar.handleSideItemMouseEnter(this) }
 			} else {
@@ -213,7 +217,7 @@ class NavBar {
 		function addDropdown (appendTo, text, isSide = false) {
 			const li = document.createElement("li");
 			li.setAttribute("role", "presentation");
-			li.className = "dropdown dropdown--navbar page__nav-hidden-mobile";
+			li.className = `dropdown dropdown--navbar page__nav-hidden-mobile ${isSide ? "" : "page__btn-nav-root"}`;
 			if (isSide) {
 				li.onmouseenter = function () { NavBar.handleSideItemMouseEnter(this); };
 			} else {

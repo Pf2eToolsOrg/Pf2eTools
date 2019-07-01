@@ -413,7 +413,7 @@ class ShapedConverter {
 		output.name = monster.name;
 		output.size = Parser.sizeAbvToFull(monster.size);
 		output.type = Parser.monTypeToFullObj(monster.type).asText.replace(/^[a-z]/, (char) => char.toLocaleUpperCase());
-		output.alignment = Parser.alignmentListToFull(monster.alignment).toLowerCase();
+		output.alignment = monster.alignment ? Parser.alignmentListToFull(monster.alignment).toLowerCase() : "Unknown";
 		output.AC = this.processAC(monster.ac);
 		this.processHP(monster, output);
 		output.speed = Parser.getSpeedString(monster);

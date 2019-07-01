@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.10.3",
+	"version": "1.11.0",
 	"title": "Bestiary Schema",
 	"$id": "bestiary.json",
 	"type": "object",
@@ -189,6 +189,10 @@
 				"group": {
 					"description": "A group name, indexed by search. E.g. searching \"Lycanthrope\" would otherwise fail to find anything",
 					"type": "string"
+				},
+				"level": {
+					"description": "Used in sidekicks, which can have levels (and generally do not have alignment)",
+					"type": "integer"
 				},
 				"size": {
 					"type": "string",
@@ -1240,7 +1244,31 @@
 		"creature": {
 			"anyOf": [
 				{
-					"$ref": "#/definitions/creatureData"
+					"type": "object",
+					"$$merge": [
+						{
+							"$ref": "#/definitions/creatureData"
+						},
+						{
+							"required": [
+								"name",
+								"size",
+								"type",
+								"source",
+								"ac",
+								"hp",
+								"speed",
+								"str",
+								"dex",
+								"con",
+								"int",
+								"wis",
+								"cha",
+								"passive",
+								"cr"
+							]
+						}
+					]
 				},
 				{
 					"type": "object",
@@ -1288,7 +1316,10 @@
 									},
 									"required": ["name", "source"]
 								}
-							}
+							},
+							"required": [
+								"_copy"
+							]
 						}
 					]
 				}

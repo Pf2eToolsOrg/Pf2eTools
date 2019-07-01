@@ -10,7 +10,7 @@ class FeatsPage extends ListPage {
 		});
 
 		super({
-			urlData: "data/feats.json",
+			dataSource: "data/feats.json",
 
 			filters: [
 				sourceFilter,
@@ -25,12 +25,10 @@ class FeatsPage extends ListPage {
 			sublistValueNames: ["name", "ability", "prerequisite", "id"],
 			sublistClass: "subfeats",
 
-			dataProp: "feat"
+			dataProps: ["feat"]
 		});
 
 		this._sourceFilter = sourceFilter;
-		this._asiFilter = asiFilter;
-		this._prereqFilter = prereqFilter;
 	}
 
 	getListItem (feat, ftI) {
@@ -123,7 +121,4 @@ class FeatsPage extends ListPage {
 }
 
 const featsPage = new FeatsPage();
-
-window.onload = function load () {
-	featsPage.pOnLoad();
-};
+window.addEventListener("load", () => featsPage.pOnLoad());

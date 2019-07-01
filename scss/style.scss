@@ -15,12 +15,11 @@
 		display: inline;
 
 		&::after {
+			color: #e0e0e0;
 			content: '.';
 		}
 
-		&--home::after {
-			color: #e0e0e0;
-
+		&--home {
 			span {
 				color: #e0e0e0;
 			}
@@ -2368,8 +2367,14 @@ tr.printbook-bestiary > td {
 
 	.book-mode-active .book-mode {
 		position: relative;
+		top: unset;
+		right: unset;
+		bottom: unset;
+		left: unset;
+		display: block;
 
 		.stats-book--large {
+			margin: 0 !important;
 			max-height: initial !important;
 			overflow-y: visible !important;
 
@@ -2398,6 +2403,13 @@ tr.printbook-bestiary > td {
 	.spellbook-level > td {
 		column-count: auto !important;
 		width: 100% !important;
+		column-gap: 0 !important;
+		padding: 0 !important;
+
+		// have the name rows be full-width, to force the table to be full-width
+		> table > tbody > tr > th {
+			width: 100vw;
+		}
 	}
 
 	.printbook-bestiary-entry,
@@ -3071,7 +3083,7 @@ input[type=checkbox].readonly {
 		}
 
 		&__name {
-			width: 33.33333333%;
+			width: 26.66666666%;
 		}
 
 		&__name--sub {
