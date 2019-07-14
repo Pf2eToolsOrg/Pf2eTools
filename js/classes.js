@@ -1193,7 +1193,7 @@ class ClassBookView {
 
 		// main panel
 		const $pnlContent = $(`<div class="pnl-content"/>`);
-		const $bkTbl = $(`<table class="stats stats-book stats-book--large"/>`);
+		const $bkTbl = $(`<table class="stats stats--book stats--book-large"/>`);
 		ClassBookView._$bkTbl = $bkTbl;
 		const $brdTop = $(`<tr><th class="border close-border" colspan="6"><div/></th></tr>`);
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)

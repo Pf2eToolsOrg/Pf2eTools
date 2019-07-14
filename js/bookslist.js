@@ -80,7 +80,7 @@ class BooksList {
 			tempString +=
 				`<li ${FLTR_ID}="${this.dataIx}">
 				<a href="${this.rootPage}#${UrlUtil.encodeForHash(it.id)}" title="${it.name}" class="book-name">
-					<span class="full-width">
+					<span class="w-100">
 						${this.rowBuilderFn(it)}
 					</span>
 					<span class="showhide" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>

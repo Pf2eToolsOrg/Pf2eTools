@@ -19,7 +19,7 @@ const PANEL_TYP_RULES = 4;
 const PANEL_TYP_INITIATIVE_TRACKER = 5;
 const PANEL_TYP_UNIT_CONVERTER = 6;
 const PANEL_TYP_CREATURE_SCALED_CR = 7;
-const PANEL_TYP_SUNDIAL = 8;
+const PANEL_TYP_TIME_TRACKER = 8;
 const PANEL_TYP_MONEY_CONVERTER = 9;
 const PANEL_TYP_TUBE = 10;
 const PANEL_TYP_TWITCH = 11;
@@ -29,6 +29,16 @@ const PANEL_TYP_BOOKS = 14;
 const PANEL_TYP_INITIATIVE_TRACKER_PLAYER = 15;
 const PANEL_TYP_IMAGE = 20;
 const PANEL_TYP_GENERIC_EMBED = 90;
+
+const TIME_TRACKER_MOON_SPRITE = new Image();
+const TIME_TRACKER_MOON_SPRITE_LOADER = new Promise(resolve => {
+	TIME_TRACKER_MOON_SPRITE.onload = resolve;
+	TIME_TRACKER_MOON_SPRITE.onerror = () => {
+		TIME_TRACKER_MOON_SPRITE.hasError = true;
+		resolve();
+	};
+});
+TIME_TRACKER_MOON_SPRITE.src = "img/dmscreen/moon.png";
 
 class Board {
 	constructor () {
@@ -171,7 +181,7 @@ class Board {
 		this.doAdjust$creenCss();
 		this.doShowLoading();
 
-		await this.pLoadIndex();
+		await Promise.all([TIME_TRACKER_MOON_SPRITE_LOADER, this.pLoadIndex()]);
 		if (this.hasSavedStateUrl()) {
 			this.doLoadUrlState();
 		} else if (await this.pHasSavedState()) {
@@ -781,8 +791,8 @@ class Panel {
 					p.doPopulate_MoneyConverter(saved.s, saved.r);
 					handleTabRenamed(p);
 					return p;
-				case PANEL_TYP_SUNDIAL:
-					p.doPopulate_Sundial(saved.s, saved.r);
+				case PANEL_TYP_TIME_TRACKER:
+					p.doPopulate_TimeTracker(saved.s, saved.r);
 					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_TUBE:
@@ -919,10 +929,10 @@ class Panel {
 		$contentStats.off("click", ".mon__btn-scale-cr").on("click", ".mon__btn-scale-cr", function (evt) {
 			evt.stopPropagation();
 			const $this = $(this);
-			const lastCr = self.contentMeta.cr != null ? Parser.numberToCr(self.contentMeta.cr) : mon.cr.cr || mon.cr;
+			const lastCr = self.contentMeta.cr != null ? Parser.numberToCr(self.contentMeta.cr) : mon.cr ? (mon.cr.cr || mon.cr) : null;
 
 			Renderer.monster.getCrScaleTarget($this, lastCr, (targetCr) => {
-				const originalCr = Parser.crToNumber(mon.cr.cr || mon.cr) === targetCr;
+				const originalCr = Parser.crToNumber(mon.cr) === targetCr;
 
 				const doRender = (toRender) => {
 					$contentStats.empty().append(Renderer.monster.getCompactRenderedString(toRender, null, {showScaler: true, isScaled: !originalCr}));
@@ -1115,12 +1125,12 @@ class Panel {
 		);
 	}
 
-	doPopulate_Sundial (state = {}, title) {
+	doPopulate_TimeTracker (state = {}, title) {
 		this.set$ContentTab(
-			PANEL_TYP_SUNDIAL,
+			PANEL_TYP_TIME_TRACKER,
 			state,
-			$(`<div class="panel-content-wrapper-inner"/>`).append(Sundial.make$Sundail(this.board, state)),
-			title || "Sundial",
+			$(`<div class="panel-content-wrapper-inner"/>`).append(TimeTracker.$getTracker(this.board, state)),
+			title || "Time Tracker",
 			true
 		);
 	}
@@ -1610,7 +1620,7 @@ class Panel {
 			this.$pnlWrpContent.children().detach();
 			this.$pnlWrpContent.append(this.$btnAdd);
 		} else {
-			this.$pnlWrpContent.find(`.panel-add`).remove(); // clean up any "add panel" wrappers
+			this.$btnAdd.detach(); // preserve the "add panel" controls so we can re-attach them later if the panel empties
 			this.$pnlWrpContent.find(`.ui-search__message.loading-spinner`).remove(); // clean up any temp "loading" panels
 			this.$pnlWrpContent.children().addClass("dms__tab_hidden");
 			$content.removeClass("dms__tab_hidden");
@@ -1895,11 +1905,11 @@ class Panel {
 						s: $content.find(`.dm_money`).data("getState")()
 					};
 				}
-				case PANEL_TYP_SUNDIAL: {
+				case PANEL_TYP_TIME_TRACKER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm_sundial`).data("getState")()
+						s: $content.find(`.dm-time__root`).data("getState")()
 					};
 				}
 				case PANEL_TYP_TUBE:
@@ -2592,17 +2602,14 @@ class AddMenuSpecialTab extends AddMenuTab {
 				this.menu.doClose();
 			});
 
-			// TODO enable this
-			/*
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
-			const $wrpSundial = $(`<div class="ui-modal__row"><span>In-Game Clock</span></div>`).appendTo($tab);
-			const $btnSundial = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpSundial);
-			$btnSundial.on("click", () => {
-				this.menu.pnl.doPopulate_Sundial();
+			const $wrpTimeTracker = $(`<div class="ui-modal__row"><span>In-Game Clock/Calendar</span></div>`).appendTo($tab);
+			const $btnTimeTracker = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpTimeTracker);
+			$btnTimeTracker.on("click", () => {
+				this.menu.pnl.doPopulate_TimeTracker();
 				this.menu.doClose();
 			});
-			*/
 
 			this.$tab = $tab;
 		}
@@ -3133,20 +3140,6 @@ class UnitConverterUnit {
 	}
 }
 
-// TODO
-// a simple time keeping tool
-class Sundial {
-	static make$Sundail (board, state) {
-		const $wrpConverter = $(`<div class="dm_sundial"/>`);
-
-		$wrpConverter.data("getState", () => {
-			return {};
-		});
-
-		return $wrpConverter;
-	}
-}
-
 class AdventureOrBookView {
 	constructor (type, panel, loader, tabIx, state) {
 		this._type = type;
@@ -3170,12 +3163,12 @@ class AdventureOrBookView {
 		const $btnNext = $(`<button class="btn btn-xs btn-default" title="Next Chapter"><span class="glyphicon glyphicon-chevron-right"/></button>`)
 			.click(() => this._handleButtonClick(1));
 
-		this._$wrpContent = $(`<div class="full-height"/>`);
-		this._$wrpContentOuter = $$`<div class="full-height dm-book__wrp-content">
-			<table class="stats stats-book stats-book--hover"><tr class="text"><td colspan="6">${this._$wrpContent}</td></tr></table>
+		this._$wrpContent = $(`<div class="h-100"/>`);
+		this._$wrpContentOuter = $$`<div class="h-100 dm-book__wrp-content">
+			<table class="stats stats--book stats--book-hover"><tr class="text"><td colspan="6">${this._$wrpContent}</td></tr></table>
 		</div>`;
 
-		const $wrp = $$`<div class="flex-col full-height">
+		const $wrp = $$`<div class="flex-col h-100">
 		${this._$wrpContentOuter}
 		<div class="flex no-shrink dm-book__wrp-controls">${this._$titlePrev}${$btnPrev}${$btnNext}${this._$titleNext}</div>
 		</div>`;

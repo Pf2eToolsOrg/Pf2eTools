@@ -317,7 +317,7 @@ class BuilderUi {
 
 		const eleType = options.eleType || "div";
 
-		const $rowInner = $(`<div class="${options.isRow ? "flex" : "flex-col"} full-width"/>`);
+		const $rowInner = $(`<div class="${options.isRow ? "flex" : "flex-col"} w-100"/>`);
 		const $row = $$`<div class="mb-2 mkbru__row stripe-even"><${eleType} class="mkbru__wrp-row flex-v-center"><span class="mr-2 mkbru__row-name ${options.isMarked ? `mkbru__row-name--marked` : ""}">${name}</span>${options.isMarked ? `<div class="mkbru__row-mark mr-2"/>` : ""}${$rowInner}</${eleType}></div>`;
 		return [$row, $rowInner];
 	}
@@ -352,11 +352,11 @@ class BuilderUi {
 		if (options.nullable == null) options.nullable = true;
 
 		const initialState = MiscUtil.getProperty(state, ...path);
-		const $ipt = $(`<textarea class="form-control form-control--minimal mkbru__ipt-textarea" ${options.placeholder ? `placeholder="${options.placeholder}"` : ""}/>`)
-			.val(BuilderUi.getEntriesAsText(initialState))
+		const $ipt = $(`<textarea class="form-control form-control--minimal resize-vertical" ${options.placeholder ? `placeholder="${options.placeholder}"` : ""}/>`)
+			.val(UiUtil.getEntriesAsText(initialState))
 			.change(() => {
 				const raw = $ipt.val().trim();
-				BuilderUi.__setProp(raw || !options.nullable ? BuilderUi.getTextAsEntries(raw) : null, options, state, ...path);
+				BuilderUi.__setProp(raw || !options.nullable ? UiUtil.getTextAsEntries(raw) : null, options, state, ...path);
 				fnRender();
 			});
 		return BuilderUi.__$getRow(name, $ipt, options);
@@ -453,7 +453,7 @@ class BuilderUi {
 				BuilderUi.__setProp(raw || !options.nullable ? raw : null, options, state, ...path);
 				fnRender();
 			});
-		return BuilderUi.__$getRow(name, $$`<div class="full-width flex-v-center">${$ipt}</div>`, {...options, eleType: "label"});
+		return BuilderUi.__$getRow(name, $$`<div class="w-100 flex-v-center">${$ipt}</div>`, {...options, eleType: "label"});
 	}
 
 	static $getStateIptBooleanArray (name, fnRender, state, options, ...path) {
@@ -461,7 +461,7 @@ class BuilderUi {
 		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple(name, {isMarked: true});
 
 		const initialState = MiscUtil.getProperty(state, ...path) || [];
-		const $wrpIpts = $(`<div class="flex-col full-width mr-2"/>`).appendTo($rowInner);
+		const $wrpIpts = $(`<div class="flex-col w-100 mr-2"/>`).appendTo($rowInner);
 		const inputs = [];
 		options.vals.forEach(val => {
 			const $cb = $(`<input class="mkbru__ipt-cb" type="checkbox">`)
@@ -482,41 +482,6 @@ class BuilderUi {
 		return $row;
 	}
 
-	static getEntriesAsText (entryArray) {
-		if (!entryArray || !entryArray.length) return "";
-		return JSON.stringify(entryArray, null, 2)
-			.replace(/^\s*\[/, "").replace(/]\s*$/, "")
-			.split("\n")
-			.filter(it => it.trim())
-			.map(it => {
-				const trim = it.replace(/^\s\s/, "");
-				const mQuotes = /^"(.*?)"$/.exec(trim);
-				if (mQuotes) return mQuotes[1]; // if string, strip quotes
-				else return `  ${trim}`; // if object, indent
-			})
-			.join("\n")
-	}
-
-	static getTextAsEntries (text) {
-		try {
-			const lines = [];
-			text.split("\n").filter(it => it.trim()).forEach(it => {
-				if (/^\s/.exec(it)) lines.push(it); // keep indented lines as-is
-				else lines.push(`"${it.replace(/"/g, `\\"`)}",`); // wrap strings
-			});
-			if (lines.length) lines[lines.length - 1] = lines.last().replace(/^(.*?),?$/, "$1"); // remove trailing comma
-			return JSON.parse(`[${lines.join("")}]`);
-		} catch (e) {
-			const lines = text.split("\n").filter(it => it.trim());
-			const slice = lines.join(" \\ ").substring(0, 30);
-			JqueryUtil.doToast({
-				content: `Could not parse entries! Error was: ${e.message}<br>Text was: ${slice}${slice.length === 30 ? "..." : ""}`,
-				type: "danger"
-			});
-			return lines;
-		}
-	}
-
 	static pGetUserSpellSearch (options) {
 		options = options || {};
 		return new Promise(resolve => {
@@ -527,18 +492,18 @@ class BuilderUi {
 				{alt_Spell: SearchWidget.CONTENT_INDICES.alt_Spell},
 				(page, source, hash) => {
 					const [encName, encSource] = hash.split(HASH_LIST_SEP);
-					$modalInner.data("close")(false); // "cancel" close
+					doClose(false); // "cancel" close
 					resolve(`{@spell ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_PHB) ? `|${decodeURIComponent(encSource)}` : ""}}`)
 				},
 				searchOpts
 			);
-			const $modalInner = UiUtil.getShow$Modal(
-				"Select Spell",
-				(doResolve) => {
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				title: "Select Spell",
+				cbClose: (doResolve) => {
 					searchWidget.$wrpSearch.detach();
 					if (doResolve) resolve(null); // ensure resolution
 				}
-			);
+			});
 			$modalInner.append(searchWidget.$wrpSearch);
 			searchWidget.doFocus();
 		});
@@ -612,14 +577,14 @@ class BuilderUi {
 			if (dragMeta.on) doDragCleanup();
 
 			dragMeta.on = true;
-			dragMeta.$wrap = $(`<div class="flex-col mkbru__wrp-drag-block"/>`).appendTo(options.$wrpRowsOuter);
+			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"/>`).appendTo(options.$wrpRowsOuter);
 			dragMeta.$dummies = [];
 
 			const ixRow = rows.indexOf(myRow);
 
 			rows.forEach((row, i) => {
 				const dimensions = {w: row.$ele.outerWidth(true), h: row.$ele.outerHeight(true)};
-				const $dummy = $(`<div class="mkbru__wrp-drag-dummy ${i === ixRow ? "mkbru__wrp-drag-dummy--highlight" : "mkbru__wrp-drag-dummy--lowlight"}"/>`)
+				const $dummy = $(`<div class="${i === ixRow ? "ui-drag__wrp-drag-dummy--highlight" : "ui-drag__wrp-drag-dummy--lowlight"}"/>`)
 					.width(dimensions.w).height(dimensions.h)
 					.mouseup(() => {
 						if (dragMeta.on) {
@@ -644,9 +609,9 @@ class BuilderUi {
 			});
 		};
 
-		return $(`<div class="ml-2 mkbru__drag-patch" title="Drag to Reorder">
-		<div class="mkbru__drag-patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
-		<div class="mkbru__drag-patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
+		return $(`<div class="ml-2 ui-drag__patch" title="Drag to Reorder">
+		<div class="ui-drag__patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
+		<div class="ui-drag__patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
 		</div>`).mousedown(() => doDragRender());
 	}
 }

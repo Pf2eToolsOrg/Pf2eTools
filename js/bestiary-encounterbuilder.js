@@ -2,6 +2,8 @@
 
 class EncounterBuilder {
 	constructor () {
+		ProxyUtil.decorate(this);
+
 		this.stateInit = false;
 		this._cache = null;
 		this._lastPlayerCount = null;
@@ -9,10 +11,17 @@ class EncounterBuilder {
 
 		this._cachedTitle = null;
 
-		this._savedEncounters = null;
-		this._savedName = null;
-		this._lastClickedSave = null;
-		this._selectedSavedEncounter = null;
+		// Encounter save/load
+		this.__state = {
+			savedEncounters: {},
+			activeKey: null
+		};
+		this._state = this._getProxy("state", this.__state);
+		this._$iptName = null;
+		this._$btnSave = null;
+		this._$btnReload = null;
+		this._$btnLoad = null;
+		this.pSetSavedEncountersThrottled = MiscUtil.throttle(this._pSetSavedEncounters.bind(this), 50);
 
 		this.doSaveStateDebounced = MiscUtil.debounce(this.doSaveState, 50);
 	}
@@ -86,12 +95,6 @@ class EncounterBuilder {
 			MiscUtil.pCopyTextToClipboard(`${toCopyCreatures} (${xpTotal.toLocaleString()} XP)`);
 			JqueryUtil.showCopiedEffect($btnSvTxt);
 		});
-
-		// local save browser
-		$('.ecgen__ld-browser').click(() => encounterBuilder.doToggleBrowserUi(true));
-		$('.ecgen__sv-cancel').click(() => encounterBuilder.doToggleBrowserUi(false));
-		$(".ecgen__sv-new-save-name").keydown(evt => { if (evt.which === 13) this.handleSaveClick(true); });
-		window.addEventListener("popstate", () => this.doToggleBrowserUi(false)); // exits load/save menu upon browser history change
 	}
 
 	_initRandomHandlers () {
@@ -170,11 +173,10 @@ class EncounterBuilder {
 	}
 
 	async initState () {
-		EncounterUtil.pGetSavedState().then(async savedState => {
-			if (savedState) await this.pDoLoadState(savedState.data, savedState.type === "local");
-			else this.addInitialPlayerRows();
-			this.stateInit = true;
-		});
+		const initialState = await EncounterUtil.pGetInitialState();
+		if (initialState && initialState.data) await this.pDoLoadState(initialState.data, initialState.type === "local");
+		else this.addInitialPlayerRows();
+		this.stateInit = true;
 		await this._initSavedEncounters();
 	}
 
@@ -188,6 +190,9 @@ class EncounterBuilder {
 
 		this.removeAllPlayerRows();
 		if (doAddRows) this.addInitialPlayerRows();
+
+		this._state.activeKey = null;
+		this.pSetSavedEncountersThrottled();
 	}
 
 	async pDoLoadState (savedState, playersOnly) {
@@ -217,10 +222,6 @@ class EncounterBuilder {
 				ListUtil.doJsonLoad(savedState.l, false, sublistFuncPreload);
 			}
 
-			if (savedState.name) {
-				this._savedName = savedState.name;
-			}
-
 			this.updateDifficulty();
 		} catch (e) {
 			JqueryUtil.doToast({content: `Could not load encounter! Was the file valid?`, type: "danger"});
@@ -234,7 +235,6 @@ class EncounterBuilder {
 			l: ListUtil.getExportableSublist(),
 			a: this._advanced
 		};
-		if (this._savedName !== null) out.name = this._savedName;
 		if (this._advanced) {
 			out.c = $(`.ecgen__players_head_advanced`).find(`.ecgen__player_advanced_extra_head`).map((i, e) => $(e).val()).get();
 			out.d = $(`.ecgen__player_advanced`).map((i, e) => {
@@ -370,7 +370,7 @@ class EncounterBuilder {
 				})).sort((a, b) => SortUtil.ascSort(a.distance, b.distance))[0].encounter;
 			}
 
-			const belowCrCutoff = currentEncounter.filter(it => it.cr < crCutoff);
+			const belowCrCutoff = currentEncounter.filter(it => it.cr && it.cr < crCutoff);
 
 			if (belowCrCutoff.length) {
 				// do a post-step to randomly add "irrelevant" creatures, ensuring plenty of fireball fodder
@@ -475,7 +475,7 @@ class EncounterBuilder {
 		const getXps = budget => _xps.filter(it => it <= budget);
 
 		const getCurrentEncounterMeta = (encounter) => {
-			const data = encounter.map(it => ({cr: Parser.crToNumber(it.mon.cr.cr || it.mon.cr), count: it.count}));
+			const data = encounter.map(it => ({cr: Parser.crToNumber(it.mon.cr), count: it.count}));
 			return EncounterBuilderUtils.calculateEncounterXp(data, xp.party.count);
 		};
 
@@ -680,7 +680,7 @@ class EncounterBuilder {
 	}
 
 	handleSubhash () {
-		// loading state from the URL is instead handled as part of EncounterUtil.pGetSavedState
+		// loading state from the URL is instead handled as part of EncounterUtil.pGetInitialState
 		if (History.getSubHash(EncounterBuilder.HASH_KEY) === "true") this.show();
 		else this.hide();
 	}
@@ -853,7 +853,7 @@ class EncounterBuilder {
 					hoverTitle: `Image \u2014 ${mon.name}`
 				}
 			};
-			Renderer.hover.doHover(evt, ele, toShow);
+			Renderer.hover.doHover(evt, ele, toShow, true);
 		};
 
 		const renderImages = (data) => {
@@ -866,7 +866,7 @@ class EncounterBuilder {
 						hoverTitle: `Image \u2014 ${mon.name}`
 					}
 				};
-				Renderer.hover.doHover(evt, ele, toShow);
+				Renderer.hover.doHover(evt, ele, toShow, true);
 			} else return renderNoImages();
 		};
 
@@ -886,6 +886,7 @@ class EncounterBuilder {
 		const $iptCr = $(ele);
 		const mon = monsters[ixMon];
 		const baseCr = mon.cr.cr || mon.cr;
+		if (baseCr == null) return;
 		const baseCrNum = Parser.crToNumber(baseCr);
 		const targetCr = $iptCr.val();
 
@@ -1036,115 +1037,167 @@ class EncounterBuilder {
 		`;
 	}
 
+	// region saved encounters
 	async _initSavedEncounters () {
-		this._savedEncounters = await EncounterUtil.pGetAllSaves();
-	}
+		const $wrpControls = $(`#ecgen__wrp-save-controls`).empty();
 
-	pSetSavedEncounters () {
-		return StorageUtil.pSet(EncounterUtil.SAVED_ENCOUNTER_SAVE_LOCATION, this._savedEncounters);
-	}
+		const savedState = await EncounterUtil.pGetSavedState();
+		Object.assign(this._state, savedState);
 
-	doToggleBrowserUi (state) {
-		$("#loadsaves").toggle(state);
-		$("#contentwrapper").toggle(!state);
-		if (state) this.renderBrowser();
-	}
+		const pLoadActiveEncounter = async () => {
+			// save/restore the active key, to prevent it from being killed by the reset
+			const cached = this._state.activeKey;
+			const encounter = this._state.savedEncounters[this._state.activeKey];
+			await this.pDoLoadState(encounter.data);
+			this._state.activeKey = cached;
+			this.pSetSavedEncountersThrottled();
+		};
 
-	setBrowserButtonsState (isReload = false, isDisabled = true) {
-		if (isReload) {
-			$(".ecgen__sv-save").prop("disabled", isDisabled).text("Update Save");
-			$(".ecgen__sv-load").prop("disabled", isDisabled).text("Reload");
-		} else {
-			$(".ecgen__sv-save").prop("disabled", isDisabled).text("Save");
-			$(".ecgen__sv-load").prop("disabled", isDisabled).text("Load");
-		}
-	}
-
-	renderBrowser () {
-		const names = Object.keys(this._savedEncounters);
-		const anyName = !!names.length;
-
-		const $lstSaves = $("#listofsaves").empty();
-		if (names.length) {
-			names.forEach(name => {
-				const $btnDel = $(`<button class="btn btn-danger btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-trash"/></button>`)
-					.click(() => this.handleDeleteClick(name));
-
-				const $li = $$`<li class="${name === this._savedName ? "list-multi-selected" : ""}">
-					<div class="row">
-						<span class="col-4 name">${name}</span>
-						<span class="col-7-4"></span>
-						<span class="no-wrap col-0-6" onclick="event.preventDefault()">${$btnDel}</span>
-					</div>
-				</li>`.click(() => this._handleSavedClick($li, name)).appendTo($lstSaves)
+		this._$iptName = $(`<input class="form-control form-control--minimal mb-3 mt-0 px-2 text-right bold" style="max-width: 330px;"/>`)
+			.change(() => {
+				const name = this._$iptName.val().trim() || "(Unnamed Encounter)";
+				this._$iptName.val(name);
+				const encounter = this._state.savedEncounters[this._state.activeKey];
+				encounter.name = name;
+				this._state.savedEncounters = {
+					...this._state.savedEncounters,
+					[this._state.activeKey]: encounter
+				};
+				this.pSetSavedEncountersThrottled();
 			});
-		} else {
-			$lstSaves.append(`<div class="px-2" style="font-size: 14px;"><i>No saved encounters found.</i></div>`);
-		}
+		const hookName = () => {
+			if (this._state.activeKey) {
+				const encounter = this._state.savedEncounters[this._state.activeKey];
+				this._$iptName.val(encounter.name);
+			} else this._$iptName.val("");
+		};
+		this._addHook("state", "savedEncounters", hookName);
+		this._addHook("state", "activeKey", hookName);
+		hookName();
 
-		this.setBrowserButtonsState(anyName, !anyName);
-	}
+		// TODO set window title to encounter name on save?
+		this._$btnSave = $(`<button class="btn btn-primary btn-xs mr-2">Save Encounter</button>`)
+			.click(async () => {
+				if (this._state.activeKey) {
+					const encounter = this._state.savedEncounters[this._state.activeKey];
+					encounter.data = this.getSaveableState();
 
-	_handleSavedClick ($li, key) {
-		this._selectedSavedEncounter = this._savedEncounters[key];
-		this._lastClickedSave = key;
+					this._state.savedEncounters = {
+						...this._state.savedEncounters,
+						[this._state.activeKey]: encounter
+					};
+					this.pSetSavedEncountersThrottled();
+					JqueryUtil.doToast({type: "success", content: "Saved!"});
+				} else {
+					const name = await InputUiUtil.pGetUserString({title: "Enter Encounter Name"});
 
-		$("#listofsaves").children("li").removeClass("list-multi-selected");
-		$li.addClass("list-multi-selected");
-
-		if (this._savedName === this._lastClickedSave) this.setBrowserButtonsState(true, false);
-		else this.setBrowserButtonsState(false, false);
-	}
-
-	async handleSaveClick (isNew) {
-		const name = (() => {
-			if (isNew) {
-				const $iptName = $(".ecgen__sv-new-save-name");
-				const outName = $iptName.val().trim();
-
-				if (!outName) {
-					JqueryUtil.doToast({content: "Please enter an encounter name!", type: "warning"});
-					return null;
+					if (name != null) {
+						const key = CryptUtil.uid();
+						this._state.savedEncounters = {
+							...this._state.savedEncounters,
+							[key]: {
+								name,
+								data: this.getSaveableState()
+							}
+						};
+						this._state.activeKey = key;
+						this.pSetSavedEncountersThrottled();
+						JqueryUtil.doToast({type: "success", content: "Saved!"});
+					}
 				}
+			});
 
-				if (this._savedEncounters[outName] != null && !confirm(`Are you sure you want to overwrite the saved encounter "${name}"?`)) return null;
-				else {
-					$iptName.val("");
-					return outName;
-				}
-			} else if (this._savedName === this._lastClickedSave) return this._savedName;
-			else if (confirm(`Are you sure you want to overwrite the saved encounter "${this._lastClickedSave}"?`)) return this._savedName;
-		})();
+		const pDoReload = async () => {
+			const inStorage = await EncounterUtil.pGetSavedState();
+			const prev = inStorage.savedEncounters[this._state.activeKey];
+			if (!prev) {
+				return JqueryUtil.doToast({
+					content: `Could not find encounter in storage! Has it been deleted?`,
+					type: "danger"
+				});
+			} else {
+				this._state.savedEncounters = {
+					...this._state.savedEncounters,
+					[this._state.activeKey]: prev
+				};
+				await pLoadActiveEncounter();
+			}
+		};
+		this._$btnReload = $(`<button class="btn btn-default btn-xs mr-2" title="Reload Current Encounter"><span class="glyphicon glyphicon-refresh"/></button>`)
+			.click(() => pDoReload());
 
-		if (!name) return;
+		this._$btnLoad = $(`<button class="btn btn-primary btn-xs">Load Existing Encounter</button>`)
+			.click(async () => {
+				const inStorage = await EncounterUtil.pGetSavedState();
+				const {$modalInner} = UiUtil.getShowModal({title: "Saved Encounters"});
+				const $wrpRows = $(`<div class="flex-col w-100 h-100"/>`).appendTo($modalInner);
 
-		this._savedName = name;
-		this._savedEncounters[name] = this.getSaveableState();
-		this.pSetSavedEncounters();
-		this.doSaveState();
-		this.renderBrowser();
+				const encounters = inStorage.savedEncounters;
+				if (Object.keys(encounters).length) {
+					let rendered = Object.keys(encounters).length;
+					Object.entries(encounters)
+						.sort((a, b) => SortUtil.ascSortLower(a[1].name || "", b[1].name || ""))
+						.forEach(([k, v]) => {
+							const $iptName = $(`<input class="input input-xs form-control form-control--minimal mr-2">`)
+								.val(v.name)
+								.change(() => {
+									const name = $iptName.val().trim() || "(Unnamed Encounter)";
+									$iptName.val(name);
+									const loaded = this._state.savedEncounters[k];
+									loaded.name = name;
+									this._state.savedEncounters = {...this._state.savedEncounters};
+									this.pSetSavedEncountersThrottled();
+								});
+
+							const $btnLoad = $(`<button class="btn btn-primary btn-xs mr-2">Load</button>`)
+								.click(async () => {
+									// if we've already got the correct encounter loaded, reload it
+									if (this._state.activeKey === k) await pDoReload();
+									else this._state.activeKey = k;
+
+									await pLoadActiveEncounter();
+								});
+
+							const $btnDelete = $(`<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"/></button>`)
+								.click(() => {
+									this._state.savedEncounters = Object.keys(this._state.savedEncounters)
+										.filter(it => it !== k)
+										.map(it => ({[it]: this._state.savedEncounters[it]}))
+										.reduce((a, b) => Object.assign(a, b), {});
+									if (this._state.activeKey === k) this._state.activeKey = null;
+									$row.remove();
+									if (!--rendered) $$`<div class="w-100 flex-vh-center italic">No saved encounters</div>`.appendTo($wrpRows);
+									this.pSetSavedEncountersThrottled();
+								});
+
+							const $row = $$`<div class="flex-v-center w-100 mb-2">
+								${$iptName} 
+								${$btnLoad} 
+								${$btnDelete}
+							</div>`.appendTo($wrpRows);
+						});
+				} else $$`<div class="w-100 flex-vh-center italic">No saved encounters</div>`.appendTo($wrpRows)
+			});
+
+		const hookActiveKey = () => {
+			// show/hide controls
+			this._$iptName.toggle(!!this._state.activeKey);
+			this._$btnReload.toggle(!!this._state.activeKey);
+		};
+		this._addHook("state", "activeKey", hookActiveKey);
+		hookActiveKey();
+
+		$$`<div class="flex-col" style="align-items: flex-end;">
+			${this._$iptName}
+			<div class="flex-h-right">${this._$btnSave}${this._$btnReload}${this._$btnLoad}</div>
+		</div>`.appendTo($wrpControls);
 	}
 
-	async handleLoadClick () {
-		await this.pDoLoadState(this._selectedSavedEncounter);
-		this.doToggleBrowserUi(false);
+	_pSetSavedEncounters () {
+		if (!this.stateInit) return;
+		return StorageUtil.pSet(EncounterUtil.SAVED_ENCOUNTER_SAVE_LOCATION, this.__state);
 	}
-
-	handleDeleteClick (name) {
-		delete this._savedEncounters[name];
-		if (name === this._savedName) this._savedName = null;
-		this.pSetSavedEncounters();
-		this.renderBrowser();
-	}
-
-	handleResetEncounterSavesClick () {
-		if (confirm("Are you sure?")) {
-			this._savedEncounters = {};
-			this.pSetSavedEncounters();
-			this._lastClickedSave = null;
-			this.renderBrowser();
-		}
-	}
+	// endregion
 }
 EncounterBuilder.HASH_KEY = "encounterbuilder";
 EncounterBuilder.TIERS = ["easy", "medium", "hard", "deadly", "absurd"];

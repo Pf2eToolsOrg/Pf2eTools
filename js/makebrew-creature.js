@@ -80,7 +80,7 @@ class CreatureBuilder extends Builder {
 				const searchWidget = new SearchWidget(
 					{Creature: SearchWidget.CONTENT_INDICES.Creature},
 					async (page, source, hash) => {
-						$modalInner.data("close")();
+						doClose();
 						const creature = MiscUtil.copy(await Renderer.hover.pCacheAndGet(page, source, hash));
 
 						if (this._bestiaryFluffIndex[creature.source] && !creature.fluff) {
@@ -106,10 +106,10 @@ class CreatureBuilder extends Builder {
 					},
 					{defaultCategory: "Creature"}
 				);
-				const $modalInner = UiUtil.getShow$Modal(
-					"Select Creature",
-					() => searchWidget.$wrpSearch.detach()
-				);
+				const {$modalInner, doClose} = UiUtil.getShowModal({
+					title: "Select Creature",
+					cbClose: () => searchWidget.$wrpSearch.detach()
+				});
 				$modalInner.append(searchWidget.$wrpSearch);
 				searchWidget.doFocus();
 			});
@@ -406,8 +406,8 @@ class CreatureBuilder extends Builder {
 	_doCreateProxies () {
 		this._resetHooks("state");
 		this._resetHooks("meta");
-		this._stateProxy = this._getProxy(this._state, "state");
-		this._metaProxy = this._getProxy(this._state, "meta");
+		this._stateProxy = this._getProxy("state", this._state);
+		this._metaProxy = this._getProxy("meta", this._state);
 	}
 
 	renderInput () {
@@ -478,7 +478,7 @@ class CreatureBuilder extends Builder {
 		this._resetTabs("input");
 		const tabs = ["Info", "Race", "Core", "Defence", "Abilities", "Flavor/Misc"].map((it, ix) => this._getTab(ix, it, {hasBorder: true, tabGroup: "input", stateObj: this._metaProxy, cbTabChange: this._saveTemp.bind(this)}));
 		const [infoTab, raceTab, coreTab, defenseTab, abilTab, miscTab] = tabs;
-		$$`<div class="flex-v-center full-width no-shrink ui-tab__wrp-tab-heads--border">${tabs.map(it => it.$btnTab)}</div>`.appendTo($wrp);
+		$$`<div class="flex-v-center w-100 no-shrink ui-tab__wrp-tab-heads--border">${tabs.map(it => it.$btnTab)}</div>`.appendTo($wrp);
 		tabs.forEach(it => it.$wrpTab.appendTo($wrp));
 
 		// INFO
@@ -1005,14 +1005,14 @@ class CreatureBuilder extends Builder {
 						const [encName, encSource] = hash.split(HASH_LIST_SEP);
 						$iptFrom.val(`{@item ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_DMG) ? `|${decodeURIComponent(encSource)}` : ""}}`);
 						doUpdateState();
-						$modalInner.data("close")();
+						doClose();
 					},
 					{defaultCategory: "Item"}
 				);
-				const $modalInner = UiUtil.getShow$Modal(
-					"Select Item",
-					() => searchWidget.$wrpSearch.detach() // guarantee survival of rendered element
-				);
+				const {$modalInner, doClose} = UiUtil.getShowModal({
+					title: "Select Item",
+					cbClose: () => searchWidget.$wrpSearch.detach() // guarantee survival of rendered element
+				});
 				$modalInner.append(searchWidget.$wrpSearch);
 				searchWidget.doFocus();
 			});
@@ -1635,7 +1635,7 @@ class CreatureBuilder extends Builder {
 		const $ele = (() => {
 			const $base = $$`<div class="flex-col ${depth ? "" : "mkbru_mon__wrp-rows"}">${$wrpControls}${$wrpChildren}</div>`;
 			if (!depth) return $base;
-			else return $$`<div class="flex-v-center full-width"><div class="mkbru_mon__row-indent"/>${$base}</div>`
+			else return $$`<div class="flex-v-center w-100"><div class="mkbru_mon__row-indent"/>${$base}</div>`
 		})();
 
 		if (initial) {
@@ -1772,21 +1772,22 @@ class CreatureBuilder extends Builder {
 	__$getCrInput (cb) {
 		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Challenge Rating", {isMarked: true});
 
-		const initialMode = this._stateProxy.cr.lair ? "1" : this._stateProxy.cr.coven ? "2" : "0";
+		const initialMode = this._stateProxy.cr != null ? this._stateProxy.cr.lair ? "1" : this._stateProxy.cr.coven ? "2" : "0" : "3";
 
 		const $selMode = $(`<select class="form-control input-xs mb-2">
 			<option value="0">Basic Challenge Rating</option>
 			<option value="1">Has Lair Challenge Rating</option>
 			<option value="2">Has Coven Challenge Rating</option>
+			<option value="3">No Challenge Rating</option>
 		</select>`).val(initialMode).change(() => {
 			switch ($selMode.val()) {
 				case "0": {
-					$stageLair.hide(); $stageCoven.hide();
+					$stageBasic.show(); $stageLair.hide(); $stageCoven.hide();
 					this._stateProxy.cr = $selCr.val();
 					break;
 				}
 				case "1": {
-					$stageLair.show(); $stageCoven.hide();
+					$stageBasic.show(); $stageLair.show(); $stageCoven.hide();
 					this._stateProxy.cr = {
 						cr: $selCr.val(),
 						lair: $selCrLair.val()
@@ -1794,11 +1795,16 @@ class CreatureBuilder extends Builder {
 					break;
 				}
 				case "2": {
-					$stageLair.hide(); $stageCoven.show();
+					$stageBasic.show(); $stageLair.hide(); $stageCoven.show();
 					this._stateProxy.cr = {
 						cr: $selCr.val(),
 						coven: $selCrCoven.val()
 					};
+					break;
+				}
+				case "3": {
+					$stageBasic.hide(); $stageLair.hide(); $stageCoven.hide();
+					delete this._stateProxy.cr;
 					break;
 				}
 			}
@@ -1807,12 +1813,13 @@ class CreatureBuilder extends Builder {
 
 		// BASIC CONTROLS
 		const $selCr = $(`<select class="form-control input-xs mb-2">${Parser.CRS.map(it => `<option>${it}</option>`).join("")}</select>`)
-			.val(this._stateProxy.cr.cr || this._stateProxy.cr).change(() => {
+			.val(this._stateProxy.cr ? (this._stateProxy.cr.cr || this._stateProxy.cr) : null).change(() => {
 				if ($selMode.val() === "0") this._stateProxy.cr = $selCr.val();
 				else this._stateProxy.cr.cr = $selCr.val();
 				cb();
 			});
-		$$`<div>${$selCr}</div>`.appendTo($rowInner);
+		const $stageBasic = $$`<div>${$selCr}</div>`
+			.appendTo($rowInner).toggle(initialMode !== "3");
 
 		// LAIR CONTROLS
 		const $selCrLair = $(`<select class="form-control input-xs">${Parser.CRS.map(it => `<option>${it}</option>`).join("")}</select>`)
@@ -1844,9 +1851,14 @@ class CreatureBuilder extends Builder {
 		const hook = () => {
 			// update proficiency bonus input as required
 			if (this._metaProxy.autoCalc.proficiency) {
-				const pb = Parser.crToPb(this._stateProxy.cr.cr || this._stateProxy.cr);
-				$iptProfBonus.val(pb);
-				this._metaProxy.profBonus = pb;
+				if (this._stateProxy.cr == null) {
+					$iptProfBonus.val(0);
+					this._metaProxy.profBonus = 0;
+				} else {
+					const pb = Parser.crToPb(this._stateProxy.cr.cr || this._stateProxy.cr);
+					$iptProfBonus.val(pb);
+					this._metaProxy.profBonus = pb;
+				}
 				cb();
 			}
 		};
@@ -1879,7 +1891,7 @@ class CreatureBuilder extends Builder {
 
 	_getProfBonus () {
 		if (this._metaProxy.profBonus != null) return this._metaProxy.profBonus || 0;
-		else return Parser.crToPb(this._stateProxy.cr.cr || this._stateProxy.cr);
+		else return this._stateProxy.cr == null ? 0 : Parser.crToPb(this._stateProxy.cr.cr || this._stateProxy.cr);
 	}
 
 	__$getSpellcastingInput (cb) {
@@ -1923,9 +1935,9 @@ class CreatureBuilder extends Builder {
 				name: $iptName.val().trim()
 			};
 
-			if ($btnToggleHeader.hasClass("active")) out.headerEntries = BuilderUi.getTextAsEntries($iptHeader.val());
+			if ($btnToggleHeader.hasClass("active")) out.headerEntries = UiUtil.getTextAsEntries($iptHeader.val());
 			if (out.headerEntries && !out.headerEntries.length) delete out.headerEntries;
-			if ($btnToggleFooter.hasClass("active")) out.footerEntries = BuilderUi.getTextAsEntries($iptFooter.val());
+			if ($btnToggleFooter.hasClass("active")) out.footerEntries = UiUtil.getTextAsEntries($iptFooter.val());
 			if (out.footerEntries && !out.footerEntries.length) delete out.footerEntries;
 
 			const deepMerge = (target, k, v) => {
@@ -2060,15 +2072,15 @@ class CreatureBuilder extends Builder {
 		const $btnAddSpell = $(`<button class="btn btn-xs btn-default">Add...</button>`)
 			.click((evt) => ContextUtil.handleOpenContextMenu(evt, $btnAddSpell, contextId));
 
-		const $iptHeader = $(`<textarea class="form-control form-control--minimal mkbru__ipt-textarea mb-2" placeholder="Header text"/>`)
+		const $iptHeader = $(`<textarea class="form-control form-control--minimal resize-vertical mb-2" placeholder="Header text"/>`)
 			.toggle(!!(trait && trait.headerEntries))
 			.change(() => doUpdateState());
-		if (trait && trait.headerEntries) $iptHeader.val(BuilderUi.getEntriesAsText(trait.headerEntries));
+		if (trait && trait.headerEntries) $iptHeader.val(UiUtil.getEntriesAsText(trait.headerEntries));
 
-		const $iptFooter = $(`<textarea class="form-control form-control--minimal mkbru__ipt-textarea mb-2" placeholder="Footer text"/>`)
+		const $iptFooter = $(`<textarea class="form-control form-control--minimal resize-vertical mb-2" placeholder="Footer text"/>`)
 			.toggle(!!(trait && trait.footerEntries))
 			.change(() => doUpdateState());
-		if (trait && trait.footerEntries) $iptFooter.val(BuilderUi.getEntriesAsText(trait.footerEntries));
+		if (trait && trait.footerEntries) $iptFooter.val(UiUtil.getEntriesAsText(trait.footerEntries));
 
 		const $wrpControls = $$`<div class="flex-v-center mb-2">${$iptName}${$btnToggleHeader}${$btnToggleFooter}${$btnAddSpell}</div>`;
 		const $wrpSubRows = $$`<div class="flex-col"></div>`;
@@ -2326,7 +2338,7 @@ class CreatureBuilder extends Builder {
 								{Trait: this._indexedTraits},
 								async (ix) => {
 									traitIndex = ix;
-									$modalInner.data("close")(true);
+									doClose(true);
 								},
 								{
 									defaultCategory: "Trait",
@@ -2339,16 +2351,16 @@ class CreatureBuilder extends Builder {
 									fnTransform: (doc) => doc.id
 								}
 							);
-							const $modalInner = UiUtil.getShow$Modal(
-								"Select a Trait",
-								(isDataEntered) => {
+							const {$modalInner, doClose} = UiUtil.getShowModal({
+								title: "Select a Trait",
+								cbClose: (isDataEntered) => {
 									searchWidget.$wrpSearch.detach();
 									if (!isDataEntered) return resolve(null);
 									const trait = MiscUtil.copy(this._jsonCreature.trait[traitIndex]);
 									trait.entries = JSON.parse(JSON.stringify(trait.entries).replace(/<\$name\$>/gi, this._stateProxy.name));
 									resolve(trait);
 								}
-							);
+							});
 							$modalInner.append(searchWidget.$wrpSearch);
 							searchWidget.doFocus();
 						})
@@ -2369,7 +2381,7 @@ class CreatureBuilder extends Builder {
 						name: "Generate Attack",
 						action: () => {
 							return new Promise(resolve => {
-								const $modalInner = UiUtil.getShow$Modal({
+								const {$modalInner, doClose} = UiUtil.getShowModal({
 									title: "Generate Attack",
 									cbClose: (isDataEntered) => {
 										this._generateAttackCache = getState();
@@ -2437,7 +2449,7 @@ class CreatureBuilder extends Builder {
 									.click(() => {
 										if (!$cbMelee.prop("checked") && !$cbRanged.prop("checked")) {
 											return JqueryUtil.doToast({type: "warning", content: "At least one of 'Melee' or 'Ranged' must be selected!"});
-										} else $modalInner.data("close")(true);
+										} else doClose(true);
 									});
 
 								const $btnReset = $(`<button class="btn btn-sm btn-danger">Reset</button>`)
@@ -2647,7 +2659,7 @@ class CreatureBuilder extends Builder {
 		const getState = () => {
 			const out = {
 				name: $iptName.val().trim(),
-				entries: BuilderUi.getTextAsEntries($iptEntries.val())
+				entries: UiUtil.getTextAsEntries($iptEntries.val())
 			};
 
 			// additional state for variant inputs
@@ -2684,10 +2696,10 @@ class CreatureBuilder extends Builder {
 			$wrpRowsOuter: options.$wrpRowsOuter
 		}) : null;
 
-		const $iptEntries = $(`<textarea class="form-control form-control--minimal mkbru__ipt-textarea mb-2"/>`)
+		const $iptEntries = $(`<textarea class="form-control form-control--minimal resize-vertical mb-2"/>`)
 			.change(() => doUpdateState());
 
-		if (entry && entry.entries) $iptEntries.val(BuilderUi.getEntriesAsText(entry.entries));
+		if (entry && entry.entries) $iptEntries.val(UiUtil.getEntriesAsText(entry.entries));
 
 		const $btnRemove = $(`<button class="btn btn-xs btn-danger mb-2" title="Remove ${options.shortName}"><span class="glyphicon glyphicon-trash"/></button>`)
 			.click(() => {
@@ -2828,7 +2840,7 @@ class CreatureBuilder extends Builder {
 		const doUpdateState = () => {
 			const out = {};
 
-			const entries = BuilderUi.getTextAsEntries($iptEntries.val());
+			const entries = UiUtil.getTextAsEntries($iptEntries.val());
 			if (entries && entries.length) out.entries = entries;
 
 			const images = imageRows.map(it => it.getState()).filter(Boolean);
@@ -2851,7 +2863,7 @@ class CreatureBuilder extends Builder {
 
 		const rowOptions = {$wrpRowsOuter};
 
-		const $iptEntries = $(`<textarea class="form-control form-control--minimal mkbru__ipt-textarea mb-2"/>`)
+		const $iptEntries = $(`<textarea class="form-control form-control--minimal resize-vertical mb-2"/>`)
 			.change(() => doUpdateState());
 
 		const $btnAddImage = $(`<button class="btn btn-xs btn-default">Add Image</button>`)
@@ -2869,7 +2881,7 @@ class CreatureBuilder extends Builder {
 		</div>`.appendTo($rowInner);
 
 		if (this._stateProxy.fluff) {
-			if (this._stateProxy.fluff.entries) $iptEntries.val(BuilderUi.getEntriesAsText(this._stateProxy.fluff.entries));
+			if (this._stateProxy.fluff.entries) $iptEntries.val(UiUtil.getEntriesAsText(this._stateProxy.fluff.entries));
 			if (this._stateProxy.fluff.images) this._stateProxy.fluff.images.forEach(img => CreatureBuilder.__$getFluffInput__getImageRow(doUpdateState, doUpdateOrder, rowOptions, imageRows, img).$ele.appendTo($wrpRows));
 		}
 
@@ -2932,7 +2944,7 @@ class CreatureBuilder extends Builder {
 			cb();
 		};
 
-		const $wrpIpts = $(`<div class="flex-col full-width mr-2"/>`);
+		const $wrpIpts = $(`<div class="flex-col w-100 mr-2"/>`);
 		const inputs = [];
 		Parser.ENVIRONMENTS.forEach(val => {
 			const $cb = $(`<input class="mkbru__ipt-cb mkbru_mon__cb-environment" type="checkbox">`)
@@ -3003,7 +3015,7 @@ class CreatureBuilder extends Builder {
 		this._resetTabs("output");
 		const tabs = ["Statblock", "Info", "Images"].map((it, ix) => this._getTab(ix, it, {tabGroup: "output", stateObj: this._metaProxy, cbTabChange: this._saveTemp.bind(this)}));
 		const [statTab, infoTab, imageTab] = tabs;
-		$$`<div class="flex-v-center full-width no-shrink">${tabs.map(it => it.$btnTab)}</div>`.appendTo($wrp);
+		$$`<div class="flex-v-center w-100 no-shrink">${tabs.map(it => it.$btnTab)}</div>`.appendTo($wrp);
 		tabs.forEach(it => it.$wrpTab.appendTo($wrp));
 
 		// statblock

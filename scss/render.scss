@@ -25,6 +25,22 @@ Renderer
 }
 
 .rd__ {
+	&b--0,
+	&b--1,
+	&b--2,
+	&b--3,
+	&b--4 {
+		margin-bottom: 5px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		> *:last-child {
+			margin-bottom: 0;
+		}
+	}
+
 	&hr {
 		border-color: #aaa6;
 		margin: 17px 0 5px;
@@ -267,7 +283,7 @@ Renderer
 		}
 
 		&-toggle {
-			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			font-family: Arial, sans-serif;
 			float: right;
 		}
 	}

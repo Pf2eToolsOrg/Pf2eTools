@@ -415,7 +415,7 @@ Parser._addCommas = function (intNum) {
 Parser.crToXp = function (cr) {
 	if (cr.xp) return Parser._addCommas(cr.xp);
 
-	const toConvert = cr.cr || cr;
+	const toConvert = cr ? (cr.cr || cr) : null;
 	if (toConvert === "Unknown" || toConvert == null) return "Unknown";
 	if (toConvert === "0") return "0 or 10";
 	if (toConvert === "1/8") return "25";
@@ -426,7 +426,7 @@ Parser.crToXp = function (cr) {
 
 Parser.crToXpNumber = function (cr) {
 	if (cr.xp) return cr.xp;
-	const toConvert = cr.cr || cr;
+	const toConvert = cr ? (cr.cr || cr) : cr;
 	if (toConvert === "Unknown" || toConvert == null) return null;
 	return Parser.XP_CHART_ALT[toConvert];
 };
@@ -463,6 +463,8 @@ Parser._greatestCommonDivisor = function (a, b) {
 Parser.numberToCr = function (number, safe) {
 	// avoid dying if already-converted number is passed in
 	if (safe && typeof number === "string" && Parser.CRS.includes(number)) return number;
+
+	if (number == null) return "Unknown";
 
 	const len = number.toString().length - 2;
 	let denominator = Math.pow(10, len);
@@ -748,6 +750,8 @@ Parser.spSchoolAbvToShort = function (school) {
 };
 
 Parser.getOrdinalForm = function (i) {
+	i = Number(i);
+	if (isNaN(i)) return "";
 	const j = i % 10; const k = i % 100;
 	if (j === 1 && k !== 11) return `${i}st`;
 	if (j === 2 && k !== 12) return `${i}nd`;
@@ -991,7 +995,8 @@ Parser.monTypeToPlural = function (type) {
 };
 
 Parser.monCrToFull = function (cr, xp) {
-	if (typeof cr === "string" || !cr) return `${cr || "Unknown"} (${xp != null ? Parser._addCommas(xp) : Parser.crToXp(cr)} XP)`;
+	if (cr == null) return "";
+	if (typeof cr === "string") return `${cr} (${xp != null ? Parser._addCommas(xp) : Parser.crToXp(cr)} XP)`;
 	else {
 		const stack = [Parser.monCrToFull(cr.cr, cr.xp)];
 		if (cr.lair) stack.push(`${Parser.monCrToFull(cr.lair)} when encountered in lair`);
@@ -1108,15 +1113,6 @@ Parser.psiTypeToFull = (type) => {
 
 Parser.psiOrderToFull = (order) => {
 	return order === undefined ? Parser.PSI_ORDER_NONE : order;
-};
-
-Parser.levelToFull = function (level) {
-	if (isNaN(level)) return "";
-	level = Number(level);
-	if (level === 1) return `${level}st`;
-	if (level === 2) return `${level}nd`;
-	if (level === 3) return `${level}rd`;
-	return `${level}th`;
 };
 
 Parser.prereqSpellToFull = function (spell) {
@@ -1270,7 +1266,7 @@ Parser.CAT_ID_ARCANE_SHOT = 27;
 Parser.CAT_ID_OPTIONAL_FEATURE_OTHER = 28;
 Parser.CAT_ID_FIGHTING_STYLE = 29;
 Parser.CAT_ID_CLASS_FEATURE = 30;
-Parser.CAT_ID_SHIP = 31;
+Parser.CAT_ID_VEHICLE = 31;
 Parser.CAT_ID_PACT_BOON = 32;
 Parser.CAT_ID_ELEMENTAL_DISCIPLINE = 33;
 Parser.CAT_ID_ARTIFICER_INFUSION = 34;
@@ -1307,7 +1303,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARCANE_SHOT] = "Arcane Shot";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OPTIONAL_FEATURE_OTHER] = "Optional Feature";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FIGHTING_STYLE] = "Fighting Style";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS_FEATURE] = "Class Feature";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SHIP] = "Ship";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VEHICLE] = "Vehicle";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PACT_BOON] = "Pact Boon";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "Elemental Discipline";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARTIFICER_INFUSION] = "Infusion";
@@ -2339,8 +2335,8 @@ JqueryUtil = {
 	_activeToast: [],
 	/**
 	 * @param {Object|string} options
-	 * @param {(jQuery|string)} options.content Toast contents. Support jQuery objects.
-	 * @param {string} options.type Toast type. Can be any Bootstrap alert type ("success", "info", "warning", or "danger")
+	 * @param {(jQuery|string)} options.content Toast contents. Supports jQuery objects.
+	 * @param {string} options.type Toast type. Can be any Bootstrap alert type ("success", "info", "warning", or "danger").
 	 */
 	doToast (options) {
 		if (typeof options === "string") {
@@ -2602,27 +2598,110 @@ MiscUtil = {
 	},
 
 	/**
+	 * Borrowed from lodash.
+	 *
 	 * @param func The function to debounce.
-	 * @param waitTime Minimum duration between calls.
-	 * @param immediate Trigger on leading edge, as opposed to trailing.
+	 * @param wait Minimum duration between calls.
+	 * @param options Options object.
 	 * @return {Function} The debounced function.
 	 */
-	debounce (func, waitTime, immediate) {
-		let timeout;
-		return function () {
-			const context = this;
-			const args = arguments;
+	debounce (func, wait, options) {
+		let lastArgs; let lastThis; let maxWait; let result; let timerId; let lastCallTime; let lastInvokeTime = 0; let leading = false; let maxing = false; let trailing = true;
 
-			const later = function () {
-				timeout = null;
-				if (!immediate) func.apply(context, args);
-			};
+		wait = Number(wait) || 0;
+		if (typeof options === "object") {
+			leading = !!options.leading;
+			maxing = "maxWait" in options;
+			maxWait = maxing ? Math.max(Number(options.maxWait) || 0, wait) : maxWait;
+			trailing = "trailing" in options ? !!options.trailing : trailing;
+		}
 
-			const callNow = immediate && !timeout;
-			clearTimeout(timeout);
-			timeout = setTimeout(later, waitTime);
-			if (callNow) func.apply(context, args);
-		};
+		function invokeFunc (time) {
+			let args = lastArgs; let thisArg = lastThis;
+
+			lastArgs = lastThis = undefined;
+			lastInvokeTime = time;
+			result = func.apply(thisArg, args);
+			return result;
+		}
+
+		function leadingEdge (time) {
+			lastInvokeTime = time;
+			timerId = setTimeout(timerExpired, wait);
+			return leading ? invokeFunc(time) : result;
+		}
+
+		function remainingWait (time) {
+			let timeSinceLastCall = time - lastCallTime; let timeSinceLastInvoke = time - lastInvokeTime; let result = wait - timeSinceLastCall;
+			return maxing ? Math.min(result, maxWait - timeSinceLastInvoke) : result;
+		}
+
+		function shouldInvoke (time) {
+			let timeSinceLastCall = time - lastCallTime; let timeSinceLastInvoke = time - lastInvokeTime;
+
+			return (lastCallTime === undefined || (timeSinceLastCall >= wait) || (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
+		}
+
+		function timerExpired () {
+			const time = Date.now();
+			if (shouldInvoke(time)) {
+				return trailingEdge(time);
+			}
+			// Restart the timer.
+			timerId = setTimeout(timerExpired, remainingWait(time));
+		}
+
+		function trailingEdge (time) {
+			timerId = undefined;
+
+			if (trailing && lastArgs) return invokeFunc(time);
+			lastArgs = lastThis = undefined;
+			return result;
+		}
+
+		function cancel () {
+			if (timerId !== undefined) clearTimeout(timerId);
+			lastInvokeTime = 0;
+			lastArgs = lastCallTime = lastThis = timerId = undefined;
+		}
+
+		function flush () {
+			return timerId === undefined ? result : trailingEdge(Date.now());
+		}
+
+		function debounced () {
+			let time = Date.now(); let isInvoking = shouldInvoke(time);
+			lastArgs = arguments;
+			lastThis = this;
+			lastCallTime = time;
+
+			if (isInvoking) {
+				if (timerId === undefined) return leadingEdge(lastCallTime);
+				if (maxing) {
+					// Handle invocations in a tight loop.
+					timerId = setTimeout(timerExpired, wait);
+					return invokeFunc(lastCallTime);
+				}
+			}
+			if (timerId === undefined) timerId = setTimeout(timerExpired, wait);
+			return result;
+		}
+
+		debounced.cancel = cancel;
+		debounced.flush = flush;
+		return debounced;
+	},
+
+	// from lodash
+	throttle (func, wait, options) {
+		let leading = true; let trailing = true;
+
+		if (typeof options === "object") {
+			leading = "leading" in options ? !!options.leading : leading;
+			trailing = "trailing" in options ? !!options.trailing : trailing;
+		}
+
+		return this.debounce(func, wait, {leading, maxWait: wait, trailing});
 	},
 
 	pDelay (msecs) {
@@ -2634,7 +2713,7 @@ MiscUtil = {
 EventUtil = {
 	getClientX (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientX : evt.clientX; },
 	getClientY (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientY : evt.clientY; }
-}
+};
 
 // CONTEXT MENUS =======================================================================================================
 ContextUtil = {
@@ -2673,7 +2752,7 @@ ContextUtil = {
 	doInitContextMenu: (menuId, clickFn, labels) => {
 		ContextUtil._ctxClick[menuId] = clickFn;
 		ContextUtil._handlePreInitContextMenu(menuId);
-		let tempString = `<ul id="${menuId}" class="dropdown-menu" role="menu">`;
+		let tempString = `<ul id="${menuId}" class="dropdown-menu ui-ctx" role="menu">`;
 		let i = 0;
 		labels.forEach(it => {
 			if (it === null) tempString += `<li class="divider"/>`;
@@ -3590,7 +3669,7 @@ ListUtil = {
 
 		if (typeof filter === "object" && filter.generator) filter = filter.generator();
 
-		let temp = `<table class="table-striped stats stats-book stats-book--large" style="width: 100%;"><thead><tr>${Object.values(colTransforms).map((c, i) => `<th class="col_${i} px-2" colspan="${c.flex || 1}">${c.name}</th>`).join("")}</tr></thead><tbody>`;
+		let temp = `<table class="table-striped stats stats--book stats--book-large" style="width: 100%;"><thead><tr>${Object.values(colTransforms).map((c, i) => `<th class="col_${i} px-2" colspan="${c.flex || 1}">${c.name}</th>`).join("")}</tr></thead><tbody>`;
 		const listCopy = JSON.parse(JSON.stringify(dataList)).filter((it, i) => filter ? filter(i) : it);
 		if (sorter) listCopy.sort(sorter);
 		listCopy.forEach(it => {
@@ -3908,7 +3987,7 @@ UrlUtil.PG_MAKE_SHAPED = "makeshaped.html";
 UrlUtil.PG_MANAGE_BREW = "managebrew.html";
 UrlUtil.PG_DEMO = "demo.html";
 UrlUtil.PG_TABLES = "tables.html";
-UrlUtil.PG_SHIPS = "ships.html";
+UrlUtil.PG_VEHICLES = "vehicles.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -3930,7 +4009,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CULTS_BOONS] = (it) => UrlUtil.encodeForH
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OBJECTS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAPS_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SHIPS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 
 UrlUtil.CAT_TO_PAGE = {};
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURE] = UrlUtil.PG_BESTIARY;
@@ -3963,7 +4042,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOON] = UrlUtil.PG_CULTS_BOONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DISEASE] = UrlUtil.PG_CONDITIONS_DISEASES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE] = UrlUtil.PG_TABLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE_GROUP] = UrlUtil.PG_TABLES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SHIP] = UrlUtil.PG_SHIPS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VEHICLE] = UrlUtil.PG_VEHICLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PACT_BOON] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARTIFICER_INFUSION] = UrlUtil.PG_OPT_FEATURES;
@@ -4217,20 +4296,10 @@ DataUtil = {
 		}
 	},
 
-	async multiLoadJSON (toLoads, onEachLoadFunction, onFinalLoadFunction) {
-		if (!toLoads.length) onFinalLoadFunction([]);
-
-		const datas = await Promise.all(toLoads.map(tl => DataUtil.loadJSON(tl.url)));
-		if (onEachLoadFunction) {
-			datas.forEach((data, i) => onEachLoadFunction(toLoads[i], data));
-		}
-		return onFinalLoadFunction(datas);
-	},
-
 	userDownload: function (filename, data) {
 		if (typeof data !== "string") data = JSON.stringify(data, null, "\t");
-		const a = document.createElement('a');
-		const t = new Blob([data], {type: 'text/json'});
+		const a = document.createElement("a");
+		const t = new Blob([data], {type: "text/json"});
 		a.href = URL.createObjectURL(t);
 		a.download = `${filename}.json`;
 		document.body.appendChild(a);
@@ -4859,7 +4928,7 @@ BrewUtil = {
 						case UrlUtil.PG_MAKE_SHAPED: return ["spell", "creature"];
 						case UrlUtil.PG_MANAGE_BREW:
 						case UrlUtil.PG_DEMO: return BrewUtil._DIRS;
-						case UrlUtil.PG_SHIPS: return ["ship"];
+						case UrlUtil.PG_VEHICLES: return ["vehicle"];
 						default: throw new Error(`No homebrew directories defined for category ${page}`);
 					}
 				}
@@ -4885,60 +4954,59 @@ BrewUtil = {
 					return Object.keys(collectionIndex).filter(k => collectionIndex[k].find(it => dirs.has(it)));
 				})();
 
-				(() => {
-					const urls = getBrewDirs().map(it => ({url: DataUtil.brew.getDirUrl(it), _cat: BrewUtil._pRenderBrewScreen_dirToCat(it)}));
-					if (collectionFiles.length) urls.push({url: DataUtil.brew.getDirUrl("collection"), _collection: true, _cat: "collection"});
+				(async () => {
+					const toLoads = getBrewDirs().map(it => ({url: DataUtil.brew.getDirUrl(it), _cat: BrewUtil._pRenderBrewScreen_dirToCat(it)}));
+					if (collectionFiles.length) toLoads.push({url: DataUtil.brew.getDirUrl("collection"), _collection: true, _cat: "collection"});
 
-					DataUtil.multiLoadJSON(
-						urls,
-						(url, json) => {
-							if (url._collection) json.filter(it => it.name === "index.json" || !collectionFiles.includes(it.name)).forEach(it => it._brewSkip = true);
-							json.forEach(it => it._cat = url._cat);
-						},
-						(json) => {
-							let stack = "";
-							const all = [].concat.apply([], json);
-							all.forEach(it => {
-								const cleanFilename = it.name.trim().replace(/\.json$/, "");
-								const spl = cleanFilename.split(";").map(it => it.trim());
-								if (spl.length > 1) {
-									it._brewName = spl[1];
-									it._brewAuthor = spl[0];
-								} else {
-									it._brewName = cleanFilename;
-									it._brewAuthor = "";
-								}
-							});
-							all.sort((a, b) => SortUtil.ascSortLower(a._brewName, b._brewName));
-							dataList = all.filter(it => !it._brewSkip);
-							dataList.forEach((it, i) => {
-								it._brewAdded = timestamps[it.path] || 0;
-								it._brewCat = BrewUtil._pRenderBrewScreen_getDisplayCat(BrewUtil._pRenderBrewScreen_dirToCat(it._cat));
-								stack += `
-									<li ${FLTR_ID}="${i}" class="not-clickable">
-										<section>
-											<span class="col-4 name manbrew__load_from_url pl-0 clickable" onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").escapeQuotes()}', true)">${it._brewName}</span>
-											<span class="col-3 author">${it._brewAuthor}</span>
-											<span class="col-2 category text-center">${it._brewCat}</span>
-											<span class="col-2 timestamp text-center">${it._brewAdded ? MiscUtil.dateToStr(new Date(it._brewAdded * 1000), true) : ""}</span>
-											<span class="col-1 source manbrew__source text-center pr-0"><a href="${it.download_url}" target="_blank" rel="noopener">View Raw</a></span>
-										</section>
-									</li>`;
-							});
+					const jsonStack = (await Promise.all(toLoads.map(async toLoad => {
+						const json = await DataUtil.loadJSON(toLoad.url);
+						if (toLoad._collection) json.filter(it => it.name === "index.json" || !collectionFiles.includes(it.name)).forEach(it => it._brewSkip = true);
+						json.forEach(it => it._cat = toLoad._cat);
+						return json;
+					}))).flat();
 
-							$ulRows.empty();
-							$ulRows.append(stack);
-
-							const list = new List("brewlistcontainer", {
-								valueNames: ["name", "author", "category", "timestamp"],
-								listClass: "brew-list",
-								sortFunction
-							});
-							ListUtil.bindEscapeKey(list, $lst.find(`.search`), true);
-
-							$btnAll.prop("disabled", false).click(() => $lst.find(`.manbrew__load_from_url`).filter((i, e) => !$(e).siblings(`.author`).text().toLowerCase().trim().startsWith("sample -")).click());
+					let stack = "";
+					const all = jsonStack.flat();
+					all.forEach(it => {
+						const cleanFilename = it.name.trim().replace(/\.json$/, "");
+						const spl = cleanFilename.split(";").map(it => it.trim());
+						if (spl.length > 1) {
+							it._brewName = spl[1];
+							it._brewAuthor = spl[0];
+						} else {
+							it._brewName = cleanFilename;
+							it._brewAuthor = "";
 						}
-					);
+					});
+					all.sort((a, b) => SortUtil.ascSortLower(a._brewName, b._brewName));
+
+					dataList = all.filter(it => !it._brewSkip);
+					dataList.forEach((it, i) => {
+						it._brewAdded = timestamps[it.path] || 0;
+						it._brewCat = BrewUtil._pRenderBrewScreen_getDisplayCat(BrewUtil._pRenderBrewScreen_dirToCat(it._cat));
+						stack += `
+						<li ${FLTR_ID}="${i}" class="not-clickable">
+							<section>
+								<span class="col-4 name manbrew__load_from_url pl-0 clickable" onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").escapeQuotes()}', true)">${it._brewName}</span>
+								<span class="col-3 author">${it._brewAuthor}</span>
+								<span class="col-2 category text-center">${it._brewCat}</span>
+								<span class="col-2 timestamp text-center">${it._brewAdded ? MiscUtil.dateToStr(new Date(it._brewAdded * 1000), true) : ""}</span>
+								<span class="col-1 source manbrew__source text-center pr-0"><a href="${it.download_url}" target="_blank" rel="noopener">View Raw</a></span>
+							</section>
+						</li>`;
+					});
+
+					$ulRows.empty();
+					$ulRows.append(stack);
+
+					const list = new List("brewlistcontainer", {
+						valueNames: ["name", "author", "category", "timestamp"],
+						listClass: "brew-list",
+						sortFunction
+					});
+					ListUtil.bindEscapeKey(list, $lst.find(`.search`), true);
+
+					$btnAll.prop("disabled", false).click(() => $lst.find(`.manbrew__load_from_url`).filter((i, e) => !$(e).siblings(`.author`).text().toLowerCase().trim().startsWith("sample -")).click());
 				})();
 			});
 
@@ -5183,7 +5251,7 @@ BrewUtil = {
 						case UrlUtil.PG_MAKE_SHAPED: return ["spell", "creature"];
 						case UrlUtil.PG_MANAGE_BREW:
 						case UrlUtil.PG_DEMO: return BrewUtil._STORABLE;
-						case UrlUtil.PG_SHIPS: return ["ship"];
+						case UrlUtil.PG_VEHICLES: return ["vehicle"];
 						default: throw new Error(`No homebrew properties defined for category ${page}`);
 					}
 				};
@@ -5313,7 +5381,7 @@ BrewUtil = {
 			case "disease":
 			case "table":
 			case "tableGroup":
-			case "ship": return BrewUtil._genPDeleteGenericBrew(category);
+			case "vehicle": return BrewUtil._genPDeleteGenericBrew(category);
 			case "subclass": return BrewUtil._pDeleteSubclassBrew;
 			case "class": return BrewUtil._pDeleteClassBrew;
 			case "adventure":
@@ -5414,8 +5482,8 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_DIRS: ["spell", "class", "subclass", "creature", "background", "feat", "optionalfeature", "race", "object", "trap", "hazard", "deity", "item", "reward", "psionic", "variantrule", "condition", "disease", "adventure", "book", "ship", "magicvariant"],
-	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "ship"],
+	_DIRS: ["spell", "class", "subclass", "creature", "background", "feat", "optionalfeature", "race", "object", "trap", "hazard", "deity", "item", "reward", "psionic", "variantrule", "condition", "disease", "adventure", "book", "vehicle", "magicvariant"],
+	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		function storePrep (arrName) {
 			if (json[arrName]) {
@@ -5537,7 +5605,7 @@ BrewUtil = {
 			case UrlUtil.PG_BOOKS:
 			case UrlUtil.PG_MAKE_SHAPED:
 			case UrlUtil.PG_TABLES:
-			case UrlUtil.PG_SHIPS:
+			case UrlUtil.PG_VEHICLES:
 				(BrewUtil._pHandleBrew || handleBrew)(toAdd);
 				break;
 			case UrlUtil.PG_MANAGE_BREW:
@@ -5948,9 +6016,9 @@ CollectionUtil = {
 		}
 	},
 
-	setEq (set1, set2) {
-		if (set1.size !== set2.size) return false;
-		for (const a of set1) if (!set2.has(a)) return false;
+	setEq (a, b) {
+		if (a.size !== b.size) return false;
+		for (const it of a) if (!b.has(it)) return false;
 		return true;
 	},
 
@@ -5958,38 +6026,40 @@ CollectionUtil = {
 		return new Set([...set1].filter(it => !set2.has(it)));
 	},
 
-	deepEquals (obj1, obj2) {
-		if (obj1 === null && obj2 === null) return true;
-		if ((obj1 === null && obj2 !== null) || (obj1 !== null && obj2 === null)) return false;
-
-		if (isNaN(obj1) && isNaN(obj2)) return true;
-		if ((isNaN(obj1) && !isNaN(obj2)) || (!isNaN(obj1) && isNaN(obj2))) return false;
-
-		if (obj1 === undefined && obj2 === undefined) return true;
-		if ((obj1 === undefined && obj2 !== undefined) || (obj1 !== undefined && obj2 === undefined)) return false;
-
-		const to1 = typeof obj1;
-		const to2 = typeof obj2;
-
-		if (to1 !== to2) return false;
-		switch (to1) {
-			case "object": {
-				if (obj1 instanceof Array) {
-					if (!(obj2 instanceof Array)) return false;
-					return obj1.equals(obj2);
-				} else {
-					if (obj2 instanceof Array) return true;
-					const keys1 = Object.keys(obj1);
-					const keys2 = Object.keys(obj2);
-					if (!CollectionUtil.setEq(new Set(keys1), new Set(keys2))) return false;
-					return keys1.every(k => CollectionUtil.deepEquals(obj1[k], obj2[k]));
-				}
-			}
-			case "string":
-			case "number":
-			case "boolean":
-				return obj1 === obj2;
+	deepEquals (a, b) {
+		if (CollectionUtil._eq_sameValueZeroEqual(a, b)) return true;
+		if (a && b && typeof a === "object" && typeof b === "object") {
+			if (CollectionUtil._eq_isPlainObject(a) && CollectionUtil._eq_isPlainObject(b)) return CollectionUtil._eq_areObjectsEqual(a, b);
+			const arrayA = Array.isArray(a);
+			const arrayB = Array.isArray(b);
+			if (arrayA || arrayB) return arrayA === arrayB && CollectionUtil._eq_areArraysEqual(a, b);
+			const setA = a instanceof Set;
+			const setB = b instanceof Set;
+			if (setA || setB) return setA === setB && CollectionUtil.setEq(a, b);
+			return CollectionUtil._eq_areObjectsEqual(a, b);
 		}
+		return false;
+	},
+
+	// This handles the NaN != NaN case; ignore linter complaints
+	// eslint-disable-next-line no-self-compare
+	_eq_sameValueZeroEqual: (a, b) => a === b || (a !== a && b !== b),
+	_eq_isPlainObject: (value) => value.constructor === Object || value.constructor == null,
+	_eq_areObjectsEqual (a, b) {
+		const keysA = Object.keys(a);
+		const {length} = keysA;
+		if (Object.keys(b).length !== length) return false;
+		for (let i = 0; i < length; i++) {
+			if (!b.hasOwnProperty(keysA[i])) return false;
+			if (!CollectionUtil.deepEquals(a[keysA[i]], b[keysA[i]])) return false;
+		}
+		return true;
+	},
+	_eq_areArraysEqual (a, b) {
+		const {length} = a;
+		if (b.length !== length) return false;
+		for (let i = 0; i < length; i++) if (!CollectionUtil.deepEquals(a[i], b[i])) return false;
+		return true;
 	}
 };
 
@@ -6094,7 +6164,7 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 		$body.css("overflow", "hidden");
 		$body.addClass("book-mode-active");
 
-		const $bkTbl = $(`<table class="stats stats-book stats-book--large" style="font-size: 1.0em; font-family: inherit;"/>`);
+		const $bkTbl = $(`<table class="stats stats--book stats--book-large" style="font-size: 1.0em; font-family: inherit;"/>`);
 		const $brdTop = $(`<tr><th class="border close-border" style="width: 100%;"><div/></th></tr>`);
 		const $hdTxt = $(`<span class="spacer-name"/>`); // pass this to the content function to allow it to set a main header
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
@@ -6104,7 +6174,7 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 		$brdTop.find(`div`).append($hdTxt).append($btnClose);
 		$bkTbl.append($brdTop);
 
-		const $tbl = $(`<table class="stats stats-book stats-book--large" style="width: auto; margin: 0 auto; font-family: inherit;"/>`);
+		const $tbl = $(`<table class="stats stats--book stats--book-large" style="width: auto; margin: 0 auto; font-family: inherit;"/>`);
 
 		const numShownWrp = self.popTblGetNumShown($tbl, $hdTxt);
 
@@ -6221,7 +6291,7 @@ ExcludeUtil = {
 
 // ENCOUNTERS ==========================================================================================================
 EncounterUtil = {
-	async pGetSavedState () {
+	async pGetInitialState () {
 		if (await EncounterUtil._pHasSavedStateLocal()) {
 			if (await EncounterUtil._hasSavedStateUrl()) {
 				return {
@@ -6275,9 +6345,17 @@ EncounterUtil = {
 		StorageUtil.pSet(ENCOUNTER_STORAGE, toSave);
 	},
 
-	async pGetAllSaves () {
+	async pGetSavedState () {
 		const saved = await StorageUtil.pGet(EncounterUtil.SAVED_ENCOUNTER_SAVE_LOCATION);
 		return saved || {};
+	},
+
+	getEncounterName (encounter) {
+		if (encounter.l && encounter.l.items && encounter.l.items.length) {
+			const largestCount = encounter.l.items.sort((a, b) => SortUtil.ascSort(Number(b.c), Number(a.c)))[0];
+			const name = decodeURIComponent(largestCount.h.split(HASH_LIST_SEP)[0]).toTitleCase();
+			return `Encounter with ${name} ×${largestCount.c}`;
+		} else return "(Unnamed Encounter)"
 	}
 };
 EncounterUtil.SUB_HASH_PREFIX = "encounter";
@@ -6332,7 +6410,7 @@ ProxyUtil = {
 		obj.__hooks = {};
 		obj.__hooksAll = {};
 
-		obj._getProxy = function (toProxy, hookProp) {
+		obj._getProxy = function (hookProp, toProxy) {
 			return new Proxy(toProxy, {
 				set: (object, prop, value) => {
 					object[prop] = value;

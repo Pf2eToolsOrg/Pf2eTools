@@ -299,6 +299,7 @@ function pPostLoad () {
 						source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>`},
 						level: {name: "Level", transform: (it) => Parser.spLevelToFull(it)},
 						time: {name: "Casting Time", transform: (it) => getTblTimeStr(it[0])},
+						duration: {name: "Duration", transform: (it) => Parser.spDurationToFull(it)},
 						_school: {name: "School", transform: (sp) => `<span class="school_${sp.school}">${Parser.spSchoolAndSubschoolsAbvsToFull(sp.school, sp.subschools)}</span>`},
 						range: {name: "Range", transform: (it) => Parser.spRangeToFull(it)},
 						_components: {name: "Components", transform: (sp) => Parser.spComponentsToFull(sp)},
@@ -344,11 +345,9 @@ window.onload = async function load () {
 	]);
 	Object.assign(SUBCLASS_LOOKUP, subclassLookup);
 	SortUtil.initHandleFilterButtonClicks();
-	multisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addSpells, pPostLoad)
-		.then(() => {
-			if (History.lastLoadedId == null) History._freshLoad();
-			ExcludeUtil.checkShowAllExcluded(spellList, $(`#pagecontent`));
-		});
+	await pMultisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addSpells, pPostLoad);
+	if (History.lastLoadedId == null) History._freshLoad();
+	ExcludeUtil.checkShowAllExcluded(spellList, $(`#pagecontent`));
 };
 
 let list;

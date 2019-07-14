@@ -48,6 +48,13 @@ class FilterBox {
 	}
 
 	static selectFirstVisible (entryList) {
+		if (History.lastLoadedId == null && !History.initialLoad) {
+			History._freshLoad();
+		}
+
+		// This version deemed too annoying to be of practical use
+		//  Instead of always loading the URL, this would switch to the first visible item that matches the filter
+		/*
 		if (History.lastLoadedId && !History.initialLoad) {
 			const last = entryList[History.lastLoadedId];
 			const lastHash = UrlUtil.autoEncodeHash(last);
@@ -56,6 +63,7 @@ class FilterBox {
 		} else if (History.lastLoadedId == null && !History.initialLoad) {
 			History._freshLoad();
 		}
+		*/
 	}
 
 	/**
@@ -74,11 +82,11 @@ class FilterBox {
 		this._doSaveStateDebounced = MiscUtil.debounce(() => this._pDoSaveState(), 50);
 		ProxyUtil.decorate(this);
 		this.__meta = {...FilterBox._DEFAULT_META};
-		this._meta = this._getProxy(this.__meta, "meta");
+		this._meta = this._getProxy("meta", this.__meta);
 		this.__minisHidden = {};
-		this._minisHidden = this._getProxy(this.__minisHidden, "minisHidden");
+		this._minisHidden = this._getProxy("minisHidden", this.__minisHidden);
 		this.__combineAs = {};
-		this._combineAs = this._getProxy(this.__combineAs, "combineAs");
+		this._combineAs = this._getProxy("combineAs", this.__combineAs);
 		this._$body = $(`body`);
 		this._$overlay = null;
 	}
@@ -171,7 +179,7 @@ class FilterBox {
 					${$btnSettings}
 				</div>
 			</div>
-			<hr class="full-width m-0 mb-2">
+			<hr class="w-100 m-0 mb-2">
 			
 			<hr class="mt-1 mb-1">
 			<div class="ui-modal__scroller smooth-scroll px-1">
@@ -215,13 +223,13 @@ class FilterBox {
 	}
 
 	_openSettingsModal () {
-		const $modalInner = UiUtil.getShow$Modal({title: "Settings"});
+		const {$modalInner} = UiUtil.getShowModal({title: "Settings"});
 		UiUtil.$getAddModalRowHeader($modalInner, "Hide summary for filter...", {helpText: "The summary is the small red and blue button panel which appear below the search bar."});
 		this._filters.forEach(f => UiUtil.$getAddModalRowCb($modalInner, f.header, this._minisHidden, f.header));
 	}
 
 	_openCombineAsModal () {
-		const $modalInner = UiUtil.getShow$Modal({title: "Filter Combination Logic"});
+		const {$modalInner} = UiUtil.getShowModal({title: "Filter Combination Logic"});
 		const $btnReset = $(`<button class="btn btn-xs btn-default">Reset</button>`)
 			.click(() => {
 				Object.keys(this._combineAs).forEach(k => {
@@ -297,10 +305,8 @@ class FilterBox {
 		const urlHeaderToFilter = {};
 		this._filters.forEach(f => {
 			const childFilters = f.getChildFilters();
-			// avoid adding parent filters, as resetting them (if no modification occurs) resets all their children
-			//  alternately, we could track when a child is modified, and add the parent to the list of filter to be left as-is
 			if (childFilters.length) childFilters.forEach(f => urlHeaderToFilter[f.header.toLowerCase()] = f);
-			else urlHeaderToFilter[f.header.toLowerCase()] = f;
+			urlHeaderToFilter[f.header.toLowerCase()] = f;
 		});
 		const updatedUrlHeaders = new Set();
 		const consumed = new Set();
@@ -335,7 +341,7 @@ class FilterBox {
 				.filter(k => !updatedUrlHeaders.has(k))
 				.forEach(k => {
 					const filter = urlHeaderToFilter[k];
-					filter.reset(true);
+					filter.resetShallow(true);
 				});
 
 			const [link] = History._getHashParts();
@@ -545,7 +551,7 @@ class FilterBase {
 		ProxyUtil.decorate(this);
 
 		this.__meta = {...FilterBase._DEFAULT_META};
-		this._meta = this._getProxy(this.__meta, "meta");
+		this._meta = this._getProxy("meta", this.__meta);
 	}
 
 	show () { this._meta.isHidden = false; }
@@ -599,6 +605,7 @@ class FilterBase {
 	$render () { throw new Error(`Unimplemented!`); }
 	getValues () { throw new Error(`Unimplemented!`); }
 	reset () { throw new Error(`Unimplemented!`); }
+	resetShallow () { throw new Error(`Unimplemented!`); }
 	update () { throw new Error(`Unimplemented!`); }
 	toDisplay () { throw new Error(`Unimplemented!`); }
 	addItem () { throw new Error(`Unimplemented!`); }
@@ -668,7 +675,7 @@ class Filter extends FilterBase {
 
 		this._filterBox = null;
 		this.__state = {};
-		this._state = this._getProxy(this.__state, "state");
+		this._state = this._getProxy("state", this.__state);
 		this._items.forEach(it => this._defaultItemState(it));
 		this.__$wrpFilter = null;
 		this.__$wrpPills = null;
@@ -676,7 +683,7 @@ class Filter extends FilterBase {
 		this.__$wrpNestHeadInner = null;
 		this._updateNestSummary = null;
 		this.__nestsHidden = {};
-		this._nestsHidden = this._getProxy(this.__nestsHidden, "nestsHidden");
+		this._nestsHidden = this._getProxy("nestsHidden", this.__nestsHidden);
 		this._isNestsDirty = false;
 		this._isItemsDirty = false;
 		this._pillGroupsMeta = {};
@@ -722,7 +729,7 @@ class Filter extends FilterBase {
 			out.push(UrlUtil.packSubHash(FilterBase.getSubHashPrefix("state", this.header), serPillStates));
 		}
 
-		const areNotDefaultNestsHidden = Object.entries(this._nestsHidden).filter(([k, v]) => !(this._nests[k].isHidden === v));
+		const areNotDefaultNestsHidden = Object.entries(this._nestsHidden).filter(([k, v]) => this._nests[k] && !(this._nests[k].isHidden === v));
 		if (areNotDefaultNestsHidden.length) {
 			// serialize nestsHidden as `key=value` pairs
 			const nestsHidden = areNotDefaultNestsHidden.map(([k]) => `${UrlUtil.pack(k)}=1`);
@@ -996,6 +1003,8 @@ class Filter extends FilterBase {
 		this._items.forEach(it => this._defaultItemState(it));
 	}
 
+	resetShallow (isResetAll) { return this.reset(); }
+
 	_doRenderPills () {
 		if (this._itemSortFn) this._items.sort(this._itemSortFn);
 		this._items.forEach(it => {
@@ -1247,7 +1256,7 @@ class RangeFilter extends FilterBase {
 			curMin: this._min,
 			curMax: this._max
 		};
-		this._state = this._getProxy(this.__state, "state");
+		this._state = this._getProxy("state", this.__state);
 		this._isLabelsDirty = false;
 		this.__$wrpSlider = null;
 		this.__$wrpMini = null;
@@ -1527,6 +1536,8 @@ class RangeFilter extends FilterBase {
 		this._state.curMax = this._state.max;
 	}
 
+	resetShallow (isResetAll) { return this.reset(); }
+
 	update () {
 		// (labels will be automatically updated by the slider handlers)
 		// always render the mini-pills, to ensure the overall order in the grid stays correct (shared between multiple filters)
@@ -1596,7 +1607,8 @@ class MultiFilter extends FilterBase {
 			...MultiFilter._DETAULT_STATE,
 			mode: opts.mode || MultiFilter._DETAULT_STATE.mode
 		};
-		this._state = this._getProxy(this.__state, "state")
+		this._baseState = MiscUtil.copy(this.__state);
+		this._state = this._getProxy("state", this.__state);
 	}
 
 	getChildFilters () {
@@ -1717,13 +1729,18 @@ class MultiFilter extends FilterBase {
 	}
 
 	_reset () {
-		Object.assign(this._state, MultiFilter._DETAULT_STATE);
+		Object.assign(this._state, this._baseState);
 	}
 
 	reset (isResetAll) {
 		if (isResetAll) this.resetBase();
 		this._reset();
 		this._filters.forEach(it => it.reset(isResetAll));
+	}
+
+	resetShallow (isResetAll) {
+		if (isResetAll) this.resetBase();
+		this._reset();
 	}
 
 	update () {

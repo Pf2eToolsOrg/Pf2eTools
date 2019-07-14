@@ -193,6 +193,7 @@ const BookUtil = {
 		controls: {},
 		headerMap: {}
 	},
+	_lastClickedLink: null,
 	showBookContent (data, fromIndex, bookId, hashParts) {
 		function handleQuickReferenceShowAll () {
 			$(`.${Renderer.HEAD_NEG_1}`).show();
@@ -248,7 +249,7 @@ const BookUtil = {
 		BookUtil.curRender.data = data;
 		BookUtil.curRender.fromIndex = fromIndex;
 		BookUtil.curRender.headerMap = BookUtil._buildHeaderMap(data);
-		if (BookUtil.curRender.chapter !== chapter || BookUtil.curRender.curBookId !== bookId) {
+		if (BookUtil.curRender.chapter !== chapter || UrlUtil.encodeForHash(BookUtil.curRender.curBookId.toLowerCase()) !== UrlUtil.encodeForHash(bookId)) {
 			BookUtil.thisContents.children(`ul`).children(`ul, li`).removeClass("active");
 			if (~chapter) {
 				BookUtil.thisContents.children(`ul`).children(`li:nth-of-type(${chapter + 1}), ul:nth-of-type(${chapter + 1})`).addClass("active");
@@ -358,6 +359,19 @@ const BookUtil = {
 				if (~chapter) {
 					if (BookUtil.referenceId) MiscUtil.scrollPageTop();
 					else BookUtil.scrollPageTop();
+				} else {
+					if (hashParts.length === 1 && BookUtil._lastClickedLink) {
+						const $lastLink = $(BookUtil._lastClickedLink);
+						const lastHref = $lastLink.attr("href");
+						const mLink = new RegExp(`^${UrlUtil.PG_ADVENTURE}#${BookUtil.curRender.curBookId},(\\d+)$`, "i").exec(lastHref.trim());
+						if (mLink) {
+							const linkChapterIx = Number(mLink[1]);
+							const ele = $(`#pagecontent tr.text td`).children(`.${Renderer.HEAD_NEG_1}`)[linkChapterIx];
+							if (ele) ele.scrollIntoView();
+							else setTimeout(() => { throw new Error(`Failed to find header scroll target with index "${linkChapterIx}"`) });
+							return;
+						}
+					}
 				}
 			} else if (forceScroll) BookUtil.scrollClick(scrollTo, scrollIndex);
 		}
@@ -784,4 +798,6 @@ const BookUtil = {
 
 if (typeof module !== "undefined") {
 	module.exports.BookUtil = BookUtil;
+} else {
+	window.addEventListener("load", () => $("body").on("click", "a", (evt) => BookUtil._lastClickedLink = evt.target));
 }

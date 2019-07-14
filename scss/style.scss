@@ -1401,11 +1401,15 @@ th.name {
 }
 
 .stats {
-	font-family: 'Convergence', sans-serif;
+	font-family: 'Convergence', Arial, sans-serif;
 	width: 100%;
 	font-size: 0.9em;
 	table-layout: fixed;
 	overflow-wrap: break-word;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 .stats.monster {
@@ -1709,22 +1713,9 @@ tr th.mon__name--token {
 		margin: 0;
 	}
 
-	label span.explanation {
-		@include shadow-1();
-
-		display: none;
+	.explanation {
 		font-weight: normal;
-		position: absolute;
-		background: white;
-		border-radius: 3px;
-		z-index: 1;
-		padding: 3px;
-		width: 18em;
-		font-size: 0.8em;
-	}
-
-	label:hover span.explanation {
-		display: block;
+		width: 26em;
 	}
 
 	input#hd:focus {
@@ -2019,7 +2010,7 @@ tr.spellbook-level > td {
 	}
 }
 
-.stats-book--large table.spellbook-entry {
+.stats--book-large table.spellbook-entry {
 	margin: 0;
 	border-radius: 0.2em;
 	display: inline-block;
@@ -2056,7 +2047,7 @@ tr.printbook-bestiary > td {
 	}
 }
 
-.stats.stats-book--large table.printbook-bestiary-entry {
+.stats--book-large table.printbook-bestiary-entry {
 	margin: 0;
 	border-radius: 0.2em;
 	display: inline-block;
@@ -2373,7 +2364,7 @@ tr.printbook-bestiary > td {
 		left: unset;
 		display: block;
 
-		.stats-book--large {
+		.stats--book-large {
 			margin: 0 !important;
 			max-height: initial !important;
 			overflow-y: visible !important;
@@ -2406,7 +2397,7 @@ tr.printbook-bestiary > td {
 		column-gap: 0 !important;
 		padding: 0 !important;
 
-		// have the name rows be full-width, to force the table to be full-width
+		// have the name rows be w-100, to force the table to be w-100
 		> table > tbody > tr > th {
 			width: 100vw;
 		}
@@ -3140,9 +3131,10 @@ tr.regionaleffect {
 }
 
 // Book mode adjustments
-.stats-book--large {
+.stats--book-large {
 	border-radius: 0;
-	line-height: 1.3;
+	line-height: 1.7;
+	font-size: 1em;
 
 	.rd__h--0 {
 		font-size: 2.5em;
@@ -3419,9 +3411,10 @@ ul.list li:hover {
 	@include shadow-1();
 }
 
-.stats.stats-book {
+.stats--book {
 	@include shadow-1();
 
+	font-family: Roboto, Helvetica, sans-serif;
 	background: white;
 
 	::selection {
@@ -3447,12 +3440,12 @@ ul.list li:hover {
 		justify-content: flex-end;
 	}
 
-	.stats-book--large {
+	.stats--book-large {
 		max-height: 100vh;
 		overflow-y: auto;
 	}
 
-	.stats-book--large td {
+	.stats--book-large td {
 		vertical-align: top;
 	}
 
@@ -3478,8 +3471,8 @@ ul.list li:hover {
 	background: #cbbfaa80; // pre-blend (50% opacity): e4 d8 c3
 }
 
-.stats.stats-book table.striped-odd > tbody > tr:nth-child(odd),
-.stats.stats-book table.striped-even > tbody > tr:nth-child(even) {
+.stats--book table.striped-odd > tbody > tr:nth-child(odd),
+.stats--book table.striped-even > tbody > tr:nth-child(even) {
 	background: #c0c0c080; // pre-blend (50% opacity): e0 e0 e0
 }
 
@@ -3489,7 +3482,7 @@ th.border {
 }
 
 .hwin .hoverborder.hoverborder-book,
-.stats.stats-book th.border {
+.stats--book th.border {
 	background: silver;
 }
 
@@ -3549,10 +3542,6 @@ tr.legendary td {
 
 .f-all-out > p:nth-child(odd) {
 	background: #f4f4f4;
-}
-
-#crcalc label span.explanation {
-	border: 1px solid lightgrey;
 }
 
 #msbcr tr:nth-child(even) {
@@ -3830,6 +3819,7 @@ ul.list.books > li > a > span.name:hover {
 	$class-main-color-alt: #d2cabd;
 	$class-sub-color: #609dd2;
 	$class-ua-color: #27ce80;
+	$class-brew-color: #aa40b4;
 	$btn-active-color: #ffffff40;
 
 	body {
@@ -3871,7 +3861,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.text-muted {
-		color: darken($night-font-color, 15%);
+		color: darken($night-font-color, 15%) !important;
 	}
 
 	header p.lead {
@@ -3928,8 +3918,55 @@ ul.list.books > li > a > span.name:hover {
 
 	.btn-default,
 	.btn-default:hover,
-	.btn-default:focus {
+	.btn-default:focus,
+	.btn-default:active {
 		background-color: $night-bg-color;
+		color: $night-font-color;
+	}
+
+	// Colors blended using https://www.w3schools.com/colors/colors_mixer.asp
+	.btn-primary,
+	.btn-primary:hover,
+	.btn-primary:focus,
+	.btn-primary:active {
+		// #337ab7 blended with #222
+		background-color: #2a4e6c;
+		color: $night-font-color;
+	}
+
+	.btn-danger,
+	.btn-danger:hover,
+	.btn-danger:focus,
+	.btn-danger:active {
+		// #d9534f blended with #222
+		background-color: #7e3a38;
+		color: $night-font-color;
+	}
+
+	.btn-warning,
+	.btn-warning:hover,
+	.btn-warning:focus,
+	.btn-warning:active {
+		// #f0ad4e blended with #222
+		background-color: #896838;
+		color: $night-font-color;
+	}
+
+	.btn-info,
+	.btn-info:hover,
+	.btn-info:focus,
+	.btn-info:active {
+		// #31b0d5 blended with #222
+		background-color: #2a697c;
+		color: $night-font-color;
+	}
+
+	.btn-success,
+	.btn-success:hover,
+	.btn-success:focus,
+	.btn-success:active {
+		// #5cb85c blended with #222
+		background-color: #427442;
 		color: $night-font-color;
 	}
 
@@ -3953,6 +3990,14 @@ ul.list.books > li > a > span.name:hover {
 		background-color: #888;
 		box-shadow: inset 0 3px 7px #111e;
 		color: #222;
+	}
+
+	.btn-primary.active,
+	.btn-danger.active,
+	.btn-warning.active,
+	.btn-info.active,
+	.btn-success.active {
+		box-shadow: inset 0 3px 7px #111e;
 	}
 
 	.btn-nowrap {
@@ -4085,7 +4130,7 @@ ul.list.books > li > a > span.name:hover {
 
 	.hwin .hoverborder,
 	th.border,
-	.stats.stats-book th.border {
+	.stats--book th.border {
 		background: #565656;
 	}
 
@@ -4098,7 +4143,7 @@ ul.list.books > li > a > span.name:hover {
 		border-bottom: 1px solid #565656;
 	}
 
-	.stats.stats-book ::selection {
+	.stats--book ::selection {
 		color: #242527;
 		background: white;
 	}
@@ -4161,11 +4206,6 @@ ul.list.books > li > a > span.name:hover {
 
 	.omni__paginate-ctrl:hover {
 		color: #999;
-	}
-
-	#crcalc label span.explanation {
-		border: 1px solid black;
-		background: $night-bg-color;
 	}
 
 	#msbcr tr:nth-child(even) {
@@ -4251,6 +4291,15 @@ ul.list.books > li > a > span.name:hover {
 		.rd__h--2 {
 			color: $class-ua-color;
 			border-bottom-color: $class-ua-color;
+		}
+	}
+
+	.refreshing-brew {
+		.rd__h--0,
+		.rd__h--1,
+		.rd__h--2 {
+			color: $class-brew-color;
+			border-bottom-color: $class-brew-color;
 		}
 	}
 
@@ -4381,7 +4430,7 @@ ul.list.books > li > a > span.name:hover {
 		}
 
 		&.sc_pill--active.refreshing-brew {
-			background: #8c3b96;
+			background: $class-brew-color;
 		}
 
 		&.sc_pill--active.spicy-sauce,

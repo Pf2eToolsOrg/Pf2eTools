@@ -64,7 +64,7 @@ class InitiativeTracker {
 		};
 
 		const makeImportSettingsModal = () => {
-			const $modalInner = UiUtil.getShow$Modal("Import Settings", () => doUpdateExternalStates());
+			const {$modalInner} = UiUtil.getShowModal({title: "Import Settings", cbClose: () => doUpdateExternalStates()});
 			UiUtil.addModalSep($modalInner);
 			UiUtil.$getAddModalRowCb($modalInner, "Roll creature hit points", cfg, "isRollHp");
 			UiUtil.$getAddModalRowCb($modalInner, "Roll groups of creatures together", cfg, "importIsRollGroups");
@@ -77,7 +77,7 @@ class InitiativeTracker {
 		ContextUtil.doInitContextMenu(contextId, async (evt, ele, $invokedOn, $selectedMenu) => {
 			switch (Number($selectedMenu.data("ctx-id"))) {
 				case 0:
-					EncounterUtil.pGetSavedState().then(savedState => {
+					EncounterUtil.pGetInitialState().then(savedState => {
 						if (savedState) convertAndLoadBestiaryList(savedState.data);
 						else {
 							JqueryUtil.doToast({
@@ -88,11 +88,12 @@ class InitiativeTracker {
 					});
 					break;
 				case 1: {
-					const allSaves = Object.values(await EncounterUtil.pGetAllSaves());
+					const allSaves = Object.values((await EncounterUtil.pGetSavedState()).savedEncounters || {});
+					if (!allSaves.length) return JqueryUtil.doToast({type: "warning", content: "No saved encounters were found! Go to the Bestiary and create some first."});
 					const selected = await InputUiUtil.pGetUserEnum({
 						values: allSaves.map(it => it.name),
 						placeholder: "Select a save",
-						title: "Whatever"
+						title: "Select Saved Encounter"
 					});
 					if (selected != null) convertAndLoadBestiaryList(allSaves[selected]);
 					break;
@@ -112,7 +113,7 @@ class InitiativeTracker {
 		const $wrpHeader = $(`
 			<div class="dm-init-wrp-header">
 				<div class="dm-init-row-lhs dm-init-header">
-					<div class="full-width">Creature/Status</div>
+					<div class="w-100">Creature/Status</div>
 				</div>
 
 				<div class="dm-init-row-mid"/>
@@ -158,7 +159,7 @@ class InitiativeTracker {
 		$(`<button class="btn btn-primary btn-xs mr-2" title="Player Window"><span class="glyphicon glyphicon-user"/></button>`)
 			.appendTo($wrpUtils)
 			.click(() => {
-				const $modalInner = UiUtil.getShow$Modal({
+				const {$modalInner} = UiUtil.getShowModal({
 					title: "Configure Player View",
 					fullWidth: true,
 					fullHeight: true,
@@ -170,7 +171,7 @@ class InitiativeTracker {
 				const $wrpHelp = UiUtil.$getAddModalRow($modalInner, "div");
 				const $btnAltGenAll = $(`<button class="btn btn-primary btn-text-insert">Generate All</button>`).click(() => $btnGenServerTokens.click());
 				const $btnAltCopyAll = $(`<button class="btn btn-primary btn-text-insert">Copy Server Tokens</button>`).click(() => $btnCopyServers.click());
-				$$`<div class="row full-width">
+				$$`<div class="row w-100">
 					<div class="col-12">
 						<p>
 						The Player View is part of a peer-to-peer (i.e., serverless) system to allow players to connect to a DM's initiative tracker. Players should use the <a href="inittrackerplayerview.html">Initiative Tracker Player View</a> page to connect to the DM's instance. As a DM, the usage is as follows:
@@ -212,7 +213,7 @@ class InitiativeTracker {
 
 				const $btnAcceptClients = $(`<button class="btn btn-xs btn-primary" title="Open a prompt into which text containing client tokens can be pasted">Accept Multiple Clients</button>`)
 					.click(() => {
-						const $modalInnerAccept = UiUtil.getShow$Modal({title: "Accept Multiple Clients"});
+						const {$modalInner, doClose} = UiUtil.getShowModal({title: "Accept Multiple Clients"});
 
 						const $iptText = $(`<textarea class="form-control dm_init__pl_textarea block mb-2"/>`)
 							.keydown(() => $iptText.removeClass("error-background"));
@@ -231,7 +232,7 @@ class InitiativeTracker {
 										serverInfo.rowMeta.$btnAcceptClientToken.attr("disabled", true);
 										delete serverInfo._tempTokenToDisplay;
 									});
-									$modalInnerAccept.data("close")();
+									doClose();
 									sendStateToClientsDebounced();
 								}
 							});
@@ -240,11 +241,11 @@ class InitiativeTracker {
 							<p>Paste text containing one or more client tokens, and click "Accept Multiple Clients"</p>
 							${$iptText}
 							<div class="flex-vh-center">${$btnAccept}</div>
-						</div>`.appendTo($modalInnerAccept)
+						</div>`.appendTo($modalInner)
 					});
 
 				$$`
-					<div class="row full-width">
+					<div class="row w-100">
 						<div class="col-12">
 							<div class="flex-inline-v-center mr-2">
 								<span class="mr-1">Add a player (client):</span>
@@ -269,7 +270,7 @@ class InitiativeTracker {
 
 				UiUtil.$getAddModalRow($modalInner, "div")
 					.append($$`
-					<div class="row full-width">
+					<div class="row w-100">
 						<div class="col-2 bold">Player Name</div>
 						<div class="col-3-5 bold">Server Token</div>
 						<div class="col-1 text-center">${$btnGenServerTokens}</div>
@@ -284,7 +285,7 @@ class InitiativeTracker {
 					$iptTokenClient,
 					$btnAcceptClientToken,
 					$btnDeleteClient
-				) => $$`<div class="row full-width mb-2 flex">
+				) => $$`<div class="row w-100 mb-2 flex">
 					<div class="col-2">${$iptName}</div>
 					<div class="col-3-5">${$iptTokenServer}</div>
 					<div class="col-1 flex-vh-center">${$btnGenServerToken}</div>
@@ -369,7 +370,7 @@ class InitiativeTracker {
 				};
 
 				const $wrpRows = UiUtil.$getAddModalRow($modalInner, "div");
-				const $wrpRowsInner = $(`<div class="full-width"/>`).appendTo($wrpRows);
+				const $wrpRowsInner = $(`<div class="w-100"/>`).appendTo($wrpRows);
 
 				if (p2pMeta.rows.length) p2pMeta.rows.forEach(row => row.$row.appendTo($wrpRowsInner));
 				else addClientRow();
@@ -490,13 +491,13 @@ class InitiativeTracker {
 		const $btnLock = $(`<button class="btn btn-danger btn-xs" title="Lock Tracker"><span class="glyphicon glyphicon-lock"></span></button>`).appendTo($wrpLockSettings);
 		$btnLock.on("click", () => {
 			if (cfg.isLocked) {
-				$btnLock.removeClass("btn-success").addClass("btn-danger");
-				$(".dm-init-lockable").toggleClass("disabled");
-				$("input.dm-init-lockable").prop('disabled', false);
+				$btnLock.removeClass("btn-success").addClass("btn-danger").attr("title", "Lock Tracker");
+				$(".dm-init-lockable").removeClass("disabled");
+				$("input.dm-init-lockable").prop("disabled", false);
 			} else {
-				$btnLock.removeClass("btn-danger").addClass("btn-success");
-				$(".dm-init-lockable").toggleClass("disabled");
-				$("input.dm-init-lockable").prop('disabled', true);
+				$btnLock.removeClass("btn-danger").addClass("btn-success").attr("title", "Unlock Tracker");
+				$(".dm-init-lockable").addClass("disabled");
+				$("input.dm-init-lockable").prop("disabled", true);
 			}
 			cfg.isLocked = !cfg.isLocked;
 			handleStatColsChange();
@@ -505,13 +506,13 @@ class InitiativeTracker {
 		$(`<button class="btn btn-default btn-xs mr-2"><span class="glyphicon glyphicon-cog"></span></button>`)
 			.appendTo($wrpLockSettings)
 			.click(() => {
-				const $modalInner = UiUtil.getShow$Modal(
-					"Settings",
-					() => {
+				const {$modalInner} = UiUtil.getShowModal({
+					title: "Settings",
+					cbClose: () => {
 						handleStatColsChange();
 						doUpdateExternalStates();
 					}
-				);
+				});
 				UiUtil.addModalSep($modalInner);
 				UiUtil.$getAddModalRowCb($modalInner, "Roll hit points", cfg, "isRollHp");
 				UiUtil.addModalSep($modalInner);
@@ -683,7 +684,7 @@ class InitiativeTracker {
 				isWait: false
 			};
 
-			const $modalInner = UiUtil.getShow$Modal()
+			const {$modalInner, doClose} = UiUtil.getShowModal()
 				.addClass("flex-col");
 
 			const $controls = $(`<div class="split" style="flex-shrink: 0"/>`).appendTo($modalInner);
@@ -766,7 +767,7 @@ class InitiativeTracker {
 						doSort(cfg.sort);
 						checkSetFirstActive();
 						doUpdateExternalStates();
-						$modalInner.data("close")();
+						doClose();
 					};
 
 					const get$Row = (r) => {
@@ -1089,7 +1090,7 @@ class InitiativeTracker {
 			$(`<button class="btn btn-warning btn-xs dm-init-row-btn dm-init-row-btn-flag" title="Add Condition" tabindex="-1"><span class="glyphicon glyphicon-flag"/></button>`)
 				.appendTo($wrpConds)
 				.on("click", () => {
-					const $modalInner = UiUtil.getShow$Modal({noMinHeight: true});
+					const {$modalInner} = UiUtil.getShowModal({noMinHeight: true});
 
 					const $wrpRows = $(`<div class="dm-init-modal-wrp-rows"/>`).appendTo($modalInner);
 
@@ -1632,6 +1633,8 @@ class InitiativeTracker {
 				loadState(toLoad, cfg.importIsAppend);
 			}
 		}
+
+		$wrpTracker.data("doConvertAndLoadBestiaryList", (bestiaryList) => convertAndLoadBestiaryList(bestiaryList));
 
 		loadState(state);
 		doSort(cfg.sort);

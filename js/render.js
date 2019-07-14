@@ -232,6 +232,7 @@ function Renderer () {
 				// entire data records
 				case "dataCreature": this._renderDataCreature(entry, textStack, meta, options); break;
 				case "dataSpell": this._renderDataSpell(entry, textStack, meta, options); break;
+				case "dataTrapHazard": this._renderDataTrapHazard(entry, textStack, meta, options); break;
 
 				// images
 				case "image": this._renderImage(entry, textStack, meta, options); break;
@@ -778,28 +779,39 @@ function Renderer () {
 
 	this._renderDataCreature = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `<table class="rd__b-data">`;
-		textStack[0] += `<thead><tr><th class="rd__data-embed-header" colspan="6" onclick="((ele) => {
-						$(ele).find('.rd__data-embed-name').toggle(); 
-						$(ele).find('.rd__data-embed-toggle').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
-						$(ele).closest('table').find('tbody').toggle()
-					})(this)"><span style="display: none;" class="rd__data-embed-name">${entry.dataCreature.name}</span><span class="rd__data-embed-toggle">[\u2013]</span></th></tr></thead><tbody>`;
+		this._renderDataHeader(textStack, entry.dataCreature.name);
 		textStack[0] += Renderer.monster.getCompactRenderedString(entry.dataCreature, this);
-		textStack[0] += `</tbody></table>`;
+		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
 
 	this._renderDataSpell = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
+		this._renderDataHeader(textStack, entry.dataSpell.name);
+		textStack[0] += Renderer.spell.getCompactRenderedString(entry.dataSpell);
+		this._renderDataFooter(textStack);
+		this._renderSuffix(entry, textStack, meta, options);
+	};
+
+	this._renderDataTrapHazard = function (entry, textStack, meta, options) {
+		this._renderPrefix(entry, textStack, meta, options);
+		this._renderDataHeader(textStack, entry.dataTrapHazard.name);
+		textStack[0] += Renderer.traphazard.getCompactRenderedString(entry.dataTrapHazard);
+		this._renderDataFooter(textStack);
+		this._renderSuffix(entry, textStack, meta, options);
+	};
+
+	this._renderDataHeader = function (textStack, name) {
 		textStack[0] += `<table class="rd__b-data">`;
 		textStack[0] += `<thead><tr><th class="rd__data-embed-header" colspan="6" onclick="((ele) => {
 						$(ele).find('.rd__data-embed-name').toggle(); 
 						$(ele).find('.rd__data-embed-toggle').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
 						$(ele).closest('table').find('tbody').toggle()
-					})(this)"><span style="display: none;" class="rd__data-embed-name">${entry.dataSpell.name}</span><span class="rd__data-embed-toggle">[\u2013]</span></th></tr></thead><tbody>`;
-		textStack[0] += Renderer.spell.getCompactRenderedString(entry.dataSpell, this);
+					})(this)"><span style="display: none;" class="rd__data-embed-name">${name}</span><span class="rd__data-embed-toggle">[\u2013]</span></th></tr></thead><tbody>`;
+	};
+
+	this._renderDataFooter = function (textStack) {
 		textStack[0] += `</tbody></table>`;
-		this._renderSuffix(entry, textStack, meta, options);
 	};
 
 	this._renderGallery = function (entry, textStack, meta, options) {
@@ -903,6 +915,15 @@ function Renderer () {
 					case "@h":
 						textStack[0] += `<i>Hit:</i> `;
 						break;
+					case "@color": {
+						const parts = text.split("|");
+						const [toDisplay, color] = text.split("|");
+						const scrubbedColor = color.replace(/[^a-fA-F0-9]/g, "").slice(0, 8);
+						textStack[0] += `<span style="color: #${scrubbedColor}">`;
+						textStack[0] += toDisplay;
+						textStack[0] += `</span>`;
+						break;
+					}
 
 					// DCs /////////////////////////////////////////////////////////////////////////////////////////////
 					case "@dc": {
@@ -1417,12 +1438,11 @@ function Renderer () {
 								};
 								this._recursiveRender(fauxEntry, textStack, meta);
 								break;
-							case "@ship":
-								fauxEntry.href.path = UrlUtil.PG_SHIPS;
-								// enable this if/when there's a printed source with ships
+							case "@vehicle":
+								fauxEntry.href.path = UrlUtil.PG_VEHICLES;
 								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_GoS;
 								fauxEntry.href.hover = {
-									page: UrlUtil.PG_SHIPS,
+									page: UrlUtil.PG_VEHICLES,
 									source: source || SRC_GoS
 								};
 								this._recursiveRender(fauxEntry, textStack, meta);
@@ -1562,14 +1582,16 @@ Renderer.HOVER_TAG_TO_PAGE = {
 	"background": UrlUtil.PG_BACKGROUNDS,
 	"race": UrlUtil.PG_RACES,
 	"optfeature": UrlUtil.PG_OPT_FEATURES,
-	"feat": UrlUtil.PG_FEATS,
 	"reward": UrlUtil.PG_REWARDS,
+	"feat": UrlUtil.PG_FEATS,
 	"psionic": UrlUtil.PG_PSIONICS,
 	"object": UrlUtil.PG_OBJECTS,
 	"cult": UrlUtil.PG_CULTS_BOONS,
 	"boon": UrlUtil.PG_CULTS_BOONS,
 	"trap": UrlUtil.PG_TRAPS_HAZARDS,
-	"hazard": UrlUtil.PG_TRAPS_HAZARDS
+	"hazard": UrlUtil.PG_TRAPS_HAZARDS,
+	"deity": UrlUtil.PG_DEITIES,
+	"variantrule": UrlUtil.PG_VARIATNRULES
 };
 
 Renderer.splitFirstSpace = function (string) {
@@ -2370,24 +2392,28 @@ Renderer.optionalfeature = {
 		if (!prerequisites) return listMode ? "\u2014" : STR_NONE;
 
 		prerequisites.sort((a, b) => {
-			if (a.type === b.type) return SortUtil.ascSortLower(a.name, b.name);
+			if (a.type === b.type) {
+				if (a.name && b.name) return SortUtil.ascSortLower(a.name, b.name);
+				if (a.entries && b.entries && a.entries.length && b.entries.length && typeof a.entries[0] === "string" && typeof b.entries[0] === "string") return SortUtil.ascSortLower(a.entries[0], b.entries[0]);
+				return 0;
+			}
 			return Renderer.optionalfeature._prereqWeights[a.type] - Renderer.optionalfeature._prereqWeights[b.type]
 		});
 
 		const outList = prerequisites.map(it => {
 			switch (it.type) {
 				case "prereqLevel":
-					return listMode ? false : `${Parser.levelToFull(it.level)} level`;
+					return listMode ? false : `${Parser.getOrdinalForm(it.level)} level`;
 				case "prereqPact":
 					return Parser.prereqPactToFull(it.entry);
 				case "prereqPatron":
 					return listMode ? `${Parser.prereqPatronToShort(it.entry)} patron` : `${it.entry} patron`;
 				case "prereqSpell":
-					return listMode ? it.entries.map(x => x.split("|")[0].toTitleCase()).join("; ") : it.entries.map(sp => Parser.prereqSpellToFull(sp)).joinConjunct(", ", " or ");
+					return listMode ? it.entries.map(x => x.split("|")[0].toTitleCase()).join("/") : it.entries.map(sp => Parser.prereqSpellToFull(sp)).joinConjunct(", ", " or ");
 				case "prereqFeature":
-					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.joinConjunct(", ", " or ");
+					return listMode ? it.entries.map(x => x.toTitleCase()).join("/") : it.entries.joinConjunct(", ", " or ");
 				case "prereqItem":
-					return listMode ? it.entries.map(x => x.toTitleCase()).join("; ") : it.entries.joinConjunct(", ", " or ");
+					return listMode ? it.entries.map(x => x.toTitleCase()).join("/") : it.entries.joinConjunct(", ", " or ");
 				case "prereqSpecial":
 					return listMode ? (it.entrySummary || Renderer.stripTags(it.entry)) : Renderer.get().render(it.entry);
 				default: // string
@@ -3358,7 +3384,7 @@ Renderer.monster = {
 
 		renderStack.push(`
 			${Renderer.utils.getNameTr(mon, {isAddPageNum: true})}
-			<tr><td colspan="6"><i>${mon.level ? `${Parser.levelToFull(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${Parser.monTypeToFullObj(mon.type).asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}` : ""}</i></td></tr>
+			<tr><td colspan="6"><i>${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${Parser.monTypeToFullObj(mon.type).asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}` : ""}</i></td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
 				<table class="summary-noback" style="position: relative;">
@@ -3375,7 +3401,7 @@ Renderer.monster = {
 						${isCrHidden ? "" : `
 						<td>
 							${Parser.monCrToFull(mon.cr)}
-							${options.showScaler && Parser.isValidCr(mon.cr.cr || mon.cr) ? `
+							${options.showScaler && Parser.isValidCr(mon.cr ? (mon.cr.cr || mon.cr) : null) ? `
 							<button title="Scale Creature By CR (Highly Experimental)" class="mon__btn-scale-cr btn btn-xs btn-default">
 								<span class="glyphicon glyphicon-signal"></span>
 							</button>
@@ -4322,13 +4348,12 @@ Renderer.table = {
 	}
 };
 
-Renderer.ship = {
-	getCompactRenderedString (ship) {
-		// TODO improve this if/when ships are added to a finalised product
-		return Renderer.ship.getRenderedString(ship);
+Renderer.vehicle = {
+	getCompactRenderedString (veh) {
+		return Renderer.vehicle.getRenderedString(veh);
 	},
 
-	getRenderedString (ship) {
+	getRenderedString (veh) {
 		const renderer = Renderer.get();
 
 		function getSectionTitle (title) {
@@ -4336,7 +4361,7 @@ Renderer.ship = {
 		}
 
 		function getActionPart () {
-			return renderer.render({entries: ship.action});
+			return renderer.render({entries: veh.action});
 		}
 
 		function getSectionHpPart (sect, each) {
@@ -4422,12 +4447,12 @@ Renderer.ship = {
 
 		return `
 			${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getNameTr(ship)}
-			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(ship.size)} vehicle${ship.dimensions ? `, (${ship.dimensions.join(" by ")})` : ""}</i><br></td></tr>
+			${Renderer.utils.getNameTr(veh)}
+			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle${veh.dimensions ? `, (${veh.dimensions.join(" by ")})` : ""}</i><br></td></tr>
 			<tr class="text"><td colspan="6">
-				<div><b>Creature Capacity</b> ${ship.capCrew} crew${ship.capPassenger ? `, ${ship.capPassenger} passengers` : ""}</div>
-				${ship.capCargo ? `<div><b>Cargo Capacity</b> ${typeof ship.capCargo === "string" ? ship.capCargo : `${ship.capCargo} ton${ship.capCargo === 1 ? "" : "s"}`}</div>` : ""}
-				<div><b>Travel Pace</b> ${ship.pace} miles per hour (${ship.pace * 24} miles per day)</div>
+				<div><b>Creature Capacity</b> ${veh.capCrew} crew${veh.capPassenger ? `, ${veh.capPassenger} passengers` : ""}</div>
+				${veh.capCargo ? `<div><b>Cargo Capacity</b> ${typeof veh.capCargo === "string" ? veh.capCargo : `${veh.capCargo} ton${veh.capCargo === 1 ? "" : "s"}`}</div>` : ""}
+				<div><b>Travel Pace</b> ${veh.pace} miles per hour (${veh.pace * 24} miles per day)</div>
 			</td></tr>
 			<tr><td colspan="6">
 				<table class="summary striped-even">
@@ -4440,30 +4465,30 @@ Renderer.ship = {
 						<th class="col-2 text-center">CHA</th>
 					</tr>
 					<tr>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "str")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "dex")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "con")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "int")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "wis")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(ship, "cha")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "str")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "dex")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "con")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "int")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "wis")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "cha")}</td>
 					</tr>
 				</table>
 			</td></tr>
 			<tr class="text"><td colspan="6">
-				${ship.immune ? `<div><b>Damage Immunities</b> ${Parser.monImmResToFull(ship.immune)}</div>` : ""}
-				${ship.conditionImmune ? `<div><b>Condition Immunities</b> ${Parser.monCondImmToFull(ship.conditionImmune)}</div>` : ""}
+				${veh.immune ? `<div><b>Damage Immunities</b> ${Parser.monImmResToFull(veh.immune)}</div>` : ""}
+				${veh.conditionImmune ? `<div><b>Condition Immunities</b> ${Parser.monCondImmToFull(veh.conditionImmune)}</div>` : ""}
 			</td></tr>
-			${ship.action ? getSectionTitle("Actions") : ""}
-			${ship.action ? `<tr><td colspan="6">${getActionPart()}</td></tr>` : ""}
+			${veh.action ? getSectionTitle("Actions") : ""}
+			${veh.action ? `<tr><td colspan="6">${getActionPart()}</td></tr>` : ""}
 			${getSectionTitle("Hull")}
 			<tr><td colspan="6">
-			${getSectionHpPart(ship.hull)}
+			${getSectionHpPart(veh.hull)}
 			</td></tr>
-			${(ship.control || []).map(getControlSection).join("")}
-			${(ship.movement || []).map(getMovementSection).join("")}
-			${(ship.weapon || []).map(getWeaponSection).join("")}
-			${(ship.other || []).map(getOtherSection).join("")}
-			${Renderer.utils.getPageTr(ship)}
+			${(veh.control || []).map(getControlSection).join("")}
+			${(veh.movement || []).map(getMovementSection).join("")}
+			${(veh.weapon || []).map(getWeaponSection).join("")}
+			${(veh.other || []).map(getOtherSection).join("")}
+			${Renderer.utils.getPageTr(veh)}
 			${Renderer.utils.getBorderTr()}
 		`;
 	}
@@ -4745,7 +4770,7 @@ Renderer.hover = {
 				loadSimple(page, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item._type = listProp === "table" ? "t" : "g");
 				break;
 			}
-			case UrlUtil.PG_SHIPS: loadSimple(page, "ships.json", "ship"); break;
+			case UrlUtil.PG_VEHICLES: loadSimple(page, "vehicles.json", "vehicle"); break;
 			default: throw new Error(`No load function defined for page ${page}`);
 		}
 	},
@@ -4821,7 +4846,7 @@ Renderer.hover = {
 		const windowTitle = page === "generic" ? (preLoaded.data || {}).hoverTitle || "" : toRender._displayName || toRender.name;
 
 		const $hovTitle = $(`<span class="window-title">${windowTitle}</span>`);
-		const $stats = $(`<table class="stats ${isBookContent ? "stats-book stats-book--hover" : ""}"/>`);
+		const $stats = $(`<table class="stats ${isBookContent ? "stats--book stats--book-hover" : ""}"/>`);
 		$stats.append(content);
 
 		$stats.off("click", ".mon__btn-scale-cr").on("click", ".mon__btn-scale-cr", function (evt) {
@@ -5183,7 +5208,7 @@ Renderer.hover = {
 			case UrlUtil.PG_VARIATNRULES: return Renderer.variantrule.getCompactRenderedString;
 			case UrlUtil.PG_CULTS_BOONS: return Renderer.cultboon.getCompactRenderedString;
 			case UrlUtil.PG_TABLES: return Renderer.table.getCompactRenderedString;
-			case UrlUtil.PG_SHIPS: return Renderer.ship.getCompactRenderedString;
+			case UrlUtil.PG_VEHICLES: return Renderer.vehicle.getCompactRenderedString;
 			default: return null;
 		}
 	},
@@ -5218,16 +5243,16 @@ Renderer.hover = {
 	/**
 	 * The most basic hover display possible. Creates a new window which displays the thing.
 	 */
-	doHover (evt, ele, entries) {
-		Renderer.hover.show({evt, ele, preLoaded: entries, page: "generic"});
+	doHover (evt, ele, entries, isBookContent) {
+		Renderer.hover.show({evt, ele, preLoaded: entries, page: "generic", isBookContent: !!isBookContent});
 	},
 
 	/**
 	 * As above, but designed to be used with e.g. button clicks, as opposed to hover.
 	 */
-	doOpenWindow (evt, ele, entries) {
+	doOpenWindow (evt, ele, entries, isBookContent) {
 		const fauxEvent = {shiftKey: true, clientX: evt.clientX, clientY: evt.clientY};
-		Renderer.hover.show({evt: fauxEvent, ele, preLoaded: entries, page: "generic"});
+		Renderer.hover.show({evt: fauxEvent, ele, preLoaded: entries, page: "generic", isBookContent: !!isBookContent});
 	},
 
 	_doInit () {
@@ -6704,7 +6729,8 @@ Renderer.stripTags = function (str) {
 					case "@footnote":
 					case "@link":
 					case "@scaledice":
-					case "@loader": {
+					case "@loader":
+					case "@color": {
 						const parts = text.split("|");
 						return parts[0];
 					}
@@ -6725,7 +6751,7 @@ Renderer.stripTags = function (str) {
 					case "@psionic":
 					case "@race":
 					case "@reward":
-					case "@ship":
+					case "@vehicle":
 					case "@spell":
 					case "@table":
 					case "@trap":

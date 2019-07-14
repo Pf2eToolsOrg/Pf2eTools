@@ -28,7 +28,7 @@ const TAGS_TO_CHECK = new Set([
 	"trap",
 	"hazard",
 	"variantrule",
-	"ship"
+	"vehicle"
 ]);
 
 const files = ut.listFiles({dir: `./data`, blacklistFilePrefixes: BLACKLIST_FILE_PREFIXES});

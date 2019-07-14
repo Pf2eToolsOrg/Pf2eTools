@@ -55,7 +55,7 @@ if (fs.existsSync("./img")) {
 		"book",
 		"items",
 		"races",
-		"ships"
+		"vehicles"
 	]);
 
 	fs.readdirSync("./img")

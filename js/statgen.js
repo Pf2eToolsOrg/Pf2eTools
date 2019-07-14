@@ -19,7 +19,7 @@ class StatGen {
 		this.$advanced = $(`#advanced`);
 		this.$budget = $(`#budget`);
 		this.budget = StatGen.DEFAULT_POINTS;
-		this.doSaveDebounced = MiscUtil.debounce(this.doSaveState, 200, true);
+		this.doSaveDebounced = MiscUtil.debounce(this.doSaveState, 200, {leading: true});
 
 		await ExcludeUtil.pInitialise();
 		await this.pLoadRaceJson();

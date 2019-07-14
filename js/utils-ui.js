@@ -1,4 +1,63 @@
 class UiUtil {
+	/**
+	 * @param string String to parse.
+	 * @param [fallbackEmpty] Fallback number if string is empty.
+	 * @param [opts] Options Object.
+	 * @param [opts.max] Max allowed return value.
+	 * @param [opts.min] Min allowed return value.
+	 * @return {number}
+	 */
+	static strToInt (string, fallbackEmpty = 0, opts) {
+		opts = opts || {};
+		let out;
+		if (!string.trim()) out = fallbackEmpty;
+		else {
+			const preDot = string.split(".")[0].trim();
+			const unary = preDot.replace(/^([-+]*).*$/, (...m) => m[1]);
+			const numPart = preDot.replace(/[^0-9]/g, "");
+			const num = Number(`${unary}${numPart}` || 0);
+			out = isNaN(num) ? 0 : num;
+		}
+		if (opts.max != null) out = Math.min(out, opts.max);
+		if (opts.min != null) out = Math.max(out, opts.min);
+		return out;
+	}
+
+	static getEntriesAsText (entryArray) {
+		if (!entryArray || !entryArray.length) return "";
+		return JSON.stringify(entryArray, null, 2)
+			.replace(/^\s*\[/, "").replace(/]\s*$/, "")
+			.split("\n")
+			.filter(it => it.trim())
+			.map(it => {
+				const trim = it.replace(/^\s\s/, "");
+				const mQuotes = /^"(.*?)",?$/.exec(trim);
+				if (mQuotes) return mQuotes[1]; // if string, strip quotes
+				else return `  ${trim}`; // if object, indent
+			})
+			.join("\n")
+	}
+
+	static getTextAsEntries (text) {
+		try {
+			const lines = [];
+			text.split("\n").filter(it => it.trim()).forEach(it => {
+				if (/^\s/.exec(it)) lines.push(it); // keep indented lines as-is
+				else lines.push(`"${it.replace(/"/g, `\\"`)}",`); // wrap strings
+			});
+			if (lines.length) lines[lines.length - 1] = lines.last().replace(/^(.*?),?$/, "$1"); // remove trailing comma
+			return JSON.parse(`[${lines.join("")}]`);
+		} catch (e) {
+			const lines = text.split("\n").filter(it => it.trim());
+			const slice = lines.join(" \\ ").substring(0, 30);
+			JqueryUtil.doToast({
+				content: `Could not parse entries! Error was: ${e.message}<br>Text was: ${slice}${slice.length === 30 ? "..." : ""}`,
+				type: "danger"
+			});
+			return lines;
+		}
+	}
+
 	static getSearchNoResults () {
 		return `<div class="ui-search__message"><i>No results.</i></div>`;
 	}
@@ -65,22 +124,19 @@ class UiUtil {
 	}
 
 	/**
-	 * @param {string|Object} titleOrOpts Modal title, or an object of options, which are:
-	 * @param {string} titleOrOpts.title Modal title.
-	 * @param {boolean} titleOrOpts.fullHeight If the modal should take up (almost) the full height of the screen.
-	 * @param {boolean} titleOrOpts.fullWidth If the modal should take up (almost) the full width of the screen.
-	 * @param {boolean} titleOrOpts.noMinHeight If the modal should have no minimum height.
-	 * @param {function} titleOrOpts.cbClose Callback run when the modal is closed.
-	 * @param cbClose Callback run when the modal is closed.
+	 * @param {Object} [opts] Options object.
+	 * @param {string} [opts.title] Modal title.
+	 * @param {boolean} [opts.fullHeight] If the modal should take up (almost) the full height of the screen.
+	 * @param {boolean} [opts.fullWidth] If the modal should take up (almost) the full width of the screen.
+	 * @param {boolean} [opts.noMinHeight] If the modal should have no minimum height.
+	 * @param {function} [opts.cbClose] Callback run when the modal is closed.
+	 * @param {JQuery} [opts.titleSplit] Element to have split alongside the title.
+	 * @param {int} [opts.zIndex] Z-index of the modal.
+	 * @param {number} [opts.overlayColor] Overlay color.
 	 * @returns JQuery Modal inner wrapper, to have content added as required.
 	 */
-	static getShow$Modal (titleOrOpts, cbClose) {
-		titleOrOpts = titleOrOpts || {};
-		const opts = typeof titleOrOpts === "string" ? {} : titleOrOpts;
-		if (typeof titleOrOpts === "string") {
-			opts.title = titleOrOpts;
-			opts.cbClose = cbClose;
-		} else if (cbClose) opts.cbClose = cbClose;
+	static getShowModal (opts) {
+		opts = opts || {};
 
 		// if the user closed the modal by clicking the "cancel" background, isDataEntered is false
 		const handleCloseClick = async (isDataEntered, ...args) => {
@@ -89,15 +145,22 @@ class UiUtil {
 		};
 
 		const $modal = $(`<div class="ui-modal__overlay">`);
-		const $scroller = $(`<div class="ui-modal__scroller"/>`).data("close", (...args) => handleCloseClick(...args));
-		const $modalInner = $$`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu${opts.fullWidth ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? " full-height" : ""}">${opts.title ? `<h4>${opts.title}</h4>` : ""}${$scroller}</div>`
-			.appendTo($modal).click(e => e.stopPropagation());
+		if (opts.zIndex != null) $modal.css({zIndex: opts.zIndex});
+		if (opts.overlayColor != null) $modal.css({backgroundColor: opts.overlayColor});
+		const $scroller = $(`<div class="ui-modal__scroller"/>`);
+		const $modalInner = $$`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu${opts.fullWidth ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? " h-100" : ""}"><div class="split flex-v-center no-shrink">${opts.title ? `<h4>${opts.title}</h4>` : ""}${opts.titleSplit || ""}</div>${$scroller}</div>`
+			.appendTo($modal);
 		if (opts.noMinHeight) $modalInner.css("height", "initial");
 
-		$modal.click(() => handleCloseClick(false));
+		$modal.click(evt => {
+			if (evt.target === $modal[0]) handleCloseClick(false);
+		});
 
 		$(`body`).append($modal);
-		return $scroller;
+		return {
+			$modalInner: $scroller,
+			doClose: handleCloseClick
+		};
 	}
 
 	static addModalSep ($modalInner) {
@@ -118,7 +181,7 @@ class UiUtil {
 	static $getAddModalRowHeader ($modalInner, headerText, opts) {
 		opts = opts || {};
 		const $row = UiUtil.$getAddModalRow($modalInner, "h5").addClass("bold");
-		if (opts.$eleRhs) $$`<div class="split flex-v-center full-width pr-1"><span>${headerText}</span>${opts.$eleRhs}</div>`.appendTo($row);
+		if (opts.$eleRhs) $$`<div class="split flex-v-center w-100 pr-1"><span>${headerText}</span>${opts.$eleRhs}</div>`.appendTo($row);
 		else $row.text(headerText);
 		if (opts.helpText) $row.attr("title", opts.helpText);
 		return $row;
@@ -150,7 +213,7 @@ class UiUtil {
 		const $row = UiUtil.$getAddModalRow($modalInner, "label").addClass(`ui-modal__row--sel`);
 		if (opts.helpText) $row.attr("title", opts.helpText);
 		$row.append(`<span>${labelText}</span>`);
-		const $sel = $(`<select class="form-control input-xs width-30">`).appendTo($row);
+		const $sel = $(`<select class="form-control input-xs w-30">`).appendTo($row);
 		values.forEach((val, i) => $(`<option value="${i}"/>`).text(opts.fnDisplay ? opts.fnDisplay(val) : val).appendTo($sel));
 		// N.B. this doesn't support null values
 		const ix = values.indexOf(objectWithProp[propName]);
@@ -582,22 +645,22 @@ class InputUiUtil {
 			const $iptNumber = $(`<input class="form-control mb-2 text-right" type="number" ${options.min ? `min="${options.min}"` : ""} ${options.max ? `max="${options.max}"` : ""} ${options.default != null ? `value="${options.default}"` : ""}>`)
 				.keydown(evt => {
 					// return key
-					if (evt.which === 13) $modalInner.data("close")(true);
+					if (evt.which === 13) doClose(true);
 					evt.stopPropagation();
 				});
 			const $btnOk = $(`<button class="btn btn-default">Enter</button>`)
-				.click(() => $modalInner.data("close")(true));
-			const $modalInner = UiUtil.getShow$Modal({
+				.click(() => doClose(true));
+			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: options.title || "Enter a Number",
 				noMinHeight: true,
 				cbClose: (isDataEntered) => {
-					if (!isDataEntered) resolve(null);
+					if (!isDataEntered) return resolve(null);
 					const raw = $iptNumber.val();
-					if (!raw.trim()) return null;
+					if (!raw.trim()) return resolve(null);
 					let num = Number(raw) || 0;
 					if (options.min) num = Math.max(options.min, num);
 					if (options.max) num = Math.min(options.max, num);
-					if (options.int) resolve(Math.round(num));
+					if (options.int) return resolve(Math.round(num));
 					else resolve(num);
 				}
 			});
@@ -614,7 +677,9 @@ class InputUiUtil {
 	 * @param options.placeholder Placeholder text.
 	 * @param options.title Prompt title.
 	 * @param options.default Default selected index.
-	 * @return {Promise<number>} A promise which resolves to the index of the item the user selected, or null otherwise.
+	 * @param options.$elePost Element to add below the select box.
+	 * @param options.fnGetExtraState Function which returns additional state from, generally, other elements in the modal.
+	 * @return {Promise} A promise which resolves to the index of the item the user selected (or an object if fnGetExtraState is passed), or null otherwise.
 	 */
 	static pGetUserEnum (options) {
 		options = options || {};
@@ -626,20 +691,68 @@ class InputUiUtil {
 			else $selEnum[0].selectedIndex = 0;
 
 			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
-				.click(() => $modalInner.data("close")(true));
+				.click(() => doClose(true));
 
-			const $modalInner = UiUtil.getShow$Modal({
+			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: options.title || "Select an Option",
 				noMinHeight: true,
 				cbClose: (isDataEntered) => {
-					if (!isDataEntered) resolve(null);
+					if (!isDataEntered) return resolve(null);
 					const ix = Number($selEnum.val());
-					resolve(~ix ? ix : null);
+					if (!~ix) resolve(null);
+					return resolve(options.fnGetExtraState ? {ix, extraState: options.fnGetExtraState()} : ix);
 				}
 			});
 			$selEnum.appendTo($modalInner);
+			if (options.$elePost) options.$elePost.appendTo($modalInner);
 			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
 			$selEnum.focus();
+		});
+	}
+
+	/**
+	 * NOTE: designed to work with FontAwesome.
+	 *
+	 * @param options Options.
+	 * @param options.values Array of icon metadata. Items should be of the form: `{name: "<n>", iconClass: "<c>"}`
+	 * @param options.title Prompt title.
+	 * @param options.default Default selected index.
+	 * @return {Promise<number>} A promise which resolves to the index of the item the user selected, or null otherwise.
+	 */
+	static pGetUserIcon (options) {
+		options = options || {};
+		return new Promise(resolve => {
+			let lastIx = -1;
+			const onclicks = [];
+
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				title: options.title || "Select an Option",
+				noMinHeight: true,
+				cbClose: (isDataEntered) => {
+					if (!isDataEntered) return resolve(null);
+					return resolve(~lastIx ? lastIx : null);
+				}
+			});
+
+			$$`<div class="flex flex-wrap flex-h-center mb-2">${options.values.map((v, i) => {
+				const $btn = $$`<div class="m-2 btn ${v.buttonClass || ""} ui-icn__btn flex-col flex-h-center">
+					${v.iconClass ? `<div class="ui-icn__wrp-icon ${v.iconClass} mb-1"></div>` : ""}
+					${v.iconContent ? v.iconContent : ""}
+					<div class="whitespace-normal w-100">${v.name}</div>
+				</div>`
+					.click(() => {
+						lastIx = i;
+						onclicks.forEach(it => it());
+					})
+					.toggleClass("active", options.default === i);
+				onclicks.push(() => $btn.toggleClass("active", lastIx === i));
+				return $btn;
+			})}</div>`.appendTo($modalInner);
+
+			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
+				.click(() => doClose(true));
+
+			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
 		});
 	}
 
@@ -661,20 +774,20 @@ class InputUiUtil {
 						if ($modalInner.find(`.typeahead.dropdown-menu`).is(":visible")) return;
 					}
 					// return key
-					if (evt.which === 13) $modalInner.data("close")(true);
+					if (evt.which === 13) doClose(true);
 					evt.stopPropagation();
 				});
 			if (options.autocomplete && options.autocomplete.length) $iptStr.typeahead({source: options.autocomplete});
 			const $btnOk = $(`<button class="btn btn-default">Enter</button>`)
-				.click(() => $modalInner.data("close")(true));
-			const $modalInner = UiUtil.getShow$Modal({
+				.click(() => doClose(true));
+			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: options.title || "Enter Text",
 				noMinHeight: true,
 				cbClose: (isDataEntered) => {
-					if (!isDataEntered) resolve(null);
+					if (!isDataEntered) return resolve(null);
 					const raw = $iptStr.val();
-					if (!raw.trim()) return null;
-					else resolve(raw);
+					if (!raw.trim()) return resolve(null);
+					else return resolve(raw);
 				}
 			});
 			$iptStr.appendTo($modalInner);
@@ -682,6 +795,187 @@ class InputUiUtil {
 			$iptStr.focus();
 			$iptStr.select();
 		});
+	}
+
+	/**
+	 *
+	 * @param [options] Options object.
+	 * @param [options.title] Modal title.
+	 * @param [options.default] Default angle.
+	 * @param [options.stepButtons] Array of labels for quick-set buttons, which will be evenly spread around the clock.
+	 * @param [options.step] Number of steps in the gauge (default 360; would be e.g. 12 for a "clock").
+	 * @returns {Promise<number>} A promise which resolves to the number of degrees if the user pressed "Enter," or null otherwise.
+	 */
+	static pGetUserDirection (options) {
+		const X = 0;
+		const Y = 1;
+		const DEG_CIRCLE = 360;
+
+		options = options || {};
+		const step = Math.max(2, Math.min(DEG_CIRCLE, options.step || DEG_CIRCLE));
+		const stepDeg = DEG_CIRCLE / step;
+
+		function getAngle (p1, p2) {
+			return Math.atan2(p2[Y] - p1[Y], p2[X] - p1[X]) * 180 / Math.PI;
+		}
+
+		return new Promise(resolve => {
+			let active = false;
+			let curAngle = Math.min(DEG_CIRCLE, options.default) || 0;
+
+			const $arm = $(`<div class="ui-dir__arm"/>`);
+			const handleAngle = () => $arm.css({transform: `rotate(${curAngle + 180}deg)`});
+			handleAngle();
+
+			const $pad = $$`<div class="ui-dir__face">${$arm}</div>`.on("mousedown touchstart", evt => {
+				active = true;
+				handleEvent(evt);
+			});
+
+			const $document = $(document);
+			const evtId = `ui_user_dir_${CryptUtil.uid()}`;
+			$document.on(`mousemove.${evtId} touchmove${evtId}`, evt => {
+				handleEvent(evt);
+			}).on(`mouseup.${evtId} touchend${evtId} touchcancel${evtId}`, evt => {
+				evt.preventDefault();
+				evt.stopPropagation();
+				active = false;
+			});
+			const handleEvent = (evt) => {
+				if (!active) return;
+
+				const coords = [EventUtil.getClientX(evt), EventUtil.getClientY(evt)];
+
+				const {top, left} = $pad.offset();
+				const center = [left + ($pad.width() / 2), top + ($pad.height() / 2)];
+				curAngle = getAngle(center, coords) + 90;
+				if (step !== DEG_CIRCLE) curAngle = Math.round(curAngle / stepDeg) * stepDeg;
+				else curAngle = Math.round(curAngle);
+				handleAngle();
+			};
+
+			const BTN_STEP_SIZE = 26;
+			const BORDER_PAD = 16;
+			const CONTROLS_RADIUS = (92 + BTN_STEP_SIZE + BORDER_PAD) / 2;
+			const $padOuter = options.stepButtons ? (() => {
+				const steps = options.stepButtons;
+				const SEG_ANGLE = 360 / steps.length;
+
+				const $btns = [];
+
+				for (let i = 0; i < steps.length; ++i) {
+					const theta = (SEG_ANGLE * i * (Math.PI / 180)) - (1.5708); // offset by -90 degrees
+					const x = CONTROLS_RADIUS * Math.cos(theta);
+					const y = CONTROLS_RADIUS * Math.sin(theta);
+					$btns.push(
+						$(`<button class="btn btn-default btn-xxs absolute">${steps[i]}</button>`)
+							.css({
+								top: y + CONTROLS_RADIUS - (BTN_STEP_SIZE / 2),
+								left: x + CONTROLS_RADIUS - (BTN_STEP_SIZE / 2),
+								width: BTN_STEP_SIZE,
+								height: BTN_STEP_SIZE,
+								zIndex: 1002
+							})
+							.click(() => {
+								curAngle = SEG_ANGLE * i;
+								handleAngle();
+							})
+					);
+				}
+
+				const $wrpInner = $$`<div class="flex-vh-center relative">${$btns}${$pad}</div>`
+					.css({
+						width: CONTROLS_RADIUS * 2,
+						height: CONTROLS_RADIUS * 2
+					});
+
+				return $$`<div class="flex-vh-center">${$wrpInner}</div>`
+					.css({
+						width: (CONTROLS_RADIUS * 2) + BTN_STEP_SIZE + BORDER_PAD,
+						height: (CONTROLS_RADIUS * 2) + BTN_STEP_SIZE + BORDER_PAD
+					})
+			})() : null;
+
+			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
+				.click(() => doClose(true));
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				title: options.title || "Select Direction",
+				noMinHeight: true,
+				cbClose: (isDataEntered) => {
+					$document.off(`mousemove.${evtId} touchmove${evtId} mouseup.${evtId} touchend${evtId} touchcancel${evtId}`);
+					if (!isDataEntered) return resolve(null);
+					return resolve(curAngle); // TODO returning the step number is more useful if step is specified?
+				}
+			});
+			$$`<div class="flex-vh-center mb-3">
+				${$padOuter ? $padOuter : $pad}
+			</div>`.appendTo($modalInner);
+			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+		});
+	}
+}
+
+class DragReorderUiUtil {
+	/**
+	 * Create a draggable pad capable of re-ordering rendered components. This requires to components to have:
+	 *  - an `id` getter
+	 *  - a `pos` getter and setter
+	 *  - a `height` getter
+	 *
+	 * @param opts Options object.
+	 * @param opts.$parent The parent element containing the rendered components.
+	 * @param opts.componentsParent The object which has the array of components as a property.
+	 * @param opts.componentsProp The property name of the components array.
+	 * @param opts.componentId This component ID.
+	 * @param [opts.marginSide] The margin side; "r" or "l" (defaults to "l").
+	 */
+	static $getDragPad (opts) {
+		opts = opts || {};
+
+		const getComponentById = (id) => opts.componentsParent[opts.componentsProp].find(it => it.id === id);
+
+		const dragMeta = {};
+		const doDragCleanup = () => {
+			dragMeta.on = false;
+			dragMeta.$wrap.remove();
+			dragMeta.$dummies.forEach($d => $d.remove());
+		};
+
+		const doDragRender = () => {
+			if (dragMeta.on) doDragCleanup();
+
+			dragMeta.on = true;
+			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"/>`).appendTo(opts.$parent);
+			dragMeta.$dummies = [];
+
+			const ids = opts.componentsParent[opts.componentsProp].map(it => it.id);
+
+			ids.forEach(id => {
+				const $dummy = $(`<div class="w-100 ${id === opts.componentId ? "ui-drag__wrp-drag-dummy--highlight" : "ui-drag__wrp-drag-dummy--lowlight"}"/>`)
+					.height(getComponentById(id).height)
+					.mouseup(() => {
+						if (dragMeta.on) doDragCleanup();
+					})
+					.appendTo(dragMeta.$wrap);
+				dragMeta.$dummies.push($dummy);
+
+				if (id !== opts.componentId) { // on entering other areas, swap positions
+					$dummy.mouseenter(() => {
+						const cachedPos = getComponentById(id).pos;
+
+						getComponentById(id).pos = getComponentById(opts.componentId).pos;
+						getComponentById(opts.componentId).pos = cachedPos;
+
+						doDragRender();
+					});
+				}
+			});
+		};
+
+		return $(`<div class="m${opts.marginSide || "l"}-2 ui-drag__patch" title="Drag to Reorder">
+		<div class="ui-drag__patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
+		<div class="ui-drag__patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
+		</div>`).mousedown(() => doDragRender());
 	}
 }
 
@@ -777,7 +1071,7 @@ class SourceUiUtil {
 				[$iptName, $iptAbv, $iptJson].forEach($ipt => $ipt.removeClass("error-background"));
 			});
 
-		const $stageInitial = $$`<div class="full-height full-width flex-vh-center"><div>
+		const $stageInitial = $$`<div class="h-100 w-100 flex-vh-center"><div>
 			<h3 class="text-center">${isNewSource ? "Add a Homebrew Source" : "Edit Homebrew Source"}</h3>
 			<div class="row ui-source__row mb-2"><div class="col-12 flex-v-center">
 				<span class="mr-2 ui-source__name help" title="The name or title for the homebrew you wish to create. This could be the name of a book or PDF; for example, 'Monster Manual'">Title</span>
@@ -829,7 +1123,7 @@ class SourceUiUtil {
 				} else $selExisting.addClass("error-background");
 			});
 
-		const $stageExisting = $$`<div class="full-height full-width flex-vh-center" style="display: none;"><div>
+		const $stageExisting = $$`<div class="h-100 w-100 flex-vh-center" style="display: none;"><div>
 			<h3 class="text-center">Select a Homebrew Source</h3>
 			<div class="row mb-2"><div class="col-12 flex-vh-center">${$selExisting}</div></div>
 			<div class="row"><div class="col-12 flex-vh-center">${$btnConfirmExisting}</div></div>

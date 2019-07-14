@@ -126,17 +126,18 @@ window.onload = async function load () {
 		]
 	});
 	encounterBuilder = new EncounterBuilder();
-	await ExcludeUtil.pInitialise();
 	SortUtil.initHandleFilterButtonClicks();
 	encounterBuilder.initUi();
-	pLoadMeta()
-		.then(pLoadFluffIndex)
-		.then(multisourceLoad.bind(null, JSON_DIR, JSON_LIST_NAME, pPageInit, addMonsters, pPostLoad))
-		.then(() => {
-			if (History.lastLoadedId == null) History._freshLoad();
-			ExcludeUtil.checkShowAllExcluded(monsters, $(`#pagecontent`));
-			encounterBuilder.initState();
-		});
+	await Promise.all([
+		ExcludeUtil.pInitialise(),
+		pLoadMeta(),
+		pLoadFluffIndex()
+	]);
+	await pMultisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addMonsters, pPostLoad);
+	if (History.lastLoadedId == null) History._freshLoad();
+	ExcludeUtil.checkShowAllExcluded(monsters, $(`#pagecontent`));
+	handleFilterChange();
+	encounterBuilder.initState();
 };
 
 let list;
@@ -488,7 +489,7 @@ class EncounterBuilderUtils {
 		const crCutoff = EncounterBuilderUtils.getCrCutoff(data);
 		data.forEach(it => {
 			if (getCr(it) >= crCutoff) relevantCount += it.count;
-			baseXp += Parser.crToXpNumber(Parser.numberToCr(getCr(it))) * it.count;
+			baseXp += (Parser.crToXpNumber(Parser.numberToCr(getCr(it))) || 0) * it.count;
 		});
 
 		const playerAdjustedXpMult = Parser.numMonstersToXpMult(relevantCount, playerCount);
@@ -508,6 +509,8 @@ function onSublistChange () {
 }
 
 function handleFilterChange () {
+	if (History.initialLoad) return;
+
 	const f = filterBox.getValues();
 	list.filter(function (item) {
 		const m = monsters[$(item.elm).attr(FLTR_ID)];
@@ -631,7 +634,7 @@ function addMonsters (data) {
 					${EncounterBuilder.getButtons(mI)}
 					<span class="ecgen__name name col-4-2 pl-0">${mon.name}</span>
 					<span class="type col-4-1">${mon._pTypes.asText.uppercaseFirst()}</span>
-					<span class="col-1-7 text-center cr">${mon._pCr}</span>
+					<span class="col-1-7 text-center cr">${mon._pCr || "\u2014"}</span>
 					<span title="${Parser.sourceJsonToFull(mon.source)}${Renderer.utils.getSourceSubText(mon)}" class="col-2 source text-center ${Parser.sourceJsonToColor(mon.source)} pr-0" ${BrewUtil.sourceJsonToStyle(mon.source)}>${Parser.sourceJsonToAbv(mon.source)}</span>
 					
 					${mon.group ? `<span class="group hidden">${mon.group}</span>` : ""}
@@ -642,7 +645,7 @@ function addMonsters (data) {
 
 		// populate filters
 		sourceFilter.addItem(mon._fSources);
-		crFilter.addItem(mon._pCr);
+		if (mon._pCr != null) crFilter.addItem(mon._pCr);
 		strengthFilter.addItem(mon.str);
 		dexterityFilter.addItem(mon.dex);
 		constitutionFilter.addItem(mon.con);
@@ -748,7 +751,7 @@ function pGetSublistItem (mon, pinId, addCount, data = {}) {
 					<a href="#${UrlUtil.autoEncodeHash(mon)}${subHash}" title="${mon._displayName || mon.name}" draggable="false" class="ecgen__hidden">
 						<span class="name col-5 pl-0">${mon._displayName || mon.name}</span>
 						<span class="type col-3-8">${mon._pTypes.asText.uppercaseFirst()}</span>
-						<span class="cr col-1-2 text-center">${mon._pCr}</span>
+						<span class="cr col-1-2 text-center">${mon._pCr || "\u2014"}</span>
 						<span class="count col-2 text-center">${addCount || 1}</span>
 
 						<span class="id hidden">${pinId}</span>
@@ -765,7 +768,7 @@ function pGetSublistItem (mon, pinId, addCount, data = {}) {
 							<span class="col-1-2 text-center">
 								<input value="${mon._pCr}" onchange="encounterBuilder.doCrChange(this, ${pinId}, ${mon._isScaledCr})" class="ecgen__cr_input form-control form-control--minimal input-xs">
 							</span>
-						` : `<span class="col-1-2 text-center">${mon._pCr}</span>`}
+						` : `<span class="col-1-2 text-center">${mon._pCr || "\u2014"}</span>`}
 						<span class="col-2 pr-0 text-center count">${addCount || 1}</span>
 					</div>
 				</li>
@@ -819,7 +822,7 @@ function renderStatblock (mon, isScaled) {
 	}
 
 	function buildStatsTab () {
-		const $btnScaleCr = $(`
+		const $btnScaleCr = mon.cr != null ? $(`
 			<button id="btn-scale-cr" title="Scale Creature By CR (Highly Experimental)" class="mon__btn-scale-cr btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-signal"/>
 			</button>`)
@@ -831,14 +834,14 @@ function renderStatblock (mon, isScaled) {
 					if (targetCr === Parser.crToNumber(mon.cr)) renderStatblock(mon);
 					else History.setSubhash(MON_HASH_SCALED, targetCr);
 				});
-			}).toggle(Parser.crToNumber(mon.cr.cr || mon.cr) !== 100);
+			}).toggle(Parser.crToNumber(mon.cr.cr || mon.cr) !== 100) : null;
 
-		const $btnResetScaleCr = $(`
+		const $btnResetScaleCr = mon.cr != null ? $(`
 			<button id="btn-reset-cr" title="Reset CR Scaling" class="mon__btn-reset-cr btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-refresh"></span>
 			</button>`)
 			.click(() => History.setSubhash(MON_HASH_SCALED, null))
-			.toggle(isScaled);
+			.toggle(isScaled) : null;
 
 		$content.append(RenderBestiary.$getRenderedCreature(mon, meta, {$btnScaleCr, $btnResetScaleCr}));
 
@@ -1122,6 +1125,7 @@ function getUnpackedUid (uid) {
 
 function getCr (obj) {
 	if (obj.crScaled != null) return obj.crScaled;
+	if (obj.cr == null) return null;
 	return typeof obj.cr === "string" ? obj.cr.includes("/") ? Parser.crToNumber(obj.cr) : Number(obj.cr) : obj.cr;
 }
 

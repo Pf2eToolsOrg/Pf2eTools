@@ -589,10 +589,10 @@ Omnidexer.TO_INDEX = [
 		hover: true
 	},
 	{
-		category: Parser.CAT_ID_SHIP,
-		file: "ships.json",
-		listProp: "ship",
-		baseUrl: "ships.html",
+		category: Parser.CAT_ID_VEHICLE,
+		file: "vehicles.json",
+		listProp: "vehicle",
+		baseUrl: "vehicles.html",
 		hover: true
 	}
 ];

@@ -171,10 +171,10 @@ class MoneyConverter {
 		const $btnSettings = $(`<button class="btn btn-default btn-sm" title="Settings"><span class="glyphicon glyphicon-cog"/></button>`)
 			.appendTo($wrpBtnAddSettings)
 			.click(() => {
-				const $modalInner = UiUtil.getShow$Modal(
-					"Settings",
-					() => doUpdate()
-				);
+				const {$modalInner} = UiUtil.getShowModal({
+					title: "Settings",
+					cbClose: () => doUpdate()
+				});
 				[...CURRENCY_INDEXED].reverse().forEach(cx => {
 					UiUtil.$getAddModalRowCb($modalInner, `Disable ${cx.n}`, disabledCurrency, cx.ix);
 				});

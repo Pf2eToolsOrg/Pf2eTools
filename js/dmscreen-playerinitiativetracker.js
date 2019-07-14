@@ -32,7 +32,7 @@ class InitiativeTrackerPlayer {
 						$wrpInitial.append($btnConnectRemote).append($btnConnectLocal);
 					});
 
-				const $wrpClient = $$`<div class="flex-col full-width">
+				const $wrpClient = $$`<div class="flex-col w-100">
 					<div class="flex-vh-center px-4 mb-2">
 						<span style="min-width: fit-content;" class="mr-2">Server Token</span>
 						${$iptServerToken}
@@ -107,7 +107,7 @@ class InitiativeTrackerPlayer {
 				}
 			});
 
-		view.$wrpInitial = $$`<div class="flex-vh-center full-height flex-col">
+		view.$wrpInitial = $$`<div class="flex-vh-center h-100 flex-col">
 			${$btnConnectRemote}
 			${$btnConnectLocal}
 		</div>`.appendTo($wrpTracker);

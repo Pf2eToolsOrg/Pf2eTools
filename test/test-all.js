@@ -20,4 +20,7 @@ async function main () {
 
 main()
 	.then(() => console.log("Tests complete."))
-	.catch(e => { throw e });
+	.catch(e => {
+		console.error(e);
+		throw e
+	});

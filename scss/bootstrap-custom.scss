@@ -34,6 +34,10 @@
 	font-style: italic !important;
 }
 
+.underline {
+	text-decoration: underline;
+}
+
 .no-wrap {
 	white-space: nowrap !important;
 }
@@ -50,6 +54,18 @@
 	overflow-y: auto;
 }
 
+.resize-vertical {
+	resize: vertical;
+}
+
+.resize-none {
+	resize: none;
+}
+
+.whitespace-normal {
+	white-space: normal;
+}
+
 .help,
 .help--hover {
 	cursor: help;
@@ -61,6 +77,10 @@
 	cursor: help;
 }
 
+.small-caps {
+	font-variant: small-caps;
+}
+
 .help--hover {
 	// This should approx. match the hover cutoff defined in renderer (768px).
 	// Approximate, since jQuery calculates window width differently, offset likely varies with e.g. scrollbar width.
@@ -70,16 +90,28 @@
 	}
 }
 
-.full-width {
+.w-100 {
 	width: 100% !important;
 }
 
-.width-30 {
+.w-30 {
 	width: 30% !important;
 }
 
-.full-height {
+.w-25 {
+	width: 25% !important;
+}
+
+.w-15 {
+	width: 15% !important;
+}
+
+.h-100 {
 	height: 100% !important;
+}
+
+.grid {
+	display: grid !important;
 }
 
 .flex {
@@ -88,6 +120,10 @@
 
 .relative {
 	position: relative;
+}
+
+.absolute {
+	position: absolute;
 }
 
 .flex-col {
@@ -196,6 +232,7 @@
 }
 
 .flex-h-right {
+	display: flex;
 	justify-content: flex-end;
 }
 
@@ -245,6 +282,11 @@ body {
 	&.is-fullscreen .page__nav {
 		display: none;
 	}
+}
+
+// Fix inputs on Firefox
+input {
+	min-width: 0;
 }
 
 main {
@@ -998,6 +1040,42 @@ select.input-xs {
 	width: 0.83333333333333%;
 }
 
+.hr-0 {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	width: 100%;
+}
+
+.hr-1 {
+	margin-top: ($spacer * 0.25) !important;
+	margin-bottom: ($spacer * 0.25) !important;
+	width: 100%;
+}
+
+.hr-2 {
+	margin-top: ($spacer * 0.5) !important;
+	margin-bottom: ($spacer * 0.5) !important;
+	width: 100%;
+}
+
+.hr-3 {
+	margin-top: $spacer;
+	margin-bottom: $spacer;
+	width: 100%;
+}
+
+.hr-4 {
+	margin-top: ($spacer * 1.5) !important;
+	margin-bottom: ($spacer * 1.5) !important;
+	width: 100%;
+}
+
+.hr-5 {
+	margin-top: ($spacer * 3) !important;
+	margin-bottom: ($spacer * 3) !important;
+	width: 100%;
+}
+
 .m-0 {
 	margin: 0 !important;
 }
@@ -1358,18 +1436,6 @@ select.input-xs {
 	padding-left: ($spacer * 3) !important;
 }
 
-.hr-2 {
-	margin-top: ($spacer * 0.5) !important;
-	margin-bottom: ($spacer * 0.5) !important;
-	width: 100%;
-}
-
-.hr-3 {
-	margin-top: $spacer;
-	margin-bottom: $spacer;
-	width: 100%;
-}
-
 .dropdown-menu > li > a.dropdown-ext-link {
 	display: flex;
 	justify-content: space-between;
@@ -1422,4 +1488,9 @@ select.input-xs {
 			background: $stripe-grey--faint;
 		}
 	}
+}
+
+// redefine this here to ensure it overrides all the important display types above
+.hidden {
+	display: none !important;
 }

@@ -319,8 +319,8 @@ class ConverterUi {
 			const $wrpSource = $(`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Source</div></div>`).appendTo($wrpCustom);
 			this._menuAccess.getSource = () => this._$selSource.val();
 
-			const $wrpSourceOverlay = $(`<div class="full-height full-width"/>`);
-			let $sourceModal = null;
+			const $wrpSourceOverlay = $(`<div class="h-100 w-100"/>`);
+			let modalMeta = null;
 
 			const rebuildStageSource = (options) => {
 				SourceUiUtil.render({
@@ -334,14 +334,14 @@ class ConverterUi {
 
 						if (isNewSource) this._$selSource.append(`<option value="${source.json.escapeQuotes()}">${source.full.escapeQuotes()}</option>`);
 						this._$selSource.val(source.json);
-						if ($sourceModal) $sourceModal.data("close")();
+						if (modalMeta) modalMeta.doClose();
 					},
 					cbConfirmExisting: (source) => {
 						this._$selSource.val(source.json);
-						if ($sourceModal) $sourceModal.data("close")();
+						if (modalMeta) modalMeta.doClose();
 					},
 					cbCancel: () => {
-						if ($sourceModal) $sourceModal.data("close")();
+						if (modalMeta) modalMeta.doClose();
 					}
 				});
 			};
@@ -373,23 +373,23 @@ class ConverterUi {
 					const curSource = BrewUtil.sourceJsonToSource(curSourceJson);
 					if (!curSource) return;
 					rebuildStageSource({mode: "edit", source: MiscUtil.copy(curSource)});
-					$sourceModal = UiUtil.getShow$Modal({
+					modalMeta = UiUtil.getShowModal({
 						fullHeight: true,
 						fullWidth: true,
 						cbClose: () => $wrpSourceOverlay.detach()
 					});
-					$wrpSourceOverlay.appendTo($sourceModal);
+					$wrpSourceOverlay.appendTo(modalMeta.$modalInner);
 				});
 			$$`<div class="sidemenu__row">${$btnSourceEdit}</div>`.appendTo($wrpCustom);
 
 			const $btnSourceAdd = $(`<button class="btn btn-default btn-sm">Add New Source</button>`).click(() => {
 				rebuildStageSource({mode: "add"});
-				$sourceModal = UiUtil.getShow$Modal({
+				modalMeta = UiUtil.getShowModal({
 					fullHeight: true,
 					fullWidth: true,
 					cbClose: () => $wrpSourceOverlay.detach()
 				});
-				$wrpSourceOverlay.appendTo($sourceModal);
+				$wrpSourceOverlay.appendTo(modalMeta.$modalInner);
 			});
 			$$`<div class="sidemenu__row">${$btnSourceAdd}</div>`.appendTo($wrpCustom);
 
@@ -772,8 +772,6 @@ class StatblockConverter {
 			if (stats.reaction.length === 0) delete stats.reaction;
 			if (stats.legendary.length === 0) delete stats.legendary;
 		}
-
-		stats.cr = stats.cr || "Unknown";
 
 		(function doCleanLegendaryActionHeader () {
 			if (stats.legendary) {

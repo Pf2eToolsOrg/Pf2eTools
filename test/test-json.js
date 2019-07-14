@@ -91,7 +91,6 @@ function preprocess (schema) {
 						});
 						delete obj[k];
 						deepMerge(obj, merged);
-						console.log("merged!")
 					} else obj[k] = findReplace$$Merge(v);
 				});
 				return obj;
