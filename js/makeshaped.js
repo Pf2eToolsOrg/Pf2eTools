@@ -1,4 +1,3 @@
-/* global $:false */
 'use strict';
 
 class ShapedConverter {

@@ -243,19 +243,20 @@ class PageUi {
 PageUi.STORAGE_STATE = "brewbuilderState";
 PageUi.STORAGE_SETTINGS = "brewbuilderSettings";
 
-class Builder {
+class Builder extends ProxyBase {
 	static async pInitAll () {
 		return Promise.all(Builder._BUILDERS.map(b => b.pInit()))
 	}
 
 	constructor () {
+		super();
+
 		this._ui = null;
 		this._isStateDirty = false;
 
 		this._isEntrySaved = true;
 
 		Builder._BUILDERS.push(this);
-		ProxyUtil.decorate(this);
 	}
 
 	set ui (ui) { this._ui = ui; }

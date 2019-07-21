@@ -7,7 +7,7 @@ IS_DEPLOYED = undefined;
 VERSION_NUMBER = IS_DEPLOYED || "-1";
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
-IS_ROLL20 = false;
+IS_VTT = false;
 
 IMGUR_CLIENT_ID = `abdea4de492d3b0`;
 
@@ -156,12 +156,12 @@ String.prototype.toCamelCase = String.prototype.toCamelCase ||
 
 String.prototype.escapeQuotes = String.prototype.escapeQuotes ||
 	function () {
-		return this.replace(/'/g, `&singlequot;`).replace(/"/g, `&quot;`);
+		return this.replace(/'/g, `&apos;`).replace(/"/g, `&quot;`);
 	};
 
 String.prototype.unescapeQuotes = String.prototype.unescapeQuotes ||
 	function () {
-		return this.replace(/&singlequot;/g, `'`).replace(/&quot;/g, `"`);
+		return this.replace(/&apos;/g, `'`).replace(/&quot;/g, `"`);
 	};
 
 /**
@@ -349,6 +349,8 @@ Parser.numberToText = function (number) {
 	}
 	return `${number < 0 ? "negative " : ""}${getAsText(number)}`;
 };
+
+Parser.ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 Parser.attAbvToFull = function (abv) {
 	return Parser._parse_aToB(Parser.ATB_ABV_TO_FULL, abv);
@@ -1116,10 +1118,12 @@ Parser.psiOrderToFull = (order) => {
 };
 
 Parser.prereqSpellToFull = function (spell) {
-	if (spell === "eldritch blast") return Renderer.get().render(`{@spell ${spell}} cantrip`);
-	else if (spell === "hex/curse") return Renderer.get().render("{@spell hex} spell or a warlock feature that curses");
-	else if (spell) return Renderer.get().render(`{@spell ${spell}}`);
-	return STR_NONE;
+	if (spell) {
+		const [text, suffix] = spell.split("#");
+		if (!suffix) return Renderer.get().render(`{@spell ${spell}}`);
+		else if (suffix === "c") return Renderer.get().render(`{@spell ${text}} cantrip`);
+		else if (suffix === "x") return Renderer.get().render("{@spell hex} spell or a warlock feature that curses");
+	} else return STR_NONE;
 };
 
 Parser.prereqPactToFull = function (pact) {
@@ -1670,6 +1674,7 @@ SRC_GoS = "GoS";
 SRC_AI = "AI";
 SRC_OoW = "OoW";
 SRC_DIP = "DIP";
+SRC_HftT = "HftT";
 SRC_AL = "AL";
 SRC_SCREEN = "Screen";
 
@@ -1788,6 +1793,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_GoS] = "Ghosts of Saltmarsh";
 Parser.SOURCE_JSON_TO_FULL[SRC_AI] = "Acquisitions Incorporated";
 Parser.SOURCE_JSON_TO_FULL[SRC_OoW] = "The Orrery of the Wanderer";
 Parser.SOURCE_JSON_TO_FULL[SRC_DIP] = "Dragon of Icespire Peak";
+Parser.SOURCE_JSON_TO_FULL[SRC_HftT] = "Hunt for the Thessalhydra";
 Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
@@ -1889,6 +1895,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_GoS] = "GoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_AI] = "AI";
 Parser.SOURCE_JSON_TO_ABV[SRC_OoW] = "OoW";
 Parser.SOURCE_JSON_TO_ABV[SRC_DIP] = "DIP";
+Parser.SOURCE_JSON_TO_ABV[SRC_HftT] = "HftT";
 Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
@@ -2269,11 +2276,8 @@ JqueryUtil = {
 
 	addSelectors () {
 		// Add a selector to match exact text (case insensitive) to jQuery's arsenal
-		$.expr[':'].textEquals = (el, i, m) => {
-			const searchText = m[3];
-			const match = $(el).text().toLowerCase().trim().match(`^${RegExp.escape(searchText.toLowerCase().trim())}$`);
-			return match && match.length > 0;
-		};
+		//   Note that the search text should be `trim().toLowerCase()`'d before being passed in
+		$.expr[':'].textEquals = (el, i, m) => $(el).text().toLowerCase().trim() === m[3];
 
 		// Add a selector to match contained text (case insensitive)
 		$.expr[':'].containsInsensitive = (el, i, m) => {
@@ -2332,7 +2336,7 @@ JqueryUtil = {
 		$ele.click(() => setTimeout(() => $ele.parent().addClass("open"), 1)); // defer to allow the above to complete
 	},
 
-	_activeToast: [],
+	_ACTIVE_TOAST: [],
 	/**
 	 * @param {Object|string} options
 	 * @param {(jQuery|string)} options.content Toast contents. Supports jQuery objects.
@@ -2350,33 +2354,30 @@ JqueryUtil = {
 		const doCleanup = ($toast) => {
 			$toast.removeClass("toast--animate");
 			setTimeout(() => $toast.remove(), 85);
-			JqueryUtil._activeToast.splice(JqueryUtil._activeToast.indexOf($toast), 1);
+			JqueryUtil._ACTIVE_TOAST.splice(JqueryUtil._ACTIVE_TOAST.indexOf($toast), 1);
 		};
 
 		const $btnToastDismiss = $(`<button class="btn toast__btn-close"><span class="glyphicon glyphicon-remove"/></button>`)
 			.click(() => doCleanup($toast));
 
 		const $toast = $$`
-				<div class="toast alert-${options.type}">
-					<div class="toast__wrp-content">${options.content}</div>
-					<div class="toast__wrp-control">${$btnToastDismiss}</div>
-				</div>
-			`
-			.prependTo($(`body`))
-			.data("pos", 0);
+		<div class="toast toast--type-${options.type}">
+			<div class="toast__wrp-content">${options.content}</div>
+			<div class="toast__wrp-control">${$btnToastDismiss}</div>
+		</div>`.prependTo($(`body`)).data("pos", 0);
 
 		setTimeout(() => $toast.addClass(`toast--animate`), 5);
 		setTimeout(() => doCleanup($toast), 5000);
 
-		if (JqueryUtil._activeToast.length) {
-			JqueryUtil._activeToast.forEach($oldToast => {
+		if (JqueryUtil._ACTIVE_TOAST.length) {
+			JqueryUtil._ACTIVE_TOAST.forEach($oldToast => {
 				const pos = $oldToast.data("pos");
 				$oldToast.data("pos", pos + 1);
 				if (pos === 2) doCleanup($oldToast);
 			});
 		}
 
-		JqueryUtil._activeToast.push($toast);
+		JqueryUtil._ACTIVE_TOAST.push($toast);
 	}
 };
 
@@ -2857,7 +2858,7 @@ ListUtil = {
 			$headDesc.html(`${$headDesc.html()} Press J/K to navigate rows.`);
 
 			const scrollTo = () => {
-				const toShow = History.getSelectedListElementWithIndex();
+				const toShow = Hist.getSelectedListElementWithIndex();
 				if (toShow && toShow.$el && toShow.$el.length) {
 					const $wrp = toShow.$el.parent();
 					const $parent = toShow.$el.parent().parent();
@@ -2880,7 +2881,7 @@ ListUtil = {
 					if (e.key === "k" || e.key === "j") {
 						// don't switch if the user is typing somewhere else
 						if (MiscUtil.isInInput(e)) return;
-						const it = History.getSelectedListElementWithIndex();
+						const it = Hist.getSelectedListElementWithIndex();
 
 						if (it) {
 							if (e.key === "k") {
@@ -3001,7 +3002,7 @@ ListUtil = {
 	},
 
 	updateSelected: () => {
-		ListUtil.toggleSelected({}, History.getSelectedListElement().parent());
+		ListUtil.toggleSelected({}, Hist.getSelectedListElement().parent());
 	},
 
 	initContextMenu: (clickFn, ...labels) => {
@@ -3110,15 +3111,15 @@ ListUtil = {
 		ListUtil.getOrTabRightButton(`btn-pin`, `pushpin`)
 			.off("click")
 			.on("click", () => {
-				if (!ListUtil.isSublisted(History.lastLoadedId)) ListUtil.pDoSublistAdd(History.lastLoadedId, true);
-				else ListUtil.pDoSublistRemove(History.lastLoadedId);
+				if (!ListUtil.isSublisted(Hist.lastLoadedId)) ListUtil.pDoSublistAdd(Hist.lastLoadedId, true);
+				else ListUtil.pDoSublistRemove(Hist.lastLoadedId);
 			})
 			.attr("title", "Pin (Toggle)");
 	},
 
 	genericAddButtonHandler (evt, options = {}) {
-		if (evt.shiftKey) ListUtil.pDoSublistAdd(History.lastLoadedId, true, options.shiftCount || 20);
-		else ListUtil.pDoSublistAdd(History.lastLoadedId, true);
+		if (evt.shiftKey) ListUtil.pDoSublistAdd(Hist.lastLoadedId, true, options.shiftCount || 20);
+		else ListUtil.pDoSublistAdd(Hist.lastLoadedId, true);
 	},
 	bindAddButton: (handlerGenerator, options = {}) => {
 		ListUtil.getOrTabRightButton(`btn-sublist-add`, `plus`)
@@ -3128,8 +3129,8 @@ ListUtil = {
 	},
 
 	genericSubtractButtonHandler (evt, options = {}) {
-		if (evt.shiftKey) ListUtil.pDoSublistSubtract(History.lastLoadedId, options.shiftCount || 20);
-		else ListUtil.pDoSublistSubtract(History.lastLoadedId);
+		if (evt.shiftKey) ListUtil.pDoSublistSubtract(Hist.lastLoadedId, options.shiftCount || 20);
+		else ListUtil.pDoSublistSubtract(Hist.lastLoadedId);
 	},
 	bindSubtractButton: (handlerGenerator, options = {}) => {
 		ListUtil.getOrTabRightButton(`btn-sublist-subtract`, `minus`)
@@ -3195,14 +3196,14 @@ ListUtil = {
 			ListUtil._pLoadSavedSublist(json.items, false).then(async () => {
 				await ListUtil._pFinaliseSublist();
 
-				const [link, ...sub] = History._getHashParts();
+				const [link, ...sub] = Hist._getHashParts();
 				const outSub = [];
 				Object.keys(unpacked)
 					.filter(k => k !== ListUtil.SUB_HASH_PREFIX)
 					.forEach(k => {
 						outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].join(HASH_SUB_LIST_SEP)}`);
 					});
-				History.setSuppressHistory(true);
+				Hist.setSuppressHistory(true);
 				window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
 			});
 		}
@@ -3401,7 +3402,7 @@ ListUtil = {
 		if (!additive) await ListUtil.pDoSublistRemoveAll(true);
 
 		const toLoad = items.map(it => {
-			const $ele = History._getListElem(it.h);
+			const $ele = Hist._getListElem(it.h);
 			const itId = $ele ? $ele.attr("id") : null;
 			if (itId != null) {
 				const out = {index: itId, addCount: Number(it.c)};
@@ -3815,7 +3816,7 @@ UrlUtil = {
 			else return `${curr}?ver=${VERSION_NUMBER}`;
 		}
 
-		if (!IS_ROLL20 && IS_DEPLOYED) return addGetParam(`${DEPLOYED_STATIC_ROOT}${href}`);
+		if (!IS_VTT && IS_DEPLOYED) return addGetParam(`${DEPLOYED_STATIC_ROOT}${href}`);
 		else if (IS_DEPLOYED) return addGetParam(href);
 		return href;
 	},
@@ -4047,7 +4048,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PACT_BOON] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARTIFICER_INFUSION] = UrlUtil.PG_OPT_FEATURES;
 
-if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
+if (!IS_DEPLOYED && !IS_VTT && typeof window !== "undefined") {
 	// for local testing, hotkey to get a link to the current page on the main site
 	window.addEventListener("keypress", (e) => {
 		if (noModifierKeys(e) && typeof d20 === "undefined") {
@@ -4762,6 +4763,14 @@ BrewUtil = {
 	_sourceFilter: null,
 	_pHandleBrew: null,
 
+	/**
+	 * @param options Options object.
+	 * @param [options.list] List.
+	 * @param [options.lists] Lists.
+	 * @param [options.filterBox] Filter box.
+	 * @param [options.sourceFilter] Source filter.
+	 * @param [options.pHandleBrew] Brew handling function.
+	 */
 	bind (options) {
 		// provide ref to List.js instance
 		if (options.list) BrewUtil._lists = [options.list];
@@ -4798,25 +4807,19 @@ BrewUtil = {
 		StorageUtil.syncRemove(HOMEBREW_META_STORAGE);
 		BrewUtil.homebrew = null;
 		window.location.hash = "";
-		if (error) {
-			setTimeout(() => { throw error; });
-		}
+		if (error) setTimeout(() => { throw error; });
 	},
 
 	async pAddLocalBrewData (callbackFn = async (d, page) => BrewUtil.pDoHandleBrewJson(d, page, null)) {
-		if (!IS_ROLL20 && !IS_DEPLOYED) {
-			return DataUtil.loadJSON(`${Renderer.get().baseUrl}${JSON_HOMEBREW_INDEX}`).then(async (data) => {
-				// auto-load from `homebrew/`, for custom versions of the site
-				if (data.toImport.length) {
-					const page = UrlUtil.getCurrentPage();
-					const allData = await Promise.all(data.toImport.map(it => DataUtil.loadJSON(`homebrew/${it}`)));
-					return Promise.all(allData.map(d => callbackFn(d, page)));
-				} else {
-					return Promise.resolve();
-				}
-			});
+		if (!IS_VTT && !IS_DEPLOYED) {
+			const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${JSON_HOMEBREW_INDEX}`);
+			// auto-load from `homebrew/`, for custom versions of the site
+			if (data.toImport.length) {
+				const page = UrlUtil.getCurrentPage();
+				const allData = await Promise.all(data.toImport.map(it => DataUtil.loadJSON(`homebrew/${it}`)));
+				await Promise.all(allData.map(d => callbackFn(d, page)));
+			}
 		}
-		return Promise.resolve();
 	},
 
 	async _pRenderBrewScreen ($appendTo, $overlay, $window, isModal, getBrewOnClose) {
@@ -6143,12 +6146,12 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 	const self = this;
 
 	self.$openBtn.on("click", () => {
-		History.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${self.hashKey}${HASH_SUB_KV_SEP}true`);
+		Hist.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${self.hashKey}${HASH_SUB_KV_SEP}true`);
 	});
 
 	this.open = () => {
 		function hashTeardown () {
-			History.cleanSetHash(window.location.hash.replace(`${self.hashKey}${HASH_SUB_KV_SEP}true`, ""));
+			Hist.cleanSetHash(window.location.hash.replace(`${self.hashKey}${HASH_SUB_KV_SEP}true`, ""));
 		}
 
 		if (self.active) return;
@@ -6308,19 +6311,19 @@ EncounterUtil = {
 	},
 
 	_hasSavedStateUrl () {
-		return window.location.hash.length && History.getSubHash(EncounterUtil.SUB_HASH_PREFIX) != null;
+		return window.location.hash.length && Hist.getSubHash(EncounterUtil.SUB_HASH_PREFIX) != null;
 	},
 
 	_getSavedStateUrl () {
 		let out = null;
 		try {
-			out = JSON.parse(decodeURIComponent(History.getSubHash(EncounterUtil.SUB_HASH_PREFIX)));
+			out = JSON.parse(decodeURIComponent(Hist.getSubHash(EncounterUtil.SUB_HASH_PREFIX)));
 		} catch (e) {
 			setTimeout(() => {
 				throw e;
 			});
 		}
-		History.setSubhash(EncounterUtil.SUB_HASH_PREFIX, null);
+		Hist.setSubhash(EncounterUtil.SUB_HASH_PREFIX, null);
 		return out;
 	},
 
@@ -6403,61 +6406,59 @@ class ReactorEvent {
 }
 
 // STATE PROXY =========================================================================================================
-ProxyUtil = {
-	decorate (obj) {
-		if (obj.__hooks) return;
-
-		obj.__hooks = {};
-		obj.__hooksAll = {};
-
-		obj._getProxy = function (hookProp, toProxy) {
-			return new Proxy(toProxy, {
-				set: (object, prop, value) => {
-					object[prop] = value;
-					if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, value));
-					if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, value));
-					return true;
-				},
-				deleteProperty: (object, prop) => {
-					delete object[prop];
-					if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, null));
-					if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, null));
-					return true;
-				}
-			});
-		};
-
-		/**
-		 * Register a hook versus a root property on the state object. **INTERNAL CHANGES TO CHILD OBJECTS ON THE STATE
-		 *   OBJECT ARE NOT TRACKED**.
-		 * @param hookProp The state object.
-		 * @param prop The root property to track.
-		 * @param hook The hook to run. Will be called with two arguments; the property and the value of the property being
-		 *   modified.
-		 */
-		obj._addHook = function (hookProp, prop, hook) {
-			((this.__hooks[hookProp] = this.__hooks[hookProp] || {})[prop] = (this.__hooks[hookProp][prop] || [])).push(hook);
-		};
-
-		obj._addHookAll = function (hookProp, hook) {
-			(this.__hooksAll[hookProp] = this.__hooksAll[hookProp] || []).push(hook);
-		};
-
-		obj._removeHook = function (hookProp, prop, hook) {
-			if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) {
-				const ix = this.__hooks[hookProp][prop].findIndex(hk => hk === hook);
-				if (~ix) this.__hooks[hookProp][prop].splice(ix, 1);
-			}
-		};
-
-		obj._resetHooks = function (hookProp) {
-			delete this.__hooks[hookProp];
-		};
+class ProxyBase {
+	constructor () {
+		this.__hooks = {};
+		this.__hooksAll = {};
 	}
-};
+
+	_getProxy (hookProp, toProxy) {
+		return new Proxy(toProxy, {
+			set: (object, prop, value) => {
+				object[prop] = value;
+				if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, value));
+				if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, value));
+				return true;
+			},
+			deleteProperty: (object, prop) => {
+				delete object[prop];
+				if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, null));
+				if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, null));
+				return true;
+			}
+		});
+	}
+
+	/**
+	 * Register a hook versus a root property on the state object. **INTERNAL CHANGES TO CHILD OBJECTS ON THE STATE
+	 *   OBJECT ARE NOT TRACKED**.
+	 * @param hookProp The state object.
+	 * @param prop The root property to track.
+	 * @param hook The hook to run. Will be called with two arguments; the property and the value of the property being
+	 *   modified.
+	 */
+	_addHook (hookProp, prop, hook) {
+		((this.__hooks[hookProp] = this.__hooks[hookProp] || {})[prop] = (this.__hooks[hookProp][prop] || [])).push(hook);
+	}
+
+	_addHookAll (hookProp, hook) {
+		(this.__hooksAll[hookProp] = this.__hooksAll[hookProp] || []).push(hook);
+	}
+
+	_removeHook (hookProp, prop, hook) {
+		if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) {
+			const ix = this.__hooks[hookProp][prop].findIndex(hk => hk === hook);
+			if (~ix) this.__hooks[hookProp][prop].splice(ix, 1);
+		}
+	}
+
+	_resetHooks (hookProp) {
+		delete this.__hooks[hookProp];
+	}
+}
 
 // LEGAL NOTICE ========================================================================================================
-if (!IS_ROLL20 && typeof window !== "undefined") {
+if (!IS_VTT && typeof window !== "undefined") {
 	// add an obnoxious banner
 	// TODO is this something we want? If so, uncomment
 	/*

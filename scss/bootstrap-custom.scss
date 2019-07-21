@@ -1,7 +1,7 @@
 @import 'vars';
 
 .roller {
-	color: $link-blue;
+	color: $rgb-link-blue;
 	cursor: pointer;
 }
 
@@ -377,6 +377,10 @@ select.input-xs {
 	font-size: 12px;
 	line-height: 1.5;
 	border-radius: 3px;
+}
+
+.btn-primary--half {
+	background: repeating-linear-gradient(135deg, $rgb-btn-primary-blue, $rgb-btn-primary-blue 16px, $rgb-btn-primary-blue--desaturated 16px, $rgb-btn-primary-blue--desaturated 32px);
 }
 
 .fade {
@@ -1471,21 +1475,21 @@ select.input-xs {
 .stripe- {
 	&even {
 		&:nth-child(even) {
-			background: $stripe-grey;
+			background: $rgb-stripe-grey;
 		}
 
 		&--faint:nth-child(even) {
-			background: $stripe-grey--faint;
+			background: $rgb-stripe-grey--faint;
 		}
 	}
 
 	&odd {
 		&:nth-child(odd) {
-			background: $stripe-grey;
+			background: $rgb-stripe-grey;
 		}
 
 		&--faint:nth-child(odd) {
-			background: $stripe-grey--faint;
+			background: $rgb-stripe-grey--faint;
 		}
 	}
 }

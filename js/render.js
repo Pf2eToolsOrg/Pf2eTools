@@ -1757,11 +1757,11 @@ Renderer.getAbilityData = function (abObj) {
 					} else if (allAbilitiesWithParent) {
 						outStack += "any other ";
 					}
-					if (item.count !== undefined && item.count > 1) {
+					if (item.count != null && item.count > 1) {
 						outStack += Parser.numberToText(item.count) + " ";
 					}
 					if (allAbilities || allAbilitiesWithParent) {
-						outStack += `unique ${amount}`;
+						outStack += `${item.count > 1 ? "unique " : ""}${amount}`;
 					} else {
 						for (let j = 0; j < item.from.length; ++j) {
 							let suffix = "";
@@ -2409,7 +2409,9 @@ Renderer.optionalfeature = {
 				case "prereqPatron":
 					return listMode ? `${Parser.prereqPatronToShort(it.entry)} patron` : `${it.entry} patron`;
 				case "prereqSpell":
-					return listMode ? it.entries.map(x => x.split("|")[0].toTitleCase()).join("/") : it.entries.map(sp => Parser.prereqSpellToFull(sp)).joinConjunct(", ", " or ");
+					return listMode
+						? it.entries.map(x => x.split("#")[0].split("|")[0].toTitleCase()).join("/")
+						: it.entries.map(sp => Parser.prereqSpellToFull(sp)).joinConjunct(", ", " or ");
 				case "prereqFeature":
 					return listMode ? it.entries.map(x => x.toTitleCase()).join("/") : it.entries.joinConjunct(", ", " or ");
 				case "prereqItem":
@@ -5371,16 +5373,16 @@ Renderer.hover = {
 		const popoutCodeId = Renderer.hover.__initOnMouseHoverEntry({});
 
 		$btnPop.on("click", handlerGenerator ? handlerGenerator(toList, $btnPop, popoutCodeId) : (evt) => {
-			if (History.lastLoadedId !== null) {
+			if (Hist.lastLoadedId !== null) {
 				if (evt.shiftKey) {
 					Renderer.hover.handlePopoutCode(evt, toList, $btnPop, popoutCodeId);
-				} else Renderer.hover.doPopout($btnPop, toList, History.lastLoadedId, evt.clientX);
+				} else Renderer.hover.doPopout($btnPop, toList, Hist.lastLoadedId, evt.clientX);
 			}
 		});
 	},
 
 	handlePopoutCode (evt, toList, $btnPop, popoutCodeId) {
-		const data = toList[History.lastLoadedId];
+		const data = toList[Hist.lastLoadedId];
 		const cleanCopy = DataUtil.cleanJson(MiscUtil.copy(data));
 		Renderer.hover.__updateOnMouseHoverEntry(popoutCodeId, {
 			type: "code",
@@ -6599,7 +6601,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 		return tree;
 	}
 };
-if (!IS_ROLL20 && typeof window !== "undefined") {
+if (!IS_VTT && typeof window !== "undefined") {
 	window.addEventListener("load", Renderer.dice.init);
 }
 

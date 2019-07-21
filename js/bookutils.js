@@ -6,6 +6,7 @@ const BookUtil = {
 	},
 
 	_getSelectors (scrollTo) {
+		scrollTo = scrollTo.trim().toLowerCase();
 		return [
 			`.rd__h--0 > .entry-title-inner:textEquals("${scrollTo}")`,
 			`.rd__h--1 > .entry-title-inner:textEquals("${scrollTo}")`,
@@ -15,11 +16,17 @@ const BookUtil = {
 		];
 	},
 
-	scrollClick (scrollTo, scrollIndex) {
+	scrollClick (scrollTo, scrollIndex, ele) {
+		if (ele != null && !~BookUtil.curRender.chapter) {
+			// if in full-book mode, find the index of our header against the
+			const $list = $(ele).closest(".bk-headers");
+			const $siblings = $list.parent().children(".bk-headers").filter((i, e) => $(e).find(`[data-header="${scrollTo}"]`).length);
+			scrollIndex = $siblings.index($list);
+		}
+
 		const selectors = BookUtil._getSelectors(scrollTo);
 
-		if (scrollIndex === undefined) {
-			// textEquals selector defined below; added on window load
+		if (scrollIndex == null) {
 			const goToSect = $(selectors[0]);
 			if (goToSect.length) {
 				goToSect[0].scrollIntoView();
@@ -64,38 +71,29 @@ const BookUtil = {
 	},
 
 	makeContentsBlock (options) {
-		let out =
-			`<ul class="bk-contents" ${options.defaultHidden ? `style="display: none;"` : ""}>`;
-
+		let out = `<ul class="bk-contents" ${options.defaultHidden ? `style="display: none;"` : ""}>`;
 		options.book.contents.forEach((c, i) => {
-			out +=
-				`<li>
+			out += `<li>
 				<a href="${options.addPrefix || ""}#${UrlUtil.encodeForHash(options.book.id)},${i}" ${options.addOnclick ? `onclick="BookUtil.scrollPageTop(this)"` : ""}>
 					<span class="sect">${Parser.bookOrdinalToAbv(c.ordinal)}${c.name}</span>
 				</a>
 			</li>`;
 			out += BookUtil.makeHeadersBlock(options.book.id, i, c, options.addPrefix, options.addOnclick, options.defaultHeadersHidden);
 		});
-
-		out +=
-			"</ul>";
+		out += "</ul>";
 		return out;
 	},
 
 	makeHeadersBlock (bookId, chapterIndex, chapter, addPrefix, addOnclick, defaultHeadersHidden) {
-		let out =
-			`<ul class="bk-headers" ${defaultHeadersHidden ? `style="display: none;"` : ""}>`;
+		let out = `<ul class="bk-headers" ${defaultHeadersHidden ? `style="display: none;"` : ""}>`;
 		chapter.headers && chapter.headers.forEach(h => {
 			const headerText = BookUtil.getHeaderText(h);
 			const displayText = h.header ? `<span class="bk-contents__sub_spacer--1">\u2013</span>${h.header}` : h; // handle entries with depth
-			out += `
-				<li>
-					<a href="${addPrefix || ""}#${bookId},${chapterIndex},${UrlUtil.encodeForHash(headerText)}" data-book="${bookId}" data-chapter="${chapterIndex}" data-header="${headerText}" ${addOnclick ? `onclick="BookUtil.scrollClick('${headerText.replace(/'/g, "\\'")}')"` : ""}>${displayText}</a>
-				</li>
-			`;
+			out += `<li>
+				<a href="${addPrefix || ""}#${bookId},${chapterIndex},${UrlUtil.encodeForHash(headerText)}" data-book="${bookId}" data-chapter="${chapterIndex}" data-header="${headerText}" ${addOnclick ? `onclick="BookUtil.scrollClick('${headerText.replace(/'/g, "\\'")}', null, this)"` : ""}>${displayText}</a>
+			</li>`;
 		});
-		out +=
-			"</ul>";
+		out += "</ul>";
 		return out;
 	},
 
@@ -210,7 +208,8 @@ const BookUtil = {
 				const $allSects = $(`.${Renderer.HEAD_NEG_1}`);
 				const $toShow = $allSects.filter((i, e) => {
 					const $e = $(e);
-					const $match = $e.children(`.rd__h`).find(`span.entry-title-inner`).filter(`:textEquals("${sectionHeader}")`);
+					const cleanSectionHead = sectionHeader.trim().toLowerCase();
+					const $match = $e.children(`.rd__h`).find(`span.entry-title-inner`).filter(`:textEquals("${cleanSectionHead}")`);
 					return $match.length;
 				});
 
@@ -373,7 +372,9 @@ const BookUtil = {
 						}
 					}
 				}
-			} else if (forceScroll) BookUtil.scrollClick(scrollTo, scrollIndex);
+			} else if (forceScroll && !~chapter) {
+				BookUtil.scrollClick(scrollTo, scrollIndex);
+			}
 		}
 
 		/**
@@ -799,5 +800,9 @@ const BookUtil = {
 if (typeof module !== "undefined") {
 	module.exports.BookUtil = BookUtil;
 } else {
-	window.addEventListener("load", () => $("body").on("click", "a", (evt) => BookUtil._lastClickedLink = evt.target));
+	window.addEventListener("load", () => $("body").on("click", "a", (evt) => {
+		let $a = $(evt.target);
+		while ($a.length && !$a.is("a")) $a = $a.parent();
+		BookUtil._lastClickedLink = $a[0];
+	}));
 }

@@ -195,7 +195,7 @@ async function populateTablesAndFilters (data) {
 			RollerUtil.addListRollButton();
 			ListUtil.addListShowHide();
 
-			History.init(true);
+			Hist.init(true);
 			ExcludeUtil.checkShowAllExcluded(itemList, $(`#pagecontent`));
 		});
 }

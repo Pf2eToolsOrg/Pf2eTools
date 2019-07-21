@@ -1,8 +1,8 @@
 "use strict";
 
-class EncounterBuilder {
+class EncounterBuilder extends ProxyBase {
 	constructor () {
-		ProxyUtil.decorate(this);
+		super();
 
 		this.stateInit = false;
 		this._cache = null;
@@ -27,8 +27,8 @@ class EncounterBuilder {
 	}
 
 	initUi () {
-		$(`#btn-encounterbuild`).click(() => History.setSubhash(EncounterBuilder.HASH_KEY, true));
-		$(`#btn-encounterstatblock`).click(() => History.setSubhash(EncounterBuilder.HASH_KEY, null));
+		$(`#btn-encounterbuild`).click(() => Hist.setSubhash(EncounterBuilder.HASH_KEY, true));
+		$(`#btn-encounterstatblock`).click(() => Hist.setSubhash(EncounterBuilder.HASH_KEY, null));
 
 		this._initRandomHandlers();
 		this._initAdjustHandlers();
@@ -612,7 +612,7 @@ class EncounterBuilder {
 	}
 
 	isActive () {
-		return History.getSubHash(EncounterBuilder.HASH_KEY) === "true";
+		return Hist.getSubHash(EncounterBuilder.HASH_KEY) === "true";
 	}
 
 	show () {
@@ -681,7 +681,7 @@ class EncounterBuilder {
 
 	handleSubhash () {
 		// loading state from the URL is instead handled as part of EncounterUtil.pGetInitialState
-		if (History.getSubHash(EncounterBuilder.HASH_KEY) === "true") this.show();
+		if (Hist.getSubHash(EncounterBuilder.HASH_KEY) === "true") this.show();
 		else this.hide();
 	}
 
@@ -979,7 +979,7 @@ class EncounterBuilder {
 		extraVals = extraVals || [...new Array($(`.ecgen__player_advanced_extra_head`).length)].map(() => "");
 		return `
 			<div class="row mb-2 ecgen__player_advanced">
-				<div class="col-12 flex ecgen__player_advanced_flex">
+				<div class="w-100 flex ecgen__player_advanced_flex">
 					<input class="ecgen__player_advanced__name form-control form-control--minimal input-xs mr-1" value="${(name || "").escapeQuotes()}" onchange="encounterBuilder.doSaveStateDebounced()">
 					<input value="${level || 1}" min="1" max="20" type="number" class="ecgen__player_advanced__level ecgen__player_advanced_narrow form-control form-control--minimal input-xs text-right mr-1" onchange="encounterBuilder.updateDifficulty()">
 					${extraVals.map(it => EncounterBuilder.getAdvancedPlayerDetailColumn(it)).join("")}

@@ -86,6 +86,7 @@ class NavBar {
 		addLi(ulAdventures, "adventure.html", "Ghosts of Saltmarsh", {isSide: true, aHash: "GoS"});
 		addLi(ulAdventures, "adventure.html", "The Orrery of the Wanderer", {isSide: true, aHash: "OoW"});
 		addLi(ulAdventures, "adventure.html", "Dragon of Icespire Peak", {isSide: true, aHash: "DIP"});
+		addLi(ulAdventures, "adventure.html", "Hunt for the Thessalhydra", {isSide: true, aHash: "HftT"});
 		addDivider(ulAdventures);
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
 		addLi(ulDms, "cultsboons.html", "Cults & Demonic Boons");

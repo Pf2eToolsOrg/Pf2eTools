@@ -160,6 +160,9 @@ module.exports = {
 		"valid-typeof": ["error", {"requireStringLiterals": true}],
 		"wrap-iife": ["error", "any", {"functionPrototypeMethods": true}],
 		"yield-star-spacing": ["error", "both"],
-		"yoda": ["error", "never"]
+		"yoda": ["error", "never"],
+		"no-prototype-builtins": "off",
+		"require-atomic-updates": "off",
+		"no-console": "error"
 	}
 };

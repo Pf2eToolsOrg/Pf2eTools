@@ -597,6 +597,7 @@ class SideMenu {
 			const $wrpHistHeader = $(`<div class="sidemenu__row split-v-center"><span style="font-variant: small-caps;">Recently Removed</span></div>`).appendTo(this.$wrpHistory);
 			const $btnHistClear = $(`<button class="btn btn-danger">Clear</button>`).appendTo($wrpHistHeader);
 			$btnHistClear.on("click", () => {
+				this.board.exiledPanels.forEach(p => p.destroy());
 				this.board.exiledPanels = [];
 				this.doUpdateHistory();
 			});
@@ -608,6 +609,7 @@ class SideMenu {
 			const $ctrlMove = $(`<div class="panel-history-control-middle" title="Move"/>`).appendTo($cvrHistItem);
 
 			$btnRemove.on("click", () => {
+				this.board.exiledPanels[i].destroy();
 				this.board.exiledPanels.splice(i, 1);
 				this.doUpdateHistory();
 			});
@@ -1787,7 +1789,10 @@ class Panel {
 	}
 
 	destroy () {
+		// do cleanup
 		if (this.type === PANEL_TYP_ROLLBOX) Renderer.dice.unbindDmScreenPanel();
+		if (this.$content && this.$content.find(`.dm__data-anchor`).data("onDestroy")) this.$content.find(`.dm__data-anchor`).data("onDestroy")();
+
 		if (this.$pnl) this.$pnl.remove();
 		this.board.destroyPanel(this.id);
 	}

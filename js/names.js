@@ -53,7 +53,7 @@ function onJsonLoad (data) {
 		listClass: "names"
 	});
 
-	History.init(true);
+	Hist.init(true);
 }
 
 function showHideList (ele) {
@@ -97,7 +97,7 @@ function loadHash (id) {
 
 	// update list highlights
 	$(list.list).find(`.list-multi-selected`).removeClass("list-multi-selected");
-	const $listEle = History.getSelectedListElement().parent();
+	const $listEle = Hist.getSelectedListElement().parent();
 	$($listEle).addClass("list-multi-selected");
 }
 

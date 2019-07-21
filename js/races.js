@@ -197,7 +197,9 @@ class RacesPage extends ListPage {
 			sublistValueNames: ["name", "ability", "size", "id"],
 			sublistClass: "subraces",
 
-			dataProps: ["race"]
+			dataProps: ["race"],
+
+			hasAudio: true
 		});
 
 		this._sourceFilter = sourceFilter;
@@ -295,7 +297,6 @@ class RacesPage extends ListPage {
 					</audio>
 				</button>`;
 			}
-
 			$pgContent.append(`
 			<tbody>
 			${Renderer.utils.getBorderTr()}

@@ -35,12 +35,12 @@ const ATB_DATA_SC_LIST = "data-subclass-list";
 let subclassComparisonView;
 let filterBox;
 
-// Exported to history.js, gets called on hash change
+// Exported to hist.js, gets called on hash change
 function loadHash (id) {
 	HashLoad.loadHash(id);
 }
 
-// Exported to history.js
+// Exported to hist.js
 function loadSubHash (sub) {
 	sub = filterBox.setFromSubHashes(sub);
 	SubClassLoader.loadSubHash(sub);
@@ -147,13 +147,13 @@ class ClassData {
 
 		ClassList.addClasses(newClasses);
 
-		if (!History.initialLoad) {
+		if (!Hist.initialLoad) {
 			if (data.class.some(c => c.uniqueId)) {
 				const filterVals = filterBox.getValues();
 				filterVals.Source.Homebrew = 1;
 				filterBox.setFromValues({Source: filterVals.Source});
 			}
-			History.hashChange();
+			Hist.hashChange();
 		}
 	}
 
@@ -176,7 +176,7 @@ class ClassData {
 
 			ClassData.sortSubclasses([c]);
 		});
-		if (!History.initialLoad) History.hashChange(true);
+		if (!Hist.initialLoad) Hist.hashChange(true);
 	}
 
 	/**
@@ -475,10 +475,10 @@ class HashLoad {
 					ClassDisplay.curClass)}${HASH_PART_SEP}${featureLinkPart}" class="${CLSS_FEATURE_LINK}" ${ATB_DATA_FEATURE_LINK}="${featureLinkPart}" ${ATB_DATA_FEATURE_ID}="${featureId}">${feature.name}</a>`);
 				featureLink.click(function () {
 					const hideClassFsKey = HASH_HIDE_FEATURES.slice(0, -1);
-					const hiddenState = History.getSubHash(hideClassFsKey) === "true";
+					const hiddenState = Hist.getSubHash(hideClassFsKey) === "true";
 					if (hiddenState) {
 						setTimeout(() => {
-							History.setSubhash(hideClassFsKey, null);
+							Hist.setSubhash(hideClassFsKey, null);
 							setTimeout(() => document.getElementById(featureId).scrollIntoView(), 1);
 						}, 1);
 					} else document.getElementById(featureId).scrollIntoView();
@@ -652,7 +652,7 @@ class HashLoad {
 		const $pill = $(`<span title="Feeling Lucky?" class="sc_pill sc-pill-feeling-lucky"><span class="glyphicon glyphicon-random"></span></span>`);
 		HashLoad.subclassPillWrapper.append($pill);
 		$pill.click(() => {
-			const [link, ...sub] = History._getHashParts();
+			const [link, ...sub] = Hist._getHashParts();
 			const outStack = [link];
 			let singleSelected = null;
 			sub.filter(hashPart => {
@@ -680,7 +680,7 @@ class HashLoad {
 		$(`<span title="Toggle Sources" class="sc_pill sc_pill__source"><span class="glyphicon glyphicon-book"></span></span>`)
 			.appendTo(HashLoad.subclassPillWrapper)
 			.click(function () {
-				const [link, ...sub] = History._getHashParts();
+				const [link, ...sub] = Hist._getHashParts();
 				const outStack = [link];
 				let curr = false;
 				sub.filter(hashPart => {
@@ -828,7 +828,7 @@ class SubClassLoader {
 						newHashStack.push(hashPart);
 					} else if (toKeep.length > 0) newHashStack.push(HASH_SUBCLASS + toKeep.join(HASH_LIST_SEP))
 				}
-				const curParts = History._getHashParts();
+				const curParts = Hist._getHashParts();
 				if (curParts.length > 1) {
 					const newParts = [curParts[0]].concat(newHashStack);
 					HashLoad.cleanSetHash(HASH_START + newParts.join(HASH_PART_SEP));
@@ -1402,7 +1402,7 @@ async function doPageInit () {
 			.catch(BrewUtil.pPurgeBrew)
 			.then(() => {
 				RollerUtil.addListRollButton();
-				History.init(true);
+				Hist.init(true);
 				ExcludeUtil.checkShowAllExcluded(ClassData.classes, $(`#pagecontent`));
 			});
 	});

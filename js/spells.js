@@ -278,42 +278,34 @@ function handleBrew (homebrew) {
 	return Promise.resolve();
 }
 
-function pPostLoad () {
-	return new Promise(resolve => {
-		BrewUtil.pAddBrewData()
-			.then(handleBrew)
-			.then(() => BrewUtil.bind({list}))
-			.then(() => BrewUtil.pAddLocalBrewData())
-			.catch(BrewUtil.pPurgeBrew)
-			.then(async () => {
-				BrewUtil.makeBrewButton("manage-brew");
-				BrewUtil.bind({filterBox, sourceFilter});
-				await ListUtil.pLoadState();
+async function pPostLoad () {
+	const homebrew = await BrewUtil.pAddBrewData();
+	await handleBrew(homebrew);
+	BrewUtil.bind({list});
+	BrewUtil.makeBrewButton("manage-brew");
+	BrewUtil.bind({filterBox, sourceFilter});
+	await ListUtil.pLoadState();
 
-				ListUtil.bindShowTableButton(
-					"btn-show-table",
-					"Spells",
-					spellList,
-					{
-						name: {name: "Name", transform: true},
-						source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>`},
-						level: {name: "Level", transform: (it) => Parser.spLevelToFull(it)},
-						time: {name: "Casting Time", transform: (it) => getTblTimeStr(it[0])},
-						duration: {name: "Duration", transform: (it) => Parser.spDurationToFull(it)},
-						_school: {name: "School", transform: (sp) => `<span class="school_${sp.school}">${Parser.spSchoolAndSubschoolsAbvsToFull(sp.school, sp.subschools)}</span>`},
-						range: {name: "Range", transform: (it) => Parser.spRangeToFull(it)},
-						_components: {name: "Components", transform: (sp) => Parser.spComponentsToFull(sp)},
-						classes: {name: "Classes", transform: (it) => Parser.spMainClassesToFull(it)},
-						entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}, 1), flex: 3},
-						entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}, 1), flex: 2}
-					},
-					{generator: ListUtil.basicFilterGenerator},
-					(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source)
-				);
-
-				resolve();
-			});
-	})
+	ListUtil.bindShowTableButton(
+		"btn-show-table",
+		"Spells",
+		spellList,
+		{
+			name: {name: "Name", transform: true},
+			source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>`},
+			level: {name: "Level", transform: (it) => Parser.spLevelToFull(it)},
+			time: {name: "Casting Time", transform: (it) => getTblTimeStr(it[0])},
+			duration: {name: "Duration", transform: (it) => Parser.spDurationToFull(it)},
+			_school: {name: "School", transform: (sp) => `<span class="school_${sp.school}">${Parser.spSchoolAndSubschoolsAbvsToFull(sp.school, sp.subschools)}</span>`},
+			range: {name: "Range", transform: (it) => Parser.spRangeToFull(it)},
+			_components: {name: "Components", transform: (sp) => Parser.spComponentsToFull(sp)},
+			classes: {name: "Classes", transform: (it) => Parser.spMainClassesToFull(it)},
+			entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}, 1), flex: 3},
+			entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}, 1), flex: 2}
+		},
+		{generator: ListUtil.basicFilterGenerator},
+		(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source)
+	);
 }
 
 window.onload = async function load () {
@@ -346,7 +338,7 @@ window.onload = async function load () {
 	Object.assign(SUBCLASS_LOOKUP, subclassLookup);
 	SortUtil.initHandleFilterButtonClicks();
 	await pMultisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addSpells, pPostLoad);
-	if (History.lastLoadedId == null) History._freshLoad();
+	if (Hist.lastLoadedId == null) Hist._freshLoad();
 	ExcludeUtil.checkShowAllExcluded(spellList, $(`#pagecontent`));
 };
 
@@ -467,7 +459,7 @@ const areaTypeFilter = new Filter({
 });
 let filterBox;
 
-function pPageInit (loadedSources) {
+async function pPageInit (loadedSources) {
 	Object.keys(loadedSources)
 		.map(src => new FilterItem({item: src, changeFn: loadSource(JSON_LIST_NAME, addSpells)}))
 		.forEach(fi => sourceFilter.addItem(fi));
@@ -529,9 +521,9 @@ function pPageInit (loadedSources) {
 				numShown += atLvl.length;
 			}
 
-			if (!toShow.length && History.lastLoadedId != null) {
+			if (!toShow.length && Hist.lastLoadedId != null) {
 				stack.push(`<tr class="spellbook-level"><td>`);
-				renderSpell(spellList[History.lastLoadedId]);
+				renderSpell(spellList[Hist.lastLoadedId]);
 				stack.push(`</td></tr>`);
 			}
 
@@ -542,49 +534,55 @@ function pPageInit (loadedSources) {
 
 	// load homebrew class spell list addons
 	brewSpellClasses = {PHB: {}};
-	return BrewUtil.pAddBrewData()
-		.then((homebrew) => {
-			function handleSubclass (className, classSource = SRC_PHB, sc) {
-				const genSubclassSpell = (it, subSubclass) => {
-					const name = typeof it === "string" ? it : it.name;
-					const source = typeof it === "string" ? "PHB" : it.source;
-					brewSpellClasses[source] = brewSpellClasses[source] || {fromClassList: [], fromSubclass: []};
-					brewSpellClasses[source][name] = brewSpellClasses[source][name] || {fromClassList: [], fromSubclass: []};
-					const toAdd = {
-						class: {
-							name: className,
-							source: classSource
-						},
-						subclass: {
-							name: sc.shortName,
-							source: sc.source
-						}
-					};
-					if (subSubclass) toAdd.subclass.subSubclass = subSubclass;
-					brewSpellClasses[source][name].fromSubclass.push(toAdd);
-				};
 
-				if (sc.subclassSpells) sc.subclassSpells.forEach(it => genSubclassSpell(it));
-				if (sc.subSubclassSpells) $.each(sc.subSubclassSpells, (ssC, arr) => arr.forEach(it => genSubclassSpell(it, ssC)));
-			}
+	function handleSubclass (className, classSource = SRC_PHB, sc) {
+		const genSubclassSpell = (it, subSubclass) => {
+			const name = (typeof it === "string" ? it : it.name).toLowerCase();
+			const source = typeof it === "string" ? "PHB" : it.source;
+			brewSpellClasses[source] = brewSpellClasses[source] || {fromClassList: [], fromSubclass: []};
+			brewSpellClasses[source][name] = brewSpellClasses[source][name] || {fromClassList: [], fromSubclass: []};
+			const toAdd = {
+				class: {
+					name: className,
+					source: classSource
+				},
+				subclass: {
+					name: sc.shortName,
+					source: sc.source
+				}
+			};
+			if (subSubclass) toAdd.subclass.subSubclass = subSubclass;
+			brewSpellClasses[source][name].fromSubclass.push(toAdd);
+		};
 
-			if (homebrew.class) {
-				homebrew.class.forEach(c => {
-					if (c.classSpells) {
-						c.classSpells.forEach(it => {
-							const name = typeof it === "string" ? it : it.name;
-							const source = typeof it === "string" ? "PHB" : it.source;
-							brewSpellClasses[source] = brewSpellClasses[source] || {};
-							brewSpellClasses[source][name] = brewSpellClasses[source][name] || {fromClassList: [], fromSubclass: []};
-							brewSpellClasses[source][name].fromClassList.push({name: c.name, source: c.source});
-						});
-					}
-					if (c.subclasses) c.subclasses.forEach(sc => handleSubclass(c.name, c.source, sc));
-				})
-			}
-			if (homebrew.subclass) homebrew.subclass.forEach(sc => handleSubclass(sc.class, sc.classSource, sc));
-		})
-		.catch(BrewUtil.pPurgeBrew);
+		if (sc.subclassSpells) sc.subclassSpells.forEach(it => genSubclassSpell(it));
+		if (sc.subSubclassSpells) $.each(sc.subSubclassSpells, (ssC, arr) => arr.forEach(it => genSubclassSpell(it, ssC)));
+	}
+	try {
+		const homebrew = await BrewUtil.pAddBrewData();
+		BrewUtil.bind({pHandleBrew: () => {}}); // temporarily bind "do nothing" brew handler
+		await BrewUtil.pAddLocalBrewData(); // load local homebrew, so we can add any local spell classes
+		BrewUtil.bind({pHandleBrew: null}); // unbind temporary handler
+
+		if (homebrew.class) {
+			homebrew.class.forEach(c => {
+				if (c.classSpells) {
+					c.classSpells.forEach(it => {
+						const name = (typeof it === "string" ? it : it.name).toLowerCase();
+						const source = typeof it === "string" ? "PHB" : it.source;
+						brewSpellClasses[source] = brewSpellClasses[source] || {};
+						brewSpellClasses[source][name] = brewSpellClasses[source][name] || {fromClassList: [], fromSubclass: []};
+						brewSpellClasses[source][name].fromClassList.push({name: c.name, source: c.source});
+					});
+				}
+				if (c.subclasses) c.subclasses.forEach(sc => handleSubclass(c.name, c.source, sc));
+			})
+		}
+		if (homebrew.subclass) homebrew.subclass.forEach(sc => handleSubclass(sc.class, sc.classSource, sc));
+	} catch (e) {
+		setTimeout(() => { throw e; });
+		await BrewUtil.pPurgeBrew();
+	}
 }
 
 function getSublistItem (spell, pinId) {
@@ -732,15 +730,16 @@ function addSpells (data) {
 		}
 
 		// add homebrew class/subclass
-		if (brewSpellClasses[spell.source] && brewSpellClasses[spell.source][spell.name]) {
+		const lowName = spell.name.toLowerCase();
+		if (brewSpellClasses[spell.source] && brewSpellClasses[spell.source][lowName]) {
 			spell.classes = spell.classes || {};
-			if (brewSpellClasses[spell.source][spell.name].fromClassList.length) {
+			if (brewSpellClasses[spell.source][lowName].fromClassList.length) {
 				spell.classes.fromClassList = spell.classes.fromClassList || [];
-				spell.classes.fromClassList = spell.classes.fromClassList.concat(brewSpellClasses[spell.source][spell.name].fromClassList);
+				spell.classes.fromClassList = spell.classes.fromClassList.concat(brewSpellClasses[spell.source][lowName].fromClassList);
 			}
-			if (brewSpellClasses[spell.source][spell.name].fromSubclass.length) {
+			if (brewSpellClasses[spell.source][lowName].fromSubclass.length) {
 				spell.classes.fromSubclass = spell.classes.fromSubclass || [];
-				spell.classes.fromSubclass = spell.classes.fromSubclass.concat(brewSpellClasses[spell.source][spell.name].fromSubclass);
+				spell.classes.fromSubclass = spell.classes.fromSubclass.concat(brewSpellClasses[spell.source][lowName].fromSubclass);
 			}
 		}
 
@@ -911,10 +910,10 @@ function handleUnknownHash (link, sub) {
 	if (src) {
 		loadSource(JSON_LIST_NAME, (spells) => {
 			addSpells(spells);
-			History.hashChange();
+			Hist.hashChange();
 		})(src, "yes");
 	} else {
-		History._freshLoad();
+		Hist._freshLoad();
 	}
 }
 

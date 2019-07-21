@@ -37,7 +37,7 @@ Shared UI components
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: $modal-overlay-grey;
+		background-color: $rgb-modal-overlay-grey;
 	}
 
 	&inner {
@@ -101,7 +101,7 @@ Shared UI components
 	}
 
 	&wrp-tab-heads--border {
-		border-bottom: 1px solid $border-grey;
+		border-bottom: 1px solid $rgb-border-grey;
 	}
 }
 
@@ -115,7 +115,7 @@ Shared UI components
 		flex-grow: 0;
 		display: inline-block;
 		cursor: pointer;
-		border: 1px solid $border-grey;
+		border: 1px solid $rgb-border-grey;
 		border-radius: 4px;
 		outline: none;
 		user-select: none;
@@ -169,27 +169,27 @@ Shared UI components
 			}
 
 			&[data-state='0'] {
-				background: $night-bg-color;
+				background: $rgb-night-bg-color;
 			}
 
 			&[data-state='1'] {
-				background: $border-grey;
+				background: $rgb-border-grey;
 				border-color: #aaa;
 			}
 
 			&[data-state='2'] {
-				background: $border-grey;
+				background: $rgb-border-grey;
 				border-color: #aaa;
 
 				&::after {
-					color: $night-bg-color;
+					color: $rgb-night-bg-color;
 					font-weight: bold;
 				}
 			}
 
 			&[data-state='3'] {
-				background: repeating-linear-gradient(45deg, $border-grey, $border-grey 10px, $night-bg-color 10px, $night-bg-color 20px);
-				border-color: $border-grey;
+				background: repeating-linear-gradient(45deg, $rgb-border-grey, $rgb-border-grey 10px, $rgb-night-bg-color 10px, $rgb-night-bg-color 20px);
+				border-color: $rgb-border-grey;
 			}
 		}
 	}
@@ -203,7 +203,7 @@ Shared UI components
 		height: 92px;
 		border-radius: 46px;
 		background: #f0f0f0;
-		border: 1px solid $border-grey;
+		border: 1px solid $rgb-border-grey;
 		user-select: none;
 		cursor: grab;
 	}
@@ -226,11 +226,11 @@ Shared UI components
 .night-mode {
 	.ui-dir__ {
 		&face {
-			background: $night-bg-color;
+			background: $rgb-night-bg-color;
 		}
 
 		&arm {
-			background: $night-font-color;
+			background: $rgb-night-font-color;
 			box-shadow: none;
 		}
 	}
@@ -298,7 +298,7 @@ Shared UI components
 
 		display: none;
 		position: absolute;
-		border: 1px solid $border-grey;
+		border: 1px solid $rgb-border-grey;
 		background: white;
 		border-radius: 3px;
 		z-index: 1;
@@ -317,7 +317,7 @@ Shared UI components
 .night-mode {
 	.ui-tip__ {
 		&child {
-			background: $night-bg-color;
+			background: $rgb-night-bg-color;
 		}
 	}
 }

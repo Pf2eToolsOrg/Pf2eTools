@@ -16,6 +16,7 @@ class ListPage {
 	 * @param opts.dataProps JSON data propert(y/ies).
 	 * @param [opts.bookViewOptions] Book view options.
 	 * @param [opts.tableViewOptions] Table view options.
+	 * @param [opts.hasAudio] True if the entities have pronunciation audio.
 	 */
 	constructor (opts) {
 		this._dataSource = opts.dataSource;
@@ -31,6 +32,7 @@ class ListPage {
 		this._dataProps = opts.dataProps;
 		this._bookViewOptions = opts.bookViewOptions;
 		this._tableViewOptions = opts.tableViewOptions;
+		this._hasAudio = opts.hasAudio;
 
 		this._renderer = Renderer.get();
 		this._list = null;
@@ -95,6 +97,7 @@ class ListPage {
 		await ListUtil.pLoadState();
 		RollerUtil.addListRollButton();
 		ListUtil.addListShowHide();
+		if (this._hasAudio) Renderer.utils.bindPronounceButtons();
 
 		if (this._bookViewOptions) {
 			this._bookView = new BookModeView(
@@ -106,11 +109,11 @@ class ListPage {
 			);
 		}
 
-		// bind hash-change functions for history.js to use
+		// bind hash-change functions for hist.js to use
 		window.loadHash = this.doLoadHash.bind(this);
 		window.loadSubHash = this.doLoadSubHash.bind(this);
 
-		History.init(true);
+		Hist.init(true);
 		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#pagecontent`));
 	}
 

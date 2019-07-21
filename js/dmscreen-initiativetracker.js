@@ -26,7 +26,7 @@ class InitiativeTracker {
 			statsCols: state.c || []
 		};
 
-		const $wrpTracker = $(`<div class="dm-init dms__data_anchor"/>`);
+		const $wrpTracker = $(`<div class="dm-init dm__data-anchor"/>`);
 
 		// Unused; to be considered for other applications
 		const handleResize = () => {
@@ -440,7 +440,7 @@ class InitiativeTracker {
 					return serverInfo[i].textifiedSdp;
 				});
 			} else {
-				p2pMeta.serverInfo = new Promise(async resolve => {
+				p2pMeta.serverInfo = (async () => {
 					p2pMeta.serverInfo = await PeerUtil.pInitialiseServers(names, _DM_MESSAGE_RECEIVER, _DM_ERROR_HANDLER, {shortTokens: !!cfg.playerInitShortTokens});
 
 					targetRows.forEach((r, i) => {
@@ -453,9 +453,7 @@ class InitiativeTracker {
 						r.$iptTokenClient.attr("disabled", false);
 						r.$btnAcceptClientToken.attr("disabled", false);
 					});
-
-					resolve();
-				});
+				})();
 
 				await p2pMeta.serverInfo;
 				return targetRows.map(r => r.serverInfo.textifiedSdp);
@@ -545,7 +543,7 @@ class InitiativeTracker {
 						if (!thisCfg) { // if new row
 							thisCfg = {
 								id: CryptUtil.uid(),
-								v: false, // is player-visible
+								v: 0, // is player-visible (0 = none, 1 = all, 2 = player units only)
 								o: cfg.statsCols.filter(it => !it.isDeleted).length + 1, // order
 								e: true, // editable
 
@@ -586,9 +584,9 @@ class InitiativeTracker {
 						});
 
 						const $btnVisible = InitiativeTracker.get$btnPlayerVisible(thisCfg.v, () => {
-							thisCfg.v = $btnVisible.hasClass("btn-primary");
+							thisCfg.v = $btnVisible.hasClass("btn-primary--half") ? 2 : $btnVisible.hasClass("btn-primary") ? 1 : 0;
 							doUpdateExternalStates();
-						});
+						}, true);
 
 						const $btnDel = $(`<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"/></button>`).click(() => {
 							$row.remove();
@@ -684,8 +682,8 @@ class InitiativeTracker {
 				isWait: false
 			};
 
-			const {$modalInner, doClose} = UiUtil.getShowModal()
-				.addClass("flex-col");
+			const {$modalInner, doClose} = UiUtil.getShowModal();
+			$modalInner.addClass("flex-col");
 
 			const $controls = $(`<div class="split" style="flex-shrink: 0"/>`).appendTo($modalInner);
 			const $srch = $(`<input class="ui-search__ipt-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($controls);
@@ -864,7 +862,7 @@ class InitiativeTracker {
 		}
 
 		function getPlayerFriendlyState () {
-			const visibleStatsCols = cfg.statsCols.filter(it => !it.isDeleted && it.v).map(({id, a, o}) => ({id, a, o})); // id, abbreviation, order
+			const visibleStatsCols = cfg.statsCols.filter(it => !it.isDeleted && it.v).map(({id, a, o, v}) => ({id, a, o, v})); // id, abbreviation, order, visibility mode (delete this later)
 
 			const rows = $wrpEntries.find(`.dm-init-row`).map((i, e) => {
 				const $row = $(e);
@@ -872,8 +870,16 @@ class InitiativeTracker {
 				// if the row is player-hidden
 				if (!$row.find(`.dm_init__btn_eye`).hasClass(`btn-primary`)) return false;
 
+				const isMonster = !!$row.find(`.init-wrp-creature`).length;
+
 				const statCols = getStatColsState($row);
-				const statsVals = statCols.filter(it => visibleStatsCols.find(sc => sc.id === it.id));
+				const statsVals = statCols.map(it => {
+					const mappedCol = visibleStatsCols.find(sc => sc.id === it.id);
+					if (mappedCol) {
+						if (mappedCol.v === 1 || !isMonster) return it;
+						else return {u: true}; // "unknown"
+					} else return null;
+				}).filter(Boolean);
 
 				const $conds = $row.find(`.init__cond`);
 
@@ -899,6 +905,7 @@ class InitiativeTracker {
 
 				return out;
 			}).get().filter(Boolean);
+			visibleStatsCols.forEach(it => delete it.v); // clean up any visibility mode flags
 			return {
 				r: rows,
 				c: visibleStatsCols,
@@ -1239,7 +1246,7 @@ class InitiativeTracker {
 				} else hpVals[prop] = nxt;
 			};
 
-			InitiativeTracker.get$btnPlayerVisible(isVisible, doUpdateExternalStates, "dm-init-row-btn", "dm_init__btn_eye")
+			InitiativeTracker.get$btnPlayerVisible(isVisible, doUpdateExternalStates, false, "dm-init-row-btn", "dm_init__btn_eye")
 				.appendTo($wrpRhs);
 
 			$(`<button class="btn btn-danger btn-xs dm-init-row-btn dm-init-lockable" title="Delete" tabindex="-1"><span class="glyphicon glyphicon-trash"/></button>`)
@@ -1502,29 +1509,34 @@ class InitiativeTracker {
 				if (bestiaryList.a) { // advanced encounter builder
 					if (bestiaryList.d) {
 						const colNameIndex = {};
-						(bestiaryList.c || []).forEach((colName, i) => colNameIndex[i] = (colName || "").toLowerCase());
+						bestiaryList.c = bestiaryList.c || [];
+						if (bestiaryList.c.length) cfg.statsAddColumns = true;
+
+						bestiaryList.c.forEach((colName, i) => colNameIndex[i] = (colName || "").toLowerCase());
 
 						// mark all old stats cols for deletion
 						cfg.statsCols.forEach(col => col.isDeleted = true);
 
 						const colIndex = {};
 						let hpIndex = null;
-						(bestiaryList.c || []).forEach((colName, i) => {
-							if ((colName || "").toLowerCase() === "hp") {
+						bestiaryList.c.forEach((colName, i) => {
+							colName = colName || "";
+							if (colName.toLowerCase() === "hp") {
 								hpIndex = i;
 								return;
 							}
+							const populateEntry = Object.entries(InitiativeTracker.STAT_COLUMNS).find(([_, v]) => v.abv && v.abv.toLowerCase() === colName.toLowerCase());
 
 							const newCol = {
 								id: CryptUtil.uid(),
 								e: true, // editable
-								v: false, // player-visible
+								v: 2, // is player-visible (0 = none, 1 = all, 2 = player units only)
 								o: i, // order
 
 								// input data
-								p: "", // populate with...
+								p: populateEntry ? populateEntry[0] : "", // populate with...
 								po: null, // populate with... (previous value)
-								a: colName || "" // abbreviation
+								a: colName // abbreviation
 							};
 							colIndex[i] = newCol;
 							cfg.statsCols.push(newCol);
@@ -1642,12 +1654,24 @@ class InitiativeTracker {
 		return $wrpTracker;
 	}
 
-	static get$btnPlayerVisible (isVisible, fnOnClick, ...additionalClasses) {
-		const $btnVisible = $(`<button class="btn ${isVisible ? `btn-primary` : `btn-default`} btn-xs ${additionalClasses.join(" ")}" title="${isVisible ? "Shown" : "Hidden"} in player view" tabindex="-1"><span class="glyphicon ${isVisible ? `glyphicon-eye-open` : `glyphicon-eye-close`}"/></button>`)
+	static get$btnPlayerVisible (isVisible, fnOnClick, isTriState, ...additionalClasses) {
+		let isVisNum = Number(isVisible || false);
+
+		const getTitle = () => isVisNum === 0 ? `Hidden in player view` : isVisNum === 1 ? `Shown in player view` : `Shown in player view on player characters, hidden in player view on monsters`;
+		const getClasses = () => `${isVisNum === 0 ? `btn-default` : isVisNum === 1 ? `btn-primary` : `btn-primary btn-primary--half`} btn btn-xs ${additionalClasses.join(" ")}`;
+		const getIconClasses = () => isVisNum === 0 ? `glyphicon glyphicon-eye-close` : `glyphicon glyphicon-eye-open`;
+
+		const $dispIcon = $(`<span class="glyphicon ${getIconClasses()}"/>`);
+		const $btnVisible = $$`<button class="${getClasses()}" title="${getTitle()}" tabindex="-1">${$dispIcon}</button>`
 			.on("click", () => {
-				$btnVisible.toggleClass("btn-primary").toggleClass("btn-default");
-				$btnVisible.find(`.glyphicon`).toggleClass("glyphicon-eye-open").toggleClass("glyphicon-eye-close");
-				$btnVisible.attr("title", $btnVisible.hasClass("btn-primary") ? "Shown in Player View" : "Hidden in Player View");
+				if (isVisNum === 0) isVisNum++;
+				else if (isVisNum === 1) isVisNum = isTriState ? 2 : 0;
+				else if (isVisNum === 2) isVisNum = 0;
+
+				$btnVisible.attr("title", getTitle());
+				$btnVisible.attr("class", getClasses());
+				$dispIcon.attr("class", getIconClasses());
+
 				fnOnClick();
 			});
 		return $btnVisible;

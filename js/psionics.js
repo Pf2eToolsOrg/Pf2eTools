@@ -74,9 +74,9 @@ class PsionicsPage extends ListPage {
 					renderType("T");
 					renderType("D");
 
-					if (!toShow.length && History.lastLoadedId != null) {
+					if (!toShow.length && Hist.lastLoadedId != null) {
 						stack.push(`<tr class="spellbook-level"><td>`);
-						renderSpell(this._dataList[History.lastLoadedId]);
+						renderSpell(this._dataList[Hist.lastLoadedId]);
 						stack.push(`</td></tr>`);
 					}
 

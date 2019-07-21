@@ -21,32 +21,49 @@
 
 $spacer: 1rem;
 
-$active-blue--light: #7398b7;
-$active-blue: #337ab7;
-$active-blue--dark: #2a6496;
-$active-red--light: #8a4b4b;
-$active-red: #8a1a1b;
-$active-red--dark: #711617;
-$inactive-grey: #c3c3c3;
+$rgb-off-black: #333;
 
-$name-red: #822000;
-$bg-orange: #fdf1dc;
+$rgb-active-blue--light: #7398b7;
+$rgb-active-blue: #337ab7;
+$rgb-active-blue--dark: #2a6496;
+$rgb-active-red--light: #8a4b4b;
+$rgb-active-red: #8a1a1b;
+$rgb-active-red--dark: #711617;
+$rgb-inactive-grey: #c3c3c3;
 
-$link-blue: #337ab7;
+$rgb-name-red: #822000;
+$rgb-bg-orange: #fdf1dc;
 
-$border-grey: #ccc;
-$border-grey--trans: #cccccca0;
+$rgb-link-blue: $rgb-active-blue;
 
-$modal-overlay-grey: #45454588;
-$shadow-grey: rgba(0, 0, 0, 0.175);
-$shadow-grey-dark: rgba(0, 0, 0, 0.475);
+$rgb-border-grey: #ccc;
+$rgb-border-grey--trans: #cccccca0;
 
-$stripe-grey: #88888818;
-$stripe-grey--faint: #bbbbbb18;
-$night-stripe-grey: #aaa4;
+$rgb-modal-overlay-grey: #45454588;
+$rgb-shadow-grey: rgba(0, 0, 0, 0.175);
+$rgb-shadow-grey-dark: rgba(0, 0, 0, 0.475);
 
-$night-font-color: #bbb;
-$night-bg-color: #222;
+$rgb-stripe-grey: #88888818;
+$rgb-stripe-grey--faint: #bbbbbb18;
+$rgb-night-stripe-grey: #aaa4;
+
+$rgb-night-font-color: #bbb;
+$rgb-night-bg-color: #222;
+
+$rgb-alert-text-success: #3c763d;
+$rgb-alert-text-info: #31708f;
+$rgb-alert-text-warning: #8a6d3b;
+$rgb-alert-text-danger: #a94442;
+
+$rgb-btn-primary-blue: $rgb-active-blue;
+$rgb-btn-primary-blue--desaturated: #b8b8b8;
+
+// Colors blended using https://www.w3schools.com/colors/colors_mixer.asp
+$rgb-night-btn-primary-blue: #2a4e6c; // #337ab7 blended with #222
+$rgb-night-btn-danger-red: #7e3a38; // #d9534f blended with #222
+$rgb-night-btn-warning-orange: #896838; // #f0ad4e blended with #222
+$rgb-night-btn-info-blue: #2a697c; // #31b0d5 blended with #222
+$rgb-night-btn-success-green: #427442; // #5cb85c blended with #222
 
 /* Z-Indices */
 $z-token-image: 10;
@@ -72,7 +89,7 @@ $z-temp-effect: 2000;
 /* *** */
 
 @mixin shadow-1 () {
-	box-shadow: 0 6px 12px $shadow-grey;
+	box-shadow: 0 6px 12px $rgb-shadow-grey;
 }
 
 $width-screen-xs: 480px;

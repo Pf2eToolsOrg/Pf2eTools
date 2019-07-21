@@ -27,7 +27,7 @@ class FilterUtil {
 }
 FilterUtil.SUB_HASH_PREFIX_LENGTH = 4;
 
-class FilterBox {
+class FilterBox extends ProxyBase {
 	static async pGetStoredActiveSources () {
 		const stored = await StorageUtil.pGetForPage(FilterBox._STORAGE_KEY);
 		if (stored) {
@@ -48,20 +48,20 @@ class FilterBox {
 	}
 
 	static selectFirstVisible (entryList) {
-		if (History.lastLoadedId == null && !History.initialLoad) {
-			History._freshLoad();
+		if (Hist.lastLoadedId == null && !Hist.initialLoad) {
+			Hist._freshLoad();
 		}
 
 		// This version deemed too annoying to be of practical use
 		//  Instead of always loading the URL, this would switch to the first visible item that matches the filter
 		/*
-		if (History.lastLoadedId && !History.initialLoad) {
-			const last = entryList[History.lastLoadedId];
+		if (Hist.lastLoadedId && !Hist.initialLoad) {
+			const last = entryList[Hist.lastLoadedId];
 			const lastHash = UrlUtil.autoEncodeHash(last);
 			const link = $("#listcontainer").find(`.list a[href="#${lastHash.toLowerCase()}"]`);
-			if (!link.length) History._freshLoad();
-		} else if (History.lastLoadedId == null && !History.initialLoad) {
-			History._freshLoad();
+			if (!link.length) Hist._freshLoad();
+		} else if (Hist.lastLoadedId == null && !Hist.initialLoad) {
+			Hist._freshLoad();
 		}
 		*/
 	}
@@ -74,13 +74,14 @@ class FilterBox {
 	 * @param [opts.isCompact] True if this box should have a compact/reduced UI.
 	 */
 	constructor (opts) {
+		super();
+
 		this._$wrpFormTop = opts.$wrpFormTop;
 		this._$btnReset = opts.$btnReset;
 		this._filters = opts.filters;
 		this._isCompact = opts.isCompact;
 
 		this._doSaveStateDebounced = MiscUtil.debounce(() => this._pDoSaveState(), 50);
-		ProxyUtil.decorate(this);
 		this.__meta = {...FilterBox._DEFAULT_META};
 		this._meta = this._getProxy("meta", this.__meta);
 		this.__minisHidden = {};
@@ -344,14 +345,14 @@ class FilterBox {
 					filter.resetShallow(true);
 				});
 
-			const [link] = History._getHashParts();
+			const [link] = Hist._getHashParts();
 
 			const outSub = [];
 			Object.values(unpacked)
 				.filter(v => !consumed.has(v.raw))
 				.forEach(v => outSub.push(v.raw));
 
-			History.setSuppressHistory(true);
+			Hist.setSuppressHistory(true);
 			window.history.replaceState(
 				{},
 				document.title,
@@ -359,7 +360,7 @@ class FilterBox {
 			);
 
 			this.fireChangeEvent();
-			History.hashChange();
+			Hist.hashChange();
 			return outSub;
 		} else return subHashes;
 	}
@@ -544,11 +545,11 @@ class FilterItem {
 	}
 }
 
-class FilterBase {
+class FilterBase extends ProxyBase {
 	constructor (opts) {
-		this.header = opts.header;
+		super();
 
-		ProxyUtil.decorate(this);
+		this.header = opts.header;
 
 		this.__meta = {...FilterBase._DEFAULT_META};
 		this._meta = this._getProxy("meta", this.__meta);

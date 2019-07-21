@@ -62,7 +62,7 @@ class InitiativeTrackerPlayer {
 		const $btnConnectLocal = $(`<button class="btn btn-primary" style="min-width: 200px;">Connect to Local Tracker</button>`)
 			.click(() => {
 				const existingTrackers = board.getPanelsByType(PANEL_TYP_INITIATIVE_TRACKER)
-					.map(it => it.tabDatas.filter(td => td.type === PANEL_TYP_INITIATIVE_TRACKER).map(td => td.$content.find(`.dms__data_anchor`)))
+					.map(it => it.tabDatas.filter(td => td.type === PANEL_TYP_INITIATIVE_TRACKER).map(td => td.$content.find(`.dm__data-anchor`)))
 					.flat();
 
 				if (existingTrackers.length) {

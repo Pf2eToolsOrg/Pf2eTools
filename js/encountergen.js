@@ -48,7 +48,7 @@ function onJsonLoad (data) {
 		listClass: "encounters"
 	});
 
-	History.init(true);
+	Hist.init(true);
 	RollerUtil.addListRollButton();
 }
 
@@ -92,7 +92,7 @@ function loadHash (id) {
 
 	// update list highlights
 	$(list.list).find(`.list-multi-selected`).removeClass("list-multi-selected");
-	const $listEle = History.getSelectedListElement().parent();
+	const $listEle = Hist.getSelectedListElement().parent();
 	$($listEle).addClass("list-multi-selected");
 }
 

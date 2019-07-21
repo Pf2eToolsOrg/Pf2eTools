@@ -115,7 +115,7 @@ function addMonsterFeatures (mfData) {
 			$(`.crc__mon_feature_cb`).each((i, e) => {
 				const $cb = $(e);
 				const idCb = $cb.attr("id");
-				const val = History.getSubHash(idCb);
+				const val = Hist.getSubHash(idCb);
 				if (val) {
 					$cb.prop("checked", true);
 					if (val !== "true") {
@@ -132,9 +132,9 @@ function addMonsterFeatures (mfData) {
 		const curFeature = $cbFeature.attr("id");
 
 		if ($cbFeature.prop("checked")) {
-			History.setSubhash(curFeature, $iptNum.length ? $iptNum.val() : true);
+			Hist.setSubhash(curFeature, $iptNum.length ? $iptNum.val() : true);
 		} else {
-			History.setSubhash(curFeature, null)
+			Hist.setSubhash(curFeature, null)
 		}
 	}
 

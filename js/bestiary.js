@@ -134,7 +134,7 @@ window.onload = async function load () {
 		pLoadFluffIndex()
 	]);
 	await pMultisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addMonsters, pPostLoad);
-	if (History.lastLoadedId == null) History._freshLoad();
+	if (Hist.lastLoadedId == null) Hist._freshLoad();
 	ExcludeUtil.checkShowAllExcluded(monsters, $(`#pagecontent`));
 	handleFilterChange();
 	encounterBuilder.initState();
@@ -356,8 +356,8 @@ function pPageInit (loadedSources) {
 		return (evt, proxyEvt) => {
 			evt = proxyEvt || evt;
 			if (lastRendered.isScaled) {
-				if (evt.shiftKey) ListUtil.pDoSublistAdd(History.lastLoadedId, true, 5, getScaledData());
-				else ListUtil.pDoSublistAdd(History.lastLoadedId, true, 1, getScaledData());
+				if (evt.shiftKey) ListUtil.pDoSublistAdd(Hist.lastLoadedId, true, 5, getScaledData());
+				else ListUtil.pDoSublistAdd(Hist.lastLoadedId, true, 1, getScaledData());
 			} else ListUtil.genericAddButtonHandler(evt, baseHandlerOptions);
 		};
 	}
@@ -365,8 +365,8 @@ function pPageInit (loadedSources) {
 		return (evt, proxyEvt) => {
 			evt = proxyEvt || evt;
 			if (lastRendered.isScaled) {
-				if (evt.shiftKey) ListUtil.pDoSublistSubtract(History.lastLoadedId, 5, getScaledData());
-				else ListUtil.pDoSublistSubtract(History.lastLoadedId, 1, getScaledData());
+				if (evt.shiftKey) ListUtil.pDoSublistSubtract(Hist.lastLoadedId, 5, getScaledData());
+				else ListUtil.pDoSublistSubtract(Hist.lastLoadedId, 1, getScaledData());
 			} else ListUtil.genericSubtractButtonHandler(evt, baseHandlerOptions);
 		};
 	}
@@ -402,8 +402,8 @@ function pPageInit (loadedSources) {
 
 					stack.push(`<tr class="printbook-bestiary"><td>`);
 					toShow.forEach(mon => renderCreature(mon));
-					if (!toShow.length && History.lastLoadedId != null) {
-						renderCreature(monsters[History.lastLoadedId]);
+					if (!toShow.length && Hist.lastLoadedId != null) {
+						renderCreature(monsters[Hist.lastLoadedId]);
 					}
 					stack.push(`</td></tr>`);
 
@@ -509,7 +509,7 @@ function onSublistChange () {
 }
 
 function handleFilterChange () {
-	if (History.initialLoad) return;
+	if (Hist.initialLoad) return;
 
 	const f = filterBox.getValues();
 	list.filter(function (item) {
@@ -700,7 +700,7 @@ function addMonsters (data) {
 				Renderer.hover.handlePopoutCode(evt, toList, $btnPop, popoutCodeId);
 			} else {
 				if (lastRendered.mon != null && lastRendered.isScaled) Renderer.hover.doPopoutPreloaded($btnPop, lastRendered.mon, evt.clientX);
-				else if (History.lastLoadedId !== null) Renderer.hover.doPopout($btnPop, toList, History.lastLoadedId, evt.clientX);
+				else if (Hist.lastLoadedId !== null) Renderer.hover.doPopout($btnPop, toList, Hist.lastLoadedId, evt.clientX);
 			}
 		};
 	}
@@ -828,11 +828,11 @@ function renderStatblock (mon, isScaled) {
 			</button>`)
 			.off("click").click((evt) => {
 				evt.stopPropagation();
-				const mon = monsters[History.lastLoadedId];
+				const mon = monsters[Hist.lastLoadedId];
 				const lastCr = lastRendered.mon ? lastRendered.mon.cr.cr || lastRendered.mon.cr : mon.cr.cr || mon.cr;
 				Renderer.monster.getCrScaleTarget($btnScaleCr, lastCr, (targetCr) => {
 					if (targetCr === Parser.crToNumber(mon.cr)) renderStatblock(mon);
-					else History.setSubhash(MON_HASH_SCALED, targetCr);
+					else Hist.setSubhash(MON_HASH_SCALED, targetCr);
 				});
 			}).toggle(Parser.crToNumber(mon.cr.cr || mon.cr) !== 100) : null;
 
@@ -840,7 +840,7 @@ function renderStatblock (mon, isScaled) {
 			<button id="btn-reset-cr" title="Reset CR Scaling" class="mon__btn-reset-cr btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-refresh"></span>
 			</button>`)
-			.click(() => History.setSubhash(MON_HASH_SCALED, null))
+			.click(() => Hist.setSubhash(MON_HASH_SCALED, null))
 			.toggle(isScaled) : null;
 
 		$content.append(RenderBestiary.$getRenderedCreature(mon, meta, {$btnScaleCr, $btnResetScaleCr}));
@@ -1104,7 +1104,7 @@ function handleUnknownHash (link, sub) {
 	if (src) {
 		loadSource(JSON_LIST_NAME, (monsters) => {
 			addMonsters(monsters);
-			History.hashChange();
+			Hist.hashChange();
 		})(src, "yes");
 	}
 }
@@ -1139,7 +1139,7 @@ function loadSubHash (sub) {
 	if (scaledHash) {
 		const scaleTo = Number(UrlUtil.unpackSubHash(scaledHash)[MON_HASH_SCALED][0]);
 		const scaleToStr = Parser.numberToCr(scaleTo);
-		const mon = monsters[History.lastLoadedId];
+		const mon = monsters[Hist.lastLoadedId];
 		if (Parser.isValidCr(scaleToStr) && scaleTo !== Parser.crToNumber(lastRendered.mon.cr)) {
 			ScaleCreature.scale(mon, scaleTo).then(scaled => renderStatblock(scaled, true));
 		}

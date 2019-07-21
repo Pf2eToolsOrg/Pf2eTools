@@ -932,8 +932,21 @@
 			flex-grow: 0;
 		}
 
+		/* Clock/Calendar */
 		.dm-time__btn-time {
 			width: 20px;
+		}
+
+		.dm-time__btn-time--top {
+			border-bottom: 0;
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+
+		.dm-time__btn-time--bottom {
+			border-top: 0;
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
 		}
 
 		.dm-time__sep-time {
@@ -974,6 +987,13 @@
 
 		.dm-time__ipt-weather {
 			width: 40px;
+		}
+
+		.dm-time__btn-date-adjust {
+			width: 27px;
+			padding: 1px 3px;
+			flex-shrink: 0;
+			flex-grow: 0;
 		}
 
 		.dm-time__disp-calendar-day {
@@ -1107,6 +1127,27 @@
 		.dm-time__calendar-moon-phase:last-child {
 			margin-bottom: 0;
 		}
+
+		.dm-time__calendar-ipt-date,
+		.night-mode .dm-time__calendar-ipt-date{
+			background: transparent;
+		}
+
+		.dm-time__calendar-ipt-date--slashed-right {
+			border-right: 0;
+		}
+
+		.dm-time__calendar-ipt-date--slashed-left {
+			border-left: 0;
+		}
+
+		.dm-time__calendar-date-sep {
+			margin-left: -2px;
+			margin-right: -2px;
+			pointer-events: none;
+			user-select: none;
+		}
+		/* *** */
 	</style>
 </head>
 
@@ -1154,7 +1195,7 @@
 <script type="text/javascript" src="js/dmscreen-playerinitiativetracker.js"></script>
 <script type="text/javascript" src="js/dmscreen-moneyconverter.js"></script>
 <script type="text/javascript" src="js/dmscreen-timetracker.js"></script>
-<script type="text/javascript" src="js/history.js"></script>
+<script type="text/javascript" src="js/hist.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/bootstrap-tooltip.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>

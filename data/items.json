@@ -1675,7 +1675,7 @@
 					"entries": [
 						"Whenever you use it to reduce a creature to 0 hit points, the sword slays the creature devours its soul, unless it is a construct or an undead. A creature whose soul has been devoured by Blackrazor can be restored to life only by a {@spell wish} spell.",
 						"When it devours a soul, Blackrazor grants you temporary hit points equal to the slain creature's hit point maximum. These hit points fade after 24 hours. As long as these temporary hit points last and you keep Blackrazor in hand, you have advantage on attack roll. saving throws, and ability checks.",
-						"If you hit an undead with this weapon, you take {@dice 1d10} necrotic damage and the target regains {@dice 1d10} hit point If this necrotic damage reduces you to 0 hit points, Blackrazor devours your soul."
+						"If you hit an undead with this weapon, you take {@dice 1d10} necrotic damage and the target regains {@dice 1d10} hit point. If this necrotic damage reduces you to 0 hit points, Blackrazor devours your soul."
 					]
 				},
 				{
@@ -10579,7 +10579,7 @@
 					"type": "entries",
 					"name": "Gift of Stone",
 					"entries": [
-						"You can transfer the orb's magic to a nonmagical item\u2014a shield or a pair of boots\u2014by tracing the stein rune there with your finger. The transfer takes8 hours of work that requires the two items to be within 5 feet of each other. At the end, the orb is destroyed, and the rune appears in silver on the chosen item, which gains a benefit based on its form:",
+						"You can transfer the orb's magic to a nonmagical item\u2014a shield or a pair of boots\u2014by tracing the stein rune there with your finger. The transfer takes 8 hours of work that requires the two items to be within 5 feet of each other. At the end, the orb is destroyed, and the rune appears in silver on the chosen item, which gains a benefit based on its form:",
 						{
 							"type": "list",
 							"style": "list-hang-notitle",
@@ -23453,6 +23453,25 @@
 				"find traps",
 				"identify",
 				"locate animals or plants"
+			]
+		},
+		{
+			"name": "Winter's Dark Bite",
+			"type": "M",
+			"weaponCategory": "Martial",
+			"baseItem": "greatsword|phb",
+			"weight": 6,
+			"dmg1": "{@dice 2d6}",
+			"dmgType": "S",
+			"property": [
+				"H",
+				"2H"
+			],
+			"rarity": "Uncommon",
+			"source": "HftT",
+			"entries": [
+				"You have a +1 bonus to attack and damage rolls made with this magic weapon.",
+				"This greatsword is made of an unknown black metal. In most cases, it works as a {@item +1 greatsword}. But when used against a {@creature thessalhydra|hftt}, it works as a {@item +3 greatsword}. While in the Upside Down, it works as a +4 greatsword."
 			]
 		}
 	],

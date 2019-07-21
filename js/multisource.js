@@ -24,7 +24,7 @@ async function _pOnIndexLoad (src2UrlMap, jsonDir, dataProp, pPageInit, addFn, p
 	// collect a list of sources to load
 	const sources = Object.keys(src2UrlMap);
 	const defaultSel = sources.filter(s => defaultSourceSelFn(s));
-	const hashSourceRaw = History.getHashSource();
+	const hashSourceRaw = Hist.getHashSource();
 	const hashSource = hashSourceRaw ? Object.keys(src2UrlMap).find(it => it.toLowerCase() === hashSourceRaw.toLowerCase()) : null;
 	const userSel = [...new Set(
 		(await FilterBox.pGetStoredActiveSources() || []).concat(await ListUtil.pGetSelectedSources() || []).concat(hashSource ? [hashSource] : [])
@@ -48,7 +48,7 @@ async function _pOnIndexLoad (src2UrlMap, jsonDir, dataProp, pPageInit, addFn, p
 
 	// add source from the current hash, if there is one
 	if (window.location.hash.length) {
-		const [link, ...sub] = History._getHashParts();
+		const [link, ...sub] = Hist._getHashParts();
 		const src = link.split(HASH_LIST_SEP)[1];
 		const hashSrcs = {};
 		sources.forEach(src => hashSrcs[UrlUtil.encodeForHash(src)] = src);
@@ -80,7 +80,7 @@ async function _pOnIndexLoad (src2UrlMap, jsonDir, dataProp, pPageInit, addFn, p
 		RollerUtil.addListRollButton();
 		ListUtil.addListShowHide();
 
-		History.init(true);
+		Hist.init(true);
 	} else {
 		await pPageInit(loadedSources);
 	}

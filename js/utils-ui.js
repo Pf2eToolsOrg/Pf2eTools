@@ -148,7 +148,7 @@ class UiUtil {
 		if (opts.zIndex != null) $modal.css({zIndex: opts.zIndex});
 		if (opts.overlayColor != null) $modal.css({backgroundColor: opts.overlayColor});
 		const $scroller = $(`<div class="ui-modal__scroller"/>`);
-		const $modalInner = $$`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu${opts.fullWidth ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? " h-100" : ""}"><div class="split flex-v-center no-shrink">${opts.title ? `<h4>${opts.title}</h4>` : ""}${opts.titleSplit || ""}</div>${$scroller}</div>`
+		const $modalInner = $$`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu${opts.fullWidth ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? " h-100" : ""}"><div class="split flex-v-center no-shrink">${opts.title ? `<h4>${opts.title.escapeQuotes()}</h4>` : ""}${opts.titleSplit || ""}</div>${$scroller}</div>`
 			.appendTo($modal);
 		if (opts.noMinHeight) $modalInner.css("height", "initial");
 
@@ -908,7 +908,7 @@ class InputUiUtil {
 				}
 			});
 			$$`<div class="flex-vh-center mb-3">
-				${$padOuter ? $padOuter : $pad}
+				${$padOuter || $pad}
 			</div>`.appendTo($modalInner);
 			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
 		});
@@ -1128,5 +1128,130 @@ class SourceUiUtil {
 			<div class="row mb-2"><div class="col-12 flex-vh-center">${$selExisting}</div></div>
 			<div class="row"><div class="col-12 flex-vh-center">${$btnConfirmExisting}</div></div>
 		</div></div>`.appendTo(options.$parent);
+	}
+}
+
+class BaseComponent extends ProxyBase {
+	constructor () {
+		super();
+
+		// state
+		this.__state = {...this._getDefaultState()};
+		this._state = this._getProxy("state", this.__state);
+	}
+
+	_addHookBase (prop, hook) {
+		this._addHook("state", prop, hook);
+	}
+
+	_removeHookBase (prop, hook) {
+		this._removeHook("state", prop, hook);
+	}
+
+	_getPod () {
+		return {
+			get: (prop) => this._state[prop],
+			set: (prop, val) => this._state[prop] = val,
+			assignState: (toAssign) => Object.assign(this._state, toAssign),
+			addHook: (prop, hook) => this._addHookBase(prop, hook),
+			removeHook: (prop, hook) => this._removeHookBase(prop, hook)
+		}
+	}
+
+	// to be overridden as required
+	_getDefaultState () { return {}; }
+
+	getBaseSaveableState () {
+		return {
+			state: MiscUtil.copy(this.__state)
+		};
+	}
+
+	setBaseSaveableStateFrom (toLoad) {
+		toLoad.state && Object.assign(this._state, toLoad.state);
+	}
+
+	render () { throw new Error("Unimplemented!"); }
+
+	// to be overridden as required
+	getSaveableState () { return {...this.getBaseSaveableState()}; }
+	setStateFrom (toLoad) { this.setBaseSaveableStateFrom(toLoad); }
+}
+
+class ComponentUiUtil {
+	/**
+	 * @param component An instance of a class which extends BaseComponent.
+	 * @param prop Component to hook on.
+	 * @param [fallbackEmpty] Fallback number if string is empty.
+	 * @param [opts] Options Object.
+	 * @param [opts.$ele] Element to use.
+	 * @param [opts.max] Max allowed return value.
+	 * @param [opts.min] Min allowed return value.
+	 * @param [opts.offset] Offset to add to value displayed.
+	 * @return {JQuery}
+	 */
+	static $getIptInt (component, prop, fallbackEmpty = 0, opts) {
+		opts = opts || {};
+		opts.offset = opts.offset || 0;
+
+		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal text-right">`))
+			.change(() => component._state[prop] = UiUtil.strToInt($ipt.val(), fallbackEmpty, opts) - opts.offset);
+		const hook = () => $ipt.val(component._state[prop] + opts.offset);
+		component._addHookBase(prop, hook);
+		hook();
+		return $ipt;
+	}
+
+	/**
+	 * @param component An instance of a class which extends BaseComponent.
+	 * @param prop Component to hook on.
+	 * @param [opts] Options Object.
+	 * @param [opts.$ele] Element to use.
+	 * @return {JQuery}
+	 */
+	static $getIptStr (component, prop, opts) {
+		opts = opts || {};
+
+		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal">`))
+			.change(() => component._state[prop] = $ipt.val().trim());
+		const hook = () => $ipt.val(component._state[prop]);
+		component._addHookBase("name", hook);
+		hook();
+		return $ipt
+	}
+
+	/**
+	 * @param component An instance of a class which extends BaseComponent.
+	 * @param prop Component to hook on.
+	 * @param [opts] Options Object.
+	 * @param [opts.$ele] Element to use.
+	 * @return {JQuery}
+	 */
+	static $getIptEntries (component, prop, opts) {
+		opts = opts || {};
+
+		const $ipt = (opts.$ele || $(`<textarea class="form-control input-xs form-control--minimal resize-none"/>`))
+			.change(() => component._state[prop] = UiUtil.getTextAsEntries($ipt.val().trim()));
+		const hook = () => $ipt.val(UiUtil.getEntriesAsText(component._state[prop]));
+		hook();
+		return $ipt;
+	}
+
+	/**
+	 * @param component An instance of a class which extends BaseComponent.
+	 * @param prop Component to hook on.
+	 * @param [opts] Options Object.
+	 * @param [opts.$ele] Element to use.
+	 * @return {JQuery}
+	 */
+	static $getIptColor (component, prop, opts) {
+		opts = opts || {};
+
+		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal" type="color">`))
+			.change(() => component._state[prop] = $ipt.val());
+		const hook = () => $ipt.val(component._state[prop]);
+		component._addHookBase("prop", hook);
+		hook();
+		return $ipt;
 	}
 }
