@@ -8,7 +8,7 @@ const Omnisearch = {
 	highestId: -1,
 
 	init: function () {
-		if (IS_VTT) return;
+		if (IS_ROLL20) return;
 
 		const $nav = $(`#navbar`);
 

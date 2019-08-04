@@ -7,7 +7,7 @@ IS_DEPLOYED = undefined;
 VERSION_NUMBER = IS_DEPLOYED || "-1";
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
-IS_VTT = false;
+IS_ROLL20 = false;
 
 IMGUR_CLIENT_ID = `abdea4de492d3b0`;
 
@@ -3816,7 +3816,7 @@ UrlUtil = {
 			else return `${curr}?ver=${VERSION_NUMBER}`;
 		}
 
-		if (!IS_VTT && IS_DEPLOYED) return addGetParam(`${DEPLOYED_STATIC_ROOT}${href}`);
+		if (!IS_ROLL20 && IS_DEPLOYED) return addGetParam(`${DEPLOYED_STATIC_ROOT}${href}`);
 		else if (IS_DEPLOYED) return addGetParam(href);
 		return href;
 	},
@@ -4048,7 +4048,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PACT_BOON] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARTIFICER_INFUSION] = UrlUtil.PG_OPT_FEATURES;
 
-if (!IS_DEPLOYED && !IS_VTT && typeof window !== "undefined") {
+if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
 	// for local testing, hotkey to get a link to the current page on the main site
 	window.addEventListener("keypress", (e) => {
 		if (noModifierKeys(e) && typeof d20 === "undefined") {
@@ -4811,7 +4811,7 @@ BrewUtil = {
 	},
 
 	async pAddLocalBrewData (callbackFn = async (d, page) => BrewUtil.pDoHandleBrewJson(d, page, null)) {
-		if (!IS_VTT && !IS_DEPLOYED) {
+		if (!IS_ROLL20 && !IS_DEPLOYED) {
 			const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${JSON_HOMEBREW_INDEX}`);
 			// auto-load from `homebrew/`, for custom versions of the site
 			if (data.toImport.length) {
@@ -6458,7 +6458,7 @@ class ProxyBase {
 }
 
 // LEGAL NOTICE ========================================================================================================
-if (!IS_VTT && typeof window !== "undefined") {
+if (!IS_ROLL20 && typeof window !== "undefined") {
 	// add an obnoxious banner
 	// TODO is this something we want? If so, uncomment
 	/*

@@ -6601,7 +6601,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 		return tree;
 	}
 };
-if (!IS_VTT && typeof window !== "undefined") {
+if (!IS_ROLL20 && typeof window !== "undefined") {
 	window.addEventListener("load", Renderer.dice.init);
 }
 

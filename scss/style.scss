@@ -3,7 +3,7 @@
 .page__ {
 	&header {
 		padding: 0 15px 1px;
-		box-shadow: 0 1px 4px $rgb-shadow-grey-dark;
+		box-shadow: 0 1px 4px $shadow-grey-dark;
 		color: white;
 		background-color: rgb(0, 107, 196);
 		min-height: 0;
@@ -77,7 +77,7 @@
 
 @media (max-width: $width-screen-sm) {
 	.nav > li > a {
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid $border-grey;
 	}
 
 	.nav .caret--right {
@@ -101,7 +101,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: $rgb-modal-overlay-grey;
+		background-color: $modal-overlay-grey;
 
 		&--no-centre {
 			display: block;
@@ -175,7 +175,7 @@
 	height: 1px;
 	width: calc(100% - 12px);
 	margin: 2px 2px 7px;
-	background: $rgb-border-grey;
+	background: $border-grey;
 }
 
 .ui-modal__row > * {
@@ -349,7 +349,7 @@ input.ui-search__ipt-search-sub-ipt-custom[type=number]::-webkit-inner-spin-butt
 	@include shadow-1();
 
 	background: white;
-	border: 1px solid $rgb-border-grey;
+	border: 1px solid $border-grey;
 
 	position: fixed;
 	z-index: $z-side-menu;
@@ -420,7 +420,7 @@ input.ui-search__ipt-search-sub-ipt-custom[type=number]::-webkit-inner-spin-butt
 	}
 
 	&__row__divider {
-		background: $rgb-border-grey--trans;
+		background: $border-grey--trans;
 
 		height: 1px;
 		width: calc(100% - 16px);
@@ -529,12 +529,12 @@ input[type=checkbox].sidemenu__row__label__cb {
 			.omni__input {
 				min-width: initial;
 				border-top-left-radius: 4px;
-				border-top-color: $rgb-border-grey;
+				border-top-color: $border-grey;
 			}
 
 			.omni__submit {
 				border-top-right-radius: 4px;
-				border-top-color: $rgb-border-grey;
+				border-top-color: $border-grey;
 			}
 
 			input {
@@ -602,7 +602,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 		cursor: pointer;
 
 		&:hover {
-			color: $rgb-active-blue;
+			color: $active-blue;
 		}
 	}
 
@@ -674,6 +674,221 @@ input[type=checkbox].sidemenu__row__label__cb {
 		text-align: center;
 	}
 }
+
+/* hoverbox */
+@keyframes kf-fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes kf-pop-in {
+	from {
+		transform: scale(0);
+	}
+
+	to {
+		transform: scale(1);
+	}
+}
+
+.hwin {
+	position: fixed;
+	width: 600px;
+	max-width: 92vw;
+	min-width: 150px;
+	z-index: 200;
+	box-shadow: 0 0 12px 0 black;
+	animation-name: kf-fade-in, kf-pop-in;
+	animation-duration: 150ms, 75ms;
+
+	&--minified {
+		.hoverborder {
+			&__resize-n,
+			&__resize-ne,
+			&__resize-e,
+			&__resize-se,
+			&__resize-s,
+			&__resize-sw,
+			&__resize-w,
+			&__resize-nw {
+				display: none;
+			}
+		}
+	}
+
+	&--popout {
+		box-shadow: initial;
+		width: 100%;
+		animation-duration: initial;
+		overflow-y: scroll;
+		height: 100%;
+		max-width: initial;
+		max-height: initial;
+	}
+
+	@media (max-width: 1023px) {
+		max-width: 95vw;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: #a0a0a0;
+	}
+
+	&::-webkit-scrollbar {
+		width: 4px;
+	}
+
+	&__wrp-table {
+		max-height: 92vh;
+		min-height: 20px;
+		overflow-y: auto;
+		background: #f0f0f0;
+		transform: translateZ(0);
+	}
+
+	p {
+		margin-bottom: 5px;
+	}
+
+	th.name {
+		font-size: 1.6em;
+	}
+
+	td div.border {
+		height: 2px;
+		background-color: $name-red;
+		margin: 0 3px;
+		padding: 0;
+		border-right: 5px transparent;
+	}
+}
+
+.hoverborder {
+	position: relative;
+	min-height: 3px;
+	max-height: 16px;
+	text-align: right;
+
+	&--btm {
+		cursor: ns-resize;
+	}
+
+	&--top {
+		cursor: move;
+		user-select: none;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.glyphicon {
+		display: none;
+	}
+
+	&[data-perm=true] .glyphicon {
+		display: block;
+	}
+
+	.window-title {
+		overflow: hidden;
+		max-width: calc(100% - 45px);
+		text-align: left;
+		margin-left: 4px;
+		padding: 1px 0;
+		font-size: 12px;
+		display: none;
+		font-family: 'Andada', serif;
+		font-variant: small-caps;
+		text-transform: uppercase;
+		font-weight: bold;
+		flex-shrink: 0;
+	}
+
+	&[data-display-title=true] .window-title {
+		display: block;
+	}
+
+	&__resize-n {
+		position: absolute;
+		top: -4px;
+		right: 4px;
+		left: 4px;
+		height: 4px;
+		cursor: ns-resize;
+	}
+
+	&__resize-ne {
+		position: absolute;
+		top: -6px;
+		right: -6px;
+		height: 10px;
+		width: 10px;
+		cursor: ne-resize;
+	}
+
+	&__resize-e {
+		position: absolute;
+		top: 4px;
+		right: -4px;
+		bottom: 4px;
+		width: 4px;
+		cursor: ew-resize;
+	}
+
+	&__resize-se {
+		position: absolute;
+		right: -6px;
+		bottom: -6px;
+		height: 10px;
+		width: 10px;
+		cursor: se-resize;
+	}
+
+	&__resize-s {
+		position: absolute;
+		top: 3px;
+		right: 4px;
+		left: 4px;
+		height: 2px;
+	}
+
+	&__resize-sw {
+		position: absolute;
+		bottom: -6px;
+		left: -6px;
+		height: 10px;
+		width: 10px;
+		cursor: sw-resize;
+	}
+
+	&__resize-w {
+		position: absolute;
+		top: 4px;
+		bottom: 4px;
+		left: -4px;
+		width: 4px;
+		cursor: ew-resize;
+	}
+
+	&__resize-nw {
+		position: absolute;
+		top: -6px;
+		left: -6px;
+		height: 10px;
+		width: 10px;
+		cursor: nw-resize;
+	}
+}
+
+.hoverborder[data-display-title=true] ~ .hwin__wrp-table,
+.hoverborder[data-display-title=true] ~ .hoverborder {
+	display: none;
+}
+/* *** */
 
 /* roller */
 .rollbox-min {
@@ -819,7 +1034,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 .homebrew-overlay {
 	position: fixed;
 	z-index: $z-modal-wrapper;
-	background-color: $rgb-modal-overlay-grey;
+	background-color: $modal-overlay-grey;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -874,8 +1089,8 @@ input[type=checkbox].sidemenu__row__label__cb {
 		}
 
 		.wrp-cb-all {
-			border-bottom: 1px solid $rgb-border-grey;
-			border-right: 1px solid $rgb-border-grey;
+			border-bottom: 1px solid $border-grey;
+			border-right: 1px solid $border-grey;
 			line-height: 14px;
 			border-bottom-right-radius: 3px;
 			text-align: center;
@@ -1199,7 +1414,7 @@ th.name {
 
 .stats.monster {
 	background-size: 100% auto;
-	background: url('../img/bestiary/stat-block-top-texture.png') no-repeat, repeat top center, $rgb-bg-orange;
+	background: url('../img/bestiary/stat-block-top-texture.png') no-repeat, repeat top center, $bg-orange;
 }
 
 .stats td,
@@ -1208,7 +1423,7 @@ th.name {
 }
 
 .stats th {
-	color: $rgb-name-red;
+	color: $name-red;
 }
 
 .stats li {
@@ -1249,7 +1464,7 @@ th.border-thin {
 }
 
 td.divider div {
-	background: $rgb-name-red;
+	background: $name-red;
 	height: 2px;
 	margin: 6px 0;
 }
@@ -1289,7 +1504,7 @@ th.name {
 }
 
 span.dc-roller[mode=dice] {
-	color: $rgb-link-blue;
+	color: $link-blue;
 	cursor: pointer;
 }
 
@@ -1310,7 +1525,7 @@ div#lootoutput {
 		top: 23px;
 		left: 0;
 		background: white;
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid $border-grey;
 		width: calc(100% - 30px);
 		margin: 0 10px;
 		padding: 5px 7px 10px;
@@ -1365,8 +1580,8 @@ div#lootoutput {
 		font-size: 1.6em;
 		font-family: 'Andada', serif;
 		font-variant: small-caps;
-		border-bottom: 2px solid $rgb-name-red;
-		color: $rgb-name-red;
+		border-bottom: 2px solid $name-red;
+		color: $name-red;
 		vertical-align: bottom !important;
 		padding-left: 0.2em;
 	}
@@ -1414,10 +1629,10 @@ div#lootoutput {
 		justify-content: center;
 		width: 40px;
 		height: 40px;
-		background: $rgb-shadow-grey-dark;
+		background: $shadow-grey-dark;
 		cursor: pointer;
 		color: white;
-		border: 1px solid $rgb-border-grey--trans;
+		border: 1px solid $border-grey--trans;
 		opacity: 0;
 		transition: opacity 0.034s;
 
@@ -1454,14 +1669,14 @@ div#lootoutput {
 	}
 
 	&token-footer {
-		background: $rgb-shadow-grey-dark;
+		background: $shadow-grey-dark;
 		color: white;
 		font-family: 'Andada', serif;
 		font-variant: small-caps;
 		font-size: 16px;
 		border-radius: 5px;
 		padding: 1px 5px;
-		border: 1px solid $rgb-border-grey--trans;
+		border: 1px solid $border-grey--trans;
 	}
 }
 
@@ -1642,7 +1857,7 @@ div#subclasses > span.divider {
 
 span.pnl-link.active,
 .sc_pill--active {
-	background: $rgb-active-blue;
+	background: $active-blue;
 	color: white;
 }
 
@@ -1661,7 +1876,7 @@ span.pnl-link.active.refreshing-brew,
 span.pnl-link.cf-active,
 .sc_pill.cf-active,
 .sc_pill.fluff-active {
-	background: $rgb-name-red;
+	background: $name-red;
 	color: white;
 }
 
@@ -1800,7 +2015,7 @@ tr.spellbook-level > td {
 	border-radius: 0.2em;
 	display: inline-block;
 	width: 100%;
-	border: $rgb-border-grey 1px solid;
+	border: $border-grey 1px solid;
 	max-width: 440px;
 }
 
@@ -1837,7 +2052,7 @@ tr.printbook-bestiary > td {
 	border-radius: 0.2em;
 	display: inline-block;
 	width: 100%;
-	border: $rgb-border-grey 1px solid;
+	border: $border-grey 1px solid;
 }
 
 /* *** */
@@ -1865,11 +2080,11 @@ tr.printbook-bestiary > td {
 }
 
 .panel-add {
-	color: $rgb-border-grey;
+	color: $border-grey;
 }
 
 .btn-panel-add {
-	border: 1px solid $rgb-border-grey;
+	border: 1px solid $border-grey;
 
 	&:hover,
 	&.faux-hover {
@@ -1886,8 +2101,8 @@ tr.printbook-bestiary > td {
 .panel-control-bottom,
 .panel-control-left,
 .panel-control-middle {
-	background: $rgb-border-grey--trans;
-	border: 1px solid $rgb-border-grey;
+	background: $border-grey--trans;
+	border: 1px solid $border-grey;
 }
 
 .panel-addmenu-tab-head[active='true'] {
@@ -1918,7 +2133,7 @@ tr.printbook-bestiary > td {
 }
 
 .underline-tabs {
-	border-top: 1px solid $rgb-border-grey;
+	border-top: 1px solid $border-grey;
 }
 
 .ui-search__row {
@@ -1926,7 +2141,7 @@ tr.printbook-bestiary > td {
 }
 
 .panel-content-wrapper-inner td div.border {
-	background-color: $rgb-name-red;
+	background-color: $name-red;
 }
 
 .panel-history-control-remove {
@@ -1934,8 +2149,8 @@ tr.printbook-bestiary > td {
 }
 
 .panel-history-control-middle {
-	background: $rgb-border-grey--trans;
-	border: 1px solid $rgb-border-grey;
+	background: $border-grey--trans;
+	border: 1px solid $border-grey;
 }
 
 .dm-init-row.dm-init-row-active input {
@@ -2254,18 +2469,18 @@ $flt-2stripe: 22px;
 	}
 
 	&h-btn-logic--blue {
-		color: $rgb-active-blue;
+		color: $active-blue;
 
 		&:hover {
-			color: $rgb-active-blue--dark;
+			color: $active-blue--dark;
 		}
 	}
 
 	&h-btn-logic--red {
-		color: $rgb-active-red;
+		color: $active-red;
 
 		&:hover {
-			color: $rgb-active-red--dark;
+			color: $active-red--dark;
 		}
 	}
 
@@ -2273,21 +2488,21 @@ $flt-2stripe: 22px;
 	&h-btn--all:focus,
 	&h-btn--all:hover {
 		text-decoration: underline;
-		text-decoration-color: $rgb-active-blue;
+		text-decoration-color: $active-blue;
 	}
 
 	&h-btn--clear,
 	&h-btn--clear:focus,
 	&h-btn--clear:hover {
 		text-decoration: underline;
-		text-decoration-color: $rgb-inactive-grey;
+		text-decoration-color: $inactive-grey;
 	}
 
 	&h-btn--none,
 	&h-btn--none:focus,
 	&h-btn--none:hover {
 		text-decoration: underline;
-		text-decoration-color: $rgb-active-red;
+		text-decoration-color: $active-red;
 	}
 
 	&summary_item {
@@ -2307,13 +2522,13 @@ $flt-2stripe: 22px;
 
 	&summary_item {
 		&--include {
-			color: $rgb-active-blue;
-			text-shadow: 0 0 1px $rgb-active-blue;
+			color: $active-blue;
+			text-shadow: 0 0 1px $active-blue;
 		}
 
 		&--exclude {
-			color: $rgb-active-red;
-			text-shadow: 0 0 1px $rgb-active-red;
+			color: $active-red;
+			text-shadow: 0 0 1px $active-red;
 		}
 	}
 
@@ -2321,7 +2536,7 @@ $flt-2stripe: 22px;
 		margin: 0 3px;
 		padding-left: 1px;
 		cursor: default;
-		background: $rgb-border-grey--trans;
+		background: $border-grey--trans;
 		min-height: 12px;
 	}
 
@@ -2334,10 +2549,10 @@ $flt-2stripe: 22px;
 		cursor: pointer;
 		user-select: none;
 		border-radius: 3px;
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid $border-grey;
 
 		&--include {
-			background: repeating-linear-gradient(45deg, $rgb-active-blue, $rgb-active-blue $flt-stripe, transparent $flt-stripe, transparent $flt-2stripe);
+			background: repeating-linear-gradient(45deg, $active-blue, $active-blue $flt-stripe, transparent $flt-stripe, transparent $flt-2stripe);
 
 			span {
 				background: white;
@@ -2346,12 +2561,12 @@ $flt-2stripe: 22px;
 		}
 
 		&--include-all {
-			background: $rgb-active-blue;
+			background: $active-blue;
 			color: white;
 		}
 
 		&--exclude {
-			background: repeating-linear-gradient(45deg, transparent, transparent $flt-stripe, $rgb-active-red $flt-stripe, $rgb-active-red $flt-2stripe);
+			background: repeating-linear-gradient(45deg, transparent, transparent $flt-stripe, $active-red $flt-stripe, $active-red $flt-2stripe);
 
 			span {
 				background: white;
@@ -2360,18 +2575,18 @@ $flt-2stripe: 22px;
 		}
 
 		&--exclude-all {
-			background: $rgb-active-red;
+			background: $active-red;
 			color: white;
 		}
 
 		&--both {
-			background: repeating-linear-gradient(45deg, $rgb-active-blue, $rgb-active-blue $flt-stripe, $rgb-active-red $flt-stripe, $rgb-active-red $flt-2stripe);
+			background: repeating-linear-gradient(45deg, $active-blue, $active-blue $flt-stripe, $active-red $flt-stripe, $active-red $flt-2stripe);
 			color: white;
 		}
 	}
 
 	&dropdown-divider {
-		border-bottom: $rgb-border-grey 1px dotted;
+		border-bottom: $border-grey 1px dotted;
 		width: 100%;
 
 		&--indented {
@@ -2396,7 +2611,7 @@ $flt-2stripe: 22px;
 		cursor: pointer;
 		user-select: none;
 		border-radius: 3px;
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid $border-grey;
 		float: left;
 	}
 
@@ -2405,13 +2620,13 @@ $flt-2stripe: 22px;
 	}
 
 	&pill[state=yes] {
-		background: $rgb-active-blue;
+		background: $active-blue;
 		color: white;
 		border: 1px solid transparent;
 	}
 
 	&pill[state=no] {
-		background: $rgb-active-red;
+		background: $active-red;
 		color: white;
 		border: 1px solid transparent;
 	}
@@ -2442,9 +2657,9 @@ $flt-2stripe: 22px;
 	}
 
 	&mini-view {
-		border-left: $rgb-border-grey 1px solid;
-		border-right: $rgb-border-grey 1px solid;
-		background: linear-gradient(to top, $rgb-border-grey, whitesmoke 1px);
+		border-left: $border-grey 1px solid;
+		border-right: $border-grey 1px solid;
+		background: linear-gradient(to top, $border-grey, whitesmoke 1px);
 		display: flex;
 		flex-wrap: wrap;
 		flex-shrink: 0;
@@ -2466,7 +2681,7 @@ $flt-2stripe: 22px;
 		}
 
 		&[state=yes] {
-			background: $rgb-active-blue;
+			background: $active-blue;
 			color: white;
 			display: block;
 		}
@@ -2476,7 +2691,7 @@ $flt-2stripe: 22px;
 		}
 
 		&[state=no] {
-			background: $rgb-name-red;
+			background: $name-red;
 			color: white;
 			display: block;
 		}
@@ -2515,7 +2730,7 @@ $flt-2stripe: 22px;
 
 		&:not(.ui-slider-disabled) .ui-slider-pip:hover .ui-slider-label,
 		.ui-slider-label {
-			color: $rgb-active-blue;
+			color: $active-blue;
 		}
 	}
 
@@ -3071,7 +3286,7 @@ tr.regionaleffect {
 }
 
 .initial-message {
-	color: $rgb-name-red;
+	color: $name-red;
 	font-family: 'Andada', serif;
 	font-variant: small-caps;
 	font-weight: 500;
@@ -3181,7 +3396,7 @@ ul.list li:hover {
 }
 
 .stats {
-	background: $rgb-bg-orange;
+	background: $bg-orange;
 }
 
 @media only screen and (min-width: 1600px) {
@@ -3340,13 +3555,13 @@ tr.legendary td {
 /* start section: lootgen */
 
 #lootgen hr {
-	border-top: 2px solid $rgb-border-grey;
+	border-top: 2px solid $border-grey;
 }
 
 /* end section: lootgen */
 
 #classtable table {
-	background: $rgb-bg-orange;
+	background: $bg-orange;
 }
 
 #classtable table th {
@@ -3412,7 +3627,7 @@ ul.list.books > li > a > span.name:hover {
 }
 
 .hwin .hoverborder .window-title {
-	color: $rgb-name-red;
+	color: $name-red;
 }
 
 .rollbox {
@@ -3490,7 +3705,7 @@ ul.list.books > li > a > span.name:hover {
 		margin: 20px 20px 5px;
 		box-shadow: 0 0 3px 0 black;
 		border-radius: 4px;
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid $border-grey;
 		background: #f0f0f0;
 	}
 
@@ -3641,8 +3856,8 @@ ul.list.books > li > a > span.name:hover {
 	$btn-active-color: #ffffff40;
 
 	body {
-		color: $rgb-night-font-color;
-		background: $rgb-night-bg-color url('data:image/png;base64,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') repeat scroll left top !important;
+		color: $night-font-color;
+		background: $night-bg-color url('data:image/png;base64,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') repeat scroll left top !important;
 	}
 
 	.page__ {
@@ -3673,13 +3888,13 @@ ul.list.books > li > a > span.name:hover {
 	.page__nav-inner > li.active > a,
 	.page__nav-inner > li.active > a:focus,
 	.page__nav-inner > li.active > a:hover {
-		background-color: $rgb-link-blue;
+		background-color: $link-blue;
 		border-top: 0;
 		border-color: transparent;
 	}
 
 	.text-muted {
-		color: darken($rgb-night-font-color, 15%) !important;
+		color: darken($night-font-color, 15%) !important;
 	}
 
 	header p.lead {
@@ -3692,17 +3907,17 @@ ul.list.books > li > a > span.name:hover {
 	h4,
 	h5,
 	h6 {
-		color: $rgb-night-font-color;
+		color: $night-font-color;
 	}
 
 	pre {
-		color: $rgb-night-font-color;
-		background: $rgb-night-bg-color;
+		color: $night-font-color;
+		background: $night-bg-color;
 	}
 
 	.form-control {
-		background-color: $rgb-night-bg-color;
-		color: $rgb-night-font-color;
+		background-color: $night-bg-color;
+		color: $night-font-color;
 	}
 
 	.form-control[disabled] {
@@ -3731,15 +3946,15 @@ ul.list.books > li > a > span.name:hover {
 	.nav .open > a:focus,
 	.nav .open > a:hover {
 		background-color: rgba(255, 255, 255, 0.07);
-		border-color: $rgb-link-blue;
+		border-color: $link-blue;
 	}
 
 	.btn-default,
 	.btn-default:hover,
 	.btn-default:focus,
 	.btn-default:active {
-		background-color: $rgb-night-bg-color;
-		color: $rgb-night-font-color;
+		background-color: $night-bg-color;
+		color: $night-font-color;
 	}
 
 
@@ -3748,7 +3963,7 @@ ul.list.books > li > a > span.name:hover {
 	.btn-primary:focus,
 	.btn-primary:active {
 		background-color: $rgb-night-btn-primary-blue;
-		color: $rgb-night-font-color;
+		color: $night-font-color;
 	}
 
 	.btn-danger,
@@ -3756,7 +3971,7 @@ ul.list.books > li > a > span.name:hover {
 	.btn-danger:focus,
 	.btn-danger:active {
 		background-color: $rgb-night-btn-danger-red;
-		color: $rgb-night-font-color;
+		color: $night-font-color;
 	}
 
 	.btn-warning,
@@ -3764,7 +3979,7 @@ ul.list.books > li > a > span.name:hover {
 	.btn-warning:focus,
 	.btn-warning:active {
 		background-color: $rgb-night-btn-warning-orange;
-		color: $rgb-night-font-color;
+		color: $night-font-color;
 	}
 
 	.btn-info,
@@ -3772,7 +3987,7 @@ ul.list.books > li > a > span.name:hover {
 	.btn-info:focus,
 	.btn-info:active {
 		background-color: $rgb-night-btn-info-blue;
-		color: $rgb-night-font-color;
+		color: $night-font-color;
 	}
 
 	.btn-success,
@@ -3780,22 +3995,22 @@ ul.list.books > li > a > span.name:hover {
 	.btn-success:focus,
 	.btn-success:active {
 		background-color: $rgb-night-btn-success-green;
-		color: $rgb-night-font-color;
+		color: $night-font-color;
 	}
 
 	.fltr__h-btn-logic--blue {
-		color: $rgb-active-blue;
+		color: $active-blue;
 
 		&:hover {
-			color: $rgb-active-blue--light;
+			color: $active-blue--light;
 		}
 	}
 
 	.fltr__h-btn-logic--red {
-		color: $rgb-active-red;
+		color: $active-red;
 
 		&:hover {
-			color: $rgb-active-red--light;
+			color: $active-red--light;
 		}
 	}
 
@@ -3825,13 +4040,13 @@ ul.list.books > li > a > span.name:hover {
 	dialog.dialog-modal,
 	.dropdown-menu {
 		background: #232323;
-		color: $rgb-night-font-color;
+		color: $night-font-color;
 		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.56);
 	}
 
 	.dropdown-menu > li {
 		> a {
-			color: $rgb-night-font-color;
+			color: $night-font-color;
 		}
 
 		&:not(.active) > a {
@@ -3845,13 +4060,13 @@ ul.list.books > li > a > span.name:hover {
 
 	select,
 	input {
-		background-color: $rgb-night-bg-color;
-		color: $rgb-night-font-color;
+		background-color: $night-bg-color;
+		color: $night-font-color;
 	}
 
 	select option {
-		color: $rgb-night-font-color;
-		background: $rgb-night-bg-color;
+		color: $night-font-color;
+		background: $night-bg-color;
 	}
 
 	/* Bootstrap overrides */
@@ -3865,26 +4080,26 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.don__bar {
-		background: $rgb-night-bg-color;
+		background: $night-bg-color;
 	}
 
 	.input-group-addon,
 	.form-control {
-		background: $rgb-night-bg-color;
+		background: $night-bg-color;
 		color: #bbb;
 	}
 
 	/* *** */
 
 	.omni__input {
-		background-color: $rgb-night-bg-color;
+		background-color: $night-bg-color;
 	}
 
 	.omni__submit.btn-default:active:focus,
 	.omni__submit.btn-default:active:hover,
 	.omni__submit.btn-default {
-		background-color: $rgb-night-bg-color;
-		color: $rgb-night-font-color;
+		background-color: $night-bg-color;
+		color: $night-font-color;
 	}
 
 	.omni__wrp-input {
@@ -3896,7 +4111,7 @@ ul.list.books > li > a > span.name:hover {
 
 	.omni__input {
 		border-top-left-radius: 4px;
-		border-top-color: $rgb-border-grey;
+		border-top-color: $border-grey;
 
 		&:focus {
 			border-top-color: #66afe9;
@@ -3905,13 +4120,13 @@ ul.list.books > li > a > span.name:hover {
 
 	.omni__submit {
 		border-top-right-radius: 4px;
-		border-top-color: $rgb-border-grey;
+		border-top-color: $border-grey;
 	}
 
 	#pointbuy {
 		input {
 			&[type='number'] {
-				border: 1px solid $rgb-border-grey;
+				border: 1px solid $border-grey;
 				outline-offset: 0;
 				outline: none;
 			}
@@ -3948,7 +4163,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.hwin__wrp-table {
-		background: $rgb-night-bg-color;
+		background: $night-bg-color;
 	}
 
 	.wrp-stats-table {
@@ -3962,21 +4177,21 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	tr.text td {
-		color: $rgb-night-font-color !important;
+		color: $night-font-color !important;
 	}
 
 	td.typerarityattunement,
 	td.levelschoolritual {
-		color: $rgb-night-font-color;
+		color: $night-font-color;
 	}
 
 	tr.text td {
-		color: $rgb-night-font-color !important;
+		color: $night-font-color !important;
 	}
 
 	.mon__ {
 		&wrp-size-type-align {
-			color: $rgb-night-font-color;
+			color: $night-font-color;
 		}
 
 		&btn-token-cycle {
@@ -3984,7 +4199,7 @@ ul.list.books > li > a > span.name:hover {
 			background: rgba(255, 255, 255, 0.15);
 
 			&:hover {
-				color: $rgb-night-font-color;
+				color: $night-font-color;
 			}
 		}
 
@@ -3998,7 +4213,7 @@ ul.list.books > li > a > span.name:hover {
 	tr.action td,
 	tr.reaction td,
 	tr.legendary td {
-		color: $rgb-night-font-color !important;
+		color: $night-font-color !important;
 	}
 
 	.output,
@@ -4034,7 +4249,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	#classtable table th {
-		color: $rgb-night-font-color;
+		color: $night-font-color;
 	}
 
 	.stats th {
@@ -4225,7 +4440,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	#rulescontent caption {
-		color: $rgb-night-font-color;
+		color: $night-font-color;
 	}
 
 	span.pnl-link,
@@ -4253,11 +4468,11 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.sc_pill--active {
-		background: $rgb-active-blue;
+		background: $active-blue;
 	}
 
 	tr.trait td {
-		color: $rgb-night-font-color !important;
+		color: $night-font-color !important;
 	}
 
 	::-webkit-scrollbar-thumb {
@@ -4267,11 +4482,11 @@ ul.list.books > li > a > span.name:hover {
 	/**** Search and filter bar ****/
 	.fltr__mini-view {
 		background: #343434;
-		background: linear-gradient(to top, $rgb-border-grey, #343434 1px);
+		background: linear-gradient(to top, $border-grey, #343434 1px);
 	}
 
 	.fltr__pill[state=ignore] {
-		background: $rgb-night-bg-color;
+		background: $night-bg-color;
 	}
 
 	.fltr__pill:hover:not([state]) {
@@ -4279,16 +4494,16 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.ui-slider {
-		background: $rgb-night-bg-color;
+		background: $night-bg-color;
 	}
 
 	.ui-slider .ui-slider-tip {
 		background: $rgb-off-black;
-		color: $rgb-night-font-color;
+		color: $night-font-color;
 	}
 
 	.ui-slider-pips .ui-slider-pip {
-		color: $rgb-border-grey;
+		color: $border-grey;
 	}
 
 	.ui-slider-pips:not(.ui-slider-disabled) .ui-slider-pip:hover .ui-slider-label,
@@ -4297,7 +4512,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.ui-slider-pips .ui-slider-line {
-		background-color: $rgb-link-blue;
+		background-color: $link-blue;
 	}
 
 	.ui-slider .ui-slider-handle,
@@ -4315,8 +4530,8 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.dropdown-menu-filter .summary > span.filtering {
-		color: $rgb-border-grey;
-		text-shadow: 0 0 1px $rgb-border-grey;
+		color: $border-grey;
+		text-shadow: 0 0 1px $border-grey;
 	}
 
 	.rd__b-inset {
@@ -4329,11 +4544,11 @@ ul.list.books > li > a > span.name:hover {
 
 	.hwin table.summary-noback th,
 	.hwin table.summary th {
-		color: $rgb-night-font-color;
+		color: $night-font-color;
 	}
 
 	.hwin .hoverborder .window-title {
-		color: $rgb-night-font-color;
+		color: $night-font-color;
 	}
 
 	.rollbox {
@@ -4384,7 +4599,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.panel-add {
-		color: $rgb-border-grey;
+		color: $border-grey;
 	}
 
 	.btn-panel-add {
@@ -4395,7 +4610,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.panel-content-wrapper-inner {
-		background: $rgb-night-bg-color;
+		background: $night-bg-color;
 	}
 
 	.panel-addmenu-tab-head[active='true'] {
@@ -4416,7 +4631,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.panel-content-textarea {
-		background: $rgb-night-bg-color;
+		background: $night-bg-color;
 	}
 
 	.dm-init-row.dm-init-row-active input,
@@ -4425,11 +4640,11 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.dm-init {
-		background: $rgb-night-bg-color;
+		background: $night-bg-color;
 	}
 
 	.content-tab-bar {
-		background: $rgb-night-bg-color;
+		background: $night-bg-color;
 	}
 
 	.homebrew-section {
@@ -4488,7 +4703,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.sidemenu {
-		background: $rgb-night-bg-color;
+		background: $night-bg-color;
 	}
 
 	.sidemenu__toggle {
@@ -4496,7 +4711,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.sidemenu__burger {
-		background: $rgb-night-bg-color;
+		background: $night-bg-color;
 	}
 	/* *** */
 
