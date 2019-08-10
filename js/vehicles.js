@@ -74,7 +74,7 @@ class VehiclesPage extends ListPage {
 		}
 
 		function buildFluffTab (isImageTab) {
-			return Renderer.utils.buildFluffTab(
+			return Renderer.utils.pBuildFluffTab(
 				isImageTab,
 				$content,
 				vehicle,

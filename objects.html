@@ -18,6 +18,7 @@
 
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
+	<script type="text/javascript" src="js/browsercheck.js"></script>
 
 	<style>
 		.stats-source {
@@ -45,60 +46,62 @@
 		</ul>
 	</nav>
 
-	<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
-	<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--single"><!--5ETOOLS_AD_RIGHT_1--></div>
+	<div class="view-col-group--cancer">
+		<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
+		<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--single"><!--5ETOOLS_AD_RIGHT_1--></div>
 
-	<div class="container view-col-wrapper">
-		<div class="view-col" id="listcontainer">
-			<div class="lst__form-top" id="filter-search-input-group">
-				<div class="w-100 relative">
-					<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-r">
-					<div class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
-					<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+		<div class="container view-col-wrapper view-col-wrapper--cancer">
+			<div class="view-col" id="listcontainer">
+				<div class="lst__form-top" id="filter-search-input-group">
+					<div class="w-100 relative">
+						<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-r">
+						<div class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+					</div>
+					<button class="btn btn-default" id="reset">Reset</button>
 				</div>
-				<button class="btn btn-default" id="reset">Reset</button>
-			</div>
-			<div id="filtertools" class="sortlabel lst__form-bottom">
-				<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-				<button class="col-2 sort btn btn-default btn-xs" data-sort="size">Size <span class="caret_wrp"></span></button>
-				<button class="col-2 sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
-			</div>
-
-			<ul id="objectsList" class="list list--stats objects">
-				<!-- populated by javascript -->
-			</ul>
-		</div>
-
-		<div id="contentwrapper" class="view-col">
-			<div id="sublistcontainer" class="sublist">
-				<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
-					<button class="col-9 sort btn btn-default btn-xs" data-sort="name">Name</button>
-					<button class="col-3 sort btn btn-default btn-xs" data-sort="size">Size</button>
+				<div id="filtertools" class="sortlabel lst__form-bottom">
+					<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+					<button class="col-2 sort btn btn-default btn-xs" data-sort="size">Size <span class="caret_wrp"></span></button>
+					<button class="col-2 sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
 				</div>
-				<ul class="list subobjects">
-					<!-- populate with JS -->
+
+				<ul id="objectsList" class="list list--stats objects">
+					<!-- populated by javascript -->
 				</ul>
 			</div>
 
-			<div class="wrp-stat-tab">
-				<div id="tabs-right">
-					<button class="stat-tab btn btn-default" id="btn-pin"><span class="glyphicon glyphicon-pushpin"></span></button>
-					<button class="stat-tab btn btn-default" id="btn-popout"><span class="glyphicon glyphicon-new-window"></span></button>
+			<div id="contentwrapper" class="view-col">
+				<div id="sublistcontainer" class="sublist">
+					<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
+						<button class="col-9 sort btn btn-default btn-xs" data-sort="name">Name</button>
+						<button class="col-3 sort btn btn-default btn-xs" data-sort="size">Size</button>
+					</div>
+					<ul class="list subobjects">
+						<!-- populate with JS -->
+					</ul>
 				</div>
-			</div>
 
-			<div id="float-token" style="position: relative;"></div>
+				<div class="wrp-stat-tab">
+					<div id="tabs-right">
+						<button class="stat-tab btn btn-default" id="btn-pin"><span class="glyphicon glyphicon-pushpin"></span></button>
+						<button class="stat-tab btn btn-default" id="btn-popout"><span class="glyphicon glyphicon-new-window"></span></button>
+					</div>
+				</div>
 
-			<div class="wrp-stats-table" onscroll="handleStatblockScroll(event, this)">
-				<table id="pagecontent" class="stats">
-					<tr><th class="border" colspan="6"></th></tr>
-					<tr><td colspan="6" class="initial-message">Select an object from the list to view it here</td></tr>
-					<tr><th class="border" colspan="6"></th></tr>
-				</table>
-			</div>
+				<div id="float-token" style="position: relative;"></div>
 
-			<div class="text-center wrp-footer-buttons">
-				<button class="btn btn-default btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+				<div class="wrp-stats-table" onscroll="handleStatblockScroll(event, this)">
+					<table id="pagecontent" class="stats">
+						<tr><th class="border" colspan="6"></th></tr>
+						<tr><td colspan="6" class="initial-message">Select an object from the list to view it here</td></tr>
+						<tr><th class="border" colspan="6"></th></tr>
+					</table>
+				</div>
+
+				<div class="text-center wrp-footer-buttons">
+					<button class="btn btn-default btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+				</div>
 			</div>
 		</div>
 	</div>

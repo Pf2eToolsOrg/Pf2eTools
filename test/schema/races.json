@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.1.2",
+	"version": "1.2.0",
 	"type": "object",
 
 	"definitions": {
@@ -82,29 +82,30 @@
 		},
 
 		"abilityScores": {
-			"type": "object",
-			"properties": {
-				"str": {
-					"type": "integer"
-				},
-				"dex": {
-					"type": "integer"
-				},
-				"con": {
-					"type": "integer"
-				},
-				"int": {
-					"type": "integer"
-				},
-				"wis": {
-					"type": "integer"
-				},
-				"cha": {
-					"type": "integer"
-				},
-				"choose": {
-					"type": "array",
-					"items": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"str": {
+						"type": "integer"
+					},
+					"dex": {
+						"type": "integer"
+					},
+					"con": {
+						"type": "integer"
+					},
+					"int": {
+						"type": "integer"
+					},
+					"wis": {
+						"type": "integer"
+					},
+					"cha": {
+						"type": "integer"
+					},
+					"choose": {
+
 						"type": "object",
 						"properties": {
 							"from": {
@@ -119,32 +120,6 @@
 							},
 							"amount": {
 								"type": "integer"
-							},
-							"predefined": {
-								"type": "object",
-								"items": {
-									"type": "object",
-									"properties": {
-										"str": {
-											"type": "integer"
-										},
-										"dex": {
-											"type": "integer"
-										},
-										"con": {
-											"type": "integer"
-										},
-										"int": {
-											"type": "integer"
-										},
-										"wis": {
-											"type": "integer"
-										},
-										"cha": {
-											"type": "integer"
-										}
-									}
-								}
 							},
 							"weighted": {
 								"type": "object",
@@ -163,6 +138,84 @@
 										}
 									}
 								}
+							}
+						}
+					}
+				}
+			}
+		},
+
+		"skillProficiencies": {
+			"athletics": {"type": "boolean"},
+			"acrobatics":{"type": "boolean"},
+			"sleight of hand": {"type": "boolean"},
+			"stealth":{"type": "boolean"},
+			"arcana": {"type": "boolean"},
+			"history":{"type": "boolean"},
+			"investigation": {"type": "boolean"},
+			"nature":{"type": "boolean"},
+			"religion": {"type": "boolean"},
+			"animal handling":{"type": "boolean"},
+			"insight": {"type": "boolean"},
+			"medicine":{"type": "boolean"},
+			"perception": {"type": "boolean"},
+			"survival":{"type": "boolean"},
+			"deception": {"type": "boolean"},
+			"intimidation":{"type": "boolean"},
+			"performance": {"type": "boolean"},
+			"persuasion":{"type": "boolean"},
+
+			"choose": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"properties": {
+						"from": {
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"enum": [
+											"athletics",
+											"acrobatics",
+											"sleight of hand",
+											"stealth",
+											"arcana",
+											"history",
+											"investigation",
+											"nature",
+											"religion",
+											"animal handling",
+											"insight",
+											"medicine",
+											"perception",
+											"survival",
+											"deception",
+											"intimidation",
+											"performance",
+											"persuasion"
+										]
+									},
+									{
+										"type": "object",
+										"properties": {
+											"tool": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										}
+									},
+									{
+										"type": "object",
+										"properties": {
+											"tool": {
+												"type": "boolean"
+											}
+										}
+									}
+								]
 							}
 						}
 					}
@@ -283,6 +336,16 @@
 									"items": {
 										"$ref": "#/definitions/languageTag"
 									}
+								},
+								"skillProficiencies": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/skillProficiencies"
+									}
+								},
+								"overwrite": {
+									"description": "Map of 'property' -> true where 'property' is a property on the base race which should be overwritten by that of the subrace",
+									"type": "object"
 								}
 							},
 							"additionalProperties": false
@@ -301,6 +364,12 @@
 						"type": "array",
 						"items": {
 							"$ref": "#/definitions/languageTag"
+						}
+					},
+					"skillProficiencies": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/skillProficiencies"
 						}
 					}
 				},

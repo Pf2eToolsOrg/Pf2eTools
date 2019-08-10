@@ -26,6 +26,7 @@ class PageUi {
 	}
 
 	set creatureBuilder (creatureBuilder) { this._builders.creatureBuilder = creatureBuilder; }
+	set spellBuilder (spellBuilder) { this._builders.spellBuilder = spellBuilder; }
 
 	get $wrpInput () { return this._$wrpInput; }
 
@@ -151,10 +152,14 @@ class PageUi {
 		const $selMode = $(`
 			<select class="form-control input-xs">
 				<option value="creatureBuilder">Creature</option>
+				<option value="spellBuilder">Spell</option>
 			</select>
 		`).appendTo($wrpMode).change(() => {
 			this._settings.activeBuilder = $selMode.val();
-			this._builders[this._settings.activeBuilder].renderSideMenu();
+			const builder = this._builders[this._settings.activeBuilder];
+			builder.renderInput();
+			builder.renderOutput();
+			builder.renderSideMenu();
 			this._saveSettingsDebounced();
 		});
 
@@ -237,7 +242,10 @@ class PageUi {
 	}
 
 	_getJsonOutputTemplate () {
-		return {_meta: {sources: [MiscUtil.copy(BrewUtil.sourceJsonToSource(this._settings.activeSource))]}};
+		return {
+			_meta: {sources: [MiscUtil.copy(BrewUtil.sourceJsonToSource(this._settings.activeSource))]},
+			dateAdded: Math.round(Date.now() / 1000)
+		};
 	}
 }
 PageUi.STORAGE_STATE = "brewbuilderState";
@@ -248,15 +256,47 @@ class Builder extends ProxyBase {
 		return Promise.all(Builder._BUILDERS.map(b => b.pInit()))
 	}
 
-	constructor () {
+	/**
+	 * @param opts Options object.
+	 * @param opts.titleSidebarLoadExisting Text for "Load Existing" sidebar button.
+	 * @param opts.titleSidebarDownloadJson Text for "Download JSON" sidebar button.
+	 * @param opts.prop Homebrew prop.
+	 */
+	constructor (opts) {
 		super();
+		opts = opts || {};
+		this._titleSidebarLoadExisting = opts.titleSidebarLoadExisting;
+		this._titleSidebarDownloadJson = opts.titleSidebarDownloadJson;
+		this._prop = opts.prop;
+
+		Builder._BUILDERS.push(this);
+		TabUiUtil.decorate(this);
 
 		this._ui = null;
 		this._isStateDirty = false;
-
 		this._isEntrySaved = true;
 
-		Builder._BUILDERS.push(this);
+		this._sourcesCache = []; // the JSON sources from the main UI
+		this._$selSource = null;
+		this._cbCache = null;
+
+		this.__state = this._getInitialState();
+		this._state = null; // proxy used to access state
+		this.__meta = this.getInitialMetaState(); // meta state
+		this._meta = null; // proxy used to access meta state
+		this.doCreateProxies(); // init proxies
+
+		this._$btnSave = null;
+		this._$sideMenuStageSaved = null;
+		this._$sideMenuWrpList = null;
+		this._$eles = {}; // Generic internal element storage
+	}
+
+	doCreateProxies () {
+		this._resetHooks("state");
+		this._resetHooks("meta");
+		this._state = this._getProxy("state", this.__state);
+		this._meta = this._getProxy("meta", this.__meta);
 	}
 
 	set ui (ui) { this._ui = ui; }
@@ -267,14 +307,249 @@ class Builder extends ProxyBase {
 	get isEntrySaved () { return this._isEntrySaved; }
 	set isEntrySaved (val) { this._isEntrySaved = val; }
 
-	getSaveableState () { throw new TypeError(`Unimplemented method!`); }
+	getSaveableState () {
+		return {
+			s: this.__state,
+			m: this.__meta,
+			// parent/other meta-state
+			_m: {
+				isEntrySaved: this.isEntrySaved
+			}
+		}
+	}
+
 	setStateFromLoaded () { throw new TypeError(`Unimplemented method!`); }
-	doHandleSourceUpdate () { throw new TypeError(`Unimplemented method!`); }
+
+	doHandleSourceUpdate () {
+		const nuSource = this._ui.source;
+
+		// if the source we were using is gone, update
+		if (!this._sourcesCache.includes(nuSource)) {
+			this._state.source = nuSource;
+			this._sourcesCache = MiscUtil.copy(this._ui.allSources);
+
+			const $cache = this._$selSource;
+			this._$selSource = this.$getSourceInput(this._cbCache);
+			$cache.replaceWith(this._$selSource);
+		}
+
+		this.renderInput();
+		this.renderOutput();
+		this.renderSideMenu();
+		this.doUiSave();
+	}
+
+	$getSourceInput (cb) {
+		return BuilderUi.$getStateIptEnum(
+			"Source",
+			cb,
+			this._state,
+			{
+				vals: this._sourcesCache, fnDisplay: Parser.sourceJsonToFull, type: "string", nullable: false
+			},
+			"source"
+		);
+	}
+
+	doUiSave () {
+		// set our state to dirty, and trigger a save at a higher level
+		this._isStateDirty = true;
+		this._ui.doSaveDebounced();
+	}
+
+	renderSideMenu () {
+		this._ui.$wrpSideMenu.empty();
+
+		const $btnLoadExisting = $(`<button class="btn btn-xs btn-default">${this._titleSidebarLoadExisting}</button>`)
+			.click(() => this.handleSidebarLoadExistingClick());
+		$$`<div class="sidemenu__row">${$btnLoadExisting}</div>`.appendTo(this._ui.$wrpSideMenu);
+
+		const $btnDownloadJson = $(`<button class="btn btn-default btn-xs mb-2">${this._titleSidebarDownloadJson}</button>`)
+			.click(() => this.handleSidebarDownloadJsonClick());
+
+		this._$sideMenuWrpList = $(`<div class="sidemenu__row flex-col">`);
+		this._$sideMenuStageSaved = $$`<div>
+		${PageUi.__$getSideMenuDivider().hide()}
+		<div class="flex-v-center">${$btnDownloadJson}</div>
+		${this._$sideMenuWrpList}
+		</div>`.appendTo(this._ui.$wrpSideMenu);
+
+		this.doUpdateSidemenu();
+	}
+
+	get ixBrew () { return this._meta.ixBrew; }
+	set ixBrew (val) { this._meta.ixBrew = val; }
+
+	getOnNavMessage () {
+		if (!this.isEntrySaved && ~this.ixBrew) return "You have unsaved changes! Are you sure you want to leave?";
+		else return null;
+	}
+
+	getSideMenuItems () {
+		return MiscUtil.copy((BrewUtil.homebrew[this._prop] || []).filter(entry => entry.source === this._ui.source))
+			.sort((a, b) => SortUtil.ascSort(a.name, b.name));
+	}
+
+	doUpdateSidemenu () {
+		this._$sideMenuWrpList.empty();
+
+		const toList = this.getSideMenuItems();
+		this._$sideMenuStageSaved.toggle(!!toList.length);
+
+		toList.forEach(entry => {
+			const ixBrew = BrewUtil.getEntryIxByName(this._prop, entry);
+
+			const $btnEdit = $(`<button class="btn btn-xs btn-default mr-2" title="Edit"><span class="glyphicon glyphicon-pencil"/></button>`)
+				.click(() => {
+					if (this.getOnNavMessage() && !confirm("You have unsaved changes. Are you sure?")) return;
+					this.setStateFromLoaded({s: MiscUtil.copy(entry), m: {...this.getInitialMetaState(), ixBrew}});
+					this.renderInput();
+					this.renderOutput();
+					this.doUiSave();
+				});
+
+			const contextId = ContextUtil.getNextGenericMenuId();
+			const _CONTEXT_OPTIONS = [
+				{
+					name: "Duplicate",
+					action: async () => {
+						const copy = MiscUtil.copy(entry);
+
+						// Get the root name without trailing numbers, e.g. "Goblin (2)" -> "Goblin"
+						const m = /^(.*?) \((\d+)\)$/.exec(entry.name.trim());
+						if (m) copy.name = `${m[1]} (${Number(m[2]) + 1})`;
+						else copy.name = `${copy.name} (1)`;
+						await BrewUtil.pAddEntry(this._prop, copy);
+						this.doUpdateSidemenu();
+					}
+				},
+				{
+					name: "View JSON",
+					action: (evt) => {
+						const out = this._ui._getJsonOutputTemplate();
+						out[this._prop] = [PropOrder.getOrdered(DataUtil.cleanJson(MiscUtil.copy(entry)), this._prop)];
+
+						const popoutCodeId = Renderer.hover.__initOnMouseHoverEntry({
+							type: "code",
+							name: `${this._state.name} \u2014 Source Data`,
+							preformatted: JSON.stringify(out, null, "\t")
+						});
+						$btnBurger.attr("data-hover-active", false);
+						Renderer.hover.mouseOverHoverTooltip({shiftKey: true, clientX: evt.clientX}, $btnBurger[0], popoutCodeId, true);
+					}
+				},
+				{
+					name: "Download JSON",
+					action: () => {
+						const out = this._ui._getJsonOutputTemplate();
+						out[this._prop] = [DataUtil.cleanJson(MiscUtil.copy(entry))];
+						DataUtil.userDownload(DataUtil.getCleanFilename(entry.name), out);
+					}
+				}
+			];
+			ContextUtil.doInitContextMenu(contextId, (evt, ele, $invokedOn, $selectedMenu) => {
+				const val = Number($selectedMenu.data("ctx-id"));
+				_CONTEXT_OPTIONS[val].action(evt, $invokedOn);
+			}, _CONTEXT_OPTIONS.map(it => it.name));
+
+			const $btnBurger = $(`<button class="btn btn-xs btn-default mr-2" title="More Options"><span class="glyphicon glyphicon-option-vertical"/></button>`)
+				.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnBurger, contextId));
+
+			const $btnDelete = $(`<button class="btn btn-xs btn-danger" title="Delete"><span class="glyphicon glyphicon-trash"/></button>`)
+				.click(async () => {
+					if (confirm("Are you sure?")) {
+						if (this.ixBrew === ixBrew) {
+							this.isEntrySaved = false;
+							this.ixBrew = null;
+							this.mutSavedButtonText();
+						} else if (this.ixBrew > ixBrew) {
+							this.ixBrew--; // handle the splice -- our index is not one lower
+						}
+						await BrewUtil.pRemoveEntry(this._prop, entry);
+						this.doUpdateSidemenu();
+					}
+				});
+
+			$$`<div class="mkbru__sidebar-entry flex-v-center split px-2">
+			<span class="py-1">${entry.name}</span>
+			<div class="py-1 no-shrink">${$btnEdit}${$btnBurger}${$btnDelete}</div>
+			</div>`.appendTo(this._$sideMenuWrpList);
+		});
+	}
+
+	handleSidebarDownloadJsonClick () {
+		const out = this._ui._getJsonOutputTemplate();
+		out[this._prop] = (BrewUtil.homebrew[this._prop] || []).filter(entry => entry.source === this._ui.source).map(entry => PropOrder.getOrdered(DataUtil.cleanJson(MiscUtil.copy(entry))));
+		DataUtil.userDownload(DataUtil.getCleanFilename(BrewUtil.sourceJsonToFull(this._ui.source)), out);
+	}
+
+	renderInputControls () {
+		const $wrpControls = this._ui.$wrpInputControls.empty();
+
+		this._$btnSave = BuilderUi.$getSaveButton().click(async () => {
+			await this._renderInputControls_pSaveBrew();
+			this.doUpdateSidemenu();
+		}).appendTo($wrpControls);
+
+		BuilderUi.$getResetButton().click(() => {
+			if (!confirm("Are you sure?")) return;
+			this.setStateFromLoaded({s: this._getInitialState(), m: this.getInitialMetaState()});
+			this.renderInput();
+			this.renderOutput();
+			this.isEntrySaved = true;
+			this.mutSavedButtonText();
+			this.doUiSave();
+		}).appendTo($wrpControls);
+	}
+
+	async _renderInputControls_pSaveBrew () {
+		if (this.ixBrew != null) {
+			await BrewUtil.pUpdateEntryByIx(this._prop, this.ixBrew, MiscUtil.copy(this.__state));
+			this.renderSideMenu();
+		} else {
+			const cpy = MiscUtil.copy(this.__state);
+			this.ixBrew = await BrewUtil.pAddEntry(this._prop, cpy);
+			await Omnisearch.pAddToIndex(this._prop, cpy);
+			await SearchWidget.P_LOADING_CONTENT;
+			SearchWidget.addToIndexes(this._prop, cpy);
+		}
+		this.isEntrySaved = true;
+		this.mutSavedButtonText();
+		this.doUiSave();
+	}
+
+	mutSavedButtonText () {
+		if (this._$btnSave) this._$btnSave.text(this.isEntrySaved ? "Saved" : "Save *");
+	}
+
+	// TODO use this in creature builder
+	/**
+	 * @param doUpdateState
+	 * @param rowArr
+	 * @param row
+	 * @param $wrpRow
+	 * @param title
+	 * @param [opts] Options object.
+	 * @param [opts.isProtectLast]
+	 * @param [opts.isExtraSmall]
+	 * @return {JQuery}
+	 */
+	static $getBtnRemoveRow (doUpdateState, rowArr, row, $wrpRow, title, opts) {
+		opts = opts || {};
+
+		return $(`<button class="btn ${opts.isExtraSmall ? "btn-xxs" : "btn-xs"} btn-danger mb-2 ${opts.isProtectLast ? "mkbru__btn-rm-row" : ""}" title="Remove ${title}"><span class="glyphicon glyphicon-trash"/></button>`)
+			.click(() => {
+				rowArr.splice(rowArr.indexOf(row), 1);
+				$wrpRow.empty().remove();
+				doUpdateState();
+			});
+	}
+
 	doHandleSourcesAdd () { throw new TypeError(`Unimplemented method!`); }
 	renderInput () { throw new TypeError(`Unimplemented method!`); }
 	renderOutput () { throw new TypeError(`Unimplemented method!`); }
-	renderSideMenu () { throw new TypeError(`Unimplemented method!`); }
-	getOnNavMessage () { throw new TypeError(`Unimplemented method!`); }
+	handleSidebarLoadExistingClick () { throw new TypeError(`Unimplemented method!`); }
+	getInitialMetaState () { return {}; }
 	async pInit () {}
 }
 Builder._BUILDERS = [];
@@ -312,6 +587,7 @@ class BuilderUi {
 	 * @param [options.eleType] HTML element to use.
 	 * @param [options.isMarked] If a "group" vertical marker should be displayed between the name and the row body.
 	 * @param [options.isRow] If the row body should use flex row (instead of flex col).
+	 * @param [options.title] Tooltip text.
 	 */
 	static getLabelledRowTuple (name, options) {
 		options = options || {};
@@ -319,7 +595,7 @@ class BuilderUi {
 		const eleType = options.eleType || "div";
 
 		const $rowInner = $(`<div class="${options.isRow ? "flex" : "flex-col"} w-100"/>`);
-		const $row = $$`<div class="mb-2 mkbru__row stripe-even"><${eleType} class="mkbru__wrp-row flex-v-center"><span class="mr-2 mkbru__row-name ${options.isMarked ? `mkbru__row-name--marked` : ""}">${name}</span>${options.isMarked ? `<div class="mkbru__row-mark mr-2"/>` : ""}${$rowInner}</${eleType}></div>`;
+		const $row = $$`<div class="mb-2 mkbru__row stripe-even"><${eleType} class="mkbru__wrp-row flex-v-center"><span class="mr-2 mkbru__row-name ${options.isMarked ? `mkbru__row-name--marked` : ""} ${options.title ? "help" : ""}" ${options.title ? `title="${options.title}"` : ""}>${name}</span>${options.isMarked ? `<div class="mkbru__row-mark mr-2"/>` : ""}${$rowInner}</${eleType}></div>`;
 		return [$row, $rowInner];
 	}
 
@@ -337,7 +613,7 @@ class BuilderUi {
 	static $getStateIptString (name, fnRender, state, options, ...path) {
 		if (options.nullable == null) options.nullable = true;
 
-		const initialState = MiscUtil.getProperty(state, ...path);
+		const initialState = MiscUtil.get(state, ...path);
 		const $ipt = $(`<input class="form-control input-xs form-control--minimal ${options.type ? `type="${options.type}"` : ""}">`)
 			.val(initialState)
 			.change(() => {
@@ -349,15 +625,37 @@ class BuilderUi {
 		return BuilderUi.__$getRow(name, $ipt, options);
 	}
 
+	/**
+	 * @param name
+	 * @param fnRender
+	 * @param state
+	 * @param options
+	 * @param [options.nullable]
+	 * @param [options.placeholder]
+	 * @param [options.withHeader]
+	 * @param path
+	 * @return {*}
+	 */
 	static $getStateIptEntries (name, fnRender, state, options, ...path) {
 		if (options.nullable == null) options.nullable = true;
 
-		const initialState = MiscUtil.getProperty(state, ...path);
+		let initialState = MiscUtil.get(state, ...path);
+		if (options.withHeader && initialState) initialState = initialState[0].entries;
+
 		const $ipt = $(`<textarea class="form-control form-control--minimal resize-vertical" ${options.placeholder ? `placeholder="${options.placeholder}"` : ""}/>`)
 			.val(UiUtil.getEntriesAsText(initialState))
 			.change(() => {
 				const raw = $ipt.val().trim();
-				BuilderUi.__setProp(raw || !options.nullable ? UiUtil.getTextAsEntries(raw) : null, options, state, ...path);
+				let out = raw || !options.nullable ? UiUtil.getTextAsEntries(raw) : null;
+				if (options.withHeader) {
+					out = [
+						{
+							name: options.withHeader,
+							entries: out
+						}
+					];
+				}
+				BuilderUi.__setProp(out, options, state, ...path);
 				fnRender();
 			});
 		return BuilderUi.__$getRow(name, $ipt, options);
@@ -367,7 +665,7 @@ class BuilderUi {
 		if (options.nullable == null) options.nullable = true;
 
 		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple(name, {isMarked: true});
-		const initialState = MiscUtil.getProperty(state, ...path) || [];
+		const initialState = MiscUtil.get(state, ...path) || [];
 		const stringRows = [];
 
 		const doUpdateState = () => {
@@ -377,20 +675,20 @@ class BuilderUi {
 		};
 
 		const $wrpRows = $(`<div/>`).appendTo($rowInner);
-		initialState.forEach(string => BuilderUi.$getStateIptStringArray__getRow(doUpdateState, stringRows, string).$wrp.appendTo($wrpRows));
+		initialState.forEach(string => BuilderUi._$getStateIptStringArray_getRow(doUpdateState, stringRows, string).$wrp.appendTo($wrpRows));
 
 		const $wrpBtnAdd = $(`<div/>`).appendTo($rowInner);
 		$(`<button class="btn btn-xs btn-default">Add ${options.shortName}</button>`)
 			.appendTo($wrpBtnAdd)
 			.click(() => {
-				BuilderUi.$getStateIptStringArray__getRow(doUpdateState, stringRows).$wrp.appendTo($wrpRows);
+				BuilderUi._$getStateIptStringArray_getRow(doUpdateState, stringRows).$wrp.appendTo($wrpRows);
 				doUpdateState();
 			});
 
 		return $row;
 	}
 
-	static $getStateIptStringArray__getRow (doUpdateState, stringRows, initialString) {
+	static _$getStateIptStringArray_getRow (doUpdateState, stringRows, initialString) {
 		const getState = () => $iptString.val().trim();
 
 		const $iptString = $(`<input class="form-control form-control--minimal input-xs mr-2">`)
@@ -413,7 +711,7 @@ class BuilderUi {
 	static $getStateIptNumber (name, fnRender, state, options, ...path) {
 		if (options.nullable == null) options.nullable = true;
 
-		const initialState = MiscUtil.getProperty(state, ...path);
+		const initialState = MiscUtil.get(state, ...path);
 		const $ipt = $(`<input class="form-control input-xs form-control--minimal" type="number" ${options.placeholder ? `placeholder="${options.placeholder}"` : ""}>`)
 			.val(initialState)
 			.change(() => {
@@ -424,10 +722,20 @@ class BuilderUi {
 		return BuilderUi.__$getRow(name, $ipt, options);
 	}
 
+	/**
+	 * @param name
+	 * @param fnRender
+	 * @param state
+	 * @param options Options object.
+	 * @param options.nullable
+	 * @param options.fnDisplay
+	 * @param options.vals
+	 * @param path
+	 */
 	static $getStateIptEnum (name, fnRender, state, options, ...path) {
 		if (options.nullable == null) options.nullable = true;
 
-		const initialState = MiscUtil.getProperty(state, ...path);
+		const initialState = MiscUtil.get(state, ...path);
 		const $sel = $(`<select class="form-control input-xs form-control--minimal">`);
 		if (options.nullable) $sel.append(`<option value="-1">(None)</option>`);
 		options.vals.forEach((v, i) => $(`<option>`).val(i).text(options.fnDisplay ? options.fnDisplay(v) : v).appendTo($sel));
@@ -445,7 +753,7 @@ class BuilderUi {
 	static $getStateIptBoolean (name, fnRender, state, options, ...path) {
 		if (options.nullable == null) options.nullable = true;
 
-		const initialState = MiscUtil.getProperty(state, ...path);
+		const initialState = MiscUtil.get(state, ...path);
 		const $ipt = $(`<input class="mkbru__ipt-cb" type="checkbox">`)
 			.prop("checked", initialState)
 			.change(() => {
@@ -457,11 +765,22 @@ class BuilderUi {
 		return BuilderUi.__$getRow(name, $$`<div class="w-100 flex-v-center">${$ipt}</div>`, {...options, eleType: "label"});
 	}
 
+	/**
+	 * @param name
+	 * @param fnRender
+	 * @param state
+	 * @param options
+	 * @param options.vals
+	 * @param [options.nullable]
+	 * @param [options.fnDisplay]
+	 * @param path
+	 * @return {*}
+	 */
 	static $getStateIptBooleanArray (name, fnRender, state, options, ...path) {
 		if (options.nullable == null) options.nullable = true;
 		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple(name, {isMarked: true});
 
-		const initialState = MiscUtil.getProperty(state, ...path) || [];
+		const initialState = MiscUtil.get(state, ...path) || [];
 		const $wrpIpts = $(`<div class="flex-col w-100 mr-2"/>`).appendTo($rowInner);
 		const inputs = [];
 		options.vals.forEach(val => {
@@ -483,8 +802,9 @@ class BuilderUi {
 		return $row;
 	}
 
-	static pGetUserSpellSearch (options) {
+	static async pGetUserSpellSearch (options) {
 		options = options || {};
+		await SearchWidget.P_LOADING_CONTENT;
 		return new Promise(resolve => {
 			const searchOpts = {defaultCategory: "alt_Spell"};
 			if (options.level != null) searchOpts.resultFilter = (result) => result.lvl === options.level;
@@ -624,11 +944,11 @@ async function doPageInit () {
 		await BrewUtil.pAddBrewData();
 		await BrewUtil.pAddLocalBrewData();
 	} catch (e) {
-		await BrewUtil.pPurgeBrew();
-		setTimeout(() => { throw e });
+		await BrewUtil.pPurgeBrew(e);
 	}
 	await SearchUiUtil.pDoGlobalInit();
-	await SearchWidget.pDoGlobalInit();
+	// Do this asynchronously, to avoid blocking the load
+	SearchWidget.pDoGlobalInit();
 
 	// page-specific init
 	await Builder.pInitAll();

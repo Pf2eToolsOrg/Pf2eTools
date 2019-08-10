@@ -30,6 +30,7 @@ function Renderer () {
 	this._roll20Ids = null;
 	this._trackTitles = {enabled: false, titles: {}};
 	this._enumerateTitlesRel = {enabled: false, titles: {}};
+	this._hooks = {};
 
 	/**
 	 * Enables/disables lazy-load image rendering.
@@ -143,6 +144,19 @@ function Renderer () {
 			this._trackTitles.titles[this._headerIndex] = name;
 		}
 	};
+
+	this.addHook = function (entryType, hookType, fnHook) {
+		((this._hooks[entryType] = this._hooks[entryType] || {})[hookType] =
+			this._hooks[entryType][hookType] || []).push(fnHook);
+	};
+
+	this.removeHook = function (entryType, hookType, fnHook) {
+		const ix = ((this._hooks[entryType] = this._hooks[entryType] || {})[hookType] =
+			this._hooks[entryType][hookType] || []).indexOf(fnHook);
+		if (~ix) this._hooks[entryType][hookType].splice(ix, 1);
+	};
+
+	this._getHooks = function (entryType, hookType) { return (this._hooks[entryType] || {})[hookType] || []; };
 
 	/**
 	 * Recursively walk down a tree of "entry" JSON items, adding to a stack of strings to be finally rendered to the
@@ -918,7 +932,7 @@ function Renderer () {
 					case "@color": {
 						const parts = text.split("|");
 						const [toDisplay, color] = text.split("|");
-						const scrubbedColor = color.replace(/[^a-fA-F0-9]/g, "").slice(0, 8);
+						const scrubbedColor = BrewUtil.getValidColor(color);
 						textStack[0] += `<span style="color: #${scrubbedColor}">`;
 						textStack[0] += toDisplay;
 						textStack[0] += `</span>`;
@@ -1490,7 +1504,7 @@ function Renderer () {
 			}
 		}
 
-		textStack[0] += `<a href="${href}" ${entry.href.type === "internal" ? "" : `target="_blank" rel="noopener"`} ${this._renderLink_getHoverString(entry)}>${this.render(entry.text)}</a>`;
+		textStack[0] += `<a href="${href}" ${entry.href.type === "internal" ? "" : `target="_blank" rel="noopener"`} ${this._renderLink_getHoverString(entry)} ${this._getHooks("link", "ele").map(hook => hook(entry)).join(" ")}>${this.render(entry.text)}</a>`;
 	};
 
 	this._renderLink_getHoverString = function (entry) {
@@ -1676,60 +1690,56 @@ Renderer.getEntryDice = function (entry, name) {
 			toPack.toRoll = legacyDiceToString(toPack.toRoll);
 		}
 
-		return `<span class='roller render-roller' title="${name ? `${name.escapeQuotes()}` : ""}" onmousedown="event.preventDefault()" onclick="Renderer.dice.rollerClickUseData(event, this)" data-packed-dice=${pack(toPack)}>${toDisplay}</span>`;
+		return `<span class='roller render-roller' title="${name ? `${name.escapeQuotes()}` : ""}" onmousedown="event.preventDefault()" onclick="Renderer.dice.pRollerClickUseData(event, this)" data-packed-dice=${pack(toPack)}>${toDisplay}</span>`;
 	} else return toDisplay;
 };
 
-Renderer.getAbilityData = function (abObj) {
-	const mainAbs = [];
-	const asCollection = [];
-	const areNegative = [];
-	const toConvertToText = [];
-	const toConvertToShortText = [];
-	if (abObj != null) {
-		handleAllAbilities(abObj);
-		handleAbilitiesChoose();
-		return new Renderer._AbilityData(toConvertToText.join("; "), toConvertToShortText.join("; "), asCollection, areNegative);
-	}
-	return new Renderer._AbilityData("", "", [], []);
+Renderer.getAbilityData = function (abArr) {
+	function doRenderOuter (abObj) {
+		const mainAbs = [];
+		const asCollection = [];
+		const areNegative = [];
+		const toConvertToText = [];
+		const toConvertToShortText = [];
 
-	function handleAllAbilities (abObj, targetList) {
-		MiscUtil.copy(Parser.ABIL_ABVS)
-			.sort((a, b) => SortUtil.ascSort(abObj[b] || 0, abObj[a] || 0))
-			.forEach(shortLabel => handleAbility(abObj, shortLabel, targetList));
-	}
-
-	function handleAbility (abObj, shortLabel, optToConvertToTextStorage) {
-		if (abObj[shortLabel] != null) {
-			const isNegMod = abObj[shortLabel] < 0;
-			const toAdd = `${shortLabel.uppercaseFirst()} ${(isNegMod ? "" : "+")}${abObj[shortLabel]}`;
-
-			if (optToConvertToTextStorage) {
-				optToConvertToTextStorage.push(toAdd);
-			} else {
-				toConvertToText.push(toAdd);
-				toConvertToShortText.push(toAdd);
-			}
-
-			mainAbs.push(shortLabel.uppercaseFirst());
-			asCollection.push(shortLabel);
-			if (isNegMod) areNegative.push(shortLabel);
+		if (abObj != null) {
+			handleAllAbilities(abObj);
+			handleAbilitiesChoose();
+			return new Renderer._AbilityData(toConvertToText.join("; "), toConvertToShortText.join("; "), asCollection, areNegative);
 		}
-	}
 
-	function handleAbilitiesChoose () {
-		if (abObj.choose != null) {
-			for (let i = 0; i < abObj.choose.length; ++i) {
-				const item = abObj.choose[i];
+		return new Renderer._AbilityData("", "", [], []);
+
+		function handleAllAbilities (abObj, targetList) {
+			MiscUtil.copy(Parser.ABIL_ABVS)
+				.sort((a, b) => SortUtil.ascSort(abObj[b] || 0, abObj[a] || 0))
+				.forEach(shortLabel => handleAbility(abObj, shortLabel, targetList));
+		}
+
+		function handleAbility (abObj, shortLabel, optToConvertToTextStorage) {
+			if (abObj[shortLabel] != null) {
+				const isNegMod = abObj[shortLabel] < 0;
+				const toAdd = `${shortLabel.uppercaseFirst()} ${(isNegMod ? "" : "+")}${abObj[shortLabel]}`;
+
+				if (optToConvertToTextStorage) {
+					optToConvertToTextStorage.push(toAdd);
+				} else {
+					toConvertToText.push(toAdd);
+					toConvertToShortText.push(toAdd);
+				}
+
+				mainAbs.push(shortLabel.uppercaseFirst());
+				asCollection.push(shortLabel);
+				if (isNegMod) areNegative.push(shortLabel);
+			}
+		}
+
+		function handleAbilitiesChoose () {
+			if (abObj.choose != null) {
+				const ch = abObj.choose;
 				let outStack = "";
-				if (item.predefined != null) {
-					for (let j = 0; j < item.predefined.length; ++j) {
-						const subAbs = [];
-						handleAllAbilities(item.predefined[j], subAbs);
-						outStack += subAbs.join(", ") + (j === item.predefined.length - 1 ? "" : " or ");
-					}
-				} else if (item.weighted) {
-					const w = item.weighted;
+				if (ch.weighted) {
+					const w = ch.weighted;
 					const areIncreaseShort = [];
 					const areIncrease = w.weights.filter(it => it >= 0).sort(SortUtil.ascSort).reverse().map(it => {
 						areIncreaseShort.push(`+${it}`);
@@ -1746,60 +1756,71 @@ Renderer.getAbilityData = function (abObj) {
 						: `From ${froms.joinConjunct(", ", " and ")} choose `;
 					toConvertToText.push(`${startText}${areIncrease.concat(areReduce).joinConjunct(", ", " and ")}`);
 					toConvertToShortText.push(`${froms.length === 6 ? "Any combination " : ""}${areIncreaseShort.concat(areReduceShort).join("/")}${froms.length === 6 ? "" : ` from ${froms.join("/")}`}`);
-					continue;
 				} else {
-					const allAbilities = item.from.length === 6;
-					const allAbilitiesWithParent = isAllAbilitiesWithParent(item);
-					let amount = item.amount === undefined ? 1 : item.amount;
+					const allAbilities = ch.from.length === 6;
+					const allAbilitiesWithParent = isAllAbilitiesWithParent(ch);
+					let amount = ch.amount === undefined ? 1 : ch.amount;
 					amount = (amount < 0 ? "" : "+") + amount;
 					if (allAbilities) {
 						outStack += "any ";
 					} else if (allAbilitiesWithParent) {
 						outStack += "any other ";
 					}
-					if (item.count != null && item.count > 1) {
-						outStack += Parser.numberToText(item.count) + " ";
+					if (ch.count != null && ch.count > 1) {
+						outStack += Parser.numberToText(ch.count) + " ";
 					}
 					if (allAbilities || allAbilitiesWithParent) {
-						outStack += `${item.count > 1 ? "unique " : ""}${amount}`;
+						outStack += `${ch.count > 1 ? "unique " : ""}${amount}`;
 					} else {
-						for (let j = 0; j < item.from.length; ++j) {
+						for (let j = 0; j < ch.from.length; ++j) {
 							let suffix = "";
-							if (item.from.length > 1) {
-								if (j === item.from.length - 2) {
+							if (ch.from.length > 1) {
+								if (j === ch.from.length - 2) {
 									suffix = " or ";
-								} else if (j < item.from.length - 2) {
+								} else if (j < ch.from.length - 2) {
 									suffix = ", ";
 								}
 							}
 							let thsAmount = " " + amount;
-							if (item.from.length > 1) {
-								if (j !== item.from.length - 1) {
+							if (ch.from.length > 1) {
+								if (j !== ch.from.length - 1) {
 									thsAmount = "";
 								}
 							}
-							outStack += item.from[j].uppercaseFirst() + thsAmount + suffix;
+							outStack += ch.from[j].uppercaseFirst() + thsAmount + suffix;
 						}
 					}
 				}
-				toConvertToText.push("Choose " + outStack);
-				toConvertToShortText.push(outStack.uppercaseFirst());
+
+				if (outStack.trim()) {
+					toConvertToText.push("Choose " + outStack);
+					toConvertToShortText.push(outStack.uppercaseFirst());
+				}
 			}
+		}
+
+		function isAllAbilitiesWithParent (chooseAbs) {
+			const tempAbilities = [];
+			for (let i = 0; i < mainAbs.length; ++i) {
+				tempAbilities.push(mainAbs[i].toLowerCase());
+			}
+			for (let i = 0; i < chooseAbs.from.length; ++i) {
+				const ab = chooseAbs.from[i].toLowerCase();
+				if (!tempAbilities.includes(ab)) tempAbilities.push(ab);
+				if (!asCollection.includes(ab.toLowerCase)) asCollection.push(ab.toLowerCase());
+			}
+			return tempAbilities.length === 6;
 		}
 	}
 
-	function isAllAbilitiesWithParent (chooseAbs) {
-		const tempAbilities = [];
-		for (let i = 0; i < mainAbs.length; ++i) {
-			tempAbilities.push(mainAbs[i].toLowerCase());
-		}
-		for (let i = 0; i < chooseAbs.from.length; ++i) {
-			const ab = chooseAbs.from[i].toLowerCase();
-			if (!tempAbilities.includes(ab)) tempAbilities.push(ab);
-			if (!asCollection.includes(ab.toLowerCase)) asCollection.push(ab.toLowerCase());
-		}
-		return tempAbilities.length === 6;
-	}
+	const outerStack = (abArr || [null]).map(it => doRenderOuter(it));
+	if (outerStack.length <= 1) return outerStack[0];
+	return new Renderer._AbilityData(
+		`Choose one of: ${outerStack.map((it, i) => `(${Parser.ALPHABET[i].toLowerCase()}) ${it.asText}`).join(" ")}`,
+		`One from: ${outerStack.map((it, i) => `(${Parser.ALPHABET[i].toLowerCase()}) ${it.asTextShort}`).join(" ")}`,
+		[...new Set(outerStack.map(it => it.asCollection).flat())],
+		[...new Set(outerStack.map(it => it.areNegative).flat())]
+	);
 };
 
 Renderer._AbilityData = function (asText, asTextShort, asCollection, areNegative) {
@@ -1966,7 +1987,10 @@ Renderer.utils = {
 		assignPropsIfExist(entry.fluff, "name", "type", "entries", "images");
 
 		if (entry.fluff[mappedProp]) {
-			const fromList = (BrewUtil.homebrew[prop] || []).find(it => it.name === entry.fluff[mappedProp].name && it.source === entry.fluff[mappedProp].source);
+			const fromList = (BrewUtil.homebrew[prop] || []).find(it =>
+				it.name === entry.fluff[mappedProp].name
+				&& it.source === entry.fluff[mappedProp].source
+			);
 			if (fromList) {
 				assignPropsIfExist(fromList, "name", "type", "entries", "images");
 			}
@@ -1997,7 +2021,7 @@ Renderer.utils = {
 	 * @param fluffUrl Fluff data URL
 	 * @param fnCheckSourceInIndex Function which returns true if the record's source has a fluff data file
 	 */
-	buildFluffTab (isImageTab, $content, record, fnFluffBuilder, fluffUrl, fnCheckSourceInIndex) {
+	async pBuildFluffTab (isImageTab, $content, record, fnFluffBuilder, fluffUrl, fnCheckSourceInIndex) {
 		const renderer = Renderer.get();
 
 		$content.append(Renderer.utils.getBorderTr());
@@ -2035,7 +2059,10 @@ Renderer.utils = {
 
 		if ((fnCheckSourceInIndex && fnCheckSourceInIndex(record.source)) || record.fluff) {
 			if (record.fluff) renderFluff();
-			else DataUtil.loadJSON(fluffUrl).then(renderFluff);
+			else {
+				const data = await DataUtil.loadJSON(fluffUrl);
+				renderFluff(data);
+			}
 		} else {
 			$td.empty();
 			if (isImageTab) $td.append(HTML_NO_IMAGES);
@@ -2135,44 +2162,42 @@ Renderer.feat = {
 	},
 
 	mergeAbilityIncrease: function (feat) {
-		const entries = feat.entries;
-		const abilityObj = feat.ability;
-		if (!abilityObj || feat._hasMergedAbility) return;
+		if (!feat.ability || feat._hasMergedAbility) return;
 		feat._hasMergedAbility = true;
-		const targetList = entries.find(e => e.type === "list");
-		if (targetList) targetList.items.unshift(abilityObjToListItem());
-		else {
+		const targetList = feat.entries.find(e => e.type === "list");
+		if (targetList) {
+			feat.ability.forEach(abilObj => targetList.items.unshift(abilityObjToListItem(abilObj)));
+		} else {
 			// this should never happen, but display sane output anyway, and throw an out-of-order exception
-			entries.unshift(abilityObjToListItem());
+			feat.ability.forEach(abilObj => feat.entries.unshift(abilityObjToListItem(abilObj)));
+
 			setTimeout(() => {
 				throw new Error(`Could not find object of type "list" in "entries" for feat "${feat.name}" from source "${feat.source}" when merging ability scores! Reformat the feat to include a "list"-type entry.`);
 			}, 1);
 		}
 
-		function abilityObjToListItem () {
+		function abilityObjToListItem (abilityObj) {
 			const TO_MAX_OF_TWENTY = ", to a maximum of 20.";
 			const abbArr = [];
 			if (!abilityObj.choose) {
 				Object.keys(abilityObj).forEach(ab => abbArr.push(`Increase your ${Parser.attAbvToFull(ab)} score by ${abilityObj[ab]}${TO_MAX_OF_TWENTY}`));
 			} else {
 				const choose = abilityObj.choose;
-				for (let i = 0; i < choose.length; ++i) {
-					if (choose[i].from.length === 6) {
-						if (choose[i].textreference) { // only used in "Resilient"
-							abbArr.push(`Increase the chosen ability score by ${choose[i].amount}${TO_MAX_OF_TWENTY}`);
-						} else {
-							abbArr.push(`Increase one ability score of your choice by ${choose[i].amount}${TO_MAX_OF_TWENTY}`);
-						}
+				if (choose.from.length === 6) {
+					if (choose.textreference) { // only used in "Resilient"
+						abbArr.push(`Increase the chosen ability score by ${choose.amount}${TO_MAX_OF_TWENTY}`);
 					} else {
-						const from = choose[i].from;
-						const amount = choose[i].amount;
-						const abbChoices = [];
-						for (let j = 0; j < from.length; ++j) {
-							abbChoices.push(Parser.attAbvToFull(from[j]));
-						}
-						const abbChoicesText = abbChoices.joinConjunct(", ", " or ");
-						abbArr.push(`Increase your ${abbChoicesText} by ${amount}${TO_MAX_OF_TWENTY}`);
+						abbArr.push(`Increase one ability score of your choice by ${choose.amount}${TO_MAX_OF_TWENTY}`);
 					}
+				} else {
+					const from = choose.from;
+					const amount = choose.amount;
+					const abbChoices = [];
+					for (let j = 0; j < from.length; ++j) {
+						abbChoices.push(Parser.attAbvToFull(from[j]));
+					}
+					const abbChoicesText = abbChoices.joinConjunct(", ", " or ");
+					abbArr.push(`Increase your ${abbChoicesText} by ${amount}${TO_MAX_OF_TWENTY}`);
 				}
 			}
 			return abbArr.join(" ");
@@ -2244,61 +2269,6 @@ Renderer.spell = {
 		}
 		renderStack.push(`<div><span class="bold">Classes: </span>${Parser.spMainClassesToFull(spell.classes)}</div>`);
 		renderStack.push(`</td></tr>`);
-
-		return renderStack.join("");
-	},
-
-	getRenderedString: (spell, renderer, subclassLookup) => {
-		const renderStack = [];
-
-		renderStack.push(`
-			${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getNameTr(spell)}
-			<tr><td class="levelschoolritual" colspan="6"><span>${Parser.spLevelSchoolMetaToFull(spell.level, spell.school, spell.meta, spell.subschools)}</span></td></tr>
-			<tr><td class="castingtime" colspan="6"><span class="bold">Casting Time: </span>${Parser.spTimeListToFull(spell.time)}</td></tr>
-			<tr><td class="range" colspan="6"><span class="bold">Range: </span>${Parser.spRangeToFull(spell.range)}</td></tr>
-			<tr><td class="components" colspan="6"><span class="bold">Components: </span>${Parser.spComponentsToFull(spell)}</td></tr>
-			<tr><td class="range" colspan="6"><span class="bold">Duration: </span>${Parser.spDurationToFull(spell.duration)}</td></tr>
-			${Renderer.utils.getDividerTr()}
-		`);
-
-		const entryList = {type: "entries", entries: spell.entries};
-		renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
-		renderer.recursiveRender(entryList, renderStack, {depth: 1});
-		if (spell.entriesHigherLevel) {
-			const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
-			renderer.recursiveRender(higherLevelsEntryList, renderStack, {depth: 2});
-		}
-		renderStack.push(`</td></tr>`);
-
-		renderStack.push(`<tr class="text"><td class="classes" colspan="6"><span class="bold">Classes: </span>${Parser.spMainClassesToFull(spell.classes)}</td></tr>`);
-
-		if (spell.classes.fromSubclass) {
-			const currentAndLegacy = Parser.spSubclassesToCurrentAndLegacyFull(spell.classes, subclassLookup);
-			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Subclasses: </span>${currentAndLegacy[0]}</td></tr>`);
-			if (currentAndLegacy[1]) {
-				renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted"><span class="bold">Subclasses (legacy): </span>${currentAndLegacy[1]}</section></td></tr>`);
-			}
-		}
-
-		if (spell.races) {
-			renderStack.push(`<tr class="text"><td class="classes" colspan="6"><span class="bold">Races: </span>${spell.races.map(r => renderer.render(`{@race ${r.name}|${r.source}}`)).join(", ")}</td></tr>`);
-		}
-
-		if (spell.backgrounds) {
-			renderStack.push(`<tr class="text"><td class="classes" colspan="6"><span class="bold">Backgrounds: </span>${spell.backgrounds.sort((a, b) => SortUtil.ascSortLower(a.name, b.name)).map(r => renderer.render(`{@background ${r.name}|${r.source}}`)).join(", ")}</td></tr>`);
-		}
-
-		if (spell._scrollNote) {
-			renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
-			renderer.recursiveRender(`{@italic Note: Both the {@class ${STR_FIGHTER} (${STR_ELD_KNIGHT})} and the {@class ${STR_ROGUE} (${STR_ARC_TCKER})} spell lists include all {@class ${STR_WIZARD}} spells. Spells of 5th level or higher may be cast with the aid of a spell scroll or similar.}`, renderStack, {depth: 2});
-			renderStack.push(`</section></td></tr>`);
-		}
-
-		renderStack.push(`
-			${Renderer.utils.getPageTr(spell)}
-			${Renderer.utils.getBorderTr()}
-		`);
 
 		return renderStack.join("");
 	}
@@ -2524,9 +2494,11 @@ Renderer.race = {
 					delete s.name;
 				}
 				if (s.ability) {
-					if (s.ability.overwrite || !cpy.ability) cpy.ability = {};
-					cpy.ability = Object.assign(cpy.ability, s.ability);
-					delete cpy.ability.overwrite;
+					// If the base race doesn't have any ability scores, make a set of empty records
+					if ((s.overwrite && s.overwrite.ability) || !cpy.ability) cpy.ability = s.ability.map(() => ({}));
+
+					if (cpy.ability.length !== s.ability.length) throw new Error(`Race and subrace ability array lengths did not match!`);
+					s.ability.forEach((obj, i) => Object.assign(cpy.ability[i], obj));
 					delete s.ability;
 				}
 				if (s.entries) {
@@ -2542,6 +2514,7 @@ Renderer.race = {
 					delete s.entries;
 				}
 				// TODO needs a mechanism to allow subraces to override unwanted tags
+				//   -> use the new "overwrite" mechanism below
 				if (s.traitTags) {
 					cpy.traitTags = (cpy.traitTags || []).concat(s.traitTags);
 					delete s.traitTags;
@@ -2549,6 +2522,26 @@ Renderer.race = {
 				if (s.languageTags) {
 					cpy.languageTags = (cpy.languageTags || []).concat(s.languageTags);
 					delete s.languageTags;
+				}
+
+				// TODO make a generalised merge system? Probably have one of those lying around somewhere [bestiary schema?]
+				if (s.skillProficiencies) {
+					// Overwrite if possible
+					if (!cpy.skillProficiencies || (s.overwrite && s.overwrite["skillProficiencies"])) cpy.skillProficiencies = s.skillProficiencies;
+					else {
+						if (!s.skillProficiencies.length || !cpy.skillProficiencies.length) throw new Error(`No items!`);
+						if (s.skillProficiencies.length > 1 || cpy.skillProficiencies.length > 1) throw new Error(`Subrace merging does not handle choices!`); // Implement if required
+
+						// Otherwise, merge
+						if (s.skillProficiencies.choose) {
+							if (cpy.skillProficiencies.choose) throw new Error(`Subrace choose merging is not supported!!`); // Implement if required
+							cpy.skillProficiencies.choose = s.skillProficiencies.choose;
+							delete s.skillProficiencies.choose;
+						}
+						Object.assign(cpy.skillProficiencies[0], s.skillProficiencies[0]);
+					}
+
+					delete s.skillProficiencies;
 				}
 
 				// overwrite everything else
@@ -2865,7 +2858,7 @@ Renderer.monster = {
 		// fetch and apply any external traits -- append them to existing copy mods where available
 		let racials = null;
 		if (copyMeta._trait) {
-			const traitData = await DataUtil.loadJSON("data/bestiary/traits.json");
+			const traitData = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/traits.json`);
 			racials = traitData.trait.find(t => t.name.toLowerCase() === copyMeta._trait.name.toLowerCase() && t.source.toLowerCase() === copyMeta._trait.source.toLowerCase());
 			if (!racials) throw new Error(`Could not find traits to apply with name "${copyMeta._trait.name}" and source "${copyMeta._trait.source}"`);
 			racials = MiscUtil.copy(racials);
@@ -3712,7 +3705,34 @@ Renderer.item = {
 		return item.reqAttune ? `${typeRarity} ${item.reqAttune}` : typeRarity
 	},
 
-	getCompactRenderedString: function (item) {
+	getRenderedEntries (item) {
+		const renderer = Renderer.get();
+
+		const renderStack = [];
+		if (item.entries && item.entries.length) {
+			const entryList = {type: "entries", entries: item.entries};
+			renderer.recursiveRender(entryList, renderStack, {depth: 1});
+		}
+
+		if (item.additionalEntries) {
+			const additionEntriesList = {type: "entries", entries: item.additionalEntries};
+			renderer.recursiveRender(additionEntriesList, renderStack, {depth: 1});
+		}
+
+		if (item.lootTables) {
+			renderStack.push(`<div><span class="bold">Found On: </span>${item.lootTables.sort(SortUtil.ascSortLower).map(tbl => renderer.render(`{@table ${tbl}}`)).join(", ")}</div>`);
+		}
+
+		const renderedText = renderStack.join("")
+			.split(item.name.toLowerCase())
+			.join(`<i>${item.name.toLowerCase()}</i>`)
+			.split(item.name.toLowerCase().toTitleCase())
+			.join(`<i>${item.name.toLowerCase().toTitleCase()}</i>`);
+
+		return renderedText.trim();
+	},
+
+	getCompactRenderedString (item) {
 		const renderer = Renderer.get();
 
 		const renderStack = [];
@@ -3796,11 +3816,11 @@ Renderer.item = {
 	},
 	/**
 	 * Runs callback with itemList as argument
-	 * @param opts.fnCallback Run with args: allItems.
-	 * @param opts Options object.
-	 * @param opts.urls Overrides for default URLs.
-	 * @param opts.isAddGroups Whether item groups should be included.
-	 * @param opts.isBlacklistVariants Whether the blacklist should be respected when applying magic variants.
+	 * @param [opts] Options object.
+	 * @param [opts.fnCallback] Run with args: allItems.
+	 * @param [opts.urls] Overrides for default URLs.
+	 * @param [opts.isAddGroups] Whether item groups should be included.
+	 * @param [opts.isBlacklistVariants] Whether the blacklist should be respected when applying magic variants.
 	 */
 	async pBuildList (opts) {
 		opts = opts || {};
@@ -4588,16 +4608,7 @@ Renderer.hover = {
 		return Renderer.hover.linkCache[page] && Renderer.hover.linkCache[page][source] && Renderer.hover.linkCache[page][source][hash];
 	},
 
-	pCacheAndGet (page, source, hash) {
-		return new Promise(resolve => {
-			Renderer.hover._doFillThenCall(page, source, hash, () => {
-				const it = Renderer.hover._getFromCache(page, source, hash);
-				resolve(it);
-			});
-		})
-	},
-
-	_doFillThenCall: (page, source, hash, callbackFn) => {
+	async pCacheAndGet (page, source, hash) {
 		/**
 		 * @param data the data
 		 * @param listProp list property in the data
@@ -4611,64 +4622,61 @@ Renderer.hover = {
 			});
 		}
 
-		function loadMultiSource (page, baseUrl, listProp) {
+		async function pLoadMultiSource (page, baseUrl, listProp) {
 			if (!Renderer.hover._isCached(page, source, hash)) {
-				BrewUtil.pAddBrewData()
-					.then((data) => {
-						if (!data[listProp]) return;
-						populate(data, listProp);
-					})
-					.catch(BrewUtil.pPurgeBrew)
-					.then(() => DataUtil.loadJSON(`${Renderer.get().baseUrl}${baseUrl}index.json`))
-					.then((data) => {
-						const officialSources = {};
-						Object.entries(data).forEach(([k, v]) => officialSources[k.toLowerCase()] = v);
-						const officialSource = officialSources[source.toLowerCase()];
-						if (officialSource) {
-							DataUtil.loadJSON(`${Renderer.get().baseUrl}${baseUrl}${officialSource}`)
-								.then((data) => {
-									populate(data, listProp);
-									callbackFn();
-								});
-						} else callbackFn(); // source to load is 3rd party, which was already handled
-					});
-			} else callbackFn();
+				try {
+					const brewData = await BrewUtil.pAddBrewData();
+					if (brewData[listProp]) populate(brewData, listProp);
+				} catch (e) {
+					await BrewUtil.pPurgeBrew(e);
+				}
+				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${baseUrl}index.json`);
+				const officialSources = {};
+				Object.entries(index).forEach(([k, v]) => officialSources[k.toLowerCase()] = v);
+
+				const officialSource = officialSources[source.toLowerCase()];
+				if (officialSource) {
+					const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${baseUrl}${officialSource}`);
+					populate(data, listProp);
+				}
+				// (else source to load is 3rd party, which was already handled)
+			}
+			return Renderer.hover._getFromCache(page, source, hash);
 		}
 
-		function _pLoadSingleBrew (listProps, itemModifier) {
-			return new Promise(resolve => {
-				BrewUtil.pAddBrewData()
-					.then((data) => {
-						listProps = listProps instanceof Array ? listProps : [listProps];
-						listProps.forEach(lp => {
-							if (data[lp]) populate(data, lp, itemModifier);
-						});
-						resolve();
-					})
-					.catch(BrewUtil.pPurgeBrew);
-			});
+		async function _pLoadSingleBrew (listProps, itemModifier) {
+			try {
+				const brewData = await BrewUtil.pAddBrewData();
+				listProps = listProps instanceof Array ? listProps : [listProps];
+				listProps.forEach(lp => {
+					if (brewData[lp]) populate(brewData, lp, itemModifier);
+				});
+			} catch (e) {
+				await BrewUtil.pPurgeBrew(e);
+			}
 		}
 
 		function _handleSingleData (data, listProps, itemModifier) {
 			if (listProps instanceof Array) listProps.forEach(p => populate(data, p, itemModifier));
 			else populate(data, listProps, itemModifier);
-			callbackFn();
 		}
 
-		function loadSimple (page, jsonFile, listProps, itemModifier) {
+		async function pLoadSimple (page, jsonFile, listProps, itemModifier) {
 			if (!Renderer.hover._isCached(page, source, hash)) {
-				_pLoadSingleBrew(listProps, itemModifier)
-					.then(() => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/${jsonFile}`))
-					.then((data) => _handleSingleData(data, listProps, itemModifier));
-			} else callbackFn();
+				await _pLoadSingleBrew(listProps, itemModifier);
+				const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/${jsonFile}`);
+				_handleSingleData(data, listProps, itemModifier);
+			}
+			return Renderer.hover._getFromCache(page, source, hash);
 		}
 
-		function loadCustom (page, jsonFile, listProps, itemModifier, loader) {
+		async function pLoadCustom (page, jsonFile, listProps, itemModifier, loader) {
 			if (!Renderer.hover._isCached(page, source, hash)) {
-				_pLoadSingleBrew(listProps, itemModifier)
-					.then(() => DataUtil[loader].loadJSON(Renderer.get().baseUrl))
-					.then((data) => _handleSingleData(data, listProps, itemModifier));
-			} else callbackFn();
+				await _pLoadSingleBrew(listProps, itemModifier);
+				const data = await DataUtil[loader].loadJSON(Renderer.get().baseUrl);
+				_handleSingleData(data, listProps, itemModifier)
+			}
+			return Renderer.hover._getFromCache(page, source, hash);
 		}
 
 		function _classes_indexFeatures (cls) {
@@ -4678,101 +4686,83 @@ Renderer.hover = {
 
 		switch (page) {
 			case "generic":
-			case "hover": callbackFn(); break;
+			case "hover": return null;
 			case UrlUtil.PG_CLASSES: {
 				if (!Renderer.hover._isCached(page, source, hash)) {
-					(async () => {
-						try {
-							const brewData = await BrewUtil.pAddBrewData();
-							(brewData.class || []).forEach(cc => _classes_indexFeatures(cc));
-						} catch (e) { BrewUtil.pPurgeBrew(e); }
-						const data = await DataUtil.class.loadJSON();
-						data.class.forEach(cc => _classes_indexFeatures(cc));
-						callbackFn();
-					})();
-				} else callbackFn();
-				break;
+					try {
+						const brewData = await BrewUtil.pAddBrewData();
+						(brewData.class || []).forEach(cc => _classes_indexFeatures(cc));
+					} catch (e) {
+						await BrewUtil.pPurgeBrew(e);
+					}
+					const data = await DataUtil.class.loadJSON();
+					data.class.forEach(cc => _classes_indexFeatures(cc));
+				}
+				return Renderer.hover._getFromCache(page, source, hash);
 			}
-			case UrlUtil.PG_SPELLS: loadMultiSource(page, `data/spells/`, "spell"); break;
-			case UrlUtil.PG_BESTIARY: loadMultiSource(page, `data/bestiary/`, "monster"); break;
+			case UrlUtil.PG_SPELLS: return pLoadMultiSource(page, `data/spells/`, "spell");
+			case UrlUtil.PG_BESTIARY: return pLoadMultiSource(page, `data/bestiary/`, "monster");
 			case UrlUtil.PG_ITEMS: {
 				if (!Renderer.hover._isCached(page, source, hash)) {
-					Renderer.item.pBuildList({
-						fnCallback: (allItems) => {
-							// populate brew once the main item properties have been loaded
-							BrewUtil.pAddBrewData()
-								.then(async (data) => {
-									const itemList = await Renderer.item.getItemsFromHomebrew(data);
-									if (!itemList.length) return;
-									itemList.forEach(it => {
-										const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
-										Renderer.hover._addToCache(page, it.source, itHash, it);
-										const revName = Renderer.item.modifierPostToPre(it);
-										if (revName) Renderer.hover._addToCache(page, it.source, UrlUtil.URL_TO_HASH_BUILDER[page](revName), it);
-									});
-								})
-								.catch(BrewUtil.pPurgeBrew)
-								.then(() => {
-									allItems.forEach(item => {
-										const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
-										Renderer.hover._addToCache(page, item.source, itemHash, item);
-										const revName = Renderer.item.modifierPostToPre(item);
-										if (revName) Renderer.hover._addToCache(page, item.source, UrlUtil.URL_TO_HASH_BUILDER[page](revName), item);
-									});
-									callbackFn();
-								});
-						},
+					const allItems = await Renderer.item.pBuildList({
 						isAddGroups: true,
 						isBlacklistVariants: true
 					});
-				} else callbackFn();
-				break;
+					// populate brew once the main item properties have been loaded
+					try {
+						const brewData = await BrewUtil.pAddBrewData();
+						const itemList = await Renderer.item.getItemsFromHomebrew(brewData);
+						itemList.forEach(it => {
+							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+							Renderer.hover._addToCache(page, it.source, itHash, it);
+							const revName = Renderer.item.modifierPostToPre(it);
+							if (revName) Renderer.hover._addToCache(page, it.source, UrlUtil.URL_TO_HASH_BUILDER[page](revName), it);
+						});
+					} catch (e) {
+						await BrewUtil.pPurgeBrew(e);
+					}
+
+					allItems.forEach(item => {
+						const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
+						Renderer.hover._addToCache(page, item.source, itemHash, item);
+						const revName = Renderer.item.modifierPostToPre(item);
+						if (revName) Renderer.hover._addToCache(page, item.source, UrlUtil.URL_TO_HASH_BUILDER[page](revName), item);
+					});
+				}
+				return Renderer.hover._getFromCache(page, source, hash);
 			}
-			case UrlUtil.PG_BACKGROUNDS: loadSimple(page, "backgrounds.json", "background"); break;
-			case UrlUtil.PG_FEATS: loadSimple(page, "feats.json", "feat"); break;
-			case UrlUtil.PG_OPT_FEATURES: loadSimple(page, "optionalfeatures.json", "optionalfeature"); break;
-			case UrlUtil.PG_PSIONICS: loadSimple(page, "psionics.json", "psionic"); break;
-			case UrlUtil.PG_REWARDS: loadSimple(page, "rewards.json", "reward"); break;
+			case UrlUtil.PG_BACKGROUNDS: return pLoadSimple(page, "backgrounds.json", "background");
+			case UrlUtil.PG_FEATS: return pLoadSimple(page, "feats.json", "feat");
+			case UrlUtil.PG_OPT_FEATURES: return pLoadSimple(page, "optionalfeatures.json", "optionalfeature");
+			case UrlUtil.PG_PSIONICS: return pLoadSimple(page, "psionics.json", "psionic");
+			case UrlUtil.PG_REWARDS: return pLoadSimple(page, "rewards.json", "reward");
 			case UrlUtil.PG_RACES: {
 				if (!Renderer.hover._isCached(page, source, hash)) {
-					BrewUtil.pAddBrewData()
-						.then((data) => {
-							if (!data.race) return;
-							populate(data, "race");
-						})
-						.catch(BrewUtil.pPurgeBrew)
-						.then(() => {
-							DataUtil.loadJSON(`${Renderer.get().baseUrl}data/races.json`).then((data) => {
-								const merged = Renderer.race.mergeSubraces(data.race);
-								merged.forEach(race => {
-									const raceHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](race);
-									Renderer.hover._addToCache(page, race.source, raceHash, race)
-								});
-								callbackFn();
-							});
-						});
-				} else {
-					callbackFn();
+					try {
+						const brewData = await BrewUtil.pAddBrewData();
+						if (!brewData.race) return;
+						populate(brewData, "race");
+					} catch (e) {
+						await BrewUtil.pPurgeBrew(e);
+					}
+
+					const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/races.json`);
+					const merged = Renderer.race.mergeSubraces(data.race);
+					merged.forEach(race => {
+						const raceHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](race);
+						Renderer.hover._addToCache(page, race.source, raceHash, race)
+					});
 				}
-				break;
+				return Renderer.hover._getFromCache(page, source, hash);
 			}
-			case UrlUtil.PG_DEITIES: loadCustom(page, "deities.json", "deity", null, "deity"); break;
-			case UrlUtil.PG_OBJECTS: loadSimple(page, "objects.json", "object"); break;
-			case UrlUtil.PG_TRAPS_HAZARDS: loadSimple(page, "trapshazards.json", ["trap", "hazard"]); break;
-			case UrlUtil.PG_VARIATNRULES: loadSimple(page, "variantrules.json", "variantrule"); break;
-			case UrlUtil.PG_CULTS_BOONS: {
-				loadSimple(page, "cultsboons.json", ["cult", "boon"], (listProp, item) => item._type = listProp === "cult" ? "c" : "b");
-				break;
-			}
-			case UrlUtil.PG_CONDITIONS_DISEASES: {
-				loadSimple(page, "conditionsdiseases.json", ["condition", "disease"], (listProp, item) => item._type = listProp === "condition" ? "c" : "d");
-				break;
-			}
-			case UrlUtil.PG_TABLES: {
-				loadSimple(page, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item._type = listProp === "table" ? "t" : "g");
-				break;
-			}
-			case UrlUtil.PG_VEHICLES: loadSimple(page, "vehicles.json", "vehicle"); break;
+			case UrlUtil.PG_DEITIES: return pLoadCustom(page, "deities.json", "deity", null, "deity");
+			case UrlUtil.PG_OBJECTS: return pLoadSimple(page, "objects.json", "object");
+			case UrlUtil.PG_TRAPS_HAZARDS: return pLoadSimple(page, "trapshazards.json", ["trap", "hazard"]);
+			case UrlUtil.PG_VARIATNRULES: return pLoadSimple(page, "variantrules.json", "variantrule");
+			case UrlUtil.PG_CULTS_BOONS: return pLoadSimple(page, "cultsboons.json", ["cult", "boon"], (listProp, item) => item._type = listProp === "cult" ? "c" : "b");
+			case UrlUtil.PG_CONDITIONS_DISEASES: return pLoadSimple(page, "conditionsdiseases.json", ["condition", "disease"], (listProp, item) => item._type = listProp === "condition" ? "c" : "d");
+			case UrlUtil.PG_TABLES: return pLoadSimple(page, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item._type = listProp === "table" ? "t" : "g");
+			case UrlUtil.PG_VEHICLES: return pLoadSimple(page, "vehicles.json", "vehicle");
 			default: throw new Error(`No load function defined for page ${page}`);
 		}
 	},
@@ -4946,10 +4936,10 @@ Renderer.hover = {
 		const resizeId = `resize.${hoverId}`;
 
 		function isOverHoverTarget (evt, target) {
-			return EventUtil.getClientX(evt) >= target.left &&
-				EventUtil.getClientX(evt) <= target.left + target.width &&
-				EventUtil.getClientY(evt) >= target.top &&
-				EventUtil.getClientY(evt) <= target.top + target.height;
+			return EventUtil.getClientX(evt) >= target.left
+				&& EventUtil.getClientX(evt) <= target.left + target.width
+				&& EventUtil.getClientY(evt) >= target.top
+				&& EventUtil.getClientY(evt) <= target.top + target.height;
 		}
 
 		function handleNorthDrag (evt) {
@@ -5068,14 +5058,14 @@ Renderer.hover = {
 		const $brdTopRhs = $(`<div class="flex" style="margin-left: auto;"/>`).appendTo($brdrTop);
 
 		if (page && source && hash) {
-			const $btnGotoPage = $(`<span class="top-border-icon glyphicon glyphicon-new-window" style="margin-right: 2px;" title="Go to Page"></span>`)
+			const $btnGotoPage = $(`<span class="top-border-icon glyphicon glyphicon-modal-window" style="margin-right: 2px;" title="Go to Page"></span>`)
 				.click(() => window.location = `${page}#${hash}`)
 				.appendTo($brdTopRhs);
 		}
 
 		// TODO fix dice rollers?
 		// TODO fix hover links?
-		const $btnPopout = $(`<span class="top-border-icon glyphicon glyphicon-modal-window hvr__popout" style="margin-right: 2px;" title="Open as Popup Window"></span>`)
+		const $btnPopout = $(`<span class="top-border-icon glyphicon glyphicon-new-window hvr__popout" style="margin-right: 2px;" title="Open as Popup Window"></span>`)
 			.on("click", (evt) => {
 				evt.stopPropagation();
 				const h = $stats.height();
@@ -5086,7 +5076,7 @@ Renderer.hover = {
 				);
 				win.document.write(`
 					<!DOCTYPE html>
-					<html lang="en" class="${styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_NIGHT ? StyleSwitcher.NIGHT_CLASS : ""}"><head>
+					<html lang="en" class="${styleSwitcher && styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_NIGHT ? StyleSwitcher.NIGHT_CLASS : ""}"><head>
 						<meta name="viewport" content="width=device-width, initial-scale=1">
 						<title>${toRender._displayName || toRender.name}</title>
 						<link rel="stylesheet" href="css/bootstrap.css">
@@ -5357,7 +5347,7 @@ Renderer.hover = {
 			}
 		});
 
-		Renderer.hover._doFillThenCall(page, source, hash, Renderer.hover._makeWindow.bind(Renderer.hover));
+		Renderer.hover.pCacheAndGet(page, source, hash).then(Renderer.hover._makeWindow.bind(Renderer.hover));
 	},
 
 	_cleanWindows: () => {
@@ -5402,11 +5392,7 @@ Renderer.hover = {
 	doPopoutPreloaded ($btnPop, it, clientX) {
 		$btnPop.attr("data-hover-active", false);
 		Renderer.hover.mouseOverPreloaded({shiftKey: true, clientX: clientX}, $btnPop.get(0), it, UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it), true);
-	},
-
-	// helpers to get clientX/Y on mobile
-	_getClientX (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientX : evt.clientX; },
-	_getClientY (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientY : evt.clientY; }
+	}
 };
 
 Renderer.dice = {
@@ -5580,62 +5566,70 @@ Renderer.dice = {
 
 	_contextRollLabel: "rollChooser",
 	_contextPromptLabel: "rollPrompt",
-	rollerClickUseData (evt, ele) {
+	async pRollerClickUseData (evt, ele) {
 		const $ele = $(ele);
 		const rollData = $ele.data("packed-dice");
 		let name = $ele.attr("title") || null;
 		let shiftKey = evt.shiftKey;
 
-		const options = rollData.toRoll.split(";").map(it => it.trim()).filter(it => it);
-		(options.length > 1 ? new Promise(resolve => {
-			const cpy = MiscUtil.copy(rollData);
+		const options = rollData.toRoll.split(";").map(it => it.trim()).filter(Boolean);
 
-			ContextUtil.doInitContextMenu(Renderer.dice._contextRollLabel, (mostRecentEvt, _1, _2, _3, invokedOnId) => {
-				shiftKey = mostRecentEvt.shiftKey;
-				cpy.toRoll = options[invokedOnId];
-				resolve(cpy);
-			}, [{text: "Choose Roll", disabled: true}, null, ...options.map(it => `Roll ${it}`)]);
+		let chosenRollData;
+		if (options.length > 1) {
+			chosenRollData = await new Promise(resolve => {
+				const cpy = MiscUtil.copy(rollData);
 
-			ContextUtil.handleOpenContextMenu(evt, ele, Renderer.dice._contextRollLabel, (choseOption) => {
-				if (!choseOption) resolve();
+				ContextUtil.doInitContextMenu(Renderer.dice._contextRollLabel, (mostRecentEvt, _1, _2, _3, invokedOnId) => {
+					shiftKey = mostRecentEvt.shiftKey;
+					cpy.toRoll = options[invokedOnId];
+					resolve(cpy);
+				}, [{text: "Choose Roll", disabled: true}, null, ...options.map(it => `Roll ${it}`)]);
+
+				ContextUtil.handleOpenContextMenu(evt, ele, Renderer.dice._contextRollLabel, (choseOption) => {
+					if (!choseOption) resolve();
+				});
 			});
-		}) : Promise.resolve(rollData)).then(async chosenRollData => {
-			if (!chosenRollData) return;
+		} else chosenRollData = rollData;
 
-			const rePrompt = /#\$prompt_number:?([^$]*)\$#/g;
-			const results = [];
-			let m;
-			while ((m = rePrompt.exec(chosenRollData.toRoll))) {
-				const optionsRaw = m[1];
-				const opts = {};
-				if (optionsRaw) {
-					const spl = optionsRaw.split(",");
-					spl.map(it => it.trim()).forEach(part => {
-						const [k, v] = part.split("=").map(it => it.trim());
-						switch (k) {
-							case "min":
-							case "max":
-								opts[k] = Number(v); break;
-							default:
-								opts[k] = v; break;
-						}
-					});
-				}
+		if (!chosenRollData) return;
 
-				if (opts.min == null) opts.min = 0;
-				if (opts.max == null) opts.max = Renderer.dice.POS_INFINITE;
-				if (opts.default == null) opts.default = 0;
-
-				const input = await InputUiUtil.pGetUserNumber(opts);
-				if (input == null) return;
-				results.push(input);
+		const rePrompt = /#\$prompt_number:?([^$]*)\$#/g;
+		const results = [];
+		let m;
+		while ((m = rePrompt.exec(chosenRollData.toRoll))) {
+			const optionsRaw = m[1];
+			const opts = {};
+			if (optionsRaw) {
+				const spl = optionsRaw.split(",");
+				spl.map(it => it.trim()).forEach(part => {
+					const [k, v] = part.split("=").map(it => it.trim());
+					switch (k) {
+						case "min":
+						case "max":
+							opts[k] = Number(v); break;
+						default:
+							opts[k] = v; break;
+					}
+				});
 			}
 
-			const rollDataCpy = MiscUtil.copy(chosenRollData);
-			rePrompt.lastIndex = 0;
-			rollDataCpy.toRoll = rollDataCpy.toRoll.replace(rePrompt, () => results.shift());
+			if (opts.min == null) opts.min = 0;
+			if (opts.max == null) opts.max = Renderer.dice.POS_INFINITE;
+			if (opts.default == null) opts.default = 0;
 
-			(rollData.prompt ? new Promise(resolve => {
+			const input = await InputUiUtil.pGetUserNumber(opts);
+			if (input == null) return;
+			results.push(input);
+		}
+
+		const rollDataCpy = MiscUtil.copy(chosenRollData);
+		rePrompt.lastIndex = 0;
+		rollDataCpy.toRoll = rollDataCpy.toRoll.replace(rePrompt, () => results.shift());
+
+		// If there's a prompt, prompt the user to select the dice
+		let rollDataCpyToRoll;
+		if (rollData.prompt) {
+			rollDataCpyToRoll = await new Promise(resolve => {
 				const sortedKeys = Object.keys(rollDataCpy.prompt.options).sort(SortUtil.ascSortLower);
 
 				ContextUtil.doInitContextMenu(Renderer.dice._contextPromptLabel, (mostRecentEvt, _1, _2, _3, invokedOnId) => {
@@ -5657,12 +5651,11 @@ Renderer.dice = {
 				ContextUtil.handleOpenContextMenu(evt, ele, Renderer.dice._contextPromptLabel, (choseOption) => {
 					if (!choseOption) resolve();
 				});
-			}) : Promise.resolve(rollDataCpy)).then((rollDataCpy) => {
-				if (!rollDataCpy) return;
-
-				Renderer.dice.rollerClick({shiftKey}, ele, JSON.stringify(rollDataCpy), name);
 			});
-		});
+		} else rollDataCpyToRoll = rollDataCpy;
+
+		if (!rollDataCpyToRoll) return;
+		Renderer.dice.rollerClick({shiftKey}, ele, JSON.stringify(rollDataCpyToRoll), name);
 	},
 
 	__rerollNextInlineResult (ele) {
@@ -6154,7 +6147,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 				} else if (tkn === "l" || tkn === "h") {
 					opStack.push(tkn);
 				} else if (tkn === ",") {
-					while (opStack.peek() && opStack.peek() !== "(") {
+					while (opStack.last() && opStack.last() !== "(") {
 						handleOpPop();
 					}
 				} else if (OPS[tkn]) {
@@ -6543,14 +6536,14 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 					if (!fnStack.length) {
 						out = atomic;
 					} else {
-						let last = fnStack.peek();
+						let last = fnStack.last();
 						last.args.unshift(atomic);
 
 						while (fnStack.length && last.reqArgs === last.args.length) {
 							let cur = fnStack.pop();
 
-							if (fnStack.peek()) {
-								last = fnStack.peek();
+							if (fnStack.last()) {
+								last = fnStack.last();
 								last.args.unshift(cur);
 							}
 						}
@@ -6601,7 +6594,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 		return tree;
 	}
 };
-if (!IS_ROLL20 && typeof window !== "undefined") {
+if (!IS_VTT && typeof window !== "undefined") {
 	window.addEventListener("load", Renderer.dice.init);
 }
 

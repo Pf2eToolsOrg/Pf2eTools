@@ -21,6 +21,7 @@
 
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
+	<script type="text/javascript" src="js/browsercheck.js"></script>
 
 	<style>
 		body.dm-screen-locked .panel-control-bar,
@@ -426,6 +427,10 @@
 			width: 100%;
 			height: 100%;
 			background: #ffffff;
+			margin: 0;
+			padding: 0;
+			border: 0;
+			display: flex;
 		}
 
 		.panel-content-textarea {
@@ -1005,6 +1010,7 @@
 			font-size: 12px;
 			line-height: 1.5;
 			min-height: 21px;
+			user-select: none;
 		}
 
 		.dm-time__disp-calendar-day--active {
@@ -1013,7 +1019,7 @@
 
 		.dm-time__disp-day-entry {
 			position: absolute;
-			right: 1px;
+			right: 2px;
 			border-radius: 3px;
 			width: 9px;
 			height: 9px;
@@ -1028,16 +1034,50 @@
 		}
 
 		.dm-time__disp-day-entry--encounter {
-			top: 12px;
+			top: 10px;
 			color: #5cb85c;
 		}
 
-		.night-mode .dm-time__disp-day-entry--event {
+		.dm-time__disp-clock-entry {
+			width: 12px;
+			height: 12px;
+			text-align: center;
+			position: relative;
+			font-size: 20px;
+			top: -4px;
+			font-weight: bold;
+			cursor: pointer;
+			user-select: none;
+		}
+
+		.dm-time__disp-clock-entry--event {
+			color: #61adef;
+		}
+
+		.dm-time__disp-clock-entry--encounter {
+			color: #5cb85c;
+		}
+
+		.dm-time__disp-clock-entry--used-encounter {
+			color: #8a8a8a; /* Desaturated gren */
+		}
+
+		.night-mode .dm-time__disp-day-entry--event,
+		.night-mode .dm-time__disp-clock-entry--event {
 			color: #7398b7;
 		}
 
-		.night-mode .dm-time__disp-day-entry--encounter {
+		.night-mode .dm-time__disp-day-entry--encounter,
+		.night-mode .dm-time__disp-clock-entry--encounter {
 			color: #64cc64;
+		}
+
+		.night-mode .dm-time__disp-clock-entry--used-encounter {
+			color: #989898; /* Desaturated night green */
+		}
+
+		.dm-time__wrp-clock-events {
+			max-width: 100px;
 		}
 
 		.dm-time__day-entry-header {
@@ -1146,6 +1186,10 @@
 			margin-right: -2px;
 			pointer-events: none;
 			user-select: none;
+		}
+
+		.dm-time__ipt-event-time {
+			width: 40px;
 		}
 		/* *** */
 	</style>

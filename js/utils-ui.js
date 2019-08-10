@@ -1,3 +1,54 @@
+class ProxyBase {
+	constructor () {
+		this.__hooks = {};
+		this.__hooksAll = {};
+	}
+
+	_getProxy (hookProp, toProxy) {
+		return new Proxy(toProxy, {
+			set: (object, prop, value) => {
+				object[prop] = value;
+				if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, value));
+				if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, value));
+				return true;
+			},
+			deleteProperty: (object, prop) => {
+				delete object[prop];
+				if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, null));
+				if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, null));
+				return true;
+			}
+		});
+	}
+
+	/**
+	 * Register a hook versus a root property on the state object. **INTERNAL CHANGES TO CHILD OBJECTS ON THE STATE
+	 *   OBJECT ARE NOT TRACKED**.
+	 * @param hookProp The state object.
+	 * @param prop The root property to track.
+	 * @param hook The hook to run. Will be called with two arguments; the property and the value of the property being
+	 *   modified.
+	 */
+	_addHook (hookProp, prop, hook) {
+		((this.__hooks[hookProp] = this.__hooks[hookProp] || {})[prop] = (this.__hooks[hookProp][prop] || [])).push(hook);
+	}
+
+	_addHookAll (hookProp, hook) {
+		(this.__hooksAll[hookProp] = this.__hooksAll[hookProp] || []).push(hook);
+	}
+
+	_removeHook (hookProp, prop, hook) {
+		if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) {
+			const ix = this.__hooks[hookProp][prop].findIndex(hk => hk === hook);
+			if (~ix) this.__hooks[hookProp][prop].splice(ix, 1);
+		}
+	}
+
+	_resetHooks (hookProp) {
+		delete this.__hooks[hookProp];
+	}
+}
+
 class UiUtil {
 	/**
 	 * @param string String to parse.
@@ -133,7 +184,7 @@ class UiUtil {
 	 * @param {JQuery} [opts.titleSplit] Element to have split alongside the title.
 	 * @param {int} [opts.zIndex] Z-index of the modal.
 	 * @param {number} [opts.overlayColor] Overlay color.
-	 * @returns JQuery Modal inner wrapper, to have content added as required.
+	 * @returns {object}
 	 */
 	static getShowModal (opts) {
 		opts = opts || {};
@@ -347,12 +398,12 @@ class SearchUiUtil {
 
 		const availContent = {};
 
-		const data = Omnidexer.decompressIndex(await DataUtil.loadJSON("search/index.json"));
+		const data = Omnidexer.decompressIndex(await DataUtil.loadJSON(`${Renderer.get().baseUrl}search/index.json`));
 
 		const additionalData = {};
 		if (options.additionalIndices) {
 			await Promise.all(options.additionalIndices.map(async add => {
-				additionalData[add] = Omnidexer.decompressIndex(await DataUtil.loadJSON(`search/index-${add}.json`));
+				additionalData[add] = Omnidexer.decompressIndex(await DataUtil.loadJSON(`${Renderer.get().baseUrl}search/index-${add}.json`));
 				const maxId = additionalData[add].last().id;
 				const brewIndex = await BrewUtil.pGetAdditionalSearchIndices(maxId, add);
 				if (brewIndex.length) additionalData[add] = additionalData[add].concat(brewIndex);
@@ -362,7 +413,7 @@ class SearchUiUtil {
 		const alternateData = {};
 		if (options.alternateIndices) {
 			await Promise.all(options.alternateIndices.map(async alt => {
-				alternateData[alt] = Omnidexer.decompressIndex(await DataUtil.loadJSON(`search/index-alt-${alt}.json`));
+				alternateData[alt] = Omnidexer.decompressIndex(await DataUtil.loadJSON(`${Renderer.get().baseUrl}search/index-alt-${alt}.json`));
 				const maxId = alternateData[alt].last().id;
 				const brewIndex = await BrewUtil.pGetAlternateSearchIndices(maxId, alt);
 				if (brewIndex.length) alternateData[alt] = alternateData[alt].concat(brewIndex);
@@ -457,8 +508,13 @@ class SearchWidget {
 		this._$rendered = null;
 	}
 
-	static async pDoGlobalInit () {
-		SearchWidget.CONTENT_INDICES = await SearchUiUtil.pGetContentIndices({additionalIndices: ["item"], alternateIndices: ["spell"]});
+	static pDoGlobalInit () {
+		if (!SearchWidget.P_LOADING_CONTENT) {
+			SearchWidget.P_LOADING_CONTENT = (async () => {
+				Object.assign(SearchWidget.CONTENT_INDICES, await SearchUiUtil.pGetContentIndices({additionalIndices: ["item"], alternateIndices: ["spell"]}));
+			})();
+		}
+		return SearchWidget.P_LOADING_CONTENT;
 	}
 
 	__getSearchOptions () {
@@ -627,22 +683,23 @@ class SearchWidget {
 		});
 	}
 }
+SearchWidget.P_LOADING_CONTENT = null;
 SearchWidget.CONTENT_INDICES = {};
 
 class InputUiUtil {
 	/**
-	 * @param options Options.
-	 * @param options.min Minimum value.
-	 * @param options.max Maximum value.
-	 * @param options.int If the value returned should be an integer.
-	 * @param options.title Prompt title.
-	 * @param options.default Default value.
+	 * @param opts Options.
+	 * @param opts.min Minimum value.
+	 * @param opts.max Maximum value.
+	 * @param opts.int If the value returned should be an integer.
+	 * @param opts.title Prompt title.
+	 * @param opts.default Default value.
 	 * @return {Promise<number>} A promise which resolves to the number if the user entered one, or null otherwise.
 	 */
-	static pGetUserNumber (options) {
-		options = options || {};
+	static pGetUserNumber (opts) {
+		opts = opts || {};
 		return new Promise(resolve => {
-			const $iptNumber = $(`<input class="form-control mb-2 text-right" type="number" ${options.min ? `min="${options.min}"` : ""} ${options.max ? `max="${options.max}"` : ""} ${options.default != null ? `value="${options.default}"` : ""}>`)
+			const $iptNumber = $(`<input class="form-control mb-2 text-right" type="number" ${opts.min ? `min="${opts.min}"` : ""} ${opts.max ? `max="${opts.max}"` : ""} ${opts.default != null ? `value="${opts.default}"` : ""}>`)
 				.keydown(evt => {
 					// return key
 					if (evt.which === 13) doClose(true);
@@ -651,16 +708,16 @@ class InputUiUtil {
 			const $btnOk = $(`<button class="btn btn-default">Enter</button>`)
 				.click(() => doClose(true));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
-				title: options.title || "Enter a Number",
+				title: opts.title || "Enter a Number",
 				noMinHeight: true,
 				cbClose: (isDataEntered) => {
 					if (!isDataEntered) return resolve(null);
 					const raw = $iptNumber.val();
 					if (!raw.trim()) return resolve(null);
 					let num = Number(raw) || 0;
-					if (options.min) num = Math.max(options.min, num);
-					if (options.max) num = Math.min(options.max, num);
-					if (options.int) return resolve(Math.round(num));
+					if (opts.min) num = Math.max(opts.min, num);
+					if (opts.max) num = Math.min(opts.max, num);
+					if (opts.int) return resolve(Math.round(num));
 					else resolve(num);
 				}
 			});
@@ -672,61 +729,137 @@ class InputUiUtil {
 	}
 
 	/**
-	 * @param options Options.
-	 * @param options.values Array of enum values.
-	 * @param options.placeholder Placeholder text.
-	 * @param options.title Prompt title.
-	 * @param options.default Default selected index.
-	 * @param options.$elePost Element to add below the select box.
-	 * @param options.fnGetExtraState Function which returns additional state from, generally, other elements in the modal.
+	 * @param opts Options.
+	 * @param opts.values Array of values.
+	 * @param [opts.placeholder] Placeholder text.
+	 * @param [opts.title] Prompt title.
+	 * @param [opts.default] Default selected index.
+	 * @param [opts.fnDisplay] Function which takes a value and returns display text.
+	 * @param [opts.isResolveItem] True if the promise should resolve the item instead of the index.
+	 * @param [opts.$elePost] Element to add below the select box.
+	 * @param [opts.fnGetExtraState] Function which returns additional state from, generally, other elements in the modal.
 	 * @return {Promise} A promise which resolves to the index of the item the user selected (or an object if fnGetExtraState is passed), or null otherwise.
 	 */
-	static pGetUserEnum (options) {
-		options = options || {};
+	static pGetUserEnum (opts) {
+		opts = opts || {};
 		return new Promise(resolve => {
-			const $selEnum = $(`<select class="form-control mb-2"><option value="-1" disabled>${options.placeholder || "Select..."}</option></select>`);
+			const $selEnum = $(`<select class="form-control mb-2"><option value="-1" disabled>${opts.placeholder || "Select..."}</option></select>`);
 
-			options.values.forEach((v, i) => $(`<option value="${i}"/>`).text(v).appendTo($selEnum));
-			if (options.default != null) $selEnum.val(options.default);
+			opts.values.forEach((v, i) => $(`<option value="${i}"/>`).text(opts.fnDisplay ? opts.fnDisplay(v, i) : v).appendTo($selEnum));
+			if (opts.default != null) $selEnum.val(opts.default);
 			else $selEnum[0].selectedIndex = 0;
 
 			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
 				.click(() => doClose(true));
 
 			const {$modalInner, doClose} = UiUtil.getShowModal({
-				title: options.title || "Select an Option",
+				title: opts.title || "Select an Option",
 				noMinHeight: true,
 				cbClose: (isDataEntered) => {
 					if (!isDataEntered) return resolve(null);
 					const ix = Number($selEnum.val());
-					if (!~ix) resolve(null);
-					return resolve(options.fnGetExtraState ? {ix, extraState: options.fnGetExtraState()} : ix);
+					if (!~ix) return resolve(null);
+					if (opts.fnGetExtraState) {
+						const out = {extraState: opts.fnGetExtraState()};
+						if (opts.isResolveItem) out.item = opts.values[ix];
+						else out.ix = ix;
+						resolve(out)
+					} else resolve(opts.isResolveItem ? opts.values[ix] : ix);
 				}
 			});
 			$selEnum.appendTo($modalInner);
-			if (options.$elePost) options.$elePost.appendTo($modalInner);
+			if (opts.$elePost) opts.$elePost.appendTo($modalInner);
 			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
 			$selEnum.focus();
 		});
 	}
 
 	/**
+	 * @param opts Options.
+	 * @param opts.values Array of values.
+	 * @param [opts.title] Prompt title.
+	 * @param [opts.count] Number of choices the user can make.
+	 * @param [opts.isResolveItems] True if the promise should resolve to an array of the items instead of the indices.
+	 * @param [opts.fnDisplay] Function which takes a value and returns display text.
+	 * @return {Promise} A promise which resolves to the indices of the items the user selected, or null otherwise.
+	 */
+	static pGetUserMultipleChoice (opts) {
+		opts = opts || {};
+		if (opts.count == null || opts.count <= 0) opts.count = 1;
+
+		class ChoiceRow extends BaseComponent {
+			_getDefaultState () { return {isActive: false}; }
+		}
+
+		return new Promise(resolve => {
+			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
+				.click(() => doClose(true));
+
+			const rowMetas = [];
+			opts.values.forEach((v, i) => {
+				const comp = new ChoiceRow();
+
+				const $cb = ComponentUiUtil.$getCbBool(comp, "isActive");
+				const hookDisable = () => {
+					const activeRows = rowMetas.filter(it => it.comp._state.isActive);
+
+					if (activeRows.length >= opts.count) {
+						rowMetas.forEach(it => it.$cb.attr("disabled", !it.comp._state.isActive));
+						$btnOk.attr("disabled", false);
+					} else {
+						rowMetas.forEach(it => it.$cb.attr("disabled", false));
+						$btnOk.attr("disabled", true);
+					}
+				};
+				comp._addHookBase("isActive", hookDisable);
+				hookDisable();
+
+				rowMetas.push({
+					$cb,
+					$ele: $$`<label class="flex-v-center row my-1">
+						<div class="col-2 flex-vh-center">${$cb}</div>
+						<div class="col-10">${opts.fnDisplay ? opts.fnDisplay(v, i) : v}</div>
+					</label>`,
+					comp
+				});
+			});
+
+			const $wrpList = $$`<div class="flex-col w-100 striped-even mb-1 overflow-y-auto">${rowMetas.map(it => it.$ele)}</div>`;
+
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				title: opts.title || `Choose ${Parser.numberToText(opts.count).uppercaseFirst()}`,
+				noMinHeight: true,
+				cbClose: (isDataEntered) => {
+					if (!isDataEntered) return resolve(null);
+
+					const ixs = rowMetas.map((row, ix) => row.comp._state.isActive ? ix : null).filter(it => it != null);
+					resolve(opts.isResolveItems ? ixs.map(ix => opts.values[ix]) : ixs);
+				}
+			});
+			$modalInner.addClass("flex-col");
+			$wrpList.appendTo($modalInner);
+			$$`<div class="flex-vh-center no-shrink">${$btnOk}</div>`.appendTo($modalInner);
+			$wrpList.focus();
+		});
+	}
+
+	/**
 	 * NOTE: designed to work with FontAwesome.
 	 *
-	 * @param options Options.
-	 * @param options.values Array of icon metadata. Items should be of the form: `{name: "<n>", iconClass: "<c>"}`
-	 * @param options.title Prompt title.
-	 * @param options.default Default selected index.
+	 * @param opts Options.
+	 * @param opts.values Array of icon metadata. Items should be of the form: `{name: "<n>", iconClass: "<c>"}`
+	 * @param opts.title Prompt title.
+	 * @param opts.default Default selected index.
 	 * @return {Promise<number>} A promise which resolves to the index of the item the user selected, or null otherwise.
 	 */
-	static pGetUserIcon (options) {
-		options = options || {};
+	static pGetUserIcon (opts) {
+		opts = opts || {};
 		return new Promise(resolve => {
 			let lastIx = -1;
 			const onclicks = [];
 
 			const {$modalInner, doClose} = UiUtil.getShowModal({
-				title: options.title || "Select an Option",
+				title: opts.title || "Select an Option",
 				noMinHeight: true,
 				cbClose: (isDataEntered) => {
 					if (!isDataEntered) return resolve(null);
@@ -734,7 +867,7 @@ class InputUiUtil {
 				}
 			});
 
-			$$`<div class="flex flex-wrap flex-h-center mb-2">${options.values.map((v, i) => {
+			$$`<div class="flex flex-wrap flex-h-center mb-2">${opts.values.map((v, i) => {
 				const $btn = $$`<div class="m-2 btn ${v.buttonClass || ""} ui-icn__btn flex-col flex-h-center">
 					${v.iconClass ? `<div class="ui-icn__wrp-icon ${v.iconClass} mb-1"></div>` : ""}
 					${v.iconContent ? v.iconContent : ""}
@@ -744,7 +877,7 @@ class InputUiUtil {
 						lastIx = i;
 						onclicks.forEach(it => it());
 					})
-					.toggleClass("active", options.default === i);
+					.toggleClass("active", opts.default === i);
 				onclicks.push(() => $btn.toggleClass("active", lastIx === i));
 				return $btn;
 			})}</div>`.appendTo($modalInner);
@@ -757,18 +890,18 @@ class InputUiUtil {
 	}
 
 	/**
-	 * @param options Options.
-	 * @param options.title Prompt title.
-	 * @param options.default Default value.
-	 * @param options.autocomplete Array of autocomplete strings. REQUIRES INCLUSION OF THE TYPEAHEAD LIBRARY.
+	 * @param opts Options.
+	 * @param opts.title Prompt title.
+	 * @param opts.default Default value.
+	 * @param opts.autocomplete Array of autocomplete strings. REQUIRES INCLUSION OF THE TYPEAHEAD LIBRARY.
 	 * @return {Promise<String>} A promise which resolves to the string if the user entered one, or null otherwise.
 	 */
-	static pGetUserString (options) {
-		options = options || {};
+	static pGetUserString (opts) {
+		opts = opts || {};
 		return new Promise(resolve => {
-			const $iptStr = $(`<input class="form-control mb-2" ${options.default != null ? `value="${options.default}"` : ""}>`)
+			const $iptStr = $(`<input class="form-control mb-2" ${opts.default != null ? `value="${opts.default}"` : ""}>`)
 				.keydown(async evt => {
-					if (options.autocomplete) {
+					if (opts.autocomplete) {
 						// prevent double-binding the return key if we have autocomplete enabled
 						await MiscUtil.pDelay(17); // arbitrary delay to allow dropdown to render (~1000/60, i.e. 1 60 FPS frame)
 						if ($modalInner.find(`.typeahead.dropdown-menu`).is(":visible")) return;
@@ -777,11 +910,11 @@ class InputUiUtil {
 					if (evt.which === 13) doClose(true);
 					evt.stopPropagation();
 				});
-			if (options.autocomplete && options.autocomplete.length) $iptStr.typeahead({source: options.autocomplete});
+			if (opts.autocomplete && opts.autocomplete.length) $iptStr.typeahead({source: opts.autocomplete});
 			const $btnOk = $(`<button class="btn btn-default">Enter</button>`)
 				.click(() => doClose(true));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
-				title: options.title || "Enter Text",
+				title: opts.title || "Enter Text",
 				noMinHeight: true,
 				cbClose: (isDataEntered) => {
 					if (!isDataEntered) return resolve(null);
@@ -799,20 +932,20 @@ class InputUiUtil {
 
 	/**
 	 *
-	 * @param [options] Options object.
-	 * @param [options.title] Modal title.
-	 * @param [options.default] Default angle.
-	 * @param [options.stepButtons] Array of labels for quick-set buttons, which will be evenly spread around the clock.
-	 * @param [options.step] Number of steps in the gauge (default 360; would be e.g. 12 for a "clock").
+	 * @param [opts] Options object.
+	 * @param [opts.title] Modal title.
+	 * @param [opts.default] Default angle.
+	 * @param [opts.stepButtons] Array of labels for quick-set buttons, which will be evenly spread around the clock.
+	 * @param [opts.step] Number of steps in the gauge (default 360; would be e.g. 12 for a "clock").
 	 * @returns {Promise<number>} A promise which resolves to the number of degrees if the user pressed "Enter," or null otherwise.
 	 */
-	static pGetUserDirection (options) {
+	static pGetUserDirection (opts) {
 		const X = 0;
 		const Y = 1;
 		const DEG_CIRCLE = 360;
 
-		options = options || {};
-		const step = Math.max(2, Math.min(DEG_CIRCLE, options.step || DEG_CIRCLE));
+		opts = opts || {};
+		const step = Math.max(2, Math.min(DEG_CIRCLE, opts.step || DEG_CIRCLE));
 		const stepDeg = DEG_CIRCLE / step;
 
 		function getAngle (p1, p2) {
@@ -821,7 +954,7 @@ class InputUiUtil {
 
 		return new Promise(resolve => {
 			let active = false;
-			let curAngle = Math.min(DEG_CIRCLE, options.default) || 0;
+			let curAngle = Math.min(DEG_CIRCLE, opts.default) || 0;
 
 			const $arm = $(`<div class="ui-dir__arm"/>`);
 			const handleAngle = () => $arm.css({transform: `rotate(${curAngle + 180}deg)`});
@@ -857,8 +990,8 @@ class InputUiUtil {
 			const BTN_STEP_SIZE = 26;
 			const BORDER_PAD = 16;
 			const CONTROLS_RADIUS = (92 + BTN_STEP_SIZE + BORDER_PAD) / 2;
-			const $padOuter = options.stepButtons ? (() => {
-				const steps = options.stepButtons;
+			const $padOuter = opts.stepButtons ? (() => {
+				const steps = opts.stepButtons;
 				const SEG_ANGLE = 360 / steps.length;
 
 				const $btns = [];
@@ -899,7 +1032,7 @@ class InputUiUtil {
 			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
 				.click(() => doClose(true));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
-				title: options.title || "Select Direction",
+				title: opts.title || "Select Direction",
 				noMinHeight: true,
 				cbClose: (isDataEntered) => {
 					$document.off(`mousemove.${evtId} touchmove${evtId} mouseup.${evtId} touchend${evtId} touchcancel${evtId}`);
@@ -1135,6 +1268,8 @@ class BaseComponent extends ProxyBase {
 	constructor () {
 		super();
 
+		this.__locks = {};
+
 		// state
 		this.__state = {...this._getDefaultState()};
 		this._state = this._getProxy("state", this.__state);
@@ -1152,9 +1287,10 @@ class BaseComponent extends ProxyBase {
 		return {
 			get: (prop) => this._state[prop],
 			set: (prop, val) => this._state[prop] = val,
-			assignState: (toAssign) => Object.assign(this._state, toAssign),
 			addHook: (prop, hook) => this._addHookBase(prop, hook),
-			removeHook: (prop, hook) => this._removeHookBase(prop, hook)
+			removeHook: (prop, hook) => this._removeHookBase(prop, hook),
+			triggerCollectionUpdate: (prop) => this._triggerCollectionUpdate(prop),
+			component: this
 		}
 	}
 
@@ -1171,11 +1307,41 @@ class BaseComponent extends ProxyBase {
 		toLoad.state && Object.assign(this._state, toLoad.state);
 	}
 
+	/**
+	 * Trigger an update for a collection, auto-filtering deleted entries. The collection stored
+	 * at the prop should be a map of `id:state`.
+	 * @param prop The state property.
+	 */
+	_triggerCollectionUpdate (prop) {
+		this._state[prop] = Object.values(this._state[prop])
+			.filter(it => !it.isDeleted)
+			.map(it => ({[it.id]: it}))
+			.reduce((a, b) => Object.assign(a, b), {});
+	}
+
 	render () { throw new Error("Unimplemented!"); }
 
 	// to be overridden as required
 	getSaveableState () { return {...this.getBaseSaveableState()}; }
 	setStateFrom (toLoad) { this.setBaseSaveableStateFrom(toLoad); }
+
+	async _pLock (lockName) {
+		const lockMeta = this.__locks[lockName];
+		if (lockMeta) await lockMeta.lock;
+		let unlock = null;
+		const lock = new Promise(resolve => unlock = resolve);
+		this.__locks[lockName] = {
+			lock,
+			unlock
+		}
+	}
+
+	_unlock (lockName) {
+		const lockMeta = this.__locks[lockName];
+		if (lockMeta) {
+			lockMeta.unlock();
+		}
+	}
 }
 
 class ComponentUiUtil {
@@ -1215,7 +1381,7 @@ class ComponentUiUtil {
 		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal">`))
 			.change(() => component._state[prop] = $ipt.val().trim());
 		const hook = () => $ipt.val(component._state[prop]);
-		component._addHookBase("name", hook);
+		component._addHookBase(prop, hook);
 		hook();
 		return $ipt
 	}
@@ -1250,8 +1416,64 @@ class ComponentUiUtil {
 		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal" type="color">`))
 			.change(() => component._state[prop] = $ipt.val());
 		const hook = () => $ipt.val(component._state[prop]);
-		component._addHookBase("prop", hook);
+		component._addHookBase(prop, hook);
 		hook();
 		return $ipt;
+	}
+
+	/**
+	 * @param component An instance of a class which extends BaseComponent.
+	 * @param prop Component to hook on.
+	 * @param [opts] Options Object.
+	 * @param [opts.$ele] Element to use.
+	 * @param [opts.fnHookPost] Function to run after primary hook.
+	 * @return {JQuery}
+	 */
+	static $getBtnBool (component, prop, opts) {
+		opts = opts || {};
+
+		const $btn = (opts.$ele || $(`<button class="btn btn-xs btn-default">Toggle</button>`))
+			.click(() => component._state[prop] = !component._state[prop]);
+		const hook = () => {
+			$btn.toggleClass("active", !!component._state[prop]);
+			if (opts.fnHookPost) opts.fnHookPost(component._state[prop]);
+		};
+		component._addHookBase(prop, hook);
+		hook();
+		return $btn
+	}
+
+	/**
+	 * @param component An instance of a class which extends BaseComponent.
+	 * @param prop Component to hook on.
+	 * @param [opts] Options Object.
+	 * @param [opts.$ele] Element to use.
+	 * @return {JQuery}
+	 */
+	static $getCbBool (component, prop, opts) {
+		opts = opts || {};
+
+		const $cb = (opts.$ele || $(`<input type="checkbox">`))
+			.change(() => component._state[prop] = $cb.prop("checked"));
+		const hook = () => $cb.prop("checked", !!component._state[prop]);
+		component._addHookBase(prop, hook);
+		hook();
+		return $cb
+	}
+}
+
+if (typeof module !== "undefined") {
+	module.exports = {
+		ProxyBase,
+		UiUtil,
+		ProfUiUtil,
+		TabUiUtil,
+		SearchUiUtil,
+		SearchWidget,
+		InputUiUtil,
+		DragReorderUiUtil,
+		SourceUiUtil,
+		BaseComponent,
+		ComponentUiUtil
 	}
 }

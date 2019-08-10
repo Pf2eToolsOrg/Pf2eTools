@@ -297,7 +297,7 @@ class HashLoad {
 		$("td#prof").toggle(!!(ClassDisplay.curClass.proficiency || sProfs));
 
 		function getSkillProfString (skills) {
-			const numString = Parser.numberToString(skills.choose);
+			const numString = Parser.numberToText(skills.choose);
 			return skills.from.length === 18 ? `Choose any ${numString}.` : `Choose ${numString} from ${skills.from.map(it => Renderer.get().render(`{@skill ${it}}`)).joinConjunct(", ", " and ")}.`
 		}
 
@@ -342,11 +342,11 @@ class HashLoad {
 			$("#multiclassing").hide();
 		}
 
-		$(`#statsprof_divider`).toggle(!!(ClassDisplay.curClass.hd ||
-			ClassDisplay.curClass.proficiency ||
-			ClassDisplay.curClass.startingProficiencies ||
-			ClassDisplay.curClass.startingEquipment ||
-			ClassDisplay.curClass.multiclassing));
+		$(`#statsprof_divider`).toggle(!!(ClassDisplay.curClass.hd
+			|| ClassDisplay.curClass.proficiency
+			|| ClassDisplay.curClass.startingProficiencies
+			|| ClassDisplay.curClass.startingEquipment
+			|| ClassDisplay.curClass.multiclassing));
 
 		// FEATURE TABLE ===================================================================================================
 		renderer.resetHeaderIndex();

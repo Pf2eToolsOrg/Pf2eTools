@@ -81,7 +81,7 @@ function preprocess (schema) {
 									const [file, path] = toMerge.$ref.split("#");
 									if (file) throw new Error(`Unimplemented! Cannot load references from other files!`);
 									const pathParts = path.split("/").filter(Boolean);
-									const refData = MiscUtil.getProperty(schema, ...pathParts);
+									const refData = MiscUtil.get(schema, ...pathParts);
 									if (!refData) throw new Error(`Could not find referenced data!`);
 									return refData;
 								}

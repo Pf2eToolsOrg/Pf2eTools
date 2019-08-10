@@ -60,7 +60,7 @@ function getPersonDetails (opts) {
 
 	if (!opts.isParent) {
 		const race = opts.parentRaces ? (() => {
-			const useParent = RNG(100) > 10;
+			const useParent = RNG(100) > 15;
 			if (useParent) return rollOnArray(opts.parentRaces);
 			else return rollSuppRace().result;
 		})() : rollSuppRace().result;
@@ -654,6 +654,9 @@ function sectParents () {
 				parentRaces = rolled._races;
 				break;
 			}
+			default:
+				parentRaces = [race];
+				break;
 		}
 	}
 

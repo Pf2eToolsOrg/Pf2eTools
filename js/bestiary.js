@@ -1061,7 +1061,7 @@ function renderStatblock (mon, isScaled) {
 	}
 
 	function buildFluffTab (isImageTab) {
-		return Renderer.utils.buildFluffTab(
+		return Renderer.utils.pBuildFluffTab(
 			isImageTab,
 			$content,
 			mon,
@@ -1109,6 +1109,7 @@ function handleUnknownHash (link, sub) {
 	}
 }
 
+// Used in DC roller event handlers
 function dcRollerClick (event, ele, exp) {
 	if (window.PROF_DICE_MODE === PROF_MODE_BONUS) return;
 	const it = {

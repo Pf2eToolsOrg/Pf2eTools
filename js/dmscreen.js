@@ -899,31 +899,29 @@ class Panel {
 			PANEL_TYP_STATS,
 			meta
 		);
-		Renderer.hover._doFillThenCall(
+		Renderer.hover.pCacheAndGet(
 			page,
 			source,
-			hash,
-			() => {
-				const fn = Renderer.hover._pageToRenderFn(page);
-				const it = Renderer.hover._getFromCache(page, source, hash);
+			hash
+		).then(it => {
+			const fn = Renderer.hover._pageToRenderFn(page);
 
-				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
-				const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
-				$contentStats.append(fn(it));
+			const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
+			const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
+			$contentStats.append(fn(it));
 
-				this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
+			this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
 
-				this.set$Tab(
-					ix,
-					PANEL_TYP_STATS,
-					meta,
-					$contentInner,
-					title || it.name,
-					true,
-					!!title
-				);
-			}
-		);
+			this.set$Tab(
+				ix,
+				PANEL_TYP_STATS,
+				meta,
+				$contentInner,
+				title || it.name,
+				true,
+				!!title
+			);
+		});
 	}
 
 	_stats_bindCrScaleClickHandler (mon, meta, $contentInner, $contentStats) {
@@ -981,31 +979,29 @@ class Panel {
 			PANEL_TYP_CREATURE_SCALED_CR,
 			meta
 		);
-		Renderer.hover._doFillThenCall(
+		Renderer.hover.pCacheAndGet(
 			page,
 			source,
-			hash,
-			() => {
-				const it = Renderer.hover._getFromCache(page, source, hash);
-				ScaleCreature.scale(it, targetCr).then(initialRender => {
-					const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
-					const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
-					$contentStats.append(Renderer.monster.getCompactRenderedString(initialRender, null, {showScaler: true, isScaled: true}));
+			hash
+		).then(it => {
+			ScaleCreature.scale(it, targetCr).then(initialRender => {
+				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
+				const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
+				$contentStats.append(Renderer.monster.getCompactRenderedString(initialRender, null, {showScaler: true, isScaled: true}));
 
-					this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
+				this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
 
-					this.set$Tab(
-						ix,
-						PANEL_TYP_CREATURE_SCALED_CR,
-						meta,
-						$contentInner,
-						title || initialRender._displayName || initialRender.name,
-						true,
-						!!title
-					);
-				});
-			}
-		);
+				this.set$Tab(
+					ix,
+					PANEL_TYP_CREATURE_SCALED_CR,
+					meta,
+					$contentInner,
+					title || initialRender._displayName || initialRender.name,
+					true,
+					!!title
+				);
+			});
+		});
 	}
 
 	doPopulate_Rules (book, chapter, header, skipSetTab, title) { // FIXME skipSetTab is never used
@@ -1434,8 +1430,8 @@ class Panel {
 	}
 
 	doRenderTitle () {
-		const displayText = this.title !== TITLE_LOADING &&
-			(this.type === PANEL_TYP_STATS || this.type === PANEL_TYP_CREATURE_SCALED_CR || this.type === PANEL_TYP_RULES || this.type === PANEL_TYP_ADVENTURES || this.type === PANEL_TYP_BOOKS) ? this.title : "";
+		const displayText = this.title !== TITLE_LOADING
+		&& (this.type === PANEL_TYP_STATS || this.type === PANEL_TYP_CREATURE_SCALED_CR || this.type === PANEL_TYP_RULES || this.type === PANEL_TYP_ADVENTURES || this.type === PANEL_TYP_BOOKS) ? this.title : "";
 
 		this.$pnlTitle.text(displayText);
 		if (!displayText) this.$pnlTitle.addClass("hidden");

@@ -1200,8 +1200,8 @@ class Filter extends FilterBase {
 
 				if (this._umbrellaExcludes && this._umbrellaExcludes.some(it => filterState[it.item])) return false;
 
-				return this._umbrellaItems.some(u => entryVal.includes(u.item)) &&
-					(this._umbrellaItems.some(u => filterState[u.item] === 0) || this._umbrellaItems.some(u => filterState[u.item] === 1));
+				return this._umbrellaItems.some(u => entryVal.includes(u.item))
+					&& (this._umbrellaItems.some(u => filterState[u.item] === 0) || this._umbrellaItems.some(u => filterState[u.item] === 1));
 			}
 		};
 

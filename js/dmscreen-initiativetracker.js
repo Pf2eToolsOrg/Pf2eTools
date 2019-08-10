@@ -76,17 +76,17 @@ class InitiativeTracker {
 		const contextId = ContextUtil.getNextGenericMenuId();
 		ContextUtil.doInitContextMenu(contextId, async (evt, ele, $invokedOn, $selectedMenu) => {
 			switch (Number($selectedMenu.data("ctx-id"))) {
-				case 0:
-					EncounterUtil.pGetInitialState().then(savedState => {
-						if (savedState) convertAndLoadBestiaryList(savedState.data);
-						else {
-							JqueryUtil.doToast({
-								content: `No saved encounter! Please first go to the Bestiary and create one.`,
-								type: "warning"
-							});
-						}
-					});
+				case 0: {
+					const savedState = await EncounterUtil.pGetInitialState();
+					if (savedState) await pConvertAndLoadBestiaryList(savedState.data);
+					else {
+						JqueryUtil.doToast({
+							content: `No saved encounter! Please first go to the Bestiary and create one.`,
+							type: "warning"
+						});
+					}
 					break;
+				}
 				case 1: {
 					const allSaves = Object.values((await EncounterUtil.pGetSavedState()).savedEncounters || {});
 					if (!allSaves.length) return JqueryUtil.doToast({type: "warning", content: "No saved encounters were found! Go to the Bestiary and create some first."});
@@ -95,12 +95,12 @@ class InitiativeTracker {
 						placeholder: "Select a save",
 						title: "Select Saved Encounter"
 					});
-					if (selected != null) convertAndLoadBestiaryList(allSaves[selected]);
+					if (selected != null) await pConvertAndLoadBestiaryList(allSaves[selected]);
 					break;
 				}
 				case 2: {
 					const json = await DataUtil.pUserUpload();
-					if (json) convertAndLoadBestiaryList(json);
+					if (json) await pConvertAndLoadBestiaryList(json);
 					break;
 				}
 				case 3:
@@ -668,9 +668,9 @@ class InitiativeTracker {
 				confirm("Are you sure?") && doReset();
 			});
 
-		$btnAdd.on("click", () => {
+		$btnAdd.on("click", async () => {
 			if (cfg.isLocked) return;
-			makeRow({isVisible: true});
+			await pMakeRow({isVisible: true});
 			doSort(cfg.sort);
 			checkSetFirstActive();
 		});
@@ -742,20 +742,20 @@ class InitiativeTracker {
 
 				$results.empty();
 				if (toProcess.length) {
-					const handleClick = (r) => {
+					const handleClick = async r => {
 						const name = r.doc.n;
 						const source = r.doc.s;
 						const count = getCount();
 						if (isNaN(count) || count < 1) return;
 
-						makeRow({
+						await pMakeRow({
 							nameOrMeta: name,
 							source,
 							isRollHp: $cbRoll.prop("checked")
 						});
 						if (count > 1) {
 							for (let i = 1; i < count; ++i) {
-								makeRow({
+								await pMakeRow({
 									nameOrMeta: name,
 									source,
 									isRollHp: $cbRoll.prop("checked")
@@ -940,8 +940,8 @@ class InitiativeTracker {
 				let $curr = $nxt;
 				do {
 					// if names and initiatives are the same, skip forwards (groups of monsters)
-					if ($curr.find(`input.name`).val() === $nxt.find(`input.name`).val() &&
-						$curr.find(`input.score`).val() === $nxt.find(`input.score`).val()) {
+					if ($curr.find(`input.name`).val() === $nxt.find(`input.name`).val()
+						&& $curr.find(`input.score`).val() === $nxt.find(`input.score`).val()) {
 						handleTurnStart($curr);
 						const curr = $rows.get(ix++);
 						if (curr) $curr = $(curr);
@@ -968,7 +968,7 @@ class InitiativeTracker {
 			}
 		}
 
-		function makeRow (opts) {
+		async function pMakeRow (opts) {
 			let {
 				nameOrMeta,
 				customName,
@@ -1060,9 +1060,9 @@ class InitiativeTracker {
 						doSort(cfg.sort);
 					}).appendTo($wrpBtnsRhs);
 				$(`<button class="btn btn-success btn-xs dm-init-lockable" title="Add Another (SHIFT for Roll New)" tabindex="-1"><span class="glyphicon glyphicon-plus"></span></button>`)
-					.click((evt) => {
+					.click(async (evt) => {
 						if (cfg.isLocked) return;
-						makeRow({
+						await pMakeRow({
 							nameOrMeta,
 							init: evt.shiftKey ? "" : $iptScore.val(),
 							isActive: $wrpRow.hasClass("dm-init-row-active"),
@@ -1192,8 +1192,8 @@ class InitiativeTracker {
 				.appendTo($wrpRhs);
 
 			if (isMon && (hpVals.curHp === "" || hpVals.maxHp === "" || init === "")) {
-				const doUpdate = () => {
-					const m = Renderer.hover._getFromCache(UrlUtil.PG_BESTIARY, source, hash);
+				const doUpdate = async () => {
+					const m = await Renderer.hover.pCacheAndGet(UrlUtil.PG_BESTIARY, source, hash);
 
 					// set or roll HP
 					if (!isRollHp && m.hp.average) {
@@ -1220,12 +1220,7 @@ class InitiativeTracker {
 				};
 
 				const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY]({name: name, source: source});
-				if (Renderer.hover._isCached(UrlUtil.PG_BESTIARY, source, hash)) doUpdate();
-				else {
-					Renderer.hover._doFillThenCall(UrlUtil.PG_BESTIARY, source, hash, () => {
-						if (!hpVals.curHp) doUpdate();
-					});
-				}
+				await doUpdate();
 			}
 
 			const handleMathInput = ($ipt, prop) => {
@@ -1383,8 +1378,8 @@ class InitiativeTracker {
 				if ($rows.length > 1) {
 					for (let i = 1; i < $rows.length; ++i) {
 						const $nxt = $($rows.get(i));
-						if ($nxt.find(`input.name`).val() === $first.find(`input.name`).val() &&
-							$nxt.find(`input.score`).val() === $first.find(`input.score`).val()) {
+						if ($nxt.find(`input.name`).val() === $first.find(`input.name`).val()
+							&& $nxt.find(`input.score`).val() === $first.find(`input.score`).val()) {
 							handleTurnStart($nxt);
 						} else break;
 					}
@@ -1446,12 +1441,12 @@ class InitiativeTracker {
 		}
 
 		let firstLoad = true;
-		function loadState (state, noReset) {
+		async function pLoadState (state, noReset) {
 			if (!firstLoad && !noReset) doReset();
 			firstLoad = false;
 
-			(state.r || []).forEach(r => {
-				makeRow({
+			await Promise.all((state.r || []).map(r => {
+				return pMakeRow({
 					nameOrMeta: r.n,
 					customName: r.m,
 					hp: r.h,
@@ -1463,7 +1458,7 @@ class InitiativeTracker {
 					statsCols: r.k,
 					isVisible: r.v
 				});
-			});
+			}));
 			doSort(cfg.sort);
 			checkSetFirstActive();
 			handleStatColsChange();
@@ -1496,7 +1491,7 @@ class InitiativeTracker {
 			return "";
 		}
 
-		function convertAndLoadBestiaryList (bestiaryList) {
+		async function pConvertAndLoadBestiaryList (bestiaryList) {
 			const toLoad = {
 				s: "NUM",
 				d: "DESC",
@@ -1588,7 +1583,8 @@ class InitiativeTracker {
 			if (bestiaryList.items && bestiaryList.sources) bestiaryList.l = {items: bestiaryList.items, sources: bestiaryList.sources};
 
 			if (bestiaryList.l && bestiaryList.l.items) {
-				Promise.all(bestiaryList.l.items.map(it => {
+				await "lol";
+				const toAdd = await Promise.all(bestiaryList.l.items.map(it => {
 					const count = Number(it.c);
 					const hash = it.h;
 					const scaling = (() => {
@@ -1618,38 +1614,35 @@ class InitiativeTracker {
 								}
 							});
 					})
-				})).then((data) => {
-					data.forEach(it => {
-						const groupInit = cfg.importIsRollGroups ? rollInitiative(it.monster) : null;
-						const groupHp = cfg.importIsRollGroups ? getOrRollHp(it.monster) : null;
-						[...new Array(it.count || 1)].forEach(() => {
-							const hp = `${cfg.importIsRollGroups ? groupHp : getOrRollHp(it.monster)}`;
-							toLoad.r.push({
-								n: {
-									name: it.monster.name,
-									displayName: it.monster._displayName,
-									scaledTo: it.monster._isScaledCr
-								},
-								i: `${cfg.importIsRollGroups ? groupInit : rollInitiative(it.monster)}`,
-								a: 0,
-								s: it.monster.source,
-								c: [],
-								h: hp,
-								g: hp
-							});
+				}));
+				toAdd.forEach(it => {
+					const groupInit = cfg.importIsRollGroups ? rollInitiative(it.monster) : null;
+					const groupHp = cfg.importIsRollGroups ? getOrRollHp(it.monster) : null;
+					[...new Array(it.count || 1)].forEach(() => {
+						const hp = `${cfg.importIsRollGroups ? groupHp : getOrRollHp(it.monster)}`;
+						toLoad.r.push({
+							n: {
+								name: it.monster.name,
+								displayName: it.monster._displayName,
+								scaledTo: it.monster._isScaledCr
+							},
+							i: `${cfg.importIsRollGroups ? groupInit : rollInitiative(it.monster)}`,
+							a: 0,
+							s: it.monster.source,
+							c: [],
+							h: hp,
+							g: hp
 						});
 					});
-					loadState(toLoad, cfg.importIsAppend);
 				});
-			} else {
-				loadState(toLoad, cfg.importIsAppend);
-			}
+				await pLoadState(toLoad, cfg.importIsAppend);
+			} else await pLoadState(toLoad, cfg.importIsAppend);
 		}
 
-		$wrpTracker.data("doConvertAndLoadBestiaryList", (bestiaryList) => convertAndLoadBestiaryList(bestiaryList));
+		$wrpTracker.data("doConvertAndLoadBestiaryList", (bestiaryList) => pConvertAndLoadBestiaryList(bestiaryList));
 
-		loadState(state);
-		doSort(cfg.sort);
+		pLoadState(state)
+			.then(() => doSort(cfg.sort));
 
 		return $wrpTracker;
 	}

@@ -673,10 +673,10 @@
 										if (it.entries && JSON.stringify(it.entries).match(/shield/i)) return true;
 									}
 								};
-								return mon._shieldRequired = checkShields("trait") ||
-									checkShields("action") ||
-									checkShields("reaction") ||
-									checkShields("legendary");
+								return mon._shieldRequired = checkShields("trait")
+									|| checkShields("action")
+									|| checkShields("reaction")
+									|| checkShields("legendary");
 							})();
 							mon._shieldDropped = false;
 
@@ -1693,7 +1693,7 @@
 		if (this._spells) return Promise.resolve();
 
 		this._spells = {};
-		return DataUtil.loadJSON(`data/spells/spells-phb.json`).then(data => {
+		return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/spells-phb.json`).then(data => {
 			this.__initSpellCache(data);
 		});
 	},

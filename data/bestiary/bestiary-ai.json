@@ -1056,8 +1056,18 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"K'thriss's innate spellcasting ability is Charisma (spell save {@dc 14}). He can innately cast the following spells, requiring no material components: At will: dancing lights, disguise self 1/day each: darkness, faerie fire"
+						"K'thriss's innate spellcasting ability is Charisma (spell save {@dc 14}). He can innately cast the following spells, requiring no material components:"
 					],
+					"will": [
+						"{@spell dancing lights}",
+						"{@spell disguise self}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell darkness}",
+							"{@spell faerie fire}"
+						]
+					},
 					"ability": "cha"
 				},
 				{
@@ -1215,7 +1225,10 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Môrgæn's spellcasting ability is Intelligence. She can innately cast the following spells, requiring no material components: At will: mage hand"
+						"Môrgæn's spellcasting ability is Intelligence. She can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell mage hand}"
 					],
 					"ability": "int"
 				},
@@ -1640,7 +1653,6 @@
 			"actionTags": [
 				"Multiattack"
 			],
-			"trait": [],
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting (Psionics)",
@@ -2079,7 +2091,6 @@
 				"E",
 				"G"
 			],
-			"trait": [],
 			"spellcasting": [
 				{
 					"name": "Spellcasting",

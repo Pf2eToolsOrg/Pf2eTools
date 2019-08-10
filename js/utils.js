@@ -7,7 +7,7 @@ IS_DEPLOYED = undefined;
 VERSION_NUMBER = IS_DEPLOYED || "-1";
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
-IS_ROLL20 = false;
+IS_VTT = false;
 
 IMGUR_CLIENT_ID = `abdea4de492d3b0`;
 
@@ -49,24 +49,6 @@ STR_NONE = "None";
 STR_ANY = "Any";
 STR_SPECIAL = "Special";
 
-RNG_SPECIAL = "special";
-RNG_POINT = "point";
-RNG_LINE = "line";
-RNG_CUBE = "cube";
-RNG_CONE = "cone";
-RNG_RADIUS = "radius";
-RNG_SPHERE = "sphere";
-RNG_HEMISPHERE = "hemisphere";
-RNG_CYLINDER = "cylinder"; // homebrew only
-RNG_SELF = "self";
-RNG_SIGHT = "sight";
-RNG_UNLIMITED = "unlimited";
-RNG_UNLIMITED_SAME_PLANE = "plane";
-RNG_TOUCH = "touch";
-
-UNT_FEET = "feet";
-UNT_MILES = "miles";
-
 HOMEBREW_STORAGE = "HOMEBREW_STORAGE";
 HOMEBREW_META_STORAGE = "HOMEBREW_META_STORAGE";
 EXCLUDES_STORAGE = "EXCLUDES_STORAGE";
@@ -78,163 +60,146 @@ POINTBUY_STORAGE = "POINTBUY_STORAGE";
 JSON_HOMEBREW_INDEX = `homebrew/index.json`;
 
 // STRING ==============================================================================================================
-String.prototype.uppercaseFirst = String.prototype.uppercaseFirst ||
-	function () {
-		const str = this.toString();
-		if (str.length === 0) return str;
-		if (str.length === 1) return str.charAt(0).toUpperCase();
-		return str.charAt(0).toUpperCase() + str.slice(1);
-	};
+String.prototype.uppercaseFirst = String.prototype.uppercaseFirst || function () {
+	const str = this.toString();
+	if (str.length === 0) return str;
+	if (str.length === 1) return str.charAt(0).toUpperCase();
+	return str.charAt(0).toUpperCase() + str.slice(1);
+};
 
-String.prototype.lowercaseFirst = String.prototype.lowercaseFirst ||
-	function () {
-		const str = this.toString();
-		if (str.length === 0) return str;
-		if (str.length === 1) return str.charAt(0).toLowerCase();
-		return str.charAt(0).toLowerCase() + str.slice(1);
-	};
+String.prototype.lowercaseFirst = String.prototype.lowercaseFirst || function () {
+	const str = this.toString();
+	if (str.length === 0) return str;
+	if (str.length === 1) return str.charAt(0).toLowerCase();
+	return str.charAt(0).toLowerCase() + str.slice(1);
+};
 
-String.prototype.toTitleCase = String.prototype.toTitleCase ||
-	function () {
-		let str;
-		str = this.replace(/([^\W_]+[^\s-/]*) */g, function (txt) {
-			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-		});
+String.prototype.toTitleCase = String.prototype.toTitleCase || function () {
+	let str;
+	str = this.replace(/([^\W_]+[^\s-/]*) */g, function (txt) {
+		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+	});
 
-		if (!StrUtil._TITLE_LOWER_WORDS_RE) {
-			StrUtil._TITLE_LOWER_WORDS_RE = StrUtil.TITLE_LOWER_WORDS.map(it => new RegExp(`\\s${it}\\s`, 'g'));
+	if (!StrUtil._TITLE_LOWER_WORDS_RE) {
+		StrUtil._TITLE_LOWER_WORDS_RE = StrUtil.TITLE_LOWER_WORDS.map(it => new RegExp(`\\s${it}\\s`, 'g'));
+	}
+
+	for (let i = 0; i < StrUtil.TITLE_LOWER_WORDS.length; i++) {
+		str = str.replace(
+			StrUtil._TITLE_LOWER_WORDS_RE[i],
+			(txt) => {
+				return txt.toLowerCase();
+			});
+	}
+
+	if (!StrUtil._TITLE_UPPER_WORDS_RE) {
+		StrUtil._TITLE_UPPER_WORDS_RE = StrUtil.TITLE_UPPER_WORDS.map(it => new RegExp(`\\b${it}\\b`, 'g'));
+	}
+
+	for (let i = 0; i < StrUtil.TITLE_UPPER_WORDS.length; i++) {
+		str = str.replace(
+			StrUtil._TITLE_UPPER_WORDS_RE[i],
+			StrUtil.TITLE_UPPER_WORDS[i].toUpperCase()
+		);
+	}
+
+	return str;
+};
+
+String.prototype.toSentenceCase = String.prototype.toSentenceCase || function () {
+	const out = [];
+	const re = /([^.!?]+)([.!?]\s*|$)/gi;
+	let m;
+	do {
+		m = re.exec(this);
+		if (m) {
+			out.push(m[0].toLowerCase().uppercaseFirst());
 		}
+	} while (m);
+	return out.join("");
+};
 
-		for (let i = 0; i < StrUtil.TITLE_LOWER_WORDS.length; i++) {
-			str = str.replace(
-				StrUtil._TITLE_LOWER_WORDS_RE[i],
-				(txt) => {
-					return txt.toLowerCase();
-				});
-		}
+String.prototype.toSpellCase = String.prototype.toSpellCase || function () {
+	return this.toLowerCase().replace(/(^|of )(bigby|otiluke|mordenkainen|evard|hadar|agatys|abi-dalzim|aganazzar|drawmij|leomund|maximilian|melf|nystul|otto|rary|snilloc|tasha|tenser|jim)('s|$| )/g, (...m) => `${m[1]}${m[2].toTitleCase()}${m[3]}`);
+};
 
-		if (!StrUtil._TITLE_UPPER_WORDS_RE) {
-			StrUtil._TITLE_UPPER_WORDS_RE = StrUtil.TITLE_UPPER_WORDS.map(it => new RegExp(`\\b${it}\\b`, 'g'));
-		}
+String.prototype.toCamelCase = String.prototype.toCamelCase || function () {
+	return this.split(" ").map((word, index) => {
+		if (index === 0) return word.toLowerCase();
+		return `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`;
+	}).join("");
+};
 
-		for (let i = 0; i < StrUtil.TITLE_UPPER_WORDS.length; i++) {
-			str = str.replace(
-				StrUtil._TITLE_UPPER_WORDS_RE[i],
-				StrUtil.TITLE_UPPER_WORDS[i].toUpperCase()
-			);
-		}
+String.prototype.escapeQuotes = String.prototype.escapeQuotes || function () {
+	return this.replace(/'/g, `&apos;`).replace(/"/g, `&quot;`);
+};
 
-		return str;
-	};
-
-String.prototype.toSentenceCase = String.prototype.toSentenceCase ||
-	function () {
-		const out = [];
-		const re = /([^.!?]+)([.!?]\s*|$)/gi;
-		let m;
-		do {
-			m = re.exec(this);
-			if (m) {
-				out.push(m[0].toLowerCase().uppercaseFirst());
-			}
-		} while (m);
-		return out.join("");
-	};
-
-String.prototype.toSpellCase = String.prototype.toSpellCase ||
-	function () {
-		return this.toLowerCase().replace(/(^|of )(bigby|otiluke|mordenkainen|evard|hadar|agatys|abi-dalzim|aganazzar|drawmij|leomund|maximilian|melf|nystul|otto|rary|snilloc|tasha|tenser|jim)('s|$| )/g, (...m) => `${m[1]}${m[2].toTitleCase()}${m[3]}`);
-	};
-
-String.prototype.toCamelCase = String.prototype.toCamelCase ||
-	function () {
-		return this.split(" ").map((word, index) => {
-			if (index === 0) return word.toLowerCase();
-			return `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`;
-		}).join("");
-	};
-
-String.prototype.escapeQuotes = String.prototype.escapeQuotes ||
-	function () {
-		return this.replace(/'/g, `&apos;`).replace(/"/g, `&quot;`);
-	};
-
-String.prototype.unescapeQuotes = String.prototype.unescapeQuotes ||
-	function () {
-		return this.replace(/&apos;/g, `'`).replace(/&quot;/g, `"`);
-	};
+String.prototype.unescapeQuotes = String.prototype.unescapeQuotes || function () {
+	return this.replace(/&apos;/g, `'`).replace(/&quot;/g, `"`);
+};
 
 /**
  * Calculates the Damerau-Levenshtein distance between two strings.
  * https://gist.github.com/IceCreamYou/8396172
  */
-String.prototype.distance = String.prototype.distance ||
-	function (target) {
-		let source = this; let i; let j;
-		if (!source) return target ? target.length : 0;
-		else if (!target) return source.length;
+String.prototype.distance = String.prototype.distance || function (target) {
+	let source = this; let i; let j;
+	if (!source) return target ? target.length : 0;
+	else if (!target) return source.length;
 
-		const m = source.length; const n = target.length; const INF = m + n; const score = new Array(m + 2); const sd = {};
-		for (i = 0; i < m + 2; i++) score[i] = new Array(n + 2);
-		score[0][0] = INF;
-		for (i = 0; i <= m; i++) {
-			score[i + 1][1] = i;
-			score[i + 1][0] = INF;
-			sd[source[i]] = 0;
-		}
-		for (j = 0; j <= n; j++) {
-			score[1][j + 1] = j;
-			score[0][j + 1] = INF;
-			sd[target[j]] = 0;
-		}
+	const m = source.length; const n = target.length; const INF = m + n; const score = new Array(m + 2); const sd = {};
+	for (i = 0; i < m + 2; i++) score[i] = new Array(n + 2);
+	score[0][0] = INF;
+	for (i = 0; i <= m; i++) {
+		score[i + 1][1] = i;
+		score[i + 1][0] = INF;
+		sd[source[i]] = 0;
+	}
+	for (j = 0; j <= n; j++) {
+		score[1][j + 1] = j;
+		score[0][j + 1] = INF;
+		sd[target[j]] = 0;
+	}
 
-		for (i = 1; i <= m; i++) {
-			let DB = 0;
-			for (j = 1; j <= n; j++) {
-				const i1 = sd[target[j - 1]]; const j1 = DB;
-				if (source[i - 1] === target[j - 1]) {
-					score[i + 1][j + 1] = score[i][j];
-					DB = j;
-				} else {
-					score[i + 1][j + 1] = Math.min(score[i][j], Math.min(score[i + 1][j], score[i][j + 1])) + 1;
-				}
-				score[i + 1][j + 1] = Math.min(score[i + 1][j + 1], score[i1] ? score[i1][j1] + (i - i1 - 1) + 1 + (j - j1 - 1) : Infinity);
+	for (i = 1; i <= m; i++) {
+		let DB = 0;
+		for (j = 1; j <= n; j++) {
+			const i1 = sd[target[j - 1]]; const j1 = DB;
+			if (source[i - 1] === target[j - 1]) {
+				score[i + 1][j + 1] = score[i][j];
+				DB = j;
+			} else {
+				score[i + 1][j + 1] = Math.min(score[i][j], Math.min(score[i + 1][j], score[i][j + 1])) + 1;
 			}
-			sd[source[i - 1]] = i;
+			score[i + 1][j + 1] = Math.min(score[i + 1][j + 1], score[i1] ? score[i1][j1] + (i - i1 - 1) + 1 + (j - j1 - 1) : Infinity);
 		}
-		return score[m + 1][n + 1];
-	};
+		sd[source[i - 1]] = i;
+	}
+	return score[m + 1][n + 1];
+};
 
-String.prototype.isNumeric = String.prototype.isNumeric ||
-	function () {
-		return !isNaN(parseFloat(this)) && isFinite(this);
-	};
+String.prototype.isNumeric = String.prototype.isNumeric || function () {
+	return !isNaN(parseFloat(this)) && isFinite(this);
+};
 
-String.prototype.last = String.prototype.last ||
-	function () {
-		return this[this.length - 1];
-	};
+String.prototype.last = String.prototype.last || function () {
+	return this[this.length - 1];
+};
 
-Array.prototype.joinConjunct = Array.prototype.joinConjunct ||
-	function (joiner, lastJoiner, nonOxford) {
-		if (this.length === 0) return "";
-		if (this.length === 1) return this[0];
-		if (this.length === 2) return this.join(lastJoiner);
-		else {
-			let outStr = "";
-			for (let i = 0; i < this.length; ++i) {
-				outStr += this[i];
-				if (i < this.length - 2) outStr += joiner;
-				else if (i === this.length - 2) outStr += `${(!nonOxford && this.length > 2 ? joiner.trim() : "")}${lastJoiner}`;
-			}
-			return outStr;
+Array.prototype.joinConjunct = Array.prototype.joinConjunct || function (joiner, lastJoiner, nonOxford) {
+	if (this.length === 0) return "";
+	if (this.length === 1) return this[0];
+	if (this.length === 2) return this.join(lastJoiner);
+	else {
+		let outStr = "";
+		for (let i = 0; i < this.length; ++i) {
+			outStr += this[i];
+			if (i < this.length - 2) outStr += joiner;
+			else if (i === this.length - 2) outStr += `${(!nonOxford && this.length > 2 ? joiner.trim() : "")}${lastJoiner}`;
 		}
-	};
-
-Array.prototype.peek = Array.prototype.peek ||
-	function () {
-		return this.slice(-1)[0];
-	};
+		return outStr;
+	}
+};
 
 StrUtil = {
 	COMMAS_NOT_IN_PARENTHESES_REGEX: /,\s?(?![^(]*\))/g,
@@ -308,7 +273,7 @@ Parser.attrChooseToFull = function (attList) {
 };
 
 Parser.numberToText = function (number) {
-	if (Math.abs(number) >= 100) return number;
+	if (Math.abs(number) >= 100) return `${number}`;
 
 	function getAsText (num) {
 		const abs = Math.abs(num);
@@ -415,7 +380,7 @@ Parser._addCommas = function (intNum) {
 };
 
 Parser.crToXp = function (cr) {
-	if (cr.xp) return Parser._addCommas(cr.xp);
+	if (cr != null && cr.xp) return Parser._addCommas(cr.xp);
 
 	const toConvert = cr ? (cr.cr || cr) : null;
 	if (toConvert === "Unknown" || toConvert == null) return "Unknown";
@@ -427,7 +392,7 @@ Parser.crToXp = function (cr) {
 };
 
 Parser.crToXpNumber = function (cr) {
-	if (cr.xp) return cr.xp;
+	if (cr != null && cr.xp) return cr.xp;
 	const toConvert = cr ? (cr.cr || cr) : cr;
 	if (toConvert === "Unknown" || toConvert == null) return null;
 	return Parser.XP_CHART_ALT[toConvert];
@@ -687,43 +652,22 @@ Parser.dmgTypeToFull = function (dmgType) {
 };
 
 Parser.skillToExplanation = function (skillType) {
-	const fromBrew = MiscUtil.getProperty(BrewUtil.homebrewMeta, "skills", skillType);
+	const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "skills", skillType);
 	if (fromBrew) return fromBrew;
 	return Parser._parse_aToB(Parser.SKILL_JSON_TO_FULL, skillType);
 };
 
 Parser.actionToExplanation = function (actionType) {
-	const fromBrew = MiscUtil.getProperty(BrewUtil.homebrewMeta, "actions", actionType);
+	const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "actions", actionType);
 	if (fromBrew) return fromBrew;
 	return Parser._parse_aToB(Parser.ACTION_JSON_TO_FULL, actionType, ["No explanation available."]);
 };
 
 Parser.senseToExplanation = function (senseType) {
 	senseType = senseType.toLowerCase();
-	const fromBrew = MiscUtil.getProperty(BrewUtil.homebrewMeta, "senses", senseType);
+	const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "senses", senseType);
 	if (fromBrew) return fromBrew;
 	return Parser._parse_aToB(Parser.SENSE_JSON_TO_FULL, senseType, ["No explanation available."]);
-};
-
-Parser.numberToString = function (num) {
-	if (num === 0) return "zero";
-	else return parse_hundreds(num);
-
-	function parse_hundreds (num) {
-		if (num > 99) {
-			return Parser.NUMBERS_ONES[Math.floor(num / 100)] + " hundred " + parse_tens(num % 100);
-		} else {
-			return parse_tens(num);
-		}
-	}
-
-	function parse_tens (num) {
-		if (num < 10) return Parser.NUMBERS_ONES[num];
-		else if (num >= 10 && num < 20) return Parser.NUMBERS_TEENS[num - 10];
-		else {
-			return Parser.NUMBERS_TENS[Math.floor(num / 10)] + " " + Parser.NUMBERS_ONES[num % 10];
-		}
-	}
 };
 
 // sp-prefix functions are for parsing spell data, and shared with the roll20 script
@@ -775,9 +719,10 @@ Parser.spLevelToFullLevelText = function (level, dash) {
 };
 
 Parser.spMetaToFull = function (meta) {
-	// these tags are (so far) mutually independent, so we don't need to combine the text
-	if (meta && meta.ritual) return " (ritual)";
-	if (meta && meta.technomagic) return " (technomagic)";
+	const out = [];
+	if (meta && meta.ritual) out.push("ritual");
+	if (meta && meta.technomagic) out.push("technomagic");
+	if (out.length) return ` (${out.join(", ")})`;
 	return "";
 };
 
@@ -787,20 +732,69 @@ Parser.spLevelSchoolMetaToFull = function (level, school, meta, subschools) {
 	return levelSchoolStr + Parser.spMetaToFull(meta);
 };
 
-Parser.spTimeListToFull = function (times) {
-	return times.map(t => `${Parser.getTimeToFull(t)}${t.condition ? `, ${Renderer.get().render(t.condition)}` : ""}`).join(" or ");
+Parser.spTimeListToFull = function (times, isStripTags) {
+	return times.map(t => `${Parser.getTimeToFull(t)}${t.condition ? `, ${isStripTags ? Renderer.stripTags(t.condition) : Renderer.get().render(t.condition)}` : ""}`).join(" or ");
 };
 
 Parser.getTimeToFull = function (time) {
 	return `${time.number} ${time.unit === "bonus" ? "bonus action" : time.unit}${time.number > 1 ? "s" : ""}`;
 };
 
+RNG_SPECIAL = "special";
+RNG_POINT = "point";
+RNG_LINE = "line";
+RNG_CUBE = "cube";
+RNG_CONE = "cone";
+RNG_RADIUS = "radius";
+RNG_SPHERE = "sphere";
+RNG_HEMISPHERE = "hemisphere";
+RNG_CYLINDER = "cylinder"; // homebrew only
+RNG_SELF = "self";
+RNG_SIGHT = "sight";
+RNG_UNLIMITED = "unlimited";
+RNG_UNLIMITED_SAME_PLANE = "plane";
+RNG_TOUCH = "touch";
+Parser.SP_RANGE_TYPE_TO_FULL = {
+	[RNG_SPECIAL]: "Special",
+	[RNG_POINT]: "Point",
+	[RNG_LINE]: "Line",
+	[RNG_CUBE]: "Cube",
+	[RNG_CONE]: "Cone",
+	[RNG_RADIUS]: "Radius",
+	[RNG_SPHERE]: "Sphere",
+	[RNG_HEMISPHERE]: "Hemisphere",
+	[RNG_CYLINDER]: "Cylinder",
+	[RNG_SELF]: "Self",
+	[RNG_SIGHT]: "Sight",
+	[RNG_UNLIMITED]: "Unlimited",
+	[RNG_UNLIMITED_SAME_PLANE]: "Unlimited on the same plane",
+	[RNG_TOUCH]: "Touch"
+};
+
+Parser.spRangeTypeToFull = function (range) {
+	return Parser._parse_aToB(Parser.SP_RANGE_TYPE_TO_FULL, range);
+};
+
+UNT_FEET = "feet";
+UNT_MILES = "miles";
+Parser.SP_DIST_TYPE_TO_FULL = {
+	[UNT_FEET]: "Feet",
+	[UNT_MILES]: "Miles",
+	[RNG_SELF]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_SELF],
+	[RNG_TOUCH]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_TOUCH],
+	[RNG_SIGHT]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_SIGHT],
+	[RNG_UNLIMITED]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_UNLIMITED],
+	[RNG_UNLIMITED_SAME_PLANE]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_UNLIMITED_SAME_PLANE]
+};
+
+Parser.spDistanceTypeToFull = function (range) {
+	return Parser._parse_aToB(Parser.SP_DIST_TYPE_TO_FULL, range);
+};
+
 Parser.spRangeToFull = function (range) {
 	switch (range.type) {
-		case RNG_SPECIAL:
-			return "Special";
-		case RNG_POINT:
-			return renderPoint();
+		case RNG_SPECIAL: return Parser.SP_RANGE_TYPE_TO_FULL[range.type];
+		case RNG_POINT: return renderPoint();
 		case RNG_LINE:
 		case RNG_CUBE:
 		case RNG_CONE:
@@ -814,16 +808,12 @@ Parser.spRangeToFull = function (range) {
 	function renderPoint () {
 		const dist = range.distance;
 		switch (dist.type) {
-			case RNG_SELF:
-				return "Self";
-			case RNG_SIGHT:
-				return "Sight";
-			case RNG_UNLIMITED:
-				return "Unlimited";
-			case RNG_UNLIMITED_SAME_PLANE:
-				return "Unlimited on the same plane";
-			case RNG_TOUCH:
-				return "Touch";
+			case RNG_SELF: return Parser.SP_RANGE_TYPE_TO_FULL[dist.type];
+			case RNG_SIGHT: return Parser.SP_RANGE_TYPE_TO_FULL[dist.type];
+			case RNG_UNLIMITED: return Parser.SP_RANGE_TYPE_TO_FULL[dist.type];
+			case RNG_UNLIMITED_SAME_PLANE: return Parser.SP_RANGE_TYPE_TO_FULL[dist.type];
+			case RNG_TOUCH: return Parser.SP_RANGE_TYPE_TO_FULL[dist.type];
+			case RNG_SPECIAL:
 			case UNT_FEET:
 			case UNT_MILES:
 			default:
@@ -858,7 +848,7 @@ Parser.getSingletonUnit = function (unit) {
 		case UNT_MILES:
 			return "mile";
 		default: {
-			const fromBrew = MiscUtil.getProperty(BrewUtil.homebrewMeta, "spellDistanceUnits", unit, "singular");
+			const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", unit, "singular");
 			if (fromBrew) return fromBrew;
 			if (unit.charAt(unit.length - 1) === "s") return unit.slice(0, -1);
 			return unit;
@@ -872,10 +862,19 @@ Parser.spComponentsToFull = function (spell) {
 	const out = [];
 	if (comp.v) out.push("V");
 	if (comp.s) out.push("S");
-	if (comp.m) out.push(`M${comp.m !== true ? ` (${comp.m.text || comp.m})` : ""}`);
+	if (comp.m != null) out.push(`M${comp.m !== true ? ` (${comp.m.text != null ? comp.m.text : comp.m})` : ""}`);
 	if (comp.r) out.push(`R (${spell.level} gp)`);
 	return out.join(", ");
 };
+
+Parser.SP_END_TYPE_TO_FULL = {
+	"dispel": "dispelled",
+	"trigger": "triggered",
+	"discharge": "discharged"
+};
+Parser.spEndTypeToFull = function (type) {
+	return Parser._parse_aToB(Parser.SP_END_TYPE_TO_FULL, type);
+}
 
 Parser.spDurationToFull = function (dur) {
 	return dur.map(d => {
@@ -888,7 +887,7 @@ Parser.spDurationToFull = function (dur) {
 				return `${d.concentration ? "Concentration, " : ""}${d.concentration ? "u" : d.duration.upTo ? "U" : ""}${d.concentration || d.duration.upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? d.duration.type : `${d.duration.type}s`}`;
 			case "permanent":
 				if (d.ends) {
-					return `Until ${d.ends.map(m => m === "dispel" ? "dispelled" : m === "trigger" ? "triggered" : m === "discharge" ? "discharged" : undefined).join(" or ")}`;
+					return `Until ${d.ends.map(m => Parser.spEndTypeToFull(m)).join(" or ")}`;
 				} else {
 					return "Permanent";
 				}
@@ -925,7 +924,7 @@ Parser._spSubclassItem = function (fromSubclass, textOnly, subclassLookup) {
 	const text = `${sc.name}${sc.subSubclass ? ` (${sc.subSubclass})` : ""}`;
 	if (textOnly) return text;
 	const classPart = `<a href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}" title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</a>`;
-	const fromLookup = subclassLookup ? MiscUtil.getProperty(subclassLookup, c.source, c.name, sc.source, sc.name) : null;
+	const fromLookup = subclassLookup ? MiscUtil.get(subclassLookup, c.source, c.name, sc.source, sc.name) : null;
 	if (fromLookup) return `<a class="italic" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(fromLookup)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
 	else return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</span> ${classPart}`;
 };
@@ -954,6 +953,17 @@ Parser.SPELL_AREA_TYPE_TO_FULL = {
 };
 Parser.spAreaTypeToFull = function (type) {
 	return Parser._parse_aToB(Parser.SPELL_AREA_TYPE_TO_FULL, type);
+};
+
+Parser.SP_MISC_TAG_TO_FULL = {
+	HL: "Healing",
+	SGT: "Requires Sight",
+	PRM: "Permanent Effects",
+	SCL: "Scaling Effects",
+	SMN: "Summons Creature"
+};
+Parser.spMiscTagToFull = function (type) {
+	return Parser._parse_aToB(Parser.SP_MISC_TAG_TO_FULL, type);
 };
 
 // mon-prefix functions are for parsing monster data, and shared with the roll20 script
@@ -1494,6 +1504,36 @@ SKL_ABV_NEC = "N";
 SKL_ABV_TRA = "T";
 SKL_ABV_CON = "C";
 SKL_ABV_PSI = "P";
+Parser.SKL_ABVS = [
+	SKL_ABV_ABJ,
+	SKL_ABV_EVO,
+	SKL_ABV_ENC,
+	SKL_ABV_ILL,
+	SKL_ABV_DIV,
+	SKL_ABV_NEC,
+	SKL_ABV_TRA,
+	SKL_ABV_CON,
+	SKL_ABV_PSI
+];
+
+Parser.SP_TM_ACTION = "action";
+Parser.SP_TM_B_ACTION = "bonus";
+Parser.SP_TM_REACTION = "reaction";
+Parser.SP_TM_ROUND = "round";
+Parser.SP_TM_MINS = "minute";
+Parser.SP_TM_HRS = "hour";
+Parser.SP_TIME_SINGLETONS = [Parser.SP_TM_ACTION, Parser.SP_TM_B_ACTION, Parser.SP_TM_REACTION, Parser.SP_TM_ROUND];
+Parser.SP_TIME_TO_FULL = {
+	[Parser.SP_TM_ACTION]: "Action",
+	[Parser.SP_TM_B_ACTION]: "Bonus Action",
+	[Parser.SP_TM_REACTION]: "Reaction",
+	[Parser.SP_TM_ROUND]: "Rounds",
+	[Parser.SP_TM_MINS]: "Minutes",
+	[Parser.SP_TM_HRS]: "Hours"
+};
+Parser.spTimeUnitToFull = function (timeUnit) {
+	return Parser._parse_aToB(Parser.SP_TIME_TO_FULL, timeUnit);
+};
 
 SKL_ABJ = "Abjuration";
 SKL_EVO = "Evocation";
@@ -2133,13 +2173,13 @@ Parser.NUMBERS_TEENS = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fift
 // SOURCES =============================================================================================================
 SourceUtil = {
 	hasBeenReprinted (shortName, source) {
-		return (shortName !== undefined && shortName !== null && source !== undefined && source !== null) &&
-			(
-				(shortName === "Sun Soul" && source === SRC_SCAG) ||
-				(shortName === "Mastermind" && source === SRC_SCAG) ||
-				(shortName === "Swashbuckler" && source === SRC_SCAG) ||
-				(shortName === "Storm" && source === SRC_SCAG) ||
-				(shortName === "Deep Stalker Conclave" && source === SRC_UATRR)
+		return (shortName !== undefined && shortName !== null && source !== undefined && source !== null)
+			&& (
+				(shortName === "Sun Soul" && source === SRC_SCAG)
+				|| (shortName === "Mastermind" && source === SRC_SCAG)
+				|| (shortName === "Swashbuckler" && source === SRC_SCAG)
+				|| (shortName === "Storm" && source === SRC_SCAG)
+				|| (shortName === "Deep Stalker Conclave" && source === SRC_UATRR)
 			);
 	},
 
@@ -2162,29 +2202,25 @@ SourceUtil = {
 };
 
 // CONVENIENCE/ELEMENTS ================================================================================================
-Math.sum = Math.sum ||
-	function (...values) {
-		return values.reduce((a, b) => a + b, 0);
-	};
+Math.sum = Math.sum || function (...values) {
+	return values.reduce((a, b) => a + b, 0);
+};
 
-Math.mean = Math.mean ||
-	function (...values) {
-		return Math.sum(...values) / values.length;
-	};
+Math.mean = Math.mean || function (...values) {
+	return Math.sum(...values) / values.length;
+};
 
-Math.meanAbsoluteDeviation = Math.meanAbsoluteDeviation ||
-	function (...values) {
-		const mean = Math.mean(...values);
-		return Math.mean(...(values.map(num => Math.abs(num - mean))));
-	};
+Math.meanAbsoluteDeviation = Math.meanAbsoluteDeviation || function (...values) {
+	const mean = Math.mean(...values);
+	return Math.mean(...(values.map(num => Math.abs(num - mean))));
+};
 
-Math.seed = Math.seed ||
-	function (s) {
-		return function () {
-			s = Math.sin(s) * 10000;
-			return s - Math.floor(s);
-		};
+Math.seed = Math.seed || function (s) {
+	return function () {
+		s = Math.sin(s) * 10000;
+		return s - Math.floor(s);
 	};
+};
 
 function xor (a, b) {
 	return !a !== !b;
@@ -2448,7 +2484,7 @@ MiscUtil = {
 		return true;
 	},
 
-	getProperty (object, ...path) {
+	get (object, ...path) {
 		for (let i = 0; i < path.length; ++i) {
 			object = object[path[i]];
 			if (object == null) return object;
@@ -2757,10 +2793,14 @@ ContextUtil = {
 		let i = 0;
 		labels.forEach(it => {
 			if (it === null) tempString += `<li class="divider"/>`;
-			else if (it.disabled) {
-				tempString += `<li class="disabled"><a href="${STR_VOID_LINK}">${it.text}</a></li>`;
+			else if (typeof it === "object") {
+				if (it.disabled) tempString += `<li class="disabled"><span>${it.text}</span></li>`;
+				else {
+					tempString += `<li><span data-ctx-id="${i}" ${it.title ? `title="${it.title.escapeQuotes()}"` : ""}>${it.text}</span></li>`;
+					i++;
+				}
 			} else {
-				tempString += `<li><a data-ctx-id="${i}" href="${STR_VOID_LINK}">${it}</a></li>`;
+				tempString += `<li><span data-ctx-id="${i}">${it}</span></li>`;
 				i++;
 			}
 		});
@@ -2790,7 +2830,7 @@ ContextUtil = {
 				top: ContextUtil._getMenuPosition(menuId, evt.clientY, "height", "scrollTop")
 			})
 			.off("click")
-			.on("click", "a", function (e) {
+			.on("click", "span", function (e) {
 				$menu.hide();
 				if (ContextUtil._ctxOpenRefs[menuId][thisId]) ContextUtil._ctxOpenRefs[menuId][thisId](true);
 				delete ContextUtil._ctxOpenRefs[menuId][thisId];
@@ -3816,7 +3856,7 @@ UrlUtil = {
 			else return `${curr}?ver=${VERSION_NUMBER}`;
 		}
 
-		if (!IS_ROLL20 && IS_DEPLOYED) return addGetParam(`${DEPLOYED_STATIC_ROOT}${href}`);
+		if (!IS_VTT && IS_DEPLOYED) return addGetParam(`${DEPLOYED_STATIC_ROOT}${href}`);
 		else if (IS_DEPLOYED) return addGetParam(href);
 		return href;
 	},
@@ -4048,7 +4088,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PACT_BOON] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARTIFICER_INFUSION] = UrlUtil.PG_OPT_FEATURES;
 
-if (!IS_DEPLOYED && !IS_ROLL20 && typeof window !== "undefined") {
+if (!IS_DEPLOYED && !IS_VTT && typeof window !== "undefined") {
 	// for local testing, hotkey to get a link to the current page on the main site
 	window.addEventListener("keypress", (e) => {
 		if (noModifierKeys(e) && typeof d20 === "undefined") {
@@ -4373,9 +4413,9 @@ DataUtil = {
 		// TODO in future, allow value to be e.g. a string (assumed to be an official data's source); an object e.g. `{type: external, url: <>}`,...
 		switch (key) {
 			case "monster": {
-				const index = await DataUtil.loadJSON(`data/bestiary/index.json`);
+				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`);
 				if (!index[value]) throw new Error(`Bestiary index did not contain source "${value}"`);
-				return `data/bestiary/${index[value]}`;
+				return `${Renderer.get().baseUrl}data/bestiary/${index[value]}`;
 			}
 			default: throw new Error(`Could not get loadable URL for \`${JSON.stringify({key, value})}\``);
 		}
@@ -4584,6 +4624,12 @@ StorageUtil = {
 		StorageUtil._initAsync = true;
 
 		try {
+			// check if IndexedDB is available (i.e. not in Firefox private browsing)
+			await new Promise((resolve, reject) => {
+				const request = window.indexedDB.open("_test_db", 1);
+				request.onerror = reject;
+				request.onsuccess = resolve;
+			});
 			await localforage.setItem("_storage_check", true);
 			return localforage;
 		} catch (e) {
@@ -4779,7 +4825,7 @@ BrewUtil = {
 		if (options.filterBox) BrewUtil._filterBox = options.filterBox;
 		if (options.sourceFilter) BrewUtil._sourceFilter = options.sourceFilter;
 		// allow external source for handleBrew
-		if (options.pHandleBrew) this._pHandleBrew = options.pHandleBrew;
+		if (options.pHandleBrew !== undefined) this._pHandleBrew = options.pHandleBrew;
 	},
 
 	async pAddBrewData () {
@@ -4811,7 +4857,7 @@ BrewUtil = {
 	},
 
 	async pAddLocalBrewData (callbackFn = async (d, page) => BrewUtil.pDoHandleBrewJson(d, page, null)) {
-		if (!IS_ROLL20 && !IS_DEPLOYED) {
+		if (!IS_VTT && !IS_DEPLOYED) {
 			const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${JSON_HOMEBREW_INDEX}`);
 			// auto-load from `homebrew/`, for custom versions of the site
 			if (data.toImport.length) {
@@ -5276,6 +5322,7 @@ BrewUtil = {
 						<span class="col-5 manbrew__col--tall source manbrew__source">${isGroup ? "<i>" : ""}${src.full}${isGroup ? "</i>" : ""}</span>
 						<span class="col-4 manbrew__col--tall authors">${validAuthors}</span>
 						<${src.url ? "a" : "span"} class="col-1 manbrew__col--tall text-center" ${src.url ? `href="${src.url}" target="_blank" rel="noopener"` : ""}>${src.url ? "View Source" : ""}</${src.url ? "a" : "span"}>
+						<span class="hidden abbreviation">${src.abbreviation}</span>
 					</li>`);
 				createButtons(src, $row);
 				$ul.append($row);
@@ -5294,7 +5341,7 @@ BrewUtil = {
 			// hack to delay list indexing, otherwise it seems to fail
 			setTimeout(() => {
 				const list = new List("outerbrewlistcontainer", {
-					valueNames: ["source", "authors"],
+					valueNames: ["source", "authors", "abbreviation"],
 					listClass: "brew-list--target"
 				});
 				ListUtil.bindEscapeKey(list, $lst.find(`.search`), true);
@@ -5609,7 +5656,7 @@ BrewUtil = {
 			case UrlUtil.PG_MAKE_SHAPED:
 			case UrlUtil.PG_TABLES:
 			case UrlUtil.PG_VEHICLES:
-				(BrewUtil._pHandleBrew || handleBrew)(toAdd);
+				await (BrewUtil._pHandleBrew || handleBrew)(toAdd);
 				break;
 			case UrlUtil.PG_MANAGE_BREW:
 			case UrlUtil.PG_DEMO:
@@ -5704,10 +5751,15 @@ BrewUtil = {
 	sourceJsonToStyle (source) {
 		BrewUtil._buildSourceCache();
 		if (BrewUtil._sourceCache[source] && BrewUtil._sourceCache[source].color) {
-			const validColor = BrewUtil._sourceCache[source].color.trim().replace(/[^0-9a-fA-F]+/g, "").slice(0, 8);
+			const validColor = BrewUtil.getValidColor(BrewUtil._sourceCache[source].color);
 			if (validColor.length) return `style="color: #${validColor};"`;
 			return "";
 		} else return "";
+	},
+
+	getValidColor (color) {
+		// Prevent any injection shenenagins
+		return color.replace(/[^a-fA-F0-9]/g, "").slice(0, 8);
 	},
 
 	addSource (source) {
@@ -6066,59 +6118,54 @@ CollectionUtil = {
 	}
 };
 
-Array.prototype.last = Array.prototype.last ||
-	function () {
-		return this[this.length - 1];
-	};
+Array.prototype.last = Array.prototype.last || function () {
+	return this[this.length - 1];
+};
 
-Array.prototype.filterIndex = Array.prototype.filterIndex ||
-	function (fnCheck) {
-		const out = [];
-		this.forEach((it, i) => {
-			if (fnCheck(it)) out.push(i);
-		});
-		return out;
-	};
+Array.prototype.filterIndex = Array.prototype.filterIndex || function (fnCheck) {
+	const out = [];
+	this.forEach((it, i) => {
+		if (fnCheck(it)) out.push(i);
+	});
+	return out;
+};
 
-Array.prototype.equals = Array.prototype.equals ||
-	function (array2) {
-		const array1 = this;
-		if (!array1 && !array2) return true;
-		else if ((!array1 && array2) || (array1 && !array2)) return false;
+Array.prototype.equals = Array.prototype.equals || function (array2) {
+	const array1 = this;
+	if (!array1 && !array2) return true;
+	else if ((!array1 && array2) || (array1 && !array2)) return false;
 
-		let temp = [];
-		if ((!array1[0]) || (!array2[0])) return false;
-		if (array1.length !== array2.length) return false;
-		let key;
-		// Put all the elements from array1 into a "tagged" array
-		for (let i = 0; i < array1.length; i++) {
-			key = (typeof array1[i]) + "~" + array1[i]; // Use "typeof" so a number 1 isn't equal to a string "1".
-			if (temp[key]) temp[key]++;
-			else temp[key] = 1;
-		}
-		// Go through array2 - if same tag missing in "tagged" array, not equal
-		for (let i = 0; i < array2.length; i++) {
-			key = (typeof array2[i]) + "~" + array2[i];
-			if (temp[key]) {
-				if (temp[key] === 0) return false;
-				else temp[key]--;
-			} else return false;
-		}
-		return true;
-	};
+	let temp = [];
+	if ((!array1[0]) || (!array2[0])) return false;
+	if (array1.length !== array2.length) return false;
+	let key;
+	// Put all the elements from array1 into a "tagged" array
+	for (let i = 0; i < array1.length; i++) {
+		key = (typeof array1[i]) + "~" + array1[i]; // Use "typeof" so a number 1 isn't equal to a string "1".
+		if (temp[key]) temp[key]++;
+		else temp[key] = 1;
+	}
+	// Go through array2 - if same tag missing in "tagged" array, not equal
+	for (let i = 0; i < array2.length; i++) {
+		key = (typeof array2[i]) + "~" + array2[i];
+		if (temp[key]) {
+			if (temp[key] === 0) return false;
+			else temp[key]--;
+		} else return false;
+	}
+	return true;
+};
 
-Array.prototype.partition = Array.prototype.partition ||
-	function (fnIsValid) {
-		return this.reduce(([pass, fail], elem) => fnIsValid(elem) ? [[...pass, elem], fail] : [pass, [...fail, elem]], [[], []]);
-	};
+Array.prototype.partition = Array.prototype.partition || function (fnIsValid) {
+	return this.reduce(([pass, fail], elem) => fnIsValid(elem) ? [[...pass, elem], fail] : [pass, [...fail, elem]], [[], []]);
+};
 
-Array.prototype.getNext = Array.prototype.getNext ||
-	function (curVal) {
-		let ix = this.indexOf(curVal);
-		if (!~ix) throw new Error("Value was not in array!");
-		if (++ix >= this.length) ix = 0;
-		return this[ix];
-	};
+Array.prototype.getNext = Array.prototype.getNext || function (curVal) {
+	let ix = this.indexOf(curVal);
+	if (!~ix) throw new Error("Value was not in array!");
+	if (++ix >= this.length) ix = 0;
+	return this[ix];
+};
 
 // OVERLAY VIEW ========================================================================================================
 /**
@@ -6405,60 +6452,8 @@ class ReactorEvent {
 	}
 }
 
-// STATE PROXY =========================================================================================================
-class ProxyBase {
-	constructor () {
-		this.__hooks = {};
-		this.__hooksAll = {};
-	}
-
-	_getProxy (hookProp, toProxy) {
-		return new Proxy(toProxy, {
-			set: (object, prop, value) => {
-				object[prop] = value;
-				if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, value));
-				if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, value));
-				return true;
-			},
-			deleteProperty: (object, prop) => {
-				delete object[prop];
-				if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, null));
-				if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, null));
-				return true;
-			}
-		});
-	}
-
-	/**
-	 * Register a hook versus a root property on the state object. **INTERNAL CHANGES TO CHILD OBJECTS ON THE STATE
-	 *   OBJECT ARE NOT TRACKED**.
-	 * @param hookProp The state object.
-	 * @param prop The root property to track.
-	 * @param hook The hook to run. Will be called with two arguments; the property and the value of the property being
-	 *   modified.
-	 */
-	_addHook (hookProp, prop, hook) {
-		((this.__hooks[hookProp] = this.__hooks[hookProp] || {})[prop] = (this.__hooks[hookProp][prop] || [])).push(hook);
-	}
-
-	_addHookAll (hookProp, hook) {
-		(this.__hooksAll[hookProp] = this.__hooksAll[hookProp] || []).push(hook);
-	}
-
-	_removeHook (hookProp, prop, hook) {
-		if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) {
-			const ix = this.__hooks[hookProp][prop].findIndex(hk => hk === hook);
-			if (~ix) this.__hooks[hookProp][prop].splice(ix, 1);
-		}
-	}
-
-	_resetHooks (hookProp) {
-		delete this.__hooks[hookProp];
-	}
-}
-
-// LEGAL NOTICE ========================================================================================================
-if (!IS_ROLL20 && typeof window !== "undefined") {
+// MISC WEBPAGE ONLOADS ================================================================================================
+if (!IS_VTT && typeof window !== "undefined") {
 	// add an obnoxious banner
 	// TODO is this something we want? If so, uncomment
 	/*
@@ -6476,9 +6471,12 @@ if (!IS_ROLL20 && typeof window !== "undefined") {
 	// Hack to lock the ad space at original size--prevents the screen from shifting around once loaded
 	setTimeout(() => {
 		const $wrp = $(`.cancer__wrp-leaderboard`);
-		const w = $wrp.outerWidth();
+		// const w = $wrp.outerWidth();
 		const h = $wrp.outerHeight();
-		$wrp.css({width: w, height: h});
+		$wrp.css({
+			// width: w,
+			height: h
+		});
 	}, 5000);
 }
 

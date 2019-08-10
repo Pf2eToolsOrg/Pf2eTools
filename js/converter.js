@@ -2,58 +2,56 @@
 
 window.onload = doPageInit;
 
-String.prototype.split_handleColon = String.prototype.split_handleColon ||
-	function (str, maxSplits = Number.MAX_SAFE_INTEGER) {
-		if (str === "") return this.split("");
+String.prototype.split_handleColon = String.prototype.split_handleColon || function (str, maxSplits = Number.MAX_SAFE_INTEGER) {
+	if (str === "") return this.split("");
 
-		const colonStr = `${str.trim()}:`;
-		const isColon = this.toLowerCase().startsWith(colonStr.toLowerCase());
+	const colonStr = `${str.trim()}:`;
+	const isColon = this.toLowerCase().startsWith(colonStr.toLowerCase());
 
-		const re = isColon ? new RegExp(colonStr, "ig") : new RegExp(str, "ig");
-		const targetString = isColon ? colonStr : str;
+	const re = isColon ? new RegExp(colonStr, "ig") : new RegExp(str, "ig");
+	const targetString = isColon ? colonStr : str;
 
-		let m = re.exec(this);
-		let splits = 0;
-		const out = [];
-		const indexes = [];
+	let m = re.exec(this);
+	let splits = 0;
+	const out = [];
+	const indexes = [];
 
-		while (m && splits < maxSplits) {
-			indexes.push(m.index);
+	while (m && splits < maxSplits) {
+		indexes.push(m.index);
 
-			splits++;
-			m = re.exec(this);
-		}
+		splits++;
+		m = re.exec(this);
+	}
 
-		if (indexes.length === 1) {
-			out.push(this.substring(0, indexes[0]));
-			out.push(this.substring(indexes[0] + targetString.length, this.length));
-		} else {
-			for (let i = 0; i < indexes.length - 1; ++i) {
-				const start = indexes[i];
+	if (indexes.length === 1) {
+		out.push(this.substring(0, indexes[0]));
+		out.push(this.substring(indexes[0] + targetString.length, this.length));
+	} else {
+		for (let i = 0; i < indexes.length - 1; ++i) {
+			const start = indexes[i];
 
-				if (i === 0) {
-					out.push(this.substring(0, start));
-				}
+			if (i === 0) {
+				out.push(this.substring(0, start));
+			}
 
-				const end = indexes[i + 1];
-				out.push(this.substring(start + targetString.length, end));
+			const end = indexes[i + 1];
+			out.push(this.substring(start + targetString.length, end));
 
-				if (i === indexes.length - 2) {
-					out.push(this.substring(end + targetString.length, this.length))
-				}
+			if (i === indexes.length - 2) {
+				out.push(this.substring(end + targetString.length, this.length));
 			}
 		}
+	}
 
-		return out.map(it => it.trim());
-	};
+	return out.map(it => it.trim());
+};
 
-String.prototype.indexOf_handleColon = String.prototype.indexOf_handleColon ||
-	function (str) {
-		const colonStr = `${str.trim()}:`;
-		const idxColon = this.toLowerCase().indexOf(colonStr.toLowerCase());
-		if (~idxColon) return idxColon;
-		return this.toLowerCase().indexOf(str.toLowerCase());
-	};
+String.prototype.indexOf_handleColon = String.prototype.indexOf_handleColon || function (str) {
+	const colonStr = `${str.trim()}:`;
+	const idxColon = this.toLowerCase().indexOf(colonStr.toLowerCase());
+	if (~idxColon) return idxColon;
+	return this.toLowerCase().indexOf(str.toLowerCase());
+};
 
 class ConverterUi {
 	constructor () {
@@ -944,8 +942,8 @@ class StatblockConverter {
 			curLine = stripQuote(curLine).trim();
 			if (curLine === "") continue;
 			else if (
-				(curLine === "___" && prevBlank) || // handle nicely separated blocks
-				curLineRaw === "___" // handle multiple stacked blocks
+				(curLine === "___" && prevBlank) // handle nicely separated blocks
+				|| curLineRaw === "___" // handle multiple stacked blocks
 			) {
 				if (stats !== null) hasMultipleBlocks = true;
 				doOutputStatblock();

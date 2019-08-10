@@ -614,8 +614,7 @@ const randomLootTables = {
 			const homebrew = await BrewUtil.pAddBrewData();
 			brewItems = await Renderer.item.getItemsFromHomebrew(homebrew);
 		} catch (e) {
-			BrewUtil.pPurgeBrew();
-			setTimeout(() => { throw e });
+			BrewUtil.pPurgeBrew(e);
 		}
 		const allItems = stockItems.concat(brewItems);
 

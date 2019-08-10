@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.1.2",
+	"version": "1.2.0",
 	"type": "object",
 	"properties": {
 		"feat": {
@@ -120,51 +120,67 @@
 						}
 					},
 					"ability": {
-						"type": "object",
-						"properties": {
-							"choose": {
-								"type": "array",
-								"items": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"str": {
+									"type": "integer"
+								},
+								"dex": {
+									"type": "integer"
+								},
+								"con": {
+									"type": "integer"
+								},
+								"int": {
+									"type": "integer"
+								},
+								"wis": {
+									"type": "integer"
+								},
+								"cha": {
+									"type": "integer"
+								},
+								"choose": {
+
 									"type": "object",
 									"properties": {
 										"from": {
 											"type": "array",
 											"items": {
-												"type": "string",
 												"enum": ["str", "dex", "con", "int", "wis", "cha"]
-											}
+											},
+											"uniqueItems": true
+										},
+										"count": {
+											"type": "integer"
 										},
 										"amount": {
 											"type": "integer"
 										},
-										"textreference": {
-											"type": "boolean"
+										"weighted": {
+											"type": "object",
+											"properties": {
+												"from": {
+													"type": "array",
+													"items": {
+														"enum": ["str", "dex", "con", "int", "wis", "cha"]
+													},
+													"uniqueItems": true
+												},
+												"weights": {
+													"type": "array",
+													"items": {
+														"type": "integer"
+													}
+												}
+											}
 										}
-									},
-									"required": ["from"],
-									"additionalProperties": false
+									}
 								}
-							},
-							"str": {
-								"type": "integer"
-							},
-							"dex": {
-								"type": "integer"
-							},
-							"con": {
-								"type": "integer"
-							},
-							"int": {
-								"type": "integer"
-							},
-							"wis": {
-								"type": "integer"
-							},
-							"cha": {
-								"type": "integer"
 							}
-						},
-						"additionalProperties": false
+						}
 					}
 				},
 				"required": ["name", "source", "entries"],

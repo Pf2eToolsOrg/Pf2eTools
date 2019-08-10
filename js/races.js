@@ -21,13 +21,12 @@ function getAbilityObjs (abils) {
 	}
 
 	const out = new CollectionUtil.ObjectSet();
-	if (abils.choose) {
-		abils.choose.forEach(ch => {
-			if (ch.predefined) {
-				ch.predefined.forEach(pre => {
-					Object.keys(pre).forEach(abil => out.add(makeAbilObj(abil, pre[abil])));
-				});
-			} else if (ch.weighted) {
+
+	(abils || []).forEach(abil => {
+		if (abil.choose) {
+			const ch = abil.choose;
+
+			if (ch.weighted) {
 				// add every ability + weight combo
 				ch.weighted.from.forEach(f => {
 					ch.weighted.weights.forEach(w => {
@@ -38,9 +37,10 @@ function getAbilityObjs (abils) {
 				const by = ch.amount || 1;
 				ch.from.forEach(asi => out.add(makeAbilObj(asi, by)));
 			}
-		});
-	}
-	Object.keys(abils).filter(abil => abil !== "choose").forEach(abil => out.add(makeAbilObj(abil, abils[abil])));
+		}
+		Object.keys(abil).filter(prop => prop !== "choose").forEach(prop => out.add(makeAbilObj(prop, abil[prop])));
+	});
+
 	return Array.from(out.values());
 }
 
@@ -324,7 +324,7 @@ class RacesPage extends ListPage {
 		}
 
 		function buildFluffTab (isImageTab) {
-			return Renderer.utils.buildFluffTab(
+			return Renderer.utils.pBuildFluffTab(
 				isImageTab,
 				$pgContent,
 				race,

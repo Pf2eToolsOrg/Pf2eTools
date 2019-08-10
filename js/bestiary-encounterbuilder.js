@@ -1009,7 +1009,7 @@ class EncounterBuilder extends ProxyBase {
 					</select>
 				</div>
 				${!isFirst ? `
-				<div class="col-2 flex" style="margin-left: -20px; align-items: center; height: 20px;">
+				<div class="col-2 flex" style="margin-left: -10px; align-items: center; height: 20px;">
 					<button class="btn btn-danger btn-xs ecgen__del_players" onclick="encounterBuilder.removePlayerRow(this)" title="Remove Player Group">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button>
@@ -1070,13 +1070,23 @@ class EncounterBuilder extends ProxyBase {
 				const encounter = this._state.savedEncounters[this._state.activeKey];
 				this._$iptName.val(encounter.name);
 			} else this._$iptName.val("");
+			this.pSetSavedEncountersThrottled();
 		};
 		this._addHook("state", "savedEncounters", hookName);
 		this._addHook("state", "activeKey", hookName);
 		hookName();
 
+		this._$btnNew = $(`<button class="btn btn-default btn-xs mr-2" title="New Encounter"><span class="glyphicon glyphicon glyphicon-file"/></button>`)
+			.click(() => {
+				this._state.activeKey = null;
+				encounterBuilder.pReset();
+			});
+		const hookDisplayNew = () => this._$btnNew.toggleClass("hidden", !this._state.activeKey);
+		this._addHook("state", "activeKey", hookDisplayNew);
+		hookDisplayNew();
+
 		// TODO set window title to encounter name on save?
-		this._$btnSave = $(`<button class="btn btn-primary btn-xs mr-2">Save Encounter</button>`)
+		this._$btnSave = $(`<button class="btn btn-default btn-xs mr-2" title="Save Encounter"/>`)
 			.click(async () => {
 				if (this._state.activeKey) {
 					const encounter = this._state.savedEncounters[this._state.activeKey];
@@ -1106,6 +1116,9 @@ class EncounterBuilder extends ProxyBase {
 					}
 				}
 			});
+		const hookButtonText = () => this._$btnSave.html(this._state.activeKey ? `<span class="glyphicon glyphicon-floppy-disk"/>` : "Save Encounter");
+		this._addHook("state", "activeKey", hookButtonText);
+		hookButtonText();
 
 		const pDoReload = async () => {
 			const inStorage = await EncounterUtil.pGetSavedState();
@@ -1126,7 +1139,7 @@ class EncounterBuilder extends ProxyBase {
 		this._$btnReload = $(`<button class="btn btn-default btn-xs mr-2" title="Reload Current Encounter"><span class="glyphicon glyphicon-refresh"/></button>`)
 			.click(() => pDoReload());
 
-		this._$btnLoad = $(`<button class="btn btn-primary btn-xs">Load Existing Encounter</button>`)
+		this._$btnLoad = $(`<button class="btn btn-default btn-xs">Load Encounter</button>`)
 			.click(async () => {
 				const inStorage = await EncounterUtil.pGetSavedState();
 				const {$modalInner} = UiUtil.getShowModal({title: "Saved Encounters"});
@@ -1160,11 +1173,11 @@ class EncounterBuilder extends ProxyBase {
 
 							const $btnDelete = $(`<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"/></button>`)
 								.click(() => {
+									if (this._state.activeKey === k) this._state.activeKey = null;
 									this._state.savedEncounters = Object.keys(this._state.savedEncounters)
 										.filter(it => it !== k)
 										.map(it => ({[it]: this._state.savedEncounters[it]}))
 										.reduce((a, b) => Object.assign(a, b), {});
-									if (this._state.activeKey === k) this._state.activeKey = null;
 									$row.remove();
 									if (!--rendered) $$`<div class="w-100 flex-vh-center italic">No saved encounters</div>`.appendTo($wrpRows);
 									this.pSetSavedEncountersThrottled();
@@ -1189,7 +1202,7 @@ class EncounterBuilder extends ProxyBase {
 
 		$$`<div class="flex-col" style="align-items: flex-end;">
 			${this._$iptName}
-			<div class="flex-h-right">${this._$btnSave}${this._$btnReload}${this._$btnLoad}</div>
+			<div class="flex-h-right">${this._$btnNew}${this._$btnSave}${this._$btnReload}${this._$btnLoad}</div>
 		</div>`.appendTo($wrpControls);
 	}
 

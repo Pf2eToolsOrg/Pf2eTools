@@ -27,7 +27,7 @@ function rarityValue (rarity) {
 }
 
 function sortItems (a, b, o) {
-	if (o.valueName === "name") return b._values.name.toLowerCase() > a._values.name.toLowerCase() ? 1 : -1;
+	if (o.valueName === "name") return SortUtil.ascSortLower(b._values.name, a._values.name);
 	else if (o.valueName === "type") {
 		if (b._values.type === a._values.type) return SortUtil.compareNames(a, b);
 		return b._values.type.toLowerCase() > a._values.type.toLowerCase() ? 1 : -1;
@@ -420,39 +420,15 @@ function loadHash (id) {
 		$content.find("td#source span").html(`<i>${sourceFull}</i>${item.page > 0 ? `, page ${item.page}${addSourceText || ""}` : ""}`);
 
 		$content.find("tr.text").remove();
-		const renderStack = [];
-		if (item.entries && item.entries.length) {
-			const entryList = {type: "entries", entries: item.entries};
-			renderer.recursiveRender(entryList, renderStack, {depth: 1});
-		}
 
-		if (item.additionalEntries) {
-			const additionEntriesList = {type: "entries", entries: item.additionalEntries};
-			renderer.recursiveRender(additionEntriesList, renderStack, {depth: 1});
-		}
+		const renderedText = Renderer.item.getRenderedEntries(item);
 
-		if (item.lootTables) {
-			renderStack.push(`<div><span class="bold">Found On: </span>${item.lootTables.sort(SortUtil.ascSortLower).map(tbl => renderer.render(`{@table ${tbl}}`)).join(", ")}</div>`);
-		}
-
-		const renderedText = renderStack.join("")
-			.split(item.name.toLowerCase())
-			.join(`<i>${item.name.toLowerCase()}</i>`)
-			.split(item.name.toLowerCase().toTitleCase())
-			.join(`<i>${item.name.toLowerCase().toTitleCase()}</i>`);
-		if (renderedText && renderedText.trim()) {
-			$content.find("tr#text").show().after(`
-			<tr class="text">
-				<td colspan="6" class="text1">
-					${renderedText}
-				</td>
-			</tr>
-		`);
-		} else $content.find("tr#text").hide();
+		if (renderedText) $content.find("tr#text").show().after(`<tr class="text"><td colspan="6">${renderedText}</td></tr>`);
+		else $content.find("tr#text").hide();
 	}
 
 	function buildFluffTab (isImageTab) {
-		return Renderer.utils.buildFluffTab(
+		return Renderer.utils.pBuildFluffTab(
 			isImageTab,
 			$content,
 			item,

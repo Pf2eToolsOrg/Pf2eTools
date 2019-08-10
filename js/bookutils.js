@@ -477,9 +477,9 @@ const BookUtil = {
 		const bookId = decodeURIComponent(bookIdRaw);
 
 		// if current chapter is -1 (full book mode), and a chapter is specified, override + stay in full-book mode
-		if (BookUtil.curRender.chapter === -1 &&
-			hashParts.length && hashParts[0] !== "-1" &&
-			UrlUtil.encodeForHash(BookUtil.curRender.curBookId) === UrlUtil.encodeForHash(bookId)) {
+		if (BookUtil.curRender.chapter === -1
+			&& hashParts.length && hashParts[0] !== "-1"
+			&& UrlUtil.encodeForHash(BookUtil.curRender.curBookId) === UrlUtil.encodeForHash(bookId)) {
 			window.history.replaceState(
 				{},
 				document.title,
@@ -499,8 +499,7 @@ const BookUtil = {
 					pHandleFound(fromIndex, bookData);
 				})
 				.catch(e => {
-					BrewUtil.pPurgeBrew();
-					setTimeout(() => { throw e; });
+					BrewUtil.pPurgeBrew(e);
 				});
 		} else handleNotFound();
 	},

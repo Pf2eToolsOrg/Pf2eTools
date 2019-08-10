@@ -11,40 +11,9 @@ const META_ADD_M = "Material";
 const META_ADD_R = "Royalty";
 const META_ADD_M_COST = "Material with Cost";
 const META_ADD_M_CONSUMED = "Material is Consumed";
-const META_ADD_MB_SIGHT = "Requires Sight";
-const META_ADD_MB_PERMANENT = "Permanent Effects";
-const META_ADD_MB_SCALING = "Scaling Effects";
-const META_ADD_MB_SUMMONS = "Summons Creature";
-const META_ADD_MB_HEAL = "Healing";
 // real meta tags
 const META_RITUAL = "Ritual";
 const META_TECHNOMAGIC = "Technomagic";
-
-const STR_WIZARD = "Wizard";
-const STR_FIGHTER = "Fighter";
-const STR_ROGUE = "Rogue";
-const STR_CLERIC = "Cleric";
-const STR_SORCERER = "Sorcerer";
-const STR_ELD_KNIGHT = "Eldritch Knight";
-const STR_ARC_TCKER = "Arcane Trickster";
-const STR_DIV_SOUL = "Divine Soul";
-const STR_FAV_SOUL_V2 = "Favored Soul v2 (UA)";
-const STR_FAV_SOUL_V3 = "Favored Soul v3 (UA)";
-
-const TM_ACTION = "action";
-const TM_B_ACTION = "bonus";
-const TM_REACTION = "reaction";
-const TM_ROUND = "round";
-const TM_MINS = "minute";
-const TM_HRS = "hour";
-const TO_HIDE_SINGLETON_TIMES = [TM_ACTION, TM_B_ACTION, TM_REACTION, TM_ROUND];
-const TIME_UNITS_TO_FULL = {};
-TIME_UNITS_TO_FULL[TM_ACTION] = "Action";
-TIME_UNITS_TO_FULL[TM_B_ACTION] = "Bonus Action";
-TIME_UNITS_TO_FULL[TM_REACTION] = "Reaction";
-TIME_UNITS_TO_FULL[TM_ROUND] = "Rounds";
-TIME_UNITS_TO_FULL[TM_MINS] = "Minutes";
-TIME_UNITS_TO_FULL[TM_HRS] = "Hours";
 
 const F_RNG_POINT = "Point";
 const F_RNG_SELF_AREA = "Self (Area)";
@@ -63,19 +32,19 @@ function getNormalisedTime (time) {
 	let multiplier = 1;
 	let offset = 0;
 	switch (firstTime.unit) {
-		case TM_B_ACTION:
+		case Parser.SP_TM_B_ACTION:
 			offset = 1;
 			break;
-		case TM_REACTION:
+		case Parser.SP_TM_REACTION:
 			offset = 2;
 			break;
-		case TM_ROUND:
+		case Parser.SP_TM_ROUND:
 			multiplier = 6;
 			break;
-		case TM_MINS:
+		case Parser.SP_TM_MINS:
 			multiplier = 60;
 			break;
-		case TM_HRS:
+		case Parser.SP_TM_HRS:
 			multiplier = 3600;
 			break;
 	}
@@ -159,7 +128,7 @@ function getNormalisedRange (range) {
 				break;
 			default: {
 				// it's homebrew?
-				const fromBrew = MiscUtil.getProperty(BrewUtil.homebrewMeta, "spellDistanceUnits", dist.type);
+				const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", dist.type);
 				if (fromBrew) {
 					const ftPerUnit = fromBrew.feetPerUnit;
 					if (ftPerUnit != null) {
@@ -200,13 +169,9 @@ function getRangeType (range) {
 }
 
 function getTblTimeStr (time) {
-	return (time.number === 1 && TO_HIDE_SINGLETON_TIMES.includes(time.unit))
-		? `${time.unit.uppercaseFirst()}${time.unit === TM_B_ACTION ? " acn." : ""}`
-		: `${time.number} ${time.unit === TM_B_ACTION ? "Bonus acn." : time.unit}${time.number > 1 ? "s" : ""}`.uppercaseFirst();
-}
-
-function getTimeDisplay (timeUnit) {
-	return TIME_UNITS_TO_FULL[timeUnit];
+	return (time.number === 1 && Parser.SP_TIME_SINGLETONS.includes(time.unit))
+		? `${time.unit.uppercaseFirst()}${time.unit === Parser.SP_TM_B_ACTION ? " acn." : ""}`
+		: `${time.number} ${time.unit === Parser.SP_TM_B_ACTION ? "Bonus acn." : time.unit}${time.number > 1 ? "s" : ""}`.uppercaseFirst();
 }
 
 function getClassFilterStr (c) {
@@ -228,11 +193,11 @@ function getMetaFilterObj (s) {
 	if (s.components && s.components.r) out.push(META_ADD_R);
 	if (s.components && s.components.m && s.components.m.cost) out.push(META_ADD_M_COST);
 	if (s.components && s.components.m && s.components.m.consume) out.push(META_ADD_M_CONSUMED);
-	if ((s.miscTags && s.miscTags.includes("PRM")) || s.duration.filter(it => it.type === "permanent").length) out.push(META_ADD_MB_PERMANENT);
-	if ((s.miscTags && s.miscTags.includes("SCL")) || s.entriesHigherLevel) out.push(META_ADD_MB_SCALING);
-	if (s.miscTags && s.miscTags.includes("HL")) out.push(META_ADD_MB_HEAL);
-	if (s.miscTags && s.miscTags.includes("SMN")) out.push(META_ADD_MB_SUMMONS);
-	if (s.miscTags && s.miscTags.includes("SGT")) out.push(META_ADD_MB_SIGHT);
+	if ((s.miscTags && s.miscTags.includes("PRM")) || s.duration.filter(it => it.type === "permanent").length) out.push(Parser.spMiscTagToFull("PRM"));
+	if ((s.miscTags && s.miscTags.includes("SCL")) || s.entriesHigherLevel) out.push(Parser.spMiscTagToFull("SCL"));
+	if (s.miscTags && s.miscTags.includes("HL")) out.push(Parser.spMiscTagToFull("HL"));
+	if (s.miscTags && s.miscTags.includes("SMN")) out.push(Parser.spMiscTagToFull("SMN"));
+	if (s.miscTags && s.miscTags.includes("SGT")) out.push(Parser.spMiscTagToFull("SGT"));
 	return out;
 }
 
@@ -245,35 +210,7 @@ function getFilterAbilityCheck (ability) {
 }
 
 function handleBrew (homebrew) {
-	if (homebrew.class) {
-		homebrew.class.filter(it => it.subclasses).forEach(c => {
-			(SUBCLASS_LOOKUP[c.source] =
-				SUBCLASS_LOOKUP[c.source] || {})[c.name] =
-				SUBCLASS_LOOKUP[c.source][c.name] || {};
-
-			const target = SUBCLASS_LOOKUP[c.source][c.name];
-			c.subclasses.forEach(sc => {
-				(target[sc.source] =
-					target[sc.source] || {})[sc.shortName || sc.name] =
-					target[sc.source][sc.shortName || sc.name] || sc.name
-			});
-		})
-	}
-
-	if (homebrew.subclass) {
-		homebrew.subclass.forEach(sc => {
-			const clSrc = sc.classSource || SRC_PHB;
-			(SUBCLASS_LOOKUP[clSrc] =
-				SUBCLASS_LOOKUP[clSrc] || {})[sc.class] =
-				SUBCLASS_LOOKUP[clSrc][sc.class] || {};
-
-			const target = SUBCLASS_LOOKUP[clSrc][sc.class];
-			(target[sc.source] =
-				target[sc.source] || {})[sc.shortName || sc.name] =
-				target[sc.source][sc.shortName || sc.name] || sc.name
-		})
-	}
-
+	RenderSpells.mergeHomebrewSubclassLookup(SUBCLASS_LOOKUP, homebrew);
 	addSpells(homebrew.spell);
 	return Promise.resolve();
 }
@@ -332,7 +269,7 @@ window.onload = async function load () {
 				areaTypeFilter
 			]
 		}),
-		DataUtil.loadJSON(`data/generated/gendata-subclass-lookup.json`),
+		RenderSpells.pGetSubclassLookup(),
 		ExcludeUtil.pInitialise()
 	]);
 	Object.assign(SUBCLASS_LOOKUP, subclassLookup);
@@ -364,21 +301,12 @@ const raceFilter = new Filter({header: "Race"});
 const backgroundFilter = new Filter({header: "Background"});
 const metaFilter = new Filter({
 	header: "Components & Miscellaneous",
-	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_M_CONSUMED, META_ADD_MB_HEAL, META_ADD_MB_SIGHT, META_ADD_MB_PERMANENT, META_ADD_MB_SCALING, META_ADD_MB_SUMMONS, META_RITUAL, META_TECHNOMAGIC],
+	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_M_CONSUMED, ...Object.keys(Parser.SP_MISC_TAG_TO_FULL), META_RITUAL, META_TECHNOMAGIC],
 	itemSortFn: null
 });
 const schoolFilter = new Filter({
 	header: "School",
-	items: [
-		SKL_ABV_ABJ,
-		SKL_ABV_CON,
-		SKL_ABV_DIV,
-		SKL_ABV_ENC,
-		SKL_ABV_EVO,
-		SKL_ABV_ILL,
-		SKL_ABV_NEC,
-		SKL_ABV_TRA
-	],
+	items: [...Parser.SKL_ABVS],
 	displayFn: Parser.spSchoolAbvToFull
 });
 const subSchoolFilter = new Filter({
@@ -388,14 +316,12 @@ const subSchoolFilter = new Filter({
 });
 const damageFilter = new Filter({
 	header: "Damage Type",
-	items: [
-		"acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"
-	],
+	items: MiscUtil.copy(Parser.DMG_TYPES),
 	displayFn: StrUtil.uppercaseFirst
 });
 const conditionFilter = new Filter({
 	header: "Conditions Inflicted",
-	items: ["blinded", "charmed", "deafened", "exhaustion", "frightened", "grappled", "incapacitated", "invisible", "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious"],
+	items: MiscUtil.copy(Parser.CONDITIONS),
 	displayFn: StrUtil.uppercaseFirst
 });
 const spellAttackFilter = new Filter({
@@ -419,14 +345,14 @@ const checkFilter = new Filter({
 const timeFilter = new Filter({
 	header: "Cast Time",
 	items: [
-		TM_ACTION,
-		TM_B_ACTION,
-		TM_REACTION,
-		TM_ROUND,
-		TM_MINS,
-		TM_HRS
+		Parser.SP_TM_ACTION,
+		Parser.SP_TM_B_ACTION,
+		Parser.SP_TM_REACTION,
+		Parser.SP_TM_ROUND,
+		Parser.SP_TM_MINS,
+		Parser.SP_TM_HRS
 	],
-	displayFn: getTimeDisplay,
+	displayFn: Parser.spTimeUnitToFull,
 	itemSortFn: null
 });
 const durationFilter = new Filter({
@@ -580,8 +506,7 @@ async function pPageInit (loadedSources) {
 		}
 		if (homebrew.subclass) homebrew.subclass.forEach(sc => handleSubclass(sc.class, sc.classSource, sc));
 	} catch (e) {
-		setTimeout(() => { throw e; });
-		await BrewUtil.pPurgeBrew();
+		await BrewUtil.pPurgeBrew(e);
 	}
 }
 
@@ -652,96 +577,7 @@ function addSpells (data) {
 		if (spell.meta && spell.meta.ritual) levelText += " (rit.)";
 		if (spell.meta && spell.meta.technomagic) levelText += " (tec.)";
 
-		// add eldritch knight and arcane trickster
-		if (spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === STR_WIZARD && c.source === SRC_PHB).length) {
-			if (!spell.classes.fromSubclass) spell.classes.fromSubclass = [];
-			spell.classes.fromSubclass.push({
-				class: {name: STR_FIGHTER, source: SRC_PHB},
-				subclass: {name: STR_ELD_KNIGHT, source: SRC_PHB}
-			});
-			spell.classes.fromSubclass.push({
-				class: {name: STR_ROGUE, source: SRC_PHB},
-				subclass: {name: STR_ARC_TCKER, source: SRC_PHB}
-			});
-			if (spell.level > 4) {
-				spell._scrollNote = true;
-			}
-		}
-
-		// add divine soul, favored soul v2, favored soul v3
-		if (spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === STR_CLERIC && c.source === SRC_PHB).length) {
-			if (!spell.classes.fromSubclass) {
-				spell.classes.fromSubclass = [];
-				spell.classes.fromSubclass.push({
-					class: {name: STR_SORCERER, source: SRC_PHB},
-					subclass: {name: STR_DIV_SOUL, source: SRC_XGE}
-				});
-			} else {
-				if (!spell.classes.fromSubclass.find(it => it.class.name === STR_SORCERER && it.class.source === SRC_PHB && it.subclass.name === STR_DIV_SOUL && it.subclass.source === SRC_XGE)) {
-					spell.classes.fromSubclass.push({
-						class: {name: STR_SORCERER, source: SRC_PHB},
-						subclass: {name: STR_DIV_SOUL, source: SRC_XGE}
-					});
-				}
-			}
-			spell.classes.fromSubclass.push({
-				class: {name: STR_SORCERER, source: SRC_PHB},
-				subclass: {name: STR_FAV_SOUL_V2, source: SRC_UAS}
-			});
-			spell.classes.fromSubclass.push({
-				class: {name: STR_SORCERER, source: SRC_PHB},
-				subclass: {name: STR_FAV_SOUL_V3, source: SRC_UARSC}
-			});
-		}
-
-		if (spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Wizard")) {
-			if (spell.level === 0) {
-				// add high elf
-				(spell.races || (spell.races = [])).push({
-					name: "Elf (High)",
-					source: SRC_PHB,
-					baseName: "Elf",
-					baseSource: SRC_PHB
-				});
-				// add arcana cleric
-				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
-					class: {name: STR_CLERIC, source: SRC_PHB},
-					subclass: {name: "Arcana", source: SRC_SCAG}
-				});
-			}
-
-			// add arcana cleric
-			if (spell.level >= 6) {
-				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
-					class: {name: STR_CLERIC, source: SRC_PHB},
-					subclass: {name: "Arcana", source: SRC_SCAG}
-				});
-			}
-		}
-
-		if (spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Druid")) {
-			if (spell.level === 0) {
-				// add nature cleric
-				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
-					class: {name: STR_CLERIC, source: SRC_PHB},
-					subclass: {name: "Nature", source: SRC_PHB}
-				});
-			}
-		}
-
-		// add homebrew class/subclass
-		const lowName = spell.name.toLowerCase();
-		if (brewSpellClasses[spell.source] && brewSpellClasses[spell.source][lowName]) {
-			spell.classes = spell.classes || {};
-			if (brewSpellClasses[spell.source][lowName].fromClassList.length) {
-				spell.classes.fromClassList = spell.classes.fromClassList || [];
-				spell.classes.fromClassList = spell.classes.fromClassList.concat(brewSpellClasses[spell.source][lowName].fromClassList);
-			}
-			if (brewSpellClasses[spell.source][lowName].fromSubclass.length) {
-				spell.classes.fromSubclass = spell.classes.fromSubclass || [];
-				spell.classes.fromSubclass = spell.classes.fromSubclass.concat(brewSpellClasses[spell.source][lowName].fromSubclass);
-			}
-		}
+		RenderSpells.initClasses(spell, brewSpellClasses);
 
 		// used for sorting
 		spell._normalisedTime = getNormalisedTime(spell.time);
@@ -894,12 +730,10 @@ function sortSpells (a, b, o) {
 	}
 }
 
-const renderer = Renderer.get();
 function loadHash (id) {
-	renderer.setFirstSection(true);
 	const $pageContent = $("#pagecontent").empty();
 	const spell = spellList[id];
-	$pageContent.append(Renderer.spell.getRenderedString(spell, renderer, SUBCLASS_LOOKUP));
+	$pageContent.append(RenderSpells.$getRenderedSpell(spell, SUBCLASS_LOOKUP));
 	loadSubHash([]);
 
 	ListUtil.updateSelected();

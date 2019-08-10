@@ -18,6 +18,7 @@
 
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
+	<script type="text/javascript" src="js/browsercheck.js"></script>
 
 	<style>
 		/* GENERAL/PAGE STYLES */
@@ -145,28 +146,29 @@
 		.mkbru__wrp-btn-xxs {
 			padding-right: 3px;
 		}
-		/* *** */
 
-		/* CREATURE STYLES */
-		.mkbru_mon__wrp-rows {
+		/* Row (array) inputs */
+		.mkbru__wrp-rows {
 			border-bottom: 1px solid #cccccc80;
 			margin-bottom: 5px;
 		}
 
-		.mkbru_mon__wrp-rows--removable:only-child .mkbru_mon__btn-rm-row,
-		.mkbru_mon__wrp-rows--removable:only-child .mkbru__btn-up-row,
-		.mkbru_mon__wrp-rows--removable:only-child .mkbru__btn-down-row,
-		.mkbru_mon__wrp-rows--removable:only-child .mkbru__btn-drag-row,
+		.mkbru__wrp-rows--removable:only-child .mkbru__btn-rm-row,
+		.mkbru__wrp-rows--removable:only-child .mkbru__btn-up-row,
+		.mkbru__wrp-rows--removable:only-child .mkbru__btn-down-row,
+		.mkbru__wrp-rows--removable:only-child .mkbru__btn-drag-row,
 			/* CSS hacks to support nesting */
-		.mkbru_mon__wrp-rows--removable-nested-1:only-child .mkbru_mon__btn-rm-row--nested-1 {
+		.mkbru__wrp-rows--removable-nested-1:only-child .mkbru__btn-rm-row--nested-1 {
 			display: none;
 		}
 
-		.mkbru_mon__wrp-rows--removable:first-child .mkbru__btn-up-row,
-		.mkbru_mon__wrp-rows--removable:last-child .mkbru__btn-down-row {
+		.mkbru__wrp-rows--removable:first-child .mkbru__btn-up-row,
+		.mkbru__wrp-rows--removable:last-child .mkbru__btn-down-row {
 			display: none;
 		}
+		/* *** */
 
+		/* CREATURE STYLES */
 		.mkbru_mon__ac-split {
 			max-width: calc(50% - 0.25rem);
 		}
@@ -186,7 +188,6 @@
 		}
 
 		.mkbru_mon__spell-header-wrp {
-			justify-content: space-between;
 			width: 100%;
 			align-items: center;
 		}
@@ -274,10 +275,12 @@
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
 <script type="text/javascript" src="js/render-bestiary.js"></script>
+<script type="text/javascript" src="js/render-spells.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/converterutils.js"></script>
 <script type="text/javascript" src="js/makebrew.js"></script>
 <script type="text/javascript" src="js/makebrew-creature.js"></script>
+<script type="text/javascript" src="js/makebrew-spell.js"></script>
 <script type="text/javascript" src="lib/list.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery-ui.js"></script>

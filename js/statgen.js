@@ -154,7 +154,7 @@ class StatGen {
 		try {
 			brew = await BrewUtil.pAddBrewData();
 		} catch (e) {
-			return BrewUtil.pPurgeBrew();
+			return BrewUtil.pPurgeBrew(e);
 		}
 
 		this.raceData = Renderer.race.mergeSubraces(data.race);
@@ -388,16 +388,17 @@ class StatGen {
 			$(".choose").hide().prop("checked", false);
 			$(".pbuy__choose_dummy").hide();
 
-			if (!stats.choose) {
+			// TODO this only handles the most basic "choose" format
+			if (!stats.choose || !stats.choose.from) {
 				this.raceChoiceAmount = null;
 				this.raceChoiceCount = null;
 				return;
 			}
 
 			this.raceStats = stats;
-			const {from} = stats.choose[0];
-			this.raceChoiceAmount = stats.choose[0].amount || 1;
-			this.raceChoiceCount = stats.choose[0].count;
+			const {from} = stats.choose;
+			this.raceChoiceAmount = stats.choose.amount || 1;
+			this.raceChoiceCount = stats.choose.count;
 
 			$chooseHead.text(`Choose ${this.raceChoiceCount}`).show();
 			Parser.ABIL_ABVS.forEach(abi => $(`#${abi} .${from.includes(abi) ? "choose" : "pbuy__choose_dummy"}`).show());
@@ -419,7 +420,7 @@ class StatGen {
 			$(`#custom`).hide();
 			const stats = race === ""
 				? {}
-				: this.raceData.find(({name, source}) => `${name}_${source}` === race).ability;
+				: this.raceData.find(({name, source}) => `${name}_${source}` === race).ability[0];
 			handleStats(stats);
 		}
 	}

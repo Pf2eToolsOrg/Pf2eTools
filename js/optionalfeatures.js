@@ -95,8 +95,9 @@ class OptionalFeaturesPage extends ListPage {
 				return it.entry;
 			});
 			it._fprereqSpell = it.prerequisite.filter(it => it.type === "prereqSpell").map(it => {
-				this._spellFilter.addItem((it.entries || []).map(it => it.split("#")[0]));
-				return it.entries;
+				const mapped = (it.entries || []).map(it => it.split("#")[0]);
+				this._spellFilter.addItem(mapped);
+				return mapped;
 			});
 			it._fprereqFeature = it.prerequisite.filter(it => it.type === "prereqFeature").map(it => {
 				this._featureFilter.addItem(it.entries);

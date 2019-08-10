@@ -50,7 +50,7 @@
 				{
 					"name": "Constrict",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}6 ({@damage 1d8 + 2}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 14}). Until this grapple ends, the creature is {@condition restrained}, and the snake can't constrict another target."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}6 ({@damage 1d8 + 2}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 14}). Until this grapple ends, the creature is {@condition restrained}, and the tentacle can't constrict another target."
 					]
 				}
 			],
@@ -67,18 +67,33 @@
 		{
 			"name": "Dagdra Deepforge",
 			"isNpc": true,
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"any race"
-				]
-			},
 			"source": "OoW",
 			"page": 145,
-			"alignment": [
-				"A"
-			],
+			"_copy": {
+				"name": "Priest",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the priest",
+						"with": "Dagdra",
+						"flags": "i"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Scroll Service (1/Day)",
+							"entries": [
+								"As an action, Dagdra draws a {@item spell scroll} from her {@item documancy satchel|AI}. The scroll contains a spell of up to 3rd level of Dagdra's choice. Only Dagdra can use the scroll, which vanishes after 1 minute."
+							]
+						}
+					}
+				},
+				"_trait": {
+					"name": "Mountain Dwarf",
+					"source": "PHB"
+				}
+			},
 			"ac": [
 				{
 					"ac": 15,
@@ -86,83 +101,6 @@
 						"{@item half plate armor|phb}"
 					]
 				}
-			],
-			"hp": {
-				"average": 27,
-				"formula": "5d8 + 5"
-			},
-			"speed": {
-				"walk": 25
-			},
-			"str": 10,
-			"dex": 10,
-			"con": 12,
-			"int": 13,
-			"wis": 16,
-			"cha": 13,
-			"skill": {
-				"medicine": "+7",
-				"persuasion": "+3",
-				"religion": "+5"
-			},
-			"resist": [
-				"poison"
-			],
-			"passive": 13,
-			"languages": [
-				"Common and Dwarvish"
-			],
-			"cr": "2",
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"trait": [
-				{
-					"name": "Divine Eminence",
-					"entries": [
-						"As a bonus action, the priest can expend a spell slot to cause its melee weapon attacks to magically deal an extra 10 ({@damage 3d6}) radiant damage to a target on a hit. This benefit lasts until the end of the turn. If the priest expends a spell slot of 2nd level or higher, the extra damage increases by {@dice 1d6} for each level above 1st."
-					]
-				},
-				{
-					"name": "Racial Trait",
-					"entries": [
-						"She has advantage on saving throws against poison."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Mace",
-					"entries": [
-						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d6}) bludgeoning damage."
-					]
-				}
-			],
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"The priest is a 5th-level spellcaster. Its spellcasting ability is Wisdom. The priest has the following cleric spells prepared: \\nCantrips (at will): light, sacred flame, thaumaturgy \\n1st level (4 slots): cure wounds, guiding bolt, sanctuary \\n2nd level (3 slots): lesser restoration, spiritual weapon \\n3rd level (2 slots): dispel magic, spirit guardians"
-					],
-					"ability": "wis"
-				}
-			],
-			"damageTags": [
-				"B",
-				"R"
-			],
-			"miscTags": [
-				"MW"
-			],
-			"languageTags": [
-				"C",
-				"D"
-			],
-			"senseTags": [
-				"D"
-			],
-			"spellcastingTags": [
-				"CC"
 			]
 		},
 		{
@@ -391,7 +329,7 @@
 						"mode": "replaceArr",
 						"replace": "Disintegration",
 						"items": {
-							"name": "",
+							"name": "Dismantlable",
 							"entries": [
 								"If the replica duodrone dies, its body falls into a pile of parts (gears, plates, screws, and wires), leaving behind its weapons and anything else it was carrying."
 							]
@@ -419,7 +357,7 @@
 						"mode": "replaceArr",
 						"replace": "Disintegration",
 						"items": {
-							"name": "",
+							"name": "Dismantlable",
 							"entries": [
 								"If the replica monodrone dies, its body falls into a pile of parts (gears, plates, screws, and wires), leaving behind its weapons and anything else it was carrying."
 							]
@@ -450,7 +388,7 @@
 						"mode": "replaceArr",
 						"replace": "Disintegration",
 						"items": {
-							"name": "",
+							"name": "Dismantlable",
 							"entries": [
 								"If the replica pentadrone dies, its body falls into a pile of parts (gears, plates, screws, and wires), leaving behind its weapons and anything else it was carrying."
 							]
@@ -478,7 +416,7 @@
 						"mode": "replaceArr",
 						"replace": "Disintegration",
 						"items": {
-							"name": "",
+							"name": "Dismantlable",
 							"entries": [
 								"If the replica quadrone dies, its body falls into a pile of parts (gears, plates, screws, and wires), leaving behind its weapons and anything else it was carrying."
 							]
@@ -509,7 +447,7 @@
 						"mode": "replaceArr",
 						"replace": "Disintegration",
 						"items": {
-							"name": "",
+							"name": "Dismantlable",
 							"entries": [
 								"If the replica tridrone dies, its body falls into a pile of parts (gears, plates, screws, and wires), leaving behind its weapons and anything else it was carrying."
 							]

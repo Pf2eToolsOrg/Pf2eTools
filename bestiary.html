@@ -18,6 +18,7 @@
 
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
+	<script type="text/javascript" src="js/browsercheck.js"></script>
 
 	<style>
 		img.token {
@@ -127,195 +128,197 @@
 		</ul>
 	</nav>
 
-	<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
-	<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--single"><!--5ETOOLS_AD_RIGHT_1--></div>
+	<div class="view-col-group--cancer">
+		<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
+		<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--single"><!--5ETOOLS_AD_RIGHT_1--></div>
 
-	<div class="container view-col-wrapper">
-		<div class="view-col" id="listcontainer">
-			<div class="lst__form-top" id="filter-search-input-group">
-				<div class="w-100 relative">
-					<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-					<div class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
-					<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
-				</div>
-				<button class="btn btn-default" id="reset">Reset</button>
-			</div>
-
-			<div id="filtertools" class="sortlabel lst__form-bottom">
-				<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name<span class="caret_wrp"></span></button>
-				<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type<span class="caret_wrp"></span></button>
-				<button class="col-1-7 sort btn btn-default btn-xs" data-sort="cr">CR<span class="caret_wrp"></span></button>
-				<button class="col-2 sort btn btn-default btn-xs" data-sort="source">Source<span class="caret_wrp"></span></button>
-			</div>
-
-			<ul class="list list--stats monsters">
-				<!-- populate with JS -->
-			</ul>
-		</div>
-
-		<div id="contentwrapper" class="view-col">
-			<div class="ecgen__visible mb-3">
-				<div class="row">
-					<div class="flex-h-right">
-						<div class="btn-group mr-3">
-							<button class="btn btn-primary ecgen_rng" data-mode="medium" style="min-width: 135px;" title="Randomly generate a Medium encounter">Random Medium</button>
-							<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown_rng">
-								<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-								<li class="ecgen_rng_easy" title="Randomly generate an Easy encounter"><a href="#">Random Easy</a></li>
-								<li class="ecgen_rng_medium" title="Randomly generate a Medium encounter"><a href="#">Random Medium</a></li>
-								<li class="ecgen_rng_hard" title="Randomly generate a Hard encounter"><a href="#">Random Hard</a></li>
-								<li class="ecgen_rng_deadly" title="Randomly generate a Deadly encounter"><a href="#">Random Deadly</a></li>
-							</ul>
-						</div>
-
-						<div class="btn-group">
-							<button class="btn btn-primary ecgen_adj" data-mode="medium" style="min-width: 135px;" title="Adjust the current encounter difficulty to Medium">Adjust to Medium</button>
-							<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown_adj">
-								<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-								<li class="ecgen_adj_easy" title="Adjust the current encounter difficulty to Easy"><a href="#">Adjust to Easy</a></li>
-								<li class="ecgen_adj_medium" title="Adjust the current encounter difficulty to Medium"><a href="#">Adjust to Medium</a></li>
-								<li class="ecgen_adj_hard" title="Adjust the current encounter difficulty to Hard"><a href="#">Adjust to Hard</a></li>
-								<li class="ecgen_adj_deadly" title="Adjust the current encounter difficulty to Deadly"><a href="#">Adjust to Deadly</a></li>
-							</ul>
-						</div>
+		<div class="container view-col-wrapper view-col-wrapper--cancer">
+			<div class="view-col" id="listcontainer">
+				<div class="lst__form-top" id="filter-search-input-group">
+					<div class="w-100 relative">
+						<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
+						<div class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
 					</div>
+					<button class="btn btn-default" id="reset">Reset</button>
 				</div>
-			</div>
 
-			<div class="ecgen__visible mb-4" id="ecgen__wrp-save-controls"></div>
-
-			<div id="sublistcontainer" class="sublist sublist--resizable">
-				<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
-					<button class="col-5 sort btn btn-default btn-xs" data-sort="name">Name</button>
-					<button class="col-3-8 sort btn btn-default btn-xs ecgen__hidden" data-sort="type">Type</button>
-					<button class="col-3-8 sort btn btn-default btn-xs ecgen__visible" disabled>&nbsp;</button>
-					<button class="col-1-2 sort btn btn-default btn-xs" data-sort="cr">CR</button>
-					<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number</button>
+				<div id="filtertools" class="sortlabel lst__form-bottom">
+					<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name<span class="caret_wrp"></span></button>
+					<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type<span class="caret_wrp"></span></button>
+					<button class="col-1-7 sort btn btn-default btn-xs" data-sort="cr">CR<span class="caret_wrp"></span></button>
+					<button class="col-2 sort btn btn-default btn-xs" data-sort="source">Source<span class="caret_wrp"></span></button>
 				</div>
-				<ul class="list submonsters">
+
+				<ul class="list list--stats monsters">
 					<!-- populate with JS -->
 				</ul>
-				<div class="row ecgen__hidden">
-					<span class="col-7 text-right">Total:</span>
-					<span class="col-5 no-wrap" id="totalcr" style="padding-left: 1px"></span>
-				</div>
 			</div>
 
-			<div id="stat-tabs" class="wrp-stat-tab ecgen__hidden">
-				<div id="tabs-right"></div>
-			</div>
+			<div id="contentwrapper" class="view-col">
+				<div class="ecgen__visible mb-3">
+					<div class="row">
+						<div class="flex-h-right">
+							<div class="btn-group mr-3">
+								<button class="btn btn-primary ecgen_rng" data-mode="medium" style="min-width: 135px;" title="Randomly generate a Medium encounter">Random Medium</button>
+								<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown_rng">
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li class="ecgen_rng_easy" title="Randomly generate an Easy encounter"><a href="#">Random Easy</a></li>
+									<li class="ecgen_rng_medium" title="Randomly generate a Medium encounter"><a href="#">Random Medium</a></li>
+									<li class="ecgen_rng_hard" title="Randomly generate a Hard encounter"><a href="#">Random Hard</a></li>
+									<li class="ecgen_rng_deadly" title="Randomly generate a Deadly encounter"><a href="#">Random Deadly</a></li>
+								</ul>
+							</div>
 
-			<div id="float-token" class="ecgen__hidden" style="position: relative;"></div>
-
-			<div id="wrp-pagecontent" class="wrp-stats-table ecgen__hidden">
-				<table id="pagecontent" class="stats monster">
-					<tr><th class="border" colspan="6"></th></tr>
-					<tr><td colspan="6" class="initial-message">Loading...</td></tr>
-					<tr><th class="border" colspan="6"></th></tr>
-				</table>
-			</div>
-
-			<div class="text-center wrp-footer-buttons ecgen__hidden">
-				<button class="btn btn-default btn-success btn-xs" id="btn-encounterbuild">Encounter Builder</button>
-				<div id="wrp-profbonusdice" class=>
-					<button class="btn btn-default btn-xs" id="profbonusdice"
-							title="WARNING: Very experimental &mdash; use with caution">Use Proficiency Dice
-					</button>
-				</div>
-				<button class="btn btn-default btn-xs" id="btn-printbook">Printer View</button>
-				<button class="btn btn-default btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
-			</div>
-
-			<div class="ecgen__visible">
-				<h3>Group Info</h3>
-				<div class="row">
-					<!-- LHS -->
-					<div class="col-8 ecgen__group_lhs">
-						<div class="row ecgen__players_head_simple">
-							<div class="col-2">Players:</div>
-							<div class="col-2">Level:</div>
+							<div class="btn-group">
+								<button class="btn btn-primary ecgen_adj" data-mode="medium" style="min-width: 135px;" title="Adjust the current encounter difficulty to Medium">Adjust to Medium</button>
+								<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown_adj">
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li class="ecgen_adj_easy" title="Adjust the current encounter difficulty to Easy"><a href="#">Adjust to Easy</a></li>
+									<li class="ecgen_adj_medium" title="Adjust the current encounter difficulty to Medium"><a href="#">Adjust to Medium</a></li>
+									<li class="ecgen_adj_hard" title="Adjust the current encounter difficulty to Hard"><a href="#">Adjust to Hard</a></li>
+									<li class="ecgen_adj_deadly" title="Adjust the current encounter difficulty to Deadly"><a href="#">Adjust to Deadly</a></li>
+								</ul>
+							</div>
 						</div>
+					</div>
+				</div>
 
-						<div class="ecgen__players_head_advanced">
-							<div class="ecgen__player_advanced__name_head mr-1 ecgen__player_head_tall">Name</div>
-							<div class="ecgen__player_advanced_narrow text-center mr-1 ecgen__player_head_tall">Level</div>
-							<button class="btn btn-primary btn-xs ecgen__advanced_add_col" onclick="encounterBuilder.addAdvancedColumn()" title="Add Column">
-								<span class="glyphicon glyphicon-list-alt"></span>
-							</button>
-						</div>
+				<div class="ecgen__visible mb-4" id="ecgen__wrp-save-controls"></div>
 
+				<div id="sublistcontainer" class="sublist sublist--resizable">
+					<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
+						<button class="col-5 sort btn btn-default btn-xs" data-sort="name">Name</button>
+						<button class="col-3-8 sort btn btn-default btn-xs ecgen__hidden" data-sort="type">Type</button>
+						<button class="col-3-8 sort btn btn-default btn-xs ecgen__visible" disabled>&nbsp;</button>
+						<button class="col-1-2 sort btn btn-default btn-xs" data-sort="cr">CR</button>
+						<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number</button>
+					</div>
+					<ul class="list submonsters">
+						<!-- populate with JS -->
+					</ul>
+					<div class="row ecgen__hidden">
+						<span class="col-7 text-right">Total:</span>
+						<span class="col-5 no-wrap" id="totalcr" style="padding-left: 1px"></span>
+					</div>
+				</div>
 
-						<div class="ecgen__wrp_add_players mb-1">
-							<div class="ecgen__wrp_add_players_btn_wrp">
-								<button class="btn btn-primary btn-xs ecgen__add_players">
-									<span class="glyphicon glyphicon-plus"></span> Add Another Level
+				<div id="stat-tabs" class="wrp-stat-tab ecgen__hidden">
+					<div id="tabs-right"></div>
+				</div>
+
+				<div id="float-token" class="ecgen__hidden" style="position: relative;"></div>
+
+				<div id="wrp-pagecontent" class="wrp-stats-table ecgen__hidden">
+					<table id="pagecontent" class="stats monster">
+						<tr><th class="border" colspan="6"></th></tr>
+						<tr><td colspan="6" class="initial-message">Loading...</td></tr>
+						<tr><th class="border" colspan="6"></th></tr>
+					</table>
+				</div>
+
+				<div class="text-center wrp-footer-buttons ecgen__hidden">
+					<button class="btn btn-default btn-success btn-xs" id="btn-encounterbuild">Encounter Builder</button>
+					<div id="wrp-profbonusdice" class=>
+						<button class="btn btn-default btn-xs" id="profbonusdice"
+								title="WARNING: Very experimental &mdash; use with caution">Use Proficiency Dice
+						</button>
+					</div>
+					<button class="btn btn-default btn-xs" id="btn-printbook">Printer View</button>
+					<button class="btn btn-default btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+				</div>
+
+				<div class="ecgen__visible">
+					<h3>Group Info</h3>
+					<div class="row">
+						<!-- LHS -->
+						<div class="col-8 ecgen__group_lhs">
+							<div class="row ecgen__players_head_simple">
+								<div class="col-2">Players:</div>
+								<div class="col-2">Level:</div>
+							</div>
+
+							<div class="ecgen__players_head_advanced">
+								<div class="ecgen__player_advanced__name_head mr-1 ecgen__player_head_tall">Name</div>
+								<div class="ecgen__player_advanced_narrow text-center mr-1 ecgen__player_head_tall">Level</div>
+								<button class="btn btn-primary btn-xs ecgen__advanced_add_col" onclick="encounterBuilder.addAdvancedColumn()" title="Add Column">
+									<span class="glyphicon glyphicon-list-alt"></span>
 								</button>
 							</div>
-						</div>
 
-						<div class="row">
-							<div class="col-12">
-								<label class="inline-flex" style="font-weight: initial;">
-									<span style="margin-right: 5px;">Advanced Mode</span>
-									<input type="checkbox" class="ecgen__players_advanced">
-								</label>
+
+							<div class="ecgen__wrp_add_players mb-1">
+								<div class="ecgen__wrp_add_players_btn_wrp">
+									<button class="btn btn-primary btn-xs ecgen__add_players">
+										<span class="glyphicon glyphicon-plus"></span> Add Another Level
+									</button>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12">
+									<label class="inline-flex" style="font-weight: initial;">
+										<span style="margin-right: 5px;">Advanced Mode</span>
+										<input type="checkbox" class="ecgen__players_advanced">
+									</label>
+								</div>
+							</div>
+
+							<div class="row ecgen__advanced_help">
+								<div class="col-12">
+									<i>Additional columns will be imported into the DM Screen.</i>
+								</div>
 							</div>
 						</div>
 
-						<div class="row ecgen__advanced_help">
-							<div class="col-12">
-								<i>Additional columns will be imported into the DM Screen.</i>
-							</div>
+						<!-- RHS -->
+						<div class="col-4 text-right">
+							<div class="ecgen__easy">Easy: ? XP</div>
+							<div class="ecgen__medium">Medium: ? XP</div>
+							<div class="ecgen__hard">Hard: ? XP</div>
+							<div class="ecgen__deadly">Deadly: ? XP</div>
+							<div class="ecgen__absurd help" title="Calculated as Deadly XP + the difference in XP between Hard and Deadly">Absurd: ? XP</div>
+							<br>
+							<div class="ecgen__daily_budget">Daily Budget: ? XP</div>
 						</div>
 					</div>
 
-					<!-- RHS -->
-					<div class="col-4 text-right">
-						<div class="ecgen__easy">Easy: ? XP</div>
-						<div class="ecgen__medium">Medium: ? XP</div>
-						<div class="ecgen__hard">Hard: ? XP</div>
-						<div class="ecgen__deadly">Deadly: ? XP</div>
-						<div class="ecgen__absurd help" title="Calculated as Deadly XP + the difference in XP between Hard and Deadly">Absurd: ? XP</div>
-						<br>
-						<div class="ecgen__daily_budget">Daily Budget: ? XP</div>
-					</div>
-				</div>
+					<hr class="ecgen__req_creatures">
+					<div class="row ecgen__req_creatures">
+						<!-- LHS -->
+						<div class="col-6">
+							<h3 class="ecgen__rating">Difficulty: ?</h3>
+						</div>
 
-				<hr class="ecgen__req_creatures">
-				<div class="row ecgen__req_creatures">
-					<!-- LHS -->
-					<div class="col-6">
-						<h3 class="ecgen__rating">Difficulty: ?</h3>
+						<!-- RHS -->
+						<div class="col-6 text-right">
+							<h4 class="ecgen__raw_total">Total XP: ?</h4>
+							<div><i class="ecgen__raw_per_player">(? per player)</i></div>
+							<div><span class="glyphicon glyphicon-info-sign ecgen__adjusted_total_info"></span> <h4 class="inline-block ecgen__adjusted_total">Adjusted XP: ?</h4></div>
+							<div><i class="ecgen__adjusted_per_player">(? per player)</i></div>
+						</div>
 					</div>
 
-					<!-- RHS -->
-					<div class="col-6 text-right">
-						<h4 class="ecgen__raw_total">Total XP: ?</h4>
-						<div><i class="ecgen__raw_per_player">(? per player)</i></div>
-						<div><span class="glyphicon glyphicon-info-sign ecgen__adjusted_total_info"></span> <h4 class="inline-block ecgen__adjusted_total">Adjusted XP: ?</h4></div>
-						<div><i class="ecgen__adjusted_per_player">(? per player)</i></div>
+					<hr>
+					<div class="row mb-3">
+						<div class="col-12 flex" style="justify-content: center">
+							<button class="btn btn-primary btn-xs mr-4 ecgen__sv_url">Save to URL</button>
+							<button class="btn btn-primary btn-xs mr-2 ecgen__sv_file">Save to File</button>
+							<button class="btn btn-primary btn-xs mr-4 ecgen__ld_file">Load from File</button>
+							<button class="btn btn-primary btn-xs mr-4 ecgen__sv_text">Copy as Text</button>
+							<button class="btn btn-danger btn-xs ecgen__reset">Reset</button>
+						</div>
 					</div>
-				</div>
 
-				<hr>
-				<div class="row mb-3">
-					<div class="col-12 flex" style="justify-content: center">
-						<button class="btn btn-primary btn-xs mr-4 ecgen__sv_url">Save to URL</button>
-						<button class="btn btn-primary btn-xs mr-2 ecgen__sv_file">Save to File</button>
-						<button class="btn btn-primary btn-xs mr-4 ecgen__ld_file">Load from File</button>
-						<button class="btn btn-primary btn-xs mr-4 ecgen__sv_text">Copy as Text</button>
-						<button class="btn btn-danger btn-xs ecgen__reset">Reset</button>
-					</div>
-				</div>
-
-				<hr>
-				<div class="row">
-					<div class="col-12">
-						<button class="btn btn-default btn-xs ecgen__visible" style="margin: 0 auto;" id="btn-encounterstatblock">Back to Statblocks</button>
+					<hr>
+					<div class="row">
+						<div class="col-12">
+							<button class="btn btn-default btn-xs ecgen__visible" style="margin: 0 auto;" id="btn-encounterstatblock">Back to Statblocks</button>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -105,7 +105,7 @@ class BackgroundPage extends ListPage {
 		};
 
 		const buildFluffTab = (isImageTab) => {
-			return Renderer.utils.buildFluffTab(
+			return Renderer.utils.pBuildFluffTab(
 				isImageTab,
 				$pgContent,
 				bg,
