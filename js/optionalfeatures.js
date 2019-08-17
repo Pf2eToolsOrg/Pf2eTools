@@ -178,8 +178,6 @@ class OptionalFeaturesPage extends ListPage {
 	}
 
 	doLoadHash (id) {
-		Renderer.get().setFirstSection(true);
-		const $content = $(`#pagecontent`).empty();
 		const it = this._dataList[id];
 
 		const $wrpTab = $(`#stat-tabs`);
@@ -206,16 +204,7 @@ class OptionalFeaturesPage extends ListPage {
 				.appendTo($wrpOptFeatType);
 		}
 
-		$content.append(`
-		${Renderer.utils.getBorderTr()}
-		${Renderer.utils.getNameTr(it)}
-		${it.prerequisite ? `<tr><td colspan="6"><i>${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite)}</i></td></tr>` : ""}
-		<tr><td class="divider" colspan="6"><div></div></td></tr>
-		<tr><td colspan="6">${Renderer.get().render({entries: it.entries}, 1)}</td></tr>
-		${Renderer.optionalfeature.getPreviouslyPrintedText(it)}
-		${Renderer.utils.getPageTr(it)}
-		${Renderer.utils.getBorderTr()}
-	`);
+		$(`#pagecontent`).empty().append(RenderOptionalFeatures.$getRenderedOptionalFeature(it));
 
 		ListUtil.updateSelected();
 	}

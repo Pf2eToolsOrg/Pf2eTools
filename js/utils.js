@@ -245,14 +245,14 @@ RegExp.escape = function (string) {
 // PARSING =============================================================================================================
 Parser = {};
 Parser._parse_aToB = function (abMap, a, fallback) {
-	if (a === undefined || a === null) throw new Error("undefined or null object passed to parser");
+	if (a === undefined || a === null) throw new TypeError("undefined or null object passed to parser");
 	if (typeof a === "string") a = a.trim();
 	if (abMap[a] !== undefined) return abMap[a];
 	return fallback || a;
 };
 
 Parser._parse_bToA = function (abMap, b) {
-	if (b === undefined || b === null) throw new Error("undefined or null object passed to parser");
+	if (b === undefined || b === null) throw new TypeError("undefined or null object passed to parser");
 	if (typeof b === "string") b = b.trim();
 	for (const v in abMap) {
 		if (!abMap.hasOwnProperty(v)) continue;
@@ -273,6 +273,7 @@ Parser.attrChooseToFull = function (attList) {
 };
 
 Parser.numberToText = function (number) {
+	if (number == null) throw new TypeError(`undefined or null object passed to parser`);
 	if (Math.abs(number) >= 100) return `${number}`;
 
 	function getAsText (num) {
@@ -791,10 +792,31 @@ Parser.spDistanceTypeToFull = function (range) {
 	return Parser._parse_aToB(Parser.SP_DIST_TYPE_TO_FULL, range);
 };
 
-Parser.spRangeToFull = function (range) {
+Parser.SP_RANGE_TO_ICON = {
+	[RNG_SPECIAL]: "fa-star",
+	[RNG_POINT]: "",
+	[RNG_LINE]: "fa-grip-lines-vertical",
+	[RNG_CUBE]: "fa-cube",
+	[RNG_CONE]: "fa-traffic-cone",
+	[RNG_RADIUS]: "fa-hockey-puck",
+	[RNG_SPHERE]: "fa-globe",
+	[RNG_HEMISPHERE]: "fa-globe",
+	[RNG_CYLINDER]: "fa-database",
+	[RNG_SELF]: "fa-street-view",
+	[RNG_SIGHT]: "fa-eye",
+	[RNG_UNLIMITED]: "fa-infinity",
+	[RNG_UNLIMITED_SAME_PLANE]: "fa-infinity",
+	[RNG_TOUCH]: "fa-hand-paper"
+};
+
+Parser.spRangeTypeToIcon = function (range) {
+	return Parser._parse_aToB(Parser.SP_RANGE_TO_ICON, range);
+};
+
+Parser.spRangeToShortHtml = function (range) {
 	switch (range.type) {
-		case RNG_SPECIAL: return Parser.SP_RANGE_TYPE_TO_FULL[range.type];
-		case RNG_POINT: return renderPoint();
+		case RNG_SPECIAL: return `<span class="fas ${Parser.spRangeTypeToIcon(range.type)} help--subtle" title="Special"/>`;
+		case RNG_POINT: return Parser.spRangeToShortHtml._renderPoint(range);
 		case RNG_LINE:
 		case RNG_CUBE:
 		case RNG_CONE:
@@ -802,51 +824,80 @@ Parser.spRangeToFull = function (range) {
 		case RNG_SPHERE:
 		case RNG_HEMISPHERE:
 		case RNG_CYLINDER:
-			return renderArea();
+			return Parser.spRangeToShortHtml._renderArea(range);
 	}
-
-	function renderPoint () {
-		const dist = range.distance;
-		switch (dist.type) {
-			case RNG_SELF: return Parser.SP_RANGE_TYPE_TO_FULL[dist.type];
-			case RNG_SIGHT: return Parser.SP_RANGE_TYPE_TO_FULL[dist.type];
-			case RNG_UNLIMITED: return Parser.SP_RANGE_TYPE_TO_FULL[dist.type];
-			case RNG_UNLIMITED_SAME_PLANE: return Parser.SP_RANGE_TYPE_TO_FULL[dist.type];
-			case RNG_TOUCH: return Parser.SP_RANGE_TYPE_TO_FULL[dist.type];
-			case RNG_SPECIAL:
-			case UNT_FEET:
-			case UNT_MILES:
-			default:
-				return `${dist.amount} ${dist.amount === 1 ? Parser.getSingletonUnit(dist.type) : dist.type}`;
-		}
+};
+Parser.spRangeToShortHtml._renderPoint = function (range) {
+	const dist = range.distance;
+	switch (dist.type) {
+		case RNG_SELF:
+		case RNG_SIGHT:
+		case RNG_UNLIMITED:
+		case RNG_UNLIMITED_SAME_PLANE:
+		case RNG_SPECIAL:
+		case RNG_TOUCH: return `<span class="fas ${Parser.spRangeTypeToIcon(dist.type)} help--subtle" title="${Parser.spRangeTypeToFull(dist.type)}"/>`;
+		case UNT_FEET:
+		case UNT_MILES:
+		default:
+			return `${dist.amount} <span class="small">${Parser.getSingletonUnit(dist.type, true)}</span>`;
 	}
+};
+Parser.spRangeToShortHtml._renderArea = function (range) {
+	const size = range.distance;
+	return `<span class="fas ${Parser.spRangeTypeToIcon(RNG_SELF)} help--subtle" title="Self"/> ${size.amount}<span class="small">-${Parser.getSingletonUnit(size.type, true)}</span> ${Parser.spRangeToShortHtml._getAreaStyleString(range)}`;
+};
+Parser.spRangeToShortHtml._getAreaStyleString = function (range) {
+	return `<span class="fas ${Parser.spRangeTypeToIcon(range.type)} help--subtle" title="${Parser.spRangeTypeToFull(range.type)}"/>`
+};
 
-	function renderArea () {
-		const size = range.distance;
-		return `Self (${size.amount}-${Parser.getSingletonUnit(size.type)}${getAreaStyleStr()}${range.type === RNG_CYLINDER ? `, ${size.amountSecondary}-${Parser.getSingletonUnit(size.typeSecondary)}-high cylinder` : ""})`;
-
-		function getAreaStyleStr () {
-			switch (range.type) {
-				case RNG_SPHERE:
-					return " radius";
-				case RNG_HEMISPHERE:
-					return `-radius ${range.type}`;
-				case RNG_CYLINDER:
-					return "-radius";
-
-				default:
-					return ` ${range.type}`;
-			}
-		}
+Parser.spRangeToFull = function (range) {
+	switch (range.type) {
+		case RNG_SPECIAL: return Parser.spRangeTypeToFull(range.type);
+		case RNG_POINT: return Parser.spRangeToFull._renderPoint(range);
+		case RNG_LINE:
+		case RNG_CUBE:
+		case RNG_CONE:
+		case RNG_RADIUS:
+		case RNG_SPHERE:
+		case RNG_HEMISPHERE:
+		case RNG_CYLINDER:
+			return Parser.spRangeToFull._renderArea(range);
+	}
+};
+Parser.spRangeToFull._renderPoint = function (range) {
+	const dist = range.distance;
+	switch (dist.type) {
+		case RNG_SELF:
+		case RNG_SIGHT:
+		case RNG_UNLIMITED:
+		case RNG_UNLIMITED_SAME_PLANE:
+		case RNG_SPECIAL:
+		case RNG_TOUCH: return Parser.spRangeTypeToFull(dist.type);
+		case UNT_FEET:
+		case UNT_MILES:
+		default:
+			return `${dist.amount} ${dist.amount === 1 ? Parser.getSingletonUnit(dist.type) : dist.type}`;
+	}
+}
+Parser.spRangeToFull._renderArea = function (range) {
+	const size = range.distance;
+	return `Self (${size.amount}-${Parser.getSingletonUnit(size.type)}${Parser.spRangeToFull._getAreaStyleString(range)}${range.type === RNG_CYLINDER ? `, ${size.amountSecondary}-${Parser.getSingletonUnit(size.typeSecondary)}-high cylinder` : ""})`;
+};
+Parser.spRangeToFull._getAreaStyleString = function (range) {
+	switch (range.type) {
+		case RNG_SPHERE: return " radius";
+		case RNG_HEMISPHERE: return `-radius ${range.type}`;
+		case RNG_CYLINDER: return "-radius";
+		default: return ` ${range.type}`;
 	}
 };
 
-Parser.getSingletonUnit = function (unit) {
+Parser.getSingletonUnit = function (unit, isShort) {
 	switch (unit) {
 		case UNT_FEET:
-			return "foot";
+			return isShort ? "ft." : "foot";
 		case UNT_MILES:
-			return "mile";
+			return isShort ? "mi." : "mile";
 		default: {
 			const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", unit, "singular");
 			if (fromBrew) return fromBrew;
@@ -856,15 +907,14 @@ Parser.getSingletonUnit = function (unit) {
 	}
 };
 
-Parser.spComponentsToFull = function (spell) {
-	const comp = spell.components;
+Parser.spComponentsToFull = function (comp) {
 	if (!comp) return "None";
 	const out = [];
 	if (comp.v) out.push("V");
 	if (comp.s) out.push("S");
 	if (comp.m != null) out.push(`M${comp.m !== true ? ` (${comp.m.text != null ? comp.m.text : comp.m})` : ""}`);
 	if (comp.r) out.push(`R (${spell.level} gp)`);
-	return out.join(", ");
+	return out.join(", ") || "None";
 };
 
 Parser.SP_END_TYPE_TO_FULL = {
@@ -964,6 +1014,15 @@ Parser.SP_MISC_TAG_TO_FULL = {
 };
 Parser.spMiscTagToFull = function (type) {
 	return Parser._parse_aToB(Parser.SP_MISC_TAG_TO_FULL, type);
+};
+
+Parser.SP_CASTER_PROGRESSION_TO_FULL = {
+	full: "Full",
+	"1/2": "Half",
+	"1/3": "One-Third"
+};
+Parser.spCasterProgressionToFull = function (type) {
+	return Parser._parse_aToB(Parser.SP_CASTER_PROGRESSION_TO_FULL, type);
 };
 
 // mon-prefix functions are for parsing monster data, and shared with the roll20 script
@@ -1156,7 +1215,7 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 	ED: "Elemental Discipline",
 	EI: "Eldritch Invocation",
 	MM: "Metamagic",
-	"MV:B": "Maneuver, Battlemaster",
+	"MV:B": "Maneuver, Battle Master",
 	"MV:C2-UA": "Maneuver, Cavalier V2 (UA)",
 	"AS:V1-UA": "Arcane Shot, V1 (UA)",
 	"AS:V2-UA": "Arcane Shot, V2 (UA)",
@@ -1535,6 +1594,24 @@ Parser.spTimeUnitToFull = function (timeUnit) {
 	return Parser._parse_aToB(Parser.SP_TIME_TO_FULL, timeUnit);
 };
 
+Parser.SP_TIME_TO_ABV = {
+	[Parser.SP_TM_ACTION]: "A",
+	[Parser.SP_TM_B_ACTION]: "BA",
+	[Parser.SP_TM_REACTION]: "R",
+	[Parser.SP_TM_ROUND]: "rnd",
+	[Parser.SP_TM_MINS]: "min",
+	[Parser.SP_TM_HRS]: "hr"
+};
+Parser.spTimeUnitToAbv = function (timeUnit) {
+	return Parser._parse_aToB(Parser.SP_TIME_TO_ABV, timeUnit);
+};
+
+Parser.spTimeToShort = function (time, isHtml) {
+	return (time.number === 1 && Parser.SP_TIME_SINGLETONS.includes(time.unit))
+		? `${Parser.spTimeUnitToAbv(time.unit)}${time.condition ? "*" : ""}`
+		: `${time.number} ${isHtml ? `<span class="small">` : ""}${Parser.spTimeUnitToAbv(time.unit)}${isHtml ? `</span>` : ""}${time.condition ? "*" : ""}`;
+};
+
 SKL_ABJ = "Abjuration";
 SKL_EVO = "Evocation";
 SKL_ENC = "Enchantment";
@@ -1780,6 +1857,7 @@ SRC_UAWGE = SRC_UA_PREFIX + "WGE";
 SRC_UAOSS = SRC_UA_PREFIX + "OfShipsAndSea";
 SRC_UASIK = SRC_UA_PREFIX + "Sidekicks";
 SRC_UAAR = SRC_UA_PREFIX + "ArtificerRevisited";
+SRC_UABAM = SRC_UA_PREFIX + "BarbarianAndMonk";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -1892,6 +1970,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UAWGE] = "Wayfinder's Guide to Eberron";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAOSS] = UA_PREFIX + "Of Ships and the Sea";
 Parser.SOURCE_JSON_TO_FULL[SRC_UASIK] = UA_PREFIX + "Sidekicks";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAAR] = UA_PREFIX + "Artificer Revisited";
+Parser.SOURCE_JSON_TO_FULL[SRC_UABAM] = UA_PREFIX + "Barbarian and Monk";
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -1994,6 +2073,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UAWGE] = "WGE";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAOSS] = "UAOSS";
 Parser.SOURCE_JSON_TO_ABV[SRC_UASIK] = "UASIK";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAAR] = "UAAR";
+Parser.SOURCE_JSON_TO_ABV[SRC_UABAM] = "UABAM";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -2293,14 +2373,13 @@ JqueryUtil = {
 		};
 
 		$.fn.extend({
-			disableSpellcheck: function () {
-				this.attr("autocomplete", "off").attr("autocapitalize", "off").attr("spellcheck", "false");
-				return this;
-			},
+			disableSpellcheck: function () { return this.attr("autocomplete", "off").attr("autocapitalize", "off").attr("spellcheck", "false"); },
 
 			tag: function () {
 				return this.prop("tagName").toLowerCase();
-			}
+			},
+
+			title: function (title) { return this.attr("title", title); }
 		});
 
 		$.event.special.destroyed = {
@@ -2318,9 +2397,7 @@ JqueryUtil = {
 		// Add a selector to match contained text (case insensitive)
 		$.expr[':'].containsInsensitive = (el, i, m) => {
 			const searchText = m[3];
-			const textNode = $(el).contents().filter((i, e) => {
-				return e.nodeType === 3;
-			})[0];
+			const textNode = $(el).contents().filter((i, e) => e.nodeType === 3)[0];
 			if (!textNode) return false;
 			const match = textNode.nodeValue.toLowerCase().trim().match(`${RegExp.escape(searchText.toLowerCase().trim())}`);
 			return match && match.length > 0;
@@ -2453,6 +2530,11 @@ ObjUtil = {
 
 // TODO refactor other misc utils into this
 MiscUtil = {
+	COLOR_HEALTHY: "#00bb20",
+	COLOR_HURT: "#c5ca00",
+	COLOR_BLOODIED: "#f7a100",
+	COLOR_DEFEATED: "#cc0000",
+
 	copy (obj) {
 		return JSON.parse(JSON.stringify(obj));
 	},
@@ -3695,7 +3777,7 @@ ListUtil = {
 		function getAsCsv () {
 			const headers = $pnlCols.find(`input:checked`).map((i, e) => $(e).data("name")).get();
 			const rows = $modalInner.find(`.data-row`).map((i, e) => $(e)).get().map($e => {
-				return $e.find(`td:visible`).map((j, d) => $(d).text()).get();
+				return $e.children().filter(`td:visible`).map((j, d) => $(d).text().trim()).get();
 			});
 			return DataUtil.getCsv(headers, rows);
 		}
@@ -4111,6 +4193,8 @@ SortUtil = {
 		return SortUtil._ascSort(a, b);
 	},
 
+	ascSortProp: (prop, a, b) => { return SortUtil.ascSort(a[prop], b[prop]); },
+
 	ascSortLower: (a, b) => {
 		if (typeof FilterItem !== "undefined") {
 			if (a instanceof FilterItem) a = a.item;
@@ -4119,6 +4203,8 @@ SortUtil = {
 
 		return SortUtil._ascSort(a.toLowerCase(), b.toLowerCase());
 	},
+
+	ascSortLowerProp: (prop, a, b) => { return SortUtil.ascSortLower(a[prop], b[prop]); },
 
 	// warning: slow
 	ascSortNumericalSuffix (a, b) {
@@ -4944,7 +5030,7 @@ BrewUtil = {
 							<button class="col-3 sort btn btn-default btn-xs" data-sort="author">Author</button>
 							<button class="col-2 sort btn btn-default btn-xs" data-sort="category">Category</button>
 							<button class="col-2 sort btn btn-default btn-xs" data-sort="timestamp">Added</button>
-							<button class="col-1 sort btn btn-default btn-xs" disabled>Source</button>
+							<button class="sort btn btn-default btn-xs" disabled>Source</button>
 						</div>
 						${$ulRows}
 					</div>
@@ -5250,7 +5336,7 @@ BrewUtil = {
 							<button class="col-5 sort btn btn-default btn-xs" data-sort="source">Source</button>
 							<button class="col-4 sort btn btn-default btn-xs" data-sort="authors">Authors</button>
 							<button class="col-1 btn btn-default btn-xs" disabled>Origin</button>
-							<button class="col-2 btn btn-default btn-xs" disabled>&nbsp;</button>
+							<button class="btn btn-default btn-xs" disabled>&nbsp;</button>
 						</div>
 						<ul class="list-display-only brew-list brew-list--target"></ul>
 						<ul class="list-display-only brew-list brew-list--groups"></ul>
@@ -5532,7 +5618,7 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_DIRS: ["spell", "class", "subclass", "creature", "background", "feat", "optionalfeature", "race", "object", "trap", "hazard", "deity", "item", "reward", "psionic", "variantrule", "condition", "disease", "adventure", "book", "vehicle", "magicvariant"],
+	_DIRS: ["adventure", "background", "book", "class", "condition", "creature", "deity", "disease", "feat", "hazard", "item", "magicvariant", "object", "optionalfeature", "psionic", "race", "reward", "spell", "subclass", "table", "trap", "variantrule", "vehicle"],
 	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		function storePrep (arrName) {
@@ -5862,6 +5948,7 @@ BrewUtil = {
 
 // ID GENERATION =======================================================================================================
 CryptUtil = {
+	// region md5 internals
 	// stolen from http://www.myersdaily.org/joseph/javascript/md5.js
 	_md5cycle: (x, k) => {
 		let a = x[0];
@@ -6002,6 +6089,11 @@ CryptUtil = {
 		return s;
 	},
 
+	_add32: (a, b) => {
+		return (a + b) & 0xFFFFFFFF;
+	},
+	// endregion
+
 	hex: (x) => {
 		for (let i = 0; i < x.length; i++) {
 			x[i] = CryptUtil._rhex(x[i]);
@@ -6015,10 +6107,6 @@ CryptUtil = {
 
 	md5: (s) => {
 		return CryptUtil.hex(CryptUtil._md51(s));
-	},
-
-	_add32: (a, b) => {
-		return (a + b) & 0xFFFFFFFF;
 	},
 
 	/**

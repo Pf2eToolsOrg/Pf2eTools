@@ -580,7 +580,10 @@ class FilterBase extends ProxyBase {
 			if (prop === "meta") {
 				hasMeta = true;
 				const data = vals.map(v => FilterUtil.decompress(v));
-				Object.keys(FilterBase._DEFAULT_META).forEach((k, i) => this._meta[k] = data[i]);
+				Object.keys(FilterBase._DEFAULT_META).forEach((k, i) => {
+					if (data[i] !== undefined) this._meta[k] = data[i];
+					else this._meta[k] = FilterBase._DEFAULT_META[k];
+				});
 			}
 		});
 
@@ -618,8 +621,8 @@ class FilterBase extends ProxyBase {
 	setFromValues () { throw new Error(`Unimplemented!`); }
 }
 FilterBase._DEFAULT_META = {
-	isHidden: false,
 	combineBlue: "or",
+	isHidden: false,
 	combineRed: "or"
 };
 // These are assumed to be the same length (4 characters)
@@ -751,6 +754,7 @@ class Filter extends FilterBase {
 			switch (prop) {
 				case "state": {
 					hasState = true;
+					Object.keys(this._state).forEach(k => this._state[k] = 0);
 					vals.forEach(v => {
 						const [statePropLower, state] = v.split("=");
 						const stateProp = Object.keys(this._state).find(k => k.toLowerCase() === statePropLower);
@@ -760,6 +764,7 @@ class Filter extends FilterBase {
 				}
 				case "nestsHidden": {
 					hasNestsHidden = true;
+					Object.keys(this._nestsHidden).forEach(k => this._nestsHidden[k] = false);
 					vals.forEach(v => {
 						const [nestNameLower, state] = v.split("=");
 						const nestName = Object.keys(this._nestsHidden).find(k => k.toLowerCase() === nestNameLower);

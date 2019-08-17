@@ -67,18 +67,9 @@ class VariantRulesPage extends ListPage {
 	}
 
 	doLoadHash (id) {
-		const curRule = this._dataList[id];
+		const rule = this._dataList[id];
 
-		Renderer.get().setFirstSection(true);
-		const textStack = [];
-		Renderer.get().resetHeaderIndex();
-		Renderer.get().recursiveRender(curRule, textStack);
-		$("#pagecontent").html(`
-			${Renderer.utils.getBorderTr()}
-			<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>
-			${Renderer.utils.getPageTr(curRule)}
-			${Renderer.utils.getBorderTr()}
-		`);
+		$("#pagecontent").empty().append(RenderVariantRules.$getRenderedVariantRule(rule));
 
 		loadSubHash([]);
 

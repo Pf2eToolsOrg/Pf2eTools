@@ -56,6 +56,7 @@ class UiUtil {
 	 * @param [opts] Options Object.
 	 * @param [opts.max] Max allowed return value.
 	 * @param [opts.min] Min allowed return value.
+	 * @param [opts.fallbackOnNaN] Return value if not a number.
 	 * @return {number}
 	 */
 	static strToInt (string, fallbackEmpty = 0, opts) {
@@ -67,7 +68,9 @@ class UiUtil {
 			const unary = preDot.replace(/^([-+]*).*$/, (...m) => m[1]);
 			const numPart = preDot.replace(/[^0-9]/g, "");
 			const num = Number(`${unary}${numPart}` || 0);
-			out = isNaN(num) ? 0 : num;
+			out = isNaN(num)
+				? opts.fallbackOnNaN !== undefined ? opts.fallbackOnNaN : 0
+				: num;
 		}
 		if (opts.max != null) out = Math.min(out, opts.max);
 		if (opts.min != null) out = Math.max(out, opts.min);
@@ -277,8 +280,17 @@ UiUtil.SEARCH_RESULTS_CAP = 75;
 UiUtil.TYPE_TIMEOUT_MS = 100; // auto-search after 100ms
 
 class ProfUiUtil {
-	static getProfCycler (state = 0) {
-		const NUM_STATES = Object.keys(ProfUiUtil.PROF_TO_FULL).length;
+	/**
+	 * @param state Initial state.
+	 * @param [opts] Options object.
+	 * @param [opts.isSimple] If the cycler only has "not proficient" and "proficient" options
+	 */
+	static getProfCycler (state = 0, opts) {
+		opts = opts || {};
+
+		const STATES = opts.isSimple ? Object.keys(ProfUiUtil.PROF_TO_FULL).slice(0, 2) : Object.keys(ProfUiUtil.PROF_TO_FULL);
+
+		const NUM_STATES = Object.keys(STATES).length;
 
 		// validate initial state
 		state = Number(state) || 0;
@@ -682,6 +694,40 @@ class SearchWidget {
 			SearchWidget.CONTENT_INDICES[d.cf].addDoc(d);
 		});
 	}
+
+	static async pGetUserSpellSearch (options) {
+		options = options || {};
+		await SearchWidget.P_LOADING_CONTENT;
+		return new Promise(resolve => {
+			const searchOpts = {defaultCategory: "alt_Spell"};
+			if (options.level != null) searchOpts.resultFilter = (result) => result.lvl === options.level;
+
+			const searchWidget = new SearchWidget(
+				{alt_Spell: SearchWidget.CONTENT_INDICES.alt_Spell},
+				(page, source, hash) => {
+					const [encName, encSource] = hash.split(HASH_LIST_SEP);
+					doClose(false); // "cancel" close
+					resolve({
+						page,
+						source,
+						hash,
+						name: encName,
+						tag: `{@spell ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_PHB) ? `|${decodeURIComponent(encSource)}` : ""}}`
+					})
+				},
+				searchOpts
+			);
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				title: "Select Spell",
+				cbClose: (doResolve) => {
+					searchWidget.$wrpSearch.detach();
+					if (doResolve) resolve(null); // ensure resolution
+				}
+			});
+			$modalInner.append(searchWidget.$wrpSearch);
+			searchWidget.doFocus();
+		});
+	}
 }
 SearchWidget.P_LOADING_CONTENT = null;
 SearchWidget.CONTENT_INDICES = {};
@@ -778,14 +824,20 @@ class InputUiUtil {
 	 * @param opts Options.
 	 * @param opts.values Array of values.
 	 * @param [opts.title] Prompt title.
-	 * @param [opts.count] Number of choices the user can make.
+	 * @param [opts.count] Number of choices the user can make (cannot be used with min/max).
+	 * @param [opts.min] Minimum number of choices the user can make (cannot be used with count).
+	 * @param [opts.max] Maximum number of choices the user can make (cannot be used with count).
+	 * @param [opts.defaults] Default selected indices.
 	 * @param [opts.isResolveItems] True if the promise should resolve to an array of the items instead of the indices.
 	 * @param [opts.fnDisplay] Function which takes a value and returns display text.
 	 * @return {Promise} A promise which resolves to the indices of the items the user selected, or null otherwise.
 	 */
 	static pGetUserMultipleChoice (opts) {
 		opts = opts || {};
-		if (opts.count == null || opts.count <= 0) opts.count = 1;
+
+		if (opts.count != null && (opts.min != null || opts.max != null)) throw new Error(`Chooser must be either in "count" mode or "min/max" mode!`);
+		// If no mode is specified, default to a "count 1" chooser
+		if (opts.count == null && opts.min == null && opts.max == null) opts.count = 1;
 
 		class ChoiceRow extends BaseComponent {
 			_getDefaultState () { return {isActive: false}; }
@@ -798,13 +850,25 @@ class InputUiUtil {
 			const rowMetas = [];
 			opts.values.forEach((v, i) => {
 				const comp = new ChoiceRow();
+				if (opts.defaults) comp._state.isActive = opts.defaults.includes(i);
 
 				const $cb = ComponentUiUtil.$getCbBool(comp, "isActive");
 				const hookDisable = () => {
 					const activeRows = rowMetas.filter(it => it.comp._state.isActive);
 
-					if (activeRows.length >= opts.count) {
-						rowMetas.forEach(it => it.$cb.attr("disabled", !it.comp._state.isActive));
+					let isAcceptable = false;
+					if (opts.count != null) {
+						if (activeRows.length >= opts.count) isAcceptable = true;
+					} else {
+						if (activeRows.length >= (opts.min || 0) && activeRows.length <= (opts.max || Number.MAX_SAFE_INTEGER)) isAcceptable = true;
+					}
+
+					if (isAcceptable) {
+						if (opts.count != null || (opts.max != null && activeRows.length === opts.max)) {
+							rowMetas.forEach(it => it.$cb.attr("disabled", !it.comp._state.isActive));
+						} else {
+							rowMetas.forEach(it => it.$cb.attr("disabled", false));
+						}
 						$btnOk.attr("disabled", false);
 					} else {
 						rowMetas.forEach(it => it.$cb.attr("disabled", false));
@@ -826,8 +890,16 @@ class InputUiUtil {
 
 			const $wrpList = $$`<div class="flex-col w-100 striped-even mb-1 overflow-y-auto">${rowMetas.map(it => it.$ele)}</div>`;
 
+			let title = opts.title;
+			if (!title) {
+				if (opts.count != null) title = `Choose ${Parser.numberToText(opts.count).uppercaseFirst()}`;
+				else if (opts.min != null && opts.max != null) title = `Choose Between ${Parser.numberToText(opts.min).uppercaseFirst()} and ${Parser.numberToText(opts.max).uppercaseFirst()} Options`;
+				else if (opts.min != null) title = `Choose At Least ${Parser.numberToText(opts.min).uppercaseFirst()}`;
+				else title = `Choose At Most ${Parser.numberToText(opts.max).uppercaseFirst()}`;
+			}
+
 			const {$modalInner, doClose} = UiUtil.getShowModal({
-				title: opts.title || `Choose ${Parser.numberToText(opts.count).uppercaseFirst()}`,
+				title,
 				noMinHeight: true,
 				cbClose: (isDataEntered) => {
 					if (!isDataEntered) return resolve(null);
@@ -847,7 +919,7 @@ class InputUiUtil {
 	 * NOTE: designed to work with FontAwesome.
 	 *
 	 * @param opts Options.
-	 * @param opts.values Array of icon metadata. Items should be of the form: `{name: "<n>", iconClass: "<c>"}`
+	 * @param opts.values Array of icon metadata. Items should be of the form: `{name: "<n>", iconClass: "<c>", buttonClass: "<cs>"}`
 	 * @param opts.title Prompt title.
 	 * @param opts.default Default selected index.
 	 * @return {Promise<number>} A promise which resolves to the index of the item the user selected, or null otherwise.
@@ -855,7 +927,7 @@ class InputUiUtil {
 	static pGetUserIcon (opts) {
 		opts = opts || {};
 		return new Promise(resolve => {
-			let lastIx = -1;
+			let lastIx = opts.default != null ? opts.default : -1;
 			const onclicks = [];
 
 			const {$modalInner, doClose} = UiUtil.getShowModal({
@@ -868,7 +940,7 @@ class InputUiUtil {
 			});
 
 			$$`<div class="flex flex-wrap flex-h-center mb-2">${opts.values.map((v, i) => {
-				const $btn = $$`<div class="m-2 btn ${v.buttonClass || ""} ui-icn__btn flex-col flex-h-center">
+				const $btn = $$`<div class="m-2 btn ${v.buttonClass || "btn-default"} ui-icn__btn flex-col flex-h-center">
 					${v.iconClass ? `<div class="ui-icn__wrp-icon ${v.iconClass} mb-1"></div>` : ""}
 					${v.iconContent ? v.iconContent : ""}
 					<div class="whitespace-normal w-100">${v.name}</div>
@@ -1269,6 +1341,7 @@ class BaseComponent extends ProxyBase {
 		super();
 
 		this.__locks = {};
+		this.__rendered = {};
 
 		// state
 		this.__state = {...this._getDefaultState()};
@@ -1319,6 +1392,123 @@ class BaseComponent extends ProxyBase {
 			.reduce((a, b) => Object.assign(a, b), {});
 	}
 
+	/**
+	 * Asynchronous version available below.
+	 * @param prop The state property.
+	 * @param cbExists Function to run on existing render meta. Arguments are `rendered, item, i`.
+	 * @param cbNotExists Function to run which generates existing render meta. Arguments are `item, i`.
+	 * @param [opts] Options object.
+	 * @param [opts.isDiffMode] If a diff of the state should be taken/checked before updating renders.
+	 */
+	_renderCollection (prop, cbExists, cbNotExists, opts) {
+		opts = opts || {};
+
+		const rendered = (this.__rendered[prop] = this.__rendered[prop] || {});
+		const toDelete = new Set(Object.keys(rendered));
+
+		this._state[prop].forEach((it, i) => {
+			if (!it.id) throw new Error(`Collection item did not have an ID!`);
+			const meta = rendered[it.id];
+
+			toDelete.delete(it.id);
+			if (meta) {
+				if (opts.isDiffMode) {
+					// Hashing the stringified JSON relies on the property order remaining consistent, but this is fine
+					const nxtHash = CryptUtil.md5(JSON.stringify(it));
+					if (nxtHash !== meta.__hash) {
+						meta.__hash = nxtHash;
+					} else return;
+				}
+
+				meta.data = it; // update any existing pointers
+				cbExists(meta, it, i);
+			} else {
+				const meta = cbNotExists(it, i);
+				meta.data = it;
+				if (!meta.$wrpRow) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
+
+				if (opts.isDiffMode) meta.hash = CryptUtil.md5(JSON.stringify(it));
+
+				rendered[it.id] = meta;
+			}
+		});
+
+		this._renderCollection_doDeletes(rendered, toDelete);
+	}
+
+	/**
+	 * Synchronous version available below.
+	 * @param prop The state property.
+	 * @param cbExists Function to run on existing render meta. Arguments are `rendered, item, i`.
+	 * @param cbNotExists Function to run which generates existing render meta. Arguments are `item, i`.
+	 * @param [opts] Options object.
+	 */
+	async _pRenderCollection (prop, cbExists, cbNotExists, opts) {
+		opts = opts || {};
+
+		const rendered = (this.__rendered[prop] = this.__rendered[prop] || {});
+		const toDelete = new Set(Object.keys(rendered));
+
+		// Run the external functions in serial, to prevent element re-ordering
+		for (let i = 0; i < this._state[prop].length; ++i) {
+			const it = this._state[prop][i];
+
+			if (!it.id) throw new Error(`Collection item did not have an ID!`);
+			const meta = rendered[it.id];
+
+			toDelete.delete(it.id);
+			if (meta) {
+				if (opts.isDiffMode) {
+					// Hashing the stringified JSON relies on the property order remaining consistent, but this is fine
+					const nxtHash = CryptUtil.md5(JSON.stringify(it));
+					if (nxtHash !== meta.__hash) {
+						meta.__hash = nxtHash;
+					} else continue;
+				}
+
+				meta.data = it; // update any existing pointers
+				await cbExists(meta, it, i);
+			} else {
+				const meta = await cbNotExists(it, i);
+				meta.data = it;
+				if (!meta.$wrpRow) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
+
+				if (opts.isDiffMode) meta.hash = CryptUtil.md5(JSON.stringify(it));
+
+				rendered[it.id] = meta;
+			}
+		}
+
+		this._renderCollection_doDeletes(rendered, toDelete);
+	}
+
+	_renderCollection_doDeletes (rendered, toDelete) {
+		toDelete.forEach(id => {
+			const meta = rendered[id];
+			meta.$wrpRow.remove();
+			delete rendered[id];
+		});
+	}
+
+	/**
+	 * Detach (and thus preserve) rendered collection elements so they can be re-used later.
+	 * @param prop The state property.
+	 */
+	_detachCollection (prop) {
+		const rendered = (this.__rendered[prop] = this.__rendered[prop] || {});
+		Object.values(rendered).forEach(it => it.$wrpRow.detach());
+	}
+
+	/**
+	 * Wipe any rendered collection elements, and reset the render cache.
+	 * @param prop The state property.
+	 */
+	_resetCollectionRenders (prop) {
+		const rendered = (this.__rendered[prop] = this.__rendered[prop] || {});
+		Object.values(rendered).forEach(it => it.$wrpRow.remove());
+		delete this.__rendered[prop];
+	}
+
 	render () { throw new Error("Unimplemented!"); }
 
 	// to be overridden as required
@@ -1340,6 +1530,99 @@ class BaseComponent extends ProxyBase {
 		const lockMeta = this.__locks[lockName];
 		if (lockMeta) {
 			lockMeta.unlock();
+		}
+	}
+}
+
+class BaseLayeredComponent extends BaseComponent {
+	constructor () {
+		super();
+
+		// layers
+		this._layers = [];
+		this.__layerMeta = {};
+		this._layerMeta = this._getProxy("layerMeta", this.__layerMeta);
+	}
+
+	_addHookDeep (prop, hook) {
+		this._addHookBase(prop, hook);
+		this._addHook("layerMeta", prop, hook);
+	}
+
+	_removeHookDeep (prop, hook) {
+		this._removeHookBase(prop, hook);
+		this._removeHook("layerMeta", prop, hook);
+	}
+
+	_getBase (prop) {
+		return this._state[prop];
+	}
+
+	_get (prop) {
+		if (this._layerMeta[prop]) {
+			for (let i = this._layers.length - 1; i >= 0; --i) {
+				const val = this._layers[i].data[prop];
+				if (val != null) return val;
+			}
+			// this should never fall through, but if it does, returning the base value is fine
+		}
+		return this._state[prop];
+	}
+
+	_addLayer (layer) {
+		this._layers.push(layer);
+		this._addLayer_addLayerMeta(layer);
+	}
+
+	_addLayer_addLayerMeta (layer) {
+		Object.entries(layer.data).forEach(([k, v]) => this._layerMeta[k] = v != null);
+	}
+
+	_removeLayer (layer) {
+		const ix = this._layers.indexOf(layer);
+		if (~ix) {
+			this._layers.splice(ix, 1);
+
+			// regenerate layer meta
+			Object.keys(this._layerMeta).forEach(k => delete this._layerMeta[k]);
+			this._layers.forEach(l => this._addLayer_addLayerMeta(l));
+		}
+	}
+
+	updateLayersActive (prop) {
+		// this uses the fact that updating a proxy value to the same value still triggers hooks
+		//   anything listening to changes in this flag will be forced to recalculate from base + all layers
+		this._layerMeta[prop] = this._layers.some(l => l.data[prop] != null);
+	}
+
+	getBaseSaveableState () {
+		return {
+			state: MiscUtil.copy(this.__state),
+			layers: MiscUtil.copy(this._layers.map(l => l.getSaveableState()))
+		};
+	}
+
+	setBaseSaveableStateFrom (toLoad) {
+		toLoad.state && Object.assign(this._state, toLoad.state);
+		if (toLoad.layers) toLoad.layers.forEach(l => this._addLayer(CharLayer.fromSavedState(this, l)));
+	}
+
+	_getPod () {
+		return {
+			...super._getPod(),
+
+			addHookDeep: (prop, hook) => this._addHookDeep(prop, hook),
+			removeHookDeep: (prop, hook) => this._removeHookDeep(prop, hook),
+			getBase: (prop) => this._getBase(prop),
+			get: (prop) => this._get(prop),
+			addLayer: (name, data) => {
+				// FIXME
+				const l = new CharLayer(this, name, data);
+				this._addLayer(l);
+				return l;
+			},
+			removeLayer: (layer) => this._removeLayer(layer),
+			layers: this._layers // FIXME avoid passing this directly to the child
 		}
 	}
 }
@@ -1396,7 +1679,7 @@ class ComponentUiUtil {
 	static $getIptEntries (component, prop, opts) {
 		opts = opts || {};
 
-		const $ipt = (opts.$ele || $(`<textarea class="form-control input-xs form-control--minimal resize-none"/>`))
+		const $ipt = (opts.$ele || $(`<textarea class="form-control input-xs form-control--minimal resize-vertical"/>`))
 			.change(() => component._state[prop] = UiUtil.getTextAsEntries($ipt.val().trim()));
 		const hook = () => $ipt.val(UiUtil.getEntriesAsText(component._state[prop]));
 		hook();
@@ -1459,6 +1742,40 @@ class ComponentUiUtil {
 		component._addHookBase(prop, hook);
 		hook();
 		return $cb
+	}
+
+	/**
+	 * @param component An instance of a class which extends BaseComponent.
+	 * @param prop Component to hook on.
+	 * @param opts Options Object.
+	 * @param opts.values Values to display.
+	 * @param [opts.$ele] Element to use.
+	 * @param [opts.isAllowNull] If null is allowed.
+	 * @param [opts.fnDisplay] Value display function.
+	 * @return {JQuery}
+	 */
+	static $getSelEnum (component, prop, opts) {
+		opts = opts || {};
+
+		const $sel = (opts.$ele || $(`<select class="form-control input-xs"/>`))
+			.change(() => {
+				const ix = Number($sel.val());
+				if (~ix) component._state[prop] = opts.values[ix];
+				else {
+					if (opts.isAllowNull) component._state[prop] = null;
+					else component._state[prop] = 0;
+				}
+			});
+		if (opts.isAllowNull) $(`<option/>`, {value: -1, text: "\u2014"}).appendTo($sel);
+		opts.values.forEach((it, i) => $(`<option/>`, {value: i, text: opts.fnDisplay ? opts.fnDisplay(it) : it}).appendTo($sel));
+		const hook = () => {
+			// Null handling is done in change handler
+			const ix = opts.values.indexOf(component._state[prop]);
+			$sel.val(`${ix}`);
+		};
+		component._addHookBase(prop, hook);
+		hook();
+		return $sel
 	}
 }
 

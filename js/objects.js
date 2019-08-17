@@ -79,8 +79,6 @@ class ObjectsPage extends ListPage {
 	}
 
 	doLoadHash (id) {
-		this._renderer.setFirstSection(true);
-
 		const obj = this._dataList[id];
 
 		const renderStack = [];
@@ -88,22 +86,7 @@ class ObjectsPage extends ListPage {
 		if (obj.entries) this._renderer.recursiveRender({entries: obj.entries}, renderStack, {depth: 2});
 		if (obj.actionEntries) this._renderer.recursiveRender({entries: obj.actionEntries}, renderStack, {depth: 2});
 
-		const $content = $(`#pagecontent`).empty();
-		$content.append(`
-		${Renderer.utils.getBorderTr()}
-		${Renderer.utils.getNameTr(obj)}
-		<tr class="text"><td colspan="6"><i>${obj.type !== "GEN" ? `${Parser.sizeAbvToFull(obj.size)} object` : `Variable size object`}</i><br></td></tr>
-		<tr class="text"><td colspan="6">
-			<b>Armor Class:</b> ${obj.ac}<br>
-			<b>Hit Points:</b> ${obj.hp}<br>
-			<b>Damage Immunities:</b> ${obj.immune}<br>
-			${obj.resist ? `<b>Damage Resistances:</b> ${obj.resist}<br>` : ""}
-			${obj.vulnerable ? `<b>Damage Vulnerabilities:</b> ${obj.vulnerable}<br>` : ""}
-		</td></tr>
-		<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>
-		${Renderer.utils.getPageTr(obj)}
-		${Renderer.utils.getBorderTr()}
-	`);
+		$(`#pagecontent`).empty().append(RenderObjects.$getRenderedObject(obj));
 
 		const $floatToken = $(`#float-token`).empty();
 		if (obj.tokenUrl || !obj.uniqueId) {
@@ -124,5 +107,5 @@ class ObjectsPage extends ListPage {
 	}
 }
 
-const objecsPage = new ObjectsPage();
-window.addEventListener("load", () => objecsPage.pOnLoad());
+const objectsPage = new ObjectsPage();
+window.addEventListener("load", () => objectsPage.pOnLoad());

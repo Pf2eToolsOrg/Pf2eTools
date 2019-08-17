@@ -1,7 +1,6 @@
 "use strict";
 
 const JSON_DIR = "data/bestiary/";
-const META_URL = "meta.json";
 const FLUFF_INDEX = "fluff-index.json";
 const JSON_LIST_NAME = "monster";
 const ECGEN_BASE_PLAYERS = 4; // assume a party size of four
@@ -39,24 +38,6 @@ function getAllImmRest (toParse, key) {
 
 const meta = {};
 const languages = {};
-
-function pLoadMeta () {
-	return new Promise(resolve => {
-		DataUtil.loadJSON(JSON_DIR + META_URL)
-			.then((data) => {
-				// Convert the legendary Group JSONs into a look-up, i.e. use the name as a JSON property name
-				data.legendaryGroup.forEach(lg => {
-					meta[lg.source] = meta[lg.source] || {};
-					meta[lg.source][lg.name] = lg;
-				});
-
-				Object.keys(data.language).forEach(k => languages[k] = data.language[k]);
-				Object.keys(languages).sort((a, b) => SortUtil.ascSortLower(languages[a], languages[b]))
-					.forEach(la => languageFilter.addItem(la));
-				resolve();
-			});
-	});
-}
 
 // for use in homebrew only
 function addLegendaryGroups (toAdd) {
@@ -130,9 +111,11 @@ window.onload = async function load () {
 	encounterBuilder.initUi();
 	await Promise.all([
 		ExcludeUtil.pInitialise(),
-		pLoadMeta(),
+		RenderBestiary.pPopulateMetaAndLanguages(meta, languages),
 		pLoadFluffIndex()
 	]);
+	Object.keys(languages).sort((a, b) => SortUtil.ascSortLower(languages[a], languages[b]))
+		.forEach(la => languageFilter.addItem(la));
 	await pMultisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addMonsters, pPostLoad);
 	if (Hist.lastLoadedId == null) Hist._freshLoad();
 	ExcludeUtil.checkShowAllExcluded(monsters, $(`#pagecontent`));

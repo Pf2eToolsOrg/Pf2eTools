@@ -95,22 +95,7 @@ class TrapsHazardsPage extends ListPage {
 		Renderer.get().setFirstSection(true);
 		const it = this._dataList[id];
 
-		const renderStack = [];
-
-		Renderer.get().recursiveRender({entries: it.entries}, renderStack, {depth: 2});
-
-		const simplePart = Renderer.traphazard.getSimplePart(Renderer.get(), it);
-		const complexPart = Renderer.traphazard.getComplexPart(Renderer.get(), it);
-		const subtitle = Renderer.traphazard.getSubtitle(it);
-		const $content = $(`#pagecontent`).empty();
-		$content.append(`
-			${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getNameTr(it)}
-			${subtitle ? `<tr class="text"><td colspan="6"><i>${Renderer.traphazard.getSubtitle(it)}</i></td>` : ""}
-			<tr class="text"><td colspan="6">${renderStack.join("")}${simplePart || ""}${complexPart || ""}</td></tr>
-			${Renderer.utils.getPageTr(it)}
-			${Renderer.utils.getBorderTr()}
-		`);
+		$(`#pagecontent`).empty().append(RenderTrapsHazards.$getRenderedTrapHazard(it));
 
 		ListUtil.updateSelected();
 	}

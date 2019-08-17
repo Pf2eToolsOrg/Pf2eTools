@@ -70,7 +70,7 @@ class VehiclesPage extends ListPage {
 		const $content = $(`#pagecontent`).empty();
 
 		function buildStatsTab () {
-			$content.append(Renderer.vehicle.getRenderedString(vehicle));
+			$content.append(RenderVehicles.$getRenderedVehicle(vehicle));
 		}
 
 		function buildFluffTab (isImageTab) {

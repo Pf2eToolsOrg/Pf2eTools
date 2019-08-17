@@ -2253,7 +2253,7 @@ Renderer.spell = {
 						<th colspan="2">Duration</th>
 					</tr>	
 					<tr>
-						<td colspan="4">${Parser.spComponentsToFull(spell)}</td>
+						<td colspan="4">${Parser.spComponentsToFull(spell.components)}</td>
 						<td colspan="2">${Parser.spDurationToFull(spell.duration)}</td>
 					</tr>
 				</table>
@@ -3527,7 +3527,7 @@ Renderer.monster = {
 	},
 
 	getTokenUrl (mon) {
-		return mon.tokenUrl || UrlUtil.link(`img/${Parser.sourceJsonToAbv(mon.source)}/${Parser.nameToTokenName(mon.name)}.png`);
+		return mon.tokenUrl || UrlUtil.link(`${Renderer.get().baseUrl}img/${Parser.sourceJsonToAbv(mon.source)}/${Parser.nameToTokenName(mon.name)}.png`);
 	},
 
 	getFluff (mon, legendaryMeta, fluffJson) {
@@ -3974,18 +3974,29 @@ Renderer.item = {
 		}
 	},
 
+	_INHERITED_PROPS_BLACKLIST: new Set([
+		"entries", // Entries have specific merging
+		"genericBonus",
+		"namePrefix",
+		"nameSuffix"
+	]),
 	_genericVariants_addInheritedPropertiesToSelf (genericVariant) {
-		genericVariant.tier = genericVariant.inherits.tier;
-		genericVariant.rarity = genericVariant.inherits.rarity;
-		genericVariant.source = genericVariant.inherits.source;
-		genericVariant.page = genericVariant.inherits.page;
+		for (const prop in genericVariant.inherits) {
+			if (Renderer.item._INHERITED_PROPS_BLACKLIST.has(prop)) continue;
+
+			const val = genericVariant.inherits[prop];
+
+			if (val == null) delete genericVariant[prop];
+			else if (genericVariant[prop]) {
+				if (genericVariant[prop] instanceof Array && val instanceof Array) genericVariant[prop] = MiscUtil.copy(genericVariant[prop]).concat(val);
+				else genericVariant[prop] = val;
+			} else genericVariant[prop] = genericVariant.inherits[prop];
+		}
+
 		if (!genericVariant.entries && genericVariant.inherits.entries) {
 			genericVariant.entries = MiscUtil.copy(genericVariant.inherits.entries.map(ent => typeof ent === "string" ? Renderer.applyProperties(ent, genericVariant.inherits) : ent));
 		}
 		if (genericVariant.requires.armor) genericVariant.armor = genericVariant.requires.armor;
-		if (genericVariant.inherits.resist) genericVariant.resist = genericVariant.inherits.resist;
-		if (genericVariant.inherits.reqAttune) genericVariant.reqAttune = genericVariant.inherits.reqAttune;
-		if (genericVariant.inherits.lootTables) genericVariant.lootTables = genericVariant.inherits.lootTables;
 	},
 
 	_priceRe: /^(\d+)(\w+)$/,
@@ -4009,12 +4020,12 @@ Renderer.item = {
 		}
 		// The following could be encoded in JSON, but they depend on more than one JSON property; maybe fix if really bored later
 		if (item.armor) {
-			if (item.resist) item.entries.push("You have resistance to " + item.resist + " damage while you wear this armor.");
+			if (item.resist) item.entries.push(`You have resistance to ${item.resist} damage while you wear this armor.`);
 			if (item.armor && item.stealth) item.entries.push("The wearer has disadvantage on Stealth (Dexterity) checks.");
-			if (item.type === "HA" && item.strength) item.entries.push("If the wearer has a Strength score lower than " + item.strength + ", their speed is reduced by 10 feet.");
+			if (item.type === "HA" && item.strength) item.entries.push(`If the wearer has a Strength score lower than ${item.strength}, their speed is reduced by 10 feet.`);
 		} else if (item.resist) {
-			if (item.type === "P") item.entries.push("When you drink this potion, you gain resistance to " + item.resist + " damage for 1 hour.");
-			if (item.type === "RG") item.entries.push("You have resistance to " + item.resist + " damage while wearing this ring.");
+			if (item.type === "P") item.entries.push(`When you drink this potion, you gain resistance to ${item.resist} damage for 1 hour.`);
+			if (item.type === "RG") item.entries.push(`You have resistance to ${item.resist} damage while wearing this ring.`);
 		}
 		if (item.type === "SCF") {
 			if (item.scfType === "arcane") item.entries.push("An arcane focus is a special item designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus, using it in place of any material component which does not list a cost.");
@@ -4028,6 +4039,15 @@ Renderer.item = {
 		if (item.type === "T" || item.type === "AT" || item.type === "INS" || item.type === "GS") { // tools, artisan tools, instruments, gaming sets
 			(item.additionalEntries = item.additionalEntries || []).push({type: "hr"}, `{@note See the {@5etools Tool Proficiencies|variantrules.html|${UrlUtil.encodeForHash(["Tool Proficiencies", "XGE"])}} entry on the Variant and Optional rules page for more information.}`);
 		}
+
+		// Add additional sources for all instruments and gaming sets
+		if (item.type === "INS" || item.type === "GS") item.additionalSources = item.additionalSources || [];
+		if (item.type === "INS") {
+			if (!item.additionalSources.find(it => it.source === "XGE" && it.page === 83)) item.additionalSources.push({"source": "XGE", "page": 83});
+		} else if (item.type === "GS") {
+			if (!item.additionalSources.find(it => it.source === "XGE" && it.page === 81)) item.additionalSources.push({"source": "XGE", "page": 81});
+		}
+
 		if (item.type && Renderer.item._additionalEntriesMap[item.type]) {
 			const additional = Renderer.item._additionalEntriesMap[item.type];
 			(item.additionalEntries = item.additionalEntries || []).push({type: "entries", entries: additional});
@@ -4740,8 +4760,7 @@ Renderer.hover = {
 				if (!Renderer.hover._isCached(page, source, hash)) {
 					try {
 						const brewData = await BrewUtil.pAddBrewData();
-						if (!brewData.race) return;
-						populate(brewData, "race");
+						if (brewData.race) populate(brewData, "race");
 					} catch (e) {
 						await BrewUtil.pPurgeBrew(e);
 					}
@@ -5571,6 +5590,7 @@ Renderer.dice = {
 		const rollData = $ele.data("packed-dice");
 		let name = $ele.attr("title") || null;
 		let shiftKey = evt.shiftKey;
+		let altKey = evt.altKey;
 
 		const options = rollData.toRoll.split(";").map(it => it.trim()).filter(Boolean);
 
@@ -5581,6 +5601,7 @@ Renderer.dice = {
 
 				ContextUtil.doInitContextMenu(Renderer.dice._contextRollLabel, (mostRecentEvt, _1, _2, _3, invokedOnId) => {
 					shiftKey = mostRecentEvt.shiftKey;
+					altKey = mostRecentEvt.altKey;
 					cpy.toRoll = options[invokedOnId];
 					resolve(cpy);
 				}, [{text: "Choose Roll", disabled: true}, null, ...options.map(it => `Roll ${it}`)]);
@@ -5636,6 +5657,7 @@ Renderer.dice = {
 					if (invokedOnId == null) resolve();
 
 					shiftKey = mostRecentEvt.shiftKey;
+					altKey = mostRecentEvt.altKey;
 					const k = sortedKeys[invokedOnId];
 					const fromScaling = rollDataCpy.prompt.options[k];
 					if (!fromScaling) {
@@ -5655,7 +5677,7 @@ Renderer.dice = {
 		} else rollDataCpyToRoll = rollDataCpy;
 
 		if (!rollDataCpyToRoll) return;
-		Renderer.dice.rollerClick({shiftKey}, ele, JSON.stringify(rollDataCpyToRoll), name);
+		Renderer.dice.rollerClick({shiftKey, altKey}, ele, JSON.stringify(rollDataCpyToRoll), name);
 	},
 
 	__rerollNextInlineResult (ele) {
@@ -5732,12 +5754,18 @@ Renderer.dice = {
 		// roll twice on shift, rolling advantage/crits where appropriate
 		if (evtMock.shiftKey) {
 			if (entry.subType === "damage") {
-				const dice = [];
-				entry.toRoll.replace(/(\d+)?d(\d+)/gi, (m0) => dice.push(m0));
-				entry.toRoll = `${entry.toRoll}${dice.length ? `+${dice.join("+")}` : ""}`;
+				// If ALT is held, half the damage
+				if (evtMock.altKey) {
+					entry.toRoll = `floor((${entry.toRoll}) / 2)`;
+				} else {
+					const dice = [];
+					entry.toRoll.replace(/(\d+)?d(\d+)/gi, (m0) => dice.push(m0));
+					entry.toRoll = `${entry.toRoll}${dice.length ? `+${dice.join("+")}` : ""}`;
+				}
 				doRoll();
 			} else if (entry.subType === "d20") {
-				entry.toRoll = `2d20dl1${entry.d20mod}`;
+				// If ALT is held, roll disadvantage. Otherwise, roll advantage
+				entry.toRoll = `2d20d${evtMock.altKey ? "h" : "l"}1${entry.d20mod}`;
 				doRoll();
 			} else {
 				Renderer.dice._showMessage("Rolling twice...", rolledBy);
@@ -5968,6 +5996,11 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 				let curDepth = 0;
 				let lastOpenIndex = null;
 				for (let i = 0; i < ipt.length; ++i) {
+					// TODO generalise this
+					if (ipt.slice(i, i + 5).join("") === "floor") {
+						ipt.splice(i, i + 4, "floor");
+					}
+
 					const c = ipt[i];
 					if (typeof c !== "string") continue;
 
@@ -6131,7 +6164,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 
 			infix = Renderer.dice._cleanOperators2(infix);
 			if (infix == null) return null;
-			infix = cleanArray(infix.split(/([-+*/^()dlh,])/));
+			infix = cleanArray(infix.split(/(floor|[-+*/^()dlh,])/));
 
 			const opStack = [];
 			let outQueue = "";
@@ -6144,7 +6177,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 
 				if (tkn.isNumeric()) {
 					handleAtom(tkn);
-				} else if (tkn === "l" || tkn === "h") {
+				} else if (tkn === "l" || tkn === "h" || tkn === "floor") {
 					opStack.push(tkn);
 				} else if (tkn === ",") {
 					while (opStack.last() && opStack.last() !== "(") {
@@ -6189,7 +6222,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 			const OPS = {
 				"d": (...args) => new Dice(...args),
 				"^": (...args) => new Pow(...args),
-				"**": (...args) => new Pow(...args),
+				// "**": (...args) => new Pow(...args), // N.B. this gets converted to "^" when cleaning operators
 				"/": (...args) => new Div(...args),
 				"*": (...args) => new Mult(...args),
 				"+": (...args) => new Add(...args),
@@ -6206,6 +6239,12 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 					args: 3,
 					fn: function (...args) {
 						return new Dice(...args, "h")
+					}
+				},
+				"floor": {
+					args: 1,
+					fn: function (a) {
+						return new Floor(a);
 					}
 				}
 			};
@@ -6250,6 +6289,36 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 
 				this._nxt = function* () { yield Number(n); };
 				this.nxt = this._nxt.bind(this);
+			}
+
+			function Floor (a) {
+				this.type = "floor";
+				this.a = a;
+
+				this.evl = meta => this._get(meta, "evl");
+
+				this.avg = meta => this._get(meta, "avg");
+
+				this._nxt = function* () {
+					let r;
+					const gen = a.nxt();
+					while (!(r = gen.next()).done) {
+						yield Math.floor(r.value);
+					}
+				};
+				this.nxt = this._nxt.bind(this);
+
+				this._get = (meta, nextFn) => {
+					prep(meta);
+
+					handlePrO(meta, this);
+					meta.text.push("floor");
+					meta.rawText.push("floor");
+					const r = a[nextFn](meta);
+					handlePrC(meta, this);
+
+					return Math.floor(r);
+				};
 			}
 
 			function Dice (num, faces, drop, dropType) {

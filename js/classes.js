@@ -220,7 +220,8 @@ class FeatureDescription {
 			if (sc.name === "Shadow (UA)" && sc.source === SRC_UALDR) return false;
 			if (sc.name === "The Undying Light (UA)" && sc.source === SRC_UALDR) return false;
 
-			const nonUa = ClassDisplay.curClass.subclasses.find(it => !_isNonStandardSource(it) && it.name.replace(/(v\d+)?\s*\((UA|SCAG|PSA|Livestream)\)/, "").trim() === sc.name);
+			const baseName = sc.name.replace(/(v\d+)?\s*\((UA|SCAG|PSA|Livestream)\)/, "").trim().toLowerCase();
+			const nonUa = ClassDisplay.curClass.subclasses.find(it => !_isNonStandardSource(it) && it.name.trim().toLowerCase() === baseName);
 			if (nonUa) return false;
 		}
 		return true;

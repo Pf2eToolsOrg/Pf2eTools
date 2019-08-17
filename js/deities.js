@@ -154,41 +154,9 @@ class DeitiesPage extends ListPage {
 	}
 
 	doLoadHash (id) {
-		this._renderer.setFirstSection(true);
 		const deity = this._dataList[id];
 
-		const getDeityBody = (deity, reprintIndex) => {
-			const renderStack = [];
-			if (deity.entries) this._renderer.recursiveRender({entries: deity.entries}, renderStack);
-			return `
-			${reprintIndex ? `
-				<tr><td colspan="6">
-				<i class="text-muted">
-				${reprintIndex === 1 ? `This deity is a reprint.` : ""} The version below was printed in an older publication (${Parser.sourceJsonToFull(deity.source)}${deity.page > 0 ? `, page ${deity.page}` : ""}).
-				</i>
-				</td></tr>
-			` : ""}
-	
-			${Renderer.deity.getOrderedParts(deity, `<tr><td colspan="6">`, `</td></tr>`)}
-			
-			${deity.symbolImg ? `<tr><td colspan="6">${this._renderer.render({entries: [deity.symbolImg]})}</td></tr>` : ""}
-			${renderStack.length ? `<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>` : ""}
-			`;
-		};
-
-		const $content = $(`#pagecontent`).empty();
-		$content.append(`
-			${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getNameTr(deity, {suffix: deity.title ? `, ${deity.title.toTitleCase()}` : ""})}
-			${getDeityBody(deity)}
-			${deity.reprinted ? `<tr class="text"><td colspan="6"><i class="text-muted">Note: this deity has been reprinted in a newer publication.</i></td></tr>` : ""}
-			${Renderer.utils.getPageTr(deity)}
-			${deity.previousVersions ? `
-			${Renderer.utils.getDividerTr()}
-			${deity.previousVersions.map((d, i) => getDeityBody(d, i + 1)).join(Renderer.utils.getDividerTr())}
-			` : ""}
-			${Renderer.utils.getBorderTr()}
-		`);
+		$(`#pagecontent`).empty().append(RenderDeities.$getRenderedDeity(deity));
 
 		ListUtil.updateSelected();
 	}

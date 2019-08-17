@@ -75,35 +75,9 @@ class CultsBoonsPage extends ListPage {
 	}
 
 	doLoadHash (id) {
-		this._renderer.setFirstSection(true);
-
 		const it = this._dataList[id];
 
-		const renderStack = [];
-		if (it.__prop === "cult") {
-			Renderer.cultboon.doRenderCultParts(it, this._renderer, renderStack);
-			this._renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 2});
-
-			$("#pagecontent").html(`
-			${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getNameTr(it)}
-			<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
-			<tr class="text"><td colspan="6" class="text">${renderStack.join("")}</td></tr>
-			${Renderer.utils.getPageTr(it)}
-			${Renderer.utils.getBorderTr()}
-		`);
-		} else if (it.__prop === "boon") {
-			it._displayName = it._displayName || `Demonic Boon: ${it.name}`;
-			Renderer.cultboon.doRenderBoonParts(it, this._renderer, renderStack);
-			this._renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
-			$("#pagecontent").html(`
-			${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getNameTr(it)}
-			<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>
-			${Renderer.utils.getPageTr(it)}
-			${Renderer.utils.getBorderTr()}
-		`);
-		}
+		$("#pagecontent").empty().append(RenderCultsBoons.$getRenderedCultBoon(it));
 
 		ListUtil.updateSelected();
 	}

@@ -1,0 +1,64 @@
+/*
+Shared UI components
+ */
+
+@import 'vars';
+
+/* Proficiency */
+.night-mode {
+	.ui-prof__ {
+		&btn-cycle {
+			&:active {
+				@include shadow-active--night();
+			}
+
+			&[data-state='0'] {
+				background: $rgb-night-bg-color;
+			}
+
+			&[data-state='1'] {
+				background: $rgb-border-grey;
+				border-color: #aaa;
+			}
+
+			&[data-state='2'] {
+				background: $rgb-border-grey;
+				border-color: #aaa;
+
+				&::after {
+					color: $rgb-night-bg-color;
+					font-weight: bold;
+				}
+			}
+
+			&[data-state='3'] {
+				background: repeating-linear-gradient(45deg, $rgb-border-grey, $rgb-border-grey 10px, $rgb-night-bg-color 10px, $rgb-night-bg-color 20px);
+				border-color: $rgb-border-grey;
+			}
+		}
+	}
+}
+
+/* Direction picker */
+.night-mode {
+	.ui-dir__ {
+		&face {
+			background: $rgb-night-bg-color;
+		}
+
+		&arm {
+			background: $rgb-night-font-color;
+			box-shadow: none;
+		}
+	}
+}
+
+/* Hover tips */
+.night-mode {
+	.ui-tip__ {
+		&child {
+			background: $rgb-night-bg-color;
+		}
+	}
+}
+

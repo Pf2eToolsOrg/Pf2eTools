@@ -1474,7 +1474,7 @@ class CreatureBuilder extends Builder {
 		if (this._state.senses && this._state.senses.length) $iptSenses.val(this._state.senses.join(", "));
 
 		const contextId = ContextUtil.getNextGenericMenuId();
-		const _CONTEXT_ENTRIES = ["Blindsight", "Darkvision", "Tremorsense", "Truesight"];
+		const _CONTEXT_ENTRIES = Object.keys(Parser.SENSE_JSON_TO_FULL).map(it => it.uppercaseFirst());
 		ContextUtil.doInitContextMenu(contextId, async (evt, ele, $invokedOn, $selectedMenu) => {
 			const val = Number($selectedMenu.data("ctx-id"));
 			const sense = _CONTEXT_ENTRIES[val].toLowerCase();
@@ -1931,9 +1931,9 @@ class CreatureBuilder extends Builder {
 
 				if (metaPart.filterIgnoreLevel && metaPart.filterIgnoreLevel()) delete options.level;
 
-				const spell = await BuilderUi.pGetUserSpellSearch(options);
+				const spell = await SearchWidget.pGetUserSpellSearch(options);
 				if (spell) {
-					addItem(spell);
+					addItem(spell.tag);
 					doUpdateState();
 				}
 			});

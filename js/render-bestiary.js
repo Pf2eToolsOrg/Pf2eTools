@@ -28,7 +28,7 @@ class RenderBestiary {
 			<span class="glyphicon glyphicon-volume-up name-pronounce-icon"></span>
 			<audio class="name-pronounce">
 			   <source src="${mon.soundClip}" type="audio/mpeg">
-			   <source src="audio/bestiary/${basename}" type="audio/mpeg">
+			   <source src="${Renderer.get().baseUrl}audio/bestiary/${basename}" type="audio/mpeg">
 			</audio>
 		</button>`;
 	}
@@ -42,6 +42,22 @@ class RenderBestiary {
 	static initParsed (mon) {
 		mon._pTypes = mon._pTypes || Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon._pCr = mon._pCr || (mon.cr == null ? null : (mon.cr.cr || mon.cr));
+	}
+
+	static pPopulateMetaAndLanguages (meta, languages) {
+		return new Promise(resolve => {
+			DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/meta.json`)
+				.then((data) => {
+					// Convert the legendary Group JSONs into a look-up, i.e. use the name as a JSON property name
+					data.legendaryGroup.forEach(lg => {
+						meta[lg.source] = meta[lg.source] || {};
+						meta[lg.source][lg.name] = lg;
+					});
+
+					Object.keys(data.language).forEach(k => languages[k] = data.language[k]);
+					resolve();
+				});
+		});
 	}
 
 	/**

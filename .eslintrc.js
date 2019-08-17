@@ -6,7 +6,8 @@ module.exports = {
 		"jquery": true
 	},
 	"parserOptions": {
-		"ecmaVersion": 9
+		"ecmaVersion": 9,
+		"sourceType": "module"
 	},
 	"rules": {
 		"accessor-pairs": "error",

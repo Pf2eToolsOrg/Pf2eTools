@@ -121,7 +121,7 @@ Shared UI components
 		user-select: none;
 
 		&:active {
-			box-shadow: 0 0 2px 0 #000b;
+			@include shadow-active();
 		}
 
 		&[data-state='0'] {

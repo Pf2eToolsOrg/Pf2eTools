@@ -91,8 +91,9 @@ async function populateTablesAndFilters (data) {
 	};
 	magicList = ListUtil.search(magicOptions);
 
-	const mundaneWrapper = $(`.ele-mundane`);
-	const magicWrapper = $(`.ele-magic`);
+	const $elesMundane = $(`.ele-mundane`);
+	const $elesMagic = $(`.ele-magic`);
+	const $elesMundaneAndMagic = $(`.ele-mundane-and-magic`);
 	$(`.side-label--mundane`).click(() => {
 		filterBox.setFromValues({Miscellaneous: {Mundane: 1}});
 		handleFilterChange();
@@ -102,16 +103,23 @@ async function populateTablesAndFilters (data) {
 		handleFilterChange();
 	});
 	const $outVisibleResults = $(`.lst__wrp-search-visible`);
-	mundaneList.__listVisible = true;
 	mundaneList.on("updated", () => {
-		hideListIfEmpty(mundaneList, mundaneWrapper);
+		// Force-show the mundane list if there are no items on display
+		if (magicList.visibleItems.length) $elesMundane.toggle(!!mundaneList.visibleItems.length);
+		else $elesMundane.show();
+		$elesMundaneAndMagic.toggle(!!(mundaneList.visibleItems.length && magicList.visibleItems.length));
+
 		const current = mundaneList.visibleItems.length + magicList.visibleItems.length;
 		const total = mundaneList.items.length + magicList.items.length;
 		$outVisibleResults.html(`${current}/${total}`);
 	});
-	magicList.__listVisible = true;
 	magicList.on("updated", () => {
-		hideListIfEmpty(magicList, magicWrapper);
+		$elesMagic.toggle(!!magicList.visibleItems.length);
+		// Force-show the mundane list if there are no items on display
+		if (!magicList.visibleItems.length) $elesMundane.show();
+		else $elesMundane.toggle(!!mundaneList.visibleItems.length);
+		$elesMundaneAndMagic.toggle(!!(mundaneList.visibleItems.length && magicList.visibleItems.length));
+
 		const current = mundaneList.visibleItems.length + magicList.visibleItems.length;
 		const total = mundaneList.items.length + magicList.items.length;
 		$outVisibleResults.html(`${current}/${total}`);
@@ -122,18 +130,6 @@ async function populateTablesAndFilters (data) {
 		FilterBox.EVNT_VALCHANGE,
 		handleFilterChange
 	);
-
-	function hideListIfEmpty (list, $eles) {
-		if (list.visibleItems.length === 0) {
-			if (list.__listVisible) {
-				list.__listVisible = false;
-				$eles.hide();
-			}
-		} else if (!list.__listVisible) {
-			list.__listVisible = true;
-			$eles.show();
-		}
-	}
 
 	$("#filtertools-mundane").find("button.sort").on("click", function (evt) {
 		evt.stopPropagation();
@@ -390,41 +386,7 @@ function loadHash (id) {
 	const item = itemList[id];
 
 	function buildStatsTab () {
-		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item);
-
-		const $toAppend = $(`
-		${Renderer.utils.getBorderTr()}
-		${Renderer.utils.getNameTr(item)}
-		<tr><td class="typerarityattunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td></tr>
-		<tr>
-			<td colspan="2">${[Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
-			<td class="text-right" colspan="4"><span>${damage}</span> <span>${damageType}</span> <span>${propertiesTxt}</span></td>
-		</tr>
-		<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
-		${Renderer.utils.getPageTr(item)}
-		${Renderer.utils.getBorderTr()}
-		`);
-		$content.append($toAppend);
-
-		const source = item.source;
-		const sourceFull = Parser.sourceJsonToFull(source);
-
-		const type = item.type || "";
-		if (type === "INS" || type === "GS") item.additionalSources = item.additionalSources || [];
-		if (type === "INS") {
-			if (!item.additionalSources.find(it => it.source === "XGE" && it.page === 83)) item.additionalSources.push({ "source": "XGE", "page": 83 })
-		} else if (type === "GS") {
-			if (!item.additionalSources.find(it => it.source === "XGE" && it.page === 81)) item.additionalSources.push({ "source": "XGE", "page": 81 })
-		}
-		const addSourceText = item.additionalSources ? `. Additional information from ${item.additionalSources.map(as => `<i>${Parser.sourceJsonToFull(as.source)}</i>, page ${as.page}`).join("; ")}.` : null;
-		$content.find("td#source span").html(`<i>${sourceFull}</i>${item.page > 0 ? `, page ${item.page}${addSourceText || ""}` : ""}`);
-
-		$content.find("tr.text").remove();
-
-		const renderedText = Renderer.item.getRenderedEntries(item);
-
-		if (renderedText) $content.find("tr#text").show().after(`<tr class="text"><td colspan="6">${renderedText}</td></tr>`);
-		else $content.find("tr#text").hide();
+		$content.append(RenderItems.$getRenderedItem(item));
 	}
 
 	function buildFluffTab (isImageTab) {

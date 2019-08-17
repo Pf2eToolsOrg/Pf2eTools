@@ -349,7 +349,7 @@ const BookUtil = {
 				if (!handled) {
 					setTimeout(() => {
 						BookUtil.scrollClick(scrollTo, scrollIndex);
-					}, BookUtil.isHashReload ? 1 : 75);
+					}, BookUtil.isHashReload ? 15 : 75);
 					BookUtil.isHashReload = false;
 				}
 			}
@@ -372,8 +372,10 @@ const BookUtil = {
 						}
 					}
 				}
-			} else if (forceScroll && !~chapter) {
-				BookUtil.scrollClick(scrollTo, scrollIndex);
+			} else if (forceScroll) {
+				setTimeout(() => {
+					BookUtil.scrollClick(scrollTo, scrollIndex);
+				}, BookUtil.isHashReload ? 15 : 75);
 			}
 		}
 

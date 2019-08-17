@@ -479,7 +479,7 @@ class Builder extends ProxyBase {
 
 	handleSidebarDownloadJsonClick () {
 		const out = this._ui._getJsonOutputTemplate();
-		out[this._prop] = (BrewUtil.homebrew[this._prop] || []).filter(entry => entry.source === this._ui.source).map(entry => PropOrder.getOrdered(DataUtil.cleanJson(MiscUtil.copy(entry))));
+		out[this._prop] = (BrewUtil.homebrew[this._prop] || []).filter(entry => entry.source === this._ui.source).map(entry => PropOrder.getOrdered(DataUtil.cleanJson(MiscUtil.copy(entry)), this._prop));
 		DataUtil.userDownload(DataUtil.getCleanFilename(BrewUtil.sourceJsonToFull(this._ui.source)), out);
 	}
 
@@ -800,34 +800,6 @@ class BuilderUi {
 		};
 
 		return $row;
-	}
-
-	static async pGetUserSpellSearch (options) {
-		options = options || {};
-		await SearchWidget.P_LOADING_CONTENT;
-		return new Promise(resolve => {
-			const searchOpts = {defaultCategory: "alt_Spell"};
-			if (options.level != null) searchOpts.resultFilter = (result) => result.lvl === options.level;
-
-			const searchWidget = new SearchWidget(
-				{alt_Spell: SearchWidget.CONTENT_INDICES.alt_Spell},
-				(page, source, hash) => {
-					const [encName, encSource] = hash.split(HASH_LIST_SEP);
-					doClose(false); // "cancel" close
-					resolve(`{@spell ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_PHB) ? `|${decodeURIComponent(encSource)}` : ""}}`)
-				},
-				searchOpts
-			);
-			const {$modalInner, doClose} = UiUtil.getShowModal({
-				title: "Select Spell",
-				cbClose: (doResolve) => {
-					searchWidget.$wrpSearch.detach();
-					if (doResolve) resolve(null); // ensure resolution
-				}
-			});
-			$modalInner.append(searchWidget.$wrpSearch);
-			searchWidget.doFocus();
-		});
 	}
 
 	/**

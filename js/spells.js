@@ -171,7 +171,7 @@ function getRangeType (range) {
 function getTblTimeStr (time) {
 	return (time.number === 1 && Parser.SP_TIME_SINGLETONS.includes(time.unit))
 		? `${time.unit.uppercaseFirst()}${time.unit === Parser.SP_TM_B_ACTION ? " acn." : ""}`
-		: `${time.number} ${time.unit === Parser.SP_TM_B_ACTION ? "Bonus acn." : time.unit}${time.number > 1 ? "s" : ""}`.uppercaseFirst();
+		: `${time.number} ${time.unit === Parser.SP_TM_B_ACTION ? "Bonus acn." : time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
 }
 
 function getClassFilterStr (c) {
@@ -235,7 +235,7 @@ async function pPostLoad () {
 			duration: {name: "Duration", transform: (it) => Parser.spDurationToFull(it)},
 			_school: {name: "School", transform: (sp) => `<span class="school_${sp.school}">${Parser.spSchoolAndSubschoolsAbvsToFull(sp.school, sp.subschools)}</span>`},
 			range: {name: "Range", transform: (it) => Parser.spRangeToFull(it)},
-			_components: {name: "Components", transform: (sp) => Parser.spComponentsToFull(sp)},
+			components: {name: "Components", transform: (it) => Parser.spComponentsToFull(it)},
 			classes: {name: "Classes", transform: (it) => Parser.spMainClassesToFull(it)},
 			entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}, 1), flex: 3},
 			entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}, 1), flex: 2}

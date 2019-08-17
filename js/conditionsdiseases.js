@@ -72,21 +72,9 @@ class ConditionsDiseasesPage extends ListPage {
 	}
 
 	doLoadHash (id) {
-		this._renderer.setFirstSection(true);
 		const $content = $("#pagecontent").empty();
 		const it = this._dataList[id];
-		const entryList = {type: "entries", entries: it.entries};
-		const textStack = [];
-		this._renderer.recursiveRender(entryList, textStack);
-		$content.append(`
-		${Renderer.utils.getBorderTr()}
-		${Renderer.utils.getNameTr(it)}
-		<tr><td class="divider" colspan="6"><div></div></td></tr>
-		<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>
-		${Renderer.utils.getPageTr(it)}
-		${Renderer.utils.getBorderTr()}
-	`);
-
+		$content.append(RenderConditionDiseases.$getRenderedConditionDisease(it));
 		ListUtil.updateSelected();
 	}
 

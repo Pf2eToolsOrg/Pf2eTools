@@ -90,18 +90,7 @@ class BackgroundPage extends ListPage {
 		const bg = this._dataList[id];
 
 		const buildStatsTab = () => {
-			const renderStack = [];
-			const entryList = {type: "entries", entries: bg.entries};
-			this._renderer.recursiveRender(entryList, renderStack);
-
-			$pgContent.append(`
-			${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getNameTr(bg)}
-			<tr><td class="divider" colspan="6"><div></div></td></tr>
-			<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>
-			${Renderer.utils.getPageTr(bg)}
-			${Renderer.utils.getBorderTr()}
-			`);
+			$pgContent.append(RenderBackgrounds.$getRenderedBackground(bg));
 		};
 
 		const buildFluffTab = (isImageTab) => {
