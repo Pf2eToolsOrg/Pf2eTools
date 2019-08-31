@@ -14,6 +14,7 @@ class InitiativeTracker {
 			sort: state.s || NUM,
 			dir: state.d || DESC,
 			isLocked: false,
+			isRollInit: _propDefaultTrue(state.m),
 			isRollHp: _propDefaultFalse(state.m),
 			importIsRollGroups: _propDefaultTrue(state.g),
 			importIsAddPlayers: _propDefaultTrue(state.p),
@@ -66,6 +67,7 @@ class InitiativeTracker {
 		const makeImportSettingsModal = () => {
 			const {$modalInner} = UiUtil.getShowModal({title: "Import Settings", cbClose: () => doUpdateExternalStates()});
 			UiUtil.addModalSep($modalInner);
+			UiUtil.$getAddModalRowCb($modalInner, "Roll creature initiative", cfg, "isRollInit");
 			UiUtil.$getAddModalRowCb($modalInner, "Roll creature hit points", cfg, "isRollHp");
 			UiUtil.$getAddModalRowCb($modalInner, "Roll groups of creatures together", cfg, "importIsRollGroups");
 			UiUtil.$getAddModalRowCb($modalInner, "Add players", cfg, "importIsAddPlayers");
@@ -95,7 +97,7 @@ class InitiativeTracker {
 						placeholder: "Select a save",
 						title: "Select Saved Encounter"
 					});
-					if (selected != null) await pConvertAndLoadBestiaryList(allSaves[selected]);
+					if (selected != null) await pConvertAndLoadBestiaryList(allSaves[selected].data);
 					break;
 				}
 				case 2: {
@@ -161,7 +163,7 @@ class InitiativeTracker {
 			.click(() => {
 				const {$modalInner} = UiUtil.getShowModal({
 					title: "Configure Player View",
-					fullWidth: true,
+					isLarge: true,
 					fullHeight: true,
 					cbClose: () => {
 						if (p2pMeta.rows.length) p2pMeta.rows.forEach(row => row.$row.detach());
@@ -512,6 +514,7 @@ class InitiativeTracker {
 					}
 				});
 				UiUtil.addModalSep($modalInner);
+				UiUtil.$getAddModalRowCb($modalInner, "Roll initiative", cfg, "isRollInit");
 				UiUtil.$getAddModalRowCb($modalInner, "Roll hit points", cfg, "isRollHp");
 				UiUtil.addModalSep($modalInner);
 				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show exact HP", cfg, "playerInitShowExactHp");
@@ -978,6 +981,7 @@ class InitiativeTracker {
 				isActive,
 				source,
 				conditions,
+				isRollInit,
 				isRollHp,
 				statsCols,
 				isVisible
@@ -988,6 +992,7 @@ class InitiativeTracker {
 				hpMax: "",
 				init: "",
 				conditions: [],
+				isRollInit: cfg.isRollInit,
 				isRollHp: false,
 				isVisible: !cfg.playerInitHideNewMonster
 			}, opts || {});
@@ -1186,9 +1191,10 @@ class InitiativeTracker {
 
 			doUpdateHpColors();
 
-			const $iptScore = $(`<input class="form-control input-sm score dm-init-lockable dm-init-row-input text-center dm_init__ipt--rhs" type="number" value="${init}">`)
+			const $iptScore = $(`<input class="form-control input-sm score dm-init-lockable dm-init-row-input text-center dm_init__ipt--rhs" type="number">`)
 				.on("change", () => doSort(NUM))
 				.click(() => $iptScore.select())
+				.val(init)
 				.appendTo($wrpRhs);
 
 			if (isMon && (hpVals.curHp === "" || hpVals.maxHp === "" || init === "")) {
@@ -1212,7 +1218,7 @@ class InitiativeTracker {
 					}
 
 					// roll initiative
-					if (!init) {
+					if (!init && isRollInit) {
 						$iptScore.val(rollInitiative(m));
 					}
 
@@ -1456,7 +1462,8 @@ class InitiativeTracker {
 					source: r.s,
 					conditions: r.c,
 					statsCols: r.k,
-					isVisible: r.v
+					isVisible: r.v,
+					isRollInit: r.i == null
 				});
 			}));
 			doSort(cfg.sort);
@@ -1583,7 +1590,6 @@ class InitiativeTracker {
 			if (bestiaryList.items && bestiaryList.sources) bestiaryList.l = {items: bestiaryList.items, sources: bestiaryList.sources};
 
 			if (bestiaryList.l && bestiaryList.l.items) {
-				await "lol";
 				const toAdd = await Promise.all(bestiaryList.l.items.map(it => {
 					const count = Number(it.c);
 					const hash = it.h;
@@ -1616,8 +1622,9 @@ class InitiativeTracker {
 					})
 				}));
 				toAdd.forEach(it => {
-					const groupInit = cfg.importIsRollGroups ? rollInitiative(it.monster) : null;
+					const groupInit = cfg.importIsRollGroups && cfg.isRollInit ? rollInitiative(it.monster) : null;
 					const groupHp = cfg.importIsRollGroups ? getOrRollHp(it.monster) : null;
+
 					[...new Array(it.count || 1)].forEach(() => {
 						const hp = `${cfg.importIsRollGroups ? groupHp : getOrRollHp(it.monster)}`;
 						toLoad.r.push({
@@ -1626,7 +1633,7 @@ class InitiativeTracker {
 								displayName: it.monster._displayName,
 								scaledTo: it.monster._isScaledCr
 							},
-							i: `${cfg.importIsRollGroups ? groupInit : rollInitiative(it.monster)}`,
+							i: cfg.isRollInit ? `${cfg.importIsRollGroups ? groupInit : rollInitiative(it.monster)}` : null,
 							a: 0,
 							s: it.monster.source,
 							c: [],

@@ -105,6 +105,10 @@
 	width: 100% !important;
 }
 
+.w-50 {
+	width: 50% !important;
+}
+
 .w-33 {
 	width: 33.3333333% !important;
 }
@@ -206,6 +210,12 @@
 
 .split-v-center {
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.inline-split-v-center {
+	display: inline-flex !important;
 	justify-content: space-between;
 	align-items: center;
 }
@@ -330,7 +340,8 @@ footer {
 	font-size: 90%;
 }
 
-pre {
+pre,
+textarea {
 	tab-size: 2;
 }
 
@@ -382,11 +393,6 @@ body::-webkit-scrollbar {
 	font-size: 12px;
 	line-height: 1.5;
 	border-radius: 3px;
-}
-
-select.input-xs {
-	height: 22px;
-	line-height: 22px;
 }
 
 .form-control--minimal {
@@ -1112,6 +1118,10 @@ select.input-xs {
 	width: 100%;
 }
 
+.m-auto {
+	margin: auto !important;
+}
+
 .m-0 {
 	margin: 0 !important;
 }
@@ -1134,6 +1144,10 @@ select.input-xs {
 
 .m-5 {
 	margin: ($spacer * 3) !important;
+}
+
+.mt-auto {
+	margin-top: auto !important;
 }
 
 .mt-0 {
@@ -1160,6 +1174,10 @@ select.input-xs {
 	margin-top: ($spacer * 3) !important;
 }
 
+.mr-auto {
+	margin-right: auto !important;
+}
+
 .mr-0 {
 	margin-right: 0 !important;
 }
@@ -1182,6 +1200,10 @@ select.input-xs {
 
 .mr-5 {
 	margin-right: ($spacer * 3) !important;
+}
+
+.mb-auto {
+	margin-bottom: auto !important;
 }
 
 .mb-0 {
@@ -1208,6 +1230,10 @@ select.input-xs {
 	margin-bottom: ($spacer * 3) !important;
 }
 
+.ml-auto {
+	margin-left: auto !important;
+}
+
 .ml-0 {
 	margin-left: 0 !important;
 }
@@ -1230,6 +1256,11 @@ select.input-xs {
 
 .ml-5 {
 	margin-left: ($spacer * 3) !important;
+}
+
+.my-auto {
+	margin-top: auto !important;
+	margin-bottom: auto !important;
 }
 
 .my-0 {
@@ -1260,6 +1291,11 @@ select.input-xs {
 .my-5 {
 	margin-top: ($spacer * 3) !important;
 	margin-bottom: ($spacer * 3) !important;
+}
+
+.mx-auto {
+	margin-right: auto !important;
+	margin-left: auto !important;
 }
 
 .mx-0 {

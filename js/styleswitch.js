@@ -19,9 +19,7 @@ class StyleSwitcher {
 
 	static setButtonText (style) {
 		const $button = StyleSwitcher.getButton();
-		if (!$button || !$button.length) {
-			return;
-		}
+		if (!$button || !$button.length) return;
 		$button.html(`${style === StyleSwitcher.STYLE_DAY ? "Night" : "Day"} Mode`);
 	}
 
@@ -31,15 +29,18 @@ class StyleSwitcher {
 
 	loadStyleFromCookie () {
 		this.cookie = StyleSwitcher.readCookie();
-		this.cookie = this.cookie ? this.cookie : StyleSwitcher.STYLE_DAY;
+		this.cookie = this.cookie ? this.cookie : StyleSwitcher.getDefaultStyle();
 		this.setActiveStyleSheet(this.cookie);
 	}
 
 	static getButton () {
-		if (!window.$) {
-			return;
-		}
+		if (!window.$) return;
 		return $(".nightModeToggle");
+	}
+
+	static getDefaultStyle () {
+		if (window.matchMedia("(prefers-color-scheme: dark)").matches) return StyleSwitcher.STYLE_NIGHT;
+		return StyleSwitcher.STYLE_DAY;
 	}
 
 	static createCookie (value) {

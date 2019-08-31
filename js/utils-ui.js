@@ -181,12 +181,13 @@ class UiUtil {
 	 * @param {Object} [opts] Options object.
 	 * @param {string} [opts.title] Modal title.
 	 * @param {boolean} [opts.fullHeight] If the modal should take up (almost) the full height of the screen.
-	 * @param {boolean} [opts.fullWidth] If the modal should take up (almost) the full width of the screen.
+	 * @param {boolean} [opts.isLarge] If the modal should have (almost) unrestrained dimensions
 	 * @param {boolean} [opts.noMinHeight] If the modal should have no minimum height.
 	 * @param {function} [opts.cbClose] Callback run when the modal is closed.
 	 * @param {JQuery} [opts.titleSplit] Element to have split alongside the title.
 	 * @param {int} [opts.zIndex] Z-index of the modal.
 	 * @param {number} [opts.overlayColor] Overlay color.
+	 * @param {boolean} [opts.isPermanent] If the modal should be impossible to close.
 	 * @returns {object}
 	 */
 	static getShowModal (opts) {
@@ -202,12 +203,15 @@ class UiUtil {
 		if (opts.zIndex != null) $modal.css({zIndex: opts.zIndex});
 		if (opts.overlayColor != null) $modal.css({backgroundColor: opts.overlayColor});
 		const $scroller = $(`<div class="ui-modal__scroller"/>`);
-		const $modalInner = $$`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu${opts.fullWidth ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? " h-100" : ""}"><div class="split flex-v-center no-shrink">${opts.title ? `<h4>${opts.title.escapeQuotes()}</h4>` : ""}${opts.titleSplit || ""}</div>${$scroller}</div>`
+		const $modalInner = $$`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu${opts.isLarge ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? "h-100" : ""}"><div class="split flex-v-center no-shrink">${opts.title ? `<h4>${opts.title.escapeQuotes()}</h4>` : ""}${opts.titleSplit || ""}</div>${$scroller}</div>`
 			.appendTo($modal);
 		if (opts.noMinHeight) $modalInner.css("height", "initial");
 
 		$modal.click(evt => {
-			if (evt.target === $modal[0]) handleCloseClick(false);
+			if (evt.target === $modal[0]) {
+				if (opts.isPermanent) return;
+				handleCloseClick(false);
+			}
 		});
 
 		$(`body`).append($modal);
@@ -305,7 +309,6 @@ class ProfUiUtil {
 					.trigger("change");
 			})
 			.contextmenu(evt => {
-				if (evt.ctrlKey) return;
 				evt.preventDefault();
 				$btnCycle
 					.attr("data-state", --state < 0 ? state = NUM_STATES - 1 : state)
@@ -695,15 +698,26 @@ class SearchWidget {
 		});
 	}
 
-	static async pGetUserSpellSearch (options) {
-		options = options || {};
+	static async pGetUserSpellSearch (opts) {
+		opts = opts || {};
 		await SearchWidget.P_LOADING_CONTENT;
+
+		const nxtOpts = {};
+		if (opts.level != null) nxtOpts.resultFilter = result => result.lvl === opts.level;
+		const tagBuilder = (encName, encSource) => `{@spell ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_PHB) ? `|${decodeURIComponent(encSource)}` : ""}}`;
+		const title = opts.level === 0 ? "Select Cantrip" : "Select Spell";
+		return SearchWidget.pGetUserEntitySearch(title, "alt_Spell", tagBuilder, nxtOpts);
+	}
+
+	static async pGetUserEntitySearch (title, indexName, tagBuilder, opts) {
+		opts = opts || {};
+
 		return new Promise(resolve => {
-			const searchOpts = {defaultCategory: "alt_Spell"};
-			if (options.level != null) searchOpts.resultFilter = (result) => result.lvl === options.level;
+			const searchOpts = {defaultCategory: indexName};
+			if (opts.resultFilter) searchOpts.resultFilter = opts.resultFilter;
 
 			const searchWidget = new SearchWidget(
-				{alt_Spell: SearchWidget.CONTENT_INDICES.alt_Spell},
+				{[indexName]: SearchWidget.CONTENT_INDICES[indexName]},
 				(page, source, hash) => {
 					const [encName, encSource] = hash.split(HASH_LIST_SEP);
 					doClose(false); // "cancel" close
@@ -712,13 +726,13 @@ class SearchWidget {
 						source,
 						hash,
 						name: encName,
-						tag: `{@spell ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_PHB) ? `|${decodeURIComponent(encSource)}` : ""}}`
-					})
+						tag: tagBuilder(encName, encSource)
+					});
 				},
 				searchOpts
 			);
 			const {$modalInner, doClose} = UiUtil.getShowModal({
-				title: "Select Spell",
+				title,
 				cbClose: (doResolve) => {
 					searchWidget.$wrpSearch.detach();
 					if (doResolve) resolve(null); // ensure resolution
@@ -1109,6 +1123,7 @@ class InputUiUtil {
 				cbClose: (isDataEntered) => {
 					$document.off(`mousemove.${evtId} touchmove${evtId} mouseup.${evtId} touchend${evtId} touchcancel${evtId}`);
 					if (!isDataEntered) return resolve(null);
+					if (curAngle < 0) curAngle += 360;
 					return resolve(curAngle); // TODO returning the step number is more useful if step is specified?
 				}
 			});
@@ -1356,10 +1371,11 @@ class BaseComponent extends ProxyBase {
 		this._removeHook("state", prop, hook);
 	}
 
-	_getPod () {
+	getPod () {
 		return {
 			get: (prop) => this._state[prop],
 			set: (prop, val) => this._state[prop] = val,
+			delete: (prop) => delete this._state[prop],
 			addHook: (prop, hook) => this._addHookBase(prop, hook),
 			removeHook: (prop, hook) => this._removeHookBase(prop, hook),
 			triggerCollectionUpdate: (prop) => this._triggerCollectionUpdate(prop),
@@ -1381,18 +1397,6 @@ class BaseComponent extends ProxyBase {
 	}
 
 	/**
-	 * Trigger an update for a collection, auto-filtering deleted entries. The collection stored
-	 * at the prop should be a map of `id:state`.
-	 * @param prop The state property.
-	 */
-	_triggerCollectionUpdate (prop) {
-		this._state[prop] = Object.values(this._state[prop])
-			.filter(it => !it.isDeleted)
-			.map(it => ({[it.id]: it}))
-			.reduce((a, b) => Object.assign(a, b), {});
-	}
-
-	/**
 	 * Asynchronous version available below.
 	 * @param prop The state property.
 	 * @param cbExists Function to run on existing render meta. Arguments are `rendered, item, i`.
@@ -1406,8 +1410,8 @@ class BaseComponent extends ProxyBase {
 		const rendered = (this.__rendered[prop] = this.__rendered[prop] || {});
 		const toDelete = new Set(Object.keys(rendered));
 
-		this._state[prop].forEach((it, i) => {
-			if (!it.id) throw new Error(`Collection item did not have an ID!`);
+		(this._state[prop] || []).forEach((it, i) => {
+			if (it.id == null) throw new Error(`Collection item did not have an ID!`);
 			const meta = rendered[it.id];
 
 			toDelete.delete(it.id);
@@ -1470,6 +1474,9 @@ class BaseComponent extends ProxyBase {
 				await cbExists(meta, it, i);
 			} else {
 				const meta = await cbNotExists(it, i);
+				// If the generator decides there's nothing to render, skip this item
+				if (meta == null) continue;
+
 				meta.data = it;
 				if (!meta.$wrpRow) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
 
@@ -1531,6 +1538,37 @@ class BaseComponent extends ProxyBase {
 		if (lockMeta) {
 			lockMeta.unlock();
 		}
+	}
+
+	_triggerCollectionUpdate (prop) {
+		this._state[prop] = [...this._state[prop]];
+	}
+
+	static _toCollection (array) {
+		if (array) return array.map(it => ({id: CryptUtil.uid(), entity: it}));
+	}
+
+	static _fromCollection (array) {
+		if (array) return array.map(it => it.entity);
+	}
+
+	static fromObject (obj, ...noModCollections) {
+		const comp = new BaseComponent();
+		Object.entries(MiscUtil.copy(obj)).forEach(([k, v]) => {
+			if (v == null) comp.__state[k] = v;
+			else if (noModCollections.includes(k)) comp.__state[k] = v;
+			else if (typeof v === "object" && v instanceof Array) comp.__state[k] = BaseComponent._toCollection(v);
+			else comp.__state[k] = v;
+		});
+		return comp;
+	}
+
+	toObject () {
+		const cpy = MiscUtil.copy(this.__state);
+		Object.entries(cpy).forEach(([k, v]) => {
+			if (v != null && v instanceof Array && v.every(it => it && it.id)) cpy[k] = BaseComponent._fromCollection(v);
+		});
+		return cpy;
 	}
 }
 
@@ -1607,9 +1645,9 @@ class BaseLayeredComponent extends BaseComponent {
 		if (toLoad.layers) toLoad.layers.forEach(l => this._addLayer(CharLayer.fromSavedState(this, l)));
 	}
 
-	_getPod () {
+	getPod () {
 		return {
-			...super._getPod(),
+			...super.getPod(),
 
 			addHookDeep: (prop, hook) => this._addHookDeep(prop, hook),
 			removeHookDeep: (prop, hook) => this._removeHookDeep(prop, hook),
@@ -1637,6 +1675,8 @@ class ComponentUiUtil {
 	 * @param [opts.max] Max allowed return value.
 	 * @param [opts.min] Min allowed return value.
 	 * @param [opts.offset] Offset to add to value displayed.
+	 * @param [opts.padLength] Number of digits to pad the number to.
+	 * @param [opts.fallbackOnNaN] Return value if not a number.
 	 * @return {JQuery}
 	 */
 	static $getIptInt (component, prop, fallbackEmpty = 0, opts) {
@@ -1645,7 +1685,10 @@ class ComponentUiUtil {
 
 		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal text-right">`))
 			.change(() => component._state[prop] = UiUtil.strToInt($ipt.val(), fallbackEmpty, opts) - opts.offset);
-		const hook = () => $ipt.val(component._state[prop] + opts.offset);
+		const hook = () => {
+			const num = (component._state[prop] || 0) + opts.offset;
+			$ipt.val(opts.padLength ? `${num}`.padStart(opts.padLength, "0") : num)
+		};
 		component._addHookBase(prop, hook);
 		hook();
 		return $ipt;
@@ -1710,18 +1753,23 @@ class ComponentUiUtil {
 	 * @param [opts] Options Object.
 	 * @param [opts.$ele] Element to use.
 	 * @param [opts.fnHookPost] Function to run after primary hook.
+	 * @param [opts.stateName] State name.
+	 * @param [opts.stateProp] State prop.
 	 * @return {JQuery}
 	 */
 	static $getBtnBool (component, prop, opts) {
 		opts = opts || {};
 
+		const stateName = opts.stateName || "state";
+		const stateProp = opts.stateProp || "_state";
+
 		const $btn = (opts.$ele || $(`<button class="btn btn-xs btn-default">Toggle</button>`))
-			.click(() => component._state[prop] = !component._state[prop]);
+			.click(() => component[stateProp][prop] = !component[stateProp][prop]);
 		const hook = () => {
-			$btn.toggleClass("active", !!component._state[prop]);
-			if (opts.fnHookPost) opts.fnHookPost(component._state[prop]);
+			$btn.toggleClass("active", !!component[stateProp][prop]);
+			if (opts.fnHookPost) opts.fnHookPost(component[stateProp][prop]);
 		};
-		component._addHookBase(prop, hook);
+		component._addHook(stateName, prop, hook);
 		hook();
 		return $btn
 	}

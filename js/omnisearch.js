@@ -12,7 +12,7 @@ const Omnisearch = {
 
 		const $nav = $(`#navbar`);
 
-		const $searchIn = $(`<input class="form-control search omni__input" placeholder="${Omnisearch._PLACEHOLDER_TEXT}" title="Disclaimer: unlikely to search everywhere. Use with caution.">`).disableSpellcheck();
+		const $searchIn = $(`<input class="form-control search omni__input" placeholder="${Omnisearch._PLACEHOLDER_TEXT}" title="Hotkey: F. Disclaimer: unlikely to search everywhere. Use with caution.">`).disableSpellcheck();
 		const $searchSubmit = $(`<button class="btn btn-default omni__submit" tabindex="-1"><span class="glyphicon glyphicon-search"></span></button>`);
 
 		const $searchInputWrapper = $$`

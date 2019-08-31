@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--5ETOOLS_VERSION-->
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Changelog - 5etools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
+	<script type="text/javascript" src="js/browsercheck.js"></script>
+</head>
+
+<body>
+<header class="hidden-xs hidden-sm page__header">
+	<div class="container">
+
+		<h1 class="page__title">Changelog</h1>
+		<p class="page__subtitle">See what changed.</p>
+	</div>
+</header>
+<nav class="container page__nav" id="navigation"><ul class="nav page__nav-inner" id="navbar"></ul></nav>
+
+<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
+<div class="cancer__wrp-sidebar-rhs"><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+
+<main class="container" id="pagecontent"></main>
+<!--5ETOOLS_SCRIPT_ANCHOR-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/render.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+<script>
+	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+
+	const CHANGELOG = [
+		{
+			ver: "1.0.0",
+			date: "2016-12-18",
+			txt: "(Lost to time.)"
+		},
+		{
+			ver: "1.56.3",
+			date: "2018-07-22",
+			txt: `
+- Updated Discord links, and added a banner to the homepage explaining the situation
+- Added DMG versions of non-PHB races which have been playerised in other sources (e.g. DMG Aarakocra)
+- Added Traits and Languages filters to Races page
+- Added Bladesinger Styles insert to Bladesinger subclass
+- Fixed hover windows opening under the mouse, causing immediate flickering
+- Fixed moving DM screen tabbed panels to empty spaces
+- Fixed emptying tabbed DM screen panels containing YouTube/Twitch/dice roller widgets
+- Switched to alternate slider implementation in Bestiary filters, to try to alleviate Firefox being silly. Firefox is still being silly, but this appears to have reduced the lag some.
+- Fixed handling of encoded apostrophes in URLs
+- (Fixed typos)`
+		},
+		{
+			ver: "1.56.4",
+			date: "2018-07-23",
+			txt: `
+- Added UA/WGE Eberron races (source tagged as "Wayfarer's Guide to Eberron") [More to come soon™ but I'm rolling on 4 hours sleep as-is, and I have work tomorrow]
+- Added unit converter tool to DM screen
+- Converted a debug "feature" (copying spell names on title click, with specific formatting I needed at the time) to a more user-friendly version
+- Fixed name/encounter gen
+- (Fixed a bunch of data issues in spells/bestiary (thanks to Herodotus of Shaped sheet fame) [Note: a looot of stuff was changed, so there might be a couple of e.g. rollable tables not quite working right. Please report anything you find])
+- (Fixed typos)`
+		},
+		{
+			ver: "1.56.6",
+			date: "2018-07-26",
+			title: "Who Needs Lunch Anyway",
+			txt: `
+- (Most) Lists now have a default sort function which falls back on name (e.g. two entries have the same source; you're sorting by source; they'll be sorted by source and then by name). Some pages had this before, but not all.
+- Stat-Block Converter should properly parse the last trait/action/etc (FYI @Knilk)
+- Creatures with 0ft. walking speed now have it displayed correctly
+- Spells with concentration now correctly display "up to X" instead of fixed durations
+- (Fix typos; data cleanup)`
+		},
+		{
+			ver: "1.58.0",
+			date: "2018-07-31",
+			title: "Bad at Version Numbers, Good at Friends",
+			txt: `
+- Added a Shaped Companion Script data builder: https://5e.tools/makeshaped.html (courtesy of @ herodotus, the author of the Companion Script)
+- Added Wayfarer's Guide to Eberron. Includes items, feats, (more) races, and optional/variant rules. We're (or at least I am, and I know Dusk agrees) categorising the entire book as Unearthed Arcana, for the time being.
+- Added "Lock" button to DM Screen initiative tracker (credit @ BaumMeister)
+- Invocation homebrew now supports custom level requirements
+- Homebrew deletion performance no longer awful (credit @ herodotus)
+- Statblock Converter now displays warning/errors, and handles a slightly greater range of garbage input
+- (Typo fixes/rendering improvements)`
+		},
+		{
+			ver: "1.58.1",
+			date: "2018-08-03",
+			title: "Time Consuming Fixes <s>Nobody</s> At Least One Person Asked For",
+			txt: `
+- Overhauled the Filter UI. Lots of small changes, a couple of reasonably big changes; you'll see.
+- Filters now remember their shown/hidden state between refreshes
+- Group filters can now be toggled AND/OR across the group, instead of having a locked hidden default. This, too, should be saved between refreshes. More buttons
+- Converted Bestiary CR filter to a slider, and generally re-ordered the filters to have the more useful at the top
+- Changed the way links to pre-filtered lists work, to be more consistent
+  - [@filter tags now default unspecified filters to "white" mode, instead of using the current values]
+- Tweaked list page layout; Manage Homebrew button + pin/etc buttons are now always displayed *
+- Added Book View/Table View to Psionics page
+- Added "collection" homebrew support, for campaign settings etc.
+- Tagged various creatures in TTP (credit to BigJoeDuke)
+- (Typo fixes)
+
+* My sincerest apologies to the redesign team, I couldn't take it any longer.`
+		},
+		{
+			ver: "1.58.2",
+			date: "2018-08-03",
+			txt: `
+- Fixed disappearing class filter
+- Fixed giant pinned lists pushing other content off the page`
+		},
+		{
+			ver: "1.58.3",
+			date: "2018-08-07",
+			title: "Fantasy Grounds is Objectively Superior",
+			txt: `
+- Added support for homebrew spell schools -- see here https://github.com/TheGiddyLimit/homebrew/blob/master/spell/Sample%20-%20Giddy%3B%20Assorted%20Marginalia.json for an example
+- Added support for homebrew spell units -- as above
+- Added Plane Shift: Dominaria
+- Fixed point-buy calculator breaking on races with the same name
+- Fixed issue where Search Everywhere wouldn't index homebrew on certain pages
+- Tagged dice in PotA
+- Fixed creatures with strange skill/save scores breaking the Proficiency Dice converter
+- Fixed Night Mode reverting on page change in offline copies of the site
+- (Fixed typos)`
+		},
+		{
+			ver: "1.59.0",
+			date: "2018-08-14",
+			title: "Circumstances Forcing a Release",
+			titleAlt: "95 Motherfucking Commits",
+			txt: `
+- Added version 0.1 of the current (2nd-) highest-voted suggestion (the highest being the Character Creator: "After 2.0's Done™")--the ability to scale creatures by CR. Currently, a small button next to the CR on statblocks in the Bestiary. DM Screen/Roll20/etc integration to come Soon™, mainly because I have to unfuck this Roll20 script/do the UA. Highly experimental, please do screw around with it, and see what's lacking. Things I know to be shit:
+  - Doesn't respect enchanted armor
+  - Can give people armor with greater Strength requirements than they can wield
+  - Completely untested vs Homebrew
+  - Doesn't scale spellcasters brilliantly (although I reckon it's passable; feedback appreciated).
+  Besides these known issues, it's generally never going to be perfect, so don't expect it to ever be. We're aiming for "functionally good enough," here.
+
+- Added optional "Close Tab?" confirmation to DM Screen (option is in the sidebar)
+- Fixed various issues with Bestiary Proficiency Dice toggler
+- Minor Statblock Converter improvements
+- Added Blessed of Corellon variant rule
+- Fixed Bestiary list sorting; now prefers Name -> Source as a fallback (or Source -> Name if sorted by Source)
+- Scrolling lists with J/K now keeps the selected item in view
+- Made "Recharge X-Y" click/rollable
+- Fixed missing vulnerabilities on Objects
+- Randomising a subclass can no longer randomise the already-selected subclass
+- Added /clear command to Dice Roller
+- Fixed various issues with local homebrew loading
+- Exporting a filter link now includes only the non-defaulted filters, so the links are much smaller
+- Added f and SHIFT-f as hotkeys to place the cursor in search boxes; list search and omnisearch respectively
+- Added "Previous"/"Next"/"Back to Top" buttons to bottom of book pages
+- Classes page now filters homebrew sources as own distinct type
+- Dice Roller placeholder text now contains "drop lowest/highest" examples
+- Bestiary print view defaults to printing the current creature if none are sublisted
+- Fixed Items page sublist sorting in browsers using , as a decimal separator
+- Added @diety tag
+- (Fixed typos/minor content holes/etc)`
+		},
+		{
+			ver: "1.59.2",
+			date: "2018-08-15",
+			title: "The City of Fixes",
+			txt: `
+- Added UA: Races of Ravnica
+- Fixed Shaped JS creator
+- Fixed CR scaler always failing when attempting to scale creatures with DCs to CR20
+- Fixed CR scaler failing to properly process DPR
+- Fixed nightmode colouration on Bestiary hover/DM Screen entries
+- Added "empty list display current entry" to Spells/Psionics Book View
+- Improved Converter nightmode
+- Slightly improved Converter "senses"/"damage &lt;resistances/immunities/vulnerabilities&gt;" handling
+- (Fixed typos/etc)`
+		},
+		{
+			ver: "1.59.3",
+			date: "2018-08-20",
+			title: "One Man's Quest to Inflict a Mental Breakdown",
+			txt: `
+- Fiddled with the navbar some, squeezing out a few more pixels for page content
+- Added miscellaneous CoS items (thanks to @ Sulandir for the list), and one missing PotA item
+- DM Screen Initiative Tracker now highlights groups of creatures
+- DM Screen tabs with "generic" names can now be renamed
+- Adventure/book/a few class headers are now clickable, to get a link to that header
+- Improved rendering performance; pages with lots of text (e.g. adventures, books, classes) should now load significantly faster (the CoS page I was testing went from ~300ms -> ~150ms for me testing locally; ymmv)
+- Added "Healing" filter to spells page (in the Misc section)
+- Added show/hide buttons per class to Spells page "Subclasses" filter
+- Added "Conditions Inflicted" filter to spells page
+- Added map images to SCAG
+- Bestiary Recharge clickers now work everywhere
+- Dice rollers can now be rolled twice by holding shift when clicking
+- Spam-clicking dice rollers no longer selects the text
+- Added nav buttons to top of books/adventures (in addition to the existing ones at the bottom)
+- Fixed Omnisearch handling terms ending in e.g. "a" strangely
+- Added hover links to conditions in the Bestiary
+- Cleaned/added hover links lots of CoS
+- Cleaned MTF fluff formatting
+- Added hover links to Cults and Boons
+- Added /c and /h as shorthand for /clear and /help in the dice roller
+- Fixed some CR scaling bugs:
+  - To-hit scaling can now correctly produce results less than +3
+  - To-hit scaling now properly handles proficiency, ensuring less ridiculous to-hits/strength scores
+  - Minimum damage for a damage roll is now 1 (e.g. 1d4-2 is converted to a flat 1)
+  - Spell slots correctly scale down
+  - NB: 30+ attributes are staying, because they're cooler than you
+- Fixed various instances of missing fluff (especially in dragons)
+- Made converter output editable, and title-casing of names toggle-able
+- Pinned list data can now be downloaded, as a rightclick option
+- Added various missing tags to the Demo page
+- Browsing to the Bestiary/Spells page from a bad URL now selects the first item
+- (Typo fixes/other hover-link tagging/etc)`
+		},
+		{
+			ver: "1.60.0",
+			date: "2018-08-28",
+			title: "Procrastinating Adding the CR Scaler to Roll20",
+			txt: `
+- CR Scaler:
+  - Added to hover window and DM Screen
+  - Improved "prompt" (it's now a slider)
+- Classes page:
+  - Added "Source" toggle to subclass buttons
+  - DMG subclasses are now hidden by default
+- Added Languages filter, Senses filter, Skills filter, and Saves filter to Bestiary
+- Lootgen:
+  - Now handles sub-tables (e.g. Table I's 76 result) visibly (it previously rolled in secret, and didn't display the sub-table).
+  - Nicer output text
+- Items:
+  - Added Charges filter, Attached Spells filter, and Cost slider
+  - Minor performance improvements
+- Improved Demo/Converter nightmode
+- Improved Variant Rule search results; now jumps to the correct header
+- Fixed navigating to same hash not scrolling the page when using F-to-find
+- All Wizard cantrips now list "High Elf" as a potential source
+- DM Screen Initiative tracker:
+  - Added "add multiple" options
+  - Search is focussed when opening Add Monster
+  - Fixed bug where added creatures wouldn't join groups
+- Added "Exclude All UA" button to Blacklist
+- Added AL Eberron guide
+- Added weather/etc as Hazards
+- Invocations page overhauled:
+  - Is now "Invocations & Optional Features," to better support homebrew
+  - Added Battlemaster Maneuvers and Sorcerer Metamagic
+- Overhauled Dice Roller--now supports multiplication, division, brackets, and exponents
+- (Fixed typos/minor bugs/etc)`
+		},
+		{
+			ver: "1.61.3",
+			date: "2018-09-05",
+			title: "Build System Requires Me to Bump the Version at Least Three Times",
+			txt: `
+- Bestiary:
+  - Added MTF Duergar tokens, PSD tokens, WGE tokens (thanks to @ KnilKrad)
+  - Shift-clicking to-hit/skill/save rolls now rolls advantage (previously just rolled twice); shift-clicking damage rolls crits
+  - CR Scaler now randomly generates spell lists
+  - Added "Reset" button to scaled creatures
+  - Scaled creatures now work in pinned lists
+  - Scaled creatures now have distinct URLs, and can be linked, etc
+  - Fixed scaling creature to original CR
+  - Fixed spellcaster scaling
+  - Added "Max Roll" tooltip to HP
+  - Cleaned MTF fluff; added missing MTF regional effects/lair actions
+  - Improved layout to better match the books
+  - Fixed to-hit dice displaying as "1d20+X" instead of "+X"
+
+- Quick Reference/Books:
+  - Prev/next buttons now change section instead of chapter; various other minor navigation fixes
+  - Fixed duplicated content
+  - Added chapter title to tab title
+
+- Variant Rules
+  - Added page numbers
+
+- Skills now have popup explanations where appropriate
+- Actions now have popup explanations, although they're not yet ubiquitous. Soon™
+
+- Homebrew:
+  - Added homebrew management page: https://5e.tools/managebrew.html
+  - Added section for source-less entries
+  - Custom skills/actions can be added
+
+- (Fixed typos/added tags/added missing content/fixed many minor bugs)`
+		},
+		{
+			ver: "1.62.0",
+			date: "2018-09-08",
+			title: "24+ of the Last 36 Hours of My Existence",
+			titleAlt: "No More Coffee in the Flat",
+			txt: `
+- Added Waterdeep: Dragon Heist https://5e.tools/adventure.html#WDH
+- Added VGM/MM Familiar variants to Variant Rules
+- Fixed pinned list "subtract" button in the Bestiary
+- Fixed lifegen parentage rolls for Half-Orcs/Half-Elves/Tieflings
+- Scientific notation now works in the DM Screen Unit Converter. For example, 10e3
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.62.1",
+			date: "2018-09-11",
+			title: "A Few Formatting Fixes, and Friends",
+			txt: `
+- Formatted Chapters 5+ of W:DH, added some missing content, and added/tidied up some tags`
+		},
+		{
+			ver: "1.62.2",
+			date: "2018-09-11",
+			title: "More of the Same",
+			txt: `
+- See above
+- Added Roll20 tokens, plus a few extra courtesy of KnilKrad`
+		},
+		{
+			ver: "1.62.6",
+			date: "2018-09-11",
+			txt: `
+- Added "Environment" to the bottom of statblocks in the Bestiary
+- Fixed link encoding when clicking headers in Adventures/Books
+- Fixed creature scaling behaving strangely when multiple consecutive scales are done on the same statblock
+- (Typos/tags)`
+		},
+		{
+			ver: "1.62.9",
+			date: "2018-09-14",
+			txt: `
+- Improved lyncathrope "Info" content in the Bestiary, and added missing Variant (nonhuman lycanthropes)
+- Added Player Characters as Lycanthropes/Vampires to Variant Rules page
+- Split Deities page alignment filter Nutral into Neutral, Neutral (Law/Chaos Axis), and Neutral (Good/Evil Axis), to match the Bestiary
+- Clicking a link to a currently-hidden class feature in the Classes page table will now un-hide the feature, and jump to it
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.62.11",
+			date: "2018-09-22",
+			title: "Weekend Ruined by Letter Declaring £1,000+ Fine",
+			txt: `
+Bestiary:
+- Added WDH NPCs. Big thanks to @ KnilKrad for the tokens (and probably some others I've forgotten to credit him for, man's a hero)
+- Added Info to WDH creatures. Straight from FG, so it's likely pretty nasty
+- CR Scaler:
+  - Now adds/removes Cantrips on spellcasters dep. on their level
+  - Improved AC adjustments and enchanted armor handling
+  - Improved spellcasting DC scaling and caster level scaling
+  - Improved to-hit scaling
+  - Improved CR0 creature damage scaling
+- Added page numbers to WDH creatures
+- Creature skills now have hoverable descriptions
+- Fixed bug where load order mattered for showing monsters referenced from other bestiaries (e.g. WDH referencing VGM's Bard)
+
+Adventures:
+- Made "see area XX" text hoverable, it should pop up the appropriate area. As always, SHIFT to lock the window open.
+
+Books:
+- Added homebrew support
+  - (Converted this http://www.giantitp.com/forums/showthread.php?424243 to a homebrew file, currently the only thing available)
+- Added "book list" page (https://5e.tools/books.html) from which homebrew can be managed (the general page at https://5e.tools/managebrew.html can be used too)
+
+Pinned lists:
+- Added "Feeling Lucky" rightclick option
+- Fixed bug when using list rightclick->Add in the Bestiary
+
+- Actions in Classes page now have hoverable descriptions (e.g. "Dash," "Disengage")
+- Statgen now respects blacklist
+- Added DMG "Improvising Damage" to Traps & Hazards
+- Added Star Spawn cults to Cults & Boons
+- Added page numbers to Rewards
+- Added page numbers to WDH Items
+- Added context menu options to Hover-Window top bars (Min/Max All; Close all)
+- Added inches <-> centimetres to DM Screen Unit Converter
+- Fixed homebrew missing _meta source being undeletable
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.62.12",
+			date: "2018-09-22",
+			txt: `
+- Fixed CR Scaler spell slot handling
+- Fixed extra "save" text being appended to saves in the Bestiary
+- Removed "help" underline when printing (as seen underlining creature skills in the Bestiary)
+- Optional Feature level "class" field is now respected by the filter`
+		},
+		{
+			ver: "1.62.13",
+			date: "2018-09-22",
+			txt: `
+- Statblock Converter now allows "no value" for page number
+- A very minor behind-the-scenes change I needed to do for some Roll20 stuff, which literally took less time to write than this line of text`
+		},
+		{
+			ver: "1.62.15",
+			date: "2018-09-23",
+			txt: `
+- Fixed ye-olde Roll20 Adventure "By Category" import
+- Fixed Shaped JS builder W:DH handling
+- Fixed homebrew source deletes`
+		},
+		{
+			ver: "1.63.0",
+			date: "2018-09-30",
+			title: "Casters and Tables",
+			txt: `
+- Spells "At Higher Levels" dice rollers now prompt for which level to cast at
+
+Tables:
+- Added new "Tables" page, https://5e.tools/tables.html, containing various tables extracted from rulebooks
+  - These tables can be loaded in the DM Screen
+
+Classes:
+- Fixed Wild Shape requirements
+- Fixed nightmode "outline" colouring
+- Fixed bug where homebrew subclasses wouldn't appear without switching class
+
+Items:
+- Added base weapon type to variants which can only apply to one item, e.g. "Oathbow" now tells you it's a longbow
+- Added "base item is from X" note to variants with a base item from a non-standard source, e.g. "Double-Bladed Scimitar +1"
+- Fixed some items not showing up in "Base Items" section of generic variants
+
+Adventures/Books:
+- Fixed sorting on overview pages
+- Removed "Living Document" AL stuff. Kept the Faction Guide, but if you want the rest, use the official doc. It was too much busiwork to maintain, I'm afraid.
+- Added RoT Appendix C
+- Added various missing ToA flavour images
+
+DM Screen:
+- Inverted Initiative Tracker status turn "tick" direction on click (add a turn of duration on click, remove a turn of duration on rightclick; was previously the opposite)
+- Fixed resetting CR-scaled creatures
+
+Homebrew:
+- Added "Add All" button when loading from the repo
+- Added support for custom properties on Deities; see The Lost Lands in the homebrew repo
+
+Class/Optional Features:
+- Added Fighting Styles + various Fighter subclass options
+- Fixed list sorting
+
+- Added missing WDH fluff to Bestiary
+- Added link to the community wiki, curated by @ Ryan (Modnar)
+- Added "sort carets" to lists (thanks to @ JeffreyStocker on GitHub)
+- Print/etc view overlays now close when clicking "dead"/background space
+- Added Donate page
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.63.1",
+			date: "2018-09-30",
+			txt: `
+- Added three missing tables to Tables
+- Fixed strangely-formatted rows in Items list`
+		},
+		{
+			ver: "1.63.3",
+			date: "2018-10-06",
+			title: "It's Fucking Nothing",
+			titleAlt: "rushed random release because some donation addresses needed changing; have fun with everything being broken",
+			txt: `
+- Fixed list sorting and sort-caret direction sometimes being wrong
+- Added "View All Sources" button to homebrew manager
+- Fixed DM screen rules never loading
+- Tables page now uses a quasi-alpha-numeric sort
+- Added magic item tables to the DMG and Tables page, since having them in their own special lootgen page clearly isn't enough
+- Added warning message when everything's blacklisted
+- Fixed Spells page Table View showing random content
+- Fixed donation addresses (they still would have gone to sort-of the right place, but my accountants tell me it's a mess back there)
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.63.4",
+			date: "2018-10-14",
+			title: "Essential Maintenance",
+			txt: `
+- Added Skill Proficiency column to the Backgrounds list, and Skill/Tool/Language Proficiency filters
+- Added WDH currencies to Items page
+- DM Screen embeds now have a white background in Night Mode, to avoid breaking sites relying on a white default
+- Fixed CTRL-F in Renderer Demo/Stat Block Converter (hopefully)
+- Added missing blindsight filter data
+- Added Lair/Regional actions to Bestiary Book (print) view
+- Fixed unprocessed @-tags appearing in various places they shouldn't have been (filter box; omnisearch results)
+- Searching "Angels"/"Dinosaurs" in the Bestiary now shows the relevant creatures
+- Added various Happy Fun Hour subclasses. Still unsure if this is a good idea, given how changeable these are, so they might be removed in the future, or migrated to homebrew
+- Improved Classes page print styling
+- Switched to a more familiar version of shift-clicking when selecting multiple items in lists
+- (Fixed typos/added tags)
+
+Homebrew support:
+- Added "external"-typed images
+- Creature's custom Trait/Action tags will now be added to their respective filters
+- Cleaned up Races support for a long-forgotten "predefined" ability format, which, in a roundabout fashion, allows e.g. "Choose str or dex, increase one by 2, and the other by 1"
+
+Actual homebrew:
+- Added D&D Beyond's "Expanded Racial Feats" to the Homebrew repo`
+		},
+		{
+			ver: "1.64.0",
+			date: "2018-10-21",
+			title: "Colonel Sanders",
+			txt: `
+- Added Encounter Generator to the Bestiary. If it seem familiar; I can assure you, this is not the case. Completely original design.
+- Items page "Mundane" and "Magic" side-labels are now clickable
+- Added spellcasting save DCs and to-hits to all MTF creatures, which were almost all missing
+- Added more Optional Class Features (Fighting Styles, Arcane Shot options, etc) to the search index
+- Added Wondrous Item filter to Items page
+- Tidied up the homepage somewhat [Only just noticed the donation bar never loads; a dead canary if ever there was one. Will look into that]
+- Added missing Eldritch Knight "Cantrips" section
+- Fixed some instances where Bestiary data could fail to load
+- Fixed list shift-click selection not spanning multiple lists (e.g. Items page)
+- Fixed some (but probably not all) cases where slider filters could become "stuck" on one value
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.64.1",
+			date: "2018-10-25",
+			title: "Going to Buy Some Cigarettes",
+			txt: `
+Bestiary:
+  Encounter Builder:
+    - Added preview/hover for statblock/token
+    - Encounters can now be added to the DM Screen Initiative Tracker
+    - Now handles CR scaling rules better (party size; large CR disparities)
+    - Can now handle CR-scaled creatures
+    - CRs can be edited via an input field in the list
+  - ("Hit: " text is now properly italicised)
+  - (Improved comma/semicolon usage when joining long strings of damage resistances/immunities/vulnerabilities)
+  - (Added link to the Encounter Builder to the home page)
+
+- Added "Multiclassing" section to classes page sidebar
+- Added concentration ("C.") column to spells page
+- Added "Material Consumed" filter to spells page
+- Omnisearch now indexes class features
+- Added Plane Shift Ixalan loot (credit @ Ryan (Modnar))
+- Subclasses which add data to the class table (e.g. if Eldritch Knight was a homebrew subclass) can now have these tables specified alongside the subclass data, rather than in the main class data (credit @ EgilhardAeron)
+- Added "Lock" button to DM Screen, preventing panels from being moved/closed by hiding the corner menu. More useful for the aesthetic factor than the functioanlity.
+
+- Fixed Items page hiding Magic/Mundane whenever an item was selected
+- Fixed homebrew books being un-deletable
+- Fixed homebrew management page being unable to delete subclasses
+- Fixed custom item properties breaking the homebrew manager's "By Source" view
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.64.4",
+			date: "2018-10-29",
+			title: "I Love CoC",
+			txt: `
+- Fixed hover popups not popping up
+- Fixed back button loop when visiting filter URLs
+- Added "Beholders" as a search group in the Bestiary
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.64.5",
+			date: "2018-11-02",
+			txt: `
+- Overhauled Lootgen page (thanks largely to JeffreyStocker on GitHub)
+- Added W:DMM preview Roll20 module (accessible in the betteR20 Module Importer) (thanks Ryan (Modnar))
+- Omnisearch results now respect Blacklist exclusions (thanks EgilhardAeron)
+- Fixed Classes page links to homebrew classes loading as Barbarian/etc instead
+- DM Screen panel titles can now be clicked to move them out the way
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.64.6",
+			date: "2018-11-09",
+			title: "Not That Announcement",
+			txt: `
+- Added the Waterdeep: Dungeon of the Mad Mage Roll20 module (big thanks to @ Darth Alpha for the export), available in betteR20 using the Module Importer/Exporter
+- Added Guildmasters' Guide to Ravnica races (although they're essentially unchanged from the UAs)
+- Did a (very) minor accessibility pass; converted not-button buttons to true buttons, and added alt-text capabilities for images (as-yet unused)
+- Fixed quick-reference omnisearch results breaking the omnisearch blacklist (thanks @ EgilhardAeron)
+- (Fixed typos/added tags) (thanks @ Ryan (Modnar) for the tool tagging)`
+		},
+		{
+			ver: "1.65.0",
+			date: "2018-11-10",
+			title: "E's Mental",
+			txt: `
+- Added Waterdeep: Dungeon of the Mad Mage -- find it here: https://5e.tools/adventure.html#WDMM
+- Fixed GRR Goblin being Medium instead of Small (many thanks to the numerous sever members who reported this; top 1 aggravating typo)
+- Fixed the Lootgen page refreshing instead of rolling loot
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.66.0",
+			date: "2018-11-11",
+			title: "Just Fuck My Weekend Up",
+			txt: `
+- Added Guildmasters' Guide to Ravnica, including...
+  - 10 Backgrounds
+  - A single spell
+  - A mini-adventure; "Krenko's Way" https://5e.tools/adventure.html#KKW
+  - A Cleric subclass and a Druid subclass (Order and Circle of Spores, respectively; both in UA previously)
+  - A bunch of creatures
+  - A bunch of items
+  - Some "Other Rewards" (charms)
+  - The book itself https://5e.tools/book.html#GGR`
+		},
+		{
+			ver: "1.66.1",
+			date: "2018-11-12",
+			title: "No [U]nplanned [A]rrivals",
+			txt: `
+- Overhauled the point-buy calculator with a "Custom" mode, allowing custom cost tables and budgets https://5e.tools/statgen.html#pointbuy
+- Added Order domain filter info to various deities
+- Added various misc W:DMM items
+- Added proper support for "choose +2/+1 from X/Y/Z ability scores" on races; see the sample in the homebrew repo for how-to (FYI @BioOnPC)
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.66.3",
+			date: "2018-11-14",
+			txt: `
+- Added PHB class introductions/quick builds, found under "Info" per class on the Classes page
+- Added UA Of Ships and the Sea; ships have a page here https://5e.tools/ships.html; rules are in the Variant/Optional Rules page
+- Added missing VGM race random weight/height/etc table to the appropriate chapter
+- Added full Tomb of Horros DM/Player maps
+- Fixed Objects token image positioning when entries are pinned
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.66.5",
+			date: "2018-11-18",
+			title: "Everything is Likely Broken",
+			txt: `
+- Added page number support to books/adventures, and added page numbers to the Player's Handbook (and consequently to any Quick Reference pages which come from it)
+  -  There's lowkey a "G" hotkey which functions similar to "F" but is "[G]o to Page". The fact that our hotkeys are now [F][G] is pure coincidence. Also, forgot to list this hotkey anywhere, which will be Fixed for Next Update™
+- Added Errata 2.0
+- Overhauled the way homebrew data is stored, hopefully alleviating any "out of storage space" problems.
+  - This will wipe any currently-saved homebrew, we apologise for any inconvenience caused.
+  - This involved some major behind-the-scene changes, likely breaking a thing or two. Please do report any strange behaviour.
+  - There's still an automatic hard cap, which is set by and will vary with browser. It's much higher, however; for example, in my Chrome on a 512GB disk, it's 31GB (up from 10MB with the previous version).
+- DM Screen fixes:
+  - Deleting a tab with "confirm on tab close" enabled will now show the correct tab name in the prompt
+  - "Close Tab" X buttons are now hidden when the screen is locked
+  - Fullscreen/locked state is now saved/loaded as part of the layout configuration
+  - Pressing return in various input fields now submits the value in the field
+  - Rightclicking a "Close Tab" button when trying to rename a tab will no longer close the tab
+- Fixed Shaped JS builder crashing on Guildmasters' Guide to Ravnica creatures
+- Fixed issue where Bestiary tokens could be cut off by the bottom of the statblock
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.66.6",
+			date: "2018-11-19",
+			txt: `
+- Fixed Bestiary tokens "sticking" to the top of scrolled statblocks (and gave them a minor animation when hovering, to be slightly less jarring)
+- Added that missing "G" hotkey message`
+		},
+		{
+			ver: "1.67.1",
+			date: "2018-11-21",
+			txt: `
+- Added Lost Laboratory of Kwalish; find it here https://5e.tools/adventure.html#LLK
+  - Included are a handful of spells, items, and creatures.
+- Updated betteR20 help/README on the homepage, as well as adding a few extra links to the wiki
+- Fixed donation prompt from re-appearing every time the page is reloaded (hopefully)
+- Fixed "excluded" omnisearch results filter having no effect on various pages
+- Fixed classes page Outline sidebar
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.67.3",
+			date: "2018-11-23",
+			title: "(Almost) Literally Nothing",
+			txt: `
+- Added page numbers to DMG and MM
+- Homebrew:
+  - Table column widths are now easier to specify; "col-[1 to 12]"* for non-fractional widths or "col-[1 to 12]-[1 to 9]" for fractional widths (which now support any combination from "col-0-1" all the way to "col-11-9")
+    - (Previously, this was using Bootstrap-3-style "col-xs[1 to 12]" with (some) optional 1/10th width support by combining two classes, e.g. "col-xs-[1 to 12 A] col-xs-[A]-[1 to 9]")
+- (Fixed typos/added tags)
+* The entire table is considered to be 12 "units" wide, so "col-12" is 100% width, "col-6" is 50% width, etc.`
+		},
+		{
+			ver: "1.67.4",
+			date: "2018-11-24",
+			txt: `
+-Fixed some odd column widths in various places.`
+		},
+		{
+			ver: "1.67.5",
+			date: "2018-11-24",
+			txt: `
+- Homebrew: Added intro/outro support on tables
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.67.9",
+			date: "2018-12-02",
+			title: "Bothersome Headers",
+			titleAlt: "Spent 12+ Hours Making Characters This Weekend",
+			txt: `
+ Added Bestiary "Spellcasting Ability" filter options (e.g. "Spellcaster, Wisdom") (under "Miscellaneous")
+
+- Statblock Converter:
+  - Is now called "Text Converter," and has been cleaned up. Options are now in a side-menu
+  - Now has a "Table" mode, where it converts HTML tables to 5etools JSON. If you find it unable to process a certain format of table, please do send me a sample.
+
+- Homebrew:
+  - Magic Variants are now supported (e.g. the "+4 Weapon" sample available in the homebrew repo)
+  - Deitiy custom properties can now be used to display @tagged text (see the sample). This allows e.g. "Life" domain to be linked to the Life Cleric subclass.
+  - Minor Homebrew Manager interface cleanup
+  - Classes page now auto-adds the "Homebrew" source filter after loading a class homebrew
+
+- Fixed various #known-issues:
+  - Pages may fail to load with cookies disabled/unavailable
+  - Bestiary tokens can get "stuck" over the encounter builder
+  - A handful of list columns are wider than they should be, breaking some layouts
+  - Pinning items on the Variant Rules page is broken
+  - (Source) filters on the spells/bestiary pages are broken
+  - Fixed homebrew deletes not always removing matching entries from list(s)
+
+- Fixed various unknown issues
+
+- Added a currency converter to the DM screen (although forgot to add a "Don't Convert" option, to allow summing/weighing coins; Soon™)
+- Added ToA diseases to Conditions & Diseases page
+- Added a sick animation when re-rolling generated creatures from the Encounter Generator
+- Navbar now loads faster/earlier, potentially fixing delays on slower connections [genuinely unrelated to the disappearing header, in case you were wondering]
+
+- (Fixed (a great deal of) typos/added tags)`
+		},
+		{
+			ver: "1.67.11",
+			date: "2018-12-03",
+			txt: `
+- Encounter Builder/Bestiary pinned list is now resizable
+- Aded "No conversion" option to DM Screen Coin Converter (turning it into a glorified calculator, which shows total weight)
+- Fixed Items page AC/weapon damage display
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.68.0",
+			date: "2018-12-16",
+			title: "Premature",
+			txt: `
+- Added "scroll to top" button button to books/adventures (but not classes, yet)
+- Converter now auto-selects the matching text type when a "Sample Text/Markdown" button is pressed
+- DM Screen Coin Converter now party-splits non-converted coinage
+- Fixed homebrew collections not appearing in the Bestiary
+- Fixed filters not updating their display counts in some cases
+- Fixed some cases where slider filters could randomly set their own min/max
+
+- Broke Class Features page EI Patron filter
+- Broke Loot Generator, probably`
+		},
+		{
+			ver: "1.68.1",
+			date: "2018-12-21",
+			title: "For Real This Time",
+			txt: `
+- Loot Generator:
+  - Find Treasure (classic Individual/Hoard) generator now allows per-item rerolls, similar to the Party Loot (XGE) generator
+  - Items which have multiple variants (e.g. +1 Weapon) now roll the exact item, similar to the existing functionality for spell scrolls (and can be independantly rerolled)
+
+- Items:
+  - Added Images tab, populated where available (_cough_ on Beyond _cough_)
+  - Added GGR currencies
+
+- Homebrew:
+  - Fixed some inconsistencies with how magicvariants were handled
+  - Text Converter:
+    - Handles more alignments
+    - Adds languages/action/trait/etc tags
+    - Now handles some cases of ability scores split across multiple lines
+    - Now handles all-caps names better
+  - Class-less spells are now supported
+  - Added @footnote tag
+  - Homebrew Manager "Add All" button is now at the top of the window, instead of having to scroll to find it at the bottom
+
+- DM Screen Initiative Tracker:
+  - Layout reworked slightly, to pack even more stuff in there
+  - Added a Settings menu, which contains functionality to add additional columns. These columns can be auto-populated with e.g. AC, passive perception, speed...
+
+- Added UA: Sidekicks (classes to the Classes page, filtered out by default; rules to Variant Rules, same deal)
+- DM Screen Coin Converter now has a settings menu, which allows currencies to be ignored when converting
+- DM Tools navbar item now contains an "Adventures" side-drop (hopefully "sticky" enough that it feels pleasant to use, unlike ahem the offerings of one of our competitors)
+- Added "Any X Increase" ability score filters to Races
+- Added MM appendices
+- Added some missing Race spellcaster filter tags
+- Cleaned CR Calculator page layout
+- Fixed various minor bugs in CR Calculator, largely to saving/loading state to/from the URL
+- Added some missing encounter tables to TftYP: DiT
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.68.2",
+			date: "2019-01-02",
+			title: "Drunken Tomfoolery",
+			txt: `
+- Added page numbers to MTF, SCAG, VGM, and XGE
+
+Optional Class Features:
+  - Added Pact Boons and Elemental Disciplines
+  - Split "Prerequisite" column into "Level"/"Prerequisite"
+
+- Text Converter:
+  - Added Markdown table parser
+  - Various minor tweaks/improvements to text parsing
+  - Text parser now tags senses
+  - Fixed missing ability scores in markdown parsing
+
+- "Source" is now universally the last column on list pages, instead of just most pages
+- Added "Reactions" and "(has a) Variant" filter to Bestiary
+- Fixed broken DM Screen tab-close buttons on Firefox
+- Fixed missing navbar page highlights
+- Prevented double-listing when populating local homebrew
+- Added a bunch of Plane Shift: Amonkhet creatures; those which are copies of existing statblocks
+- (Fixed typos/added tags)
+
+Homebrew support:
+- Bestiary Action/Sense/etc tag filters are now auto-sorted after adding new items
+- Added monsterFluff entity, which allows fluff to be defined and then referenced from a statblock, rather than being defined in the statblock. TL;DR: less copy-pasting fluff.
+- Fixed books/adventures with non-URL characters in their IDs breaking the books/adventures pages
+- "storyline" is no longer a "required" adventure property`
+		},
+		{
+			ver: "1.68.4",
+			date: "2019-01-03",
+			txt: `
+- Changed homebrew tokenURL to tokenUrl because muh camel-case
+  - This "fixes" a bunch of tokens in the Strongholds and Followers homebrew, which were previously not visible
+- (Fixed typos)`
+		},
+		{
+			ver: "1.68.6",
+			date: "2019-01-03",
+			txt: `
+- Fixed DM Screen initiative tracker conditions
+- Fixed level sorting on Class Optional Features page`
+		},
+		{
+			ver: "1.69.0",
+			date: "2019-01-22",
+			title: "Sexualized",
+			txt: `
+- DM Screen:
+  - Initiative Tracker:
+    - Added "Rounds" counter
+    - Added The Worlds Shittiest Player View™
+      - DM half is the new blue-man-silhouette button
+      - Player half can be found here https://5e.tools/inittrackerplayerview.html
+      - Is a ripoff of Improved Initiative, which I don't use, so if there's a crucial feature I've forgotten to "borrow," do let me know
+      - Is some confusing peer-to-peer bullshit that probably doesn't work, but the feds won't get ya
+  - Can now have adventure and book content embedded (there's a new tab for each)
+
+- Encounter generator:
+  - Added "Advanced" mode, allowing players and their attributes (e.g. AC) to be specified
+    - These are imported by the DM Screen Initiative Tracker when importing a Bestiary encounter
+  - Fixed issue where CRs couldn't be scaled
+  - Fixed issue where dropdown "Encounter Size" button didn't work
+
+- Hover windows:
+  - Can now be popped into true popup browser windows
+  - Can now be resized
+
+- Added "Area Style" filter to the Spells page
+- Added fluff images to Races page
+- Added a bunch of "it's X with Y modifications" WDMM creatures
+- Added page numbers to GGR Backgrounds/Items/Monsters/Races
+- Added "copy to input" button to dice roller output (allows you to sort-of reroll generated rolls)
+- Added "Ability Score Adjustment" filter to Items page
+- Added "Spellcasting Focus" filter to Items page
+- Show/Hide search/filters buttons are now present on every list page
+
+- Fixed a whole bunch of minor bugs; highlights include:
+  - Setting sliders from URL
+  - CR Scaler not allowing DCs below 13
+  - Statgen racial trait population not populating when loading from URL
+  - Markdown Table Converter removing empty cells
+  - This Is Your Life "locked on page load" rolls
+
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.69.1",
+			date: "2019-01-23",
+			txt: `
+- DM Screen and Init Tracker Player View now have "Are you sure you want to leave the page?" prompts on navigating away with tracker connections active
+- Fixed Bestiary encounter XP calculations
+- Prevented some Race images from propagating to subraces (e.g. Elf -> Drow resulted in a white af """drow""" picture)
+- Fixed "Rules" loading in DM Screen
+- Filters now save/load "AND/OR" state
+- Fixed Classes page proficiency links to e.g. "simple melee weapons" linking to "simple or melee weapons" rather than "simple and melee weapons"`
+		},
+		{
+			ver: "1.70.2",
+			date: "2019-02-05",
+			title: "Perilous Seas",
+			txt: `
+- Bestiary:
+  - Added "Adjust to &lt;Difficulty&gt;" button to Encounter Builder. Attempts to populate the encounter with a random combination of the encounter's creatures to match the target difficulty. Undoubtably under-tested; please do report any issues via the usual channels.
+  - Added "Spellcasting Type" filter (e.g. "Psionics," "Innate,"...)
+  - Added slider "Speed" filter; switched current "Speed" filter to "Speed Type"
+  - Fixed compatibility with (slightly) older browsers
+
+- DM Screen:
+  - Added "Initiative Tracker Player View" tool
+  - Fixed tabs resetting their scroll status/stopping video playback/generally refreshing when switched away from
+  - Fixed panels getting stuck in "move" mode when lock was enabled
+
+- Spells:
+  - Added "Summons Creature" filter to "Components & Miscellaneous"
+  - Added homebrew support for 10+ level spells
+  - Added homebrew support for "self (cylinder)" area types
+
+- Added "View Entire Book" button to books/adventures
+- Reworked Statgen Point Buy visuals to be more readable/less fugly/better on mobile
+- Added ToA "Trickster Gods" features to Rewards page
+- Improved arrow-key navigation in omnisearch results
+- Minor navbar reorganisation; "Statgen" is now under "Player Options"
+- Bestiary pin list will now load encounter files, and vice versa
+- Fixed filter dropdowns resetting their scroll position on close/re-open
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.71.1",
+			date: "2019-02-03",
+			title: "Sponsored by Apex Legends",
+			txt: `
+- Added Artificer Revisited content
+- Added Homebrew Builder, currently only supports creatures, and should be considered "beta" (i.e. likely full of bugs); find it here: https://5e.tools/makebrew.html
+  - The text-editing part (e.g. for action descriptions) is "placeholder" at best, and has a hidden rule: indented text (e.g. one or more leading spaces/tabs) is treated as raw JSON data.
+
+- Bestiary
+  - Fixed CR scaled creatures breaking add/subtract buttons
+  - Fixed some broken encounter XP calculations
+  - Fixed filtering bug where entries could be hidden on re-filtering
+  - Fixed filtering bug where all shapeshifters/a few others were always hidden
+
+- Items:
+  - Added hover links to beneficial/detrimental property tables to artifacts
+
+- DM Screen
+  - All tab types may now be renamed
+  - Initiative Tracker can now load pinned lists exported from Bestiary
+  - Fixed additional column layout in player view
+
+- Books/Adventures
+  - Fixed "view entire book" button layout when zooming via browser
+
+- Text Converter
+  - Added caption support to MD table converter
+  - Fixed bug where certain line-endings weren't handled correctly
+  - Statblock converter now handles a few additional alignments
+
+- Fixed some nightmode styling issues (toggle buttons; focused elements)
+- Changed hover window functionality on some touchscreens (single tap now opens the hover window; long tap to do the usual link behaviour)
+- Fixed some inconsistencies in loading local homebrew
+- Fixed some wording in the CR Calculator, and added a confirmation prompt when clicking the stats-at-CR-X table
+- (Fixed typos/added tags, including a major pass on all rollable tables to hopefully ensure their validity)`
+		},
+		{
+			ver: "1.71.2",
+			date: "2019-03-03",
+			txt: `
+- Fixed Text Converter handling of e.g. "Melee Weapon Attack"
+- Fixed dice roller subtraction/exponentiation
+- Homebrew Builder:
+  - Added UI to move entry between sources
+  - Added "Add Predefined Trait" button
+  - Added "Generate Attack" button + attack builder UI
+  - Improved language input
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.72.2",
+			date: "2019-03-09",
+			title: "No Such Thing as a Free Lunch",
+			txt: `
+- Homebrew Builder:
+  - Is now split into tabs
+  - Now has a proficiency input, and along with it...
+    - Buttons to quick-calculate skill modifiers
+    - Buttons to quick-calculate save modifiers
+  - Added confirmation prompt when deleting traits/actions if they contain text
+  - Fixed bug where damage res/immunes etc couldn't be removed
+
+- Encounter Builder:
+  - Fixed bug where removing a creature wouldn't update difficulty
+  - Fixed bug where scaling a creature wouldn't update difficulty
+
+- "Checkbox" columns can now be added to DM Screen Initiative Tracker, with options to have them set/reset at start of turn
+- DM Screen embedded adventures/books now have "next/previous chapter" navigation controls
+- Adventure/book images now "lazy load" as you scroll, rather than all at once at the start (should make giant chapters/entire books smoother)
+- Artisan tools now have additional XGE info when shown in hover windows, etc
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.73.1",
+			date: "2019-03-17",
+			title: "Brexit Waiting Room",
+			txt: `
+- Homebrew builder:
+  - Added fluff support
+  - Attack generator no longer resets when being accidently closed (now has a reset button)
+  - Actions/etc can now be dragged to re-order
+  - Fixed editing/saving existing homebrew
+  - Fixed incorrect JSON meta output structure
+
+- DM Screen:
+  - Panel tab bar is now hidden where possible (e.g. after closing the second-last tab)
+  - Fixed bug where names in top-left of panels wouldn't update on tab change
+
+- Bestiary:
+  - Added "Damage Inflicted" filter
+  - Added ability to save/load multiple encounters (thanks to JeffreyStocker for the original implementation)
+  - Can also be loaded into DM Screen tracker
+
+- Items:
+  - Added "Found On" filter to Items page, showing Magic Item tables
+  - Items show the Magic Item tables they can be found on as part of their entries
+
+- Added ability to save/load entire site state (homebrew, blacklists, etc...) to/from files
+  - In the new "Settings" dropdown in the navbar, which also contains the nightmode toggle
+  - Will only work for newly-saved data; load some homebrew or add a panel to the DM Screen to ensure they get registered
+
+- Added "Save as Homebrew" button to Text Converter (statblocks only)
+  - Text Converter now uses the same source input as the Homebrew Builder
+- Added Ravnica backgrounds as sources to appropriate spells
+- Fixed display of Artificer Infusions in omnisearch results
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.73.2",
+			date: "2019-03-17",
+			txt: `
+- Text converter now deduplicates entries on saving to homebrew
+- Homebrew builder:
+  - Damage tags are now added automatically
+  - Added option to display JSON for a saved creature
+  - Images can now be reordered
+  - Added ability to specify custom environments
+- Fixed Shaped JS failing in the presence of valid homebrew
+- Fixed various rendering bugs`
+		},
+		{
+			ver: "1.73.4",
+			date: "2019-03-23",
+			title: "It's Fucking Nothing",
+			txt: `
+- Text Converter:
+  - Improved damage tagging in the presence of bracketed text
+  - Improved trait/action name detection
+  - Improved handling for unicode dashes
+
+- Homebrew builder:
+  - Improved layout for Ability Scores/Saving Throws/Skills
+  - Added auto-calculation toggles for Saving Throw proficiency; Skill proficiency/expertise; Proficiency Bonus; (simple) Hit Points; Passive Perception
+
+- Fixed some layout bugs affecting lists
+- Styling improvements to Night Mode; CR Calculator; Filter (fixed common header layout bug)
+- Filter "Combine As OR" now behaves more intuitively
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.73.5",
+			date: "2019-03-23",
+			txt: `
+- Homebrew Builder
+  - Skill/Saves are now cleared when disabling proficiency
+  - Fixed bug where old cached data would break loading
+  - Creatures can now be scaled when being "Load Existing"'d
+
+- Fixed various Text Converter trait/action name false-positives`
+		},
+		{
+			ver: "1.73.6",
+			date: "2019-04-11",
+			txt: `
+- Added UA (Artificer Returns) content`
+		},
+		{
+			ver: "1.74.0",
+			date: "2019-05-19",
+			title: "One time, let it be a bad bitch sweeping",
+			txt: `
+Bestiary:
+- Added hundreds (~400?) of NPCs/alt creatures from various adventures
+- Added alternate art for creatures, where available (i.e. Roll20 has special tokens, e.g. Bandit Captain). Visible by hovering the token in the bestiary and pressing the left/right buttons
+- Creatures from bestiary books (e.g. the humble Monster Manual) are now displayed when filtering for an adventure in which they can be found.
+- Added the following options to the "Miscellaneous" filter: "Has Areas of Effect", "Has Melee Weapon Attacks", "Has Ranged Weapon Attacks", "Has Ranged Weapons", "Has Reach Attacks", "Has Thrown Weapons"
+= Encounter Builder
+  - Fixed various XP calculations
+  - Added button to copy the current encounter as a text summary
+
+Homebrew Builder:
+- Improved layout on Firefox
+- JSON properties are now always presented in the same order (+Text Converter)
+- Now @tags conditions (+Text Converter)
+
+DM Screen:
+- Menu burger is now hidden in fullscreen (the menu still opens if you mouse over the left edge of the screen)
+- Fixed initiative tracker "Roll HP" not being respected
+- Class/subclass features can now be viewed
+
+Filters -- completely overhauled internally:
+- Improved performance (shaved about 8 seconds off loading the entire Bestiary, on my machine) and stability
+- Changed link format to be more compact/extensible (old links will not work)
+- Added ability to show/hide "summary" per-filter (e.g. hiding the 20 blue "source X" buttons when one has all the sources enabled)
+- Number of results vs. total available is now visible in the search bar, rather than hidden in the filter modal
+- Fixed everyone's favourite 1-pixel mis-alignment in various search boxes/sort columns on list pages [we finally have the technology]
+- Fixed many, many minor bugs
+- Added background filter to Spells page
+- Class/subclass features searched in Omnisearch can now be hover'd
+- Magic item variants (e.g. "+3 weapon") can now be blacklisted
+- Added the ability to embed spells inline (see the renderer demo https://5e.tools/demo.html)
+- Added missing OotA appendix
+- Added "Open Page" button to sticky'd hover windows, in title bar
+- Updated Roll20 SKT and CoS modules
+- Improved statgen column use clarity [the "User" column is for houserule/other stat bumps, and is not a bug, ty]
+
+- Fixed various CR-based calculations in CR calculator (had been broken by a previous update)
+- Fixed Classes page sidebar failing to show all some features; added missing colouring for homebrew features
+- Omnisearch load time improvements
+- Fixed Omnisearch sometimes searching when you were in the middle of typing [still sucked less than D&D Beyond's "no you can't type here lol" search box]
+- Fixed Feat ASIs not showing in hover windows
+- Fixed layout bug where a scrollbar could appear on fixed-size pages
+- Disabled image lazy-loading when not supported by the browser (e.g. in older iOS)
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.74.1",
+			date: "2019-05-19",
+			txt: `
+- Fixed Variant Rules page`
+		},
+		{
+			ver: "1.74.2",
+			date: "2019-05-19",
+			txt: `
+- Fixed Bestiary page`
+		},
+		{
+			ver: "1.74.3",
+			date: "2019-05-19",
+			txt: `
+- Added chapter titles to DM screen book/adventure nav buttons
+- Added "Requires Sight" to Spells page Miscellaneous filter
+- Added button to quickly show/hide entire filter summary
+- Fixed nested filter horizontal overflow
+- Fixed filter failing to toggle overall AND/OR mode
+- Fixed filter summary buttons having inconsistent order`
+		},
+		{
+			ver: "1.74.4",
+			date: "2019-05-19",
+			txt: `
+- Fixed filter/sublist link interaction`
+		},
+		{
+			ver: "1.74.5",
+			date: "2019-05-19",
+			txt: `
+- Fixed expensive items being hard-filtered out`
+		},
+		{
+			ver: "1.75.1",
+			date: "2019-05-23",
+			title: "No Rest for the Wicked",
+			txt: `
+- Added Ghosts of Saltmarsh https://5e.tools/adventure.html#gos
+  - Includes new backgrounds, and slightly-improved ships (from those in the UA) in addition to the usual gubbins.
+
+- Added "label" support to the dice roller; e.g. My Cool Spell: 100d10 will print "My Cool Spell" as a label before the result.
+- Text Converter now allows missing spaces in saving throws
+- Fixed Shaped JS converter dying on various inputs`
+		},
+		{
+			ver: "1.75.3",
+			date: "2019-05-26",
+			title: "Cleanup Detail",
+			txt: `
+- Added "Has Alt Token" filter to bestiary
+- Added various GoS NPCs; added creatures from other sources to the set displayed when filtering for GoS
+- Fixed table rolling results when unrelated dice rolls in header are clicked
+- Fixed point-buy races with predefined stats and "choose" stats breaking the totals output
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.75.7",
+			date: "2019-06-01",
+			title: "Nothing of Interest",
+			txt: `
+- Added page numbers to virtually everything that didn't have them
+- Added GoS "Open Water" encounters to Encounter Generator page
+- Added "Random" button to point-buy Statgen
+- Improved menu layout on mobile (hopefully)
+- Added "Random" option to Charisma score in This Is Your Life generator
+- Randomly generated people in This Is Your Life generator are now given races (as per Supplemental Race) table; names (as per XGE name tables). Both are "unofficial" inclusions, and so are italicised
+- Added "Uncommon Race" filter option to Races page
+- Moved "Class Feature Options" from "Player Options" to "References;" renamed to "Other Options and Features"
+- Added GoS Ship Upgrades to Other Options and Features
+- Fixed certain filters failing to set from links (notably CR filters)
+- Fixed subclass entries being duplicated in Omnisearch results
+- Fixed classes page "Toggle [Subclass] Sources" button
+- Fixed header ad space from changing size after page load (and thus causing the page to randomly scroll around)
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.75.9",
+			date: "2019-06-01",
+			txt: `
+- Added autocomplete for Homebrew Builder creature type tags
+- Fixed bug where Passive Perception would fail to auto-update in Homebrew Builder
+- DM Screen Initiative Tracker creatures can now be renamed
+- "Fixed" Bestiary Source filter hiding creatures from excluded sources which were not originally from that book (e.g. hiding WDMM would previous hide all MM creatures found in WDMM)
+- Fixed additional columns failing to populate when loading Bestiary encounters into the DM Screen Initiative Tracker
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.75.13",
+			date: "2019-06-12",
+			title: "Conspicuously Light on Content",
+			txt: `
+- Classes page:
+  - Added show/hide toggle to sidebar
+  - Made Outline show/hide toggle more visible
+  - Fixed filter box overflowing on narrow displays
+  - Fixed "X Sources" cycler failing to display anything on "Most Recent" mode
+
+- Homebrew
+  - Added @loader render tag, which displays a clickable link that loads homebrew (see the Demo for an example)
+  - Creature "skill" object now accepts a "special" property, for entering free text ("save" did this already)
+  - Added support for homebrew "baseitem"s, i.e. those that have "magicvariant"s applied
+  - Homebrew builder item/spell searches now include currently loaded homebrew items/spells in the results
+  - Homebrew sources may now specify a hex (HTML) color code as part of their metadata. See the "Farmer" sample background in the homebrew repo for an example.
+  - Fixed locally loaded homebrew being filtered out
+  - Fixed homebrew magic variant items being un-hoverable
+  - Fixed bug where homebrew manager would infinitely loop a text replace, secretly overheating your CPU :^)
+
+- CR Scaling now handles Warlock casting traits sensibly
+- Added "Custom" combining mode for filters, which allows you to chose which filters are combined as AND and which as OR. For example, if you want creatures from the Monster Manual/Volo's Guide to Monsters, which are Large or have a fly speed, you can set "Source" to "AND," "Size" to "OR," and "Speed Type" to "OR." The logic is (a1 & a2 & ... aN) & (o1 | o2 | ... oN) where as are set to AND, and os are set to OR. Y'get me?
+- Added hoverable "Image" hotzone to encounter builder rows, allowing you to preview the strange creature you just added to the encounter
+- Improved list cell positioning; should now actually match the headers
+- Classes/subclasses in spell description footers are now links to the appropriate class/subclass
+
+- Fixed case where filters could get stuck attempting to display deleted homebrew, producing a blank list
+- Fixed page-specific (settings not being saved to the tracker for Settings -> Save State to File
+- Fixed Optional Feature prerequisite rendering bugs in list (missing dashes; |sources showing)
+- Fixed DM Screen displaying a blank page on Mobile
+- Fixed print/book view displaying items which had been removed from the pinned list
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.75.14",
+			date: "2019-06-12",
+			txt: `
+- Fixed Spell page filtering`
+		},
+		{
+			ver: "1.75.15",
+			date: "2019-06-12",
+			txt: `
+- Fixed Druid Wild Shape links`
+		},
+		{
+			ver: "1.75.16",
+			date: "2019-06-12",
+			txt: `
+- Fixed some cache issues/speeding up page loads slightly`
+		},
+		{
+			ver: "1.76.0",
+			date: "2019-06-23",
+			title: "Acquiring Acquisitions",
+			txt: `
+- Added Acquisitions Incorporated (AI) content -- the book part is under "Rules," and the adventure part is under Adventures ("The Orrery of the Wanderer")
+  - Still to be done: making a distinct "Factions/etc" page to better house the "Company Positions" content (this page will also package up and other faction/rank levels, e.g. those from Ravnica content)
+- Added "Preview Token" button to homebrew builder
+- Added "Base Race" filter to Races page
+- Added randomly generated cache-busting string to the betteR20 link on the homepage
+- Moved GoS sea/etc rules to Variant Rules page
+- Improved text converter Warlock spellcaster handling
+- Fixed/reverted change where lists would hide their scrollbars when not being hovered
+- Fixed file downloads on Firefox
+- DM Screen tab titles now have a max width, and hide their overflow
+- Fixed DM Screen renamed tabs reverting after multiple page reloads
+- Empty filters (e.g. the Spells page "Subschool" filter) now auto-hide when empty
+- Homebrew:
+  - Fixed Backgrounds page using non-standard link format
+  - Fixed missing source coloring on Items page
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.77.0",
+			date: "2019-06-29",
+			title: "CJ_meme.jpg",
+			txt: `
+- Added Dragon of Icespire Peak (https://5e.tools/adventure.html#dip), thanks to @heril for the sauce
+- Reworked homepage to be less verbose
+- Bestiary Encounter Builder now opens a popup window of a creature instead of closing when clicking a name in the Bestiary list
+- Improved Encounter Builder handling of large groups; now handles "0.5x XP" better
+- Fixed print view printing on Firefox
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.77.1",
+			date: "2019-06-29",
+			txt: `
+- Improved homepage layout`
+		},
+		{
+			ver: "1.77.2",
+			date: "2019-06-29",
+			txt: `
+- Fixed various pages failing to load (oops lol)
+- Resizing DM Screen panels should now work on mobile; drag as you would with a mouse
+- Moved "Sidekicks" rules to Optional/Variant Rules page`
+		},
+		{
+			ver: "1.77.3",
+			date: "2019-06-29",
+			txt: `
+- Tweaked homepage layout and icon choices`
+		},
+		{
+			ver: "1.78.0",
+			date: "2019-07-14",
+			title: "Big Fat Clock",
+			txt: `
+- DM Screen
+ - Added "In-Game Clock/Calendar" widget to DM Screen (in the "Special" tab)
+ - Fixed case where Initiative Tracker buttons could desync their lock/unlock state
+ - Fixed case where "Add" panel button could become unresponsive
+
+- Fixed Book/Adventure page scrolling to certain headers in full-book reading mode
+- Renamed Ships page to "Vehicles," because flying mecha-beholders
+- Added "Duration" column to Spells page table view
+- Fixed filter breaking when attempting to load certain URLs
+- Fixed filter failing to properly reset grouped AND/OR state (i.e. Bestiary's Ability Score filter)
+
+- Homebrew:
+ - Added @color tags, allowing you to color text (see the Renderer Demo, and remember to reset it)
+ - @ship is now @vehicle, and the JSON property is changed to match
+ - Fixed Optional Features breaking when multiple prerequisites of the same type are specified
+
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.78.3",
+			date: "2019-07-18",
+			title: "Not So Hot Fix",
+			txt: `
+- Fixed crash when opening "Add Creature" modal in Initiative Tracker
+- Clock/Calendar
+  - Added quick-select buttons for cardinal directions in Wind Bearing modal
+  - Added support for named years and named eras
+  - Improved and expanded date adjustment controls
+  - Made setting sections collapsible
+- Homebrew:
+  - Added syntax to prereqSpell names to add "... cantrip" suffix, e.g. "fire bolt#c" vs. "fireball"`
+		},
+		{
+			ver: "1.79.0",
+			date: "2019-07-20",
+			txt: `
+- Added Stranger Things adventure content ("Hunt for the Thessalhydra")
+- DM Screen Initiative Tracker:
+  - Additional Columns may now be put in "player visible for player entries only," hiding monster attributes, but showing player ones
+  - Imported Bestiary encounters with advanced columns will now attempt to find and link monster attributes with matching names (e.g. when creating an "AC" column in the encounter builder and filling it with player ACs, the column will now automatically contain monster ACs for monster rows when imported to the tracker)
+  - Fixed bug preventing generation of server tokens
+- Fixed bug when navigating via sidebar item in full-book adventure/book view where the first header with a given name would always be scrolled into view
+- Minor speed optimisations to sidebar navigation in book/adventures
+- (Homebrew: fixed local homebrew failing to assign classes/subclasses to spells in Spells page until after refresh)
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.79.1",
+			date: "2019-08-08",
+			title: "A Wizard Is Never Late",
+			txt: `
+- Homebrew Builder:
+  - Added Spell builder (top-right in the sidebar menu)
+  - Added "Data" tab, which shows the current JSON data
+  - Improved loading time
+
+- DM Screen Clock/Calendar
+  - Added "Browse" mode to calendar, allowing you to freely look around without changing the date
+  - SHIFT-clicking a day in the calendar now sets it as the current day
+  - Added "Go to Day" button to calendar day summary modal
+  - Events and encounter can now be moved
+  - Events and encounters can now be renamed from the summary modal
+  - Events and encounters can now have times
+  - Added current day events and encounters display to clock screen
+
+- (Hopefully) made ads more tolerable on small screen desktop resolutions for list pages (can now scroll past the ad)
+- Added "outdated browser" check
+- Fixed Encounter Builder failing to generate random encounters
+- Fixed Initiative Tracker Player View failing to load
+- Fixed This Is Your Life generator generating strange sibling ranges
+- Fixed items page sort ordering
+- Removed padding; borders; etc from DM Screen embedded iframes
+- Fixed Optional Feature filtering by Spell Prerequisite
+- (Fixed typos/added tags)
+- (Homebrew/@Dusk Reworked ability score data format for races and feats)`
+		},
+		{
+			ver: "1.79.2",
+			date: "2019-08-08",
+			txt: `
+- Fixed spell homebrew loading and class/subclass population`
+		},
+		{
+			ver: "1.79.3",
+			date: "2019-08-08",
+			txt: `
+- Fixed item hover loading`
+		},
+		{
+			ver: "1.79.8",
+			date: "2019-08-15",
+			txt: `
+- Added UA: Barbarian and Monk. Click the "Official Sources" cycler to have it show UA.
+- Fixed "table" files failing to appear in the Homebrew Manager browser
+- Fixed "cursed" generic variant items not showing up when "Cursed" filter was applied
+- Fixed CSV table export producing garbage in the presence of nested tables
+- Fixed clicking on search results in books/adventures not jumping to the header if the result was in the same chapter as the currently visible one`
+		},
+		{
+			ver: "1.79.9",
+			date: "2019-08-15",
+			txt: `
+- Fixed filters not clearing unspecified items when loaded from links
+- Fixed homebrew builder downloads
+- Fixed race hover loading`
+		},
+		{
+			ver: "1.79.10",
+			date: "2019-08-20",
+			txt: `
+- Added "[Add Event/Encounter] At Time..." buttons to DM Screen Clock/Calendar day view, which allows the time to be chosen as either an exact point during the current day, or an offset from the current time
+- Fixed broken spell rendering in the presence of "Royalty" components
+- Fixed broken psionics rendering (oops lol)
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.79.11",
+			date: "2019-08-31",
+			title: "Logging Changes",
+			txt: `
+- Added Changelog page &lthttps://5e.tools/changelog.html&gt
+- Added "Counter" widget to DM Screen
+- Added optional column/row labels to DM Screen (Clock)/Calendar, which show "day name" and "week of year" respectively
+- Added weather randomiser to DM Screen Clock/Calendar
+- Added +/- 15/30 sec/minute; +/- 12 hour modes to DM Screen (Clock)/Calendar nav buttons, thanks to @ Forecaster
+- Added "Roll Initiative?" toggle to DM Screen Initiative Tracker
+- Night Mode is now auto-set if e.g. you have your OS theme set to "Dark Mode" (fresh/first load only)
+- Added dynamic "Help" link to Wiki page in header (under "Utilities"). Help content at least partially pending; feel free to help edit our nice wiki
+- Added toggle to switch some slider filters into "dropdown" mode, e.g. the Bestiary's CR filter can now be used as a pair of min/max dropdowns
+- Split Downtime Activities optional/variant rule into multiple rules, one per activity
+- Fixed DM Screen Initiative Tracker failing to load encounters in some cases
+- Fixed Spell Builder failing to convert dice in the "At Higher Levels..." text
+- Fixed "Deck of X" dice/card rollers
+- Fixed Spells page "Misc/Components" filter rendering/functionality
+- (Fixed typos/added tags)`
+		}
+	];
+
+	const $wrp = $(`#pagecontent`);
+	let lastMajorVersion = 0;
+	let lastMinorVersion = 0;
+	CHANGELOG.forEach(it => {
+		if (!it.txt) return;
+
+		let [vMajor, vMinor, vPatch] = it.ver.split(".");
+		vMajor = Number(vMajor);
+		vMinor = Number(vMinor);
+
+		const hLevel = vMajor !== lastMajorVersion ? "2" : vMinor !== lastMinorVersion ? "3" : "4";
+		const blocks = it.txt.trim().split(/\n\n+/g);
+
+		let htmlStack = "";
+
+		const cleanListLine = l => l.trim().replace(/^-\s*/, "");
+
+		blocks.forEach(block => {
+			htmlStack += `<div class="small mb-2">`;
+
+			const lines = block.split("\n");
+
+			let ulStack = [];
+			let depth = -1;
+			lines.forEach(l => {
+				if (l.trim().startsWith("-")) {
+					const nxtDepth = l.length - l.trimLeft().length;
+
+					if (nxtDepth > depth) {
+						depth = nxtDepth;
+						htmlStack += `<ul><li>${cleanListLine(l)}</li>`;
+					} else if (nxtDepth < depth) {
+						depth = nxtDepth;
+						htmlStack += `</ul><li>${cleanListLine(l)}</li>`;
+					} else {
+						htmlStack += `<li>${cleanListLine(l)}</li>`;
+					}
+				} else {
+					while (ulStack.length) {
+						ulStack.pop();
+						htmlStack += "</ul>";
+					}
+					depth = -1;
+					htmlStack += `<div class="mb-1">${l}</div>`;
+				}
+			});
+
+			while (ulStack.length) {
+				ulStack.pop();
+				htmlStack += "</ul>";
+			}
+
+			htmlStack += `</div>`;
+		});
+
+		htmlStack += `</div>`;
+
+		const titlePart = it.title ? `, &quot;<span ${it.titleAlt ? `class="help" title="AKA &quot;${it.titleAlt.escapeQuotes()}&quot; Edition"` : ""}>${it.title.escapeQuotes()}</span>&quot; Edition` : "";
+		$wrp.prepend(`<div class="row">
+			<div class="split-v-center">
+				<h${hLevel} class="bold">v${it.ver}${titlePart}</h${hLevel}>
+				<span class="text-muted">${it.date}</span>
+			</div>
+
+			${htmlStack}
+		</div>`);
+
+		lastMajorVersion = vMajor;
+		lastMinorVersion = vMinor;
+	});
+</script>
+</body>
+</html>

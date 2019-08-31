@@ -115,7 +115,10 @@ class SpellBuilder extends Builder {
 		const _cb = () => {
 			// do post-processing
 			DiceConvert.convertTraitActionDice(this._state);
-			if (this._state.entriesHigherLevel) DiceConvert.convertTraitActionDice(this._state.entriesHigherLevel);
+			if (this._state.entriesHigherLevel) {
+				DiceConvert.convertTraitActionDice(this._state.entriesHigherLevel[0]);
+				this._state.entriesHigherLevel = [...this._state.entriesHigherLevel];
+			}
 
 			this.renderOutput();
 			this.doUiSave();
@@ -294,7 +297,7 @@ class SpellBuilder extends Builder {
 
 		const out = {getOtherSource};
 
-		const $wrpBtnRemove = $(`<div class="text-right"/>`);
+		const $wrpBtnRemove = $(`<div class="text-right mb-2"/>`);
 		const $wrp = $$`<div class="flex-col mkbru__wrp-rows mkbru__wrp-rows--removable">
 			<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--33">Source</span>${$selSource}</div>
 			<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--33">Page</span>${$iptPage}</div>
@@ -366,7 +369,7 @@ class SpellBuilder extends Builder {
 			<span class="mr-2 mkbru__sub-name--33">Condition</span>${$iptCond}
 		</div>`.toggle(ixInitial === 2);
 
-		const $wrpBtnRemove = $(`<div class="text-right"/>`);
+		const $wrpBtnRemove = $(`<div class="text-right mb-2"/>`);
 		const $wrp = $$`<div class="flex-col mkbru__wrp-rows mkbru__wrp-rows--removable">
 			<div class="flex-v-center mb-2">${$iptNum}${$selUnit}</div>
 			${$stageCond}
@@ -385,31 +388,8 @@ class SpellBuilder extends Builder {
 		const isInitialDistance = !!this._state.range.distance;
 		const isInitialAmount = this._state.range.distance && this._state.range.distance.amount != null;
 
-		const RANGE_TYPES = [
-			{type: RNG_POINT, hasDistance: true},
-
-			{type: RNG_LINE, hasDistance: true},
-			{type: RNG_CUBE, hasDistance: true},
-			{type: RNG_CONE, hasDistance: true},
-			{type: RNG_RADIUS, hasDistance: true},
-			{type: RNG_SPHERE, hasDistance: true},
-			{type: RNG_HEMISPHERE, hasDistance: true},
-			{type: RNG_CYLINDER, hasDistance: true},
-
-			{type: RNG_SPECIAL, hasDistance: false}
-		];
-
-		const DIST_TYPES = [
-			{type: RNG_SELF, hasAmount: false},
-			{type: RNG_TOUCH, hasAmount: false},
-
-			{type: UNT_FEET, hasAmount: true},
-			{type: UNT_MILES, hasAmount: true},
-
-			{type: RNG_SIGHT, hasAmount: false},
-			{type: RNG_UNLIMITED_SAME_PLANE, hasAmount: false},
-			{type: RNG_UNLIMITED, hasAmount: false}
-		];
+		const RANGE_TYPES = Parser.RANGE_TYPES;
+		const DIST_TYPES = Parser.DIST_TYPES;
 
 		const doUpdateState = () => {
 			const rangeMeta = RANGE_TYPES[$selRange.val()];
@@ -429,7 +409,10 @@ class SpellBuilder extends Builder {
 		</select>`).val(~ixInitialRange ? `${ixInitialRange}` : "0").change(() => {
 			const meta = RANGE_TYPES[$selRange.val()];
 			$stageDistance.toggle(meta.hasDistance);
-			doUpdateState();
+
+			if (meta.isRequireAmount && !DIST_TYPES[$selDistance.val()].hasAmount) {
+				$selDistance.val(`${DIST_TYPES.findIndex(it => it.hasAmount)}`).change();
+			} else doUpdateState();
 		});
 		$$`<div class="flex-v-center">
 			<span class="mr-2 mkbru__sub-name--33">Range Type</span>
@@ -443,7 +426,10 @@ class SpellBuilder extends Builder {
 		</select>`).val(~ixInitialDist ? `${ixInitialDist}` : "0").change(() => {
 			const meta = DIST_TYPES[$selDistance.val()];
 			$stageAmount.toggle(meta.hasAmount);
-			doUpdateState();
+
+			if (!meta.hasAmount && RANGE_TYPES[$selRange.val()].isRequireAmount) {
+				$selDistance.val(`${DIST_TYPES.findIndex(it => it.hasAmount)}`).change();
+			} else doUpdateState();
 		});
 		const $stageDistance = $$`<div class="flex-v-center mt-2">
 			<span class="mr-2 mkbru__sub-name--33">Distance Type</span>
@@ -607,22 +593,8 @@ class SpellBuilder extends Builder {
 	}
 
 	static __$getDurationInput__getDurationRow (doUpdateState, durationRows, duration) {
-		const DURATION_TYPES = [
-			{type: "instant", full: "Instantaneous"},
-			{type: "timed", hasAmount: true},
-			{type: "permanent", hasEnds: true},
-			{type: "special"}
-		];
-
-		const AMOUNT_TYPES = [
-			"turn",
-			"round",
-			"minute",
-			"hour",
-			"day",
-			"week",
-			"year"
-		];
+		const DURATION_TYPES = Parser.DURATION_TYPES;
+		const AMOUNT_TYPES = Parser.DURATION_AMOUNT_TYPES;
 
 		const typeInitial = DURATION_TYPES.find(it => it.type === duration.type);
 
@@ -694,7 +666,7 @@ class SpellBuilder extends Builder {
 
 		const out = {getDuration};
 
-		const $wrpBtnRemove = $(`<div class="text-right"/>`);
+		const $wrpBtnRemove = $(`<div class="text-right mb-2"/>`);
 		const $wrp = $$`<div class="flex-col mkbru__wrp-rows mkbru__wrp-rows--removable">
 			<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--33">Duration Type</span>${$selDurationType}</div>
 			${$stageAmount}
@@ -792,7 +764,7 @@ class SpellBuilder extends Builder {
 
 		const out = {getClass};
 
-		const $wrpBtnRemove = $(`<div class="text-right"/>`);
+		const $wrpBtnRemove = $(`<div class="text-right mb-2"/>`);
 		const $wrp = $$`<div class="flex-col mkbru__wrp-rows mkbru__wrp-rows--removable">
 			<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--33">Class Name</span>${$iptClass}</div>
 			<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--33">Class Source</span>${$selClassSource}</div>
@@ -841,7 +813,7 @@ class SpellBuilder extends Builder {
 
 		const out = {getSubclass};
 
-		const $wrpBtnRemove = $(`<div class="text-right"/>`);
+		const $wrpBtnRemove = $(`<div class="text-right mb-2"/>`);
 		const $wrp = $$`<div class="flex-col mkbru__wrp-rows">
 			<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--33">Class Name</span>${$iptClass}</div>
 			<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--33">Class Source</span>${$selClassSource}</div>
@@ -912,7 +884,7 @@ class SpellBuilder extends Builder {
 
 		const out = {getRace};
 
-		const $wrpBtnRemove = $(`<div class="text-right"/>`);
+		const $wrpBtnRemove = $(`<div class="text-right mb-2"/>`);
 		const $wrp = $$`<div class="flex-col mkbru__wrp-rows">
 			<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--33">Name</span>${$iptRace}</div>
 			<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--33">Source</span>${$selSource}</div>
@@ -971,7 +943,7 @@ class SpellBuilder extends Builder {
 
 		const out = {getBackground};
 
-		const $wrpBtnRemove = $(`<div class="text-right"/>`);
+		const $wrpBtnRemove = $(`<div class="text-right mb-2"/>`);
 		const $wrp = $$`<div class="flex-col mkbru__wrp-rows">
 			<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--33">Name</span>${$iptName}</div>
 			<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--33">Source</span>${$selSource}</div>

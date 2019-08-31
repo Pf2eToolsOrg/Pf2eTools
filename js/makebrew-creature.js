@@ -45,6 +45,8 @@ class CreatureBuilder extends Builder {
 					} else this.setStateFromLoaded({s: creature, m: this.getInitialMetaState()});
 				} else this.setStateFromLoaded({s: creature, m: this.getInitialMetaState()});
 
+				delete creature.otherSources;
+
 				this.renderInput();
 				this.renderOutput();
 			},

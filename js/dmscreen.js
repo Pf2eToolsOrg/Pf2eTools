@@ -27,6 +27,7 @@ const PANEL_TYP_TWITCH_CHAT = 12;
 const PANEL_TYP_ADVENTURES = 13;
 const PANEL_TYP_BOOKS = 14;
 const PANEL_TYP_INITIATIVE_TRACKER_PLAYER = 15;
+const PANEL_TYP_COUNTER = 16;
 const PANEL_TYP_IMAGE = 20;
 const PANEL_TYP_GENERIC_EMBED = 90;
 
@@ -785,6 +786,10 @@ class Panel {
 					p.doPopulate_InitiativeTrackerPlayer(saved.s, saved.r);
 					handleTabRenamed(p);
 					return p;
+				case PANEL_TYP_COUNTER:
+					p.doPopulate_Counter(saved.s, saved.r);
+					handleTabRenamed(p);
+					return p;
 				case PANEL_TYP_UNIT_CONVERTER:
 					p.doPopulate_UnitConverter(saved.s, saved.r);
 					handleTabRenamed(p);
@@ -1099,6 +1104,16 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTrackerPlayer.make$tracker(this.board, state)),
 			title || "Initiative Tracker",
+			true
+		);
+	}
+
+	doPopulate_Counter (state = {}, title) {
+		this.set$ContentTab(
+			PANEL_TYP_COUNTER,
+			state,
+			$(`<div class="panel-content-wrapper-inner"/>`).append(Counter.$getCounter(this.board, state)),
+			title || "Counter",
 			true
 		);
 	}
@@ -1673,7 +1688,7 @@ class Panel {
 				}
 			})
 			.on("contextmenu", (evt) => {
-				if (!evt.ctrlKey && $btnSelTab.hasClass("content-tab-can-rename")) {
+				if ($btnSelTab.hasClass("content-tab-can-rename")) {
 					const nuTitle = prompt("Rename tab to:");
 					if (nuTitle && nuTitle.trim()) {
 						this.setTabTitle(ix, nuTitle);
@@ -1890,6 +1905,13 @@ class Panel {
 						t: type,
 						r: toSaveTitle,
 						s: {}
+					};
+				}
+				case PANEL_TYP_COUNTER: {
+					return {
+						t: type,
+						r: toSaveTitle,
+						s: $content.find(`.dm-cnt__root`).data("getState")()
 					};
 				}
 				case PANEL_TYP_UNIT_CONVERTER: {
@@ -2603,6 +2625,13 @@ class AddMenuSpecialTab extends AddMenuTab {
 				this.menu.doClose();
 			});
 
+			const $wrpCounter = $(`<div class="ui-modal__row"><span>Counter</span></div>`).appendTo($tab);
+			const $btnCounter = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpCounter);
+			$btnCounter.on("click", () => {
+				this.menu.pnl.doPopulate_Counter();
+				this.menu.doClose();
+			});
+
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpTimeTracker = $(`<div class="ui-modal__row"><span>In-Game Clock/Calendar</span></div>`).appendTo($tab);
@@ -3217,7 +3246,7 @@ window.addEventListener("load", () => {
 	Renderer.hover.bindDmScreen(window.DM_SCREEN);
 	window.DM_SCREEN.pInitialise()
 		.catch(err => {
-			JqueryUtil.doToast({content: `Failed to load with error "${err.message}". See the console for details.`, type: "danger"});
+			JqueryUtil.doToast({content: `Failed to load with error "${err.message}". ${MiscUtil.STR_SEE_CONSOLE}`, type: "danger"});
 			$(`.dm-screen-loading`).find(`.initial-message`).text("Failed!");
 			setTimeout(() => { throw err; });
 		});

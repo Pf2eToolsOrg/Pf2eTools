@@ -415,24 +415,25 @@ Omnidexer.TO_INDEX = [
 		category: Parser.CAT_ID_VARIANT_OPTIONAL_RULE,
 		file: "variantrules.json",
 		listProp: "variantrule",
-		baseUrl: "variantrules.html",
-		deepIndex: (indexer, primary, it) => {
-			const names = [];
-			it.entries.forEach(e => {
-				Renderer.getNames(names, e, 1);
-			});
-			const allNames = Renderer.getNumberedNames(it);
-			const nameKeys = Object.keys(allNames).filter(it => names.includes(it));
-
-			return nameKeys.map(n => {
-				const ix = allNames[n];
-				return {
-					u: `${UrlUtil.encodeForHash([it.name, it.source])}${HASH_PART_SEP}${ix}`,
-					d: 1,
-					n: `${primary.parentName}; ${n}`
-				};
-			});
-		}
+		baseUrl: "variantrules.html"
+		// FIXME is this still needed?
+		// deepIndex: (indexer, primary, it) => {
+		// 	const names = [];
+		// 	it.entries.forEach(e => {
+		// 		Renderer.getNames(names, e, 1);
+		// 	});
+		// 	const allNames = Renderer.getNumberedNames(it);
+		// 	const nameKeys = Object.keys(allNames).filter(it => names.includes(it));
+		//
+		// 	return nameKeys.map(n => {
+		// 		const ix = allNames[n];
+		// 		return {
+		// 			u: `${UrlUtil.encodeForHash([it.name, it.source])}${HASH_PART_SEP}${ix}`,
+		// 			d: 1,
+		// 			n: `${primary.parentName}; ${n}`
+		// 		};
+		// 	});
+		// }
 	},
 	{
 		category: Parser.CAT_ID_ADVENTURE,

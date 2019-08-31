@@ -537,7 +537,7 @@ class Builder extends ProxyBase {
 	static $getBtnRemoveRow (doUpdateState, rowArr, row, $wrpRow, title, opts) {
 		opts = opts || {};
 
-		return $(`<button class="btn ${opts.isExtraSmall ? "btn-xxs" : "btn-xs"} btn-danger mb-2 ${opts.isProtectLast ? "mkbru__btn-rm-row" : ""}" title="Remove ${title}"><span class="glyphicon glyphicon-trash"/></button>`)
+		return $(`<button class="btn ${opts.isExtraSmall ? "btn-xxs" : "btn-xs"} btn-danger ${opts.isProtectLast ? "mkbru__btn-rm-row" : ""}" title="Remove ${title}"><span class="glyphicon glyphicon-trash"/></button>`)
 			.click(() => {
 				rowArr.splice(rowArr.indexOf(row), 1);
 				$wrpRow.empty().remove();

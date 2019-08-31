@@ -419,7 +419,7 @@ class HashLoad {
 				groupHeaders.append(`<th ${hasTitle ? `class="colGroupTitle"` : ""} colspan="${tGroup.colLabels.length}" ${subclassData}>${hasTitle ? tGroup.title : ""}</th>`);
 
 				for (let j = 0; j < tGroup.colLabels.length; j++) {
-					let lbl = `<div class="cls__squash_header">${renderer.render(tGroup.colLabels[j])}</div>`;
+					let lbl = `<div class="cls__squash_header" title="${Renderer.stripTags(tGroup.colLabels[j])}">${renderer.render(tGroup.colLabels[j])}</div>`;
 					colHeaders.append(`<th class="centred-col" ${subclassData}>${lbl}</th>`)
 				}
 
@@ -573,7 +573,6 @@ class HashLoad {
 			const handlePillClick = () => HashLoad.handleSubclassClick($pill.hasClass(CLSS_ACTIVE), subClasses[i].name, ClassData.cleanScSource(subClasses[i].source));
 			$pill.click(handlePillClick)
 				.contextmenu(evt => {
-					if (evt.ctrlKey) return;
 					evt.preventDefault();
 					handlePillClick();
 				});
@@ -602,7 +601,6 @@ class HashLoad {
 			$pill.find(`span`).text(STRS_SOURCE_STATES[state]);
 			HashLoad.setSourceState(state);
 		}).contextmenu(evt => {
-			if (evt.ctrlKey) return;
 			evt.preventDefault();
 			let state = Number($pill.attr("data-state"));
 			if (--state < 0) state = STRS_SOURCE_STATES.length - 1;
@@ -618,7 +616,6 @@ class HashLoad {
 		if (defaultActive) pill.addClass(pillActiveClass);
 		HashLoad.subclassPillWrapper.append(pill);
 		const onPillClick = function (evt) {
-			if (evt.ctrlKey) return;
 			evt.preventDefault();
 			let active = $(this).hasClass(pillActiveClass);
 			if (!defaultActive) active = !active;

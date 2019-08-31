@@ -804,8 +804,8 @@ Parser.SP_RANGE_TO_ICON = {
 	[RNG_CYLINDER]: "fa-database",
 	[RNG_SELF]: "fa-street-view",
 	[RNG_SIGHT]: "fa-eye",
+	[RNG_UNLIMITED_SAME_PLANE]: "fa-globe-americas",
 	[RNG_UNLIMITED]: "fa-infinity",
-	[RNG_UNLIMITED_SAME_PLANE]: "fa-infinity",
 	[RNG_TOUCH]: "fa-hand-paper"
 };
 
@@ -907,13 +907,39 @@ Parser.getSingletonUnit = function (unit, isShort) {
 	}
 };
 
-Parser.spComponentsToFull = function (comp) {
+Parser.RANGE_TYPES = [
+	{type: RNG_POINT, hasDistance: true, isRequireAmount: false},
+
+	{type: RNG_LINE, hasDistance: true, isRequireAmount: true},
+	{type: RNG_CUBE, hasDistance: true, isRequireAmount: true},
+	{type: RNG_CONE, hasDistance: true, isRequireAmount: true},
+	{type: RNG_RADIUS, hasDistance: true, isRequireAmount: true},
+	{type: RNG_SPHERE, hasDistance: true, isRequireAmount: true},
+	{type: RNG_HEMISPHERE, hasDistance: true, isRequireAmount: true},
+	{type: RNG_CYLINDER, hasDistance: true, isRequireAmount: true},
+
+	{type: RNG_SPECIAL, hasDistance: false, isRequireAmount: false}
+];
+
+Parser.DIST_TYPES = [
+	{type: RNG_SELF, hasAmount: false},
+	{type: RNG_TOUCH, hasAmount: false},
+
+	{type: UNT_FEET, hasAmount: true},
+	{type: UNT_MILES, hasAmount: true},
+
+	{type: RNG_SIGHT, hasAmount: false},
+	{type: RNG_UNLIMITED_SAME_PLANE, hasAmount: false},
+	{type: RNG_UNLIMITED, hasAmount: false}
+];
+
+Parser.spComponentsToFull = function (comp, level) {
 	if (!comp) return "None";
 	const out = [];
 	if (comp.v) out.push("V");
 	if (comp.s) out.push("S");
 	if (comp.m != null) out.push(`M${comp.m !== true ? ` (${comp.m.text != null ? comp.m.text : comp.m})` : ""}`);
-	if (comp.r) out.push(`R (${spell.level} gp)`);
+	if (comp.r) out.push(`R (${level} gp)`);
 	return out.join(", ") || "None";
 };
 
@@ -944,6 +970,23 @@ Parser.spDurationToFull = function (dur) {
 		}
 	}).join(" or ") + (dur.length > 1 ? " (see below)" : "");
 };
+
+Parser.DURATION_TYPES = [
+	{type: "instant", full: "Instantaneous"},
+	{type: "timed", hasAmount: true},
+	{type: "permanent", hasEnds: true},
+	{type: "special"}
+];
+
+Parser.DURATION_AMOUNT_TYPES = [
+	"turn",
+	"round",
+	"minute",
+	"hour",
+	"day",
+	"week",
+	"year"
+];
 
 Parser.spClassesToFull = function (classes, textOnly) {
 	const fromSubclasses = Parser.spSubclassesToFull(classes, textOnly);
@@ -2535,6 +2578,8 @@ MiscUtil = {
 	COLOR_BLOODIED: "#f7a100",
 	COLOR_DEFEATED: "#cc0000",
 
+	STR_SEE_CONSOLE: "See the console (CTRL+SHIFT+J) for more information.",
+
 	copy (obj) {
 		return JSON.parse(JSON.stringify(obj));
 	},
@@ -2612,7 +2657,8 @@ MiscUtil = {
 	},
 
 	isInInput (event) {
-		return event.target.nodeName === "INPUT" || event.target.nodeName === "TEXTAREA";
+		return event.target.nodeName === "INPUT" || event.target.nodeName === "TEXTAREA"
+			|| event.target.getAttribute("contenteditable") === "true";
 	},
 
 	expEval (str) {
@@ -2825,6 +2871,53 @@ MiscUtil = {
 
 	pDelay (msecs) {
 		return new Promise(resolve => setTimeout(() => resolve(), msecs));
+	},
+
+	getWalker (keyBlacklist = new Set()) {
+		function applyHandlers (handlers, ident, obj, lastKey) {
+			if (!(handlers instanceof Array)) handlers = [handlers];
+			handlers.forEach(h => obj = h(ident, obj, lastKey));
+			return obj;
+		}
+
+		const fn = (ident, obj, primitiveHandlers, lastKey) => {
+			if (obj == null) {
+				if (primitiveHandlers.null) return applyHandlers(primitiveHandlers.null, ident, obj, lastKey);
+				return obj;
+			}
+
+			const to = typeof obj;
+			switch (to) {
+				case undefined:
+					if (primitiveHandlers.undefined) return applyHandlers(primitiveHandlers.undefined, ident, obj, lastKey);
+					return obj;
+				case "boolean":
+					if (primitiveHandlers.boolean) return applyHandlers(primitiveHandlers.boolean, ident, obj, lastKey);
+					return obj;
+				case "number":
+					if (primitiveHandlers.number) return applyHandlers(primitiveHandlers.number, ident, obj, lastKey);
+					return obj;
+				case "string":
+					if (primitiveHandlers.string) return applyHandlers(primitiveHandlers.string, ident, obj, lastKey);
+					return obj;
+				case "object": {
+					if (obj instanceof Array) {
+						if (primitiveHandlers.array) obj = applyHandlers(primitiveHandlers.array, ident, obj, lastKey);
+						return obj.map(it => fn(ident, it, primitiveHandlers, lastKey));
+					} else {
+						if (primitiveHandlers.object) obj = applyHandlers(primitiveHandlers.object, ident, obj, lastKey);
+						Object.keys(obj).forEach(k => {
+							const v = obj[k];
+							if (!keyBlacklist.has(k)) obj[k] = fn(ident, v, primitiveHandlers, k);
+						});
+						return obj;
+					}
+				}
+				default: throw new Error(`Unhandled type "${to}"`);
+			}
+		};
+
+		return {walk: fn};
 	}
 };
 
@@ -2899,7 +2992,6 @@ ContextUtil = {
 	},
 
 	handleOpenContextMenu: (evt, ele, menuId, closeHandler) => {
-		if (evt.ctrlKey) return;
 		evt.preventDefault();
 		evt.stopPropagation();
 		const thisId = ContextUtil._ctxOpenRefsNextId++;
@@ -3893,6 +3985,7 @@ function getFilterWithMergedOptions (baseOptions, addOptions) {
  */
 async function pInitFilterBox (opts) {
 	opts.$wrpFormTop = $(`#${ID_SEARCH_BAR}`);
+	opts.$wrpFormTop.attr("title", "Hotkey: f");
 	opts.$btnReset = $(`#${ID_RESET_BUTTON}`);
 	const filterBox = new FilterBox(opts);
 	await filterBox.pDoLoadState();
@@ -3956,7 +4049,7 @@ UrlUtil = {
 			if (out[k].length === 1 && out[k] === HASH_SUB_NONE) out[k] = [];
 			return out;
 		} else {
-			throw new Error(`Baldy formatted subhash ${subHash}`)
+			throw new Error(`Badly formatted subhash ${subHash}`)
 		}
 	},
 
@@ -6206,8 +6299,9 @@ CollectionUtil = {
 	}
 };
 
-Array.prototype.last = Array.prototype.last || function () {
-	return this[this.length - 1];
+Array.prototype.last = Array.prototype.last || function (arg) {
+	if (arg !== undefined) this[this.length - 1] = arg;
+	else return this[this.length - 1];
 };
 
 Array.prototype.filterIndex = Array.prototype.filterIndex || function (fnCheck) {

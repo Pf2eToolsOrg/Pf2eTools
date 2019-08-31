@@ -235,7 +235,7 @@ async function pPostLoad () {
 			duration: {name: "Duration", transform: (it) => Parser.spDurationToFull(it)},
 			_school: {name: "School", transform: (sp) => `<span class="school_${sp.school}">${Parser.spSchoolAndSubschoolsAbvsToFull(sp.school, sp.subschools)}</span>`},
 			range: {name: "Range", transform: (it) => Parser.spRangeToFull(it)},
-			components: {name: "Components", transform: (it) => Parser.spComponentsToFull(it)},
+			_components: {name: "Components", transform: (sp) => Parser.spComponentsToFull(sp.components, sp.level)},
 			classes: {name: "Classes", transform: (it) => Parser.spMainClassesToFull(it)},
 			entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}, 1), flex: 3},
 			entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}, 1), flex: 2}
@@ -301,7 +301,7 @@ const raceFilter = new Filter({header: "Race"});
 const backgroundFilter = new Filter({header: "Background"});
 const metaFilter = new Filter({
 	header: "Components & Miscellaneous",
-	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_M_CONSUMED, ...Object.keys(Parser.SP_MISC_TAG_TO_FULL), META_RITUAL, META_TECHNOMAGIC],
+	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_M_CONSUMED, ...Object.values(Parser.SP_MISC_TAG_TO_FULL), META_RITUAL, META_TECHNOMAGIC],
 	itemSortFn: null
 });
 const schoolFilter = new Filter({

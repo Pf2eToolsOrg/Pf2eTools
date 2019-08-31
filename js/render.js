@@ -268,7 +268,7 @@ function Renderer () {
 		} else { // block
 			// for ints or any other types which do not require specific rendering
 			this._renderPrefix(entry, textStack, meta, options);
-			textStack[0] += entry;
+			this._renderPrimitive(entry, textStack, meta, options);
 			this._renderSuffix(entry, textStack, meta, options);
 		}
 	};
@@ -374,9 +374,8 @@ function Renderer () {
 
 				let toRenderCell;
 				if (roRender[ixCell].type === "cell") {
-					if (roRender[ixCell].entry) {
-						toRenderCell = roRender[ixCell].entry;
-					} else if (roRender[ixCell].roll) {
+					if (roRender[ixCell].roll) {
+						rollCols[ixCell] = true;
 						if (roRender[ixCell].roll.entry) {
 							toRenderCell = roRender[ixCell].roll.entry;
 						} else if (roRender[ixCell].roll.exact != null) {
@@ -392,6 +391,8 @@ function Renderer () {
 									: `${roRender[ixCell].roll.min}-${roRender[ixCell].roll.max}`;
 							}
 						}
+					} else if (roRender[ixCell].entry) {
+						toRenderCell = roRender[ixCell].entry;
 					}
 				} else {
 					toRenderCell = roRender[ixCell];
@@ -518,7 +519,7 @@ function Renderer () {
 
 	this._renderEntriesSubtypes_renderPreReqText = function (entry, textStack, meta) {
 		if (entry.prerequisite) {
-			textStack[0] += `<span class="prerequisite">Prerequisite: `;
+			textStack[0] += `<span class="rd__prerequisite">Prerequisite: `;
 			this._recursiveRender({type: "inline", entries: [entry.prerequisite]}, textStack, meta);
 			textStack[0] += `</span>`;
 		}
@@ -550,12 +551,15 @@ function Renderer () {
 			const len = entry.items.length;
 			for (let i = 0; i < len; ++i) {
 				const item = entry.items[i];
-				const className = `${this._getStyleClass(item.source)}${item.type === "itemSpell" ? " rd__li-spell" : ""}`;
-				textStack[0] += `<li ${className ? `class="${className}"` : ""}>`;
+				// Special case for child lists -- avoid wrapping in LI tags to avoid double-bullet
+				if (item.type !== "list") {
+					const className = `${this._getStyleClass(item.source)}${item.type === "itemSpell" ? " rd__li-spell" : ""}`;
+					textStack[0] += `<li ${className ? `class="${className}"` : ""}>`;
+				}
 				const cacheDepth = this._adjustDepth(meta, 1);
 				this._recursiveRender(entry.items[i], textStack, meta);
 				meta.depth = cacheDepth;
-				textStack[0] += "</li>";
+				if (item.type !== "list") textStack[0] += "</li>";
 			}
 			textStack[0] += "</ul>";
 		}
@@ -567,12 +571,14 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
 		}
-		const len = entry.entries.length;
-		for (let i = 0; i < len; ++i) {
-			const cacheDepth = meta.depth;
-			meta.depth = 2;
-			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
-			meta.depth = cacheDepth;
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
+				meta.depth = cacheDepth;
+			}
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
 	};
@@ -1091,7 +1097,7 @@ function Renderer () {
 									} else {
 										value = fvals.split(";").map(s => s.trim()).filter(s => s).map(s => {
 											const spl = s.split("!");
-											if (spl.length === 2) return `${UrlUtil.encodeForHash(spl[1])}=2`
+											if (spl.length === 2) return `${UrlUtil.encodeForHash(spl[1])}=2`;
 											return `${UrlUtil.encodeForHash(s)}=1`
 										}).join(HASH_SUB_LIST_SEP);
 									}
@@ -1469,6 +1475,8 @@ function Renderer () {
 			} else textStack[0] += s;
 		}
 	};
+
+	this._renderPrimitive = function (entry, textStack, meta, options) { textStack[0] += entry; };
 
 	this._renderLink = function (entry, textStack, meta, options) {
 		let href;
@@ -2253,7 +2261,7 @@ Renderer.spell = {
 						<th colspan="2">Duration</th>
 					</tr>	
 					<tr>
-						<td colspan="4">${Parser.spComponentsToFull(spell.components)}</td>
+						<td colspan="4">${Parser.spComponentsToFull(spell.components, spell.level)}</td>
 						<td colspan="2">${Parser.spDurationToFull(spell.duration)}</td>
 					</tr>
 				</table>
@@ -2513,14 +2521,16 @@ Renderer.race = {
 					});
 					delete s.entries;
 				}
-				// TODO needs a mechanism to allow subraces to override unwanted tags
-				//   -> use the new "overwrite" mechanism below
+
 				if (s.traitTags) {
-					cpy.traitTags = (cpy.traitTags || []).concat(s.traitTags);
+					if (s.overwrite && s.overwrite.traitTags) cpy.traitTags = s.traitTags;
+					else cpy.traitTags = (cpy.traitTags || []).concat(s.traitTags);
 					delete s.traitTags;
 				}
+
 				if (s.languageTags) {
-					cpy.languageTags = (cpy.languageTags || []).concat(s.languageTags);
+					if (s.overwrite && s.overwrite.languageTags) cpy.languageTags = s.languageTags;
+					else cpy.traitTags = cpy.languageTags = (cpy.languageTags || []).concat(s.languageTags);
 					delete s.languageTags;
 				}
 
@@ -4490,7 +4500,7 @@ Renderer.vehicle = {
 		return `
 			${Renderer.utils.getBorderTr()}
 			${Renderer.utils.getNameTr(veh)}
-			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle${veh.dimensions ? `, (${veh.dimensions.join(" by ")})` : ""}</i><br></td></tr>
+			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle${veh.dimensions ? ` (${veh.dimensions.join(" by ")})` : ""}</i><br></td></tr>
 			<tr class="text"><td colspan="6">
 				<div><b>Creature Capacity</b> ${veh.capCrew} crew${veh.capPassenger ? `, ${veh.capPassenger} passengers` : ""}</div>
 				${veh.capCargo ? `<div><b>Cargo Capacity</b> ${typeof veh.capCargo === "string" ? veh.capCargo : `${veh.capCargo} ton${veh.capCargo === 1 ? "" : "s"}`}</div>` : ""}
@@ -4946,9 +4956,7 @@ Renderer.hover = {
 		const $brdrTop = $(`<div class="hoverborder hoverborder--top ${isBookContent ? "hoverborder-book" : ""}" ${permanent ? `data-perm="true"` : ""} data-hover-id="${hoverId}"/>`)
 			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 9))
 			.on("click", handleDragClick)
-			.on("contextmenu", (evt) => {
-				if (!evt.ctrlKey) ContextUtil.handleOpenContextMenu(evt, ele, "hoverBorder");
-			});
+			.on("contextmenu", (evt) => ContextUtil.handleOpenContextMenu(evt, ele, "hoverBorder"));
 
 		const mouseUpId = `mouseup.${hoverId} touchend.${hoverId}`;
 		const mouseMoveId = `mousemove.${hoverId} touchmove.${hoverId}`;

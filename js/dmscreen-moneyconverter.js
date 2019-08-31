@@ -176,7 +176,7 @@ class MoneyConverter {
 					cbClose: () => doUpdate()
 				});
 				[...CURRENCY_INDEXED].reverse().forEach(cx => {
-					UiUtil.$getAddModalRowCb($modalInner, `Disable ${cx.n}`, disabledCurrency, cx.ix);
+					UiUtil.$getAddModalRowCb($modalInner, `Disable ${cx.n} in Output`, disabledCurrency, cx.ix);
 				});
 			});
 		const $iptOut = $(`<input class="form-control input-sm dm_money__out" disabled/>`)

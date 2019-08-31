@@ -88,7 +88,7 @@ class InitiativeTrackerUtil {
 		const $cond = $(`<div class="init__cond" ${styleStack.length ? `style="${styleStack.join(" ")}"` : ""}/>`)
 			.data("doTickDown", tickDown)
 			.data("getState", () => JSON.parse(JSON.stringify(state)))
-			.on("contextmenu", (e) => e.ctrlKey || (e.preventDefault() || tickDown(true)))
+			.on("contextmenu", (e) => e.preventDefault() || tickDown(true))
 			.click(() => tickUp(true));
 
 		if (opts.name) {
