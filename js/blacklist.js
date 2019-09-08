@@ -203,8 +203,6 @@ class Blacklist {
 				if (!additive) await ExcludeUtil.pSetList(json.blacklist || []);
 				else await ExcludeUtil.pSetList(ExcludeUtil.getList().concat(json.blacklist || []));
 
-				await BrewUtil.pDoHandleBrewJson(json, "NO_PAGE");
-
 				// render list display
 				Blacklist._renderList();
 

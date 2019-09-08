@@ -1835,6 +1835,9 @@ SRC_AI = "AI";
 SRC_OoW = "OoW";
 SRC_DIP = "DIP";
 SRC_HftT = "HftT";
+SRC_DC = "DC";
+SRC_SLW = "SLW";
+SRC_SDW = "SDW";
 SRC_AL = "AL";
 SRC_SCREEN = "Screen";
 
@@ -1901,6 +1904,7 @@ SRC_UAOSS = SRC_UA_PREFIX + "OfShipsAndSea";
 SRC_UASIK = SRC_UA_PREFIX + "Sidekicks";
 SRC_UAAR = SRC_UA_PREFIX + "ArtificerRevisited";
 SRC_UABAM = SRC_UA_PREFIX + "BarbarianAndMonk";
+SRC_UASAW = SRC_UA_PREFIX + "SorcererAndWarlock";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -1955,6 +1959,9 @@ Parser.SOURCE_JSON_TO_FULL[SRC_AI] = "Acquisitions Incorporated";
 Parser.SOURCE_JSON_TO_FULL[SRC_OoW] = "The Orrery of the Wanderer";
 Parser.SOURCE_JSON_TO_FULL[SRC_DIP] = "Dragon of Icespire Peak";
 Parser.SOURCE_JSON_TO_FULL[SRC_HftT] = "Hunt for the Thessalhydra";
+Parser.SOURCE_JSON_TO_FULL[SRC_DC] = "Divine Contention";
+Parser.SOURCE_JSON_TO_FULL[SRC_SLW] = "Storm Lord's Wrath";
+Parser.SOURCE_JSON_TO_FULL[SRC_SDW] = "Sleeping Dragon's Wake";
 Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
@@ -2014,6 +2021,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UAOSS] = UA_PREFIX + "Of Ships and the Sea";
 Parser.SOURCE_JSON_TO_FULL[SRC_UASIK] = UA_PREFIX + "Sidekicks";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAAR] = UA_PREFIX + "Artificer Revisited";
 Parser.SOURCE_JSON_TO_FULL[SRC_UABAM] = UA_PREFIX + "Barbarian and Monk";
+Parser.SOURCE_JSON_TO_FULL[SRC_UASAW] = UA_PREFIX + "Sorcerer and Warlock";
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -2058,6 +2066,9 @@ Parser.SOURCE_JSON_TO_ABV[SRC_AI] = "AI";
 Parser.SOURCE_JSON_TO_ABV[SRC_OoW] = "OoW";
 Parser.SOURCE_JSON_TO_ABV[SRC_DIP] = "DIP";
 Parser.SOURCE_JSON_TO_ABV[SRC_HftT] = "HftT";
+Parser.SOURCE_JSON_TO_ABV[SRC_DC] = "DC";
+Parser.SOURCE_JSON_TO_ABV[SRC_SLW] = "SLW";
+Parser.SOURCE_JSON_TO_ABV[SRC_SDW] = "SDW";
 Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
@@ -2117,6 +2128,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UAOSS] = "UAOSS";
 Parser.SOURCE_JSON_TO_ABV[SRC_UASIK] = "UASIK";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAAR] = "UAAR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UABAM] = "UABAM";
+Parser.SOURCE_JSON_TO_ABV[SRC_UASAW] = "UASAW";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -4802,16 +4814,7 @@ StorageUtil = {
 
 		StorageUtil._initAsync = true;
 
-		try {
-			// check if IndexedDB is available (i.e. not in Firefox private browsing)
-			await new Promise((resolve, reject) => {
-				const request = window.indexedDB.open("_test_db", 1);
-				request.onerror = reject;
-				request.onsuccess = resolve;
-			});
-			await localforage.setItem("_storage_check", true);
-			return localforage;
-		} catch (e) {
+		const getInitFakeStorage = () => {
 			StorageUtil.__fakeStorageAsync = true;
 			StorageUtil._fakeStorageAsync = {
 				pIsAsyncFake: true,
@@ -4826,7 +4829,22 @@ StorageUtil = {
 				}
 			};
 			return StorageUtil._fakeStorageAsync;
-		}
+		};
+
+		if (typeof window !== "undefined") {
+			try {
+				// check if IndexedDB is available (i.e. not in Firefox private browsing)
+				await new Promise((resolve, reject) => {
+					const request = window.indexedDB.open("_test_db", 1);
+					request.onerror = reject;
+					request.onsuccess = resolve;
+				});
+				await localforage.setItem("_storage_check", true);
+				return localforage;
+			} catch (e) {
+				return getInitFakeStorage();
+			}
+		} else return getInitFakeStorage();
 	},
 
 	// SYNC METHODS ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -5073,7 +5091,6 @@ BrewUtil = {
 					await DataUtil.pDoMetaMerge(json);
 
 					await BrewUtil.pDoHandleBrewJson(json, page, BrewUtil._pRenderBrewScreen_pRefreshBrewList.bind(this, $appendTo, $overlay, $brewList));
-					await ExcludeUtil.pSetList(json.blacklist || []);
 
 					if (input.files[readIndex]) reader.readAsText(input.files[readIndex++]);
 					else $(evt.target).val(""); // reset the input
@@ -6512,7 +6529,7 @@ ExcludeUtil = {
 	},
 
 	async _pSave () {
-		StorageUtil.pSet(EXCLUDES_STORAGE, ExcludeUtil._excludes);
+		return StorageUtil.pSet(EXCLUDES_STORAGE, ExcludeUtil._excludes);
 	},
 
 	async pResetExcludes () {

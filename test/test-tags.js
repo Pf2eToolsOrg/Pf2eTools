@@ -19,7 +19,8 @@ const MSG = {
 	AreaCheck: "",
 	LootCheck: "",
 	TableDiceTest: "",
-	SpellClassCheck: ""
+	SpellClassCheck: "",
+	EscapeCharacterCheck: ""
 };
 
 const TAG_TO_PAGE = {
@@ -399,13 +400,13 @@ class TableDiceTest {
 
 class AreaCheck {
 	static _buildMap (file, data) {
-		AreaCheck.headerMap = bu.BookUtil._buildHeaderMap(data, file);
+		AreaCheck.headerMap = bu.BookUtil.getEntryIdLookup(data, false);
 	}
 
 	static checkString (file, str) {
 		str.replace(/{@area ([^}]*)}/g, (m0, m1) => {
-			const [areaCode, ...otherData] = m1.split("|");
-			if (!AreaCheck.headerMap[areaCode]) {
+			const [text, areaId, ...otherData] = m1.split("|");
+			if (!AreaCheck.headerMap[areaId]) {
 				AreaCheck.errorSet.add(m0);
 			}
 			return m0;
@@ -422,6 +423,10 @@ class AreaCheck {
 
 			const toPrint = [...AreaCheck.errorSet].sort(SortUtil.ascSortLower);
 			toPrint.forEach(tp => MSG.AreaCheck += `${tp}\n`);
+		}
+
+		if (AreaCheck.headerMap.__BAD) {
+			AreaCheck.headerMap.__BAD.forEach(dupId => MSG.AreaCheck += `Duplicate ID: "${dupId}"\n`)
 		}
 	}
 
@@ -508,6 +513,33 @@ SpellClassCheck._FILE_CLASS_INDEX = `data/class/index.json`;
 SpellClassCheck._FILE_SPELL_INDEX = `data/spells/index.json`;
 SpellClassCheck._CLASS_LIST = [];
 
+class EscapeCharacterCheck {
+	static checkString (file, str) {
+		let re = /([\n\t\r])/g;
+		let m;
+		while ((m = re.exec(str))) {
+			const startIx = Math.max(m.index - EscapeCharacterCheck._CHARS, 0);
+			const endIx = Math.min(m.index + EscapeCharacterCheck._CHARS, str.length);
+			EscapeCharacterCheck.errors.push(`...${str.substring(startIx, endIx)}...`.replace(/[\n\t\r]/g, (...m) => m[0] === "\n" ? "***\\n***" : m[0] === "\t" ? "***\\t***" : "***\\r***"));
+		}
+	}
+
+	static checkFile (file) {
+		EscapeCharacterCheck.errors = [];
+		const contents = JSON.parse(fs.readFileSync(file, 'utf8'));
+		ut.dataRecurse(file, contents, {string: EscapeCharacterCheck.checkString});
+		if (EscapeCharacterCheck.errors.length) {
+			MSG.EscapeCharacterCheck += `Unwanted escape characters in ${file}! See below:\n`;
+			MSG.EscapeCharacterCheck += `\t${EscapeCharacterCheck.errors.join("\n\t")}`;
+		}
+	}
+
+	static run () {
+		fileRecurse("./data", EscapeCharacterCheck.checkFile);
+	}
+}
+EscapeCharacterCheck._CHARS = 16;
+
 async function main () {
 	const primaryIndex = od.Omnidexer.decompressIndex(await utS.UtilSearchIndex.pGetIndex(false, true));
 	primaryIndex.forEach(it => ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${it.u.toLowerCase().trim()}`));
@@ -531,6 +563,7 @@ async function main () {
 	AreaCheck.run();
 	LootCheck.run();
 	SpellClassCheck.run();
+	EscapeCharacterCheck.run();
 
 	let outMessage = "";
 	Object.entries(MSG).forEach(([k, v]) => {

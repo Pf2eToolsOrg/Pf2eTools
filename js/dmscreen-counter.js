@@ -74,7 +74,7 @@ class CounterRoot extends CounterComponent {
 		const pod = super.getPod();
 		pod.swapRowPositions = this._swapRowPositions.bind(this);
 		pod.removeRow = this._removeRow.bind(this);
-		pod.counterRows = this._childComps;
+		pod.childComponents = this._childComps;
 		return pod;
 	}
 
@@ -148,53 +148,9 @@ class CounterRow extends CounterComponent {
 				${$btnDown}
 				${$btnUp}
 			</div>
-			${this._render_getDragPad($parent)}
+			${DragReorderUiUtil.$getDragPad2(this, $parent, this._parent)}
 			${$btnRemove}
 		</div>`.appendTo($parent);
-	}
-
-	_render_getDragPad ($parent) {
-		const {swapRowPositions, counterRows} = this._parent;
-
-		const dragMeta = {};
-		const doDragCleanup = () => {
-			dragMeta.on = false;
-			dragMeta.$wrap.remove();
-			dragMeta.$dummies.forEach($d => $d.remove());
-		};
-
-		const doDragRender = () => {
-			if (dragMeta.on) doDragCleanup();
-
-			dragMeta.on = true;
-			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"/>`).appendTo($parent);
-			dragMeta.$dummies = [];
-
-			const ixRow = counterRows.indexOf(this);
-
-			counterRows.forEach((row, i) => {
-				const dimensions = {w: row.$row.outerWidth(true), h: row.$row.outerHeight(true)};
-				const $dummy = $(`<div class="${i === ixRow ? "ui-drag__wrp-drag-dummy--highlight" : "ui-drag__wrp-drag-dummy--lowlight"}"/>`)
-					.width(dimensions.w).height(dimensions.h)
-					.mouseup(() => {
-						if (dragMeta.on) doDragCleanup();
-					})
-					.appendTo(dragMeta.$wrap);
-				dragMeta.$dummies.push($dummy);
-
-				if (i !== ixRow) { // on entering other areas, swap positions
-					$dummy.mouseenter(() => {
-						swapRowPositions(i, ixRow);
-						doDragRender();
-					});
-				}
-			});
-		};
-
-		return $(`<div class="mr-2 ui-drag__patch" title="Drag to Reorder">
-		<div class="ui-drag__patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
-		<div class="ui-drag__patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
-		</div>`).mousedown(() => doDragRender());
 	}
 
 	_getDefaultState () { return {...CounterRow._DEFAULT_STATE}; }

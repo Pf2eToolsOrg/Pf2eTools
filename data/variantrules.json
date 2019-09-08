@@ -14058,27 +14058,57 @@
 								[
 									"2nd",
 									"16 ({@dice 3d8 + 3})",
-									"Cunning Action. On the expert's turn in combat, it can take the Dash, Disengage, or {@action Hide} action as a bonus action."
+									{
+										"type": "entries",
+										"name": "Cunning Action",
+										"entries": [
+											"On the expert's turn in combat, it can take the Dash, Disengage, or {@action Hide} action as a bonus action."
+										]
+									}
 								],
 								[
 									"3rd",
 									"22 ({@dice 4d8 + 4})",
-									"Expertise. Choose two of the expert's skill proficiencies. The proficiency bonus is doubled for any ability check the expert makes that uses either of the chosen proficiencies."
+									{
+										"type": "entries",
+										"name": "Expertise",
+										"entries": [
+											"Choose two of the expert's skill proficiencies. The proficiency bonus is doubled for any ability check the expert makes that uses either of the chosen proficiencies."
+										]
+									}
 								],
 								[
 									"4th",
 									"27 ({@dice 5d8 + 5})",
-									"Ability Score Improvement. The expert's Dex. score increases by 2, raising the modifier by 1, so increase the following numbers by 1: the Dex. saving throw bonus; the {@skill Acrobatics}, {@skill Sleight of Hand}, and {@skill Stealth} bonuses; and the bonuses to hit and damage of the expert's weapon attacks."
+									{
+										"type": "entries",
+										"name": "Ability Score Improvement",
+										"entries": [
+											"The expert's Dex. score increases by 2, raising the modifier by 1, so increase the following numbers by 1: the Dex. saving throw bonus; the {@skill Acrobatics}, {@skill Sleight of Hand}, and {@skill Stealth} bonuses; and the bonuses to hit and damage of the expert's weapon attacks."
+										]
+									}
 								],
 								[
 									"5th",
 									"33 ({@dice 6d8 + 6})",
-									"Proficiency Bonus. The expert's proficiency bonus increases by 1, so make the following changes in the stat block: increase the bonuses in the Saving Throws and Skills entries by 1, and increase the bonuses to hit of the weapon attacks by 1."
+									{
+										"type": "entries",
+										"name": "Proficiency Bonus",
+										"entries": [
+											"The expert's proficiency bonus increases by 1, so make the following changes in the stat block: increase the bonuses in the Saving Throws and Skills entries by 1, and increase the bonuses to hit of the weapon attacks by 1."
+										]
+									}
 								],
 								[
 									"6th",
 									"38 ({@dice 7d8 + 7})",
-									"Extra Attack. The expert can attack twice, instead of once, whenever it takes the {@action Attack} action on its turn."
+									{
+										"type": "entries",
+										"name": "Extra Attack",
+										"entries": [
+											"The expert can attack twice, instead of once, whenever it takes the {@action Attack} action on its turn."
+										]
+									}
 								]
 							]
 						},
@@ -14099,27 +14129,69 @@
 								[
 									"2nd",
 									"13 ({@dice 3d8})",
-									"Spellcasting. The spellcaster learns another 1st-level spell: {@spell bless} (healer) or {@spell burning hands} (mage)."
+									{
+										"type": "entries",
+										"name": "Spellcasting",
+										"entries": [
+											"The spellcaster learns another 1st-level spell: {@spell bless} (healer) or {@spell burning hands} (mage)."
+										]
+									}
 								],
 								[
 									"3rd",
 									"18 ({@dice 4d8})",
-									"Spellcasting. The spellcaster gains one 1st-level spell slot. The spellcaster also learns another 1st-level spell: {@spell shield of faith} (healer) or {@spell shield} (mage)."
+									{
+										"type": "entries",
+										"name": "Spellcasting",
+										"entries": [
+											"The spellcaster gains one 1st-level spell slot. The spellcaster also learns another 1st-level spell: {@spell shield of faith} (healer) or {@spell shield} (mage)."
+										]
+									}
 								],
 								[
 									"4th",
 									"22 ({@dice 5d8})",
-									"Ability Score Improvement. The spellcaster's Int. (mage) or Wis. (healer) score increases by 2, raising the modifier by 1, so increase the following numbers by 1: the spellcaster's spell save DC and the bonus to hit of spell attacks, the bonuses in the Skills entry of the mage, the Wisdom saving throw bonus of the healer, and the passive Perception of the healer. Spellcasting. The spellcaster learns another cantrip: {@spell resistance} (healer) or {@spell mage hand} (mage)."
+									{
+										"type": "entries",
+										"name": "Ability Score Improvement",
+										"entries": [
+											"The spellcaster's Int. (mage) or Wis. (healer) score increases by 2, raising the modifier by 1, so increase the following numbers by 1: the spellcaster's spell save DC and the bonus to hit of spell attacks, the bonuses in the Skills entry of the mage, the Wisdom saving throw bonus of the healer, and the passive Perception of the healer. Spellcasting. The spellcaster learns another cantrip: {@spell resistance} (healer) or {@spell mage hand} (mage)."
+										]
+									}
 								],
 								[
 									"5th",
 									"27 ({@dice 6d8})",
-									"Proficiency Bonus. The spellcaster's proficiency bonus increases by 1, so make the following changes in the stat block: increase the bonuses in the Saving Throws and Skills entries by 1, and increase the bonuses to hit of its spell and weapon attacks by 1.\nSpellcasting. The spellcaster gains one 1st-level spell slot and two 2nd-level spell slots. The spellcaster also learns one 2nd-level spell: {@spell aid} (healer) or {@spell invisibility} (mage)."
+									{
+										"type": "entries",
+										"entries": [
+											{
+												"type": "entries",
+												"name": "Proficiency Bonus",
+												"entries": [
+													"The spellcaster's proficiency bonus increases by 1, so make the following changes in the stat block: increase the bonuses in the Saving Throws and Skills entries by 1, and increase the bonuses to hit of its spell and weapon attacks by 1."
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Spellcasting",
+												"entries": [
+													"The spellcaster gains one 1st-level spell slot and two 2nd-level spell slots. The spellcaster also learns one 2nd-level spell: {@spell aid} (healer) or {@spell invisibility} (mage)"
+												]
+											}
+										]
+									}
 								],
 								[
 									"6th",
 									"31 ({@dice 7d8})",
-									"Potent Cantrips. The spellcaster can add its spellcasting ability modifier to the damage it deals with any cantrip."
+									{
+										"type": "entries",
+										"name": "Potent Cantrips",
+										"entries": [
+											"The spellcaster can add its spellcasting ability modifier to the damage it deals with any cantrip."
+										]
+									}
 								]
 							]
 						},
@@ -14140,27 +14212,57 @@
 								[
 									"2nd",
 									"19 ({@dice 3d8 + 6})",
-									"Second Wind. The warrior can use a bonus action on its turn to regain hit points equal to {@dice 1d10} + its level. If it does so, it can't use this feature again until it finishes a short or long rest."
+									{
+										"type": "entries",
+										"name": "Second Wind",
+										"entries": [
+											"The warrior can use a bonus action on its turn to regain hit points equal to {@dice 1d10} + its level. If it does so, it can't use this feature again until it finishes a short or long rest."
+										]
+									}
 								],
 								[
 									"3rd",
 									"26 ({@dice 4d8 + 8})",
-									"Improved Critical. The warrior's attack rolls now score a critical hit on a roll of 19 or 20 on the {@dice d20}."
+									{
+										"type": "entries",
+										"name": "Improved Critical",
+										"entries": [
+											"The warrior's attack rolls now score a critical hit on a roll of 19 or 20 on the {@dice d20}."
+										]
+									}
 								],
 								[
 									"4th",
 									"32 ({@dice 5d8 + 10})",
-									"Ability Score Improvement. The warrior's Str. score increases by 2, raising the modifier by 1, so increase the warrior's {@skill Athletics} bonus by 1, and increase the bonuses to hit and damage of the warrior's melee weapon attack by 1."
+									{
+										"type": "entries",
+										"name": "Ability Score Improvement",
+										"entries": [
+											"The warrior's Str. score increases by 2, raising the modifier by 1, so increase the warrior's {@skill Athletics} bonus by 1, and increase the bonuses to hit and damage of the warrior's melee weapon attack by 1."
+										]
+									}
 								],
 								[
 									"5th",
 									"39 ({@dice 6d8 + 12})",
-									"Proficiency Bonus. The warrior's proficiency bonus increases by 1, so make the following changes in the stat block: increase the bonuses in the Saving Throws and Skills entries by 1, increase the passive Perception by 1, and increase the bonuses to hit of the weapon attacks by 1."
+									{
+										"type": "entries",
+										"name": "Proficiency Bonus",
+										"entries": [
+											"The warrior's proficiency bonus increases by 1, so make the following changes in the stat block: increase the bonuses in the Saving Throws and Skills entries by 1, increase the passive Perception by 1, and increase the bonuses to hit of the weapon attacks by 1."
+										]
+									}
 								],
 								[
 									"6th",
 									"45 ({@dice 7d8 + 14})",
-									"Extra Attack. The warrior can attack twice, instead of once, whenever it takes the {@action Attack} action on its turn."
+									{
+										"type": "entries",
+										"name": "Extra Attack",
+										"entries": [
+											"The warrior can attack twice, instead of once, whenever it takes the {@action Attack} action on its turn."
+										]
+									}
 								]
 							]
 						}

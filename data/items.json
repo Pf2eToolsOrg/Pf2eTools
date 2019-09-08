@@ -5684,7 +5684,7 @@
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
-			"page": 209,
+			"page": 168,
 			"entries": [
 				"You gain a +1 bonus to AC while you wear this armor. You are considered proficient with this armor even if you lack proficiency with medium armor."
 			],
@@ -19209,7 +19209,7 @@
 						],
 						[
 							"80-84",
-							"You cast {@spell invisibility}."
+							"You cast {@spell invisibility} on yourself."
 						],
 						[
 							"85-87",
@@ -23821,6 +23821,52 @@
 				"This greatsword is made of an unknown black metal. In most cases, it works as a {@item +1 greatsword}. But when used against a {@creature thessalhydra|hftt}, it works as a {@item +3 greatsword}. While in the Upside Down, it works as a +4 greatsword."
 			],
 			"bonus": "+3"
+		},
+		{
+			"name": "Gnomengarde Grenade",
+			"wondrous": true,
+			"rarity": "Varies",
+			"source": "DC",
+			"entries": [
+				"This small metallic object is comprised of rune-covered parts made from different metals, linked together with a variety of gears, bands, bits, and bobs. The metals are all different colors, making the grenade shine with a rainbow of color when held up in the light.",
+				"As a bonus action, a creature can turn a special key to arm the grenade. Once armed, the grenade explodes in a matter of seconds. As an action, the wielder can hurl the grenade up to 120 feet. At the end of their turn, the grenade explodes. All creatures within 60 feet of the grenade when it explodes suffer the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Each creature must make a DC 15 Dexterity saving throw, taking 28 (8d6) fire damage on a failed save, or half as much fire damage on a successful one.",
+						"Each creature must make a DC 15 Constitution saving throw. On a failed save, it takes 28 (8d6) thunder damage and is {@condition stunned} until the end of its next turn. On a failed save, it takes half as much thunder damage and is not {@condition stunned}.",
+						"The wielder rolls on the chart* for the {@item wand of wonder|dmg} three times, rerolling any duplicate results. Any effects that specify a target affect all creatures in range of the grenade when it explodes. Any effects that would affect the wielder of the wand instead affect the closest creature to the grenade when it goes off."
+					]
+				},
+				"The grenade explodes immediately if a creature places it in an extradimensional space or teleports while in possession of it. The effects of the explosion will be felt at both the origin and terminus of the teleportation, but only affecting all creatures within 30 feet of either location."
+			]
+		},
+		{
+			"name": "Ruinstone",
+			"wondrous": true,
+			"rarity": "Artifact",
+			"source": "DC",
+			"entries": [
+				"A fiery red crystal the size of a human palm.",
+				"Once per day as a bonus action, a villain can activate the ruinstone to undo one deed they have performed. The possibilities here are broad, but in combat it's simplest to allow them the opportunity to \"rewind\" one action and take it again, or to reroll a failed saving throw (if it can still take actions).",
+				"Each use of the artifact has a terrible side effect: someone known to the wielder is also erased from reality. After the villain uses the ruinstone, roll a {@dice d20}: on a 5-20, one of their allies disintegrates, on an 1-4, one of the player characters disintegrates.",
+				"If a creature bound its soul to the ruinstone in the \"Thalivar's Beacon\" quest, the artifact explodes when used and the creature who is bound to it disintegrates, disappearing from reality and can only be brought back with a {@spell wish} spell, or similar magic."
+			]
+		},
+		{
+			"name": "Bonecounter",
+			"type": "M",
+			"weaponCategory": "Simple",
+			"baseItem": "mace|phb",
+			"weight": 4,
+			"dmg1": "{@dice 1d6}",
+			"dmgType": "B",
+			"rarity": "Rare",
+			"source": "SDW",
+			"entries": [
+				"This weapon is a magical +2 mace called Bonecounter. Whenever this weapon is used to destroy an undead creature, a single silver piece appears in the wielder's pocket."
+			],
+			"bonus": "+2"
 		}
 	],
 	"itemGroup": [

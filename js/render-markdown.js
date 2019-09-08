@@ -35,15 +35,13 @@ class RendererMarkdown {
 
 		if (entry.entries) {
 			this._renderEntriesSubtypes_renderPreReqText(entry, textStack, meta);
-			if (entry.entries) {
-				const cacheDepth = meta.depth;
-				const len = entry.entries.length;
-				for (let i = 0; i < len; ++i) {
-					meta.depth = nextDepth;
-					this._recursiveRender(entry.entries[i], textStack, meta, {suffix: "\n"});
-				}
-				meta.depth = cacheDepth;
+			const cacheDepth = meta.depth;
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				meta.depth = nextDepth;
+				this._recursiveRender(entry.entries[i], textStack, meta, {suffix: "\n"});
 			}
+			meta.depth = cacheDepth;
 		}
 	}
 
@@ -162,27 +160,71 @@ class RendererMarkdown {
 
 		textStack[0] += "\n";
 	}
+
 	/*
 	_renderTableGroup (entry, textStack, meta, options) {
 
 	}
+	*/
 
 	_renderInset (entry, textStack, meta, options) {
-
+		textStack[0] += "\n";
+		if (entry.name != null) textStack[0] += `> ##### ${entry.name}\n`;
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: ">", suffix: "\n"});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `\n`;
 	}
 
 	_renderInsetReadaloud (entry, textStack, meta, options) {
-
+		textStack[0] += "\n";
+		if (entry.name != null) textStack[0] += `>> ##### ${entry.name}\n`;
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: ">>", suffix: "\n"});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `\n`;
 	}
 
 	_renderVariant (entry, textStack, meta, options) {
-
+		textStack[0] += "\n";
+		if (entry.name != null) textStack[0] += `> ##### Variant: ${entry.name}\n`;
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: ">", suffix: "\n"});
+				meta.depth = cacheDepth;
+			}
+		}
+		if (entry.variantSource) textStack[0] += `${RendererMarkdown.utils.getPageText(entry.variantSource)}\n`;
+		textStack[0] += "\n";
 	}
 
 	_renderVariantSub (entry, textStack, meta, options) {
+		if (entry.name) textStack[0] += `*${entry.name}.* `;
 
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.entries[i], textStack, meta, {suffix: "\n"});
+			}
+		}
 	}
 
+	/*
 	_renderSpellcasting (entry, textStack, meta, options) {
 
 	}
@@ -234,11 +276,14 @@ class RendererMarkdown {
 	_renderDice (entry, textStack, meta, options) {
 
 	}
+	*/
 
 	_renderLink (entry, textStack, meta, options) {
-
+		const href = this._renderLink_getHref(entry);
+		textStack[0] += `[${href}](${this.render(entry.text)})\n`;
 	}
 
+	/*
 	_renderActions (entry, textStack, meta, options) {
 
 	}
@@ -248,20 +293,34 @@ class RendererMarkdown {
 	}
 	// endregion
 
-	// region items
+	*/
+	// region list items
 	_renderItem (entry, textStack, meta, options) {
-
+		this._renderPrefix(entry, textStack, meta, options);
+		textStack[0] += `**${this.render(entry.name)}** `;
+		if (entry.entry) this._recursiveRender(entry.entry, textStack, meta);
+		else if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta, {prefix: i > 0 ? "  " : "", suffix: "\n"});
+		}
+		textStack[0] += "\n";
+		this._renderSuffix(entry, textStack, meta, options);
 	}
 
 	_renderItemSub (entry, textStack, meta, options) {
-
+		this._renderPrefix(entry, textStack, meta, options);
+		this._recursiveRender(entry.entry, textStack, meta, {prefix: `*${this.render(entry.name)}* `, suffix: "\n"});
+		this._renderSuffix(entry, textStack, meta, options);
 	}
 
 	_renderItemSpell (entry, textStack, meta, options) {
-
+		this._renderPrefix(entry, textStack, meta, options);
+		this._recursiveRender(entry.entry, textStack, meta, {prefix: `${entry.name} `, suffix: "\n"});
+		this._renderSuffix(entry, textStack, meta, options);
 	}
 	// endregion
 
+	/*
 	// region data
 	_renderDataCreature (entry, textStack, meta, options) {
 
@@ -291,23 +350,46 @@ class RendererMarkdown {
 
 	}
 	// endregion
+	*/
 
 	// region misc
 	_renderCode (entry, textStack, meta, options) {
-
+		textStack[0] += "\n```\n";
+		textStack[0] += entry.preformatted;
+		textStack[0] += "\n```\n";
 	}
 
 	_renderHr (entry, textStack, meta, options) {
-
+		textStack[0] += `\n---\n`;
 	}
 	// endregion
-	 */
 
 	// region primitives
 	_renderString (entry, textStack, meta, options) { textStack[0] += entry }
 	_renderPrimitive (entry, textStack, meta, options) { textStack[0] += `${entry}` }
 	// endregion
 }
+
+RendererMarkdown.utils = class {
+	static getPageText (it) {
+		const sourceSub = Renderer.utils.getSourceSubText(it);
+		const baseText = it.page > 0 ? `**Source:** *${Parser.sourceJsonToAbv(it.source)}${sourceSub}*, page ${it.page}` : "";
+		const addSourceText = this._getPageText_getAltSourceText(it, "additionalSources", "Additional information from");
+		const otherSourceText = this._getPageText_getAltSourceText(it, "otherSources", "Also found in");
+		const externalSourceText = this._getPageText_getAltSourceText(it, "externalSources", "External sources:");
+
+		return `${[baseText, addSourceText, otherSourceText, externalSourceText].filter(it => it).join(". ")}${baseText && (addSourceText || otherSourceText || externalSourceText) ? "." : ""}`;
+	}
+
+	static _getPageText_getAltSourceText (it, prop, introText) {
+		if (!it[prop] || !it[prop].length) return "";
+
+		return `${introText} ${it[prop].map(as => {
+			if (as.entry) return Renderer.get().render(as.entry);
+			else return `*${Parser.sourceJsonToAbv(as.source)}*${as.page > 0 ? `, page ${as.page}` : ""}`;
+		}).join("; ")}`
+	}
+};
 
 class MarkdownConverter {
 	static getEntries (mdStr) {
@@ -420,7 +502,7 @@ class MarkdownConverter {
 			});
 		} else {
 			if (obj.type) {
-				const childMeta = MarkdownConverter._ENTRIES_WITH_CHILDREN.find(it => it.type === obj.type && obj[it.key]);
+				const childMeta = Renderer.ENTRIES_WITH_CHILDREN.find(it => it.type === obj.type && obj[it.key]);
 				if (childMeta) {
 					this._coalesceConvert_doRecurse(obj[childMeta.key], fn);
 				}
@@ -820,7 +902,7 @@ class MarkdownConverter {
 	static _convertInlineStyling (buf) {
 		const handlers = {
 			object: (ident, obj) => {
-				for (const meta of MarkdownConverter._ENTRIES_WITH_CHILDREN) {
+				for (const meta of Renderer.ENTRIES_WITH_CHILDREN) {
 					if (obj.type !== meta.type) continue;
 					if (!obj[meta.key]) continue;
 
@@ -936,7 +1018,18 @@ class MarkdownConverter {
 		return tbl;
 	}
 
-	static postProcessTable (tbl) {
+	/**
+	 * @param tbl The table to process.
+	 * @param [opts] Options object. Defaults assume statblock parsing.
+	 * @param [opts.isSkipDiceTag] If dice tagging should be skipped. Default false.
+	 * @param [opts.tableWidth] The table width, in characters. 80 is good for statblocks, 150 is good for books.
+	 * @param [opts.diceColWidth] The width (in 12ths) of any leading rollable dice column. 1 for statblocks, 2 for books.
+	 */
+	static postProcessTable (tbl, opts) {
+		opts = opts || {};
+		opts.tableWidth = opts.tableWidth || 80;
+		opts.diceColWidth = opts.diceColWidth || 1;
+
 		// Post-processing
 		(function normalizeCellCounts () {
 			// pad all rows to max width
@@ -946,9 +1039,16 @@ class MarkdownConverter {
 			});
 		})();
 
+		let isDiceCol0 = true;
+		(function doCheckDiceOrNumericCol0 () {
+			// check if first column is all strictly number-like
+			tbl.rows.forEach(r => {
+				if (!/^[-+*/×÷x^.,0-9$]+/i.exec((r[0] || "").trim())) return isDiceCol0 = false;
+			});
+		})();
+
 		(function doCalculateWidths () {
-			// TODO make this an adjustable parameter? 80 is good for statblocks; ~150 is good for books
-			const BASE_CHAR_CAP = 80; // assume tables are approx 80 characters wide
+			const BASE_CHAR_CAP = opts.tableWidth; // assume tables are approx 80 characters wide
 
 			// Get the average/max width of each column
 			let isAllBelowCap = true;
@@ -978,9 +1078,13 @@ class MarkdownConverter {
 
 			// If we have a relatively sparse table, give each column enough to fit its max
 			const assignColWidths = (widths) => {
+				// Reserve some space for the dice column, if we have one
+				const splitInto = isDiceCol0 ? 12 - opts.diceColWidth : 12;
+				if (isDiceCol0) widths = widths.slice(1);
+
 				const totalWidths = widths.reduce((a, b) => a + b, 0);
 				const redistributedWidths = (() => {
-					const MIN = totalWidths / 12;
+					const MIN = totalWidths / splitInto;
 					const sorted = widths.map((it, i) => ({ix: i, val: it})).sort((a, b) => SortUtil.ascSort(a.val, b.val));
 
 					for (let i = 0; i < sorted.length - 1; ++i) {
@@ -997,34 +1101,32 @@ class MarkdownConverter {
 
 					return sorted.sort((a, b) => SortUtil.ascSort(a.ix, b.ix)).map(it => it.val);
 				})();
+
 				let nmlxWidths = redistributedWidths.map(it => it / totalWidths);
 				while (nmlxWidths.reduce((a, b) => a + b, 0) > 1) {
 					const diff = 1 - nmlxWidths.reduce((a, b) => a + b, 0);
 					nmlxWidths = nmlxWidths.map(it => it + diff / nmlxWidths.length);
 				}
-				const twelfthWidths = nmlxWidths.map(it => Math.round(it * 12));
+				const twelfthWidths = nmlxWidths.map(it => Math.round(it * splitInto));
 
+				if (isDiceCol0) tbl.colStyles[0] = `col-${opts.diceColWidth}`;
 				twelfthWidths.forEach((it, i) => {
 					const widthPart = `col-${it}`;
-					tbl.colStyles[i] = tbl.colStyles[i] ? `${tbl.colStyles[i]} ${widthPart}` : widthPart;
+					const iOffset = isDiceCol0 ? i + 1 : i;
+					tbl.colStyles[iOffset] = tbl.colStyles[iOffset] ? `${tbl.colStyles[iOffset]} ${widthPart}` : widthPart;
 				});
 			};
 
 			assignColWidths(isAllBelowCap ? maxWidths : avgWidths);
 		})();
 
-		let isDiceCol0 = true;
-		(function doCheckDiceCol () {
-			// check if first column is dice
-			tbl.rows.forEach(r => {
-				if (isNaN(Number(r[0]))) isDiceCol0 = false;
-			});
-			if (isDiceCol0 && !tbl.colStyles.includes("text-center")) tbl.colStyles[0] += " text-center";
-		})();
+		if (isDiceCol0 && !tbl.colStyles.includes("text-center")) tbl.colStyles[0] += " text-center";
 
-		(function tagRowDice () {
-			tbl.rows = tbl.rows.map(r => r.map(c => c.replace(RollerUtil.DICE_REGEX, `{@dice $&}`)));
-		})();
+		if (opts.isSkipDiceTag !== true) {
+			(function tagRowDice () {
+				tbl.rows = tbl.rows.map(r => r.map(c => c.replace(RollerUtil.DICE_REGEX, `{@dice $&}`)));
+			})();
+		}
 
 		(function doCheckNumericCols () {
 			tbl.colStyles.forEach((col, i) => {
@@ -1042,7 +1144,11 @@ class MarkdownConverter {
 				});
 
 				// If most of the cells in this column contain number data, right-align
-				if ((counts.number / tbl.rows.length) >= 0.80) tbl.colStyles[i] += ` text-right`
+				// Unless it's the first column, in which case, center-align
+				if ((counts.number / tbl.rows.length) >= 0.80) {
+					if (i === 0) tbl.colStyles[i] += ` text-center`;
+					else tbl.colStyles[i] += ` text-right`
+				}
 			});
 		})();
 
@@ -1080,10 +1186,10 @@ class MarkdownConverter {
 	}
 	// endregion
 }
-MarkdownConverter._ENTRIES_WITH_CHILDREN = [
-	{type: "section", key: "entries"},
-	{type: "entries", key: "entries"},
-	{type: "inset", key: "entries"},
-	{type: "list", key: "items"},
-	{type: "table", key: "rows"}
-];
+
+if (typeof module !== "undefined") {
+	module.exports = {
+		RendererMarkdown,
+		MarkdownConverter
+	}
+}

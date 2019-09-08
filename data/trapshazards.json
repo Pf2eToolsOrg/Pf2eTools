@@ -522,7 +522,47 @@
 						{
 							"type": "item",
 							"name": "Tempest (Initiative 10).",
-							"entry": "Air and gas boils from the trap. Roll a d6, and consult the following table."
+							"entries": [
+								"Air and gas boils from the trap. Roll a d6, and consult the following table.",
+								{
+									"type": "table",
+									"caption": "Tempest Effects",
+									"colLabels": [
+										"d6",
+										"Effect"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-10"
+									],
+									"rows": [
+										[
+											"1",
+											"Hallucinatory gas scrambles the mind and senses. All Intelligence and Wisdom checks made in the room have disadvantage until the Tempest element activates again."
+										],
+										[
+											"2",
+											"Explosive gas fills the area. If anyone holds an open flame, it causes an explosion. All creatures in the area must make a DC 20 Dexterity saving throw, taking 22 (4d10) fire damage on a failed save, or half as much damage on a successful one. The flame is then extinguished."
+										],
+										[
+											"3",
+											"Weakening gas fills the room. All Strength and Dexterity checks made in the room have disadvantage until the Tempest element activates again."
+										],
+										[
+											"4",
+											"Buffeting winds force each creature in the room to succeed on a DC 20 Strength saving throw or be knocked prone."
+										],
+										[
+											"5",
+											"Smoke fills the room. Visibility is reduced to 1 foot until the next time the Tempest element activates."
+										],
+										[
+											"6",
+											"Poison floods the room, forcing creatures to make saving throws as for the Poison Gas element."
+										]
+									]
+								}
+							]
 						}
 					]
 				}

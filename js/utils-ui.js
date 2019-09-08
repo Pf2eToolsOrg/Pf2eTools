@@ -1197,6 +1197,56 @@ class DragReorderUiUtil {
 		<div class="ui-drag__patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
 		</div>`).mousedown(() => doDragRender());
 	}
+
+	/**
+	 * @param comp The component which will contain the drag pad.
+	 * @param $parent Parent elements to attach row elements to.
+	 * @param parent Parent component which has a pod decomposable as {swapRowPositions, childComponents}.
+	 * @return jQuery
+	 */
+	static $getDragPad2 (comp, $parent, parent) {
+		const {swapRowPositions, childComponents} = parent;
+
+		const dragMeta = {};
+		const doDragCleanup = () => {
+			dragMeta.on = false;
+			dragMeta.$wrap.remove();
+			dragMeta.$dummies.forEach($d => $d.remove());
+		};
+
+		const doDragRender = () => {
+			if (dragMeta.on) doDragCleanup();
+
+			dragMeta.on = true;
+			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"/>`).appendTo($parent);
+			dragMeta.$dummies = [];
+
+			const ixRow = childComponents.indexOf(comp);
+
+			childComponents.forEach((row, i) => {
+				const dimensions = {w: row.$row.outerWidth(true), h: row.$row.outerHeight(true)};
+				const $dummy = $(`<div class="${i === ixRow ? "ui-drag__wrp-drag-dummy--highlight" : "ui-drag__wrp-drag-dummy--lowlight"}"/>`)
+					.width(dimensions.w).height(dimensions.h)
+					.mouseup(() => {
+						if (dragMeta.on) doDragCleanup();
+					})
+					.appendTo(dragMeta.$wrap);
+				dragMeta.$dummies.push($dummy);
+
+				if (i !== ixRow) { // on entering other areas, swap positions
+					$dummy.mouseenter(() => {
+						swapRowPositions(i, ixRow);
+						doDragRender();
+					});
+				}
+			});
+		};
+
+		return $(`<div class="mr-2 ui-drag__patch" title="Drag to Reorder">
+		<div class="ui-drag__patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
+		<div class="ui-drag__patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
+		</div>`).mousedown(() => doDragRender());
+	}
 }
 
 class SourceUiUtil {

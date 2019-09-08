@@ -134,50 +134,34 @@ const BookUtil = {
 		}
 	},
 
-	_buildHeaderMap (bookData, dbgTag) {
+	getEntryIdLookup (bookData, doThrowError = true) {
 		const out = {};
-		function recurse (data, ixChap) {
-			if ((data.type === "section" || data.type === "entries") && data.entries && data.name) {
-				const m = /^([A-Z]+\d+(?:[a-z]+)?)\./.exec(data.name.trim());
-				if (m) {
-					const k = m[1];
-					if (out[k]) throw new Error(`Header "${k}" was already defined!`);
-					out[k] = {chapter: ixChap, entry: data};
-				} else {
-					const m = /^(\d+(?:[A-Za-z]+)?)\./.exec(data.name.trim()); // case seems to be important
-					if (m) {
-						let k = `${ixChap}>${m[1]}>0`;
-						while (out[k]) {
-							k = k.split(">");
-							k[k.length - 1] = Number(k.last()) + 1;
-							k = k.join(">");
+
+		const handlers = {
+			object: (chapIx, obj) => {
+				Renderer.ENTRIES_WITH_CHILDREN
+					.filter(meta => meta.key === "entries")
+					.forEach(meta => {
+						if (obj.type !== meta.type) return;
+						if (obj.id) {
+							if (out[obj.id]) {
+								(out.__BAD = out.__BAD || []).push(obj.id);
+							} else {
+								out[obj.id] = {
+									chapter: chapIx,
+									entry: obj
+								};
+							}
 						}
-						out[k] = out[k] = {chapter: ixChap, entry: data};
-					} else out[data.name] = {chapter: ixChap, entry: data};
-				}
-				data.entries.forEach(nxt => recurse(nxt, ixChap));
+					});
+				return obj;
 			}
-		}
-		bookData.forEach((chapter, i) => recurse(chapter, i));
-		// cleaning stage
-		// convert `chapter>headerId>0`'s to `chapter>headerId` if there's no `>1`
-		const keyBuckets = {};
-		const keys = Object.keys(out);
-		keys.forEach(k => {
-			if (k.includes(">")) {
-				const bucket = k.split(">").slice(0, 2).join(">");
-				(keyBuckets[bucket] = keyBuckets[bucket] || []).push(k);
-			}
-		});
-		keys.forEach(k => {
-			if (k.includes(">")) {
-				const bucket = k.split(">").slice(0, 2).join(">");
-				if (keyBuckets[bucket].length === 1) {
-					out[bucket] = out[k];
-					delete out[k];
-				}
-			}
-		});
+		};
+
+		bookData.forEach((chap, chapIx) => MiscUtil.getWalker().walk(chapIx, chap, handlers));
+
+		if (doThrowError) if (out.__BAD) throw new Error(`IDs were already in storage: ${out.__BAD.map(it => `"${it}"`).join(", ")}`);
+
 		return out;
 	},
 
@@ -247,7 +231,7 @@ const BookUtil = {
 
 		BookUtil.curRender.data = data;
 		BookUtil.curRender.fromIndex = fromIndex;
-		BookUtil.curRender.headerMap = BookUtil._buildHeaderMap(data);
+		BookUtil.curRender.headerMap = BookUtil.getEntryIdLookup(data);
 		if (BookUtil.curRender.chapter !== chapter || UrlUtil.encodeForHash(BookUtil.curRender.curBookId.toLowerCase()) !== UrlUtil.encodeForHash(bookId)) {
 			BookUtil.thisContents.children(`ul`).children(`ul, li`).removeClass("active");
 			if (~chapter) {

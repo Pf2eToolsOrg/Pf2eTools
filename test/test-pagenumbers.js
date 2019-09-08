@@ -31,6 +31,13 @@ const BLACKLIST_KEYS = new Set([
 	"legendaryGroup"
 ]);
 
+// Sources which only exist in digital form
+const BLACKLIST_SOURCES = new Set([
+	"DC",
+	"SLW",
+	"SDW"
+]);
+
 function run (isModificationMode) {
 	console.log(`##### Checking for Missing Page Numbers #####`);
 	const FILE_MAP = {};
@@ -45,7 +52,9 @@ function run (isModificationMode) {
 				.forEach(k => {
 					const data = json[k];
 					if (data instanceof Array) {
-						const noPage = data.filter(it => !(it.inherits ? it.inherits.page : it.page));
+						const noPage = data
+							.filter(it => !BLACKLIST_SOURCES.has((it.inherits ? it.inherits.source : it.source) || it.source))
+							.filter(it => !(it.inherits ? it.inherits.page : it.page));
 						if (noPage.length) {
 							console.log(`${file}:`);
 							if (isModificationMode) console.log(`\t${noPage.length} missing page number${noPage.length === 1 ? "" : "s"}`);
@@ -69,7 +78,7 @@ function run (isModificationMode) {
 				});
 
 			if (mods > 0) {
-				let answer;
+				let answer = "";
 				while (!["y", "n", "quit"].includes(answer)) {
 					answer = rl.question(`Save file with ${mods} modification${mods === 1 ? "" : "s"}? [y/n/quit]`);
 					if (answer === "y") {

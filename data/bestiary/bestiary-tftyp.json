@@ -1541,6 +1541,14 @@
 			"miscTags": [
 				"MW",
 				"RCH"
+			],
+			"otherSources": [
+				{
+					"source": "DC"
+				},
+				{
+					"source": "SDW"
+				}
 			]
 		},
 		{
@@ -1722,6 +1730,14 @@
 			],
 			"miscTags": [
 				"MW"
+			],
+			"otherSources": [
+				{
+					"source": "DC"
+				},
+				{
+					"source": "SDW"
+				}
 			]
 		},
 		{
@@ -1966,6 +1982,11 @@
 			"miscTags": [
 				"MW",
 				"RCH"
+			],
+			"otherSources": [
+				{
+					"source": "SLW"
+				}
 			]
 		},
 		{
@@ -5308,7 +5329,15 @@
 			"source": "TftYP",
 			"_copy": {
 				"name": "Giant Crocodile",
-				"source": "MM"
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "crocodile",
+						"with": "lizard",
+						"flags": "i"
+					}
+				}
 			},
 			"speed": {
 				"walk": 30,

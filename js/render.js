@@ -526,7 +526,7 @@ function Renderer () {
 	};
 
 	this._renderEntriesSubtypes_getStyleString = function (entry, meta, isInlineTitle) {
-		const styleClasses = [];
+		const styleClasses = ["rd__b"];
 		styleClasses.push(this._getStyleClass(entry.source));
 		if (isInlineTitle) {
 			if (this._subVariant) styleClasses.push(Renderer.HEAD_2_SUB_VARIANT);
@@ -840,7 +840,7 @@ function Renderer () {
 		const anyNamed = entry.images.find(it => it.title);
 		for (let i = 0; i < len; ++i) {
 			const img = MiscUtil.copy(entry.images[i]);
-			if (anyNamed && !img.title) img._galleryTitlePad = true; // force un-title images to pad to match their siblings
+			if (anyNamed && !img.title) img._galleryTitlePad = true; // force untitled images to pad to match their siblings
 			delete img.imageType;
 			this._recursiveRender(img, textStack, meta);
 		}
@@ -1205,13 +1205,16 @@ function Renderer () {
 						break;
 					}
 					case "@area": {
-						const [areaCode, flags, displayText, ...others] = text.split("|");
-						const splCode = areaCode.split(">"); // use pos [0] for names without ">"s, and pos [1] for names with (as pos [2] is for sequence ID)
-						const renderText = displayText || `${flags && flags.includes("u") ? "A" : "a"}rea ${splCode.length === 1 ? splCode[0] : splCode[1]}`;
+						const [compactText, areaId, flags, ...others] = text.split("|");
+
+						const renderText = flags && flags.includes("x")
+							? compactText
+							: `${flags && flags.includes("u") ? "A" : "a"}rea ${compactText}`;
+
 						if (typeof BookUtil === "undefined") { // for the roll20 script
 							textStack[0] += renderText;
 						} else {
-							const area = BookUtil.curRender.headerMap[areaCode] || {entry: {name: ""}}; // default to prevent rendering crash on bad tag
+							const area = BookUtil.curRender.headerMap[areaId] || {entry: {name: ""}}; // default to prevent rendering crash on bad tag
 							const onMouseOver = Renderer.hover.createOnMouseHoverEntry(area.entry, true);
 							textStack[0] += `<a href="#${BookUtil.curRender.curBookId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}" ${onMouseOver} onclick="BookUtil.handleReNav(this)">${renderText}</a>`;
 						}
@@ -1479,6 +1482,21 @@ function Renderer () {
 	this._renderPrimitive = function (entry, textStack, meta, options) { textStack[0] += entry; };
 
 	this._renderLink = function (entry, textStack, meta, options) {
+		let href = this._renderLink_getHref(entry);
+
+		// overwrite href if there's an available Roll20 handout/character
+		if (entry.href.hover && this._roll20Ids) {
+			const procHash = UrlUtil.encodeForHash(entry.href.hash);
+			const id = this._roll20Ids[procHash];
+			if (id) {
+				href = `http://journal.roll20.net/${id.type}/${id.roll20Id}`;
+			}
+		}
+
+		textStack[0] += `<a href="${href}" ${entry.href.type === "internal" ? "" : `target="_blank" rel="noopener"`} ${this._renderLink_getHoverString(entry)} ${this._getHooks("link", "ele").map(hook => hook(entry)).join(" ")}>${this.render(entry.text)}</a>`;
+	};
+
+	this._renderLink_getHref = function (entry) {
 		let href;
 		if (entry.href.type === "internal") {
 			// baseURL is blank by default
@@ -1503,16 +1521,7 @@ function Renderer () {
 		} else if (entry.href.type === "external") {
 			href = entry.href.url;
 		}
-		// overwrite href if there's an available Roll20 handout/character
-		if (entry.href.hover && this._roll20Ids) {
-			const procHash = UrlUtil.encodeForHash(entry.href.hash);
-			const id = this._roll20Ids[procHash];
-			if (id) {
-				href = `http://journal.roll20.net/${id.type}/${id.roll20Id}`;
-			}
-		}
-
-		textStack[0] += `<a href="${href}" ${entry.href.type === "internal" ? "" : `target="_blank" rel="noopener"`} ${this._renderLink_getHoverString(entry)} ${this._getHooks("link", "ele").map(hook => hook(entry)).join(" ")}>${this.render(entry.text)}</a>`;
+		return href;
 	};
 
 	this._renderLink_getHoverString = function (entry) {
@@ -1540,6 +1549,15 @@ function Renderer () {
 		return tempStack.join("");
 	};
 }
+
+Renderer.ENTRIES_WITH_CHILDREN = [
+	{type: "section", key: "entries"},
+	{type: "entries", key: "entries"},
+	{type: "inset", key: "entries"},
+	{type: "insetReadaloud", key: "entries"},
+	{type: "list", key: "items"},
+	{type: "table", key: "rows"}
+];
 
 Renderer.applyProperties = function (entry, object) {
 	const propSplit = Renderer.splitByPropertyInjectors(entry);
@@ -1887,18 +1905,18 @@ Renderer.utils = {
 
 	_getPageTrText: (it) => {
 		function getAltSourceText (prop, introText) {
-			if (it[prop] && it[prop].length) {
-				return `${introText} ${it[prop].map(as => {
-					if (as.entry) {
-						return Renderer.get().render(as.entry);
-					} else {
-						return `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>${as.page > 0 ? `, page ${as.page}` : ""}`;
-					}
-				}).join("; ")}`
-			} else return "";
+			if (!it[prop] || !it[prop].length) return "";
+
+			return `${introText} ${it[prop].map(as => {
+				if (as.entry) return Renderer.get().render(as.entry);
+				else {
+					return `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>${as.page > 0 ? `, page ${as.page}` : ""}`;
+				}
+			}).join("; ")}`
 		}
+
 		const sourceSub = Renderer.utils.getSourceSubText(it);
-		const baseText = it.page > 0 ? `<b>Source: </b> <i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}` : "";
+		const baseText = it.page > 0 ? `<b>Source:</b> <i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}` : "";
 		const addSourceText = getAltSourceText("additionalSources", "Additional information from");
 		const otherSourceText = getAltSourceText("otherSources", "Also found in");
 		const externalSourceText = getAltSourceText("externalSources", "External sources:");
@@ -2530,7 +2548,7 @@ Renderer.race = {
 
 				if (s.languageTags) {
 					if (s.overwrite && s.overwrite.languageTags) cpy.languageTags = s.languageTags;
-					else cpy.traitTags = cpy.languageTags = (cpy.languageTags || []).concat(s.languageTags);
+					else cpy.languageTags = cpy.languageTags = (cpy.languageTags || []).concat(s.languageTags);
 					delete s.languageTags;
 				}
 
@@ -6679,19 +6697,30 @@ if (!IS_VTT && typeof window !== "undefined") {
  * Recursively find all the names of entries, useful for indexing
  * @param nameStack an array to append the names to
  * @param entry the base entry
- * @param maxDepth maximum depth to search for
- * @param depth start (used internally when recursing)
+ * @param [opts] Options object.
+ * @param [opts.maxDepth] Maximum depth to search for
+ * @param [opts.depth] Start depth (used internally when recursing)
+ * @param [opts.typeBlacklist] A set of entry types to avoid.
  */
-Renderer.getNames = function (nameStack, entry, maxDepth = -1, depth = 0) {
-	if (maxDepth !== -1 && depth > maxDepth) return;
+Renderer.getNames = function (nameStack, entry, opts) {
+	opts = opts || {};
+	if (opts.maxDepth == null) opts.maxDepth = false;
+	if (opts.depth == null) opts.depth = 0;
+
+	if (opts.typeBlacklist && entry.type && opts.typeBlacklist.has(entry.type)) return;
+
+	if (opts.maxDepth !== false && opts.depth > opts.maxDepth) return;
 	if (entry.name) nameStack.push(Renderer.stripTags(entry.name));
 	if (entry.entries) {
+		let nextDepth = entry.type === "section" ? -1 : entry.type === "entries" ? opts.depth + 1 : opts.depth;
 		for (const eX of entry.entries) {
-			Renderer.getNames(nameStack, eX, maxDepth, depth + 1);
+			const nxtOpts = {...opts};
+			nxtOpts.depth = nextDepth;
+			Renderer.getNames(nameStack, eX, nxtOpts);
 		}
 	} else if (entry.items) {
 		for (const eX of entry.items) {
-			Renderer.getNames(nameStack, eX, maxDepth, depth + 1);
+			Renderer.getNames(nameStack, eX, opts);
 		}
 	}
 };

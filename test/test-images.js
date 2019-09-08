@@ -46,6 +46,8 @@ if (fs.existsSync("./img")) {
 
 	const IGNORED_DIRS = new Set([
 		"adventure",
+		"backgrounds",
+		"dmscreen",
 		"deities",
 		"variantrules",
 		"rules",
