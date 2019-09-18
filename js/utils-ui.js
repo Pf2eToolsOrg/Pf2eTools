@@ -203,7 +203,7 @@ class UiUtil {
 		if (opts.zIndex != null) $modal.css({zIndex: opts.zIndex});
 		if (opts.overlayColor != null) $modal.css({backgroundColor: opts.overlayColor});
 		const $scroller = $(`<div class="ui-modal__scroller"/>`);
-		const $modalInner = $$`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu${opts.isLarge ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? "h-100" : ""}"><div class="split flex-v-center no-shrink">${opts.title ? `<h4>${opts.title.escapeQuotes()}</h4>` : ""}${opts.titleSplit || ""}</div>${$scroller}</div>`
+		const $modalInner = $$`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu ${opts.isLarge ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? "h-100" : ""}"><div class="split flex-v-center no-shrink">${opts.title ? `<h4>${opts.title.escapeQuotes()}</h4>` : ""}${opts.titleSplit || ""}</div>${$scroller}</div>`
 			.appendTo($modal);
 		if (opts.noMinHeight) $modalInner.css("height", "initial");
 

@@ -1,10 +1,17 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"type": "object",
 
 	"definitions": {
 		"vehicle": {
+			"oneOf": [
+				{"$ref": "#/definitions/vehicleShip"},
+				{"$ref": "#/definitions/vehicleInfernalWarMachine"}
+			]
+		},
+
+		"vehicleShip": {
 			"properties": {
 				"name": {
 					"type": "string"
@@ -15,6 +22,7 @@
 				"page": {
 					"type": "integer"
 				},
+				"vehicleType": {"const": "SHIP"},
 				"size": {
 					"type": "string",
 					"enum": [
@@ -29,6 +37,12 @@
 						"C",
 						"V"
 					]
+				},
+				"dimensions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
 				},
 				"capCrew": {
 					"type": "integer"
@@ -239,7 +253,150 @@
 						"additionalProperties": false
 					}
 				}
-			}
+			},
+			"required": ["name", "source"],
+			"additionalProperties": false
+		},
+
+		"vehicleInfernalWarMachine": {
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"type": "integer"
+				},
+				"vehicleType": {"const": "INFWAR"},
+				"size": {
+					"type": "string",
+					"enum": [
+						"F",
+						"D",
+						"T",
+						"S",
+						"M",
+						"L",
+						"H",
+						"G",
+						"C",
+						"V"
+					]
+				},
+				"weight": {
+					"type": "integer"
+				},
+				"capCreature": {
+					"type": "number"
+				},
+				"capCargo": {
+					"type": "number"
+				},
+				"speed": {
+					"type": "integer"
+				},
+				"str": {
+					"type": "integer"
+				},
+				"dex": {
+					"type": "integer"
+				},
+				"con": {
+					"type": "integer"
+				},
+				"int": {
+					"type": "integer"
+				},
+				"wis": {
+					"type": "integer"
+				},
+				"cha": {
+					"type": "integer"
+				},
+				"hp": {
+					"type": "object",
+					"properties": {
+						"hp": {
+							"type": "integer"
+						},
+						"dt": {
+							"type": "integer"
+						},
+						"mt": {
+							"type": "integer"
+						}
+					},
+					"additionalProperties": false,
+					"required": ["hp", "dt", "mt"]
+				},
+				"conditionImmune": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json#/definitions/dataCondImmune"
+					}
+				},
+				"immune": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json#/definitions/dataDamImmune"
+					}
+				},
+				"trait": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							}
+						}
+					}
+				},
+				"actionStation": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							}
+						}
+					}
+				},
+				"reaction": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							}
+						}
+					}
+				}
+			},
+			"required": ["name", "source"],
+			"additionalProperties": false
 		}
 	},
 

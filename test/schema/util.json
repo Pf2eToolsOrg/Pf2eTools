@@ -1,0 +1,205 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "util.json",
+
+	"title": "Util",
+	"description": "Utility definitions to be used in other schemas.",
+	"version": "1.0.0",
+
+	"definitions" : {
+		"metaBlock": {
+			"type": "object",
+			"properties": {
+				"dependencies": {
+					"type": "object",
+					"properties": {
+						"monster": {
+							"type": "array",
+							"items": {"type": "string"}
+						}
+					}
+				},
+				"otherSources": {
+					"type": "object",
+					"properties": {
+						"monster": {
+							"description": "Keys are other sources to be loaded; values are `otherSources` sources from that source to search for.",
+							"type": "object"
+						}
+					}
+				}
+			}
+		},
+
+		"copyModifier": {
+			"anyOf": [
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "replaceTxt"},
+						"replace": {"type":  "string"},
+						"with": {"type":  "string"},
+						"flags":  {"type":  "string"}
+					},
+					"required": ["replace", "with"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "appendStr"},
+						"str": {"type":  "string"},
+						"joiner": {"type":  "string"}
+					},
+					"required": ["str"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "prependArr"},
+						"items": {
+							"anyOf": [
+								{"type":  "object"},
+								{"type":  "array"}
+							]
+						}
+					},
+					"required": ["items"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "appendArr"},
+						"items": {
+							"anyOf": [
+								{"type":  "string"},
+								{"type":  "object"},
+								{"type":  "array"}
+							]
+						}
+					},
+					"required": ["items"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "replaceArr"},
+						"replace": {"type":  "string"},
+						"items": {
+							"anyOf": [
+								{"type":  "object"},
+								{"type":  "array"}
+							]
+						}
+					},
+					"required": ["replace", "items"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "removeArr"},
+						"names": {
+							"anyOf": [
+								{"type":  "string"},
+								{"type":  "array"}
+							]
+						},
+						"items": {
+							"anyOf": [
+								{"type":  "string"},
+								{"type":  "array"}
+							]
+						}
+					},
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "calculateProp"},
+						"prop": {"type": "string"},
+						"formula": {"type": "string"}
+					},
+					"required": ["prop", "formula"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "replaceSpells"},
+						"spells": {"type": "object"}
+					},
+					"required": ["mode", "spells"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "addSpells"},
+						"spells": {"type": "object"}
+					},
+					"required": ["mode", "spells"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "addSkills"},
+						"skills": {"type": "object"}
+					},
+					"required": ["mode", "skills"],
+					"additionalProperties": false
+				}
+			]
+		},
+
+		"copyBlock": {
+			"properties": {
+				"_copy": {
+					"type": "object",
+					"properties": {
+						"name": {"type": "string"},
+						"source": {"type": "string"},
+						"_mod": {
+							"type": "object",
+							"patternProperties": {
+								".*": {
+									"anyOf": [
+										{
+											"type": "string"
+										},
+										{
+											"$ref": "util.json#/definitions/copyModifier"
+										},
+										{
+											"type": "array",
+											"items": {
+												"$ref": "util.json#/definitions/copyModifier"
+											}
+										}
+									]
+								}
+							}
+						},
+						"_trait": {
+							"type": "object",
+							"properties": {
+								"name": {"type": "string"},
+								"source": {"type": "string"}
+							},
+							"required": ["name", "source"]
+						}
+					},
+					"required": ["name", "source"]
+				}
+			},
+			"required": [
+				"_copy"
+			]
+		}
+	}
+}

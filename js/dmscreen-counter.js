@@ -2,7 +2,7 @@
 
 class Counter {
 	static $getCounter (board, state) {
-		const $wrpPanel = $(`<div class="w-100 h-100 dm-cnt__root dm__data-anchor"/>`) // root class used to identify for saving
+		const $wrpPanel = $(`<div class="w-100 h-100 dm-cnt__root dm__panel-bg dm__data-anchor"/>`) // root class used to identify for saving
 			.data("getState", () => counters.getSaveableState());
 		const counters = new CounterRoot(board, $wrpPanel);
 		counters.setStateFrom(state);

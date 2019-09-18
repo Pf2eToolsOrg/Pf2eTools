@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"type": "object",
 
 	"definitions": {
@@ -55,30 +55,83 @@
 			]
 		},
 
-		"languageTag": {
-			"type": "string",
-			"enum": [
-				"Abyssal",
-				"Aquan",
-				"Auran",
-				"Celestial",
-				"Choose",
-				"Common",
-				"Draconic",
-				"Dwarvish",
-				"Elvish",
-				"Giant",
-				"Gnomish",
-				"Goblin",
-				"Halfling",
-				"Infernal",
-				"Orc",
-				"Other",
-				"Primordial",
-				"Sylvan",
-				"Terran",
-				"Undercommon"
-			]
+		"languageProficiencies": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"choose": {
+						"type": "object",
+						"properties": {
+							"from": {
+								"type": "array",
+								"items": {
+									"enum": [
+										"abyssal",
+										"celestial",
+										"deep speech",
+										"draconic",
+										"infernal",
+										"primordial",
+										"sylvan",
+										"undercommon",
+										"dwarvish",
+										"elvish",
+										"giant",
+										"goblin",
+										"other"
+									]
+								}
+							},
+							"count": {
+								"type": "integer"
+							}
+						}
+					},
+					"any": {
+						"type": "integer"
+					},
+					"anyStandard": {
+						"type": "integer"
+					},
+					"abyssal": {
+						"type": "boolean"
+					},
+					"celestial": {
+						"type": "boolean"
+					},
+					"deep speech": {
+						"type": "boolean"
+					},
+					"draconic": {
+						"type": "boolean"
+					},
+					"infernal": {
+						"type": "boolean"
+					},
+					"primordial": {
+						"type": "boolean"
+					},
+					"sylvan": {
+						"type": "boolean"
+					},
+					"undercommon": {
+						"type": "boolean"
+					},
+					"dwarvish": {
+						"type": "boolean"
+					},
+					"elvish": {
+						"type": "boolean"
+					},
+					"giant": {
+						"type": "boolean"
+					},
+					"other": {
+						"type": "boolean"
+					}
+				}
+			}
 		},
 
 		"abilityScores": {
@@ -331,11 +384,8 @@
 										"$ref": "#/definitions/traitTag"
 									}
 								},
-								"languageTags": {
-									"type": "array",
-									"items": {
-										"$ref": "#/definitions/languageTag"
-									}
+								"languageProficiencies": {
+									"$ref": "#/definitions/languageProficiencies"
 								},
 								"skillProficiencies": {
 									"type": "array",
@@ -360,11 +410,8 @@
 							"$ref": "#/definitions/traitTag"
 						}
 					},
-					"languageTags": {
-						"type": "array",
-						"items": {
-							"$ref": "#/definitions/languageTag"
-						}
+					"languageProficiencies": {
+						"$ref": "#/definitions/languageProficiencies"
 					},
 					"skillProficiencies": {
 						"type": "array",

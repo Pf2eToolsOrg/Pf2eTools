@@ -2,11 +2,7 @@
 
 window.onload = async function load () {
 	await ExcludeUtil.pInitialise();
-	Renderer.item.pBuildList({
-		fnCallback: incItemList => populateTablesAndFilters({item: incItemList}),
-		isAddGroups: true,
-		isBlacklistVariants: true
-	});
+	return pPopulateTablesAndFilters({item: await Renderer.item.pBuildList({isAddGroups: true, isBlacklistVariants: true})});
 };
 
 function rarityValue (rarity) {
@@ -37,6 +33,9 @@ function sortItems (a, b, o) {
 	} else if (o.valueName === "rarity") {
 		if (b._values.rarity === a._values.rarity) return SortUtil.compareNames(a, b);
 		return rarityValue(b._values.rarity) > rarityValue(a._values.rarity) ? 1 : -1;
+	} else if (o.valueName === "attunement") {
+		if (b._values.attunement === a._values.attunement) return SortUtil.compareNames(a, b);
+		return SortUtil.ascSort(a._values.attunement, b._values.attunement);
 	} else if (o.valueName === "count") {
 		return SortUtil.ascSort(Number(a.values().count), Number(b.values().count));
 	} else if (o.valueName === "weight") {
@@ -59,7 +58,7 @@ const attachedSpellsFilter = new Filter({header: "Attached Spells", displayFn: (
 const lootTableFilter = new Filter({header: "Found On", items: ["Magic Item Table A", "Magic Item Table B", "Magic Item Table C", "Magic Item Table D", "Magic Item Table E", "Magic Item Table F", "Magic Item Table G", "Magic Item Table H", "Magic Item Table I"]});
 
 let filterBox;
-async function populateTablesAndFilters (data) {
+async function pPopulateTablesAndFilters (data) {
 	const rarityFilter = new Filter({
 		header: "Rarity",
 		items: ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown", "Unknown (Magic)", "Other"],
@@ -84,7 +83,7 @@ async function populateTablesAndFilters (data) {
 	};
 	mundaneList = ListUtil.search(mundaneOptions);
 	const magicOptions = {
-		valueNames: ["name", "type", "weight", "rarity", "source", "uniqueid"],
+		valueNames: ["name", "type", "weight", "rarity", "attunement", "source", "uniqueid"],
 		listClass: "magic",
 		sortClass: "none",
 		sortFunction: sortItems
@@ -207,7 +206,8 @@ function addItems (data) {
 	if (!data.item || !data.item.length) return;
 	itemList = itemList.concat(data.item);
 
-	const liList = {mundane: "", magic: ""}; // store the <li> tag content here and change the DOM once for each property after the loop
+	let tempStackMundane = "";
+	let tempStackMagic = "";
 
 	for (; itI < itemList.length; itI++) {
 		const item = itemList[itI];
@@ -253,7 +253,7 @@ function addItems (data) {
 		}
 
 		if (isMundane) {
-			liList["mundane"] += `
+			tempStackMundane += `
 			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(item)}" title="${name}">
 					<span class="name col-3 pl-0">${name}</span>
@@ -268,13 +268,14 @@ function addItems (data) {
 				</a>
 			</li>`;
 		} else {
-			liList["magic"] += `
+			tempStackMagic += `
 			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
 				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(item)}" title="${name}">
 					<span class="name col-3-5 pl-0">${name}</span>
 					<span class="type col-3-3">${item.typeListText}</span>
 					<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
-					<span class="rarity col-2">${item.rarity}</span>
+					<span class="attunement col-0-6 text-center">${item.attunementCategory !== "No" ? "×" : ""}</span>
+					<span class="rarity col-1-4">${item.rarity}</span>
 					<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${Parser.sourceJsonToAbv(item.source)}</span>
 					
 					<span class="weight hidden">${Parser.weightValueToNumber(item.weight)}</span>
@@ -293,8 +294,8 @@ function addItems (data) {
 	}
 	const lastSearch = ListUtil.getSearchTermAndReset(mundaneList, magicList);
 	// populate table
-	$("ul.list.mundane").append(liList.mundane);
-	$("ul.list.magic").append(liList.magic);
+	$("ul.list.mundane").append(tempStackMundane);
+	$("ul.list.magic").append(tempStackMagic);
 	// populate table labels
 	$(`h3.ele-mundane span.side-label`).text("Mundane");
 	$(`h3.ele-magic span.side-label`).text("Magic");

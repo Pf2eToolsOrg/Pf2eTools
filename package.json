@@ -1,7 +1,7 @@
 {
 	"name": "5etools",
 	"author": "TheGiddyLimit",
-	"version": "1.80.0",
+	"version": "1.81.1",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
@@ -14,9 +14,11 @@
 		"test:data": "node test/test-all.js",
 		"test": "npm run test:js && npm run test:styles && npm run test:data",
 		"build:css": "node-sass --source-map=true --output-style=compressed scss/main.scss css/style.css && postcss ./css/style.css --use autoprefixer -r",
-		"build:deploy:dev": "bash build/deploy-dev.sh",
-		"build:deploy:prod": "bash build/deploy-prod.sh",
-		"build": "npm run clean-jsons && npm run gen-all && npm run build:css",
+		"build:deploy:dev": "bash build/deploy-prep-dev.sh",
+		"build:deploy:prod": "bash build/deploy-prep-prod.sh",
+		"build:deploy:prod:cdn": "bash build/deploy-prep-prod--cdn",
+		"build:seo": "node node/generate-seo.js",
+		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:seo",
 		"preversion": "npm test",
 		"version": "node node/version-bump.js",
 		"serve:dev": "http-server -c-1 --cors"
@@ -38,7 +40,8 @@
 		"readline-sync": "^1.4.9",
 		"simple-git": "^1.121.0",
 		"stylelint": "^10.1.0",
-		"stylelint-config-sass-guidelines": "^6.0.0"
+		"stylelint-config-sass-guidelines": "^6.0.0",
+		"xmlbuilder": "^13.0.2"
 	},
 	"dependencies": {},
 	"bugs": {

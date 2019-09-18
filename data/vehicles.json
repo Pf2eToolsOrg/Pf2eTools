@@ -3,6 +3,7 @@
 		{
 			"name": "Airship",
 			"source": "UAOfShipsAndSea",
+			"vehicleType": "SHIP",
 			"page": 2,
 			"size": "G",
 			"dimensions": [
@@ -90,6 +91,7 @@
 		{
 			"name": "Galley",
 			"source": "UAOfShipsAndSea",
+			"vehicleType": "SHIP",
 			"page": 2,
 			"size": "G",
 			"dimensions": [
@@ -185,7 +187,7 @@
 					"ac": 15,
 					"hp": 100,
 					"entries": [
-						"{@atk rw} {@h 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
+						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
 					]
 				},
 				{
@@ -210,6 +212,7 @@
 		{
 			"name": "Keelboat",
 			"source": "UAOfShipsAndSea",
+			"vehicleType": "SHIP",
 			"page": 3,
 			"size": "G",
 			"dimensions": [
@@ -295,7 +298,7 @@
 					"ac": 15,
 					"hp": 50,
 					"entries": [
-						"{@atk rw} {@h 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage. Keelboats typically include a ballista only when they are equipped for combat."
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage. Keelboats typically include a ballista only when they are equipped for combat."
 					]
 				}
 			],
@@ -311,6 +314,7 @@
 		{
 			"name": "Longship",
 			"source": "UAOfShipsAndSea",
+			"vehicleType": "SHIP",
 			"page": 4,
 			"size": "G",
 			"dimensions": [
@@ -402,6 +406,7 @@
 		{
 			"name": "Rowboat",
 			"source": "UAOfShipsAndSea",
+			"vehicleType": "SHIP",
 			"page": 4,
 			"size": "L",
 			"dimensions": [
@@ -469,6 +474,7 @@
 		{
 			"name": "Sailing Ship",
 			"source": "UAOfShipsAndSea",
+			"vehicleType": "SHIP",
 			"page": 4,
 			"size": "G",
 			"dimensions": [
@@ -540,7 +546,7 @@
 					"ac": 15,
 					"hp": 50,
 					"entries": [
-						"{@atk rw} {@h 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
 					]
 				},
 				{
@@ -548,7 +554,7 @@
 					"ac": 15,
 					"hp": 100,
 					"entries": [
-						"{@atk rw} {@h 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
+						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
 					]
 				}
 			],
@@ -564,6 +570,7 @@
 		{
 			"name": "Warship",
 			"source": "UAOfShipsAndSea",
+			"vehicleType": "SHIP",
 			"page": 5,
 			"size": "G",
 			"dimensions": [
@@ -650,7 +657,7 @@
 					"ac": 15,
 					"hp": 50,
 					"entries": [
-						"{@atk rw} {@h 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
 					]
 				},
 				{
@@ -659,7 +666,7 @@
 					"ac": 15,
 					"hp": 100,
 					"entries": [
-						"{@atk rw} {@h 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
+						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
 					]
 				},
 				{
@@ -684,6 +691,7 @@
 		{
 			"name": "Galley",
 			"source": "GoS",
+			"vehicleType": "SHIP",
 			"size": "G",
 			"dimensions": [
 				"130 ft.",
@@ -802,7 +810,7 @@
 					"ac": 15,
 					"hp": 100,
 					"entries": [
-						"{@atk rw} {@h 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
+						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
 					]
 				},
 				{
@@ -820,6 +828,7 @@
 		{
 			"name": "Keelboat",
 			"source": "GoS",
+			"vehicleType": "SHIP",
 			"size": "G",
 			"dimensions": [
 				"60 ft.",
@@ -853,7 +862,7 @@
 				"stunned",
 				"unconscious"
 			],
-			"actions": [
+			"action": [
 				"On its turn, the keelboat can take 2 actions, choosing from the options below. It can take only 1 action if it has only one crew. It can't take these actions if it has no crew.",
 				{
 					"type": "list",
@@ -923,7 +932,7 @@
 					"ac": 15,
 					"hp": 50,
 					"entries": [
-						"{@atk rw} {@h 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage.",
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage.",
 						"Keelboats typically include a ballista only when they are equipped for combat."
 					]
 				}
@@ -933,6 +942,7 @@
 		{
 			"name": "Longship",
 			"source": "GoS",
+			"vehicleType": "SHIP",
 			"size": "G",
 			"dimensions": [
 				"70 ft.",
@@ -1030,6 +1040,7 @@
 		{
 			"name": "Rowboat",
 			"source": "GoS",
+			"vehicleType": "SHIP",
 			"size": "L",
 			"dimensions": [
 				"10 ft.",
@@ -1103,6 +1114,7 @@
 		{
 			"name": "Sailing Ship",
 			"source": "GoS",
+			"vehicleType": "SHIP",
 			"size": "G",
 			"dimensions": [
 				"100 ft.",
@@ -1197,7 +1209,7 @@
 					"ac": 15,
 					"hp": 50,
 					"entries": [
-						"{@atk rw} {@h 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
 					]
 				},
 				{
@@ -1205,7 +1217,7 @@
 					"ac": 15,
 					"hp": 100,
 					"entries": [
-						"{@atk rw} {@h 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
+						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
 					]
 				}
 			],
@@ -1214,6 +1226,7 @@
 		{
 			"name": "Warship",
 			"source": "GoS",
+			"vehicleType": "SHIP",
 			"size": "G",
 			"dimensions": [
 				"100 ft.",
@@ -1323,7 +1336,7 @@
 					"ac": 15,
 					"hp": 50,
 					"entries": [
-						"{@atk rw} {@h 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
 					]
 				},
 				{
@@ -1332,7 +1345,7 @@
 					"ac": 15,
 					"hp": 100,
 					"entries": [
-						"{@atk rw} {@h 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
+						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
 					]
 				},
 				{
@@ -1350,6 +1363,7 @@
 		{
 			"name": "Battle Balloon",
 			"source": "AI",
+			"vehicleType": "SHIP",
 			"page": 218,
 			"size": "G",
 			"dimensions": [
@@ -1404,7 +1418,7 @@
 						{
 							"type": "item",
 							"name": "Harpoon Haul.",
-							"entry": "The battle balloon can pull each target grappled by it up to 30 feet toward the battle balloon."
+							"entry": "The battle balloon can pull each target {@condition grappled} by it up to 30 feet toward the battle balloon."
 						}
 					]
 				}
@@ -1454,7 +1468,7 @@
 					"ac": 15,
 					"hp": 75,
 					"entries": [
-						"{@atk rw} {@h 8} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it) one target. {@h}16 ({@damage 3d10}) piercing damage and 22 ({@damage 4d10}) fire damage. If the attack misses, the DM determines where the arbalester bolt hits. Each creature within 10 feet of that spot must make a DC 15 Dexterity saving throw to avoid the bolt as it shatters, taking 5 ({@damage 1d10}) piercing damage and 5 ({@damage 1d10}) fire damage on a failed save."
+						"{@atk rw} {@hit 8} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it) one target. {@h}16 ({@damage 3d10}) piercing damage and 22 ({@damage 4d10}) fire damage. If the attack misses, the DM determines where the arbalester bolt hits. Each creature within 10 feet of that spot must make a DC 15 Dexterity saving throw to avoid the bolt as it shatters, taking 5 ({@damage 1d10}) piercing damage and 5 ({@damage 1d10}) fire damage on a failed save."
 					]
 				},
 				{
@@ -1463,7 +1477,7 @@
 					"ac": 15,
 					"hp": 50,
 					"entries": [
-						"{@atk rw} {@h 8} to hit, range 120/480 ft., one target. {@h}11 ({@damage 2d10}) piercing damage, and the target is grappled (escape DC 16). Until the grapple ends, the target's speed is halved, and it can't move farther away from the battle balloon. Each of the battle balloon's harpoon guns can grapple one target. While it has one or more targets grappled with its harpoon gun attack, the battle balloon's speed is not halved."
+						"{@atk rw} {@hit 8} to hit, range 120/480 ft., one target. {@h}11 ({@damage 2d10}) piercing damage, and the target is {@condition grappled} (escape DC 16). Until the grapple ends, the target's speed is halved, and it can't move farther away from the battle balloon. Each of the battle balloon's harpoon guns can grapple one target. While it has one or more targets {@condition grappled} with its harpoon gun attack, the battle balloon's speed is not halved."
 					]
 				}
 			]
@@ -1471,6 +1485,7 @@
 		{
 			"name": "Mechanical Beholder",
 			"source": "AI",
+			"vehicleType": "SHIP",
 			"page": 219,
 			"size": "H",
 			"dimensions": [
@@ -1576,10 +1591,334 @@
 								{
 									"type": "item",
 									"name": "Paralyzing Ray.",
-									"entry": "The targeted creature must succeed on a DC 15 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+									"entry": "The targeted creature must succeed on a DC 15 Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 								}
 							]
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Devil's Ride",
+			"source": "BGDIA",
+			"page": 218,
+			"vehicleType": "INFWAR",
+			"size": "L",
+			"weight": 500,
+			"capCreature": 1,
+			"capCargo": 100,
+			"speed": 120,
+			"str": 14,
+			"dex": 18,
+			"con": 12,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"hp": {
+				"hp": 30,
+				"dt": 5,
+				"mt": 10
+			},
+			"immune": [
+				"fire",
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"stunned",
+				"unconscious"
+			],
+			"trait": [
+				{
+					"name": "Jump",
+					"entries": [
+						"If the Devil's Ride moves at least 30 feet in a straight line, it can clear a distance of up to 60 feet when jumping over a chasm, ravine, or other gap. Each foot it clears on the jump costs a foot of movement."
+					]
+				},
+				{
+					"name": "Prone Deficiency",
+					"entries": [
+						"If the Devil's Ride falls {@condition prone}, it can't right itself and is {@condition incapacitated} until pulled upright."
+					]
+				},
+				{
+					"name": "Stunt",
+					"entries": [
+						"On its turn, the driver of the Devil's Ride can expend 10 feet of movement to perform one free vehicle stunt, such as a wheelie or a burnout. Before the stunt can be performed, the Devil's Ride must move at least 10 feet in a straight line. If the driver succeeds on a DC 10 Dexterity check using the bike's Dexterity, the stunt is successful. Otherwise, the driver is unable to perform the stunt and can't attempt another stunt until the start of its next turn. If the check fails by 5 or more, the Devil's Ride and all creatures riding it immediately fall {@condition prone} as the bike wipes out and comes to a dead stop."
+					]
+				}
+			],
+			"actionStation": [
+				{
+					"name": "Helm (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"Drive and steer the Devil's Ride."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"type": "entries",
+					"name": "Juke",
+					"entries": [
+						"If the Devil's Ride is able to move, the driver can use its reaction to grant the Devil's Ride advantage on a Dexterity saving throw."
+					]
+				}
+			]
+		},
+		{
+			"name": "Tormentor",
+			"source": "BGDIA",
+			"page": 218,
+			"vehicleType": "INFWAR",
+			"size": "H",
+			"weight": 3000,
+			"capCreature": 4,
+			"capCargo": 500,
+			"speed": 100,
+			"str": 16,
+			"dex": 14,
+			"con": 14,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"hp": {
+				"hp": 60,
+				"dt": 10,
+				"mt": 20
+			},
+			"immune": [
+				"fire",
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"stunned",
+				"unconscious"
+			],
+			"trait": [
+				{
+					"name": "Crushing Wheels",
+					"entries": [
+						"The Tormentor can move through the space of any Medium or smaller creature.When it does, the creature must succeed on a DC 13 Dexterity saving throw or take 11 ({@damage 2d10}) bludgeoning damage and be knocked {@condition prone}.If the creature was already {@condition prone}, it takes an extra 11 ({@damage 2d10}) bludgeoning damage.This trait can't be used against a particular creature more than once each turn."
+					]
+				},
+				{
+					"name": "Prone Deficiency",
+					"entries": [
+						"If the Tormentor rolls over and falls {@condition prone}, it can't right itself and is {@condition incapacitated} until flipped upright."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"The Tormentor's weapon attacks are magical."
+					]
+				},
+				{
+					"name": "Raking Scythes",
+					"entries": [
+						"When the Tormentor moves within 5 feet of a creature that isn't {@condition prone} or another vehicle for the first time on a turn, it can rake the creature or vehicle with its protruding blades for 13 ({@damage 2d10 + 2}) slashing damage. A creature moves out of the way and takes no damage if it succeeds on a DC 13 Dexterity saving throw.A vehicle moves out of the way and takes no damage if its driver succeeds on the saving throw."
+					]
+				}
+			],
+			"actionStation": [
+				{
+					"name": "(Requires 1 Crew and Grants Three-Quarters Cover)",
+					"entries": [
+						"Drive and steer the Tormentor"
+					]
+				},
+				{
+					"name": "Harpoon Flinger (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"{@atk rw} {@hit 7} to hit, range 120 ft., one target. {@h}11 ({@damage 2d8 + 2}) piercing damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"type": "entries",
+					"name": "Juke",
+					"entries": [
+						"If the Tormentor is able to move, the driver can use its reaction to grant the Devil's Ride advantage on a Dexterity saving throw."
+					]
+				}
+			]
+		},
+		{
+			"name": "Demon Grinder",
+			"source": "BGDIA",
+			"page": 219,
+			"vehicleType": "INFWAR",
+			"size": "G",
+			"weight": 12000,
+			"capCreature": 8,
+			"capCargo": 2000,
+			"speed": 100,
+			"str": 18,
+			"dex": 10,
+			"con": 18,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"hp": {
+				"hp": 200,
+				"dt": 10,
+				"mt": 20
+			},
+			"immune": [
+				"fire",
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"stunned",
+				"unconscious"
+			],
+			"trait": [
+				{
+					"name": "Crushing Wheels",
+					"entries": [
+						"The Demon Grinder can move through the space of any Large or smaller creature. When it does, the creature must succeed on a DC 11 Dexterity saving throw or take 22 ({@damage 4d10}) bludgeoning damage and be knocked {@condition prone}. If the creature was already {@condition prone}, it takes an extra 22 ({@damage 4d10}) bludgeoning damage. This trait can't be used against a particular creature more than once each turn."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"The Demon Grinder's weapon attacks are magical."
+					]
+				},
+				{
+					"name": "Prone Deficiency",
+					"entries": [
+						"If the Demon Grinder rolls over and falls {@condition prone}, it can't right itself and is {@condition incapacitated} until flipped upright."
+					]
+				}
+			],
+			"actionStation": [
+				{
+					"name": "Helm (Requires 1 Crew and Grants Three-Quarters Cover)",
+					"entries": [
+						"Drive and steer the Demon Grinder."
+					]
+				},
+				{
+					"name": "Chomper (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}25 ({@damage 6d6 + 4}) piercing damage. A target reduced to 0 hit points by this damage is ground to bits and spit out through pipes on both sides of the Demon Grinder.Any nonmagical items the target was holding or carrying are destroyed as well."
+					]
+				},
+				{
+					"name": "Wrecking Ball (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 15 ft., one target. {@h}40 ({@damage 8d8 + 4}) bludgeoning damage. Double the damage if the target is an object or a structure."
+					]
+				},
+				{
+					"name": "2 Harpoon Flingers (Each Station Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, range 120 ft., one target. {@h}9 ({@damage 2d8}) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Scavenger",
+			"source": "BGDIA",
+			"page": 219,
+			"vehicleType": "INFWAR",
+			"size": "H",
+			"weight": 9000,
+			"capCreature": 8,
+			"capCargo": 4000,
+			"speed": 100,
+			"str": 20,
+			"dex": 12,
+			"con": 20,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"hp": {
+				"hp": 150,
+				"dt": 10,
+				"mt": 20
+			},
+			"immune": [
+				"fire",
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"stunned",
+				"unconscious"
+			],
+			"trait": [
+				{
+					"name": "Crushing Wheels",
+					"entries": [
+						"The Scavenger can move through the space of any Large or smaller creature. When it does, the creature must succeed on a DC 12 Dexterity saving throw or take 16 ({@damage 3d10}) bludgeoning damage and be knocked {@condition prone}. If the creature was already {@condition prone}, it takes an extra 16 ({@damage 3d10}) bludgeoning damage. This trait can't be used against a particular creature more than once each turn."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"The Scavenger's weapon attacks are magical."
+					]
+				},
+				{
+					"name": "Prone Deficiency",
+					"entries": [
+						"If the Scavenger rolls over and falls {@condition prone}, it can't right itself and is {@condition incapacitated} until flipped upright."
+					]
+				}
+			],
+			"actionStation": [
+				{
+					"name": "Helm (Requires 1 Crew and Grants Three-Quarters Cover)",
+					"entries": [
+						"Drive and steer the Scavenger."
+					]
+				},
+				{
+					"name": "Grappling Claw (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"{@atk mw} {@hit 10} to hit, reach 15 ft., one target. {@h}The target is {@condition grappled} (escape DC 12). If the target is a creature, it is {@condition restrained} until the grapple ends.The grappling claw can grapple only one target at a time, and the claw's operator can use a bonus action to make the claw release whatever it's holding."
+					]
+				},
+				{
+					"name": "2 Harpoon Flingers (Each Station Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120 ft., one target. {@h}10 ({@damage 2d8 + 1}) piercing damage."
 					]
 				}
 			]

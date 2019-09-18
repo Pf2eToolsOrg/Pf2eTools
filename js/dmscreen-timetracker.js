@@ -2,7 +2,7 @@
 
 class TimeTracker {
 	static $getTracker (board, state) {
-		const $wrpPanel = $(`<div class="w-100 h-100 dm-time__root dm__data-anchor"/>`) // root class used to identify for saving
+		const $wrpPanel = $(`<div class="w-100 h-100 dm-time__root dm__panel-bg dm__data-anchor"/>`) // root class used to identify for saving
 			.data("getState", () => tracker.getSaveableState());
 		const tracker = new TimeTrackerRoot(board, $wrpPanel);
 		tracker.setStateFrom(state);
@@ -1167,8 +1167,8 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 		this._parent = parent;
 		const {getTimeInfo} = parent;
 
-		const $btnRandomise = $(`<button class="btn btn-xxs btn-default dm-time__btn-random-weather" title="Randomize Weather"><span class="fal fa-dice"/></button>`)
-			.click(async () => {
+		const $btnRandomise = $(`<button class="btn btn-xxs btn-default dm-time__btn-random-weather" title="Randomize Weather (SHIFT to Reroll Using Previous Settings)"><span class="fal fa-dice"/></button>`)
+			.click(async evt => {
 				const randomState = await TimeTrackerRoot_Clock_RandomWeather.pGetUserInput(
 					{
 						temperature: this._state.temperature,
@@ -1177,7 +1177,8 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 						windSpeed: this._state.windSpeed
 					},
 					{
-						unitsWindSpeed: this._parent.get("unitsWindSpeed")
+						unitsWindSpeed: this._parent.get("unitsWindSpeed"),
+						isReroll: evt.shiftKey
 					}
 				);
 				if (randomState == null) return;
@@ -1568,6 +1569,7 @@ class TimeTrackerRoot_Clock_RandomWeather extends BaseComponent {
 	 * @param curWeather The current weather state.
 	 * @param opts Options object.
 	 * @param opts.unitsWindSpeed Wind speed units.
+	 * @param [opts.isReroll] If the weather is being quick-rerolled.
 	 */
 	static async pGetUserInput (curWeather, opts) {
 		opts = opts || {};
@@ -1577,71 +1579,76 @@ class TimeTrackerRoot_Clock_RandomWeather extends BaseComponent {
 		const prevState = await StorageUtil.pGetForPage(TimeTrackerRoot_Clock_RandomWeather._STORAGE_KEY);
 		if (prevState) comp.setStateFrom(prevState);
 
+		const getWeather = () => {
+			StorageUtil.pSetForPage(TimeTrackerRoot_Clock_RandomWeather._STORAGE_KEY, comp.getSaveableState());
+
+			const inputs = comp.toObject();
+
+			// 66% chance of temperature change
+			const isNewTemp = RollerUtil.randomise(3) > 1;
+			// 80% chance of precipitation change
+			const isNewPrecipitation = RollerUtil.randomise(5) > 1;
+
+			// 40% chance of prevailing wind; 20% chance of current wind; 40% chance of random wind
+			const rollWindDirection = RollerUtil.randomise(5);
+			let windDirection;
+			if (rollWindDirection === 1) windDirection = curWeather.windDirection;
+			else if (rollWindDirection <= 3) windDirection = inputs.prevailingWindDirection;
+			else windDirection = RollerUtil.randomise(360) - 1;
+			windDirection += TimeTrackerRoot_Clock_RandomWeather._getBearingFudge();
+
+			// 2/7 chance wind speed stays the same; 1/7 chance each of it increasing/decreasing by 1/2/3 steps
+			const rollWindSpeed = RollerUtil.randomise(7);
+			let windSpeed;
+			const ixCurWindSpeed = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS.indexOf(curWeather.windSpeed);
+			let windSpeedOffset = 0;
+			if (rollWindSpeed <= 3) windSpeedOffset = -rollWindSpeed;
+			else if (rollWindSpeed >= 5) windSpeedOffset = rollWindSpeed - 4;
+			if (windSpeedOffset < 0) {
+				windSpeed = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS[ixCurWindSpeed + windSpeedOffset];
+
+				let i = -1;
+				while (!inputs.allowedWindSpeeds.includes(windSpeed)) {
+					windSpeed = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS[ixCurWindSpeed + windSpeedOffset + i];
+
+					// If we run out of possibilities, scan the opposite direction
+					if (--i < 0) {
+						windSpeed = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS.find(it => inputs.allowedWindSpeeds.includes(it));
+					}
+				}
+			} else if (windSpeedOffset > 0) {
+				windSpeed = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS[ixCurWindSpeed + windSpeedOffset];
+
+				let i = 1;
+				while (!inputs.allowedWindSpeeds.includes(windSpeed)) {
+					windSpeed = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS[ixCurWindSpeed + windSpeedOffset + i];
+
+					// If we run out of possibilities, scan the opposite direction
+					if (++i >= TimeTrackerRoot_Clock_Weather._WIND_SPEEDS.length) {
+						windSpeed = [...TimeTrackerRoot_Clock_Weather._WIND_SPEEDS]
+							.reverse()
+							.find(it => inputs.allowedWindSpeeds.includes(it));
+					}
+				}
+			} else windSpeed = curWeather.windSpeed;
+
+			return {
+				temperature: isNewTemp ? RollerUtil.rollOnArray(inputs.allowedTemperatures) : curWeather.temperature,
+				precipitation: isNewPrecipitation ? RollerUtil.rollOnArray(inputs.allowedPrecipitations) : curWeather.precipitation,
+				windDirection,
+				windSpeed
+			}
+		};
+
+		if (opts.isReroll) return getWeather();
+
 		return new Promise(resolve => {
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: "Random Weather Configuration",
 				isLarge: true,
 				cbClose: (isDataEntered) => {
 					if (!isDataEntered) resolve(null);
-
-					StorageUtil.pSetForPage(TimeTrackerRoot_Clock_RandomWeather._STORAGE_KEY, comp.getSaveableState());
-
-					const inputs = comp.toObject();
-
-					// 66% chance of temperature change
-					const isNewTemp = RollerUtil.randomise(3) > 1;
-					// 80% chance of precipitation change
-					const isNewPrecipitation = RollerUtil.randomise(5) > 1;
-
-					// 40% chance of prevailing wind; 20% chance of current wind; 40% chance of random wind
-					const rollWindDirection = RollerUtil.randomise(5);
-					let windDirection;
-					if (rollWindDirection === 1) windDirection = curWeather.windDirection;
-					else if (rollWindDirection <= 3) windDirection = inputs.prevailingWindDirection;
-					else windDirection = RollerUtil.randomise(360) - 1;
-					windDirection += TimeTrackerRoot_Clock_RandomWeather._getBearingFudge();
-
-					// 2/7 chance wind speed stays the same; 1/7 chance each of it increasing/decreasing by 1/2/3 steps
-					const rollWindSpeed = RollerUtil.randomise(7);
-					let windSpeed;
-					const ixCurWindSpeed = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS.indexOf(curWeather.windSpeed);
-					let windSpeedOffset = 0;
-					if (rollWindSpeed <= 3) windSpeedOffset = -rollWindSpeed;
-					else if (rollWindSpeed >= 5) windSpeedOffset = rollWindSpeed - 4;
-					if (windSpeedOffset < 0) {
-						windSpeed = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS[ixCurWindSpeed + windSpeedOffset];
-
-						let i = -1;
-						while (!inputs.allowedWindSpeeds.includes(windSpeed)) {
-							windSpeed = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS[ixCurWindSpeed + windSpeedOffset + i];
-
-							// If we run out of possibilities, scan the opposite direction
-							if (--i < 0) {
-								windSpeed = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS.find(it => inputs.allowedWindSpeeds.includes(it));
-							}
-						}
-					} else if (windSpeedOffset > 0) {
-						windSpeed = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS[ixCurWindSpeed + windSpeedOffset];
-
-						let i = 1;
-						while (!inputs.allowedWindSpeeds.includes(windSpeed)) {
-							windSpeed = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS[ixCurWindSpeed + windSpeedOffset + i];
-
-							// If we run out of possibilities, scan the opposite direction
-							if (++i >= TimeTrackerRoot_Clock_Weather._WIND_SPEEDS.length) {
-								windSpeed = [...TimeTrackerRoot_Clock_Weather._WIND_SPEEDS]
-									.reverse()
-									.find(it => inputs.allowedWindSpeeds.includes(it));
-							}
-						}
-					} else windSpeed = curWeather.windSpeed;
-
-					resolve({
-						temperature: isNewTemp ? RollerUtil.rollOnArray(inputs.allowedTemperatures) : curWeather.temperature,
-						precipitation: isNewPrecipitation ? RollerUtil.rollOnArray(inputs.allowedPrecipitations) : curWeather.precipitation,
-						windDirection,
-						windSpeed
-					});
+					else resolve(getWeather());
 				}
 			});
 

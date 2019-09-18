@@ -107,7 +107,7 @@ class InitiativeTrackerPlayer {
 				}
 			});
 
-		view.$wrpInitial = $$`<div class="flex-vh-center h-100 flex-col">
+		view.$wrpInitial = $$`<div class="flex-vh-center h-100 flex-col dm__panel-bg">
 			${$btnConnectRemote}
 			${$btnConnectLocal}
 		</div>`.appendTo($wrpTracker);

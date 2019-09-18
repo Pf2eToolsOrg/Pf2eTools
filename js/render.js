@@ -315,7 +315,7 @@ function Renderer () {
 			? `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${entry.width}" height="${entry.height}"><rect width="100%" height="100%" fill="#ccc3"/></svg>`)}`
 			: null;
 		textStack[0] += `<div class="rd__wrp-image"><a href="${href}" target="_blank" rel="noopener" ${entry.title ? `title="${entry.title}"` : ""}><img class="rd__image" src="${svg || href}" ${entry.altText ? `alt="${entry.altText}"` : ""} ${svg ? `data-src="${href}"` : ""} ${getStylePart()}></a></div>`;
-		if (entry.title) textStack[0] += `<div class="rd__image-title"><div class="rd__image-title-inner">${entry.title}</div></div>`;
+		if (entry.title) textStack[0] += `<div class="rd__image-title"><div class="rd__image-title-inner">${this.render(entry.title)}</div></div>`;
 		else if (entry._galleryTitlePad) textStack[0] += `<div class="rd__image-title">&nbsp;</div>`;
 		textStack[0] += `</div>`;
 		this._renderSuffix(entry, textStack, meta, options);
@@ -2546,10 +2546,10 @@ Renderer.race = {
 					delete s.traitTags;
 				}
 
-				if (s.languageTags) {
-					if (s.overwrite && s.overwrite.languageTags) cpy.languageTags = s.languageTags;
-					else cpy.languageTags = cpy.languageTags = (cpy.languageTags || []).concat(s.languageTags);
-					delete s.languageTags;
+				if (s.languageProficiencies) {
+					if (s.overwrite && s.overwrite.languageProficiencies) cpy.languageProficiencies = s.languageProficiencies;
+					else cpy.languageProficiencies = cpy.languageProficiencies = (cpy.languageProficiencies || []).concat(s.languageProficiencies);
+					delete s.languageProficiencies;
 				}
 
 				// TODO make a generalised merge system? Probably have one of those lying around somewhere [bestiary schema?]
@@ -2841,417 +2841,7 @@ Renderer.cultboon = {
 };
 
 Renderer.monster = {
-	_MERGE_REQUIRES_PRESERVE: {
-		legendaryGroup: true,
-		environment: true,
-		soundClip: true,
-		page: true,
-		altArt: true,
-		otherSources: true,
-		variant: true,
-		dragonCastingColor: true
-	},
-	_mergeCache: null,
-	async pMergeCopy (monList, mon, options) {
-		function search () {
-			return monList.find(it => {
-				Renderer.monster._mergeCache[UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](it)] = it;
-				return it.name === mon._copy.name && it.source === mon._copy.source;
-			});
-		}
-
-		if (mon._copy) {
-			const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](mon._copy);
-			Renderer.monster._mergeCache = Renderer.monster._mergeCache || {};
-			const it = Renderer.monster._mergeCache[hash] || search();
-			if (!it) return;
-			return Renderer.monster._pApplyCopy(MiscUtil.copy(it), mon, options);
-		}
-	},
-
-	async _pApplyCopy (copyFrom, copyTo, options = {}) {
-		if (options.doKeepCopy) copyTo.__copy = MiscUtil.copy(copyFrom);
-
-		// convert everything to arrays
-		function normaliseMods (obj) {
-			Object.entries(obj._mod).forEach(([k, v]) => {
-				if (!(v instanceof Array)) obj._mod[k] = [v];
-			});
-		}
-
-		const copyMeta = copyTo._copy || {};
-
-		if (copyMeta._mod) normaliseMods(copyMeta);
-
-		// fetch and apply any external traits -- append them to existing copy mods where available
-		let racials = null;
-		if (copyMeta._trait) {
-			const traitData = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/traits.json`);
-			racials = traitData.trait.find(t => t.name.toLowerCase() === copyMeta._trait.name.toLowerCase() && t.source.toLowerCase() === copyMeta._trait.source.toLowerCase());
-			if (!racials) throw new Error(`Could not find traits to apply with name "${copyMeta._trait.name}" and source "${copyMeta._trait.source}"`);
-			racials = MiscUtil.copy(racials);
-
-			if (racials.apply._mod) {
-				normaliseMods(racials.apply);
-
-				if (copyMeta._mod) {
-					Object.entries(racials.apply._mod).forEach(([k, v]) => {
-						if (copyMeta._mod[k]) copyMeta._mod[k] = copyMeta._mod[k].concat(v);
-						else copyMeta._mod[k] = v;
-					});
-				} else copyMeta._mod = racials.apply._mod;
-			}
-
-			delete copyMeta._trait;
-		}
-
-		// copy over required values
-		Object.keys(copyFrom).forEach(k => {
-			if (copyTo[k] === null) return delete copyTo[k];
-			if (copyTo[k] == null) {
-				if (Renderer.monster._MERGE_REQUIRES_PRESERVE[k]) {
-					if (copyTo._copy._preserve && copyTo._copy._preserve[k]) copyTo[k] = copyFrom[k];
-				} else copyTo[k] = copyFrom[k];
-			}
-		});
-
-		// apply any root racial properties after doing base copy
-		if (racials && racials.apply._root) Object.entries(racials.apply._root).forEach(([k, v]) => copyTo[k] = v);
-
-		// mod helpers /////////////////
-		function doEnsureArray (obj, prop) {
-			if (!(obj[prop] instanceof Array)) obj[prop] = [obj[prop]];
-		}
-
-		function doMod_appendStr (modInfo, prop) {
-			if (copyTo[prop]) copyTo[prop] = `${copyTo[prop]}${modInfo.joiner || ""}${modInfo.str}`;
-			else copyTo[prop] = modInfo.str;
-		}
-
-		function doMod_replaceTxt (modInfo, prop) {
-			const re = new RegExp(modInfo.replace, `g${modInfo.flags || ""}`);
-			if (copyTo[prop]) {
-				copyTo[prop].forEach(it => {
-					if (it.entries) it.entries = JSON.parse(JSON.stringify(it.entries).replace(re, modInfo.with));
-					if (it.headerEntries) it.headerEntries = JSON.parse(JSON.stringify(it.headerEntries).replace(re, modInfo.with));
-				});
-			}
-		}
-
-		function doMod_prependArr (modInfo, prop) {
-			doEnsureArray(modInfo, "items");
-			copyTo[prop] = copyTo[prop] ? modInfo.items.concat(copyTo[prop]) : modInfo.items
-		}
-
-		function doMod_appendArr (modInfo, prop) {
-			doEnsureArray(modInfo, "items");
-			copyTo[prop] = copyTo[prop] ? copyTo[prop].concat(modInfo.items) : modInfo.items
-		}
-
-		function doMod_replaceArr (modInfo, prop, isThrow = true) {
-			doEnsureArray(modInfo, "items");
-
-			if (!copyTo[prop]) {
-				if (isThrow) throw new Error(`Could not find "${prop}" array`);
-				return false;
-			}
-
-			let ixOld;
-			if (modInfo.replace.regex) {
-				const re = new RegExp(modInfo.replace.regex, modInfo.replace.flags || "");
-				ixOld = copyTo[prop].findIndex(it => it.name ? re.test(it.name) : typeof it === "string" ? re.test(it) : false);
-			} else {
-				ixOld = copyTo[prop].findIndex(it => it.name ? it.name === modInfo.replace : it === modInfo.replace);
-			}
-
-			if (~ixOld) {
-				copyTo[prop].splice(ixOld, 1, ...modInfo.items);
-				return true;
-			} else if (isThrow) throw new Error(`Could not find "${prop}" item with name "${modInfo.replace}" to replace`);
-			return false;
-		}
-
-		function doMod_replaceOrAppendArr (modInfo, prop) {
-			const didReplace = doMod_replaceArr(modInfo, prop, false);
-			if (!didReplace) doMod_appendArr(modInfo, prop);
-		}
-
-		function doMod_removeArr (modInfo, prop) {
-			if (modInfo.names) {
-				doEnsureArray(modInfo, "names");
-				modInfo.names.forEach(nameToRemove => {
-					const ixOld = copyTo[prop].findIndex(it => it.name === nameToRemove);
-					if (~ixOld) copyTo[prop].splice(ixOld, 1);
-					else throw new Error(`Could not find "${prop}" item with name "${nameToRemove}" to remove`);
-				});
-			} else if (modInfo.items) {
-				doEnsureArray(modInfo, "items");
-				modInfo.items.forEach(itemToRemove => {
-					const ixOld = copyTo[prop].findIndex(it => it === itemToRemove);
-					if (~ixOld) copyTo[prop].splice(ixOld, 1);
-					else throw new Error(`Could not find "${prop}" item "${itemToRemove}" to remove`);
-				});
-			} else throw new Error(`One of "names" or "items" must be provided!`)
-		}
-
-		function doMod_calculateProp (modInfo, prop) {
-			copyTo[prop] = copyTo[prop] || {};
-			const toExec = modInfo.formula.replace(/<\$([^$]+)\$>/g, (...m) => {
-				switch (m[1]) {
-					case "prof_bonus": return Parser.crToPb(copyTo.cr);
-					case "dex_mod": return Parser.getAbilityModNumber(copyTo.dex);
-					default: throw new Error(`Unknown variable "${m[1]}"`);
-				}
-			});
-			// eslint-disable-next-line no-eval
-			copyTo[prop][modInfo.prop] = eval(toExec);
-		}
-
-		function doMod_scalarAddProp (modInfo, prop) {
-			function applyTo (k) {
-				const out = Number(copyTo[prop][k]) + modInfo.scalar;
-				const isString = typeof copyTo[prop][k] === "string";
-				copyTo[prop][k] = isString ? `${out >= 0 ? "+" : ""}${out}` : out;
-			}
-
-			if (!copyTo[prop]) return;
-			if (modInfo.prop === "*") Object.keys(copyTo[prop]).forEach(k => applyTo(k));
-			else applyTo(modInfo.prop);
-		}
-
-		function doMod_scalarMultProp (modInfo, prop) {
-			function applyTo (k) {
-				let out = Number(copyTo[prop][k]) * modInfo.scalar;
-				if (modInfo.floor) out = Math.floor(out);
-				const isString = typeof copyTo[prop][k] === "string";
-				copyTo[prop][k] = isString ? `${out >= 0 ? "+" : ""}${out}` : out;
-			}
-
-			if (!copyTo[prop]) return;
-			if (modInfo.prop === "*") Object.keys(copyTo[prop]).forEach(k => applyTo(k));
-			else applyTo(modInfo.prop);
-		}
-
-		function doMod_addSenses (modInfo) {
-			doEnsureArray(modInfo, "senses");
-			copyTo.senses = copyTo.senses || [];
-			modInfo.senses.forEach(sense => {
-				let found = false;
-				for (let i = 0; i < copyTo.senses.length; ++i) {
-					const m = new RegExp(`${sense.type} (\\d+)`, "i").exec(copyTo.senses[i]);
-					if (m) {
-						found = true;
-						// if the creature already has a greater sense of this type, do nothing
-						if (Number(m[1]) < sense.type) {
-							copyTo.senses[i] = `${sense.type} ${sense.range} ft.`;
-						}
-						break;
-					}
-				}
-
-				if (!found) copyTo.senses.push(`${sense.type} ${sense.range} ft.`);
-			});
-		}
-
-		function doMod_addSkills (modInfo) {
-			copyTo.skill = copyTo.skill || [];
-			Object.entries(modInfo.skills).forEach(([skill, mode]) => {
-				// mode: 1 = proficient; 2 = expert
-				const total = mode * Parser.crToPb(copyTo.cr) + Parser.getAbilityModNumber(copyTo[Parser.skillToAbilityAbv(skill)]);
-				const asText = total >= 0 ? `+${total}` : `-${total}`;
-				if (copyTo.skill && copyTo.skill[skill]) {
-					// update only if ours is larger (prevent reduction in skill score)
-					if (Number(copyTo.skill[skill]) < total) copyTo.skill[skill] = asText;
-				} else copyTo.skill[skill] = asText;
-			});
-		}
-
-		function doMod_addSpells (modInfo) {
-			if (!copyTo.spellcasting) throw new Error(`Creature did not have a spellcasting property!`);
-
-			// TODO should be rewritten to handle non-slot-based spellcasters
-			// TODO could accept a "position" or "name" parameter should spells need to be added to other spellcasting traits
-			const trait0 = copyTo.spellcasting[0].spells;
-			Object.keys(modInfo.spells).forEach(k => {
-				if (!trait0[k]) trait0[k] = modInfo.spells[k];
-				else {
-					// merge the objects
-					const spellCategoryNu = modInfo.spells[k];
-					const spellCategoryOld = trait0[k];
-					Object.keys(spellCategoryNu).forEach(kk => {
-						if (!spellCategoryOld[kk]) spellCategoryOld[kk] = spellCategoryNu[kk];
-						else {
-							if (typeof spellCategoryOld[kk] === "object") {
-								if (spellCategoryOld[kk] instanceof Array) spellCategoryOld[kk] = spellCategoryOld[kk].concat(spellCategoryNu[kk]).sort(SortUtil.ascSortLower);
-								else throw new Error(`Object at key ${kk} not an array!`);
-							} else spellCategoryOld[kk] = spellCategoryNu[kk];
-						}
-					});
-				}
-			});
-		}
-
-		function doMod_replaceSpells (modInfo) {
-			if (!copyTo.spellcasting) throw new Error(`Creature did not have a spellcasting property!`);
-
-			// TODO should be rewritten to handle non-slot-based spellcasters
-			// TODO could accept a "position" or "name" parameter should spells need to be added to other spellcasting traits
-			const trait0 = copyTo.spellcasting[0].spells;
-			Object.keys(modInfo.spells).forEach(k => {
-				if (trait0[k]) {
-					const spellCategoryNu = modInfo.spells[k];
-					const spellCategoryOld = trait0[k];
-					Object.keys(spellCategoryNu).forEach(kk => {
-						doEnsureArray(spellCategoryNu[kk], "with");
-
-						if (spellCategoryOld[kk]) {
-							if (typeof spellCategoryOld[kk] === "object") {
-								if (spellCategoryOld[kk] instanceof Array) {
-									const ix = spellCategoryOld[kk].indexOf(spellCategoryNu[kk].replace);
-									if (~ix) {
-										spellCategoryOld[kk].splice(ix, 1, ...spellCategoryNu[kk].with);
-										spellCategoryOld[kk].sort(SortUtil.ascSortLower);
-									}
-								} else throw new Error(`Object at key ${kk} not an array!`);
-							} else {
-								if (spellCategoryNu[kk].replace === spellCategoryOld[kk]) {
-									spellCategoryOld[kk] = spellCategoryNu[kk].with;
-								}
-							}
-						}
-					});
-				}
-			});
-		}
-
-		function doMod_scalarAddHit (modInfo, prop) {
-			if (!copyTo[prop]) return;
-			copyTo[prop] = JSON.parse(JSON.stringify(copyTo[prop]).replace(/{@hit ([-+]?\d+)}/g, (m0, m1) => `{@hit ${Number(m1) + modInfo.scalar}}`))
-		}
-
-		function doMod_scalarAddDc (modInfo, prop) {
-			if (!copyTo[prop]) return;
-			copyTo[prop] = JSON.parse(JSON.stringify(copyTo[prop]).replace(/{@dc (\d+)}/g, (m0, m1) => `{@dc ${Number(m1) + modInfo.scalar}}`));
-		}
-
-		function doMod_maxSize (modInfo) {
-			const ixCur = Parser.SIZE_ABVS.indexOf(copyTo.size);
-			const ixMax = Parser.SIZE_ABVS.indexOf(modInfo.max);
-			if (ixCur < 0 || ixMax < 0) throw new Error(`Unhandled size!`);
-			copyTo.size = Parser.SIZE_ABVS[Math.min(ixCur, ixMax)]
-		}
-
-		function doMod_scalarMultXp (modInfo) {
-			function getOutput (input) {
-				let out = input * modInfo.scalar;
-				if (modInfo.floor) out = Math.floor(out);
-				return out;
-			}
-
-			if (copyTo.cr.xp) copyTo.cr.xp = getOutput(copyTo.cr.xp);
-			else {
-				const curXp = Parser.crToXpNumber(copyTo.cr);
-				if (!copyTo.cr.cr) copyTo.cr = {cr: copyTo.cr};
-				copyTo.cr.xp = getOutput(curXp);
-			}
-		}
-
-		function doMod (modInfos, ...properties) {
-			function handleProp (prop) {
-				modInfos.forEach(modInfo => {
-					if (typeof modInfo === "string") {
-						switch (modInfo) {
-							case "remove": return delete copyTo[prop];
-							default: throw new Error(`Unhandled mode: ${modInfo}`);
-						}
-					} else {
-						switch (modInfo.mode) {
-							case "appendStr": return doMod_appendStr(modInfo, prop);
-							case "replaceTxt": return doMod_replaceTxt(modInfo, prop);
-							case "prependArr": return doMod_prependArr(modInfo, prop);
-							case "appendArr": return doMod_appendArr(modInfo, prop);
-							case "replaceArr": return doMod_replaceArr(modInfo, prop);
-							case "replaceOrAppendArr": return doMod_replaceOrAppendArr(modInfo, prop);
-							case "removeArr": return doMod_removeArr(modInfo, prop);
-							case "calculateProp": return doMod_calculateProp(modInfo, prop);
-							case "scalarAddProp": return doMod_scalarAddProp(modInfo, prop);
-							case "scalarMultProp": return doMod_scalarMultProp(modInfo, prop);
-							// bestiary specific
-							case "addSenses": return doMod_addSenses(modInfo);
-							case "addSkills": return doMod_addSkills(modInfo);
-							case "addSpells": return doMod_addSpells(modInfo);
-							case "replaceSpells": return doMod_replaceSpells(modInfo);
-							case "scalarAddHit": return doMod_scalarAddHit(modInfo, prop);
-							case "scalarAddDc": return doMod_scalarAddDc(modInfo, prop);
-							case "maxSize": return doMod_maxSize(modInfo);
-							case "scalarMultXp": return doMod_scalarMultXp(modInfo);
-							default: throw new Error(`Unhandled mode: ${modInfo.mode}`);
-						}
-					}
-				});
-			}
-
-			properties.forEach(prop => handleProp(prop));
-			// special case for "no property" modifications, i.e. underscore-key'd
-			if (!properties.length) handleProp();
-		}
-
-		// apply mods
-		if (copyMeta._mod) {
-			// pre-convert any dynamic text
-			Object.entries(copyMeta._mod).forEach(([k, v]) => {
-				copyMeta._mod[k] = JSON.parse(
-					JSON.stringify(v)
-						.replace(/<\$([^$]+)\$>/g, (...m) => {
-							const parts = m[1].split("__");
-
-							switch (parts[0]) {
-								case "name": return copyTo.name;
-								case "short_name":
-								case "title_name": {
-									return copyTo.isNpc ? copyTo.name.split(" ")[0] : `${parts[0] === "title_name" ? "The " : "the "}${copyTo.name.toLowerCase()}`;
-								}
-								case "spell_dc": {
-									if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
-									return 8 + Parser.getAbilityModNumber(Number(copyTo[parts[1]])) + Parser.crToPb(copyTo.cr);
-								}
-								case "to_hit": {
-									if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
-									const total = Parser.crToPb(copyTo.cr) + Parser.getAbilityModNumber(Number(copyTo[parts[1]]));
-									return total >= 0 ? `+${total}` : total;
-								}
-								case "damage_mod": {
-									if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
-									const total = Parser.getAbilityModNumber(Number(copyTo[parts[1]]));
-									return total === 0 ? "" : total > 0 ? ` +${total}` : ` ${total}`;
-								}
-								case "damage_avg": {
-									const replaced = parts[1].replace(/(str|dex|con|int|wis|cha)/gi, (...m2) => Parser.getAbilityModNumber(Number(copyTo[m2[0]])))
-									const clean = replaced.replace(/[^-+/*0-9.,]+/g, "");
-									// eslint-disable-next-line no-eval
-									return Math.floor(eval(clean));
-								}
-								default: return m[0];
-							}
-						})
-				);
-			});
-
-			Object.entries(copyMeta._mod).forEach(([prop, modInfos]) => {
-				if (prop === "*") doMod(modInfos, "action", "reaction", "trait", "legendary", "variant", "spellcasting");
-				else if (prop === "_") doMod(modInfos);
-				else doMod(modInfos, prop);
-			});
-		}
-
-		// add filter tag
-		copyTo._isCopy = true;
-
-		// cleanup
-		delete copyTo._copy;
-	},
-
-	getLegendaryActionIntro: (mon) => {
+	getLegendaryActionIntro: (mon, renderer = Renderer.get()) => {
 		function getCleanName () {
 			if (mon.shortName) return mon.shortName;
 			const base = mon.name.split(",")[0];
@@ -3261,7 +2851,7 @@ Renderer.monster = {
 		}
 
 		if (mon.legendaryHeader) {
-			return mon.legendaryHeader.map(line => Renderer.get().render(line)).join("</p><p>");
+			return mon.legendaryHeader.map(line => renderer.render(line)).join("");
 		} else {
 			const legendaryActions = mon.legendaryActions || 3;
 			const legendaryName = getCleanName();
@@ -3491,7 +3081,7 @@ Renderer.monster = {
 		return renderStack.join("");
 	},
 
-	getRenderedHp: (hp) => {
+	getRenderedHp: (hp, isPlainText) => {
 		function getMaxStr () {
 			const mHp = /^(\d+)d(\d+)([-+]\d+)?$/i.exec(hp.formula);
 			if (mHp) {
@@ -3506,6 +3096,7 @@ Renderer.monster = {
 			return hp.average;
 		} else {
 			const maxStr = getMaxStr(hp.formula);
+			if (isPlainText) return `${maxStr}${hp.average}${hp.formula}`;
 			return `${maxStr ? `<span title="${maxStr}" class="help--subtle">` : ""}${hp.average}${maxStr ? "</span>" : ""} ${Renderer.get().render(`({@dice ${hp.formula}|${hp.formula}|Hit Points})`)}`;
 		}
 	},
@@ -3522,7 +3113,7 @@ Renderer.monster = {
 	},
 
 	getOrderedTraits: (mon, renderer) => {
-		let trait = mon.trait ? JSON.parse(JSON.stringify(mon.trait)) : null;
+		let trait = mon.trait ? MiscUtil.copy(mon.trait) : null;
 		if (mon.spellcasting) {
 			const spellTraits = Renderer.monster.getSpellcastingRenderedTraits(mon, renderer);
 			// weave spellcasting in with other traits
@@ -3659,8 +3250,9 @@ Renderer.monster = {
 		return ptrFluff.fluff;
 	},
 
-	getRenderedSenses (senses) {
+	getRenderedSenses (senses, isPlainText) {
 		if (typeof senses === "string") senses = [senses]; // handle legacy format
+		if (isPlainText) return senses.join(", ");
 		const senseStr = senses.join(", ").replace(/(^| )(tremorsense|blindsight|truesight|darkvision)( |$)/gi, (...m) => `${m[1]}{@sense ${m[2]}}${m[3]}`);
 		return Renderer.get().render(senseStr);
 	},
@@ -3689,7 +3281,7 @@ Renderer.item = {
 			damage = "AC +" + item.ac;
 		} else if (type === "MNT" || type === "VEH" || type === "SHP" || type === "AIR") {
 			const speed = item.speed;
-			const capacity = item.carryingcapacity;
+			const capacity = item.carryingCapacity;
 			if (speed) damage += "Speed: " + speed;
 			if (speed && capacity) damage += type === "MNT" ? ", " : "<br>";
 			if (capacity) {
@@ -3767,7 +3359,7 @@ Renderer.item = {
 
 		renderStack.push(Renderer.utils.getNameTr(item, {isAddPageNum: true}));
 
-		renderStack.push(`<tr><td class="typerarityattunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td>`);
+		renderStack.push(`<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td>`);
 
 		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item);
 		renderStack.push(`<tr>
@@ -4424,6 +4016,15 @@ Renderer.vehicle = {
 	},
 
 	getRenderedString (veh) {
+		veh.vehicleType = veh.vehicleType || "SHIP";
+		switch (veh.vehicleType) {
+			case "SHIP": return Renderer.vehicle._getRenderedString_ship(veh);
+			case "INFWAR": return Renderer.vehicle._getRenderedString_infwar(veh);
+			default: throw new Error(`Unhandled vehicle type "${veh.vehicleType}"`);
+		}
+	},
+
+	_getRenderedString_ship (veh) {
 		const renderer = Renderer.get();
 
 		function getSectionTitle (title) {
@@ -4455,6 +4056,7 @@ Renderer.vehicle = {
 
 		function getMovementSection (move) {
 			if (!move) return "";
+
 			function getLocomotionSection (loc) {
 				const asList = {
 					type: "list",
@@ -4558,6 +4160,58 @@ Renderer.vehicle = {
 			${(veh.movement || []).map(getMovementSection).join("")}
 			${(veh.weapon || []).map(getWeaponSection).join("")}
 			${(veh.other || []).map(getOtherSection).join("")}
+			${Renderer.utils.getPageTr(veh)}
+			${Renderer.utils.getBorderTr()}
+		`;
+	},
+
+	_getRenderedString_infwar (veh) {
+		const renderer = Renderer.get();
+		const capCargoTons = Math.floor(veh.capCargo / 2000);
+		const capCargoLbs = veh.capCargo - (2000 * capCargoTons);
+		const dexMod = Parser.getAbilityModNumber(veh.dex);
+
+		return `
+			${Renderer.utils.getBorderTr()}
+			${Renderer.utils.getNameTr(veh)}
+			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle (${veh.weight.toLocaleString()} lb.)</i><br></td></tr>
+			<tr class="text"><td colspan="6">
+				<div><b>Creature Capacity</b> ${veh.capCreature} Medium creatures</div>
+				<div><b>Cargo Capacity</b>${capCargoTons ? ` ${capCargoTons} ton${capCargoTons === 1 ? "" : "s"}` : ""}${capCargoLbs ? ` ${capCargoLbs} lb.` : ""}</div>
+				<div><b>Armor Class</b> ${dexMod === 0 ? `19` : `${19 + dexMod} (19 while motionless)`}</div>
+				<div><b>Hit Points</b> ${veh.hp.hp} (damage threshold ${veh.hp.dt}, mishap threshold ${veh.hp.mt})</div>
+				<div><b>Speed</b> ${veh.speed} ft.</div>
+			</td></tr>
+			<tr><td colspan="6">
+				<table class="summary striped-even">
+					<tr>
+						<th class="col-2 text-center">STR</th>
+						<th class="col-2 text-center">DEX</th>
+						<th class="col-2 text-center">CON</th>
+						<th class="col-2 text-center">INT</th>
+						<th class="col-2 text-center">WIS</th>
+						<th class="col-2 text-center">CHA</th>
+					</tr>
+					<tr>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "str")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "dex")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "con")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "int")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "wis")}</td>
+						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "cha")}</td>
+					</tr>
+				</table>
+			</td></tr>
+			<tr class="text"><td colspan="6">
+				${veh.immune ? `<div><b>Damage Immunities</b> ${Parser.monImmResToFull(veh.immune)}</div>` : ""}
+				${veh.conditionImmune ? `<div><b>Condition Immunities</b> ${Parser.monCondImmToFull(veh.conditionImmune)}</div>` : ""}
+			</td></tr>
+			${veh.trait ? `<tr><td colspan="6"><div class="border"></div></td></tr>
+			<tr class="text compact"><td colspan="6">
+			${Renderer.monster.getOrderedTraits(veh, renderer).map(it => it.rendered || renderer.render(it, 2)).join("")}
+			</td></tr>` : ""}
+			${Renderer.monster.getCompactRenderedStringSection(veh, renderer, "Action Stations", "actionStation", 2)}
+			${Renderer.monster.getCompactRenderedStringSection(veh, renderer, "Reactions", "reaction", 2)}
 			${Renderer.utils.getPageTr(veh)}
 			${Renderer.utils.getBorderTr()}
 		`;
@@ -6836,7 +6490,14 @@ Renderer.stripTags = function (str) {
 						return parts[0];
 					}
 
-					case "@area":
+					case "@area": {
+						const [compactText, areaId, flags, ...others] = text.split("|");
+
+						return flags && flags.includes("x")
+							? compactText
+							: `${flags && flags.includes("u") ? "A" : "a"}rea ${compactText}`;
+					}
+
 					case "@background":
 					case "@boon":
 					case "@class":

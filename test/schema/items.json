@@ -1,9 +1,9 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.3.2",
+	"version": "1.4.1",
 	"type": "object",
 	"definitions": {
-		"item": {
+		"itemData": {
 			"type": "object",
 			"properties": {
 				"name": {
@@ -71,7 +71,7 @@
 				"axe": {
 					"type": "boolean"
 				},
-				"carryingcapacity": {
+				"carryingCapacity": {
 					"type": "string"
 				},
 				"dmg1": {
@@ -279,12 +279,38 @@
 					"type": "string"
 				}
 			},
-			"required": [
-				"name",
-				"rarity",
-				"source"
-			],
 			"additionalProperties": false
+		},
+
+		"item": {
+			"anyOf": [
+				{
+					"type": "object",
+					"$$merge": [
+						{
+							"$ref": "#/definitions/itemData"
+						},
+						{
+							"required": [
+								"name",
+								"rarity",
+								"source"
+							]
+						}
+					]
+				},
+				{
+					"type": "object",
+					"$$merge": [
+						{
+							"$ref": "#/definitions/itemData"
+						},
+						{
+							"$ref": "util.json#/definitions/copyBlock"
+						}
+					]
+				}
+			]
 		}
 	},
 	"properties": {
@@ -300,6 +326,9 @@
 			"items": {
 				"$ref": "#/definitions/item"
 			}
+		},
+		"_meta": {
+			"$ref": "util.json#/definitions/metaBlock"
 		}
 	},
 	"additionalProperties": false

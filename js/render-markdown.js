@@ -16,9 +16,11 @@ class RendererMarkdown {
 	}
 
 	// region recursive
+	/*
 	_renderEntries (entry, textStack, meta, options) {
-		this._renderEntriesSubtypes(entry, textStack, meta, options, true);
+		// (Use base implementation)
 	}
+	*/
 
 	_renderEntriesSubtypes (entry, textStack, meta, options, incDepth) {
 		const isInlineTitle = meta.depth >= 2;
@@ -55,13 +57,31 @@ class RendererMarkdown {
 
 	/*
 	_renderOptions (entry, textStack, meta, options) {
-
-	}
-
-	_renderList (entry, textStack, meta, options) {
-
+		// (Use base implementation)
 	}
 	*/
+
+	_renderList (entry, textStack, meta, options) {
+		if (!entry.items) return;
+
+		const listDepth = Math.max(meta._typeStack.filter(it => it === "list").length - 1, 0);
+
+		if (entry.name) textStack[0] += `##### ${entry.name}`;
+		const indentSpaces = "  ".repeat(listDepth);
+
+		const len = entry.items.length;
+		for (let i = 0; i < len; ++i) {
+			const item = entry.items[i];
+			// Special case for child lists -- avoid double-hyphen-prefixing
+			textStack[0] += `${indentSpaces}${item.type !== "list" ? "-" : ""}`;
+
+			const cacheDepth = this._adjustDepth(meta, 1);
+			this._recursiveRender(entry.items[i], textStack, meta, {prefix: indentSpaces, suffix: "\n"});
+			meta.depth = cacheDepth;
+		}
+
+		textStack[0] += "\n";
+	}
 
 	_renderTable (entry, textStack, meta, options) {
 		if (entry.intro) for (const ent of entry.intro) this._recursiveRender(ent, textStack, meta);
@@ -163,7 +183,7 @@ class RendererMarkdown {
 
 	/*
 	_renderTableGroup (entry, textStack, meta, options) {
-
+		// (Use base implementation)
 	}
 	*/
 
@@ -226,51 +246,70 @@ class RendererMarkdown {
 
 	/*
 	_renderSpellcasting (entry, textStack, meta, options) {
-
+		// (Use base implementation)
 	}
+	*/
 
 	_renderQuote (entry, textStack, meta, options) {
-
+		const len = entry.entries.length;
+		for (let i = 0; i < len; ++i) {
+			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "*", suffix: "*"});
+			if (i !== entry.entries.length - 1) textStack[0] += `\n`;
+		}
+		if (entry.by) {
+			const tempStack = [""];
+			this._recursiveRender(entry.by, tempStack, meta);
+			textStack[0] += `\u2014 ${tempStack.join("")}${entry.from ? `, *${entry.from}*` : ""}`;
+		}
 	}
 
+	/*
 	_renderOptfeature (entry, textStack, meta, options) {
-
+		// (Use base implementation)
 	}
 
 	_renderPatron (entry, textStack, meta, options) {
-
+		// (Use base implementation)
 	}
 	// endregion
+	*/
 
 	// region block
 	_renderAbilityDc (entry, textStack, meta, options) {
-
+		this._renderPrefix(entry, textStack, meta, options);
+		textStack[0] += `**${entry.name} save DC** = 8 + your proficiency bonus + your ${Parser.attrChooseToFull(entry.attributes)}`;
+		this._renderSuffix(entry, textStack, meta, options);
 	}
 
 	_renderAbilityAttackMod (entry, textStack, meta, options) {
-
+		this._renderPrefix(entry, textStack, meta, options);
+		textStack[0] += `**${entry.name} attack modifier** = your proficiency bonus + your ${Parser.attrChooseToFull(entry.attributes)}`;
+		this._renderSuffix(entry, textStack, meta, options);
 	}
 
 	_renderAbilityGeneric (entry, textStack, meta, options) {
-
+		this._renderPrefix(entry, textStack, meta, options);
+		textStack[0] += `${entry.name ? `**${entry.name}**  = ` : ""}${entry.text}${entry.attributes ? ` ${Parser.attrChooseToFull(entry.attributes)}` : ""}`;
+		this._renderSuffix(entry, textStack, meta, options);
 	}
 	// endregion
 
+	/*
 	// region inline
 	_renderInline (entry, textStack, meta, options) {
-
+		// (Use base implementation)
 	}
 
 	_renderInlineBlock (entry, textStack, meta, options) {
-
+		// (Use base implementation)
 	}
 
 	_renderBonus (entry, textStack, meta, options) {
-
+		// (Use base implementation)
 	}
 
 	_renderBonusSpeed (entry, textStack, meta, options) {
-
+		// (Use base implementation)
 	}
 
 	_renderDice (entry, textStack, meta, options) {
@@ -320,12 +359,44 @@ class RendererMarkdown {
 	}
 	// endregion
 
-	/*
 	// region data
 	_renderDataCreature (entry, textStack, meta, options) {
+		const mon = entry.dataCreature;
 
+		const savePart = mon.save ? `\n>- **Saving Throws** ${Object.keys(mon.save).sort(SortUtil.ascSortAtts).map(it => RendererMarkdown.monster.getSave(it, mon.save[it])).join(", ")}` : "";
+		const skillPart = mon.skill ? `\n>- **Skills** ${RendererMarkdown.monster.getSkillsString(renderer, mon)}` : "";
+		const damVulnPart = mon.vulnerable ? `\n>- **Damage Vulnerabilities** ${Parser.monImmResToFull(mon.vulnerable)}` : "";
+		const damResPart = mon.resist ? `\n>- **Damage Resistances** ${Parser.monImmResToFull(mon.resist)}` : "";
+		const damImmPart = mon.immune ? `\n>- **Damage Immunities** ${Parser.monImmResToFull(mon.immune)}` : "";
+		const condImmPart = mon.conditionImmune ? `\n>- **Condition Immunities** ${Parser.monCondImmToFull(mon.conditionImmune, true)}` : "";
+
+		const traitArray = RendererMarkdown.monster.getOrderedTraits(mon);
+		const traitsPart = traitArray && traitArray.length ? `\n${RendererMarkdown.monster._getRenderedSection(traitArray, 1)}` : "";
+
+		const actionsPart = mon.action ? `\n### Actions\n${RendererMarkdown.monster._getRenderedSection(mon.action, 1)}` : "";
+		const reactionsPart = mon.reaction ? `\n### Reactions\n${RendererMarkdown.monster._getRenderedSection(mon.reaction, 1)}` : "";
+		const legendaryActionsPart = mon.legendary ? `\n### Legendary Actions\n${Renderer.monster.getLegendaryActionIntro(mon, RendererMarkdown.get())}\n${RendererMarkdown.monster._getRenderedSection(mon.legendary, 1)}` : "";
+
+		textStack[0] += `\n
+---
+>## ${mon._displayName || mon.name}
+>*${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${mon._pTypes.asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}` : ""}*
+>___
+>- **Armor Class** ${Parser.acToFull(mon.ac)}
+>- **Hit Points** ${Renderer.monster.getRenderedHp(mon.hp, true)}
+>- **Speed** ${Parser.getSpeedString(mon)}
+>___
+>|${Parser.ABIL_ABVS.map(it => `${it.toUpperCase()}|`)}
+>|:---:|:---:|:---:|:---:|:---:|:---:|
+>|${Parser.ABIL_ABVS.map(ab => `${mon[ab]} (${Parser.getAbilityModifier(mon[ab])})|`)}
+>___${savePart}${skillPart}${damVulnPart}${damResPart}${damImmPart}${condImmPart}
+>- **Senses** ${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses, true)}, ` : ""}passive Perception ${mon.passive || "\u2014"}
+>- **Languages** ${Renderer.monster.getRenderedLanguages(mon.languages)}
+>- **Challenge** ${mon.cr ? Parser.monCrToFull(mon.cr) : "\u2014"}
+>___${traitsPart}${actionsPart}${reactionsPart}${legendaryActionsPart}\n`
 	}
 
+	/*
 	_renderDataSpell (entry, textStack, meta, options) {
 
 	}
@@ -388,6 +459,60 @@ RendererMarkdown.utils = class {
 			if (as.entry) return Renderer.get().render(as.entry);
 			else return `*${Parser.sourceJsonToAbv(as.source)}*${as.page > 0 ? `, page ${as.page}` : ""}`;
 		}).join("; ")}`
+	}
+};
+
+RendererMarkdown.monster = class {
+	static getSave (attr, mod) {
+		if (attr === "special") return Renderer.stripTags(mod);
+		return `${attr.uppercaseFirst()} ${mod}`
+	}
+
+	static getSkillsString (mon) {
+		function doSortMapJoinSkillKeys (obj, keys, joinWithOr) {
+			const toJoin = keys.sort(SortUtil.ascSort).map(s => `${s.toTitleCase()} ${obj[s]}`);
+			return joinWithOr ? toJoin.joinConjunct(", ", " or ") : toJoin.join(", ")
+		}
+
+		const skills = doSortMapJoinSkillKeys(mon.skill, Object.keys(mon.skill).filter(k => k !== "other" && k !== "special"));
+
+		if (mon.skill.other || mon.skill.special) {
+			const others = mon.skill.other && mon.skill.other.map(it => {
+				if (it.oneOf) {
+					return `plus one of the following: ${doSortMapJoinSkillKeys(it.oneOf, Object.keys(it.oneOf), true)}`
+				}
+				throw new Error(`Unhandled monster "other" skill properties!`)
+			});
+			const special = mon.skill.special && Renderer.stripTags(mon.skill.special);
+			return [skills, others, special].filter(Boolean).join(", ");
+		} else return skills;
+	}
+
+	static _getRenderedSection (sectionEntries, sectionLevel) {
+		const renderer = RendererMarkdown.get();
+		const renderStack = [];
+		sectionEntries.forEach(e => {
+			if (e.rendered) renderStack.push(e.rendered);
+			else renderer.recursiveRender(e, renderStack, {depth: sectionLevel + 1});
+		});
+		return renderStack.join("");
+	}
+
+	static getOrderedTraits (mon) {
+		let traits = mon.trait ? MiscUtil.copy(mon.trait) : null;
+		if (mon.spellcasting) traits = (traits || []).concat(RendererMarkdown.monster.getSpellcastingRenderedTraits(mon));
+		if (traits) return traits.sort((a, b) => SortUtil.monTraitSort(a.name, b.name));
+	}
+
+	static getSpellcastingRenderedTraits (mon) {
+		const out = [];
+		mon.spellcasting.forEach(entry => {
+			entry.type = entry.type || "spellcasting";
+			const renderStack = [];
+			RendererMarkdown.get().recursiveRender(entry, renderStack, {depth: 2});
+			out.push({name: entry.name, rendered: renderStack.join("")});
+		});
+		return out;
 	}
 };
 
@@ -1153,12 +1278,11 @@ class MarkdownConverter {
 		})();
 
 		// If there are columns which have a limited number of words, center these
+		let isFewWordsCol1 = false;
 		(function doCheckFewWordsCols () {
 			// Do this in reverse order, as the style of the first column depends on the others
 			for (let i = tbl.colStyles.length - 1; i >= 0; --i) {
 				const col = tbl.colStyles[i];
-
-				if (col.includes("text-center") || col.includes("text-right")) continue;
 
 				// If we're the first column and other columns are not center-aligned, don't center
 				if (i === 0 && tbl.colStyles.length > 1 && tbl.colStyles.filter((_, i) => i !== 0).some(it => !it.includes("text-center"))) continue;
@@ -1171,12 +1295,23 @@ class MarkdownConverter {
 					counts[words.length <= 3 ? "short" : "long"]++
 				});
 
-				// If most of the cells in this column contain number data, right-align
-				if ((counts.short / tbl.rows.length) >= 0.80) tbl.colStyles[i] += ` text-center`
+				// If most of the cells in this column contain short text, center-align
+				if ((counts.short / tbl.rows.length) >= 0.80) {
+					if (i === 1) isFewWordsCol1 = true;
+					if (col.includes("text-center") || col.includes("text-right")) continue;
+					tbl.colStyles[i] += ` text-center`;
+				}
 			}
 		})();
 
 		this._doCleanTable(tbl);
+
+		(function doEvenCenteredColumns () {
+			if (!isDiceCol0) return;
+			if (tbl.colStyles.length === 2 && isFewWordsCol1) {
+				tbl.colStyles = ["col-6 text-center", "col-6 text-center"]
+			}
+		})();
 	}
 
 	static _doCleanTable (tbl) {

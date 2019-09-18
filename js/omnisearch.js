@@ -263,7 +263,7 @@ const Omnisearch = {
 
 	_pDoSearchLoad: async function () {
 		if (Omnisearch._pLoadSearch) return;
-		const data = Omnidexer.decompressIndex(await DataUtil.loadJSON("search/index.json"));
+		const data = Omnidexer.decompressIndex(await DataUtil.loadJSON(`${Renderer.get().baseUrl}search/index.json`));
 
 		elasticlunr.clearStopWords();
 		Omnisearch._searchIndex = elasticlunr(function () {

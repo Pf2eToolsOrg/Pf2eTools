@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.12.0",
+	"version": "1.13.0",
 	"title": "Bestiary Schema",
 	"$id": "bestiary.json",
 	"type": "object",
@@ -1125,122 +1125,6 @@
 			"additionalProperties": false
 		},
 
-		"copyModifier": {
-			"anyOf": [
-				{
-					"type": "object",
-					"properties": {
-						"mode": {"const": "replaceTxt"},
-						"replace": {"type":  "string"},
-						"with": {"type":  "string"},
-						"flags":  {"type":  "string"}
-					},
-					"required": ["replace", "with"],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {"const": "appendStr"},
-						"str": {"type":  "string"},
-						"joiner": {"type":  "string"}
-					},
-					"required": ["str"],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {"const": "prependArr"},
-						"items": {
-							"anyOf": [
-								{"type":  "object"},
-								{"type":  "array"}
-							]
-						}
-					},
-					"required": ["items"],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {"const": "appendArr"},
-						"items": {
-							"anyOf": [
-								{"type":  "object"},
-								{"type":  "array"}
-							]
-						}
-					},
-					"required": ["items"],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {"const": "replaceArr"},
-						"replace": {"type":  "string"},
-						"items": {
-							"anyOf": [
-								{"type":  "object"},
-								{"type":  "array"}
-							]
-						}
-					},
-					"required": ["replace", "items"],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {"const": "removeArr"},
-						"names": {
-							"anyOf": [
-								{"type":  "string"},
-								{"type":  "array"}
-							]
-						},
-						"items": {
-							"anyOf": [
-								{"type":  "string"},
-								{"type":  "array"}
-							]
-						}
-					},
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {"const": "calculateProp"},
-						"prop": {"type": "string"},
-						"formula": {"type": "string"}
-					},
-					"required": ["prop", "formula"],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {"const": "replaceSpells"},
-						"spells": {"type": "object"}
-					},
-					"required": ["mode", "spells"],
-					"additionalProperties": false
-				},
-				{
-					"type": "object",
-					"properties": {
-						"mode": {"const": "addSpells"},
-						"spells": {"type": "object"}
-					},
-					"required": ["mode", "spells"],
-					"additionalProperties": false
-				}
-			]
-		},
-
 		"creature": {
 			"anyOf": [
 				{
@@ -1277,48 +1161,7 @@
 							"$ref": "#/definitions/creatureData"
 						},
 						{
-							"properties": {
-								"_copy": {
-									"type": "object",
-									"properties": {
-										"name": {"type": "string"},
-										"source": {"type": "string"},
-										"_mod": {
-											"type": "object",
-											"patternProperties": {
-												".*": {
-													"anyOf": [
-														{
-															"type": "string"
-														},
-														{
-															"$ref": "#/definitions/copyModifier"
-														},
-														{
-															"type": "array",
-															"items": {
-																"$ref": "#/definitions/copyModifier"
-															}
-														}
-													]
-												}
-											}
-										},
-										"_trait": {
-											"type": "object",
-											"properties": {
-												"name": {"type": "string"},
-												"source": {"type": "string"}
-											},
-											"required": ["name", "source"]
-										}
-									},
-									"required": ["name", "source"]
-								}
-							},
-							"required": [
-								"_copy"
-							]
+							"$ref": "util.json#/definitions/copyBlock"
 						}
 					]
 				}
@@ -1334,27 +1177,7 @@
 			}
 		},
 		"_meta": {
-			"type": "object",
-			"properties": {
-				"dependencies": {
-					"type": "object",
-					"properties": {
-						"monster": {
-							"type": "array",
-							"items": {"type": "string"}
-						}
-					}
-				},
-				"otherSources": {
-					"type": "object",
-					"properties": {
-						"monster": {
-							"description": "Keys are other sources to be loaded; values are `otherSources` sources from that source to search for.",
-							"type": "object"
-						}
-					}
-				}
-			}
+			"$ref": "util.json#/definitions/metaBlock"
 		}
 	},
 	"additionalProperties": false

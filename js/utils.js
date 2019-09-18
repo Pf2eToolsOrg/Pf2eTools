@@ -376,6 +376,18 @@ Parser.getSpeedString = (it) => {
 	}
 };
 
+Parser.SPEED_TO_PROGRESSIVE = {
+	"walk": "walking",
+	"burrow": "burrowing",
+	"climb": "climbing",
+	"fly": "flying",
+	"swim": "swimming"
+};
+
+Parser.speedToProgressive = function (prop) {
+	return Parser._parse_aToB(Parser.SPEED_TO_PROGRESSIVE, prop);
+};
+
 Parser._addCommas = function (intNum) {
 	return (intNum + "").replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 };
@@ -451,6 +463,11 @@ Parser.crToPb = function (cr) {
 	return Math.ceil(cr / 4) + 1;
 };
 
+Parser.levelToPb = function (level) {
+	if (!level) return 2;
+	return Math.ceil(level / 4) + 1;
+};
+
 Parser.SKILL_TO_ATB_ABV = {
 	"athletics": "str",
 	"acrobatics": "dex",
@@ -500,6 +517,29 @@ Parser.SKILL_TO_SHORT = {
 Parser.skillToShort = function (skill) {
 	return Parser._parse_aToB(Parser.SKILL_TO_SHORT, skill);
 };
+
+Parser.LANGUAGES_STANDARD = [
+	"Common",
+	"Dwarvish",
+	"Elvish",
+	"Giant",
+	"Gnomish",
+	"Goblin",
+	"Halfling",
+	"Orc"
+];
+
+Parser.LANGUAGES_ALL = [
+	...Parser.LANGUAGES_STANDARD,
+	"Abyssal",
+	"Celestial",
+	"Draconic",
+	"Deep",
+	"Infernal",
+	"Primordial",
+	"Sylvan",
+	"Undercommon"
+].sort();
 
 Parser.dragonColorToFull = function (c) {
 	return Parser._parse_aToB(Parser.DRAGON_COLOR_TO_FULL, c);
@@ -1150,7 +1190,7 @@ Parser.monImmResToFull = function (toParse) {
 		let out = "";
 		for (let i = 0; i < arr.length - 1; ++i) {
 			const it = arr[i];
-			const nxt = arr[i + 1]
+			const nxt = arr[i + 1];
 			out += it;
 			out += (it.includes(",") || nxt.includes(",")) ? "; " : ", ";
 		}
@@ -1161,9 +1201,9 @@ Parser.monImmResToFull = function (toParse) {
 	return serialJoin(toParse.map(it => toString(it)));
 };
 
-Parser.monCondImmToFull = function (condImm) {
+Parser.monCondImmToFull = function (condImm, isPlainText) {
 	function render (condition) {
-		return Renderer.get().render(`{@condition ${condition}}`);
+		return isPlainText ? condition : Renderer.get().render(`{@condition ${condition}}`);
 	}
 	return condImm.map(it => {
 		if (it.special) return it.special;
@@ -1838,6 +1878,7 @@ SRC_HftT = "HftT";
 SRC_DC = "DC";
 SRC_SLW = "SLW";
 SRC_SDW = "SDW";
+SRC_BGDIA = "BGDIA";
 SRC_AL = "AL";
 SRC_SCREEN = "Screen";
 
@@ -1905,6 +1946,7 @@ SRC_UASIK = SRC_UA_PREFIX + "Sidekicks";
 SRC_UAAR = SRC_UA_PREFIX + "ArtificerRevisited";
 SRC_UABAM = SRC_UA_PREFIX + "BarbarianAndMonk";
 SRC_UASAW = SRC_UA_PREFIX + "SorcererAndWarlock";
+SRC_UABAP = SRC_UA_PREFIX + "BardAndPaladin";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -1962,6 +2004,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_HftT] = "Hunt for the Thessalhydra";
 Parser.SOURCE_JSON_TO_FULL[SRC_DC] = "Divine Contention";
 Parser.SOURCE_JSON_TO_FULL[SRC_SLW] = "Storm Lord's Wrath";
 Parser.SOURCE_JSON_TO_FULL[SRC_SDW] = "Sleeping Dragon's Wake";
+Parser.SOURCE_JSON_TO_FULL[SRC_BGDIA] = "Baldur's Gate: Descent Into Avernus";
 Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
@@ -2022,6 +2065,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UASIK] = UA_PREFIX + "Sidekicks";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAAR] = UA_PREFIX + "Artificer Revisited";
 Parser.SOURCE_JSON_TO_FULL[SRC_UABAM] = UA_PREFIX + "Barbarian and Monk";
 Parser.SOURCE_JSON_TO_FULL[SRC_UASAW] = UA_PREFIX + "Sorcerer and Warlock";
+Parser.SOURCE_JSON_TO_FULL[SRC_UABAP] = UA_PREFIX + "Bard and Paladin";
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -2069,6 +2113,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_HftT] = "HftT";
 Parser.SOURCE_JSON_TO_ABV[SRC_DC] = "DC";
 Parser.SOURCE_JSON_TO_ABV[SRC_SLW] = "SLW";
 Parser.SOURCE_JSON_TO_ABV[SRC_SDW] = "SDW";
+Parser.SOURCE_JSON_TO_ABV[SRC_BGDIA] = "BGDIA";
 Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
@@ -2129,6 +2174,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UASIK] = "UASIK";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAAR] = "UAAR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UABAM] = "UABAM";
 Parser.SOURCE_JSON_TO_ABV[SRC_UASAW] = "UASAW";
+Parser.SOURCE_JSON_TO_ABV[SRC_UABAP] = "UABAP";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -4478,10 +4524,8 @@ DataUtil = {
 					await Promise.all(data[prop].map(async entry => {
 						if (entry._copy) {
 							switch (prop) {
-								case "monster": {
-									return Renderer.monster.pMergeCopy(flatDependencyData, entry, options);
-								}
-								default: throw new Error(`No _copy merge strategy specified for property "${prop}"`);
+								case "monster": return DataUtil.monster.pMergeCopy(flatDependencyData, entry, options);
+								default: throw new Error(`No dependency _copy merge strategy specified for property "${prop}"`);
 							}
 						}
 					}));
@@ -4496,10 +4540,9 @@ DataUtil = {
 					await Promise.all(data[prop].map(async entry => {
 						if (entry._copy) {
 							switch (prop) {
-								case "monster": {
-									return Renderer.monster.pMergeCopy(data[prop], entry, options);
-								}
-								default: throw new Error(`No _copy merge strategy specified for property "${prop}"`);
+								case "monster": return DataUtil.monster.pMergeCopy(data[prop], entry, options);
+								case "item": return DataUtil.item.pMergeCopy(data[prop], entry, options);
+								default: throw new Error(`No internal _copy merge strategy specified for property "${prop}"`);
 							}
 						}
 					}));
@@ -4609,6 +4652,434 @@ DataUtil = {
 				return `${Renderer.get().baseUrl}data/bestiary/${index[value]}`;
 			}
 			default: throw new Error(`Could not get loadable URL for \`${JSON.stringify({key, value})}\``);
+		}
+	},
+
+	generic: {
+		async _pMergeCopy (impl, page, entryList, entry, options) {
+			if (entry._copy) {
+				const hash = UrlUtil.URL_TO_HASH_BUILDER[page](entry._copy);
+				const it = impl._mergeCache[hash] || DataUtil.generic._pMergeCopy_search(impl, page, entryList, entry);
+				if (!it) return;
+				return DataUtil.generic._pApplyCopy(impl, MiscUtil.copy(it), entry, options);
+			}
+		},
+
+		_pMergeCopy_search (impl, page, entryList, entry) {
+			return entryList.find(it => {
+				impl._mergeCache[UrlUtil.URL_TO_HASH_BUILDER[page](it)] = it;
+				return it.name === entry._copy.name && it.source === entry._copy.source;
+			});
+		},
+
+		async _pApplyCopy (impl, copyFrom, copyTo, options = {}) {
+			if (options.doKeepCopy) copyTo.__copy = MiscUtil.copy(copyFrom);
+
+			// convert everything to arrays
+			function normaliseMods (obj) {
+				Object.entries(obj._mod).forEach(([k, v]) => {
+					if (!(v instanceof Array)) obj._mod[k] = [v];
+				});
+			}
+
+			const copyMeta = copyTo._copy || {};
+
+			if (copyMeta._mod) normaliseMods(copyMeta);
+
+			// fetch and apply any external traits -- append them to existing copy mods where available
+			let racials = null;
+			if (copyMeta._trait) {
+				const traitData = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/traits.json`);
+				racials = traitData.trait.find(t => t.name.toLowerCase() === copyMeta._trait.name.toLowerCase() && t.source.toLowerCase() === copyMeta._trait.source.toLowerCase());
+				if (!racials) throw new Error(`Could not find traits to apply with name "${copyMeta._trait.name}" and source "${copyMeta._trait.source}"`);
+				racials = MiscUtil.copy(racials);
+
+				if (racials.apply._mod) {
+					normaliseMods(racials.apply);
+
+					if (copyMeta._mod) {
+						Object.entries(racials.apply._mod).forEach(([k, v]) => {
+							if (copyMeta._mod[k]) copyMeta._mod[k] = copyMeta._mod[k].concat(v);
+							else copyMeta._mod[k] = v;
+						});
+					} else copyMeta._mod = racials.apply._mod;
+				}
+
+				delete copyMeta._trait;
+			}
+
+			// copy over required values
+			Object.keys(copyFrom).forEach(k => {
+				if (copyTo[k] === null) return delete copyTo[k];
+				if (copyTo[k] == null) {
+					if (impl._MERGE_REQUIRES_PRESERVE[k]) {
+						if (copyTo._copy._preserve && copyTo._copy._preserve[k]) copyTo[k] = copyFrom[k];
+					} else copyTo[k] = copyFrom[k];
+				}
+			});
+
+			// apply any root racial properties after doing base copy
+			if (racials && racials.apply._root) Object.entries(racials.apply._root).forEach(([k, v]) => copyTo[k] = v);
+
+			// mod helpers /////////////////
+			function doEnsureArray (obj, prop) {
+				if (!(obj[prop] instanceof Array)) obj[prop] = [obj[prop]];
+			}
+
+			function doMod_appendStr (modInfo, prop) {
+				if (copyTo[prop]) copyTo[prop] = `${copyTo[prop]}${modInfo.joiner || ""}${modInfo.str}`;
+				else copyTo[prop] = modInfo.str;
+			}
+
+			function doMod_replaceTxt (modInfo, prop) {
+				const re = new RegExp(modInfo.replace, `g${modInfo.flags || ""}`);
+				if (copyTo[prop]) {
+					copyTo[prop].forEach(it => {
+						if (it.entries) it.entries = JSON.parse(JSON.stringify(it.entries).replace(re, modInfo.with));
+						if (it.headerEntries) it.headerEntries = JSON.parse(JSON.stringify(it.headerEntries).replace(re, modInfo.with));
+						if (it.footerEntries) it.footerEntries = JSON.parse(JSON.stringify(it.footerEntries).replace(re, modInfo.with));
+					});
+				}
+			}
+
+			function doMod_prependArr (modInfo, prop) {
+				doEnsureArray(modInfo, "items");
+				copyTo[prop] = copyTo[prop] ? modInfo.items.concat(copyTo[prop]) : modInfo.items
+			}
+
+			function doMod_appendArr (modInfo, prop) {
+				doEnsureArray(modInfo, "items");
+				copyTo[prop] = copyTo[prop] ? copyTo[prop].concat(modInfo.items) : modInfo.items
+			}
+
+			function doMod_replaceArr (modInfo, prop, isThrow = true) {
+				doEnsureArray(modInfo, "items");
+
+				if (!copyTo[prop]) {
+					if (isThrow) throw new Error(`Could not find "${prop}" array`);
+					return false;
+				}
+
+				let ixOld;
+				if (modInfo.replace.regex) {
+					const re = new RegExp(modInfo.replace.regex, modInfo.replace.flags || "");
+					ixOld = copyTo[prop].findIndex(it => it.name ? re.test(it.name) : typeof it === "string" ? re.test(it) : false);
+				} else {
+					ixOld = copyTo[prop].findIndex(it => it.name ? it.name === modInfo.replace : it === modInfo.replace);
+				}
+
+				if (~ixOld) {
+					copyTo[prop].splice(ixOld, 1, ...modInfo.items);
+					return true;
+				} else if (isThrow) throw new Error(`Could not find "${prop}" item with name "${modInfo.replace}" to replace`);
+				return false;
+			}
+
+			function doMod_replaceOrAppendArr (modInfo, prop) {
+				const didReplace = doMod_replaceArr(modInfo, prop, false);
+				if (!didReplace) doMod_appendArr(modInfo, prop);
+			}
+
+			function doMod_removeArr (modInfo, prop) {
+				if (modInfo.names) {
+					doEnsureArray(modInfo, "names");
+					modInfo.names.forEach(nameToRemove => {
+						const ixOld = copyTo[prop].findIndex(it => it.name === nameToRemove);
+						if (~ixOld) copyTo[prop].splice(ixOld, 1);
+						else throw new Error(`Could not find "${prop}" item with name "${nameToRemove}" to remove`);
+					});
+				} else if (modInfo.items) {
+					doEnsureArray(modInfo, "items");
+					modInfo.items.forEach(itemToRemove => {
+						const ixOld = copyTo[prop].findIndex(it => it === itemToRemove);
+						if (~ixOld) copyTo[prop].splice(ixOld, 1);
+						else throw new Error(`Could not find "${prop}" item "${itemToRemove}" to remove`);
+					});
+				} else throw new Error(`One of "names" or "items" must be provided!`)
+			}
+
+			function doMod_calculateProp (modInfo, prop) {
+				copyTo[prop] = copyTo[prop] || {};
+				const toExec = modInfo.formula.replace(/<\$([^$]+)\$>/g, (...m) => {
+					switch (m[1]) {
+						case "prof_bonus": return Parser.crToPb(copyTo.cr);
+						case "dex_mod": return Parser.getAbilityModNumber(copyTo.dex);
+						default: throw new Error(`Unknown variable "${m[1]}"`);
+					}
+				});
+				// eslint-disable-next-line no-eval
+				copyTo[prop][modInfo.prop] = eval(toExec);
+			}
+
+			function doMod_scalarAddProp (modInfo, prop) {
+				function applyTo (k) {
+					const out = Number(copyTo[prop][k]) + modInfo.scalar;
+					const isString = typeof copyTo[prop][k] === "string";
+					copyTo[prop][k] = isString ? `${out >= 0 ? "+" : ""}${out}` : out;
+				}
+
+				if (!copyTo[prop]) return;
+				if (modInfo.prop === "*") Object.keys(copyTo[prop]).forEach(k => applyTo(k));
+				else applyTo(modInfo.prop);
+			}
+
+			function doMod_scalarMultProp (modInfo, prop) {
+				function applyTo (k) {
+					let out = Number(copyTo[prop][k]) * modInfo.scalar;
+					if (modInfo.floor) out = Math.floor(out);
+					const isString = typeof copyTo[prop][k] === "string";
+					copyTo[prop][k] = isString ? `${out >= 0 ? "+" : ""}${out}` : out;
+				}
+
+				if (!copyTo[prop]) return;
+				if (modInfo.prop === "*") Object.keys(copyTo[prop]).forEach(k => applyTo(k));
+				else applyTo(modInfo.prop);
+			}
+
+			function doMod_addSenses (modInfo) {
+				doEnsureArray(modInfo, "senses");
+				copyTo.senses = copyTo.senses || [];
+				modInfo.senses.forEach(sense => {
+					let found = false;
+					for (let i = 0; i < copyTo.senses.length; ++i) {
+						const m = new RegExp(`${sense.type} (\\d+)`, "i").exec(copyTo.senses[i]);
+						if (m) {
+							found = true;
+							// if the creature already has a greater sense of this type, do nothing
+							if (Number(m[1]) < sense.type) {
+								copyTo.senses[i] = `${sense.type} ${sense.range} ft.`;
+							}
+							break;
+						}
+					}
+
+					if (!found) copyTo.senses.push(`${sense.type} ${sense.range} ft.`);
+				});
+			}
+
+			function doMod_addSkills (modInfo) {
+				copyTo.skill = copyTo.skill || [];
+				Object.entries(modInfo.skills).forEach(([skill, mode]) => {
+					// mode: 1 = proficient; 2 = expert
+					const total = mode * Parser.crToPb(copyTo.cr) + Parser.getAbilityModNumber(copyTo[Parser.skillToAbilityAbv(skill)]);
+					const asText = total >= 0 ? `+${total}` : `-${total}`;
+					if (copyTo.skill && copyTo.skill[skill]) {
+						// update only if ours is larger (prevent reduction in skill score)
+						if (Number(copyTo.skill[skill]) < total) copyTo.skill[skill] = asText;
+					} else copyTo.skill[skill] = asText;
+				});
+			}
+
+			function doMod_addSpells (modInfo) {
+				if (!copyTo.spellcasting) throw new Error(`Creature did not have a spellcasting property!`);
+
+				// TODO should be rewritten to handle non-slot-based spellcasters
+				// TODO could accept a "position" or "name" parameter should spells need to be added to other spellcasting traits
+				const trait0 = copyTo.spellcasting[0].spells;
+				Object.keys(modInfo.spells).forEach(k => {
+					if (!trait0[k]) trait0[k] = modInfo.spells[k];
+					else {
+						// merge the objects
+						const spellCategoryNu = modInfo.spells[k];
+						const spellCategoryOld = trait0[k];
+						Object.keys(spellCategoryNu).forEach(kk => {
+							if (!spellCategoryOld[kk]) spellCategoryOld[kk] = spellCategoryNu[kk];
+							else {
+								if (typeof spellCategoryOld[kk] === "object") {
+									if (spellCategoryOld[kk] instanceof Array) spellCategoryOld[kk] = spellCategoryOld[kk].concat(spellCategoryNu[kk]).sort(SortUtil.ascSortLower);
+									else throw new Error(`Object at key ${kk} not an array!`);
+								} else spellCategoryOld[kk] = spellCategoryNu[kk];
+							}
+						});
+					}
+				});
+			}
+
+			function doMod_replaceSpells (modInfo) {
+				if (!copyTo.spellcasting) throw new Error(`Creature did not have a spellcasting property!`);
+
+				// TODO should be rewritten to handle non-slot-based spellcasters
+				// TODO could accept a "position" or "name" parameter should spells need to be added to other spellcasting traits
+				const trait0 = copyTo.spellcasting[0].spells;
+				Object.keys(modInfo.spells).forEach(k => {
+					if (trait0[k]) {
+						const spellCategoryNu = modInfo.spells[k];
+						const spellCategoryOld = trait0[k];
+						Object.keys(spellCategoryNu).forEach(kk => {
+							doEnsureArray(spellCategoryNu[kk], "with");
+
+							if (spellCategoryOld[kk]) {
+								if (typeof spellCategoryOld[kk] === "object") {
+									if (spellCategoryOld[kk] instanceof Array) {
+										const ix = spellCategoryOld[kk].indexOf(spellCategoryNu[kk].replace);
+										if (~ix) {
+											spellCategoryOld[kk].splice(ix, 1, ...spellCategoryNu[kk].with);
+											spellCategoryOld[kk].sort(SortUtil.ascSortLower);
+										}
+									} else throw new Error(`Object at key ${kk} not an array!`);
+								} else {
+									if (spellCategoryNu[kk].replace === spellCategoryOld[kk]) {
+										spellCategoryOld[kk] = spellCategoryNu[kk].with;
+									}
+								}
+							}
+						});
+					}
+				});
+			}
+
+			function doMod_scalarAddHit (modInfo, prop) {
+				if (!copyTo[prop]) return;
+				copyTo[prop] = JSON.parse(JSON.stringify(copyTo[prop]).replace(/{@hit ([-+]?\d+)}/g, (m0, m1) => `{@hit ${Number(m1) + modInfo.scalar}}`))
+			}
+
+			function doMod_scalarAddDc (modInfo, prop) {
+				if (!copyTo[prop]) return;
+				copyTo[prop] = JSON.parse(JSON.stringify(copyTo[prop]).replace(/{@dc (\d+)}/g, (m0, m1) => `{@dc ${Number(m1) + modInfo.scalar}}`));
+			}
+
+			function doMod_maxSize (modInfo) {
+				const ixCur = Parser.SIZE_ABVS.indexOf(copyTo.size);
+				const ixMax = Parser.SIZE_ABVS.indexOf(modInfo.max);
+				if (ixCur < 0 || ixMax < 0) throw new Error(`Unhandled size!`);
+				copyTo.size = Parser.SIZE_ABVS[Math.min(ixCur, ixMax)]
+			}
+
+			function doMod_scalarMultXp (modInfo) {
+				function getOutput (input) {
+					let out = input * modInfo.scalar;
+					if (modInfo.floor) out = Math.floor(out);
+					return out;
+				}
+
+				if (copyTo.cr.xp) copyTo.cr.xp = getOutput(copyTo.cr.xp);
+				else {
+					const curXp = Parser.crToXpNumber(copyTo.cr);
+					if (!copyTo.cr.cr) copyTo.cr = {cr: copyTo.cr};
+					copyTo.cr.xp = getOutput(curXp);
+				}
+			}
+
+			function doMod (modInfos, ...properties) {
+				function handleProp (prop) {
+					modInfos.forEach(modInfo => {
+						if (typeof modInfo === "string") {
+							switch (modInfo) {
+								case "remove": return delete copyTo[prop];
+								default: throw new Error(`Unhandled mode: ${modInfo}`);
+							}
+						} else {
+							switch (modInfo.mode) {
+								case "appendStr": return doMod_appendStr(modInfo, prop);
+								case "replaceTxt": return doMod_replaceTxt(modInfo, prop);
+								case "prependArr": return doMod_prependArr(modInfo, prop);
+								case "appendArr": return doMod_appendArr(modInfo, prop);
+								case "replaceArr": return doMod_replaceArr(modInfo, prop);
+								case "replaceOrAppendArr": return doMod_replaceOrAppendArr(modInfo, prop);
+								case "removeArr": return doMod_removeArr(modInfo, prop);
+								case "calculateProp": return doMod_calculateProp(modInfo, prop);
+								case "scalarAddProp": return doMod_scalarAddProp(modInfo, prop);
+								case "scalarMultProp": return doMod_scalarMultProp(modInfo, prop);
+								// bestiary specific
+								case "addSenses": return doMod_addSenses(modInfo);
+								case "addSkills": return doMod_addSkills(modInfo);
+								case "addSpells": return doMod_addSpells(modInfo);
+								case "replaceSpells": return doMod_replaceSpells(modInfo);
+								case "scalarAddHit": return doMod_scalarAddHit(modInfo, prop);
+								case "scalarAddDc": return doMod_scalarAddDc(modInfo, prop);
+								case "maxSize": return doMod_maxSize(modInfo);
+								case "scalarMultXp": return doMod_scalarMultXp(modInfo);
+								default: throw new Error(`Unhandled mode: ${modInfo.mode}`);
+							}
+						}
+					});
+				}
+
+				properties.forEach(prop => handleProp(prop));
+				// special case for "no property" modifications, i.e. underscore-key'd
+				if (!properties.length) handleProp();
+			}
+
+			// apply mods
+			if (copyMeta._mod) {
+				// pre-convert any dynamic text
+				Object.entries(copyMeta._mod).forEach(([k, v]) => {
+					copyMeta._mod[k] = JSON.parse(
+						JSON.stringify(v)
+							.replace(/<\$([^$]+)\$>/g, (...m) => {
+								const parts = m[1].split("__");
+
+								switch (parts[0]) {
+									case "name": return copyTo.name;
+									case "short_name":
+									case "title_name": {
+										return copyTo.isNpc ? copyTo.name.split(" ")[0] : `${parts[0] === "title_name" ? "The " : "the "}${copyTo.name.toLowerCase()}`;
+									}
+									case "spell_dc": {
+										if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
+										return 8 + Parser.getAbilityModNumber(Number(copyTo[parts[1]])) + Parser.crToPb(copyTo.cr);
+									}
+									case "to_hit": {
+										if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
+										const total = Parser.crToPb(copyTo.cr) + Parser.getAbilityModNumber(Number(copyTo[parts[1]]));
+										return total >= 0 ? `+${total}` : total;
+									}
+									case "damage_mod": {
+										if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
+										const total = Parser.getAbilityModNumber(Number(copyTo[parts[1]]));
+										return total === 0 ? "" : total > 0 ? ` +${total}` : ` ${total}`;
+									}
+									case "damage_avg": {
+										const replaced = parts[1].replace(/(str|dex|con|int|wis|cha)/gi, (...m2) => Parser.getAbilityModNumber(Number(copyTo[m2[0]])));
+										const clean = replaced.replace(/[^-+/*0-9.,]+/g, "");
+										// eslint-disable-next-line no-eval
+										return Math.floor(eval(clean));
+									}
+									default: return m[0];
+								}
+							})
+					);
+				});
+
+				Object.entries(copyMeta._mod).forEach(([prop, modInfos]) => {
+					if (prop === "*") doMod(modInfos, "action", "reaction", "trait", "legendary", "variant", "spellcasting");
+					else if (prop === "_") doMod(modInfos);
+					else doMod(modInfos, prop);
+				});
+			}
+
+			// add filter tag
+			copyTo._isCopy = true;
+
+			// cleanup
+			delete copyTo._copy;
+		}
+	},
+
+	monster: {
+		_MERGE_REQUIRES_PRESERVE: {
+			legendaryGroup: true,
+			environment: true,
+			soundClip: true,
+			page: true,
+			altArt: true,
+			otherSources: true,
+			variant: true,
+			dragonCastingColor: true
+		},
+		_mergeCache: {},
+		async pMergeCopy (monList, mon, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.monster, UrlUtil.PG_BESTIARY, monList, mon, options)
+		}
+	},
+
+	item: {
+		_MERGE_REQUIRES_PRESERVE: {
+			lootTables: true
+		},
+		_mergeCache: {},
+		async pMergeCopy (itemList, item, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.item, UrlUtil.PG_ITEMS, itemList, item, options)
 		}
 	},
 
@@ -4815,7 +5286,7 @@ StorageUtil = {
 		StorageUtil._initAsync = true;
 
 		const getInitFakeStorage = () => {
-			StorageUtil.__fakeStorageAsync = true;
+			StorageUtil.__fakeStorageAsync = {};
 			StorageUtil._fakeStorageAsync = {
 				pIsAsyncFake: true,
 				async setItem (k, v) {

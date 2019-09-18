@@ -3069,7 +3069,7 @@ class UnitConverter {
 		let ixConv = state.c || 0;
 		let dirConv = state.d || 0;
 
-		const $wrpConverter = $(`<div class="dm-unitconv split-column"/>`);
+		const $wrpConverter = $(`<div class="dm-unitconv dm__panel-bg split-column"/>`);
 
 		const $tblConvert = $(`<table class="table-striped"/>`).appendTo($wrpConverter);
 		const $tbodyConvert = $(`<tbody/>`).appendTo($tblConvert);

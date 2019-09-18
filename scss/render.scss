@@ -24,291 +24,307 @@ Renderer
 	}
 }
 
-.rd__ {
-	&b--0,
-	&b--1,
-	&b--2,
-	&b--3,
-	&b--4 {
-		margin-bottom: 5px;
+.rd {
+	&__ {
+		&b--0,
+		&b--1,
+		&b--2,
+		&b--3,
+		&b--4 {
+			margin-bottom: 5px;
 
-		&:last-child {
-			margin-bottom: 0;
-		}
-
-		> *:last-child {
-			margin-bottom: 0;
-		}
-	}
-
-	&hr {
-		border-color: #aaa6;
-		margin: 17px 0 5px;
-
-		&--section {
-			margin: 30px 0 5px;
-		}
-	}
-
-	&list {
-		margin-top: 5px;
-		margin-bottom: 10px;
-		padding-left: 24px;
-	}
-
-	&compact-stats {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		align-items: flex-start;
-		align-content: flex-start;
-	}
-
-	&title-link {
-		opacity: 0.3;
-		font-size: 1.6rem;
-	}
-
-	&wrp-image {
-		margin: 5px auto 0;
-		text-align: center;
-	}
-
-	&image {
-		max-width: 100%;
-		max-height: 60vh;
-		cursor: zoom-in;
-	}
-
-	&wrp-map {
-		max-width: 33%;
-		margin: 0 auto;
-	}
-
-	&wrp-gallery {
-		display: flex;
-		margin: 0 -5px;
-		flex-wrap: wrap;
-		justify-content: center;
-		align-items: flex-end;
-	}
-
-	&wrp-gallery-image {
-		padding: 0 10px 10px;
-		max-width: 33%;
-	}
-
-	&quote-by {
-		width: 100%;
-		text-align: right;
-		display: block;
-	}
-
-	&p-cont-indent {
-		display: block;
-		text-indent: 1em;
-	}
-
-	&tab-indent {
-		width: 1em;
-		display: inline-block;
-	}
-
-	&image-title {
-		width: 100%;
-		text-align: center;
-		font-style: italic;
-		margin-top: 3px;
-	}
-
-	&image-title-inner {
-		border-bottom: 1px solid $rgb-border-grey;
-		display: inline;
-	}
-
-	&prerequisite {
-		font-style: italic;
-		display: block;
-	}
-
-	&li-spell {
-		margin: 0;
-	}
-
-	&list-hang-notitle {
-		text-indent: -1.1em;
-		margin-left: 1.1em;
-		padding: 0;
-		list-style: none;
-
-		> li {
-			margin-bottom: 0;
-
-			> * {
-				margin: 0 0 3px;
+			&:last-child {
+				margin-bottom: 0;
 			}
 
-			// fixme?
-			> ul {
-				text-indent: 0;
+			> *:last-child {
+				margin-bottom: 0;
 			}
 		}
-	}
 
-	&list-hang {
-		list-style: none;
+		&hr {
+			border-color: #aaa6;
+			margin: 17px 0 5px;
 
-		// fixme?
-		> li > * {
-			text-indent: -1.1em;
-			margin-left: 1.1em;
+			&--section {
+				margin: 30px 0 5px;
+			}
 		}
-	}
 
-	&list-decimal {
-		list-style: decimal;
-	}
+		&list {
+			margin-top: 5px;
+			margin-bottom: 10px;
+			padding-left: 24px;
+		}
 
-	&list-lower-roman {
-		list-style: lower-roman;
-	}
+		&compact-stats {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: flex-start;
+			align-content: flex-start;
+		}
 
-	&list-no-bullets {
-		list-style: none;
-		padding: 0 10px;
-	}
+		&title-link {
+			opacity: 0.3;
+			font-size: 1.6rem;
+		}
 
-	&list-name {
-		margin: 0;
-		font-weight: bold;
-	}
+		&wrp-image {
+			margin: 5px auto 0;
+			text-align: center;
+		}
 
-	// section headers
-	// statsBlockSectionHead
-	&h--0 {
-		@include rd__h--large();
+		&image {
+			max-width: 100%;
+			max-height: 60vh;
+			cursor: zoom-in;
+		}
 
-		font-size: 1.8em;
-	}
+		&wrp-map {
+			max-width: 33%;
+			margin: 0 auto;
+		}
 
-	// underline headers
-	// statsBlockHead
-	&h--1 {
-		@include rd__h--large();
+		&wrp-gallery {
+			display: flex;
+			margin: 0 -5px;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: flex-end;
+		}
 
-		font-size: 1.5em;
-		border-bottom: 1px solid $rgb-name-red;
-		margin: 0 0 0.2em;
-	}
+		&wrp-gallery-image {
+			padding: 0 10px 10px;
+			max-width: 33%;
+		}
 
-	// basic headers
-	// statsBlockSubHead
-	&h--2 {
-		@include rd__h--large();
+		&quote-by {
+			width: 100%;
+			text-align: right;
+			display: block;
+		}
 
-		font-size: 1.4em;
-	}
+		&p-cont-indent {
+			display: block;
+			text-indent: 1em;
+		}
 
-	// inset headers
-	// statsBlockInset and statsBlockInsetReadaloud
-	&h--2-inset {
-		display: block;
-		font-variant: small-caps;
-		font-weight: bolder;
-		font-size: 1.1em;
-	}
+		&tab-indent {
+			width: 1em;
+			display: inline-block;
+		}
 
-	// inline headers
-	// statsInlineHead
-	&h--3 {
-		font-weight: bold;
-		font-style: italic;
-	}
+		&image-title {
+			width: 100%;
+			text-align: center;
+			font-style: italic;
+			margin-top: 3px;
+		}
 
-	// sub-inline headers (only seen in monster variant)
-	// statsInlineHeadSubVariant
-	&h--4 {
-		font-style: italic;
-	}
-
-	&b--3 {
-		margin-bottom: 3px;
-	}
-
-	&b-inset > p,
-	&b--3 > p,
-	&b--4 > p {
-		text-indent: 0.7em;
-		margin-bottom: 0;
-
-		&:first-of-type {
+		&image-title-inner {
+			border-bottom: 1px solid $rgb-border-grey;
 			display: inline;
 		}
-	}
 
-	&b-inset {
-		margin: 7px 15px;
-		padding: 5px 10px;
-		box-shadow: 0 0 4px 0 rgb(152, 142, 124);
-		border: 1px solid #656565;
-		border-top: 2px solid #656565;
-		border-bottom: 2px solid #656565;
-		background-color: #e9ecda;
-
-		> *:last-of-type {
-			margin-bottom: 0;
+		&prerequisite {
+			font-style: italic;
+			display: block;
 		}
 
-		&--readaloud {
-			box-shadow: 0 0 4px 0 rgb(152, 142, 124);
-			border: 1px solid #656565;
-			border-left: 2px solid #656565;
-			border-right: 2px solid #656565;
-			background-color: #eef0f3;
+		&li-spell {
+			margin: 0;
 		}
-	}
 
-	&b-data {
-		box-shadow: 0 0 4px 0 rgb(152, 142, 124);
-		border: 1px solid #656565;
-		background-color: rgba(156, 150, 120, 0.1);
-	}
+		&list-hang-notitle {
+			text-indent: -1.1em;
+			margin-left: 1.1em;
+			padding: 0;
+			list-style: none;
 
-	&data-embed {
-		&-header {
-			cursor: pointer;
-			font-family: 'Andada', serif;
-			font-variant: small-caps;
-			text-transform: uppercase;
-			font-weight: bold;
+			> li {
+				margin-bottom: 0;
 
-			&:hover {
-				background: rgba(100, 100, 100, 0.08);
+				> * {
+					margin: 0 0 3px;
+				}
+
+				// fixme?
+				> ul {
+					text-indent: 0;
+				}
 			}
 		}
 
-		&-toggle {
-			font-family: Arial, sans-serif;
-			float: right;
+		&list-hang {
+			list-style: none;
+
+			// fixme?
+			> li > * {
+				text-indent: -1.1em;
+				margin-left: 1.1em;
+			}
+		}
+
+		&list-decimal {
+			list-style: decimal;
+		}
+
+		&list-lower-roman {
+			list-style: lower-roman;
+		}
+
+		&list-no-bullets {
+			list-style: none;
+			padding: 0 10px;
+		}
+
+		&list-name {
+			margin: 0;
+			font-weight: bold;
+		}
+
+		// section headers
+		// statsBlockSectionHead
+		&h--0 {
+			@include rd__h--large();
+
+			font-size: 1.8em;
+		}
+
+		// underline headers
+		// statsBlockHead
+		&h--1 {
+			@include rd__h--large();
+
+			font-size: 1.5em;
+			border-bottom: 1px solid $rgb-name-red;
+			margin: 0 0 0.2em;
+		}
+
+		// basic headers
+		// statsBlockSubHead
+		&h--2 {
+			@include rd__h--large();
+
+			font-size: 1.4em;
+		}
+
+		// inset headers
+		// statsBlockInset and statsBlockInsetReadaloud
+		&h--2-inset {
+			display: block;
+			font-variant: small-caps;
+			font-weight: bolder;
+			font-size: 1.1em;
+		}
+
+		// inline headers
+		// statsInlineHead
+		&h--3 {
+			font-weight: bold;
+			font-style: italic;
+		}
+
+		// sub-inline headers (only seen in monster variant)
+		// statsInlineHeadSubVariant
+		&h--4 {
+			font-style: italic;
+		}
+
+		&b--3 {
+			margin-bottom: 3px;
+		}
+
+		&b-inset > p,
+		&b--3 > p,
+		&b--4 > p {
+			text-indent: 0.7em;
+			margin-bottom: 0;
+
+			&:first-of-type {
+				display: inline;
+			}
+		}
+
+		&b-inset {
+			margin: 7px 15px;
+			padding: 5px 10px;
+			box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+			border: 1px solid #656565;
+			border-top: 2px solid #656565;
+			border-bottom: 2px solid #656565;
+			background-color: #e9ecda;
+
+			> *:last-of-type {
+				margin-bottom: 0;
+			}
+
+			&--readaloud {
+				box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+				border: 1px solid #656565;
+				border-left: 2px solid #656565;
+				border-right: 2px solid #656565;
+				background-color: #eef0f3;
+			}
+		}
+
+		&b-data {
+			box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+			border: 1px solid #656565;
+			background-color: rgba(156, 150, 120, 0.1);
+		}
+
+		&data-embed {
+			&-header {
+				cursor: pointer;
+				font-family: 'Andada', serif;
+				font-variant: small-caps;
+				text-transform: uppercase;
+				font-weight: bold;
+
+				&:hover {
+					background: rgba(100, 100, 100, 0.08);
+				}
+			}
+
+			&-toggle {
+				font-family: Arial, sans-serif;
+				float: right;
+			}
+		}
+
+		&wrp-loadbrew--ready {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+
+		&loadbrew-icon {
+			text-indent: 0;
+			margin-left: 2px;
+			transition-property: transform;
+			transition-duration: 1s;
+
+			&--active {
+				animation-name: rd__spin;
+				animation-duration: 1.2s;
+				animation-iteration-count: infinite;
+				animation-timing-function: linear;
+			}
 		}
 	}
 
-	&wrp-loadbrew--ready {
-		cursor: pointer;
-		text-decoration: underline;
+	&-item__ {
+		&type-rarity-attunement {
+			font-style: italic;
+			color: black;
+		}
 	}
 
-	&loadbrew-icon {
-		text-indent: 0;
-		margin-left: 2px;
-		transition-property: transform;
-		transition-duration: 1s;
-
-		&--active {
-			animation-name: rd__spin;
-			animation-duration: 1.2s;
-			animation-iteration-count: infinite;
-			animation-timing-function: linear;
+	&-spell__ {
+		&level-school-ritual {
+			font-style: italic;
+			color: black;
 		}
 	}
 }
@@ -316,4 +332,20 @@ Renderer
 // Entries embedded in tables
 td > .rd__b:last-child {
 	margin-bottom: 0;
+}
+
+.night-mode {
+	.rd {
+		&-item__ {
+			&type-rarity-attunement {
+				color: $rgb-night-font-color;
+			}
+		}
+
+		&-spell__ {
+			&level-school-ritual {
+				color: $rgb-night-font-color;
+			}
+		}
+	}
 }

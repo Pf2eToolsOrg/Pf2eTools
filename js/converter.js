@@ -1360,7 +1360,21 @@ class StatblockConverter {
 	static _setCleanLanguages (stats, line) {
 		stats.languages = line.split_handleColon("Languages", 1)[1].trim();
 		if (stats.languages && /^([-–‒—]|\\u201\d)$/.exec(stats.languages.trim())) delete stats.languages;
-		else stats.languages = stats.languages.split(StrUtil.COMMA_SPACE_NOT_IN_PARENTHESES_REGEX);
+		else {
+			stats.languages = stats.languages
+			// Clean caps words
+				.split(/(\W)/g)
+				.map(s => {
+					return s
+						.replace(/Telepathy/g, "telepathy")
+						.replace(/All/g, "all")
+						.replace(/Understands/g, "understands")
+						.replace(/Cant/g, "cant")
+						.replace(/Can/g, "can")
+				})
+				.join("")
+				.split(StrUtil.COMMA_SPACE_NOT_IN_PARENTHESES_REGEX);
+		}
 	}
 
 	static _setCleanCr (stats, line) {

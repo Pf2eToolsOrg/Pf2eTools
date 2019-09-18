@@ -79,9 +79,16 @@ function preprocess (schema) {
 								if (!toMerge.$ref) return toMerge;
 								else {
 									const [file, path] = toMerge.$ref.split("#");
-									if (file) throw new Error(`Unimplemented! Cannot load references from other files!`);
 									const pathParts = path.split("/").filter(Boolean);
-									const refData = MiscUtil.get(schema, ...pathParts);
+
+									let refData;
+									if (file) {
+										const externalSchema = loadJSON(file);
+										refData = MiscUtil.get(externalSchema, ...pathParts);
+									} else {
+										refData = MiscUtil.get(schema, ...pathParts);
+									}
+
 									if (!refData) throw new Error(`Could not find referenced data!`);
 									return refData;
 								}
@@ -111,14 +118,17 @@ async function main () {
 	ajv.addSchema(preprocess(loadJSON("spells/spells.json", "utf8")), "spells.json");
 	ajv.addSchema(preprocess(loadJSON("bestiary/bestiary.json", "utf8")), "bestiary.json");
 	ajv.addSchema(preprocess(loadJSON("entry.json", "utf8")), "entry.json");
+	ajv.addSchema(preprocess(loadJSON("util.json", "utf8")), "util.json");
 
 	// Get schema files, ignoring directories
 	const schemaFiles = fs.readdirSync(`${cacheDir}/test/schema`)
 		.filter(file => file.endsWith(".json"));
 
+	const SCHEMA_BLACKLIST = new Set(["entry.json", "util.json"]);
+
 	for (let i = 0; i < schemaFiles.length; ++i) {
 		const schemaFile = schemaFiles[i];
-		if (schemaFile !== "entry.json") {
+		if (!SCHEMA_BLACKLIST.has(schemaFile)) {
 			const dataFile = schemaFile; // data and schema filenames match
 
 			console.log(`Testing data/${dataFile}`.padEnd(50), `against schema/${schemaFile}`);

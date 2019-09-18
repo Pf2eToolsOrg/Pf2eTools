@@ -1197,6 +1197,10 @@ th.name {
 		color: #6b909a;
 	}
 
+	&BGDIA {
+		color: #752418;
+	}
+
 	&AL {
 		color: #ed1c24;
 	}
@@ -1273,12 +1277,6 @@ td.divider div {
 
 .stats span.name {
 	font-weight: bold;
-}
-
-td.typerarityattunement,
-td.levelschoolritual {
-	font-style: italic;
-	color: black;
 }
 
 .stats span.name {
@@ -1958,7 +1956,7 @@ tr.printbook-bestiary > td {
 	background: #cfe5ff78;
 }
 
-.dm-init {
+.dm__panel-bg {
 	background: white;
 }
 
@@ -3285,7 +3283,6 @@ th.border {
 	background: silver;
 }
 
-.stats td#typerarityattunement,
 tr.text td,
 tr.trait td,
 tr.action td,
@@ -3893,13 +3890,21 @@ ul.list.books > li > a > span.name:hover {
 	.input-group-addon,
 	.form-control {
 		background: $rgb-night-bg-color;
-		color: #bbb;
+		color: $rgb-night-font-color;
 	}
 
 	/* *** */
 
-	.omni__input {
+	.omni__wrp-input--scrolled .omni__input {
 		background-color: $rgb-night-bg-color;
+		color: transparent;
+
+		&:focus,
+		&:focus-within,
+		&:active,
+		&:hover {
+			color: $rgb-night-font-color;
+		}
 	}
 
 	.omni__submit.btn-default:active:focus,
@@ -3985,11 +3990,6 @@ ul.list.books > li > a > span.name:hover {
 
 	tr.text td {
 		color: $rgb-night-font-color !important;
-	}
-
-	td.typerarityattunement,
-	td.levelschoolritual {
-		color: $rgb-night-font-color;
 	}
 
 	tr.text td {
@@ -4446,7 +4446,7 @@ ul.list.books > li > a > span.name:hover {
 		background: #8dc1ff20;
 	}
 
-	.dm-init {
+	.dm__panel-bg {
 		background: $rgb-night-bg-color;
 	}
 

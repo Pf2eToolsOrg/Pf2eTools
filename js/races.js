@@ -91,6 +91,18 @@ function filterAscSortAsi (a, b) {
 }
 
 class RacesPage extends ListPage {
+	static getLanguageProficiencyTags (lProfs) {
+		if (!lProfs) return [];
+
+		const outSet = new Set();
+		lProfs.forEach(lProfGroup => {
+			Object.keys(lProfGroup).filter(k => k !== "choose").forEach(k => outSet.add(k.toTitleCase()));
+			if (lProfGroup.choose) outSet.add("Choose");
+		});
+
+		return [...outSet];
+	}
+
 	constructor () {
 		const sourceFilter = getSourceFilter();
 		const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull, itemSortFn: filterAscSortSize});
@@ -149,8 +161,6 @@ class RacesPage extends ListPage {
 			header: "Languages",
 			items: [
 				"Abyssal",
-				"Aquan",
-				"Auran",
 				"Celestial",
 				"Choose",
 				"Common",
@@ -166,7 +176,6 @@ class RacesPage extends ListPage {
 				"Other",
 				"Primordial",
 				"Sylvan",
-				"Terran",
 				"Undercommon"
 			],
 			umbrellaItems: ["Choose"]
@@ -224,6 +233,7 @@ class RacesPage extends ListPage {
 			race.hasSpellcasting ? "Spellcasting" : null
 		].filter(it => it).concat(race.traitTags || []);
 		race._fSources = ListUtil.getCompleteFilterSources(race);
+		race._fLangs = RacesPage.getLanguageProficiencyTags(race.languageProficiencies);
 
 		race._slAbility = ability.asTextShort;
 
@@ -261,7 +271,7 @@ class RacesPage extends ListPage {
 				r.size,
 				r._fSpeed,
 				r._fMisc,
-				r.languageTags,
+				r._fLangs,
 				r._baseName
 			);
 		});

@@ -89,9 +89,7 @@ Dice should be written as `[X]dY[ <+|-|×> Z]`, i.e. with a space between dice a
 
 ### Dev Server
 
-Do `npm run dev-server` to launch a local dev server that serves the project files on [`http://localhost:8080/5etools.html`](http://localhost:8080/5etools.html).
-
-The server automatically refreshes the page for you whenever one of the project files (html, css, js, images) changes.
+Do `npm run serve:dev` to launch a local dev server that serves the project files on [`http://localhost:8080/5etools.html`](http://localhost:8080/5etools.html).
 
 ### Version bump
 

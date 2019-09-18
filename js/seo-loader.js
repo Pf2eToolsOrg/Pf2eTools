@@ -1,23 +1,27 @@
 window.addEventListener("load", async () => {
-	const rawPage = UrlUtil.getCurrentPage();
-	let [page, hash] = rawPage
-		.replace(/\.html$/i, "")
-		.replace(/~S/g, "/")
-		.replace(/~Q/g, `"`)
-		.split("__");
-	hash = encodeURIComponent(hash);
-	const [_, source] = hash.split("_");
 	Renderer.get().setBaseUrl("/");
-	const it = await Renderer.hover.pCacheAndGet(`${page}.html`, source, hash);
+	const it = await Renderer.hover.pCacheAndGet(`${_SEO_PAGE}.html`, _SEO_SOURCE, _SEO_HASH);
 
 	document.title = `${it.name} - 5etools`;
-	$(`.page__title`).text(`${page.toTitleCase()}: ${it.name}`);
+	$(`.page__title`).text(`${_SEO_PAGE.toTitleCase()}: ${it.name}`);
 
-	$(`<div class="col-12 flex-vh-center my-2"><a href="/${page}.html">Back to ${page.toTitleCase()}</a></div>`).appendTo($(`#link-page`));
+	$(`<div class="col-12 flex-vh-center my-2 pt-3">
+		<button class="btn btn-primary">
+			<a href="/${_SEO_PAGE}.html" style="font-size: 1.7em;">${_SEO_STYLE === 1 ? `View All` : `View Complete`} ${_SEO_PAGE.toTitleCase()}</a>
+		</button>
+	</div>`).appendTo($(`#link-page`));
 
 	const $content = $(`#pagecontent`).empty();
 
-	switch (page) {
+	$(`.nav__link`).each((i, e) => {
+		const $e = $(e);
+		const href = $e.attr("href");
+		if (!href.startsWith("http") && href.endsWith(".html")) $e.attr("href", `../${href}`);
+
+		if (href.startsWith("https://wiki.5e.tools")) $e.remove();
+	});
+
+	switch (_SEO_PAGE) {
 		case "spells": $content.append(RenderSpells.$getRenderedSpell(it, {})); break;
 		case "bestiary": {
 			Renderer.utils.bindPronounceButtons();

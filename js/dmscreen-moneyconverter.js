@@ -25,7 +25,7 @@ class MoneyConverter {
 		}).reverse();
 		const DEFAULT_CURRENCY = 3;
 
-		const $wrpConverter = $(`<div class="dm_money split-column"/>`);
+		const $wrpConverter = $(`<div class="dm_money dm__panel-bg split-column"/>`);
 
 		const doUpdate = () => {
 			if (!$wrpRows.find(`.dm_money__row`).length) {

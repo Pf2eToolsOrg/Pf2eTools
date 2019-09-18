@@ -27,7 +27,7 @@ class InitiativeTracker {
 			statsCols: state.c || []
 		};
 
-		const $wrpTracker = $(`<div class="dm-init dm__data-anchor"/>`);
+		const $wrpTracker = $(`<div class="dm-init dm__panel-bg dm__data-anchor"/>`);
 
 		// Unused; to be considered for other applications
 		const handleResize = () => {

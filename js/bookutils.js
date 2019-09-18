@@ -320,7 +320,7 @@ const BookUtil = {
 			BookUtil._renderer.resetHeaderIndex();
 			if (chapter === -1) data.forEach(d => BookUtil._renderer.recursiveRender(d, textStack));
 			else BookUtil._renderer.recursiveRender(data[chapter], textStack);
-			BookUtil.renderArea.append(`<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>`);
+			BookUtil.renderArea.append(`<tr class="text"><td colspan="6" style="padding: 5px 20px;">${textStack.join("")}</td></tr>`);
 			Renderer.initLazyImageLoaders();
 			BookUtil._renderer.setLazyImages(false);
 			renderNavButtons();

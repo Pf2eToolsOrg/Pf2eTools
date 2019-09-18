@@ -19,6 +19,16 @@
 	src: local('glyphicons-halflings-regular'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype');
 }
 
+@keyframes kf-fade-out {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
 $sz-y-header: 73px;
 
 $spacer: 1rem;
@@ -40,6 +50,7 @@ $rgb-link-blue: $rgb-active-blue;
 
 $rgb-border-grey: #ccc;
 $rgb-border-grey--trans: #cccccca0;
+$rgb-border-grey--muted: #eee;
 
 $rgb-modal-overlay-grey: #45454588;
 $rgb-shadow-grey: rgba(0, 0, 0, 0.175);

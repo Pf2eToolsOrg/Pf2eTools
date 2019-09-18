@@ -47,7 +47,7 @@
 				{
 					"name": "Talons",
 					"entries": [
-						"You are proficient with your unarmed strikes, which deal 1d4 slashing damage on a hit."
+						"You are proficient with your unarmed strikes, which deal {@dice 1d4} slashing damage on a hit."
 					],
 					"type": "entries"
 				},
@@ -63,10 +63,12 @@
 			"traitTags": [
 				"Unarmed Strike"
 			],
-			"languageTags": [
-				"Common",
-				"Other",
-				"Auran"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true,
+					"primordial": true
+				}
 			]
 		},
 		{
@@ -250,9 +252,11 @@
 				}
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/576/genasi.mp3",
-			"languageTags": [
-				"Common",
-				"Primordial"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"primordial": true
+				}
 			]
 		},
 		{
@@ -562,9 +566,6 @@
 							],
 							"type": "entries"
 						}
-					],
-					"languageTags": [
-						"Auran"
 					]
 				},
 				{
@@ -605,10 +606,15 @@
 						"Weapon Proficiency",
 						"Spellcasting"
 					],
-					"languageTags": [
-						"Sylvan",
-						"Elvish",
-						"Choose"
+					"overwrite": {
+						"languageProficiencies": true
+					},
+					"languageProficiencies": [
+						{
+							"sylvan": true,
+							"elvish": true,
+							"anyStandard": 1
+						}
 					]
 				},
 				{
@@ -656,9 +662,6 @@
 					"traitTags": [
 						"Weapon Proficiency",
 						"Amphibious"
-					],
-					"languageTags": [
-						"Aquan"
 					]
 				},
 				{
@@ -699,10 +702,15 @@
 						"Spellcasting",
 						"Damage Resistance"
 					],
-					"languageTags": [
-						"Common",
-						"Elvish",
-						"Choose"
+					"overwrite": {
+						"languageProficiencies": true
+					},
+					"languageProficiencies": [
+						{
+							"common": true,
+							"elvish": true,
+							"anyStandard": 1
+						}
 					]
 				},
 				{
@@ -798,9 +806,6 @@
 					"traitTags": [
 						"Weapon Proficiency",
 						"Amphibious"
-					],
-					"languageTags": [
-						"Aquan"
 					]
 				},
 				{
@@ -1005,7 +1010,7 @@
 							"type": "entries",
 							"name": "Gift of the Shadows",
 							"entries": [
-								"When you make a Charisma ({@skill Performance}) or Dexterity ({@skill Stealth}) check, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+								"When you make a Charisma ({@skill Performance}) or Dexterity ({@skill Stealth}) check, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
 							]
 						},
 						{
@@ -1050,13 +1055,15 @@
 				"Skill Proficiency",
 				"Improved Resting"
 			],
-			"languageTags": [
-				"Common",
-				"Elvish"
-			],
 			"skillProficiencies": [
 				{
 					"perception": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"elvish": true
 				}
 			]
 		},
@@ -1260,13 +1267,15 @@
 			"traitTags": [
 				"Skill Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Elvish"
-			],
 			"skillProficiencies": [
 				{
 					"perception": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"elvish": true
 				}
 			]
 		},
@@ -1398,13 +1407,15 @@
 				"Weapon Proficiency",
 				"Improved Resting"
 			],
-			"languageTags": [
-				"Common",
-				"Elvish"
-			],
 			"skillProficiencies": [
 				{
 					"perception": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"elvish": true
 				}
 			]
 		},
@@ -1540,10 +1551,15 @@
 							"type": "entries"
 						}
 					],
-					"languageTags": [
-						"Common",
-						"Gnomish",
-						"Undercommon"
+					"overwrite": {
+						"languageProficiencies": true
+					},
+					"languageProficiencies": [
+						{
+							"common": true,
+							"gnomish": true,
+							"undercommon": true
+						}
 					]
 				},
 				{
@@ -1691,10 +1707,15 @@
 							"type": "entries"
 						}
 					],
-					"languageTags": [
-						"Common",
-						"Gnomish",
-						"Undercommon"
+					"overwrite": {
+						"languageProficiencies": true
+					},
+					"languageProficiencies": [
+						{
+							"common": true,
+							"gnomish": true,
+							"undercommon": true
+						}
 					]
 				},
 				{
@@ -1711,7 +1732,7 @@
 							"type": "entries",
 							"name": "Gifted Scribe",
 							"entries": [
-								"You are proficient with {@item calligrapher's supplies|phb} and {@item forgery kit|phb|forgery kits}. When you make an ability check using either one of these tools, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+								"You are proficient with {@item calligrapher's supplies|phb} and {@item forgery kit|phb|forgery kits}. When you make an ability check using either one of these tools, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
 							]
 						},
 						{
@@ -1739,9 +1760,6 @@
 					"traitTags": [
 						"Spellcasting",
 						"Dragonmark"
-					],
-					"languageTags": [
-						"Choose"
 					]
 				}
 			],
@@ -1749,10 +1767,12 @@
 			"traitTags": [
 				"Uncommon Race"
 			],
-			"languageTags": [
-				"Common",
-				"Gnomish",
-				"Dwarvish"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"gnomish": true,
+					"dwarvish": true
+				}
 			]
 		},
 		{
@@ -1866,7 +1886,7 @@
 					"name": "Breath Weapon",
 					"entries": [
 						"You can use your action to exhale destructive energy. Your draconic ancestry determines the size, shape, and damage type of the exhalation.",
-						"When you use your breath weapon, each creature in the area of the exhalation must make a saving throw, the type of which is determined by your draconic ancestry. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level.",
+						"When you use your breath weapon, each creature in the area of the exhalation must make a saving throw, the type of which is determined by your draconic ancestry. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes {@dice 2d6} damage on a failed save, and half as much damage on a successful one. The damage increases to {@dice 3d6} at 6th level, {@dice 4d6} at 11th level, and {@dice 5d6} at 16th level.",
 						"After you use your breath weapon, you can't use it again until you complete a short or long rest."
 					],
 					"type": "entries"
@@ -1891,9 +1911,11 @@
 				"Damage Resistance",
 				"Uncommon Race"
 			],
-			"languageTags": [
-				"Common",
-				"Draconic"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"draconic": true
+				}
 			]
 		},
 		{
@@ -1946,7 +1968,7 @@
 				{
 					"name": "Stone's Endurance",
 					"entries": [
-						"You can focus yourself to occasionally shrug off injury. When you take damage, you can use your reaction to roll a d12. Add your Constitution modifier to the number rolled, and reduce the damage by that total. After you use this trait, you can't use it again until you finish a short or long rest."
+						"You can focus yourself to occasionally shrug off injury. When you take damage, you can use your reaction to roll a {@dice d12}. Add your Constitution modifier to the number rolled, and reduce the damage by that total. After you use this trait, you can't use it again until you finish a short or long rest."
 					],
 					"type": "entries"
 				},
@@ -1977,13 +1999,15 @@
 				"Skill Proficiency",
 				"Powerful Build"
 			],
-			"languageTags": [
-				"Common",
-				"Giant"
-			],
 			"skillProficiencies": [
 				{
 					"athletics": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"giant": true
 				}
 			]
 		},
@@ -2398,7 +2422,7 @@
 							"type": "entries",
 							"name": "Deductive Intuition",
 							"entries": [
-								"When you make an Intelligence ({@skill Investigation}) or Wisdom ({@skill Insight}) check, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+								"When you make an Intelligence ({@skill Investigation}) or Wisdom ({@skill Insight}) check, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
 							],
 							"data": {
 								"overwrite": "Skill Versatility"
@@ -2426,9 +2450,14 @@
 						"Spellcasting",
 						"Dragonmark"
 					],
-					"languageTags": [
-						"Common",
-						"Elvish"
+					"overwrite": {
+						"languageProficiencies": true
+					},
+					"languageProficiencies": [
+						{
+							"common": true,
+							"elvish": true
+						}
 					]
 				},
 				{
@@ -2471,7 +2500,7 @@
 							"type": "entries",
 							"name": "Windwright's Intuition",
 							"entries": [
-								"When you make a Dexterity ({@skill Acrobatics}) check or any ability check involving operating or maintaining a water or air vehicle, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+								"When you make a Dexterity ({@skill Acrobatics}) check or any ability check involving operating or maintaining a water or air vehicle, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
 							]
 						},
 						{
@@ -2504,9 +2533,14 @@
 						"Spellcasting",
 						"Dragonmark"
 					],
-					"languageTags": [
-						"Common",
-						"Elvish"
+					"overwrite": {
+						"languageProficiencies": true
+					},
+					"languageProficiencies": [
+						{
+							"common": true,
+							"elvish": true
+						}
 					]
 				}
 			],
@@ -2514,11 +2548,6 @@
 			"traitTags": [
 				"Skill Proficiency",
 				"Uncommon Race"
-			],
-			"languageTags": [
-				"Common",
-				"Elvish",
-				"Choose"
 			],
 			"skillProficiencies": [
 				{
@@ -2545,6 +2574,13 @@
 						],
 						"count": 2
 					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"elvish": true,
+					"anyStandard": 1
 				}
 			]
 		},
@@ -2644,13 +2680,14 @@
 					],
 					"overwrite": {
 						"ability": true,
-						"traitTags": true
+						"traitTags": true,
+						"languageProficiencies": true
 					},
 					"entries": [
 						{
 							"name": "Hunter's Intuition",
 							"entries": [
-								"Your mark sharpens your senses and helps you find your prey. When you make a Wisdom ({@skill Perception}) or Wisdom ({@skill Survival}) check, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+								"Your mark sharpens your senses and helps you find your prey. When you make a Wisdom ({@skill Perception}) or Wisdom ({@skill Survival}) check, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
 							],
 							"data": {
 								"overwrite": "Menacing"
@@ -2692,9 +2729,11 @@
 						"Spellcasting",
 						"Dragonmark"
 					],
-					"languageTags": [
-						"Common",
-						"Goblin"
+					"languageProficiencies": [
+						{
+							"common": true,
+							"goblin": true
+						}
 					]
 				}
 			],
@@ -2703,14 +2742,16 @@
 				"Skill Proficiency",
 				"Uncommon Race"
 			],
-			"languageTags": [
-				"Common",
-				"Orc",
-				"Dwarvish"
-			],
 			"skillProficiencies": [
 				{
 					"intimidation": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"orc": true,
+					"dwarvish": true
 				}
 			]
 		},
@@ -2902,10 +2943,15 @@
 						"Damage Resistance",
 						"Spellcasting"
 					],
-					"languageTags": [
-						"Common",
-						"Dwarvish",
-						"Undercommon"
+					"overwrite": {
+						"languageProficiencies": true
+					},
+					"languageProficiencies": [
+						{
+							"common": true,
+							"dwarvish": true,
+							"undercommon": true
+						}
 					]
 				},
 				{
@@ -2923,7 +2969,7 @@
 							"type": "entries",
 							"name": "Master of Locks",
 							"entries": [
-								"When you make an Intelligence ({@skill History}), Intelligence ({@skill Investigation}), or {@item Thieves' tools|phb} check involving lock and trap mechanisms, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+								"When you make an Intelligence ({@skill History}), Intelligence ({@skill Investigation}), or {@item Thieves' tools|phb} check involving lock and trap mechanisms, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
 							]
 						},
 						{
@@ -2937,10 +2983,6 @@
 					"traitTags": [
 						"Spellcasting",
 						"Dragonmark"
-					],
-					"languageTags": [
-						"Common",
-						"Elvish"
 					]
 				}
 			],
@@ -2951,9 +2993,11 @@
 				"Tool Proficiency",
 				"Skill Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Dwarvish"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"dwarvish": true
+				}
 			]
 		},
 		{
@@ -3093,7 +3137,7 @@
 						{
 							"name": "Wild Intuition",
 							"entries": [
-								"When you make a Wisdom ({@skill Animal Handling}) or Intelligence ({@skill Nature}) check, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+								"When you make a Wisdom ({@skill Animal Handling}) or Intelligence ({@skill Nature}) check, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
 							],
 							"type": "entries"
 						},
@@ -3207,7 +3251,7 @@
 						{
 							"name": "Intuitive Motion",
 							"entries": [
-								"When you make a Strength ({@skill Athletics}) check or any ability check to operate or maintain a land vehicle, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+								"When you make a Strength ({@skill Athletics}) check or any ability check to operate or maintain a land vehicle, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
 							],
 							"type": "entries"
 						},
@@ -3255,7 +3299,7 @@
 						{
 							"name": "Sentinel's Intuition",
 							"entries": [
-								"When you roll for Initiative or make a Wisdom ({@skill Perception}) check to notice a threat, you can roll one Intuition die, a d4, and add it to the ability check."
+								"When you roll for Initiative or make a Wisdom ({@skill Perception}) check to notice a threat, you can roll one Intuition die, a {@dice d4}, and add it to the ability check."
 							],
 							"type": "entries"
 						},
@@ -3355,21 +3399,28 @@
 					"traitTags": [
 						"Skill Proficiency"
 					],
-					"languageTags": [
-						"Common",
-						"Other"
-					],
 					"skillProficiencies": [
 						{
 							"athletics": true
+						}
+					],
+					"overwrite": {
+						"languageProficiencies": true
+					},
+					"languageProficiencies": [
+						{
+							"common": true,
+							"other": true
 						}
 					]
 				}
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/279/human.mp3",
-			"languageTags": [
-				"Common",
-				"Choose"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"anyStandard": 1
+				}
 			]
 		},
 		{
@@ -3504,7 +3555,7 @@
 						{
 							"name": "Medical Intuition",
 							"entries": [
-								"When you make a Wisdom ({@skill Medicine}) check, you can roll one Intuition die, a d4, and add the number rolled to the ability check."
+								"When you make a Wisdom ({@skill Medicine}) check, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
 							],
 							"type": "entries"
 						},
@@ -3547,7 +3598,7 @@
 						{
 							"name": "Ever Hospitable",
 							"entries": [
-								"When you make a Charisma ({@skill Persuasion}) check or an ability check involving {@item brewer's supplies|phb} or {@item cook's utensils|phb}, you can roll one Intuition die (a d4) and add the number rolled to the ability check."
+								"When you make a Charisma ({@skill Persuasion}) check or an ability check involving {@item brewer's supplies|phb} or {@item cook's utensils|phb}, you can roll one Intuition die (a {@dice d4}) and add the number rolled to the ability check."
 							],
 							"type": "entries"
 						}
@@ -3559,9 +3610,11 @@
 				}
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/260/halfling.mp3",
-			"languageTags": [
-				"Common",
-				"Halfling"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"halfling": true
+				}
 			]
 		},
 		{
@@ -3711,16 +3764,18 @@
 						{
 							"name": "Shifting Feature",
 							"entries": [
-								"While shifting, you can make a bite attack as an action. This is a melee weapon attack that uses Strength for its attack roll and damage bonus and deals 1d6 piercing damage. If this attack hits a target that is your size or smaller, the target is also {@condition grappled}."
+								"While shifting, you can make a bite attack as an action. This is a melee weapon attack that uses Strength for its attack roll and damage bonus and deals {@dice 1d6} piercing damage. If this attack hits a target that is your size or smaller, the target is also {@condition grappled}."
 							],
 							"type": "entries"
 						}
 					]
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Sylvan"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"sylvan": true
+				}
 			]
 		},
 		{
@@ -3957,9 +4012,14 @@
 					"traitTags": [
 						"Spellcasting"
 					],
-					"languageTags": [
-						"Common",
-						"Abyssal"
+					"overwrite": {
+						"languageProficiencies": true
+					},
+					"languageProficiencies": [
+						{
+							"common": true,
+							"abyssal": true
+						}
 					]
 				},
 				{
@@ -4380,9 +4440,11 @@
 				"Damage Resistance",
 				"Uncommon Race"
 			],
-			"languageTags": [
-				"Common",
-				"Infernal"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"infernal": true
+				}
 			]
 		},
 		{
@@ -4451,7 +4513,7 @@
 				{
 					"name": "Surprise Attack",
 					"entries": [
-						"If you surprise a creature and hit it with an attack on your first turn in combat, the attack deals an extra 2d6 damage to it. You can use this trait only once per combat."
+						"If you surprise a creature and hit it with an attack on your first turn in combat, the attack deals an extra {@dice 2d6} damage to it. You can use this trait only once per combat."
 					],
 					"type": "entries"
 				},
@@ -4468,13 +4530,15 @@
 				"Monstrous Race",
 				"Skill Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Goblin"
-			],
 			"skillProficiencies": [
 				{
 					"stealth": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"goblin": true
 				}
 			]
 		},
@@ -4612,9 +4676,11 @@
 				"Damage Resistance",
 				"Spellcasting"
 			],
-			"languageTags": [
-				"Common",
-				"Celestial"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"celestial": true
+				}
 			]
 		},
 		{
@@ -4692,10 +4758,12 @@
 				"Spellcasting",
 				"Powerful Build"
 			],
-			"languageTags": [
-				"Common",
-				"Elvish",
-				"Giant"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"elvish": true,
+					"giant": true
+				}
 			]
 		},
 		{
@@ -4765,9 +4833,11 @@
 			"traitTags": [
 				"Monstrous Race"
 			],
-			"languageTags": [
-				"Common",
-				"Goblin"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"goblin": true
+				}
 			]
 		},
 		{
@@ -4839,9 +4909,11 @@
 				"Armor Proficiency",
 				"Weapon Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Goblin"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"goblin": true
+				}
 			]
 		},
 		{
@@ -4908,10 +4980,6 @@
 				}
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/294/kenku-2.mp3",
-			"languageTags": [
-				"Common",
-				"Auran"
-			],
 			"skillProficiencies": [
 				{
 					"choose": {
@@ -4927,6 +4995,12 @@
 			],
 			"traitTags": [
 				"Skill Proficiency"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"primordial": true
+				}
 			]
 		},
 		{
@@ -5003,9 +5077,11 @@
 			"traitTags": [
 				"Monstrous Race"
 			],
-			"languageTags": [
-				"Common",
-				"Draconic"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"draconic": true
+				}
 			]
 		},
 		{
@@ -5055,7 +5131,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Your fanged maw is a natural weapon, which you can use to make unarmed strikes. If you hit with it, you deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
+						"Your fanged maw is a natural weapon, which you can use to make unarmed strikes. If you hit with it, you deal piercing damage equal to {@dice 1d6} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
 					],
 					"type": "entries"
 				},
@@ -5107,10 +5183,6 @@
 				"Skill Proficiency",
 				"Natural Armor"
 			],
-			"languageTags": [
-				"Common",
-				"Draconic"
-			],
 			"skillProficiencies": [
 				{
 					"choose": {
@@ -5123,6 +5195,12 @@
 						],
 						"count": 2
 					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"draconic": true
 				}
 			]
 		},
@@ -5203,13 +5281,15 @@
 				"Monstrous Race",
 				"Skill Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Orc"
-			],
 			"skillProficiencies": [
 				{
 					"intimidation": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"orc": true
 				}
 			]
 		},
@@ -5268,7 +5348,7 @@
 				{
 					"name": "Cat's Claws",
 					"entries": [
-						"Because of your claws, you have a climbing speed of 20 feet. In addition, your claws are natural weapons, which you can use to make unarmed strikes. If you hit with them, you deal slashing damage equal to 1d4 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
+						"Because of your claws, you have a climbing speed of 20 feet. In addition, your claws are natural weapons, which you can use to make unarmed strikes. If you hit with them, you deal slashing damage equal to {@dice 1d4} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
 					],
 					"type": "entries"
 				},
@@ -5292,14 +5372,16 @@
 				"Unarmed Strike",
 				"Skill Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Choose"
-			],
 			"skillProficiencies": [
 				{
 					"perception": true,
 					"stealth": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"anyStandard": 1
 				}
 			]
 		},
@@ -5390,9 +5472,11 @@
 				"Spellcasting",
 				"Damage Resistance"
 			],
-			"languageTags": [
-				"Common",
-				"Primordial"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"primordial": true
+				}
 			]
 		},
 		{
@@ -5470,10 +5554,12 @@
 				"Spellcasting",
 				"Monstrous Race"
 			],
-			"languageTags": [
-				"Common",
-				"Abyssal",
-				"Draconic"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"abyssal": true,
+					"draconic": true
+				}
 			]
 		},
 		{
@@ -5521,13 +5607,15 @@
 			"traitTags": [
 				"Skill Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Choose"
-			],
 			"skillProficiencies": [
 				{
 					"deception": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"anyStandard": 2
 				}
 			]
 		},
@@ -5578,9 +5666,11 @@
 				"Natural Armor",
 				"Improved Resting"
 			],
-			"languageTags": [
-				"Common",
-				"Choose"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"anyStandard": 1
+				}
 			]
 		},
 		{
@@ -5721,7 +5811,7 @@
 				{
 					"name": "Horns",
 					"entries": [
-						"You are never unarmed. You are proficient with your horns, which are a melee weapon that deals 1d10 piercing damage. Your horns grant you advantage on all checks made to shove a creature, but not to avoid being shoved yourself."
+						"You are never unarmed. You are proficient with your horns, which are a melee weapon that deals {@dice 1d10} piercing damage. Your horns grant you advantage on all checks made to shove a creature, but not to avoid being shoved yourself."
 					],
 					"type": "entries"
 				},
@@ -5765,8 +5855,10 @@
 				"Tool Proficiency",
 				"Unarmed Strike"
 			],
-			"languageTags": [
-				"Common"
+			"languageProficiencies": [
+				{
+					"common": true
+				}
 			]
 		},
 		{
@@ -5935,10 +6027,12 @@
 			"traitTags": [
 				"Amphibious"
 			],
-			"languageTags": [
-				"Common",
-				"Other",
-				"Choose"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true,
+					"anyStandard": 1
+				}
 			]
 		},
 		{
@@ -6050,9 +6144,11 @@
 				"Natural Armor",
 				"Damage Resistance"
 			],
-			"languageTags": [
-				"Common",
-				"Goblin"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"goblin": true
+				}
 			]
 		},
 		{
@@ -6123,7 +6219,7 @@
 				{
 					"name": "Lucky",
 					"entries": [
-						"When you roll a 1 on the d20 for an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
+						"When you roll a 1 on the {@dice d20} for an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
 					],
 					"type": "entries"
 				}
@@ -6131,14 +6227,16 @@
 			"traitTags": [
 				"Skill Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Other"
-			],
 			"skillProficiencies": [
 				{
 					"athletics": true,
 					"acrobatics": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
 				}
 			]
 		},
@@ -6180,7 +6278,7 @@
 				{
 					"name": "Blood Thirst",
 					"entries": [
-						"You can drain blood and life energy from a willing creature, or one that is {@condition grappled} by you, {@condition incapacitated}, or {@condition restrained}. Make a melee attack against the target. If you hit, you deal 1 piercing damage and 1d6 necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and you regain hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0. A humanoid killed in this way becomes a null (see \"Zendikar Bestiary\")."
+						"You can drain blood and life energy from a willing creature, or one that is {@condition grappled} by you, {@condition incapacitated}, or {@condition restrained}. Make a melee attack against the target. If you hit, you deal 1 piercing damage and {@dice 1d6} necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and you regain hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0. A humanoid killed in this way becomes a null (see \"Zendikar Bestiary\")."
 					],
 					"type": "entries"
 				},
@@ -6209,9 +6307,11 @@
 			"traitTags": [
 				"Damage Resistance"
 			],
-			"languageTags": [
-				"Common",
-				"Other"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
+				}
 			]
 		},
 		{
@@ -6294,7 +6394,7 @@
 						"A gifted aetherborn has the ability to drain the life essence of other beings. Similar to the way heat is transferred from a warm object to a cold one, a gifted aetherborn need only touch another living being with a clawed hand to draw life essence out, fueling their own continued existence while draining strength and vitality from their victim.",
 						"For many aetherborn, living as they do for indulgence and instant gratification, the concepts of \"want\" and \"need\" are virtually synonymous. But Aetherborn with this gift understand what it is to truly need, for they develop a hunger for life essence that far exceeds any desires they might have felt before their transformation. A gifted aetherborn who abstains from this feeding deteriorates even more rapidly than other aetherborn, while enduring unspeakable agony caused by the deprivation of life energy.",
 						"At the DM's option, an aetherborn character can research methods of achieving this dark \"gift.\" The process is similar to inventing and manufacturing a rare magic item (see \"Inventing and Manufacturing Devices\" earlier in this document). But rather than aether, the process requires a variety of rare unguents and unusual ingredients that make up the cost of researching and undergoing the transformation.",
-						"An aetherborn with this gift gains the Drain Life ability: a natural attack that deals 1d6 necrotic damage and restores the same number of hit points to the aetherborn. However, if the aetherborn goes for 7 days without dealing this damage, their hit point maximum is reduced by 1d6 per week. This reduction can't be removed until the aetherborn has used their Drain Life ability and completed a long rest."
+						"An aetherborn with this gift gains the Drain Life ability: a natural attack that deals {@dice 1d6} necrotic damage and restores the same number of hit points to the aetherborn. However, if the aetherborn goes for 7 days without dealing this damage, their hit point maximum is reduced by {@dice 1d6} per week. This reduction can't be removed until the aetherborn has used their Drain Life ability and completed a long rest."
 					]
 				}
 			],
@@ -6302,13 +6402,15 @@
 				"Damage Resistance",
 				"Skill Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Choose"
-			],
 			"skillProficiencies": [
 				{
 					"intimidation": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"anyStandard": 2
 				}
 			]
 		},
@@ -6395,9 +6497,11 @@
 				"Skill Proficiency",
 				"Tool Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Dwarvish"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"dwarvish": true
+				}
 			]
 		},
 		{
@@ -6470,9 +6574,14 @@
 							}
 						}
 					],
-					"languageTags": [
-						"Common",
-						"Other"
+					"overwrite": {
+						"languageProficiencies": true
+					},
+					"languageProficiencies": [
+						{
+							"common": true,
+							"other": true
+						}
 					]
 				},
 				{
@@ -6490,15 +6599,17 @@
 							"name": "Tireless Precision",
 							"entries": [
 								"You are proficient in one of the following skills of your choice: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance}, or {@skill Sleight of Hand}. You are also proficient with one tool of your choice.",
-								"Whenever you make an ability check with the chosen skill or tool, roll a d4, and add the number rolled to the check's total."
+								"Whenever you make an ability check with the chosen skill or tool, roll a {@dice d4}, and add the number rolled to the check's total."
 							],
 							"type": "entries"
 						}
 					]
 				}
 			],
-			"languageTags": [
-				"Common"
+			"languageProficiencies": [
+				{
+					"common": true
+				}
 			]
 		},
 		{
@@ -6694,9 +6805,11 @@
 					]
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Choose"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"anyStandard": 1
+				}
 			]
 		},
 		{
@@ -6768,9 +6881,11 @@
 				"Damage Resistance",
 				"Spellcasting"
 			],
-			"languageTags": [
-				"Common",
-				"Celestial"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"celestial": true
+				}
 			]
 		},
 		{
@@ -6848,10 +6963,6 @@
 			"traitTags": [
 				"Skill Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Choose"
-			],
 			"skillProficiencies": [
 				{
 					"choose": {
@@ -6876,6 +6987,12 @@
 							"persuasion"
 						]
 					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"anyStandard": 1
 				}
 			]
 		},
@@ -7020,9 +7137,11 @@
 					]
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Other"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
+				}
 			]
 		},
 		{
@@ -7084,9 +7203,11 @@
 			"traitTags": [
 				"Weapon Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Other"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
+				}
 			]
 		},
 		{
@@ -7126,7 +7247,7 @@
 				{
 					"name": "Natural Weapon",
 					"entries": [
-						"You can use your horns as a natural weapon to make unarmed strikes. If you hit with your horns, you deal bludgeoning damage equal to 1d6 + your Strength modifier."
+						"You can use your horns as a natural weapon to make unarmed strikes. If you hit with your horns, you deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier."
 					],
 					"type": "entries"
 				},
@@ -7164,13 +7285,15 @@
 				"Skill Proficiency",
 				"Unarmed Strike"
 			],
-			"languageTags": [
-				"Common",
-				"Other"
-			],
 			"skillProficiencies": [
 				{
 					"intimidation": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
 				}
 			]
 		},
@@ -7219,8 +7342,8 @@
 					"name": "Natural Weapons",
 					"entries": [
 						"Your fanged maw and constricting serpentine body are natural weapons, which you can use to make unarmed strikes.",
-						"If you hit with your bite, you deal piercing damage equal to 1d4 + your Strength modifier, and your target must make a Constitution saving throw (DC 8 + your proficiency bonus + your Constitution modifier). On a failed save, the target takes 1d4 poison damage.",
-						"If you hit with your constrict attack, you deal bludgeoning damage equal to 1d6 + your Strength modifier, and the target is {@condition grappled} (escape DC 8 + your proficiency bonus + your Strength modifier). Until this grapple ends, the target is {@condition restrained}, and you can't constrict another target."
+						"If you hit with your bite, you deal piercing damage equal to {@dice 1d4} + your Strength modifier, and your target must make a Constitution saving throw (DC 8 + your proficiency bonus + your Constitution modifier). On a failed save, the target takes {@dice 1d4} poison damage.",
+						"If you hit with your constrict attack, you deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier, and the target is {@condition grappled} (escape DC 8 + your proficiency bonus + your Strength modifier). Until this grapple ends, the target is {@condition restrained}, and you can't constrict another target."
 					],
 					"type": "entries"
 				},
@@ -7250,9 +7373,11 @@
 				"Unarmed Strike",
 				"Tool Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Other"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
+				}
 			]
 		},
 		{
@@ -7400,9 +7525,11 @@
 					]
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Other"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
+				}
 			]
 		},
 		{
@@ -7552,9 +7679,11 @@
 					]
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Other"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
+				}
 			]
 		},
 		{
@@ -7594,7 +7723,7 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"Your claws are natural weapons, which you can use to make unarmed strikes. If you hit with them, you deal slashing damage equal to 1d4 + your Strength modifier, instead of bludgeoning damage normal for an unarmed strike."
+						"Your claws are natural weapons, which you can use to make unarmed strikes. If you hit with them, you deal slashing damage equal to {@dice 1d4} + your Strength modifier, instead of bludgeoning damage normal for an unarmed strike."
 					],
 					"type": "entries"
 				},
@@ -7639,13 +7768,15 @@
 				"Natural Armor",
 				"Skill Proficiency"
 			],
-			"languageTags": [
-				"Aquan",
-				"Common"
-			],
 			"skillProficiencies": [
 				{
 					"survival": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"primordial": true,
+					"common": true
 				}
 			]
 		},
@@ -7712,7 +7843,7 @@
 					"name": "Poisonous Skin",
 					"entries": [
 						"Any creature that grapples you or otherwise comes into direct contact with your skin must succeed on a DC 12 Constitution saving throw or become {@condition poisoned} for 1 minute. A {@condition poisoned} creature no longer in direct contact with you can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
-						"You can also apply this poison to any piercing weapon as part of an attack with that weapon, though when you hit the poison reacts differently. The target must succeed on a DC 12 Constitution saving throw or take 2d4 poison damage."
+						"You can also apply this poison to any piercing weapon as part of an attack with that weapon, though when you hit the poison reacts differently. The target must succeed on a DC 12 Constitution saving throw or take {@dice 2d4} poison damage."
 					]
 				},
 				{
@@ -7741,12 +7872,14 @@
 				"Skill Proficiency",
 				"Amphibious"
 			],
-			"languageTags": [
-				"Other"
-			],
 			"skillProficiencies": [
 				{
 					"perception": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"other": true
 				}
 			]
 		},
@@ -7806,8 +7939,10 @@
 				"Amphibious",
 				"NPC Race"
 			],
-			"languageTags": [
-				"Other"
+			"languageProficiencies": [
+				{
+					"other": true
+				}
 			]
 		},
 		{
@@ -7827,7 +7962,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Your fanged maw is a natural weapon, which you can use to make unarmed strikes. If you hit with it, you deal piercing damage equal to 1d4 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
+						"Your fanged maw is a natural weapon, which you can use to make unarmed strikes. If you hit with it, you deal piercing damage equal to {@dice 1d4} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
 					],
 					"type": "entries"
 				},
@@ -7893,11 +8028,13 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Undercommon"
-			],
 			"traitTags": [
 				"NPC Race"
+			],
+			"languageProficiencies": [
+				{
+					"undercommon": true
+				}
 			]
 		},
 		{
@@ -7930,12 +8067,14 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Goblin"
-			],
 			"traitTags": [
 				"NPC Race"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"goblin": true
+				}
 			]
 		},
 		{
@@ -7996,8 +8135,10 @@
 				"Amphibious",
 				"NPC Race"
 			],
-			"languageTags": [
-				"Undercommon"
+			"languageProficiencies": [
+				{
+					"undercommon": true
+				}
 			]
 		},
 		{
@@ -8112,8 +8253,10 @@
 				"Natural Armor",
 				"NPC Race"
 			],
-			"languageTags": [
-				"Other"
+			"languageProficiencies": [
+				{
+					"other": true
+				}
 			]
 		},
 		{
@@ -8213,10 +8356,16 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Other",
-				"Choose"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"anyStandard": 1
+				},
+				{
+					"common": true,
+					"other": true,
+					"anyStandard": 1
+				}
 			]
 		},
 		{
@@ -8258,7 +8407,7 @@
 					"type": "entries",
 					"name": "Bloodthirst",
 					"entries": [
-						"You can drain blood and life energy from a willing creature, or one that is {@condition grappled} by you, {@condition incapacitated}, or {@condition restrained}. Make a melee attack against the target. If you hit, you deal 1 piercing damage and 1d6 necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and you regain hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces it's hit point maximum to 0."
+						"You can drain blood and life energy from a willing creature, or one that is {@condition grappled} by you, {@condition incapacitated}, or {@condition restrained}. Make a melee attack against the target. If you hit, you deal 1 piercing damage and {@dice 1d6} necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and you regain hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces it's hit point maximum to 0."
 					]
 				},
 				{
@@ -8293,9 +8442,11 @@
 			"traitTags": [
 				"Damage Resistance"
 			],
-			"languageTags": [
-				"Common",
-				"Other"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
+				}
 			]
 		},
 		{
@@ -8372,13 +8523,15 @@
 			"traitTags": [
 				"Skill Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Orc"
-			],
 			"skillProficiencies": [
 				{
 					"intimidation": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"orc": true
 				}
 			]
 		},
@@ -8441,9 +8594,11 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Goblin"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"goblin": true
+				}
 			]
 		},
 		{
@@ -8500,9 +8655,11 @@
 			"traitTags": [
 				"Spellcasting"
 			],
-			"languageTags": [
-				"Common",
-				"Other"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
+				}
 			]
 		},
 		{
@@ -8628,10 +8785,12 @@
 			"traitTags": [
 				"Amphibious"
 			],
-			"languageTags": [
-				"Common",
-				"Other",
-				"Choose"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true,
+					"anyStandard": 1
+				}
 			]
 		},
 		{
@@ -8679,7 +8838,7 @@
 					"type": "entries",
 					"name": "Hooves",
 					"entries": [
-						"Your hooves are natural melee weapons, with which you're proficient. If you hit with a hoof, the target takes bludgeoning damage equal to 1d6 + your Strength modifier."
+						"Your hooves are natural melee weapons, with which you're proficient. If you hit with a hoof, the target takes bludgeoning damage equal to {@dice 1d6} + your Strength modifier."
 					]
 				},
 				{
@@ -8716,13 +8875,15 @@
 				"Skill Proficiency",
 				"Unarmed Strike"
 			],
-			"languageTags": [
-				"Common",
-				"Sylvan"
-			],
 			"skillProficiencies": [
 				{
 					"survival": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"sylvan": true
 				}
 			]
 		},
@@ -8769,7 +8930,7 @@
 				{
 					"name": "Horns",
 					"entries": [
-						"Your horns are natural melee weapons, with which you're proficient. When you hit with them, the target takes piercing damage equal to 1d6 + your Strength modifier."
+						"Your horns are natural melee weapons, with which you're proficient. When you hit with them, the target takes piercing damage equal to {@dice 1d6} + your Strength modifier."
 					],
 					"type": "entries"
 				},
@@ -8813,13 +8974,15 @@
 				"Skill Proficiency",
 				"Unarmed Strike"
 			],
-			"languageTags": [
-				"Common",
-				"Other"
-			],
 			"skillProficiencies": [
 				{
 					"intimidation": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
 				}
 			]
 		},
@@ -8849,7 +9012,7 @@
 				{
 					"name": "Talons",
 					"entries": [
-						"You are proficient with your unarmed strikes, which deal 1d4 slashing damage on a hit."
+						"You are proficient with your unarmed strikes, which deal {@dice 1d4} slashing damage on a hit."
 					],
 					"type": "entries"
 				},
@@ -8865,8 +9028,10 @@
 				"Unarmed Strike",
 				"NPC Race"
 			],
-			"languageTags": [
-				"Auran"
+			"languageProficiencies": [
+				{
+					"primordial": true
+				}
 			]
 		},
 		{
@@ -8943,10 +9108,12 @@
 				"Spellcasting",
 				"NPC Race"
 			],
-			"languageTags": [
-				"Gnomish",
-				"Terran",
-				"Undercommon"
+			"languageProficiencies": [
+				{
+					"gnomish": true,
+					"primordial": true,
+					"undercommon": true
+				}
 			]
 		},
 		{
@@ -8985,12 +9152,14 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Goblin"
-			],
 			"traitTags": [
 				"NPC Race"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"goblin": true
+				}
 			]
 		},
 		{
@@ -9028,12 +9197,14 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Auran"
-			],
 			"traitTags": [
 				"NPC Race"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"primordial": true
+				}
 			]
 		},
 		{
@@ -9079,12 +9250,14 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Draconic"
-			],
 			"traitTags": [
 				"NPC Race"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"draconic": true
+				}
 			]
 		},
 		{
@@ -9129,8 +9302,10 @@
 				"Natural Armor",
 				"NPC Race"
 			],
-			"languageTags": [
-				"Draconic"
+			"languageProficiencies": [
+				{
+					"draconic": true
+				}
 			]
 		},
 		{
@@ -9162,9 +9337,11 @@
 				"Amphibious",
 				"NPC Race"
 			],
-			"languageTags": [
-				"Common",
-				"Aquan"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"primordial": true
+				}
 			]
 		},
 		{
@@ -9203,12 +9380,14 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Orc"
-			],
 			"traitTags": [
 				"NPC Race"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"orc": true
+				}
 			]
 		},
 		{
@@ -9295,10 +9474,6 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Choose"
-			],
 			"traitTags": [
 				"Skill Proficiency",
 				"Tool Proficiency"
@@ -9314,6 +9489,12 @@
 						],
 						"count": 2
 					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"anyStandard": 2
 				}
 			]
 		},
@@ -9412,13 +9593,15 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Choose",
-				"Other"
-			],
 			"traitTags": [
 				"Damage Resistance"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true,
+					"anyStandard": 1
+				}
 			]
 		},
 		{
@@ -9491,9 +9674,6 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Common"
-			],
 			"traitTags": [
 				"Skill Proficiency"
 			],
@@ -9518,7 +9698,7 @@
 							"type": "entries",
 							"name": "Shifting Feature",
 							"entries": [
-								"Whenever you shift, you gain 1d6 additional temporary hit points, and while shifted, you have a +1 bonus to your AC."
+								"Whenever you shift, you gain {@dice 1d6} additional temporary hit points, and while shifted, you have a +1 bonus to your AC."
 							]
 						}
 					],
@@ -9552,7 +9732,7 @@
 							"type": "entries",
 							"name": "Shifting Feature",
 							"entries": [
-								"While shifted, you can use your elongated fangs to make an unarmed strike as a bonus action. If you hit with your fangs, you can deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
+								"While shifted, you can use your elongated fangs to make an unarmed strike as a bonus action. If you hit with your fangs, you can deal piercing damage equal to {@dice 1d6} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
 							]
 						}
 					],
@@ -9652,6 +9832,11 @@
 			"skillProficiencies": [
 				{
 					"perception": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true
 				}
 			]
 		},
@@ -9764,9 +9949,6 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Common"
-			],
 			"traitTags": [
 				"Natural Armor",
 				"Improved Resting",
@@ -9819,9 +10001,6 @@
 							]
 						}
 					],
-					"languageTags": [
-						"Choose"
-					],
 					"traitTags": [
 						"Tool Proficiency",
 						"Skill Proficiency"
@@ -9866,7 +10045,7 @@
 							"type": "entries",
 							"name": "Iron Fists",
 							"entries": [
-								"When you hit with an unarmed strike, you can deal 1d4 + your Strength modifier bludgeoning damage, instead of the normal damage for an unarmed strike."
+								"When you hit with an unarmed strike, you can deal {@dice 1d4} + your Strength modifier bludgeoning damage, instead of the normal damage for an unarmed strike."
 							]
 						},
 						{
@@ -9912,6 +10091,11 @@
 			"skillProficiencies": [
 				{
 					"stealth": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true
 				}
 			]
 		},
@@ -10006,12 +10190,14 @@
 					]
 				}
 			],
-			"languageTags": [
-				"Common"
-			],
 			"traitTags": [
 				"Natural Armor",
 				"Powerful Build"
+			],
+			"languageProficiencies": [
+				{
+					"common": true
+				}
 			]
 		},
 		{
@@ -10103,7 +10289,7 @@
 								{
 									"type": "item",
 									"name": "Grappling Appendage",
-									"entry": "You have two special appendages growing alongside your arms. Choose whether they're both claws or tentacles. Each of these appendages is a natural weapon, which you can use to make unarmed strikes. If you hit with it, the target takes bludgeoning damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike. Immediately after hitting, you can try to grapple the target as a bonus action. These appendages can't precisely manipulate anything and can't wield weapons, magic items, or other specialized equipment."
+									"entry": "You have two special appendages growing alongside your arms. Choose whether they're both claws or tentacles. Each of these appendages is a natural weapon, which you can use to make unarmed strikes. If you hit with it, the target takes bludgeoning damage equal to {@dice 1d6} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike. Immediately after hitting, you can try to grapple the target as a bonus action. These appendages can't precisely manipulate anything and can't wield weapons, magic items, or other specialized equipment."
 								},
 								{
 									"type": "item",
@@ -10113,7 +10299,7 @@
 								{
 									"type": "item",
 									"name": "Acid Spit",
-									"entry": "As an action, you can spray a stream of acid from glands in your mouth, targeting one creature or object you can see within 30 feet of you. The target takes 2d10 acid damage unless it succeeds on a Dexterity saving throw against a DC equal to 8 + your Constitution modifier + your proficiency bonus. This damage increases by 1d10 when you reach 11th level (3d10) and 17th level (4d10)."
+									"entry": "As an action, you can spray a stream of acid from glands in your mouth, targeting one creature or object you can see within 30 feet of you. The target takes {@dice 2d10} acid damage unless it succeeds on a Dexterity saving throw against a DC equal to 8 + your Constitution modifier + your proficiency bonus. This damage increases by {@dice 1d10} when you reach 11th level ({@dice 3d10}) and 17th level ({@dice 4d10})."
 								}
 							]
 						}
@@ -10127,14 +10313,16 @@
 					]
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Elvish"
-			],
 			"traitTags": [
 				"Amphibious",
 				"Unarmed Strike",
 				"Natural Armor"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"elvish": true
+				}
 			]
 		},
 		{
@@ -10175,14 +10363,14 @@
 					"type": "entries",
 					"name": "Bite",
 					"entries": [
-						"Your fanged maw is a natural weapon, which you can use to make unarmed strikes. If you hit with it, you deal piercing damage equal to 1d4 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
+						"Your fanged maw is a natural weapon, which you can use to make unarmed strikes. If you hit with it, you deal piercing damage equal to {@dice 1d4} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Lashing Tail",
 					"entries": [
-						"Your semi-prehensile tail is tipped with a bony blade. Immediately after a creature within 5 feet of you deals damage to you with a melee attack, you can use your reaction to make an unarmed strike against that creature with your tail. If you hit, you deal slashing damage equal to 1d4 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
+						"Your semi-prehensile tail is tipped with a bony blade. Immediately after a creature within 5 feet of you deals damage to you with a melee attack, you can use your reaction to make an unarmed strike against that creature with your tail. If you hit, you deal slashing damage equal to {@dice 1d4} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
 					]
 				},
 				{
@@ -10200,10 +10388,6 @@
 					]
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Draconic"
-			],
 			"traitTags": [
 				"Unarmed Strike",
 				"Skill Proficiency"
@@ -10216,6 +10400,12 @@
 							"stealth"
 						]
 					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"draconic": true
 				}
 			]
 		},
@@ -10271,7 +10461,7 @@
 					"type": "entries",
 					"name": "Hooves",
 					"entries": [
-						"Your hooves are natural melee weapons, which you can use to make unarmed strikes. If you hit with them, you deal bludgeoning damage equal to 1d4 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
+						"Your hooves are natural melee weapons, which you can use to make unarmed strikes. If you hit with them, you deal bludgeoning damage equal to {@dice 1d4} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
 					]
 				},
 				{
@@ -10302,10 +10492,6 @@
 				"Skill Proficiency",
 				"Unarmed Strike"
 			],
-			"languageTags": [
-				"Common",
-				"Sylvan"
-			],
 			"skillProficiencies": [
 				{
 					"choose": {
@@ -10316,6 +10502,13 @@
 							"survival"
 						]
 					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"sylvan": true,
+					"other": true
 				}
 			]
 		},
@@ -10383,9 +10576,12 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Goblin"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"goblin": true,
+					"other": true
+				}
 			]
 		},
 		{
@@ -10473,14 +10669,16 @@
 					]
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Other"
-			],
 			"traitTags": [
 				"Natural Armor",
 				"Tool Proficiency",
 				"Powerful Build"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
+				}
 			]
 		},
 		{
@@ -10526,7 +10724,7 @@
 				{
 					"name": "Horns",
 					"entries": [
-						"Your horns are natural melee weapons, which you can use to make unarmed strikes. If you hit with them, you deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
+						"Your horns are natural melee weapons, which you can use to make unarmed strikes. If you hit with them, you deal piercing damage equal to {@dice 1d6} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
 					],
 					"type": "entries"
 				},
@@ -10563,10 +10761,6 @@
 				"Skill Proficiency",
 				"Unarmed Strike"
 			],
-			"languageTags": [
-				"Common",
-				"Other"
-			],
 			"skillProficiencies": [
 				{
 					"choose": {
@@ -10575,6 +10769,12 @@
 							"persuasion"
 						]
 					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
 				}
 			]
 		},
@@ -10674,7 +10874,7 @@
 								{
 									"type": "item",
 									"name": "Grappling Appendage",
-									"entry": "You have two special appendages growing alongside your arms. Choose whether they're both claws or tentacles. As an action, you can use one of them to try to grapple a creature. Each one is also a natural weapon, which you can use to make an unarmed strike. If you hit with it, the target takes bludgeoning damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike. Immediately after hitting, you can try to grapple the target as a bonus action. These appendages can't precisely manipulate anything and can't wield weapons, magic items, or other specialized equipment."
+									"entry": "You have two special appendages growing alongside your arms. Choose whether they're both claws or tentacles. As an action, you can use one of them to try to grapple a creature. Each one is also a natural weapon, which you can use to make an unarmed strike. If you hit with it, the target takes bludgeoning damage equal to {@dice 1d6} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike. Immediately after hitting, you can try to grapple the target as a bonus action. These appendages can't precisely manipulate anything and can't wield weapons, magic items, or other specialized equipment."
 								},
 								{
 									"type": "item",
@@ -10684,22 +10884,29 @@
 								{
 									"type": "item",
 									"name": "Acid Spit",
-									"entry": "As an action, you can spray acid from glands in your mouth, targeting one creature or object you can see within 30 feet of you. The target takes 2d10 acid damage unless it succeeds on a Dexterity saving throw against a DC equal to 8 + your Constitution modifier + your proficiency bonus. This damage increases by 1d10 when you reach 11th level (3d10) and 17th level (4d10). You can use this trait a number of times equal to your Consitution modifier (minimum of once), and you regain all expended uses of it when you finish a long rest."
+									"entry": "As an action, you can spray acid from glands in your mouth, targeting one creature or object you can see within 30 feet of you. The target takes {@dice 2d10} acid damage unless it succeeds on a Dexterity saving throw against a DC equal to 8 + your Constitution modifier + your proficiency bonus. This damage increases by {@dice 1d10} when you reach 11th level ({@dice 3d10}) and 17th level ({@dice 4d10}). You can use this trait a number of times equal to your Consitution modifier (minimum of once), and you regain all expended uses of it when you finish a long rest."
 								}
 							]
 						}
 					]
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Elvish",
-				"Other"
-			],
 			"traitTags": [
 				"Amphibious",
 				"Unarmed Strike",
 				"Natural Armor"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"choose": {
+						"from": [
+							"elvish",
+							"other"
+						],
+						"count": 1
+					}
+				}
 			]
 		},
 		{
@@ -10747,7 +10954,7 @@
 					"name": "Tireless Precision",
 					"entries": [
 						"You are proficient in one of the following skills of your choice: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance}, or {@skill Sleight of Hand}.  You are also proficient with one tool of your choice.",
-						"Whenever you make an ability check with the chosen skill or tool, roll a d4 and add the number rolled to the check's total."
+						"Whenever you make an ability check with the chosen skill or tool, roll a {@dice d4} and add the number rolled to the check's total."
 					],
 					"type": "entries"
 				},
@@ -10766,10 +10973,12 @@
 					"type": "entries"
 				}
 			],
-			"languageTags": [
-				"Common",
-				"Other",
-				"Choose"
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true,
+					"anyStandard": 1
+				}
 			]
 		},
 		{
@@ -10845,14 +11054,16 @@
 			"traitTags": [
 				"Skill Proficiency"
 			],
-			"languageTags": [
-				"Common",
-				"Goblin",
-				"Choose"
-			],
 			"skillProficiencies": [
 				{
 					"persuasion": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"goblin": true,
+					"anyStandard": 1
 				}
 			]
 		}

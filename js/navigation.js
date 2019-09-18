@@ -90,6 +90,7 @@ class NavBar {
 		addLi(ulAdventures, "adventure.html", "Essentials Kit: Storm Lord's Wrath", {isSide: true, aHash: "SLW"});
 		addLi(ulAdventures, "adventure.html", "Essentials Kit: Sleeping Dragon's Wake", {isSide: true, aHash: "SDW"});
 		addLi(ulAdventures, "adventure.html", "Essentials Kit: Divine Contention", {isSide: true, aHash: "DC"});
+		addLi(ulAdventures, "adventure.html", "Baldur's Gate: Descent Into Avernus", {isSide: true, aHash: "BGDIA"});
 		addDivider(ulAdventures);
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
 		addLi(ulDms, "cultsboons.html", "Cults & Demonic Boons");
@@ -205,6 +206,7 @@ class NavBar {
 			const a = document.createElement("a");
 			a.href = `${aHref}${hashPart}`;
 			a.innerHTML = aText;
+			a.classList.add("nav__link");
 
 			if (opts.isExternal) {
 				a.setAttribute("target", "_blank");
@@ -306,6 +308,8 @@ class NavBar {
 			currentPage += hashPart.toLowerCase();
 		}
 		if (currentPage.toLowerCase() === "adventures.html") isSecondLevel = true;
+
+		if (typeof _SEO_PAGE !== "undefined") currentPage = `${_SEO_PAGE}.html`;
 
 		try {
 			let current = document.querySelector(`li[data-page="${currentPage}"]`);

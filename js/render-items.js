@@ -7,7 +7,7 @@ class RenderItems {
 		return $$`
 			${Renderer.utils.getBorderTr()}
 			${Renderer.utils.getNameTr(item)}
-			<tr><td class="typerarityattunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td></tr>
+			<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td></tr>
 			<tr>
 				<td colspan="2">${[Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
 				<td class="text-right" colspan="4"><span>${damage}</span> <span>${damageType}</span> <span>${propertiesTxt}</span></td>
