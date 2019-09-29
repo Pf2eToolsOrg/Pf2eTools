@@ -19,10 +19,8 @@ class BackgroundPage extends ListPage {
 			],
 			filterSource: sourceFilter,
 
-			listValueNames: ["name", "source", "skills", "uniqueid"],
 			listClass: "backgrounds",
 
-			sublistValueNames: ["name", "skills", "id"],
 			sublistClass: "subbackgrounds",
 
 			dataProps: ["background"]
@@ -45,22 +43,43 @@ class BackgroundPage extends ListPage {
 		this._toolFilter.addItem(bg._fTools);
 		this._languageFilter.addItem(bg._fLangs);
 
-		return `
-		<li class="row" ${FLTR_ID}="${bgI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-			<a id="${bgI}" href="#${UrlUtil.autoEncodeHash(bg)}" title="${bg.name}">
-				<span class="name col-4 pl-0">${bg.name.replace("Variant ", "")}</span>
-				<span class="skills col-6">${skillDisplay}</span>
-				<span class="source col-2 text-center ${Parser.sourceJsonToColor(bg.source)}" title="${Parser.sourceJsonToFull(bg.source)} pr-0" ${BrewUtil.sourceJsonToStyle(bg.source)}>${Parser.sourceJsonToAbv(bg.source)}</span>
-				
-				<span class="uniqueid hidden">${bg.uniqueId ? bg.uniqueId : bgI}</span>
-			</a>
-		</li>`;
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const name = bg.name.replace("Variant ", "");
+		const hash = UrlUtil.autoEncodeHash(bg);
+		const source = Parser.sourceJsonToAbv(bg.source);
+
+		eleLi.innerHTML = `<a href="#${hash}">
+			<span class="bold col-4 pl-0">${name}</span>
+			<span class="col-6">${skillDisplay}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(bg.source)}" title="${Parser.sourceJsonToFull(bg.source)} pr-0" ${BrewUtil.sourceJsonToStyle(bg.source)}>${source}</span>
+			
+			<span class="uniqueid hidden">${bg.uniqueId ? bg.uniqueId : bgI}</span>
+		</a>`;
+
+		const listItem = new ListItem(
+			bgI,
+			eleLi,
+			name,
+			{
+				hash,
+				source,
+				skills: skillDisplay,
+				uniqueid: bg.uniqueId || bgI
+			}
+		);
+
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+
+		return listItem;
 	}
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter((item) => {
-			const bg = this._dataList[$(item.elm).attr(FLTR_ID)];
+		this._list.filter(item => {
+			const bg = this._dataList[item.ix];
 			return this._filterBox.toDisplay(
 				f,
 				bg.source,
@@ -73,15 +92,29 @@ class BackgroundPage extends ListPage {
 	}
 
 	getSublistItem (bg, pinId) {
-		return `
-			<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-				<a href="#${UrlUtil.autoEncodeHash(bg)}" title="${bg.name}">
-					<span class="name col-4 pl-0">${bg.name}</span>
-					<span class="name col-8 pr-0">${Renderer.background.getSkillSummary(bg.skillProficiencies || [], true)}</span>
-					<span class="id hidden">${pinId}</span>
-				</a>
-			</li>
-		`;
+		const name = bg.name.replace("Variant ", "");
+		const hash = UrlUtil.autoEncodeHash(bg);
+		const skills = Renderer.background.getSkillSummary(bg.skillProficiencies || [], true);
+
+		const $ele = $$`<li class="row">
+			<a href="#${hash}">
+				<span class="bold col-4 pl-0">${name}</span>
+				<span class="col-8 pr-0">${skills}</span>
+			</a>
+		</li>`
+			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+
+		const listItem = new ListItem(
+			pinId,
+			$ele,
+			name,
+			{
+				hash,
+				source: Parser.sourceJsonToAbv(bg.source),
+				skills
+			}
+		);
+		return listItem;
 	}
 
 	doLoadHash (id) {

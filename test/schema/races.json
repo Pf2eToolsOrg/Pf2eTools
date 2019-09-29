@@ -4,36 +4,6 @@
 	"type": "object",
 
 	"definitions": {
-		"speed": {
-			"oneOf": [
-				{
-					"type": "object",
-					"properties": {
-						"walk": {
-							"type": "integer"
-						},
-						"climb": {
-							"type": "integer"
-						},
-						"fly": {
-							"type": "integer"
-						},
-						"swim": {
-							"type": "integer"
-						}
-					},
-					"required": ["walk"],
-					"additionalProperties": false
-				},
-				{
-					"type": "integer"
-				},
-				{
-					"const": "Varies"
-				}
-			]
-		},
-
 		"traitTag": {
 			"type": "string",
 			"enum": [
@@ -53,85 +23,6 @@
 				"Uncommon Race",
 				"Weapon Proficiency"
 			]
-		},
-
-		"languageProficiencies": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"choose": {
-						"type": "object",
-						"properties": {
-							"from": {
-								"type": "array",
-								"items": {
-									"enum": [
-										"abyssal",
-										"celestial",
-										"deep speech",
-										"draconic",
-										"infernal",
-										"primordial",
-										"sylvan",
-										"undercommon",
-										"dwarvish",
-										"elvish",
-										"giant",
-										"goblin",
-										"other"
-									]
-								}
-							},
-							"count": {
-								"type": "integer"
-							}
-						}
-					},
-					"any": {
-						"type": "integer"
-					},
-					"anyStandard": {
-						"type": "integer"
-					},
-					"abyssal": {
-						"type": "boolean"
-					},
-					"celestial": {
-						"type": "boolean"
-					},
-					"deep speech": {
-						"type": "boolean"
-					},
-					"draconic": {
-						"type": "boolean"
-					},
-					"infernal": {
-						"type": "boolean"
-					},
-					"primordial": {
-						"type": "boolean"
-					},
-					"sylvan": {
-						"type": "boolean"
-					},
-					"undercommon": {
-						"type": "boolean"
-					},
-					"dwarvish": {
-						"type": "boolean"
-					},
-					"elvish": {
-						"type": "boolean"
-					},
-					"giant": {
-						"type": "boolean"
-					},
-					"other": {
-						"type": "boolean"
-					}
-				}
-			}
 		},
 
 		"abilityScores": {
@@ -196,84 +87,6 @@
 					}
 				}
 			}
-		},
-
-		"skillProficiencies": {
-			"athletics": {"type": "boolean"},
-			"acrobatics":{"type": "boolean"},
-			"sleight of hand": {"type": "boolean"},
-			"stealth":{"type": "boolean"},
-			"arcana": {"type": "boolean"},
-			"history":{"type": "boolean"},
-			"investigation": {"type": "boolean"},
-			"nature":{"type": "boolean"},
-			"religion": {"type": "boolean"},
-			"animal handling":{"type": "boolean"},
-			"insight": {"type": "boolean"},
-			"medicine":{"type": "boolean"},
-			"perception": {"type": "boolean"},
-			"survival":{"type": "boolean"},
-			"deception": {"type": "boolean"},
-			"intimidation":{"type": "boolean"},
-			"performance": {"type": "boolean"},
-			"persuasion":{"type": "boolean"},
-
-			"choose": {
-				"type": "array",
-				"items": {
-					"type": "object",
-					"properties": {
-						"from": {
-							"type": "array",
-							"items": {
-								"oneOf": [
-									{
-										"enum": [
-											"athletics",
-											"acrobatics",
-											"sleight of hand",
-											"stealth",
-											"arcana",
-											"history",
-											"investigation",
-											"nature",
-											"religion",
-											"animal handling",
-											"insight",
-											"medicine",
-											"perception",
-											"survival",
-											"deception",
-											"intimidation",
-											"performance",
-											"persuasion"
-										]
-									},
-									{
-										"type": "object",
-										"properties": {
-											"tool": {
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											}
-										}
-									},
-									{
-										"type": "object",
-										"properties": {
-											"tool": {
-												"type": "boolean"
-											}
-										}
-									}
-								]
-							}
-						}
-					}
-				}
-			}
 		}
 	},
 
@@ -293,29 +106,13 @@
 						"type": "integer"
 					},
 					"otherSources": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"source": {
-									"type": "string"
-								},
-								"page": {
-									"type": "integer"
-								}
-							},
-							"required": [
-								"source",
-								"page"
-							],
-							"additionalProperties": false
-						}
+						"$ref": "util.json#/definitions/otherSources"
 					},
 					"ability": {
 						"$ref": "#/definitions/abilityScores"
 					},
 					"speed": {
-						"$ref": "#/definitions/speed"
+						"$ref": "util.json#/definitions/speed"
 					},
 					"size": {
 						"type": "string",
@@ -345,29 +142,13 @@
 									"type": "integer"
 								},
 								"otherSources": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"source": {
-												"type": "string"
-											},
-											"page": {
-												"type": "integer"
-											}
-										},
-										"required": [
-											"source",
-											"page"
-										],
-										"additionalProperties": false
-									}
+									"$ref": "util.json#/definitions/otherSources"
 								},
 								"ability": {
 									"$ref": "#/definitions/abilityScores"
 								},
 								"speed": {
-									"$ref": "#/definitions/speed"
+									"$ref": "util.json#/definitions/speed"
 								},
 								"entries": {
 									"type": "array",
@@ -385,12 +166,12 @@
 									}
 								},
 								"languageProficiencies": {
-									"$ref": "#/definitions/languageProficiencies"
+									"$ref": "util.json#/definitions/languageProficiencies"
 								},
 								"skillProficiencies": {
 									"type": "array",
 									"items": {
-										"$ref": "#/definitions/skillProficiencies"
+										"$ref": "util.json#/definitions/skillProficiencies"
 									}
 								},
 								"overwrite": {
@@ -411,12 +192,12 @@
 						}
 					},
 					"languageProficiencies": {
-						"$ref": "#/definitions/languageProficiencies"
+						"$ref": "util.json#/definitions/languageProficiencies"
 					},
 					"skillProficiencies": {
 						"type": "array",
 						"items": {
-							"$ref": "#/definitions/skillProficiencies"
+							"$ref": "util.json#/definitions/skillProficiencies"
 						}
 					}
 				},

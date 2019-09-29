@@ -34,6 +34,8 @@ class CreatureBuilder extends Builder {
 				}
 
 				creature.source = this._ui.source;
+				delete creature.otherSources;
+
 				if (Parser.crToNumber(creature.cr) !== 100) {
 					const ixDefault = Parser.CRS.indexOf(creature.cr.cr || creature.cr);
 					const scaleTo = await InputUiUtil.pGetUserEnum({values: Parser.CRS, title: "At Challange Rating...", default: ixDefault});
@@ -44,8 +46,6 @@ class CreatureBuilder extends Builder {
 						this.setStateFromLoaded({s: scaled, m: this.getInitialMetaState()});
 					} else this.setStateFromLoaded({s: creature, m: this.getInitialMetaState()});
 				} else this.setStateFromLoaded({s: creature, m: this.getInitialMetaState()});
-
-				delete creature.otherSources;
 
 				this.renderInput();
 				this.renderOutput();
@@ -2573,18 +2573,24 @@ class CreatureBuilder extends Builder {
 			.click((evt) => {
 				const val = $iptUrl.val().trim();
 				if (!val) return JqueryUtil.doToast({content: "Please enter an image URL", type: "warning"});
-				Renderer.hover.doOpenWindow(
-					evt,
-					$btnPreview[0],
+
+				const $content = Renderer.hover.$getHoverContent_generic(
 					{
 						type: "image",
 						href: {
 							type: "external",
 							url: val
-						},
-						data: {
-							hoverTitle: `Token Preview`
 						}
+					},
+					true
+				);
+				Renderer.hover.getShowWindow(
+					$content,
+					Renderer.hover.getWindowPositionFromEvent(evt),
+					{
+						isPermanent: true,
+						title: "Token Preview",
+						isBookContent: true
 					}
 				);
 			});

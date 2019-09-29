@@ -9,7 +9,7 @@ const HASH_SHOW_PILL_SOURCES = "pillsource:";
 const CLSS_FEATURE_LINK = "feature-link";
 const CLSS_ACTIVE = "sc_pill--active";
 const CLSS_SUBCLASS_PILL = "sc_pill__subclass";
-const CLSS_PANEL_LINK = "pnl-link";
+const CLSS_PANEL_LINK = "cls-bkmv__btn-tab";
 const CLSS_CLASS_FEATURES_ACTIVE = "cf-active";
 const CLSS_FLUFF_ACTIVE = "fluff-active";
 const CLSS_SUBCLASS_PREFIX = "subclass-prefix";
@@ -69,8 +69,8 @@ class FeatureTable {
 class ClassList {
 	static handleFilterChange () {
 		const f = filterBox.getValues();
-		ClassList.classList.filter(function (item) {
-			const c = ClassData.classes[$(item.elm).attr(FLTR_ID)];
+		ClassList.list.filter(function (item) {
+			const c = ClassData.classes[item.ix];
 			return filterBox.toDisplay(
 				f,
 				c._fSource
@@ -79,52 +79,54 @@ class ClassList {
 	}
 
 	static addClasses (newClasses) {
-		const lastSearch = ListUtil.getSearchTermAndReset(ClassList.classList);
+		const previousClassAmount = ClassData.classes.length - newClasses.length;
 
-		ClassList._appendClassesToList(newClasses);
+		for (let i = 0; i < newClasses.length; i++) {
+			const cls = newClasses[i];
+			if (ExcludeUtil.isExcluded(cls.name, "class", cls.source)) continue;
 
-		ClassList.classList.reIndex();
-		if (lastSearch) ClassList.classList.search(lastSearch);
-		ClassList.classList.sort("name");
+			if (cls.source === SRC_UASIK) cls._fSource = "Sidekicks";
+			else if (BrewUtil.hasSourceJson(cls.source)) cls._fSource = "Homebrew";
+			else if (cls._isStandardSource) cls._fSource = "Core";
+			else if (SourceUtil.isNonstandardSource(cls.source)) cls._fSource = "Others";
+			else cls._fSource = "Core";
+
+			sourceFilter.addItem(cls._fSource);
+
+			const eleLi = document.createElement("li");
+			eleLi.className = "row";
+
+			const hash = UrlUtil.autoEncodeHash(cls)
+			const source = Parser.sourceJsonToAbv(cls.source);
+
+			const id = i + previousClassAmount;
+
+			eleLi.innerHTML = `<a href="#${hash}" title="${cls.name}">
+				<span class="bold col-8 pl-0">${cls.name}</span>
+				<span class="col-4 text-center ${Parser.sourceJsonToColor(cls.source)}" title="${Parser.sourceJsonToFull(cls.source)} pr-0" ${BrewUtil.sourceJsonToStyle(cls.source)}>${source}</span>
+			</a>`
+
+			const listItem = new ListItem(
+				id,
+				eleLi,
+				cls.name,
+				{
+					hash,
+					source,
+					uniqueid: cls.uniqueId ? cls.uniqueId : id
+				}
+			);
+
+			ClassList.list.addItem(listItem);
+		}
+
+		ClassList.list.update();
 
 		filterBox.render();
 		ClassList.handleFilterChange();
 	}
-
-	static _appendClassesToList (newClasses) {
-		const previousClassAmount = ClassData.classes.length - newClasses.length;
-		const $classTable = $("ul.classes");
-		let tempString = "";
-		for (let i = 0; i < newClasses.length; i++) {
-			const curClass = newClasses[i];
-			if (ExcludeUtil.isExcluded(curClass.name, "class", curClass.source)) continue;
-
-			if (curClass.source === SRC_UASIK) curClass._fSource = "Sidekicks";
-			else if (BrewUtil.hasSourceJson(curClass.source)) curClass._fSource = "Homebrew";
-			else if (curClass._isStandardSource) curClass._fSource = "Core";
-			else if (SourceUtil.isNonstandardSource(curClass.source)) curClass._fSource = "Others";
-			else curClass._fSource = "Core";
-
-			sourceFilter.addItem(curClass._fSource);
-			const id = i + previousClassAmount;
-			tempString += ClassList._renderClass(curClass, id);
-		}
-		$classTable.append(tempString);
-	}
-
-	static _renderClass (classToRender, id) {
-		return `<li class="row" ${FLTR_ID}="${id}" ${classToRender.uniqueId ? `data-unique-id="${classToRender.uniqueId}"` : ""}>
-				<a id="${id}" href="${HashLoad.getClassHash(classToRender)}" title="${classToRender.name}">
-					<span class="name col-8 pl-0">${classToRender.name}</span>
-					<span class="source col-4 text-center ${Parser.sourceJsonToColor(classToRender.source)}" title="${Parser.sourceJsonToFull(classToRender.source)} pr-0" ${BrewUtil.sourceJsonToStyle(classToRender.source)}>
-						${Parser.sourceJsonToAbv(classToRender.source)}
-					</span>
-					<span class="uniqueid hidden">${classToRender.uniqueId ? classToRender.uniqueId : id}</span>
-				</a>
-			</li>`;
-	}
 }
-ClassList.classList = undefined;
+ClassList.list = null;
 
 class ClassData {
 	static addClassData (data) {
@@ -472,8 +474,7 @@ class HashLoad {
 				const featureId = `${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(feature.name)}${idLevelPart}`;
 
 				const featureLinkPart = `${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(feature.name)}${idLevelPart}`;
-				const featureLink = $(`<a href="${HashLoad.getClassHash(
-					ClassDisplay.curClass)}${HASH_PART_SEP}${featureLinkPart}" class="${CLSS_FEATURE_LINK}" ${ATB_DATA_FEATURE_LINK}="${featureLinkPart}" ${ATB_DATA_FEATURE_ID}="${featureId}">${feature.name}</a>`);
+				const featureLink = $(`<a href="#${UrlUtil.autoEncodeHash(ClassDisplay.curClass)}${HASH_PART_SEP}${featureLinkPart}" class="${CLSS_FEATURE_LINK}" ${ATB_DATA_FEATURE_LINK}="${featureLinkPart}" ${ATB_DATA_FEATURE_ID}="${featureId}">${feature.name}</a>`);
 				featureLink.click(function () {
 					const hideClassFsKey = HASH_HIDE_FEATURES.slice(0, -1);
 					const hiddenState = Hist.getSubHash(hideClassFsKey) === "true";
@@ -745,10 +746,6 @@ class HashLoad {
 		HashLoad.cleanSetHash(outStack.join(HASH_PART_SEP));
 	}
 
-	static getClassHash (aClass) {
-		return `#${UrlUtil.autoEncodeHash(aClass)}`;
-	}
-
 	static getEncodedSubclass (name, source) {
 		return `${UrlUtil.encodeForHash(name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(source)}`;
 	}
@@ -941,16 +938,16 @@ class SubClassLoader {
 		const $fluffToggle = $(`#${ID_FLUFF_TOGGLE}`);
 		const $fluff = $pgContent.find(`.${CLSS_CLASS_FLUFF}`);
 		if (!showFluff) {
-			ClassList.classList.items.forEach(it => {
-				const $e = $(it.elm).find("a");
+			ClassList.list.items.forEach(it => {
+				const $e = $(it.ele).find("a");
 				const nuHref = $e.attr("href").split(HASH_PART_SEP)[0];
 				$e.attr("href", nuHref);
 			});
 			$fluffToggle.removeClass(CLSS_FLUFF_ACTIVE);
 			$fluff.hide();
 		} else {
-			ClassList.classList.items.forEach(it => {
-				const $e = $(it.elm).find("a");
+			ClassList.list.items.forEach(it => {
+				const $e = $(it.ele).find("a");
 				const nuHrefBase = $e.attr("href").split(HASH_PART_SEP)[0];
 				const nuHref = [nuHrefBase, `${HASH_SHOW_FLUFF}${true}`].join(HASH_PART_SEP);
 				$e.attr("href", nuHref);
@@ -988,7 +985,7 @@ class SubClassLoader {
 		if (bookView) ClassBookView.open();
 		else ClassBookView.teardown();
 
-		if (comparisonView && subclassComparisonView) subclassComparisonView.open();
+		if (comparisonView && subclassComparisonView) subclassComparisonView.pOpen();
 		else if (subclassComparisonView) subclassComparisonView.teardown();
 
 		$(`.sc_pill__source_suffix`).toggle(!!showPillSources);
@@ -1132,33 +1129,44 @@ SubClassLoader.partCache = null;
 
 function initCompareMode () {
 	subclassComparisonView = new BookModeView(
-		"compview", $(`#btn-comparemode`), "Please select some subclasses first",
-		($tbl) => {
+		"compview",
+		$(`#btn-comparemode`),
+		"Please select some subclasses first",
+		"Subclass Comparison",
+		$wrpContent => {
+			$wrpContent.removeClass("bkmv__wrp").addClass("h-100").addClass("flex-col");
+			$wrpContent.parent().addClass("stats").addClass("stats--book");
+
 			const renderStack = [];
 			const numScLvls = ClassDisplay.curClass.subclasses[0].subclassFeatures.length;
 			for (let i = 0; i < numScLvls; ++i) {
-				renderStack.push(`<tr class="text">`);
-				ClassDisplay.curClass.subclasses.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source)).forEach((sc, j) => {
-					renderStack.push(`<td class="subclass-features-${j} ${FeatureDescription.getSubclassStyles(sc).join(" ")}">`);
-					sc.subclassFeatures[i].forEach(f => {
-						renderer.recursiveRender(f, renderStack);
+				const isLastRow = i === numScLvls - 1;
+
+				renderStack.push(`<div class="flex ${isLastRow ? "mb-4" : ""}">`);
+				ClassDisplay.curClass.subclasses
+					.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source))
+					.forEach((sc, j) => {
+						renderStack.push(`<div class="mx-2 no-shrink cls-comp__wrp-features subclass-features-${j} ${FeatureDescription.getSubclassStyles(sc).join(" ")}">`);
+						sc.subclassFeatures[i].forEach(f => {
+							renderer.recursiveRender(f, renderStack);
+						});
+						renderStack.push(`</div>`);
 					});
-					renderStack.push(`</td>`);
-				});
-				renderStack.push(`</tr>`);
-				renderStack.push(`<tr><th colspan="6"><hr></th></tr>`);
+				renderStack.push(`</div>`);
+
+				if (!isLastRow) renderStack.push(`<hr class="hr-2 mt-3 cls-comp__hr-level"></hr>`);
 			}
-			$tbl.append(renderStack.join(""));
+			$wrpContent.append(renderStack.join(""));
 
 			let numShown = 0;
 			ClassDisplay.curClass.subclasses.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source)).forEach((sc, i) => {
 				const $pill = $(`.${CLSS_SUBCLASS_PILL}[data-subclass="${sc.name}"][data-source="${sc.source}"]`);
 				if (!($pill.hasClass(CLSS_ACTIVE))) {
-					$tbl.find(`.subclass-features-${i}`).hide();
+					$wrpContent.find(`.subclass-features-${i}`).hide();
 				} else numShown++;
 			});
 
-			$tbl.find(`tr > td > div`).css("width", "400px");
+			if (!numShown) $wrpContent.find(".cls-comp__hr-level").addClass("hidden");
 
 			return numShown;
 		}
@@ -1172,40 +1180,40 @@ class ClassBookView {
 			$cfToggle.toggleClass("cf-active");
 		}
 
-		function hashTeardown () {
-			HashLoad.cleanSetHash(window.location.hash.replace(ClassBookView.SUBHASH, ""));
-		}
+		const hashTeardown = () => HashLoad.cleanSetHash(window.location.hash.replace(this.SUBHASH, ""));
 
-		if (ClassBookView.bookViewActive) return;
-		ClassBookView.bookViewActive = true;
+		if (this.bookViewActive) return;
+		this.bookViewActive = true;
 
 		HashLoad.setSourceState(STR_SOURCES_ALL);
 
 		const $body = $(`body`);
-		const $wrpBook = $(`<div class="book-mode"/>`);
-		ClassBookView._$body = $body;
-		ClassBookView._$wrpBook = $wrpBook;
+		const $wrpBook = $(`<div class="bkmv"/>`);
+		this._$body = $body;
+		this._$wrpBook = $wrpBook;
 
 		$body.css("overflow", "hidden");
-		$body.addClass("book-mode-active");
+		$body.addClass("bkmv-active");
 
-		// main panel
-		const $pnlContent = $(`<div class="pnl-content"/>`);
+		// Top bar
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"/>`)
+			.click(() => hashTeardown());
+		$$`<div class="bkmv__spacer-name flex-h-right no-shrink">${$btnClose}</div>`.appendTo(this._$wrpBook);
+
+		const $pnlMenu = $(`<div class="cls-bkmv__wrp-tabs flex-h-center"/>`).appendTo(this._$wrpBook);
+
+		// Main panel
 		const $bkTbl = $(`<table class="stats stats--book stats--book-large"/>`);
-		ClassBookView._$bkTbl = $bkTbl;
-		const $brdTop = $(`<tr><th class="border close-border" colspan="6"><div/></th></tr>`);
-		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
-			.on("click", () => hashTeardown());
-		$brdTop.find(`div`).append($btnClose);
-		$bkTbl.append($brdTop);
+		const $wrpContent = $$`<div class="flex-col overflow-y-auto container">${$bkTbl}</div>`.appendTo(this._$wrpBook);
+		this._$bkTbl = $bkTbl;
 
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		renderStack.push(`<tr><td colspan="6">`);
+		renderStack.push(`<tr><td colspan="6" class="py-3 px-5">`);
 		renderer.recursiveRender({type: "section", name: ClassDisplay.curClass.name}, renderStack);
 		renderStack.push(`</td></tr>`);
 
-		renderStack.push(`<tr class="text class-features"><td colspan="6">`);
+		renderStack.push(`<tr class="text class-features"><td colspan="6" class="py-3 px-5">`);
 		ClassDisplay.curClass.classFeatures.forEach(lvl => {
 			lvl.forEach(cf => {
 				renderer.recursiveRender(cf, renderStack);
@@ -1214,7 +1222,7 @@ class ClassBookView {
 		renderStack.push(`</td></tr>`);
 
 		ClassDisplay.curClass.subclasses.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source)).forEach((sc, i) => {
-			renderStack.push(`<tr class="subclass-features-${i} ${FeatureDescription.getSubclassStyles(sc).join(" ")}"><td colspan="6">`);
+			renderStack.push(`<tr class="subclass-features-${i} ${FeatureDescription.getSubclassStyles(sc).join(" ")}"><td colspan="6" class="py-3 px-5">`);
 			sc.subclassFeatures.forEach(lvl => {
 				lvl.forEach(f => {
 					renderer.recursiveRender(f, renderStack);
@@ -1224,13 +1232,11 @@ class ClassBookView {
 		});
 		renderStack.push(Renderer.utils.getBorderTr());
 		$bkTbl.append(renderStack.join(""));
-		$pnlContent.append($bkTbl);
 
-		// menu panel
-		const $pnlMenu = $(`<div class="pnl-menu"/>`);
+		// Menu panel
 		const $cfPill = $(`#${ID_CLASS_FEATURES_TOGGLE}`);
 
-		const $cfToggle = $(`<span class="pnl-link cf-active">Class Features</span>`).on("click", () => {
+		const $cfToggle = $(`<span class="${CLSS_PANEL_LINK} cf-active">Class Features</span>`).on("click", () => {
 			tglCf($bkTbl, $cfToggle);
 			$cfPill.click();
 		});
@@ -1246,41 +1252,35 @@ class ClassBookView {
 			const styles = FeatureDescription.getSubclassStyles(sc);
 			const $pill = $(`.${CLSS_SUBCLASS_PILL}[data-subclass="${sc.name}"][data-source="${sc.source}"]`);
 
-			const $scToggle = $(`<span class="pnl-link active ${styles.join(" ")}" title="Source: ${Parser.sourceJsonToFull(sc.source)}" data-i="${i}" data-bk-subclass="${
+			const $scToggle = $(`<span class="${CLSS_PANEL_LINK} active ${styles.join(" ")}" title="Source: ${Parser.sourceJsonToFull(sc.source)}" data-i="${i}" data-bk-subclass="${
 				sc.name}" data-bk-source="${sc.source}">${name}</span>`).on("click", () => {
-				ClassBookView._toggleSubclass($bkTbl, $scToggle, i);
+				this._toggleSubclass($bkTbl, $scToggle, i);
 				$pill.click();
 			});
 
 			if (!($pill.hasClass(CLSS_ACTIVE))) {
-				ClassBookView._toggleSubclass($bkTbl, $scToggle, i);
+				this._toggleSubclass($bkTbl, $scToggle, i);
 			}
 
-			ClassBookView._$scToggles[String(i)] = $scToggle;
+			this._$scToggles[String(i)] = $scToggle;
 			$pnlMenu.append($scToggle);
 		});
-
-		const $menClose = $(`<span class="pnl-link pnl-link-close">\u21FD Close</span>`).on("click", () => {
-			hashTeardown();
-		});
-		$pnlMenu.append($menClose);
 
 		// right (blank) panel
 		const $pnlBlank = $(`<div class="pnl-menu pnl-menu-pad"/>`);
 
-		$wrpBook.append($pnlMenu).append($pnlContent).append($pnlBlank);
 		$body.append($wrpBook);
 	}
 
 	static teardown () {
-		if (ClassBookView.bookViewActive) {
-			ClassBookView._$bkTbl = null;
-			ClassBookView._$scToggles = {};
+		if (this.bookViewActive) {
+			this._$bkTbl = null;
+			this._$scToggles = {};
 
-			ClassBookView._$body.css("overflow", "");
-			ClassBookView._$body.removeClass("book-mode-active");
-			ClassBookView._$wrpBook.remove();
-			ClassBookView.bookViewActive = false;
+			this._$body.css("overflow", "");
+			this._$body.removeClass("bkmv-active");
+			this._$wrpBook.remove();
+			this.bookViewActive = false;
 		}
 	}
 
@@ -1290,32 +1290,32 @@ class ClassBookView {
 	}
 
 	static updateVisible ($toShow, $toHide) {
-		function doUpdate ($list, show) {
-			$list.map($p => {
-				const $it = ClassBookView._$wrpBook.find(`.pnl-link[data-bk-subclass="${$p.attr(ATB_DATA_SC)}"][data-bk-source="${$p.attr(ATB_DATA_SRC)}"]`);
-				if ($it.length) {
-					const index = $it.data("i");
-					const $real = ClassBookView._$scToggles[index];
-					if (show && !$real.hasClass("active")) {
-						ClassBookView._toggleSubclass(ClassBookView._$bkTbl, $real, Number(index));
-					}
-					if (!show && $real.hasClass("active")) {
-						ClassBookView._toggleSubclass(ClassBookView._$bkTbl, $real, Number(index));
-					}
-				}
-			});
-		}
-
-		if (ClassBookView.bookViewActive) {
+		if (this.bookViewActive) {
 			// $toShow/$toHide are lists of subclass pills
-			doUpdate($toShow, true);
-			doUpdate($toHide, false);
+			this._updateVisible_doUpdate($toShow, true);
+			this._updateVisible_doUpdate($toHide, false);
 		}
+	}
+
+	static _updateVisible_doUpdate ($list, show) {
+		$list.map($p => {
+			const $it = this._$wrpBook.find(`.${CLSS_PANEL_LINK}[data-bk-subclass="${$p.attr(ATB_DATA_SC)}"][data-bk-source="${$p.attr(ATB_DATA_SRC)}"]`);
+			if ($it.length) {
+				const index = $it.data("i");
+				const $real = this._$scToggles[index];
+				if (show && !$real.hasClass("active")) {
+					this._toggleSubclass(this._$bkTbl, $real, Number(index));
+				}
+				if (!show && $real.hasClass("active")) {
+					this._toggleSubclass(this._$bkTbl, $real, Number(index));
+				}
+			}
+		});
 	}
 
 	static initButton () {
 		$(`#btn-readmode`).on("click", () => {
-			HashLoad.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${ClassBookView.SUBHASH}`);
+			HashLoad.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${this.SUBHASH}`);
 		});
 	}
 }
@@ -1376,19 +1376,17 @@ async function doPageInit () {
 		ClassList.handleFilterChange
 	);
 
-	ClassList.classList = ListUtil.search({
-		valueNames: ["name", "source", "uniqueid"],
-		listClass: "classes"
-	});
+	ClassList.list = ListUtil.initList({listClass: "classes"});
+	ListUtil.setOptions({primaryLists: [ClassList.list]});
+	SortUtil.initBtnSortHandlers($(`#filtertools`), ClassList.list);
 
 	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bind({list: ClassList.classList, filterBox, sourceFilter});
+	BrewUtil.bind({list: ClassList.list, filterBox, sourceFilter});
 
 	initCompareMode();
 	initLinkGrabbers();
 	ClassBookView.initButton();
 	await ExcludeUtil.pInitialise();
-	SortUtil.initHandleFilterButtonClicks();
 	Omnisearch.addScrollTopFloat();
 
 	DataUtil.class.loadJSON().then((data) => {
@@ -1400,6 +1398,7 @@ async function doPageInit () {
 			.catch(BrewUtil.pPurgeBrew)
 			.then(() => {
 				RollerUtil.addListRollButton();
+				ClassList.list.init();
 				Hist.init(true);
 				ExcludeUtil.checkShowAllExcluded(ClassData.classes, $(`#pagecontent`));
 			});

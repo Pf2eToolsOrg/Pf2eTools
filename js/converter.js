@@ -1155,6 +1155,8 @@ class StatblockConverter {
 			});
 		};
 
+		if (stats.trait) stats.trait.forEach(trait => RechargeConvert.tryConvertRecharge(trait, () => {}, () => options.cbWarning(`Manual recharge tagging required for trait "${trait.name}"`)));
+		if (stats.action) stats.action.forEach(action => RechargeConvert.tryConvertRecharge(action, () => {}, () => options.cbWarning(`Manual recharge tagging required for action "${action.name}"`)));
 		AcConvert.tryPostProcessAc(
 			stats,
 			(ac) => options.cbWarning(`AC "${ac}" requires manual conversion`),

@@ -193,6 +193,26 @@
 			}
 		},
 		{
+			"name": "Drow Armor +1",
+			"type": "GV",
+			"requires": [
+				{
+					"armor": true
+				}
+			],
+			"inherits": {
+				"genericBonus": "+1",
+				"rarity": "Unknown (Magic)",
+				"source": "DMG",
+				"page": 126,
+				"namePrefix": "Drow ",
+				"nameSuffix": " +1",
+				"entries": [
+					"You have a {=genericBonus} bonus to AC while wearing this armor. This armor loses its enchantment bonus permanently if it exposed to sunlight for 1 hour or longer."
+				]
+			}
+		},
+		{
 			"name": "Armor +2",
 			"type": "GV",
 			"requires": [
@@ -1761,6 +1781,29 @@
 				],
 				"lootTables": [
 					"Magic Item Table F"
+				]
+			}
+		},
+		{
+			"name": "Drow Weapon +1",
+			"type": "GV",
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
+			"excludes": {
+				"name": "Net"
+			},
+			"inherits": {
+				"genericBonus": "+1",
+				"rarity": "Unknown (Magic)",
+				"source": "MM",
+				"page": 126,
+				"namePrefix": "Drow ",
+				"nameSuffix": " +1",
+				"entries": [
+					"You have a {=genericBonus} bonus to attack and damage rolls made with this weapon. This weapon loses its enchantment bonus permanently if it exposed to sunlight for 1 hour or longer."
 				]
 			}
 		},

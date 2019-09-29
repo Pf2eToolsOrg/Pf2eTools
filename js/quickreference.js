@@ -33,11 +33,6 @@ function onJsonLoad (data) {
 
 	BookUtil.addHeaderHandles(false);
 
-	const list = new List("listcontainer", {
-		valueNames: ['name'],
-		listClass: "contents"
-	});
-
 	BookUtil.baseDataUrl = "data/generated/";
 	BookUtil.bookIndex = reference;
 	BookUtil.referenceId = "bookref-quick";

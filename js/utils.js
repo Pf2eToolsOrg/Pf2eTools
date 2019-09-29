@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = IS_DEPLOYED || "-1";
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.82.0"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -28,8 +28,6 @@ HTML_NO_IMAGES = "<i>No images available.</i>";
 
 ID_SEARCH_BAR = "filter-search-input-group";
 ID_RESET_BUTTON = "reset";
-
-FLTR_ID = "filterId";
 
 CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
 CLSS_HOMEBREW_SOURCE = "refreshing-brew";
@@ -136,6 +134,10 @@ String.prototype.escapeQuotes = String.prototype.escapeQuotes || function () {
 
 String.prototype.unescapeQuotes = String.prototype.unescapeQuotes || function () {
 	return this.replace(/&apos;/g, `'`).replace(/&quot;/g, `"`);
+};
+
+String.prototype.encodeApos = String.prototype.encodeApos || function () {
+	return this.replace(/'/g, `%27`);
 };
 
 /**
@@ -1313,7 +1315,10 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 	"SHP:M": "Ship Upgrade, Movement",
 	"SHP:W": "Ship Upgrade, Weapon",
 	"SHP:F": "Ship Upgrade, Figurehead",
-	"SHP:O": "Ship Upgrade, Miscellaneous"
+	"SHP:O": "Ship Upgrade, Miscellaneous",
+	"IWM:W": "Infernal War Machine Variant, Weapon",
+	"IWM:A": "Infernal War Machine Upgrade, Armor",
+	"IWM:G": "Infernal War Machine Upgrade, Gadget"
 };
 
 Parser.optFeatureTypeToFull = function (type) {
@@ -1427,6 +1432,7 @@ Parser.CAT_ID_PACT_BOON = 32;
 Parser.CAT_ID_ELEMENTAL_DISCIPLINE = 33;
 Parser.CAT_ID_ARTIFICER_INFUSION = 34;
 Parser.CAT_ID_SHIP_UPGRADE = 35;
+Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE = 36;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1464,6 +1470,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PACT_BOON] = "Pact Boon";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "Elemental Discipline";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARTIFICER_INFUSION] = "Infusion";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SHIP_UPGRADE] = "Ship Upgrade";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "Infernal War Machine Upgrade";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1879,6 +1886,7 @@ SRC_DC = "DC";
 SRC_SLW = "SLW";
 SRC_SDW = "SDW";
 SRC_BGDIA = "BGDIA";
+SRC_LR = "LR";
 SRC_AL = "AL";
 SRC_SCREEN = "Screen";
 
@@ -2005,6 +2013,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_DC] = "Divine Contention";
 Parser.SOURCE_JSON_TO_FULL[SRC_SLW] = "Storm Lord's Wrath";
 Parser.SOURCE_JSON_TO_FULL[SRC_SDW] = "Sleeping Dragon's Wake";
 Parser.SOURCE_JSON_TO_FULL[SRC_BGDIA] = "Baldur's Gate: Descent Into Avernus";
+Parser.SOURCE_JSON_TO_FULL[SRC_LR] = "Locathah Rising";
 Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
@@ -2114,6 +2123,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_DC] = "DC";
 Parser.SOURCE_JSON_TO_ABV[SRC_SLW] = "SLW";
 Parser.SOURCE_JSON_TO_ABV[SRC_SDW] = "SDW";
 Parser.SOURCE_JSON_TO_ABV[SRC_BGDIA] = "BGDIA";
+Parser.SOURCE_JSON_TO_ABV[SRC_LR] = "LR";
 Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
@@ -3049,7 +3059,8 @@ ContextUtil = {
 		$(`#${menuId}`).remove();
 	},
 
-	handleOpenContextMenu: (evt, ele, menuId, closeHandler) => {
+	handleOpenContextMenu: (evt, ele, menuId, closeHandler, data) => {
+		// anything specified in "data" is passed through to the final handler(s)
 		evt.preventDefault();
 		evt.stopPropagation();
 		const thisId = ContextUtil._ctxOpenRefsNextId++;
@@ -3069,7 +3080,7 @@ ContextUtil = {
 				const $invokedOn = $(evt.target).closest(`li.row`);
 				const $selectedMenu = $(e.target);
 				const invokedOnId = Number($selectedMenu.data("ctx-id"));
-				ContextUtil._ctxClick[menuId](e, ele, $invokedOn, $selectedMenu, isNaN(invokedOnId) ? null : invokedOnId);
+				ContextUtil._ctxClick[menuId](e, ele, $invokedOn, $selectedMenu, isNaN(invokedOnId) ? null : invokedOnId, data);
 			});
 	}
 };
@@ -3085,247 +3096,195 @@ SearchUtil = {
 ListUtil = {
 	SUB_HASH_PREFIX: "sublistselected",
 
-	_first: true,
-
 	bindEscapeKey (list, $iptSearch, forceRebind) {
+		// Bind "ESC" when in search input to "clear input"
 		if (!list._isBoundEscape || forceRebind) {
 			if (forceRebind) $iptSearch.off("keydown.search5e");
 			list._isBoundEscape = true;
 			$iptSearch.on("keydown.search5e", (e) => {
 				if (e.which === 27) {
 					setTimeout(() => {
-						$iptSearch.blur();
-						list.search();
+						$iptSearch.blur().val("");
+						list.search($iptSearch.val());
 					}, 0);
 				}
 			});
 		}
 	},
 
-	search: (options) => {
-		if (!options.sortFunction && options.valueNames && options.valueNames.includes("name")) options.sortFunction = SortUtil.listSort;
-
-		const list = new List("listcontainer", options);
-		list.sort("name");
+	_firstInit: true,
+	initList (listOpts) {
 		const $iptSearch = $("#search");
+		const $wrpList = $(`ul.list.${listOpts.listClass}`);
+		const list = new List({$iptSearch, $wrpList, ...listOpts});
+
 		$("#reset").click(function () {
-			$("#filtertools").find("select").val("All");
 			$iptSearch.val("");
-			list.search();
-			list.sort("name");
-			list.filter();
+			list.reset();
 		});
 
 		ListUtil.bindEscapeKey(list, $iptSearch);
 
-		const listWrapper = $("#listcontainer");
-		if (listWrapper.data("lists")) {
-			listWrapper.data("lists").push(list);
-		} else {
-			listWrapper.data("lists", [list]);
-		}
-		if (ListUtil._first) {
-			ListUtil._first = false;
-			const $headDesc = $(`header div p`);
+		if (ListUtil._firstInit) {
+			ListUtil._firstInit = false;
+			const $headDesc = $(`.page__subtitle`);
 			$headDesc.html(`${$headDesc.html()} Press J/K to navigate rows.`);
+			ListUtil._initList_bindWindowHandlers();
+		}
 
-			const scrollTo = () => {
-				const toShow = Hist.getSelectedListElementWithIndex();
-				if (toShow && toShow.$el && toShow.$el.length) {
-					const $wrp = toShow.$el.parent();
-					const $parent = toShow.$el.parent().parent();
-					const parentScroll = $parent.scrollTop();
-					const parentHeight = $parent.height();
-					const posInParent = $wrp.position().top;
-					const height = $wrp.height();
+		return list;
+	},
 
-					if (posInParent < 0) {
-						$wrp[0].scrollIntoView();
-					} else if (posInParent + height > parentHeight) {
-						$parent.scrollTop(parentScroll + (posInParent - parentHeight + height));
-					}
-				}
-			};
+	_initList_scrollToItem () {
+		const toShow = Hist.getSelectedListElementWithLocation();
 
-			$(window).on("keypress", (e) => {
-				// K up; J down
-				if (noModifierKeys(e)) {
-					if (e.key === "k" || e.key === "j") {
-						// don't switch if the user is typing somewhere else
-						if (MiscUtil.isInInput(e)) return;
-						const it = Hist.getSelectedListElementWithIndex();
+		if (toShow) {
+			const $li = $(toShow.item.ele);
+			const $wrpList = $li.parent();
+			const parentScroll = $wrpList.scrollTop();
+			const parentHeight = $wrpList.height();
+			const posInParent = $li.position().top;
+			const height = $li.height();
 
-						if (it) {
-							if (e.key === "k") {
-								const prevLink = it.$el.parent().prev().find("a").attr("href");
-								if (prevLink !== undefined) {
-									window.location.hash = prevLink;
-									scrollTo();
-								} else {
-									const lists = listWrapper.data("lists");
-									let x = it.x;
-									while (--x >= 0) {
-										const l = lists[x];
-										if (l.visibleItems.length) {
-											const goTo = $(l.visibleItems[l.visibleItems.length - 1].elm).find("a").attr("href");
-											if (goTo) {
-												window.location.hash = goTo;
-												scrollTo();
-											}
-											return;
+			if (posInParent < 0) {
+				$li[0].scrollIntoView();
+			} else if (posInParent + height > parentHeight) {
+				$wrpList.scrollTop(parentScroll + (posInParent - parentHeight + height));
+			}
+		}
+	},
+
+	_initList_bindWindowHandlers () {
+		$(window).on("keypress", (e) => {
+			// K up; J down
+			if (noModifierKeys(e)) {
+				if (e.key === "k" || e.key === "j") {
+					// don't switch if the user is typing somewhere else
+					if (MiscUtil.isInInput(e)) return;
+					const it = Hist.getSelectedListElementWithLocation();
+
+					if (it) {
+						if (e.key === "k") {
+							const prevLink = $(it.item.ele).prev().find("a").attr("href");
+							if (prevLink !== undefined) {
+								window.location.hash = prevLink;
+								ListUtil._initList_scrollToItem();
+							} else {
+								const lists = ListUtil.getPrimaryLists();
+								let x = it.x;
+								while (--x >= 0) {
+									const l = lists[x];
+									if (l.visibleItems.length) {
+										const goTo = $(l.visibleItems[l.visibleItems.length - 1].ele).find("a").attr("href");
+										if (goTo) {
+											window.location.hash = goTo;
+											ListUtil._initList_scrollToItem();
 										}
+										return;
 									}
 								}
-								const fromPrevSibling = it.$el.closest(`ul`).parent().prev(`li`).find(`ul li`).last().find("a").attr("href");
-								if (fromPrevSibling) {
-									window.location.hash = fromPrevSibling;
-								}
-							} else if (e.key === "j") {
-								const nextLink = it.$el.parent().next().find("a").attr("href");
-								if (nextLink !== undefined) {
-									window.location.hash = nextLink;
-									scrollTo();
-								} else {
-									const lists = listWrapper.data("lists");
-									let x = it.x;
-									while (++x < lists.length) {
-										const l = lists[x];
-										if (l.visibleItems.length) {
-											const goTo = $(l.visibleItems[0].elm).find("a").attr("href");
-											if (goTo) {
-												window.location.hash = goTo;
-												scrollTo();
-											}
-											return;
+							}
+							const fromPrevSibling = $(it.item.ele).closest(`ul`).parent().prev(`li`).find(`ul li`).last().find("a").attr("href");
+							if (fromPrevSibling) {
+								window.location.hash = fromPrevSibling;
+							}
+						} else if (e.key === "j") {
+							const nextLink = $(it.item.ele).next().find("a").attr("href");
+							if (nextLink !== undefined) {
+								window.location.hash = nextLink;
+								ListUtil._initList_scrollToItem();
+							} else {
+								const lists = ListUtil.getPrimaryLists();
+								let x = it.x;
+								while (++x < lists.length) {
+									const l = lists[x];
+									if (l.visibleItems.length) {
+										const goTo = $(l.visibleItems[0].ele).find("a").attr("href");
+										if (goTo) {
+											window.location.hash = goTo;
+											ListUtil._initList_scrollToItem();
 										}
+										return;
 									}
 								}
-								const fromNxtSibling = it.$el.closest(`ul`).parent().next(`li`).find(`ul li`).first().find("a").attr("href");
-								if (fromNxtSibling) {
-									window.location.hash = fromNxtSibling;
-								}
+							}
+							const fromNxtSibling = $(it.item.ele).closest(`ul`).parent().next(`li`).find(`ul li`).first().find("a").attr("href");
+							if (fromNxtSibling) {
+								window.location.hash = fromNxtSibling;
 							}
 						}
 					}
 				}
-			});
-		}
-		return list;
+			}
+		});
 	},
 
-	_lastSelected: null,
-	toggleSelected: (evt, ele) => {
-		function doSingle () {
-			ListUtil._primaryLists.forEach(l => ListUtil.deslectAll(l));
-			$(ele).addClass("list-multi-selected");
-		}
+	updateSelected () {
+		const curSelectedItem = Hist.getSelectedListItem();
+		ListUtil._primaryLists.forEach(l => l.updateSelected(curSelectedItem));
+	},
 
-		function getListPos (selected) {
-			let i, j, list, listItem;
-			outer: for (i = 0; i < ListUtil._primaryLists.length; ++i) {
-				const l = ListUtil._primaryLists[i];
-				for (j = 0; j < l.visibleItems.length; ++j) {
-					const it = l.visibleItems[j];
-					if (selected === it.elm.getAttribute("filterid")) {
-						list = l;
-						listItem = it;
-						break outer;
-					}
-				}
-			}
-			return list && listItem ? {ixList: i, list, ixItem: j, listItem} : null;
-		}
+	openContextMenu (evt, list, listItem) {
+		const listsWithSelections = ListUtil._primaryLists.map(l => ({l, selected: l.getSelected()}));
 
-		const nextSelected = $(ele).attr("filterid");
-
-		if (evt.shiftKey && ListUtil._lastSelected) {
-			evt.preventDefault();
-			const lastItem = getListPos(ListUtil._lastSelected);
-			if (!lastItem) {
-				doSingle();
-				ListUtil._lastSelected = nextSelected;
+		let selection;
+		if (listsWithSelections.some(it => it.selected.length)) {
+			const isItemInSelection = listsWithSelections.some(it => it.selected.some(li => li === listItem));
+			if (isItemInSelection) {
+				selection = listsWithSelections.map(it => it.selected).flat();
+				// trigger a context menu event with all the selected items
 			} else {
-				ListUtil._primaryLists.forEach(l => ListUtil.deslectAll(l));
-
-				const nextItem = getListPos(nextSelected);
-
-				const [min, max] = [lastItem, nextItem].sort((a, b) => {
-					if (a.ixList < b.ixList) return -1;
-					else if (a.ixList > b.ixList) return 1;
-					else if (a.ixItem < b.ixItem) return -1;
-					else if (a.ixItem > b.ixItem) return 1;
-					else return 0;
-				});
-
-				for (let i = min.ixList; i <= max.ixList; ++i) {
-					const l = ListUtil._primaryLists[i];
-					const rangeStart = i < max.ixList && i > min.ixList ? 0 : max.ixList === i && min.ixList < max.ixList ? 0 : min.ixItem;
-					const rangeEnd = max.ixList > i ? l.visibleItems.length - 1 : max.ixItem;
-
-					for (let j = rangeStart; j <= rangeEnd; ++j) {
-						$(l.visibleItems[j].elm).addClass("list-multi-selected");
-					}
-				}
+				ListUtil._primaryLists.forEach(l => l.deselectAll());
+				list.doSelect(listItem);
+				selection = [listItem]
 			}
 		} else {
-			doSingle();
-			ListUtil._lastSelected = nextSelected;
+			list.doSelect(listItem);
+			selection = [listItem]
 		}
+
+		ContextUtil.handleOpenContextMenu(evt, listItem.ele, "list", null, selection);
 	},
 
-	updateSelected: () => {
-		ListUtil.toggleSelected({}, Hist.getSelectedListElement().parent());
-	},
-
-	initContextMenu: (clickFn, ...labels) => {
-		ContextUtil.doInitContextMenu("list", clickFn, labels);
-	},
-
-	initSubContextMenu: (clickFn, ...labels) => {
-		ContextUtil.doInitContextMenu("listSub", clickFn, labels);
-	},
-
-	openContextMenu: (evt, ele) => {
-		const selCount = ListUtil._primaryLists.map(l => ListUtil.getSelectedCount(l)).reduce((a, b) => a + b, 0);
-		if (selCount === 1) ListUtil._primaryLists.forEach(l => ListUtil.deslectAll(l));
-		if (selCount === 0 || selCount === 1) $(ele).addClass("list-multi-selected");
-		ContextUtil.handleOpenContextMenu(evt, ele, "list");
-	},
-
-	openSubContextMenu: (evt, ele) => {
-		ContextUtil.handleOpenContextMenu(evt, ele, "listSub");
+	openSubContextMenu (evt, listItem) {
+		ContextUtil.handleOpenContextMenu(evt, listItem.ele, "listSub", null, [listItem]);
 	},
 
 	$sublistContainer: null,
 	sublist: null,
-	$sublist: null,
 	_sublistChangeFn: null,
 	_pUidHandler: null,
 	_allItems: null,
 	_primaryLists: [],
 	_pinned: {},
-	initSublist: (options) => {
-		ListUtil._allItems = options.itemList;
-		ListUtil._getSublistRow = options.getSublistRow;
-		ListUtil._sublistChangeFn = options.onUpdate;
-		ListUtil._primaryLists = options.primaryLists;
-		ListUtil._pUidHandler = options.uidHandler;
-		ListUtil._uidUnpackFn = options.uidUnpacker;
-		delete options.itemList;
-		delete options.getSublistRow;
-		delete options.onUpdate;
-		delete options.primaryLists;
-		delete options.uidHandler;
+	initSublist (options) {
+		if (options.itemList !== undefined) ListUtil._allItems = options.itemList; delete options.itemList;
+		if (options.getSublistRow !== undefined) ListUtil._getSublistRow = options.getSublistRow; delete options.getSublistRow;
+		if (options.onUpdate !== undefined) ListUtil._sublistChangeFn = options.onUpdate; delete options.onUpdate;
+		if (options.primaryLists !== undefined) ListUtil._primaryLists = options.primaryLists; delete options.primaryLists;
+		if (options.uidHandler !== undefined) ListUtil._pUidHandler = options.uidHandler; delete options.uidHandler;
+		if (options.uidUnpacker !== undefined) ListUtil._uidUnpackFn = options.uidUnpacker; delete options.uidUnpacker;
 
 		ListUtil.$sublistContainer = $("#sublistcontainer");
-		const sublist = new List("sublistcontainer", options);
+		const $wrpSublist = $(`ul.${options.listClass}`);
+		const sublist = new List({...options, $wrpList: $wrpSublist, isUseJquery: true});
 		ListUtil.sublist = sublist;
-		ListUtil.$sublist = $(`ul.${options.listClass}`);
 
 		if (ListUtil.$sublistContainer.hasClass(`sublist--resizable`)) ListUtil._pBindSublistResizeHandlers(ListUtil.$sublistContainer);
 
 		return sublist;
 	},
+
+	setOptions (options) {
+		if (options.itemList !== undefined) ListUtil._allItems = options.itemList;
+		if (options.getSublistRow !== undefined) ListUtil._getSublistRow = options.getSublistRow;
+		if (options.onUpdate !== undefined) ListUtil._sublistChangeFn = options.onUpdate;
+		if (options.primaryLists !== undefined) ListUtil._primaryLists = options.primaryLists;
+		if (options.uidHandler !== undefined) ListUtil._pUidHandler = options.uidHandler;
+		if (options.uidUnpacker !== undefined) ListUtil._uidUnpackFn = options.uidUnpacker;
+	},
+
+	getPrimaryLists () { return this._primaryLists; },
 
 	__mouseMoveId: 1,
 	async _pBindSublistResizeHandlers ($ele) {
@@ -3360,15 +3319,6 @@ ListUtil = {
 
 		const storedHeight = await StorageUtil.pGetForPage(STORAGE_KEY);
 		if (storedHeight) $ele.css("height", storedHeight);
-	},
-
-	setOptions: (options) => {
-		if (options.itemList !== undefined) ListUtil._allItems = options.itemList;
-		if (options.getSublistRow !== undefined) ListUtil._getSublistRow = options.getSublistRow;
-		if (options.onUpdate !== undefined) ListUtil._sublistChangeFn = options.onUpdate;
-		if (options.primaryLists !== undefined) ListUtil._primaryLists = options.primaryLists;
-		if (options.uidHandler !== undefined) ListUtil._pUidHandler = options.uidHandler;
-		if (options.uidUnpacker !== undefined) ListUtil._uidUnpackFn = options.uidUnpacker;
 	},
 
 	getOrTabRightButton: (id, icon) => {
@@ -3463,6 +3413,7 @@ ListUtil = {
 			.attr("title", "Upload List (SHIFT for Add Only)");
 	},
 
+	// FIXME?
 	setFromSubHashes: (subHashes, funcPreload) => {
 		function funcOnload (json) {
 			ListUtil._pLoadSavedSublist(json.items, false).then(async () => {
@@ -3494,13 +3445,13 @@ ListUtil = {
 	_getPinnedCount (index, data) {
 		const base = ListUtil._pinned[index];
 		if (!base) return null;
-		if (data && data.uid) return base[data.uid];
+		if (data && data.uniqueid) return base[data.uniqueid];
 		return base._;
 	},
 
 	_setPinnedCount (index, count, data) {
 		const base = ListUtil._pinned[index];
-		const key = data && data.uid ? data.uid : "_";
+		const key = data && data.uniqueid ? data.uniqueid : "_";
 		if (base) base[key] = count;
 		else (ListUtil._pinned[index] = {})[key] = count;
 	},
@@ -3508,7 +3459,7 @@ ListUtil = {
 	_deletePinnedCount (index, data) {
 		const base = ListUtil._pinned[index];
 		if (base) {
-			if (data && data.uid) delete base[data.uid];
+			if (data && data.uniqueid) delete base[data.uniqueid];
 			else delete base._;
 		}
 	},
@@ -3529,16 +3480,9 @@ ListUtil = {
 			ListUtil._setViewCount(index, count + addCount, data);
 			if (doFinalise) await ListUtil._pFinaliseSublist();
 		} else {
-			const sl = ListUtil._getSublistRow(ListUtil._allItems[index], index, addCount, data);
-			if (sl instanceof Promise) {
-				return sl.then(async (r) => {
-					ListUtil.$sublist.append(r);
-					if (doFinalise) await ListUtil._pFinaliseSublist();
-				});
-			} else {
-				ListUtil.$sublist.append(sl);
-				if (doFinalise) await ListUtil._pFinaliseSublist();
-			}
+			const listItem = await ListUtil._getSublistRow(ListUtil._allItems[index], index, addCount, data);
+			ListUtil.sublist.addItem(listItem);
+			if (doFinalise) await ListUtil._pFinaliseSublist();
 		}
 	},
 
@@ -3548,7 +3492,7 @@ ListUtil = {
 		if (count > subtractCount) {
 			ListUtil._setPinnedCount(index, count - subtractCount, data);
 			ListUtil._setViewCount(index, count - subtractCount, data);
-			ListUtil.sublist.reIndex();
+			ListUtil.sublist.update();
 			await ListUtil._pSaveSublist();
 			ListUtil._handleCallUpdateFn();
 		} else if (count) await ListUtil.pDoSublistRemove(index, data);
@@ -3566,13 +3510,22 @@ ListUtil = {
 	},
 
 	_setViewCount: (index, newCount, data) => {
-		const $cnt = $(ListUtil.sublist.get(data && data.uid ? "uid" : "id", data && data.uid ? data.uid : index)[0].elm).find(".count");
-		if ($cnt.find("input").length) $cnt.find("input").val(newCount);
-		else $cnt.text(newCount);
+		let foundItem;
+		if (data && data.uniqueid != null) {
+			foundItem = ListUtil.sublist.items.find(it => it.values.uniqueid === data.uniqueid);
+		} else {
+			foundItem = ListUtil.sublist.items.find(it => it.ix === index);
+		}
+
+		foundItem.values.count = newCount;
+		foundItem.data.$elesCount.forEach($ele => {
+			if ($ele.is("input")) $ele.val(newCount);
+			else $ele.text(newCount);
+		})
 	},
 
 	async _pFinaliseSublist (noSave) {
-		ListUtil.sublist.reIndex();
+		ListUtil.sublist.update();
 		ListUtil._updateSublistVisibility();
 		if (!noSave) await ListUtil._pSaveSublist();
 		ListUtil._handleCallUpdateFn();
@@ -3582,9 +3535,8 @@ ListUtil = {
 		const sources = new Set();
 		const toSave = ListUtil.sublist.items
 			.map(it => {
-				const $elm = $(it.elm);
-				sources.add(ListUtil._allItems[Number($elm.attr(FLTR_ID))].source);
-				return {h: $elm.find(`a`).prop("hash").slice(1).split(HASH_PART_SEP)[0], c: $elm.find(".count").first().text() || undefined, uid: $elm.find(`.uid`).text() || undefined};
+				sources.add(ListUtil._allItems[it.ix].source);
+				return {h: it.values.hash.split(HASH_PART_SEP)[0], c: it.values.count || undefined, uniqueid: it.values.uniqueid};
 			});
 		return {items: toSave, sources: Array.from(sources)};
 	},
@@ -3600,8 +3552,9 @@ ListUtil = {
 
 	async pDoSublistRemove (index, data) {
 		ListUtil._deletePinnedCount(index, data);
-		if (data && data.uid) ListUtil.sublist.remove("uid", data.uid);
-		else ListUtil.sublist.remove("id", index);
+		if (data && data.uniqueid) ListUtil.sublist.removeItemBy("uniqueid", data.uniqueid);
+		else ListUtil.sublist.removeItem(index);
+		ListUtil.sublist.update();
 		ListUtil._updateSublistVisibility();
 		await ListUtil._pSaveSublist();
 		ListUtil._handleCallUpdateFn();
@@ -3609,7 +3562,8 @@ ListUtil = {
 
 	async pDoSublistRemoveAll (noSave) {
 		ListUtil._pinned = {};
-		ListUtil.sublist.clear();
+		ListUtil.sublist.removeAllItems();
+		ListUtil.sublist.update();
 		ListUtil._updateSublistVisibility();
 		if (!noSave) await ListUtil._pSaveSublist();
 		ListUtil._handleCallUpdateFn();
@@ -3619,36 +3573,12 @@ ListUtil = {
 		return ListUtil._getPinnedCount(index, data);
 	},
 
-	deslectAll: (list) => {
-		list.items.forEach(it => it.elm.className = it.elm.className.replace(/list-multi-selected/g, ""));
-	},
-
-	forEachSelected: (list, forEachFunc) => {
-		list.items
-			.filter(it => it.elm.className.includes("list-multi-selected"))
+	mapSelectedWithDeslect (list, mapFunc) {
+		return list.getSelected()
 			.map(it => {
-				it.elm.className = it.elm.className.replace(/list-multi-selected/g, "");
-				return it.elm.getAttribute(FLTR_ID);
-			})
-			.forEach(it => forEachFunc(it));
-	},
-
-	mapSelected (list, mapFunc) {
-		return list.items
-			.filter(it => it.elm.className.includes("list-multi-selected"))
-			.map(it => {
-				it.elm.className = it.elm.className.replace(/list-multi-selected/g, "");
-				return it.elm.getAttribute(FLTR_ID);
-			})
-			.map(it => mapFunc(it));
-	},
-
-	getSelectedCount: (list) => {
-		return list.items.filter(it => it.elm.className.includes("list-multi-selected")).length;
-	},
-
-	isAnySelected: (list) => {
-		return !!list.items.find(it => it.elm.className.includes("list-multi-selected"));
+				it.isSelected = false;
+				mapFunc(it.ix);
+			});
 	},
 
 	_handleCallUpdateFn: () => {
@@ -3674,20 +3604,17 @@ ListUtil = {
 		if (!additive) await ListUtil.pDoSublistRemoveAll(true);
 
 		const toLoad = items.map(it => {
-			const $ele = Hist._getListElem(it.h);
-			const itId = $ele ? $ele.attr("id") : null;
-			if (itId != null) {
-				const out = {index: itId, addCount: Number(it.c)};
-				if (ListUtil._uidUnpackFn && it.uid) out.data = ListUtil._uidUnpackFn(it.uid);
+			const item = Hist._getListItem(it.h);
+			if (item != null) {
+				const out = {index: item.ix, addCount: Number(it.c)};
+				if (ListUtil._uidUnpackFn && it.uniqueid) out.data = ListUtil._uidUnpackFn(it.uniqueid);
 				return out;
 			}
 			return null;
 		}).filter(it => it);
 
-		const promises = toLoad.map(it => ListUtil.pDoSublistAdd(it.index, false, it.addCount, it.data));
-		return Promise.all(promises).then(async () => {
-			await ListUtil._pFinaliseSublist(true);
-		});
+		await Promise.all(toLoad.map(it => ListUtil.pDoSublistAdd(it.index, false, it.addCount, it.data)));
+		await ListUtil._pFinaliseSublist(true);
 	},
 
 	async pGetSelectedSources () {
@@ -3700,21 +3627,136 @@ ListUtil = {
 		if (store && store.sources) return store.sources;
 	},
 
-	initGenericPinnable: () => {
-		ListUtil.initContextMenu(ListUtil.handleGenericContextMenuClick, "Popout", "Pin");
-		ListUtil.initSubContextMenu(ListUtil.handleGenericSubContextMenuClick, "Popout", "Unpin", "Clear Pins", null, "Feeling Lucky?", null, "Download JSON");
+	initGenericPinnable () {
+		ContextUtil.doInitContextMenu(
+			"list",
+			ListUtil.handleGenericContextMenuClick,
+			[
+				"Popout",
+				"Pin"
+			]
+		);
+		ContextUtil.doInitContextMenu(
+			"listSub",
+			ListUtil.handleGenericSubContextMenuClick,
+			[
+				"Popout",
+				"Unpin",
+				"Clear Pins",
+				null,
+				"Roll on List",
+				null,
+				"Download JSON Data"
+			]
+		);
 	},
 
-	handleGenericContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
-		const itId = Number($invokedOn.attr(FLTR_ID));
+	initGenericAddable () {
+		ContextUtil.doInitContextMenu(
+			"list",
+			ListUtil.handleGenericMultiContextMenuClick,
+			[
+				"Popout",
+				"Add"
+			]
+		);
+		ContextUtil.doInitContextMenu(
+			"listSub",
+			ListUtil.handleGenericMultiSubContextMenuClick,
+			[
+				"Popout",
+				"Remove",
+				"Clear List",
+				null,
+				"Roll on List",
+				null,
+				"Download JSON Data"
+			]
+		);
+	},
+
+	handleGenericContextMenuClick: (evt, ele, $invokedOn, $selectedMenu, _, selection) => {
 		switch (Number($selectedMenu.data("ctx-id"))) {
-			case 0:
-				Renderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
-				break;
+			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
 			case 1:
-				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelected(l, (it) => ListUtil.isSublisted(it) ? Promise.resolve() : ListUtil.pDoSublistAdd(it)))))
+				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelectedWithDeslect(l, (it) => ListUtil.isSublisted(it) ? Promise.resolve() : ListUtil.pDoSublistAdd(it)))))
 					.then(async () => ListUtil._pFinaliseSublist());
 				break;
+		}
+	},
+
+	handleGenericSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu, _, selection) => {
+		switch (Number($selectedMenu.data("ctx-id"))) {
+			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
+			case 1: ListUtil.pDoSublistRemove(selection.ix); break;
+			case 2:
+				ListUtil.pDoSublistRemoveAll();
+				break;
+			case 3:
+				ListUtil._rollSubListed();
+				break;
+			case 4:
+				ListUtil._handleJsonDownload();
+				break;
+		}
+	},
+
+	handleGenericMultiContextMenuClick: (evt, ele, $invokedOn, $selectedMenu, _, selection) => {
+		switch (Number($selectedMenu.data("ctx-id"))) {
+			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
+			case 1:
+				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelectedWithDeslect(l, (it) => ListUtil.pDoSublistAdd(it)))))
+					.then(async () => {
+						await ListUtil._pFinaliseSublist();
+						ListUtil.updateSelected();
+					});
+				break;
+		}
+	},
+
+	handleGenericMultiSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu, _, selection) => {
+		switch (Number($selectedMenu.data("ctx-id"))) {
+			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
+			case 1: {
+				selection.forEach(item => {
+					if (item.values.uniqueid) ListUtil.pDoSublistRemove(item.ix, {uniqueid: item.values.uniqueid});
+					else ListUtil.pDoSublistRemove(item.ix);
+				});
+				break;
+			}
+			case 2:
+				ListUtil.pDoSublistRemoveAll();
+				break;
+			case 3:
+				ListUtil._rollSubListed();
+				break;
+			case 4:
+				ListUtil._handleJsonDownload();
+				break;
+		}
+	},
+
+	async _handleGenericContextMenuClick_pDoMassPopout (evt, ele, $invokedOn, selection) {
+		const page = UrlUtil.getCurrentPage();
+
+		const elePos = ele.getBoundingClientRect();
+
+		// do this in serial to have a "window cascade" effect
+		for (let i = 0; i < selection.length; ++i) {
+			const listItem = selection[i];
+			const toRender = ListUtil._allItems[listItem.ix];
+			const hash = UrlUtil.autoEncodeHash(toRender);
+			const posOffset = Renderer.hover._BAR_HEIGHT * i;
+
+			Renderer.hover.getShowWindow(
+				Renderer.hover.$getHoverContent_stats(UrlUtil.getCurrentPage(), toRender),
+				{mode: "exact", x: elePos.x + posOffset, y: elePos.y + posOffset},
+				{
+					title: toRender.name,
+					isPermanent: true,
+					pageUrl: `${page}#${hash}`
+				}
+			);
 		}
 	},
 
@@ -3740,7 +3782,7 @@ ListUtil = {
 		if (!ListUtil._isRolling) {
 			ListUtil._isRolling = true;
 			const $eles = ListUtil.sublist.items
-				.map(it => $(it.elm).find(`a`));
+				.map(it => $(it.ele).find(`a`));
 
 			if ($eles.length <= 1) {
 				JqueryUtil.doToast({
@@ -3760,71 +3802,6 @@ ListUtil = {
 					if (i === timers.length - 1) ListUtil._isRolling = false;
 				}, total);
 			});
-		}
-	},
-
-	handleGenericSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
-		const itId = Number($invokedOn.attr(FLTR_ID));
-		switch (Number($selectedMenu.data("ctx-id"))) {
-			case 0:
-				Renderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
-				break;
-			case 1:
-				ListUtil.pDoSublistRemove(itId);
-				break;
-			case 2:
-				ListUtil.pDoSublistRemoveAll();
-				break;
-			case 3:
-				ListUtil._rollSubListed();
-				break;
-			case 4:
-				ListUtil._handleJsonDownload();
-				break;
-		}
-	},
-
-	initGenericAddable: () => {
-		ListUtil.initContextMenu(ListUtil.handleGenericMultiContextMenuClick, "Popout", "Add");
-		ListUtil.initSubContextMenu(ListUtil.handleGenericMultiSubContextMenuClick, "Popout", "Remove", "Clear List", null, "Feeling Lucky?", null, "Download JSON");
-	},
-
-	handleGenericMultiContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
-		const itId = Number($invokedOn.attr(FLTR_ID));
-		switch (Number($selectedMenu.data("ctx-id"))) {
-			case 0:
-				Renderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
-				break;
-			case 1:
-				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelected(l, (it) => ListUtil.pDoSublistAdd(it)))))
-					.then(async () => {
-						await ListUtil._pFinaliseSublist();
-						ListUtil.updateSelected();
-					});
-				break;
-		}
-	},
-
-	handleGenericMultiSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu) => {
-		const itId = Number($invokedOn.attr(FLTR_ID));
-		const uid = $invokedOn.find(`.uid`).text();
-		switch (Number($selectedMenu.data("ctx-id"))) {
-			case 0:
-				Renderer.hover.doPopout($invokedOn, ListUtil._allItems, itId, evt.clientX);
-				break;
-			case 1:
-				if (uid) ListUtil.pDoSublistRemove(itId, {uid: uid});
-				else ListUtil.pDoSublistRemove(itId);
-				break;
-			case 2:
-				ListUtil.pDoSublistRemoveAll();
-				break;
-			case 3:
-				ListUtil._rollSubListed();
-				break;
-			case 4:
-				ListUtil._handleJsonDownload();
-				break;
 		}
 	},
 
@@ -3859,26 +3836,6 @@ ListUtil = {
 		}
 	},
 
-	/**
-	 * Assumes any other lists have been searched using the same term
-	 */
-	getSearchTermAndReset: (list, ...otherLists) => {
-		let lastSearch = null;
-		if (list.searched) {
-			lastSearch = $(`#search`).val();
-			list.search();
-			otherLists.forEach(l => l.search());
-		}
-		list.filter();
-		otherLists.forEach(l => l.filter());
-		return lastSearch;
-	},
-
-	toggleCheckbox (evt, ele) {
-		const $ipt = $(ele).find(`input`);
-		$ipt.prop("checked", !$ipt.prop("checked"));
-	},
-
 	getCompleteFilterSources (it) {
 		return it.otherSources ? [it.source].concat(it.otherSources.map(src => new FilterItem({item: src.source, isIgnoreRed: true}))) : it.source;
 	},
@@ -3899,9 +3856,10 @@ ListUtil = {
 	},
 
 	getVisibleIds () {
-		return BrewUtil._lists.map(l => l.visibleItems.map(it => Number(it.elm.getAttribute(FLTR_ID)))).reduce((la, lb) => la.concat(lb), []);
+		return ListUtil._primaryLists.map(l => l.visibleItems.map(it => it.ix)).flat();
 	},
 
+	// FIXME move this out
 	showTable (title, dataList, colTransforms, filter, sorter) {
 		const $modal = $(`<div class="modal__outer dropdown-menu"/>`);
 		const $wrpModal = $(`<div class="modal__wrp">`).appendTo($(`body`)).click(() => $wrpModal.remove());
@@ -4381,27 +4339,22 @@ SortUtil = {
 		return b < a ? 1 : -1;
 	},
 
-	compareNames: (a, b) => {
-		if (b._values.name.toLowerCase() === a._values.name.toLowerCase()) return 0;
-		else if (b._values.name.toLowerCase() > a._values.name.toLowerCase()) return 1;
-		else if (b._values.name.toLowerCase() < a._values.name.toLowerCase()) return -1;
+	compareListNames (a, b) { return SortUtil._ascSort(a.name.toLowerCase(), b.name.toLowerCase()); },
+
+	listSort (a, b, opts) {
+		if (opts.sortBy === "name") return SortUtil.compareListNames(a, b);
+		else return SortUtil._compareByOrDefault_compareByOrDefault(a, b, opts.sortBy);
 	},
 
-	listSort: (itemA, itemB, options) => {
-		if (options.valueName === "name") return compareBy("name");
-		else return compareByOrDefault(options.valueName, "name");
+	_listSort_compareBy (a, b, sortBy) {
+		const aValue = typeof a.values[sortBy] === "string" ? a.values[sortBy].toLowerCase() : a.values[sortBy];
+		const bValue = typeof b.values[sortBy] === "string" ? b.values[sortBy].toLowerCase() : b.values[sortBy];
 
-		function compareBy (valueName) {
-			const aValue = itemA.values()[valueName].toLowerCase();
-			const bValue = itemB.values()[valueName].toLowerCase();
-			if (aValue === bValue) return 0;
-			return (aValue > bValue) ? 1 : -1;
-		}
+		return SortUtil._ascSort(aValue, bValue);
+	},
 
-		function compareByOrDefault (valueName, defaultValueName) {
-			const initialCompare = compareBy(valueName);
-			return initialCompare === 0 ? compareBy(defaultValueName) : initialCompare;
-		}
+	_compareByOrDefault_compareByOrDefault (a, b, sortBy) {
+		return SortUtil._listSort_compareBy(a, b, sortBy) || SortUtil.compareListNames(a, b);
 	},
 
 	/**
@@ -4452,19 +4405,20 @@ SortUtil = {
 		}));
 	},
 
-	initHandleFilterButtonClicks (target = "#filtertools") {
-		$("#filtertools").find("button.sort").click(function () {
-			setTimeout(() => { // defer to allow button to update
-				SortUtil.handleFilterButtonClick.call(this, target);
-			}, 1);
+	initBtnSortHandlers ($wrpBtnsSort, list) {
+		$wrpBtnsSort.find(".sort").each((i, e) => {
+			const $btnSort = $(e);
+			$btnSort.click(evt => {
+				evt.stopPropagation();
+				const direction = $btnSort.data("sortby") === "asc" ? "desc" : "asc";
+				$btnSort.data("sortby", direction);
+
+				$wrpBtnsSort.find(".caret").removeClass("caret");
+				$btnSort.find(".caret_wrp").addClass("caret").toggleClass("caret--reverse", direction === "asc");
+
+				list.sort($btnSort.data("sort"), $btnSort.data("sortby"));
+			});
 		});
-	},
-
-	handleFilterButtonClick (target, $this = $(this), direction) {
-		if (!direction) direction = $this.hasClass("asc") || $this.attr("data-sortby") === "asc" ? "asc" : "desc";
-
-		$(target).find(".caret").removeClass("caret");
-		$this.find(".caret_wrp").addClass("caret").toggleClass("caret--reverse", direction === "asc");
 	}
 };
 
@@ -4542,6 +4496,7 @@ DataUtil = {
 							switch (prop) {
 								case "monster": return DataUtil.monster.pMergeCopy(data[prop], entry, options);
 								case "item": return DataUtil.item.pMergeCopy(data[prop], entry, options);
+								case "background": return DataUtil.background.pMergeCopy(data[prop], entry, options);
 								default: throw new Error(`No internal _copy merge strategy specified for property "${prop}"`);
 							}
 						}
@@ -4764,6 +4719,8 @@ DataUtil = {
 				if (modInfo.replace.regex) {
 					const re = new RegExp(modInfo.replace.regex, modInfo.replace.flags || "");
 					ixOld = copyTo[prop].findIndex(it => it.name ? re.test(it.name) : typeof it === "string" ? re.test(it) : false);
+				} else if (modInfo.replace.index != null) {
+					ixOld = modInfo.replace.index;
 				} else {
 					ixOld = copyTo[prop].findIndex(it => it.name ? it.name === modInfo.replace : it === modInfo.replace);
 				}
@@ -4778,6 +4735,12 @@ DataUtil = {
 			function doMod_replaceOrAppendArr (modInfo, prop) {
 				const didReplace = doMod_replaceArr(modInfo, prop, false);
 				if (!didReplace) doMod_appendArr(modInfo, prop);
+			}
+
+			function doMod_insertArr (modInfo, prop) {
+				doEnsureArray(modInfo, "items");
+				if (!copyTo[prop]) throw new Error(`Could not find "${prop}" array`)
+				copyTo[prop].splice(modInfo.index, 0, ...modInfo.items);
 			}
 
 			function doMod_removeArr (modInfo, prop) {
@@ -4898,34 +4861,44 @@ DataUtil = {
 			function doMod_replaceSpells (modInfo) {
 				if (!copyTo.spellcasting) throw new Error(`Creature did not have a spellcasting property!`);
 
-				// TODO should be rewritten to handle non-slot-based spellcasters
 				// TODO could accept a "position" or "name" parameter should spells need to be added to other spellcasting traits
-				const trait0 = copyTo.spellcasting[0].spells;
-				Object.keys(modInfo.spells).forEach(k => {
-					if (trait0[k]) {
-						const spellCategoryNu = modInfo.spells[k];
-						const spellCategoryOld = trait0[k];
-						Object.keys(spellCategoryNu).forEach(kk => {
-							doEnsureArray(spellCategoryNu[kk], "with");
+				const spellcasting = copyTo.spellcasting[0];
 
-							if (spellCategoryOld[kk]) {
-								if (typeof spellCategoryOld[kk] === "object") {
-									if (spellCategoryOld[kk] instanceof Array) {
-										const ix = spellCategoryOld[kk].indexOf(spellCategoryNu[kk].replace);
-										if (~ix) {
-											spellCategoryOld[kk].splice(ix, 1, ...spellCategoryNu[kk].with);
-											spellCategoryOld[kk].sort(SortUtil.ascSortLower);
-										}
-									} else throw new Error(`Object at key ${kk} not an array!`);
-								} else {
-									if (spellCategoryNu[kk].replace === spellCategoryOld[kk]) {
-										spellCategoryOld[kk] = spellCategoryNu[kk].with;
-									}
-								}
-							}
-						});
+				const handleReplace = (curSpells, replaceMeta, k) => {
+					doEnsureArray(replaceMeta, "with");
+
+					const ix = curSpells[k].indexOf(replaceMeta.replace);
+					if (~ix) {
+						curSpells[k].splice(ix, 1, ...replaceMeta.with);
+						curSpells[k].sort(SortUtil.ascSortLower);
+					} else throw new Error(`Could not find spell "${replaceMeta.replace}" to replace`);
+				};
+
+				if (modInfo.spells) {
+					const trait0 = spellcasting.spells;
+					Object.keys(modInfo.spells).forEach(k => { // k is e.g. "4"
+						if (trait0[k]) {
+							const replaceMetas = modInfo.spells[k];
+							const curSpells = trait0[k];
+							replaceMetas.forEach(replaceMeta => handleReplace(curSpells, replaceMeta, "spells"));
+						}
+					});
+				}
+
+				// TODO should be extended  to handle all non-slot-based spellcasters
+				if (modInfo.daily) {
+					for (let i = 1; i <= 9; ++i) {
+						const e = `${i}e`;
+
+						if (modInfo.daily[i]) {
+							modInfo.daily[i].forEach(replaceMeta => handleReplace(spellcasting.daily, replaceMeta, i));
+						}
+
+						if (modInfo.daily[e]) {
+							modInfo.daily[e].forEach(replaceMeta => handleReplace(spellcasting.daily, replaceMeta, e));
+						}
 					}
-				});
+				}
 			}
 
 			function doMod_scalarAddHit (modInfo, prop) {
@@ -4976,6 +4949,7 @@ DataUtil = {
 								case "appendArr": return doMod_appendArr(modInfo, prop);
 								case "replaceArr": return doMod_replaceArr(modInfo, prop);
 								case "replaceOrAppendArr": return doMod_replaceOrAppendArr(modInfo, prop);
+								case "insertArr": return doMod_insertArr(modInfo, prop);
 								case "removeArr": return doMod_removeArr(modInfo, prop);
 								case "calculateProp": return doMod_calculateProp(modInfo, prop);
 								case "scalarAddProp": return doMod_scalarAddProp(modInfo, prop);
@@ -5075,11 +5049,20 @@ DataUtil = {
 
 	item: {
 		_MERGE_REQUIRES_PRESERVE: {
-			lootTables: true
+			lootTables: true,
+			tier: true
 		},
 		_mergeCache: {},
 		async pMergeCopy (itemList, item, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.item, UrlUtil.PG_ITEMS, itemList, item, options)
+		}
+	},
+
+	background: {
+		_MERGE_REQUIRES_PRESERVE: {},
+		_mergeCache: {},
+		async pMergeCopy (bgList, bg, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.background, UrlUtil.PG_BACKGROUNDS, bgList, bg, options)
 		}
 	},
 
@@ -5210,17 +5193,16 @@ RollerUtil = {
 	},
 
 	addListRollButton: () => {
-		const listWrapper = $("#listcontainer");
-
 		const $btnRoll = $(`<button class="btn btn-default" id="feelinglucky" title="Feeling Lucky?"><span class="glyphicon glyphicon-random"></span></button>`);
 		$btnRoll.on("click", () => {
-			if (listWrapper.data("lists")) {
-				const allLists = listWrapper.data("lists").filter(l => l.visibleItems.length);
+			const primaryLists = ListUtil.getPrimaryLists();
+			if (primaryLists && primaryLists.length) {
+				const allLists = primaryLists.filter(l => l.visibleItems.length);
 				if (allLists.length) {
 					const rollX = RollerUtil.roll(allLists.length);
 					const list = allLists[rollX];
 					const rollY = RollerUtil.roll(list.visibleItems.length);
-					window.location.hash = $(list.visibleItems[rollY].elm).find(`a`).prop("hash");
+					window.location.hash = $(list.visibleItems[rollY].ele).find(`a`).prop("hash");
 				}
 			}
 		});
@@ -5540,11 +5522,11 @@ BrewUtil = {
 		const page = UrlUtil.getCurrentPage();
 
 		const $topBar = isModal
-			? $(`<h4 class="split"><span>Manage Homebrew</span></h4>`).appendTo($window)
-			: $(`<div class="mb-3 text-center"/>`).appendTo($window);
-		$window.append(`<hr class="manbrew__hr">`);
+			? $(`<h4 class="split no-shrink"><span>Manage Homebrew</span></h4>`).appendTo($window)
+			: $(`<div class="mb-3 text-center no-shrink"/>`).appendTo($window);
+		$window.append(`<hr class="manbrew__hr no-shrink">`);
 
-		const $brewList = $(`<div class="manbrew__current_brew"/>`);
+		const $brewList = $(`<div class="manbrew__current_brew flex-col h-100"/>`);
 		$window.append($brewList);
 
 		await BrewUtil._pRenderBrewScreen_pRefreshBrewList($appendTo, $overlay, $brewList);
@@ -5596,16 +5578,17 @@ BrewUtil = {
 			.click(async () => {
 				const $btnAll = $(`<button class="btn btn-default btn-xs manbrew__load_all" disabled title="(Excluding samples)">Add All</button>`);
 
-				const $ulRows = $$`<ul class="list brew-list"><li><section><span style="font-style: italic;">Loading...</span></section></li></ul>`;
+				const $ulRows = $$`<ul class="list"><li><section><span style="font-style: italic;">Loading...</span></section></li></ul>`;
 
+				const $iptSearch = $(`<input type="search" class="search manbrew__search form-control w-100" placeholder="Find homebrew...">`)
 				const $lst = $$`
-					<div id="brewlistcontainer" class="listcontainer homebrew-window dropdown-menu">
+					<div class="listcontainer homebrew-window dropdown-menu flex-col">
 						<h4><span>Get Homebrew</span></h4>
 						<p><i>A list of homebrew available in the public repository. Click a name to load the homebrew, or view the source directly.<br>
 						Contributions are welcome; see the <a href="https://github.com/TheGiddyLimit/homebrew/blob/master/README.md" target="_blank" rel="noopener">README</a>, or stop by our <a href="https://discord.gg/nGvRCDs" target="_blank" rel="noopener">Discord</a>.</i></p>
 						<hr class="manbrew__hr">
 						<div class="manbrew__load_all_wrp">${$btnAll}</div>
-						<input type="search" class="search manbrew__search form-control" placeholder="Find homebrew..." style="width: 100%">
+						${$iptSearch}
 						<div class="filtertools manbrew__filtertools sortlabel btn-group lst__form-bottom">
 							<button class="col-4 sort btn btn-default btn-xs" data-sort="name">Name</button>
 							<button class="col-3 sort btn btn-default btn-xs" data-sort="author">Author</button>
@@ -5650,14 +5633,14 @@ BrewUtil = {
 				}
 
 				let dataList;
-				function sortFunction (a, b, o) {
-					a = dataList[a.elm.getAttribute(FLTR_ID)];
-					b = dataList[b.elm.getAttribute(FLTR_ID)];
+				function fnSort (a, b, o) {
+					a = dataList[a.ix];
+					b = dataList[b.ix];
 
-					if (o.valueName === "name") return byName();
-					if (o.valueName === "author") return orFallback(SortUtil.ascSortLower, "_brewAuthor");
-					if (o.valueName === "category") return orFallback(SortUtil.ascSortLower, "_brewCat");
-					if (o.valueName === "timestamp") return orFallback(SortUtil.ascSort, "_brewAdded");
+					if (o.sortBy === "name") return byName();
+					if (o.sortBy === "author") return orFallback(SortUtil.ascSortLower, "_brewAuthor");
+					if (o.sortBy === "category") return orFallback(SortUtil.ascSortLower, "_brewCat");
+					if (o.sortBy === "timestamp") return orFallback(SortUtil.ascSort, "_brewAdded");
 
 					function byName () { return SortUtil.ascSortLower(a._brewName, b._brewName); }
 					function orFallback (func, prop) { return func(a[prop], b[prop]) || byName(); }
@@ -5681,7 +5664,6 @@ BrewUtil = {
 						return json;
 					}))).flat();
 
-					let stack = "";
 					const all = jsonStack.flat();
 					all.forEach(it => {
 						const cleanFilename = it.name.trim().replace(/\.json$/, "");
@@ -5696,32 +5678,46 @@ BrewUtil = {
 					});
 					all.sort((a, b) => SortUtil.ascSortLower(a._brewName, b._brewName));
 
+					const list = new List({
+						$iptSearch,
+						$wrpList: $ulRows,
+						fnSort
+					});
+
 					dataList = all.filter(it => !it._brewSkip);
 					dataList.forEach((it, i) => {
 						it._brewAdded = timestamps[it.path] || 0;
 						it._brewCat = BrewUtil._pRenderBrewScreen_getDisplayCat(BrewUtil._pRenderBrewScreen_dirToCat(it._cat));
-						stack += `
-						<li ${FLTR_ID}="${i}" class="not-clickable">
+
+						const timestamp = it._brewAdded ? MiscUtil.dateToStr(new Date(it._brewAdded * 1000), true) : "";
+						const eleLi = $(`<li class="not-clickable">
 							<section>
-								<span class="col-4 name manbrew__load_from_url pl-0 clickable" onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").escapeQuotes()}', true)">${it._brewName}</span>
-								<span class="col-3 author">${it._brewAuthor}</span>
-								<span class="col-2 category text-center">${it._brewCat}</span>
-								<span class="col-2 timestamp text-center">${it._brewAdded ? MiscUtil.dateToStr(new Date(it._brewAdded * 1000), true) : ""}</span>
-								<span class="col-1 source manbrew__source text-center pr-0"><a href="${it.download_url}" target="_blank" rel="noopener">View Raw</a></span>
+								<span class="col-4 bold manbrew__load_from_url pl-0 clickable" onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").encodeApos().escapeQuotes()}', true)">${it._brewName}</span>
+								<span class="col-3">${it._brewAuthor}</span>
+								<span class="col-2 text-center">${it._brewCat}</span>
+								<span class="col-2 text-center">${timestamp}</span>
+								<span class="col-1 manbrew__source text-center pr-0"><a href="${it.download_url}" target="_blank" rel="noopener">View Raw</a></span>
 							</section>
-						</li>`;
+						</li>`)[0];
+
+						const listItem = new ListItem(
+							i,
+							eleLi,
+							it._brewName,
+							{
+								author: it._brewAuthor,
+								category: it._brewCat,
+								timestamp
+							}
+						);
+						list.addItem(listItem);
 					});
 
-					$ulRows.empty();
-					$ulRows.append(stack);
+					list.init();
 
-					const list = new List("brewlistcontainer", {
-						valueNames: ["name", "author", "category", "timestamp"],
-						listClass: "brew-list",
-						sortFunction
-					});
-					ListUtil.bindEscapeKey(list, $lst.find(`.search`), true);
+					ListUtil.bindEscapeKey(list, $iptSearch, true);
 
+					// FIXME
 					$btnAll.prop("disabled", false).click(() => $lst.find(`.manbrew__load_from_url`).filter((i, e) => !$(e).siblings(`.author`).text().toLowerCase().trim().startsWith("sample -")).click());
 				})();
 			});
@@ -5736,8 +5732,8 @@ BrewUtil = {
 			});
 		if (isModal) $btnDelAll.appendTo($topBar);
 
-		const $btnWrp = isModal ? $(`<div class="text-center"/>`).appendTo($window) : $topBar;
-		$$`<div ${isModal ? `class="text-center"` : ""}>
+		const $btnWrp = isModal ? $(`<div class="text-center no-shrink"/>`).appendTo($window) : $topBar;
+		$$`<div ${isModal ? `class="text-center no-shrink"` : ""}>
 			${$btnGet}
 			<label role="button" class="btn btn-default btn-sm btn-file">Upload File${$iptAdd}</label>
 			${$btnLoadFromUrl}
@@ -5785,6 +5781,7 @@ BrewUtil = {
 			cat.filter(it => isMatchingSource(it.source)).forEach(it => toDel.push(it.uniqueId));
 			await Promise.all(toDel.map(async uId => pDeleteFn(uId)));
 		}));
+		BrewUtil._lists.forEach(l => l.update());
 		await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
 		BrewUtil.removeJsonSource(source);
 		if (UrlUtil.getCurrentPage() === UrlUtil.PG_MAKE_SHAPED) removeBrewSource(source);
@@ -5800,11 +5797,12 @@ BrewUtil = {
 		function showSourceManager (source, $overlay2, showAll) {
 			const $wrpBtnDel = $(`<h4 class="split"><span>View/Manage ${source ? `Source Contents: ${Parser.sourceJsonToFull(source)}` : showAll ? "Entries from All Sources" : `Entries with No Source`}</span></h4>`);
 			const $cbAll = $(`<input type="checkbox">`);
-			const $ulRows = $$`<ul class="list brew-list"/>`;
+			const $ulRows = $$`<ul class="list"/>`;
+			const $iptSearch = $(`<input type="search" class="search manbrew__search form-control w-100" placeholder="Search entries...">`)
 			const $lst = $$`
-				<div id="brewlistcontainer" class="listcontainer homebrew-window dropdown-menu">
+				<div class="listcontainer homebrew-window dropdown-menu flex-col">
 					${$wrpBtnDel}
-					<input type="search" class="search manbrew__search form-control" placeholder="Search entries..." style="width: 100%">
+					${$iptSearch}
 					<div class="filtertools manbrew__filtertools sortlabel btn-group">
 						<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name</button>
 						<button class="col-5 sort btn btn-default btn-xs" data-sort="category">Category</button>
@@ -5816,8 +5814,18 @@ BrewUtil = {
 			$overlay2.append($lst);
 			$lst.on("click", (evt) => evt.stopPropagation());
 
+			let list;
+
 			// populate list
 			function populateList () {
+				$ulRows.empty();
+
+				list = new List({
+					$iptSearch,
+					$wrpList: $ulRows,
+					fnSort: SortUtil.listSort
+				});
+
 				function mapCategoryEntry (cat, bru) {
 					const out = {};
 					out.name = bru.name;
@@ -5850,44 +5858,48 @@ BrewUtil = {
 
 				const vetoolsSourceSet = new Set(BrewUtil._getActiveVetoolsSources().map(it => it.json));
 
-				let stack = "";
 				const isMatchingSource = (itSrc) => showAll || (itSrc === source || (source === undefined && !vetoolsSourceSet.has(itSrc) && !BrewUtil.hasSourceJson(itSrc)));
 				BrewUtil._getBrewCategories().forEach(cat => {
 					BrewUtil.homebrew[cat]
 						.filter(it => isMatchingSource(it.source))
 						.map(it => mapCategoryEntry(cat, it))
 						.sort((a, b) => SortUtil.ascSort(a.name, b.name))
-						.forEach(it => {
-							stack += `
-									<li><section onclick="ListUtil.toggleCheckbox(event, this)">
-										<span class="col-6 name">${it.name}</span>
-										<span class="col-5 category text-center">${BrewUtil._pRenderBrewScreen_getDisplayCat(cat, true)}${it.extraInfo}</span>
-										<span class="col-1 text-center"><input type="checkbox" onclick="event.stopPropagation()"></span>
-										<span class="hidden uid">${it.uniqueId}</span>
-										<span class="category_raw hidden">${cat}</span>
-									</section></li>
-								`;
+						.forEach((it, i) => {
+							const dispCat = BrewUtil._pRenderBrewScreen_getDisplayCat(cat, true);
+
+							const eleLi = $(`<li><label class="mb-0 flex-v-center row">
+									<span class="col-6 bold">${it.name}</span>
+									<span class="col-5 text-center">${dispCat}${it.extraInfo}</span>
+									<span class="pr-0 col-1 text-center"><input type="checkbox"></span>
+								</label></li>`)[0];
+
+							const listItem = new ListItem(
+								i,
+								eleLi,
+								it.name,
+								{
+									category: dispCat,
+									category_raw: cat,
+									uniqueid: it.uniqueId
+								}
+							);
+							list.addItem(listItem);
 						});
 				});
 				$ulRows.empty();
-				if (stack) $ulRows.append(stack);
-				else $ulRows.append(`<h5 class="text-center">No results found.</h5>`);
+
+				list.init();
+				if (!list.items.length) $ulRows.append(`<h5 class="text-center">No results found.</h5>`);
+				ListUtil.bindEscapeKey(list, $lst.find(`.search`), true);
 			}
 			populateList();
 
-			const list = new List("brewlistcontainer", {
-				valueNames: ["name", "category", "category_raw", "uid"],
-				listClass: "brew-list",
-				sortFunction: SortUtil.listSort
-			});
-			ListUtil.bindEscapeKey(list, $lst.find(`.search`), true);
-
 			$cbAll.change(function () {
 				const val = this.checked;
-				list.items.forEach(it => $(it.elm).find(`input`).prop("checked", val));
+				list.items.forEach(it => $(it.ele).find(`input`).prop("checked", val));
 			});
 			$(`<button class="btn btn-danger btn-xs">Delete Selected</button>`).on("click", async () => {
-				const toDel = list.items.filter(it => $(it.elm).find(`input`).prop("checked")).map(it => it.values());
+				const toDel = list.items.filter(it => $(it.ele).find(`input`).prop("checked")).map(it => it.values);
 
 				if (!toDel.length) return;
 				if (!window.confirm("Are you sure?")) return;
@@ -5898,8 +5910,9 @@ BrewUtil = {
 				} else {
 					await Promise.all(toDel.map(async it => {
 						const pDeleteFn = BrewUtil._getPDeleteFunction(it.category_raw);
-						await pDeleteFn(it.uid);
+						await pDeleteFn(it.uniqueid);
 					}));
+					BrewUtil._lists.forEach(l => l.update())
 					await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
 					populateList();
 					await BrewUtil._pRenderBrewScreen_pRefreshBrewList($appendTo, $overlay, $brewList);
@@ -5910,23 +5923,25 @@ BrewUtil = {
 
 		$brewList.empty();
 		if (BrewUtil.homebrew) {
-			const $lst = $(`
-					<div id="outerbrewlistcontainer" class="listcontainer">
-						<input type="search" class="search manbrew__search form-control" placeholder="Search active homebrew...">
-						<div class="filtertools manbrew__filtertools sortlabel btn-group lst__form-bottom">
-							<button class="col-5 sort btn btn-default btn-xs" data-sort="source">Source</button>
-							<button class="col-4 sort btn btn-default btn-xs" data-sort="authors">Authors</button>
-							<button class="col-1 btn btn-default btn-xs" disabled>Origin</button>
-							<button class="btn btn-default btn-xs" disabled>&nbsp;</button>
-						</div>
-						<ul class="list-display-only brew-list brew-list--target"></ul>
-						<ul class="list-display-only brew-list brew-list--groups"></ul>
-					</div>
-				`).appendTo($brewList);
+			const $iptSearch = $(`<input type="search" class="search manbrew__search form-control" placeholder="Search active homebrew...">`);
+			const $wrpList = $(`<ul class="list-display-only brew-list brew-list--target"></ul>`);
+			const $ulGroup = $(`<ul class="list-display-only brew-list brew-list--groups no-shrink" style="height: initial;"></ul>`);
 
-			// populate list
-			const $ul = $lst.find(`ul.brew-list--target`).empty();
-			const $ulGroup = $lst.find(`ul.brew-list--groups`).empty();
+			const list = new List({$iptSearch, $wrpList, isUseJquery: true});
+
+			const $lst = $$`
+				<div class="listcontainer flex-col h-100">
+					${$iptSearch}
+					<div class="filtertools manbrew__filtertools sortlabel btn-group lst__form-bottom">
+						<button class="col-5 sort btn btn-default btn-xs" data-sort="source">Source</button>
+						<button class="col-4 sort btn btn-default btn-xs" data-sort="authors">Authors</button>
+						<button class="col-1 btn btn-default btn-xs" disabled>Origin</button>
+						<button class="btn btn-default btn-xs" disabled>&nbsp;</button>
+					</div>
+					${$wrpList}
+				</div>
+			`.appendTo($brewList);
+			$ulGroup.appendTo($brewList);
 
 			const createButtons = (src, $row) => {
 				const $btns = $(`<span class="col-2 text-right"/>`).appendTo($row);
@@ -5982,37 +5997,42 @@ BrewUtil = {
 			// add 5etools sources as required, so that any external data loaded with these sources is displayed in the right place
 			const vetoolsSources = BrewUtil._getActiveVetoolsSources();
 
-			allSources.concat(vetoolsSources).forEach(src => {
+			allSources.concat(vetoolsSources).forEach((src, i) => {
 				const validAuthors = (!src.authors ? [] : !(src.authors instanceof Array) ? [] : src.authors).join(", ");
 				const isGroup = src._unknown || src._all;
+
 				const $row = $(`<li class="row manbrew__row">
 						<span class="col-5 manbrew__col--tall source manbrew__source">${isGroup ? "<i>" : ""}${src.full}${isGroup ? "</i>" : ""}</span>
 						<span class="col-4 manbrew__col--tall authors">${validAuthors}</span>
 						<${src.url ? "a" : "span"} class="col-1 manbrew__col--tall text-center" ${src.url ? `href="${src.url}" target="_blank" rel="noopener"` : ""}>${src.url ? "View Source" : ""}</${src.url ? "a" : "span"}>
-						<span class="hidden abbreviation">${src.abbreviation}</span>
+						<span class="hidden">${src.abbreviation}</span>
 					</li>`);
 				createButtons(src, $row);
-				$ul.append($row);
+
+				const listItem = new ListItem(
+					i,
+					$row,
+					src.full,
+					{
+						authors: validAuthors,
+						abbreviation: src.abbreviation
+					}
+				);
+				list.addItem(listItem);
 			});
 
 			const createGroupRow = (fullText, modeProp) => {
 				const $row = $(`<li class="row manbrew__row" style="border-bottom: 0">
-						<span class="col-10 manbrew__col--tall source manbrew__source text-right"><i>${fullText}</i></span>
-					</li>`);
+					<span class="col-10 manbrew__col--tall source manbrew__source text-right"><i>${fullText}</i></span>
+				</li>`);
 				createButtons({[modeProp]: true}, $row);
 				$ulGroup.append($row);
 			};
 			createGroupRow("Entries From All Sources", "_all");
 			createGroupRow("Entries Without Sources", "_unknown");
 
-			// hack to delay list indexing, otherwise it seems to fail
-			setTimeout(() => {
-				const list = new List("outerbrewlistcontainer", {
-					valueNames: ["source", "authors", "abbreviation"],
-					listClass: "brew-list--target"
-				});
-				ListUtil.bindEscapeKey(list, $lst.find(`.search`), true);
-			}, 5);
+			list.init();
+			ListUtil.bindEscapeKey(list, $iptSearch, true);
 		}
 	},
 
@@ -6067,7 +6087,7 @@ BrewUtil = {
 		if (~index) {
 			BrewUtil.homebrew[arrName].splice(index, 1);
 			if (BrewUtil._lists) {
-				BrewUtil._lists.forEach(l => l.remove(isChild ? "parentuniqueid" : "uniqueid", uniqueId));
+				BrewUtil._lists.forEach(l => l.removeItemBy(isChild ? "parentuniqueid" : "uniqueid", uniqueId));
 			}
 		}
 	},
@@ -6161,7 +6181,7 @@ BrewUtil = {
 			$overlay.remove();
 		});
 
-		const $window = $(`<div class="homebrew-window dropdown-menu"/>`);
+		const $window = $(`<div class="homebrew-window dropdown-menu flex-col h-100"/>`);
 		$window.on("click", (evt) => evt.stopPropagation());
 
 		BrewUtil._pRenderBrewScreen($body, $overlay, $window, true);
@@ -6250,8 +6270,10 @@ BrewUtil = {
 				});
 				const pDeleteFn = BrewUtil._getPDeleteFunction(prop);
 				await Promise.all(json[prop].map(async it => {
-					if (existing[it.source] && existing[it.source][it.name]) {
-						await pDeleteFn(existing[it.source][it.name]);
+					// Handle magic variants
+					const itSource = it.inherits && it.inherits.source ? it.inherits.source : it.source;
+					if (existing[itSource] && existing[itSource][it.name]) {
+						await pDeleteFn(existing[itSource][it.name]);
 					}
 					BrewUtil.homebrew[prop].push(it);
 				}));
@@ -6850,7 +6872,7 @@ Array.prototype.getNext = Array.prototype.getNext || function (curVal) {
  * @param doShowEmpty whether or not the empty table should be visible (useful if the population function is guaranteed to display something)
  * @constructor
  */
-function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doShowEmpty) {
+function BookModeView (hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNumShown, doShowEmpty) {
 	this.hashKey = hashKey;
 	this.$openBtn = $openBtn;
 	this.noneVisibleMsg = noneVisibleMsg;
@@ -6860,73 +6882,60 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, popTblGetNumShown, doS
 	this._$body = null;
 	this._$wrpBook = null;
 
-	const self = this;
-
-	self.$openBtn.on("click", () => {
-		Hist.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${self.hashKey}${HASH_SUB_KV_SEP}true`);
+	this.$openBtn.on("click", () => {
+		Hist.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${this.hashKey}${HASH_SUB_KV_SEP}true`);
 	});
 
-	this.open = () => {
-		function hashTeardown () {
-			Hist.cleanSetHash(window.location.hash.replace(`${self.hashKey}${HASH_SUB_KV_SEP}true`, ""));
+	this._doHashTeardown = () => {
+		Hist.cleanSetHash(window.location.hash.replace(`${this.hashKey}${HASH_SUB_KV_SEP}true`, ""));
+	};
+
+	// NOTE: Avoid using `flex` css, as it doesn't play nice with printing
+	this.pOpen = async () => {
+		if (this.active) return;
+		this.active = true;
+		document.title = `${pageTitle} - 5etools`;
+
+		this._$body = $(`body`);
+		this._$wrpBook = $(`<div class="bkmv"/>`);
+
+		this._$body.css("overflow", "hidden");
+		this._$body.addClass("bkmv-active");
+
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"/>`)
+			.click(() => this._doHashTeardown());
+		const $dispName = $(`<div/>`); // pass this to the content function to allow it to set a main header
+		$$`<div class="bkmv__spacer-name split-v-center no-shrink">${$dispName}${$btnClose}</div>`.appendTo(this._$wrpBook);
+		const $wrpContent = $(`<div class="w-100 bkmv__wrp"/>`);
+		$$`<div class="bkmv__scroller h-100 w-100 overflow-y-auto">${$wrpContent}</div>`.appendTo(this._$wrpBook);
+
+		const numShown = await this.popTblGetNumShown($wrpContent, $dispName);
+
+		if (!numShown) {
+			const $btnClose = $(`<button class="btn btn-default">Close</button>`)
+				.click(() => this._doHashTeardown());
+
+			$$`<div class="w-100 flex-col no-shrink bkmv__footer mb-3">
+				<div class="mb-2 flex-vh-center"><span class="initial-message">${this.noneVisibleMsg}</span></div>
+				<div class="flex-vh-center">${$btnClose}</div>
+			</div>`.appendTo(this._$wrpBook);
 		}
 
-		if (self.active) return;
-		self.active = true;
-
-		const $body = $(`body`);
-		const $wrpBook = $(`<div class="book-mode"/>`).click((evt) => {
-			if ($wrpBook[0] !== evt.target) return;
-			hashTeardown();
-		});
-		self._$body = $body;
-		self._$wrpBook = $wrpBook;
-		$body.css("overflow", "hidden");
-		$body.addClass("book-mode-active");
-
-		const $bkTbl = $(`<table class="stats stats--book stats--book-large" style="font-size: 1.0em; font-family: inherit;"/>`);
-		const $brdTop = $(`<tr><th class="border close-border" style="width: 100%;"><div/></th></tr>`);
-		const $hdTxt = $(`<span class="spacer-name"/>`); // pass this to the content function to allow it to set a main header
-		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
-			.on("click", () => {
-				hashTeardown();
-			});
-		$brdTop.find(`div`).append($hdTxt).append($btnClose);
-		$bkTbl.append($brdTop);
-
-		const $tbl = $(`<table class="stats stats--book stats--book-large" style="width: auto; margin: 0 auto; font-family: inherit;"/>`);
-
-		const numShownWrp = self.popTblGetNumShown($tbl, $hdTxt);
-
-		const handleNumShown = (numShown) => {
-			const $tblRow = $(`<tr/>`);
-			$tblRow.append($(`<div class="wrp-content" style="${!numShown && !doShowEmpty ? "display: none;" : ""}"/>`).append($tbl));
-			const $msgRow = $(`<tr class="noprint" ${numShown ? `style="display: none;"` : ""}><td class="text-center"><span class="initial-message">${self.noneVisibleMsg}</span><br></td></tr>`);
-			$msgRow.find(`td`).append($(`<button class="btn btn-default">Close</button>`).on("click", () => {
-				hashTeardown();
-			}));
-			$bkTbl.append($tblRow).append($msgRow).append(Renderer.utils.getBorderTr());
-
-			$wrpBook.append($bkTbl);
-			$body.append($wrpBook);
-		};
-
-		if (numShownWrp instanceof Promise) numShownWrp.then(numShown => handleNumShown(numShown));
-		else handleNumShown(numShownWrp);
+		this._$body.append(this._$wrpBook);
 	};
 
 	this.teardown = () => {
-		if (self.active) {
-			self._$body.css("overflow", "");
-			self._$body.removeClass("book-mode-active");
-			self._$wrpBook.remove();
-			self.active = false;
+		if (this.active) {
+			this._$body.css("overflow", "");
+			this._$body.removeClass("bkmv-active");
+			this._$wrpBook.remove();
+			this.active = false;
 		}
 	};
 
 	this.handleSub = (sub) => {
 		const bookViewHash = sub.find(it => it.startsWith(this.hashKey));
-		if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[this.hashKey][0] === "true") this.open();
+		if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[this.hashKey][0] === "true") this.pOpen();
 		else this.teardown();
 	};
 }
@@ -7119,6 +7128,23 @@ class ReactorEvent {
 	_unregisterCallback (callback) {
 		const ix = this.callbacks.indexOf(callback);
 		this.callbacks.splice(ix, 1);
+	}
+}
+
+// TOKENS ==============================================================================================================
+class TokenUtil {
+	static imgError (x) {
+		if (x) $(x).parent().remove();
+		$(`.rnd-name`).find(`span.stats-source`).css("margin-right", "0");
+	}
+
+	static handleStatblockScroll (event, ele) {
+		$(`#token_image`)
+			.toggle(ele.scrollTop < 32)
+			.css({
+				opacity: (32 - ele.scrollTop) / 32,
+				top: -ele.scrollTop
+			})
 	}
 }
 

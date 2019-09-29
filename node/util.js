@@ -72,7 +72,8 @@ const replacements = {
 	"“": '\\"',
 	"”": '\\"',
 	"…": "...",
-	" ": " " // non-breaking space
+	" ": " ", // non-breaking space
+	"ﬁ": "fi"
 };
 
 const replacementRegex = new RegExp(Object.keys(replacements).join("|"), 'g');
@@ -81,6 +82,7 @@ function getCleanJson (data, minify = false) {
 	data = minify ? JSON.stringify(data) : JSON.stringify(data, null, "\t") + "\n";
 	data = data.replace(replacementRegex, (match) => replacements[match]);
 	return data
+		.replace(/\u00AD/g, "") // soft hyphens
 		.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1")
 		.replace(/\s*(\.\.\.)/g, "$1");
 }

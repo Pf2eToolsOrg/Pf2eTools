@@ -5,26 +5,6 @@
 	"$id": "bestiary.json",
 	"type": "object",
 	"definitions": {
-		"speedVal": {
-			"oneOf": [
-				{
-					"type": "object",
-					"properties": {
-						"number": {
-							"type": "integer"
-						},
-						"condition": {
-							"type": "string"
-						}
-					},
-					"required": ["number", "condition"],
-					"additionalProperties": false
-				},
-				{
-					"type": "integer"
-				}
-			]
-		},
 		"damResist": {
 			"oneOf": [
 				{
@@ -306,26 +286,7 @@
 					"type": "string"
 				},
 				"otherSources": {
-					"type": "array",
-					"items": {
-						"oneOf": [
-							{
-								"type": "object",
-								"properties": {
-									"source": {
-										"type": "string"
-									},
-									"page": {
-										"type": "integer"
-									}
-								},
-								"required": [
-									"source"
-								],
-								"additionalProperties": false
-							}
-						]
-					}
+					"$ref": "util.json#/definitions/otherSources"
 				},
 				"externalSources": {
 					"description": "For homebrew use only.",
@@ -381,89 +342,7 @@
 					]
 				},
 				"speed": {
-					"type": "object",
-					"properties": {
-						"walk": {
-							"$ref": "#/definitions/speedVal"
-						},
-						"burrow": {
-							"$ref": "#/definitions/speedVal"
-						},
-						"climb": {
-							"$ref": "#/definitions/speedVal"
-						},
-						"fly": {
-							"$ref": "#/definitions/speedVal"
-						},
-						"canHover": {
-							"type": "boolean"
-						},
-						"swim": {
-							"$ref": "#/definitions/speedVal"
-						},
-						"choose": {
-							"type": "object",
-							"properties": {
-								"from": {
-									"type": "array",
-									"items": {
-										"type": "string",
-										"enum": [
-											"walk",
-											"burrow",
-											"climb",
-											"fly",
-											"swim"
-										]
-									}
-								},
-								"amount": {
-									"type": "integer"
-								},
-								"note": {
-									"type": "string"
-								}
-							},
-							"required": ["amount", "from"],
-							"additionalProperties": false
-						},
-						"alternate": {
-							"type": "object",
-							"properties": {
-								"walk": {
-									"type": "array",
-									"items": {
-										"$ref": "#/definitions/speedVal"
-									}
-								},
-								"burrow": {
-									"type": "array",
-									"items": {
-										"$ref": "#/definitions/speedVal"
-									}
-								},
-								"climb": {
-									"type": "array",
-									"items": {
-										"$ref": "#/definitions/speedVal"
-									}
-								},
-								"fly": {
-									"type": "array",
-									"items": {
-										"$ref": "#/definitions/speedVal"
-									}
-								},
-								"swim": {
-									"type": "array",
-									"items": {
-										"$ref": "#/definitions/speedVal"
-									}
-								}
-							}
-						}
-					},
-					"additionalProperties": false
+					"$ref": "util.json#/definitions/speed"
 				},
 				"str": {
 					"type": "integer"
@@ -903,23 +782,7 @@
 					"type": "boolean"
 				},
 				"additionalSources": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"source": {
-								"type": "string"
-							},
-							"page": {
-								"type": "integer"
-							}
-						},
-						"required": [
-							"source",
-							"page"
-						],
-						"additionalProperties": false
-					}
+					"$ref": "util.json#/definitions/additionalSources"
 				},
 				"tokenUrl": {
 					"type": "string"
@@ -985,7 +848,7 @@
 					"type": "boolean"
 				},
 				"isNpc": {
-					"description": "Used to flag quest-specific NPCs",
+					"description": "Used to flag adventure NPCs",
 					"type": "boolean"
 				},
 				"environment": {

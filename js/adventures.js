@@ -2,13 +2,13 @@
 
 class Adventures {
 	static sortAdventures (dataList, a, b, o) {
-		a = dataList[a.elm.getAttribute(FLTR_ID)];
-		b = dataList[b.elm.getAttribute(FLTR_ID)];
+		a = dataList[a.ix];
+		b = dataList[b.ix];
 
-		if (o.valueName === "name") return byName();
-		if (o.valueName === "storyline") return orFallback(SortUtil.ascSort, "storyline");
-		if (o.valueName === "level") return orFallback(SortUtil.ascSort, "_startLevel");
-		if (o.valueName === "published") return orFallback(ascSortDate, "_pubDate");
+		if (o.sortBy === "name") return byName();
+		if (o.sortBy === "storyline") return orFallback(SortUtil.ascSort, "storyline");
+		if (o.sortBy === "level") return orFallback(SortUtil.ascSort, "_startLevel");
+		if (o.sortBy === "published") return orFallback(ascSortDate, "_pubDate");
 
 		function byName () {
 			return SortUtil.ascSort(a.name, b.name);
@@ -44,14 +44,14 @@ const adventuresList = new BooksList({
 	},
 	rootPage: "adventure.html",
 	rowBuilderFn: (adv) => {
-		return `<span class="col-6-2 name">${adv.name}</span>
+		return `<span class="col-6-2 bold">${adv.name}</span>
 		<span class="col-2-5 adv-detail">${adv.storyline || "\u2014"}</span>
 		<span class="col-1-3 adv-detail">${Adventures.getLevelsStr(adv)}</span>
 		<span class="col-2 adv-detail">${Adventures.getDateStr(adv)}</span>`;
 	}
 });
 
-window.onload = adventuresList.onPageLoad.bind(adventuresList);
+window.onload = adventuresList.pOnPageLoad.bind(adventuresList);
 
 function handleBrew (homebrew) {
 	adventuresList.addData(homebrew);

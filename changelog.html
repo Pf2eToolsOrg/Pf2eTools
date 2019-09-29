@@ -43,7 +43,7 @@
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
-<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="js/list2.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery-ui.js"></script>
 <script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
@@ -1510,8 +1510,33 @@ Filters -- completely overhauled internally:
 			date: "2019-09-18",
 			title: "Most of the Way to Hell",
 			txt: `
-- Added Baldur's Gate: Descent Into Avernus &lt;https://5e.tools/adventure.html#bgdia&gt;
+- Added Baldur's Gate: Descent Into Avernus https://5e.tools/adventure.html#bgdia
 - Added UA: Bard and Paladin`
+		},
+		{
+			ver: "1.81.2",
+			date: "2019-09-19",
+			txt: `
+- (Hopefully) improved cache-busting
+- Fix case where homebrew could fail to load via Get Homebrew
+- (Fixed typos)`
+		},
+		{
+			ver: "1.82.0",
+			date: "2019-09-29",
+			title: "Live Faster, Die Younger",
+			txt: `
+- Added Locathah Rising https://5e.tools/adventure.html#lr (including a playable Locathah race)
+- Rewrote and optimised "list" pages, significantly improving loading times
+  - (As a consequence, certain semi-related functions perform much better, such as randomising encounters in the Bestiary Encounter Builder)
+- Rewrote and optimised hover window system, significantly improving both loading times and general responsiveness
+- Overhauled Print/Book views, in an attempt to make them cleaner and more printer-friendly
+- Added vehicle tokens, where available
+- Moved infernal war machine variants/upgrades to Optional Features page
+- Moved Baldur's Gate Background variants to Backgrounds page
+- Changed "Named NPC" filter to "Adventure NPC," and made the logic consistent to match
+- Fixed case where loading Bestiary sublists into DM Screen Initiative Tracker would fail in the presence of some homebrew
+- (Fixed typos)`
 		}
 	];
 

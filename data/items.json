@@ -7889,10 +7889,16 @@
 			"rarity": "Legendary",
 			"source": "MTF",
 			"page": 167,
-			"reqAttune": "by a Creature of Evil Alignment.",
+			"otherSources": [
+				{
+					"source": "BGDIA",
+					"page": 224
+				}
+			],
+			"reqAttune": "by a creature of evil alignment.",
 			"entries": [
-				"A narzugon binds a nightmare to its service with infernal tack, which consists of a bridle, bit, reins, saddle, stirrups, and spurs. A {@creature nightmare} equipped with infernal tack must serve whoever wears the spurs until the wearer dies or the tack is removed.",
-				"You can use an action to call a creature nightmare equipped with infernal tack by clashing the spurs together or scraping them through blood. The nightmare appears at the start of your next turn, within 20 feet of you. It acts as your ally and takes its turn on your initiative count. It remains for 1 day, until you or it dies, or until you dismiss it as an action. If the nightmare dies, it reforms in the Nine Hells within 24 hours, after which you can summon it again.",
+				"A {@creature narzugon|MTF} binds a nightmare to its service with infernal tack, which consists of a bridle, bit, reins, saddle, stirrups, and spurs. A {@creature nightmare} equipped with infernal tack must serve whoever wears the spurs until the wearer dies or the tack is removed.",
+				"You can use an action to call a {@creature nightmare} equipped with infernal tack by clashing the spurs together or scraping them through blood. The nightmare appears at the start of your next turn, within 20 feet of you. It acts as your ally and takes its turn on your initiative count. It remains for 1 day, until you or it dies, or until you dismiss it as an action. If the nightmare dies, it reforms in the Nine Hells within 24 hours, after which you can summon it again.",
 				"The tack doesn't conjure a nightmare from thin air; one must first be subdued so the tack can be placed on it. No nightmare accepts this forced servitude willingly, but some eventually form strong loyalties to their masters and become true partners in evil."
 			]
 		},
@@ -9188,7 +9194,7 @@
 					"type": "entries",
 					"name": "Identify Hides",
 					"entries": [
-						"When looking at a hide or a leather item, you can determine the source of the leather and any special techniques used to treat it. For example, you can spot the difference between leather crafted using dwarven methods and leather crafted using half­ling methods."
+						"When looking at a hide or a leather item, you can determine the source of the leather and any special techniques used to treat it. For example, you can spot the difference between leather crafted using dwarven methods and leather crafted using halfling methods."
 					]
 				},
 				{
@@ -11325,7 +11331,7 @@
 			"source": "XGE",
 			"page": 138,
 			"entries": [
-				"While holding this 10-foot pole, you can use an action to speak a command word and cause it to collapse into a 1-foot-long rod, for ease of storage. The poles weight doesn't change. You can use an action to speak a different command word and cause the rod to revert to a pole; however, the rod will elongate only as far as the surrounding space allows."
+				"While holding this 10-foot pole, you can use an action to speak a command word and cause it to collapse into a 1-foot-long rod, for ease of storage. The pole's weight doesn't change. You can use an action to speak a different command word and cause the rod to revert to a pole; however, the rod will elongate only as far as the surrounding space allows."
 			]
 		},
 		{
@@ -23978,17 +23984,6 @@
 			]
 		},
 		{
-			"name": "Infernal Tack",
-			"wondrous": true,
-			"rarity": "Legendary",
-			"source": "BGDIA",
-			"page": 224,
-			"reqAttune": "by a creature of evil alignment",
-			"entries": [
-				"A {@creature narzugon|MTF} binds a {@creature nightmare} to its service with infernal tack, which consists of a bridle, bit, reins, saddle, stirrups, and spurs. A {@creature nightmare} equipped with infernal tack must serve whoever wears the spurs until the wearer dies or the tack is removed. You can use an action to call a {@creature nightmare} equipped with infernal tack by clashing the spurs together or scraping them through blood. The {@creature nightmare} appears at the start of your next turn, within 20 feet of you. It acts as your ally and takes its turn on your initiative count. It remains for 1 day, until you or it dies, or until you dismiss it as an action. If the {@creature nightmare} dies, it reforms in the Nine Hells within 24 hours, after which you can summon it again. The tack doesn't conjure a {@creature nightmare} from thin air; one must first be subdued so the tack can be placed on it. No {@creature nightmare} accepts this forced servitude willingly, but some eventually form strong loyalties to their masters and become true partners in evil."
-			]
-		},
-		{
 			"name": "Matalotok",
 			"type": "M",
 			"weaponCategory": "Martial",
@@ -24419,7 +24414,7 @@
 				"_mod": {
 					"entries": {
 						"mode": "appendArr",
-						"items": "Imprinted on this staff is a fragment of a dead wizar'd personality. The first character who touches the staff gains the following flaw: ,\"I crave power above all else, and will do anything to obtain more of it.\" This flaw trumps any conflicting personality trait."
+						"items": "Imprinted on this staff is a fragment of a dead wizards, personality. The first character who touches the staff gains the following flaw: \"I crave power above all else, and will do anything to obtain more of it.\" This flaw trumps any conflicting personality trait."
 					}
 				}
 			}
@@ -24465,7 +24460,7 @@
 			"source": "PotA",
 			"page": 90,
 			"entries": [
-				"This sword is made of dragon bone and with a dragon-leather grip. It has rubies in its pommel and hilt. The sword grows warm and the rubies glow slightly when the sword is within 120 feet of a dragon."
+				"This +1 longsword is made of dragon bone and with a dragon-leather grip. It has rubies in its pommel and hilt. The sword grows warm and the rubies glow slightly when the sword is within 120 feet of a dragon."
 			],
 			"bonus": "+1"
 		},
@@ -24485,7 +24480,7 @@
 			"source": "PotA",
 			"page": 175,
 			"entries": [
-				"When you wield this axe, you always know the way to the nearest passage leading from underground toward the surface, as well as the approximate depth the axe is underground."
+				"When you wield this +1 greataxe, you always know the way to the nearest passage leading from underground toward the surface, as well as the approximate depth the axe is underground."
 			],
 			"bonus": "+1"
 		},
@@ -24515,7 +24510,7 @@
 						],
 						[
 							"71-80 ",
-							"The creature sprinkled with dust must succeed on a DC 11 Constitution saving throw or fall un­conscious for 1 minute. The creature awakens if it takes damage or if it is shaken or slapped as an action."
+							"The creature sprinkled with dust must succeed on a DC 11 Constitution saving throw or fall unconscious for 1 minute. The creature awakens if it takes damage or if it is shaken or slapped as an action."
 						],
 						[
 							"81-90",
@@ -24523,7 +24518,7 @@
 						],
 						[
 							"91-00",
-							"The creature sprinkled with dust becomes {@condition invisible} for 1 hour. Any equipment it is wearing or carrying is {@condition invisible} as long as it is on the crea­ture's person. The effect on the creature ends if it attacks, deals any damage, or casts a spell."
+							"The creature sprinkled with dust becomes {@condition invisible} for 1 hour. Any equipment it is wearing or carrying is {@condition invisible} as long as it is on the creature's person. The effect on the creature ends if it attacks, deals any damage, or casts a spell."
 						]
 					]
 				}
@@ -24545,6 +24540,7 @@
 			"weapon": true,
 			"weaponCategory": "Simple",
 			"rarity": "Unknown (Magic)",
+			"baseItem": "greatclub|phb",
 			"weight": 250,
 			"dmg1": "{@dice 1d8}",
 			"dmgType": "B",
@@ -24553,8 +24549,9 @@
 			],
 			"reqAttune": "OPTIONAL",
 			"entries": [
-				"When you hit a creature of the dragon type with this weapon, the dragon takes an extra {@dice 2d8} bludgeoning damage.",
-				"If a creature attunes to the greatclub, it magically shrinks to a size that the creature can wield effectively."
+				"This red dragon's thighbone is 14 feet long, 250 lbs, and is wrapped in old leather, suggesting that it was once used as a giant's greatclub.",
+				"When you hit a creature of the dragon type with this weapon, it deals an extra {@dice 2d8} bludgeoning damage.",
+				"If you attune to the greatclub, it magically shrinks to a size that you can wield effectively."
 			],
 			"source": "SKT",
 			"page": 105
@@ -24619,6 +24616,366 @@
 			"attachedSpells": [
 				"word of recall"
 			]
+		},
+		{
+			"name": "Vanrak's Mithral Shirt",
+			"type": "MA",
+			"armor": true,
+			"rarity": "Uncommon",
+			"weight": 20,
+			"ac": 13,
+			"source": "WDMM",
+			"page": 237,
+			"baseItem": "chain shirt|phb",
+			"stealth": false,
+			"strength": null,
+			"entries": [
+				"Mithral is a light, flexible metal. A mithral chain shirt or breastplate can be worn under normal clothes. If the armor normally imposes disadvantage on Dexterity ({@skill Stealth}) checks or has a Strength requirement, the mithral version of the armor doesn't.",
+				"While you wear this armor, you gain {@sense darkvision} out to a range of 60 feet."
+			]
+		},
+		{
+			"name": "Dagger of Guitar Solos",
+			"source": "WDMM",
+			"page": 228,
+			"entries": [
+				"This drow-made dagger is decorated with silver web filigree. It magically plays a fragment of a guitar solo when struck or used to strike a foe."
+			],
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"rarity": "Unknown (Magic)",
+			"baseItem": "dagger|phb",
+			"value": "750 gp",
+			"weight": 1,
+			"dmg1": "{@dice 1d4}",
+			"dmgType": "P",
+			"property": [
+				"F",
+				"L",
+				"T"
+			],
+			"range": "20/60"
+		},
+		{
+			"name": "Mind Flayer Skull",
+			"source": "WDMM",
+			"page": 228,
+			"rarity": "Unknown (Magic)",
+			"type": "OTH",
+			"entries": [
+				"While you have the skull in your possession, you are {@condition invisible} to mind flayers, as is anything you are wearing or carrying."
+			]
+		},
+		{
+			"name": "Horn of the Endless Maze",
+			"source": "WDMM",
+			"page": 163,
+			"_copy": {
+				"name": "Horn of Valhalla, Brass",
+				"source": "DMG"
+			},
+			"entries": [
+				"You can use an action to blow this horn. In response, warrior spirits from the Abyss appear within 60 feet of you. These spirits look like minotaurs, and use the {@creature berserker} statistics. They return to Abyss after 1 hour or when they drop to 0 hit points. Once you use the horn, it can't be used again until 7 days have passed.",
+				"A brass horn summons {@dice 3d4+3} {@creature berserker||berserkers}. To use the brass horn, you must be proficient with all simple weapons.",
+				"If you blow the horn without meeting its requirement, the summoned {@creature berserker||berserkers} attack you. If you meet the requirement, they are friendly to you and your companions and follow your commands."
+			]
+		},
+		{
+			"name": "Falkir's Helm of Pigheadedness",
+			"source": "WDMM",
+			"page": 141,
+			"curse": true,
+			"rarity": "Unknown (Magic)",
+			"type": "OTH",
+			"entries": [
+				"This steel helm is shaped like the head of a boar. Once you don the helm, it can't be removed until you die or until a {@spell remove curse} spell or similar magic is cast on it. If you wear the helm and are a humanoid, you gain the following flaw until the helm is removed: \"I'm exceedingly stubborn and think I'm right all the time.\" (This flaw supersedes any conflicting flaw.)"
+			]
+		},
+		{
+			"name": "Maddgoth's Helm",
+			"source": "WDMM",
+			"page": 103,
+			"rarity": "Very Rare",
+			"type": "OTH",
+			"reqAttune": true,
+			"entries": [
+				"While you wear this helm and are inside Maddgoth's castle, on its roof, or in its courtyard, you have immunity to all damage. If the helm is taken from the castle, it turns to dust and is destroyed."
+			]
+		},
+		{
+			"name": "Maddgoth's Helm",
+			"source": "WDMM",
+			"page": 103,
+			"rarity": "Very Rare",
+			"type": "OTH",
+			"reqAttune": true,
+			"entries": [
+				"While you wear this helm and are inside Maddgoth's castle, on its roof, or in its courtyard, you have immunity to all damage. If the helm is taken from the castle, it turns to dust and is destroyed."
+			]
+		},
+		{
+			"name": "Jade Serpent Staff",
+			"source": "WDMM",
+			"page": 92,
+			"rarity": "Unknown (Magic)",
+			"type": "OTH",
+			"entries": [
+				"This staff is broken into five pieces, each worth 100 gp for the jade alone. The entire staff can be restored with {@spell mending} cantrips; each casting of the spell repairs one break in the staff. If the staff is made whole, it transforms from an object into an animated jade serpent that has the statistics of a {@creature giant poisonous snake}, with these changes:",
+				{
+					"type": "list",
+					"items": [
+						"The serpent is a construct that understands and obeys whoever was holding the staff when it transformed.",
+						"It has immunity to poison damage and the {@condition poisoned} condition. It doesn't require air, food, drink, or sleep.",
+						"When it drops to 0 hit points, roll a {@dice d6}. On a roll of 1, the snake turns to dust and is destroyed. On any other roll, it changes back into a staff and breaks into {@dice 1d4 + 1} pieces that must be magically mended before the staff can be used again."
+					]
+				}
+			]
+		},
+		{
+			"name": "Pearl of Undead Detection",
+			"source": "WDMM",
+			"page": 76,
+			"rarity": "Unknown (Magic)",
+			"type": "OTH",
+			"value": "500 gp",
+			"entries": [
+				"This black pearl glows faintly when undead are within 120 feet of it."
+			]
+		},
+		{
+			"name": "Wyllow's Staff of Flowers",
+			"source": "WDMM",
+			"page": 75,
+			"reqAttune": true,
+			"_copy": {
+				"name": "Staff of Flowers",
+				"source": "XGE",
+				"_mod": {
+					"entries": {
+						"mode": "appendArr",
+						"items": "Wyllow's staff is peculiar in that it can't create roses, which the archdruid dislikes. If a rose is chosen, a daisy grows instead."
+					}
+				}
+			}
+		},
+		{
+			"name": "Charred Wand of Magic Missiles",
+			"source": "WDH",
+			"page": 75,
+			"_copy": {
+				"name": "Wand of Magic Missiles",
+				"source": "DMG",
+				"_mod": {
+					"entries": {
+						"mode": "appendArr",
+						"items": "Each time you expend a charge from this want, there is a 50 percent chance that nothing happens and the charge is wasted."
+					}
+				}
+			}
+		},
+		{
+			"name": "Conch of Safe Rest",
+			"source": "TTP",
+			"page": 17,
+			"rarity": "Unknown (Magic)",
+			"type": "OTH",
+			"weight": 2,
+			"entries": [
+				"You can use an action to blow this pearlescent conch like a horn, creating an effect identical with that of a {@spell Leomund's tiny hut} spell. The conch disappears once the spell takes effect. The effect ends if you leave the spell's area."
+			]
+		},
+		{
+			"name": "Arcanaloth's Music Box",
+			"source": "ToA",
+			"page": 188,
+			"rarity": "Unknown (Magic)",
+			"type": "OTH",
+			"value": "750 gp",
+			"entries": [
+				"This music box is made of dark wood with gold filigree. Each of its five sides is sculpted with the image of a horned woman playing a different musical instrument: a dulcimer, a flute, a harp, a lyre, and a viol. While touching the box, you can use an action to make it play music featuring one of the instruments shown, which can be heard up to 60 feet away. You can also use an action to stop the music."
+			]
+		},
+		{
+			"name": "Draconic Longsword",
+			"source": "ToA",
+			"page": 173,
+			"rarity": "Unknown (Magic)",
+			"baseItem": "longsword|phb",
+			"entries": [
+				"This longsword has a dragon-shaped hilt. While you carry it, you gain the ability to speak and understand the Draconic language."
+			],
+			"type": "M",
+			"weapon": true,
+			"sword": true,
+			"weaponCategory": "Martial",
+			"weight": 3,
+			"dmg1": "{@dice 1d8}",
+			"dmg2": "{@dice 1d10}",
+			"dmgType": "S",
+			"property": [
+				"V"
+			]
+		},
+		{
+			"name": "Petrified Grung Egg",
+			"source": "ToA",
+			"page": 144,
+			"rarity": "Unknown (Magic)",
+			"type": "OTH",
+			"reqAttune": "by a Spellcaster",
+			"entries": [
+				"While this egg is on your person, you can use an action to speak its command word and regain one expended spell slot. If the expended slot was of 4th level or higher, the new slot is 3rd level. Once you have used the egg, it can't be used again until the next dawn.",
+				"Additionally, while you are attuned to the egg, you gain resistance to poison damage.",
+				"The egg turns to dust and is destroyed if it leaves the Tomb of the Nine Gods"
+			]
+		},
+		{
+			"name": "Devlin's Staff of Striking",
+			"source": "ToA",
+			"page": 141,
+			"curse": true,
+			"_copy": {
+				"name": "Staff of Striking",
+				"source": "DMG",
+				"_mod": {
+					"entries": {
+						"mode": "appendArr",
+						"items": "If you attune to this staff, you transform into a goat-humanoid hybrid over the course of 3 days. Tieflings are immune to this curse. Throughout the first day, shaggy fur begins to grow all over your body. After 24 hours, your eyes become goat-like, and stumpy horns sprout from your brow. On the last day, your fingers and toes meld into double digits, and the horns grow to full length. This transformation doesn't prevent you from wielding weapons or casting spells. {@spell Remove curse}, {@spell greater restoration}, or any other effect that ends a curse restores your original appearance, but only a {@spell wish} spell can rid the staff of its power to transform those who attune to it."
+					}
+				}
+			}
+		},
+		{
+			"name": "White Dragon Cape",
+			"source": "TftYP",
+			"page": 193,
+			"resist": "cold",
+			"rarity": "Unknown (Magic)",
+			"type": "OTH",
+			"entries": [
+				"You have resistance to cold damage while wearing this cape."
+			]
+		},
+		{
+			"name": "Flame Tongue Shortsword of Greed",
+			"source": "TftYP",
+			"page": 179,
+			"rarity": "Unknown (Magic)",
+			"reqAttune": true,
+			"baseItem": "shortsword|phb",
+			"entries": [
+				"You can use a bonus action to speak this magic sword's command word, causing flames to erupt from the blade. These flames shed bright light in a 40-foot radius and dim light for an additional 40 feet. While the sword is ablaze, it deals an extra {@dice 2d6} fire damage to any target it hits. The flames last until you use a bonus action to speak the command word again or until you drop or sheathe the sword.",
+				"While you are attuned to this sword you can use an action to mentally command it to detect gems and jewels. You learn the kind and number of such objects within 60 feet of the sword."
+			],
+			"type": "M",
+			"weapon": true,
+			"sword": true,
+			"weaponCategory": "Martial",
+			"weight": 2,
+			"dmg1": "{@dice 1d6}",
+			"dmgType": "P",
+			"property": [
+				"F",
+				"L"
+			]
+		},
+		{
+			"name": "Junky Dagger +1",
+			"source": "TftYP",
+			"page": 77,
+			"rarity": "Unknown (Magic)",
+			"baseItem": "dagger|phb",
+			"entries": [
+				"You have a +1 bonus to attack and damage rolls made with this dagger, which looks like junk. When it is used, its grip frays, its blade chips, and it flakes rust. If you get a natural 1 on an attack roll while wielding this weapon, it breaks and becomes nonmagical."
+			],
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"weight": 1,
+			"dmg1": "{@dice 1d4}",
+			"dmgType": "P",
+			"property": [
+				"F",
+				"L",
+				"T"
+			],
+			"range": "20/60",
+			"bonus": "+1"
+		},
+		{
+			"name": "Plant-Cutter Longsword",
+			"source": "TftYP",
+			"page": 70,
+			"rarity": "Unknown (Magic)",
+			"baseItem": "longsword|phb",
+			"entries": [
+				"You have a +1 bonus to attack and damage rolls made with this longsword, which is made of laminated wood, and inset with jagged teeth of obsidian. It deals an extra {@dice 2d6} damage to any creature of the plant type."
+			],
+			"type": "M",
+			"weapon": true,
+			"sword": true,
+			"weaponCategory": "Martial",
+			"weight": 3,
+			"dmg1": "{@dice 1d8}",
+			"dmg2": "{@dice 1d10}",
+			"dmgType": "S",
+			"property": [
+				"V"
+			],
+			"bonus": "+1"
+		},
+		{
+			"name": "Dragongleam",
+			"source": "HotDQ",
+			"page": 69,
+			"rarity": "Unknown (Magic)",
+			"baseItem": "spear|phb",
+			"entries": [
+				"This spear is enchanted with 10 charges of a {@spell daylight} spell for use in twilight or dark forest underbrush. The command phrase is \"Tiamat's eyes shine,\" written in Draconic runes on the spear's crossguard."
+			],
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"weight": 3,
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "P",
+			"property": [
+				"T",
+				"V"
+			],
+			"range": "20/60",
+			"attachedSpells": [
+				"daylight"
+			],
+			"charges": 10
+		},
+		{
+			"name": "Shatterstick",
+			"source": "BGDIA",
+			"page": 99,
+			"rarity": "Unknown",
+			"type": "OTH",
+			"entries": [
+				"A shatterstick is a nonmagical, 12-inch-long, 4-pound stake made of blue-tinged infernal iron mined on Cania, the eighth layer of the Nine Hells. When embedded in earth or pounded into solid rock, the stake emits a seismic vibration in a 20-foot radius centered on itself for 1 minute, shaking the ground in that area for the duration. When the effects ends, the shatterstick breaks apart, becoming useless, and all structures within 20 feet of it take 35 ({@damage 10d6}) bludgeoning damage."
+			]
+		},
+		{
+			"name": "Candle Mace",
+			"source": "BGDIA",
+			"page": 39,
+			"rarity": "Unknown (Magic)",
+			"baseItem": "mace|phb",
+			"entries": [
+				"The head of this mace sheds bright light in a 5-foot-radius and dim light for an additional 5 feet. When you wield this mace, you can extinguish or ignite its light as an action."
+			],
+			"type": "M",
+			"weapon": true,
+			"weaponCategory": "Simple",
+			"weight": 4,
+			"dmg1": "{@dice 1d6}",
+			"dmgType": "B"
 		}
 	],
 	"itemGroup": [

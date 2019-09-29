@@ -19,6 +19,17 @@
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 	<script type="text/javascript" src="js/browsercheck.js"></script>
+
+	<style>
+		.stats-source {
+			margin-right: 5em;
+		}
+
+		img.token {
+			font-size: 1.6em;
+			right: 0.4em;
+		}
+	</style>
 </head>
 
 <body>
@@ -62,7 +73,7 @@
 			<div id="contentwrapper" class="view-col">
 				<div id="sublistcontainer" class="sublist">
 					<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
-						<button class="col-12 sort btn btn-default btn-xs" data-sort="name">Name</button>
+						<button class="col-12 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
 					</div>
 					<ul class="list subvehicles">
 						<!-- populate with JS -->
@@ -76,7 +87,9 @@
 					</div>
 				</div>
 
-				<div class="wrp-stats-table">
+				<div id="float-token" class="relative"></div>
+
+				<div class="wrp-stats-table" onscroll="TokenUtil.handleStatblockScroll(event, this)">
 					<table id="pagecontent" class="stats">
 						<tr><th class="border" colspan="6"></th></tr>
 						<tr><td colspan="6" class="initial-message">Select a vehicle from the list to view it here</td></tr>
@@ -106,7 +119,7 @@
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/listpage.js"></script>
 <script type="text/javascript" src="js/vehicles.js"></script>
-<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="js/list2.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>
 </html>

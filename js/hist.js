@@ -15,8 +15,9 @@ class Hist {
 			if (link === HASH_BLANK) {
 				blankFilterLoad = true;
 			} else {
-				const $el = Hist._getListElem(link);
-				if ($el === undefined) {
+				const listItem = Hist._getListItem(link);
+
+				if (listItem === undefined) {
 					if (typeof handleUnknownHash === "function" && window.location.hash.length) {
 						handleUnknownHash(link, sub);
 						return;
@@ -25,13 +26,13 @@ class Hist {
 						return;
 					}
 				}
-				const toLoad = $el.attr("id");
+
+				const toLoad = listItem.ix;
 				if (toLoad === undefined) Hist._freshLoad();
 				else {
-					const id = $el.attr("id");
-					Hist.lastLoadedId = id;
-					loadHash(id);
-					document.title = decodeURIComponent($el.attr("title")) + " - 5etools";
+					Hist.lastLoadedId = listItem.ix;
+					loadHash(listItem.ix);
+					document.title = `${listItem.name} - 5etools`;
 				}
 			}
 		}
@@ -60,38 +61,33 @@ class Hist {
 		Hist.isHistorySuppressed = val;
 	}
 
-	static getSelectedListElement () {
+	static getSelectedListItem () {
 		const [link, ...sub] = Hist._getHashParts();
-		return Hist._getListElem(link);
+		return Hist._getListItem(link);
 	}
 
-	static getSelectedListElementWithIndex () {
+	static getSelectedListElementWithLocation () {
 		const [link, ...sub] = Hist._getHashParts();
-		return Hist._getListElem(link, true);
+		return Hist._getListItem(link, true);
 	}
 
 	static _getHashParts () {
 		return window.location.hash.slice(1).toLowerCase().replace(/%27/g, "'").split(HASH_PART_SEP);
 	}
 
-	static _getListElem (link, getIndex) {
-		const listWrapper = $("#listcontainer");
-		const searchFor = `#${link}`;
-		if (listWrapper.data("lists")) {
-			for (let x = 0; x < listWrapper.data("lists").length; ++x) {
-				const list = listWrapper.data("lists")[x];
-				for (let y = 0; y < list.items.length; ++y) {
-					const item = list.items[y];
-					const $elm = $(item.elm).find(`a[id]`);
-					const foundEle = $elm.get().find(ele => ele.getAttribute("href").split(HASH_PART_SEP)[0] === searchFor);
-					if (foundEle) {
-						if (getIndex) return {$el: $(foundEle), x: x, y: y};
-						return $(foundEle);
-					}
+	static _getListItem (link, getIndex) {
+		const primaryLists = ListUtil.getPrimaryLists();
+		if (primaryLists && primaryLists.length) {
+			for (let x = 0; x < primaryLists.length; ++x) {
+				const list = primaryLists[x];
+
+				const foundItemIx = list.items.findIndex(it => it.values.hash === link);
+				if (~foundItemIx) {
+					if (getIndex) return {item: list.items[foundItemIx], x: x, y: foundItemIx, list};
+					return list.items[foundItemIx];
 				}
 			}
 		}
-		return undefined;
 	}
 
 	static _freshLoad () {

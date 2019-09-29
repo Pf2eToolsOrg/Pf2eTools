@@ -1,52 +1,44 @@
 "use strict";
 
+class ItemsPage {
+	static rarityValue (rarity) {
+		switch (rarity) {
+			case "None": return 0;
+			case "Common": return 1;
+			case "Uncommon": return 2;
+			case "Rare": return 3;
+			case "Very Rare": return 4;
+			case "Legendary": return 5;
+			case "Artifact": return 6;
+			case "Other": return 7;
+			case "Varies": return 8;
+			case "Unknown (Magic)": return 9;
+			case "Unknown": return 10;
+			default: return 11;
+		}
+	}
+
+	static sortItems (a, b, o) {
+		if (o.sortBy === "name") return SortUtil.compareListNames(a, b);
+		else if (o.sortBy === "type") return SortUtil.ascSortLower(a.values.type, b.values.type) || SortUtil.compareListNames(a, b);
+		else if (o.sortBy === "source") return SortUtil.ascSortLower(a.values.source, b.values.source) || SortUtil.compareListNames(a, b);
+		else if (o.sortBy === "rarity") SortUtil.ascSort(ItemsPage.rarityValue(b.values.rarity), ItemsPage.rarityValue(a.values.rarity)) || SortUtil.compareListNames(a, b);
+		else if (o.sortBy === "attunement") return SortUtil.ascSort(a.values.attunement, b.values.attunement) || SortUtil.compareListNames(a, b);
+		else if (o.sortBy === "count") return SortUtil.ascSort(a.values.count, b.values.count) || SortUtil.compareListNames(a, b);
+		else if (o.sortBy === "weight") return SortUtil.ascSort(a.values.weight, b.values.weight) || SortUtil.compareListNames(a, b);
+		else if (o.sortBy === "cost") return SortUtil.ascSort(a.values.cost, b.values.cost) || SortUtil.compareListNames(a, b);
+		else return 0;
+	}
+}
+
 window.onload = async function load () {
 	await ExcludeUtil.pInitialise();
 	return pPopulateTablesAndFilters({item: await Renderer.item.pBuildList({isAddGroups: true, isBlacklistVariants: true})});
 };
 
-function rarityValue (rarity) {
-	switch (rarity) {
-		case "None": return 0;
-		case "Common": return 1;
-		case "Uncommon": return 2;
-		case "Rare": return 3;
-		case "Very Rare": return 4;
-		case "Legendary": return 5;
-		case "Artifact": return 6;
-		case "Other": return 7;
-		case "Varies": return 8;
-		case "Unknown (Magic)": return 9;
-		case "Unknown": return 10;
-		default: return 11;
-	}
-}
-
-function sortItems (a, b, o) {
-	if (o.valueName === "name") return SortUtil.ascSortLower(b._values.name, a._values.name);
-	else if (o.valueName === "type") {
-		if (b._values.type === a._values.type) return SortUtil.compareNames(a, b);
-		return b._values.type.toLowerCase() > a._values.type.toLowerCase() ? 1 : -1;
-	} else if (o.valueName === "source") {
-		if (b._values.source === a._values.source) return SortUtil.compareNames(a, b);
-		return b._values.source.toLowerCase() > a._values.source.toLowerCase() ? 1 : -1;
-	} else if (o.valueName === "rarity") {
-		if (b._values.rarity === a._values.rarity) return SortUtil.compareNames(a, b);
-		return rarityValue(b._values.rarity) > rarityValue(a._values.rarity) ? 1 : -1;
-	} else if (o.valueName === "attunement") {
-		if (b._values.attunement === a._values.attunement) return SortUtil.compareNames(a, b);
-		return SortUtil.ascSort(a._values.attunement, b._values.attunement);
-	} else if (o.valueName === "count") {
-		return SortUtil.ascSort(Number(a.values().count), Number(b.values().count));
-	} else if (o.valueName === "weight") {
-		return SortUtil.ascSort(Number(a.values().weight), Number(b.values().weight));
-	} else if (o.valueName === "cost") {
-		return SortUtil.ascSort(Number(a.values().cost), Number(b.values().cost));
-	} else return 0;
-}
-
 let mundaneList;
 let magicList;
+let subList;
 const sourceFilter = getSourceFilter();
 const DEFAULT_HIDDEN_TYPES = new Set(["$", "Futuristic", "Modern", "Renaissance"]);
 const typeFilter = new Filter({header: "Type", deselFn: (it) => DEFAULT_HIDDEN_TYPES.has(it)});
@@ -75,23 +67,19 @@ async function pPopulateTablesAndFilters (data) {
 
 	filterBox = await pInitFilterBox({filters: [sourceFilter, typeFilter, tierFilter, rarityFilter, propertyFilter, attunementFilter, categoryFilter, costFilter, focusFilter, miscFilter, lootTableFilter, attachedSpellsFilter]});
 
-	const mundaneOptions = {
-		valueNames: ["name", "type", "cost", "weight", "source", "uniqueid"],
+	mundaneList = ListUtil.initList({
 		listClass: "mundane",
-		sortClass: "none",
-		sortFunction: sortItems
-	};
-	mundaneList = ListUtil.search(mundaneOptions);
-	const magicOptions = {
-		valueNames: ["name", "type", "weight", "rarity", "attunement", "source", "uniqueid"],
+		fnSort: ItemsPage.sortItems,
+		dbgName: "mundane"
+	});
+	magicList = ListUtil.initList({
 		listClass: "magic",
-		sortClass: "none",
-		sortFunction: sortItems
-	};
-	magicList = ListUtil.search(magicOptions);
+		fnSort: ItemsPage.sortItems
+	});
+	mundaneList.nextList = magicList;
+	magicList.prevList = mundaneList;
+	ListUtil.setOptions({primaryLists: [mundaneList, magicList]});
 
-	const $elesMundane = $(`.ele-mundane`);
-	const $elesMagic = $(`.ele-magic`);
 	const $elesMundaneAndMagic = $(`.ele-mundane-and-magic`);
 	$(`.side-label--mundane`).click(() => {
 		filterBox.setFromValues({Miscellaneous: {Mundane: 1}});
@@ -103,6 +91,8 @@ async function pPopulateTablesAndFilters (data) {
 	});
 	const $outVisibleResults = $(`.lst__wrp-search-visible`);
 	mundaneList.on("updated", () => {
+		const $elesMundane = $(`.ele-mundane`);
+
 		// Force-show the mundane list if there are no items on display
 		if (magicList.visibleItems.length) $elesMundane.toggle(!!mundaneList.visibleItems.length);
 		else $elesMundane.show();
@@ -113,6 +103,9 @@ async function pPopulateTablesAndFilters (data) {
 		$outVisibleResults.html(`${current}/${total}`);
 	});
 	magicList.on("updated", () => {
+		const $elesMundane = $(`.ele-mundane`);
+		const $elesMagic = $(`.ele-magic`);
+
 		$elesMagic.toggle(!!magicList.visibleItems.length);
 		// Force-show the mundane list if there are no items on display
 		if (!magicList.visibleItems.length) $elesMundane.show();
@@ -130,57 +123,22 @@ async function pPopulateTablesAndFilters (data) {
 		handleFilterChange
 	);
 
-	$("#filtertools-mundane").find("button.sort").on("click", function (evt) {
-		evt.stopPropagation();
-		const $this = $(this);
-		const direction = $this.data("sortby") === "asc" ? "desc" : "asc";
-		$this.data("sortby", direction);
-		SortUtil.handleFilterButtonClick.call(this, "#filtertools-mundane", $this, direction);
-		mundaneList.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortItems});
+	SortUtil.initBtnSortHandlers($("#filtertools-mundane"), mundaneList);
+	SortUtil.initBtnSortHandlers($("#filtertools-magic"), magicList);
+
+	subList = ListUtil.initSublist({
+		listClass: "subitems",
+		fnSort: ItemsPage.sortItems,
+		getSublistRow: getSublistItem,
+		onUpdate: onSublistChange
 	});
-
-	$("#filtertools-magic").find("button.sort").on("click", function (evt) {
-		evt.stopPropagation();
-		const $this = $(this);
-		const direction = $this.data("sortby") === "asc" ? "desc" : "asc";
-
-		$this.data("sortby", direction);
-		SortUtil.handleFilterButtonClick.call(this, "#filtertools-magic", $this, direction);
-		magicList.sort($this.data("sort"), {order: $this.data("sortby"), sortFunction: sortItems});
-	});
-
-	$("#itemcontainer").find("h3").not(":has(input)").click(function () {
-		if ($(this).next("ul.list").css("max-height") === "500px") {
-			$(this).siblings("ul.list").animate({
-				maxHeight: "250px",
-				display: "block"
-			});
-			return;
-		}
-		$(this).next("ul.list").animate({
-			maxHeight: "500px",
-			display: "block"
-		}).siblings("ul.list").animate({
-			maxHeight: "0",
-			display: "none"
-		});
-	});
-
-	const subList = ListUtil.initSublist(
-		{
-			valueNames: ["name", "weight", "price", "count", "id"],
-			listClass: "subitems",
-			sortFunction: sortItems,
-			getSublistRow: getSublistItem,
-			onUpdate: onSublistChange
-		}
-	);
+	SortUtil.initBtnSortHandlers($("#sublistsort"), subList);
 	ListUtil.initGenericAddable();
 
 	addItems(data);
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
-		.then(() => BrewUtil.bind({list}))
+		.then(() => BrewUtil.bind({lists: [mundaneList, magicList]}))
 		.then(() => BrewUtil.pAddLocalBrewData())
 		.catch(BrewUtil.pPurgeBrew)
 		.then(async () => {
@@ -189,6 +147,10 @@ async function pPopulateTablesAndFilters (data) {
 			await ListUtil.pLoadState();
 			RollerUtil.addListRollButton();
 			ListUtil.addListShowHide();
+
+			mundaneList.init();
+			magicList.init();
+			subList.init();
 
 			Hist.init(true);
 			ExcludeUtil.checkShowAllExcluded(itemList, $(`#pagecontent`));
@@ -206,16 +168,12 @@ function addItems (data) {
 	if (!data.item || !data.item.length) return;
 	itemList = itemList.concat(data.item);
 
-	let tempStackMundane = "";
-	let tempStackMagic = "";
-
 	for (; itI < itemList.length; itI++) {
 		const item = itemList[itI];
 		if (ExcludeUtil.isExcluded(item.name, "item", item.source)) continue;
 		if (item.noDisplay) continue;
 		Renderer.item.enhanceItem(item);
 
-		const name = item.name;
 		const tierTags = [];
 		tierTags.push(item.tier ? item.tier : "None");
 
@@ -252,36 +210,64 @@ function addItems (data) {
 			}
 		}
 
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const hash = UrlUtil.autoEncodeHash(item);
+		const source = Parser.sourceJsonToAbv(item.source);
+
 		if (isMundane) {
-			tempStackMundane += `
-			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(item)}" title="${name}">
-					<span class="name col-3 pl-0">${name}</span>
-					<span class="type col-4-3">${item.typeListText}</span>
-					<span class="col-1-5 text-center">${item.value || item.valueMult ? Parser.itemValueToFull(item, true).replace(/ +/g, "\u00A0") : "\u2014"}</span>
-					<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
-					<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${Parser.sourceJsonToAbv(item.source)}</span>
-					
-					<span class="cost hidden">${item._fCost}</span>
-					<span class="weight hidden">${Parser.weightValueToNumber(item.weight)}</span>
-					<span class="uniqueid hidden">${item.uniqueId ? item.uniqueId : itI}</span>
-				</a>
-			</li>`;
+			eleLi.innerHTML = `<a href="#${hash}">
+				<span class="col-3 pl-0 bold">${item.name}</span>
+				<span class="col-4-3">${item.typeListText}</span>
+				<span class="col-1-5 text-center">${item.value || item.valueMult ? Parser.itemValueToFull(item, true).replace(/ +/g, "\u00A0") : "\u2014"}</span>
+				<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
+				<span class="col-1-7 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
+			</a>`;
+
+			const listItem = new ListItem(
+				itI,
+				eleLi,
+				item.name,
+				{
+					hash,
+					source,
+					type: item.typeListText,
+					cost: item._fCost,
+					weight: Parser.weightValueToNumber(item.weight),
+					uniqueid: item.uniqueId ? item.uniqueId : itI
+				}
+			);
+			eleLi.addEventListener("click", (evt) => mundaneList.doSelect(listItem, evt));
+			eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, mundaneList, listItem));
+			mundaneList.addItem(listItem);
 		} else {
-			tempStackMagic += `
-			<li class="row" ${FLTR_ID}=${itI} onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${itI}" href="#${UrlUtil.autoEncodeHash(item)}" title="${name}">
-					<span class="name col-3-5 pl-0">${name}</span>
-					<span class="type col-3-3">${item.typeListText}</span>
-					<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
-					<span class="attunement col-0-6 text-center">${item.attunementCategory !== "No" ? "×" : ""}</span>
-					<span class="rarity col-1-4">${item.rarity}</span>
-					<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${Parser.sourceJsonToAbv(item.source)}</span>
-					
-					<span class="weight hidden">${Parser.weightValueToNumber(item.weight)}</span>
-					<span class="uniqueid hidden">${item.uniqueId ? item.uniqueId : itI}</span>
-				</a>
-			</li>`;
+			eleLi.innerHTML += `<a href="#${hash}">
+				<span class="col-3-5 pl-0 bold">${item.name}</span>
+				<span class="col-3-3">${item.typeListText}</span>
+				<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
+				<span class="attunement col-0-6 text-center">${item.attunementCategory !== "No" ? "×" : ""}</span>
+				<span class="rarity col-1-4">${item.rarity}</span>
+				<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
+			</a>`;
+
+			const listItem = new ListItem(
+				itI,
+				eleLi,
+				item.name,
+				{
+					source,
+					hash,
+					type: item.typeListText,
+					rarity: item.rarity,
+					attunement: item.attunementCategory !== "No",
+					weight: Parser.weightValueToNumber(item.weight),
+					uniqueid: item.uniqueId ? item.uniqueId : itI
+				}
+			);
+			eleLi.addEventListener("click", (evt) => magicList.doSelect(listItem, evt));
+			eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, magicList, listItem));
+			magicList.addItem(listItem);
 		}
 
 		// populate filters
@@ -292,22 +278,14 @@ function addItems (data) {
 		attachedSpellsFilter.addItem(item.attachedSpells);
 		lootTableFilter.addItem(item.lootTables);
 	}
-	const lastSearch = ListUtil.getSearchTermAndReset(mundaneList, magicList);
-	// populate table
-	$("ul.list.mundane").append(tempStackMundane);
-	$("ul.list.magic").append(tempStackMagic);
+
 	// populate table labels
 	$(`h3.ele-mundane span.side-label`).text("Mundane");
 	$(`h3.ele-magic span.side-label`).text("Magic");
 
-	mundaneList.reIndex();
-	magicList.reIndex();
-	if (lastSearch) {
-		mundaneList.search(lastSearch);
-		magicList.search(lastSearch);
-	}
-	mundaneList.sort("name", {order: "desc"});
-	magicList.sort("name", {order: "desc"});
+	mundaneList.update();
+	magicList.update();
+
 	filterBox.render();
 	handleFilterChange();
 
@@ -326,22 +304,22 @@ function addItems (data) {
 
 function handleFilterChange () {
 	const f = filterBox.getValues();
-	function listFilter (item) {
-		const i = itemList[$(item.elm).attr(FLTR_ID)];
+	function listFilter (li) {
+		const it = itemList[li.ix];
 		return filterBox.toDisplay(
 			f,
-			i.source,
-			i.procType,
-			i._fTier,
-			i.rarity,
-			i._fProperties,
-			i.attunementCategory,
-			i.category,
-			i._fCost,
-			i._fFocus,
-			i._fMisc,
-			i.lootTables,
-			i.attachedSpells
+			it.source,
+			it.procType,
+			it._fTier,
+			it.rarity,
+			it._fProperties,
+			it.attunementCategory,
+			it.category,
+			it._fCost,
+			it._fFocus,
+			it._fMisc,
+			it.lootTables,
+			it.attachedSpells
 		);
 	}
 	mundaneList.filter(listFilter);
@@ -350,34 +328,50 @@ function handleFilterChange () {
 }
 
 function onSublistChange () {
-	const totalWeight = $(`#totalweight`);
-	const totalValue = $(`#totalvalue`);
+	const $totalWeight = $(`#totalweight`);
+	const $totalValue = $(`#totalvalue`);
 	let weight = 0;
 	let value = 0;
 	ListUtil.sublist.items.forEach(it => {
-		const item = itemList[Number(it._values.id)];
-		const count = Number($(it.elm).find(".count").text());
+		const item = itemList[it.ix];
+		const count = it.values.count;
 		if (item.weight) weight += Number(item.weight) * count;
 		if (item.value) value += Parser.coinValueToNumber(item.value) * count;
 	});
-	totalWeight.text(`${weight.toLocaleString()} lb${weight > 1 ? "s" : ""}.`);
-	totalValue.text(`${value.toLocaleString()}gp`)
+	$totalWeight.text(`${weight.toLocaleString()} lb${weight !== 1 ? "s" : ""}.`);
+	$totalValue.text(`${value.toLocaleString()}gp`)
 }
 
 function getSublistItem (item, pinId, addCount) {
-	return `
-		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-			<a href="#${UrlUtil.autoEncodeHash(item)}" title="${item.name}">
-				<span class="name col-6 pl-0">${item.name}</span>
-				<span class="weight text-center col-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
-				<span class="price text-center col-2">${item.value ? item.value.replace(/ +/g, "\u00A0") : "\u2014"}</span>
-				<span class="count text-center col-2 pr-0">${addCount || 1}</span>
-				
-				<span class="cost hidden">${item._fCost}</span>
-				<span class="id hidden">${pinId}</span>
-			</a>
-		</li>
-	`;
+	const hash = UrlUtil.autoEncodeHash(item);
+	const count = addCount || 1;
+
+	const $dispCount = $(`<span class="text-center col-2 pr-0">${count}</span>`);
+	const $ele = $$`<li class="row">
+		<a href="#${hash}">
+			<span class="bold col-6 pl-0">${item.name}</span>
+			<span class="text-center col-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
+			<span class="text-center col-2">${item.value ? item.value.replace(/ +/g, "\u00A0") : "\u2014"}</span>
+			${$dispCount}
+		</a>
+	</li>`.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+
+	const listItem = new ListItem(
+		pinId,
+		$ele,
+		item.name,
+		{
+			hash,
+			source: Parser.sourceJsonToAbv(item.source),
+			weight: Parser.weightValueToNumber(item.weight),
+			cost: item._fCost,
+			count
+		},
+		{
+			$elesCount: [$dispCount]
+		}
+	);
+	return listItem;
 }
 
 const renderer = Renderer.get();

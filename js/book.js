@@ -14,15 +14,10 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
-let list;
 let books = [];
 let bkI = 0;
 function onJsonLoad (data) {
 	$("ul.contents").append($(`<li><a href='books.html'><span class='name'>\u21FD All Books</span></a></li>`));
-	const list = new List("listcontainer", {
-		valueNames: ['name'],
-		listClass: "contents"
-	});
 
 	BookUtil.baseDataUrl = "data/book/book-";
 	BookUtil.homebrewIndex = "book";

@@ -1,9 +1,9 @@
 "use strict";
 
 function optFeatSort (itemA, itemB, options) {
-	if (options.valueName === "level") {
-		const aValue = Number(itemA.values().level.toLowerCase()) || 0;
-		const bValue = Number(itemB.values().level.toLowerCase()) || 0;
+	if (options.sortBy === "level") {
+		const aValue = Number(itemA.values.level) || 0;
+		const bValue = Number(itemB.values.level) || 0;
 		return SortUtil.ascSort(aValue, bValue) || SortUtil.listSort(itemA, itemB, options);
 	}
 	return SortUtil.listSort(itemA, itemB, options);
@@ -58,16 +58,14 @@ class OptionalFeaturesPage extends ListPage {
 			],
 			filterSource: sourceFilter,
 
-			listValueNames: ["name", "source", "prerequisite", "level", "type", "uniqueid"],
 			listClass: "optfeatures",
 			listOptions: {
-				sortFunction: optFeatSort
+				fnSort: optFeatSort
 			},
 
-			sublistValueNames: ["name", "ability", "prerequisite", "level", "id"],
 			sublistClass: "suboptfeatures",
 			sublistOptions: {
-				sortFunction: optFeatSort
+				fnSort: optFeatSort
 			},
 
 			dataProps: ["optionalfeature"]
@@ -127,25 +125,46 @@ class OptionalFeaturesPage extends ListPage {
 		this._sourceFilter.addItem(it.source);
 		this._typeFilter.addItem(it.featureType);
 
-		return `
-			<li class="row" ${FLTR_ID}="${ivI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${ivI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class="name col-3-2 pl-0">${it.name}</span>
-					<span class="type col-1-5 text-center type" title="${it._dFeatureType}">${it._lFeatureType}</span>
-					<span class="prerequisite col-4-8">${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
-					<span class="level col-1 text-center">${Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
-					<span class="source col-1-5 ${Parser.sourceJsonToColor(it.source)} text-center pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
-					
-					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : ivI}</span>
-				</a>
-			</li>
-		`;
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const source = Parser.sourceJsonToAbv(it.source);
+		const hash = UrlUtil.autoEncodeHash(it);
+		const prerequisite = Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true);
+		const level = Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite);
+
+		eleLi.innerHTML = `<a href="#${hash}">
+			<span class="bold col-3-2 pl-0">${it.name}</span>
+			<span class="col-1-5 text-center" title="${it._dFeatureType}">${it._lFeatureType}</span>
+			<span class="col-4-8 ${prerequisite === "\u2014" ? "text-center" : ""}">${prerequisite}</span>
+			<span class="col-1 text-center">${level}</span>
+			<span class="col-1-5 ${Parser.sourceJsonToColor(it.source)} text-center pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+		</a>`;
+
+		const listItem = new ListItem(
+			ivI,
+			eleLi,
+			it.name,
+			{
+				hash,
+				source,
+				prerequisite,
+				level,
+				type: it._lFeatureType,
+				uniqueid: it.uniqueId ? it.uniqueId : ivI
+			}
+		);
+
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+
+		return listItem;
 	}
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
 		this._list.filter(item => {
-			const it = this._dataList[$(item.elm).attr(FLTR_ID)];
+			const it = this._dataList[item.ix];
 			return this._filterBox.toDisplay(
 				f,
 				it.source,
@@ -163,18 +182,32 @@ class OptionalFeaturesPage extends ListPage {
 	}
 
 	getSublistItem (it, pinId) {
-		return `
-			<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-				<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class="name col-4 pl-0">${it.name}</span>
-					<span class="source col-2 text-center type" title="${Parser.optFeatureTypeToFull(it.featureType)}">${it.featureType}</span>
-					<span class="prerequisite col-4-5">${Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true)}</span>
-					<span class="level col-1-5 pr-0">${Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite)}</span>
-					
-					<span class="id hidden">${pinId}</span>
-				</a>
-			</li>
-		`;
+		const hash = UrlUtil.autoEncodeHash(it);
+		const prerequisite = Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true);
+		const level = Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite);
+
+		const $ele = $(`<li class="row">
+			<a href="#${hash}">
+				<span class="bold col-4 pl-0">${it.name}</span>
+				<span class="col-2 text-center" title="${it._dFeatureType}">${it._lFeatureType}</span>
+				<span class="col-4-5 ${prerequisite === "\u2014" ? "text-center" : ""}">${prerequisite}</span>
+				<span class="col-1-5 pr-0">${level}</span>
+			</a>
+		</li>`)
+			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+
+		const listItem = new ListItem(
+			pinId,
+			$ele,
+			it.name,
+			{
+				hash,
+				type: it._lFeatureType,
+				prerequisite,
+				level
+			}
+		);
+		return listItem;
 	}
 
 	doLoadHash (id) {

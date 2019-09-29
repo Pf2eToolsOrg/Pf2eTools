@@ -268,22 +268,7 @@
 					"type": "integer"
 				},
 				"otherSources": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"source": {
-								"type": "string"
-							},
-							"page": {
-								"type": "integer"
-							}
-						},
-						"required": [
-							"source"
-						],
-						"additionalProperties": false
-					}
+					"$ref": "util.json#/definitions/otherSources"
 				},
 				"damageInflict": {
 					"type": "array",

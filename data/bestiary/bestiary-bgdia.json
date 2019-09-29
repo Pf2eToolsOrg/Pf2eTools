@@ -16,20 +16,76 @@
 				"RoT": "BGDIA",
 				"DMG": "BGDIA"
 			}
-		}
+		},
+		"internalCopies": [
+			"monster"
+		]
 	},
 	"monster": [
 		{
 			"name": "Archduke Zariel of Avernus",
+			"isNpc": true,
 			"source": "BGDIA",
 			"page": 243,
 			"_copy": {
 				"name": "Zariel",
-				"source": "MTF"
-			}
+				"source": "MTF",
+				"_mod": {
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"Zariel attacks twice with her flail and once with Matalotok. She can substitute Horrid Touch for Matalotok."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Longsword",
+							"items": {
+								"name": "Flail",
+								"entries": [
+									"{@atk mw} {@hit 16} to hit, reach 10 ft., one target. {@h}17 ({@damage 2d8 + 8}) piercing damage plus 36 ({@damage 8d8}) fire damage."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Javelin",
+							"items": {
+								"name": "Matalotok (Warhammer)",
+								"entries": [
+									"{@atk mw} {@hit 16} to hit, reach 10 ft., one target. {@h}17 ({@damage 2d8 + 8}) bludgeoning, or 19 ({@damage 2d10 + 8}) bludgeoning damage if used with two hands, plus 36 ({@damage 8d8}) fire damage. In addition, the weapon emits a burst of cold that deals 10 ({@damage 3d6}) cold damage to each creature within 30 feet of it."
+								]
+							}
+						}
+					]
+				}
+			},
+			"resist": [
+				"fire",
+				"radiant",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks that aren't silvered"
+				}
+			],
+			"immune": [
+				"cold",
+				"necrotic",
+				"poison"
+			]
 		},
 		{
 			"name": "Crokek'toeck",
+			"isNpc": true,
 			"source": "BGDIA",
 			"page": 231,
 			"size": "G",
@@ -138,7 +194,7 @@
 					]
 				},
 				{
-					"name": "Disgorge Allies (Recharge 6)",
+					"name": "Disgorge Allies {@recharge}",
 					"entries": [
 						"Crokek'toeck opens its mouth and disgorges {@dice 1d4} barlguras, {@dice 3d6} gnolls led by 1 gnoll fang of Yeenoghu, {@dice 6d6} dretches, or {@dice 1d3} vrocks. Each creature it disgorges appears in an unoccupied space within 30 feet of Crokek'toeck's mouth, or the next closest unoccupied space."
 					]
@@ -1635,14 +1691,12 @@
 					"_": {
 						"mode": "replaceSpells",
 						"spells": {
-							"7": {
-								"spells": [
-									{
-										"replace": "{@spell plane shift}",
-										"with": "{@spell teleport}"
-									}
-								]
-							}
+							"7": [
+								{
+									"replace": "{@spell plane shift}",
+									"with": "{@spell teleport}"
+								}
+							]
 						}
 					}
 				}
@@ -2481,7 +2535,7 @@
 			],
 			"trait": [
 				{
-					"name": "Fey Step (Recharge 4-6)",
+					"name": "Fey Step {@recharge 4}",
 					"entries": [
 						"As a bonus action, Smiler can teleport up to 30 feet to an unoccupied space that he can see or to the empty seat of his infernal war machine."
 					]
@@ -3875,6 +3929,360 @@
 				"MW",
 				"RCH"
 			]
+		},
+		{
+			"name": "Bitter Breath",
+			"isNpc": true,
+			"source": "BGDIA",
+			"page": 90,
+			"_copy": {
+				"name": "Horned Devil",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the devil",
+						"with": "Bitter Breath",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Burney the Barber",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "BGDIA",
+			"page": 129,
+			"_copy": {
+				"name": "Ancient Copper Dragon",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the dragon",
+						"with": "Burney",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Healer",
+								"entries": [
+									"Burney has the benefits of the {@feat healer} feat as well as proficiency with both the {@item healer's kit|phb} and the {@item herbalism kit|phb}."
+								]
+							},
+							{
+								"name": "Bahamut's Blessings",
+								"entries": [
+									"Burney has received several blessings in her service to Bahamut:",
+									{
+										"type": "list",
+										"items": [
+											"Unless Burney decided otherwise, once any creature less powerful than a deity has taken three steps from her, they can no longer remember her or having interacted with her specifically.",
+											"Burney is under the effect of a permanent {@spell mind blank} spell, and cannot be detected by magical or mundane means unless she wishes it. In exchange for this blessing, Burney can take no direct action against the denizens of the Nine Hells, though she can certainly enlist the help of those who can.",
+											"Burney always knows the location of the Wandering Emporium and can transport herself there as though by a {@spell word of recall} spell. This explains why Burney simply seems to appear amid the fully deployed marketplace each morning it is active to provide service and tell stories.",
+											"Once each day, when Burney so desires, she can instantly transport herself to the court of Bahamut via a powerful blessing akin to the {@spell plane shift} spell."
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Chukka",
+			"isNpc": true,
+			"source": "BGDIA",
+			"page": 83,
+			"_copy": {
+				"name": "Kenku",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the kenku",
+						"with": "Chukka",
+						"flags": "i"
+					}
+				}
+			},
+			"action": [
+				{
+					"name": "Silvered Pike",
+					"entries": [
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d10}) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Clonk",
+			"isNpc": true,
+			"source": "BGDIA",
+			"page": 83,
+			"_copy": {
+				"name": "Kenku",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the kenku",
+						"with": "Clonk",
+						"flags": "i"
+					}
+				}
+			},
+			"action": [
+				{
+					"name": "Hellfire Warhammer",
+					"entries": [
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d8}) bludgeoning damage, or 5 ({@damage 1d10 + 1}) bludgeoning damage if used with two hands to make a melee attack."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dryad Spirit",
+			"source": "BGDIA",
+			"page": 108,
+			"_copy": {
+				"name": "Banshee",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "banshee",
+						"with": "dryad"
+					}
+				}
+			}
+		},
+		{
+			"name": "Elliach",
+			"isNpc": true,
+			"source": "BGDIA",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"page": 130,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mage",
+						"with": "Elliach",
+						"flags": "i"
+					}
+				}
+			},
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 5} to hit, reach 10 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Feonor",
+			"source": "BGDIA",
+			"isNpc": true,
+			"page": 130,
+			"alignment": [
+				"N",
+				"E"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"_copy": {
+				"name": "Archmage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the archmage",
+						"with": "Feonor",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Harkina Hunt",
+			"source": "BGDIA",
+			"isNpc": true,
+			"page": 53,
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Longbow",
+							"entries": [
+								"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d8}) piercing damage."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Hellwasp Grub",
+			"source": "BGDIA",
+			"page": 95,
+			"_copy": {
+				"name": "Giant Centipede",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Lulu",
+			"isNpc": true,
+			"source": "BGDIA",
+			"page": 5,
+			"_copy": {
+				"name": "Hollyphant",
+				"source": "BGDIA",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the hollyphant",
+						"with": "Lulu",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Mad Maggie",
+			"isNpc": true,
+			"source": "BGDIA",
+			"page": 74,
+			"_copy": {
+				"name": "Night Hag",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the hag",
+						"with": "Maggie",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Peacock",
+			"source": "BGDIA",
+			"page": 195,
+			"_copy": {
+				"name": "Vulture",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "vulture",
+						"with": "peacock"
+					}
+				}
+			}
+		},
+		{
+			"name": "Princeps Kovik",
+			"isNpc": true,
+			"source": "BGDIA",
+			"page": 91,
+			"_copy": {
+				"name": "Chain Devil",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the devil",
+						"with": "Kovik",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Raggadragga",
+			"isNpc": true,
+			"source": "BGDIA",
+			"page": 87,
+			"hp": {
+				"average": 120,
+				"formula": "12d8 + 24"
+			},
+			"_copy": {
+				"name": "Wereboar",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the wereboar",
+						"with": "Raggadragga",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Skeletal Rats",
+			"source": "BGDIA",
+			"page": 23,
+			"type": {
+				"type": "undead",
+				"swarmSize": "T"
+			},
+			"_copy": {
+				"name": "Swarm of Rats",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Undead Tree",
+			"source": "BGDIA",
+			"page": 23,
+			"type": "undead",
+			"resist": [
+				"necrotic"
+			],
+			"_copy": {
+				"name": "Treant",
+				"source": "MM",
+				"*": {
+					"mode": "replaceTxt",
+					"replace": "treant",
+					"with": "tree"
+				}
+			}
 		}
 	]
 }

@@ -74,16 +74,19 @@ async function _pOnIndexLoad (src2UrlMap, jsonDir, dataProp, pPageInit, addFn, p
 		let toAdd = [];
 		dataStack.forEach(d => toAdd = toAdd.concat(d[dataProp]));
 		addFn(toAdd);
-
-		if (pOptional) await pOptional();
-
-		RollerUtil.addListRollButton();
-		ListUtil.addListShowHide();
-
-		Hist.init(true);
 	} else {
 		await pPageInit(loadedSources);
 	}
+
+	if (pOptional) await pOptional();
+
+	RollerUtil.addListRollButton();
+	ListUtil.addListShowHide();
+
+	list.init();
+	subList.init();
+
+	Hist.init(true);
 }
 
 function loadSource (jsonListName, dataFn) {

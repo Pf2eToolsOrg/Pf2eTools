@@ -14,16 +14,10 @@ window.onload = function load () {
 	DataUtil.loadJSON(CONTENTS_URL).then(onJsonLoad);
 };
 
-let list;
 let adventures = [];
 let adI = 0;
 function onJsonLoad (data) {
 	$("ul.contents").append($(`<li><a href='adventures.html'><span class='name'>\u21FD All Adventures</span></a></li>`));
-
-	list = new List("listcontainer", {
-		valueNames: ['name'],
-		listClass: "contents"
-	});
 
 	BookUtil.baseDataUrl = "data/adventure/adventure-";
 	BookUtil.homebrewIndex = "adventure";

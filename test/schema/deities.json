@@ -84,23 +84,7 @@
 						"type": "integer"
 					},
 					"additionalSources": {
-						"description": "Used to add XGE domains (e.g. Forge) to existing deities",
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"source": {
-									"type": "string"
-								},
-								"page": {
-									"type": "integer"
-								}
-							},
-							"required": [
-								"source"
-							],
-							"additionalProperties": false
-						}
+						"$ref": "util.json#/definitions/additionalSources"
 					},
 					"altNames": {
 						"type": "array",

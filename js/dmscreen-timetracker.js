@@ -989,21 +989,29 @@ class TimeTrackerRoot_Clock extends TimeTrackerComponent {
 					$wrpEventsEncounters.show();
 
 					todayEvents.forEach(event => {
+						const hoverMeta = Renderer.hover.getMakePredefinedHover({type: "entries", entries: []}, true);
+						const doUpdateMeta = () => {
+							let name = event.name;
+							if (event.hasTime) {
+								const {hours, minutes, seconds} = TimeTrackerBase.getHoursMinutesSecondsFromSeconds(secsPerHour, secsPerMinute, event.timeOfDaySecs);
+								name = `${name} at ${TimeTrackerBase.getPaddedNum(hours, hoursPerDay)}:${TimeTrackerBase.getPaddedNum(minutes, minutesPerHour)}:${TimeTrackerBase.getPaddedNum(seconds, secsPerMinute)}`
+							}
+							const toShow = {
+								name,
+								type: "entries",
+								entries: event.entries,
+								data: {hoverTitle: name}
+							};
+							Renderer.hover.updatePredefinedHover(hoverMeta.id, toShow);
+						};
+
 						const $dispEvent = $$`<div class="dm-time__disp-clock-entry dm-time__disp-clock-entry--event">*</div>`
 							.mouseover(evt => {
-								let name = event.name;
-								if (event.hasTime) {
-									const {hours, minutes, seconds} = TimeTrackerBase.getHoursMinutesSecondsFromSeconds(secsPerHour, secsPerMinute, event.timeOfDaySecs);
-									name = `${name} at ${TimeTrackerBase.getPaddedNum(hours, hoursPerDay)}:${TimeTrackerBase.getPaddedNum(minutes, minutesPerHour)}:${TimeTrackerBase.getPaddedNum(seconds, secsPerMinute)}`
-								}
-								const toShow = {
-									name,
-									type: "entries",
-									entries: event.entries,
-									data: {hoverTitle: name}
-								};
-								Renderer.hover.doHover(evt, $dispEvent[0], toShow, true);
+								doUpdateMeta();
+								hoverMeta.mouseOver(evt, $dispEvent[0]);
 							})
+							.mousemove(evt => hoverMeta.mouseMove(evt, $dispEvent[0]))
+							.mouseleave(evt => hoverMeta.mouseLeave(evt, $dispEvent[0]))
 							.click(() => {
 								const comp = TimeTrackerRoot_Settings_Event.getInstance(this._board, this._$wrpPanel, this._parent, event);
 								comp.doOpenEditModal(null);
@@ -1012,31 +1020,39 @@ class TimeTrackerRoot_Clock extends TimeTrackerComponent {
 					});
 
 					todayEncounters.forEach(encounter => {
+						const hoverMeta = Renderer.hover.getMakePredefinedHover({type: "entries", entries: []}, true);
+						const doUpdateMeta = () => {
+							let name = encounter.displayName != null ? encounter.displayName : (encounter.name || "(Unnamed Encounter)");
+							if (encounter.hasTime) {
+								const {hours, minutes, seconds} = TimeTrackerBase.getHoursMinutesSecondsFromSeconds(secsPerHour, secsPerMinute, encounter.timeOfDaySecs);
+								name = `${name} at ${TimeTrackerBase.getPaddedNum(hours, hoursPerDay)}:${TimeTrackerBase.getPaddedNum(minutes, minutesPerHour)}:${TimeTrackerBase.getPaddedNum(seconds, secsPerMinute)}`
+							}
+							const toShow = {
+								name,
+								type: "entries",
+								entries: [
+									{
+										type: "list",
+										items: encounter.data.l.items.map(it => {
+											const spl = decodeURIComponent(it.h).split("_");
+											const crPart = it.uid ? Parser.numberToCr(Number(it.uid.split("_").last())) : null;
+											const name = spl[0].toTitleCase();
+											return `${it.c || 1}× {@creature ${name}|${spl[1]}${crPart != null ? `|${name} (CR ${crPart})|${crPart}` : ""}}`;
+										})
+									}
+								],
+								data: {hoverTitle: name}
+							};
+							Renderer.hover.updatePredefinedHover(hoverMeta.id, toShow);
+						};
+
 						const $dispEncounter = $$`<div class="dm-time__disp-clock-entry dm-time__disp-clock-entry--encounter ${encounter.countUses ? "dm-time__disp-clock-entry--used-encounter" : ""}" title="${encounter.countUses ? "(Encounter has been used)" : "Run Encounter (Add to Initiative Tracker)"}">*</div>`
 							.mouseover(evt => {
-								let name = encounter.displayName != null ? encounter.displayName : (encounter.name || "(Unnamed Encounter)");
-								if (encounter.hasTime) {
-									const {hours, minutes, seconds} = TimeTrackerBase.getHoursMinutesSecondsFromSeconds(secsPerHour, secsPerMinute, encounter.timeOfDaySecs);
-									name = `${name} at ${TimeTrackerBase.getPaddedNum(hours, hoursPerDay)}:${TimeTrackerBase.getPaddedNum(minutes, minutesPerHour)}:${TimeTrackerBase.getPaddedNum(seconds, secsPerMinute)}`
-								}
-								const toShow = {
-									name,
-									type: "entries",
-									entries: [
-										{
-											type: "list",
-											items: encounter.data.l.items.map(it => {
-												const spl = decodeURIComponent(it.h).split("_");
-												const crPart = it.uid ? Parser.numberToCr(Number(it.uid.split("_").last())) : null;
-												const name = spl[0].toTitleCase();
-												return `${it.c || 1}× {@creature ${name}|${spl[1]}${crPart != null ? `|${name} (CR ${crPart})|${crPart}` : ""}}`;
-											})
-										}
-									],
-									data: {hoverTitle: name}
-								};
-								Renderer.hover.doHover(evt, $dispEncounter[0], toShow, true);
+								doUpdateMeta();
+								hoverMeta.mouseOver(evt, $dispEncounter[0]);
 							})
+							.mousemove(evt => hoverMeta.mouseMove(evt, $dispEncounter[0]))
+							.mouseleave(evt => hoverMeta.mouseLeave(evt, $dispEncounter[0]))
 							.click(async () => {
 								const liveEncounter = this._parent.get("encounters")[encounter.id];
 								if (encounter.countUses) {
@@ -1314,8 +1330,9 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 
 		const $hovEnvEffects = $(`<div><span class="glyphicon glyphicon-info-sign"/></div>`);
 		const $wrpEnvEffects = $$`<div class="mt-2">${$hovEnvEffects}</div>`;
+		let hoverMetaEnvEffects = null;
 		const hookEnvEffects = () => {
-			$hovEnvEffects.off("mouseover");
+			$hovEnvEffects.off("mouseover").off("mousemove").off("mouseleave");
 			const hashes = [];
 			const fnGetHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAPS_HAZARDS];
 			if (this._state.temperature === TimeTrackerRoot_Clock_Weather._TEMPERATURES[0]) {
@@ -1336,20 +1353,29 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 
 			$hovEnvEffects.show();
 			if (hashes.length === 1) {
-				$hovEnvEffects.mouseover(evt => Renderer.hover.mouseOver(evt, $hovEnvEffects[0], UrlUtil.PG_TRAPS_HAZARDS, SRC_DMG, hashes[0], false, null));
+				const ele = $hovEnvEffects[0];
+				$hovEnvEffects.mouseover(evt => Renderer.hover.pHandleLinkMouseOver(evt, ele, UrlUtil.PG_TRAPS_HAZARDS, SRC_DMG, hashes[0]));
+				$hovEnvEffects.mouseleave(evt => Renderer.hover.handleLinkMouseLeave(evt, ele));
+				$hovEnvEffects.mousemove(evt => Renderer.hover.handleLinkMouseMove(evt, ele));
 			} else if (hashes.length) {
-				$hovEnvEffects.mouseover(async evt => {
-					// load the first on its own, to avoid racing to fill the cache
-					const first = await Renderer.hover.pCacheAndGet(UrlUtil.PG_TRAPS_HAZARDS, SRC_DMG, hashes[0]);
-					const others = await Promise.all(hashes.slice(1).map(hash => Renderer.hover.pCacheAndGet(UrlUtil.PG_TRAPS_HAZARDS, SRC_DMG, hash)));
-					const allEntries = [first, ...others].map(it => ({type: "dataTrapHazard", dataTrapHazard: MiscUtil.copy(it)}));
-					const toShow = {
-						type: "entries",
-						entries: allEntries,
-						data: {hoverTitle: `Weather Effects`}
-					};
-					Renderer.hover.doHover(evt, $hovEnvEffects[0], toShow)
-				});
+				if (hoverMetaEnvEffects == null) hoverMetaEnvEffects = Renderer.hover.getMakePredefinedHover({type: "entries", entries: []});
+
+				$hovEnvEffects
+					.mouseover(async evt => {
+						// load the first on its own, to avoid racing to fill the cache
+						const first = await Renderer.hover.pCacheAndGet(UrlUtil.PG_TRAPS_HAZARDS, SRC_DMG, hashes[0]);
+						const others = await Promise.all(hashes.slice(1).map(hash => Renderer.hover.pCacheAndGet(UrlUtil.PG_TRAPS_HAZARDS, SRC_DMG, hash)));
+						const allEntries = [first, ...others].map(it => ({type: "dataTrapHazard", dataTrapHazard: MiscUtil.copy(it)}));
+						const toShow = {
+							type: "entries",
+							entries: allEntries,
+							data: {hoverTitle: `Weather Effects`}
+						};
+						Renderer.hover.updatePredefinedHover(hoverMetaEnvEffects.id, toShow);
+						hoverMetaEnvEffects.mouseOver(evt, $hovEnvEffects[0]);
+					})
+					.mousemove(evt => hoverMetaEnvEffects.mouseMove(evt, $hovEnvEffects[0]))
+					.mouseleave(evt => hoverMetaEnvEffects.mouseLeave(evt, $hovEnvEffects[0]));
 			} else $hovEnvEffects.hide();
 		};
 		this._addHookBase("temperature", hookEnvEffects);

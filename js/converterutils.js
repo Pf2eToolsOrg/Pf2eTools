@@ -1189,7 +1189,9 @@ SpeedConvert._SPEED_TYPES = new Set(["walk", "fly", "swim", "climb", "burrow"]);
 class TextClean {
 	static getCleanedJson (str) {
 		str = str.replace(TextClean.REPLACEMENT_REGEX, (match) => TextClean.REPLACEMENTS[match]);
-		return str.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1");
+		return str
+			.replace(/\u00AD/g, "") // soft hyphens
+			.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1");
 	}
 
 	static getReplacedQuotesText (str) {
@@ -1206,7 +1208,8 @@ TextClean.REPLACEMENTS = {
 	"’": "'",
 	"“": '\\"',
 	"”": '\\"',
-	"…": "..."
+	"…": "...",
+	"ﬁ": "fi"
 };
 TextClean.REPLACEMENT_REGEX = new RegExp(Object.keys(TextClean.REPLACEMENTS).join("|"), 'g');
 

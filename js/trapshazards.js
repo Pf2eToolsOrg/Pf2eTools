@@ -35,10 +35,8 @@ class TrapsHazardsPage extends ListPage {
 			],
 			filterSource: sourceFilter,
 
-			listValueNames: ["name", "trapType", "source", "uniqueid"],
 			listClass: "trapshazards",
 
-			sublistValueNames: ["name", "type", "id"],
 			sublistClass: "subtrapshazards",
 
 			dataProps: ["trap", "hazard"]
@@ -53,23 +51,41 @@ class TrapsHazardsPage extends ListPage {
 		// populate filters
 		this._sourceFilter.addItem(it.source);
 
-		return `
-			<li class="row" ${FLTR_ID}="${thI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${thI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class="name col-6 pl-0">${it.name}</span>
-					<span class="trapType col-4">${Parser.trapHazTypeToFull(it.trapHazType)}</span>
-					<span class="source col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
-					
-					<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : thI}</span>
-				</a>
-			</li>
-		`;
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const source = Parser.sourceJsonToAbv(it.source);
+		const hash = UrlUtil.autoEncodeHash(it);
+		const trapType = Parser.trapHazTypeToFull(it.trapHazType);
+
+		eleLi.innerHTML = `<a href="#${hash}">
+			<span class="bold col-6 pl-0">${it.name}</span>
+			<span class="col-4">${trapType}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+		</a>`;
+
+		const listItem = new ListItem(
+			thI,
+			eleLi,
+			it.name,
+			{
+				hash,
+				source,
+				trapType,
+				uniqueid: it.uniqueId ? it.uniqueId : thI
+			}
+		);
+
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+
+		return listItem;
 	}
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
 		this._list.filter((item) => {
-			const it = this._dataList[$(item.elm).attr(FLTR_ID)];
+			const it = this._dataList[item.ix];
 			return this._filterBox.toDisplay(
 				f,
 				it.source,
@@ -80,15 +96,27 @@ class TrapsHazardsPage extends ListPage {
 	}
 
 	getSublistItem (it, pinId) {
-		return `
-			<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-				<a href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-					<span class="name col-8 pl-0">${it.name}</span>
-					<span class="type col-4 pr-0">${Parser.trapHazTypeToFull(it.trapHazType)}</span>
-					<span class="id hidden">${pinId}</span>
-				</a>
-			</li>
-		`;
+		const hash = UrlUtil.autoEncodeHash(it);
+		const trapType = Parser.trapHazTypeToFull(it.trapHazType);
+
+		const $ele = $(`<li class="row">
+			<a href="#${hash}">
+				<span class="bold col-8 pl-0">${it.name}</span>
+				<span class="col-4 pr-0">${trapType}</span>
+			</a>
+		</li>`)
+			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+
+		const listItem = new ListItem(
+			pinId,
+			$ele,
+			it.name,
+			{
+				hash,
+				trapType
+			}
+		);
+		return listItem;
 	}
 
 	doLoadHash (id) {

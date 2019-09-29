@@ -2309,7 +2309,7 @@
 				"At 3rd level, a character dedicated to the {@class Warlock|phb|Seeker|the Seeker (UA)|UATheFaithful} can select this option instead of one of the warlock's existing Pact Boon options.",
 				"The Seeker grants you a chain forged from starlight, decorated with seven gleaming motes of brightness. While the chain is on your person, you know the {@spell augury} spell and can cast it as a ritual. The spell doesn't count against your number of spells known.",
 				"Additionally, you can invoke the Seeker's power to gain advantage on an Intelligence check while you carry this item. Once you use this ability, you cannot use it again until you complete a short or long rest.",
-				"If you lose your Star Chain, you can perform a 1-­hour ceremony to receive a replacement from the Seeker. The ceremony can be performed during a short or long rest, and it destroys the previous chain. The chain disappears in a flash of light when you die.",
+				"If you lose your Star Chain, you can perform a 1-hour ceremony to receive a replacement from the Seeker. The ceremony can be performed during a short or long rest, and it destroys the previous chain. The chain disappears in a flash of light when you die.",
 				"The exact form of this item might be different depending on your patron. The Star Chain is inspired by the Greyhawk deity Celestian."
 			],
 			"featureType": "PB",
@@ -3301,6 +3301,116 @@
 			"source": "GoS",
 			"featureType": "SHP:O",
 			"page": 198
+		},
+		{
+			"name": "Acidic Bile Sprayer",
+			"entries": [
+				"This hose weapon is attached to demonic organs that produce an acidic bile that dissolves flesh on contact.",
+				{
+					"type": "entries",
+					"name": "Acidic Bile Sprayer (Requires 1 Crew and Grants Half Cover, {@recharge 5|m})",
+					"entries": [
+						"Acidic bile sprays from a nozzle in a 30-foot cone. Each creature in the cone must make a DC 12 Dexterity saving throw, taking 40 ({@damage 9d8}) acid damage on a failed save, or half as much damage on a successful one. A creature reduced to 0 hit points by this damage is dissolved, leaving behind any objects it was carrying or wearing."
+					]
+				}
+			],
+			"source": "BGDIA",
+			"featureType": "IWM:W",
+			"page": 221
+		},
+		{
+			"name": "Flamethrower",
+			"entries": [
+				"Although useless against demons, this weapon is great against flammable creatures and objects.",
+				{
+					"type": "entries",
+					"name": "Flamethrower (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"Fire shoots out of the weapon's nozzle in a 60-foot line that is 5 feet wide. Each creature in the line must make a DC 15 Dexterity saving throw, taking 18 ({@damage 4d8}) fire damage on a failed save, or half as much damage on a successful one. The fire ignites any flammable objects in the area that aren't being carried or worn."
+					]
+				}
+			],
+			"source": "BGDIA",
+			"featureType": "IWM:W",
+			"page": 221
+		},
+		{
+			"name": "Infernal Screamer",
+			"entries": [
+				"A writhing humanoid torso made of melting wax juts out from this station, with a barbed hand crank between its shoulder blades. The figure telepathically shrieks in agony when the crank is turned.",
+				{
+					"type": "entries",
+					"name": "Infernal Screamer (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"The screamer's operator targets one creature it can see within 120 feet of the screamer. The target must make a DC 15 Wisdom saving throw, taking 26 ({@damage 4d12}) psychic damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"source": "BGDIA",
+			"featureType": "IWM:W",
+			"page": 221
+		},
+		{
+			"name": "Styx Sprayer",
+			"entries": [
+				"This flexible hose is connected to a tank that holds 30 gallons of water from the {@area River Styx|1a3|x}. Each use of the weapon depletes 10 gallons of the water. Refilling the tank requires access to the Styx.",
+				{
+					"type": "entries",
+					"name": "Styx Sprayer (Requires 1 Crew and Grants Half Cover; 3 Uses)",
+					"entries": [
+						"{@atk rs}: +5 to hit, range 30 ft., one creature. {@h}The creature is struck by water from the River Styx and targeted by a {@spell feeblemind} spell (save DC 20). An already feebleminded creature is immune to this effect, as is a creature adapted to the River Styx. If the target fails its saving throw and the spell's effect on it is not ended within 30 days, the effect becomes permanent, whereupon the creature loses all its memories and becomes a near-mindless shell of its former self. At that point, nothing short of divine intervention can undo the effect."
+					]
+				}
+			],
+			"source": "BGDIA",
+			"featureType": "IWM:W",
+			"page": 221
+		},
+		{
+			"name": "Canian Armor",
+			"entries": [
+				"The infernal iron used to make the vehicle was mined on Cania, the coldest layer of the Nine Hells. An infernal war machine with Canian armor has an Armor Class of 22 + its Dexterity modifier. While the vehicle is not moving, attack rolls made against it have advantage. The infernal war machine also has immunity to cold damage in addition to its other damage immunities, and it's immune to the effects of extreme cold."
+			],
+			"source": "BGDIA",
+			"featureType": "IWM:A",
+			"page": 221
+		},
+		{
+			"name": "Gilded Death Armor",
+			"entries": [
+				"Gold stolen or bartered from the archdevil Mammon plates the vehicle's exterior. This gold can't be removed without destroying the vehicle and turns to dust when the infernal war machine drops to 0 hit points. Gilded death armor grants the infernal war machine resistance to bludgeoning, piercing, and slashing damage."
+			],
+			"source": "BGDIA",
+			"featureType": "IWM:A",
+			"page": 222
+		},
+		{
+			"name": "Soul Spike Armor",
+			"entries": [
+				"The vehicle is covered with spikes inscribed with blasphemous symbols. Luminous, ghostly figures impaled on these spikes wail and reach out in agony.",
+				"If a creature that isn't a devil dies within 30 feet of the infernal war machine, its soul (if it has one) is torn from its body and joins the wailing throng impaled on the spikes. As long as its soul remains trapped, a creature can't be raised from the dead by any means. A trapped soul is freed if the vehicle is destroyed, if the spike anchoring it is the target of a {@spell remove curse} spell or similar magic, or if the spike is destroyed. Each spike is a Small object with AC 19, 15 hit points, and resistance to all damage except radiant damage."
+			],
+			"source": "BGDIA",
+			"featureType": "IWM:W",
+			"page": 222
+		},
+		{
+			"name": "Necrotic Smoke Screen",
+			"entries": [
+				"The vehicle's driver can activate this magical device as a bonus action, causing the vehicle to expel a 30-foot cube of opaque smoke directly in front of it or behind it. The cloud is stationary and lasts for 1 minute. The area within it is heavily obscured. Any creature that enters the cloud for the first time on a turn or starts its turn there takes 21 ({@damage 6d6}) necrotic damage. A strong wind disperses the cloud. This device needs 24 hours to recharge before it can be used again."
+			],
+			"source": "BGDIA",
+			"featureType": "IWM:G",
+			"page": 222
+		},
+		{
+			"name": "Teleporter",
+			"entries": [
+				"The vehicle's driver can activate this magical device as a bonus action, causing the vehicle to teleport to an unoccupied space that the driver can see up to 300 feet away from the vehicle's current position. All creatures and objects in contact with the vehicle are teleported along with it. This device needs 24 hours to recharge before it can be used again."
+			],
+			"source": "BGDIA",
+			"featureType": "IWM:G",
+			"page": 222
 		}
 	]
 }

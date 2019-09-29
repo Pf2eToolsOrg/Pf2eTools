@@ -1,19 +1,5 @@
 "use strict";
 
-function imgError (x) {
-	if (x) $(x).parent().remove();
-	$(`.rnd-name`).find(`span.stats-source`).css("margin-right", "0");
-}
-
-function handleStatblockScroll (event, ele) {
-	$(`#token_image`)
-		.toggle(ele.scrollTop < 32)
-		.css({
-			opacity: (32 - ele.scrollTop) / 32,
-			top: -ele.scrollTop
-		})
-}
-
 class ObjectsPage extends ListPage {
 	constructor () {
 		const sourceFilter = getSourceFilter();
@@ -26,10 +12,8 @@ class ObjectsPage extends ListPage {
 			],
 			filterSource: sourceFilter,
 
-			listValueNames: ["name", "size", "source", "uniqueid"],
 			listClass: "objects",
 
-			sublistValueNames: ["name", "size", "id"],
 			sublistClass: "subobjects",
 
 			dataProps: ["object"]
@@ -41,23 +25,41 @@ class ObjectsPage extends ListPage {
 	getListItem (obj, obI) {
 		this._sourceFilter.addItem(obj.source);
 
-		return `
-			<li class="row" ${FLTR_ID}="${obI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${obI}" href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
-					<span class="name col-8 pl-0">${obj.name}</span>
-					<span class="size col-2">${Parser.sizeAbvToFull(obj.size)}</span>
-					<span class="source col-2 text-center ${Parser.sourceJsonToColor(obj.source)} pr-0" title="${Parser.sourceJsonToFull(obj.source)}" ${BrewUtil.sourceJsonToStyle(obj.source)}>${Parser.sourceJsonToAbv(obj.source)}</span>
-					
-					<span class="uniqueid hidden">${obj.uniqueId ? obj.uniqueId : obI}</span>
-				</a>
-			</li>
-		`;
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const source = Parser.sourceJsonToAbv(obj.source);
+		const hash = UrlUtil.autoEncodeHash(obj);
+		const size = Parser.sizeAbvToFull(obj.size);
+
+		eleLi.innerHTML = `<a href="#${hash}">
+			<span class="bold col-8 pl-0">${obj.name}</span>
+			<span class="col-2 text-center">${size}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(obj.source)} pr-0" title="${Parser.sourceJsonToFull(obj.source)}" ${BrewUtil.sourceJsonToStyle(obj.source)}>${source}</span>
+		</a>`;
+
+		const listItem = new ListItem(
+			obI,
+			eleLi,
+			obj.name,
+			{
+				hash,
+				source,
+				size,
+				uniqueid: obj.uniqueId ? obj.uniqueId : obI
+			}
+		);
+
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+
+		return listItem;
 	}
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
 		this._list.filter((item) => {
-			const it = this._dataList[$(item.elm).attr(FLTR_ID)];
+			const it = this._dataList[item.ix];
 			return this._filterBox.toDisplay(
 				f,
 				it.source
@@ -67,15 +69,27 @@ class ObjectsPage extends ListPage {
 	}
 
 	getSublistItem (obj, pinId) {
-		return `
-			<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-				<a href="#${UrlUtil.autoEncodeHash(obj)}" title="${obj.name}">
-					<span class="name col-9 pl-0">${obj.name}</span>
-					<span class="ability col-3 pr-0">${Parser.sizeAbvToFull(obj.size)}</span>
-					<span class="id hidden">${pinId}</span>
-				</a>
-			</li>
-		`;
+		const hash = UrlUtil.autoEncodeHash(obj);
+		const size = Parser.sizeAbvToFull(obj.size);
+
+		const $ele = $(`<li class="row">
+			<a href="#${hash}" title="${obj.name}">
+				<span class="bold col-9 pl-0">${obj.name}</span>
+				<span class="col-3 pr-0 text-center">${size}</span>
+			</a>
+		</li>`)
+			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+
+		const listItem = new ListItem(
+			pinId,
+			$ele,
+			obj.name,
+			{
+				hash,
+				size
+			}
+		);
+		return listItem;
 	}
 
 	doLoadHash (id) {
@@ -93,10 +107,10 @@ class ObjectsPage extends ListPage {
 			const imgLink = obj.tokenUrl || UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
 			$floatToken.append(`
 			<a href="${imgLink}" target="_blank" rel="noopener">
-				<img src="${imgLink}" id="token_image" class="token" onerror="imgError(this)" alt="${obj.name}">
+				<img src="${imgLink}" id="token_image" class="token" onerror="TokenUtil.imgError(this)" alt="${obj.name}">
 			</a>`
 			);
-		} else imgError();
+		} else TokenUtil.imgError();
 
 		ListUtil.updateSelected();
 	}

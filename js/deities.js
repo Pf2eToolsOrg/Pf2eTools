@@ -81,10 +81,8 @@ class DeitiesPage extends ListPage {
 			],
 			filterSource: sourceFilter,
 
-			listValueNames: ["name", "pantheon", "alignment", "domains", "symbol", "source", "uniqueid"],
 			listClass: "deities",
 
-			sublistValueNames: ["name", "pantheon", "alignment", "domains", "id"],
 			sublistClass: "subdeities",
 
 			dataProps: ["deity"]
@@ -107,25 +105,46 @@ class DeitiesPage extends ListPage {
 		this._pantheonFilter.addItem(g.pantheon);
 		this._categoryFilter.addItem(g.category);
 
-		return `
-			<li class="row" ${FLTR_ID}="${dtI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${dtI}" href="#${UrlUtil.autoEncodeHash(g)}" title="${g.name}">
-					<span class="name col-3 pl-0">${g.name}</span>
-					<span class="pantheon col-2 text-center">${g.pantheon}</span>
-					<span class="alignment col-2 text-center">${g.alignment.join("")}</span>
-					<span class="domains col-3 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""}">${g.domains.join(", ")}</span>
-					<span class="source col-2 text-center ${Parser.sourceJsonToColor(g.source)} pr-0" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${Parser.sourceJsonToAbv(g.source)}</span>
-					
-					<span class="uniqueid hidden">${g.uniqueId ? g.uniqueId : dtI}</span>
-				</a>
-			</li>
-		`;
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const source = Parser.sourceJsonToAbv(g.source);
+		const hash = UrlUtil.autoEncodeHash(g);
+		const alignment = g.alignment.join("");
+		const domains = g.domains.join(", ");
+
+		eleLi.innerHTML = `<a href="#${hash}">
+			<span class="bold col-3 pl-0">${g.name}</span>
+			<span class="col-2 text-center">${g.pantheon}</span>
+			<span class="col-2 text-center">${alignment}</span>
+			<span class="col-3 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""}">${domains}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(g.source)} pr-0" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${source}</span>
+		</a>`;
+
+		const listItem = new ListItem(
+			dtI,
+			eleLi,
+			g.name,
+			{
+				hash,
+				source,
+				pantheon: g.pantheon,
+				alignment,
+				domains,
+				uniqueid: g.uniqueId ? g.uniqueId : dtI
+			}
+		);
+
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+
+		return listItem;
 	}
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
 		this._list.filter(item => {
-			const g = this._dataList[$(item.elm).attr(FLTR_ID)];
+			const g = this._dataList[item.ix];
 			return this._filterBox.toDisplay(
 				f,
 				g.source,
@@ -140,17 +159,33 @@ class DeitiesPage extends ListPage {
 	}
 
 	getSublistItem (g, pinId) {
-		return `
-			<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-				<a href="#${UrlUtil.autoEncodeHash(g)}" title="${g.name}">
-					<span class="name col-4 pl-0">${g.name}</span>
-					<span class="pantheon col-2">${g.pantheon}</span>
-					<span class="alignment col-2">${g.alignment.join("")}</span>
-					<span class="domains col-4 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""} pr-0">${g.domains.join(", ")}</span>
-					<span class="id hidden">${pinId}</span>
-				</a>
-			</li>
-		`;
+		const hash = UrlUtil.autoEncodeHash(g);
+
+		const alignment = g.alignment.join("");
+		const domains = g.domains.join(", ");
+
+		const $ele = $(`<li class="row">
+			<a href="#${hash}">
+				<span class="bold col-4 pl-0">${g.name}</span>
+				<span class="col-2">${g.pantheon}</span>
+				<span class="col-2">${alignment}</span>
+				<span class="col-4 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""} pr-0">${domains}</span>
+			</a>
+		</li>`)
+			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+
+		const listItem = new ListItem(
+			pinId,
+			$ele,
+			g.name,
+			{
+				hash,
+				pantheon: g.pantheon,
+				alignment,
+				domains
+			}
+		);
+		return listItem;
 	}
 
 	doLoadHash (id) {

@@ -1,7 +1,5 @@
 "use strict";
 
-let psionicsBookView;
-
 function getHiddenModeList (psionic) {
 	const modeList = psionic.modes;
 	if (modeList === undefined) return "";
@@ -39,10 +37,8 @@ class PsionicsPage extends ListPage {
 			],
 			filterSource: sourceFilter,
 
-			listValueNames: ["name", "source", "type", "order", "mode-list", "uniqueid"],
 			listClass: "psionics",
 
-			sublistValueNames: ["name", "type", "order", "id"],
 			sublistClass: "subpsionics",
 
 			dataProps: ["psionic"],
@@ -50,24 +46,21 @@ class PsionicsPage extends ListPage {
 			bookViewOptions: {
 				$btnOpen: $(`#btn-psibook`),
 				noneVisibleMsg: "If you wish to view multiple psionics, please first make a list",
-				popTblGetNumShown: ($tbl) => {
+				pageTitle: "Psionics Book View",
+				popTblGetNumShown: $wrpContent => {
 					const toShow = ListUtil.getSublistedIds().map(id => this._dataList[id]);
 
 					const stack = [];
-					const renderSpell = (p) => {
-						stack.push(`<table class="spellbook-entry"><tbody>`);
+					const renderPsionic = (p) => {
+						stack.push(`<div class="bkmv__wrp-item"><table class="stats stats--book stats--bkmv"><tbody>`);
 						stack.push(Renderer.psionic.getCompactRenderedString(p));
-						stack.push(`</tbody></table>`);
+						stack.push(`</tbody></table></div>`);
 					};
 
 					const renderType = (type) => {
 						const toRender = toShow.filter(p => p.type === type);
 						if (toRender.length) {
-							stack.push(Renderer.utils.getBorderTr(`<span class="spacer-name">${Parser.psiTypeToFull(type)}</span>`));
-
-							stack.push(`<tr class="spellbook-level"><td>`);
-							toRender.forEach(p => renderSpell(p));
-							stack.push(`</td></tr>`);
+							toRender.forEach(p => renderPsionic(p));
 						}
 					};
 
@@ -75,12 +68,16 @@ class PsionicsPage extends ListPage {
 					renderType("D");
 
 					if (!toShow.length && Hist.lastLoadedId != null) {
+						renderPsionic(this._dataList[Hist.lastLoadedId]);
+					}
+
+					if (!toShow.length && Hist.lastLoadedId != null) {
 						stack.push(`<tr class="spellbook-level"><td>`);
-						renderSpell(this._dataList[Hist.lastLoadedId]);
+						renderPsionic(this._dataList[Hist.lastLoadedId]);
 						stack.push(`</td></tr>`);
 					}
 
-					$tbl.append(stack.join(""));
+					$wrpContent.append(stack.join(""));
 					return toShow.length;
 				}
 			},
@@ -106,25 +103,44 @@ class PsionicsPage extends ListPage {
 		// populate filters
 		this._sourceFilter.addItem(p.source);
 
-		return `
-			<li class="row" ${FLTR_ID}="${psI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${psI}" href="#${UrlUtil.autoEncodeHash(p)}" title="${p.name}">
-					<span class="name col-6">${p.name}</span>
-					<span class="type col-2">${Parser.psiTypeToFull(p.type)}</span>
-					<span class="order col-2 ${p._fOrder === STR_NONE ? "list-entry-none" : ""}">${p._fOrder}</span>
-					<span class="source col-2 text-center" title="${Parser.sourceJsonToFull(p.source)}" ${BrewUtil.sourceJsonToStyle(p.source)}>${Parser.sourceJsonToAbv(p.source)}</span>
-					
-					<span class="mode-list hidden">${getHiddenModeList(p)}</span>
-					<span class="uniqueid hidden">${p.uniqueId ? p.uniqueId : psI}</span>
-				</a>
-			</li>
-		`;
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const source = Parser.sourceJsonToAbv(p.source);
+		const hash = UrlUtil.autoEncodeHash(p);
+		const type = Parser.psiTypeToFull(p.type);
+
+		eleLi.innerHTML = `<a href="#${hash}">
+			<span class="bold col-6">${p.name}</span>
+			<span class="col-2">${type}</span>
+			<span class="col-2 ${p._fOrder === STR_NONE ? "list-entry-none" : ""}">${p._fOrder}</span>
+			<span class="col-2 text-center" title="${Parser.sourceJsonToFull(p.source)}" ${BrewUtil.sourceJsonToStyle(p.source)}>${source}</span>
+		</a>`;
+
+		const listItem = new ListItem(
+			psI,
+			eleLi,
+			p.name,
+			{
+				hash,
+				source,
+				type,
+				order: p._fOrder,
+				uniqueid: p.uniqueId ? p.uniqueId : psI,
+				searchModeList: getHiddenModeList(p)
+			}
+		);
+
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+
+		return listItem;
 	}
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
 		this._list.filter(item => {
-			const p = this._dataList[$(item.elm).attr(FLTR_ID)];
+			const p = this._dataList[item.ix];
 			return this._filterBox.toDisplay(
 				f,
 				p.source,
@@ -136,16 +152,29 @@ class PsionicsPage extends ListPage {
 	}
 
 	getSublistItem (p, pinId) {
-		return `
-			<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-				<a href="#${UrlUtil.autoEncodeHash(p)}" title="${p.name}">
-					<span class="name col-6 pl-0">${p.name}</span>
-					<span class="type col-3">${Parser.psiTypeToFull(p.type)}</span>
-					<span class="order col-3 ${p._fOrder === STR_NONE ? "list-entry-none" : ""} pr-0">${p._fOrder}</span>
-					<span class="id hidden">${pinId}</span>
-				</a>
-			</li>
-		`;
+		const hash = UrlUtil.autoEncodeHash(p);
+		const type = Parser.psiTypeToFull(p.type);
+
+		const $ele = $(`<li class="row">
+			<a href="#${hash}">
+				<span class="bold col-6 pl-0">${p.name}</span>
+				<span class="col-3">${type}</span>
+				<span class="col-3 ${p._fOrder === STR_NONE ? "list-entry-none" : ""} pr-0">${p._fOrder}</span>
+			</a>
+		</li>`)
+			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+
+		const listItem = new ListItem(
+			pinId,
+			$ele,
+			p.name,
+			{
+				hash,
+				type,
+				order: p._fOrder
+			}
+		);
+		return listItem;
 	}
 
 	doLoadHash (id) {

@@ -159,7 +159,7 @@ class UiUtil {
 
 	static bindTypingEnd ($ipt, fnKeyup, fnKeypress, fnKeydown, fnClick) {
 		let typeTimer;
-		$ipt.on("keyup", (e) => {
+		$ipt.on("keyup search", (e) => {
 			clearTimeout(typeTimer);
 			typeTimer = setTimeout(() => {
 				fnKeyup(e);

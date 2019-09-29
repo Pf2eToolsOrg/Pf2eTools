@@ -19,10 +19,8 @@ class ConditionsDiseasesPage extends ListPage {
 			],
 			filterSource: sourceFilter,
 
-			listValueNames: ["name", "source", "type", "uniqueid"],
 			listClass: "conditions",
 
-			sublistValueNames: ["name", "skills", "id"],
 			sublistClass: "subconditions",
 
 			dataProps: ["condition", "disease"]
@@ -35,22 +33,40 @@ class ConditionsDiseasesPage extends ListPage {
 		// populate filters
 		this._sourceFilter.addItem(it.source);
 
-		return `
-		<li class="row" ${FLTR_ID}="${cdI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-			<a id='${cdI}' href='#${UrlUtil.autoEncodeHash(it)}' title="${it.name}">
-				<span class="type col-3 text-center pl-0">${StrUtil.uppercaseFirst(it.__prop)}</span>
-				<span class="name col-7">${it.name}</span>
-				<span class="source col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
-				
-				<span class="uniqueid hidden">${it.uniqueId ? it.uniqueId : cdI}</span>
-			</a>
-		</li>`;
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const source = Parser.sourceJsonToAbv(it.source);
+		const hash = UrlUtil.autoEncodeHash(it);
+
+		eleLi.innerHTML = `<a href="#${hash}">
+			<span class="col-3 text-center pl-0">${StrUtil.uppercaseFirst(it.__prop)}</span>
+			<span class="bold col-7">${it.name}</span>
+			<span class="source col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+		</a>`;
+
+		const listItem = new ListItem(
+			cdI,
+			eleLi,
+			it.name,
+			{
+				hash,
+				source,
+				type: it.__prop,
+				uniqueid: it.uniqueId ? it.uniqueId : cdI
+			}
+		);
+
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+
+		return listItem;
 	}
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter(item => {
-			const it = this._dataList[$(item.elm).attr(FLTR_ID)];
+		this._list.filter(li => {
+			const it = this._dataList[li.ix];
 			return this._filterBox.toDisplay(
 				f,
 				it.source,
@@ -61,14 +77,24 @@ class ConditionsDiseasesPage extends ListPage {
 	}
 
 	getSublistItem (it, pinId) {
-		return `
-		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-			<a href="#${UrlUtil.autoEncodeHash(it)}">
-				<span class="name col-12 px-0">${it.name}</span>
-				<span class="id hidden">${pinId}</span>
+		const hash = UrlUtil.autoEncodeHash(it);
+
+		const $ele = $(`<li class="row">
+			<a href="#${hash}">
+				<span class="bold col-12 px-0">${it.name}</span>
 			</a>
-		</li>
-	`;
+		</li>`)
+			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+
+		const listItem = new ListItem(
+			pinId,
+			$ele,
+			it.name,
+			{
+				hash
+			}
+		);
+		return listItem;
 	}
 
 	doLoadHash (id) {

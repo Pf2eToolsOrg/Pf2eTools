@@ -23,10 +23,11 @@ class TablesPage extends ListPage {
 			],
 			filterSource: sourceFilter,
 
-			listValueNames: ["name", "source", "sort-name"],
 			listClass: "tablesdata",
+			listOptions: {
+				sortByInitial: "sortName"
+			},
 
-			sublistValueNames: ["name", "id"],
 			sublistClass: "subtablesdata",
 
 			dataProps: ["table", "tableGroup"]
@@ -36,25 +37,44 @@ class TablesPage extends ListPage {
 	}
 
 	getListItem (it, tbI) {
-		const sortName = it.name.replace(/^([\d,.]+)gp/, (...m) => m[1].replace(Parser._numberCleanRegexp, "").padStart(9, "0"));
+		const sortName = it.name.replace(/^\s*([\d,.]+)\s*gp/, (...m) => m[1].replace(Parser._numberCleanRegexp, "").padStart(9, "0"));
 
 		// populate filters
 		this._sourceFilter.addItem(it.source);
 
-		return `
-		<li class="row" ${FLTR_ID}="${tbI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-			<a id="${tbI}" href="#${UrlUtil.autoEncodeHash(it)}" title="${it.name}">
-				<span class="name col-10 pl-0">${it.name}</span>
-				<span class="source col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it.source)}</span>
-				<span class="hidden sort-name">${sortName}</span>
-			</a>
-		</li>`;
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const source = Parser.sourceJsonToAbv(it.source);
+		const hash = UrlUtil.autoEncodeHash(it);
+
+		eleLi.innerHTML = `<a href="#${hash}">
+			<span class="bold col-10 pl-0">${it.name}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+		</a>`;
+
+		const listItem = new ListItem(
+			tbI,
+			eleLi,
+			it.name,
+			{
+				hash,
+				sortName,
+				source,
+				uniqueid: it.uniqueId ? it.uniqueId : tbI
+			}
+		);
+
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+
+		return listItem;
 	}
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
 		this._list.filter(item => {
-			const it = this._dataList[$(item.elm).attr(FLTR_ID)];
+			const it = this._dataList[item.ix];
 			return this._filterBox.toDisplay(
 				f,
 				it.source
@@ -63,14 +83,21 @@ class TablesPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	getSublistItem (table, pinId) {
-		return `
-		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-			<a href="#${UrlUtil.autoEncodeHash(table)}">
-				<span class="name col-12 px-0">${table.name}</span>		
-				<span class="id hidden">${pinId}</span>				
-			</a>
-		</li>`;
+	getSublistItem (it, pinId) {
+		const hash = UrlUtil.autoEncodeHash(it);
+
+		const $ele = $(`<li class="row"><a href="#${hash}" title="${it.name}"><span class="bold col-12 px-0">${it.name}</span></a></li>`)
+			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+
+		const listItem = new ListItem(
+			pinId,
+			$ele,
+			it.name,
+			{
+				hash
+			}
+		);
+		return listItem;
 	}
 
 	doLoadHash (id) {

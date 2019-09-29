@@ -6,19 +6,12 @@ let nameList;
 const renderer = Renderer.get();
 
 function makeContentsBlock (i, loc) {
-	let out =
-		"<ul>";
-
+	let out = "<ul>";
 	loc.tables.forEach((t, j) => {
 		const tableName = getTableName(loc, t);
-		out +=
-			`<li>
-				<a id="${i},${j}" href="#${UrlUtil.encodeForHash([loc.name, loc.source, t.option])}" title="${tableName}">${tableName}</a>
-			</li>`;
+		out += `<li><a id="${i},${j}" href="#${UrlUtil.encodeForHash([loc.name, loc.source, t.option])}" title="${tableName}">${tableName}</a></li>`;
 	});
-
-	out +=
-		"</ul>";
+	out += "</ul>";
 	return out;
 }
 
@@ -31,29 +24,41 @@ window.onload = function load () {
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
+window.onhashchange = () => {
+	const [link] = Hist._getHashParts();
+	const $a = $(`a[href="#${link}"]`);
+	if (!$a.length || !link) {
+		window.location.hash = $(`.list.names`).find("a").attr("href");
+		return;
+	}
+	const id = $a.attr("id");
+	document.title = `${$a.attr("title")} - 5etools`;
+	loadHash(id);
+};
+
 let list;
 function onJsonLoad (data) {
 	nameList = data.name;
 
-	const namesList = $("ul.names");
-	let tempString = "";
+	list = ListUtil.initList({
+		listClass: "names"
+	});
+	ListUtil.setOptions({primaryLists: [list]});
+
 	for (let i = 0; i < nameList.length; i++) {
 		const loc = nameList[i];
 
-		tempString +=
-			`<li>
-				<span class="name" onclick="showHideList(this)" title="Source: ${Parser.sourceJsonToFull(loc.source)}">${loc.name}</span>
-				${makeContentsBlock(i, loc)}
-			</li>`;
+		const eleLi = document.createElement("li");
+
+		eleLi.innerHTML = `<span class="name" onclick="showHideList(this)" title="Source: ${Parser.sourceJsonToFull(loc.source)}">${loc.name}</span>${makeContentsBlock(i, loc)}`;
+
+		const listItem = new ListItem(i, eleLi, loc.name);
+
+		list.addItem(listItem);
 	}
-	namesList.append(tempString);
 
-	list = ListUtil.search({
-		valueNames: ["name"],
-		listClass: "names"
-	});
-
-	Hist.init(true);
+	list.init();
+	window.onhashchange();
 }
 
 function showHideList (ele) {
@@ -96,9 +101,8 @@ function loadHash (id) {
 	$("#pagecontent").html(htmlText);
 
 	// update list highlights
-	$(list.list).find(`.list-multi-selected`).removeClass("list-multi-selected");
-	const $listEle = Hist.getSelectedListElement().parent();
-	$($listEle).addClass("list-multi-selected");
+	$(".list.names").find(`.list-multi-selected`).removeClass("list-multi-selected");
+	$(`a[id="${id}"]`).parent().addClass("list-multi-selected");
 }
 
 function pad (number) {

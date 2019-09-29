@@ -21,10 +21,8 @@ class RewardsPage extends ListPage {
 			],
 			filterSource: sourceFilter,
 
-			listValueNames: ["name", "source", "uniqueid"],
 			listClass: "rewards",
 
-			sublistValueNames: ["name", "id"],
 			sublistClass: "subrewards",
 
 			dataProps: ["reward"]
@@ -39,21 +37,38 @@ class RewardsPage extends ListPage {
 		this._sourceFilter.addItem(reward.source);
 		this._typeFilter.addItem(reward.type);
 
-		return `
-		<li class="row" ${FLTR_ID}="${rwI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-			<a id="${rwI}" href="#${UrlUtil.autoEncodeHash(reward)}" title="${reward.name}">
-				<span class="name col-10 pl-0">${reward.name}</span>
-				<span class="source col-2 text-center ${Parser.sourceJsonToColor(reward.source)} pr-0" title="${Parser.sourceJsonToFull(reward.source)}" ${BrewUtil.sourceJsonToStyle(reward.source)}>${Parser.sourceJsonToAbv(reward.source)}</span>
-				
-				<span class="uniqueid hidden">${reward.uniqueId ? reward.uniqueId : rwI}</span>
-			</a>
-		</li>`;
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const source = Parser.sourceJsonToAbv(reward.source);
+		const hash = UrlUtil.autoEncodeHash(reward);
+
+		eleLi.innerHTML = `<a href="#${hash}">
+			<span class="name col-10 pl-0">${reward.name}</span>
+			<span class="source col-2 text-center ${Parser.sourceJsonToColor(reward.source)} pr-0" title="${Parser.sourceJsonToFull(reward.source)}" ${BrewUtil.sourceJsonToStyle(reward.source)}>${source}</span>
+		</a>`;
+
+		const listItem = new ListItem(
+			rwI,
+			eleLi,
+			reward.name,
+			{
+				hash,
+				source,
+				uniqueid: reward.uniqueId ? reward.uniqueId : rwI
+			}
+		);
+
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+
+		return listItem;
 	}
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
 		this._list.filter(item => {
-			const r = this._dataList[$(item.elm).attr(FLTR_ID)];
+			const r = this._dataList[item.ix];
 			return this._filterBox.toDisplay(
 				f,
 				r.source,
@@ -64,14 +79,20 @@ class RewardsPage extends ListPage {
 	}
 
 	getSublistItem (reward, pinId) {
-		return `
-			<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-				<a href="#${UrlUtil.autoEncodeHash(reward)}" title="${reward.name}">
-					<span class="name col-12 px-0">${reward.name}</span>
-					<span class="id hidden">${pinId}</span>
-				</a>
-			</li>
-		`;
+		const hash = UrlUtil.autoEncodeHash(reward);
+
+		const $ele = $(`<li class="row"><a href="#${hash}"><span class="name col-12 px-0">${reward.name}</span></a></li>`)
+			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+
+		const listItem = new ListItem(
+			pinId,
+			$ele,
+			reward.name,
+			{
+				hash
+			}
+		);
+		return listItem;
 	}
 
 	doLoadHash (id) {

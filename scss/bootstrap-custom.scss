@@ -55,6 +55,12 @@
 	transform: translateZ(0) !important;
 }
 
+.no-breaks {
+	break-before: auto;
+	break-after: auto;
+	break-inside: avoid;
+}
+
 .overflow-y-auto {
 	overflow-y: auto;
 }
@@ -90,6 +96,10 @@
 
 .small-caps {
 	font-variant: small-caps;
+}
+
+.capitalise {
+	text-transform: capitalize;
 }
 
 .help--hover {
@@ -158,8 +168,8 @@
 }
 
 .flex-col {
-	display: flex;
-	flex-direction: column;
+	display: flex !important;
+	flex-direction: column !important;
 }
 
 .flex-inline-col {
@@ -432,6 +442,8 @@ body::-webkit-scrollbar {
 .dropdown-menu--side {
 	top: -10px;
 	left: 100%;
+	max-height: calc(100vh - 130px);
+	overflow-y: auto;
 }
 
 .nav > li {

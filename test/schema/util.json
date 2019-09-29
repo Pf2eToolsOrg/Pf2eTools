@@ -4,7 +4,7 @@
 
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.0.0",
+	"version": "1.0.1",
 
 	"definitions" : {
 		"metaBlock": {
@@ -29,6 +29,318 @@
 					}
 				}
 			}
+		},
+
+		"otherSources": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					}
+				},
+				"required": [
+					"source"
+				],
+				"additionalProperties": false
+			}
+		},
+
+		"additionalSources": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					}
+				},
+				"required": [
+					"source"
+				],
+				"additionalProperties": false
+			}
+		},
+
+		"languageProficiencies": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"choose": {
+						"type": "object",
+						"properties": {
+							"from": {
+								"type": "array",
+								"items": {
+									"enum": [
+										"abyssal",
+										"celestial",
+										"deep speech",
+										"draconic",
+										"infernal",
+										"primordial",
+										"sylvan",
+										"undercommon",
+										"dwarvish",
+										"elvish",
+										"giant",
+										"goblin",
+										"other"
+									]
+								}
+							},
+							"count": {
+								"type": "integer"
+							}
+						}
+					},
+					"any": {
+						"type": "integer"
+					},
+					"anyStandard": {
+						"type": "integer"
+					},
+					"abyssal": {
+						"type": "boolean"
+					},
+					"celestial": {
+						"type": "boolean"
+					},
+					"deep speech": {
+						"type": "boolean"
+					},
+					"draconic": {
+						"type": "boolean"
+					},
+					"infernal": {
+						"type": "boolean"
+					},
+					"primordial": {
+						"type": "boolean"
+					},
+					"sylvan": {
+						"type": "boolean"
+					},
+					"undercommon": {
+						"type": "boolean"
+					},
+					"dwarvish": {
+						"type": "boolean"
+					},
+					"elvish": {
+						"type": "boolean"
+					},
+					"giant": {
+						"type": "boolean"
+					},
+					"other": {
+						"type": "boolean"
+					}
+				}
+			}
+		},
+
+		"skillProficiencies": {
+			"athletics": {"type": "boolean"},
+			"acrobatics":{"type": "boolean"},
+			"sleight of hand": {"type": "boolean"},
+			"stealth":{"type": "boolean"},
+			"arcana": {"type": "boolean"},
+			"history":{"type": "boolean"},
+			"investigation": {"type": "boolean"},
+			"nature":{"type": "boolean"},
+			"religion": {"type": "boolean"},
+			"animal handling":{"type": "boolean"},
+			"insight": {"type": "boolean"},
+			"medicine":{"type": "boolean"},
+			"perception": {"type": "boolean"},
+			"survival":{"type": "boolean"},
+			"deception": {"type": "boolean"},
+			"intimidation":{"type": "boolean"},
+			"performance": {"type": "boolean"},
+			"persuasion":{"type": "boolean"},
+
+			"choose": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"properties": {
+						"from": {
+							"type": "array",
+							"items": {
+								"oneOf": [
+									{
+										"enum": [
+											"athletics",
+											"acrobatics",
+											"sleight of hand",
+											"stealth",
+											"arcana",
+											"history",
+											"investigation",
+											"nature",
+											"religion",
+											"animal handling",
+											"insight",
+											"medicine",
+											"perception",
+											"survival",
+											"deception",
+											"intimidation",
+											"performance",
+											"persuasion"
+										]
+									},
+									{
+										"type": "object",
+										"properties": {
+											"tool": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										}
+									},
+									{
+										"type": "object",
+										"properties": {
+											"tool": {
+												"type": "boolean"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+
+		"_speedVal": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"number": {
+							"type": "integer"
+						},
+						"condition": {
+							"type": "string"
+						}
+					},
+					"required": ["number", "condition"],
+					"additionalProperties": false
+				},
+				{
+					"type": "integer"
+				}
+			]
+		},
+
+		"speed": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"walk": {
+							"$ref": "#/definitions/_speedVal"
+						},
+						"burrow": {
+							"$ref": "#/definitions/_speedVal"
+						},
+						"climb": {
+							"$ref": "#/definitions/_speedVal"
+						},
+						"fly": {
+							"$ref": "#/definitions/_speedVal"
+						},
+						"canHover": {
+							"type": "boolean"
+						},
+						"swim": {
+							"$ref": "#/definitions/_speedVal"
+						},
+						"choose": {
+							"type": "object",
+							"properties": {
+								"from": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"enum": [
+											"walk",
+											"burrow",
+											"climb",
+											"fly",
+											"swim"
+										]
+									}
+								},
+								"amount": {
+									"type": "integer"
+								},
+								"note": {
+									"type": "string"
+								}
+							},
+							"required": ["amount", "from"],
+							"additionalProperties": false
+						},
+						"alternate": {
+							"type": "object",
+							"properties": {
+								"walk": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/_speedVal"
+									}
+								},
+								"burrow": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/_speedVal"
+									}
+								},
+								"climb": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/_speedVal"
+									}
+								},
+								"fly": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/_speedVal"
+									}
+								},
+								"swim": {
+									"type": "array",
+									"items": {
+										"$ref": "#/definitions/_speedVal"
+									}
+								}
+							}
+						}
+					},
+					"additionalProperties": false
+				},
+				{
+					"type": "integer"
+				},
+				{
+					"const": "Varies"
+				}
+			]
 		},
 
 		"copyModifier": {
@@ -87,7 +399,13 @@
 					"type": "object",
 					"properties": {
 						"mode": {"const": "replaceArr"},
-						"replace": {"type":  "string"},
+						"replace": {
+							"oneOf": [
+								{"type":  "string"},
+								{"type":  "object", "properties": {"index":  {"type": "integer"}}, "required": ["index"], "additionalProperties": false},
+								{"type":  "object", "properties": {"regex":  {"type": "string"}, "flags": {"type": "string"}}, "required": ["regex"], "additionalProperties": false}
+							]
+						},
 						"items": {
 							"anyOf": [
 								{"type":  "object"},
@@ -96,6 +414,22 @@
 						}
 					},
 					"required": ["replace", "items"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "insertArr"},
+						"index": {"type": "integer"},
+						"items": {
+							"anyOf": [
+								{"type":  "object"},
+								{"type":  "string"},
+								{"type":  "array"}
+							]
+						}
+					},
+					"required": ["index", "items"],
 					"additionalProperties": false
 				},
 				{
@@ -131,9 +465,10 @@
 					"type": "object",
 					"properties": {
 						"mode": {"const": "replaceSpells"},
-						"spells": {"type": "object"}
+						"spells": {"type": "object"},
+						"daily": {"type": "object"}
 					},
-					"required": ["mode", "spells"],
+					"required": ["mode"],
 					"additionalProperties": false
 				},
 				{

@@ -2646,44 +2646,6 @@ class AddMenuSpecialTab extends AddMenuTab {
 	}
 }
 
-class AddMenuListTab extends AddMenuTab {
-	constructor (label, content) {
-		super(label);
-		this.tabId = this.genTabId("list");
-		this.content = content;
-
-		this.list = null;
-	}
-
-	render () {
-		if (!this.$tab) {
-			const $tab = $(`<div class="ui-search__wrp-output" id="${this.tabId}"/>`);
-			const $srch = $(`<input class="ui-search__ipt-search search form-control" autocomplete="off" placeholder="Search list...">`).appendTo($tab);
-			const $list = $(`<div class="list panel-tab-list"/>`).appendTo($tab);
-			let temp = "";
-			this.content.forEach(d => {
-				temp += `<div class="panel-tab-list-item"><span class="name">${d.n}</span></div>`;
-			});
-			$list.append(temp);
-			this.$tab = $tab;
-			this.$srch = $srch;
-			this.$list = $list;
-		}
-	}
-
-	doTransitionActive () {
-		setTimeout(() => {
-			if (!tab.list) {
-				tab.list = new List(tab.tabId, {
-					valueNames: ["name"],
-					listClass: "panel-tab-list"
-				});
-				ListUtil.bindEscapeKey(tab.list, this.$srch);
-			}
-		}, 1);
-	}
-}
-
 class AddMenuSearchTab extends AddMenuTab {
 	static _getTitle (subType) {
 		switch (subType) {

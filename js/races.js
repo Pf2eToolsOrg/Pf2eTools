@@ -60,12 +60,9 @@ function filterAscSortSize (a, b) {
 
 	function toNum (size) {
 		switch (size) {
-			case "M":
-				return 0;
-			case "S":
-				return -1;
-			case "V":
-				return 1;
+			case "M": return 0;
+			case "S": return -1;
+			case "V": return 1;
 		}
 	}
 }
@@ -200,10 +197,8 @@ class RacesPage extends ListPage {
 			],
 			filterSource: sourceFilter,
 
-			listValueNames: ["name", "ability", "size", "source", "clean-name", "uniqueid"],
 			listClass: "races",
 
-			sublistValueNames: ["name", "ability", "size", "id"],
 			sublistClass: "subraces",
 
 			dataProps: ["race"],
@@ -246,24 +241,44 @@ class RacesPage extends ListPage {
 		this._asiFilter.addItem(race._fAbility);
 		this._baseRaceFilter.addItem(race._baseName);
 
-		return `
-		<li class="row" ${FLTR_ID}="${rcI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-			<a id="${rcI}" href="#${UrlUtil.autoEncodeHash(race)}" title="${race.name}">
-				<span class="name col-4 pl-0">${race.name}</span>
-				<span class="ability col-4">${ability.asTextShort}</span>
-				<span class="size col-2">${Parser.sizeAbvToFull(race.size)}</span>
-				<span class="source col-2 text-center ${Parser.sourceJsonToColor(race.source)} pr-0" title="${Parser.sourceJsonToFull(race.source)}" ${BrewUtil.sourceJsonToStyle(race.source)}>${Parser.sourceJsonToAbv(race.source)}</span>
-				${bracketMatch ? `<span class="clean-name hidden">${bracketMatch[2]} ${bracketMatch[1]}</span>` : ""}
-				
-				<span class="uniqueid hidden">${race.uniqueId ? race.uniqueId : rcI}</span>
-			</a>
-		</li>`;
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const hash = UrlUtil.autoEncodeHash(race);
+		const size = Parser.sizeAbvToFull(race.size);
+		const source = Parser.sourceJsonToAbv(race.source);
+
+		eleLi.innerHTML = `<a href="#${hash}">
+			<span class="bold col-4 pl-0">${race.name}</span>
+			<span class="col-4">${ability.asTextShort}</span>
+			<span class="col-2">${size}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(race.source)} pr-0" title="${Parser.sourceJsonToFull(race.source)}" ${BrewUtil.sourceJsonToStyle(race.source)}>${source}</span>
+		</a>`;
+
+		const listItem = new ListItem(
+			rcI,
+			eleLi,
+			race.name,
+			{
+				hash,
+				ability: ability.asTextShort,
+				size,
+				source,
+				cleanName: bracketMatch ? `${bracketMatch[2]} ${bracketMatch[1]}` : "",
+				uniqueid: race.uniqueId ? race.uniqueId : rcI
+			}
+		);
+
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+
+		return listItem;
 	}
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
 		this._list.filter(item => {
-			const r = this._dataList[$(item.elm).attr(FLTR_ID)];
+			const r = this._dataList[item.ix];
 			return this._filterBox.toDisplay(
 				f,
 				r._fSources,
@@ -279,16 +294,28 @@ class RacesPage extends ListPage {
 	}
 
 	getSublistItem (race, pinId) {
-		return `
-		<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-			<a href="#${UrlUtil.autoEncodeHash(race)}" title="${race.name}">
-				<span class="name col-5 pl-0">${race.name}</span>
-				<span class="ability col-5">${race._slAbility}</span>
-				<span class="size col-2 pr-0">${Parser.sizeAbvToFull(race.size)}</span>
-				<span class="id hidden">${pinId}</span>
-			</a>
-		</li>
-	`;
+		const hash = UrlUtil.autoEncodeHash(race);
+
+		const $ele = $(`
+			<li class="row">
+				<a href="#${UrlUtil.autoEncodeHash(race)}" title="${race.name}">
+					<span class="bold col-5 pl-0">${race.name}</span>
+					<span class="col-5">${race._slAbility}</span>
+					<span class="col-2 pr-0">${Parser.sizeAbvToFull(race.size)}</span>
+				</a>
+			</li>
+		`).contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+
+		const listItem = new ListItem(
+			pinId,
+			$ele,
+			race.name,
+			{
+				hash,
+				ability: race._slAbility
+			}
+		);
+		return listItem;
 	}
 
 	doLoadHash (id) {

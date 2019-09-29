@@ -18,16 +18,19 @@ class Blacklist {
 		ExcludeUtil.getList()
 			.sort((a, b) => SortUtil.ascSort(a.source, b.source) || SortUtil.ascSort(a.category, b.category) || SortUtil.ascSort(a.name, b.name))
 			.forEach(({name, category, source}) => Blacklist._addListItem(name, category, source));
+		Blacklist._list.init();
+		Blacklist._list.update();
 	}
 
 	static async pInitialise () {
-		Blacklist._list = new List("listcontainer", {
-			valueNames: ["id", "source", "category", "name"],
-			listClass: "blacklist",
-			item: `<li class="row no-click"><span class="id hidden"></span><span class="source col-3"></span><span class="category col-3"></span><span class="name col-3"></span><span class="actions col-3 text-center"></span></li>`
+		const $iptSearch = $(`#search`);
+		Blacklist._list = new List({
+			$iptSearch,
+			$wrpList: $(`.blacklist`),
+			isUseJquery: true
 		});
 		Blacklist._listId = 1;
-		ListUtil.bindEscapeKey(Blacklist._list, $(`#search`));
+		ListUtil.bindEscapeKey(Blacklist._list, $iptSearch);
 
 		const FILES = [
 			"backgrounds.json",
@@ -136,12 +139,29 @@ class Blacklist {
 
 	static _addListItem (name, category, source) {
 		const display = Blacklist.getDisplayValues(category, source);
-		const added = Blacklist._list.add([
-			{id: Blacklist._listId++, name: name, category: display.displayCategory, source: display.displaySource}
-		]);
-		$(`<button class="btn btn-xs btn-danger m-1">Remove</button>`).click(() => {
-			Blacklist.pRemove(name, category, source);
-		}).appendTo($(added[0].elm).find(`.actions`));
+
+		const id = Blacklist._listId++;
+
+		const $btnRemove = $(`<button class="btn btn-xxs btn-danger m-1">Remove</button>`)
+			.click(() => {
+				Blacklist.pRemove(id, name, category, source);
+			});
+
+		const $ele = $$`<li class="row no-click flex-v-center">
+			<span class="col-3">${source}</span>
+			<span class="col-3">${display.displayCategory}</span>
+			<span class="bold col-3">${name}</span>
+			<span class="col-3 text-center">${$btnRemove}</span>
+		</li>`;
+
+		const listItem = new ListItem(
+			id,
+			$ele,
+			name,
+			{category: display.displayCategory}
+		);
+
+		Blacklist._list.addItem(listItem);
 	}
 
 	static async add () {
@@ -157,6 +177,7 @@ class Blacklist {
 
 		if (await ExcludeUtil.pAddExclude(name, category, source)) {
 			Blacklist._addListItem(name, category, source);
+			Blacklist._list.update();
 		}
 	}
 
@@ -167,18 +188,15 @@ class Blacklist {
 
 			if (await ExcludeUtil.pAddExclude("*", "*", val)) {
 				Blacklist._addListItem("*", "*", val);
+				Blacklist._list.update();
 			}
 		});
 	}
 
-	static async pRemove (name, category, source) {
+	static async pRemove (ix, name, category, source) {
 		await ExcludeUtil.pRemoveExclude(name, category, source);
-		const display = Blacklist.getDisplayValues(category, source);
-		// List JS doesn't support matching by multiple fields...
-		Blacklist._list.items
-			.filter(it => it.values().name === name && it.values().category === display.displayCategory && it.values().source === display.displaySource)
-			.map(it => it.values().id)
-			.forEach(id => Blacklist._list.remove("id", id));
+		Blacklist._list.removeItem(ix);
+		Blacklist._list.update();
 	}
 
 	static export () {
@@ -196,8 +214,8 @@ class Blacklist {
 				const json = JSON.parse(text);
 
 				// clear list display
-				$(".blacklist").empty();
-				Blacklist._list.reIndex();
+				Blacklist._list.removeAllItems();
+				Blacklist._list.update();
 
 				// update storage
 				if (!additive) await ExcludeUtil.pSetList(json.blacklist || []);
@@ -220,8 +238,8 @@ class Blacklist {
 
 	static async pReset () {
 		await ExcludeUtil.pResetExcludes();
-		$(".blacklist").empty();
-		Blacklist._list.reIndex();
+		Blacklist._list.removeAllItems();
+		Blacklist._list.update();
 	}
 }
 Blacklist.IGNORED_CATEGORIES = new Set([

@@ -14,41 +14,26 @@ class BooksList {
 		this.dataList = [];
 	}
 
-	onPageLoad () {
+	async pOnPageLoad () {
 		ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-		SortUtil.initHandleFilterButtonClicks();
-		DataUtil.loadJSON(this.contentsUrl).then(this.onJsonLoad.bind(this));
+		const data = await DataUtil.loadJSON(this.contentsUrl);
+		return this.pOnJsonLoad(data);
 	}
 
-	onJsonLoad (data) {
-		const sortFunction = (a, b, o) => self.sortFn(self.dataList, a, b, o);
-		this.list = new List("listcontainer", {
-			valueNames: ["name", "uniqueid"],
-			listClass: "books",
+	async pOnJsonLoad (data) {
+		const $iptSearch = $(`#search`);
+
+		const sortFunction = (a, b, o) => this.sortFn(this.dataList, a, b, o);
+		this.list = new List({
+			$wrpList: $("ul.books"),
+			$iptSearch,
 			sortFunction
 		});
+		SortUtil.initBtnSortHandlers($(`#filtertools`), this.list);
 
-		const self = this;
-		$("#filtertools").find("button.sort").click(function () {
-			const $this = $(this);
-			$('#filtertools').find('.caret').removeClass('caret--reverse caret');
+		$("#reset").click(() => {
+			this.list.reset();
 
-			if ($this.attr("sortby") === "asc") {
-				$this.find("span").addClass("caret caret--reverse");
-				$this.attr("sortby", "desc");
-			} else {
-				$this.attr("sortby", "asc");
-				$this.find("span").addClass("caret")
-			}
-			self.list.sort($this.data("sort"), {order: $this.attr("sortby"), sortFunction});
-		});
-
-		this.list.sort("name");
-		$("#reset").click(function () {
-			$("#search").val("");
-			self.list.search();
-			self.list.sort("name");
-			self.list.filter();
 			$(`.showhide`).each((i, ele) => {
 				const $ele = $(ele);
 				if (!$ele.data("hidden")) {
@@ -58,12 +43,16 @@ class BooksList {
 		});
 
 		this.addData(data);
-		BrewUtil.pAddBrewData()
-			.then(handleBrew)
-			.then(() => BrewUtil.bind({list: this.list}))
-			.then(() => BrewUtil.pAddLocalBrewData())
-			.catch(BrewUtil.pPurgeBrew)
-			.then(() => BrewUtil.makeBrewButton("manage-brew"));
+		const brewData = await BrewUtil.pAddBrewData();
+		await handleBrew(brewData);
+		BrewUtil.bind({list: this.list});
+		try {
+			await BrewUtil.pAddLocalBrewData();
+		} catch (e) {
+			await BrewUtil.pPurgeBrew(e);
+		}
+		BrewUtil.makeBrewButton("manage-brew");
+		this.list.init();
 	}
 
 	addData (data) {
@@ -71,30 +60,31 @@ class BooksList {
 
 		this.dataList = this.dataList.concat(data[this.dataProp]);
 
-		const $list = $("ul.books");
-		let tempString = "";
 		for (; this.dataIx < this.dataList.length; this.dataIx++) {
 			const it = this.dataList[this.dataIx];
 			if (this.enhanceRowDataFn) this.enhanceRowDataFn(it);
 
-			tempString +=
-				`<li ${FLTR_ID}="${this.dataIx}">
-				<a href="${this.rootPage}#${UrlUtil.encodeForHash(it.id)}" title="${it.name}" class="book-name">
-					<span class="w-100">
-						${this.rowBuilderFn(it)}
-					</span>
-					<span class="showhide" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>
-					<span class="source" style="display: none">${it.id}</span>
-					<span class="uniqueid" style="display: none">${it.uniqueId}</span>
-				</a>
-				${BookUtil.makeContentsBlock({book: it, addPrefix: this.rootPage, defaultHidden: true})}
-			</li>`;
-		}
-		const lastSearch = ListUtil.getSearchTermAndReset(this.list);
-		$list.append(tempString);
+			const eleLi = document.createElement("li");
 
-		this.list.reIndex();
-		if (lastSearch) this.list.search(lastSearch);
-		this.list.sort("name");
+			eleLi.innerHTML = `<a href="${this.rootPage}#${UrlUtil.encodeForHash(it.id)}" class="book-name">
+				<span class="w-100">${this.rowBuilderFn(it)}</span>
+				<span class="showhide" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>
+			</a>
+			${BookUtil.makeContentsBlock({book: it, addPrefix: this.rootPage, defaultHidden: true})}`;
+
+			const listItem = new ListItem(
+				this.dataIx,
+				eleLi,
+				it.name,
+				{
+					source: it.id,
+					uniqueid: it.uniqueId
+				}
+			);
+
+			this.list.addItem(listItem);
+		}
+
+		this.list.update();
 	}
 }

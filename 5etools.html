@@ -403,9 +403,9 @@
 <footer class="container">
 	<p class="text-center">
 		Version
-		<!--5ETOOLS_VERSION__FOOTER_OPEN-->1.81.1<!--5ETOOLS_VERSION__FOOTER_CLOSE-->
+		<span id="version_number">?</span>
 		| <span style="text-decoration: red line-through">&nbsp;&copy;&nbsp;</span><span id="current_year">2019</span> 5etools
-		<br>
+		| <a href="privacy-policy.html">Privacy Policy</a> <br>
 		<i>5etools&reg; is a Registered Trademark of The Norr Group Ltd. All rights reserved.</i>
 	</p>
 </footer>
@@ -428,6 +428,8 @@
 	$demoRoller.html(Renderer.get().render(`{@dice ${$demoRoller.html()}}`));
 
 	$(`#current_year`).text((new Date).getFullYear());
+
+	$(`#version_number`).text(VERSION_NUMBER);
 
 	const $lnkB20 = $(`#betteR20_link`);
 	$lnkB20.attr("href", `${$lnkB20.attr("href")}?ver=${VERSION_NUMBER}_${Date.now()}`);

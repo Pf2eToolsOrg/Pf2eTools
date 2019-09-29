@@ -1601,7 +1601,7 @@ class InitiativeTracker {
 							} else return null;
 						} else return null;
 					})();
-					const source = hash.split(HASH_LIST_SEP)[1];
+					const source = decodeURIComponent(hash.split(HASH_LIST_SEP)[1]);
 					return new Promise(resolve => {
 						Renderer.hover.pCacheAndGet(UrlUtil.PG_BESTIARY, source, hash)
 							.then(mon => {

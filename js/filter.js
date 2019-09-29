@@ -818,24 +818,19 @@ class Filter extends FilterBase {
 	}
 
 	_$getMini (item) {
-		const $btnMini = $(`<div class="fltr__mini-pill">
-			${this._displayFn ? this._displayFn(item.item) : item.item}
-		</div>`)
-			.attr("state", FilterBox._PILL_STATES[this._state[item.item]])
-			.click(() => {
-				this._state[item.item] = 0;
-				this._filterBox.fireChangeEvent();
-			});
+		// This one-liner is slightly more performant than doing it nicely
+		const $btnMini = $(
+			`<div class="fltr__mini-pill ${this._filterBox.isMinisHidden(this.header) ? "hidden" : ""} ${this._deselFn && this._deselFn(item.item) ? "fltr__mini-pill--default-desel" : ""} ${this._selFn && this._selFn(item.item) ? "fltr__mini-pill--default-sel" : ""}" state="${FilterBox._PILL_STATES[this._state[item.item]]}">${this._displayFn ? this._displayFn(item.item) : item.item}</div>`
+		).click(() => {
+			this._state[item.item] = 0;
+			this._filterBox.fireChangeEvent();
+		});
+
 		const hook = () => $btnMini.attr("state", FilterBox._PILL_STATES[this._state[item.item]]);
 		this._addHook("state", item.item, hook);
-		hook();
 
 		const hideHook = () => $btnMini.toggleClass("hidden", this._filterBox.isMinisHidden(this.header));
 		this._filterBox.registerMinisHiddenHook(this.header, hideHook);
-		hideHook();
-
-		if (this._deselFn && this._deselFn(item.item)) $btnMini.addClass("fltr__mini-pill--default-desel");
-		else if (this._selFn && this._selFn(item.item)) $btnMini.addClass("fltr__mini-pill--default-sel");
 
 		return $btnMini;
 	}
@@ -1251,6 +1246,7 @@ Filter._DEFAULT_META = {
 class RangeFilter extends FilterBase {
 	/**
 	 * @param opts Options object.
+	 * @param [opts.header] Filter header.
 	 * @param [opts.min] Minimum slider value.
 	 * @param [opts.max] Maximum slider value.
 	 * @param [opts.isLabelled] If this slider has labels.

@@ -851,7 +851,7 @@ function Renderer () {
 		this._renderPrefix(entry, textStack, meta, options);
 		textStack[0] += `<div class="homebrew-section">`;
 		if (entry.oldEntries) {
-			const mouseOver = Renderer.hover.createOnMouseHover(entry.oldEntries);
+			const hoverMeta = Renderer.hover.getMakePredefinedHover({type: "entries", name: "Homebrew", entries: entry.oldEntries});
 			let markerText;
 			if (entry.movedTo) {
 				markerText = "(See moved content)";
@@ -860,7 +860,7 @@ function Renderer () {
 			} else {
 				markerText = "(See removed content)";
 			}
-			textStack[0] += `<span class="homebrew-old-content" href="#${window.location.hash}" ${mouseOver}>${markerText}</span>`;
+			textStack[0] += `<span class="homebrew-old-content" href="#${window.location.hash}" ${hoverMeta.html}>${markerText}</span>`;
 		}
 
 		textStack[0] += `<span class="homebrew-notice"></span>`;
@@ -1001,15 +1001,16 @@ function Renderer () {
 								break;
 							}
 							case "@recharge": {
-								// format: {@recharge 4}
+								// format: {@recharge 4|flags}
+								const flags = displayText ? displayText.split("") : null; // "m" for "minimal" = no brackets
 								fauxEntry.toRoll = "1d6";
 								const asNum = Number(rollText || 6);
 								fauxEntry.successThresh = 7 - asNum;
 								fauxEntry.successMax = 6;
-								textStack[0] += `(Recharge `;
+								textStack[0] += `${flags && flags.includes("m") ? "" : "("}Recharge `;
 								fauxEntry.displayText = `${asNum}${asNum < 6 ? `\u20136` : ""}`;
 								this._recursiveRender(fauxEntry, textStack, meta);
-								textStack[0] += `)`;
+								textStack[0] += `${flags && flags.includes("m") ? "" : ")"}`;
 								break;
 							}
 						}
@@ -1161,8 +1162,12 @@ function Renderer () {
 					// OTHER HOVERABLES ////////////////////////////////////////////////////////////////////////////////
 					case "@footnote": {
 						const [displayText, footnoteText, optTitle] = text.split("|");
-						const onMouseOver = Renderer.hover.createOnMouseHover([footnoteText, optTitle ? `{@note ${optTitle}}` : ""].filter(Boolean));
-						textStack[0] += `<span class="help" ${onMouseOver}>`;
+						const hoverMeta = Renderer.hover.getMakePredefinedHover({
+							type: "entries",
+							name: optTitle ? optTitle.toTitleCase() : "Footnote",
+							entries: [footnoteText, optTitle ? `{@note ${optTitle}}` : ""].filter(Boolean)
+						});
+						textStack[0] += `<span class="help" ${hoverMeta.html}>`;
 						this._recursiveRender(displayText, textStack, meta);
 						textStack[0] += `</span>`;
 
@@ -1170,19 +1175,23 @@ function Renderer () {
 					}
 					case "@homebrew": {
 						const [newText, oldText] = text.split("|");
-						const tooltip = [];
+						const tooltipEntries = [];
 						if (newText && oldText) {
-							tooltip.push("<strong>This is a homebrew addition, replacing the following:</strong>");
+							tooltipEntries.push("{@b This is a homebrew addition, replacing the following:}");
 						} else if (newText) {
-							tooltip.push("<strong>This is a homebrew addition.</strong>")
+							tooltipEntries.push("{@b This is a homebrew addition.}")
 						} else if (oldText) {
-							tooltip.push("<strong>The following text has been removed with this homebrew:</strong>")
+							tooltipEntries.push("{@b The following text has been removed with this homebrew:}")
 						}
 						if (oldText) {
-							tooltip.push(oldText);
+							tooltipEntries.push(oldText);
 						}
-						const onMouseOver = Renderer.hover.createOnMouseHover(tooltip);
-						textStack[0] += `<span class="homebrew-inline" ${onMouseOver}>`;
+						const hoverMeta = Renderer.hover.getMakePredefinedHover({
+							type: "entries",
+							name: "Homebrew Modifications",
+							entries: tooltipEntries
+						});
+						textStack[0] += `<span class="homebrew-inline" ${hoverMeta.html}>`;
 						this._recursiveRender(newText || "[...]", textStack, meta);
 						textStack[0] += `</span>`;
 
@@ -1199,8 +1208,12 @@ function Renderer () {
 							}
 						})();
 						const [name, displayText] = text.split("|");
-						const onMouseOver = Renderer.hover.createOnMouseHover(expander(name), name);
-						textStack[0] += `<span class="help--hover" ${onMouseOver}>${displayText || name}</span>`;
+						const hoverMeta = Renderer.hover.getMakePredefinedHover({
+							type: "entries",
+							name: name.toTitleCase(),
+							entries: expander(name)
+						});
+						textStack[0] += `<span class="help--hover" ${hoverMeta.html}>${displayText || name}</span>`;
 
 						break;
 					}
@@ -1215,8 +1228,8 @@ function Renderer () {
 							textStack[0] += renderText;
 						} else {
 							const area = BookUtil.curRender.headerMap[areaId] || {entry: {name: ""}}; // default to prevent rendering crash on bad tag
-							const onMouseOver = Renderer.hover.createOnMouseHoverEntry(area.entry, true);
-							textStack[0] += `<a href="#${BookUtil.curRender.curBookId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}" ${onMouseOver} onclick="BookUtil.handleReNav(this)">${renderText}</a>`;
+							const hoverMeta = Renderer.hover.getMakePredefinedHover(area.entry, true);
+							textStack[0] += `<a href="#${BookUtil.curRender.curBookId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}" ${hoverMeta.html} onclick="BookUtil.handleReNav(this)">${renderText}</a>`;
 						}
 
 						break;
@@ -1334,7 +1347,7 @@ function Renderer () {
 								// ...|scaledCr}
 								if (others.length) {
 									const targetCrNum = Parser.crToNumber(others[0]);
-									fauxEntry.href.hover.prelodId = `${MON_HASH_SCALED}:${targetCrNum}`;
+									fauxEntry.href.hover.preloadId = `${MON_HASH_SCALED}:${targetCrNum}`;
 									fauxEntry.href.subhashes = [
 										{key: MON_HASH_SCALED, value: targetCrNum}
 									];
@@ -1534,7 +1547,8 @@ function Renderer () {
 				hash: procHash
 			};
 		}
-		return `onmouseover="Renderer.hover.mouseOver(event, this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${procHash}', false, ${entry.href.hover.prelodId ? `'${entry.href.hover.prelodId}'` : "null"})" ${Renderer.hover._getPreventTouchString()}`;
+
+		return `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${procHash}', ${entry.href.hover.preloadId ? `'${entry.href.hover.preloadId}'` : "null"})" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)"  ${Renderer.hover.getPreventTouchString()}`;
 	};
 
 	/**
@@ -3289,7 +3303,13 @@ Renderer.item = {
 				if (capacity.indexOf("ton") === -1 && capacity.indexOf("passenger") === -1) damage += Number(capacity) === 1 ? " lb." : " lbs.";
 			}
 			if (type === "SHP" || type === "AIR") {
-				damage += `<br>Crew ${item.crew}, AC ${item.vehAc}, HP ${item.vehHp}${item.vehDmgThresh ? `, Damage Threshold ${item.vehDmgThresh}` : ""}`;
+				// These may not be present in homebrew
+				const vehParts = [
+					item.crew ? `Crew ${item.crew}` : null,
+					item.vehAc ? `AC ${item.vehAc}` : null,
+					item.vehHp ? `HP ${item.vehHp}${item.vehDmgThresh ? `, Damage Threshold ${item.vehDmgThresh}` : ""}` : null
+				].filter(Boolean);
+				if (vehParts) damage += `<br>${vehParts.join(", ")}`;
 			}
 		}
 
@@ -3648,11 +3668,11 @@ Renderer.item = {
 			if (item.type === "RG") item.entries.push(`You have resistance to ${item.resist} damage while wearing this ring.`);
 		}
 		if (item.type === "SCF") {
-			if (item.scfType === "arcane") item.entries.push("An arcane focus is a special item designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus, using it in place of any material component which does not list a cost.");
-			if (item.scfType === "druid") item.entries.push("A druid can use such a druidic focus as a spellcasting focus, using it in place of any material component that does not have a cost.");
+			if (item.scfType === "arcane") item.entries.push("An arcane focus is a special item designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus.");
+			if (item.scfType === "druid") item.entries.push("A druid can use this object as a spellcasting focus.");
 			if (item.scfType === "holy") {
 				item.entries.push("A holy symbol is a representation of a god or pantheon.");
-				item.entries.push("A cleric or paladin can use a holy symbol as a spellcasting focus, using it in place of any material components which do not list a cost. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
+				item.entries.push("A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
 			}
 		}
 		// add additional entries based on type (e.g. XGE variants)
@@ -4219,29 +4239,586 @@ Renderer.vehicle = {
 };
 
 Renderer.hover = {
-	linkCache: {},
+	LinkMeta: function () {
+		this.isHovered = false;
+		this.isLoading = false;
+		this.isPermanent = false;
+		this.windowMeta = null;
+	},
+
+	_BAR_HEIGHT: 16,
+
+	_linkCache: {},
+	_eleCache: new Map(),
+	_entryCache: {},
 	_isInit: false,
-	_active: {},
-
 	_dmScreen: null,
-	bindDmScreen (screen) {
-		this._dmScreen = screen;
+	_lastId: 0,
+
+	bindDmScreen (screen) { this._dmScreen = screen; },
+
+	_getNextId () { return ++Renderer.hover._lastId; },
+
+	_doInit () {
+		if (!Renderer.hover._isInit) {
+			Renderer.hover._isInit = true;
+
+			$(`body`).on("click", () => Renderer.hover._cleanTempWindows());
+
+			ContextUtil.doInitContextMenu(
+				"hoverBorder",
+				(evt, ele, $invokedOn, $selectedMenu, _, windowMeta) => { // windowMeta for future use for more options
+					const $perms = $(`.hoverborder[data-perm="true"]`);
+					switch (Number($selectedMenu.data("ctx-id"))) {
+						case 0: $perms.attr("data-display-title", "false"); break;
+						case 1: $perms.attr("data-display-title", "true"); break;
+						case 2: $(`.hvr__close`).click(); break;
+					}
+				},
+				["Maximize All", "Minimize All", null, "Close All"]
+			);
+		}
 	},
 
-	_lastMouseHoverId: -1,
-	_mouseHovers: {},
-	createOnMouseHover (entries, title = "Homebrew") {
-		const id = Renderer.hover._lastMouseHoverId++;
-		Renderer.hover._mouseHovers[id] = {data: {hoverTitle: title}, entries: MiscUtil.copy(entries)};
-		return `onmouseover="Renderer.hover.mouseOverHoverTooltip(event, this, ${id})" ${Renderer.hover._getPreventTouchString()}`;
+	_cleanTempWindows () {
+		for (const [ele, meta] of Renderer.hover._eleCache.entries()) {
+			if (!meta.isPermanent && !document.body.contains(ele) && meta.windowMeta) {
+				meta.windowMeta.doClose();
+			}
+		}
 	},
 
-	createOnMouseHoverEntry (entry, isBookContent) {
-		const id = Renderer.hover.__initOnMouseHoverEntry(entry);
-		return `onmouseover="Renderer.hover.mouseOverHoverTooltip(event, this, ${id}, ${!!isBookContent})" ${Renderer.hover._getPreventTouchString()}`;
+	_getSetMeta (ele) {
+		if (!Renderer.hover._eleCache.has(ele)) Renderer.hover._eleCache.set(ele, new Renderer.hover.LinkMeta());
+		return Renderer.hover._eleCache.get(ele);
 	},
 
-	_getPreventTouchString () {
+	_handleGenericMouseOverStart (evt, ele) {
+		// Don't open on small screens unless forced
+		if (Renderer.hover._isSmallScreen() && !evt.shiftKey) return;
+
+		Renderer.hover._cleanTempWindows();
+
+		const meta = Renderer.hover._getSetMeta(ele);
+		if (meta.isHovered || meta.isLoading) return; // Another hover is already in progress
+
+		// Set the cursor to a waiting spinner
+		ele.style.cursor = "wait";
+
+		meta.isHovered = true;
+		meta.isLoading = true;
+		meta.isPermanent = evt.shiftKey;
+
+		return meta;
+	},
+
+	// (Baked into render strings)
+	async pHandleLinkMouseOver (evt, ele, page, source, hash, preloadId) {
+		const meta = Renderer.hover._handleGenericMouseOverStart(evt, ele);
+		if (meta == null) return;
+
+		let toRender;
+		if (preloadId != null) {
+			const [type, data] = preloadId.split(":");
+			switch (type) {
+				case MON_HASH_SCALED: {
+					const baseMon = await Renderer.hover.pCacheAndGet(page, source, hash);
+					toRender = await ScaleCreature.scale(baseMon, Number(data));
+					break;
+				}
+			}
+		} else {
+			toRender = await Renderer.hover.pCacheAndGet(page, source, hash);
+		}
+
+		meta.isLoading = false;
+		// Check if we're still hovering the entity
+		if (!meta.isHovered && !meta.isPermanent) return;
+
+		const $content = Renderer.hover.$getHoverContent_stats(page, toRender);
+		meta.windowMeta = Renderer.hover.getShowWindow(
+			$content,
+			Renderer.hover.getWindowPositionFromEvent(evt),
+			{
+				title: toRender.name,
+				isPermanent: meta.isPermanent,
+				pageUrl: `${page}#${hash}`,
+				cbClose: () => meta.isHovered = meta.isPermanent = meta.isLoading = false
+			}
+		);
+
+		// Reset cursor
+		ele.style.cursor = "";
+
+		if (page === UrlUtil.PG_BESTIARY) {
+			const renderFn = Renderer.hover._pageToRenderFn(page);
+			$content
+				.on("click", ".mon__btn-scale-cr", (evt) => {
+					evt.stopPropagation();
+					const $this = $(this);
+					const initialCr = toRender._originalCr != null ? toRender._originalCr : toRender.cr.cr || toRender.cr;
+					const lastCr = toRender.cr.cr || toRender.cr;
+
+					Renderer.monster.getCrScaleTarget(
+						$this,
+						lastCr,
+						async (targetCr) => {
+							const original = await Renderer.hover.pCacheAndGet(page, source, hash);
+							if (Parser.numberToCr(targetCr) === initialCr) toRender = original;
+							else toRender = await ScaleCreature.scale(toRender, targetCr);
+
+							$content.empty().append(renderFn(toRender));
+							meta.windowMeta.$windowTitle.text(toRender._displayName || toRender.name);
+						},
+						true
+					);
+				});
+
+			$content
+				.on("click", ".mon__btn-reset-cr", async () => {
+					toRender = await Renderer.hover.pCacheAndGet(page, source, hash);
+					$content.empty().append(renderFn(toRender));
+					meta.windowMeta.$windowTitle.text(toRender._displayName || toRender.name);
+				});
+		}
+	},
+
+	// (Baked into render strings)
+	handleLinkMouseLeave (evt, ele) {
+		const meta = Renderer.hover._eleCache.get(ele);
+		ele.style.cursor = "";
+
+		if (!meta || meta.isPermanent) return;
+
+		if (evt.shiftKey) {
+			meta.isPermanent = true;
+			meta.windowMeta.setIsPermanent(true);
+			return;
+		}
+
+		meta.isHovered = false;
+		if (meta.windowMeta) {
+			meta.windowMeta.doClose();
+			meta.windowMeta = null;
+		}
+	},
+
+	// (Baked into render strings)
+	handleLinkMouseMove (evt, ele) {
+		const meta = Renderer.hover._eleCache.get(ele);
+		if (!meta || meta.isPermanent || !meta.windowMeta) return;
+
+		meta.windowMeta.setPosition(Renderer.hover.getWindowPositionFromEvent(evt));
+
+		if (evt.shiftKey && !meta.isPermanent) {
+			meta.isPermanent = true;
+			meta.windowMeta.setIsPermanent(true);
+		}
+	},
+
+	// (Baked into render strings)
+	handlePredefinedMouseOver (evt, ele, entryId, isBookContent) {
+		const meta = Renderer.hover._handleGenericMouseOverStart(evt, ele);
+		if (meta == null) return;
+
+		Renderer.hover._cleanTempWindows();
+
+		const toRender = Renderer.hover._entryCache[entryId];
+
+		meta.isLoading = false;
+		// Check if we're still hovering the entity
+		if (!meta.isHovered && !meta.isPermanent) return;
+
+		const $content = Renderer.hover.$getHoverContent_generic(toRender, isBookContent);
+		meta.windowMeta = Renderer.hover.getShowWindow(
+			$content,
+			Renderer.hover.getWindowPositionFromEvent(evt),
+			{
+				title: toRender.data && toRender.data.hoverTitle != null ? toRender.data.hoverTitle : toRender.name,
+				isPermanent: meta.isPermanent,
+				cbClose: () => meta.isHovered = meta.isPermanent = meta.isLoading = false
+			}
+		);
+
+		// Reset cursor
+		ele.style.cursor = "";
+	},
+
+	// (Baked into render strings)
+	handlePredefinedMouseLeave (evt, ele) { return Renderer.hover.handleLinkMouseLeave(evt, ele) },
+
+	// (Baked into render strings)
+	handlePredefinedMouseMove (evt, ele) { return Renderer.hover.handleLinkMouseMove(evt, ele) },
+
+	getWindowPositionFromEvent (evt) {
+		const ele = evt.target;
+
+		const offset = $(ele).offset();
+		const vpOffsetT = offset.top - $(document).scrollTop();
+		const vpOffsetL = offset.left - $(document).scrollLeft();
+
+		const fromBottom = vpOffsetT > window.innerHeight / 2;
+		const fromRight = vpOffsetL > window.innerWidth / 2;
+
+		return {
+			mode: "autoFromElement",
+			vpOffsetT,
+			vpOffsetL,
+			fromBottom,
+			fromRight,
+			eleHeight: $(ele).height(),
+			eleWidth: $(ele).width(),
+			clientX: EventUtil.getClientX(evt)
+		}
+	},
+
+	/**
+	 * @param $content Content to append to the window.
+	 * @param position The position of the window. Can be specified in various formats.
+	 * @param [opts] Options object.
+	 * @param [opts.isPermanent] If the window should have the expanded toolbar of a "permanent" window.
+	 * @param [opts.title] The window title.
+	 * @param [opts.isBookContent] If the hover window contains book content. Affects the styling of borders.
+	 * @param [opts.pageUrl] A page URL which is navigable via a button in the window header
+	 * @param [opts.cbClose] Callback to run on window close.
+	 */
+	getShowWindow ($content, position, opts) {
+		Renderer.hover._doInit();
+
+		const $body = $(`body`);
+		const $hov = $(`<div class="hwin" style="right: -600px; width: 600px;"/>`);
+		const $wrpStats = $(`<div class="hwin__wrp-table"/>`);
+		const $hovTitle = $(`<span class="window-title">${opts.title || ""}</span>`);
+
+		const out = {};
+		const hoverId = Renderer.hover._getNextId();
+		const mouseUpId = `mouseup.${hoverId} touchend.${hoverId}`;
+		const mouseMoveId = `mousemove.${hoverId} touchmove.${hoverId}`;
+		const resizeId = `resize.${hoverId}`;
+
+		const doClose = () => {
+			$hov.remove();
+			$(document).off(mouseUpId);
+			$(document).off(mouseMoveId);
+			$(window).off(resizeId);
+
+			if (opts.cbClose) opts.cbClose(out);
+		};
+
+		let drag = {};
+		function handleDragMousedown (evt, type) {
+			if (evt.which === 0 || evt.which === 1) evt.preventDefault();
+			$hov.css({
+				"z-index": 201, // temporarily display it on top
+				"animation": "initial"
+			});
+			drag.type = type;
+			drag.startX = EventUtil.getClientX(evt);
+			drag.startY = EventUtil.getClientY(evt);
+			drag.baseTop = parseFloat($hov.css("top"));
+			drag.baseLeft = parseFloat($hov.css("left"));
+			drag.baseHeight = $wrpStats.height();
+			drag.baseWidth = parseFloat($hov.css("width"));
+			if (type < 9) {
+				$wrpStats.css("max-height", "initial");
+				$hov.css("max-width", "initial");
+			}
+		}
+		function handleDragClick () {
+			$hov.css("z-index", ""); // remove the temporary z-boost...
+			$hov.parent().append($hov); // ...and properly bring it to the front
+		}
+
+		const $brdrTopRightResize = $(`<div class="hoverborder__resize-ne"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 1))
+			.on("click", handleDragClick);
+
+		const $brdrRightResize = $(`<div class="hoverborder__resize-e"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 2))
+			.on("click", handleDragClick);
+
+		const $brdrBottomRightResize = $(`<div class="hoverborder__resize-se"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 3))
+			.on("click", handleDragClick);
+
+		const $brdrBtm = $(`<div class="hoverborder hoverborder--btm ${opts.isBookContent ? "hoverborder-book" : ""}"><div class="hoverborder__resize-s"/></div>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 4))
+			.on("click", handleDragClick);
+
+		const $brdrBtmLeftResize = $(`<div class="hoverborder__resize-sw"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 5))
+			.on("click", handleDragClick);
+
+		const $brdrLeftResize = $(`<div class="hoverborder__resize-w"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 6))
+			.on("click", handleDragClick);
+
+		const $brdrTopLeftResize = $(`<div class="hoverborder__resize-nw"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 7))
+			.on("click", handleDragClick);
+
+		const $brdrTopResize = $(`<div class="hoverborder__resize-n"/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 8))
+			.on("click", handleDragClick);
+
+		const $brdrTop = $(`<div class="hoverborder hoverborder--top ${opts.isBookContent ? "hoverborder-book" : ""}" ${opts.isPermanent ? `data-perm="true"` : ""}/>`)
+			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 9))
+			.on("click", handleDragClick)
+			.on("contextmenu", (evt) => ContextUtil.handleOpenContextMenu(evt, $brdrTop[0], "hoverBorder", null, out));
+
+		function isOverHoverTarget (evt, target) {
+			return EventUtil.getClientX(evt) >= target.left
+				&& EventUtil.getClientX(evt) <= target.left + target.width
+				&& EventUtil.getClientY(evt) >= target.top
+				&& EventUtil.getClientY(evt) <= target.top + target.height;
+		}
+
+		function handleNorthDrag (evt) {
+			const diffY = Math.max(drag.startY - EventUtil.getClientY(evt), 80 - drag.baseHeight); // prevent <80 height, as this will cause the box to move downwards
+			$wrpStats.css("height", drag.baseHeight + diffY);
+			$hov.css("top", drag.baseTop - diffY);
+			drag.startY = EventUtil.getClientY(evt);
+			drag.baseHeight = $wrpStats.height();
+			drag.baseTop = parseFloat($hov.css("top"));
+		}
+
+		function handleEastDrag (evt) {
+			const diffX = drag.startX - EventUtil.getClientX(evt);
+			$hov.css("width", drag.baseWidth - diffX);
+			drag.startX = EventUtil.getClientX(evt);
+			drag.baseWidth = parseFloat($hov.css("width"));
+		}
+
+		function handleSouthDrag (evt) {
+			const diffY = drag.startY - EventUtil.getClientY(evt);
+			$wrpStats.css("height", drag.baseHeight - diffY);
+			drag.startY = EventUtil.getClientY(evt);
+			drag.baseHeight = $wrpStats.height();
+		}
+
+		function handleWestDrag (evt) {
+			const diffX = Math.max(drag.startX - EventUtil.getClientX(evt), 150 - drag.baseWidth);
+			$hov.css("width", drag.baseWidth + diffX)
+				.css("left", drag.baseLeft - diffX);
+			drag.startX = EventUtil.getClientX(evt);
+			drag.baseWidth = parseFloat($hov.css("width"));
+			drag.baseLeft = parseFloat($hov.css("left"));
+		}
+
+		$(document)
+			.on(mouseUpId, (evt) => {
+				if (drag.type) {
+					if (drag.type < 9) {
+						$wrpStats.css("max-height", "");
+						$hov.css("max-width", "");
+					}
+					adjustPosition();
+
+					if (drag.type === 9) {
+						// handle mobile button touches
+						if (evt.target.classList.contains("hvr__close") || evt.target.classList.contains("hvr__popout")) {
+							evt.preventDefault();
+							drag.type = 0;
+							$(evt.target).click();
+							return;
+						}
+
+						// FIXME
+						// handle DM screen integration
+						if (this._dmScreen) {
+							const panel = this._dmScreen.getPanelPx(EventUtil.getClientX(evt), EventUtil.getClientY(evt));
+							if (!panel) return;
+							this._dmScreen.setHoveringPanel(panel);
+							const target = panel.getAddButtonPos();
+
+							if (isOverHoverTarget(evt, target)) {
+								if (preLoaded && preLoaded._isScaledCr != null) panel.doPopulate_StatsScaledCr(page, source, hash, preLoaded.cr.cr || preLoaded.cr);
+								else panel.doPopulate_Stats(page, source, hash);
+								doClose();
+							}
+							this._dmScreen.resetHoveringButton();
+						}
+					}
+					drag.type = 0;
+				}
+			})
+			.on(mouseMoveId, (evt) => {
+				switch (drag.type) {
+					case 1: handleNorthDrag(evt); handleEastDrag(evt); break;
+					case 2: handleEastDrag(evt); break;
+					case 3: handleSouthDrag(evt); handleEastDrag(evt); break;
+					case 4: handleSouthDrag(evt); break;
+					case 5: handleSouthDrag(evt); handleWestDrag(evt); break;
+					case 6: handleWestDrag(evt); break;
+					case 7: handleNorthDrag(evt); handleWestDrag(evt); break;
+					case 8: handleNorthDrag(evt); break;
+					case 9: {
+						const diffX = drag.startX - EventUtil.getClientX(evt);
+						const diffY = drag.startY - EventUtil.getClientY(evt);
+						$hov.css("left", drag.baseLeft - diffX)
+							.css("top", drag.baseTop - diffY);
+						drag.startX = EventUtil.getClientX(evt);
+						drag.startY = EventUtil.getClientY(evt);
+						drag.baseTop = parseFloat($hov.css("top"));
+						drag.baseLeft = parseFloat($hov.css("left"));
+
+						// handle DM screen integration
+						if (this._dmScreen) {
+							const panel = this._dmScreen.getPanelPx(EventUtil.getClientX(evt), EventUtil.getClientY(evt));
+							if (!panel) return;
+							this._dmScreen.setHoveringPanel(panel);
+							const target = panel.getAddButtonPos();
+
+							if (isOverHoverTarget(evt, target)) this._dmScreen.setHoveringButton(panel);
+							else this._dmScreen.resetHoveringButton();
+						}
+						break;
+					}
+				}
+			});
+		$(window).on(resizeId, () => adjustPosition(true));
+
+		$brdrTop.attr("data-display-title", false);
+		$brdrTop.on("dblclick", () => {
+			const curState = $brdrTop.attr("data-display-title");
+			$brdrTop.attr("data-display-title", curState === "false");
+			$brdrTop.attr("data-perm", true);
+			$hov.toggleClass("hwin--minified", curState === "false");
+		});
+		$brdrTop.append($hovTitle);
+		const $brdTopRhs = $(`<div class="flex" style="margin-left: auto;"/>`).appendTo($brdrTop);
+
+		if (opts.pageUrl) {
+			const $btnGotoPage = $(`<span class="top-border-icon glyphicon glyphicon-modal-window" style="margin-right: 2px;" title="Go to Page"></span>`)
+				.click(() => window.location = opts.pageUrl)
+				.appendTo($brdTopRhs);
+		}
+
+		// TODO fix dice rollers?
+		// TODO fix hover links?
+		const $btnPopout = $(`<span class="top-border-icon glyphicon glyphicon-new-window hvr__popout" style="margin-right: 2px;" title="Open as Popup Window"></span>`)
+			.on("click", (evt) => {
+				evt.stopPropagation();
+				const h = $content.height();
+				const win = open(
+					"",
+					opts.title || "",
+					`width=600,height=${h}location=0,menubar=0,status=0,titlebar=0,toolbar=0`
+				);
+				win.document.write(`
+					<!DOCTYPE html>
+					<html lang="en" class="${styleSwitcher && styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_NIGHT ? StyleSwitcher.NIGHT_CLASS : ""}"><head>
+						<meta name="viewport" content="width=device-width, initial-scale=1">
+						<title>${opts.title}</title>
+						<link rel="stylesheet" href="css/bootstrap.css">
+						<link rel="stylesheet" href="css/jquery-ui.css">
+						<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+						<link rel="stylesheet" href="css/style.css">
+						<link rel="icon" href="favicon.png">
+						<style>
+							html, body { width: 100%; height: 100%; }
+							body { overflow-y: scroll; }
+						</style>
+					</head><body>
+					<div class="hwin hoverbox--popout" style="max-width: initial; max-height: initial; box-shadow: initial;">
+					${$content[0].outerHTML}
+					</div>
+					</body></html>
+				`);
+				doClose();
+			}).appendTo($brdTopRhs);
+
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove hvr__close" title="Close"></span>`)
+			.on("click", (evt) => {
+				evt.stopPropagation();
+				doClose();
+			}).appendTo($brdTopRhs);
+
+		$wrpStats.append($content);
+
+		$hov.append($brdrTopResize).append($brdrTopRightResize).append($brdrRightResize).append($brdrBottomRightResize)
+			.append($brdrBtmLeftResize).append($brdrLeftResize).append($brdrTopLeftResize)
+
+			.append($brdrTop)
+			.append($wrpStats)
+			.append($brdrBtm);
+
+		$body.append($hov);
+
+		const setPosition = (pos) => {
+			switch (pos.mode) {
+				case "autoFromElement": {
+					if (pos.fromBottom) $hov.css("top", pos.vpOffsetT - ($hov.height() + 10));
+					else $hov.css("top", pos.vpOffsetT + pos.eleHeight + 10);
+
+					if (pos.fromRight) $hov.css("left", (pos.clientX || pos.vpOffsetL) - (parseFloat($hov.css("width")) + 10));
+					else $hov.css("left", (pos.clientX || (pos.vpOffsetL + pos.eleWidth)) + 10);
+					break;
+				}
+				case "exact": {
+					$hov.css("top", pos.y);
+					$hov.css("left", pos.x);
+					break;
+				}
+				default: throw new Error(`Positiong mode unimplemented: "${pos.mode}"`);
+			}
+
+			adjustPosition(true);
+		};
+
+		setPosition(position);
+
+		function adjustPosition () {
+			const eleHov = $hov[0];
+			// use these pre-computed values instead of forcing redraws for speed (saves ~100ms)
+			const hvTop = parseFloat(eleHov.style.top);
+			const hvLeft = parseFloat(eleHov.style.left);
+			const hvWidth = parseFloat(eleHov.style.width);
+			const screenHeight = window.innerHeight;
+			const screenWidth = window.innerWidth;
+
+			// readjust position...
+			// ...if vertically clipping off screen
+			if (hvTop < 0) eleHov.style.top = `0px`;
+			else if (hvTop >= screenHeight - Renderer.hover._BAR_HEIGHT) {
+				$hov.css("top", screenHeight - Renderer.hover._BAR_HEIGHT);
+			}
+
+			// ...if horizontally clipping off screen
+			if (hvLeft < 0) $hov.css("left", 0);
+			else if (hvLeft + hvWidth > screenWidth) {
+				$hov.css("left", Math.max(screenWidth - hvWidth, 0));
+			}
+		}
+
+		const setIsPermanent = (isPermanent) => $brdrTop.attr("data-perm", isPermanent);
+
+		out.$windowTitle = $hovTitle;
+		out.setPosition = setPosition;
+		out.setIsPermanent = setIsPermanent;
+		out.doClose = doClose;
+
+		return out;
+	},
+
+	getMakePredefinedHover (entry, isBookContent) {
+		const id = Renderer.hover._getNextId();
+		Renderer.hover._entryCache[id] = entry;
+		return {
+			id,
+			html: `onmouseover="Renderer.hover.handlePredefinedMouseOver(event, this, ${id}, ${!!isBookContent})" onmousemove="Renderer.hover.handlePredefinedMouseMove(event, this)" onmouseleave="Renderer.hover.handlePredefinedMouseLeave(event, this)" ${Renderer.hover.getPreventTouchString()}`,
+			mouseOver: (evt, ele) => Renderer.hover.handlePredefinedMouseOver(evt, ele, id, !!isBookContent),
+			mouseMove: (evt, ele) => Renderer.hover.handlePredefinedMouseMove(evt, ele),
+			mouseLeave: (evt, ele) => Renderer.hover.handlePredefinedMouseLeave(evt, ele),
+			touchStart: (evt, ele) => Renderer.hover.handleTouchStart(evt, ele)
+		};
+	},
+
+	updatePredefinedHover (id, entry) {
+		Renderer.hover._entryCache[id] = entry;
+	},
+
+	getPreventTouchString () {
 		return `ontouchstart="Renderer.hover.handleTouchStart(event, this)"`
 	},
 
@@ -4263,35 +4840,15 @@ Renderer.hover = {
 		}
 	},
 
-	__initOnMouseHoverEntry (entry) {
-		const id = Renderer.hover._lastMouseHoverId++;
-		Renderer.hover._mouseHovers[id] = {
-			...entry,
-			data: {hoverTitle: entry.name}
-		};
-		return id;
-	},
-
-	__updateOnMouseHoverEntry (id, entry) {
-		Renderer.hover._mouseHovers[id] = {
-			...entry,
-			data: {hoverTitle: entry.name}
-		};
-	},
-
-	bindOnMouseHoverEntry (entry, isBookContent) {
-		const id = Renderer.hover.__initOnMouseHoverEntry(entry);
-		return (event, ele) => Renderer.hover.mouseOverHoverTooltip(event, ele, id, !!isBookContent);
-	},
-
+	// region entry fetching
 	_addToCache: (page, source, hash, item) => {
 		page = page.toLowerCase();
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
 
-		((Renderer.hover.linkCache[page] =
-			Renderer.hover.linkCache[page] || [])[source] =
-			Renderer.hover.linkCache[page][source] || [])[hash] = item;
+		((Renderer.hover._linkCache[page] =
+			Renderer.hover._linkCache[page] || [])[source] =
+			Renderer.hover._linkCache[page][source] || [])[hash] = item;
 	},
 
 	_getFromCache: (page, source, hash) => {
@@ -4299,7 +4856,7 @@ Renderer.hover = {
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
 
-		return Renderer.hover.linkCache[page][source][hash];
+		return Renderer.hover._linkCache[page][source][hash];
 	},
 
 	_isCached: (page, source, hash) => {
@@ -4307,7 +4864,7 @@ Renderer.hover = {
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
 
-		return Renderer.hover.linkCache[page] && Renderer.hover.linkCache[page][source] && Renderer.hover.linkCache[page][source][hash];
+		return Renderer.hover._linkCache[page] && Renderer.hover._linkCache[page][source] && Renderer.hover._linkCache[page][source][hash];
 	},
 
 	async pCacheAndGet (page, source, hash) {
@@ -4467,408 +5024,7 @@ Renderer.hover = {
 			default: throw new Error(`No load function defined for page ${page}`);
 		}
 	},
-
-	_teardownWindow: (hoverId) => {
-		const obj = Renderer.hover._active[hoverId];
-		if (obj) {
-			obj.$ele.attr("data-hover-active", false);
-			obj.$hov.remove();
-			$(document).off(obj.mouseUpId);
-			$(document).off(obj.mouseMoveId);
-			$(window).off(obj.resizeId);
-		}
-		delete Renderer.hover._active[hoverId];
-	},
-
-	_makeWindow () {
-		if (!Renderer.hover._curHovering) {
-			reset();
-			return;
-		}
-
-		const hoverId = Renderer.hover._curHovering.hoverId;
-		const ele = Renderer.hover._curHovering.ele;
-		let preLoaded = Renderer.hover._curHovering.preLoaded;
-		const page = Renderer.hover._curHovering.cPage;
-		const source = Renderer.hover._curHovering.cSource;
-		const hash = Renderer.hover._curHovering.cHash;
-		const permanent = Renderer.hover._curHovering.permanent;
-		const clientX = Renderer.hover._curHovering.clientX;
-		const renderFn = Renderer.hover._curHovering.renderFunction;
-		const isBookContent = Renderer.hover._curHovering.isBookContent;
-
-		// if it doesn't seem to exist, return
-		if (!preLoaded && page !== "hover" && !Renderer.hover._isCached(page, source, hash)) {
-			Renderer.hover._showInProgress = false;
-			setTimeout(() => {
-				throw new Error(`Could not load hash ${hash} with source ${source} from page ${page}`);
-			}, 1);
-			return;
-		}
-
-		const toRender = page === "hover" ? {name: source.data.hoverTitle || ""} : preLoaded || Renderer.hover._getFromCache(page, source, hash);
-		const content = page === "hover" ? renderFn(source) : renderFn(toRender);
-
-		$(ele).attr("data-hover-active", true);
-
-		const offset = $(ele).offset();
-		const vpOffsetT = offset.top - $(document).scrollTop();
-		const vpOffsetL = offset.left - $(document).scrollLeft();
-
-		const fromBottom = vpOffsetT > $(window).height() / 2;
-		const fromRight = vpOffsetL > $(window).width() / 2;
-
-		const $hov = $(`<div class="hwin" style="right: -600px"/>`);
-		const $wrpStats = $(`<div class="hwin__wrp-table"/>`);
-
-		const $body = $(`body`);
-		const $ele = $(ele);
-
-		$ele.on("mouseleave.hoverwindow", (evt) => {
-			Renderer.hover._cleanWindows();
-			if (!($brdrTop.attr("data-perm") === "true") && !evt.shiftKey) {
-				teardown();
-			} else {
-				$(ele).attr("data-hover-active", true);
-				// use attr to let the CSS see it
-				$brdrTop.attr("data-perm", true);
-				delete Renderer.hover._active[hoverId];
-			}
-		});
-
-		const windowTitle = page === "generic" ? (preLoaded.data || {}).hoverTitle || "" : toRender._displayName || toRender.name;
-
-		const $hovTitle = $(`<span class="window-title">${windowTitle}</span>`);
-		const $stats = $(`<table class="stats ${isBookContent ? "stats--book stats--book-hover" : ""}"/>`);
-		$stats.append(content);
-
-		$stats.off("click", ".mon__btn-scale-cr").on("click", ".mon__btn-scale-cr", function (evt) {
-			evt.stopPropagation();
-			const $this = $(this);
-			const initialCr = preLoaded && preLoaded._originalCr != null ? preLoaded._originalCr : toRender.cr.cr || toRender.cr;
-			const lastCr = preLoaded ? preLoaded.cr.cr || preLoaded.cr : toRender.cr.cr || toRender.cr;
-			Renderer.monster.getCrScaleTarget($this, lastCr, (targetCr) => {
-				if (Parser.numberToCr(targetCr) === initialCr) {
-					const original = Renderer.hover._getFromCache(page, source, hash);
-					preLoaded = original;
-					$stats.empty().append(renderFn(original));
-					$hovTitle.text(original._displayName || original.name);
-				} else {
-					ScaleCreature.scale(toRender, targetCr).then(scaledContent => {
-						preLoaded = scaledContent;
-						$stats.empty().append(renderFn(scaledContent));
-						$hovTitle.text(scaledContent._displayName || scaledContent.name);
-					});
-				}
-			}, true);
-		});
-		$stats.off("click", ".mon__btn-reset-cr").on("click", ".mon__btn-reset-cr", function () {
-			const original = Renderer.hover._getFromCache(page, source, hash);
-			preLoaded = original;
-			$stats.empty().append(renderFn(original));
-			$hovTitle.text(original._displayName || original.name);
-		});
-
-		let drag = {};
-		function handleDragMousedown (evt, type) {
-			if (evt.which === 0 || evt.which === 1) evt.preventDefault();
-			$hov.css({
-				"z-index": 201, // temporarily display it on top
-				"animation": "initial"
-			});
-			drag.type = type;
-			drag.startX = EventUtil.getClientX(evt);
-			drag.startY = EventUtil.getClientY(evt);
-			drag.baseTop = parseFloat($hov.css("top"));
-			drag.baseLeft = parseFloat($hov.css("left"));
-			drag.baseHeight = $wrpStats.height();
-			drag.baseWidth = $hov.width();
-			if (type < 9) {
-				$wrpStats.css("max-height", "initial");
-				$hov.css("max-width", "initial");
-			}
-		}
-		function handleDragClick () {
-			$hov.css("z-index", ""); // remove the temporary z-boost...
-			$hov.parent().append($hov); // ...and properly bring it to the front
-		}
-
-		const $brdrTopRightResize = $(`<div class="hoverborder__resize-ne"/>`)
-			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 1))
-			.on("click", handleDragClick);
-
-		const $brdrRightResize = $(`<div class="hoverborder__resize-e"/>`)
-			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 2))
-			.on("click", handleDragClick);
-
-		const $brdrBottomRightResize = $(`<div class="hoverborder__resize-se"/>`)
-			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 3))
-			.on("click", handleDragClick);
-
-		const $brdrBtm = $(`<div class="hoverborder hoverborder--btm ${isBookContent ? "hoverborder-book" : ""}"><div class="hoverborder__resize-s"/></div>`)
-			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 4))
-			.on("click", handleDragClick);
-
-		const $brdrBtmLeftResize = $(`<div class="hoverborder__resize-sw"/>`)
-			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 5))
-			.on("click", handleDragClick);
-
-		const $brdrLeftResize = $(`<div class="hoverborder__resize-w"/>`)
-			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 6))
-			.on("click", handleDragClick);
-
-		const $brdrTopLeftResize = $(`<div class="hoverborder__resize-nw"/>`)
-			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 7))
-			.on("click", handleDragClick);
-
-		const $brdrTopResize = $(`<div class="hoverborder__resize-n"/>`)
-			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 8))
-			.on("click", handleDragClick);
-
-		const $brdrTop = $(`<div class="hoverborder hoverborder--top ${isBookContent ? "hoverborder-book" : ""}" ${permanent ? `data-perm="true"` : ""} data-hover-id="${hoverId}"/>`)
-			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 9))
-			.on("click", handleDragClick)
-			.on("contextmenu", (evt) => ContextUtil.handleOpenContextMenu(evt, ele, "hoverBorder"));
-
-		const mouseUpId = `mouseup.${hoverId} touchend.${hoverId}`;
-		const mouseMoveId = `mousemove.${hoverId} touchmove.${hoverId}`;
-		const resizeId = `resize.${hoverId}`;
-
-		function isOverHoverTarget (evt, target) {
-			return EventUtil.getClientX(evt) >= target.left
-				&& EventUtil.getClientX(evt) <= target.left + target.width
-				&& EventUtil.getClientY(evt) >= target.top
-				&& EventUtil.getClientY(evt) <= target.top + target.height;
-		}
-
-		function handleNorthDrag (evt) {
-			const diffY = Math.max(drag.startY - EventUtil.getClientY(evt), 80 - drag.baseHeight); // prevent <80 height, as this will cause the box to move downwards
-			$wrpStats.css("height", drag.baseHeight + diffY);
-			$hov.css("top", drag.baseTop - diffY);
-			drag.startY = EventUtil.getClientY(evt);
-			drag.baseHeight = $wrpStats.height();
-			drag.baseTop = parseFloat($hov.css("top"));
-		}
-
-		function handleEastDrag (evt) {
-			const diffX = drag.startX - EventUtil.getClientX(evt);
-			$hov.css("width", drag.baseWidth - diffX);
-			drag.startX = EventUtil.getClientX(evt);
-			drag.baseWidth = $hov.width();
-		}
-
-		function handleSouthDrag (evt) {
-			const diffY = drag.startY - EventUtil.getClientY(evt);
-			$wrpStats.css("height", drag.baseHeight - diffY);
-			drag.startY = EventUtil.getClientY(evt);
-			drag.baseHeight = $wrpStats.height();
-		}
-
-		function handleWestDrag (evt) {
-			const diffX = Math.max(drag.startX - EventUtil.getClientX(evt), 150 - drag.baseWidth);
-			$hov.css("width", drag.baseWidth + diffX)
-				.css("left", drag.baseLeft - diffX);
-			drag.startX = EventUtil.getClientX(evt);
-			drag.baseWidth = $hov.width();
-			drag.baseLeft = parseFloat($hov.css("left"));
-		}
-
-		$(document)
-			.on(mouseUpId, (evt) => {
-				if (drag.type) {
-					if (drag.type < 9) {
-						$wrpStats.css("max-height", "");
-						$hov.css("max-width", "");
-					}
-					adjustPosition();
-
-					if (drag.type === 9) {
-						// handle mobile button touches
-						if (evt.target.classList.contains("hvr__close") || evt.target.classList.contains("hvr__popout")) {
-							evt.preventDefault();
-							drag.type = 0;
-							$(evt.target).click();
-							return;
-						}
-
-						// handle DM screen integration
-						if (this._dmScreen) {
-							const panel = this._dmScreen.getPanelPx(EventUtil.getClientX(evt), EventUtil.getClientY(evt));
-							if (!panel) return;
-							this._dmScreen.setHoveringPanel(panel);
-							const target = panel.getAddButtonPos();
-
-							if (isOverHoverTarget(evt, target)) {
-								if (preLoaded && preLoaded._isScaledCr != null) panel.doPopulate_StatsScaledCr(page, source, hash, preLoaded.cr.cr || preLoaded.cr);
-								else panel.doPopulate_Stats(page, source, hash);
-								altTeardown();
-							}
-							this._dmScreen.resetHoveringButton();
-						}
-					}
-					drag.type = 0;
-				}
-			})
-			.on(mouseMoveId, (evt) => {
-				switch (drag.type) {
-					case 1: handleNorthDrag(evt); handleEastDrag(evt); break;
-					case 2: handleEastDrag(evt); break;
-					case 3: handleSouthDrag(evt); handleEastDrag(evt); break;
-					case 4: handleSouthDrag(evt); break;
-					case 5: handleSouthDrag(evt); handleWestDrag(evt); break;
-					case 6: handleWestDrag(evt); break;
-					case 7: handleNorthDrag(evt); handleWestDrag(evt); break;
-					case 8: handleNorthDrag(evt); break;
-					case 9: {
-						const diffX = drag.startX - EventUtil.getClientX(evt);
-						const diffY = drag.startY - EventUtil.getClientY(evt);
-						$hov.css("left", drag.baseLeft - diffX)
-							.css("top", drag.baseTop - diffY);
-						drag.startX = EventUtil.getClientX(evt);
-						drag.startY = EventUtil.getClientY(evt);
-						drag.baseTop = parseFloat($hov.css("top"));
-						drag.baseLeft = parseFloat($hov.css("left"));
-
-						// handle DM screen integration
-						if (this._dmScreen) {
-							const panel = this._dmScreen.getPanelPx(EventUtil.getClientX(evt), EventUtil.getClientY(evt));
-							if (!panel) return;
-							this._dmScreen.setHoveringPanel(panel);
-							const target = panel.getAddButtonPos();
-
-							if (isOverHoverTarget(evt, target)) this._dmScreen.setHoveringButton(panel);
-							else this._dmScreen.resetHoveringButton();
-						}
-						break;
-					}
-				}
-			});
-		$(window).on(resizeId, () => adjustPosition(true));
-
-		$brdrTop.attr("data-display-title", false);
-		$brdrTop.on("dblclick", () => {
-			const curState = $brdrTop.attr("data-display-title");
-			$brdrTop.attr("data-display-title", curState === "false");
-			$brdrTop.attr("data-perm", true);
-			$hov.toggleClass("hwin--minified", curState === "false");
-			delete Renderer.hover._active[hoverId];
-		});
-		$brdrTop.append($hovTitle);
-		const $brdTopRhs = $(`<div class="flex" style="margin-left: auto;"/>`).appendTo($brdrTop);
-
-		if (page && source && hash) {
-			const $btnGotoPage = $(`<span class="top-border-icon glyphicon glyphicon-modal-window" style="margin-right: 2px;" title="Go to Page"></span>`)
-				.click(() => window.location = `${page}#${hash}`)
-				.appendTo($brdTopRhs);
-		}
-
-		// TODO fix dice rollers?
-		// TODO fix hover links?
-		const $btnPopout = $(`<span class="top-border-icon glyphicon glyphicon-new-window hvr__popout" style="margin-right: 2px;" title="Open as Popup Window"></span>`)
-			.on("click", (evt) => {
-				evt.stopPropagation();
-				const h = $stats.height();
-				const win = open(
-					"",
-					toRender._displayName || toRender.name,
-					`width=600,height=${h}location=0,menubar=0,status=0,titlebar=0,toolbar=0`
-				);
-				win.document.write(`
-					<!DOCTYPE html>
-					<html lang="en" class="${styleSwitcher && styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_NIGHT ? StyleSwitcher.NIGHT_CLASS : ""}"><head>
-						<meta name="viewport" content="width=device-width, initial-scale=1">
-						<title>${toRender._displayName || toRender.name}</title>
-						<link rel="stylesheet" href="css/bootstrap.css">
-						<link rel="stylesheet" href="css/jquery-ui.css">
-						<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
-						<link rel="stylesheet" href="css/style.css">
-						<link rel="icon" href="favicon.png">
-						<style>
-							html, body { width: 100%; height: 100%; }
-							body { overflow-y: scroll; }
-						</style>
-					</head><body>
-					<div class="hwin hoverbox--popout" style="max-width: initial; max-height: initial; box-shadow: initial;">
-					${$stats[0].outerHTML}
-					</div>
-					</body></html>
-				`);
-				altTeardown();
-			}).appendTo($brdTopRhs);
-
-		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove hvr__close" title="Close"></span>`)
-			.on("click", (evt) => {
-				evt.stopPropagation();
-				altTeardown();
-			}).appendTo($brdTopRhs);
-
-		$wrpStats.append($stats);
-
-		$hov.append($brdrTopResize).append($brdrTopRightResize).append($brdrRightResize).append($brdrBottomRightResize)
-			.append($brdrBtmLeftResize).append($brdrLeftResize).append($brdrTopLeftResize)
-
-			.append($brdrTop)
-			.append($wrpStats)
-			.append($brdrBtm);
-
-		$body.append($hov);
-		if (!permanent) {
-			Renderer.hover._active[hoverId] = {
-				$hov: $hov,
-				$ele: $ele,
-				resizeId: resizeId,
-				mouseUpId: mouseUpId,
-				mouseMoveId: mouseMoveId
-			};
-		}
-
-		if (fromBottom) $hov.css("top", vpOffsetT - ($hov.height() + 10));
-		else $hov.css("top", vpOffsetT + $(ele).height() + 10);
-
-		if (fromRight) $hov.css("left", (clientX || vpOffsetL) - ($hov.width() + 10));
-		else $hov.css("left", (clientX || (vpOffsetL + $(ele).width())) + 10);
-
-		adjustPosition(true);
-
-		$(ele).css("cursor", "");
-		reset();
-
-		function adjustPosition () {
-			// readjust position...
-			// ...if vertically clipping off screen
-			const hvTop = parseFloat($hov.css("top"));
-			if (hvTop < 0) {
-				$hov.css("top", 0);
-			} else if (hvTop >= $(window).height() - Renderer.hover._BAR_HEIGHT) {
-				$hov.css("top", $(window).height() - Renderer.hover._BAR_HEIGHT);
-			}
-			// ...if horizontally clipping off screen
-			const hvLeft = parseFloat($hov.css("left"));
-			if (hvLeft < 0) $hov.css("left", 0);
-			else if (hvLeft + $hov.width() > $(window).width()) {
-				$hov.css("left", Math.max($(window).width() - $hov.width(), 0));
-			}
-		}
-
-		function teardown () {
-			Renderer.hover._teardownWindow(hoverId);
-		}
-
-		// alternate teardown for 'x' button
-		function altTeardown () {
-			$ele.attr("data-hover-active", false);
-			$hov.remove();
-			$(document).off(mouseUpId);
-			$(document).off(mouseMoveId);
-			$(window).off(resizeId);
-			delete Renderer.hover._active[hoverId];
-		}
-
-		function reset () {
-			Renderer.hover._showInProgress = false;
-			Renderer.hover._curHovering = null;
-		}
-	},
+	// endregion
 
 	getGenericCompactRenderedString (entry) {
 		return `
@@ -4904,63 +5060,6 @@ Renderer.hover = {
 		}
 	},
 
-	// used in hover strings
-	mouseOverHoverTooltip (evt, ele, id, isBookContent) {
-		const data = Renderer.hover._mouseHovers[id];
-		if (data == null) return setTimeout(() => { throw new Error(`No "data" found for hover ID ${id}`) }); // this should never occur, but does on other platforms
-		Renderer.hover.show({evt, ele, page: "hover", source: data, hash: "", isBookContent});
-	},
-
-	mouseOver (evt, ele, page, source, hash, isPopout, preloadId) {
-		if (preloadId != null) {
-			const [type, data] = preloadId.split(":");
-			switch (type) {
-				case MON_HASH_SCALED: {
-					Renderer.hover.pCacheAndGet(page, source, hash).then(mon => {
-						ScaleCreature.scale(mon, Number(data)).then(scaled => {
-							Renderer.hover.mouseOverPreloaded(evt, ele, scaled, page, source, hash, isPopout);
-						});
-					});
-					break;
-				}
-			}
-		} else Renderer.hover.show({evt, ele, page, source, hash, isPopout});
-	},
-
-	mouseOverPreloaded (evt, ele, preLoaded, page, source, hash, isPopout) {
-		Renderer.hover.show({evt, ele, preLoaded, page, source, hash, isPopout});
-	},
-
-	/**
-	 * The most basic hover display possible. Creates a new window which displays the thing.
-	 */
-	doHover (evt, ele, entries, isBookContent) {
-		Renderer.hover.show({evt, ele, preLoaded: entries, page: "generic", isBookContent: !!isBookContent});
-	},
-
-	/**
-	 * As above, but designed to be used with e.g. button clicks, as opposed to hover.
-	 */
-	doOpenWindow (evt, ele, entries, isBookContent) {
-		const fauxEvent = {shiftKey: true, clientX: evt.clientX, clientY: evt.clientY};
-		Renderer.hover.show({evt: fauxEvent, ele, preLoaded: entries, page: "generic", isBookContent: !!isBookContent});
-	},
-
-	_doInit () {
-		if (!Renderer.hover._isInit) {
-			Renderer.hover._isInit = true;
-			$(`body`).on("click", () => Renderer.hover._cleanWindows());
-			ContextUtil.doInitContextMenu("hoverBorder", (evt, ele, $invokedOn, $selectedMenu) => {
-				const $perms = $(`.hoverborder[data-perm="true"]`);
-				switch (Number($selectedMenu.data("ctx-id"))) {
-					case 0: $perms.attr("data-display-title", "false"); break;
-					case 1: $perms.attr("data-display-title", "true"); break;
-					case 2: $(`.hvr__close`).click(); break;
-				}
-			}, ["Maximize All", "Minimize All", null, "Close All"]);
-		}
-	},
-
 	_isSmallScreen () {
 		const outerWindow = (() => {
 			let loops = 100;
@@ -4972,86 +5071,7 @@ Renderer.hover = {
 			return curr;
 		})();
 
-		return $(outerWindow).width() <= 768;
-	},
-
-	_BAR_HEIGHT: 16,
-	_showInProgress: false,
-	_hoverId: 1,
-	_popoutId: -1,
-	_curHovering: null,
-	show: (options) => {
-		const evt = options.evt;
-		const ele = options.ele;
-		const preLoaded = options.preLoaded;
-		const page = options.page;
-		const source = options.source;
-		const hash = options.hash;
-		const isPopout = options.isPopout;
-		const isBookContent = options.isBookContent;
-
-		const $ele = $(ele);
-		Renderer.hover._doInit();
-
-		// don't show on narrow screens
-		if (Renderer.hover._isSmallScreen() && !evt.shiftKey) return;
-
-		let hoverId;
-		if (isPopout) {
-			// always use a new hover ID if popout
-			hoverId = Renderer.hover._popoutId--;
-			$ele.attr("data-hover-id", hoverId);
-		} else {
-			const curHoverId = $ele.attr("data-hover-id");
-			if (curHoverId) hoverId = Number(curHoverId);
-			else {
-				hoverId = Renderer.hover._hoverId++;
-				$ele.attr("data-hover-id", hoverId);
-			}
-		}
-
-		const alreadyHovering = $ele.attr("data-hover-active");
-		const $curWin = $(`.hoverborder[data-hover-id="${hoverId}"]`);
-		if (alreadyHovering === "true" && $curWin.length) return;
-
-		const renderFunction = Renderer.hover._pageToRenderFn(page);
-		if (!renderFunction) throw new Error(`No hover render function specified for page ${page}`);
-		Renderer.hover._curHovering = {
-			hoverId: hoverId,
-			ele: ele,
-			renderFunction: renderFunction,
-			preLoaded: preLoaded,
-			cPage: page,
-			cSource: source,
-			cHash: hash,
-			permanent: evt.shiftKey,
-			clientX: EventUtil.getClientX(evt),
-			isBookContent
-		};
-
-		// return if another event chain is handling the event
-		if (Renderer.hover._showInProgress) return;
-
-		Renderer.hover._showInProgress = true;
-		$ele.css("cursor", "wait")
-			.off("mouseleave.hoverwindow"); // clean up any old event listeners
-
-		// clean up any abandoned windows
-		Renderer.hover._cleanWindows();
-
-		// cancel hover if the mouse leaves
-		$ele.on("mouseleave.hoverwindow", () => {
-			if (!Renderer.hover._curHovering || !Renderer.hover._curHovering.permanent) {
-				Renderer.hover._curHovering = null;
-			}
-		});
-
-		Renderer.hover.pCacheAndGet(page, source, hash).then(Renderer.hover._makeWindow.bind(Renderer.hover));
-	},
-
-	_cleanWindows: () => {
-		const ks = Object.keys(Renderer.hover._active);
-		ks.forEach(hovId => Renderer.hover._teardownWindow(hovId));
+		return outerWindow.innerWidth <= 768;
 	},
 
 	bindPopoutButton (toList, handlerGenerator) {
@@ -5059,38 +5079,64 @@ Renderer.hover = {
 			.off("click")
 			.attr("title", "Popout Window (SHIFT for Source Data)");
 
-		const popoutCodeId = Renderer.hover.__initOnMouseHoverEntry({});
+		$btnPop.on(
+			"click",
+			handlerGenerator
+				? handlerGenerator(toList)
+				: (evt) => {
+					if (Hist.lastLoadedId !== null) {
+						const toRender = toList[Hist.lastLoadedId];
 
-		$btnPop.on("click", handlerGenerator ? handlerGenerator(toList, $btnPop, popoutCodeId) : (evt) => {
-			if (Hist.lastLoadedId !== null) {
-				if (evt.shiftKey) {
-					Renderer.hover.handlePopoutCode(evt, toList, $btnPop, popoutCodeId);
-				} else Renderer.hover.doPopout($btnPop, toList, Hist.lastLoadedId, evt.clientX);
-			}
-		});
+						if (evt.shiftKey) {
+							const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+							Renderer.hover.getShowWindow(
+								$content,
+								Renderer.hover.getWindowPositionFromEvent(evt),
+								{
+									title: `${toRender.name} \u2014 Source Data`,
+									isPermanent: true,
+									isBookContent: true
+								}
+							);
+						} else {
+							Renderer.hover.doPopoutCurPage(evt, toList, Hist.lastLoadedId);
+						}
+					}
+				}
+		);
 	},
 
-	handlePopoutCode (evt, toList, $btnPop, popoutCodeId) {
-		const data = toList[Hist.lastLoadedId];
-		const cleanCopy = DataUtil.cleanJson(MiscUtil.copy(data));
-		Renderer.hover.__updateOnMouseHoverEntry(popoutCodeId, {
+	$getHoverContent_stats (page, toRender) {
+		const renderFn = Renderer.hover._pageToRenderFn(page);
+		return $$`<table class="stats">${renderFn(toRender)}</table>`;
+	},
+
+	$getHoverContent_statsCode (toRender) {
+		const cleanCopy = DataUtil.cleanJson(MiscUtil.copy(toRender));
+		const toRenderCode = {
 			type: "code",
-			name: `${data.name} \u2014 Source Data`,
+			name: `${cleanCopy.name} \u2014 Source Data`,
 			preformatted: JSON.stringify(cleanCopy, null, "\t")
-		});
-		$btnPop.attr("data-hover-active", false);
-		Renderer.hover.mouseOverHoverTooltip({shiftKey: true, clientX: evt.clientX}, $btnPop.get(0), popoutCodeId, true);
+		};
+		return $$`<table class="stats stats--book">${Renderer.get().render(toRenderCode)}</table>`;
 	},
 
-	doPopout: ($btnPop, list, index, clientX) => {
-		$btnPop.attr("data-hover-active", false);
-		const it = list[index];
-		Renderer.hover.mouseOver({shiftKey: true, clientX: clientX}, $btnPop.get(0), UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it), true);
+	$getHoverContent_generic (toRender, isBookContent) {
+		return $$`<table class="stats ${isBookContent ? "stats--book" : ""}">${Renderer.hover.getGenericCompactRenderedString(toRender)}</table>`;
 	},
 
-	doPopoutPreloaded ($btnPop, it, clientX) {
-		$btnPop.attr("data-hover-active", false);
-		Renderer.hover.mouseOverPreloaded({shiftKey: true, clientX: clientX}, $btnPop.get(0), it, UrlUtil.getCurrentPage(), it.source, UrlUtil.autoEncodeHash(it), true);
+	doPopoutCurPage (evt, allEntries, index) {
+		const it = allEntries[index];
+		const $content = Renderer.hover.$getHoverContent_stats(UrlUtil.getCurrentPage(), it);
+		Renderer.hover.getShowWindow(
+			$content,
+			Renderer.hover.getWindowPositionFromEvent(evt),
+			{
+				pageUrl: `#${UrlUtil.autoEncodeHash(it)}`,
+				title: it.name,
+				isPermanent: true
+			}
+		);
 	}
 };
 

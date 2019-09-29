@@ -429,13 +429,17 @@ class Builder extends ProxyBase {
 						const out = this._ui._getJsonOutputTemplate();
 						out[this._prop] = [PropOrder.getOrdered(DataUtil.cleanJson(MiscUtil.copy(entry)), this._prop)];
 
-						const popoutCodeId = Renderer.hover.__initOnMouseHoverEntry({
-							type: "code",
-							name: `${this._state.name} \u2014 Source Data`,
-							preformatted: JSON.stringify(out, null, "\t")
-						});
-						$btnBurger.attr("data-hover-active", false);
-						Renderer.hover.mouseOverHoverTooltip({shiftKey: true, clientX: evt.clientX}, $btnBurger[0], popoutCodeId, true);
+						const $content = Renderer.hover.$getHoverContent_statsCode(this._state.name);
+
+						Renderer.hover.getShowWindow(
+							$content,
+							Renderer.hover.getWindowPositionFromEvent(evt),
+							{
+								title: `${this._state.name} \u2014 Source Data`,
+								isPermanent: true,
+								isBookContent: true
+							}
+						);
 					}
 				},
 				{

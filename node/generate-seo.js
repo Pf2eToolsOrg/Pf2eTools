@@ -21,7 +21,9 @@ const baseSitemapData = (() => {
 	// Scrape all the links from navigation.js -- avoid any unofficial HTML files which might exist
 	const navText = fs.readFileSync("./js/navigation.js", "utf-8");
 	navText.replace(/(?:"([^"]+\.html)"|'([^']+)\.html'|`([^`]+)\.html`)/gi, (...m) => {
-		out[m[1] || m[2] || m[3]] = true;
+		const str = m[1] || m[2] || m[3];
+		if (str.includes("${")) return;
+		out[str] = true;
 	});
 
 	return out;
@@ -124,12 +126,6 @@ async function main () {
 	$urlRoot.ele("loc", BASE_SITE_URL);
 	$urlRoot.ele("lastmod", lastMod);
 	$urlRoot.ele("changefreq", "monthly");
-	sitemapLinkCount++;
-
-	const $urlIndex = $urlSet.ele("url");
-	$urlIndex.ele("loc", `${BASE_SITE_URL}index.html`);
-	$urlIndex.ele("lastmod", lastMod);
-	$urlIndex.ele("changefreq", "monthly");
 	sitemapLinkCount++;
 
 	Object.keys(baseSitemapData).forEach(url => {

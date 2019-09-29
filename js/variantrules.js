@@ -12,10 +12,8 @@ class VariantRulesPage extends ListPage {
 			],
 			filterSource: sourceFilter,
 
-			listValueNames: ["name", "source", "search"],
 			listClass: "variantrules",
 
-			sublistValueNames: ["name", "id"],
 			sublistClass: "subvariantrules",
 
 			dataProps: ["variantrule"]
@@ -33,20 +31,39 @@ class VariantRulesPage extends ListPage {
 		// populate filters
 		this._sourceFilter.addItem(rule.source);
 
-		return `
-			<li class="row" ${FLTR_ID}="${rlI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-				<a id="${rlI}" href="#${UrlUtil.autoEncodeHash(rule)}" title="${rule.name}">
-					<span class="name col-10 pl-0">${rule.name}</span>
-					<span class="source col-2 text-center ${Parser.sourceJsonToColor(rule.source)} pr-0" title="${Parser.sourceJsonToFull(rule.source)}" ${BrewUtil.sourceJsonToStyle(rule.source)}>${Parser.sourceJsonToAbv(rule.source)}</span>
-					<span class="search hidden">${searchStack.join(",")}</span>
-				</a>
-			</li>`;
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const source = Parser.sourceJsonToAbv(rule.source);
+		const hash = UrlUtil.autoEncodeHash(rule);
+
+		eleLi.innerHTML = `<a href="#${hash}">
+			<span class="bold col-10 pl-0">${rule.name}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(rule.source)} pr-0" title="${Parser.sourceJsonToFull(rule.source)}" ${BrewUtil.sourceJsonToStyle(rule.source)}>${source}</span>
+		</a>`;
+
+		const listItem = new ListItem(
+			rlI,
+			eleLi,
+			rule.name,
+			{
+				hash,
+				search: searchStack.join(","),
+				source,
+				uniqueid: rule.uniqueId ? rule.uniqueId : rlI
+			}
+		);
+
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+
+		return listItem;
 	}
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
 		this._list.filter((item) => {
-			const r = this._dataList[$(item.elm).attr(FLTR_ID)];
+			const r = this._dataList[item.ix];
 			return this._filterBox.toDisplay(
 				f,
 				r.source
@@ -55,15 +72,21 @@ class VariantRulesPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	getSublistItem (rule, pinId) {
-		return `
-			<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-				<a href="#${UrlUtil.autoEncodeHash(rule)}" title="${rule.name}">
-					<span class="name col-12 px-0">${rule.name}</span>
-					<span class="id hidden">${pinId}</span>
-				</a>
-			</li>
-		`;
+	getSublistItem (it, pinId) {
+		const hash = UrlUtil.autoEncodeHash(it);
+
+		const $ele = $(`<li class="row"><a href="#${hash}" title="${it.name}"><span class="bold col-12 px-0">${it.name}</span></a></li>`)
+			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+
+		const listItem = new ListItem(
+			pinId,
+			$ele,
+			it.name,
+			{
+				hash
+			}
+		);
+		return listItem;
 	}
 
 	doLoadHash (id) {

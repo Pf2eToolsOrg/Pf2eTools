@@ -94,18 +94,16 @@ class InitiativeTrackerUtil {
 		if (opts.name) {
 			const cond = InitiativeTrackerUtil.CONDITIONS.find(it => it.condName !== null && it.name.toLowerCase() === opts.name.toLowerCase().trim());
 			if (cond) {
+				const ele = $cond[0];
 				$cond.on("mouseover", (evt) => {
 					if (evt.shiftKey) {
 						evt.shiftKey = false;
-						Renderer.hover.mouseOver(
-							evt,
-							$cond[0],
-							UrlUtil.PG_CONDITIONS_DISEASES,
-							SRC_PHB,
-							UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS_DISEASES]({name: cond.condName || cond.name, source: SRC_PHB})
-						);
+						const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS_DISEASES]({name: cond.condName || cond.name, source: SRC_PHB});
+						Renderer.hover.pHandleLinkMouseOver(evt, ele, UrlUtil.PG_CONDITIONS_DISEASES, SRC_PHB, hash);
 					}
-				})
+				});
+				$cond.on("mousemove", (evt) => Renderer.hover.handleLinkMouseMove(evt, ele));
+				$cond.on("mouseleave", (evt) => Renderer.hover.handleLinkMouseLeave(evt, ele));
 			}
 		}
 

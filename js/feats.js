@@ -19,10 +19,8 @@ class FeatsPage extends ListPage {
 			],
 			filterSource: sourceFilter,
 
-			listValueNames: ["name", "source", "ability", "prerequisite", "uniqueid"],
 			listClass: "feats",
 
-			sublistValueNames: ["name", "ability", "prerequisite", "id"],
 			sublistClass: "subfeats",
 
 			dataProps: ["feat"]
@@ -49,23 +47,42 @@ class FeatsPage extends ListPage {
 		// populate filters
 		this._sourceFilter.addItem(feat.source);
 
-		return `
-		<li class="row" ${FLTR_ID}="${ftI}" onclick="ListUtil.toggleSelected(event, this)" oncontextmenu="ListUtil.openContextMenu(event, this)">
-			<a id="${ftI}" href="#${UrlUtil.autoEncodeHash(feat)}" title="${name}">
-				<span class="name col-3-8 pl-0">${name}</span>
-				<span class="ability col-3-5 ${ability.asText === STR_NONE ? "list-entry-none " : ""}">${ability.asText}</span>
-				<span class="prerequisite col-3 ${(prereqText === STR_NONE ? "list-entry-none " : "")}">${prereqText}</span>
-				<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${Parser.sourceJsonToAbv(feat.source)}</span>
-				
-				<span class="uniqueid hidden">${feat.uniqueId ? feat.uniqueId : ftI}</span>
-			</a>
-		</li>`;
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const source = Parser.sourceJsonToAbv(feat.source);
+		const hash = UrlUtil.autoEncodeHash(feat);
+
+		eleLi.innerHTML = `<a href="#${hash}">
+			<span class="bold col-3-8 pl-0">${name}</span>
+			<span class="col-3-5 ${ability.asText === STR_NONE ? "list-entry-none " : ""}">${ability.asText}</span>
+			<span class="col-3 ${(prereqText === STR_NONE ? "list-entry-none " : "")}">${prereqText}</span>
+			<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
+		</a>`;
+
+		const listItem = new ListItem(
+			ftI,
+			eleLi,
+			feat.name,
+			{
+				hash,
+				source,
+				ability: ability.asText,
+				prerequisite: prereqText,
+				uniqueid: feat.uniqueId ? feat.uniqueId : ftI
+			}
+		);
+
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+
+		return listItem;
 	}
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
 		this._list.filter((item) => {
-			const ft = this._dataList[$(item.elm).attr(FLTR_ID)];
+			const ft = this._dataList[item.ix];
 			return this._filterBox.toDisplay(
 				f,
 				ft.source,
@@ -77,16 +94,28 @@ class FeatsPage extends ListPage {
 	}
 
 	getSublistItem (feat, pinId) {
-		return `
-			<li class="row" ${FLTR_ID}="${pinId}" oncontextmenu="ListUtil.openSubContextMenu(event, this)">
-				<a href="#${UrlUtil.autoEncodeHash(feat)}" title="${feat.name}">
-					<span class="name col-4 pl-0">${feat.name}</span>
-					<span class="ability col-4 ${feat._slAbility === STR_NONE ? "list-entry-none" : ""}">${feat._slAbility}</span>
-					<span class="prerequisite col-4 ${feat._slPrereq === STR_NONE ? "list-entry-none" : ""} pr-0">${feat._slPrereq}</span>
-					<span class="id hidden">${pinId}</span>
-				</a>
-			</li>
-		`;
+		const hash = UrlUtil.autoEncodeHash(feat);
+
+		const $ele = $(`<li class="row">
+			<a href="#${hash}">
+				<span class="bold col-4 pl-0">${feat.name}</span>
+				<span class="col-4 ${feat._slAbility === STR_NONE ? "list-entry-none" : ""}">${feat._slAbility}</span>
+				<span class="col-4 ${feat._slPrereq === STR_NONE ? "list-entry-none" : ""} pr-0">${feat._slPrereq}</span>
+			</a>
+		</li>`)
+			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+
+		const listItem = new ListItem(
+			pinId,
+			$ele,
+			feat.name,
+			{
+				hash,
+				ability: feat._slAbility,
+				prerequisite: feat._slPrereq
+			}
+		);
+		return listItem;
 	}
 
 	doLoadHash (id) {

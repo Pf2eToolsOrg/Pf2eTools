@@ -7,10 +7,8 @@ class ListPage {
 	 * @param [opts.dataSourceFluff] Fluff JSON data url or function to fetch fluff data.
 	 * @param opts.filters Array of filters to use in the filter box.
 	 * @param opts.filterSource Source filter.
-	 * @param opts.listValueNames Value names to use in the list.
 	 * @param opts.listClass List class.
 	 * @param opts.listOptions Other list options.
-	 * @param opts.sublistValueNames Value names to use in the sublist.
 	 * @param opts.sublistClass Sublist class.
 	 * @param opts.sublistOptions Other sublist options.
 	 * @param opts.dataProps JSON data propert(y/ies).
@@ -23,10 +21,8 @@ class ListPage {
 		this._dataSourcefluff = opts.dataSourceFluff;
 		this._filters = opts.filters;
 		this._filterSource = opts.filterSource;
-		this._listValueNames = opts.listValueNames;
 		this._listClass = opts.listClass;
 		this._listOptions = opts.listOptions || {};
-		this._sublistValueNames = opts.sublistValueNames;
 		this._sublistClass = opts.sublistClass;
 		this._sublistOptions = opts.sublistOptions || {};
 		this._dataProps = opts.dataProps;
@@ -36,6 +32,7 @@ class ListPage {
 
 		this._renderer = Renderer.get();
 		this._list = null;
+		this._listSub = null;
 		this._filterBox = null;
 		this._dataList = [];
 		this._ixData = 0;
@@ -44,37 +41,31 @@ class ListPage {
 
 	async pOnLoad () {
 		await ExcludeUtil.pInitialise();
-		SortUtil.initHandleFilterButtonClicks();
 		const data = typeof this._dataSource === "string" ? await DataUtil.loadJSON(this._dataSource) : await this._dataSource();
 
-		this._list = ListUtil.search({
-			valueNames: this._listValueNames,
-			listClass: this._listClass,
+		this._list = ListUtil.initList({
+			$wrpList: $(`ul.list.${this._listClass}`),
 			...this._listOptions
 		});
+		ListUtil.setOptions({primaryLists: [this._list]});
+		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 
 		this._filterBox = await pInitFilterBox({
 			filters: this._filters
 		});
 
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
-		this._list.on("updated", () => {
-			$outVisibleResults.html(`${this._list.visibleItems.length}/${this._list.items.length}`);
-		});
+		this._list.on("updated", () => $outVisibleResults.html(`${this._list.visibleItems.length}/${this._list.items.length}`));
 
-		$(this._filterBox).on(
-			FilterBox.EVNT_VALCHANGE,
-			this.handleFilterChange.bind(this)
-		);
+		$(this._filterBox).on(FilterBox.EVNT_VALCHANGE, this.handleFilterChange.bind(this));
 
-		// sublist
-		ListUtil.initSublist({
-			valueNames: this._sublistValueNames,
+		this._listSub = ListUtil.initSublist({
 			listClass: this._sublistClass,
 			getSublistRow: this.getSublistItem.bind(this),
 			...this._sublistOptions
 		});
 		ListUtil.initGenericPinnable();
+		SortUtil.initBtnSortHandlers($("#sublistsort"), this._listSub);
 
 		this._addData(data);
 
@@ -104,6 +95,7 @@ class ListPage {
 				"bookview",
 				this._bookViewOptions.$btnOpen,
 				this._bookViewOptions.noneVisibleMsg,
+				this._bookViewOptions.pageTitle || "Book View",
 				this._bookViewOptions.popTblGetNumShown,
 				true
 			);
@@ -112,6 +104,9 @@ class ListPage {
 		// bind hash-change functions for hist.js to use
 		window.loadHash = this.doLoadHash.bind(this);
 		window.loadSubHash = this.doLoadSubHash.bind(this);
+
+		this._list.init();
+		this._listSub.init();
 
 		Hist.init(true);
 		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#pagecontent`));
@@ -129,20 +124,14 @@ class ListPage {
 			this._dataList = this._dataList.concat(data[prop]);
 		});
 
-		const $table = $(`ul.${this._listClass}`);
-		let tempString = "";
-		for (; this._ixData < this._dataList.length; this._ixData++) {
+		const len = this._dataList.length;
+		for (; this._ixData < len; this._ixData++) {
 			const it = this._dataList[this._ixData];
 			if (ExcludeUtil.isExcluded(it.name, it.__prop, it.source)) continue;
-
-			tempString += this.getListItem(it, this._ixData);
+			this._list.addItem(this.getListItem(it, this._ixData));
 		}
-		const lastSearch = ListUtil.getSearchTermAndReset(this._list);
-		$table.append(tempString);
 
-		this._list.reIndex();
-		if (lastSearch) this._list.search(lastSearch);
-		this._list.sort("name");
+		this._list.update();
 		this._filterBox.render();
 		this.handleFilterChange();
 

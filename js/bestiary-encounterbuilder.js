@@ -22,6 +22,7 @@ class EncounterBuilder extends ProxyBase {
 		this._$btnReload = null;
 		this._$btnLoad = null;
 		this.pSetSavedEncountersThrottled = MiscUtil.throttle(this._pSetSavedEncounters.bind(this), 50);
+		this._infoHoverId = null;
 
 		this.doSaveStateDebounced = MiscUtil.debounce(this.doSaveState, 50);
 	}
@@ -85,7 +86,7 @@ class EncounterBuilder extends ProxyBase {
 		const $btnSvTxt = $(`.ecgen__sv_text`).click(() => {
 			let xpTotal = 0;
 			const toCopyCreatures = ListUtil.sublist.items
-				.map(it => it.values())
+				.map(it => it.values)
 				.sort((a, b) => SortUtil.ascSortLower(a.name, b.name))
 				.map(it => {
 					xpTotal += Parser.crToXpNumber(it.cr) * it.count;
@@ -261,7 +262,7 @@ class EncounterBuilder extends ProxyBase {
 		if (this._cache == null) {
 			this._cache = (() => {
 				const out = {};
-				list.visibleItems.map(it => monsters[Number(it.elm.getAttribute("filterid"))]).filter(m => !m.isNpc).forEach(m => {
+				list.visibleItems.map(it => monsters[it.ix]).filter(m => !m.isNpc).forEach(m => {
 					const mXp = Parser.crToXpNumber(m.cr);
 					if (mXp) (out[mXp] = out[mXp] || []).push(m);
 				});
@@ -418,7 +419,7 @@ class EncounterBuilder extends ProxyBase {
 			items: currentEncounter.map(creatureType => ({
 				h: creatureType.hash,
 				c: `${creatureType.count}`,
-				uid: creatureType.uid || undefined
+				uniqueid: creatureType.uniqueid || undefined
 			})),
 			sources: ListUtil.getExportableSublist().sources
 		});
@@ -630,13 +631,13 @@ class EncounterBuilder extends ProxyBase {
 		$(`body`).removeClass("ecgen_active");
 	}
 
-	handleClick (evt, ix, add, ele) {
-		const data = ele ? {uid: $(ele).closest(`li.row`).find(`.uid`).text()} : undefined;
+	handleClick (evt, ix, add, uniqueId) {
+		const data = uniqueId ? {uid: uniqueId} : undefined;
 		if (add) ListUtil.pDoSublistAdd(ix, true, evt.shiftKey ? 5 : 1, data);
 		else ListUtil.pDoSublistSubtract(ix, evt.shiftKey ? 5 : 1, data);
 	}
 
-	handleShuffleClick (evt, ix) {
+	handleShuffleClick (ix) {
 		const mon = monsters[ix];
 		const xp = Parser.crToXpNumber(mon.cr);
 		if (!xp) return; // if Unknown/etc
@@ -731,26 +732,35 @@ class EncounterBuilder extends ProxyBase {
 			$(`.ecgen__rating`).text(`Difficulty: ${difficulty}`);
 			$(`.ecgen__raw_total`).text(`Total XP: ${xp.encounter.baseXp.toLocaleString()}`);
 			$(`.ecgen__raw_per_player`).text(`(${Math.floor(xp.encounter.baseXp / xp.party.count).toLocaleString()} per player)`);
-			const infoHover = Renderer.hover.bindOnMouseHoverEntry(
-				{
-					entries: [
-						`{@b Adjusted by a ${xp.encounter.meta.playerAdjustedXpMult}× multiplier, based on a minimum challenge rating threshold of approximately ${`${xp.encounter.meta.crCutoff.toFixed(2)}`.replace(/[,.]?0+$/, "")}*&dagger;, and a party size of ${xp.encounter.meta.playerCount} players.}`,
-						`{@note * Calculated as half of the maximum challenge rating, unless the highest challenge rating is two or less, in which case there is no threshold.}`,
-						`<hr>`,
-						{
-							type: "quote",
-							entries: [
-								`&dagger; [...] don't count any monsters whose challenge rating is significantly below the average challenge rating of the other monsters in the group [...]`
-							],
-							"by": "{@book Dungeon Master's Guide, page 82|DMG|3|4 Modify Total XP for Multiple Monsters}"
-						}
-					]
-				},
-				true
-			);
-			$(`.ecgen__adjusted_total_info`).off("mouseover").on("mouseover", function (event) {
-				infoHover(event, this);
-			});
+
+			const infoEntry = {
+				type: "entries",
+				entries: [
+					`{@b Adjusted by a ${xp.encounter.meta.playerAdjustedXpMult}× multiplier, based on a minimum challenge rating threshold of approximately ${`${xp.encounter.meta.crCutoff.toFixed(2)}`.replace(/[,.]?0+$/, "")}*&dagger;, and a party size of ${xp.encounter.meta.playerCount} players.}`,
+					`{@note * Calculated as half of the maximum challenge rating, unless the highest challenge rating is two or less, in which case there is no threshold.}`,
+					`<hr>`,
+					{
+						type: "quote",
+						entries: [
+							`&dagger; [...] don't count any monsters whose challenge rating is significantly below the average challenge rating of the other monsters in the group [...]`
+						],
+						"by": "{@book Dungeon Master's Guide, page 82|DMG|3|4 Modify Total XP for Multiple Monsters}"
+					}
+				]
+			};
+
+			if (this._infoHoverId == null) {
+				const hoverMeta = Renderer.hover.getMakePredefinedHover(infoEntry, true);
+				this._infoHoverId = hoverMeta.id;
+
+				const $hvInfo = $(`.ecgen__adjusted_total_info`);
+				$hvInfo.on("mouseover", function (event) { hoverMeta.mouseOver(event, this) });
+				$hvInfo.on("mousemove", function (event) { hoverMeta.mouseMove(event, this) });
+				$hvInfo.on("mouseleave", function (event) { hoverMeta.mouseLeave(event, this) });
+			} else {
+				Renderer.hover.updatePredefinedHover(this._infoHoverId, infoEntry);
+			}
+
 			$(`.ecgen__adjusted_total`).text(`Adjusted XP: ${xp.encounter.adjustedXp.toLocaleString()}`);
 			$(`.ecgen__adjusted_per_player`).text(`(${Math.floor(xp.encounter.adjustedXp / xp.party.count).toLocaleString()} per player)`);
 		} else {
@@ -818,72 +828,83 @@ class EncounterBuilder extends ProxyBase {
 
 	static async doStatblockMouseOver (evt, ele, ixMon, scaledTo) {
 		const mon = monsters[ixMon];
-		if (scaledTo != null) {
-			const scaled = await ScaleCreature.scale(mon, scaledTo);
-			Renderer.hover.mouseOverPreloaded(evt, ele, scaled, UrlUtil.PG_BESTIARY, mon.source, UrlUtil.autoEncodeHash(mon));
-		} else {
-			Renderer.hover.mouseOver(evt, ele, UrlUtil.PG_BESTIARY, mon.source, UrlUtil.autoEncodeHash(mon));
-		}
+
+		const hash = UrlUtil.autoEncodeHash(mon);
+		const preloadId = scaledTo != null ? `${MON_HASH_SCALED}:${scaledTo}` : null;
+		return Renderer.hover.pHandleLinkMouseOver(evt, ele, UrlUtil.PG_BESTIARY, mon.source, hash, preloadId);
 	}
 
-	static getTokenMouseOver (mon) {
-		return Renderer.hover.createOnMouseHoverEntry(
+	static getTokenHoverMeta (mon) {
+		return Renderer.hover.getMakePredefinedHover(
 			{
-				name: `Token \u2014 ${mon.name}`,
 				type: "image",
 				href: {
 					type: "external",
 					url: Renderer.monster.getTokenUrl(mon)
+				},
+				data: {
+					hoverTitle: `Token \u2014 ${mon.name}`
 				}
 			},
 			true
 		);
 	}
 
-	static async doImageMouseOver (evt, ele, ixMon) {
+	static async handleImageMouseOver (evt, $ele, ixMon) {
+		// We'll rebuild the mouseover handler with whatever we load
+		$ele.off("mouseover");
+
 		const mon = monsters[ixMon];
 
-		const renderNoImages = () => {
-			const toShow = {
-				type: "entries",
-				entries: [
-					HTML_NO_IMAGES
-				],
-				data: {
-					hoverTitle: `Image \u2014 ${mon.name}`
-				}
-			};
-			Renderer.hover.doHover(evt, ele, toShow, true);
-		};
-
-		const renderImages = (data) => {
-			const fluff = Renderer.monster.getFluff(mon, meta, data);
-			if (fluff && fluff.images && fluff.images.length) {
-				const toShow = {
-					type: "image",
-					href: fluff.images[0].href,
+		const handleNoImages = () => {
+			const hoverMeta = Renderer.hover.getMakePredefinedHover(
+				{
+					type: "entries",
+					entries: [
+						HTML_NO_IMAGES
+					],
 					data: {
 						hoverTitle: `Image \u2014 ${mon.name}`
 					}
-				};
-				Renderer.hover.doHover(evt, ele, toShow, true);
-			} else return renderNoImages();
+				},
+				true
+			);
+			$ele.mouseover(evt => hoverMeta.mouseOver(evt, $ele[0]))
+				.mousemove(evt => hoverMeta.mouseMove(evt, $ele[0]))
+				.mouseleave(evt => hoverMeta.mouseLeave(evt, $ele[0]));
+			$ele.mouseover();
+		};
+
+		const handleHasImages = (data) => {
+			const fluff = Renderer.monster.getFluff(mon, meta, data);
+			if (fluff && fluff.images && fluff.images.length) {
+				const hoverMeta = Renderer.hover.getMakePredefinedHover(
+					{
+						type: "image",
+						href: fluff.images[0].href,
+						data: {
+							hoverTitle: `Image \u2014 ${mon.name}`
+						}
+					},
+					true
+				);
+				$ele.mouseover(evt => hoverMeta.mouseOver(evt, $ele[0]))
+					.mousemove(evt => hoverMeta.mouseMove(evt, $ele[0]))
+					.mouseleave(evt => hoverMeta.mouseLeave(evt, $ele[0]));
+				$ele.mouseover();
+			} else handleNoImages();
 		};
 
 		if (ixFluff[mon.source] || mon.fluff) {
-			if (mon.fluff) {
-				return renderImages();
-			} else {
+			if (mon.fluff) handleHasImages();
+			else {
 				const data = await DataUtil.loadJSON(`${JSON_DIR}${ixFluff[mon.source]}`);
-				return renderImages(data);
+				handleHasImages(data);
 			}
-		} else {
-			return renderNoImages();
-		}
+		} else handleNoImages();
 	}
 
-	doCrChange (ele, ixMon, scaledTo) {
-		const $iptCr = $(ele);
+	doCrChange ($iptCr, ixMon, scaledTo) {
 		const mon = monsters[ixMon];
 		const baseCr = mon.cr.cr || mon.cr;
 		if (baseCr == null) return;
@@ -900,15 +921,15 @@ class EncounterBuilder extends ProxyBase {
 
 			const toFindUid = !(scaledTo == null || baseCrNum === scaledTo) ? getUid(mon.name, mon.source, scaledTo) : null;
 			const ixCurrItem = state.items.findIndex(it => {
-				if (scaledTo == null || scaledTo === baseCrNum) return it.uid == null && it.h === toFindHash;
-				else return it.uid === toFindUid;
+				if (scaledTo == null || scaledTo === baseCrNum) return it.uniqueid == null && it.h === toFindHash;
+				else return it.uniqueid === toFindUid;
 			});
 			if (!~ixCurrItem) throw new Error(`Could not find previously sublisted item!`);
 
 			const toFindNxtUid = baseCrNum !== targetCrNum ? getUid(mon.name, mon.source, targetCrNum) : null;
 			const nextItem = state.items.find(it => {
-				if (targetCrNum === baseCrNum) return it.uid == null && it.h === toFindHash;
-				else return it.uid === toFindNxtUid;
+				if (targetCrNum === baseCrNum) return it.uniqueid == null && it.h === toFindHash;
+				else return it.uniqueid === toFindNxtUid;
 			});
 
 			// if there's an existing item with a matching UID (or lack of), merge into it
@@ -918,8 +939,8 @@ class EncounterBuilder extends ProxyBase {
 				state.items.splice(ixCurrItem, 1);
 			} else {
 				// if we're returning to the original CR, wipe the existing UID. Otherwise, adjust it
-				if (targetCrNum === baseCrNum) delete state.items[ixCurrItem].uid;
-				else state.items[ixCurrItem].uid = getUid(mon.name, mon.source, targetCrNum);
+				if (targetCrNum === baseCrNum) delete state.items[ixCurrItem].uniqueid;
+				else state.items[ixCurrItem].uniqueid = getUid(mon.name, mon.source, targetCrNum);
 			}
 
 			this._loadSublist(state);
@@ -1019,22 +1040,32 @@ class EncounterBuilder extends ProxyBase {
 		`;
 	}
 
-	static getButtons (monId, isSublist) {
-		return `
-			<span class="ecgen__visible ${isSublist ? "col-1-5" : "col-1"} no-wrap pl-0" onclick="event.preventDefault(); event.stopPropagation()">
-				<button title="Add (SHIFT for 5)" class="btn btn-success btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 1${isSublist ? `, this` : ""})">
-					<span class="glyphicon glyphicon-plus"></span>
-				</button>
-				<button title="Subtract (SHIFT for 5)" class="btn btn-danger btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 0${isSublist ? `, this` : ""})">
-					<span class="glyphicon glyphicon-minus"></span>
-				</button>
-				${isSublist ? `
-				<button title="Randomize Monster" class="btn btn-default btn-xs ecgen__btn_list" onclick="encounterBuilder.handleShuffleClick(event, ${monId}, this)">
-					<span class="glyphicon glyphicon-random" style="right: 1px"></span>
-				</button>
-				` : ""}
-			</span>
-		`;
+	static getButtons (monId) {
+		return `<span class="ecgen__visible col-1 no-wrap pl-0" onclick="event.preventDefault(); event.stopPropagation()">
+			<button title="Add (SHIFT for 5)" class="btn btn-success btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 1)"><span class="glyphicon glyphicon-plus"></span></button>
+			<button title="Subtract (SHIFT for 5)" class="btn btn-danger btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 0)"><span class="glyphicon glyphicon-minus"></span></button> 
+		</span>`;
+	}
+
+	static $getSublistButtons (monId, uniqueId) {
+		const $btnAdd = $(`<button title="Add (SHIFT for 5)" class="btn btn-success btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-plus"/></button>`)
+			.click(evt => encounterBuilder.handleClick(evt, monId, 1, uniqueId));
+
+		const $btnSub = $(`<button title="Subtract (SHIFT for 5)" class="btn btn-danger btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-minus"/></button>`)
+			.click(evt => encounterBuilder.handleClick(evt, monId, 0, uniqueId));
+
+		const $btnRandomize = $(`<button title="Randomize Monster" class="btn btn-default btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-random" style="right: 1px"/></button>`)
+			.click(() => encounterBuilder.handleShuffleClick(monId));
+
+		return $$`<span class="ecgen__visible col-1-5 no-wrap pl-0">
+			${$btnAdd} 
+			${$btnSub}
+			${$btnRandomize}
+		</span>`
+			.click(evt => {
+				evt.preventDefault();
+				evt.stopPropagation()
+			});
 	}
 
 	// region saved encounters

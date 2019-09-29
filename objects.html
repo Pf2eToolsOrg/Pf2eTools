@@ -74,8 +74,8 @@
 			<div id="contentwrapper" class="view-col">
 				<div id="sublistcontainer" class="sublist">
 					<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
-						<button class="col-9 sort btn btn-default btn-xs" data-sort="name">Name</button>
-						<button class="col-3 sort btn btn-default btn-xs" data-sort="size">Size</button>
+						<button class="col-9 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+						<button class="col-3 sort btn btn-default btn-xs" data-sort="size">Size <span class="caret_wrp"></span></button>
 					</div>
 					<ul class="list subobjects">
 						<!-- populate with JS -->
@@ -89,9 +89,9 @@
 					</div>
 				</div>
 
-				<div id="float-token" style="position: relative;"></div>
+				<div id="float-token" class="relative"></div>
 
-				<div class="wrp-stats-table" onscroll="handleStatblockScroll(event, this)">
+				<div class="wrp-stats-table" onscroll="TokenUtil.handleStatblockScroll(event, this)">
 					<table id="pagecontent" class="stats">
 						<tr><th class="border" colspan="6"></th></tr>
 						<tr><td colspan="6" class="initial-message">Select an object from the list to view it here</td></tr>
@@ -121,7 +121,7 @@
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/listpage.js"></script>
 <script type="text/javascript" src="js/objects.js"></script>
-<script type="text/javascript" src="lib/list.js"></script>
+<script type="text/javascript" src="js/list2.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 
 </body>
