@@ -672,7 +672,7 @@ function addMonsters (data) {
 				if (sc.ability) mon._fMisc.push(`${_MISC_FILTER_SPELLCASTER}${Parser.attAbvToFull(sc.ability)}`);
 			});
 		}
-		if (mon.isNpc) mon._fMisc.push("Named NPC");
+		if (mon.isNpc) mon._fMisc.push("Adventure NPC");
 		if (mon.legendaryGroup && (meta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name]) {
 			if ((meta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name].lairActions) mon._fMisc.push("Lair Actions");
 			if ((meta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name].regionalEffects) mon._fMisc.push("Regional Effects");

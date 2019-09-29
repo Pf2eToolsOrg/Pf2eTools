@@ -22,7 +22,7 @@ class ItemsPage {
 		if (o.sortBy === "name") return SortUtil.compareListNames(a, b);
 		else if (o.sortBy === "type") return SortUtil.ascSortLower(a.values.type, b.values.type) || SortUtil.compareListNames(a, b);
 		else if (o.sortBy === "source") return SortUtil.ascSortLower(a.values.source, b.values.source) || SortUtil.compareListNames(a, b);
-		else if (o.sortBy === "rarity") SortUtil.ascSort(ItemsPage.rarityValue(b.values.rarity), ItemsPage.rarityValue(a.values.rarity)) || SortUtil.compareListNames(a, b);
+		else if (o.sortBy === "rarity") return SortUtil.ascSort(ItemsPage.rarityValue(b.values.rarity), ItemsPage.rarityValue(a.values.rarity)) || SortUtil.compareListNames(a, b);
 		else if (o.sortBy === "attunement") return SortUtil.ascSort(a.values.attunement, b.values.attunement) || SortUtil.compareListNames(a, b);
 		else if (o.sortBy === "count") return SortUtil.ascSort(a.values.count, b.values.count) || SortUtil.compareListNames(a, b);
 		else if (o.sortBy === "weight") return SortUtil.ascSort(a.values.weight, b.values.weight) || SortUtil.compareListNames(a, b);
