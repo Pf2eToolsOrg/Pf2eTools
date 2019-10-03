@@ -179,7 +179,7 @@ function addItems (data) {
 
 		// for filter to use
 		item._fTier = tierTags;
-		item._fProperties = item.property ? item.property.map(p => item._allPropertiesPtr[p].name).filter(n => n) : [];
+		item._fProperties = item.property ? item.property.map(p => Renderer.item._propertyMap[p].name).filter(n => n) : [];
 		item._fMisc = item.sentient ? ["Sentient"] : [];
 		if (item.curse) item._fMisc.push("Cursed");
 		const isMundane = item.rarity === "None" || item.rarity === "Unknown" || item.category === "Basic";

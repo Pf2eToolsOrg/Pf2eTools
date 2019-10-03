@@ -3,7 +3,7 @@
 class BooksList {
 	constructor (options) {
 		this.contentsUrl = options.contentsUrl;
-		this.sortFn = options.sortFn;
+		this.fnSort = options.fnSort;
 		this.dataProp = options.dataProp;
 		this.enhanceRowDataFn = options.enhanceRowDataFn;
 		this.rootPage = options.rootPage;
@@ -23,11 +23,11 @@ class BooksList {
 	async pOnJsonLoad (data) {
 		const $iptSearch = $(`#search`);
 
-		const sortFunction = (a, b, o) => this.sortFn(this.dataList, a, b, o);
+		const fnSort = (a, b, o) => this.fnSort(this.dataList, a, b, o);
 		this.list = new List({
 			$wrpList: $("ul.books"),
 			$iptSearch,
-			sortFunction
+			fnSort
 		});
 		SortUtil.initBtnSortHandlers($(`#filtertools`), this.list);
 

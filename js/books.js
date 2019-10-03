@@ -10,7 +10,7 @@ class Books {
 
 const booksList = new BooksList({
 	contentsUrl: "data/books.json",
-	sortFn: Books.sortBooks,
+	fnSort: Books.sortBooks,
 	dataProp: "book",
 	rootPage: "book.html",
 	rowBuilderFn: (bk) => {

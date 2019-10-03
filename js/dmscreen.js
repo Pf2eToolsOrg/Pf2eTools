@@ -2932,7 +2932,7 @@ class NoteBox {
 				board.doSaveStateDebounced();
 			})
 			.on("mousedown", (evt) => {
-				if (evt.ctrlKey) {
+				if (evt.ctrlKey || evt.metaKey) {
 					setTimeout(() => {
 						const txt = $iptText[0];
 						if (txt.selectionStart === txt.selectionEnd) {

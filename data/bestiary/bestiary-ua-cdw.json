@@ -1,0 +1,96 @@
+{
+	"monster": [
+		{
+			"name": "Wildfire Spirit",
+			"source": "UAClericDruidWizard",
+			"page": 3,
+			"size": "S",
+			"type": "elemental",
+			"alignment": [
+				"C",
+				"G",
+				"NY",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "equal to the wildfire spirit's Constitution modifier + your Wisdom modifier + five times your level in this class"
+			},
+			"speed": {
+				"walk": 20,
+				"fly": {
+					"number": 30,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 10,
+			"dex": 14,
+			"con": 14,
+			"int": 13,
+			"wis": 15,
+			"cha": 11,
+			"save": {
+				"dex": "+4",
+				"con": "+4",
+				"wis": "+4"
+			},
+			"skill": {
+				"nature": "+4"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 12,
+			"immune": [
+				"fire"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"grappled",
+				"prone",
+				"restrained"
+			],
+			"languages": [
+				"understands the languages you speak"
+			],
+			"trait": [
+				{
+					"name": "Soul Bond",
+					"entries": [
+						"The following numbers increase by 1 when your proficiency bonus increases by 1: the spirit's skill and saving throw bonuses above, the bonuses to hit and damage of its Flame Seed, and the bonus to damage of its Fiery Teleportation."
+					]
+				}
+			],
+			"actionNote": "Requires Your Bonus Action",
+			"action": [
+				{
+					"name": "Flame Seed",
+					"entries": [
+						"{@atk rw} {@hit 4} to hit, range 30 ft., one target you can see. {@h}{@dice 1d6 + 2} fire damage."
+					]
+				},
+				{
+					"name": "Fiery Teleportation (Recharges after a Short or Long Rest)",
+					"entries": [
+						"The spirit and each willing creature of your choice within 5 feet of it teleport up to 30 feet to unoccupied spaces you can see. Each creature within 10 feet of the space that the spirit left must succeed on a Dexterity saving throw against your spell save DC or take {@dice 1d6 + 2} fire damage."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"miscTags": [
+				"RW"
+			]
+		}
+	]
+}

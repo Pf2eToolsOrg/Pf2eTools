@@ -387,7 +387,7 @@ class RacesPage extends ListPage {
 				if (fluff.entries) {
 					fluff.entries.push(entryUncommon);
 				} else {
-					fluff.entries = [HTML_NO_INFO];
+					fluff.entries = [Renderer.utils.HTML_NO_INFO];
 					fluff.entries.push(...entryUncommon.entries)
 				}
 			}
@@ -397,7 +397,7 @@ class RacesPage extends ListPage {
 				if (fluff.entries) {
 					fluff.entries.push(entryMonstrous);
 				} else {
-					fluff.entries = [HTML_NO_INFO];
+					fluff.entries = [Renderer.utils.HTML_NO_INFO];
 					fluff.entries.push(...entryMonstrous.entries)
 				}
 			}

@@ -372,6 +372,14 @@ Omnidexer.TO_INDEX = [
 		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "IWM:W") || Omnidexer.arrIncludesOrEquals(it.featureType, "IWM:A") || Omnidexer.arrIncludesOrEquals(it.featureType, "IWM:G")
 	},
 	{
+		category: Parser.CAT_ID_ONOMANCY_RESONANT,
+		file: "optionalfeatures.json",
+		listProp: "optionalfeature",
+		baseUrl: "optionalfeatures.html",
+		hover: true,
+		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "OR")
+	},
+	{
 		category: Parser.CAT_ID_ITEM,
 		file: "items.json",
 		listProp: "item",

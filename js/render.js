@@ -2076,7 +2076,7 @@ Renderer.utils = {
 			const fluff = fnFluffBuilder(data);
 
 			if (!fluff) {
-				$td.empty().append(isImageTab ? HTML_NO_IMAGES : HTML_NO_INFO);
+				$td.empty().append(isImageTab ? Renderer.utils.HTML_NO_IMAGES : Renderer.utils.HTML_NO_INFO);
 				return;
 			}
 
@@ -2084,7 +2084,7 @@ Renderer.utils = {
 				if (fluff.images) {
 					fluff.images.forEach(img => $td.append(renderer.render(img, 1)));
 				} else {
-					$td.append(HTML_NO_IMAGES);
+					$td.append(Renderer.utils.HTML_NO_IMAGES);
 				}
 			} else {
 				if (fluff.entries) {
@@ -2092,7 +2092,7 @@ Renderer.utils = {
 					if (fluff.type !== "section") renderer.setFirstSection(false);
 					$td.append(renderer.render({type: fluff.type, entries: fluff.entries}, depth));
 				} else {
-					$td.append(HTML_NO_INFO);
+					$td.append(Renderer.utils.HTML_NO_INFO);
 				}
 			}
 		}
@@ -2105,10 +2105,13 @@ Renderer.utils = {
 			}
 		} else {
 			$td.empty();
-			if (isImageTab) $td.append(HTML_NO_IMAGES);
-			else $td.append(HTML_NO_INFO);
+			if (isImageTab) $td.append(Renderer.utils.HTML_NO_IMAGES);
+			else $td.append(Renderer.utils.HTML_NO_INFO);
 		}
-	}
+	},
+
+	HTML_NO_INFO: "<i>No information available.</i>",
+	HTML_NO_IMAGES: "<i>No images available.</i>"
 };
 
 Renderer.feat = {
@@ -2994,8 +2997,9 @@ Renderer.monster = {
 	},
 
 	getCompactRenderedStringSection (mon, renderer, title, key, depth) {
+		const noteKey = `${key}Note`;
 		return mon[key] ? `
-		<tr class="mon__stat-header-underline"><td colspan="6"><span class="mon__sect-header-inner">${title}</span></td></tr>
+		<tr class="mon__stat-header-underline"><td colspan="6"><span class="mon__sect-header-inner">${title}${mon[noteKey] ? ` (<span class="small">${mon[noteKey]}</span>)` : ""}</span></td></tr>
 		<tr class="text compact"><td colspan="6">
 		${key === "legendary" && mon.legendary ? `<p>${Renderer.monster.getLegendaryActionIntro(mon)}</p>` : ""}
 		${mon[key].map(it => it.rendered || renderer.render(it, depth)).join("")}
@@ -3314,7 +3318,7 @@ Renderer.item = {
 		}
 
 		function sortProperties (a, b) {
-			return SortUtil.ascSort(item._allPropertiesPtr[a].name, item._allPropertiesPtr[b].name)
+			return SortUtil.ascSort(Renderer.item._propertyMap[a].name, Renderer.item._propertyMap[b].name)
 		}
 
 		let propertiesTxt = "";
@@ -3322,7 +3326,7 @@ Renderer.item = {
 			const properties = item.property.sort(sortProperties);
 			for (let i = 0; i < properties.length; ++i) {
 				const prop = properties[i];
-				let a = item._allPropertiesPtr[prop].name;
+				let a = Renderer.item._propertyMap[prop].name;
 				if (prop === "V") a = `${a} (${Renderer.get().render(item.dmg2)})`;
 				if (prop === "T" || prop === "A" || prop === "AF") a = `${a} (${item.range} ft.)`;
 				if (prop === "RLD") a = `${a} (${item.reload} shots)`;
@@ -3668,11 +3672,19 @@ Renderer.item = {
 			if (item.type === "RG") item.entries.push(`You have resistance to ${item.resist} damage while wearing this ring.`);
 		}
 		if (item.type === "SCF") {
-			if (item.scfType === "arcane") item.entries.push("An arcane focus is a special item designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus.");
-			if (item.scfType === "druid") item.entries.push("A druid can use this object as a spellcasting focus.");
-			if (item.scfType === "holy") {
-				item.entries.push("A holy symbol is a representation of a god or pantheon.");
-				item.entries.push("A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
+			if (item._isItemGroup) {
+				if (item.scfType === "arcane") item.entries.push("An arcane focus is a special item\u2014an orb, a crystal, a rod, a specially constructed staff, a wand-like length of wood, or some similar item\u2014designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus.");
+				if (item.scfType === "druid") item.entries.push("A druidic focus might be a sprig of mistletoe or holly, a wand or scepter made of yew or another special wood, a staff drawn whole out of a living tree, or a totem object incorporating feathers, fur, bones, and teeth from sacred animals. A druid can use such an object as a spellcasting focus.");
+				if (item.scfType === "holy") {
+					item.entries.push("A holy symbol is a representation of a god or pantheon. It might be an amulet depicting a symbol representing a deity, the same symbol carefully engraved or inlaid as an emblem on a shield, or a tiny box holding a fragment of a sacred relic. A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
+				}
+			} else {
+				if (item.scfType === "arcane") item.entries.push("An arcane focus is a special item designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus.");
+				if (item.scfType === "druid") item.entries.push("A druid can use this object as a spellcasting focus.");
+				if (item.scfType === "holy") {
+					item.entries.push("A holy symbol is a representation of a god or pantheon.");
+					item.entries.push("A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
+				}
 			}
 		}
 		// add additional entries based on type (e.g. XGE variants)
@@ -3691,11 +3703,6 @@ Renderer.item = {
 		if (item.type && Renderer.item._additionalEntriesMap[item.type]) {
 			const additional = Renderer.item._additionalEntriesMap[item.type];
 			(item.additionalEntries = item.additionalEntries || []).push({type: "entries", entries: additional});
-		}
-
-		// bind pointer to propertyList
-		if (item.property) {
-			item._allPropertiesPtr = Renderer.item._propertyMap;
 		}
 
 		// bake in types
@@ -4187,8 +4194,6 @@ Renderer.vehicle = {
 
 	_getRenderedString_infwar (veh) {
 		const renderer = Renderer.get();
-		const capCargoTons = Math.floor(veh.capCargo / 2000);
-		const capCargoLbs = veh.capCargo - (2000 * capCargoTons);
 		const dexMod = Parser.getAbilityModNumber(veh.dex);
 
 		return `
@@ -4197,7 +4202,7 @@ Renderer.vehicle = {
 			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle (${veh.weight.toLocaleString()} lb.)</i><br></td></tr>
 			<tr class="text"><td colspan="6">
 				<div><b>Creature Capacity</b> ${veh.capCreature} Medium creatures</div>
-				<div><b>Cargo Capacity</b>${capCargoTons ? ` ${capCargoTons} ton${capCargoTons === 1 ? "" : "s"}` : ""}${capCargoLbs ? ` ${capCargoLbs} lb.` : ""}</div>
+				<div><b>Cargo Capacity</b> ${Parser.weightToFull(veh.capCargo)}</div>
 				<div><b>Armor Class</b> ${dexMod === 0 ? `19` : `${19 + dexMod} (19 while motionless)`}</div>
 				<div><b>Hit Points</b> ${veh.hp.hp} (damage threshold ${veh.hp.dt}, mishap threshold ${veh.hp.mt})</div>
 				<div><b>Speed</b> ${veh.speed} ft.</div>
@@ -4827,7 +4832,7 @@ Renderer.hover = {
 		if (!Renderer.hover._isSmallScreen()) {
 			// cache the link location and redirect it to void
 			$(ele).data("href", $(ele).data("href") || $(ele).attr("href"));
-			$(ele).attr("href", STR_VOID_LINK);
+			$(ele).attr("href", "javascript:void(0)");
 			// restore the location after 100ms; if the user long-presses the link will be restored by the time they
 			//   e.g. attempt to open a new tab
 			setTimeout(() => {

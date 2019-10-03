@@ -1,4 +1,9 @@
 {
+	"_meta": {
+		"internalCopies": [
+			"race"
+		]
+	},
 	"race": [
 		{
 			"name": "Aarakocra",
@@ -852,7 +857,7 @@
 						{
 							"name": "Aereni Training",
 							"entries": [
-								"Choose one skill or tool proficiency. Your proficiency bonus is doubled for any ability check you make that uses this chosen proficiency."
+								"Choose one skill or {@book tool|phb|5|tools} proficiency. Your proficiency bonus is doubled for any ability check you make that uses this chosen proficiency."
 							],
 							"type": "entries"
 						},
@@ -891,7 +896,7 @@
 						{
 							"name": "Aereni Training",
 							"entries": [
-								"Choose one skill or tool proficiency. Your proficiency bonus is doubled for any ability check you make that uses this chosen proficiency."
+								"Choose one skill or {@book tool|phb|5|tools} proficiency. Your proficiency bonus is doubled for any ability check you make that uses this chosen proficiency."
 							],
 							"type": "entries"
 						},
@@ -1223,7 +1228,7 @@
 						{
 							"name": "Skill Versatility",
 							"entries": [
-								"You have proficiency with any combination of two other skills or tools of your choice."
+								"You have proficiency with any combination of two other skills or {@book tools|phb|5|tools} of your choice."
 							],
 							"type": "entries"
 						}
@@ -3196,7 +3201,7 @@
 						{
 							"name": "Maker's Gift",
 							"entries": [
-								"You know the cantrip {@spell mending} and gain proficiency with one type of artisan's tools."
+								"You know the cantrip {@spell mending} and gain proficiency with one type of {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan tool}."
 							],
 							"type": "entries"
 						},
@@ -5138,7 +5143,7 @@
 				{
 					"name": "Cunning Artisan",
 					"entries": [
-						"As part of a short rest, you can harvest bone and hide from a slain beast, construct, dragon, monstrosity, or plant creature of size small or larger to create one of the following items: a {@item shield|phb}, a {@item club|phb}, a {@item javelin|phb}, or {@dice 1d4} {@item dart|phb|darts} or {@item blowgun needle|phb|blowgun needles}. To use this trait, you need a blade, such as a {@item dagger|phb}, or appropriate artisan's tools, such as {@item leatherworker's tools|phb}."
+						"As part of a short rest, you can harvest bone and hide from a slain beast, construct, dragon, monstrosity, or plant creature of size small or larger to create one of the following items: a {@item shield|phb}, a {@item club|phb}, a {@item javelin|phb}, or {@dice 1d4} {@item dart|phb|darts} or {@item blowgun needle|phb|blowgun needles}. To use this trait, you need a blade, such as a {@item dagger|phb}, or appropriate {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan tool}, such as {@item leatherworker's tools|phb}."
 					],
 					"type": "entries"
 				},
@@ -5839,7 +5844,7 @@
 				{
 					"name": "Sea Reaver",
 					"entries": [
-						"You gain proficiency with {@item navigator's tools|phb} and vehicles (water)."
+						"You gain proficiency with {@item navigator's tools|phb} and {@filter vehicles (water)|items|source=phb;dmg|miscellaneous=mundane|type=vehicle (water)}."
 					],
 					"type": "entries"
 				},
@@ -6007,7 +6012,7 @@
 						{
 							"name": "Water Creed Navigation",
 							"entries": [
-								"You have proficiency with navigator tools and in the {@skill Survival} skill."
+								"You have proficiency with {@item navigator's tools|phb} and in the {@skill Survival} skill."
 							],
 							"type": "entries"
 						}
@@ -6130,7 +6135,7 @@
 						{
 							"name": "Tuktuk Cunning",
 							"entries": [
-								"You have proficiency with thieves' tools."
+								"You have proficiency with {@item thieves' tools|phb}."
 							],
 							"type": "entries"
 						}
@@ -6480,7 +6485,7 @@
 				{
 					"name": "Artisan's Expertise",
 					"entries": [
-						"You gain proficiency with two kinds of artisan's tools of your choice. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies. In addition, whenever you make an Intelligence ({@skill History}) check related to the origin of any architectural construction (including buildings, public works such as canals and aqueducts, and the massive cogwork that underlies much of the construction of Ghirapur), you are considered proficient in the {@skill History} skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus."
+						"You gain proficiency with two kinds of {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan tool} of your choice. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies. In addition, whenever you make an Intelligence ({@skill History}) check related to the origin of any architectural construction (including buildings, public works such as canals and aqueducts, and the massive cogwork that underlies much of the construction of Ghirapur), you are considered proficient in the {@skill History} skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus."
 					],
 					"type": "entries"
 				},
@@ -6598,7 +6603,7 @@
 						{
 							"name": "Tireless Precision",
 							"entries": [
-								"You are proficient in one of the following skills of your choice: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance}, or {@skill Sleight of Hand}. You are also proficient with one tool of your choice.",
+								"You are proficient in one of the following skills of your choice: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance}, or {@skill Sleight of Hand}. You are also proficient with one {@book tool|phb|5|tools} of your choice.",
 								"Whenever you make an ability check with the chosen skill or tool, roll a {@dice d4}, and add the number rolled to the check's total."
 							],
 							"type": "entries"
@@ -6731,7 +6736,7 @@
 						{
 							"name": "Breadth of Knowledge",
 							"entries": [
-								"You gain proficiency in any combination of four skills or with four tools of your choice."
+								"You gain proficiency in any combination of four skills or with four {@book tools|phb|5|tools} of your choice."
 							],
 							"type": "entries"
 						}
@@ -7433,7 +7438,7 @@
 						{
 							"name": "Decadent Mastery",
 							"entries": [
-								"You learn one language of your choice, and you are proficient with one skill or tool of your choice. In the timeless city of Tu'narath, githyanki have bountiful time to master odd bits of knowledge."
+								"You learn one language of your choice, and you are proficient with one skill or {@book tool|phb|5|tools} of your choice. In the timeless city of Tu'narath, githyanki have bountiful time to master odd bits of knowledge."
 							],
 							"type": "entries"
 						},
@@ -7585,7 +7590,7 @@
 						{
 							"name": "Decadent Mastery",
 							"entries": [
-								"You learn one language of your choice, and you are proficient with one skill or tool of your choice. In the timeless city of Tu'narath, githyanki have bountiful time to master odd bits of knowledge."
+								"You learn one language of your choice, and you are proficient with one skill or {@book tool|phb|5|tools} of your choice. In the timeless city of Tu'narath, githyanki have bountiful time to master odd bits of knowledge."
 							],
 							"type": "entries"
 						},
@@ -9463,7 +9468,7 @@
 					"type": "entries",
 					"name": "Divergent Persona",
 					"entries": [
-						"You gain proficiency with one tool of your choice. Define a persona associated with that proficiency: establish the name, race, gender, age, and other details. While you are in the form of this persona, the related proficiency bonus is doubled for any ability check you make that uses that proficiency."
+						"You gain proficiency with one {@book tool|phb|5|tools} of your choice. Define a persona associated with that proficiency: establish the name, race, gender, age, and other details. While you are in the form of this persona, the related proficiency bonus is doubled for any ability check you make that uses that proficiency."
 					]
 				},
 				{
@@ -9979,7 +9984,7 @@
 							"type": "entries",
 							"name": "Specialized Design",
 							"entries": [
-								"You gain one skill proficiency of your choice, one tool proficiency of your choice, and fluency in one language of your choice."
+								"You gain one skill proficiency of your choice, one {@book tool|phb|5|tools} proficiency of your choice, and fluency in one language of your choice."
 							]
 						},
 						{
@@ -10953,7 +10958,7 @@
 				{
 					"name": "Tireless Precision",
 					"entries": [
-						"You are proficient in one of the following skills of your choice: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance}, or {@skill Sleight of Hand}.  You are also proficient with one tool of your choice.",
+						"You are proficient in one of the following skills of your choice: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance}, or {@skill Sleight of Hand}.  You are also proficient with one {@book tool|phb|5|tools} of your choice.",
 						"Whenever you make an ability check with the chosen skill or tool, roll a {@dice d4} and add the number rolled to the check's total."
 					],
 					"type": "entries"
@@ -11157,6 +11162,38 @@
 					"common": true
 				}
 			]
+		},
+		{
+			"name": "Human (Zendikar)",
+			"source": "PSZ",
+			"page": 9,
+			"ability": [
+				{
+					"str": 1,
+					"dex": 1,
+					"con": 1,
+					"int": 1,
+					"wis": 1,
+					"cha": 1
+				}
+			],
+			"_copy": {
+				"name": "Human",
+				"source": "PHB",
+				"_mod": {
+					"entries": {
+						"mode": "replaceArr",
+						"replace": "Languages",
+						"items": {
+							"name": "Languages",
+							"entries": [
+								"You can speak, read, and write Common and one extra language of your choice. Humans typically learn the languages of other peoples they deal with, including obscure dialects. They are fond of sprinkling their speech with words borrowed from other tongues: vampire curses, Elvish musical expressions, merfolk scholarly jargon, and so on."
+							],
+							"type": "entries"
+						}
+					}
+				}
+			}
 		}
 	]
 }

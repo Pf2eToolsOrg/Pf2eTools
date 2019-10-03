@@ -1,7 +1,7 @@
 {
 	"name": "5etools",
 	"author": "TheGiddyLimit",
-	"version": "1.82.4",
+	"version": "1.83.0",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
@@ -16,7 +16,7 @@
 		"build:css": "node-sass --source-map=true --output-style=compressed scss/main.scss css/style.css && postcss ./css/style.css --use autoprefixer -r",
 		"build:deploy:dev": "bash build/deploy-prep-dev.sh",
 		"build:deploy:prod": "bash build/deploy-prep-prod.sh",
-		"build:deploy:prod:cdn": "bash build/deploy-prep-prod--cdn",
+		"build:deploy:prod:cdn": "bash build/deploy-prep-prod--cdn.sh",
 		"build:seo": "node node/generate-seo.js",
 		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:seo",
 		"preversion": "npm test",

@@ -68,6 +68,7 @@ PropOrder.MONSTER = [
 
 	"spellcasting",
 	"trait",
+	"actionNote",
 	"action",
 	"reaction",
 	"legendaryHeader",

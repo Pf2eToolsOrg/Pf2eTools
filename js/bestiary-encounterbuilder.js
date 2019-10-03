@@ -861,7 +861,7 @@ class EncounterBuilder extends ProxyBase {
 				{
 					type: "entries",
 					entries: [
-						HTML_NO_IMAGES
+						Renderer.utils.HTML_NO_IMAGES
 					],
 					data: {
 						hoverTitle: `Image \u2014 ${mon.name}`

@@ -246,7 +246,7 @@ const Omnisearch = {
 		$body.on("keypress", (e) => {
 			if (!noModifierKeys(e) || MiscUtil.isInInput(e)) return;
 			if (e.key === "f" || e.key === "F") {
-				const toSel = e.key === "F" ? $searchIn : $(`#${ID_SEARCH_BAR}`).find(`.search`);
+				const toSel = e.key === "F" ? $searchIn : $(`#filter-search-input-group`).find(`.search`);
 				// defer, otherwise the "f" will be input into the search field
 				setTimeout(() => toSel.select().focus(), 0);
 			}

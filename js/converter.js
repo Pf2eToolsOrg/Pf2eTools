@@ -702,6 +702,10 @@ class StatblockConverter {
 				if (startNextPhase(curLine)) {
 					isTraits = false;
 					isActions = !curLine.toUpperCase().indexOf_handleColon("ACTIONS");
+					if (isActions) {
+						const mActionNote = /actions:?\s*\((.*?)\)/gi.exec(curLine);
+						if (mActionNote) stats.actionNote = mActionNote[1];
+					}
 					isReactions = !curLine.toUpperCase().indexOf_handleColon("REACTIONS");
 					isLegendaryActions = !curLine.toUpperCase().indexOf_handleColon("LEGENDARY ACTIONS");
 					isLegendaryDescription = isLegendaryActions;

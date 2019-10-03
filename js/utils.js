@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.82.4"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.83.0"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -19,15 +19,6 @@ HASH_START = "#";
 HASH_SUBCLASS = "sub:";
 HASH_BLANK = "blankhash";
 HASH_SUB_NONE = "null";
-
-STR_VOID_LINK = "javascript:void(0)";
-STR_APOSTROPHE = "\u2019";
-
-HTML_NO_INFO = "<i>No information available.</i>";
-HTML_NO_IMAGES = "<i>No images available.</i>";
-
-ID_SEARCH_BAR = "filter-search-input-group";
-ID_RESET_BUTTON = "reset";
 
 CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
 CLSS_HOMEBREW_SOURCE = "refreshing-brew";
@@ -531,8 +522,7 @@ Parser.LANGUAGES_STANDARD = [
 	"Orc"
 ];
 
-Parser.LANGUAGES_ALL = [
-	...Parser.LANGUAGES_STANDARD,
+Parser.LANGUAGES_EXOTIC = [
 	"Abyssal",
 	"Celestial",
 	"Draconic",
@@ -541,6 +531,17 @@ Parser.LANGUAGES_ALL = [
 	"Primordial",
 	"Sylvan",
 	"Undercommon"
+];
+
+Parser.LANGUAGES_SECRET = [
+	"Druidic",
+	"Thieves' cant"
+];
+
+Parser.LANGUAGES_ALL = [
+	...Parser.LANGUAGES_STANDARD,
+	...Parser.LANGUAGES_EXOTIC,
+	...Parser.LANGUAGES_SECRET
 ].sort();
 
 Parser.dragonColorToFull = function (c) {
@@ -617,9 +618,9 @@ Parser.hasSourceAbv = function (source) {
 };
 Parser.sourceJsonToFull = function (source) {
 	source = Parser._getSourceStringFromSource(source);
-	if (Parser.hasSourceFull(source)) return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, STR_APOSTROPHE);
-	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToFull(source).replace(/'/g, STR_APOSTROPHE);
-	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, STR_APOSTROPHE);
+	if (Parser.hasSourceFull(source)) return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, "\u2019");
+	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToFull(source).replace(/'/g, "\u2019");
+	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, "\u2019");
 };
 Parser.sourceJsonToFullCompactPrefix = function (source) {
 	return Parser.sourceJsonToFull(source)
@@ -920,7 +921,7 @@ Parser.spRangeToFull._renderPoint = function (range) {
 		default:
 			return `${dist.amount} ${dist.amount === 1 ? Parser.getSingletonUnit(dist.type) : dist.type}`;
 	}
-}
+};
 Parser.spRangeToFull._renderArea = function (range) {
 	const size = range.distance;
 	return `Self (${size.amount}-${Parser.getSingletonUnit(size.type)}${Parser.spRangeToFull._getAreaStyleString(range)}${range.type === RNG_CYLINDER ? `, ${size.amountSecondary}-${Parser.getSingletonUnit(size.typeSecondary)}-high cylinder` : ""})`;
@@ -992,7 +993,7 @@ Parser.SP_END_TYPE_TO_FULL = {
 };
 Parser.spEndTypeToFull = function (type) {
 	return Parser._parse_aToB(Parser.SP_END_TYPE_TO_FULL, type);
-}
+};
 
 Parser.spDurationToFull = function (dur) {
 	return dur.map(d => {
@@ -1318,7 +1319,8 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 	"SHP:O": "Ship Upgrade, Miscellaneous",
 	"IWM:W": "Infernal War Machine Variant, Weapon",
 	"IWM:A": "Infernal War Machine Upgrade, Armor",
-	"IWM:G": "Infernal War Machine Upgrade, Gadget"
+	"IWM:G": "Infernal War Machine Upgrade, Gadget",
+	"OR": "Onomancy Resonant"
 };
 
 Parser.optFeatureTypeToFull = function (type) {
@@ -1397,6 +1399,15 @@ Parser.alignmentListToFull = function (alignList) {
 	}
 };
 
+Parser.weightToFull = function (lbs, isSmallUnit) {
+	const tons = Math.floor(lbs / 2000);
+	lbs = lbs - (2000 * tons);
+	return [
+		tons ? `${tons} ${isSmallUnit ? `<span class="small">` : ""}ton${tons === 1 ? "" : "s"}${isSmallUnit ? `</span>` : ""}` : null,
+		lbs ? `${lbs} ${isSmallUnit ? `<span class="small">` : ""}lb.${isSmallUnit ? `</span>` : ""}` : null
+	].filter(Boolean).join(", ");
+};
+
 Parser.CAT_ID_CREATURE = 1;
 Parser.CAT_ID_SPELL = 2;
 Parser.CAT_ID_BACKGROUND = 3;
@@ -1433,6 +1444,7 @@ Parser.CAT_ID_ELEMENTAL_DISCIPLINE = 33;
 Parser.CAT_ID_ARTIFICER_INFUSION = 34;
 Parser.CAT_ID_SHIP_UPGRADE = 35;
 Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE = 36;
+Parser.CAT_ID_ONOMANCY_RESONANT = 37;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1471,6 +1483,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "Elemental Disciplin
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARTIFICER_INFUSION] = "Infusion";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SHIP_UPGRADE] = "Ship Upgrade";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "Infernal War Machine Upgrade";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ONOMANCY_RESONANT] = "Onomancy Resonant";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1509,6 +1522,8 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PACT_BOON] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARTIFICER_INFUSION] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SHIP_UPGRADE] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ONOMANCY_RESONANT] = "optionalfeature";
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -1955,6 +1970,7 @@ SRC_UAAR = SRC_UA_PREFIX + "ArtificerRevisited";
 SRC_UABAM = SRC_UA_PREFIX + "BarbarianAndMonk";
 SRC_UASAW = SRC_UA_PREFIX + "SorcererAndWarlock";
 SRC_UABAP = SRC_UA_PREFIX + "BardAndPaladin";
+SRC_UACDW = SRC_UA_PREFIX + "ClericDruidWizard";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -2075,6 +2091,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UAAR] = UA_PREFIX + "Artificer Revisited";
 Parser.SOURCE_JSON_TO_FULL[SRC_UABAM] = UA_PREFIX + "Barbarian and Monk";
 Parser.SOURCE_JSON_TO_FULL[SRC_UASAW] = UA_PREFIX + "Sorcerer and Warlock";
 Parser.SOURCE_JSON_TO_FULL[SRC_UABAP] = UA_PREFIX + "Bard and Paladin";
+Parser.SOURCE_JSON_TO_FULL[SRC_UACDW] = UA_PREFIX + "Cleric, Druid, and Wizard";
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -2185,6 +2202,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UAAR] = "UAAR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UABAM] = "UABAM";
 Parser.SOURCE_JSON_TO_ABV[SRC_UASAW] = "UASAW";
 Parser.SOURCE_JSON_TO_ABV[SRC_UABAP] = "UABAP";
+Parser.SOURCE_JSON_TO_ABV[SRC_UACDW] = "UACDW";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -3916,33 +3934,23 @@ ListUtil = {
 	},
 
 	addListShowHide () {
-		const toInjectShow = `
-			<div class="col-12" id="showsearch">
-				<button class="btn btn-block btn-default btn-xs" type="button">Show Search</button>
-				<br>
-			</div>
-		`;
+		$(`#filter-search-input-group`).find(`#reset`).before(`<button class="btn btn-default" id="hidesearch">Hide</button>`);
+		$(`#contentwrapper`).prepend(`<div class="col-12" id="showsearch"><button class="btn btn-block btn-default btn-xs" type="button">Show Search</button><br></div>`);
 
-		const toInjectHide = `
-			<button class="btn btn-default" id="hidesearch">Hide</button>
-		`;
-
-		$(`#filter-search-input-group`).find(`#reset`).before(toInjectHide);
-		$(`#contentwrapper`).prepend(toInjectShow);
-
-		const listContainer = $(`#listcontainer`);
-		const showSearchWrpr = $("div#showsearch");
-		const hideSearchBtn = $("button#hidesearch");
+		const $wrpList = $(`#listcontainer`);
+		const $wrpBtnShowSearch = $("div#showsearch");
+		const $btnHideSearch = $("button#hidesearch");
+		$btnHideSearch.attr("title", "Hide Search Bar and Entry List");
 		// collapse/expand search button
-		hideSearchBtn.click(function () {
-			listContainer.hide();
-			showSearchWrpr.show();
-			hideSearchBtn.hide();
+		$btnHideSearch.click(function () {
+			$wrpList.hide();
+			$wrpBtnShowSearch.show();
+			$btnHideSearch.hide();
 		});
-		showSearchWrpr.find("button").click(function () {
-			listContainer.show();
-			showSearchWrpr.hide();
-			hideSearchBtn.show();
+		$wrpBtnShowSearch.find("button").click(function () {
+			$wrpList.show();
+			$wrpBtnShowSearch.hide();
+			$btnHideSearch.show();
 		});
 	}
 };
@@ -4000,9 +4008,9 @@ function getFilterWithMergedOptions (baseOptions, addOptions) {
  * @param [opts.isCompact] True if this box should have a compact/reduced UI.
  */
 async function pInitFilterBox (opts) {
-	opts.$wrpFormTop = $(`#${ID_SEARCH_BAR}`);
+	opts.$wrpFormTop = $(`#filter-search-input-group`);
 	opts.$wrpFormTop.attr("title", "Hotkey: f");
-	opts.$btnReset = $(`#${ID_RESET_BUTTON}`);
+	opts.$btnReset = $(`#reset`);
 	const filterBox = new FilterBox(opts);
 	await filterBox.pDoLoadState();
 	return filterBox;
@@ -4497,6 +4505,7 @@ DataUtil = {
 								case "monster": return DataUtil.monster.pMergeCopy(data[prop], entry, options);
 								case "item": return DataUtil.item.pMergeCopy(data[prop], entry, options);
 								case "background": return DataUtil.background.pMergeCopy(data[prop], entry, options);
+								case "race": return DataUtil.race.pMergeCopy(data[prop], entry, options);
 								default: throw new Error(`No internal _copy merge strategy specified for property "${prop}"`);
 							}
 						}
@@ -4739,7 +4748,7 @@ DataUtil = {
 
 			function doMod_insertArr (modInfo, prop) {
 				doEnsureArray(modInfo, "items");
-				if (!copyTo[prop]) throw new Error(`Could not find "${prop}" array`)
+				if (!copyTo[prop]) throw new Error(`Could not find "${prop}" array`);
 				copyTo[prop].splice(modInfo.index, 0, ...modInfo.items);
 			}
 
@@ -5043,7 +5052,7 @@ DataUtil = {
 		},
 		_mergeCache: {},
 		async pMergeCopy (monList, mon, options) {
-			return DataUtil.generic._pMergeCopy(DataUtil.monster, UrlUtil.PG_BESTIARY, monList, mon, options)
+			return DataUtil.generic._pMergeCopy(DataUtil.monster, UrlUtil.PG_BESTIARY, monList, mon, options);
 		}
 	},
 
@@ -5054,7 +5063,7 @@ DataUtil = {
 		},
 		_mergeCache: {},
 		async pMergeCopy (itemList, item, options) {
-			return DataUtil.generic._pMergeCopy(DataUtil.item, UrlUtil.PG_ITEMS, itemList, item, options)
+			return DataUtil.generic._pMergeCopy(DataUtil.item, UrlUtil.PG_ITEMS, itemList, item, options);
 		}
 	},
 
@@ -5062,7 +5071,17 @@ DataUtil = {
 		_MERGE_REQUIRES_PRESERVE: {},
 		_mergeCache: {},
 		async pMergeCopy (bgList, bg, options) {
-			return DataUtil.generic._pMergeCopy(DataUtil.background, UrlUtil.PG_BACKGROUNDS, bgList, bg, options)
+			return DataUtil.generic._pMergeCopy(DataUtil.background, UrlUtil.PG_BACKGROUNDS, bgList, bg, options);
+		}
+	},
+
+	race: {
+		_MERGE_REQUIRES_PRESERVE: {
+			subraces: true
+		},
+		_mergeCache: {},
+		async pMergeCopy (raceList, race, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.race, UrlUtil.PG_RACES, raceList, race, options);
 		}
 	},
 

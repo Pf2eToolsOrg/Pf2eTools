@@ -36,7 +36,7 @@ class Adventures {
 }
 const adventuresList = new BooksList({
 	contentsUrl: "data/adventures.json",
-	sortFn: Adventures.sortAdventures,
+	fnSort: Adventures.sortAdventures,
 	dataProp: "adventure",
 	enhanceRowDataFn: (adv) => {
 		adv._startLevel = adv.level.start || 20;
