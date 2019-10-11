@@ -588,7 +588,7 @@ const BookUtil = {
 									const $ptPreviews = $(`<a href="#${getHash(f)}"/>`).click(function () {
 										BookUtil.handleReNav(this);
 									});
-									const re = new RegExp(RegExp.escape(f.term), "gi");
+									const re = new RegExp(f.term.escapeRegexp(), "gi");
 
 									$ptPreviews.on("click", () => {
 										setTimeout(() => {

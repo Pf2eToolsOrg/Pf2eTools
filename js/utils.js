@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.83.0"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.83.3"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -179,6 +179,10 @@ String.prototype.last = String.prototype.last || function () {
 	return this[this.length - 1];
 };
 
+String.prototype.escapeRegexp = String.prototype.escapeRegexp || function () {
+	return this.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+};
+
 Array.prototype.joinConjunct = Array.prototype.joinConjunct || function (joiner, lastJoiner, nonOxford) {
 	if (this.length === 0) return "";
 	if (this.length === 1) return this[0];
@@ -229,10 +233,6 @@ StrUtil = {
 	toTitleCase (str) {
 		return str.toTitleCase();
 	}
-};
-
-RegExp.escape = function (string) {
-	return string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 };
 
 // PARSING =============================================================================================================
@@ -307,6 +307,30 @@ Parser.numberToText = function (number) {
 		}
 	}
 	return `${number < 0 ? "negative " : ""}${getAsText(number)}`;
+};
+
+Parser.numberToVulgar = function (number) {
+	const spl = `${number}`.split(".");
+	if (spl.length === 1) return number;
+	if (spl[1] === "5") return `${spl[0]}½`;
+	if (spl[1] === "25") return `${spl[0]}¼`;
+	if (spl[1] === "75") return `${spl[0]}¾`;
+	return Parser.numberToFractional(number);
+};
+
+Parser._greatestCommonDivisor = function (a, b) {
+	if (b < Number.EPSILON) return a;
+	return Parser._greatestCommonDivisor(b, Math.floor(a % b));
+};
+Parser.numberToFractional = function (number) {
+	const len = number.toString().length - 2;
+	let denominator = Math.pow(10, len);
+	let numerator = number * denominator;
+	const divisor = Parser._greatestCommonDivisor(numerator, denominator);
+	numerator = Math.floor(numerator / divisor);
+	denominator = Math.floor(denominator / divisor);
+
+	return denominator === 1 ? String(numerator) : `${Math.floor(numerator)}/${Math.floor(denominator)}`;
 };
 
 Parser.ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -429,24 +453,13 @@ Parser.crToNumber = function (cr) {
 	else return 0;
 };
 
-Parser._greatestCommonDivisor = function (a, b) {
-	if (b < Number.EPSILON) return a;
-	return Parser._greatestCommonDivisor(b, Math.floor(a % b));
-};
 Parser.numberToCr = function (number, safe) {
 	// avoid dying if already-converted number is passed in
 	if (safe && typeof number === "string" && Parser.CRS.includes(number)) return number;
 
 	if (number == null) return "Unknown";
 
-	const len = number.toString().length - 2;
-	let denominator = Math.pow(10, len);
-	let numerator = number * denominator;
-	const divisor = Parser._greatestCommonDivisor(numerator, denominator);
-	numerator = Math.floor(numerator / divisor);
-	denominator = Math.floor(denominator / divisor);
-
-	return denominator === 1 ? String(numerator) : `${Math.floor(numerator)}/${Math.floor(denominator)}`;
+	return Parser.numberToFractional(number);
 };
 
 Parser.crToPb = function (cr) {
@@ -647,42 +660,61 @@ Parser.stringToCasedSlug = function (str) {
 	return str.replace(/[^\w ]+/g, "").replace(/ +/g, "-");
 };
 
-Parser.itemTypeToAbv = function (type) {
+Parser.itemTypeToFull = function (type) {
 	return Parser._parse_aToB(Parser.ITEM_TYPE_JSON_TO_ABV, type);
 };
 
 Parser.itemValueToFull = function (item, isShortForm) {
-	return item.value ? item.value : item.valueMult ? isShortForm ? `×${item.valueMult}` : `base value ×${item.valueMult}` : "";
+	if (item.value) {
+		const {coin, mult} = Parser.getItemCurrencyAndMultiplier(item.value, item.valueConversion);
+		return `${(item.value * mult).toLocaleString()} ${coin}`;
+	} else if (item.valueMult) return isShortForm ? `×${item.valueMult}` : `base value ×${item.valueMult}`;
+	return "";
 };
+
+Parser._ITEM_PRICE_CONVERSION_TABLE = [
+	{
+		coin: "cp",
+		mult: 1
+	},
+	{
+		coin: "sp",
+		mult: 0.2
+	},
+	{
+		coin: "gp",
+		mult: 0.01,
+		isFallback: true
+	}
+];
+Parser.getItemCurrencyAndMultiplier = function (value, valueConversionId) {
+	const fromBrew = valueConversionId ? MiscUtil.get(BrewUtil.homebrewMeta, "itemValueConversions", valueConversionId) : null;
+	const conversionTable = fromBrew && fromBrew.length ? fromBrew : Parser._ITEM_PRICE_CONVERSION_TABLE;
+	if (conversionTable !== Parser._ITEM_PRICE_CONVERSION_TABLE) conversionTable.sort((a, b) => SortUtil.ascSort(b.mult, a.mult));
+
+	if (!value) return conversionTable.find(it => it.isFallback) || conversionTable[0];
+	if (conversionTable.length === 1) return conversionTable[0];
+	if (!Number.isInteger(value) && value < conversionTable[0].mult) return conversionTable[0];
+
+	for (let i = conversionTable.length - 1; i >= 0; --i) {
+		if (Number.isInteger(value * conversionTable[i].mult)) return conversionTable[i];
+	}
+
+	return conversionTable.last();
+};
+
+Parser.COIN_ABVS = ["cp", "sp", "ep", "gp", "pp"];
+Parser.COIN_CONVERSIONS = [1, 10, 50, 100, 1000];
 
 Parser.itemWeightToFull = function (item, isShortForm) {
 	return item.weight
-		? `${item.weight}${(Number(item.weight) === 1 ? " lb." : " lbs.")}${(item.weightNote ? ` ${item.weightNote}` : "")}`
+		? `${item.weight} lb.${(item.weightNote ? ` ${item.weightNote}` : "")}`
 		: item.weightMult ? isShortForm ? `×${item.weightMult}` : `base weight ×${item.weightMult}` : "";
-};
-
-Parser._coinValueToNumberMultipliers = {
-	"cp": 0.01,
-	"sp": 0.1,
-	"ep": 0.5,
-	"gp": 1,
-	"pp": 10
 };
 
 Parser._decimalSeparator = (0.1).toLocaleString().substring(1, 2);
 Parser._numberCleanRegexp = Parser._decimalSeparator === "." ? new RegExp(/[\s,]*/g, "g") : new RegExp(/[\s.]*/g, "g");
 Parser._costSplitRegexp = Parser._decimalSeparator === "." ? new RegExp(/(\d+(\.\d+)?)([csegp]p)/) : new RegExp(/(\d+(,\d+)?)([csegp]p)/);
-Parser.coinValueToNumber = function (value) {
-	if (!value) return 0;
-	// handle oddities
-	if (value === "Varies") return 0;
-
-	// input e.g. "25gp", "1,000pp"
-	value = value.replace(Parser._numberCleanRegexp, "").toLowerCase();
-	const m = Parser._costSplitRegexp.exec(value);
-	if (!m) throw new Error(`Badly formatted value ${value}`);
-	return Number(m[1]) * Parser._coinValueToNumberMultipliers[m[3]];
-};
 
 Parser.weightValueToNumber = function (value) {
 	if (!value) return 0;
@@ -763,10 +795,12 @@ Parser.spLevelToFullLevelText = function (level, dash) {
 };
 
 Parser.spMetaToFull = function (meta) {
-	const out = [];
-	if (meta && meta.ritual) out.push("ritual");
-	if (meta && meta.technomagic) out.push("technomagic");
-	if (out.length) return ` (${out.join(", ")})`;
+	if (!meta) return "";
+	const metaTags = Object.entries(meta)
+		.filter(([_, v]) => v)
+		.sort(SortUtil.ascSort)
+		.map(([k]) => k);
+	if (metaTags.length) return ` (${metaTags.join(", ")})`;
 	return "";
 };
 
@@ -1403,10 +1437,12 @@ Parser.weightToFull = function (lbs, isSmallUnit) {
 	const tons = Math.floor(lbs / 2000);
 	lbs = lbs - (2000 * tons);
 	return [
-		tons ? `${tons} ${isSmallUnit ? `<span class="small">` : ""}ton${tons === 1 ? "" : "s"}${isSmallUnit ? `</span>` : ""}` : null,
-		lbs ? `${lbs} ${isSmallUnit ? `<span class="small">` : ""}lb.${isSmallUnit ? `</span>` : ""}` : null
+		tons ? `${tons}${isSmallUnit ? `<span class="small ml-1">` : " "}ton${tons === 1 ? "" : "s"}${isSmallUnit ? `</span>` : ""}` : null,
+		lbs ? `${lbs}${isSmallUnit ? `<span class="small ml-1">` : " "}lb.${isSmallUnit ? `</span>` : ""}` : null
 	].filter(Boolean).join(", ");
 };
+
+Parser.ITEM_RARITIES = ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown", "Unknown (Magic)", "Other"];
 
 Parser.CAT_ID_CREATURE = 1;
 Parser.CAT_ID_SPELL = 2;
@@ -1712,6 +1748,7 @@ Parser.spTimeUnitToAbv = function (timeUnit) {
 };
 
 Parser.spTimeToShort = function (time, isHtml) {
+	if (!time) return "";
 	return (time.number === 1 && Parser.SP_TIME_SINGLETONS.includes(time.unit))
 		? `${Parser.spTimeUnitToAbv(time.unit)}${time.condition ? "*" : ""}`
 		: `${time.number} ${isHtml ? `<span class="small">` : ""}${Parser.spTimeUnitToAbv(time.unit)}${isHtml ? `</span>` : ""}${time.condition ? "*" : ""}`;
@@ -2232,6 +2269,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"T": "Tool",
 	"TAH": "Tack and Harness",
 	"TG": "Trade Good",
+	"$": "Treasure",
 	"VEH": "Vehicle (land)",
 	"SHP": "Vehicle (water)",
 	"AIR": "Vehicle (air)",
@@ -2528,7 +2566,7 @@ JqueryUtil = {
 			const searchText = m[3];
 			const textNode = $(el).contents().filter((i, e) => e.nodeType === 3)[0];
 			if (!textNode) return false;
-			const match = textNode.nodeValue.toLowerCase().trim().match(`${RegExp.escape(searchText.toLowerCase().trim())}`);
+			const match = textNode.nodeValue.toLowerCase().trim().match(`${searchText.toLowerCase().trim().escapeRegexp()}`);
 			return match && match.length > 0;
 		};
 	},
@@ -2703,6 +2741,15 @@ MiscUtil = {
 			if (object == null) return object;
 		}
 		return object;
+	},
+
+	mix: (superclass) => new MiscUtil._MixinBuilder(superclass),
+	_MixinBuilder: function (superclass) {
+		this.superclass = superclass;
+
+		this.with = function (...mixins) {
+			return mixins.reduce((c, mixin) => mixin(c), this.superclass);
+		};
 	},
 
 	clearSelection () {
@@ -3706,7 +3753,7 @@ ListUtil = {
 	handleGenericSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu, _, selection) => {
 		switch (Number($selectedMenu.data("ctx-id"))) {
 			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
-			case 1: ListUtil.pDoSublistRemove(selection.ix); break;
+			case 1: selection.forEach(item => ListUtil.pDoSublistRemove(item.ix)); break;
 			case 2:
 				ListUtil.pDoSublistRemoveAll();
 				break;
@@ -6307,6 +6354,7 @@ BrewUtil = {
 
 				Object.keys(json._meta).forEach(k => {
 					switch (k) {
+						case "dateAdded": break;
 						case "sources": {
 							const existing = BrewUtil.homebrewMeta.sources.map(src => src.json);
 							json._meta.sources.forEach(src => {

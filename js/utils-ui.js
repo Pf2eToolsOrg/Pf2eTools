@@ -57,12 +57,13 @@ class UiUtil {
 	 * @param [opts.max] Max allowed return value.
 	 * @param [opts.min] Min allowed return value.
 	 * @param [opts.fallbackOnNaN] Return value if not a number.
-	 * @return {number}
+	 * @return {int}
 	 */
 	static strToInt (string, fallbackEmpty = 0, opts) {
 		opts = opts || {};
 		let out;
-		if (!string.trim()) out = fallbackEmpty;
+		string = string.trim();
+		if (!string) out = fallbackEmpty;
 		else {
 			const preDot = string.split(".")[0].trim();
 			const unary = preDot.replace(/^([-+]*).*$/, (...m) => m[1]);
@@ -76,6 +77,34 @@ class UiUtil {
 		if (opts.min != null) out = Math.max(out, opts.min);
 		return out;
 	}
+
+	/**
+	 * @param string String to parse.
+	 * @param [fallbackEmpty] Fallback number if string is empty.
+	 * @param [opts] Options Object.
+	 * @param [opts.max] Max allowed return value.
+	 * @param [opts.min] Min allowed return value.
+	 * @param [opts.fallbackOnNaN] Return value if not a number.
+	 * @return {number}
+	 */
+	static strToNumber (string, fallbackEmpty = 0, opts) {
+		opts = opts || {};
+		let out;
+		string = string.trim();
+		if (!string) out = fallbackEmpty;
+		else {
+			string = string.replace(/[^0-9,.]/gi, "").replace(Parser._numberCleanRegexp, "");
+			const num = Number(string);
+			out = isNaN(num)
+				? opts.fallbackOnNaN !== undefined ? opts.fallbackOnNaN : 0
+				: num;
+		}
+		if (opts.max != null) out = Math.min(out, opts.max);
+		if (opts.min != null) out = Math.max(out, opts.min);
+		return out;
+	}
+
+	static intToBonus (int) { return `${int >= 0 ? "+" : ""}${int}`; }
 
 	static getEntriesAsText (entryArray) {
 		if (!entryArray || !entryArray.length) return "";
@@ -203,7 +232,7 @@ class UiUtil {
 		if (opts.zIndex != null) $modal.css({zIndex: opts.zIndex});
 		if (opts.overlayColor != null) $modal.css({backgroundColor: opts.overlayColor});
 		const $scroller = $(`<div class="ui-modal__scroller"/>`);
-		const $modalInner = $$`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu ${opts.isLarge ? ` ui-modal__inner--large` : ""}${opts.fullHeight ? "h-100" : ""}"><div class="split flex-v-center no-shrink">${opts.title ? `<h4>${opts.title.escapeQuotes()}</h4>` : ""}${opts.titleSplit || ""}</div>${$scroller}</div>`
+		const $modalInner = $$`<div class="ui-modal__inner ui-modal__inner--modal dropdown-menu ${opts.isLarge ? `ui-modal__inner--large ` : ""}${opts.fullHeight ? "h-100" : ""}"><div class="split flex-v-center no-shrink">${opts.title ? `<h4>${opts.title.escapeQuotes()}</h4>` : ""}${opts.titleSplit || ""}</div>${$scroller}</div>`
 			.appendTo($modal);
 		if (opts.noMinHeight) $modalInner.css("height", "initial");
 
@@ -719,14 +748,15 @@ class SearchWidget {
 			const searchWidget = new SearchWidget(
 				{[indexName]: SearchWidget.CONTENT_INDICES[indexName]},
 				(page, source, hash) => {
-					const [encName, encSource] = hash.split(HASH_LIST_SEP);
+					const [encName] = hash.split(HASH_LIST_SEP);
+					const name = decodeURIComponent(encName);
 					doClose(false); // "cancel" close
 					resolve({
 						page,
 						source,
 						hash,
-						name: encName,
-						tag: tagBuilder(encName, encSource)
+						name,
+						tag: tagBuilder(name, source)
 					});
 				},
 				searchOpts
@@ -1133,6 +1163,69 @@ class InputUiUtil {
 			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
 		});
 	}
+
+	/**
+	 * @param [opts] Options.
+	 * @param [opts.title] Prompt title.
+	 * @param [opts.default] Default values. Should be an object of the form `{num, faces, bonus}`.
+	 * @return {Promise<String>} A promise which resolves to a dice string if the user entered values, or null otherwise.
+	 */
+	static pGetUserDice (opts) {
+		opts = opts || {};
+		return new Promise(resolve => {
+			const comp = BaseComponent.fromObject({
+				num: (opts.default && opts.default.num) || 1,
+				faces: (opts.default && opts.default.faces) || 6,
+				bonus: (opts.default && opts.default.bonus) || null
+			});
+
+			comp.render = function ($parent) {
+				$parent.empty();
+
+				const $iptNum = ComponentUiUtil.$getIptInt(this, "num", 0, {$ele: $(`<input class="form-control input-xs form-control--minimal text-center mr-1">`)})
+					.appendTo($parent)
+					.keydown(evt => {
+						// return key
+						if (evt.which === 13) doClose(true);
+						evt.stopPropagation();
+					});
+				const $selFaces = ComponentUiUtil.$getSelEnum(this, "faces", {values: Renderer.dice.DICE})
+					.addClass("mr-2").addClass("text-center").css("textAlignLast", "center");
+
+				const $iptBonus = $(`<input class="form-control input-xs form-control--minimal text-center">`)
+					.change(() => this._state.bonus = UiUtil.strToInt($iptBonus.val(), null, {fallbackOnNaN: null}))
+					.keydown(evt => {
+						// return key
+						if (evt.which === 13) doClose(true);
+						evt.stopPropagation();
+					});
+				const hook = () => $iptBonus.val(this._state.bonus != null ? UiUtil.intToBonus(this._state.bonus) : this._state.bonus);
+				comp._addHookBase("bonus", hook);
+				hook();
+
+				$$`<div class="flex-vh-center">${$iptNum}<div class="mr-1">d</div>${$selFaces}${$iptBonus}</div>`.appendTo($parent);
+			};
+
+			comp.getAsString = function () {
+				return `{@dice ${this._state.num}d${this._state.faces}${this._state.bonus ? UiUtil.intToBonus(this._state.bonus) : ""}}`;
+			};
+
+			const $btnOk = $(`<button class="btn btn-default">Enter</button>`)
+				.click(() => doClose(true));
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				title: opts.title || "Enter Dice",
+				noMinHeight: true,
+				cbClose: (isDataEntered) => {
+					if (!isDataEntered) return resolve(null);
+					return resolve(comp.getAsString());
+				}
+			});
+
+			comp.render($modalInner);
+
+			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+		});
+	}
 }
 
 class DragReorderUiUtil {
@@ -1421,6 +1514,24 @@ class BaseComponent extends ProxyBase {
 		this._removeHook("state", prop, hook);
 	}
 
+	/**
+	 * Overwrite the current state with some new state, then trigger all the appropriate event handlers.
+	 * @param toState
+	 */
+	_setState (toState) {
+		const oldKeys = Object.keys(this._state);
+		const nuKeys = Object.keys(toState);
+		const allKeys = new Set([...oldKeys, ...nuKeys]);
+
+		oldKeys.forEach(k => delete this.__state[k]);
+		nuKeys.forEach(k => this.__state[k] = toState[k]);
+
+		allKeys.forEach(k => {
+			if (this.__hooksAll["state"]) this.__hooksAll["state"].forEach(hk => hk(k, this.__state[k]));
+			if (this.__hooks["state"][k]) this.__hooks["state"][k].forEach(hk => hk(k, this.__state[k]));
+		});
+	}
+
 	getPod () {
 		return {
 			get: (prop) => this._state[prop],
@@ -1496,6 +1607,7 @@ class BaseComponent extends ProxyBase {
 	 * @param cbExists Function to run on existing render meta. Arguments are `rendered, item, i`.
 	 * @param cbNotExists Function to run which generates existing render meta. Arguments are `item, i`.
 	 * @param [opts] Options object.
+	 * @param [opts.isDiffMode] If updates should be run in "diff" mode (i.e. no update is run if nothing has changed).
 	 */
 	async _pRenderCollection (prop, cbExists, cbNotExists, opts) {
 		opts = opts || {};
@@ -1715,6 +1827,100 @@ class BaseLayeredComponent extends BaseComponent {
 	}
 }
 
+const MixinComponentHistory = compClass => class extends compClass {
+	constructor () {
+		super(...arguments);
+		this._histStackUndo = [];
+		this._histStackRedo = [];
+		this._isHistDisabled = true;
+		this._histPropBlacklist = new Set();
+		this._histPropWhitelist = null;
+
+		this._histInitialState = null;
+	}
+
+	set isHistDisabled (val) { this._isHistDisabled = val; }
+	addBlacklistProps (...props) { props.forEach(p => this._histPropBlacklist.add(p)); }
+	addWhitelistProps (...props) {
+		this._histPropWhitelist = this._histPropWhitelist || new Set();
+		props.forEach(p => this._histPropWhitelist.add(p));
+	}
+
+	/**
+	 * This should be initialised after all other hooks have been added
+	 */
+	initHistory () {
+		// Track the initial state, and watch for further modifications
+		this._histInitialState = MiscUtil.copy(this._state);
+		this._isHistDisabled = false;
+
+		this._addHookAll("state", prop => {
+			if (this._isHistDisabled) return;
+			if (this._histPropBlacklist.has(prop)) return;
+			if (this._histPropWhitelist && !this._histPropWhitelist.has(prop)) return;
+
+			this.recordHistory();
+		});
+	}
+
+	recordHistory () {
+		const stateCopy = MiscUtil.copy(this._state);
+
+		// remove any un-tracked properties
+		this._histPropBlacklist.forEach(prop => delete stateCopy[prop]);
+		if (this._histPropWhitelist) Object.keys(stateCopy).filter(k => !this._histPropWhitelist.has(k)).forEach(k => delete stateCopy[k]);
+
+		this._histStackUndo.push(stateCopy);
+		this._histStackRedo = [];
+	}
+
+	_histAddExcludedProperties (stateCopy) {
+		Object.entries(this._state).forEach(([k, v]) => {
+			if (this._histPropBlacklist.has(k)) return stateCopy[k] = v;
+			if (this._histPropWhitelist && !this._histPropWhitelist.has(k)) stateCopy[k] = v
+		});
+	}
+
+	undo () {
+		if (this._histStackUndo.length) {
+			const lastHistDisabled = this._isHistDisabled;
+			this._isHistDisabled = true;
+
+			const curState = this._histStackUndo.pop();
+			this._histStackRedo.push(curState);
+			const toApply = MiscUtil.copy(this._histStackUndo.last() || this._histInitialState);
+			this._histAddExcludedProperties(toApply);
+			this._setState(toApply);
+
+			this._isHistDisabled = lastHistDisabled;
+		} else {
+			const lastHistDisabled = this._isHistDisabled;
+			this._isHistDisabled = true;
+
+			const toApply = MiscUtil.copy(this._histInitialState);
+			this._histAddExcludedProperties(toApply);
+			this._setState(toApply);
+
+			this._isHistDisabled = lastHistDisabled;
+		}
+	}
+
+	redo () {
+		if (!this._histStackRedo.length) return;
+
+		const lastHistDisabled = this._isHistDisabled;
+		this._isHistDisabled = true;
+
+		const toApplyRaw = this._histStackRedo.pop();
+		this._histStackUndo.push(toApplyRaw);
+		const toApply = MiscUtil.copy(toApplyRaw);
+		this._histAddExcludedProperties(toApply);
+		this._setState(toApply);
+
+		this._isHistDisabled = lastHistDisabled;
+	}
+};
+
 class ComponentUiUtil {
 	/**
 	 * @param component An instance of a class which extends BaseComponent.
@@ -1727,15 +1933,47 @@ class ComponentUiUtil {
 	 * @param [opts.offset] Offset to add to value displayed.
 	 * @param [opts.padLength] Number of digits to pad the number to.
 	 * @param [opts.fallbackOnNaN] Return value if not a number.
+	 * @param [opts.isAllowNull] If an empty input should be treated as null.
 	 * @return {JQuery}
 	 */
 	static $getIptInt (component, prop, fallbackEmpty = 0, opts) {
+		return ComponentUiUtil._$getIptNumeric(component, prop, UiUtil.strToInt, fallbackEmpty, opts);
+	}
+
+	/**
+	 * @param component An instance of a class which extends BaseComponent.
+	 * @param prop Component to hook on.
+	 * @param [fallbackEmpty] Fallback number if string is empty.
+	 * @param [opts] Options Object.
+	 * @param [opts.$ele] Element to use.
+	 * @param [opts.max] Max allowed return value.
+	 * @param [opts.min] Min allowed return value.
+	 * @param [opts.offset] Offset to add to value displayed.
+	 * @param [opts.padLength] Number of digits to pad the number to.
+	 * @param [opts.fallbackOnNaN] Return value if not a number.
+	 * @param [opts.isAllowNull] If an empty input should be treated as null.
+	 * @return {JQuery}
+	 */
+	static $getIptNumber (component, prop, fallbackEmpty = 0, opts) {
+		return ComponentUiUtil._$getIptNumeric(component, prop, UiUtil.strToNumber, fallbackEmpty, opts);
+	}
+
+	static _$getIptNumeric (component, prop, fnConvert, fallbackEmpty = 0, opts) {
 		opts = opts || {};
 		opts.offset = opts.offset || 0;
 
 		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal text-right">`))
-			.change(() => component._state[prop] = UiUtil.strToInt($ipt.val(), fallbackEmpty, opts) - opts.offset);
+			.change(() => {
+				if (opts.isAllowNull) {
+					const raw = $ipt.val().trim();
+					if (!raw) return component._state[prop] = null;
+				}
+				component._state[prop] = fnConvert($ipt.val(), fallbackEmpty, opts) - opts.offset;
+			});
 		const hook = () => {
+			if (opts.isAllowNull && component._state[prop] == null) {
+				return $ipt.val(null);
+			}
 			const num = (component._state[prop] || 0) + opts.offset;
 			$ipt.val(opts.padLength ? `${num}`.padStart(opts.padLength, "0") : num)
 		};
@@ -1749,17 +1987,23 @@ class ComponentUiUtil {
 	 * @param prop Component to hook on.
 	 * @param [opts] Options Object.
 	 * @param [opts.$ele] Element to use.
+	 * @param [opts.isNoTrim] If the text should not be trimmed.
+	 * @param [opts.isAllowNull] If null should be allowed (and preferred) for empty inputs
+	 * @param [opts.asMeta] If a meta-object should be returned containing the hook and the checkbox.
 	 * @return {JQuery}
 	 */
 	static $getIptStr (component, prop, opts) {
 		opts = opts || {};
 
 		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal">`))
-			.change(() => component._state[prop] = $ipt.val().trim());
+			.change(() => {
+				const nxtVal = opts.isNoTrim ? $ipt.val() : $ipt.val().trim();
+				component._state[prop] = opts.isAllowNull && !nxtVal ? null : nxtVal;
+			});
 		const hook = () => $ipt.val(component._state[prop]);
 		component._addHookBase(prop, hook);
 		hook();
-		return $ipt
+		return opts.asMeta ? ({$ipt, hook}) : $ipt;
 	}
 
 	/**
@@ -1802,6 +2046,7 @@ class ComponentUiUtil {
 	 * @param prop Component to hook on.
 	 * @param [opts] Options Object.
 	 * @param [opts.$ele] Element to use.
+	 * @param [opts.text] Button text, if element is not specified.
 	 * @param [opts.fnHookPost] Function to run after primary hook.
 	 * @param [opts.stateName] State name.
 	 * @param [opts.stateProp] State prop.
@@ -1813,7 +2058,7 @@ class ComponentUiUtil {
 		const stateName = opts.stateName || "state";
 		const stateProp = opts.stateProp || "_state";
 
-		const $btn = (opts.$ele || $(`<button class="btn btn-xs btn-default">Toggle</button>`))
+		const $btn = (opts.$ele || $(`<button class="btn btn-xs btn-default">${opts.text || "Toggle"}</button>`))
 			.click(() => component[stateProp][prop] = !component[stateProp][prop]);
 		const hook = () => {
 			$btn.toggleClass("active", !!component[stateProp][prop]);
@@ -1829,6 +2074,7 @@ class ComponentUiUtil {
 	 * @param prop Component to hook on.
 	 * @param [opts] Options Object.
 	 * @param [opts.$ele] Element to use.
+	 * @param [opts.asMeta] If a meta-object should be returned containing the hook and the input.
 	 * @return {JQuery}
 	 */
 	static $getCbBool (component, prop, opts) {
@@ -1839,7 +2085,8 @@ class ComponentUiUtil {
 		const hook = () => $cb.prop("checked", !!component._state[prop]);
 		component._addHookBase(prop, hook);
 		hook();
-		return $cb
+
+		return opts.asMeta ? ({$cb, hook}) : $cb;
 	}
 
 	/**
@@ -1850,6 +2097,7 @@ class ComponentUiUtil {
 	 * @param [opts.$ele] Element to use.
 	 * @param [opts.isAllowNull] If null is allowed.
 	 * @param [opts.fnDisplay] Value display function.
+	 * @param [opts.asMeta] If a meta-object should be returned containing the hook and the select.
 	 * @return {JQuery}
 	 */
 	static $getSelEnum (component, prop, opts) {
@@ -1873,7 +2121,55 @@ class ComponentUiUtil {
 		};
 		component._addHookBase(prop, hook);
 		hook();
-		return $sel
+		return opts.asMeta ? ({$sel, hook}) : $sel;
+	}
+
+	/**
+	 * @param component An instance of a class which extends BaseComponent.
+	 * @param prop Component to hook on.
+	 * @param opts Options Object.
+	 * @param opts.values Values to display.
+	 * @param [opts.fnDisplay] Value display function.
+	 * @return {JQuery}
+	 */
+	static $getPickEnum (component, prop, opts) {
+		opts = opts || {};
+
+		const initialVals = opts.values
+			.map(v => ({[v]: component._state[prop] && component._state[prop].includes(v)}))
+			.reduce((a, b) => Object.assign(a, b), {});
+
+		const contextId = ContextUtil.getNextGenericMenuId();
+		const contextOptions = opts.values.map(it => ({name: opts.fnDisplay ? opts.fnDisplay(it) : it, action: () => pickComp.getPod().set(it, true)}));
+		ContextUtil.doInitContextMenu(contextId, (evt, ele, $invokedOn, $selectedMenu) => {
+			const val = Number($selectedMenu.data("ctx-id"));
+			contextOptions[val].action(evt, $invokedOn);
+		}, contextOptions.map(it => it.name));
+
+		const pickComp = BaseComponent.fromObject(initialVals);
+		pickComp.render = function ($parent) {
+			$parent.empty();
+
+			Object.entries(this._state).forEach(([k, v]) => {
+				if (v === false) return;
+
+				const $btnRemove = $(`<button class="btn btn-danger ui-pick__btn-remove">×</button>`)
+					.click(() => this._state[k] = false);
+				$$`<div class="flex mx-1 ui-pick__disp-pill"><div class="px-1 ui-pick__disp-text flex-v-center">${opts.fnDisplay ? opts.fnDisplay(k) : k}</div>${$btnRemove}</div>`.appendTo($parent);
+			});
+		};
+
+		const $btnAdd = $(`<button class="btn btn-xxs btn-default ui-pick__btn-add">+</button>`)
+			.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnAdd, contextId));
+
+		const $wrpPills = $(`<div class="flex flex-wrap w-100 ui-pick__wrp"/>`);
+		const $wrp = $$`<div class="flex-v-center">${$btnAdd}${$wrpPills}</div>`;
+		pickComp._addHookAll("state", () => {
+			component._state[prop] = Object.keys(pickComp._state).filter(k => pickComp._state[k]);
+			pickComp.render($wrpPills);
+		});
+		pickComp.render($wrpPills);
+		return $wrp;
 	}
 }
 

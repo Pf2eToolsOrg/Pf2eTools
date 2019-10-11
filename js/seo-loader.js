@@ -7,7 +7,7 @@ window.addEventListener("load", async () => {
 
 	$(`<div class="col-12 flex-vh-center my-2 pt-3">
 		<button class="btn btn-primary">
-			<a href="/${_SEO_PAGE}.html" style="font-size: 1.7em;">${_SEO_STYLE === 1 ? `View All` : `View Complete`} ${_SEO_PAGE.toTitleCase()}</a>
+			<a href="/${_SEO_PAGE}.html" style="font-size: 1.7em; color: white;">${_SEO_STYLE === 1 ? `View All` : `View Complete`} ${_SEO_PAGE.toTitleCase()}</a>
 		</button>
 	</div>`).appendTo($(`#link-page`));
 

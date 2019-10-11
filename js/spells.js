@@ -11,9 +11,6 @@ const META_ADD_M = "Material";
 const META_ADD_R = "Royalty";
 const META_ADD_M_COST = "Material with Cost";
 const META_ADD_M_CONSUMED = "Material is Consumed";
-// real meta tags
-const META_RITUAL = "Ritual";
-const META_TECHNOMAGIC = "Technomagic";
 
 const F_RNG_POINT = "Point";
 const F_RNG_SELF_AREA = "Self (Area)";
@@ -22,6 +19,8 @@ const F_RNG_TOUCH = "Touch";
 const F_RNG_SPECIAL = "Special";
 
 const SUBCLASS_LOOKUP = {};
+
+const META_FILTER_BASE_ITEMS = [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_M_CONSUMED, ...Object.values(Parser.SP_MISC_TAG_TO_FULL)];
 
 function getFltrSpellLevelStr (level) {
 	return level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + " level";
@@ -126,8 +125,12 @@ function getClassFilterStr (c) {
 
 function getMetaFilterObj (s) {
 	const out = [];
-	if (s.meta && s.meta.ritual) out.push(META_RITUAL);
-	if (s.meta && s.meta.technomagic) out.push(META_TECHNOMAGIC);
+	if (s.meta) {
+		Object.entries(s.meta)
+			.filter(([_, v]) => v)
+			.sort(SortUtil.ascSort)
+			.forEach(([k]) => out.push(k.toTitleCase()));
+	}
 	if (s.duration.filter(d => d.concentration).length) {
 		out.push(META_ADD_CONC);
 		s._isConc = true;
@@ -180,6 +183,54 @@ class SpellsPage {
 			const initial = func(a[prop], b[prop]);
 			return initial || fallback();
 		}
+	}
+
+	static getFilterDuration (spell) {
+		const fDur = spell.duration[0] || {type: "special"};
+		switch (fDur.type) {
+			case "instant": return "Instant";
+			case "timed": {
+				if (!fDur.duration) return "Special";
+				switch (fDur.duration.type) {
+					case "turn":
+					case "round": return "1 Round";
+
+					case "minute": {
+						const amt = fDur.duration.amount || 0;
+						if (amt <= 1) return "1 Minute";
+						if (amt <= 10) return "10 Minutes";
+						if (amt <= 60) return "1 Hour";
+						if (amt <= 8 * 60) return "8 Hours";
+						return "24+ Hours";
+					}
+
+					case "hour": {
+						const amt = fDur.duration.amount || 0;
+						if (amt <= 1) return "1 Hour";
+						if (amt <= 8) return "8 Hours";
+						return "24+ Hours";
+					}
+
+					case "week":
+					case "day":
+					case "year": return "24+ Hours";
+					default: return "Special";
+				}
+			}
+			case "permanent": return "Permanent";
+			case "special":
+			default: return "Special";
+		}
+	}
+
+	static sortMetaFilter (a, b) {
+		const ixA = META_FILTER_BASE_ITEMS.indexOf(a.item);
+		const ixB = META_FILTER_BASE_ITEMS.indexOf(b.item);
+
+		if (~ixA && ~ixB) return ixA - ixB;
+		if (~ixA) return -1;
+		if (~ixB) return 1;
+		return SortUtil.ascSortLower(a, b);
 	}
 }
 
@@ -269,8 +320,8 @@ const raceFilter = new Filter({header: "Race"});
 const backgroundFilter = new Filter({header: "Background"});
 const metaFilter = new Filter({
 	header: "Components & Miscellaneous",
-	items: [META_ADD_CONC, META_ADD_V, META_ADD_S, META_ADD_M, META_ADD_M_COST, META_ADD_M_CONSUMED, ...Object.values(Parser.SP_MISC_TAG_TO_FULL), META_RITUAL, META_TECHNOMAGIC],
-	itemSortFn: null
+	items: [...META_FILTER_BASE_ITEMS, "Ritual", "Technomagic"],
+	itemSortFn: SpellsPage.sortMetaFilter
 });
 const schoolFilter = new Filter({
 	header: "School",
@@ -323,16 +374,11 @@ const timeFilter = new Filter({
 	displayFn: Parser.spTimeUnitToFull,
 	itemSortFn: null
 });
-const durationFilter = new Filter({
+const durationFilter = new RangeFilter({
 	header: "Duration",
-	items: [
-		"instant",
-		"timed",
-		"permanent",
-		"special"
-	],
-	displayFn: StrUtil.uppercaseFirst,
-	itemSortFn: null
+	isLabelled: true,
+	labelSortFn: null,
+	labels: ["Instant", "1 Round", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "24+ Hours", "Permanent", "Special"]
 });
 const rangeFilter = new Filter({
 	header: "Range",
@@ -582,7 +628,7 @@ function addSpells (data) {
 		spell._fRaces = spell.races ? spell.races.map(r => r.baseName || r.name) : [];
 		spell._fBackgrounds = spell.backgrounds ? spell.backgrounds.map(bg => bg.name) : [];
 		spell._fTimeType = spell.time.map(t => t.unit);
-		spell._fDurationType = spell.duration.map(t => t.type);
+		spell._fDurationType = SpellsPage.getFilterDuration(spell);
 		spell._fRangeType = getRangeType(spell.range);
 
 		const eleLi = document.createElement("li");
@@ -628,6 +674,7 @@ function addSpells (data) {
 		// populate filters
 		if (spell.level > 9) levelFilter.addItem(spell.level);
 		sourceFilter.addItem(spell._fSources);
+		metaFilter.addItem(spell._fMeta);
 		raceFilter.addItem(spell._fRaces);
 		backgroundFilter.addItem(spell._fBackgrounds);
 		spell._fClasses.forEach(c => classFilter.addItem(c));

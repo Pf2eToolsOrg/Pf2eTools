@@ -9,7 +9,7 @@
 			"name": "Abacus",
 			"rarity": "None",
 			"type": "G",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 2,
 			"source": "PHB",
 			"page": 150
@@ -18,7 +18,7 @@
 			"name": "Acid (vial)",
 			"rarity": "None",
 			"type": "G",
-			"value": "25 gp",
+			"value": 2500,
 			"weight": 1,
 			"source": "PHB",
 			"page": 148,
@@ -49,20 +49,21 @@
 			"name": "Airship",
 			"type": "AIR",
 			"rarity": "None",
-			"value": "20000 gp",
-			"speed": "8 mph",
-			"carryingCapacity": "1 ton cargo, 20 passengers",
+			"value": 2000000,
 			"crew": 10,
 			"vehAc": 13,
 			"vehHp": 300,
 			"source": "DMG",
-			"page": 119
+			"page": 119,
+			"capPassenger": 20,
+			"capCargo": 1,
+			"vehSpeed": 8
 		},
 		{
 			"name": "Alchemist's Fire (flask)",
 			"type": "G",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"weight": 1,
 			"source": "PHB",
 			"page": 148,
@@ -74,7 +75,7 @@
 			"name": "Alchemist's Supplies",
 			"type": "AT",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"weight": 8,
 			"source": "PHB",
 			"page": 154,
@@ -224,7 +225,7 @@
 			"name": "Alexandrite",
 			"type": "$",
 			"rarity": "None",
-			"value": "500 gp",
+			"value": 50000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -235,7 +236,7 @@
 			"name": "Amber",
 			"type": "$",
 			"rarity": "None",
-			"value": "100 gp",
+			"value": 10000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -246,7 +247,7 @@
 			"name": "Amethyst",
 			"type": "$",
 			"rarity": "None",
-			"value": "100 gp",
+			"value": 10000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -258,7 +259,7 @@
 			"type": "SCF",
 			"scfType": "holy",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 1,
 			"source": "PHB",
 			"page": 151
@@ -364,7 +365,8 @@
 					]
 				}
 			],
-			"charges": 6
+			"charges": 6,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Amulet of the Planes",
@@ -406,7 +408,7 @@
 			"name": "Antitoxin",
 			"type": "G",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"source": "PHB",
 			"page": 151,
 			"entries": [
@@ -526,7 +528,7 @@
 			"name": "Aquamarine",
 			"type": "$",
 			"rarity": "None",
-			"value": "500 gp",
+			"value": 50000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -536,7 +538,6 @@
 		{
 			"name": "Armor of Invulnerability",
 			"type": "HA",
-			"armor": true,
 			"weight": 65,
 			"ac": 18,
 			"strength": "15",
@@ -556,7 +557,6 @@
 		{
 			"name": "Armor of Vulnerability (Bludgeoning)",
 			"type": "HA",
-			"armor": true,
 			"weight": 65,
 			"ac": 18,
 			"strength": "15",
@@ -582,7 +582,6 @@
 		{
 			"name": "Armor of Vulnerability (Piercing)",
 			"type": "HA",
-			"armor": true,
 			"weight": 65,
 			"ac": 18,
 			"strength": "15",
@@ -608,7 +607,6 @@
 		{
 			"name": "Armor of Vulnerability (Slashing)",
 			"type": "HA",
-			"armor": true,
 			"weight": 65,
 			"ac": 18,
 			"strength": "15",
@@ -652,7 +650,7 @@
 			"name": "Assassin's Blood (Ingested)",
 			"type": "G",
 			"rarity": "None",
-			"value": "150 gp",
+			"value": 15000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -760,7 +758,7 @@
 			"name": "Azurite",
 			"type": "$",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -771,7 +769,7 @@
 			"name": "Backpack",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 5,
 			"source": "PHB",
 			"page": 153,
@@ -1130,7 +1128,7 @@
 			"name": "Bagpipes",
 			"type": "INS",
 			"rarity": "None",
-			"value": "30 gp",
+			"value": 3000,
 			"weight": 6,
 			"source": "PHB",
 			"page": 154
@@ -1153,7 +1151,7 @@
 			"name": "Ball Bearing",
 			"type": "G",
 			"rarity": "None",
-			"value": "0.1 cp",
+			"value": 0.1,
 			"weight": 0.002,
 			"source": "PHB",
 			"page": 151,
@@ -1165,7 +1163,7 @@
 			"name": "Ball Bearings (Bag of 1,000)",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 2,
 			"source": "PHB",
 			"page": 151,
@@ -1204,7 +1202,7 @@
 			"name": "Banded Agate",
 			"type": "$",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -1267,7 +1265,7 @@
 			"name": "Barrel",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 70,
 			"source": "PHB",
 			"page": 153,
@@ -1279,7 +1277,7 @@
 			"name": "Basic Poison (vial)",
 			"type": "G",
 			"rarity": "None",
-			"value": "100 gp",
+			"value": 10000,
 			"source": "PHB",
 			"page": 153,
 			"entries": [
@@ -1291,7 +1289,7 @@
 			"name": "Basket",
 			"type": "G",
 			"rarity": "None",
-			"value": "4 sp",
+			"value": 40,
 			"weight": 2,
 			"source": "PHB",
 			"page": 153,
@@ -1342,7 +1340,7 @@
 			"name": "Bedroll",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 7,
 			"source": "PHB",
 			"page": 150
@@ -1351,7 +1349,7 @@
 			"name": "Bejeweled ivory drinking horn with gold filigree",
 			"type": "$",
 			"rarity": "None",
-			"value": "7500 gp",
+			"value": 750000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -1359,7 +1357,7 @@
 			"name": "Bell",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"source": "PHB",
 			"page": 150
 		},
@@ -1532,7 +1530,7 @@
 			"name": "Bit and bridle",
 			"type": "TAH",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -1600,7 +1598,6 @@
 		{
 			"name": "Black Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"weight": 45,
 			"ac": 14,
 			"stealth": true,
@@ -1619,7 +1616,7 @@
 			"name": "Black Opal",
 			"type": "$",
 			"rarity": "None",
-			"value": "1000 gp",
+			"value": 100000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -1630,7 +1627,7 @@
 			"name": "Black Pearl",
 			"type": "$",
 			"rarity": "None",
-			"value": "500 gp",
+			"value": 50000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -1641,7 +1638,7 @@
 			"name": "Black Sapphire",
 			"type": "$",
 			"rarity": "None",
-			"value": "5000 gp",
+			"value": 500000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -1652,7 +1649,7 @@
 			"name": "Black velvet mask stitched with silver thread",
 			"type": "$",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"source": "DMG",
 			"page": 134
 		},
@@ -1721,7 +1718,7 @@
 			"name": "Blanket",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 sp",
+			"value": 50,
 			"weight": 3,
 			"source": "PHB",
 			"page": 150
@@ -1730,7 +1727,7 @@
 			"name": "Block and Tackle",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 5,
 			"source": "PHB",
 			"page": 151,
@@ -1779,7 +1776,7 @@
 			"name": "Bloodstone",
 			"type": "$",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -1849,7 +1846,6 @@
 		{
 			"name": "Blue Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"weight": 45,
 			"ac": 14,
 			"stealth": true,
@@ -1868,7 +1864,7 @@
 			"name": "Blue Quartz",
 			"type": "$",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -1879,7 +1875,7 @@
 			"name": "Blue Sapphire",
 			"type": "$",
 			"rarity": "None",
-			"value": "1000 gp",
+			"value": 100000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -1890,7 +1886,7 @@
 			"name": "Blue Spinel",
 			"type": "$",
 			"rarity": "None",
-			"value": "500 gp",
+			"value": 50000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -1903,7 +1899,7 @@
 			"age": "Renaissance",
 			"rarity": "None",
 			"weight": 1,
-			"value": "150 gp",
+			"value": 15000,
 			"source": "DMG",
 			"page": 268,
 			"entries": [
@@ -1914,7 +1910,7 @@
 			"name": "Book",
 			"type": "G",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"weight": 5,
 			"source": "PHB",
 			"page": 151,
@@ -2217,7 +2213,7 @@
 			"name": "Bottle stopper cork embossed with gold leaf and set with amethysts",
 			"type": "$",
 			"rarity": "None",
-			"value": "750 gp",
+			"value": 75000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -2259,7 +2255,7 @@
 			"name": "Box of turquoise animal figurines",
 			"type": "$",
 			"rarity": "None",
-			"value": "250 gp",
+			"value": 25000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -2320,7 +2316,6 @@
 		{
 			"name": "Brass Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"weight": 45,
 			"ac": 14,
 			"stealth": true,
@@ -2339,7 +2334,7 @@
 			"name": "Brass mug with jade inlay",
 			"type": "$",
 			"rarity": "None",
-			"value": "250 gp",
+			"value": 25000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -2366,7 +2361,7 @@
 			"name": "Brewer's Supplies",
 			"type": "AT",
 			"rarity": "None",
-			"value": "20 gp",
+			"value": 2000,
 			"weight": 9,
 			"source": "PHB",
 			"page": 154,
@@ -2445,14 +2440,13 @@
 			"name": "Bronze crown",
 			"type": "$",
 			"rarity": "None",
-			"value": "250 gp",
+			"value": 25000,
 			"source": "DMG",
 			"page": 135
 		},
 		{
 			"name": "Bronze Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"weight": 45,
 			"ac": 14,
 			"stealth": true,
@@ -2502,7 +2496,7 @@
 			"name": "Bucket",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 cp",
+			"value": 5,
 			"weight": 2,
 			"source": "PHB",
 			"page": 153,
@@ -2514,7 +2508,7 @@
 			"name": "Bullseye Lantern",
 			"type": "G",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"weight": 2,
 			"source": "PHB",
 			"page": 152,
@@ -2526,7 +2520,7 @@
 			"name": "Burglar's Pack",
 			"type": "G",
 			"rarity": "None",
-			"value": "16 gp",
+			"value": 1600,
 			"weight": 44.5,
 			"source": "PHB",
 			"page": 151,
@@ -2557,7 +2551,7 @@
 			"name": "Burnt Othur Fumes (Inhaled)",
 			"type": "G",
 			"rarity": "None",
-			"value": "500 gp",
+			"value": 50000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -2569,7 +2563,7 @@
 			"name": "Calligrapher's Supplies",
 			"type": "AT",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"weight": 5,
 			"source": "PHB",
 			"page": 154,
@@ -2645,7 +2639,7 @@
 			"name": "Caltrops",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 cp",
+			"value": 5,
 			"weight": 0.1,
 			"source": "PHB",
 			"page": 151,
@@ -2657,7 +2651,7 @@
 			"name": "Caltrops (20)",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 2,
 			"source": "PHB",
 			"page": 151,
@@ -2669,9 +2663,9 @@
 			"name": "Camel",
 			"type": "MNT",
 			"rarity": "None",
-			"carryingCapacity": "480",
-			"speed": "50",
-			"value": "50 gp",
+			"carryingCapacity": 480,
+			"speed": 50,
+			"value": 5000,
 			"source": "PHB",
 			"page": 157
 		},
@@ -2679,7 +2673,7 @@
 			"name": "Candle",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 cp",
+			"value": 1,
 			"source": "PHB",
 			"page": 151,
 			"entries": [
@@ -2771,21 +2765,21 @@
 			"name": "Canoe",
 			"type": "SHP",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"weight": 100,
-			"speed": "2 mph",
-			"carryingCapacity": "6 passengers",
 			"source": "ToA",
 			"page": 31,
 			"entries": [
 				"A canoe can be purchased in Port Nyanzaru for 50 gp. It holds up to six Medium creatures and has a maximum speed of 2 mph. It is otherwise identical to a {@item rowboat}."
-			]
+			],
+			"vehSpeed": 2,
+			"capPassenger": 6
 		},
 		{
 			"name": "Canvas (1 sq. yd.)",
 			"type": "TG",
 			"rarity": "None",
-			"value": "1 sp",
+			"value": 10,
 			"source": "PHB",
 			"page": 157
 		},
@@ -2825,7 +2819,7 @@
 			"name": "Carnelian",
 			"type": "$",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -2836,7 +2830,7 @@
 			"name": "Carpenter's Tools",
 			"type": "AT",
 			"rarity": "None",
-			"value": "8 gp",
+			"value": 800,
 			"weight": 6,
 			"source": "PHB",
 			"page": 154,
@@ -2981,7 +2975,7 @@
 			"name": "Carriage",
 			"type": "VEH",
 			"rarity": "None",
-			"value": "100 gp",
+			"value": 10000,
 			"weight": 600,
 			"source": "PHB",
 			"page": 157
@@ -2991,7 +2985,7 @@
 			"type": "G",
 			"tier": "Major",
 			"rarity": "None",
-			"value": "200 gp",
+			"value": 20000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -3003,7 +2997,7 @@
 			"name": "Cart",
 			"type": "VEH",
 			"rarity": "None",
-			"value": "15 gp",
+			"value": 1500,
 			"weight": 200,
 			"source": "PHB",
 			"page": 157
@@ -3012,7 +3006,7 @@
 			"name": "Cartographer's Tools",
 			"type": "AT",
 			"rarity": "None",
-			"value": "15 gp",
+			"value": 1500,
 			"weight": 6,
 			"source": "PHB",
 			"page": 154,
@@ -3095,7 +3089,7 @@
 			"name": "Carved bone statuette",
 			"type": "$",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"source": "DMG",
 			"page": 134
 		},
@@ -3103,7 +3097,7 @@
 			"name": "Carved harp of exotic wood with ivory inlay and zircon gems",
 			"type": "$",
 			"rarity": "None",
-			"value": "750 gp",
+			"value": 75000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -3111,7 +3105,7 @@
 			"name": "Carved ivory statuette",
 			"type": "$",
 			"rarity": "None",
-			"value": "250 gp",
+			"value": 25000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -3138,7 +3132,7 @@
 			"name": "Ceremonial electrum dagger with a black pearl in the pommel",
 			"type": "$",
 			"rarity": "None",
-			"value": "750 gp",
+			"value": 75000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -3146,7 +3140,7 @@
 			"name": "Chain (10 feet)",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 10,
 			"source": "PHB",
 			"page": 151,
@@ -3158,7 +3152,7 @@
 			"name": "Chalcedony",
 			"type": "$",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -3169,7 +3163,7 @@
 			"name": "Chalk (1 piece)",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 cp",
+			"value": 1,
 			"source": "PHB",
 			"page": 150
 		},
@@ -3177,7 +3171,7 @@
 			"name": "Chariot",
 			"type": "VEH",
 			"rarity": "None",
-			"value": "250 gp",
+			"value": 25000,
 			"weight": 100,
 			"source": "PHB",
 			"page": 157
@@ -3198,7 +3192,7 @@
 			"name": "Chest",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 25,
 			"source": "PHB",
 			"page": 153,
@@ -3210,7 +3204,7 @@
 			"name": "Chicken",
 			"type": "TG",
 			"rarity": "None",
-			"value": "2 cp",
+			"value": 2,
 			"source": "PHB",
 			"page": 157
 		},
@@ -3234,7 +3228,7 @@
 			"name": "Chrysoberyl",
 			"type": "$",
 			"rarity": "None",
-			"value": "100 gp",
+			"value": 10000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -3245,7 +3239,7 @@
 			"name": "Chrysoprase",
 			"type": "$",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -3256,7 +3250,7 @@
 			"name": "Cinnamon",
 			"type": "TG",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -3282,7 +3276,7 @@
 			"name": "Citrine",
 			"type": "$",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -3349,7 +3343,7 @@
 			"name": "Climber's Kit",
 			"type": "G",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"weight": 12,
 			"source": "PHB",
 			"page": 151,
@@ -3517,7 +3511,7 @@
 			"name": "Cloth-of-gold vestments",
 			"type": "$",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"source": "DMG",
 			"page": 134
 		},
@@ -3536,7 +3530,7 @@
 			"name": "Cloves",
 			"type": "TG",
 			"rarity": "None",
-			"value": "3 gp",
+			"value": 300,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -3545,7 +3539,7 @@
 			"name": "Cobbler's Tools",
 			"type": "AT",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 5,
 			"source": "PHB",
 			"page": 154,
@@ -3620,7 +3614,7 @@
 			"name": "Common Clothes",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 sp",
+			"value": 50,
 			"weight": 3,
 			"source": "PHB",
 			"page": 150
@@ -3629,7 +3623,7 @@
 			"name": "Component Pouch",
 			"type": "G",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"weight": 2,
 			"source": "PHB",
 			"page": 151,
@@ -3656,7 +3650,7 @@
 			"name": "Cook's Utensils",
 			"type": "AT",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 8,
 			"source": "PHB",
 			"page": 154,
@@ -3739,7 +3733,7 @@
 			"name": "Copper",
 			"type": "TG",
 			"rarity": "None",
-			"value": "5 sp",
+			"value": 50,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -3748,7 +3742,7 @@
 			"name": "Copper (cp)",
 			"type": "$",
 			"rarity": "None",
-			"value": "1 cp",
+			"value": 1,
 			"weight": 0.02,
 			"source": "PHB",
 			"page": 143,
@@ -3765,14 +3759,13 @@
 			"name": "Copper chalice with silver filigree",
 			"type": "$",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"source": "DMG",
 			"page": 134
 		},
 		{
 			"name": "Copper Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"weight": 45,
 			"ac": 14,
 			"stealth": true,
@@ -3791,7 +3784,7 @@
 			"name": "Coral",
 			"type": "$",
 			"rarity": "None",
-			"value": "100 gp",
+			"value": 10000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -3802,7 +3795,7 @@
 			"name": "Costume Clothes",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 4,
 			"source": "PHB",
 			"page": 150
@@ -3811,7 +3804,7 @@
 			"name": "Cotton Cloth (1 sq. yd.)",
 			"type": "TG",
 			"rarity": "None",
-			"value": "5 sp",
+			"value": 50,
 			"source": "PHB",
 			"page": 157
 		},
@@ -3819,7 +3812,7 @@
 			"name": "Cow",
 			"type": "TG",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "PHB",
 			"page": 157
 		},
@@ -3827,7 +3820,7 @@
 			"name": "Crossbow Bolt Case",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 1,
 			"source": "PHB",
 			"page": 151,
@@ -3839,7 +3832,7 @@
 			"name": "Crowbar",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 5,
 			"source": "PHB",
 			"page": 151,
@@ -4023,7 +4016,8 @@
 			"charges": 36,
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Cubic Gate",
@@ -4044,7 +4038,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table I"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Daern's Instant Fortress",
@@ -4093,7 +4088,7 @@
 		{
 			"name": "Dancing Monkey Fruit",
 			"type": "G",
-			"value": "5 gp",
+			"value": 500,
 			"rarity": "Unknown",
 			"source": "ToA",
 			"page": 205,
@@ -4853,7 +4848,6 @@
 		{
 			"name": "Demon Armor",
 			"type": "HA",
-			"armor": true,
 			"weight": 65,
 			"ac": 18,
 			"strength": "15",
@@ -4963,7 +4957,7 @@
 			"name": "Diamond",
 			"type": "$",
 			"rarity": "None",
-			"value": "5000 gp",
+			"value": 500000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -4974,7 +4968,7 @@
 			"name": "Dice Set",
 			"type": "GS",
 			"rarity": "None",
-			"value": "1 sp",
+			"value": 10,
 			"source": "PHB",
 			"page": 154
 		},
@@ -5008,7 +5002,7 @@
 			"name": "Diplomat's Pack",
 			"type": "G",
 			"rarity": "None",
-			"value": "39 gp",
+			"value": 3900,
 			"weight": 36,
 			"source": "PHB",
 			"page": 151,
@@ -5036,7 +5030,7 @@
 			"name": "Disguise Kit",
 			"type": "T",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"weight": 3,
 			"source": "PHB",
 			"page": 154,
@@ -5161,9 +5155,9 @@
 			"name": "Donkey",
 			"type": "MNT",
 			"rarity": "None",
-			"carryingCapacity": "420",
-			"speed": "40",
-			"value": "8 gp",
+			"carryingCapacity": 420,
+			"speed": 40,
+			"value": 800,
 			"source": "PHB",
 			"page": 157
 		},
@@ -5186,9 +5180,9 @@
 			"name": "Draft Horse",
 			"type": "MNT",
 			"rarity": "None",
-			"carryingCapacity": "540",
-			"speed": "40",
-			"value": "50 gp",
+			"carryingCapacity": 540,
+			"speed": 40,
+			"value": 5000,
 			"source": "PHB",
 			"page": 157
 		},
@@ -5196,7 +5190,7 @@
 			"name": "Dragonchess Set",
 			"type": "GS",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 0.5,
 			"source": "PHB",
 			"page": 154
@@ -5204,7 +5198,6 @@
 		{
 			"name": "Dragonguard",
 			"type": "MA",
-			"armor": true,
 			"weight": 20,
 			"ac": 14,
 			"rarity": "Uncommon",
@@ -5281,7 +5274,7 @@
 			"name": "Drow Poison (Injury)",
 			"type": "G",
 			"rarity": "None",
-			"value": "200 gp",
+			"value": 20000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -5349,7 +5342,7 @@
 			"name": "Drum",
 			"type": "INS",
 			"rarity": "None",
-			"value": "6 gp",
+			"value": 600,
 			"weight": 3,
 			"source": "PHB",
 			"page": 154
@@ -5358,7 +5351,7 @@
 			"name": "Dulcimer",
 			"type": "INS",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"weight": 10,
 			"source": "PHB",
 			"page": 154
@@ -5367,7 +5360,7 @@
 			"name": "Dungeoneer's Pack",
 			"type": "G",
 			"rarity": "None",
-			"value": "12 gp",
+			"value": 1200,
 			"weight": 61.5,
 			"source": "PHB",
 			"page": 151,
@@ -5437,7 +5430,6 @@
 		{
 			"name": "Dwarven Plate",
 			"type": "HA",
-			"armor": true,
 			"weight": 65,
 			"ac": 18,
 			"strength": "15",
@@ -5564,7 +5556,6 @@
 		{
 			"name": "Efreeti Chain",
 			"type": "HA",
-			"armor": true,
 			"weight": 55,
 			"ac": 16,
 			"strength": "13",
@@ -5586,7 +5577,7 @@
 			"name": "Electrum (ep)",
 			"type": "$",
 			"rarity": "None",
-			"value": "1ep",
+			"value": 50,
 			"weight": 0.02,
 			"source": "PHB",
 			"page": 143,
@@ -5659,9 +5650,9 @@
 			"name": "Elephant",
 			"type": "MNT",
 			"rarity": "None",
-			"carryingCapacity": "1320",
-			"speed": "40",
-			"value": "200 gp",
+			"carryingCapacity": 1320,
+			"speed": 40,
+			"value": 20000,
 			"source": "PHB",
 			"page": 157
 		},
@@ -5683,7 +5674,6 @@
 		{
 			"name": "Elven Chain",
 			"type": "MA",
-			"armor": true,
 			"weight": 20,
 			"ac": 13,
 			"tier": "Major",
@@ -5703,7 +5693,7 @@
 			"type": "SCF",
 			"scfType": "holy",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"source": "PHB",
 			"page": 151
 		},
@@ -5711,7 +5701,7 @@
 			"name": "Embroidered glove set with jewel chips",
 			"type": "$",
 			"rarity": "None",
-			"value": "2500 gp",
+			"value": 250000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -5719,7 +5709,7 @@
 			"name": "Embroidered silk and velvet mantle set with numerous moonstones",
 			"type": "$",
 			"rarity": "None",
-			"value": "2500 gp",
+			"value": 250000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -5727,7 +5717,7 @@
 			"name": "Embroidered silk handkerchief",
 			"type": "$",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"source": "DMG",
 			"page": 134
 		},
@@ -5735,7 +5725,7 @@
 			"name": "Emerald",
 			"type": "$",
 			"rarity": "None",
-			"value": "1000 gp",
+			"value": 100000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -5757,7 +5747,7 @@
 			"name": "Entertainer's Pack",
 			"type": "G",
 			"rarity": "None",
-			"value": "40 gp",
+			"value": 4000,
 			"weight": 38,
 			"source": "PHB",
 			"page": 151,
@@ -5793,7 +5783,7 @@
 			"name": "Essence of Ether (Inhaled)",
 			"type": "G",
 			"rarity": "None",
-			"value": "300 gp",
+			"value": 30000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -5831,7 +5821,7 @@
 			"name": "Exotic Saddle",
 			"type": "TAH",
 			"rarity": "None",
-			"value": "60 gp",
+			"value": 6000,
 			"weight": 40,
 			"source": "PHB",
 			"page": 157,
@@ -5843,7 +5833,7 @@
 			"name": "Explorer's Pack",
 			"type": "G",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"weight": 59,
 			"source": "PHB",
 			"page": 151,
@@ -5868,7 +5858,7 @@
 			"name": "Eye Agate",
 			"type": "$",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -5953,13 +5943,14 @@
 				"disintegrate",
 				"dominate monster",
 				"eyebite"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Eye patch with a mock eye set in blue sapphire and moonstone",
 			"type": "$",
 			"rarity": "None",
-			"value": "2500 gp",
+			"value": 250000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -5980,7 +5971,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table F"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Eyes of Minute Seeing",
@@ -6025,7 +6017,7 @@
 			"name": "Feed (per day)",
 			"type": "TAH",
 			"rarity": "None",
-			"value": "5 cp",
+			"value": 5,
 			"weight": 10,
 			"source": "PHB",
 			"page": 157
@@ -6209,7 +6201,7 @@
 			"name": "Fine Clothes",
 			"type": "G",
 			"rarity": "None",
-			"value": "15 gp",
+			"value": 1500,
 			"weight": 6,
 			"source": "PHB",
 			"page": 150
@@ -6218,7 +6210,7 @@
 			"name": "Fine gold chain set with a fire opal",
 			"type": "$",
 			"rarity": "None",
-			"value": "2500 gp",
+			"value": 250000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -6226,7 +6218,7 @@
 			"name": "Fire Opal",
 			"type": "$",
 			"rarity": "None",
-			"value": "1000 gp",
+			"value": 100000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -6237,7 +6229,7 @@
 			"name": "Fishing Tackle",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 4,
 			"source": "PHB",
 			"page": 151,
@@ -6249,7 +6241,7 @@
 			"name": "Flask",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 cp",
+			"value": 1,
 			"weight": 1,
 			"source": "PHB",
 			"page": 153,
@@ -6261,7 +6253,7 @@
 			"name": "Flour",
 			"type": "TG",
 			"rarity": "None",
-			"value": "2 cp",
+			"value": 2,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -6270,7 +6262,7 @@
 			"name": "Flute",
 			"type": "INS",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 1,
 			"source": "PHB",
 			"page": 154
@@ -6298,7 +6290,7 @@
 			"name": "Forgery Kit",
 			"type": "T",
 			"rarity": "None",
-			"value": "15 gp",
+			"value": 1500,
 			"weight": 5,
 			"source": "PHB",
 			"page": 154,
@@ -6403,21 +6395,21 @@
 			"name": "Galley",
 			"type": "SHP",
 			"rarity": "None",
-			"value": "30000 gp",
-			"speed": "4 mph",
-			"carryingCapacity": "150 tons cargo",
+			"value": 3000000,
 			"crew": 80,
 			"vehAc": 15,
 			"vehHp": 500,
 			"vehDmgThresh": 20,
 			"source": "DMG",
-			"page": 119
+			"page": 119,
+			"vehSpeed": 4,
+			"capCargo": 150
 		},
 		{
 			"name": "Garnet",
 			"type": "$",
 			"rarity": "None",
-			"value": "100 gp",
+			"value": 10000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -6518,7 +6510,8 @@
 			"charges": 3,
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Ghost Lantern",
@@ -6543,7 +6536,7 @@
 			"name": "Ginger",
 			"type": "TG",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -6561,7 +6554,6 @@
 		{
 			"name": "Glamoured Studded Leather",
 			"type": "LA",
-			"armor": true,
 			"weight": 13,
 			"ac": 12,
 			"tier": "Major",
@@ -6580,7 +6572,7 @@
 			"name": "Glass Bottle",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 2,
 			"source": "PHB",
 			"page": 153,
@@ -6592,7 +6584,7 @@
 			"name": "Glassblower's Tools",
 			"type": "AT",
 			"rarity": "None",
-			"value": "30 gp",
+			"value": 3000,
 			"weight": 5,
 			"source": "PHB",
 			"page": 154,
@@ -6714,7 +6706,7 @@
 			"name": "Goat",
 			"type": "TG",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"source": "PHB",
 			"page": 157
 		},
@@ -6736,7 +6728,7 @@
 			"name": "Gold",
 			"type": "TG",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -6745,7 +6737,7 @@
 			"name": "Gold (gp)",
 			"type": "$",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 0.02,
 			"source": "PHB",
 			"page": 143,
@@ -6762,7 +6754,7 @@
 			"name": "Gold bird cage with electrum filigree",
 			"type": "$",
 			"rarity": "None",
-			"value": "250 gp",
+			"value": 25000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -6770,7 +6762,7 @@
 			"name": "Gold circlet set with four aquamarines",
 			"type": "$",
 			"rarity": "None",
-			"value": "2500 gp",
+			"value": 250000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -6778,7 +6770,7 @@
 			"name": "Gold cup set with emeralds",
 			"type": "$",
 			"rarity": "None",
-			"value": "7500 gp",
+			"value": 750000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -6786,14 +6778,13 @@
 			"name": "Gold dragon comb set with red garnets as eyes",
 			"type": "$",
 			"rarity": "None",
-			"value": "750 gp",
+			"value": 75000,
 			"source": "DMG",
 			"page": 135
 		},
 		{
 			"name": "Gold Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"weight": 45,
 			"ac": 14,
 			"stealth": true,
@@ -6812,7 +6803,7 @@
 			"name": "Gold jewelry box with platinum filigree",
 			"type": "$",
 			"rarity": "None",
-			"value": "7500 gp",
+			"value": 750000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -6820,7 +6811,7 @@
 			"name": "Gold locket with a painted portrait inside",
 			"type": "$",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"source": "DMG",
 			"page": 134
 		},
@@ -6828,7 +6819,7 @@
 			"name": "Gold music box",
 			"type": "$",
 			"rarity": "None",
-			"value": "2500 gp",
+			"value": 250000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -6836,7 +6827,7 @@
 			"name": "Gold ring set with bloodstones",
 			"type": "$",
 			"rarity": "None",
-			"value": "250 gp",
+			"value": 25000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -6844,7 +6835,7 @@
 			"name": "Grappling Hook",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 4,
 			"source": "PHB",
 			"page": 150
@@ -6943,7 +6934,6 @@
 		{
 			"name": "Green Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"weight": 45,
 			"ac": 14,
 			"stealth": true,
@@ -6972,16 +6962,14 @@
 		},
 		{
 			"name": "Gulthias Staff",
-			"type": "M",
 			"weaponCategory": "Simple",
-			"baseItem": "quarterstaff|phb",
 			"dmg1": "{@dice 1d6}",
 			"dmg2": "{@dice 1d8}",
 			"dmgType": "B",
-			"weight": 4,
 			"property": [
 				"V"
 			],
+			"weight": 4,
 			"rarity": "Rare",
 			"source": "CoS",
 			"page": 221,
@@ -7005,7 +6993,8 @@
 				}
 			],
 			"charges": 10,
-			"staff": true
+			"staff": true,
+			"recharge": "dusk"
 		},
 		{
 			"name": "Gunpowder Horn",
@@ -7013,7 +7002,7 @@
 			"age": "Renaissance",
 			"rarity": "None",
 			"weight": 2,
-			"value": "35 gp",
+			"value": 3500,
 			"source": "DMG",
 			"page": 268,
 			"entries": [
@@ -7027,7 +7016,7 @@
 			"age": "Renaissance",
 			"rarity": "None",
 			"weight": 20,
-			"value": "250 gp",
+			"value": 25000,
 			"source": "DMG",
 			"page": 268,
 			"entries": [
@@ -7077,7 +7066,7 @@
 			"name": "Hammer",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 3,
 			"source": "PHB",
 			"page": 150
@@ -7116,7 +7105,8 @@
 			"lootTables": [
 				"Magic Item Table I"
 			],
-			"bonus": "+1"
+			"bonus": "+1",
+			"recharge": "dawn"
 		},
 		{
 			"name": "Hand Drum",
@@ -7210,7 +7200,8 @@
 				"sleep",
 				"slow",
 				"teleport"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Hat of Disguise",
@@ -7240,7 +7231,8 @@
 			"entries": [
 				"This hat has 3 charges. While holding the hat, you can use an action to expend 1 of its charges and speak a command word that summons your choice of a {@creature bat}, a {@creature frog}, or a {@creature rat}. The summoned creature magically appears in the hat and tries to get away from you as quickly as possible. The creature is neither friendly nor hostile, and it isn't under your control. It behaves as an ordinary creature of its kind and disappears after 1 hour or when it drops to 0 hit points. The hat regains all expended charges daily at dawn."
 			],
-			"charges": 3
+			"charges": 3,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Hat of Wizardry",
@@ -7311,7 +7303,8 @@
 				"detect evil and good",
 				"detect thoughts"
 			],
-			"bonus": "+2"
+			"bonus": "+2",
+			"recharge": "midnight"
 		},
 		{
 			"name": "Headband of Intellect",
@@ -7337,7 +7330,7 @@
 			"name": "Healer's Kit",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 3,
 			"source": "PHB",
 			"page": 151,
@@ -7455,13 +7448,14 @@
 			],
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Hematite",
 			"type": "$",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -7472,7 +7466,7 @@
 			"name": "Hempen Rope (50 feet)",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 10,
 			"source": "PHB",
 			"page": 153,
@@ -7484,7 +7478,7 @@
 			"name": "Herbalism Kit",
 			"type": "T",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 3,
 			"source": "PHB",
 			"page": 154,
@@ -7613,7 +7607,8 @@
 			"entries": [
 				"This belt pouch appears empty and has 10 charges. While holding the pouch, you can use an action to expend 1 of its charges, speak the name of any nonmagical food seasoning (such as salt, pepper, saffron, or cilantro), and remove a pinch of the desired seasoning from the pouch. A pinch is enough to season a single meal. The pouch regains {@dice 1d6+4} expended charges daily at dawn."
 			],
-			"charges": 10
+			"charges": 10,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Holy Symbol of Ravenkind",
@@ -7648,13 +7643,14 @@
 					]
 				}
 			],
-			"charges": 10
+			"charges": 10,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Holy Water (flask)",
 			"type": "G",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"weight": 1,
 			"source": "PHB",
 			"page": 151,
@@ -7667,7 +7663,7 @@
 			"name": "Hooded Lantern",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 2,
 			"source": "PHB",
 			"page": 152,
@@ -7679,7 +7675,7 @@
 			"name": "Horn",
 			"type": "INS",
 			"rarity": "None",
-			"value": "3 gp",
+			"value": 300,
 			"weight": 2,
 			"source": "PHB",
 			"page": 154
@@ -7710,7 +7706,8 @@
 			"entries": [
 				"This horn has 4 charges. When you use an action to blow it, one creature of your choice can hear the horns blare, provided the creature is within 600 feet of the horn and not {@condition deafened}. No other creature hears sound coming from the horn. The horn regains {@dice 1d4} expended charges daily at dawn."
 			],
-			"charges": 4
+			"charges": 4,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Horn of Valhalla, Brass",
@@ -7812,7 +7809,7 @@
 			"name": "Hourglass",
 			"type": "G",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"weight": 1,
 			"source": "PHB",
 			"page": 150
@@ -7821,7 +7818,7 @@
 			"name": "Hunting Trap",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 25,
 			"source": "PHB",
 			"page": 152,
@@ -7952,7 +7949,7 @@
 		},
 		{
 			"name": "Ink (1-ounce bottle)",
-			"value": "10 gp",
+			"value": 1000,
 			"rarity": "None",
 			"type": "G",
 			"source": "PHB",
@@ -7963,7 +7960,7 @@
 		},
 		{
 			"name": "Ink Pen",
-			"value": "2 cp",
+			"value": 2,
 			"rarity": "None",
 			"type": "G",
 			"source": "PHB",
@@ -7991,7 +7988,7 @@
 			"name": "Insect Repellent (block of incense)",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 sp",
+			"value": 10,
 			"weight": 1,
 			"source": "ToA",
 			"page": 32,
@@ -8004,7 +8001,7 @@
 			"name": "Insect Repellent (greasy salve)",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 1,
 			"source": "ToA",
 			"page": 32,
@@ -8050,7 +8047,8 @@
 				"This musical instrument has 3 charges. While you are playing it, you can use an action to expend 1 charge from the instrument and write a magical message on a nonmagical object or surface that you can see within 30 feet of you. The message can be up to six words long and is written in a language you know. If you are a bard, you can scribe an additional seven words and choose to make the message glow faintly, allowing it to be seen in nonmagical darkness. Casting {@spell dispel magic} on the message erases it. Otherwise, the message fades away after 24 hours.",
 				"The instrument regains all expended charges daily at dawn."
 			],
-			"charges": 3
+			"charges": 3,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Instrument of the Bards, Anstruth Harp",
@@ -8540,7 +8538,7 @@
 			"name": "Iron",
 			"type": "TG",
 			"rarity": "None",
-			"value": "1 sp",
+			"value": 10,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -8717,7 +8715,7 @@
 			"name": "Iron Pot",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 10,
 			"source": "PHB",
 			"page": 153,
@@ -8729,7 +8727,7 @@
 			"name": "Iron Spikes",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 sp",
+			"value": 10,
 			"weight": 0.5,
 			"source": "PHB",
 			"page": 150
@@ -8738,7 +8736,7 @@
 			"name": "Iron Spikes (10)",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 5,
 			"source": "PHB",
 			"page": 150
@@ -8802,13 +8800,14 @@
 				"dominate monster",
 				"shatter"
 			],
-			"bonus": "+2"
+			"bonus": "+2",
+			"recharge": "dawn"
 		},
 		{
 			"name": "Jacinth",
 			"type": "$",
 			"rarity": "None",
-			"value": "5000 gp",
+			"value": 500000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -8819,7 +8818,7 @@
 			"name": "Jade",
 			"type": "$",
 			"rarity": "None",
-			"value": "100 gp",
+			"value": 10000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -8830,7 +8829,7 @@
 			"name": "Jade game board with solid gold playing pieces",
 			"type": "$",
 			"rarity": "None",
-			"value": "7500 gp",
+			"value": 750000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -8838,7 +8837,7 @@
 			"name": "Jasper",
 			"type": "$",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -8903,7 +8902,7 @@
 			"name": "Jet",
 			"type": "$",
 			"rarity": "None",
-			"value": "100 gp",
+			"value": 10000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -8914,7 +8913,7 @@
 			"name": "Jeweled anklet",
 			"type": "$",
 			"rarity": "None",
-			"value": "2500 gp",
+			"value": 250000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -8922,7 +8921,7 @@
 			"name": "Jeweled gold crown",
 			"type": "$",
 			"rarity": "None",
-			"value": "7500 gp",
+			"value": 750000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -8930,7 +8929,7 @@
 			"name": "Jeweled platinum ring",
 			"type": "$",
 			"rarity": "None",
-			"value": "7500 gp",
+			"value": 750000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -8938,7 +8937,7 @@
 			"name": "Jeweler's Tools",
 			"type": "AT",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"weight": 2,
 			"source": "PHB",
 			"page": 154,
@@ -9006,7 +9005,7 @@
 			"name": "Jug",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 cp",
+			"value": 2,
 			"weight": 4,
 			"source": "PHB",
 			"page": 153,
@@ -9018,9 +9017,7 @@
 			"name": "Keelboat",
 			"type": "SHP",
 			"rarity": "None",
-			"value": "3000 gp",
-			"speed": "1 mph",
-			"carryingCapacity": "1/2 ton cargo, 6 passengers",
+			"value": 300000,
 			"crew": 1,
 			"vehAc": 15,
 			"vehHp": 100,
@@ -9029,7 +9026,10 @@
 			"page": 119,
 			"entries": [
 				"Keelboats and rowboats are used on lakes and rivers. If going downstream, add the speed of the current (typically 3 miles per hour) to the speed of the vehicle. These vehicles can't be rowed against any significant current, but they can be pulled upstream by draft animals on the shores."
-			]
+			],
+			"vehSpeed": 1,
+			"capCargo": 0.5,
+			"capPassenger": 6
 		},
 		{
 			"name": "Keoghtom's Ointment",
@@ -9075,23 +9075,29 @@
 				"The Korolnor Scepter is one of ten Ruling Scepters of Shanatar, forged by the dwarven gods and given to the ruling houses of the ancient dwarven empire. The Korolnor Scepter's location was unknown for the longest time until a {@creature storm giant} queen, Neri, found it in a barnacle-covered shipwreck at the bottom of the Trackless Sea. The Ruling Scepters are all roughly the same size and shape, but their materials and properties vary.",
 				"The Korolnor Scepter is a tapered mithral rod as thick and long as a dwarf's forearm, with a small platinum knob at the bottom and a rounded disk adorned with a ring of seven tiny blue gems at the top.",
 				"You gain a +3 bonus to attack and damage rolls made with this scepter, which can be wielded as a magic club.",
-				"You can use the properties of the {@item Wyrmskull Throne|SKT}, as well as the properties of the scepter itself. The scepter has 10 charges, and it regains {@dice 1d6+4} expanded charges at dawn. Its properties are as follows.",
-				"If you are underground or underwater, you can use an action to expend 1 charge to determine the distance to the surface.",
-				"As an action: you can expend 2 charges to cast the {@spell sending} spell from the scepter.",
-				"As an action: you can expend 3 charges to cast the {@spell teleport} spell from the scepter. If the destination is within 60 feet of the {@item Wyrmskull Throne|SKT}, there is no chance of a teleport error or mishap occurring."
+				"You can use the properties of the {@item Wyrmskull Throne|SKT}, as well as the properties of the scepter itself. The scepter has 10 charges, and it regains {@dice 1d6+4} expanded charges at dawn. Its properties are as follows:",
+				{
+				    "type": "list",
+				    "items": [
+						"If you are underground or underwater, you can use an action to expend 1 charge to determine the distance to the surface.",
+						"As an action: you can expend 2 charges to cast the {@spell sending} spell from the scepter.",
+						"As an action: you can expend 3 charges to cast the {@spell teleport} spell from the scepter. If the destination is within 60 feet of the {@item Wyrmskull Throne|SKT}, there is no chance of a teleport error or mishap occurring."
+				    ]
+				}
 			],
 			"charges": 10,
 			"attachedSpells": [
 				"sending",
 				"teleport"
 			],
-			"bonus": "+3"
+			"bonus": "+3",
+			"recharge": "dawn"
 		},
 		{
 			"name": "Ladder (10-foot)",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 sp",
+			"value": 10,
 			"weight": 25,
 			"source": "PHB",
 			"page": 150,
@@ -9103,7 +9109,7 @@
 			"name": "Lamp",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 sp",
+			"value": 50,
 			"weight": 1,
 			"source": "PHB",
 			"page": 152,
@@ -9130,7 +9136,7 @@
 			"name": "Lapis Lazuli",
 			"type": "$",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -9141,7 +9147,7 @@
 			"name": "Large gold bracelet",
 			"type": "$",
 			"rarity": "None",
-			"value": "250 gp",
+			"value": 25000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -9149,7 +9155,7 @@
 			"name": "Large well-made tapestry",
 			"type": "$",
 			"rarity": "None",
-			"value": "250 gp",
+			"value": 25000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -9157,7 +9163,7 @@
 			"name": "Leatherworker's Tools",
 			"type": "AT",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 5,
 			"source": "PHB",
 			"page": 154,
@@ -9241,7 +9247,7 @@
 			"name": "Linen (1 sq. yd.)",
 			"type": "TG",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"source": "PHB",
 			"page": 157
 		},
@@ -9268,7 +9274,7 @@
 			"name": "Lock",
 			"type": "G",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"weight": 1,
 			"source": "PHB",
 			"page": 152,
@@ -9301,15 +9307,16 @@
 			"name": "Longship",
 			"type": "SHP",
 			"rarity": "None",
-			"value": "10000 gp",
-			"speed": "3 mph",
-			"carryingCapacity": "10 tons cargo, 150 passengers",
+			"value": 1000000,
 			"crew": 40,
 			"vehAc": 15,
 			"vehHp": 300,
 			"vehDmgThresh": 15,
 			"source": "DMG",
-			"page": 119
+			"page": 119,
+			"vehSpeed": 3,
+			"capCargo": 10,
+			"capPassenger": 150
 		},
 		{
 			"name": "Lost Crown of Besilmer",
@@ -9329,7 +9336,8 @@
 					]
 				}
 			],
-			"charges": 3
+			"charges": 3,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Lost Sword",
@@ -9369,7 +9377,7 @@
 			"name": "Lute",
 			"type": "INS",
 			"rarity": "None",
-			"value": "35 gp",
+			"value": 3500,
 			"weight": 2,
 			"source": "PHB",
 			"page": 154
@@ -9378,7 +9386,7 @@
 			"name": "Lyre",
 			"type": "INS",
 			"rarity": "None",
-			"value": "30 gp",
+			"value": 3000,
 			"weight": 2,
 			"source": "PHB",
 			"page": 154
@@ -9456,13 +9464,14 @@
 			"charges": 3,
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Magnifying Glass",
 			"type": "G",
 			"rarity": "None",
-			"value": "100 gp",
+			"value": 10000,
 			"source": "PHB",
 			"page": 152,
 			"entries": [
@@ -9473,7 +9482,7 @@
 			"name": "Malachite",
 			"type": "$",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -9484,7 +9493,7 @@
 			"name": "Malice (Inhaled)",
 			"type": "G",
 			"rarity": "None",
-			"value": "250 gp",
+			"value": 25000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -9496,7 +9505,7 @@
 			"name": "Manacles",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 6,
 			"source": "PHB",
 			"page": 152,
@@ -9629,7 +9638,7 @@
 			"name": "Map or Scroll Case",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 1,
 			"source": "PHB",
 			"page": 151,
@@ -9650,7 +9659,8 @@
 			"charges": 3,
 			"attachedSpells": [
 				"animal friendship"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Mask of the Dragon Queen",
@@ -9668,7 +9678,7 @@
 			"name": "Mason's Tools",
 			"type": "AT",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"weight": 8,
 			"source": "PHB",
 			"page": 154,
@@ -9761,9 +9771,9 @@
 			"name": "Mastiff",
 			"type": "MNT",
 			"rarity": "None",
-			"carryingCapacity": "195",
-			"speed": "40",
-			"value": "25 gp",
+			"carryingCapacity": 195,
+			"speed": 40,
+			"value": 2500,
 			"source": "PHB",
 			"page": 157
 		},
@@ -9785,12 +9795,13 @@
 			],
 			"lootTables": [
 				"Magic Item Table F"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Menga leaves (1 ounce)",
 			"type": "G",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 1,
 			"rarity": "Unknown",
 			"source": "ToA",
@@ -9804,7 +9815,7 @@
 			"name": "Merchant's Scale",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 3,
 			"source": "PHB",
 			"page": 153,
@@ -9816,7 +9827,7 @@
 			"name": "Mess Kit",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 sp",
+			"value": 20,
 			"weight": 1,
 			"source": "PHB",
 			"page": 152,
@@ -9828,7 +9839,7 @@
 			"name": "Midnight Tears (Ingested)",
 			"type": "G",
 			"rarity": "None",
-			"value": "1500 gp",
+			"value": 150000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -9840,7 +9851,7 @@
 			"name": "Military Saddle",
 			"type": "TAH",
 			"rarity": "None",
-			"value": "20 gp",
+			"value": 2000,
 			"weight": 30,
 			"source": "PHB",
 			"page": 157,
@@ -9870,7 +9881,7 @@
 			"name": "Miner's Pick",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 10,
 			"source": "PHB",
 			"page": 150
@@ -9911,7 +9922,7 @@
 			"name": "Monster Hunter's Pack",
 			"type": "G",
 			"rarity": "None",
-			"value": "33 gp",
+			"value": 3300,
 			"weight": 48.5,
 			"source": "CoS",
 			"page": 209,
@@ -10044,7 +10055,7 @@
 			"name": "Moonstone",
 			"type": "$",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -10055,7 +10066,7 @@
 			"name": "Moss Agate",
 			"type": "$",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -10066,9 +10077,9 @@
 			"name": "Mule",
 			"type": "MNT",
 			"rarity": "None",
-			"carryingCapacity": "420",
-			"speed": "40",
-			"value": "8 gp",
+			"carryingCapacity": 420,
+			"speed": 40,
+			"value": 800,
 			"source": "PHB",
 			"page": 157
 		},
@@ -10103,7 +10114,7 @@
 			"name": "Navigator's Tools",
 			"type": "T",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"weight": 2,
 			"source": "PHB",
 			"page": 154,
@@ -10273,7 +10284,7 @@
 			"name": "Necklace string of small pink pearls",
 			"type": "$",
 			"rarity": "None",
-			"value": "2500 gp",
+			"value": 250000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -10344,7 +10355,7 @@
 			"name": "Obsidian",
 			"type": "$",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -10355,7 +10366,7 @@
 			"name": "Obsidian statuette with gold fittings and inlay",
 			"type": "$",
 			"rarity": "None",
-			"value": "750 gp",
+			"value": 75000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -10363,7 +10374,7 @@
 			"name": "Oil (flask)",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 sp",
+			"value": 10,
 			"weight": 1,
 			"source": "PHB",
 			"page": 152,
@@ -10427,7 +10438,7 @@
 			"name": "Oil of Taggit (Contact)",
 			"type": "G",
 			"rarity": "None",
-			"value": "400 gp",
+			"value": 40000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -10439,7 +10450,7 @@
 			"name": "Old masterpiece painting",
 			"type": "$",
 			"rarity": "None",
-			"value": "2500 gp",
+			"value": 250000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -10447,7 +10458,7 @@
 			"name": "Onyx",
 			"type": "$",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -10458,7 +10469,7 @@
 			"name": "Opal",
 			"type": "$",
 			"rarity": "None",
-			"value": "1000 gp",
+			"value": 100000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -10589,7 +10600,8 @@
 				"daylight",
 				"death ward",
 				"scrying"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Orb of the Stein Rune",
@@ -10710,7 +10722,7 @@
 			"name": "Ox",
 			"type": "TG",
 			"rarity": "None",
-			"value": "15 gp",
+			"value": 1500,
 			"source": "PHB",
 			"page": 157
 		},
@@ -10718,7 +10730,7 @@
 			"name": "Pack Saddle",
 			"type": "TAH",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 15,
 			"source": "PHB",
 			"page": 157
@@ -10727,7 +10739,7 @@
 			"name": "Painted gold child's sarcophagus",
 			"type": "$",
 			"rarity": "None",
-			"value": "7500 gp",
+			"value": 750000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -10735,7 +10747,7 @@
 			"name": "Painted gold war mask",
 			"type": "$",
 			"rarity": "None",
-			"value": "750 gp",
+			"value": 75000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -10743,7 +10755,7 @@
 			"name": "Painter's Supplies",
 			"type": "AT",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"weight": 5,
 			"source": "PHB",
 			"page": 154,
@@ -10811,7 +10823,7 @@
 			"name": "Pair of engraved bone dice",
 			"type": "$",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"source": "DMG",
 			"page": 134
 		},
@@ -10819,7 +10831,7 @@
 			"name": "Pale Tincture (Ingested)",
 			"type": "G",
 			"rarity": "None",
-			"value": "250 gp",
+			"value": 25000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -10831,7 +10843,7 @@
 			"name": "Pan Flute",
 			"type": "INS",
 			"rarity": "None",
-			"value": "12 gp",
+			"value": 1200,
 			"weight": 2,
 			"source": "PHB",
 			"page": 154
@@ -10840,7 +10852,7 @@
 			"name": "Paper (one sheet)",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 sp",
+			"value": 20,
 			"source": "PHB",
 			"page": 150,
 			"entries": [
@@ -10851,7 +10863,7 @@
 			"name": "Parchment (one sheet)",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 sp",
+			"value": 10,
 			"source": "PHB",
 			"page": 150,
 			"entries": [
@@ -10862,7 +10874,7 @@
 			"name": "Pearl",
 			"type": "$",
 			"rarity": "None",
-			"value": "100 gp",
+			"value": 10000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -10954,7 +10966,7 @@
 			"name": "Pepper",
 			"type": "TG",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -10963,7 +10975,7 @@
 			"name": "Perfume (vial)",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"source": "PHB",
 			"page": 150
 		},
@@ -11028,7 +11040,7 @@
 			"name": "Peridot",
 			"type": "$",
 			"rarity": "None",
-			"value": "500 gp",
+			"value": 50000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -11054,7 +11066,7 @@
 			"name": "Pig",
 			"type": "TG",
 			"rarity": "None",
-			"value": "3 gp",
+			"value": 300,
 			"source": "PHB",
 			"page": 157
 		},
@@ -11084,7 +11096,8 @@
 			"charges": 3,
 			"lootTables": [
 				"Magic Item Table F"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Pipes of the Sewers",
@@ -11104,13 +11117,14 @@
 			"charges": 3,
 			"lootTables": [
 				"Magic Item Table F"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Pitcher",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 cp",
+			"value": 2,
 			"weight": 4,
 			"source": "PHB",
 			"page": 153,
@@ -11122,7 +11136,7 @@
 			"name": "Piton",
 			"rarity": "None",
 			"type": "G",
-			"value": "5 cp",
+			"value": 5,
 			"weight": 0.25,
 			"source": "PHB",
 			"page": 150
@@ -11154,7 +11168,6 @@
 		{
 			"name": "Plate Armor of Etherealness",
 			"type": "HA",
-			"armor": true,
 			"baseItem": "plate armor|phb",
 			"weight": 65,
 			"ac": 18,
@@ -11179,7 +11192,7 @@
 			"name": "Platinum",
 			"type": "TG",
 			"rarity": "None",
-			"value": "500 gp",
+			"value": 50000,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -11188,7 +11201,7 @@
 			"name": "Platinum (pp)",
 			"type": "$",
 			"rarity": "None",
-			"value": "1 pp",
+			"value": 1000,
 			"weight": 0.02,
 			"source": "PHB",
 			"page": 143,
@@ -11205,7 +11218,7 @@
 			"name": "Platinum bracelet set with a sapphire",
 			"type": "$",
 			"rarity": "None",
-			"value": "2500 gp",
+			"value": 250000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -11213,7 +11226,7 @@
 			"name": "Playing Card Set",
 			"type": "GS",
 			"rarity": "None",
-			"value": "5 sp",
+			"value": 50,
 			"source": "PHB",
 			"page": 154
 		},
@@ -11221,7 +11234,7 @@
 			"name": "Poisoner's Kit",
 			"type": "T",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"weight": 2,
 			"source": "PHB",
 			"page": 154,
@@ -11307,7 +11320,7 @@
 			"name": "Pole (10-foot)",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 cp",
+			"value": 5,
 			"weight": 7,
 			"source": "PHB",
 			"page": 150
@@ -11338,9 +11351,9 @@
 			"name": "Pony",
 			"type": "MNT",
 			"rarity": "None",
-			"carryingCapacity": "225",
-			"speed": "40",
-			"value": "30 gp",
+			"carryingCapacity": 225,
+			"speed": 40,
+			"value": 3000,
 			"source": "PHB",
 			"page": 157
 		},
@@ -11366,7 +11379,7 @@
 			"name": "Portable Ram",
 			"type": "G",
 			"rarity": "None",
-			"value": "4 gp",
+			"value": 400,
 			"weight": 35,
 			"source": "PHB",
 			"page": 153,
@@ -11663,7 +11676,7 @@
 			"entries": [
 				"You regain {@dice 2d4+2} hit points when you drink this potion. The potion's red liquid glimmers when agitated."
 			],
-			"value": "50 gp",
+			"value": 5000,
 			"lootTables": [
 				"Magic Item Table A"
 			]
@@ -12016,7 +12029,7 @@
 			"name": "Potter's Tools",
 			"type": "AT",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"weight": 3,
 			"source": "PHB",
 			"page": 154,
@@ -12088,7 +12101,7 @@
 			"name": "Pouch",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 sp",
+			"value": 50,
 			"weight": 1,
 			"source": "PHB",
 			"page": 153,
@@ -12100,7 +12113,7 @@
 			"name": "Priest's Pack",
 			"type": "G",
 			"rarity": "None",
-			"value": "19 gp",
+			"value": 1900,
 			"weight": 24,
 			"source": "PHB",
 			"page": 151,
@@ -12127,7 +12140,7 @@
 			"name": "Purple Worm Poison (Injury)",
 			"type": "G",
 			"rarity": "None",
-			"value": "2000 gp",
+			"value": 200000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -12248,7 +12261,7 @@
 			"name": "Quartz",
 			"type": "$",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -12259,7 +12272,7 @@
 			"name": "Quiver",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 1,
 			"source": "PHB",
 			"page": 153,
@@ -12276,7 +12289,7 @@
 			"source": "DMG",
 			"page": 189,
 			"entries": [
-				"Each of the quiver's three compartments connects to an extradimensional space that allows the quiver to hold numerous items while never weighing more than 2 pounds. The shortest compartment can hold up to sixty arrows, bolts, or similar objects. The midsize compartment holds up to eighteen javelins or similar objects. The longest compartment holds up to six long objects, such as bows, quarterstaffs, or spears.",
+				"Each of the quiver's three compartments connects to an extradimensional space that allows the quiver to hold numerous items while never weighing more than 2 pounds. The shortest compartment can hold up to sixty {@item arrow|phb|arrows}, {@item crossbow bolt|phb|bolts}, or similar objects. The midsize compartment holds up to eighteen {@item javelin|phb|javelins} or similar objects. The longest compartment holds up to six long objects, such as bows, {@item quarterstaff|phb|quarterstaffs}, or {@item spear|phb|spears}.",
 				"You can draw any item the quiver contains as if doing so from a regular quiver or scabbard."
 			],
 			"lootTables": [
@@ -12287,7 +12300,7 @@
 			"name": "Rain Catcher",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 5,
 			"source": "ToA",
 			"page": 32,
@@ -12299,7 +12312,7 @@
 			"name": "Rations (1 day)",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 sp",
+			"value": 50,
 			"weight": 2,
 			"source": "PHB",
 			"page": 153,
@@ -12370,7 +12383,6 @@
 		{
 			"name": "Red Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"weight": 45,
 			"ac": 14,
 			"stealth": true,
@@ -12390,7 +12402,7 @@
 			"type": "SCF",
 			"scfType": "holy",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 2,
 			"source": "PHB",
 			"page": 151
@@ -12401,7 +12413,7 @@
 			"weaponCategory": "Simple",
 			"baseItem": "dagger|phb",
 			"rarity": "Uncommon",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 1,
 			"dmg1": "{@dice 1d4+1}",
 			"dmgType": "P",
@@ -12423,7 +12435,7 @@
 			"name": "Rhodochrosite",
 			"type": "$",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -12434,9 +12446,9 @@
 			"name": "Riding Horse",
 			"type": "MNT",
 			"rarity": "None",
-			"carryingCapacity": "480",
-			"speed": "60",
-			"value": "75 gp",
+			"carryingCapacity": 480,
+			"speed": 60,
+			"value": 7500,
 			"source": "PHB",
 			"page": 157
 		},
@@ -12444,7 +12456,7 @@
 			"name": "Riding Saddle",
 			"type": "TAH",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"weight": 25,
 			"source": "PHB",
 			"page": 157
@@ -12490,7 +12502,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table I"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Ring of Animal Influence",
@@ -12518,7 +12531,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Ring of Cold Resistance",
@@ -12578,7 +12592,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table I"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Ring of Evasion",
@@ -12594,7 +12609,8 @@
 			"charges": 3,
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Ring of Feather Falling",
@@ -12641,7 +12657,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table I"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Ring of Fire Resistance",
@@ -12852,7 +12869,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table H"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Ring of Spell Storing",
@@ -12933,7 +12951,8 @@
 			"charges": 3,
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Ring of Three Wishes",
@@ -13008,7 +13027,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table I"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Ring of Water Walking",
@@ -13104,7 +13124,8 @@
 				"Bigby's hand",
 				"flesh to stone",
 				"spike growth"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Ring of X-ray Vision",
@@ -13172,7 +13193,8 @@
 			"charges": 3,
 			"lootTables": [
 				"Magic Item Table H"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Robe of Serpents",
@@ -13338,7 +13360,7 @@
 			"name": "Robes",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 4,
 			"source": "PHB",
 			"page": 150
@@ -13476,7 +13498,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table I"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Rod of Rulership",
@@ -13576,7 +13599,8 @@
 			"charges": 10,
 			"attachedSpells": [
 				"locate object"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Rope of Climbing",
@@ -13627,10 +13651,8 @@
 			"name": "Rowboat",
 			"type": "SHP",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"weight": 100,
-			"speed": "1½ mph",
-			"carryingCapacity": "3 passengers",
 			"crew": 1,
 			"vehAc": 11,
 			"vehHp": 50,
@@ -13638,13 +13660,15 @@
 			"page": 119,
 			"entries": [
 				"Keelboats and rowboats are used on lakes and rivers, If going downstream, add the speed of the current (typically 3 miles per hour) to the speed of the vehicle. These vehicles can't be rowed against any significant current, but they can be pulled upstream by draft animals on the shores. A rowboat weighs 100 pounds, in case adventurers carry it over land."
-			]
+			],
+			"vehSpeed": 1.5,
+			"capPassenger": 3
 		},
 		{
 			"name": "Ruby",
 			"type": "$",
 			"rarity": "None",
-			"value": "5000 gp",
+			"value": 500000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -13667,7 +13691,7 @@
 		{
 			"name": "Ryath Root",
 			"type": "G",
-			"value": "50 gp",
+			"value": 5000,
 			"weight": 0.1,
 			"rarity": "Unknown",
 			"source": "ToA",
@@ -13680,7 +13704,7 @@
 			"name": "Sack",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 cp",
+			"value": 1,
 			"weight": 0.5,
 			"source": "PHB",
 			"page": 153,
@@ -13706,7 +13730,7 @@
 			"name": "Saddlebags",
 			"type": "TAH",
 			"rarity": "None",
-			"value": "4 gp",
+			"value": 400,
 			"weight": 8,
 			"source": "PHB",
 			"page": 157
@@ -13715,7 +13739,7 @@
 			"name": "Saffron",
 			"type": "TG",
 			"rarity": "None",
-			"value": "15 gp",
+			"value": 1500,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -13724,15 +13748,16 @@
 			"name": "Sailing Ship",
 			"type": "SHP",
 			"rarity": "None",
-			"value": "10000 gp",
-			"speed": "2 mph",
-			"carryingCapacity": "100 tons cargo, 20 passengers",
+			"value": 1000000,
 			"crew": 20,
 			"vehAc": 15,
 			"vehHp": 300,
 			"vehDmgThresh": 15,
 			"source": "DMG",
-			"page": 119
+			"page": 119,
+			"vehSpeed": 2,
+			"capCargo": 100,
+			"capPassenger": 20
 		},
 		{
 			"name": "Saint Markovia's Thighbone",
@@ -13758,7 +13783,7 @@
 			"name": "Salt",
 			"type": "TG",
 			"rarity": "None",
-			"value": "5 cp",
+			"value": 5,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -13767,7 +13792,7 @@
 			"name": "Sardonyx",
 			"type": "$",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -13801,7 +13826,7 @@
 			"name": "Scholar's Pack",
 			"type": "G",
 			"rarity": "None",
-			"value": "40 gp",
+			"value": 4000,
 			"weight": 10,
 			"source": "PHB",
 			"page": 151,
@@ -13849,7 +13874,6 @@
 		{
 			"name": "Scorpion Armor",
 			"type": "HA",
-			"armor": true,
 			"weight": 65,
 			"ac": 18,
 			"strength": "15",
@@ -13977,7 +14001,7 @@
 		},
 		{
 			"name": "Sealing Wax",
-			"value": "5 sp",
+			"value": 50,
 			"rarity": "None",
 			"type": "G",
 			"source": "PHB",
@@ -14043,7 +14067,7 @@
 			"name": "Serpent Venom (Injury)",
 			"type": "G",
 			"rarity": "None",
-			"value": "200 gp",
+			"value": 20000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -14141,7 +14165,7 @@
 			"name": "Shawm",
 			"type": "INS",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 1,
 			"source": "PHB",
 			"page": 154
@@ -14160,7 +14184,7 @@
 			"name": "Sheep",
 			"type": "TG",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"source": "PHB",
 			"page": 157
 		},
@@ -14229,14 +14253,14 @@
 			"name": "Shovel",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 5,
 			"source": "PHB",
 			"page": 150
 		},
 		{
 			"name": "Signal Whistle",
-			"value": "5 cp",
+			"value": 5,
 			"type": "G",
 			"rarity": "None",
 			"source": "PHB",
@@ -14244,7 +14268,7 @@
 		},
 		{
 			"name": "Signet Ring",
-			"value": "5 gp",
+			"value": 500,
 			"type": "G",
 			"rarity": "None",
 			"source": "PHB",
@@ -14254,7 +14278,7 @@
 			"name": "Silk (1 sq. yd.)",
 			"type": "TG",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "PHB",
 			"page": 157
 		},
@@ -14262,7 +14286,7 @@
 			"name": "Silk robe with gold embroidery",
 			"type": "$",
 			"rarity": "None",
-			"value": "250 gp",
+			"value": 25000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -14270,7 +14294,7 @@
 			"name": "Silk Rope (50 feet)",
 			"type": "G",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"weight": 5,
 			"source": "PHB",
 			"page": 153,
@@ -14282,7 +14306,7 @@
 			"name": "Silver",
 			"type": "TG",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -14291,7 +14315,7 @@
 			"name": "Silver (sp)",
 			"type": "$",
 			"rarity": "None",
-			"value": "1 sp",
+			"value": 10,
 			"weight": 0.02,
 			"source": "PHB",
 			"page": 143,
@@ -14308,7 +14332,7 @@
 			"name": "Silver and gold brooch",
 			"type": "$",
 			"rarity": "None",
-			"value": "750 gp",
+			"value": 75000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -14316,14 +14340,13 @@
 			"name": "Silver chalice set with moonstones",
 			"type": "$",
 			"rarity": "None",
-			"value": "750 gp",
+			"value": 75000,
 			"source": "DMG",
 			"page": 135
 		},
 		{
 			"name": "Silver Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"weight": 45,
 			"ac": 14,
 			"stealth": true,
@@ -14358,7 +14381,7 @@
 			"name": "Silver ewer",
 			"type": "$",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"source": "DMG",
 			"page": 134
 		},
@@ -14366,7 +14389,7 @@
 			"name": "Silver necklace with a gemstone pendant",
 			"type": "$",
 			"rarity": "None",
-			"value": "250 gp",
+			"value": 25000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -14374,14 +14397,14 @@
 			"name": "Silver-plated steel longsword with jet set in hilt",
 			"type": "$",
 			"rarity": "None",
-			"value": "750 gp",
+			"value": 75000,
 			"source": "DMG",
 			"page": 135
 		},
 		{
 			"name": "Sinda berries (10)",
 			"type": "G",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 1,
 			"rarity": "Unknown",
 			"source": "ToA",
@@ -14395,7 +14418,7 @@
 			"name": "Sled",
 			"type": "VEH",
 			"rarity": "None",
-			"value": "20 gp",
+			"value": 2000,
 			"weight": 300,
 			"source": "PHB",
 			"page": 157
@@ -14403,7 +14426,7 @@
 		{
 			"name": "Sledgehammer",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"type": "G",
 			"weight": 10,
 			"source": "PHB",
@@ -14428,7 +14451,7 @@
 			"name": "Small gold bracelet",
 			"type": "$",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"source": "DMG",
 			"page": 134
 		},
@@ -14436,7 +14459,7 @@
 			"name": "Small gold idol",
 			"type": "$",
 			"rarity": "None",
-			"value": "750 gp",
+			"value": 75000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -14444,7 +14467,7 @@
 			"name": "Small gold statuette set with rubies",
 			"type": "$",
 			"rarity": "None",
-			"value": "7500 gp",
+			"value": 750000,
 			"source": "DMG",
 			"page": 135
 		},
@@ -14452,7 +14475,7 @@
 			"name": "Small mirror set in a painted wooden frame",
 			"type": "$",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"source": "DMG",
 			"page": 134
 		},
@@ -14460,7 +14483,7 @@
 			"name": "Smith's Tools",
 			"type": "AT",
 			"rarity": "None",
-			"value": "20 gp",
+			"value": 2000,
 			"weight": 8,
 			"source": "PHB",
 			"page": 154,
@@ -14545,7 +14568,7 @@
 			"name": "Soap",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 cp",
+			"value": 2,
 			"source": "PHB",
 			"page": 150
 		},
@@ -14951,7 +14974,7 @@
 			"name": "Spellbook",
 			"type": "G",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"weight": 3,
 			"source": "PHB",
 			"page": 153,
@@ -14970,7 +14993,7 @@
 			"page": 201,
 			"reqAttune": true,
 			"entries": [
-				"While holding this shield, you have advantage on saving throws against spells and other magical effects, and spell attacks have disadvantage against you"
+				"While holding this shield, you have advantage on saving throws against spells and other magical effects, and spell attacks have disadvantage against you."
 			],
 			"lootTables": [
 				"Magic Item Table H"
@@ -15032,6 +15055,13 @@
 		},
 		{
 			"name": "Spider Staff",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 6,
 			"rarity": "Rare",
 			"source": "LMoP",
@@ -15047,13 +15077,14 @@
 				"spider climb",
 				"web"
 			],
-			"staff": true
+			"staff": true,
+			"recharge": "dusk"
 		},
 		{
 			"name": "Spinel",
 			"type": "$",
 			"rarity": "None",
-			"value": "100 gp",
+			"value": 10000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -15065,7 +15096,7 @@
 			"type": "SCF",
 			"scfType": "druid",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"source": "PHB",
 			"page": 151
 		},
@@ -15073,7 +15104,7 @@
 			"name": "Spyglass",
 			"type": "G",
 			"rarity": "None",
-			"value": "1000 gp",
+			"value": 100000,
 			"weight": 1,
 			"source": "PHB",
 			"page": 153,
@@ -15085,12 +15116,20 @@
 			"name": "Stabling (per day)",
 			"type": "TAH",
 			"rarity": "None",
-			"value": "5 sp",
+			"value": 50,
 			"source": "PHB",
 			"page": 157
 		},
 		{
 			"name": "Staff of Adornment",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
+			"weight": 4,
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -15102,6 +15141,14 @@
 		},
 		{
 			"name": "Staff of Birdcalls",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
+			"weight": 4,
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -15111,10 +15158,18 @@
 				"The staff regains {@dice 1d6+4} expended charges daily at dawn. If you expend the last charge, roll a {@dice d20}. On a 1, the staff explodes in a harmless cloud of bird feathers and is lost forever."
 			],
 			"charges": 10,
-			"staff": true
+			"staff": true,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Staff of Charming",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"tier": "Major",
 			"rarity": "Rare",
@@ -15138,6 +15193,13 @@
 		},
 		{
 			"name": "Staff of Defense",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 3,
 			"rarity": "Rare",
 			"source": "LMoP",
@@ -15154,10 +15216,18 @@
 				"mage armor",
 				"shield"
 			],
-			"staff": true
+			"staff": true,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Staff of Fire",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"tier": "Major",
 			"rarity": "Very Rare",
@@ -15178,10 +15248,19 @@
 			"lootTables": [
 				"Magic Item Table H"
 			],
-			"staff": true
+			"staff": true,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Staff of Flowers",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
+			"weight": 4,
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -15190,10 +15269,18 @@
 				"This wooden staff has 10 charges. While holding it, you can use an action to expend 1 charge from the staff and cause a flower to sprout from a patch of earth or soil within 5 feet of you, or from the staff itself. Unless you choose a specific kind of flower, the staff creates a mildscented daisy. The flower is harmless and nonmagical, and it grows or withers as a normal flower would. The staff regains {@dice 1d6+4} expended charges daily at dawn. If you expend the last charge, roll a {@dice d20}. On a 1, the staff turns into flower petals and is lost forever."
 			],
 			"charges": 10,
-			"staff": true
+			"staff": true,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Staff of Frost",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"tier": "Major",
 			"rarity": "Very Rare",
@@ -15215,10 +15302,18 @@
 			"lootTables": [
 				"Magic Item Table H"
 			],
-			"staff": true
+			"staff": true,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Staff of Healing",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"tier": "Major",
 			"rarity": "Rare",
@@ -15238,10 +15333,18 @@
 			"lootTables": [
 				"Magic Item Table G"
 			],
-			"staff": true
+			"staff": true,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Staff of Power",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"tier": "Major",
 			"rarity": "Very Rare",
@@ -15314,10 +15417,19 @@
 			"lootTables": [
 				"Magic Item Table H"
 			],
-			"staff": true
+			"staff": true,
+			"bonus": "+2",
+			"recharge": "dawn"
 		},
 		{
 			"name": "Staff of Striking",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"tier": "Major",
 			"rarity": "Very Rare",
@@ -15332,10 +15444,19 @@
 			"lootTables": [
 				"Magic Item Table H"
 			],
-			"staff": true
+			"staff": true,
+			"bonus": "+3",
+			"recharge": "dawn"
 		},
 		{
 			"name": "Staff of Swarming Insects",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"tier": "Major",
 			"rarity": "Rare",
@@ -15367,10 +15488,18 @@
 			"lootTables": [
 				"Magic Item Table G"
 			],
-			"staff": true
+			"staff": true,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Staff of the Adder",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"tier": "Major",
 			"rarity": "Uncommon",
@@ -15389,16 +15518,14 @@
 		},
 		{
 			"name": "Staff of the Forgotten One",
-			"type": "M",
 			"weaponCategory": "Simple",
-			"baseItem": "quarterstaff|phb",
-			"weight": 4,
 			"dmg1": "{@dice 1d6}",
 			"dmg2": "{@dice 1d8}",
 			"dmgType": "B",
 			"property": [
 				"V"
 			],
+			"weight": 4,
 			"rarity": "Artifact",
 			"source": "ToA",
 			"page": 208,
@@ -15445,10 +15572,18 @@
 			],
 			"charges": 7,
 			"staff": true,
-			"bonus": "+3"
+			"bonus": "+3",
+			"recharge": "dawn"
 		},
 		{
 			"name": "Staff of the Magi",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"tier": "Major",
 			"rarity": "Legendary",
@@ -15532,10 +15667,19 @@
 			"lootTables": [
 				"Magic Item Table I"
 			],
-			"staff": true
+			"staff": true,
+			"bonus": "+2",
+			"recharge": "dawn"
 		},
 		{
 			"name": "Staff of the Python",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"tier": "Major",
 			"rarity": "Uncommon",
@@ -15554,6 +15698,13 @@
 		},
 		{
 			"name": "Staff of the Woodlands",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"tier": "Major",
 			"rarity": "Rare",
@@ -15593,10 +15744,19 @@
 			"lootTables": [
 				"Magic Item Table G"
 			],
-			"staff": true
+			"staff": true,
+			"bonus": "+2",
+			"recharge": "dawn"
 		},
 		{
 			"name": "Staff of Thunder and Lightning",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"tier": "Major",
 			"rarity": "Very Rare",
@@ -15644,10 +15804,18 @@
 			"lootTables": [
 				"Magic Item Table H"
 			],
-			"staff": true
+			"staff": true,
+			"bonus": "+2"
 		},
 		{
 			"name": "Staff of Withering",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"tier": "Major",
 			"rarity": "Rare",
@@ -15662,13 +15830,14 @@
 			"lootTables": [
 				"Magic Item Table G"
 			],
-			"staff": true
+			"staff": true,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Star rose quartz",
 			"type": "$",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -15679,7 +15848,7 @@
 			"name": "Star Ruby",
 			"type": "$",
 			"rarity": "None",
-			"value": "1000 gp",
+			"value": 100000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -15690,7 +15859,7 @@
 			"name": "Star Sapphire",
 			"type": "$",
 			"rarity": "None",
-			"value": "1000 gp",
+			"value": 100000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -15702,7 +15871,7 @@
 			"type": "OTH",
 			"source": "CoS",
 			"page": 152,
-			"value": "250 gp",
+			"value": 25000,
 			"rarity": "Unknown (Magic)",
 			"entries": [
 				"This golden statuette grants any good-aligned creature that carries it a +1 bonus to saving throws."
@@ -15712,7 +15881,7 @@
 			"name": "Steel Mirror",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 0.5,
 			"source": "PHB",
 			"page": 150
@@ -15788,7 +15957,8 @@
 				"speak with animals",
 				"speak with dead",
 				"speak with plants"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Storm Boomerang",
@@ -15898,7 +16068,6 @@
 		{
 			"name": "Survival Mantle",
 			"type": "MA",
-			"armor": true,
 			"rarity": "Unknown (Magic)",
 			"weight": 40,
 			"ac": 15,
@@ -16280,7 +16449,7 @@
 			"name": "Tankard",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 cp",
+			"value": 1,
 			"source": "PHB",
 			"page": 153,
 			"entries": [
@@ -16312,7 +16481,6 @@
 			"name": "Tej",
 			"type": "G",
 			"rarity": "None",
-			"value": "Varies",
 			"weight": 5,
 			"source": "ToA",
 			"page": 32,
@@ -16350,7 +16518,7 @@
 			"name": "Thieves' Tools",
 			"type": "T",
 			"rarity": "None",
-			"value": "25 gp",
+			"value": 2500,
 			"weight": 1,
 			"source": "PHB",
 			"page": 154,
@@ -16421,7 +16589,7 @@
 			"name": "Three-Dragon Ante Set",
 			"type": "GS",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"source": "PHB",
 			"page": 154
 		},
@@ -16429,7 +16597,7 @@
 			"name": "Tiger Eye",
 			"type": "$",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -16440,7 +16608,7 @@
 			"name": "Tinderbox",
 			"type": "G",
 			"rarity": "None",
-			"value": "5 sp",
+			"value": 50,
 			"weight": 1,
 			"source": "PHB",
 			"page": 153,
@@ -16508,7 +16676,7 @@
 			"name": "Tinker's Tools",
 			"type": "AT",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"weight": 10,
 			"source": "PHB",
 			"page": 154,
@@ -16677,7 +16845,7 @@
 			"name": "Topaz",
 			"type": "$",
 			"rarity": "None",
-			"value": "500 gp",
+			"value": 50000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -16688,7 +16856,7 @@
 			"name": "Torch",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 cp",
+			"value": 1,
 			"weight": 1,
 			"source": "PHB",
 			"page": 153,
@@ -16700,7 +16868,7 @@
 			"name": "Torpor (Ingested)",
 			"type": "G",
 			"rarity": "None",
-			"value": "600 gp",
+			"value": 60000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -16713,7 +16881,7 @@
 			"type": "SCF",
 			"scfType": "druid",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"source": "PHB",
 			"page": 151
 		},
@@ -16721,7 +16889,7 @@
 			"name": "Tourmaline",
 			"type": "$",
 			"rarity": "None",
-			"value": "100 gp",
+			"value": 10000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -16732,7 +16900,7 @@
 			"name": "Traveler's Clothes",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 4,
 			"source": "PHB",
 			"page": 150
@@ -16765,7 +16933,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table F"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Trinket",
@@ -18545,7 +18714,7 @@
 			"name": "Truth Serum (Ingested)",
 			"type": "G",
 			"rarity": "None",
-			"value": "150 gp",
+			"value": 15000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -18560,7 +18729,7 @@
 			"name": "Turquoise",
 			"type": "$",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -18571,7 +18740,7 @@
 			"name": "Two-Person Tent",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 gp",
+			"value": 200,
 			"weight": 20,
 			"source": "PHB",
 			"page": 153,
@@ -18619,7 +18788,7 @@
 			"name": "Vial",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"source": "PHB",
 			"page": 153,
 			"entries": [
@@ -18630,7 +18799,7 @@
 			"name": "Viol",
 			"type": "INS",
 			"rarity": "None",
-			"value": "30 gp",
+			"value": 3000,
 			"weight": 1,
 			"source": "PHB",
 			"page": 154
@@ -18639,7 +18808,7 @@
 			"name": "Wagon",
 			"type": "VEH",
 			"rarity": "None",
-			"value": "35 gp",
+			"value": 3500,
 			"weight": 400,
 			"source": "PHB",
 			"page": 157
@@ -18677,7 +18846,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Conducting",
@@ -18690,7 +18860,8 @@
 				"This wand has 3 charges. While holding it, you can use an action to expend 1 of its charges and create orchestral music by waving it around. The music can be heard out to a range of 60 feet and ends when you stop waving the wand.",
 				"The wand regains all expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, a sad tuba sound plays as the wand crumbles to dust and is destroyed."
 			],
-			"charges": 3
+			"charges": 3,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Enemy Detection",
@@ -18708,7 +18879,8 @@
 			"charges": 7,
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Entangle",
@@ -18725,7 +18897,8 @@
 			"charges": 7,
 			"attachedSpells": [
 				"entangle"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Fear",
@@ -18759,7 +18932,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Fireballs",
@@ -18780,7 +18954,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Lightning Bolts",
@@ -18801,7 +18976,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Magic Detection",
@@ -18820,7 +18996,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table B"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Magic Missiles",
@@ -18840,7 +19017,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table F"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Orcus",
@@ -18931,7 +19109,8 @@
 				"finger of death",
 				"power word kill",
 				"speak with dead"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Paralysis",
@@ -18949,7 +19128,8 @@
 			"charges": 7,
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Polymorph",
@@ -18970,7 +19150,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table H"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Pyrotechnics",
@@ -18983,7 +19164,8 @@
 				"This wand has 7 charges. While holding it, you can use an action to expend 1 of its charges and create a harmless burst of multicolored light at a point you can see up to 60 feet away. The burst of light is accompanied by a crackling noise that can be heard up to 300 feet away. The light is as bright as a torch flame but lasts only a second.",
 				"The wand regains {@dice 1d6+1} expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand erupts in a harmless pyrotechnic display and is destroyed."
 			],
-			"charges": 7
+			"charges": 7,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Scowls",
@@ -18996,7 +19178,8 @@
 				"This wand has 3 charges. While holding it, you can use an action to expend 1 of its charges and target a humanoid you can see within 30 feet of you. The target must succeed on a DC 10 Charisma saving throw or be forced to scowl for 1 minute.",
 				"The wand regains all expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand transforms into a {@item wand of smiles|xge}."
 			],
-			"charges": 3
+			"charges": 3,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Secrets",
@@ -19012,7 +19195,8 @@
 			"charges": 3,
 			"lootTables": [
 				"Magic Item Table B"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Smiles",
@@ -19025,7 +19209,8 @@
 				"This wand has 3 charges. While holding it, you can use an action to expend 1 of its charges and target a humanoid you can see within 30 feet of you. The target must succeed on a DC 10 Charisma saving throw or be forced to smile for 1 minute.",
 				"The wand regains all expended charges daily at dawn. If you expend the wand's last charge, roll a {@dice d20}. On a 1, the wand transforms into a {@item wand of scowls|xge}."
 			],
-			"charges": 3
+			"charges": 3,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of the War Mage, +1",
@@ -19088,7 +19273,8 @@
 				"The wand regains {@dice 1d6+1} expended charges daily at midnight. If you expend the wands last charge, roll a {@dice d20}. On a 1, the wand melts into harmless slime and is destroyed.",
 				"A wand of viscous globs is destroyed if exposed to sunlight for 1 hour without interruption."
 			],
-			"charges": 7
+			"charges": 7,
+			"recharge": "midnight"
 		},
 		{
 			"name": "Wand of Web",
@@ -19109,7 +19295,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table F"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Winter",
@@ -19127,7 +19314,8 @@
 				"ray of frost",
 				"sleet storm",
 				"ice storm"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand of Wonder",
@@ -19260,7 +19448,8 @@
 			],
 			"lootTables": [
 				"Magic Item Table G"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wand Sheath",
@@ -19296,9 +19485,9 @@
 			"name": "Warhorse",
 			"type": "MNT",
 			"rarity": "None",
-			"carryingCapacity": "540",
-			"speed": "60",
-			"value": "400 gp",
+			"carryingCapacity": 540,
+			"speed": 60,
+			"value": 40000,
 			"source": "PHB",
 			"page": 157
 		},
@@ -19306,21 +19495,22 @@
 			"name": "Warship",
 			"type": "SHP",
 			"rarity": "None",
-			"value": "25000 gp",
-			"speed": "2½ mph",
-			"carryingCapacity": "200 tons cargo, 60 passengers",
+			"value": 2500000,
 			"crew": 60,
 			"vehAc": 15,
 			"vehHp": 500,
 			"vehDmgThresh": 20,
 			"source": "DMG",
-			"page": 119
+			"page": 119,
+			"vehSpeed": 2.5,
+			"capCargo": 200,
+			"capPassenger": 60
 		},
 		{
 			"name": "Waterskin",
 			"type": "G",
 			"rarity": "None",
-			"value": "2 sp",
+			"value": 20,
 			"weight": 5,
 			"weightNote": "(full)",
 			"source": "PHB",
@@ -19418,7 +19608,7 @@
 			"name": "Weaver's Tools",
 			"type": "AT",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 5,
 			"source": "PHB",
 			"page": 154,
@@ -19526,7 +19716,7 @@
 			"name": "Wheat",
 			"type": "TG",
 			"rarity": "None",
-			"value": "1 cp",
+			"value": 1,
 			"weight": 1,
 			"source": "PHB",
 			"page": 157
@@ -19611,7 +19801,7 @@
 			"name": "Whetstone",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 cp",
+			"value": 1,
 			"weight": 1,
 			"source": "PHB",
 			"page": 150
@@ -19679,7 +19869,6 @@
 		{
 			"name": "White Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"weight": 45,
 			"ac": 14,
 			"stealth": true,
@@ -19697,7 +19886,7 @@
 		{
 			"name": "Wildroot",
 			"type": "G",
-			"value": "25 gp",
+			"value": 2500,
 			"weight": 1,
 			"rarity": "Unknown",
 			"source": "ToA",
@@ -19828,7 +20017,7 @@
 			"name": "Woodcarver's Tools",
 			"type": "AT",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 5,
 			"source": "PHB",
 			"page": 154,
@@ -19901,10 +20090,17 @@
 		},
 		{
 			"name": "Wooden Staff",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"type": "SCF",
 			"scfType": "druid",
 			"rarity": "None",
-			"value": "5 gp",
+			"value": 500,
 			"weight": 4,
 			"source": "PHB",
 			"page": 151,
@@ -19913,7 +20109,7 @@
 		{
 			"name": "Wukka Nut",
 			"type": "G",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 0.1,
 			"rarity": "Unknown",
 			"source": "ToA",
@@ -19957,13 +20153,14 @@
 			"attachedSpells": [
 				"lightning bolt",
 				"globe of invulnerability"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Wyvern Poison (Injury)",
 			"type": "G",
 			"rarity": "None",
-			"value": "1200 gp",
+			"value": 120000,
 			"source": "DMG",
 			"page": 258,
 			"entries": [
@@ -19975,7 +20172,7 @@
 			"name": "Yahcha",
 			"type": "G",
 			"rarity": "None",
-			"value": "1 gp",
+			"value": 100,
 			"weight": 1,
 			"source": "ToA",
 			"page": 205,
@@ -19997,7 +20194,7 @@
 			"name": "Yellow Sapphire",
 			"type": "$",
 			"rarity": "None",
-			"value": "1000 gp",
+			"value": 100000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -20009,7 +20206,7 @@
 			"type": "SCF",
 			"scfType": "druid",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"weight": 1,
 			"source": "PHB",
 			"page": 151
@@ -20018,7 +20215,7 @@
 			"name": "Zabou",
 			"type": "G",
 			"rarity": "None",
-			"value": "10 gp",
+			"value": 1000,
 			"weight": 1,
 			"source": "ToA",
 			"page": 205,
@@ -20030,7 +20227,7 @@
 			"name": "Zircon",
 			"type": "$",
 			"rarity": "None",
-			"value": "50 gp",
+			"value": 5000,
 			"source": "DMG",
 			"page": 134,
 			"entries": [
@@ -20104,7 +20301,8 @@
 			"attachedSpells": [
 				"shield"
 			],
-			"bonus": "+3"
+			"bonus": "+3",
+			"recharge": "dawn"
 		},
 		{
 			"name": "Badge of the Watch",
@@ -20122,6 +20320,13 @@
 		},
 		{
 			"name": "Blackstaff",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"rarity": "Legendary",
 			"source": "WDH",
@@ -20244,7 +20449,9 @@
 				"dispel magic"
 			],
 			"sentient": true,
-			"staff": true
+			"staff": true,
+			"bonus": "+2",
+			"recharge": "dawn"
 		},
 		{
 			"name": "Bracer of Flying Daggers",
@@ -20259,6 +20466,14 @@
 		},
 		{
 			"name": "Dragonstaff of Ahghairon",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
+			"weight": 4,
 			"rarity": "Legendary",
 			"source": "WDH",
 			"page": 191,
@@ -20272,7 +20487,8 @@
 			"attachedSpells": [
 				"command"
 			],
-			"staff": true
+			"staff": true,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Feather of Diatryma Summoning",
@@ -20449,7 +20665,8 @@
 			"charges": 3,
 			"attachedSpells": [
 				"legend lore"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Oversized Longbow",
@@ -20475,7 +20692,7 @@
 			"name": "Nib",
 			"type": "$",
 			"rarity": "None",
-			"value": "1cp",
+			"value": 1,
 			"source": "WDH",
 			"page": 169,
 			"entries": [
@@ -20486,7 +20703,7 @@
 			"name": "Shard",
 			"type": "$",
 			"rarity": "None",
-			"value": "1sp",
+			"value": 10,
 			"source": "WDH",
 			"page": 169,
 			"entries": [
@@ -20497,7 +20714,7 @@
 			"name": "Taol",
 			"type": "$",
 			"rarity": "None",
-			"value": "2gp",
+			"value": 200,
 			"source": "WDH",
 			"page": 169,
 			"entries": [
@@ -20508,7 +20725,7 @@
 			"name": "Dragon",
 			"type": "$",
 			"rarity": "None",
-			"value": "1gp",
+			"value": 100,
 			"source": "WDH",
 			"page": 169,
 			"entries": [
@@ -20519,7 +20736,7 @@
 			"name": "Sun",
 			"type": "$",
 			"rarity": "None",
-			"value": "1pp",
+			"value": 1000,
 			"source": "WDH",
 			"page": 169,
 			"entries": [
@@ -20530,7 +20747,7 @@
 			"name": "Harbor Moon",
 			"type": "$",
 			"rarity": "None",
-			"value": "5pp",
+			"value": 5000,
 			"source": "WDH",
 			"page": 169,
 			"entries": [
@@ -20541,7 +20758,7 @@
 			"name": "Adamantine Bar",
 			"type": "TG",
 			"rarity": "None",
-			"value": "1000 gp",
+			"value": 100000,
 			"weight": 10,
 			"source": "WDH",
 			"page": 90
@@ -20549,7 +20766,7 @@
 		{
 			"name": "Platinum headdress with topaz sun symbol (Sun Empire)",
 			"type": "$",
-			"value": "2500gp",
+			"value": 250000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20557,7 +20774,7 @@
 		{
 			"name": "Feathered mantle with emerald clasp (Sun Empire)",
 			"type": "$",
-			"value": "2500gp",
+			"value": 250000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20565,7 +20782,7 @@
 		{
 			"name": "Necklace of jade and pink pearls (River Heralds)",
 			"type": "$",
-			"value": "2500gp",
+			"value": 250000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20573,7 +20790,7 @@
 		{
 			"name": "Finely articulated jade glove (River Heralds)",
 			"type": "$",
-			"value": "2500gp",
+			"value": 250000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20581,7 +20798,7 @@
 		{
 			"name": "Eye patch with a mock eye set in blue sapphire and moonstone (Brazen Coalition)",
 			"type": "$",
-			"value": "2500gp",
+			"value": 250000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20589,7 +20806,7 @@
 		{
 			"name": "Jeweled anklet (Brazen Coalition)",
 			"type": "$",
-			"value": "2500gp",
+			"value": 250000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20597,7 +20814,7 @@
 		{
 			"name": "Gold music box (Brazen Coalition)",
 			"type": "$",
-			"value": "2500gp",
+			"value": 250000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20605,7 +20822,7 @@
 		{
 			"name": "Gold-plated ceremonial helmet and pauldrons (Legion of Dusk)",
 			"type": "$",
-			"value": "2500gp",
+			"value": 250000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20613,7 +20830,7 @@
 		{
 			"name": "Fine gold chain with fire opals (Legion of Dusk)",
 			"type": "$",
-			"value": "2500gp",
+			"value": 250000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20621,7 +20838,7 @@
 		{
 			"name": "Masterpiece painting in mahogany frame with gold inlay (Legion of Dusk)",
 			"type": "$",
-			"value": "2500gp",
+			"value": 250000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20629,7 +20846,7 @@
 		{
 			"name": "Platinum ring with yellow sapphire (Sun Empire)",
 			"type": "$",
-			"value": "7500gp",
+			"value": 750000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20637,7 +20854,7 @@
 		{
 			"name": "Platinum staff topped with amber (Sun Empire)",
 			"type": "$",
-			"value": "7500gp",
+			"value": 750000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20645,7 +20862,7 @@
 		{
 			"name": "Jade breastplate (River Heralds)",
 			"type": "$",
-			"value": "7500gp",
+			"value": 750000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20653,7 +20870,7 @@
 		{
 			"name": "Jade totem with diamond eyes (River Heralds)",
 			"type": "$",
-			"value": "7500gp",
+			"value": 750000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20661,7 +20878,7 @@
 		{
 			"name": "Treasure chest crafted of exotic wood with gold fittings and opals (Brazen Coalition)",
 			"type": "$",
-			"value": "7500gp",
+			"value": 750000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20669,7 +20886,7 @@
 		{
 			"name": "Bejeweled ivory drinking horn with gold inlay (Brazen Coalition)",
 			"type": "$",
-			"value": "7500gp",
+			"value": 750000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20677,7 +20894,7 @@
 		{
 			"name": "Gold jewelry box with platinum filigree (Brazen Coalition)",
 			"type": "$",
-			"value": "7500gp",
+			"value": 750000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20685,7 +20902,7 @@
 		{
 			"name": "Gold basin with rubies (Legion of Dusk)",
 			"type": "$",
-			"value": "7500gp",
+			"value": 750000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20693,7 +20910,7 @@
 		{
 			"name": "Gold chalice set with emeralds (Legion of Dusk)",
 			"type": "$",
-			"value": "7500gp",
+			"value": 750000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20701,7 +20918,7 @@
 		{
 			"name": "Marble font with gold inlay (Legion of Dusk)",
 			"type": "$",
-			"value": "7500gp",
+			"value": 750000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 25
@@ -20709,7 +20926,7 @@
 		{
 			"name": "Silver headdress with amber and red-coral feathers (Sun Empire)",
 			"type": "$",
-			"value": "750gp",
+			"value": 75000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20717,7 +20934,7 @@
 		{
 			"name": "Silver shoulder piece with amber and garnet (Sun Empire)",
 			"type": "$",
-			"value": "750gp",
+			"value": 75000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20725,7 +20942,7 @@
 		{
 			"name": "Jade sword with amber (River Heralds)",
 			"type": "$",
-			"value": "750gp",
+			"value": 75000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20733,7 +20950,7 @@
 		{
 			"name": "Large jade totem (River Heralds)",
 			"type": "$",
-			"value": "750gp",
+			"value": 75000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20741,7 +20958,7 @@
 		{
 			"name": "Gold-plated sextant with topaz (Brazen Coalition)",
 			"type": "$",
-			"value": "750gp",
+			"value": 75000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20749,7 +20966,7 @@
 		{
 			"name": "Necklace of electrum medallions with red and blue tournalines (Brazen Coalition)",
 			"type": "$",
-			"value": "750gp",
+			"value": 75000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20757,7 +20974,7 @@
 		{
 			"name": "Lute crafted of exotic wood with mother-of-pearl inlay and zircon gems (Brazen Coalition)",
 			"type": "$",
-			"value": "750gp",
+			"value": 75000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20765,7 +20982,7 @@
 		{
 			"name": "Ceremonial silver dagger with gold pommel and black pearl (Legion of Dusk)",
 			"type": "$",
-			"value": "750gp",
+			"value": 75000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20773,7 +20990,7 @@
 		{
 			"name": "Fine steel rapier with gold filigree hilt (Legion of Dusk)",
 			"type": "$",
-			"value": "750gp",
+			"value": 75000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20781,7 +20998,7 @@
 		{
 			"name": "Gold chalice (Legion of Dusk)",
 			"type": "$",
-			"value": "750gp",
+			"value": 75000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20789,7 +21006,7 @@
 		{
 			"name": "Silver necklace with an amber pendant (Sun Empire)",
 			"type": "$",
-			"value": "250gp",
+			"value": 25000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20797,7 +21014,7 @@
 		{
 			"name": "Fine robe with dinosaur feathers and silver embroidery (Sun Empire)",
 			"type": "$",
-			"value": "250gp",
+			"value": 25000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20805,7 +21022,7 @@
 		{
 			"name": "Jade headpiece (River Heralds)",
 			"type": "$",
-			"value": "250gp",
+			"value": 25000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20813,7 +21030,7 @@
 		{
 			"name": "Carved jade statuette (River Heralds)",
 			"type": "$",
-			"value": "250gp",
+			"value": 25000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20821,7 +21038,7 @@
 		{
 			"name": "Jade bowl (River Heralds)",
 			"type": "$",
-			"value": "250gp",
+			"value": 25000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20829,7 +21046,7 @@
 		{
 			"name": "Bronze spyglass (Brazen Coalition)",
 			"type": "$",
-			"value": "250gp",
+			"value": 25000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20837,7 +21054,7 @@
 		{
 			"name": "Pewter mug with green spinels (Brazen Coalition)",
 			"type": "$",
-			"value": "250gp",
+			"value": 25000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20845,7 +21062,7 @@
 		{
 			"name": "Gold pendant with black onyx (Legion of Dusk)",
 			"type": "$",
-			"value": "250gp",
+			"value": 25000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20853,7 +21070,7 @@
 		{
 			"name": "Large well-made tapestry (Legion of Dusk)",
 			"type": "$",
-			"value": "250gp",
+			"value": 25000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20861,7 +21078,7 @@
 		{
 			"name": "Large gold bracelet (Legion of Dusk)",
 			"type": "$",
-			"value": "250gp",
+			"value": 25000,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20869,7 +21086,7 @@
 		{
 			"name": "Silver medallion (Sun Empire)",
 			"type": "$",
-			"value": "25gp",
+			"value": 2500,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20877,7 +21094,7 @@
 		{
 			"name": "Amulet of dinosaur feathers (Sun Empire)",
 			"type": "$",
-			"value": "25gp",
+			"value": 2500,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20885,7 +21102,7 @@
 		{
 			"name": "Sun amulet on a beaded chain (Sun Empire)",
 			"type": "$",
-			"value": "25gp",
+			"value": 2500,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20893,7 +21110,7 @@
 		{
 			"name": "Tiny jade figurine (River Heralds)",
 			"type": "$",
-			"value": "25gp",
+			"value": 2500,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20901,7 +21118,7 @@
 		{
 			"name": "Pair of engraved bone dice (Brazen Coalition)",
 			"type": "$",
-			"value": "25gp",
+			"value": 2500,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20909,7 +21126,7 @@
 		{
 			"name": "Copper stein with silver filigree (Brazen Coalition)",
 			"type": "$",
-			"value": "25gp",
+			"value": 2500,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20917,7 +21134,7 @@
 		{
 			"name": "Velvet doublet with gold buttons (Legion of Dusk)",
 			"type": "$",
-			"value": "25gp",
+			"value": 2500,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20925,7 +21142,7 @@
 		{
 			"name": "Gold ring with turquoise (Legion of Dusk)",
 			"type": "$",
-			"value": "25gp",
+			"value": 2500,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20933,7 +21150,7 @@
 		{
 			"name": "Cloth-of-gold vestments (Legion of Dusk)",
 			"type": "$",
-			"value": "25gp",
+			"value": 2500,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -20941,7 +21158,7 @@
 		{
 			"name": "Gold locket with a painted portrait inside (Legion of Dusk)",
 			"type": "$",
-			"value": "25gp",
+			"value": 2500,
 			"source": "PSX",
 			"rarity": "None",
 			"page": 24
@@ -21348,7 +21565,8 @@
 			"charges": 3,
 			"attachedSpells": [
 				"ensnaring strike"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Boros Guild Signet",
@@ -21364,7 +21582,8 @@
 			"charges": 3,
 			"attachedSpells": [
 				"heroism"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Dimir Guild Signet",
@@ -21380,7 +21599,8 @@
 			"charges": 3,
 			"attachedSpells": [
 				"disguise self"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Golgari Guild Signet",
@@ -21396,7 +21616,8 @@
 			"charges": 3,
 			"attachedSpells": [
 				"entangle"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Gruul Guild Signet",
@@ -21412,7 +21633,8 @@
 			"charges": 3,
 			"attachedSpells": [
 				"compelled duel"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Izzet Guild Signet",
@@ -21428,7 +21650,8 @@
 			"charges": 3,
 			"attachedSpells": [
 				"chaos bolt|XGE"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Orzhov Guild Signet",
@@ -21444,7 +21667,8 @@
 			"charges": 3,
 			"attachedSpells": [
 				"command"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Rakdos Guild Signet",
@@ -21460,7 +21684,8 @@
 			"charges": 3,
 			"attachedSpells": [
 				"hellish rebuke"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Selesnya Guild Signet",
@@ -21476,7 +21701,8 @@
 			"charges": 3,
 			"attachedSpells": [
 				"charm person"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Simic Guild Signet",
@@ -21492,7 +21718,8 @@
 			"charges": 3,
 			"attachedSpells": [
 				"expeditious retreat"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Illusionist's Bracers",
@@ -21724,7 +21951,8 @@
 					]
 				}
 			],
-			"charges": 4
+			"charges": 4,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Moodmark Paint",
@@ -21817,6 +22045,13 @@
 		},
 		{
 			"name": "Skyblinder Staff",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"rarity": "Uncommon",
 			"source": "GGR",
@@ -21826,7 +22061,8 @@
 				"You gain a +1 bonus to attack and damage rolls made with this magic quarterstaff. While holding it, you gain a +1 bonus to spell attack rolls.",
 				"If a flying creature you can see within 30 feet of you makes an attack roll against you, you can use your reaction to hold the staff aloft and cause it to flare with light. The attacker has disadvantage on the attack roll, and it must succeed on a DC 15 Constitution saving throw or be {@condition blinded} until the start of its next turn."
 			],
-			"staff": true
+			"staff": true,
+			"bonus": "+1"
 		},
 		{
 			"name": "Spies' Murmur",
@@ -21893,6 +22129,13 @@
 		},
 		{
 			"name": "Voyager Staff",
+			"weaponCategory": "Simple",
+			"dmg1": "{@dice 1d6}",
+			"dmg2": "{@dice 1d8}",
+			"dmgType": "B",
+			"property": [
+				"V"
+			],
 			"weight": 4,
 			"rarity": "Very Rare",
 			"source": "GGR",
@@ -21904,7 +22147,9 @@
 				"The staff regains {@dice 1d6 + 4} expended charges daily at dawn. If you expend the last charge, roll a {@dice d20}. On a 1, the staff vanishes forever."
 			],
 			"charges": 10,
-			"staff": true
+			"staff": true,
+			"bonus": "+1",
+			"recharge": "dawn"
 		},
 		{
 			"name": "Chest of Preserving",
@@ -22000,7 +22245,8 @@
 				"fly",
 				"polymorph",
 				"transport via plants"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Vial of Stardust",
@@ -22510,7 +22756,6 @@
 			"name": "Heward's Hireling Armor",
 			"type": "LA",
 			"reqAttune": true,
-			"armor": true,
 			"baseItem": "leather armor|phb",
 			"weight": 10,
 			"rarity": "Very Rare",
@@ -22611,7 +22856,6 @@
 		{
 			"name": "Leather Golem Armor",
 			"type": "LA",
-			"armor": true,
 			"baseItem": "leather armor|phb",
 			"weight": 10,
 			"rarity": "Rare",
@@ -22673,7 +22917,6 @@
 		{
 			"name": "Powered Armor",
 			"type": "HA",
-			"armor": true,
 			"baseItem": "plate armor|phb",
 			"weight": 65,
 			"rarity": "Legendary",
@@ -22753,7 +22996,7 @@
 			"name": "Copper Zib",
 			"type": "$",
 			"rarity": "None",
-			"value": "1cp",
+			"value": 1,
 			"source": "GGR",
 			"page": 9
 		},
@@ -22761,7 +23004,7 @@
 			"name": "Silver 25-Zib Coin",
 			"type": "$",
 			"rarity": "None",
-			"value": "25cp",
+			"value": 25,
 			"source": "GGR",
 			"page": 9
 		},
@@ -22769,7 +23012,7 @@
 			"name": "Electrum 50-Zib Coin",
 			"type": "$",
 			"rarity": "None",
-			"value": "1ep",
+			"value": 50,
 			"source": "GGR",
 			"page": 9
 		},
@@ -22777,7 +23020,7 @@
 			"name": "Gold Zino",
 			"type": "$",
 			"rarity": "None",
-			"value": "1gp",
+			"value": 100,
 			"source": "GGR",
 			"page": 9
 		},
@@ -22785,7 +23028,7 @@
 			"name": "Gold 5-Zib Coin",
 			"type": "$",
 			"rarity": "None",
-			"value": "5gp",
+			"value": 500,
 			"source": "GGR",
 			"page": 9
 		},
@@ -22793,7 +23036,7 @@
 			"name": "Copper Alms-Coin",
 			"type": "$",
 			"rarity": "None",
-			"value": "1cp",
+			"value": 1,
 			"source": "GGR",
 			"page": 9
 		},
@@ -22801,7 +23044,7 @@
 			"name": "Platinum 10-Zino Coin",
 			"type": "$",
 			"rarity": "None",
-			"value": "1pp",
+			"value": 1000,
 			"source": "GGR",
 			"page": 9
 		},
@@ -22809,7 +23052,7 @@
 			"name": "Platinum 100-Zino Coin",
 			"type": "$",
 			"rarity": "None",
-			"value": "10pp",
+			"value": 10000,
 			"source": "GGR",
 			"page": 9
 		},
@@ -22827,7 +23070,8 @@
 			"attachedSpells": [
 				"speak with plants"
 			],
-			"page": 229
+			"page": 229,
+			"recharge": "dawn"
 		},
 		{
 			"name": "Cursed Luckstone",
@@ -22960,7 +23204,8 @@
 				"gate",
 				"plane shift",
 				"teleportation circle"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Chronolometer",
@@ -23341,7 +23586,8 @@
 			"attachedSpells": [
 				"fireball",
 				"lightning bolt"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Living Loot Satchel",
@@ -23997,7 +24243,6 @@
 		{
 			"name": "Obsidian Flint Dragon Plate",
 			"type": "HA",
-			"armor": true,
 			"weight": 65,
 			"ac": 18,
 			"strength": "15",
@@ -24062,7 +24307,8 @@
 			"attachedSpells": [
 				"fireball",
 				"wall of fire"
-			]
+			],
+			"recharge": "dawn"
 		},
 		{
 			"name": "Soul Coin",
@@ -24608,7 +24854,6 @@
 		{
 			"name": "Vanrak's Mithral Shirt",
 			"type": "MA",
-			"armor": true,
 			"rarity": "Uncommon",
 			"weight": 20,
 			"ac": 13,
@@ -24634,7 +24879,7 @@
 			"weaponCategory": "Simple",
 			"rarity": "Unknown (Magic)",
 			"baseItem": "dagger|phb",
-			"value": "750 gp",
+			"value": 75000,
 			"weight": 1,
 			"dmg1": "{@dice 1d4}",
 			"dmgType": "P",
@@ -24715,7 +24960,7 @@
 			"page": 76,
 			"rarity": "Unknown (Magic)",
 			"type": "OTH",
-			"value": "500 gp",
+			"value": 50000,
 			"entries": [
 				"This black pearl glows faintly when undead are within 120 feet of it."
 			]
@@ -24768,7 +25013,7 @@
 			"page": 188,
 			"rarity": "Unknown (Magic)",
 			"type": "OTH",
-			"value": "750 gp",
+			"value": 75000,
 			"entries": [
 				"This music box is made of dark wood with gold filigree. Each of its five sides is sculpted with the image of a horned woman playing a different musical instrument: a dulcimer, a flute, a harp, a lyre, and a viol. While touching the box, you can use an action to make it play music featuring one of the instruments shown, which can be heard up to 60 feet away. You can also use an action to stop the music."
 			]
@@ -25097,7 +25342,6 @@
 		{
 			"name": "Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"weight": 45,
 			"ac": 14,
 			"stealth": true,
@@ -25453,7 +25697,6 @@
 		{
 			"name": "Armor of Vulnerability",
 			"type": "HA",
-			"armor": true,
 			"weight": 65,
 			"ac": 18,
 			"strength": "15",

@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.2.0",
+	"version": "1.3.1",
 	"definitions": {
 		"itemLookup": {
 			"type": "array",
@@ -77,10 +77,8 @@
 					"age": {
 						"type": "string"
 					},
-					"ammunition": {
-						"type": "boolean"
-					},
 					"armor": {
+						"description": "Flag used when merging generic variants",
 						"type": "boolean"
 					},
 					"axe": {
@@ -112,7 +110,7 @@
 						"type": "string"
 					},
 					"reload": {
-						"type": "string"
+						"type": "integer"
 					},
 					"scfType": {
 						"type": "string"
@@ -133,6 +131,11 @@
 						"type": "boolean"
 					},
 					"value": {
+						"description": "In copper pieces.",
+						"type": "number"
+					},
+					"valueConversion": {
+						"description": "ID of a value conversion table. Homebrew only.",
 						"type": "string"
 					},
 					"valueMult": {

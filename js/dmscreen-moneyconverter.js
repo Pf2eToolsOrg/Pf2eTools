@@ -138,7 +138,7 @@ class MoneyConverter {
 				});
 			}
 
-			$iptOut.val(`${outParts.join("; ")}${totalWeight ? ` (${totalWeight.toLocaleString()} lbs.)` : ""}`);
+			$iptOut.val(`${outParts.join("; ")}${totalWeight ? ` (${totalWeight.toLocaleString()} lb.)` : ""}`);
 
 			board.doSaveStateDebounced();
 		};

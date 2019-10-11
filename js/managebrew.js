@@ -78,6 +78,9 @@ class ManageBrew {
 						case "spellSchools":
 							populateGenericSection("Spell Schools", (brew, metaType, k) => brew[metaType][k].full || k);
 							break;
+						case "itemValueConversions":
+							populateGenericSection("Item Value Conversion Tables", (brew, metaType, k) => `${k}: ${brew[metaType][k].map(it => `${it.coin}=${it.mult}`).join(", ")}`);
+							break;
 					}
 					handleSecChange(i);
 				})

@@ -1,6 +1,57 @@
 "use strict";
 
 class ItemsPage {
+	constructor () {
+		this._sublistCurrencyConversion = null;
+
+		this._$totalWeight = null;
+		this._$totalValue = null;
+	}
+
+	async pOnLoad () {
+		this._sublistCurrencyConversion = await StorageUtil.pGetForPage("sublistCurrencyConversion");
+	}
+
+	onSublistChange () {
+		this._$totalwWeight = this._$totalWeight || $(`#totalweight`);
+		this._$totalValue = this._$totalValue || $(`#totalvalue`);
+
+		let weight = 0;
+		let value = 0;
+
+		const availConversions = new Set();
+		ListUtil.sublist.items.forEach(it => {
+			const item = itemList[it.ix];
+			if (item.valueConversion) availConversions.add(item.valueConversion);
+			const count = it.values.count;
+			if (item.weight) weight += Number(item.weight) * count;
+			if (item.value) value += item.value * count;
+		});
+
+		this._$totalwWeight.text(`${weight.toLocaleString()} lb${weight !== 1 ? "s" : ""}.`);
+
+		if (availConversions.size) {
+			this._$totalValue.addClass("clickable").text(Parser.itemValueToFull({value, valueConversion: this._sublistCurrencyConversion})).off("click")
+				.click(async () => {
+					const values = ["(Default)", ...[...availConversions].sort(SortUtil.ascSortLower)];
+					const defaultSel = values.indexOf(this._sublistCurrencyConversion);
+					const userSel = await InputUiUtil.pGetUserEnum({
+						values,
+						isResolveItem: true,
+						default: ~defaultSel ? defaultSel : 0,
+						title: "Select Currency Conversion Table",
+						fnDisplay: it => it === null ? "(Default)" : it
+					});
+					if (userSel == null) return;
+					this._sublistCurrencyConversion = userSel === "(Default)" ? null : userSel;
+					StorageUtil.pSetForPage("sublistCurrencyConversion", this._sublistCurrencyConversion);
+					this.onSublistChange();
+				});
+		} else {
+			this._$totalValue.removeClass("clickable").text(Parser.itemValueToFull({value})).off("click");
+		}
+	}
+
 	static rarityValue (rarity) {
 		switch (rarity) {
 			case "None": return 0;
@@ -31,7 +82,9 @@ class ItemsPage {
 	}
 }
 
+const itemsPage = new ItemsPage();
 window.onload = async function load () {
+	await itemsPage.pOnLoad();
 	await ExcludeUtil.pInitialise();
 	return pPopulateTablesAndFilters({item: await Renderer.item.pBuildList({isAddGroups: true, isBlacklistVariants: true})});
 };
@@ -40,7 +93,7 @@ let mundaneList;
 let magicList;
 let subList;
 const sourceFilter = getSourceFilter();
-const DEFAULT_HIDDEN_TYPES = new Set(["$", "Futuristic", "Modern", "Renaissance"]);
+const DEFAULT_HIDDEN_TYPES = new Set(["Treasure", "Futuristic", "Modern", "Renaissance"]);
 const typeFilter = new Filter({header: "Type", deselFn: (it) => DEFAULT_HIDDEN_TYPES.has(it)});
 const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"], itemSortFn: null});
 const propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});
@@ -53,7 +106,7 @@ let filterBox;
 async function pPopulateTablesAndFilters (data) {
 	const rarityFilter = new Filter({
 		header: "Rarity",
-		items: ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown", "Unknown (Magic)", "Other"],
+		items: [...Parser.ITEM_RARITIES],
 		itemSortFn: null
 	});
 	const attunementFilter = new Filter({header: "Attunement", items: ["Yes", "By...", "Optional", "No"], itemSortFn: null});
@@ -130,7 +183,7 @@ async function pPopulateTablesAndFilters (data) {
 		listClass: "subitems",
 		fnSort: ItemsPage.sortItems,
 		getSublistRow: getSublistItem,
-		onUpdate: onSublistChange
+		onUpdate: itemsPage.onSublistChange.bind(itemsPage)
 	});
 	SortUtil.initBtnSortHandlers($("#sublistsort"), subList);
 	ListUtil.initGenericAddable();
@@ -179,14 +232,13 @@ function addItems (data) {
 
 		// for filter to use
 		item._fTier = tierTags;
-		item._fProperties = item.property ? item.property.map(p => Renderer.item._propertyMap[p].name).filter(n => n) : [];
+		item._fProperties = item.property ? item.property.map(p => Renderer.item.propertyMap[p].name).filter(n => n) : [];
 		item._fMisc = item.sentient ? ["Sentient"] : [];
 		if (item.curse) item._fMisc.push("Cursed");
-		const isMundane = item.rarity === "None" || item.rarity === "Unknown" || item.category === "Basic";
+		const isMundane = item.rarity === "None" || item.rarity === "Unknown" || item._category === "Basic";
 		item._fMisc.push(isMundane ? "Mundane" : "Magic");
 		if (item.ability) item._fMisc.push("Ability Score Adjustment");
 		if (item.charges) item._fMisc.push("Charges");
-		item._fCost = Parser.coinValueToNumber(item.value);
 		if (item.focus || item.type === "INS" || item.type === "SCF") {
 			item._fFocus = item.focus ? item.focus === true ? ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"] : [...item.focus] : [];
 			if (item.type === "INS" && !item._fFocus.includes("Bard")) item._fFocus.push("Bard");
@@ -215,14 +267,15 @@ function addItems (data) {
 
 		const hash = UrlUtil.autoEncodeHash(item);
 		const source = Parser.sourceJsonToAbv(item.source);
+		const type = item._typeListText.join(", ");
 
 		if (isMundane) {
 			eleLi.innerHTML = `<a href="#${hash}">
-				<span class="col-3 pl-0 bold">${item.name}</span>
-				<span class="col-4-3">${item.typeListText}</span>
+				<span class="col-3-5 pl-0 bold">${item.name}</span>
+				<span class="col-4-5">${type}</span>
 				<span class="col-1-5 text-center">${item.value || item.valueMult ? Parser.itemValueToFull(item, true).replace(/ +/g, "\u00A0") : "\u2014"}</span>
 				<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
-				<span class="col-1-7 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
+				<span class="col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
 
 			const listItem = new ListItem(
@@ -232,8 +285,8 @@ function addItems (data) {
 				{
 					hash,
 					source,
-					type: item.typeListText,
-					cost: item._fCost,
+					type,
+					cost: item.value || 0,
 					weight: Parser.weightValueToNumber(item.weight),
 					uniqueid: item.uniqueId ? item.uniqueId : itI
 				}
@@ -244,11 +297,11 @@ function addItems (data) {
 		} else {
 			eleLi.innerHTML += `<a href="#${hash}">
 				<span class="col-3-5 pl-0 bold">${item.name}</span>
-				<span class="col-3-3">${item.typeListText}</span>
+				<span class="col-4">${type}</span>
 				<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
-				<span class="attunement col-0-6 text-center">${item.attunementCategory !== "No" ? "×" : ""}</span>
+				<span class="attunement col-0-6 text-center">${item._attunementCategory !== "No" ? "×" : ""}</span>
 				<span class="rarity col-1-4">${item.rarity}</span>
-				<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
+				<span class="source col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
 
 			const listItem = new ListItem(
@@ -258,9 +311,9 @@ function addItems (data) {
 				{
 					source,
 					hash,
-					type: item.typeListText,
+					type,
 					rarity: item.rarity,
-					attunement: item.attunementCategory !== "No",
+					attunement: item._attunementCategory !== "No",
 					weight: Parser.weightValueToNumber(item.weight),
 					uniqueid: item.uniqueId ? item.uniqueId : itI
 				}
@@ -272,9 +325,9 @@ function addItems (data) {
 
 		// populate filters
 		sourceFilter.addItem(item.source);
-		item.procType.forEach(t => typeFilter.addItem(t));
+		typeFilter.addItem(item._typeListText);
 		tierTags.forEach(tt => tierFilter.addItem(tt));
-		item._fProperties.forEach(p => propertyFilter.addItem(p));
+		propertyFilter.addItem(item._fProperties);
 		attachedSpellsFilter.addItem(item.attachedSpells);
 		lootTableFilter.addItem(item.lootTables);
 	}
@@ -309,13 +362,13 @@ function handleFilterChange () {
 		return filterBox.toDisplay(
 			f,
 			it.source,
-			it.procType,
+			it._typeListText,
 			it._fTier,
 			it.rarity,
 			it._fProperties,
-			it.attunementCategory,
-			it.category,
-			it._fCost,
+			it._attunementCategory,
+			it._category,
+			it.value || 0,
 			it._fFocus,
 			it._fMisc,
 			it.lootTables,
@@ -327,21 +380,6 @@ function handleFilterChange () {
 	FilterBox.selectFirstVisible(itemList);
 }
 
-function onSublistChange () {
-	const $totalWeight = $(`#totalweight`);
-	const $totalValue = $(`#totalvalue`);
-	let weight = 0;
-	let value = 0;
-	ListUtil.sublist.items.forEach(it => {
-		const item = itemList[it.ix];
-		const count = it.values.count;
-		if (item.weight) weight += Number(item.weight) * count;
-		if (item.value) value += Parser.coinValueToNumber(item.value) * count;
-	});
-	$totalWeight.text(`${weight.toLocaleString()} lb${weight !== 1 ? "s" : ""}.`);
-	$totalValue.text(`${value.toLocaleString()}gp`)
-}
-
 function getSublistItem (item, pinId, addCount) {
 	const hash = UrlUtil.autoEncodeHash(item);
 	const count = addCount || 1;
@@ -351,7 +389,7 @@ function getSublistItem (item, pinId, addCount) {
 		<a href="#${hash}">
 			<span class="bold col-6 pl-0">${item.name}</span>
 			<span class="text-center col-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
-			<span class="text-center col-2">${item.value ? item.value.replace(/ +/g, "\u00A0") : "\u2014"}</span>
+			<span class="text-center col-2">${item.value || item.valueMult ? Parser.itemValueToFull(item, true).replace(/ +/g, "\u00A0") : "\u2014"}</span>
 			${$dispCount}
 		</a>
 	</li>`.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -364,7 +402,7 @@ function getSublistItem (item, pinId, addCount) {
 			hash,
 			source: Parser.sourceJsonToAbv(item.source),
 			weight: Parser.weightValueToNumber(item.weight),
-			cost: item._fCost,
+			cost: item.value || 0,
 			count
 		},
 		{

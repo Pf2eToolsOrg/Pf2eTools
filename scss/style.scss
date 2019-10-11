@@ -1686,7 +1686,7 @@ div#subclasses > span.divider {
 }
 
 .sc_pill[data-state='1'] {
-	background: repeating-linear-gradient(45deg, $rgb-class-ua-color, $rgb-class-ua-color 17px, lightgrey 17px, lightgrey 34px);
+	background: repeating-linear-gradient(135deg, $rgb-class-ua-color, $rgb-class-ua-color 17px, lightgrey 17px, lightgrey 34px);
 }
 
 .sc_pill[data-state='2'] {
@@ -2155,7 +2155,7 @@ $flt-2stripe: 22px;
 		border: 1px solid $rgb-border-grey;
 
 		&--include {
-			background: repeating-linear-gradient(45deg, $rgb-active-blue, $rgb-active-blue $flt-stripe, transparent $flt-stripe, transparent $flt-2stripe);
+			background: repeating-linear-gradient(135deg, $rgb-active-blue, $rgb-active-blue $flt-stripe, transparent $flt-stripe, transparent $flt-2stripe);
 
 			span {
 				background: white;
@@ -2169,7 +2169,7 @@ $flt-2stripe: 22px;
 		}
 
 		&--exclude {
-			background: repeating-linear-gradient(45deg, transparent, transparent $flt-stripe, $rgb-active-red $flt-stripe, $rgb-active-red $flt-2stripe);
+			background: repeating-linear-gradient(135deg, transparent, transparent $flt-stripe, $rgb-active-red $flt-stripe, $rgb-active-red $flt-2stripe);
 
 			span {
 				background: white;
@@ -2183,7 +2183,7 @@ $flt-2stripe: 22px;
 		}
 
 		&--both {
-			background: repeating-linear-gradient(45deg, $rgb-active-blue, $rgb-active-blue $flt-stripe, $rgb-active-red $flt-stripe, $rgb-active-red $flt-2stripe);
+			background: repeating-linear-gradient(135deg, $rgb-active-blue, $rgb-active-blue $flt-stripe, $rgb-active-red $flt-stripe, $rgb-active-red $flt-2stripe);
 			color: white;
 		}
 	}
@@ -2334,6 +2334,17 @@ $flt-2stripe: 22px;
 		&:not(.ui-slider-disabled) .ui-slider-pip:hover .ui-slider-label,
 		.ui-slider-label {
 			color: $rgb-active-blue;
+		}
+
+		.ui-slider-pip-label .ui-slider-label {
+			display: flex;
+			justify-content: center;
+		}
+
+		.ui-slider-handle .ui-slider-tip {
+			white-space: nowrap;
+			width: 60px;
+			margin-left: -30px;
 		}
 	}
 
@@ -3556,11 +3567,6 @@ ul.list.books > li > a > span.name:hover {
 		border-color: $rgb-night-hr-grey;
 	}
 
-	.form-control {
-		background-color: $rgb-night-bg-color;
-		color: $rgb-night-font-color;
-	}
-
 	.form-control[disabled] {
 		background: #0e0e0e88;
 	}
@@ -4106,7 +4112,7 @@ ul.list.books > li > a > span.name:hover {
 		background: $rgb-off-black;
 
 		&[data-state='1'] {
-			background: repeating-linear-gradient(45deg, $rgb-class-ua-color, $rgb-class-ua-color 17px, $rgb-off-black 17px, $rgb-off-black 34px);
+			background: repeating-linear-gradient(135deg, $rgb-class-ua-color, $rgb-class-ua-color 17px, $rgb-off-black 17px, $rgb-off-black 34px);
 			color: white;
 		}
 
@@ -4598,6 +4604,10 @@ ul.list.books > li > a > span.name:hover {
 
 	#classtable table tr:nth-child(odd) td {
 		background: lightgrey !important;
+	}
+
+	.cls-bkmv__wrp-tabs {
+		display: none !important;
 	}
 	// endregion
 

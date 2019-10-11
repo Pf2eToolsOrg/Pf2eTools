@@ -1250,18 +1250,23 @@ class RangeFilter extends FilterBase {
 	 * @param [opts.min] Minimum slider value.
 	 * @param [opts.max] Maximum slider value.
 	 * @param [opts.isLabelled] If this slider has labels.
+	 * @param [opts.labels] Initial labels to populate this filter with.
 	 * @param [opts.isAllowGreater] If this slider should allow all items greater than its max.
 	 * @param [opts.suffix] Suffix to add to numbers displayed above slider.
 	 * @param [opts.labelSortFn] Function used to sort labels if new labels are added. Defaults to ascending alphabetical.
 	 */
 	constructor (opts) {
 		super(opts);
+
+		if (opts.labels && opts.min == null) opts.min = 0;
+		if (opts.labels && opts.max == null) opts.max = opts.labels.length - 1;
+
 		this._min = Number(opts.min || 0);
 		this._max = Number(opts.max || 0);
-		this._labels = opts.isLabelled ? [] : null;
+		this._labels = opts.isLabelled ? opts.labels : null;
 		this._isAllowGreater = !!opts.isAllowGreater;
 		this._suffix = opts.suffix;
-		this._labelSortFn = opts.labelSortFn || SortUtil.ascSort;
+		this._labelSortFn = opts.labelSortFn === undefined ? SortUtil.ascSort : opts.labelSortFn;
 
 		this._filterBox = null;
 		Object.assign(
@@ -1433,7 +1438,8 @@ class RangeFilter extends FilterBase {
 		const getSliderOpts = () => {
 			const sliderOpts = {};
 			if (this._labels) {
-				sliderOpts.labels = this._labels.sort(this._labelSortFn);
+				if (this._labelSortFn) sliderOpts.labels = this._labels.sort(this._labelSortFn);
+				else sliderOpts.labels = this._labels;
 			} else if (this._isAllowGreater) {
 				sliderOpts.labels = {last: `${this._state.max}+`};
 			}

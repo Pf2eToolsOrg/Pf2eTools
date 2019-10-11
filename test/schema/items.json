@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.4.2",
+	"version": "1.5.2",
 	"type": "object",
 	"definitions": {
 		"itemData": {
@@ -49,14 +49,11 @@
 				"ammunition": {
 					"type": "boolean"
 				},
-				"armor": {
-					"type": "boolean"
-				},
 				"axe": {
 					"type": "boolean"
 				},
 				"carryingCapacity": {
-					"type": "string"
+					"type": "integer"
 				},
 				"dmg1": {
 					"type": "string"
@@ -112,7 +109,7 @@
 					"type": "string"
 				},
 				"speed": {
-					"type": "string"
+					"type": "integer"
 				},
 				"stealth": {
 					"type": "boolean"
@@ -133,6 +130,11 @@
 					"type": "string"
 				},
 				"value": {
+					"description": "In copper pieces.",
+					"type": "number"
+				},
+				"valueConversion": {
+					"description": "ID of a value conversion table. Homebrew only.",
 					"type": "string"
 				},
 				"valueMult": {
@@ -165,6 +167,15 @@
 				"crew": {
 					"type": "integer"
 				},
+				"capPassenger": {
+					"type": "integer"
+				},
+				"capCargo": {
+					"type": "number"
+				},
+				"vehSpeed": {
+					"type": "number"
+				},
 				"vehAc": {
 					"type": "integer"
 				},
@@ -176,6 +187,9 @@
 				},
 				"charges": {
 					"type": ["string", "integer"]
+				},
+				"recharge": {
+					"enum": ["round", "restShort", "restLong", "dawn", "dusk", "midnight"]
 				},
 				"attachedSpells": {
 					"type": "array",

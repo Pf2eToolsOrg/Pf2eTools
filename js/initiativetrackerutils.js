@@ -58,7 +58,7 @@ class InitiativeTrackerUtil {
 			const getBar = () => {
 				const styleStack = [
 					state.turns == null || state.turns > 3
-						? `background-image: linear-gradient(45deg, ${state.color} 41.67%, transparent 41.67%, transparent 50%, ${state.color} 50%, ${state.color} 91.67%, transparent 91.67%, transparent 100%); background-size: 8.49px 8.49px;`
+						? `background-image: linear-gradient(135deg, ${state.color} 41.67%, transparent 41.67%, transparent 50%, ${state.color} 50%, ${state.color} 91.67%, transparent 91.67%, transparent 100%); background-size: 8.49px 8.49px;`
 						: `background: ${state.color};`
 				];
 				if (opts.width) styleStack.push(`width: ${opts.width}px;`);

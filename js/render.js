@@ -3297,28 +3297,29 @@ Renderer.item = {
 			damage = "AC " + item.ac + (type === "LA" ? " + Dex" : type === "MA" ? " + Dex (max 2)" : "");
 		} else if (type === "S") {
 			damage = "AC +" + item.ac;
-		} else if (type === "MNT" || type === "VEH" || type === "SHP" || type === "AIR") {
-			const speed = item.speed;
-			const capacity = item.carryingCapacity;
-			if (speed) damage += "Speed: " + speed;
-			if (speed && capacity) damage += type === "MNT" ? ", " : "<br>";
-			if (capacity) {
-				damage += "Carrying Capacity: " + capacity;
-				if (capacity.indexOf("ton") === -1 && capacity.indexOf("passenger") === -1) damage += Number(capacity) === 1 ? " lb." : " lbs.";
-			}
-			if (type === "SHP" || type === "AIR") {
-				// These may not be present in homebrew
-				const vehParts = [
-					item.crew ? `Crew ${item.crew}` : null,
-					item.vehAc ? `AC ${item.vehAc}` : null,
-					item.vehHp ? `HP ${item.vehHp}${item.vehDmgThresh ? `, Damage Threshold ${item.vehDmgThresh}` : ""}` : null
-				].filter(Boolean);
-				if (vehParts) damage += `<br>${vehParts.join(", ")}`;
-			}
+		} else if (type === "MNT") {
+			const mntParts = [
+				item.speed ? `Speed: ${item.speed}` : null,
+				item.carryingCapacity ? `Carrying Capacity: ${item.carryingCapacity} lb.` : null
+			].filter(Boolean);
+			if (mntParts.length) damage += mntParts.join(", ");
+		} else if (type === "SHP" || type === "AIR") {
+			const vehPartUpper = item.vehSpeed ? `Speed: ${Parser.numberToVulgar(item.vehSpeed)} mph` : null;
+
+			const vehPartMiddle = item.capCargo || item.capPassenger ? `Carrying Capacity: ${[item.capCargo ? `${Parser.numberToFractional(item.capCargo)} ton${item.capCargo === 0 || item.capCargo > 1 ? "s" : ""} cargo` : null, item.capPassenger ? `${item.capPassenger} passenger${item.capPassenger === 1 ? "" : "s"}` : null].filter(Boolean).join(", ")}` : null;
+
+			// These may not be present in homebrew
+			const vehPartLower = [
+				item.crew ? `Crew ${item.crew}` : null,
+				item.vehAc ? `AC ${item.vehAc}` : null,
+				item.vehHp ? `HP ${item.vehHp}${item.vehDmgThresh ? `, Damage Threshold ${item.vehDmgThresh}` : ""}` : null
+			].filter(Boolean).join(", ");
+
+			damage += [vehPartUpper, vehPartMiddle, vehPartLower].filter(Boolean).join("<br>");
 		}
 
 		function sortProperties (a, b) {
-			return SortUtil.ascSort(Renderer.item._propertyMap[a].name, Renderer.item._propertyMap[b].name)
+			return SortUtil.ascSort(Renderer.item.propertyMap[a].name, Renderer.item.propertyMap[b].name)
 		}
 
 		let propertiesTxt = "";
@@ -3326,10 +3327,10 @@ Renderer.item = {
 			const properties = item.property.sort(sortProperties);
 			for (let i = 0; i < properties.length; ++i) {
 				const prop = properties[i];
-				let a = Renderer.item._propertyMap[prop].name;
+				let a = Renderer.item.propertyMap[prop].name;
 				if (prop === "V") a = `${a} (${Renderer.get().render(item.dmg2)})`;
-				if (prop === "T" || prop === "A" || prop === "AF") a = `${a} (${item.range} ft.)`;
-				if (prop === "RLD") a = `${a} (${item.reload} shots)`;
+				if (prop === "T" || prop === "A" || prop === "AF") a = `${a} (${item.range || "?"} ft.)`;
+				if (prop === "RLD") a = `${a} (${item.reload || "?"} shots)`;
 				a = (i > 0 ? ", " : item.dmg1 ? "- " : "") + a;
 				propertiesTxt += a;
 			}
@@ -3343,67 +3344,108 @@ Renderer.item = {
 
 	getTypeRarityAndAttunementText (item) {
 		const typeRarity = [
-			item.typeText === "Other" ? "" : item.typeText.trim(),
+			item._typeHtml === "Other" ? "" : item._typeHtml,
 			[item.tier, (item.rarity && Renderer.item.doRenderRarity(item.rarity) ? item.rarity : "")].map(it => (it || "").trim()).filter(it => it).join(", ")
 		].filter(Boolean).join(", ");
-		return item.reqAttune ? `${typeRarity} ${item.reqAttune}` : typeRarity
+		return item.reqAttune ? `${typeRarity} ${item._attunement}` : typeRarity
 	},
 
-	getRenderedEntries (item) {
+	getAttunementAndAttunementCatText (item) {
+		let attunement = null;
+		let attunementCat = "No";
+		if (item.reqAttune != null) {
+			if (item.reqAttune === true) {
+				attunementCat = "Yes";
+				attunement = "(Requires Attunement)"
+			} else if (item.reqAttune === "OPTIONAL") {
+				attunementCat = "Optional";
+				attunement = "(Attunement Optional)"
+			} else if (item.reqAttune.toLowerCase().startsWith("by")) {
+				attunementCat = "By...";
+				attunement = "(Requires Attunement " + item.reqAttune + ")";
+			} else {
+				attunementCat = "Yes"; // throw any weird ones in the "Yes" category (e.g. "outdoors at night")
+				attunement = "(Requires Attunement " + item.reqAttune + ")";
+			}
+		}
+		return [attunement, attunementCat]
+	},
+
+	getHtmlAndTextTypes (item) {
+		const typeListHtml = [];
+		const typeListText = [];
+		let showingBase = false;
+		if (item.wondrous) {
+			typeListHtml.push("Wondrous Item");
+			typeListText.push("Wondrous Item");
+		}
+		if (item.staff) {
+			typeListHtml.push("Staff");
+			typeListText.push("Staff");
+		}
+		if (item.firearm) {
+			typeListHtml.push("Firearm");
+			typeListText.push("Firearm");
+		}
+		if (item.age) {
+			typeListHtml.push(item.age);
+			typeListText.push(item.age);
+		}
+		if (item.weaponCategory) {
+			typeListHtml.push(`${item.weaponCategory} Weapon${item.baseItem ? ` (${Renderer.get().render(`{@item ${item.baseItem}`)})` : ""}`);
+			typeListText.push(`${item.weaponCategory} Weapon`);
+			showingBase = true;
+		}
+		if (item.staff && item.type !== "M") { // DMG p140: "Unless a staff's description says otherwise, a staff can be used as a quarterstaff."
+			typeListHtml.push("Melee Weapon");
+			typeListText.push("Melee Weapon");
+		}
+		if (item.type) {
+			const abv = Parser.itemTypeToFull(item.type);
+			if (!showingBase && !!item.baseItem) typeListHtml.push(`${abv} (${Renderer.get().render(`{@item ${item.baseItem}`)})`);
+			else typeListHtml.push(abv);
+			typeListText.push(abv);
+		}
+		if (item.poison) {
+			typeListHtml.push("Poison");
+			typeListText.push("Poison");
+		}
+		return [typeListText, typeListHtml.join(", ")];
+	},
+
+	getRenderedEntries (item, isCompact) {
 		const renderer = Renderer.get();
 
 		const renderStack = [];
-		if (item.entries && item.entries.length) {
-			const entryList = {type: "entries", entries: item.entries};
+		if (item._fullEntries || (item.entries && item.entries.length)) {
+			const entryList = {type: "entries", entries: item._fullEntries || item.entries};
 			renderer.recursiveRender(entryList, renderStack, {depth: 1});
 		}
 
-		if (item.additionalEntries) {
-			const additionEntriesList = {type: "entries", entries: item.additionalEntries};
+		if (item._fullAdditionalEntries || item.additionalEntries) {
+			const additionEntriesList = {type: "entries", entries: item._fullAdditionalEntries || item.additionalEntries};
 			renderer.recursiveRender(additionEntriesList, renderStack, {depth: 1});
 		}
 
-		if (item.lootTables) {
+		if (!isCompact && item.lootTables) {
 			renderStack.push(`<div><span class="bold">Found On: </span>${item.lootTables.sort(SortUtil.ascSortLower).map(tbl => renderer.render(`{@table ${tbl}}`)).join(", ")}</div>`);
 		}
 
-		const renderedText = renderStack.join("")
-			.split(item.name.toLowerCase())
-			.join(`<i>${item.name.toLowerCase()}</i>`)
-			.split(item.name.toLowerCase().toTitleCase())
-			.join(`<i>${item.name.toLowerCase().toTitleCase()}</i>`);
-
-		return renderedText.trim();
+		return renderStack.join("").trim()
+			.replace(new RegExp(`(${item.name.toLowerCase().escapeRegexp()}s?)`, "gi"), `<i>$1</i>`);
 	},
 
 	getCompactRenderedString (item) {
-		const renderer = Renderer.get();
-
-		const renderStack = [];
-
-		renderStack.push(Renderer.utils.getNameTr(item, {isAddPageNum: true}));
-
-		renderStack.push(`<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td>`);
-
 		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item);
-		renderStack.push(`<tr>
+		const hasEntries = (item._fullEntries && item._fullEntries.length) || (item.entries && item.entries.length);
+
+		return `${Renderer.utils.getNameTr(item, {isAddPageNum: true})}
+		<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td></tr>
+		<tr>
 			<td colspan="2">${[Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
 			<td class="text-right" colspan="4">${damage} ${damageType} ${propertiesTxt}</td>
-		</tr>`);
-
-		if (item.entries && item.entries.length) {
-			renderStack.push(Renderer.utils.getDividerTr());
-			renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
-			const entryList = {type: "entries", entries: item.entries};
-			renderer.recursiveRender(entryList, renderStack, {depth: 1});
-			if (item.additionalEntries) {
-				const additionEntriesList = {type: "entries", entries: item.additionalEntries};
-				renderer.recursiveRender(additionEntriesList, renderStack, {depth: 1});
-			}
-			renderStack.push(`</td></tr>`);
-		}
-
-		return renderStack.join("");
+		</tr>
+		${hasEntries ? `${Renderer.utils.getDividerTr()}<tr class="text"><td colspan="6" class="text">${Renderer.item.getRenderedEntries(item, true)}</td></tr>` : ""}`;
 	},
 
 	_hiddenRarity: new Set(["None", "Unknown", "Unknown (Magic)", "Varies"]),
@@ -3412,19 +3454,19 @@ Renderer.item = {
 	},
 
 	_builtLists: {},
-	_propertyMap: {},
-	_typeMap: {},
+	propertyMap: {},
+	typeMap: {},
 	_additionalEntriesMap: {},
 	_addProperty (p) {
-		if (Renderer.item._propertyMap[p.abbreviation]) return;
-		Renderer.item._propertyMap[p.abbreviation] = p.name ? MiscUtil.copy(p) : {
+		if (Renderer.item.propertyMap[p.abbreviation]) return;
+		Renderer.item.propertyMap[p.abbreviation] = p.name ? MiscUtil.copy(p) : {
 			"name": p.entries[0].name.toLowerCase(),
 			"entries": p.entries
 		};
 	},
 	_addType (t) {
-		if (Renderer.item._typeMap[t.abbreviation]) return;
-		Renderer.item._typeMap[t.abbreviation] = t.name ? MiscUtil.copy(t) : {
+		if (Renderer.item.typeMap[t.abbreviation]) return;
+		Renderer.item.typeMap[t.abbreviation] = t.name ? MiscUtil.copy(t) : {
 			"name": t.entries[0].name.toLowerCase(),
 			"entries": t.entries
 		};
@@ -3519,9 +3561,17 @@ Renderer.item = {
 		return [variantData.variant, variantData.linkedLootTables];
 	},
 
+	_initFullEntries (item) {
+		item._fullEntries = item._fullEntries || (item.entries ? MiscUtil.copy(item.entries) : []);
+	},
+
+	_initFullAdditionalEntries (item) {
+		item._fullAdditionalEntries = item._fullAdditionalEntries || (item.additionalEntries ? MiscUtil.copy(item.additionalEntries) : []);
+	},
+
 	_createSpecificVariants (baseItems, genericVariants, linkedLootTables) {
-		function isMissingRequiredProperty (baseItem, genericVariant) {
-			return !~genericVariant.requires.findIndex(req => !~Object.keys(req).findIndex(reqK => baseItem[reqK] !== req[reqK]));
+		function hasRequiredProperty (baseItem, genericVariant) {
+			return genericVariant.requires.some(req => Object.entries(req).every(([k, v]) => baseItem[k] === v));
 		}
 
 		function hasExcludedProperty (baseItem, genericVariant) {
@@ -3537,19 +3587,23 @@ Renderer.item = {
 		function createSpecificVariant (baseItem, genericVariant) {
 			const inherits = genericVariant.inherits;
 			const specificVariant = MiscUtil.copy(baseItem);
-			if (baseItem.source !== SRC_PHB && baseItem.source !== SRC_DMG) specificVariant.entries.unshift(`{@note The base item can be found in ${Parser.sourceJsonToFull(baseItem.source)}.}`);
+			if (baseItem.source !== SRC_PHB && baseItem.source !== SRC_DMG) {
+				Renderer.item._initFullEntries(specificVariant);
+				specificVariant._fullEntries.unshift(`{@note The base item can be found in ${Parser.sourceJsonToFull(baseItem.source)}.}`);
+			}
 			delete specificVariant.value; // Magic items do not inherit the value of the non-magical item
-			specificVariant.category = "Specific Variant";
+			specificVariant._category = "Specific Variant";
 			Object.keys(inherits).forEach((inheritedProperty) => {
 				switch (inheritedProperty) {
 					case "namePrefix": specificVariant.name = `${inherits.namePrefix}${specificVariant.name}`; break;
 					case "nameSuffix": specificVariant.name = `${specificVariant.name}${inherits.nameSuffix}`; break;
 					case "entries": {
+						Renderer.item._initFullEntries(specificVariant);
 						inherits.entries.forEach((ent, i) => {
 							if (typeof ent === "string") {
 								ent = Renderer.applyProperties(ent, Renderer.item._getInjectableProps(baseItem, inherits));
 							}
-							specificVariant.entries.splice(i, 0, ent);
+							specificVariant._fullEntries.splice(i, 0, ent);
 						});
 						break;
 					}
@@ -3577,13 +3631,13 @@ Renderer.item = {
 
 		const genericAndSpecificVariants = [...genericVariants];
 		baseItems.forEach((curBaseItem) => {
-			curBaseItem.category = "Basic";
+			curBaseItem._category = "Basic";
 			if (curBaseItem.entries == null) curBaseItem.entries = [];
 
 			if (curBaseItem.quantity) return; // e.g. "Arrows (20)"
 
 			genericVariants.forEach((curGenericVariant) => {
-				if (isMissingRequiredProperty(curBaseItem, curGenericVariant)) return;
+				if (!hasRequiredProperty(curBaseItem, curGenericVariant)) return;
 				if (hasExcludedProperty(curBaseItem, curGenericVariant)) return;
 
 				genericAndSpecificVariants.push(createSpecificVariant(curBaseItem, curGenericVariant));
@@ -3643,53 +3697,84 @@ Renderer.item = {
 		if (genericVariant.requires.armor) genericVariant.armor = genericVariant.requires.armor;
 	},
 
-	_priceRe: /^(\d+)(\w+)$/,
 	enhanceItem (item) {
 		if (item._isEnhanced) return;
 		item._isEnhanced = true;
 		if (item.noDisplay) return;
-		if (item.type === "GV") item.category = "Generic Variant";
-		if (item.category == null) item.category = "Other";
+		if (item.type === "GV") item._category = "Generic Variant";
+		if (item._category == null) item._category = "Other";
 		if (item.entries == null) item.entries = [];
-		if (item.type && Renderer.item._typeMap[item.type]) Renderer.item._typeMap[item.type].entries.forEach(e => !(item.type === "A" && item.ammunition) && item.entries.push(e));
+		if (item.type && Renderer.item.typeMap[item.type]) {
+			Renderer.item._initFullEntries(item);
+			Renderer.item.typeMap[item.type].entries.forEach(e => item._fullEntries.push(e));
+		}
 		if (item.property) {
 			item.property.forEach(p => {
-				if (!Renderer.item._propertyMap[p]) throw new Error(`Item property ${p} not found. You probably meant to load the property/type reference first; see \`Renderer.item.populatePropertyAndTypeReference()\`.`);
-				if (Renderer.item._propertyMap[p].entries) {
-					Renderer.item._propertyMap[p].entries.forEach(e => {
-						item.entries.push(e);
-					})
+				if (!Renderer.item.propertyMap[p]) throw new Error(`Item property ${p} not found. You probably meant to load the property/type reference first; see \`Renderer.item.populatePropertyAndTypeReference()\`.`);
+				if (Renderer.item.propertyMap[p].entries) {
+					Renderer.item._initFullEntries(item);
+					Renderer.item.propertyMap[p].entries.forEach(e => item._fullEntries.push(e));
 				}
 			});
 		}
 		// The following could be encoded in JSON, but they depend on more than one JSON property; maybe fix if really bored later
-		if (item.armor) {
-			if (item.resist) item.entries.push(`You have resistance to ${item.resist} damage while you wear this armor.`);
-			if (item.armor && item.stealth) item.entries.push("The wearer has disadvantage on Stealth (Dexterity) checks.");
-			if (item.type === "HA" && item.strength) item.entries.push(`If the wearer has a Strength score lower than ${item.strength}, their speed is reduced by 10 feet.`);
+		if (item.type === "LA" || item.type === "MA" || item.type === "HA") {
+			if (item.resist) {
+				Renderer.item._initFullEntries(item);
+				item._fullEntries.push(`You have resistance to ${item.resist} damage while you wear this armor.`);
+			}
+			if (item.stealth) {
+				Renderer.item._initFullEntries(item);
+				item._fullEntries.push("The wearer has disadvantage on Stealth (Dexterity) checks.");
+			}
+			if (item.type === "HA" && item.strength) {
+				Renderer.item._initFullEntries(item);
+				item._fullEntries.push(`If the wearer has a Strength score lower than ${item.strength}, their speed is reduced by 10 feet.`);
+			}
 		} else if (item.resist) {
-			if (item.type === "P") item.entries.push(`When you drink this potion, you gain resistance to ${item.resist} damage for 1 hour.`);
-			if (item.type === "RG") item.entries.push(`You have resistance to ${item.resist} damage while wearing this ring.`);
+			if (item.type === "P") {
+				Renderer.item._initFullEntries(item);
+				item._fullEntries.push(`When you drink this potion, you gain resistance to ${item.resist} damage for 1 hour.`);
+			}
+			if (item.type === "RG") {
+				Renderer.item._initFullEntries(item);
+				item._fullEntries.push(`You have resistance to ${item.resist} damage while wearing this ring.`);
+			}
 		}
 		if (item.type === "SCF") {
 			if (item._isItemGroup) {
-				if (item.scfType === "arcane") item.entries.push("An arcane focus is a special item\u2014an orb, a crystal, a rod, a specially constructed staff, a wand-like length of wood, or some similar item\u2014designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus.");
-				if (item.scfType === "druid") item.entries.push("A druidic focus might be a sprig of mistletoe or holly, a wand or scepter made of yew or another special wood, a staff drawn whole out of a living tree, or a totem object incorporating feathers, fur, bones, and teeth from sacred animals. A druid can use such an object as a spellcasting focus.");
+				if (item.scfType === "arcane") {
+					Renderer.item._initFullEntries(item);
+					item._fullEntries.push("An arcane focus is a special item\u2014an orb, a crystal, a rod, a specially constructed staff, a wand-like length of wood, or some similar item\u2014designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus.");
+				}
+				if (item.scfType === "druid") {
+					Renderer.item._initFullEntries(item);
+					item._fullEntries.push("A druidic focus might be a sprig of mistletoe or holly, a wand or scepter made of yew or another special wood, a staff drawn whole out of a living tree, or a totem object incorporating feathers, fur, bones, and teeth from sacred animals. A druid can use such an object as a spellcasting focus.");
+				}
 				if (item.scfType === "holy") {
-					item.entries.push("A holy symbol is a representation of a god or pantheon. It might be an amulet depicting a symbol representing a deity, the same symbol carefully engraved or inlaid as an emblem on a shield, or a tiny box holding a fragment of a sacred relic. A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
+					Renderer.item._initFullEntries(item);
+					item._fullEntries.push("A holy symbol is a representation of a god or pantheon. It might be an amulet depicting a symbol representing a deity, the same symbol carefully engraved or inlaid as an emblem on a shield, or a tiny box holding a fragment of a sacred relic. A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
 				}
 			} else {
-				if (item.scfType === "arcane") item.entries.push("An arcane focus is a special item designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus.");
-				if (item.scfType === "druid") item.entries.push("A druid can use this object as a spellcasting focus.");
+				if (item.scfType === "arcane") {
+					Renderer.item._initFullEntries(item);
+					item._fullEntries.push("An arcane focus is a special item designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus.");
+				}
+				if (item.scfType === "druid") {
+					Renderer.item._initFullEntries(item);
+					item._fullEntries.push("A druid can use this object as a spellcasting focus.");
+				}
 				if (item.scfType === "holy") {
-					item.entries.push("A holy symbol is a representation of a god or pantheon.");
-					item.entries.push("A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
+					Renderer.item._initFullEntries(item);
+					item._fullEntries.push("A holy symbol is a representation of a god or pantheon.");
+					item._fullEntries.push("A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
 				}
 			}
 		}
 		// add additional entries based on type (e.g. XGE variants)
 		if (item.type === "T" || item.type === "AT" || item.type === "INS" || item.type === "GS") { // tools, artisan tools, instruments, gaming sets
-			(item.additionalEntries = item.additionalEntries || []).push({type: "hr"}, `{@note See the {@5etools Tool Proficiencies|variantrules.html|${UrlUtil.encodeForHash(["Tool Proficiencies", "XGE"])}} entry on the Variant and Optional rules page for more information.}`);
+			Renderer.item._initFullAdditionalEntries(item);
+			item._fullAdditionalEntries.push({type: "hr"}, `{@note See the {@5etools Tool Proficiencies|variantrules.html|${UrlUtil.encodeForHash(["Tool Proficiencies", "XGE"])}} entry on the Variant and Optional rules page for more information.}`);
 		}
 
 		// Add additional sources for all instruments and gaming sets
@@ -3701,80 +3786,25 @@ Renderer.item = {
 		}
 
 		if (item.type && Renderer.item._additionalEntriesMap[item.type]) {
+			Renderer.item._initFullAdditionalEntries(item);
 			const additional = Renderer.item._additionalEntriesMap[item.type];
-			(item.additionalEntries = item.additionalEntries || []).push({type: "entries", entries: additional});
+			item._fullAdditionalEntries.push({type: "entries", entries: additional});
 		}
 
 		// bake in types
-		const type = [];
-		const filterType = [];
-		const typeListText = [];
-		let showingBase = false;
-		if (item.wondrous) {
-			type.push("Wondrous Item");
-			filterType.push("Wondrous Item");
-			typeListText.push("Wondrous Item");
-		}
-		if (item.staff) {
-			type.push("Staff");
-			filterType.push("Staff");
-			typeListText.push("Staff");
-		}
-		if (item.firearm) {
-			type.push("Firearm");
-			filterType.push("Firearm");
-			typeListText.push("Firearm");
-		}
-		if (item.age) {
-			type.push(item.age);
-			filterType.push(item.age);
-			typeListText.push(item.age);
-		}
-		if (item.weaponCategory) {
-			type.push(`${item.weaponCategory} Weapon${item.baseItem ? ` (${Renderer.get().render(`{@item ${item.baseItem}`)})` : ""}`);
-			filterType.push(`${item.weaponCategory} Weapon`);
-			typeListText.push(`${item.weaponCategory} Weapon`);
-			showingBase = true;
-		}
-		if (item.type) {
-			const abv = Parser.itemTypeToAbv(item.type);
-			if (!showingBase && !!item.baseItem) {
-				type.push(`${abv} (${Renderer.get().render(`{@item ${item.baseItem}`)})`);
-			} else type.push(abv);
-			filterType.push(abv);
-			typeListText.push(abv);
-		}
-		if (item.poison) {
-			type.push("Poison");
-			filterType.push("Poison");
-			typeListText.push("Poison");
-		}
-		item.procType = filterType;
-		item.typeText = type.join(", ");
-		item.typeListText = typeListText.join(", ");
+		const [typeListText, typeHtml] = Renderer.item.getHtmlAndTextTypes(item);
+		item._typeListText = typeListText;
+		item._typeHtml = typeHtml;
 
 		// bake in attunement
-		let attunement = "No";
-		if (item.reqAttune != null) {
-			if (item.reqAttune === true) {
-				attunement = "Yes";
-				item.reqAttune = "(Requires Attunement)"
-			} else if (item.reqAttune === "OPTIONAL") {
-				attunement = "Optional";
-				item.reqAttune = "(Attunement Optional)"
-			} else if (item.reqAttune.toLowerCase().startsWith("by")) {
-				attunement = "By...";
-				item.reqAttune = "(Requires Attunement " + item.reqAttune + ")";
-			} else {
-				attunement = "Yes"; // throw any weird ones in the "Yes" category (e.g. "outdoors at night")
-				item.reqAttune = "(Requires Attunement " + item.reqAttune + ")";
-			}
-		}
-		item.attunementCategory = attunement;
+		const [attune, attuneCat] = Renderer.item.getAttunementAndAttunementCatText(item);
+		item._attunement = attune;
+		item._attunementCategory = attuneCat;
 
 		// handle item groups
 		if (item._isItemGroup) {
-			item.entries.push(
+			Renderer.item._initFullEntries(item);
+			item._fullEntries.push(
 				"Multiple variants of this item exist, as listed below:",
 				{
 					type: "list",
@@ -3783,34 +3813,23 @@ Renderer.item = {
 			);
 		}
 
-		// format price nicely
-		// 5 characters because e.g. XXXgp is fine
-		if (item.value && item.value.length > 5) {
-			const m = Renderer.item._priceRe.exec(item.value);
-			if (m) {
-				item.value = `${Number(m[1]).toLocaleString()}${m[2]}`;
-			}
-		}
-
 		(function addBaseItemList (item) {
 			// item.variants was added during generic variant creation
 			// TAG ITEM_VARIANTS
-			const variants = item.variants;
-
 			function createItemLink (item) {
 				return `{@item ${item.name}|${item.source}}`;
 			}
 
-			if (variants && variants.length) {
-				const entries = item.entries;
-				entries.push({
+			if (item.variants && item.variants.length) {
+				Renderer.item._initFullEntries(item);
+				item._fullEntries.push({
 					type: "entries",
 					name: "Base items",
 					entries: [
 						"This item variant can be applied to the following base items:",
 						{
 							type: "list",
-							items: variants.map(({base, specificVariant}) => {
+							items: item.variants.map(({base, specificVariant}) => {
 								return `${createItemLink(base)} (${createItemLink(specificVariant)})`
 							})
 						}
@@ -3954,7 +3973,7 @@ Renderer.psionic = {
 	},
 
 	getFocusString: (psionic, renderer) => {
-		return `<p><span class='psi-focus-title'>Psychic Focus.</span> ${renderer.render({type: "inline", entries: [psionic.focus]})}</p>`;
+		return `<p><span class="psi-focus-title">Psychic Focus.</span> ${renderer.render({type: "inline", entries: [psionic.focus]})}</p>`;
 	},
 
 	getModeString: (psionic, renderer, modeIndex) => {

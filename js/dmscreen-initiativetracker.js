@@ -1102,7 +1102,7 @@ class InitiativeTracker {
 			$(`<button class="btn btn-warning btn-xs dm-init-row-btn dm-init-row-btn-flag" title="Add Condition" tabindex="-1"><span class="glyphicon glyphicon-flag"/></button>`)
 				.appendTo($wrpConds)
 				.on("click", () => {
-					const {$modalInner} = UiUtil.getShowModal({noMinHeight: true});
+					const {$modalInner, doClose} = UiUtil.getShowModal({noMinHeight: true});
 
 					const $wrpRows = $(`<div class="dm-init-modal-wrp-rows"/>`).appendTo($modalInner);
 
@@ -1146,7 +1146,7 @@ class InitiativeTracker {
 					const $btnAdd = $(`<button class="btn btn-primary">Set Condition</button>`)
 						.click(() => {
 							addCondition($iptName.val().trim(), $iptColor.val(), $iptTurns.val());
-							$wrpModal.remove();
+							doClose();
 						})
 						.appendTo($wrpAddInner);
 				});

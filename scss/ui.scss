@@ -155,7 +155,7 @@ Shared UI components
 		}
 
 		&[data-state='3'] {
-			background: repeating-linear-gradient(45deg, #555, #555 10px, white 10px, white 20px);
+			background: repeating-linear-gradient(135deg, #555, #555 10px, white 10px, white 20px);
 			border-color: #555;
 		}
 	}
@@ -272,11 +272,71 @@ Shared UI components
 	z-index: $z-context-menu;
 }
 
+/* Picker */
+.ui-pick {
+	&__ {
+		&wrp {
+			padding: 2px 0;
+		}
+
+		&btn-add {
+			font-weight: bold;
+			padding: 1px 2px;
+			// Even line heights look good on Chrome; precisely 8px looks good on Firefox.
+			line-height: 8px;
+			font-size: 18px;
+			display: flex;
+			height: 16px;
+
+			&--sub {
+				line-height: 11px;
+				height: 14px;
+				font-size: 16px;
+				border-radius: 0;
+				padding: 0 1px;
+				font-weight: bold;
+			}
+		}
+
+		&btn-remove {
+			width: 8px;
+			line-height: 20px;
+			padding: 0;
+			border-radius: 0;
+			font-size: 12px;
+			flex-shrink: 0;
+			flex-grow: 0;
+			cursor: pointer;
+			font-style: initial;
+			text-indent: -1px;
+
+			&--sub {
+				height: 18px;
+				line-height: 16px;
+			}
+		}
+
+		&pill {
+			align-items: stretch;
+		}
+
+		&disp-text {
+			border: 1px solid $rgb-border-grey;
+		}
+	}
+}
+
 /* Fontawesome Icons */
 .fa {
 	&--btn-sm {
 		position: relative;
 		top: 1px;
 		font-size: 15px;
+	}
+
+	&--btn-xs {
+		position: relative;
+		top: 1px;
+		font-size: 12px;
 	}
 }

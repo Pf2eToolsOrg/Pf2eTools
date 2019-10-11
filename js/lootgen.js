@@ -348,14 +348,13 @@ class LootGen {
 
 	static generateCoinsFromLoot (loot) {
 		const retVal = [];
-		const coins = [loot.cp, loot.sp, loot.ep, loot.gp, loot.pp];
-		const coinnames = ["cp", "sp", "ep", "gp", "pp"];
+		const coins = Parser.COIN_ABVS.map(coin => loot[coin]);
 		for (let i = coins.length - 1; i >= 0; i--) {
 			if (!coins[i]) continue;
 			const multiplier = coins[i].split("*")[1];
 			let rolledValue = Renderer.dice.parseRandomise2(coins[i].split("*")[0]);
 			if (multiplier) rolledValue *= parseInt(multiplier);
-			const coin = {"denomination": coinnames[i], "value": rolledValue};
+			const coin = {"denomination": Parser.COIN_ABVS[i], "value": rolledValue};
 			retVal.push(coin);
 		}
 		return retVal;
