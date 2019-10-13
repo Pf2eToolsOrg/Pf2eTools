@@ -562,7 +562,7 @@ class FilterBase extends BaseComponent {
 	getBaseSaveableState () { return {meta: {...this.__meta}}; }
 
 	resetBase () {
-		Object.assign(this._meta, MiscUtil.copy(FilterBase._DEFAULT_META));
+		Object.assign(this._meta, MiscUtil.copy(this.getDefaultMeta()));
 	}
 
 	getMetaSubHashes () {
@@ -1004,7 +1004,7 @@ class Filter extends FilterBase {
 		this._items.forEach(it => this._defaultItemState(it));
 	}
 
-	resetShallow (isResetAll) { return this.reset(); }
+	resetShallow () { return this.reset(); }
 
 	_doRenderPills () {
 		if (this._itemSortFn) this._items.sort(this._itemSortFn);

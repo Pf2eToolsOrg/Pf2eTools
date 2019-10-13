@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.83.3"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.83.4"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -679,7 +679,7 @@ Parser._ITEM_PRICE_CONVERSION_TABLE = [
 	},
 	{
 		coin: "sp",
-		mult: 0.2
+		mult: 0.1
 	},
 	{
 		coin: "gp",
@@ -2516,27 +2516,39 @@ JqueryUtil = {
 		 * Usage: $$`<div>Press this button: ${$btn}</div>`
 		 */
 		window.$$ = function (parts, ...args) {
-			const $eles = [];
-			let ixArg = 0;
+			if (parts instanceof jQuery) {
+				return (...passed) => {
+					const parts2 = [...passed[0]];
+					const args2 = passed.slice(1);
+					parts2[0] = `<div>${parts2[0]}`;
+					parts2.last(`${parts2.last()}</div>`);
 
-			const handleArg = (arg) => {
-				if (arg instanceof $) {
-					$eles.push(arg);
-					return `<${arg.tag()} data-r=true></${arg.tag()}>`;
-				} else if (arg instanceof HTMLElement) {
-					return handleArg($(arg));
-				} else return arg
-			};
+					const $temp = $$(parts2, ...args2);
+					$temp.children().each((i, e) => $(e).appendTo(parts));
+				};
+			} else {
+				const $eles = [];
+				let ixArg = 0;
 
-			const raw = parts.reduce((html, p) => {
-				const myIxArg = ixArg++;
-				if (args[myIxArg] == null) return `${html}${p}`;
-				if (args[myIxArg] instanceof Array) return `${html}${args[myIxArg].map(arg => handleArg(arg)).join("")}${p}`;
-				else return `${html}${handleArg(args[myIxArg])}${p}`;
-			});
-			const $res = $(raw);
-			$res.find(`[data-r=true]`).replaceWith(i => $eles[i]);
-			return $res;
+				const handleArg = (arg) => {
+					if (arg instanceof $) {
+						$eles.push(arg);
+						return `<${arg.tag()} data-r="true"/>`;
+					} else if (arg instanceof HTMLElement) {
+						return handleArg($(arg));
+					} else return arg
+				};
+
+				const raw = parts.reduce((html, p) => {
+					const myIxArg = ixArg++;
+					if (args[myIxArg] == null) return `${html}${p}`;
+					if (args[myIxArg] instanceof Array) return `${html}${args[myIxArg].map(arg => handleArg(arg)).join("")}${p}`;
+					else return `${html}${handleArg(args[myIxArg])}${p}`;
+				});
+				const $res = $(raw);
+				$res.find(`[data-r=true]`).replaceWith(i => $eles[i]);
+				return $res;
+			}
 		};
 
 		$.fn.extend({
@@ -2783,6 +2795,31 @@ MiscUtil = {
 			case 5: r = 1; g = 0; b = q; break;
 		}
 		return `#${("00" + (~~(r * 255)).toString(16)).slice(-2)}${("00" + (~~(g * 255)).toString(16)).slice(-2)}${("00" + (~~(b * 255)).toString(16)).slice(-2)}`;
+	},
+
+	/**
+	 * @param hex Original hex color.
+	 * @param [opts] Options object.
+	 * @param [opts.bw] True if the color should be returnes as black/white depending on contrast ratio.
+	 * @param [opts.dark] Color to return if a "dark" color would contrast best.
+	 * @param [opts.light] Color to return if a "light" color would contrast best.
+	 */
+	invertColor (hex, opts) {
+		opts = opts || {};
+
+		hex = hex.slice(1); // remove #
+
+		let r = parseInt(hex.slice(0, 2), 16);
+		let g = parseInt(hex.slice(2, 4), 16);
+		let b = parseInt(hex.slice(4, 6), 16);
+
+		// http://stackoverflow.com/a/3943023/112731
+		const isDark = (r * 0.299 + g * 0.587 + b * 0.114) > 186;
+		if (opts.dark && opts.light) return isDark ? opts.dark : opts.light;
+		else if (opts.bw) return isDark ? "#000000" : "#FFFFFF";
+
+		r = (255 - r).toString(16); g = (255 - g).toString(16); b = (255 - b).toString(16);
+		return `#${[r, g, b].map(it => it.padStart(2, "0")).join("")}`;
 	},
 
 	scrollPageTop () {
@@ -4479,49 +4516,66 @@ SortUtil = {
 
 // JSON LOADING ========================================================================================================
 DataUtil = {
+	_loading: {},
 	_loaded: {},
+	_merging: {},
+	_merged: {},
 
-	async loadJSON (url, ...otherData) { // FIXME otherData doesn't get returned, as resolve() can only return a single value
-		const procUrl = UrlUtil.link(url);
-
-		if (DataUtil._loaded[url]) {
-			return DataUtil._loaded[url] // , otherData
+	async _pLoad (url) {
+		if (DataUtil._loading[url]) {
+			await DataUtil._loading[url];
+			return DataUtil._loaded[url];
 		}
 
-		const data = await new Promise((resolve, reject) => {
-			function getRequest (toUrl) {
-				const request = new XMLHttpRequest();
-				request.open("GET", toUrl, true);
-				request.overrideMimeType("application/json");
-				request.onload = function () {
-					try {
-						const data = JSON.parse(this.response);
-						DataUtil._loaded[toUrl] = data;
-						resolve(data, otherData);
-					} catch (e) {
-						reject(new Error(`Could not parse JSON from ${toUrl}: ${e.message}`));
-					}
-				};
-				request.onerror = (e) => reject(new Error(`Error during JSON request: ${e.target.status}`));
-				return request;
-			}
-
-			const request = getRequest(procUrl);
-			if (procUrl !== url) {
-				request.onerror = function () {
-					const fallbackRequest = getRequest(url);
-					fallbackRequest.send();
-				};
-			}
+		DataUtil._loading[url] = new Promise((resolve, reject) => {
+			const request = new XMLHttpRequest();
+			request.open("GET", url, true);
+			request.overrideMimeType("application/json");
+			request.onload = function () {
+				try {
+					DataUtil._loaded[url] = JSON.parse(this.response);
+					resolve();
+				} catch (e) {
+					reject(new Error(`Could not parse JSON from ${url}: ${e.message}`));
+				}
+			};
+			request.onerror = (e) => reject(new Error(`Error during JSON request: ${e.target.status}`));
 			request.send();
 		});
 
-		await DataUtil.pDoMetaMerge(data);
+		await DataUtil._loading[url];
+		return DataUtil._loaded[url];
+	},
+
+	async loadJSON (url, ...otherData) {
+		const procUrl = UrlUtil.link(url);
+
+		let ident = procUrl;
+		let data;
+		try {
+			data = await DataUtil._pLoad(procUrl);
+		} catch (e) {
+			setTimeout(() => { throw e; })
+		}
+
+		// Fallback to the un-processed URL
+		if (!data) {
+			ident = url;
+			data = await DataUtil._pLoad(url);
+		}
+
+		await DataUtil.pDoMetaMerge(ident, data);
 
 		return data;
 	},
 
-	async pDoMetaMerge (data, options) {
+	async pDoMetaMerge (ident, data, options) {
+		DataUtil._merging[ident] = DataUtil._merging[ident] || DataUtil._pDoMetaMerge(ident, data, options);
+		await DataUtil._merging[ident];
+		return DataUtil._merged[ident];
+	},
+
+	async _pDoMetaMerge (ident, data, options) {
 		if (data._meta) {
 			if (data._meta.dependencies) {
 				await Promise.all(Object.entries(data._meta.dependencies).map(async ([prop, sources]) => {
@@ -4580,6 +4634,7 @@ DataUtil = {
 			}));
 			delete data._meta.otherSources;
 		}
+		DataUtil._merged[ident] = data;
 	},
 
 	userDownload: function (filename, data) {
@@ -5607,7 +5662,7 @@ BrewUtil = {
 					const text = reader.result;
 					const json = JSON.parse(text);
 
-					await DataUtil.pDoMetaMerge(json);
+					await DataUtil.pDoMetaMerge(CryptUtil.uid(), json);
 
 					await BrewUtil.pDoHandleBrewJson(json, page, BrewUtil._pRenderBrewScreen_pRefreshBrewList.bind(this, $appendTo, $overlay, $brewList));
 
@@ -5646,7 +5701,7 @@ BrewUtil = {
 
 				const $ulRows = $$`<ul class="list"><li><section><span style="font-style: italic;">Loading...</span></section></li></ul>`;
 
-				const $iptSearch = $(`<input type="search" class="search manbrew__search form-control w-100" placeholder="Find homebrew...">`)
+				const $iptSearch = $(`<input type="search" class="search manbrew__search form-control w-100" placeholder="Find homebrew...">`);
 				const $lst = $$`
 					<div class="listcontainer homebrew-window dropdown-menu flex-col">
 						<h4><span>Get Homebrew</span></h4>
@@ -5749,6 +5804,7 @@ BrewUtil = {
 						$wrpList: $ulRows,
 						fnSort
 					});
+					SortUtil.initBtnSortHandlers($lst.find(".manbrew__filtertools"), list);
 
 					dataList = all.filter(it => !it._brewSkip);
 					dataList.forEach((it, i) => {
@@ -6008,6 +6064,7 @@ BrewUtil = {
 				</div>
 			`.appendTo($brewList);
 			$ulGroup.appendTo($brewList);
+			SortUtil.initBtnSortHandlers($lst.find(".manbrew__filtertools"), list);
 
 			const createButtons = (src, $row) => {
 				const $btns = $(`<span class="col-2 text-right"/>`).appendTo($row);

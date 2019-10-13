@@ -4371,7 +4371,7 @@
 									"type": "table",
 									"caption": "Clan's Notable Trait",
 									"colLabels": [
-										"d12",
+										"d10",
 										"Trait"
 									],
 									"colStyles": [
@@ -4381,51 +4381,43 @@
 									"rows": [
 										[
 											"1",
-											"Stole a mighty dwarven artifact"
+											"Founder was one of the greatest artisans in history"
 										],
 										[
 											"2",
-											"Has bound many devils to service"
+											"Clan owns a powerful artifact, such as an {@item Axe of the Dwarvish Lords}"
 										],
 										[
 											"3",
-											"Experts in building mechanical devices"
+											"Clan noted for expertise in a specific craft, such as brewing or armorsmithing"
 										],
 										[
 											"4",
-											"Conducts trade with the City of Brass"
+											"Clan has a sinister reputation, history plagued by scandal and mark of Abbathor"
 										],
 										[
 											"5",
-											"Notable for defeating many dwarves"
+											"Militaristic clan, known for excellent fighting skills"
 										],
 										[
 											"6",
-											"Conquered and occupied a drow enclave"
+											"Unusual stronghold, such as an undersea castle, a former cloud giant fortress, or an aboveground city"
 										],
 										[
 											"7",
-											"Is secretly controlled by mind flayers"
+											"Prophecies indicate clan is destined to play a pivotal role in history"
 										],
 										[
 											"8",
-											"Has enslaved a colony of troglodytes"
+											"Heretical clan has rejected dwarf teachings in favor of human deities"
 										],
 										[
 											"9",
-											"Have interbred with devils"
+											"Unique marker or curse, such as all clan members are hairless"
 										],
 										[
 											"10",
-											"Known for its extensive spy network on surface"
-										],
-										[
-											"11",
-											"Masters of psionics"
-										],
-										[
-											"12",
-											"Dominated by a coven of warlocks"
+											"Clan is known for its evil ways or a particularly sinister, notable member"
 										]
 									]
 								},
@@ -4632,6 +4624,36 @@
 							"page": 83,
 							"entries": [
 								"When duergar emerge from the Underdark, they generally do so in the form of small but vicious raiding parties. Use the following tables to generate a band of duergar raiders and some additional details of their situation. Roll once on each line of the Group Composition table and once on each table that follows it.",
+								{
+									"type": "table",
+									"caption": "",
+									"colLabels": [
+										"Members",
+										"Number Present"
+									],
+									"colStyles": [
+										"col-6",
+										"col-6"
+									],
+									"rows": [
+										[
+											"{@creature Duergar}",
+											"{@dice 2d6 + 5}"
+										],
+										[
+											"{@creature Duergar stone guard|mtf|Duergar stone guards}",
+											"{@dice 1d4 + 1}"
+										],
+										[
+											"{@creature Duergar kavalrachni|mtf}",
+											"{@dice 1d4}"
+										],
+										[
+											"{@creature Male steeder|mtf|Male steeders}",
+											"{@dice 1d4}"
+										]
+									]
+								},
 								{
 									"type": "table",
 									"caption": "Duergar Group Leader",

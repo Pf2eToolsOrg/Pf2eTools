@@ -39,7 +39,7 @@ const getTemplate = (page, source, hash, textStyle) => `<!DOCTYPE html><html lan
 (() => {
 	DataUtil.loadJSON = async (url) => {
 		const data = rd(url);
-		await DataUtil.pDoMetaMerge(data);
+		await DataUtil.pDoMetaMerge(url, data);
 		return data;
 	};
 })();

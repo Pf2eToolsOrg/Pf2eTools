@@ -3337,7 +3337,7 @@ Renderer.item = {
 		} else {
 			const parts = [];
 			if (item.range) parts.push(`range ${item.range} ft.`);
-			propertiesTxt += `${item.dmg1 ? " - " : ""}${parts.join(", ")}`;
+			propertiesTxt += `${item.dmg1 && parts.length ? " - " : ""}${parts.join(", ")}`;
 		}
 		return [damage, damageType, propertiesTxt];
 	},

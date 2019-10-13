@@ -1527,10 +1527,12 @@ class BaseComponent extends ProxyBase {
 		nuKeys.forEach(k => this.__state[k] = toState[k]);
 
 		allKeys.forEach(k => {
-			if (this.__hooksAll["state"]) this.__hooksAll["state"].forEach(hk => hk(k, this.__state[k]));
-			if (this.__hooks["state"][k]) this.__hooks["state"][k].forEach(hk => hk(k, this.__state[k]));
+			if (this.__hooksAll.state) this.__hooksAll.state.forEach(hk => hk(k, this.__state[k]));
+			if (this.__hooks.state && this.__hooks.state[k]) this.__hooks.state[k].forEach(hk => hk(k, this.__state[k]));
 		});
 	}
+
+	_getState () { return MiscUtil.copy(this.__state) }
 
 	getPod () {
 		return {
@@ -1540,6 +1542,8 @@ class BaseComponent extends ProxyBase {
 			addHook: (prop, hook) => this._addHookBase(prop, hook),
 			removeHook: (prop, hook) => this._removeHookBase(prop, hook),
 			triggerCollectionUpdate: (prop) => this._triggerCollectionUpdate(prop),
+			setState: (state) => this._setState(state),
+			getState: () => this._getState(),
 			component: this
 		}
 	}
@@ -1608,18 +1612,27 @@ class BaseComponent extends ProxyBase {
 	 * @param cbNotExists Function to run which generates existing render meta. Arguments are `item, i`.
 	 * @param [opts] Options object.
 	 * @param [opts.isDiffMode] If updates should be run in "diff" mode (i.e. no update is run if nothing has changed).
+	 * @param [opts.isMultiRender] If multiple renders will be produced.
+	 * @param [opts.additionalCaches] Additional cache objects to be cleared on entity delete. Should be objects with
+	 *        entity IDs as keys.
 	 */
 	async _pRenderCollection (prop, cbExists, cbNotExists, opts) {
 		opts = opts || {};
 
 		const rendered = (this.__rendered[prop] = this.__rendered[prop] || {});
+		const entities = this._state[prop];
+		return this._pRenderCollection_doRender(rendered, entities, cbExists, cbNotExists, opts);
+	}
+
+	async _pRenderCollection_doRender (rendered, entities, cbExists, cbNotExists, opts) {
 		const toDelete = new Set(Object.keys(rendered));
 
 		// Run the external functions in serial, to prevent element re-ordering
-		for (let i = 0; i < this._state[prop].length; ++i) {
-			const it = this._state[prop][i];
+		for (let i = 0; i < entities.length; ++i) {
+			const it = entities[i];
 
 			if (!it.id) throw new Error(`Collection item did not have an ID!`);
+			// N.B.: Meta can be an array, if one item maps to multiple renders (e.g. the same is shown in two places)
 			const meta = rendered[it.id];
 
 			toDelete.delete(it.id);
@@ -1627,34 +1640,34 @@ class BaseComponent extends ProxyBase {
 				if (opts.isDiffMode) {
 					// Hashing the stringified JSON relies on the property order remaining consistent, but this is fine
 					const nxtHash = CryptUtil.md5(JSON.stringify(it));
-					if (nxtHash !== meta.__hash) {
-						meta.__hash = nxtHash;
-					} else continue;
+					if (nxtHash !== meta.__hash) meta.__hash = nxtHash;
+					else continue;
 				}
 
-				meta.data = it; // update any existing pointers
 				await cbExists(meta, it, i);
 			} else {
 				const meta = await cbNotExists(it, i);
 				// If the generator decides there's nothing to render, skip this item
 				if (meta == null) continue;
 
-				meta.data = it;
-				if (!meta.$wrpRow) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
+				if (opts.isMultiRender && meta.some(it => !it.$wrpRow)) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
+				if (!opts.isMultiRender && !meta.$wrpRow) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
 
-				if (opts.isDiffMode) meta.hash = CryptUtil.md5(JSON.stringify(it));
+				if (opts.isDiffMode) meta.__hash = CryptUtil.md5(JSON.stringify(it));
 
 				rendered[it.id] = meta;
 			}
 		}
 
-		this._renderCollection_doDeletes(rendered, toDelete);
+		this._renderCollection_doDeletes(rendered, toDelete, opts);
 	}
 
-	_renderCollection_doDeletes (rendered, toDelete) {
+	_renderCollection_doDeletes (rendered, toDelete, opts) {
 		toDelete.forEach(id => {
 			const meta = rendered[id];
-			meta.$wrpRow.remove();
+			if (opts.isMultiRender) meta.forEach(it => it.$wrpRow.remove());
+			else meta.$wrpRow.remove();
+			if (opts.additionalCaches) opts.additionalCaches.forEach(it => delete it[id]);
 			delete rendered[id];
 		});
 	}
@@ -1685,8 +1698,7 @@ class BaseComponent extends ProxyBase {
 	setStateFrom (toLoad) { this.setBaseSaveableStateFrom(toLoad); }
 
 	async _pLock (lockName) {
-		const lockMeta = this.__locks[lockName];
-		if (lockMeta) await lockMeta.lock;
+		while (this.__locks[lockName]) await this.__locks[lockName].lock;
 		let unlock = null;
 		const lock = new Promise(resolve => unlock = resolve);
 		this.__locks[lockName] = {
@@ -1698,6 +1710,7 @@ class BaseComponent extends ProxyBase {
 	_unlock (lockName) {
 		const lockMeta = this.__locks[lockName];
 		if (lockMeta) {
+			delete this.__locks[lockName];
 			lockMeta.unlock();
 		}
 	}
@@ -1715,7 +1728,7 @@ class BaseComponent extends ProxyBase {
 	}
 
 	static fromObject (obj, ...noModCollections) {
-		const comp = new BaseComponent();
+		const comp = new this();
 		Object.entries(MiscUtil.copy(obj)).forEach(([k, v]) => {
 			if (v == null) comp.__state[k] = v;
 			else if (noModCollections.includes(k)) comp.__state[k] = v;
@@ -1813,6 +1826,7 @@ class BaseLayeredComponent extends BaseComponent {
 
 			addHookDeep: (prop, hook) => this._addHookDeep(prop, hook),
 			removeHookDeep: (prop, hook) => this._removeHookDeep(prop, hook),
+			addHookAll: (hook) => this._addHookAll("state", hook),
 			getBase: (prop) => this._getBase(prop),
 			get: (prop) => this._get(prop),
 			addLayer: (name, data) => {
