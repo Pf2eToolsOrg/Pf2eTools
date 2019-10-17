@@ -407,7 +407,9 @@
 		Version
 		<span id="version_number">?</span>
 		| <span style="text-decoration: red line-through">&nbsp;&copy;&nbsp;</span><span id="current_year">2019</span> 5etools
-		| <a href="privacy-policy.html">Privacy Policy</a> <br>
+		| <a href="privacy-policy.html">Privacy Policy</a>
+		| <a onclick="window.__cmp || window.__cmp2(&quot;displayConsentUi&quot;)" href="javascript:void(0);">Change Ad Consent</a>
+		<br>
 		<i>5etools&reg; is a Registered Trademark of The Norr Group Ltd. All rights reserved.</i>
 	</p>
 </footer>
@@ -436,6 +438,10 @@
 
 	const $lnkB20 = $(`#betteR20_link`);
 	$lnkB20.attr("href", `${$lnkB20.attr("href")}?ver=${VERSION_NUMBER}_${Date.now()}`);
+
+	window.__cmp2 = () => {
+		alert("This only works on a live version of the site!");
+	};
 
 	// TAG Disabled until further notice
 	/*

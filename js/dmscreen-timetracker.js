@@ -278,7 +278,7 @@ class TimeTrackerBase extends TimeTrackerComponent {
 		this._state[prop] = Math.max(0, oldTime + Math.round(deltaSecs * 1000));
 	}
 
-	_getDefaultState () { return {...TimeTrackerBase._DEFAULT_STATE}; }
+	_getDefaultState () { return MiscUtil.copy(TimeTrackerBase._DEFAULT_STATE); }
 
 	getPod () {
 		const pod = super.getPod();
@@ -722,8 +722,8 @@ class TimeTrackerRoot extends TimeTrackerBase {
 
 	_getDefaultState () {
 		return {
-			...super._getDefaultState(),
-			...TimeTrackerRoot._DEFAULT_STATE
+			...MiscUtil.copy(super._getDefaultState()),
+			...MiscUtil.copy(TimeTrackerRoot._DEFAULT_STATE)
 		};
 	}
 }
@@ -1397,7 +1397,7 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 		</div>`.appendTo($parent);
 	}
 
-	_getDefaultState () { return {...TimeTrackerRoot_Clock_Weather._DEFAULT_STATE}; }
+	_getDefaultState () { return MiscUtil.copy(TimeTrackerRoot_Clock_Weather._DEFAULT_STATE); }
 }
 TimeTrackerRoot_Clock_Weather._TEMPERATURES = [
 	"freezing",
@@ -1589,7 +1589,7 @@ class TimeTrackerRoot_Clock_RandomWeather extends BaseComponent {
 		</div>`.appendTo($modalInner);
 	}
 
-	_getDefaultState () { return {...TimeTrackerRoot_Clock_RandomWeather._DEFAULT_STATE}; }
+	_getDefaultState () { return MiscUtil.copy(TimeTrackerRoot_Clock_RandomWeather._DEFAULT_STATE); }
 
 	/**
 	 * @param curWeather The current weather state.
@@ -3047,7 +3047,7 @@ class TimeTrackerRoot_Settings_Day extends TimeTrackerComponent {
 
 	getState () { return MiscUtil.copy(this._state); }
 
-	_getDefaultState () { return {...TimeTrackerBase._DEFAULT_STATE__DAY}; }
+	_getDefaultState () { return MiscUtil.copy(TimeTrackerBase._DEFAULT_STATE__DAY); }
 }
 
 class TimeTrackerRoot_Settings_Month extends TimeTrackerComponent {
@@ -3088,7 +3088,7 @@ class TimeTrackerRoot_Settings_Month extends TimeTrackerComponent {
 
 	getState () { return MiscUtil.copy(this._state); }
 
-	_getDefaultState () { return {...TimeTrackerBase._DEFAULT_STATE__MONTH}; }
+	_getDefaultState () { return MiscUtil.copy(TimeTrackerBase._DEFAULT_STATE__MONTH); }
 }
 
 class TimeTrackerRoot_Settings_Event extends TimeTrackerComponent {
@@ -3233,7 +3233,7 @@ class TimeTrackerRoot_Settings_Event extends TimeTrackerComponent {
 
 	getState () { return MiscUtil.copy(this._state); }
 
-	_getDefaultState () { return {...TimeTrackerBase._DEFAULT_STATE__EVENT}; }
+	_getDefaultState () { return MiscUtil.copy(TimeTrackerBase._DEFAULT_STATE__EVENT); }
 
 	static getInstance (board, $wrpPanel, parent, event) {
 		const comp = new TimeTrackerRoot_Settings_Event(board, $wrpPanel);
@@ -3277,7 +3277,7 @@ class TimeTrackerRoot_Settings_Season extends TimeTrackerComponent {
 
 	getState () { return MiscUtil.copy(this._state); }
 
-	_getDefaultState () { return {...TimeTrackerBase._DEFAULT_STATE__SEASON}; }
+	_getDefaultState () { return MiscUtil.copy(TimeTrackerBase._DEFAULT_STATE__SEASON); }
 }
 
 class TimeTrackerRoot_Settings_Year extends TimeTrackerComponent {
@@ -3298,7 +3298,7 @@ class TimeTrackerRoot_Settings_Year extends TimeTrackerComponent {
 
 	getState () { return MiscUtil.copy(this._state); }
 
-	_getDefaultState () { return {...TimeTrackerBase._DEFAULT_STATE__YEAR}; }
+	_getDefaultState () { return MiscUtil.copy(TimeTrackerBase._DEFAULT_STATE__YEAR); }
 }
 
 class TimeTrackerRoot_Settings_Era extends TimeTrackerComponent {
@@ -3324,7 +3324,7 @@ class TimeTrackerRoot_Settings_Era extends TimeTrackerComponent {
 
 	getState () { return MiscUtil.copy(this._state); }
 
-	_getDefaultState () { return {...TimeTrackerBase._DEFAULT_STATE__ERA}; }
+	_getDefaultState () { return MiscUtil.copy(TimeTrackerBase._DEFAULT_STATE__ERA); }
 }
 
 class TimeTrackerRoot_Settings_Moon extends TimeTrackerComponent {
@@ -3348,5 +3348,5 @@ class TimeTrackerRoot_Settings_Moon extends TimeTrackerComponent {
 
 	getState () { return MiscUtil.copy(this._state); }
 
-	_getDefaultState () { return {...TimeTrackerBase._DEFAULT_STATE__MOON}; }
+	_getDefaultState () { return MiscUtil.copy(TimeTrackerBase._DEFAULT_STATE__MOON); }
 }

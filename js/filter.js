@@ -1332,8 +1332,8 @@ class RangeFilter extends FilterBase {
 
 					let num;
 					if (val.startsWith("&")) { // prefixed with "&" for "address (index) of..."
-						const clean = val.replace("&", "");
-						num = this._labels.findIndex(it => String(it) === clean);
+						const clean = val.replace("&", "").toLowerCase();
+						num = this._labels.findIndex(it => String(it).toLowerCase() === clean);
 						if (!~num) throw new Error(`Could not find index for label "${clean}"`);
 					} else num = Number(val);
 

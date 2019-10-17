@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.83.4"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.84.1"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -704,7 +704,18 @@ Parser.getItemCurrencyAndMultiplier = function (value, valueConversionId) {
 };
 
 Parser.COIN_ABVS = ["cp", "sp", "ep", "gp", "pp"];
+Parser.COIN_ABV_TO_FULL = {
+	"cp": "copper pieces",
+	"sp": "silver pieces",
+	"ep": "electrum pieces",
+	"gp": "gold pieces",
+	"pp": "platinum pieces"
+};
 Parser.COIN_CONVERSIONS = [1, 10, 50, 100, 1000];
+
+Parser.coinAbvToFull = function (coin) {
+	return Parser._parse_aToB(Parser.COIN_ABV_TO_FULL, coin);
+};
 
 Parser.itemWeightToFull = function (item, isShortForm) {
 	return item.weight
@@ -1354,7 +1365,8 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 	"IWM:W": "Infernal War Machine Variant, Weapon",
 	"IWM:A": "Infernal War Machine Upgrade, Armor",
 	"IWM:G": "Infernal War Machine Upgrade, Gadget",
-	"OR": "Onomancy Resonant"
+	"OR": "Onomancy Resonant",
+	"RN": "Rune Knight Rune"
 };
 
 Parser.optFeatureTypeToFull = function (type) {
@@ -1481,6 +1493,7 @@ Parser.CAT_ID_ARTIFICER_INFUSION = 34;
 Parser.CAT_ID_SHIP_UPGRADE = 35;
 Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE = 36;
 Parser.CAT_ID_ONOMANCY_RESONANT = 37;
+Parser.CAT_ID_RUNE_KNIGHT_RUNE = 37;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1520,6 +1533,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARTIFICER_INFUSION] = "Infusion";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SHIP_UPGRADE] = "Ship Upgrade";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "Infernal War Machine Upgrade";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ONOMANCY_RESONANT] = "Onomancy Resonant";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = "Rune Knight Rune";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1560,6 +1574,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARTIFICER_INFUSION] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SHIP_UPGRADE] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ONOMANCY_RESONANT] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = "optionalfeature";
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -1750,7 +1765,7 @@ Parser.spTimeUnitToAbv = function (timeUnit) {
 Parser.spTimeToShort = function (time, isHtml) {
 	if (!time) return "";
 	return (time.number === 1 && Parser.SP_TIME_SINGLETONS.includes(time.unit))
-		? `${Parser.spTimeUnitToAbv(time.unit)}${time.condition ? "*" : ""}`
+		? `${Parser.spTimeUnitToAbv(time.unit).uppercaseFirst()}${time.condition ? "*" : ""}`
 		: `${time.number} ${isHtml ? `<span class="small">` : ""}${Parser.spTimeUnitToAbv(time.unit)}${isHtml ? `</span>` : ""}${time.condition ? "*" : ""}`;
 };
 
@@ -2008,6 +2023,7 @@ SRC_UABAM = SRC_UA_PREFIX + "BarbarianAndMonk";
 SRC_UASAW = SRC_UA_PREFIX + "SorcererAndWarlock";
 SRC_UABAP = SRC_UA_PREFIX + "BardAndPaladin";
 SRC_UACDW = SRC_UA_PREFIX + "ClericDruidWizard";
+SRC_UAFRR = SRC_UA_PREFIX + "FighterRangerRogue";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -2129,6 +2145,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UABAM] = UA_PREFIX + "Barbarian and Monk";
 Parser.SOURCE_JSON_TO_FULL[SRC_UASAW] = UA_PREFIX + "Sorcerer and Warlock";
 Parser.SOURCE_JSON_TO_FULL[SRC_UABAP] = UA_PREFIX + "Bard and Paladin";
 Parser.SOURCE_JSON_TO_FULL[SRC_UACDW] = UA_PREFIX + "Cleric, Druid, and Wizard";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAFRR] = UA_PREFIX + "Fighter, Ranger, and Rogue";
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -2240,6 +2257,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UABAM] = "UABAM";
 Parser.SOURCE_JSON_TO_ABV[SRC_UASAW] = "UASAW";
 Parser.SOURCE_JSON_TO_ABV[SRC_UABAP] = "UABAP";
 Parser.SOURCE_JSON_TO_ABV[SRC_UACDW] = "UACDW";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAFRR] = "UAFRR";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -4312,6 +4330,7 @@ UrlUtil.PG_MANAGE_BREW = "managebrew.html";
 UrlUtil.PG_DEMO = "demo.html";
 UrlUtil.PG_TABLES = "tables.html";
 UrlUtil.PG_VEHICLES = "vehicles.html";
+UrlUtil.PG_CHARACTERS = "characters.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);

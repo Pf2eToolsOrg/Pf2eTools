@@ -2,7 +2,7 @@ const fs = require("fs");
 const ut = require("./util.js");
 require("../js/utils.js");
 require("../js/render.js");
-require("../js/bookutils.js");
+const {BookUtil} = require("../js/bookutils.js");
 
 class AreaTagger {
 	constructor (filePath) {
@@ -19,7 +19,7 @@ class AreaTagger {
 			if (this._maxTag >= 4095) throw new Error("Exhausted tags!");
 			hexTag = this._maxTag.toString(16).padStart(3, "0");
 			this._maxTag++;
-		} while (hexTag in this._existingTags);
+		} while (this._existingTags.has(hexTag));
 		this._existingTags.add(hexTag);
 		return hexTag;
 	}

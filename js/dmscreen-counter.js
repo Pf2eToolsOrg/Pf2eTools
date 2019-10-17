@@ -153,7 +153,7 @@ class CounterRow extends CounterComponent {
 		</div>`.appendTo($parent);
 	}
 
-	_getDefaultState () { return {...CounterRow._DEFAULT_STATE}; }
+	_getDefaultState () { return MiscUtil.copy(CounterRow._DEFAULT_STATE); }
 }
 CounterRow._DEFAULT_STATE = {
 	name: "",

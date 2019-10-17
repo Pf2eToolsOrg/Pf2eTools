@@ -748,7 +748,7 @@ function sectFamily () {
 	$family.empty();
 	$family.append(`<b>Family:</b> ${GenUtil.getFromTable(FAMILY, RNG(100)).result}<br>`);
 	let famIndex = 1;
-	const $btnSuppFam = $(`<button class="btn btn-xs btn-default btn-supp-fam noprint"></button>`).on("click", () => {
+	const $btnSuppFam = $(`<button class="btn btn-xs btn-default btn-supp-fam no-print"></button>`).on("click", () => {
 		const supDetails = getPersonDetails();
 		const $wrpRes = $(`<div class="output-wrp-border"/>`);
 		$wrpRes.append(`<h5>Family Member Roll ${famIndex++}</h5>`);

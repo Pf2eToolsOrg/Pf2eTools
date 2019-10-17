@@ -5455,6 +5455,11 @@ Renderer.dice = {
 			// try use stats table name row
 			titleMaybe = $(ele).closest(`table.stats`).children(`tbody`).first().children(`tr`).first().find(`th.name .stats-name`).text();
 			if (titleMaybe) return titleMaybe.trim();
+			if (UrlUtil.getCurrentPage() === UrlUtil.PG_CHARACTERS) {
+				// try use mini-entity name
+				titleMaybe = $(ele).closest(`.chr-entity__row`).find(".chr-entity__ipt-name").val().trim();
+				if (titleMaybe) return titleMaybe;
+			}
 			// otherwise, use the section title, where applicable
 			titleMaybe = $(ele).closest(`div`).children(`.rd__h`).first().find(`.entry-title-inner`).text();
 			if (titleMaybe) titleMaybe = titleMaybe.trim().replace(/[.,:]\s*$/, "");
@@ -6685,15 +6690,31 @@ Renderer.initLazyImageLoaders = function () {
 		});
 	}
 
+	let printListener = null;
 	const $images = $(`img[data-src]`);
 	const config = {
 		rootMargin: "150px 0px", // if the image gets within 150px of the viewport
 		threshold: 0.01
 	};
 
-	if (Renderer._imageObserver) Renderer._imageObserver.disconnect();
+	if (Renderer._imageObserver) {
+		Renderer._imageObserver.disconnect();
+		window.removeEventListener("beforeprint", printListener);
+	}
+
 	Renderer._imageObserver = new IntersectionObserver(onIntersection, config);
 	$images.each((i, image) => Renderer._imageObserver.observe(image));
+
+	// If we try to print a page with un-loaded images, attempt to load them all first
+	printListener = () => {
+		alert(`All images in the page will now be loaded. This may take a while.`);
+		$images.each((i, image) => {
+			Renderer._imageObserver.unobserve(image);
+			const $img = $(image);
+			$img.attr("src", $img.attr("data-src")).removeAttr("data-src");
+		});
+	};
+	window.addEventListener("beforeprint", printListener);
 };
 Renderer._imageObserver = null;
 

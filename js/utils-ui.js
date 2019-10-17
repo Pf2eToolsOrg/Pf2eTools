@@ -2,6 +2,7 @@ class ProxyBase {
 	constructor () {
 		this.__hooks = {};
 		this.__hooksAll = {};
+		this.__hooksTmp = null;
 	}
 
 	_getProxy (hookProp, toProxy) {
@@ -30,6 +31,7 @@ class ProxyBase {
 	 *   modified.
 	 */
 	_addHook (hookProp, prop, hook) {
+		if (this.__hooksTmp) ((this.__hooksTmp[hookProp] = this.__hooksTmp[hookProp] || {})[prop] = (this.__hooksTmp[hookProp][prop] || [])).push(hook);
 		((this.__hooks[hookProp] = this.__hooks[hookProp] || {})[prop] = (this.__hooks[hookProp][prop] || [])).push(hook);
 	}
 
@@ -47,6 +49,8 @@ class ProxyBase {
 	_resetHooks (hookProp) {
 		delete this.__hooks[hookProp];
 	}
+
+	_saveHookCopiesTo (obj) { this.__hooksTmp = obj; }
 }
 
 class UiUtil {
@@ -1625,6 +1629,8 @@ class BaseComponent extends ProxyBase {
 	}
 
 	async _pRenderCollection_doRender (rendered, entities, cbExists, cbNotExists, opts) {
+		opts = opts || {};
+
 		const toDelete = new Set(Object.keys(rendered));
 
 		// Run the external functions in serial, to prevent element re-ordering
@@ -1644,7 +1650,10 @@ class BaseComponent extends ProxyBase {
 					else continue;
 				}
 
-				await cbExists(meta, it, i);
+				const nxtMeta = await cbExists(meta, it, i);
+				// Overwrite the existing renders in multi-render mode
+				//    Otherwise, just ignore the result--single renders never modify their render
+				if (opts.isMultiRender) rendered[it.id] = nxtMeta;
 			} else {
 				const meta = await cbNotExists(it, i);
 				// If the generator decides there's nothing to render, skip this item
@@ -1659,10 +1668,12 @@ class BaseComponent extends ProxyBase {
 			}
 		}
 
-		this._renderCollection_doDeletes(rendered, toDelete, opts);
+		return this._renderCollection_doDeletes(rendered, toDelete, opts);
 	}
 
 	_renderCollection_doDeletes (rendered, toDelete, opts) {
+		opts = opts || {};
+
 		toDelete.forEach(id => {
 			const meta = rendered[id];
 			if (opts.isMultiRender) meta.forEach(it => it.$wrpRow.remove());
@@ -1936,6 +1947,11 @@ const MixinComponentHistory = compClass => class extends compClass {
 };
 
 class ComponentUiUtil {
+	static trackHook (hooks, prop, hook) {
+		hooks[prop] = hooks[prop] || [];
+		hooks[prop].push(hook);
+	}
+
 	/**
 	 * @param component An instance of a class which extends BaseComponent.
 	 * @param prop Component to hook on.
@@ -1948,6 +1964,7 @@ class ComponentUiUtil {
 	 * @param [opts.padLength] Number of digits to pad the number to.
 	 * @param [opts.fallbackOnNaN] Return value if not a number.
 	 * @param [opts.isAllowNull] If an empty input should be treated as null.
+	 * @param [opts.hookTracker] Object in which to track hook.
 	 * @return {JQuery}
 	 */
 	static $getIptInt (component, prop, fallbackEmpty = 0, opts) {
@@ -1991,6 +2008,7 @@ class ComponentUiUtil {
 			const num = (component._state[prop] || 0) + opts.offset;
 			$ipt.val(opts.padLength ? `${num}`.padStart(opts.padLength, "0") : num)
 		};
+		if (opts.hookTracker) ComponentUiUtil.trackHook(opts.hookTracker, prop, hook);
 		component._addHookBase(prop, hook);
 		hook();
 		return $ipt;
@@ -2017,7 +2035,7 @@ class ComponentUiUtil {
 		const hook = () => $ipt.val(component._state[prop]);
 		component._addHookBase(prop, hook);
 		hook();
-		return opts.asMeta ? ({$ipt, hook}) : $ipt;
+		return opts.asMeta ? ({$ipt, unhook: () => component._removeHookBase(prop, hook)}) : $ipt;
 	}
 
 	/**
@@ -2100,7 +2118,7 @@ class ComponentUiUtil {
 		component._addHookBase(prop, hook);
 		hook();
 
-		return opts.asMeta ? ({$cb, hook}) : $cb;
+		return opts.asMeta ? ({$cb, unhook: () => component._removeHookBase(prop, hook)}) : $cb;
 	}
 
 	/**
@@ -2135,7 +2153,7 @@ class ComponentUiUtil {
 		};
 		component._addHookBase(prop, hook);
 		hook();
-		return opts.asMeta ? ({$sel, hook}) : $sel;
+		return opts.asMeta ? ({$sel, unhook: () => component._removeHookBase(prop, hook)}) : $sel;
 	}
 
 	/**
@@ -2184,6 +2202,43 @@ class ComponentUiUtil {
 		});
 		pickComp.render($wrpPills);
 		return $wrp;
+	}
+
+	/**
+	 * @param component An instance of a class which extends BaseComponent.
+	 * @param prop Component to hook on.
+	 * @param opts Options Object.
+	 * @param opts.values Values to display.
+	 * @param [opts.fnDisplay] Value display function.
+	 * @param [opts.isDisallowNull] True if null is not an allowed value.
+	 * @param [opts.asMeta] If a meta-object should be returned containing the hook and the wrapper.
+	 * @return {JQuery}
+	 */
+	static $getCbsEnum (component, prop, opts) {
+		opts = opts || {};
+
+		const $wrp = $(`<div class="flex-col w-100"/>`);
+		const metas = opts.values.map(it => {
+			const $cb = $(`<input type="checkbox">`)
+				.change(() => {
+					const ix = (component._state[prop] || []).indexOf(it);
+					if (~ix) component._state[prop].splice(ix, 1);
+					else {
+						if (component._state[prop]) component._state[prop].push(it);
+						else component._state[prop] = [it];
+					}
+				});
+
+			$$`<label class="split-v-center my-1 stripe-odd ml-4"><div>${opts.fnDisplay ? opts.fnDisplay(it) : it}</div>${$cb}</label>`.appendTo($wrp);
+
+			return {$cb, value: it};
+		});
+
+		const hook = () => metas.forEach(meta => meta.$cb.prop("checked", component._state[prop] && component._state[prop].includes(meta.value)));
+		component._addHookBase(prop, hook);
+		hook();
+
+		return opts.asMeta ? {$wrp, unhook: () => component._removeHookBase(prop, hook)} : $wrp;
 	}
 }
 
