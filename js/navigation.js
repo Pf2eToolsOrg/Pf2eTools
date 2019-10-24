@@ -45,6 +45,7 @@ class NavBar {
 		addLi(ulRules, "book.html", "Xanathar's Guide to Everything", {aHash: "XGE"});
 		addDivider(ulRules);
 		addLi(ulRules, "book.html", "Adventurers League", {aHash: "AL"});
+		addLi(ulRules, "book.html", "Sage Advice Compendium", {aHash: "SAC"});
 		addDivider(ulRules);
 		addLi(ulRules, "books.html", "View All/Homebrew");
 

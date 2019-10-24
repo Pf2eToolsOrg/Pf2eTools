@@ -100,7 +100,35 @@ class ConditionsDiseasesPage extends ListPage {
 	doLoadHash (id) {
 		const $content = $("#pagecontent").empty();
 		const it = this._dataList[id];
-		$content.append(RenderConditionDiseases.$getRenderedConditionDisease(it));
+
+		function buildStatsTab () {
+			$content.append(RenderConditionDiseases.$getRenderedConditionDisease(it));
+		}
+
+		function buildFluffTab (isImageTab) {
+			return Renderer.utils.pBuildFluffTab(
+				isImageTab,
+				$content,
+				it,
+				(fluffJson) => it.fluff || fluffJson.condition.find(cd => it.name === cd.name && it.source === cd.source),
+				`data/fluff-conditionsdiseases.json`,
+				() => true
+			);
+		}
+
+		const statTab = Renderer.utils.tabButton(
+			"Traits",
+			() => {},
+			buildStatsTab
+		);
+		const picTab = Renderer.utils.tabButton(
+			"Images",
+			() => {},
+			buildFluffTab.bind(null, true)
+		);
+
+		Renderer.utils.bindTabButtons(statTab, picTab);
+
 		ListUtil.updateSelected();
 	}
 

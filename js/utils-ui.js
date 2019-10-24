@@ -3,6 +3,7 @@ class ProxyBase {
 		this.__hooks = {};
 		this.__hooksAll = {};
 		this.__hooksTmp = null;
+		this.__hooksAllTmp = null;
 	}
 
 	_getProxy (hookProp, toProxy) {
@@ -31,26 +32,59 @@ class ProxyBase {
 	 *   modified.
 	 */
 	_addHook (hookProp, prop, hook) {
-		if (this.__hooksTmp) ((this.__hooksTmp[hookProp] = this.__hooksTmp[hookProp] || {})[prop] = (this.__hooksTmp[hookProp][prop] || [])).push(hook);
-		((this.__hooks[hookProp] = this.__hooks[hookProp] || {})[prop] = (this.__hooks[hookProp][prop] || [])).push(hook);
+		ProxyBase._addHook_to(this.__hooks, hookProp, prop, hook);
+		if (this.__hooksTmp) ProxyBase._addHook_to(this.__hooksTmp, hookProp, prop, hook);
+	}
+
+	static _addHook_to (obj, hookProp, prop, hook) {
+		((obj[hookProp] = obj[hookProp] || {})[prop] = (obj[hookProp][prop] || [])).push(hook);
 	}
 
 	_addHookAll (hookProp, hook) {
-		(this.__hooksAll[hookProp] = this.__hooksAll[hookProp] || []).push(hook);
+		ProxyBase._addHookAll_to(this.__hooksAll, hookProp, hook);
+		if (this.__hooksAllTmp) ProxyBase._addHookAll_to(this.__hooksAllTmp, hookProp, hook)
+	}
+
+	static _addHookAll_to (obj, hookProp, hook) {
+		(obj[hookProp] = obj[hookProp] || []).push(hook);
 	}
 
 	_removeHook (hookProp, prop, hook) {
-		if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) {
-			const ix = this.__hooks[hookProp][prop].findIndex(hk => hk === hook);
-			if (~ix) this.__hooks[hookProp][prop].splice(ix, 1);
+		ProxyBase._removeHook_from(this.__hooks, hookProp, prop, hook);
+		if (this.__hooksTmp) ProxyBase._removeHook_from(this.__hooksTmp, hookProp, prop, hook);
+	}
+
+	static _removeHook_from (obj, hookProp, prop, hook) {
+		if (obj[hookProp] && obj[hookProp][prop]) {
+			const ix = obj[hookProp][prop].findIndex(hk => hk === hook);
+			if (~ix) obj[hookProp][prop].splice(ix, 1);
+		}
+	}
+
+	_removeHookAll (hookProp, hook) {
+		ProxyBase._removeHookAll_from(this.__hooksAll, hookProp, hook);
+		if (this.__hooksAllTmp) ProxyBase._removeHook_from(this.__hooksAllTmp, hookProp, hook);
+	}
+
+	static _removeHookAll_from (obj, hookProp, hook) {
+		if (obj[hookProp]) {
+			const ix = obj[hookProp].findIndex(hk => hk === hook);
+			if (~ix) obj[hookProp].splice(ix, 1);
 		}
 	}
 
 	_resetHooks (hookProp) {
-		delete this.__hooks[hookProp];
+		if (hookProp !== undefined) delete this.__hooks[hookProp];
+		else Object.keys(this.__hooks).forEach(prop => delete this.__hooks[prop]);
+	}
+
+	_resetHooksAll (hookProp) {
+		if (hookProp !== undefined) delete this.__hooksAll[hookProp];
+		else Object.keys(this.__hooksAll).forEach(prop => delete this.__hooksAll[prop]);
 	}
 
 	_saveHookCopiesTo (obj) { this.__hooksTmp = obj; }
+	_saveHookAllCopiesTo (obj) { this.__hooksAllTmp = obj; }
 }
 
 class UiUtil {
@@ -1296,13 +1330,15 @@ class DragReorderUiUtil {
 	}
 
 	/**
-	 * @param comp The component which will contain the drag pad.
-	 * @param $parent Parent elements to attach row elements to.
-	 * @param parent Parent component which has a pod decomposable as {swapRowPositions, childComponents}.
-	 * @return jQuery
+	 * @param comp Row component.
+	 * @param opts Options object.
+	 * @param opts.$parent
+	 * @param opts.swapRowPositions
+	 * @param [opts.childComponents]
+	 * @param [opts.getChildComponents]
 	 */
-	static $getDragPad2 (comp, $parent, parent) {
-		const {swapRowPositions, childComponents} = parent;
+	static $getDragPadOpts (comp, opts) {
+		if (!opts.$parent || !opts.swapRowPositions || (!opts.childComponents && !opts.getChildComponents)) throw new Error("Missing required option(s)!");
 
 		const dragMeta = {};
 		const doDragCleanup = () => {
@@ -1315,12 +1351,13 @@ class DragReorderUiUtil {
 			if (dragMeta.on) doDragCleanup();
 
 			dragMeta.on = true;
-			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"/>`).appendTo($parent);
+			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"/>`).appendTo(opts.$parent);
 			dragMeta.$dummies = [];
 
-			const ixRow = childComponents.indexOf(comp);
+			let childComponentsCur = opts.getChildComponents ? opts.getChildComponents() : opts.childComponents;
+			const ixRow = childComponentsCur.indexOf(comp);
 
-			childComponents.forEach((row, i) => {
+			childComponentsCur.forEach((row, i) => {
 				const dimensions = {w: row.$row.outerWidth(true), h: row.$row.outerHeight(true)};
 				const $dummy = $(`<div class="${i === ixRow ? "ui-drag__wrp-drag-dummy--highlight" : "ui-drag__wrp-drag-dummy--lowlight"}"/>`)
 					.width(dimensions.w).height(dimensions.h)
@@ -1332,7 +1369,7 @@ class DragReorderUiUtil {
 
 				if (i !== ixRow) { // on entering other areas, swap positions
 					$dummy.mouseenter(() => {
-						swapRowPositions(i, ixRow);
+						opts.swapRowPositions(i, ixRow);
 						doDragRender();
 					});
 				}
@@ -1343,6 +1380,18 @@ class DragReorderUiUtil {
 		<div class="ui-drag__patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
 		<div class="ui-drag__patch-col"><div>&#8729</div><div>&#8729</div><div>&#8729</div></div>
 		</div>`).mousedown(() => doDragRender());
+	}
+
+	/**
+	 * @param comp The component which will contain the drag pad. Must expose a ".$row" property (getter).
+	 * @param $parent Parent elements to attach row elements to. Should have (e.g.) "relative" CSS positioning.
+	 * @param parent Parent component which has a pod decomposable as {swapRowPositions, <childComponents|getChildComponents>}.
+	 * @return jQuery
+	 */
+	static $getDragPad2 (comp, $parent, parent) {
+		const {swapRowPositions, childComponents, getChildComponents} = parent;
+		const nxtOpts = {$parent, swapRowPositions, childComponents, getChildComponents};
+		return this.$getDragPadOpts(comp, nxtOpts)
 	}
 }
 
@@ -1544,6 +1593,7 @@ class BaseComponent extends ProxyBase {
 			set: (prop, val) => this._state[prop] = val,
 			delete: (prop) => delete this._state[prop],
 			addHook: (prop, hook) => this._addHookBase(prop, hook),
+			addHookAll: (hook) => this._addHookAll("state", hook),
 			removeHook: (prop, hook) => this._removeHookBase(prop, hook),
 			triggerCollectionUpdate: (prop) => this._triggerCollectionUpdate(prop),
 			setState: (state) => this._setState(state),
@@ -1993,7 +2043,7 @@ class ComponentUiUtil {
 		opts = opts || {};
 		opts.offset = opts.offset || 0;
 
-		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal text-right">`))
+		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal text-right" type="search">`))
 			.change(() => {
 				if (opts.isAllowNull) {
 					const raw = $ipt.val().trim();
@@ -2027,7 +2077,7 @@ class ComponentUiUtil {
 	static $getIptStr (component, prop, opts) {
 		opts = opts || {};
 
-		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal">`))
+		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal" type="search">`))
 			.change(() => {
 				const nxtVal = opts.isNoTrim ? $ipt.val() : $ipt.val().trim();
 				component._state[prop] = opts.isAllowNull && !nxtVal ? null : nxtVal;
@@ -2212,6 +2262,7 @@ class ComponentUiUtil {
 	 * @param [opts.fnDisplay] Value display function.
 	 * @param [opts.isDisallowNull] True if null is not an allowed value.
 	 * @param [opts.asMeta] If a meta-object should be returned containing the hook and the wrapper.
+	 * @param [opts.isIndent] If the checkboxes should be indented.
 	 * @return {JQuery}
 	 */
 	static $getCbsEnum (component, prop, opts) {
@@ -2221,15 +2272,20 @@ class ComponentUiUtil {
 		const metas = opts.values.map(it => {
 			const $cb = $(`<input type="checkbox">`)
 				.change(() => {
+					let didUpdate = false;
 					const ix = (component._state[prop] || []).indexOf(it);
 					if (~ix) component._state[prop].splice(ix, 1);
 					else {
 						if (component._state[prop]) component._state[prop].push(it);
-						else component._state[prop] = [it];
+						else {
+							didUpdate = true;
+							component._state[prop] = [it];
+						}
 					}
+					if (!didUpdate) component._state[prop] = [...component._state[prop]];
 				});
 
-			$$`<label class="split-v-center my-1 stripe-odd ml-4"><div>${opts.fnDisplay ? opts.fnDisplay(it) : it}</div>${$cb}</label>`.appendTo($wrp);
+			$$`<label class="split-v-center my-1 stripe-odd ${opts.isIndent ? "ml-4" : ""}"><div class="no-wrap flex-v-center">${opts.fnDisplay ? opts.fnDisplay(it) : it}</div>${$cb}</label>`.appendTo($wrp);
 
 			return {$cb, value: it};
 		});

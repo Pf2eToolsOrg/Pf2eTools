@@ -37,10 +37,11 @@ function rollSuppStatus () {
 }
 
 /**
- * @param opts Options object.
+ * @param [opts] Options object.
  * @param opts.isParent If this person is a parent.
  * @param opts.gender The gender of this person.
  * @param opts.parentRaces List of parent races for this person.
+ * @param opts.isAdventurer Is the person is an adventurer (and therefore has a class as opposed to an occupation).
  */
 function getPersonDetails (opts) {
 	opts = opts || {};
@@ -48,10 +49,11 @@ function getPersonDetails (opts) {
 	const status = rollSuppStatus();
 	const align = rollSuppAlignment().result;
 	const occ = rollSuppOccupation().result;
+	const cls = rollSuppClass().result;
 	const relate = rollSuppRelationship().result;
 	const out = [
 		`<b>Alignment:</b> ${align}`,
-		`<b>Occupation:</b> ${occ}`,
+		opts.isAdventurer ? `<b>Class:</b> ${cls}` : `<b>Occupation:</b> ${occ}`,
 		`<b>Relationship:</b> ${relate}`
 	];
 	if (!opts.isParent) {
@@ -313,7 +315,7 @@ const LIFE_EVENTS = [
 	{min: 11, max: 20, result: "You gained a bit of good fortune. Roll on the Boons table.", nextRoll: () => _lifeEvtResult("Boon", rollEvtBoon())},
 	{min: 21, max: 30, result: "You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest.", nextRoll: () => _lifeEvtPerson(marriageIndex++ === 0 ? "Spouse" : "Spouse/Child", getPersonDetails())},
 	{min: 31, max: 40, result: () => `You made an enemy of an adventurer. Roll a {@dice d6} ${fmtChoice(RNG(6))}. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.`, display: "You made an enemy of an adventurer. Roll a {@dice d6}. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.", nextRoll: () => _lifeEvtPerson("Enemy", getPersonDetails())},
-	{min: 41, max: 50, result: "You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.", nextRoll: () => _lifeEvtPerson("Friend", getPersonDetails())},
+	{min: 41, max: 50, result: "You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.", nextRoll: () => _lifeEvtPerson("Friend", getPersonDetails({isAdventurer: true}))},
 	{min: 51, max: 70, result: () => `You spent time working in a job related to your background. Start the game with an extra {@dice 2d6} ${fmtChoice(RNG(6) + RNG(6))} gp.`, display: "You spent time working in a job related to your background. Start the game with an extra {@dice 2d6} gp."},
 	{min: 71, max: 75, result: "You met someone important. Use the supplemental tables to determine this character's identity and how this individual feels about you. Work out additional details with your DM as needed to fit this character into your backstory.", nextRoll: () => _lifeEvtPerson("Meeting", getPersonDetails())},
 	{min: 76, max: 80, result: "You went on an adventure. Roll on the Adventures table to see what happened to you. Work with your DM to determine the nature of the adventure and the creatures you encountered.", nextRoll: () => _lifeEvtResult("Adventure", rollEvtAdventure())},

@@ -25,7 +25,7 @@ class RenderSpells {
 		}
 		renderStack.push(`</td></tr>`);
 
-		renderStack.push(`<tr class="text"><td class="classes" colspan="6"><span class="bold">Classes: </span>${Parser.spMainClassesToFull(spell.classes)}</td></tr>`);
+		if (spell.classes) renderStack.push(`<tr class="text"><td class="classes" colspan="6"><span class="bold">Classes: </span>${Parser.spMainClassesToFull(spell.classes)}</td></tr>`);
 
 		if (spell.classes.fromSubclass) {
 			const currentAndLegacy = Parser.spSubclassesToCurrentAndLegacyFull(spell.classes, subclassLookup);

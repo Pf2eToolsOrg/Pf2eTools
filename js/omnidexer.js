@@ -388,6 +388,14 @@ Omnidexer.TO_INDEX = [
 		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "RN")
 	},
 	{
+		category: Parser.CAT_ID_ALCHEMICAL_FORMULA,
+		file: "optionalfeatures.json",
+		listProp: "optionalfeature",
+		baseUrl: "optionalfeatures.html",
+		hover: true,
+		include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "AF")
+	},
+	{
 		category: Parser.CAT_ID_ITEM,
 		file: "items.json",
 		listProp: "item",

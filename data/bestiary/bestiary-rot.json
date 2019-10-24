@@ -1433,7 +1433,14 @@
 			"source": "RoT",
 			"_copy": {
 				"name": "Wolf",
-				"source": "MM"
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "wolf",
+						"with": "dog"
+					}
+				}
 			},
 			"page": 27
 		},
@@ -1506,6 +1513,25 @@
 				"D"
 			],
 			"page": 9
+		},
+		{
+			"name": "Diderius",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "RoT",
+			"_copy": {
+				"name": "Mummy Lord",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mummy lord",
+						"with": "Diderius",
+						"flags": "i"
+					}
+				}
+			},
+			"page": 40
 		}
 	]
 }

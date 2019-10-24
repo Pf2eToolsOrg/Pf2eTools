@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.84.1"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.85.0"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -1366,7 +1366,8 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 	"IWM:A": "Infernal War Machine Upgrade, Armor",
 	"IWM:G": "Infernal War Machine Upgrade, Gadget",
 	"OR": "Onomancy Resonant",
-	"RN": "Rune Knight Rune"
+	"RN": "Rune Knight Rune",
+	"AF": "Alchemical Formula"
 };
 
 Parser.optFeatureTypeToFull = function (type) {
@@ -1494,6 +1495,7 @@ Parser.CAT_ID_SHIP_UPGRADE = 35;
 Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE = 36;
 Parser.CAT_ID_ONOMANCY_RESONANT = 37;
 Parser.CAT_ID_RUNE_KNIGHT_RUNE = 37;
+Parser.CAT_ID_ALCHEMICAL_FORMULA = 38;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1534,6 +1536,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SHIP_UPGRADE] = "Ship Upgrade";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "Infernal War Machine Upgrade";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ONOMANCY_RESONANT] = "Onomancy Resonant";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = "Rune Knight Rune";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ALCHEMICAL_FORMULA] = "Alchemical Formula";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1575,6 +1578,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SHIP_UPGRADE] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ONOMANCY_RESONANT] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ALCHEMICAL_FORMULA] = "optionalfeature";
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -1955,6 +1959,7 @@ SRC_SDW = "SDW";
 SRC_BGDIA = "BGDIA";
 SRC_LR = "LR";
 SRC_AL = "AL";
+SRC_SAC = "SAC";
 SRC_SCREEN = "Screen";
 
 SRC_ALCoS = "ALCurseOfStrahd";
@@ -2084,6 +2089,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_SDW] = "Sleeping Dragon's Wake";
 Parser.SOURCE_JSON_TO_FULL[SRC_BGDIA] = "Baldur's Gate: Descent Into Avernus";
 Parser.SOURCE_JSON_TO_FULL[SRC_LR] = "Locathah Rising";
 Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
+Parser.SOURCE_JSON_TO_FULL[SRC_SAC] = "Sage Advice Compendium";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = AL_PREFIX + "Elemental Evil";
@@ -2196,6 +2202,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_SDW] = "SDW";
 Parser.SOURCE_JSON_TO_ABV[SRC_BGDIA] = "BGDIA";
 Parser.SOURCE_JSON_TO_ABV[SRC_LR] = "LR";
 Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
+Parser.SOURCE_JSON_TO_ABV[SRC_SAC] = "SAC";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
@@ -2383,6 +2390,9 @@ Parser.ACTION_JSON_TO_FULL = {
 		"The most common action to take in combat is the Attack action, whether you are swinging a sword, firing an arrow from a bow, or brawling with your fists.",
 		"With this action, you make one melee or ranged attack. See the \"{@book Making an Attack|phb|9|making an attack}\" section for the rules that govern attacks.",
 		"Certain features, such as the Extra Attack feature of the fighter, allow you to make more than one attack with this action."
+	],
+	"Cast a Spell": [
+		"Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which specifies whether the caster must use an action, a reaction, minutes, or even hours to cast the spell. Casting a spell is, therefore, not necessarily an action. Most spells do have a casting time of 1 action, so a spellcaster often uses his or her action in combat to cast such a spell. See {@book chapter 10|phb|10|casting a spell} for the rules on spellcasting."
 	],
 	"Dash": [
 		"When you take the Dash action, you gain extra movement for the current turn. The increase equals your speed, after applying any modifiers. With a speed of 30 feet, for example, you can move up to 60 feet on your turn if you dash.",

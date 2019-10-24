@@ -68,6 +68,7 @@ const VALID_SKILLS = new Set([
 
 const VALID_ACTIONS = new Set([
 	"Attack",
+	"Cast a Spell",
 	"Dash",
 	"Disengage",
 	"Dodge",

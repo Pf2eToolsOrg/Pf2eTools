@@ -1653,7 +1653,7 @@ Renderer.splitFirstSpace = function (string) {
 	return firstIndex === -1 ? [string, ""] : [string.substr(0, firstIndex), string.substr(firstIndex + 1)];
 };
 
-Renderer._splitByTagsBase = function (leadingCharacter) {
+Renderer._splitByTagsBase = function (leadingCharacter, altLeadCharacter) {
 	return function (string) {
 		let tagDepth = 0;
 		let char, char2;
@@ -1672,7 +1672,8 @@ Renderer._splitByTagsBase = function (leadingCharacter) {
 							curStr += "{";
 						} else {
 							out.push(curStr);
-							curStr = "";
+							curStr = leadingCharacter;
+							++i;
 						}
 					} else curStr += "{";
 					break;
@@ -1686,6 +1687,8 @@ Renderer._splitByTagsBase = function (leadingCharacter) {
 					} else curStr += "}";
 					break;
 
+				case leadingCharacter: curStr += altLeadCharacter || leadingCharacter; break;
+
 				default: curStr += char; break;
 			}
 		}
@@ -1696,8 +1699,8 @@ Renderer._splitByTagsBase = function (leadingCharacter) {
 	}
 };
 
-Renderer.splitByTags = Renderer._splitByTagsBase("@");
-Renderer.splitByPropertyInjectors = Renderer._splitByTagsBase("=");
+Renderer.splitByTags = Renderer._splitByTagsBase("@", "&commat;");
+Renderer.splitByPropertyInjectors = Renderer._splitByTagsBase("=", "&equals;");
 
 Renderer.getEntryDice = function (entry, name) {
 	function legacyDiceToString (array) {
@@ -1897,11 +1900,11 @@ Renderer.utils = {
 			<th class="rnd-name name" colspan="6">
 				<div class="name-inner">
 					<div class="flex-v-center">
-						<span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this, '${it.source.escapeQuotes()}')">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>
+						<span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>
 						${opts.pronouncePart || ""}
 					</div>
-					<span class="stats-source ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>
-						${Parser.sourceJsonToAbv(it.source)}${opts.isAddPageNum && it.page > 0 ? ` p${it.page}` : ""}
+					<span class="stats-source ${it.source ? `${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}` : ""}" ${it.source ? BrewUtil.sourceJsonToStyle(it.source) : ""}>
+						${it.source ? Parser.sourceJsonToAbv(it.source) : ""}${opts.isAddPageNum && it.page > 0 ? ` p${it.page}` : ""}
 					</span>
 				</div>
 			</th>
@@ -2310,7 +2313,7 @@ Renderer.spell = {
 			const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
 			renderer.recursiveRender(higherLevelsEntryList, renderStack, {depth: 2});
 		}
-		renderStack.push(`<div><span class="bold">Classes: </span>${Parser.spMainClassesToFull(spell.classes)}</div>`);
+		if (spell.classes) renderStack.push(`<div><span class="bold">Classes: </span>${Parser.spMainClassesToFull(spell.classes)}</div>`);
 		renderStack.push(`</td></tr>`);
 
 		return renderStack.join("");
