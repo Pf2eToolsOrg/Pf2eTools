@@ -1659,6 +1659,7 @@ Renderer._splitByTagsBase = function (leadingCharacter, altLeadCharacter) {
 		let char, char2;
 		const out = [];
 		let curStr = "";
+		let isLastOpen = false;
 
 		const len = string.length;
 		for (let i = 0; i < len; ++i) {
@@ -1667,6 +1668,7 @@ Renderer._splitByTagsBase = function (leadingCharacter, altLeadCharacter) {
 
 			switch (char) {
 				case "{":
+					isLastOpen = true;
 					if (char2 === leadingCharacter) {
 						if (tagDepth++ > 0) {
 							curStr += "{";
@@ -1679,6 +1681,7 @@ Renderer._splitByTagsBase = function (leadingCharacter, altLeadCharacter) {
 					break;
 
 				case "}":
+					isLastOpen = false;
 					if (tagDepth === 0) {
 						curStr += "}";
 					} else if (--tagDepth === 0) {
@@ -1687,9 +1690,13 @@ Renderer._splitByTagsBase = function (leadingCharacter, altLeadCharacter) {
 					} else curStr += "}";
 					break;
 
-				case leadingCharacter: curStr += altLeadCharacter || leadingCharacter; break;
+				case leadingCharacter: {
+					if (altLeadCharacter && !isLastOpen) curStr += altLeadCharacter;
+					else curStr += leadingCharacter;
+					break;
+				}
 
-				default: curStr += char; break;
+				default: isLastOpen = false; curStr += char; break;
 			}
 		}
 
@@ -4737,11 +4744,14 @@ Renderer.hover = {
 					<html lang="en" class="${styleSwitcher && styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_NIGHT ? StyleSwitcher.NIGHT_CLASS : ""}"><head>
 						<meta name="viewport" content="width=device-width, initial-scale=1">
 						<title>${opts.title}</title>
+						<link rel="manifest" href="manifest.webmanifest">
 						<link rel="stylesheet" href="css/bootstrap.css">
 						<link rel="stylesheet" href="css/jquery-ui.css">
 						<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 						<link rel="stylesheet" href="css/style.css">
 						<link rel="icon" href="favicon.png">
+
+						<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js?v=${VERSION_NUMBER}");</script>
 						<style>
 							html, body { width: 100%; height: 100%; }
 							body { overflow-y: scroll; }

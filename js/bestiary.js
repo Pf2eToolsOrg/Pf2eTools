@@ -339,7 +339,7 @@ async function pPageInit (loadedSources) {
 
 	subList = ListUtil.initSublist({
 		listClass: "submonsters",
-		sortFunction: BestiaryPage.sortMonsters,
+		fnSort: BestiaryPage.sortMonsters,
 		onUpdate: onSublistChange,
 		uidHandler: (mon, uid) => ScaleCreature.scale(mon, Number(uid.split("_").last())),
 		uidUnpacker: getUnpackedUid

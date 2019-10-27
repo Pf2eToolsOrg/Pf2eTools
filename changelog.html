@@ -12,11 +12,15 @@
 
 	<title>Changelog - 5etools</title>
 
+	<link rel="manifest" href="manifest.webmanifest">
+
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="favicon.png">
+
+	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
 
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
@@ -1645,6 +1649,29 @@ Filters -- completely overhauled internally:
 - Added the Sage Advice Compendium (under Rules)
 - Added OG UA Artificer Alchemical Formulas to the Options/Features page
 - Added images to conditions on the Conditions and Diseases page
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.85.1",
+			date: "2019-10-24",
+			txt: `
+- Fixed indexing of some Options/Features`
+		},
+		{
+			ver: "1.85.2",
+			date: "2019-10-24",
+			txt: `
+- Fixed some broken conditions images`
+		},
+		{
+			ver: "1.86.0",
+			date: "2019-10-27",
+			title: "A Progressive Society",
+			txt: `
+- Made the site compliant with Progressive Web Application specifications, allowing it to be installed to e.g. the home screen of a smartphone
+  - You may see a prompt when visiting the site, but if not, an option to install it is available under Settings
+  - This does not, in itself, make an offline app. To make the site content be available offline, you have to then use the Preload Offline Data option from the Settings menu (any pages you visit will be automatically preloaded regardless, so may still work offline).
+    - At least on my phone, this seems to hang, and I never quite figured out why. Cancelling it and restarting it will use the previous progress and eventually complete the download, though.
 - (Fixed typos/added tags)`
 		}
 	];

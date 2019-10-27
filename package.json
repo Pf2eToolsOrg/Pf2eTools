@@ -1,7 +1,7 @@
 {
 	"name": "5etools",
 	"author": "TheGiddyLimit",
-	"version": "1.85.0",
+	"version": "1.86.0",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
@@ -18,7 +18,8 @@
 		"build:deploy:prod": "bash build/deploy-prep-prod.sh",
 		"build:deploy:prod:cdn": "bash build/deploy-prep-prod--cdn.sh",
 		"build:seo": "node node/generate-seo.js",
-		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:seo",
+		"build:sw": "node node/generate-service-worker.js",
+		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:sw",
 		"preversion": "npm test",
 		"version": "node node/version-bump.js",
 		"serve:dev": "http-server -c-1 --cors"

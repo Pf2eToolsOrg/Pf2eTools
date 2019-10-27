@@ -2,6 +2,7 @@
 
 class NavBar {
 	static init () {
+		this._initInstallPrompt();
 		// render the visible elements ASAP
 		window.addEventListener(
 			"DOMContentLoaded",
@@ -11,6 +12,11 @@ class NavBar {
 			}
 		);
 		window.addEventListener("load", NavBar.initHandlers);
+	}
+
+	static _initInstallPrompt () {
+		NavBar._cachedInstallEvent = null;
+		window.addEventListener("beforeinstallprompt", e => NavBar._cachedInstallEvent = e);
 	}
 
 	static initElements () {
@@ -145,6 +151,7 @@ class NavBar {
 				className: "nightModeToggle"
 			}
 		);
+		addDivider(ulSettings);
 		addButton(
 			ulSettings,
 			{
@@ -172,6 +179,101 @@ class NavBar {
 					location.reload();
 				},
 				title: "Load previously-saved data (loaded homebrew, active blacklists, DM Screen configuration,...) from a file."
+			}
+		);
+		addDivider(ulSettings);
+		addButton(
+			ulSettings,
+			{
+				html: "Add as App",
+				click: async (evt) => {
+					evt.preventDefault();
+					try {
+						NavBar._cachedInstallEvent.prompt();
+					} catch (e) {
+						// Ignore errors
+					}
+				},
+				title: "Add the site to your home screen. When used in conjunction with the Preload Offline Data option, this can create a functional offline copy off the site."
+			}
+		);
+		addButton(
+			ulSettings,
+			{
+				html: "Preload Offline Data",
+				click: async (evt) => {
+					evt.preventDefault();
+
+					if (!navigator.serviceWorker || !navigator.serviceWorker.controller) {
+						JqueryUtil.doToast(`The loader was not yet available! Reload the page and try again. If this problem persists, your browser may not support preloading.`);
+						return;
+					}
+
+					const messageChannel = new MessageChannel();
+					const sendMessage = (data) => {
+						navigator.serviceWorker.controller.postMessage(data, [messageChannel.port2]);
+					};
+
+					if (NavBar._downloadBarMeta) {
+						if (NavBar._downloadBarMeta) {
+							NavBar._downloadBarMeta.$wrpOuter.remove();
+							NavBar._downloadBarMeta = null;
+						}
+						sendMessage({"type": "cache-cancel"});
+					}
+
+					const $dispProgress = $(`<div class="page__disp-download-progress-bar"/>`);
+					const $dispPct = $(`<div class="page__disp-download-progress-text flex-vh-center bold">0%</div>`);
+
+					const $btnCancel = $(`<button class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>`)
+						.click(() => {
+							if (NavBar._downloadBarMeta) {
+								NavBar._downloadBarMeta.$wrpOuter.remove();
+								NavBar._downloadBarMeta = null;
+							}
+							sendMessage({"type": "cache-cancel"});
+						});
+
+					const $wrpBar = $$`<div class="page__wrp-download-bar w-100 relative mr-2">${$dispProgress}${$dispPct}</div>`;
+					const $wrpOuter = $$`<div class="page__wrp-download">
+						${$wrpBar}
+						${$btnCancel}
+					</div>`.appendTo($("body"));
+
+					NavBar._downloadBarMeta = {$wrpOuter, $wrpBar, $dispProgress, $dispPct};
+
+					// Trigger the service worker to cache everything
+					messageChannel.port1.onmessage = e => {
+						const msg = e.data;
+						switch (msg.type) {
+							case "download-progress": {
+								if (NavBar._downloadBarMeta) {
+									NavBar._downloadBarMeta.$dispProgress.css("width", msg.data.pct);
+									NavBar._downloadBarMeta.$dispPct.text(msg.data.pct);
+								}
+								break;
+							}
+							case "download-cancelled": {
+								if (NavBar._downloadBarMeta) {
+									NavBar._downloadBarMeta.$wrpOuter.remove();
+									NavBar._downloadBarMeta = null;
+								}
+								break;
+							}
+							case "download-error": {
+								if (NavBar._downloadBarMeta) {
+									NavBar._downloadBarMeta.$wrpBar.addClass("page__wrp-download-bar--error");
+									NavBar._downloadBarMeta.$dispProgress.addClass("page__disp-download-progress-bar--error");
+									NavBar._downloadBarMeta.$dispPct.text("Error!");
+								}
+								break;
+							}
+						}
+					};
+
+					sendMessage({"type": "cache-start"});
+				},
+				title: "Preload the site data for offline use. Warning: slow. If it appears to freeze, cancel it and try again; progress will be saved."
 			}
 		);
 
@@ -462,4 +564,6 @@ NavBar._timersClose = {};
 NavBar._timerMousePos = {};
 NavBar._mouseX = null;
 NavBar._mouseY = null;
+NavBar._cachedInstallEvent = null;
+NavBar._downloadBarMeta = null;
 NavBar.init();
