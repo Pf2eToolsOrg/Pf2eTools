@@ -2927,91 +2927,79 @@ const bookLoader = new BookLoader();
 
 class NoteBox {
 	static make$Notebox (board, content) {
-		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports embedding (CTRL-click the text to activate the embed):\n • Clickable rollers,  [[1d20+2]]\n • Tags (as per the Demo page), {@creature goblin}">${content || ""}</textarea>`)
-			.on("keydown", () => {
-				board.doSaveStateDebounced();
-			})
-			.on("mousedown", (evt) => {
-				if (evt.ctrlKey || evt.metaKey) {
-					setTimeout(() => {
-						const txt = $iptText[0];
-						if (txt.selectionStart === txt.selectionEnd) {
-							const doDesel = (pos = 0) => {
-								setTimeout(() => txt.setSelectionRange(pos, pos), 1);
-							};
-
-							const pos = txt.selectionStart;
-							const text = txt.value;
-							const l = text.length;
-							let beltStack = [];
-							let braceStack = [];
-							let belts = 0;
-							let braces = 0;
-							let beltsAtPos = null;
-							let bracesAtPos = null;
-							let lastBeltPos = null;
-							let lastBracePos = null;
-							outer:
-							for (let i = 0; i < l; ++i) {
-								const c = text[i];
-								switch (c) {
-									case "[":
-										belts = Math.min(belts + 1, 2);
-										if (belts === 2) beltStack = [];
-										lastBeltPos = i;
-										break;
-									case "]":
-										belts = Math.max(belts - 1, 0);
-										if (belts === 0 && i > pos) break outer;
-										break;
-									case "{":
-										if (text[i + 1] === "@") {
-											braces = 1;
-											braceStack = [];
-											lastBracePos = i;
-										}
-										break;
-									case "}":
-										braces = 0;
-										if (i > pos) break outer;
-										break;
-									default:
-										if (belts === 2) {
-											beltStack.push(c);
-										}
-										if (braces) {
-											braceStack.push(c);
-										}
-								}
-								if (i === pos) {
-									beltsAtPos = belts;
-									bracesAtPos = braces;
-								}
+		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports inline rolls and content tags (CTRL-q with the cursor over some text to activate the embed):\n • Inline rolls,  [[1d20+2]]\n • Content tags (as per the Demo page), {@creature goblin}, {@spell fireball}">${content || ""}</textarea>`)
+			.on("keydown", evt => {
+				if ((evt.ctrlKey || evt.metaKey) && evt.key === "q") {
+					const txt = $iptText[0];
+					if (txt.selectionStart === txt.selectionEnd) {
+						const pos = txt.selectionStart;
+						const text = txt.value;
+						const l = text.length;
+						let beltStack = [];
+						let braceStack = [];
+						let belts = 0;
+						let braces = 0;
+						let beltsAtPos = null;
+						let bracesAtPos = null;
+						let lastBeltPos = null;
+						let lastBracePos = null;
+						outer: for (let i = 0; i < l; ++i) {
+							const c = text[i];
+							switch (c) {
+								case "[":
+									belts = Math.min(belts + 1, 2);
+									if (belts === 2) beltStack = [];
+									lastBeltPos = i;
+									break;
+								case "]":
+									belts = Math.max(belts - 1, 0);
+									if (belts === 0 && i > pos) break outer;
+									break;
+								case "{":
+									if (text[i + 1] === "@") {
+										braces = 1;
+										braceStack = [];
+										lastBracePos = i;
+									}
+									break;
+								case "}":
+									braces = 0;
+									if (i > pos) break outer;
+									break;
+								default:
+									if (belts === 2) {
+										beltStack.push(c);
+									}
+									if (braces) {
+										braceStack.push(c);
+									}
 							}
-
-							if (beltsAtPos === 2 && belts === 0) {
-								const str = beltStack.join("");
-								if (/^([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?$/i.exec(str)) {
-									Renderer.dice.roll2(str.replace(`[[`, "").replace(`]]`, ""), {
-										user: false,
-										name: "DM Screen"
-									});
-									doDesel(lastBeltPos);
-								}
-							} else if (bracesAtPos === 1 && braces === 0) {
-								const str = braceStack.join("");
-								const tag = str.split(" ")[0].replace(/^@/, "");
-								if (Renderer.HOVER_TAG_TO_PAGE[tag]) {
-									const r = Renderer.get().render(`{${str}`);
-									evt.type = "mouseover";
-									evt.shiftKey = true;
-									$(r).trigger(evt);
-								}
-								doDesel(lastBracePos);
+							if (i === pos) {
+								beltsAtPos = belts;
+								bracesAtPos = braces;
 							}
 						}
-					}, 1); // defer slightly to allow text to be selected
-				}
+
+						if (beltsAtPos === 2 && belts === 0) {
+							const str = beltStack.join("");
+							if (/^([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?$/i.exec(str)) {
+								Renderer.dice.roll2(str.replace(`[[`, "").replace(`]]`, ""), {
+									user: false,
+									name: "DM Screen"
+								});
+							}
+						} else if (bracesAtPos === 1 && braces === 0) {
+							const str = braceStack.join("");
+							const tag = str.split(" ")[0].replace(/^@/, "");
+							if (Renderer.HOVER_TAG_TO_PAGE[tag]) {
+								const r = Renderer.get().render(`{${str}`);
+								evt.type = "mouseover";
+								evt.shiftKey = true;
+								$(r).trigger(evt);
+							}
+						}
+					}
+				} else board.doSaveStateDebounced();
 			});
 
 		return $iptText;

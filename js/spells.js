@@ -611,8 +611,8 @@ function addSpells (data) {
 		// used for filtering
 		spell._fSources = ListUtil.getCompleteFilterSources(spell);
 		spell._fMeta = getMetaFilterObj(spell);
-		spell._fClasses = spell.classes.fromClassList ? spell.classes.fromClassList.map(c => getClassFilterStr(c)) : [];
-		spell._fSubclasses = spell.classes.fromSubclass
+		spell._fClasses = spell.classes && spell.classes.fromClassList ? spell.classes.fromClassList.map(c => getClassFilterStr(c)) : [];
+		spell._fSubclasses = spell.classes && spell.classes.fromSubclass
 			? spell.classes.fromSubclass.map(c => new FilterItem({
 				item: `${c.class.name}: ${getClassFilterStr(c.subclass)}`,
 				nest: c.class.name,

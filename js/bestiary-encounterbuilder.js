@@ -921,14 +921,14 @@ class EncounterBuilder extends ProxyBase {
 
 			const toFindUid = !(scaledTo == null || baseCrNum === scaledTo) ? getUid(mon.name, mon.source, scaledTo) : null;
 			const ixCurrItem = state.items.findIndex(it => {
-				if (scaledTo == null || scaledTo === baseCrNum) return it.uniqueid == null && it.h === toFindHash;
+				if (scaledTo == null || scaledTo === baseCrNum) return !it.uniqueid && it.h === toFindHash;
 				else return it.uniqueid === toFindUid;
 			});
 			if (!~ixCurrItem) throw new Error(`Could not find previously sublisted item!`);
 
 			const toFindNxtUid = baseCrNum !== targetCrNum ? getUid(mon.name, mon.source, targetCrNum) : null;
 			const nextItem = state.items.find(it => {
-				if (targetCrNum === baseCrNum) return it.uniqueid == null && it.h === toFindHash;
+				if (targetCrNum === baseCrNum) return !it.uniqueid && it.h === toFindHash;
 				else return it.uniqueid === toFindNxtUid;
 			});
 

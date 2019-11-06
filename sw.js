@@ -1,8 +1,15 @@
 importScripts("./js/sw-files.js");
 
-const cacheName = /* 5ETOOLS_VERSION__OPEN */"1.86.0"/* 5ETOOLS_VERSION__CLOSE */;
+const cacheName = /* 5ETOOLS_VERSION__OPEN */"1.88.0"/* 5ETOOLS_VERSION__CLOSE */;
+const cacheableFilenames = new Set(filesToCache);
 
 let isCacheRunning;
+
+function getPath (urlOrPath) {
+	// Add a fake domain name to allow proper URL conversion
+	if (urlOrPath.startsWith("/")) urlOrPath = `https://5e.com${urlOrPath}`;
+	return (new URL(urlOrPath)).pathname;
+}
 
 // Installing Service Worker
 self.addEventListener("install", () => {
@@ -19,11 +26,12 @@ self.addEventListener("activate", e => {
 	})());
 });
 
-async function getOrCache (req, retryCount = 0) {
-	const url = req.request ? req.request.url : req;
+async function getOrCache (url, retryCount = 0) {
+	const path = getPath(url);
 
-	const fromCache = await caches.match(url);
+	const fromCache = await caches.match(path);
 	if (fromCache) return fromCache;
+
 	while (true) {
 		let response;
 		try {
@@ -33,13 +41,17 @@ async function getOrCache (req, retryCount = 0) {
 			else throw e;
 		}
 		const cache = await caches.open(cacheName);
-		cache.put(url, response.clone()); // don't await
+		cache.put(path, response.clone()); // don't await
 		return response;
 	}
 }
 
 self.addEventListener("fetch", e => {
-	e.respondWith(getOrCache(e));
+	const url = e.request.url;
+	const path = getPath(url);
+
+	if (!cacheableFilenames.has(path)) return;
+	e.respondWith(getOrCache(url));
 });
 
 self.addEventListener("message", async e => {

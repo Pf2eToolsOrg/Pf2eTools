@@ -1,5 +1,5 @@
 class RenderSpells {
-	static $getRenderedSpell (spell, subclassLookup) {
+	static $getRenderedSpell (sp, subclassLookup) {
 		const renderer = Renderer.get();
 
 		const renderStack = [];
@@ -7,50 +7,54 @@ class RenderSpells {
 
 		renderStack.push(`
 			${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getNameTr(spell)}
-			<tr><td class="rd-spell__level-school-ritual" colspan="6"><span>${Parser.spLevelSchoolMetaToFull(spell.level, spell.school, spell.meta, spell.subschools)}</span></td></tr>
-			<tr><td class="castingtime" colspan="6"><span class="bold">Casting Time: </span>${Parser.spTimeListToFull(spell.time)}</td></tr>
-			<tr><td class="range" colspan="6"><span class="bold">Range: </span>${Parser.spRangeToFull(spell.range)}</td></tr>
-			<tr><td class="components" colspan="6"><span class="bold">Components: </span>${Parser.spComponentsToFull(spell.components, spell.level)}</td></tr>
-			<tr><td class="range" colspan="6"><span class="bold">Duration: </span>${Parser.spDurationToFull(spell.duration)}</td></tr>
+			${Renderer.utils.getNameTr(sp)}
+			<tr><td class="rd-spell__level-school-ritual" colspan="6"><span>${Parser.spLevelSchoolMetaToFull(sp.level, sp.school, sp.meta, sp.subschools)}</span></td></tr>
+			<tr><td colspan="6"><span class="bold">Casting Time: </span>${Parser.spTimeListToFull(sp.time)}</td></tr>
+			<tr><td colspan="6"><span class="bold">Range: </span>${Parser.spRangeToFull(sp.range)}</td></tr>
+			<tr><td colspan="6"><span class="bold">Components: </span>${Parser.spComponentsToFull(sp.components, sp.level)}</td></tr>
+			<tr><td colspan="6"><span class="bold">Duration: </span>${Parser.spDurationToFull(sp.duration)}</td></tr>
 			${Renderer.utils.getDividerTr()}
 		`);
 
-		const entryList = {type: "entries", entries: spell.entries};
-		renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
+		const entryList = {type: "entries", entries: sp.entries};
+		renderStack.push(`<tr class="text"><td colspan="6" class="text">`);
 		renderer.recursiveRender(entryList, renderStack, {depth: 1});
-		if (spell.entriesHigherLevel) {
-			const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
+		if (sp.entriesHigherLevel) {
+			const higherLevelsEntryList = {type: "entries", entries: sp.entriesHigherLevel};
 			renderer.recursiveRender(higherLevelsEntryList, renderStack, {depth: 2});
 		}
 		renderStack.push(`</td></tr>`);
 
-		if (spell.classes) renderStack.push(`<tr class="text"><td class="classes" colspan="6"><span class="bold">Classes: </span>${Parser.spMainClassesToFull(spell.classes)}</td></tr>`);
+		if (sp.classes) renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Classes: </span>${Parser.spMainClassesToFull(sp.classes)}</td></tr>`);
 
-		if (spell.classes.fromSubclass) {
-			const currentAndLegacy = Parser.spSubclassesToCurrentAndLegacyFull(spell.classes, subclassLookup);
+		if (sp.classes && sp.classes.fromSubclass) {
+			const currentAndLegacy = Parser.spSubclassesToCurrentAndLegacyFull(sp.classes, subclassLookup);
 			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Subclasses: </span>${currentAndLegacy[0]}</td></tr>`);
 			if (currentAndLegacy[1]) {
 				renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted"><span class="bold">Subclasses (legacy): </span>${currentAndLegacy[1]}</section></td></tr>`);
 			}
 		}
 
-		if (spell.races) {
-			renderStack.push(`<tr class="text"><td class="classes" colspan="6"><span class="bold">Races: </span>${spell.races.map(r => renderer.render(`{@race ${r.name}|${r.source}}`)).join(", ")}</td></tr>`);
+		if (sp.classes && sp.classes.fromClassListVariant) {
+			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold" title="Source: ${Parser.sourceJsonToFull(SRC_UACFV)}">Variant Classes: </span>${Parser.spMainClassesToFull(sp.classes, false, "fromClassListVariant")}</td></tr>`);
 		}
 
-		if (spell.backgrounds) {
-			renderStack.push(`<tr class="text"><td class="classes" colspan="6"><span class="bold">Backgrounds: </span>${spell.backgrounds.sort((a, b) => SortUtil.ascSortLower(a.name, b.name)).map(r => renderer.render(`{@background ${r.name}|${r.source}}`)).join(", ")}</td></tr>`);
+		if (sp.races) {
+			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Races: </span>${sp.races.map(r => renderer.render(`{@race ${r.name}|${r.source}}`)).join(", ")}</td></tr>`);
 		}
 
-		if (spell._scrollNote) {
+		if (sp.backgrounds) {
+			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Backgrounds: </span>${sp.backgrounds.sort((a, b) => SortUtil.ascSortLower(a.name, b.name)).map(r => renderer.render(`{@background ${r.name}|${r.source}}`)).join(", ")}</td></tr>`);
+		}
+
+		if (sp._scrollNote) {
 			renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
 			renderer.recursiveRender(`{@italic Note: Both the {@class ${RenderSpells.STR_FIGHTER} (${RenderSpells.STR_ELD_KNIGHT})} and the {@class ${RenderSpells.STR_ROGUE} (${RenderSpells.STR_ARC_TCKER})} spell lists include all {@class ${RenderSpells.STR_WIZARD}} spells. Spells of 5th level or higher may be cast with the aid of a spell scroll or similar.}`, renderStack, {depth: 2});
 			renderStack.push(`</section></td></tr>`);
 		}
 
 		renderStack.push(`
-			${Renderer.utils.getPageTr(spell)}
+			${Renderer.utils.getPageTr(sp)}
 			${Renderer.utils.getBorderTr()}
 		`);
 
@@ -101,7 +105,7 @@ class RenderSpells {
 		spell._isInitClasses = true;
 
 		// add eldritch knight and arcane trickster
-		if (spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === RenderSpells.STR_WIZARD && c.source === SRC_PHB).length) {
+		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === RenderSpells.STR_WIZARD && c.source === SRC_PHB).length) {
 			if (!spell.classes.fromSubclass) spell.classes.fromSubclass = [];
 			spell.classes.fromSubclass.push({
 				class: {name: RenderSpells.STR_FIGHTER, source: SRC_PHB},
@@ -117,7 +121,7 @@ class RenderSpells {
 		}
 
 		// add divine soul, favored soul v2, favored soul v3
-		if (spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === RenderSpells.STR_CLERIC && c.source === SRC_PHB).length) {
+		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === RenderSpells.STR_CLERIC && c.source === SRC_PHB).length) {
 			if (!spell.classes.fromSubclass) {
 				spell.classes.fromSubclass = [];
 				spell.classes.fromSubclass.push({
@@ -142,7 +146,7 @@ class RenderSpells {
 			});
 		}
 
-		if (spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Wizard")) {
+		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Wizard")) {
 			if (spell.level === 0) {
 				// add high elf
 				(spell.races || (spell.races = [])).push({
@@ -167,7 +171,7 @@ class RenderSpells {
 			}
 		}
 
-		if (spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Druid")) {
+		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Druid")) {
 			if (spell.level === 0) {
 				// add nature cleric
 				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({

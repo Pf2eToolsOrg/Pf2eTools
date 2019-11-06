@@ -14,27 +14,16 @@ class SpellBuilder extends Builder {
 		this._renderOutputDebounced = MiscUtil.debounce(() => this._renderOutput(), 50);
 	}
 
-	handleSidebarLoadExistingClick () {
-		const searchWidget = new SearchWidget(
-			{Spell: SearchWidget.CONTENT_INDICES.Spell},
-			async (page, source, hash) => {
-				doClose();
-				const spell = MiscUtil.copy(await Renderer.hover.pCacheAndGet(page, source, hash));
+	async pHandleSidebarLoadExistingClick () {
+		const result = await SearchWidget.pGetUserSpellSearch();
+		if (result) {
+			const spell = MiscUtil.copy(await Renderer.hover.pCacheAndGet(result.page, result.source, result.hash));
+			spell.source = this._ui.source;
+			this.setStateFromLoaded({s: spell, m: this.getInitialMetaState()});
 
-				spell.source = this._ui.source;
-				this.setStateFromLoaded({s: spell, m: this.getInitialMetaState()});
-
-				this.renderInput();
-				this.renderOutput();
-			},
-			{defaultCategory: "Spell"}
-		);
-		const {$modalInner, doClose} = UiUtil.getShowModal({
-			title: "Select Spell",
-			cbClose: () => searchWidget.$wrpSearch.detach()
-		});
-		$modalInner.append(searchWidget.$wrpSearch);
-		searchWidget.doFocus();
+			this.renderInput();
+			this.renderOutput();
+		}
 	}
 
 	async pInit () {

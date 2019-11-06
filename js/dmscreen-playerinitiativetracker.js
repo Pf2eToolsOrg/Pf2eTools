@@ -130,7 +130,7 @@ class InitiativeTrackerPlayerMessageHandlerScreen extends InitiativeTrackerPlaye
 		this._$meta.show();
 		this._$head.show();
 		this._$rows.show();
-		this._$wrpInitial.hide();
+		this._$wrpInitial.addClass("hidden");
 
 		$(window).on("beforeunload", evt => {
 			if (this._clientData.client.isActive) {

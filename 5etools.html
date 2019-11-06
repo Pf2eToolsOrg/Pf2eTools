@@ -441,7 +441,7 @@
 	$(`#version_number`).text(VERSION_NUMBER);
 
 	const $lnkB20 = $(`#betteR20_link`);
-	$lnkB20.attr("href", `${$lnkB20.attr("href")}?ver=${VERSION_NUMBER}_${Date.now()}`);
+	$lnkB20.attr("href", `${$lnkB20.attr("href")}?v=${VERSION_NUMBER}_${Date.now()}`);
 
 	window.__cmp2 = () => {
 		alert("This only works on a live version of the site!");

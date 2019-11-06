@@ -4,10 +4,15 @@ class FeatsPage extends ListPage {
 	constructor () {
 		const sourceFilter = getSourceFilter();
 		const asiFilter = getAsiFilter();
-		const prereqFilter = new Filter({
-			header: "Prerequisite",
-			items: ["Ability", "Race", "Proficiency", "Spellcasting"]
+		const otherPrereqFilter = new Filter({
+			header: "Other",
+			items: ["Ability", "Race", "Proficiency", "Special", "Spellcasting"]
 		});
+		const levelFilter = new Filter({
+			header: "Level",
+			itemSortFn: SortUtil.ascSortNumericalSuffix
+		});
+		const prerequisiteFilter = new MultiFilter({header: "Prerequisite", filters: [otherPrereqFilter, levelFilter]});
 
 		super({
 			dataSource: "data/feats.json",
@@ -15,7 +20,7 @@ class FeatsPage extends ListPage {
 			filters: [
 				sourceFilter,
 				asiFilter,
-				prereqFilter
+				prerequisiteFilter
 			],
 			filterSource: sourceFilter,
 
@@ -27,6 +32,7 @@ class FeatsPage extends ListPage {
 		});
 
 		this._sourceFilter = sourceFilter;
+		this._levelFilter = levelFilter;
 	}
 
 	getListItem (feat, ftI) {
@@ -34,12 +40,17 @@ class FeatsPage extends ListPage {
 		const ability = Renderer.getAbilityData(feat.ability);
 		if (!ability.asText) ability.asText = STR_NONE;
 		feat._fAbility = ability.asCollection.filter(a => !ability.areNegative.includes(a)); // used for filtering
-		let prereqText = Renderer.feat.getPrerequisiteText(feat.prerequisite, true);
+		let prereqText = Renderer.utils.getPrerequisiteText(feat.prerequisite, true);
 		if (!prereqText) prereqText = STR_NONE;
 
+		// TODO rework prerequisite schema to match that of optional features
 		const preSet = new Set();
 		(feat.prerequisite || []).forEach(it => preSet.add(...Object.keys(it)));
-		feat._fPrereq = [...preSet].map(it => it.uppercaseFirst());
+		feat._fPrereqOther = [...preSet].map(it => it.uppercaseFirst());
+		if (feat.prerequisite) {
+			feat._fPrereqLevel = feat.prerequisite.filter(it => it.level != null).map(it => `Level ${it.level}`);
+			this._levelFilter.addItem(feat._fPrereqLevel);
+		}
 
 		feat._slAbility = ability.asText;
 		feat._slPrereq = prereqText;
@@ -87,7 +98,10 @@ class FeatsPage extends ListPage {
 				f,
 				ft.source,
 				ft._fAbility,
-				ft._fPrereq
+				[
+					ft._fPrereqOther,
+					ft._fPrereqLevel
+				]
 			);
 		});
 		FilterBox.selectFirstVisible(this._dataList);

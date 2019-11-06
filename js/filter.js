@@ -109,9 +109,9 @@ class FilterBox extends ProxyBase {
 	}
 
 	_setStateFromLoaded (state) {
-		Object.assign(this._meta, state.meta);
-		Object.assign(this._minisHidden, state.minisHidden);
-		Object.assign(this._combineAs, state.combineAs);
+		this._proxyAssign("meta", "_meta", "__meta", state.meta);
+		this._proxyAssign("minisHidden", "_minisHidden", "__minisHidden", state.minisHidden);
+		this._proxyAssign("combineAs", "_combineAs", "__combineAs", state.combineAs);
 	}
 
 	async _pDoSaveState () {
@@ -212,6 +212,18 @@ class FilterBox extends ProxyBase {
 			$(`<button class="btn btn-default ${this._isCompact ? "px-2" : ""}">Filter</button>`)
 				.click(() => this.show())
 				.prependTo(this._$wrpFormTop);
+
+			const sourceFilter = this._filters.find(it => it.header === FilterBox.SOURCE_HEADER);
+			if (sourceFilter) {
+				const selFnAlt = (val) => !SourceUtil.isNonstandardSource(val) && !BrewUtil.hasSourceJson(val);
+				const hkSelFn = () => {
+					if (this._meta.isBrewDefaultHidden) sourceFilter.setTempFnSel(selFnAlt);
+					else sourceFilter.setTempFnSel(null);
+					sourceFilter.updateMiniPillClasses();
+				};
+				this._addHook("meta", "isBrewDefaultHidden", hkSelFn);
+				hkSelFn();
+			}
 		}
 	}
 
@@ -225,6 +237,8 @@ class FilterBox extends ProxyBase {
 
 	_openSettingsModal () {
 		const {$modalInner} = UiUtil.getShowModal({title: "Settings"});
+		UiUtil.$getAddModalRowCb($modalInner, "Deselect Homebrew Sources by Default", this._meta, "isBrewDefaultHidden");
+		UiUtil.addModalSep($modalInner);
 		UiUtil.$getAddModalRowHeader($modalInner, "Hide summary for filter...", {helpText: "The summary is the small red and blue button panel which appear below the search bar."});
 		this._filters.forEach(f => UiUtil.$getAddModalRowCb($modalInner, f.header, this._minisHidden, f.header));
 	}
@@ -233,10 +247,8 @@ class FilterBox extends ProxyBase {
 		const {$modalInner} = UiUtil.getShowModal({title: "Filter Combination Logic"});
 		const $btnReset = $(`<button class="btn btn-xs btn-default">Reset</button>`)
 			.click(() => {
-				Object.keys(this._combineAs).forEach(k => {
-					this._combineAs[k] = "and";
-					$sels.forEach($sel => $sel.val("0"));
-				});
+				Object.keys(this._combineAs).forEach(k => this._combineAs[k] = "and");
+				$sels.forEach($sel => $sel.val("0"));
 			});
 		UiUtil.$getAddModalRowHeader($modalInner, "Combine filters as...", {$eleRhs: $btnReset});
 		const $sels = this._filters.map(f => UiUtil.$getAddModalRowSel($modalInner, f.header, this._combineAs, f.header, ["and", "or"], {fnDisplay: (it) => it.toUpperCase()}));
@@ -507,7 +519,8 @@ FilterBox._COMBINE_MODES = ["and", "or", "custom"];
 FilterBox._STORAGE_KEY = "filterBoxState";
 FilterBox._DEFAULT_META = {
 	modeCombineFilters: "and",
-	isSummaryHidden: false
+	isSummaryHidden: false,
+	isBrewDefaultHidden: false
 };
 
 // These are assumed to be the same length (4 characters)
@@ -671,6 +684,7 @@ class Filter extends FilterBase {
 		this._nests = opts.nests;
 		this._displayFn = opts.displayFn;
 		this._selFn = opts.selFn;
+		this._selFnCache = null;
 		this._deselFn = opts.deselFn;
 		this._itemSortFn = opts.itemSortFn === undefined ? SortUtil.ascSort : opts.itemSortFn;
 		this._groupFn = opts.groupFn;
@@ -720,13 +734,8 @@ class Filter extends FilterBase {
 		if (baseMeta) out.push(...baseMeta);
 
 		const areNotDefaultState = Object.entries(this._state).filter(([k, v]) => {
-			if (this._deselFn) {
-				const isDesel = this._deselFn(k);
-				return (isDesel && v !== 2) || (!isDesel && v !== 0);
-			} else if (this._selFn) {
-				const isSel = this._selFn(k);
-				return (isSel && v !== 1) || (!isSel && v !== 0);
-			} else return v !== 0;
+			const defState = this._getDefaultState(k);
+			return defState !== v;
 		});
 		if (areNotDefaultState.length) {
 			// serialize state as `key=value` pairs
@@ -755,22 +764,29 @@ class Filter extends FilterBase {
 			switch (prop) {
 				case "state": {
 					hasState = true;
-					Object.keys(this._state).forEach(k => this._state[k] = 0);
+					const nxtState = {};
+					Object.keys(this._state).forEach(k => nxtState[k] = this._getDefaultState(k));
 					vals.forEach(v => {
 						const [statePropLower, state] = v.split("=");
 						const stateProp = Object.keys(this._state).find(k => k.toLowerCase() === statePropLower);
-						if (stateProp) this._state[stateProp] = Number(state);
+						if (stateProp) nxtState[stateProp] = Number(state);
 					});
+					this._setState(nxtState);
 					break;
 				}
 				case "nestsHidden": {
 					hasNestsHidden = true;
-					Object.keys(this._nestsHidden).forEach(k => this._nestsHidden[k] = false);
+					const nxtNestsHidden = {};
+					Object.keys(this._nestsHidden).forEach(k => {
+						const nestKey = Object.keys(this._nests).find(it => k.toLowerCase() === it.toLowerCase());
+						nxtNestsHidden[k] = this._nests[nestKey] && this._nests[nestKey].isHidden;
+					});
 					vals.forEach(v => {
 						const [nestNameLower, state] = v.split("=");
 						const nestName = Object.keys(this._nestsHidden).find(k => k.toLowerCase() === nestNameLower);
-						if (nestName) this._nestsHidden[nestName] = !!Number(state);
+						if (nestName) nxtNestsHidden[nestName] = !!Number(state);
 					});
+					this._proxyAssign("nestsHidden", "_nestsHidden", "__nestsHidden", nxtNestsHidden);
 					break;
 				}
 			}
@@ -793,8 +809,10 @@ class Filter extends FilterBase {
 
 	_defaultItemState (item) {
 		// if both a selFn and a deselFn are specified, we default to deselecting
-		this._state[item.item] = this._deselFn && this._deselFn(item.item) ? 2 : this._selFn && this._selFn(item.item) ? 1 : 0
+		this._state[item.item] = this._getDefaultState(item.item);
 	}
+
+	_getDefaultState (k) { return this._deselFn && this._deselFn(k) ? 2 : this._selFn && this._selFn(k) ? 1 : 0; }
 
 	_$getPill (item) {
 		const $btnPill = $(`<div class="fltr__pill">${this._displayFn ? this._displayFn(item.item) : item.item}</div>`)
@@ -815,6 +833,22 @@ class Filter extends FilterBase {
 		hook();
 
 		return $btnPill;
+	}
+
+	setTempFnSel (tempFnSel) {
+		this._selFnCache = this._selFnCache || this._selFn;
+		if (tempFnSel) this._selFn = tempFnSel;
+		else this._selFn = this._selFnCache;
+	}
+
+	updateMiniPillClasses () {
+		this._items.filter(it => it.$mini).forEach(it => {
+			const isDefaultDesel = this._deselFn && this._deselFn(it.item);
+			const isDefaultSel = this._selFn && this._selFn(it.item);
+			it.$mini
+				.toggleClass("fltr__mini-pill--default-desel", isDefaultDesel)
+				.toggleClass("fltr__mini-pill--default-sel", isDefaultSel)
+		});
 	}
 
 	_$getMini (item) {

@@ -2122,7 +2122,7 @@
 					"type": "list",
 					"items": [
 						"You learn two {@filter maneuvers|optionalfeatures|feature type=MV:B} of your choice from among those available to the {@class fighter|phb|Battle Master|Battle Master|phb|Martial Archetype 3} archetype in the fighter class. If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice).",
-						"You gain one superiority die, which is a d6 (this die is added to any superiority dice you have from another source). This die is used to fuel your maneuvers. A superiority die is expended when you use it. You regain your expended superiority dice when you finish a short or long rest."
+						"You gain one superiority die, which is a {@dice d6} (this die is added to any superiority dice you have from another source). This die is used to fuel your maneuvers. A superiority die is expended when you use it. You regain your expended superiority dice when you finish a short or long rest."
 					]
 				}
 			]
@@ -3113,10 +3113,12 @@
 			"name": "Greater Dragonmark (Detection)",
 			"prerequisite": [
 				{
-					"level": 8
+					"level": {
+						"level": 8
+					}
 				},
 				{
-					"special": "character must possess a dragonmark"
+					"other": "character must possess a dragonmark"
 				}
 			],
 			"source": "UAWGE",
@@ -3147,10 +3149,12 @@
 			"name": "Greater Dragonmark (Finding)",
 			"prerequisite": [
 				{
-					"level": 8
+					"level": {
+						"level": 8
+					}
 				},
 				{
-					"special": "character must possess a dragonmark"
+					"other": "character must possess a dragonmark"
 				}
 			],
 			"source": "UAWGE",
@@ -3182,10 +3186,12 @@
 			"name": "Greater Dragonmark (Handling)",
 			"prerequisite": [
 				{
-					"level": 8
+					"level": {
+						"level": 8
+					}
 				},
 				{
-					"special": "character must possess a dragonmark"
+					"other": "character must possess a dragonmark"
 				}
 			],
 			"source": "UAWGE",
@@ -3216,10 +3222,12 @@
 			"name": "Greater Dragonmark (Healing)",
 			"prerequisite": [
 				{
-					"level": 8
+					"level": {
+						"level": 8
+					}
 				},
 				{
-					"special": "character must possess a dragonmark"
+					"other": "character must possess a dragonmark"
 				}
 			],
 			"source": "UAWGE",
@@ -3250,10 +3258,12 @@
 			"name": "Greater Dragonmark (Hospitality)",
 			"prerequisite": [
 				{
-					"level": 8
+					"level": {
+						"level": 8
+					}
 				},
 				{
-					"special": "character must possess a dragonmark"
+					"other": "character must possess a dragonmark"
 				}
 			],
 			"source": "UAWGE",
@@ -3284,10 +3294,12 @@
 			"name": "Greater Dragonmark (Making)",
 			"prerequisite": [
 				{
-					"level": 8
+					"level": {
+						"level": 8
+					}
 				},
 				{
-					"special": "character must possess a dragonmark"
+					"other": "character must possess a dragonmark"
 				}
 			],
 			"source": "UAWGE",
@@ -3318,10 +3330,12 @@
 			"name": "Greater Dragonmark (Passage)",
 			"prerequisite": [
 				{
-					"level": 8
+					"level": {
+						"level": 8
+					}
 				},
 				{
-					"special": "character must possess a dragonmark"
+					"other": "character must possess a dragonmark"
 				}
 			],
 			"source": "UAWGE",
@@ -3352,10 +3366,12 @@
 			"name": "Greater Dragonmark (Scribing)",
 			"prerequisite": [
 				{
-					"level": 8
+					"level": {
+						"level": 8
+					}
 				},
 				{
-					"special": "character must possess a dragonmark"
+					"other": "character must possess a dragonmark"
 				}
 			],
 			"source": "UAWGE",
@@ -3386,10 +3402,12 @@
 			"name": "Greater Dragonmark (Sentinel)",
 			"prerequisite": [
 				{
-					"level": 8
+					"level": {
+						"level": 8
+					}
 				},
 				{
-					"special": "character must possess a dragonmark"
+					"other": "character must possess a dragonmark"
 				}
 			],
 			"source": "UAWGE",
@@ -3420,10 +3438,12 @@
 			"name": "Greater Dragonmark (Shadow)",
 			"prerequisite": [
 				{
-					"level": 8
+					"level": {
+						"level": 8
+					}
 				},
 				{
-					"special": "character must possess a dragonmark"
+					"other": "character must possess a dragonmark"
 				}
 			],
 			"source": "UAWGE",
@@ -3454,10 +3474,12 @@
 			"name": "Greater Dragonmark (Storm)",
 			"prerequisite": [
 				{
-					"level": 8
+					"level": {
+						"level": 8
+					}
 				},
 				{
-					"special": "character must possess a dragonmark"
+					"other": "character must possess a dragonmark"
 				}
 			],
 			"source": "UAWGE",
@@ -3488,10 +3510,12 @@
 			"name": "Greater Dragonmark (Warding)",
 			"prerequisite": [
 				{
-					"level": 8
+					"level": {
+						"level": 8
+					}
 				},
 				{
-					"special": "character must possess a dragonmark"
+					"other": "character must possess a dragonmark"
 				}
 			],
 			"source": "UAWGE",
@@ -3523,7 +3547,7 @@
 			"name": "Aberrant Dragonmark",
 			"prerequisite": [
 				{
-					"special": "No existing dragonmark"
+					"other": "No existing dragonmark"
 				}
 			],
 			"source": "UAWGE",

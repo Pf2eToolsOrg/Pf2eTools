@@ -20,44 +20,34 @@ class CreatureBuilder extends Builder {
 		this._generateAttackCache = null;
 	}
 
-	handleSidebarLoadExistingClick () {
-		const searchWidget = new SearchWidget(
-			{Creature: SearchWidget.CONTENT_INDICES.Creature},
-			async (page, source, hash) => {
-				doClose();
-				const creature = MiscUtil.copy(await Renderer.hover.pCacheAndGet(page, source, hash));
+	async pHandleSidebarLoadExistingClick () {
+		const result = await SearchWidget.pGetUserCreatureSearch();
+		if (result) {
+			const creature = MiscUtil.copy(await Renderer.hover.pCacheAndGet(result.page, result.source, result.hash));
 
-				if (this._bestiaryFluffIndex[creature.source] && !creature.fluff) {
-					const rawFluff = await DataUtil.loadJSON(`data/bestiary/${this._bestiaryFluffIndex[creature.source]}`);
-					const fluff = Renderer.monster.getFluff(creature, this._bestiaryMetaRaw, rawFluff);
-					if (fluff) creature.fluff = fluff;
-				}
+			if (this._bestiaryFluffIndex[creature.source] && !creature.fluff) {
+				const rawFluff = await DataUtil.loadJSON(`data/bestiary/${this._bestiaryFluffIndex[creature.source]}`);
+				const fluff = Renderer.monster.getFluff(creature, this._bestiaryMetaRaw, rawFluff);
+				if (fluff) creature.fluff = fluff;
+			}
 
-				creature.source = this._ui.source;
-				delete creature.otherSources;
+			creature.source = this._ui.source;
+			delete creature.otherSources;
 
-				if (Parser.crToNumber(creature.cr) !== 100) {
-					const ixDefault = Parser.CRS.indexOf(creature.cr.cr || creature.cr);
-					const scaleTo = await InputUiUtil.pGetUserEnum({values: Parser.CRS, title: "At Challange Rating...", default: ixDefault});
+			if (Parser.crToNumber(creature.cr) !== 100) {
+				const ixDefault = Parser.CRS.indexOf(creature.cr.cr || creature.cr);
+				const scaleTo = await InputUiUtil.pGetUserEnum({values: Parser.CRS, title: "At Challange Rating...", default: ixDefault});
 
-					if (scaleTo != null && scaleTo !== ixDefault) {
-						const scaled = await ScaleCreature.scale(creature, Parser.crToNumber(Parser.CRS[scaleTo]));
-						delete scaled._displayName;
-						this.setStateFromLoaded({s: scaled, m: this.getInitialMetaState()});
-					} else this.setStateFromLoaded({s: creature, m: this.getInitialMetaState()});
+				if (scaleTo != null && scaleTo !== ixDefault) {
+					const scaled = await ScaleCreature.scale(creature, Parser.crToNumber(Parser.CRS[scaleTo]));
+					delete scaled._displayName;
+					this.setStateFromLoaded({s: scaled, m: this.getInitialMetaState()});
 				} else this.setStateFromLoaded({s: creature, m: this.getInitialMetaState()});
+			} else this.setStateFromLoaded({s: creature, m: this.getInitialMetaState()});
 
-				this.renderInput();
-				this.renderOutput();
-			},
-			{defaultCategory: "Creature"}
-		);
-		const {$modalInner, doClose} = UiUtil.getShowModal({
-			title: "Select Creature",
-			cbClose: () => searchWidget.$wrpSearch.detach()
-		});
-		$modalInner.append(searchWidget.$wrpSearch);
-		searchWidget.doFocus();
+			this.renderInput();
+			this.renderOutput();
+		}
 	}
 
 	async pInit () {

@@ -3,23 +3,51 @@
 const JSON_URL = "data/demo.json";
 const STORAGE_LOCATION = "demoInput";
 
-window.onload = loadJson;
+window.onload = pLoadJson;
 
-function loadJson () {
+async function pLoadJson () {
+	const rendererType = await StorageUtil.pGetForPage("renderer");
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-	DataUtil.loadJSON(JSON_URL).then(initDemo)
+	const data = await DataUtil.loadJSON(JSON_URL);
+	return initDemo(data, rendererType);
 }
 
-async function initDemo (data) {
+async function initDemo (data, rendererType) {
 	const defaultJson = data.data[0];
 
-	const renderer = new Renderer();
+	let renderer;
+
 	const $msg = $(`#message`);
 	const $in = $(`#jsoninput`);
 	const $out = $(`#pagecontent`);
 
+	const $selRenderer = $(`#demoSelectRenderer`);
 	const $btnRender = $(`#demoRender`);
 	const $btnReset = $(`#demoReset`);
+
+	function setRenderer (rendererType) {
+		switch (rendererType) {
+			case "html": {
+				renderer = Renderer.get();
+				$out.removeClass("whitespace-pre");
+				break;
+			}
+			case "md": {
+				renderer = RendererMarkdown.get();
+				$out.addClass("whitespace-pre");
+				break;
+			}
+			case "cards": {
+				renderer = RendererCard.get();
+				$out.addClass("whitespace-pre");
+				break;
+			}
+			default: throw new Error(`Unhandled renderer!`);
+		}
+	}
+
+	setRenderer(rendererType || "html");
+	$selRenderer.val(rendererType || "html");
 
 	// init editor
 	const editor = ace.edit("jsoninput");
@@ -75,13 +103,13 @@ async function initDemo (data) {
 		StorageUtil.pSetForPage(STORAGE_LOCATION, editor.getValue());
 	}, 150);
 
-	$btnReset.on("click", () => {
-		demoReset();
-	});
-	$btnRender.on("click", () => {
+	$selRenderer.change(() => {
+		const val = $selRenderer.val();
+		setRenderer(val);
 		demoRender();
+		StorageUtil.pSetForPage("renderer", val);
 	});
-	editor.on("change", () => {
-		renderAndSaveDebounced();
-	});
+	$btnReset.click(() => demoReset());
+	$btnRender.click(() => demoRender());
+	editor.change(() => renderAndSaveDebounced());
 }

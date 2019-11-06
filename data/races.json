@@ -6283,7 +6283,7 @@
 				{
 					"name": "Blood Thirst",
 					"entries": [
-						"You can drain blood and life energy from a willing creature, or one that is {@condition grappled} by you, {@condition incapacitated}, or {@condition restrained}. Make a melee attack against the target. If you hit, you deal 1 piercing damage and {@dice 1d6} necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and you regain hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0. A humanoid killed in this way becomes a null (see \"Zendikar Bestiary\")."
+						"You can drain blood and life energy from a willing creature, or one that is {@condition grappled} by you, {@condition incapacitated}, or {@condition restrained}. Make a melee attack against the target. If you hit, you deal 1 piercing damage and {@dice 1d6} necrotic damage. The target's hit point maximum is reduced by an amount equal to the necrotic damage taken, and you regain hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0. A humanoid killed in this way becomes a {@creature zombie||null}."
 					],
 					"type": "entries"
 				},
@@ -7704,6 +7704,12 @@
 			"size": "M",
 			"speed": 30,
 			"entries": [
+				{
+					"type": "entries",
+					"entries": [
+						"{@note The Tortle Package is considered part of Xanathar's Guide to Everything for Adventurers League character creation.}"
+					]
+				},
 				{
 					"name": "Age",
 					"type": "entries",

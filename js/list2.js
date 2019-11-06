@@ -89,7 +89,6 @@ class List {
 		this._isInit = true;
 	}
 
-	// TODO call this whenever we add more stuff to the list
 	update () {
 		if (this._isInit && this._isDirty) {
 			this._doSearch();

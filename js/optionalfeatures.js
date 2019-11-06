@@ -18,7 +18,7 @@ class OptionalFeaturesPage extends ListPage {
 		const sourceFilter = getSourceFilter();
 		const typeFilter = new Filter({
 			header: "Feature Type",
-			items: ["AI", "ED", "EI", "MM", "MV:B", "OTH", "FS:F", "FS:B", "FS:P", "FS:R", "PB"],
+			items: ["AI", "ED", "EI", "MM", "MV", "MV:B", "OTH", "FS:F", "FS:B", "FS:P", "FS:R", "PB"],
 			displayFn: Parser.optFeatureTypeToFull,
 			itemSortFn: filterFeatureTypeSort
 		});
@@ -84,29 +84,30 @@ class OptionalFeaturesPage extends ListPage {
 		it.featureType = it.featureType || "OTH";
 		if (it.prerequisite) {
 			it._sPrereq = true;
-			it._fPrereqPact = it.prerequisite.filter(it => it.type === "prereqPact").map(it => {
-				this._pactFilter.addItem(it.entry);
-				return it.entry;
+			it._fPrereqPact = it.prerequisite.filter(it => it.pact).map(it => {
+				this._pactFilter.addItem(it.pact);
+				return it.pact;
 			});
-			it._fPrereqPatron = it.prerequisite.filter(it => it.type === "prereqPatron").map(it => {
-				this._patronFilter.addItem(it.entry);
-				return it.entry;
+			it._fPrereqPatron = it.prerequisite.filter(it => it.patron).map(it => {
+				this._patronFilter.addItem(it.patron);
+				return it.patron;
 			});
-			it._fprereqSpell = it.prerequisite.filter(it => it.type === "prereqSpell").map(it => {
-				const mapped = (it.entries || []).map(it => it.split("#")[0]);
+			it._fprereqSpell = it.prerequisite.filter(it => it.spell).map(it => {
+				const mapped = (it.spell || []).map(it => it.split("#")[0]);
 				this._spellFilter.addItem(mapped);
 				return mapped;
 			});
-			it._fprereqFeature = it.prerequisite.filter(it => it.type === "prereqFeature").map(it => {
-				this._featureFilter.addItem(it.entries);
-				return it.entries;
+			it._fprereqFeature = it.prerequisite.filter(it => it.feature).map(it => {
+				this._featureFilter.addItem(it.feature);
+				return it.feature;
 			});
-			it._fPrereqLevel = it.prerequisite.filter(it => it.type === "prereqLevel").map(lvl => {
+			it._fPrereqLevel = it.prerequisite.filter(it => it.level).map(it => {
+				const lvlMeta = it.level;
 				const item = new FilterItem({
-					item: `${lvl.class.name}${lvl.subclass ? ` (${lvl.subclass.name})` : ""} Level ${lvl.level}`,
-					nest: lvl.class.name
+					item: `${lvlMeta.class.name}${lvlMeta.subclass ? ` (${lvlMeta.subclass.name})` : ""} Level ${lvlMeta.level}`,
+					nest: lvlMeta.class.name
 				});
-				this._levelFilter.addNest(lvl.class.name, {isHidden: true});
+				this._levelFilter.addNest(lvlMeta.class.name, {isHidden: true});
 				this._levelFilter.addItem(item);
 				return item;
 			});
@@ -130,7 +131,7 @@ class OptionalFeaturesPage extends ListPage {
 
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
-		const prerequisite = Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true);
+		const prerequisite = Renderer.utils.getPrerequisiteText(it.prerequisite, true, new Set(["level"]));
 		const level = Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite);
 
 		eleLi.innerHTML = `<a href="#${hash}">
@@ -183,7 +184,7 @@ class OptionalFeaturesPage extends ListPage {
 
 	getSublistItem (it, pinId) {
 		const hash = UrlUtil.autoEncodeHash(it);
-		const prerequisite = Renderer.optionalfeature.getPrerequisiteText(it.prerequisite, true);
+		const prerequisite = Renderer.utils.getPrerequisiteText(it.prerequisite, true, new Set(["level"]));
 		const level = Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite);
 
 		const $ele = $(`<li class="row">

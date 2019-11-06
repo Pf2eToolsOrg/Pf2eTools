@@ -311,6 +311,15 @@
 						]
 					},
 					{
+						"name": "Favored Foe",
+						"entries": [
+							"{@i 1st-level ranger feature (replaces Favored Enemy)}",
+							"You can call on your bond with nature to mark a creature as your favored enemy for a time: you know the {@spell hunter's mark} spell, and Wisdom is your spellcasting ability for it. You can use it a certain number of times without expending a spell slot and without requiring concentration a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest.",
+							"When you gain the Spellcasting feature at 2nd level, hunter's mark doesn't count against the number of ranger spells you know."
+						],
+						"source": "UAClassFeatureVariants"
+					},
+					{
 						"name": "Natural Explorer",
 						"entries": [
 							"You are particularly familiar with one type of natural environment and are adept at traveling and surviving in such regions. Choose one type of favored terrain: arctic, coast, desert, forest, grassland, mountain, swamp, or the Underdark. When you make an Intelligence or Wisdom check related to your favored terrain, your proficiency bonus is doubled if you are using a skill that you're proficient in.",
@@ -328,6 +337,42 @@
 							},
 							"You choose additional favored terrain types at 6th and 10th level."
 						]
+					},
+					{
+						"name": "Deft Explorer",
+						"entries": [
+							"{@i 1st-level ranger feature (replaces Natural Explorer)}",
+							"You are an unsurpassed explorer and survivor. Choose one of the following benefits, and then choose another one at 6th and 10th level.",
+							{
+								"type": "options",
+								"entries": [
+									{
+										"name": "Canny",
+										"entries": [
+											"Choose one skill: {@skill Animal Handling}, {@skill Athletics}, {@skill History}, {@skill Insight}, {@skill Investigation}, {@skill Medicine}, {@skill Nature}, {@skill Perception}, {@skill Stealth}, or {@skill Survival}. You gain proficiency in the chosen skill if you don't already have it, and you can add double your proficiency bonus to ability checks using that skill.",
+											"In addition, thanks to your extensive wandering, you are able to speak, read, and write two languages of your choice."
+										],
+										"type": "entries"
+									},
+									{
+										"name": "Roving",
+										"entries": [
+											"Your walking speed increases by 5, and you gain a climbing speed and a swimming speed equal to your walking speed."
+										],
+										"type": "entries"
+									},
+									{
+										"name": "Tireless",
+										"entries": [
+											"As an action, you can give yourself a number of temporary hit points equal to {@dice 1d10} + your Wisdom modifier. You can use this special action a number of times equal to your Wisdom modifier (a minimum of once), and you regain all expended uses when you finish a long rest.",
+											"In addition, whenever you finish a short rest, your exhaustion level, if any, is decreased by 1."
+										],
+										"type": "entries"
+									}
+								]
+							}
+						],
+						"source": "UAClassFeatureVariants"
 					}
 				],
 				[
@@ -389,10 +434,60 @@
 										"entries": [
 											"When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
 										]
+									},
+									{
+										"type": "entries",
+										"name": "Blind Fighting",
+										"entries": [
+											"Being unable to see a creature doesn't impose disadvantage on your attack rolls against it, provided the creature isn't hidden from you."
+										],
+										"source": "UAClassFeatureVariants"
+									},
+									{
+										"type": "entries",
+										"name": "Interception",
+										"entries": [
+											"When a creature you can see hits a target that is within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + your proficiency bonus (to a minimum of 0 damage). You must be wielding a shield or a simple or martial weapon to use this reaction."
+										],
+										"source": "UAClassFeatureVariants"
+									},
+									{
+										"type": "entries",
+										"name": "Thrown Weapon Fighting",
+										"entries": [
+											"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
+											"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +1 bonus to the damage roll."
+										],
+										"source": "UAClassFeatureVariants"
+									},
+									{
+										"type": "entries",
+										"name": "Unarmed Fighting",
+										"entries": [
+											"Your unarmed strikes can deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier. If you strike with two free hands, the {@dice d6} becomes a {@dice d8}.",
+											"When you successfully start a grapple, you can deal {@dice 1d4} bludgeoning damage to the grappled creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
+										],
+										"source": "UAClassFeatureVariants"
+									},
+									{
+										"type": "entries",
+										"name": "Druidic Warrior",
+										"entries": [
+											"You learn two cantrips of your choice from the {@filter druid spell list|spells|level=0|class=druid}. They count as druid spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the druid spell list."
+										],
+										"source": "UAClassFeatureVariants"
 									}
 								]
 							}
 						]
+					},
+					{
+						"name": "Martial Versatility",
+						"entries": [
+							"{@i 2nd-level feature (enhances Fighting Style)}",
+							"When you gain the Fighting Style feature, you can replace a fighting style you know with another style available to your class. This change represents a shift of focus in your martial training and practice, causing you to lose the benefits of one style and gain the benefits of another style."
+						],
+						"source": "UAClassFeatureVariants"
 					},
 					{
 						"name": "Spellcasting",
@@ -437,6 +532,22 @@
 								]
 							}
 						]
+					},
+					{
+						"name": "Spell Versatility",
+						"entries": [
+							"{@i 2nd-level ranger feature (enhances Spellcasting)}",
+							"Whenever you finish a long rest, you can replace one spell you learned from this Spellcasting feature with another spell from the ranger spell list. The new spell must be the same level as the spell you replace."
+						],
+						"source": "UAClassFeatureVariants"
+					},
+					{
+						"name": "Spellcasting Focus",
+						"entries": [
+							"{@i 2nd-level ranger feature (enhances Spellcasting)}",
+							"You can use a {@item druidic focus|phb} as a spellcasting focus for your ranger spells. See chapter 5, \"Equipment,\" of the Player's Handbook for a list of things that count as druidic focuses."
+						],
+						"source": "UAClassFeatureVariants"
 					}
 				],
 				[
@@ -452,6 +563,49 @@
 						"entries": [
 							"Beginning at 3rd level, you can use your action and expend one ranger spell slot to focus your awareness on the region around you. For 1 minute per level of the spell slot you expend, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): aberrations, celestials, dragons, elementals, fey, fiends, and undead. This feature doesn't reveal the creatures' location or number."
 						]
+					},
+					{
+						"name": "Primal Awareness",
+						"entries": [
+							"{@i 3rd-level ranger feature (replaces Primeval Awareness)}",
+							"You can focus your awareness through the interconnections of nature: you learn additional spells when you reach certain levels in this class if you don't already know them, as shown in the Primal Awareness Spells table. These spells don't count against the number of ranger spells you know.",
+							{
+								"type": "table",
+								"caption": "Primal Awareness Spells",
+								"colLabels": [
+									"Ranger Level",
+									"Spell"
+								],
+								"colStyles": [
+									"col-2 text-center",
+									"col-10"
+								],
+								"rows": [
+									[
+										"3rd",
+										"{@spell detect magic}, {@spell speak with animals}"
+									],
+									[
+										"5th",
+										"{@spell beast sense}, {@spell locate animals or plants}"
+									],
+									[
+										"9th",
+										"{@spell speak with plants}"
+									],
+									[
+										"13th",
+										"{@spell locate creature}"
+									],
+									[
+										"17th",
+										"{@spell commune with nature}"
+									]
+								]
+							},
+							"You can cast each of these spells once without expending a spell slot. Once you cast a spell in this way, you can't do so again until you finish a long rest."
+						],
+						"source": "UAClassFeatureVariants"
 					}
 				],
 				[
@@ -513,6 +667,15 @@
 							"Starting at 10th level, you can spend 1 minute creating camouflage for yourself. You must have access to fresh mud, dirt, plants, soot, and other naturally occurring materials with which to create your camouflage.",
 							"Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity ({@skill Stealth}) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit."
 						]
+					},
+					{
+						"name": "Fade Away",
+						"entries": [
+							"{@i 10th-level ranger feature (replaces Hide in Plain Sight)}",
+							"You can use a bonus action to magically become {@condition invisible}, along with any equipment you are wearing or carrying, until the start of your next turn.",
+							"Once you use this feature, you can't use it again until you finish a short or long rest."
+						],
+						"source": "UAClassFeatureVariants"
 					},
 					{
 						"name": "Natural Explorer improvement",
@@ -2465,10 +2628,60 @@
 										"entries": [
 											"When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
 										]
+									},
+									{
+										"type": "entries",
+										"name": "Blind Fighting",
+										"entries": [
+											"Being unable to see a creature doesn't impose disadvantage on your attack rolls against it, provided the creature isn't hidden from you."
+										],
+										"source": "UAClassFeatureVariants"
+									},
+									{
+										"type": "entries",
+										"name": "Interception",
+										"entries": [
+											"When a creature you can see hits a target that is within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + your proficiency bonus (to a minimum of 0 damage). You must be wielding a shield or a simple or martial weapon to use this reaction."
+										],
+										"source": "UAClassFeatureVariants"
+									},
+									{
+										"type": "entries",
+										"name": "Thrown Weapon Fighting",
+										"entries": [
+											"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
+											"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +1 bonus to the damage roll."
+										],
+										"source": "UAClassFeatureVariants"
+									},
+									{
+										"type": "entries",
+										"name": "Unarmed Fighting",
+										"entries": [
+											"Your unarmed strikes can deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier. If you strike with two free hands, the {@dice d6} becomes a {@dice d8}.",
+											"When you successfully start a grapple, you can deal {@dice 1d4} bludgeoning damage to the grappled creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
+										],
+										"source": "UAClassFeatureVariants"
+									},
+									{
+										"type": "entries",
+										"name": "Druidic Warrior",
+										"entries": [
+											"You learn two cantrips of your choice from the {@filter druid spell list|spells|level=0|class=druid}. They count as druid spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the druid spell list."
+										],
+										"source": "UAClassFeatureVariants"
 									}
 								]
 							}
 						]
+					},
+					{
+						"name": "Martial Versatility",
+						"entries": [
+							"{@i 2nd-level feature (enhances Fighting Style)}",
+							"When you gain the Fighting Style feature, you can replace a fighting style you know with another style available to your class. This change represents a shift of focus in your martial training and practice, causing you to lose the benefits of one style and gain the benefits of another style."
+						],
+						"source": "UAClassFeatureVariants"
 					}
 				],
 				[
@@ -4430,6 +4643,15 @@
 						]
 					},
 					{
+						"name": "Favored Foe",
+						"entries": [
+							"{@i 1st-level ranger feature (replaces Favored Enemy)}",
+							"You can call on your bond with nature to mark a creature as your favored enemy for a time: you know the {@spell hunter's mark} spell, and Wisdom is your spellcasting ability for it. You can use it a certain number of times without expending a spell slot and without requiring concentration a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest.",
+							"When you gain the Spellcasting feature at 2nd level, hunter's mark doesn't count against the number of ranger spells you know."
+						],
+						"source": "UAClassFeatureVariants"
+					},
+					{
 						"name": "Natural Explorer",
 						"entries": [
 							"You are particularly familiar with one type of natural environment and are adept at traveling and surviving in such regions. Choose one type of favored terrain: arctic, coast, desert, forest, grassland, mountain, swamp, or the Underdark. When you make an Intelligence or Wisdom check related to your favored terrain, your proficiency bonus is doubled if you are using a skill that you're proficient in.",
@@ -4447,6 +4669,42 @@
 							},
 							"You choose additional favored terrain types at 6th and 10th level."
 						]
+					},
+					{
+						"name": "Deft Explorer",
+						"entries": [
+							"{@i 1st-level ranger feature (replaces Natural Explorer)}",
+							"You are an unsurpassed explorer and survivor. Choose one of the following benefits, and then choose another one at 6th and 10th level.",
+							{
+								"type": "options",
+								"entries": [
+									{
+										"name": "Canny",
+										"entries": [
+											"Choose one skill: {@skill Animal Handling}, {@skill Athletics}, {@skill History}, {@skill Insight}, {@skill Investigation}, {@skill Medicine}, {@skill Nature}, {@skill Perception}, {@skill Stealth}, or {@skill Survival}. You gain proficiency in the chosen skill if you don't already have it, and you can add double your proficiency bonus to ability checks using that skill.",
+											"In addition, thanks to your extensive wandering, you are able to speak, read, and write two languages of your choice."
+										],
+										"type": "entries"
+									},
+									{
+										"name": "Roving",
+										"entries": [
+											"Your walking speed increases by 5, and you gain a climbing speed and a swimming speed equal to your walking speed."
+										],
+										"type": "entries"
+									},
+									{
+										"name": "Tireless",
+										"entries": [
+											"As an action, you can give yourself a number of temporary hit points equal to {@dice 1d10} + your Wisdom modifier. You can use this special action a number of times equal to your Wisdom modifier (a minimum of once), and you regain all expended uses when you finish a long rest.",
+											"In addition, whenever you finish a short rest, your exhaustion level, if any, is decreased by 1."
+										],
+										"type": "entries"
+									}
+								]
+							}
+						],
+						"source": "UAClassFeatureVariants"
 					}
 				],
 				[
@@ -4508,10 +4766,60 @@
 										"entries": [
 											"When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
 										]
+									},
+									{
+										"type": "entries",
+										"name": "Blind Fighting",
+										"entries": [
+											"Being unable to see a creature doesn't impose disadvantage on your attack rolls against it, provided the creature isn't hidden from you."
+										],
+										"source": "UAClassFeatureVariants"
+									},
+									{
+										"type": "entries",
+										"name": "Interception",
+										"entries": [
+											"When a creature you can see hits a target that is within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + your proficiency bonus (to a minimum of 0 damage). You must be wielding a shield or a simple or martial weapon to use this reaction."
+										],
+										"source": "UAClassFeatureVariants"
+									},
+									{
+										"type": "entries",
+										"name": "Thrown Weapon Fighting",
+										"entries": [
+											"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
+											"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +1 bonus to the damage roll."
+										],
+										"source": "UAClassFeatureVariants"
+									},
+									{
+										"type": "entries",
+										"name": "Unarmed Fighting",
+										"entries": [
+											"Your unarmed strikes can deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier. If you strike with two free hands, the {@dice d6} becomes a {@dice d8}.",
+											"When you successfully start a grapple, you can deal {@dice 1d4} bludgeoning damage to the grappled creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
+										],
+										"source": "UAClassFeatureVariants"
+									},
+									{
+										"type": "entries",
+										"name": "Druidic Warrior",
+										"entries": [
+											"You learn two cantrips of your choice from the {@filter druid spell list|spells|level=0|class=druid}. They count as druid spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the druid spell list."
+										],
+										"source": "UAClassFeatureVariants"
 									}
 								]
 							}
 						]
+					},
+					{
+						"name": "Martial Versatility",
+						"entries": [
+							"{@i 2nd-level feature (enhances Fighting Style)}",
+							"When you gain the Fighting Style feature, you can replace a fighting style you know with another style available to your class. This change represents a shift of focus in your martial training and practice, causing you to lose the benefits of one style and gain the benefits of another style."
+						],
+						"source": "UAClassFeatureVariants"
 					},
 					{
 						"name": "Combat Superiority",
@@ -4565,6 +4873,49 @@
 							"Beginning at 3rd level, you can use your action to focus your awareness on the region around you. For the next minute, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): aberrations, celestials, dragons, elementals, fey, fiends, and undead. This feature doesn't reveal the creatures' location or number.",
 							"Once you use this feature, you must finish a short or long rest before you can use it again"
 						]
+					},
+					{
+						"name": "Primal Awareness",
+						"entries": [
+							"{@i 3rd-level ranger feature (replaces Primeval Awareness)}",
+							"You can focus your awareness through the interconnections of nature: you learn additional spells when you reach certain levels in this class if you don't already know them, as shown in the Primal Awareness Spells table. These spells don't count against the number of ranger spells you know.",
+							{
+								"type": "table",
+								"caption": "Primal Awareness Spells",
+								"colLabels": [
+									"Ranger Level",
+									"Spell"
+								],
+								"colStyles": [
+									"col-2 text-center",
+									"col-10"
+								],
+								"rows": [
+									[
+										"3rd",
+										"{@spell detect magic}, {@spell speak with animals}"
+									],
+									[
+										"5th",
+										"{@spell beast sense}, {@spell locate animals or plants}"
+									],
+									[
+										"9th",
+										"{@spell speak with plants}"
+									],
+									[
+										"13th",
+										"{@spell locate creature}"
+									],
+									[
+										"17th",
+										"{@spell commune with nature}"
+									]
+								]
+							},
+							"You can cast each of these spells once without expending a spell slot. Once you cast a spell in this way, you can't do so again until you finish a long rest."
+						],
+						"source": "UAClassFeatureVariants"
 					},
 					{
 						"type": "entries",
@@ -4656,6 +5007,15 @@
 							"Starting at 10th level, you can spend 1 minute creating camouflage for yourself. You must have access to fresh mud, dirt, plants, soot, and other naturally occurring materials with which to create your camouflage.",
 							"Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity ({@skill Stealth}) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit."
 						]
+					},
+					{
+						"name": "Fade Away",
+						"entries": [
+							"{@i 10th-level ranger feature (replaces Hide in Plain Sight)}",
+							"You can use a bonus action to magically become {@condition invisible}, along with any equipment you are wearing or carrying, until the start of your next turn.",
+							"Once you use this feature, you can't use it again until you finish a short or long rest."
+						],
+						"source": "UAClassFeatureVariants"
 					},
 					{
 						"name": "Natural Explorer improvement",
@@ -4997,6 +5357,18 @@
 											"While traveling through your favored terrain with only the beast, you can move stealthily at a normal pace.",
 											"If the beast dies, you can obtain another one by spending 8 hours magically bonding with another beast that isn't hostile to you, either the same type of beast as before or a different one."
 										]
+									},
+									{
+										"type": "entries",
+										"name": "Ranger Companion Options",
+										"entries": [
+											"{@i 3rd-level Beast Master feature (enhances Ranger's Companion)}",
+											"While wandering the wilds, a ranger encounters many sorts of animals, some of which the ranger might befriend. This friendship can arise from successful use of the {@skill Animal Handling} skill or the {@spell animal friendship} spell. If the resulting bond is strong enough, the animal might join the ranger on adventures.",
+											"A ranger who has the Beast Master archetype can form an even stronger bond, feeling almost like a sibling to an animal. A special type of beast awaits a Beast Master in the wilds, a creature whose lineage stretches back to the beginnings of the world: a primal beast known as a {@creature Beast of the Air|UAClassFeatureVariants} or a {@creature Beast of the Earth|UAClassFeatureVariants}. Such a creature seeks out the type of companionship that a Beast Master offers, ready for the two of them to battle the imbalances in the natural world.",
+											"The primal beast is a special creature that a Beast Master can choose for the Ranger's Companion feature. When choosing such a creature, you decide whether it is a Beast of the Air or the Earth, and you determine its appearance. Stories describe primal beasts that mystically change form to align with the spirit of their companion.",
+											"When a primal beast is met apart from a Beast Master, the creature takes the form a regular beast of challenge rating 1/4 or lower, as determined by the DM."
+										],
+										"source": "UAClassFeatureVariants"
 									}
 								]
 							}

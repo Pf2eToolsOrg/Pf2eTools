@@ -127,6 +127,7 @@ class NavBar {
 		addDivider(ulUtils);
 		addLi(ulUtils, "makebrew.html", "Homebrew Builder");
 		addLi(ulUtils, "demo.html", "Renderer Demo");
+		addLi(ulUtils, "makecards.html", "RPG Cards Exporter");
 		addLi(ulUtils, "converter.html", "Text Converter");
 		addDivider(ulUtils);
 		addLi(ulUtils, "roll20.html", "Roll20 Script Help");
@@ -211,7 +212,11 @@ class NavBar {
 
 					const messageChannel = new MessageChannel();
 					const sendMessage = (data) => {
-						navigator.serviceWorker.controller.postMessage(data, [messageChannel.port2]);
+						try {
+							navigator.serviceWorker.controller.postMessage(data, [messageChannel.port2]);
+						} catch (ignored) {
+							// Ignore errors
+						}
 					};
 
 					if (NavBar._downloadBarMeta) {

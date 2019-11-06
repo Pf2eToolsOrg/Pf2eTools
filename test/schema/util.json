@@ -4,7 +4,7 @@
 
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.0.1",
+	"version": "1.0.3",
 
 	"definitions" : {
 		"metaBlock": {
@@ -343,6 +343,159 @@
 			]
 		},
 
+		"prerequisite": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"level": {
+						"type": "object",
+						"properties": {
+							"level": {
+								"type": "integer"
+							},
+							"class": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"source": {
+										"type": "string"
+									}
+								},
+								"required": ["name"],
+								"additionalProperties": false
+							},
+							"subclass": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"source": {
+										"type": "string"
+									}
+								},
+								"required": ["name"],
+								"additionalProperties": false
+							}
+						},
+						"required": ["level"],
+						"additionalProperties": false
+					},
+					"pact": {
+						"type": "string",
+						"enum": ["Chain", "Tome", "Blade", "Talisman"]
+					},
+					"patron": {
+						"type": "string",
+						"enum": [
+							"The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker", "The Kraken"
+						]
+					},
+					"spell": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"feature": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"item": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"other": {
+						"description": "A free text prerequisite",
+						"type": "string"
+					},
+					"otherSummary": {
+						"description": "A free text prerequisite, with a shortened form for list display.",
+						"type": "object",
+						"properties": {
+							"entry": {
+								"type": "string"
+							},
+							"entrySummary": {
+								"description": "Used in short/list displays",
+								"type": "string"
+							}
+						},
+						"required": ["entry", "entrySummary"]
+					},
+					"race": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"subrace": {
+									"type": "string"
+								}
+							},
+							"required": ["name"],
+							"additionalProperties": false
+						}
+					},
+					"ability": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"str": {
+									"type": "integer"
+								},
+								"dex": {
+									"type": "integer"
+								},
+								"con": {
+									"type": "integer"
+								},
+								"int": {
+									"type": "integer"
+								},
+								"wis": {
+									"type": "integer"
+								},
+								"cha": {
+									"type": "integer"
+								}
+							},
+							"additionalProperties": false
+						}
+					},
+					"spellcasting": {
+						"type": "boolean"
+					},
+					"proficiency": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"armor": {
+									"type": "string",
+									"enum": ["light", "medium", "heavy"]
+								}
+							},
+							"required": ["armor"],
+							"additionalProperties": false
+						}
+					}
+				},
+				"additionalProperties": false
+			}
+
+		},
+
 		"copyModifier": {
 			"anyOf": [
 				{
@@ -475,9 +628,11 @@
 					"type": "object",
 					"properties": {
 						"mode": {"const": "addSpells"},
-						"spells": {"type": "object"}
+						"spells": {"type": "object"},
+						"will": {"type": "array"},
+						"daily": {"type": "object"}
 					},
-					"required": ["mode", "spells"],
+					"required": ["mode"],
 					"additionalProperties": false
 				},
 				{

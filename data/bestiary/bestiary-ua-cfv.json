@@ -1,0 +1,167 @@
+{
+	"monster": [
+		{
+			"name": "Beast of the Air",
+			"source": "UAClassFeatureVariants",
+			"size": "S",
+			"type": "beast",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"special": "equal the beast's Constitution modifier + your Wisdom modifier + five times your ranger level (the beast has a number of Hit Dice [d6s] equal to your ranger level)"
+			},
+			"speed": {
+				"walk": 10,
+				"fly": 60
+			},
+			"str": 6,
+			"dex": 16,
+			"con": 13,
+			"int": 8,
+			"wis": 14,
+			"cha": 11,
+			"save": {
+				"dex": "+5",
+				"con": "+3",
+				"wis": "+4"
+			},
+			"skill": {
+				"perception": "+4",
+				"stealth": "+5"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
+			"languages": [
+				"understands the languages you speak"
+			],
+			"trait": [
+				{
+					"name": "Flyby",
+					"entries": [
+						"The beast doesn't provoke opportunity attacks when it flies out of an enemy's reach."
+					]
+				},
+				{
+					"name": "Primal Rebirth",
+					"entries": [
+						"If the beast has died within the last hour, you can use your action to touch it and expend a spell slot of 1st level or higher. The beast returns to life after 1 minute with all its hit points restored."
+					]
+				},
+				{
+					"name": "Ready Companion",
+					"entries": [
+						"As a bonus action, you can command the beast to make its shred attack or to Hide."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Shred",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}{@dice 1d6 + 3} slashing damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Flyby"
+			],
+			"senseTags": [
+				"D"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Beast of the Earth",
+			"source": "UAClassFeatureVariants",
+			"size": "M",
+			"type": "beast",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"special": "equal the beast's Constitution modifier + your Wisdom modifier + five times your ranger level (the beast has a number of Hit Dice [d8s] equal to your ranger level)"
+			},
+			"speed": {
+				"walk": 40,
+				"choose": {
+					"from": [
+						"climb",
+						"swim"
+					],
+					"amount": 40,
+					"note": "(your choice when you bond with the beast)"
+				}
+			},
+			"str": 14,
+			"dex": 14,
+			"con": 15,
+			"int": 8,
+			"wis": 14,
+			"cha": 11,
+			"save": {
+				"dex": "+4",
+				"con": "+4",
+				"wis": "+4"
+			},
+			"skill": {
+				"perception": "+4",
+				"stealth": "+4"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
+			"languages": [
+				"understands the languages you speak"
+			],
+			"trait": [
+				{
+					"name": "Charge",
+					"entries": [
+						"If the beast moves at least 20 feet straight toward a target and then hits it with a maul attack on the same turn, the target takes an extra {@dice 1d6} slashing damage. The DC equals your spell save DC. If the target is a creature, it must succeed on a Strength saving throw against your spell save DC or be knocked {@condition prone}."
+					]
+				},
+				{
+					"name": "Primal Rebirth",
+					"entries": [
+						"If the beast has died within the last hour, you can use your action to touch it and expend a spell slot of 1st level or higher. The beast returns to life after 1 minute with all its hit points restored."
+					]
+				},
+				{
+					"name": "Ready Companion",
+					"entries": [
+						"As a bonus action, you can command the beast to make its maul attack or to Hide."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Maul",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}{@dice 1d6 + 2} slashing damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Charge"
+			],
+			"senseTags": [
+				"D"
+			],
+			"miscTags": [
+				"MW"
+			]
+		}
+	]
+}

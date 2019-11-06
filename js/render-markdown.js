@@ -12,7 +12,15 @@ class RendererMarkdown {
 	}
 
 	static get () {
-		return new RendererMarkdown();
+		return new RendererMarkdown().setFnPostProcess(RendererMarkdown._fnPostProcess);
+	}
+
+	static _fnPostProcess (str) {
+		return str.replace(/\n\n+/g, "\n\n");
+	}
+
+	static _getNextPrefix (options, prefix) {
+		return options.prefix === ">" || options.prefix === ">>" ? `${options.prefix}${prefix || ""}` : prefix || "";
 	}
 
 	// region recursive
@@ -26,12 +34,13 @@ class RendererMarkdown {
 		const isInlineTitle = meta.depth >= 2;
 		const nextDepth = incDepth && meta.depth < 2 ? meta.depth + 1 : meta.depth;
 
+		const nxtPrefix = RendererMarkdown._getNextPrefix(options);
 		if (entry.name) {
 			if (isInlineTitle) {
-				textStack[0] += `***${entry.name}.*** `;
+				textStack[0] += `${nxtPrefix}***${Renderer.stripTags(entry.name)}.*** `;
 			} else {
 				const hashCount = meta._typeStack.length === 1 && meta.depth === -1 ? 1 : Math.min(6, meta.depth + 3);
-				textStack[0] += `\n${"#".repeat(hashCount)} ${entry.name}\n`;
+				textStack[0] += `\n${nxtPrefix}${"#".repeat(hashCount)} ${Renderer.stripTags(entry.name)}\n`;
 			}
 		}
 
@@ -41,7 +50,8 @@ class RendererMarkdown {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
 				meta.depth = nextDepth;
-				this._recursiveRender(entry.entries[i], textStack, meta, {suffix: "\n"});
+				const isFirstInline = i === 0 && entry.name && isInlineTitle;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: isFirstInline ? "" : RendererMarkdown._getNextPrefix(options), suffix: "\n\n"});
 			}
 			meta.depth = cacheDepth;
 		}
@@ -51,7 +61,7 @@ class RendererMarkdown {
 		if (entry.prerequisite) {
 			textStack[0] += `*Prerequisite: `;
 			this._recursiveRender({type: "inline", entries: [entry.prerequisite]}, textStack, meta);
-			textStack[0] += `*\n`;
+			textStack[0] += `*\n\n`;
 		}
 	}
 
@@ -73,10 +83,10 @@ class RendererMarkdown {
 		for (let i = 0; i < len; ++i) {
 			const item = entry.items[i];
 			// Special case for child lists -- avoid double-hyphen-prefixing
-			textStack[0] += `${indentSpaces}${item.type !== "list" ? "-" : ""}`;
+			textStack[0] += `${RendererMarkdown._getNextPrefix(options)}${indentSpaces}${item.type === "list" ? "" : `- `}`;
 
 			const cacheDepth = this._adjustDepth(meta, 1);
-			this._recursiveRender(entry.items[i], textStack, meta, {prefix: indentSpaces, suffix: "\n"});
+			this._recursiveRender(entry.items[i], textStack, meta, {suffix: "\n"});
 			meta.depth = cacheDepth;
 		}
 
@@ -195,7 +205,7 @@ class RendererMarkdown {
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
 				meta.depth = 2;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: ">", suffix: "\n"});
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: ">", suffix: "\n>\n"});
 				meta.depth = cacheDepth;
 			}
 		}
@@ -210,7 +220,7 @@ class RendererMarkdown {
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
 				meta.depth = 2;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: ">>", suffix: "\n"});
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: ">>", suffix: "\n>>\n"});
 				meta.depth = cacheDepth;
 			}
 		}
@@ -225,11 +235,11 @@ class RendererMarkdown {
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
 				meta.depth = 2;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: ">", suffix: "\n"});
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: ">", suffix: "\n>\n"});
 				meta.depth = cacheDepth;
 			}
 		}
-		if (entry.variantSource) textStack[0] += `${RendererMarkdown.utils.getPageText(entry.variantSource)}\n`;
+		if (entry.variantSource) textStack[0] += `>${RendererMarkdown.utils.getPageText(entry.variantSource)}\n`;
 		textStack[0] += "\n";
 	}
 
@@ -239,22 +249,21 @@ class RendererMarkdown {
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
-				this._recursiveRender(entry.entries[i], textStack, meta, {suffix: "\n"});
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: RendererMarkdown._getNextPrefix(options), suffix: "\n>\n"});
 			}
 		}
 	}
 
-	/*
 	_renderSpellcasting (entry, textStack, meta, options) {
-		// (Use base implementation)
+		const toRender = this._renderSpellcasting_getEntries(entry);
+		this._recursiveRender({type: "entries", entries: toRender}, textStack, meta, {prefix: RendererMarkdown._getNextPrefix(options), suffix: "\n"});
 	}
-	*/
 
 	_renderQuote (entry, textStack, meta, options) {
 		const len = entry.entries.length;
 		for (let i = 0; i < len; ++i) {
-			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "*", suffix: "*"});
-			if (i !== entry.entries.length - 1) textStack[0] += `\n`;
+			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: RendererMarkdown._getNextPrefix(options, "*"), suffix: "*"});
+			if (i !== entry.entries.length - 1) textStack[0] += `\n\n`;
 		}
 		if (entry.by) {
 			const tempStack = [""];
@@ -311,24 +320,24 @@ class RendererMarkdown {
 	_renderBonusSpeed (entry, textStack, meta, options) {
 		// (Use base implementation)
 	}
+	*/
 
 	_renderDice (entry, textStack, meta, options) {
-
+		textStack[0] += Renderer.getEntryDiceDisplayText(entry, entry.name);
 	}
-	*/
 
 	_renderLink (entry, textStack, meta, options) {
 		const href = this._renderLink_getHref(entry);
-		textStack[0] += `[${href}](${this.render(entry.text)})\n`;
+		textStack[0] += `[${href}](${this.render(entry.text)})`;
 	}
 
 	/*
 	_renderActions (entry, textStack, meta, options) {
-
+		// TODO
 	}
 
 	_renderAttack (entry, textStack, meta, options) {
-
+		// TODO
 	}
 	// endregion
 
@@ -340,7 +349,10 @@ class RendererMarkdown {
 		if (entry.entry) this._recursiveRender(entry.entry, textStack, meta);
 		else if (entry.entries) {
 			const len = entry.entries.length;
-			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta, {prefix: i > 0 ? "  " : "", suffix: "\n"});
+			for (let i = 0; i < len; ++i) {
+				const nxtPrefix = RendererMarkdown._getNextPrefix(options, i > 0 ? "  " : "");
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: nxtPrefix, suffix: "\n"});
+			}
 		}
 		textStack[0] += "\n";
 		this._renderSuffix(entry, textStack, meta, options);
@@ -348,13 +360,14 @@ class RendererMarkdown {
 
 	_renderItemSub (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		this._recursiveRender(entry.entry, textStack, meta, {prefix: `*${this.render(entry.name)}* `, suffix: "\n"});
+		const nxtPrefix = RendererMarkdown._getNextPrefix(options, `*${this.render(entry.name)}* `);
+		this._recursiveRender(entry.entry, textStack, meta, {prefix: nxtPrefix, suffix: "\n"});
 		this._renderSuffix(entry, textStack, meta, options);
 	}
 
 	_renderItemSpell (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		this._recursiveRender(entry.entry, textStack, meta, {prefix: `${entry.name} `, suffix: "\n"});
+		this._recursiveRender(entry.entry, textStack, meta, {prefix: RendererMarkdown._getNextPrefix(options, `${entry.name} `), suffix: "\n"});
 		this._renderSuffix(entry, textStack, meta, options);
 	}
 	// endregion
@@ -363,6 +376,7 @@ class RendererMarkdown {
 	_renderDataCreature (entry, textStack, meta, options) {
 		const mon = entry.dataCreature;
 
+		const monTypes = Parser.monTypeToFullObj(mon.type);
 		const savePart = mon.save ? `\n>- **Saving Throws** ${Object.keys(mon.save).sort(SortUtil.ascSortAtts).map(it => RendererMarkdown.monster.getSave(it, mon.save[it])).join(", ")}` : "";
 		const skillPart = mon.skill ? `\n>- **Skills** ${RendererMarkdown.monster.getSkillsString(renderer, mon)}` : "";
 		const damVulnPart = mon.vulnerable ? `\n>- **Damage Vulnerabilities** ${Parser.monImmResToFull(mon.vulnerable)}` : "";
@@ -373,14 +387,13 @@ class RendererMarkdown {
 		const traitArray = RendererMarkdown.monster.getOrderedTraits(mon);
 		const traitsPart = traitArray && traitArray.length ? `\n${RendererMarkdown.monster._getRenderedSection(traitArray, 1)}` : "";
 
-		const actionsPart = mon.action ? `\n### Actions\n${RendererMarkdown.monster._getRenderedSection(mon.action, 1)}` : "";
-		const reactionsPart = mon.reaction ? `\n### Reactions\n${RendererMarkdown.monster._getRenderedSection(mon.reaction, 1)}` : "";
-		const legendaryActionsPart = mon.legendary ? `\n### Legendary Actions\n${Renderer.monster.getLegendaryActionIntro(mon, RendererMarkdown.get())}\n${RendererMarkdown.monster._getRenderedSection(mon.legendary, 1)}` : "";
+		const actionsPart = mon.action ? `\n>### Actions\n${RendererMarkdown.monster._getRenderedSection(mon.action, 1)}` : "";
+		const reactionsPart = mon.reaction ? `\n>### Reactions\n${RendererMarkdown.monster._getRenderedSection(mon.reaction, 1)}` : "";
+		const legendaryActionsPart = mon.legendary ? `\n>### Legendary Actions\n>${Renderer.monster.getLegendaryActionIntro(mon, RendererMarkdown.get())}\n${RendererMarkdown.monster._getRenderedSection(mon.legendary, 1)}` : "";
 
-		textStack[0] += `\n
----
+		const str = `---
 >## ${mon._displayName || mon.name}
->*${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${mon._pTypes.asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}` : ""}*
+>*${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${monTypes.asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}` : ""}*
 >___
 >- **Armor Class** ${Parser.acToFull(mon.ac)}
 >- **Hit Points** ${Renderer.monster.getRenderedHp(mon.hp, true)}
@@ -393,35 +406,89 @@ class RendererMarkdown {
 >- **Senses** ${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses, true)}, ` : ""}passive Perception ${mon.passive || "\u2014"}
 >- **Languages** ${Renderer.monster.getRenderedLanguages(mon.languages)}
 >- **Challenge** ${mon.cr ? Parser.monCrToFull(mon.cr) : "\u2014"}
->___${traitsPart}${actionsPart}${reactionsPart}${legendaryActionsPart}\n`
+>___${traitsPart}${actionsPart}${reactionsPart}${legendaryActionsPart}`;
+
+		const monRender = str.trim().split("\n").map(it => it.trim() ? it : `>`).join("\n");
+		textStack[0] += `\n${monRender}\n\n`;
+	}
+
+	_renderDataSpell (entry, textStack, meta, options) {
+		const subStack = [""];
+
+		const sp = entry.dataSpell;
+
+		subStack[0] += `>## ${sp._displayName || sp.name}
+>*${Parser.spLevelSchoolMetaToFull(sp.level, sp.school, sp.meta, sp.subschools)}*
+>
+>###### **Casting Time** ${Parser.spTimeListToFull(sp.time)}
+>###### **Range** ${Parser.spRangeToFull(sp.range)}
+>###### **Components** ${Parser.spComponentsToFull(sp.components, sp.level)}
+>###### **Duration** ${Parser.spDurationToFull(sp.duration)}
+>---\n`;
+
+		const cacheDepth = meta.depth;
+		meta.depth = 2;
+		this._recursiveRender({entries: sp.entries}, subStack, meta, {prefix: ">", suffix: "\n"});
+		if (sp.entriesHigherLevel) {
+			this._recursiveRender({entries: sp.entriesHigherLevel}, subStack, meta, {prefix: ">", suffix: "\n"});
+		}
+		meta.depth = cacheDepth;
+
+		const spellRender = subStack.join("").trim().split("\n").map(it => it.trim() ? it : `>`).join("\n");
+		textStack[0] += `\n${spellRender}\n\n`;
 	}
 
 	/*
-	_renderDataSpell (entry, textStack, meta, options) {
-
-	}
-
 	_renderDataTrapHazard (entry, textStack, meta, options) {
-
+		// TODO
 	}
 	// endregion
+	*/
 
 	// region images
 	_renderImage (entry, textStack, meta, options) {
-
+		this._renderPrefix(entry, textStack, meta, options);
+		const href = this._renderImage_getUrl(entry);
+		textStack[0] += `[${href}]${entry.title ? `(${entry.title})` : ""}`;
+		this._renderSuffix(entry, textStack, meta, options);
 	}
 
 	_renderGallery (entry, textStack, meta, options) {
-
+		const len = entry.images.length;
+		for (let i = 0; i < len; ++i) {
+			const img = MiscUtil.copy(entry.images[i]);
+			this._recursiveRender(img, textStack, meta);
+		}
 	}
 	// endregion
 
 	// region homebrew
 	_renderHomebrew (entry, textStack, meta, options) {
+		if (entry.oldEntries) {
+			let markerText;
+			if (entry.movedTo) {
+				markerText = "*Homebrew:* The following content has been moved:";
+			} else if (entry.entries) {
+				markerText = "*Homebrew:* The following content has been replaced:";
+			} else {
+				markerText = "*Homebrew:* The following content has been removed:";
+			}
 
+			textStack[0] += `##### ${markerText}\n`;
+			this._recursiveRender({type: "entries", entries: entry.oldEntries}, textStack, meta, {suffix: "\n"});
+		}
+
+		if (entry.entries) {
+			const len = entry.entries.length;
+			if (entry.oldEntries) textStack[0] += `*The replacement is as follows:*\n`;
+			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta, {suffix: "\n"});
+		} else if (entry.movedTo) {
+			textStack[0] += `*This content has been moved to ${entry.movedTo}.*\n`;
+		} else {
+			textStack[0] += "*This content has been deleted.*\n";
+		}
 	}
 	// endregion
-	*/
 
 	// region misc
 	_renderCode (entry, textStack, meta, options) {
@@ -493,7 +560,7 @@ RendererMarkdown.monster = class {
 		const renderStack = [];
 		sectionEntries.forEach(e => {
 			if (e.rendered) renderStack.push(e.rendered);
-			else renderer.recursiveRender(e, renderStack, {depth: sectionLevel + 1});
+			else renderer.recursiveRender(e, renderStack, {depth: sectionLevel + 1}, {prefix: ">"});
 		});
 		return renderStack.join("");
 	}
@@ -509,7 +576,7 @@ RendererMarkdown.monster = class {
 		mon.spellcasting.forEach(entry => {
 			entry.type = entry.type || "spellcasting";
 			const renderStack = [];
-			RendererMarkdown.get().recursiveRender(entry, renderStack, {depth: 2});
+			RendererMarkdown.get().recursiveRender(entry, renderStack, {depth: 2}, {prefix: ">"});
 			out.push({name: entry.name, rendered: renderStack.join("")});
 		});
 		return out;

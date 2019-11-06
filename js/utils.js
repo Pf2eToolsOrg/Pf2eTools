@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.86.0"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.88.0"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -1081,15 +1081,16 @@ Parser.spClassesToFull = function (classes, textOnly) {
 	return Parser.spMainClassesToFull(classes, textOnly) + (fromSubclasses ? ", " + fromSubclasses : "");
 };
 
-Parser.spMainClassesToFull = function (classes, textOnly) {
-	return (classes.fromClassList || [])
+Parser.spMainClassesToFull = function (classes, textOnly = false, prop = "fromClassList") {
+	if (!classes) return "";
+	return (classes[prop] || [])
 		.sort((a, b) => SortUtil.ascSort(a.name, b.name))
 		.map(c => textOnly ? c.name : `<a title="Source: ${Parser.sourceJsonToFull(c.source)}" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}">${c.name}</a>`)
 		.join(", ");
 };
 
 Parser.spSubclassesToFull = function (classes, textOnly) {
-	if (!classes.fromSubclass) return "";
+	if (!classes || !classes.fromSubclass) return "";
 	return classes.fromSubclass
 		.sort((a, b) => {
 			const byName = SortUtil.ascSort(a.class.name, b.class.name);
@@ -1330,6 +1331,7 @@ Parser.prereqPactToFull = function (pact) {
 	if (pact === "Chain") return "Pact of the Chain";
 	if (pact === "Tome") return "Pact of the Tome";
 	if (pact === "Blade") return "Pact of the Blade";
+	if (pact === "Talisman") return "Pact of the Talisman";
 	return pact;
 };
 
@@ -1346,6 +1348,7 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 	ED: "Elemental Discipline",
 	EI: "Eldritch Invocation",
 	MM: "Metamagic",
+	"MV": "Maneuver",
 	"MV:B": "Maneuver, Battle Master",
 	"MV:C2-UA": "Maneuver, Cavalier V2 (UA)",
 	"AS:V1-UA": "Arcane Shot, V1 (UA)",
@@ -1496,6 +1499,7 @@ Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE = 36;
 Parser.CAT_ID_ONOMANCY_RESONANT = 37;
 Parser.CAT_ID_RUNE_KNIGHT_RUNE = 37;
 Parser.CAT_ID_ALCHEMICAL_FORMULA = 38;
+Parser.CAT_ID_MANEUVER = 39;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1537,6 +1541,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "Infernal Wa
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ONOMANCY_RESONANT] = "Onomancy Resonant";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = "Rune Knight Rune";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ALCHEMICAL_FORMULA] = "Alchemical Formula";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_MANEUVER] = "Maneuver";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1579,6 +1584,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "optionalfea
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ONOMANCY_RESONANT] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ALCHEMICAL_FORMULA] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER] = "optionalfeature";
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -2029,6 +2035,7 @@ SRC_UASAW = SRC_UA_PREFIX + "SorcererAndWarlock";
 SRC_UABAP = SRC_UA_PREFIX + "BardAndPaladin";
 SRC_UACDW = SRC_UA_PREFIX + "ClericDruidWizard";
 SRC_UAFRR = SRC_UA_PREFIX + "FighterRangerRogue";
+SRC_UACFV = SRC_UA_PREFIX + "ClassFeatureVariants";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -2152,6 +2159,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UASAW] = UA_PREFIX + "Sorcerer and Warlock";
 Parser.SOURCE_JSON_TO_FULL[SRC_UABAP] = UA_PREFIX + "Bard and Paladin";
 Parser.SOURCE_JSON_TO_FULL[SRC_UACDW] = UA_PREFIX + "Cleric, Druid, and Wizard";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAFRR] = UA_PREFIX + "Fighter, Ranger, and Rogue";
+Parser.SOURCE_JSON_TO_FULL[SRC_UACFV] = UA_PREFIX + "Class Feature Variants";
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -2265,6 +2273,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UASAW] = "UASAW";
 Parser.SOURCE_JSON_TO_ABV[SRC_UABAP] = "UABAP";
 Parser.SOURCE_JSON_TO_ABV[SRC_UACDW] = "UACDW";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAFRR] = "UAFRR";
+Parser.SOURCE_JSON_TO_ABV[SRC_UACFV] = "UACFV";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -2459,15 +2468,11 @@ SourceUtil = {
 	},
 
 	isNonstandardSource (source) {
-		return (source !== undefined && source !== null) && !BrewUtil.hasSourceJson(source) && (SourceUtil._isNonstandardSourceWiz(source) || SourceUtil._isNonstandardSource3pp(source));
+		return (source !== undefined && source !== null) && !BrewUtil.hasSourceJson(source) && SourceUtil._isNonstandardSourceWiz(source);
 	},
 
 	_isNonstandardSourceWiz (source) {
-		return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source === SRC_OGA || source === SRC_Mag || source === SRC_STREAM || source === SRC_TWITTER;
-	},
-
-	_isNonstandardSource3pp (source) {
-		return source.endsWith(SRC_3PP_SUFFIX);
+		return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source === SRC_OGA || source === SRC_Mag || source === SRC_STREAM || source === SRC_TWITTER || source === SRC_LLK || source === SRC_LR || source === SRC_TTP;
 	},
 
 	getFilterGroup (source) {
@@ -2536,7 +2541,11 @@ function isEmpty (obj) {
 }
 
 JqueryUtil = {
+	_isEnhancementsInit: false,
 	initEnhancements () {
+		if (JqueryUtil._isEnhancementsInit) return;
+		JqueryUtil._isEnhancementsInit = true;
+
 		JqueryUtil.addSelectors();
 
 		/**
@@ -2776,6 +2785,7 @@ MiscUtil = {
 	},
 
 	get (object, ...path) {
+		if (object == null) return null;
 		for (let i = 0; i < path.length; ++i) {
 			object = object[path[i]];
 			if (object == null) return object;
@@ -4084,12 +4094,8 @@ function getSourceFilter (options = {}) {
 	return new Filter(baseOptions);
 }
 
-function defaultSourceDeselFn (val) {
-	return SourceUtil.isNonstandardSource(val);
-}
-
 function defaultSourceSelFn (val) {
-	return !defaultSourceDeselFn(val);
+	return !SourceUtil.isNonstandardSource(val);
 }
 
 function getAsiFilter (options) {
@@ -4163,8 +4169,8 @@ UrlUtil = {
 	 */
 	link (href) {
 		function addGetParam (curr) {
-			if (href.includes("?")) return `${curr}&ver=${VERSION_NUMBER}`;
-			else return `${curr}?ver=${VERSION_NUMBER}`;
+			if (href.includes("?")) return `${curr}&v=${VERSION_NUMBER}`;
+			else return `${curr}?v=${VERSION_NUMBER}`;
 		}
 
 		if (!IS_VTT && IS_DEPLOYED) return addGetParam(`${DEPLOYED_STATIC_ROOT}${href}`);
@@ -4404,6 +4410,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = UrlUtil.PG_OPT
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ONOMANCY_RESONANT] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ALCHEMICAL_FORMULA] = UrlUtil.PG_OPT_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_MANEUVER] = UrlUtil.PG_OPT_FEATURES;
 
 if (!IS_DEPLOYED && !IS_VTT && typeof window !== "undefined") {
 	// for local testing, hotkey to get a link to the current page on the main site
@@ -4981,26 +4988,50 @@ DataUtil = {
 			function doMod_addSpells (modInfo) {
 				if (!copyTo.spellcasting) throw new Error(`Creature did not have a spellcasting property!`);
 
-				// TODO should be rewritten to handle non-slot-based spellcasters
 				// TODO could accept a "position" or "name" parameter should spells need to be added to other spellcasting traits
-				const trait0 = copyTo.spellcasting[0].spells;
-				Object.keys(modInfo.spells).forEach(k => {
-					if (!trait0[k]) trait0[k] = modInfo.spells[k];
-					else {
-						// merge the objects
-						const spellCategoryNu = modInfo.spells[k];
-						const spellCategoryOld = trait0[k];
-						Object.keys(spellCategoryNu).forEach(kk => {
-							if (!spellCategoryOld[kk]) spellCategoryOld[kk] = spellCategoryNu[kk];
-							else {
-								if (typeof spellCategoryOld[kk] === "object") {
-									if (spellCategoryOld[kk] instanceof Array) spellCategoryOld[kk] = spellCategoryOld[kk].concat(spellCategoryNu[kk]).sort(SortUtil.ascSortLower);
-									else throw new Error(`Object at key ${kk} not an array!`);
-								} else spellCategoryOld[kk] = spellCategoryNu[kk];
-							}
-						});
+				const spellcasting = copyTo.spellcasting[0];
+
+				if (modInfo.spells) {
+					const spells = spellcasting.spells;
+
+					Object.keys(modInfo.spells).forEach(k => {
+						if (!spells[k]) spells[k] = modInfo.spells[k];
+						else {
+							// merge the objects
+							const spellCategoryNu = modInfo.spells[k];
+							const spellCategoryOld = spells[k];
+							Object.keys(spellCategoryNu).forEach(kk => {
+								if (!spellCategoryOld[kk]) spellCategoryOld[kk] = spellCategoryNu[kk];
+								else {
+									if (typeof spellCategoryOld[kk] === "object") {
+										if (spellCategoryOld[kk] instanceof Array) spellCategoryOld[kk] = spellCategoryOld[kk].concat(spellCategoryNu[kk]).sort(SortUtil.ascSortLower);
+										else throw new Error(`Object at key ${kk} not an array!`);
+									} else spellCategoryOld[kk] = spellCategoryNu[kk];
+								}
+							});
+						}
+					});
+				}
+
+				if (modInfo.will) {
+					modInfo.will.forEach(sp => (modInfo.will = modInfo.will || []).push(sp));
+				}
+
+				if (modInfo.daily) {
+					for (let i = 1; i <= 9; ++i) {
+						const e = `${i}e`;
+
+						spellcasting.daily = spellcasting.daily || {};
+
+						if (modInfo.daily[i]) {
+							modInfo.daily[i].forEach(sp => (spellcasting.daily[i] = spellcasting.daily[i] || []).push(sp));
+						}
+
+						if (modInfo.daily[e]) {
+							modInfo.daily[e].forEach(sp => (spellcasting.daily[e] = spellcasting.daily[e] || []).push(sp));
+						}
 					}
-				});
+				}
 			}
 
 			function doMod_replaceSpells (modInfo) {
@@ -5222,14 +5253,30 @@ DataUtil = {
 	},
 
 	class: {
-		loadJSON: function (baseUrl = "") {
-			return new Promise((resolve) => {
-				DataUtil.loadJSON(`${baseUrl}data/class/index.json`).then((index) => {
-					Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${baseUrl}data/class/${it}`))).then((all) => {
-						resolve(all.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []}));
-					});
+		loadJSON: async function (baseUrl = "") {
+			const index = await DataUtil.loadJSON(`${baseUrl}data/class/index.json`);
+			const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${baseUrl}data/class/${it}`)));
+			const out = allData.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []});
+			out.class.filter(cls => !cls._isEnhanced).forEach(cls => {
+				cls._isEnhanced = true;
+				cls.classFeatures.forEach((featArr, i) => {
+					const ixAsi = featArr.findIndex(it => it.name && it.name.toLowerCase().trim() === "ability score improvement");
+					if (~ixAsi) {
+						const toInsert = {
+							type: "entries",
+							name: "Proficiency Versatility",
+							entries: [
+								`{@i ${Parser.getOrdinalForm(i + 1)}-level feature (enhances Ability Score Improvement)}`,
+								"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
+								"This change represents one of your skills atrophying as you focus on a different skill."
+							],
+							source: "UAClassFeatureVariants"
+						}
+						featArr.splice(ixAsi + 1, 0, toInsert);
+					}
 				});
 			});
+			return out;
 		}
 	},
 
@@ -5954,7 +6001,7 @@ BrewUtil = {
 			const $wrpBtnDel = $(`<h4 class="split"><span>View/Manage ${source ? `Source Contents: ${Parser.sourceJsonToFull(source)}` : showAll ? "Entries from All Sources" : `Entries with No Source`}</span></h4>`);
 			const $cbAll = $(`<input type="checkbox">`);
 			const $ulRows = $$`<ul class="list"/>`;
-			const $iptSearch = $(`<input type="search" class="search manbrew__search form-control w-100" placeholder="Search entries...">`)
+			const $iptSearch = $(`<input type="search" class="search manbrew__search form-control w-100" placeholder="Search entries...">`);
 			const $lst = $$`
 				<div class="listcontainer homebrew-window dropdown-menu flex-col">
 					${$wrpBtnDel}
@@ -6068,7 +6115,7 @@ BrewUtil = {
 						const pDeleteFn = BrewUtil._getPDeleteFunction(it.category_raw);
 						await pDeleteFn(it.uniqueid);
 					}));
-					BrewUtil._lists.forEach(l => l.update())
+					BrewUtil._lists.forEach(l => l.update());
 					await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
 					populateList();
 					await BrewUtil._pRenderBrewScreen_pRefreshBrewList($appendTo, $overlay, $brewList);
@@ -6473,7 +6520,7 @@ BrewUtil = {
 		BrewUtil.homebrew = BrewUtil.homebrew || {};
 		sourcesToAdd = checkAndAddMetaGetNewSources(); // adding source(s) to Filter should happen in per-page addX functions
 		await Promise.all(BrewUtil._STORABLE.map(async k => toAdd[k] = await pCheckAndAdd(k))); // only add if unique ID not already present
-		await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
+		BrewUtil._persistHomebrewDebounced(); // Debounce this for mass adds, e.g. "Add All"
 		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
 
 		// wipe old cache
@@ -6503,7 +6550,7 @@ BrewUtil = {
 			case UrlUtil.PG_MAKE_SHAPED:
 			case UrlUtil.PG_TABLES:
 			case UrlUtil.PG_VEHICLES:
-				await (BrewUtil._pHandleBrew || handleBrew)(toAdd);
+				await (BrewUtil._pHandleBrew || handleBrew)(MiscUtil.copy(toAdd));
 				break;
 			case UrlUtil.PG_MANAGE_BREW:
 			case UrlUtil.PG_DEMO:
@@ -6605,7 +6652,7 @@ BrewUtil = {
 	},
 
 	getValidColor (color) {
-		// Prevent any injection shenenagins
+		// Prevent any injection shenanigans
 		return color.replace(/[^a-fA-F0-9]/g, "").slice(0, 8);
 	},
 
@@ -6704,6 +6751,14 @@ BrewUtil = {
 			});
 		}
 		return Omnidexer.decompressIndex(indexer.getIndex());
+	},
+
+	__pPersistHomebrewDebounced: null,
+	_persistHomebrewDebounced () {
+		if (BrewUtil.__pPersistHomebrewDebounced == null) {
+			BrewUtil.__pPersistHomebrewDebounced = MiscUtil.debounce(() => StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew), 500);
+		}
+		BrewUtil.__pPersistHomebrewDebounced();
 	}
 };
 

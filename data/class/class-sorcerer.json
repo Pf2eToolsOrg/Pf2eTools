@@ -508,6 +508,14 @@
 							"Your choice grants you features when you choose it at 1st level and again at 6th, 14th, and 18th level."
 						],
 						"gainSubclassFeature": true
+					},
+					{
+						"name": "Spell Versatility",
+						"entries": [
+							"{@i 1st-level sorcerer feature (enhances Spellcasting)}",
+							"Whenever you finish a long rest, you can replace one spell you learned from this Spellcasting feature with another spell from the sorcerer spell list. The new spell must be the same level as the spell you replace."
+						],
+						"source": "UAClassFeatureVariants"
 					}
 				],
 				[
@@ -578,6 +586,40 @@
 								]
 							}
 						]
+					},
+					{
+						"name": "Font of Magic Options",
+						"entries": [
+							"{@i 2nd-level sorcerer feature (enhances Font of Magic)}",
+							"When you gain the Font of Magic feature, you get access to the following ways to spend your sorcery points.",
+							{
+								"type": "options",
+								"entries": [
+									{
+										"name": "Empowering Reserves",
+										"entries": [
+											"When you make an ability check on your turn, you can spend 2 sorcery points to gain advantage on the check."
+										],
+										"type": "entries"
+									},
+									{
+										"name": "Imbuing Touch",
+										"entries": [
+											"As an action, you can touch one nonmagical weapon and spend 2 sorcery points to imbue it with magic for 1 minute. For the duration, the weapon is considered magical for the purpose of overcoming immunity and resistance to nonmagical attacks."
+										],
+										"type": "entries"
+									},
+									{
+										"name": "Sorcerous Fortitude",
+										"entries": [
+											"As an action, you can spend any number of sorcery points to roll a {@dice d4} for each point expended. You gain a number of temporary hit points equal to the total rolled."
+										],
+										"type": "entries"
+									}
+								]
+							}
+						],
+						"source": "UAClassFeatureVariants"
 					}
 				],
 				[
@@ -651,6 +693,41 @@
 								]
 							}
 						]
+					},
+					{
+						"name": "Metamagic Options",
+						"entries": [
+							"{@i 3rd-level sorcerer feature (enhances Metamagic)}",
+							"When you choose Metamagic options, you have access to the following additional options.",
+							{
+								"type": "options",
+								"entries": [
+									{
+										"name": "Elemental Spell",
+										"entries": [
+											"When you cast a spell that deals a type of damage from the following list, you can spend 1 sorcery point to change that damage type to one of the other listed types: acid, cold, fire, lightning, thunder."
+										],
+										"type": "entries"
+									},
+									{
+										"name": "Seeking Spell",
+										"entries": [
+											"When you cast a spell that requires you to make a spell attack roll or that forces a target to make a Dexterity saving throw, you can spend 1 sorcery point to ignore the effects of half- and three-quarters cover against targets of the spell."
+										],
+										"type": "entries"
+									},
+									{
+										"name": "Unerring Spell",
+										"entries": [
+											"If you make an attack roll for a spell and miss, you can spend 2 sorcery points to reroll the attack roll. You must use the result of the second roll.",
+											"You can use Unerring Spell even if you have already used a different Metamagic option during the casting of the spell."
+										],
+										"type": "entries"
+									}
+								]
+							}
+						],
+						"source": "UAClassFeatureVariants"
 					}
 				],
 				[

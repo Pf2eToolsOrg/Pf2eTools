@@ -85,6 +85,27 @@ class ProxyBase {
 
 	_saveHookCopiesTo (obj) { this.__hooksTmp = obj; }
 	_saveHookAllCopiesTo (obj) { this.__hooksAllTmp = obj; }
+
+	/**
+	 * Overwrite the current proxied object with some new values, then trigger all the appropriate event handlers.
+	 * @param hookProp Hook property.
+	 * @param proxyProp Proxied object property, e.g. "_state".
+	 * @param underProp Underlying object property, e.g. "__state".
+	 * @param toObj
+	 */
+	_proxyAssign (hookProp, proxyProp, underProp, toObj) {
+		const oldKeys = Object.keys(this[proxyProp]);
+		const nuKeys = Object.keys(toObj);
+		const allKeys = new Set([...oldKeys, ...nuKeys]);
+
+		oldKeys.forEach(k => delete this[underProp][k]);
+		nuKeys.forEach(k => this[underProp][k] = toObj[k]);
+
+		allKeys.forEach(k => {
+			if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hk => hk(k, this[underProp][k]));
+			if (this.__hooks[hookProp] && this.__hooks[hookProp][k]) this.__hooks[hookProp][k].forEach(hk => hk(k, this[underProp][k]));
+		});
+	}
 }
 
 class UiUtil {
@@ -765,6 +786,7 @@ class SearchWidget {
 		});
 	}
 
+	// region entity searches
 	static async pGetUserSpellSearch (opts) {
 		opts = opts || {};
 		await SearchWidget.P_LOADING_CONTENT;
@@ -775,6 +797,88 @@ class SearchWidget {
 		const title = opts.level === 0 ? "Select Cantrip" : "Select Spell";
 		return SearchWidget.pGetUserEntitySearch(title, "alt_Spell", tagBuilder, nxtOpts);
 	}
+
+	static async pGetUserFeatSearch () {
+		// FIXME convert to be more like spell/creature search instead of running custom indexes
+		await SearchWidget.pLoadCustomIndex("entity_Feats", `${Renderer.get().baseUrl}data/feats.json`, "feat", Parser.CAT_ID_FEAT, UrlUtil.PG_FEATS, "feats");
+
+		const tagBuilder = (encName, encSource) => `{@feat ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_PHB) ? `|${decodeURIComponent(encSource)}` : ""}}`;
+		return SearchWidget.pGetUserEntitySearch("Select Feat", "entity_Feats", tagBuilder);
+	}
+
+	static async pGetUserBackgroundSearch () {
+		// FIXME convert to be more like spell/creature search instead of running custom indexes
+		await SearchWidget.pLoadCustomIndex("entity_Backgrounds", `${Renderer.get().baseUrl}data/backgrounds.json`, "background", Parser.CAT_ID_BACKGROUND, UrlUtil.PG_BACKGROUNDS, "backgrounds");
+
+		const tagBuilder = (encName, encSource) => `{@background ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_PHB) ? `|${decodeURIComponent(encSource)}` : ""}}`;
+		return SearchWidget.pGetUserEntitySearch("Select Background", "entity_Backgrounds", tagBuilder);
+	}
+
+	static async pGetUserRaceSearch () {
+		// FIXME convert to be more like spell/creature search instead of running custom indexes
+		const dataSource = async () => {
+			const raceJson = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/races.json`);
+			const raceData = Renderer.race.mergeSubraces(raceJson.race);
+			return {race: raceData};
+		};
+		await SearchWidget.pLoadCustomIndex("entity_Races", dataSource, "race", Parser.CAT_ID_RACE, UrlUtil.PG_RACES, "races");
+
+		const tagBuilder = (encName, encSource) => `{@race ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_PHB) ? `|${decodeURIComponent(encSource)}` : ""}}`;
+		return SearchWidget.pGetUserEntitySearch("Select Race", "entity_Races", tagBuilder);
+	}
+
+	static async pGetUserOptionalFeatureSearch () {
+		// FIXME convert to be more like spell/creature search instead of running custom indexes
+		await SearchWidget.pLoadCustomIndex("entity_OptionalFeatures", `${Renderer.get().baseUrl}data/optionalfeatures.json`, "optionalfeature", Parser.CAT_ID_OPTIONAL_FEATURE_OTHER, UrlUtil.PG_OPT_FEATURES, "optional features");
+
+		const tagBuilder = (encName, encSource) => `{@optfeature ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_PHB) ? `|${decodeURIComponent(encSource)}` : ""}}`;
+		return SearchWidget.pGetUserEntitySearch("Select Optional Feature", "entity_OptionalFeatures", tagBuilder);
+	}
+
+	static async pGetUserCreatureSearch () {
+		await SearchWidget.P_LOADING_CONTENT;
+		const nxtOpts = {};
+		const tagBuilder = (encName, encSource) => `{@creature ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_PHB) ? `|${decodeURIComponent(encSource)}` : ""}}`;
+		return SearchWidget.pGetUserEntitySearch("Select Creature", "Creature", tagBuilder, nxtOpts);
+	}
+
+	static async __pLoadItemIndex (isBasicIndex) {
+		const dataSource = async () => {
+			const allItems = await Renderer.item.pBuildList({isBlacklistVariants: true});
+			return {
+				item: allItems.filter(it => {
+					if (it.type === "GV") return false;
+					if (isBasicIndex == null) return true;
+					const isBasic = it.rarity === "None" || it.rarity === "Unknown" || it._category === "Basic";
+					return isBasicIndex ? isBasic : !isBasic;
+				})
+			};
+		};
+		const indexName = isBasicIndex == null ? "entity_Items" : isBasicIndex ? "entity_ItemsBasic" : "entity_ItemsMagic";
+		return SearchWidget.pLoadCustomIndex(indexName, dataSource, "item", Parser.CAT_ID_ITEM, UrlUtil.PG_ITEMS, "items");
+	}
+
+	static async __pGetUserItemSearch (isBasicIndex) {
+		const tagBuilder = (encName, encSource) => `{@item ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_DMG) ? `|${decodeURIComponent(encSource)}` : ""}}`;
+		const indexName = isBasicIndex == null ? "entity_Items" : isBasicIndex ? "entity_ItemsBasic" : "entity_ItemsMagic";
+		return SearchWidget.pGetUserEntitySearch("Select Item", indexName, tagBuilder);
+	}
+
+	static async pGetUserBasicItemSearch () {
+		await SearchWidget.__pLoadItemIndex(true);
+		return SearchWidget.__pGetUserItemSearch(true);
+	}
+
+	static async pGetUserMagicItemSearch () {
+		await SearchWidget.__pLoadItemIndex(false);
+		return SearchWidget.__pGetUserItemSearch(false);
+	}
+
+	static async pGetUserItemSearch () {
+		await SearchWidget.__pLoadItemIndex();
+		return SearchWidget.__pGetUserItemSearch();
+	}
+	// endregion
 
 	static async pGetUserEntitySearch (title, indexName, tagBuilder, opts) {
 		opts = opts || {};
@@ -810,9 +914,61 @@ class SearchWidget {
 			searchWidget.doFocus();
 		});
 	}
+
+	// region custom search indexes
+	static async pLoadCustomIndex (contentIndexName, dataSource, jsonProp, catId, page, errorName) {
+		if (SearchWidget.P_LOADING_INDICES[contentIndexName]) await SearchWidget.P_LOADING_INDICES[contentIndexName];
+		else {
+			const doClose = SearchWidget._showLoadingModal();
+
+			try {
+				SearchWidget.P_LOADING_INDICES[contentIndexName] = (SearchWidget.CONTENT_INDICES[contentIndexName] = await SearchWidget._pGetIndex(dataSource, jsonProp, catId, page));
+				SearchWidget.P_LOADING_INDICES[contentIndexName] = null;
+			} catch (e) {
+				JqueryUtil.doToast({type: "danger", content: `Could not load ${errorName}! ${MiscUtil.STR_SEE_CONSOLE}`});
+				throw e;
+			} finally {
+				doClose();
+			}
+		}
+	}
+
+	static async _pGetIndex (dataSource, prop, catId, page) {
+		const index = elasticlunr(function () {
+			this.addField("n");
+			this.addField("s");
+			this.setRef("id");
+		});
+
+		const [featJson, homebrew] = await Promise.all([
+			typeof dataSource === "string" ? DataUtil.loadJSON(dataSource) : dataSource(),
+			BrewUtil.pAddBrewData()
+		]);
+
+		featJson[prop].concat(homebrew[prop] || []).forEach((it, i) => index.addDoc({
+			id: i,
+			c: catId,
+			cf: Parser.pageCategoryToFull(catId),
+			h: 1,
+			n: it.name,
+			p: it.page,
+			s: it.source,
+			u: UrlUtil.URL_TO_HASH_BUILDER[page](it)
+		}));
+
+		return index;
+	}
+
+	static _showLoadingModal () {
+		const {$modalInner, doClose} = UiUtil.getShowModal({isPermanent: true});
+		$(`<div class="flex-vh-center w-100 h-100"><span class="dnd-font italic text-muted">Loading...</span></div>`).appendTo($modalInner);
+		return doClose;
+	}
+	// endregion
 }
 SearchWidget.P_LOADING_CONTENT = null;
 SearchWidget.CONTENT_INDICES = {};
+SearchWidget.P_LOADING_INDICES = {};
 
 class InputUiUtil {
 	/**
@@ -1081,6 +1237,35 @@ class InputUiUtil {
 			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
 			$iptStr.focus();
 			$iptStr.select();
+		});
+	}
+
+	/**
+	 * @param opts Options.
+	 * @param opts.title Prompt title.
+	 * @param opts.default Default value.
+	 * @return {Promise<String>} A promise which resolves to the color if the user entered one, or null otherwise.
+	 */
+	static pGetUserColor (opts) {
+		opts = opts || {};
+		return new Promise(resolve => {
+			const $iptRgb = $(`<input class="form-control mb-2" ${opts.default != null ? `value="${opts.default}"` : ""} type="color">`);
+			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
+				.click(() => doClose(true));
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				title: opts.title || "Choose Color",
+				noMinHeight: true,
+				cbClose: (isDataEntered) => {
+					if (!isDataEntered) return resolve(null);
+					const raw = $iptRgb.val();
+					if (!raw.trim()) return resolve(null);
+					else return resolve(raw);
+				}
+			});
+			$iptRgb.appendTo($modalInner);
+			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+			$iptRgb.focus();
+			$iptRgb.select();
 		});
 	}
 
@@ -1567,22 +1752,8 @@ class BaseComponent extends ProxyBase {
 		this._removeHook("state", prop, hook);
 	}
 
-	/**
-	 * Overwrite the current state with some new state, then trigger all the appropriate event handlers.
-	 * @param toState
-	 */
 	_setState (toState) {
-		const oldKeys = Object.keys(this._state);
-		const nuKeys = Object.keys(toState);
-		const allKeys = new Set([...oldKeys, ...nuKeys]);
-
-		oldKeys.forEach(k => delete this.__state[k]);
-		nuKeys.forEach(k => this.__state[k] = toState[k]);
-
-		allKeys.forEach(k => {
-			if (this.__hooksAll.state) this.__hooksAll.state.forEach(hk => hk(k, this.__state[k]));
-			if (this.__hooks.state && this.__hooks.state[k]) this.__hooks.state[k].forEach(hk => hk(k, this.__state[k]));
-		});
+		this._proxyAssign("state", "_state", "__state", toState);
 	}
 
 	_getState () { return MiscUtil.copy(this.__state) }
@@ -1878,7 +2049,7 @@ class BaseLayeredComponent extends BaseComponent {
 
 	setBaseSaveableStateFrom (toLoad) {
 		toLoad.state && Object.assign(this._state, toLoad.state);
-		if (toLoad.layers) toLoad.layers.forEach(l => this._addLayer(CharLayer.fromSavedState(this, l)));
+		if (toLoad.layers) toLoad.layers.forEach(l => this._addLayer(CompLayer.fromSavedState(this, l)));
 	}
 
 	getPod () {
@@ -1892,7 +2063,7 @@ class BaseLayeredComponent extends BaseComponent {
 			get: (prop) => this._get(prop),
 			addLayer: (name, data) => {
 				// FIXME
-				const l = new CharLayer(this, name, data);
+				const l = new CompLayer(this, name, data);
 				this._addLayer(l);
 				return l;
 			},
@@ -1900,6 +2071,33 @@ class BaseLayeredComponent extends BaseComponent {
 			layers: this._layers // FIXME avoid passing this directly to the child
 		}
 	}
+}
+
+/**
+ * A "layer" of state which is applied over the base state.
+ *  This allows e.g. a temporary stat reduction to modify a statblock, without actually
+ *  modifying the underlying component.
+ */
+class CompLayer extends ProxyBase {
+	constructor (component, layerName, data) {
+		super();
+
+		this._name = layerName;
+		this.__data = data;
+
+		this.data = this._getProxy("data", this.__data);
+
+		this._addHookAll("data", prop => component.updateLayersActive(prop));
+	}
+
+	getSaveableState () {
+		return {
+			name: this._name,
+			data: MiscUtil.copy(this.__data)
+		}
+	}
+
+	static fromSavedState (component, savedState) { return new CompLayer(component, savedState.name, savedState.data); }
 }
 
 const MixinComponentHistory = compClass => class extends compClass {

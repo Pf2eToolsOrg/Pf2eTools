@@ -129,6 +129,10 @@ $rgb-class-brew-color: #8c3b96;
 	&wrp-download {
 		background: $rgb-night-bg-color;
 	}
+
+	&disp-download-progress-text {
+		color: $rgb-off-black;
+	}
 }
 
 #navigation .page__nav-hidden-mobile {
@@ -718,6 +722,12 @@ input[type=checkbox].sidemenu__row__label__cb {
 	color: rgba(255, 255, 255, 0.7);
 	cursor: pointer;
 	font-size: 12px;
+
+	&:hover,
+	&:active,
+	&:visited {
+		text-decoration: none;
+	}
 }
 
 #btn-popout {
@@ -3537,6 +3547,52 @@ ul.list.books > li > a > span.name:hover {
 	}
 }
 
+// region Cards
+.cards {
+	&__ {
+		&btn-choose-icon {
+			width: 26px;
+			height: 26px;
+			padding: 0;
+		}
+
+		&disp-btn-icon {
+			width: 24px;
+			height: 24px;
+			background-repeat: no-repeat;
+			background-size: 24px 24px;
+			filter: invert(1);
+		}
+
+		&disp-typeahead-icon {
+			width: 24px;
+			height: 24px;
+			background-repeat: no-repeat;
+			background-size: 24px 24px;
+			display: inline-block;
+		}
+	}
+
+	&-cfg__ {
+		&ipt-color {
+			width: 40px;
+		}
+	}
+}
+
+.night-mode {
+	.cards__ {
+		&disp-btn-icon {
+			filter: initial;
+		}
+
+		&disp-typeahead-img {
+			filter: invert(1);
+		}
+	}
+}
+// endregion
+
 .error-background,
 .error-background[readonly],
 .error-background[disabled] {
@@ -3871,8 +3927,9 @@ ul.list.books > li > a > span.name:hover {
 		background: initial;
 	}
 
+	.list--stats > .row,
 	.stats {
-		background: #272727;
+		background: $rgb-night-bg-color;
 	}
 
 	@media only screen and (min-width: 1600px) {

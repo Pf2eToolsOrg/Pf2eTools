@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"type": "object",
 	"properties": {
 		"feat": {
@@ -13,80 +13,7 @@
 						"type": "string"
 					},
 					"prerequisite": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"race": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"name": {
-												"type": "string"
-											},
-											"subrace": {
-												"type": "string"
-											}
-										},
-										"required": ["name"],
-										"additionalProperties": false
-									}
-								},
-								"ability": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"str": {
-												"type": "integer"
-											},
-											"dex": {
-												"type": "integer"
-											},
-											"con": {
-												"type": "integer"
-											},
-											"int": {
-												"type": "integer"
-											},
-											"wis": {
-												"type": "integer"
-											},
-											"cha": {
-												"type": "integer"
-											}
-										},
-										"additionalProperties": false
-									}
-								},
-								"spellcasting": {
-									"type": "boolean"
-								},
-								"proficiency": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"armor": {
-												"type": "string",
-												"enum": ["light", "medium", "heavy"]
-											}
-										},
-										"required": ["armor"],
-										"additionalProperties": false
-									}
-								},
-								"special": {
-									"description": "Primarily for use in Homebrew",
-									"type": "string"
-								},
-								"level": {
-									"type": "integer"
-								}
-							},
-							"additionalProperties": false
-						}
+						"$ref": "util.json#/definitions/prerequisite"
 					},
 					"source": {
 						"type": "string"

@@ -10,7 +10,7 @@ class RenderItems {
 			<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td></tr>
 			<tr>
 				<td colspan="2">${[Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
-				<td class="text-right" colspan="4"><span>${damage}</span> <span>${damageType}</span> <span>${propertiesTxt}</span></td>
+				<td class="text-right" colspan="4">${[damage, damageType, propertiesTxt].filter(Boolean).join(" ")}</td>
 			</tr>
 			${renderedText ? `<tr><td class="divider" colspan="6"><div/></td></tr>
 			<tr class="text"><td colspan="6">${renderedText}</td></tr>` : ""}

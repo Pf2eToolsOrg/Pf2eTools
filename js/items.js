@@ -122,8 +122,7 @@ async function pPopulateTablesAndFilters (data) {
 
 	mundaneList = ListUtil.initList({
 		listClass: "mundane",
-		fnSort: ItemsPage.sortItems,
-		dbgName: "mundane"
+		fnSort: ItemsPage.sortItems
 	});
 	magicList = ListUtil.initList({
 		listClass: "magic",

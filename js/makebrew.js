@@ -361,7 +361,7 @@ class Builder extends ProxyBase {
 		this._ui.$wrpSideMenu.empty();
 
 		const $btnLoadExisting = $(`<button class="btn btn-xs btn-default">${this._titleSidebarLoadExisting}</button>`)
-			.click(() => this.handleSidebarLoadExistingClick());
+			.click(() => this.pHandleSidebarLoadExistingClick());
 		$$`<div class="sidemenu__row">${$btnLoadExisting}</div>`.appendTo(this._ui.$wrpSideMenu);
 
 		const $btnDownloadJson = $(`<button class="btn btn-default btn-xs mb-2">${this._titleSidebarDownloadJson}</button>`)
@@ -552,7 +552,7 @@ class Builder extends ProxyBase {
 	doHandleSourcesAdd () { throw new TypeError(`Unimplemented method!`); }
 	renderInput () { throw new TypeError(`Unimplemented method!`); }
 	renderOutput () { throw new TypeError(`Unimplemented method!`); }
-	handleSidebarLoadExistingClick () { throw new TypeError(`Unimplemented method!`); }
+	async pHandleSidebarLoadExistingClick () { throw new TypeError(`Unimplemented method!`); }
 	getInitialMetaState () { return {}; }
 	async pInit () {}
 }
