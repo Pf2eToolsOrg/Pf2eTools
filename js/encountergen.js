@@ -9,7 +9,7 @@ function makeContentsBlock (i, loc) {
 	let out = "<ul>";
 	loc.tables.forEach((t, j) => {
 		const tableName = getTableName(loc, t);
-		out += `<li><a id="${i},${j}" href="#${UrlUtil.encodeForHash([loc.name, loc.source, t.minlvl + "-" + t.maxlvl])}" title="${tableName}">${tableName}</a></li>`;
+		out += `<li class="lst--border"><a id="${i},${j}" href="#${UrlUtil.encodeForHash([loc.name, loc.source, t.minlvl + "-" + t.maxlvl])}" title="${tableName}">${tableName}</a></li>`;
 	});
 	out += "</ul>";
 	return out;

@@ -103,7 +103,7 @@ class ConverterUi {
 			const output = this.outText;
 			if (output && output.trim()) {
 				try {
-					const prop = this._storedSettings.parser === "Statblock" ? "monster" : "table";
+					const prop = this._storedSettings.parser === "Table" ? "table" : "monster";
 					const entries = JSON.parse(`[${output}]`);
 
 					const invalidSources = entries.map(it => !it.source || !BrewUtil.hasSourceJson(it.source) ? (it.name || it.caption || "(Unnamed)").trim() : false).filter(Boolean);
@@ -186,7 +186,7 @@ class ConverterUi {
 			const output = this.outText;
 			if (output && output.trim()) {
 				try {
-					const prop = this._storedSettings.parser === "Statblock" ? "monster" : "table";
+					const prop = this._storedSettings.parser === "Table" ? "table" : "monster";
 					const out = {[prop]: JSON.parse(`[${output}]`)};
 					DataUtil.userDownload(`converter-output`, out);
 				} catch (e) {
@@ -331,11 +331,11 @@ class ConverterUi {
 						else BrewUtil.updateSource(source);
 
 						if (isNewSource) this._$selSource.append(`<option value="${source.json.escapeQuotes()}">${source.full.escapeQuotes()}</option>`);
-						this._$selSource.val(source.json);
+						this._$selSource.val(source.json).change();
 						if (modalMeta) modalMeta.doClose();
 					},
 					cbConfirmExisting: (source) => {
-						this._$selSource.val(source.json);
+						this._$selSource.val(source.json).change();
 						if (modalMeta) modalMeta.doClose();
 					},
 					cbCancel: () => {
@@ -357,8 +357,11 @@ class ConverterUi {
 					else delete this._storedSettings.sourceJson;
 					this._saveSettingsDebounced();
 				});
-			if (this._storedSettings.sourceJson) this._$selSource.val(this._storedSettings.sourceJson);
-			else this._$selSource[0].selectedIndex = 0;
+			if (this._storedSettings.sourceJson && this._allSources.includes(this._storedSettings.sourceJson)) this._$selSource.val(this._storedSettings.sourceJson);
+			else {
+				this._storedSettings.sourceJson = null;
+				this._$selSource[0].selectedIndex = 0;
+			}
 
 			const $btnSourceEdit = $(`<button class="btn btn-default btn-sm mr-2">Edit Selected Source</button>`)
 				.click(() => {
@@ -829,6 +832,10 @@ class StatblockConverter {
 			return line.trim().startsWith("**");
 		}
 
+		function isInlineLegendaryActionItem (line) {
+			return /^-\s*\*\*\*?[^*]+/gi.test(line.trim());
+		}
+
 		if (!inText || !inText.trim()) return options.cbWarning("No input!");
 		const toConvert = StatblockConverter._getCleanInput(inText).split("\n");
 		let stats = null;
@@ -862,7 +869,15 @@ class StatblockConverter {
 		let trait = null;
 
 		function getCleanTraitText (line) {
-			return line.replace(/^\*\*\*?/, "").split(/.\s*\*\*\*?/).map(it => it.trim());
+			const [name, text] = line.replace(/^\*\*\*?/, "").split(/.\s*\*\*\*?/).map(it => it.trim());
+			return [
+				name,
+				text.replace(/\*Hit(\*:|:\*) /g, "Hit: ") // clean hit tags for later replacement
+			]
+		}
+
+		function getCleanLegendaryActionText (line) {
+			return getCleanTraitText(line.trim().replace(/^-\s*/, ""));
 		}
 
 		function doAddFromParsed () {
@@ -1120,7 +1135,13 @@ class StatblockConverter {
 
 			// legendary actions
 			if (parsed === 12) {
-				if (isInlineHeader(curLine)) {
+				if (isInlineLegendaryActionItem(curLine)) {
+					doAddLegendary();
+					trait = {name: "", entries: []};
+					const [name, text] = getCleanLegendaryActionText(curLine);
+					trait.name = name;
+					trait.entries.push(stripLeadingSymbols(text));
+				} else if (isInlineHeader(curLine)) {
 					doAddLegendary();
 					trait = {name: "", entries: []};
 					const [name, text] = getCleanTraitText(curLine);
@@ -1475,18 +1496,15 @@ StatblockConverter.SAMPLE_MARKDOWN =
 >***Turn Resistance.*** The lich has advantage on saving throws against any effect that turns undead.
 >
 >### Actions
->***Paralyzing Touch.*** Melee Spell Attack: +12 to hit, reach 5 ft., one creature. Hit: 10 (3d6) cold damage. The target must succeed on a DC 18 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
+>***Paralyzing Touch.*** Melee Spell Attack: +12 to hit, reach 5 ft., one creature. *Hit*: 10 (3d6) cold damage. The target must succeed on a DC 18 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
 >
 >### Legendary Actions
 >The lich can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The lich regains spent legendary actions at the start of its turn.
 >
->***Cantrip.*** The lich casts a cantrip.
->
->***Paralyzing Touch (Costs 2 Actions).*** The lich uses its Paralyzing Touch.
->
->***Frightening Gaze (Costs 2 Actions).*** The lich fixes its gaze on one creature it can see within 10 feet of it. The target must succeed on a DC 18 Wisdom saving throw against this magic or become frightened for 1 minute. The frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to the lich's gaze for the next 24 hours.
->
->***Disrupt Life (Costs 3 Actions).*** Each non-undead creature within 20 feet of the lich must make a DC 18 Constitution saving throw against this magic, taking 21 (6d6) necrotic damage on a failed save, or half as much damage on a successful one.
+>- **Cantrip.** The lich casts a cantrip.
+>- **Paralyzing Touch (Costs 2 Actions).** The lich uses its Paralyzing Touch.
+>- **Frightening Gaze (Costs 2 Actions).** The lich fixes its gaze on one creature it can see within 10 feet of it. The target must succeed on a DC 18 Wisdom saving throw against this magic or become frightened for 1 minute. The frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to the lich's gaze for the next 24 hours.
+>- **Disrupt Life (Costs 3 Actions).** Each non-undead creature within 20 feet of the lich must make a DC 18 Constitution saving throw against this magic, taking 21 (6d6) necrotic damage on a failed save, or half as much damage on a successful one.
 >
 >`;
 

@@ -150,12 +150,7 @@ class StatGen {
 	async pLoadRaceJson () {
 		const data = await DataUtil.loadJSON(RACE_JSON_URL);
 
-		let brew;
-		try {
-			brew = await BrewUtil.pAddBrewData();
-		} catch (e) {
-			return BrewUtil.pPurgeBrew(e);
-		}
+		const brew = await BrewUtil.pAddBrewData();
 
 		this.raceData = Renderer.race.mergeSubraces(data.race);
 		if (brew.race) this.raceData = this.raceData.concat(brew.race);

@@ -27,7 +27,7 @@ window.addEventListener("load", async () => {
 			Renderer.utils.bindPronounceButtons();
 			const meta = {};
 			const languages = {};
-			await RenderBestiary.pPopulateMetaAndLanguages(meta, languages);
+			await Renderer.monster.pPopulateMetaAndLanguages(meta, languages);
 			$content.append(RenderBestiary.$getRenderedCreature(it, meta));
 			$(`.mon__name--token`).css({paddingRight: 5});
 			break;

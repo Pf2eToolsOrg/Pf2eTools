@@ -17,7 +17,7 @@ window.onload = function load () {
 let books = [];
 let bkI = 0;
 function onJsonLoad (data) {
-	$("ul.contents").append($(`<li><a href='books.html'><span class='name'>\u21FD All Books</span></a></li>`));
+	$("ul.contents").append($(`<li><a href='books.html' class="lst--border"><span class='name'>\u21FD All Books</span></a></li>`));
 
 	BookUtil.baseDataUrl = "data/book/book-";
 	BookUtil.homebrewIndex = "book";
@@ -35,7 +35,6 @@ function onJsonLoad (data) {
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(() => BrewUtil.pAddLocalBrewData())
-		.catch(BrewUtil.pPurgeBrew)
 		.then(() => {
 			if (window.location.hash.length) {
 				BookUtil.booksHashChange();

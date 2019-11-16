@@ -58,9 +58,9 @@ class TrapsHazardsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 		const trapType = Parser.trapHazTypeToFull(it.trapHazType);
 
-		eleLi.innerHTML = `<a href="#${hash}">
-			<span class="bold col-6 pl-0">${it.name}</span>
-			<span class="col-4">${trapType}</span>
+		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
+			<span class="col-3 pl-0 text-center">${trapType}</span>
+			<span class="bold col-7">${it.name}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
@@ -72,7 +72,7 @@ class TrapsHazardsPage extends ListPage {
 				hash,
 				source,
 				trapType,
-				uniqueid: it.uniqueId ? it.uniqueId : thI
+				uniqueId: it.uniqueId ? it.uniqueId : thI
 			}
 		);
 
@@ -100,9 +100,9 @@ class TrapsHazardsPage extends ListPage {
 		const trapType = Parser.trapHazTypeToFull(it.trapHazType);
 
 		const $ele = $(`<li class="row">
-			<a href="#${hash}">
-				<span class="bold col-8 pl-0">${it.name}</span>
+			<a href="#${hash}" class="lst--border">
 				<span class="col-4 pr-0">${trapType}</span>
+				<span class="bold col-8 pl-0">${it.name}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));

@@ -1594,21 +1594,21 @@ class SourceUiUtil {
 	 * @param options.cbConfirm Confirmation callback for inputting new sources.
 	 * @param options.cbConfirmExisting Confirmation callback for selecting existing sources.
 	 * @param options.cbCancel Cancellation callback.
-	 * @param options.mode (Optional) Mode to build in, either "edit" or "add". Defaults to "add".
+	 * @param options.mode (Optional) Mode to build in, "select", "edit" or "add". Defaults to "select".
 	 * @param options.source (Optional) Homebrew source object.
 	 * @param options.isRequired (Optional) True if a source must be selected.
 	 */
 	static render (options) {
 		options = SourceUiUtil._getValidOptions(options);
 		options.$parent.empty();
+		options.mode = options.mode || "select";
 
-		const isNewSource = options.mode !== "edit";
-		const isAddSource = options.mode === "add";
+		const isEditMode = options.mode === "edit";
 
 		let jsonDirty = false;
 		const $iptName = $(`<input class="form-control ui-source__ipt-named">`)
 			.change(() => {
-				if (!jsonDirty && isNewSource) $iptJson.val($iptName.val().replace(/[^-_a-zA-Z]/g, ""));
+				if (!jsonDirty && !isEditMode) $iptJson.val($iptName.val().replace(/[^-_a-zA-Z]/g, ""));
 				$iptName.removeClass("error-background");
 			});
 		if (options.source) $iptName.val(options.source.full);
@@ -1617,7 +1617,7 @@ class SourceUiUtil {
 				$iptAbv.removeClass("error-background");
 			});
 		if (options.source) $iptAbv.val(options.source.abbreviation);
-		const $iptJson = $(`<input class="form-control ui-source__ipt-named" ${isNewSource ? "" : "disabled"}>`)
+		const $iptJson = $(`<input class="form-control ui-source__ipt-named" ${isEditMode ? "disabled" : ""}>`)
 			.change(() => {
 				jsonDirty = true;
 				$iptJson.removeClass("error-background");
@@ -1640,7 +1640,7 @@ class SourceUiUtil {
 				if (incomplete) return;
 
 				const jsonVal = $iptJson.val().trim();
-				if (isNewSource && BrewUtil.hasSourceJson(jsonVal)) {
+				if (!isEditMode && BrewUtil.hasSourceJson(jsonVal)) {
 					$iptJson.addClass("error-background");
 					JqueryUtil.doToast({content: `The JSON identifier "${jsonVal}" already exists!`, type: "danger"});
 					return;
@@ -1655,13 +1655,12 @@ class SourceUiUtil {
 					convertedBy: $iptConverters.val().trim().split(",").map(it => it.trim()).filter(Boolean)
 				};
 
-				options.cbConfirm(source);
+				options.cbConfirm(source, options.mode !== "edit");
 			});
 
-		const $btnCancel = !options.isRequired && (isAddSource || !isNewSource) ? $(`<button class="btn btn-default mr-2">Cancel</button>`)
-			.click(() => {
-				options.cbCancel();
-			}) : null;
+		const $btnCancel = options.isRequired && !isEditMode
+			? null
+			: $(`<button class="btn btn-default mr-2">Cancel</button>`).click(() => options.cbCancel());
 
 		const $btnUseExisting = $(`<button class="btn btn-default">Use an Existing Source</button>`)
 			.click(() => {
@@ -1673,7 +1672,7 @@ class SourceUiUtil {
 			});
 
 		const $stageInitial = $$`<div class="h-100 w-100 flex-vh-center"><div>
-			<h3 class="text-center">${isNewSource ? "Add a Homebrew Source" : "Edit Homebrew Source"}</h3>
+			<h3 class="text-center">${isEditMode ? "Edit Homebrew Source" : "Add a Homebrew Source"}</h3>
 			<div class="row ui-source__row mb-2"><div class="col-12 flex-v-center">
 				<span class="mr-2 ui-source__name help" title="The name or title for the homebrew you wish to create. This could be the name of a book or PDF; for example, 'Monster Manual'">Title</span>
 				${$iptName}
@@ -1700,7 +1699,7 @@ class SourceUiUtil {
 			</div></div>
 			<div class="text-center mb-2">${$btnCancel}${$btnConfirm}</div>
 			
-			${isNewSource && !isAddSource && BrewUtil.homebrewMeta.sources && BrewUtil.homebrewMeta.sources.length ? $$`<div class="flex-vh-center mb-3 mt-3"><span class="ui-source__divider"/>or<span class="ui-source__divider"/></div>
+			${!isEditMode && BrewUtil.homebrewMeta.sources && BrewUtil.homebrewMeta.sources.length ? $$`<div class="flex-vh-center mb-3 mt-3"><span class="ui-source__divider"/>or<span class="ui-source__divider"/></div>
 			<div class="flex-vh-center">${$btnUseExisting}</div>` : ""}
 		</div></div>`.appendTo(options.$parent);
 
@@ -1724,10 +1723,17 @@ class SourceUiUtil {
 				} else $selExisting.addClass("error-background");
 			});
 
+		const $btnBackExisting = $(`<button class="btn btn-default btn-sm mr-2">Back</button>`)
+			.click(() => {
+				$selExisting[0].selectedIndex = 0;
+				$stageExisting.hide();
+				$stageInitial.show();
+			});
+
 		const $stageExisting = $$`<div class="h-100 w-100 flex-vh-center" style="display: none;"><div>
 			<h3 class="text-center">Select a Homebrew Source</h3>
 			<div class="row mb-2"><div class="col-12 flex-vh-center">${$selExisting}</div></div>
-			<div class="row"><div class="col-12 flex-vh-center">${$btnConfirmExisting}</div></div>
+			<div class="row"><div class="col-12 flex-vh-center">${$btnBackExisting}${$btnConfirmExisting}</div></div>
 		</div></div>`.appendTo(options.$parent);
 	}
 }

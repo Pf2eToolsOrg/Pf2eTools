@@ -419,7 +419,7 @@ class EncounterBuilder extends ProxyBase {
 			items: currentEncounter.map(creatureType => ({
 				h: creatureType.hash,
 				c: `${creatureType.count}`,
-				uniqueid: creatureType.uniqueid || undefined
+				uniqueId: creatureType.uniqueId || undefined
 			})),
 			sources: ListUtil.getExportableSublist().sources
 		});
@@ -921,15 +921,15 @@ class EncounterBuilder extends ProxyBase {
 
 			const toFindUid = !(scaledTo == null || baseCrNum === scaledTo) ? getUid(mon.name, mon.source, scaledTo) : null;
 			const ixCurrItem = state.items.findIndex(it => {
-				if (scaledTo == null || scaledTo === baseCrNum) return !it.uniqueid && it.h === toFindHash;
-				else return it.uniqueid === toFindUid;
+				if (scaledTo == null || scaledTo === baseCrNum) return !it.uniqueId && it.h === toFindHash;
+				else return it.uniqueId === toFindUid;
 			});
 			if (!~ixCurrItem) throw new Error(`Could not find previously sublisted item!`);
 
 			const toFindNxtUid = baseCrNum !== targetCrNum ? getUid(mon.name, mon.source, targetCrNum) : null;
 			const nextItem = state.items.find(it => {
-				if (targetCrNum === baseCrNum) return !it.uniqueid && it.h === toFindHash;
-				else return it.uniqueid === toFindNxtUid;
+				if (targetCrNum === baseCrNum) return !it.uniqueId && it.h === toFindHash;
+				else return it.uniqueId === toFindNxtUid;
 			});
 
 			// if there's an existing item with a matching UID (or lack of), merge into it
@@ -939,8 +939,8 @@ class EncounterBuilder extends ProxyBase {
 				state.items.splice(ixCurrItem, 1);
 			} else {
 				// if we're returning to the original CR, wipe the existing UID. Otherwise, adjust it
-				if (targetCrNum === baseCrNum) delete state.items[ixCurrItem].uniqueid;
-				else state.items[ixCurrItem].uniqueid = getUid(mon.name, mon.source, targetCrNum);
+				if (targetCrNum === baseCrNum) delete state.items[ixCurrItem].uniqueId;
+				else state.items[ixCurrItem].uniqueId = getUid(mon.name, mon.source, targetCrNum);
 			}
 
 			this._loadSublist(state);

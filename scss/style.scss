@@ -1,6 +1,7 @@
 @import 'vars';
 
-$rgb-class-ua-color: #1d965d;
+$rgb-class-ua-color: #827e00;
+$rgb-subclass-ua-color: #1d965d;
 $rgb-class-brew-color: #8c3b96;
 
 .page__ {
@@ -1117,16 +1118,21 @@ input[type=checkbox].sidemenu__row__label__cb {
 	}
 
 	li {
-		padding: 1px;
 		cursor: pointer;
-		border-bottom: 1px solid #ddd;
 		line-height: 14px;
 
 		&.list-multi-selected {
 			box-shadow: inset 0 0 0 200px rgba(0, 107, 196, 0.3);
-			border-color: #6fa4d0;
 		}
 	}
+}
+
+.lst--border {
+	border-bottom: 1px solid #ddd;
+}
+
+.list-multi-selected .lst--border {
+	border-color: #6fa4d0;
 }
 
 th.name {
@@ -1726,12 +1732,12 @@ div#subclasses > span.divider {
 
 .cls-bkmv__btn-tab.active.spicy-sauce,
 .sc_pill--active.spicy-sauce {
-	background: $rgb-class-ua-color;
+	background: $rgb-subclass-ua-color;
 	color: white;
 }
 
 .cls-bkmv__btn-tab.active.spicy-sauce {
-	border-color: darken($rgb-class-ua-color, 20%);
+	border-color: darken($rgb-subclass-ua-color, 20%);
 }
 
 .cls-bkmv__btn-tab.active.refreshing-brew,
@@ -1756,11 +1762,11 @@ div#subclasses > span.divider {
 }
 
 .sc_pill[data-state='1'] {
-	background: repeating-linear-gradient(135deg, $rgb-class-ua-color, $rgb-class-ua-color 17px, lightgrey 17px, lightgrey 34px);
+	background: repeating-linear-gradient(135deg, $rgb-subclass-ua-color, $rgb-subclass-ua-color 17px, lightgrey 17px, lightgrey 34px);
 }
 
 .sc_pill[data-state='2'] {
-	background: $rgb-class-ua-color;
+	background: $rgb-subclass-ua-color;
 	color: white;
 }
 
@@ -2802,6 +2808,15 @@ tr.regionaleffect {
 	.rd__h--0,
 	.rd__h--1,
 	.rd__h--2 {
+		color: $rgb-subclass-ua-color;
+		border-bottom-color: $rgb-subclass-ua-color;
+	}
+}
+
+.spicy-sauce:not(.subclass-feature) {
+	.rd__h--0,
+	.rd__h--1,
+	.rd__h--2 {
 		color: $rgb-class-ua-color;
 		border-bottom-color: $rgb-class-ua-color;
 	}
@@ -3615,7 +3630,8 @@ ul.list.books > li > a > span.name:hover {
 	$class-main-color: #d29a38;
 	$class-main-color-alt: #c2c2c2;
 	$rgb-class-sub-color: #609dd2;
-	$rgb-class-ua-color: #27ce80;
+	$rgb-class-ua-color: #a2ce42;
+	$rgb-subclass-ua-color: #27ce80;
 	$rgb-class-brew-color: #aa40b4;
 	$btn-active-color: #ffffff40;
 
@@ -4095,15 +4111,24 @@ ul.list.books > li > a > span.name:hover {
 	.cls-bkmv__btn-tab.active.spicy-sauce,
 	#subclasses span.active.spicy-sauce,
 	#subclasses .os-active {
-		background-color: $rgb-class-ua-color;
+		background-color: $rgb-subclass-ua-color;
 		color: $rgb-off-black;
 	}
 
 	.cls-bkmv__btn-tab.active.spicy-sauce {
-		border-color: darken($rgb-class-ua-color, 20%);
+		border-color: darken($rgb-subclass-ua-color, 20%);
 	}
 
 	.spicy-sauce {
+		.rd__h--0,
+		.rd__h--1,
+		.rd__h--2 {
+			color: $rgb-subclass-ua-color;
+			border-bottom-color: $rgb-subclass-ua-color;
+		}
+	}
+
+	.spicy-sauce:not(.subclass-feature) {
 		.rd__h--0,
 		.rd__h--1,
 		.rd__h--2 {
@@ -4216,14 +4241,11 @@ ul.list.books > li > a > span.name:hover {
 		background: none;
 	}
 
-	ul.list-display-only li,
-	ul.list li {
+	.lst--border {
 		border-color: #444;
-		line-height: 14px;
 	}
 
-	.list li.list-multi-selected,
-	.list-display-only li.list-multi-selected {
+	.list-multi-selected .lst--border {
 		border-color: #416482;
 	}
 
@@ -4236,13 +4258,13 @@ ul.list.books > li > a > span.name:hover {
 		background: $rgb-off-black;
 
 		&[data-state='1'] {
-			background: repeating-linear-gradient(135deg, $rgb-class-ua-color, $rgb-class-ua-color 17px, $rgb-off-black 17px, $rgb-off-black 34px);
+			background: repeating-linear-gradient(135deg, $rgb-subclass-ua-color, $rgb-subclass-ua-color 17px, $rgb-off-black 17px, $rgb-off-black 34px);
 			color: white;
 		}
 
 		&.sc_pill--active.spicy-sauce,
 		&[data-state='2'] {
-			background: $rgb-class-ua-color;
+			background: $rgb-subclass-ua-color;
 		}
 
 		&.sc_pill--active.refreshing-brew {

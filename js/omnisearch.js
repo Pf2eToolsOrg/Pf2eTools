@@ -124,7 +124,7 @@ const Omnisearch = {
 				results = results.filter(r => {
 					if (r.doc.c === Parser.CAT_ID_QUICKREF) return true;
 					const bCat = Parser.pageCategoryToProp(r.doc.c);
-					const bName = bCat !== "variantrule" ? r.doc.n : r.doc.n.split(";")[0];
+					const bName = r.doc.b || r.doc.n;
 					return !ExcludeUtil.isExcluded(bName, bCat, r.doc.s);
 				});
 			}
@@ -255,14 +255,16 @@ const Omnisearch = {
 
 	async pInit () {
 		if (!Omnisearch._searchIndex) {
-			Omnisearch._pLoadSearch = Omnisearch._pDoSearchLoad();
-			await Omnisearch._pLoadSearch;
-			Omnisearch._pLoadSearch = null;
+			if (Omnisearch._pLoadSearch) await Omnisearch._pLoadSearch;
+			else {
+				Omnisearch._pLoadSearch = Omnisearch._pDoSearchLoad();
+				await Omnisearch._pLoadSearch;
+				Omnisearch._pLoadSearch = null;
+			}
 		}
 	},
 
 	_pDoSearchLoad: async function () {
-		if (Omnisearch._pLoadSearch) return;
 		const data = Omnidexer.decompressIndex(await DataUtil.loadJSON(`${Renderer.get().baseUrl}search/index.json`));
 
 		elasticlunr.clearStopWords();

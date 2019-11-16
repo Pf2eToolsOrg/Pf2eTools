@@ -127,7 +127,7 @@ class NavBar {
 		addDivider(ulUtils);
 		addLi(ulUtils, "makebrew.html", "Homebrew Builder");
 		addLi(ulUtils, "demo.html", "Renderer Demo");
-		addLi(ulUtils, "makecards.html", "RPG Cards Exporter");
+		addLi(ulUtils, "makecards.html", "RPG Cards JSON Builder");
 		addLi(ulUtils, "converter.html", "Text Converter");
 		addDivider(ulUtils);
 		addLi(ulUtils, "roll20.html", "Roll20 Script Help");

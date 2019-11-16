@@ -317,7 +317,8 @@
 							"You can call on your bond with nature to mark a creature as your favored enemy for a time: you know the {@spell hunter's mark} spell, and Wisdom is your spellcasting ability for it. You can use it a certain number of times without expending a spell slot and without requiring concentration a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest.",
 							"When you gain the Spellcasting feature at 2nd level, hunter's mark doesn't count against the number of ranger spells you know."
 						],
-						"source": "UAClassFeatureVariants"
+						"source": "UAClassFeatureVariants",
+						"page": 7
 					},
 					{
 						"name": "Natural Explorer",
@@ -372,7 +373,8 @@
 								]
 							}
 						],
-						"source": "UAClassFeatureVariants"
+						"source": "UAClassFeatureVariants",
+						"page": 7
 					}
 				],
 				[
@@ -441,7 +443,8 @@
 										"entries": [
 											"Being unable to see a creature doesn't impose disadvantage on your attack rolls against it, provided the creature isn't hidden from you."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 12
 									},
 									{
 										"type": "entries",
@@ -449,7 +452,8 @@
 										"entries": [
 											"When a creature you can see hits a target that is within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + your proficiency bonus (to a minimum of 0 damage). You must be wielding a shield or a simple or martial weapon to use this reaction."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 12
 									},
 									{
 										"type": "entries",
@@ -458,7 +462,8 @@
 											"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
 											"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +1 bonus to the damage roll."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 12
 									},
 									{
 										"type": "entries",
@@ -467,7 +472,8 @@
 											"Your unarmed strikes can deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier. If you strike with two free hands, the {@dice d6} becomes a {@dice d8}.",
 											"When you successfully start a grapple, you can deal {@dice 1d4} bludgeoning damage to the grappled creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 12
 									},
 									{
 										"type": "entries",
@@ -475,7 +481,8 @@
 										"entries": [
 											"You learn two cantrips of your choice from the {@filter druid spell list|spells|level=0|class=druid}. They count as druid spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the druid spell list."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 7
 									}
 								]
 							}
@@ -485,9 +492,10 @@
 						"name": "Martial Versatility",
 						"entries": [
 							"{@i 2nd-level feature (enhances Fighting Style)}",
-							"When you gain the Fighting Style feature, you can replace a fighting style you know with another style available to your class. This change represents a shift of focus in your martial training and practice, causing you to lose the benefits of one style and gain the benefits of another style."
+							"Whenever you gain a level in this class, you can replace a fighting style you know with another style available to your class. This change represents a shift of focus in your martial training and practice, causing you to lose the benefits of one style and gain the benefits of another style."
 						],
-						"source": "UAClassFeatureVariants"
+						"source": "UAClassFeatureVariants",
+						"page": 12
 					},
 					{
 						"name": "Spellcasting",
@@ -539,7 +547,8 @@
 							"{@i 2nd-level ranger feature (enhances Spellcasting)}",
 							"Whenever you finish a long rest, you can replace one spell you learned from this Spellcasting feature with another spell from the ranger spell list. The new spell must be the same level as the spell you replace."
 						],
-						"source": "UAClassFeatureVariants"
+						"source": "UAClassFeatureVariants",
+						"page": 8
 					},
 					{
 						"name": "Spellcasting Focus",
@@ -547,7 +556,8 @@
 							"{@i 2nd-level ranger feature (enhances Spellcasting)}",
 							"You can use a {@item druidic focus|phb} as a spellcasting focus for your ranger spells. See chapter 5, \"Equipment,\" of the Player's Handbook for a list of things that count as druidic focuses."
 						],
-						"source": "UAClassFeatureVariants"
+						"source": "UAClassFeatureVariants",
+						"page": 8
 					}
 				],
 				[
@@ -605,7 +615,8 @@
 							},
 							"You can cast each of these spells once without expending a spell slot. Once you cast a spell in this way, you can't do so again until you finish a long rest."
 						],
-						"source": "UAClassFeatureVariants"
+						"source": "UAClassFeatureVariants",
+						"page": 8
 					}
 				],
 				[
@@ -675,7 +686,8 @@
 							"You can use a bonus action to magically become {@condition invisible}, along with any equipment you are wearing or carrying, until the start of your next turn.",
 							"Once you use this feature, you can't use it again until you finish a short or long rest."
 						],
-						"source": "UAClassFeatureVariants"
+						"source": "UAClassFeatureVariants",
+						"page": 8
 					},
 					{
 						"name": "Natural Explorer improvement",
@@ -976,6 +988,19 @@
 											"While traveling through your favored terrain with only the beast, you can move stealthily at a normal pace.",
 											"If the beast dies, you can obtain another one by spending 8 hours magically bonding with another beast that isn't hostile to you, either the same type of beast as before or a different one."
 										]
+									},
+									{
+										"type": "entries",
+										"name": "Ranger Companion Options",
+										"entries": [
+											"{@i 3rd-level Beast Master feature (enhances Ranger's Companion)}",
+											"While wandering the wilds, a ranger encounters many sorts of animals, some of which the ranger might befriend. This friendship can arise from successful use of the {@skill Animal Handling} skill or the {@spell animal friendship} spell. If the resulting bond is strong enough, the animal might join the ranger on adventures.",
+											"A ranger who has the Beast Master archetype can form an even stronger bond, feeling almost like a sibling to an animal. A special type of beast awaits a Beast Master in the wilds, a creature whose lineage stretches back to the beginnings of the world: a primal beast known as a {@creature Beast of the Air|UAClassFeatureVariants} or a {@creature Beast of the Earth|UAClassFeatureVariants}. Such a creature seeks out the type of companionship that a Beast Master offers, ready for the two of them to battle the imbalances in the natural world.",
+											"The primal beast is a special creature that a Beast Master can choose for the Ranger's Companion feature. When choosing such a creature, you decide whether it is a Beast of the Air or the Earth, and you determine its appearance. Stories describe primal beasts that mystically change form to align with the spirit of their companion.",
+											"When a primal beast is met apart from a Beast Master, the creature takes the form a regular beast of challenge rating 1/4 or lower, as determined by the DM."
+										],
+										"source": "UAClassFeatureVariants",
+										"page": 8
 									}
 								]
 							}
@@ -2635,7 +2660,8 @@
 										"entries": [
 											"Being unable to see a creature doesn't impose disadvantage on your attack rolls against it, provided the creature isn't hidden from you."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 12
 									},
 									{
 										"type": "entries",
@@ -2643,7 +2669,8 @@
 										"entries": [
 											"When a creature you can see hits a target that is within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + your proficiency bonus (to a minimum of 0 damage). You must be wielding a shield or a simple or martial weapon to use this reaction."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 12
 									},
 									{
 										"type": "entries",
@@ -2652,7 +2679,8 @@
 											"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
 											"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +1 bonus to the damage roll."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 12
 									},
 									{
 										"type": "entries",
@@ -2661,7 +2689,8 @@
 											"Your unarmed strikes can deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier. If you strike with two free hands, the {@dice d6} becomes a {@dice d8}.",
 											"When you successfully start a grapple, you can deal {@dice 1d4} bludgeoning damage to the grappled creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 12
 									},
 									{
 										"type": "entries",
@@ -2669,7 +2698,8 @@
 										"entries": [
 											"You learn two cantrips of your choice from the {@filter druid spell list|spells|level=0|class=druid}. They count as druid spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the druid spell list."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 7
 									}
 								]
 							}
@@ -2679,9 +2709,10 @@
 						"name": "Martial Versatility",
 						"entries": [
 							"{@i 2nd-level feature (enhances Fighting Style)}",
-							"When you gain the Fighting Style feature, you can replace a fighting style you know with another style available to your class. This change represents a shift of focus in your martial training and practice, causing you to lose the benefits of one style and gain the benefits of another style."
+							"Whenever you gain a level in this class, you can replace a fighting style you know with another style available to your class. This change represents a shift of focus in your martial training and practice, causing you to lose the benefits of one style and gain the benefits of another style."
 						],
-						"source": "UAClassFeatureVariants"
+						"source": "UAClassFeatureVariants",
+						"page": 12
 					}
 				],
 				[
@@ -4649,7 +4680,8 @@
 							"You can call on your bond with nature to mark a creature as your favored enemy for a time: you know the {@spell hunter's mark} spell, and Wisdom is your spellcasting ability for it. You can use it a certain number of times without expending a spell slot and without requiring concentration a number of times equal to your Wisdom modifier (a minimum of once). You regain all expended uses when you finish a long rest.",
 							"When you gain the Spellcasting feature at 2nd level, hunter's mark doesn't count against the number of ranger spells you know."
 						],
-						"source": "UAClassFeatureVariants"
+						"source": "UAClassFeatureVariants",
+						"page": 7
 					},
 					{
 						"name": "Natural Explorer",
@@ -4704,7 +4736,8 @@
 								]
 							}
 						],
-						"source": "UAClassFeatureVariants"
+						"source": "UAClassFeatureVariants",
+						"page": 7
 					}
 				],
 				[
@@ -4773,7 +4806,8 @@
 										"entries": [
 											"Being unable to see a creature doesn't impose disadvantage on your attack rolls against it, provided the creature isn't hidden from you."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 12
 									},
 									{
 										"type": "entries",
@@ -4781,7 +4815,8 @@
 										"entries": [
 											"When a creature you can see hits a target that is within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + your proficiency bonus (to a minimum of 0 damage). You must be wielding a shield or a simple or martial weapon to use this reaction."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 12
 									},
 									{
 										"type": "entries",
@@ -4790,7 +4825,8 @@
 											"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
 											"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +1 bonus to the damage roll."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 12
 									},
 									{
 										"type": "entries",
@@ -4799,7 +4835,8 @@
 											"Your unarmed strikes can deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier. If you strike with two free hands, the {@dice d6} becomes a {@dice d8}.",
 											"When you successfully start a grapple, you can deal {@dice 1d4} bludgeoning damage to the grappled creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 12
 									},
 									{
 										"type": "entries",
@@ -4807,7 +4844,8 @@
 										"entries": [
 											"You learn two cantrips of your choice from the {@filter druid spell list|spells|level=0|class=druid}. They count as druid spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the druid spell list."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 7
 									}
 								]
 							}
@@ -4817,9 +4855,10 @@
 						"name": "Martial Versatility",
 						"entries": [
 							"{@i 2nd-level feature (enhances Fighting Style)}",
-							"When you gain the Fighting Style feature, you can replace a fighting style you know with another style available to your class. This change represents a shift of focus in your martial training and practice, causing you to lose the benefits of one style and gain the benefits of another style."
+							"Whenever you gain a level in this class, you can replace a fighting style you know with another style available to your class. This change represents a shift of focus in your martial training and practice, causing you to lose the benefits of one style and gain the benefits of another style."
 						],
-						"source": "UAClassFeatureVariants"
+						"source": "UAClassFeatureVariants",
+						"page": 12
 					},
 					{
 						"name": "Combat Superiority",
@@ -4915,7 +4954,8 @@
 							},
 							"You can cast each of these spells once without expending a spell slot. Once you cast a spell in this way, you can't do so again until you finish a long rest."
 						],
-						"source": "UAClassFeatureVariants"
+						"source": "UAClassFeatureVariants",
+						"page": 8
 					},
 					{
 						"type": "entries",
@@ -5015,7 +5055,8 @@
 							"You can use a bonus action to magically become {@condition invisible}, along with any equipment you are wearing or carrying, until the start of your next turn.",
 							"Once you use this feature, you can't use it again until you finish a short or long rest."
 						],
-						"source": "UAClassFeatureVariants"
+						"source": "UAClassFeatureVariants",
+						"page": 8
 					},
 					{
 						"name": "Natural Explorer improvement",
@@ -5368,7 +5409,8 @@
 											"The primal beast is a special creature that a Beast Master can choose for the Ranger's Companion feature. When choosing such a creature, you decide whether it is a Beast of the Air or the Earth, and you determine its appearance. Stories describe primal beasts that mystically change form to align with the spirit of their companion.",
 											"When a primal beast is met apart from a Beast Master, the creature takes the form a regular beast of challenge rating 1/4 or lower, as determined by the DM."
 										],
-										"source": "UAClassFeatureVariants"
+										"source": "UAClassFeatureVariants",
+										"page": 8
 									}
 								]
 							}

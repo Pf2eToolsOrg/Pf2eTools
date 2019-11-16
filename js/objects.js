@@ -32,7 +32,7 @@ class ObjectsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(obj);
 		const size = Parser.sizeAbvToFull(obj.size);
 
-		eleLi.innerHTML = `<a href="#${hash}">
+		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-8 pl-0">${obj.name}</span>
 			<span class="col-2 text-center">${size}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(obj.source)} pr-0" title="${Parser.sourceJsonToFull(obj.source)}" ${BrewUtil.sourceJsonToStyle(obj.source)}>${source}</span>
@@ -46,7 +46,7 @@ class ObjectsPage extends ListPage {
 				hash,
 				source,
 				size,
-				uniqueid: obj.uniqueId ? obj.uniqueId : obI
+				uniqueId: obj.uniqueId ? obj.uniqueId : obI
 			}
 		);
 
@@ -73,7 +73,7 @@ class ObjectsPage extends ListPage {
 		const size = Parser.sizeAbvToFull(obj.size);
 
 		const $ele = $(`<li class="row">
-			<a href="#${hash}" title="${obj.name}">
+			<a href="#${hash}" class="lst--border">
 				<span class="bold col-9 pl-0">${obj.name}</span>
 				<span class="col-3 pr-0 text-center">${size}</span>
 			</a>

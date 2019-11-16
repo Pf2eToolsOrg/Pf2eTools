@@ -896,13 +896,12 @@ MiscTag._RANGED_WEAPON_MATCHERS = MiscTag._RANGED_WEAPONS.map(it => new RegExp(`
 
 class SpellcastingTraitConvert {
 	static async pGetSpellData () {
-		const spellIndex = await DataUtil.loadJSON(`data/spells/index.json`);
-		return Promise.all(Object.values(spellIndex).map(f => DataUtil.loadJSON(`data/spells/${f}`)));
+		return {spell: await DataUtil.spell.pLoadAll()};
 	}
 
 	static init (spellData) {
 		// reversed so official sources take precedence over 3pp
-		spellData.reverse().forEach(d => d.spell.forEach(s => SpellcastingTraitConvert.SPELL_SRC_MAP[s.name.toLowerCase()] = s.source));
+		spellData.spell.forEach(s => SpellcastingTraitConvert.SPELL_SRC_MAP[s.name.toLowerCase()] = s.source)
 	}
 
 	static tryParseSpellcasting (trait, isMarkdown, cbErr) {

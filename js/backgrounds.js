@@ -50,12 +50,10 @@ class BackgroundPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(bg);
 		const source = Parser.sourceJsonToAbv(bg.source);
 
-		eleLi.innerHTML = `<a href="#${hash}">
+		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-4 pl-0">${name}</span>
 			<span class="col-6">${skillDisplay}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(bg.source)}" title="${Parser.sourceJsonToFull(bg.source)} pr-0" ${BrewUtil.sourceJsonToStyle(bg.source)}>${source}</span>
-			
-			<span class="uniqueid hidden">${bg.uniqueId ? bg.uniqueId : bgI}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -66,7 +64,7 @@ class BackgroundPage extends ListPage {
 				hash,
 				source,
 				skills: skillDisplay,
-				uniqueid: bg.uniqueId || bgI
+				uniqueId: bg.uniqueId || bgI
 			}
 		);
 
@@ -97,7 +95,7 @@ class BackgroundPage extends ListPage {
 		const skills = Renderer.background.getSkillSummary(bg.skillProficiencies || [], true);
 
 		const $ele = $$`<li class="row">
-			<a href="#${hash}">
+			<a href="#${hash}" class="lst--border">
 				<span class="bold col-4 pl-0">${name}</span>
 				<span class="col-8 pr-0">${skills}</span>
 			</a>

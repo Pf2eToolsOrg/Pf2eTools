@@ -2218,14 +2218,14 @@ Renderer.utils = {
 							const abilityOptions = v.map(abMeta => {
 								const abList = Object.keys(abMeta);
 								hadMultipleInner = hadMultipleInner || abList.length > 1;
-								return listMode ? `${abList.map(ab => ab.uppercaseFirst()).join(", ")} 13+` : `${abList.map(ab => Parser.attAbvToFull(ab)).joinConjunct(", ", " and ")} 13 or higher`
+								return listMode ? abList.map(ab => ab.uppercaseFirst()).join(", ") : abList.map(ab => Parser.attAbvToFull(ab)).joinConjunct(", ", " and ");
 							});
 							return listMode ? `${abilityOptions.join("/")} 13+` : `${abilityOptions.joinConjunct(hadMultipleInner ? "; " : ", ", " or ")} 13 or higher`
 						}
 						case "proficiency": {
 							// only handles armor proficiency requirements,
 							return v.map(obj => {
-								return Object.entries(obj).forEach(([profType, prof]) => {
+								return Object.entries(obj).map(([profType, prof]) => {
 									if (profType === "armor") {
 										return listMode ? `Prof ${Parser.armorFullToAbv(prof)} armor` : `Proficiency with ${prof} armor`;
 									}
@@ -2356,7 +2356,115 @@ Renderer.spell = {
 		renderStack.push(`</td></tr>`);
 
 		return renderStack.join("");
-	}
+	},
+
+	initClasses (spell, brewSpellClasses) {
+		if (spell._isInitClasses) return;
+		spell._isInitClasses = true;
+
+		// add eldritch knight and arcane trickster
+		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === Renderer.spell.STR_WIZARD && c.source === SRC_PHB).length) {
+			if (!spell.classes.fromSubclass) spell.classes.fromSubclass = [];
+			spell.classes.fromSubclass.push({
+				class: {name: Renderer.spell.STR_FIGHTER, source: SRC_PHB},
+				subclass: {name: Renderer.spell.STR_ELD_KNIGHT, source: SRC_PHB}
+			});
+			spell.classes.fromSubclass.push({
+				class: {name: Renderer.spell.STR_ROGUE, source: SRC_PHB},
+				subclass: {name: Renderer.spell.STR_ARC_TCKER, source: SRC_PHB}
+			});
+			if (spell.level > 4) {
+				spell._scrollNote = true;
+			}
+		}
+
+		// add divine soul, favored soul v2, favored soul v3
+		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === Renderer.spell.STR_CLERIC && c.source === SRC_PHB).length) {
+			if (!spell.classes.fromSubclass) {
+				spell.classes.fromSubclass = [];
+				spell.classes.fromSubclass.push({
+					class: {name: Renderer.spell.STR_SORCERER, source: SRC_PHB},
+					subclass: {name: Renderer.spell.STR_DIV_SOUL, source: SRC_XGE}
+				});
+			} else {
+				if (!spell.classes.fromSubclass.find(it => it.class.name === Renderer.spell.STR_SORCERER && it.class.source === SRC_PHB && it.subclass.name === Renderer.spell.STR_DIV_SOUL && it.subclass.source === SRC_XGE)) {
+					spell.classes.fromSubclass.push({
+						class: {name: Renderer.spell.STR_SORCERER, source: SRC_PHB},
+						subclass: {name: Renderer.spell.STR_DIV_SOUL, source: SRC_XGE}
+					});
+				}
+			}
+			spell.classes.fromSubclass.push({
+				class: {name: Renderer.spell.STR_SORCERER, source: SRC_PHB},
+				subclass: {name: Renderer.spell.STR_FAV_SOUL_V2, source: SRC_UAS}
+			});
+			spell.classes.fromSubclass.push({
+				class: {name: Renderer.spell.STR_SORCERER, source: SRC_PHB},
+				subclass: {name: Renderer.spell.STR_FAV_SOUL_V3, source: SRC_UARSC}
+			});
+		}
+
+		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Wizard")) {
+			if (spell.level === 0) {
+				// add high elf
+				(spell.races || (spell.races = [])).push({
+					name: "Elf (High)",
+					source: SRC_PHB,
+					baseName: "Elf",
+					baseSource: SRC_PHB
+				});
+				// add arcana cleric
+				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
+					class: {name: Renderer.spell.STR_CLERIC, source: SRC_PHB},
+					subclass: {name: "Arcana", source: SRC_SCAG}
+				});
+			}
+
+			// add arcana cleric
+			if (spell.level >= 6) {
+				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
+					class: {name: Renderer.spell.STR_CLERIC, source: SRC_PHB},
+					subclass: {name: "Arcana", source: SRC_SCAG}
+				});
+			}
+		}
+
+		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Druid")) {
+			if (spell.level === 0) {
+				// add nature cleric
+				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
+					class: {name: Renderer.spell.STR_CLERIC, source: SRC_PHB},
+					subclass: {name: "Nature", source: SRC_PHB}
+				});
+			}
+		}
+
+		// add homebrew class/subclass
+		if (brewSpellClasses) {
+			const lowName = spell.name.toLowerCase();
+			if (brewSpellClasses[spell.source] && brewSpellClasses[spell.source][lowName]) {
+				spell.classes = spell.classes || {};
+				if (brewSpellClasses[spell.source][lowName].fromClassList.length) {
+					spell.classes.fromClassList = spell.classes.fromClassList || [];
+					spell.classes.fromClassList = spell.classes.fromClassList.concat(brewSpellClasses[spell.source][lowName].fromClassList);
+				}
+				if (brewSpellClasses[spell.source][lowName].fromSubclass.length) {
+					spell.classes.fromSubclass = spell.classes.fromSubclass || [];
+					spell.classes.fromSubclass = spell.classes.fromSubclass.concat(brewSpellClasses[spell.source][lowName].fromSubclass);
+				}
+			}
+		}
+	},
+	STR_WIZARD: "Wizard",
+	STR_FIGHTER: "Fighter",
+	STR_ROGUE: "Rogue",
+	STR_CLERIC: "Cleric",
+	STR_SORCERER: "Sorcerer",
+	STR_ELD_KNIGHT: "Eldritch Knight",
+	STR_ARC_TCKER: "Arcane Trickster",
+	STR_DIV_SOUL: "Divine Soul",
+	STR_FAV_SOUL_V2: "Favored Soul v2 (UA)",
+	STR_FAV_SOUL_V3: "Favored Soul v3 (UA)"
 };
 
 Renderer.condition = {
@@ -3268,13 +3376,42 @@ Renderer.monster = {
 	getRenderedSenses (senses, isPlainText) {
 		if (typeof senses === "string") senses = [senses]; // handle legacy format
 		if (isPlainText) return senses.join(", ");
-		const senseStr = senses.join(", ").replace(/(^| )(tremorsense|blindsight|truesight|darkvision)( |$)/gi, (...m) => `${m[1]}{@sense ${m[2]}}${m[3]}`);
+		const senseStr = senses
+			.join(", ")
+			.replace(/(^| |\()(tremorsense|blindsight|truesight|darkvision)(\)| |$)/gi, (...m) => `${m[1]}{@sense ${m[2]}}${m[3]}`)
+			.replace(/(^| |\()(blind|blinded)(\)| |$)/gi, (...m) => `${m[1]}{@condition blinded||${m[2]}}${m[3]}`)
+		;
 		return Renderer.get().render(senseStr);
 	},
 
 	getRenderedLanguages (languages) {
 		if (typeof languages === "string") languages = [languages]; // handle legacy format
 		return languages ? languages.join(", ") : "\u2014";
+	},
+
+	initParsed (mon) {
+		mon._pTypes = mon._pTypes || Parser.monTypeToFullObj(mon.type); // store the parsed type
+		mon._pCr = mon._pCr || (mon.cr == null ? null : (mon.cr.cr || mon.cr));
+	},
+
+	updateParsed (mon) {
+		delete mon._pTypes;
+		delete mon._pCr;
+		Renderer.monster.initParsed(mon);
+	},
+
+	async pPopulateMetaAndLanguages (meta, languages) {
+		const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/meta.json`);
+
+		if (meta) {
+			// Convert the legendary Group JSONs into a look-up, i.e. use the name as a JSON property name
+			data.legendaryGroup.forEach(lg => {
+				meta[lg.source] = meta[lg.source] || {};
+				meta[lg.source][lg.name] = lg;
+			});
+		}
+
+		if (languages) Object.keys(data.language).forEach(k => languages[k] = data.language[k]);
 	}
 };
 
@@ -3291,9 +3428,11 @@ Renderer.item = {
 			if (item.dmg1) damage = Renderer.get().render(item.dmg1);
 			if (item.dmgType) damageType = Parser.dmgTypeToFull(item.dmgType);
 		} else if (type === "LA" || type === "MA" || type === "HA") {
-			damage = "AC " + item.ac + (type === "LA" ? " + Dex" : type === "MA" ? " + Dex (max 2)" : "");
+			if (item.ac != null) damage = `AC ${item.ac}${type === "LA" ? " + Dex" : type === "MA" ? " + Dex (max 2)" : ""}`;
+			if (item.acSpecial != null) damage ? damage = `${damage}, ${item.acSpecial}` : damage = `AC ${item.acSpecial}`;
 		} else if (type === "S") {
-			damage = "AC +" + item.ac;
+			if (item.ac != null) damage = `AC +${item.ac}`;
+			if (item.acSpecial != null) damage ? damage = `${damage}, ${item.acSpecial}` : damage = `AC ${item.acSpecial}`;
 		} else if (type === "MNT") {
 			const mntParts = [
 				item.speed ? `Speed: ${item.speed}` : null,
@@ -3479,8 +3618,7 @@ Renderer.item = {
 					(brew.itemProperty || []).forEach(p => Renderer.item._addProperty(p));
 					(brew.itemType || []).forEach(t => Renderer.item._addType(t));
 					resolve();
-				})
-				.catch(BrewUtil.pPurgeBrew);
+				});
 		});
 	},
 	_addBasePropertiesAndTypes (baseItemData) {
@@ -4916,14 +5054,14 @@ Renderer.hover = {
 	},
 
 	_isCached: (page, source, hash) => {
-		page = page.toLowerCase();
-		source = source.toLowerCase();
-		hash = hash.toLowerCase();
-
 		return Renderer.hover._linkCache[page] && Renderer.hover._linkCache[page][source] && Renderer.hover._linkCache[page][source][hash];
 	},
 
 	async pCacheAndGet (page, source, hash) {
+		page = page.toLowerCase();
+		source = source.toLowerCase();
+		hash = hash.toLowerCase();
+
 		/**
 		 * @param data the data
 		 * @param listProp list property in the data
@@ -4939,12 +5077,8 @@ Renderer.hover = {
 
 		async function pLoadMultiSource (page, baseUrl, listProp) {
 			if (!Renderer.hover._isCached(page, source, hash)) {
-				try {
-					const brewData = await BrewUtil.pAddBrewData();
-					if (brewData[listProp]) populate(brewData, listProp);
-				} catch (e) {
-					await BrewUtil.pPurgeBrew(e);
-				}
+				const brewData = await BrewUtil.pAddBrewData();
+				if (brewData[listProp]) populate(brewData, listProp);
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${baseUrl}index.json`);
 				const officialSources = {};
 				Object.entries(index).forEach(([k, v]) => officialSources[k.toLowerCase()] = v);
@@ -4960,15 +5094,11 @@ Renderer.hover = {
 		}
 
 		async function _pLoadSingleBrew (listProps, itemModifier) {
-			try {
-				const brewData = await BrewUtil.pAddBrewData();
-				listProps = listProps instanceof Array ? listProps : [listProps];
-				listProps.forEach(lp => {
-					if (brewData[lp]) populate(brewData, lp, itemModifier);
-				});
-			} catch (e) {
-				await BrewUtil.pPurgeBrew(e);
-			}
+			const brewData = await BrewUtil.pAddBrewData();
+			listProps = listProps instanceof Array ? listProps : [listProps];
+			listProps.forEach(lp => {
+				if (brewData[lp]) populate(brewData, lp, itemModifier);
+			});
 		}
 
 		function _handleSingleData (data, listProps, itemModifier) {
@@ -5004,12 +5134,8 @@ Renderer.hover = {
 			case "hover": return null;
 			case UrlUtil.PG_CLASSES: {
 				if (!Renderer.hover._isCached(page, source, hash)) {
-					try {
-						const brewData = await BrewUtil.pAddBrewData();
-						(brewData.class || []).forEach(cc => _classes_indexFeatures(cc));
-					} catch (e) {
-						await BrewUtil.pPurgeBrew(e);
-					}
+					const brewData = await BrewUtil.pAddBrewData();
+					(brewData.class || []).forEach(cc => _classes_indexFeatures(cc));
 					const data = await DataUtil.class.loadJSON();
 					data.class.forEach(cc => _classes_indexFeatures(cc));
 				}
@@ -5024,18 +5150,14 @@ Renderer.hover = {
 						isBlacklistVariants: true
 					});
 					// populate brew once the main item properties have been loaded
-					try {
-						const brewData = await BrewUtil.pAddBrewData();
-						const itemList = await Renderer.item.getItemsFromHomebrew(brewData);
-						itemList.forEach(it => {
-							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
-							Renderer.hover._addToCache(page, it.source, itHash, it);
-							const revName = Renderer.item.modifierPostToPre(it);
-							if (revName) Renderer.hover._addToCache(page, it.source, UrlUtil.URL_TO_HASH_BUILDER[page](revName), it);
-						});
-					} catch (e) {
-						await BrewUtil.pPurgeBrew(e);
-					}
+					const brewData = await BrewUtil.pAddBrewData();
+					const itemList = await Renderer.item.getItemsFromHomebrew(brewData);
+					itemList.forEach(it => {
+						const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+						Renderer.hover._addToCache(page, it.source, itHash, it);
+						const revName = Renderer.item.modifierPostToPre(it);
+						if (revName) Renderer.hover._addToCache(page, it.source, UrlUtil.URL_TO_HASH_BUILDER[page](revName), it);
+					});
 
 					allItems.forEach(item => {
 						const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
@@ -5053,12 +5175,8 @@ Renderer.hover = {
 			case UrlUtil.PG_REWARDS: return pLoadSimple(page, "rewards.json", "reward");
 			case UrlUtil.PG_RACES: {
 				if (!Renderer.hover._isCached(page, source, hash)) {
-					try {
-						const brewData = await BrewUtil.pAddBrewData();
-						if (brewData.race) populate(brewData, "race");
-					} catch (e) {
-						await BrewUtil.pPurgeBrew(e);
-					}
+					const brewData = await BrewUtil.pAddBrewData();
+					if (brewData.race) populate(brewData, "race");
 
 					const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/races.json`);
 					const merged = Renderer.race.mergeSubraces(data.race);

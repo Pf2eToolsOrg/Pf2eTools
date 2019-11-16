@@ -4,7 +4,6 @@ class ManageBrew {
 	static initialise () {
 		BrewUtil.pAddBrewData()
 			.then(() => BrewUtil.pAddLocalBrewData())
-			.catch(BrewUtil.pPurgeBrew)
 			.then(() => {
 				ManageBrew.pRender();
 			})
@@ -48,7 +47,7 @@ class ManageBrew {
 								keys.forEach(k => {
 									const toDisplay = displayFn ? displayFn(BrewUtil.homebrewMeta, metaType, k) : k.toTitleCase();
 
-									const $row = $(`<li class="row manbrew__row">
+									const $row = $(`<li class="row manbrew__row lst--border">
 										<span class="action col-10 manbrew__col--tall">${toDisplay}</span>
 									</li>`).appendTo($lst);
 

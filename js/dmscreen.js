@@ -223,6 +223,8 @@ class Board {
 		})();
 
 		async function pDoBuildAdvantureOrAdventureIndex (dataPath, dataProp, indexStorage, indexIdField) {
+			const brew = await BrewUtil.pAddBrewData();
+
 			const data = await DataUtil.loadJSON(dataPath);
 			indexStorage.ALL = elasticlunr(function () {
 				this.addField(indexIdField);
@@ -235,7 +237,7 @@ class Board {
 			SearchUtil.removeStemmer(indexStorage.ALL);
 
 			let bookOrAdventureId = 0;
-			data[dataProp].forEach(adventureOrBook => {
+			const handleAdventureOrBook = (adventureOrBook, isBrew) => {
 				indexStorage[adventureOrBook.id] = elasticlunr(function () {
 					this.addField(indexIdField);
 					this.addField("c");
@@ -255,11 +257,15 @@ class Board {
 						id: bookOrAdventureId++
 					};
 					if (chap.ordinal) chapDoc.o = Parser.bookOrdinalToAbv(chap.ordinal, true);
+					if (isBrew) chapDoc.b = true;
 
 					indexStorage.ALL.addDoc(chapDoc);
 					indexStorage[adventureOrBook.id].addDoc(chapDoc);
 				});
-			});
+			};
+
+			data[dataProp].forEach(adventureOrBook => handleAdventureOrBook(adventureOrBook));
+			(brew[dataProp] || []).forEach(adventureOrBook => handleAdventureOrBook(adventureOrBook, true));
 		}
 
 		// adventures
@@ -2900,8 +2906,21 @@ class AdventureOrBookLoader {
 
 	_getJsonPath (bookOrAdventure) {
 		switch (this._type) {
-			case "adventure": return `data/adventure/adventure-${bookOrAdventure.toLowerCase()}.json`
-			case "book": return `data/book/book-${bookOrAdventure.toLowerCase()}.json`
+			case "adventure": return `data/adventure/adventure-${bookOrAdventure.toLowerCase()}.json`;
+			case "book": return `data/book/book-${bookOrAdventure.toLowerCase()}.json`;
+			default: throw new Error(`Unknown loader type "${this._type}"`)
+		}
+	}
+
+	_getBrewData (bookOrAdventure) {
+		const searchFor = bookOrAdventure.toLowerCase();
+		switch (this._type) {
+			case "adventure": {
+				return (BrewUtil.homebrew.adventureData || []).find(it => it.id.toLowerCase() === searchFor);
+			}
+			case "book": {
+				return (BrewUtil.homebrew.bookData || []).find(it => it.id.toLowerCase() === searchFor);
+			}
 			default: throw new Error(`Unknown loader type "${this._type}"`)
 		}
 	}
@@ -2909,8 +2928,9 @@ class AdventureOrBookLoader {
 	async pFill (bookOrAdventure) {
 		if (this._cache[bookOrAdventure]) return this._cache[bookOrAdventure];
 
-		const data = await DataUtil.loadJSON(this._getJsonPath(bookOrAdventure));
 		this._cache[bookOrAdventure] = {};
+		const fromBrew = this._getBrewData(bookOrAdventure);
+		const data = fromBrew || await DataUtil.loadJSON(this._getJsonPath(bookOrAdventure));
 		data.data.forEach((chap, i) => this._cache[bookOrAdventure][i] = chap);
 	}
 

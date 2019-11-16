@@ -17,7 +17,7 @@ window.onload = function load () {
 let adventures = [];
 let adI = 0;
 function onJsonLoad (data) {
-	$("ul.contents").append($(`<li><a href='adventures.html'><span class='name'>\u21FD All Adventures</span></a></li>`));
+	$("ul.contents").append($(`<li><a href='adventures.html' class="lst--border"><span class='name'>\u21FD All Adventures</span></a></li>`));
 
 	BookUtil.baseDataUrl = "data/adventure/adventure-";
 	BookUtil.homebrewIndex = "adventure";
@@ -29,13 +29,12 @@ function onJsonLoad (data) {
 	addAdventures(data);
 
 	$(`.book-head-message`).text(`Select an adventure from the list on the left`);
-	$(`.book-loading-message`).text(`Select a book to begin`);
+	$(`.book-loading-message`).text(`Select an adventure to begin`);
 
 	window.onhashchange = BookUtil.booksHashChange;
 	BrewUtil.pAddBrewData()
 		.then(handleBrew)
 		.then(() => BrewUtil.pAddLocalBrewData())
-		.catch(BrewUtil.pPurgeBrew)
 		.then(() => {
 			if (window.location.hash.length) {
 				BookUtil.booksHashChange();

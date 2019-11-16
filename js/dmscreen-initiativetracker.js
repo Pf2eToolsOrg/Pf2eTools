@@ -20,7 +20,8 @@ class InitiativeTracker {
 			importIsAddPlayers: _propDefaultTrue(state.p),
 			importIsAppend: _propDefaultFalse(state.a),
 			statsAddColumns: _propDefaultFalse(state.k),
-			playerInitShowExactHp: _propDefaultFalse(state.piH),
+			playerInitShowExactPlayerHp: _propDefaultFalse(state.piHp),
+			playerInitShowExactMonsterHp: _propDefaultFalse(state.piHm),
 			playerInitHideNewMonster: _propDefaultTrue(state.piV),
 			playerInitShowOrdinals: _propDefaultFalse(state.piO),
 			playerInitShortTokens: _propDefaultTrue(state.piS),
@@ -517,7 +518,8 @@ class InitiativeTracker {
 				UiUtil.$getAddModalRowCb($modalInner, "Roll initiative", cfg, "isRollInit");
 				UiUtil.$getAddModalRowCb($modalInner, "Roll hit points", cfg, "isRollHp");
 				UiUtil.addModalSep($modalInner);
-				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show exact HP", cfg, "playerInitShowExactHp");
+				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show exact player HP", cfg, "playerInitShowExactPlayerHp");
+				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show exact monster HP", cfg, "playerInitShowExactMonsterHp");
 				UiUtil.$getAddModalRowCb($modalInner, "Player View: Auto-hide new monsters", cfg, "playerInitHideNewMonster");
 				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show ordinals", cfg, "playerInitShowOrdinals", "For example, if you add two Goblins, one will be Goblin (1) and the other Goblin (2), rather than having identical names.");
 				UiUtil.$getAddModalRowCb($modalInner, "Player View: Shorten server tokens", cfg, "playerInitShortTokens", "Server tokens will be roughly half as many characters, but will contain non-standard characters.");
@@ -855,7 +857,8 @@ class InitiativeTracker {
 				p: cfg.importIsAddPlayers,
 				a: cfg.importIsAppend,
 				k: cfg.statsAddColumns,
-				piH: cfg.playerInitShowExactHp,
+				piHp: cfg.playerInitShowExactPlayerHp,
+				piHm: cfg.playerInitShowExactMonsterHp,
 				piV: cfg.playerInitHideNewMonster,
 				piO: cfg.playerInitShowOrdinals,
 				piS: cfg.playerInitShortTokens,
@@ -898,7 +901,7 @@ class InitiativeTracker {
 
 				const hp = Number($row.find(`input.hp`).val());
 				const hpMax = Number($row.find(`input.hp-max`).val());
-				if (cfg.playerInitShowExactHp) {
+				if ((!isMonster && cfg.playerInitShowExactPlayerHp) || (isMonster && cfg.playerInitShowExactMonsterHp)) {
 					out.h = hp;
 					out.g = hpMax;
 				} else {
@@ -1594,8 +1597,8 @@ class InitiativeTracker {
 					const count = Number(it.c);
 					const hash = it.h;
 					const scaling = (() => {
-						if (it.uid) {
-							const m = /_([\d.,]+)$/.exec(it.uid);
+						if (it.uniqueId) {
+							const m = /_([\d.,]+)$/.exec(it.uniqueId);
 							if (m) {
 								return Number(m[1]);
 							} else return null;

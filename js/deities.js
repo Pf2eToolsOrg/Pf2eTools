@@ -113,7 +113,7 @@ class DeitiesPage extends ListPage {
 		const alignment = g.alignment.join("");
 		const domains = g.domains.join(", ");
 
-		eleLi.innerHTML = `<a href="#${hash}">
+		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3 pl-0">${g.name}</span>
 			<span class="col-2 text-center">${g.pantheon}</span>
 			<span class="col-2 text-center">${alignment}</span>
@@ -131,7 +131,7 @@ class DeitiesPage extends ListPage {
 				pantheon: g.pantheon,
 				alignment,
 				domains,
-				uniqueid: g.uniqueId ? g.uniqueId : dtI
+				uniqueId: g.uniqueId ? g.uniqueId : dtI
 			}
 		);
 
@@ -165,7 +165,7 @@ class DeitiesPage extends ListPage {
 		const domains = g.domains.join(", ");
 
 		const $ele = $(`<li class="row">
-			<a href="#${hash}">
+			<a href="#${hash}" class="lst--border">
 				<span class="bold col-4 pl-0">${g.name}</span>
 				<span class="col-2">${g.pantheon}</span>
 				<span class="col-2">${alignment}</span>

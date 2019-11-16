@@ -101,10 +101,10 @@ class ClassList {
 
 			const id = i + previousClassAmount;
 
-			eleLi.innerHTML = `<a href="#${hash}" title="${cls.name}">
+			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 				<span class="bold col-8 pl-0">${cls.name}</span>
 				<span class="col-4 text-center ${Parser.sourceJsonToColor(cls.source)}" title="${Parser.sourceJsonToFull(cls.source)} pr-0" ${BrewUtil.sourceJsonToStyle(cls.source)}>${source}</span>
-			</a>`
+			</a>`;
 
 			const listItem = new ListItem(
 				id,
@@ -113,7 +113,10 @@ class ClassList {
 				{
 					hash,
 					source,
-					uniqueid: cls.uniqueId ? cls.uniqueId : id
+					uniqueId: cls.uniqueId ? cls.uniqueId : id
+				},
+				{
+					eleLi
 				}
 			);
 
@@ -464,7 +467,7 @@ class HashLoad {
 			// track class table feature names
 			const tblLvlFeatures = $levelTrs[i].find(".features");
 			// used to build class table
-			const featureLinks = [];
+			const $wrpsLnkFeatures = [];
 
 			// add class features to render stack
 			const lvlFeatureList = ClassDisplay.curClass.classFeatures[i];
@@ -474,8 +477,8 @@ class HashLoad {
 				const featureId = `${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(feature.name)}${idLevelPart}`;
 
 				const featureLinkPart = `${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(feature.name)}${idLevelPart}`;
-				const featureLink = $(`<a href="#${UrlUtil.autoEncodeHash(ClassDisplay.curClass)}${HASH_PART_SEP}${featureLinkPart}" class="${CLSS_FEATURE_LINK}" ${ATB_DATA_FEATURE_LINK}="${featureLinkPart}" ${ATB_DATA_FEATURE_ID}="${featureId}">${feature.name}</a>`);
-				featureLink.click(function () {
+				const $lnkFeature = $(`<a href="#${UrlUtil.autoEncodeHash(ClassDisplay.curClass)}${HASH_PART_SEP}${featureLinkPart}" class="${CLSS_FEATURE_LINK}" ${ATB_DATA_FEATURE_LINK}="${featureLinkPart}" ${ATB_DATA_FEATURE_ID}="${featureId}">${feature.name}</a>`);
+				$lnkFeature.click(function () {
 					const hideClassFsKey = HASH_HIDE_FEATURES.slice(0, -1);
 					const hiddenState = Hist.getSubHash(hideClassFsKey) === "true";
 					if (hiddenState) {
@@ -485,7 +488,11 @@ class HashLoad {
 						}, 1);
 					} else document.getElementById(featureId).scrollIntoView();
 				});
-				if (feature.type !== "inset") featureLinks.push(featureLink);
+				if (feature.type !== "inset") {
+					// FIXME(future) this doesn't handle reprints
+					const $wrp = $$`<div class="inline-block cls__wrp-feature-link${feature.source && SourceUtil.isNonstandardSource(feature.source) ? ` ${CLSS_NON_STANDARD_SOURCE}` : ""}">${$lnkFeature}</div>`;
+					$wrpsLnkFeatures.push($wrp);
+				}
 
 				const styleClasses = [CLSS_CLASS_FEATURE, "linked-titles--classes"];
 				if (feature.gainSubclassFeature) styleClasses.push(CLSS_GAIN_SUBCLASS_FEATURE);
@@ -526,12 +533,12 @@ class HashLoad {
 			}
 
 			// render class table feature names
-			if (featureLinks.length === 0) {
+			if ($wrpsLnkFeatures.length === 0) {
 				tblLvlFeatures.html("\u2014");
 			} else {
-				featureLinks.forEach(($it, j) => {
+				$wrpsLnkFeatures.forEach(($it, j) => {
 					tblLvlFeatures.append($it);
-					if (j < featureLinks.length - 1) tblLvlFeatures.append(", ");
+					if (j) $it.prepend(", ");
 				});
 			}
 		}
@@ -973,6 +980,10 @@ class SubClassLoader {
 			$elesToToggle.show();
 		}
 
+		// show UA class feature table links as required
+		// FIXME(future) this doesn't handle reprints
+		$(`td.features > div.${CLSS_NON_STANDARD_SOURCE}`).toggle(!hideAllSources);
+
 		// scroll to the linked feature if required
 		if (feature !== null && (SubClassLoader.prevFeature === null || SubClassLoader.prevFeature !== feature)) {
 			document.getElementById($(`[${ATB_DATA_FEATURE_LINK}="${feature}"]`)[0].getAttribute(ATB_DATA_FEATURE_ID)).scrollIntoView();
@@ -990,6 +1001,33 @@ class SubClassLoader {
 
 		$(`.sc_pill__source_suffix`).toggle(!!showPillSources);
 		$(`.sc_pill__source`).toggleClass(CLSS_ACTIVE, !!showPillSources);
+
+		ClassList.list.items.forEach(it => {
+			let nxtHash = it.values.hash;
+
+			// region Class features
+			if (hideClassFeatures) nxtHash = Hist.util.setSubhash(nxtHash, HASH_HIDE_FEATURES, true);
+			else nxtHash = Hist.util.setSubhash(nxtHash, HASH_HIDE_FEATURES, null);
+			// endregion
+
+			// region Fluff
+			if (showFluff) nxtHash = Hist.util.setSubhash(nxtHash, HASH_SHOW_FLUFF, true);
+			else nxtHash = Hist.util.setSubhash(nxtHash, HASH_SHOW_FLUFF, null);
+			// endregion
+
+			// region Pill sources
+			if (showPillSources) nxtHash = Hist.util.setSubhash(nxtHash, HASH_SHOW_PILL_SOURCES, true);
+			else nxtHash = Hist.util.setSubhash(nxtHash, HASH_SHOW_PILL_SOURCES, null);
+			// endregion
+
+			// region Sources
+			if (hideAllSources) nxtHash = Hist.util.setSubhash(nxtHash, HASH_SOURCES, null);
+			else if (hideSomeSources) nxtHash = Hist.util.setSubhash(nxtHash, HASH_SOURCES, 1);
+			else nxtHash = Hist.util.setSubhash(nxtHash, HASH_SOURCES, 2);
+			// endregion
+
+			it.data.eleLi.firstChild.href = `#${nxtHash}`;
+		});
 	}
 
 	static handleTableGroups (shownInTable, tableDataTag, show) {
@@ -1395,7 +1433,6 @@ async function doPageInit () {
 		BrewUtil.pAddBrewData()
 			.then(handleBrew)
 			.then(() => BrewUtil.pAddLocalBrewData())
-			.catch(BrewUtil.pPurgeBrew)
 			.then(() => {
 				RollerUtil.addListRollButton();
 				ClassList.list.init();

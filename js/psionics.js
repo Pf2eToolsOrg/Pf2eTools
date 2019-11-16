@@ -110,11 +110,11 @@ class PsionicsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(p);
 		const type = Parser.psiTypeToFull(p.type);
 
-		eleLi.innerHTML = `<a href="#${hash}">
-			<span class="bold col-6">${p.name}</span>
+		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
+			<span class="bold col-6 pl-0">${p.name}</span>
 			<span class="col-2">${type}</span>
 			<span class="col-2 ${p._fOrder === STR_NONE ? "list-entry-none" : ""}">${p._fOrder}</span>
-			<span class="col-2 text-center" title="${Parser.sourceJsonToFull(p.source)}" ${BrewUtil.sourceJsonToStyle(p.source)}>${source}</span>
+			<span class="col-2 text-center pr-0" title="${Parser.sourceJsonToFull(p.source)}" ${BrewUtil.sourceJsonToStyle(p.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -126,7 +126,7 @@ class PsionicsPage extends ListPage {
 				source,
 				type,
 				order: p._fOrder,
-				uniqueid: p.uniqueId ? p.uniqueId : psI,
+				uniqueId: p.uniqueId ? p.uniqueId : psI,
 				searchModeList: getHiddenModeList(p)
 			}
 		);
@@ -156,7 +156,7 @@ class PsionicsPage extends ListPage {
 		const type = Parser.psiTypeToFull(p.type);
 
 		const $ele = $(`<li class="row">
-			<a href="#${hash}">
+			<a href="#${hash}" class="lst--border">
 				<span class="bold col-6 pl-0">${p.name}</span>
 				<span class="col-3">${type}</span>
 				<span class="col-3 ${p._fOrder === STR_NONE ? "list-entry-none" : ""} pr-0">${p._fOrder}</span>

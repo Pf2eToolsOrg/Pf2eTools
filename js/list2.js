@@ -42,6 +42,7 @@ class List {
 	 * @param opts.$wrpList List wrapper.
 	 * @param [opts.isUseJquery] If the list items are using jQuery elements. Significantly slower for large lists.
 	 * @param [opts.sortByInitial] Initial sortBy.
+	 * @param [opts.sortDirInitial] Initial sortDir.
 	 */
 	constructor (opts) {
 		this._$iptSearch = opts.$iptSearch;
@@ -53,7 +54,7 @@ class List {
 
 		this._searchTerm = List._DEFAULTS.searchTerm;
 		this._sortBy = opts.sortByInitial || List._DEFAULTS.sortBy;
-		this._sortDir = List._DEFAULTS.sortDir;
+		this._sortDir = opts.sortDirInitial || List._DEFAULTS.sortDir;
 		this._fnFilter = null;
 		this._isUseJquery = opts.isUseJquery;
 
@@ -74,6 +75,8 @@ class List {
 
 	get items () { return this._items; }
 	get visibleItems () { return this._filteredSortedItems; }
+	get sortBy () { return this._sortBy; }
+	get sortDir () { return this._sortDir; }
 	set nextList (list) { this._nextList = list; }
 	set prevList (list) { this._prevList = list; }
 

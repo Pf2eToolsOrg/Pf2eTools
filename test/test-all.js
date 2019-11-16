@@ -15,6 +15,8 @@ async function main () {
 	await require("./test-pagenumbers");
 	testsPassed = testsPassed && await require("./test-json");
 	if (!testsPassed) handleFail();
+	testsPassed = testsPassed && await require("./test-misc");
+	if (!testsPassed) handleFail();
 	process.exit(0);
 }
 

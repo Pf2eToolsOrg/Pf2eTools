@@ -43,9 +43,10 @@ class RewardsPage extends ListPage {
 		const source = Parser.sourceJsonToAbv(reward.source);
 		const hash = UrlUtil.autoEncodeHash(reward);
 
-		eleLi.innerHTML = `<a href="#${hash}">
-			<span class="name col-10 pl-0">${reward.name}</span>
-			<span class="source col-2 text-center ${Parser.sourceJsonToColor(reward.source)} pr-0" title="${Parser.sourceJsonToFull(reward.source)}" ${BrewUtil.sourceJsonToStyle(reward.source)}>${source}</span>
+		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
+			<span class="col-2 text-center pl-0">${reward.type}</span>
+			<span class="bold col-8">${reward.name}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(reward.source)} pr-0" title="${Parser.sourceJsonToFull(reward.source)}" ${BrewUtil.sourceJsonToStyle(reward.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -55,7 +56,8 @@ class RewardsPage extends ListPage {
 			{
 				hash,
 				source,
-				uniqueid: reward.uniqueId ? reward.uniqueId : rwI
+				type: reward.type,
+				uniqueId: reward.uniqueId ? reward.uniqueId : rwI
 			}
 		);
 
@@ -81,7 +83,12 @@ class RewardsPage extends ListPage {
 	getSublistItem (reward, pinId) {
 		const hash = UrlUtil.autoEncodeHash(reward);
 
-		const $ele = $(`<li class="row"><a href="#${hash}"><span class="name col-12 px-0">${reward.name}</span></a></li>`)
+		const $ele = $(`<li class="row">
+			<a href="#${hash}" class="lst--border">
+				<span class="name col-2 pl-0 text-center">${reward.type}</span>
+				<span class="name col-10 pr-0">${reward.name}</span>
+			</a>
+		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
 
 		const listItem = new ListItem(
@@ -89,7 +96,8 @@ class RewardsPage extends ListPage {
 			$ele,
 			reward.name,
 			{
-				hash
+				hash,
+				type: reward.type
 			}
 		);
 		return listItem;

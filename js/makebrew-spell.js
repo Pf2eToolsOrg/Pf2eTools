@@ -975,7 +975,7 @@ class SpellBuilder extends Builder {
 		const $tblSpell = $(`<table class="stats"/>`).appendTo(spellTab.$wrpTab);
 		// Make a copy of the spell, and add the data that would be displayed in the spells page
 		const procSpell = MiscUtil.copy(this._state);
-		RenderSpells.initClasses(procSpell);
+		Renderer.spell.initClasses(procSpell);
 		RenderSpells.$getRenderedSpell(procSpell, this._subclassLookup).appendTo($tblSpell);
 
 		// Data

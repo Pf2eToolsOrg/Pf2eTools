@@ -60,14 +60,10 @@ class Blacklist {
 
 		// LOAD DATA ===============================================================================
 		// bestiary
-		const ixBestiary = await DataUtil.loadJSON(`data/bestiary/index.json`);
-		const allBestiaryData = await Promise.all(Object.values(ixBestiary).map(f => DataUtil.loadJSON(`data/bestiary/${f}`)));
-		allBestiaryData.forEach(d => mergeData(d));
+		mergeData({monster: await DataUtil.monster.pLoadAll()});
 
 		// spells
-		const ixSpells = await DataUtil.loadJSON(`data/spells/index.json`);
-		const allSpellData = await Promise.all(Object.values(ixSpells).map(f => DataUtil.loadJSON(`data/spells/${f}`)));
-		allSpellData.forEach(d => mergeData(d));
+		mergeData({spell: await DataUtil.spell.pLoadAll()});
 
 		// classes
 		const classData = await DataUtil.class.loadJSON();
@@ -147,7 +143,7 @@ class Blacklist {
 				Blacklist.pRemove(id, name, category, source);
 			});
 
-		const $ele = $$`<li class="row no-click flex-v-center">
+		const $ele = $$`<li class="row no-click flex-v-center lst--border">
 			<span class="col-3">${source}</span>
 			<span class="col-3">${display.displayCategory}</span>
 			<span class="bold col-3">${name}</span>

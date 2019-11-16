@@ -33,33 +33,6 @@ class RenderBestiary {
 		</button>`;
 	}
 
-	static updateParsed (mon) {
-		delete mon._pTypes;
-		delete mon._pCr;
-		RenderBestiary.initParsed(mon);
-	}
-
-	static initParsed (mon) {
-		mon._pTypes = mon._pTypes || Parser.monTypeToFullObj(mon.type); // store the parsed type
-		mon._pCr = mon._pCr || (mon.cr == null ? null : (mon.cr.cr || mon.cr));
-	}
-
-	static pPopulateMetaAndLanguages (meta, languages) {
-		return new Promise(resolve => {
-			DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/meta.json`)
-				.then((data) => {
-					// Convert the legendary Group JSONs into a look-up, i.e. use the name as a JSON property name
-					data.legendaryGroup.forEach(lg => {
-						meta[lg.source] = meta[lg.source] || {};
-						meta[lg.source][lg.name] = lg;
-					});
-
-					Object.keys(data.language).forEach(k => languages[k] = data.language[k]);
-					resolve();
-				});
-		});
-	}
-
 	/**
 	 * @param {Object} mon Creature data.
 	 * @param {Object} meta Legendary metadata.
@@ -70,7 +43,7 @@ class RenderBestiary {
 	static $getRenderedCreature (mon, meta, options) {
 		options = options || {};
 		const renderer = Renderer.get();
-		RenderBestiary.initParsed(mon);
+		Renderer.monster.initParsed(mon);
 
 		const allTraits = Renderer.monster.getOrderedTraits(mon, renderer);
 		const legGroup = mon.legendaryGroup ? (meta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name] : null;

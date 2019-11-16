@@ -73,6 +73,9 @@ class ShapedConverter {
 	addBrewData (inputs, data) {
 		if (data.spell && data.spell.length) {
 			data.spell.forEach(spell => {
+				// Skip anything pretending to be from official sources, as it breaks the builder
+				if (Parser.SOURCE_JSON_TO_FULL[spell.source]) return;
+
 				const input = this.constructor.getInput(inputs, spell.source, BrewUtil.sourceJsonToFull(spell.source));
 				input.spellInput = input.spellInput || [];
 				input.spellInput.push(spell);
@@ -80,6 +83,9 @@ class ShapedConverter {
 		}
 		if (data.monster && data.monster.length) {
 			data.monster.forEach(monster => {
+				// Skip anything pretending to be from official sources, as it breaks the builder
+				if (Parser.SOURCE_JSON_TO_FULL[monster.source]) return;
+
 				const input = this.constructor.getInput(inputs, monster.source, BrewUtil.sourceJsonToFull(monster.source));
 				input.monsterInput = input.monsterInput || [];
 				input.monsterInput.push(monster);
@@ -188,8 +194,7 @@ class ShapedConverter {
 				} else {
 					throw new Error('Unrecognised spellUseInfo ' + useInfo);
 				}
-			})
-			.reduce(this.flattener, []);
+			}).flat();
 	}
 
 	static processLeveledSpells (spellObj) {
@@ -251,8 +256,15 @@ class ShapedConverter {
 			.replace(/(d\d+)([+-])(\d)/g, '$1 $2 $3');
 	}
 
+	static cleanRecharge (string) {
+		return string
+			.replace(/\(\d+[a-zA-Z]+-Level Spell; /gi, "(")
+			.replace(/\(\d+d\d+\)/g, "") // replace inline dice
+			.trim()
+	}
+
 	static makeTraitAction (name) {
-		const nameMatch = this.fixLinks(name).match(/([^(]+)(?:\(([^)]+)\))?/);
+		const nameMatch = this.cleanRecharge(this.fixLinks(name)).match(/([^(]+)(?:\(([^)]+)\))?/);
 		if (nameMatch && nameMatch[2]) {
 			const rechargeMatch = nameMatch[2].match(/^(?:(.*), )?(\d(?: minute[s]?)?\/(?:Day|Turn|Rest|Hour|Week|Month|Night|Long Rest|Short Rest)|Recharge \d(?:\u20136)?|Recharge[s]? [^),]+)(?:, ([^)]+))?$/i);
 			if (rechargeMatch) {
@@ -285,10 +297,12 @@ class ShapedConverter {
 				if (isObject(entry)) {
 					if (entry.items) {
 						if (isObject(entry.items[0])) {
-							return entry.items.map(item => ({
-								name: item.name.replace(/^([^.]+)\.$/, '$1'),
-								text: this.fixLinks(item.entry)
-							}));
+							return entry.items.map(item => {
+								const cleanName = item.name.replace(/^([^.]+)\.$/, '$1');
+								const out = this.makeTraitAction(cleanName);
+								out.text = this.fixLinks(item.entry);
+								return out;
+							});
 						} else {
 							return entry.items.map(item => `• ${this.fixLinks(item)}`).join('\n');
 						}
@@ -299,11 +313,11 @@ class ShapedConverter {
 				} else {
 					return this.fixLinks(entry);
 				}
-			}).reduce(this.flattener, []);
+			}).flat();
 
 			newTrait.text = expandedList.filter(isString).join('\n');
 			return [newTrait].concat(expandedList.filter(isObject));
-		}).reduce(this.flattener, []);
+		}).flat();
 	}
 
 	static processSpecialList (action, entries) {
@@ -430,7 +444,7 @@ class ShapedConverter {
 			output.damageImmunities = Parser.monImmResToFull(monster.immune);
 		}
 		if (monster.conditionImmune) {
-			output.conditionImmunities = Parser.monCondImmToFull(monster.conditionImmune);
+			output.conditionImmunities = Parser.monCondImmToFull(monster.conditionImmune, true);
 		}
 		output.senses = (monster.senses || []).join(", ");
 		output.languages = (monster.languages || []).join(", ");
@@ -441,7 +455,7 @@ class ShapedConverter {
 		const reactions = [];
 
 		if (monster.trait) {
-			traits.push.apply(traits, this.processStatblockSection(monster.trait));
+			traits.push(...this.processStatblockSection(monster.trait));
 		}
 		if (monster.spellcasting) {
 			monster.spellcasting.forEach(spellcasting => {
@@ -451,7 +465,7 @@ class ShapedConverter {
 				const spellLines = spellProc(spellcasting);
 				spellLines.unshift(this.fixLinks(spellcasting.headerEntries[0]));
 				if (spellcasting.footerEntries) {
-					spellLines.push.apply(spellLines, spellcasting.footerEntries);
+					spellLines.push(...spellcasting.footerEntries);
 				}
 				const trait = this.makeTraitAction(spellcasting.name);
 				trait.text = spellLines.join('\n');
@@ -461,10 +475,10 @@ class ShapedConverter {
 		}
 
 		if (monster.action) {
-			actions.push.apply(actions, this.processStatblockSection(monster.action));
+			actions.push(...this.processStatblockSection(monster.action));
 		}
 		if (monster.reaction) {
-			reactions.push.apply(reactions, this.processStatblockSection(monster.reaction));
+			reactions.push(...this.processStatblockSection(monster.reaction));
 		}
 
 		const addVariant = (name, text, output, forceActions) => {
@@ -664,7 +678,7 @@ class ShapedConverter {
 		};
 
 		const rows = [entry.colLabels];
-		rows.push.apply(rows, entry.rows);
+		rows.push(...entry.rows);
 
 		const formattedRows = rows.map(row => `| ${row.map(cellProc).join(' | ')} |`);
 		const styleToColDefinition = style => {
@@ -949,7 +963,7 @@ class ShapedConverter {
 			if (data.spellInput) {
 				data.spells = data.spellInput.map(spell => {
 					spellLevels[spell.name] = spell.level;
-					spell.classes.fromClassList.forEach(clazz => {
+					((spell.classes || {}).fromClassList || []).forEach(clazz => {
 						if ((srdSpells.includes(spell.name) || srdSpells.includes(srdSpellRenames[spell.name])) && clazz.source === SRC_PHB) {
 							return;
 						}
@@ -966,7 +980,7 @@ class ShapedConverter {
 						sourceObject.classes[clazz.name].spells.push(nameToAdd);
 					});
 
-					(spell.classes.fromSubclass || []).forEach(subclass => {
+					((spell.classes || {}).fromSubclass || []).forEach(subclass => {
 						if ([
 							'Life',
 							'Devotion',
@@ -1056,15 +1070,6 @@ class ShapedConverter {
 				input.converted.spells = input.spells;
 			}
 		});
-	}
-
-	static flattener (result, item) {
-		if (Array.isArray(item)) {
-			result.push(...item);
-		} else {
-			result.push(item);
-		}
-		return result;
 	}
 
 	static objMap (obj, func) {

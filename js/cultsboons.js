@@ -43,7 +43,7 @@ class CultsBoonsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 		const type = cultBoonTypeToFull(it.__prop);
 
-		eleLi.innerHTML = `<a href="#${hash}">
+		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="col-3 text-center pl-0">${type}</span>
 			<span class="bold col-7">${it.name}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
@@ -57,7 +57,7 @@ class CultsBoonsPage extends ListPage {
 				hash,
 				source,
 				type,
-				uniqueid: it.uniqueId ? it.uniqueId : bcI
+				uniqueId: it.uniqueId ? it.uniqueId : bcI
 			}
 		);
 
@@ -84,7 +84,7 @@ class CultsBoonsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 
 		const $ele = $(`<li class="row">
-			<a href="#${hash}">
+			<a href="#${hash}" class="lst--border">
 				<span class="col-3 text-center pl-0">${cultBoonTypeToFull(it.__prop)}</span>
 				<span class="bold col-9 pr-0">${it.name}</span>
 			</a>

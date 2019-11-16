@@ -43,7 +43,6 @@ class FeatsPage extends ListPage {
 		let prereqText = Renderer.utils.getPrerequisiteText(feat.prerequisite, true);
 		if (!prereqText) prereqText = STR_NONE;
 
-		// TODO rework prerequisite schema to match that of optional features
 		const preSet = new Set();
 		(feat.prerequisite || []).forEach(it => preSet.add(...Object.keys(it)));
 		feat._fPrereqOther = [...preSet].map(it => it.uppercaseFirst());
@@ -64,7 +63,7 @@ class FeatsPage extends ListPage {
 		const source = Parser.sourceJsonToAbv(feat.source);
 		const hash = UrlUtil.autoEncodeHash(feat);
 
-		eleLi.innerHTML = `<a href="#${hash}">
+		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3-8 pl-0">${name}</span>
 			<span class="col-3-5 ${ability.asText === STR_NONE ? "list-entry-none " : ""}">${ability.asText}</span>
 			<span class="col-3 ${(prereqText === STR_NONE ? "list-entry-none " : "")}">${prereqText}</span>
@@ -80,7 +79,7 @@ class FeatsPage extends ListPage {
 				source,
 				ability: ability.asText,
 				prerequisite: prereqText,
-				uniqueid: feat.uniqueId ? feat.uniqueId : ftI
+				uniqueId: feat.uniqueId ? feat.uniqueId : ftI
 			}
 		);
 
@@ -111,7 +110,7 @@ class FeatsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(feat);
 
 		const $ele = $(`<li class="row">
-			<a href="#${hash}">
+			<a href="#${hash}" class="lst--border">
 				<span class="bold col-4 pl-0">${feat.name}</span>
 				<span class="col-4 ${feat._slAbility === STR_NONE ? "list-entry-none" : ""}">${feat._slAbility}</span>
 				<span class="col-4 ${feat._slPrereq === STR_NONE ? "list-entry-none" : ""} pr-0">${feat._slPrereq}</span>

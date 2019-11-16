@@ -134,10 +134,10 @@ class OptionalFeaturesPage extends ListPage {
 		const prerequisite = Renderer.utils.getPrerequisiteText(it.prerequisite, true, new Set(["level"]));
 		const level = Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite);
 
-		eleLi.innerHTML = `<a href="#${hash}">
+		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3-2 pl-0">${it.name}</span>
 			<span class="col-1-5 text-center" title="${it._dFeatureType}">${it._lFeatureType}</span>
-			<span class="col-4-8 ${prerequisite === "\u2014" ? "text-center" : ""}">${prerequisite}</span>
+			<span class="col-4-8 text-center">${prerequisite}</span>
 			<span class="col-1 text-center">${level}</span>
 			<span class="col-1-5 ${Parser.sourceJsonToColor(it.source)} text-center pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
@@ -152,7 +152,7 @@ class OptionalFeaturesPage extends ListPage {
 				prerequisite,
 				level,
 				type: it._lFeatureType,
-				uniqueid: it.uniqueId ? it.uniqueId : ivI
+				uniqueId: it.uniqueId ? it.uniqueId : ivI
 			}
 		);
 
@@ -188,7 +188,7 @@ class OptionalFeaturesPage extends ListPage {
 		const level = Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite);
 
 		const $ele = $(`<li class="row">
-			<a href="#${hash}">
+			<a href="#${hash}" class="lst--border">
 				<span class="bold col-4 pl-0">${it.name}</span>
 				<span class="col-2 text-center" title="${it._dFeatureType}">${it._lFeatureType}</span>
 				<span class="col-4-5 ${prerequisite === "\u2014" ? "text-center" : ""}">${prerequisite}</span>

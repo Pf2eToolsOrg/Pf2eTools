@@ -83,12 +83,15 @@ class PageUi {
 		this._doRenderActiveBuilder();
 		this._doInitNavHandler();
 
-		if (!this._settings.activeSource || !BrewUtil.homebrewMeta.sources.some(it => it.json === this._settings.activeSource)) {
-			this._doRebuildStageSource({mode: "add", isRequired: true});
-			this.__setStageSource();
-		} else {
+		if (this._settings.activeSource && BrewUtil.homebrewMeta.sources.some(it => it.json === this._settings.activeSource)) {
 			this.__setStageMain();
 			this._sideMenuEnabled = true;
+		} else if (BrewUtil.homebrewMeta.sources.length) {
+			this._doRebuildStageSource({mode: "select", isRequired: true});
+			this.__setStageSource();
+		} else {
+			this._doRebuildStageSource({mode: "add", isRequired: true});
+			this.__setStageSource();
 		}
 	}
 
@@ -108,9 +111,7 @@ class PageUi {
 		SourceUiUtil.render({
 			...options,
 			$parent: this._$wrpSource,
-			cbConfirm: (source) => {
-				const isNewSource = options.mode !== "edit";
-
+			cbConfirm: (source, isNewSource) => {
 				if (isNewSource) BrewUtil.addSource(source);
 				else BrewUtil.updateSource(source);
 
@@ -916,12 +917,8 @@ class BuilderUi {
 async function doPageInit () {
 	// generic init
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-	try {
-		await BrewUtil.pAddBrewData();
-		await BrewUtil.pAddLocalBrewData();
-	} catch (e) {
-		await BrewUtil.pPurgeBrew(e);
-	}
+	await BrewUtil.pAddBrewData();
+	await BrewUtil.pAddLocalBrewData();
 	await SearchUiUtil.pDoGlobalInit();
 	// Do this asynchronously, to avoid blocking the load
 	SearchWidget.pDoGlobalInit();

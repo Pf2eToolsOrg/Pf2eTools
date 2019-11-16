@@ -4,6 +4,8 @@ class BooksList {
 	constructor (options) {
 		this.contentsUrl = options.contentsUrl;
 		this.fnSort = options.fnSort;
+		this.sortByInitial = options.sortByInitial;
+		this.sortDirInitial = options.sortDirInitial;
 		this.dataProp = options.dataProp;
 		this.enhanceRowDataFn = options.enhanceRowDataFn;
 		this.rootPage = options.rootPage;
@@ -27,7 +29,9 @@ class BooksList {
 		this.list = new List({
 			$wrpList: $("ul.books"),
 			$iptSearch,
-			fnSort
+			fnSort,
+			sortByInitial: this.sortByInitial,
+			sortDirInitial: this.sortDirInitial
 		});
 		SortUtil.initBtnSortHandlers($(`#filtertools`), this.list);
 
@@ -46,11 +50,7 @@ class BooksList {
 		const brewData = await BrewUtil.pAddBrewData();
 		await handleBrew(brewData);
 		BrewUtil.bind({list: this.list});
-		try {
-			await BrewUtil.pAddLocalBrewData();
-		} catch (e) {
-			await BrewUtil.pPurgeBrew(e);
-		}
+		await BrewUtil.pAddLocalBrewData();
 		BrewUtil.makeBrewButton("manage-brew");
 		this.list.init();
 	}
@@ -66,7 +66,7 @@ class BooksList {
 
 			const eleLi = document.createElement("li");
 
-			eleLi.innerHTML = `<a href="${this.rootPage}#${UrlUtil.encodeForHash(it.id)}" class="book-name">
+			eleLi.innerHTML = `<a href="${this.rootPage}#${UrlUtil.encodeForHash(it.id)}" class="book-name lst--border">
 				<span class="w-100">${this.rowBuilderFn(it)}</span>
 				<span class="showhide" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>
 			</a>
@@ -78,7 +78,7 @@ class BooksList {
 				it.name,
 				{
 					source: it.id,
-					uniqueid: it.uniqueId
+					uniqueId: it.uniqueId
 				}
 			);
 

@@ -76,13 +76,9 @@ class ListPage {
 			pHandleBrew: async homebrew => this._addData(homebrew)
 		});
 
-		try {
-			const homebrew = await BrewUtil.pAddBrewData();
-			await this._pHandleBrew(homebrew);
-			await BrewUtil.pAddLocalBrewData();
-		} catch (e) {
-			BrewUtil.pPurgeBrew(e);
-		}
+		const homebrew = await BrewUtil.pAddBrewData();
+		await this._pHandleBrew(homebrew);
+		await BrewUtil.pAddLocalBrewData();
 
 		BrewUtil.makeBrewButton("manage-brew");
 		await ListUtil.pLoadState();

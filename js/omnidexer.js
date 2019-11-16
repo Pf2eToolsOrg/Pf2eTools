@@ -5,12 +5,46 @@ if (typeof require !== "undefined") {
 	require('../js/render.js');
 }
 
+async function pPreProcessSubclassBrew (ths, brew) {
+	const classData = await DataUtil.class.loadJSON();
+
+	const subclasses = MiscUtil.copy(brew[ths.brewProp]);
+	const sourceToClass = {};
+	subclasses.filter(sc => sc.class).forEach(sc => {
+		sc.classSource = sc.classSource || SRC_PHB;
+		((sourceToClass[sc.classSource] = sourceToClass[sc.classSource] || {})[sc.class] = sourceToClass[sc.classSource][sc.class] || []).push(sc);
+	});
+
+	const out = [];
+	Object.entries(sourceToClass).forEach(([source, classToScList]) => {
+		Object.entries(classToScList).forEach(([className, scList]) => {
+			let cls = classData.class.find(it => it.name.toLowerCase() === className.toLowerCase() && (it.source || SRC_PHB).toLowerCase() === source.toLowerCase());
+			if (!cls && brew.class && brew.class.length) cls = brew.class.find(it => it.name.toLowerCase() === className.toLowerCase() && (it.source || SRC_PHB).toLowerCase() === source.toLowerCase());
+
+			if (cls) {
+				const cpy = MiscUtil.copy(cls);
+				cpy.subclasses = scList;
+				out.push(cpy);
+			} else {
+				// Create a fake class, which will at least allow the subclass to be indexed (although not its features)
+				out.push({
+					name: className,
+					source,
+					subclasses: scList
+				});
+			}
+		});
+	});
+	return {[ths.listProp]: out};
+}
+
 class Omnidexer {
 	constructor (id = 0) {
 		/**
 		 * Produces index of the form:
 		 * {
 		 *   n: "Display Name",
+		 *   b: "Base Name" // Optional; name is used if not specified
 		 *   s: "PHB", // source
 		 *   u: "spell name_phb,
 		 *   p: 110, // page
@@ -172,15 +206,27 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 		primary: "name",
 		source: "source",
 		listProp: "class",
+		baseUrl: "classes.html"
+	},
+	{
+		category: Parser.CAT_ID_SUBCLASS,
+		dir: "class",
+		primary: "name",
+		source: "source",
+		listProp: "class",
+		brewProp: "subclass",
 		baseUrl: "classes.html",
+		onlyDeep: true,
 		deepIndex: (indexer, primary, it) => {
 			if (!it.subclasses) return [];
 			return it.subclasses.map(sc => ({
-				n: `${primary.parentName}; ${sc.name}`,
+				b: sc.name,
+				n: `${sc.name} (${primary.parentName})`,
 				s: indexer.getMetaId("s", sc.source),
 				u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`
-			}))
-		}
+			}));
+		},
+		pFnPreProcBrew: pPreProcessSubclassBrew
 	},
 	{
 		category: Parser.CAT_ID_CLASS_FEATURE,
@@ -198,14 +244,40 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 				switch (it._type) {
 					case "classFeature":
 						out.push({
+							b: primary.parentName,
 							n: `${primary.parentName} ${it.level}; ${it.name}`,
 							s: it.source,
 							u: it.hash
 						});
 						break;
 					case "subclassFeature":
+					case "subclassFeaturePart": break;
+					default: throw new Error(`Unhandled type "${it._type}"`);
+				}
+			});
+			return out;
+		}
+	},
+	{
+		category: Parser.CAT_ID_SUBCLASS_FEATURE,
+		dir: "class",
+		primary: "name",
+		source: "source",
+		listProp: "class",
+		brewProp: "subclass",
+		baseUrl: "classes.html",
+		onlyDeep: true,
+		hover: true,
+		deepIndex: (indexer, primary, it) => {
+			const out = [];
+			const entriesIxd = UrlUtil.class.getIndexedEntries(it);
+			entriesIxd.forEach(it => {
+				switch (it._type) {
+					case "classFeature": break;
+					case "subclassFeature":
 					case "subclassFeaturePart":
 						out.push({
+							b: it.subclassName,
 							n: `${it.subclassShortName} ${primary.parentName} ${it.level}; ${it.name}`,
 							s: indexer.getMetaId("s", it.source),
 							u: it.hash
@@ -215,7 +287,8 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 				}
 			});
 			return out;
-		}
+		},
+		pFnPreProcBrew: pPreProcessSubclassBrew
 	}
 ];
 /**

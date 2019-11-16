@@ -5,18 +5,7 @@ class TablesPage extends ListPage {
 		const sourceFilter = getSourceFilter();
 
 		super({
-			dataSource: async () => {
-				const datas = await Promise.all(["data/generated/gendata-tables.json", "data/tables.json"].map(url => DataUtil.loadJSON(url)));
-				const combined = {};
-				datas.forEach(data => {
-					Object.entries(data).forEach(([k, v]) => {
-						if (combined[k] && combined[k] instanceof Array && v instanceof Array) combined[k] = combined[k].concat(v);
-						else if (combined[k] == null) combined[k] = v;
-						else throw new Error(`Could not merge keys for key "${k}"`);
-					});
-				});
-				return combined;
-			},
+			dataSource: DataUtil.table.pLoadAll,
 
 			filters: [
 				sourceFilter
@@ -48,7 +37,7 @@ class TablesPage extends ListPage {
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
 
-		eleLi.innerHTML = `<a href="#${hash}">
+		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-10 pl-0">${it.name}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
@@ -61,7 +50,7 @@ class TablesPage extends ListPage {
 				hash,
 				sortName,
 				source,
-				uniqueid: it.uniqueId ? it.uniqueId : tbI
+				uniqueId: it.uniqueId ? it.uniqueId : tbI
 			}
 		);
 
@@ -86,7 +75,7 @@ class TablesPage extends ListPage {
 	getSublistItem (it, pinId) {
 		const hash = UrlUtil.autoEncodeHash(it);
 
-		const $ele = $(`<li class="row"><a href="#${hash}" title="${it.name}"><span class="bold col-12 px-0">${it.name}</span></a></li>`)
+		const $ele = $(`<li class="row"><a href="#${hash}" class="lst--border" title="${it.name}"><span class="bold col-12 px-0">${it.name}</span></a></li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
 
 		const listItem = new ListItem(

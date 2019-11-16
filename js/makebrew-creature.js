@@ -36,7 +36,7 @@ class CreatureBuilder extends Builder {
 
 			if (Parser.crToNumber(creature.cr) !== 100) {
 				const ixDefault = Parser.CRS.indexOf(creature.cr.cr || creature.cr);
-				const scaleTo = await InputUiUtil.pGetUserEnum({values: Parser.CRS, title: "At Challange Rating...", default: ixDefault});
+				const scaleTo = await InputUiUtil.pGetUserEnum({values: Parser.CRS, title: "At Challenge Rating...", default: ixDefault});
 
 				if (scaleTo != null && scaleTo !== ixDefault) {
 					const scaled = await ScaleCreature.scale(creature, Parser.crToNumber(Parser.CRS[scaleTo]));
@@ -51,11 +51,10 @@ class CreatureBuilder extends Builder {
 	}
 
 	async pInit () {
-		const [bestiaryMetaRaw, bestiaryFluffIndex, jsonCreature, bestiaryIndex] = await Promise.all([
+		const [bestiaryMetaRaw, bestiaryFluffIndex, jsonCreature] = await Promise.all([
 			DataUtil.loadJSON("data/bestiary/meta.json"),
 			DataUtil.loadJSON("data/bestiary/fluff-index.json"),
-			DataUtil.loadJSON("data/makebrew-creature.json"),
-			DataUtil.loadJSON("data/bestiary/index.json")
+			DataUtil.loadJSON("data/makebrew-creature.json")
 		]);
 
 		this._bestiaryFluffIndex = bestiaryFluffIndex;
@@ -79,8 +78,8 @@ class CreatureBuilder extends Builder {
 		// Load this asynchronously, to avoid blocking the page load
 		this._bestiaryTypeTags = [];
 		const allTypes = new Set();
-		Promise.all(Object.values(bestiaryIndex).map(file => DataUtil.loadJSON(`data/bestiary/${file}`))).then(bestiaryData => {
-			bestiaryData.forEach(it => it.monster.forEach(mon => mon.type && mon.type.tags ? mon.type.tags.forEach(tp => allTypes.add(tp.tag || tp)) : ""));
+		DataUtil.monster.pLoadAll().then(mons => {
+			mons.forEach(mon => mon.type && mon.type.tags ? mon.type.tags.forEach(tp => allTypes.add(tp.tag || tp)) : "");
 			this._bestiaryTypeTags.push(...allTypes);
 		});
 	}
@@ -225,7 +224,7 @@ class CreatureBuilder extends Builder {
 		this.doCreateProxies();
 
 		const _cb = () => {
-			RenderBestiary.updateParsed(this._state);
+			Renderer.monster.updateParsed(this._state);
 
 			// do post-processing
 			DiceConvert.cleanHpDice(this._state);

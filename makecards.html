@@ -33,6 +33,7 @@
 
 		label {
 			margin-bottom: 0;
+			display: block;
 		}
 
 		/* region typeahead */
@@ -57,10 +58,10 @@
 	<nav class="container page__nav" id="navigation"><ul class="nav page__nav-inner" id="navbar"></ul></nav>
 
 	<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
-	<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--single"><!--5ETOOLS_AD_RIGHT_1--></div>
+	<div class="cancer__wrp-sidebar-rhs"><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
 
 	<div class="container view-col-wrapper mt-2">
-		<div class="view-col overflow-y-auto" style="flex: 4;">
+		<div class="view-col overflow-y-auto" style="flex: 3;">
 			<p>This tool can be used to create data compatible with the <a href="https://crobi.github.io/rpg-cards/generator/generate.html" rel="noopener">RPG Cards</a> app.</p>
 			<p>Icons are taken from the open-source <i>RPG Cards</i> code, which is in turn sources icons from <a href="https://game-icons.net/" rel="noopener">Game-icons.net</a>. Most of the icons available there should be available here.</p>
 			<hr class="hr-0">
@@ -68,7 +69,7 @@
 			<div id="wrp_config"></div>
 		</div>
 
-		<div id="wrp_main" class="view-col flex-col" style="flex: 6;"></div>
+		<div id="wrp_main" class="view-col flex-col" style="flex: 7;"></div>
 	</div>
 </div>
 
@@ -82,6 +83,10 @@
 <script type="text/javascript" src="js/render.js"></script>
 <script type="text/javascript" src="js/render-card.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/filter.js"></script>
+<script type="text/javascript" src="js/filter-bestiary.js"></script>
+<script type="text/javascript" src="js/filter-items.js"></script>
+<script type="text/javascript" src="js/filter-spells.js"></script>
 <script type="text/javascript" src="js/makecards.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery-ui.js"></script>

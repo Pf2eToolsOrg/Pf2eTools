@@ -449,24 +449,20 @@ class LootGen {
 	loadSpells (then) {
 		if (!this._loadingSpells) {
 			this._loadingSpells = true;
-			DataUtil.loadJSON(`data/spells/index.json`)
-				.then(index => Promise.all(Object.values(index).map(f => DataUtil.loadJSON(`data/spells/${f}`))))
+			DataUtil.spell.pLoadAll()
 				.then(spellData => {
 					this._spells = {};
 					const addSpell = (sp) => {
 						this._spells[sp.level] = this._spells[sp.level] || [];
 						this._spells[sp.level].push(`{@spell ${sp.name}|${sp.source}}`);
 					};
-					spellData.forEach(d => {
-						d.spell.filter(it => !SourceUtil.isNonstandardSource(it.source)).forEach(sp => addSpell(sp));
-					});
+					spellData.filter(sp => !SourceUtil.isNonstandardSource(sp.source)).forEach(sp => addSpell(sp));
 					BrewUtil.pAddBrewData()
 						.then((brew) => {
 							if (brew && brew.spell) brew.spell.forEach(sp => addSpell(sp));
 							this._loadingSpells = false;
 							then();
 						})
-						.catch(BrewUtil.pPurgeBrew);
 				});
 		}
 	}
@@ -608,13 +604,8 @@ const randomLootTables = {
 		const stockItems = await Renderer.item.pBuildList({
 			isBlacklistVariants: true
 		});
-		let brewItems = [];
-		try {
-			const homebrew = await BrewUtil.pAddBrewData();
-			brewItems = await Renderer.item.getItemsFromHomebrew(homebrew);
-		} catch (e) {
-			BrewUtil.pPurgeBrew(e);
-		}
+		const homebrew = await BrewUtil.pAddBrewData();
+		const brewItems = await Renderer.item.getItemsFromHomebrew(homebrew);
 		const allItems = stockItems.concat(brewItems);
 
 		for (const item of allItems) {

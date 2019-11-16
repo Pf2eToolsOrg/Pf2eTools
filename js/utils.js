@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.88.0"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.88.7"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -445,7 +445,7 @@ Parser.isValidCr = function (cr) {
 };
 
 Parser.crToNumber = function (cr) {
-	if (cr === "Unknown" || cr == null) return 100;
+	if (cr === "Unknown" || cr === "\u2014" || cr == null) return 100;
 	if (cr.cr) return Parser.crToNumber(cr.cr);
 	const parts = cr.trim().split("/");
 	if (parts.length === 1) return Number(parts[0]);
@@ -1500,6 +1500,8 @@ Parser.CAT_ID_ONOMANCY_RESONANT = 37;
 Parser.CAT_ID_RUNE_KNIGHT_RUNE = 37;
 Parser.CAT_ID_ALCHEMICAL_FORMULA = 38;
 Parser.CAT_ID_MANEUVER = 39;
+Parser.CAT_ID_SUBCLASS = 40;
+Parser.CAT_ID_SUBCLASS_FEATURE = 41;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1542,6 +1544,8 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ONOMANCY_RESONANT] = "Onomancy Resonant";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = "Rune Knight Rune";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ALCHEMICAL_FORMULA] = "Alchemical Formula";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_MANEUVER] = "Maneuver";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS] = "Subclass";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS_FEATURE] = "Subclass Feature";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1569,6 +1573,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOON] = "boon";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DISEASE] = "condition";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TABLE] = "table";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TABLE_GROUP] = "tableGroup";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VEHICLE] = "vehicle";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ELDRITCH_INVOCATION] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER_CAVALIER] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARCANE_SHOT] = "optionalfeature";
@@ -1585,6 +1590,10 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ONOMANCY_RESONANT] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ALCHEMICAL_FORMULA] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_QUICKREF] = null;
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS_FEATURE] = "class";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS] = "subclass";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS_FEATURE] = "subclass";
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -1968,9 +1977,11 @@ SRC_AL = "AL";
 SRC_SAC = "SAC";
 SRC_SCREEN = "Screen";
 
-SRC_ALCoS = "ALCurseOfStrahd";
-SRC_ALEE = "ALElementalEvil";
-SRC_ALRoD = "ALRageOfDemons";
+SRC_AL_PREFIX = "AL";
+
+SRC_ALCoS = SRC_AL_PREFIX + "CurseOfStrahd";
+SRC_ALEE = SRC_AL_PREFIX + "ElementalEvil";
+SRC_ALRoD = SRC_AL_PREFIX + "RageOfDemons";
 
 SRC_PS_PREFIX = "PS";
 
@@ -2472,7 +2483,7 @@ SourceUtil = {
 	},
 
 	_isNonstandardSourceWiz (source) {
-		return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source === SRC_OGA || source === SRC_Mag || source === SRC_STREAM || source === SRC_TWITTER || source === SRC_LLK || source === SRC_LR || source === SRC_TTP;
+		return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.startsWith(SRC_AL_PREFIX) || source === SRC_OGA || source === SRC_Mag || source === SRC_STREAM || source === SRC_TWITTER || source === SRC_LLK || source === SRC_LR || source === SRC_TTP;
 	},
 
 	getFilterGroup (source) {
@@ -3553,7 +3564,6 @@ ListUtil = {
 			.attr("title", "Upload List (SHIFT for Add Only)");
 	},
 
-	// FIXME?
 	setFromSubHashes: (subHashes, funcPreload) => {
 		function funcOnload (json) {
 			ListUtil._pLoadSavedSublist(json.items, false).then(async () => {
@@ -3585,13 +3595,13 @@ ListUtil = {
 	_getPinnedCount (index, data) {
 		const base = ListUtil._pinned[index];
 		if (!base) return null;
-		if (data && data.uniqueid) return base[data.uniqueid];
+		if (data && data.uniqueId) return base[data.uniqueId];
 		return base._;
 	},
 
 	_setPinnedCount (index, count, data) {
 		const base = ListUtil._pinned[index];
-		const key = data && data.uniqueid ? data.uniqueid : "_";
+		const key = data && data.uniqueId ? data.uniqueId : "_";
 		if (base) base[key] = count;
 		else (ListUtil._pinned[index] = {})[key] = count;
 	},
@@ -3599,7 +3609,7 @@ ListUtil = {
 	_deletePinnedCount (index, data) {
 		const base = ListUtil._pinned[index];
 		if (base) {
-			if (data && data.uniqueid) delete base[data.uniqueid];
+			if (data && data.uniqueId) delete base[data.uniqueId];
 			else delete base._;
 		}
 	},
@@ -3651,8 +3661,8 @@ ListUtil = {
 
 	_setViewCount: (index, newCount, data) => {
 		let foundItem;
-		if (data && data.uniqueid != null) {
-			foundItem = ListUtil.sublist.items.find(it => it.values.uniqueid === data.uniqueid);
+		if (data && data.uniqueId != null) {
+			foundItem = ListUtil.sublist.items.find(it => it.values.uniqueId === data.uniqueId);
 		} else {
 			foundItem = ListUtil.sublist.items.find(it => it.ix === index);
 		}
@@ -3676,7 +3686,7 @@ ListUtil = {
 		const toSave = ListUtil.sublist.items
 			.map(it => {
 				sources.add(ListUtil._allItems[it.ix].source);
-				return {h: it.values.hash.split(HASH_PART_SEP)[0], c: it.values.count || undefined, uniqueid: it.values.uniqueid};
+				return {h: it.values.hash.split(HASH_PART_SEP)[0], c: it.values.count || undefined, uniqueId: it.values.uniqueId};
 			});
 		return {items: toSave, sources: Array.from(sources)};
 	},
@@ -3692,7 +3702,7 @@ ListUtil = {
 
 	async pDoSublistRemove (index, data) {
 		ListUtil._deletePinnedCount(index, data);
-		if (data && data.uniqueid) ListUtil.sublist.removeItemBy("uniqueid", data.uniqueid);
+		if (data && data.uniqueId) ListUtil.sublist.removeItemBy("uniqueId", data.uniqueId);
 		else ListUtil.sublist.removeItem(index);
 		ListUtil.sublist.update();
 		ListUtil._updateSublistVisibility();
@@ -3747,7 +3757,7 @@ ListUtil = {
 			const item = Hist._getListItem(it.h);
 			if (item != null) {
 				const out = {index: item.ix, addCount: Number(it.c)};
-				if (ListUtil._uidUnpackFn && it.uniqueid) out.data = ListUtil._uidUnpackFn(it.uniqueid);
+				if (ListUtil._uidUnpackFn && it.uniqueId) out.data = ListUtil._uidUnpackFn(it.uniqueId);
 				return out;
 			}
 			return null;
@@ -3859,7 +3869,7 @@ ListUtil = {
 			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
 			case 1: {
 				selection.forEach(item => {
-					if (item.values.uniqueid) ListUtil.pDoSublistRemove(item.ix, {uniqueid: item.values.uniqueid});
+					if (item.values.uniqueId) ListUtil.pDoSublistRemove(item.ix, {uniqueId: item.values.uniqueId});
 					else ListUtil.pDoSublistRemove(item.ix);
 				});
 				break;
@@ -4126,8 +4136,7 @@ function getFilterWithMergedOptions (baseOptions, addOptions) {
  * @param [opts.isCompact] True if this box should have a compact/reduced UI.
  */
 async function pInitFilterBox (opts) {
-	opts.$wrpFormTop = $(`#filter-search-input-group`);
-	opts.$wrpFormTop.attr("title", "Hotkey: f");
+	opts.$wrpFormTop = $(`#filter-search-input-group`).attr("title", "Hotkey: f");
 	opts.$btnReset = $(`#reset`);
 	const filterBox = new FilterBox(opts);
 	await filterBox.pDoLoadState();
@@ -4253,7 +4262,7 @@ UrlUtil = {
 						const name = Renderer.findName(feature);
 						if (!name) { // tolerate missing names in homebrew
 							if (BrewUtil.hasSourceJson(cls.source)) return;
-							else throw new Error("No name!");
+							else throw new Error("Class feature had no name!");
 						}
 						out.push({
 							_type: "classFeature",
@@ -4278,12 +4287,13 @@ UrlUtil = {
 							const name = Renderer.findName(feature);
 							if (!name) { // tolerate missing names in homebrew
 								if (BrewUtil.hasSourceJson(sc.source)) return;
-								else throw new Error("No name!");
+								else throw new Error("Subclass feature had no name!");
 							}
 							const subclassFeatureHash = `${baseSubclassUrl}${HASH_PART_SEP}${gainFeatureHash}`;
 							tempStack.push({
 								_type: "subclassFeature",
 								name,
+								subclassName: sc.name,
 								subclassShortName: sc.shortName,
 								source: sc.source.source || sc.source,
 								hash: subclassFeatureHash,
@@ -4299,6 +4309,7 @@ UrlUtil = {
 									tempStack.push({
 										_type: "subclassFeaturePart",
 										name: it.name,
+										subclassName: sc.name,
 										subclassShortName: sc.shortName,
 										source: sc.source.source || sc.source,
 										hash: subclassFeatureHash,
@@ -4377,6 +4388,8 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BACKGROUND] = UrlUtil.PG_BACKGROUNDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ITEM] = UrlUtil.PG_ITEMS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CLASS] = UrlUtil.PG_CLASSES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CLASS_FEATURE] = UrlUtil.PG_CLASSES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SUBCLASS] = UrlUtil.PG_CLASSES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SUBCLASS_FEATURE] = UrlUtil.PG_CLASSES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CONDITION] = UrlUtil.PG_CONDITIONS_DISEASES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FEAT] = UrlUtil.PG_FEATS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELDRITCH_INVOCATION] = UrlUtil.PG_OPT_FEATURES;
@@ -4529,27 +4542,22 @@ SortUtil = {
 		const bSpecial = b === "special";
 		return aSpecial && bSpecial ? 0 : aSpecial ? 1 : bSpecial ? -1 : Parser.ABIL_ABVS.indexOf(a) - Parser.ABIL_ABVS.indexOf(b);
 	},
-
-	ascSort$Options ($select) {
-		$select.append($select.find("option").remove().sort((a, b) => {
-			const at = $(a).text();
-			const bt = $(b).text();
-			return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
-		}));
-	},
-
 	initBtnSortHandlers ($wrpBtnsSort, list) {
+		function addCaret ($btnSort, direction) {
+			$wrpBtnsSort.find(".caret").removeClass("caret");
+			$btnSort.find(".caret_wrp").addClass("caret").toggleClass("caret--reverse", direction === "asc");
+		}
+
+		const $btnSort = $wrpBtnsSort.find(`.sort[data-sort="${list.sortBy}"]`);
+		addCaret($btnSort, list.sortDir);
+
 		$wrpBtnsSort.find(".sort").each((i, e) => {
 			const $btnSort = $(e);
 			$btnSort.click(evt => {
 				evt.stopPropagation();
-				const direction = $btnSort.data("sortby") === "asc" ? "desc" : "asc";
-				$btnSort.data("sortby", direction);
-
-				$wrpBtnsSort.find(".caret").removeClass("caret");
-				$btnSort.find(".caret_wrp").addClass("caret").toggleClass("caret--reverse", direction === "asc");
-
-				list.sort($btnSort.data("sort"), $btnSort.data("sortby"));
+				const direction = list.sortDir === "asc" ? "desc" : "asc";
+				addCaret($btnSort, direction);
+				list.sort($btnSort.data("sort"), direction);
 			});
 		});
 	}
@@ -5220,6 +5228,26 @@ DataUtil = {
 		_mergeCache: {},
 		async pMergeCopy (monList, mon, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.monster, UrlUtil.PG_BESTIARY, monList, mon, options);
+		},
+
+		async pLoadAll () {
+			const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`);
+			const allData = await Promise.all(Object.entries(index).map(async ([source, file]) => {
+				const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/${file}`);
+				return data.monster.filter(it => it.source === source);
+			}));
+			return allData.flat();
+		}
+	},
+
+	spell: {
+		async pLoadAll () {
+			const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/index.json`);
+			const allData = await Promise.all(Object.entries(index).map(async ([source, file]) => {
+				const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/${file}`);
+				return data.spell.filter(it => it.source === source);
+			}));
+			return allData.flat();
 		}
 	},
 
@@ -5253,30 +5281,39 @@ DataUtil = {
 	},
 
 	class: {
+		_pLoadingJson: null,
+		_loadedJson: null,
 		loadJSON: async function (baseUrl = "") {
-			const index = await DataUtil.loadJSON(`${baseUrl}data/class/index.json`);
-			const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${baseUrl}data/class/${it}`)));
-			const out = allData.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []});
-			out.class.filter(cls => !cls._isEnhanced).forEach(cls => {
-				cls._isEnhanced = true;
-				cls.classFeatures.forEach((featArr, i) => {
-					const ixAsi = featArr.findIndex(it => it.name && it.name.toLowerCase().trim() === "ability score improvement");
-					if (~ixAsi) {
-						const toInsert = {
-							type: "entries",
-							name: "Proficiency Versatility",
-							entries: [
-								`{@i ${Parser.getOrdinalForm(i + 1)}-level feature (enhances Ability Score Improvement)}`,
-								"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
-								"This change represents one of your skills atrophying as you focus on a different skill."
-							],
-							source: "UAClassFeatureVariants"
+			if (DataUtil.class._loadedJson) return DataUtil.class._loadedJson;
+
+			DataUtil.class._pLoadingJson = (async () => {
+				const index = await DataUtil.loadJSON(`${baseUrl}data/class/index.json`);
+				const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${baseUrl}data/class/${it}`)));
+				const out = allData.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []});
+				out.class.filter(cls => !cls._isEnhanced).forEach(cls => {
+					cls._isEnhanced = true;
+					cls.classFeatures.forEach((featArr, i) => {
+						const ixAsi = featArr.findIndex(it => it.name && it.name.toLowerCase().trim() === "ability score improvement");
+						if (~ixAsi) {
+							const toInsert = {
+								type: "entries",
+								name: "Proficiency Versatility",
+								entries: [
+									`{@i ${Parser.getOrdinalForm(i + 1)}-level feature (enhances Ability Score Improvement)}`,
+									"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
+									"This change represents one of your skills atrophying as you focus on a different skill."
+								],
+								source: "UAClassFeatureVariants"
+							};
+							featArr.splice(ixAsi + 1, 0, toInsert);
 						}
-						featArr.splice(ixAsi + 1, 0, toInsert);
-					}
+					});
 				});
-			});
-			return out;
+				DataUtil.class._loadedJson = out;
+			})();
+			await DataUtil.class._pLoadingJson;
+
+			return DataUtil.class._loadedJson;
 		}
 	},
 
@@ -5320,6 +5357,21 @@ DataUtil = {
 			const data = await DataUtil.loadJSON(`${baseUrl}data/deities.json`);
 			DataUtil.deity.doPostLoad(data);
 			return data;
+		}
+	},
+
+	table: {
+		async pLoadAll (baseUrl = "") {
+			const datas = await Promise.all([`${baseUrl}data/generated/gendata-tables.json`, `${baseUrl}data/tables.json`].map(url => DataUtil.loadJSON(url)));
+			const combined = {};
+			datas.forEach(data => {
+				Object.entries(data).forEach(([k, v]) => {
+					if (combined[k] && combined[k] instanceof Array && v instanceof Array) combined[k] = combined[k].concat(v);
+					else if (combined[k] == null) combined[k] = v;
+					else throw new Error(`Could not merge keys for key "${k}"`);
+				});
+			});
+			return combined;
 		}
 	},
 
@@ -5568,9 +5620,10 @@ StorageUtil = {
 		return storage.removeItem(key);
 	},
 
-	async pGetForPage (key) { return StorageUtil.pGet(`${key}_${UrlUtil.getCurrentPage()}`); },
-	async pSetForPage (key, value) { return StorageUtil.pSet(`${key}_${UrlUtil.getCurrentPage()}`, value); },
-	async pRemoveForPage (key) { return StorageUtil.pRemove(`${key}_${UrlUtil.getCurrentPage()}`); },
+	getPageKey (key, page) { return `${key}_${page || UrlUtil.getCurrentPage()}`; },
+	async pGetForPage (key) { return StorageUtil.pGet(StorageUtil.getPageKey(key)); },
+	async pSetForPage (key, value) { return StorageUtil.pSet(StorageUtil.getPageKey(key), value); },
+	async pRemoveForPage (key) { return StorageUtil.pRemove(StorageUtil.getPageKey(key)); },
 
 	async _pTrackKey (key, isRemove) {
 		const storage = await StorageUtil.getAsyncStorage();
@@ -5684,15 +5737,19 @@ BrewUtil = {
 		if (BrewUtil.homebrew) {
 			return BrewUtil.homebrew;
 		} else {
-			const homebrew = await StorageUtil.pGet(HOMEBREW_STORAGE) || {};
-			BrewUtil.homebrewMeta = StorageUtil.syncGet(HOMEBREW_META_STORAGE) || {sources: []};
-			BrewUtil.homebrewMeta.sources = BrewUtil.homebrewMeta.sources || [];
+			try {
+				const homebrew = await StorageUtil.pGet(HOMEBREW_STORAGE) || {};
+				BrewUtil.homebrewMeta = StorageUtil.syncGet(HOMEBREW_META_STORAGE) || {sources: []};
+				BrewUtil.homebrewMeta.sources = BrewUtil.homebrewMeta.sources || [];
 
-			BrewUtil.homebrew = homebrew;
+				BrewUtil.homebrew = homebrew;
 
-			BrewUtil._resetSourceCache();
+				BrewUtil._resetSourceCache();
 
-			return BrewUtil.homebrew;
+				return BrewUtil.homebrew;
+			} catch (e) {
+				BrewUtil.pPurgeBrew(e);
+			}
 		}
 	},
 
@@ -5705,6 +5762,8 @@ BrewUtil = {
 		StorageUtil.syncRemove(HOMEBREW_META_STORAGE);
 		BrewUtil.homebrew = null;
 		window.location.hash = "";
+		BrewUtil.homebrew = {};
+		BrewUtil.homebrewMeta = {sources: []};
 		if (error) setTimeout(() => { throw error; });
 	},
 
@@ -5893,7 +5952,7 @@ BrewUtil = {
 						it._brewCat = BrewUtil._pRenderBrewScreen_getDisplayCat(BrewUtil._pRenderBrewScreen_dirToCat(it._cat));
 
 						const timestamp = it._brewAdded ? MiscUtil.dateToStr(new Date(it._brewAdded * 1000), true) : "";
-						const eleLi = $(`<li class="not-clickable">
+						const eleLi = $(`<li class="not-clickable lst--border">
 							<section>
 								<span class="col-4 bold manbrew__load_from_url pl-0 clickable" onclick="BrewUtil.addBrewRemote(this, '${(it.download_url || "").encodeApos().escapeQuotes()}', true)">${it._brewName}</span>
 								<span class="col-3">${it._brewAuthor}</span>
@@ -5984,7 +6043,7 @@ BrewUtil = {
 			cat.filter(it => isMatchingSource(it.source)).forEach(it => toDel.push(it.uniqueId));
 			await Promise.all(toDel.map(async uId => pDeleteFn(uId)));
 		}));
-		BrewUtil._lists.forEach(l => l.update());
+		if (BrewUtil._lists) BrewUtil._lists.forEach(l => l.update());
 		await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
 		BrewUtil.removeJsonSource(source);
 		if (UrlUtil.getCurrentPage() === UrlUtil.PG_MAKE_SHAPED) removeBrewSource(source);
@@ -6070,7 +6129,7 @@ BrewUtil = {
 						.forEach((it, i) => {
 							const dispCat = BrewUtil._pRenderBrewScreen_getDisplayCat(cat, true);
 
-							const eleLi = $(`<li><label class="mb-0 flex-v-center row">
+							const eleLi = $(`<li class="lst--border"><label class="mb-0 flex-v-center row">
 									<span class="col-6 bold">${it.name}</span>
 									<span class="col-5 text-center">${dispCat}${it.extraInfo}</span>
 									<span class="pr-0 col-1 text-center"><input type="checkbox"></span>
@@ -6083,7 +6142,7 @@ BrewUtil = {
 								{
 									category: dispCat,
 									category_raw: cat,
-									uniqueid: it.uniqueId
+									uniqueId: it.uniqueId
 								}
 							);
 							list.addItem(listItem);
@@ -6113,7 +6172,7 @@ BrewUtil = {
 				} else {
 					await Promise.all(toDel.map(async it => {
 						const pDeleteFn = BrewUtil._getPDeleteFunction(it.category_raw);
-						await pDeleteFn(it.uniqueid);
+						await pDeleteFn(it.uniqueId);
 					}));
 					BrewUtil._lists.forEach(l => l.update());
 					await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
@@ -6205,7 +6264,7 @@ BrewUtil = {
 				const validAuthors = (!src.authors ? [] : !(src.authors instanceof Array) ? [] : src.authors).join(", ");
 				const isGroup = src._unknown || src._all;
 
-				const $row = $(`<li class="row manbrew__row">
+				const $row = $(`<li class="row manbrew__row lst--border">
 						<span class="col-5 manbrew__col--tall source manbrew__source">${isGroup ? "<i>" : ""}${src.full}${isGroup ? "</i>" : ""}</span>
 						<span class="col-4 manbrew__col--tall authors">${validAuthors}</span>
 						<${src.url ? "a" : "span"} class="col-1 manbrew__col--tall text-center" ${src.url ? `href="${src.url}" target="_blank" rel="noopener"` : ""}>${src.url ? "View Source" : ""}</${src.url ? "a" : "span"}>
@@ -6226,7 +6285,7 @@ BrewUtil = {
 			});
 
 			const createGroupRow = (fullText, modeProp) => {
-				const $row = $(`<li class="row manbrew__row" style="border-bottom: 0">
+				const $row = $(`<li class="row manbrew__row">
 					<span class="col-10 manbrew__col--tall source manbrew__source text-right"><i>${fullText}</i></span>
 				</li>`);
 				createButtons({[modeProp]: true}, $row);
@@ -6291,7 +6350,7 @@ BrewUtil = {
 		if (~index) {
 			BrewUtil.homebrew[arrName].splice(index, 1);
 			if (BrewUtil._lists) {
-				BrewUtil._lists.forEach(l => l.removeItemBy(isChild ? "parentuniqueid" : "uniqueid", uniqueId));
+				BrewUtil._lists.forEach(l => l.removeItemBy(isChild ? "parentuniqueId" : "uniqueId", uniqueId));
 			}
 		}
 	},
@@ -6699,11 +6758,19 @@ BrewUtil = {
 		if (BrewUtil.homebrew) {
 			const INDEX_DEFINITIONS = [Omnidexer.TO_INDEX__FROM_INDEX_JSON, Omnidexer.TO_INDEX];
 
-			INDEX_DEFINITIONS.forEach(IXDEF => {
-				IXDEF
-					.filter(ti => (BrewUtil.homebrew[ti.listProp] || []).length)
-					.forEach(ti => indexer.addToIndex(ti, BrewUtil.homebrew));
-			});
+			// Run these in serial, to prevent any ID race condition antics
+			for (const IX_DEF of INDEX_DEFINITIONS) {
+				for (const arbiter of IX_DEF) {
+					if (!(BrewUtil.homebrew[arbiter.brewProp || arbiter.listProp] || []).length) continue;
+
+					if (arbiter.pFnPreProcBrew) {
+						const toProc = await arbiter.pFnPreProcBrew(arbiter, BrewUtil.homebrew);
+						indexer.addToIndex(arbiter, toProc)
+					} else {
+						indexer.addToIndex(arbiter, BrewUtil.homebrew)
+					}
+				}
+			}
 		}
 		return Omnidexer.decompressIndex(indexer.getIndex());
 	},

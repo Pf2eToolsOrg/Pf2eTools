@@ -33,7 +33,7 @@ class VehiclesPage extends ListPage {
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
 
-		eleLi.innerHTML = `<a href="#${UrlUtil.autoEncodeHash(it)}">
+		eleLi.innerHTML = `<a href="#${UrlUtil.autoEncodeHash(it)}" class="lst--border">
 			<span class="bold col-10 pl-0">${it.name}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
@@ -45,7 +45,7 @@ class VehiclesPage extends ListPage {
 			{
 				hash,
 				source,
-				uniqueid: it.uniqueId ? it.uniqueId : vhI
+				uniqueId: it.uniqueId ? it.uniqueId : vhI
 			}
 		);
 
@@ -70,7 +70,7 @@ class VehiclesPage extends ListPage {
 	getSublistItem (it, pinId) {
 		const hash = UrlUtil.autoEncodeHash(it);
 
-		const $ele = $(`<li class="row"><a href="#${hash}" title="${it.name}"><span class="name col-12 px-0">${it.name}</span></a></li>`)
+		const $ele = $(`<li class="row"><a href="#${hash}" class="lst--border"><span class="name col-12 px-0">${it.name}</span></a></li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
 
 		const listItem = new ListItem(

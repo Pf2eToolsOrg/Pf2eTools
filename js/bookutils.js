@@ -73,7 +73,7 @@ const BookUtil = {
 	makeContentsBlock (options) {
 		let out = `<ul class="bk-contents" ${options.defaultHidden ? `style="display: none;"` : ""}>`;
 		options.book.contents.forEach((c, i) => {
-			out += `<li>
+			out += `<li class="lst--border">
 				<a href="${options.addPrefix || ""}#${UrlUtil.encodeForHash(options.book.id)},${i}" ${options.addOnclick ? `onclick="BookUtil.scrollPageTop(this)"` : ""}>
 					<span class="sect">${Parser.bookOrdinalToAbv(c.ordinal)}${c.name}</span>
 				</a>
@@ -89,7 +89,7 @@ const BookUtil = {
 		chapter.headers && chapter.headers.forEach(h => {
 			const headerText = BookUtil.getHeaderText(h);
 			const displayText = h.header ? `<span class="bk-contents__sub_spacer--1">\u2013</span>${h.header}` : h; // handle entries with depth
-			out += `<li>
+			out += `<li class="lst--border">
 				<a href="${addPrefix || ""}#${bookId},${chapterIndex},${UrlUtil.encodeForHash(headerText)}" data-book="${bookId}" data-chapter="${chapterIndex}" data-header="${headerText}" ${addOnclick ? `onclick="BookUtil.scrollClick('${headerText.replace(/'/g, "\\'")}', null, this)"` : ""}>${displayText}</a>
 			</li>`;
 		});
@@ -484,9 +484,6 @@ const BookUtil = {
 					if (!bookData) handleNotFound();
 					pHandleFound(fromIndex, bookData);
 				})
-				.catch(e => {
-					BrewUtil.pPurgeBrew(e);
-				});
 		} else handleNotFound();
 	},
 

@@ -248,7 +248,7 @@ class RacesPage extends ListPage {
 		const size = Parser.sizeAbvToFull(race.size);
 		const source = Parser.sourceJsonToAbv(race.source);
 
-		eleLi.innerHTML = `<a href="#${hash}">
+		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-4 pl-0">${race.name}</span>
 			<span class="col-4">${ability.asTextShort}</span>
 			<span class="col-2">${size}</span>
@@ -265,7 +265,7 @@ class RacesPage extends ListPage {
 				size,
 				source,
 				cleanName: bracketMatch ? `${bracketMatch[2]} ${bracketMatch[1]}` : "",
-				uniqueid: race.uniqueId ? race.uniqueId : rcI
+				uniqueId: race.uniqueId ? race.uniqueId : rcI
 			}
 		);
 
@@ -298,7 +298,7 @@ class RacesPage extends ListPage {
 
 		const $ele = $(`
 			<li class="row">
-				<a href="#${UrlUtil.autoEncodeHash(race)}" title="${race.name}">
+				<a href="#${UrlUtil.autoEncodeHash(race)}" class="lst--border">
 					<span class="bold col-5 pl-0">${race.name}</span>
 					<span class="col-5">${race._slAbility}</span>
 					<span class="col-2 pr-0">${Parser.sizeAbvToFull(race.size)}</span>

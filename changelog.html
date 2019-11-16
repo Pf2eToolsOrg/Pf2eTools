@@ -1709,6 +1709,82 @@ Filters -- completely overhauled internally:
 - Fixed CR Scaling in the Bestiary Encounter Builder failing
 - Fixed DM Screen Player Initiative Tracker widget failing to change view upon connection
 - (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.88.1",
+			date: "2019-11-06",
+			txt: `
+- Update UA: Class Feature Variants with latest changes
+- The Adventures page is now sorted on the Published (date) column by default
+- List page sort direction indicators are now visible immediately (rather than upon first sort), and clicking a header will now always change the directions of the sort (before, clicking twice was sometimes required)
+- The "Class Features," "Info," "Official Sources," etc buttons on the Classes page now remember their state when changing class
+- Fixed UA class features showing in the Classes page features table when UA sources were not visible
+- Fixed some crashes in the Shaped JS builder
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.88.2",
+			date: "2019-11-08",
+			txt: `
+- Fixed duplicate ability score prerequisites on feats
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.88.3",
+			date: "2019-11-10",
+			txt: `
+- Added "Variant Class" filter to Spells pages
+- Added page numbers, inline sources, and alternate colors to UA class features (to differentiate them from UA subclass features)
+- Cards:
+  - Cards can now be mass-added using a search/filter interface
+  - Cards can now be added from Bestiary/Items/Spells page pinned lists
+- Converter:
+  - Fixed bug where homebrew would always be added/JSON would always be exported as a "table" property
+  - Added parsing for Markdown "Hit:" formatting
+  - Added parsing for true-to-source Markdown legendary action formatting
+- Homebrew Manager should now correctly allow existing sources to be used on first load, instead of forcing their creation
+- Fixed deleting sources on the Homebrew Manager page
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.88.4",
+			date: "2019-11-10",
+			txt: `
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.88.5",
+			date: "2019-11-11",
+			txt: `
+- Fixed armor prerequisites failing to render on feats
+- Fixed Bestiary Info/Images tabs failing to load
+- Fixed subclass spell homebrew killing homebrew loading
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.88.6",
+			date: "2019-11-15",
+			txt: `
+- Split DM Screen Tracker option for Player View HP into player- and monster-specific options
+- Fixed some sources failing to load in the Card Builder when adding by filter
+- Fixed omnisearch failing to blacklist class features, subclass features, and subclasses
+- Omnisearch now indexes homebrew class features and subclass features
+- Fixed broken CR scaling on importing Bestiary encounters to the DM Screen Tracker
+- Homebrew books and adventures are now available for viewing in the DM Screen
+- Fixed Text Converter crashing on load
+- Fixed Homebrew Builder crashing on load
+- (Homebrew) Armor and shield AC values may now be omitted on items
+- (Homebrew) A free text "acSpecial" field may now be specified on items
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.88.7",
+			date: "2019-11-16",
+			txt: `
+- Fixed DM Screen adventure/book loader failing if the user has no homebrew active
+- Fixed Bestiary incorrectly sorting list items in the presence of creatures without CRs
+- Fixed the one (1) pixel deadzone at the bottom of each list item in list pages
+- (Fixed typos/added tags)`
 		}
 	];
 
