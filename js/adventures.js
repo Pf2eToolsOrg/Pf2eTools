@@ -8,14 +8,10 @@ class Adventures {
 		if (o.sortBy === "name") return byName();
 		if (o.sortBy === "storyline") return orFallback(SortUtil.ascSort, "storyline");
 		if (o.sortBy === "level") return orFallback(SortUtil.ascSort, "_startLevel");
-		if (o.sortBy === "published") return orFallback(ascSortDate, "_pubDate");
+		if (o.sortBy === "published") return orFallback(SortUtil.ascSortDate, "_pubDate");
 
 		function byName () {
 			return SortUtil.ascSort(a.name, b.name);
-		}
-
-		function ascSortDate (a, b) {
-			return b.getTime() - a.getTime();
 		}
 
 		function orFallback (func, prop) {
@@ -27,11 +23,6 @@ class Adventures {
 	static getLevelsStr (adv) {
 		if (adv.level.custom) return adv.level.custom;
 		return `Level ${adv.level.start}\u2013${adv.level.end}`
-	}
-
-	static getDateStr (adv) {
-		const date = new Date(adv.published);
-		return MiscUtil.dateToStr(date);
 	}
 }
 const adventuresList = new BooksList({
@@ -47,9 +38,9 @@ const adventuresList = new BooksList({
 	rootPage: "adventure.html",
 	rowBuilderFn: (adv) => {
 		return `<span class="col-6-2 bold">${adv.name}</span>
-		<span class="col-2-5 adv-detail">${adv.storyline || "\u2014"}</span>
-		<span class="col-1-3 adv-detail">${Adventures.getLevelsStr(adv)}</span>
-		<span class="col-2 adv-detail">${Adventures.getDateStr(adv)}</span>`;
+		<span class="col-2-5">${adv.storyline || "\u2014"}</span>
+		<span class="col-1-3">${Adventures.getLevelsStr(adv)}</span>
+		<span class="col-2">${BooksList.getDateStr(adv)}</span>`;
 	}
 });
 

@@ -343,9 +343,9 @@ class RacesPage extends ListPage {
 			const predefined = Renderer.utils.getPredefinedFluff(race, "raceFluff");
 			if (predefined) return predefined;
 
-			const subFluff = race._baseName && race.name.toLowerCase() === race._baseName.toLowerCase() ? "" : fluffJson.race.find(it => it.name.toLowerCase() === race.name.toLowerCase() && it.source.toLowerCase() === race.source.toLowerCase());
+			const subFluff = fluffJson.race.find(it => it.name.toLowerCase() === race.name.toLowerCase() && it.source.toLowerCase() === race.source.toLowerCase());
 
-			const baseFluff = fluffJson.race.find(it => race._baseName && it.name.toLowerCase() === race._baseName.toLowerCase() && race._baseSource && it.source.toLowerCase() === race._baseSource.toLowerCase());
+			const baseFluff = race._baseName && race.name.toLowerCase() === race._baseName.toLowerCase() ? "" : fluffJson.race.find(it => race._baseName && it.name.toLowerCase() === race._baseName.toLowerCase() && race._baseSource && it.source.toLowerCase() === race._baseSource.toLowerCase());
 
 			if (!subFluff && !baseFluff) return null;
 
@@ -354,7 +354,7 @@ class RacesPage extends ListPage {
 			const fluff = {type: "section"};
 
 			const addFluff = (fluffToAdd, isBase) => {
-				if (fluffToAdd.entries) {
+				if (fluffToAdd.entries && !(isBase && subFluff && subFluff._excludeBaseEntries)) {
 					fluff.entries = fluff.entries || [];
 					const toAdd = {type: "section", entries: MiscUtil.copy(fluffToAdd.entries)};
 					if (isBase && !fluffToAdd.entries.length) toAdd.name = race._baseName;
@@ -402,7 +402,7 @@ class RacesPage extends ListPage {
 				}
 			}
 
-			if (fluff.entries.length && fluff.entries[0].type === "section") {
+			if (fluff.entries && fluff.entries.length && fluff.entries[0].type === "section") {
 				const firstSection = fluff.entries.splice(0, 1)[0];
 				fluff.entries.unshift(...firstSection.entries);
 			}

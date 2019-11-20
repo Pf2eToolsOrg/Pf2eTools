@@ -1271,6 +1271,10 @@ th.name {
 		color: #752418;
 	}
 
+	&ERLW {
+		color: #983426;
+	}
+
 	&AL {
 		color: #ed1c24;
 	}
@@ -1622,87 +1626,23 @@ tr th.mon__name--token {
 	text-align: center;
 }
 
-#classtable {
-	overflow-x: auto;
+img.token {
+	position: absolute;
+	z-index: $z-token-image;
+	top: 0;
+	right: 0.5rem;
+	float: right;
+	width: auto;
+	max-width: 11rem;
+	height: auto;
+	transition: opacity 0.034s, max-width 0.034s, right 0.034s;
 }
 
-#classtable table {
-	font-size: 0.8em;
-	width: 100%;
-}
-
-aside#listcontainer {
-	margin-right: 1em;
-	padding: 0 1em 1em 0;
-	float: left;
-}
-
-#rulescontent caption {
-	font-weight: bold;
-	font-size: 1.2em;
-	display: block;
-}
-
-#rulescontent table {
-	font-size: 0.9em;
-	width: 100%;
-	min-width: 250px;
-	display: block;
-	margin: 0.2em;
-}
-
-#rulescontent table thead tr td {
-	font-style: italic;
-}
-
-#rulescontent table td {
-	padding: 0.2em 0.5em;
-}
-
-#classtable table .level {
-	text-align: center;
-	width: 1.5em;
-}
-
-#classtable table .pb {
-	text-align: center;
-	width: 1.5em;
-	padding: 1px 0.5em;
-}
-
-#classtable .slots {
-	display: none;
-	text-align: center;
-	max-width: 4em;
-}
-
-td.features {
+img.token:hover {
 	max-width: 100%;
-	white-space: pre-wrap;
-}
-
-.list.classes {
-	max-height: 355px;
-}
-
-#classtable .centred-col {
-	text-align: center;
-	min-width: 1em;
-	max-width: 3.2em;
-}
-
-div#subclasses {
-	padding: 0 1em 0.5em;
-	text-align: center;
-}
-
-div#subclasses > span.divider {
-	margin: 0;
-	padding: 0;
-	width: 1em;
-	display: inline-block;
-	cursor: default;
-	border-radius: 0;
+	right: 0;
+	opacity: 1 !important;
+	transition: opacity 0.034s, max-width 0.034s, right 0.034s;
 }
 
 .sc_pill {
@@ -1770,57 +1710,8 @@ div#subclasses > span.divider {
 	color: white;
 }
 
-#classtable .colGroupTitle {
-	text-align: center;
-}
-
-#classtable .colGroupTitle::after {
-	position: relative;
-	bottom: 0;
-	left: 0;
-	margin: 0 auto;
-	padding: 0;
-	display: block;
-	content: '';
-	height: 1px;
-	width: 96%;
-	border-bottom: 1px solid black;
-}
-
-.featurebuffer {
-	width: auto;
-}
-
-img.token {
-	position: absolute;
-	z-index: $z-token-image;
-	top: 0;
-	right: 0.5rem;
-	float: right;
-	width: auto;
-	max-width: 11rem;
-	height: auto;
-	transition: opacity 0.034s, max-width 0.034s, right 0.034s;
-}
-
-img.token:hover {
-	max-width: 100%;
-	right: 0;
-	opacity: 1 !important;
-	transition: opacity 0.034s, max-width 0.034s, right 0.034s;
-}
-
 .classes .stats {
 	font-family: inherit;
-}
-
-#classtable tr th {
-	padding: 1px 0.2em;
-}
-
-.monster-disclaimer {
-	text-align: center;
-	font-size: 0.67em;
 }
 
 .stats tr.trait td p:first-of-type {
@@ -3152,7 +3043,6 @@ ul.list li:hover {
 			column-count: 6;
 			column-gap: 7px;
 			break-inside: avoid-column;
-			padding: 7px;
 
 			@media (max-width: 2160px) {
 				column-count: 5;
@@ -3293,27 +3183,6 @@ tr.legendary td {
 }
 
 /* end section: lootgen */
-
-#classtable table {
-	background: $rgb-bg-orange;
-}
-
-#classtable table th {
-	color: black;
-}
-
-#classtable table tr:nth-child(odd) td,
-#rulescontent table tbody tr:nth-child(odd) td {
-	background: lightgrey;
-}
-
-#rulescontent caption {
-	color: $rgb-off-black;
-}
-
-.cls-bkmv__btn-tab {
-	background: #f0f0f0;
-}
 
 tr.trait td {
 	color: black !important;
@@ -4038,24 +3907,12 @@ ul.list.books > li > a > span.name:hover {
 		background: rgba(0, 0, 0, 0.31);
 	}
 
-	#classtable table {
-		background: #272727;
-	}
-
-	#classtable table th {
-		color: $rgb-night-font-color;
-	}
-
 	.stats th {
 		color: $class-main-color;
 	}
 
 	.stats .divider div {
 		background-color: $class-main-color;
-	}
-
-	#classtable .colGroupTitle::after {
-		border-color: #ababab;
 	}
 
 	.cls-bkmv__btn-tab.cf-active,
@@ -4181,10 +4038,6 @@ ul.list.books > li > a > span.name:hover {
 
 	.bkmv__spacer-name {
 		background-color: #565656;
-	}
-
-	#classtable table tr:nth-child(odd) td {
-		background: rgba(0, 0, 0, 0.31);
 	}
 
 	ul.list.encounters > li > span:first-child,
@@ -4807,6 +4660,7 @@ ul.list.books > li > a > span.name:hover {
 				height: initial;
 			}
 
+			&wrp-controls,
 			&spacer-name,
 			&footer {
 				display: none !important;

@@ -94,7 +94,7 @@ class DeitiesPage extends ListPage {
 	}
 
 	getListItem (g, dtI) {
-		g._fAlign = unpackAlignment(g);
+		g._fAlign = g.alignment ? unpackAlignment(g) : [];
 		if (!g.category) g.category = STR_NONE;
 		if (!g.domains) g.domains = [STR_NONE];
 		g.domains.sort(SortUtil.ascSort);
@@ -110,7 +110,7 @@ class DeitiesPage extends ListPage {
 
 		const source = Parser.sourceJsonToAbv(g.source);
 		const hash = UrlUtil.autoEncodeHash(g);
-		const alignment = g.alignment.join("");
+		const alignment = g.alignment ? g.alignment.join("") : "\u2014";
 		const domains = g.domains.join(", ");
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
@@ -161,7 +161,7 @@ class DeitiesPage extends ListPage {
 	getSublistItem (g, pinId) {
 		const hash = UrlUtil.autoEncodeHash(g);
 
-		const alignment = g.alignment.join("");
+		const alignment = g.alignment ? g.alignment.join("") : "\u2014";
 		const domains = g.domains.join(", ");
 
 		const $ele = $(`<li class="row">

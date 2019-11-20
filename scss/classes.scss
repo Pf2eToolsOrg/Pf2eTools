@@ -1,0 +1,136 @@
+@import 'vars';
+
+// region class
+.cls__squash_header {
+	overflow: hidden;
+	max-height: 32px;
+	display: block;
+}
+
+.cls__btn-toggle-sidebar {
+	cursor: pointer;
+	font-size: initial;
+	color: black;
+}
+
+.night-mode {
+	.cls__btn-toggle-sidebar {
+		color: #bbb;
+	}
+}
+// endregion
+
+// region class table
+.cls-tbl {
+	font-size: 0.8em;
+	background: #fdf1dc;
+
+	> tbody > tr > th {
+		color: black;
+		padding: 1px 0.2em;
+	}
+
+	&__ {
+		&disp-name {
+			font-size: 1.8em;
+			font-family: 'Andada', serif;
+			font-variant: small-caps;
+			font-weight: 500;
+			padding-left: 0.2em;
+			color: black;
+		}
+
+		&col-group {
+			text-align: center;
+
+			&::after {
+				position: relative;
+				bottom: 0;
+				left: 0;
+				margin: 0 auto;
+				padding: 0;
+				display: block;
+				content: '';
+				height: 1px;
+				width: 96%;
+				border-bottom: 1px solid black;
+			}
+		}
+
+		&col-level {
+			text-align: center;
+			width: 1.5em;
+		}
+
+		&col-prof-bonus {
+			text-align: center;
+			width: 1.5em;
+			padding: 1px 0.5em;
+		}
+
+		&col-generic-center {
+			text-align: center;
+			min-width: 1em;
+			max-width: 3.2em;
+		}
+
+		&stripe-odd:nth-child(odd) {
+			background: lightgrey;
+		}
+	}
+}
+
+.night-mode {
+	.cls-tbl {
+		background: $rgb-night-bg-color;
+
+		> tbody > tr > th {
+			color: $rgb-night-font-color;
+		}
+
+		&__ {
+			&disp-name {
+				color: $rgb-night-font-color;
+			}
+
+			&col-group::after {
+				border-color: $rgb-night-hr-grey;
+			}
+
+			&stripe-odd:nth-child(odd) {
+				background: $rgb-stripe-grey;
+			}
+		}
+	}
+}
+// endregion
+
+.cls-comp__wrp-features {
+	width: 400px;
+}
+
+// region class book view
+.cls-bkmv__wrp-tabs {
+	background-color: #eee;
+	border-bottom: 1px solid #ccc;
+}
+
+.cls-bkmv__btn-tab {
+	font-size: 0.8em;
+	margin-top: 2px;
+	padding: 2px 6px;
+	cursor: pointer;
+	user-select: none;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+}
+
+.night-mode {
+	.cls-bkmv__wrp-tabs {
+		background-color: #222;
+	}
+}
+// endregion

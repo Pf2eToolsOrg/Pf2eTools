@@ -42,7 +42,8 @@ const TAG_TO_PAGE = {
 	"trap": UrlUtil.PG_TRAPS_HAZARDS,
 	"hazard": UrlUtil.PG_TRAPS_HAZARDS,
 	"deity": UrlUtil.PG_DEITIES,
-	"variantrule": UrlUtil.PG_VARIATNRULES
+	"variantrule": UrlUtil.PG_VARIATNRULES,
+	"action": UrlUtil.PG_ACTIONS
 };
 
 const VALID_SKILLS = new Set([
@@ -64,19 +65,6 @@ const VALID_SKILLS = new Set([
 	"Sleight of Hand",
 	"Stealth",
 	"Survival"
-]);
-
-const VALID_ACTIONS = new Set([
-	"Attack",
-	"Cast a Spell",
-	"Dash",
-	"Disengage",
-	"Dodge",
-	"Help",
-	"Hide",
-	"Ready",
-	"Search",
-	"Use an Object"
 ]);
 
 const ALL_URLS = new Set();
@@ -145,18 +133,10 @@ class LinkCheck {
 				MSG.LinkCheck += `Unknown skill: ${match[0]} in file ${file} (evaluates to "${skill}")\n`
 			}
 		}
-
-		while ((match = LinkCheck.actionRe.exec(str))) {
-			const action = match[1];
-			if (!VALID_ACTIONS.has(action)) {
-				MSG.LinkCheck += `Unknown action: ${match[0]} in file ${file} (evaluates to "${action}")\n`
-			}
-		}
 	}
 }
-LinkCheck.re = /{@(spell|item|class|creature|condition|disease|background|race|optfeature|feat|reward|psionic|object|cult|boon|trap|hazard|deity|variantrule) (.*?)(\|(.*?))?(\|(.*?))?(\|.*?)?}/g;
+LinkCheck.re = /{@(spell|item|class|creature|condition|disease|background|race|optfeature|feat|reward|psionic|object|cult|boon|trap|hazard|deity|variantrule|action) (.*?)(\|(.*?))?(\|(.*?))?(\|.*?)?}/g;
 LinkCheck.skillRe = /{@skill (.*?)(\|.*?)?}/g;
-LinkCheck.actionRe = /{@action (.*?)(\|.*?)?}/g;
 
 class AttachedSpellAndGroupItemsCheck {
 	static run () {

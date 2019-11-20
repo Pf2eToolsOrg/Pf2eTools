@@ -132,3 +132,7 @@ PropOrder.SPELL = [
 	"races",
 	"backgrounds"
 ];
+
+if (typeof module !== "undefined") {
+	module.exports = PropOrder;
+}

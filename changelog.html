@@ -1785,7 +1785,30 @@ Filters -- completely overhauled internally:
 - Fixed Bestiary incorrectly sorting list items in the presence of creatures without CRs
 - Fixed the one (1) pixel deadzone at the bottom of each list item in list pages
 - (Fixed typos/added tags)`
-		}
+		},
+		{
+			ver: "1.88.8",
+			date: "2019-11-18",
+			txt: `
+- (Homebrew) added support for "raceFluff" property and referencing
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.89.0",
+			date: "2019-11-20",
+			title: "Ravioli",
+			txt: `
+- Added Eberron: Rising from the Last War (as a book; a class; a feat; a background; several races, deities, and items; and many creatures)
+- Added "Actions" page
+- Added "Alphabetical Sort" option to Spells page Book View
+- Added "Published" column to Books page, and made it the default sort column (to match the Adventures page)
+- Fixed Spells page Table View failing to load
+- Loading existing creatures into the Homebrew Builder will now populate the "Token Image URL" field (as available)
+- Fixed Homebrew Builder image previews failing to load
+- Fixed Text Converter statblock text converter mis-parsing Warlock spell slots
+- (Homebrew) Fixed magic variants failing to render some information (e.g. attunement)
+- (Fixed typos/added tags)`
+		},
 	];
 
 	const $wrp = $(`#pagecontent`);

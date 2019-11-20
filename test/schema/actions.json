@@ -1,0 +1,42 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"version": "1.0.0",
+	"type": "object",
+
+	"properties": {
+		"action": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					},
+					"source": {
+						"type": "string"
+					},
+					"page": {
+						"type": "integer"
+					}
+				},
+				"required": [
+					"name",
+					"entries",
+					"source",
+					"page"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"required": [
+		"action"
+	],
+	"additionalProperties": false
+}

@@ -1,6 +1,6 @@
 importScripts("./js/sw-files.js");
 
-const cacheName = /* 5ETOOLS_VERSION__OPEN */"1.88.7"/* 5ETOOLS_VERSION__CLOSE */;
+const cacheName = /* 5ETOOLS_VERSION__OPEN */"1.89.0"/* 5ETOOLS_VERSION__CLOSE */;
 const cacheableFilenames = new Set(filesToCache);
 
 let isCacheRunning;

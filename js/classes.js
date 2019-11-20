@@ -1117,7 +1117,7 @@ class SubClassLoader {
 					: parentTr.length ? parentTr.hasClass("spicy-sauce") : false;
 				const brew = $ele.parent().hasClass("refreshing-brew") ? true
 					: parentTr.length ? parentTr.hasClass("refreshing-brew") : false;
-				$(`<div class="nav-item ${navClass} ${brew ? "purple" : ua ? "green" : subClass ? "blue" : ""}">${displayText}</div>`).on("click", () => {
+				$(`<div class="nav-item ${navClass} ${brew ? "purple" : ua && !subClass ? "grellow" : ua ? "green" : subClass ? "blue" : ""}">${displayText}</div>`).on("click", () => {
 					if (idTr.length) {
 						window.location.hash = SubClassLoader.getFeatureLink(idTr.attr("id"))
 					}

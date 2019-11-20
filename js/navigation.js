@@ -49,6 +49,7 @@ class NavBar {
 		addLi(ulRules, "book.html", "Sword Coast Adventurer's Guide", {aHash: "SCAG"});
 		addLi(ulRules, "book.html", "Volo's Guide to Monsters", {aHash: "VGM"});
 		addLi(ulRules, "book.html", "Xanathar's Guide to Everything", {aHash: "XGE"});
+		addLi(ulRules, "book.html", "Eberron: Rising from the Last War", {aHash: "ERLW"});
 		addDivider(ulRules);
 		addLi(ulRules, "book.html", "Adventurers League", {aHash: "AL"});
 		addLi(ulRules, "book.html", "Sage Advice Compendium", {aHash: "SAC"});
@@ -110,6 +111,7 @@ class NavBar {
 		addLi(ulDms, "lootgen.html", "Loot Generator");
 
 		const ulReferences = addDropdown(navBar, "References");
+		addLi(ulReferences, "actions.html", "Actions");
 		addLi(ulReferences, "bestiary.html", "Bestiary");
 		addLi(ulReferences, "conditionsdiseases.html", "Conditions & Diseases");
 		addLi(ulReferences, "deities.html", "Deities");

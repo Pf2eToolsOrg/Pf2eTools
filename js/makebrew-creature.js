@@ -21,6 +21,16 @@ class CreatureBuilder extends Builder {
 	}
 
 	async pHandleSidebarLoadExistingClick () {
+		function pFetchToken (mon) {
+			return new Promise(resolve => {
+				const img = new Image();
+				const url = Renderer.monster.getTokenUrl(mon);
+				img.onload = resolve(url);
+				img.onerror = resolve(null);
+				img.src = url
+			});
+		}
+
 		const result = await SearchWidget.pGetUserCreatureSearch();
 		if (result) {
 			const creature = MiscUtil.copy(await Renderer.hover.pCacheAndGet(result.page, result.source, result.hash));
@@ -29,6 +39,12 @@ class CreatureBuilder extends Builder {
 				const rawFluff = await DataUtil.loadJSON(`data/bestiary/${this._bestiaryFluffIndex[creature.source]}`);
 				const fluff = Renderer.monster.getFluff(creature, this._bestiaryMetaRaw, rawFluff);
 				if (fluff) creature.fluff = fluff;
+			}
+
+			const rawTokenUrl = await pFetchToken(creature);
+			if (rawTokenUrl) {
+				const tokenUrl = /^[a-zA-Z0-9]+:\/\//.test(rawTokenUrl) ? rawTokenUrl : `${window.location.origin.replace(/\/+$/, "")}/${rawTokenUrl}`;
+				creature.tokenUrl = tokenUrl;
 			}
 
 			creature.source = this._ui.source;
@@ -2666,16 +2682,26 @@ class CreatureBuilder extends Builder {
 		if (image) {
 			const href = ((image || {}).href || {});
 			if (href.url) $iptUrl.val(href.url);
-			else if (href.path) $iptUrl.val(`${window.location.origin}${href.path}`);
+			else if (href.path) {
+				$iptUrl.val(`${window.location.origin.replace(/\/+$/, "")}/img/${href.path}`);
+			}
 		}
 
 		const $btnPreview = $(`<button class="btn btn-xs btn-default mr-2" title="Preview Image"><span class="glyphicon glyphicon-fullscreen"/></button>`)
 			.click((evt) => {
 				const toRender = getState();
 				if (!toRender) return JqueryUtil.doToast({content: "Please enter an image URL", type: "warning"});
-				const fauxEvent = {shiftKey: true, clientX: evt.clientX};
-				const data = {data: {hoverTitle: "Image Preview"}, entries: [toRender]};
-				Renderer.hover.show({evt: fauxEvent, ele: $btnPreview[0], page: "hover", source: data, hash: "", isBookContent: true});
+
+				const $content = Renderer.hover.$getHoverContent_generic(toRender, true);
+				Renderer.hover.getShowWindow(
+					$content,
+					Renderer.hover.getWindowPositionFromEvent(evt),
+					{
+						isPermanent: true,
+						title: "Image Preview",
+						isBookContent: true
+					}
+				);
 			});
 
 		const $btnRemove = $(`<button class="btn btn-xs btn-danger" title="Remove Image"><span class="glyphicon glyphicon-trash"/></button>`)

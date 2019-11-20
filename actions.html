@@ -10,7 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Conditions &amp; Diseases - 5etools</title>
+	<title>Actions - 5etools</title>
 
 	<link rel="manifest" href="manifest.webmanifest">
 
@@ -32,7 +32,7 @@
 	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
 
-			<h1 class="page__title">Conditions & Diseases</h1>
+			<h1 class="page__title">Actions</h1>
 			<p class="page__subtitle">Search by name on the left, click a name to display on the right.</p>
 		</div>
 	</header>
@@ -57,21 +57,19 @@
 				</div>
 
 				<div id="filtertools" class="sortlabel lst__form-bottom">
-					<button class="col-3 sort btn btn-default btn-xs" data-sort="type">Type <span class="caret_wrp"></span></button>
-					<button class="col-7 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+					<button class="col-10 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
 					<button class="sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
 				</div>
 
-				<ul class="list list--stats conditions"></ul>
+				<ul class="list list--stats actions"></ul>
 			</div>
 
 			<div id="contentwrapper" class="view-col">
 				<div id="sublistcontainer" class="sublist sublist--resizable">
 					<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
-						<button class="col-2 sort btn btn-default btn-xs" data-sort="type">Type <span class="caret_wrp"></span></button>
-						<button class="col-10 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+						<button class="col-12 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
 					</div>
-					<ul class="list subconditions">
+					<ul class="list subactions">
 						<!-- populate with JS -->
 					</ul>
 				</div>
@@ -106,11 +104,11 @@
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
-<script type="text/javascript" src="js/render-conditionsdiseases.js"></script>
+<script type="text/javascript" src="js/render-actions.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/hist.js"></script>
 <script type="text/javascript" src="js/listpage.js"></script>
-<script type="text/javascript" src="js/conditionsdiseases.js"></script>
+<script type="text/javascript" src="js/actions.js"></script>
 <script type="text/javascript" src="js/list2.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>

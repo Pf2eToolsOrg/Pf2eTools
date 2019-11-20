@@ -3110,6 +3110,40 @@
 			]
 		},
 		{
+			"name": "Revenant Blade",
+			"prerequisite": [
+				{
+					"race": [
+						{
+							"name": "elf"
+						}
+					]
+				}
+			],
+			"source": "ERLW",
+			"entries": [
+				"You are descended from a master of the double-bladed scimitar, and some of that mastery has passed on to you. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"While you are holding a double-bladed scimitar with two hands, you gain a +1 bonus to Armor Class.",
+						"A double-bladed scimitar has the finesse property when you wield it."
+					]
+				}
+			],
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex"
+						],
+						"amount": 1
+					}
+				}
+			]
+		},
+		{
 			"name": "Greater Dragonmark (Detection)",
 			"prerequisite": [
 				{

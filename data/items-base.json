@@ -273,7 +273,6 @@
 			"value": 10000,
 			"weight": 6,
 			"dmg1": "{@dice 2d4}",
-			"dmg2": "{@dice 1d4}",
 			"dmgType": "S",
 			"property": [
 				"S",
@@ -287,6 +286,33 @@
 					"name": "Special",
 					"entries": [
 						"When you take the attack action and make a two-handed attack with a double-bladed scimitar, you can use a bonus action to make a melee attack with the blade at the opposite end of the weapon. This attack uses the same ability modifier as the primary attack. The weapon's damage die for this attack is a d4, and it deals slashing damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Double-Bladed Scimitar",
+			"type": "M",
+			"weapon": true,
+			"sword": true,
+			"weaponCategory": "Martial",
+			"rarity": "None",
+			"value": 10000,
+			"weight": 6,
+			"dmg1": "{@dice 2d4}",
+			"dmgType": "S",
+			"property": [
+				"S",
+				"2H"
+			],
+			"source": "ERLW",
+			"page": 0,
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Special",
+					"entries": [
+						"If you attack with a double-bladed scimitar as part of the {@action Attack} action on your turn, you can use a bonus action immediately after to make a melee attack with it. This attack deals {@dice 1d4} slashing damage on a hit, instead of {@dice 2d4}."
 					]
 				}
 			]

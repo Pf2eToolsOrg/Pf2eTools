@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.88.7"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.89.0"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -208,7 +208,7 @@ StrUtil = {
 	// Certain minor words should be left lowercase unless they are the first or last words in the string
 	TITLE_LOWER_WORDS: ["A", "An", "The", "And", "But", "Or", "For", "Nor", "As", "At", "By", "For", "From", "In", "Into", "Near", "Of", "On", "Onto", "To", "With"],
 	// Certain words such as initialisms or acronyms should be left uppercase
-	TITLE_UPPER_WORDS: ["Id", "Tv"],
+	TITLE_UPPER_WORDS: ["Id", "Tv", "Dm"],
 
 	padNumber: (n, len, padder) => {
 		return String(n).padStart(len, padder);
@@ -742,12 +742,6 @@ Parser.skillToExplanation = function (skillType) {
 	const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "skills", skillType);
 	if (fromBrew) return fromBrew;
 	return Parser._parse_aToB(Parser.SKILL_JSON_TO_FULL, skillType);
-};
-
-Parser.actionToExplanation = function (actionType) {
-	const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "actions", actionType);
-	if (fromBrew) return fromBrew;
-	return Parser._parse_aToB(Parser.ACTION_JSON_TO_FULL, actionType, ["No explanation available."]);
 };
 
 Parser.senseToExplanation = function (senseType) {
@@ -1502,6 +1496,7 @@ Parser.CAT_ID_ALCHEMICAL_FORMULA = 38;
 Parser.CAT_ID_MANEUVER = 39;
 Parser.CAT_ID_SUBCLASS = 40;
 Parser.CAT_ID_SUBCLASS_FEATURE = 41;
+Parser.CAT_ID_ACTION = 42;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1546,6 +1541,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ALCHEMICAL_FORMULA] = "Alchemical Formula";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_MANEUVER] = "Maneuver";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS] = "Subclass";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS_FEATURE] = "Subclass Feature";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ACTION] = "Action";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1594,12 +1590,23 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_QUICKREF] = null;
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS_FEATURE] = "class";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS] = "subclass";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS_FEATURE] = "subclass";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ACTION] = "action";
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
 };
 
 Parser.ABIL_ABVS = ["str", "dex", "con", "int", "wis", "cha"];
+
+Parser.spClassesToCurrentAndLegacy = function (classes) {
+	const current = [];
+	const legacy = [];
+	classes.fromClassList.forEach(cls => {
+		if ((cls.name === "Artificer" && cls.source === "UAArtificer") || (cls.name === "Artificer (Revisited)" && cls.source === "UAArtificerRevisited")) legacy.push(cls);
+		else current.push(cls);
+	});
+	return [current, legacy];
+}
 
 /**
  * Build a pair of strings; one with all current subclasses, one with all legacy subclasses
@@ -1975,6 +1982,7 @@ SRC_BGDIA = "BGDIA";
 SRC_LR = "LR";
 SRC_AL = "AL";
 SRC_SAC = "SAC";
+SRC_ERLW = "ERLW";
 SRC_SCREEN = "Screen";
 
 SRC_AL_PREFIX = "AL";
@@ -2108,6 +2116,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_BGDIA] = "Baldur's Gate: Descent Into Avernus";
 Parser.SOURCE_JSON_TO_FULL[SRC_LR] = "Locathah Rising";
 Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
 Parser.SOURCE_JSON_TO_FULL[SRC_SAC] = "Sage Advice Compendium";
+Parser.SOURCE_JSON_TO_FULL[SRC_ERLW] = "Eberron: Rising from the Last War";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = AL_PREFIX + "Elemental Evil";
@@ -2222,6 +2231,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_BGDIA] = "BGDIA";
 Parser.SOURCE_JSON_TO_ABV[SRC_LR] = "LR";
 Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
 Parser.SOURCE_JSON_TO_ABV[SRC_SAC] = "SAC";
+Parser.SOURCE_JSON_TO_ABV[SRC_ERLW] = "ERLW";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
@@ -2402,47 +2412,6 @@ Parser.SKILL_JSON_TO_FULL = {
 	],
 	"Survival": [
 		"The DM might ask you to make a Wisdom (Survival) check to follow tracks, hunt wild game, guide your group through frozen wastelands, identify signs that owlbears live nearby, predict the weather, or avoid quicksand and other natural hazards."
-	]
-};
-
-Parser.ACTION_JSON_TO_FULL = {
-	"Attack": [
-		"The most common action to take in combat is the Attack action, whether you are swinging a sword, firing an arrow from a bow, or brawling with your fists.",
-		"With this action, you make one melee or ranged attack. See the \"{@book Making an Attack|phb|9|making an attack}\" section for the rules that govern attacks.",
-		"Certain features, such as the Extra Attack feature of the fighter, allow you to make more than one attack with this action."
-	],
-	"Cast a Spell": [
-		"Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which specifies whether the caster must use an action, a reaction, minutes, or even hours to cast the spell. Casting a spell is, therefore, not necessarily an action. Most spells do have a casting time of 1 action, so a spellcaster often uses his or her action in combat to cast such a spell. See {@book chapter 10|phb|10|casting a spell} for the rules on spellcasting."
-	],
-	"Dash": [
-		"When you take the Dash action, you gain extra movement for the current turn. The increase equals your speed, after applying any modifiers. With a speed of 30 feet, for example, you can move up to 60 feet on your turn if you dash.",
-		"Any increase or decrease to your speed changes this additional movement by the same amount. If your speed of 30 feet is reduced to 15 feet, for instance, you can move up to 30 feet this turn if you dash."
-	],
-	"Disengage": [
-		"If you take the Disengage action, your movement doesn't provoke opportunity attacks for the rest of the turn."
-	],
-	"Dodge": [
-		"When you take the Dodge action, you focus entirely on avoiding attacks. Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Dexterity saving throws with advantage. You lose this benefit if you are incapacitated (as explained in the appendix) or if your speed drops to 0."
-	],
-	"Help": [
-		"You can lend your aid to another creature in the completion of a task. When you take the Help action, the creature you aid gains advantage on the next ability check it makes to perform the task you are helping with, provided that it makes the check before the start of your next turn.",
-		"Alternatively, you can aid a friendly creature in attacking a creature within 5 feet of you. You feint, distract the target, or in some other way team up to make your ally's attack more effective. If your ally attacks the target before your next turn, the first attack roll is made with advantage."
-	],
-	"Hide": [
-		"When you take the Hide action, you make a Dexterity (Stealth) check in an attempt to hide, following the rules in chapter 7 for hiding. If you succeed, you gain certain benefits, as described in the \"{@book Unseen Attackers and Targets|PHB|9|unseen attackers and targets}\" section in the Player's Handbook."
-	],
-	"Ready": [
-		"Sometimes you want to get the jump on a foe or wait for a particular circumstance before you act. To do so, you can take the Ready action on your turn so that you can act later in the round using your reaction.",
-		"First, you decide what perceivable circumstance will trigger your reaction. Then, you choose the action you will take in response to that trigger, or you choose to move up to your speed in response to it. Examples include \"If the cultist steps on the trapdoor, I'll pull the lever that opens it,\" and \"If the goblin steps next to me, I move away.\"",
-		"When the trigger occurs, you can either take your reaction right after the trigger finishes or ignore the trigger. Remember that you can take only one reaction per round.",
-		"When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell's magic requires concentration (explained in chapter 10). If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the web spell and ready magic missile, your web spell ends, and if you take damage before you release magic missile with your reaction, your concentration might be broken.",
-		"You have until the start of your next turn to use a readied action."
-	],
-	"Search": [
-		"When you take the Search action, you devote your attention to finding something. Depending on the nature of your search, the DM might have you make a Wisdom ({@skill Perception}) check or an Intelligence ({@skill Investigation}) check."
-	],
-	"Use an Object": [
-		"You normally interact with an object while doing something else, such as when you draw a sword as part of an attack. When an object requires your action for its use, you take the Use an Object action. This action is also useful when you want to interact with more than one object on your turn."
 	]
 };
 
@@ -4358,6 +4327,7 @@ UrlUtil.PG_DEMO = "demo.html";
 UrlUtil.PG_TABLES = "tables.html";
 UrlUtil.PG_VEHICLES = "vehicles.html";
 UrlUtil.PG_CHARACTERS = "characters.html";
+UrlUtil.PG_ACTIONS = "actions.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -4380,6 +4350,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OBJECTS] = (it) => UrlUtil.encodeForHash(
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAPS_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 
 UrlUtil.CAT_TO_PAGE = {};
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURE] = UrlUtil.PG_BESTIARY;
@@ -4424,6 +4395,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ONOMANCY_RESONANT] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ALCHEMICAL_FORMULA] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_MANEUVER] = UrlUtil.PG_OPT_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ACTION] = UrlUtil.PG_ACTIONS;
 
 if (!IS_DEPLOYED && !IS_VTT && typeof window !== "undefined") {
 	// for local testing, hotkey to get a link to the current page on the main site
@@ -4483,6 +4455,10 @@ SortUtil = {
 	_ascSort: (a, b) => {
 		if (b === a) return 0;
 		return b < a ? 1 : -1;
+	},
+
+	ascSortDate (a, b) {
+		return b.getTime() - a.getTime();
 	},
 
 	compareListNames (a, b) { return SortUtil._ascSort(a.name.toLowerCase(), b.name.toLowerCase()); },
@@ -5323,7 +5299,8 @@ DataUtil = {
 				SRC_PHB,
 				SRC_DMG,
 				SRC_SCAG,
-				SRC_MTF
+				SRC_MTF,
+				SRC_ERLW
 			];
 
 			const inSource = {};
@@ -5889,6 +5866,7 @@ BrewUtil = {
 						case UrlUtil.PG_MANAGE_BREW:
 						case UrlUtil.PG_DEMO: return BrewUtil._DIRS;
 						case UrlUtil.PG_VEHICLES: return ["vehicle"];
+						case UrlUtil.PG_ACTIONS: return ["action"];
 						default: throw new Error(`No homebrew directories defined for category ${page}`);
 					}
 				}
@@ -6230,7 +6208,7 @@ BrewUtil = {
 						case UrlUtil.PG_BACKGROUNDS: return ["background"];
 						case UrlUtil.PG_FEATS: return ["feat"];
 						case UrlUtil.PG_OPT_FEATURES: return ["optionalfeature"];
-						case UrlUtil.PG_RACES: return ["race"];
+						case UrlUtil.PG_RACES: return ["race", "raceFluff"];
 						case UrlUtil.PG_OBJECTS: return ["object"];
 						case UrlUtil.PG_TRAPS_HAZARDS: return ["trap", "hazard"];
 						case UrlUtil.PG_DEITIES: return ["deity"];
@@ -6246,6 +6224,7 @@ BrewUtil = {
 						case UrlUtil.PG_MANAGE_BREW:
 						case UrlUtil.PG_DEMO: return BrewUtil._STORABLE;
 						case UrlUtil.PG_VEHICLES: return ["vehicle"];
+						case UrlUtil.PG_ACTIONS: return ["action"];
 						default: throw new Error(`No homebrew properties defined for category ${page}`);
 					}
 				};
@@ -6364,6 +6343,7 @@ BrewUtil = {
 			case "feat":
 			case "optionalfeature":
 			case "race":
+			case "raceFluff":
 			case "object":
 			case "trap":
 			case "hazard":
@@ -6381,7 +6361,8 @@ BrewUtil = {
 			case "disease":
 			case "table":
 			case "tableGroup":
-			case "vehicle": return BrewUtil._genPDeleteGenericBrew(category);
+			case "vehicle":
+			case "action": return BrewUtil._genPDeleteGenericBrew(category);
 			case "subclass": return BrewUtil._pDeleteSubclassBrew;
 			case "class": return BrewUtil._pDeleteClassBrew;
 			case "adventure":
@@ -6482,8 +6463,8 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_DIRS: ["adventure", "background", "book", "class", "condition", "creature", "deity", "disease", "feat", "hazard", "item", "magicvariant", "object", "optionalfeature", "psionic", "race", "reward", "spell", "subclass", "table", "trap", "variantrule", "vehicle"],
-	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle"],
+	_DIRS: ["action", "adventure", "background", "book", "class", "condition", "creature", "deity", "disease", "feat", "hazard", "item", "magicvariant", "object", "optionalfeature", "psionic", "race", "reward", "spell", "subclass", "table", "trap", "variantrule", "vehicle"],
+	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "raceFluff", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle", "action"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		function storePrep (arrName) {
 			if (json[arrName]) {
@@ -6609,6 +6590,7 @@ BrewUtil = {
 			case UrlUtil.PG_MAKE_SHAPED:
 			case UrlUtil.PG_TABLES:
 			case UrlUtil.PG_VEHICLES:
+			case UrlUtil.PG_ACTIONS:
 				await (BrewUtil._pHandleBrew || handleBrew)(MiscUtil.copy(toAdd));
 				break;
 			case UrlUtil.PG_MANAGE_BREW:
@@ -7186,10 +7168,12 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNu
 			.click(() => this._doHashTeardown());
 		const $dispName = $(`<div/>`); // pass this to the content function to allow it to set a main header
 		$$`<div class="bkmv__spacer-name split-v-center no-shrink">${$dispName}${$btnClose}</div>`.appendTo(this._$wrpBook);
-		const $wrpContent = $(`<div class="w-100 bkmv__wrp"/>`);
+		// Optionally usable "controls" section at the top of the pane
+		const $wrpControls = $(`<div class="w-100 flex-col bkmv__wrp-controls"/>`).appendTo(this._$wrpBook);
+		const $wrpContent = $(`<div class="w-100 bkmv__wrp p-2"/>`);
 		$$`<div class="bkmv__scroller h-100 w-100 overflow-y-auto">${$wrpContent}</div>`.appendTo(this._$wrpBook);
 
-		const numShown = await this.popTblGetNumShown($wrpContent, $dispName);
+		const numShown = await this.popTblGetNumShown($wrpContent, $dispName, $wrpControls);
 
 		if (!numShown) {
 			const $btnClose = $(`<button class="btn btn-default">Close</button>`)

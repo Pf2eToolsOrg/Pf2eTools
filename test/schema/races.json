@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.3.1",
+	"version": "1.3.2",
 	"type": "object",
 
 	"definitions": {
@@ -110,6 +110,56 @@
 					"items": {
 						"$ref": "util.json#/definitions/skillProficiencies"
 					}
+				},
+				"fluff": {
+					"description": "Homebrew use only.",
+					"oneOf": [
+						{
+							"type": "object",
+							"properties": {
+								"entries": {
+									"type": "array",
+									"items": {
+										"$ref": "entry.json"
+									}
+								},
+								"images": {
+									"type": "array",
+									"items": {
+										"$ref": "entry.json#/definitions/entryImage"
+									}
+								}
+							}
+						},
+						{
+							"description": "References \"raceFluff\" array items",
+							"type": "object",
+							"properties": {
+								"_raceFluff": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"source": {
+											"type": "string"
+										}
+									}
+								},
+								"_appendRaceFluff": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"source": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					]
 				}
 			},
 			"additionalProperties": false

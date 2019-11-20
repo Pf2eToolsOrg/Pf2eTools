@@ -399,7 +399,7 @@ class RendererMarkdown {
 >- **Hit Points** ${Renderer.monster.getRenderedHp(mon.hp, true)}
 >- **Speed** ${Parser.getSpeedString(mon)}
 >___
->|${Parser.ABIL_ABVS.map(it => `${it.toUpperCase()}|`)}
+>|${Parser.ABIL_ABVS.map(it => `${it.toUpperCase()}|`).join("")}
 >|:---:|:---:|:---:|:---:|:---:|:---:|
 >|${Parser.ABIL_ABVS.map(ab => `${mon[ab]} (${Parser.getAbilityModifier(mon[ab])})|`)}
 >___${savePart}${skillPart}${damVulnPart}${damResPart}${damImmPart}${condImmPart}
@@ -1235,7 +1235,8 @@ class MarkdownConverter {
 		(function doCheckDiceOrNumericCol0 () {
 			// check if first column is all strictly number-like
 			tbl.rows.forEach(r => {
-				if (!/^[-+*/×÷x^.,0-9$]+/i.exec((r[0] || "").trim())) return isDiceCol0 = false;
+				// u2012 = figure dash; u2013 = en-dash
+				if (!/^[-+*/×÷x^.,0-9\u2012\u2013]+$/i.exec((r[0] || "").trim())) return isDiceCol0 = false;
 			});
 		})();
 

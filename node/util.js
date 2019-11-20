@@ -159,7 +159,8 @@ const TAG_TO_DEFAULT_SOURCE = {
 	"hazard": "dmg",
 	"deity": "phb",
 	"variantrule": "dmg",
-	"vehicle": "gos"
+	"vehicle": "gos",
+	"action": "phb"
 };
 
 module.exports = {

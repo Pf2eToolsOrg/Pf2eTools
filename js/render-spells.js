@@ -25,13 +25,17 @@ class RenderSpells {
 		}
 		renderStack.push(`</td></tr>`);
 
-		if (sp.classes) renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Classes: </span>${Parser.spMainClassesToFull(sp.classes)}</td></tr>`);
+		if (sp.classes && sp.classes.fromClassList) {
+			const [current, legacy] = Parser.spClassesToCurrentAndLegacy(sp.classes);
+			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Classes: </span>${Parser.spMainClassesToFull({fromClassList: current})}</td></tr>`);
+			if (legacy.length) renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted"><span class="bold">Classes (legacy): </span>${Parser.spMainClassesToFull({fromClassList: legacy})}</section></td></tr>`);
+		}
 
 		if (sp.classes && sp.classes.fromSubclass) {
-			const currentAndLegacy = Parser.spSubclassesToCurrentAndLegacyFull(sp.classes, subclassLookup);
-			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Subclasses: </span>${currentAndLegacy[0]}</td></tr>`);
-			if (currentAndLegacy[1]) {
-				renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted"><span class="bold">Subclasses (legacy): </span>${currentAndLegacy[1]}</section></td></tr>`);
+			const [current, legacy] = Parser.spSubclassesToCurrentAndLegacyFull(sp.classes, subclassLookup);
+			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Subclasses: </span>${current}</td></tr>`);
+			if (legacy.length) {
+				renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted"><span class="bold">Subclasses (legacy): </span>${legacy}</section></td></tr>`);
 			}
 		}
 

@@ -165,7 +165,7 @@ async function pPostLoad () {
 			name: {name: "Name", transform: true},
 			source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>`},
 			level: {name: "Level", transform: (it) => Parser.spLevelToFull(it)},
-			time: {name: "Casting Time", transform: (it) => SpellsPage.getTblTimeStr(it[0])},
+			time: {name: "Casting Time", transform: (it) => PageFilterSpells.getTblTimeStr(it[0])},
 			duration: {name: "Duration", transform: (it) => Parser.spDurationToFull(it)},
 			_school: {name: "School", transform: (sp) => `<span class="school_${sp.school}">${Parser.spSchoolAndSubschoolsAbvsToFull(sp.school, sp.subschools)}</span>`},
 			range: {name: "Range", transform: (it) => Parser.spRangeToFull(it)},
@@ -218,35 +218,65 @@ async function pPageInit (loadedSources) {
 		$(`#btn-spellbook`),
 		"If you wish to view multiple spells, please first make a list",
 		"Spells Book View",
-		($wrpContent, $dispName) => {
+		($wrpContent, $dispName, $wrpControls) => {
+			$wrpControls.addClass("px-2 mt-2");
+
 			const toShow = ListUtil.getSublistedIds().map(id => spellList[id]);
 
-			const stack = [];
-			const renderSpell = (sp) => {
+			const renderSpell = (stack, sp) => {
 				stack.push(`<div class="bkmv__wrp-item"><table class="stats stats--book stats--bkmv"><tbody>`);
 				stack.push(Renderer.spell.getCompactRenderedString(sp));
 				stack.push(`</tbody></table></div>`);
 			};
 
-			for (let i = 0; i < 10; ++i) {
-				const atLvl = toShow.filter(sp => sp.level === i);
-				if (atLvl.length) {
-					stack.push(`<div class="w-100 h-100 bkmv__no-breaks">`);
-					stack.push(`<div class="bkmv__spacer-name flex-v-center no-shrink">${Parser.spLevelToFullLevelText(i)}</div>`);
-					atLvl.forEach(sp => renderSpell(sp));
-					stack.push(`</div>`);
-				}
-			}
+			const $selSortMode = $(`<select class="form-control">
+				<option value="0">Spell Level</option>
+				<option value="1">Alphabetical</option>
+			</select>`)
+				.change(() => {
+					if (!toShow.length && Hist.lastLoadedId != null) return;
 
-			if (!toShow.length && Hist.lastLoadedId != null) {
+					const val = Number($selSortMode.val());
+					if (val === 0) renderByLevel();
+					else renderByAlpha();
+				});
+			$$`<div class="w-100 flex">
+				<div class="flex-vh-center"><div class="mr-2 no-wrap">Sort order:</div>${$selSortMode}</div>
+			</div>`.appendTo($wrpControls);
+
+			const renderByLevel = () => {
+				const stack = [];
+				for (let i = 0; i < 10; ++i) {
+					const atLvl = toShow.filter(sp => sp.level === i);
+					if (atLvl.length) {
+						stack.push(`<div class="w-100 h-100 bkmv__no-breaks">`);
+						stack.push(`<div class="bkmv__spacer-name flex-v-center no-shrink">${Parser.spLevelToFullLevelText(i)}</div>`);
+						atLvl.forEach(sp => renderSpell(stack, sp));
+						stack.push(`</div>`);
+					}
+				}
+				$wrpContent.empty().append(stack.join(""));
+			};
+
+			const renderByAlpha = () => {
+				const stack = [];
+				toShow.forEach(sp => renderSpell(stack, sp));
+				$wrpContent.empty().append(stack.join(""));
+			};
+
+			const renderNoneSelected = () => {
+				const stack = [];
 				stack.push(`<div class="w-100 h-100 no-breaks">`);
 				const sp = spellList[Hist.lastLoadedId];
-				renderSpell(sp);
+				renderSpell(stack, sp);
 				$dispName.text(Parser.spLevelToFullLevelText(sp.level));
 				stack.push(`</div>`);
-			}
+				$wrpContent.empty().append(stack.join(""));
+			};
 
-			$wrpContent.append(stack.join(""));
+			if (!toShow.length && Hist.lastLoadedId != null) renderNoneSelected();
+			else renderByLevel();
+
 			return toShow.length;
 		}, true
 	);

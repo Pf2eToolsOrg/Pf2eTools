@@ -27,6 +27,116 @@
 	<script type="text/javascript" src="js/browsercheck.js"></script>
 
 	<style>
+		/* region MOVED FROM MAIN STYLE */
+		#classtable {
+			overflow-x: auto;
+		}
+
+		#classtable table {
+			font-size: 0.8em;
+			width: 100%;
+		}
+
+		#classtable table .level {
+			text-align: center;
+			width: 1.5em;
+		}
+
+		#classtable table .pb {
+			text-align: center;
+			width: 1.5em;
+			padding: 1px 0.5em;
+		}
+
+		#classtable .slots {
+			display: none;
+			text-align: center;
+			max-width: 4em;
+		}
+
+		td.features {
+			max-width: 100%;
+			white-space: pre-wrap;
+		}
+
+		.list.classes {
+			max-height: 355px;
+		}
+
+		#classtable .centred-col {
+			text-align: center;
+			min-width: 1em;
+			max-width: 3.2em;
+		}
+
+		div#subclasses {
+			padding: 0 1em 0.5em;
+			text-align: center;
+		}
+
+		div#subclasses > span.divider {
+			margin: 0;
+			padding: 0;
+			width: 1em;
+			display: inline-block;
+			cursor: default;
+			border-radius: 0;
+		}
+
+		#classtable .colGroupTitle {
+			text-align: center;
+		}
+
+		#classtable .colGroupTitle::after {
+			position: relative;
+			bottom: 0;
+			left: 0;
+			margin: 0 auto;
+			padding: 0;
+			display: block;
+			content: '';
+			height: 1px;
+			width: 96%;
+			border-bottom: 1px solid black;
+		}
+
+		#classtable tr th {
+			padding: 1px 0.2em;
+		}
+
+		#classtable table {
+			background: #fdf1dc;
+		}
+
+		#classtable table th {
+			color: black;
+		}
+
+		#classtable table tr:nth-child(odd) td {
+			background: lightgrey;
+		}
+
+		.cls-bkmv__btn-tab {
+			background: #f0f0f0;
+		}
+
+		.night-mode #classtable table {
+			background: #272727;
+		}
+
+		.night-mode #classtable table th {
+			color: #bbb;
+		}
+
+		.night-mode #classtable .colGroupTitle::after {
+			border-color: #888;
+		}
+
+		.night-mode #classtable table tr:nth-child(odd) td {
+			background: rgba(0, 0, 0, 0.31);
+		}
+		/* endregion */
+
 		/* hide these until the user clicks a class */
 		#classtable,
 		#button-wrapper,
@@ -190,6 +300,11 @@
 			color: #1d965d;
 		}
 
+
+		#sticky-nav div.nav-item.grellow {
+			color: #827e00;
+		}
+
 		#sticky-nav div.nav-item.purple {
 			color: #8c3b96;
 		}
@@ -204,6 +319,10 @@
 
 		.night-mode #sticky-nav div.nav-item.green {
 			color: #27ce80;
+		}
+
+		.night-mode #sticky-nav div.nav-item.grellow {
+			color: #a2ce42;
 		}
 
 		.night-mode #sticky-nav div.nav-item.purple {

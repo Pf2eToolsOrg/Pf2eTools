@@ -1232,12 +1232,10 @@ function Renderer () {
 						break;
 					}
 					case "@skill":
-					case "@action":
 					case "@sense": {
 						const expander = (() => {
 							switch (tag) {
 								case "@skill": return Parser.skillToExplanation;
-								case "@action": return Parser.actionToExplanation;
 								case "@sense": return Parser.senseToExplanation;
 							}
 						})();
@@ -1514,6 +1512,15 @@ function Renderer () {
 								fauxEntry.href.hover = {
 									page: UrlUtil.PG_VEHICLES,
 									source: source || SRC_GoS
+								};
+								this._recursiveRender(fauxEntry, textStack, meta);
+								break;
+							case "@action":
+								fauxEntry.href.path = UrlUtil.PG_ACTIONS;
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_ACTIONS,
+									source: source || SRC_PHB
 								};
 								this._recursiveRender(fauxEntry, textStack, meta);
 								break;
@@ -2091,11 +2098,11 @@ Renderer.utils = {
 			if (fromList) {
 				if (fromList.entries) {
 					fluff.entries = MiscUtil.copy(fluff.entries || []);
-					fluff.entries.push(...fluff.entries);
+					fluff.entries.push(...MiscUtil.copy(fromList.entries));
 				}
 				if (fromList.images) {
 					fluff.images = MiscUtil.copy(fluff.images || []);
-					fluff.images.push(...fromList.images);
+					fluff.images.push(...MiscUtil.copy(fromList.images));
 				}
 			}
 		}
@@ -2352,7 +2359,10 @@ Renderer.spell = {
 			const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
 			renderer.recursiveRender(higherLevelsEntryList, renderStack, {depth: 2});
 		}
-		if (spell.classes) renderStack.push(`<div><span class="bold">Classes: </span>${Parser.spMainClassesToFull(spell.classes)}</div>`);
+		if (spell.classes && spell.classes.fromClassList) {
+			const [current] = Parser.spClassesToCurrentAndLegacy(spell.classes);
+			renderStack.push(`<div><span class="bold">Classes: </span>${Parser.spMainClassesToFull({fromClassList: current})}</div>`);
+		}
 		renderStack.push(`</td></tr>`);
 
 		return renderStack.join("");
@@ -3786,6 +3796,8 @@ Renderer.item = {
 				(specificVariant.lootTables = specificVariant.lootTables || []).push(...linkedLootTables[specificVariant.source][specificVariant.name])
 			}
 
+			specificVariant._isEnhanced = false;
+
 			return specificVariant;
 		}
 
@@ -4419,6 +4431,14 @@ Renderer.vehicle = {
 			${Renderer.utils.getPageTr(veh)}
 			${Renderer.utils.getBorderTr()}
 		`;
+	}
+};
+
+Renderer.action = {
+	getCompactRenderedString (it) {
+		return `<tr><td colspan="6">
+		${Renderer.get().setFirstSection(true).render(it)}
+		</td></tr>`;
 	}
 };
 
@@ -5195,6 +5215,7 @@ Renderer.hover = {
 			case UrlUtil.PG_CONDITIONS_DISEASES: return pLoadSimple(page, "conditionsdiseases.json", ["condition", "disease"], (listProp, item) => item._type = listProp === "condition" ? "c" : "d");
 			case UrlUtil.PG_TABLES: return pLoadSimple(page, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item._type = listProp === "table" ? "t" : "g");
 			case UrlUtil.PG_VEHICLES: return pLoadSimple(page, "vehicles.json", "vehicle");
+			case UrlUtil.PG_ACTIONS: return pLoadSimple(page, "actions.json", "action");
 			default: throw new Error(`No load function defined for page ${page}`);
 		}
 	},
@@ -5230,6 +5251,7 @@ Renderer.hover = {
 			case UrlUtil.PG_CULTS_BOONS: return Renderer.cultboon.getCompactRenderedString;
 			case UrlUtil.PG_TABLES: return Renderer.table.getCompactRenderedString;
 			case UrlUtil.PG_VEHICLES: return Renderer.vehicle.getCompactRenderedString;
+			case UrlUtil.PG_ACTIONS: return Renderer.action.getCompactRenderedString;
 			default: return null;
 		}
 	},
@@ -6695,7 +6717,6 @@ Renderer.stripTags = function (str) {
 						throw new Error(`Unhandled tag: ${tag}`);
 					}
 
-					case "@action":
 					case "@note":
 					case "@sense":
 					case "@skill": {
@@ -6723,6 +6744,7 @@ Renderer.stripTags = function (str) {
 							: `${flags && flags.includes("u") ? "A" : "a"}rea ${compactText}`;
 					}
 
+					case "@action":
 					case "@background":
 					case "@boon":
 					case "@class":
@@ -6778,7 +6800,8 @@ Renderer.isRollableTable = function (table) {
 			// scan the first column to ensure all rollable
 			const notRollable = table.rows.find(it => {
 				try {
-					return !/\d+([-\u2013]\d+)?/.exec(it[0]);
+					// u2012 = figure dash; u2013 = en-dash
+					return !/\d+([-\u2012\u2013]\d+)?/.exec(it[0]);
 				} catch (e) {
 					return true;
 				}
@@ -6794,7 +6817,8 @@ Renderer.getRollableRow = function (row, cbErr) {
 	row = MiscUtil.copy(row);
 	try {
 		// format: "95-00" or "12"
-		const m = /^(\d+)([-\u2013](\d+))?$/.exec(String(row[0]).trim());
+		// u2012 = figure dash; u2013 = en-dash
+		const m = /^(\d+)([-\u2012\u2013](\d+))?$/.exec(String(row[0]).trim());
 		if (m) {
 			if (m[1] && !m[2]) {
 				row[0] = {
