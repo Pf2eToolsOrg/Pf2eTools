@@ -490,8 +490,9 @@ class HashLoad {
 				});
 				if (feature.type !== "inset") {
 					// FIXME(future) this doesn't handle reprints
-					const $wrp = $$`<div class="inline-block cls__wrp-feature-link${feature.source && SourceUtil.isNonstandardSource(feature.source) ? ` ${CLSS_NON_STANDARD_SOURCE}` : ""}">${$lnkFeature}</div>`;
-					$wrpsLnkFeatures.push($wrp);
+					const isNonStandardSource = feature.source && SourceUtil.isNonstandardSource(feature.source);
+					const $wrp = $$`<div class="inline-block cls__wrp-feature-link${isNonStandardSource ? ` ${CLSS_NON_STANDARD_SOURCE}` : ""}">${$lnkFeature}</div>`;
+					$wrpsLnkFeatures.push({$wrp, isNonStandardSource});
 				}
 
 				const styleClasses = [CLSS_CLASS_FEATURE, "linked-titles--classes"];
@@ -536,9 +537,9 @@ class HashLoad {
 			if ($wrpsLnkFeatures.length === 0) {
 				tblLvlFeatures.html("\u2014");
 			} else {
-				$wrpsLnkFeatures.forEach(($it, j) => {
-					tblLvlFeatures.append($it);
-					if (j) $it.prepend(", ");
+				$wrpsLnkFeatures.forEach((it, j) => {
+					tblLvlFeatures.append(it.$wrp);
+					if (j) it.$wrp.before(`<div class="inline-block ${it.isNonStandardSource ? CLSS_NON_STANDARD_SOURCE : ""}">, </div>`);
 				});
 			}
 		}
