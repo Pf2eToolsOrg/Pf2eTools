@@ -2185,17 +2185,19 @@ class CreatureBuilder extends Builder {
 								const $iptMeleeRange = $(`<input class="form-control form-control--minimal input-xs" type="number" value="5">`);
 								const $iptMeleeDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Number of Dice" min="1" value="1">`);
 								const $iptMeleeDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="6">`);
+								const $iptMeleeDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X">`);
 								const $iptMeleeDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Melee Damage Type" autocomplete="off">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageMelee = $$`<div class="flex-col"><hr class="hr-3">
 								<div class="flex-v-center mb-2"><span class="mr-2 no-shrink">Melee Range (ft.)</span>${$iptMeleeRange}</div>
-								<div class="flex-v-center mb-2">${$iptMeleeDamDiceCount}<span class="mr-2">d</span>${$iptMeleeDamDiceNum}${$iptMeleeDamType}</div>
+								<div class="flex-v-center mb-2">${$iptMeleeDamDiceCount}<span class="mr-2">d</span>${$iptMeleeDamDiceNum}${$iptMeleeDamBonus}${$iptMeleeDamType}</div>
 								</div>`;
 
 								const $iptRangedShort = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number">`);
 								const $iptRangedLong = $(`<input class="form-control form-control--minimal input-xs" type="number">`);
 								const $iptRangedDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Number of Dice" min="1" value="1">`);
 								const $iptRangedDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="6">`);
+								const $iptRangedDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X">`);
 								const $iptRangedDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Ranged Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageRanged = $$`<div class="flex-col"><hr class="hr-3">
@@ -2203,23 +2205,25 @@ class CreatureBuilder extends Builder {
 									<span class="mr-2 no-shrink">Short Range (ft.)</span>${$iptRangedShort}
 									<span class="mr-2 no-shrink">Long Range (ft.)</span>${$iptRangedLong}
 								</div>
-								<div class="flex-v-center mb-2">${$iptRangedDamDiceCount}<span class="mr-2">d</span>${$iptRangedDamDiceNum}${$iptRangedDamType}</div>
+								<div class="flex-v-center mb-2">${$iptRangedDamDiceCount}<span class="mr-2">d</span>${$iptRangedDamDiceNum}${$iptRangedDamBonus}${$iptRangedDamType}</div>
 								</div>`.hide();
 
 								const $iptVersatileDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Number of Dice" min="1" value="1">`);
 								const $iptVersatileDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="8">`);
+								const $iptVersatileDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X">`);
 								const $iptVersatileDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Two-Handed Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageVersatile = $$`<div class="flex-col"><hr class="hr-3">
-								<div class="flex-v-center mb-2">${$iptVersatileDamDiceCount}<span class="mr-2">d</span>${$iptVersatileDamDiceNum}${$iptVersatileDamType}</div>
+								<div class="flex-v-center mb-2">${$iptVersatileDamDiceCount}<span class="mr-2">d</span>${$iptVersatileDamDiceNum}${$iptVersatileDamBonus}${$iptVersatileDamType}</div>
 								</div>`.hide();
 
 								const $iptBonusDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Number of Dice" min="1" value="1">`);
 								const $iptBonusDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="6">`);
+								const $iptBonusDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X">`);
 								const $iptBonusDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Bonus Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageBonusDamage = $$`<div class="flex-col"><hr class="hr-3">
-								<div class="flex-v-center mb-2">${$iptBonusDamDiceCount}<span class="mr-2">d</span>${$iptBonusDamDiceNum}${$iptBonusDamType}</div>
+								<div class="flex-v-center mb-2">${$iptBonusDamDiceCount}<span class="mr-2">d</span>${$iptBonusDamDiceNum}${$iptBonusDamBonus}${$iptBonusDamType}</div>
 								</div>`.hide();
 
 								const $btnConfirm = $(`<button class="btn btn-sm btn-default">Add</button>`)
@@ -2242,17 +2246,21 @@ class CreatureBuilder extends Builder {
 											iptMeleeRange: "5",
 											iptMeleeDamDiceCount: "1",
 											iptMeleeDamDiceNum: "6",
+											iptMeleeDamBonus: "",
 											iptMeleeDamType: "",
 											iptRangedShort: "",
 											iptRangedLong: "",
 											iptRangedDamDiceCount: "1",
 											iptRangedDamDiceNum: "6",
+											iptRangedDamBonus: "",
 											iptRangedDamType: "",
 											iptVersatileDamDiceCount: "1",
 											iptVersatileDamDiceNum: "8",
+											iptVersatileDamBonus: "",
 											iptVersatileDamType: "",
 											iptBonusDamDiceCount: "1",
 											iptBonusDamDiceNum: "6",
+											iptBonusDamBonus: "",
 											iptBonusDamType: ""
 										});
 									});
@@ -2276,18 +2284,19 @@ class CreatureBuilder extends Builder {
 										})() : null
 									].filter(Boolean).join(" or ");
 
-									const getDamageDicePt = ($iptNum, $iptFaces) => {
+									const getDamageDicePt = ($iptNum, $iptFaces, $iptBonus) => {
 										const num = Number($iptNum.val()) || 1;
 										const faces = Number($iptFaces.val()) || 6;
-										return `${Math.floor(num * ((faces + 1) / 2))} ({@damage ${num}d${faces}})`;
+										const bonusVal = UiUtil.strToInt($iptBonus.val(), null, {fallbackOnNaN: null});
+										return `${Math.floor(num * ((faces + 1) / 2)) + (bonusVal || 0)} ({@damage ${num}d${faces}${bonusVal != null ? ` ${UiUtil.intToBonus(bonusVal)}` : ``}})`;
 									};
 									const getDamageTypePt = ($ipDamType) => $ipDamType.val().trim() ? ` ${$ipDamType.val().trim()}` : "";
 									const ptDamage = [
-										$cbMelee.prop("checked") ? `${getDamageDicePt($iptMeleeDamDiceCount, $iptMeleeDamDiceNum)}${getDamageTypePt($iptMeleeDamType)} damage${$cbRanged.prop("checked") ? ` in melee` : ""}` : null,
-										$cbRanged.prop("checked") ? `${getDamageDicePt($iptRangedDamDiceCount, $iptRangedDamDiceNum)}${getDamageTypePt($iptRangedDamType)} damage${$cbMelee.prop("checked") ? ` at range` : ""}` : null,
-										$cbVersatile.prop("checked") ? `${getDamageDicePt($iptVersatileDamDiceCount, $iptVersatileDamDiceNum)}${getDamageTypePt($iptVersatileDamType)} damage if used with both hands` : null
+										$cbMelee.prop("checked") ? `${getDamageDicePt($iptMeleeDamDiceCount, $iptMeleeDamDiceNum, $iptMeleeDamBonus)}${getDamageTypePt($iptMeleeDamType)} damage${$cbRanged.prop("checked") ? ` in melee` : ""}` : null,
+										$cbRanged.prop("checked") ? `${getDamageDicePt($iptRangedDamDiceCount, $iptRangedDamDiceNum, $iptRangedDamBonus)}${getDamageTypePt($iptRangedDamType)} damage${$cbMelee.prop("checked") ? ` at range` : ""}` : null,
+										$cbVersatile.prop("checked") ? `${getDamageDicePt($iptVersatileDamDiceCount, $iptVersatileDamDiceNum, $iptVersatileDamBonus)}${getDamageTypePt($iptVersatileDamType)} damage if used with both hands` : null
 									].filter(Boolean).join(", or ");
-									const ptDamageFull = $cbBonusDamage.prop("checked") ? `${ptDamage}, plus ${getDamageDicePt($iptBonusDamDiceCount, $iptBonusDamDiceNum)}${getDamageTypePt($iptBonusDamType)} damage` : ptDamage;
+									const ptDamageFull = $cbBonusDamage.prop("checked") ? `${ptDamage}, plus ${getDamageDicePt($iptBonusDamDiceCount, $iptBonusDamDiceNum, $iptBonusDamBonus)}${getDamageTypePt($iptBonusDamType)} damage` : ptDamage;
 
 									return {
 										name: $iptName.val().trim() || "Unarmed Strike",
@@ -2307,17 +2316,21 @@ class CreatureBuilder extends Builder {
 									iptMeleeRange: $iptMeleeRange.val(),
 									iptMeleeDamDiceCount: $iptMeleeDamDiceCount.val(),
 									iptMeleeDamDiceNum: $iptMeleeDamDiceNum.val(),
+									iptMeleeDamBonus: $iptMeleeDamBonus.val(),
 									iptMeleeDamType: $iptMeleeDamType.val(),
 									iptRangedShort: $iptRangedShort.val(),
 									iptRangedLong: $iptRangedLong.val(),
 									iptRangedDamDiceCount: $iptRangedDamDiceCount.val(),
 									iptRangedDamDiceNum: $iptRangedDamDiceNum.val(),
+									iptRangedDamBonus: $iptRangedDamBonus.val(),
 									iptRangedDamType: $iptRangedDamType.val(),
 									iptVersatileDamDiceCount: $iptVersatileDamDiceCount.val(),
 									iptVersatileDamDiceNum: $iptVersatileDamDiceNum.val(),
+									iptVersatileDamBonus: $iptVersatileDamBonus.val(),
 									iptVersatileDamType: $iptVersatileDamType.val(),
 									iptBonusDamDiceCount: $iptBonusDamDiceCount.val(),
 									iptBonusDamDiceNum: $iptBonusDamDiceNum.val(),
+									iptBonusDamBonus: $iptBonusDamBonus.val(),
 									iptBonusDamType: $iptBonusDamType.val()
 								});
 
@@ -2331,17 +2344,21 @@ class CreatureBuilder extends Builder {
 									$iptMeleeRange.val(state.iptMeleeRange);
 									$iptMeleeDamDiceCount.val(state.iptMeleeDamDiceCount);
 									$iptMeleeDamDiceNum.val(state.iptMeleeDamDiceNum);
+									$iptMeleeDamBonus.val(state.iptMeleeDamBonus);
 									$iptMeleeDamType.val(state.iptMeleeDamType);
 									$iptRangedShort.val(state.iptRangedShort);
 									$iptRangedLong.val(state.iptRangedLong);
 									$iptRangedDamDiceCount.val(state.iptRangedDamDiceCount);
 									$iptRangedDamDiceNum.val(state.iptRangedDamDiceNum);
+									$iptRangedDamBonus.val(state.iptRangedDamBonus);
 									$iptRangedDamType.val(state.iptRangedDamType);
 									$iptVersatileDamDiceCount.val(state.iptVersatileDamDiceCount);
 									$iptVersatileDamDiceNum.val(state.iptVersatileDamDiceNum);
+									$iptVersatileDamBonus.val(state.iptVersatileDamBonus);
 									$iptVersatileDamType.val(state.iptVersatileDamType);
 									$iptBonusDamDiceCount.val(state.iptBonusDamDiceCount);
 									$iptBonusDamDiceNum.val(state.iptBonusDamDiceNum);
+									$iptBonusDamBonus.val(state.iptBonusDamBonus);
 									$iptBonusDamType.val(state.iptBonusDamType);
 								};
 

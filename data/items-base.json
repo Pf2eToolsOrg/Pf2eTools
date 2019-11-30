@@ -28,7 +28,8 @@
 			"value": 5,
 			"weight": 0.05,
 			"source": "PHB",
-			"page": 150
+			"page": 150,
+			"srd": true
 		},
 		{
 			"name": "Arrows (20)",
@@ -38,7 +39,8 @@
 			"weight": 1,
 			"source": "PHB",
 			"page": 150,
-			"quantity": 20
+			"quantity": 20,
+			"srd": true
 		},
 		{
 			"name": "Automatic Pistol",
@@ -125,7 +127,8 @@
 			"value": 2,
 			"weight": 0.02,
 			"source": "PHB",
-			"page": 150
+			"page": 150,
+			"srd": true
 		},
 		{
 			"name": "Blowgun Needles (50)",
@@ -135,7 +138,8 @@
 			"weight": 1,
 			"source": "PHB",
 			"page": 150,
-			"quantity": 50
+			"quantity": 50,
+			"srd": true
 		},
 		{
 			"name": "Breastplate",
@@ -204,7 +208,8 @@
 			"value": 5,
 			"weight": 0.075,
 			"source": "PHB",
-			"page": 150
+			"page": 150,
+			"srd": true
 		},
 		{
 			"name": "Crossbow Bolts (20)",
@@ -214,7 +219,8 @@
 			"weight": 1.5,
 			"source": "PHB",
 			"page": 150,
-			"quantity": 20
+			"quantity": 20,
+			"srd": true
 		},
 		{
 			"name": "Crystal",
@@ -224,7 +230,8 @@
 			"value": 1000,
 			"weight": 1,
 			"source": "PHB",
-			"page": 151
+			"page": 151,
+			"srd": true
 		},
 		{
 			"name": "Dagger",
@@ -278,35 +285,8 @@
 				"S",
 				"2H"
 			],
-			"source": "UAWGE",
-			"page": 74,
-			"entries": [
-				{
-					"type": "entries",
-					"name": "Special",
-					"entries": [
-						"When you take the attack action and make a two-handed attack with a double-bladed scimitar, you can use a bonus action to make a melee attack with the blade at the opposite end of the weapon. This attack uses the same ability modifier as the primary attack. The weapon's damage die for this attack is a d4, and it deals slashing damage."
-					]
-				}
-			]
-		},
-		{
-			"name": "Double-Bladed Scimitar",
-			"type": "M",
-			"weapon": true,
-			"sword": true,
-			"weaponCategory": "Martial",
-			"rarity": "None",
-			"value": 10000,
-			"weight": 6,
-			"dmg1": "{@dice 2d4}",
-			"dmgType": "S",
-			"property": [
-				"S",
-				"2H"
-			],
 			"source": "ERLW",
-			"page": 0,
+			"page": 21,
 			"entries": [
 				{
 					"type": "entries",
@@ -314,6 +294,12 @@
 					"entries": [
 						"If you attack with a double-bladed scimitar as part of the {@action Attack} action on your turn, you can use a bonus action immediately after to make a melee attack with it. This attack deals {@dice 1d4} slashing damage on a hit, instead of {@dice 2d4}."
 					]
+				}
+			],
+			"otherSources": [
+				{
+					"source": "UAWGE",
+					"page": 74
 				}
 			]
 		},
@@ -852,7 +838,8 @@
 			"value": 2500,
 			"weight": 3,
 			"source": "PHB",
-			"page": 151
+			"page": 151,
+			"srd": true
 		},
 		{
 			"name": "Padded Armor",
@@ -1012,7 +999,8 @@
 			"value": 1000,
 			"weight": 2,
 			"source": "PHB",
-			"page": 151
+			"page": 151,
+			"srd": true
 		},
 		{
 			"name": "Scale Mail",
@@ -1156,7 +1144,8 @@
 			"value": 0.2,
 			"weight": 0.075,
 			"source": "PHB",
-			"page": 150
+			"page": 150,
+			"srd": true
 		},
 		{
 			"name": "Sling Bullets (20)",
@@ -1166,7 +1155,8 @@
 			"weight": 1.5,
 			"source": "PHB",
 			"page": 150,
-			"quantity": 20
+			"quantity": 20,
+			"srd": true
 		},
 		{
 			"name": "Spear",
@@ -1227,7 +1217,8 @@
 			"weight": 4,
 			"source": "PHB",
 			"page": 151,
-			"staff": true
+			"staff": true,
+			"srd": true
 		},
 		{
 			"name": "Studded Leather Armor",
@@ -1270,7 +1261,8 @@
 			"value": 1000,
 			"weight": 1,
 			"source": "PHB",
-			"page": 151
+			"page": 151,
+			"srd": true
 		},
 		{
 			"name": "War Pick",

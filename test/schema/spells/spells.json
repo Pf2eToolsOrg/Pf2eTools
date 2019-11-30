@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "spells.json",
-	"version": "1.4.4",
+	"version": "1.4.5",
 	"title": "Spells",
 	"type": "object",
 
@@ -362,6 +362,9 @@
 						"type": "string",
 						"enum": ["PRM", "SCL", "HL", "SMN", "SGT"]
 					}
+				},
+				"srd": {
+					"$ref": "util.json#/definitions/srd"
 				}
 			},
 			"required": [

@@ -50,6 +50,7 @@ class NavBar {
 		addLi(ulRules, "book.html", "Volo's Guide to Monsters", {aHash: "VGM"});
 		addLi(ulRules, "book.html", "Xanathar's Guide to Everything", {aHash: "XGE"});
 		addLi(ulRules, "book.html", "Eberron: Rising from the Last War", {aHash: "ERLW"});
+		addLi(ulRules, "book.html", "Dungeons & Dragons vs. Rick and Morty: Basic Rules", {aHash: "RMR"});
 		addDivider(ulRules);
 		addLi(ulRules, "book.html", "Adventurers League", {aHash: "AL"});
 		addLi(ulRules, "book.html", "Sage Advice Compendium", {aHash: "SAC"});
@@ -100,9 +101,11 @@ class NavBar {
 		addLi(ulAdventures, "adventure.html", "Essentials Kit: Divine Contention", {isSide: true, aHash: "DC"});
 		addLi(ulAdventures, "adventure.html", "Baldur's Gate: Descent Into Avernus", {isSide: true, aHash: "BGDIA"});
 		addLi(ulAdventures, "adventure.html", "Locathah Rising", {isSide: true, aHash: "LR"});
+		addLi(ulAdventures, "adventure.html", "Eberron: Forgotten Relics", {isSide: true, aHash: "EFR"});
+		addLi(ulAdventures, "adventure.html", "Rick and Morty: Big Rick Energy", {isSide: true, aHash: "RMBRE"});
 		addDivider(ulAdventures);
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
-		addLi(ulDms, "cultsboons.html", "Cults & Demonic Boons");
+		addLi(ulDms, "cultsboons.html", "Cults & Supernatural Boons");
 		addLi(ulDms, "objects.html", "Objects");
 		addLi(ulDms, "trapshazards.html", "Traps & Hazards");
 		addDivider(ulDms);

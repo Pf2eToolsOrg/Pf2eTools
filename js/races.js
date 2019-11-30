@@ -177,6 +177,7 @@ class RacesPage extends ListPage {
 			],
 			umbrellaItems: ["Choose"]
 		});
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
 
 		super({
 			dataSource: async () => {
@@ -193,7 +194,8 @@ class RacesPage extends ListPage {
 				speedFilter,
 				traitFilter,
 				languageFilter,
-				baseRaceFilter
+				baseRaceFilter,
+				miscFilter
 			],
 			filterSource: sourceFilter,
 
@@ -223,12 +225,13 @@ class RacesPage extends ListPage {
 			if (race.ability.choose) race._fAbility.push("Player Choice");
 		} else race._fAbility = [];
 		race._fSpeed = race.speed.walk ? [race.speed.climb ? "Climb" : null, race.speed.fly ? "Fly" : null, race.speed.swim ? "Swim" : null, getSpeedRating(race.speed.walk)].filter(it => it) : getSpeedRating(race.speed);
-		race._fMisc = [
+		race._fTraits = [
 			race.darkvision === 120 ? "Superior Darkvision" : race.darkvision ? "Darkvision" : null,
 			race.hasSpellcasting ? "Spellcasting" : null
 		].filter(it => it).concat(race.traitTags || []);
 		race._fSources = ListUtil.getCompleteFilterSources(race);
 		race._fLangs = RacesPage.getLanguageProficiencyTags(race.languageProficiencies);
+		race._fMisc = race.srd ? ["SRD"] : [];
 
 		race._slAbility = ability.asTextShort;
 
@@ -285,9 +288,10 @@ class RacesPage extends ListPage {
 				r._fAbility,
 				r.size,
 				r._fSpeed,
-				r._fMisc,
+				r._fTraits,
 				r._fLangs,
-				r._baseName
+				r._baseName,
+				r._fMisc
 			);
 		});
 		FilterBox.selectFirstVisible(this._dataList);

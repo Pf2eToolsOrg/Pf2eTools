@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.13.2",
+	"version": "1.13.3",
 	"title": "Bestiary Schema",
 	"$id": "bestiary.json",
 	"type": "object",
@@ -997,6 +997,9 @@
 					"items": {
 						"$ref": "entry.json"
 					}
+				},
+				"srd": {
+					"$ref": "util.json#/definitions/srd"
 				}
 			},
 			"additionalProperties": false

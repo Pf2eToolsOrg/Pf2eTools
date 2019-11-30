@@ -30,6 +30,7 @@ const PANEL_TYP_INITIATIVE_TRACKER_PLAYER = 15;
 const PANEL_TYP_COUNTER = 16;
 const PANEL_TYP_IMAGE = 20;
 const PANEL_TYP_GENERIC_EMBED = 90;
+const PANEL_TYP_BLANK = 99;
 
 const TIME_TRACKER_MOON_SPRITE = new Image();
 const TIME_TRACKER_MOON_SPRITE_LOADER = new Promise(resolve => {
@@ -828,6 +829,10 @@ class Panel {
 					p.doPopulate_Image(saved.c.u, saved.r);
 					handleTabRenamed(p);
 					return p;
+				case PANEL_TYP_BLANK:
+					p.doPopulate_Blank(saved.r);
+					handleTabRenamed(p);
+					return p;
 				default:
 					throw new Error(`Unhandled panel type ${saved.t}`);
 			}
@@ -1230,6 +1235,17 @@ class Panel {
 			maxScale: 8,
 			duration: 100
 		});
+	}
+
+	doPopulate_Blank (title = "") {
+		const meta = {};
+		this.set$ContentTab(
+			PANEL_TYP_BLANK,
+			meta,
+			$(`<div/>`),
+			title,
+			true
+		);
 	}
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	getTopNeighbours () {
@@ -1953,6 +1969,8 @@ class Panel {
 							u: contentMeta.u
 						}
 					};
+				case PANEL_TYP_BLANK:
+					return {r: toSaveTitle};
 				default:
 					throw new Error(`Unhandled panel type ${this.type}`);
 			}
@@ -2579,7 +2597,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 
 	render () {
 		if (!this.$tab) {
-			const $tab = $(`<div class="ui-search__wrp-output underline-tabs" id="${this.tabId}"/>`);
+			const $tab = $(`<div class="ui-search__wrp-output underline-tabs overflow-y-auto pr-1" id="${this.tabId}"/>`);
 
 			const $wrpRoller = $(`<div class="ui-modal__row"><span>Dice Roller <i class="text-muted">(pins the existing dice roller to a panel)</i></span></div>`).appendTo($tab);
 			const $btnRoller = $(`<button class="btn btn-primary">Pin</button>`).appendTo($wrpRoller);
@@ -2646,6 +2664,16 @@ class AddMenuSpecialTab extends AddMenuTab {
 				this.menu.pnl.doPopulate_TimeTracker();
 				this.menu.doClose();
 			});
+
+			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
+
+			const $wrpBlank = $(`<div class="ui-modal__row"><span class="help" title="For those who don't like plus signs.">Blank Space</span></div>`).appendTo($tab);
+			$(`<button class="btn btn-primary">Add</button>`)
+				.on("click", () => {
+					this.menu.pnl.doPopulate_Blank();
+					this.menu.doClose();
+				})
+				.appendTo($wrpBlank);
 
 			this.$tab = $tab;
 		}

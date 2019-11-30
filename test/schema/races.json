@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.3.2",
+	"version": "1.3.3",
 	"type": "object",
 
 	"definitions": {
@@ -88,6 +88,9 @@
 							"overwrite": {
 								"description": "Map of 'property' -> true where 'property' is a property on the base race which should be overwritten by that of the subrace",
 								"type": "object"
+							},
+							"srd": {
+								"$ref": "util.json#/definitions/srd"
 							}
 						},
 						"additionalProperties": false
@@ -160,6 +163,9 @@
 							}
 						}
 					]
+				},
+				"srd": {
+					"$ref": "util.json#/definitions/srd"
 				}
 			},
 			"additionalProperties": false

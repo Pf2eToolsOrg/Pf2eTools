@@ -10,7 +10,6 @@ window.onload = function load () {
 	BookUtil.renderArea.append(Renderer.utils.getBorderTr());
 
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-	Omnisearch.addScrollTopFloat();
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };
 
@@ -23,6 +22,7 @@ function onJsonLoad (data) {
 	BookUtil.homebrewIndex = "book";
 	BookUtil.homebrewData = "bookData";
 	BookUtil.initLinkGrabbers();
+	BookUtil.initScrollTopFloat();
 
 	BookUtil.contentType = "book";
 

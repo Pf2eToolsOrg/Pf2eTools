@@ -4,7 +4,7 @@
 
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.2.15",
+	"version": "1.2.16",
 
 	"definitions" : {
 		"_arrayOfString": {
@@ -921,6 +921,9 @@
 						"maxWidth": {
 							"description": "Specify the max desired display width of the images, as opposed to \"width\" which should only be used for the _real_ width.",
 							"type": "integer"
+						},
+						"style": {
+							"enum": ["comic-speaker-left", "comic-speaker-right"]
 						}
 					},
 					"required": ["href"],

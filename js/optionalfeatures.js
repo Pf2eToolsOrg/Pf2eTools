@@ -224,16 +224,16 @@ class OptionalFeaturesPage extends ListPage {
 				if (i > 0) $wrpOptFeatType.append("/");
 				$(`<span class="roller">${Parser.optFeatureTypeToFull(ft).substring(commonPrefix.length)}</span>`)
 					.click(() => {
-						filterBox.setFromValues({"Feature Type": {[ft]: 1}});
-						handleFilterChange();
+						this._filterBox.setFromValues({"Feature Type": {[ft]: 1}});
+						this.handleFilterChange();
 					})
 					.appendTo($wrpOptFeatType);
 			});
 		} else {
 			$(`<span class="roller">${Parser.optFeatureTypeToFull(it.featureType)}</span>`)
 				.click(() => {
-					filterBox.setFromValues({"Feature Type": {[it.featureType]: 1}});
-					handleFilterChange();
+					this._filterBox.setFromValues({"Feature Type": {[it.featureType]: 1}});
+					this.handleFilterChange();
 				})
 				.appendTo($wrpOptFeatType);
 		}

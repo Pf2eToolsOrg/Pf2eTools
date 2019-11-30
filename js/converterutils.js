@@ -76,11 +76,13 @@ class AcConvert {
 	static tryPostProcessAc (m, cbMan, cbErr) {
 		let nuAc = [];
 		const basic = /^(\d+)( \((.*?)\))?$/.exec(m.ac.trim());
-		if (basic) {
-			if (basic[3]) {
-				const brak = basic[3];
+		const basicAlt = /^(\d+)( (.*?))?$/.exec(m.ac.trim());
+		if (basic || basicAlt) {
+			if ((basic && basic[3]) || (basicAlt && basicAlt[3])) {
+				const toUse = basic || basicAlt;
+				const brak = toUse[3];
 				let cur = {
-					ac: Number(basic[1])
+					ac: Number(toUse[1])
 				};
 
 				let nextPart = null;
@@ -293,8 +295,11 @@ class AcConvert {
 					nuAc.push(cur.ac);
 				}
 				if (nextPart) nuAc.push(nextPart)
-			} else {
+			} else if (basic) {
 				nuAc.push(Number(basic[1]));
+			} else {
+				if (cbErr) cbErr(m.ac, `${`${m.name} ${m.source} p${m.page}`.padEnd(48)} => ${m.ac}`);
+				nuAc.push(m.ac);
 			}
 		} else {
 			if (cbErr) cbErr(m.ac, `${`${m.name} ${m.source} p${m.page}`.padEnd(48)} => ${m.ac}`);
@@ -794,7 +799,7 @@ class SenseTag {
 				if (senseTags.size === 0) delete m.senseTags;
 				else m.senseTags = [...senseTags];
 			}
-		}
+		} else delete m.senseTags;
 	}
 }
 SenseTag.TAGS = {

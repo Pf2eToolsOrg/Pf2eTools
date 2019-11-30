@@ -3,12 +3,14 @@
 class ObjectsPage extends ListPage {
 	constructor () {
 		const sourceFilter = getSourceFilter();
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
 
 		super({
 			dataSource: "data/objects.json",
 
 			filters: [
-				sourceFilter
+				sourceFilter,
+				miscFilter
 			],
 			filterSource: sourceFilter,
 
@@ -24,6 +26,7 @@ class ObjectsPage extends ListPage {
 
 	getListItem (obj, obI) {
 		this._sourceFilter.addItem(obj.source);
+		obj._fMisc = obj.srd ? ["SRD"] : [];
 
 		const eleLi = document.createElement("li");
 		eleLi.className = "row";
@@ -62,7 +65,8 @@ class ObjectsPage extends ListPage {
 			const it = this._dataList[item.ix];
 			return this._filterBox.toDisplay(
 				f,
-				it.source
+				it.source,
+				it._fMisc
 			);
 		});
 		FilterBox.selectFirstVisible(this._dataList);

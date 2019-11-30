@@ -446,7 +446,8 @@
 					"traitTags": [
 						"Weapon Proficiency",
 						"Spellcasting"
-					]
+					],
+					"srd": true
 				},
 				{
 					"name": "Wood",
@@ -933,7 +934,7 @@
 						{
 							"name": "Valenar Weapon Training",
 							"entries": [
-								"A Valenar elf gains proficiency with the {@item scimitar|phb}, {@item Double-Bladed Scimitar|uawge|double scimitar}, {@item longbow|phb}, and {@item shortbow|phb}."
+								"A Valenar elf gains proficiency with the {@item scimitar|phb}, {@item Double-Bladed Scimitar|erlw|double scimitar}, {@item longbow|phb}, and {@item shortbow|phb}."
 							],
 							"type": "entries"
 						},
@@ -971,7 +972,7 @@
 						{
 							"name": "Valenar Weapon Training",
 							"entries": [
-								"A Valenar elf gains proficiency with the {@item scimitar|phb}, {@item Double-Bladed Scimitar|uawge|double scimitar}, {@item longbow|phb}, and {@item shortbow|phb}."
+								"A Valenar elf gains proficiency with the {@item scimitar|phb}, {@item Double-Bladed Scimitar|erlw|double scimitar}, {@item longbow|phb}, and {@item shortbow|phb}."
 							],
 							"type": "entries"
 						},
@@ -996,67 +997,14 @@
 				},
 				{
 					"name": "Mark of Shadow",
-					"source": "UAWGE",
-					"page": 105,
-					"ability": [
-						{
-							"cha": 1
-						}
-					],
-					"entries": [
-						{
-							"type": "entries",
-							"name": "Natural Talent",
-							"entries": [
-								"You gain proficiency with one musical instrument or the {@skill Performance} skill."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Gift of the Shadows",
-							"entries": [
-								"When you make a Charisma ({@skill Performance}) or Dexterity ({@skill Stealth}) check, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Shape Shadows",
-							"entries": [
-								"You know the {@spell minor illusion} cantrip. Charisma is your spellcasting ability for this spell."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Slip Into Shadow",
-							"entries": [
-								"You can use the {@action Hide} action as a bonus action, even if you have no cover or if you're under observation. Regardless of whether you succeed or fail, once you use this ability, you can't use it again until you finish a short or long rest."
-							]
-						}
-					],
-					"traitTags": [
-						"Spellcasting",
-						"Dragonmark",
-						"Skill Proficiency",
-						"Tool Proficiency"
-					],
-					"skillProficiencies": [
-						{
-							"choose": {
-								"from": [
-									"performance",
-									{
-										"tool": [
-											"musical instrument"
-										]
-									}
-								]
-							}
-						}
-					]
-				},
-				{
-					"name": "Mark of Shadow",
 					"source": "ERLW",
+					"page": 49,
+					"otherSources": [
+						{
+							"source": "UAWGE",
+							"page": 105
+						}
+					],
 					"ability": [
 						{
 							"cha": 1
@@ -1711,7 +1659,8 @@
 					],
 					"traitTags": [
 						"Tool Proficiency"
-					]
+					],
+					"srd": true
 				},
 				{
 					"name": "Deep",
@@ -1795,51 +1744,14 @@
 				},
 				{
 					"name": "Mark of Scribing",
-					"source": "UAWGE",
-					"page": 103,
-					"ability": [
-						{
-							"cha": 1
-						}
-					],
-					"entries": [
-						{
-							"type": "entries",
-							"name": "Gifted Scribe",
-							"entries": [
-								"You are proficient with {@item calligrapher's supplies|phb} and {@item forgery kit|phb|forgery kits}. When you make an ability check using either one of these tools, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Scribe's Insight",
-							"entries": [
-								"You can cast {@spell comprehend languages} once with this trait, and you regain the ability to do so when you finish a long rest. Intelligence is your spellcasting ability for it."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Whispering Wind",
-							"entries": [
-								"You know the cantrip {@spell message}. Intelligence is your spellcasting ability for this spell."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Extra Language",
-							"entries": [
-								"You can speak, read, and write one extra language of your choice."
-							]
-						}
-					],
-					"traitTags": [
-						"Spellcasting",
-						"Dragonmark"
-					]
-				},
-				{
-					"name": "Mark of Scribing",
 					"source": "ERLW",
+					"page": 47,
+					"otherSources": [
+						{
+							"source": "UAWGE",
+							"page": 103
+						}
+					],
 					"ability": [
 						{
 							"cha": 1
@@ -2060,7 +1972,8 @@
 					"common": true,
 					"draconic": true
 				}
-			]
+			],
+			"srd": true
 		},
 		{
 			"name": "Goliath",
@@ -2229,7 +2142,9 @@
 				}
 			],
 			"subraces": [
-				{},
+				{
+					"srd": true
+				},
 				{
 					"name": "Wood Elf Descent",
 					"source": "SCAG",
@@ -2541,72 +2456,14 @@
 				},
 				{
 					"name": "Mark of Detection",
-					"speed": 30,
-					"source": "UAWGE",
-					"page": 96,
-					"ability": [
-						{
-							"cha": 1,
-							"int": 1,
-							"choose": {
-								"from": [
-									"str",
-									"dex",
-									"con",
-									"int",
-									"wis",
-									"cha"
-								],
-								"count": 1
-							}
-						}
-					],
-					"entries": [
-						{
-							"type": "entries",
-							"name": "Deductive Intuition",
-							"entries": [
-								"When you make an Intelligence ({@skill Investigation}) or Wisdom ({@skill Insight}) check, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
-							],
-							"data": {
-								"overwrite": "Skill Versatility"
-							}
-						},
-						{
-							"type": "entries",
-							"name": "Sense Threats",
-							"entries": [
-								"You can cast the {@spell detect magic} and {@spell detect poison and disease} spells, but only as rituals. Intelligence is your spellcasting ability for these spells."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Languages",
-							"entries": [
-								"You can speak, read, and write Common and Elvish."
-							],
-							"data": {
-								"overwrite": "Languages"
-							}
-						}
-					],
-					"traitTags": [
-						"Spellcasting",
-						"Dragonmark"
-					],
-					"overwrite": {
-						"languageProficiencies": true
-					},
-					"languageProficiencies": [
-						{
-							"common": true,
-							"elvish": true
-						}
-					]
-				},
-				{
-					"name": "Mark of Detection",
 					"source": "ERLW",
+					"page": 40,
+					"otherSources": [
+						{
+							"source": "UAWGE",
+							"page": 96
+						}
+					],
 					"ability": [
 						{
 							"wis": 2,
@@ -2692,90 +2549,14 @@
 				},
 				{
 					"name": "Mark of Storm",
-					"speed": {
-						"walk": 30,
-						"swim": 30
-					},
-					"source": "UAWGE",
-					"page": 106,
-					"ability": [
-						{
-							"cha": 1,
-							"dex": 1,
-							"choose": {
-								"from": [
-									"str",
-									"dex",
-									"con",
-									"int",
-									"wis",
-									"cha"
-								],
-								"count": 1
-							}
-						}
-					],
-					"entries": [
-						{
-							"type": "entries",
-							"name": "Sea Monkey",
-							"entries": [
-								"You have a swimming speed of 30 feet."
-							],
-							"data": {
-								"overwrite": "Skill Versatility"
-							}
-						},
-						{
-							"type": "entries",
-							"name": "Windwright's Intuition",
-							"entries": [
-								"When you make a Dexterity ({@skill Acrobatics}) check or any ability check involving operating or maintaining a water or air vehicle, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Storm's Blessing",
-							"entries": [
-								"You have resistance to lightning damage."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Headwinds",
-							"entries": [
-								"You know the {@spell gust|xge} cantrip. When you reach 3rd level, you can cast the {@spell gust of wind} spell once with this trait and regain the ability to do so when you finish a long rest."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Languages",
-							"entries": [
-								"You can speak, read, and write Common and Elvish."
-							],
-							"data": {
-								"overwrite": "Languages"
-							}
-						}
-					],
-					"traitTags": [
-						"Damage Resistance",
-						"Spellcasting",
-						"Dragonmark"
-					],
-					"overwrite": {
-						"languageProficiencies": true
-					},
-					"languageProficiencies": [
-						{
-							"common": true,
-							"elvish": true
-						}
-					]
-				},
-				{
-					"name": "Mark of Storm",
 					"source": "ERLW",
+					"page": 50,
+					"otherSources": [
+						{
+							"source": "UAWGE",
+							"page": 106
+						}
+					],
 					"ability": [
 						{
 							"cha": 2,
@@ -2987,84 +2768,19 @@
 							"common": true,
 							"orc": true
 						}
-					]
-				},
-				{
-					"name": "Mark of Finding",
-					"source": "UAWGE",
-					"page": 98,
-					"ability": [
-						{
-							"str": 1,
-							"wis": 1,
-							"choose": {
-								"from": [
-									"str",
-									"dex",
-									"con",
-									"int",
-									"wis",
-									"cha"
-								],
-								"count": 1
-							}
-						}
 					],
-					"overwrite": {
-						"ability": true
-					},
-					"darkvision": 60,
-					"entries": [
-						{
-							"name": "Darkvision",
-							"entries": [
-								"Thanks to your orc blood, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Hunter's Intuition",
-							"entries": [
-								"Your mark sharpens your senses and helps you find your prey. When you make a Wisdom ({@skill Perception}) or Wisdom ({@skill Survival}) check, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Imprint Prey",
-							"entries": [
-								"As a bonus action, choose one creature you can see within 30 feet of you. The target is imprinted in your mind until it dies or you use this trait again. Alternatively, you can imprint a creature as your quarry whenever you succeed on a Wisdom ({@skill Survival}) check to track it. When tracking your quarry, double the result of your Intuition die. When your quarry is within 60 feet of you, you have a sense of its location: it can't be hidden from you, gains no benefit from invisibility, and your attacks against it ignore half cover. Once you use this trait, you cannot use it again until you finish a short or long rest."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Nature's Voice",
-							"entries": [
-								"When you reach 3rd level you gain the ability to cast {@spell locate animals or plants}, but only as a ritual."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Languages",
-							"entries": [
-								"You can speak, read, and write Common and Goblin."
-							],
-							"type": "entries"
-						}
-					],
-					"traitTags": [
-						"Spellcasting",
-						"Dragonmark"
-					],
-					"languageProficiencies": [
-						{
-							"common": true,
-							"goblin": true
-						}
-					]
+					"srd": true
 				},
 				{
 					"name": "Mark of Finding",
 					"source": "ERLW",
+					"page": 41,
+					"otherSources": [
+						{
+							"source": "UAWGE",
+							"page": 98
+						}
+					],
 					"ability": [
 						{
 							"con": 1,
@@ -3263,7 +2979,8 @@
 							],
 							"type": "entries"
 						}
-					]
+					],
+					"srd": true
 				},
 				{
 					"name": "Mountain",
@@ -3364,38 +3081,14 @@
 				},
 				{
 					"name": "Mark of Warding",
-					"source": "UAWGE",
-					"page": 108,
-					"ability": [
-						{
-							"dex": 1,
-							"int": 1
-						}
-					],
-					"entries": [
-						{
-							"type": "entries",
-							"name": "Master of Locks",
-							"entries": [
-								"When you make an Intelligence ({@skill History}), Intelligence ({@skill Investigation}), or {@item Thieves' tools|phb} check involving lock and trap mechanisms, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Wards and Seals",
-							"entries": [
-								"You can use your mark to cast the {@spell alarm} spell as a ritual. Starting at 3rd level you can cast {@spell arcane lock} once with this trait and you regain the ability to do so when you finish a long rest. Intelligence is your spellcasting ability for these spells."
-							]
-						}
-					],
-					"traitTags": [
-						"Spellcasting",
-						"Dragonmark"
-					]
-				},
-				{
-					"name": "Mark of Warding",
 					"source": "ERLW",
+					"page": 51,
+					"otherSources": [
+						{
+							"source": "UAWGE",
+							"page": 108
+						}
+					],
 					"ability": [
 						{
 							"int": 1
@@ -3525,7 +3218,8 @@
 							"wis": 1,
 							"cha": 1
 						}
-					]
+					],
+					"srd": true
 				},
 				{
 					"name": "Variant",
@@ -3544,6 +3238,7 @@
 							}
 						}
 					],
+					"srd": true,
 					"entries": [
 						{
 							"name": "Skills",
@@ -3588,217 +3283,6 @@
 								]
 							}
 						}
-					]
-				},
-				{
-					"name": "Mark of Handling",
-					"source": "UAWGE",
-					"page": 98,
-					"ability": [
-						{
-							"dex": 1,
-							"wis": 1,
-							"choose": {
-								"from": [
-									"str",
-									"dex",
-									"con",
-									"int",
-									"wis",
-									"cha"
-								],
-								"count": 1
-							}
-						}
-					],
-					"entries": [
-						{
-							"name": "Wild Intuition",
-							"entries": [
-								"When you make a Wisdom ({@skill Animal Handling}) or Intelligence ({@skill Nature}) check, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Expert Handling",
-							"entries": [
-								"You can use the {@action Help} action to aid an ally animal companion or mount within 30 feet of you, rather than 5 feet of you."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Primal Connection",
-							"entries": [
-								"You can cast {@spell animal friendship} once with this trait and regain the ability to do so when you finish a short or long rest. Wisdom is your spellcasting ability for this spell."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "The Bigger They Are",
-							"entries": [
-								"When you cast a spell that affects only beasts, it also affects monstrosities with an Intelligence score of 3 or lower."
-							],
-							"type": "entries"
-						}
-					],
-					"traitTags": [
-						"Spellcasting",
-						"Dragonmark"
-					]
-				},
-				{
-					"name": "Mark of Making",
-					"source": "UAWGE",
-					"page": 101,
-					"ability": [
-						{
-							"int": 1,
-							"dex": 1,
-							"choose": {
-								"from": [
-									"dex",
-									"int"
-								],
-								"count": 1
-							}
-						}
-					],
-					"entries": [
-						{
-							"name": "Artisan's Intuition",
-							"entries": [
-								"When you make an ability check with artisan's tools, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Maker's Gift",
-							"entries": [
-								"You know the cantrip {@spell mending} and gain proficiency with one type of {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan tool}."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Magecraft",
-							"entries": [
-								"You can create a temporary magic item out of common materials. Choose a cantrip from the {@filter wizard spell list|spells|class=wizard|level=0}. Describe the item connected to it. As long as you possess the item, you know that cantrip. At the end of a long rest, you can replace it with a new item and select a new cantrip from the wizard spell list. Intelligence is your spellcasting ability for these cantrips."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Spellsmith",
-							"entries": [
-								"You can spend one minute to weave a temporary enchantment into a nonmagical suit of armor or weapon. For the next hour the object becomes a magic item, gaining a +1 bonus to AC if it is armor or a +1 bonus to hit and damage if it is a weapon. Once you use this trait, you can't use it again until you finish a long rest."
-							],
-							"type": "entries"
-						}
-					],
-					"traitTags": [
-						"Spellcasting",
-						"Dragonmark"
-					]
-				},
-				{
-					"name": "Mark of Passage",
-					"source": "UAWGE",
-					"page": 102,
-					"speed": 40,
-					"ability": [
-						{
-							"dex": 2,
-							"choose": {
-								"from": [
-									"str",
-									"con",
-									"int",
-									"wis",
-									"cha"
-								],
-								"count": 1
-							}
-						}
-					],
-					"entries": [
-						{
-							"name": "Courier's Speed",
-							"entries": [
-								"Your base walking speed increases to 40 ft."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Intuitive Motion",
-							"entries": [
-								"When you make a Strength ({@skill Athletics}) check or any ability check to operate or maintain a land vehicle, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Determined Stride",
-							"entries": [
-								"When you use the {@action Dash} action, difficult terrain doesn't cost you extra movement on that turn."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Shared Passage",
-							"entries": [
-								"As a bonus action you can teleport a distance up to your walking speed, ending in an unoccupied space that you can see. You can bring one willing creature of your size or smaller who is carrying gear up to its carrying capacity. The creature must be within 5 feet of you when you use this trait. Once you use this trait, you can't use it again until you finish a long rest."
-							],
-							"type": "entries"
-						}
-					],
-					"traitTags": [
-						"Dragonmark"
-					]
-				},
-				{
-					"name": "Mark of Sentinel",
-					"source": "UAWGE",
-					"page": 104,
-					"ability": [
-						{
-							"str": 1,
-							"wis": 1,
-							"choose": {
-								"from": [
-									"str",
-									"dex",
-									"con",
-									"int",
-									"wis",
-									"cha"
-								],
-								"count": 1
-							}
-						}
-					],
-					"entries": [
-						{
-							"name": "Sentinel's Intuition",
-							"entries": [
-								"When you roll for Initiative or make a Wisdom ({@skill Perception}) check to notice a threat, you can roll one Intuition die, a {@dice d4}, and add it to the ability check."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Sentinel's Shield",
-							"entries": [
-								"You know the cantrip {@spell blade ward}. You can cast {@spell shield} once with this trait and regain the ability to do so after you finish a short or long rest."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Vigilant Guardian",
-							"entries": [
-								"As an action, you can designate an ally you can see as your ward. You have advantage on Wisdom ({@skill Insight}) and Wisdom ({@skill Perception}) checks made to spot threats to your ward. In addition, when you are within 5 feet of your ward, and that creature is the target of an attack that you can see, you can use your reaction to swap places with your ward. When you do, you become the target of the attack."
-							],
-							"type": "entries"
-						}
-					],
-					"traitTags": [
-						"Dragonmark",
-						"Spellcasting"
 					]
 				},
 				{
@@ -3895,6 +3379,7 @@
 				{
 					"name": "Mark of Finding",
 					"source": "ERLW",
+					"page": 41,
 					"ability": [
 						{
 							"con": 1,
@@ -3994,6 +3479,13 @@
 				{
 					"name": "Mark of Handling",
 					"source": "ERLW",
+					"page": 42,
+					"otherSources": [
+						{
+							"source": "UAWGE",
+							"page": 98
+						}
+					],
 					"ability": [
 						{
 							"wis": 2,
@@ -4081,6 +3573,13 @@
 				{
 					"name": "Mark of Making",
 					"source": "ERLW",
+					"page": 45,
+					"otherSources": [
+						{
+							"source": "UAWGE",
+							"page": 101
+						}
+					],
 					"ability": [
 						{
 							"int": 2,
@@ -4089,7 +3588,7 @@
 									"str",
 									"dex",
 									"con",
-									"int",
+									"wis",
 									"cha"
 								],
 								"count": 1
@@ -4173,6 +3672,13 @@
 				{
 					"name": "Mark of Passage",
 					"source": "ERLW",
+					"page": 46,
+					"otherSources": [
+						{
+							"source": "UAWGE",
+							"page": 102
+						}
+					],
 					"speed": 35,
 					"ability": [
 						{
@@ -4180,9 +3686,9 @@
 							"choose": {
 								"from": [
 									"str",
-									"dex",
 									"con",
 									"int",
+									"wis",
 									"cha"
 								],
 								"count": 1
@@ -4261,6 +3767,13 @@
 				{
 					"name": "Mark of Sentinel",
 					"source": "ERLW",
+					"page": 48,
+					"otherSources": [
+						{
+							"source": "UAWGE",
+							"page": 104
+						}
+					],
 					"ability": [
 						{
 							"con": 2,
@@ -4423,7 +3936,8 @@
 							],
 							"type": "entries"
 						}
-					]
+					],
+					"srd": true
 				},
 				{
 					"name": "Stout",
@@ -4466,43 +3980,14 @@
 				},
 				{
 					"name": "Mark of Healing",
-					"source": "UAWGE",
-					"page": 99,
-					"ability": [
-						{
-							"wis": 1
-						}
-					],
-					"entries": [
-						{
-							"name": "Medical Intuition",
-							"entries": [
-								"When you make a Wisdom ({@skill Medicine}) check, you can roll one Intuition die, a {@dice d4}, and add the number rolled to the ability check."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Healing Touch",
-							"entries": [
-								"As an action, you can draw power from your dragonmark to spend one of your Hit Dice and revitalize yourself or a creature you touch. Roll the die, add your Wisdom modifier, and the creature regains a number of hit points equal to the total. Once you use this trait, you can't use it again until you finish a short or long rest."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Jorasco's Blessing",
-							"entries": [
-								"You know the cantrip {@spell spare the dying}. Charisma is your spellcasting ability for this."
-							],
-							"type": "entries"
-						}
-					],
-					"traitTags": [
-						"Dragonmark"
-					]
-				},
-				{
-					"name": "Mark of Healing",
 					"source": "ERLW",
+					"page": 43,
+					"otherSources": [
+						{
+							"source": "UAWGE",
+							"page": 99
+						}
+					],
 					"ability": [
 						{
 							"wis": 1
@@ -4572,37 +4057,14 @@
 				},
 				{
 					"name": "Mark of Hospitality",
-					"source": "UAWGE",
-					"page": 100,
-					"ability": [
-						{
-							"cha": 1
-						}
-					],
-					"entries": [
-						{
-							"name": "Innkeeper's Charms",
-							"entries": [
-								"You know the cantrips {@spell friends} and {@spell prestidigitation}. Charisma is your spellcasting ability for these spells."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Ever Hospitable",
-							"entries": [
-								"When you make a Charisma ({@skill Persuasion}) check or an ability check involving {@item brewer's supplies|phb} or {@item cook's utensils|phb}, you can roll one Intuition die (a {@dice d4}) and add the number rolled to the ability check."
-							],
-							"type": "entries"
-						}
-					],
-					"traitTags": [
-						"Spellcasting",
-						"Dragonmark"
-					]
-				},
-				{
-					"name": "Mark of Hospitality",
 					"source": "ERLW",
+					"page": 44,
+					"otherSources": [
+						{
+							"source": "UAWGE",
+							"page": 100
+						}
+					],
 					"ability": [
 						{
 							"cha": 1
@@ -4620,7 +4082,7 @@
 							"type": "entries",
 							"name": "Innkeeper's Magic",
 							"entries": [
-								"You know the {@spell prestidigitation} cantrip. You can also cast the {@spell purify food and drink} and {@spell unseen servant} spells with this trait. Once you cast either spell with this trait, you can't cast that spell with it again until you finish long rest.Charisma is your spellcasting ability for these spells."
+								"You know the {@spell prestidigitation} cantrip. You can also cast the {@spell purify food and drink} and {@spell unseen servant} spells with this trait. Once you cast either spell with this trait, you can't cast that spell with it again until you finish long rest. Charisma is your spellcasting ability for these spells."
 							]
 						},
 						{
@@ -4910,7 +4372,8 @@
 					],
 					"traitTags": [
 						"Spellcasting"
-					]
+					],
+					"srd": true
 				},
 				{
 					"name": "Variant",
@@ -5591,7 +5054,7 @@
 				{},
 				{
 					"source": "ERLW",
-					"page": 0,
+					"page": 25,
 					"entries": [
 						{
 							"type": "entries",
@@ -5983,7 +5446,7 @@
 				},
 				{
 					"source": "ERLW",
-					"page": 0,
+					"page": 26,
 					"entries": [
 						{
 							"name": "Alignment",
@@ -6083,7 +5546,7 @@
 				{},
 				{
 					"source": "ERLW",
-					"page": 0,
+					"page": 26,
 					"entries": [
 						{
 							"type": "entries",
@@ -6487,7 +5950,7 @@
 				{},
 				{
 					"source": "ERLW",
-					"page": 0,
+					"page": 31,
 					"ability": [
 						{
 							"str": 2,
@@ -10671,222 +10134,19 @@
 			]
 		},
 		{
-			"name": "Changeling",
-			"source": "UAWGE",
-			"page": 60,
-			"otherSources": [
-				{
-					"source": "UARacesOfEberron",
-					"page": 1
-				}
-			],
-			"ability": [
-				{
-					"cha": 2,
-					"choose": {
-						"from": [
-							"int",
-							"dex"
-						],
-						"count": 1
-					}
-				}
-			],
-			"size": "M",
-			"speed": 30,
-			"entries": [
-				{
-					"name": "Age",
-					"entries": [
-						"Changelings mature slightly faster than humans but share a similar lifespan\u2014typically a century or less. While a changeling can shapeshift to conceal their age, the effects of aging still catch up to them."
-					],
-					"type": "entries"
-				},
-				{
-					"type": "entries",
-					"name": "Alignment",
-					"entries": [
-						"Changelings hate to be bound in any way, and those who follow the path of the Traveler believe that chaos and change are important aspects of life. Most tend toward pragmatic neutrality as opposed to being concerned with lofty ideals. Few changelings embrace evil."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Size",
-					"entries": [
-						"In their natural forms, changelings average between 5 and 6 feet in height, with a slender build. Your size is Medium."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Change Appearance",
-					"entries": [
-						"As an action, you can transform your appearance or revert to your natural form. You can't duplicate the appearance of a creature you've never seen, and you revert to your natural form if you die.",
-						"You decide what you look like, including your height, weight, facial features, the sound of your voice, coloration, hair length, sex, and any other distinguishing characteristics. You can make yourself appear as a member of another race, though none of your game statistics change. You also can't appear as a creature of a different size than you, and your basic shape stays the same; if you're bipedal, you can't use this trait to become quadrupedal, for instance. Your clothing and other equipment don't change in appearance, size, or shape to match your new form, requiring you to keep a few extra outfits on hand to make the most compelling disguise possible.",
-						"Even to the most astute observers, your ruse is usually indiscernible. If you rouse suspicion, or if a wary creature suspects something is amiss, you have advantage on any Charisma ({@skill Deception}) check you make to avoid detection."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Changeling Instincts",
-					"entries": [
-						"You gain proficiency with two of the following skills of your choice: {@skill Deception}, {@skill Insight}, {@skill Intimidation}, or {@skill Persuasion}"
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Unsettling Visage",
-					"entries": [
-						"When a creature you can see makes an attack roll against you, you can use your reaction to impose disadvantage on the roll. You must use this feature before knowing whether the attack hits or misses. Using this trait reveals your shapeshifting nature to any creature within 30 feet that can see you. Once you use this trait, you can't use it again until you finish a short or long rest."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Divergent Persona",
-					"entries": [
-						"You gain proficiency with one {@book tool|phb|5|tools} of your choice. Define a persona associated with that proficiency: establish the name, race, gender, age, and other details. While you are in the form of this persona, the related proficiency bonus is doubled for any ability check you make that uses that proficiency."
-					]
-				},
-				{
-					"name": "Languages",
-					"entries": [
-						"You can speak, read, and write Common and two other languages of your choice."
-					],
-					"type": "entries"
-				}
-			],
-			"traitTags": [
-				"Skill Proficiency",
-				"Tool Proficiency"
-			],
-			"skillProficiencies": [
-				{
-					"choose": {
-						"from": [
-							"deception",
-							"insight",
-							"intimidation",
-							"persuasion"
-						],
-						"count": 2
-					}
-				}
-			],
-			"languageProficiencies": [
-				{
-					"common": true,
-					"anyStandard": 2
-				}
-			]
-		},
-		{
 			"name": "Kalashtar",
-			"source": "UAWGE",
+			"source": "ERLW",
+			"page": 29,
 			"otherSources": [
+				{
+					"source": "UAWGE",
+					"page": 62
+				},
 				{
 					"source": "UARacesOfEberron",
 					"page": 3
 				}
 			],
-			"page": 62,
-			"ability": [
-				{
-					"cha": 1,
-					"wis": 1,
-					"choose": {
-						"from": [
-							"str",
-							"dex",
-							"con",
-							"int",
-							"wis",
-							"cha"
-						],
-						"count": 1
-					}
-				}
-			],
-			"size": "M",
-			"speed": 30,
-			"entries": [
-				{
-					"name": "Age",
-					"entries": [
-						"Kalashtar develop physically at the same rate as humans do and have similar lifespans."
-					],
-					"type": "entries"
-				},
-				{
-					"type": "entries",
-					"name": "Alignment",
-					"entries": [
-						"The noble spirit tied to a kalashtar drives it toward lawful and good behavior. Most kalashtar combine self-discipline with compassion for all sentient beings, but some kalashtar resist the virtuous influence of their spirit."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Size",
-					"entries": [
-						"Kalashtar are similar in build to humans, though they are typically a few inches taller. Your size is Medium."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Dual Mind",
-					"entries": [
-						"When you make a Wisdom saving throw, you can use your reaction to gain advantage on the roll. You can use this trait immediately before or after you roll, but before any of the roll's effects occur."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Mental Discipline",
-					"entries": [
-						"You have resistance to psychic damage."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Mind Link",
-					"entries": [
-						"You can speak telepathically to any creature you can see within 60 feet of you. You don't need to share a language with the creature for it to understand your telepathic messages, but the creature must be able to understand at least one language or be telepathic itself.",
-						"As a bonus action when you're speaking telepathically to a creature, you can give that creature the ability to speak telepathically to you until the start of your next turn. To use this ability, the creature must be within 60 feet of you and able to see you."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Psychic Glamour",
-					"entries": [
-						"Choose one of the following skills: {@skill Insight}, {@skill Intimidation}, {@skill Performance}, or {@skill Persuasion}. You have advantage on all ability checks you make with that skill."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Severed from Dreams",
-					"entries": [
-						"Kalashtar sleep, but they don't connect to the plane of dreams as other creatures do. Instead, their minds draw from the memories of their otherworldly spirit while they sleep. As such, you are immune to spells and other magical effects that require you to dream, like the dream spell, but not to spells and effects that put you to sleep, like the sleep spell."
-					]
-				},
-				{
-					"name": "Languages",
-					"entries": [
-						"You can speak, read, and write Common, Quori, and one other language of your choice."
-					],
-					"type": "entries"
-				}
-			],
-			"traitTags": [
-				"Damage Resistance"
-			],
-			"languageProficiencies": [
-				{
-					"common": true,
-					"other": true,
-					"anyStandard": 1
-				}
-			]
-		},
-		{
-			"name": "Kalashtar",
-			"source": "ERLW",
 			"ability": [
 				{
 					"wis": 2,
@@ -10970,243 +10230,18 @@
 		},
 		{
 			"name": "Shifter",
-			"source": "UAWGE",
-			"page": 64,
+			"source": "ERLW",
+			"page": 33,
 			"otherSources": [
+				{
+					"source": "UAWGE",
+					"page": 64
+				},
 				{
 					"source": "UARacesOfEberron",
 					"page": 4
 				}
 			],
-			"ability": [
-				{
-					"dex": 1
-				}
-			],
-			"size": "M",
-			"speed": 30,
-			"darkvision": 60,
-			"entries": [
-				{
-					"name": "Age",
-					"entries": [
-						"Shifters are quick to mature both physically and emotionally, reaching young adulthood at age 10. They rarely live to be more than 70 years old."
-					],
-					"type": "entries"
-				},
-				{
-					"type": "entries",
-					"name": "Alignment",
-					"entries": [
-						"Shifters tend toward neutrality, being more focused on survival than concepts of good and evil. A love of personal freedom can drive shifters toward chaotic alignments."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Size",
-					"entries": [
-						"Shifters range from 5 to almost 7 feet tall, depending on their subrace. Your size is Medium."
-					]
-				},
-				{
-					"name": "Darkvision",
-					"entries": [
-						"You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
-					],
-					"type": "entries"
-				},
-				{
-					"type": "entries",
-					"name": "Keen Senses",
-					"entries": [
-						"You have proficiency with the {@skill Perception} skill."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Shifting",
-					"entries": [
-						"As a bonus action, you can assume a more bestial appearance. This transformation lasts for 1 minute, until you die, or until you revert to your normal appearance as a bonus action. When you shift, you gain temporary hit points equal to your level + your Constitution modifier (minimum of 1 temporary hit point). You also gain additional benefits that depend on your shifter subrace, described below.",
-						"Once you shift, you can't do so again until you finish a short or long rest."
-					]
-				},
-				{
-					"name": "Languages",
-					"entries": [
-						"You can speak, read, and write Common."
-					],
-					"type": "entries"
-				}
-			],
-			"traitTags": [
-				"Skill Proficiency"
-			],
-			"subraces": [
-				{
-					"name": "Beasthide",
-					"ability": [
-						{
-							"con": 2
-						}
-					],
-					"page": 66,
-					"entries": [
-						{
-							"type": "entries",
-							"name": "Tough",
-							"entries": [
-								"You have proficiency with the {@skill Athletics} skill."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Shifting Feature",
-							"entries": [
-								"Whenever you shift, you gain {@dice 1d6} additional temporary hit points, and while shifted, you have a +1 bonus to your AC."
-							]
-						}
-					],
-					"traitTags": [
-						"Skill Proficiency",
-						"Natural Armor"
-					],
-					"skillProficiencies": [
-						{
-							"athletics": true
-						}
-					]
-				},
-				{
-					"name": "Longtooth",
-					"ability": [
-						{
-							"str": 2
-						}
-					],
-					"page": 66,
-					"entries": [
-						{
-							"type": "entries",
-							"name": "Fierce",
-							"entries": [
-								"You have proficiency with the {@skill Intimidation} skill."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Shifting Feature",
-							"entries": [
-								"While shifted, you can use your elongated fangs to make an unarmed strike as a bonus action. If you hit with your fangs, you can deal piercing damage equal to {@dice 1d6} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
-							]
-						}
-					],
-					"traitTags": [
-						"Skill Proficiency",
-						"Unarmed Strike"
-					],
-					"skillProficiencies": [
-						{
-							"intimidation": true
-						}
-					]
-				},
-				{
-					"name": "Swiftstride",
-					"ability": [
-						{
-							"dex": 2,
-							"cha": 1
-						}
-					],
-					"page": 66,
-					"speed": 35,
-					"entries": [
-						{
-							"type": "entries",
-							"name": "Graceful",
-							"entries": [
-								"You have proficiency with the {@skill Acrobatics} skill."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Swift Stride",
-							"entries": [
-								"Your walking speed increases by 5 feet."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Shifting Feature",
-							"entries": [
-								"While shifted, your walking speed increases by 5 feet. Additionally, you can move up to 10 feet as a reaction when an enemy ends its turn within 5 feet of you. This movement doesn't provoke opportunity attacks."
-							]
-						}
-					],
-					"traitTags": [
-						"Skill Proficiency"
-					],
-					"skillProficiencies": [
-						{
-							"acrobatics": true
-						}
-					]
-				},
-				{
-					"name": "Wildhunt",
-					"ability": [
-						{
-							"wis": 2
-						}
-					],
-					"page": 66,
-					"entries": [
-						{
-							"type": "entries",
-							"name": "Natural Tracker",
-							"entries": [
-								"You have proficiency with the {@skill Survival} skill."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Mark the Scent",
-							"entries": [
-								"As a bonus action, you can mark one creature you can see within 10 feet of you. Until the end of your next long rest, your proficiency bonus is doubled for any ability check you make to find the marked creature, and you always know the location of that creature if it is within 60 feet of you. You can't use this trait again until you finish a short or long rest."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Shifting Feature",
-							"entries": [
-								"While shifted, you have advantage on Wisdom checks."
-							]
-						}
-					],
-					"traitTags": [
-						"Skill Proficiency"
-					],
-					"skillProficiencies": [
-						{
-							"survival": true
-						}
-					]
-				}
-			],
-			"skillProficiencies": [
-				{
-					"perception": true
-				}
-			],
-			"languageProficiencies": [
-				{
-					"common": true
-				}
-			]
-		},
-		{
-			"name": "Shifter",
-			"source": "ERLW",
 			"size": "M",
 			"speed": 30,
 			"darkvision": 60,
@@ -11342,7 +10377,6 @@
 							"cha": 1
 						}
 					],
-					"speed": 35,
 					"entries": [
 						{
 							"type": "entries",
@@ -11410,261 +10444,18 @@
 		},
 		{
 			"name": "Warforged",
-			"source": "UAWGE",
-			"page": 67,
+			"source": "ERLW",
+			"page": 35,
 			"otherSources": [
+				{
+					"source": "UAWGE",
+					"page": 67
+				},
 				{
 					"source": "UARacesOfEberron",
 					"page": 7
 				}
 			],
-			"ability": [
-				{
-					"con": 1
-				}
-			],
-			"size": "M",
-			"speed": 30,
-			"entries": [
-				{
-					"name": "Age",
-					"entries": [
-						"A typical warforged is between two and thirty years old. The maximum lifespan of the warforged remains a mystery; so far, warforged have shown no signs of deterioration due to age."
-					],
-					"type": "entries"
-				},
-				{
-					"type": "entries",
-					"name": "Alignment",
-					"entries": [
-						"Most warforged take comfort in order and discipline, tending toward law and neutrality, but some have absorbed the morality\u2014or lack thereof\u2014of the beings they served with."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Size",
-					"entries": [
-						"Your size is Medium. Most warforged stand between 5 and 6½ feet tall. Build is affected by your subrace."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Warforged Resilience",
-					"entries": [
-						"You were created to have remarkable fortitude, represented by the following benefits:",
-						{
-							"type": "list",
-							"items": [
-								"You have advantage on saving throws against being {@condition poisoned}, and you have resistance to poison damage.",
-								"You are immune to disease.",
-								"You don't need to eat, drink, or breathe.",
-								"You don't need to sleep and don't suffer the effects of {@condition exhaustion} due to lack of rest, and magic can't put you to sleep."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Sentry's Rest",
-					"entries": [
-						"When you take a long rest, you must spend at least six hours of it in an inactive, motionless state, rather than sleeping. In this state, you appear inert, but it doesn't render you {@condition unconscious}, and you can see and hear as normal."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Integrated Protection",
-					"entries": [
-						"Your body has built-in protective layers, which determine your Armor Class. You gain no benefit from wearing armor, but if you are using a shield, you apply its bonus as normal.",
-						"You can alter your body to enter different defensive modes; each time you finish a long rest, choose one mode to adopt from the Integrated Protection table, provided you meet the mode's prerequisite.",
-						{
-							"type": "table",
-							"caption": "Integrated protection",
-							"colLabels": [
-								"Mode",
-								"Prerequisite",
-								"Armor Class"
-							],
-							"colStyles": [
-								"col-4",
-								"col-4",
-								"col-4"
-							],
-							"rows": [
-								[
-									"Darkwood core (unarmored)",
-									"None",
-									"11 + your Dexterity modifier (add proficiency bonus if proficient with light armor)"
-								],
-								[
-									"Composite plating (armor)",
-									"Medium armor proficiency",
-									"13 + your Dexterity modifier (maximum of 2) + your proficiency bonus"
-								],
-								[
-									"Heavy plating (armor)",
-									"Heavy armor proficiency",
-									"16 + your proficiency bonus; disadvantage on Dexterity ({@skill Stealth}) checks"
-								]
-							]
-						}
-					]
-				},
-				{
-					"name": "Languages",
-					"entries": [
-						"You can speak, read, and write Common."
-					],
-					"type": "entries"
-				}
-			],
-			"traitTags": [
-				"Natural Armor",
-				"Improved Resting",
-				"Damage Resistance",
-				"Skill Proficiency"
-			],
-			"subraces": [
-				{
-					"name": "Envoy",
-					"page": 69,
-					"ability": [
-						{
-							"choose": {
-								"from": [
-									"str",
-									"dex",
-									"con",
-									"int",
-									"wis",
-									"cha"
-								],
-								"count": 2
-							}
-						}
-					],
-					"entries": [
-						{
-							"type": "entries",
-							"name": "Specialized Design",
-							"entries": [
-								"You gain one skill proficiency of your choice, one {@book tool|phb|5|tools} proficiency of your choice, and fluency in one language of your choice."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Integrated Tool",
-							"entries": [
-								"Choose one tool you're proficient with. This tool is integrated into your body, and you double your proficiency bonus for any ability checks you make with it. You must have your hands free to use this integrated tool."
-							]
-						},
-						{
-							"type": "inset",
-							"name": "Envoys: Specialized Design",
-							"entries": [
-								"As the name implies, most warforged were built to fight in the Last War. The vast majority of warforged are juggernauts or skirmishers\u2014soldiers and scouts who fought under the banner of one of the Five Nations. Warforged envoys, however, were designed to perform other functions. As an envoy, you have a skill, a tool proficiency, and a tool that's part of your body. When you make an envoy character, consider the following questions: What is your purpose? How does your skill and your tool reflect that purpose? What form does your integrated tool take? If you have embedded thieves' tools, for instance, are your fingers actually lockpicks, or can you produce keys from various parts of your body? The following characters are examples of warforged with integrated tools.",
-								"{@b Lute} is a bard with the entertainer background; his namesake instrument folds out of his left arm.",
-								"{@b Compass Rose} is a wizard with the outlander background. A keen explorer, she uses her built-in {@item cartographer's tools|phb} to record the paths she travels.",
-								"{@b Masque} is an infiltrator. A rogue with the charlatan background and an integrated {@item disguise Kit|phb}, she was built to blend in and assassinate. Cannith built six warforged of her design, and Masque has vowed to hunt down and destroy the other five.",
-								"In developing your integrated tool, remember that you must have your hands free to use it. Masque, the infiltrator mentioned above, doesn't shapeshift like a changeling; she has to manually adjust her appearance."
-							]
-						}
-					],
-					"traitTags": [
-						"Tool Proficiency",
-						"Skill Proficiency"
-					],
-					"skillProficiencies": [
-						{
-							"choose": {
-								"from": [
-									"athletics",
-									"acrobatics",
-									"sleight of hand",
-									"stealth",
-									"arcana",
-									"history",
-									"investigation",
-									"nature",
-									"religion",
-									"animal handling",
-									"insight",
-									"medicine",
-									"perception",
-									"survival",
-									"deception",
-									"intimidation",
-									"performance",
-									"persuasion"
-								]
-							}
-						}
-					]
-				},
-				{
-					"name": "Juggernaut",
-					"page": 70,
-					"ability": [
-						{
-							"str": 2
-						}
-					],
-					"entries": [
-						{
-							"type": "entries",
-							"name": "Iron Fists",
-							"entries": [
-								"When you hit with an unarmed strike, you can deal {@dice 1d4} + your Strength modifier bludgeoning damage, instead of the normal damage for an unarmed strike."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Powerful Build",
-							"entries": [
-								"You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift."
-							]
-						}
-					],
-					"traitTags": [
-						"Powerful Build",
-						"Unarmed Strike"
-					]
-				},
-				{
-					"name": "Skirmisher",
-					"page": 70,
-					"ability": [
-						{
-							"dex": 2
-						}
-					],
-					"speed": 35,
-					"entries": [
-						{
-							"type": "entries",
-							"name": "Swift",
-							"entries": [
-								"Your walking speed increases by 5 feet."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Light Step",
-							"entries": [
-								"When you are traveling alone for an extended period of time (one hour or more), you can move stealthily at a normal pace. (See {@book chapter 8|PHB|8|Travel Pace} of the Player's Handbook for information about travel pace.)"
-							]
-						}
-					]
-				}
-			],
-			"languageProficiencies": [
-				{
-					"common": true
-				}
-			]
-		},
-		{
-			"name": "Warforged",
-			"source": "ERLW",
 			"ability": [
 				{
 					"con": 2,
@@ -12823,6 +11614,17 @@
 		{
 			"name": "Changeling",
 			"source": "ERLW",
+			"page": 17,
+			"otherSources": [
+				{
+					"source": "UAWGE",
+					"page": 60
+				},
+				{
+					"source": "UARacesOfEberron",
+					"page": 1
+				}
+			],
 			"ability": [
 				{
 					"cha": 2,

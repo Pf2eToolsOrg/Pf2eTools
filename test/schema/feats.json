@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.3.0",
+	"version": "1.3.2",
 	"type": "object",
 	"properties": {
 		"feat": {
@@ -92,6 +92,12 @@
 								}
 							}
 						}
+					},
+					"srd": {
+						"$ref": "util.json#/definitions/srd"
+					},
+					"otherSources": {
+						"$ref": "util.json#/definitions/otherSources"
 					}
 				},
 				"required": ["name", "source", "entries"],

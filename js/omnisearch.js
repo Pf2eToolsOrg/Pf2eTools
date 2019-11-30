@@ -363,6 +363,8 @@ const Omnisearch = {
 			if ($(window).scrollTop() > 50) $wrpTop.addClass("bk__to-top--scrolled");
 			else $wrpTop.removeClass("bk__to-top--scrolled");
 		});
+
+		return $wrpTop;
 	}
 };
 

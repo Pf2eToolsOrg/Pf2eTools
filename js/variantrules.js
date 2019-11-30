@@ -3,12 +3,14 @@
 class VariantRulesPage extends ListPage {
 	constructor () {
 		const sourceFilter = getSourceFilter();
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
 
 		super({
 			dataSource: "data/variantrules.json",
 
 			filters: [
-				sourceFilter
+				sourceFilter,
+				miscFilter
 			],
 			filterSource: sourceFilter,
 
@@ -23,6 +25,8 @@ class VariantRulesPage extends ListPage {
 	}
 
 	getListItem (rule, rlI) {
+		rule._fMisc = rule.srd ? ["SRD"] : [];
+
 		const searchStack = [];
 		for (const e1 of rule.entries) {
 			Renderer.getNames(searchStack, e1);
@@ -66,7 +70,8 @@ class VariantRulesPage extends ListPage {
 			const r = this._dataList[item.ix];
 			return this._filterBox.toDisplay(
 				f,
-				r.source
+				r.source,
+				r._fMisc
 			);
 		});
 		FilterBox.selectFirstVisible(this._dataList);

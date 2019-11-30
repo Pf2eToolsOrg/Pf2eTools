@@ -9,13 +9,15 @@ class ConditionsDiseasesPage extends ListPage {
 			displayFn: StrUtil.uppercaseFirst,
 			deselFn: (it) => it === "disease"
 		});
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
 
 		super({
 			dataSource: "data/conditionsdiseases.json",
 
 			filters: [
 				sourceFilter,
-				typeFilter
+				typeFilter,
+				miscFilter
 			],
 			filterSource: sourceFilter,
 
@@ -30,6 +32,8 @@ class ConditionsDiseasesPage extends ListPage {
 	}
 
 	getListItem (it, cdI) {
+		it._fMisc = it.srd ? ["SRD"] : [];
+
 		// populate filters
 		this._sourceFilter.addItem(it.source);
 
@@ -70,7 +74,8 @@ class ConditionsDiseasesPage extends ListPage {
 			return this._filterBox.toDisplay(
 				f,
 				it.source,
-				it.__prop
+				it.__prop,
+				it._fMisc
 			);
 		});
 		FilterBox.selectFirstVisible(this._dataList);

@@ -48,7 +48,8 @@
 				"namePrefix": "Adamantine ",
 				"entries": [
 					"This suit of armor is reinforced with adamantine, one of the hardest substances in existence. While you're wearing it, any critical hit against you becomes a normal hit."
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -100,7 +101,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table B"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -126,7 +128,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table C"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -152,36 +155,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table D"
-				]
-			}
-		},
-		{
-			"name": "Armblade",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "M"
-				}
-			],
-			"excludes": {
-				"property": "2H"
-			},
-			"inherits": {
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 120,
-				"reqAttune": true,
-				"nameSuffix": " Armblade",
-				"entries": [
-					"An armblade is a weapon designed to integrate with the forearm of a warforged. If you're a warforged, you can attach an armblade by attuning to it. An attached armblade cannot be disarmed or removed from you against your will, but while the weapon is attached you cannot use that hand for other actions. You can spend one minute to end the attunement and remove the armblade.",
-					{
-						"type": "inset",
-						"name": "Magic Armblades",
-						"entries": [
-							"An armblade isn't inherently considered to be a magic weapon for purposes of overcoming damage resistance. However, any sort of magical melee weapon could be created as an armblade, so you could acquire a vicious armblade or a vorpal armblade."
-						]
-					}
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -201,7 +176,8 @@
 				"nameSuffix": " +1",
 				"entries": [
 					"You have a {=genericBonus} bonus to AC while wearing this armor."
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -241,7 +217,8 @@
 				"nameSuffix": " +2",
 				"entries": [
 					"You have a {=genericBonus} bonus to AC while wearing this armor."
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -261,7 +238,8 @@
 				"nameSuffix": " +3",
 				"entries": [
 					"You have a {=genericBonus} bonus to AC while wearing this armor."
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -279,7 +257,8 @@
 				"source": "DMG",
 				"page": 152,
 				"reqAttune": true,
-				"nameSuffix": " of Acid Resistance"
+				"nameSuffix": " of Acid Resistance",
+				"srd": true
 			}
 		},
 		{
@@ -297,7 +276,8 @@
 				"source": "DMG",
 				"page": 152,
 				"reqAttune": true,
-				"nameSuffix": " of Cold Resistance"
+				"nameSuffix": " of Cold Resistance",
+				"srd": true
 			}
 		},
 		{
@@ -315,7 +295,8 @@
 				"source": "DMG",
 				"page": 152,
 				"reqAttune": true,
-				"nameSuffix": " of Fire Resistance"
+				"nameSuffix": " of Fire Resistance",
+				"srd": true
 			}
 		},
 		{
@@ -333,7 +314,8 @@
 				"source": "DMG",
 				"page": 152,
 				"reqAttune": true,
-				"nameSuffix": " of Force Resistance"
+				"nameSuffix": " of Force Resistance",
+				"srd": true
 			}
 		},
 		{
@@ -370,7 +352,8 @@
 				"source": "DMG",
 				"page": 152,
 				"reqAttune": true,
-				"nameSuffix": " of Lightning Resistance"
+				"nameSuffix": " of Lightning Resistance",
+				"srd": true
 			}
 		},
 		{
@@ -388,7 +371,8 @@
 				"source": "DMG",
 				"page": 152,
 				"reqAttune": true,
-				"nameSuffix": " of Necrotic Resistance"
+				"nameSuffix": " of Necrotic Resistance",
+				"srd": true
 			}
 		},
 		{
@@ -406,7 +390,8 @@
 				"source": "DMG",
 				"page": 152,
 				"reqAttune": true,
-				"nameSuffix": " of Poison Resistance"
+				"nameSuffix": " of Poison Resistance",
+				"srd": true
 			}
 		},
 		{
@@ -424,7 +409,8 @@
 				"source": "DMG",
 				"page": 152,
 				"reqAttune": true,
-				"nameSuffix": " of Psychic Resistance"
+				"nameSuffix": " of Psychic Resistance",
+				"srd": true
 			}
 		},
 		{
@@ -442,7 +428,8 @@
 				"source": "DMG",
 				"page": 152,
 				"reqAttune": true,
-				"nameSuffix": " of Radiant Resistance"
+				"nameSuffix": " of Radiant Resistance",
+				"srd": true
 			}
 		},
 		{
@@ -460,7 +447,8 @@
 				"source": "DMG",
 				"page": 152,
 				"reqAttune": true,
-				"nameSuffix": " of Thunder Resistance"
+				"nameSuffix": " of Thunder Resistance",
+				"srd": true
 			}
 		},
 		{
@@ -491,7 +479,8 @@
 				"entries": [
 					"{=baseName/at} {=baseName/l} of slaying is a magic weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both {@i {=baseName/l}s of dragon slaying} and {@i {=baseName/l}s of blue dragon slaying}. If a creature belonging to the type, race, or group associated with {=baseName/a} {=baseName/l} of slaying takes damage from the {=baseName/l}, the creature must make a DC 17 Constitution saving throw, taking an extra {@dice 6d10} piercing damage on a failed save, or half as much extra damage on a successful one.",
 					"Once {=baseName/a} {=baseName/l} of slaying deals its extra damage to a creature, it becomes a nonmagical {=baseName/l}."
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -523,7 +512,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table G"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -567,7 +557,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table H"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -591,7 +582,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table I"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -614,7 +606,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table G"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -637,7 +630,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table G"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -662,7 +656,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table H"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -688,7 +683,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table G"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -712,259 +708,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table I"
-				]
-			}
-		},
-		{
-			"name": "Imbued Wood (Fernian Ash)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Crystal",
-					"Orb"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Fernian Ash ",
-				"entries": [
-					"Powerful manifest zones can infuse local trees with planar energies. A gifted artificer can tap into this to create a wand, staff, or rod that is especially effective at channeling a particular type of energy.",
-					"An imbued wood arcane focus provides a +1 bonus when you roll damage for a spell that inflicts fire damage."
-				]
-			}
-		},
-		{
-			"name": "Imbued Wood (Irian Rosewood)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Crystal",
-					"Orb"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Irian Rosewood ",
-				"entries": [
-					"Powerful manifest zones can infuse local trees with planar energies. A gifted artificer can tap into this to create a wand, staff, or rod that is especially effective at channeling a particular type of energy.",
-					"An imbued wood arcane focus provides a +1 bonus when you roll damage for a spell that inflicts radiant damage."
-				]
-			}
-		},
-		{
-			"name": "Imbued Wood (Kythrian Manchineel)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Crystal",
-					"Orb"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Kythrian Manchineel ",
-				"entries": [
-					"Powerful manifest zones can infuse local trees with planar energies. A gifted artificer can tap into this to create a wand, staff, or rod that is especially effective at channeling a particular type of energy.",
-					"An imbued wood arcane focus provides a +1 bonus when you roll damage for a spell that inflicts acid or poison damage."
-				]
-			}
-		},
-		{
-			"name": "Imbued Wood (Lamannian Oak)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Crystal",
-					"Orb"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Lamannian Oak ",
-				"entries": [
-					"Powerful manifest zones can infuse local trees with planar energies. A gifted artificer can tap into this to create a wand, staff, or rod that is especially effective at channeling a particular type of energy.",
-					"An imbued wood arcane focus provides a +1 bonus when you roll damage for a spell that inflicts lightning or thunder damage."
-				]
-			}
-		},
-		{
-			"name": "Imbued Wood (Mabaran Ebony)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Crystal",
-					"Orb"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Mabaran Ebony ",
-				"entries": [
-					"Powerful manifest zones can infuse local trees with planar energies. A gifted artificer can tap into this to create a wand, staff, or rod that is especially effective at channeling a particular type of energy.",
-					"An imbued wood arcane focus provides a +1 bonus when you roll damage for a spell that inflicts necrotic damage."
-				]
-			}
-		},
-		{
-			"name": "Imbued Wood (Quori Beech)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Crystal",
-					"Orb"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Quori Beech ",
-				"entries": [
-					"Powerful manifest zones can infuse local trees with planar energies. A gifted artificer can tap into this to create a wand, staff, or rod that is especially effective at channeling a particular type of energy.",
-					"An imbued wood arcane focus provides a +1 bonus when you roll damage for a spell that inflicts psychic damage."
-				]
-			}
-		},
-		{
-			"name": "Imbued Wood (Risian Pine)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Crystal",
-					"Orb"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Risian Pine ",
-				"entries": [
-					"Powerful manifest zones can infuse local trees with planar energies. A gifted artificer can tap into this to create a wand, staff, or rod that is especially effective at channeling a particular type of energy.",
-					"An imbued wood arcane focus provides a +1 bonus when you roll damage for a spell that inflicts cold damage."
-				]
-			}
-		},
-		{
-			"name": "Imbued Wood (Shavarran Birch)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Crystal",
-					"Orb"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Shavarran Birch ",
-				"entries": [
-					"Powerful manifest zones can infuse local trees with planar energies. A gifted artificer can tap into this to create a wand, staff, or rod that is especially effective at channeling a particular type of energy.",
-					"An imbued wood arcane focus provides a +1 bonus when you roll damage for a spell that inflicts force damage."
-				]
-			}
-		},
-		{
-			"name": "Imbued Wood (Xorian Wenge)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Crystal",
-					"Orb"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Xorian Wenge ",
-				"entries": [
-					"Powerful manifest zones can infuse local trees with planar energies. A gifted artificer can tap into this to create a wand, staff, or rod that is especially effective at channeling a particular type of energy.",
-					"An imbued wood arcane focus provides a +1 bonus when you roll damage for a spell that inflicts psychic damage."
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1022,7 +767,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table I"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1112,7 +858,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table B"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1156,259 +903,8 @@
 				"charges": "{@dice 1d8+1}",
 				"lootTables": [
 					"Magic Item Table H"
-				]
-			}
-		},
-		{
-			"name": "Orb of Shielding (Fernian Basalt)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Staff",
-					"Rod",
-					"Wand"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Fernian Basalt ",
-				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take fire damage, you can use your reaction to reduce the damage by {@dice 1d4}."
-				]
-			}
-		},
-		{
-			"name": "Orb of Shielding (Irian Quartz)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Staff",
-					"Rod",
-					"Wand"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Irian Quartz ",
-				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take radiant damage, you can use your reaction to reduce the damage by {@dice 1d4}."
-				]
-			}
-		},
-		{
-			"name": "Orb of Shielding (Kythrian Skarn)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Staff",
-					"Rod",
-					"Wand"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Kythrian Skarn ",
-				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take acid or poison damage, you can use your reaction to reduce the damage by {@dice 1d4}."
-				]
-			}
-		},
-		{
-			"name": "Orb of Shielding (Lamannian Flint)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Staff",
-					"Rod",
-					"Wand"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Lamannian Flint ",
-				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take lightning or thunder damage, you can use your reaction to reduce the damage by {@dice 1d4}."
-				]
-			}
-		},
-		{
-			"name": "Orb of Shielding (Mabaran Obsidian)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Staff",
-					"Rod",
-					"Wand"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Mabaran Obsidian ",
-				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take necrotic damage, you can use your reaction to reduce the damage by {@dice 1d4}."
-				]
-			}
-		},
-		{
-			"name": "Orb of Shielding (Quori Celestine)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Staff",
-					"Rod",
-					"Wand"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Quori Celestine ",
-				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take psychic damage, you can use your reaction to reduce the damage by {@dice 1d4}."
-				]
-			}
-		},
-		{
-			"name": "Orb of Shielding (Risian Shale)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Staff",
-					"Rod",
-					"Wand"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Risian Shale ",
-				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take cold damage, you can use your reaction to reduce the damage by {@dice 1d4}."
-				]
-			}
-		},
-		{
-			"name": "Orb of Shielding (Shavaran Chert)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Staff",
-					"Rod",
-					"Wand"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Shavaran Chert ",
-				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take force damage, you can use your reaction to reduce the damage by {@dice 1d4}."
-				]
-			}
-		},
-		{
-			"name": "Orb of Shielding (Xorian Marble)",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "SCF",
-					"scfType": "arcane"
-				}
-			],
-			"excludes": {
-				"name": [
-					"Staff",
-					"Rod",
-					"Wand"
-				]
-			},
-			"inherits": {
-				"wondrous": true,
-				"rarity": "Common",
-				"source": "UAWGE",
-				"page": 114,
-				"reqAttune": true,
-				"namePrefix": "Xorian Marble ",
-				"entries": [
-					"An orb of shielding is made from crystal or stone aligned to one of the planes. While you are holding the orb and take psychic damage, you can use your reaction to reduce the damage by {@dice 1d4}."
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1428,7 +924,8 @@
 				"nameSuffix": " +1",
 				"entries": [
 					"While holding this shield, you have a {=genericBonus} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1448,7 +945,8 @@
 				"nameSuffix": " +2",
 				"entries": [
 					"While holding this shield, you have a {=genericBonus} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1468,7 +966,8 @@
 				"nameSuffix": " +3",
 				"entries": [
 					"While holding this shield, you have a {=genericBonus} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1555,7 +1054,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table G"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1582,7 +1082,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table H"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1639,7 +1140,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table G"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1669,7 +1171,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table G"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1694,7 +1197,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table I"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1802,7 +1306,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table F"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1851,7 +1356,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table G"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -1877,7 +1383,8 @@
 				],
 				"lootTables": [
 					"Magic Item Table H"
-				]
+				],
+				"srd": true
 			}
 		},
 		{
@@ -2195,7 +1702,13 @@
 			"inherits": {
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 276,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 120
+					}
+				],
 				"reqAttune": "by a warforged",
 				"nameSuffix": " Armblade",
 				"entries": [
@@ -2223,11 +1736,17 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 277,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Fernian Ash ",
 				"entries": [
-					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this orb as a spellcasting focus.",
+					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this item as a spellcasting focus.",
 					"When you cast a damage-dealing spell using this item as your spellcasting focus, you gain a +1 bonus to one fire damage roll of the spell."
 				]
 			}
@@ -2251,11 +1770,17 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 277,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Irian Rosewood ",
 				"entries": [
-					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this orb as a spellcasting focus.",
+					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this item as a spellcasting focus.",
 					"When you cast a damage-dealing spell using this item as your spellcasting focus, you gain a +1 bonus to one radiant damage roll of the spell."
 				]
 			}
@@ -2279,11 +1804,17 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 277,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Kythrian Manchineel ",
 				"entries": [
-					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this orb as a spellcasting focus.",
+					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this item as a spellcasting focus.",
 					"When you cast a damage-dealing spell using this item as your spellcasting focus, you gain a +1 bonus to one acid or poison damage roll of the spell."
 				]
 			}
@@ -2307,11 +1838,17 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 277,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Lamannian Oak ",
 				"entries": [
-					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this orb as a spellcasting focus.",
+					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this item as a spellcasting focus.",
 					"When you cast a damage-dealing spell using this item as your spellcasting focus, you gain a +1 bonus to one lightning or thunder damage roll of the spell."
 				]
 			}
@@ -2335,11 +1872,17 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 277,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Mabaran Ebony ",
 				"entries": [
-					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this orb as a spellcasting focus.",
+					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this item as a spellcasting focus.",
 					"When you cast a damage-dealing spell using this item as your spellcasting focus, you gain a +1 bonus to one necrotic damage roll of the spell."
 				]
 			}
@@ -2363,11 +1906,17 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 277,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Risian Pine ",
 				"entries": [
-					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this orb as a spellcasting focus.",
+					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this item as a spellcasting focus.",
 					"When you cast a damage-dealing spell using this item as your spellcasting focus, you gain a +1 bonus to one cold damage roll of the spell."
 				]
 			}
@@ -2391,11 +1940,17 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 277,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Shavarran Birch ",
 				"entries": [
-					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this orb as a spellcasting focus.",
+					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this item as a spellcasting focus.",
 					"When you cast a damage-dealing spell using this item as your spellcasting focus, you gain a +1 bonus to one force damage roll of the spell."
 				]
 			}
@@ -2419,11 +1974,17 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 277,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Xorian Wenge ",
 				"entries": [
-					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this orb as a spellcasting focus.",
+					"An imbued wood focus is a rod, staff, or wand cut from a tree infused with extraplanar energy. If you're a spellcaster, you can use this item as a spellcasting focus.",
 					"When you cast a damage-dealing spell using this item as your spellcasting focus, you gain a +1 bonus to one psychic damage roll of the spell."
 				]
 			}
@@ -2477,7 +2038,13 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 278,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Fernian Basalt ",
 				"entries": [
@@ -2506,7 +2073,13 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 278,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Irian Quartz ",
 				"entries": [
@@ -2535,7 +2108,13 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 278,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Kythrian Skarn ",
 				"entries": [
@@ -2564,7 +2143,13 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 278,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Lamannian Flint ",
 				"entries": [
@@ -2593,7 +2178,13 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 278,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Mabaran Obsidian ",
 				"entries": [
@@ -2622,7 +2213,13 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 278,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Risian Shale ",
 				"entries": [
@@ -2632,7 +2229,7 @@
 			}
 		},
 		{
-			"name": "Orb of Shielding (Shavaran Chert)",
+			"name": "Orb of Shielding (Shavarran Chert)",
 			"type": "GV",
 			"requires": [
 				{
@@ -2651,9 +2248,15 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 278,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
-				"namePrefix": "Shavaran Chert ",
+				"namePrefix": "Shavarran Chert ",
 				"entries": [
 					"An orb of shielding is a polished, spherical chunk of crystal or stone aligned to one of the planes of existence. If you're a spellcaster, you can use this orb as a spellcasting focus.",
 					"If you're holding the orb when you take force damage, you can use your reaction to reduce the damage by {@dice 1d4} (to a minimum of 0)."
@@ -2680,7 +2283,13 @@
 				"wondrous": true,
 				"rarity": "Common",
 				"source": "ERLW",
-				"page": 0,
+				"page": 278,
+				"otherSources": [
+					{
+						"source": "UAWGE",
+						"page": 114
+					}
+				],
 				"reqAttune": true,
 				"namePrefix": "Xorian Marble ",
 				"entries": [

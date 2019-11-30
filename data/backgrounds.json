@@ -216,7 +216,8 @@
 				{
 					"anyStandard": 2
 				}
-			]
+			],
+			"srd": true
 		},
 		{
 			"name": "Anthropologist",
@@ -5572,341 +5573,6 @@
 			]
 		},
 		{
-			"name": "House Agent",
-			"source": "UAWGE",
-			"page": 94,
-			"skillProficiencies": [
-				{
-					"investigation": true,
-					"persuasion": true
-				}
-			],
-			"entries": [
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Skill Proficiencies",
-							"entry": "{@skill Investigation}, {@skill Persuasion}"
-						},
-						{
-							"type": "item",
-							"name": "Tool Proficiency",
-							"entries": [
-								"Two tools by house:",
-								{
-									"type": "list",
-									"items": [
-										"Cannith: {@item alchemist's supplies|phb} and {@item tinker's tools|phb}",
-										"Deneith: one {@filter gaming set|items|source=phb|miscellaneous=mundane|type=gaming set} and {@filter vehicles|items|source=phb;dmg|miscellaneous=mundane|type=vehicle (land)} (land)",
-										"Ghallanda: {@item brewer's supplies|phb} and {@item cook's utensils|phb}",
-										"Jorasco: {@item alchemist's supplies|phb} and {@item herbalism kit|phb}",
-										"Kundarak: {@item tinker's tools|phb} and {@item thieves' tools|phb}",
-										"Lyrandar: {@filter vehicles (sea/air)|items|source=phb;dmg|miscellaneous=mundane|type=vehicle (water);vehicle (air)} and {@item navigator's tools|phb}",
-										"Medani: {@item thieves' tools|phb} and {@item disguise kit|phb}",
-										"Orien: {@filter vehicles (land)|items|source=phb;dmg|miscellaneous=mundane|type=vehicle (land)} and one {@filter gaming set|items|source=phb|miscellaneous=mundane|type=gaming set}",
-										"Phiarlan: {@item disguise kit|phb} and one {@filter musical instrument|items|source=phb|miscellaneous=mundane|type=instrument}",
-										"Sivis: {@item calligrapher's supplies|phb} and {@item forgery kit|phb}",
-										"Tharashk: {@item thieves' tools|phb} and one {@filter gaming set|items|source=phb|miscellaneous=mundane|type=gaming set}",
-										"Thuranni: {@item poisoner's kit|phb} and one {@filter musical instrument|items|source=phb|miscellaneous=mundane|type=instrument}",
-										"Vadalis: {@filter vehicles (land)|items|source=phb;dmg|miscellaneous=mundane|type=vehicle (land)} and {@item herbalism kit|phb}"
-									]
-								}
-							]
-						},
-						{
-							"type": "item",
-							"name": "Equipment",
-							"entry": "A set of {@item fine clothes|phb}, house signet ring, ID papers, and a purse containing 20 gp."
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Role",
-					"entries": [
-						"You are always gathering information for your house. But when the barons come to you with a specific mission, what sort of work do you usually do? Choose your role or roll on the table below.",
-						{
-							"type": "table",
-							"caption": "House Agent Role",
-							"colLabels": [
-								"d8",
-								"Role"
-							],
-							"colStyles": [
-								"col-2 text-center",
-								"col-10"
-							],
-							"rows": [
-								[
-									1,
-									"Acquisition"
-								],
-								[
-									2,
-									"Investigation"
-								],
-								[
-									3,
-									"Research & Development"
-								],
-								[
-									4,
-									"Security"
-								],
-								[
-									5,
-									"Intimidation"
-								],
-								[
-									6,
-									"Exploration"
-								],
-								[
-									7,
-									"Negotiation"
-								],
-								[
-									8,
-									"Covert Operations"
-								]
-							]
-						}
-					]
-				},
-				{
-					"name": "Feature: House Connections",
-					"type": "entries",
-					"entries": [
-						"As an agent of your house, you can always get food and lodging for your friends at a house enclave. When the house assigns you a mission, it will usually provide you with necessary supplies and transportation. Beyond this, you have many old friends, mentors, and rivals in your house and you may encounter one of them when you interact with a house business. As a Lyrandar agent you may know the captain of an airship; as a Ghallanda agent you know a lot of innkeepers and bartenders. The degree to which such acquaintances will be willing to help you out will depend on your current standing in your house."
-					],
-					"data": {
-						"isFeature": true
-					}
-				},
-				{
-					"name": "Suggested Characteristics",
-					"type": "entries",
-					"entries": [
-						"House agents are a diverse lot. Consider the house you serve and the type of work you do in developing or selecting characteristics.",
-						{
-							"type": "table",
-							"colLabels": [
-								"d8",
-								"Personality Trait"
-							],
-							"colStyles": [
-								"col-2 text-center",
-								"col-10"
-							],
-							"rows": [
-								[
-									1,
-									"I never let emotion complicate work."
-								],
-								[
-									2,
-									"I'm always looking to improve efficiency."
-								],
-								[
-									3,
-									"I share trivia about my house's business (medicine, ships, warforged)."
-								],
-								[
-									4,
-									"I hold myself and anyone I work with to extremely high standards."
-								],
-								[
-									5,
-									"I never forget an insult made against myself or my house."
-								],
-								[
-									6,
-									"I'm very excited and enthusiastic about everything my house does."
-								],
-								[
-									7,
-									"I'm representing my house and take great pride in my personal appearance."
-								],
-								[
-									8,
-									"I'm critical of monarchies and opposed to any restrictions on the houses."
-								]
-							]
-						},
-						{
-							"type": "table",
-							"colLabels": [
-								"d6",
-								"Ideal"
-							],
-							"colStyles": [
-								"col-2 text-center",
-								"col-10"
-							],
-							"rows": [
-								[
-									1,
-									"Common Good. My house serves a vital function, and its prosperity will help everyone. (Good)"
-								],
-								[
-									2,
-									"Tradition. I uphold traditions of my house and bring honor to my family. (Lawful)"
-								],
-								[
-									3,
-									"Innovation. Abandon old traditions and find better ways to do things. (Chaotic)"
-								],
-								[
-									4,
-									"Power. I want to ensure the prosperity of my house and wield its power myself. (Evil)"
-								],
-								[
-									5,
-									"Discovery. I want to learn all I can, both for my house and for my own curiosity. (Any)"
-								],
-								[
-									6,
-									"Comfort. I want to ensure that me and mine enjoy the best things in life. (Any)"
-								]
-							]
-						},
-						{
-							"type": "table",
-							"colLabels": [
-								"d6",
-								"Bond"
-							],
-							"colStyles": [
-								"col-2 text-center",
-								"col-10"
-							],
-							"rows": [
-								[
-									1,
-									"My house is my family, and I would do anything for my family."
-								],
-								[
-									2,
-									"I love someone from another house, but such relationships are forbidden."
-								],
-								[
-									3,
-									"Someone I love was killed by a rival faction within my house, and I will have revenge."
-								],
-								[
-									4,
-									"I don't care about the house as a whole, but I would do anything for my old mentor."
-								],
-								[
-									5,
-									"I believe my house needs to evolve to survive, and I need to lead that change."
-								],
-								[
-									6,
-									"I am determined to impress the leaders of my house, and to become a leader myself"
-								]
-							]
-						},
-						{
-							"type": "table",
-							"colLabels": [
-								"d6",
-								"Flaw"
-							],
-							"colStyles": [
-								"col-2 text-center",
-								"col-10"
-							],
-							"rows": [
-								[
-									1,
-									"I'm overly concerned with following established procedures and protocols."
-								],
-								[
-									2,
-									"I'm obsessed with conspiracy theories and worried about secret societies and hidden demons."
-								],
-								[
-									3,
-									"I believe that my house and bloodline makes me better than everyone else."
-								],
-								[
-									4,
-									"I'm concealing a secret that could get me driven from my house."
-								],
-								[
-									5,
-									"I have strong religious beliefs that aren't shared by others in my house."
-								],
-								[
-									6,
-									"I'm working for a hidden faction in my house that gives me secret assignments."
-								]
-							]
-						}
-					]
-				}
-			],
-			"toolProficiencies": [
-				{
-					"alchemist's supplies": true,
-					"tinker's tools": true
-				},
-				{
-					"gaming set": true,
-					"vehicles (land)": true
-				},
-				{
-					"brewer's supplies": true,
-					"cook's utensils": true
-				},
-				{
-					"alchemist's supplies": true,
-					"herbalism kit": true
-				},
-				{
-					"tinker's tools": true,
-					"thieves' tools": true
-				},
-				{
-					"vehicles (water)": true,
-					"vehicles (air)": true,
-					"navigator's tools": true
-				},
-				{
-					"thieves' tools": true,
-					"disguise kit": true
-				},
-				{
-					"vehicles (land)": true,
-					"gaming set": true
-				},
-				{
-					"disguise kit": true,
-					"musical instrument": true
-				},
-				{
-					"calligrapher's supplies": true,
-					"forgery kit": true
-				},
-				{
-					"thieves' tools": true,
-					"gaming set": true
-				},
-				{
-					"poisoner's kit": true,
-					"musical instrument": true
-				},
-				{
-					"vehicles (land)": true,
-					"herbalism kit": true
-				}
-			]
-		},
-		{
 			"name": "Inheritor",
 			"source": "SCAG",
 			"page": 150,
@@ -7455,7 +7121,7 @@
 						{
 							"type": "item",
 							"name": "Equipment",
-							"entry": "A bag of {@item caltrops (20)|phb}, a small trinket that connects you to the life you once had before the occupation of Phlan, a {@item healer's kit|phb}, a set of dark {@item common clothes|phb} that includes a cloak and hood, and a belt {@item pouch|phb} containing 5 gp"
+							"entry": "A bag of {@item caltrops (bag of 20)|phb}, a small trinket that connects you to the life you once had before the occupation of Phlan, a {@item healer's kit|phb}, a set of dark {@item common clothes|phb} that includes a cloak and hood, and a belt {@item pouch|phb} containing 5 gp"
 						}
 					]
 				},
@@ -17844,6 +17510,13 @@
 		{
 			"name": "House Agent",
 			"source": "ERLW",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "UAWGE",
+					"page": 94
+				}
+			],
 			"skillProficiencies": [
 				{
 					"investigation": true,

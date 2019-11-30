@@ -109,7 +109,11 @@ class ListPage {
 	}
 
 	async _pHandleBrew (homebrew) {
-		this._addData(homebrew);
+		try {
+			this._addData(homebrew);
+		} catch (e) {
+			BrewUtil.pPurgeBrew(e);
+		}
 	}
 
 	_addData (data) {

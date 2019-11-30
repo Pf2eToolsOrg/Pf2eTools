@@ -1597,8 +1597,8 @@
 		{
 			"name": "Twinned Spell",
 			"entries": [
-				"When you cast a spell that doesn't have a range of self and is incapable of targeting more than one creature at the spell's current level, you can spend a number of sorcery points equal to the spell's level to target a second creature in range with the same spell (1 sorcery point if the spell is a cantrip).",
-				"To be eligible, a spell must be incapable of targeting more than one creature at the spell's current level. For example, magic missile and scorching ray aren't eligible, but ray of frost and chromatic orb are."
+				"When you cast a spell that targets only one creature and doesn't have a range of self, you can spend a number of sorcery points equal to the spell's level to target a second creature in range with the same spell (1 sorcery point if the spell is a cantrip).",
+				"To be eligible, a spell must be incapable of targeting more than one creature at the spell's current level. For example, {@spell magic missile} and {@spell scorching ray} aren't eligible, but {@spell ray of frost} and {@spell chromatic orb} are."
 			],
 			"source": "PHB",
 			"page": 102,
@@ -2251,6 +2251,17 @@
 			"featureType": "PB",
 			"page": 1,
 			"source": "UATheFaithful"
+		},
+		{
+			"name": "Pact of the Talisman",
+			"source": "UAClassFeatureVariants",
+			"page": 11,
+			"entries": [
+				"Your patron gives you a special amulet, a talisman that can aid you, or anyone else who wears it, when the need is great. When the wearer makes an ability check with a skill in which they lack proficiency, they can add a {@dice d4} to the roll.",
+				"If you lose the talisman, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous amulet.",
+				"The talisman turns to ash when you die."
+			],
+			"featureType": "PB"
 		},
 		{
 			"featureType": "ED",
@@ -3883,6 +3894,7 @@
 				"While wearing these boots, a creature can teleport up to 15 feet as a bonus action to an unoccupied space the creature can see. The creature must have occupied that space at some point during the current turn."
 			],
 			"source": "ERLW",
+			"page": 62,
 			"featureType": "AI"
 		},
 		{
@@ -3899,6 +3911,7 @@
 				"The bonus increases to +2 when you reach 10th level in this class."
 			],
 			"source": "ERLW",
+			"page": 62,
 			"featureType": "AI"
 		},
 		{
@@ -3915,18 +3928,13 @@
 				"The bonus increases to +2 when you reach 10th level in this class."
 			],
 			"source": "ERLW",
+			"page": 62,
 			"featureType": "AI"
 		},
 		{
 			"name": "Enhanced Weapon",
 			"prerequisite": [
 				{
-					"level": {
-						"level": 4,
-						"class": {
-							"name": "Artificer"
-						}
-					},
 					"item": [
 						"A simple or martial weapon"
 					]
@@ -3937,6 +3945,7 @@
 				"The bonus increases to +2 when you reach 10th level in this class."
 			],
 			"source": "ERLW",
+			"page": 62,
 			"featureType": "AI"
 		},
 		{
@@ -3962,6 +3971,7 @@
 				"The homunculus regains {@dice 2d6} hit points if the {@spell mending} spell is cast on it. If it dies, it vanishes, leaving its heart in its space."
 			],
 			"source": "ERLW",
+			"page": 62,
 			"featureType": "AI"
 		},
 		{
@@ -3984,6 +3994,7 @@
 				"The weapon has 4 charges. As a reaction immediately after being hit by an attack, the wielder can expend 1 charge and cause the attacker to be {@condition blinded} until the end of the attacker's next turn, unless the attacker succeeds on a Constitution saving throw against your spell save DC. The weapon regains {@dice 1d4} expended charges daily at dawn."
 			],
 			"source": "ERLW",
+			"page": 62,
 			"featureType": "AI"
 		},
 		{
@@ -4000,6 +4011,7 @@
 				"If you load no ammunition in the weapon, it produces its own, automatically creating one piece of magic ammunition when you make a ranged attack with it. The ammunition created by the weapon vanishes the instant after it hits or misses a target."
 			],
 			"source": "ERLW",
+			"page": 62,
 			"featureType": "AI"
 		},
 		{
@@ -4278,6 +4290,7 @@
 				}
 			],
 			"source": "ERLW",
+			"page": 63,
 			"featureType": "AI"
 		},
 		{
@@ -4300,6 +4313,7 @@
 				"The shield has 4 charges. While holding it, the wielder can use a reaction immediately after being hit by a melee attack to expend 1 of the shield's charges and push the attacker up to 15 feet away. The shield regains {@dice 1d4} expended charges daily at dawn."
 			],
 			"source": "ERLW",
+			"page": 63,
 			"featureType": "AI"
 		},
 		{
@@ -4321,6 +4335,7 @@
 				"While wearing this armor, a creature has resistance to one of the following damage types, which you choose when you infuse the item: acid, cold, fire, force, lightning, necrotic, poison, psychic, radiant, or thunder."
 			],
 			"source": "ERLW",
+			"page": 63,
 			"featureType": "AI"
 		},
 		{
@@ -4336,6 +4351,7 @@
 				"This magic weapon grants a +1 bonus to attack and damage rolls made with it, and it returns to the wielder's hand immediately after it is used to make a ranged attack."
 			],
 			"source": "ERLW",
+			"page": 63,
 			"featureType": "AI"
 		}
 	]

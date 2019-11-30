@@ -1225,7 +1225,7 @@ class MarkdownConverter {
 		// Post-processing
 		(function normalizeCellCounts () {
 			// pad all rows to max width
-			const maxWidth = Math.max(tbl.colLabels, ...tbl.rows.map(it => it.length));
+			const maxWidth = Math.max((tbl.colLabels || []).length, ...tbl.rows.map(it => it.length));
 			tbl.rows.forEach(row => {
 				while (row.length < maxWidth) row.push("");
 			});
@@ -1322,6 +1322,8 @@ class MarkdownConverter {
 		}
 
 		(function doCheckNumericCols () {
+			if (isDiceCol0 && tbl.colStyles.length === 2) return; // don't apply this step for generic rollable tables
+
 			tbl.colStyles.forEach((col, i) => {
 				if (col.includes("text-center") || col.includes("text-right")) return;
 
@@ -1348,6 +1350,8 @@ class MarkdownConverter {
 		// If there are columns which have a limited number of words, center these
 		let isFewWordsCol1 = false;
 		(function doCheckFewWordsCols () {
+			if (isDiceCol0 && tbl.colStyles.length === 2) return; // don't apply this step for generic rollable tables
+
 			// Do this in reverse order, as the style of the first column depends on the others
 			for (let i = tbl.colStyles.length - 1; i >= 0; --i) {
 				const col = tbl.colStyles[i];

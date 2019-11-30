@@ -148,6 +148,7 @@ class SpellsPage {
 		ExcludeUtil.checkShowAllExcluded(spellList, $(`#pagecontent`));
 	}
 }
+SpellsPage._BOOK_VIEW_MODE_K = "bookViewMode";
 
 async function pPostLoad () {
 	const homebrew = await BrewUtil.pAddBrewData();
@@ -221,13 +222,16 @@ async function pPageInit (loadedSources) {
 		($wrpContent, $dispName, $wrpControls) => {
 			$wrpControls.addClass("px-2 mt-2");
 
-			const toShow = ListUtil.getSublistedIds().map(id => spellList[id]);
+			const toShow = ListUtil.getSublistedIds().map(id => spellList[id])
+				.sort((a, b) => SortUtil.ascSortLower(a.name, b.name));
 
 			const renderSpell = (stack, sp) => {
 				stack.push(`<div class="bkmv__wrp-item"><table class="stats stats--book stats--bkmv"><tbody>`);
 				stack.push(Renderer.spell.getCompactRenderedString(sp));
 				stack.push(`</tbody></table></div>`);
 			};
+
+			const lastOrder = StorageUtil.syncGetForPage(SpellsPage._BOOK_VIEW_MODE_K);
 
 			const $selSortMode = $(`<select class="form-control">
 				<option value="0">Spell Level</option>
@@ -239,7 +243,11 @@ async function pPageInit (loadedSources) {
 					const val = Number($selSortMode.val());
 					if (val === 0) renderByLevel();
 					else renderByAlpha();
+
+					StorageUtil.syncSetForPage(SpellsPage._BOOK_VIEW_MODE_K, val);
 				});
+			if (lastOrder != null) $selSortMode.val(lastOrder);
+
 			$$`<div class="w-100 flex">
 				<div class="flex-vh-center"><div class="mr-2 no-wrap">Sort order:</div>${$selSortMode}</div>
 			</div>`.appendTo($wrpControls);
@@ -275,6 +283,7 @@ async function pPageInit (loadedSources) {
 			};
 
 			if (!toShow.length && Hist.lastLoadedId != null) renderNoneSelected();
+			else if (lastOrder === 1) renderByAlpha();
 			else renderByLevel();
 
 			return toShow.length;

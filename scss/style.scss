@@ -1271,8 +1271,14 @@ th.name {
 		color: #752418;
 	}
 
-	&ERLW {
+	&ERLW,
+	&EFR {
 		color: #983426;
+	}
+
+	&RMR,
+	&RMBRE {
+		color: #5c7c27;
 	}
 
 	&AL {
@@ -3141,7 +3147,8 @@ tr.legendary td {
 		display: none;
 
 		&--scrolled {
-			display: block;
+			display: flex;
+			flex-direction: column;
 			position: fixed;
 			z-index: $z-omnisearch;
 			top: 42px;

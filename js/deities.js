@@ -63,7 +63,7 @@ class DeitiesPage extends ListPage {
 		});
 		const miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: [STR_REPRINTED],
+			items: [STR_REPRINTED, "SRD"],
 			displayFn: StrUtil.uppercaseFirst,
 			deselFn: (it) => { return it === STR_REPRINTED }
 		});
@@ -99,7 +99,8 @@ class DeitiesPage extends ListPage {
 		if (!g.domains) g.domains = [STR_NONE];
 		g.domains.sort(SortUtil.ascSort);
 
-		g._fReprinted = g.reprinted ? STR_REPRINTED : "";
+		g._fMisc = g.reprinted ? [STR_REPRINTED] : [];
+		if (g.srd) g._fMisc.push("SRD");
 
 		this._sourceFilter.addItem(g.source);
 		this._pantheonFilter.addItem(g.pantheon);
@@ -152,7 +153,7 @@ class DeitiesPage extends ListPage {
 				g.pantheon,
 				g.category,
 				g.domains,
-				g._fReprinted
+				g._fMisc
 			);
 		});
 		FilterBox.selectFirstVisible(this._dataList);

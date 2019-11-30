@@ -22,7 +22,8 @@ class PageFilterItems {
 			deselFn: (it) => it === "Specific Variant",
 			itemSortFn: null
 		});
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Magic", "Mundane", "Sentient"]});
+		const damageTypeFilter = new Filter({header: "Damage Type", displayFn: it => Parser.dmgTypeToFull(it).uppercaseFirst(), itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.dmgTypeToFull(a), Parser.dmgTypeToFull(b))});
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Magic", "Mundane", "Sentient", "SRD"]});
 
 		this._filterBox = null;
 
@@ -37,6 +38,7 @@ class PageFilterItems {
 		this._rarityFilter = rarityFilter;
 		this._attunementFilter = attunementFilter;
 		this._categoryFilter = categoryFilter;
+		this._damageTypeFilter = damageTypeFilter;
 		this._miscFilter = miscFilter;
 	}
 
@@ -56,6 +58,7 @@ class PageFilterItems {
 		item._fIsMundane = isMundane;
 		if (item.ability) item._fMisc.push("Ability Score Adjustment");
 		if (item.charges) item._fMisc.push("Charges");
+		if (item.srd) item._fMisc.push("SRD");
 		if (item.focus || item.type === "INS" || item.type === "SCF") {
 			item._fFocus = item.focus ? item.focus === true ? ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"] : [...item.focus] : [];
 			if (item.type === "INS" && !item._fFocus.includes("Bard")) item._fFocus.push("Bard");
@@ -86,6 +89,7 @@ class PageFilterItems {
 		this._propertyFilter.addItem(item._fProperties);
 		this._attachedSpellsFilter.addItem(item.attachedSpells);
 		this._lootTableFilter.addItem(item.lootTables);
+		this._damageTypeFilter.addItem(item.dmgType);
 		// endregion
 	}
 
@@ -100,6 +104,7 @@ class PageFilterItems {
 			this._categoryFilter,
 			this._costFilter,
 			this._focusFilter,
+			this._damageTypeFilter,
 			this._miscFilter,
 			this._lootTableFilter,
 			this._attachedSpellsFilter
@@ -121,6 +126,7 @@ class PageFilterItems {
 			it._category,
 			it.value || 0,
 			it._fFocus,
+			it.dmgType,
 			it._fMisc,
 			it.lootTables,
 			it.attachedSpells

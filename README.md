@@ -83,6 +83,9 @@ Replace: `$1$3`
 ##### Convention for Dice
 Dice should be written as `[X]dY[ <+|-|×> Z]`, i.e. with a space between dice and operator, and a space between operator and modifier. Some examples of acceptable formatting are: `d6`, `2d6`, or `2d6 + 1`.
 
+##### Convention for Item Names
+Item names should be title-case, with the exception of units in parentheses, which should be sentence-case. Items who's volume or amount is specified by container (e.g. `(vial)`) treat the container as a unit.
+
 ##### Misc
 
 - A handy dice regex: `([1-9]\d*)?d([1-9]\d*)(\s?([+-])\s?(\d+))?` (and to output as tagged dice in the basic case: `{@dice $0}`). Warning: does not detect already-tagged dice expressions; be wary of double-tagging.

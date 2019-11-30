@@ -542,7 +542,7 @@ class FilterItem {
 	/**
 	 * An alternative to string `Filter.items` with a change-handling function
 	 * @param options containing:
-	 * @param [options.item] the item string
+	 * @param options.item the item string
 	 * @param [options.changeFn] (optional) function to call when filter is changed
 	 * @param [options.group] (optional) group this item belongs to.
 	 * @param [options.nest] (optional) nest this item belongs to

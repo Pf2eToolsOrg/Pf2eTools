@@ -19,6 +19,8 @@ class PageFilterSpells {
 		if (~ixA && ~ixB) return ixA - ixB;
 		if (~ixA) return -1;
 		if (~ixB) return 1;
+		if (a.item === "SRD") return 1;
+		if (b.item === "SRD") return -1;
 		return SortUtil.ascSortLower(a, b);
 	}
 
@@ -53,6 +55,7 @@ class PageFilterSpells {
 		if (s.miscTags && s.miscTags.includes("HL")) out.push(Parser.spMiscTagToFull("HL"));
 		if (s.miscTags && s.miscTags.includes("SMN")) out.push(Parser.spMiscTagToFull("SMN"));
 		if (s.miscTags && s.miscTags.includes("SGT")) out.push(Parser.spMiscTagToFull("SGT"));
+		if (s.srd) out.push("SRD");
 		return out;
 	}
 
@@ -187,9 +190,14 @@ class PageFilterSpells {
 			: `${time.number} ${time.unit === Parser.SP_TM_B_ACTION ? "Bonus acn." : time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
 	}
 
-	static getClassFilterStr (c) {
+	static getClassFilterItem (c) {
 		const nm = c.name.split("(")[0].trim();
-		return `${nm}${c.source !== SRC_PHB ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
+		const addSuffix = SourceUtil.isNonstandardSource(c.source || SRC_PHB) || BrewUtil.hasSourceJson(c.source || SRC_PHB);
+		const name = `${nm}${addSuffix ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
+		return new FilterItem({
+			item: name,
+			userData: SourceUtil.getFilterGroup(c.source || SRC_PHB)
+		});
 	}
 	// endregion
 
@@ -204,7 +212,10 @@ class PageFilterSpells {
 			],
 			displayFn: PageFilterSpells.getFltrSpellLevelStr
 		});
-		const classFilter = new Filter({header: "Class"});
+		const classFilter = new Filter({
+			header: "Class",
+			groupFn: it => it.userData
+		});
 		const subclassFilter = new Filter({
 			header: "Subclass",
 			nests: {},
@@ -216,7 +227,7 @@ class PageFilterSpells {
 		const backgroundFilter = new Filter({header: "Background"});
 		const metaFilter = new Filter({
 			header: "Components & Miscellaneous",
-			items: [...PageFilterSpells._META_FILTER_BASE_ITEMS, "Ritual", "Technomagic"],
+			items: [...PageFilterSpells._META_FILTER_BASE_ITEMS, "Ritual", "Technomagic", "SRD"],
 			itemSortFn: PageFilterSpells.sortMetaFilter
 		});
 		const schoolFilter = new Filter({
@@ -374,10 +385,10 @@ class PageFilterSpells {
 		// used for filtering
 		spell._fSources = ListUtil.getCompleteFilterSources(spell);
 		spell._fMeta = PageFilterSpells.getMetaFilterObj(spell);
-		spell._fClasses = spell.classes && spell.classes.fromClassList ? spell.classes.fromClassList.map(PageFilterSpells.getClassFilterStr) : [];
+		spell._fClasses = spell.classes && spell.classes.fromClassList ? spell.classes.fromClassList.map(PageFilterSpells.getClassFilterItem) : [];
 		spell._fSubclasses = spell.classes && spell.classes.fromSubclass
 			? spell.classes.fromSubclass.map(c => new FilterItem({
-				item: `${c.class.name}: ${PageFilterSpells.getClassFilterStr(c.subclass)}`,
+				item: `${c.class.name}: ${PageFilterSpells.getClassFilterItem(c.subclass).item}`,
 				nest: c.class.name,
 				userData: {
 					subClass: {
@@ -388,7 +399,7 @@ class PageFilterSpells {
 				}
 			}))
 			: [];
-		spell._fVariantClasses = spell.classes && spell.classes.fromClassListVariant ? spell.classes.fromClassListVariant.map(PageFilterSpells.getClassFilterStr) : [];
+		spell._fVariantClasses = spell.classes && spell.classes.fromClassListVariant ? spell.classes.fromClassListVariant.map(PageFilterSpells.getClassFilterItem) : [];
 		spell._fRaces = spell.races ? spell.races.map(r => r.baseName || r.name) : [];
 		spell._fBackgrounds = spell.backgrounds ? spell.backgrounds.map(bg => bg.name) : [];
 		spell._fTimeType = spell.time.map(t => t.unit);
@@ -474,7 +485,7 @@ PageFilterSpells.F_RNG_SELF = "Self";
 PageFilterSpells.F_RNG_TOUCH = "Touch";
 PageFilterSpells.F_RNG_SPECIAL = "Special";
 
-PageFilterSpells._META_FILTER_BASE_ITEMS = [PageFilterSpells._META_ADD_CONC, PageFilterSpells._META_ADD_V, PageFilterSpells._META_ADD_S, PageFilterSpells._META_ADD_M, PageFilterSpells._META_ADD_M_COST, PageFilterSpells._META_ADD_M_CONSUMED, ...Object.values(Parser.SP_MISC_TAG_TO_FULL)];
+PageFilterSpells._META_FILTER_BASE_ITEMS = [PageFilterSpells._META_ADD_CONC, PageFilterSpells._META_ADD_V, PageFilterSpells._META_ADD_S, PageFilterSpells._META_ADD_M, PageFilterSpells._META_ADD_R, PageFilterSpells._META_ADD_M_COST, PageFilterSpells._META_ADD_M_CONSUMED, ...Object.values(Parser.SP_MISC_TAG_TO_FULL)];
 
 PageFilterSpells.INCHES_PER_FOOT = 12;
 PageFilterSpells.FEET_PER_MILE = 5280;

@@ -13,6 +13,7 @@ class FeatsPage extends ListPage {
 			itemSortFn: SortUtil.ascSortNumericalSuffix
 		});
 		const prerequisiteFilter = new MultiFilter({header: "Prerequisite", filters: [otherPrereqFilter, levelFilter]});
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
 
 		super({
 			dataSource: "data/feats.json",
@@ -20,7 +21,8 @@ class FeatsPage extends ListPage {
 			filters: [
 				sourceFilter,
 				asiFilter,
-				prerequisiteFilter
+				prerequisiteFilter,
+				miscFilter
 			],
 			filterSource: sourceFilter,
 
@@ -47,9 +49,10 @@ class FeatsPage extends ListPage {
 		(feat.prerequisite || []).forEach(it => preSet.add(...Object.keys(it)));
 		feat._fPrereqOther = [...preSet].map(it => it.uppercaseFirst());
 		if (feat.prerequisite) {
-			feat._fPrereqLevel = feat.prerequisite.filter(it => it.level != null).map(it => `Level ${it.level}`);
+			feat._fPrereqLevel = feat.prerequisite.filter(it => it.level != null).map(it => `Level ${it.level.level}`);
 			this._levelFilter.addItem(feat._fPrereqLevel);
 		}
+		feat._fMisc = feat.srd ? ["SRD"] : [];
 
 		feat._slAbility = ability.asText;
 		feat._slPrereq = prereqText;
@@ -100,7 +103,8 @@ class FeatsPage extends ListPage {
 				[
 					ft._fPrereqOther,
 					ft._fPrereqLevel
-				]
+				],
+				ft._fMisc
 			);
 		});
 		FilterBox.selectFirstVisible(this._dataList);

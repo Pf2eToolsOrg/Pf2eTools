@@ -293,7 +293,7 @@
 					{
 						"name": "Action Surge",
 						"entries": [
-							"Starting at 2nd level, you can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action on top of your regular action and a possible bonus action.",
+							"Starting at 2nd level, you can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action.",
 							"Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn."
 						]
 					}
@@ -4235,6 +4235,129 @@
 					],
 					"source": "UAFighterRangerAndRogue",
 					"shortName": "Rune Knight (UA)"
+				},
+				{
+					"name": "Psychic Warrior (UA)",
+					"subclassFeatures": [
+						[
+							{
+								"name": "Psychic Warrior",
+								"entries": [
+									"Awakening to the psionic power within themselves, a Psychic Warrior is a fighter who augments their physical might with psychically infused weapon strikes, telekinetic lashes, and barriers of mental force.",
+									"As a Psychic Warrior, you might have honed your psionic abilities through your own disciplined practice, unlocked it under the tutelage of a master, or developed it at an academy dedicated to wielding the mind's power as both weapon and shield.",
+									{
+										"type": "entries",
+										"name": "Psionic Armament",
+										"entries": [
+											"{@i 3rd-level Psychic Warrior feature}",
+											"You can channel your psychic power to magically augment your prowess. When you finish a long rest, choose whether to augment your defenses or your strikes. The chosen benefit lasts until you finish a long rest.",
+											{
+												"type": "entries",
+												"name": "Augmented Defenses",
+												"entries": [
+													"When you or a creature you can see within 30 feet of you takes damage, you can use your reaction to roll a {@dice d10} and reduce the amount of damage taken by the number rolled. When you reach 10th level in this class, the die changes to a {@dice d12}."
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Augmented Strikes",
+												"entries": [
+													"Once during each of your turns when you hit a creature with a weapon attack, you can also deal {@dice 1d4} psychic damage to that target. When you reach 10th level in this class, the psychic damage increases to {@dice 1d6}."
+												]
+											}
+										]
+									},
+									{
+										"name": "Telekinetic Hand",
+										"type": "entries",
+										"entries": [
+											"{@i 3rd-level Psychic Warrior feature}",
+											"You learn the {@spell mage hand} cantrip. You can cast it without components, and you can make the spectral hand {@condition invisible}. Intelligence is your spellcasting ability for this spell."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Strength of Mind",
+										"entries": [
+											"{@i 7th-level Psychic Warrior feature}",
+											"As a bonus action, you can telekinetically lash out at a creature you can see within 20 feet of you. The target must make a Strength saving throw against a DC equal to 8 + your proficiency bonus + your Intelligence modifier. On a failed save, the target takes force damage equal to {@dice 2d6} plus your Intelligence modifier and is telekinetically moved 15 feet directly toward or away from you (your choice). On a successful save, it takes half as much damage and isn't moved.",
+											"You can use this feature a number of times equal to your Intelligence modifier (minimum of once), and you regain all expended uses when you finish a long rest."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Telekinetic Bulwark",
+										"entries": [
+											"{@i 10th-level Psychic Warrior feature}",
+											"When you take the {@action Attack} action, you can forgo one of your attacks to project a bastion of psionic power in a 10-foot radius around yourself. It lasts for 1 minute or until you're {@condition incapacitated}. For the duration, you and your allies in that area gain the benefits of half cover and have advantage on Strength saving throws.",
+											"Once you use this feature, you can't do so again until you finish a long rest or until after you use your Second Wind feature."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Psionic Armament Improvement",
+										"entries": [
+											"{@i 10th-level Psychic Warrior feature}",
+											"When you reach 10th level in this class, your Augmented Defenses dice increases to {@dice 1d12}, and your Augmented Strikes dice increases to a {@dice d6}."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Agonizing Strikes",
+										"entries": [
+											"{@i 15th-level Psychic Warrior feature}",
+											"Your attacks can channel psychic agony. When you hit a creature with a weapon attack, you can also deal {@dice 2d10} psychic damage to that target and force it to make a Constitution saving throw against a DC equal to 8 + your proficiency bonus + your Intelligence modifier. Unless the save succeeds, the target falls {@condition prone}, and it suffers disadvantage on ability checks until the end of your next turn.",
+											"You can use this feature a number of times equal to your Intelligence modifier (minimum of once), and you regain all expended uses when you finish a long rest."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Psychic Dreadnaught",
+										"entries": [
+											"{@i 18th-level Psychic Warrior feature}",
+											"The power of your mind suffuses your entire being, making you a nigh-unstoppable force on the battlefield. Using your reaction when you take damage, you can give yourself the following benefits for 1 minute or until you're {@condition incapacitated}:",
+											{
+												"type": "list",
+												"items": [
+													"At the start of each of your turns, you regain 10 hit points.",
+													"Your walking speed increases by 10 feet.",
+													"If you're {@condition prone}, you can stand up by spending 5 feet of movement."
+												]
+											},
+											"Once you activate this feature, you can't use it again until you finish a long rest."
+										]
+									}
+								]
+							}
+						]
+					],
+					"source": "UAFighterRogueWizard",
+					"shortName": "Psychic Warrior (UA)",
+					"page": 1
 				}
 			],
 			"fluff": [

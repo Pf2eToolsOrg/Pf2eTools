@@ -6,6 +6,7 @@ class BackgroundPage extends ListPage {
 		const skillFilter = new Filter({header: "Skill Proficiencies", displayFn: StrUtil.toTitleCase});
 		const toolFilter = new Filter({header: "Tool Proficiencies", displayFn: StrUtil.toTitleCase});
 		const languageFilter = new Filter({header: "Language Proficiencies", displayFn: StrUtil.toTitleCase});
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
 
 		super({
 			dataSource: "data/backgrounds.json",
@@ -15,7 +16,8 @@ class BackgroundPage extends ListPage {
 				sourceFilter,
 				skillFilter,
 				toolFilter,
-				languageFilter
+				languageFilter,
+				miscFilter
 			],
 			filterSource: sourceFilter,
 
@@ -36,6 +38,7 @@ class BackgroundPage extends ListPage {
 		const skillDisplay = Renderer.background.getSkillSummary(bg.skillProficiencies, true, bg._fSkills = []);
 		Renderer.background.getToolSummary(bg.toolProficiencies, true, bg._fTools = []);
 		Renderer.background.getLanguageSummary(bg.languageProficiencies, true, bg._fLangs = []);
+		bg._fMisc = bg.srd ? ["SRD"] : [];
 
 		// populate filters
 		this._sourceFilter.addItem(bg.source);
@@ -83,7 +86,8 @@ class BackgroundPage extends ListPage {
 				bg.source,
 				bg._fSkills,
 				bg._fTools,
-				bg._fLangs
+				bg._fLangs,
+				bg._fMisc
 			);
 		});
 		FilterBox.selectFirstVisible(this._dataList);

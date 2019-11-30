@@ -834,7 +834,7 @@ class SubClassLoader {
 				const curParts = Hist._getHashParts();
 				if (curParts.length > 1) {
 					const newParts = [curParts[0]].concat(newHashStack);
-					HashLoad.cleanSetHash(HASH_START + newParts.join(HASH_PART_SEP));
+					HashLoad.cleanSetHash(`#${newParts.join(HASH_PART_SEP)}`);
 				}
 				return;
 			}
@@ -879,7 +879,7 @@ class SubClassLoader {
 				$.each($toShow, function (i, v) {
 					v.addClass(CLSS_ACTIVE);
 					$(`.${CLSS_SUBCLASS_FEATURE}[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
-					if (hideAllSources || hideSomeSources) {
+					if (hideAllSources) {
 						$otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).hide();
 					} else {
 						$otherSrcSubFeat.filter(`[${ATB_DATA_SC}="${v.attr(ATB_DATA_SC)}"][${ATB_DATA_SRC}="${v.attr(ATB_DATA_SRC)}"]`).show();
@@ -1068,7 +1068,7 @@ class SubClassLoader {
 				if (!part.startsWith(CLSS_HASH_FEATURE)) SubClassLoader.partCache.push(part);
 			}
 		}
-		return HASH_START + SubClassLoader.partCache.join(HASH_PART_SEP) + HASH_PART_SEP + featurePart;
+		return `#${SubClassLoader.partCache.join(HASH_PART_SEP)}${HASH_PART_SEP}${featurePart}`;
 	}
 
 	static updateClassTableLinks () {
@@ -1112,11 +1112,13 @@ class SubClassLoader {
 				}
 			}).filter(Boolean)[0];
 			if (navClass != null) {
-				const subClass = parentTr.length ? parentTr.hasClass("subclass-feature") : false;
+				const subClass = $ele.closest(".subclass-feature").length ? true
+					: parentTr.length ? parentTr.hasClass("subclass-feature") : false;
+				// const subClass = parentTr.length ? parentTr.hasClass("subclass-feature") : false;
 				// either the element itself or the root feature can be a special colour
-				const ua = $ele.parent().hasClass("spicy-sauce") ? true
+				const ua = $ele.closest(".spicy-sauce").length ? true
 					: parentTr.length ? parentTr.hasClass("spicy-sauce") : false;
-				const brew = $ele.parent().hasClass("refreshing-brew") ? true
+				const brew = $ele.closest(".refreshing-brew").length ? true
 					: parentTr.length ? parentTr.hasClass("refreshing-brew") : false;
 				$(`<div class="nav-item ${navClass} ${brew ? "purple" : ua && !subClass ? "grellow" : ua ? "green" : subClass ? "blue" : ""}">${displayText}</div>`).on("click", () => {
 					if (idTr.length) {

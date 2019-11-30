@@ -332,7 +332,7 @@ class TableDiceTest {
 				}
 			});
 
-			const cleanHeader = obj.colLabels[0].trim().replace(/^{@dice (.*?)(\|.*?)?}$/i, "$1");
+			const cleanHeader = Renderer.stripTags(obj.colLabels[0].trim());
 			const possibleRolls = new Set();
 			let hasPrompt = false;
 

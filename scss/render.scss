@@ -308,6 +308,55 @@ Renderer
 				animation-timing-function: linear;
 			}
 		}
+
+		&comic {
+			font-family: 'Blambot Casual', sans-serif;
+			color: #1942be;
+
+			&--h1 {
+				font-size: 140%;
+				font-variant: small-caps;
+			}
+
+			&--h2 {
+				font-size: 130%;
+			}
+
+			&--h3 {
+				font-size: 120%;
+			}
+
+			&--h4 {
+				font-size: 110%;
+			}
+
+			&--note {
+				opacity: 0.7;
+			}
+
+			&-img-speaker {
+				margin-top: -20px;
+				margin-bottom: -20px;
+
+				&--left {
+					float: left;
+					margin-right: 0;
+					margin-left: -20px;
+				}
+
+				&--right {
+					float: right;
+					margin-right: -20px;
+					margin-left: 0;
+				}
+
+				&::after {
+					content: '';
+					clear: both;
+					display: block;
+				}
+			}
+		}
 	}
 
 	&-item__ {
@@ -332,6 +381,12 @@ td > .rd__b:last-child {
 
 .night-mode {
 	.rd {
+		&__ {
+			&comic {
+				color: #95aaea;
+			}
+		}
+
 		&-item__ {
 			&type-rarity-attunement {
 				color: $rgb-night-font-color;

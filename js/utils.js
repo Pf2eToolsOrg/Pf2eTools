@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.89.1"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.91.0"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -15,7 +15,6 @@ HASH_PART_SEP = ",";
 HASH_LIST_SEP = "_";
 HASH_SUB_LIST_SEP = "~";
 HASH_SUB_KV_SEP = ":";
-HASH_START = "#";
 HASH_SUBCLASS = "sub:";
 HASH_BLANK = "blankhash";
 HASH_SUB_NONE = "null";
@@ -368,7 +367,7 @@ Parser.getSpeedString = (it) => {
 	}
 
 	function getVal (speedProp) {
-		return speedProp.number || speedProp;
+		return speedProp.number != null ? speedProp.number : speedProp;
 	}
 
 	function getCond (speedProp) {
@@ -1983,6 +1982,9 @@ SRC_LR = "LR";
 SRC_AL = "AL";
 SRC_SAC = "SAC";
 SRC_ERLW = "ERLW";
+SRC_EFR = "EFR";
+SRC_RMBRE = "RMBRE";
+SRC_RMR = "RMR";
 SRC_SCREEN = "Screen";
 
 SRC_AL_PREFIX = "AL";
@@ -2055,6 +2057,7 @@ SRC_UABAP = SRC_UA_PREFIX + "BardAndPaladin";
 SRC_UACDW = SRC_UA_PREFIX + "ClericDruidWizard";
 SRC_UAFRR = SRC_UA_PREFIX + "FighterRangerRogue";
 SRC_UACFV = SRC_UA_PREFIX + "ClassFeatureVariants";
+SRC_UAFRW = SRC_UA_PREFIX + "FighterRogueWizard";
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -2117,6 +2120,9 @@ Parser.SOURCE_JSON_TO_FULL[SRC_LR] = "Locathah Rising";
 Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
 Parser.SOURCE_JSON_TO_FULL[SRC_SAC] = "Sage Advice Compendium";
 Parser.SOURCE_JSON_TO_FULL[SRC_ERLW] = "Eberron: Rising from the Last War";
+Parser.SOURCE_JSON_TO_FULL[SRC_EFR] = "Eberron: Forgotten Relics";
+Parser.SOURCE_JSON_TO_FULL[SRC_RMBRE] = "The Lost Dungeon of Rickedness: Big Rick Energy";
+Parser.SOURCE_JSON_TO_FULL[SRC_RMR] = "Dungeons & Dragons vs. Rick and Morty: Basic Rules";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = AL_PREFIX + "Elemental Evil";
@@ -2180,6 +2186,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UABAP] = UA_PREFIX + "Bard and Paladin";
 Parser.SOURCE_JSON_TO_FULL[SRC_UACDW] = UA_PREFIX + "Cleric, Druid, and Wizard";
 Parser.SOURCE_JSON_TO_FULL[SRC_UAFRR] = UA_PREFIX + "Fighter, Ranger, and Rogue";
 Parser.SOURCE_JSON_TO_FULL[SRC_UACFV] = UA_PREFIX + "Class Feature Variants";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAFRW] = UA_PREFIX + "Fighter, Rogue, and Wizard";
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -2232,6 +2239,9 @@ Parser.SOURCE_JSON_TO_ABV[SRC_LR] = "LR";
 Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
 Parser.SOURCE_JSON_TO_ABV[SRC_SAC] = "SAC";
 Parser.SOURCE_JSON_TO_ABV[SRC_ERLW] = "ERLW";
+Parser.SOURCE_JSON_TO_ABV[SRC_EFR] = "EFR";
+Parser.SOURCE_JSON_TO_ABV[SRC_RMBRE] = "RMBRE";
+Parser.SOURCE_JSON_TO_ABV[SRC_RMR] = "RMR";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
@@ -2295,6 +2305,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UABAP] = "UABAP";
 Parser.SOURCE_JSON_TO_ABV[SRC_UACDW] = "UACDW";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAFRR] = "UAFRR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UACFV] = "UACFV";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAFRW] = "UAFRW";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -2456,8 +2467,9 @@ SourceUtil = {
 	},
 
 	getFilterGroup (source) {
-		if (BrewUtil.hasSourceJson(source.item)) return 2;
-		return Number(SourceUtil.isNonstandardSource(source.item));
+		if (source instanceof FilterItem) source = source.item;
+		if (BrewUtil.hasSourceJson(source)) return 2;
+		return Number(SourceUtil.isNonstandardSource(source));
 	}
 };
 
@@ -4233,11 +4245,12 @@ UrlUtil = {
 							if (BrewUtil.hasSourceJson(cls.source)) return;
 							else throw new Error("Class feature had no name!");
 						}
+						const nonStandardSourcePart = feature.source && SourceUtil.isNonstandardSource(feature.source) && !SourceUtil.isNonstandardSource(cls.source) ? `${HASH_PART_SEP}sources:1` : ""
 						out.push({
 							_type: "classFeature",
 							source: cls.source.source || cls.source,
 							name,
-							hash: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(`${feature.name} ${i + 1}`)}`,
+							hash: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(`${feature.name} ${i + 1}`)}${nonStandardSourcePart}`,
 							entry: feature,
 							level: i + 1
 						})
@@ -4403,7 +4416,7 @@ if (!IS_DEPLOYED && !IS_VTT && typeof window !== "undefined") {
 		if (noModifierKeys(e) && typeof d20 === "undefined") {
 			if (e.key === "#") {
 				const spl = window.location.href.split("/");
-				window.prompt("Copy to clipboard: Ctrl+C, Enter", `https://5e.tools/${spl[spl.length - 1]}`);
+				window.prompt("Copy to clipboard: Ctrl+C, Enter", `https://noads.5e.tools/${spl[spl.length - 1]}`);
 			}
 		}
 	});
@@ -4482,13 +4495,21 @@ SortUtil = {
 	/**
 	 * "Special Equipment" first, then alphabetical
 	 */
+	_MON_TRAIT_ORDER: [
+		"special equipment",
+		"shapechanger"
+	],
 	monTraitSort: (a, b) => {
 		if (!a && !b) return 0;
-		if (!a) return -1;
-		if (!b) return 1;
-		if (a.toLowerCase().trim() === "special equipment") return -1;
-		if (b.toLowerCase().trim() === "special equipment") return 1;
-		return SortUtil.ascSortLower(a, b);
+		const aClean = a.toLowerCase().trim();
+		const bClean = b.toLowerCase().trim();
+
+		const ixA = SortUtil._MON_TRAIT_ORDER.indexOf(aClean);
+		const ixB = SortUtil._MON_TRAIT_ORDER.indexOf(bClean);
+		if (~ixA && ~ixB) return ixA - ixB;
+		else if (~ixA) return -1;
+		else if (~ixB) return 1;
+		else return SortUtil.ascSort(aClean, bClean);
 	},
 
 	_alignFirst: ["L", "C"],
@@ -5199,7 +5220,8 @@ DataUtil = {
 			altArt: true,
 			otherSources: true,
 			variant: true,
-			dragonCastingColor: true
+			dragonCastingColor: true,
+			srd: true
 		},
 		_mergeCache: {},
 		async pMergeCopy (monList, mon, options) {
@@ -5230,7 +5252,8 @@ DataUtil = {
 	item: {
 		_MERGE_REQUIRES_PRESERVE: {
 			lootTables: true,
-			tier: true
+			tier: true,
+			srd: true
 		},
 		_mergeCache: {},
 		async pMergeCopy (itemList, item, options) {
@@ -5239,7 +5262,9 @@ DataUtil = {
 	},
 
 	background: {
-		_MERGE_REQUIRES_PRESERVE: {},
+		_MERGE_REQUIRES_PRESERVE: {
+			srd: true
+		},
 		_mergeCache: {},
 		async pMergeCopy (bgList, bg, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.background, UrlUtil.PG_BACKGROUNDS, bgList, bg, options);
@@ -5248,7 +5273,8 @@ DataUtil = {
 
 	race: {
 		_MERGE_REQUIRES_PRESERVE: {
-			subraces: true
+			subraces: true,
+			srd: true
 		},
 		_mergeCache: {},
 		async pMergeCopy (raceList, race, options) {
@@ -5279,7 +5305,8 @@ DataUtil = {
 									"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
 									"This change represents one of your skills atrophying as you focus on a different skill."
 								],
-								source: "UAClassFeatureVariants"
+								source: "UAClassFeatureVariants",
+								page: 1
 							};
 							featArr.splice(ixAsi + 1, 0, toInsert);
 						}
@@ -5444,6 +5471,7 @@ RollerUtil = {
 	isRollCol (colLabel) {
 		if (typeof colLabel !== "string") return false;
 		if (/^{@dice [^}]+}$/.test(colLabel.trim())) return true;
+		colLabel = Renderer.stripTags(colLabel);
 		return !!Renderer.dice.parseToTree(colLabel);
 	},
 

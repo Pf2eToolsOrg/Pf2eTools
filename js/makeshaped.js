@@ -24,8 +24,6 @@ class ShapedConverter {
 		const urls = [
 			`${SOURCE_INFO.bestiary.dir}index.json`,
 			`${SOURCE_INFO.spells.dir}index.json`,
-			`${SOURCE_INFO.bestiary.dir}srd-monsters.json`,
-			`${SOURCE_INFO.spells.dir}srd-spells.json`,
 			`${SOURCE_INFO.spells.dir}roll20.json`,
 			`${SOURCE_INFO.bestiary.dir}meta.json`
 		];
@@ -38,23 +36,13 @@ class ShapedConverter {
 		SOURCE_INFO.bestiary.fileIndex = data[0];
 		SOURCE_INFO.spells.fileIndex = data[1];
 		const inputs = {};
-		inputs._srdMonsters = data[2].monsters;
-		inputs._srdSpells = data[3].spells;
-		inputs._srdSpellRenames = data[3].spellRenames;
 		inputs._additionalSpellData = {};
 
-		data[4].spell.forEach(spell => inputs._additionalSpellData[spell.name] = Object.assign(spell.data, spell.shapedData));
+		data[2].spell.forEach(spell => inputs._additionalSpellData[spell.name] = Object.assign(spell.data, spell.shapedData));
 		inputs._legendaryGroup = {};
-		data[5].legendaryGroup.forEach(monsterDetails => {
+		data[3].legendaryGroup.forEach(monsterDetails => {
 			inputs._legendaryGroup[monsterDetails.source] = inputs._legendaryGroup[monsterDetails.source] || {};
 			inputs._legendaryGroup[monsterDetails.source][monsterDetails.name] = monsterDetails
-		});
-		Object.defineProperties(inputs, {
-			_srdMonsters: { writable: false, enumerable: false },
-			_srdSpells: { writable: false, enumerable: false },
-			_srdSpellRenames: { writable: false, enumerable: false },
-			_additionalSpellData: { writable: false, enumerable: false },
-			_legendaryGroup: { writable: false, enumerable: false }
 		});
 
 		Object.values(SOURCE_INFO).reduce((inputs, sourceType) => {
@@ -105,7 +93,7 @@ class ShapedConverter {
 		inputs[key] = inputs[key] || {
 			name,
 			key,
-			dependencies: key === SRC_PHB ? ['SRD'] : ['Player\'s Handbook'],
+			dependencies: key === SRC_PHB ? ['SRD'] : ["Player's Handbook"],
 			classes: {}
 		};
 		return inputs[key];
@@ -916,9 +904,6 @@ class ShapedConverter {
 
 	static convertData (inputs) {
 		const spellLevels = {};
-		const srdMonsters = inputs._srdMonsters;
-		const srdSpells = inputs._srdSpells;
-		const srdSpellRenames = inputs._srdSpellRenames;
 		const additionalSpellData = inputs._additionalSpellData;
 		const legendaryGroup = inputs._legendaryGroup;
 
@@ -939,7 +924,7 @@ class ShapedConverter {
 				data.monsters = data.monsterInput.map(monster => {
 					try {
 						const converted = this.processMonster(monster, legendaryGroup);
-						if (srdMonsters.includes(monster.name)) {
+						if (monster.srd) {
 							const pruned = (({name, lairActions, regionalEffects, regionalEffectsFade}) => ({
 								name,
 								lairActions,
@@ -964,10 +949,9 @@ class ShapedConverter {
 				data.spells = data.spellInput.map(spell => {
 					spellLevels[spell.name] = spell.level;
 					((spell.classes || {}).fromClassList || []).forEach(clazz => {
-						if ((srdSpells.includes(spell.name) || srdSpells.includes(srdSpellRenames[spell.name])) && clazz.source === SRC_PHB) {
-							return;
-						}
-						const nameToAdd = srdSpellRenames[spell.name] || spell.name;
+						if (spell.srd && clazz.source === SRC_PHB) return;
+
+						const nameToAdd = typeof spell.srd === "string" ? spell.srd : spell.name;
 						const sourceObject = clazz.source === SRC_PHB ? data : inputs[clazz.source];
 						if (!sourceObject) {
 							return;
@@ -1013,12 +997,12 @@ class ShapedConverter {
 						}
 						archetype.spells.push(spell.name);
 					});
-					if (srdSpells.includes(spell.name)) {
+					if (spell.srd === true) {
 						return null;
 					}
-					if (srdSpellRenames[spell.name]) {
+					if (spell.srd) {
 						return {
-							name: srdSpellRenames[spell.name],
+							name: spell.srd,
 							newName: spell.name
 						};
 					}
@@ -1079,36 +1063,33 @@ class ShapedConverter {
 	}
 }
 
-function rebuildShapedSources () {
-	shapedConverter.pGetInputs().then((inputs) => {
-		return Object.values(inputs).sort((a, b) => {
-			if (a.name === 'Player\'s Handbook') {
-				return -1;
-			} else if (b.name === 'Player\'s Handbook') {
-				return 1;
-			}
+async function rebuildShapedSources () {
+	const inputs = await shapedConverter.pGetInputs();
+
+	const sortedInputLists = Object.entries(inputs)
+		.filter(([k]) => !k.startsWith("_"))
+		.sort(([ka, a], [kb, b]) => {
+			if (a.name === "Player's Handbook") return -1;
+			else if (b.name === "Player's Handbook") return 1;
 			return a.name.localeCompare(b.name);
-		});
-	}).then(inputs => {
-		const checkedSources = {};
-		checkedSources[SRC_PHB] = true;
+		})
+		.map(([k, v]) => v);
 
-		$('.shaped-source').each((i, e) => {
-			const $e = $(e);
-			if ($e.prop('checked')) {
-				checkedSources[$e.val()] = true;
-			}
-			$e.parent().parent().remove();
-		});
+	const checkedSources = {};
+	checkedSources[SRC_PHB] = true;
 
-		inputs.forEach(input => {
-			const disabled = input.key === SRC_PHB ? 'disabled="disabled" ' : '';
-			const checked = checkedSources[input.key] ? 'checked="checked" ' : '';
-			$('#sourceList').append($(`<li><label class="shaped-label"><input class="shaped-source" type="checkbox" ${disabled}${checked} value="${input.key}"><span>${input.name}</span></label></li>`));
-		});
-	}).catch(e => {
-		alert(`${e}\n${e.stack}`);
-		setTimeout(() => { throw e; });
+	$('.shaped-source').each((i, e) => {
+		const $e = $(e);
+		if ($e.prop('checked')) {
+			checkedSources[$e.val()] = true;
+		}
+		$e.parent().parent().remove();
+	});
+
+	sortedInputLists.forEach(input => {
+		const disabled = input.key === SRC_PHB ? 'disabled="disabled" ' : '';
+		const checked = checkedSources[input.key] ? 'checked="checked" ' : '';
+		$('#sourceList').append($(`<li><label class="shaped-label"><input class="shaped-source" type="checkbox" ${disabled}${checked} value="${input.key}"><span>${input.name}</span></label></li>`));
 	});
 }
 
