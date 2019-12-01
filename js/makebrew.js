@@ -430,7 +430,7 @@ class Builder extends ProxyBase {
 						const out = this._ui._getJsonOutputTemplate();
 						out[this._prop] = [PropOrder.getOrdered(DataUtil.cleanJson(MiscUtil.copy(entry)), this._prop)];
 
-						const $content = Renderer.hover.$getHoverContent_statsCode(this._state.name);
+						const $content = Renderer.hover.$getHoverContent_statsCode(this._state);
 
 						Renderer.hover.getShowWindow(
 							$content,

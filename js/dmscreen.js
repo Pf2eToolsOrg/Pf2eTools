@@ -1242,7 +1242,7 @@ class Panel {
 		this.set$ContentTab(
 			PANEL_TYP_BLANK,
 			meta,
-			$(`<div/>`),
+			$(`<div class="dm-blank__panel"/>`),
 			title,
 			true
 		);

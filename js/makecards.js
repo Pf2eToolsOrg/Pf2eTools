@@ -174,8 +174,8 @@ class MakeCards extends BaseComponent {
 			<div class="col-1-5 mr-2 flex-vh-center">Type</div>
 			<div class="col-1-1 mr-2 flex-vh-center">Color</div>
 			<div class="col-1-1 mr-2 flex-vh-center">Icon</div>
-			<div class="col-1-2 mr-2 flex-vh-center">Count</div>
-			<div class="col-0-9 flex-v-center flex-h-right"/>
+			<div class="col-1 mr-2 flex-vh-center">Count</div>
+			<div class="col-1-1 flex-v-center flex-h-right"/>
 		</div>`.appendTo($wrpContainer);
 
 		const $wrpList = $(`<div class="w-100 h-100"/>`);
@@ -409,6 +409,37 @@ class MakeCards extends BaseComponent {
 				this._doSaveStateDebounced();
 			})
 			.val(cardMeta.count);
+
+		const $btnCopy =  $(`<button class="btn btn-default btn-xs mr-2" title="Copy JSON (SHIFT to view JSON)"><span class="glyphicon glyphicon-copy"/></button>`)
+			.click(async evt => {
+				const entityMeta = MakeCards._AVAILABLE_TYPES[listItem.values.entityType];
+				const toCopy = {
+					count: listItem.values.count,
+					color: listItem.values.color,
+					title: listItem.name,
+					icon: listItem.values.icon,
+					icon_back: listItem.values.icon,
+					contents: entityMeta.fnGetContents(listItem.values.entity),
+					tags: entityMeta.fnGetTags(listItem.values.entity)
+				};
+
+				if (evt.shiftKey) {
+					const $content = Renderer.hover.$getHoverContent_statsCode(toCopy);
+
+					Renderer.hover.getShowWindow(
+						$content,
+						Renderer.hover.getWindowPositionFromEvent(evt),
+						{
+							title: `Card Data \u2014 ${listItem.name}`,
+							isPermanent: true,
+							isBookContent: true
+						}
+					);
+				} else {
+					await MiscUtil.pCopyTextToClipboard(JSON.stringify(toCopy, null, 2));
+					JqueryUtil.showCopiedEffect($btnCopy, "Copied JSON!");
+				}
+			});
 		const $btnDelete = $(`<button class="btn btn-danger btn-xs" title="Remove"><span class="glyphicon glyphicon-trash"/></button>`)
 			.click(() => {
 				this._list.removeItem(uid);
@@ -423,8 +454,8 @@ class MakeCards extends BaseComponent {
 			<div class="col-1-5 mr-2 flex-vh-center">${cardMeta.entityType.toTitleCase()}</div>
 			<div class="col-1-1 mr-2 flex-vh-center">${$iptRgb}</div>
 			<div class="col-1-1 mr-2 flex-vh-center">${$btnIcon}</div>
-			<div class="col-1-2 mr-2 flex-vh-center">${$iptCount}</div>
-			<div class="col-0-9 flex-v-center flex-h-right">${$btnDelete}</div>
+			<div class="col-1 mr-2 flex-vh-center">${$iptCount}</div>
+			<div class="col-1-1 flex-v-center flex-h-right">${$btnCopy}${$btnDelete}</div>
 		</div>`;
 
 		const listItem = new ListItem(

@@ -105,9 +105,41 @@
 }
 // endregion
 
+// region sidebar
+.cls-side__ {
+	&name {
+		font-size: 1.8em;
+		font-family: 'Andada', serif;
+		font-variant: small-caps;
+		font-weight: 500;
+		color: $rgb-name-red;
+	}
+
+	&btn-toggle {
+		cursor: pointer;
+		font-size: initial;
+		color: black;
+	}
+}
+
+.night-mode {
+	.cls-side__ {
+		&name {
+			color: $rgb-night-name-orange;
+		}
+
+		&btn-toggle {
+			color: $rgb-night-font-color;
+		}
+	}
+}
+// endregion
+
+// region comparison view
 .cls-comp__wrp-features {
 	width: 400px;
 }
+// endregion
 
 // region class book view
 .cls-bkmv__wrp-tabs {
