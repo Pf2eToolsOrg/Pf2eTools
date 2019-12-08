@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.3.3",
+	"version": "1.3.4",
 	"definitions": {
 		"itemLookup": {
 			"type": "array",
@@ -25,6 +25,10 @@
 						"items": {
 							"$ref": "entry.json"
 						}
+					},
+					"template": {
+						"$comment": "Note that this is not used on item types.",
+						"type": "string"
 					}
 				},
 				"required": [

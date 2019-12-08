@@ -86,7 +86,7 @@ async function main () {
 		try {
 			fs.mkdirSync(`./${meta.page}`, { recursive: true })
 		} catch (err) {
-			if (err.code !== 'EEXIST') throw err
+			if (err.code !== "EEXIST") throw err
 		}
 
 		const entries = await meta.pGetEntries();
@@ -121,7 +121,7 @@ async function main () {
 
 	let sitemapLinkCount = 0;
 	const $urlSet = xmlbuilder
-		.create("urlset", {version: '1.0', encoding: 'UTF-8'})
+		.create("urlset", {version: "1.0", encoding: "UTF-8"})
 		.att("xmlns", "https://www.sitemaps.org/schemas/sitemap/0.9");
 
 	const $urlRoot = $urlSet.ele("url");

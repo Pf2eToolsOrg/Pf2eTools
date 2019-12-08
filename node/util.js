@@ -64,29 +64,6 @@ function dataRecurse (file, obj, primitiveHandlers, lastType, lastKey) {
 	}
 }
 
-const replacements = {
-	"—": "\\u2014",
-	"–": "\\u2013",
-	"−": "\\u2212",
-	"’": "'",
-	"“": '\\"',
-	"”": '\\"',
-	"…": "...",
-	" ": " ", // non-breaking space
-	"ﬁ": "fi"
-};
-
-const replacementRegex = new RegExp(Object.keys(replacements).join("|"), 'g');
-
-function getCleanJson (data, minify = false) {
-	data = minify ? JSON.stringify(data) : JSON.stringify(data, null, "\t") + "\n";
-	data = data.replace(replacementRegex, (match) => replacements[match]);
-	return data
-		.replace(/\u00AD/g, "") // soft hyphens
-		.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1")
-		.replace(/\s*(\.\.\.)/g, "$1");
-}
-
 function readJson (path) {
 	try {
 		return JSON.parse(fs.readFileSync(path, "utf8"));
@@ -165,7 +142,6 @@ const TAG_TO_DEFAULT_SOURCE = {
 
 module.exports = {
 	dataRecurse,
-	getCleanStringJson: getCleanJson,
 	readJson,
 	listFiles,
 	FILE_PREFIX_BLACKLIST,

@@ -6,7 +6,7 @@ function cultBoonTypeToFull (type) {
 
 class CultsBoonsPage extends ListPage {
 	constructor () {
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 		const typeFilter = new Filter({
 			header: "Type",
 			items: ["boon", "cult"],

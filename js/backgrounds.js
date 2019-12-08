@@ -2,7 +2,7 @@
 
 class BackgroundPage extends ListPage {
 	constructor () {
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 		const skillFilter = new Filter({header: "Skill Proficiencies", displayFn: StrUtil.toTitleCase});
 		const toolFilter = new Filter({header: "Tool Proficiencies", displayFn: StrUtil.toTitleCase});
 		const languageFilter = new Filter({header: "Language Proficiencies", displayFn: StrUtil.toTitleCase});

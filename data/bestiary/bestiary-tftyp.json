@@ -3,7 +3,8 @@
 		"dependencies": {
 			"monster": [
 				"MM",
-				"VGM"
+				"VGM",
+				"MTF"
 			]
 		},
 		"internalCopies": [
@@ -12,7 +13,8 @@
 		"otherSources": {
 			"monster": {
 				"MM": "TftYP",
-				"VGM": "TftYP"
+				"VGM": "TftYP",
+				"MTF": "TftYP"
 			}
 		}
 	},
@@ -419,233 +421,6 @@
 			"miscTags": [
 				"MW",
 				"RCH"
-			]
-		},
-		{
-			"source": "TftYP",
-			"name": "Choker",
-			"size": "S",
-			"type": "aberration",
-			"alignment": [
-				"C",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 16,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 13,
-				"formula": "3d6 + 3"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 16,
-			"dex": 14,
-			"con": 13,
-			"int": 4,
-			"wis": 12,
-			"cha": 7,
-			"skill": {
-				"stealth": "+6"
-			},
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 11,
-			"languages": [
-				"Deep Speech"
-			],
-			"cr": "1",
-			"trait": [
-				{
-					"name": "Aberrant Quickness (Recharge after a Short or Long Rest)",
-					"entries": [
-						"The choker can take an extra action on its turn."
-					]
-				},
-				{
-					"name": "Spider Climb",
-					"entries": [
-						"The choker can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The choker makes two tentacle attacks."
-					]
-				},
-				{
-					"name": "Tentacle",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. {@h}5 ({@damage 1d4 + 3}) bludgeoning damage plus 3 ({@damage 1d6}) piercing damage. If the target is a Large or smaller creature, it is {@condition grappled} (escape {@dc 15}). Until this grapple ends, the target is {@condition restrained}, and the choker can't use this tentacle on another target (the choker has two tentacles). If this attack is a critical hit, the target also can't breathe or speak until the grapple ends."
-					]
-				}
-			],
-			"page": 232,
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/610/choker.mp3",
-			"traitTags": [
-				"Spider Climb"
-			],
-			"actionTags": [
-				"Multiattack",
-				"Tentacles"
-			],
-			"languageTags": [
-				"DS"
-			],
-			"senseTags": [
-				"D"
-			],
-			"damageTags": [
-				"B",
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RCH"
-			]
-		},
-		{
-			"source": "TftYP",
-			"name": "Deathlock Wight",
-			"size": "M",
-			"type": "undead",
-			"alignment": [
-				"N",
-				"E"
-			],
-			"ac": [
-				12,
-				{
-					"ac": 15,
-					"condition": "with {@spell mage armor}",
-					"braces": true
-				}
-			],
-			"hp": {
-				"average": 37,
-				"formula": "5d8 + 15"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 11,
-			"dex": 14,
-			"con": 16,
-			"int": 12,
-			"wis": 14,
-			"cha": 16,
-			"save": {
-				"wis": "+4"
-			},
-			"skill": {
-				"arcana": "+3",
-				"perception": "+4"
-			},
-			"resist": [
-				"necrotic",
-				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks"
-				}
-			],
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"exhaustion",
-				"poisoned"
-			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 14,
-			"languages": [
-				"the languages it knew in life"
-			],
-			"cr": "3",
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The wight's innate spellcasting ability is Charisma (spell save {@dc 13}). It can innately cast the following spells, requiring no verbal or material components:"
-					],
-					"will": [
-						"{@spell detect magic}",
-						"{@spell disguise self}",
-						"{@spell mage armor}"
-					],
-					"daily": {
-						"1e": [
-							"{@spell fear}",
-							"{@spell hold person}",
-							"{@spell misty step}"
-						]
-					},
-					"ability": "cha"
-				}
-			],
-			"trait": [
-				{
-					"name": "Sunlight Sensitivity",
-					"entries": [
-						"While in sunlight, the wight has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The wight attacks twice with Grave Bolt."
-					]
-				},
-				{
-					"name": "Grave Bolt",
-					"entries": [
-						"{@atk rs} {@hit 5} to hit, range 120 ft., one target. {@h}7 ({@damage 1d8 + 3}) necrotic damage."
-					]
-				},
-				{
-					"name": "Life Drain",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}9 ({@damage 2d6 + 2}) necrotic damage. The target must succeed on a {@dc 13} Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken.",
-						"This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0. A humanoid slain by this attack rises 24 hours later as a zombie under the wight's control, unless the humanoid is restored to life or its body is destroyed. The wight can have no more than twelve zombies under its control at one time."
-					]
-				}
-			],
-			"page": 233,
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/613/deathlock-wight.mp3",
-			"traitTags": [
-				"Sunlight Sensitivity"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"senseTags": [
-				"D"
-			],
-			"spellcastingTags": [
-				"I"
-			],
-			"damageTags": [
-				"N"
-			],
-			"miscTags": [
-				"MW"
 			]
 		},
 		{
@@ -4588,118 +4363,6 @@
 		},
 		{
 			"source": "TftYP",
-			"name": "Vampiric Mist",
-			"size": "M",
-			"type": "undead",
-			"alignment": [
-				"C",
-				"E"
-			],
-			"ac": [
-				13
-			],
-			"hp": {
-				"average": 45,
-				"formula": "6d8 + 18"
-			},
-			"speed": {
-				"walk": 0,
-				"fly": {
-					"number": 30,
-					"condition": "(hover)"
-				},
-				"canHover": true
-			},
-			"str": 6,
-			"dex": 16,
-			"con": 16,
-			"int": 6,
-			"wis": 12,
-			"cha": 7,
-			"save": {
-				"wis": "+3"
-			},
-			"resist": [
-				"acid",
-				"cold",
-				"lightning",
-				"necrotic",
-				"thunder",
-				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks"
-				}
-			],
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"charmed",
-				"exhaustion",
-				"grappled",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone",
-				"restrained"
-			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 11,
-			"cr": "3",
-			"trait": [
-				{
-					"name": "Blood Sense",
-					"entries": [
-						"The vampiric mist can sense living creatures that have blood or similar vital fluids in a radius of 60 feet."
-					]
-				},
-				{
-					"name": "Forbiddance",
-					"entries": [
-						"The vampiric mist can't enter a residence without an invitation from one of the occupants."
-					]
-				},
-				{
-					"name": "Misty Form",
-					"entries": [
-						"The vampiric mist can occupy another creature's space and vice versa. In addition, if air can pass through a space, the mist can pass through it without squeezing. Each foot of movement in water costs it 2 extra feet, rather than 1 extra foot. The mist can't manipulate objects in any way that requires hands; it can apply simple force only."
-					]
-				},
-				{
-					"name": "Sunlight Hypersensitivity",
-					"entries": [
-						"The vampiric mist takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, the mist has disadvantage on attack rolls and ability checks."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Blood Drain",
-					"entries": [
-						"One creature in the vampiric mist's space must make a {@dc 13} Constitution saving throw (undead and constructs automatically succeed). On a failed save, the target takes 10 ({@damage 2d6 + 3}) necrotic damage, its hit point maximum is reduced by an amount equal to the necrotic damage taken, and the mist regains hit points equal to that amount. This reduction to the target's hit point maximum lasts until the target finishes a long rest. It dies if this effect reduces its hit point maximum to 0."
-					]
-				}
-			],
-			"page": 247,
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/713/vampiric-mist.mp3",
-			"traitTags": [
-				"Sunlight Sensitivity"
-			],
-			"senseTags": [
-				"D"
-			],
-			"damageTags": [
-				"N"
-			]
-		},
-		{
-			"source": "TftYP",
 			"isNpc": true,
 			"name": "White Maw",
 			"size": "G",
@@ -5674,7 +5337,7 @@
 			"source": "TftYP",
 			"_copy": {
 				"name": "Deathlock Wight",
-				"source": "TftYP",
+				"source": "MTF",
 				"_mod": {
 					"*": {
 						"mode": "replaceTxt",

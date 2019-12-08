@@ -1,8 +1,8 @@
 "use strict";
 
 if (typeof require !== "undefined") {
-	require('../js/utils.js');
-	require('../js/render.js');
+	require("../js/utils.js");
+	require("../js/render.js");
 }
 
 async function pPreProcessSubclassBrew (ths, brew) {
@@ -528,7 +528,8 @@ Omnidexer.TO_INDEX = [
 		category: Parser.CAT_ID_VARIANT_OPTIONAL_RULE,
 		file: "variantrules.json",
 		listProp: "variantrule",
-		baseUrl: "variantrules.html"
+		baseUrl: "variantrules.html",
+		hover: true
 		// FIXME is this still needed?
 		// deepIndex: (indexer, primary, it) => {
 		// 	const names = [];

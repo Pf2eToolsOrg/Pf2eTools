@@ -9,7 +9,7 @@ function makeContentsBlock (i, loc) {
 	let out = "<ul>";
 	loc.tables.forEach((t, j) => {
 		const tableName = getTableName(loc, t);
-		out += `<li class="lst--border"><a id="${i},${j}" href="#${UrlUtil.encodeForHash([loc.name, loc.source, t.minlvl + "-" + t.maxlvl])}" title="${tableName}">${tableName}</a></li>`;
+		out += `<li class="lst--border"><a id="${i},${j}" href="#${UrlUtil.encodeForHash([loc.name, loc.source, `${t.minlvl}-${t.maxlvl}`])}" title="${tableName}">${tableName}</a></li>`;
 	});
 	out += "</ul>";
 	return out;
@@ -91,7 +91,7 @@ function loadHash (id) {
 
 	for (let i = 0; i < table.length; i++) {
 		const range = table[i].min === table[i].max ? pad(table[i].min) : `${pad(table[i].min)}-${pad(table[i].max)}`;
-		htmlText += `<tr><td class="text-center">${range}</td><td>${getRenderedText(table[i].result)}</td></tr>`;
+		htmlText += `<tr><td class="text-center p-0">${range}</td><td class="p-0">${getRenderedText(table[i].result)}</td></tr>`;
 	}
 
 	htmlText += `

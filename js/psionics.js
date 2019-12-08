@@ -18,7 +18,7 @@ function getHiddenModeList (psionic) {
 
 class PsionicsPage extends ListPage {
 	constructor () {
-		const sourceFilter = getSourceFilter({
+		const sourceFilter = SourceFilter.getInstance({
 			deselFn: () => false
 		});
 		const typeFilter = new Filter({header: "Type", items: [Parser.PSI_ABV_TYPE_TALENT, Parser.PSI_ABV_TYPE_DISCIPLINE], displayFn: Parser.psiTypeToFull});

@@ -161,7 +161,7 @@ class PageFilterSpells {
 	}
 
 	static getFltrSpellLevelStr (level) {
-		return level === 0 ? Parser.spLevelToFull(level) : Parser.spLevelToFull(level) + " level";
+		return level === 0 ? Parser.spLevelToFull(level) : `${Parser.spLevelToFull(level)} level`;
 	}
 
 	static getRangeType (range) {
@@ -204,7 +204,7 @@ class PageFilterSpells {
 	constructor () {
 		this._brewSpellClasses = {PHB: {}};
 
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 		const levelFilter = new Filter({
 			header: "Level",
 			items: [
@@ -233,7 +233,8 @@ class PageFilterSpells {
 		const schoolFilter = new Filter({
 			header: "School",
 			items: [...Parser.SKL_ABVS],
-			displayFn: Parser.spSchoolAbvToFull
+			displayFn: Parser.spSchoolAbvToFull,
+			itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.spSchoolAbvToFull(a.item), Parser.spSchoolAbvToFull(b.item))
 		});
 		const subSchoolFilter = new Filter({
 			header: "Subschool",
@@ -408,6 +409,7 @@ class PageFilterSpells {
 
 		// region populate filters
 		if (spell.level > 9) this._levelFilter.addItem(spell.level);
+		this._schoolFilter.addItem(spell.school);
 		this._sourceFilter.addItem(spell._fSources);
 		this._metaFilter.addItem(spell._fMeta);
 		this._raceFilter.addItem(spell._fRaces);

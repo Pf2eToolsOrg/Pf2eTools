@@ -6,7 +6,7 @@ class RenderItems {
 
 		return $$`
 			${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getNameTr(item)}
+			${Renderer.utils.getNameTr(item, {page: UrlUtil.PG_ITEMS})}
 			<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td></tr>
 			<tr>
 				<td colspan="2">${[Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>

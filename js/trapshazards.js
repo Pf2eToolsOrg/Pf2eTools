@@ -8,7 +8,7 @@ function filterTypeSort (a, b) {
 
 class TrapsHazardsPage extends ListPage {
 	constructor () {
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 		const typeFilter = new Filter({
 			header: "Type",
 			items: [

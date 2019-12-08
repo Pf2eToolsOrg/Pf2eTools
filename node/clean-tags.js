@@ -2,6 +2,7 @@
 
 const fs = require("fs");
 const ut = require("./util");
+require("../js/utils");
 
 const BLACKLIST_FILE_PREFIXES = [
 	...ut.FILE_PREFIX_BLACKLIST,
@@ -62,6 +63,6 @@ files.forEach(f => {
 		return all;
 	});
 
-	const out = ut.getCleanStringJson(skippedDefaultSources);
+	const out = CleanUtil.getCleanJson(skippedDefaultSources);
 	fs.writeFileSync(f, JSON.parse(out), "utf-8");
 });

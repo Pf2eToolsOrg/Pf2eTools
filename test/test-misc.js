@@ -1,4 +1,4 @@
-require('../js/utils.js');
+require("../js/utils.js");
 
 function testCatIds () {
 	const errors = [];

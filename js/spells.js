@@ -114,10 +114,44 @@ class SpellsPage {
 	}
 
 	doLoadHash (id) {
-		const $pageContent = $("#pagecontent").empty();
+		Renderer.get().setFirstSection(true);
+		const $content = $("#pagecontent").empty();
 		const spell = spellList[id];
-		$pageContent.append(RenderSpells.$getRenderedSpell(spell, SUBCLASS_LOOKUP));
-		loadSubHash([]);
+
+		function buildStatsTab () {
+			$content.append(RenderSpells.$getRenderedSpell(spell, SUBCLASS_LOOKUP));
+		}
+
+		function buildFluffTab (isImageTab) {
+			return Renderer.utils.pBuildFluffTab(
+				isImageTab,
+				$content,
+				spell,
+				(fluffJson) => spell.fluff || fluffJson.spell.find(it => it.name === spell.name && it.source === spell.source),
+				null,
+				() => false
+			);
+		}
+
+		const statTab = Renderer.utils.tabButton(
+			"Spell",
+			() => {},
+			buildStatsTab
+		);
+		const infoTab = Renderer.utils.tabButton(
+			"Info",
+			() => {},
+			buildFluffTab
+		);
+		const picTab = Renderer.utils.tabButton(
+			"Images",
+			() => {},
+			buildFluffTab.bind(null, true)
+		);
+
+		// only display the "Info"/"Images" tabs if there's some fluff info--currently (2019-12-08), no official spell has fluff
+		if (spell.fluff && spell.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
+		else Renderer.utils.bindTabButtons(statTab);
 
 		ListUtil.updateSelected();
 	}

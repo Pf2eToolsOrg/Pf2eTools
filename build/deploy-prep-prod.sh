@@ -5,11 +5,14 @@ version=$1
 # Set the IS_DEPLOYED variable for production.
 sed -i 's/IS_DEPLOYED\s*=\s*undefined/IS_DEPLOYED='"\"${version}\""'/g' js/utils.js
 
-echo "Making the javascript cry (Minifying)."
+echo "Minifying JavaScript."
 for f in js/*.js
 do
-    npm run minify -- "$f" --out-file "$f"
+    npm run minify:js -- "$f" --out-file "$f"
 done
+
+echo "Minifying JSON."
+npm run minify:json
 
 echo "Optimizing the header."
 # Header / Day-Night mode

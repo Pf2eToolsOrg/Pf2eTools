@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.91.1"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.92.0"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -69,7 +69,7 @@ String.prototype.toTitleCase = String.prototype.toTitleCase || function () {
 	});
 
 	if (!StrUtil._TITLE_LOWER_WORDS_RE) {
-		StrUtil._TITLE_LOWER_WORDS_RE = StrUtil.TITLE_LOWER_WORDS.map(it => new RegExp(`\\s${it}\\s`, 'g'));
+		StrUtil._TITLE_LOWER_WORDS_RE = StrUtil.TITLE_LOWER_WORDS.map(it => new RegExp(`\\s${it}\\s`, "g"));
 	}
 
 	for (let i = 0; i < StrUtil.TITLE_LOWER_WORDS.length; i++) {
@@ -81,7 +81,7 @@ String.prototype.toTitleCase = String.prototype.toTitleCase || function () {
 	}
 
 	if (!StrUtil._TITLE_UPPER_WORDS_RE) {
-		StrUtil._TITLE_UPPER_WORDS_RE = StrUtil.TITLE_UPPER_WORDS.map(it => new RegExp(`\\b${it}\\b`, 'g'));
+		StrUtil._TITLE_UPPER_WORDS_RE = StrUtil.TITLE_UPPER_WORDS.map(it => new RegExp(`\\b${it}\\b`, "g"));
 	}
 
 	for (let i = 0; i < StrUtil.TITLE_UPPER_WORDS.length; i++) {
@@ -179,7 +179,7 @@ String.prototype.last = String.prototype.last || function () {
 };
 
 String.prototype.escapeRegexp = String.prototype.escapeRegexp || function () {
-	return this.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+	return this.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
 };
 
 Array.prototype.joinConjunct = Array.prototype.joinConjunct || function (joiner, lastJoiner, nonOxford) {
@@ -233,6 +233,36 @@ StrUtil = {
 		return str.toTitleCase();
 	}
 };
+
+CleanUtil = {
+	getCleanJson (data, minify = false) {
+		let str = minify ? JSON.stringify(data) : `${JSON.stringify(data, null, "\t")}\n`;
+		str = str.replace(CleanUtil.REPLACEMENT_REGEX, (match) => CleanUtil.REPLACEMENTS[match]);
+		return str
+			.replace(/\u00AD/g, "") // soft hyphens
+			.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1")
+			.replace(/\s*(\.\s*\.\s*\.)/g, "$1");
+	},
+
+	getReplacedQuotesText (str) {
+		return str
+			.replace(/’/g, "'")
+			.replace(/[“”]/g, `"`)
+			.replace(/…/g, `...`)
+	}
+}
+CleanUtil.REPLACEMENTS = {
+	"—": "\\u2014",
+	"–": "\\u2013",
+	"−": "\\u2212",
+	"’": "'",
+	"“": `\\"`,
+	"”": `\\"`,
+	"…": "...",
+	" ": " ", // non-breaking space
+	"ﬁ": "fi"
+};
+CleanUtil.REPLACEMENT_REGEX = new RegExp(Object.keys(CleanUtil.REPLACEMENTS).join("|"), "g");
 
 // PARSING =============================================================================================================
 Parser = {};
@@ -352,11 +382,13 @@ Parser.getAbilityModNumber = function (abilityScore) {
 
 Parser.getAbilityModifier = function (abilityScore) {
 	let modifier = Parser.getAbilityModNumber(abilityScore);
-	if (modifier >= 0) modifier = "+" + modifier;
-	return modifier;
+	if (modifier >= 0) modifier = `+${modifier}`;
+	return `${modifier}`;
 };
 
 Parser.getSpeedString = (it) => {
+	if (it.speed == null) return "\u2014";
+
 	function procSpeed (propName) {
 		function addSpeed (s) {
 			stack.push(`${propName === "walk" ? "" : `${propName} `}${getVal(s)} ft.${getCond(s)}`);
@@ -405,7 +437,7 @@ Parser.speedToProgressive = function (prop) {
 };
 
 Parser._addCommas = function (intNum) {
-	return (intNum + "").replace(/(\d)(?=(\d{3})+$)/g, "$1,");
+	return `${intNum}`.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 };
 
 Parser.crToXp = function (cr) {
@@ -809,7 +841,7 @@ Parser.spMetaToFull = function (meta) {
 };
 
 Parser.spLevelSchoolMetaToFull = function (level, school, meta, subschools) {
-	const levelPart = level === 0 ? Parser.spLevelToFull(level).toLowerCase() : Parser.spLevelToFull(level) + "-level";
+	const levelPart = level === 0 ? Parser.spLevelToFull(level).toLowerCase() : `${Parser.spLevelToFull(level)}-level`;
 	let levelSchoolStr = level === 0 ? `${Parser.spSchoolAndSubschoolsAbvsToFull(school, subschools)} ${levelPart}` : `${levelPart} ${Parser.spSchoolAndSubschoolsAbvsToFull(school, subschools).toLowerCase()}`;
 	return levelSchoolStr + Parser.spMetaToFull(meta);
 };
@@ -1071,7 +1103,7 @@ Parser.DURATION_AMOUNT_TYPES = [
 
 Parser.spClassesToFull = function (classes, textOnly) {
 	const fromSubclasses = Parser.spSubclassesToFull(classes, textOnly);
-	return Parser.spMainClassesToFull(classes, textOnly) + (fromSubclasses ? ", " + fromSubclasses : "");
+	return `${Parser.spMainClassesToFull(classes, textOnly)}${fromSubclasses ? `, ${fromSubclasses}` : ""}`
 };
 
 Parser.spMainClassesToFull = function (classes, textOnly = false, prop = "fromClassList") {
@@ -1985,79 +2017,80 @@ SRC_ERLW = "ERLW";
 SRC_EFR = "EFR";
 SRC_RMBRE = "RMBRE";
 SRC_RMR = "RMR";
+SRC_MFF = "MFF";
 SRC_SCREEN = "Screen";
 
 SRC_AL_PREFIX = "AL";
 
-SRC_ALCoS = SRC_AL_PREFIX + "CurseOfStrahd";
-SRC_ALEE = SRC_AL_PREFIX + "ElementalEvil";
-SRC_ALRoD = SRC_AL_PREFIX + "RageOfDemons";
+SRC_ALCoS = `${SRC_AL_PREFIX}CurseOfStrahd`;
+SRC_ALEE = `${SRC_AL_PREFIX}ElementalEvil`;
+SRC_ALRoD = `${SRC_AL_PREFIX}RageOfDemons`;
 
 SRC_PS_PREFIX = "PS";
 
-SRC_PSA = SRC_PS_PREFIX + "A";
-SRC_PSI = SRC_PS_PREFIX + "I";
-SRC_PSK = SRC_PS_PREFIX + "K";
-SRC_PSZ = SRC_PS_PREFIX + "Z";
-SRC_PSX = SRC_PS_PREFIX + "X";
-SRC_PSD = SRC_PS_PREFIX + "D";
+SRC_PSA = `${SRC_PS_PREFIX}A`;
+SRC_PSI = `${SRC_PS_PREFIX}I`;
+SRC_PSK = `${SRC_PS_PREFIX}K`;
+SRC_PSZ = `${SRC_PS_PREFIX}Z`;
+SRC_PSX = `${SRC_PS_PREFIX}X`;
+SRC_PSD = `${SRC_PS_PREFIX}D`;
 
 SRC_UA_PREFIX = "UA";
 
-SRC_UAA = SRC_UA_PREFIX + "Artificer";
-SRC_UAEAG = SRC_UA_PREFIX + "EladrinAndGith";
-SRC_UAEBB = SRC_UA_PREFIX + "Eberron";
-SRC_UAFFR = SRC_UA_PREFIX + "FeatsForRaces";
-SRC_UAFFS = SRC_UA_PREFIX + "FeatsForSkills";
-SRC_UAFO = SRC_UA_PREFIX + "FiendishOptions";
-SRC_UAFT = SRC_UA_PREFIX + "Feats";
-SRC_UAGH = SRC_UA_PREFIX + "GothicHeroes";
-SRC_UAMDM = SRC_UA_PREFIX + "ModernMagic";
-SRC_UASSP = SRC_UA_PREFIX + "StarterSpells";
-SRC_UATMC = SRC_UA_PREFIX + "TheMysticClass";
-SRC_UATOBM = SRC_UA_PREFIX + "ThatOldBlackMagic";
-SRC_UATRR = SRC_UA_PREFIX + "TheRangerRevised";
-SRC_UAWA = SRC_UA_PREFIX + "WaterborneAdventures";
-SRC_UAVR = SRC_UA_PREFIX + "VariantRules";
-SRC_UALDR = SRC_UA_PREFIX + "LightDarkUnderdark";
-SRC_UARAR = SRC_UA_PREFIX + "RangerAndRogue";
-SRC_UAATOSC = SRC_UA_PREFIX + "ATrioOfSubclasses";
-SRC_UABPP = SRC_UA_PREFIX + "BarbarianPrimalPaths";
-SRC_UARSC = SRC_UA_PREFIX + "RevisedSubclasses";
-SRC_UAKOO = SRC_UA_PREFIX + "KitsOfOld";
-SRC_UABBC = SRC_UA_PREFIX + "BardBardColleges";
-SRC_UACDD = SRC_UA_PREFIX + "ClericDivineDomains";
-SRC_UAD = SRC_UA_PREFIX + "Druid";
-SRC_UARCO = SRC_UA_PREFIX + "RevisedClassOptions";
-SRC_UAF = SRC_UA_PREFIX + "Fighter";
-SRC_UAM = SRC_UA_PREFIX + "Monk";
-SRC_UAP = SRC_UA_PREFIX + "Paladin";
-SRC_UAMC = SRC_UA_PREFIX + "ModifyingClasses";
-SRC_UAS = SRC_UA_PREFIX + "Sorcerer";
-SRC_UAWAW = SRC_UA_PREFIX + "WarlockAndWizard";
-SRC_UATF = SRC_UA_PREFIX + "TheFaithful";
-SRC_UAWR = SRC_UA_PREFIX + "WizardRevisited";
-SRC_UAESR = SRC_UA_PREFIX + "ElfSubraces";
-SRC_UAMAC = SRC_UA_PREFIX + "MassCombat";
-SRC_UA3PE = SRC_UA_PREFIX + "ThreePillarExperience";
-SRC_UAGHI = SRC_UA_PREFIX + "GreyhawkInitiative";
-SRC_UATSC = SRC_UA_PREFIX + "ThreeSubclasses";
-SRC_UAOD = SRC_UA_PREFIX + "OrderDomain";
-SRC_UACAM = SRC_UA_PREFIX + "CentaursMinotaurs";
-SRC_UAGSS = SRC_UA_PREFIX + "GiantSoulSorcerer";
-SRC_UARoE = SRC_UA_PREFIX + "RacesOfEberron";
-SRC_UARoR = SRC_UA_PREFIX + "RacesOfRavnica";
-SRC_UAWGE = SRC_UA_PREFIX + "WGE";
-SRC_UAOSS = SRC_UA_PREFIX + "OfShipsAndSea";
-SRC_UASIK = SRC_UA_PREFIX + "Sidekicks";
-SRC_UAAR = SRC_UA_PREFIX + "ArtificerRevisited";
-SRC_UABAM = SRC_UA_PREFIX + "BarbarianAndMonk";
-SRC_UASAW = SRC_UA_PREFIX + "SorcererAndWarlock";
-SRC_UABAP = SRC_UA_PREFIX + "BardAndPaladin";
-SRC_UACDW = SRC_UA_PREFIX + "ClericDruidWizard";
-SRC_UAFRR = SRC_UA_PREFIX + "FighterRangerRogue";
-SRC_UACFV = SRC_UA_PREFIX + "ClassFeatureVariants";
-SRC_UAFRW = SRC_UA_PREFIX + "FighterRogueWizard";
+SRC_UAA = `${SRC_UA_PREFIX}Artificer`;
+SRC_UAEAG = `${SRC_UA_PREFIX}EladrinAndGith`;
+SRC_UAEBB = `${SRC_UA_PREFIX}Eberron`;
+SRC_UAFFR = `${SRC_UA_PREFIX}FeatsForRaces`;
+SRC_UAFFS = `${SRC_UA_PREFIX}FeatsForSkills`;
+SRC_UAFO = `${SRC_UA_PREFIX}FiendishOptions`;
+SRC_UAFT = `${SRC_UA_PREFIX}Feats`;
+SRC_UAGH = `${SRC_UA_PREFIX}GothicHeroes`;
+SRC_UAMDM = `${SRC_UA_PREFIX}ModernMagic`;
+SRC_UASSP = `${SRC_UA_PREFIX}StarterSpells`;
+SRC_UATMC = `${SRC_UA_PREFIX}TheMysticClass`;
+SRC_UATOBM = `${SRC_UA_PREFIX}ThatOldBlackMagic`;
+SRC_UATRR = `${SRC_UA_PREFIX}TheRangerRevised`;
+SRC_UAWA = `${SRC_UA_PREFIX}WaterborneAdventures`;
+SRC_UAVR = `${SRC_UA_PREFIX}VariantRules`;
+SRC_UALDR = `${SRC_UA_PREFIX}LightDarkUnderdark`;
+SRC_UARAR = `${SRC_UA_PREFIX}RangerAndRogue`;
+SRC_UAATOSC = `${SRC_UA_PREFIX}ATrioOfSubclasses`;
+SRC_UABPP = `${SRC_UA_PREFIX}BarbarianPrimalPaths`;
+SRC_UARSC = `${SRC_UA_PREFIX}RevisedSubclasses`;
+SRC_UAKOO = `${SRC_UA_PREFIX}KitsOfOld`;
+SRC_UABBC = `${SRC_UA_PREFIX}BardBardColleges`;
+SRC_UACDD = `${SRC_UA_PREFIX}ClericDivineDomains`;
+SRC_UAD = `${SRC_UA_PREFIX}Druid`;
+SRC_UARCO = `${SRC_UA_PREFIX}RevisedClassOptions`;
+SRC_UAF = `${SRC_UA_PREFIX}Fighter`;
+SRC_UAM = `${SRC_UA_PREFIX}Monk`;
+SRC_UAP = `${SRC_UA_PREFIX}Paladin`;
+SRC_UAMC = `${SRC_UA_PREFIX}ModifyingClasses`;
+SRC_UAS = `${SRC_UA_PREFIX}Sorcerer`;
+SRC_UAWAW = `${SRC_UA_PREFIX}WarlockAndWizard`;
+SRC_UATF = `${SRC_UA_PREFIX}TheFaithful`;
+SRC_UAWR = `${SRC_UA_PREFIX}WizardRevisited`;
+SRC_UAESR = `${SRC_UA_PREFIX}ElfSubraces`;
+SRC_UAMAC = `${SRC_UA_PREFIX}MassCombat`;
+SRC_UA3PE = `${SRC_UA_PREFIX}ThreePillarExperience`;
+SRC_UAGHI = `${SRC_UA_PREFIX}GreyhawkInitiative`;
+SRC_UATSC = `${SRC_UA_PREFIX}ThreeSubclasses`;
+SRC_UAOD = `${SRC_UA_PREFIX}OrderDomain`;
+SRC_UACAM = `${SRC_UA_PREFIX}CentaursMinotaurs`;
+SRC_UAGSS = `${SRC_UA_PREFIX}GiantSoulSorcerer`;
+SRC_UARoE = `${SRC_UA_PREFIX}RacesOfEberron`;
+SRC_UARoR = `${SRC_UA_PREFIX}RacesOfRavnica`;
+SRC_UAWGE = `${SRC_UA_PREFIX}WGE`;
+SRC_UAOSS = `${SRC_UA_PREFIX}OfShipsAndSea`;
+SRC_UASIK = `${SRC_UA_PREFIX}Sidekicks`;
+SRC_UAAR = `${SRC_UA_PREFIX}ArtificerRevisited`;
+SRC_UABAM = `${SRC_UA_PREFIX}BarbarianAndMonk`;
+SRC_UASAW = `${SRC_UA_PREFIX}SorcererAndWarlock`;
+SRC_UABAP = `${SRC_UA_PREFIX}BardAndPaladin`;
+SRC_UACDW = `${SRC_UA_PREFIX}ClericDruidWizard`;
+SRC_UAFRR = `${SRC_UA_PREFIX}FighterRangerRogue`;
+SRC_UACFV = `${SRC_UA_PREFIX}ClassFeatureVariants`;
+SRC_UAFRW = `${SRC_UA_PREFIX}FighterRogueWizard`;
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -2123,70 +2156,71 @@ Parser.SOURCE_JSON_TO_FULL[SRC_ERLW] = "Eberron: Rising from the Last War";
 Parser.SOURCE_JSON_TO_FULL[SRC_EFR] = "Eberron: Forgotten Relics";
 Parser.SOURCE_JSON_TO_FULL[SRC_RMBRE] = "The Lost Dungeon of Rickedness: Big Rick Energy";
 Parser.SOURCE_JSON_TO_FULL[SRC_RMR] = "Dungeons & Dragons vs. Rick and Morty: Basic Rules";
+Parser.SOURCE_JSON_TO_FULL[SRC_MFF] = "Mordenkainen's Fiendish Folio";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
-Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = AL_PREFIX + "Curse of Strahd";
-Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = AL_PREFIX + "Elemental Evil";
-Parser.SOURCE_JSON_TO_FULL[SRC_ALRoD] = AL_PREFIX + "Rage of Demons";
-Parser.SOURCE_JSON_TO_FULL[SRC_PSA] = PS_PREFIX + "Amonkhet";
-Parser.SOURCE_JSON_TO_FULL[SRC_PSI] = PS_PREFIX + "Innistrad";
-Parser.SOURCE_JSON_TO_FULL[SRC_PSK] = PS_PREFIX + "Kaladesh";
-Parser.SOURCE_JSON_TO_FULL[SRC_PSZ] = PS_PREFIX + "Zendikar";
-Parser.SOURCE_JSON_TO_FULL[SRC_PSX] = PS_PREFIX + "Ixalan";
-Parser.SOURCE_JSON_TO_FULL[SRC_PSD] = PS_PREFIX + "Dominaria";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAA] = UA_PREFIX + "Artificer";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAEAG] = UA_PREFIX + "Eladrin and Gith";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAEBB] = UA_PREFIX + "Eberron";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFFR] = UA_PREFIX + "Feats for Races";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFFS] = UA_PREFIX + "Feats for Skills";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFO] = UA_PREFIX + "Fiendish Options";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFT] = UA_PREFIX + "Feats";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAGH] = UA_PREFIX + "Gothic Heroes";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAMDM] = UA_PREFIX + "Modern Magic";
-Parser.SOURCE_JSON_TO_FULL[SRC_UASSP] = UA_PREFIX + "Starter Spells";
-Parser.SOURCE_JSON_TO_FULL[SRC_UATMC] = UA_PREFIX + "The Mystic Class";
-Parser.SOURCE_JSON_TO_FULL[SRC_UATOBM] = UA_PREFIX + "That Old Black Magic";
-Parser.SOURCE_JSON_TO_FULL[SRC_UATRR] = UA_PREFIX + "The Ranger, Revised";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAWA] = UA_PREFIX + "Waterborne Adventures";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAVR] = UA_PREFIX + "Variant Rules";
-Parser.SOURCE_JSON_TO_FULL[SRC_UALDR] = UA_PREFIX + "Light, Dark, Underdark!";
-Parser.SOURCE_JSON_TO_FULL[SRC_UARAR] = UA_PREFIX + "Ranger and Rogue";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAATOSC] = UA_PREFIX + "A Trio of Subclasses";
-Parser.SOURCE_JSON_TO_FULL[SRC_UABPP] = UA_PREFIX + "Barbarian Primal Paths";
-Parser.SOURCE_JSON_TO_FULL[SRC_UARSC] = UA_PREFIX + "Revised Subclasses";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAKOO] = UA_PREFIX + "Kits of Old";
-Parser.SOURCE_JSON_TO_FULL[SRC_UABBC] = UA_PREFIX + "Bard: Bard Colleges";
-Parser.SOURCE_JSON_TO_FULL[SRC_UACDD] = UA_PREFIX + "Cleric: Divine Domains";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAD] = UA_PREFIX + "Druid";
-Parser.SOURCE_JSON_TO_FULL[SRC_UARCO] = UA_PREFIX + "Revised Class Options";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAF] = UA_PREFIX + "Fighter";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAM] = UA_PREFIX + "Monk";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAP] = UA_PREFIX + "Paladin";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAMC] = UA_PREFIX + "Modifying Classes";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAS] = UA_PREFIX + "Sorcerer";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAWAW] = UA_PREFIX + "Warlock and Wizard";
-Parser.SOURCE_JSON_TO_FULL[SRC_UATF] = UA_PREFIX + "The Faithful";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAWR] = UA_PREFIX + "Wizard Revisited";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAESR] = UA_PREFIX + "Elf Subraces";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAMAC] = UA_PREFIX + "Mass Combat";
-Parser.SOURCE_JSON_TO_FULL[SRC_UA3PE] = UA_PREFIX + "Three-Pillar Experience";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAGHI] = UA_PREFIX + "Greyhawk Initiative";
-Parser.SOURCE_JSON_TO_FULL[SRC_UATSC] = UA_PREFIX + "Three Subclasses";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAOD] = UA_PREFIX + "Order Domain";
-Parser.SOURCE_JSON_TO_FULL[SRC_UACAM] = UA_PREFIX + "Centaurs and Minotaurs";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAGSS] = UA_PREFIX + "Giant Soul Sorcerer";
-Parser.SOURCE_JSON_TO_FULL[SRC_UARoE] = UA_PREFIX + "Races of Eberron";
-Parser.SOURCE_JSON_TO_FULL[SRC_UARoR] = UA_PREFIX + "Races of Ravnica";
+Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = `${AL_PREFIX}Curse of Strahd`;
+Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = `${AL_PREFIX}Elemental Evil`;
+Parser.SOURCE_JSON_TO_FULL[SRC_ALRoD] = `${AL_PREFIX}Rage of Demons`;
+Parser.SOURCE_JSON_TO_FULL[SRC_PSA] = `${PS_PREFIX}Amonkhet`;
+Parser.SOURCE_JSON_TO_FULL[SRC_PSI] = `${PS_PREFIX}Innistrad`;
+Parser.SOURCE_JSON_TO_FULL[SRC_PSK] = `${PS_PREFIX}Kaladesh`;
+Parser.SOURCE_JSON_TO_FULL[SRC_PSZ] = `${PS_PREFIX}Zendikar`;
+Parser.SOURCE_JSON_TO_FULL[SRC_PSX] = `${PS_PREFIX}Ixalan`;
+Parser.SOURCE_JSON_TO_FULL[SRC_PSD] = `${PS_PREFIX}Dominaria`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAA] = `${UA_PREFIX}Artificer`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAEAG] = `${UA_PREFIX}Eladrin and Gith`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAEBB] = `${UA_PREFIX}Eberron`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAFFR] = `${UA_PREFIX}Feats for Races`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAFFS] = `${UA_PREFIX}Feats for Skills`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAFO] = `${UA_PREFIX}Fiendish Options`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAFT] = `${UA_PREFIX}Feats`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAGH] = `${UA_PREFIX}Gothic Heroes`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAMDM] = `${UA_PREFIX}Modern Magic`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UASSP] = `${UA_PREFIX}Starter Spells`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UATMC] = `${UA_PREFIX}The Mystic Class`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UATOBM] = `${UA_PREFIX}That Old Black Magic`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UATRR] = `${UA_PREFIX}The Ranger, Revised`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAWA] = `${UA_PREFIX}Waterborne Adventures`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAVR] = `${UA_PREFIX}Variant Rules`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UALDR] = `${UA_PREFIX}Light, Dark, Underdark!`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UARAR] = `${UA_PREFIX}Ranger and Rogue`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAATOSC] = `${UA_PREFIX}A Trio of Subclasses`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UABPP] = `${UA_PREFIX}Barbarian Primal Paths`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UARSC] = `${UA_PREFIX}Revised Subclasses`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAKOO] = `${UA_PREFIX}Kits of Old`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UABBC] = `${UA_PREFIX}Bard: Bard Colleges`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UACDD] = `${UA_PREFIX}Cleric: Divine Domains`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAD] = `${UA_PREFIX}Druid`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UARCO] = `${UA_PREFIX}Revised Class Options`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAF] = `${UA_PREFIX}Fighter`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAM] = `${UA_PREFIX}Monk`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAP] = `${UA_PREFIX}Paladin`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAMC] = `${UA_PREFIX}Modifying Classes`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAS] = `${UA_PREFIX}Sorcerer`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAWAW] = `${UA_PREFIX}Warlock and Wizard`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UATF] = `${UA_PREFIX}The Faithful`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAWR] = `${UA_PREFIX}Wizard Revisited`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAESR] = `${UA_PREFIX}Elf Subraces`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAMAC] = `${UA_PREFIX}Mass Combat`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UA3PE] = `${UA_PREFIX}Three-Pillar Experience`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAGHI] = `${UA_PREFIX}Greyhawk Initiative`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UATSC] = `${UA_PREFIX}Three Subclasses`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAOD] = `${UA_PREFIX}Order Domain`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UACAM] = `${UA_PREFIX}Centaurs and Minotaurs`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAGSS] = `${UA_PREFIX}Giant Soul Sorcerer`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UARoE] = `${UA_PREFIX}Races of Eberron`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UARoR] = `${UA_PREFIX}Races of Ravnica`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UAWGE] = "Wayfinder's Guide to Eberron";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAOSS] = UA_PREFIX + "Of Ships and the Sea";
-Parser.SOURCE_JSON_TO_FULL[SRC_UASIK] = UA_PREFIX + "Sidekicks";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAAR] = UA_PREFIX + "Artificer Revisited";
-Parser.SOURCE_JSON_TO_FULL[SRC_UABAM] = UA_PREFIX + "Barbarian and Monk";
-Parser.SOURCE_JSON_TO_FULL[SRC_UASAW] = UA_PREFIX + "Sorcerer and Warlock";
-Parser.SOURCE_JSON_TO_FULL[SRC_UABAP] = UA_PREFIX + "Bard and Paladin";
-Parser.SOURCE_JSON_TO_FULL[SRC_UACDW] = UA_PREFIX + "Cleric, Druid, and Wizard";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFRR] = UA_PREFIX + "Fighter, Ranger, and Rogue";
-Parser.SOURCE_JSON_TO_FULL[SRC_UACFV] = UA_PREFIX + "Class Feature Variants";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFRW] = UA_PREFIX + "Fighter, Rogue, and Wizard";
+Parser.SOURCE_JSON_TO_FULL[SRC_UAOSS] = `${UA_PREFIX}Of Ships and the Sea`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UASIK] = `${UA_PREFIX}Sidekicks`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAAR] = `${UA_PREFIX}Artificer Revisited`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UABAM] = `${UA_PREFIX}Barbarian and Monk`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UASAW] = `${UA_PREFIX}Sorcerer and Warlock`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UABAP] = `${UA_PREFIX}Bard and Paladin`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UACDW] = `${UA_PREFIX}Cleric, Druid, and Wizard`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAFRR] = `${UA_PREFIX}Fighter, Ranger, and Rogue`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UACFV] = `${UA_PREFIX}Class Feature Variants`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAFRW] = `${UA_PREFIX}Fighter, Rogue, and Wizard`;
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -2242,6 +2276,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_ERLW] = "ERLW";
 Parser.SOURCE_JSON_TO_ABV[SRC_EFR] = "EFR";
 Parser.SOURCE_JSON_TO_ABV[SRC_RMBRE] = "RMBRE";
 Parser.SOURCE_JSON_TO_ABV[SRC_RMR] = "RMR";
+Parser.SOURCE_JSON_TO_ABV[SRC_MFF] = "MFF";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
@@ -2308,6 +2343,42 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UACFV] = "UACFV";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAFRW] = "UAFRW";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
+
+Parser.SOURCES_ADVENTURES = new Set([
+	SRC_LMoP,
+	SRC_HotDQ,
+	SRC_RoT,
+	SRC_PotA,
+	SRC_OotA,
+	SRC_CoS,
+	SRC_SKT,
+	SRC_TYP,
+	SRC_TYP_AtG,
+	SRC_TYP_DiT,
+	SRC_TYP_TFoF,
+	SRC_TYP_THSoT,
+	SRC_TYP_TSC,
+	SRC_TYP_ToH,
+	SRC_TYP_WPM,
+	SRC_ToA,
+	SRC_TTP,
+	SRC_WDH,
+	SRC_LLK,
+	SRC_WDMM,
+	SRC_KKW,
+	SRC_GoS,
+	SRC_HftT,
+	SRC_OoW,
+	SRC_DIP,
+	SRC_SLW,
+	SRC_SDW,
+	SRC_DC,
+	SRC_BGDIA,
+	SRC_LR,
+	SRC_EFR,
+	SRC_RMBRE
+]);
+Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"A": "Ammunition",
@@ -2441,9 +2512,9 @@ Parser.SENSE_JSON_TO_FULL = {
 	]
 };
 
-Parser.NUMBERS_ONES = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-Parser.NUMBERS_TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
-Parser.NUMBERS_TEENS = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+Parser.NUMBERS_ONES = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+Parser.NUMBERS_TENS = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+Parser.NUMBERS_TEENS = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
 
 // SOURCES =============================================================================================================
 SourceUtil = {
@@ -2456,6 +2527,16 @@ SourceUtil = {
 				|| (shortName === "Storm" && source === SRC_SCAG)
 				|| (shortName === "Deep Stalker Conclave" && source === SRC_UATRR)
 			);
+	},
+
+	isAdventure (source) {
+		if (source instanceof FilterItem) source = source.item;
+		return Parser.SOURCES_ADVENTURES.has(source);
+	},
+
+	isCoreOrSupplement (source) {
+		if (source instanceof FilterItem) source = source.item;
+		return Parser.SOURCES_CORE_SUPPLEMENTS.has(source);
 	},
 
 	isNonstandardSource (source) {
@@ -2511,15 +2592,15 @@ function noModifierKeys (e) {
 
 function isObject (obj) {
 	const type = typeof obj;
-	return (type === 'function' || type === 'object') && !!obj;
+	return (type === "function" || type === "object") && !!obj;
 }
 
 function isString (str) {
-	return typeof str === 'string';
+	return typeof str === "string";
 }
 
 function isNumber (obj) {
-	return toString.call(obj) === '[object Number]';
+	return toString.call(obj) === "[object Number]";
 }
 
 function isEmpty (obj) {
@@ -2600,10 +2681,10 @@ JqueryUtil = {
 	addSelectors () {
 		// Add a selector to match exact text (case insensitive) to jQuery's arsenal
 		//   Note that the search text should be `trim().toLowerCase()`'d before being passed in
-		$.expr[':'].textEquals = (el, i, m) => $(el).text().toLowerCase().trim() === m[3];
+		$.expr[":"].textEquals = (el, i, m) => $(el).text().toLowerCase().trim() === m[3];
 
 		// Add a selector to match contained text (case insensitive)
-		$.expr[':'].containsInsensitive = (el, i, m) => {
+		$.expr[":"].containsInsensitive = (el, i, m) => {
 			const searchText = m[3];
 			const textNode = $(el).contents().filter((i, e) => e.nodeType === 3)[0];
 			if (!textNode) return false;
@@ -2824,7 +2905,7 @@ MiscUtil = {
 			case 4: r = f; g = 0; b = 1; break;
 			case 5: r = 1; g = 0; b = q; break;
 		}
-		return `#${("00" + (~~(r * 255)).toString(16)).slice(-2)}${("00" + (~~(g * 255)).toString(16)).slice(-2)}${("00" + (~~(b * 255)).toString(16)).slice(-2)}`;
+		return `#${`00${(~~(r * 255)).toString(16)}`.slice(-2)}${`00${(~~(g * 255)).toString(16)}`.slice(-2)}${`00${(~~(b * 255)).toString(16)}`.slice(-2)}`;
 	},
 
 	/**
@@ -4068,23 +4149,6 @@ ListUtil = {
 	}
 };
 
-/**
- * Generic source filter
- * deselected. If there are more items to be deselected than selected, it is advisable to set this to "true"
- * @param options overrides for the default filter options
- * @returns {*} a `Filter`
- */
-function getSourceFilter (options = {}) {
-	const baseOptions = {
-		header: FilterBox.SOURCE_HEADER,
-		displayFn: (item) => Parser.sourceJsonToFullCompactPrefix(item.item || item),
-		selFn: defaultSourceSelFn,
-		groupFn: SourceUtil.getFilterGroup
-	};
-	Object.assign(baseOptions, options);
-	return new Filter(baseOptions);
-}
-
 function defaultSourceSelFn (val) {
 	return !SourceUtil.isNonstandardSource(val);
 }
@@ -4336,6 +4400,7 @@ UrlUtil.PG_TRAPS_HAZARDS = "trapshazards.html";
 UrlUtil.PG_QUICKREF = "quickreference.html";
 UrlUtil.PG_MAKE_SHAPED = "makeshaped.html";
 UrlUtil.PG_MANAGE_BREW = "managebrew.html";
+UrlUtil.PG_MAKE_BREW = "makebrew.html";
 UrlUtil.PG_DEMO = "demo.html";
 UrlUtil.PG_TABLES = "tables.html";
 UrlUtil.PG_VEHICLES = "vehicles.html";
@@ -5819,7 +5884,7 @@ BrewUtil = {
 
 		const $btnLoadFromUrl = $(`<button class="btn btn-default btn-sm">Load from URL</button>`)
 			.click(() => {
-				const enteredUrl = window.prompt('Please enter the URL of the homebrew:');
+				const enteredUrl = window.prompt("Please enter the URL of the homebrew:");
 				if (!enteredUrl) return;
 
 				let parsedUrl;
@@ -5892,6 +5957,7 @@ BrewUtil = {
 						case UrlUtil.PG_TABLES: return ["table"];
 						case UrlUtil.PG_MAKE_SHAPED: return ["spell", "creature"];
 						case UrlUtil.PG_MANAGE_BREW:
+						case UrlUtil.PG_MAKE_BREW:
 						case UrlUtil.PG_DEMO: return BrewUtil._DIRS;
 						case UrlUtil.PG_VEHICLES: return ["vehicle"];
 						case UrlUtil.PG_ACTIONS: return ["action"];
@@ -6250,6 +6316,7 @@ BrewUtil = {
 						case UrlUtil.PG_TABLES: return ["table", "tableGroup"];
 						case UrlUtil.PG_MAKE_SHAPED: return ["spell", "creature"];
 						case UrlUtil.PG_MANAGE_BREW:
+						case UrlUtil.PG_MAKE_BREW:
 						case UrlUtil.PG_DEMO: return BrewUtil._STORABLE;
 						case UrlUtil.PG_VEHICLES: return ["vehicle"];
 						case UrlUtil.PG_ACTIONS: return ["action"];
@@ -6622,6 +6689,7 @@ BrewUtil = {
 				await (BrewUtil._pHandleBrew || handleBrew)(MiscUtil.copy(toAdd));
 				break;
 			case UrlUtil.PG_MANAGE_BREW:
+			case UrlUtil.PG_MAKE_BREW:
 			case UrlUtil.PG_DEMO:
 			case "NO_PAGE":
 				break;
@@ -6712,10 +6780,16 @@ BrewUtil = {
 	},
 
 	sourceJsonToStyle (source) {
+		const color = BrewUtil.sourceJsonToColor(source);
+		if (color) return `style="color: #${color};"`;
+		return "";
+	},
+
+	sourceJsonToColor (source) {
 		BrewUtil._buildSourceCache();
 		if (BrewUtil._sourceCache[source] && BrewUtil._sourceCache[source].color) {
 			const validColor = BrewUtil.getValidColor(BrewUtil._sourceCache[source].color);
-			if (validColor.length) return `style="color: #${validColor};"`;
+			if (validColor.length) return validColor;
 			return "";
 		} else return "";
 	},
@@ -6972,10 +7046,10 @@ CryptUtil = {
 		return md5blks;
 	},
 
-	_hex_chr: '0123456789abcdef'.split(''),
+	_hex_chr: "0123456789abcdef".split(""),
 
 	_rhex: (n) => {
-		let s = '';
+		let s = "";
 		for (let j = 0; j < 4; j++) {
 			s += CryptUtil._hex_chr[(n >> (j * 8 + 4)) & 0x0F] + CryptUtil._hex_chr[(n >> (j * 8)) & 0x0F];
 		}
@@ -6991,7 +7065,7 @@ CryptUtil = {
 		for (let i = 0; i < x.length; i++) {
 			x[i] = CryptUtil._rhex(x[i]);
 		}
-		return x.join('');
+		return x.join("");
 	},
 
 	hex2Dec (hex) {
@@ -7028,7 +7102,7 @@ CryptUtil = {
 			return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
 				const r = (d + Math.random() * 16) % 16 | 0;
 				d = Math.floor(d / 16);
-				return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+				return (c === "x" ? r : (r & 0x3 | 0x8)).toString(16);
 			});
 		}
 	}
@@ -7123,13 +7197,13 @@ Array.prototype.equals = Array.prototype.equals || function (array2) {
 	let key;
 	// Put all the elements from array1 into a "tagged" array
 	for (let i = 0; i < array1.length; i++) {
-		key = (typeof array1[i]) + "~" + array1[i]; // Use "typeof" so a number 1 isn't equal to a string "1".
+		key = `${(typeof array1[i])}~${array1[i]}`; // Use "typeof" so a number 1 isn't equal to a string "1".
 		if (temp[key]) temp[key]++;
 		else temp[key] = 1;
 	}
 	// Go through array2 - if same tag missing in "tagged" array, not equal
 	for (let i = 0; i < array2.length; i++) {
-		key = (typeof array2[i]) + "~" + array2[i];
+		key = `${(typeof array2[i])}~${array2[i]}`;
 		if (temp[key]) {
 			if (temp[key] === 0) return false;
 			else temp[key]--;
@@ -7148,6 +7222,11 @@ Array.prototype.getNext = Array.prototype.getNext || function (curVal) {
 	if (++ix >= this.length) ix = 0;
 	return this[ix];
 };
+
+Array.prototype.shuffle = Array.prototype.shuffle || function () {
+	for (let i = 0; i < 10000; ++i) this.sort(() => Math.random() - 0.5);
+	return this;
+}
 
 // OVERLAY VIEW ========================================================================================================
 /**
@@ -7381,6 +7460,30 @@ EncounterUtil = {
 };
 EncounterUtil.SUB_HASH_PREFIX = "encounter";
 EncounterUtil.SAVED_ENCOUNTER_SAVE_LOCATION = "ENCOUNTER_SAVED_STORAGE";
+
+// EXTENSIONS ==========================================================================================================
+ExtensionUtil = {
+	ACTIVE: false,
+
+	_doSend (type, data) {
+		window.dispatchEvent(new CustomEvent("rivet.send", {detail: {type, data}}));
+	},
+
+	async pDoSendStats (evt, ele) {
+		const $parent = $(ele).closest(`th.rnd-name`);
+		const page = $parent.attr("data-page");
+		const source = $parent.attr("data-source");
+		const hash = $parent.attr("data-hash");
+
+		if (page && source && hash) {
+			const loaded = await Renderer.hover.pCacheAndGet(page, source, hash);
+			ExtensionUtil._doSend("entity", {page, entity: loaded, isTemp: !!evt.shiftKey});
+		}
+	},
+
+	doSendRoll (data) { ExtensionUtil._doSend("roll", data); }
+};
+if (typeof window !== "undefined") window.addEventListener("rivet.active", () => ExtensionUtil.ACTIVE = true);
 
 // REACTOR =============================================================================================================
 class Reactor {

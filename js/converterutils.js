@@ -988,6 +988,10 @@ class SpellcastingTraitConvert {
 						spellPart = spellPart.replace(/^\*(.*)\*$/, "$1");
 					}
 				}
+
+				// move asterisks before commas (e.g. "chaos bolt,*" -> "chaos bolt*,")
+				spellPart = spellPart.replace(/,\s*\*/g, "*,");
+
 				return spellPart.split(splitter).map(i => parseSpell(i));
 			}
 
@@ -1246,33 +1250,6 @@ class SpeedConvert {
 }
 SpeedConvert._SPEED_TYPES = new Set(["walk", "fly", "swim", "climb", "burrow"]);
 
-class TextClean {
-	static getCleanedJson (str) {
-		str = str.replace(TextClean.REPLACEMENT_REGEX, (match) => TextClean.REPLACEMENTS[match]);
-		return str
-			.replace(/\u00AD/g, "") // soft hyphens
-			.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1");
-	}
-
-	static getReplacedQuotesText (str) {
-		return str
-			.replace(/’/g, "'")
-			.replace(/[“”]/g, `"`)
-			.replace(/…/g, `...`)
-	}
-}
-TextClean.REPLACEMENTS = {
-	"—": "\\u2014",
-	"–": "\\u2013",
-	"−": "\\u2212",
-	"’": "'",
-	"“": '\\"',
-	"”": '\\"',
-	"…": "...",
-	"ﬁ": "fi"
-};
-TextClean.REPLACEMENT_REGEX = new RegExp(Object.keys(TextClean.REPLACEMENTS).join("|"), 'g');
-
 class ConvertUtil {
 	/**
 	 * Checks if a line of text starts with a name, e.g.
@@ -1293,8 +1270,12 @@ class ConvertUtil {
 			return !isStopword;
 		});
 
-		// if it's in title case after removing all stopwords, it's a name
 		const namePartNoStopwords = cleanTokens.join("");
+
+		// if it's an ability score, it's not a name
+		if (Object.values(Parser.ATB_ABV_TO_FULL).includes(namePartNoStopwords.trim())) return false;
+
+		// if it's in title case after removing all stopwords, it's a name
 		return namePartNoStopwords.toTitleCase() === namePartNoStopwords;
 	}
 
@@ -1367,6 +1348,51 @@ class StatblockConverter {
 			return (!cur.toUpperCase().indexOf("ACTION") || !cur.toUpperCase().indexOf("LEGENDARY ACTION") || !cur.toUpperCase().indexOf("REACTION"))
 		}
 
+		/**
+		 * If the current line ends in a comma, we can assume the next line is a broken/wrapped part of the current line
+		 */
+		function absorbBrokenLine (isCrLine) {
+			const NO_ABSORB_SUBTITLES = [
+				"SAVING THROWS",
+				"SKILLS",
+				"DAMAGE VULNERABILITIES",
+				"DAMAGE RESISTANCE",
+				"DAMAGE IMMUNITIES",
+				"CONDITION IMMUNITIES",
+				"SENSES",
+				"LANGUAGES",
+				"CHALLENGE"
+			];
+			const NO_ABSORB_TITLES = [
+				"ACTION",
+				"LEGENDARY ACTION",
+				"REACTION"
+			];
+
+			if (curLine) {
+				if (curLine.trim().endsWith(",")) {
+					const nxtLine = toConvert[++i];
+					if (!nxtLine) return false;
+					curLine = `${curLine.trim()} ${nxtLine.trim()}`;
+					return true;
+				}
+
+				if (isCrLine) return false; // avoid absorbing past the CR line
+
+				const nxtLine = toConvert[i + 1];
+				if (!nxtLine) return false;
+
+				if (ConvertUtil.isNameLine(nxtLine)) return false; // avoid absorbing the start of traits
+				if (NO_ABSORB_TITLES.some(it => nxtLine.toUpperCase().includes(it))) return false;
+				if (NO_ABSORB_SUBTITLES.some(it => nxtLine.toUpperCase().startsWith(it))) return false;
+
+				i++;
+				curLine = `${curLine.trim()} ${nxtLine.trim()}`;
+				return true;
+			}
+			return false;
+		}
+
 		if (!inText || !inText.trim()) return options.cbWarning("No input!");
 		const toConvert = (() => {
 			const clean = StatblockConverter._getCleanInput(inText);
@@ -1382,7 +1408,8 @@ class StatblockConverter {
 
 		let prevLine = null;
 		let curLine = null;
-		for (let i = 0; i < toConvert.length; i++) {
+		let i;
+		for (i = 0; i < toConvert.length; i++) {
 			prevLine = curLine;
 			curLine = toConvert[i].trim();
 
@@ -1448,48 +1475,64 @@ class StatblockConverter {
 
 			// saves (optional)
 			if (!curLine.indexOf_handleColon("Saving Throws ")) {
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine());
 				StatblockConverter._setCleanSaves(stats, curLine, options);
 				continue;
 			}
 
 			// skills (optional)
 			if (!curLine.indexOf_handleColon("Skills ")) {
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine());
 				StatblockConverter._setCleanSkills(stats, curLine);
 				continue;
 			}
 
 			// damage vulnerabilities (optional)
 			if (!curLine.indexOf_handleColon("Damage Vulnerabilities ")) {
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine());
 				StatblockConverter._setCleanDamageVuln(stats, curLine);
 				continue;
 			}
 
 			// damage resistances (optional)
 			if (!curLine.indexOf_handleColon("Damage Resistance")) {
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine());
 				StatblockConverter._setCleanDamageRes(stats, curLine);
 				continue;
 			}
 
 			// damage immunities (optional)
 			if (!curLine.indexOf_handleColon("Damage Immunities ")) {
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine());
 				StatblockConverter._setCleanDamageImm(stats, curLine);
 				continue;
 			}
 
 			// condition immunities (optional)
 			if (!curLine.indexOf_handleColon("Condition Immunities ")) {
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine());
 				StatblockConverter._setCleanConditionImm(stats, curLine);
 				continue;
 			}
 
 			// senses
 			if (!curLine.indexOf_handleColon("Senses ")) {
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine());
 				StatblockConverter._setCleanSenses(stats, curLine);
 				continue;
 			}
 
 			// languages
 			if (!curLine.indexOf_handleColon("Languages ")) {
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine());
 				StatblockConverter._setCleanLanguages(stats, curLine);
 				continue;
 			}
@@ -1497,6 +1540,8 @@ class StatblockConverter {
 			// challenges and traits
 			// goes into actions
 			if (!curLine.indexOf_handleColon("Challenge ")) {
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine(true));
 				StatblockConverter._setCleanCr(stats, curLine);
 				continue;
 			}
@@ -1558,7 +1603,17 @@ class StatblockConverter {
 
 				// collect subsequent paragraphs
 				while (curLine && !ConvertUtil.isNameLine(curLine) && !startNextPhase(curLine)) {
-					curTrait.entries.push(curLine.trim());
+					// The line is probably a wrapped continuation of the previous line if it starts with:
+					//  - a lowercase word
+					//  - "Hit:"
+					//  - numbers (e.g. damage; "5 (1d6 + 2)")
+					//  - opening brackets (e.g. damage; "(1d6 + 2)")
+					//  - a spellcasting ability score name (Intelligence, Charisma, Wisdom) followed by an opening bracket
+					if (typeof curTrait.entries.last() === "string" && /^([a-z]|Hit:|\d+\s+|\(|(Intelligence|Wisdom|Charisma)\s+\()/.test(curLine.trim())) {
+						curTrait.entries.last(`${curTrait.entries.last().trim()} ${curLine.trim()}`);
+					} else {
+						curTrait.entries.push(curLine.trim());
+					}
 					i++;
 					curLine = toConvert[i];
 				}
@@ -2066,7 +2121,7 @@ class StatblockConverter {
 					tempDamage["note"] = /from .*/.exec(section)[0];
 					section = /(.*) from /.exec(section)[1];
 				}
-				section = section.replace(/and/g, '');
+				section = section.replace(/and/g, "");
 				section.split(",").forEach(s => pushArray.push(s.trim()));
 				if ("note" in tempDamage) newDamage.push(tempDamage)
 			});
@@ -2337,7 +2392,6 @@ if (typeof module !== "undefined") {
 		SpellcastingTypeTag,
 		DamageTypeTag,
 		MiscTag,
-		TextClean,
 		SpellcastingTraitConvert,
 		DiceConvert,
 		RechargeConvert,

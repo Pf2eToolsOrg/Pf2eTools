@@ -897,6 +897,8 @@ class Filter extends FilterBase {
 		const $btnDefault = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"}">Default</button>`).click(() => this._doSetPinsDefault());
 
 		const $wrpStateBtns = $$`<div class="btn-group">${$btnAll}${$btnClear}${$btnNone}${$btnDefault}</div>`;
+		const $wrpStateBtnsOuter = $$`<div class="flex-v-center">${$wrpStateBtns}</div>`;
+		this._$getHeaderControls_addExtraStateBtns(opts, $wrpStateBtnsOuter);
 
 		const $wrpSummary = $(`<div class="flex-v-center"/>`).hide();
 
@@ -943,7 +945,7 @@ class Filter extends FilterBase {
 
 		return $$`
 		<div class="flex-v-center">
-			${$wrpStateBtns}
+			${$wrpStateBtnsOuter}
 			${$wrpSummary}
 			<span class="btn-group ml-2">
 				${$btnCombineBlue}
@@ -951,6 +953,10 @@ class Filter extends FilterBase {
 			</span>
 			${$btnShowHide}
 		</div>`;
+	}
+
+	_$getHeaderControls_addExtraStateBtns () {
+		// To be optionally implemented by child classes
 	}
 
 	/**
@@ -1282,6 +1288,40 @@ Filter._DEFAULT_META = {
 	combineRed: "or"
 };
 
+class SourceFilter extends Filter {
+	_$getHeaderControls_addExtraStateBtns (opts, $wrpStateBtnsOuter) {
+		const $btnSupplements = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"}" title="SHIFT to include UA/etc.">Core/Supplements</button>`)
+			.click(evt => this._doSetPinsSupplements(evt.shiftKey));
+
+		const $btnAdventures = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"}" title="SHIFT to include UA/etc.">Adventures</button>`)
+			.click(evt => this._doSetPinsAdventures(evt.shiftKey));
+
+		$$`<div class="btn-group mr-2">${$btnSupplements}${$btnAdventures}</div>`.prependTo($wrpStateBtnsOuter);
+	}
+
+	_doSetPinsSupplements (isIncludeUnofficial) {
+		Object.keys(this._state)
+			.forEach(k => this._state[k] = SourceUtil.isCoreOrSupplement(k) && (isIncludeUnofficial || !SourceUtil.isNonstandardSource(k)) ? 1 : 0);
+	}
+
+	_doSetPinsAdventures (isIncludeUnofficial) {
+		Object.keys(this._state).forEach(k => this._state[k] = SourceUtil.isAdventure(k) && (isIncludeUnofficial || !SourceUtil.isNonstandardSource(k)) ? 1 : 0);
+	}
+
+	static getInstance (options) {
+		if (!options) options = {};
+
+		const baseOptions = {
+			header: FilterBox.SOURCE_HEADER,
+			displayFn: (item) => Parser.sourceJsonToFullCompactPrefix(item.item || item),
+			selFn: defaultSourceSelFn,
+			groupFn: SourceUtil.getFilterGroup
+		};
+		Object.assign(baseOptions, options);
+		return new SourceFilter(baseOptions);
+	}
+}
+
 class RangeFilter extends FilterBase {
 	/**
 	 * @param opts Options object.
@@ -1321,6 +1361,8 @@ class RangeFilter extends FilterBase {
 		this._$btnsMini = [];
 		this._$slider = null;
 	}
+
+	set isUseDropdowns (val) { this._meta.isUseDropdowns = !!val; }
 
 	getSaveableState () {
 		return {
@@ -1442,7 +1484,6 @@ class RangeFilter extends FilterBase {
 
 		return $$`
 		<div class="flex-v-center">
-			${$btnForceMobile}
 			${$wrpBtns}
 			${$wrpSummary}
 			${$btnShowHide}
@@ -1730,6 +1771,7 @@ class MultiFilter extends FilterBase {
 	constructor (opts) {
 		super(opts);
 		this._filters = opts.filters;
+		this._isAddDropdownToggle = !!opts.isAddDropdownToggle;
 
 		Object.assign(
 			this.__state,
@@ -1817,15 +1859,36 @@ class MultiFilter extends FilterBase {
 
 		const $wrpSummary = $(`<div class="fltr__summary_item"/>`).hide();
 
+		const $btnForceMobile = this._isAddDropdownToggle ? ComponentUiUtil.$getBtnBool(
+			this,
+			"isUseDropdowns",
+			{
+				$ele: $(`<button class="btn btn-default btn-xs ml-2">Show as Dropdowns</button>`),
+				stateName: "meta",
+				stateProp: "_meta"
+			}
+		) : null;
+		// Propagate parent state to children
+		const hkChildrenDropdowns = () => {
+			this._filters
+				.filter(it => it instanceof RangeFilter)
+				.forEach(it => it.isUseDropdowns = this._meta.isUseDropdowns);
+		};
+		this._addHook("meta", "isUseDropdowns", hkChildrenDropdowns);
+		hkChildrenDropdowns();
+
 		const $btnResetAll = $(`<button class="btn btn-default btn-xs ml-2">Reset All</button>`)
 			.click(() => this._filters.forEach(it => it.reset()));
+		const $wrpBtns = $$`<div>${$btnForceMobile}${$btnResetAll}</div>`;
+
 		const $btnShowHide = $(`<button class="btn btn-default btn-xs ml-2 ${this._meta.isHidden ? "active" : ""}">Hide</button>`)
 			.click(() => this._meta.isHidden = !this._meta.isHidden);
 		const $wrpControls = $$`<div class="flex-v-center">
-			${$wrpSummary}${$btnResetAll}${$btnShowHide}
+			${$wrpSummary}${$wrpBtns}${$btnShowHide}
 		</div>`;
 
 		const hookShowHide = () => {
+			$wrpBtns.toggle(!this._meta.isHidden);
 			$btnShowHide.toggleClass("active", this._meta.isHidden);
 			$wrpChildren.toggle(!this._meta.isHidden);
 			$wrpSummary.toggle(this._meta.isHidden);

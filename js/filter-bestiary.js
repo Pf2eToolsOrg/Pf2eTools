@@ -54,7 +54,7 @@ class PageFilterBestiary {
 		this._creatureMeta = {};
 		this._languages = {};
 
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 		const crFilter = new RangeFilter({
 			header: "Challenge Rating",
 			isLabelled: true,
@@ -86,7 +86,8 @@ class PageFilterBestiary {
 		const abilityScoreFilter = new MultiFilter({
 			header: "Ability Scores",
 			mode: "and",
-			filters: [strengthFilter, dexterityFilter, constitutionFilter, intelligenceFilter, wisdomFilter, charismaFilter]
+			filters: [strengthFilter, dexterityFilter, constitutionFilter, intelligenceFilter, wisdomFilter, charismaFilter],
+			isAddDropdownToggle: true
 		});
 		const acFilter = new RangeFilter({header: "Armor Class"});
 		const averageHpFilter = new RangeFilter({header: "Average Hit Points"});

@@ -7,7 +7,7 @@ class RenderFeats {
 
 		return $$`
 			${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getNameTr(feat)}
+			${Renderer.utils.getNameTr(feat, {page: UrlUtil.PG_FEATS})}
 			${prerequisite ? `<tr><td colspan="6"><span class="prerequisite">${prerequisite}</span></td></tr>` : ""}
 			<tr><td class="divider" colspan="6"><div></div></td></tr>
 			<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>

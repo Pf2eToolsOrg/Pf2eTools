@@ -15,7 +15,7 @@ function unpackAlignment (g) {
 
 class DeitiesPage extends ListPage {
 	constructor () {
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 		const pantheonFilter = new Filter({
 			header: "Pantheon",
 			items: [

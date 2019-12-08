@@ -101,7 +101,7 @@ class RacesPage extends ListPage {
 	}
 
 	constructor () {
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 		const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull, itemSortFn: filterAscSortSize});
 		const asiFilter = new Filter({
 			header: "Ability Bonus (Including Subrace)",

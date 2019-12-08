@@ -2,7 +2,7 @@
 
 class ConditionsDiseasesPage extends ListPage {
 	constructor () {
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 		const typeFilter = new Filter({
 			header: "Type",
 			items: ["condition", "disease"],

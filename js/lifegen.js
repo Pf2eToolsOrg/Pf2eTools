@@ -38,7 +38,10 @@ function rollSuppStatus () {
 
 /**
  * @param [opts] Options object.
- * @param opts.isParent If this person is a parent.
+ * @param [opts.isParent] If this person is a parent.
+ * @param [opts.race] Race for this person (parent only).
+ * @param [opts.gender] Gender for this person (parent only).
+ * @param [opts.isSibling] If this person is a sibling.
  * @param opts.gender The gender of this person.
  * @param opts.parentRaces List of parent races for this person.
  * @param opts.isAdventurer Is the person is an adventurer (and therefore has a class as opposed to an occupation).
@@ -46,31 +49,7 @@ function rollSuppStatus () {
 function getPersonDetails (opts) {
 	opts = opts || {};
 
-	const status = rollSuppStatus();
-	const align = rollSuppAlignment().result;
-	const occ = rollSuppOccupation().result;
-	const cls = rollSuppClass().result;
-	const relate = rollSuppRelationship().result;
-	const out = [
-		`<b>Alignment:</b> ${align}`,
-		opts.isAdventurer ? `<b>Class:</b> ${cls}` : `<b>Occupation:</b> ${occ}`,
-		`<b>Relationship:</b> ${relate}`
-	];
-	if (!opts.isParent) {
-		out.push(`<b>Status:</b> ${status.result}`);
-	}
-
-	if (!opts.isParent) {
-		const race = opts.parentRaces ? (() => {
-			const useParent = RNG(100) > 15;
-			if (useParent) return rollOnArray(opts.parentRaces);
-			else return rollSuppRace().result;
-		})() : rollSuppRace().result;
-
-		out.unshift(`<i><b>Race:</b> ${race}</i>`);
-		const gender = opts.gender ? opts.gender : rollUnofficialGender().result;
-		out.unshift(`<i><b>Gender:</b> ${gender}</i>`);
-
+	function addName (race, gender) {
 		const raceSlug = Parser.stringToSlug(race);
 		if (nameTables[raceSlug]) {
 			const availNameTables = nameTables[raceSlug];
@@ -98,8 +77,50 @@ function getPersonDetails (opts) {
 				} else return null;
 			})();
 
-			out.unshift(`<i><b title="Generated using the random name tables found in Xanathar's Guide to Everything">Name:</b> ${resultFirst.result}${resultLast ? ` ${resultLast.result}` : ""}</i>`);
+			if (opts.isParent && !ptrParentLastName._) ptrParentLastName._ = resultLast ? resultLast.result : null;
+			const lastName = (() => {
+				if (ptrParentLastName._) {
+					if (opts.isParent) return ptrParentLastName._;
+					else if (opts.isSibling) {
+						// 20% chance of sibling not having the same last name
+						if (RNG(5) !== 5) return ptrParentLastName._;
+					}
+				}
+				return resultLast ? resultLast.result : "";
+			})();
+
+			out.unshift(`<i><b title="Generated using the random name tables found in Xanathar's Guide to Everything">Name:</b> ${resultFirst.result}${lastName ? ` ${lastName}` : ""}</i>`);
 		}
+	}
+
+	const status = rollSuppStatus();
+	const align = rollSuppAlignment().result;
+	const occ = rollSuppOccupation().result;
+	const cls = rollSuppClass().result;
+	const relate = rollSuppRelationship().result;
+	const out = [
+		`<b>Alignment:</b> ${align}`,
+		opts.isAdventurer ? `<b>Class:</b> ${cls}` : `<b>Occupation:</b> ${occ}`,
+		`<b>Relationship:</b> ${relate}`
+	];
+	if (!opts.isParent) {
+		out.push(`<b>Status:</b> ${status.result}`);
+	}
+
+	if (!opts.isParent) {
+		const race = opts.parentRaces ? (() => {
+			const useParent = RNG(100) > 15;
+			if (useParent) return rollOnArray(opts.parentRaces);
+			else return rollSuppRace().result;
+		})() : rollSuppRace().result;
+
+		out.unshift(`<i><b>Race:</b> ${race}</i>`);
+		const gender = opts.gender ? opts.gender : rollUnofficialGender().result;
+		out.unshift(`<i><b>Gender:</b> ${gender}</i>`);
+
+		addName(race, gender);
+	} else if (opts.race) {
+		addName(opts.race, opts.gender || "Other");
 	}
 	return out;
 }
@@ -582,8 +603,14 @@ function onJsonLoad (lifeData, nameData) {
 
 			if (nameMeta.name === "Elf" || nameMeta.name === "Human") {
 				const cpy = MiscUtil.copy(nameMeta);
-				if (nameTables["half-elf"]) nameTables["half-elf"].tables.push(...cpy.tables);
-				else nameTables["half-elf"] = cpy;
+				if (nameTables["halfelf"]) nameTables["halfelf"].tables.push(...cpy.tables);
+				else nameTables["halfelf"] = cpy;
+			} else if (nameMeta.name === "Half-Orc") {
+				nameTables["orc"] = MiscUtil.copy(nameMeta);
+			} else if (nameMeta.name === "Tiefling") {
+				const cpy = MiscUtil.copy(nameMeta);
+				cpy.tables = cpy.tables.filter(it => it.option !== "Virtue");
+				nameTables["devil"] = MiscUtil.copy(nameMeta);
 			}
 		});
 }
@@ -617,6 +644,7 @@ function addN (name) {
 let knowParents;
 let race;
 let parentRaces;
+let ptrParentLastName = {}; // store the last name so we can use it for both parents, maybe
 // PARENTS
 function sectParents () {
 	knowParents = RNG(100) > 5;
@@ -669,8 +697,18 @@ function sectParents () {
 	}
 
 	if (knowParents) {
-		const mum = getPersonDetails({isParent: true});
-		const dad = getPersonDetails({isParent: true});
+		parentRaces.shuffle();
+		const mum = getPersonDetails({
+			isParent: true,
+			race: parentRaces[0],
+			gender: "Female"
+		});
+		if (RNG(2) === 1) delete ptrParentLastName._; // 50% chance not to share a last name
+		const dad = getPersonDetails({
+			isParent: true,
+			race: parentRaces.length > 1 ? parentRaces[1] : parentRaces[0],
+			gender: "Male"
+		});
 		$parents.append(`<h5>Mother</h5>`);
 		$parents.append(joinParaList(mum));
 		$parents.append(`<h5>Father</h5>`);
@@ -730,7 +768,8 @@ function sectSiblings () {
 			$siblings.append(`<h5>${getBirthOrder()} sibling ${fmtChoice(siblingType, true)}</h5>`);
 			$siblings.append(joinParaList(getPersonDetails({
 				gender: siblingType === "brother" ? "Male" : "Female",
-				parentRaces: parentRaces
+				parentRaces: parentRaces,
+				isSibling: true
 			})));
 		}
 	} else {

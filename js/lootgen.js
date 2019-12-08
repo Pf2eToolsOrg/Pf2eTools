@@ -650,8 +650,8 @@ const randomLootTables = {
 		$(".slider")
 			.toggle($closestTier.prop("checked"))
 			.slider({min: 1, max: 20})
-			.slider('pips', {rest: "label"})
-			.slider('float');
+			.slider("pips", {rest: "label"})
+			.slider("float");
 
 		$cumulative.change((evt) => {
 			const toggled = evt.currentTarget.checked;
@@ -911,7 +911,7 @@ const ViewManipulation = class ViewManipulation {
 			const buttons = {};
 			names.forEach(name => {
 				let button = ViewManipulation.getButtonName(name);
-				buttons[name] = $("#" + button);
+				buttons[name] = $(`#${button}`);
 			});
 			return buttons;
 		}(viewNames));

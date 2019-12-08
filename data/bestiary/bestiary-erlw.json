@@ -5,6 +5,11 @@
 				"MM": "ERLW",
 				"VGM": "ERLW"
 			}
+		},
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
 		}
 	},
 	"monster": [
@@ -544,115 +549,36 @@
 		},
 		{
 			"name": "Corrin Delmaco",
+			"isNpc": true,
 			"source": "ERLW",
-			"page": 271,
-			"size": "S",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"halfling"
-				]
+			"_copy": {
+				"name": "Spy",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the spy",
+						"with": "Corrin",
+						"flags": "i"
+					}
+				},
+				"_trait": {
+					"name": "Stout Halfling",
+					"source": "PHB"
+				}
 			},
-			"alignment": [
-				"L",
-				"E"
+			"languageTags": [
+				"X",
+				"H"
 			],
-			"ac": [
-				12
-			],
+			"page": 271,
 			"hp": {
 				"average": 21,
 				"formula": "6d6"
 			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 10,
-			"dex": 15,
-			"con": 10,
-			"int": 12,
-			"wis": 14,
-			"cha": 16,
-			"skill": {
-				"deception": "+5",
-				"insight": "+4",
-				"investigation": "+5",
-				"perception": "+6",
-				"persuasion": "+5",
-				"sleight of hand": "+4",
-				"stealth": "+4"
-			},
-			"passive": 16,
-			"languages": [
-				"Common",
-				"Halfling",
-				"Thieves' cant"
-			],
-			"cr": "1",
-			"trait": [
-				{
-					"name": "Brave",
-					"entries": [
-						"You have advantage on saving throws against being {@condition frightened}."
-					]
-				},
-				{
-					"name": "Cunning Action",
-					"entries": [
-						"On each of its turns, the spy can use a bonus action to take the Dash, Disengage, or Hide action."
-					]
-				},
-				{
-					"name": "Halfling Nimbleness",
-					"entries": [
-						"You can move through the space of any creature that is of a size larger than yours."
-					]
-				},
-				{
-					"name": "Sneak Attack (1/Turn)",
-					"entries": [
-						"The spy deals an extra 7 ({@dice 2d6}) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the spy that isn't {@condition incapacitated} and the spy doesn't have disadvantage on the attack roll."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The spy makes two melee attacks."
-					]
-				},
-				{
-					"name": "Shortsword",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
-					]
-				},
-				{
-					"name": "Hand Crossbow",
-					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
-					]
-				}
-			],
-			"traitTags": [
-				"Sneak Attack"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C",
-				"H",
-				"TC"
-			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"RNG"
+			"alignment": [
+				"L",
+				"E"
 			]
 		},
 		{
@@ -1396,74 +1322,27 @@
 		},
 		{
 			"name": "Garra",
+			"isNpc": true,
 			"source": "ERLW",
-			"page": 272,
-			"size": "L",
-			"type": "giant",
+			"_copy": {
+				"name": "Half-Ogre (Ogrillon)",
+				"source": "MM"
+			},
 			"alignment": [
 				"C",
 				"E"
 			],
-			"ac": [
-				{
-					"ac": 12,
-					"from": [
-						"{@item hide armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 30,
-				"formula": "4d10 + 8"
+			"page": 272,
+			"int": 14
+		},
+		{
+			"name": "Sergeant",
+			"source": "WDH",
+			"_copy": {
+				"name": "Guard",
+				"source": "MM"
 			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 17,
-			"dex": 10,
-			"con": 14,
-			"int": 14,
-			"wis": 14,
-			"cha": 10,
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 12,
-			"languages": [
-				"Common",
-				"Giant"
-			],
-			"cr": "1",
-			"action": [
-				{
-					"name": "Battleaxe",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}12 ({@damage 2d8 + 3}) slashing damage, or 14 ({@damage 2d10 + 3}) slashing damage if used with two hands."
-					]
-				},
-				{
-					"name": "Javelin",
-					"entries": [
-						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 30/120 ft., one target. {@h}10 ({@damage 2d6 + 3}) piercing damage."
-					]
-				}
-			],
-			"senseTags": [
-				"D"
-			],
-			"languageTags": [
-				"C",
-				"GI"
-			],
-			"damageTags": [
-				"S",
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"THW"
-			]
+			"page": 197
 		},
 		{
 			"name": "Hashalaq Quori",

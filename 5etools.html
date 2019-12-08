@@ -409,7 +409,7 @@
 <footer class="container">
 	<p class="text-center">
 		Version
-		<span id="version_number">?</span>
+		<a id="version_number" href="#">?</a>
 		| <span style="text-decoration: red line-through">&nbsp;&copy;&nbsp;</span><span id="current_year">2019</span> 5etools
 		| <a href="privacy-policy.html">Privacy Policy</a>
 		| <a onclick="(window.__cmp || window.__cmp2)(&quot;displayConsentUi&quot;)" href="javascript:void(0);">Change Ad Consent</a>
@@ -438,7 +438,7 @@
 
 	$(`#current_year`).text((new Date).getFullYear());
 
-	$(`#version_number`).text(VERSION_NUMBER);
+	$(`#version_number`).text(VERSION_NUMBER).attr("href", `https://get.5e.tools/`);
 
 	const $lnkB20 = $(`#betteR20_link`);
 	$lnkB20.attr("href", `${$lnkB20.attr("href")}?v=${VERSION_NUMBER}_${Date.now()}`);

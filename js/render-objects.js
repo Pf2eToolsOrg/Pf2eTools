@@ -8,12 +8,14 @@ class RenderObjects {
 
 		return $$`
 			${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getNameTr(obj)}
+			${Renderer.utils.getNameTr(obj, {extraThClasses: ["objs__name--token"], page: UrlUtil.PG_OBJECTS})}
 			<tr class="text"><td colspan="6"><i>${obj.type !== "GEN" ? `${Parser.sizeAbvToFull(obj.size)} object` : `Variable size object`}</i><br></td></tr>
 			<tr class="text"><td colspan="6">
 				<b>Armor Class:</b> ${obj.ac}<br>
 				<b>Hit Points:</b> ${obj.hp}<br>
+				${obj.speed != null ? `<b>Speed:</b> ${Parser.getSpeedString(obj)}<br>` : ""}
 				<b>Damage Immunities:</b> ${obj.immune}<br>
+				${Parser.ABIL_ABVS.some(ab => obj[ab] != null) ? `<b>Ability Scores:</b> ${Parser.ABIL_ABVS.filter(ab => obj[ab] != null).map(ab => renderer.render(`${ab.toUpperCase()} ${Renderer.utils.getAbilityRoller(obj, ab)}`)).join(", ")}` : ""}
 				${obj.resist ? `<b>Damage Resistances:</b> ${obj.resist}<br>` : ""}
 				${obj.vulnerable ? `<b>Damage Vulnerabilities:</b> ${obj.vulnerable}<br>` : ""}
 			</td></tr>

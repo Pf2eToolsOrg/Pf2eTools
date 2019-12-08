@@ -274,7 +274,7 @@ class HashLoad {
 			$("td#hp").show();
 			const hdEntry = {toRoll: `${ClassDisplay.curClass.hd.number}d${ClassDisplay.curClass.hd.faces}`, rollable: true};
 			$("td#hp div#hitdice span").html(Renderer.getEntryDice(hdEntry, "Hit die"));
-			$("td#hp div#hp1stlevel span").html(ClassDisplay.curClass.hd.faces + " + your Constitution modifier");
+			$("td#hp div#hp1stlevel span").html(`${ClassDisplay.curClass.hd.faces} + your Constitution modifier`);
 			$("td#hp div#hphigherlevels span").html(`${Renderer.getEntryDice(hdEntry, "Hit die")} (or ${
 				(ClassDisplay.curClass.hd.faces / 2 + 1)}) + your Constitution modifier per ${ClassDisplay.curClass.name} level after 1st`);
 		} else {
@@ -287,8 +287,8 @@ class HashLoad {
 		}
 
 		// starting proficiencies
-		const renderArmorProfs = (armorProfs) => armorProfs.map(a => a === "light" || a === "medium" || a === "heavy" ? a + " armor" : a).join(", ");
-		const renderWeaponsProfs = (weaponProfs) => weaponProfs.map(w => w === "simple" || w === "martial" ? w + " weapons" : w).join(", ");
+		const renderArmorProfs = (armorProfs) => armorProfs.map(a => a === "light" || a === "medium" || a === "heavy" ? `${a} armor` : a).join(", ");
+		const renderWeaponsProfs = (weaponProfs) => weaponProfs.map(w => w === "simple" || w === "martial" ? `${w} weapons` : w).join(", ");
 		const renderToolsProfs = (toolProfs) => toolProfs.join(", ");
 		const renderSkillsProfs = (skillProfs) => getSkillProfString(skillProfs);
 
@@ -642,9 +642,9 @@ class HashLoad {
 				if (!hashPart.startsWith(hashKey)) outStack.push(hashPart);
 			}
 			if (isPillActive) {
-				outStack.push(hashKey + "true")
+				outStack.push(`${hashKey}true`)
 			} else {
-				outStack.push(hashKey + "false")
+				outStack.push(`${hashKey}false`)
 			}
 
 			HashLoad.cleanSetHash(outStack.join(HASH_PART_SEP));

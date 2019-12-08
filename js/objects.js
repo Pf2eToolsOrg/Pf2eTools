@@ -2,7 +2,7 @@
 
 class ObjectsPage extends ListPage {
 	constructor () {
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
 
 		super({

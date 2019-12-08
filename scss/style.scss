@@ -414,15 +414,8 @@ input.ui-search__ipt-search-sub-ipt-custom[type=number]::-webkit-inner-spin-butt
 		flex-direction: column;
 		max-height: none;
 		height: auto;
+		display: block;
 	}
-
-	// firefox doesn't fit the content to the parent element
-	// and stylelint doesn't like url-prefix
-	/* stylelint-disable */
-	@-moz-document url-prefix() {
-		max-height: calc(100% - 90px);
-	}
-	/* stylelint-enable */
 }
 
 /* side menu */
@@ -702,9 +695,12 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 /* *** */
 
-.btn-name-pronounce {
+.btn-name-pronounce,
+.btn-stats-name {
 	margin-left: 5px;
 	vertical-align: top;
+	height: 24px;
+	width: 24px;
 }
 
 .name-pronounce-icon {
@@ -1060,6 +1056,10 @@ input[type=checkbox].sidemenu__row__label__cb {
 	border-bottom: 1px solid #e69a28;
 	transform: translateZ(0);
 	flex-shrink: 1;
+
+	@media (max-width: $width-screen-md) {
+		overflow-y: initial;
+	}
 }
 
 
@@ -1282,6 +1282,10 @@ th.name {
 		color: #5c7c27;
 	}
 
+	&MFF {
+		color: #92817f;
+	}
+
 	&AL {
 		color: #ed1c24;
 	}
@@ -1304,8 +1308,8 @@ th.name {
 	background: url('../img/bestiary/stat-block-top-texture.png') no-repeat, repeat top center, $rgb-bg-orange;
 }
 
-.stats td,
-.stats th {
+td,
+th {
 	padding: 1px 0.3em;
 }
 
@@ -1387,6 +1391,10 @@ th.name {
 span.dc-roller[mode=dice] {
 	color: $rgb-link-blue;
 	cursor: pointer;
+}
+
+.night-mode span.dc-roller[mode=dice] {
+	color: $rgb-link-blue--night;
 }
 
 div#lootoutput {
@@ -3503,7 +3511,6 @@ ul.list.books > li > a > span.name:hover {
 
 /* Night Mode */
 .night-mode {
-	$link-color: #7db6e8;
 	$class-main-color-alt: #c2c2c2;
 	$rgb-class-sub-color: #609dd2;
 	$rgb-class-ua-color: #a2ce42;
@@ -3586,7 +3593,7 @@ ul.list.books > li > a > span.name:hover {
 
 	a,
 	.roller {
-		color: $link-color;
+		color: $rgb-link-blue--night;
 	}
 
 	.nav > li:not(.active) > a {
@@ -4178,7 +4185,7 @@ ul.list.books > li > a > span.name:hover {
 
 	.ui-slider-pips:not(.ui-slider-disabled) .ui-slider-pip:hover .ui-slider-label,
 	.ui-slider .ui-slider-label {
-		color: $link-color;
+		color: $rgb-link-blue--night;
 	}
 
 	.ui-slider-pips .ui-slider-line {

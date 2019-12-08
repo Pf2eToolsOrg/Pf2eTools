@@ -1,15 +1,15 @@
-'use strict';
+"use strict";
 
 class ShapedConverter {
 	static get SOURCE_INFO () {
 		return {
 			bestiary: {
-				dir: 'data/bestiary/',
-				inputProp: 'monsterInput'
+				dir: "data/bestiary/",
+				inputProp: "monsterInput"
 			},
 			spells: {
-				dir: 'data/spells/',
-				inputProp: 'spellInput'
+				dir: "data/spells/",
+				inputProp: "spellInput"
 			}
 		};
 	}
@@ -93,7 +93,7 @@ class ShapedConverter {
 		inputs[key] = inputs[key] || {
 			name,
 			key,
-			dependencies: key === SRC_PHB ? ['SRD'] : ["Player's Handbook"],
+			dependencies: key === SRC_PHB ? ["SRD"] : ["Player's Handbook"],
 			classes: {}
 		};
 		return inputs[key];
@@ -135,38 +135,38 @@ class ShapedConverter {
 		const lines = sourceKeys
 			.map(key => {
 				return `ShapedScripts.addEntities(${JSON.stringify(inputs[key].converted, this.constructor.serialiseFixer)})`;
-			}).join('\n');
-		return `on('ready', function() {\n${lines}\n});`;
+			}).join("\n");
+		return `on("ready", function() {\n${lines}\n});`;
 	}
 
 	static makeSpellList (spellArray) {
-		return `${spellArray.map(this.fixLinks).join(', ')}`;
+		return `${spellArray.map(this.fixLinks).join(", ")}`;
 	}
 
 	static get INNATE_SPELLCASTING_RECHARGES () {
 		return {
-			daily: 'day',
-			rest: 'rest',
-			weekly: 'week'
+			daily: "day",
+			rest: "rest",
+			weekly: "week"
 		};
 	}
 
 	static innateSpellProc (spellcasting) {
 		return Object.keys(spellcasting)
 			.filter(k => ![
-				'headerEntries',
-				'headerWill',
-				'name',
-				'footerEntries',
-				'ability',
-				'hidden'
+				"headerEntries",
+				"headerWill",
+				"name",
+				"footerEntries",
+				"ability",
+				"hidden"
 			].includes(k))
 			.map(useInfo => {
 				const spellDetails = spellcasting[useInfo];
-				if (useInfo === 'will') {
+				if (useInfo === "will") {
 					return `At will: ${this.makeSpellList(spellDetails)}`;
 				}
-				if (useInfo === 'constant') {
+				if (useInfo === "constant") {
 					return `Constant: ${this.makeSpellList(spellDetails)}`;
 				}
 				if (this.INNATE_SPELLCASTING_RECHARGES[useInfo]) {
@@ -174,13 +174,13 @@ class ShapedConverter {
 					return Object.keys(spellDetails).map(usesPerDay => {
 						const spellList = spellDetails[usesPerDay];
 						const howMany = usesPerDay.slice(0, 1);
-						const each = usesPerDay.endsWith('e') && spellList.length > 1;
-						return `${howMany}/${rechargeString}${each ? ' each' : ''}: ${this.makeSpellList(spellList)}`;
+						const each = usesPerDay.endsWith("e") && spellList.length > 1;
+						return `${howMany}/${rechargeString}${each ? " each" : ""}: ${this.makeSpellList(spellList)}`;
 					}).sort((a, b) => parseInt(b, 10) - parseInt(a, 10));
-				} else if (useInfo === 'spells') {
+				} else if (useInfo === "spells") {
 					return this.processLeveledSpells(spellDetails);
 				} else {
-					throw new Error('Unrecognised spellUseInfo ' + useInfo);
+					throw new Error(`Unrecognised spellUseInfo ${useInfo}`);
 				}
 			}).flat();
 	}
@@ -206,21 +206,21 @@ class ShapedConverter {
 	static slotString (slots) {
 		switch (slots) {
 			case undefined:
-				return 'at will';
+				return "at will";
 			case 1:
-				return '1 slot';
+				return "1 slot";
 			default:
 				return `${slots} slots`;
 		}
 	}
 
 	static processChallenge (cr) {
-		if (cr === 'Unknown' || cr == null) {
+		if (cr === "Unknown" || cr == null) {
 			return 0;
 		}
 		const match = cr.match(/(\d+)(?:\s?\/\s?(\d+))?/);
 		if (!match) {
-			throw new Error('Bad CR ' + cr);
+			throw new Error(`Bad CR ${cr}`);
 		}
 		if (match[2]) {
 			return parseInt(match[1], 10) / parseInt(match[2], 10);
@@ -230,18 +230,18 @@ class ShapedConverter {
 
 	static fixLinks (string) {
 		return string
-			.replace(/{@filter ([^|]+)[^}]+}/g, '$1')
-			.replace(/{@hit (\d+)}/g, '+$1')
-			.replace(/{@chance (\d+)[^}]+}/g, '$1 percent')
+			.replace(/{@filter ([^|]+)[^}]+}/g, "$1")
+			.replace(/{@hit (\d+)}/g, "+$1")
+			.replace(/{@chance (\d+)[^}]+}/g, "$1 percent")
 			.replace(/{@recharge(?: (\d))?}/g, (m, lower) => `(Recharge ${lower ? `${Number(lower)}\u2013` : ""}6)`)
 			.replace(/{(@atk [A-Za-z,]+})/g, (m, p1) => Renderer.attackTagToFull(p1))
 			.replace(/{@h}/g, "Hit: ")
 			.replace(/{@dc (\d+)}/g, "DC $1")
 			.replace(/{@\w+ ((?:[^|}]+\|?){0,3})}/g, (m, p1) => {
-				const parts = p1.split('|');
+				const parts = p1.split("|");
 				return parts.length === 3 ? parts[2] : parts[0];
 			})
-			.replace(/(d\d+)([+-])(\d)/g, '$1 $2 $3');
+			.replace(/(d\d+)([+-])(\d)/g, "$1 $2 $3");
 	}
 
 	static cleanRecharge (string) {
@@ -263,7 +263,7 @@ class ShapedConverter {
 				}
 				return {
 					name: newName,
-					text: '',
+					text: "",
 					recharge: rechargeMatch[2]
 				};
 			}
@@ -286,16 +286,16 @@ class ShapedConverter {
 					if (entry.items) {
 						if (isObject(entry.items[0])) {
 							return entry.items.map(item => {
-								const cleanName = item.name.replace(/^([^.]+)\.$/, '$1');
+								const cleanName = item.name.replace(/^([^.]+)\.$/, "$1");
 								const out = this.makeTraitAction(cleanName);
 								out.text = this.fixLinks(item.entry);
 								return out;
 							});
 						} else {
-							return entry.items.map(item => `• ${this.fixLinks(item)}`).join('\n');
+							return entry.items.map(item => `• ${this.fixLinks(item)}`).join("\n");
 						}
 					} else if (entry.entries) {
-						const joiner = entry.type === 'inline' ? '' : '\n';
+						const joiner = entry.type === "inline" ? "" : "\n";
 						return entry.entries.map(subEntry => isString(subEntry) ? subEntry : subEntry.text).join(joiner);
 					}
 				} else {
@@ -303,7 +303,7 @@ class ShapedConverter {
 				}
 			}).flat();
 
-			newTrait.text = expandedList.filter(isString).join('\n');
+			newTrait.text = expandedList.filter(isString).join("\n");
 			return [newTrait].concat(expandedList.filter(isObject));
 		}).flat();
 	}
@@ -322,7 +322,7 @@ class ShapedConverter {
 					text: this.fixLinks(match[2])
 				});
 			} else {
-				result.last().text = result.last().text + '\n' + entry;
+				result.last().text = `${result.last().text}\n${entry}`;
 			}
 			return result;
 		}, [action]);
@@ -331,10 +331,10 @@ class ShapedConverter {
 	static get SPECIAL_TRAITS_ACTIONS () {
 		return {
 			Roar: this.processSpecialList.bind(this),
-			'Eye Rays': this.processSpecialList.bind(this),
-			'Eye Ray': this.processSpecialList.bind(this),
-			'Gaze': this.processSpecialList.bind(this),
-			'Call the Blood': this.processSpecialList.bind(this)
+			"Eye Rays": this.processSpecialList.bind(this),
+			"Eye Ray": this.processSpecialList.bind(this),
+			"Gaze": this.processSpecialList.bind(this),
+			"Call the Blood": this.processSpecialList.bind(this)
 		};
 	}
 
@@ -342,13 +342,13 @@ class ShapedConverter {
 		if (monster.hp.special) {
 			output.HP = monster.hp.special;
 		} else {
-			output.HP = `${monster.hp.average} (${monster.hp.formula.replace(/(\d)([+-])(\d)/, '$1 $2 $3')})`;
+			output.HP = `${monster.hp.average} (${monster.hp.formula.replace(/(\d)([+-])(\d)/, "$1 $2 $3")})`;
 		}
 	}
 
 	static processAC (ac) {
 		function appendToList (string, newItem) {
-			return `${string}${string.length ? ', ' : ''}${newItem}`;
+			return `${string}${string.length ? ", " : ""}${newItem}`;
 		}
 
 		return ac.reduce((acString, acEntry) => {
@@ -362,26 +362,26 @@ class ShapedConverter {
 
 			let entryString = `${acEntry.ac}`;
 			if (acEntry.from) {
-				entryString += ` (${acEntry.from.map(this.fixLinks).join(', ')})`;
+				entryString += ` (${acEntry.from.map(this.fixLinks).join(", ")})`;
 			}
 			if (acEntry.condition) {
 				entryString += ` ${this.fixLinks(acEntry.condition)}`;
 			}
 
 			return appendToList(acString, entryString);
-		}, '');
+		}, "");
 	}
 
 	static processSkills (monster, output) {
 		output.skills = Object.keys(monster.skill)
-			.filter(name => name !== 'other')
+			.filter(name => name !== "other")
 			.map(name => `${name.toTitleCase()} ${monster.skill[name]}`)
-			.join(', ');
+			.join(", ");
 
 		if (monster.skill.other) {
-			const additionalSkills = this.objMap(monster.skill.other[0].oneOf, (val, name) => `${name.toTitleCase()} ${val}`).join(', ');
+			const additionalSkills = this.objMap(monster.skill.other[0].oneOf, (val, name) => `${name.toTitleCase()} ${val}`).join(", ");
 			(monster.trait = monster.trait || []).push({
-				name: 'Additional Skill Proficiencies',
+				name: "Additional Skill Proficiencies",
 				entries: [
 					`The ${monster.name} also has one of the following skill proficiencies: ${additionalSkills}`
 				]
@@ -417,7 +417,7 @@ class ShapedConverter {
 		output.wisdom = monster.wis;
 		output.charisma = monster.cha;
 		if (monster.save) {
-			output.savingThrows = this.objMap(monster.save, (saveVal, saveName) => `${saveName.toTitleCase()} ${saveVal}`).join(', ');
+			output.savingThrows = this.objMap(monster.save, (saveVal, saveName) => `${saveName.toTitleCase()} ${saveVal}`).join(", ");
 		}
 		if (monster.skill) {
 			this.processSkills(monster, output);
@@ -456,7 +456,7 @@ class ShapedConverter {
 					spellLines.push(...spellcasting.footerEntries);
 				}
 				const trait = this.makeTraitAction(spellcasting.name);
-				trait.text = spellLines.join('\n');
+				trait.text = spellLines.join("\n");
 
 				traits.push(trait);
 			});
@@ -471,7 +471,7 @@ class ShapedConverter {
 
 		const addVariant = (name, text, output, forceActions) => {
 			const newTraitAction = this.makeTraitAction(name);
-			newTraitAction.name = 'Variant: ' + newTraitAction.name;
+			newTraitAction.name = `Variant: ${newTraitAction.name}`;
 			const isAttack = text.match(/{@hit|Attack:|{@atk/);
 			newTraitAction.text = this.fixLinks(text);
 			if ((newTraitAction.recharge && !text.match(/bonus action/)) || forceActions || isAttack) {
@@ -485,18 +485,18 @@ class ShapedConverter {
 			if (isString(entry)) {
 				return entry;
 			}
-			const entryText = `${(entry.entries || entry.headerEntries).map(subEntry => entryStringifier(subEntry)).join('\n')}`;
+			const entryText = `${(entry.entries || entry.headerEntries).map(subEntry => entryStringifier(subEntry)).join("\n")}`;
 			return omitName ? entryText : `${entry.name}. ${entryText}`;
 		};
 
-		if (monster.variant && monster.name !== 'Shadow Mastiff') {
+		if (monster.variant && monster.name !== "Shadow Mastiff") {
 			monster.variant.forEach(variant => {
 				const baseName = variant.name;
-				if (variant.entries.every(entry => isString(entry) || entry.type !== 'entries')) {
+				if (variant.entries.every(entry => isString(entry) || entry.type !== "entries")) {
 					const text = variant.entries.map(entry => {
 						if (isString(entry)) return entry;
 						else if (entry.type === "table") return this.processTable(entry);
-						else if (entry.type === "list") return entry.items.map(item => `${item.name} ${item.entry}`).join('\n');
+						else if (entry.type === "list") return entry.items.map(item => `${item.name} ${item.entry}`).join("\n");
 						else {
 							const recursiveFlatten = (ent) => {
 								if (ent.entries) return `${ent.name ? `${ent.name}. ` : ""}${ent.entries.map(it => recursiveFlatten(it)).join("\n")}`;
@@ -504,9 +504,9 @@ class ShapedConverter {
 								else return JSON.stringify(ent);
 							};
 						}
-					}).join('\n');
+					}).join("\n");
 					addVariant(baseName, text, output);
-				} else if (variant.entries.find(entry => entry.type === 'entries')) {
+				} else if (variant.entries.find(entry => entry.type === "entries")) {
 					let explicitlyActions = false;
 
 					variant.entries.forEach(entry => {
@@ -541,15 +541,15 @@ class ShapedConverter {
 				const result = {};
 				const nameMatch = legendary.name.match(/([^(]+)(?:\s?\((?:Costs )?(\d(?:[-\u2013]\d)?) [aA]ctions(?:, ([^)]+))?\))?/);
 				if (nameMatch && nameMatch[2]) {
-					result.name = nameMatch[1].trim() + (nameMatch[3] ? ` (${nameMatch[3]})` : '');
-					result.text = '';
+					result.name = nameMatch[1].trim() + (nameMatch[3] ? ` (${nameMatch[3]})` : "");
+					result.text = "";
 					result.cost = parseInt(nameMatch[2], 10);
 				} else {
 					result.name = legendary.name;
-					result.text = '';
+					result.text = "";
 					result.cost = 1;
 				}
-				result.text = this.fixLinks(legendary.entries.join('\n'));
+				result.text = this.fixLinks(legendary.entries.join("\n"));
 				return result;
 			}).filter(l => !!l);
 		}
@@ -578,7 +578,7 @@ class ShapedConverter {
 	}
 
 	static get itemRenderer () {
-		return item => (this.fixLinks(isObject(item) ? `${item.name}. ${item.entries.join('\n')}` : item));
+		return item => (this.fixLinks(isObject(item) ? `${item.name}. ${item.entries.join("\n")}` : item));
 	}
 
 	static padInteger (num) {
@@ -634,26 +634,26 @@ class ShapedConverter {
 		const entryMapper = entry => {
 			if (isString(entry)) {
 				return entry;
-			} else if (entry.type === 'table') {
+			} else if (entry.type === "table") {
 				return this.processTable(entry);
-			} else if (entry.type === 'list') {
-				return entry.items.map(item => `- ${item}`).join('\n');
-			} else if (entry.type === 'homebrew') {
-				if (!entry.entries) return '';
-				return entry.entries.map(entryMapper).join('\n');
+			} else if (entry.type === "list") {
+				return entry.items.map(item => `- ${item}`).join("\n");
+			} else if (entry.type === "homebrew") {
+				if (!entry.entries) return "";
+				return entry.entries.map(entryMapper).join("\n");
 			} else {
-				return `***${entry.name}.*** ${entry.entries.map(entryMapper).join('\n')}`;
+				return `***${entry.name}.*** ${entry.entries.map(entryMapper).join("\n")}`;
 			}
 		};
 
 		let entriesToProc = entries;
 		if (isString(entries.last()) && (entries.last().match(/damage increases(?: by (?:{[^}]+}|one die))? when you reach/) || entries.last().match(/creates more than one beam when you reach/))) {
-			newSpell.description = '';
+			newSpell.description = "";
 			entriesToProc = entries.slice(0, -1);
 			newSpell.higherLevel = this.fixLinks(entries.last());
 		}
 
-		newSpell.description = this.fixLinks(entriesToProc.map(entryMapper).join('\n'));
+		newSpell.description = this.fixLinks(entriesToProc.map(entryMapper).join("\n"));
 	}
 
 	static processTable (entry) {
@@ -668,27 +668,27 @@ class ShapedConverter {
 		const rows = [entry.colLabels];
 		rows.push(...entry.rows);
 
-		const formattedRows = rows.map(row => `| ${row.map(cellProc).join(' | ')} |`);
+		const formattedRows = rows.map(row => `| ${row.map(cellProc).join(" | ")} |`);
 		const styleToColDefinition = style => {
-			if (style.includes('text-center')) {
-				return ':----:';
-			} else if (style.includes('text-right')) {
-				return '----:';
+			if (style.includes("text-center")) {
+				return ":----:";
+			} else if (style.includes("text-right")) {
+				return "----:";
 			}
-			return ':----';
+			return ":----";
 		};
-		const colDefinitions = entry.colStyles ? entry.colStyles.map(styleToColDefinition) : entry.colLabels.map(() => ':----');
-		const divider = `|${colDefinitions.join('|')}|`;
+		const colDefinitions = entry.colStyles ? entry.colStyles.map(styleToColDefinition) : entry.colLabels.map(() => ":----");
+		const divider = `|${colDefinitions.join("|")}|`;
 		formattedRows.splice(1, 0, divider);
 
-		const title = entry.caption ? `##### ${entry.caption}\n` : '';
-		return `${title}${formattedRows.join('\n')}`;
+		const title = entry.caption ? `##### ${entry.caption}\n` : "";
+		return `${title}${formattedRows.join("\n")}`;
 	}
 
 	static addExtraSpellData (newSpell, data) {
-		if (data['Spell Attack']) {
+		if (data["Spell Attack"]) {
 			newSpell.attack = {
-				type: data['Spell Attack'].toLocaleLowerCase()
+				type: data["Spell Attack"].toLocaleLowerCase()
 			};
 		}
 
@@ -696,8 +696,8 @@ class ShapedConverter {
 			newSpell.save = {
 				ability: data.Save
 			};
-			if (data['Save Success']) {
-				newSpell.save.saveSuccess = data['Save Success'].toLocaleLowerCase();
+			if (data["Save Success"]) {
+				newSpell.save.saveSuccess = data["Save Success"].toLocaleLowerCase();
 			}
 		}
 
@@ -715,20 +715,20 @@ class ShapedConverter {
 		].forEach(propNamesArray => {
 			const propNames = propNamesArray[0];
 			const outputNames = propNamesArray[1];
-			if (data[propNames.damage] && data[propNames.damageType] !== 'Effect') {
+			if (data[propNames.damage] && data[propNames.damageType] !== "Effect") {
 				switch (data[propNames.condition]) {
-					case 'save':
+					case "save":
 						this.processDamageInfo(data, newSpell.save, propNames, outputNames);
 						break;
-					case 'attack':
+					case "attack":
 						this.processDamageInfo(data, newSpell.attack, propNames, outputNames);
 						break;
-					case 'auto':
+					case "auto":
 						newSpell.damage = newSpell.damage || {};
 						this.processDamageInfo(data, newSpell.damage, propNames, outputNames);
 						break;
 					default:
-						throw new Error('Missing ' + propNames.condition + ' for spell ' + newSpell.name);
+						throw new Error(`Missing ${propNames.condition} for spell ${newSpell.name}`);
 				}
 			}
 		});
@@ -748,66 +748,66 @@ class ShapedConverter {
 				newSpell.heal.heal = data.Healing;
 			}
 
-			if (data['Add Casting Modifier'] === 'Yes') {
+			if (data["Add Casting Modifier"] === "Yes") {
 				newSpell.heal.castingStat = true;
 			}
-			if (data['Higher Spell Slot Dice'] && data.Healing.match(/\d+(?:d\d+)/)) {
-				newSpell.heal.higherLevelDice = parseInt(data['Higher Spell Slot Dice'], 10);
+			if (data["Higher Spell Slot Dice"] && data.Healing.match(/\d+(?:d\d+)/)) {
+				newSpell.heal.higherLevelDice = parseInt(data["Higher Spell Slot Dice"], 10);
 			}
 
-			if (data['Higher Level Healing']) {
-				newSpell.heal.higherLevelAmount = parseInt(data['Higher Level Healing'], 10);
+			if (data["Higher Level Healing"]) {
+				newSpell.heal.higherLevelAmount = parseInt(data["Higher Level Healing"], 10);
 			}
 		}
 	}
 
 	static get PRIMARY_DAMAGE_PROP_NAMES () {
 		return {
-			damage: 'Damage',
-			damageProgression: 'Damage Progression',
-			damageType: 'Damage Type',
-			higherLevel: 'Higher Spell Slot Dice',
-			castingStat: 'Add Casting Modifier',
-			condition: 'primaryDamageCondition'
+			damage: "Damage",
+			damageProgression: "Damage Progression",
+			damageType: "Damage Type",
+			higherLevel: "Higher Spell Slot Dice",
+			castingStat: "Add Casting Modifier",
+			condition: "primaryDamageCondition"
 		};
 	}
 
 	static get PRIMARY_DAMAGE_OUTPUT_NAMES () {
 		return {
-			outputDamage: 'damage',
-			outputDamageBonus: 'damageBonus',
-			outputDamageType: 'damageType',
-			outputHigherLevel: 'higherLevelDice',
-			outputCastingStat: 'castingStat'
+			outputDamage: "damage",
+			outputDamageBonus: "damageBonus",
+			outputDamageType: "damageType",
+			outputHigherLevel: "higherLevelDice",
+			outputCastingStat: "castingStat"
 		};
 	}
 
 	static get SECONDARY_DAMAGE_PROP_NAMES () {
 		return {
-			damage: 'Secondary Damage',
-			damageType: 'Secondary Damage Type',
-			damageProgression: 'Secondary Damage Progression',
-			higherLevel: 'Secondary Higher Spell Slot Dice',
-			castingStat: 'Secondary Add Casting Modifier',
-			condition: 'secondaryDamageCondition'
+			damage: "Secondary Damage",
+			damageType: "Secondary Damage Type",
+			damageProgression: "Secondary Damage Progression",
+			higherLevel: "Secondary Higher Spell Slot Dice",
+			castingStat: "Secondary Add Casting Modifier",
+			condition: "secondaryDamageCondition"
 		};
 	}
 
 	static get SECONDARY_DAMAGE_OUTPUTS_NAMES () {
 		return {
-			outputDamage: 'secondaryDamage',
-			outputDamageBonus: 'secondaryDamageBonus',
-			outputDamageType: 'secondaryDamageType',
-			outputHigherLevel: 'higherLevelSecondaryDice',
-			outputCastingStat: 'secondaryCastingStat'
+			outputDamage: "secondaryDamage",
+			outputDamageBonus: "secondaryDamageBonus",
+			outputDamageType: "secondaryDamageType",
+			outputHigherLevel: "higherLevelSecondaryDice",
+			outputCastingStat: "secondaryCastingStat"
 		};
 	}
 
 	static processDamageInfo (data, outputObject, propNames, outputNames) {
 		if (data[propNames.damage]) {
 			if (data[propNames.damageProgression]) {
-				if (data[propNames.damageProgression] === 'Cantrip Dice') {
-					outputObject[outputNames.outputDamage] = '[[ceil((@{level} + 2) / 6)]]' + data[propNames.damage].replace(/\d+(d\d+)/, '$1');
+				if (data[propNames.damageProgression] === "Cantrip Dice") {
+					outputObject[outputNames.outputDamage] = `[[ceil((@{level} + 2) / 6)]]${data[propNames.damage].replace(/\d+(d\d+)/, "$1")}`;
 				} else {
 					outputObject[outputNames.outputDamage] = data[propNames.damage];
 				}
@@ -829,11 +829,11 @@ class ShapedConverter {
 			}
 
 			if (data[propNames.higherLevel]) {
-				const parseFunc = data[propNames.higherLevel].includes('.') ? parseFloat : parseInt;
+				const parseFunc = data[propNames.higherLevel].includes(".") ? parseFloat : parseInt;
 				outputObject[outputNames.outputHigherLevel] = parseFunc(data[propNames.higherLevel]);
 			}
 
-			if (data[propNames.castingStat] === 'Yes') {
+			if (data[propNames.castingStat] === "Yes") {
 				outputObject[outputNames.outputCastingStat] = true;
 			}
 		}
@@ -841,7 +841,7 @@ class ShapedConverter {
 
 	static processHigherLevel (entriesHigherLevel, newSpell) {
 		if (entriesHigherLevel && entriesHigherLevel.length) {
-			newSpell.higherLevel = this.fixLinks((entriesHigherLevel[0].entries || entriesHigherLevel).join('\n'));
+			newSpell.higherLevel = this.fixLinks((entriesHigherLevel[0].entries || entriesHigherLevel).join("\n"));
 		}
 	}
 
@@ -875,9 +875,9 @@ class ShapedConverter {
 	static serialiseFixer (key, value) {
 		if (isString(value)) {
 			return value
-				.replace(/'/g, '’')
-				.replace(/([\s(])"(\w)/g, '$1“$2')
-				.replace(/([\w,.])"/g, '$1”');
+				.replace(/'/g, "’")
+				.replace(/([\s(])"(\w)/g, "$1“$2")
+				.replace(/([\w,.])"/g, "$1”");
 		}
 
 		if (isObject(value)) {
@@ -938,7 +938,7 @@ class ShapedConverter {
 						}
 						return converted;
 					} catch (e) {
-						throw new Error('Error with monster ' + monster.name + ' in file ' + data.name + ': ' + e.toString() + e.stack);
+						throw new Error(`Error with monster ${monster.name} in file ${data.name}: ${e.toString()}${e.stack}`);
 					}
 				})
 					.filter(m => !!m)
@@ -966,10 +966,10 @@ class ShapedConverter {
 
 					((spell.classes || {}).fromSubclass || []).forEach(subclass => {
 						if ([
-							'Life',
-							'Devotion',
-							'Land',
-							'Fiend'
+							"Life",
+							"Devotion",
+							"Land",
+							"Fiend"
 						].includes(subclass.subclass.name)) {
 							return;
 						}
@@ -1026,7 +1026,7 @@ class ShapedConverter {
 			input.converted = {
 				name: input.name,
 				dependencies: input.dependencies,
-				version: '2.0.0'
+				version: "2.0.0"
 			};
 			if (input.classes && !isEmpty(input.classes)) {
 				input.converted.classes = Object.keys(input.classes)
@@ -1078,18 +1078,18 @@ async function rebuildShapedSources () {
 	const checkedSources = {};
 	checkedSources[SRC_PHB] = true;
 
-	$('.shaped-source').each((i, e) => {
+	$(".shaped-source").each((i, e) => {
 		const $e = $(e);
-		if ($e.prop('checked')) {
+		if ($e.prop("checked")) {
 			checkedSources[$e.val()] = true;
 		}
 		$e.parent().parent().remove();
 	});
 
 	sortedInputLists.forEach(input => {
-		const disabled = input.key === SRC_PHB ? 'disabled="disabled" ' : '';
-		const checked = checkedSources[input.key] ? 'checked="checked" ' : '';
-		$('#sourceList').append($(`<li><label class="shaped-label"><input class="shaped-source" type="checkbox" ${disabled}${checked} value="${input.key}"><span>${input.name}</span></label></li>`));
+		const disabled = input.key === SRC_PHB ? `disabled="disabled" ` : "";
+		const checked = checkedSources[input.key] ? `checked="checked" ` : "";
+		$("#sourceList").append($(`<li><label class="shaped-label"><input class="shaped-source" type="checkbox" ${disabled}${checked} value="${input.key}"><span>${input.name}</span></label></li>`));
 	});
 }
 
@@ -1124,14 +1124,14 @@ window.onload = function load () {
 
 	const $btnSaveFile = $(`<button class="btn btn-primary">Prepare JS</button>`);
 	$(`#buttons`).append($btnSaveFile);
-	$btnSaveFile.on('click', () => {
-		const keys = $('.shaped-source:checked').map((i, e) => {
+	$btnSaveFile.on("click", () => {
+		const keys = $(".shaped-source:checked").map((i, e) => {
 			return e.value;
 		}).get();
 		shapedConverter.pGenerateShapedJS(keys)
 			.then(js => {
-				$('#shapedJS').val(js);
-				$('#copyJS').removeAttr('disabled');
+				$("#shapedJS").val(js);
+				$("#copyJS").removeAttr("disabled");
 			})
 			.catch(e => {
 				alert(`${e}\n${e.stack}`);
@@ -1140,11 +1140,11 @@ window.onload = function load () {
 				}, 0);
 			});
 	});
-	$('#copyJS').on('click', () => {
-		const shapedJS = $('#shapedJS');
+	$("#copyJS").on("click", () => {
+		const shapedJS = $("#shapedJS");
 		shapedJS.select();
-		document.execCommand('Copy');
-		JqueryUtil.showCopiedEffect($('#copyJS'));
+		document.execCommand("Copy");
+		JqueryUtil.showCopiedEffect($("#copyJS"));
 	});
 	$(`#selectAll`).change(function () {
 		$(`.shaped-source:not([disabled])`).prop("checked", $(this).prop("checked"));

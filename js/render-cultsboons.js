@@ -14,7 +14,7 @@ class RenderCultsBoons {
 
 		return $$`
 			${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getNameTr(it)}
+			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CULTS_BOONS})}
 			<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
 			<tr class="text"><td colspan="6" class="text">${renderStack.join("")}</td></tr>
 			${Renderer.utils.getPageTr(it)}
@@ -31,7 +31,7 @@ class RenderCultsBoons {
 		renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
 		return $$`
 			${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getNameTr(it)}
+			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CULTS_BOONS})}
 			<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>
 			${Renderer.utils.getPageTr(it)}
 			${Renderer.utils.getBorderTr()}

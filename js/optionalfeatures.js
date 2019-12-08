@@ -15,7 +15,7 @@ function filterFeatureTypeSort (a, b) {
 
 class OptionalFeaturesPage extends ListPage {
 	constructor () {
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 		const typeFilter = new Filter({
 			header: "Feature Type",
 			items: ["AI", "ED", "EI", "MM", "MV", "MV:B", "OTH", "FS:F", "FS:B", "FS:P", "FS:R", "PB"],

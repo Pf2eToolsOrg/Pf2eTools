@@ -2,7 +2,7 @@
 
 class FeatsPage extends ListPage {
 	constructor () {
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 		const asiFilter = getAsiFilter();
 		const otherPrereqFilter = new Filter({
 			header: "Other",

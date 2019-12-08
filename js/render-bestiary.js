@@ -24,7 +24,7 @@ class RenderBestiary {
 	static _getPronunciationButton (mon) {
 		const basename = mon.soundClip.substr(mon.soundClip.lastIndexOf("/") + 1);
 
-		return `<button class="btn btn-xs btn-default btn-name-pronounce" style="margin-top: 5px;">
+		return `<button class="btn btn-xs btn-default btn-name-pronounce">
 			<span class="glyphicon glyphicon-volume-up name-pronounce-icon"></span>
 			<audio class="name-pronounce">
 			   <source src="${mon.soundClip}" type="audio/mpeg">
@@ -92,11 +92,7 @@ class RenderBestiary {
 
 		return $$`
 		${Renderer.utils.getBorderTr()}
-		<tr><th class="name mon__name--token" colspan="6">
-			<span class="stats-name copyable" onclick="Renderer.utils._pHandleNameClick(this, '${mon.source.escapeQuotes()}')">${mon._displayName || mon.name}</span>
-			${mon.soundClip ? RenderBestiary._getPronunciationButton(mon) : ""}
-			<span class="stats-source ${Parser.sourceJsonToColor(mon.source)}" title="${Parser.sourceJsonToFull(mon.source)}${Renderer.utils.getSourceSubText(mon)}" ${BrewUtil.sourceJsonToStyle(mon.source)}>${Parser.sourceJsonToAbv(mon.source)}</span>
-		</th></tr>
+		${Renderer.utils.getNameTr(mon, {pronouncePart: mon.soundClip ? RenderBestiary._getPronunciationButton(mon) : "", extraThClasses: ["mon__name--token"], page: UrlUtil.PG_BESTIARY})}
 		<tr><td colspan="6">
 			<div class="mon__wrp-size-type-align"><i>${Renderer.monster.getTypeAlignmentPart(mon)}</i></div>
 		</td></tr>
@@ -111,12 +107,7 @@ class RenderBestiary {
 			<th>STR</th><th>DEX</th><th>CON</th><th>INT</th><th>WIS</th><th>CHA</th>
 		</tr>
 		<tr class="mon__ability-scores">
-			<td>${Renderer.get().render(`{@d20 ${Parser.getAbilityModifier(mon.str)}|${mon.str} (${Parser.getAbilityModifier(mon.str)})|Strength}`)}</td>
-			<td>${Renderer.get().render(`{@d20 ${Parser.getAbilityModifier(mon.dex)}|${mon.dex} (${Parser.getAbilityModifier(mon.dex)})|Dexterity}`)}</td>
-			<td>${Renderer.get().render(`{@d20 ${Parser.getAbilityModifier(mon.con)}|${mon.con} (${Parser.getAbilityModifier(mon.con)})|Constitution}`)}</td>
-			<td>${Renderer.get().render(`{@d20 ${Parser.getAbilityModifier(mon.int)}|${mon.int} (${Parser.getAbilityModifier(mon.int)})|Intelligence}`)}</td>
-			<td>${Renderer.get().render(`{@d20 ${Parser.getAbilityModifier(mon.wis)}|${mon.wis} (${Parser.getAbilityModifier(mon.wis)})|Wisdom}`)}</td>
-			<td>${Renderer.get().render(`{@d20 ${Parser.getAbilityModifier(mon.cha)}|${mon.cha} (${Parser.getAbilityModifier(mon.cha)})|Charisma}`)}</td>
+			${Parser.ABIL_ABVS.map(ab => `<td>${Renderer.utils.getAbilityRoller(mon, ab)}</td>`).join("")}
 		</tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		

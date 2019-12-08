@@ -143,7 +143,7 @@ const Omnisearch = {
 
 				$searchOut.empty();
 				const showUa = doShowUaEtc();
-				const $btnUaEtc = $(`<button class="btn btn-default btn-xs btn-file ${showUa ? "active" : ""}" title="Filter Unearthed Arcana and other unofficial source results" tabindex="-1">Include UA, etc</button>`)
+				const $btnUaEtc = $(`<button class="btn btn-default btn-xs btn-file ${showUa ? "active" : ""}" title="Filter Unearthed Arcana and other unofficial source results" tabindex="-1">Include UA/etc.</button>`)
 					.on("click", () => {
 						setShowUaEtc(!showUa);
 						pDoSearch();

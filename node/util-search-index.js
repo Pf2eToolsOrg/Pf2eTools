@@ -1,6 +1,6 @@
-const ut = require('../js/utils.js');
-const er = require('../js/render.js');
-const od = require('../js/omnidexer.js');
+const ut = require("../js/utils.js");
+const er = require("../js/render.js");
+const od = require("../js/omnidexer.js");
 
 UtilSearchIndex = {};
 

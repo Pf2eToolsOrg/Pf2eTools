@@ -1,8 +1,8 @@
-const fs = require('fs');
-require('../js/utils.js');
-require('../js/render.js');
+const fs = require("fs");
+require("../js/utils.js");
+require("../js/render.js");
 const utS = require("../node/util-search-index");
-const od = require('../js/omnidexer.js');
+const od = require("../js/omnidexer.js");
 const bu = require("../js/bookutils");
 const ut = require("../node/util.js");
 
@@ -396,7 +396,7 @@ class AreaCheck {
 
 	static checkFile (file) {
 		AreaCheck.errorSet = new Set();
-		const contents = JSON.parse(fs.readFileSync(file, 'utf8'));
+		const contents = JSON.parse(fs.readFileSync(file, "utf8"));
 		AreaCheck._buildMap(file, contents.data);
 		ut.dataRecurse(file, contents, {string: AreaCheck.checkString});
 		if (AreaCheck.errorSet.size) {
@@ -507,7 +507,7 @@ class EscapeCharacterCheck {
 
 	static checkFile (file) {
 		EscapeCharacterCheck.errors = [];
-		const contents = JSON.parse(fs.readFileSync(file, 'utf8'));
+		const contents = JSON.parse(fs.readFileSync(file, "utf8"));
 		ut.dataRecurse(file, contents, {string: EscapeCharacterCheck.checkString});
 		if (EscapeCharacterCheck.errors.length) {
 			MSG.EscapeCharacterCheck += `Unwanted escape characters in ${file}! See below:\n`;
@@ -536,7 +536,7 @@ async function main () {
 	TableDiceTest.addHandlers();
 
 	fileRecurse("./data", (file) => {
-		const contents = JSON.parse(fs.readFileSync(file, 'utf8'));
+		const contents = JSON.parse(fs.readFileSync(file, "utf8"));
 		ut.dataRecurse(file, contents, PRIMITIVE_HANDLERS);
 	});
 

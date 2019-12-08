@@ -2,7 +2,7 @@
 
 class TablesPage extends ListPage {
 	constructor () {
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 
 		super({
 			dataSource: DataUtil.table.pLoadAll,

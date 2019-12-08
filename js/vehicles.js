@@ -2,7 +2,7 @@
 
 class VehiclesPage extends ListPage {
 	constructor () {
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 
 		super({
 			dataSource: "data/vehicles.json",

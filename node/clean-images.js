@@ -154,7 +154,7 @@ function cleanBestiaryFluffImages () {
 		.forEach(metas => metas.forEach(meta => meta.fluff.images.forEach(it => delete it._IS_RENAMED)));
 
 	// write JSON files
-	Object.values(ixFluff).forEach(meta => fs.writeFileSync(meta.path, ut.getCleanStringJson(meta.json), "utf-8"));
+	Object.values(ixFluff).forEach(meta => fs.writeFileSync(meta.path, CleanUtil.getCleanJson(meta.json), "utf-8"));
 
 	console.log(`Done!`);
 }

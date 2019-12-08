@@ -215,6 +215,7 @@ class BestiaryPage {
 		encounterBuilder.initState();
 	}
 }
+BestiaryPage._BOOK_VIEW_COLUMNS_K = "bookViewColumns";
 
 function handleBrew (homebrew) {
 	BestiaryPage.addLegendaryGroups(homebrew.legendaryGroup);
@@ -305,7 +306,37 @@ async function pPageInit (loadedSources) {
 		$(`#btn-printbook`),
 		"If you wish to view multiple creatures, please first make a list",
 		"Bestiary Printer View",
-		async $wrpContent => {
+		async ($wrpContent, $dispName, $wrpControls) => {
+			// region controls
+			$wrpControls.addClass("px-2 mt-2");
+
+			const injectPrintCss = (cols) => {
+				$(`#mon__print-style`).remove();
+				$(`<style media="print" id="mon__print-style">.bkmv__wrp { column-count: ${cols}; }</style>`)
+					.appendTo($(document.body))
+			};
+
+			const lastColumns = StorageUtil.syncGetForPage(BestiaryPage._BOOK_VIEW_COLUMNS_K);
+
+			const $selColumns = $(`<select class="form-control">
+				<option value="0">Two (book style)</option>
+				<option value="1">One</option>
+			</select>`)
+				.change(() => {
+					const val = Number($selColumns.val());
+					if (val === 0) injectPrintCss(2);
+					else injectPrintCss(1);
+
+					StorageUtil.syncSetForPage(BestiaryPage._BOOK_VIEW_COLUMNS_K, val);
+				});
+			if (lastColumns != null) $selColumns.val(lastColumns);
+			$selColumns.change();
+			// endregion
+
+			$$`<div class="w-100 flex">
+				<div class="flex-vh-center"><div class="mr-2 no-wrap">Print columns:</div>${$selColumns}</div>
+			</div>`.appendTo($wrpControls);
+
 			const toShow = await Promise.all(ListUtil.genericPinKeyMapper());
 
 			toShow.sort((a, b) => SortUtil.ascSort(a._displayName || a.name, b._displayName || b.name));

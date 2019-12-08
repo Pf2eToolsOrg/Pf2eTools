@@ -47,7 +47,7 @@ class AreaTagger {
 	}
 
 	_doWrite () {
-		const outStr = ut.getCleanStringJson(this._data);
+		const outStr = CleanUtil.getCleanJson(this._data);
 		fs.writeFileSync(this._filePath, outStr, "utf-8");
 	}
 

@@ -1,5 +1,6 @@
 const fs = require("fs");
 const ut = require("./util");
+require("../js/utils");
 
 const toDump = [
 	{prop: "book", json: JSON.parse(fs.readFileSync("./data/books.json", "utf-8"))},
@@ -20,6 +21,6 @@ toDump.forEach(it => {
 	});
 
 	const path = `./data/generated/gendata-wotc-${it.prop}.json`;
-	fs.writeFileSync(path, ut.getCleanStringJson(out, true), "utf-8");
+	fs.writeFileSync(path, CleanUtil.getCleanJson(out, true), "utf-8");
 	console.log(`Saved combined ${it.prop} file to "${path}".`);
 });

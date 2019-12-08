@@ -2980,7 +2980,7 @@ class NoteBox {
 				if ((evt.ctrlKey || evt.metaKey) && evt.key === "q") {
 					const txt = $iptText[0];
 					if (txt.selectionStart === txt.selectionEnd) {
-						const pos = txt.selectionStart;
+						const pos = txt.selectionStart - 1;
 						const text = txt.value;
 						const l = text.length;
 						let beltStack = [];
@@ -3012,7 +3012,7 @@ class NoteBox {
 									break;
 								case "}":
 									braces = 0;
-									if (i > pos) break outer;
+									if (i >= pos) break outer;
 									break;
 								default:
 									if (belts === 2) {

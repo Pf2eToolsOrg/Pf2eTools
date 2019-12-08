@@ -652,7 +652,7 @@ class BuilderUi {
 			.change(() => {
 				const raw = $ipt.val().trim();
 				let out = raw || !options.nullable ? UiUtil.getTextAsEntries(raw) : null;
-				if (options.withHeader) {
+				if (options.withHeader && out) {
 					out = [
 						{
 							name: options.withHeader,

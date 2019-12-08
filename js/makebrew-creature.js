@@ -43,8 +43,7 @@ class CreatureBuilder extends Builder {
 
 			const rawTokenUrl = await pFetchToken(creature);
 			if (rawTokenUrl) {
-				const tokenUrl = /^[a-zA-Z0-9]+:\/\//.test(rawTokenUrl) ? rawTokenUrl : `${window.location.origin.replace(/\/+$/, "")}/${rawTokenUrl}`;
-				creature.tokenUrl = tokenUrl;
+				creature.tokenUrl = /^[a-zA-Z0-9]+:\/\//.test(rawTokenUrl) ? rawTokenUrl : `${window.location.origin.replace(/\/+$/, "")}/${rawTokenUrl}`;
 			}
 
 			creature.source = this._ui.source;
@@ -2134,7 +2133,9 @@ class CreatureBuilder extends Builder {
 									searchWidget.$wrpSearch.detach();
 									if (!isDataEntered) return resolve(null);
 									const trait = MiscUtil.copy(this._jsonCreature.trait[traitIndex]);
-									trait.entries = JSON.parse(JSON.stringify(trait.entries).replace(/<\$name\$>/gi, this._state.name));
+									let name = this._state.shortName || this._state.name;
+									if (!this._state.isNamedCreature) name = name.toLowerCase();
+									trait.entries = JSON.parse(JSON.stringify(trait.entries).replace(/<\$name\$>/gi, name));
 									resolve(trait);
 								}
 							});
@@ -2183,9 +2184,9 @@ class CreatureBuilder extends Builder {
 									.change(() => $stageBonusDamage.toggle($cbBonusDamage.prop("checked")));
 
 								const $iptMeleeRange = $(`<input class="form-control form-control--minimal input-xs" type="number" value="5">`);
-								const $iptMeleeDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Number of Dice" min="1" value="1">`);
-								const $iptMeleeDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="6">`);
-								const $iptMeleeDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X">`);
+								const $iptMeleeDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Number of Dice" min="1" value="1">`);
+								const $iptMeleeDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Dice Type" value="6">`);
+								const $iptMeleeDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X (additional bonus damage)">`);
 								const $iptMeleeDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Melee Damage Type" autocomplete="off">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageMelee = $$`<div class="flex-col"><hr class="hr-3">
@@ -2195,9 +2196,9 @@ class CreatureBuilder extends Builder {
 
 								const $iptRangedShort = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number">`);
 								const $iptRangedLong = $(`<input class="form-control form-control--minimal input-xs" type="number">`);
-								const $iptRangedDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Number of Dice" min="1" value="1">`);
-								const $iptRangedDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="6">`);
-								const $iptRangedDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X">`);
+								const $iptRangedDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Number of Dice" min="1" value="1">`);
+								const $iptRangedDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Dice Type" value="6">`);
+								const $iptRangedDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X (additional bonus damage)">`);
 								const $iptRangedDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Ranged Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageRanged = $$`<div class="flex-col"><hr class="hr-3">
@@ -2208,18 +2209,18 @@ class CreatureBuilder extends Builder {
 								<div class="flex-v-center mb-2">${$iptRangedDamDiceCount}<span class="mr-2">d</span>${$iptRangedDamDiceNum}${$iptRangedDamBonus}${$iptRangedDamType}</div>
 								</div>`.hide();
 
-								const $iptVersatileDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Number of Dice" min="1" value="1">`);
-								const $iptVersatileDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="8">`);
-								const $iptVersatileDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X">`);
+								const $iptVersatileDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Number of Dice" min="1" value="1">`);
+								const $iptVersatileDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Dice Type" value="8">`);
+								const $iptVersatileDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X (additional bonus damage)">`);
 								const $iptVersatileDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Two-Handed Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageVersatile = $$`<div class="flex-col"><hr class="hr-3">
 								<div class="flex-v-center mb-2">${$iptVersatileDamDiceCount}<span class="mr-2">d</span>${$iptVersatileDamDiceNum}${$iptVersatileDamBonus}${$iptVersatileDamType}</div>
 								</div>`.hide();
 
-								const $iptBonusDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Number of Dice" min="1" value="1">`);
-								const $iptBonusDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="Dice Type" value="6">`);
-								const $iptBonusDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X">`);
+								const $iptBonusDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Number of Dice" min="1" value="1">`);
+								const $iptBonusDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Dice Type" value="6">`);
+								const $iptBonusDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X (additional bonus damage)">`);
 								const $iptBonusDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Bonus Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageBonusDamage = $$`<div class="flex-col"><hr class="hr-3">
@@ -2267,7 +2268,8 @@ class CreatureBuilder extends Builder {
 
 								const getFormData = () => {
 									const pb = this._getProfBonus();
-									const abilMod = Parser.getAbilityModNumber($cbFinesse.prop("checked") ? this._state.dex : this._state.str);
+									const isDex = $cbFinesse.prop("checked") || ($cbRanged.prop("checked") && !$cbMelee.prop("checked"));
+									const abilMod = Parser.getAbilityModNumber(isDex ? this._state.dex : this._state.str);
 									const [melee, ranged] = [$cbMelee.prop("checked") ? "mw" : false, $cbRanged.prop("checked") ? "rw" : false];
 
 									const ptAtk = `{@atk ${[melee ? "mw" : null, ranged ? "rw" : null].filter(Boolean).join(",")}}`;
@@ -2285,10 +2287,11 @@ class CreatureBuilder extends Builder {
 									].filter(Boolean).join(" or ");
 
 									const getDamageDicePt = ($iptNum, $iptFaces, $iptBonus) => {
-										const num = Number($iptNum.val()) || 1;
-										const faces = Number($iptFaces.val()) || 6;
-										const bonusVal = UiUtil.strToInt($iptBonus.val(), null, {fallbackOnNaN: null});
-										return `${Math.floor(num * ((faces + 1) / 2)) + (bonusVal || 0)} ({@damage ${num}d${faces}${bonusVal != null ? ` ${UiUtil.intToBonus(bonusVal)}` : ``}})`;
+										const num = UiUtil.strToInt($iptNum.val(), 1, {fallbackOnNaN: 1});
+										const faces = UiUtil.strToInt($iptFaces.val(), 6, {fallbackOnNaN: 6});
+										const bonusVal = UiUtil.strToInt($iptBonus.val(), 0, {fallbackOnNaN: 0});
+										const totalBonus = abilMod + bonusVal;
+										return `${Math.floor(num * ((faces + 1) / 2)) + (bonusVal || 0)} ({@damage ${num}d${faces}${totalBonus ? ` ${UiUtil.intToBonus(totalBonus).replace(/([-+])/g, "$1 ")}` : ``}})`;
 									};
 									const getDamageTypePt = ($ipDamType) => $ipDamType.val().trim() ? ` ${$ipDamType.val().trim()}` : "";
 									const ptDamage = [

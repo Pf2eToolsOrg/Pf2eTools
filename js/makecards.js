@@ -410,7 +410,7 @@ class MakeCards extends BaseComponent {
 			})
 			.val(cardMeta.count);
 
-		const $btnCopy =  $(`<button class="btn btn-default btn-xs mr-2" title="Copy JSON (SHIFT to view JSON)"><span class="glyphicon glyphicon-copy"/></button>`)
+		const $btnCopy = $(`<button class="btn btn-default btn-xs mr-2" title="Copy JSON (SHIFT to view JSON)"><span class="glyphicon glyphicon-copy"/></button>`)
 			.click(async evt => {
 				const entityMeta = MakeCards._AVAILABLE_TYPES[listItem.values.entityType];
 				const toCopy = {
@@ -617,7 +617,7 @@ class MakeCards extends BaseComponent {
 
 			$iptStr.typeahead({
 				source: icon_names,
-				items: '16',
+				items: "16",
 				fnGetItemPrefix: (iconName) => {
 					return `<span class="cards__disp-typeahead-icon mr-2" style="background-image: url('${MakeCards._getIconPath(iconName)}')"/> `;
 				}

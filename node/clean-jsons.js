@@ -2,6 +2,7 @@
 
 const fs = require("fs");
 const ut = require("./util");
+require("../js/utils");
 
 function cleanFolder (folder) {
 	console.log(`Cleaning directory ${folder}...`);
@@ -10,7 +11,7 @@ function cleanFolder (folder) {
 		.filter(file => file.endsWith(".json"))
 		.forEach(file => {
 			console.log(`\tCleaning ${file}...`);
-			fs.writeFileSync(file, ut.getCleanStringJson(ut.readJson(file)));
+			fs.writeFileSync(file, CleanUtil.getCleanJson(ut.readJson(file)), "utf-8");
 		})
 }
 

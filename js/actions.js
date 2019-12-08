@@ -6,7 +6,7 @@ class ActionsPage extends ListPage {
 	}
 
 	constructor () {
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 		const timeFilter = new Filter({
 			header: "Type",
 			displayFn: StrUtil.uppercaseFirst,

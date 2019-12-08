@@ -1,6 +1,7 @@
 const ut = require("../node/util");
 const rl = require("readline-sync");
 const fs = require("fs");
+require("../js/utils");
 
 const BLACKLIST_FILE_PREFIXES = [
 	...ut.FILE_PREFIX_BLACKLIST,
@@ -84,7 +85,7 @@ function run (isModificationMode) {
 					answer = rl.question(`Save file with ${mods} modification${mods === 1 ? "" : "s"}? [y/n/quit]`);
 					if (answer === "y") {
 						console.log(`Saving ${file}...`);
-						fs.writeFileSync(file, ut.getCleanStringJson(json), "utf-8");
+						fs.writeFileSync(file, CleanUtil.getCleanJson(json), "utf-8");
 					} else if (answer === "quit") {
 						process.exit(1);
 					}

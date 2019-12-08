@@ -2,7 +2,7 @@
 
 class PageFilterItems {
 	constructor () {
-		const sourceFilter = getSourceFilter();
+		const sourceFilter = SourceFilter.getInstance();
 		const typeFilter = new Filter({header: "Type", deselFn: (it) => PageFilterItems._DEFAULT_HIDDEN_TYPES.has(it)});
 		const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"], itemSortFn: null});
 		const propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});

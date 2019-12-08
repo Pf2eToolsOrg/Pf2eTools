@@ -374,6 +374,43 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Captain A-Hole",
+			"size": "L",
+			"type": "U",
+			"source": "RMBRE",
+			"ac": "17",
+			"hp": "50",
+			"speed": 0,
+			"str": 14,
+			"dex": 10,
+			"int": 3,
+			"wis": 3,
+			"cha": 1,
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
+			"immune": "poison, psychic",
+			"page": 21,
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Cannon",
+					"entries": [
+						{
+							"type": "attack",
+							"attackType": "RW",
+							"attackEntries": [
+								"{@hit +5} to hit, range 30 ft., one target."
+							],
+							"hitEntries": [
+								"3 ({@dice 1d6}) bludgeoning damage."
+							]
+						}
+					]
+				}
+			]
 		}
 	]
 }

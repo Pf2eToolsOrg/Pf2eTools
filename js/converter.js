@@ -450,8 +450,7 @@ class ConverterUi {
 	}
 
 	doCleanAndOutput (obj, append) {
-		const asString = JSON.stringify(obj, null, "\t");
-		const asCleanString = TextClean.getCleanedJson(asString);
+		const asCleanString = CleanUtil.getCleanJson(obj);
 		if (append) {
 			this.outText = `${asCleanString},\n${ui.outText}`;
 			this._hasAppended = true;
@@ -467,7 +466,7 @@ class ConverterUi {
 
 	set outText (text) { return this._editorOut.setValue(text, -1); }
 
-	get inText () { return TextClean.getReplacedQuotesText((this._editorIn.getValue() || "").trim()); }
+	get inText () { return CleanUtil.getReplacedQuotesText((this._editorIn.getValue() || "").trim()); }
 
 	set inText (text) { return this._editorIn.setValue(text, -1); }
 

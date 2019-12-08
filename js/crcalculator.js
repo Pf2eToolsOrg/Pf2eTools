@@ -314,5 +314,5 @@ function calculateHp () {
 }
 
 function fractionStrToDecimal (str) {
-	return str === "0" ? 0 : parseFloat(str.split('/').reduce((numerator, denominator) => numerator / denominator));
+	return str === "0" ? 0 : parseFloat(str.split("/").reduce((numerator, denominator) => numerator / denominator));
 }

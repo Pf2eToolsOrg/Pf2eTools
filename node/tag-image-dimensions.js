@@ -1,5 +1,6 @@
 const fs = require("fs");
 const ut = require("./util.js");
+require("../js/utils");
 const probe = require("probe-image-size");
 
 const allFiles = [];
@@ -39,7 +40,7 @@ async function main () {
 	addDir("./data/book");
 	allFiles.forEach(meta => ut.dataRecurse(meta.path, meta.json, {object: addMutImageDimensions}));
 	await Promise.all(_PROMISES);
-	allFiles.forEach(meta => fs.writeFileSync(meta.path, ut.getCleanStringJson(meta.json), "utf-8"));
+	allFiles.forEach(meta => fs.writeFileSync(meta.path, CleanUtil.getCleanJson(meta.json), "utf-8"));
 }
 
 main().catch(e => console.error(e));

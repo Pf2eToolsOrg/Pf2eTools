@@ -1,3 +1,48 @@
+class Prx {
+	static addHook (prop, hook) {
+		this.px._hooks[prop] = this.px._hooks[prop] || [];
+		this.px._hooks[prop].push(hook);
+	}
+
+	static addHookAll (hook) {
+		this.px._hooksAll.push(hook);
+	}
+
+	static toString () {
+		return JSON.stringify(this, (k, v) => k === "px" ? undefined : v);
+	}
+
+	static copy () {
+		return JSON.parse(Prx.toString.bind(this)());
+	}
+
+	static get (toProxy) {
+		toProxy.px = {
+			addHook: Prx.addHook.bind(toProxy),
+			addHookAll: Prx.addHookAll.bind(toProxy),
+			toString: Prx.toString.bind(toProxy),
+			copy: Prx.copy.bind(toProxy),
+			_hooksAll: [],
+			_hooks: {}
+		};
+
+		return new Proxy(toProxy, {
+			set: (object, prop, value) => {
+				object[prop] = value;
+				toProxy.px._hooksAll.forEach(hook => hook(prop, value));
+				if (toProxy.px._hooks[prop]) toProxy.px._hooks[prop].forEach(hook => hook(prop, value));
+				return true;
+			},
+			deleteProperty: (object, prop) => {
+				delete object[prop];
+				toProxy.px._hooksAll.forEach(hook => hook(prop, null));
+				if (toProxy.px._hooks[prop]) toProxy.px._hooks[prop].forEach(hook => hook(prop, null));
+				return true;
+			}
+		});
+	}
+}
+
 class ProxyBase {
 	constructor () {
 		this.__hooks = {};
