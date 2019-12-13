@@ -20,12 +20,12 @@ class SpellsPage {
 		const spHash = UrlUtil.autoEncodeHash(spell);
 		if (!spell.uniqueId && _addedHashes.has(spHash)) return null;
 		_addedHashes.add(spHash);
-		if (ExcludeUtil.isExcluded(spell.name, "spell", spell.source)) return null;
+		const isExcluded = ExcludeUtil.isExcluded(spell.name, "spell", spell.source);
 
-		this._pageFilter.addToFilters(spell);
+		this._pageFilter.addToFilters(spell, isExcluded);
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const hash = UrlUtil.autoEncodeHash(spell);
 		const source = Parser.sourceJsonToAbv(spell.source);
@@ -58,6 +58,7 @@ class SpellsPage {
 				concentration,
 				normalisedTime: spell._normalisedTime,
 				normalisedRange: spell._normalisedRange,
+				isExcluded,
 				uniqueId: spell.uniqueId ? spell.uniqueId : spI
 			}
 		);
@@ -248,14 +249,12 @@ async function pPageInit (loadedSources) {
 	SortUtil.initBtnSortHandlers($("#sublistsort"), subList);
 	ListUtil.initGenericPinnable();
 
-	spellBookView = new BookModeView(
-		"bookview",
-		$(`#btn-spellbook`),
-		"If you wish to view multiple spells, please first make a list",
-		"Spells Book View",
-		($wrpContent, $dispName, $wrpControls) => {
-			$wrpControls.addClass("px-2 mt-2");
-
+	spellBookView = new BookModeView({
+		hashKey: "bookview",
+		$openBtn: $(`#btn-spellbook`),
+		noneVisibleMsg: "If you wish to view multiple spells, please first make a list",
+		pageTitle: "Spells Book View",
+		popTblGetNumShown: ($wrpContent, $dispName, $wrpControls) => {
 			const toShow = ListUtil.getSublistedIds().map(id => spellList[id])
 				.sort((a, b) => SortUtil.ascSortLower(a.name, b.name));
 
@@ -282,9 +281,7 @@ async function pPageInit (loadedSources) {
 				});
 			if (lastOrder != null) $selSortMode.val(lastOrder);
 
-			$$`<div class="w-100 flex">
-				<div class="flex-vh-center"><div class="mr-2 no-wrap">Sort order:</div>${$selSortMode}</div>
-			</div>`.appendTo($wrpControls);
+			$$`<div class="flex-vh-center ml-3"><div class="mr-2 no-wrap">Sort order:</div>${$selSortMode}</div>`.appendTo($wrpControls);
 
 			const renderByLevel = () => {
 				const stack = [];
@@ -321,8 +318,9 @@ async function pPageInit (loadedSources) {
 			else renderByLevel();
 
 			return toShow.length;
-		}, true
-	);
+		},
+		hasPrintColumns: true
+	});
 
 	const homebrew = await BrewUtil.pAddBrewData();
 	BrewUtil.bind({pHandleBrew: () => {}}); // temporarily bind "do nothing" brew handler

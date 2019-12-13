@@ -6,6 +6,7 @@ class RenderConditionDiseases {
 
 		return $$`
 			${Renderer.utils.getBorderTr()}
+			${Renderer.utils.getExcludedTr(it, it.__prop || (it._type === "c" ? "condition" : "disease"))}
 			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CONDITIONS_DISEASES})}
 			<tr><td class="divider" colspan="6"><div></div></td></tr>
 			<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>

@@ -221,7 +221,7 @@ class PageFilterBestiary {
 	get filterBox () { return this._filterBox; }
 	get sourceFilter () { return this._sourceFilter; }
 
-	addToFilters (mon) {
+	addToFilters (mon, isExcluded) {
 		Renderer.monster.initParsed(mon);
 		mon._fSpeedType = Object.keys(mon.speed).filter(k => mon.speed[k]);
 		if (mon._fSpeedType.length) mon._fSpeed = mon._fSpeedType.map(k => mon.speed[k].number || mon.speed[k]).sort((a, b) => SortUtil.ascSort(b, a))[0];
@@ -249,41 +249,43 @@ class PageFilterBestiary {
 		mon._fSources = ListUtil.getCompleteFilterSources(mon);
 
 		// region populate filters
-		this._sourceFilter.addItem(mon._fSources);
-		if (mon._pCr != null) this._crFilter.addItem(mon._pCr);
-		this._strengthFilter.addItem(mon.str);
-		this._dexterityFilter.addItem(mon.dex);
-		this._constitutionFilter.addItem(mon.con);
-		this._intelligenceFilter.addItem(mon.int);
-		this._wisdomFilter.addItem(mon.wis);
-		this._charismaFilter.addItem(mon.cha);
-		this._speedFilter.addItem(mon._fSpeed);
-		mon.ac.forEach(it => this._acFilter.addItem(it.ac || it));
-		if (mon.hp.average) this._averageHpFilter.addItem(mon.hp.average);
-		mon._pTypes.tags.forEach(t => this._tagFilter.addItem(t));
-		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
-		if (mon.familiar) mon._fMisc.push("Familiar");
-		if (mon.type.swarmSize) mon._fMisc.push("Swarm");
-		if (mon.spellcasting) {
-			mon._fMisc.push("Spellcaster");
-			mon.spellcasting.forEach(sc => {
-				if (sc.ability) mon._fMisc.push(`${PageFilterBestiary.MISC_FILTER_SPELLCASTER}${Parser.attAbvToFull(sc.ability)}`);
-			});
+		if (!isExcluded) {
+			this._sourceFilter.addItem(mon._fSources);
+			if (mon._pCr != null) this._crFilter.addItem(mon._pCr);
+			this._strengthFilter.addItem(mon.str);
+			this._dexterityFilter.addItem(mon.dex);
+			this._constitutionFilter.addItem(mon.con);
+			this._intelligenceFilter.addItem(mon.int);
+			this._wisdomFilter.addItem(mon.wis);
+			this._charismaFilter.addItem(mon.cha);
+			this._speedFilter.addItem(mon._fSpeed);
+			mon.ac.forEach(it => this._acFilter.addItem(it.ac || it));
+			if (mon.hp.average) this._averageHpFilter.addItem(mon.hp.average);
+			mon._pTypes.tags.forEach(t => this._tagFilter.addItem(t));
+			mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
+			if (mon.familiar) mon._fMisc.push("Familiar");
+			if (mon.type.swarmSize) mon._fMisc.push("Swarm");
+			if (mon.spellcasting) {
+				mon._fMisc.push("Spellcaster");
+				mon.spellcasting.forEach(sc => {
+					if (sc.ability) mon._fMisc.push(`${PageFilterBestiary.MISC_FILTER_SPELLCASTER}${Parser.attAbvToFull(sc.ability)}`);
+				});
+			}
+			if (mon.isNpc) mon._fMisc.push("Adventure NPC");
+			if (mon.legendaryGroup && (this._creatureMeta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name]) {
+				if ((this._creatureMeta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name].lairActions) mon._fMisc.push("Lair Actions");
+				if ((this._creatureMeta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name].regionalEffects) mon._fMisc.push("Regional Effects");
+			}
+			if (mon.reaction) mon._fMisc.push("Reactions");
+			if (mon.variant) mon._fMisc.push("Has Variants");
+			if (mon.miscTags) mon._fMisc.push(...mon.miscTags);
+			if (mon._isCopy) mon._fMisc.push("Modified Copy");
+			if (mon.altArt) mon._fMisc.push("Has Alternate Token");
+			if (mon.srd) mon._fMisc.push("SRD");
+			this._traitFilter.addItem(mon.traitTags);
+			this._actionReactionFilter.addItem(mon.actionTags);
+			this._environmentFilter.addItem(mon.environment);
 		}
-		if (mon.isNpc) mon._fMisc.push("Adventure NPC");
-		if (mon.legendaryGroup && (this._creatureMeta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name]) {
-			if ((this._creatureMeta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name].lairActions) mon._fMisc.push("Lair Actions");
-			if ((this._creatureMeta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name].regionalEffects) mon._fMisc.push("Regional Effects");
-		}
-		if (mon.reaction) mon._fMisc.push("Reactions");
-		if (mon.variant) mon._fMisc.push("Has Variants");
-		if (mon.miscTags) mon._fMisc.push(...mon.miscTags);
-		if (mon._isCopy) mon._fMisc.push("Modified Copy");
-		if (mon.altArt) mon._fMisc.push("Has Alternate Token");
-		if (mon.srd) mon._fMisc.push("SRD");
-		this._traitFilter.addItem(mon.traitTags);
-		this._actionReactionFilter.addItem(mon.actionTags);
-		this._environmentFilter.addItem(mon.environment);
 		// endregion
 	}
 

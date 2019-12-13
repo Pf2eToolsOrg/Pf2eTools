@@ -32,13 +32,15 @@ class RewardsPage extends ListPage {
 		this._typeFilter = typeFilter;
 	}
 
-	getListItem (reward, rwI) {
-		// populate filters
-		this._sourceFilter.addItem(reward.source);
-		this._typeFilter.addItem(reward.type);
+	getListItem (reward, rwI, isExcluded) {
+		if (!isExcluded) {
+			// populate filters
+			this._sourceFilter.addItem(reward.source);
+			this._typeFilter.addItem(reward.type);
+		}
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(reward.source);
 		const hash = UrlUtil.autoEncodeHash(reward);
@@ -57,6 +59,7 @@ class RewardsPage extends ListPage {
 				hash,
 				source,
 				type: reward.type,
+				isExcluded,
 				uniqueId: reward.uniqueId ? reward.uniqueId : rwI
 			}
 		);

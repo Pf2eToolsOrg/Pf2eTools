@@ -178,17 +178,21 @@
 					"simple",
 					"martial"
 				],
-				"skills": {
-					"choose": 2,
-					"from": [
-						"Athletics",
-						"Insight",
-						"Intimidation",
-						"Medicine",
-						"Persuasion",
-						"Religion"
-					]
-				}
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"athletics",
+								"insight",
+								"intimidation",
+								"medicine",
+								"persuasion",
+								"religion"
+							],
+							"count": 2
+						}
+					}
+				]
 			},
 			"startingEquipment": {
 				"additionalFromBackground": true,
@@ -2939,3 +2943,4 @@
 		}
 	]
 }
+

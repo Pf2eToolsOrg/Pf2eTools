@@ -37,7 +37,7 @@ class FeatsPage extends ListPage {
 		this._levelFilter = levelFilter;
 	}
 
-	getListItem (feat, ftI) {
+	getListItem (feat, ftI, isExcluded) {
 		const name = feat.name;
 		const ability = Renderer.getAbilityData(feat.ability);
 		if (!ability.asText) ability.asText = STR_NONE;
@@ -57,11 +57,13 @@ class FeatsPage extends ListPage {
 		feat._slAbility = ability.asText;
 		feat._slPrereq = prereqText;
 
-		// populate filters
-		this._sourceFilter.addItem(feat.source);
+		if (!isExcluded) {
+			// populate filters
+			this._sourceFilter.addItem(feat.source);
+		}
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(feat.source);
 		const hash = UrlUtil.autoEncodeHash(feat);
@@ -82,6 +84,7 @@ class FeatsPage extends ListPage {
 				source,
 				ability: ability.asText,
 				prerequisite: prereqText,
+				isExcluded,
 				uniqueId: feat.uniqueId ? feat.uniqueId : ftI
 			}
 		);

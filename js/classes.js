@@ -83,7 +83,7 @@ class ClassList {
 
 		for (let i = 0; i < newClasses.length; i++) {
 			const cls = newClasses[i];
-			if (ExcludeUtil.isExcluded(cls.name, "class", cls.source)) continue;
+			const isExcluded = ExcludeUtil.isExcluded(cls.name, "class", cls.source);
 
 			if (cls.source === SRC_UASIK) cls._fSource = "Sidekicks";
 			else if (BrewUtil.hasSourceJson(cls.source)) cls._fSource = "Homebrew";
@@ -91,12 +91,12 @@ class ClassList {
 			else if (SourceUtil.isNonstandardSource(cls.source)) cls._fSource = "Others";
 			else cls._fSource = "Core";
 
-			sourceFilter.addItem(cls._fSource);
+			if (!isExcluded) sourceFilter.addItem(cls._fSource);
 
 			const eleLi = document.createElement("li");
-			eleLi.className = "row";
+			eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
-			const hash = UrlUtil.autoEncodeHash(cls)
+			const hash = UrlUtil.autoEncodeHash(cls);
 			const source = Parser.sourceJsonToAbv(cls.source);
 
 			const id = i + previousClassAmount;
@@ -113,6 +113,7 @@ class ClassList {
 				{
 					hash,
 					source,
+					isExcluded,
 					uniqueId: cls.uniqueId ? cls.uniqueId : id
 				},
 				{
@@ -290,7 +291,7 @@ class HashLoad {
 		const renderArmorProfs = (armorProfs) => armorProfs.map(a => a === "light" || a === "medium" || a === "heavy" ? `${a} armor` : a).join(", ");
 		const renderWeaponsProfs = (weaponProfs) => weaponProfs.map(w => w === "simple" || w === "martial" ? `${w} weapons` : w).join(", ");
 		const renderToolsProfs = (toolProfs) => toolProfs.join(", ");
-		const renderSkillsProfs = (skillProfs) => getSkillProfString(skillProfs);
+		const renderSkillsProfs = (skillProfs) => `${Parser.skillProficienciesToFull(skillProfs).uppercaseFirst()}.`;
 
 		const sProfs = ClassDisplay.curClass.startingProficiencies;
 		if (sProfs) {
@@ -301,11 +302,6 @@ class HashLoad {
 			profSel.find("div#skills span").html(sProfs.skills === undefined ? STR_PROF_NONE : renderSkillsProfs(sProfs.skills));
 		}
 		$("td#prof").toggle(!!(ClassDisplay.curClass.proficiency || sProfs));
-
-		function getSkillProfString (skills) {
-			const numString = Parser.numberToText(skills.choose);
-			return skills.from.length === 18 ? `Choose any ${numString}.` : `Choose ${numString} from ${skills.from.map(it => Renderer.get().render(`{@skill ${it}}`)).joinConjunct(", ", " and ")}.`
-		}
 
 		// starting equipment
 		if (ClassDisplay.curClass.startingEquipment) {
@@ -525,7 +521,9 @@ class HashLoad {
 
 							const styleClasses = FeatureDescription.getSubclassStyles(subClass);
 							renderStack.push(`<tr class="text ${styleClasses.join(" ")}" ${ATB_DATA_SC}="${subClass.name}" ${ATB_DATA_SRC}="${ClassData.cleanScSource(subClass.source)}"><td colspan="6">`);
+							renderer.setExtraSourceClasses(["subclass-feature--sub"]);
 							renderer.recursiveRender(subFeature, renderStack);
+							renderer.setExtraSourceClasses(null);
 							renderStack.push(`</td></tr>`);
 						}
 					}
@@ -1103,6 +1101,63 @@ class SubClassLoader {
 	}
 
 	static updateNavLinks (sub) {
+		/**
+		 * Unused alternate version, which uses distance to better emulate CSS.
+		 * Note: does not include handling for "subclass-feature--sub".
+		 */
+		function makeScrollerAlt ($nav, $ele, idTr, parentTr, idClasses, displayText, scrollTo) {
+			function getDistTo (className) {
+				const $closest = $ele.closest(`.${className}`);
+				if ($closest.length) {
+					if ($ele.hasClass(className)) return 0;
+					let dist = 0;
+					let $parent = $ele;
+					while ($parent.length) {
+						$parent = $parent.parent();
+						++dist;
+						if ($parent.hasClass(className)) break;
+					}
+					return dist;
+				} else return -1;
+			}
+
+			const navClass = idClasses.split(" ").map(idClass => {
+				switch (idClass) {
+					case Renderer.HEAD_NEG_1: return "n1";
+					case Renderer.HEAD_0: return "n2";
+					case Renderer.HEAD_1: return "n3";
+				}
+			}).filter(Boolean)[0];
+
+			if (navClass != null) {
+				// either the element itself or the root feature can be a special colour
+
+				let subClassDist = getDistTo("subclass-feature");
+				if (!~subClassDist && parentTr.length && parentTr.hasClass("subclass-feature")) subClassDist = 999;
+
+				let uaDist = getDistTo("spicy-sauce");
+				if (!~uaDist && parentTr.length && parentTr.hasClass("spicy-sauce")) uaDist = 999;
+
+				let brewDist = getDistTo("refreshing-brew");
+				if (!~brewDist && parentTr.length && parentTr.hasClass("refreshing-brew")) brewDist = 999;
+
+				let color = "";
+				if (~brewDist) color = "purple";
+				else if (~uaDist && ~subClassDist) color = uaDist < subClassDist ? "grellow" : "green";
+				else if (~uaDist) color = "grellow";
+				else if (~subClassDist) color = "blue";
+
+				$(`<div class="nav-item ${navClass} ${color}">${displayText}</div>`).on("click", () => {
+					if (idTr.length) {
+						window.location.hash = SubClassLoader.getFeatureLink(idTr.attr("id"))
+					}
+
+					const $it = $(`[data-title-index="${scrollTo}"]`);
+					if ($it.get()[0]) $it.get()[0].scrollIntoView();
+				}).appendTo($nav);
+			}
+		}
+
 		function makeScroller ($nav, $ele, idTr, parentTr, idClasses, displayText, scrollTo) {
 			const navClass = idClasses.split(" ").map(idClass => {
 				switch (idClass) {
@@ -1169,12 +1224,12 @@ SubClassLoader.prevSub = null;
 SubClassLoader.partCache = null;
 
 function initCompareMode () {
-	subclassComparisonView = new BookModeView(
-		"compview",
-		$(`#btn-comparemode`),
-		"Please select some subclasses first",
-		"Subclass Comparison",
-		$wrpContent => {
+	subclassComparisonView = new BookModeView({
+		hashKey: "compview",
+		$openBtn: $(`#btn-comparemode`),
+		noneVisibleMsg: "Please select some subclasses first",
+		title: "Subclass Comparison",
+		popTblGetNumShown: $wrpContent => {
 			$wrpContent.removeClass("bkmv__wrp").addClass("h-100").addClass("flex-col");
 			$wrpContent.parent().addClass("stats").addClass("stats--book");
 
@@ -1195,7 +1250,7 @@ function initCompareMode () {
 					});
 				renderStack.push(`</div>`);
 
-				if (!isLastRow) renderStack.push(`<hr class="hr-2 mt-3 cls-comp__hr-level"></hr>`);
+				if (!isLastRow) renderStack.push(`<hr class="hr-2 mt-3 cls-comp__hr-level"/>`);
 			}
 			$wrpContent.append(renderStack.join(""));
 
@@ -1211,7 +1266,7 @@ function initCompareMode () {
 
 			return numShown;
 		}
-	);
+	});
 }
 
 class ClassBookView {

@@ -3,6 +3,7 @@ class RenderPsionics {
 		const renderer = Renderer.get().setFirstSection(true);
 		return $$`
 			${Renderer.utils.getBorderTr()}
+			${Renderer.utils.getExcludedTr(psi, "psionic")}
 			${Renderer.utils.getNameTr(psi, {page: UrlUtil.PG_PSIONICS})}
 			<tr>
 				<td colspan="6"><i>${psi.type === "T" ? Parser.psiTypeToFull(psi.type) : `${psi._fOrder} ${Parser.psiTypeToFull(psi.type)}`}</i><span id="order"></span> <span id="type"></span></td>

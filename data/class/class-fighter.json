@@ -22,19 +22,23 @@
 					"simple",
 					"martial"
 				],
-				"skills": {
-					"choose": 2,
-					"from": [
-						"Acrobatics",
-						"Animal Handling",
-						"Athletics",
-						"History",
-						"Insight",
-						"Intimidation",
-						"Perception",
-						"Survival"
-					]
-				}
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"acrobatics",
+								"animal handling",
+								"athletics",
+								"history",
+								"insight",
+								"intimidation",
+								"perception",
+								"survival"
+							],
+							"count": 2
+						}
+					}
+				]
 			},
 			"startingEquipment": {
 				"additionalFromBackground": true,
@@ -1201,8 +1205,8 @@
 								}
 							],
 							"colLabels": [
-								"{@filter Cantrips Known|spells|level=0|subclass=Eldritch Knight}",
-								"{@filter Spells Known|spells|subclass=Eldritch Knight}"
+								"{@filter Cantrips Known|spells|level=0|subclass=Fighter: Eldritch Knight}",
+								"{@filter Spells Known|spells|subclass=Fighter: Eldritch Knight}"
 							],
 							"rows": [
 								[
@@ -1296,10 +1300,10 @@
 								}
 							],
 							"colLabels": [
-								"{@filter 1st|spells|level=1|subclass=Eldritch Knight}",
-								"{@filter 2nd|spells|level=2|subclass=Eldritch Knight}",
-								"{@filter 3rd|spells|level=3|subclass=Eldritch Knight}",
-								"{@filter 4th|spells|level=4|subclass=Eldritch Knight}"
+								"{@filter 1st|spells|level=1|subclass=Fighter: Eldritch Knight}",
+								"{@filter 2nd|spells|level=2|subclass=Fighter: Eldritch Knight}",
+								"{@filter 3rd|spells|level=3|subclass=Fighter: Eldritch Knight}",
+								"{@filter 4th|spells|level=4|subclass=Fighter: Eldritch Knight}"
 							],
 							"rows": [
 								[
@@ -4518,3 +4522,4 @@
 		}
 	]
 }
+

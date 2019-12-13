@@ -171,17 +171,21 @@
 					"simple",
 					"martial"
 				],
-				"skills": {
-					"choose": 2,
-					"from": [
-						"Animal Handling",
-						"Athletics",
-						"Intimidation",
-						"Nature",
-						"Perception",
-						"Survival"
-					]
-				}
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"animal handling",
+								"athletics",
+								"intimidation",
+								"nature",
+								"perception",
+								"survival"
+							],
+							"count": 2
+						}
+					}
+				]
 			},
 			"startingEquipment": {
 				"additionalFromBackground": true,
@@ -1894,3 +1898,4 @@
 		}
 	]
 }
+

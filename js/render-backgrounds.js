@@ -6,6 +6,7 @@ class RenderBackgrounds {
 
 		return $$`
 		${Renderer.utils.getBorderTr()}
+		${Renderer.utils.getExcludedTr(bg, "background")}
 		${Renderer.utils.getNameTr(bg, {page: UrlUtil.PG_BACKGROUNDS})}
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>

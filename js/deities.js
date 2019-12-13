@@ -93,7 +93,7 @@ class DeitiesPage extends ListPage {
 		this._categoryFilter = categoryFilter;
 	}
 
-	getListItem (g, dtI) {
+	getListItem (g, dtI, isExcluded) {
 		g._fAlign = g.alignment ? unpackAlignment(g) : [];
 		if (!g.category) g.category = STR_NONE;
 		if (!g.domains) g.domains = [STR_NONE];
@@ -102,12 +102,14 @@ class DeitiesPage extends ListPage {
 		g._fMisc = g.reprinted ? [STR_REPRINTED] : [];
 		if (g.srd) g._fMisc.push("SRD");
 
-		this._sourceFilter.addItem(g.source);
-		this._pantheonFilter.addItem(g.pantheon);
-		this._categoryFilter.addItem(g.category);
+		if (!isExcluded) {
+			this._sourceFilter.addItem(g.source);
+			this._pantheonFilter.addItem(g.pantheon);
+			this._categoryFilter.addItem(g.category);
+		}
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(g.source);
 		const hash = UrlUtil.autoEncodeHash(g);
@@ -132,6 +134,7 @@ class DeitiesPage extends ListPage {
 				pantheon: g.pantheon,
 				alignment,
 				domains,
+				isExcluded,
 				uniqueId: g.uniqueId ? g.uniqueId : dtI
 			}
 		);

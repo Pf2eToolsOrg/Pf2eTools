@@ -326,17 +326,21 @@
 					"quarterstaffs",
 					"light crossbows"
 				],
-				"skills": {
-					"choose": 2,
-					"from": [
-						"Arcana",
-						"History",
-						"Insight",
-						"Investigation",
-						"Medicine",
-						"Religion"
-					]
-				}
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"history",
+								"insight",
+								"investigation",
+								"medicine",
+								"religion"
+							],
+							"count": 2
+						}
+					}
+				]
 			},
 			"startingEquipment": {
 				"additionalFromBackground": true,
@@ -3138,3 +3142,4 @@
 		}
 	]
 }
+

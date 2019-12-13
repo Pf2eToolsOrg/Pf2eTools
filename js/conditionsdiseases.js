@@ -31,14 +31,16 @@ class ConditionsDiseasesPage extends ListPage {
 		this._sourceFilter = sourceFilter;
 	}
 
-	getListItem (it, cdI) {
+	getListItem (it, cdI, isExcluded) {
 		it._fMisc = it.srd ? ["SRD"] : [];
 
-		// populate filters
-		this._sourceFilter.addItem(it.source);
+		if (!isExcluded) {
+			// populate filters
+			this._sourceFilter.addItem(it.source);
+		}
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
@@ -57,6 +59,7 @@ class ConditionsDiseasesPage extends ListPage {
 				hash,
 				source,
 				type: it.__prop,
+				isExcluded,
 				uniqueId: it.uniqueId ? it.uniqueId : cdI
 			}
 		);

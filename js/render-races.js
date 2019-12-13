@@ -4,6 +4,7 @@ class RenderRaces {
 
 		return $$`
 		${Renderer.utils.getBorderTr()}
+		${Renderer.utils.getExcludedTr(race, "race")}
 		${Renderer.utils.getNameTr(race, {pronouncePart: race.soundClip ? RenderRaces._getPronunciationButton(race) : "", page: UrlUtil.PG_RACES})}
 		<tr><td colspan="6"><b>Ability Scores:</b> ${(race.ability ? Renderer.getAbilityData(race.ability) : {asText: "None"}).asText}</td></tr>
 		<tr><td colspan="6"><b>Size:</b> ${Parser.sizeAbvToFull(race.size)}</td></tr>

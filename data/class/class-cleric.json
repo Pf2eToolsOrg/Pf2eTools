@@ -327,16 +327,20 @@
 				"weapons": [
 					"simple"
 				],
-				"skills": {
-					"choose": 2,
-					"from": [
-						"History",
-						"Insight",
-						"Medicine",
-						"Persuasion",
-						"Religion"
-					]
-				}
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"history",
+								"insight",
+								"medicine",
+								"persuasion",
+								"religion"
+							],
+							"count": 2
+						}
+					}
+				]
 			},
 			"startingEquipment": {
 				"additionalFromBackground": true,
@@ -4301,3 +4305,4 @@
 		}
 	]
 }
+

@@ -13,7 +13,7 @@ Shared UI components
 			}
 
 			&[data-state='0'] {
-				background: $rgb-night-bg-color;
+				background: $rgb-bg-color--night;
 			}
 
 			&[data-state='1'] {
@@ -26,13 +26,13 @@ Shared UI components
 				border-color: #aaa;
 
 				&::after {
-					color: $rgb-night-bg-color;
+					color: $rgb-bg-color--night;
 					font-weight: bold;
 				}
 			}
 
 			&[data-state='3'] {
-				background: repeating-linear-gradient(135deg, $rgb-night-bg-color, $rgb-night-bg-color 10px, $rgb-border-grey 10px, $rgb-border-grey 20px);
+				background: repeating-linear-gradient(135deg, $rgb-bg-color--night, $rgb-bg-color--night 10px, $rgb-border-grey 10px, $rgb-border-grey 20px);
 				border-color: $rgb-border-grey;
 			}
 		}
@@ -43,11 +43,11 @@ Shared UI components
 .night-mode {
 	.ui-dir__ {
 		&face {
-			background: $rgb-night-bg-color;
+			background: $rgb-bg-color--night;
 		}
 
 		&arm {
-			background: $rgb-night-font-color;
+			background: $rgb-font-color--night;
 			box-shadow: none;
 		}
 	}
@@ -57,7 +57,7 @@ Shared UI components
 .night-mode {
 	.ui-tip__ {
 		&child {
-			background: $rgb-night-bg-color;
+			background: $rgb-bg-color--night;
 		}
 	}
 }

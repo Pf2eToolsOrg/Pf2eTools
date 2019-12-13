@@ -1,6 +1,7 @@
 class RenderOptionalFeatures {
 	static $getRenderedOptionalFeature (it) {
 		return $$`${Renderer.utils.getBorderTr()}
+		${Renderer.utils.getExcludedTr(it, "optionalfeature")}
 		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_OPT_FEATURES})}
 		${it.prerequisite ? `<tr><td colspan="6"><i>${Renderer.utils.getPrerequisiteText(it.prerequisite)}</i></td></tr>` : ""}
 		<tr><td class="divider" colspan="6"><div></div></td></tr>

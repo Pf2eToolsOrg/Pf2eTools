@@ -144,10 +144,10 @@ class Blacklist {
 			});
 
 		const $ele = $$`<li class="row no-click flex-v-center lst--border">
-			<span class="col-3">${source}</span>
+			<span class="col-5">${Parser.sourceJsonToFull(source)}</span>
 			<span class="col-3">${display.displayCategory}</span>
 			<span class="bold col-3">${name}</span>
-			<span class="col-3 text-center">${$btnRemove}</span>
+			<span class="col-1 text-center">${$btnRemove}</span>
 		</li>`;
 
 		const listItem = new ListItem(

@@ -82,19 +82,19 @@
 
 .night-mode {
 	.cls-tbl {
-		background: $rgb-night-bg-color;
+		background: $rgb-bg-color--night;
 
 		> tbody > tr > th {
-			color: $rgb-night-font-color;
+			color: $rgb-font-color--night;
 		}
 
 		&__ {
 			&disp-name {
-				color: $rgb-night-font-color;
+				color: $rgb-font-color--night;
 			}
 
 			&col-group::after {
-				border-color: $rgb-night-hr-grey;
+				border-color: $rgb-hr-grey--night;
 			}
 
 			&stripe-odd:nth-child(odd) {
@@ -134,16 +134,80 @@
 		margin-top: 4px;
 		margin-bottom: 0;
 	}
+
+	&mc-prof-intro--requirements {
+		margin-top: 1.7em;
+	}
 }
 
 .night-mode {
 	.cls-side__ {
 		&name {
-			color: $rgb-night-name-orange;
+			color: $rgb-name-red--night;
 		}
 
 		&btn-toggle {
-			color: $rgb-night-font-color;
+			color: $rgb-font-color--night;
+		}
+	}
+}
+// endregion
+
+// region main text
+.cls-main__ {
+	&sc-feature {
+		.rd__h--0,
+		.rd__h--1,
+		.rd__h--2 {
+			color: $rgb-subclass-color;
+			border-bottom-color: $rgb-subclass-color;
+		}
+
+		&--spicy {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-subclass-ua-color;
+				border-bottom-color: $rgb-subclass-ua-color;
+			}
+		}
+
+		&--brew {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-class-brew-color;
+				border-bottom-color: $rgb-class-brew-color;
+			}
+		}
+	}
+}
+
+.night-mode .cls-main__ {
+	&sc-feature {
+		.rd__h--0,
+		.rd__h--1,
+		.rd__h--2 {
+			color: $rgb-subclass-color--night;
+			border-bottom-color: $rgb-subclass-color--night;
+		}
+
+		&--spicy {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-subclass-ua-color--night;
+				border-bottom-color: $rgb-subclass-ua-color--night;
+			}
+		}
+
+		&--brew {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-class-brew-color--night;
+				border-bottom-color: $rgb-class-brew-color--night;
+			}
 		}
 	}
 }

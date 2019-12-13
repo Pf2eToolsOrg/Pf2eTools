@@ -44,15 +44,17 @@ class ItemsPage {
 		this._$totalValue = null;
 	}
 
-	getListItem (item, itI) {
+	getListItem (item, itI, isExcluded) {
 		if (ExcludeUtil.isExcluded(item.name, "item", item.source)) return null;
 		if (item.noDisplay) return null;
 		Renderer.item.enhanceItem(item);
 
-		this._pageFilter.addToFilters(item);
+		if (!isExcluded) {
+			this._pageFilter.addToFilters(item);
+		}
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const hash = UrlUtil.autoEncodeHash(item);
 		const source = Parser.sourceJsonToAbv(item.source);
@@ -77,6 +79,7 @@ class ItemsPage {
 					type,
 					cost: item.value || 0,
 					weight: Parser.weightValueToNumber(item.weight),
+					isExcluded,
 					uniqueId: item.uniqueId ? item.uniqueId : itI
 				}
 			);

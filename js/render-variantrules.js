@@ -7,6 +7,7 @@ class RenderVariantRules {
 
 		return $$`
 		${Renderer.utils.getBorderTr()}
+		${Renderer.utils.getExcludedTr(rule, "variantrule")}
 		<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>
 		${Renderer.utils.getPageTr(rule)}
 		${Renderer.utils.getBorderTr()}`;

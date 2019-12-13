@@ -24,12 +24,15 @@ class ObjectsPage extends ListPage {
 		this._sourceFilter = sourceFilter;
 	}
 
-	getListItem (obj, obI) {
-		this._sourceFilter.addItem(obj.source);
+	getListItem (obj, obI, isExcluded) {
+		if (!isExcluded) {
+			// populate filters
+			this._sourceFilter.addItem(obj.source);
+		}
 		obj._fMisc = obj.srd ? ["SRD"] : [];
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(obj.source);
 		const hash = UrlUtil.autoEncodeHash(obj);
@@ -49,6 +52,7 @@ class ObjectsPage extends ListPage {
 				hash,
 				source,
 				size,
+				isExcluded,
 				uniqueId: obj.uniqueId ? obj.uniqueId : obI
 			}
 		);

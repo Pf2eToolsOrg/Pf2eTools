@@ -376,7 +376,7 @@ class PageFilterSpells {
 		if (homebrew.subclass) homebrew.subclass.forEach(sc => handleSubclass(sc.class, sc.classSource, sc));
 	}
 
-	addToFilters (spell) {
+	addToFilters (spell, isExcluded) {
 		Renderer.spell.initClasses(spell, this._brewSpellClasses);
 
 		// used for sorting
@@ -408,19 +408,21 @@ class PageFilterSpells {
 		spell._fRangeType = PageFilterSpells.getRangeType(spell.range);
 
 		// region populate filters
-		if (spell.level > 9) this._levelFilter.addItem(spell.level);
-		this._schoolFilter.addItem(spell.school);
-		this._sourceFilter.addItem(spell._fSources);
-		this._metaFilter.addItem(spell._fMeta);
-		this._raceFilter.addItem(spell._fRaces);
-		this._backgroundFilter.addItem(spell._fBackgrounds);
-		spell._fClasses.forEach(c => this._classFilter.addItem(c));
-		spell._fSubclasses.forEach(sc => {
-			this._subclassFilter.addNest(sc.userData.className, {isHidden: true});
-			this._subclassFilter.addItem(sc);
-		});
-		spell._fVariantClasses.forEach(c => this._variantClassFilter.addItem(c));
-		this._subSchoolFilter.addItem(spell.subschools);
+		if (!isExcluded) {
+			if (spell.level > 9) this._levelFilter.addItem(spell.level);
+			this._schoolFilter.addItem(spell.school);
+			this._sourceFilter.addItem(spell._fSources);
+			this._metaFilter.addItem(spell._fMeta);
+			this._raceFilter.addItem(spell._fRaces);
+			this._backgroundFilter.addItem(spell._fBackgrounds);
+			spell._fClasses.forEach(c => this._classFilter.addItem(c));
+			spell._fSubclasses.forEach(sc => {
+				this._subclassFilter.addNest(sc.userData.className, {isHidden: true});
+				this._subclassFilter.addItem(sc);
+			});
+			spell._fVariantClasses.forEach(c => this._variantClassFilter.addItem(c));
+			this._subSchoolFilter.addItem(spell.subschools);
+		}
 		// endregion
 	}
 

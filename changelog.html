@@ -1930,6 +1930,19 @@ Filters -- completely overhauled internally:
 - (Homebrew) Spells now support fluff defined on the entity
 - (Fixed typos/added tags)`
 		},
+		{
+			ver: "1.92.1",
+			date: "2019-12-13",
+			txt: `
+- Blacklisted content accessed through e.g. hover tags now displays a warning that the content is blacklisted
+- Added Extra Life Dankwood Goblin
+- Added Bestiary print view column options to other print views (Spells; Psionics)
+- Allow all races to be chosen in This Is Your Life generator (previously, some could only be randomly generated)
+- Fixed DM Screen images failing to pan/zoom
+- Improve display of Backgrounds page skill summary
+- (Homebrew) Reworked Classes skill proficiency format
+- (Fixed typos/added tags)`
+		},
 	];
 
 	const $wrp = $(`#pagecontent`);
@@ -1994,7 +2007,7 @@ Filters -- completely overhauled internally:
 		const titlePart = it.title ? `, &quot;<span ${it.titleAlt ? `class="help" title="AKA &quot;${it.titleAlt.escapeQuotes()}&quot; Edition"` : ""}>${it.title.escapeQuotes()}</span>&quot; Edition` : "";
 		$wrp.prepend(`<div class="row" id="v${it.ver}">
 			<div class="split-v-center">
-				<h${hLevel} class="bold">v${isLast ? `<a href="https://get.5e.tools/">` : ""}${it.ver}${titlePart}${isLast ? `</a>` : ""}</h${hLevel}>
+				<h${hLevel} class="bold">v${isLast ? `<a href="https://get.5e.tools/">` : ""}${it.ver}${isLast ? `</a>` : ""}${titlePart}</h${hLevel}>
 				<span class="text-muted">${it.date}</span>
 			</div>
 

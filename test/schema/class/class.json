@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.2.3",
+	"version": "1.3.0",
 
 	"title": "ClassArray",
 	"type": "object",
@@ -114,49 +114,50 @@
 					}
 				},
 				"skills": {
-					"type": "object",
-					"properties": {
-						"choose": {
-							"type": "integer"
-						},
-						"from": {
-							"type": "array",
-							"items": {
-								"type": "string",
-								"enum": [
-									"Acrobatics",
-									"Animal Handling",
-									"Arcana",
-									"Athletics",
-									"Deception",
-									"History",
-									"Insight",
-									"Intimidation",
-									"Investigation",
-									"Medicine",
-									"Nature",
-									"Perception",
-									"Performance",
-									"Persuasion",
-									"Religion",
-									"Sleight of Hand",
-									"Stealth",
-									"Survival"
-								]
-							}
-						}
-					},
-					"required": [
-						"choose",
-						"from"
-					],
-					"additionalProperties": false
+					"$ref": "util.json#/definitions/skillProficiencies"
 				}
 			}
+		},
 
+		"multiclassing": {
+			"type": "object",
+			"properties": {
+				"requirements": {
+					"str": {"type": "int"},
+					"dex": {"type": "int"},
+					"con": {"type": "int"},
+					"int": {"type": "int"},
+					"wis": {"type": "int"},
+					"cha": {"type": "int"}
+				},
+				"proficienciesGained": {
+					"armor": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"weapons": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"tools": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"skills": {
+						"$ref": "util.json#/definitions/skillProficiencies"
+					}
+				}
+			}
 		},
 
 		"subclass": {
+			"type": "object",
 			"properties": {
 				"name": {
 					"type": "string"

@@ -2,6 +2,7 @@ class RenderDeities {
 	static $getRenderedDeity (deity) {
 		return $$`
 			${Renderer.utils.getBorderTr()}
+			${Renderer.utils.getExcludedTr(deity, "deity")}
 			${Renderer.utils.getNameTr(deity, {suffix: deity.title ? `, ${deity.title.toTitleCase()}` : "", page: UrlUtil.PG_DEITIES})}
 			${RenderDeities._getDeityBody(deity)}
 			${deity.reprinted ? `<tr class="text"><td colspan="6"><i class="text-muted">Note: this deity has been reprinted in a newer publication.</i></td></tr>` : ""}

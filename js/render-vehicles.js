@@ -1,5 +1,7 @@
 class RenderVehicles {
 	static $getRenderedVehicle (vehicle) {
-		return $$`${Renderer.vehicle.getRenderedString(vehicle)}`;
+		return $$`${Renderer.utils.getBorderTr()}
+		${Renderer.vehicle.getRenderedString(vehicle)}
+		${Renderer.utils.getBorderTr()}`;
 	}
 }

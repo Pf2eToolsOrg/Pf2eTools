@@ -34,20 +34,22 @@ class BackgroundPage extends ListPage {
 		this._languageFilter = languageFilter;
 	}
 
-	getListItem (bg, bgI) {
+	getListItem (bg, bgI, isExcluded) {
 		const skillDisplay = Renderer.background.getSkillSummary(bg.skillProficiencies, true, bg._fSkills = []);
 		Renderer.background.getToolSummary(bg.toolProficiencies, true, bg._fTools = []);
 		Renderer.background.getLanguageSummary(bg.languageProficiencies, true, bg._fLangs = []);
 		bg._fMisc = bg.srd ? ["SRD"] : [];
 
-		// populate filters
-		this._sourceFilter.addItem(bg.source);
-		this._skillFilter.addItem(bg._fSkills);
-		this._toolFilter.addItem(bg._fTools);
-		this._languageFilter.addItem(bg._fLangs);
+		if (!isExcluded) {
+			// populate filters
+			this._sourceFilter.addItem(bg.source);
+			this._skillFilter.addItem(bg._fSkills);
+			this._toolFilter.addItem(bg._fTools);
+			this._languageFilter.addItem(bg._fLangs);
+		}
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const name = bg.name.replace("Variant ", "");
 		const hash = UrlUtil.autoEncodeHash(bg);
@@ -67,6 +69,7 @@ class BackgroundPage extends ListPage {
 				hash,
 				source,
 				skills: skillDisplay,
+				isExcluded,
 				uniqueId: bg.uniqueId || bgI
 			}
 		);

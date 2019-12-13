@@ -1,30 +1,6 @@
 "use strict";
 
-class FilterUtil {
-	static compress (primitive) {
-		return UrlUtil.pack(FilterUtil._compress_getBase(primitive));
-	}
-
-	static _compress_getBase (primitive) {
-		const type = typeof primitive;
-		switch (type) {
-			case "boolean": return `b${Number(primitive)}`;
-			case "number": return `n${primitive}`;
-			case "string": return `s${UrlUtil.pack(primitive)}`;
-			default: throw new Error(`Unhandled type "${type}"`);
-		}
-	}
-
-	static decompress (raw) {
-		const [type, data] = [raw.slice(0, 1), raw.slice(1)];
-		switch (type) {
-			case "b": return !!Number(data);
-			case "n": return Number(data);
-			case "s": return String(data);
-			default: throw new Error(`Unhandled type "${type}"`);
-		}
-	}
-}
+class FilterUtil {}
 FilterUtil.SUB_HASH_PREFIX_LENGTH = 4;
 
 class FilterBox extends ProxyBase {
@@ -392,7 +368,7 @@ class FilterBox extends ProxyBase {
 			switch (mappedK) {
 				case "meta": {
 					hasMeta = true;
-					const data = vals.map(v => FilterUtil.decompress(v));
+					const data = vals.map(v => UrlUtil.mini.decompress(v));
 					Object.keys(FilterBox._DEFAULT_META).forEach((k, i) => this._meta[k] = data[i]);
 					break;
 				}
@@ -440,18 +416,18 @@ class FilterBox extends ProxyBase {
 		// serialize base meta in a set order
 		const anyNotDefault = Object.keys(FilterBox._DEFAULT_META).find(k => this._meta[k] !== FilterBox._DEFAULT_META[k]);
 		if (anyNotDefault) {
-			const serMeta = Object.keys(FilterBox._DEFAULT_META).map(k => FilterUtil.compress(this._meta[k] === undefined ? FilterBox._DEFAULT_META[k] : this._meta[k]));
+			const serMeta = Object.keys(FilterBox._DEFAULT_META).map(k => UrlUtil.mini.compress(this._meta[k] === undefined ? FilterBox._DEFAULT_META[k] : this._meta[k]));
 			return [UrlUtil.packSubHash(FilterBox._getSubhashPrefix("meta"), serMeta)]
 		}
 
 		// serialize minisHidden as `key=value` pairs
-		const setMinisHidden = Object.entries(this._minisHidden).filter(([k, v]) => !!v).map(([k]) => `${UrlUtil.pack(k)}=1`);
+		const setMinisHidden = Object.entries(this._minisHidden).filter(([k, v]) => !!v).map(([k]) => `${k.toUrlified()}=1`);
 		if (setMinisHidden.length) {
 			out.push(UrlUtil.packSubHash(FilterBox._getSubhashPrefix("minisHidden"), setMinisHidden));
 		}
 
 		// serialize combineAs as `key=value` pairs
-		const setCombineAs = Object.entries(this._combineAs).filter(([k, v]) => v !== FilterBox._COMBINE_MODES[0]).map(([k, v]) => `${UrlUtil.pack(k)}=${FilterBox._COMBINE_MODES.indexOf(v)}`);
+		const setCombineAs = Object.entries(this._combineAs).filter(([k, v]) => v !== FilterBox._COMBINE_MODES[0]).map(([k, v]) => `${k.toUrlified()}=${FilterBox._COMBINE_MODES.indexOf(v)}`);
 		if (setCombineAs.length) {
 			out.push(UrlUtil.packSubHash(FilterBox._getSubhashPrefix("combineAs"), setCombineAs));
 		}
@@ -586,7 +562,7 @@ class FilterBase extends BaseComponent {
 	getMetaSubHashes () {
 		const anyNotDefault = Object.keys(FilterBase._DEFAULT_META).find(k => this._meta[k] !== FilterBase._DEFAULT_META[k]);
 		if (anyNotDefault) {
-			const serMeta = Object.keys(FilterBase._DEFAULT_META).map(k => FilterUtil.compress(this._meta[k] === undefined ? FilterBase._DEFAULT_META[k] : this._meta[k]));
+			const serMeta = Object.keys(FilterBase._DEFAULT_META).map(k => UrlUtil.mini.compress(this._meta[k] === undefined ? FilterBase._DEFAULT_META[k] : this._meta[k]));
 			return [UrlUtil.packSubHash(FilterBase.getSubHashPrefix("meta", this.header), serMeta)]
 		} else return null;
 	}
@@ -602,7 +578,7 @@ class FilterBase extends BaseComponent {
 			const prop = FilterBase.getProp(k);
 			if (prop === "meta") {
 				hasMeta = true;
-				const data = vals.map(v => FilterUtil.decompress(v));
+				const data = vals.map(v => UrlUtil.mini.decompress(v));
 				Object.keys(defaultMeta).forEach((k, i) => {
 					if (data[i] !== undefined) this._meta[k] = data[i];
 					else this._meta[k] = defaultMeta[k];
@@ -617,7 +593,7 @@ class FilterBase extends BaseComponent {
 	static getSubHashPrefix (prop, header) {
 		if (FilterBase._SUB_HASH_PREFIXES[prop]) {
 			const prefix = FilterBase._SUB_HASH_PREFIXES[prop];
-			return `${prefix}${UrlUtil.pack(header)}`;
+			return `${prefix}${header.toUrlified()}`;
 		}
 		throw new Error(`Unknown property "${prop}"`);
 	}
@@ -744,14 +720,14 @@ class Filter extends FilterBase {
 		});
 		if (areNotDefaultState.length) {
 			// serialize state as `key=value` pairs
-			const serPillStates = areNotDefaultState.map(([k, v]) => `${UrlUtil.pack(k)}=${v}`);
+			const serPillStates = areNotDefaultState.map(([k, v]) => `${k.toUrlified()}=${v}`);
 			out.push(UrlUtil.packSubHash(FilterBase.getSubHashPrefix("state", this.header), serPillStates));
 		}
 
 		const areNotDefaultNestsHidden = Object.entries(this._nestsHidden).filter(([k, v]) => this._nests[k] && !(this._nests[k].isHidden === v));
 		if (areNotDefaultNestsHidden.length) {
 			// serialize nestsHidden as `key=value` pairs
-			const nestsHidden = areNotDefaultNestsHidden.map(([k]) => `${UrlUtil.pack(k)}=1`);
+			const nestsHidden = areNotDefaultNestsHidden.map(([k]) => `${k.toUrlified()}=1`);
 			out.push(UrlUtil.packSubHash(FilterBase.getSubHashPrefix("nestsHidden", this.header), nestsHidden));
 		}
 
@@ -1816,7 +1792,7 @@ class MultiFilter extends FilterBase {
 
 		const anyNotDefault = Object.keys(MultiFilter._DETAULT_STATE).find(k => this._state[k] !== MultiFilter._DETAULT_STATE[k]);
 		if (anyNotDefault) {
-			const serState = Object.keys(MultiFilter._DETAULT_STATE).map(k => FilterUtil.compress(this._state[k] === undefined ? MultiFilter._DEFAULT_META[k] : this._state[k]));
+			const serState = Object.keys(MultiFilter._DETAULT_STATE).map(k => UrlUtil.mini.compress(this._state[k] === undefined ? MultiFilter._DEFAULT_META[k] : this._state[k]));
 			out.push(UrlUtil.packSubHash(FilterBase.getSubHashPrefix("state", this.header), serState));
 		}
 
@@ -1835,7 +1811,7 @@ class MultiFilter extends FilterBase {
 			const prop = FilterBase.getProp(k);
 			if (prop === "state") {
 				hasState = true;
-				const data = vals.map(v => FilterUtil.decompress(v));
+				const data = vals.map(v => UrlUtil.mini.decompress(v));
 				Object.keys(MultiFilter._DETAULT_STATE).forEach((k, i) => this._state[k] = data[i]);
 			}
 		});

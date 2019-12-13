@@ -92,6 +92,7 @@ class RenderBestiary {
 
 		return $$`
 		${Renderer.utils.getBorderTr()}
+		${Renderer.utils.getExcludedTr(mon, "monster")}
 		${Renderer.utils.getNameTr(mon, {pronouncePart: mon.soundClip ? RenderBestiary._getPronunciationButton(mon) : "", extraThClasses: ["mon__name--token"], page: UrlUtil.PG_BESTIARY})}
 		<tr><td colspan="6">
 			<div class="mon__wrp-size-type-align"><i>${Renderer.monster.getTypeAlignmentPart(mon)}</i></div>

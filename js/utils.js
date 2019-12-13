@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.92.0"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.92.1"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -180,6 +180,10 @@ String.prototype.last = String.prototype.last || function () {
 
 String.prototype.escapeRegexp = String.prototype.escapeRegexp || function () {
 	return this.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
+};
+
+String.prototype.toUrlified = String.prototype.toUrlified || function () {
+	return encodeURIComponent(this).toLowerCase();
 };
 
 Array.prototype.joinConjunct = Array.prototype.joinConjunct || function (joiner, lastJoiner, nonOxford) {
@@ -464,6 +468,8 @@ LEVEL_TO_XP_MEDIUM = [0, 50, 100, 150, 250, 500, 600, 750, 900, 1100, 1200, 1600
 LEVEL_TO_XP_HARD = [0, 75, 150, 225, 375, 750, 900, 1100, 1400, 1600, 1900, 2400, 3000, 3400, 3800, 4300, 4800, 5900, 6300, 7300, 8500];
 LEVEL_TO_XP_DEADLY = [0, 100, 200, 400, 500, 1100, 1400, 1700, 2100, 2400, 2800, 3600, 4500, 5100, 5700, 6400, 7200, 8800, 9500, 10900, 12700];
 LEVEL_TO_XP_DAILY = [0, 300, 600, 1200, 1700, 3500, 4000, 5000, 6000, 7500, 9000, 10500, 11500, 13500, 15000, 18000, 20000, 25000, 27000, 30000, 40000];
+
+Parser.LEVEL_XP_REQUIRED = [0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000];
 
 Parser.CRS = ["0", "1/8", "1/4", "1/2", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"];
 
@@ -780,6 +786,37 @@ Parser.senseToExplanation = function (senseType) {
 	const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "senses", senseType);
 	if (fromBrew) return fromBrew;
 	return Parser._parse_aToB(Parser.SENSE_JSON_TO_FULL, senseType, ["No explanation available."]);
+};
+
+Parser.skillProficienciesToFull = function (skillProficiencies) {
+	function renderSingle (skProf) {
+		const keys = Object.keys(skProf).sort(SortUtil.ascSortLower);
+
+		const ixChoose = keys.indexOf("choose");
+		if (~ixChoose) keys.splice(ixChoose, 1);
+
+		const baseStack = [];
+		keys.filter(k => skProf[k]).forEach(k => baseStack.push(Renderer.get().render(`{@skill ${k.toTitleCase()}}`)));
+
+		const chooseStack = [];
+		if (~ixChoose) {
+			const chObj = skProf.choose;
+			if (chObj.from.length === 18) {
+				chooseStack.push(`choose any ${!chObj.count || chObj.count === 1 ? "skill" : chObj.count}`);
+			} else {
+				chooseStack.push(`choose ${chObj.count || 1} from ${chObj.from.map(it => Renderer.get().render(`{@skill ${it.toTitleCase()}}`)).joinConjunct(", ", " and ")}`);
+			}
+		}
+
+		const base = baseStack.joinConjunct(", ", " and ");
+		const choose = chooseStack.join(""); // this should currently only ever be 1-length
+
+		if (baseStack.length && chooseStack.length) return `${base}; and ${choose}`;
+		else if (baseStack.length) return base;
+		else if (chooseStack.length) return choose;
+	}
+
+	return skillProficiencies.map(renderSingle).join(" <i>or</i> ");
 };
 
 // sp-prefix functions are for parsing spell data, and shared with the roll20 script
@@ -2018,6 +2055,7 @@ SRC_EFR = "EFR";
 SRC_RMBRE = "RMBRE";
 SRC_RMR = "RMR";
 SRC_MFF = "MFF";
+SRC_AWM = "AWM";
 SRC_SCREEN = "Screen";
 
 SRC_AL_PREFIX = "AL";
@@ -2157,6 +2195,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_EFR] = "Eberron: Forgotten Relics";
 Parser.SOURCE_JSON_TO_FULL[SRC_RMBRE] = "The Lost Dungeon of Rickedness: Big Rick Energy";
 Parser.SOURCE_JSON_TO_FULL[SRC_RMR] = "Dungeons & Dragons vs. Rick and Morty: Basic Rules";
 Parser.SOURCE_JSON_TO_FULL[SRC_MFF] = "Mordenkainen's Fiendish Folio";
+Parser.SOURCE_JSON_TO_FULL[SRC_AWM] = "Adventure with Muk";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = `${AL_PREFIX}Curse of Strahd`;
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = `${AL_PREFIX}Elemental Evil`;
@@ -2277,6 +2316,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_EFR] = "EFR";
 Parser.SOURCE_JSON_TO_ABV[SRC_RMBRE] = "RMBRE";
 Parser.SOURCE_JSON_TO_ABV[SRC_RMR] = "RMR";
 Parser.SOURCE_JSON_TO_ABV[SRC_MFF] = "MFF";
+Parser.SOURCE_JSON_TO_ABV[SRC_AWM] = "AWM";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
@@ -2376,9 +2416,21 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_BGDIA,
 	SRC_LR,
 	SRC_EFR,
-	SRC_RMBRE
+	SRC_RMBRE,
+
+	SRC_AWM
 ]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
+Parser.SOURCES_NON_STANDARD_WOTC = new Set([
+	SRC_OGA,
+	SRC_Mag,
+	SRC_STREAM,
+	SRC_TWITTER,
+	SRC_LLK,
+	SRC_LR,
+	SRC_TTP,
+	SRC_AWM
+]);
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"A": "Ammunition",
@@ -2540,11 +2592,11 @@ SourceUtil = {
 	},
 
 	isNonstandardSource (source) {
-		return (source !== undefined && source !== null) && !BrewUtil.hasSourceJson(source) && SourceUtil._isNonstandardSourceWiz(source);
+		return source != null && !BrewUtil.hasSourceJson(source) && SourceUtil._isNonstandardSourceWiz(source);
 	},
 
 	_isNonstandardSourceWiz (source) {
-		return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.startsWith(SRC_AL_PREFIX) || source === SRC_OGA || source === SRC_Mag || source === SRC_STREAM || source === SRC_TWITTER || source === SRC_LLK || source === SRC_LR || source === SRC_TTP;
+		return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.startsWith(SRC_AL_PREFIX) || Parser.SOURCES_NON_STANDARD_WOTC.has(source);
 	},
 
 	getFilterGroup (source) {
@@ -4191,15 +4243,8 @@ async function pInitFilterBox (opts) {
 // ENCODING/DECODING ===================================================================================================
 UrlUtil = {
 	encodeForHash (toEncode) {
-		if (toEncode instanceof Array) {
-			return toEncode.map(i => encodeForHashHelper(i)).join(HASH_LIST_SEP);
-		} else {
-			return encodeForHashHelper(toEncode);
-		}
-
-		function encodeForHashHelper (part) {
-			return encodeURIComponent(part).toLowerCase();
-		}
+		if (toEncode instanceof Array) return toEncode.map(it => it.toUrlified()).join(HASH_LIST_SEP);
+		else return toEncode.toUrlified();
 	},
 
 	autoEncodeHash (obj) {
@@ -4260,18 +4305,14 @@ UrlUtil = {
 	 */
 	packSubHash (key, values, opts) {
 		opts = opts || {};
-		if (opts.isEncodeBoth || opts.isEncodeKey) key = UrlUtil.pack(key);
-		if (opts.isEncodeBoth || opts.isEncodeValues) values = values.map(it => UrlUtil.pack(it));
+		if (opts.isEncodeBoth || opts.isEncodeKey) key = key.toUrlified();
+		if (opts.isEncodeBoth || opts.isEncodeValues) values = values.map(it => it.toUrlified());
 		return `${key}${HASH_SUB_KV_SEP}${values.join(HASH_SUB_LIST_SEP)}`;
 	},
 
-	pack (part) {
-		return encodeURIComponent(part.toLowerCase());
-	},
+	toUrlifiedString (part) { return encodeURIComponent(part).toLowerCase(); },
 
-	categoryToPage (category) {
-		return UrlUtil.CAT_TO_PAGE[category];
-	},
+	categoryToPage (category) { return UrlUtil.CAT_TO_PAGE[category]; },
 
 	bindLinkExportButton (filterBox) {
 		const $btn = ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
@@ -4293,6 +4334,30 @@ UrlUtil = {
 				JqueryUtil.showCopiedEffect($btn);
 			})
 			.attr("title", "Get Link to Filters (SHIFT adds List)")
+	},
+
+	mini: {
+		compress (primitive) {
+			const type = typeof primitive;
+			if (primitive == null) return `x`;
+			switch (type) {
+				case "boolean": return `b${Number(primitive)}`;
+				case "number": return `n${primitive}`;
+				case "string": return `s${primitive.toUrlified()}`;
+				default: throw new Error(`Unhandled type "${type}"`);
+			}
+		},
+
+		decompress (raw) {
+			const [type, data] = [raw.slice(0, 1), raw.slice(1)];
+			switch (type) {
+				case "x": return null;
+				case "b": return !!Number(data);
+				case "n": return Number(data);
+				case "s": return String(data);
+				default: throw new Error(`Unhandled type "${type}"`);
+			}
+		}
 	},
 
 	class: {
@@ -7226,7 +7291,7 @@ Array.prototype.getNext = Array.prototype.getNext || function (curVal) {
 Array.prototype.shuffle = Array.prototype.shuffle || function () {
 	for (let i = 0; i < 10000; ++i) this.sort(() => Math.random() - 0.5);
 	return this;
-}
+};
 
 // OVERLAY VIEW ========================================================================================================
 /**
@@ -7234,14 +7299,19 @@ Array.prototype.shuffle = Array.prototype.shuffle || function () {
  * - page implementing HashUtil's `loadSubHash` with handling to show/hide the book view based on hashKey changes
  * - page running no-argument `loadSubHash` when `hashchange` occurs
  *
- * @param hashKey to use in the URL so that forward/back can open/close the view
- * @param $openBtn jQuery-selected button to bind click open/close
- * @param noneVisibleMsg "error" message to display if user has not selected any viewable content
- * @param popTblGetNumShown function which should populate the view with HTML content and return the number of items displayed
- * @param doShowEmpty whether or not the empty table should be visible (useful if the population function is guaranteed to display something)
+ * @param opts Options object.
+ * @param opts.hashKey to use in the URL so that forward/back can open/close the view
+ * @param opts.$openBtn jQuery-selected button to bind click open/close
+ * @param opts.noneVisibleMsg "error" message to display if user has not selected any viewable content
+ * @param opts.pageTitle Title.
+ * @param opts.popTblGetNumShown function which should populate the view with HTML content and return the number of items displayed
+ * @param [opts.hasPrintColumns] True if the overlay should contain a dropdown for adjusting print columns.
  * @constructor
  */
-function BookModeView (hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNumShown, doShowEmpty) {
+function BookModeView (opts) {
+	opts = opts || {};
+	const {hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNumShown} = opts;
+
 	this.hashKey = hashKey;
 	this.$openBtn = $openBtn;
 	this.noneVisibleMsg = noneVisibleMsg;
@@ -7275,12 +7345,48 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNu
 			.click(() => this._doHashTeardown());
 		const $dispName = $(`<div/>`); // pass this to the content function to allow it to set a main header
 		$$`<div class="bkmv__spacer-name split-v-center no-shrink">${$dispName}${$btnClose}</div>`.appendTo(this._$wrpBook);
+
+		// region controls
 		// Optionally usable "controls" section at the top of the pane
-		const $wrpControls = $(`<div class="w-100 flex-col bkmv__wrp-controls"/>`).appendTo(this._$wrpBook);
+		const $wrpControls = $(`<div class="w-100 flex-col bkmv__wrp-controls"/>`)
+			.appendTo(this._$wrpBook);
+
+		let $wrpControlsToPass = $wrpControls;
+		if (opts.hasPrintColumns) {
+			$wrpControls.addClass("px-2 mt-2");
+
+			const injectPrintCss = (cols) => {
+				$(`#bkmv__print-style`).remove();
+				$(`<style media="print" id="bkmv__print-style">.bkmv__wrp { column-count: ${cols}; }</style>`)
+					.appendTo($(document.body))
+			};
+
+			const lastColumns = StorageUtil.syncGetForPage(BookModeView._BOOK_VIEW_COLUMNS_K);
+
+			const $selColumns = $(`<select class="form-control">
+				<option value="0">Two (book style)</option>
+				<option value="1">One</option>
+			</select>`)
+				.change(() => {
+					const val = Number($selColumns.val());
+					if (val === 0) injectPrintCss(2);
+					else injectPrintCss(1);
+
+					StorageUtil.syncSetForPage(BookModeView._BOOK_VIEW_COLUMNS_K, val);
+				});
+			if (lastColumns != null) $selColumns.val(lastColumns);
+			$selColumns.change();
+
+			$wrpControlsToPass = $$`<div class="w-100 flex">
+				<div class="flex-vh-center"><div class="mr-2 no-wrap help--subtle" title="Applied when printing the page.">Print columns:</div>${$selColumns}</div>
+			</div>`.appendTo($wrpControls);
+		}
+		// endregion
+
 		const $wrpContent = $(`<div class="w-100 bkmv__wrp p-2"/>`);
 		$$`<div class="bkmv__scroller h-100 w-100 overflow-y-auto">${$wrpContent}</div>`.appendTo(this._$wrpBook);
 
-		const numShown = await this.popTblGetNumShown($wrpContent, $dispName, $wrpControls);
+		const numShown = await this.popTblGetNumShown($wrpContent, $dispName, $wrpControlsToPass);
 
 		if (!numShown) {
 			const $btnClose = $(`<button class="btn btn-default">Close</button>`)
@@ -7310,9 +7416,11 @@ function BookModeView (hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNu
 		else this.teardown();
 	};
 }
+BookModeView._BOOK_VIEW_COLUMNS_K = "bookViewColumns";
 
 // CONTENT EXCLUSION ===================================================================================================
 ExcludeUtil = {
+	isInitialised: false,
 	_excludes: null,
 
 	async pInitialise () {
@@ -7332,6 +7440,7 @@ ExcludeUtil = {
 			window.location.hash = "";
 			setTimeout(() => { throw e });
 		}
+		ExcludeUtil.isInitialised = true;
 	},
 
 	getList () {

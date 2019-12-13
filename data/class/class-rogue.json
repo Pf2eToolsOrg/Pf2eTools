@@ -254,22 +254,26 @@
 				"tools": [
 					"thieves' tools"
 				],
-				"skills": {
-					"choose": 4,
-					"from": [
-						"Acrobatics",
-						"Athletics",
-						"Deception",
-						"Insight",
-						"Intimidation",
-						"Investigation",
-						"Perception",
-						"Performance",
-						"Persuasion",
-						"Sleight of Hand",
-						"Stealth"
-					]
-				}
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"acrobatics",
+								"athletics",
+								"deception",
+								"insight",
+								"intimidation",
+								"investigation",
+								"perception",
+								"performance",
+								"persuasion",
+								"sleight of hand",
+								"stealth"
+							],
+							"count": 4
+						}
+					}
+				]
 			},
 			"startingEquipment": {
 				"additionalFromBackground": true,
@@ -289,22 +293,26 @@
 					"armor": [
 						"light"
 					],
-					"skills": {
-						"choose": 1,
-						"from": [
-							"Acrobatics",
-							"Athletics",
-							"Deception",
-							"Insight",
-							"Intimidation",
-							"Investigation",
-							"Perception",
-							"Performance",
-							"Persuasion",
-							"Sleight of Hand",
-							"Stealth"
-						]
-					},
+					"skills": [
+						{
+							"choose": {
+								"from": [
+									"acrobatics",
+									"athletics",
+									"deception",
+									"insight",
+									"intimidation",
+									"investigation",
+									"perception",
+									"performance",
+									"persuasion",
+									"sleight of hand",
+									"stealth"
+								],
+								"count": 1
+							}
+						}
+					],
 					"tools": [
 						"thieves' tools"
 					]
@@ -521,8 +529,8 @@
 								}
 							],
 							"colLabels": [
-								"{@filter Cantrips Known|spells|level=0|subclass=Arcane Trickster}",
-								"{@filter Spells Known|spells|subclass=Arcane Trickster}"
+								"{@filter Cantrips Known|spells|level=0|subclass=Rogue: Arcane Trickster}",
+								"{@filter Spells Known|spells|subclass=Rogue: Arcane Trickster}"
 							],
 							"rows": [
 								[
@@ -616,10 +624,10 @@
 								}
 							],
 							"colLabels": [
-								"{@filter 1st|spells|level=1|subclass=Arcane Trickster}",
-								"{@filter 2nd|spells|level=2|subclass=Arcane Trickster}",
-								"{@filter 3rd|spells|level=3|subclass=Arcane Trickster}",
-								"{@filter 4th|spells|level=4|subclass=Arcane Trickster}"
+								"{@filter 1st|spells|level=1|subclass=Rogue: Arcane Trickster}",
+								"{@filter 2nd|spells|level=2|subclass=Rogue: Arcane Trickster}",
+								"{@filter 3rd|spells|level=3|subclass=Rogue: Arcane Trickster}",
+								"{@filter 4th|spells|level=4|subclass=Rogue: Arcane Trickster}"
 							],
 							"rows": [
 								[
@@ -2188,3 +2196,4 @@
 		}
 	]
 }
+

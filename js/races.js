@@ -214,7 +214,7 @@ class RacesPage extends ListPage {
 		this._baseRaceFilter = baseRaceFilter;
 	}
 
-	getListItem (race, rcI) {
+	getListItem (race, rcI, isExcluded) {
 		const ability = race.ability ? Renderer.getAbilityData(race.ability) : {asTextShort: "None"};
 		if (race.ability) {
 			const abils = getAbilityObjs(race.ability);
@@ -238,14 +238,16 @@ class RacesPage extends ListPage {
 		// convert e.g. "Elf (High)" to "High Elf" and add as a searchable field
 		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(race.name);
 
-		// populate filters
-		this._sourceFilter.addItem(race._fSources);
-		this._sizeFilter.addItem(race.size);
-		this._asiFilter.addItem(race._fAbility);
-		this._baseRaceFilter.addItem(race._baseName);
+		if (!isExcluded) {
+			// populate filters
+			this._sourceFilter.addItem(race._fSources);
+			this._sizeFilter.addItem(race.size);
+			this._asiFilter.addItem(race._fAbility);
+			this._baseRaceFilter.addItem(race._baseName);
+		}
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const hash = UrlUtil.autoEncodeHash(race);
 		const size = Parser.sizeAbvToFull(race.size);
@@ -268,6 +270,7 @@ class RacesPage extends ListPage {
 				size,
 				source,
 				cleanName: bracketMatch ? `${bracketMatch[2]} ${bracketMatch[1]}` : "",
+				isExcluded,
 				uniqueId: race.uniqueId ? race.uniqueId : rcI
 			}
 		);
@@ -396,7 +399,7 @@ class RacesPage extends ListPage {
 				}
 			}
 
-			if ((subFluff && subFluff.monstrous) || (baseFluff && baseFluff.monstrous)) {
+			if ((subFluff && subFluff.monstrous) || (baseFluff && baseFluff.monstrous && (!subFluff || (subFluff.monstrous == null || subFluff.monstrous)))) {
 				const entryMonstrous = {type: "section", entries: [MiscUtil.copy(fluffJson.meta.monstrous)]};
 				if (fluff.entries) {
 					fluff.entries.push(entryMonstrous);

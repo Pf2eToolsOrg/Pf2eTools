@@ -339,19 +339,23 @@
 				"tools": [
 					"Herbalism kit"
 				],
-				"skills": {
-					"choose": 2,
-					"from": [
-						"Arcana",
-						"Animal Handling",
-						"Insight",
-						"Medicine",
-						"Nature",
-						"Perception",
-						"Religion",
-						"Survival"
-					]
-				}
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"animal handling",
+								"insight",
+								"medicine",
+								"nature",
+								"perception",
+								"religion",
+								"survival"
+							],
+							"count": 2
+						}
+					}
+				]
 			},
 			"startingEquipment": {
 				"additionalFromBackground": true,
@@ -3347,3 +3351,4 @@
 		}
 	]
 }
+

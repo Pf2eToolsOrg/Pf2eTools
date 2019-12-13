@@ -180,6 +180,7 @@ function rollOnArray (lst) {
 }
 
 const RACES_SELECTABLE = ["Dwarf", "Elf", "Half-Elf", "Half-Orc", "Tiefling"];
+const RACES_UNSELECTABLE = ["Human", "Halfling", "Dragonborn", "Gnome"];
 
 const PARENTS_HALF_ELF = [
 	{min: 1, max: 5, result: () => { const p = RNG(2); return `One parent ${fmtChoice(p === 1 ? "mother" : "father")} was an elf and the other ${fmtChoice(p === 1 ? "father" : "mother")} was a human.` }, display: "One parent was an elf and the other was a human.", _races: ["Elf", "Human"]},
@@ -577,6 +578,7 @@ function onJsonLoad (lifeData, nameData) {
 	$selRace.append(`<option value="Random" selected>Random</option>`);
 	$selRace.append(`<option value="Other">Other</option>`);
 	RACES_SELECTABLE.forEach(r => $selRace.append(`<option value="${r}">${r}</option>`));
+	RACES_UNSELECTABLE.forEach(r => $selRace.append(`<option class="italic" value="${r}">${r}</option>`));
 	$selCha.append(`<option value="Random">Random</option>`);
 	for (let i = -5; i <= 5; ++i) {
 		$selCha.append(`<option value="${i}" ${i === 0 ? "selected" : ""}>${i >= 0 ? "+" : ""}${i}</option>`)

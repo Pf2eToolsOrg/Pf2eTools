@@ -33,6 +33,7 @@ function Renderer () {
 	this._enumerateTitlesRel = {enabled: false, titles: {}};
 	this._hooks = {};
 	this._fnPostProcess = null;
+	this._extraSourceClasses = null;
 
 	/**
 	 * Enables/disables lazy-load image rendering.
@@ -49,47 +50,38 @@ function Renderer () {
 	 * Set the tag used to group rendered elements
 	 * @param tag to use
 	 */
-	this.setWrapperTag = function (tag) {
-		this.wrapperTag = tag;
-		return this;
-	};
+	this.setWrapperTag = function (tag) { this.wrapperTag = tag; return this; };
 
 	/**
 	 * Set the base url for rendered links.
 	 * Usage: `renderer.setBaseUrl("https://www.example.com/")` (note the "http" prefix and "/" suffix)
 	 * @param url to use
 	 */
-	this.setBaseUrl = function (url) {
-		this.baseUrl = url;
-		return this;
-	};
+	this.setBaseUrl = function (url) { this.baseUrl = url; return this; };
 
 	/**
 	 * Other sections should be prefixed with a vertical divider
 	 * @param bool
 	 */
-	this.setFirstSection = function (bool) {
-		this._firstSection = bool;
-		return this;
-	};
+	this.setFirstSection = function (bool) { this._firstSection = bool; return this; };
 
 	/**
 	 * Disable adding JS event handlers on elements.
 	 * @param bool
 	 */
-	this.setAddHandlers = function (bool) {
-		this._isAddHandlers = bool;
-		return this;
-	};
+	this.setAddHandlers = function (bool) { this._isAddHandlers = bool; return this; };
 
 	/**
 	 * Add a post-processing function which acts on the final rendered strings from a root call.
 	 * @param fn
 	 */
-	this.setFnPostProcess = function (fn) {
-		this._fnPostProcess = fn;
-		return this;
-	};
+	this.setFnPostProcess = function (fn) { this._fnPostProcess = fn; return this; };
+
+	/**
+	 * Specify a list of extra classes to be added to those rendered on entries with sources.
+	 * @param arr
+	 */
+	this.setExtraSourceClasses = function (arr) { this._extraSourceClasses = arr; return this; };
 
 	/**
 	 * Headers are ID'd using the attribute `data-title-index` using an incrementing int. This resets it to 1.
@@ -952,6 +944,7 @@ function Renderer () {
 		const outList = [];
 		if (SourceUtil.isNonstandardSource(source)) outList.push(CLSS_NON_STANDARD_SOURCE);
 		if (BrewUtil.hasSourceJson(source)) outList.push(CLSS_HOMEBREW_SOURCE);
+		if (this._extraSourceClasses) outList.push(...this._extraSourceClasses);
 		return outList.join(" ");
 	};
 
@@ -2045,6 +2038,12 @@ Renderer.utils = {
 		</tr>`;
 	},
 
+	getExcludedTr (it, dataProp) {
+		if (!ExcludeUtil.isInitialised) return;
+		const isExcluded = ExcludeUtil.isExcluded(it.name, dataProp, it.source);
+		return isExcluded ? `<tr><td colspan="6" class="pt-3 text-center text-danger"><b><i>Warning: This content has been blacklisted.</i></b></td></tr>` : "";
+	},
+
 	async _pHandleNameClick (ele) {
 		await MiscUtil.pCopyTextToClipboard($(ele).text());
 		JqueryUtil.showCopiedEffect($(ele));
@@ -2384,8 +2383,9 @@ Renderer.feat = {
 		const prerequisite = Renderer.utils.getPrerequisiteText(feat.prerequisite);
 		Renderer.feat.mergeAbilityIncrease(feat);
 		renderStack.push(`
+			${Renderer.utils.getExcludedTr(feat, "feat")}
 			${Renderer.utils.getNameTr(feat, {isAddPageNum: true, page: UrlUtil.PG_FEATS})}
-			<tr class='text'><td colspan='6' class='text'>
+			<tr class="text"><td colspan="6" class="text">
 			${prerequisite ? `<p><i>${prerequisite}</i></p>` : ""}
 		`);
 		renderer.recursiveRender({entries: feat.entries}, renderStack, {depth: 2});
@@ -2406,6 +2406,7 @@ Renderer.spell = {
 		const renderStack = [];
 
 		renderStack.push(`
+			${Renderer.utils.getExcludedTr(spell, "spell")}
 			${Renderer.utils.getNameTr(spell, {isAddPageNum: true, page: UrlUtil.PG_SPELLS})}
 			<tr><td colspan="6">
 				<table class="summary striped-even">
@@ -2433,7 +2434,7 @@ Renderer.spell = {
 			</td></tr>
 		`);
 
-		renderStack.push(`<tr class='text'><td colspan='6' class='text'>`);
+		renderStack.push(`<tr class="text"><td colspan="6" class="text">`);
 		const entryList = {type: "entries", entries: spell.entries};
 		renderer.recursiveRender(entryList, renderStack, {depth: 1});
 		if (spell.entriesHigherLevel) {
@@ -2564,6 +2565,7 @@ Renderer.condition = {
 		const renderStack = [];
 
 		renderStack.push(`
+			${Renderer.utils.getExcludedTr(cond, cond.__prop || cond._type)}
 			${Renderer.utils.getNameTr(cond, {isAddPageNum: true, page: UrlUtil.PG_CONDITIONS_DISEASES})}
 			<tr class="text"><td colspan="6">
 		`);
@@ -2577,6 +2579,7 @@ Renderer.condition = {
 Renderer.background = {
 	getCompactRenderedString (bg) {
 		return `
+		${Renderer.utils.getExcludedTr(bg, "background")}
 		${Renderer.utils.getNameTr(bg, {isAddPageNum: true, page: UrlUtil.PG_BACKGROUNDS})}
 		<tr class="text"><td colspan="6">
 		${Renderer.get().render({type: "entries", entries: bg.entries})}
@@ -2627,7 +2630,7 @@ Renderer.background = {
 				}
 			});
 			return toJoin.join(sep);
-		}).join("/");
+		}).join(" <i>or</i> ");
 	}
 };
 
@@ -2646,6 +2649,7 @@ Renderer.optionalfeature = {
 		const renderStack = [];
 
 		renderStack.push(`
+			${Renderer.utils.getExcludedTr(it, "optionalfeature")}
 			${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_OPT_FEATURES})}
 			<tr class="text"><td colspan="6">
 			${it.prerequisite ? `<p><i>${Renderer.utils.getPrerequisiteText(it.prerequisite)}</i></p>` : ""}
@@ -2663,11 +2667,12 @@ Renderer.reward = {
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.recursiveRender({entries: reward.entries}, renderStack, {depth: 1});
-		return `<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`;
+		return `<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>`;
 	},
 
 	getCompactRenderedString: (reward) => {
 		return `
+			${Renderer.utils.getExcludedTr(reward, "reward")}
 			${Renderer.utils.getNameTr(reward, {isAddPageNum: true, page: UrlUtil.PG_REWARDS})}
 			${Renderer.reward.getRenderedString(reward)}
 		`;
@@ -2681,6 +2686,7 @@ Renderer.race = {
 
 		const ability = Renderer.getAbilityData(race.ability);
 		renderStack.push(`
+			${Renderer.utils.getExcludedTr(race, "race")}
 			${Renderer.utils.getNameTr(race, {isAddPageNum: true, page: UrlUtil.PG_RACES})}
 			<tr><td colspan="6">
 				<table class="summary striped-even">
@@ -2696,7 +2702,7 @@ Renderer.race = {
 					</tr>
 				</table>
 			</td></tr>
-			<tr class='text'><td colspan='6'>
+			<tr class="text"><td colspan="6">
 		`);
 		renderer.recursiveRender({type: "entries", entries: race.entries}, renderStack, {depth: 1});
 		renderStack.push("</td></tr>");
@@ -2838,6 +2844,7 @@ Renderer.deity = {
 	getCompactRenderedString: (deity) => {
 		const renderer = Renderer.get();
 		return `
+			${Renderer.utils.getExcludedTr(deity, "deity")}
 			${Renderer.utils.getNameTr(deity, {isAddPageNum: true, suffix: deity.title ? `, ${deity.title.toTitleCase()}` : "", page: UrlUtil.PG_DEITIES})}
 			<tr><td colspan="6">
 				<div class="rd__compact-stat">${Renderer.deity.getOrderedParts(deity, `<p>`, `</p>`)}</div>
@@ -2852,6 +2859,7 @@ Renderer.object = {
 		const renderer = Renderer.get();
 		const row2Width = 12 / ((!!obj.resist + !!obj.vulnerable) || 1);
 		return `
+			${Renderer.utils.getExcludedTr(obj, "object")}
 			${Renderer.utils.getNameTr(obj, {isAddPageNum: true, page: UrlUtil.PG_OBJECTS})}
 			<tr><td colspan="6">
 				<table class="summary striped-even">
@@ -2976,6 +2984,7 @@ Renderer.traphazard = {
 		const renderer = Renderer.get();
 		const subtitle = Renderer.traphazard.getSubtitle(it);
 		return `
+			${Renderer.utils.getExcludedTr(it, it.__prop || (it._type === "t" ? "trap" : "hazard"))}
 			${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_TRAPS_HAZARDS})}
 			${subtitle ? `<tr class="text"><td colspan="6"><i>${subtitle}</i>${Renderer.traphazard.getSimplePart(renderer, it)}${Renderer.traphazard.getComplexPart(renderer, it)}</td>` : ""}
 			<tr class="text"><td colspan="6">${renderer.render({entries: it.entries}, 2)}</td></tr>
@@ -3044,13 +3053,17 @@ Renderer.cultboon = {
 		if (it._type === "c") {
 			Renderer.cultboon.doRenderCultParts(it, renderer, renderStack);
 			renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 2});
-			return `${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_CULTS_BOONS})}
-				<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
-				<tr class='text'><td colspan='6' class='text'>${renderStack.join("")}</td></tr>`;
+			return `
+			${Renderer.utils.getExcludedTr(it, "cult")}
+			${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_CULTS_BOONS})}
+			<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
+			<tr class='text'><td colspan='6' class='text'>${renderStack.join("")}</td></tr>`;
 		} else if (it._type === "b") {
 			Renderer.cultboon.doRenderBoonParts(it, renderer, renderStack);
 			renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
-			return `${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_CULTS_BOONS})}
+			return `
+			${Renderer.utils.getExcludedTr(it, "boon")}
+			${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_CULTS_BOONS})}
 			<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`;
 		}
 	}
@@ -3217,6 +3230,7 @@ Renderer.monster = {
 		const isCrHidden = Parser.crToNumber(mon.cr) === 100;
 
 		renderStack.push(`
+			${Renderer.utils.getExcludedTr(mon, "monster")}
 			${Renderer.utils.getNameTr(mon, {isAddPageNum: true, page: UrlUtil.PG_BESTIARY})}
 			<tr><td colspan="6"><i>${Renderer.monster.getTypeAlignmentPart(mon)}</i></td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
@@ -3735,7 +3749,9 @@ Renderer.item = {
 		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item);
 		const hasEntries = (item._fullEntries && item._fullEntries.length) || (item.entries && item.entries.length);
 
-		return `${Renderer.utils.getNameTr(item, {isAddPageNum: true, page: UrlUtil.PG_ITEMS})}
+		return `
+		${Renderer.utils.getExcludedTr(item, "item")}
+		${Renderer.utils.getNameTr(item, {isAddPageNum: true, page: UrlUtil.PG_ITEMS})}
 		<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td></tr>
 		<tr>
 			<td colspan="2">${[Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
@@ -4255,9 +4271,9 @@ Renderer.psionic = {
 			subMode = subMode == null ? false : subMode;
 			const modeTitleArray = [];
 			const bracketPart = getModeTitleBracketPart();
-			if (bracketPart !== null) modeTitleArray.push(bracketPart);
+			if (bracketPart != null) modeTitleArray.push(bracketPart);
 			if (subMode) return `${modeTitleArray.join(" ")}`;
-			else return `${modeTitleArray.join(" ")}</span>`;
+			else return `${modeTitleArray.join(" ")}`;
 
 			function getModeTitleBracketPart () {
 				const modeTitleBracketArray = [];
@@ -4345,6 +4361,7 @@ Renderer.psionic = {
 		const bodyStr = psionic.type === "T" ? Renderer.psionic.getTalentText(psionic, renderer) : Renderer.psionic.getDisciplineText(psionic, renderer);
 
 		return `
+			${Renderer.utils.getExcludedTr(psionic, "psionic")}
 			${Renderer.utils.getNameTr(psionic, {isAddPageNum: true, page: UrlUtil.PG_PSIONICS})}
 			<tr class="text"><td colspan="6">
 			<p><i>${typeOrderStr}</i></p>
@@ -4369,6 +4386,7 @@ Renderer.variantrule = {
 		const cpy = MiscUtil.copy(rule);
 		delete cpy.name;
 		return `
+			${Renderer.utils.getExcludedTr(rule, "variantrule")}
 			${Renderer.utils.getNameTr(rule, {isAddPageNum: true, page: UrlUtil.PG_VARIATNRULES})}
 			<tr><td colspan="6">
 			${Renderer.get().setFirstSection(true).render(cpy)}
@@ -4383,6 +4401,7 @@ Renderer.table = {
 		const cpy = MiscUtil.copy(it);
 		delete cpy.name;
 		return `
+			${Renderer.utils.getExcludedTr(it, "table")}
 			${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_TABLES})}
 			<tr><td colspan="6">
 			${Renderer.get().setFirstSection(true).render(it)}
@@ -4500,7 +4519,7 @@ Renderer.vehicle = {
 		}
 
 		return `
-			${Renderer.utils.getBorderTr()}
+			${Renderer.utils.getExcludedTr(veh, "vehicle")}
 			${Renderer.utils.getNameTr(veh, {isAddPageNum: !!opts.isCompact, extraThClasses: !opts.isCompact ? ["veh__name--token"] : null, page: UrlUtil.PG_VEHICLES})}
 			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle${veh.dimensions ? ` (${veh.dimensions.join(" by ")})` : ""}</i><br></td></tr>
 			<tr class="text"><td colspan="6">
@@ -4543,7 +4562,6 @@ Renderer.vehicle = {
 			${(veh.weapon || []).map(getWeaponSection).join("")}
 			${(veh.other || []).map(getOtherSection).join("")}
 			${Renderer.utils.getPageTr(veh)}
-			${Renderer.utils.getBorderTr()}
 		`;
 	},
 
@@ -4552,7 +4570,7 @@ Renderer.vehicle = {
 		const dexMod = Parser.getAbilityModNumber(veh.dex);
 
 		return `
-			${Renderer.utils.getBorderTr()}
+			${Renderer.utils.getExcludedTr(veh, "vehicle")}
 			${Renderer.utils.getNameTr(veh, {isAddPageNum: !!opts.isCompact, extraThClasses: !opts.isCompact ? ["veh__name--token"] : null, page: UrlUtil.PG_VEHICLES})}
 			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle (${veh.weight.toLocaleString()} lb.)</i><br></td></tr>
 			<tr class="text"><td colspan="6">
@@ -4593,7 +4611,6 @@ Renderer.vehicle = {
 			${Renderer.monster.getCompactRenderedStringSection(veh, renderer, "Action Stations", "actionStation", 2)}
 			${Renderer.monster.getCompactRenderedStringSection(veh, renderer, "Reactions", "reaction", 2)}
 			${Renderer.utils.getPageTr(veh)}
-			${Renderer.utils.getBorderTr()}
 		`;
 	}
 };
@@ -4602,7 +4619,7 @@ Renderer.action = {
 	getCompactRenderedString (it) {
 		const cpy = MiscUtil.copy(it);
 		delete cpy.name;
-		return `${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_ACTIONS})}
+		return `${Renderer.utils.getExcludedTr(it, "action")}${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_ACTIONS})}
 		<tr><td colspan="6">${Renderer.get().setFirstSection(true).render(cpy)}</td></tr>`;
 	}
 };

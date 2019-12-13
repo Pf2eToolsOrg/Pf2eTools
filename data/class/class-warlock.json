@@ -172,18 +172,22 @@
 				"weapons": [
 					"simple"
 				],
-				"skills": {
-					"choose": 2,
-					"from": [
-						"Arcana",
-						"Deception",
-						"History",
-						"Intimidation",
-						"Investigation",
-						"Nature",
-						"Religion"
-					]
-				}
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"deception",
+								"history",
+								"intimidation",
+								"investigation",
+								"nature",
+								"religion"
+							],
+							"count": 2
+						}
+					}
+				]
 			},
 			"startingEquipment": {
 				"additionalFromBackground": true,
@@ -2536,3 +2540,4 @@
 		}
 	]
 }
+

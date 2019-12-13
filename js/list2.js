@@ -3,8 +3,8 @@ class ListItem {
 	 * @param ix External ID information (e.g. the location of the entry this ListItem represents in a list of entries)
 	 * @param ele An element, or jQuery element if the list is in jQuery mode.
 	 * @param name A name for this item.
-	 * @param values A dictionary of values for this item (not indexed).
-	 * @param [data] An optional dictionary of additional data to store with the item.
+	 * @param values A dictionary of indexed values for this item.
+	 * @param [data] An optional dictionary of additional data to store with the item (not indexed).
 	 */
 	constructor (ix, ele, name, values, data) {
 		this.ix = ix;
@@ -101,6 +101,9 @@ class List {
 	_doSearch () {
 		if (this._searchTerm) this._searchedItems = this._items.filter(it => it.searchText.includes(this._searchTerm));
 		else this._searchedItems = [...this._items];
+
+		// Never show excluded items
+		this._searchedItems = this._searchedItems.filter(it => !it.values.isExcluded);
 
 		this._doFilter();
 	}

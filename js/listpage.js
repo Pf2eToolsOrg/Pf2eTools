@@ -87,14 +87,14 @@ class ListPage {
 		if (this._hasAudio) Renderer.utils.bindPronounceButtons();
 
 		if (this._bookViewOptions) {
-			this._bookView = new BookModeView(
-				"bookview",
-				this._bookViewOptions.$btnOpen,
-				this._bookViewOptions.noneVisibleMsg,
-				this._bookViewOptions.pageTitle || "Book View",
-				this._bookViewOptions.popTblGetNumShown,
-				true
-			);
+			this._bookView = new BookModeView({
+				hashKey: "bookview",
+				$openBtn: this._bookViewOptions.$btnOpen,
+				noneVisibleMsg: this._bookViewOptions.noneVisibleMsg,
+				pageTitle: this._bookViewOptions.pageTitle || "Book View",
+				popTblGetNumShown: this._bookViewOptions.popTblGetNumShown,
+				hasPrintColumns: true
+			});
 		}
 
 		// bind hash-change functions for hist.js to use
@@ -127,8 +127,8 @@ class ListPage {
 		const len = this._dataList.length;
 		for (; this._ixData < len; this._ixData++) {
 			const it = this._dataList[this._ixData];
-			if (ExcludeUtil.isExcluded(it.name, it.__prop, it.source)) continue;
-			this._list.addItem(this.getListItem(it, this._ixData));
+			const isExcluded = ExcludeUtil.isExcluded(it.name, it.__prop, it.source);
+			this._list.addItem(this.getListItem(it, this._ixData, isExcluded));
 		}
 
 		this._list.update();

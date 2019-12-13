@@ -33,15 +33,17 @@ class ActionsPage extends ListPage {
 		this._timeFilter = timeFilter;
 	}
 
-	getListItem (it, anI) {
+	getListItem (it, anI, isExcluded) {
 		it._fTime = it.time ? it.time.map(it => it.unit || it) : null;
 
-		// populate filters
-		this._sourceFilter.addItem(it.source);
-		this._timeFilter.addItem(it._fTime);
+		if (!isExcluded) {
+			// populate filters
+			this._sourceFilter.addItem(it.source);
+			this._timeFilter.addItem(it._fTime);
+		}
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
@@ -61,6 +63,7 @@ class ActionsPage extends ListPage {
 				hash,
 				source,
 				time,
+				isExcluded,
 				uniqueId: it.uniqueId ? it.uniqueId : anI
 			}
 		);

@@ -35,12 +35,14 @@ class BestiaryPage {
 		const hash = UrlUtil.autoEncodeHash(mon);
 		if (!mon.uniqueId && _addedHashes.has(hash)) return null;
 		_addedHashes.add(hash);
-		if (ExcludeUtil.isExcluded(mon.name, "monster", mon.source)) return null;
+		const isExcluded = ExcludeUtil.isExcluded(mon.name, "monster", mon.source);
+
+		this._pageFilter.addToFilters(mon, isExcluded);
 
 		this._pageFilter.addToFilters(mon);
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 		eleLi.addEventListener("click", (evt) => handleBestiaryLiClick(evt, listItem));
 		eleLi.addEventListener("contextmenu", (evt) => handleBestiaryLiContext(evt, listItem));
 
@@ -67,6 +69,7 @@ class BestiaryPage {
 				cr,
 				group: mon.group || "",
 				alias: (mon.alias || []).map(it => `"${it}"`).join(","),
+				isExcluded,
 				uniqueId: mon.uniqueId ? mon.uniqueId : mI
 			}
 		);
@@ -215,7 +218,6 @@ class BestiaryPage {
 		encounterBuilder.initState();
 	}
 }
-BestiaryPage._BOOK_VIEW_COLUMNS_K = "bookViewColumns";
 
 function handleBrew (homebrew) {
 	BestiaryPage.addLegendaryGroups(homebrew.legendaryGroup);
@@ -301,42 +303,12 @@ async function pPageInit (loadedSources) {
 	ListUtil.initGenericAddable();
 
 	// region print view
-	printBookView = new BookModeView(
-		"bookview",
-		$(`#btn-printbook`),
-		"If you wish to view multiple creatures, please first make a list",
-		"Bestiary Printer View",
-		async ($wrpContent, $dispName, $wrpControls) => {
-			// region controls
-			$wrpControls.addClass("px-2 mt-2");
-
-			const injectPrintCss = (cols) => {
-				$(`#mon__print-style`).remove();
-				$(`<style media="print" id="mon__print-style">.bkmv__wrp { column-count: ${cols}; }</style>`)
-					.appendTo($(document.body))
-			};
-
-			const lastColumns = StorageUtil.syncGetForPage(BestiaryPage._BOOK_VIEW_COLUMNS_K);
-
-			const $selColumns = $(`<select class="form-control">
-				<option value="0">Two (book style)</option>
-				<option value="1">One</option>
-			</select>`)
-				.change(() => {
-					const val = Number($selColumns.val());
-					if (val === 0) injectPrintCss(2);
-					else injectPrintCss(1);
-
-					StorageUtil.syncSetForPage(BestiaryPage._BOOK_VIEW_COLUMNS_K, val);
-				});
-			if (lastColumns != null) $selColumns.val(lastColumns);
-			$selColumns.change();
-			// endregion
-
-			$$`<div class="w-100 flex">
-				<div class="flex-vh-center"><div class="mr-2 no-wrap">Print columns:</div>${$selColumns}</div>
-			</div>`.appendTo($wrpControls);
-
+	printBookView = new BookModeView({
+		hashKey: "bookview",
+		$openBtn: $(`#btn-printbook`),
+		noneVisibleMsg: "If you wish to view multiple creatures, please first make a list",
+		pageTitle: "Bestiary Printer View",
+		popTblGetNumShown: async ($wrpContent) => {
 			const toShow = await Promise.all(ListUtil.genericPinKeyMapper());
 
 			toShow.sort((a, b) => SortUtil.ascSort(a._displayName || a.name, b._displayName || b.name));
@@ -370,8 +342,8 @@ async function pPageInit (loadedSources) {
 
 			return numShown;
 		},
-		true
-	);
+		hasPrintColumns: true
+	});
 	// endregion
 
 	// region proficiency bonus/dice toggle

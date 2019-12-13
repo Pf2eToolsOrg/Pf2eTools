@@ -24,7 +24,7 @@ class VariantRulesPage extends ListPage {
 		this._sourceFilter = sourceFilter;
 	}
 
-	getListItem (rule, rlI) {
+	getListItem (rule, rlI, isExcluded) {
 		rule._fMisc = rule.srd ? ["SRD"] : [];
 
 		const searchStack = [];
@@ -32,11 +32,13 @@ class VariantRulesPage extends ListPage {
 			Renderer.getNames(searchStack, e1);
 		}
 
-		// populate filters
-		this._sourceFilter.addItem(rule.source);
+		if (isExcluded) {
+			// populate filters
+			this._sourceFilter.addItem(rule.source);
+		}
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(rule.source);
 		const hash = UrlUtil.autoEncodeHash(rule);
@@ -54,6 +56,7 @@ class VariantRulesPage extends ListPage {
 				hash,
 				search: searchStack.join(","),
 				source,
+				isExcluded,
 				uniqueId: rule.uniqueId ? rule.uniqueId : rlI
 			}
 		);

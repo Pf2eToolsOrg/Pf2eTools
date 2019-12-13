@@ -8,6 +8,7 @@ class RenderObjects {
 
 		return $$`
 			${Renderer.utils.getBorderTr()}
+			${Renderer.utils.getExcludedTr(obj, "object")}
 			${Renderer.utils.getNameTr(obj, {extraThClasses: ["objs__name--token"], page: UrlUtil.PG_OBJECTS})}
 			<tr class="text"><td colspan="6"><i>${obj.type !== "GEN" ? `${Parser.sizeAbvToFull(obj.size)} object` : `Variable size object`}</i><br></td></tr>
 			<tr class="text"><td colspan="6">

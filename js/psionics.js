@@ -97,14 +97,16 @@ class PsionicsPage extends ListPage {
 		this._sourceFilter = sourceFilter;
 	}
 
-	getListItem (p, psI) {
+	getListItem (p, psI, isExcluded) {
 		p._fOrder = Parser.psiOrderToFull(p.order);
 
-		// populate filters
-		this._sourceFilter.addItem(p.source);
+		if (!isExcluded) {
+			// populate filters
+			this._sourceFilter.addItem(p.source);
+		}
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(p.source);
 		const hash = UrlUtil.autoEncodeHash(p);
@@ -127,6 +129,7 @@ class PsionicsPage extends ListPage {
 				type,
 				order: p._fOrder,
 				uniqueId: p.uniqueId ? p.uniqueId : psI,
+				isExcluded,
 				searchModeList: getHiddenModeList(p)
 			}
 		);

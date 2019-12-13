@@ -1,9 +1,5 @@
 @import 'vars';
 
-$rgb-class-ua-color: #827e00;
-$rgb-subclass-ua-color: #1d965d;
-$rgb-class-brew-color: #8c3b96;
-
 .page__ {
 	&header {
 		padding: 0 15px 1px;
@@ -128,7 +124,7 @@ $rgb-class-brew-color: #8c3b96;
 
 .night-mode .page__ {
 	&wrp-download {
-		background: $rgb-night-bg-color;
+		background: $rgb-bg-color--night;
 	}
 
 	&disp-download-progress-text {
@@ -1134,6 +1130,10 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 .list-multi-selected .lst--border {
 	border-color: #6fa4d0;
+}
+
+.row--blacklisted {
+	display: none !important;
 }
 
 th.name {
@@ -2705,8 +2705,8 @@ tr.regionaleffect {
 	.rd__h--0,
 	.rd__h--1,
 	.rd__h--2 {
-		color: #337ab7;
-		border-bottom-color: #337ab7;
+		color: $rgb-subclass-color;
+		border-bottom-color: $rgb-subclass-color;
 	}
 }
 
@@ -2719,7 +2719,7 @@ tr.regionaleffect {
 	}
 }
 
-.spicy-sauce:not(.subclass-feature) {
+.spicy-sauce:not(.subclass-feature):not(.subclass-feature--sub) {
 	.rd__h--0,
 	.rd__h--1,
 	.rd__h--2 {
@@ -3512,15 +3512,11 @@ ul.list.books > li > a > span.name:hover {
 /* Night Mode */
 .night-mode {
 	$class-main-color-alt: #c2c2c2;
-	$rgb-class-sub-color: #609dd2;
-	$rgb-class-ua-color: #a2ce42;
-	$rgb-subclass-ua-color: #27ce80;
-	$rgb-class-brew-color: #aa40b4;
 	$btn-active-color: #ffffff40;
 
 	body {
-		color: $rgb-night-font-color;
-		background: $rgb-night-bg-color url('data:image/png;base64,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') repeat scroll left top;
+		color: $rgb-font-color--night;
+		background: $rgb-bg-color--night url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGBAMAAACDAP+3AAAAGFBMVEUfHx8eHh4dHR0bGxshISEiIiIlJSUjIyM9IpsJAAAFjUlEQVR4AT3UuZLcOBaF4QuI2XJxboIhF/eQFe1WovoBAAqccpkaZpc5+4yrXa8/RGpx/lrIXPjFCYjTp9z8REqF4VYNWB3Av3zQJ6b6xBwlKB/9kRkCjXVwGH3ziK5UcjFHVkmgY6osiBsGDFfseqq2ZbTz7E00qBDpzOxnD7ToABeros1vM6MX0rBQaG1ith1A/HJkvkHxsPGJ82dP8vVCyWmbyPTaAfGzg40bgIdrv2f3pBVPycUcufx+BSUUWDuCZi6zBqdM50ElKYPODqtLDjc31rBb9CZ59lbN/JScuMxHLUBcGiy6QRH9zpwgZGhRj8qSydPVgNNVgbWqYX3HbM9K2rqTnKVmsmwKWzc1ffEd20+Zq3Ji65kl6TSjALNvzmJt4Pi2f1etytGJmy5erLAgbNY4bjykC3YCLIS3nSZMKgwRsBarWgjdeVzIEDzpTkoOUArTF4WFXYHwxY585sT0nmTYMxmXfs8fzwswfnam8TMU49bvqSRnyRPnqlno4tVQQiH2A9Za8tNTfXQ0lxbSxUaZna0uLlj9Q0XzD96CpsOZUftolINKBWJpAOoAJC0T6QqZnOtfvcfJFcDrD4Cuy5Hng316XrqzJ204HynyHwWed6i+XGF40Uw2T7Lc71HyssngEOrgONfBY7wvW0UZdVAma5xmSNjRp3xkvKJkW6aSg7PK4K0+mbKqYB0WYBgWwxCXiS74zBCVlEFpYQDEwjcA1qccb5yO6ZL8ozt/h3wHSCdWzLuqxU2ZZ9ev9MvRMbMvV9BQgN0qrFjlkzPQanI9nuaGCokVK2LV1Y2egyY1aFQGxjM9I7RBBAgyGEJtpKHP0lUySSeWCpyKHMT2pmM/vyP55u2Rw5lcSeabAfgiG5TPDX3uP3QvcoSipJXQByUCjS4C8VXqxEEZOJxzmJoyogFNJBRsCJs2XmoWWrWFqTsnbwtSn43gNFTTob9/SEpaPJNhUBKDGoZGCMINxvBv8vuKbb//lg/sK0wfPgBica/QsSk5F3KK4Ui6Yw+uv4+DWEOFbhdPOnbY5PLFpzrZMhakeqomY0Vz0TO+elQGTWdCk1IYFAOaoZg0IJQhT+YreXF+yia+O1cgtGufjXxQw28f85RPXfd15zv13ABoD15kB7FKJ/7pbHKP6+9TgNgkVj68NeV8Tp24f7OOndCgJzR3RNJBPNFReCmstMVqvjjzBoeK4GOFoBN32CPxu+4TwwBDa4DJTe/OU9c9ku7EGyfOVxh+fw9g/AATxPqKTEXJKEdCIBkB4iBUlO6MjUrWi6M5Kz31YAqFsYaCeB0KJC5d1+foo3LQWSfRaDrwdAQrMEC27yDZXJf7TlOJ2Bczr1di3OWvZB6XrvvqPuWJPDk9dAHgm7LvuZJTEdKqO3J3XgostArEnvkqgUznx3PX7cSzz1FXZyvakTA4XVVMbCPFPK1cFj66S0WoqQI1XG2uoU7CMPquO2VaUDJFQMdVgXKD2bpz6ufzzxXbxszHQ9fGO/F7A998yBQG6cShE+P+Pk7t1FwfF1QHN1Eui1VapRxCdj8tCtI1bog1Fo011Sx9u3o6c9bufI6wAT26Av9xJ+WWpTKbbBPp3K/1LbC4Vuhv396RCbJw4untjxVPndj+dIB9dVD8z2dylZ+6vMeJwbYChHJkvHV2J3fdHsJPASeHhrXq6QheXu1nBhUr5u6ryT0I13BFKD01ViZ/n3oaziRG7c6Ayg7g1LPeztNdT36ueMqcN4XGv3finjfv+7I/kMJ4d046MUanOA1QtMH1kLlfFasm99NiutSw63yNDeH4zeL1Uu8XKHNfcThPSSNwchGMbgUETScwkCcK77pH2jsgrAssvVyB8FLJ7GrmwyD8eVqsHoY/FwIv9T7lPu9+Yf8/9+w4nS1ma78AAAAASUVORK5CYII=') repeat scroll left top;
 	}
 
 	.page__ {
@@ -3557,7 +3553,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.text-muted {
-		color: darken($rgb-night-font-color, 15%) !important;
+		color: darken($rgb-font-color--night, 15%) !important;
 	}
 
 	header p.lead {
@@ -3570,16 +3566,16 @@ ul.list.books > li > a > span.name:hover {
 	h4,
 	h5,
 	h6 {
-		color: $rgb-night-font-color;
+		color: $rgb-font-color--night;
 	}
 
 	pre {
-		color: $rgb-night-font-color;
-		background: $rgb-night-bg-color;
+		color: $rgb-font-color--night;
+		background: $rgb-bg-color--night;
 	}
 
 	hr {
-		border-color: $rgb-night-hr-grey;
+		border-color: $rgb-hr-grey--night;
 	}
 
 	.form-control[disabled] {
@@ -3615,8 +3611,8 @@ ul.list.books > li > a > span.name:hover {
 	.btn-default:hover,
 	.btn-default:focus,
 	.btn-default:active {
-		background-color: $rgb-night-bg-color;
-		color: $rgb-night-font-color;
+		background-color: $rgb-bg-color--night;
+		color: $rgb-font-color--night;
 	}
 
 
@@ -3624,40 +3620,40 @@ ul.list.books > li > a > span.name:hover {
 	.btn-primary:hover,
 	.btn-primary:focus,
 	.btn-primary:active {
-		background-color: $rgb-night-btn-primary-blue;
-		color: $rgb-night-font-color;
+		background-color: $rgb-btn-primary-blue--night;
+		color: $rgb-font-color--night;
 	}
 
 	.btn-danger,
 	.btn-danger:hover,
 	.btn-danger:focus,
 	.btn-danger:active {
-		background-color: $rgb-night-btn-danger-red;
-		color: $rgb-night-font-color;
+		background-color: $rgb-btn-danger-red--night;
+		color: $rgb-font-color--night;
 	}
 
 	.btn-warning,
 	.btn-warning:hover,
 	.btn-warning:focus,
 	.btn-warning:active {
-		background-color: $rgb-night-btn-warning-orange;
-		color: $rgb-night-font-color;
+		background-color: $rgb-btn-warning-orange--night;
+		color: $rgb-font-color--night;
 	}
 
 	.btn-info,
 	.btn-info:hover,
 	.btn-info:focus,
 	.btn-info:active {
-		background-color: $rgb-night-btn-info-blue;
-		color: $rgb-night-font-color;
+		background-color: $rgb-btn-info-blue--night;
+		color: $rgb-font-color--night;
 	}
 
 	.btn-success,
 	.btn-success:hover,
 	.btn-success:focus,
 	.btn-success:active {
-		background-color: $rgb-night-btn-success-green;
-		color: $rgb-night-font-color;
+		background-color: $rgb-btn-success-green--night;
+		color: $rgb-font-color--night;
 	}
 
 	.fltr__h-btn-logic--blue {
@@ -3702,14 +3698,14 @@ ul.list.books > li > a > span.name:hover {
 	dialog.dialog-modal,
 	.dropdown-menu {
 		background: #232323;
-		color: $rgb-night-font-color;
+		color: $rgb-font-color--night;
 		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.56);
 	}
 
 	.dropdown-menu > li {
 		> a,
 		> span {
-			color: $rgb-night-font-color;
+			color: $rgb-font-color--night;
 		}
 
 		&.active {
@@ -3733,13 +3729,13 @@ ul.list.books > li > a > span.name:hover {
 
 	select,
 	input {
-		background-color: $rgb-night-bg-color;
-		color: $rgb-night-font-color;
+		background-color: $rgb-bg-color--night;
+		color: $rgb-font-color--night;
 	}
 
 	select option {
-		color: $rgb-night-font-color;
-		background: $rgb-night-bg-color;
+		color: $rgb-font-color--night;
+		background: $rgb-bg-color--night;
 	}
 
 	/* Bootstrap overrides */
@@ -3753,34 +3749,34 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.don__bar {
-		background: $rgb-night-bg-color;
+		background: $rgb-bg-color--night;
 	}
 
 	.input-group-addon,
 	.form-control {
-		background: $rgb-night-bg-color;
-		color: $rgb-night-font-color;
+		background: $rgb-bg-color--night;
+		color: $rgb-font-color--night;
 	}
 
 	/* *** */
 
 	.omni__wrp-input--scrolled .omni__input {
-		background-color: $rgb-night-bg-color;
+		background-color: $rgb-bg-color--night;
 		color: transparent;
 
 		&:focus,
 		&:focus-within,
 		&:active,
 		&:hover {
-			color: $rgb-night-font-color;
+			color: $rgb-font-color--night;
 		}
 	}
 
 	.omni__submit.btn-default:active:focus,
 	.omni__submit.btn-default:active:hover,
 	.omni__submit.btn-default {
-		background-color: $rgb-night-bg-color;
-		color: $rgb-night-font-color;
+		background-color: $rgb-bg-color--night;
+		color: $rgb-font-color--night;
 	}
 
 	.omni__wrp-input {
@@ -3828,12 +3824,12 @@ ul.list.books > li > a > span.name:hover {
 
 	.list--stats > .row,
 	.stats {
-		background: $rgb-night-bg-color;
+		background: $rgb-bg-color--night;
 	}
 
 	@media only screen and (min-width: 1600px) {
 		#listcontainer.book-contents {
-			background: $rgb-night-bg-color;
+			background: $rgb-bg-color--night;
 			border-right: 1px solid #404040;
 		}
 	}
@@ -3845,7 +3841,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.hwin__wrp-table {
-		background: $rgb-night-bg-color;
+		background: $rgb-bg-color--night;
 	}
 
 	.wrp-stats-table {
@@ -3859,16 +3855,16 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	tr.text td {
-		color: $rgb-night-font-color !important;
+		color: $rgb-font-color--night !important;
 	}
 
 	tr.text td {
-		color: $rgb-night-font-color !important;
+		color: $rgb-font-color--night !important;
 	}
 
 	.mon__ {
 		&wrp-size-type-align {
-			color: $rgb-night-font-color;
+			color: $rgb-font-color--night;
 		}
 
 		&btn-token-cycle {
@@ -3876,7 +3872,7 @@ ul.list.books > li > a > span.name:hover {
 			background: rgba(255, 255, 255, 0.15);
 
 			&:hover {
-				color: $rgb-night-font-color;
+				color: $rgb-font-color--night;
 			}
 		}
 
@@ -3890,7 +3886,7 @@ ul.list.books > li > a > span.name:hover {
 	tr.action td,
 	tr.reaction td,
 	tr.legendary td {
-		color: $rgb-night-font-color !important;
+		color: $rgb-font-color--night !important;
 	}
 
 	.output,
@@ -3922,33 +3918,33 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.stats th {
-		color: $rgb-night-name-orange;
+		color: $rgb-name-red--night;
 	}
 
 	.stats .divider div {
-		background-color: $rgb-night-name-orange;
+		background-color: $rgb-name-red--night;
 	}
 
 	.cls-bkmv__btn-tab.cf-active,
 	#subclasses span.fluff-active,
 	#subclasses span.cf-active {
-		background-color: $rgb-night-name-orange;
+		background-color: $rgb-name-red--night;
 		color: $rgb-off-black;
 	}
 
 	.cls-bkmv__btn-tab.cf-active {
-		border-color: darken($rgb-night-name-orange, 20%);
+		border-color: darken($rgb-name-red--night, 20%);
 	}
 
 	.stats {
 		.rd__h--0,
 		.rd__h--1,
 		.rd__h--2 {
-			color: $rgb-night-name-orange;
+			color: $rgb-name-red--night;
 		}
 
 		.rd__h--1 {
-			border-bottom-color: $rgb-night-name-orange;
+			border-bottom-color: $rgb-name-red--night;
 		}
 
 		.rd__h--4 {
@@ -3962,49 +3958,49 @@ ul.list.books > li > a > span.name:hover {
 
 	.cls-bkmv__btn-tab.active,
 	#subclasses .active {
-		background-color: $rgb-class-sub-color;
+		background-color: $rgb-subclass-color--night;
 		color: $rgb-off-black;
 	}
 
 	.cls-bkmv__btn-tab.active {
-		border-color: darken($rgb-class-sub-color, 20%);
+		border-color: darken($rgb-subclass-color--night, 20%);
 	}
 
 	.subclass-feature {
 		.rd__h--0,
 		.rd__h--1,
 		.rd__h--2 {
-			color: $rgb-class-sub-color;
-			border-bottom-color: $rgb-class-sub-color;
+			color: $rgb-subclass-color--night;
+			border-bottom-color: $rgb-subclass-color--night;
 		}
 	}
 
 	.cls-bkmv__btn-tab.active.spicy-sauce,
 	#subclasses span.active.spicy-sauce,
 	#subclasses .os-active {
-		background-color: $rgb-subclass-ua-color;
+		background-color: $rgb-subclass-ua-color--night;
 		color: $rgb-off-black;
 	}
 
 	.cls-bkmv__btn-tab.active.spicy-sauce {
-		border-color: darken($rgb-subclass-ua-color, 20%);
+		border-color: darken($rgb-subclass-ua-color--night, 20%);
 	}
 
 	.spicy-sauce {
 		.rd__h--0,
 		.rd__h--1,
 		.rd__h--2 {
-			color: $rgb-subclass-ua-color;
-			border-bottom-color: $rgb-subclass-ua-color;
+			color: $rgb-subclass-ua-color--night;
+			border-bottom-color: $rgb-subclass-ua-color--night;
 		}
 	}
 
-	.spicy-sauce:not(.subclass-feature) {
+	.spicy-sauce:not(.subclass-feature):not(.subclass-feature--sub) {
 		.rd__h--0,
 		.rd__h--1,
 		.rd__h--2 {
-			color: $rgb-class-ua-color;
-			border-bottom-color: $rgb-class-ua-color;
+			color: $rgb-class-ua-color--night;
+			border-bottom-color: $rgb-class-ua-color--night;
 		}
 	}
 
@@ -4012,8 +4008,8 @@ ul.list.books > li > a > span.name:hover {
 		.rd__h--0,
 		.rd__h--1,
 		.rd__h--2 {
-			color: $rgb-class-brew-color;
-			border-bottom-color: $rgb-class-brew-color;
+			color: $rgb-class-brew-color--night;
+			border-bottom-color: $rgb-class-brew-color--night;
 		}
 	}
 
@@ -4023,7 +4019,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	#please-select-message.showing > td {
-		color: $rgb-night-name-orange;
+		color: $rgb-name-red--night;
 	}
 
 	#actions,
@@ -4032,18 +4028,18 @@ ul.list.books > li > a > span.name:hover {
 	#lairactions,
 	#regionaleffects {
 		td {
-			border-bottom-color: $rgb-night-name-orange;
-			color: $rgb-night-name-orange;
+			border-bottom-color: $rgb-name-red--night;
+			color: $rgb-name-red--night;
 		}
 	}
 
 	.mon__stat-header-underline {
-		border-bottom-color: $rgb-night-name-orange;
-		color: $rgb-night-name-orange;
+		border-bottom-color: $rgb-name-red--night;
+		color: $rgb-name-red--night;
 	}
 
 	.sourcePHB {
-		color: $rgb-class-sub-color;
+		color: $rgb-subclass-color--night;
 	}
 
 	.bkmv {
@@ -4117,7 +4113,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	#rulescontent caption {
-		color: $rgb-night-font-color;
+		color: $rgb-font-color--night;
 	}
 
 	.cls-bkmv__btn-tab,
@@ -4125,17 +4121,17 @@ ul.list.books > li > a > span.name:hover {
 		background: $rgb-off-black;
 
 		&[data-state='1'] {
-			background: repeating-linear-gradient(135deg, $rgb-subclass-ua-color, $rgb-subclass-ua-color 17px, $rgb-off-black 17px, $rgb-off-black 34px);
+			background: repeating-linear-gradient(135deg, $rgb-subclass-ua-color--night, $rgb-subclass-ua-color--night 17px, $rgb-off-black 17px, $rgb-off-black 34px);
 			color: white;
 		}
 
 		&.sc_pill--active.spicy-sauce,
 		&[data-state='2'] {
-			background: $rgb-subclass-ua-color;
+			background: $rgb-subclass-ua-color--night;
 		}
 
 		&.sc_pill--active.refreshing-brew {
-			background: $rgb-class-brew-color;
+			background: $rgb-class-brew-color--night;
 		}
 
 		&.sc_pill--active.spicy-sauce,
@@ -4149,7 +4145,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	tr.trait td {
-		color: $rgb-night-font-color !important;
+		color: $rgb-font-color--night !important;
 	}
 
 	::-webkit-scrollbar-thumb {
@@ -4163,7 +4159,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.fltr__pill[state=ignore] {
-		background: $rgb-night-bg-color;
+		background: $rgb-bg-color--night;
 	}
 
 	.fltr__pill:hover:not([state]) {
@@ -4171,12 +4167,12 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.ui-slider {
-		background: $rgb-night-bg-color;
+		background: $rgb-bg-color--night;
 	}
 
 	.ui-slider .ui-slider-tip {
 		background: $rgb-off-black;
-		color: $rgb-night-font-color;
+		color: $rgb-font-color--night;
 	}
 
 	.ui-slider-pips .ui-slider-pip {
@@ -4221,11 +4217,11 @@ ul.list.books > li > a > span.name:hover {
 
 	.hwin table.summary-noback th,
 	.hwin table.summary th {
-		color: $rgb-night-font-color;
+		color: $rgb-font-color--night;
 	}
 
 	.hwin .hoverborder .window-title {
-		color: $rgb-night-font-color;
+		color: $rgb-font-color--night;
 	}
 
 	.rollbox {
@@ -4287,7 +4283,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.panel-content-wrapper-inner {
-		background: $rgb-night-bg-color;
+		background: $rgb-bg-color--night;
 	}
 
 	.panel-addmenu-tab-head[active='true'] {
@@ -4296,11 +4292,11 @@ ul.list.books > li > a > span.name:hover {
 
 	.panel-content-wrapper-inner td div.border,
 	.hwin td div.border {
-		background-color: $rgb-night-name-orange;
+		background-color: $rgb-name-red--night;
 	}
 
 	.initial-message {
-		color: $rgb-night-name-orange;
+		color: $rgb-name-red--night;
 	}
 
 	.ui-modal__row-sep {
@@ -4308,7 +4304,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.panel-content-textarea {
-		background: $rgb-night-bg-color;
+		background: $rgb-bg-color--night;
 	}
 
 	.dm-init-row.dm-init-row-active input,
@@ -4317,11 +4313,11 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.dm__panel-bg {
-		background: $rgb-night-bg-color;
+		background: $rgb-bg-color--night;
 	}
 
 	.content-tab-bar {
-		background: $rgb-night-bg-color;
+		background: $rgb-bg-color--night;
 	}
 
 	.homebrew-section {
@@ -4380,7 +4376,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.sidemenu {
-		background: $rgb-night-bg-color;
+		background: $rgb-bg-color--night;
 	}
 
 	.sidemenu__toggle {
@@ -4388,7 +4384,7 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.sidemenu__burger {
-		background: $rgb-night-bg-color;
+		background: $rgb-bg-color--night;
 	}
 	/* *** */
 

@@ -25,14 +25,16 @@ class TablesPage extends ListPage {
 		this._sourceFilter = sourceFilter;
 	}
 
-	getListItem (it, tbI) {
+	getListItem (it, tbI, isExcluded) {
 		const sortName = it.name.replace(/^\s*([\d,.]+)\s*gp/, (...m) => m[1].replace(Parser._numberCleanRegexp, "").padStart(9, "0"));
 
-		// populate filters
-		this._sourceFilter.addItem(it.source);
+		if (!isExcluded) {
+			// populate filters
+			this._sourceFilter.addItem(it.source);
+		}
 
 		const eleLi = document.createElement("li");
-		eleLi.className = "row";
+		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
@@ -50,6 +52,7 @@ class TablesPage extends ListPage {
 				hash,
 				sortName,
 				source,
+				isExcluded,
 				uniqueId: it.uniqueId ? it.uniqueId : tbI
 			}
 		);
