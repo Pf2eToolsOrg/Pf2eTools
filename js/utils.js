@@ -4243,8 +4243,8 @@ async function pInitFilterBox (opts) {
 // ENCODING/DECODING ===================================================================================================
 UrlUtil = {
 	encodeForHash (toEncode) {
-		if (toEncode instanceof Array) return toEncode.map(it => it.toUrlified()).join(HASH_LIST_SEP);
-		else return toEncode.toUrlified();
+		if (toEncode instanceof Array) return toEncode.map(it => `${it}`.toUrlified()).join(HASH_LIST_SEP);
+		else return `${toEncode}`.toUrlified();
 	},
 
 	autoEncodeHash (obj) {
