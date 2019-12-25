@@ -4,6 +4,8 @@ Renderer
 
 @import 'vars';
 
+$rgb-inset-border: #656565;
+
 @mixin rd__h--large() {
 	color: $rgb-name-red;
 	font-family: 'Andada', serif;
@@ -219,6 +221,14 @@ Renderer
 			font-size: 1.1em;
 		}
 
+		&h--2-flow-block {
+			display: block;
+			font-variant: small-caps;
+			font-weight: bolder;
+			font-size: 1.1em;
+			text-align: center;
+		}
+
 		// inline headers
 		// statsInlineHead
 		&h--3 {
@@ -247,9 +257,9 @@ Renderer
 			margin: 7px 15px;
 			padding: 5px 10px;
 			box-shadow: 0 0 4px 0 rgb(152, 142, 124);
-			border: 1px solid #656565;
-			border-top: 2px solid #656565;
-			border-bottom: 2px solid #656565;
+			border: 1px solid $rgb-inset-border;
+			border-top: 2px solid $rgb-inset-border;
+			border-bottom: 2px solid $rgb-inset-border;
 			background-color: #e9ecda;
 
 			> *:last-of-type {
@@ -258,16 +268,16 @@ Renderer
 
 			&--readaloud {
 				box-shadow: 0 0 4px 0 rgb(152, 142, 124);
-				border: 1px solid #656565;
-				border-left: 2px solid #656565;
-				border-right: 2px solid #656565;
+				border: 1px solid $rgb-inset-border;
+				border-left: 2px solid $rgb-inset-border;
+				border-right: 2px solid $rgb-inset-border;
 				background-color: #eef0f3;
 			}
 		}
 
 		&b-data {
 			box-shadow: 0 0 4px 0 rgb(152, 142, 124);
-			border: 1px solid #656565;
+			border: 1px solid $rgb-inset-border;
 			background-color: rgba(156, 150, 120, 0.1);
 		}
 
@@ -357,6 +367,35 @@ Renderer
 				}
 			}
 		}
+
+		&s-v-flow {
+			height: 15px;
+			width: 0;
+			border-left: 1px solid $rgb-inset-border;
+			border-right: 1px solid $rgb-inset-border;
+			margin: 0 auto;
+		}
+
+		&b-flow {
+			margin: 0 15px;
+			padding: 5px 10px;
+			box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+			border: 1px solid $rgb-inset-border;
+			border-top: 2px solid $rgb-inset-border;
+			border-bottom: 2px solid $rgb-inset-border;
+			background-color: #ece4da;
+
+			> *:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+
+		&stats-name-page {
+			font-family: 'Convergence', Arial, sans-serif;
+			font-size: 12px;
+			color: $rgb-off-black;
+			font-weight: 100;
+		}
 	}
 
 	&-item__ {
@@ -379,24 +418,38 @@ td > .rd__b:last-child {
 	margin-bottom: 0;
 }
 
-.night-mode {
-	.rd {
-		&__ {
-			&comic {
-				color: #95aaea;
+.night-mode .rd {
+	&__ {
+		&b-inset {
+			background-color: #323431;
+
+			&--readaloud {
+				background-color: #28303a;
 			}
 		}
 
-		&-item__ {
-			&type-rarity-attunement {
-				color: $rgb-font-color--night;
-			}
+		&b-flow {
+			background-color: #38352f;
 		}
 
-		&-spell__ {
-			&level-school-ritual {
-				color: $rgb-font-color--night;
-			}
+		&comic {
+			color: #95aaea;
+		}
+
+		&stats-name-page {
+			color: $rgb-font-color--night;
+		}
+	}
+
+	&-item__ {
+		&type-rarity-attunement {
+			color: $rgb-font-color--night;
+		}
+	}
+
+	&-spell__ {
+		&level-school-ritual {
+			color: $rgb-font-color--night;
 		}
 	}
 }

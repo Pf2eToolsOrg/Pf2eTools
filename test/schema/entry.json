@@ -4,7 +4,7 @@
 
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.2.16",
+	"version": "1.2.17",
 
 	"definitions" : {
 		"_arrayOfString": {
@@ -1002,6 +1002,50 @@
 				}
 			]
 		},
+		"entryFlowchart": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "flowchart"},
+						"blocks": {
+							"type": "array",
+							"items": {
+								"$ref" : "#/definitions/entry"
+							}
+						}
+					},
+					"required": [
+						"type",
+						"blocks"
+					],
+					"additionalProperties": false
+				}
+			]
+		},
+		"entryFlowBlock": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "flowBlock"},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref" : "#/definitions/entry"
+							}
+						},
+						"name": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"type"
+					],
+					"additionalProperties": false
+				}
+			]
+		},
 		"entryDataCreature": {
 			"properties": {
 				"type": {"const": "dataCreature"},
@@ -1378,11 +1422,12 @@
 		{"$ref": "#/definitions/entryGallery"},
 		{"$ref": "#/definitions/entryActions"},
 		{"$ref": "#/definitions/entryAttack"},
-		{"$ref": "#/definitions/entryAttack"},
 		{"$ref": "#/definitions/entryDataCreature"},
 		{"$ref": "#/definitions/entryDataSpell"},
 		{"$ref": "#/definitions/entryHr"},
 		{"$ref": "#/definitions/entrySpellcasting"},
+		{"$ref": "#/definitions/entryFlowchart"},
+		{"$ref": "#/definitions/entryFlowBlock"},
 		{"type": "string"},
 		{"type": "integer"}
 	]

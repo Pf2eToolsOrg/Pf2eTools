@@ -39,6 +39,7 @@ class ItemsPage {
 		this._pageFilter = new PageFilterItems();
 
 		this._sublistCurrencyConversion = null;
+		this._sublistCurrencyDisplayMode = null;
 
 		this._$totalWeight = null;
 		this._$totalValue = null;
@@ -226,7 +227,9 @@ class ItemsPage {
 		this._$totalwWeight.text(`${weight.toLocaleString()} lb${weight !== 1 ? "s" : ""}.`);
 
 		if (availConversions.size) {
-			this._$totalValue.addClass("clickable").text(Parser.itemValueToFull({value, valueConversion: this._sublistCurrencyConversion})).off("click")
+			this._$totalValue
+				.text(Parser.itemValueToFull({value, valueConversion: this._sublistCurrencyConversion}))
+				.off("click")
 				.click(async () => {
 					const values = ["(Default)", ...[...availConversions].sort(SortUtil.ascSortLower)];
 					const defaultSel = values.indexOf(this._sublistCurrencyConversion);
@@ -235,15 +238,48 @@ class ItemsPage {
 						isResolveItem: true,
 						default: ~defaultSel ? defaultSel : 0,
 						title: "Select Currency Conversion Table",
-						fnDisplay: it => it === null ? "(Default)" : it
+						fnDisplay: it => it === null ? values[0] : it
 					});
 					if (userSel == null) return;
-					this._sublistCurrencyConversion = userSel === "(Default)" ? null : userSel;
-					StorageUtil.pSetForPage("sublistCurrencyConversion", this._sublistCurrencyConversion);
+					this._sublistCurrencyConversion = userSel === values[0] ? null : userSel;
+					await StorageUtil.pSetForPage("sublistCurrencyConversion", this._sublistCurrencyConversion);
 					this.onSublistChange();
 				});
 		} else {
-			this._$totalValue.removeClass("clickable").text(Parser.itemValueToFull({value})).off("click");
+			const modes = ["Exact Coinage", "Lowest Common Currency", "Gold"];
+			const text = (() => {
+				switch (this._sublistCurrencyDisplayMode) {
+					case modes[1]: return Parser.itemValueToFull({value});
+					case modes[2]: {
+						return value ? `${Parser._ITEM_PRICE_CONVERSION_TABLE.find(it => it.coin === "gp").mult * value} gp` : "";
+					}
+					default:
+					case modes[0]: {
+						const CURRENCIES = ["gp", "sp", "cp"];
+						const coins = {cp: value};
+						CurrencyUtil.doSimplifyCoins(coins, CURRENCIES);
+						return CURRENCIES.filter(it => coins[it]).map(it => `${coins[it]} ${it}`).join(", ");
+					}
+				}
+			})();
+
+			this._$totalValue
+				.text(text || "\u2014")
+				.off("click")
+				.click(async () => {
+					const defaultSel = modes.indexOf(this._sublistCurrencyDisplayMode);
+					const userSel = await InputUiUtil.pGetUserEnum({
+						values: modes,
+						isResolveItem: true,
+						default: ~defaultSel ? defaultSel : 0,
+						title: "Select Display Mode",
+						fnDisplay: it => it === null ? modes[0] : it
+					});
+					if (userSel == null) return;
+					this._sublistCurrencyDisplayMode = userSel === modes[0] ? null : userSel;
+					await StorageUtil.pSetForPage("sublistCurrencyDisplayMode", this._sublistCurrencyDisplayMode);
+					this.onSublistChange();
+				});
 		}
 	}
 
@@ -251,7 +287,7 @@ class ItemsPage {
 		window.loadHash = this.doLoadHash.bind(this);
 		window.loadSubHash = this.doLoadSubHash.bind(this);
 
-		this._sublistCurrencyConversion = await StorageUtil.pGetForPage("sublistCurrencyConversion");
+		[this._sublistCurrencyConversion, this._sublistCurrencyDisplayMode] = await Promise.all([StorageUtil.pGetForPage("sublistCurrencyConversion"), StorageUtil.pGetForPage("sublistCurrencyDisplayMode")]);
 		await ExcludeUtil.pInitialise();
 		await this._pageFilter.pInitFilterBox({
 			$wrpFormTop: $(`#filter-search-input-group`).attr("title", "Hotkey: f"),

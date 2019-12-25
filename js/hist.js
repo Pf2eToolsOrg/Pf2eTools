@@ -7,7 +7,7 @@ class Hist {
 			return;
 		}
 
-		const [link, ...sub] = Hist._getHashParts();
+		const [link, ...sub] = Hist.getHashParts();
 
 		let blankFilterLoad = false;
 		if (link !== Hist.lastLoadedLink || sub.length === 0 || forceLoad) {
@@ -15,7 +15,7 @@ class Hist {
 			if (link === HASH_BLANK) {
 				blankFilterLoad = true;
 			} else {
-				const listItem = Hist._getListItem(link);
+				const listItem = Hist.getActiveListItem(link);
 
 				if (listItem === undefined) {
 					if (typeof handleUnknownHash === "function" && window.location.hash.length) {
@@ -32,15 +32,13 @@ class Hist {
 				else {
 					Hist.lastLoadedId = listItem.ix;
 					loadHash(listItem.ix);
-					document.title = `${listItem.name} - 5etools`;
+					document.title = `${listItem.name ? `${listItem.name} - ` : ""}5etools`;
 				}
 			}
 		}
 
 		if (typeof loadSubHash === "function" && (sub.length > 0 || forceLoad)) loadSubHash(sub);
-		if (blankFilterLoad) {
-			Hist._freshLoad();
-		}
+		if (blankFilterLoad) Hist._freshLoad();
 	}
 
 	static init (initialLoadComplete) {
@@ -62,20 +60,20 @@ class Hist {
 	}
 
 	static getSelectedListItem () {
-		const [link] = Hist._getHashParts();
-		return Hist._getListItem(link);
+		const [link] = Hist.getHashParts();
+		return Hist.getActiveListItem(link);
 	}
 
 	static getSelectedListElementWithLocation () {
-		const [link] = Hist._getHashParts();
-		return Hist._getListItem(link, true);
+		const [link] = Hist.getHashParts();
+		return Hist.getActiveListItem(link, true);
 	}
 
-	static _getHashParts () {
+	static getHashParts () {
 		return Hist.util.getHashParts(window.location.hash);
 	}
 
-	static _getListItem (link, getIndex) {
+	static getActiveListItem (link, getIndex) {
 		const primaryLists = ListUtil.getPrimaryLists();
 		if (primaryLists && primaryLists.length) {
 			for (let x = 0; x < primaryLists.length; ++x) {
@@ -107,7 +105,7 @@ class Hist {
 	}
 
 	static getHashSource () {
-		const [link] = Hist._getHashParts();
+		const [link] = Hist.getHashParts();
 		// by convention, the source is the last hash segment
 		return link ? link.split(HASH_LIST_SEP).last() : null;
 	}

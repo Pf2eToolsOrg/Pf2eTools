@@ -32,7 +32,7 @@ class VariantRulesPage extends ListPage {
 			Renderer.getNames(searchStack, e1);
 		}
 
-		if (isExcluded) {
+		if (!isExcluded) {
 			// populate filters
 			this._sourceFilter.addItem(rule.source);
 		}

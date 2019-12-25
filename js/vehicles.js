@@ -24,7 +24,7 @@ class VehiclesPage extends ListPage {
 	}
 
 	getListItem (it, vhI, isExcluded) {
-		if (isExcluded) {
+		if (!isExcluded) {
 			// populate filters
 			this._sourceFilter.addItem(it.source);
 		}

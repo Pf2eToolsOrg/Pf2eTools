@@ -34,6 +34,7 @@ function Renderer () {
 	this._hooks = {};
 	this._fnPostProcess = null;
 	this._extraSourceClasses = null;
+	this._depthTracker = null;
 
 	/**
 	 * Enables/disables lazy-load image rendering.
@@ -157,6 +158,12 @@ function Renderer () {
 		}
 	};
 
+	this._handleTrackDepth = function (entry, depth) {
+		if (entry.name && this._depthTracker) {
+			this._depthTracker.push({depth, name: entry.name, type: entry.type, ixHeader: this._headerIndex, source: entry.source});
+		}
+	};
+
 	this.addHook = function (entryType, hookType, fnHook) {
 		((this._hooks[entryType] = this._hooks[entryType] || {})[hookType] =
 			this._hooks[entryType][hookType] || []).push(fnHook);
@@ -169,6 +176,12 @@ function Renderer () {
 	};
 
 	this._getHooks = function (entryType, hookType) { return (this._hooks[entryType] || {})[hookType] || []; };
+
+	/**
+	 * Specify an array where the renderer will record rendered header depths.
+	 * Items added to the array are of the form: `{name: "Header Name", depth: 1, type: "entries"}`
+	 */
+	this.setDepthTracker = function (arr) { this._depthTracker = arr; return this; };
 
 	/**
 	 * Recursively walk down a tree of "entry" JSON items, adding to a stack of strings to be finally rendered to the
@@ -266,6 +279,10 @@ function Renderer () {
 				// images
 				case "image": this._renderImage(entry, textStack, meta, options); break;
 				case "gallery": this._renderGallery(entry, textStack, meta, options); break;
+
+				// flowchart
+				case "flowchart": this._renderFlowchart(entry, textStack, meta, options); break;
+				case "flowBlock": this._renderFlowBlock(entry, textStack, meta, options); break;
 
 				// homebrew changes
 				case "homebrew": this._renderHomebrew(entry, textStack, meta, options); break;
@@ -519,6 +536,8 @@ function Renderer () {
 
 		const headerClass = `rd__h--${meta.depth + 1}`; // adjust as the CSS is 0..4 rather than -1..3
 
+		this._handleTrackDepth(entry, meta.depth);
+
 		const headerSpan = entry.name ? `<span class="rd__h ${headerClass}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}> <span class="entry-title-inner"${!pagePart && entry.source ? ` title="Source: ${Parser.sourceJsonToFull(entry.source)}${entry.page ? `, p${entry.page}` : ""}"` : ""}>${this.render({type: "inline", entries: [entry.name]})}${isInlineTitle ? "." : ""}</span>${pagePart}</span> ` : "";
 
 		if (meta.depth === -1) {
@@ -544,11 +563,7 @@ function Renderer () {
 
 	this._renderEntriesSubtypes_getDataString = function (entry) {
 		let dataString = "";
-		if (entry.type === "optfeature" || entry.type === "patron") {
-			const titleString = entry.source ? `title="Source: ${Parser.sourceJsonToFull(entry.source)}"` : "";
-			if (entry.subclass != null) dataString = `${ATB_DATA_SC}="${entry.subclass.name}" ${ATB_DATA_SRC}="${Parser._getSourceStringFromSource(entry.subclass.source)}" ${titleString}`;
-			else dataString = `${ATB_DATA_SC}="${Renderer.DATA_NONE}" ${ATB_DATA_SRC}="${Renderer.DATA_NONE}" ${titleString}`;
-		}
+		if (entry.source) dataString += `data-source="${entry.source}"`;
 		return dataString;
 	};
 
@@ -605,9 +620,11 @@ function Renderer () {
 	};
 
 	this._renderInset = function (entry, textStack, meta, options) {
-		textStack[0] += `<${this.wrapperTag} class="rd__b-inset">`;
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<${this.wrapperTag} class="rd__b-inset" ${dataString}>`;
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
+			this._handleTrackDepth(entry, 1);
 			textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
 		}
 		if (entry.entries) {
@@ -624,9 +641,11 @@ function Renderer () {
 	};
 
 	this._renderInsetReadaloud = function (entry, textStack, meta, options) {
-		textStack[0] += `<${this.wrapperTag} class="rd__b-inset rd__b-inset--readaloud">`;
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<${this.wrapperTag} class="rd__b-inset rd__b-inset--readaloud" ${dataString}>`;
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
+			this._handleTrackDepth(entry, 1);
 			textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
 		}
 		const len = entry.entries.length;
@@ -641,8 +660,10 @@ function Renderer () {
 	};
 
 	this._renderVariant = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
 		this._handleTrackTitles(entry.name);
-		textStack[0] += `<${this.wrapperTag} class="rd__b-inset">`;
+		this._handleTrackDepth(entry, 1);
+		textStack[0] += `<${this.wrapperTag} class="rd__b-inset" ${dataString}>`;
 		textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">Variant: ${entry.name}</span></span>`;
 		const len = entry.entries.length;
 		for (let i = 0; i < len; ++i) {
@@ -807,8 +828,10 @@ function Renderer () {
 	};
 
 	this._renderActions = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
 		this._handleTrackTitles(entry.name);
-		textStack[0] += `<${this.wrapperTag} class="${Renderer.HEAD_2}"><span class="rd__h rd__h--3" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}.</span></span> `;
+		this._handleTrackDepth(entry, 2);
+		textStack[0] += `<${this.wrapperTag} class="${Renderer.HEAD_2}" ${dataString}><span class="rd__h rd__h--3" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}.</span></span> `;
 		const len = entry.entries.length;
 		for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
 		textStack[0] += `</${this.wrapperTag}>`;
@@ -876,8 +899,8 @@ function Renderer () {
 	this._renderDataHeader = function (textStack, name) {
 		textStack[0] += `<table class="rd__b-data">`;
 		textStack[0] += `<thead><tr><th class="rd__data-embed-header" colspan="6" onclick="((ele) => {
-						$(ele).find('.rd__data-embed-name').toggle(); 
-						$(ele).find('.rd__data-embed-toggle').text($(ele).text().includes('+') ? '[\u2013]' : '[+]'); 
+						$(ele).find('.rd__data-embed-name').toggle();
+						$(ele).find('.rd__data-embed-toggle').text($(ele).text().includes('+') ? '[\u2013]' : '[+]');
 						$(ele).closest('table').find('tbody').toggle()
 					})(this)"><span style="display: none;" class="rd__data-embed-name">${name}</span><span class="rd__data-embed-toggle">[\u2013]</span></th></tr></thead><tbody>`;
 	};
@@ -894,9 +917,43 @@ function Renderer () {
 			const img = MiscUtil.copy(entry.images[i]);
 			if (anyNamed && !img.title) img._galleryTitlePad = true; // force untitled images to pad to match their siblings
 			delete img.imageType;
-			this._recursiveRender(img, textStack, meta);
+			this._recursiveRender(img, textStack, meta, options);
 		}
 		textStack[0] += `</div>`;
+	};
+
+	this._renderFlowchart = function (entry, textStack, meta, options) {
+		// TODO style this
+		textStack[0] += `<div class="rd__wrp-flowchart">`;
+		const len = entry.blocks.length;
+		for (let i = 0; i < len; ++i) {
+			this._recursiveRender(entry.blocks[i], textStack, meta, options);
+			if (i !== len - 1) {
+				textStack[0] += `<div class="rd__s-v-flow"></div>`
+			}
+		}
+		textStack[0] += `</div>`;
+	};
+
+	this._renderFlowBlock = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<${this.wrapperTag} class="rd__b-flow" ${dataString}>`;
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			this._handleTrackDepth(entry, 1);
+			textStack[0] += `<span class="rd__h rd__h--2-flow-block" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `<div class="float-clear"/>`;
+		textStack[0] += `</${this.wrapperTag}>`;
 	};
 
 	this._renderHomebrew = function (entry, textStack, meta, options) {
@@ -1116,8 +1173,8 @@ function Renderer () {
 
 					// SCALE DICE //////////////////////////////////////////////////////////////////////////////////////
 					case "@scaledice": {
-						// format: {@scaledice 2d6;3d6|2-8,9|1d6}
-						const [baseRoll, progression, addPerProgress] = text.split("|");
+						// format: {@scaledice 2d6;3d6|2-8,9|1d6|psi}
+						const [baseRoll, progression, addPerProgress, renderMode] = text.split("|");
 						const progressionParse = MiscUtil.parseNumberRange(progression, 1, 9);
 						const baseLevel = Math.min(...progressionParse);
 						const options = {};
@@ -1151,7 +1208,8 @@ function Renderer () {
 							toRoll: baseRoll,
 							displayText: addPerProgress,
 							prompt: {
-								entry: "Cast at...",
+								entry: renderMode === "psi" ? "Spend Psi Points..." : "Cast at...",
+								mode: renderMode,
 								options
 							}
 						};
@@ -2005,7 +2063,6 @@ Renderer.utils = {
 	/**
 	 * @param it Entity to render the name row for.
 	 * @param [opts] Options object.
-	 * @param [opts.isAddPageNum] True if the name row should include the page number.
 	 * @param [opts.prefix] Prefix to display before the name.
 	 * @param [opts.suffix] Suffix to display after the name.
 	 * @param [opts.pronouncePart] Suffix to display after the name.
@@ -2030,8 +2087,9 @@ Renderer.utils = {
 						${opts.pronouncePart || ""}
 						${ExtensionUtil.ACTIVE ? `<button title="Send to Foundry (SHIFT for Temporary Import)" class="btn btn-xs btn-default btn-stats-name" onclick="ExtensionUtil.pDoSendStats(event, this)"><span class="glyphicon glyphicon-send"/></button>` : ""}
 					</div>
-					<span class="stats-source ${it.source ? `${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}` : ""}" style="${it.source ? `color: ${BrewUtil.sourceJsonToColor(it.source)};` : ""}">
-						${it.source ? Parser.sourceJsonToAbv(it.source) : ""}${opts.isAddPageNum && it.page > 0 ? ` p${it.page}` : ""}
+					<span class="stats-source flex-v-baseline">
+						<span class="help--subtle ${it.source ? `${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}` : ""}" style="${it.source ? `color: ${BrewUtil.sourceJsonToColor(it.source)};` : ""}">${it.source ? Parser.sourceJsonToAbv(it.source) : ""}</span>
+						${it.page > 0 ? ` <span class="rd__stats-name-page ml-1" title="Page ${it.page}">p${it.page}</span>` : ""}
 					</span>
 				</div>
 			</th>
@@ -2039,7 +2097,7 @@ Renderer.utils = {
 	},
 
 	getExcludedTr (it, dataProp) {
-		if (!ExcludeUtil.isInitialised) return;
+		if (!ExcludeUtil.isInitialised) return "";
 		const isExcluded = ExcludeUtil.isExcluded(it.name, dataProp, it.source);
 		return isExcluded ? `<tr><td colspan="6" class="pt-3 text-center text-danger"><b><i>Warning: This content has been blacklisted.</i></b></td></tr>` : "";
 	},
@@ -2384,7 +2442,7 @@ Renderer.feat = {
 		Renderer.feat.mergeAbilityIncrease(feat);
 		renderStack.push(`
 			${Renderer.utils.getExcludedTr(feat, "feat")}
-			${Renderer.utils.getNameTr(feat, {isAddPageNum: true, page: UrlUtil.PG_FEATS})}
+			${Renderer.utils.getNameTr(feat, {page: UrlUtil.PG_FEATS})}
 			<tr class="text"><td colspan="6" class="text">
 			${prerequisite ? `<p><i>${prerequisite}</i></p>` : ""}
 		`);
@@ -2407,7 +2465,7 @@ Renderer.spell = {
 
 		renderStack.push(`
 			${Renderer.utils.getExcludedTr(spell, "spell")}
-			${Renderer.utils.getNameTr(spell, {isAddPageNum: true, page: UrlUtil.PG_SPELLS})}
+			${Renderer.utils.getNameTr(spell, {page: UrlUtil.PG_SPELLS})}
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
@@ -2415,7 +2473,7 @@ Renderer.spell = {
 						<th colspan="1">School</th>
 						<th colspan="2">Casting Time</th>
 						<th colspan="2">Range</th>
-					</tr>	
+					</tr>
 					<tr>
 						<td colspan="1">${Parser.spLevelToFull(spell.level)}${Parser.spMetaToFull(spell.meta)}</td>
 						<td colspan="1">${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}</td>
@@ -2425,7 +2483,7 @@ Renderer.spell = {
 					<tr>
 						<th colspan="4">Components</th>
 						<th colspan="2">Duration</th>
-					</tr>	
+					</tr>
 					<tr>
 						<td colspan="4">${Parser.spComponentsToFull(spell.components, spell.level)}</td>
 						<td colspan="2">${Parser.spDurationToFull(spell.duration)}</td>
@@ -2566,7 +2624,7 @@ Renderer.condition = {
 
 		renderStack.push(`
 			${Renderer.utils.getExcludedTr(cond, cond.__prop || cond._type)}
-			${Renderer.utils.getNameTr(cond, {isAddPageNum: true, page: UrlUtil.PG_CONDITIONS_DISEASES})}
+			${Renderer.utils.getNameTr(cond, {page: UrlUtil.PG_CONDITIONS_DISEASES})}
 			<tr class="text"><td colspan="6">
 		`);
 		renderer.recursiveRender({entries: cond.entries}, renderStack);
@@ -2580,7 +2638,7 @@ Renderer.background = {
 	getCompactRenderedString (bg) {
 		return `
 		${Renderer.utils.getExcludedTr(bg, "background")}
-		${Renderer.utils.getNameTr(bg, {isAddPageNum: true, page: UrlUtil.PG_BACKGROUNDS})}
+		${Renderer.utils.getNameTr(bg, {page: UrlUtil.PG_BACKGROUNDS})}
 		<tr class="text"><td colspan="6">
 		${Renderer.get().render({type: "entries", entries: bg.entries})}
 		</td></tr>
@@ -2650,7 +2708,7 @@ Renderer.optionalfeature = {
 
 		renderStack.push(`
 			${Renderer.utils.getExcludedTr(it, "optionalfeature")}
-			${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_OPT_FEATURES})}
+			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_OPT_FEATURES})}
 			<tr class="text"><td colspan="6">
 			${it.prerequisite ? `<p><i>${Renderer.utils.getPrerequisiteText(it.prerequisite)}</i></p>` : ""}
 		`);
@@ -2673,7 +2731,7 @@ Renderer.reward = {
 	getCompactRenderedString: (reward) => {
 		return `
 			${Renderer.utils.getExcludedTr(reward, "reward")}
-			${Renderer.utils.getNameTr(reward, {isAddPageNum: true, page: UrlUtil.PG_REWARDS})}
+			${Renderer.utils.getNameTr(reward, {page: UrlUtil.PG_REWARDS})}
 			${Renderer.reward.getRenderedString(reward)}
 		`;
 	}
@@ -2687,7 +2745,7 @@ Renderer.race = {
 		const ability = Renderer.getAbilityData(race.ability);
 		renderStack.push(`
 			${Renderer.utils.getExcludedTr(race, "race")}
-			${Renderer.utils.getNameTr(race, {isAddPageNum: true, page: UrlUtil.PG_RACES})}
+			${Renderer.utils.getNameTr(race, {page: UrlUtil.PG_RACES})}
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
@@ -2845,7 +2903,7 @@ Renderer.deity = {
 		const renderer = Renderer.get();
 		return `
 			${Renderer.utils.getExcludedTr(deity, "deity")}
-			${Renderer.utils.getNameTr(deity, {isAddPageNum: true, suffix: deity.title ? `, ${deity.title.toTitleCase()}` : "", page: UrlUtil.PG_DEITIES})}
+			${Renderer.utils.getNameTr(deity, {suffix: deity.title ? `, ${deity.title.toTitleCase()}` : "", page: UrlUtil.PG_DEITIES})}
 			<tr><td colspan="6">
 				<div class="rd__compact-stat">${Renderer.deity.getOrderedParts(deity, `<p>`, `</p>`)}</div>
 			</td>
@@ -2860,7 +2918,7 @@ Renderer.object = {
 		const row2Width = 12 / ((!!obj.resist + !!obj.vulnerable) || 1);
 		return `
 			${Renderer.utils.getExcludedTr(obj, "object")}
-			${Renderer.utils.getNameTr(obj, {isAddPageNum: true, page: UrlUtil.PG_OBJECTS})}
+			${Renderer.utils.getNameTr(obj, {page: UrlUtil.PG_OBJECTS})}
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
@@ -2871,7 +2929,7 @@ Renderer.object = {
 						<th colspan="4" class="text-center">Damage Imm.</th>
 					</tr>
 					<tr>
-						<td colspan="2" class="text-center">${Parser.sizeAbvToFull(obj.size)} object</td>					
+						<td colspan="2" class="text-center">${Parser.sizeAbvToFull(obj.size)} object</td>
 						<td colspan="2" class="text-center">${obj.ac}</td>
 						<td colspan="2" class="text-center">${obj.hp}</td>
 						<td colspan="2" class="text-center">${Parser.getSpeedString(obj)}</td>
@@ -2891,7 +2949,7 @@ Renderer.object = {
 						${obj.vulnerable ? `<td colspan="${row2Width}" class="text-center">${obj.vulnerable}</td>` : ""}
 					</tr>
 					` : ""}
-				</table>			
+				</table>
 			</td></tr>
 			<tr class="text"><td colspan="6">
 			${obj.entries ? renderer.render({entries: obj.entries}, 2) : ""}
@@ -2985,7 +3043,7 @@ Renderer.traphazard = {
 		const subtitle = Renderer.traphazard.getSubtitle(it);
 		return `
 			${Renderer.utils.getExcludedTr(it, it.__prop || (it._type === "t" ? "trap" : "hazard"))}
-			${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_TRAPS_HAZARDS})}
+			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_TRAPS_HAZARDS})}
 			${subtitle ? `<tr class="text"><td colspan="6"><i>${subtitle}</i>${Renderer.traphazard.getSimplePart(renderer, it)}${Renderer.traphazard.getComplexPart(renderer, it)}</td>` : ""}
 			<tr class="text"><td colspan="6">${renderer.render({entries: it.entries}, 2)}</td></tr>
 		`;
@@ -3055,7 +3113,7 @@ Renderer.cultboon = {
 			renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 2});
 			return `
 			${Renderer.utils.getExcludedTr(it, "cult")}
-			${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_CULTS_BOONS})}
+			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CULTS_BOONS})}
 			<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
 			<tr class='text'><td colspan='6' class='text'>${renderStack.join("")}</td></tr>`;
 		} else if (it._type === "b") {
@@ -3063,7 +3121,7 @@ Renderer.cultboon = {
 			renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
 			return `
 			${Renderer.utils.getExcludedTr(it, "boon")}
-			${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_CULTS_BOONS})}
+			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CULTS_BOONS})}
 			<tr class='text'><td colspan='6'>${renderStack.join("")}</td></tr>`;
 		}
 	}
@@ -3231,7 +3289,7 @@ Renderer.monster = {
 
 		renderStack.push(`
 			${Renderer.utils.getExcludedTr(mon, "monster")}
-			${Renderer.utils.getNameTr(mon, {isAddPageNum: true, page: UrlUtil.PG_BESTIARY})}
+			${Renderer.utils.getNameTr(mon, {page: UrlUtil.PG_BESTIARY})}
 			<tr><td colspan="6"><i>${Renderer.monster.getTypeAlignmentPart(mon)}</i></td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
@@ -3243,9 +3301,9 @@ Renderer.monster = {
 						${isCrHidden ? "" : "<th>Challenge Rating</th>"}
 					</tr>
 					<tr>
-						<td>${Parser.acToFull(mon.ac)}</td>					
-						<td>${Renderer.monster.getRenderedHp(mon.hp)}</td>					
-						<td>${Parser.getSpeedString(mon)}</td>	
+						<td>${Parser.acToFull(mon.ac)}</td>
+						<td>${Renderer.monster.getRenderedHp(mon.hp)}</td>
+						<td>${Parser.getSpeedString(mon)}</td>
 						${isCrHidden ? "" : `
 						<td>
 							${Parser.monCrToFull(mon.cr)}
@@ -3260,9 +3318,9 @@ Renderer.monster = {
 							</button>
 							` : ""}
 						</td>
-						`}					
+						`}
 					</tr>
-				</table>			
+				</table>
 			</td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
@@ -3274,7 +3332,7 @@ Renderer.monster = {
 						<th class="col-2 text-center">INT</th>
 						<th class="col-2 text-center">WIS</th>
 						<th class="col-2 text-center">CHA</th>
-					</tr>	
+					</tr>
 					<tr>
 						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "str")}</td>
 						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "dex")}</td>
@@ -3751,7 +3809,7 @@ Renderer.item = {
 
 		return `
 		${Renderer.utils.getExcludedTr(item, "item")}
-		${Renderer.utils.getNameTr(item, {isAddPageNum: true, page: UrlUtil.PG_ITEMS})}
+		${Renderer.utils.getNameTr(item, {page: UrlUtil.PG_ITEMS})}
 		<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td></tr>
 		<tr>
 			<td colspan="2">${[Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
@@ -4305,11 +4363,7 @@ Renderer.psionic = {
 	},
 
 	getDisciplineText: (psionic, renderer) => {
-		const modeStringArray = [];
-		for (let i = 0; i < psionic.modes.length; ++i) {
-			modeStringArray.push(Renderer.psionic.getModeString(psionic, renderer, i));
-		}
-
+		const modeStringArray = psionic.modes.map(mode => Renderer.psionic.getModeString(mode, renderer));
 		return `${Renderer.psionic.getDescriptionString(psionic, renderer)}${Renderer.psionic.getFocusString(psionic, renderer)}${modeStringArray.join("")}`;
 	},
 
@@ -4321,37 +4375,34 @@ Renderer.psionic = {
 		return `<p><span class="psi-focus-title">Psychic Focus.</span> ${renderer.render({type: "inline", entries: [psionic.focus]})}</p>`;
 	},
 
-	getModeString: (psionic, renderer, modeIndex) => {
-		const mode = psionic.modes[modeIndex];
-		Renderer.psionic.enhanceMode(mode, false);
+	getModeString: (mode, renderer) => {
+		Renderer.psionic.enhanceMode(mode);
 
 		const renderStack = [];
 		renderer.recursiveRender(mode, renderStack, {depth: 2});
 		const modeString = renderStack.join("");
-		if (psionic.modes[modeIndex].submodes == null) return modeString;
-		const subModeString = getSubModeString();
+		if (mode.submodes == null) return modeString;
+		const subModeString = Renderer.psionic.getSubModeString(mode.submodes, renderer);
 		return `${modeString}${subModeString}`;
+	},
 
-		function getSubModeString () {
-			const subModes = psionic.modes[modeIndex].submodes;
+	getSubModeString (subModes, renderer) {
+		const fauxEntry = {
+			type: "list",
+			style: "list-hang-notitle",
+			items: []
+		};
 
-			const fauxEntry = {
-				type: "list",
-				style: "list-hang-notitle",
-				items: []
-			};
-
-			for (let i = 0; i < subModes.length; ++i) {
-				fauxEntry.items.push({
-					type: "item",
-					name: subModes[i].name,
-					entry: subModes[i].entries.join("<br>")
-				});
-			}
-			const renderStack = [];
-			renderer.recursiveRender(fauxEntry, renderStack, {depth: 2});
-			return renderStack.join("");
+		for (let i = 0; i < subModes.length; ++i) {
+			fauxEntry.items.push({
+				type: "item",
+				name: subModes[i].name,
+				entry: subModes[i].entries.join("<br>")
+			});
 		}
+		const renderStack = [];
+		renderer.recursiveRender(fauxEntry, renderStack, {depth: 2});
+		return renderStack.join("");
 	},
 
 	getCompactRenderedString: (psionic) => {
@@ -4362,7 +4413,7 @@ Renderer.psionic = {
 
 		return `
 			${Renderer.utils.getExcludedTr(psionic, "psionic")}
-			${Renderer.utils.getNameTr(psionic, {isAddPageNum: true, page: UrlUtil.PG_PSIONICS})}
+			${Renderer.utils.getNameTr(psionic, {page: UrlUtil.PG_PSIONICS})}
 			<tr class="text"><td colspan="6">
 			<p><i>${typeOrderStr}</i></p>
 			${bodyStr}
@@ -4387,7 +4438,7 @@ Renderer.variantrule = {
 		delete cpy.name;
 		return `
 			${Renderer.utils.getExcludedTr(rule, "variantrule")}
-			${Renderer.utils.getNameTr(rule, {isAddPageNum: true, page: UrlUtil.PG_VARIATNRULES})}
+			${Renderer.utils.getNameTr(rule, {page: UrlUtil.PG_VARIATNRULES})}
 			<tr><td colspan="6">
 			${Renderer.get().setFirstSection(true).render(cpy)}
 			</td></tr>
@@ -4402,7 +4453,7 @@ Renderer.table = {
 		delete cpy.name;
 		return `
 			${Renderer.utils.getExcludedTr(it, "table")}
-			${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_TABLES})}
+			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_TABLES})}
 			<tr><td colspan="6">
 			${Renderer.get().setFirstSection(true).render(it)}
 			</td></tr>
@@ -4520,7 +4571,7 @@ Renderer.vehicle = {
 
 		return `
 			${Renderer.utils.getExcludedTr(veh, "vehicle")}
-			${Renderer.utils.getNameTr(veh, {isAddPageNum: !!opts.isCompact, extraThClasses: !opts.isCompact ? ["veh__name--token"] : null, page: UrlUtil.PG_VEHICLES})}
+			${Renderer.utils.getNameTr(veh, {extraThClasses: !opts.isCompact ? ["veh__name--token"] : null, page: UrlUtil.PG_VEHICLES})}
 			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle${veh.dimensions ? ` (${veh.dimensions.join(" by ")})` : ""}</i><br></td></tr>
 			<tr class="text"><td colspan="6">
 				<div><b>Creature Capacity</b> ${veh.capCrew} crew${veh.capPassenger ? `, ${veh.capPassenger} passengers` : ""}</div>
@@ -4571,7 +4622,7 @@ Renderer.vehicle = {
 
 		return `
 			${Renderer.utils.getExcludedTr(veh, "vehicle")}
-			${Renderer.utils.getNameTr(veh, {isAddPageNum: !!opts.isCompact, extraThClasses: !opts.isCompact ? ["veh__name--token"] : null, page: UrlUtil.PG_VEHICLES})}
+			${Renderer.utils.getNameTr(veh, {extraThClasses: !opts.isCompact ? ["veh__name--token"] : null, page: UrlUtil.PG_VEHICLES})}
 			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle (${veh.weight.toLocaleString()} lb.)</i><br></td></tr>
 			<tr class="text"><td colspan="6">
 				<div><b>Creature Capacity</b> ${veh.capCreature} Medium creatures</div>
@@ -4619,7 +4670,7 @@ Renderer.action = {
 	getCompactRenderedString (it) {
 		const cpy = MiscUtil.copy(it);
 		delete cpy.name;
-		return `${Renderer.utils.getExcludedTr(it, "action")}${Renderer.utils.getNameTr(it, {isAddPageNum: true, page: UrlUtil.PG_ACTIONS})}
+		return `${Renderer.utils.getExcludedTr(it, "action")}${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_ACTIONS})}
 		<tr><td colspan="6">${Renderer.get().setFirstSection(true).render(cpy)}</td></tr>`;
 	}
 };
@@ -4741,12 +4792,12 @@ Renderer.hover = {
 			$content
 				.on("click", ".mon__btn-scale-cr", (evt) => {
 					evt.stopPropagation();
-					const $this = $(this);
+					const $btn = $(evt.target).closest("button");
 					const initialCr = toRender._originalCr != null ? toRender._originalCr : toRender.cr.cr || toRender.cr;
 					const lastCr = toRender.cr.cr || toRender.cr;
 
 					Renderer.monster.getCrScaleTarget(
-						$this,
+						$btn,
 						lastCr,
 						async (targetCr) => {
 							const original = await Renderer.hover.pCacheAndGet(page, source, hash);
@@ -5830,11 +5881,11 @@ Renderer.dice = {
 						name = "";
 						resolve(rollDataCpy);
 					} else {
-						name = `${Parser.spLevelToFull(k)}-level cast`;
+						name = rollDataCpy.prompt.mode === "psi" ? `${k} psi activation` : `${Parser.spLevelToFull(k)}-level cast`;
 						rollDataCpy.toRoll += `+${fromScaling}`;
 						resolve(rollDataCpy);
 					}
-				}, [{text: rollDataCpy.prompt.entry, disabled: true}, null, ...sortedKeys.map(it => `${Parser.spLevelToFull(it)} level`)]);
+				}, [{text: rollDataCpy.prompt.entry, disabled: true}, null, ...sortedKeys.map(it => rollDataCpy.prompt.mode === "psi" ? `${it} point${it === "1" ? "" : "s"}` : `${Parser.spLevelToFull(it)} level`)]);
 
 				ContextUtil.handleOpenContextMenu(evt, ele, Renderer.dice._contextPromptLabel, (choseOption) => {
 					if (!choseOption) resolve();

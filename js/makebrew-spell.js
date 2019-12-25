@@ -129,7 +129,7 @@ class SpellBuilder extends Builder {
 		this._$selSource = this.$getSourceInput(cb).appendTo(infoTab.$wrpTab);
 		this.__$getOtherSourcesInput(cb).appendTo(infoTab.$wrpTab);
 		BuilderUi.$getStateIptNumber("Page", cb, this._state, {}, "page").appendTo(infoTab.$wrpTab);
-		BuilderUi.$getStateIptEnum("Level", cb, this._state, {nullable: false, fnDisplay: (it) => Parser.spLevelToFull(it), vals: [...new Array(10)].map((_, i) => i)}, "level").appendTo(infoTab.$wrpTab);
+		BuilderUi.$getStateIptEnum("Level", cb, this._state, {nullable: false, fnDisplay: (it) => Parser.spLevelToFull(it), vals: [...new Array(21)].map((_, i) => i)}, "level").appendTo(infoTab.$wrpTab);
 		BuilderUi.$getStateIptEnum("School", cb, this._state, {nullable: false, fnDisplay: (it) => Parser.spSchoolAbvToFull(it), vals: [...Parser.SKL_ABVS]}, "school").appendTo(infoTab.$wrpTab);
 		BuilderUi.$getStateIptStringArray(
 			"Subschools",

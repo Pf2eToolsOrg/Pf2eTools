@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.92.1"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.93.1"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -1031,7 +1031,7 @@ Parser.spRangeToFull._renderPoint = function (range) {
 };
 Parser.spRangeToFull._renderArea = function (range) {
 	const size = range.distance;
-	return `Self (${size.amount}-${Parser.getSingletonUnit(size.type)}${Parser.spRangeToFull._getAreaStyleString(range)}${range.type === RNG_CYLINDER ? `, ${size.amountSecondary}-${Parser.getSingletonUnit(size.typeSecondary)}-high cylinder` : ""})`;
+	return `Self (${size.amount}-${Parser.getSingletonUnit(size.type)}${Parser.spRangeToFull._getAreaStyleString(range)}${range.type === RNG_CYLINDER ? `${size.amountSecondary != null && size.typeSecondary != null ? `, ${size.amountSecondary}-${Parser.getSingletonUnit(size.typeSecondary)}-high` : ""} cylinder` : ""})`;
 };
 Parser.spRangeToFull._getAreaStyleString = function (range) {
 	switch (range.type) {
@@ -2056,6 +2056,7 @@ SRC_RMBRE = "RMBRE";
 SRC_RMR = "RMR";
 SRC_MFF = "MFF";
 SRC_AWM = "AWM";
+SRC_IMR = "IMR";
 SRC_SCREEN = "Screen";
 
 SRC_AL_PREFIX = "AL";
@@ -2196,6 +2197,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_RMBRE] = "The Lost Dungeon of Rickedness: Big Ric
 Parser.SOURCE_JSON_TO_FULL[SRC_RMR] = "Dungeons & Dragons vs. Rick and Morty: Basic Rules";
 Parser.SOURCE_JSON_TO_FULL[SRC_MFF] = "Mordenkainen's Fiendish Folio";
 Parser.SOURCE_JSON_TO_FULL[SRC_AWM] = "Adventure with Muk";
+Parser.SOURCE_JSON_TO_FULL[SRC_IMR] = "Infernal Machine Rebuild";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = `${AL_PREFIX}Curse of Strahd`;
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = `${AL_PREFIX}Elemental Evil`;
@@ -2317,6 +2319,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_RMBRE] = "RMBRE";
 Parser.SOURCE_JSON_TO_ABV[SRC_RMR] = "RMR";
 Parser.SOURCE_JSON_TO_ABV[SRC_MFF] = "MFF";
 Parser.SOURCE_JSON_TO_ABV[SRC_AWM] = "AWM";
+Parser.SOURCE_JSON_TO_ABV[SRC_IMR] = "IMR";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
@@ -2417,6 +2420,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_LR,
 	SRC_EFR,
 	SRC_RMBRE,
+	SRC_IMR,
 
 	SRC_AWM
 ]);
@@ -2429,7 +2433,8 @@ Parser.SOURCES_NON_STANDARD_WOTC = new Set([
 	SRC_LLK,
 	SRC_LR,
 	SRC_TTP,
-	SRC_AWM
+	SRC_AWM,
+	SRC_IMR
 ]);
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
@@ -2606,6 +2611,46 @@ SourceUtil = {
 	}
 };
 
+// CURRENCY ============================================================================================================
+CurrencyUtil = {
+	/**
+	 * Convert 10 gold -> 1 platinum, etc.
+	 * @param obj Object of the form {cp: 123, sp: 456, ...} (values optional)
+	 * @param [coinAbvs] List of allowed coin abbreviations e.g. `["cp", "gp"]`
+	 */
+	doSimplifyCoins (obj, coinAbvs) {
+		coinAbvs = coinAbvs || [];
+		// Simplify currencies
+		for (let i = 0; i < Parser.COIN_CONVERSIONS.length - 1; ++i) {
+			const coinCur = Parser.COIN_ABVS[i];
+			const coinNxt = Parser.COIN_ABVS[i + 1];
+			const coinRatio = Parser.COIN_CONVERSIONS[i + 1] / Parser.COIN_CONVERSIONS[i];
+
+			if (obj[coinCur] && Math.abs(obj[coinCur]) >= coinRatio) {
+				const nxtVal = obj[coinCur] >= 0 ? Math.floor(obj[coinCur] / coinRatio) : Math.ceil(obj[coinCur] / coinRatio);
+				obj[coinCur] = obj[coinCur] % coinRatio;
+				obj[coinNxt] = (obj[coinNxt] || 0) + nxtVal;
+			}
+		}
+
+		// Convert undesirable currencies to their previous currencies
+		for (let i = Parser.COIN_CONVERSIONS.length - 1; i >= 0; --i) {
+			const coinCur = Parser.COIN_ABVS[i];
+			const coinNxt = Parser.COIN_ABVS[i - 1];
+			const coinRatio = Parser.COIN_CONVERSIONS[i] / Parser.COIN_CONVERSIONS[i - 1];
+
+			if (!coinAbvs.includes(coinCur)) {
+				obj[coinNxt] = (obj[coinNxt] || 0) + (obj[coinCur] || 0) * coinRatio;
+				delete obj[coinCur];
+			}
+		}
+
+		Parser.COIN_ABVS.filter(coin => obj[coin] === 0).forEach(coin => delete obj[coin]);
+
+		return obj;
+	}
+};
+
 // CONVENIENCE/ELEMENTS ================================================================================================
 Math.sum = Math.sum || function (...values) {
 	return values.reduce((a, b) => a + b, 0);
@@ -2720,7 +2765,21 @@ JqueryUtil = {
 				return this.prop("tagName").toLowerCase();
 			},
 
-			title: function (title) { return this.attr("title", title); }
+			title: function (title) { return this.attr("title", title); },
+
+			/**
+			 * Quickly set the innerHTML of the innermost element, wihtout parsing the whole thing with jQuery.
+			 * Useful for populating e.g. a table row.
+			 */
+			fastSetHtml: function (html) {
+				if (!this.length) return this;
+				let tgt = this[0];
+				while (tgt.children.length) {
+					tgt = tgt.children[0];
+				}
+				tgt.innerHTML = html;
+				return this;
+			}
 		});
 
 		$.event.special.destroyed = {
@@ -3251,6 +3310,10 @@ MiscUtil = {
 		};
 
 		return {walk: fn};
+	},
+
+	pDefer (fn) {
+		return (async () => fn())();
 	}
 };
 
@@ -3683,7 +3746,7 @@ ListUtil = {
 			ListUtil._pLoadSavedSublist(json.items, false).then(async () => {
 				await ListUtil._pFinaliseSublist();
 
-				const [link, ...sub] = Hist._getHashParts();
+				const [link, ...sub] = Hist.getHashParts();
 				const outSub = [];
 				Object.keys(unpacked)
 					.filter(k => k !== ListUtil.SUB_HASH_PREFIX)
@@ -3868,7 +3931,7 @@ ListUtil = {
 		if (!additive) await ListUtil.pDoSublistRemoveAll(true);
 
 		const toLoad = items.map(it => {
-			const item = Hist._getListItem(it.h);
+			const item = Hist.getActiveListItem(it.h);
 			if (item != null) {
 				const out = {index: item.ix, addCount: Number(it.c)};
 				if (ListUtil._uidUnpackFn && it.uniqueId) out.data = ListUtil._uidUnpackFn(it.uniqueId);
@@ -4310,12 +4373,10 @@ UrlUtil = {
 		return `${key}${HASH_SUB_KV_SEP}${values.join(HASH_SUB_LIST_SEP)}`;
 	},
 
-	toUrlifiedString (part) { return encodeURIComponent(part).toLowerCase(); },
-
 	categoryToPage (category) { return UrlUtil.CAT_TO_PAGE[category]; },
 
-	bindLinkExportButton (filterBox) {
-		const $btn = ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
+	bindLinkExportButton (filterBox, $btn) {
+		$btn = $btn || ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
 		$btn.addClass("btn-copy-effect")
 			.off("click")
 			.on("click", async evt => {
@@ -4607,6 +4668,7 @@ SortUtil = {
 	compareListNames (a, b) { return SortUtil._ascSort(a.name.toLowerCase(), b.name.toLowerCase()); },
 
 	listSort (a, b, opts) {
+		opts = opts || {sortBy: "name"};
 		if (opts.sortBy === "name") return SortUtil.compareListNames(a, b);
 		else return SortUtil._compareByOrDefault_compareByOrDefault(a, b, opts.sortBy);
 	},
@@ -5421,28 +5483,7 @@ DataUtil = {
 			DataUtil.class._pLoadingJson = (async () => {
 				const index = await DataUtil.loadJSON(`${baseUrl}data/class/index.json`);
 				const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${baseUrl}data/class/${it}`)));
-				const out = allData.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []});
-				out.class.filter(cls => !cls._isEnhanced).forEach(cls => {
-					cls._isEnhanced = true;
-					cls.classFeatures.forEach((featArr, i) => {
-						const ixAsi = featArr.findIndex(it => it.name && it.name.toLowerCase().trim() === "ability score improvement");
-						if (~ixAsi) {
-							const toInsert = {
-								type: "entries",
-								name: "Proficiency Versatility",
-								entries: [
-									`{@i ${Parser.getOrdinalForm(i + 1)}-level feature (enhances Ability Score Improvement)}`,
-									"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
-									"This change represents one of your skills atrophying as you focus on a different skill."
-								],
-								source: "UAClassFeatureVariants",
-								page: 1
-							};
-							featArr.splice(ixAsi + 1, 0, toInsert);
-						}
-					});
-				});
-				DataUtil.class._loadedJson = out;
+				DataUtil.class._loadedJson = allData.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []});
 			})();
 			await DataUtil.class._pLoadingJson;
 
@@ -6323,7 +6364,7 @@ BrewUtil = {
 		$brewList.empty();
 		if (BrewUtil.homebrew) {
 			const $iptSearch = $(`<input type="search" class="search manbrew__search form-control" placeholder="Search active homebrew...">`);
-			const $wrpList = $(`<ul class="list-display-only brew-list brew-list--target"></ul>`);
+			const $wrpList = $(`<ul class="list-display-only brew-list brew-list--target manbrew__list"></ul>`);
 			const $ulGroup = $(`<ul class="list-display-only brew-list brew-list--groups no-shrink" style="height: initial;"></ul>`);
 
 			const list = new List({$iptSearch, $wrpList, isUseJquery: true});
@@ -6337,7 +6378,7 @@ BrewUtil = {
 						<button class="col-1 btn btn-default btn-xs" disabled>Origin</button>
 						<button class="btn btn-default btn-xs" disabled>&nbsp;</button>
 					</div>
-					${$wrpList}
+					<div class="flex w-100 h-100 overflow-y-auto relative">${$wrpList}</div>
 				</div>
 			`.appendTo($brewList);
 			$ulGroup.appendTo($brewList);
@@ -6551,6 +6592,7 @@ BrewUtil = {
 			BrewUtil.homebrew.subclass.splice(index, 1);
 			await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
 
+			// FIXME
 			if (typeof ClassData !== "undefined") {
 				const c = ClassData.classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
 
@@ -7304,15 +7346,21 @@ Array.prototype.shuffle = Array.prototype.shuffle || function () {
  * @param opts.$openBtn jQuery-selected button to bind click open/close
  * @param opts.noneVisibleMsg "error" message to display if user has not selected any viewable content
  * @param opts.pageTitle Title.
+ * @param opts.state State to modify when opening/closing.
+ * @param opts.stateKey Key in state to set true/false when opening/closing.
  * @param opts.popTblGetNumShown function which should populate the view with HTML content and return the number of items displayed
  * @param [opts.hasPrintColumns] True if the overlay should contain a dropdown for adjusting print columns.
  * @constructor
  */
 function BookModeView (opts) {
 	opts = opts || {};
-	const {hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNumShown} = opts;
+	const {hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNumShown, isFlex, state, stateKey} = opts;
+
+	if (hashKey && stateKey) throw new Error();
 
 	this.hashKey = hashKey;
+	this.stateKey = stateKey;
+	this.state = state;
 	this.$openBtn = $openBtn;
 	this.noneVisibleMsg = noneVisibleMsg;
 	this.popTblGetNumShown = popTblGetNumShown;
@@ -7321,12 +7369,20 @@ function BookModeView (opts) {
 	this._$body = null;
 	this._$wrpBook = null;
 
-	this.$openBtn.on("click", () => {
-		Hist.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${this.hashKey}${HASH_SUB_KV_SEP}true`);
+	this.$openBtn.off("click").on("click", () => {
+		if (this.stateKey) {
+			this.state[this.stateKey] = true;
+		} else {
+			Hist.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${this.hashKey}${HASH_SUB_KV_SEP}true`);
+		}
 	});
 
 	this._doHashTeardown = () => {
-		Hist.cleanSetHash(window.location.hash.replace(`${this.hashKey}${HASH_SUB_KV_SEP}true`, ""));
+		if (this.stateKey) {
+			this.state[this.stateKey] = false;
+		} else {
+			Hist.cleanSetHash(window.location.hash.replace(`${this.hashKey}${HASH_SUB_KV_SEP}true`, ""));
+		}
 	};
 
 	// NOTE: Avoid using `flex` css, as it doesn't play nice with printing
@@ -7383,8 +7439,8 @@ function BookModeView (opts) {
 		}
 		// endregion
 
-		const $wrpContent = $(`<div class="w-100 bkmv__wrp p-2"/>`);
-		$$`<div class="bkmv__scroller h-100 w-100 overflow-y-auto">${$wrpContent}</div>`.appendTo(this._$wrpBook);
+		const $wrpContent = $(`<div class="bkmv__wrp p-2"/>`);
+		$$`<div class="bkmv__scroller h-100 overflow-y-auto ${isFlex ? "flex" : ""}">${$wrpContent}</div>`.appendTo(this._$wrpBook);
 
 		const numShown = await this.popTblGetNumShown($wrpContent, $dispName, $wrpControlsToPass);
 
@@ -7411,6 +7467,8 @@ function BookModeView (opts) {
 	};
 
 	this.handleSub = (sub) => {
+		if (this.stateKey) return; // Assume anything with state will handle this itself.
+
 		const bookViewHash = sub.find(it => it.startsWith(this.hashKey));
 		if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[this.hashKey][0] === "true") this.pOpen();
 		else this.teardown();

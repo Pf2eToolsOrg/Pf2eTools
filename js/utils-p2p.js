@@ -303,6 +303,9 @@ class PeerUtil {
 	}
 
 	static _unpackToken (textified) {
+		const mToken = /(::[^:]+::)/.exec(textified);
+		if (!mToken) return null;
+		textified = `{${mToken[1]}}`;
 		const parts = textified.replace(/\s+/g, "").replace(/^{::/, "").replace(/::}$/, "").split("|");
 		if (parts.length === 3) {
 			const [name, compression, mappedCompressed] = parts;

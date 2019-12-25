@@ -34,6 +34,10 @@
 	}
 }
 
+$pct-darken-active: 10%;
+$pct-darken-border: 15%;
+$pct-darken-border--active: 20%;
+
 $sz-y-header: 73px;
 
 $spacer: 1rem;
@@ -146,3 +150,35 @@ $width-screen-xs: 480px;
 $width-screen-sm: 768px;
 $width-screen-md: 991px;
 $width-screen-lg: 1200px;
+
+// region linked titles
+%linked-titles-base {
+	.rd__h--0 .entry-title-inner:hover::before {
+		font-size: 50%;
+	}
+
+	.rd__h--1 .entry-title-inner:hover::before {
+		font-size: 55%;
+	}
+
+	.rd__h--2 .entry-title-inner:hover::before {
+		font-size: 60%;
+	}
+}
+
+%linked-titles-base-inner {
+	cursor: copy;
+
+	&:hover::before {
+		content: ' 🔗';
+		color: rgba(0, 0, 0, 0.2);
+		position: relative;
+		float: left;
+		width: 14px;
+		height: 14px;
+		right: 20px;
+		margin-right: -30px;
+		font-size: 85%;
+	}
+}
+// endregion

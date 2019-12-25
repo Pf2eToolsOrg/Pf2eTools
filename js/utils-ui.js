@@ -1743,7 +1743,7 @@ class SourceUiUtil {
 				${$iptConverters}
 			</div></div>
 			<div class="text-center mb-2">${$btnCancel}${$btnConfirm}</div>
-			
+
 			${!isEditMode && BrewUtil.homebrewMeta.sources && BrewUtil.homebrewMeta.sources.length ? $$`<div class="flex-vh-center mb-3 mt-3"><span class="ui-source__divider"/>or<span class="ui-source__divider"/></div>
 			<div class="flex-vh-center">${$btnUseExisting}</div>` : ""}
 		</div></div>`.appendTo(options.$parent);
@@ -2381,18 +2381,20 @@ class ComponentUiUtil {
 	 * @param [opts.fnHookPost] Function to run after primary hook.
 	 * @param [opts.stateName] State name.
 	 * @param [opts.stateProp] State prop.
+	 * @param [opts.activeClass] CSS class to use when setting the button as "active."
 	 * @return {JQuery}
 	 */
 	static $getBtnBool (component, prop, opts) {
 		opts = opts || {};
 
+		const activeClass = opts.activeClass || "active";
 		const stateName = opts.stateName || "state";
 		const stateProp = opts.stateProp || "_state";
 
 		const $btn = (opts.$ele || $(`<button class="btn btn-xs btn-default">${opts.text || "Toggle"}</button>`))
 			.click(() => component[stateProp][prop] = !component[stateProp][prop]);
 		const hook = () => {
-			$btn.toggleClass("active", !!component[stateProp][prop]);
+			$btn.toggleClass(activeClass, !!component[stateProp][prop]);
 			if (opts.fnHookPost) opts.fnHookPost(component[stateProp][prop]);
 		};
 		component._addHook(stateName, prop, hook);

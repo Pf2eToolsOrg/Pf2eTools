@@ -2256,7 +2256,7 @@ class StatblockConverter {
 
 	static _setCleanLanguages (stats, line) {
 		stats.languages = line.split_handleColon("Languages", 1)[1].trim();
-		if (stats.languages && /^([-–‒—]|\\u201\d)$/.exec(stats.languages.trim())) delete stats.languages;
+		if (stats.languages && /^([-–‒—]|\\u201\d)+$/.exec(stats.languages.trim())) delete stats.languages;
 		else {
 			stats.languages = stats.languages
 			// Clean caps words

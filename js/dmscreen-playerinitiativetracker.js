@@ -15,7 +15,7 @@ class InitiativeTrackerPlayer {
 		const view = new InitiativeTrackerPlayerMessageHandlerScreen();
 		view.setElements($meta, $head, $rows);
 
-		const $btnConnectRemote = $(`<button class="btn btn-primary mb-2" style="min-width: 200px;">Connect to Remote Tracker</button>`)
+		const $btnConnectRemote = $(`<button class="btn btn-primary mb-2" style="min-width: 200px;" title="Connect to a tracker outside of this browser tab.">Connect to Remote Tracker</button>`)
 			.click(() => {
 				$btnConnectRemote.detach();
 				$btnConnectLocal.detach();
@@ -59,7 +59,7 @@ class InitiativeTrackerPlayer {
 				const ui = new InitiativeTrackerPlayerUi(view, $iptServerToken, $btnGenClientToken, $iptClientToken, $cbShortToken);
 				ui.init();
 			});
-		const $btnConnectLocal = $(`<button class="btn btn-primary" style="min-width: 200px;">Connect to Local Tracker</button>`)
+		const $btnConnectLocal = $(`<button class="btn btn-primary" style="min-width: 200px;" title="Connect to a tracker in this browser tab.">Connect to Local Tracker</button>`)
 			.click(() => {
 				const existingTrackers = board.getPanelsByType(PANEL_TYP_INITIATIVE_TRACKER)
 					.map(it => it.tabDatas.filter(td => td.type === PANEL_TYP_INITIATIVE_TRACKER).map(td => td.$content.find(`.dm__data-anchor`)))

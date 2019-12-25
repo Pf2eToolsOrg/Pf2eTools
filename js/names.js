@@ -25,7 +25,7 @@ window.onload = function load () {
 };
 
 window.onhashchange = () => {
-	const [link] = Hist._getHashParts();
+	const [link] = Hist.getHashParts();
 	const $a = $(`a[href="#${link}"]`);
 	if (!$a.length || !link) {
 		window.location.hash = $(`.list.names`).find("a").attr("href");
