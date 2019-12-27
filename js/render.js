@@ -335,12 +335,12 @@ function Renderer () {
 
 		if (entry.imageType === "map") textStack[0] += `<div class="rd__wrp-map">`;
 		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `<div class="float-clear"/>`;
+		textStack[0] += `<div class="float-clear"></div>`;
 		textStack[0] += `<div class="${meta._typeStack.includes("gallery") ? "rd__wrp-gallery-image" : ""}">`;
 
 		const href = this._renderImage_getUrl(entry);
 		const svg = this._lazyImages && entry.width != null && entry.height != null
-			? `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${entry.width}" height="${entry.height}"><rect width="100%" height="100%" fill="#ccc3"/></svg>`)}`
+			? `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${entry.width}" height="${entry.height}"><rect width="100%" height="100%" fill="#ccc3"></rect></svg>`)}`
 			: null;
 		textStack[0] += `<div class="${this._renderImage_getWrapperClasses(entry, meta)}"><a href="${href}" target="_blank" rel="noopener" ${entry.title ? `title="${Renderer.stripTags(entry.title)}"` : ""}><img class="rd__image" src="${svg || href}" ${entry.altText ? `alt="${entry.altText}"` : ""} ${svg ? `data-src="${href}"` : ""} ${getStylePart()}></a></div>`;
 		if (entry.title) textStack[0] += `<div class="rd__image-title"><div class="rd__image-title-inner">${this.render(entry.title)}</div></div>`;
@@ -450,7 +450,7 @@ function Renderer () {
 					toRenderCell = roRender[ixCell];
 				}
 				bodyStack[0] += `<td ${this._renderTable_makeTableTdClassText(entry, ixCell)} ${this._renderTable_getCellDataStr(roRender[ixCell])} ${roRender[ixCell].width ? `colspan="${roRender[ixCell].width}"` : ""}>`;
-				if (r.style === "row-indent-first" && ixCell === 0) bodyStack[0] += `<div class="rd__tab-indent"/>`;
+				if (r.style === "row-indent-first" && ixCell === 0) bodyStack[0] += `<div class="rd__tab-indent"></div>`;
 				const cacheDepth = this._adjustDepth(meta, 1);
 				this._recursiveRender(toRenderCell, bodyStack, meta);
 				meta.depth = cacheDepth;
@@ -582,7 +582,6 @@ function Renderer () {
 			if (this._subVariant) styleClasses.push(Renderer.HEAD_2_SUB_VARIANT);
 			else styleClasses.push(Renderer.HEAD_2);
 		} else styleClasses.push(meta.depth === -1 ? Renderer.HEAD_NEG_1 : meta.depth === 0 ? Renderer.HEAD_0 : Renderer.HEAD_1);
-		if ((entry.type === "optfeature" || entry.type === "patron") && entry.subclass != null) styleClasses.push(CLSS_SUBCLASS_FEATURE);
 		return styleClasses.length > 0 ? `class="${styleClasses.join(" ")}"` : "";
 	};
 
@@ -636,7 +635,7 @@ function Renderer () {
 				meta.depth = cacheDepth;
 			}
 		}
-		textStack[0] += `<div class="float-clear"/>`;
+		textStack[0] += `<div class="float-clear"></div>`;
 		textStack[0] += `</${this.wrapperTag}>`;
 	};
 
@@ -655,7 +654,7 @@ function Renderer () {
 			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
 			meta.depth = cacheDepth;
 		}
-		textStack[0] += `<div class="float-clear"/>`;
+		textStack[0] += `<div class="float-clear"></div>`;
 		textStack[0] += `</${this.wrapperTag}>`;
 	};
 
@@ -952,7 +951,7 @@ function Renderer () {
 				meta.depth = cacheDepth;
 			}
 		}
-		textStack[0] += `<div class="float-clear"/>`;
+		textStack[0] += `<div class="float-clear"></div>`;
 		textStack[0] += `</${this.wrapperTag}>`;
 	};
 
@@ -1438,7 +1437,7 @@ function Renderer () {
 					case "@loader": {
 						const [name, file] = text.split("|");
 						const path = /^.*?:\/\//.test(file) ? file : `https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/${file}`;
-						textStack[0] += `<span onclick="BrewUtil.handleLoadbrewClick(this, '${path.escapeQuotes()}', '${name.escapeQuotes()}')" class="rd__wrp-loadbrew--ready" title="Click to install homebrew">${name}<span class="glyphicon glyphicon-download-alt rd__loadbrew-icon rd__loadbrew-icon"/></span>`;
+						textStack[0] += `<span onclick="BrewUtil.handleLoadbrewClick(this, '${path.escapeQuotes()}', '${name.escapeQuotes()}')" class="rd__wrp-loadbrew--ready" title="Click to install homebrew">${name}<span class="glyphicon glyphicon-download-alt rd__loadbrew-icon rd__loadbrew-icon"></span></span>`;
 						break;
 					}
 
@@ -1475,17 +1474,30 @@ function Renderer () {
 								break;
 							case "@class": {
 								if (others.length) {
-									const scSource = others.length > 1 ? `~${others[1].trim()}` : "~phb";
-									fauxEntry.href.subhashes = [
-										{key: "sub", value: others[0].trim() + scSource},
-										{key: "sources", value: 2}
-									];
+									const classStateOpts = {
+										subclass: {
+											shortName: others[0].trim(),
+											source: others.length > 1 ? others[1].trim() : "phb"
+										}
+									};
 									if (others.length > 2) {
-										fauxEntry.href.subhashes.push({key: CLSS_HASH_FEATURE_KEY, value: others[2].trim()})
+										const featureParts = others[2].trim().split("-");
+										classStateOpts.feature = {
+											ixLevel: featureParts[0] || "0",
+											ixFeature: featureParts[1] || "0"
+										};
 									}
+
+									const subhashObj = UrlUtil.unpackSubHash(UrlUtil.getClassesPageStatePart(classStateOpts));
+
+									fauxEntry.href.subhashes = [
+										{key: "state", value: subhashObj.state, preEncoded: true},
+										{key: "fltsource", value: "clear"},
+										{key: "flstmiscellaneous", value: "clear"}
+									];
 								}
 								fauxEntry.href.path = "classes.html";
-								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+								if (!source) fauxEntry.href.hash += `${HASH_LIST_SEP}${SRC_PHB}`;
 								this._recursiveRender(fauxEntry, textStack, meta);
 								break;
 							}
@@ -2085,10 +2097,10 @@ Renderer.utils = {
 					<div class="flex-v-center">
 						<span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>
 						${opts.pronouncePart || ""}
-						${ExtensionUtil.ACTIVE ? `<button title="Send to Foundry (SHIFT for Temporary Import)" class="btn btn-xs btn-default btn-stats-name" onclick="ExtensionUtil.pDoSendStats(event, this)"><span class="glyphicon glyphicon-send"/></button>` : ""}
+						${ExtensionUtil.ACTIVE ? `<button title="Send to Foundry (SHIFT for Temporary Import)" class="btn btn-xs btn-default btn-stats-name" onclick="ExtensionUtil.pDoSendStats(event, this)"><span class="glyphicon glyphicon-send"></span></button>` : ""}
 					</div>
 					<span class="stats-source flex-v-baseline">
-						<span class="help--subtle ${it.source ? `${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}` : ""}" style="${it.source ? `color: ${BrewUtil.sourceJsonToColor(it.source)};` : ""}">${it.source ? Parser.sourceJsonToAbv(it.source) : ""}</span>
+						<span class="help--subtle ${it.source ? `${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}` : ""}" ${BrewUtil.sourceJsonToStyle(it.source)}">${it.source ? Parser.sourceJsonToAbv(it.source) : ""}</span>
 						${it.page > 0 ? ` <span class="rd__stats-name-page ml-1" title="Page ${it.page}">p${it.page}</span>` : ""}
 					</span>
 				</div>

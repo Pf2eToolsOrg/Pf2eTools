@@ -223,7 +223,7 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 				b: sc.name,
 				n: `${sc.name} (${primary.parentName})`,
 				s: indexer.getMetaId("s", sc.source),
-				u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`
+				u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: sc})}`
 			}));
 		},
 		pFnPreProcBrew: pPreProcessSubclassBrew

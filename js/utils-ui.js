@@ -132,18 +132,20 @@ class ProxyBase {
 	_saveHookAllCopiesTo (obj) { this.__hooksAllTmp = obj; }
 
 	/**
-	 * Overwrite the current proxied object with some new values, then trigger all the appropriate event handlers.
+	 * Object.assign equivalent, overwrites values on the current proxied object with some new values,
+	 *   then trigger all the appropriate event handlers.
 	 * @param hookProp Hook property.
 	 * @param proxyProp Proxied object property, e.g. "_state".
 	 * @param underProp Underlying object property, e.g. "__state".
 	 * @param toObj
+	 * @param isOverwrite If the overwrite should clean/delete all data from the object beforehand.
 	 */
-	_proxyAssign (hookProp, proxyProp, underProp, toObj) {
+	_proxyAssign (hookProp, proxyProp, underProp, toObj, isOverwrite) {
 		const oldKeys = Object.keys(this[proxyProp]);
 		const nuKeys = Object.keys(toObj);
 		const allKeys = new Set([...oldKeys, ...nuKeys]);
 
-		oldKeys.forEach(k => delete this[underProp][k]);
+		if (isOverwrite) oldKeys.forEach(k => delete this[underProp][k]);
 		nuKeys.forEach(k => this[underProp][k] = toObj[k]);
 
 		allKeys.forEach(k => {
@@ -1804,7 +1806,7 @@ class BaseComponent extends ProxyBase {
 	}
 
 	_setState (toState) {
-		this._proxyAssign("state", "_state", "__state", toState);
+		this._proxyAssign("state", "_state", "__state", toState, true);
 	}
 
 	_getState () { return MiscUtil.copy(this.__state) }
@@ -2381,6 +2383,7 @@ class ComponentUiUtil {
 	 * @param [opts.fnHookPost] Function to run after primary hook.
 	 * @param [opts.stateName] State name.
 	 * @param [opts.stateProp] State prop.
+	 * @param [opts.isInverted] If the toggle display should be inverted.
 	 * @param [opts.activeClass] CSS class to use when setting the button as "active."
 	 * @return {JQuery}
 	 */
@@ -2392,9 +2395,13 @@ class ComponentUiUtil {
 		const stateProp = opts.stateProp || "_state";
 
 		const $btn = (opts.$ele || $(`<button class="btn btn-xs btn-default">${opts.text || "Toggle"}</button>`))
-			.click(() => component[stateProp][prop] = !component[stateProp][prop]);
+			.click(() => component[stateProp][prop] = !component[stateProp][prop])
+			.contextmenu(evt => {
+				evt.preventDefault();
+				component[stateProp][prop] = !component[stateProp][prop];
+			});
 		const hook = () => {
-			$btn.toggleClass(activeClass, !!component[stateProp][prop]);
+			$btn.toggleClass(activeClass, opts.isInverted ? !component[stateProp][prop] : !!component[stateProp][prop]);
 			if (opts.fnHookPost) opts.fnHookPost(component[stateProp][prop]);
 		};
 		component._addHook(stateName, prop, hook);

@@ -96,9 +96,9 @@ class FilterBox extends ProxyBase {
 	}
 
 	_setStateFromLoaded (state) {
-		this._proxyAssign("meta", "_meta", "__meta", state.meta);
-		this._proxyAssign("minisHidden", "_minisHidden", "__minisHidden", state.minisHidden);
-		this._proxyAssign("combineAs", "_combineAs", "__combineAs", state.combineAs);
+		this._proxyAssign("meta", "_meta", "__meta", state.meta, true);
+		this._proxyAssign("minisHidden", "_minisHidden", "__minisHidden", state.minisHidden, true);
+		this._proxyAssign("combineAs", "_combineAs", "__combineAs", state.combineAs, true);
 	}
 
 	async _pDoSaveState () {
@@ -791,7 +791,7 @@ class Filter extends FilterBase {
 						const nestName = Object.keys(this._nestsHidden).find(k => k.toLowerCase() === nestNameLower);
 						if (nestName) nxtNestsHidden[nestName] = !!Number(state);
 					});
-					this._proxyAssign("nestsHidden", "_nestsHidden", "__nestsHidden", nxtNestsHidden);
+					this._proxyAssign("nestsHidden", "_nestsHidden", "__nestsHidden", nxtNestsHidden, true);
 					break;
 				}
 			}
@@ -807,6 +807,8 @@ class Filter extends FilterBase {
 			Object.assign(this._state, values[this.header]);
 		}
 	}
+
+	setValue (k, v) { this._state[k] = v; }
 
 	_resetNestsHidden () {
 		if (this._nests) Object.entries(this._nests).forEach(([nestName, nestMeta]) => this._nestsHidden[nestName] = !!nestMeta.isHidden);
@@ -862,7 +864,7 @@ class Filter extends FilterBase {
 		// This one-liner is slightly more performant than doing it nicely
 		const $btnMini = $(
 			`<div class="fltr__mini-pill ${this._filterBox.isMinisHidden(this.header) ? "hidden" : ""} ${this._deselFn && this._deselFn(item.item) ? "fltr__mini-pill--default-desel" : ""} ${this._selFn && this._selFn(item.item) ? "fltr__mini-pill--default-sel" : ""}" state="${FilterBox._PILL_STATES[this._state[item.item]]}">${toDisplay}</div>`
-		).attr("title", `${this._displayFnTitle ? `${this._displayFnTitle(item.item)}; ` : ""}Filter: ${this.header}`).click(() => {
+		).attr("title", `${this._displayFnTitle ? `${this._displayFnTitle(item.item)} (` : ""}Filter: ${this.header}${this._displayFnTitle ? ")" : ""}`).click(() => {
 			this._state[item.item] = 0;
 			this._filterBox.fireChangeEvent();
 		});

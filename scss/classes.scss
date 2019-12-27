@@ -2,6 +2,10 @@
 
 // region class
 .cls__ {
+	&list {
+		max-height: 400px;
+	}
+
 	&squash_header {
 		overflow: hidden;
 		max-height: 32px;
@@ -32,6 +36,10 @@
 	}
 
 	&btn-sc {
+		&--reprinted {
+			color: #777;
+		}
+
 		&--active-fresh {
 			color: white;
 			background: $rgb-subclass-color;
@@ -48,6 +56,22 @@
 			}
 		}
 
+		&--active-reprinted {
+			color: white;
+			background: $rgb-subclass-color--stale;
+			border-color: darken($rgb-subclass-color--stale, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-subclass-color--stale, $pct-darken-active);
+				border-color: darken($rgb-subclass-color--stale, $pct-darken-border--active);
+			}
+		}
+
 		&--active-spicy {
 			color: white;
 			background: $rgb-subclass-ua-color;
@@ -61,6 +85,22 @@
 				color: white;
 				background: darken($rgb-subclass-ua-color, $pct-darken-active);
 				border-color: darken($rgb-subclass-ua-color, $pct-darken-border--active);
+			}
+		}
+
+		&--active-stale {
+			color: white;
+			background: $rgb-subclass-ua-color--stale;
+			border-color: darken($rgb-subclass-ua-color--stale, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-subclass-ua-color--stale, $pct-darken-active);
+				border-color: darken($rgb-subclass-ua-color--stale, $pct-darken-border--active);
 			}
 		}
 
@@ -106,6 +146,10 @@
 	}
 
 	&btn-sc {
+		&--reprinted {
+			color: #888;
+		}
+
 		&--active-fresh {
 			color: white;
 			background: $rgb-subclass-color--night;
@@ -122,6 +166,22 @@
 			}
 		}
 
+		&--active-reprinted {
+			color: white;
+			background: $rgb-subclass-color--night-stale;
+			border-color: darken($rgb-subclass-color--night-stale, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-subclass-color--night-stale, $pct-darken-active);
+				border-color: darken($rgb-subclass-color--night-stale, $pct-darken-border--active);
+			}
+		}
+
 		&--active-spicy {
 			color: white;
 			background: $rgb-subclass-ua-color--night;
@@ -135,6 +195,22 @@
 				color: white;
 				background: darken($rgb-subclass-ua-color--night, $pct-darken-active);
 				border-color: darken($rgb-subclass-ua-color--night, $pct-darken-border--active);
+			}
+		}
+
+		&--active-stale {
+			color: white;
+			background: $rgb-subclass-ua-color--night-stale;
+			border-color: darken($rgb-subclass-ua-color--night-stale, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-subclass-ua-color--night-stale, $pct-darken-active);
+				border-color: darken($rgb-subclass-ua-color--night-stale, $pct-darken-border--active);
 			}
 		}
 
@@ -313,12 +389,30 @@
 			border-bottom-color: $rgb-subclass-color;
 		}
 
+		&--reprinted {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-subclass-color--stale;
+				border-bottom-color: $rgb-subclass-color--stale;
+			}
+		}
+
 		&--spicy {
 			.rd__h--0,
 			.rd__h--1,
 			.rd__h--2 {
 				color: $rgb-subclass-ua-color;
 				border-bottom-color: $rgb-subclass-ua-color;
+			}
+		}
+
+		&--stale {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-subclass-ua-color--stale;
+				border-bottom-color: $rgb-subclass-ua-color--stale;
 			}
 		}
 
@@ -361,12 +455,30 @@
 			border-bottom-color: $rgb-subclass-color--night;
 		}
 
+		&--reprinted {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-subclass-color--night-stale;
+				border-bottom-color: $rgb-subclass-color--night-stale;
+			}
+		}
+
 		&--spicy {
 			.rd__h--0,
 			.rd__h--1,
 			.rd__h--2 {
 				color: $rgb-subclass-ua-color--night;
 				border-bottom-color: $rgb-subclass-ua-color--night;
+			}
+		}
+
+		&--stale {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-subclass-ua-color--night-stale;
+				border-bottom-color: $rgb-subclass-ua-color--night-stale;
 			}
 		}
 
@@ -495,8 +607,16 @@
 				color: $rgb-subclass-color;
 			}
 
+			&--sc-reprinted {
+				color: $rgb-subclass-color--stale;
+			}
+
 			&--sc-spicy {
 				color: $rgb-subclass-ua-color;
+			}
+
+			&--sc-stale {
+				color: $rgb-subclass-ua-color--stale;
 			}
 
 			&--sc-brew {
@@ -549,8 +669,16 @@
 			color: $rgb-subclass-color--night;
 		}
 
-		&--sc-spiy {
+		&--sc-reprinted {
+			color: $rgb-subclass-color--night-stale;
+		}
+
+		&--sc-spicy {
 			color: $rgb-subclass-ua-color--night;
+		}
+
+		&--sc-stale {
+			color: $rgb-subclass-ua-color--night-stale;
 		}
 
 		&--sc-brew {

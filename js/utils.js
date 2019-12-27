@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.93.1"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.93.3"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -15,27 +15,16 @@ HASH_PART_SEP = ",";
 HASH_LIST_SEP = "_";
 HASH_SUB_LIST_SEP = "~";
 HASH_SUB_KV_SEP = ":";
-HASH_SUBCLASS = "sub:";
 HASH_BLANK = "blankhash";
 HASH_SUB_NONE = "null";
 
 CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
 CLSS_HOMEBREW_SOURCE = "refreshing-brew";
-CLSS_SUBCLASS_FEATURE = "subclass-feature";
-CLSS_HASH_FEATURE_KEY = "f";
-CLSS_HASH_FEATURE = `${CLSS_HASH_FEATURE_KEY}:`;
 
 MON_HASH_SCALED = "scaled";
 
-ATB_DATA_LIST_SEP = "||";
-ATB_DATA_PART_SEP = "::";
-ATB_DATA_SC = "data-subclass";
-ATB_DATA_SRC = "data-source";
-
-STR_CANTRIP = "Cantrip";
 STR_NONE = "None";
-STR_ANY = "Any";
-STR_SPECIAL = "Special";
+STR_SEE_CONSOLE = "See the console (CTRL+SHIFT+J) for details.";
 
 HOMEBREW_STORAGE = "HOMEBREW_STORAGE";
 HOMEBREW_META_STORAGE = "HOMEBREW_META_STORAGE";
@@ -660,15 +649,24 @@ Parser._getSourceStringFromSource = function (source) {
 	if (source && source.source) return source.source;
 	return source;
 };
-Parser.hasSourceFull = function (source) {
-	return !!Parser.SOURCE_JSON_TO_FULL[source];
+Parser._buildSourceCache = function (dict) {
+	const out = {};
+	Object.entries(dict).forEach(([k, v]) => out[k.toLowerCase()] = v);
+	return out;
 };
+Parser._sourceFullCache = null;
+Parser.hasSourceFull = function (source) {
+	Parser._sourceFullCache = Parser._sourceFullCache || Parser._buildSourceCache(Parser.SOURCE_JSON_TO_FULL);
+	return !!Parser._sourceFullCache[source.toLowerCase()];
+};
+Parser._sourceAbvCache = null;
 Parser.hasSourceAbv = function (source) {
-	return !!Parser.SOURCE_JSON_TO_ABV[source];
+	Parser._sourceAbvCache = Parser._sourceAbvCache || Parser._buildSourceCache(Parser.SOURCE_JSON_TO_ABV);
+	return !!Parser._sourceAbvCache[source.toLowerCase()];
 };
 Parser.sourceJsonToFull = function (source) {
 	source = Parser._getSourceStringFromSource(source);
-	if (Parser.hasSourceFull(source)) return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, "\u2019");
+	if (Parser.hasSourceFull(source)) return Parser._sourceFullCache[source.toLowerCase()].replace(/'/g, "\u2019");
 	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToFull(source).replace(/'/g, "\u2019");
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, "\u2019");
 };
@@ -680,7 +678,7 @@ Parser.sourceJsonToFullCompactPrefix = function (source) {
 };
 Parser.sourceJsonToAbv = function (source) {
 	source = Parser._getSourceStringFromSource(source);
-	if (Parser.hasSourceAbv(source)) return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
+	if (Parser.hasSourceAbv(source)) return Parser._sourceAbvCache[source.toLowerCase()];
 	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToAbv(source);
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
 };
@@ -855,7 +853,7 @@ Parser.getOrdinalForm = function (i) {
 };
 
 Parser.spLevelToFull = function (level) {
-	if (level === 0) return STR_CANTRIP;
+	if (level === 0) return "Cantrip";
 	else return Parser.getOrdinalForm(level);
 };
 
@@ -1169,7 +1167,7 @@ Parser._spSubclassItem = function (fromSubclass, textOnly, subclassLookup) {
 	if (textOnly) return text;
 	const classPart = `<a href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}" title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</a>`;
 	const fromLookup = subclassLookup ? MiscUtil.get(subclassLookup, c.source, c.name, sc.source, sc.name) : null;
-	if (fromLookup) return `<a class="italic" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(fromLookup)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
+	if (fromLookup) return `<a class="italic" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: {shortName: sc.name, source: sc.source}})}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
 	else return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</span> ${classPart}`;
 };
 
@@ -1398,7 +1396,7 @@ Parser.prereqPactToFull = function (pact) {
 };
 
 Parser.prereqPatronToShort = function (patron) {
-	if (patron === STR_ANY) return STR_ANY;
+	if (patron === "Any") return patron;
 	const mThe = /^The (.*?)$/.exec(patron);
 	if (mThe) return mThe[1];
 	return patron;
@@ -1674,12 +1672,13 @@ Parser.spClassesToCurrentAndLegacy = function (classes) {
 		else current.push(cls);
 	});
 	return [current, legacy];
-}
+};
 
 /**
  * Build a pair of strings; one with all current subclasses, one with all legacy subclasses
  *
  * @param classes a spell.classes JSON item
+ * @param subclassLookup Data loaded from `generated/gendata-subclass-lookup.json`. Of the form: `{PHB: {Barbarian: {PHB: {Berserker: "Path of the Berserker"}}}}`
  * @returns {*[]} A two-element array. First item is a string of all the current subclasses, second item a string of
  * all the legacy/superceded subclasses
  */
@@ -1697,7 +1696,16 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
 			const nm = c.subclass.name;
 			const src = c.subclass.source;
 			const toAdd = Parser._spSubclassItem(c, false, subclassLookup);
-			if (SourceUtil.hasBeenReprinted(nm, src)) {
+
+			const fromLookup = MiscUtil.get(
+				subclassLookup,
+				c.class.source,
+				c.class.name,
+				c.subclass.source,
+				c.subclass.name
+			);
+
+			if (fromLookup && fromLookup.isReprinted) {
 				out[1].push(toAdd);
 			} else if (Parser.sourceJsonToFull(src).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(src).startsWith(PS_PREFIX)) {
 				const cleanName = mapClassShortNameToMostRecent(nm.split("(")[0].trim().split(/v\d+/)[0].trim());
@@ -2575,15 +2583,14 @@ Parser.NUMBERS_TEENS = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fift
 
 // SOURCES =============================================================================================================
 SourceUtil = {
-	hasBeenReprinted (shortName, source) {
-		return (shortName !== undefined && shortName !== null && source !== undefined && source !== null)
-			&& (
-				(shortName === "Sun Soul" && source === SRC_SCAG)
-				|| (shortName === "Mastermind" && source === SRC_SCAG)
-				|| (shortName === "Swashbuckler" && source === SRC_SCAG)
-				|| (shortName === "Storm" && source === SRC_SCAG)
-				|| (shortName === "Deep Stalker Conclave" && source === SRC_UATRR)
-			);
+	_subclassReprintLookup: {},
+	async pInitSubclassReprintLookup () {
+		SourceUtil._subclassReprintLookup = await DataUtil.loadJSON(`data/generated/gendata-subclass-lookup.json`);
+	},
+
+	isSubclassReprinted (className, classSource, subclassShortName, subclassSource) {
+		const fromLookup = MiscUtil.get(SourceUtil._subclassReprintLookup, classSource, className, subclassSource, subclassShortName);
+		return fromLookup ? fromLookup.isReprinted : false;
 	},
 
 	isAdventure (source) {
@@ -3261,8 +3268,8 @@ MiscUtil = {
 		return this.debounce(func, wait, {leading, maxWait: wait, trailing});
 	},
 
-	pDelay (msecs) {
-		return new Promise(resolve => setTimeout(() => resolve(), msecs));
+	pDelay (msecs, resolveAs) {
+		return new Promise(resolve => setTimeout(() => resolve(resolveAs), msecs));
 	},
 
 	getWalker (keyBlacklist = new Set()) {
@@ -4425,43 +4432,40 @@ UrlUtil = {
 		getIndexedEntries (cls) {
 			const out = [];
 			let scFeatureI = 0;
-			(cls.classFeatures || []).forEach((lvlFeatureList, i) => {
+			(cls.classFeatures || []).forEach((lvlFeatureList, ixLvl) => {
 				// class features
 				lvlFeatureList
 					.filter(feature => !feature.gainSubclassFeature && feature.name !== "Ability Score Improvement") // don't add "you gain a subclass feature" or ASI's
-					.forEach(feature => {
+					.forEach((feature, ixFeature) => {
 						const name = Renderer.findName(feature);
 						if (!name) { // tolerate missing names in homebrew
 							if (BrewUtil.hasSourceJson(cls.source)) return;
 							else throw new Error("Class feature had no name!");
 						}
-						const nonStandardSourcePart = feature.source && SourceUtil.isNonstandardSource(feature.source) && !SourceUtil.isNonstandardSource(cls.source) ? `${HASH_PART_SEP}sources:1` : ""
 						out.push({
 							_type: "classFeature",
 							source: cls.source.source || cls.source,
 							name,
-							hash: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(`${feature.name} ${i + 1}`)}${nonStandardSourcePart}`,
+							hash: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({feature: {ixLevel: ixLvl, ixFeature: ixFeature}})}`,
 							entry: feature,
-							level: i + 1
+							level: ixLvl + 1
 						})
 					});
 
 				// subclass features
-				const gainSubclassFeatures = lvlFeatureList.filter(feature => feature.gainSubclassFeature);
-				if (gainSubclassFeatures.length === 1) {
-					const gainFeatureHash = `${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(`${gainSubclassFeatures[0].name} ${i + 1}`)}`;
+				const ixGainSubclassFeatures = lvlFeatureList.findIndex(feature => feature.gainSubclassFeature);
+				if (~ixGainSubclassFeatures) {
 					cls.subclasses.forEach(sc => {
 						const features = ((sc.subclassFeatures || [])[scFeatureI] || []);
 						sc.source = sc.source || cls.source; // default to class source if required
 						const tempStack = [];
 						features.forEach(feature => {
-							const baseSubclassUrl = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`;
+							const subclassFeatureHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: sc, feature: {ixLevel: ixLvl, ixFeature: ixGainSubclassFeatures}})}`;
 							const name = Renderer.findName(feature);
 							if (!name) { // tolerate missing names in homebrew
 								if (BrewUtil.hasSourceJson(sc.source)) return;
 								else throw new Error("Subclass feature had no name!");
 							}
-							const subclassFeatureHash = `${baseSubclassUrl}${HASH_PART_SEP}${gainFeatureHash}`;
 							tempStack.push({
 								_type: "subclassFeature",
 								name,
@@ -4470,13 +4474,13 @@ UrlUtil = {
 								source: sc.source.source || sc.source,
 								hash: subclassFeatureHash,
 								entry: feature,
-								level: i + 1
+								level: ixLvl + 1
 							});
 
 							if (feature.entries) {
 								const namedFeatureParts = feature.entries.filter(it => it.name);
 								namedFeatureParts.forEach(it => {
-									const lvl = i + 1;
+									const lvl = ixLvl + 1;
 									if (tempStack.find(existing => it.name === existing.name && lvl === existing.level)) return;
 									tempStack.push({
 										_type: "subclassFeaturePart",
@@ -4494,12 +4498,27 @@ UrlUtil = {
 						out.push(...tempStack);
 					});
 					scFeatureI++;
-				} else if (gainSubclassFeatures.length > 1) {
-					setTimeout(() => { throw new Error(`Multiple subclass features gained at level ${i + 1} for class "${cls.name}" from source "${cls.source}"!`) });
+				} else if (ixGainSubclassFeatures.length > 1) {
+					setTimeout(() => { throw new Error(`Multiple subclass features gained at level ${ixLvl + 1} for class "${cls.name}" from source "${cls.source}"!`) });
 				}
 			});
 			return out;
 		}
+	},
+
+	getStateKeySubclass (sc) { return Parser.stringToSlug(`sub ${sc.shortName || sc.name} ${Parser.sourceJsonToAbv(sc.source)}`); },
+
+	/**
+	 * @param opts Options object.
+	 * @param [opts.subclass] Subclass (or object of the form `{shortName: "str", source: "str"}`)
+	 * @param [opts.feature] Object of the form `{ixLevel: 0, ixFeature: 0}`
+	 */
+	getClassesPageStatePart (opts) {
+		const stateParts = [
+			opts.subclass ? `${UrlUtil.getStateKeySubclass(opts.subclass)}=${UrlUtil.mini.compress(true)}` : null,
+			opts.feature ? `feature=${UrlUtil.mini.compress(`${opts.feature.ixLevel}-${opts.feature.ixFeature}`)}` : ""
+		].filter(Boolean);
+		return stateParts.length ? UrlUtil.packSubHash("state", stateParts) : "";
 	}
 };
 
@@ -6829,10 +6848,11 @@ BrewUtil = {
 		return Object.keys(BrewUtil.homebrew).filter(it => !it.startsWith("_"));
 	},
 
+	// region sources
 	_buildSourceCache () {
 		function doBuild () {
 			if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.sources) {
-				BrewUtil.homebrewMeta.sources.forEach(src => BrewUtil._sourceCache[src.json] = ({...src}));
+				BrewUtil.homebrewMeta.sources.forEach(src => BrewUtil._sourceCache[src.json.toLowerCase()] = ({...src}));
 			}
 		}
 
@@ -6855,8 +6875,9 @@ BrewUtil = {
 	},
 
 	removeJsonSource (source) {
+		source = source.toLowerCase();
 		BrewUtil._resetSourceCache();
-		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json === source);
+		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json.toLowerCase() === source);
 		if (~ix) BrewUtil.homebrewMeta.sources.splice(ix, 1);
 		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
 	},
@@ -6867,32 +6888,39 @@ BrewUtil = {
 	},
 
 	hasSourceJson (source) {
+		if (!source) return false;
+		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return !!BrewUtil._sourceCache[source];
 	},
 
 	sourceJsonToFull (source) {
+		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].full || source : source;
 	},
 
 	sourceJsonToAbv (source) {
+		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].abbreviation || source : source;
 	},
 
 	sourceJsonToSource (source) {
+		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source] : null;
 	},
 
 	sourceJsonToStyle (source) {
+		source = source.toLowerCase();
 		const color = BrewUtil.sourceJsonToColor(source);
 		if (color) return `style="color: #${color};"`;
 		return "";
 	},
 
 	sourceJsonToColor (source) {
+		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		if (BrewUtil._sourceCache[source] && BrewUtil._sourceCache[source].color) {
 			const validColor = BrewUtil.getValidColor(BrewUtil._sourceCache[source].color);
@@ -6906,21 +6934,21 @@ BrewUtil = {
 		return color.replace(/[^a-fA-F0-9]/g, "").slice(0, 8);
 	},
 
-	addSource (source) {
+	addSource (sourceObj) {
 		BrewUtil._resetSourceCache();
-		const exists = BrewUtil.homebrewMeta.sources.some(it => it.json === source.json);
-		if (exists) throw new Error(`Source "${source.json}" already exists!`);
-		(BrewUtil.homebrewMeta.sources = BrewUtil.homebrewMeta.sources || []).push(source);
+		const exists = BrewUtil.homebrewMeta.sources.some(it => it.json === sourceObj.json);
+		if (exists) throw new Error(`Source "${sourceObj.json}" already exists!`);
+		(BrewUtil.homebrewMeta.sources = BrewUtil.homebrewMeta.sources || []).push(sourceObj);
 		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
 	},
 
-	updateSource (source) {
+	updateSource (sourceObj) {
 		BrewUtil._resetSourceCache();
-		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json === source.json);
-		if (!~ix) throw new Error(`Source "${source.json}" does not exist!`);
+		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json === sourceObj.json);
+		if (!~ix) throw new Error(`Source "${sourceObj.json}" does not exist!`);
 		const json = BrewUtil.homebrewMeta.sources[ix].json;
 		BrewUtil.homebrewMeta.sources[ix] = {
-			...source,
+			...sourceObj,
 			json
 		};
 		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
@@ -6937,6 +6965,7 @@ BrewUtil = {
 			abbreviation: Parser.SOURCE_JSON_TO_ABV[k]
 		})).sort((a, b) => SortUtil.ascSort(a.full, b.full)).filter(it => allActiveSources.has(it.json));
 	},
+	// endregion
 
 	/**
 	 * Get data in a format similar to the main search index

@@ -219,7 +219,7 @@ class PageFilterSpells {
 		const subclassFilter = new Filter({
 			header: "Subclass",
 			nests: {},
-			groupFn: (it) => SourceUtil.hasBeenReprinted(it.userData.subClass.name, it.userData.subClass.source) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(PS_PREFIX)
+			groupFn: (it) => SourceUtil.isSubclassReprinted(it.userData.class.name, it.userData.class.source, it.userData.subClass.name, it.userData.subClass.source) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(PS_PREFIX)
 		});
 		const variantClassFilter = new Filter({header: "Variant Class"});
 		const classAndSubclassFilter = new MultiFilter({header: "Classes", filters: [classFilter, subclassFilter, variantClassFilter]});
@@ -396,7 +396,10 @@ class PageFilterSpells {
 						name: c.subclass.name,
 						source: c.subclass.source
 					},
-					className: c.class.name
+					class: {
+						name: c.class.name,
+						source: c.class.source
+					}
 				}
 			}))
 			: [];
@@ -417,7 +420,7 @@ class PageFilterSpells {
 			this._backgroundFilter.addItem(spell._fBackgrounds);
 			spell._fClasses.forEach(c => this._classFilter.addItem(c));
 			spell._fSubclasses.forEach(sc => {
-				this._subclassFilter.addNest(sc.userData.className, {isHidden: true});
+				this._subclassFilter.addNest(sc.userData.class.name, {isHidden: true});
 				this._subclassFilter.addItem(sc);
 			});
 			spell._fVariantClasses.forEach(c => this._variantClassFilter.addItem(c));
@@ -427,6 +430,8 @@ class PageFilterSpells {
 	}
 
 	async pInitFilterBox (opts) {
+		await SourceUtil.pInitSubclassReprintLookup();
+
 		opts.filters = [
 			this._sourceFilter,
 			this._levelFilter,

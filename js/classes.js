@@ -8,7 +8,17 @@ class ClassesPage extends BaseComponent {
 	static _fnSortSubclassFilterItems (a, b) {
 		if (a.values.isAlwaysVisible) return 1;
 		else if (b.values.isAlwaysVisible) return -1;
-		else return SortUtil.listSort(a, b);
+		else return SortUtil.listSort(a, b, {sortBy: "shortName"});
+	}
+
+	static getBtnTitleSubclass (sc) {
+		const titlePartReprint = sc.isReprinted ? " (this subclass has been reprinted in a more recent source)" : "";
+		return `${sc.name}; Source: ${Parser.sourceJsonToFull(sc.source)}${titlePartReprint}`;
+	}
+
+	static getBaseShortName (sc) {
+		const re = new RegExp(`\\((UA|${sc.source})\\)$`);
+		return sc.shortName.trim().replace(re, "").trim();
 	}
 
 	constructor () {
@@ -28,7 +38,14 @@ class ClassesPage extends BaseComponent {
 			displayFnMini: it => Parser.sourceJsonToAbv(it),
 			displayFnTitle: it => Parser.sourceJsonToFull(it)
 		});
-		this._filters = [this._sourceFilter];
+		this._miscFilter = new Filter({
+			header: "Miscellaneous",
+			items: ["Reprinted", "SRD"],
+			deselFn: (it) => { return it === "Reprinted" },
+			displayFnMini: it => it === "Reprinted" ? "Repr." : it,
+			displayFnTitle: it => it === "Reprinted" ? it : ""
+		});
+		this._filters = [this._sourceFilter, this._miscFilter];
 
 		// region subclass list/filter
 		this._listSubclass = null;
@@ -67,7 +84,7 @@ class ClassesPage extends BaseComponent {
 		Omnisearch.addScrollTopFloat();
 		const data = await DataUtil.class.loadJSON();
 
-		this._list = ListUtil.initList({listClass: "classes"});
+		this._list = ListUtil.initList({listClass: "classes", isUseJquery: true});
 		ListUtil.setOptions({primaryLists: [this._list]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 
@@ -94,20 +111,23 @@ class ClassesPage extends BaseComponent {
 		RollerUtil.addListRollButton();
 
 		window.onhashchange = this._handleHashChange.bind(this);
-		// window.addEventListener("hashchange", () => this._handleHashChange.bind(this));
 
 		this._list.init();
 
 		// Silently prepare our initial state
-		this._setClassFromHash(true);
-		this._setStateFromHash(true);
+		this._setClassFromHash(Hist.initialLoad);
+		this._setStateFromHash(Hist.initialLoad);
 
 		await this._pRender();
 
-		Hist.initialLoad = true;
 		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#pagecontent`));
 		this._initLinkGrabbers();
-		UrlUtil.bindLinkExportButton(this._filterBox, $(`#btn-link-export`))
+		UrlUtil.bindLinkExportButton(this._filterBox, $(`#btn-link-export`));
+
+		Hist.initialLoad = false;
+
+		// Finally, ensure the hash correctly matches the state
+		this._setHashFromState();
 	}
 
 	async _pHandleBrew (homebrew) {
@@ -147,6 +167,10 @@ class ClassesPage extends BaseComponent {
 				sc.source = sc.source || cls.source; // default subclasses to same source as parent
 				sc.shortName = sc.shortName || sc.name; // ensure shortName
 
+				sc._fMisc = [];
+				if (sc.srd) sc._fMisc.push("SRD");
+				if (sc.isReprinted) sc._fMisc.push("Reprinted");
+
 				if (!isExcluded) {
 					const isScExcluded = ExcludeUtil.isExcluded(sc.name, "subclass", sc.source);
 					if (!isScExcluded) {
@@ -161,7 +185,7 @@ class ClassesPage extends BaseComponent {
 		classes.filter(cls => SourceUtil.isNonstandardSource(cls.source) || BrewUtil.hasSourceJson(cls.source))
 			.forEach(cls => {
 				if (cls.fluff) cls.fluff.filter(f => f.source === cls.source).forEach(f => f._isStandardSource = true);
-				cls.subclasses.filter(sc => sc.source === cls.source).forEach(subClass => subClass._isStandardSource = true);
+				cls.subclasses.filter(sc => sc.source === cls.source).forEach(sc => sc._isStandardSource = true);
 			});
 
 		classes.filter(cls => cls.subclasses).forEach(cls => cls.subclasses.sort(ClassesPage._ascSortSubclasses));
@@ -201,6 +225,8 @@ class ClassesPage extends BaseComponent {
 		// Wipe all hooks, as we redo them for each class render
 		this._resetHooks("state");
 		this._resetHooksAll("state");
+		this._resetHooks("classId");
+		// Don't reset hooksAll for classId, as we use this to render the class
 
 		this._addHookAll("state", () => this._setHashFromState());
 	}
@@ -219,7 +245,7 @@ class ClassesPage extends BaseComponent {
 		this._setStateFromHash();
 	}
 
-	_setClassFromHash (isSilent) {
+	_setClassFromHash (isInitialLoad) {
 		const [link] = Hist.getHashParts();
 
 		let ixToLoad;
@@ -239,7 +265,7 @@ class ClassesPage extends BaseComponent {
 		if (!~ixToLoad && this._list.visibleItems.length) ixToLoad = this._list.visibleItems[0].ix;
 
 		if (~ixToLoad) {
-			const target = isSilent ? this.__classId : this._classId;
+			const target = isInitialLoad ? this.__classId : this._classId;
 			if (target._ !== ixToLoad) {
 				Hist.lastLoadedId = ixToLoad;
 				const cls = this._dataList[ixToLoad];
@@ -253,10 +279,10 @@ class ClassesPage extends BaseComponent {
 		}
 	}
 
-	_setStateFromHash (isSilent) {
+	_setStateFromHash (isInitialLoad) {
 		const [_, ...subs] = Hist.getHashParts();
 
-		const target = isSilent ? this.__state : this._state;
+		const target = isInitialLoad ? this.__state : this._state;
 
 		// On changing class (class links have no state parts), clean "feature" state
 		if (!subs.length) this.__state.feature = null;
@@ -265,9 +291,13 @@ class ClassesPage extends BaseComponent {
 
 		const cls = this.activeClass;
 
-		const validScKeys = cls.subclasses.map(sc => ClassesPage.getSubclassStateKey(sc));
+		const validScLookup = {};
+		cls.subclasses.forEach(sc => validScLookup[UrlUtil.getStateKeySubclass(sc)] = sc);
 
-		const seenDefaultKeys = new Set();
+		// Track any incoming sources we need to filter to enable in order to display the desired subclasses
+		const requiredSources = new Set();
+
+		const seenKeys = new Set();
 		subs.forEach(sub => {
 			const unpacked = UrlUtil.unpackSubHash(sub);
 			if (!unpacked.state) return;
@@ -275,13 +305,17 @@ class ClassesPage extends BaseComponent {
 				let [k, v] = it.split("=");
 				k = k.toLowerCase();
 				v = UrlUtil.mini.decompress(v);
-				if (k.startsWith("sub-")) { // subclass selection state keys
-					if (validScKeys.includes(k)) target[k] = v;
+				if (k.startsWith("sub")) { // subclass selection state keys
+					if (validScLookup[k]) {
+						if (target[k] !== v) target[k] = v;
+						requiredSources.add(validScLookup[k].source);
+						seenKeys.add(k);
+					}
 				} else { // known classes page state keys
 					const knownKey = Object.keys(ClassesPage._DEFAULT_STATE).find(it => it.toLowerCase() === k);
 					if (knownKey) {
-						target[knownKey] = v;
-						seenDefaultKeys.add(knownKey);
+						if (target[knownKey] !== v) target[knownKey] = v;
+						seenKeys.add(knownKey);
 					}
 				} // else discard it
 			});
@@ -289,16 +323,29 @@ class ClassesPage extends BaseComponent {
 
 		Object.entries(ClassesPage._DEFAULT_STATE).forEach(([k, v]) => {
 			// If we did not have a value for it, and the current state doesn't match the default, reset it
-			if (!seenDefaultKeys.has(k) && v !== target[k]) target[k] = v;
+			if (!seenKeys.has(k) && v !== target[k]) target[k] = v;
+		});
+
+		if (requiredSources.size && this._sourceFilter.getValues().Source._isActive) requiredSources.forEach(source => this._sourceFilter.setValue(source, 1));
+
+		Object.keys(validScLookup).forEach(k => {
+			if (!seenKeys.has(k) && target[k]) target[k] = false;
 		});
 
 		// Run the sync in the other direction, a loop that *should* break once the hash/state match perfectly
-		this._setHashFromState();
+		if (!isInitialLoad) this._setHashFromState();
 	}
 
-	_getHashState (fromState) {
-		if (!fromState) fromState = MiscUtil.copy(this.__state);
-		const cls = this.activeClass;
+	/**
+	 * @param opts Options object.
+	 * @param [opts.class] Class to convert to hash.
+	 * @param [opts.state] State to convert to hash.
+	 */
+	_getHashState (opts) {
+		opts = opts || {};
+
+		let fromState = opts.state || MiscUtil.copy(this.__state);
+		let cls = opts.class || this.activeClass;
 
 		// region class
 		let primaryHash = cls ? UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls) : null;
@@ -309,13 +356,13 @@ class ClassesPage extends BaseComponent {
 		// endregion
 
 		// region state
-		const validScKeys = cls.subclasses.map(sc => ClassesPage.getSubclassStateKey(sc));
+		const validScKeys = cls.subclasses.map(sc => UrlUtil.getStateKeySubclass(sc));
 		const stateParts = Object.entries(fromState)
 			.filter(([k, v]) => ClassesPage._DEFAULT_STATE[k] !== v) // ignore any default values
 			.filter(([k, v]) => !(ClassesPage._DEFAULT_STATE[k] === undefined && !v)) // ignore any falsey values which don't have defaults
 			.filter(([k]) => {
 				// Filter out any junky subclasses/those from other classes
-				if (!k.startsWith("sub-")) return true;
+				if (!k.startsWith("sub")) return true;
 				return validScKeys.includes(k);
 			})
 			.map(([k, v]) => `${k}=${UrlUtil.mini.compress(v)}`);
@@ -343,7 +390,7 @@ class ClassesPage extends BaseComponent {
 
 				const curState = MiscUtil.copy(this.__state);
 				curState.feature = featureId;
-				const href = `${window.location.href.split("#")[0]}#${this._getHashState(curState)}`;
+				const href = `${window.location.href.split("#")[0]}#${this._getHashState({state: curState})}`;
 
 				await MiscUtil.pCopyTextToClipboard(href);
 				JqueryUtil.showCopiedEffect($target, "Copied link!");
@@ -354,20 +401,19 @@ class ClassesPage extends BaseComponent {
 	getListItem (cls, clsI, isExcluded) {
 		this._sourceFilter.addItem(cls.source);
 
-		const eleLi = document.createElement("li");
-		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
-
 		const hash = UrlUtil.autoEncodeHash(cls);
 		const source = Parser.sourceJsonToAbv(cls.source);
 
-		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
+		const $lnk = $(`<a href="#${hash}" class="lst--border">
 			<span class="bold col-8 pl-0">${cls.name}</span>
 			<span class="col-4 text-center ${Parser.sourceJsonToColor(cls.source)}" title="${Parser.sourceJsonToFull(cls.source)} pr-0" ${BrewUtil.sourceJsonToStyle(cls.source)}>${source}</span>
-		</a>`;
+		</a>`);
+
+		const $ele = $$`<li class="row ${isExcluded ? "row--blacklisted" : ""}">${$lnk}</li>`;
 
 		return new ListItem(
 			clsI,
-			eleLi,
+			$ele,
 			cls.name,
 			{
 				hash,
@@ -376,7 +422,8 @@ class ClassesPage extends BaseComponent {
 				uniqueId: cls.uniqueId ? cls.uniqueId : clsI
 			},
 			{
-				eleLi
+				$lnk,
+				class: cls
 			}
 		);
 	}
@@ -388,14 +435,15 @@ class ClassesPage extends BaseComponent {
 			const it = this._dataList[li.ix];
 			return this._filterBox.toDisplay(
 				f,
-				it.source
+				it.source,
+				[]
 			);
 		});
 
 		this._$trsContent.forEach($tr => {
 			$tr.find(`[data-source]`).each((i, e) => {
 				const source = e.dataset.source;
-				$(e).toggleClass("hidden", !this._filterBox.toDisplay(f, source));
+				$(e).toggleClass("hidden", !this._filterBox.toDisplay(f, source, []));
 			})
 		});
 
@@ -403,12 +451,17 @@ class ClassesPage extends BaseComponent {
 		if (this._fnTableHandleFilterChange) this._fnTableHandleFilterChange(f);
 
 		// Force-hide any subclasses which are filtered out
-		this.activeClass.subclasses.forEach(sc => {
-			if (!this._filterBox.toDisplay(f, sc.source)) {
-				const stateKey = ClassesPage.getSubclassStateKey(sc);
-				if (this._state[stateKey]) this._state[stateKey] = false;
-			}
-		});
+		this._proxyAssign(
+			"state",
+			"_state",
+			"__state",
+			this.activeClass.subclasses
+				.filter(sc => !this._filterBox.toDisplay(f, sc.source, sc._fMisc))
+				.map(sc => UrlUtil.getStateKeySubclass(sc))
+				.filter(stateKey => this._state[stateKey])
+				.map(stateKey => ({[stateKey]: false}))
+				.reduce((a, b) => Object.assign(a, b), {})
+		);
 	}
 
 	async _pRender () {
@@ -420,6 +473,23 @@ class ClassesPage extends BaseComponent {
 			$(this._filterBox)
 				.off(FilterBox.EVNT_VALCHANGE)
 				.on(FilterBox.EVNT_VALCHANGE, this._handleFilterChange.bind(this));
+
+			// region bind list updates
+			const hkSetHref = () => {
+				// defer this for performance
+				setTimeout(() => {
+					this._list.items
+						.filter(it => it.data.$lnk)
+						.forEach(it => {
+							const href = `#${this._getHashState({class: it.data.class})}`;
+							it.data.$lnk.attr("href", href)
+						});
+				}, 5);
+			};
+			this._addHook("classId", "_", hkSetHref);
+			this._addHookAll("state", hkSetHref);
+			hkSetHref();
+			// endregion
 
 			// region rendering
 			this._render_renderClassTable();
@@ -459,12 +529,7 @@ class ClassesPage extends BaseComponent {
 				const $dispClassFeatures = $(`[data-feature-type="class"]`);
 				const $dispFeaturesSubclassHeader = $(`[data-feature-type="gain-subclass"]`);
 
-				if (this._state.isShowFeatures) {
-					this._$wrpOutline.toggleClass("hidden", false);
-					this._$trNoContent.toggleClass("hidden", true);
-					$dispClassFeatures.toggleClass("hidden", false);
-					$dispFeaturesSubclassHeader.toggleClass("hidden", false);
-				} else {
+				if (this._state.isHideFeatures) {
 					if (this._isAnySubclassActive()) {
 						this._$wrpOutline.toggleClass("hidden", false);
 						this._$trNoContent.toggleClass("hidden", true);
@@ -476,14 +541,19 @@ class ClassesPage extends BaseComponent {
 						$dispClassFeatures.toggleClass("hidden", true);
 						$dispFeaturesSubclassHeader.toggleClass("hidden", true);
 					}
+				} else {
+					this._$wrpOutline.toggleClass("hidden", false);
+					this._$trNoContent.toggleClass("hidden", true);
+					$dispClassFeatures.toggleClass("hidden", false);
+					$dispFeaturesSubclassHeader.toggleClass("hidden", false);
 				}
 			};
-			this._addHookBase("isShowFeatures", hkDisplayFeatures);
+			this._addHookBase("isHideFeatures", hkDisplayFeatures);
 			MiscUtil.pDefer(hkDisplayFeatures);
 
 			const cls = this.activeClass;
 			cls.subclasses.forEach(sc => {
-				const stateKey = ClassesPage.getSubclassStateKey(sc);
+				const stateKey = UrlUtil.getStateKeySubclass(sc);
 				const hkDisplaySubclass = () => {
 					const isVisible = this._state[stateKey];
 					$(`[data-subclass-id="${stateKey}"]`).toggleClass("hidden", !isVisible);
@@ -498,7 +568,8 @@ class ClassesPage extends BaseComponent {
 			this._handleFilterChange();
 		};
 
-		this._addHook("classId", "_", async () => {
+		// Use hookAll to allow us to reset temp hooks on the property itself
+		this._addHookAll("classId", async () => {
 			await this._pLock("render");
 			try {
 				await pDoRender();
@@ -515,8 +586,8 @@ class ClassesPage extends BaseComponent {
 	_getActiveSubclasses (asStateKeys) {
 		const cls = this.activeClass;
 		return cls.subclasses
-			.filter(sc => this._state[ClassesPage.getSubclassStateKey(sc)])
-			.map(sc => asStateKeys ? ClassesPage.getSubclassStateKey(sc) : sc);
+			.filter(sc => this._state[UrlUtil.getStateKeySubclass(sc)])
+			.map(sc => asStateKeys ? UrlUtil.getStateKeySubclass(sc) : sc);
 	}
 
 	_render_renderClassTable () {
@@ -564,7 +635,7 @@ class ClassesPage extends BaseComponent {
 
 		cls.subclasses.forEach(sc => {
 			if (!sc.subclassTableGroups) return;
-			const stateKey = ClassesPage.getSubclassStateKey(sc);
+			const stateKey = UrlUtil.getStateKeySubclass(sc);
 			sc.subclassTableGroups.forEach(tableGroup => renderTableGroupHeader(tableGroup, stateKey));
 		});
 
@@ -585,14 +656,17 @@ class ClassesPage extends BaseComponent {
 						});
 
 					const hkSetHref = () => {
-						// these will modify this._state.feature when clicked
-						const curState = MiscUtil.copy(this.__state);
-						curState.feature = featureId;
-						const href = `${window.location.pathname}#${this._getHashState(curState)}`;
-						$lnk.attr("href", href);
+						// defer this for performance
+						setTimeout(() => {
+							// these will modify this._state.feature when clicked
+							const curState = MiscUtil.copy(this.__state);
+							curState.feature = featureId;
+							const href = `#${this._getHashState({state: curState})}`;
+							$lnk.attr("href", href);
+						}, 5);
 					};
 					this._addHookAll("state", hkSetHref);
-					MiscUtil.pDefer(hkSetHref); // saves ~10ms
+					hkSetHref();
 
 					// Make a dummy for the last item
 					const $dispComma = ixFeature === lvlFeaturesFilt.length - 1 ? $(`<span/>`) : $(`<span class="mr-1">,</span>`);
@@ -624,7 +698,7 @@ class ClassesPage extends BaseComponent {
 
 			cls.subclasses.forEach(sc => {
 				if (!sc.subclassTableGroups) return;
-				const stateKey = ClassesPage.getSubclassStateKey(sc);
+				const stateKey = UrlUtil.getStateKeySubclass(sc);
 				sc.subclassTableGroups.forEach(tableGroup => renderTableGroupRow(tableGroup, stateKey));
 			});
 
@@ -643,7 +717,7 @@ class ClassesPage extends BaseComponent {
 			metasTblRows.forEach(metaTblRow => {
 				metaTblRow.metasFeatureLinks.forEach(metaFeatureLink => {
 					if (metaFeatureLink.source) {
-						const isHidden = !this._filterBox.toDisplay(filterValues, metaFeatureLink.source);
+						const isHidden = !this._filterBox.toDisplay(filterValues, metaFeatureLink.source, []);
 						metaFeatureLink.isHidden = isHidden;
 						metaFeatureLink.$wrpLink.toggleClass("hidden", isHidden);
 					}
@@ -793,7 +867,7 @@ class ClassesPage extends BaseComponent {
 					<div><b>Armor:</b> <span>${profs.armor ? renderArmorProfs(profs.armor) : "none"}</span></div>
 					<div><b>Weapons:</b> <span>${profs.weapons ? renderWeaponsProfs(profs.weapons) : "none"}</span></div>
 					<div><b>Tools:</b> <span>${profs.tools ? profs.tools.join(", ") : "none"}</span></div>
-					<div><b>Saving Throws:</b> <span>${cls.proficiency.map(p => Parser.attAbvToFull(p)).join(", ")}</span></div>
+					<div><b>Saving Throws:</b> <span>${cls.proficiency ? cls.proficiency.map(p => Parser.attAbvToFull(p)).join(", ") : "none"}</span></div>
 					<div><b>Skills:</b> <span>${profs.skills ? renderSkillsProfs(profs.skills) : "none"}</span></div>
 				</td>
 			</tr>
@@ -820,7 +894,7 @@ class ClassesPage extends BaseComponent {
 		const cls = this.activeClass;
 
 		// region features/fluff
-		const $btnToggleFeatures = ComponentUiUtil.$getBtnBool(this, "isShowFeatures", {text: "Features", activeClass: "cls__btn-cf--active"}).attr("title", "Toggle Class Features");
+		const $btnToggleFeatures = ComponentUiUtil.$getBtnBool(this, "isHideFeatures", {text: "Features", activeClass: "cls__btn-cf--active", isInverted: true}).attr("title", "Toggle Class Features");
 		const $btnToggleFluff = ComponentUiUtil.$getBtnBool(this, "isShowFluff", {text: "Info"}).attr("title", "Toggle Class Info");
 
 		$$`<div class="flex-v-center m-1 btn-group mr-3 no-shrink">${$btnToggleFeatures}${$btnToggleFluff}</div>`.appendTo($wrp);
@@ -847,8 +921,12 @@ class ClassesPage extends BaseComponent {
 		));
 
 		this._listSubclass.on("updated", () => {
-			const cntNotShown = this._listSubclass.items.length - this._listSubclass.visibleItems.length;
-			$dispCount.html(cntNotShown ? `<i class="help--subtle" title="Adjust your filters to see more.">(${cntNotShown} more not shown)</i>` : "");
+			if (this._listSubclass.visibleItems.length) {
+				const cntNotShown = this._listSubclass.items.length - this._listSubclass.visibleItems.length;
+				$dispCount.html(cntNotShown ? `<i class="help--subtle" title="Adjust your filters to see more.">(${cntNotShown} more not shown)</i>` : "");
+			} else if (this._listSubclass.items.length > 1) {
+				$dispCount.html(`<i class="help--subtle" title="Adjust your filters to see more.">(${this._listSubclass.items.length - 1} subclasses not shown)</i>`);
+			} else $dispCount.html("");
 		});
 
 		this._listSubclass.init();
@@ -858,12 +936,14 @@ class ClassesPage extends BaseComponent {
 	async _render_pInitSubclassControls ($wrp) {
 		const cls = this.activeClass;
 
+		const $btnSelAll = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-check"/></button>`)
+			.click(() => {
+				this._proxyAssign("state", "_state", "__state", cls.subclasses.map(sc => ({[UrlUtil.getStateKeySubclass(sc)]: true})).reduce((a, b) => Object.assign(a, b), {}));
+			});
+
 		const $btnReset = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-refresh"/></button>`)
 			.click(() => {
-				cls.subclasses.forEach(sc => {
-					const stateKey = ClassesPage.getSubclassStateKey(sc);
-					this._state[stateKey] = false;
-				});
+				this._proxyAssign("state", "_state", "__state", cls.subclasses.map(sc => ({[UrlUtil.getStateKeySubclass(sc)]: false})).reduce((a, b) => Object.assign(a, b), {}));
 			});
 
 		$(this._filterBox).on(FilterBox.EVNT_VALCHANGE, this._handleSubclassFilterChange.bind(this));
@@ -879,7 +959,7 @@ class ClassesPage extends BaseComponent {
 
 				const doDeselAll = () => this._listSubclass.items.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = false);
 
-				const activeKeys = Object.keys(this._state).filter(it => it.startsWith("sub "));
+				const activeKeys = Object.keys(this._state).filter(it => it.startsWith("sub"));
 				const visibleActiveKeys = this._listSubclass.visibleItems.filter(it => it.values.stateKey).map(it => it.values.stateKey).filter(it => activeKeys.includes(it));
 
 				// Avoid re-selecting the same option if there's only one selected
@@ -895,7 +975,7 @@ class ClassesPage extends BaseComponent {
 			});
 
 		$$`<div class="flex-v-center m-1 btn-group no-shrink">
-			${$btnReset}${$btnToggleSources}${$btnShuffle}
+			${$btnSelAll}${$btnShuffle}${$btnReset}${$btnToggleSources}
 		</div>`.appendTo($wrp);
 	}
 
@@ -907,7 +987,8 @@ class ClassesPage extends BaseComponent {
 			const it = cls.subclasses[li.ix];
 			return this._filterBox.toDisplay(
 				f,
-				it.source
+				it.source,
+				it._fMisc
 			);
 		});
 	}
@@ -915,40 +996,44 @@ class ClassesPage extends BaseComponent {
 	_render_getSubclassTab (cls, sc, ix) {
 		const isExcluded = ExcludeUtil.isExcluded(sc.name, "subclass", sc.source);
 
-		const stateKey = ClassesPage.getSubclassStateKey(sc);
-		const clsActive = `cls__btn-sc--active-${ClassesPage.getSubclassCssMod(cls, sc)}`;
+		const stateKey = UrlUtil.getStateKeySubclass(sc);
+		const mod = ClassesPage.getSubclassCssMod(cls, sc);
+		const clsActive = `cls__btn-sc--active-${mod}`;
 
 		if (this._state[stateKey] == null) this._state[stateKey] = false;
 
-		const $dispSource = $(`<div class="ml-2" title="${Parser.sourceJsonToFull(sc.source)}">[${Parser.sourceJsonToAbv(sc.source)}]</div>`);
-		const hkSourcesVisible = () => $dispSource.toggleClass("hidden", !this._state.isShowScSources);
+		const $dispName = $(`<div title="${ClassesPage.getBtnTitleSubclass(sc)}"/>`);
+		const $dispSource = $(`<div class="ml-1" title="${Parser.sourceJsonToFull(sc.source)}">(${Parser.sourceJsonToAbv(sc.source)})</div>`);
+		const hkSourcesVisible = () => {
+			$dispName.text(this._state.isShowScSources ? ClassesPage.getBaseShortName(sc) : sc.shortName);
+			$dispSource.toggleClass("hidden", !this._state.isShowScSources);
+		};
 		this._addHookBase("isShowScSources", hkSourcesVisible);
 		MiscUtil.pDefer(hkSourcesVisible);
 
 		// Initially have these "hidden," to prevent them popping out when we filter them
-		const $ele = $$`<button class="btn btn-default btn-xs flex-v-center m-1 hidden">
-				<div title="${sc.name}; Source: ${Parser.sourceJsonToFull(sc.source)}">${sc.shortName || sc.name}</div>
+		const $btn = $$`<button class="btn btn-default btn-xs flex-v-center m-1 hidden ${sc.isReprinted ? "cls__btn-sc--reprinted" : ""}">
+				${$dispName}
 				${$dispSource}
 			</button>`
 			.click(() => this._state[stateKey] = !this._state[stateKey])
 			.contextmenu(() => this._state[stateKey] = !this._state[stateKey]);
-		const hkVisible = () => $ele.toggleClass(clsActive, !!this._state[stateKey]);
+		const hkVisible = () => $btn.toggleClass(clsActive, !!this._state[stateKey]);
 		this._addHookBase(stateKey, hkVisible);
 		MiscUtil.pDefer(hkVisible);
 
 		return new ListItem(
 			ix,
-			$ele,
+			$btn,
 			sc.name,
 			{
 				source: sc.source,
+				shortName: sc.shortName,
 				stateKey,
 				isExcluded
 			}
 		);
 	}
-
-	static getSubclassStateKey (sc) { return Parser.stringToSlug(`sub ${sc.shortName || sc.name} ${Parser.sourceJsonToAbv(sc.source)}`); }
 
 	_trackOutlineFluffData (depthData) { this._outlineData.fluff = depthData; }
 
@@ -988,7 +1073,8 @@ class ClassesPage extends BaseComponent {
 		this._addHookBase("isHideOutline", hkShowHide);
 		MiscUtil.pDefer(hkShowHide);
 
-		const hkRender = () => {
+		const _hkRender = async () => {
+			await this._pLock("render-outline");
 			$wrpBody.empty();
 			const filterValues = this._filterBox.getValues();
 
@@ -996,7 +1082,7 @@ class ClassesPage extends BaseComponent {
 				// Skip inline entries
 				if (depthData.depth >= 2) return;
 				// Skip filtered sources
-				if (depthData.source && !this._filterBox.toDisplay(filterValues, depthData.source)) return;
+				if (depthData.source && !this._filterBox.toDisplay(filterValues, depthData.source, [])) return;
 
 				// If there was not a class specified, then this is not a subclass item, so we can color it with grellow as required
 				cssClass = cssClass || (depthData.source && SourceUtil.isNonstandardSource(depthData.source) ? `cls-nav__item--spicy` : "");
@@ -1013,14 +1099,17 @@ class ClassesPage extends BaseComponent {
 				this._outlineData.fluff.filter(it => it.name).forEach(it => makeItem(it));
 			}
 
-			if (!this._state.isShowFeatures && !this._isAnySubclassActive()) return;
+			if (this._state.isHideFeatures && !this._isAnySubclassActive()) {
+				this._unlock("render-outline");
+				return;
+			}
 
 			let ixScLvl = 0;
 			this.activeClass.classFeatures.forEach((lvlFeatures, ixLvl) => {
 				lvlFeatures.forEach((feature, ixFeature) => {
 					const depthData = MiscUtil.get(this._outlineData.classFeatures, ixLvl, ixFeature);
 
-					if (this._state.isShowFeatures && depthData) {
+					if (!this._state.isHideFeatures && depthData) {
 						depthData.filter(it => it.name).forEach(it => makeItem(it));
 					}
 
@@ -1028,12 +1117,12 @@ class ClassesPage extends BaseComponent {
 					if (feature.gainSubclassFeature) {
 						if (activeScStateKeys.length) {
 							// If we didn't render the intro for gaining a subclass feature, do so now
-							if (!this._state.isShowFeatures && depthData) {
+							if (this._state.isHideFeatures && depthData) {
 								depthData.filter(it => it.name).forEach(it => makeItem(it));
 							}
 
 							this.activeClass.subclasses.forEach(sc => {
-								const stateKey = ClassesPage.getSubclassStateKey(sc);
+								const stateKey = UrlUtil.getStateKeySubclass(sc);
 
 								if (!activeScStateKeys.includes(stateKey)) return;
 
@@ -1054,11 +1143,14 @@ class ClassesPage extends BaseComponent {
 					}
 				});
 			});
+
+			this._unlock("render-outline");
 		};
+		const hkRender = MiscUtil.debounce(_hkRender, 50);
 		this._addHookBase("isShowFluff", hkRender);
-		this._addHookBase("isShowFeatures", hkRender);
+		this._addHookBase("isHideFeatures", hkRender);
 		this.activeClass.subclasses.forEach(sc => {
-			const stateKey = ClassesPage.getSubclassStateKey(sc);
+			const stateKey = UrlUtil.getStateKeySubclass(sc);
 			this._addHookBase(stateKey, hkRender);
 		});
 		this._fnOutlineHandleFilterChange = hkRender;
@@ -1105,7 +1197,7 @@ class ClassesPage extends BaseComponent {
 				cls.subclasses
 					.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source))
 					.forEach((sc, i) => {
-						const key = ClassesPage.getSubclassStateKey(sc);
+						const key = UrlUtil.getStateKeySubclass(sc);
 
 						if (!this._state[key]) {
 							$wrpContent.find(`[data-cls-comp-sc-ix="${i}"]`).hide();
@@ -1154,8 +1246,8 @@ class ClassesPage extends BaseComponent {
 			return BrewUtil.hasSourceJson(sc.source)
 				? "brew"
 				: SourceUtil.isNonstandardSource(sc.source)
-					? "spicy"
-					: "fresh";
+					? sc.isReprinted ? "stale" : "spicy"
+					: sc.isReprinted ? "reprinted" : "fresh";
 		}
 		return "fresh";
 	}
@@ -1203,7 +1295,7 @@ class ClassesPage extends BaseComponent {
 				if (feature.gainSubclassFeature) {
 					$trClassFeature.attr("data-feature-type", "gain-subclass");
 					cls.subclasses.forEach(sc => {
-						const stateKey = ClassesPage.getSubclassStateKey(sc);
+						const stateKey = UrlUtil.getStateKeySubclass(sc);
 
 						// Add any extra coloring the subclass might require
 						const cssMod = `cls-main__sc-feature--${ClassesPage.getSubclassCssMod(cls, sc)}`;
@@ -1213,7 +1305,7 @@ class ClassesPage extends BaseComponent {
 
 						scLvlFeatures.forEach((scFeature, ixScFeature) => {
 							const depthArr = [];
-							const $trSubclassFeature = $(`<tr class="cls-main__sc-feature ${cssMod}" data-subclass-id="${ClassesPage.getSubclassStateKey(sc)}"><td colspan="6"/></tr>`)
+							const $trSubclassFeature = $(`<tr class="cls-main__sc-feature ${cssMod}" data-subclass-id="${UrlUtil.getStateKeySubclass(sc)}"><td colspan="6"/></tr>`)
 								.fastSetHtml(Renderer.get().setDepthTracker(depthArr).render(scFeature))
 								.appendTo($content);
 
@@ -1242,12 +1334,14 @@ ClassesPage._SC_FILTER_NAMESPACE = "sctabs";
 ClassesPage._DEFAULT_STATE = {
 	feature: null,
 	isHideSidebar: false,
-	isShowFeatures: true,
+	isHideFeatures: false,
 	isShowFluff: false,
 	isShowScSources: false,
 	isViewActiveScComp: false,
 	isViewActiveBook: false,
 	isHideOutline: false
+	// N.b. ensure none of these start with the string "sub" as this prefix is used for subclass state keys e.g.
+	// `"sub Berserker": false`
 };
 
 ClassesPage.ClassBookView = class {
@@ -1320,10 +1414,10 @@ ClassesPage.ClassBookView = class {
 
 		// Menu panel
 		const $btnToggleCf = $(`<span class="cls-bkmv__btn-tab">Class Features</span>`).on("click", () => {
-			this._parent.set("isShowFeatures", !this._parent.get("isShowFeatures"));
+			this._parent.set("isHideFeatures", !this._parent.get("isHideFeatures"));
 		});
 
-		if (!this._parent.get("isShowFeatures")) this._parent.set("isShowFeatures", true);
+		if (this._parent.get("isHideFeatures")) this._parent.set("isHideFeatures", false);
 
 		$pnlMenu.append($btnToggleCf);
 
@@ -1331,11 +1425,11 @@ ClassesPage.ClassBookView = class {
 		cls.subclasses
 			.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source))
 			.forEach((sc, i) => {
-				const name = SourceUtil.hasBeenReprinted(sc.shortName, sc.source) ? `${sc.shortName} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
+				const name = sc.isReprinted ? `${ClassesPage.getBaseShortName(sc)} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
 				const mod = ClassesPage.getSubclassCssMod(cls, sc);
-				const stateKey = ClassesPage.getSubclassStateKey(sc);
+				const stateKey = UrlUtil.getStateKeySubclass(sc);
 
-				const $btnToggleSc = $(`<span class="cls-bkmv__btn-tab" title="Source: ${Parser.sourceJsonToFull(sc.source)}">${name}</span>`)
+				const $btnToggleSc = $(`<span class="cls-bkmv__btn-tab ${sc.isReprinted ? "cls__btn-sc--reprinted" : ""}" title="${ClassesPage.getBtnTitleSubclass(sc)}">${name}</span>`)
 					.on("click", () => this._parent.set(stateKey, !this._parent.get(stateKey)));
 				const isVisible = this._classPage.filterBox.toDisplay(filterValues, sc.source);
 				if (!isVisible) $btnToggleSc.addClass("hidden");
@@ -1355,12 +1449,12 @@ ClassesPage.ClassBookView = class {
 
 		const hkFeatures = () => {
 			const $dispFeatures = this._$wrpBook.find(`[data-cls-book-cf="true"]`);
-			const isActive = !!this._parent.get("isShowFeatures");
+			const isActive = !this._parent.get("isHideFeatures");
 			$btnToggleCf.toggleClass("cls__btn-cf--active", isActive);
 			$dispFeatures.toggleClass("hidden", !isActive);
 		};
-		(this._hooks["isShowFeatures"] = this._hooks["isShowFeatures"] || []).push(hkFeatures);
-		this._parent.addHook("isShowFeatures", hkFeatures);
+		(this._hooks["isHideFeatures"] = this._hooks["isHideFeatures"] || []).push(hkFeatures);
+		this._parent.addHook("isHideFeatures", hkFeatures);
 		hkFeatures();
 
 		this._$body.append(this._$wrpBook);

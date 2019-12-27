@@ -213,83 +213,27 @@ InitiativeTrackerUtil.CONDITIONS = [
 ];
 
 class InitiativeTrackerPlayerUi {
-	constructor (view, $iptServerToken, $btnGenClientToken, $iptClientToken, $cbShortToken) {
+	constructor (view, playerName, serverToken) {
 		this._view = view;
-		this._$iptServerToken = $iptServerToken;
-		this._$btnGenClientToken = $btnGenClientToken;
-		this._$iptClientToken = $iptClientToken;
-		this._$cbShortToken = $cbShortToken;
+		this._playerName = playerName;
+		this._serverToken = serverToken;
+		this._clientPeer = new PeerVeClient();
 	}
 
-	init () {
-		this._$iptServerToken.keydown(evt => {
-			this._$iptServerToken.removeClass("error-background");
-			if (evt.which === 13) this._$btnGenClientToken.click();
-		});
-
-		this._$btnGenClientToken.click(async () => {
-			this._$iptServerToken.removeClass("error-background");
-			const serverToken = this._$iptServerToken.val();
-
-			if (PeerUtil.isValidToken(serverToken)) {
-				try {
-					this._$iptServerToken.attr("disabled", true);
-					this._$btnGenClientToken.attr("disabled", true);
-					const clientData = await PeerUtil.pInitialiseClient(
-						serverToken,
-						msg => this._view.handleMessage(msg),
-						function (err) {
-							if (!this.isClosed) {
-								JqueryUtil.doToast({
-									content: `Server error:\n${err ? err.message || err : "(Unknown error)"}`,
-									type: "danger"
-								});
-							}
-						},
-						{
-							shortTokens: this._$cbShortToken.prop("checked")
-						}
-					);
-
-					if (!clientData) {
-						this._$iptServerToken.attr("disabled", false);
-						this._$btnGenClientToken.attr("disabled", false);
-						JqueryUtil.doToast({
-							content: `Failed to create client. Are you sure the token was valid?`,
-							type: "warning"
-						});
-					} else {
-						this._view.clientData = clientData;
-
-						// -- This has no effect; the client doesn't error on sending when there's no connection --
-						// const livenessCheck = setInterval(async () => {
-						// 	try {
-						// 		await clientData.client.sendMessage({})
-						// 	} catch (e) {
-						// 		JqueryUtil.doToast({
-						// 			content: `Could not reach server! You might need to reconnect.`,
-						// 			type: "danger"
-						// 		});
-						// 		clearInterval(livenessCheck);
-						// 	}
-						// }, 5000);
-
-						this._$iptClientToken.val(clientData.textifiedSdp).attr("disabled", false);
-					}
-				} catch (e) {
-					JqueryUtil.doToast({
-						content: `Failed to create client! Are you sure the token was valid? (See the log for more details.)`,
-						type: "danger"
-					});
-					setTimeout(() => { throw e; });
-				}
-			} else this._$iptServerToken.addClass("error-background");
-		});
-
-		this._$iptClientToken.click(async () => {
-			await MiscUtil.pCopyTextToClipboard(this._$iptClientToken.val());
-			JqueryUtil.showCopiedEffect(this._$iptClientToken);
-		});
+	async pInit () {
+		try {
+			await this._clientPeer.pConnectToServer(
+				this._serverToken,
+				data => this._view.handleMessage(data),
+				{label: this._playerName}
+			);
+		} catch (e) {
+			JqueryUtil.doToast({
+				content: `Failed to create client! Are you sure the token was valid? (See the log for more details.)`,
+				type: "danger"
+			});
+			setTimeout(() => { throw e; });
+		}
 	}
 }
 
@@ -298,15 +242,12 @@ class InitiativeTrackerPlayerMessageHandler {
 		this._isCompact = isCompact;
 		this._isUiInit = false;
 
-		this._clientData = null;
 		this._$meta = null;
 		this._$head = null;
 		this._$rows = null;
 	}
 
 	get isActive () { return this._isUiInit; }
-
-	set clientData (clientData) { this._clientData = clientData; }
 
 	setElements ($meta, $head, $rows) {
 		this._$meta = $meta;
@@ -329,7 +270,7 @@ class InitiativeTrackerPlayerMessageHandler {
 				<div class="${this._isCompact ? "flex-vh-center" : "flex-v-center"}${this._isCompact ? " mb-3" : ""}">
 					<div class="mr-2">Round: </div>
 					<div class="bold">${data.n}</div>
-				</div>		
+				</div>
 			`);
 		}
 
