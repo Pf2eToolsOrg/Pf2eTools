@@ -47,30 +47,31 @@
 
 	<div class="row">
 		<div class="col-sm-3" id="listcontainer">
-			<div class="lst__form-top" id="filter-search-input-group">
-				<div class="w-100 relative">
-					<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-					<div class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
-					<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+			<div class="night__shadow-big">
+				<div class="lst__form-top" id="filter-search-input-group">
+					<div class="w-100 relative">
+						<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
+						<div class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+					</div>
+					<button class="btn btn-default px-2" id="reset"><span class="glyphicon glyphicon-refresh"></span></button>
 				</div>
-				<button class="btn btn-default" id="reset"><span class="glyphicon glyphicon-refresh"></span></button>
-			</div>
-			<div id="filtertools" class="sortlabel lst__form-bottom">
-				<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-				<button class="sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
+				<div id="filtertools" class="sortlabel lst__form-bottom">
+					<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+					<button class="sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
+				</div>
+
+				<ul class="list list--stats classes cls__list"></ul>
 			</div>
 
-			<ul class="list list--stats classes cls__list">
-
-			</ul>
 			<p class="text-center">
-				<button class="btn btn-default btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+				<button class="btn btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
 			</p>
 		</div>
 		<div class="col-sm-9" id="classtable"></div>
 	</div>
 	<hr class="mt-0">
-	<div class="row flex">
+	<div class="row flex mobile__flex-col">
 		<div class="col-md-3">
 			<div class="text-center wrp-btn-readmode mb-3">
 				<button class="btn btn-default btn-xs no-print" id="btn-comparemode" title="A pop-up table which can be used to compare subclass features.">Subclass Comparison</button>

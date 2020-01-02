@@ -420,6 +420,10 @@ td > .rd__b:last-child {
 
 .night-mode .rd {
 	&__ {
+		&-image-title-inner {
+			border-color: $rgb-border-grey--night;
+		}
+
 		&b-inset {
 			background-color: #323431;
 
@@ -437,19 +441,19 @@ td > .rd__b:last-child {
 		}
 
 		&stats-name-page {
-			color: $rgb-font-color--night;
+			color: $rgb-font--night;
 		}
 	}
 
 	&-item__ {
 		&type-rarity-attunement {
-			color: $rgb-font-color--night;
+			color: $rgb-font--night;
 		}
 	}
 
 	&-spell__ {
 		&level-school-ritual {
-			color: $rgb-font-color--night;
+			color: $rgb-font--night;
 		}
 	}
 }

@@ -793,7 +793,7 @@ function sectFamily () {
 	let famIndex = 1;
 	const $btnSuppFam = $(`<button class="btn btn-xs btn-default btn-supp-fam no-print"></button>`).on("click", () => {
 		const supDetails = getPersonDetails();
-		const $wrpRes = $(`<div class="output-wrp-border"/>`);
+		const $wrpRes = $(`<div class="life__output-wrp-border"/>`);
 		$wrpRes.append(`<h5>Family Member Roll ${famIndex++}</h5>`);
 		$wrpRes.append(joinParaList(supDetails));
 		$btnSuppFam.css("margin-bottom", 5);
@@ -842,7 +842,7 @@ function sectLifeEvents () {
 		$events.append(`${evt.result}<br>`);
 		if (evt.nextRoll) {
 			if (evt.nextRoll.title) {
-				const $wrp = $(`<div class="output-wrp-border"/>`);
+				const $wrp = $(`<div class="life__output-wrp-border"/>`);
 				$wrp.append(`<h5>${evt.nextRoll.title}</h5>`);
 				$wrp.append(joinParaList(evt.nextRoll.result));
 				$events.append($wrp);
@@ -857,7 +857,7 @@ function sectLifeEvents () {
 }
 
 function roll () {
-	$(`.output`).show();
+	$(`.life__output`).show();
 
 	sectParents();
 	sectBirthplace();

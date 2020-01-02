@@ -36,7 +36,8 @@ class ClassesPage extends BaseComponent {
 
 		this._sourceFilter = SourceFilter.getInstance({
 			displayFnMini: it => Parser.sourceJsonToAbv(it),
-			displayFnTitle: it => Parser.sourceJsonToFull(it)
+			displayFnTitle: it => Parser.sourceJsonToFull(it),
+			itemSortFnMini: (a, b) => SortUtil.ascSort(Parser.sourceJsonToAbv(a.item), Parser.sourceJsonToAbv(b.item))
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
@@ -108,7 +109,7 @@ class ClassesPage extends BaseComponent {
 
 		BrewUtil.makeBrewButton("manage-brew");
 		await ListUtil.pLoadState();
-		RollerUtil.addListRollButton();
+		RollerUtil.addListRollButton(true);
 
 		window.onhashchange = this._handleHashChange.bind(this);
 
@@ -280,7 +281,8 @@ class ClassesPage extends BaseComponent {
 	}
 
 	_setStateFromHash (isInitialLoad) {
-		const [_, ...subs] = Hist.getHashParts();
+		let [_, ...subs] = Hist.getHashParts();
+		subs = this._filterBox.setFromSubHashes(subs);
 
 		const target = isInitialLoad ? this.__state : this._state;
 
@@ -337,7 +339,7 @@ class ClassesPage extends BaseComponent {
 	}
 
 	/**
-	 * @param opts Options object.
+	 * @param [opts] Options object.
 	 * @param [opts.class] Class to convert to hash.
 	 * @param [opts.state] State to convert to hash.
 	 */
@@ -399,6 +401,10 @@ class ClassesPage extends BaseComponent {
 	}
 
 	getListItem (cls, clsI, isExcluded) {
+		cls._fMisc = [];
+		if (cls.isReprinted) cls._fMisc.push("Reprinted");
+		if (cls.srd) cls._fMisc.push("SRD");
+
 		this._sourceFilter.addItem(cls.source);
 
 		const hash = UrlUtil.autoEncodeHash(cls);
@@ -436,7 +442,7 @@ class ClassesPage extends BaseComponent {
 			return this._filterBox.toDisplay(
 				f,
 				it.source,
-				[]
+				it._fMisc
 			);
 		});
 
@@ -921,11 +927,12 @@ class ClassesPage extends BaseComponent {
 		));
 
 		this._listSubclass.on("updated", () => {
+			$dispCount.off("click");
 			if (this._listSubclass.visibleItems.length) {
 				const cntNotShown = this._listSubclass.items.length - this._listSubclass.visibleItems.length;
-				$dispCount.html(cntNotShown ? `<i class="help--subtle" title="Adjust your filters to see more.">(${cntNotShown} more not shown)</i>` : "");
+				$dispCount.html(cntNotShown ? `<i class="clickable" title="Adjust your filters to see more.">(${cntNotShown} more not shown)</i>` : "").click(() => this._doSelectAllSubclasses());
 			} else if (this._listSubclass.items.length > 1) {
-				$dispCount.html(`<i class="help--subtle" title="Adjust your filters to see more.">(${this._listSubclass.items.length - 1} subclasses not shown)</i>`);
+				$dispCount.html(`<i class="clickable" title="Adjust your filters to see more.">(${this._listSubclass.items.length - 1} subclasses not shown)</i>`).click(() => this._doSelectAllSubclasses());
 			} else $dispCount.html("");
 		});
 
@@ -933,15 +940,63 @@ class ClassesPage extends BaseComponent {
 		// endregion
 	}
 
+	_doSelectAllSubclasses () {
+		const cls = this.activeClass;
+		const allStateKeys = cls.subclasses.map(sc => UrlUtil.getStateKeySubclass(sc));
+
+		this._sourceFilter.doSetPillsClear();
+		this._filterBox.fireChangeEvent();
+		this._proxyAssign("state", "_state", "__state", allStateKeys.map(stateKey => ({[stateKey]: true})).reduce((a, b) => Object.assign(a, b), {}));
+	}
+
 	async _render_pInitSubclassControls ($wrp) {
 		const cls = this.activeClass;
 
-		const $btnSelAll = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-check"/></button>`)
-			.click(() => {
-				this._proxyAssign("state", "_state", "__state", cls.subclasses.map(sc => ({[UrlUtil.getStateKeySubclass(sc)]: true})).reduce((a, b) => Object.assign(a, b), {}));
+		const $btnSelAll = $(`<button class="btn btn-xs btn-default" title="Select All (SHIFT to include most recent UA/etc.; ALT to select official only)"><span class="glyphicon glyphicon-check"/></button>`)
+			.click(evt => {
+				const allStateKeys = cls.subclasses.map(sc => UrlUtil.getStateKeySubclass(sc));
+				if (evt.shiftKey) {
+					this._doSelectAllSubclasses();
+				} else if (evt.altKey) {
+					const nxtState = {};
+					allStateKeys.forEach(k => nxtState[k] = false);
+					this._listSubclass.visibleItems
+						.filter(it => it.values.mod === "brew" || it.values.mod === "fresh")
+						.map(it => it.values.stateKey)
+						.forEach(stateKey => nxtState[stateKey] = true);
+					this._proxyAssign("state", "_state", "__state", nxtState);
+				} else {
+					const nxtState = {};
+					allStateKeys.forEach(k => nxtState[k] = false);
+					this._listSubclass.visibleItems
+						.map(it => it.values.stateKey)
+						.filter(Boolean)
+						.forEach(stateKey => nxtState[stateKey] = true);
+					this._proxyAssign("state", "_state", "__state", nxtState);
+				}
 			});
 
-		const $btnReset = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-refresh"/></button>`)
+		const filterSets = [
+			{name: "View Official", subHashes: []},
+			{name: "View Most Recent", subHashes: ["flstsource:dmg=0~erlw=0~ggr=0~phb=0~scag=0~xge=0"]},
+			{name: "View All", subHashes: ["flstsource:dmg=0~erlw=0~ggr=0~phb=0~scag=0~xge=0", "flstmiscellaneous:reprinted=0"]}
+		];
+		const setFilterSet = ix => {
+			const filterSet = filterSets[ix];
+			const boxSubhashes = this._filterBox.getBoxSubHashes();
+			this._filterBox.setFromSubHashes([...boxSubhashes, ...filterSet.subHashes].filter(Boolean), true);
+			$selFilterPreset.val("-1");
+		};
+		const $selFilterPreset = $(`<select class="input-xs form-control cls-tabs__sel-preset"><option value="-1" disabled>Filter...</option></select>`)
+			.change(() => {
+				const val = Number($selFilterPreset.val());
+				if (val == null) return;
+				setFilterSet(val)
+			});
+		filterSets.forEach((it, i) => $selFilterPreset.append(`<option value="${i}">${it.name}</option>`));
+		$selFilterPreset.val("-1");
+
+		const $btnReset = $(`<button class="btn btn-xs btn-default" title="Reset Selection"><span class="glyphicon glyphicon-refresh"/></button>`)
 			.click(() => {
 				this._proxyAssign("state", "_state", "__state", cls.subclasses.map(sc => ({[UrlUtil.getStateKeySubclass(sc)]: false})).reduce((a, b) => Object.assign(a, b), {}));
 			});
@@ -974,6 +1029,7 @@ class ClassesPage extends BaseComponent {
 				}
 			});
 
+		$$`<div class="flex-v-center m-1 no-shrink">${$selFilterPreset}</div>`.appendTo($wrp);
 		$$`<div class="flex-v-center m-1 btn-group no-shrink">
 			${$btnSelAll}${$btnShuffle}${$btnReset}${$btnToggleSources}
 		</div>`.appendTo($wrp);
@@ -1030,7 +1086,8 @@ class ClassesPage extends BaseComponent {
 				source: sc.source,
 				shortName: sc.shortName,
 				stateKey,
-				isExcluded
+				isExcluded,
+				mod
 			}
 		);
 	}
@@ -1431,7 +1488,7 @@ ClassesPage.ClassBookView = class {
 
 				const $btnToggleSc = $(`<span class="cls-bkmv__btn-tab ${sc.isReprinted ? "cls__btn-sc--reprinted" : ""}" title="${ClassesPage.getBtnTitleSubclass(sc)}">${name}</span>`)
 					.on("click", () => this._parent.set(stateKey, !this._parent.get(stateKey)));
-				const isVisible = this._classPage.filterBox.toDisplay(filterValues, sc.source);
+				const isVisible = this._classPage.filterBox.toDisplay(filterValues, sc.source, sc._fMisc);
 				if (!isVisible) $btnToggleSc.addClass("hidden");
 
 				const hkShowHide = () => {

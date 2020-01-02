@@ -1020,12 +1020,12 @@ class EncounterBuilder extends ProxyBase {
 		return `
 			<div class="row mb-2 ecgen__player_group">
 				<div class="col-2">
-					<select class="ecgen__player_group__count" onchange="encounterBuilder.updateDifficulty()">
+					<select class="ecgen__player_group__count form-control form-control--minimal input-xs" onchange="encounterBuilder.updateDifficulty()">
 					${[...new Array(12)].map((_, i) => `<option ${(count === i + 1) ? "selected" : ""}>${i + 1}</option>`).join("")}
 					</select>
 				</div>
 				<div class="col-2">
-					<select class="ecgen__player_group__level" onchange="encounterBuilder.updateDifficulty()" >
+					<select class="ecgen__player_group__level form-control form-control--minimal input-xs" onchange="encounterBuilder.updateDifficulty()" >
 						${[...new Array(20)].map((_, i) => `<option ${(level === i + 1) ? "selected" : ""}>${i + 1}</option>`).join("")}
 					</select>
 				</div>
@@ -1043,7 +1043,7 @@ class EncounterBuilder extends ProxyBase {
 	static getButtons (monId) {
 		return `<span class="ecgen__visible col-1 no-wrap pl-0" onclick="event.preventDefault(); event.stopPropagation()">
 			<button title="Add (SHIFT for 5)" class="btn btn-success btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 1)"><span class="glyphicon glyphicon-plus"></span></button>
-			<button title="Subtract (SHIFT for 5)" class="btn btn-danger btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 0)"><span class="glyphicon glyphicon-minus"></span></button> 
+			<button title="Subtract (SHIFT for 5)" class="btn btn-danger btn-xs ecgen__btn_list" onclick="encounterBuilder.handleClick(event, ${monId}, 0)"><span class="glyphicon glyphicon-minus"></span></button>
 		</span>`;
 	}
 
@@ -1058,7 +1058,7 @@ class EncounterBuilder extends ProxyBase {
 			.click(() => encounterBuilder.handleShuffleClick(monId));
 
 		return $$`<span class="ecgen__visible col-1-5 no-wrap pl-0">
-			${$btnAdd} 
+			${$btnAdd}
 			${$btnSub}
 			${$btnRandomize}
 		</span>`
@@ -1215,8 +1215,8 @@ class EncounterBuilder extends ProxyBase {
 								});
 
 							const $row = $$`<div class="flex-v-center w-100 mb-2">
-								${$iptName} 
-								${$btnLoad} 
+								${$iptName}
+								${$btnLoad}
 								${$btnDelete}
 							</div>`.appendTo($wrpRows);
 						});

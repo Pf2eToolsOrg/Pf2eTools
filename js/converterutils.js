@@ -651,10 +651,10 @@ TraitActionTag.tags = { // true = map directly; string = map to this string
 class LanguageTag {
 	/**
 	 * @param m A creature statblock.
-	 * @param opt Options object.
-	 * @param opt.cbAll Callback to run on every parsed language.
-	 * @param opt.cbTracked Callback to run on every tracked language.
-	 * @param opt.isAppendOnly If tags should only be added, not removed.
+	 * @param [opt] Options object.
+	 * @param [opt.cbAll] Callback to run on every parsed language.
+	 * @param [opt.cbTracked] Callback to run on every tracked language.
+	 * @param [opt.isAppendOnly] If tags should only be added, not removed.
 	 */
 	static tryRun (m, opt) {
 		opt = opt || {};
@@ -1117,23 +1117,25 @@ SpellcastingTraitConvert.SPELL_SRC_MAP = {};
 class DiceConvert {
 	static convertTraitActionDice (traitOrAction) {
 		if (traitOrAction.entries) {
-			traitOrAction.entries = traitOrAction.entries.filter(it => it.trim ? it.trim() : true).map(e => {
-				e = JSON.stringify(e);
-
-				// replace e.g. "+X to hit"
-				e = e.replace(/([-+])?\d+(?= to hit)/g, function (match) {
-					const cleanMatch = match.startsWith("+") ? match.replace("+", "") : match;
-					return `{@hit ${cleanMatch}}`
-				});
-
-				return JSON.parse(DiceConvert._getTaggedString(e));
-			});
+			traitOrAction.entries = traitOrAction.entries
+				.filter(it => it.trim ? it.trim() : true)
+				.map(e => JSON.parse(DiceConvert._getTaggedString(JSON.stringify(e))));
 		}
 	}
 
+	static getTaggedEntry (entry) {
+		return JSON.parse(DiceConvert._getTaggedString(JSON.stringify(entry)));
+	}
+
 	static _getTaggedString (str) {
-		// un-tag dice
-		str = str.replace(/{@(?:dice|damage) ([^}]*)}/gi, "$1");
+		// replace e.g. "+X to hit"
+		str = str.replace(/([-+])?\d+(?= to hit)/g, function (match) {
+			const cleanMatch = match.startsWith("+") ? match.replace("+", "") : match;
+			return `{@hit ${cleanMatch}}`
+		});
+
+		// un-tag dice -- avoid un-tagging @damage as the user may have specified this
+		str = str.replace(/{@(?:dice) ([^}]*)}/gi, "$1");
 
 		// re-tag + format dice
 		str = str.replace(/((\s*[-+]\s*)?(([1-9]\d*)?d([1-9]\d*)(\s*?[-+×x*÷/]\s*?(\d,\d|\d)+(\.\d+)?)?))+/gi, (...m) => {
@@ -1141,10 +1143,14 @@ class DiceConvert {
 			return `{@dice ${expanded}}`;
 		});
 
-		// tag damage
-		str = str.replace(/(\d+)( \({@dice )([-+0-9d ]*)(}\) [a-z]+( or [a-z]+)? damage)/ig, (...m) => {
-			return m[0].replace(/{@dice /gi, "{@damage ");
-		});
+		// unwrap double-tagged @damage
+		str = str.replace(/{@damage {@dice ([^}]*)}}/gi, "{@damage $1}");
+
+		// tag @damage (creature style)
+		str = str.replace(/\d+ \({@dice ([-+0-9d ]*)}\) [a-z]+( or [a-z]+)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
+
+		// tag @damage (spell/etc style)
+		str = str.replace(/{@dice ([-+0-9d ]*)}( [a-z]+( or [a-z]+)?)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
 
 		return str;
 	}

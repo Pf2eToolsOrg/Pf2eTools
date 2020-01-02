@@ -28,8 +28,12 @@
 
 	<style>
 		h4 {
-			border-bottom: 1px solid black;
+			border-bottom: 1px solid #333;
 			width: 100%;
+		}
+
+		.night-mode h4 {
+			border-bottom: 1px solid #555;
 		}
 
 		h5 {
@@ -37,7 +41,7 @@
 			margin-bottom: 3px;
 		}
 
-		.output-wrp-border {
+		.life__output-wrp-border {
 			border-radius: 4px;
 			margin-bottom: 3px;
 		}
@@ -51,7 +55,7 @@
 			margin: 6px 0 6px 6px;
 		}
 
-		.output {
+		.life__output {
 			background: none;
 		}
 
@@ -76,7 +80,7 @@
 			content: "Reroll";
 		}
 
-		.output {
+		.life__output {
 			margin: 1em 0;
 			padding: 0.2em 0.7em;
 			border-radius: 0.2em;
@@ -140,32 +144,32 @@
 		<p><i>NOTE: Text displayed in italics is generated for the sake of ease and speed of use, and does not correspond to a table in the original generator. Ignore it as you see fit.</i></p>
 	</div>
 
-	<hr class="output" style="display: none;">
-	<div class="row output" style="display: none;">
+	<hr class="life__output" style="display: none;">
+	<div class="row life__output" style="display: none;">
 		<div class="wrp-sect-head"><h4>Parents</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectParents()"></button></div>
 		<p id="parents"></p>
 	</div>
-	<div class="row output" style="display: none;">
+	<div class="row life__output" style="display: none;">
 		<div class="wrp-sect-head"><h4>Birthplace</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectBirthplace()"></button></div>
 		<p id="birthplace"></p>
 	</div>
-	<div class="row output" style="display: none;">
+	<div class="row life__output" style="display: none;">
 		<div class="wrp-sect-head"><h4>Siblings</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectSiblings()"></button></div>
 		<p id="siblings"></p>
 	</div>
-	<div class="row output" style="display: none;">
+	<div class="row life__output" style="display: none;">
 		<div class="wrp-sect-head"><h4>Family and Friends</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectFamily()"></button></div>
 		<p id="family"></p>
 	</div>
-	<div class="row output" style="display: none;">
+	<div class="row life__output" style="display: none;">
 		<div class="wrp-sect-head"><h4>Personal Decisions</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectPersonalDecisions()"></button></div>
 		<p id="personal"></p>
 	</div>
-	<div class="row output" style="display: none;">
+	<div class="row life__output" style="display: none;">
 		<div class="wrp-sect-head"><h4>Class Training</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectClassTraining()"></button></div>
 		<p id="clss"></p>
 	</div>
-	<div class="row output" style="display: none;">
+	<div class="row life__output" style="display: none;">
 		<div class="wrp-sect-head"><h4>Life Events</h4><button class="btn btn-xs btn-default btn-reroll" onclick="sectLifeEvents()"></button></div>
 		<p id="events"></p>
 	</div>

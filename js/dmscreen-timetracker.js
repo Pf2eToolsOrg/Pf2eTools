@@ -925,10 +925,10 @@ class TimeTrackerRoot_Clock extends TimeTrackerComponent {
 					$wrpMoons.show();
 					todayMoonInfos.forEach(moon => {
 						$$`<div class="flex-v-center mr-2 ui-tip__parent">
-							${TimeTrackerBase.$getCvsMoon(moon).addClass("mr-2").addClass("dm-time__clock-moon-phase").attr("title", null)} 
+							${TimeTrackerBase.$getCvsMoon(moon).addClass("mr-2").addClass("dm-time__clock-moon-phase").attr("title", null)}
 							<div class="flex-col ui-tip__child">
 								<div class="flex">${moon.name}</div>
-								<div class="flex small"><i class="mr-1 no-wrap">${moon.phaseName}</i><span class="text-muted no-wrap">(Day ${moon.dayOfPeriod + 1}/${moon.period})</span></div>				
+								<div class="flex small"><i class="mr-1 no-wrap">${moon.phaseName}</i><span class="text-muted no-wrap">(Day ${moon.dayOfPeriod + 1}/${moon.period})</span></div>
 							</div>
 						</div>`.appendTo($wrpMoons);
 					});
@@ -1158,9 +1158,9 @@ class TimeTrackerRoot_Clock extends TimeTrackerComponent {
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="dm-time__bar-clock"></div>
-			
+
 			<div class="flex-col no-shrink pr-1 flex-h-center">
 				${$wrpDays}
 				<div class="small flex-vh-center btn-group">
@@ -1386,14 +1386,14 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 		$$`<div class="flex-col w-100 flex-vh-center">
 			<div class="flex-vh-center small mb-1"><span class="small-caps mr-2">Weather</span>${$btnRandomise}</div>
 			<div class="mb-2">${$btnTemperature}${$btnPrecipitation}</div>
-			
+
 			<div class="flex-col flex-vh-center">
 				<div class="small small-caps">Wind</div>
-				<div class="mb-1">${$btnWindDirection}</div> 
+				<div class="mb-1">${$btnWindDirection}</div>
 				<div>${$btnWindSpeed}</div>
 			</div>
-			
-			${$wrpEnvEffects} 
+
+			${$wrpEnvEffects}
 		</div>`.appendTo($parent);
 	}
 
@@ -1820,12 +1820,12 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 		opts = opts || {};
 		const {doModTime, getTimeInfo} = parent;
 
-		const $btnSubDay = opts.isHideDays ? null : $(`<button class="btn btn-xs btn-default dm-time__btn-date-adjust"  title="Subtract Day (SHIFT for 5)">-D</button>`)
+		const $btnSubDay = opts.isHideDays ? null : $(`<button class="btn btn-xs btn-default dm-time__btn-date-adjust"  title="Subtract Day (SHIFT for 5)">\u2012D</button>`)
 			.click(evt => doModTime(-1 * getTimeInfo().secsPerDay * (evt.shiftKey ? 5 : 1)));
 		const $btnAddDay = opts.isHideDays ? null : $(`<button class="btn btn-xs btn-default dm-time__btn-date-adjust" title="Add Day (SHIFT for 5)">D+</button>`)
 			.click(evt => doModTime(getTimeInfo().secsPerDay * (evt.shiftKey ? 5 : 1)));
 
-		const $btnSubWeek = opts.isHideWeeks ? null : $(`<button class="btn btn-xs btn-default dm-time__btn-date-adjust"  title="Subtract Week (SHIFT for 5)">-W</button>`)
+		const $btnSubWeek = opts.isHideWeeks ? null : $(`<button class="btn btn-xs btn-default dm-time__btn-date-adjust"  title="Subtract Week (SHIFT for 5)">\u2012W</button>`)
 			.click(evt => doModTime(-1 * getTimeInfo().secsPerWeek * (evt.shiftKey ? 5 : 1)));
 		const $btnAddWeek = opts.isHideWeeks ? null : $(`<button class="btn btn-xs btn-default dm-time__btn-date-adjust" title="Add Week (SHIFT for 5)">W+</button>`)
 			.click(evt => doModTime(getTimeInfo().secsPerWeek * (evt.shiftKey ? 5 : 1)));
@@ -1877,12 +1877,12 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 			}
 		};
 
-		const $btnSubMonth = $(`<button class="btn btn-xs btn-default dm-time__btn-date-adjust"  title="Subtract Month (SHIFT for 5)">-M</button>`)
+		const $btnSubMonth = $(`<button class="btn btn-xs btn-default dm-time__btn-date-adjust"  title="Subtract Month (SHIFT for 5)">\u2012M</button>`)
 			.click(evt => doModMonths(evt.shiftKey ? -5 : -1));
 		const $btnAddMonth = $(`<button class="btn btn-xs btn-default dm-time__btn-date-adjust" title="Add Month (SHIFT for 5)">M+</button>`)
 			.click(evt => doModMonths(evt.shiftKey ? 5 : 1));
 
-		const $btnSubYear = $(`<button class="btn btn-xs btn-default dm-time__btn-date-adjust"  title="Subtract Year (SHIFT for 5)">-Y</button>`)
+		const $btnSubYear = $(`<button class="btn btn-xs btn-default dm-time__btn-date-adjust"  title="Subtract Year (SHIFT for 5)">\u2012Y</button>`)
 			.click(evt => doModTime(-1 * getTimeInfo().secsPerYear * (evt.shiftKey ? 5 : 1)));
 		const $btnAddYear = $(`<button class="btn btn-xs btn-default dm-time__btn-date-adjust" title="Add Year (SHIFT for 5)">Y+</button>`)
 			.click(evt => doModTime(getTimeInfo().secsPerYear * (evt.shiftKey ? 5 : 1)));
@@ -1928,8 +1928,8 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 			<div class="flex btn-group mr-2">
 				${$btnSubYear}
 				${$btnSubMonth}
-				${$btnSubWeek} 
-				${$btnSubDay} 
+				${$btnSubWeek}
+				${$btnSubDay}
 			</div>
 			<div class="mr-2 flex-v-center">
 				${$iptYear}
@@ -1939,10 +1939,10 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 				${$iptDay}
 			</div>
 			<div class="flex-h-right btn-group">
-				${$btnAddDay} 
-				${$btnAddWeek} 
+				${$btnAddDay}
+				${$btnAddWeek}
 				${$btnAddMonth}
-				${$btnAddYear} 
+				${$btnAddYear}
 			</div>
 		</div>`;
 
@@ -2039,7 +2039,7 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 				$ele = $$`<div class="dm-time__disp-calendar-day btn-xxs m-1 relative ${i === date && !opts.isHideDay ? "dm-time__disp-calendar-day--active" : ""}">
 					${i + 1}
 					${events.length ? `<div class="dm-time__disp-day-entry dm-time__disp-day-entry--event" title="Has Events">*</div>` : ""}
-					${encounters.length ? `<div class="dm-time__disp-day-entry dm-time__disp-day-entry--encounter" title="Has Encounters">*</div>` : ""} 
+					${encounters.length ? `<div class="dm-time__disp-day-entry dm-time__disp-day-entry--encounter" title="Has Encounters">*</div>` : ""}
 					${moonPart}
 				</div>`.click((evt) => fnClickDay(evt, year, eventDay, moonDay));
 			}
@@ -2232,10 +2232,10 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 			$wrpMoons.empty();
 			todayMoonInfos.forEach(moon => {
 				$$`<div class="flex-v-center mr-2">
-					${TimeTrackerBase.$getCvsMoon(moon).addClass("mr-2")} 
+					${TimeTrackerBase.$getCvsMoon(moon).addClass("mr-2")}
 					<div class="flex-col">
 						<div class="flex">${moon.name}</div>
-						<div class="flex small"><i class="mr-1">${moon.phaseName}</i><span class="text-muted">(Day ${moon.dayOfPeriod + 1}/${moon.period})</span></div>				
+						<div class="flex small"><i class="mr-1">${moon.phaseName}</i><span class="text-muted">(Day ${moon.dayOfPeriod + 1}/${moon.period})</span></div>
 					</div>
 				</div>`.appendTo($wrpMoons);
 			});
@@ -2360,13 +2360,13 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 
 				$$`<div class="flex-v-center w-100 py-1 px-2 stripe-even">
 					${$iptName}
-					${$btnRunEncounter} 
+					${$btnRunEncounter}
 					${$btnResetUse}
-					${$btnSaveToFile} 
-					<label class="flex-v-center ${timeInputs ? "mr-2" : "mr-3"}"> 
+					${$btnSaveToFile}
+					<label class="flex-v-center ${timeInputs ? "mr-2" : "mr-3"}">
 						<div class="mr-1 no-wrap">Has Time?</div>
-						${$cbHasTime} 
-					</label> 
+						${$cbHasTime}
+					</label>
 					${timeInputs ? $$`<div class="flex-v-center mr-3">
 						${timeInputs.$iptHours}
 						<div>:</div>
@@ -2390,7 +2390,7 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 			${$hrMoons}
 			<div class="split flex-v-center mb-1 no-shrink">
 				<div class="underline dm-time__day-entry-header">Events</div>
-				<div class="btn-group flex">${$btnAddEvent}${$btnAddEventAtTime}</div>	
+				<div class="btn-group flex">${$btnAddEvent}${$btnAddEventAtTime}</div>
 			</div>
 			${$wrpEvents}
 			<hr class="hr-2 no-shrink">
@@ -2454,9 +2454,9 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 					);
 
 					const $wrpExact = $$`<div class="flex-vh-center">
-						${$iptExHour} 
+						${$iptExHour}
 						<div class="mr-1">:</div>
-						${$iptExMinutes} 
+						${$iptExMinutes}
 						<div class="mr-1">:</div>
 						${$iptExSecs}
 					</div>`;
@@ -2513,8 +2513,8 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 
 					$$`<div class="flex-col h-100">
 						<div class="flex-vh-center flex-col w-100 h-100">
-							${$selMode} 
-							${$wrpExact} 
+							${$selMode}
+							${$wrpExact}
 							${$wrpOffset}
 						</div>
 						${$btnOk}
@@ -3035,7 +3035,7 @@ class TimeTrackerRoot_Settings_Day extends TimeTrackerComponent {
 		this._$rendered = $$`<div class="flex my-1 dm-time__row-delete">
 			${$iptName}
 			${$padDrag}
-			${$btnRemove} 
+			${$btnRemove}
 			<div class="dm-time__spc-button"/>
 		</div>`.appendTo($parent);
 	}
@@ -3073,10 +3073,10 @@ class TimeTrackerRoot_Settings_Month extends TimeTrackerComponent {
 			.click(() => this._state.isDeleted = true);
 
 		this._$rendered = $$`<div class="flex my-1 dm-time__row-delete">
-			${$iptName} 
-			${$iptDays} 
+			${$iptName}
+			${$iptDays}
 			${$padDrag}
-			${$btnRemove} 
+			${$btnRemove}
 			<div class="dm-time__spc-button"/>
 		</div>`.appendTo($parent);
 	}
@@ -3183,11 +3183,11 @@ class TimeTrackerRoot_Settings_Event extends TimeTrackerComponent {
 			<div class="flex w-100">
 				${$iptName}
 				${$btnShowHide}
-				${$btnEdit} 
-				<label class="flex-v-center ${timeInputs ? "mr-2" : "mr-3"}"> 
+				${$btnEdit}
+				<label class="flex-v-center ${timeInputs ? "mr-2" : "mr-3"}">
 					<div class="mr-1 no-wrap">Has Time?</div>
-					${$cbHasTime} 
-				</label> 
+					${$cbHasTime}
+				</label>
 				${timeInputs ? $$`<div class="flex-v-center mr-3">
 					${timeInputs.$iptHours}
 					<div>:</div>
@@ -3225,8 +3225,8 @@ class TimeTrackerRoot_Settings_Event extends TimeTrackerComponent {
 			.click(() => doClose(true));
 
 		$$`<div class="flex-col h-100">
-			${$iptName} 
-			${$iptEntries} 
+			${$iptName}
+			${$iptEntries}
 			<div class="flex-h-right no-shrink">${$btnOk}</div>
 		</div>`.appendTo($modalInner);
 	}
@@ -3266,12 +3266,12 @@ class TimeTrackerRoot_Settings_Season extends TimeTrackerComponent {
 			.click(() => this._state.isDeleted = true);
 
 		$$`<div class="flex my-1">
-			${$iptName} 
+			${$iptName}
 			${$iptSunrise}
 			${$iptSunset}
-			${$iptDaysStart} 
-			${$iptDaysEnd} 
-			${$btnRemove} 
+			${$iptDaysStart}
+			${$iptDaysEnd}
+			${$btnRemove}
 		</div>`.appendTo($parent);
 	}
 
@@ -3290,9 +3290,9 @@ class TimeTrackerRoot_Settings_Year extends TimeTrackerComponent {
 			.click(() => this._state.isDeleted = true);
 
 		$$`<div class="flex my-1">
-			${$iptName} 
+			${$iptName}
 			${$iptYear}
-			${$btnRemove} 
+			${$btnRemove}
 		</div>`.appendTo($parent);
 	}
 
@@ -3314,11 +3314,11 @@ class TimeTrackerRoot_Settings_Era extends TimeTrackerComponent {
 			.click(() => this._state.isDeleted = true);
 
 		$$`<div class="flex my-1">
-			${$iptName} 
-			${$iptAbbreviation} 
+			${$iptName}
+			${$iptAbbreviation}
 			${$iptYearsStart}
 			${$iptYearsEnd}
-			${$btnRemove} 
+			${$btnRemove}
 		</div>`.appendTo($parent);
 	}
 
@@ -3338,11 +3338,11 @@ class TimeTrackerRoot_Settings_Moon extends TimeTrackerComponent {
 			.click(() => this._state.isDeleted = true);
 
 		$$`<div class="flex my-1">
-			${$iptName} 
+			${$iptName}
 			${$iptColor}
-			${$iptPhaseOffset} 
+			${$iptPhaseOffset}
 			${$iptPeriod}
-			${$btnRemove} 
+			${$btnRemove}
 		</div>`.appendTo($parent);
 	}
 

@@ -102,13 +102,6 @@ class SpellBuilder extends Builder {
 		this.doCreateProxies();
 
 		const _cb = () => {
-			// do post-processing
-			DiceConvert.convertTraitActionDice(this._state);
-			if (this._state.entriesHigherLevel) {
-				DiceConvert.convertTraitActionDice(this._state.entriesHigherLevel[0]);
-				this._state.entriesHigherLevel = [...this._state.entriesHigherLevel];
-			}
-
 			this.renderOutput();
 			this.doUiSave();
 			this.isEntrySaved = false;
@@ -148,8 +141,8 @@ class SpellBuilder extends Builder {
 		this.__$getComponentInput(cb).appendTo(detailsTab.$wrpTab);
 		this.__$getMetaInput(cb).appendTo(detailsTab.$wrpTab);
 		this.__$getDurationInput(cb).appendTo(detailsTab.$wrpTab);
-		BuilderUi.$getStateIptEntries("Text", cb, this._state, {}, "entries").appendTo(detailsTab.$wrpTab);
-		BuilderUi.$getStateIptEntries("&quot;At Higher Levels&quot; Text", cb, this._state, {nullable: true, withHeader: "At Higher Levels"}, "entriesHigherLevel").appendTo(detailsTab.$wrpTab);
+		BuilderUi.$getStateIptEntries("Text", cb, this._state, {fnPostProcess: DiceConvert.getTaggedEntry}, "entries").appendTo(detailsTab.$wrpTab);
+		BuilderUi.$getStateIptEntries("&quot;At Higher Levels&quot; Text", cb, this._state, {nullable: true, withHeader: "At Higher Levels", fnPostProcess: DiceConvert.getTaggedEntry}, "entriesHigherLevel").appendTo(detailsTab.$wrpTab);
 
 		// SOURCES
 		this.__$getClassesInputs(cb).forEach($e => $e.appendTo(sourcesTab.$wrpTab));
@@ -979,7 +972,7 @@ class SpellBuilder extends Builder {
 		RenderSpells.$getRenderedSpell(procSpell, this._subclassLookup).appendTo($tblSpell);
 
 		// Data
-		const $tblData = $(`<table class="stats stats--book" style="box-shadow: none; border-left: 1px solid #ccc; border-right: 1px solid #ccc;"/>`).appendTo(dataTab.$wrpTab);
+		const $tblData = $(`<table class="stats stats--book mkbru__wrp-output-tab-data"/>`).appendTo(dataTab.$wrpTab);
 		const asCode = Renderer.get().render({
 			type: "entries",
 			entries: [

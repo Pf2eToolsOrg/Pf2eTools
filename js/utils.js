@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.93.3"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.94.3"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -230,6 +230,10 @@ StrUtil = {
 CleanUtil = {
 	getCleanJson (data, minify = false) {
 		let str = minify ? JSON.stringify(data) : `${JSON.stringify(data, null, "\t")}\n`;
+		return CleanUtil.getCleanString(str);
+	},
+
+	getCleanString (str) {
 		str = str.replace(CleanUtil.REPLACEMENT_REGEX, (match) => CleanUtil.REPLACEMENTS[match]);
 		return str
 			.replace(/\u00AD/g, "") // soft hyphens
@@ -243,7 +247,7 @@ CleanUtil = {
 			.replace(/[“”]/g, `"`)
 			.replace(/…/g, `...`)
 	}
-}
+};
 CleanUtil.REPLACEMENTS = {
 	"—": "\\u2014",
 	"–": "\\u2013",
@@ -2348,7 +2352,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UAFT] = "UAFT";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAGH] = "UAGH";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAMDM] = "UAMM";
 Parser.SOURCE_JSON_TO_ABV[SRC_UASSP] = "UASS";
-Parser.SOURCE_JSON_TO_ABV[SRC_UATMC] = "UAM";
+Parser.SOURCE_JSON_TO_ABV[SRC_UATMC] = "UAMy";
 Parser.SOURCE_JSON_TO_ABV[SRC_UATOBM] = "UAOBM";
 Parser.SOURCE_JSON_TO_ABV[SRC_UATRR] = "UATRR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAWA] = "UAWA";
@@ -2364,7 +2368,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UACDD] = "UACDD";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAD] = "UAD";
 Parser.SOURCE_JSON_TO_ABV[SRC_UARCO] = "UARCO";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAF] = "UAF";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAM] = "UAM";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAM] = "UAMk";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAP] = "UAP";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAMC] = "UAMC";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAS] = "UAS";
@@ -4392,7 +4396,7 @@ UrlUtil = {
 				const parts = filterBox.getSubHashes();
 				parts.unshift(url);
 
-				if (evt.shiftKey) {
+				if (evt.shiftKey && ListUtil.sublist) {
 					const toEncode = JSON.stringify(ListUtil.getExportableSublist());
 					const part2 = UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], {isEncodeBoth: true});
 					parts.push(part2);
@@ -5586,11 +5590,11 @@ DataUtil = {
 
 // ROLLING =============================================================================================================
 RollerUtil = {
-	isCrypto: () => {
+	isCrypto () {
 		return typeof window !== "undefined" && typeof window.crypto !== "undefined";
 	},
 
-	randomise: (max, min = 1) => {
+	randomise (max, min = 1) {
 		if (min > max) return 0;
 		if (max === min) return max;
 		if (RollerUtil.isCrypto()) {
@@ -5636,12 +5640,12 @@ RollerUtil = {
 	 * @param fn funciton to call to generate random numbers
 	 * @returns {number} rolled
 	 */
-	roll: (max, fn = Math.random) => {
+	roll (max, fn = Math.random) {
 		return Math.floor(fn() * max);
 	},
 
-	addListRollButton: () => {
-		const $btnRoll = $(`<button class="btn btn-default" id="feelinglucky" title="Feeling Lucky?"><span class="glyphicon glyphicon-random"></span></button>`);
+	addListRollButton (isCompact) {
+		const $btnRoll = $(`<button class="btn btn-default ${isCompact ? "px-2" : ""}" id="feelinglucky" title="Feeling Lucky?"><span class="glyphicon glyphicon-random"></span></button>`);
 		$btnRoll.on("click", () => {
 			const primaryLists = ListUtil.getPrimaryLists();
 			if (primaryLists && primaryLists.length) {
@@ -6875,6 +6879,7 @@ BrewUtil = {
 	},
 
 	removeJsonSource (source) {
+		if (!source) return;
 		source = source.toLowerCase();
 		BrewUtil._resetSourceCache();
 		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json.toLowerCase() === source);
@@ -6895,24 +6900,28 @@ BrewUtil = {
 	},
 
 	sourceJsonToFull (source) {
+		if (!source) return "";
 		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].full || source : source;
 	},
 
 	sourceJsonToAbv (source) {
+		if (!source) return "";
 		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].abbreviation || source : source;
 	},
 
 	sourceJsonToSource (source) {
+		if (!source) return null;
 		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source] : null;
 	},
 
 	sourceJsonToStyle (source) {
+		if (!source) return "";
 		source = source.toLowerCase();
 		const color = BrewUtil.sourceJsonToColor(source);
 		if (color) return `style="color: #${color};"`;
@@ -6920,6 +6929,7 @@ BrewUtil = {
 	},
 
 	sourceJsonToColor (source) {
+		if (!source) return "";
 		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		if (BrewUtil._sourceCache[source] && BrewUtil._sourceCache[source].color) {

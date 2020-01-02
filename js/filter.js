@@ -45,7 +45,9 @@ class FilterBox extends ProxyBase {
 		this._namespace = opts.namespace;
 
 		this._doSaveStateDebounced = MiscUtil.debounce(() => this._pDoSaveState(), 50);
-		this.__meta = {...FilterBox._DEFAULT_META};
+		this.__meta = this._getDefaultMeta();
+		if (this._isCompact) this.__meta.isSummaryHidden = true;
+
 		this._meta = this._getProxy("meta", this.__meta);
 		this.__minisHidden = {};
 		this._minisHidden = this._getProxy("minisHidden", this.__minisHidden);
@@ -157,17 +159,21 @@ class FilterBox extends ProxyBase {
 			hook();
 
 			$$`<div class="ui-modal__inner ui-modal__inner--large dropdown-menu">
-			<div class="split mb-2 mt-2 flex-v-center">
-				<h4 class="m-0">Filters</h4>
-				<div class="flex-v-center">
-					<div class="mr-2">Combine filters as...</div>
-					${$wrpBtnCombineFilters}
-					<div class="btn-group mr-2">
-						${$btnShowAllFilters}
-						${$btnHideAllFilters}
+			<div class="split mb-2 mt-2 flex-v-center mobile__flex-col">
+				<h4 class="m-0 mobile__mb-2">Filters</h4>
+				<div class="flex-v-center mobile__flex-col">
+					<div class="flex-v-center mobile__m-1">
+						<div class="mr-2">Combine as</div>
+						${$wrpBtnCombineFilters}
 					</div>
-					${$btnReset}
-					${$btnSettings}
+					<div class="flex-v-center mobile__m-1">
+						<div class="btn-group mr-2">
+							${$btnShowAllFilters}
+							${$btnHideAllFilters}
+						</div>
+						${$btnReset}
+						${$btnSettings}
+					</div>
 				</div>
 			</div>
 			<hr class="w-100 m-0 mb-2">
@@ -186,20 +192,18 @@ class FilterBox extends ProxyBase {
 					.click((evt) => this.reset(evt.shiftKey));
 			}
 
-			if (!this._isCompact) {
-				const $btnToggleSummaryHidden = $(`<button class="btn btn-default" title="Toggle Filter Summary Display"><span class="glyphicon glyphicon-resize-small"/></button>`)
-					.click(() => {
-						this._meta.isSummaryHidden = !this._meta.isSummaryHidden;
-						this._doSaveStateDebounced();
-					})
-					.prependTo(this._$wrpFormTop);
-				const summaryHiddenHook = () => {
-					$btnToggleSummaryHidden.toggleClass("active", !!this._meta.isSummaryHidden);
-					this._$wrpMiniPills.toggleClass("hidden", !!this._meta.isSummaryHidden);
-				};
-				this._addHook("meta", "isSummaryHidden", summaryHiddenHook);
-				summaryHiddenHook();
-			}
+			const $btnToggleSummaryHidden = $(`<button class="btn btn-default ${this._isCompact ? "p-2" : ""}" title="Toggle Filter Summary Display"><span class="glyphicon glyphicon-resize-small"/></button>`)
+				.click(() => {
+					this._meta.isSummaryHidden = !this._meta.isSummaryHidden;
+					this._doSaveStateDebounced();
+				})
+				.prependTo(this._$wrpFormTop);
+			const summaryHiddenHook = () => {
+				$btnToggleSummaryHidden.toggleClass("active", !!this._meta.isSummaryHidden);
+				this._$wrpMiniPills.toggleClass("hidden", !!this._meta.isSummaryHidden);
+			};
+			this._addHook("meta", "isSummaryHidden", summaryHiddenHook);
+			summaryHiddenHook();
 
 			if (this._$btnOpen) this._$btnOpen.click(() => this.show());
 			else {
@@ -260,7 +264,7 @@ class FilterBox extends ProxyBase {
 	}
 
 	_reset_meta () {
-		Object.assign(this._meta, FilterBox._DEFAULT_META);
+		Object.assign(this._meta, this._getDefaultMeta());
 	}
 
 	_reset_minisHidden () {
@@ -301,7 +305,7 @@ class FilterBox extends ProxyBase {
 		this._filters.forEach(f => f.hide());
 	}
 
-	setFromSubHashes (subHashes) {
+	setFromSubHashes (subHashes, force = false) {
 		const unpacked = {};
 		subHashes.forEach(s => {
 			const unpackedPart = UrlUtil.unpackSubHash(s, true);
@@ -339,7 +343,7 @@ class FilterBox extends ProxyBase {
 				} else if (FilterUtil.SUB_HASH_PREFIXES.has(prefix)) throw new Error(`Could not find filter with header ${urlHeader} for subhash ${data.raw}`)
 			});
 
-		if (consumed.size) {
+		if (consumed.size || force) {
 			this._setFromSubHashState(urlHeaderToFilter, filterBoxState);
 
 			Object.entries(statePerFilter).forEach(([urlHeader, state]) => {
@@ -386,7 +390,7 @@ class FilterBox extends ProxyBase {
 				case "meta": {
 					hasMeta = true;
 					const data = vals.map(v => UrlUtil.mini.decompress(v));
-					Object.keys(FilterBox._DEFAULT_META).forEach((k, i) => this._meta[k] = data[i]);
+					Object.keys(this._getDefaultMeta()).forEach((k, i) => this._meta[k] = data[i]);
 					break;
 				}
 				case "minisHidden": {
@@ -421,19 +425,21 @@ class FilterBox extends ProxyBase {
 
 	getSubHashes () {
 		const out = [];
-		const boxSubHashes = this._getSubHashes();
+		const boxSubHashes = this.getBoxSubHashes();
 		if (boxSubHashes) out.push(boxSubHashes);
 		out.push(...this._filters.map(f => f.getSubHashes()).filter(Boolean));
 		return out.flat();
 	}
 
-	_getSubHashes () {
+	getBoxSubHashes () {
 		const out = [];
 
+		const defaultMeta = this._getDefaultMeta();
+
 		// serialize base meta in a set order
-		const anyNotDefault = Object.keys(FilterBox._DEFAULT_META).find(k => this._meta[k] !== FilterBox._DEFAULT_META[k]);
+		const anyNotDefault = Object.keys(defaultMeta).find(k => this._meta[k] !== defaultMeta[k]);
 		if (anyNotDefault) {
-			const serMeta = Object.keys(FilterBox._DEFAULT_META).map(k => UrlUtil.mini.compress(this._meta[k] === undefined ? FilterBox._DEFAULT_META[k] : this._meta[k]));
+			const serMeta = Object.keys(defaultMeta).map(k => UrlUtil.mini.compress(this._meta[k] === undefined ? defaultMeta[k] : this._meta[k]));
 			return [UrlUtil.packSubHash(this._getSubhashPrefix("meta"), serMeta)]
 		}
 
@@ -508,6 +514,12 @@ class FilterBox extends ProxyBase {
 	_getSubhashPrefix (prop) {
 		if (FilterBox._SUB_HASH_PREFIXES[prop]) return this.getNamespacedHashKey(FilterBox._SUB_HASH_PREFIXES[prop]);
 		throw new Error(`Unknown property "${prop}"`);
+	}
+
+	_getDefaultMeta () {
+		const out = MiscUtil.copy(FilterBox._DEFAULT_META);
+		if (this._isCompact) out.isSummaryHidden = true;
+		return out;
 	}
 }
 FilterBox.EVNT_VALCHANGE = "valchange";
@@ -676,6 +688,7 @@ class Filter extends FilterBase {
 	 * @param [opts.deselFn] Function which returns true if an item should be hidden by default; false otherwise.
 	 * @param [opts.itemSortFn] Function which should be used to sort the `items` array if new entries are added.
 	 *        Defaults to ascending alphabetical sort.
+	 * @param [opts.itemSortFnMini] Function which should be used to sort the `items` array when rendering mini-pills.
 	 * @param [opts.groupFn] Function which takes an item and assigns it to a group.
 	 * @param [opts.minimalUi] True if the filter should render with a reduced UI, false otherwise.
 	 * @param [opts.umbrellaItems] Items which should, when set active, show everything in the filter. E.g. "All".
@@ -692,6 +705,7 @@ class Filter extends FilterBase {
 		this._selFnCache = null;
 		this._deselFn = opts.deselFn;
 		this._itemSortFn = opts.itemSortFn === undefined ? SortUtil.ascSort : opts.itemSortFn;
+		this._itemSortFnMini = opts.itemSortFnMini;
 		this._groupFn = opts.groupFn;
 		this._minimalUi = opts.minimalUi;
 		this._umbrellaItems = Filter._getAsFilterItems(opts.umbrellaItems);
@@ -895,24 +909,24 @@ class Filter extends FilterBase {
 	}
 
 	_$getHeaderControls (opts) {
-		const $btnAll = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn--all">All</button>`).click(() => this._doSetPillsAll());
-		const $btnClear = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn--clear">Clear</button>`).click(() => this._doSetPillsClear());
-		const $btnNone = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn--none">None</button>`).click(() => this._doSetPillsNone());
-		const $btnDefault = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"}">Default</button>`).click(() => this._doSetPinsDefault());
+		const $btnAll = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn--all w-100">All</button>`).click(() => this._doSetPillsAll());
+		const $btnClear = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn--clear w-100">Clear</button>`).click(() => this._doSetPillsClear());
+		const $btnNone = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn--none w-100">None</button>`).click(() => this._doSetPillsNone());
+		const $btnDefault = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} w-100">Default</button>`).click(() => this._doSetPinsDefault());
 
-		const $wrpStateBtns = $$`<div class="btn-group">${$btnAll}${$btnClear}${$btnNone}${$btnDefault}</div>`;
-		const $wrpStateBtnsOuter = $$`<div class="flex-v-center">${$wrpStateBtns}</div>`;
+		const $wrpStateBtns = $$`<div class="btn-group flex-v-center w-100">${$btnAll}${$btnClear}${$btnNone}${$btnDefault}</div>`;
+		const $wrpStateBtnsOuter = $$`<div class="flex-v-center fltr__h-wrp-state-btns-outer">${$wrpStateBtns}</div>`;
 		this._$getHeaderControls_addExtraStateBtns(opts, $wrpStateBtnsOuter);
 
-		const $wrpSummary = $(`<div class="flex-v-center"/>`).hide();
+		const $wrpSummary = $(`<div class="flex-vh-center"/>`).hide();
 
-		const $btnCombineBlue = $$`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn-logic--blue fltr__h-btn-logic" title="Positive matches mode for this filter. AND requires all blues to match, OR requires at least one blue to match."/>`
+		const $btnCombineBlue = $$`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn-logic--blue fltr__h-btn-logic w-100" title="Positive matches mode for this filter. AND requires all blues to match, OR requires at least one blue to match."/>`
 			.click(() => this._meta.combineBlue = this._meta.combineBlue === "or" ? "and" : "or");
 		const hookCombineBlue = () => $btnCombineBlue.text(this._meta.combineBlue.toUpperCase());
 		this._addHook("meta", "combineBlue", hookCombineBlue);
 		hookCombineBlue();
 
-		const $btnCombineRed = $$`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn-logic--red fltr__h-btn-logic" title="Negative match mode for this filter. AND requires all reds to match, OR requires at least one red to match."/>`
+		const $btnCombineRed = $$`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn-logic--red fltr__h-btn-logic w-100" title="Negative match mode for this filter. AND requires all reds to match, OR requires at least one red to match."/>`
 			.click(() => this._meta.combineRed = this._meta.combineRed === "or" ? "and" : "or");
 		const hookCombineRed = () => $btnCombineRed.text(this._meta.combineRed.toUpperCase());
 		this._addHook("meta", "combineRed", hookCombineRed);
@@ -948,10 +962,10 @@ class Filter extends FilterBase {
 		hookShowHide();
 
 		return $$`
-		<div class="flex-v-center">
+		<div class="flex-v-center fltr__h-wrp-btns-outer">
 			${$wrpSummary}
 			${$wrpStateBtnsOuter}
-			<span class="btn-group ml-2">
+			<span class="btn-group ml-2 flex-v-center">
 				${$btnCombineBlue}
 				${$btnCombineRed}
 			</span>
@@ -1106,7 +1120,10 @@ class Filter extends FilterBase {
 	}
 
 	_doRenderMiniPills () {
-		this._items.forEach(it => {
+		// create a list view so we can freely sort
+		const view = this._items.slice(0);
+		if (this._itemSortFnMini || this._itemSortFn) view.sort(this._itemSortFnMini || this._itemSortFn);
+		view.forEach(it => {
 			// re-append existing elements to sort them
 			(it.$mini = it.$mini || this._$getMini(it)).appendTo(this.__$wrpMini);
 		});
@@ -1293,14 +1310,16 @@ Filter._DEFAULT_META = {
 };
 
 class SourceFilter extends Filter {
+	doSetPillsClear () { return this._doSetPillsClear(); }
+
 	_$getHeaderControls_addExtraStateBtns (opts, $wrpStateBtnsOuter) {
-		const $btnSupplements = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"}" title="SHIFT to include UA/etc.">Core/Supplements</button>`)
+		const $btnSupplements = $(`<button class="btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}" title="SHIFT to include UA/etc.">Core/Supplements</button>`)
 			.click(evt => this._doSetPinsSupplements(evt.shiftKey));
 
-		const $btnAdventures = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"}" title="SHIFT to include UA/etc.">Adventures</button>`)
+		const $btnAdventures = $(`<button class="btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}" title="SHIFT to include UA/etc.">Adventures</button>`)
 			.click(evt => this._doSetPinsAdventures(evt.shiftKey));
 
-		$$`<div class="btn-group mr-2">${$btnSupplements}${$btnAdventures}</div>`.prependTo($wrpStateBtnsOuter);
+		$$`<div class="btn-group mr-2 w-100 flex-v-center">${$btnSupplements}${$btnAdventures}</div>`.prependTo($wrpStateBtnsOuter);
 	}
 
 	_doSetPinsSupplements (isIncludeUnofficial) {

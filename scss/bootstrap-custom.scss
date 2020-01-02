@@ -1668,3 +1668,25 @@ body::-webkit-scrollbar {
 .hidden {
 	display: none !important;
 }
+
+.mobile__ {
+	&flex-col {
+		@media only screen and (max-width: $width-screen-sm) {
+			display: flex !important;
+			flex-direction: column !important;
+		}
+
+		@media only screen and (max-width: $width-screen-xs) {
+			display: flex !important;
+			flex-direction: column !important;
+		}
+	}
+
+	&m-1 {
+		margin: ($spacer * 0.25) !important;
+	}
+
+	&mb-2 {
+		margin-bottom: ($spacer * 0.5) !important;
+	}
+}

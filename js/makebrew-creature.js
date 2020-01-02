@@ -1,5 +1,7 @@
 "use strict";
 
+// TODO(Future) {@tags} added to state in post-processing steps are not visible in their input boxes without refresh. See the spell builder for how this should be implemented.
+
 class CreatureBuilder extends Builder {
 	constructor () {
 		super({
@@ -2850,7 +2852,7 @@ class CreatureBuilder extends Builder {
 			Renderer.monster.getFluff.bind(null, this._state, this._bestiaryMetaCache)
 		);
 
-		const $tblData = $(`<table class="stats stats--book" style="box-shadow: none; border-left: 1px solid #ccc; border-right: 1px solid #ccc;"/>`).appendTo(dataTab.$wrpTab);
+		const $tblData = $(`<table class="stats stats--book mkbru__wrp-output-tab-data"/>`).appendTo(dataTab.$wrpTab);
 		const asCode = Renderer.get().render({
 			type: "entries",
 			entries: [

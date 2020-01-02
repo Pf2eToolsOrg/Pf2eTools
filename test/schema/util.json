@@ -4,7 +4,7 @@
 
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.0.4",
+	"version": "1.0.5",
 
 	"definitions" : {
 		"metaBlock": {
@@ -436,6 +436,10 @@
 							"type": "object",
 							"properties": {
 								"name": {
+									"type": "string"
+								},
+								"displayEntry": {
+									"description": "Optional long-form name to be used in the rendered entity.",
 									"type": "string"
 								},
 								"subrace": {

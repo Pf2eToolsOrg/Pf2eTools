@@ -244,8 +244,10 @@ class PageUi {
 
 	_getJsonOutputTemplate () {
 		return {
-			_meta: {sources: [MiscUtil.copy(BrewUtil.sourceJsonToSource(this._settings.activeSource))]},
-			dateAdded: Math.round(Date.now() / 1000)
+			_meta: {
+				sources: [MiscUtil.copy(BrewUtil.sourceJsonToSource(this._settings.activeSource))],
+				dateAdded: Math.round(Date.now() / 1000)
+			}
 		};
 	}
 }
@@ -638,6 +640,7 @@ class BuilderUi {
 	 * @param [options.nullable]
 	 * @param [options.placeholder]
 	 * @param [options.withHeader]
+	 * @param [options.fnPostProcess]
 	 * @param path
 	 * @return {*}
 	 */
@@ -652,6 +655,12 @@ class BuilderUi {
 			.change(() => {
 				const raw = $ipt.val().trim();
 				let out = raw || !options.nullable ? UiUtil.getTextAsEntries(raw) : null;
+
+				if (out && options.fnPostProcess) {
+					out = options.fnPostProcess(out);
+					$ipt.val(UiUtil.getEntriesAsText(out));
+				}
+
 				if (options.withHeader && out) {
 					out = [
 						{
@@ -660,6 +669,7 @@ class BuilderUi {
 						}
 					];
 				}
+
 				BuilderUi.__setProp(out, options, state, ...path);
 				fnRender();
 			});

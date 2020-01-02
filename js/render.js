@@ -2360,14 +2360,15 @@ Renderer.utils = {
 							return listMode ? (v.entrySummary || Renderer.stripTags(v.entry)) : Renderer.get().render(v.entry);
 						case "other": return listMode ? "Special" : Renderer.get().render(v);
 						case "race": {
-							return v.map((it, i) => {
+							const parts = v.map((it, i) => {
 								if (listMode) {
 									return `${it.name.toTitleCase()}${it.subrace != null ? ` (${it.subrace})` : ""}`;
 								} else {
-									const raceName = i === 0 ? it.name.uppercaseFirst() : it.name;
+									const raceName = it.displayEntry ? Renderer.get().render(it.displayEntry) : i === 0 ? it.name.toTitleCase() : it.name;
 									return `${raceName}${it.subrace != null ? ` (${it.subrace})` : ""}`;
 								}
-							}).join(", ");
+							});
+							return listMode ? parts.join("/") : parts.joinConjunct(", ", " or ");
 						}
 						case "ability": {
 							// this assumes all ability requirements are the same (13), correct as of 2017-10-06
@@ -2381,13 +2382,14 @@ Renderer.utils = {
 						}
 						case "proficiency": {
 							// only handles armor proficiency requirements,
-							return v.map(obj => {
+							const parts = v.map(obj => {
 								return Object.entries(obj).map(([profType, prof]) => {
 									if (profType === "armor") {
 										return listMode ? `Prof ${Parser.armorFullToAbv(prof)} armor` : `Proficiency with ${prof} armor`;
 									}
 								})
-							}).join(", ");
+							});
+							return listMode ? parts.join("/") : parts.joinConjunct(", ", " or ");
 						}
 						case "spellcasting": return listMode ? "Spellcasting" : "The ability to cast at least one spell";
 						default: throw new Error(`Unhandled key: ${k}`);
@@ -3103,17 +3105,21 @@ Renderer.cultboon = {
 
 	doRenderBoonParts (it, renderer, renderStack) {
 		const benefits = {type: "list", style: "list-hang-notitle", items: []};
-		benefits.items.push({
-			type: "item",
-			name: "Ability Score Adjustment:",
-			entry: it.ability ? it.ability.entry : "None"
-		});
-		benefits.items.push({
-			type: "item",
-			name: "Signature Spells:",
-			entry: it.signaturespells ? it.signaturespells.entry : "None"
-		});
-		renderer.recursiveRender(benefits, renderStack, {depth: 1});
+		if (it.ability) {
+			benefits.items.push({
+				type: "item",
+				name: "Ability Score Adjustment:",
+				entry: it.ability ? it.ability.entry : "None"
+			});
+		}
+		if (it.signaturespells) {
+			benefits.items.push({
+				type: "item",
+				name: "Signature Spells:",
+				entry: it.signaturespells ? it.signaturespells.entry : "None"
+			});
+		}
+		if (benefits.items.length) renderer.recursiveRender(benefits, renderStack, {depth: 1});
 	},
 
 	getCompactRenderedString: (it) => {
@@ -3242,9 +3248,11 @@ Renderer.monster = {
 	},
 
 	getCrScaleTarget ($btnScaleCr, initialCr, cbRender, isCompact) {
+		const evtName = "click.cr-scaler";
 		const $body = $(`body`);
 		function cleanSliders () {
 			$body.find(`.mon__cr_slider_wrp`).remove();
+			$btnScaleCr.off(evtName);
 		}
 
 		const $wrp = $(`<div class="mon__cr_slider_wrp ${isCompact ? "mon__cr_slider_wrp--compact" : ""}"/>`);
@@ -3254,7 +3262,6 @@ Renderer.monster = {
 		if (curr === -1) throw new Error(`Initial CR ${initialCr} was not valid!`);
 
 		cleanSliders();
-		const evtName = "click.cr-scaler";
 		$btnScaleCr.off(evtName).on(evtName, (evt) => evt.stopPropagation());
 		$wrp.on(evtName, (evt) => evt.stopPropagation());
 		$body.off(evtName).on(evtName, cleanSliders);
