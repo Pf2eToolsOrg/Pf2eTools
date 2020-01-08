@@ -188,7 +188,7 @@ class FilterBox extends ProxyBase {
 
 			if (this._$btnReset) {
 				this._$btnReset
-					.title("Reset filters. SHIFT to reset everything.")
+					.attr("title", "Reset filters. SHIFT to reset everything.")
 					.click((evt) => this.reset(evt.shiftKey));
 			}
 
@@ -878,7 +878,7 @@ class Filter extends FilterBase {
 		// This one-liner is slightly more performant than doing it nicely
 		const $btnMini = $(
 			`<div class="fltr__mini-pill ${this._filterBox.isMinisHidden(this.header) ? "hidden" : ""} ${this._deselFn && this._deselFn(item.item) ? "fltr__mini-pill--default-desel" : ""} ${this._selFn && this._selFn(item.item) ? "fltr__mini-pill--default-sel" : ""}" state="${FilterBox._PILL_STATES[this._state[item.item]]}">${toDisplay}</div>`
-		).title(`${this._displayFnTitle ? `${this._displayFnTitle(item.item)} (` : ""}Filter: ${this.header}${this._displayFnTitle ? ")" : ""}`).click(() => {
+		).attr("title", `${this._displayFnTitle ? `${this._displayFnTitle(item.item)} (` : ""}Filter: ${this.header}${this._displayFnTitle ? ")" : ""}`).click(() => {
 			this._state[item.item] = 0;
 			this._filterBox.fireChangeEvent();
 		});
@@ -943,7 +943,7 @@ class Filter extends FilterBase {
 			const cur = this.getValues()[this.header];
 
 			$(`<span class="fltr__summary_item fltr__summary_item--include"/>`)
-				.title(`${cur._totals.yes} hidden "required" tags`)
+				.attr("title", `${cur._totals.yes} hidden "required" tags`)
 				.text(cur._totals.yes)
 				.toggle(!!cur._totals.yes)
 				.appendTo($wrpSummary);
@@ -953,7 +953,7 @@ class Filter extends FilterBase {
 				.appendTo($wrpSummary);
 
 			$(`<span class="fltr__summary_item fltr__summary_item--exclude"/>`)
-				.title(`${cur._totals.no} hidden "excluded" tags`)
+				.attr("title", `${cur._totals.no} hidden "excluded" tags`)
 				.text(cur._totals.no)
 				.toggle(!!cur._totals.no)
 				.appendTo($wrpSummary);
@@ -1010,13 +1010,13 @@ class Filter extends FilterBase {
 				$wrpNestHeadSummary.empty();
 				if (stats.high) {
 					$(`<span class="fltr__summary_item fltr__summary_item--include">${stats.high}</span>`)
-						.title(`${stats.high} hidden "required" tag${stats.high === 1 ? "" : "s"}`)
+						.attr("title", `${stats.high} hidden "required" tag${stats.high === 1 ? "" : "s"}`)
 						.appendTo($wrpNestHeadSummary);
 				}
 				if (stats.high && stats.low) $(`<span class="fltr__summary_item_spacer"/>`).appendTo($wrpNestHeadSummary);
 				if (stats.low) {
 					$(`<span class="fltr__summary_item fltr__summary_item--exclude">${stats.low}</span>`)
-						.title(`${stats.low} hidden "excluded" tag${stats.low === 1 ? "" : "s"}`)
+						.attr("title", `${stats.low} hidden "excluded" tag${stats.low === 1 ? "" : "s"}`)
 						.appendTo($wrpNestHeadSummary);
 				}
 			};
@@ -1499,7 +1499,7 @@ class RangeFilter extends FilterBase {
 			const isRange = !cur.isMinVal && !cur.isMaxVal;
 			const isCapped = !cur.isMinVal || !cur.isMaxVal;
 			$wrpSummary
-				.title(isRange ? `Hidden range` : isCapped ? `Hidden limit` : "")
+				.attr("title", isRange ? `Hidden range` : isCapped ? `Hidden limit` : "")
 				.text(isRange ? `${cur.min}-${cur.max}` : !cur.isMinVal ? `≥ ${cur.min}` : !cur.isMaxVal ? `≤ ${cur.max}` : "")
 		};
 		this._addHook("meta", "isHidden", hook);
@@ -1919,7 +1919,7 @@ class MultiFilter extends FilterBase {
 			const numActive = this._filters.map(it => it.getValues()[it.header]._isActive).filter(Boolean).length;
 			if (numActive) {
 				$wrpSummary
-					.title(`${numActive} hidden active filter${numActive === 1 ? "" : "s"}`)
+					.attr("title", `${numActive} hidden active filter${numActive === 1 ? "" : "s"}`)
 					.text(`(${numActive})`);
 			}
 		};

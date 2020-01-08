@@ -447,6 +447,125 @@
 			]
 		},
 		{
+			"name": "Master Thief",
+			"source": "IMR",
+			"page": 216,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"any race"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 84,
+				"formula": "13d8 + 26"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 11,
+			"dex": 18,
+			"con": 14,
+			"int": 11,
+			"wis": 11,
+			"cha": 12,
+			"save": {
+				"dex": "+7",
+				"int": "+3"
+			},
+			"skill": {
+				"acrobatics": "+7",
+				"athletics": "+3",
+				"perception": "+3",
+				"sleight of hand": "+7",
+				"stealth": "+7"
+			},
+			"passive": 13,
+			"languages": [
+				"Thieves' cant plus any one language (usually Common)"
+			],
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Cunning Action",
+					"entries": [
+						"On each of its turns, the thief can use a bonus action to take the Dash, Disengage, or Hide action."
+					]
+				},
+				{
+					"name": "Evasion",
+					"entries": [
+						"If the thief is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, the thief instead takes no damage if it succeeds on the saving throw, and only half damage if it fails."
+					]
+				},
+				{
+					"name": "Sneak Attack (1/Turn)",
+					"entries": [
+						"The thief deals an extra 14 ({@dice 4d6}) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the thief that isn't {@condition incapacitated} and the thief doesn't have disadvantage on the attack roll."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The thief makes three attacks with its shortsword."
+					]
+				},
+				{
+					"name": "Shortsword",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) piercing damage."
+					]
+				},
+				{
+					"name": "Light Crossbow",
+					"entries": [
+						"{@atk rw} {@hit 7} to hit, range 80/320 ft., one target. {@h}8 ({@damage 1d8 + 4}) piercing damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Uncanny Dodge",
+					"entries": [
+						"The thief halves the damage that it takes from an attack that hits it. The thief must be able to see the attacker."
+					]
+				}
+			],
+			"traitTags": [
+				"Sneak Attack"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"X",
+				"TC"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"RNG"
+			]
+		},
+		{
 			"name": "Moghadam",
 			"isNpc": true,
 			"source": "IMR",
@@ -990,12 +1109,6 @@
 			],
 			"miscTags": [
 				"MW"
-			],
-			"damageTags": [
-				"S"
-			],
-			"languageTags": [
-				"CS"
 			]
 		},
 		{
@@ -1149,14 +1262,12 @@
 			],
 			"actionTags": [
 				"Multiattack",
-				"Tentacles",
-				"Swallow"
+				"Tentacles"
 			],
 			"languageTags": [
 				"AB",
 				"CE",
 				"I",
-				"CS",
 				"P",
 				"TP"
 			],
@@ -1517,18 +1628,6 @@
 			"languages": [
 				"Common",
 				"Giant Owl"
-			],
-			"damageTags": [
-				"P"
-			],
-			"languageTags": [
-				"C",
-				"GI",
-				"OTH"
-			],
-			"traitTags": [
-				"Sneak Attack",
-				"Keen Senses"
 			]
 		},
 		{
@@ -1591,15 +1690,6 @@
 						"{@atk mw} {@hit 3} to hit, reach 5 ft., one creature. {@h}4 ({@damage 1d6 + 1}) bludgeoning or piercing damage."
 					]
 				}
-			],
-			"damageTags": [
-				"B",
-				"P"
-			],
-			"languageTags": [
-				"C",
-				"X",
-				"D"
 			]
 		},
 		{
@@ -1715,11 +1805,7 @@
 						]
 					}
 				}
-			},
-			"languageTags": [
-				"C",
-				"P"
-			]
+			}
 		},
 		{
 			"name": "Skeletal Giant Owl",
@@ -1833,10 +1919,6 @@
 						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}8 ({@damage 2d6 + 1}) slashing damage."
 					]
 				}
-			],
-			"damageTags": [
-				"S",
-				"Y"
 			]
 		},
 		{
@@ -1864,13 +1946,7 @@
 						}
 					}
 				}
-			},
-			"damageTags": [
-				"B",
-				"F",
-				"S",
-				"L"
-			]
+			}
 		},
 		{
 			"name": "Thessalar's Homunculus",
@@ -1891,11 +1967,7 @@
 						}
 					}
 				}
-			},
-			"damageTags": [
-				"P",
-				"A"
-			]
+			}
 		},
 		{
 			"name": "Tiefling Muralist",
@@ -1915,12 +1987,7 @@
 					"name": "Tiefling",
 					"source": "PHB"
 				}
-			},
-			"languageTags": [
-				"C",
-				"X",
-				"I"
-			]
+			}
 		}
 	]
 }

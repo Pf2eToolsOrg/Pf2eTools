@@ -441,23 +441,13 @@ TagCondition._CONDITION_MATCHERS = TagCondition._CONDITIONS.map(it => new RegExp
 
 class AlignmentConvert {
 	static tryConvertAlignment (m, cbMan) {
-		const orParts = (m.alignment || "").split(/ or /g).map(it => it.trim().replace(/[.,;]$/g, "").trim());
-		const out = [];
-
-		orParts.forEach(part => {
-			Object.values(AlignmentConvert.ALIGNMENTS).forEach(it => {
-				if (it.regex.test(part)) out.push(it.output);
-				else {
-					const mChange = it.regexChance.exec(part);
-					if (mChange) {
-						out.push({alignment: it.output, chance: Number(mChange[1])})
-					}
-				}
-			})
+		const match = Object.values(AlignmentConvert.ALIGNMENTS).find(it => {
+			const out = it.regex.test(m.alignment);
+			it.regex.lastIndex = 0;
+			return out;
 		});
 
-		if (out.length === 1) m.alignment = out[0];
-		else if (out.length) m.alignment = out;
+		if (match) m.alignment = match.output;
 		else if (cbMan) cbMan(m.alignment);
 	}
 }
@@ -491,13 +481,20 @@ AlignmentConvert.ALIGNMENTS = {
 	"any lawful( alignment)?": ["L", "G", "NY", "E"],
 	"any good( alignment)?": ["L", "NX", "C", "G"],
 
-	"any neutral( alignment)?": ["NX", "NY", "N"]
+	"any neutral( alignment)?": ["NX", "NY", "N"],
+
+	// TODO general auto-detect for percentage-weighted alignments
+	"neutral good \\(50%\\) or neutral evil \\(50%\\)": [{alignment: ["N", "G"], chance: 50}, {alignment: ["N", "E"], chance: 50}],
+	"chaotic good \\(75%\\) or neutral evil \\(25%\\)": [{alignment: ["C", "G"], chance: 75}, {alignment: ["N", "E"], chance: 25}],
+	"chaotic good \\(75%\\) or chaotic evil \\(25%\\)": [{alignment: ["C", "G"], chance: 75}, {alignment: ["C", "E"], chance: 25}],
+	"chaotic good or chaotic neutral": [{alignment: ["C", "G"]}, {alignment: ["C", "N"]}],
+	"lawful neutral or lawful evil": [{alignment: ["L", "N"]}, {alignment: ["L", "E"]}],
+	"neutral evil \\(50%\\) or lawful evil \\(50%\\)": [{alignment: ["N", "E"], chance: 50}, {alignment: ["L", "E"], chance: 50}]
 };
 Object.entries(AlignmentConvert.ALIGNMENTS).forEach(([k, v]) => {
 	AlignmentConvert.ALIGNMENTS[k] = {
 		output: v,
-		regex: RegExp(`^${k}$`),
-		regexChance: RegExp(`^${k}\\s*\\((\\d+)\\s*%\\)$`)
+		regex: RegExp(`^${k}$`)
 	}
 });
 
@@ -524,51 +521,33 @@ class TraitActionTag {
 					const cleanName = t.name.toLowerCase();
 					const mapped = TraitActionTag.tags[prop][cleanName];
 					if (mapped) {
-						if (mapped === true) m[outProp].add(t.name);
-						else m[outProp].add(mapped)
+						m[outProp] = m[outProp] || [];
+						if (mapped === true) m[outProp].push(t.name);
+						else m[outProp].push(mapped)
 					} else if (isTraits() && cleanName.startsWith("keen ")) {
-						m[outProp].add("Keen Senses");
+						m[outProp] = m[outProp] || [];
+						m[outProp].push("Keen Senses");
 					} else if (isTraits() && cleanName.startsWith("legendary resistance")) {
-						m[outProp].add("Legendary Resistances");
+						m[outProp] = m[outProp] || [];
+						m[outProp].push("Legendary Resistances");
 					} else if (isTraits() && cleanName.endsWith(" absorption")) {
-						m[outProp].add("Damage Absorption");
+						m[outProp] = m[outProp] || [];
+						m[outProp].push("Damage Absorption");
 					} else {
 						if (cbMan) cbMan(prop, outProp, cleanName);
 					}
 				})
 			}
 		}
-
-		function doTagDeep (prop, outProp) {
-			if (!TraitActionTag.tagsDeep[prop]) return;
-
-			if (m[prop]) {
-				m[prop].forEach(t => {
-					if (!t.entries) return;
-					const strEntries = JSON.stringify(t.entries);
-
-					Object.entries(TraitActionTag.tagsDeep[prop])
-						.forEach(([tagName, fnShouldTag]) => {
-							if (fnShouldTag(strEntries)) m[outProp].add(tagName);
-						});
-				})
-			}
-		}
-
-		m.traitTags = new Set();
-		m.actionTags = new Set();
+		if (m.traitTags) m.traitTags = [];
+		if (m.actionTags) m.actionTags = [];
 
 		doTag("trait", "traitTags");
 		doTag("action", "actionTags");
 		doTag("reaction", "actionTags");
 
-		doTagDeep("action", "actionTags");
-
-		if (!m.traitTags.size) delete m.traitTags;
-		else m.traitTags = [...m.traitTags];
-
-		if (!m.actionTags.size) delete m.actionTags;
-		else m.actionTags = [...m.actionTags];
+		if (m.traitTags && !m.traitTags.length) delete m.traitTags;
+		if (m.actionTags && !m.actionTags.length) delete m.actionTags;
 	}
 }
 TraitActionTag.tags = { // true = map directly; string = map to this string
@@ -668,11 +647,6 @@ TraitActionTag.tags = { // true = map directly; string = map to this string
 		// unused
 	}
 };
-TraitActionTag.tagsDeep = {
-	action: {
-		"Swallow": strEntries => /swallowed/i.test(strEntries)
-	}
-};
 
 class LanguageTag {
 	/**
@@ -706,7 +680,7 @@ class LanguageTag {
 
 					if (re.exec(l)) {
 						if ((v === "XX" || v === "X") && (l.includes("knew in life") || l.includes("spoke in life"))) return;
-						if (v !== "CS" && /(one|the) languages? of its creator/i.exec(l)) return;
+						if (/(one|the) languages? of its creator/i.exec(l)) return;
 
 						if (opt.cbTracked) opt.cbTracked(v);
 						tags.add(v);
@@ -800,9 +774,7 @@ LanguageTag.LANGUAGE_MAP = {
 	"Modron": "OTH",
 	"Slaad": "OTH",
 	"all languages": "XX",
-	"any language": "X",
-	"knew in life": "LF",
-	"spoke in life": "LF"
+	"any language": "X"
 };
 
 class SenseTag {
@@ -886,13 +858,8 @@ class DamageTypeTag {
 			m[prop].forEach(it => {
 				if (it.entries) {
 					const str = JSON.stringify(it.entries, null, "\t");
-
 					str.replace(RollerUtil.REGEX_DAMAGE_DICE, (m0, average, prefix, diceExp, suffix) => {
 						suffix.replace(DamageTypeTag._TYPE_REGEX, (m0, type) => typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]));
-					});
-
-					str.replace(DamageTypeTag._ONE_DAMAGE_REGEX, (m0, type) => {
-						typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]);
 					});
 				}
 			})
@@ -914,9 +881,7 @@ class DamageTypeTag {
 	}
 }
 DamageTypeTag._isInit = false;
-DamageTypeTag._TYPE_PART = "(acid|bludgeoning|cold|fire|force|lightning|necrotic|piercing|poison|psychic|radiant|slashing|thunder)";
-DamageTypeTag._TYPE_REGEX = new RegExp(DamageTypeTag._TYPE_PART, "gi");
-DamageTypeTag._ONE_DAMAGE_REGEX = new RegExp(`1 ${DamageTypeTag._TYPE_PART} damage`, "gi");
+DamageTypeTag._TYPE_REGEX = /(acid|bludgeoning|cold|fire|force|lightning|necrotic|piercing|poison|psychic|radiant|slashing|thunder)/gi;
 DamageTypeTag._TYPE_LOOKUP = {};
 
 class MiscTag {
@@ -1073,7 +1038,7 @@ class SpellcastingTraitConvert {
 
 					const out = {};
 					if (thisLine.includes(" slot")) {
-						const mWarlock = /^(\d)..(?: level)-(\d).. level \((\d) (\d)..-level slots?\)/.exec(thisLine);
+						const mWarlock = /^(\d)..-(\d).. level \((\d) (\d)..-level slots?\)/.exec(thisLine);
 						if (mWarlock) {
 							out.lower = parseInt(mWarlock[1]);
 							out.slots = parseInt(mWarlock[3]);
@@ -1154,32 +1119,23 @@ class DiceConvert {
 		if (traitOrAction.entries) {
 			traitOrAction.entries = traitOrAction.entries
 				.filter(it => it.trim ? it.trim() : true)
-				.map(entry => this._getConvertedEntry(entry, true));
+				.map(e => JSON.parse(DiceConvert._getTaggedString(JSON.stringify(e))));
 		}
 	}
 
 	static getTaggedEntry (entry) {
-		return this._getConvertedEntry(entry);
+		return JSON.parse(DiceConvert._getTaggedString(JSON.stringify(entry)));
 	}
 
-	static _getConvertedEntry (entry, isTagHits = false) {
-		if (!DiceConvert._walker) {
-			const walkerKeyBlacklist = new Set(["caption", "type", "colLabels"]);
-			DiceConvert._walker = MiscUtil.getWalker(walkerKeyBlacklist);
-			DiceConvert._walkerHandlers = {string: DiceConvert._walkerStringHandler.bind(DiceConvert, isTagHits)};
-		}
-		entry = MiscUtil.copy(entry);
-		return DiceConvert._walker.walk("convertDice", entry, DiceConvert._walkerHandlers);
-	}
+	static _getTaggedString (str) {
+		// replace e.g. "+X to hit"
+		str = str.replace(/([-+])?\d+(?= to hit)/g, function (match) {
+			const cleanMatch = match.startsWith("+") ? match.replace("+", "") : match;
+			return `{@hit ${cleanMatch}}`
+		});
 
-	static _walkerStringHandler (isTagHits, ident, str) {
-		if (isTagHits) {
-			// replace e.g. "+X to hit"
-			str = str.replace(/([-+])?\d+(?= to hit)/g, function (match) {
-				const cleanMatch = match.startsWith("+") ? match.replace("+", "") : match;
-				return `{@hit ${cleanMatch}}`
-			});
-		}
+		// un-tag dice -- avoid un-tagging @damage as the user may have specified this
+		str = str.replace(/{@(?:dice) ([^}]*)}/gi, "$1");
 
 		// re-tag + format dice
 		str = str.replace(/((\s*[-+]\s*)?(([1-9]\d*)?d([1-9]\d*)(\s*?[-+×x*÷/]\s*?(\d,\d|\d)+(\.\d+)?)?))+/gi, (...m) => {
@@ -1187,24 +1143,14 @@ class DiceConvert {
 			return `{@dice ${expanded}}`;
 		});
 
-		// unwrap double-tagged
-		let last;
-
-		do {
-			last = str;
-			str = str.replace(/{@(dice|damage|scaledice|d20) ([^}]*){@(?:dice|damage|scaledice|d20) ([^}]*)}([^}]*)}/gi, "{@$1 $2$3$4}");
-		} while (last !== str);
-
-		do {
-			last = str;
-			str = str.replace(/{@b ({@(?:dice|damage|scaledice|d20) ([^}]*)})}/gi, "$1");
-		} while (last !== str);
+		// unwrap double-tagged @damage
+		str = str.replace(/{@damage {@dice ([^}]*)}}/gi, "{@damage $1}");
 
 		// tag @damage (creature style)
-		str = str.replace(/\d+ \({@dice ([-+0-9d ]*)}\)( [a-z]+((?:, |, or | or )[a-z]+)*)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
+		str = str.replace(/\d+ \({@dice ([-+0-9d ]*)}\) [a-z]+( or [a-z]+)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
 
 		// tag @damage (spell/etc style)
-		str = str.replace(/{@dice ([-+0-9d ]*)}( [a-z]+((?:, |, or | or )[a-z]+)*)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
+		str = str.replace(/{@dice ([-+0-9d ]*)}( [a-z]+( or [a-z]+)?)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
 
 		return str;
 	}
@@ -1217,7 +1163,6 @@ class DiceConvert {
 		}
 	}
 }
-DiceConvert._walker = null;
 
 class RechargeConvert {
 	static tryConvertRecharge (traitOrAction, cbAll, cbMan) {
@@ -1459,7 +1404,7 @@ class StatblockConverter {
 			const clean = StatblockConverter._getCleanInput(inText);
 			const spl = clean.split(/(Challenge)/i);
 			spl[0] = spl[0]
-				.replace(/(\d\d?\s+\([-—+]\d+\)\s*)+/gi, (...m) => `${m[0].replace(/\n/g, " ").replace(/\s+/g, " ")}\n`); // collapse multi-line ability scores
+				.replace(/(\d\d?\s+\([-—+]\d\)\s*)+/gi, (...m) => `${m[0].replace(/\n/g, " ").replace(/\s+/g, " ")}\n`); // collapse multi-line ability scores
 			return spl.join("").split("\n").filter(it => it && it.trim());
 		})();
 		const stats = {};
@@ -2228,7 +2173,7 @@ class StatblockConverter {
 	static _setCleanHp (stats, line) {
 		const rawHp = line.split_handleColon("Hit Points ", 1)[1];
 		// split HP into average and formula
-		const m = /^(\d+)\s*\((.*?)\)$/.exec(rawHp.trim());
+		const m = /^(\d+) \((.*?)\)$/.exec(rawHp);
 		if (!m) stats.hp = {special: rawHp}; // for e.g. Avatar of Death
 		else {
 			stats.hp = {

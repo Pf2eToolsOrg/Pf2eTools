@@ -11,14 +11,12 @@ Shared UI components
 	}
 }
 
-/* region Tabs */
+/* Modals */
 .night-mode .ui-tab__ {
 	&wrp-tab-heads--border {
 		border-color: $rgb-border-grey--night;
-		border-width: 2px;
 	}
 }
-/* endregion */
 
 /* Proficiency */
 .night-mode .ui-prof__ {
@@ -35,13 +33,16 @@ Shared UI components
 
 		&[data-state='1'] {
 			background: $rgb-border-grey--night;
+			border-color: #aaa;
 		}
 
 		&[data-state='2'] {
 			background: $rgb-border-grey--night;
+			border-color: #aaa;
 
-			&::before {
+			&::after {
 				color: $rgb-bg--night;
+				font-weight: bold;
 			}
 		}
 

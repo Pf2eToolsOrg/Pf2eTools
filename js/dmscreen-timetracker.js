@@ -925,7 +925,7 @@ class TimeTrackerRoot_Clock extends TimeTrackerComponent {
 					$wrpMoons.show();
 					todayMoonInfos.forEach(moon => {
 						$$`<div class="flex-v-center mr-2 ui-tip__parent">
-							${TimeTrackerBase.$getCvsMoon(moon).addClass("mr-2").addClass("dm-time__clock-moon-phase").title(null)}
+							${TimeTrackerBase.$getCvsMoon(moon).addClass("mr-2").addClass("dm-time__clock-moon-phase").attr("title", null)}
 							<div class="flex-col ui-tip__child">
 								<div class="flex">${moon.name}</div>
 								<div class="flex small"><i class="mr-1 no-wrap">${moon.phaseName}</i><span class="text-muted no-wrap">(Day ${moon.dayOfPeriod + 1}/${moon.period})</span></div>
@@ -1227,7 +1227,7 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 			if (!~ix) ix = 0;
 			const meta = TimeTrackerRoot_Clock_Weather._TEMPERATURE_META[ix];
 			$btnTemperature.addClass(meta.class);
-			$btnTemperature.title(this._state.temperature.uppercaseFirst()).html(`<div class="fal ${meta.icon}"/>`);
+			$btnTemperature.attr("title", this._state.temperature.uppercaseFirst()).html(`<div class="fal ${meta.icon}"/>`);
 		};
 		this._addHookBase("temperature", hookTemperature);
 		hookTemperature();
@@ -1274,7 +1274,7 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 			let ix = TimeTrackerRoot_Clock_Weather._PRECIPICATION.indexOf(this._state.precipitation);
 			if (!~ix) ix = 0;
 			const meta = TimeTrackerRoot_Clock_Weather._PRECIPICATION_META[ix];
-			$btnPrecipitation.title(TimeTrackerUtil.revSlugToText(this._state.precipitation)).html(`<div class="fal ${useNightIcon && meta.iconNight ? meta.iconNight : meta.icon}"/>`)
+			$btnPrecipitation.attr("title", TimeTrackerUtil.revSlugToText(this._state.precipitation)).html(`<div class="fal ${useNightIcon && meta.iconNight ? meta.iconNight : meta.icon}"/>`)
 		};
 		this._addHookBase("precipitation", hookPrecipitation);
 		this._parent.addHook("time", hookPrecipitation);
@@ -1322,7 +1322,7 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 			let ix = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS.indexOf(this._state.windSpeed);
 			if (!~ix) ix = 0;
 			const meta = TimeTrackerRoot_Clock_Weather._WIND_SPEEDS_META[ix];
-			$btnWindSpeed.text(TimeTrackerUtil.revSlugToText(this._state.windSpeed)).title(this._parent.get("unitsWindSpeed") === "mph" ? `${meta.mph} mph` : `${meta.kmph} km/h`);
+			$btnWindSpeed.text(TimeTrackerUtil.revSlugToText(this._state.windSpeed)).attr("title", this._parent.get("unitsWindSpeed") === "mph" ? `${meta.mph} mph` : `${meta.kmph} km/h`);
 		};
 		this._addHookBase("windSpeed", hookWindSpeed);
 		this._parent.addHook("unitsWindSpeed", hookWindSpeed);
@@ -1483,7 +1483,7 @@ class TimeTrackerRoot_Clock_RandomWeather extends BaseComponent {
 				}
 			})
 			.map(v => {
-				const $btn = $$`<div class="m-2 btn ${v.buttonClass} ui__btn-xxl-square flex-col flex-h-center">
+				const $btn = $$`<div class="m-2 btn ${v.buttonClass} ui-icn__btn flex-col flex-h-center">
 						<div class="ui-icn__wrp-icon ${v.iconClass} mb-1"></div>
 						<div class="whitespace-normal w-100">${v.name}</div>
 					</div>`
@@ -1509,7 +1509,7 @@ class TimeTrackerRoot_Clock_RandomWeather extends BaseComponent {
 				}
 			})
 			.map(v => {
-				const $btn = $$`<div class="m-2 btn btn-default ui__btn-xxl-square flex-col flex-h-center">
+				const $btn = $$`<div class="m-2 btn btn-default ui-icn__btn flex-col flex-h-center">
 						<div class="ui-icn__wrp-icon ${v.iconClass} mb-1"></div>
 						<div class="whitespace-normal w-100">${v.name}</div>
 					</div>`
@@ -1546,7 +1546,7 @@ class TimeTrackerRoot_Clock_RandomWeather extends BaseComponent {
 				}
 			})
 			.map(v => {
-				const $btn = $$`<div class="m-2 btn btn-default ui__btn-xxl-square flex-col flex-h-center">
+				const $btn = $$`<div class="m-2 btn btn-default ui-icn__btn flex-col flex-h-center">
 						${v.iconContent}
 						<div class="whitespace-normal w-100">${v.name}</div>
 					</div>`
@@ -2705,15 +2705,9 @@ TimeTrackerRoot_Calendar._tmpPrefCbCopy = false;
 
 class TimeTrackerRoot_Settings extends TimeTrackerComponent {
 	static getTimeNum (str, isAllowNegative) {
-		return UiUtil.strToInt(
-			str,
-			isAllowNegative ? 0 : TimeTrackerBase._MIN_TIME,
-			{
-				min: isAllowNegative ? -TimeTrackerBase._MAX_TIME : TimeTrackerBase._MIN_TIME,
-				max: TimeTrackerBase._MAX_TIME,
-				fallbackOnNaN: isAllowNegative ? 0 : TimeTrackerBase._MIN_TIME
-			}
-		);
+		const num = Number(str.trim());
+		if (isNaN(num)) return TimeTrackerBase._MIN_TIME;
+		else return Math.max(Math.min(Math.round(num), TimeTrackerBase._MAX_TIME), isAllowNegative ? -TimeTrackerBase._MAX_TIME : TimeTrackerBase._MIN_TIME);
 	}
 
 	constructor (tracker, $wrpPanel) {

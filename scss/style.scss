@@ -1339,10 +1339,6 @@ th.name {
 		color: #a19364;
 	}
 
-	&SADS {
-		color: #333bab;
-	}
-
 	&AL {
 		color: #ed1c24;
 	}
@@ -1935,11 +1931,7 @@ img.token:hover {
 }
 
 .ui-search__row {
-	border-bottom: 1px solid $rgb-border-grey;
-}
-
-.night-mode .ui-search__row {
-	border-color: $rgb-border-grey--night;
+	border-bottom: 1px solid #ddd;
 }
 
 .panel-content-wrapper-inner td div.border {
@@ -3287,11 +3279,6 @@ tr.legendary td {
 }
 
 .bk__ {
-	&stats--narrow {
-		max-width: 640px;
-		margin: 0 auto;
-	}
-
 	&contents-header {
 		color: inherit;
 		display: flex;
@@ -3659,32 +3646,18 @@ ul.list.books > li > a > span.name:hover {
 }
 // endregion
 
-.form-control--error,
-.form-control--error[readonly],
-.form-control--error[disabled] {
+.error-background,
+.error-background[readonly],
+.error-background[disabled] {
 	background-color: #ff000018;
 	border: 1px solid #843534;
 }
 
-.form-control--error:focus,
-.form-control--error[readonly]:focus,
-.form-control--error[disabled]:focus {
+.error-background:focus,
+.error-background[readonly]:focus,
+.error-background[disabled]:focus {
 	border-color: #843534;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #ce8483;
-}
-
-.form-control--warning,
-.form-control--warning[readonly],
-.form-control--warning[disabled] {
-	background-color: #ffaa0018;
-	border: 1px solid #846334;
-}
-
-.form-control--warning:focus,
-.form-control--warning[readonly]:focus,
-.form-control--warning[disabled]:focus {
-	border-color: #846334;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #ceaa83;
 }
 
 /* Day Mode End */
@@ -3956,32 +3929,18 @@ ul.list.books > li > a > span.name:hover {
 		background: #0e0e0e88;
 	}
 
-	.form-control--error,
-	.form-control--error[readonly],
-	.form-control--error[disabled] {
+	.error-background,
+	.error-background[readonly],
+	.error-background[disabled] {
 		background-color: #3e0000;
 		border: 1px solid #843534;
 	}
 
-	.form-control--error:focus,
-	.form-control--error[readonly]:focus,
-	.form-control--error[disabled]:focus {
+	.error-background:focus,
+	.error-background[readonly]:focus,
+	.error-background[disabled]:focus {
 		border-color: #843534;
 		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #ce8483;
-	}
-
-	.form-control--warning,
-	.form-control--warning[readonly],
-	.form-control--warning[disabled] {
-		background-color: #483700;
-		border-color: #846334;
-	}
-
-	.form-control--warning:focus,
-	.form-control--warning[readonly]:focus,
-	.form-control--warning[disabled]:focus {
-		border-color: #846334;
-		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #ceaa83;
 	}
 
 	/* *** */
@@ -4033,7 +3992,7 @@ ul.list.books > li > a > span.name:hover {
 				outline: none;
 			}
 
-			&.form-control--error[type='number'] {
+			&.error-background[type='number'] {
 				border: 1px solid red;
 			}
 		}
@@ -4262,14 +4221,8 @@ ul.list.books > li > a > span.name:hover {
 		color: $rgb-name-red--night;
 	}
 
-	.source {
-		&PHB {
-			color: $rgb-subclass--night;
-		}
-
-		&SADS {
-			color: #4f63f5;
-		}
+	.sourcePHB {
+		color: $rgb-subclass--night;
 	}
 
 	.bkmv {
