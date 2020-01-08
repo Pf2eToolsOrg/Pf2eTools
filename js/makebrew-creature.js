@@ -1,6 +1,7 @@
 "use strict";
 
 // TODO(Future) {@tags} added to state in post-processing steps are not visible in their input boxes without refresh. See the spell builder for how this should be implemented.
+//  - Same applies for UiUtil.strToInt'd inputs
 
 class CreatureBuilder extends Builder {
 	constructor () {
@@ -221,7 +222,7 @@ class CreatureBuilder extends Builder {
 		}).forEach($sel => $sel.change());
 	}
 
-	renderInput () {
+	_renderInputImpl () {
 		this._validateMeta();
 		this.renderInputControls();
 		this._renderInputMain();
@@ -469,14 +470,14 @@ class CreatureBuilder extends Builder {
 	__$getTypeInput__getTagRow (tag, tagRows, setStateCreature) {
 		const $iptPrefix = $(`<input class="form-control input-xs form-control--minimal mr-2" placeholder="Prefix">`)
 			.change(() => {
-				$iptTag.removeClass("error-background");
+				$iptTag.removeClass("form-control--error");
 				if ($iptTag.val().trim().length || !$iptPrefix.val().trim().length) setStateCreature();
-				else $iptTag.addClass("error-background");
+				else $iptTag.addClass("form-control--error");
 			});
 		if (tag && tag.prefix) $iptPrefix.val(tag.prefix);
 		const $iptTag = $(`<input class="form-control input-xs form-control--minimal mr-2" placeholder="Tag (lowercase)">`)
 			.change(() => {
-				$iptTag.removeClass("error-background");
+				$iptTag.removeClass("form-control--error");
 				setStateCreature();
 			});
 		if (tag) $iptTag.val(tag.tag || tag);
@@ -550,7 +551,7 @@ class CreatureBuilder extends Builder {
 				case "1": {
 					return {
 						alignment: [...CreatureBuilder._ALIGNMENTS[$selAlign.val()]],
-						chance: Math.min(Math.max(0, Number($iptChance.val())), 100)
+						chance: UiUtil.strToInt($iptChance.val(), 0, {min: 0, max: 100})
 					}
 				}
 				case "2": {
@@ -601,7 +602,7 @@ class CreatureBuilder extends Builder {
 		initialMode === "1" && alignment && $selAlign.val(CreatureBuilder.__$getAlignmentInput__getAlignmentIx(alignment.alignment));
 
 		// MULTIPLE CONTROLS
-		const $iptChance = $(`<input type="number" class="form-control form-control--minimal input-xs mr-2" min="1" max="100" placeholder="Chance of alignment">`)
+		const $iptChance = $(`<input class="form-control form-control--minimal input-xs mr-2" min="1" max="100" placeholder="Chance of alignment">`)
 			.change(() => doUpdateState());
 		const $stageMultiple = $$`<div class="mb-2 flex-v-center">${$iptChance}<span>%</span></div>`.toggle(initialMode === "1");
 		initialMode === "1" && alignment && $iptChance.val(alignment.chance);
@@ -657,7 +658,7 @@ class CreatureBuilder extends Builder {
 		const initialMode = ac && ac.from ? "1" : "0";
 
 		const getAc = () => {
-			const acValRaw = Number($iptAc.val().trim());
+			const acValRaw = UiUtil.strToInt($iptAc.val(), 10, {fallbackOnNaN: 10});
 			const acVal = isNaN(acValRaw) ? 10 : acValRaw;
 			const condition = $iptCond.val().trim();
 			const braces = $cbBraces.prop("checked");
@@ -711,7 +712,7 @@ class CreatureBuilder extends Builder {
 			}
 		});
 
-		const $iptAc = $(`<input type="number" class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ac-split">`)
+		const $iptAc = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ac-split">`)
 			.val(ac ? ac.ac || ac : 10)
 			.change(() => doUpdateState());
 
@@ -822,10 +823,8 @@ class CreatureBuilder extends Builder {
 		})();
 
 		const _getSimpleFormula = () => {
-			const modRaw = $iptSimpleMod.val().trim();
-			const mod = Number(modRaw);
-			const modPart = mod ? `${mod > 0 ? "+" : ""}${mod}` : "";
-			return `${$selSimpleNum.val()}d${$selSimpleFace.val()}${modPart}`;
+			const mod = UiUtil.strToInt($iptSimpleMod.val());
+			return `${$selSimpleNum.val()}d${$selSimpleFace.val()}${UiUtil.intToBonus(mod)}`;
 		};
 
 		const doUpdateState = () => {
@@ -833,14 +832,14 @@ class CreatureBuilder extends Builder {
 				case "0": {
 					this._state.hp = {
 						formula: _getSimpleFormula(),
-						average: Number($iptSimpleAverage.val())
+						average: UiUtil.strToInt($iptSimpleAverage.val())
 					};
 					break;
 				}
 				case "1": {
 					this._state.hp = {
 						formula: $iptComplexFormula.val(),
-						average: Number($iptComplexAverage.val())
+						average: UiUtil.strToInt($iptComplexAverage.val())
 					};
 					break;
 				}
@@ -900,7 +899,7 @@ class CreatureBuilder extends Builder {
 				doUpdateState();
 			});
 
-		const $iptSimpleMod = $(`<input class="form-control form-control--minimal input-xs text-right mr-2" type="number">`)
+		const $iptSimpleMod = $(`<input class="form-control form-control--minimal input-xs text-right mr-2">`)
 			.change(() => {
 				if (this._meta.autoCalc.hpModifier) {
 					this._meta.autoCalc.hpModifier = false;
@@ -922,7 +921,7 @@ class CreatureBuilder extends Builder {
 				$btnAutoSimpleFormula.toggleClass("active", this._meta.autoCalc.hpModifier);
 			});
 
-		const $iptSimpleAverage = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number">`)
+		const $iptSimpleAverage = $(`<input class="form-control form-control--minimal input-xs mr-2">`)
 			.change(() => {
 				this._meta.autoCalc.hpAverageSimple = false;
 				doUpdateState();
@@ -968,13 +967,13 @@ class CreatureBuilder extends Builder {
 			}
 		};
 
-		const $iptComplexFormula = $(`<input class="form-control form-control--minimal input-xs text-right">`)
+		const $iptComplexFormula = $(`<input class="form-control form-control--minimal input-xs">`)
 			.change(() => {
 				hpComplexAverageHook();
 				doUpdateState();
 			});
 
-		const $iptComplexAverage = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number">`)
+		const $iptComplexAverage = $(`<input class="form-control form-control--minimal input-xs mr-2">`)
 			.change(() => {
 				this._meta.autoCalc.hpAverageComplex = false;
 				doUpdateState();
@@ -1032,7 +1031,7 @@ class CreatureBuilder extends Builder {
 					delete this._state.speed[prop];
 					if (prop === "fly") delete this._state.speed.canHover
 				} else {
-					const speed = Number(speedRaw);
+					const speed = UiUtil.strToInt(speedRaw);
 					const condition = $iptCond.val().trim();
 					this._state.speed[prop] = (condition ? {number: speed, condition: condition} : speed);
 					if (prop === "fly") this._state.speed.canHover = !!(condition && /(^|[^a-zA-Z])hover([^a-zA-Z]|$)/i.exec(condition));
@@ -1040,7 +1039,7 @@ class CreatureBuilder extends Builder {
 				cb();
 			};
 
-			const $iptSpeed = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number">`)
+			const $iptSpeed = $(`<input class="form-control form-control--minimal input-xs mr-2">`)
 				.change(() => doUpdateProp());
 			const $iptCond = $(`<input class="form-control form-control--minimal input-xs" placeholder="${prop === "fly" ? "(hover)/when..." : "when..."}">`)
 				.change(() => doUpdateProp());
@@ -1074,10 +1073,10 @@ class CreatureBuilder extends Builder {
 		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Ability Scores", {isMarked: true, isRow: true});
 
 		const $getRow = (name, prop) => {
-			const $iptAbil = $(`<input class="form-control form-control--minimal input-xs" type="number">`)
+			const $iptAbil = $(`<input class="form-control form-control--minimal input-xs text-center">`)
 				.val(this._state[prop])
 				.change(() => {
-					this._state[prop] = Number($iptAbil.val());
+					this._state[prop] = UiUtil.strToInt($iptAbil.val());
 					cb();
 				});
 
@@ -1096,7 +1095,7 @@ class CreatureBuilder extends Builder {
 		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Saving Throws", {isMarked: true, isRow: true});
 
 		const $getRow = (name, prop) => {
-			const $iptVal = $(`<input class="form-control form-control--minimal input-xs mb-2" type="number">`)
+			const $iptVal = $(`<input class="form-control form-control--minimal input-xs mb-2 text-center">`)
 				.change(() => {
 					$btnProf.removeClass("active");
 					delete this._meta.profSave[prop];
@@ -1149,7 +1148,7 @@ class CreatureBuilder extends Builder {
 		const $getRow = (name, prop) => {
 			const abilProp = Parser.skillToAbilityAbv(prop);
 
-			const $iptVal = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number">`)
+			const $iptVal = $(`<input class="form-control form-control--minimal input-xs mr-2 text-center">`)
 				.change(() => {
 					if (this._meta.profSkill[prop]) {
 						$btnProf.removeClass("active");
@@ -1228,7 +1227,7 @@ class CreatureBuilder extends Builder {
 		// ensure to overwrite the entire object, so that any hooks trigger
 		const raw = $iptVal.val();
 		if (raw && raw.trim()) {
-			const num = Number(raw);
+			const num = UiUtil.strToInt(raw);
 			const nextState = {...this._state[mode]} || {};
 			nextState[prop] = num < 0 ? `${num}` : `+${num}`;
 			this._state[mode] = nextState;
@@ -1261,13 +1260,13 @@ class CreatureBuilder extends Builder {
 		this._addHook("state", "wis", hook);
 		this._addHook("state", "skill", hook);
 
-		const $iptPerception = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number">`)
+		const $iptPerception = $(`<input class="form-control form-control--minimal input-xs mr-2">`)
 			.change(() => {
 				if (this._meta.autoCalc.passivePerception) {
 					$btnAuto.removeClass("active");
 					this._meta.autoCalc.passivePerception = false;
 				}
-				this._state.passive = Math.round(Number($iptPerception.val()));
+				this._state.passive = UiUtil.strToInt($iptPerception.val());
 				cb();
 			})
 			.val(this._state.passive || 0);
@@ -1642,11 +1641,12 @@ class CreatureBuilder extends Builder {
 		};
 		this._addHook("state", "cr", hook);
 
-		const $iptProfBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" min="0">`)
+		const $iptProfBonus = $(`<input class="form-control form-control--minimal input-xs mr-2">`)
 			.val(this._getProfBonus())
 			.change(() => {
-				this._meta.profBonus = Math.round(Number($iptProfBonus.val()));
+				this._meta.profBonus = UiUtil.strToInt($iptProfBonus.val(), 0, {min: 0});
 				this._meta.autoCalc.proficiency = false;
+				$iptProfBonus.val(UiUtil.intToBonus(this._meta.profBonus));
 				cb();
 			});
 
@@ -1977,7 +1977,7 @@ class CreatureBuilder extends Builder {
 				}
 
 				case "frequency": {
-					const $iptFreq = $(`<input class="form-control form-control--minimal input-xs mkbru_mon__spell-header-ipt" type="number" min="1" max="9">`)
+					const $iptFreq = $(`<input class="form-control form-control--minimal input-xs mkbru_mon__spell-header-ipt" min="1" max="9">`)
 						.change(() => doUpdateState());
 					if (data) $iptFreq.val(meta.count || 1);
 					else $iptFreq.val(1);
@@ -2000,7 +2000,7 @@ class CreatureBuilder extends Builder {
 					<label class="flex-v-baseline text-muted small ml-auto"><span class="mr-1">(Each? </span>${$cbEach}<span>)</span></label>
 					</div>`;
 
-					out.getKeyPath = () => [meta.type, `${Math.max(Math.min(9, Math.round(Number($iptFreq.val()))), 1)}${$cbEach.prop("checked") ? "e" : ""}`];
+					out.getKeyPath = () => [meta.type, `${UiUtil.strToInt($iptFreq.val(), 1, {fallbackOnNaN: 1, min: 1, max: 9})}${$cbEach.prop("checked") ? "e" : ""}`];
 
 					break;
 				}
@@ -2012,7 +2012,7 @@ class CreatureBuilder extends Builder {
 				}
 
 				case "level": {
-					const $iptSlots = $(`<input type="number" class="form-control form-control--minimal input-xs mkbru_mon__spell-header-ipt mr-2">`)
+					const $iptSlots = $(`<input class="form-control form-control--minimal input-xs mkbru_mon__spell-header-ipt mr-2">`)
 						.val(meta.slots || 0)
 						.change(() => doUpdateState());
 
@@ -2031,7 +2031,7 @@ class CreatureBuilder extends Builder {
 						return [
 							{
 								keyPath: ["spells", `${meta.level}`, "slots"],
-								value: Number($iptSlots.val())
+								value: UiUtil.strToInt($iptSlots.val())
 							},
 							{
 								keyPath: ["spells", `${meta.level}`, "lower"],
@@ -2185,10 +2185,10 @@ class CreatureBuilder extends Builder {
 								const $cbBonusDamage = $(`<input type="checkbox" class="mkbru__ipt-cb--plain">`)
 									.change(() => $stageBonusDamage.toggle($cbBonusDamage.prop("checked")));
 
-								const $iptMeleeRange = $(`<input class="form-control form-control--minimal input-xs" type="number" value="5">`);
+								const $iptMeleeRange = $(`<input class="form-control form-control--minimal input-xs" value="5">`);
 								const $iptMeleeDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Number of Dice" min="1" value="1">`);
 								const $iptMeleeDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Dice Type" value="6">`);
-								const $iptMeleeDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X (additional bonus damage)">`);
+								const $iptMeleeDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" placeholder="+X (additional bonus damage)">`);
 								const $iptMeleeDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Melee Damage Type" autocomplete="off">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageMelee = $$`<div class="flex-col"><hr class="hr-3">
@@ -2196,11 +2196,11 @@ class CreatureBuilder extends Builder {
 								<div class="flex-v-center mb-2">${$iptMeleeDamDiceCount}<span class="mr-2">d</span>${$iptMeleeDamDiceNum}${$iptMeleeDamBonus}${$iptMeleeDamType}</div>
 								</div>`;
 
-								const $iptRangedShort = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number">`);
-								const $iptRangedLong = $(`<input class="form-control form-control--minimal input-xs" type="number">`);
+								const $iptRangedShort = $(`<input class="form-control form-control--minimal input-xs mr-2">`);
+								const $iptRangedLong = $(`<input class="form-control form-control--minimal input-xs">`);
 								const $iptRangedDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Number of Dice" min="1" value="1">`);
 								const $iptRangedDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Dice Type" value="6">`);
-								const $iptRangedDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X (additional bonus damage)">`);
+								const $iptRangedDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" placeholder="+X (additional bonus damage)">`);
 								const $iptRangedDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Ranged Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageRanged = $$`<div class="flex-col"><hr class="hr-3">
@@ -2213,7 +2213,7 @@ class CreatureBuilder extends Builder {
 
 								const $iptVersatileDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Number of Dice" min="1" value="1">`);
 								const $iptVersatileDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Dice Type" value="8">`);
-								const $iptVersatileDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X (additional bonus damage)">`);
+								const $iptVersatileDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" placeholder="+X (additional bonus damage)">`);
 								const $iptVersatileDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Two-Handed Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageVersatile = $$`<div class="flex-col"><hr class="hr-3">
@@ -2222,7 +2222,7 @@ class CreatureBuilder extends Builder {
 
 								const $iptBonusDamDiceCount = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Number of Dice" min="1" value="1">`);
 								const $iptBonusDamDiceNum = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ipt-attack-dice" placeholder="Dice Type" value="6">`);
-								const $iptBonusDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number" placeholder="+X (additional bonus damage)">`);
+								const $iptBonusDamBonus = $(`<input class="form-control form-control--minimal input-xs mr-2" placeholder="+X (additional bonus damage)">`);
 								const $iptBonusDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Bonus Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageBonusDamage = $$`<div class="flex-col"><hr class="hr-3">
@@ -2277,10 +2277,10 @@ class CreatureBuilder extends Builder {
 									const ptAtk = `{@atk ${[melee ? "mw" : null, ranged ? "rw" : null].filter(Boolean).join(",")}}`;
 									const ptHit = `{@hit ${pb + abilMod}} to hit`;
 									const ptRange = [
-										melee ? `reach ${$iptMeleeRange.val().trim() || 5} ft.` : null,
+										melee ? `reach ${UiUtil.strToInt($iptMeleeRange.val(), 5, {fallbackOnNaN: 5})} ft.` : null,
 										ranged ? (() => {
-											const vShort = $iptRangedShort.val().trim();
-											const vLong = $iptRangedLong.val().trim();
+											const vShort = UiUtil.strToInt($iptRangedShort.val(), null, {fallbackOnNaN: null});
+											const vLong = UiUtil.strToInt($iptRangedLong.val(), null, {fallbackOnNaN: null});
 											if (!vShort && !vLong) return `unlimited range`;
 											if (!vShort) return `range ${vLong}/${vLong} ft.`;
 											if (!vLong) return `range ${vShort}/${vShort} ft.`;
@@ -2291,7 +2291,7 @@ class CreatureBuilder extends Builder {
 									const getDamageDicePt = ($iptNum, $iptFaces, $iptBonus) => {
 										const num = UiUtil.strToInt($iptNum.val(), 1, {fallbackOnNaN: 1});
 										const faces = UiUtil.strToInt($iptFaces.val(), 6, {fallbackOnNaN: 6});
-										const bonusVal = UiUtil.strToInt($iptBonus.val(), 0, {fallbackOnNaN: 0});
+										const bonusVal = UiUtil.strToInt($iptBonus.val());
 										const totalBonus = abilMod + bonusVal;
 										return `${Math.floor(num * ((faces + 1) / 2)) + (bonusVal || 0)} ({@damage ${num}d${faces}${totalBonus ? ` ${UiUtil.intToBonus(totalBonus).replace(/([-+])/g, "$1 ")}` : ``}})`;
 									};
@@ -2513,7 +2513,7 @@ class CreatureBuilder extends Builder {
 			const getState = () => {
 				const out = {
 					source: $selVariantSource.val().unescapeQuotes(),
-					page: Number($iptPage.val())
+					page: UiUtil.strToInt($iptPage.val())
 				};
 				if (!out.source) return null;
 				if (!out.page) delete out.page;
@@ -2524,7 +2524,7 @@ class CreatureBuilder extends Builder {
 				.change(() => doUpdateState());
 			this._ui.allSources.forEach(srcJson => $selVariantSource.append(`<option value="${srcJson.escapeQuotes()}">${Parser.sourceJsonToFull(srcJson).escapeQuotes()}</option>`));
 
-			const $iptPage = $(`<input type="number" class="form-control form-control--minimal input-xs" min="0">`)
+			const $iptPage = $(`<input class="form-control form-control--minimal input-xs" min="0">`)
 				.change(() => doUpdateState());
 
 			if (entry && entry.variantSource && BrewUtil.hasSourceJson(entry.variantSource.source)) {

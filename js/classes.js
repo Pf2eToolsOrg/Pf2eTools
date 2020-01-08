@@ -21,6 +21,15 @@ class ClassesPage extends BaseComponent {
 		return sc.shortName.trim().replace(re, "").trim();
 	}
 
+	static _enhanceSubclassData (cls, sc) {
+		sc.source = sc.source || cls.source; // default subclasses to same source as parent
+		sc.shortName = sc.shortName || sc.name; // ensure shortName
+
+		sc._fMisc = [];
+		if (sc.srd) sc._fMisc.push("SRD");
+		if (sc.isReprinted) sc._fMisc.push("Reprinted");
+	}
+
 	constructor () {
 		super();
 		// Don't include classId in the main state/proxy, as we want special handling for it as the main hash part
@@ -165,12 +174,7 @@ class ClassesPage extends BaseComponent {
 			}
 
 			cls.subclasses.forEach(sc => {
-				sc.source = sc.source || cls.source; // default subclasses to same source as parent
-				sc.shortName = sc.shortName || sc.name; // ensure shortName
-
-				sc._fMisc = [];
-				if (sc.srd) sc._fMisc.push("SRD");
-				if (sc.isReprinted) sc._fMisc.push("Reprinted");
+				ClassesPage._enhanceSubclassData(cls, sc);
 
 				if (!isExcluded) {
 					const isScExcluded = ExcludeUtil.isExcluded(sc.name, "subclass", sc.source);
@@ -211,6 +215,8 @@ class ClassesPage extends BaseComponent {
 				});
 				return;
 			}
+
+			ClassesPage._enhanceSubclassData(cls, sc);
 
 			// Don't bother checking exclusion for individually-added subclasses, as they should be from homebrew
 			this._sourceFilter.addItem(sc.source);
@@ -900,8 +906,8 @@ class ClassesPage extends BaseComponent {
 		const cls = this.activeClass;
 
 		// region features/fluff
-		const $btnToggleFeatures = ComponentUiUtil.$getBtnBool(this, "isHideFeatures", {text: "Features", activeClass: "cls__btn-cf--active", isInverted: true}).attr("title", "Toggle Class Features");
-		const $btnToggleFluff = ComponentUiUtil.$getBtnBool(this, "isShowFluff", {text: "Info"}).attr("title", "Toggle Class Info");
+		const $btnToggleFeatures = ComponentUiUtil.$getBtnBool(this, "isHideFeatures", {text: "Features", activeClass: "cls__btn-cf--active", isInverted: true}).title("Toggle Class Features");
+		const $btnToggleFluff = ComponentUiUtil.$getBtnBool(this, "isShowFluff", {text: "Info"}).title("Toggle Class Info");
 
 		$$`<div class="flex-v-center m-1 btn-group mr-3 no-shrink">${$btnToggleFeatures}${$btnToggleFluff}</div>`.appendTo($wrp);
 		// endregion

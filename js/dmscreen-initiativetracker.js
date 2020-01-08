@@ -225,12 +225,12 @@ class InitiativeTracker {
 				const $wrpHelp = UiUtil.$getAddModalRow($modalInner, "div");
 
 				const fnDispServerStoppedState = () => {
-					$btnStartServer.html(`Start Server <span class="glyphicon glyphicon-play"/>`).prop("disabled", false);
+					$btnStartServer.html(`<span class="glyphicon glyphicon-play"/> Start Server`).prop("disabled", false);
 					$btnGetToken.prop("disabled", true);
 				};
 
 				const fnDispServerRunningState = () => {
-					$btnStartServer.html(`Server Running <span class="glyphicon glyphicon-play"/>`).prop("disabled", true);
+					$btnStartServer.html(`<span class="glyphicon glyphicon-play"/> Server Running`).prop("disabled", true);
 					$btnGetToken.prop("disabled", false);
 				};
 
@@ -243,7 +243,7 @@ class InitiativeTracker {
 						}
 					});
 
-				const $btnGetToken = $(`<button class="btn btn-default" disabled>Copy Token <span class="glyphicon glyphicon-copy"/></button>`).appendTo($wrpHelp)
+				const $btnGetToken = $(`<button class="btn btn-default" disabled><span class="glyphicon glyphicon-copy"/> Copy Token</button>`).appendTo($wrpHelp)
 					.click(() => {
 						MiscUtil.pCopyTextToClipboard(srvPeer.token);
 						JqueryUtil.showCopiedEffect($btnGetToken);
@@ -297,11 +297,11 @@ class InitiativeTracker {
 		const $btnLock = $(`<button class="btn btn-danger btn-xs" title="Lock Tracker"><span class="glyphicon glyphicon-lock"></span></button>`).appendTo($wrpLockSettings);
 		$btnLock.on("click", () => {
 			if (cfg.isLocked) {
-				$btnLock.removeClass("btn-success").addClass("btn-danger").attr("title", "Lock Tracker");
+				$btnLock.removeClass("btn-success").addClass("btn-danger").title("Lock Tracker");
 				$(".dm-init-lockable").removeClass("disabled");
 				$("input.dm-init-lockable").prop("disabled", false);
 			} else {
-				$btnLock.removeClass("btn-danger").addClass("btn-success").attr("title", "Unlock Tracker");
+				$btnLock.removeClass("btn-danger").addClass("btn-success").title("Unlock Tracker");
 				$(".dm-init-lockable").addClass("disabled");
 				$("input.dm-init-lockable").prop("disabled", true);
 			}
@@ -1477,7 +1477,7 @@ class InitiativeTracker {
 				else if (isVisNum === 1) isVisNum = isTriState ? 2 : 0;
 				else if (isVisNum === 2) isVisNum = 0;
 
-				$btnVisible.attr("title", getTitle());
+				$btnVisible.title(getTitle());
 				$btnVisible.attr("class", getClasses());
 				$dispIcon.attr("class", getIconClasses());
 

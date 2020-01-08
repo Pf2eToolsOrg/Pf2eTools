@@ -6,17 +6,17 @@ window.addEventListener("load", () => {
 	const view = new InitiativeTrackerPlayerMessageHandlerPage();
 
 	const $iptPlayerName = $(`#initp__ipt_player_name`)
-		.change(() => $iptServerToken.removeClass("error-background"))
+		.change(() => $iptServerToken.removeClass("form-control--error"))
 		.disableSpellcheck();
 
 	const $iptServerToken = $(`#initp__ipt_server_token`)
-		.change(() => $iptPlayerName.removeClass("error-background"))
+		.change(() => $iptPlayerName.removeClass("form-control--error"))
 		.disableSpellcheck();
 
 	$(`#initp__btn_gen_client_token`)
 		.click(async () => {
-			if (!$iptPlayerName.val().trim()) return $iptPlayerName.addClass("error-background");
-			if (!$iptServerToken.val().trim()) return $iptServerToken.addClass("error-background");
+			if (!$iptPlayerName.val().trim()) return $iptPlayerName.addClass("form-control--error");
+			if (!$iptServerToken.val().trim()) return $iptServerToken.addClass("form-control--error");
 
 			const ui = new InitiativeTrackerPlayerUi(view, $iptPlayerName.val(), $iptServerToken.val());
 			await ui.pInit();

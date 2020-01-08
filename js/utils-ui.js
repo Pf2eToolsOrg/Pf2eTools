@@ -134,7 +134,7 @@ class ProxyBase {
 	/**
 	 * Object.assign equivalent, overwrites values on the current proxied object with some new values,
 	 *   then trigger all the appropriate event handlers.
-	 * @param hookProp Hook property.
+	 * @param hookProp Hook property, e.g. "state".
 	 * @param proxyProp Proxied object property, e.g. "_state".
 	 * @param underProp Underlying object property, e.g. "__state".
 	 * @param toObj
@@ -142,13 +142,26 @@ class ProxyBase {
 	 */
 	_proxyAssign (hookProp, proxyProp, underProp, toObj, isOverwrite) {
 		const oldKeys = Object.keys(this[proxyProp]);
-		const nuKeys = Object.keys(toObj);
-		const allKeys = new Set([...oldKeys, ...nuKeys]);
+		const nuKeys = new Set(Object.keys(toObj));
+		const dirtyKeys = new Set();
 
-		if (isOverwrite) oldKeys.forEach(k => delete this[underProp][k]);
-		nuKeys.forEach(k => this[underProp][k] = toObj[k]);
+		if (isOverwrite) {
+			oldKeys.forEach(k => {
+				if (!nuKeys.has(k) && this[underProp] !== undefined) {
+					delete this[underProp][k];
+					dirtyKeys.add(k);
+				}
+			});
+		}
 
-		allKeys.forEach(k => {
+		nuKeys.forEach(k => {
+			if (!CollectionUtil.deepEquals(this[underProp][k], toObj[k])) {
+				this[underProp][k] = toObj[k];
+				dirtyKeys.add(k);
+			}
+		});
+
+		dirtyKeys.forEach(k => {
 			if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hk => hk(k, this[underProp][k]));
 			if (this.__hooks[hookProp] && this.__hooks[hookProp][k]) this.__hooks[hookProp][k].forEach(hk => hk(k, this[underProp][k]));
 		});
@@ -163,18 +176,27 @@ class UiUtil {
 	 * @param [opts.max] Max allowed return value.
 	 * @param [opts.min] Min allowed return value.
 	 * @param [opts.fallbackOnNaN] Return value if not a number.
-	 * @return {int}
 	 */
-	static strToInt (string, fallbackEmpty = 0, opts) {
+	static strToInt (string, fallbackEmpty = 0, opts) { return UiUtil._strToNumber(string, fallbackEmpty, opts, true) }
+
+	/**
+	 * @param string String to parse.
+	 * @param [fallbackEmpty] Fallback number if string is empty.
+	 * @param [opts] Options Object.
+	 * @param [opts.max] Max allowed return value.
+	 * @param [opts.min] Min allowed return value.
+	 * @param [opts.fallbackOnNaN] Return value if not a number.
+	 */
+	static strToNumber (string, fallbackEmpty = 0, opts) { return UiUtil._strToNumber(string, fallbackEmpty, opts, false) }
+
+	static _strToNumber (string, fallbackEmpty = 0, opts, isInt) {
 		opts = opts || {};
 		let out;
 		string = string.trim();
 		if (!string) out = fallbackEmpty;
 		else {
-			const preDot = string.split(".")[0].trim();
-			const unary = preDot.replace(/^([-+]*).*$/, (...m) => m[1]);
-			const numPart = preDot.replace(/[^0-9]/g, "");
-			const num = Number(`${unary}${numPart}` || 0);
+			string = string.replace(/[^-+/*0-9,.()]/gi, "").replace(Parser._numberCleanRegexp, "");
+			const num = UiUtil._parseStrAsNumber(string, isInt);
 			out = isNaN(num)
 				? opts.fallbackOnNaN !== undefined ? opts.fallbackOnNaN : 0
 				: num;
@@ -186,28 +208,16 @@ class UiUtil {
 
 	/**
 	 * @param string String to parse.
-	 * @param [fallbackEmpty] Fallback number if string is empty.
+	 * @param [fallbackEmpty] Fallback value if string is empty.
 	 * @param [opts] Options Object.
-	 * @param [opts.max] Max allowed return value.
-	 * @param [opts.min] Min allowed return value.
-	 * @param [opts.fallbackOnNaN] Return value if not a number.
-	 * @return {number}
+	 * @param [opts.fallbackOnNaB] Return value if not a boolean.
 	 */
-	static strToNumber (string, fallbackEmpty = 0, opts) {
+	static strToBool (string, fallbackEmpty = null, opts) {
 		opts = opts || {};
-		let out;
-		string = string.trim();
-		if (!string) out = fallbackEmpty;
-		else {
-			string = string.replace(/[^0-9,.]/gi, "").replace(Parser._numberCleanRegexp, "");
-			const num = Number(string);
-			out = isNaN(num)
-				? opts.fallbackOnNaN !== undefined ? opts.fallbackOnNaN : 0
-				: num;
-		}
-		if (opts.max != null) out = Math.min(out, opts.max);
-		if (opts.min != null) out = Math.max(out, opts.min);
-		return out;
+		if (!string) return fallbackEmpty;
+		string = string.trim().toLowerCase();
+		if (!string) return fallbackEmpty;
+		return string === "true" ? true : string === "false" ? false : opts.fallbackOnNaB;
 	}
 
 	static intToBonus (int) { return `${int >= 0 ? "+" : ""}${int}`; }
@@ -376,13 +386,13 @@ class UiUtil {
 		const $row = UiUtil.$getAddModalRow($modalInner, "h5").addClass("bold");
 		if (opts.$eleRhs) $$`<div class="split flex-v-center w-100 pr-1"><span>${headerText}</span>${opts.$eleRhs}</div>`.appendTo($row);
 		else $row.text(headerText);
-		if (opts.helpText) $row.attr("title", opts.helpText);
+		if (opts.helpText) $row.title(opts.helpText);
 		return $row;
 	}
 
 	static $getAddModalRowCb ($modalInner, labelText, objectWithProp, propName, helpText) {
 		const $row = UiUtil.$getAddModalRow($modalInner, "label").addClass(`ui-modal__row--cb`);
-		if (helpText) $row.attr("title", helpText);
+		if (helpText) $row.title(helpText);
 		$row.append(`<span>${labelText}</span>`);
 		const $cb = $(`<input type="checkbox">`).appendTo($row)
 			.prop("checked", objectWithProp[propName])
@@ -404,7 +414,7 @@ class UiUtil {
 	static $getAddModalRowSel ($modalInner, labelText, objectWithProp, propName, values, opts) {
 		opts = opts || {};
 		const $row = UiUtil.$getAddModalRow($modalInner, "label").addClass(`ui-modal__row--sel`);
-		if (opts.helpText) $row.attr("title", opts.helpText);
+		if (opts.helpText) $row.title(opts.helpText);
 		$row.append(`<span>${labelText}</span>`);
 		const $sel = $(`<select class="form-control input-xs w-30">`).appendTo($row);
 		values.forEach((val, i) => $(`<option value="${i}"/>`).text(opts.fnDisplay ? opts.fnDisplay(val) : val).appendTo($sel));
@@ -414,9 +424,127 @@ class UiUtil {
 			.change(() => objectWithProp[propName] = values[$sel.val()]);
 		return $sel;
 	}
+
+	static _parseStrAsNumber (str, isInt) {
+		const lexed = UiUtil._S2n_Lexer.lex(str);
+		if (!lexed) return NaN;
+		const parsed = UiUtil._S2n_Parser.parse(lexed);
+		if (!parsed) return null;
+		const out = parsed.evl();
+		if (!isNaN(out) && isInt) return Math.round(out);
+		return out;
+	}
 }
 UiUtil.SEARCH_RESULTS_CAP = 75;
 UiUtil.TYPE_TIMEOUT_MS = 100; // auto-search after 100ms
+
+// region String to Number
+UiUtil._S2n_Token = class {
+	constructor (type, value) { Object.assign(this, {type, value}); }
+	static NUMBER (str) { return new UiUtil._S2n_Token(UiUtil._S2n_Token.TYP_NUMBER, str); }
+};
+UiUtil._S2n_Token.ADD = new UiUtil._S2n_Token("+"); UiUtil._S2n_Token.SUB = new UiUtil._S2n_Token("-");
+UiUtil._S2n_Token.MULT = new UiUtil._S2n_Token("*"); UiUtil._S2n_Token.DIV = new UiUtil._S2n_Token("/");
+UiUtil._S2n_Token.PAREN_OPEN = new UiUtil._S2n_Token("("); UiUtil._S2n_Token.PAREN_CLOSE = new UiUtil._S2n_Token(")");
+UiUtil._S2n_Token.TYP_NUMBER = "#";
+
+UiUtil._S2n_Lexer = class {
+	static lex (str, isInt) {
+		str = str.replace(/\s*/g, "");
+
+		const state = {token: "", out: [], parens: 0, mode: null};
+
+		const outputToken = (nxt = "") => { // returns true on error
+			if (state.token) {
+				switch (state.token) {
+					case "(": state.out.push(UiUtil._S2n_Token.PAREN_OPEN); break;
+					case ")": state.out.push(UiUtil._S2n_Token.PAREN_CLOSE); break;
+					case "+": case "--": state.out.push(UiUtil._S2n_Token.ADD); break;
+					case "-": case "+-": case "-+": state.out.push(UiUtil._S2n_Token.SUB); break;
+					case "*": state.out.push(UiUtil._S2n_Token.MULT); break;
+					case "/": state.out.push(UiUtil._S2n_Token.DIV); break;
+					default:
+						if (isNaN(state.token)) return true;
+						else state.out.push(UiUtil._S2n_Token.NUMBER(state.token))
+				}
+			}
+			state.token = nxt;
+		};
+
+		for (const c of str) {
+			switch (c) {
+				case "(":
+					state.parens++;
+					if (outputToken("(") || outputToken()) return null;
+					break;
+				case ")":
+					state.parens--;
+					if (state.parens < 0) return null;
+					if (outputToken(")") || outputToken()) return null;
+					break;
+				case "+": case "-": case "*": case "/":
+					if (state.mode === "text") if (outputToken()) return null;
+					state.token += c; state.mode = "symbol";
+					break;
+				default: {
+					if (!isInt && UiUtil._S2n_Lexer._RE_NUMBER.test(c)) {
+						if (state.mode === "symbol") if (outputToken()) return null;
+						state.token += c; state.mode = "text";
+					} else return null;
+				}
+			}
+		}
+
+		if (outputToken()) return null;
+		return state.out;
+	}
+};
+UiUtil._S2n_Lexer._RE_NUMBER = new RegExp(`[0-9${Parser._decimalSeparator}]`);
+
+UiUtil._S2n_Parser = class {
+	static parse (syms, ix = -1, sym = null, accepted = null) {
+		if (!syms || !syms.length) return null;
+		const nxt = () => { ix++; sym = syms[ix]; return syms[ix - 1]; };
+		const match = (...syms) => sym && new Set(syms.map(it => it.type || it)).has(sym.type);
+		const accept = it => match(it) ? accepted = nxt() : false;
+		const factor = (isNeg, isInv) => {
+			if (accept(UiUtil._S2n_Token.TYP_NUMBER)) return UiUtil._S2n_Parser.factor(Number(accepted.value), isNeg, isInv);
+			else if (accept(UiUtil._S2n_Token.PAREN_OPEN)) {
+				const exp = expression();
+				if (!accept(UiUtil._S2n_Token.PAREN_CLOSE)) return UiUtil._S2n_Parser.nan();
+				return UiUtil._S2n_Parser.factor(exp, isNeg, isInv);
+			} else return UiUtil._S2n_Parser.nan();
+		};
+		const term = (isNeg) => {
+			const meta = {isInv: false, children: []};
+			meta.children.push(factor(isNeg, false));
+			while (match(UiUtil._S2n_Token.MULT, UiUtil._S2n_Token.DIV)) {
+				meta.isInv = nxt() === UiUtil._S2n_Token.DIV;
+				meta.children.push(factor(isNeg, meta.isInv));
+			}
+			return UiUtil._S2n_Parser.term(meta.children);
+		};
+		const expression = () => {
+			const meta = {isNeg: false, children: []};
+			if (match(UiUtil._S2n_Token.ADD, UiUtil._S2n_Token.SUB)) meta.isNeg = nxt() === UiUtil._S2n_Token.SUB;
+			meta.children.push(term(meta.isNeg));
+			while (match(UiUtil._S2n_Token.ADD, UiUtil._S2n_Token.SUB)) {
+				meta.isNeg = nxt() === UiUtil._S2n_Token.SUB;
+				meta.children.push(term(meta.isNeg));
+			}
+			return UiUtil._S2n_Parser.expression(meta.children);
+		};
+		nxt();
+		const out = expression();
+		if (sym) return UiUtil._S2n_Parser.nan(); // there are remaining unused symbols
+		return out;
+	}
+	static nan () { return {evl: () => NaN}; }
+	static factor (val, isNeg, isInv) { return {evl: () => { val = (val.evl ? val.evl() : val) * (isNeg ? -1 : 1); return isInv ? 1 / val : val; }}; }
+	static term (children) { return {evl: () => children.map(it => it.evl()).reduce((a, b) => a * b, 1)}; }
+	static expression (children) { return {evl: () => children.map(it => it.evl()).reduce((a, b) => a + b, 0)}; }
+};
+// endregion
 
 class ProfUiUtil {
 	/**
@@ -440,21 +568,21 @@ class ProfUiUtil {
 			.click(() => {
 				$btnCycle
 					.attr("data-state", ++state >= NUM_STATES ? state = 0 : state)
-					.attr("title", ProfUiUtil.PROF_TO_FULL[state].name)
+					.title(ProfUiUtil.PROF_TO_FULL[state].name)
 					.trigger("change");
 			})
 			.contextmenu(evt => {
 				evt.preventDefault();
 				$btnCycle
 					.attr("data-state", --state < 0 ? state = NUM_STATES - 1 : state)
-					.attr("title", ProfUiUtil.PROF_TO_FULL[state].name)
+					.title(ProfUiUtil.PROF_TO_FULL[state].name)
 					.trigger("change");
 			});
 		const setState = (nuState) => {
 			state = nuState;
 			if (state > NUM_STATES) state = 0;
 			else if (state < 0) state = NUM_STATES - 1;
-			$btnCycle.attr("data-state", state);
+			$btnCycle.attr("data-state", state).title(ProfUiUtil.PROF_TO_FULL[state].name);
 		};
 		return {
 			$ele: $btnCycle,
@@ -621,7 +749,6 @@ class SearchUiUtil {
 }
 SearchUiUtil.NO_HOVER_CATEGORIES = new Set([
 	Parser.CAT_ID_ADVENTURE,
-	Parser.CAT_ID_CLASS,
 	Parser.CAT_ID_QUICKREF
 ]);
 
@@ -1061,6 +1188,37 @@ class InputUiUtil {
 
 	/**
 	 * @param opts Options.
+	 * @param opts.title Prompt title.
+	 * @param opts.default Default value.
+	 * @return {Promise} A promise which resolves to true/false if the user chose, or null otherwise.
+	 */
+	static pGetUserBoolean (opts) {
+		opts = opts || {};
+		return new Promise(resolve => {
+			const $btnTrue = $(`<button class="btn btn-primary mr-2"><span class="glyphicon glyphicon-ok"/> Yes</button>`)
+				.click(() => doClose(true, true));
+
+			const $btnFalse = $(`<button class="btn btn-default"><span class="glyphicon glyphicon-remove"/> No</button>`)
+				.click(() => doClose(true, false));
+
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				title: opts.title || "Choose",
+				noMinHeight: true,
+				cbClose: (isDataEntered, value) => {
+					if (!isDataEntered) return resolve(null);
+					if (value == null) throw new Error(`Callback must receive a value!`); // sanity check
+					resolve(value);
+				}
+			});
+
+			$$`<div class="flex-vh-center py-1">${$btnTrue}${$btnFalse}</div>`.appendTo($modalInner);
+			$btnTrue.focus();
+			$btnTrue.select();
+		});
+	}
+
+	/**
+	 * @param opts Options.
 	 * @param opts.values Array of values.
 	 * @param [opts.placeholder] Placeholder text.
 	 * @param [opts.title] Prompt title.
@@ -1225,7 +1383,7 @@ class InputUiUtil {
 			});
 
 			$$`<div class="flex flex-wrap flex-h-center mb-2">${opts.values.map((v, i) => {
-				const $btn = $$`<div class="m-2 btn ${v.buttonClass || "btn-default"} ui-icn__btn flex-col flex-h-center">
+				const $btn = $$`<div class="m-2 btn ${v.buttonClass || "btn-default"} ui__btn-xxl-square flex-col flex-h-center">
 					${v.iconClass ? `<div class="ui-icn__wrp-icon ${v.iconClass} mb-1"></div>` : ""}
 					${v.iconContent ? v.iconContent : ""}
 					<div class="whitespace-normal w-100">${v.name}</div>
@@ -1247,10 +1405,10 @@ class InputUiUtil {
 	}
 
 	/**
-	 * @param opts Options.
-	 * @param opts.title Prompt title.
-	 * @param opts.default Default value.
-	 * @param opts.autocomplete Array of autocomplete strings. REQUIRES INCLUSION OF THE TYPEAHEAD LIBRARY.
+	 * @param [opts] Options.
+	 * @param [opts.title] Prompt title.
+	 * @param [opts.default] Default value.
+	 * @param [opts.autocomplete] Array of autocomplete strings. REQUIRES INCLUSION OF THE TYPEAHEAD LIBRARY.
 	 * @return {Promise<String>} A promise which resolves to the string if the user entered one, or null otherwise.
 	 */
 	static pGetUserString (opts) {
@@ -1269,6 +1427,37 @@ class InputUiUtil {
 				});
 			if (opts.autocomplete && opts.autocomplete.length) $iptStr.typeahead({source: opts.autocomplete});
 			const $btnOk = $(`<button class="btn btn-default">Enter</button>`)
+				.click(() => doClose(true));
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				title: opts.title || "Enter Text",
+				noMinHeight: true,
+				cbClose: (isDataEntered) => {
+					if (!isDataEntered) return resolve(null);
+					const raw = $iptStr.val();
+					if (!raw.trim()) return resolve(null);
+					else return resolve(raw);
+				}
+			});
+			$iptStr.appendTo($modalInner);
+			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+			$iptStr.focus();
+			$iptStr.select();
+		});
+	}
+
+	/**
+	 * @param [opts] Options.
+	 * @param [opts.title] Prompt title.
+	 * @param [opts.buttonText] Prompt title.
+	 * @param [opts.default] Default value.
+	 * @param [opts.disabled] If the text area is disabled.
+	 * @return {Promise<String>} A promise which resolves to the string if the user entered one, or null otherwise.
+	 */
+	static pGetUserText (opts) {
+		opts = opts || {};
+		return new Promise(resolve => {
+			const $iptStr = $(`<textarea class="form-control mb-2 resize-vertical w-100" ${opts.disabled ? "disabled" : ""}/>`).val(opts.default);
+			const $btnOk = $(`<button class="btn btn-default">${opts.buttonText || "Enter"}</button>`)
 				.click(() => doClose(true));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Enter Text",
@@ -1477,7 +1666,7 @@ class InputUiUtil {
 			};
 
 			comp.getAsString = function () {
-				return `{@dice ${this._state.num}d${this._state.faces}${this._state.bonus ? UiUtil.intToBonus(this._state.bonus) : ""}}`;
+				return `${this._state.num}d${this._state.faces}${this._state.bonus ? UiUtil.intToBonus(this._state.bonus) : ""}`;
 			};
 
 			const $btnOk = $(`<button class="btn btn-default">Enter</button>`)
@@ -1562,15 +1751,15 @@ class DragReorderUiUtil {
 	}
 
 	/**
-	 * @param comp Row component.
+	 * @param $fnGetRow Function which returns a $row element. Is a function instead of a value so it can be lazy-loaded later.
 	 * @param opts Options object.
 	 * @param opts.$parent
 	 * @param opts.swapRowPositions
-	 * @param [opts.childComponents]
-	 * @param [opts.getChildComponents]
+	 * @param [opts.$children] An array of row elements.
+	 * @param [opts.$getChildren] Should return an array as described in the "$children" option.
 	 */
-	static $getDragPadOpts (comp, opts) {
-		if (!opts.$parent || !opts.swapRowPositions || (!opts.childComponents && !opts.getChildComponents)) throw new Error("Missing required option(s)!");
+	static $getDragPadOpts ($fnGetRow, opts) {
+		if (!opts.$parent || !opts.swapRowPositions || (!opts.$children && !opts.$getChildren)) throw new Error("Missing required option(s)!");
 
 		const dragMeta = {};
 		const doDragCleanup = () => {
@@ -1586,11 +1775,11 @@ class DragReorderUiUtil {
 			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"/>`).appendTo(opts.$parent);
 			dragMeta.$dummies = [];
 
-			let childComponentsCur = opts.getChildComponents ? opts.getChildComponents() : opts.childComponents;
-			const ixRow = childComponentsCur.indexOf(comp);
+			const $children = opts.$getChildren ? opts.$getChildren() : opts.$children;
+			const ixRow = $children.indexOf($fnGetRow());
 
-			childComponentsCur.forEach((row, i) => {
-				const dimensions = {w: row.$row.outerWidth(true), h: row.$row.outerHeight(true)};
+			$children.forEach(($child, i) => {
+				const dimensions = {w: $child.outerWidth(true), h: $child.outerHeight(true)};
 				const $dummy = $(`<div class="${i === ixRow ? "ui-drag__wrp-drag-dummy--highlight" : "ui-drag__wrp-drag-dummy--lowlight"}"/>`)
 					.width(dimensions.w).height(dimensions.h)
 					.mouseup(() => {
@@ -1615,15 +1804,15 @@ class DragReorderUiUtil {
 	}
 
 	/**
-	 * @param comp The component which will contain the drag pad. Must expose a ".$row" property (getter).
+	 * @param $fnGetRow Function which returns a $row element. Is a function instead of a value so it can be lazy-loaded later.
 	 * @param $parent Parent elements to attach row elements to. Should have (e.g.) "relative" CSS positioning.
 	 * @param parent Parent component which has a pod decomposable as {swapRowPositions, <childComponents|getChildComponents>}.
 	 * @return jQuery
 	 */
-	static $getDragPad2 (comp, $parent, parent) {
-		const {swapRowPositions, childComponents, getChildComponents} = parent;
-		const nxtOpts = {$parent, swapRowPositions, childComponents, getChildComponents};
-		return this.$getDragPadOpts(comp, nxtOpts)
+	static $getDragPad2 ($fnGetRow, $parent, parent) {
+		const {swapRowPositions, $children, $getChildren} = parent;
+		const nxtOpts = {$parent, swapRowPositions, $children, $getChildren};
+		return this.$getDragPadOpts($fnGetRow, nxtOpts)
 	}
 }
 
@@ -1656,18 +1845,18 @@ class SourceUiUtil {
 		const $iptName = $(`<input class="form-control ui-source__ipt-named">`)
 			.change(() => {
 				if (!jsonDirty && !isEditMode) $iptJson.val($iptName.val().replace(/[^-_a-zA-Z]/g, ""));
-				$iptName.removeClass("error-background");
+				$iptName.removeClass("form-control--error");
 			});
 		if (options.source) $iptName.val(options.source.full);
 		const $iptAbv = $(`<input class="form-control ui-source__ipt-named">`)
 			.change(() => {
-				$iptAbv.removeClass("error-background");
+				$iptAbv.removeClass("form-control--error");
 			});
 		if (options.source) $iptAbv.val(options.source.abbreviation);
 		const $iptJson = $(`<input class="form-control ui-source__ipt-named" ${isEditMode ? "disabled" : ""}>`)
 			.change(() => {
 				jsonDirty = true;
-				$iptJson.removeClass("error-background");
+				$iptJson.removeClass("form-control--error");
 			});
 		if (options.source) $iptJson.val(options.source.json);
 		const $iptUrl = $(`<input class="form-control ui-source__ipt-named">`);
@@ -1682,13 +1871,13 @@ class SourceUiUtil {
 				let incomplete = false;
 				[$iptName, $iptAbv, $iptJson].forEach($ipt => {
 					const val = $ipt.val();
-					if (!val || !val.trim()) (incomplete = true) && $ipt.addClass("error-background");
+					if (!val || !val.trim()) (incomplete = true) && $ipt.addClass("form-control--error");
 				});
 				if (incomplete) return;
 
 				const jsonVal = $iptJson.val().trim();
 				if (!isEditMode && BrewUtil.hasSourceJson(jsonVal)) {
-					$iptJson.addClass("error-background");
+					$iptJson.addClass("form-control--error");
 					JqueryUtil.doToast({content: `The JSON identifier "${jsonVal}" already exists!`, type: "danger"});
 					return;
 				}
@@ -1715,7 +1904,7 @@ class SourceUiUtil {
 				$stageExisting.show();
 
 				// cleanup
-				[$iptName, $iptAbv, $iptJson].forEach($ipt => $ipt.removeClass("error-background"));
+				[$iptName, $iptAbv, $iptJson].forEach($ipt => $ipt.removeClass("form-control--error"));
 			});
 
 		const $stageInitial = $$`<div class="h-100 w-100 flex-vh-center"><div>
@@ -1753,7 +1942,7 @@ class SourceUiUtil {
 		const $selExisting = $$`<select class="form-control input-sm">
 			<option disabled>Select</option>
 			${(BrewUtil.homebrewMeta.sources || []).sort((a, b) => SortUtil.ascSortLower(a.full, b.full)).map(s => `<option value="${s.json.escapeQuotes()}">${s.full.escapeQuotes()}</option>`)}
-		</select>`.change(() => $selExisting.removeClass("error-background"));
+		</select>`.change(() => $selExisting.removeClass("form-control--error"));
 		$selExisting[0].selectedIndex = 0;
 
 		const $btnConfirmExisting = $(`<button class="btn btn-default btn-sm">Confirm</button>`)
@@ -1767,7 +1956,7 @@ class SourceUiUtil {
 					$selExisting[0].selectedIndex = 0;
 					$stageExisting.hide();
 					$stageInitial.show();
-				} else $selExisting.addClass("error-background");
+				} else $selExisting.addClass("form-control--error");
 			});
 
 		const $btnBackExisting = $(`<button class="btn btn-default btn-sm mr-2">Back</button>`)
@@ -1841,19 +2030,22 @@ class BaseComponent extends ProxyBase {
 
 	/**
 	 * Asynchronous version available below.
-	 * @param prop The state property.
-	 * @param cbExists Function to run on existing render meta. Arguments are `rendered, item, i`.
-	 * @param cbNotExists Function to run which generates existing render meta. Arguments are `item, i`.
-	 * @param [opts] Options object.
+	 * @param opts Options object.
+	 * @param opts.prop The state property.
+	 * @param opts.fnUpdateExisting Function to run on existing render meta. Arguments are `rendered, item`.
+	 * @param opts.fnGetNew Function to run which generates existing render meta. Arguments are `item`.
 	 * @param [opts.isDiffMode] If a diff of the state should be taken/checked before updating renders.
+	 * @param [opts.namespace] A namespace to store these renders under. Useful if multiple renders are being made from
+	 *        the same collection.
 	 */
-	_renderCollection (prop, cbExists, cbNotExists, opts) {
+	_renderCollection (opts) {
 		opts = opts || {};
 
-		const rendered = (this.__rendered[prop] = this.__rendered[prop] || {});
+		const renderedLookupProp = opts.namespace ? `${opts.namespace}.${opts.prop}` : opts.prop;
+		const rendered = (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
 		const toDelete = new Set(Object.keys(rendered));
 
-		(this._state[prop] || []).forEach((it, i) => {
+		(this._state[opts.prop] || []).forEach((it, i) => {
 			if (it.id == null) throw new Error(`Collection item did not have an ID!`);
 			const meta = rendered[it.id];
 
@@ -1868,9 +2060,9 @@ class BaseComponent extends ProxyBase {
 				}
 
 				meta.data = it; // update any existing pointers
-				cbExists(meta, it, i);
+				opts.fnUpdateExisting(meta, it, i);
 			} else {
-				const meta = cbNotExists(it, i);
+				const meta = opts.fnGetNew(it, i);
 				meta.data = it;
 				if (!meta.$wrpRow) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
 
@@ -1884,25 +2076,28 @@ class BaseComponent extends ProxyBase {
 	}
 
 	/**
-	 * Synchronous version available below.
-	 * @param prop The state property.
-	 * @param cbExists Function to run on existing render meta. Arguments are `rendered, item, i`.
-	 * @param cbNotExists Function to run which generates existing render meta. Arguments are `item, i`.
+	 * Synchronous version available above.
 	 * @param [opts] Options object.
+	 * @param opts.prop The state property.
+	 * @param opts.pFnUpdateExisting Function to run on existing render meta. Arguments are `rendered, item`.
+	 * @param opts.pFnGetNew Function to run which generates existing render meta. Arguments are `item`.
 	 * @param [opts.isDiffMode] If updates should be run in "diff" mode (i.e. no update is run if nothing has changed).
 	 * @param [opts.isMultiRender] If multiple renders will be produced.
 	 * @param [opts.additionalCaches] Additional cache objects to be cleared on entity delete. Should be objects with
 	 *        entity IDs as keys.
+	 * @param [opts.namespace] A namespace to store these renders under. Useful if multiple renders are being made from
+	 *        the same collection.
 	 */
-	async _pRenderCollection (prop, cbExists, cbNotExists, opts) {
+	async _pRenderCollection (opts) {
 		opts = opts || {};
 
-		const rendered = (this.__rendered[prop] = this.__rendered[prop] || {});
-		const entities = this._state[prop];
-		return this._pRenderCollection_doRender(rendered, entities, cbExists, cbNotExists, opts);
+		const renderedLookupProp = opts.namespace ? `${opts.namespace}.${opts.prop}` : opts.prop;
+		const rendered = (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
+		const entities = this._state[opts.prop];
+		return this._pRenderCollection_doRender(rendered, entities, opts);
 	}
 
-	async _pRenderCollection_doRender (rendered, entities, cbExists, cbNotExists, opts) {
+	async _pRenderCollection_doRender (rendered, entities, opts) {
 		opts = opts || {};
 
 		const toDelete = new Set(Object.keys(rendered));
@@ -1924,12 +2119,12 @@ class BaseComponent extends ProxyBase {
 					else continue;
 				}
 
-				const nxtMeta = await cbExists(meta, it, i);
+				const nxtMeta = await opts.pFnUpdateExisting(meta, it);
 				// Overwrite the existing renders in multi-render mode
 				//    Otherwise, just ignore the result--single renders never modify their render
 				if (opts.isMultiRender) rendered[it.id] = nxtMeta;
 			} else {
-				const meta = await cbNotExists(it, i);
+				const meta = await opts.pFnGetNew(it);
 				// If the generator decides there's nothing to render, skip this item
 				if (meta == null) continue;
 
@@ -1960,20 +2155,26 @@ class BaseComponent extends ProxyBase {
 	/**
 	 * Detach (and thus preserve) rendered collection elements so they can be re-used later.
 	 * @param prop The state property.
+	 * @param [namespace] A namespace to store these renders under. Useful if multiple renders are being made from
+	 *        the same collection.
 	 */
-	_detachCollection (prop) {
-		const rendered = (this.__rendered[prop] = this.__rendered[prop] || {});
+	_detachCollection (prop, namespace = null) {
+		const renderedLookupProp = namespace ? `${namespace}.${prop}` : prop;
+		const rendered = (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
 		Object.values(rendered).forEach(it => it.$wrpRow.detach());
 	}
 
 	/**
 	 * Wipe any rendered collection elements, and reset the render cache.
 	 * @param prop The state property.
+	 * @param [namespace] A namespace to store these renders under. Useful if multiple renders are being made from
+	 *        the same collection.
 	 */
-	_resetCollectionRenders (prop) {
-		const rendered = (this.__rendered[prop] = this.__rendered[prop] || {});
+	_resetCollectionRenders (prop, namespace = null) {
+		const renderedLookupProp = namespace ? `${namespace}.${prop}` : prop;
+		const rendered = (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
 		Object.values(rendered).forEach(it => it.$wrpRow.remove());
-		delete this.__rendered[prop];
+		delete this.__rendered[renderedLookupProp];
 	}
 
 	render () { throw new Error("Unimplemented!"); }
@@ -2001,6 +2202,7 @@ class BaseComponent extends ProxyBase {
 	}
 
 	_triggerCollectionUpdate (prop) {
+		if (!this._state[prop]) return;
 		this._state[prop] = [...this._state[prop]];
 	}
 
@@ -2259,6 +2461,7 @@ class ComponentUiUtil {
 	 * @param [fallbackEmpty] Fallback number if string is empty.
 	 * @param [opts] Options Object.
 	 * @param [opts.$ele] Element to use.
+	 * @param [opts.html] HTML to convert to element to use.
 	 * @param [opts.max] Max allowed return value.
 	 * @param [opts.min] Min allowed return value.
 	 * @param [opts.offset] Offset to add to value displayed.
@@ -2278,6 +2481,7 @@ class ComponentUiUtil {
 	 * @param [fallbackEmpty] Fallback number if string is empty.
 	 * @param [opts] Options Object.
 	 * @param [opts.$ele] Element to use.
+	 * @param [opts.html] HTML to convert to element to use.
 	 * @param [opts.max] Max allowed return value.
 	 * @param [opts.min] Min allowed return value.
 	 * @param [opts.offset] Offset to add to value displayed.
@@ -2294,7 +2498,7 @@ class ComponentUiUtil {
 		opts = opts || {};
 		opts.offset = opts.offset || 0;
 
-		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal text-right" type="search">`))
+		const $ipt = (opts.$ele || $(opts.html || `<input class="form-control input-xs form-control--minimal text-right">`)).disableSpellcheck()
 			.change(() => {
 				if (opts.isAllowNull) {
 					const raw = $ipt.val().trim();
@@ -2320,19 +2524,22 @@ class ComponentUiUtil {
 	 * @param prop Component to hook on.
 	 * @param [opts] Options Object.
 	 * @param [opts.$ele] Element to use.
+	 * @param [opts.html] HTML to convert to element to use.
 	 * @param [opts.isNoTrim] If the text should not be trimmed.
 	 * @param [opts.isAllowNull] If null should be allowed (and preferred) for empty inputs
 	 * @param [opts.asMeta] If a meta-object should be returned containing the hook and the checkbox.
+	 * @param [opts.autocomplete] Array of autocomplete strings. REQUIRES INCLUSION OF THE TYPEAHEAD LIBRARY.
 	 * @return {JQuery}
 	 */
 	static $getIptStr (component, prop, opts) {
 		opts = opts || {};
 
-		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal" type="search">`))
+		const $ipt = (opts.$ele || $(opts.html || `<input class="form-control input-xs form-control--minimal">`)).disableSpellcheck()
 			.change(() => {
 				const nxtVal = opts.isNoTrim ? $ipt.val() : $ipt.val().trim();
 				component._state[prop] = opts.isAllowNull && !nxtVal ? null : nxtVal;
 			});
+		if (opts.autocomplete && opts.autocomplete.length) $ipt.typeahead({source: opts.autocomplete});
 		const hook = () => $ipt.val(component._state[prop]);
 		component._addHookBase(prop, hook);
 		hook();
@@ -2379,6 +2586,7 @@ class ComponentUiUtil {
 	 * @param prop Component to hook on.
 	 * @param [opts] Options Object.
 	 * @param [opts.$ele] Element to use.
+	 * @param [opts.html] HTML to convert to element to use.
 	 * @param [opts.text] Button text, if element is not specified.
 	 * @param [opts.fnHookPost] Function to run after primary hook.
 	 * @param [opts.stateName] State name.
@@ -2389,6 +2597,8 @@ class ComponentUiUtil {
 	 */
 	static $getBtnBool (component, prop, opts) {
 		opts = opts || {};
+
+		if (opts.html) opts.$ele = $(opts.html);
 
 		const activeClass = opts.activeClass || "active";
 		const stateName = opts.stateName || "state";
@@ -2435,6 +2645,7 @@ class ComponentUiUtil {
 	 * @param opts Options Object.
 	 * @param opts.values Values to display.
 	 * @param [opts.$ele] Element to use.
+	 * @param [opts.html] HTML to convert to element to use.
 	 * @param [opts.isAllowNull] If null is allowed.
 	 * @param [opts.fnDisplay] Value display function.
 	 * @param [opts.asMeta] If a meta-object should be returned containing the hook and the select.
@@ -2443,7 +2654,7 @@ class ComponentUiUtil {
 	static $getSelEnum (component, prop, opts) {
 		opts = opts || {};
 
-		const $sel = (opts.$ele || $(`<select class="form-control input-xs"/>`))
+		const $sel = (opts.$ele || $(opts.html || `<select class="form-control input-xs"/>`))
 			.change(() => {
 				const ix = Number($sel.val());
 				if (~ix) component._state[prop] = opts.values[ix];

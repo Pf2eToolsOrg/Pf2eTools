@@ -196,6 +196,12 @@ function Renderer () {
 	 * @param options.prefix String to prefix rendered lines with.
 	 */
 	this.recursiveRender = function (entry, textStack, meta, options) {
+		if (entry instanceof Array) {
+			entry.forEach(nxt => this.recursiveRender(nxt, textStack, meta, options));
+			setTimeout(() => { throw new Error(`Array passed to renderer! The renderer only guarantees support for primitives and basic objects.`); });
+			return;
+		}
+
 		// respect the API of the original, but set up for using string concatenations
 		if (textStack.length === 0) textStack[0] = "";
 		else textStack.reverse();
@@ -1473,6 +1479,10 @@ function Renderer () {
 								this._recursiveRender(fauxEntry, textStack, meta);
 								break;
 							case "@class": {
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_CLASSES,
+									source: source || SRC_PHB
+								};
 								if (others.length) {
 									const classStateOpts = {
 										subclass: {
@@ -1480,6 +1490,11 @@ function Renderer () {
 											source: others.length > 1 ? others[1].trim() : "phb"
 										}
 									};
+
+									// Don't include the feature part for hovers, as it is unsupported
+									const hoverSubhashObj = UrlUtil.unpackSubHash(UrlUtil.getClassesPageStatePart(classStateOpts));
+									fauxEntry.href.hover.subhashes = [{key: "state", value: hoverSubhashObj.state, preEncoded: true}];
+
 									if (others.length > 2) {
 										const featureParts = others[2].trim().split("-");
 										classStateOpts.feature = {
@@ -1692,16 +1707,7 @@ function Renderer () {
 			}
 			if (entry.href.subhashes != null) {
 				for (let i = 0; i < entry.href.subhashes.length; ++i) {
-					const subHash = entry.href.subhashes[i];
-					if (subHash.preEncoded) href += `${HASH_PART_SEP}${subHash.key}${HASH_SUB_KV_SEP}`;
-					else href += `${HASH_PART_SEP}${UrlUtil.encodeForHash(subHash.key)}${HASH_SUB_KV_SEP}`;
-					if (subHash.value != null) {
-						if (subHash.preEncoded) href += subHash.value;
-						else href += UrlUtil.encodeForHash(subHash.value);
-					} else {
-						// TODO allow list of values
-						href += subHash.values.map(v => UrlUtil.encodeForHash(v)).join(HASH_SUB_LIST_SEP);
-					}
+					href += this._renderLink_getSubhashPart(entry.href.subhashes[i]);
 				}
 			}
 		} else if (entry.href.type === "external") {
@@ -1710,15 +1716,35 @@ function Renderer () {
 		return href;
 	};
 
+	this._renderLink_getSubhashPart = function (subHash) {
+		let out = "";
+		if (subHash.preEncoded) out += `${HASH_PART_SEP}${subHash.key}${HASH_SUB_KV_SEP}`;
+		else out += `${HASH_PART_SEP}${UrlUtil.encodeForHash(subHash.key)}${HASH_SUB_KV_SEP}`;
+		if (subHash.value != null) {
+			if (subHash.preEncoded) out += subHash.value;
+			else out += UrlUtil.encodeForHash(subHash.value);
+		} else {
+			// TODO allow list of values
+			out += subHash.values.map(v => UrlUtil.encodeForHash(v)).join(HASH_SUB_LIST_SEP);
+		}
+		return out;
+	};
+
 	this._renderLink_getHoverString = function (entry) {
 		if (!entry.href.hover) return "";
-		const procHash = UrlUtil.encodeForHash(entry.href.hash).replace(/'/g, "\\'");
+		let procHash = UrlUtil.encodeForHash(entry.href.hash).replace(/'/g, "\\'");
 		if (this._tagExportDict) {
 			this._tagExportDict[procHash] = {
 				page: entry.href.hover.page,
 				source: entry.href.hover.source,
 				hash: procHash
 			};
+		}
+
+		if (entry.href.hover.subhashes) {
+			for (let i = 0; i < entry.href.hover.subhashes.length; ++i) {
+				procHash += this._renderLink_getSubhashPart(entry.href.hover.subhashes[i]);
+			}
 		}
 
 		if (this._isAddHandlers) return `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${procHash}', ${entry.href.hover.preloadId ? `'${entry.href.hover.preloadId}'` : "null"})" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)"  ${Renderer.hover.getPreventTouchString()}`;
@@ -1898,7 +1924,8 @@ Renderer.getEntryDice = function (entry, name, isAddHandlers = true) {
 		}
 
 		const handlerPart = isAddHandlers ? `onmousedown="event.preventDefault()" onclick="Renderer.dice.pRollerClickUseData(event, this)" data-packed-dice=${pack(toPack)}` : "";
-		return `<span class="roller render-roller" ${name ? `title="${name ? `${name.escapeQuotes()}` : ""}"` : ""} ${handlerPart}>${toDisplay}</span>`;
+		const titlePart = isAddHandlers ? `title="Click to roll. ${toPack.subType === "damage" ? "SHIFT to roll a critical hit, ALT to half damage (rounding down)." : toPack.subType === "d20" ? "SHIFT to roll with advantage, ALT to roll with disadvantage." : "SHIFT/ALT to roll twice."}" data-no-roll-name="true"` : "";
+		return `<span class="roller render-roller" ${name ? `title="${name ? `${name.escapeQuotes()}` : ""}"` : ""} ${handlerPart} ${titlePart}>${toDisplay}</span>`;
 	} else return toDisplay;
 };
 
@@ -2296,7 +2323,9 @@ Renderer.utils = {
 			} else {
 				if (fluff.entries) {
 					const depth = fluff.type === "section" ? -1 : 2;
-					if (fluff.type !== "section") renderer.setFirstSection(false);
+					if (fluff.type !== "section") {
+						if (fluff.entries.length && fluff.entries[0].type !== "section") renderer.setFirstSection(false);
+					}
 					$td.append(renderer.render({type: fluff.type, entries: fluff.entries}, depth));
 				} else {
 					$td.append(Renderer.utils.HTML_NO_INFO);
@@ -2345,7 +2374,13 @@ Renderer.utils = {
 					if (blacklistKeys.has(k)) return false;
 
 					switch (k) {
-						case "level": return listMode ? `Lvl ${v.level}` : `${Parser.getOrdinalForm(v.level)} level`;
+						case "level": {
+							const isClassVisible = v.class && v.class.visible;
+							if (listMode) {
+								const shortNameRaw = isClassVisible ? v.class.name.toTitleCase().replace(/[aeiou]/g, "") : null;
+								return `${isClassVisible ? `${shortNameRaw.slice(0, 4)}${shortNameRaw.length <= 4 ? "" : "."} ` : ""}Lvl ${v.level}`
+							} else return `${Parser.getOrdinalForm(v.level)} level${isClassVisible ? ` ${v.class.name}` : ""}`
+						}
 						case "pact": return Parser.prereqPactToFull(v);
 						case "patron": return listMode ? `${Parser.prereqPatronToShort(v)} patron` : `${v} patron`;
 						case "spell":
@@ -3615,6 +3650,8 @@ Renderer.item = {
 
 	_getPropertiesText (item) {
 		if (item.property) {
+			let renderedDmg2 = false;
+
 			const renderedProperties = item.property
 				.sort(Renderer.item._sortProperties)
 				.map(prop => {
@@ -3622,6 +3659,14 @@ Renderer.item = {
 
 					if (fullProp.template) {
 						const toRender = fullProp.template.replace(/{{([^}]+)}}/g, (...m) => {
+							// Special case for damage dice -- need to add @damage tags
+							if (m[1] === "item.dmg1") {
+								return Renderer.item._renderDamage(item.dmg1);
+							} else if (m[1] === "item.dmg2") {
+								renderedDmg2 = true;
+								return Renderer.item._renderDamage(item.dmg2);
+							}
+
 							const spl = m[1].split(".");
 							switch (spl[0]) {
 								case "prop_name": return fullProp.name;
@@ -3637,18 +3682,27 @@ Renderer.item = {
 					} else return fullProp.name;
 				});
 
-			return `${item.dmg1 ? " - " : ""}${renderedProperties.join(", ")}`
+			if (!renderedDmg2 && item.dmg2) renderedProperties.unshift(`alt. ${Renderer.item._renderDamage(item.dmg2)}`);
+
+			return `${item.dmg1 && renderedProperties.length ? " - " : ""}${renderedProperties.join(", ")}`
 		} else {
 			const parts = [];
+			if (item.dmg2) parts.push(`alt. ${Renderer.item._renderDamage(item.dmg2)}`);
 			if (item.range) parts.push(`range ${item.range} ft.`);
 			return `${item.dmg1 && parts.length ? " - " : ""}${parts.join(", ")}`;
 		}
 	},
 
+	_renderDamage (dmg) {
+		if (!dmg) return "";
+		const tagged = dmg.replace(RollerUtil.DICE_REGEX, (...m) => `{@damage ${m[1]}}`);
+		return Renderer.get().render(tagged);
+	},
+
 	getDamageAndPropertiesText: function (item) {
 		const damageParts = [];
 
-		if (item.dmg1) damageParts.push(Renderer.get().render(item.dmg1));
+		if (item.dmg1) damageParts.push(Renderer.item._renderDamage(item.dmg1));
 
 		// armor
 		if (item.ac != null) {
@@ -3800,7 +3854,7 @@ Renderer.item = {
 			}
 		};
 
-		const walkerKeyBlacklist = new Set(["caption", "type"]);
+		const walkerKeyBlacklist = new Set(["caption", "type", "colLabels"]);
 
 		const renderStack = [];
 		if (item._fullEntries || (item.entries && item.entries.length)) {
@@ -4001,6 +4055,10 @@ Renderer.item = {
 		function createSpecificVariant (baseItem, genericVariant) {
 			const inherits = genericVariant.inherits;
 			const specificVariant = MiscUtil.copy(baseItem);
+			// Recent enhancements/entry cache
+			specificVariant._isEnhanced = false;
+			delete specificVariant._fullEntries;
+
 			if (baseItem.source !== SRC_PHB && baseItem.source !== SRC_DMG) {
 				Renderer.item._initFullEntries(specificVariant);
 				specificVariant._fullEntries.unshift(`{@note The base item can be found in ${Parser.sourceJsonToFull(baseItem.source)}.}`);
@@ -4045,8 +4103,6 @@ Renderer.item = {
 			if (linkedLootTables && linkedLootTables[specificVariant.source] && linkedLootTables[specificVariant.source][specificVariant.name]) {
 				(specificVariant.lootTables = specificVariant.lootTables || []).push(...linkedLootTables[specificVariant.source][specificVariant.name])
 			}
-
-			specificVariant._isEnhanced = false;
 
 			return specificVariant;
 		}
@@ -4227,7 +4283,7 @@ Renderer.item = {
 		if (item._isItemGroup) {
 			Renderer.item._initFullEntries(item);
 			item._fullEntries.push(
-				"Multiple variants of this item exist, as listed below:",
+				"Multiple variations of this item exist, as listed below:",
 				{
 					type: "list",
 					items: item.items.map(it => typeof it === "string" ? `{@item ${it}}` : `{@item ${it.name}|${it.source}}`)
@@ -5428,11 +5484,6 @@ Renderer.hover = {
 			return Renderer.hover._getFromCache(page, source, hash);
 		}
 
-		function _classes_indexFeatures (cls) {
-			// de-nest sources in case modified by classes page
-			UrlUtil.class.getIndexedEntries(cls).forEach(it => Renderer.hover._addToCache(UrlUtil.PG_CLASSES, it.source.source || it.source, it.hash, it.entry));
-		}
-
 		switch (page) {
 			case "generic":
 			case "hover": return null;
@@ -5443,10 +5494,27 @@ Renderer.hover = {
 
 				if (!Renderer.hover._flagsCacheLoaded[loadKey] || !Renderer.hover._isCached(page, source, hash)) {
 					Renderer.hover._psCacheLoading[loadKey] = (async () => {
+						const addToIndex = (cls) => {
+							// add class
+							const clsHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls);
+							const clsEntries = {name: cls.name, type: "section", entries: MiscUtil.copy((cls.classFeatures || []).flat())};
+							Renderer.hover._addToCache(UrlUtil.PG_CLASSES, cls.source || SRC_PHB, clsHash, clsEntries);
+
+							// add subclasses
+							(cls.subclasses || []).forEach(sc => {
+								const scHash = `${clsHash}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: sc})}`;
+								const scEntries = {name: `${sc.name} (${cls.name})`, type: "section", entries: MiscUtil.copy((sc.subclassFeatures || []).flat())};
+								Renderer.hover._addToCache(UrlUtil.PG_CLASSES, cls.source || SRC_PHB, scHash, scEntries);
+							});
+
+							// add all class/subclass features
+							UrlUtil.class.getIndexedEntries(cls).forEach(it => Renderer.hover._addToCache(UrlUtil.PG_CLASSES, it.source, it.hash, it.entry));
+						};
+
 						const brewData = await BrewUtil.pAddBrewData();
-						(brewData.class || []).forEach(cc => _classes_indexFeatures(cc));
+						(brewData.class || []).forEach(cc => addToIndex(cc));
 						const data = await DataUtil.class.loadJSON();
-						data.class.forEach(cc => _classes_indexFeatures(cc));
+						data.class.forEach(cc => addToIndex(cc));
 
 						Renderer.hover._flagsCacheLoaded[loadKey] = true;
 					})();
@@ -5587,7 +5655,7 @@ Renderer.hover = {
 	bindPopoutButton (toList, handlerGenerator) {
 		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`)
 			.off("click")
-			.attr("title", "Popout Window (SHIFT for Source Data)");
+			.title("Popout Window (SHIFT for Source Data)");
 
 		$btnPop.on(
 			"click",
@@ -5824,7 +5892,8 @@ Renderer.dice = {
 	async pRollerClickUseData (evt, ele) {
 		const $ele = $(ele);
 		const rollData = $ele.data("packed-dice");
-		let name = $ele.attr("title") || null;
+		const isNoName = $ele.data("no-roll-name") === true;
+		let name = isNoName ? null : $ele.title() || null;
 		let shiftKey = evt.shiftKey;
 		let altKey = evt.altKey;
 
@@ -5935,7 +6004,7 @@ Renderer.dice = {
 			// try use table caption
 			let titleMaybe = $(ele).closest(`table:not(.stats)`).children(`caption`).text();
 			if (titleMaybe) return titleMaybe.trim();
-			// ty use list item title
+			// try use list item title
 			titleMaybe = $(ele).parent().children(`.list-item-title`).text();
 			if (titleMaybe) return titleMaybe.trim();
 			// try use stats table name row
@@ -5989,7 +6058,7 @@ Renderer.dice = {
 			label: name != null ? name : attemptToGetTitle(ele)
 		};
 
-		function doRoll (toRoll = entry) {
+		function doRoll (toRoll) {
 			let $parent = $ele.parent();
 			while ($parent.length) {
 				if ($parent.is("th") || $parent.is("p") || $parent.is("table")) break;
@@ -5999,28 +6068,44 @@ Renderer.dice = {
 			else Renderer.dice.rollEntry(toRoll, rolledBy);
 		}
 
-		// roll twice on shift, rolling advantage/crits where appropriate
-		if (evtMock.shiftKey) {
-			if (entry.subType === "damage") {
-				// If ALT is held, half the damage
-				if (evtMock.altKey) {
-					entry.toRoll = `floor((${entry.toRoll}) / 2)`;
-				} else {
-					const dice = [];
-					entry.toRoll.replace(/(\d+)?d(\d+)/gi, (m0) => dice.push(m0));
-					entry.toRoll = `${entry.toRoll}${dice.length ? `+${dice.join("+")}` : ""}`;
-				}
-				doRoll();
-			} else if (entry.subType === "d20") {
-				// If ALT is held, roll disadvantage. Otherwise, roll advantage
-				entry.toRoll = `2d20d${evtMock.altKey ? "h" : "l"}1${entry.d20mod}`;
-				doRoll();
-			} else {
-				Renderer.dice._showMessage("Rolling twice...", rolledBy);
-				doRoll();
-				doRoll();
-			}
-		} else doRoll();
+		const modRollMeta = Renderer.dice.getEventModifiedRollMeta(evtMock, entry);
+		if (modRollMeta.rollCount === 2) {
+			Renderer.dice._showMessage("Rolling twice...", rolledBy);
+			doRoll(modRollMeta.entry);
+		}
+		doRoll(modRollMeta.entry);
+	},
+
+	getEventModifiedRollMeta (evt, entry) {
+		// Change roll type/count depending on ALT/SHIFT status
+		const out = {rollCount: 1, entry};
+
+		if (evt.shiftKey) {
+			if (entry.subType === "damage") { // If SHIFT is held, roll crit
+				const dice = [];
+				// TODO(future) in order for this to correctly catch everything, would need to parse the toRoll as a tree and then pull all dice expressions from the first level of that tree
+				entry.toRoll
+					.replace(/\s+/g, "") // clean whitespace
+					.replace(/\d*?d\d+/gi, m0 => dice.push(m0));
+				entry.toRoll = `${entry.toRoll}${dice.length ? `+${dice.join("+")}` : ""}`;
+			} else if (entry.subType === "d20") { // If SHIFT is held, roll advantage
+				// If we have a cached d20mod value, use it
+				if (entry.d20mod != null) entry.toRoll = `2d20dl1${entry.d20mod}`;
+				else entry.toRoll = entry.toRoll.replace(/^\s*1?\s*d\s*20/, "2d20dl1");
+			} else out.rollCount = 2; // otherwise, just roll twice
+		}
+
+		if (evt.altKey) {
+			if (entry.subType === "damage") { // If ALT is held, half the damage
+				entry.toRoll = `floor((${entry.toRoll}) / 2)`;
+			} else if (entry.subType === "d20") { // If ALT is held, roll disadvantage (assuming SHIFT is not held)
+				// If we have a cached d20mod value, use it
+				if (entry.d20mod != null) entry.toRoll = `2d20dh1${entry.d20mod}`;
+				else entry.toRoll = entry.toRoll.replace(/^\s*1?\s*d\s*20/, "2d20dh1");
+			} else out.rollCount = 2; // otherwise, just roll twice
+		}
+
+		return out;
 	},
 
 	/**
@@ -6049,7 +6134,7 @@ Renderer.dice = {
 		const tree = Renderer.dice._parse2(entry.toRoll);
 		tree.successThresh = entry.successThresh;
 		tree.successMax = entry.successMax;
-		Renderer.dice._handleRoll2(tree, rolledBy, cbMessage);
+		return Renderer.dice._handleRoll2(tree, rolledBy, cbMessage); // return the result of the roll
 	},
 
 	_handleRoll2 (tree, rolledBy, cbMessage) {
@@ -6202,6 +6287,13 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 		Renderer.dice._showBox();
 		Renderer.dice._checkHandleName(rolledBy.name);
 		Renderer.dice._$outRoll.prepend(`<div class="out-roll-item" title="${rolledBy.name || ""}">${msgText}</div>`);
+		Renderer.dice._scrollBottom();
+	},
+
+	addElement (rolledBy, $ele) {
+		Renderer.dice._showBox();
+		Renderer.dice._checkHandleName(rolledBy.name);
+		$$`<div class="out-roll-item out-roll-item--message">${$ele}</div>`.appendTo(Renderer.dice._$lastRolledBy);
 		Renderer.dice._scrollBottom();
 	},
 

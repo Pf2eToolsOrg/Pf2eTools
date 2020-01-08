@@ -1476,6 +1476,36 @@
 			"source": "WDMM"
 		},
 		{
+			"name": "Fazrian",
+			"lairActions": [
+				"Unless he is {@condition incapacitated}, Fazrian can take one of the following lair actions on initiative count 20 (losing initiative ties) while on the Terminus Level:",
+				{
+					"type": "list",
+					"items": [
+						"Blood flows from Fazrian's eyes until initiative count 20 on the next round. No creature within 120 feet of the planetar can regain hit points until the effect ends.",
+						"Fazrian's eyes become smoldering black voids until initiative count 20 on the next round. All other creatures within 120 feet of the planetar have disadvantage on saving throws until the effect ends.",
+						"Blinding magical light springs from Fazrian's eyes until initiative count 20 on the next round. If a creature starts its turn within 120 feet of the planetar and the two of them can see each other, Fazrian can force the creature to make a DC 20 Constitution saving throw. On a failed save, the creature is {@condition blinded}. The blindness lasts until the creature receives a {@spell lesser restoration} spell or similar magic."
+					]
+				}
+			],
+			"source": "WDMM"
+		},
+		{
+			"name": "Keresta Delvingstone",
+			"regionalEffects": [
+				"Vanrakdoom is Keresta's lair, and the following regional effects are noticeable throughout it:",
+				{
+					"type": "list",
+					"items": [
+						"Fog creeps into areas of dim light or darkness. It vanishes when light is brought to bear on it but reappears when the light passes. A permanent fog hangs in some areas regardless of light, as noted in the descriptions of those areas.",
+						"Rats and bats are plentiful. In areas where they are not specifically mentioned, droppings and guano betray their presence, and they can be heard constantly scuttling and shrieking in the distant darkness."
+					]
+				},
+				"If Keresta is destroyed, the fog disperses, and the rats and bats gradually die off until only a scattered few remain."
+			],
+			"source": "WDMM"
+		},
+		{
 			"name": "Ancient Deep Crow",
 			"regionalEffects": [
 				"The region containing an ancient deep crow's lair is transformed by the creature's presence, which creates one or more of the following effects:",
@@ -1574,6 +1604,32 @@
 				}
 			],
 			"source": "IMR"
+		},
+		{
+			"name": "Sapphire Dragon",
+			"source": "SADS",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"The dragon targets a creature within 120 feet of it that can hear and understand it. The creature must succeed on a {@dc 15} Wisdom saving throw or be {@condition charmed} by the dragon until initiative count 20 on the following round. A creature {@condition charmed} in this way obeys to the best of its ability any command the dragon issues that isn't directly harmful to itself.",
+						"The dragon touches a section of stone up to 10 feet in any dimension. The dragon can form the stone into any shape that suits its purpose.",
+						"A wall of stone springs into existence on a solid surface within 120 feet of the dragon. The wall is up to 60 feet long, 10 feet high, and 1 foot thick. When the wall appears, each creature in its space is pushed to either side of the wall the creature wants. Each 5-foot section of wall has AC 17, 20 hit points, vulnerability to thunder damage, and immunity to poison and psychic damage. The wall vanishes when the dragon uses this lair action again or when the dragon dies."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The region surrounding a legendary sapphire dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"{@creature Giant spider||Giant spiders} are attracted to the area within 6 miles of the lair and settle there in large numbers.",
+						"Natural stone within 6 miles of the lair grows plentiful crystal formations and sapphire gemstone veins, particularly underground.",
+						"Natural stone within 6 miles of the lair becomes a conduit for the dragon's psionic presence. As an action, the dragon can cast the {@spell clairvoyance} spell, requiring no components, targeting any natural stone formation in that region."
+					]
+				}
+			]
 		}
 	],
 	"language": {
@@ -1595,6 +1651,7 @@
 		"H": "Halfling",
 		"I": "Infernal",
 		"IG": "Ignan",
+		"LF": "Languages Known in Life",
 		"O": "Orc",
 		"OTH": "Other",
 		"P": "Primordial",

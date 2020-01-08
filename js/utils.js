@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.94.3"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.94.6"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -1105,7 +1105,8 @@ Parser.spEndTypeToFull = function (type) {
 };
 
 Parser.spDurationToFull = function (dur) {
-	return dur.map(d => {
+	let hasSubOr = false;
+	const outParts = dur.map(d => {
 		switch (d.type) {
 			case "special":
 				return "Special";
@@ -1113,14 +1114,18 @@ Parser.spDurationToFull = function (dur) {
 				return `Instantaneous${d.condition ? ` (${d.condition})` : ""}`;
 			case "timed":
 				return `${d.concentration ? "Concentration, " : ""}${d.concentration ? "u" : d.duration.upTo ? "U" : ""}${d.concentration || d.duration.upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? d.duration.type : `${d.duration.type}s`}`;
-			case "permanent":
+			case "permanent": {
 				if (d.ends) {
-					return `Until ${d.ends.map(m => Parser.spEndTypeToFull(m)).join(" or ")}`;
+					const endsToJoin = d.ends.map(m => Parser.spEndTypeToFull(m));
+					hasSubOr = hasSubOr || endsToJoin.length > 1;
+					return `Until ${endsToJoin.joinConjunct(", ", " or ")}`;
 				} else {
 					return "Permanent";
 				}
+			}
 		}
-	}).join(" or ") + (dur.length > 1 ? " (see below)" : "");
+	});
+	return `${outParts.joinConjunct(hasSubOr ? "; " : ", ", " or ")}${dur.length > 1 ? " (see below)" : ""}`;
 };
 
 Parser.DURATION_TYPES = [
@@ -2069,6 +2074,7 @@ SRC_RMR = "RMR";
 SRC_MFF = "MFF";
 SRC_AWM = "AWM";
 SRC_IMR = "IMR";
+SRC_SADS = "SADS";
 SRC_SCREEN = "Screen";
 
 SRC_AL_PREFIX = "AL";
@@ -2210,6 +2216,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_RMR] = "Dungeons & Dragons vs. Rick and Morty: Ba
 Parser.SOURCE_JSON_TO_FULL[SRC_MFF] = "Mordenkainen's Fiendish Folio";
 Parser.SOURCE_JSON_TO_FULL[SRC_AWM] = "Adventure with Muk";
 Parser.SOURCE_JSON_TO_FULL[SRC_IMR] = "Infernal Machine Rebuild";
+Parser.SOURCE_JSON_TO_FULL[SRC_SADS] = "Sapphire Anniversary Dice Set";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = `${AL_PREFIX}Curse of Strahd`;
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = `${AL_PREFIX}Elemental Evil`;
@@ -2332,6 +2339,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_RMR] = "RMR";
 Parser.SOURCE_JSON_TO_ABV[SRC_MFF] = "MFF";
 Parser.SOURCE_JSON_TO_ABV[SRC_AWM] = "AWM";
 Parser.SOURCE_JSON_TO_ABV[SRC_IMR] = "IMR";
+Parser.SOURCE_JSON_TO_ABV[SRC_SADS] = "SADS";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
@@ -2446,7 +2454,8 @@ Parser.SOURCES_NON_STANDARD_WOTC = new Set([
 	SRC_LR,
 	SRC_TTP,
 	SRC_AWM,
-	SRC_IMR
+	SRC_IMR,
+	SRC_SADS
 ]);
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
@@ -2770,13 +2779,13 @@ JqueryUtil = {
 		};
 
 		$.fn.extend({
-			disableSpellcheck: function () { return this.attr("autocomplete", "off").attr("autocapitalize", "off").attr("spellcheck", "false"); },
+			disableSpellcheck: function () { return this.attr("autocomplete", "off").attr("autocapitalize", "off").attr("spellcheck", "false").attr("type", "search"); },
 
 			tag: function () {
 				return this.prop("tagName").toLowerCase();
 			},
 
-			title: function (title) { return this.attr("title", title); },
+			title: function (...args) { return this.attr("title", ...args); },
 
 			/**
 			 * Quickly set the innerHTML of the innermost element, wihtout parsing the whole thing with jQuery.
@@ -3675,7 +3684,7 @@ ListUtil = {
 				if (!ListUtil.isSublisted(Hist.lastLoadedId)) ListUtil.pDoSublistAdd(Hist.lastLoadedId, true);
 				else ListUtil.pDoSublistRemove(Hist.lastLoadedId);
 			})
-			.attr("title", "Pin (Toggle)");
+			.title("Pin (Toggle)");
 	},
 
 	genericAddButtonHandler (evt, options = {}) {
@@ -3685,7 +3694,7 @@ ListUtil = {
 	bindAddButton: (handlerGenerator, options = {}) => {
 		ListUtil.getOrTabRightButton(`btn-sublist-add`, `plus`)
 			.off("click")
-			.attr("title", `Add (SHIFT for ${options.shiftCount || 20})`)
+			.title(`Add (SHIFT for ${options.shiftCount || 20})`)
 			.on("click", handlerGenerator ? handlerGenerator() : ListUtil.genericAddButtonHandler);
 	},
 
@@ -3696,7 +3705,7 @@ ListUtil = {
 	bindSubtractButton: (handlerGenerator, options = {}) => {
 		ListUtil.getOrTabRightButton(`btn-sublist-subtract`, `minus`)
 			.off("click")
-			.attr("title", `Subtract (SHIFT for ${options.shiftCount || 20})`)
+			.title(`Subtract (SHIFT for ${options.shiftCount || 20})`)
 			.on("click", handlerGenerator ? handlerGenerator() : ListUtil.genericSubtractButtonHandler);
 	},
 
@@ -3713,7 +3722,7 @@ ListUtil = {
 					DataUtil.userDownload(ListUtil._getDownloadName(), JSON.stringify(ListUtil.getExportableSublist(), null, "\t"));
 				}
 			})
-			.attr("title", "Download List (SHIFT for Link)");
+			.title("Download List (SHIFT for Link)");
 	},
 
 	doJsonLoad (json, additive, funcPreload) {
@@ -3749,7 +3758,7 @@ ListUtil = {
 				}).appendTo($(`body`));
 				$iptAdd.click();
 			})
-			.attr("title", "Upload List (SHIFT for Add Only)");
+			.title("Upload List (SHIFT for Add Only)");
 	},
 
 	setFromSubHashes: (subHashes, funcPreload) => {
@@ -4260,7 +4269,7 @@ ListUtil = {
 		const $wrpList = $(`#listcontainer`);
 		const $wrpBtnShowSearch = $("div#showsearch");
 		const $btnHideSearch = $("button#hidesearch");
-		$btnHideSearch.attr("title", "Hide Search Bar and Entry List");
+		$btnHideSearch.title("Hide Search Bar and Entry List");
 		// collapse/expand search button
 		$btnHideSearch.click(function () {
 			$wrpList.hide();
@@ -4307,7 +4316,7 @@ function getFilterWithMergedOptions (baseOptions, addOptions) {
  * @param [opts.isCompact] True if this box should have a compact/reduced UI.
  */
 async function pInitFilterBox (opts) {
-	opts.$wrpFormTop = $(`#filter-search-input-group`).attr("title", "Hotkey: f");
+	opts.$wrpFormTop = $(`#filter-search-input-group`).title("Hotkey: f");
 	opts.$btnReset = $(`#reset`);
 	const filterBox = new FilterBox(opts);
 	await filterBox.pDoLoadState();
@@ -4405,7 +4414,7 @@ UrlUtil = {
 				await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
 				JqueryUtil.showCopiedEffect($btn);
 			})
-			.attr("title", "Get Link to Filters (SHIFT adds List)")
+			.title("Get Link to Filters (SHIFT adds List)")
 	},
 
 	mini: {
@@ -6457,13 +6466,10 @@ BrewUtil = {
 				return !!cats.find(cat => !!(BrewUtil.homebrew[cat] || []).some(entry => entry.source === source));
 			};
 
-			const allSources = MiscUtil.copy(BrewUtil.getJsonSources()).filter(src => isSourceRelevantForCurrentPage(src.json));
-			allSources.sort((a, b) => SortUtil.ascSort(a.full, b.full));
+			const brewSources = MiscUtil.copy(BrewUtil.getJsonSources()).filter(src => isSourceRelevantForCurrentPage(src.json));
+			brewSources.sort((a, b) => SortUtil.ascSort(a.full, b.full));
 
-			// add 5etools sources as required, so that any external data loaded with these sources is displayed in the right place
-			const vetoolsSources = BrewUtil._getActiveVetoolsSources();
-
-			allSources.concat(vetoolsSources).forEach((src, i) => {
+			brewSources.forEach((src, i) => {
 				const validAuthors = (!src.authors ? [] : !(src.authors instanceof Array) ? [] : src.authors).join(", ");
 				const isGroup = src._unknown || src._all;
 
@@ -6534,14 +6540,14 @@ BrewUtil = {
 		const $ele = $(ele);
 		if (!$ele.hasClass("rd__wrp-loadbrew--ready")) return; // an existing click is being handled
 		const cached = $ele.html();
-		const cachedTitle = $ele.attr("title");
-		$ele.attr("title", "");
+		const cachedTitle = $ele.title();
+		$ele.title("");
 		$ele.removeClass("rd__wrp-loadbrew--ready").html(`${name}<span class="glyphicon glyphicon-refresh rd__loadbrew-icon rd__loadbrew-icon--active"/>`);
 		jsonUrl = jsonUrl.unescapeQuotes();
 		const data = await DataUtil.loadJSON(`${jsonUrl}?${(new Date()).getTime()}`);
 		await BrewUtil.pDoHandleBrewJson(data, UrlUtil.getCurrentPage());
 		$ele.html(`${name}<span class="glyphicon glyphicon-saved rd__loadbrew-icon"/>`);
-		setTimeout(() => $ele.html(cached).addClass("rd__wrp-loadbrew--ready").attr("title", cachedTitle), 500);
+		setTimeout(() => $ele.html(cached).addClass("rd__wrp-loadbrew--ready").title(cachedTitle), 500);
 	},
 
 	async _pDoRemove (arrName, uniqueId, isChild) {

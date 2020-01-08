@@ -22,10 +22,10 @@ class InitiativeTrackerPlayer {
 				$btnConnectLocal.detach();
 
 				const $iptPlayerName = $(`<input class="form-control input-sm code">`)
-					.change(() => $iptPlayerName.removeClass("error-background"))
+					.change(() => $iptPlayerName.removeClass("form-control--error"))
 					.disableSpellcheck();
 				const $iptServerToken = $(`<input class="form-control input-sm code">`)
-					.change(() => $iptServerToken.removeClass("error-background"))
+					.change(() => $iptServerToken.removeClass("form-control--error"))
 					.disableSpellcheck();
 				const $btnGenConnect = $(`<button class="btn btn-primary btn-xs mr-2">Connect</button>`);
 
@@ -53,8 +53,8 @@ class InitiativeTrackerPlayer {
 				</div>`.appendTo(view.$wrpInitial);
 
 				$btnGenConnect.click(async () => {
-					if (!$iptPlayerName.val().trim()) return $iptPlayerName.addClass("error-background");
-					if (!$iptServerToken.val().trim()) return $iptServerToken.addClass("error-background");
+					if (!$iptPlayerName.val().trim()) return $iptPlayerName.addClass("form-control--error");
+					if (!$iptServerToken.val().trim()) return $iptServerToken.addClass("form-control--error");
 
 					try {
 						ui = new InitiativeTrackerPlayerUi(view, $iptPlayerName.val(), $iptServerToken.val());
@@ -93,14 +93,14 @@ class InitiativeTrackerPlayer {
 
 					const $selTracker = $(`<select class="form-control input-xs mr-1">
 							<option value="-1" disabled>Select a local tracker</option>
-						</select>`).change(() => $selTracker.removeClass("error-background"));
+						</select>`).change(() => $selTracker.removeClass("form-control--error"));
 					existingTrackers.forEach(($e, i) => $selTracker.append(`<option value="${i}">${$e.data("getSummary")()}</option>`));
 					$selTracker.val("-1");
 
 					const $btnOk = $(`<button class="btn btn-primary btn-xs">OK</button>`)
 						.click(async () => {
 							// jQuery reads the disabled value as null
-							if ($selTracker.val() == null) return $selTracker.addClass("error-background");
+							if ($selTracker.val() == null) return $selTracker.addClass("form-control--error");
 
 							$btnOk.prop("disabled", true);
 
