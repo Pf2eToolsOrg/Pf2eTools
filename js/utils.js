@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.92.1"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.94.6"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -15,27 +15,16 @@ HASH_PART_SEP = ",";
 HASH_LIST_SEP = "_";
 HASH_SUB_LIST_SEP = "~";
 HASH_SUB_KV_SEP = ":";
-HASH_SUBCLASS = "sub:";
 HASH_BLANK = "blankhash";
 HASH_SUB_NONE = "null";
 
 CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
 CLSS_HOMEBREW_SOURCE = "refreshing-brew";
-CLSS_SUBCLASS_FEATURE = "subclass-feature";
-CLSS_HASH_FEATURE_KEY = "f";
-CLSS_HASH_FEATURE = `${CLSS_HASH_FEATURE_KEY}:`;
 
 MON_HASH_SCALED = "scaled";
 
-ATB_DATA_LIST_SEP = "||";
-ATB_DATA_PART_SEP = "::";
-ATB_DATA_SC = "data-subclass";
-ATB_DATA_SRC = "data-source";
-
-STR_CANTRIP = "Cantrip";
 STR_NONE = "None";
-STR_ANY = "Any";
-STR_SPECIAL = "Special";
+STR_SEE_CONSOLE = "See the console (CTRL+SHIFT+J) for details.";
 
 HOMEBREW_STORAGE = "HOMEBREW_STORAGE";
 HOMEBREW_META_STORAGE = "HOMEBREW_META_STORAGE";
@@ -241,6 +230,10 @@ StrUtil = {
 CleanUtil = {
 	getCleanJson (data, minify = false) {
 		let str = minify ? JSON.stringify(data) : `${JSON.stringify(data, null, "\t")}\n`;
+		return CleanUtil.getCleanString(str);
+	},
+
+	getCleanString (str) {
 		str = str.replace(CleanUtil.REPLACEMENT_REGEX, (match) => CleanUtil.REPLACEMENTS[match]);
 		return str
 			.replace(/\u00AD/g, "") // soft hyphens
@@ -254,7 +247,7 @@ CleanUtil = {
 			.replace(/[“”]/g, `"`)
 			.replace(/…/g, `...`)
 	}
-}
+};
 CleanUtil.REPLACEMENTS = {
 	"—": "\\u2014",
 	"–": "\\u2013",
@@ -660,15 +653,24 @@ Parser._getSourceStringFromSource = function (source) {
 	if (source && source.source) return source.source;
 	return source;
 };
-Parser.hasSourceFull = function (source) {
-	return !!Parser.SOURCE_JSON_TO_FULL[source];
+Parser._buildSourceCache = function (dict) {
+	const out = {};
+	Object.entries(dict).forEach(([k, v]) => out[k.toLowerCase()] = v);
+	return out;
 };
+Parser._sourceFullCache = null;
+Parser.hasSourceFull = function (source) {
+	Parser._sourceFullCache = Parser._sourceFullCache || Parser._buildSourceCache(Parser.SOURCE_JSON_TO_FULL);
+	return !!Parser._sourceFullCache[source.toLowerCase()];
+};
+Parser._sourceAbvCache = null;
 Parser.hasSourceAbv = function (source) {
-	return !!Parser.SOURCE_JSON_TO_ABV[source];
+	Parser._sourceAbvCache = Parser._sourceAbvCache || Parser._buildSourceCache(Parser.SOURCE_JSON_TO_ABV);
+	return !!Parser._sourceAbvCache[source.toLowerCase()];
 };
 Parser.sourceJsonToFull = function (source) {
 	source = Parser._getSourceStringFromSource(source);
-	if (Parser.hasSourceFull(source)) return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, "\u2019");
+	if (Parser.hasSourceFull(source)) return Parser._sourceFullCache[source.toLowerCase()].replace(/'/g, "\u2019");
 	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToFull(source).replace(/'/g, "\u2019");
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, "\u2019");
 };
@@ -680,7 +682,7 @@ Parser.sourceJsonToFullCompactPrefix = function (source) {
 };
 Parser.sourceJsonToAbv = function (source) {
 	source = Parser._getSourceStringFromSource(source);
-	if (Parser.hasSourceAbv(source)) return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
+	if (Parser.hasSourceAbv(source)) return Parser._sourceAbvCache[source.toLowerCase()];
 	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToAbv(source);
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
 };
@@ -855,7 +857,7 @@ Parser.getOrdinalForm = function (i) {
 };
 
 Parser.spLevelToFull = function (level) {
-	if (level === 0) return STR_CANTRIP;
+	if (level === 0) return "Cantrip";
 	else return Parser.getOrdinalForm(level);
 };
 
@@ -1031,7 +1033,7 @@ Parser.spRangeToFull._renderPoint = function (range) {
 };
 Parser.spRangeToFull._renderArea = function (range) {
 	const size = range.distance;
-	return `Self (${size.amount}-${Parser.getSingletonUnit(size.type)}${Parser.spRangeToFull._getAreaStyleString(range)}${range.type === RNG_CYLINDER ? `, ${size.amountSecondary}-${Parser.getSingletonUnit(size.typeSecondary)}-high cylinder` : ""})`;
+	return `Self (${size.amount}-${Parser.getSingletonUnit(size.type)}${Parser.spRangeToFull._getAreaStyleString(range)}${range.type === RNG_CYLINDER ? `${size.amountSecondary != null && size.typeSecondary != null ? `, ${size.amountSecondary}-${Parser.getSingletonUnit(size.typeSecondary)}-high` : ""} cylinder` : ""})`;
 };
 Parser.spRangeToFull._getAreaStyleString = function (range) {
 	switch (range.type) {
@@ -1103,7 +1105,8 @@ Parser.spEndTypeToFull = function (type) {
 };
 
 Parser.spDurationToFull = function (dur) {
-	return dur.map(d => {
+	let hasSubOr = false;
+	const outParts = dur.map(d => {
 		switch (d.type) {
 			case "special":
 				return "Special";
@@ -1111,14 +1114,18 @@ Parser.spDurationToFull = function (dur) {
 				return `Instantaneous${d.condition ? ` (${d.condition})` : ""}`;
 			case "timed":
 				return `${d.concentration ? "Concentration, " : ""}${d.concentration ? "u" : d.duration.upTo ? "U" : ""}${d.concentration || d.duration.upTo ? "p to " : ""}${d.duration.amount} ${d.duration.amount === 1 ? d.duration.type : `${d.duration.type}s`}`;
-			case "permanent":
+			case "permanent": {
 				if (d.ends) {
-					return `Until ${d.ends.map(m => Parser.spEndTypeToFull(m)).join(" or ")}`;
+					const endsToJoin = d.ends.map(m => Parser.spEndTypeToFull(m));
+					hasSubOr = hasSubOr || endsToJoin.length > 1;
+					return `Until ${endsToJoin.joinConjunct(", ", " or ")}`;
 				} else {
 					return "Permanent";
 				}
+			}
 		}
-	}).join(" or ") + (dur.length > 1 ? " (see below)" : "");
+	});
+	return `${outParts.joinConjunct(hasSubOr ? "; " : ", ", " or ")}${dur.length > 1 ? " (see below)" : ""}`;
 };
 
 Parser.DURATION_TYPES = [
@@ -1169,7 +1176,7 @@ Parser._spSubclassItem = function (fromSubclass, textOnly, subclassLookup) {
 	if (textOnly) return text;
 	const classPart = `<a href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}" title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</a>`;
 	const fromLookup = subclassLookup ? MiscUtil.get(subclassLookup, c.source, c.name, sc.source, sc.name) : null;
-	if (fromLookup) return `<a class="italic" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(fromLookup)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
+	if (fromLookup) return `<a class="italic" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: {shortName: sc.name, source: sc.source}})}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
 	else return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</span> ${classPart}`;
 };
 
@@ -1398,7 +1405,7 @@ Parser.prereqPactToFull = function (pact) {
 };
 
 Parser.prereqPatronToShort = function (patron) {
-	if (patron === STR_ANY) return STR_ANY;
+	if (patron === "Any") return patron;
 	const mThe = /^The (.*?)$/.exec(patron);
 	if (mThe) return mThe[1];
 	return patron;
@@ -1674,12 +1681,13 @@ Parser.spClassesToCurrentAndLegacy = function (classes) {
 		else current.push(cls);
 	});
 	return [current, legacy];
-}
+};
 
 /**
  * Build a pair of strings; one with all current subclasses, one with all legacy subclasses
  *
  * @param classes a spell.classes JSON item
+ * @param subclassLookup Data loaded from `generated/gendata-subclass-lookup.json`. Of the form: `{PHB: {Barbarian: {PHB: {Berserker: "Path of the Berserker"}}}}`
  * @returns {*[]} A two-element array. First item is a string of all the current subclasses, second item a string of
  * all the legacy/superceded subclasses
  */
@@ -1697,7 +1705,16 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
 			const nm = c.subclass.name;
 			const src = c.subclass.source;
 			const toAdd = Parser._spSubclassItem(c, false, subclassLookup);
-			if (SourceUtil.hasBeenReprinted(nm, src)) {
+
+			const fromLookup = MiscUtil.get(
+				subclassLookup,
+				c.class.source,
+				c.class.name,
+				c.subclass.source,
+				c.subclass.name
+			);
+
+			if (fromLookup && fromLookup.isReprinted) {
 				out[1].push(toAdd);
 			} else if (Parser.sourceJsonToFull(src).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(src).startsWith(PS_PREFIX)) {
 				const cleanName = mapClassShortNameToMostRecent(nm.split("(")[0].trim().split(/v\d+/)[0].trim());
@@ -2056,6 +2073,8 @@ SRC_RMBRE = "RMBRE";
 SRC_RMR = "RMR";
 SRC_MFF = "MFF";
 SRC_AWM = "AWM";
+SRC_IMR = "IMR";
+SRC_SADS = "SADS";
 SRC_SCREEN = "Screen";
 
 SRC_AL_PREFIX = "AL";
@@ -2196,6 +2215,8 @@ Parser.SOURCE_JSON_TO_FULL[SRC_RMBRE] = "The Lost Dungeon of Rickedness: Big Ric
 Parser.SOURCE_JSON_TO_FULL[SRC_RMR] = "Dungeons & Dragons vs. Rick and Morty: Basic Rules";
 Parser.SOURCE_JSON_TO_FULL[SRC_MFF] = "Mordenkainen's Fiendish Folio";
 Parser.SOURCE_JSON_TO_FULL[SRC_AWM] = "Adventure with Muk";
+Parser.SOURCE_JSON_TO_FULL[SRC_IMR] = "Infernal Machine Rebuild";
+Parser.SOURCE_JSON_TO_FULL[SRC_SADS] = "Sapphire Anniversary Dice Set";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = `${AL_PREFIX}Curse of Strahd`;
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = `${AL_PREFIX}Elemental Evil`;
@@ -2317,6 +2338,8 @@ Parser.SOURCE_JSON_TO_ABV[SRC_RMBRE] = "RMBRE";
 Parser.SOURCE_JSON_TO_ABV[SRC_RMR] = "RMR";
 Parser.SOURCE_JSON_TO_ABV[SRC_MFF] = "MFF";
 Parser.SOURCE_JSON_TO_ABV[SRC_AWM] = "AWM";
+Parser.SOURCE_JSON_TO_ABV[SRC_IMR] = "IMR";
+Parser.SOURCE_JSON_TO_ABV[SRC_SADS] = "SADS";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
@@ -2337,7 +2360,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UAFT] = "UAFT";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAGH] = "UAGH";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAMDM] = "UAMM";
 Parser.SOURCE_JSON_TO_ABV[SRC_UASSP] = "UASS";
-Parser.SOURCE_JSON_TO_ABV[SRC_UATMC] = "UAM";
+Parser.SOURCE_JSON_TO_ABV[SRC_UATMC] = "UAMy";
 Parser.SOURCE_JSON_TO_ABV[SRC_UATOBM] = "UAOBM";
 Parser.SOURCE_JSON_TO_ABV[SRC_UATRR] = "UATRR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAWA] = "UAWA";
@@ -2353,7 +2376,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UACDD] = "UACDD";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAD] = "UAD";
 Parser.SOURCE_JSON_TO_ABV[SRC_UARCO] = "UARCO";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAF] = "UAF";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAM] = "UAM";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAM] = "UAMk";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAP] = "UAP";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAMC] = "UAMC";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAS] = "UAS";
@@ -2417,6 +2440,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_LR,
 	SRC_EFR,
 	SRC_RMBRE,
+	SRC_IMR,
 
 	SRC_AWM
 ]);
@@ -2429,7 +2453,9 @@ Parser.SOURCES_NON_STANDARD_WOTC = new Set([
 	SRC_LLK,
 	SRC_LR,
 	SRC_TTP,
-	SRC_AWM
+	SRC_AWM,
+	SRC_IMR,
+	SRC_SADS
 ]);
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
@@ -2570,15 +2596,14 @@ Parser.NUMBERS_TEENS = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fift
 
 // SOURCES =============================================================================================================
 SourceUtil = {
-	hasBeenReprinted (shortName, source) {
-		return (shortName !== undefined && shortName !== null && source !== undefined && source !== null)
-			&& (
-				(shortName === "Sun Soul" && source === SRC_SCAG)
-				|| (shortName === "Mastermind" && source === SRC_SCAG)
-				|| (shortName === "Swashbuckler" && source === SRC_SCAG)
-				|| (shortName === "Storm" && source === SRC_SCAG)
-				|| (shortName === "Deep Stalker Conclave" && source === SRC_UATRR)
-			);
+	_subclassReprintLookup: {},
+	async pInitSubclassReprintLookup () {
+		SourceUtil._subclassReprintLookup = await DataUtil.loadJSON(`data/generated/gendata-subclass-lookup.json`);
+	},
+
+	isSubclassReprinted (className, classSource, subclassShortName, subclassSource) {
+		const fromLookup = MiscUtil.get(SourceUtil._subclassReprintLookup, classSource, className, subclassSource, subclassShortName);
+		return fromLookup ? fromLookup.isReprinted : false;
 	},
 
 	isAdventure (source) {
@@ -2603,6 +2628,46 @@ SourceUtil = {
 		if (source instanceof FilterItem) source = source.item;
 		if (BrewUtil.hasSourceJson(source)) return 2;
 		return Number(SourceUtil.isNonstandardSource(source));
+	}
+};
+
+// CURRENCY ============================================================================================================
+CurrencyUtil = {
+	/**
+	 * Convert 10 gold -> 1 platinum, etc.
+	 * @param obj Object of the form {cp: 123, sp: 456, ...} (values optional)
+	 * @param [coinAbvs] List of allowed coin abbreviations e.g. `["cp", "gp"]`
+	 */
+	doSimplifyCoins (obj, coinAbvs) {
+		coinAbvs = coinAbvs || [];
+		// Simplify currencies
+		for (let i = 0; i < Parser.COIN_CONVERSIONS.length - 1; ++i) {
+			const coinCur = Parser.COIN_ABVS[i];
+			const coinNxt = Parser.COIN_ABVS[i + 1];
+			const coinRatio = Parser.COIN_CONVERSIONS[i + 1] / Parser.COIN_CONVERSIONS[i];
+
+			if (obj[coinCur] && Math.abs(obj[coinCur]) >= coinRatio) {
+				const nxtVal = obj[coinCur] >= 0 ? Math.floor(obj[coinCur] / coinRatio) : Math.ceil(obj[coinCur] / coinRatio);
+				obj[coinCur] = obj[coinCur] % coinRatio;
+				obj[coinNxt] = (obj[coinNxt] || 0) + nxtVal;
+			}
+		}
+
+		// Convert undesirable currencies to their previous currencies
+		for (let i = Parser.COIN_CONVERSIONS.length - 1; i >= 0; --i) {
+			const coinCur = Parser.COIN_ABVS[i];
+			const coinNxt = Parser.COIN_ABVS[i - 1];
+			const coinRatio = Parser.COIN_CONVERSIONS[i] / Parser.COIN_CONVERSIONS[i - 1];
+
+			if (!coinAbvs.includes(coinCur)) {
+				obj[coinNxt] = (obj[coinNxt] || 0) + (obj[coinCur] || 0) * coinRatio;
+				delete obj[coinCur];
+			}
+		}
+
+		Parser.COIN_ABVS.filter(coin => obj[coin] === 0).forEach(coin => delete obj[coin]);
+
+		return obj;
 	}
 };
 
@@ -2714,13 +2779,27 @@ JqueryUtil = {
 		};
 
 		$.fn.extend({
-			disableSpellcheck: function () { return this.attr("autocomplete", "off").attr("autocapitalize", "off").attr("spellcheck", "false"); },
+			disableSpellcheck: function () { return this.attr("autocomplete", "off").attr("autocapitalize", "off").attr("spellcheck", "false").attr("type", "search"); },
 
 			tag: function () {
 				return this.prop("tagName").toLowerCase();
 			},
 
-			title: function (title) { return this.attr("title", title); }
+			title: function (...args) { return this.attr("title", ...args); },
+
+			/**
+			 * Quickly set the innerHTML of the innermost element, wihtout parsing the whole thing with jQuery.
+			 * Useful for populating e.g. a table row.
+			 */
+			fastSetHtml: function (html) {
+				if (!this.length) return this;
+				let tgt = this[0];
+				while (tgt.children.length) {
+					tgt = tgt.children[0];
+				}
+				tgt.innerHTML = html;
+				return this;
+			}
 		});
 
 		$.event.special.destroyed = {
@@ -3202,8 +3281,8 @@ MiscUtil = {
 		return this.debounce(func, wait, {leading, maxWait: wait, trailing});
 	},
 
-	pDelay (msecs) {
-		return new Promise(resolve => setTimeout(() => resolve(), msecs));
+	pDelay (msecs, resolveAs) {
+		return new Promise(resolve => setTimeout(() => resolve(resolveAs), msecs));
 	},
 
 	getWalker (keyBlacklist = new Set()) {
@@ -3251,6 +3330,10 @@ MiscUtil = {
 		};
 
 		return {walk: fn};
+	},
+
+	pDefer (fn) {
+		return (async () => fn())();
 	}
 };
 
@@ -3601,7 +3684,7 @@ ListUtil = {
 				if (!ListUtil.isSublisted(Hist.lastLoadedId)) ListUtil.pDoSublistAdd(Hist.lastLoadedId, true);
 				else ListUtil.pDoSublistRemove(Hist.lastLoadedId);
 			})
-			.attr("title", "Pin (Toggle)");
+			.title("Pin (Toggle)");
 	},
 
 	genericAddButtonHandler (evt, options = {}) {
@@ -3611,7 +3694,7 @@ ListUtil = {
 	bindAddButton: (handlerGenerator, options = {}) => {
 		ListUtil.getOrTabRightButton(`btn-sublist-add`, `plus`)
 			.off("click")
-			.attr("title", `Add (SHIFT for ${options.shiftCount || 20})`)
+			.title(`Add (SHIFT for ${options.shiftCount || 20})`)
 			.on("click", handlerGenerator ? handlerGenerator() : ListUtil.genericAddButtonHandler);
 	},
 
@@ -3622,7 +3705,7 @@ ListUtil = {
 	bindSubtractButton: (handlerGenerator, options = {}) => {
 		ListUtil.getOrTabRightButton(`btn-sublist-subtract`, `minus`)
 			.off("click")
-			.attr("title", `Subtract (SHIFT for ${options.shiftCount || 20})`)
+			.title(`Subtract (SHIFT for ${options.shiftCount || 20})`)
 			.on("click", handlerGenerator ? handlerGenerator() : ListUtil.genericSubtractButtonHandler);
 	},
 
@@ -3639,7 +3722,7 @@ ListUtil = {
 					DataUtil.userDownload(ListUtil._getDownloadName(), JSON.stringify(ListUtil.getExportableSublist(), null, "\t"));
 				}
 			})
-			.attr("title", "Download List (SHIFT for Link)");
+			.title("Download List (SHIFT for Link)");
 	},
 
 	doJsonLoad (json, additive, funcPreload) {
@@ -3675,7 +3758,7 @@ ListUtil = {
 				}).appendTo($(`body`));
 				$iptAdd.click();
 			})
-			.attr("title", "Upload List (SHIFT for Add Only)");
+			.title("Upload List (SHIFT for Add Only)");
 	},
 
 	setFromSubHashes: (subHashes, funcPreload) => {
@@ -3683,7 +3766,7 @@ ListUtil = {
 			ListUtil._pLoadSavedSublist(json.items, false).then(async () => {
 				await ListUtil._pFinaliseSublist();
 
-				const [link, ...sub] = Hist._getHashParts();
+				const [link, ...sub] = Hist.getHashParts();
 				const outSub = [];
 				Object.keys(unpacked)
 					.filter(k => k !== ListUtil.SUB_HASH_PREFIX)
@@ -3868,7 +3951,7 @@ ListUtil = {
 		if (!additive) await ListUtil.pDoSublistRemoveAll(true);
 
 		const toLoad = items.map(it => {
-			const item = Hist._getListItem(it.h);
+			const item = Hist.getActiveListItem(it.h);
 			if (item != null) {
 				const out = {index: item.ix, addCount: Number(it.c)};
 				if (ListUtil._uidUnpackFn && it.uniqueId) out.data = ListUtil._uidUnpackFn(it.uniqueId);
@@ -4186,7 +4269,7 @@ ListUtil = {
 		const $wrpList = $(`#listcontainer`);
 		const $wrpBtnShowSearch = $("div#showsearch");
 		const $btnHideSearch = $("button#hidesearch");
-		$btnHideSearch.attr("title", "Hide Search Bar and Entry List");
+		$btnHideSearch.title("Hide Search Bar and Entry List");
 		// collapse/expand search button
 		$btnHideSearch.click(function () {
 			$wrpList.hide();
@@ -4233,7 +4316,7 @@ function getFilterWithMergedOptions (baseOptions, addOptions) {
  * @param [opts.isCompact] True if this box should have a compact/reduced UI.
  */
 async function pInitFilterBox (opts) {
-	opts.$wrpFormTop = $(`#filter-search-input-group`).attr("title", "Hotkey: f");
+	opts.$wrpFormTop = $(`#filter-search-input-group`).title("Hotkey: f");
 	opts.$btnReset = $(`#reset`);
 	const filterBox = new FilterBox(opts);
 	await filterBox.pDoLoadState();
@@ -4310,12 +4393,10 @@ UrlUtil = {
 		return `${key}${HASH_SUB_KV_SEP}${values.join(HASH_SUB_LIST_SEP)}`;
 	},
 
-	toUrlifiedString (part) { return encodeURIComponent(part).toLowerCase(); },
-
 	categoryToPage (category) { return UrlUtil.CAT_TO_PAGE[category]; },
 
-	bindLinkExportButton (filterBox) {
-		const $btn = ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
+	bindLinkExportButton (filterBox, $btn) {
+		$btn = $btn || ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
 		$btn.addClass("btn-copy-effect")
 			.off("click")
 			.on("click", async evt => {
@@ -4324,7 +4405,7 @@ UrlUtil = {
 				const parts = filterBox.getSubHashes();
 				parts.unshift(url);
 
-				if (evt.shiftKey) {
+				if (evt.shiftKey && ListUtil.sublist) {
 					const toEncode = JSON.stringify(ListUtil.getExportableSublist());
 					const part2 = UrlUtil.packSubHash(ListUtil.SUB_HASH_PREFIX, [toEncode], {isEncodeBoth: true});
 					parts.push(part2);
@@ -4333,7 +4414,7 @@ UrlUtil = {
 				await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
 				JqueryUtil.showCopiedEffect($btn);
 			})
-			.attr("title", "Get Link to Filters (SHIFT adds List)")
+			.title("Get Link to Filters (SHIFT adds List)")
 	},
 
 	mini: {
@@ -4364,43 +4445,40 @@ UrlUtil = {
 		getIndexedEntries (cls) {
 			const out = [];
 			let scFeatureI = 0;
-			(cls.classFeatures || []).forEach((lvlFeatureList, i) => {
+			(cls.classFeatures || []).forEach((lvlFeatureList, ixLvl) => {
 				// class features
 				lvlFeatureList
 					.filter(feature => !feature.gainSubclassFeature && feature.name !== "Ability Score Improvement") // don't add "you gain a subclass feature" or ASI's
-					.forEach(feature => {
+					.forEach((feature, ixFeature) => {
 						const name = Renderer.findName(feature);
 						if (!name) { // tolerate missing names in homebrew
 							if (BrewUtil.hasSourceJson(cls.source)) return;
 							else throw new Error("Class feature had no name!");
 						}
-						const nonStandardSourcePart = feature.source && SourceUtil.isNonstandardSource(feature.source) && !SourceUtil.isNonstandardSource(cls.source) ? `${HASH_PART_SEP}sources:1` : ""
 						out.push({
 							_type: "classFeature",
 							source: cls.source.source || cls.source,
 							name,
-							hash: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(`${feature.name} ${i + 1}`)}${nonStandardSourcePart}`,
+							hash: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({feature: {ixLevel: ixLvl, ixFeature: ixFeature}})}`,
 							entry: feature,
-							level: i + 1
+							level: ixLvl + 1
 						})
 					});
 
 				// subclass features
-				const gainSubclassFeatures = lvlFeatureList.filter(feature => feature.gainSubclassFeature);
-				if (gainSubclassFeatures.length === 1) {
-					const gainFeatureHash = `${CLSS_HASH_FEATURE}${UrlUtil.encodeForHash(`${gainSubclassFeatures[0].name} ${i + 1}`)}`;
+				const ixGainSubclassFeatures = lvlFeatureList.findIndex(feature => feature.gainSubclassFeature);
+				if (~ixGainSubclassFeatures) {
 					cls.subclasses.forEach(sc => {
 						const features = ((sc.subclassFeatures || [])[scFeatureI] || []);
 						sc.source = sc.source || cls.source; // default to class source if required
 						const tempStack = [];
 						features.forEach(feature => {
-							const baseSubclassUrl = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${HASH_SUBCLASS}${UrlUtil.encodeForHash(sc.name)}${HASH_SUB_LIST_SEP}${UrlUtil.encodeForHash(sc.source)}`;
+							const subclassFeatureHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: sc, feature: {ixLevel: ixLvl, ixFeature: ixGainSubclassFeatures}})}`;
 							const name = Renderer.findName(feature);
 							if (!name) { // tolerate missing names in homebrew
 								if (BrewUtil.hasSourceJson(sc.source)) return;
 								else throw new Error("Subclass feature had no name!");
 							}
-							const subclassFeatureHash = `${baseSubclassUrl}${HASH_PART_SEP}${gainFeatureHash}`;
 							tempStack.push({
 								_type: "subclassFeature",
 								name,
@@ -4409,13 +4487,13 @@ UrlUtil = {
 								source: sc.source.source || sc.source,
 								hash: subclassFeatureHash,
 								entry: feature,
-								level: i + 1
+								level: ixLvl + 1
 							});
 
 							if (feature.entries) {
 								const namedFeatureParts = feature.entries.filter(it => it.name);
 								namedFeatureParts.forEach(it => {
-									const lvl = i + 1;
+									const lvl = ixLvl + 1;
 									if (tempStack.find(existing => it.name === existing.name && lvl === existing.level)) return;
 									tempStack.push({
 										_type: "subclassFeaturePart",
@@ -4433,12 +4511,27 @@ UrlUtil = {
 						out.push(...tempStack);
 					});
 					scFeatureI++;
-				} else if (gainSubclassFeatures.length > 1) {
-					setTimeout(() => { throw new Error(`Multiple subclass features gained at level ${i + 1} for class "${cls.name}" from source "${cls.source}"!`) });
+				} else if (ixGainSubclassFeatures.length > 1) {
+					setTimeout(() => { throw new Error(`Multiple subclass features gained at level ${ixLvl + 1} for class "${cls.name}" from source "${cls.source}"!`) });
 				}
 			});
 			return out;
 		}
+	},
+
+	getStateKeySubclass (sc) { return Parser.stringToSlug(`sub ${sc.shortName || sc.name} ${Parser.sourceJsonToAbv(sc.source)}`); },
+
+	/**
+	 * @param opts Options object.
+	 * @param [opts.subclass] Subclass (or object of the form `{shortName: "str", source: "str"}`)
+	 * @param [opts.feature] Object of the form `{ixLevel: 0, ixFeature: 0}`
+	 */
+	getClassesPageStatePart (opts) {
+		const stateParts = [
+			opts.subclass ? `${UrlUtil.getStateKeySubclass(opts.subclass)}=${UrlUtil.mini.compress(true)}` : null,
+			opts.feature ? `feature=${UrlUtil.mini.compress(`${opts.feature.ixLevel}-${opts.feature.ixFeature}`)}` : ""
+		].filter(Boolean);
+		return stateParts.length ? UrlUtil.packSubHash("state", stateParts) : "";
 	}
 };
 
@@ -4607,6 +4700,7 @@ SortUtil = {
 	compareListNames (a, b) { return SortUtil._ascSort(a.name.toLowerCase(), b.name.toLowerCase()); },
 
 	listSort (a, b, opts) {
+		opts = opts || {sortBy: "name"};
 		if (opts.sortBy === "name") return SortUtil.compareListNames(a, b);
 		else return SortUtil._compareByOrDefault_compareByOrDefault(a, b, opts.sortBy);
 	},
@@ -5421,28 +5515,7 @@ DataUtil = {
 			DataUtil.class._pLoadingJson = (async () => {
 				const index = await DataUtil.loadJSON(`${baseUrl}data/class/index.json`);
 				const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${baseUrl}data/class/${it}`)));
-				const out = allData.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []});
-				out.class.filter(cls => !cls._isEnhanced).forEach(cls => {
-					cls._isEnhanced = true;
-					cls.classFeatures.forEach((featArr, i) => {
-						const ixAsi = featArr.findIndex(it => it.name && it.name.toLowerCase().trim() === "ability score improvement");
-						if (~ixAsi) {
-							const toInsert = {
-								type: "entries",
-								name: "Proficiency Versatility",
-								entries: [
-									`{@i ${Parser.getOrdinalForm(i + 1)}-level feature (enhances Ability Score Improvement)}`,
-									"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
-									"This change represents one of your skills atrophying as you focus on a different skill."
-								],
-								source: "UAClassFeatureVariants",
-								page: 1
-							};
-							featArr.splice(ixAsi + 1, 0, toInsert);
-						}
-					});
-				});
-				DataUtil.class._loadedJson = out;
+				DataUtil.class._loadedJson = allData.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []});
 			})();
 			await DataUtil.class._pLoadingJson;
 
@@ -5526,11 +5599,11 @@ DataUtil = {
 
 // ROLLING =============================================================================================================
 RollerUtil = {
-	isCrypto: () => {
+	isCrypto () {
 		return typeof window !== "undefined" && typeof window.crypto !== "undefined";
 	},
 
-	randomise: (max, min = 1) => {
+	randomise (max, min = 1) {
 		if (min > max) return 0;
 		if (max === min) return max;
 		if (RollerUtil.isCrypto()) {
@@ -5576,12 +5649,12 @@ RollerUtil = {
 	 * @param fn funciton to call to generate random numbers
 	 * @returns {number} rolled
 	 */
-	roll: (max, fn = Math.random) => {
+	roll (max, fn = Math.random) {
 		return Math.floor(fn() * max);
 	},
 
-	addListRollButton: () => {
-		const $btnRoll = $(`<button class="btn btn-default" id="feelinglucky" title="Feeling Lucky?"><span class="glyphicon glyphicon-random"></span></button>`);
+	addListRollButton (isCompact) {
+		const $btnRoll = $(`<button class="btn btn-default ${isCompact ? "px-2" : ""}" id="feelinglucky" title="Feeling Lucky?"><span class="glyphicon glyphicon-random"></span></button>`);
 		$btnRoll.on("click", () => {
 			const primaryLists = ListUtil.getPrimaryLists();
 			if (primaryLists && primaryLists.length) {
@@ -6323,7 +6396,7 @@ BrewUtil = {
 		$brewList.empty();
 		if (BrewUtil.homebrew) {
 			const $iptSearch = $(`<input type="search" class="search manbrew__search form-control" placeholder="Search active homebrew...">`);
-			const $wrpList = $(`<ul class="list-display-only brew-list brew-list--target"></ul>`);
+			const $wrpList = $(`<ul class="list-display-only brew-list brew-list--target manbrew__list"></ul>`);
 			const $ulGroup = $(`<ul class="list-display-only brew-list brew-list--groups no-shrink" style="height: initial;"></ul>`);
 
 			const list = new List({$iptSearch, $wrpList, isUseJquery: true});
@@ -6337,7 +6410,7 @@ BrewUtil = {
 						<button class="col-1 btn btn-default btn-xs" disabled>Origin</button>
 						<button class="btn btn-default btn-xs" disabled>&nbsp;</button>
 					</div>
-					${$wrpList}
+					<div class="flex w-100 h-100 overflow-y-auto relative">${$wrpList}</div>
 				</div>
 			`.appendTo($brewList);
 			$ulGroup.appendTo($brewList);
@@ -6393,13 +6466,10 @@ BrewUtil = {
 				return !!cats.find(cat => !!(BrewUtil.homebrew[cat] || []).some(entry => entry.source === source));
 			};
 
-			const allSources = MiscUtil.copy(BrewUtil.getJsonSources()).filter(src => isSourceRelevantForCurrentPage(src.json));
-			allSources.sort((a, b) => SortUtil.ascSort(a.full, b.full));
+			const brewSources = MiscUtil.copy(BrewUtil.getJsonSources()).filter(src => isSourceRelevantForCurrentPage(src.json));
+			brewSources.sort((a, b) => SortUtil.ascSort(a.full, b.full));
 
-			// add 5etools sources as required, so that any external data loaded with these sources is displayed in the right place
-			const vetoolsSources = BrewUtil._getActiveVetoolsSources();
-
-			allSources.concat(vetoolsSources).forEach((src, i) => {
+			brewSources.forEach((src, i) => {
 				const validAuthors = (!src.authors ? [] : !(src.authors instanceof Array) ? [] : src.authors).join(", ");
 				const isGroup = src._unknown || src._all;
 
@@ -6470,14 +6540,14 @@ BrewUtil = {
 		const $ele = $(ele);
 		if (!$ele.hasClass("rd__wrp-loadbrew--ready")) return; // an existing click is being handled
 		const cached = $ele.html();
-		const cachedTitle = $ele.attr("title");
-		$ele.attr("title", "");
+		const cachedTitle = $ele.title();
+		$ele.title("");
 		$ele.removeClass("rd__wrp-loadbrew--ready").html(`${name}<span class="glyphicon glyphicon-refresh rd__loadbrew-icon rd__loadbrew-icon--active"/>`);
 		jsonUrl = jsonUrl.unescapeQuotes();
 		const data = await DataUtil.loadJSON(`${jsonUrl}?${(new Date()).getTime()}`);
 		await BrewUtil.pDoHandleBrewJson(data, UrlUtil.getCurrentPage());
 		$ele.html(`${name}<span class="glyphicon glyphicon-saved rd__loadbrew-icon"/>`);
-		setTimeout(() => $ele.html(cached).addClass("rd__wrp-loadbrew--ready").attr("title", cachedTitle), 500);
+		setTimeout(() => $ele.html(cached).addClass("rd__wrp-loadbrew--ready").title(cachedTitle), 500);
 	},
 
 	async _pDoRemove (arrName, uniqueId, isChild) {
@@ -6551,6 +6621,7 @@ BrewUtil = {
 			BrewUtil.homebrew.subclass.splice(index, 1);
 			await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
 
+			// FIXME
 			if (typeof ClassData !== "undefined") {
 				const c = ClassData.classes.find(c => c.name.toLowerCase() === forClass.toLowerCase());
 
@@ -6787,10 +6858,11 @@ BrewUtil = {
 		return Object.keys(BrewUtil.homebrew).filter(it => !it.startsWith("_"));
 	},
 
+	// region sources
 	_buildSourceCache () {
 		function doBuild () {
 			if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.sources) {
-				BrewUtil.homebrewMeta.sources.forEach(src => BrewUtil._sourceCache[src.json] = ({...src}));
+				BrewUtil.homebrewMeta.sources.forEach(src => BrewUtil._sourceCache[src.json.toLowerCase()] = ({...src}));
 			}
 		}
 
@@ -6813,8 +6885,10 @@ BrewUtil = {
 	},
 
 	removeJsonSource (source) {
+		if (!source) return;
+		source = source.toLowerCase();
 		BrewUtil._resetSourceCache();
-		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json === source);
+		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json.toLowerCase() === source);
 		if (~ix) BrewUtil.homebrewMeta.sources.splice(ix, 1);
 		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
 	},
@@ -6825,32 +6899,44 @@ BrewUtil = {
 	},
 
 	hasSourceJson (source) {
+		if (!source) return false;
+		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return !!BrewUtil._sourceCache[source];
 	},
 
 	sourceJsonToFull (source) {
+		if (!source) return "";
+		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].full || source : source;
 	},
 
 	sourceJsonToAbv (source) {
+		if (!source) return "";
+		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].abbreviation || source : source;
 	},
 
 	sourceJsonToSource (source) {
+		if (!source) return null;
+		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source] : null;
 	},
 
 	sourceJsonToStyle (source) {
+		if (!source) return "";
+		source = source.toLowerCase();
 		const color = BrewUtil.sourceJsonToColor(source);
 		if (color) return `style="color: #${color};"`;
 		return "";
 	},
 
 	sourceJsonToColor (source) {
+		if (!source) return "";
+		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		if (BrewUtil._sourceCache[source] && BrewUtil._sourceCache[source].color) {
 			const validColor = BrewUtil.getValidColor(BrewUtil._sourceCache[source].color);
@@ -6864,21 +6950,21 @@ BrewUtil = {
 		return color.replace(/[^a-fA-F0-9]/g, "").slice(0, 8);
 	},
 
-	addSource (source) {
+	addSource (sourceObj) {
 		BrewUtil._resetSourceCache();
-		const exists = BrewUtil.homebrewMeta.sources.some(it => it.json === source.json);
-		if (exists) throw new Error(`Source "${source.json}" already exists!`);
-		(BrewUtil.homebrewMeta.sources = BrewUtil.homebrewMeta.sources || []).push(source);
+		const exists = BrewUtil.homebrewMeta.sources.some(it => it.json === sourceObj.json);
+		if (exists) throw new Error(`Source "${sourceObj.json}" already exists!`);
+		(BrewUtil.homebrewMeta.sources = BrewUtil.homebrewMeta.sources || []).push(sourceObj);
 		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
 	},
 
-	updateSource (source) {
+	updateSource (sourceObj) {
 		BrewUtil._resetSourceCache();
-		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json === source.json);
-		if (!~ix) throw new Error(`Source "${source.json}" does not exist!`);
+		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json === sourceObj.json);
+		if (!~ix) throw new Error(`Source "${sourceObj.json}" does not exist!`);
 		const json = BrewUtil.homebrewMeta.sources[ix].json;
 		BrewUtil.homebrewMeta.sources[ix] = {
-			...source,
+			...sourceObj,
 			json
 		};
 		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
@@ -6895,6 +6981,7 @@ BrewUtil = {
 			abbreviation: Parser.SOURCE_JSON_TO_ABV[k]
 		})).sort((a, b) => SortUtil.ascSort(a.full, b.full)).filter(it => allActiveSources.has(it.json));
 	},
+	// endregion
 
 	/**
 	 * Get data in a format similar to the main search index
@@ -7304,15 +7391,21 @@ Array.prototype.shuffle = Array.prototype.shuffle || function () {
  * @param opts.$openBtn jQuery-selected button to bind click open/close
  * @param opts.noneVisibleMsg "error" message to display if user has not selected any viewable content
  * @param opts.pageTitle Title.
+ * @param opts.state State to modify when opening/closing.
+ * @param opts.stateKey Key in state to set true/false when opening/closing.
  * @param opts.popTblGetNumShown function which should populate the view with HTML content and return the number of items displayed
  * @param [opts.hasPrintColumns] True if the overlay should contain a dropdown for adjusting print columns.
  * @constructor
  */
 function BookModeView (opts) {
 	opts = opts || {};
-	const {hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNumShown} = opts;
+	const {hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNumShown, isFlex, state, stateKey} = opts;
+
+	if (hashKey && stateKey) throw new Error();
 
 	this.hashKey = hashKey;
+	this.stateKey = stateKey;
+	this.state = state;
 	this.$openBtn = $openBtn;
 	this.noneVisibleMsg = noneVisibleMsg;
 	this.popTblGetNumShown = popTblGetNumShown;
@@ -7321,12 +7414,20 @@ function BookModeView (opts) {
 	this._$body = null;
 	this._$wrpBook = null;
 
-	this.$openBtn.on("click", () => {
-		Hist.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${this.hashKey}${HASH_SUB_KV_SEP}true`);
+	this.$openBtn.off("click").on("click", () => {
+		if (this.stateKey) {
+			this.state[this.stateKey] = true;
+		} else {
+			Hist.cleanSetHash(`${window.location.hash}${HASH_PART_SEP}${this.hashKey}${HASH_SUB_KV_SEP}true`);
+		}
 	});
 
 	this._doHashTeardown = () => {
-		Hist.cleanSetHash(window.location.hash.replace(`${this.hashKey}${HASH_SUB_KV_SEP}true`, ""));
+		if (this.stateKey) {
+			this.state[this.stateKey] = false;
+		} else {
+			Hist.cleanSetHash(window.location.hash.replace(`${this.hashKey}${HASH_SUB_KV_SEP}true`, ""));
+		}
 	};
 
 	// NOTE: Avoid using `flex` css, as it doesn't play nice with printing
@@ -7383,8 +7484,8 @@ function BookModeView (opts) {
 		}
 		// endregion
 
-		const $wrpContent = $(`<div class="w-100 bkmv__wrp p-2"/>`);
-		$$`<div class="bkmv__scroller h-100 w-100 overflow-y-auto">${$wrpContent}</div>`.appendTo(this._$wrpBook);
+		const $wrpContent = $(`<div class="bkmv__wrp p-2"/>`);
+		$$`<div class="bkmv__scroller h-100 overflow-y-auto ${isFlex ? "flex" : ""}">${$wrpContent}</div>`.appendTo(this._$wrpBook);
 
 		const numShown = await this.popTblGetNumShown($wrpContent, $dispName, $wrpControlsToPass);
 
@@ -7411,6 +7512,8 @@ function BookModeView (opts) {
 	};
 
 	this.handleSub = (sub) => {
+		if (this.stateKey) return; // Assume anything with state will handle this itself.
+
 		const bookViewHash = sub.find(it => it.startsWith(this.hashKey));
 		if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[this.hashKey][0] === "true") this.pOpen();
 		else this.teardown();

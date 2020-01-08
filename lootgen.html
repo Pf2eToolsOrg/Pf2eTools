@@ -25,6 +25,17 @@
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 	<script type="text/javascript" src="js/browsercheck.js"></script>
+
+	<style>
+		.loot__wrp-exact-level {
+			padding: 0;
+			border-left: 1px solid #ccc;
+		}
+
+		.night-mode .loot__wrp-exact-level {
+			border-color: #555;
+		}
+	</style>
 </head>
 
 <body id="lootgen">
@@ -142,7 +153,7 @@
 					<div class="mb-3">
 						<div class="input-group">
 							<span class="input-group-addon" style="width: 10%" id="selectCharLevel">Character Level</span>
-							<span class="input-group-addon" style="padding: 0; border-left: 1px solid #ccc;">
+							<span class="input-group-addon loot__wrp-exact-level">
 								<label class="clickable" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
 									Exact Level? <input type="checkbox" checked id="closest-tier" class="clickable" style="vertical-align: bottom;">
 								</label>

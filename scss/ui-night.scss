@@ -4,60 +4,80 @@ Shared UI components
 
 @import 'vars';
 
+/* Source overlay */
+.night-mode .ui-source__ {
+	&divider {
+		background: $rgb-border-grey--night;
+	}
+}
+
+/* region Tabs */
+.night-mode .ui-tab__ {
+	&wrp-tab-heads--border {
+		border-color: $rgb-border-grey--night;
+		border-width: 2px;
+	}
+}
+/* endregion */
+
 /* Proficiency */
-.night-mode {
-	.ui-prof__ {
-		&btn-cycle {
-			&:active {
-				@include shadow-active--night();
-			}
+.night-mode .ui-prof__ {
+	&btn-cycle {
+		border-color: $rgb-border-grey--night;
 
-			&[data-state='0'] {
-				background: $rgb-bg-color--night;
-			}
+		&:active {
+			@include shadow-active--night();
+		}
 
-			&[data-state='1'] {
-				background: $rgb-border-grey;
-				border-color: #aaa;
-			}
+		&[data-state='0'] {
+			background: $rgb-bg--night;
+		}
 
-			&[data-state='2'] {
-				background: $rgb-border-grey;
-				border-color: #aaa;
+		&[data-state='1'] {
+			background: $rgb-border-grey--night;
+		}
 
-				&::after {
-					color: $rgb-bg-color--night;
-					font-weight: bold;
-				}
-			}
+		&[data-state='2'] {
+			background: $rgb-border-grey--night;
 
-			&[data-state='3'] {
-				background: repeating-linear-gradient(135deg, $rgb-bg-color--night, $rgb-bg-color--night 10px, $rgb-border-grey 10px, $rgb-border-grey 20px);
-				border-color: $rgb-border-grey;
+			&::before {
+				color: $rgb-bg--night;
 			}
+		}
+
+		&[data-state='3'] {
+			background: repeating-linear-gradient(135deg, $rgb-bg--night, $rgb-bg--night 10px, $rgb-border-grey--night 10px, $rgb-border-grey--night 20px);
+			border-color: $rgb-border-grey--night;
 		}
 	}
 }
 
 /* Direction picker */
-.night-mode {
-	.ui-dir__ {
-		&face {
-			background: $rgb-bg-color--night;
-		}
+.night-mode .ui-dir__ {
+	&face {
+		background: $rgb-bg--night;
+		border-color: $rgb-border-grey--night;
+	}
 
-		&arm {
-			background: $rgb-font-color--night;
-			box-shadow: none;
-		}
+	&arm {
+		background: $rgb-font--night;
+		box-shadow: none;
 	}
 }
 
 /* Hover tips */
-.night-mode {
-	.ui-tip__ {
-		&child {
-			background: $rgb-bg-color--night;
+.night-mode .ui-tip__ {
+	&child {
+		border-color: $rgb-border-grey--night;
+		background: $rgb-bg--night;
+	}
+}
+
+/* Picker */
+.night-mode .ui-pick {
+	&__ {
+		&disp-text {
+			border-color: $rgb-border-grey--night;
 		}
 	}
 }

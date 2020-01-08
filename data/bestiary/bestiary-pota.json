@@ -11,7 +11,9 @@
 		"otherSources": {
 			"monster": {
 				"MM": "PotA",
-				"VGM": "PotA"
+				"VGM": "PotA",
+				"MTF": "PotA",
+				"RoT": "PotA"
 			}
 		}
 	},
@@ -190,116 +192,6 @@
 			],
 			"miscTags": [
 				"RW",
-				"MW"
-			]
-		},
-		{
-			"name": "Air Elemental Myrmidon",
-			"size": "M",
-			"type": "elemental",
-			"source": "PotA",
-			"alignment": [
-				"N"
-			],
-			"ac": [
-				{
-					"ac": 18,
-					"from": [
-						"{@item plate armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 117,
-				"formula": "18d8 + 36"
-			},
-			"speed": {
-				"walk": 30,
-				"fly": 30
-			},
-			"str": 18,
-			"dex": 14,
-			"con": 14,
-			"int": 9,
-			"wis": 10,
-			"cha": 10,
-			"resist": [
-				"lightning",
-				"thunder",
-				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks"
-				}
-			],
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone"
-			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 10,
-			"languages": [
-				"Auran",
-				"one language of its creator's choice"
-			],
-			"cr": "7",
-			"trait": [
-				{
-					"name": "Magic Weapons",
-					"entries": [
-						"The myrmidon's weapon attacks are magical."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The myrmidon makes three flail attacks."
-					]
-				},
-				{
-					"name": "Flail",
-					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) bludgeoning damage."
-					]
-				},
-				{
-					"name": "Lightning Strike {@recharge}",
-					"entries": [
-						"The myrmidon makes one flail attack. If the attack hits, it deals an extra 18 ({@damage 4d8}) lightning damage, and the target must succeed on a {@dc 14} Constitution saving throw or be {@condition stunned} until the end of the myrmidon's next turn."
-					]
-				}
-			],
-			"page": 212,
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/593/air-elemental-myrmidon.mp3",
-			"traitTags": [
-				"Magic Weapons"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"AU"
-			],
-			"senseTags": [
-				"D"
-			],
-			"damageTags": [
-				"B",
-				"L"
-			],
-			"miscTags": [
 				"MW"
 			]
 		},
@@ -1168,113 +1060,6 @@
 			]
 		},
 		{
-			"name": "Earth Elemental Myrmidon",
-			"size": "M",
-			"type": "elemental",
-			"source": "PotA",
-			"alignment": [
-				"N"
-			],
-			"ac": [
-				{
-					"ac": 18,
-					"from": [
-						"{@item plate armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 127,
-				"formula": "17d8 + 51"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 18,
-			"dex": 10,
-			"con": 17,
-			"int": 8,
-			"wis": 10,
-			"cha": 10,
-			"resist": [
-				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks"
-				}
-			],
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone"
-			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 10,
-			"languages": [
-				"Terran",
-				"one language of its creator's choice"
-			],
-			"cr": "7",
-			"trait": [
-				{
-					"name": "Magic Weapons",
-					"entries": [
-						"The myrmidon's weapon attacks are magical."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The myrmidon makes two maul attacks."
-					]
-				},
-				{
-					"name": "Maul",
-					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) bludgeoning damage."
-					]
-				},
-				{
-					"name": "Thunderous Strike {@recharge}",
-					"entries": [
-						"The myrmidon makes one maul attack. If the attack hits, it deals an extra 16 ({@damage 3d10}) thunder damage, and the target must succeed on a {@dc 14} Strength saving throw or be knocked {@condition prone}."
-					]
-				}
-			],
-			"page": 212,
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/635/earth-elemental-myrmidon.mp3",
-			"traitTags": [
-				"Magic Weapons"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"T"
-			],
-			"senseTags": [
-				"D"
-			],
-			"damageTags": [
-				"B",
-				"T"
-			],
-			"miscTags": [
-				"MW"
-			]
-		},
-		{
 			"name": "Elizar Dryflagon",
 			"isNpc": true,
 			"size": "M",
@@ -1854,129 +1639,6 @@
 				"MW",
 				"RW",
 				"THW"
-			]
-		},
-		{
-			"name": "Fire Elemental Myrmidon",
-			"size": "M",
-			"type": "elemental",
-			"source": "PotA",
-			"alignment": [
-				"N"
-			],
-			"ac": [
-				{
-					"ac": 18,
-					"from": [
-						"{@item plate armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 117,
-				"formula": "18d8 + 36"
-			},
-			"speed": {
-				"walk": 40
-			},
-			"str": 13,
-			"dex": 18,
-			"con": 15,
-			"int": 9,
-			"wis": 10,
-			"cha": 10,
-			"resist": [
-				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks"
-				}
-			],
-			"immune": [
-				"fire",
-				"poison"
-			],
-			"conditionImmune": [
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone"
-			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 10,
-			"languages": [
-				"Ignan",
-				"one language of its creator's choice"
-			],
-			"cr": "7",
-			"trait": [
-				{
-					"name": "Illumination",
-					"entries": [
-						"The myrmidon sheds bright light in a 20-foot radius and dim light in a 40-foot radius."
-					]
-				},
-				{
-					"name": "Magic Weapons",
-					"entries": [
-						"The myrmidon's weapon attacks are magical."
-					]
-				},
-				{
-					"name": "Water Susceptibility",
-					"entries": [
-						"For every 5 feet the myrmidon moves in water, it takes 2 ({@damage 1d4}) cold damage."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The myrmidon makes three scimitar attacks."
-					]
-				},
-				{
-					"name": "Scimitar",
-					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) slashing damage."
-					]
-				},
-				{
-					"name": "Fiery Strikes {@recharge}",
-					"entries": [
-						"The myrmidon uses Multiattack. Each attack that hits deals an extra 5 ({@damage 1d10}) fire damage."
-					]
-				}
-			],
-			"page": 213,
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/640/fire-elemental-myrmidon.mp3",
-			"traitTags": [
-				"Illumination",
-				"Magic Weapons"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"IG"
-			],
-			"senseTags": [
-				"D"
-			],
-			"damageTags": [
-				"S",
-				"F",
-				"C"
-			],
-			"miscTags": [
-				"MW",
-				"AOE"
 			]
 		},
 		{
@@ -4894,115 +4556,6 @@
 			]
 		},
 		{
-			"name": "Water Elemental Myrmidon",
-			"size": "M",
-			"type": "elemental",
-			"source": "PotA",
-			"alignment": [
-				"N"
-			],
-			"ac": [
-				{
-					"ac": 18,
-					"from": [
-						"{@item plate armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 127,
-				"formula": "17d8 + 51"
-			},
-			"speed": {
-				"walk": 40,
-				"swim": 40
-			},
-			"str": 18,
-			"dex": 14,
-			"con": 15,
-			"int": 8,
-			"wis": 10,
-			"cha": 10,
-			"resist": [
-				"acid",
-				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks"
-				}
-			],
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone"
-			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 10,
-			"languages": [
-				"Aquan",
-				"one language of its creator's choice"
-			],
-			"cr": "7",
-			"trait": [
-				{
-					"name": "Magic Weapons",
-					"entries": [
-						"The myrmidon's weapon attacks are magical."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The myrmidon makes three trident attacks."
-					]
-				},
-				{
-					"name": "Trident",
-					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) piercing damage."
-					]
-				},
-				{
-					"name": "Freezing Strikes {@recharge}",
-					"entries": [
-						"The myrmidon uses Multiattack. Each attack that hits deals an extra 5 ({@damage 1d10}) cold damage, and the target's speed is reduced by 10 feet until the end of the myrmidon's next turn."
-					]
-				}
-			],
-			"page": 213,
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/716/water-elemental-myrmidon.mp3",
-			"traitTags": [
-				"Magic Weapons"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"AQ"
-			],
-			"senseTags": [
-				"D"
-			],
-			"damageTags": [
-				"P",
-				"C"
-			],
-			"miscTags": [
-				"MW"
-			]
-		},
-		{
 			"name": "Wiggan Nettlebee",
 			"isNpc": true,
 			"size": "S",
@@ -5492,19 +5045,6 @@
 			"page": 87
 		},
 		{
-			"name": "Aquatic Troll",
-			"source": "PotA",
-			"_copy": {
-				"name": "Troll",
-				"source": "MM"
-			},
-			"speed": {
-				"walk": 30,
-				"swim": 40
-			},
-			"page": 88
-		},
-		{
 			"name": "Braelen Hatherhand",
 			"isNpc": true,
 			"source": "PotA",
@@ -5547,7 +5087,15 @@
 			"source": "PotA",
 			"_copy": {
 				"name": "Mage",
-				"source": "MM"
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mage",
+						"with": "Cavil",
+						"flags": "i"
+					}
+				}
 			},
 			"type": {
 				"type": "humanoid",
@@ -5563,7 +5111,15 @@
 			"source": "PotA",
 			"_copy": {
 				"name": "Knight",
-				"source": "MM"
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the knight",
+						"with": "Darathra",
+						"flags": "i"
+					}
+				}
 			},
 			"type": {
 				"type": "humanoid",
@@ -5579,7 +5135,15 @@
 			"source": "PotA",
 			"_copy": {
 				"name": "Noble",
-				"source": "MM"
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the noble",
+						"with": "Deseyna",
+						"flags": "i"
+					}
+				}
 			},
 			"type": {
 				"type": "humanoid",
@@ -5629,7 +5193,15 @@
 			"source": "PotA",
 			"_copy": {
 				"name": "Emberhorn Minotaur",
-				"source": "PotA"
+				"source": "PotA",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the minotaur",
+						"with": "Zegdar",
+						"flags": "i"
+					}
+				}
 			},
 			"hp": {
 				"average": 117,
@@ -5652,7 +5224,15 @@
 			"source": "PotA",
 			"_copy": {
 				"name": "Berserker",
-				"source": "MM"
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the berserker",
+						"with": "Fennor",
+						"flags": "i"
+					}
+				}
 			},
 			"ac": [
 				{
@@ -5688,7 +5268,15 @@
 			"source": "PotA",
 			"_copy": {
 				"name": "Assassin",
-				"source": "MM"
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the assassin",
+						"with": "Grumink",
+						"flags": "i"
+					}
+				}
 			},
 			"type": {
 				"type": "humanoid",
@@ -5714,7 +5302,15 @@
 			"source": "PotA",
 			"_copy": {
 				"name": "Mage",
-				"source": "MM"
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mage",
+						"with": "Lyzandra",
+						"flags": "i"
+					}
+				}
 			},
 			"type": {
 				"type": "humanoid",
@@ -5846,6 +5442,14 @@
 			"_copy": {
 				"name": "Adult Black Dragon",
 				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the dragon",
+						"with": "Nurvureem",
+						"flags": "i"
+					}
+				},
 				"_trait": {
 					"name": "Shadow Dragon",
 					"source": "MM"
@@ -5870,7 +5474,15 @@
 			"source": "PotA",
 			"_copy": {
 				"name": "Berserker",
-				"source": "MM"
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the berserker",
+						"with": "Padraich",
+						"flags": "i"
+					}
+				}
 			},
 			"action": [
 				{
@@ -5892,7 +5504,15 @@
 			"source": "PotA",
 			"_copy": {
 				"name": "Lich",
-				"source": "MM"
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the lich",
+						"with": "Renwick",
+						"flags": "i"
+					}
+				}
 			},
 			"spellcasting": [
 				{
@@ -5988,7 +5608,15 @@
 			"source": "PotA",
 			"_copy": {
 				"name": "Guard",
-				"source": "MM"
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the guard",
+						"with": "Rhundorth",
+						"flags": "i"
+					}
+				}
 			},
 			"ac": [
 				11
@@ -6037,7 +5665,15 @@
 			"source": "PotA",
 			"_copy": {
 				"name": "Lizardfolk",
-				"source": "MM"
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the lizardfolk",
+						"with": "Tornscale",
+						"flags": "i"
+					}
+				}
 			},
 			"hp": {
 				"average": 36,

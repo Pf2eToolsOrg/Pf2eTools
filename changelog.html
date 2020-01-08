@@ -1943,6 +1943,143 @@ Filters -- completely overhauled internally:
 - (Homebrew) Reworked Classes skill proficiency format
 - (Fixed typos/added tags)`
 		},
+		{
+			ver: "1.92.2",
+			date: "2019-12-13",
+			txt: `
+- Fixed crash when encoding some URLs`
+		},
+		{
+			ver: "1.92.3",
+			date: "2019-12-17",
+			txt: `
+- Added dice/damage tags to psionics data
+- Added page numbers to all stat titles, and improved their display
+- Homebrew spell builder now allows spells up to level 20
+- Improved DM Screen Initiative Tracker server token parsing
+- Fixed @filter tags failing to clear default filter values
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.93.0",
+			date: "2019-12-25",
+			title: "The Best Time To Push Broken Code to Production",
+			titleAlt: "Not a Troll Announcement",
+			txt: `
+- Completely reworked classes page
+  - Like, a literal "threw out all the old code and did it again from scratch" rework. If it's not broken, I'll eat <del>ass</del> a christmas bauble.
+  - The filter box in the top-left now filters classes, subclasses, and general text. I.e. you can toggle "UA: Class Feature Variants" independent of everything else.
+  - Reworked class info/fluff/subclass selection buttons to more closely match the rest of the site's UI
+- <b>Added the Infernal Machine Revisited adventure</b> <a href="https://5e.tools/adventure.html#imr">https://5e.tools/adventure.html#imr</a>
+- Added display options for price total in Items pinned list (click the price to change)
+- Fixed case where different scaled versions of the same creature would be merged in the Bestiary Encounter Builder
+- Fixed some source filters failing to populate
+- Fixed some source filters failing to populate
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.93.1",
+			date: "2019-12-25",
+			txt: `
+- Improved handling of bad homebrew on Classes page
+- Tweaked button layout on Classes page
+- Fixed homebrew manager layout
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.93.2",
+			date: "2019-12-26",
+			txt: `
+- Classes page:
+  - Added Reprint/SRD filters
+  - Reprinted subclasses are now marked with faded coloring and tooltips
+  - General toggles (feature visibility etc.) are now retained on switching class
+  - Fixed section break appearing at top of fluff
+  - Fixed @class links containing subclasses
+  - Improved performance
+  - Fixed various minor bugs
+- Fixed coloring of homebrew sources in entity titles
+- Improved support for "flowchart" elements
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.93.3",
+			date: "2019-12-27",
+			txt: `
+- Improved Classes page performance when many classes are loaded
+- Fixed Classes page incorrectly displaying subclass visibility count`
+		},
+		{
+			ver: "1.94.0",
+			date: "2019-12-28",
+			txt: `
+- Reworked DM Screen Initiative Tracker peer-to-peer system to be easier to use
+- Improved Classes UX, adding back several missing pieces of functionality`
+		},
+		{
+			ver: "1.94.1",
+			date: "2019-12-28",
+			txt: `
+- Fixed filter crash`
+		},
+		{
+			ver: "1.94.2",
+			date: "2019-12-28",
+			txt: `
+- Added Bestiary info/images for Infernal Machine Rebuild
+- Improved Classes page layout on mobile
+- Improved filter layout on mobile
+- Classes page "X more subclasses hidden" may now be clicked to select all sources
+- (Homebrew) Spell Homebrew Builder now auto-generates @damage tags, and will never remove them
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.94.3",
+			date: "2020-01-02",
+			txt: `
+- Added "preset filter" dropdown to Classes page subclass section
+- Reduced brightness of various elements (primarily button/input borders) in Night Mode
+- Improved consistency of "and/or" punctuation/grammar scheme in Feat/Optional Feature prerequisites
+- Fixed Items page Cost filter
+- Added missing generic demon boons to Cults & Supernatural Boons
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.94.4",
+			date: "2020-01-02",
+			txt: `
+- Improved Classes page subclass selection section layout on mobile
+- Added "narrow" reading mode to Adventures/Books
+- Added missing Bestiary filter information for various damage types, languages, and actions
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.94.5",
+			date: "2020-01-04",
+			txt: `
+- Classes and subclasses can now be viewed in hover tooltips
+- Classes and subclasses can now be added to the DM Screen
+- Fixed various layout issues, including the contents of the Manage Homebrew page not displaying
+- (Homebrew) Text Converter now handles more pact magic formats
+- (Homebrew) Text Converter now handles all "or"-/chance-based alignments
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.94.6",
+			date: "2020-01-08",
+			txt: `
+- Added Adult Sapphire Dragon from anniversary dice set
+- Added "Item Group" to Items page Miscellaneous filter
+- Added missing WDMM creature info and lair/regional actions
+- DM Screen search results are now shown in "official -> less official" order, with common sources (DMG, PHB, MM, XGE, ...) taking precedence over UA/etc.
+- Spell damage rolls now behave like creature damage rolls (SHIFT-click to roll crit, ALT-click to half damage, SHIFT+ALT to roll crit damage (halved))
+- Improved Homebrew Builder error handling, hopefully fixing cases where cookies would need to be cleared to fix infinite loading
+- (Homebrew) Fixed magic item specific variants displaying pre-generated text twice
+- (Homebrew) Class prerequisites may now optionally be displayed on "level" prerequisites for Feats/Optional Features
+- (Homebrew) Classes page now tolerates junkier subclass data
+- (Homebrew) Text Converter now tolerates more HP inputs
+- (Fixed typos/added tags)`
+		},
 	];
 
 	const $wrp = $(`#pagecontent`);

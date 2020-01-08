@@ -349,6 +349,28 @@ class RendererCard {
 	}
 	// endregion
 
+	// region flowchart
+	_renderFlowchart (entry, textStack, meta, options) {
+		const len = entry.blocks.length;
+		for (let i = 0; i < len; ++i) this._recursiveRender(entry.blocks[i], textStack, meta, options);
+	}
+
+	_renderFlowBlock (entry, textStack, meta, options) {
+		textStack[0] += "\n";
+		if (entry.name != null) textStack[0] += `section | ${entry.name}\n`;
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "text | ", suffix: "\n"});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `\n`;
+	}
+	// endregion
+
 	// region homebrew
 	_renderHomebrew (entry, textStack, meta, options) {
 		textStack[0] += `text | (Homebrew rendering within cards is not supported.)\n`

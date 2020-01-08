@@ -9,7 +9,7 @@ Object.values(classIndex).forEach(f => {
 		if (!c.subclasses) return;
 		const target = {};
 		(out[c.source] = out[c.source] || {})[c.name] = target;
-		c.subclasses.forEach(sc => (target[sc.source] = target[sc.source] || {})[sc.shortName] = sc.name);
+		c.subclasses.forEach(sc => (target[sc.source] = target[sc.source] || {})[sc.shortName] = {name: sc.name, isReprinted: sc.isReprinted});
 	});
 });
 fs.writeFileSync(`./data/generated/gendata-subclass-lookup.json`, CleanUtil.getCleanJson(out, true));

@@ -65,6 +65,10 @@
 	overflow-y: auto;
 }
 
+.overflow-y-hidden {
+	overflow-y: hidden;
+}
+
 .overflow-x-hidden {
 	overflow-x: hidden;
 }
@@ -263,8 +267,8 @@
 }
 
 .flex-v-center {
-	display: flex;
-	align-items: center;
+	display: flex !important;
+	align-items: center !important;
 }
 
 .flex-h-center {
@@ -448,6 +452,10 @@ body::-webkit-scrollbar {
 /* Bootstrap overrides */
 .container {
 	position: relative;
+}
+
+.tooltip {
+	pointer-events: none;
 }
 
 .tooltip-inner {
@@ -1667,4 +1675,26 @@ body::-webkit-scrollbar {
 // redefine this here to ensure it overrides all the important display types above
 .hidden {
 	display: none !important;
+}
+
+.mobile__ {
+	&flex-col {
+		@media only screen and (max-width: $width-screen-sm) {
+			display: flex !important;
+			flex-direction: column !important;
+		}
+
+		@media only screen and (max-width: $width-screen-xs) {
+			display: flex !important;
+			flex-direction: column !important;
+		}
+	}
+
+	&m-1 {
+		margin: ($spacer * 0.25) !important;
+	}
+
+	&mb-2 {
+		margin-bottom: ($spacer * 0.5) !important;
+	}
 }

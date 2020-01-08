@@ -54,6 +54,11 @@
 			cursor: help;
 		}
 
+		.night-mode [class^="crypto-"] {
+			background: #222;
+			border-color: #555;
+		}
+
 		.stat-roll-line {
 			display: flex;
 			justify-content: space-between;
@@ -134,6 +139,10 @@
 			border: 1px solid #ccc;
 		}
 
+		.night-mode #pointbuy input {
+			border-color: #555;
+		}
+
 		#pointbuy input:not(.form-control)[readonly] {
 			background-color: #eee;
 			cursor: default;
@@ -154,6 +163,10 @@
 			flex-shrink: 0;
 			flex-grow: 0;
 			margin: 30px 0;
+		}
+
+		.night-mode .pbuy__divider {
+			background: #555;
 		}
 
 		.pbuy__wrp-btn-rem {

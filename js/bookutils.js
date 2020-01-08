@@ -176,6 +176,7 @@ const BookUtil = {
 		headerMap: {}
 	},
 	_lastClickedLink: null,
+	_isNarrow: null,
 	showBookContent (data, fromIndex, bookId, hashParts) {
 		function handleQuickReferenceShowAll () {
 			$(`.${Renderer.HEAD_NEG_1}`).show();
@@ -310,8 +311,27 @@ const BookUtil = {
 
 				if (isTop) {
 					const href = (~BookUtil.curRender.chapter ? BookUtil.thisContents.find(`.bk__contents_show_all`) : BookUtil.thisContents.find(`.bk__contents_header_link`)).attr("href");
-					$(`<a href="${href}" class="btn btn-xs btn-default no-print ${~BookUtil.curRender.chapter ? "" : "active"}" title="Warning: Slow">View Entire ${BookUtil.contentType.uppercaseFirst()}</a>`)
-						.appendTo($wrpControls);
+					const $btnEntireBook = $(`<a href="${href}" class="btn btn-xs btn-default no-print ${~BookUtil.curRender.chapter ? "" : "active"}" title="Warning: Slow">View Entire ${BookUtil.contentType.uppercaseFirst()}</a>`);
+
+					if (BookUtil._isNarrow == null) {
+						const saved = StorageUtil.syncGetForPage("narrowMode");
+						if (saved != null) BookUtil._isNarrow = saved;
+						else BookUtil._isNarrow = false;
+					}
+
+					const hdlNarrowUpdate = () => {
+						$btnToggleNarrow.toggleClass("active", BookUtil._isNarrow);
+						$(`#pagecontent`).toggleClass(`bk__stats--narrow`, BookUtil._isNarrow);
+					};
+					const $btnToggleNarrow = $(`<button class="btn btn-xs btn-default" title="Toggle Narrow Reading Width"><span class="glyphicon glyphicon-resize-small"/></button>`)
+						.click(() => {
+							BookUtil._isNarrow = !BookUtil._isNarrow;
+							hdlNarrowUpdate();
+							StorageUtil.syncSetForPage("narrowMode", BookUtil._isNarrow);
+						});
+					hdlNarrowUpdate();
+
+					$$`<div class="no-print flex-v-center btn-group">${$btnEntireBook}${$btnToggleNarrow}</div>`.appendTo($wrpControls);
 				} else $(`<button class="btn btn-xs btn-default no-print">Back to Top</button>`).click(() => MiscUtil.scrollPageTop()).appendTo($wrpControls);
 
 				const showNxt = ~chapter && chapter < data.length - 1;
@@ -348,7 +368,7 @@ const BookUtil = {
 					$btnPrev
 						.toggle(showPrev)
 						.appendTo(BookUtil.$wrpFloatControls)
-						.attr("title", "Previous Chapter");
+						.title("Previous Chapter");
 					BookUtil.curRender.controls.$btnsPrv.push($btnPrev);
 
 					let $btnNext;
@@ -362,7 +382,7 @@ const BookUtil = {
 					$btnNext
 						.toggle(showNxt)
 						.appendTo(BookUtil.$wrpFloatControls)
-						.attr("title", "Next Chapter");
+						.title("Next Chapter");
 					BookUtil.curRender.controls.$btnsNxt.push($btnNext);
 
 					BookUtil.$wrpFloatControls.toggleClass("btn-group", showPrev && showNxt);

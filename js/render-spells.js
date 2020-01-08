@@ -54,7 +54,7 @@ class RenderSpells {
 
 		if (sp._scrollNote) {
 			renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
-			renderer.recursiveRender(`{@italic Note: Both the {@class ${Renderer.spell.STR_FIGHTER} (${Renderer.spell.STR_ELD_KNIGHT})} and the {@class ${Renderer.spell.STR_ROGUE} (${Renderer.spell.STR_ARC_TCKER})} spell lists include all {@class ${Renderer.spell.STR_WIZARD}} spells. Spells of 5th level or higher may be cast with the aid of a spell scroll or similar.}`, renderStack, {depth: 2});
+			renderer.recursiveRender(`{@italic Note: Both the {@class fighter||${Renderer.spell.STR_FIGHTER} (${Renderer.spell.STR_ELD_KNIGHT})|eldritch knight} and the {@class rogue||${Renderer.spell.STR_ROGUE} (${Renderer.spell.STR_ARC_TCKER})|arcane trickster} spell lists include all {@class ${Renderer.spell.STR_WIZARD}} spells. Spells of 5th level or higher may be cast with the aid of a spell scroll or similar.}`, renderStack, {depth: 2});
 			renderStack.push(`</section></td></tr>`);
 		}
 
@@ -85,7 +85,7 @@ class RenderSpells {
 				c.subclasses.forEach(sc => {
 					(target[sc.source] =
 						target[sc.source] || {})[sc.shortName || sc.name] =
-						target[sc.source][sc.shortName || sc.name] || sc.name
+						target[sc.source][sc.shortName || sc.name] || {name: sc.name}
 				});
 			})
 		}
@@ -100,7 +100,7 @@ class RenderSpells {
 				const target = subclassLookup[clSrc][sc.class];
 				(target[sc.source] =
 					target[sc.source] || {})[sc.shortName || sc.name] =
-					target[sc.source][sc.shortName || sc.name] || sc.name
+					target[sc.source][sc.shortName || sc.name] || {name: sc.name}
 			})
 		}
 	}

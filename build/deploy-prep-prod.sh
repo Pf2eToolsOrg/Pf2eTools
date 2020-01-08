@@ -16,9 +16,9 @@ npm run minify:json
 
 echo "Optimizing the header."
 # Header / Day-Night mode
-npm run minify -- js/styleswitch.js --out-file js/styleswitch.js
-npm run minify -- js/navigation.js --out-file js/navigation.js
-npm run minify -- js/browsercheck.js --out-file js/browsercheck.js
+npm run minify:js -- js/styleswitch.js --out-file js/styleswitch.js
+npm run minify:js -- js/navigation.js --out-file js/navigation.js
+npm run minify:js -- js/browsercheck.js --out-file js/browsercheck.js
 cat js/styleswitch.js <(echo ";") js/navigation.js <(echo ";") js/browsercheck.js > js/header.js
 rm js/styleswitch.js js/navigation.js
 

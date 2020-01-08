@@ -25,14 +25,14 @@ window.onload = function load () {
 };
 
 window.onhashchange = () => {
-	const [link] = Hist._getHashParts();
+	const [link] = Hist.getHashParts();
 	const $a = $(`a[href="#${link}"]`);
 	if (!$a.length || !link) {
 		window.location.hash = $(`.list.encounters`).find("a").attr("href");
 		return;
 	}
 	const id = $a.attr("id");
-	document.title = `${$a.attr("title")} - 5etools`;
+	document.title = `${$a.title()} - 5etools`;
 	loadHash(id);
 };
 

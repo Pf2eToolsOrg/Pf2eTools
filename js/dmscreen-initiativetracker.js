@@ -41,22 +41,15 @@ class InitiativeTracker {
 		board.reactor.on("panelResize", handleResize);
 		$wrpTracker.on("destroyed", () => board.reactor.off("panelResize", handleResize));
 
+		let srvPeer = null;
 		const p2pMeta = {rows: [], serverInfo: null};
 		const _sendStateToClients = () => {
-			if (p2pMeta.serverInfo === null) return;
+			if (srvPeer) {
+				if (!srvPeer.hasConnections()) return;
 
-			p2pMeta.rows = p2pMeta.rows.filter(r => !r.isDeleted);
-			p2pMeta.serverInfo = p2pMeta.serverInfo.filter(r => {
-				if (r.isDeleted) {
-					r.server.close();
-					return false;
-				} else return true;
-			});
-
-			const toSend = getPlayerFriendlyState();
-			try {
-				p2pMeta.serverInfo.filter(info => info.server.isActive).forEach(info => info.server.sendMessage(toSend));
-			} catch (e) { setTimeout(() => { throw e; }) }
+				const toSend = getPlayerFriendlyState();
+				srvPeer.sendMessage(toSend);
+			}
 		};
 		const sendStateToClientsDebounced = MiscUtil.debounce(_sendStateToClients, 100); // long delay to avoid network spam
 
@@ -158,6 +151,63 @@ class InitiativeTracker {
 				doSort(NUM);
 			});
 
+		/**
+		 * @param [opts]
+		 * @param [opts.$btnStartServer]
+		 * @param [opts.$btnGetToken]
+		 * @param [opts.fnDispServerStoppedState]
+		 * @param [opts.fnDispServerRunningState]
+		 */
+		const startServer = async (opts) => {
+			opts = opts || {};
+
+			if (srvPeer) {
+				await srvPeer.pInit();
+				return true;
+			}
+
+			try {
+				if (opts.$btnStartServer) opts.$btnStartServer.prop("disabled", true);
+				srvPeer = new PeerVeServer();
+				await srvPeer.pInit();
+				if (opts.$btnGetToken) opts.$btnGetToken.prop("disabled", false);
+
+				srvPeer.on("connection", connection => {
+					const pConnected = new Promise(resolve => {
+						connection.on("open", () => {
+							resolve(true);
+							doUpdateExternalStates();
+						});
+					});
+					const pTimeout = MiscUtil.pDelay(5 * 1000, false);
+					Promise.race([pConnected, pTimeout])
+						.then(didConnect => {
+							if (!didConnect) {
+								JqueryUtil.doToast({content: `Connecting to "${connection.label.escapeQuotes()}" has taken more than 5 seconds! The connection may need to be re-attempted.`, type: "warning"})
+							}
+						});
+				});
+
+				$(window).on("beforeunload", evt => {
+					const message = `The connection will be closed`;
+					(evt || window.event).message = message;
+					return message;
+				});
+
+				if (opts.fnDispServerRunningState) opts.fnDispServerRunningState();
+
+				return true;
+			} catch (e) {
+				if (opts.fnDispServerStoppedState) opts.fnDispServerStoppedState();
+				if (opts.$btnStartServer) opts.$btnStartServer.prop("disabled", false);
+				srvPeer = null;
+				JqueryUtil.doToast({content: `Failed to start server! ${STR_SEE_CONSOLE}`, type: "danger"});
+				setTimeout(() => { throw e; });
+			}
+
+			return false;
+		};
+
 		const $wrpUtils = $(`<div class="flex"/>`).appendTo($wrpControls);
 		$(`<button class="btn btn-primary btn-xs mr-2" title="Player Window"><span class="glyphicon glyphicon-user"/></button>`)
 			.appendTo($wrpUtils)
@@ -168,335 +218,90 @@ class InitiativeTracker {
 					fullHeight: true,
 					cbClose: () => {
 						if (p2pMeta.rows.length) p2pMeta.rows.forEach(row => row.$row.detach());
+						if (srvPeer) srvPeer.offTemp("connection")
 					}
 				});
 
 				const $wrpHelp = UiUtil.$getAddModalRow($modalInner, "div");
-				const $btnAltGenAll = $(`<button class="btn btn-primary btn-text-insert">Generate All</button>`).click(() => $btnGenServerTokens.click());
-				const $btnAltCopyAll = $(`<button class="btn btn-primary btn-text-insert">Copy Server Tokens</button>`).click(() => $btnCopyServers.click());
+
+				const fnDispServerStoppedState = () => {
+					$btnStartServer.html(`<span class="glyphicon glyphicon-play"/> Start Server`).prop("disabled", false);
+					$btnGetToken.prop("disabled", true);
+				};
+
+				const fnDispServerRunningState = () => {
+					$btnStartServer.html(`<span class="glyphicon glyphicon-play"/> Server Running`).prop("disabled", true);
+					$btnGetToken.prop("disabled", false);
+				};
+
+				const $btnStartServer = $(`<button class="btn btn-default mr-2"></button>`)
+					.click(async () => {
+						const isRunning = await startServer({$btnStartServer, $btnGetToken, fnDispServerStoppedState, fnDispServerRunningState});
+						if (isRunning) {
+							srvPeer.onTemp("connection", showConnected);
+							showConnected();
+						}
+					});
+
+				const $btnGetToken = $(`<button class="btn btn-default" disabled><span class="glyphicon glyphicon-copy"/> Copy Token</button>`).appendTo($wrpHelp)
+					.click(() => {
+						MiscUtil.pCopyTextToClipboard(srvPeer.token);
+						JqueryUtil.showCopiedEffect($btnGetToken);
+					});
+
+				if (srvPeer) fnDispServerRunningState();
+				else fnDispServerStoppedState();
+
 				$$`<div class="row w-100">
 					<div class="col-12">
 						<p>
-						The Player View is part of a peer-to-peer (i.e., serverless) system to allow players to connect to a DM's initiative tracker. Players should use the <a href="inittrackerplayerview.html">Initiative Tracker Player View</a> page to connect to the DM's instance. As a DM, the usage is as follows:
+						The Player View is part of a peer-to-peer system to allow players to connect to a DM's initiative tracker. Players should use the <a href="inittrackerplayerview.html">Initiative Tracker Player View</a> page to connect to the DM's instance. As a DM, the usage is as follows:
 						<ol>
-								<li>Add the required number of players, and input (preferably unique) player names.</li>
-								<li>Click "${$btnAltGenAll}," which will generate a "server token" per player. You can click "${$btnAltCopyAll}" to copy them all as a single block of text, or click on the "Server Token" values to copy them individually. Distribute these tokens to your players (via a messaging service of your choice; we recommend <a href="https://discordapp.com/">Discord</a>). Each player should paste their token into the <a href="inittrackerplayerview.html">Initiative Tracker Player View</a>, following the instructions provided therein.</li>
-								<li>
-									Get a resulting "client token" from each player via a messaging service of your choice. Then, either:
-									<ol type="a">
-										<li>Click the "Accept Multiple Clients" button, and paste in text containing multiple client tokens. <b>This will try to find tokens in <i>any</i> text, ignoring everything else.</b> Pasting a chatroom log (containing, for example, usernames and timestamps mixed with tokens) is the expected usage.</li>
-										<li>Paste each token into the appropriate "Client Token" field and "Accept Client" on each. A token can be identified by the slugified player name in the first few characters.</li>
-									</ol>
-								</li>
-							</ol>
+							<li>Start the server.</li>
+							<li>Copy your token and share it with your players.</li>
+							<li>Wait for them to connect!</li>
+						</ol>
 						</p>
-						<p>Once a player's client has been "accepted," it will receive updates from the DM's tracker. <i>Please note that this system is highly experimental. Your experience may vary.</i></p>
+						<p>${$btnStartServer}${$btnGetToken}</p>
+						<p><i>Please note that this system is highly experimental. Your experience may vary.</i></p>
 					</div>
 				</div>`.appendTo($wrpHelp);
 
 				UiUtil.addModalSep($modalInner);
 
-				const $wrpTop = UiUtil.$getAddModalRow($modalInner, "div");
+				const $wrpConnected = UiUtil.$getAddModalRow($modalInner, "div").addClass("flx-col");
 
-				const $btnAddClient = $(`<button class="btn btn-xs btn-primary" title="Add Client">Add Player</button>`).click(() => addClientRow());
+				const showConnected = () => {
+					if (!srvPeer) return $wrpConnected.html(`<div class="w-100 flex-vh-center"><i>No clients connected.</i></div>`);
 
-				const $btnCopyServers = $(`<button class="btn btn-xs btn-primary" title="Copy any available server tokens to the clipboard">Copy Server Tokens</button>`)
-					.click(async () => {
-						const targetRows = p2pMeta.rows.filter(it => !it.isDeleted && !it.$iptTokenClient.attr("disabled"));
-						if (!targetRows.length) {
-							JqueryUtil.doToast({
-								content: `No free server tokens to copy. Generate some!`,
-								type: "warning"
-							});
-						} else {
-							await MiscUtil.pCopyTextToClipboard(targetRows.map(it => it.$iptTokenServer.val()).join("\n\n"));
-							JqueryUtil.showCopiedEffect($btnGenServerTokens);
-						}
-					});
-
-				const $btnAcceptClients = $(`<button class="btn btn-xs btn-primary" title="Open a prompt into which text containing client tokens can be pasted">Accept Multiple Clients</button>`)
-					.click(() => {
-						const {$modalInner, doClose} = UiUtil.getShowModal({title: "Accept Multiple Clients"});
-
-						const $iptText = $(`<textarea class="form-control dm_init__pl_textarea block mb-2"/>`)
-							.keydown(() => $iptText.removeClass("error-background"));
-
-						const $btnAccept = $(`<button class="btn btn-xs btn-primary block text-center" title="Add Client">Accept Multiple Clients</button>`)
-							.click(async () => {
-								$iptText.removeClass("error-background");
-								const txt = $iptText.val();
-								if (!txt.trim() || !PeerUtil.containsAnyTokens(txt)) {
-									$iptText.addClass("error-background");
-								} else {
-									const connected = await PeerUtil.pConnectClientsToServers(p2pMeta.serverInfo, txt);
-									board.doBindAlertOnNavigation();
-									connected.forEach(serverInfo => {
-										serverInfo.rowMeta.$iptTokenClient.val(serverInfo._tempTokenToDisplay || "").attr("disabled", true);
-										serverInfo.rowMeta.$btnAcceptClientToken.attr("disabled", true);
-										delete serverInfo._tempTokenToDisplay;
-									});
-									doClose();
-									sendStateToClientsDebounced();
-								}
-							});
-
-						$$`<div>
-							<p>Paste text containing one or more client tokens, and click "Accept Multiple Clients"</p>
-							${$iptText}
-							<div class="flex-vh-center">${$btnAccept}</div>
-						</div>`.appendTo($modalInner)
-					});
-
-				$$`
-					<div class="row w-100">
-						<div class="col-12">
-							<div class="flex-inline-v-center mr-2">
-								<span class="mr-1">Add a player (client):</span>
-								${$btnAddClient}
-							</div>
-							<div class="flex-inline-v-center mr-2">
-								<span class="mr-1">Copy all un-paired server tokens:</span>
-								${$btnCopyServers}
-							</div>
-							<div class="flex-inline-v-center mr-2">
-								<span class="mr-1">Mass-accept clients:</span>
-								${$btnAcceptClients}
-							</div>
-						</div>
-					</div>
-				`.appendTo($wrpTop);
-
-				UiUtil.addModalSep($modalInner);
-
-				const $btnGenServerTokens = $(`<button class="btn btn-primary btn-xs">Generate All</button>`)
-					.click(() => pGetServerTokens(p2pMeta.rows));
-
-				UiUtil.$getAddModalRow($modalInner, "div")
-					.append($$`
-					<div class="row w-100">
-						<div class="col-2 bold">Player Name</div>
-						<div class="col-3-5 bold">Server Token</div>
-						<div class="col-1 text-center">${$btnGenServerTokens}</div>
-						<div class="col-3-5 bold">Client Token</div>
-					</div>
-				`);
-
-				const _get$rowTemplate = (
-					$iptName,
-					$iptTokenServer,
-					$btnGenServerToken,
-					$iptTokenClient,
-					$btnAcceptClientToken,
-					$btnDeleteClient
-				) => $$`<div class="row w-100 mb-2 flex">
-					<div class="col-2">${$iptName}</div>
-					<div class="col-3-5">${$iptTokenServer}</div>
-					<div class="col-1 flex-vh-center">${$btnGenServerToken}</div>
-					<div class="col-3-5">${$iptTokenClient}</div>
-					<div class="col-1-5 flex-vh-center">${$btnAcceptClientToken}</div>
-					<div class="col-0-5 flex-vh-center">${$btnDeleteClient}</div>
-				</div>`;
-
-				const addClientRow = () => {
-					const rowMeta = {id: CryptUtil.uid()};
-
-					const $iptName = $(`<input class="form-control input-sm">`)
-						.keydown(evt => {
-							$iptName.removeClass("error-background");
-							if (evt.which === 13) $btnGenServerToken.click();
-						});
-
-					const $iptTokenServer = $(`<input class="form-control input-sm copyable code" readonly disabled>`)
-						.click(async () => {
-							await MiscUtil.pCopyTextToClipboard($iptTokenServer.val());
-							JqueryUtil.showCopiedEffect($iptTokenServer);
-						}).disableSpellcheck();
-
-					const $btnGenServerToken = $(`<button class="btn btn-xs btn-primary" title="Generate Server Token">Generate</button>`)
-						.click(() => pGetServerTokens([rowMeta]));
-
-					const $iptTokenClient = $(`<input class="form-control input-sm code" disabled>`)
-						.keydown(evt => {
-							$iptTokenClient.removeClass("error-background");
-							if (evt.which === 13) $btnAcceptClientToken.click();
-						}).disableSpellcheck();
-
-					const $btnAcceptClientToken = $(`<button class="btn btn-xs btn-primary" title="Accept Client Token" disabled>Accept Client</button>`)
-						.click(async () => {
-							const token = $iptTokenClient.val();
-							if (PeerUtil.isValidToken(token)) {
-								try {
-									await PeerUtil.pConnectClientsToServers([rowMeta.serverInfo], token);
-									board.doBindAlertOnNavigation();
-									$iptTokenClient.prop("disabled", true);
-									$btnAcceptClientToken.prop("disabled", true);
-									sendStateToClientsDebounced();
-								} catch (e) {
-									JqueryUtil.doToast({
-										content: `Failed to accept client token! Are you sure it was valid? (See the log for more details.)`,
-										type: "danger"
-									});
-									setTimeout(() => { throw e; });
-								}
-							} else $iptTokenClient.addClass("error-background");
-						});
-
-					const $btnDeleteClient = $(`<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"/></button>`)
-						.click(() => {
-							rowMeta.$row.remove();
-							rowMeta.isDeleted = true;
-							if (rowMeta.serverInfo) {
-								rowMeta.serverInfo.server.close();
-								rowMeta.serverInfo.isDeleted = true;
-							}
-
-							if (!$wrpRowsInner.find(`.row`).length) addClientRow();
-						});
-
-					rowMeta.$row = _get$rowTemplate(
-						$iptName,
-						$iptTokenServer,
-						$btnGenServerToken,
-						$iptTokenClient,
-						$btnAcceptClientToken,
-						$btnDeleteClient
-					).appendTo($wrpRowsInner);
-
-					rowMeta.$iptName = $iptName;
-					rowMeta.$iptTokenServer = $iptTokenServer;
-					rowMeta.$btnGenServerToken = $btnGenServerToken;
-					rowMeta.$iptTokenClient = $iptTokenClient;
-					rowMeta.$btnAcceptClientToken = $btnAcceptClientToken;
-					p2pMeta.rows.push(rowMeta);
-
-					return rowMeta;
+					let stack = `<div class="w-100"><h5>Connected Clients:</h5><ul>`;
+					srvPeer.getActiveConnections()
+						.map(it => it.label || "(Unknown)")
+						.sort(SortUtil.ascSortLower)
+						.forEach(it => stack += `<li>${it.escapeQuotes()}</li>`);
+					stack += "</ul></div>";
+					$wrpConnected.html(stack);
 				};
 
-				const $wrpRows = UiUtil.$getAddModalRow($modalInner, "div");
-				const $wrpRowsInner = $(`<div class="w-100"/>`).appendTo($wrpRows);
+				if (srvPeer) srvPeer.onTemp("connection", showConnected);
 
-				if (p2pMeta.rows.length) p2pMeta.rows.forEach(row => row.$row.appendTo($wrpRowsInner));
-				else addClientRow();
+				showConnected();
 			});
 
-		// nop on receiving a message; we want to send only
-		// TODO expand this, to allow e.g. players to set statuses or assign damage/healing (at DM approval?)
-		const _DM_MESSAGE_RECEIVER = () => {};
-		const _DM_ERROR_HANDLER = function (err) {
-			if (!this.isClosed) {
-				JqueryUtil.doToast({
-					content: `Server error:\n${err ? err.message || err : "(Unknown error)"}`,
-					type: "danger"
-				});
-			}
-		};
-
-		const pGetServerTokens = async rowMetas => {
-			const targetRows = rowMetas.filter(it => !it.isDeleted).filter(it => !it.isActive);
-			if (targetRows.every(it => it.isActive)) {
-				return JqueryUtil.doToast({
-					content: "No rows require Server Token generation!",
-					type: "warning"
-				});
-			}
-
-			let anyInvalidNames = false;
-			targetRows.forEach(r => {
-				r.$iptName.removeClass("error-background");
-				if (!r.$iptName.val().trim()) {
-					anyInvalidNames = true;
-					r.$iptName.addClass("error-background");
-				}
-			});
-			if (anyInvalidNames) return;
-
-			const names = targetRows.map(r => {
-				r.isActive = true;
-
-				r.$iptName.attr("disabled", true);
-				r.$btnGenServerToken.attr("disabled", true);
-
-				return r.$iptName.val();
-			});
-
-			if (p2pMeta.serverInfo) {
-				await p2pMeta.serverInfo;
-
-				const serverInfo = await PeerUtil.pInitialiseServersAddToExisting(
-					names,
-					p2pMeta.serverInfo,
-					_DM_MESSAGE_RECEIVER,
-					_DM_ERROR_HANDLER,
-					{shortTokens: !!cfg.playerInitShortTokens}
-				);
-
-				return targetRows.map((r, i) => {
-					r.name = serverInfo[i].name;
-					r.serverInfo = serverInfo[i];
-					r.$iptTokenServer.val(serverInfo[i].textifiedSdp).attr("disabled", false);
-
-					serverInfo[i].rowMeta = r;
-
-					r.$iptTokenClient.attr("disabled", false);
-					r.$btnAcceptClientToken.attr("disabled", false);
-
-					return serverInfo[i].textifiedSdp;
-				});
-			} else {
-				p2pMeta.serverInfo = (async () => {
-					p2pMeta.serverInfo = await PeerUtil.pInitialiseServers(names, _DM_MESSAGE_RECEIVER, _DM_ERROR_HANDLER, {shortTokens: !!cfg.playerInitShortTokens});
-
-					targetRows.forEach((r, i) => {
-						r.name = p2pMeta.serverInfo[i].name;
-						r.serverInfo = p2pMeta.serverInfo[i];
-						r.$iptTokenServer.val(p2pMeta.serverInfo[i].textifiedSdp).attr("disabled", false);
-
-						p2pMeta.serverInfo[i].rowMeta = r;
-
-						r.$iptTokenClient.attr("disabled", false);
-						r.$btnAcceptClientToken.attr("disabled", false);
-					});
-				})();
-
-				await p2pMeta.serverInfo;
-				return targetRows.map(r => r.serverInfo.textifiedSdp);
-			}
-		};
-
-		$wrpTracker.data("doConnectLocal", async (clientView) => {
-			// generate a stub/fake row meta
-			const rowMeta = {
-				id: CryptUtil.uid(),
-				$row: $(),
-				$iptName: $(`<input value="local">`),
-				$iptTokenServer: $(),
-				$btnGenServerToken: $(),
-				$iptTokenClient: $(),
-				$btnAcceptClientToken: $()
-			};
-
-			p2pMeta.rows.push(rowMeta);
-
-			const serverTokens = await pGetServerTokens([rowMeta]);
-			const clientData = await PeerUtil.pInitialiseClient(
-				serverTokens[0],
-				msg => clientView.handleMessage(msg),
-				() => {} // ignore local errors
-			);
-			clientView.clientData = clientData;
-			await PeerUtil.pConnectClientsToServers([rowMeta.serverInfo], clientData.textifiedSdp);
-			sendStateToClientsDebounced();
+		$wrpTracker.data("pDoConnectLocal", async () => {
+			await startServer();
+			return srvPeer.token;
 		});
 
 		const $wrpLockSettings = $(`<div class="btn-group flex"/>`).appendTo($wrpUtils);
 		const $btnLock = $(`<button class="btn btn-danger btn-xs" title="Lock Tracker"><span class="glyphicon glyphicon-lock"></span></button>`).appendTo($wrpLockSettings);
 		$btnLock.on("click", () => {
 			if (cfg.isLocked) {
-				$btnLock.removeClass("btn-success").addClass("btn-danger").attr("title", "Lock Tracker");
+				$btnLock.removeClass("btn-success").addClass("btn-danger").title("Lock Tracker");
 				$(".dm-init-lockable").removeClass("disabled");
 				$("input.dm-init-lockable").prop("disabled", false);
 			} else {
-				$btnLock.removeClass("btn-danger").addClass("btn-success").attr("title", "Unlock Tracker");
+				$btnLock.removeClass("btn-danger").addClass("btn-success").title("Unlock Tracker");
 				$(".dm-init-lockable").addClass("disabled");
 				$("input.dm-init-lockable").prop("disabled", true);
 			}
@@ -922,7 +727,8 @@ class InitiativeTracker {
 		$wrpTracker.data("getState", getSaveableState);
 		$wrpTracker.data("getSummary", () => {
 			const nameList = $wrpEntries.find(`.dm-init-row`).map((i, e) => $(e).find(`input.name`).val()).get();
-			return `${nameList.length} creature${nameList.length === 1 ? "" : "s"} ${nameList.length ? `(${nameList.slice(0, 3).join(", ")}${nameList.length > 3 ? "..." : ""})` : ""}`
+			const nameListFilt = nameList.filter(it => it.trim());
+			return `${nameList.length} creature${nameList.length === 1 ? "" : "s"} ${nameListFilt.length ? `(${nameListFilt.slice(0, 3).join(", ")}${nameListFilt.length > 3 ? "..." : ""})` : ""}`
 		});
 
 		function setNextActive () {
@@ -1671,7 +1477,7 @@ class InitiativeTracker {
 				else if (isVisNum === 1) isVisNum = isTriState ? 2 : 0;
 				else if (isVisNum === 2) isVisNum = 0;
 
-				$btnVisible.attr("title", getTitle());
+				$btnVisible.title(getTitle());
 				$btnVisible.attr("class", getClasses());
 				$dispIcon.attr("class", getIconClasses());
 

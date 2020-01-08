@@ -223,7 +223,7 @@ class Board {
 			});
 		})();
 
-		async function pDoBuildAdvantureOrAdventureIndex (dataPath, dataProp, indexStorage, indexIdField) {
+		async function pDoBuildAdventureOrAdventureIndex (dataPath, dataProp, indexStorage, indexIdField) {
 			const brew = await BrewUtil.pAddBrewData();
 
 			const data = await DataUtil.loadJSON(dataPath);
@@ -270,10 +270,10 @@ class Board {
 		}
 
 		// adventures
-		await pDoBuildAdvantureOrAdventureIndex(`data/adventures.json`, "adventure", this.availAdventures, "a");
+		await pDoBuildAdventureOrAdventureIndex(`data/adventures.json`, "adventure", this.availAdventures, "a");
 
 		// books
-		await pDoBuildAdvantureOrAdventureIndex(`data/books.json`, "book", this.availBooks, "b");
+		await pDoBuildAdventureOrAdventureIndex(`data/books.json`, "book", this.availBooks, "b");
 
 		// search
 		this.availContent = await SearchUiUtil.pGetContentIndices();
@@ -1163,7 +1163,7 @@ class Panel {
 		this.set$ContentTab(
 			PANEL_TYP_TEXTBOX,
 			null,
-			$(`<div class="panel-content-wrapper-inner"/>`).append(NoteBox.make$Notebox(this.board, content)),
+			$(`<div class="panel-content-wrapper-inner overflow-y-hidden"/>`).append(NoteBox.make$Notebox(this.board, content)),
 			title,
 			true
 		);
@@ -1732,7 +1732,7 @@ class Panel {
 	setTabTitle (ix, nuTitle) {
 		const tabData = this.tabDatas[ix];
 
-		tabData.$tabButton.find(`.content-tab-title`).text(nuTitle).attr("title", nuTitle);
+		tabData.$tabButton.find(`.content-tab-title`).text(nuTitle).title(nuTitle);
 		this.$pnlTitle.text(nuTitle);
 		const x = this.tabDatas[ix];
 		x.title = nuTitle;
@@ -1772,7 +1772,7 @@ class Panel {
 			};
 
 			if (!this.tabDatas[ix].$tabButton) this.tabDatas[ix].$tabButton = doAdd$BtnSelTab(ix, title);
-			else this.tabDatas[ix].$tabButton.find(`.content-tab-title`).text(title).attr("title", title);
+			else this.tabDatas[ix].$tabButton.find(`.content-tab-title`).text(title).title(title);
 
 			this.tabDatas[ix].$tabButton.toggleClass("content-tab-can-rename", tabCanRename);
 		}
@@ -3230,8 +3230,8 @@ class AdventureOrBookView {
 
 		const dataPrev = this._getData(this._state.chapter - 1);
 		const dataNext = this._getData(this._state.chapter + 1);
-		this._$titlePrev.text(dataPrev ? dataPrev.name : "").attr("title", dataPrev ? dataPrev.name : "");
-		this._$titleNext.text(dataNext ? dataNext.name : "").attr("title", dataNext ? dataNext.name : "");
+		this._$titlePrev.text(dataPrev ? dataPrev.name : "").title(dataPrev ? dataPrev.name : "");
+		this._$titleNext.text(dataNext ? dataNext.name : "").title(dataNext ? dataNext.name : "");
 
 		return data;
 	}

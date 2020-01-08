@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--5ETOOLS_CMP-->
+	<!--5ETOOLS_ANALYTICS-->
+	<!--5ETOOLS_ADCODE-->
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>RoLang Demo - 5etools</title>
+
+	<link rel="manifest" href="manifest.webmanifest">
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
+
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
+	<script type="text/javascript" src="js/browsercheck.js"></script>
+
+	<style>
+		.rlng__sel-sample {
+			max-width: 200px;
+		}
+
+		.rlng__output {
+			font-size: 72px;
+			font-weight: bold
+		}
+	</style>
+</head>
+
+<body>
+<div class="viewport-wrapper">
+	<header class="hidden-xs hidden-sm page__header">
+		<div class="container">
+			<h1 class="page__title">RoLang Demo</h1>
+			<p class="page__subtitle">Edit the input and context, and hit Run</p>
+		</div>
+	</header>
+
+	<nav class="container page__nav" id="navigation"><ul class="nav page__nav-inner" id="navbar"></ul></nav>
+
+	<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
+
+	<div class="view-col-wrapper flex-col px-4">
+		<div class="flex-v-center mb-3">
+			<button class="btn btn-xs btn-default mr-2" id="btn__run">Run</button>
+			<button class="btn btn-xs btn-default mr-2" id="btn__validate">Validate</button>
+			<select class="form-control input-xs rlng__sel-sample" id="sel__sample"><option disabled value="-1">Select sample</option></select>
+		</div>
+
+		<div class="flex w-100 h-100">
+			<div class="flex-col w-33">
+				<div class="mb-2 small-caps">Input</div>
+				<div class="flex-col h-100 w-100 flex-1"><textarea id="ipt" class="w-100 h-100 form-control mb-2 code resize-none"></textarea></div>
+
+				<div class="mb-2 small-caps">Context</div>
+				<div class="flex-col h-100 w-100 flex-1" id="wrp_context"></div>
+			</div>
+
+			<div class="flex-col w-33 px-2">
+				<div class="mb-2 small-caps">Lexed</div>
+				<div class="flex-col h-100 w-100 flex-1"><pre class="w-100 h-100 m-0 mb-2" id="out_lexed"></pre></div>
+
+				<div class="mb-2 small-caps">Parsed</div>
+				<div class="flex-col h-100 w-100 flex-1"><pre class="w-100 h-100 m-0" id="out_parsed"></pre></div>
+			</div>
+
+			<div class="flex-col w-33 h-100 px-2">
+				<div class="mb-2 small-caps">Result</div>
+				<div class="w-100 h-100 flex-vh-center rlng__output" id="out_result"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_AD_ADHESION-->
+<!--5ETOOLS_SCRIPT_ANCHOR__ACE-JS-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/render.js"></script>
+<script type="text/javascript" src="js/render-markdown.js"></script>
+<script type="text/javascript" src="js/render-card.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="module" src="js/langdemo.js"></script>
+<script type="module" src="js/rolang.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+<script type="text/javascript" src="lib/ace.js"></script>
+</body>
+
+</html>

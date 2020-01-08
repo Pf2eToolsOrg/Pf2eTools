@@ -23,7 +23,7 @@ class PageFilterItems {
 			itemSortFn: null
 		});
 		const damageTypeFilter = new Filter({header: "Damage Type", displayFn: it => Parser.dmgTypeToFull(it).uppercaseFirst(), itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.dmgTypeToFull(a), Parser.dmgTypeToFull(b))});
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Magic", "Mundane", "Sentient", "SRD"]});
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Item Group", "Magic", "Mundane", "Sentient", "SRD"]});
 
 		this._filterBox = null;
 
@@ -59,6 +59,7 @@ class PageFilterItems {
 		if (item.ability) item._fMisc.push("Ability Score Adjustment");
 		if (item.charges) item._fMisc.push("Charges");
 		if (item.srd) item._fMisc.push("SRD");
+		if (item._isItemGroup) item._fMisc.push("Item Group");
 		if (item.focus || item.type === "INS" || item.type === "SCF") {
 			item._fFocus = item.focus ? item.focus === true ? ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"] : [...item.focus] : [];
 			if (item.type === "INS" && !item._fFocus.includes("Bard")) item._fFocus.push("Bard");
@@ -124,7 +125,7 @@ class PageFilterItems {
 			it._fProperties,
 			it._attunementCategory,
 			it._category,
-			it.value || 0,
+			(it.value || 0) / 1000,
 			it._fFocus,
 			it.dmgType,
 			it._fMisc,

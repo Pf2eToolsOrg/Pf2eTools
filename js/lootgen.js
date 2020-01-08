@@ -31,7 +31,7 @@ class LootGen {
 			const $selViewTable = $("#table-sel");
 			const val = $selViewTable.val();
 
-			$selViewTable.toggleClass("error-background", val === "");
+			$selViewTable.toggleClass("form-control--error", val === "");
 			if (val === "") return;
 
 			lootGen.pRollAgainstTable(val);
@@ -68,7 +68,7 @@ class LootGen {
 		});
 		$selTables.on("change", () => {
 			const v = $selTables.val();
-			if (v) $("#table-sel").removeClass("error-background");
+			if (v) $("#table-sel").removeClass("form-control--error");
 			this.pDisplayTable(v, !$(`#container-loot-table`).hasClass("hidden") && $(".id-showLootTable").prop("checked"));
 		});
 	}
@@ -692,7 +692,7 @@ const randomLootTables = {
 			if (val !== "") {
 				const [tier, rarity] = val.split("-");
 				randomLootTables.displayTable(randomLootTables._items[tier][rarity], tier, rarity);
-				$("#random-from-loot-table").removeClass("error-background");
+				$("#random-from-loot-table").removeClass("form-control--error");
 			} else {
 				randomLootTables.displayTable("");
 			}
@@ -701,7 +701,7 @@ const randomLootTables = {
 
 		$("#get-random-item-from-table").click(async () => {
 			let [tier, rarity] = $randomFromLootTable.val().split("-");
-			$("#random-from-loot-table").toggleClass("error-background", !tier && !rarity);
+			$("#random-from-loot-table").toggleClass("form-control--error", !tier && !rarity);
 			if (tier && rarity) {
 				const $ul = $(`<ul data-rarity="${rarity}" data-tier="${tier}"></ul>`).append(await randomLootTables.p$GetRandomItemHtml(tier, rarity));
 				lootOutput.add($ul, `Rolled on the table for <strong>${tier} ${rarity}</strong> items`);
@@ -998,5 +998,5 @@ window.addEventListener("load", function load () {
 
 	randomLootTables.init();
 
-	$("select").on("change", (evt) => $(evt.currentTarget).val() === "" && $(evt.currentTarget).removeClass("error-background"));
+	$("select").on("change", (evt) => $(evt.currentTarget).val() === "" && $(evt.currentTarget).removeClass("form-control--error"));
 });

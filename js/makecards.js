@@ -82,16 +82,16 @@ class MakeCards extends BaseComponent {
 		}, _CONTEXT_OPTIONS.map(it => it ? it.name : null));
 
 		const $iptSearch = $(`<input type="search" class="form-control mr-2" placeholder="Search cards...">`);
-		const $btnAdd = $(`<button class="btn btn-primary mr-2">Add <span class="glyphicon glyphicon-plus"/></button>`)
+		const $btnAdd = $(`<button class="btn btn-primary mr-2"><span class="glyphicon glyphicon-plus"/> Add</button>`)
 			.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnAdd, contextIdSearch));
-		const $btnReset = $(`<button class="btn btn-danger mr-2">Reset <span class="glyphicon glyphicon-trash"/></button>`)
+		const $btnReset = $(`<button class="btn btn-danger mr-2"><span class="glyphicon glyphicon-trash"/> Reset</button>`)
 			.click(() => {
 				if (!confirm("Are you sure?")) return;
 				this._list.removeAllItems();
 				this._list.update();
 				this._doSaveStateDebounced();
 			});
-		const $btnExport = $(`<button class="btn btn-default">Export JSON <span class="glyphicon glyphicon-download"/></button>`)
+		const $btnExport = $(`<button class="btn btn-default"><span class="glyphicon glyphicon-download"/> Export JSON</button>`)
 			.click(() => {
 				const toDownload = this._list.items.map(it => {
 					const entityMeta = MakeCards._AVAILABLE_TYPES[it.values.entityType];

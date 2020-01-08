@@ -86,15 +86,15 @@ class SpellsPage {
 		const range = Parser.spRangeToFull(spell.range);
 
 		const $ele = $(`<li class="row">
-		<a href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}" class="lst--border">
-			<span class="bold col-3-2 pl-0">${spell.name}</span>
-			<span class="capitalise col-1-5 text-center">${Parser.spLevelToFull(spell.level)}</span>
-			<span class="col-1-8 text-center">${time}</span>
-			<span class="capitalise col-1-6 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}">${school}</span>
-			<span class="concentration--sublist col-0-7 text-center" title="Concentration">${concentration}</span>
-			<span class="range col-3-2 pr-0 text-right">${range}</span>
-		</a>
-	</li>`).contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
+			<a href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}" class="lst--border">
+				<span class="bold col-3-2 pl-0">${spell.name}</span>
+				<span class="capitalise col-1-5 text-center">${Parser.spLevelToFull(spell.level)}</span>
+				<span class="col-1-8 text-center">${time}</span>
+				<span class="capitalise col-1-6 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}">${school}</span>
+				<span class="concentration--sublist col-0-7 text-center" title="Concentration">${concentration}</span>
+				<span class="range col-3-2 pr-0 text-right">${range}</span>
+			</a>
+		</li>`).contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
 
 		const listItem = new ListItem(
 			pinId,
@@ -169,7 +169,7 @@ class SpellsPage {
 		window.loadSubHash = this.doLoadSubHash.bind(this);
 
 		await this._pageFilter.pInitFilterBox({
-			$wrpFormTop: $(`#filter-search-input-group`).attr("title", "Hotkey: f"),
+			$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`)
 		});
 
@@ -178,7 +178,7 @@ class SpellsPage {
 			ExcludeUtil.pInitialise()
 		]);
 		Object.assign(SUBCLASS_LOOKUP, subclassLookup);
-		await pMultisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addSpells, pPostLoad);
+		await pMultisourceLoad(JSON_DIR, JSON_LIST_NAME, this._pageFilter.filterBox, pPageInit, addSpells, pPostLoad);
 		if (Hist.lastLoadedId == null) Hist._freshLoad();
 		ExcludeUtil.checkShowAllExcluded(spellList, $(`#pagecontent`));
 	}

@@ -429,7 +429,7 @@ class StatGen {
 
 	checkBudget (costBudget) {
 		if (!costBudget) costBudget = this.getCostAndBudget();
-		$(`#remaining`).toggleClass("error-background", costBudget.cost > costBudget.budget);
+		$(`#remaining`).toggleClass("form-control--error", costBudget.cost > costBudget.budget);
 	}
 
 	changeBase () {

@@ -1,0 +1,193 @@
+{
+	"monster": [
+		{
+			"name": "Adult Sapphire Dragon",
+			"size": "H",
+			"type": "dragon",
+			"source": "SADS",
+			"alignment": [
+				"L",
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 19,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 207,
+				"formula": "18d12 + 60"
+			},
+			"speed": {
+				"walk": 40,
+				"climb": 40,
+				"fly": 80,
+				"burrow": 40
+			},
+			"str": 23,
+			"dex": 16,
+			"con": 21,
+			"int": 18,
+			"wis": 17,
+			"cha": 18,
+			"save": {
+				"dex": "+8",
+				"con": "+10",
+				"wis": "+8",
+				"cha": "+9"
+			},
+			"skill": {
+				"history": "+9",
+				"perception": "+13",
+				"persuasion": "+14",
+				"stealth": "+8"
+			},
+			"immune": [
+				"thunder"
+			],
+			"conditionImmune": [
+				"frightened"
+			],
+			"senses": [
+				"blindsight 60 ft.",
+				"darkvision 120 ft."
+			],
+			"passive": 23,
+			"languages": [
+				"telepathy 120 ft.",
+				"Common",
+				"Draconic"
+			],
+			"cr": "15",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Psionics)",
+					"headerEntries": [
+						"The dragon's innate spellcasting ability is Intelligence (spell save {@dc 17}). It can innately cast the following spells, requiring no components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell scrying}",
+							"{@spell telekinesis}",
+							"{@spell teleportation circle}"
+						]
+					},
+					"ability": "int"
+				}
+			],
+			"trait": [
+				{
+					"name": "Legendary Resistance (2/Day)",
+					"entries": [
+						"If the dragon fails a saving throw, it can choose to succeed instead."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"The dragon can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				},
+				{
+					"name": "Tunneler",
+					"entries": [
+						"The dragon can burrow through solid rock at half its burrow speed and can choose to leave a 10-foot-diameter tunnel in its wake."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The dragon can use its Frightful Presence. It then makes two melee attacks, one with its bite and one with its claws."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. {@h}17 ({@damage 2d10 + 6}) piercing damage plus 3 ({@damage 1d6}) thunder damage."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. {@h}19 ({@damage 3d8 + 6}) slashing damage."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. {@h}15 ({@damage 2d8 + 6}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Frightful Presence",
+					"entries": [
+						"Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a {@dc 17} Wisdom saving throw or become {@condition frightened} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours."
+					]
+				},
+				{
+					"name": "Debilitating Breath {@recharge 5}",
+					"entries": [
+						"The dragon exhales a pulse of high-pitched, nearly inaudible sound in a 60-foot-cone. Each creature in that cone must make a {@dc 18} Constitution saving throw. On a failed save, the creature takes 45 ({@damage 13d6}) thunder damage and is {@condition incapacitated} until the end of its next turn. On a successful save, the creature takes half as much damage and isn't {@condition incapacitated}."
+					]
+				}
+			],
+			"legendaryGroup": {
+				"name": "Sapphire Dragon",
+				"source": "SADS"
+			},
+			"legendary": [
+				{
+					"name": "Tail Attack",
+					"entries": [
+						"The dragon makes a tail attack."
+					]
+				},
+				{
+					"name": "Telekinetic Fling",
+					"entries": [
+						"The dragon chooses a Small or smaller object that isn't being worn or carried that it can see within 60 feet of it, and magically hurls the object at a creature it can see within 60 feet of the object. The target must succeed on a {@dc 17} Dexterity saving throw or take 15 ({@damage 4d6}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Teleport (Costs 2 Actions)",
+					"entries": [
+						"THe dragon magically teleports to an unoccupied space it can see within 30 feet of it."
+					]
+				}
+			],
+			"page": 1,
+			"traitTags": [
+				"Legendary Resistances"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Frightful Presence"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"TP"
+			],
+			"senseTags": [
+				"B",
+				"SD"
+			],
+			"damageTags": [
+				"B",
+				"S",
+				"P",
+				"T"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"AOE"
+			]
+		}
+	]
+}

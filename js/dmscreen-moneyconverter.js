@@ -43,8 +43,8 @@ class MoneyConverter {
 			}
 
 			const $rows = $wrpRows.find(`.dm_money__row`)
-				.removeClass("error-background");
-			$iptSplit.removeClass("error-background");
+				.removeClass("form-control--error");
+			$iptSplit.removeClass("form-control--error");
 
 			const outCurrency = Number($selOut.val()) || 0;
 
@@ -55,7 +55,7 @@ class MoneyConverter {
 			let split = 1;
 			if (splitBetweenStr) {
 				const splitBetweenNum = Number(splitBetweenStr);
-				if (isNaN(splitBetweenNum)) $iptSplit.addClass("error-background");
+				if (isNaN(splitBetweenNum)) $iptSplit.addClass("form-control--error");
 				else split = splitBetweenNum;
 			}
 
@@ -69,7 +69,7 @@ class MoneyConverter {
 					const strVal = ($e.find(`input`).val() || "").trim();
 					if (strVal) {
 						const asNum = Number(strVal);
-						if (isNaN(asNum)) $e.addClass("error-background");
+						if (isNaN(asNum)) $e.addClass("form-control--error");
 						else {
 							const ix = Number($e.find(`select`).val());
 							totals[ix] = (totals[ix] || 0) + asNum;
@@ -116,7 +116,7 @@ class MoneyConverter {
 					const strVal = ($e.find(`input`).val() || "").trim();
 					if (strVal) {
 						const asNum = Number(strVal);
-						if (isNaN(asNum)) $e.addClass("error-background");
+						if (isNaN(asNum)) $e.addClass("form-control--error");
 						else {
 							total += asNum * (CURRENCY[$e.find(`select`).val()] || CURRENCY[0]).mult;
 						}

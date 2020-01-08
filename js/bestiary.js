@@ -134,7 +134,7 @@ class BestiaryPage {
 				<span class="col-1-2 text-center">${cr}</span>
 				${$eleCount1}
 			</a>
-			
+
 			<div class="list__item_inner ecgen__visible--flex lst--border">
 				${EncounterBuilder.$getSublistButtons(pinId, mon.uniqueId, true)}
 				<span class="ecgen__name--sub col-3-5">${name}</span>
@@ -200,7 +200,7 @@ class BestiaryPage {
 		window.loadSubHash = this.doLoadSubHash.bind(this);
 
 		await this._pageFilter.pInitFilterBox({
-			$wrpFormTop: $(`#filter-search-input-group`).attr("title", "Hotkey: f"),
+			$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`)
 		});
 
@@ -211,7 +211,7 @@ class BestiaryPage {
 			Renderer.monster.pPopulateMetaAndLanguages(meta, languages),
 			(async () => ixFluff = await DataUtil.loadJSON(JSON_DIR + FLUFF_INDEX))()
 		]);
-		await pMultisourceLoad(JSON_DIR, JSON_LIST_NAME, pPageInit, addMonsters, pPostLoad);
+		await pMultisourceLoad(JSON_DIR, JSON_LIST_NAME, this._pageFilter.filterBox, pPageInit, addMonsters, pPostLoad);
 		if (Hist.lastLoadedId == null) Hist._freshLoad();
 		ExcludeUtil.checkShowAllExcluded(monsters, $(`#pagecontent`));
 		bestiaryPage.handleFilterChange();
@@ -443,7 +443,7 @@ let mI = 0;
 const lastRendered = {mon: null, isScaled: false};
 function getScaledData () {
 	const last = lastRendered.mon;
-	return {scaled: last._isScaledCr, uid: getUid(last.name, last.source, last._isScaledCr)};
+	return {scaled: last._isScaledCr, uniqueId: getUid(last.name, last.source, last._isScaledCr)};
 }
 
 function getUid (name, source, scaledCr) {
@@ -736,13 +736,13 @@ function renderStatblock (mon, isScaled) {
 				let fromAbility;
 				let ability;
 				if ($(this).parent().attr("data-mon-save")) {
-					const title = $(this).attr("title");
+					const title = $(this).title();
 					ability = title.split(" ")[0].trim().toLowerCase().substring(0, 3);
 					fromAbility = Parser.getAbilityModNumber(mon[ability]);
 					pB = bonus - fromAbility;
 					expert = (pB === expectedPB * 2) ? 2 : 1;
 				} else if ($(this).parent().attr("data-mon-skill")) {
-					const title = $(this).attr("title");
+					const title = $(this).title();
 					ability = Parser.skillToAbilityAbv(title.toLowerCase().trim());
 					fromAbility = Parser.getAbilityModNumber(mon[ability]);
 					pB = bonus - fromAbility;

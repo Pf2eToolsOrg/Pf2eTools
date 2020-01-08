@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--5ETOOLS_CMP-->
+	<!--5ETOOLS_ANALYTICS-->
+	<!--5ETOOLS_ADCODE-->
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Renderer Demo - 5etools</title>
+
+	<link rel="manifest" href="manifest.webmanifest">
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
+
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
+	<script type="text/javascript" src="js/browsercheck.js"></script>
+	<style>
+		#jsoninput {
+			width: 100%;
+			height: 100%;
+		}
+		#capheight {
+			overflow-y: scroll;
+			margin-bottom: 28px;
+		}
+		#demoSelectRenderer {
+			width: 200px;
+		}
+	</style>
+</head>
+
+<body>
+<div class="viewport-wrapper">
+	<header class="hidden-xs hidden-sm page__header">
+		<div class="container">
+
+			<h1 class="page__title">Renderer Demo</h1>
+			<p class="page__subtitle">Edit the JSON on the left, and see the results on the right</p>
+		</div>
+	</header>
+	<nav class="container page__nav" id="navigation">
+		<ul class="nav page__nav-inner" id="navbar">
+		</ul>
+	</nav>
+
+	<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
+
+	<div class="view-col-wrapper">
+		<div class="view-col">
+			<pre id="jsoninput" class="inputArea ace_editor"></pre>
+			<div class="flex-h-right">
+				<select class="form-control input-sm mr-2" id="demoSelectRenderer">
+					<option value="html">HTML</option>
+					<option value="md">Markdown</option>
+					<option value="cards">RPG Cards</option>
+				</select>
+				<button class="btn btn-default btn-sm mr-2" id="demoRender">Render</button>
+				<button class="btn btn-default btn-sm" id="demoReset">Reset</button>
+				<span id="message"></span>
+			</div>
+		</div>
+
+		<div id="capheight" class="view-col">
+			<table id="pagecontent" class="stats">
+				<!-- populate with JS -->
+			</table>
+		</div>
+	</div>
+</div>
+
+<!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_AD_ADHESION-->
+<!--5ETOOLS_SCRIPT_ANCHOR__ACE-JS-->
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/render.js"></script>
+<script type="text/javascript" src="js/render-markdown.js"></script>
+<script type="text/javascript" src="js/render-card.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/renderdemo.js"></script>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+<script type="text/javascript" src="lib/ace.js"></script>
+</body>
+
+</html>

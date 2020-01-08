@@ -91,7 +91,7 @@ class SpellBuilder extends Builder {
 		}).forEach($sel => $sel.change());
 	}
 
-	renderInput () {
+	_renderInputImpl () {
 		this.renderInputControls();
 		this._renderInputMain();
 	}
@@ -102,13 +102,6 @@ class SpellBuilder extends Builder {
 		this.doCreateProxies();
 
 		const _cb = () => {
-			// do post-processing
-			DiceConvert.convertTraitActionDice(this._state);
-			if (this._state.entriesHigherLevel) {
-				DiceConvert.convertTraitActionDice(this._state.entriesHigherLevel[0]);
-				this._state.entriesHigherLevel = [...this._state.entriesHigherLevel];
-			}
-
 			this.renderOutput();
 			this.doUiSave();
 			this.isEntrySaved = false;
@@ -129,7 +122,7 @@ class SpellBuilder extends Builder {
 		this._$selSource = this.$getSourceInput(cb).appendTo(infoTab.$wrpTab);
 		this.__$getOtherSourcesInput(cb).appendTo(infoTab.$wrpTab);
 		BuilderUi.$getStateIptNumber("Page", cb, this._state, {}, "page").appendTo(infoTab.$wrpTab);
-		BuilderUi.$getStateIptEnum("Level", cb, this._state, {nullable: false, fnDisplay: (it) => Parser.spLevelToFull(it), vals: [...new Array(10)].map((_, i) => i)}, "level").appendTo(infoTab.$wrpTab);
+		BuilderUi.$getStateIptEnum("Level", cb, this._state, {nullable: false, fnDisplay: (it) => Parser.spLevelToFull(it), vals: [...new Array(21)].map((_, i) => i)}, "level").appendTo(infoTab.$wrpTab);
 		BuilderUi.$getStateIptEnum("School", cb, this._state, {nullable: false, fnDisplay: (it) => Parser.spSchoolAbvToFull(it), vals: [...Parser.SKL_ABVS]}, "school").appendTo(infoTab.$wrpTab);
 		BuilderUi.$getStateIptStringArray(
 			"Subschools",
@@ -148,8 +141,8 @@ class SpellBuilder extends Builder {
 		this.__$getComponentInput(cb).appendTo(detailsTab.$wrpTab);
 		this.__$getMetaInput(cb).appendTo(detailsTab.$wrpTab);
 		this.__$getDurationInput(cb).appendTo(detailsTab.$wrpTab);
-		BuilderUi.$getStateIptEntries("Text", cb, this._state, {}, "entries").appendTo(detailsTab.$wrpTab);
-		BuilderUi.$getStateIptEntries("&quot;At Higher Levels&quot; Text", cb, this._state, {nullable: true, withHeader: "At Higher Levels"}, "entriesHigherLevel").appendTo(detailsTab.$wrpTab);
+		BuilderUi.$getStateIptEntries("Text", cb, this._state, {fnPostProcess: DiceConvert.getTaggedEntry}, "entries").appendTo(detailsTab.$wrpTab);
+		BuilderUi.$getStateIptEntries("&quot;At Higher Levels&quot; Text", cb, this._state, {nullable: true, withHeader: "At Higher Levels", fnPostProcess: DiceConvert.getTaggedEntry}, "entriesHigherLevel").appendTo(detailsTab.$wrpTab);
 
 		// SOURCES
 		this.__$getClassesInputs(cb).forEach($e => $e.appendTo(sourcesTab.$wrpTab));
@@ -273,12 +266,15 @@ class SpellBuilder extends Builder {
 	__$getOtherSourcesInput__getOtherSourceRow (doUpdateState, otherSourceRows, os) {
 		const getOtherSource = () => {
 			const out = {source: $selSource.val()};
-			const pageNum = Number($iptPage.val().trim());
-			if (pageNum) out.page = pageNum;
+			const pageNum = UiUtil.strToInt($iptPage.val());
+			if (pageNum) {
+				out.page = pageNum;
+				$iptPage.val(pageNum);
+			}
 			return out;
 		};
 
-		const $iptPage = $(`<input class="form-control form-control--minimal input-xs" type="number">`)
+		const $iptPage = $(`<input class="form-control form-control--minimal input-xs">`)
 			.change(() => doUpdateState())
 			.val(os && os.page ? os.page : null);
 
@@ -327,13 +323,16 @@ class SpellBuilder extends Builder {
 		const keys = Object.keys(Parser.SP_TIME_TO_FULL);
 
 		const getTime = () => {
-			const out = {number: Number($iptNum.val()), unit: keys[$selUnit.val()]};
+			const out = {number: UiUtil.strToInt($iptNum.val()), unit: keys[$selUnit.val()]};
 			const condition = $iptCond.val().trim();
 			if (condition && keys[$selUnit.val()] === Parser.SP_TM_REACTION) out.condition = condition;
+
+			$iptNum.val(out.number);
+
 			return out;
 		};
 
-		const $iptNum = $(`<input class="form-control form-control--minimal input-xs mr-2" type="number">`)
+		const $iptNum = $(`<input class="form-control form-control--minimal input-xs mr-2">`)
 			.change(() => doUpdateState())
 			.val(time.number);
 
@@ -386,7 +385,10 @@ class SpellBuilder extends Builder {
 			if (rangeMeta.hasDistance) {
 				const distMeta = DIST_TYPES[$selDistance.val()];
 				out.distance = {type: distMeta.type};
-				if (distMeta.hasAmount) out.distance.amount = Number($iptAmount.val());
+				if (distMeta.hasAmount) {
+					out.distance.amount = UiUtil.strToInt($iptAmount.val());
+					$iptAmount.val(out.distance.amount);
+				}
 			}
 			this._state.range = out;
 			cb();
@@ -427,7 +429,7 @@ class SpellBuilder extends Builder {
 
 		// AMOUNT
 		const initialAmount = MiscUtil.get(this._state, "range", "distance", "amount");
-		const $iptAmount = $(`<input class="form-control form-control--minimal input-xs" type="number">`)
+		const $iptAmount = $(`<input class="form-control form-control--minimal input-xs">`)
 			.change(() => doUpdateState())
 			.val(initialAmount);
 		const $stageAmount = $$`<div class="flex-v-center mt-2">
@@ -462,7 +464,10 @@ class SpellBuilder extends Builder {
 						text: $iptMaterial.val().trim() || true
 					};
 					if ($cbConsumed.prop("checked")) out.m.consumed = true;
-					if ($iptCost.val().trim()) out.m.cost = Number($iptCost.val().trim());
+					if ($iptCost.val().trim()) {
+						out.m.cost = UiUtil.strToInt($iptCost.val());
+						$iptCost.val(out.m.cost);
+					}
 					break;
 				}
 				case "3": out.m = true; break;
@@ -517,7 +522,7 @@ class SpellBuilder extends Builder {
 		const $cbConsumed = $(`<input type="checkbox" class="mkbru__ipt-cb--plain">`)
 			.prop("checked", this._state.components && this._state.components.m && this._state.components.m.consume)
 			.change(() => doUpdateState());
-		const $iptCost = $(`<input type="number" class="form-control form-control--minimal input-xs">`)
+		const $iptCost = $(`<input class="form-control form-control--minimal input-xs">`)
 			.val(this._state.components && this._state.components.m && this._state.components.m.cost ? this._state.components.m.cost : null)
 			.change(() => doUpdateState());
 		const TITLE_FILTERS_EXTERNAL = "Used in filtering/external applications. The full text of the material component should be entered in the &quot;Materials&quot; field, above.";
@@ -595,8 +600,9 @@ class SpellBuilder extends Builder {
 				case "1": {
 					out.duration = {
 						type: AMOUNT_TYPES[$selAmountType.val()],
-						amount: Number($iptAmount.val())
+						amount: UiUtil.strToInt($iptAmount.val())
 					};
+					$iptAmount.val(out.duration.amount);
 					if ($cbConc.prop("checked")) out.concentration = true;
 					if ($cbUpTo.prop("checked")) out.duration.upTo = true;
 					break;
@@ -624,7 +630,7 @@ class SpellBuilder extends Builder {
 		const $selAmountType = $(`<select class="form-control input-xs">
 			${AMOUNT_TYPES.map((it, i) => `<option value="${i}">${it.toTitleCase()}s</option>`).join("")}
 		</select>`).val(ixInitialAmount).change(() => doUpdateState());
-		const $iptAmount = $(`<input type="number" class="form-control form-control--minimal input-xs mr-2">`)
+		const $iptAmount = $(`<input class="form-control form-control--minimal input-xs mr-2">`)
 			.val(duration.duration ? duration.duration.amount : null)
 			.change(() => doUpdateState());
 		const $cbConc = $(`<input type="checkbox" class="mkbru__ipt-cb--plain">`)
@@ -979,7 +985,7 @@ class SpellBuilder extends Builder {
 		RenderSpells.$getRenderedSpell(procSpell, this._subclassLookup).appendTo($tblSpell);
 
 		// Data
-		const $tblData = $(`<table class="stats stats--book" style="box-shadow: none; border-left: 1px solid #ccc; border-right: 1px solid #ccc;"/>`).appendTo(dataTab.$wrpTab);
+		const $tblData = $(`<table class="stats stats--book mkbru__wrp-output-tab-data"/>`).appendTo(dataTab.$wrpTab);
 		const asCode = Renderer.get().render({
 			type: "entries",
 			entries: [

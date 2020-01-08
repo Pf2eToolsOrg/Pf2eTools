@@ -264,7 +264,7 @@ class ScaleDiceCheck {
 			const spl = m1.split("|");
 			if (spl.length < 3) {
 				MSG.ScaleDiceCheck += `Scaledice tag "${str}" was too short!\n`;
-			} else if (spl.length > 3) {
+			} else if (spl.length > 4) {
 				MSG.ScaleDiceCheck += `Scaledice tag "${str}" was too long!\n`;
 			} else {
 				let range;
@@ -275,6 +275,7 @@ class ScaleDiceCheck {
 					return;
 				}
 				if (range.size < 2) MSG.ScaleDiceCheck += `Range "${spl[1]}" has too few entries! Should be 2 or more.\n`;
+				if (spl[4] && spl[4] !== "psi") MSG.ScaleDiceCheck += `Unknown mode "${spl[4]}".\n`;
 			}
 			return m0;
 		});

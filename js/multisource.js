@@ -2,21 +2,20 @@
 
 const JSON_SRC_INDEX = "index.json";
 
+let loadedSources;
+
 /**
  * @param jsonDir the directory containing JSON for this page
- * @param jsonListName the name of the root JSON property for the list of data
+ * @param dataProp the name of the root JSON property for the list of data
+ * @param filterBox Filter box to check for active sources.
  * @param pPageInit promise to be run once the index has loaded, should accept an object of src:URL mappings
- * @param dataFn function to be run when all data has been loaded, should accept a list of objects custom to the page
+ * @param addFn function to be run when all data has been loaded, should accept a list of objects custom to the page
  * @param pOptional optional promise to be run after dataFn, but before page history/etc is init'd
- * (e.g. spell data objects for the spell page) which were found in the `jsonListName` list
+ * (e.g. spell data objects for the spell page) which were found in the `dataProp` list
  */
-async function pMultisourceLoad (jsonDir, jsonListName, pPageInit, dataFn, pOptional) {
-	const index = await DataUtil.loadJSON(jsonDir + JSON_SRC_INDEX);
-	await _pOnIndexLoad(index, jsonDir, jsonListName, pPageInit, dataFn, pOptional);
-}
+async function pMultisourceLoad (jsonDir, dataProp, filterBox, pPageInit, addFn, pOptional) {
+	const src2UrlMap = await DataUtil.loadJSON(`${jsonDir}${JSON_SRC_INDEX}`);
 
-let loadedSources;
-async function _pOnIndexLoad (src2UrlMap, jsonDir, dataProp, pPageInit, addFn, pOptional) {
 	// track loaded sources
 	loadedSources = {};
 	Object.keys(src2UrlMap).forEach(src => loadedSources[src] = {url: jsonDir + src2UrlMap[src], loaded: false});
@@ -27,7 +26,7 @@ async function _pOnIndexLoad (src2UrlMap, jsonDir, dataProp, pPageInit, addFn, p
 	const hashSourceRaw = Hist.getHashSource();
 	const hashSource = hashSourceRaw ? Object.keys(src2UrlMap).find(it => it.toLowerCase() === hashSourceRaw.toLowerCase()) : null;
 	const userSel = [...new Set(
-		(await FilterBox.pGetStoredActiveSources() || []).concat(await ListUtil.pGetSelectedSources() || []).concat(hashSource ? [hashSource] : [])
+		(await filterBox.pGetStoredActiveSources() || []).concat(await ListUtil.pGetSelectedSources() || []).concat(hashSource ? [hashSource] : [])
 	)];
 
 	const allSources = [];
@@ -48,7 +47,7 @@ async function _pOnIndexLoad (src2UrlMap, jsonDir, dataProp, pPageInit, addFn, p
 
 	// add source from the current hash, if there is one
 	if (window.location.hash.length) {
-		const [link, ...sub] = Hist._getHashParts();
+		const [link, ...sub] = Hist.getHashParts();
 		const src = link.split(HASH_LIST_SEP)[1];
 		const hashSrcs = {};
 		sources.forEach(src => hashSrcs[UrlUtil.encodeForHash(src)] = src);
