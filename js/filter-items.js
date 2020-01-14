@@ -1,8 +1,9 @@
 "use strict";
 
-class PageFilterItems {
+class PageFilterItems extends PageFilter {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
+		super();
+
 		const typeFilter = new Filter({header: "Type", deselFn: (it) => PageFilterItems._DEFAULT_HIDDEN_TYPES.has(it)});
 		const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"], itemSortFn: null});
 		const propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});
@@ -25,9 +26,6 @@ class PageFilterItems {
 		const damageTypeFilter = new Filter({header: "Damage Type", displayFn: it => Parser.dmgTypeToFull(it).uppercaseFirst(), itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.dmgTypeToFull(a), Parser.dmgTypeToFull(b))});
 		const miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Item Group", "Magic", "Mundane", "Sentient", "SRD"]});
 
-		this._filterBox = null;
-
-		this._sourceFilter = sourceFilter;
 		this._typeFilter = typeFilter;
 		this._tierFilter = tierFilter;
 		this._propertyFilter = propertyFilter;
@@ -42,9 +40,7 @@ class PageFilterItems {
 		this._miscFilter = miscFilter;
 	}
 
-	get filterBox () { return this._filterBox; }
-
-	addToFilters (item) {
+	addToFilters (item, isExcluded) {
 		const tierTags = [];
 		tierTags.push(item.tier ? item.tier : "None");
 
@@ -84,17 +80,19 @@ class PageFilterItems {
 		}
 
 		// region populate filters
-		this._sourceFilter.addItem(item.source);
-		this._typeFilter.addItem(item._typeListText);
-		item._fTier.forEach(tt => this._tierFilter.addItem(tt));
-		this._propertyFilter.addItem(item._fProperties);
-		this._attachedSpellsFilter.addItem(item.attachedSpells);
-		this._lootTableFilter.addItem(item.lootTables);
-		this._damageTypeFilter.addItem(item.dmgType);
+		if (!isExcluded) {
+			this._sourceFilter.addItem(item.source);
+			this._typeFilter.addItem(item._typeListText);
+			item._fTier.forEach(tt => this._tierFilter.addItem(tt));
+			this._propertyFilter.addItem(item._fProperties);
+			this._attachedSpellsFilter.addItem(item.attachedSpells);
+			this._lootTableFilter.addItem(item.lootTables);
+			this._damageTypeFilter.addItem(item.dmgType);
+		}
 		// endregion
 	}
 
-	async pInitFilterBox (opts) {
+	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
 			this._typeFilter,
@@ -110,9 +108,6 @@ class PageFilterItems {
 			this._lootTableFilter,
 			this._attachedSpellsFilter
 		];
-
-		this._filterBox = new FilterBox(opts);
-		await this._filterBox.pDoLoadState();
 	}
 
 	toDisplay (values, it) {

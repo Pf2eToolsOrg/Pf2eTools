@@ -101,7 +101,6 @@ Shared UI components
 		height: 100%;
 		overflow-y: auto;
 		overflow-x: hidden;
-		display: none;
 	}
 
 	&wrp-tab-body--border {
@@ -339,13 +338,18 @@ Shared UI components
 
 	&--btn-xs {
 		position: relative;
-		left: -1px;
 		font-size: 12px;
-		width: 13px;
 
 		&::before {
+			width: 12px;
 			height: 14px;
 			display: inline-block;
+			text-align: center;
+		}
+
+		/* Specific adjustments for certain icons */
+		&.fa-dice {
+			left: -2px;
 		}
 	}
 }

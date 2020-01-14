@@ -260,12 +260,12 @@ class ScaleDiceCheck {
 	}
 
 	static checkString (file, str) {
-		str.replace(/{@scaledice ([^}]*)}/g, (m0, m1) => {
-			const spl = m1.split("|");
+		str.replace(/{@(scaledice|scaledamage) ([^}]*)}/g, (m0, m1, m2) => {
+			const spl = m2.split("|");
 			if (spl.length < 3) {
-				MSG.ScaleDiceCheck += `Scaledice tag "${str}" was too short!\n`;
+				MSG.ScaleDiceCheck += `${m1} tag "${str}" was too short!\n`;
 			} else if (spl.length > 4) {
-				MSG.ScaleDiceCheck += `Scaledice tag "${str}" was too long!\n`;
+				MSG.ScaleDiceCheck += `${m1} tag "${str}" was too long!\n`;
 			} else {
 				let range;
 				try {

@@ -642,11 +642,11 @@ class TabUiUtil {
 
 					opts.stateObj[activeProp] = ix;
 					$btnTab.addClass("stat-tab-sel");
-					$wrpTab.show();
+					$wrpTab.toggleClass("hidden", false);
 					if (opts.cbTabChange) opts.cbTabChange();
 				});
 
-			const $wrpTab = $(`<div class="ui-tab__wrp-tab-body ${opts.hasBorder ? "ui-tab__wrp-tab-body--border" : ""}" ${isActive ? `style="display: block;"` : ""}/>`);
+			const $wrpTab = $(`<div class="ui-tab__wrp-tab-body ${isActive ? "" : "hidden"} ${opts.hasBorder ? "ui-tab__wrp-tab-body--border" : ""}"/>`);
 
 			const out = {ix, $btnTab, $wrpTab};
 			tabMeta[ix] = out;

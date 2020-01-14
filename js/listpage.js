@@ -5,8 +5,12 @@ class ListPage {
 	 * @param opts Options object.
 	 * @param opts.dataSource Main JSON data url or function to fetch main data.
 	 * @param [opts.dataSourceFluff] Fluff JSON data url or function to fetch fluff data.
-	 * @param opts.filters Array of filters to use in the filter box.
-	 * @param opts.filterSource Source filter.
+	 * @param [opts.filters] Array of filters to use in the filter box. (Either `filters` and `filterSource` or
+	 * `pageFilter` must be specified.)
+	 * @param [opts.filterSource] Source filter. (Either `filters` and `filterSource` or
+	 * `pageFilter` must be specified.)
+	 * @param [opts.pageFilter] PageFilter implementation for this page. (Either `filters` and `filterSource` or
+	 * `pageFilter` must be specified.)
 	 * @param opts.listClass List class.
 	 * @param opts.listOptions Other list options.
 	 * @param opts.sublistClass Sublist class.
@@ -21,6 +25,7 @@ class ListPage {
 		this._dataSourcefluff = opts.dataSourceFluff;
 		this._filters = opts.filters;
 		this._filterSource = opts.filterSource;
+		this._pageFilter = opts.pageFilter;
 		this._listClass = opts.listClass;
 		this._listOptions = opts.listOptions || {};
 		this._sublistClass = opts.sublistClass;
@@ -50,9 +55,9 @@ class ListPage {
 		ListUtil.setOptions({primaryLists: [this._list]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 
-		this._filterBox = await pInitFilterBox({
-			filters: this._filters
-		});
+		this._filterBox = this._pageFilter
+			? await this._pageFilter.pInitFilterBox({$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"), $btnReset: $(`#reset`)})
+			: await pInitFilterBox({filters: this._filters});
 
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
 		this._list.on("updated", () => $outVisibleResults.html(`${this._list.visibleItems.length}/${this._list.items.length}`));
@@ -71,7 +76,7 @@ class ListPage {
 
 		BrewUtil.bind({
 			filterBox: this._filterBox,
-			sourceFilter: this._filterSource,
+			sourceFilter: this._pageFilter ? this._pageFilter.sourceFilter : this._filterSource,
 			list: this._list,
 			pHandleBrew: async homebrew => this._addData(homebrew)
 		});

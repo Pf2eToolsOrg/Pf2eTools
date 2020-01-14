@@ -607,6 +607,8 @@ class BuilderUi {
 		}
 	}
 
+	static fnPostProcessDice (ents) { return ents.map(ent => DiceConvert.getTaggedEntry(ent)); }
+
 	/**
 	 *
 	 * @param name Row name.

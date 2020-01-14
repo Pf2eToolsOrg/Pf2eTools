@@ -94,6 +94,9 @@ Item names should be title-case, with the exception of units in parentheses, whi
 
 - A handy dice regex: `([1-9]\d*)?d([1-9]\d*)(\s?([+-])\s?(\d+))?` (and to output as tagged dice in the basic case: `{@dice $0}`). Warning: does not detect already-tagged dice expressions; be wary of double-tagging.
 
+### Mouse/Keyboard Events
+Avoid binding ALT-modified events, as these are not available under MacOS or various Linux flavors. Binding SHIFT-/CTRL-modified events is preferred.
+
 ### Dev Server
 
 Do `npm run serve:dev` to launch a local dev server that serves the project files on [`http://localhost:8080/5etools.html`](http://localhost:8080/5etools.html).

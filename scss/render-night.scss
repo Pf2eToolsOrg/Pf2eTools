@@ -1,0 +1,41 @@
+@import 'vars';
+
+.night-mode .rd {
+	&__ {
+		&-image-title-inner {
+			border-color: $rgb-border-grey--night;
+		}
+
+		&b-inset {
+			background-color: #323431;
+
+			&--readaloud {
+				background-color: #28303a;
+			}
+		}
+
+		&b-flow {
+			background-color: #38352f;
+		}
+
+		&comic {
+			color: #95aaea;
+		}
+
+		&stats-name-page {
+			color: $rgb-font--night;
+		}
+	}
+
+	&-item__ {
+		&type-rarity-attunement {
+			color: $rgb-font--night;
+		}
+	}
+
+	&-spell__ {
+		&level-school-ritual {
+			color: $rgb-font--night;
+		}
+	}
+}

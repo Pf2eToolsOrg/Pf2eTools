@@ -1177,49 +1177,10 @@ function Renderer () {
 					}
 
 					// SCALE DICE //////////////////////////////////////////////////////////////////////////////////////
-					case "@scaledice": {
-						// format: {@scaledice 2d6;3d6|2-8,9|1d6|psi}
-						const [baseRoll, progression, addPerProgress, renderMode] = text.split("|");
-						const progressionParse = MiscUtil.parseNumberRange(progression, 1, 9);
-						const baseLevel = Math.min(...progressionParse);
-						const options = {};
-						const isMultableDice = /^(\d+)d(\d+)$/i.exec(addPerProgress);
-
-						const getSpacing = () => {
-							let diff = null;
-							const sorted = [...progressionParse].sort(SortUtil.ascSort);
-							for (let i = 1; i < sorted.length; ++i) {
-								const prev = sorted[i - 1];
-								const curr = sorted[i];
-								if (diff == null) diff = curr - prev;
-								else if (curr - prev !== diff) return null;
-							}
-							return diff;
-						};
-
-						const spacing = getSpacing();
-						progressionParse.forEach(k => {
-							const offset = k - baseLevel;
-							if (isMultableDice && spacing != null) {
-								options[k] = offset ? `${Number(isMultableDice[1]) * (offset / spacing)}d${isMultableDice[2]}` : "";
-							} else {
-								options[k] = offset ? [...new Array(Math.floor(offset / spacing))].map(_ => addPerProgress).join("+") : "";
-							}
-						});
-
-						const fauxEntry = {
-							type: "dice",
-							rollable: true,
-							toRoll: baseRoll,
-							displayText: addPerProgress,
-							prompt: {
-								entry: renderMode === "psi" ? "Spend Psi Points..." : "Cast at...",
-								mode: renderMode,
-								options
-							}
-						};
+					case "@scaledice":
+					case "@scaledamage": {
+						const fauxEntry = Renderer.parseScaleDice(tag, text);
 						this._recursiveRender(fauxEntry, textStack, meta);
-
 						break;
 					}
 
@@ -1924,7 +1885,7 @@ Renderer.getEntryDice = function (entry, name, isAddHandlers = true) {
 		}
 
 		const handlerPart = isAddHandlers ? `onmousedown="event.preventDefault()" onclick="Renderer.dice.pRollerClickUseData(event, this)" data-packed-dice=${pack(toPack)}` : "";
-		const titlePart = isAddHandlers ? `title="Click to roll. ${toPack.subType === "damage" ? "SHIFT to roll a critical hit, ALT to half damage (rounding down)." : toPack.subType === "d20" ? "SHIFT to roll with advantage, ALT to roll with disadvantage." : "SHIFT/ALT to roll twice."}" data-no-roll-name="true"` : "";
+		const titlePart = isAddHandlers ? `title="Click to roll. ${toPack.subType === "damage" ? "SHIFT to roll a critical hit, CTRL to half damage (rounding down)." : toPack.subType === "d20" ? "SHIFT to roll with advantage, CTRL to roll with disadvantage." : "SHIFT/CTRL to roll twice."}" data-no-roll-name="true"` : "";
 		return `<span class="roller render-roller" ${name ? `title="${name ? `${name.escapeQuotes()}` : ""}"` : ""} ${handlerPart} ${titlePart}>${toDisplay}</span>`;
 	} else return toDisplay;
 };
@@ -1948,6 +1909,52 @@ Renderer.getEntryDiceDisplayText = function (entry) {
 	}
 
 	return entry.displayText ? entry.displayText : getDiceAsStr();
+};
+
+Renderer.parseScaleDice = function (tag, text) {
+	// format: {@scaledice 2d6;3d6|2-8,9|1d6|psi} (or @scaledamage)
+	const [baseRoll, progression, addPerProgress, renderMode] = text.split("|");
+	const progressionParse = MiscUtil.parseNumberRange(progression, 1, 9);
+	const baseLevel = Math.min(...progressionParse);
+	const options = {};
+	const isMultableDice = /^(\d+)d(\d+)$/i.exec(addPerProgress);
+
+	const getSpacing = () => {
+		let diff = null;
+		const sorted = [...progressionParse].sort(SortUtil.ascSort);
+		for (let i = 1; i < sorted.length; ++i) {
+			const prev = sorted[i - 1];
+			const curr = sorted[i];
+			if (diff == null) diff = curr - prev;
+			else if (curr - prev !== diff) return null;
+		}
+		return diff;
+	};
+
+	const spacing = getSpacing();
+	progressionParse.forEach(k => {
+		const offset = k - baseLevel;
+		if (isMultableDice && spacing != null) {
+			options[k] = offset ? `${Number(isMultableDice[1]) * (offset / spacing)}d${isMultableDice[2]}` : "";
+		} else {
+			options[k] = offset ? [...new Array(Math.floor(offset / spacing))].map(_ => addPerProgress).join("+") : "";
+		}
+	});
+
+	const out = {
+		type: "dice",
+		rollable: true,
+		toRoll: baseRoll,
+		displayText: addPerProgress,
+		prompt: {
+			entry: renderMode === "psi" ? "Spend Psi Points..." : "Cast at...",
+			mode: renderMode,
+			options
+		}
+	};
+	if (tag === "@scaledamage") out.subType = "damage";
+
+	return out;
 };
 
 Renderer.getAbilityData = function (abArr) {
@@ -2166,9 +2173,10 @@ Renderer.utils = {
 		const baseText = it.page > 0 ? `<b>Source:</b> <i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}` : "";
 		const addSourceText = getAltSourceText("additionalSources", "Additional information from");
 		const otherSourceText = getAltSourceText("otherSources", "Also found in");
+		const srdText = it.srd ? `Available in the <span title="Systems Reference Document">SRD</span>${typeof it.srd === "string" ? ` (as &quot;${it.srd}&quot;)` : ""}` : "";
 		const externalSourceText = getAltSourceText("externalSources", "External sources:");
 
-		return `${[baseText, addSourceText, otherSourceText, externalSourceText].filter(it => it).join(". ")}${baseText && (addSourceText || otherSourceText || externalSourceText) ? "." : ""}`;
+		return `${[baseText, addSourceText, otherSourceText, srdText, externalSourceText].filter(it => it).join(". ")}${baseText && (addSourceText || otherSourceText || srdText || externalSourceText) ? "." : ""}`;
 	},
 
 	getAbilityRoller (statblock, ability) {
@@ -3172,6 +3180,7 @@ Renderer.cultboon = {
 		} else if (it._type === "b") {
 			Renderer.cultboon.doRenderBoonParts(it, renderer, renderStack);
 			renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
+			it._displayName = it._displayName || `${it.type || "Demonic Boon"}: ${it.name}`;
 			return `
 			${Renderer.utils.getExcludedTr(it, "boon")}
 			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CULTS_BOONS})}
@@ -4431,15 +4440,12 @@ Renderer.psionic = {
 		}
 	},
 
-	getTalentText: (psionic, renderer) => {
+	getBodyText (psi, renderer) {
 		const renderStack = [];
-		renderer.recursiveRender(({entries: psionic.entries, type: "entries"}), renderStack);
+		if (psi.entries) Renderer.get().recursiveRender(({entries: psi.entries, type: "entries"}), renderStack);
+		if (psi.focus) renderStack.push(Renderer.psionic.getFocusString(psi, renderer));
+		if (psi.modes) renderStack.push(...psi.modes.map(mode => Renderer.psionic.getModeString(mode, renderer)));
 		return renderStack.join("");
-	},
-
-	getDisciplineText: (psionic, renderer) => {
-		const modeStringArray = psionic.modes.map(mode => Renderer.psionic.getModeString(mode, renderer));
-		return `${Renderer.psionic.getDescriptionString(psionic, renderer)}${Renderer.psionic.getFocusString(psionic, renderer)}${modeStringArray.join("")}`;
 	},
 
 	getDescriptionString: (psionic, renderer) => {
@@ -4480,18 +4486,21 @@ Renderer.psionic = {
 		return renderStack.join("");
 	},
 
-	getCompactRenderedString: (psionic) => {
-		const renderer = Renderer.get();
+	getTypeOrderString (psi) {
+		const typeMeta = Parser.psiTypeToMeta(psi.type);
+		// if "isAltDisplay" is true, render as e.g. "Greater Discipline (Awakened)" rather than "Awakened Greater Discipline"
+		return typeMeta.hasOrder
+			? typeMeta.isAltDisplay ? `${typeMeta.full} (${psi.order})` : `${psi.order} ${typeMeta.full}`
+			: typeMeta.full;
+	},
 
-		const typeOrderStr = psionic.type === "T" ? Parser.psiTypeToFull(psionic.type) : `${psionic.order} ${Parser.psiTypeToFull(psionic.type)}`;
-		const bodyStr = psionic.type === "T" ? Renderer.psionic.getTalentText(psionic, renderer) : Renderer.psionic.getDisciplineText(psionic, renderer);
-
+	getCompactRenderedString: (psi) => {
 		return `
-			${Renderer.utils.getExcludedTr(psionic, "psionic")}
-			${Renderer.utils.getNameTr(psionic, {page: UrlUtil.PG_PSIONICS})}
+			${Renderer.utils.getExcludedTr(psi, "psionic")}
+			${Renderer.utils.getNameTr(psi, {page: UrlUtil.PG_PSIONICS})}
 			<tr class="text"><td colspan="6">
-			<p><i>${typeOrderStr}</i></p>
-			${bodyStr}
+			<p><i>${Renderer.psionic.getTypeOrderString(psi)}</i></p>
+			${Renderer.psionic.getBodyText(psi, Renderer.get().setFirstSection(true))}
 			</td></tr>
 		`;
 	}
@@ -5895,7 +5904,7 @@ Renderer.dice = {
 		const isNoName = $ele.data("no-roll-name") === true;
 		let name = isNoName ? null : $ele.title() || null;
 		let shiftKey = evt.shiftKey;
-		let altKey = evt.altKey;
+		let ctrlKey = evt.ctrlKey;
 
 		const options = rollData.toRoll.split(";").map(it => it.trim()).filter(Boolean);
 
@@ -5905,8 +5914,8 @@ Renderer.dice = {
 				const cpy = MiscUtil.copy(rollData);
 
 				ContextUtil.doInitContextMenu(Renderer.dice._contextRollLabel, (mostRecentEvt, _1, _2, _3, invokedOnId) => {
-					shiftKey = mostRecentEvt.shiftKey;
-					altKey = mostRecentEvt.altKey;
+					shiftKey = shiftKey || mostRecentEvt.shiftKey;
+					ctrlKey = ctrlKey || mostRecentEvt.ctrlKey;
 					cpy.toRoll = options[invokedOnId];
 					resolve(cpy);
 				}, [{text: "Choose Roll", disabled: true}, null, ...options.map(it => `Roll ${it}`)]);
@@ -5961,8 +5970,8 @@ Renderer.dice = {
 				ContextUtil.doInitContextMenu(Renderer.dice._contextPromptLabel, (mostRecentEvt, _1, _2, _3, invokedOnId) => {
 					if (invokedOnId == null) resolve();
 
-					shiftKey = mostRecentEvt.shiftKey;
-					altKey = mostRecentEvt.altKey;
+					shiftKey = shiftKey || mostRecentEvt.shiftKey;
+					ctrlKey = ctrlKey || mostRecentEvt.ctrlKey;
 					const k = sortedKeys[invokedOnId];
 					const fromScaling = rollDataCpy.prompt.options[k];
 					if (!fromScaling) {
@@ -5982,7 +5991,7 @@ Renderer.dice = {
 		} else rollDataCpyToRoll = rollDataCpy;
 
 		if (!rollDataCpyToRoll) return;
-		Renderer.dice.rollerClick({shiftKey, altKey}, ele, JSON.stringify(rollDataCpyToRoll), name);
+		Renderer.dice.rollerClick({shiftKey, altKey: ctrlKey}, ele, JSON.stringify(rollDataCpyToRoll), name);
 	},
 
 	__rerollNextInlineResult (ele) {
@@ -6077,7 +6086,7 @@ Renderer.dice = {
 	},
 
 	getEventModifiedRollMeta (evt, entry) {
-		// Change roll type/count depending on ALT/SHIFT status
+		// Change roll type/count depending on CTRL/SHIFT status
 		const out = {rollCount: 1, entry};
 
 		if (evt.shiftKey) {
@@ -6095,10 +6104,10 @@ Renderer.dice = {
 			} else out.rollCount = 2; // otherwise, just roll twice
 		}
 
-		if (evt.altKey) {
-			if (entry.subType === "damage") { // If ALT is held, half the damage
+		if (evt.ctrlKey) {
+			if (entry.subType === "damage") { // If CTRL is held, half the damage
 				entry.toRoll = `floor((${entry.toRoll}) / 2)`;
-			} else if (entry.subType === "d20") { // If ALT is held, roll disadvantage (assuming SHIFT is not held)
+			} else if (entry.subType === "d20") { // If CTRL is held, roll disadvantage (assuming SHIFT is not held)
 				// If we have a cached d20mod value, use it
 				if (entry.d20mod != null) entry.toRoll = `2d20dh1${entry.d20mod}`;
 				else entry.toRoll = entry.toRoll.replace(/^\s*1?\s*d\s*20/, "2d20dh1");
@@ -7163,6 +7172,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@footnote":
 					case "@link":
 					case "@scaledice":
+					case "@scaledamage":
 					case "@loader":
 					case "@color":
 					case "@highlight": {

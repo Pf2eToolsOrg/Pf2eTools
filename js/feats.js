@@ -2,29 +2,11 @@
 
 class FeatsPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-		const asiFilter = getAsiFilter();
-		const otherPrereqFilter = new Filter({
-			header: "Other",
-			items: ["Ability", "Race", "Proficiency", "Special", "Spellcasting"]
-		});
-		const levelFilter = new Filter({
-			header: "Level",
-			itemSortFn: SortUtil.ascSortNumericalSuffix
-		});
-		const prerequisiteFilter = new MultiFilter({header: "Prerequisite", filters: [otherPrereqFilter, levelFilter]});
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
-
+		const pageFilter = new PageFilterFeats();
 		super({
 			dataSource: "data/feats.json",
 
-			filters: [
-				sourceFilter,
-				asiFilter,
-				prerequisiteFilter,
-				miscFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "feats",
 
@@ -32,35 +14,10 @@ class FeatsPage extends ListPage {
 
 			dataProps: ["feat"]
 		});
-
-		this._sourceFilter = sourceFilter;
-		this._levelFilter = levelFilter;
 	}
 
 	getListItem (feat, ftI, isExcluded) {
-		const name = feat.name;
-		const ability = Renderer.getAbilityData(feat.ability);
-		if (!ability.asText) ability.asText = STR_NONE;
-		feat._fAbility = ability.asCollection.filter(a => !ability.areNegative.includes(a)); // used for filtering
-		let prereqText = Renderer.utils.getPrerequisiteText(feat.prerequisite, true);
-		if (!prereqText) prereqText = STR_NONE;
-
-		const preSet = new Set();
-		(feat.prerequisite || []).forEach(it => preSet.add(...Object.keys(it)));
-		feat._fPrereqOther = [...preSet].map(it => it.uppercaseFirst());
-		if (feat.prerequisite) {
-			feat._fPrereqLevel = feat.prerequisite.filter(it => it.level != null).map(it => `Level ${it.level.level}`);
-			this._levelFilter.addItem(feat._fPrereqLevel);
-		}
-		feat._fMisc = feat.srd ? ["SRD"] : [];
-
-		feat._slAbility = ability.asText;
-		feat._slPrereq = prereqText;
-
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(feat.source);
-		}
+		this._pageFilter.addToFilters(feat, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -69,9 +26,9 @@ class FeatsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(feat);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="bold col-3-8 pl-0">${name}</span>
-			<span class="col-3-5 ${ability.asText === STR_NONE ? "list-entry-none " : ""}">${ability.asText}</span>
-			<span class="col-3 ${(prereqText === STR_NONE ? "list-entry-none " : "")}">${prereqText}</span>
+			<span class="bold col-3-8 pl-0">${feat.name}</span>
+			<span class="col-3-5 ${feat._slAbility === STR_NONE ? "list-entry-none " : ""}">${feat._slAbility}</span>
+			<span class="col-3 ${feat._slPrereq === STR_NONE ? "list-entry-none " : ""}">${feat._slPrereq}</span>
 			<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
 		</a>`;
 
@@ -82,8 +39,8 @@ class FeatsPage extends ListPage {
 			{
 				hash,
 				source,
-				ability: ability.asText,
-				prerequisite: prereqText,
+				ability: feat._slAbility,
+				prerequisite: feat._slPrereq,
 				isExcluded,
 				uniqueId: feat.uniqueId ? feat.uniqueId : ftI
 			}
@@ -97,19 +54,7 @@ class FeatsPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter((item) => {
-			const ft = this._dataList[item.ix];
-			return this._filterBox.toDisplay(
-				f,
-				ft.source,
-				ft._fAbility,
-				[
-					ft._fPrereqOther,
-					ft._fPrereqLevel
-				],
-				ft._fMisc
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 

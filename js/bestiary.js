@@ -553,7 +553,7 @@ function sublistFuncPreload (json, funcOnload) {
 	}
 }
 
-let profBtn = null;
+let $btnProf = null;
 function renderStatblock (mon, isScaled) {
 	lastRendered.mon = mon;
 	lastRendered.isScaled = isScaled;
@@ -562,9 +562,9 @@ function renderStatblock (mon, isScaled) {
 	const $content = $("#pagecontent").empty();
 	const $wrpBtnProf = $(`#wrp-profbonusdice`);
 
-	if (profBtn !== null) {
-		$wrpBtnProf.append(profBtn);
-		profBtn = null;
+	if ($btnProf !== null) {
+		$wrpBtnProf.append($btnProf);
+		$btnProf = null;
 	}
 
 	function buildStatsTab () {
@@ -821,7 +821,7 @@ function renderStatblock (mon, isScaled) {
 	const statTab = Renderer.utils.tabButton(
 		"Statblock",
 		() => {
-			$wrpBtnProf.append(profBtn);
+			$wrpBtnProf.append($btnProf);
 			$(`#float-token`).show();
 		},
 		buildStatsTab
@@ -829,7 +829,7 @@ function renderStatblock (mon, isScaled) {
 	const infoTab = Renderer.utils.tabButton(
 		"Info",
 		() => {
-			profBtn = profBtn || $wrpBtnProf.children().detach();
+			$btnProf = $wrpBtnProf.children().length ? $wrpBtnProf.children().detach() : $btnProf;
 			$(`#float-token`).hide();
 		},
 		buildFluffTab
@@ -837,7 +837,7 @@ function renderStatblock (mon, isScaled) {
 	const picTab = Renderer.utils.tabButton(
 		"Images",
 		() => {
-			profBtn = profBtn || $wrpBtnProf.children().detach();
+			$btnProf = $wrpBtnProf.children().length ? $wrpBtnProf.children().detach() : $btnProf;
 			$(`#float-token`).hide();
 		},
 		() => buildFluffTab(true)

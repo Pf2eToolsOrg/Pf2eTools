@@ -3,6 +3,28 @@
 class FilterUtil {}
 FilterUtil.SUB_HASH_PREFIX_LENGTH = 4;
 
+class PageFilter {
+	constructor () {
+		this._sourceFilter = SourceFilter.getInstance();
+
+		this._filterBox = null;
+	}
+
+	get filterBox () { return this._filterBox; }
+	get sourceFilter () { return this._sourceFilter; }
+
+	addToFilters (entity, isExcluded) { throw new Error("Unimplemented!"); }
+	toDisplay (values, entity) { throw new Error("Unimplemented!"); }
+	async _pPopulateBoxOptions () { throw new Error("Unimplemented!"); }
+
+	async pInitFilterBox (opts) {
+		await this._pPopulateBoxOptions(opts);
+		this._filterBox = new FilterBox(opts);
+		await this._filterBox.pDoLoadState();
+		return this._filterBox;
+	}
+}
+
 class FilterBox extends ProxyBase {
 	static selectFirstVisible (entryList) {
 		if (Hist.lastLoadedId == null && !Hist.initialLoad) {

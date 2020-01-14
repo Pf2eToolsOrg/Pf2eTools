@@ -1,4 +1,6 @@
-class PageFilterSpells {
+"use strict";
+
+class PageFilterSpells extends PageFilter {
 	// region static
 	static sortSpells (a, b, o) {
 		switch (o.sortBy) {
@@ -202,9 +204,10 @@ class PageFilterSpells {
 	// endregion
 
 	constructor () {
+		super();
+
 		this._brewSpellClasses = {PHB: {}};
 
-		const sourceFilter = SourceFilter.getInstance();
 		const levelFilter = new Filter({
 			header: "Level",
 			items: [
@@ -306,9 +309,6 @@ class PageFilterSpells {
 			itemSortFn: null
 		});
 
-		this._filterBox = null;
-
-		this._sourceFilter = sourceFilter;
 		this._classFilter = classFilter;
 		this._subclassFilter = subclassFilter;
 		this._levelFilter = levelFilter;
@@ -329,9 +329,6 @@ class PageFilterSpells {
 		this._rangeFilter = rangeFilter;
 		this._areaTypeFilter = areaTypeFilter;
 	}
-
-	get filterBox () { return this._filterBox; }
-	get sourceFilter () { return this._sourceFilter; }
 
 	populateHomebrewClassLookup (homebrew) {
 		// load homebrew class spell list addons
@@ -429,7 +426,7 @@ class PageFilterSpells {
 		// endregion
 	}
 
-	async pInitFilterBox (opts) {
+	async _pPopulateBoxOptions (opts) {
 		await SourceUtil.pInitSubclassReprintLookup();
 
 		opts.filters = [
@@ -451,9 +448,6 @@ class PageFilterSpells {
 			this._rangeFilter,
 			this._areaTypeFilter
 		];
-
-		this._filterBox = new FilterBox(opts);
-		await this._filterBox.pDoLoadState();
 	}
 
 	toDisplay (values, s) {

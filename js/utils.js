@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.94.6"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.94.10"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -1145,27 +1145,37 @@ Parser.DURATION_AMOUNT_TYPES = [
 	"year"
 ];
 
-Parser.spClassesToFull = function (classes, textOnly) {
-	const fromSubclasses = Parser.spSubclassesToFull(classes, textOnly);
+Parser.spClassesToFull = function (classes, textOnly, subclassLookup = {}) {
+	const fromSubclasses = Parser.spSubclassesToFull(classes, textOnly, subclassLookup);
 	return `${Parser.spMainClassesToFull(classes, textOnly)}${fromSubclasses ? `, ${fromSubclasses}` : ""}`
 };
 
 Parser.spMainClassesToFull = function (classes, textOnly = false, prop = "fromClassList") {
 	if (!classes) return "";
 	return (classes[prop] || [])
+		.filter(c => !ExcludeUtil.isInitialised || !ExcludeUtil.isExcluded(c.name, "class", c.source))
 		.sort((a, b) => SortUtil.ascSort(a.name, b.name))
 		.map(c => textOnly ? c.name : `<a title="Source: ${Parser.sourceJsonToFull(c.source)}" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}">${c.name}</a>`)
 		.join(", ");
 };
 
-Parser.spSubclassesToFull = function (classes, textOnly) {
+Parser.spSubclassesToFull = function (classes, textOnly, subclassLookup = {}) {
 	if (!classes || !classes.fromSubclass) return "";
 	return classes.fromSubclass
+		.filter(c => {
+			if (!ExcludeUtil.isInitialised) return true;
+			const excludeClass = ExcludeUtil.isExcluded(c.class.name, "class", c.class.source);
+			if (excludeClass) return false;
+			const fromLookup = MiscUtil.get(subclassLookup, c.class.source, c.class.name, c.subclass.source, c.subclass.name);
+			if (!fromLookup) return true;
+			const excludeSubclass = ExcludeUtil.isExcluded(fromLookup.name || c.subclass.name, "subclass", c.subclass.source);
+			return !excludeSubclass;
+		})
 		.sort((a, b) => {
 			const byName = SortUtil.ascSort(a.class.name, b.class.name);
 			return byName || SortUtil.ascSort(a.subclass.name, b.subclass.name);
 		})
-		.map(c => Parser._spSubclassItem(c, textOnly))
+		.map(c => Parser._spSubclassItem(c, textOnly, subclassLookup))
 		.join(", ");
 };
 
@@ -1377,10 +1387,16 @@ Parser.ENVIRONMENTS = ["arctic", "coastal", "desert", "forest", "grassland", "hi
 Parser.PSI_ABV_TYPE_TALENT = "T";
 Parser.PSI_ABV_TYPE_DISCIPLINE = "D";
 Parser.PSI_ORDER_NONE = "None";
-Parser.psiTypeToFull = (type) => {
-	if (type === Parser.PSI_ABV_TYPE_TALENT) return "Talent";
-	else if (type === Parser.PSI_ABV_TYPE_DISCIPLINE) return "Discipline";
-	else return type;
+Parser.psiTypeToFull = type => Parser.psiTypeToMeta(type).full;
+
+Parser.psiTypeToMeta = type => {
+	let out = {};
+	if (type === Parser.PSI_ABV_TYPE_TALENT) out = {hasOrder: false, full: "Talent"};
+	else if (type === Parser.PSI_ABV_TYPE_DISCIPLINE) out = {hasOrder: true, full: "Discipline"};
+	else if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.psionicTypes && BrewUtil.homebrewMeta.psionicTypes[type]) out = BrewUtil.homebrewMeta.psionicTypes[type];
+	out.full = out.full || "Unknown";
+	out.short = out.short || out.full;
+	return out;
 };
 
 Parser.psiOrderToFull = (order) => {
@@ -1697,6 +1713,18 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
 	const curNames = new Set();
 	const toCheck = [];
 	classes.fromSubclass
+		.filter(c => {
+			const excludeClass = ExcludeUtil.isExcluded(c.class.name, "class", c.class.source);
+			if (excludeClass) {
+				return false;
+			}
+			const fromLookup = MiscUtil.get(subclassLookup, c.class.source, c.class.name, c.subclass.source, c.subclass.name);
+			const excludeSubclass = ExcludeUtil.isExcluded(fromLookup.name || c.subclass.name, "subclass", c.subclass.source);
+			if (excludeSubclass) {
+				return false;
+			}
+			return true;
+		})
 		.sort((a, b) => {
 			const byName = SortUtil.ascSort(a.subclass.name, b.subclass.name);
 			return byName || SortUtil.ascSort(a.class.name, b.class.name);
@@ -2148,6 +2176,7 @@ SRC_UACDW = `${SRC_UA_PREFIX}ClericDruidWizard`;
 SRC_UAFRR = `${SRC_UA_PREFIX}FighterRangerRogue`;
 SRC_UACFV = `${SRC_UA_PREFIX}ClassFeatureVariants`;
 SRC_UAFRW = `${SRC_UA_PREFIX}FighterRogueWizard`;
+SRC_UA2020SC1 = `${SRC_UA_PREFIX}2020SubclassesPt1`;
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -2181,13 +2210,13 @@ Parser.SOURCE_JSON_TO_FULL[SRC_ToA] = "Tomb of Annihilation";
 Parser.SOURCE_JSON_TO_FULL[SRC_ToD] = "Tyranny of Dragons";
 Parser.SOURCE_JSON_TO_FULL[SRC_TTP] = "The Tortle Package";
 Parser.SOURCE_JSON_TO_FULL[SRC_TYP] = TftYP_NAME;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_AtG] = TftYP_NAME;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_DiT] = TftYP_NAME;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_TFoF] = TftYP_NAME;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_THSoT] = TftYP_NAME;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_TSC] = TftYP_NAME;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_ToH] = TftYP_NAME;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_WPM] = TftYP_NAME;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_AtG] = `${TftYP_NAME}: Against the Giants`;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_DiT] = `${TftYP_NAME}: Dead in Thay`;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_TFoF] = `${TftYP_NAME}: The Forge of Fury`;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_THSoT] = `${TftYP_NAME}: The Hidden Shrine of Tamoachan`;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_TSC] = `${TftYP_NAME}: The Sunless Citadel`;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_ToH] = `${TftYP_NAME}: Tomb of Horrors`;
+Parser.SOURCE_JSON_TO_FULL[SRC_TYP_WPM] = `${TftYP_NAME}: White Plume Mountain`;
 Parser.SOURCE_JSON_TO_FULL[SRC_VGM] = "Volo's Guide to Monsters";
 Parser.SOURCE_JSON_TO_FULL[SRC_XGE] = "Xanathar's Guide to Everything";
 Parser.SOURCE_JSON_TO_FULL[SRC_OGA] = "One Grung Above";
@@ -2281,6 +2310,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UACDW] = `${UA_PREFIX}Cleric, Druid, and Wizard`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UAFRR] = `${UA_PREFIX}Fighter, Ranger, and Rogue`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UACFV] = `${UA_PREFIX}Class Feature Variants`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UAFRW] = `${UA_PREFIX}Fighter, Rogue, and Wizard`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC1] = `${UA_PREFIX}2020 Subclasses, Part 1`;
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -2404,6 +2434,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UACDW] = "UACDW";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAFRR] = "UAFRR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UACFV] = "UACFV";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAFRW] = "UAFRW";
+Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC1] = "UA20S1";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -2779,7 +2810,8 @@ JqueryUtil = {
 		};
 
 		$.fn.extend({
-			disableSpellcheck: function () { return this.attr("autocomplete", "off").attr("autocapitalize", "off").attr("spellcheck", "false").attr("type", "search"); },
+			// avoid setting input type to "search" as it visually offsets the contents of the input
+			disableSpellcheck: function () { return this.attr("autocomplete", "off").attr("autocapitalize", "off").attr("spellcheck", "false"); },
 
 			tag: function () {
 				return this.prop("tagName").toLowerCase();
@@ -6099,6 +6131,7 @@ BrewUtil = {
 						case UrlUtil.PG_DEMO: return BrewUtil._DIRS;
 						case UrlUtil.PG_VEHICLES: return ["vehicle"];
 						case UrlUtil.PG_ACTIONS: return ["action"];
+						case UrlUtil.PG_CULTS_BOONS: return ["cult", "boon"];
 						default: throw new Error(`No homebrew directories defined for category ${page}`);
 					}
 				}
@@ -6308,7 +6341,7 @@ BrewUtil = {
 							out.extraInfo = ` (${bru.class})`;
 							break;
 						case "psionic":
-							out.extraInfo = ` (${Parser.psiTypeToFull(bru.type)})`;
+							out.extraInfo = ` (${Parser.psiTypeToMeta(bru.type).short})`;
 							break;
 						case "itemProperty": {
 							if (bru.entries) out.name = Renderer.findName(bru.entries);
@@ -6458,6 +6491,7 @@ BrewUtil = {
 						case UrlUtil.PG_DEMO: return BrewUtil._STORABLE;
 						case UrlUtil.PG_VEHICLES: return ["vehicle"];
 						case UrlUtil.PG_ACTIONS: return ["action"];
+						case UrlUtil.PG_CULTS_BOONS: return ["cult", "boon"];
 						default: throw new Error(`No homebrew properties defined for category ${page}`);
 					}
 				};
@@ -6592,7 +6626,9 @@ BrewUtil = {
 			case "table":
 			case "tableGroup":
 			case "vehicle":
-			case "action": return BrewUtil._genPDeleteGenericBrew(category);
+			case "action":
+			case "cult":
+			case "boon": return BrewUtil._genPDeleteGenericBrew(category);
 			case "subclass": return BrewUtil._pDeleteSubclassBrew;
 			case "class": return BrewUtil._pDeleteClassBrew;
 			case "adventure":
@@ -6694,8 +6730,8 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_DIRS: ["action", "adventure", "background", "book", "class", "condition", "creature", "deity", "disease", "feat", "hazard", "item", "magicvariant", "object", "optionalfeature", "psionic", "race", "reward", "spell", "subclass", "table", "trap", "variantrule", "vehicle"],
-	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "raceFluff", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle", "action"],
+	_DIRS: ["action", "adventure", "background", "book", "boon", "class", "condition", "creature", "cult", "deity", "disease", "feat", "hazard", "item", "magicvariant", "object", "optionalfeature", "psionic", "race", "reward", "spell", "subclass", "table", "trap", "variantrule", "vehicle"],
+	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "raceFluff", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle", "action", "cult", "boon"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		function storePrep (arrName) {
 			if (json[arrName]) {
@@ -6822,6 +6858,7 @@ BrewUtil = {
 			case UrlUtil.PG_TABLES:
 			case UrlUtil.PG_VEHICLES:
 			case UrlUtil.PG_ACTIONS:
+			case UrlUtil.PG_CULTS_BOONS:
 				await (BrewUtil._pHandleBrew || handleBrew)(MiscUtil.copy(toAdd));
 				break;
 			case UrlUtil.PG_MANAGE_BREW:

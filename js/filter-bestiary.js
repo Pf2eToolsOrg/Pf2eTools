@@ -1,6 +1,6 @@
 "use strict";
 
-class PageFilterBestiary {
+class PageFilterBestiary extends PageFilter {
 	// region static
 	static sortMonsters (a, b, o) {
 		if (o.sortBy === "count") return SortUtil.ascSort(a.values.count, b.values.count) || SortUtil.compareListNames(a, b);
@@ -51,10 +51,11 @@ class PageFilterBestiary {
 	// endregion
 
 	constructor () {
+		super();
+
 		this._creatureMeta = {};
 		this._languages = {};
 
-		const sourceFilter = SourceFilter.getInstance();
 		const crFilter = new RangeFilter({
 			header: "Challenge Rating",
 			isLabelled: true,
@@ -182,9 +183,6 @@ class PageFilterBestiary {
 			displayFn: Parser.monSpellcastingTagToFull
 		});
 
-		this._filterBox = null;
-
-		this._sourceFilter = sourceFilter;
 		this._crFilter = crFilter;
 		this._sizeFilter = sizeFilter;
 		this._speedFilter = speedFilter;
@@ -217,9 +215,6 @@ class PageFilterBestiary {
 		this._miscFilter = miscFilter;
 		this._spellcastingTypeFilter = spellcastingTypeFilter;
 	}
-
-	get filterBox () { return this._filterBox; }
-	get sourceFilter () { return this._sourceFilter; }
 
 	addToFilters (mon, isExcluded) {
 		Renderer.monster.initParsed(mon);
@@ -289,7 +284,11 @@ class PageFilterBestiary {
 		// endregion
 	}
 
-	async pInitFilterBox (opts) {
+	async _pPopulateBoxOptions (opts) {
+		await Renderer.monster.pPopulateMetaAndLanguages(this._creatureMeta, this._languages);
+		Object.keys(this._languages).sort((a, b) => SortUtil.ascSortLower(this._languages[a], this._languages[b]))
+			.forEach(la => this._languageFilter.addItem(la));
+
 		opts.filters = [
 			this._sourceFilter,
 			this._crFilter,
@@ -315,13 +314,6 @@ class PageFilterBestiary {
 			this._averageHpFilter,
 			this._abilityScoreFilter
 		];
-
-		await Renderer.monster.pPopulateMetaAndLanguages(this._creatureMeta, this._languages);
-		Object.keys(this._languages).sort((a, b) => SortUtil.ascSortLower(this._languages[a], this._languages[b]))
-			.forEach(la => this._languageFilter.addItem(la));
-
-		this._filterBox = new FilterBox(opts);
-		await this._filterBox.pDoLoadState();
 	}
 
 	toDisplay (values, m) {

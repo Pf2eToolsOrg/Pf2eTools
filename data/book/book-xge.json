@@ -30,7 +30,7 @@
 					"name": "The Core Rules",
 					"page": 5,
 					"entries": [
-						"This book relies on the rules in the three core rulebooks. The game especially makes frequent use of the rules in chapters 7-10 of the player's handbook: \"Using Ability Scores,\" \"Adventuring,\" \"Combat,\" and \"Spellcasting.\" That book's appendix A is also crucial; it contains definitions of conditions, like invisible and prone. You don't need to know the rules by heart, but it's helpful to know where to find them when you need them.",
+						"This book relies on the rules in the three core rulebooks. The game especially makes frequent use of the rules in chapters 7-10 of the player's handbook: \"Using Ability Scores,\" \"Adventuring,\" \"Combat,\" and \"Spellcasting.\" That book's appendix A is also crucial; it contains definitions of conditions, like {@condition invisible} and {@condition prone}. You don't need to know the rules by heart, but it's helpful to know where to find them when you need them.",
 						"If you're a DM, you should also know where to look things up in the dungeon master's guide, especially the rules on how magic items work (see chapter 7 of that book). The introduction of the monster manual is your guide on how to use a monster's stat block.",
 						{
 							"type": "entries",
@@ -2203,7 +2203,7 @@
 											"rows": [
 												[
 													"1",
-													"You were charmed or frightened by a spell."
+													"You were {@condition charmed} or {@condition frightened} by a spell."
 												],
 												[
 													"2",
@@ -2227,7 +2227,7 @@
 												],
 												[
 													"7",
-													"You turned invisible for a time."
+													"You turned {@condition invisible} for a time."
 												],
 												[
 													"8",
@@ -2565,7 +2565,7 @@
 												],
 												[
 													"2",
-													"You were petrified and remained a stone statue for a time until someone freed you."
+													"You were {@condition petrified} and remained a stone statue for a time until someone freed you."
 												],
 												[
 													"3",
@@ -3116,7 +3116,10 @@
 					"page": 77,
 					"entries": [
 						"Most effects in the game happen in succession, following an order set by the rules or the DM. In rare cases, effects can happen at the same time, especially at the start or end of a creature's turn. If two or more things happen at the same time on a character or monster's turn, the person at the game table-whether player or DM-who controls that creature decides the order in which those things happen. For example, if two effects occur at the end of a player character's turn, the player decides which of the two effects happens first."
-					]
+					],
+					"data": {
+						"quickref": 3
+					}
 				},
 				{
 					"type": "section",
@@ -3138,26 +3141,29 @@
 							"name": "Flying Creatures and Falling",
 							"page": 77,
 							"entries": [
-								"A flying creature in flight falls if it is knocked prone, if its speed is reduced to 0 feet, or if it otherwise loses the ability to move, unless it can hover or it is being held aloft by magic, such as the {@spell fly} spell.",
-								"If you'd like a flying creature to have a better chance of surviving a fall than a non-flying creature does, use this rule: subtract the creature's current flying speed from the distance it fell before calculating falling damage. This rule is helpful to a flier that is knocked prone but is still conscious and has a current flying speed that is greater than 0 feet. The rule is designed to simulate the creature flapping its wings furiously or taking similar measures to slow the velocity of its fall.",
-								"If you use the rule for rate of falling in the previous section, a flying creature descends 500 feet on the turn when it falls, just as other creatures do. But if that creature starts any of its later turns still falling and is prone, it can halt the fall on its turn by spending half its flying speed to counter the prone condition (as if it were standing up in midair)."
+								"A flying creature in flight falls if it is knocked {@condition prone}, if its speed is reduced to 0 feet, or if it otherwise loses the ability to move, unless it can hover or it is being held aloft by magic, such as the {@spell fly} spell.",
+								"If you'd like a flying creature to have a better chance of surviving a fall than a non-flying creature does, use this rule: subtract the creature's current flying speed from the distance it fell before calculating falling damage. This rule is helpful to a flier that is knocked {@condition prone} but is still conscious and has a current flying speed that is greater than 0 feet. The rule is designed to simulate the creature flapping its wings furiously or taking similar measures to slow the velocity of its fall.",
+								"If you use the rule for rate of falling in the previous section, a flying creature descends 500 feet on the turn when it falls, just as other creatures do. But if that creature starts any of its later turns still falling and is {@condition prone}, it can halt the fall on its turn by spending half its flying speed to counter the {@condition prone} condition (as if it were standing up in midair)."
 							]
 						}
-					]
+					],
+					"data": {
+						"quickref": 3
+					}
 				},
 				{
 					"type": "section",
 					"name": "Sleep",
 					"page": 77,
 					"entries": [
-						"Just as in the real world, D&D characters spend many hours sleeping, most often as part of a long rest. Most monsters also need to sleep. While a creature sleeps, it is subjected to the unconscious condition. Here are a few rules that expand on that basic fact.",
+						"Just as in the real world, D&D characters spend many hours sleeping, most often as part of a long rest. Most monsters also need to sleep. While a creature sleeps, it is subjected to the {@condition unconscious} condition. Here are a few rules that expand on that basic fact.",
 						{
 							"type": "entries",
 							"name": "Waking Someone",
 							"page": 77,
 							"entries": [
 								"A creature that is naturally sleeping, as opposed to being in a magically or chemically induced sleep, wakes up if it takes any damage or if someone else uses an action to shake or slap the creature awake. A sudden loud noise-such as yelling, thunder, or a ringing bell-also awakens someone that is sleeping naturally.",
-								"Whispers don't disturb sleep, unless a sleeper's passive Wisdom (Perception) score is 20 or higher and the whispers are within 10 feet of the sleeper. Speech at a normal volume awakens a sleeper if the environment is otherwise silent (no wind, birdsong, crickets, street sounds, or the like) and the sleeper has a passive Wisdom (Perception) score of 15 or higher."
+								"Whispers don't disturb sleep, unless a sleeper's passive Wisdom ({@skill Perception}) score is 20 or higher and the whispers are within 10 feet of the sleeper. Speech at a normal volume awakens a sleeper if the environment is otherwise silent (no wind, birdsong, crickets, street sounds, or the like) and the sleeper has a passive Wisdom ({@skill Perception}) score of 15 or higher."
 							]
 						},
 						{
@@ -3166,7 +3172,7 @@
 							"page": 77,
 							"entries": [
 								"Sleeping in light armor has no adverse effect on the wearer, but sleeping in medium or heavy armor makes it difficult to recover fully during a long rest.",
-								"When you finish a long rest during which you slept in medium or heavy armor, you regain only one quarter of your spent Hit Dice (minimum of one die). If you have any levels of exhaustion, the rest doesn't reduce your exhaustion level."
+								"When you finish a long rest during which you slept in medium or heavy armor, you regain only one quarter of your spent Hit Dice (minimum of one die). If you have any levels of {@condition exhaustion}, the rest doesn't reduce your {@condition exhaustion} level."
 							]
 						},
 						{
@@ -3175,11 +3181,14 @@
 							"page": 78,
 							"entries": [
 								"A long rest is never mandatory, but going without sleep does have its consequences. If you want to account for the effects of sleep deprivation on characters and creatures, use these rules.",
-								"Whenever you end a 24-hour period without finishing a long rest, you must succeed on a DC 10 Constitution saving throw or suffer one level of exhaustion.",
-								"It becomes harder to fight off exhaustion if you stay awake for multiple days. After the first 24 hours, the DC increases by 5 for each consecutive 24-hour period without a long rest. The DC resets to 10 when you finish a long rest."
+								"Whenever you end a 24-hour period without finishing a long rest, you must succeed on a DC 10 Constitution saving throw or suffer one level of {@condition exhaustion}.",
+								"It becomes harder to fight off {@condition exhaustion} if you stay awake for multiple days. After the first 24 hours, the DC increases by 5 for each consecutive 24-hour period without a long rest. The DC resets to 10 when you finish a long rest."
 							]
 						}
-					]
+					],
+					"data": {
+						"quickref": 3
+					}
 				},
 				{
 					"type": "section",
@@ -3197,9 +3206,12 @@
 					"page": 78,
 					"entries": [
 						"The rules are purposely open-ended concerning mundane tasks like tying knots, but sometimes knowing how well a knot was fashioned is important in a dramatic scene when someone is trying to untie a knot or slip out of one. Here's an optional rule for determining the effectiveness of a knot.",
-						"The creature who ties the knot makes an Intelligence (Sleight of Hand) check when doing so. The total of the check becomes the DC for an attempt to untie the knot with an Intelligence (Sleight of Hand) check or to slip out of it with a Dexterity (Acrobatics) check.",
-						"This rule intentionally links Sleight of Hand with Intelligence, rather than Dexterity. This is an example of how to apply the rule in the {@variantrule Skills with Different Abilities|phb|\"Variant: Skills with Different Abilities\"} section in chapter 7 of the player's handbook."
-					]
+						"The creature who ties the knot makes an Intelligence ({@skill Sleight of Hand}) check when doing so. The total of the check becomes the DC for an attempt to untie the knot with an Intelligence ({@skill Sleight of Hand}) check or to slip out of it with a Dexterity ({@skill Acrobatics}) check.",
+						"This rule intentionally links {@skill Sleight of Hand} with Intelligence, rather than Dexterity. This is an example of how to apply the rule in the {@variantrule Skills with Different Abilities|phb|\"Variant: Skills with Different Abilities\"} section in chapter 7 of the player's handbook."
+					],
+					"data": {
+						"quickref": 3
+					}
 				},
 				{
 					"type": "section",
@@ -3212,7 +3224,7 @@
 							"name": "Tools and Skills Together",
 							"page": 78,
 							"entries": [
-								"Tools have more specific applications than skills. The History skill applies to any event in the past. A tool such as a {@item forgery kit|phb} is used to make fake objects and little else. Thus, why would a character who has the opportunity to acquire one or the other want to gain a tool proficiency instead of proficiency in a skill?",
+								"Tools have more specific applications than skills. The {@skill History} skill applies to any event in the past. A tool such as a {@item forgery kit|phb} is used to make fake objects and little else. Thus, why would a character who has the opportunity to acquire one or the other want to gain a tool proficiency instead of proficiency in a skill?",
 								"To make tool proficiencies more attractive choices for the characters, you can use the methods outlined below.",
 								{
 									"type": "entries",
@@ -3227,7 +3239,7 @@
 									"name": "Added Benefit",
 									"page": 78,
 									"entries": [
-										"In addition, consider giving characters who have both a relevant skill and a relevant tool proficiency an added benefit on a successful check. This benefit might be in the form of more detailed information or could simulate the effect of a different sort of successful check. For example, a character proficient with {@item mason's tools|phb} makes a successful Wisdom (Perception) check to find a secret door in a stone wall. Not only does the character notice the door's presence, but you decide that the tool proficiency entitles the character to an automatic success on an Intelligence (Investigation) check to determine how to open the door."
+										"In addition, consider giving characters who have both a relevant skill and a relevant tool proficiency an added benefit on a successful check. This benefit might be in the form of more detailed information or could simulate the effect of a different sort of successful check. For example, a character proficient with {@item mason's tools|phb} makes a successful Wisdom ({@skill Perception}) check to find a secret door in a stone wall. Not only does the character notice the door's presence, but you decide that the tool proficiency entitles the character to an automatic success on an Intelligence ({@skill Investigation}) check to determine how to open the door."
 									]
 								}
 							]
@@ -4479,7 +4491,7 @@
 									"name": "Running a Simple Trap",
 									"page": 113,
 									"entries": [
-										"To prepare for using a simple trap in play, start by making note of the characters' passive Wisdom (Perception) scores. Most traps allow Wisdom (Perception) checks to detect their triggers or other elements that can tip off their presence. If you stop to ask players for this information, they might suspect a hidden danger.",
+										"To prepare for using a simple trap in play, start by making note of the characters' passive Wisdom ({@skill Perception}) scores. Most traps allow Wisdom ({@skill Perception}) checks to detect their triggers or other elements that can tip off their presence. If you stop to ask players for this information, they might suspect a hidden danger.",
 										"When a trap is triggered, apply its effects as specified in its description.",
 										"If the characters discover a trap, be open to adjudicating their ideas for defeating it. The trap's description is a starting point for countermeasures, rather than a complete definition.",
 										"To make it easier for you to describe what happens next, the players should be specific about how they want to defeat the trap. Simply stating the desire to make a check isn't helpful for you. Ask the players where their characters are positioned and what they intend to do to defeat the trap.",
@@ -4713,8 +4725,8 @@
 											]
 										},
 										"A trigger usually needs to be hidden to be effective. Otherwise, avoiding the trap is usually easy.",
-										"A trigger requires a Wisdom (Perception) check if simply spotting it reveals its nature. The characters can foil a pit trap hidden by a leaf-covered net if they spot the pit through a gap in the leaves. A trip wire is foiled if it is spotted, as is a pressure plate.",
-										"Other traps require careful inspection and deduction to notice. A doorknob opens a door when turned to the left, but activates a trap when turned to the right. Such a subtle trap requires a successful Intelligence (Investigation) check to notice. The trigger is obvious. Understanding its nature is not.",
+										"A trigger requires a Wisdom ({@skill Perception}) check if simply spotting it reveals its nature. The characters can foil a pit trap hidden by a leaf-covered net if they spot the pit through a gap in the leaves. A trip wire is foiled if it is spotted, as is a pressure plate.",
+										"Other traps require careful inspection and deduction to notice. A doorknob opens a door when turned to the left, but activates a trap when turned to the right. Such a subtle trap requires a successful Intelligence ({@skill Investigation}) check to notice. The trigger is obvious. Understanding its nature is not.",
 										"The DC of the check, regardless of its type, depends on the skill and care taken to conceal the trap. Most traps can be detected with a successful DC 20 check, but a crudely made or hastily built trap has a DC of 15. Exceptionally devious traps might have a DC of 25.",
 										"You must then put some thought into what the characters learn with a successful check. In most cases, the check reveals the trap. In other cases, it uncovers clues, but foiling the trap still requires some deduction. The characters might succeed on the check but still trigger the trap if they don't understand what they have learned."
 									]
@@ -4735,10 +4747,10 @@
 									"page": 117,
 									"entries": [
 										"Only one successful ability check is required to disarm a simple trap. Imagine how your trap operates, and then think about how the characters could overcome it. More than one kind of ability check might be possible. Some traps are so poorly concealed that they can be discovered or circumvented without active effort. For instance, a hidden pit trap is effectively disarmed as soon as the characters notice it. After that, they can simply walk around it, or they can climb down one side, walk across the bottom of the pit, and climb up the other side.",
-										"Once you determine how a trap can be disarmed or avoided, decide the appropriate ability and skill combinations that characters can use. A Dexterity check using {@item thieves' tools|phb}, a Strength (Athletics) check, and an Intelligence (Arcana) check are all commonly used for this purpose.",
+										"Once you determine how a trap can be disarmed or avoided, decide the appropriate ability and skill combinations that characters can use. A Dexterity check using {@item thieves' tools|phb}, a Strength ({@skill Athletics}) check, and an Intelligence ({@skill Arcana}) check are all commonly used for this purpose.",
 										"A Dexterity check using {@item thieves' tools|phb} can apply to any trap that has a mechanical element. {@item Thieves' tools|phb} can be used to disable a trip wire or a pressure plate, disassemble a poison needle mechanism, or clog a valve that leaks poisonous gas into a room.",
 										"A Strength check is often the method for thwarting traps that can be destroyed or prevented from operating through the use of brute force. A scything blade can be broken, a sliding block can be held in place, or a net can be torn apart.",
-										"A magic trap can be disabled by someone who can undermine the magic used to power it. Typically, a successful Intelligence (Arcana) check enables a character to figure out how a magic trap functions and how to negate its effect. For instance, the character could discover that a statue that belches a jet of magical flame can be disabled by shattering one of its glass eyes.",
+										"A magic trap can be disabled by someone who can undermine the magic used to power it. Typically, a successful Intelligence ({@skill Arcana}) check enables a character to figure out how a magic trap functions and how to negate its effect. For instance, the character could discover that a statue that belches a jet of magical flame can be disabled by shattering one of its glass eyes.",
 										"Once you know what kind of check is called for, you then determine what happens on a failed attempt to disable the trap. Depending on the kind of check involved and the nature of the trap, you might determine that any failed check has negative consequences-usually involving the triggering of the trap. At other times, you could assign a number that the check must exceed to prevent the trap from going off. If the total of the check is equal to or lower than that number, the trap activates."
 									]
 								},
@@ -4967,7 +4979,7 @@
 									"entries": [
 										"The advice on triggers given for simple traps also applies to complex traps, with one exception. Complex traps have multiple triggers, or are designed such that avoiding a trigger prevents intruders from reaching the area the trap guards. Other complex traps use magical triggers that activate on specific cues, such as when a door opens or someone enters an area without wearing the correct badge, amulet, or robe.",
 										"Look at your map and consider when you want the trap to spring into action. It's best to have a complex trap trigger after the characters have committed to exploring an area. A simple trap might activate when the characters open a door. A complex trap that triggers so early leaves the characters still outside the trapped room, in a place where they could decide to close the door and move on. A simple trap aims to keep intruders out. A complex trap wants to lure them in, so that when it activates, the intruders must deal with the trap before they can escape.",
-										"The trigger for a complex trap should be as foolproof as you can make it. A complex trap represents a serious expenditure of effort and magical power. No one builds such a trap and makes it easy to avoid. Wisdom (Perception) and Intelligence (Investigation) checks might be unable to spot a trigger, especially a magical one, but they can still give hints about the trap before it triggers. Bloodstains, ashes, gouges in the floor, and other clues of that sort can serve as evidence of the trap's presence."
+										"The trigger for a complex trap should be as foolproof as you can make it. A complex trap represents a serious expenditure of effort and magical power. No one builds such a trap and makes it easy to avoid. Wisdom ({@skill Perception}) and Intelligence ({@skill Investigation}) checks might be unable to spot a trigger, especially a magical one, but they can still give hints about the trap before it triggers. Bloodstains, ashes, gouges in the floor, and other clues of that sort can serve as evidence of the trap's presence."
 									]
 								},
 								{
@@ -5015,12 +5027,12 @@
 										"Shutting down one part of a complex trap usually requires multiple successes. As a default, it takes three successful checks or actions to disable an element. The first successful check might reduce the element's saving throw DC or attack bonus. The second successful check might halve the element's damage, and the final successful check shuts it down.",
 										"For elements that don't attack, allow each successful check to reduce that element's effectiveness by one-third. A lock's DC is decreased, or a gate opens wide enough to allow a Small character to squeeze through it. A mechanism pumping poison gas into the room becomes defective, causing the gas's damage to increase more slowly or not at all.",
 										"It takes time to disable a complex trap. Three characters can't make checks in rapid succession to disarm a complex trap in a matter of seconds. Each would get in another character's way and disrupt the effort. Once a character succeeds on a check, another character can't attempt the same check against the same trap element until the end of the successful character's next turn.",
-										"Not all of the characters' options need to be focused on stopping a trap from operating. Think of what characters can do to mitigate or avoid a trap's effects. Making the trap vulnerable to this sort of effort is a way to engage characters who might be ill-suited to confront the trap directly. A successful Intelligence (Religion) check might provide insight into the imagery displayed by a trap in a temple or shrine, giving other characters a clue about how and where to direct their efforts. A character could stand in front of a dart trap while holding a shield that the darts can target harmlessly, while other characters trigger that element as they work to disable it.",
+										"Not all of the characters' options need to be focused on stopping a trap from operating. Think of what characters can do to mitigate or avoid a trap's effects. Making the trap vulnerable to this sort of effort is a way to engage characters who might be ill-suited to confront the trap directly. A successful Intelligence ({@skill Religion}) check might provide insight into the imagery displayed by a trap in a temple or shrine, giving other characters a clue about how and where to direct their efforts. A character could stand in front of a dart trap while holding a shield that the darts can target harmlessly, while other characters trigger that element as they work to disable it.",
 										"If a character wants to try something you haven't allowed for, pick an ability, assess the chance of success, and ask for a roll.",
 										"Shutting down one part of a complex trap usually requires multiple successes. As a default, it takes three successful checks or actions to disable an element. The first successful check might reduce the element's saving throw DC or attack bonus. The second successful check might halve the element's damage, and the final successful check shuts it down.",
 										"For elements that don't attack, allow each successful check to reduce that element's effectiveness by one-third. A lock's DC is decreased, or a gate opens wide enough to allow a Small character to squeeze through it. A mechanism pumping poison gas into the room becomes defective, causing the gas's damage to increase more slowly or not at all.",
 										"It takes time to disable a complex trap. Three characters can't make checks in rapid succession to disarm a complex trap in a matter of seconds. Each would get in another character's way and disrupt the effort. Once a character succeeds on a check, another character can't attempt the same check against the same trap element until the end of the successful character's next turn.",
-										"Not all of the characters' options need to be focused on stopping a trap from operating. Think of what characters can do to mitigate or avoid a trap's effects. Making the trap vulnerable to this sort of effort is a way to engage characters who might be ill-suited to confront the trap directly. A successful Intelligence (Religion) check might provide insight into the imagery displayed by a trap in a temple or shrine, giving other characters a clue about how and where to direct their efforts. A character could stand in front of a dart trap while holding a shield that the darts can target harmlessly, while other characters trigger that element as they work to disable it.",
+										"Not all of the characters' options need to be focused on stopping a trap from operating. Think of what characters can do to mitigate or avoid a trap's effects. Making the trap vulnerable to this sort of effort is a way to engage characters who might be ill-suited to confront the trap directly. A successful Intelligence ({@skill Religion}) check might provide insight into the imagery displayed by a trap in a temple or shrine, giving other characters a clue about how and where to direct their efforts. A character could stand in front of a dart trap while holding a shield that the darts can target harmlessly, while other characters trigger that element as they work to disable it.",
 										{
 											"type": "inset",
 											"name": "Complex Traps and Legendary Monsters",
@@ -5238,7 +5250,7 @@
 											"name": "Resolution",
 											"page": 126,
 											"entries": [
-												"A character seeking to buy a magic item makes a Charisma (Persuasion) check to determine the quality of the seller found. The character gains a +1 bonus on the check for every workweek beyond the first that is spent seeking a seller and a +1 bonus for every additional 100 gp spent on the search, up to a maximum bonus of +10. The monetary cost includes a wealthy lifestyle, for a buyer must impress potential business partners.",
+												"A character seeking to buy a magic item makes a Charisma ({@skill Persuasion}) check to determine the quality of the seller found. The character gains a +1 bonus on the check for every workweek beyond the first that is spent seeking a seller and a +1 bonus for every additional 100 gp spent on the search, up to a maximum bonus of +10. The monetary cost includes a wealthy lifestyle, for a buyer must impress potential business partners.",
 												"As shown on the Buying Magic Items table, the total of the check dictates which table in the Dungeon Master's Guide to roll on to determine which items are on the market. Or you can roll for items from any table associated with a lower total on the Buying Magic Items table. As a further option to reflect the availability of items in your campaign, you can apply a -10 penalty for low magic campaigns or a +10 bonus for high magic campaigns. Furthermore, you can double magic item costs in low magic campaigns.",
 												"Using the Magic Item Price table, you then assign prices to the available items, based on their rarity. Halve the price of any consumable item, such as a potion or a scroll, when using the table to determine an asking price.",
 												"You have final say in determining which items are for sale and their final price, no matter what the tables say.",
@@ -5419,7 +5431,7 @@
 											"page": 126,
 											"entries": [
 												"Carousing covers a workweek of fine food, strong drink, and socializing. A character can attempt to carouse among lower-, middle-, or upper-class folk. A character can carouse with the lower class for 10 gp to cover expenses, or 50 gp for the middle class. Carousing with the upper class requires 250 gp for the workweek and access to the local nobility.",
-												"A character with the noble background can mingle with the upper class, but other characters can do so only if you judge that the character has made sufficient contacts. Alternatively, a character might use a {@item disguise Kit|phb} and the Deception skill to pass as a noble visiting from a distant city."
+												"A character with the noble background can mingle with the upper class, but other characters can do so only if you judge that the character has made sufficient contacts. Alternatively, a character might use a {@item disguise Kit|phb} and the {@skill Deception} skill to pass as a noble visiting from a distant city."
 											]
 										},
 										{
@@ -5427,7 +5439,7 @@
 											"name": "Resolution",
 											"page": 127,
 											"entries": [
-												"After a workweek of carousing, a character stands to make contacts within the selected social class. The character makes a Charisma (Persuasion) check using the Carousing table.",
+												"After a workweek of carousing, a character stands to make contacts within the selected social class. The character makes a Charisma ({@skill Persuasion}) check using the Carousing table.",
 												{
 													"type": "table",
 													"caption": "Carousing",
@@ -5770,7 +5782,7 @@
 														"*Halved for a consumable item like a potion or scroll"
 													]
 												},
-												"To complete a magic item, a character also needs whatever tool proficiency is appropriate, as for crafting a nonmagical object, or proficiency in the Arcana skill.",
+												"To complete a magic item, a character also needs whatever tool proficiency is appropriate, as for crafting a nonmagical object, or proficiency in the {@skill Arcana} skill.",
 												"If all the above requirements are met, the result of the process is a magic item of the desired sort."
 											]
 										},
@@ -5890,7 +5902,7 @@
 											"entries": [
 												"The character must make a series of checks, with the DC for all the checks chosen by the character according to the amount of profit sought from the crime.",
 												"The chosen DC can be 10, 15, 20, or 25. Successful completion of the crime yields a number of gold pieces, as shown on the Loot Value table.",
-												"To attempt a crime, the character makes three checks: Dexterity (Stealth), Dexterity using {@item thieves' tools|phb}, and the player's choice of Intelligence (Investigation), Wisdom (Perception), or Charisma (Deception).",
+												"To attempt a crime, the character makes three checks: Dexterity ({@skill Stealth}), Dexterity using {@item thieves' tools|phb}, and the player's choice of Intelligence ({@skill Investigation}), Wisdom ({@skill Perception}), or Charisma ({@skill Deception}).",
 												"If none of the checks are successful, the character is caught and jailed. The character must pay a fine equal to the profit the crime would have earned and must spend one week in jail for each 25 gp of the fine.",
 												"If only one check is successful, the heist fails but the character escapes.",
 												"If two checks are successful, the heist is a partial success, netting the character half the payout.",
@@ -6009,7 +6021,7 @@
 											"page": 130,
 											"entries": [
 												"The character must make a series of checks, with a DC determined at random based on the quality of the competition that the character runs into. Part of the risk of gambling is that one never knows who might end up sitting across the table.",
-												"The character makes three checks: Wisdom (Insight), Charisma (Deception), and Charisma (Intimidation). If the character has proficiency with an appropriate gaming set, that tool proficiency can replace the relevant skill in any of the checks. The DC for each of the checks is {@dice 5 + 2d10}; generate a separate DC for each one. Consult the Gambling Results table to see how the character did.",
+												"The character makes three checks: Wisdom ({@skill Insight}), Charisma ({@skill Deception}), and Charisma ({@skill Intimidation}). If the character has proficiency with an appropriate gaming set, that tool proficiency can replace the relevant skill in any of the checks. The DC for each of the checks is {@dice 5 + 2d10}; generate a separate DC for each one. Consult the Gambling Results table to see how the character did.",
 												{
 													"type": "table",
 													"caption": "Gambling Results",
@@ -6113,7 +6125,7 @@
 											"page": 131,
 											"entries": [
 												"The character must make a series of checks, with a DC determined at random based on the quality of the opposition that the character runs into. A big part of the challenge in pit fighting lies in the unknown nature of a character's opponents.",
-												"The character makes three checks: Strength (Athletics), Dexterity (Acrobatics), and a special Constitution check that has a bonus equal to a roll of the character's largest Hit Die (this roll doesn't spend that die). If desired, the character can replace one of these skill checks with an attack roll using one of the character's weapons. The DC for each of the checks is {@dice 5 + 2d10}; generate a separate DC for each one. Consult the Pit Fighting Results table to see how the character did.",
+												"The character makes three checks: Strength ({@skill Athletics}), Dexterity ({@skill Acrobatics}), and a special Constitution check that has a bonus equal to a roll of the character's largest Hit Die (this roll doesn't spend that die). If desired, the character can replace one of these skill checks with an attack roll using one of the character's weapons. The DC for each of the checks is {@dice 5 + 2d10}; generate a separate DC for each one. Consult the Pit Fighting Results table to see how the character did.",
 												{
 													"type": "table",
 													"caption": "Pit Fighting Results",
@@ -6248,7 +6260,7 @@
 											"name": "Resolution",
 											"page": 131,
 											"entries": [
-												"At the end of the required time, the character chooses to make either an Intelligence (Religion) check or a Charisma (Persuasion) check. The total of the check determines the benefits of service, as shown on the Religious Service table.",
+												"At the end of the required time, the character chooses to make either an Intelligence ({@skill Religion}) check or a Charisma ({@skill Persuasion}) check. The total of the check determines the benefits of service, as shown on the Religious Service table.",
 												{
 													"type": "table",
 													"caption": "Religious Service",
@@ -6447,7 +6459,7 @@
 											"name": "Resources",
 											"page": 133,
 											"entries": [
-												"Scribing a spell scroll takes an amount of time and money related to the level of the spell the character wants to scribe, as shown in the Spell Scroll Costs table. In addition, the character must have proficiency in the Arcana skill and must provide any material components required for the casting of the spell. Moreover, the character must have the spell prepared, or it must be among the character's known spells, in order to scribe a scroll of that spell.",
+												"Scribing a spell scroll takes an amount of time and money related to the level of the spell the character wants to scribe, as shown in the Spell Scroll Costs table. In addition, the character must have proficiency in the {@skill Arcana} skill and must provide any material components required for the casting of the spell. Moreover, the character must have the spell prepared, or it must be among the character's known spells, in order to scribe a scroll of that spell.",
 												"If the scribed spell is a cantrip, the version on the scroll works as if the caster were 1st level.",
 												{
 													"type": "table",
@@ -6587,7 +6599,7 @@
 											"name": "Resolution",
 											"page": 133,
 											"entries": [
-												"A character who wants to sell an item must make a Charisma (Persuasion) check to determine what kind of offer comes in. The character can always opt not to sell, instead forfeiting the workweek of effort and trying again later. Use the Magic Item Base Prices and Magic Item Offer tables to determine the sale price.",
+												"A character who wants to sell an item must make a Charisma ({@skill Persuasion}) check to determine what kind of offer comes in. The character can always opt not to sell, instead forfeiting the workweek of effort and trying again later. Use the Magic Item Base Prices and Magic Item Offer tables to determine the sale price.",
 												{
 													"type": "table",
 													"caption": "Magic Item Base Prices",
@@ -6794,7 +6806,7 @@
 											"name": "Resolution",
 											"page": 134,
 											"entries": [
-												"To determine how much money a character earns, the character makes an ability check: Strength (Athletics), Dexterity (Acrobatics), Intelligence using a set of tools, Charisma (Performance), or Charisma using a musical instrument. Consult the Wages table to see how much money is generated according to the total of the check.",
+												"To determine how much money a character earns, the character makes an ability check: Strength ({@skill Athletics}), Dexterity ({@skill Acrobatics}), Intelligence using a set of tools, Charisma ({@skill Performance}), or Charisma using a musical instrument. Consult the Wages table to see how much money is generated according to the total of the check.",
 												{
 													"type": "table",
 													"caption": "Wages",

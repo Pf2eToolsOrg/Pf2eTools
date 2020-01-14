@@ -866,6 +866,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 	}
 
 	.out-roll .out-roll-item {
+		position: relative;
 		margin: 1px 3px;
 		padding: 1px 3px;
 		width: calc(100% - 6px);
@@ -881,10 +882,12 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 	.out-roll-item-button-wrp {
 		display: none;
+		position: absolute;
 	}
 
 	.out-roll-item:hover .out-roll-item-button-wrp {
 		display: flex;
+		right: 3px;
 	}
 
 	.btn-copy-roll {

@@ -50,9 +50,7 @@ class ItemsPage {
 		if (item.noDisplay) return null;
 		Renderer.item.enhanceItem(item);
 
-		if (!isExcluded) {
-			this._pageFilter.addToFilters(item);
-		}
+		this._pageFilter.addToFilters(item, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -377,6 +375,25 @@ async function pPopulateTablesAndFilters (data) {
 			await ListUtil.pLoadState();
 			RollerUtil.addListRollButton();
 			ListUtil.addListShowHide();
+
+			ListUtil.bindShowTableButton(
+				"btn-show-table",
+				"Items",
+				itemList,
+				{
+					name: {name: "Name", transform: true},
+					source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>`},
+					rarity: {name: "Rarity", transform: true},
+					_type: {name: "Type", transform: it => it._typeHtml},
+					_attunement: {name: "Attunement", transform: it => it._attunement ? it._attunement.slice(1, it._attunement.length - 1) : ""},
+					_properties: {name: "Properties", transform: it => Renderer.item.getDamageAndPropertiesText(it).filter(Boolean).join(", ")},
+					_weight: {name: "Weight", transform: it => Parser.itemWeightToFull(it)},
+					_value: {name: "Value", transform: it => Parser.itemValueToFull(it)},
+					_entries: {name: "Text", transform: (it) => Renderer.item.getRenderedEntries(it, true), flex: 3}
+				},
+				{generator: ListUtil.basicFilterGenerator},
+				(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source)
+			);
 
 			mundaneList.init();
 			magicList.init();

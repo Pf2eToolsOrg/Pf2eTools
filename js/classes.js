@@ -958,12 +958,12 @@ class ClassesPage extends BaseComponent {
 	async _render_pInitSubclassControls ($wrp) {
 		const cls = this.activeClass;
 
-		const $btnSelAll = $(`<button class="btn btn-xs btn-default" title="Select All (SHIFT to include most recent UA/etc.; ALT to select official only)"><span class="glyphicon glyphicon-check"/></button>`)
+		const $btnSelAll = $(`<button class="btn btn-xs btn-default" title="Select All (SHIFT to include most recent UA/etc.; CTRL to select official only)"><span class="glyphicon glyphicon-check"/></button>`)
 			.click(evt => {
 				const allStateKeys = cls.subclasses.map(sc => UrlUtil.getStateKeySubclass(sc));
 				if (evt.shiftKey) {
 					this._doSelectAllSubclasses();
-				} else if (evt.altKey) {
+				} else if (evt.ctrlKey) {
 					const nxtState = {};
 					allStateKeys.forEach(k => nxtState[k] = false);
 					this._listSubclass.visibleItems
@@ -989,7 +989,7 @@ class ClassesPage extends BaseComponent {
 		];
 		const setFilterSet = ix => {
 			const filterSet = filterSets[ix];
-			const boxSubhashes = this._filterBox.getBoxSubHashes();
+			const boxSubhashes = this._filterBox.getBoxSubHashes() || [];
 			this._filterBox.setFromSubHashes([...boxSubhashes, ...filterSet.subHashes].filter(Boolean), true);
 			$selFilterPreset.val("-1");
 		};

@@ -27,7 +27,7 @@ class RenderCultsBoons {
 		const renderer = Renderer.get().setFirstSection(true);
 
 		const renderStack = [];
-		it._displayName = it._displayName || `Demonic Boon: ${it.name}`;
+		it._displayName = it._displayName || `${it.type || "Demonic Boon"}: ${it.name}`;
 		Renderer.cultboon.doRenderBoonParts(it, renderer, renderStack);
 		renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
 		return $$`

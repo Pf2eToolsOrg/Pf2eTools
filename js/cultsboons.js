@@ -1,16 +1,11 @@
 "use strict";
 
-function cultBoonTypeToFull (type) {
-	return type === "cult" ? "Cult" : "Demonic Boon";
-}
-
 class CultsBoonsPage extends ListPage {
 	constructor () {
 		const sourceFilter = SourceFilter.getInstance();
 		const typeFilter = new Filter({
 			header: "Type",
-			items: ["boon", "cult"],
-			displayFn: cultBoonTypeToFull
+			items: ["Cult", "Demonic Boon"]
 		});
 
 		super({
@@ -30,12 +25,16 @@ class CultsBoonsPage extends ListPage {
 		});
 
 		this._sourceFilter = sourceFilter;
+		this._typeFilter = typeFilter;
 	}
 
 	getListItem (it, bcI, isExcluded) {
+		it.type = it.type || (it.__prop === "cult" ? "Cult" : "Demonic Boon");
+
 		if (!isExcluded) {
 			// populate filters
 			this._sourceFilter.addItem(it.source);
+			this._typeFilter.addItem(it.type);
 		}
 
 		const eleLi = document.createElement("li");
@@ -43,10 +42,9 @@ class CultsBoonsPage extends ListPage {
 
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
-		const type = cultBoonTypeToFull(it.__prop);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="col-3 text-center pl-0">${type}</span>
+			<span class="col-3 text-center pl-0">${it.type}</span>
 			<span class="bold col-7">${it.name}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
@@ -58,7 +56,7 @@ class CultsBoonsPage extends ListPage {
 			{
 				hash,
 				source,
-				type,
+				type: it.type,
 				isExcluded,
 				uniqueId: it.uniqueId ? it.uniqueId : bcI
 			}
@@ -77,7 +75,7 @@ class CultsBoonsPage extends ListPage {
 			return this._filterBox.toDisplay(
 				f,
 				cb.source,
-				cb.__prop
+				cb.type
 			);
 		});
 		FilterBox.selectFirstVisible(this._dataList);
@@ -88,7 +86,7 @@ class CultsBoonsPage extends ListPage {
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="col-3 text-center pl-0">${cultBoonTypeToFull(it.__prop)}</span>
+				<span class="col-3 text-center pl-0">${it.type}</span>
 				<span class="bold col-9 pr-0">${it.name}</span>
 			</a>
 		</li>`)

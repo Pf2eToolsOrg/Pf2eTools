@@ -136,6 +136,8 @@ class NavBar {
 		addLi(ulUtils, "makecards.html", "RPG Cards JSON Builder");
 		addLi(ulUtils, "converter.html", "Text Converter");
 		addDivider(ulUtils);
+		addLi(ulUtils, "plutonium.html", "Plutonium (Foundry Module) Features");
+		addDivider(ulUtils);
 		addLi(ulUtils, "roll20.html", "Roll20 Script Help");
 		addLi(ulUtils, "makeshaped.html", "Roll20 Shaped Sheet JS Builder");
 		addDivider(ulUtils);

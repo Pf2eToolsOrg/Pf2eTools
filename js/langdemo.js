@@ -4,7 +4,15 @@ class LangDemoUi {
 	static init () {
 		$(`#btn__run`).click(() => LangDemoUi.pRun());
 		$(`#btn__validate`).click(async () => {
-			const msg = await Ro_Lang.pValidate(LangDemoUi._$ipt.val());
+			const msg = await Ro_Lang.pValidate(LangDemoUi._$ipt.val(), LangDemoUi.RESOLVER);
+			LangDemoUi._handleInvalidMessage(msg);
+		});
+		$(`#btn__resolve_dynamics`).click(async () => {
+			const val = await Ro_Lang.pResolveDynamics(LangDemoUi._$ipt.val(), LangDemoUi.RESOLVER);
+			LangDemoUi._$ipt.val(val);
+		});
+		$(`#btn__validate_dynamics`).click(async () => {
+			const msg = await Ro_Lang.pValidateDynamics(LangDemoUi._$ipt.val(), LangDemoUi.RESOLVER);
 			LangDemoUi._handleInvalidMessage(msg);
 		});
 
@@ -84,7 +92,7 @@ class LangDemoUi {
 		const ipt = LangDemoUi._$ipt.val().trim();
 
 		// Check if valid, but continue execution regardless to ease debugging
-		const invalidMsg = await Ro_Lang.pValidate(ipt);
+		const invalidMsg = await Ro_Lang.pValidate(ipt, LangDemoUi.RESOLVER);
 		if (invalidMsg) LangDemoUi._handleInvalidMessage(invalidMsg);
 
 		const $dispOutLexed = $(`#out_lexed`).html("");
@@ -200,5 +208,6 @@ else:
 		code: `if {{user_bool| true = Good| false = Evil |true|false|true=Lawful}}: 2`
 	}
 ];
+LangDemoUi.RESOLVER = {has: () => true, get: (path) => `store.${path}`};
 
 window.addEventListener("load", () => LangDemoUi.init());
