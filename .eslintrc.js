@@ -177,6 +177,7 @@ module.exports = {
 		"require-atomic-updates": "off",
 		"no-console": "error",
 		"prefer-template": "error",
-		"quotes": ["error", "double", {"allowTemplateLiterals": true}]
+		"quotes": ["error", "double", {"allowTemplateLiterals": true}],
+		"no-var": "error"
 	}
 };
