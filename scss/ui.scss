@@ -4,13 +4,43 @@ Shared UI components
 
 @import 'vars';
 
-/* Misc/Shared */
+/* region Misc/Shared */
 .ui__ {
 	&btn-xxl-square {
 		width: 110px;
 		height: 110px;
 	}
+
+	&ipt-decorated {
+		&--left {
+			padding-left: 22px !important;
+		}
+
+		&--right {
+			padding-right: 22px !important;
+		}
+	}
+
+	&ipt-decoration {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		opacity: 0.5;
+
+		> .glyphicon {
+			top: 0;
+		}
+
+		&--left {
+			left: 5px;
+		}
+
+		&--right {
+			right: 5px;
+		}
+	}
 }
+/* endregion */
 
 /* Source overlay */
 .ui-source__ {

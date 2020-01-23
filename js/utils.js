@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.94.10"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.95.0"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -233,33 +233,60 @@ CleanUtil = {
 		return CleanUtil.getCleanString(str);
 	},
 
-	getCleanString (str) {
-		str = str.replace(CleanUtil.REPLACEMENT_REGEX, (match) => CleanUtil.REPLACEMENTS[match]);
-		return str
+	/**
+	 * @param str
+	 * @param isJsonDump If the string is intended to be re-parsed by `JSON.parse`
+	 */
+	getCleanString (str, isJsonDump = true) {
+		str = str
+			.replace(CleanUtil.SHARED_REPLACEMENTS_REGEX, (match) => CleanUtil.SHARED_REPLACEMENTS[match])
 			.replace(/\u00AD/g, "") // soft hyphens
-			.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1")
 			.replace(/\s*(\.\s*\.\s*\.)/g, "$1");
-	},
 
-	getReplacedQuotesText (str) {
-		return str
-			.replace(/’/g, "'")
-			.replace(/[“”]/g, `"`)
-			.replace(/…/g, `...`)
+		if (isJsonDump) {
+			return str
+				.replace(CleanUtil.STR_REPLACEMENTS_REGEX, (match) => CleanUtil.STR_REPLACEMENTS[match])
+				.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1");
+		} else {
+			return str
+				.replace(CleanUtil.JSON_REPLACEMENTS_REGEX, (match) => CleanUtil.JSON_REPLACEMENTS[match])
+				.replace(/\s*([\u2014\u2013])\s*/g, "$1");
+		}
 	}
 };
-CleanUtil.REPLACEMENTS = {
+CleanUtil.SHARED_REPLACEMENTS = {
+	"’": "'",
+	"…": "...",
+	" ": " ", // non-breaking space
+	"ﬀ": "ff",
+	"ﬃ": "ffi",
+	"ﬄ": "ffl",
+	"ﬁ": "fi",
+	"ﬂ": "fl",
+	"Ĳ": "IJ",
+	"ĳ": "ij",
+	"Ǉ": "LJ",
+	"ǈ": "Lj",
+	"ǉ": "lj",
+	"Ǌ": "NJ",
+	"ǋ": "Nj",
+	"ǌ": "nj",
+	"ﬅ": "ft"
+};
+CleanUtil.STR_REPLACEMENTS = {
 	"—": "\\u2014",
 	"–": "\\u2013",
 	"−": "\\u2212",
-	"’": "'",
 	"“": `\\"`,
-	"”": `\\"`,
-	"…": "...",
-	" ": " ", // non-breaking space
-	"ﬁ": "fi"
+	"”": `\\"`
 };
-CleanUtil.REPLACEMENT_REGEX = new RegExp(Object.keys(CleanUtil.REPLACEMENTS).join("|"), "g");
+CleanUtil.JSON_REPLACEMENTS = {
+	"“": `"`,
+	"”": `"`
+};
+CleanUtil.SHARED_REPLACEMENTS_REGEX = new RegExp(Object.keys(CleanUtil.SHARED_REPLACEMENTS).join("|"), "g");
+CleanUtil.STR_REPLACEMENTS_REGEX = new RegExp(Object.keys(CleanUtil.STR_REPLACEMENTS).join("|"), "g");
+CleanUtil.JSON_REPLACEMENTS_REGEX = new RegExp(Object.keys(CleanUtil.JSON_REPLACEMENTS).join("|"), "g");
 
 // PARSING =============================================================================================================
 Parser = {};
@@ -609,25 +636,59 @@ Parser.acToFull = function (ac) {
 
 	const renderer = Renderer.get();
 	let stack = "";
+	let inBraces = false;
 	for (let i = 0; i < ac.length; ++i) {
 		const cur = ac[i];
 		const nxt = ac[i + 1];
 
 		if (cur.ac) {
-			if (i === 0 && cur.braces) stack += "(";
+			const isNxtBraces = nxt && nxt.braces;
+
+			if (i === 0 && cur.braces) {
+				stack += "(";
+				inBraces = true;
+			}
+
 			stack += cur.ac;
-			if (cur.from) stack += ` (${cur.from.map(it => renderer.render(it)).join(", ")})`;
+
+			if (cur.from) {
+				// always brace nested braces
+				if (cur.braces) {
+					stack += " (";
+				} else {
+					stack += inBraces ? "; " : " (";
+				}
+
+				inBraces = true;
+
+				stack += cur.from.map(it => renderer.render(it)).join(", ");
+
+				if (cur.braces) {
+					stack += ")";
+				} else if (!isNxtBraces) {
+					stack += ")";
+					inBraces = false;
+				}
+			}
+
 			if (cur.condition) stack += ` ${renderer.render(cur.condition)}`;
-			if (cur.braces) stack += ")";
+
+			if (cur.braces) {
+				if (!isNxtBraces) {
+					stack += ")";
+					inBraces = false;
+				}
+			}
 		} else {
 			stack += cur;
 		}
 
 		if (nxt) {
-			if (nxt.braces) stack += " (";
+			if (nxt.braces) stack += inBraces ? "; " : " (";
 			else stack += ", ";
 		}
 	}
+	if (inBraces) stack += ")";
 
 	return stack.trim();
 };
@@ -844,6 +905,14 @@ Parser.spSchoolAbvToShort = function (school) {
 	if (Parser.SP_SCHOOL_ABV_TO_SHORT[school]) return out;
 	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[school]) return BrewUtil.homebrewMeta.spellSchools[school].short;
 	return out;
+};
+
+Parser.spSchoolAbvToStyle = function (school) { // For homebrew
+	const rawColor = MiscUtil.get(BrewUtil, "homebrewMeta", "spellSchools", school, "color");
+	if (!rawColor || !rawColor.trim()) return "";
+	const validColor = BrewUtil.getValidColor(rawColor);
+	if (validColor.length) return `style="color: #${validColor}"`;
+	return "";
 };
 
 Parser.getOrdinalForm = function (i) {
@@ -3494,7 +3563,7 @@ ListUtil = {
 
 	_firstInit: true,
 	initList (listOpts) {
-		const $iptSearch = $("#search");
+		const $iptSearch = $("#lst__search");
 		const $wrpList = $(`ul.list.${listOpts.listClass}`);
 		const list = new List({$iptSearch, $wrpList, ...listOpts});
 
@@ -3502,6 +3571,19 @@ ListUtil = {
 			$iptSearch.val("");
 			list.reset();
 		});
+
+		// region Magnifying glass/clear button
+		const $btnSearchClear = $(`#lst__search-glass`)
+			.click(() => $iptSearch.val("").change().keydown().keyup());
+		const _handleSearchChange = () => {
+			setTimeout(() => {
+				if ($iptSearch.val().length) $btnSearchClear.removeClass("no-events").addClass("clickable").title("Clear").html(`<span class="glyphicon glyphicon-remove"/>`);
+				else $btnSearchClear.addClass("no-events").removeClass("clickable").title(null).html(`<span class="glyphicon glyphicon-search"/>`);
+			})
+		};
+		const handleSearchChange = MiscUtil.throttle(_handleSearchChange, 50);
+		$iptSearch.on("keydown", handleSearchChange);
+		// endregion
 
 		ListUtil.bindEscapeKey(list, $iptSearch);
 
@@ -3992,7 +4074,10 @@ ListUtil = {
 			return null;
 		}).filter(it => it);
 
-		await Promise.all(toLoad.map(it => ListUtil.pDoSublistAdd(it.index, false, it.addCount, it.data)));
+		// Do this in series to ensure sublist items are added before having their counts updated
+		//  This only becomes a problem when there are duplicate items in the list, but as we're not finalizing, the
+		//  performance implications are negligible.
+		for (const it of toLoad) await ListUtil.pDoSublistAdd(it.index, false, it.addCount, it.data);
 		await ListUtil._pFinaliseSublist(true);
 	},
 
@@ -4348,6 +4433,7 @@ function getFilterWithMergedOptions (baseOptions, addOptions) {
  * @param [opts.isCompact] True if this box should have a compact/reduced UI.
  */
 async function pInitFilterBox (opts) {
+	opts.$iptSearch = $(`#lst__search`);
 	opts.$wrpFormTop = $(`#filter-search-input-group`).title("Hotkey: f");
 	opts.$btnReset = $(`#reset`);
 	const filterBox = new FilterBox(opts);
@@ -4591,7 +4677,7 @@ UrlUtil.PG_QUICKREF = "quickreference.html";
 UrlUtil.PG_MAKE_SHAPED = "makeshaped.html";
 UrlUtil.PG_MANAGE_BREW = "managebrew.html";
 UrlUtil.PG_MAKE_BREW = "makebrew.html";
-UrlUtil.PG_DEMO = "demo.html";
+UrlUtil.PG_DEMO_RENDER = "renderdemo.html";
 UrlUtil.PG_TABLES = "tables.html";
 UrlUtil.PG_VEHICLES = "vehicles.html";
 UrlUtil.PG_CHARACTERS = "characters.html";
@@ -4890,6 +4976,7 @@ DataUtil = {
 						if (entry._copy) {
 							switch (prop) {
 								case "monster": return DataUtil.monster.pMergeCopy(flatDependencyData, entry, options);
+								case "spell": return DataUtil.spell.pMergeCopy(flatDependencyData, entry, options);
 								default: throw new Error(`No dependency _copy merge strategy specified for property "${prop}"`);
 							}
 						}
@@ -4906,6 +4993,7 @@ DataUtil = {
 						if (entry._copy) {
 							switch (prop) {
 								case "monster": return DataUtil.monster.pMergeCopy(data[prop], entry, options);
+								case "spell": return DataUtil.spell.pMergeCopy(data[prop], entry, options);
 								case "item": return DataUtil.item.pMergeCopy(data[prop], entry, options);
 								case "background": return DataUtil.background.pMergeCopy(data[prop], entry, options);
 								case "race": return DataUtil.race.pMergeCopy(data[prop], entry, options);
@@ -5018,6 +5106,11 @@ DataUtil = {
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`);
 				if (!index[value]) throw new Error(`Bestiary index did not contain source "${value}"`);
 				return `${Renderer.get().baseUrl}data/bestiary/${index[value]}`;
+			}
+			case "spell": {
+				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/index.json`);
+				if (!index[value]) throw new Error(`Spell index did not contain source "${value}"`);
+				return `${Renderer.get().baseUrl}data/spells/${index[value]}`;
 			}
 			default: throw new Error(`Could not get loadable URL for \`${JSON.stringify({key, value})}\``);
 		}
@@ -5495,6 +5588,16 @@ DataUtil = {
 	},
 
 	spell: {
+		_MERGE_REQUIRES_PRESERVE: {
+			page: true,
+			otherSources: true,
+			srd: true
+		},
+		_mergeCache: {},
+		async pMergeCopy (spellList, spell, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.spell, UrlUtil.PG_SPELLS, spellList, spell, options);
+		},
+
 		async pLoadAll () {
 			const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/index.json`);
 			const allData = await Promise.all(Object.entries(index).map(async ([source, file]) => {
@@ -5509,6 +5612,8 @@ DataUtil = {
 		_MERGE_REQUIRES_PRESERVE: {
 			lootTables: true,
 			tier: true,
+			page: true,
+			otherSources: true,
 			srd: true
 		},
 		_mergeCache: {},
@@ -5519,6 +5624,8 @@ DataUtil = {
 
 	background: {
 		_MERGE_REQUIRES_PRESERVE: {
+			page: true,
+			otherSources: true,
 			srd: true
 		},
 		_mergeCache: {},
@@ -5530,6 +5637,8 @@ DataUtil = {
 	race: {
 		_MERGE_REQUIRES_PRESERVE: {
 			subraces: true,
+			page: true,
+			otherSources: true,
 			srd: true
 		},
 		_mergeCache: {},
@@ -5707,7 +5816,7 @@ RollerUtil = {
 		if (typeof colLabel !== "string") return false;
 		if (/^{@dice [^}]+}$/.test(colLabel.trim())) return true;
 		colLabel = Renderer.stripTags(colLabel);
-		return !!Renderer.dice.parseToTree(colLabel);
+		return !!Renderer.dice.lang.getTree3(colLabel);
 	},
 
 	_DICE_REGEX_STR: "((([1-9]\\d*)?d([1-9]\\d*)(\\s*?[-+×x*÷/]\\s*?(\\d,\\d|\\d)+(\\.\\d+)?)?))+?"
@@ -6128,7 +6237,7 @@ BrewUtil = {
 						case UrlUtil.PG_MAKE_SHAPED: return ["spell", "creature"];
 						case UrlUtil.PG_MANAGE_BREW:
 						case UrlUtil.PG_MAKE_BREW:
-						case UrlUtil.PG_DEMO: return BrewUtil._DIRS;
+						case UrlUtil.PG_DEMO_RENDER: return BrewUtil._DIRS;
 						case UrlUtil.PG_VEHICLES: return ["vehicle"];
 						case UrlUtil.PG_ACTIONS: return ["action"];
 						case UrlUtil.PG_CULTS_BOONS: return ["cult", "boon"];
@@ -6417,7 +6526,7 @@ BrewUtil = {
 						const pDeleteFn = BrewUtil._getPDeleteFunction(it.category_raw);
 						await pDeleteFn(it.uniqueId);
 					}));
-					BrewUtil._lists.forEach(l => l.update());
+					if (BrewUtil._lists) BrewUtil._lists.forEach(l => l.update());
 					await StorageUtil.pSet(HOMEBREW_STORAGE, BrewUtil.homebrew);
 					populateList();
 					await BrewUtil._pRenderBrewScreen_pRefreshBrewList($appendTo, $overlay, $brewList);
@@ -6488,7 +6597,7 @@ BrewUtil = {
 						case UrlUtil.PG_MAKE_SHAPED: return ["spell", "creature"];
 						case UrlUtil.PG_MANAGE_BREW:
 						case UrlUtil.PG_MAKE_BREW:
-						case UrlUtil.PG_DEMO: return BrewUtil._STORABLE;
+						case UrlUtil.PG_DEMO_RENDER: return BrewUtil._STORABLE;
 						case UrlUtil.PG_VEHICLES: return ["vehicle"];
 						case UrlUtil.PG_ACTIONS: return ["action"];
 						case UrlUtil.PG_CULTS_BOONS: return ["cult", "boon"];
@@ -6863,7 +6972,7 @@ BrewUtil = {
 				break;
 			case UrlUtil.PG_MANAGE_BREW:
 			case UrlUtil.PG_MAKE_BREW:
-			case UrlUtil.PG_DEMO:
+			case UrlUtil.PG_DEMO_RENDER:
 			case "NO_PAGE":
 				break;
 			default:
@@ -7564,6 +7673,7 @@ ExcludeUtil = {
 	_excludes: null,
 
 	async pInitialise () {
+		ExcludeUtil.pSave = MiscUtil.throttle(ExcludeUtil._pSave, 50);
 		try {
 			ExcludeUtil._excludes = await StorageUtil.pGet(EXCLUDES_STORAGE) || [];
 		} catch (e) {
@@ -7589,7 +7699,7 @@ ExcludeUtil = {
 
 	async pSetList (toSet) {
 		ExcludeUtil._excludes = toSet;
-		await ExcludeUtil._pSave();
+		await ExcludeUtil.pSave();
 	},
 
 	_excludeCount: 0,
@@ -7611,20 +7721,20 @@ ExcludeUtil = {
 		}
 	},
 
-	async pAddExclude (name, category, source) {
+	addExclude (name, category, source) {
 		if (!ExcludeUtil._excludes.find(row => row.source === source && row.category === category && row.name === name)) {
 			ExcludeUtil._excludes.push({name, category, source});
-			await ExcludeUtil._pSave();
+			ExcludeUtil.pSave();
 			return true;
 		}
 		return false;
 	},
 
-	async pRemoveExclude (name, category, source) {
+	removeExclude (name, category, source) {
 		const ix = ExcludeUtil._excludes.findIndex(row => row.source === source && row.category === category && row.name === name);
 		if (~ix) {
 			ExcludeUtil._excludes.splice(ix, 1);
-			await ExcludeUtil._pSave();
+			ExcludeUtil.pSave();
 		}
 	},
 
@@ -7632,9 +7742,12 @@ ExcludeUtil = {
 		return StorageUtil.pSet(EXCLUDES_STORAGE, ExcludeUtil._excludes);
 	},
 
-	async pResetExcludes () {
+	// The throttled version, available post-initialisation
+	async pSave () { /* no-op */ },
+
+	resetExcludes () {
 		ExcludeUtil._excludes = [];
-		await ExcludeUtil._pSave();
+		ExcludeUtil.pSave();
 	}
 };
 

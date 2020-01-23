@@ -340,11 +340,11 @@ class TableDiceTest {
 			cleanHeader.split(";").forEach(rollable => {
 				if (rollable.includes("#$prompt_")) hasPrompt = true;
 
-				const rollTree = Renderer.dice.parseToTree(rollable);
+				const rollTree = Renderer.dice.lang.getTree3(rollable);
 				if (rollTree) {
-					const genRolls = rollTree.nxt();
-					let gen;
-					while (!(gen = genRolls.next()).done) possibleRolls.add(gen.value);
+					const min = rollTree.min();
+					const max = rollTree.max();
+					for (let i = min; i < max + 1; ++i) possibleRolls.add(i);
 				} else {
 					if (!hasPrompt) errors.push(`"${obj.colLabels[0]}" was not a valid rollable header?!`);
 				}

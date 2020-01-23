@@ -1132,7 +1132,7 @@ Filters -- completely overhauled internally:
 - Added background filter to Spells page
 - Class/subclass features searched in Omnisearch can now be hover'd
 - Magic item variants (e.g. "+3 weapon") can now be blacklisted
-- Added the ability to embed spells inline (see the renderer demo https://5e.tools/demo.html)
+- Added the ability to embed spells inline (see the renderer demo https://5e.tools/renderdemo.html)
 - Added missing OotA appendix
 - Added "Open Page" button to sticky'd hover windows, in title bar
 - Updated Roll20 SKT and CoS modules
@@ -2113,6 +2113,60 @@ Filters -- completely overhauled internally:
 			date: "2020-01-14",
 			txt: `
 - Added UA 2020 Subclasses, Part 1
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.94.11",
+			date: "2020-01-16",
+			txt: `
+- Added &quot;Clear&quot; X button to list pages search bar
+- Fixed Homebrew Builder tabs disappearing
+- Fixed Bestiary pinned list/current encounter items merging on save/load
+- Added functional inverse of Content Blacklist's &quot;Exclude All UA/etc.&quot; button, which removes all the blacklist items added by the existing button. Additionally, improved the performance of adding multiple items to the list.
+- Text Converter
+  - Rewrote UI code, allowing for easier changes and expansion in the future
+  - Added an optional &quot;separator&quot; (default is &quot;===&quot;, which can be changed in the sidebar) may be placed between multiple chunks of to-be-converted content to convert them all at the same time
+- Fixed Homebrew Manager page crashing when attempting to delete individual homebrew items from a source
+- (Homebrew) Prerequisite subclasses may now be displayed similarly to how classes could be displayed (note that a class prerequisite becomes a soft requirement in this case)
+- (Homebrew) Custom spell school definitions may now optionally include a color, which is reflected in the list view
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.94.12",
+			date: "2020-01-17",
+			txt: `
+- Text converter now tags all known magic armor variants, and a few unknown ones besides
+- Improved Text Converter digraph handling
+- Fixed DM Screen failing to load homebrew books
+- Fixed rare crash when loading filter box state
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.94.13",
+			date: "2020-01-17",
+			txt: `
+- Fixed Races page Trait filter
+- Fixed Items page Cost filter
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.95.0",
+			date: "2020-01-23",
+			title: "A Big Fan of Dic(e)",
+			txt: `
+- Overhauled dice rolling system (use "/help" in the dice roller for the full how-to):
+  - Added support for re-rolling dice (e.g. for Great Weapon Master)
+  - Added support for exploding dice
+  - Added support for "ceil" and "round" functions
+  - Added support for unary minuses
+
+- Fixed Text Converter failing to load
+- Fixed RPG Cards Exporter adding duplicates of cards instead of increasing their count in certain cases
+- Fixed rare case where Bestiary CR displayed in list could fail to match that displayed in statblock
+- Fixed CTRL modifiers being ignored when CTRL-clicking dice rollers
+- (Homebrew) Added "_copy" support for spells
+- (Homebrew) Fixed Bestiary creature footers never being rendered
+- (Homebrew) Improved rendering of complex creature armor text
 - (Fixed typos/added tags)`
 		},
 	];

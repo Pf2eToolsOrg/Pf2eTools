@@ -41,6 +41,7 @@ function onJsonLoad (data) {
 			} else {
 				$(`.contents-item`).show();
 			}
+			window.dispatchEvent(new Event("toolsLoaded"));
 		});
 }
 
@@ -53,7 +54,7 @@ function handleBrew (homebrew) {
 function addAdventures (data) {
 	if (!data.adventure || !data.adventure.length) return;
 
-	adventures = adventures.concat(data.adventure);
+	adventures.push(...data.adventure);
 	BookUtil.bookIndex = adventures;
 
 	const adventuresList = $("ul.contents");

@@ -1148,5 +1148,7 @@ window.onload = function load () {
 	});
 	$(`#selectAll`).change(function () {
 		$(`.shaped-source:not([disabled])`).prop("checked", $(this).prop("checked"));
-	})
+	});
+
+	window.dispatchEvent(new Event("toolsLoaded"));
 };

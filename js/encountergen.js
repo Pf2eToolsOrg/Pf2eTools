@@ -60,6 +60,8 @@ function onJsonLoad (data) {
 	list.init();
 	RollerUtil.addListRollButton();
 	window.onhashchange();
+
+	window.dispatchEvent(new Event("toolsLoaded"));
 }
 
 function showHideList (ele) {

@@ -358,7 +358,7 @@ class List {
 	// endregion
 
 	static _getCleanSearchTerm (str) {
-		return str.trim().toLowerCase().split(/\s+/g).join(" ");
+		return (str || "").trim().toLowerCase().split(/\s+/g).join(" ");
 	}
 }
 List._DEFAULTS = {

@@ -20,7 +20,7 @@ class Ro_Token {
 
 	toString () {
 		if (this._asString) return this._asString;
-		return this.toDebugString;
+		return this.toDebugString();
 	}
 
 	toDebugString () { return `${this.type}${this.value ? ` :: ${this.value}` : ""}` }
@@ -55,7 +55,7 @@ Ro_Token.ADD = Ro_Token._new("ADD", "+");
 Ro_Token.SUB = Ro_Token._new("SUB", "-");
 Ro_Token.MULT = Ro_Token._new("MULT", "*");
 Ro_Token.DIV = Ro_Token._new("DIV", "/");
-Ro_Token.POW = Ro_Token._new("POW", "*");
+Ro_Token.POW = Ro_Token._new("POW", "^");
 Ro_Token.COLON = Ro_Token._new("COLON", ":");
 Ro_Token.ASSIGN = Ro_Token._new("ASSIGN", "=");
 
@@ -315,7 +315,8 @@ class Ro_Parser {
 	_expect (symbol) {
 		const accepted = this._accept(symbol);
 		if (accepted) return accepted;
-		throw new Error(`Unexpected input: Expected <code>${symbol}</code> but found <code>${this._sym}</code> (line <code>${this._sym.line}</code>)`);
+		if (this._sym) throw new Error(`Unexpected input: Expected <code>${symbol}</code> but found <code>${this._sym}</code> (line <code>${this._sym.line}</code>)`);
+		else throw new Error(`Unexpected end of input: Expected <code>${symbol}</code>`);
 	}
 
 	_factor () {
@@ -327,7 +328,8 @@ class Ro_Parser {
 			this._expect(Ro_Token.PAREN_CLOSE);
 			return new Ro_Parser._Factor(exp, {hasParens: true})
 		} else {
-			throw new Error(`Unexpected input: <code>${this._sym}</code> (line <code>${this._sym.line}</code>)`);
+			if (this._sym) throw new Error(`Unexpected input: <code>${this._sym}</code> (line <code>${this._sym.line}</code>)`);
+			else throw new Error(`Unexpected end of input (line <code>${this._sym.line}</code>)`);
 		}
 	}
 
@@ -524,9 +526,7 @@ Ro_Parser._Exponent = class extends Ro_Parser._AbstractSymbol {
 	toString (indent = 0) {
 		const view = this._nodes.slice();
 		let out = view.pop().toString(indent);
-		while (view.length) {
-			out = `Math.pow(${view.pop().toString(indent)}, ${out})`;
-		}
+		while (view.length) out = `Math.pow(${view.pop().toString(indent)}, ${out})`;
 		return out;
 	}
 };

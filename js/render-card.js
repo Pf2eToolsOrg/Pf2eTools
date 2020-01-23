@@ -252,7 +252,7 @@ class RendererCard {
 
 	_renderAbilityGeneric (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `${entry.name ? `<b>${entry.name}</b>  = ` : ""}${entry.text}${entry.attributes ? ` ${Parser.attrChooseToFull(entry.attributes)}` : ""}`;
+		textStack[0] += `${entry.name ? `<b>${entry.name}</b> = ` : ""}${entry.text}${entry.attributes ? ` ${Parser.attrChooseToFull(entry.attributes)}` : ""}`;
 		this._renderSuffix(entry, textStack, meta, options);
 	}
 	// endregion

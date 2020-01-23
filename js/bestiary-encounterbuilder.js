@@ -632,7 +632,7 @@ class EncounterBuilder extends ProxyBase {
 	}
 
 	handleClick (evt, ix, add, uniqueId) {
-		const data = uniqueId ? {uid: uniqueId} : undefined;
+		const data = uniqueId ? {uniqueId} : undefined;
 		if (add) ListUtil.pDoSublistAdd(ix, true, evt.shiftKey ? 5 : 1, data);
 		else ListUtil.pDoSublistSubtract(ix, evt.shiftKey ? 5 : 1, data);
 	}
@@ -919,14 +919,14 @@ class EncounterBuilder extends ProxyBase {
 			const state = ListUtil.getExportableSublist();
 			const toFindHash = UrlUtil.autoEncodeHash(mon);
 
-			const toFindUid = !(scaledTo == null || baseCrNum === scaledTo) ? getUid(mon.name, mon.source, scaledTo) : null;
+			const toFindUid = !(scaledTo == null || baseCrNum === scaledTo) ? getUniqueId(mon.name, mon.source, scaledTo) : null;
 			const ixCurrItem = state.items.findIndex(it => {
 				if (scaledTo == null || scaledTo === baseCrNum) return !it.uniqueId && it.h === toFindHash;
 				else return it.uniqueId === toFindUid;
 			});
 			if (!~ixCurrItem) throw new Error(`Could not find previously sublisted item!`);
 
-			const toFindNxtUid = baseCrNum !== targetCrNum ? getUid(mon.name, mon.source, targetCrNum) : null;
+			const toFindNxtUid = baseCrNum !== targetCrNum ? getUniqueId(mon.name, mon.source, targetCrNum) : null;
 			const nextItem = state.items.find(it => {
 				if (targetCrNum === baseCrNum) return !it.uniqueId && it.h === toFindHash;
 				else return it.uniqueId === toFindNxtUid;
@@ -940,7 +940,7 @@ class EncounterBuilder extends ProxyBase {
 			} else {
 				// if we're returning to the original CR, wipe the existing UID. Otherwise, adjust it
 				if (targetCrNum === baseCrNum) delete state.items[ixCurrItem].uniqueId;
-				else state.items[ixCurrItem].uniqueId = getUid(mon.name, mon.source, targetCrNum);
+				else state.items[ixCurrItem].uniqueId = getUniqueId(mon.name, mon.source, targetCrNum);
 			}
 
 			this._loadSublist(state);

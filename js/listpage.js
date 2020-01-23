@@ -56,7 +56,11 @@ class ListPage {
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 
 		this._filterBox = this._pageFilter
-			? await this._pageFilter.pInitFilterBox({$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"), $btnReset: $(`#reset`)})
+			? await this._pageFilter.pInitFilterBox({
+				$iptSearch: $(`#lst__search`),
+				$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
+				$btnReset: $(`#reset`)
+			})
 			: await pInitFilterBox({filters: this._filters});
 
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
@@ -111,6 +115,7 @@ class ListPage {
 
 		Hist.init(true);
 		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#pagecontent`));
+		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
 	async _pHandleBrew (homebrew) {
@@ -126,7 +131,7 @@ class ListPage {
 
 		this._dataProps.forEach(prop => {
 			data[prop].forEach(it => it.__prop = prop);
-			this._dataList = this._dataList.concat(data[prop]);
+			this._dataList.push(...data[prop]);
 		});
 
 		const len = this._dataList.length;

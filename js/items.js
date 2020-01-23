@@ -288,6 +288,7 @@ class ItemsPage {
 		[this._sublistCurrencyConversion, this._sublistCurrencyDisplayMode] = await Promise.all([StorageUtil.pGetForPage("sublistCurrencyConversion"), StorageUtil.pGetForPage("sublistCurrencyDisplayMode")]);
 		await ExcludeUtil.pInitialise();
 		await this._pageFilter.pInitFilterBox({
+			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`)
 		});
@@ -401,6 +402,8 @@ async function pPopulateTablesAndFilters (data) {
 
 			Hist.init(true);
 			ExcludeUtil.checkShowAllExcluded(itemList, $(`#pagecontent`));
+
+			window.dispatchEvent(new Event("toolsLoaded"));
 		});
 }
 
@@ -413,7 +416,8 @@ let itemList = [];
 let itI = 0;
 function addItems (data) {
 	if (!data.item || !data.item.length) return;
-	itemList = itemList.concat(data.item);
+
+	itemList.push(...data.item);
 
 	for (; itI < itemList.length; itI++) {
 		const item = itemList[itI];

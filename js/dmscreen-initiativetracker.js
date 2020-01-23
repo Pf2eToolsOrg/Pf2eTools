@@ -1016,11 +1016,11 @@ class InitiativeTracker {
 						$iptHp.val(hpVals.curHp);
 						$iptHpMax.val(hpVals.maxHp);
 					} else if (isRollHp && m.hp.formula) {
-						const roll = Renderer.dice.roll2(m.hp.formula, {
+						const roll = await Renderer.dice.pRoll2(m.hp.formula, {
 							user: false,
 							name: getRollName(m),
 							label: "HP"
-						});
+						}, {isResultUsed: true});
 						hpVals.curHp = hpVals.maxHp = roll;
 						$iptHp.val(roll);
 						$iptHpMax.val(roll);
@@ -1028,7 +1028,7 @@ class InitiativeTracker {
 
 					// roll initiative
 					if (!init && isRollInit) {
-						$iptScore.val(rollInitiative(m));
+						$iptScore.val(await pRollInitiative(m));
 					}
 
 					doUpdateHpColors();
@@ -1286,23 +1286,23 @@ class InitiativeTracker {
 			return `Initiative Tracker \u2014 ${monster.name}`;
 		}
 
-		function rollInitiative (monster) {
-			return Renderer.dice.roll2(`1d20${Parser.getAbilityModifier(monster.dex)}`, {
+		function pRollInitiative (monster) {
+			return Renderer.dice.pRoll2(`1d20${Parser.getAbilityModifier(monster.dex)}`, {
 				user: false,
 				name: getRollName(monster),
 				label: "Initiative"
-			});
+			}, {isResultUsed: true});
 		}
 
-		function getOrRollHp (monster) {
+		async function pGetOrRollHp (monster) {
 			if (!cfg.isRollHp && monster.hp.average) {
 				return `${monster.hp.average}`;
 			} else if (cfg.isRollHp && monster.hp.formula) {
-				return `${Renderer.dice.roll2(monster.hp.formula, {
+				return `${await Renderer.dice.pRoll2(monster.hp.formula, {
 					user: false,
 					name: getRollName(monster),
 					label: "HP"
-				})}`;
+				}, {isResultUsed: true})}`;
 			}
 			return "";
 		}
@@ -1430,27 +1430,27 @@ class InitiativeTracker {
 							});
 					})
 				}));
-				toAdd.forEach(it => {
-					const groupInit = cfg.importIsRollGroups && cfg.isRollInit ? rollInitiative(it.monster) : null;
-					const groupHp = cfg.importIsRollGroups ? getOrRollHp(it.monster) : null;
+				await Promise.all(toAdd.map(async it => {
+					const groupInit = cfg.importIsRollGroups && cfg.isRollInit ? await pRollInitiative(it.monster) : null;
+					const groupHp = cfg.importIsRollGroups ? await pGetOrRollHp(it.monster) : null;
 
-					[...new Array(it.count || 1)].forEach(() => {
-						const hp = `${cfg.importIsRollGroups ? groupHp : getOrRollHp(it.monster)}`;
+					await Promise.all([...new Array(it.count || 1)].map(async () => {
+						const hp = `${cfg.importIsRollGroups ? groupHp : await pGetOrRollHp(it.monster)}`;
 						toLoad.r.push({
 							n: {
 								name: it.monster.name,
 								displayName: it.monster._displayName,
 								scaledTo: it.monster._isScaledCr
 							},
-							i: cfg.isRollInit ? `${cfg.importIsRollGroups ? groupInit : rollInitiative(it.monster)}` : null,
+							i: cfg.isRollInit ? `${cfg.importIsRollGroups ? groupInit : await pRollInitiative(it.monster)}` : null,
 							a: 0,
 							s: it.monster.source,
 							c: [],
 							h: hp,
 							g: hp
 						});
-					});
-				});
+					}));
+				}));
 				await pLoadState(toLoad, cfg.importIsAppend);
 			} else await pLoadState(toLoad, cfg.importIsAppend);
 		}

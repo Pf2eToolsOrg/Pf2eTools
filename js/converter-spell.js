@@ -27,12 +27,41 @@ Object.entries({
 	});
 });
 
-class SpellConverter {
-	static _getValidOptions (options) {
-		options = options || {};
-		options.isAppend = options.isAppend || false;
-		if (!options.cbWarning || !options.cbOutput) throw new Error(`Missing required callback options!`);
-		return options;
+// TODO rework this to be written in JavaScript
+class SpellConverter extends BaseConverter {
+	constructor (ui) {
+		super(
+			ui,
+			{
+				converterId: "Spell",
+				canSaveLocal: true,
+				modes: ["txt"],
+				hasPageNumbers: true,
+				titleCaseFields: ["name"],
+				hasSource: true,
+				prop: "spell"
+			}
+		);
+	}
+
+	_renderSidebar (parent, $wrpSidebar) {
+		$wrpSidebar.empty();
+	}
+
+	handleParse (input, cbOutput, cbWarning, isAppend) {
+		const opts = {cbWarning, cbOutput, isAppend};
+
+		switch (this._state.mode) {
+			case "txt": return this.doParseText(input, opts);
+			default: throw new Error(`Unimplemented!`);
+		}
+	}
+
+	_getSample (format) {
+		switch (format) {
+			case "txt": return SpellConverter.SAMPLE_TEXT;
+			default: throw new Error(`Unknown format "${format}"`);
+		}
 	}
 
 	/**
@@ -64,7 +93,7 @@ class SpellConverter {
 	 * @param options.isAppend Default output append mode.
 	 */
 	doParseText (inText, options) {
-		options = SpellConverter._getValidOptions(options);
+		options = BaseConverter._getValidOptions(options);
 
 		/**
 		 * If the current line ends in a comma, we can assume the next line is a broken/wrapped part of the current line
@@ -102,13 +131,13 @@ class SpellConverter {
 
 		if (!inText || !inText.trim()) return options.cbWarning("No input!");
 		const toConvert = (() => {
-			const clean = SpellConverter._getCleanInput(inText);
+			const clean = this._getCleanInput(inText);
 			return clean.split("\n").filter(it => it && it.trim());
 		})();
 		const spell = {};
-		spell.source = options.source || "";
+		spell.source = this._state.source;
 		// for the user to fill out
-		spell.page = options.pageNumber;
+		spell.page = this._state.page;
 
 		let prevLine = null; // last line of text
 		let curLine = null; // current line of text
@@ -122,7 +151,7 @@ class SpellConverter {
 
 			// name of spell
 			if (i === 0) {
-				spell.name = this._getCleanName(curLine, options);
+				spell.name = this._getAsTitle("name", curLine);
 				continue;
 			}
 
@@ -189,13 +218,6 @@ class SpellConverter {
 		options.cbOutput(statsOut, options.isAppend);
 	}
 
-	getSample (format) {
-		switch (format) {
-			case "txt": return SpellConverter.SAMPLE_TEXT;
-			default: throw new Error(`Unknown format "${format}"`);
-		}
-	}
-
 	// SHARED UTILITY FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
 	_doSpellPostProcess (stats, options) {
 		const doCleanup = () => {
@@ -212,16 +234,6 @@ class SpellConverter {
 	}
 
 	// SHARED PARSING FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
-	static _getCleanInput (ipt) {
-		return ipt
-			.replace(/[−–‒]/g, "-") // convert minus signs to hyphens
-		;
-	}
-
-	_getCleanName (line, options) {
-		return options.isTitleCaseName ? line.toLowerCase().toTitleCase() : line;
-	}
-
 	// cuts the string for spell level, school and ritual, checks if the first character is a number "4th-level transmutation" and parses as a leveled spell.
 	// if not it treats it as a cantrip "Transmutation cantrip" does not check for ritual tag if its a cantrip
 	// throws a warning if no valid school was found, does not process 10th-level or higher spells at all
@@ -447,7 +459,7 @@ class SpellConverter {
 	// giving each object the source of PHB unless it is the artificer which gets ERLW
 	// sets stats.classes' fromClassList key to the value of the array of objects
 	static _setCleanClasses (stats, line, options) {
-		let rawClasses = "";
+		let rawClasses;
 		if (/^(Classes)/i.test(line)) {
 			rawClasses = line.split_handleColon("Classes", 1)[1].trim();
 		} else {
@@ -477,14 +489,9 @@ class SpellConverter {
 			}];
 		}
 	}
-
-	static _hasEntryContent (trait) {
-		return trait && (trait.name || (trait.entries.length === 1 && trait.entries[0]) || trait.entries.length > 1);
-	}
 }
-
-SpellConverter.SAMPLE_TEXT =
-	`Chromatic Orb
+// region sample
+SpellConverter.SAMPLE_TEXT = `Chromatic Orb
 1st-level evocation
 Casting Time: 1 action
 Range: 90 feet
@@ -494,3 +501,4 @@ Duration: Instantaneous
 You hurl a 4-inch-diameter sphere of energy at a creature that you can see within range. You choose acid, cold, fire, lightning, poison, or thunder for the type of orb you create, and then make a ranged spell attack against the target. If the attack hits, the creature takes 3d8 damage of the type you chose.
 
 At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.`;
+// endregion

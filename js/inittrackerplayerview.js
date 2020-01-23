@@ -33,6 +33,8 @@ window.addEventListener("load", () => {
 			if (view.isActive) $body.toggleClass("is-fullscreen");
 		}
 	});
+
+	window.dispatchEvent(new Event("toolsLoaded"));
 });
 
 class InitiativeTrackerPlayerMessageHandlerPage extends InitiativeTrackerPlayerMessageHandler {

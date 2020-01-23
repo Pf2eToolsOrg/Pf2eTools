@@ -1,7 +1,32 @@
 "use strict";
 
-class TableConverter {
-	showSample (format) {
+class TableConverter extends BaseConverter {
+	constructor (ui) {
+		super(
+			ui,
+			{
+				converterId: "Table",
+				modes: ["html", "md"],
+				prop: "table"
+			}
+		);
+	}
+
+	_renderSidebar (parent, $wrpSidebar) {
+		$wrpSidebar.empty();
+	}
+
+	handleParse (input, cbOutput, cbWarning, isAppend) {
+		const opts = {cbWarning, cbOutput, isAppend};
+
+		switch (this._state.mode) {
+			case "html": return this.doParseHtml(input, opts);
+			case "md": return this.doParseMarkdown(input, opts);
+			default: throw new Error(`Unimplemented!`);
+		}
+	}
+
+	_getSample (format) {
 		switch (format) {
 			case "html": return TableConverter.SAMPLE_HTML;
 			case "md": return TableConverter.SAMPLE_MARKDOWN;
@@ -19,6 +44,7 @@ class TableConverter {
 	 */
 	doParseHtml (inText, options) {
 		if (!inText || !inText.trim()) return options.cbWarning("No input!");
+		inText = this._getCleanInput(inText);
 
 		const handleTable = ($table, caption) => {
 			const tbl = {
@@ -107,6 +133,7 @@ class TableConverter {
 	 */
 	doParseMarkdown (inText, options) {
 		if (!inText || !inText.trim()) return options.cbWarning("No input!");
+		inText = this._getCleanInput(inText);
 
 		const lines = inText.replace(/\r\n/g, "\n").replace(/\r/g, "\n").split(/\n/g);
 		const stack = [];
@@ -132,6 +159,7 @@ class TableConverter {
 		});
 	}
 }
+// region samples
 TableConverter.SAMPLE_HTML =
 	`<table>
   <thead>
@@ -176,3 +204,4 @@ TableConverter.SAMPLE_MARKDOWN =
 | 5th–10th        | 500 gp plus 1d10 × 25 gp, normal starting equipment                               | 500 gp plus 1d10 × 25 gp, normal starting equipment                                              | 500 gp plus 1d10 × 25 gp, one uncommon magic item, normal starting equipment                                            |
 | 11th–16th       | 5,000 gp plus 1d10 × 250 gp, one uncommon magic item, normal starting equipment   | 5,000 gp plus 1d10 × 250 gp, two uncommon magic items, normal starting equipment                 | 5,000 gp plus 1d10 × 250 gp, three uncommon magic items, one rare item, normal starting equipment                       |
 | 17th–20th       | 20,000 gp plus 1d10 × 250 gp, two uncommon magic items, normal starting equipment | 20,000 gp plus 1d10 × 250 gp, two uncommon magic items, one rare item, normal starting equipment | 20,000 gp plus 1d10 × 250 gp, three uncommon magic items, two rare items, one very rare item, normal starting equipment |`;
+// endregion

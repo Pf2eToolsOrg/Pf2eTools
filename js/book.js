@@ -41,6 +41,7 @@ function onJsonLoad (data) {
 			} else {
 				$(`.contents-item`).show();
 			}
+			window.dispatchEvent(new Event("toolsLoaded"));
 		});
 }
 
@@ -53,7 +54,7 @@ function handleBrew (homebrew) {
 function addBooks (data) {
 	if (!data.book || !data.book.length) return;
 
-	books = books.concat(data.book);
+	books.push(...data.book);
 	BookUtil.bookIndex = books;
 
 	const allContents = $("ul.contents");

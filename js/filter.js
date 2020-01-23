@@ -50,6 +50,8 @@ class FilterBox extends ProxyBase {
 	 * @param [opts.$wrpFormTop] Form input group.
 	 * @param opts.$btnReset Form reset button.
 	 * @param [opts.$btnOpen] A custom button to use to open the filter overlay.
+	 * @param [opts.$iptSearch] Search input associated with the "form" this filter is a part of. Only used for passing
+	 * through search terms in @filter tags.
 	 * @param [opts.$wrpMiniPills] Element to house mini pills.
 	 * @param opts.filters Array of filters to be included in this box.
 	 * @param [opts.isCompact] True if this box should have a compact/reduced UI.
@@ -58,6 +60,7 @@ class FilterBox extends ProxyBase {
 	constructor (opts) {
 		super();
 
+		this._$iptSearch = opts.$iptSearch;
 		this._$wrpFormTop = opts.$wrpFormTop;
 		this._$btnReset = opts.$btnReset;
 		this._$btnOpen = opts.$btnOpen;
@@ -120,9 +123,9 @@ class FilterBox extends ProxyBase {
 	}
 
 	_setStateFromLoaded (state) {
-		this._proxyAssign("meta", "_meta", "__meta", state.meta, true);
-		this._proxyAssign("minisHidden", "_minisHidden", "__minisHidden", state.minisHidden, true);
-		this._proxyAssign("combineAs", "_combineAs", "__combineAs", state.combineAs, true);
+		this._proxyAssign("meta", "_meta", "__meta", state.meta || {}, true);
+		this._proxyAssign("minisHidden", "_minisHidden", "__minisHidden", state.minisHidden || {}, true);
+		this._proxyAssign("combineAs", "_combineAs", "__combineAs", state.combineAs || {}, true);
 	}
 
 	async _pDoSaveState () {
@@ -344,6 +347,7 @@ class FilterBox extends ProxyBase {
 		});
 		const updatedUrlHeaders = new Set();
 		const consumed = new Set();
+		let search;
 
 		const filterBoxState = {};
 		const statePerFilter = {};
@@ -354,6 +358,13 @@ class FilterBox extends ProxyBase {
 				const prefix = rawPrefix.substring(0, FilterUtil.SUB_HASH_PREFIX_LENGTH);
 
 				const urlHeader = hashKey.substring(prefixLen);
+
+				// special case for the "search" keyword
+				if (urlHeader === "search") {
+					search = data.clean[0];
+					consumed.add(data.raw);
+					return;
+				}
 
 				if (FilterUtil.SUB_HASH_PREFIXES.has(prefix) && urlHeaderToFilter[urlHeader]) {
 					(statePerFilter[urlHeader] = statePerFilter[urlHeader] || {})[prefix] = data.clean;
@@ -392,9 +403,10 @@ class FilterBox extends ProxyBase {
 			window.history.replaceState(
 				{},
 				document.title,
-				`${location.origin}${location.pathname}${`#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`}`
+				`${location.origin}${location.pathname}#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`
 			);
 
+			if (search && this._$iptSearch) this._$iptSearch.val(search).change().keydown().keyup();
 			this.fireChangeEvent();
 			Hist.hashChange();
 			return outSub;

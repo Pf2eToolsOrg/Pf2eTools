@@ -112,4 +112,6 @@ async function initDemo (data, rendererType) {
 	$btnReset.click(() => demoReset());
 	$btnRender.click(() => demoRender());
 	editor.on("change", () => renderAndSaveDebounced()); // N.B. specific "change" format required by Ace.js
+
+	window.dispatchEvent(new Event("toolsLoaded"));
 }

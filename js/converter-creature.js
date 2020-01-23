@@ -4,12 +4,48 @@ if (typeof module !== "undefined") {
 	global.PropOrder = require("./utils-proporder.js");
 }
 
-class StatblockConverter {
-	static _getValidOptions (options) {
-		options = options || {};
-		options.isAppend = options.isAppend || false;
-		if (!options.cbWarning || !options.cbOutput) throw new Error(`Missing required callback options!`);
-		return options;
+class CreatureConverter extends BaseConverter {
+	constructor (ui) {
+		super(
+			ui,
+			{
+				converterId: "Creature",
+				canSaveLocal: true,
+				modes: ["txt", "md"],
+				hasPageNumbers: true,
+				titleCaseFields: ["name"],
+				hasSource: true,
+				prop: "monster"
+			}
+		);
+	}
+
+	_renderSidebar (parent, $wrpSidebar) {
+		$wrpSidebar.empty();
+
+		$(`<div class="sidemenu__row split-v-center">
+			<small>This parser is <span class="help" title="Notably poor at handling text split across multiple lines, as Carriage Return is used to separate blocks of text.">very particular</span> about its input. Use at your own risk.</small>
+		</div>`).appendTo($wrpSidebar);
+
+		ConverterUiUtil.renderSideMenuDivider($wrpSidebar);
+	}
+
+	handleParse (input, cbOutput, cbWarning, isAppend) {
+		const opts = {cbWarning, cbOutput, isAppend};
+
+		switch (this._state.mode) {
+			case "txt": return this.doParseText(input, opts);
+			case "md": return this.doParseMarkdown(input, opts);
+			default: throw new Error(`Unimplemented!`);
+		}
+	}
+
+	_getSample (format) {
+		switch (format) {
+			case "txt": return CreatureConverter.SAMPLE_TEXT;
+			case "md": return CreatureConverter.SAMPLE_MARKDOWN;
+			default: throw new Error(`Unknown format "${format}"`);
+		}
 	}
 
 	/**
@@ -21,7 +57,7 @@ class StatblockConverter {
 	 * @param options.isAppend Default output append mode.
 	 */
 	doParseText (inText, options) {
-		options = StatblockConverter._getValidOptions(options);
+		options = BaseConverter._getValidOptions(options);
 
 		function startNextPhase (cur) {
 			return (!cur.toUpperCase().indexOf("ACTION") || !cur.toUpperCase().indexOf("LEGENDARY ACTION") || !cur.toUpperCase().indexOf("REACTION"))
@@ -74,16 +110,16 @@ class StatblockConverter {
 
 		if (!inText || !inText.trim()) return options.cbWarning("No input!");
 		const toConvert = (() => {
-			const clean = StatblockConverter._getCleanInput(inText);
+			const clean = this._getCleanInput(inText);
 			const spl = clean.split(/(Challenge)/i);
 			spl[0] = spl[0]
 				.replace(/(\d\d?\s+\([-—+]\d+\)\s*)+/gi, (...m) => `${m[0].replace(/\n/g, " ").replace(/\s+/g, " ")}\n`); // collapse multi-line ability scores
 			return spl.join("").split("\n").filter(it => it && it.trim());
 		})();
 		const stats = {};
-		stats.source = options.source || "";
+		stats.source = this._state.source || "";
 		// for the user to fill out
-		stats.page = options.pageNumber;
+		stats.page = this._state.page;
 
 		let prevLine = null;
 		let curLine = null;
@@ -96,13 +132,13 @@ class StatblockConverter {
 
 			// name of monster
 			if (i === 0) {
-				stats.name = this._getCleanName(curLine, options);
+				stats.name = this._getAsTitle("name", curLine);
 				continue;
 			}
 
 			// size type alignment
 			if (i === 1) {
-				StatblockConverter._setCleanSizeTypeAlignment(stats, curLine, options);
+				CreatureConverter._setCleanSizeTypeAlignment(stats, curLine, options);
 				continue;
 			}
 
@@ -114,7 +150,7 @@ class StatblockConverter {
 
 			// hit points
 			if (i === 3) {
-				StatblockConverter._setCleanHp(stats, curLine);
+				CreatureConverter._setCleanHp(stats, curLine);
 				continue;
 			}
 
@@ -129,12 +165,12 @@ class StatblockConverter {
 				// skip forward a line and grab the ability scores
 				++i;
 				const abilities = toConvert[i].trim().split(/ ?\(([+\-—])?[0-9]*\) ?/g);
-				stats.str = StatblockConverter._tryConvertNumber(abilities[0]);
-				stats.dex = StatblockConverter._tryConvertNumber(abilities[2]);
-				stats.con = StatblockConverter._tryConvertNumber(abilities[4]);
-				stats.int = StatblockConverter._tryConvertNumber(abilities[6]);
-				stats.wis = StatblockConverter._tryConvertNumber(abilities[8]);
-				stats.cha = StatblockConverter._tryConvertNumber(abilities[10]);
+				stats.str = CreatureConverter._tryConvertNumber(abilities[0]);
+				stats.dex = CreatureConverter._tryConvertNumber(abilities[2]);
+				stats.con = CreatureConverter._tryConvertNumber(abilities[4]);
+				stats.int = CreatureConverter._tryConvertNumber(abilities[6]);
+				stats.wis = CreatureConverter._tryConvertNumber(abilities[8]);
+				stats.cha = CreatureConverter._tryConvertNumber(abilities[10]);
 				continue;
 			}
 
@@ -143,12 +179,12 @@ class StatblockConverter {
 				// skip forward a line and grab the ability score
 				++i;
 				switch (curLine.toLowerCase()) {
-					case "str": stats.str = StatblockConverter._tryGetStat(toConvert[i]); continue;
-					case "dex": stats.dex = StatblockConverter._tryGetStat(toConvert[i]); continue;
-					case "con": stats.con = StatblockConverter._tryGetStat(toConvert[i]); continue;
-					case "int": stats.int = StatblockConverter._tryGetStat(toConvert[i]); continue;
-					case "wis": stats.wis = StatblockConverter._tryGetStat(toConvert[i]); continue;
-					case "cha": stats.cha = StatblockConverter._tryGetStat(toConvert[i]); continue;
+					case "str": stats.str = CreatureConverter._tryGetStat(toConvert[i]); continue;
+					case "dex": stats.dex = CreatureConverter._tryGetStat(toConvert[i]); continue;
+					case "con": stats.con = CreatureConverter._tryGetStat(toConvert[i]); continue;
+					case "int": stats.int = CreatureConverter._tryGetStat(toConvert[i]); continue;
+					case "wis": stats.wis = CreatureConverter._tryGetStat(toConvert[i]); continue;
+					case "cha": stats.cha = CreatureConverter._tryGetStat(toConvert[i]); continue;
 				}
 			}
 
@@ -156,7 +192,7 @@ class StatblockConverter {
 			if (!curLine.indexOf_handleColon("Saving Throws ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				StatblockConverter._setCleanSaves(stats, curLine, options);
+				CreatureConverter._setCleanSaves(stats, curLine, options);
 				continue;
 			}
 
@@ -164,7 +200,7 @@ class StatblockConverter {
 			if (!curLine.indexOf_handleColon("Skills ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				StatblockConverter._setCleanSkills(stats, curLine);
+				CreatureConverter._setCleanSkills(stats, curLine);
 				continue;
 			}
 
@@ -172,7 +208,7 @@ class StatblockConverter {
 			if (!curLine.indexOf_handleColon("Damage Vulnerabilities ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				StatblockConverter._setCleanDamageVuln(stats, curLine);
+				CreatureConverter._setCleanDamageVuln(stats, curLine);
 				continue;
 			}
 
@@ -180,7 +216,7 @@ class StatblockConverter {
 			if (!curLine.indexOf_handleColon("Damage Resistance")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				StatblockConverter._setCleanDamageRes(stats, curLine);
+				CreatureConverter._setCleanDamageRes(stats, curLine);
 				continue;
 			}
 
@@ -188,7 +224,7 @@ class StatblockConverter {
 			if (!curLine.indexOf_handleColon("Damage Immunities ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				StatblockConverter._setCleanDamageImm(stats, curLine);
+				CreatureConverter._setCleanDamageImm(stats, curLine);
 				continue;
 			}
 
@@ -196,7 +232,7 @@ class StatblockConverter {
 			if (!curLine.indexOf_handleColon("Condition Immunities ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				StatblockConverter._setCleanConditionImm(stats, curLine);
+				CreatureConverter._setCleanConditionImm(stats, curLine);
 				continue;
 			}
 
@@ -204,7 +240,7 @@ class StatblockConverter {
 			if (!curLine.indexOf_handleColon("Senses ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				StatblockConverter._setCleanSenses(stats, curLine);
+				CreatureConverter._setCleanSenses(stats, curLine);
 				continue;
 			}
 
@@ -212,7 +248,7 @@ class StatblockConverter {
 			if (!curLine.indexOf_handleColon("Languages ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				StatblockConverter._setCleanLanguages(stats, curLine);
+				CreatureConverter._setCleanLanguages(stats, curLine);
 				continue;
 			}
 
@@ -221,7 +257,7 @@ class StatblockConverter {
 			if (!curLine.indexOf_handleColon("Challenge ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine(true));
-				StatblockConverter._setCleanCr(stats, curLine);
+				CreatureConverter._setCleanCr(stats, curLine);
 				continue;
 			}
 
@@ -311,12 +347,12 @@ class StatblockConverter {
 								else stats.spellcasting = curTrait.out;
 							} else stats.trait.push(curTrait.out);
 						} else {
-							if (StatblockConverter._hasEntryContent(curTrait)) stats.trait.push(curTrait);
+							if (BaseConverter._hasEntryContent(curTrait)) stats.trait.push(curTrait);
 						}
 					}
-					if (isActions && StatblockConverter._hasEntryContent(curTrait)) stats.action.push(curTrait);
-					if (isReactions && StatblockConverter._hasEntryContent(curTrait)) stats.reaction.push(curTrait);
-					if (isLegendaryActions && StatblockConverter._hasEntryContent(curTrait)) stats.legendary.push(curTrait);
+					if (isActions && BaseConverter._hasEntryContent(curTrait)) stats.action.push(curTrait);
+					if (isReactions && BaseConverter._hasEntryContent(curTrait)) stats.reaction.push(curTrait);
+					if (isLegendaryActions && BaseConverter._hasEntryContent(curTrait)) stats.legendary.push(curTrait);
 				}
 				curTrait = {};
 			}
@@ -354,7 +390,7 @@ class StatblockConverter {
 	 * @param options.isAppend Default output append mode.
 	 */
 	doParseMarkdown (inText, options) {
-		options = StatblockConverter._getValidOptions(options);
+		options = BaseConverter._getValidOptions(options);
 
 		const self = this;
 
@@ -386,13 +422,13 @@ class StatblockConverter {
 		}
 
 		if (!inText || !inText.trim()) return options.cbWarning("No input!");
-		const toConvert = StatblockConverter._getCleanInput(inText).split("\n");
+		const toConvert = this._getCleanInput(inText).split("\n");
 		let stats = null;
 
 		const getNewStatblock = () => {
 			return {
-				source: options.source,
-				page: options.pageNumber
+				source: this._state.source,
+				page: this._state.page
 			}
 		};
 
@@ -442,7 +478,7 @@ class StatblockConverter {
 		}
 
 		function doAddTrait () {
-			if (StatblockConverter._hasEntryContent(trait)) {
+			if (BaseConverter._hasEntryContent(trait)) {
 				stats.trait = stats.trait || [];
 
 				DiceConvert.convertTraitActionDice(trait);
@@ -463,7 +499,7 @@ class StatblockConverter {
 		}
 
 		function doAddAction () {
-			if (StatblockConverter._hasEntryContent(trait)) {
+			if (BaseConverter._hasEntryContent(trait)) {
 				stats.action = stats.action || [];
 
 				DiceConvert.convertTraitActionDice(trait);
@@ -473,7 +509,7 @@ class StatblockConverter {
 		}
 
 		function doAddReaction () {
-			if (StatblockConverter._hasEntryContent(trait)) {
+			if (BaseConverter._hasEntryContent(trait)) {
 				stats.reaction = stats.reaction || [];
 
 				DiceConvert.convertTraitActionDice(trait);
@@ -483,7 +519,7 @@ class StatblockConverter {
 		}
 
 		function doAddLegendary () {
-			if (StatblockConverter._hasEntryContent(trait)) {
+			if (BaseConverter._hasEntryContent(trait)) {
 				stats.legendary = stats.legendary || [];
 
 				DiceConvert.convertTraitActionDice(trait);
@@ -525,7 +561,7 @@ class StatblockConverter {
 			// name of monster
 			if (parsed === 0) {
 				curLine = curLine.replace(/^\s*##/, "").trim();
-				stats.name = this._getCleanName(curLine, options);
+				stats.name = this._getAsTitle("name", curLine);
 				parsed++;
 				continue;
 			}
@@ -533,7 +569,7 @@ class StatblockConverter {
 			// size type alignment
 			if (parsed === 1) {
 				curLine = curLine.replace(/^\**(.*?)\**$/, "$1");
-				StatblockConverter._setCleanSizeTypeAlignment(stats, curLine, options);
+				CreatureConverter._setCleanSizeTypeAlignment(stats, curLine, options);
 				parsed++;
 				continue;
 			}
@@ -547,7 +583,7 @@ class StatblockConverter {
 
 			// hit points
 			if (parsed === 3) {
-				StatblockConverter._setCleanHp(stats, stripDashStarStar(curLine));
+				CreatureConverter._setCleanHp(stats, stripDashStarStar(curLine));
 				parsed++;
 				continue;
 			}
@@ -567,7 +603,7 @@ class StatblockConverter {
 					continue;
 				}
 				const abilities = curLine.split("|").map(it => it.trim()).filter(Boolean);
-				Parser.ABIL_ABVS.map((abi, j) => stats[abi] = StatblockConverter._tryGetStat(abilities[j]));
+				Parser.ABIL_ABVS.map((abi, j) => stats[abi] = CreatureConverter._tryGetStat(abilities[j]));
 				parsed++;
 				continue;
 			}
@@ -575,54 +611,54 @@ class StatblockConverter {
 			if (parsed === 8) {
 				// saves (optional)
 				if (~curLine.indexOf("Saving Throws")) {
-					StatblockConverter._setCleanSaves(stats, stripDashStarStar(curLine), options);
+					CreatureConverter._setCleanSaves(stats, stripDashStarStar(curLine), options);
 					continue;
 				}
 
 				// skills (optional)
 				if (~curLine.indexOf("Skills")) {
-					StatblockConverter._setCleanSkills(stats, stripDashStarStar(curLine));
+					CreatureConverter._setCleanSkills(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
 				// damage vulnerabilities (optional)
 				if (~curLine.indexOf("Damage Vulnerabilities")) {
-					StatblockConverter._setCleanDamageVuln(stats, stripDashStarStar(curLine));
+					CreatureConverter._setCleanDamageVuln(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
 				// damage resistances (optional)
 				if (~curLine.indexOf("Damage Resistance")) {
-					StatblockConverter._setCleanDamageRes(stats, stripDashStarStar(curLine));
+					CreatureConverter._setCleanDamageRes(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
 				// damage immunities (optional)
 				if (~curLine.indexOf("Damage Immunities")) {
-					StatblockConverter._setCleanDamageImm(stats, stripDashStarStar(curLine));
+					CreatureConverter._setCleanDamageImm(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
 				// condition immunities (optional)
 				if (~curLine.indexOf("Condition Immunities")) {
-					StatblockConverter._setCleanConditionImm(stats, stripDashStarStar(curLine));
+					CreatureConverter._setCleanConditionImm(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
 				// senses
 				if (~curLine.indexOf("Senses")) {
-					StatblockConverter._setCleanSenses(stats, stripDashStarStar(curLine));
+					CreatureConverter._setCleanSenses(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
 				// languages
 				if (~curLine.indexOf("Languages")) {
-					StatblockConverter._setCleanLanguages(stats, stripDashStarStar(curLine));
+					CreatureConverter._setCleanLanguages(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
 				if (~curLine.indexOf("Challenge")) {
-					StatblockConverter._setCleanCr(stats, stripDashStarStar(curLine));
+					CreatureConverter._setCleanCr(stats, stripDashStarStar(curLine));
 					parsed++;
 					continue;
 				}
@@ -710,14 +746,6 @@ class StatblockConverter {
 		doOutputStatblock();
 	}
 
-	getSample (format) {
-		switch (format) {
-			case "txt": return StatblockConverter.SAMPLE_TEXT;
-			case "md": return StatblockConverter.SAMPLE_MARKDOWN;
-			default: throw new Error(`Unknown format "${format}"`);
-		}
-	}
-
 	// SHARED UTILITY FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
 	_doStatblockPostProcess (stats, options) {
 		const doCleanup = () => {
@@ -771,7 +799,7 @@ class StatblockConverter {
 
 	static _tryGetStat (strLine) {
 		try {
-			return StatblockConverter._tryConvertNumber(/(\d+) \(.*?\)/.exec(strLine)[1]);
+			return CreatureConverter._tryConvertNumber(/(\d+) \(.*?\)/.exec(strLine)[1]);
 		} catch (e) {
 			return 0;
 		}
@@ -815,16 +843,6 @@ class StatblockConverter {
 	}
 
 	// SHARED PARSING FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
-	static _getCleanInput (ipt) {
-		return ipt
-			.replace(/[−–‒]/g, "-") // convert minus signs to hyphens
-		;
-	}
-
-	_getCleanName (line, options) {
-		return options.isTitleCaseName ? line.toLowerCase().toTitleCase() : line;
-	}
-
 	static _setCleanSizeTypeAlignment (stats, line, options) {
 		const mSidekick = /^(\d+)(?:st|nd|rd|th)\s*\W+\s*level\s+(.*)$/i.exec(line.trim());
 		if (mSidekick) {
@@ -840,7 +858,7 @@ class StatblockConverter {
 			stats.alignment = line.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX)[1].toLowerCase();
 			AlignmentConvert.tryConvertAlignment(stats, (ali) => options.cbWarning(`Alignment "${ali}" requires manual conversion`));
 		}
-		stats.type = StatblockConverter._tryParseType(stats.type);
+		stats.type = CreatureConverter._tryParseType(stats.type);
 	}
 
 	static _setCleanHp (stats, line) {
@@ -889,7 +907,7 @@ class StatblockConverter {
 				const splSpace = s.split(" ");
 				const val = splSpace.pop().trim();
 				let name = splSpace.join(" ").toLowerCase().trim().replace(/ /g, "");
-				name = StatblockConverter.SKILL_SPACE_MAP[name] || name;
+				name = CreatureConverter.SKILL_SPACE_MAP[name] || name;
 				newSkills[name] = val;
 			});
 			stats.skill = newSkills;
@@ -901,22 +919,22 @@ class StatblockConverter {
 
 	static _setCleanDamageVuln (stats, line) {
 		stats.vulnerable = line.split_handleColon("Vulnerabilities", 1)[1].trim();
-		stats.vulnerable = StatblockConverter._tryParseDamageResVulnImmune(stats.vulnerable, "vulnerable");
+		stats.vulnerable = CreatureConverter._tryParseDamageResVulnImmune(stats.vulnerable, "vulnerable");
 	}
 
 	static _setCleanDamageRes (stats, line) {
 		stats.resist = (line.toLowerCase().includes("resistances") ? line.split_handleColon("Resistances", 1) : line.split_handleColon("Resistance", 1))[1].trim();
-		stats.resist = StatblockConverter._tryParseDamageResVulnImmune(stats.resist, "resist");
+		stats.resist = CreatureConverter._tryParseDamageResVulnImmune(stats.resist, "resist");
 	}
 
 	static _setCleanDamageImm (stats, line) {
 		stats.immune = line.split_handleColon("Immunities", 1)[1].trim();
-		stats.immune = StatblockConverter._tryParseDamageResVulnImmune(stats.immune, "immune");
+		stats.immune = CreatureConverter._tryParseDamageResVulnImmune(stats.immune, "immune");
 	}
 
 	static _setCleanConditionImm (stats, line) {
 		stats.conditionImmune = line.split_handleColon("Immunities", 1)[1];
-		stats.conditionImmune = StatblockConverter._tryParseDamageResVulnImmune(stats.conditionImmune, "conditionImmune");
+		stats.conditionImmune = CreatureConverter._tryParseDamageResVulnImmune(stats.conditionImmune, "conditionImmune");
 	}
 
 	static _setCleanSenses (stats, line) {
@@ -925,7 +943,7 @@ class StatblockConverter {
 		senses.split(StrUtil.COMMA_SPACE_NOT_IN_PARENTHESES_REGEX).forEach(s => {
 			s = s.trim();
 			if (s) {
-				if (s.includes("passive perception")) stats.passive = StatblockConverter._tryConvertNumber(s.split("passive perception")[1].trim());
+				if (s.includes("passive perception")) stats.passive = CreatureConverter._tryConvertNumber(s.split("passive perception")[1].trim());
 				else tempSenses.push(s.trim());
 			}
 		});
@@ -956,17 +974,13 @@ class StatblockConverter {
 	static _setCleanCr (stats, line) {
 		stats.cr = line.split_handleColon("Challenge", 1)[1].trim().split("(")[0].trim();
 	}
-
-	static _hasEntryContent (trait) {
-		return trait && (trait.name || (trait.entries.length === 1 && trait.entries[0]) || trait.entries.length > 1);
-	}
 }
-StatblockConverter.SKILL_SPACE_MAP = {
+CreatureConverter.SKILL_SPACE_MAP = {
 	"sleightofhand": "sleight of hand",
 	"animalhandling": "animal handling"
 };
 // region samples
-StatblockConverter.SAMPLE_TEXT =
+CreatureConverter.SAMPLE_TEXT =
 	`Mammon
 Huge fiend (devil), lawful evil
 Armor Class 20 (natural armor)
@@ -1004,7 +1018,7 @@ Mammon can take 3 legendary actions, choosing from the options below. Only one l
 Attack. Mammon makes one purse or molten coins attack.
 Make It Rain! Mammon casts gold and jewels into a 5-foot radius within 60 feet. One creature within 60 feet of the treasure that can see it must make a DC 24 Wisdom saving throw. On a failure, the creature must use its reaction to move its speed toward the trinkets, which vanish at the end of the turn.
 Deep Pockets (3 actions). Mammon recharges his Your Weight In Gold ability.`;
-StatblockConverter.SAMPLE_MARKDOWN =
+CreatureConverter.SAMPLE_MARKDOWN =
 	`___
 >## Lich
 >*Medium undead, any evil alignment*
@@ -1061,6 +1075,6 @@ StatblockConverter.SAMPLE_MARKDOWN =
 
 if (typeof module !== "undefined") {
 	module.exports = {
-		StatblockConverter
+		CreatureConverter
 	};
 }

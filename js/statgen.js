@@ -454,7 +454,7 @@ class StatGen {
 	rollStats () {
 		const formula = $(`#stats-formula`).val();
 
-		const tree = Renderer.dice._parse2(formula);
+		const tree = Renderer.dice.lang.getTree3(formula);
 
 		const $rolled = $("#rolled");
 		if (!tree) {
@@ -496,6 +496,8 @@ const statGen = new StatGen();
 window.onload = async function load () {
 	await statGen.init();
 	hashchange();
+
+	window.dispatchEvent(new Event("toolsLoaded"));
 };
 
 function hashchange () {

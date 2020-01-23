@@ -120,7 +120,7 @@ class PageFilterItems extends PageFilter {
 			it._fProperties,
 			it._attunementCategory,
 			it._category,
-			(it.value || 0) / 1000,
+			(it.value || 0) / 100,
 			it._fFocus,
 			it.dmgType,
 			it._fMisc,

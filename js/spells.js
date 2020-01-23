@@ -38,7 +38,7 @@ class SpellsPage {
 			<span class="bold col-2-9 pl-0">${spell.name}</span>
 			<span class="col-1-5 text-center">${Parser.spLevelToFull(spell.level)}${spell.meta && spell.meta.ritual ? " (rit.)" : ""}${spell.meta && spell.meta.technomagic ? " (tec.)" : ""}</span>
 			<span class="col-1-7 text-center">${time}</span>
-			<span class="col-1-2 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}">${school}</span>
+			<span class="col-1-2 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
 			<span class="col-0-6 text-center" title="Concentration">${concentration}</span>
 			<span class="col-2-4 text-right">${range}</span>
 			<span class="col-1-7 text-center ${Parser.sourceJsonToColor(spell.source)} pr-0" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</span>
@@ -90,7 +90,7 @@ class SpellsPage {
 				<span class="bold col-3-2 pl-0">${spell.name}</span>
 				<span class="capitalise col-1-5 text-center">${Parser.spLevelToFull(spell.level)}</span>
 				<span class="col-1-8 text-center">${time}</span>
-				<span class="capitalise col-1-6 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}">${school}</span>
+				<span class="capitalise col-1-6 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
 				<span class="concentration--sublist col-0-7 text-center" title="Concentration">${concentration}</span>
 				<span class="range col-3-2 pr-0 text-right">${range}</span>
 			</a>
@@ -169,6 +169,7 @@ class SpellsPage {
 		window.loadSubHash = this.doLoadSubHash.bind(this);
 
 		await this._pageFilter.pInitFilterBox({
+			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`)
 		});
@@ -181,6 +182,8 @@ class SpellsPage {
 		await pMultisourceLoad(JSON_DIR, JSON_LIST_NAME, this._pageFilter.filterBox, pPageInit, addSpells, pPostLoad);
 		if (Hist.lastLoadedId == null) Hist._freshLoad();
 		ExcludeUtil.checkShowAllExcluded(spellList, $(`#pagecontent`));
+
+		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 }
 SpellsPage._BOOK_VIEW_MODE_K = "bookViewMode";
@@ -203,7 +206,7 @@ async function pPostLoad () {
 			level: {name: "Level", transform: (it) => Parser.spLevelToFull(it)},
 			time: {name: "Casting Time", transform: (it) => PageFilterSpells.getTblTimeStr(it[0])},
 			duration: {name: "Duration", transform: (it) => Parser.spDurationToFull(it)},
-			_school: {name: "School", transform: (sp) => `<span class="school_${sp.school}">${Parser.spSchoolAndSubschoolsAbvsToFull(sp.school, sp.subschools)}</span>`},
+			_school: {name: "School", transform: (sp) => `<span class="school_${sp.school}" ${Parser.spSchoolAbvToStyle(sp.school)}>${Parser.spSchoolAndSubschoolsAbvsToFull(sp.school, sp.subschools)}</span>`},
 			range: {name: "Range", transform: (it) => Parser.spRangeToFull(it)},
 			_components: {name: "Components", transform: (sp) => Parser.spComponentsToFull(sp.components, sp.level)},
 			classes: {name: "Classes", transform: (it) => Parser.spMainClassesToFull(it)},
@@ -336,7 +339,7 @@ const _addedHashes = new Set();
 function addSpells (data) {
 	if (!data || !data.length) return;
 
-	spellList = spellList.concat(data);
+	spellList.push(...data);
 
 	for (; spI < spellList.length; spI++) {
 		const spell = spellList[spI];

@@ -391,6 +391,8 @@ class RendererMarkdown {
 		const reactionsPart = mon.reaction ? `\n>### Reactions\n${RendererMarkdown.monster._getRenderedSection(mon.reaction, 1)}` : "";
 		const legendaryActionsPart = mon.legendary ? `\n>### Legendary Actions\n>${Renderer.monster.getLegendaryActionIntro(mon, RendererMarkdown.get())}\n${RendererMarkdown.monster._getRenderedSection(mon.legendary, 1)}` : "";
 
+		const footerPart = mon.footer ? `\n${RendererMarkdown.monster._getRenderedSection(mon.footer, 0)}` : "";
+
 		const str = `---
 >## ${mon._displayName || mon.name}
 >*${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${monTypes.asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}` : ""}*
@@ -406,7 +408,7 @@ class RendererMarkdown {
 >- **Senses** ${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses, true)}, ` : ""}passive Perception ${mon.passive || "\u2014"}
 >- **Languages** ${Renderer.monster.getRenderedLanguages(mon.languages)}
 >- **Challenge** ${mon.cr ? Parser.monCrToFull(mon.cr) : "\u2014"}
->___${traitsPart}${actionsPart}${reactionsPart}${legendaryActionsPart}`;
+>___${traitsPart}${actionsPart}${reactionsPart}${legendaryActionsPart}${footerPart}`;
 
 		const monRender = str.trim().split("\n").map(it => it.trim() ? it : `>`).join("\n");
 		textStack[0] += `\n${monRender}\n\n`;

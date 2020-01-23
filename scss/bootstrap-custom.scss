@@ -5,6 +5,10 @@
 	cursor: pointer;
 }
 
+.text-muted a {
+	color: $rgb-link-blue--muted;
+}
+
 /* Generic/utilities */
 .code {
 	font-family: 'Courier New', monospace;
@@ -98,6 +102,13 @@
 .help,
 .help--hover {
 	cursor: help;
+	text-decoration: underline;
+	text-decoration-style: dotted;
+}
+
+.help:hover,
+.help:active,
+.help:focus {
 	text-decoration: underline;
 	text-decoration-style: dotted;
 }

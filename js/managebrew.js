@@ -1,12 +1,10 @@
 "use strict";
 
 class ManageBrew {
-	static initialise () {
-		BrewUtil.pAddBrewData()
-			.then(() => BrewUtil.pAddLocalBrewData())
-			.then(() => {
-				ManageBrew.pRender();
-			})
+	static async pInitialise () {
+		await BrewUtil.pAddBrewData();
+		await BrewUtil.pAddLocalBrewData();
+		return ManageBrew.pRender();
 	}
 
 	static async pRender () {
@@ -88,7 +86,9 @@ class ManageBrew {
 	}
 }
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-	ManageBrew.initialise();
+	await ManageBrew.pInitialise();
+
+	window.dispatchEvent(new Event("toolsLoaded"));
 });

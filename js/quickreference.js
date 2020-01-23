@@ -44,4 +44,6 @@ function onJsonLoad (data) {
 	} else {
 		window.location.hash = "#bookref-quick";
 	}
+
+	window.dispatchEvent(new Event("toolsLoaded"));
 }

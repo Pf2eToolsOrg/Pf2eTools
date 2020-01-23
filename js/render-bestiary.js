@@ -144,6 +144,7 @@ class RenderBestiary {
 		${RenderBestiary._getRenderedSection("regionaleffect", legGroup.regionalEffects, -1)}` : ""}
 		
 		${renderedVariants ? `<tr>${renderedVariants}</tr>` : ""}
+		${mon.footer ? `<tr><td colspan=6 class="mon__sect-row-inner">${renderer.render({entries: mon.footer})}</td></tr>` : ""}
 		${renderedSources.length === 2
 		? `<tr><td colspan="4">${renderedSources[0]}</td><td colspan="2" class="text-right mr-2">${renderedSources[1]}</td></tr>`
 		: `<tr><td colspan="6">${renderedSources[0]}</td></tr>`}

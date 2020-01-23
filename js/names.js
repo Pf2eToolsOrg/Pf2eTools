@@ -59,6 +59,8 @@ function onJsonLoad (data) {
 
 	list.init();
 	window.onhashchange();
+
+	window.dispatchEvent(new Event("toolsLoaded"));
 }
 
 function showHideList (ele) {

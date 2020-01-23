@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/list-page--grouped.css">
 	<link rel="icon" href="favicon.png">
 
 	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
@@ -25,73 +26,6 @@
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 	<script type="text/javascript" src="js/browsercheck.js"></script>
-
-	<style>
-		#listcontainer > ul > li {
-			max-height: initial;
-		}
-
-		ul.list li:hover {
-			background: inherit;
-		}
-
-		ul.list li:active {
-			color: inherit;
-		}
-
-		ul.list a:hover {
-			background: lightgrey;
-		}
-
-		ul {
-			margin-left: 0;
-			padding-left: 0;
-		}
-
-		ul.list li {
-			max-height: none;
-		}
-
-		span.name {
-			user-select: none;
-			font-weight: bold;
-			font-size: 1.2em;
-			padding: 3px 0 1px;
-			display: inline-block;
-		}
-
-		ul.names > li {
-			border-bottom: none;
-			margin-bottom: 5px;
-		}
-
-		ul.names > li > ul > li:last-child {
-			border-bottom: none;
-		}
-
-		#listcontainer {
-			flex: 3;
-		}
-
-		#tablecontainer {
-			flex: 7;
-			display: flex;
-			flex-direction: column;
-		}
-
-		#contentwrapper {
-			overflow-y: auto;
-		}
-
-		.search-box {
-			flex-shrink: 0;
-			margin-bottom: 5px;
-		}
-
-		.rolltable {
-			display: flex;
-		}
-	</style>
 </head>
 
 <body>
@@ -103,8 +37,7 @@
 		</div>
 	</header>
 	<nav class="container page__nav" id="navigation">
-		<ul class="nav page__nav-inner" id="navbar">
-		</ul>
+		<ul class="nav page__nav-inner" id="navbar"></ul>
 	</nav>
 
 	<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
@@ -112,11 +45,12 @@
 
 	<div class="container view-col-wrapper">
 		<div class="view-col" id="listcontainer">
-			<div class="input-group search-box">
-				<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control" placeholder="Find race...">
-				<span class="input-group-btn">
-						<button class="btn btn-default reset" id="reset" type="button">Reset</button>
-					</span>
+			<div class="input-group btn-group search-box flex">
+				<div class="w-100 relative">
+					<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
+					<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+				</div>
+				<button class="btn btn-default reset" id="reset" type="button">Reset</button>
 			</div>
 
 			<ul class="list names">

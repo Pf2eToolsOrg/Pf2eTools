@@ -885,4 +885,6 @@ window.addEventListener("load", async () => {
 	});
 
 	$(`#xge_link`).replaceWith(Renderer.get().render(`{@book Xanathar's Guide to Everything|XGE|1|This Is Your Life}`));
+
+	window.dispatchEvent(new Event("toolsLoaded"));
 });

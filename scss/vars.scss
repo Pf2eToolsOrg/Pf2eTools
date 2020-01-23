@@ -57,7 +57,9 @@ $rgb-name-red--night: #d29a38;
 $rgb-bg-orange: #fdf1dc;
 
 $rgb-link-blue: $rgb-active-blue;
+$rgb-link-blue--muted: #7096b7;
 $rgb-link-blue--night: #7db6e8;
+$rgb-link-blue--muted-night: #6e8eab;
 
 $rgb-border-grey: #ccc;
 $rgb-border-grey--trans: #cccccca0;
@@ -103,6 +105,11 @@ $rgb-subclass--night-stale: #91b4d2;
 $rgb-subclass-ua--night: #27ce80;
 $rgb-subclass-ua--night-stale: #80ceaa;
 $rgb-class-brew--night: #aa40b4;
+
+$rgb-roll-min: #ff3100;
+$rgb-roll-max: #00b400;
+$rgb-roll-min--muted: desaturate($rgb-roll-min, 35%);
+$rgb-roll-max--muted: desaturate($rgb-roll-max, 35%);
 
 // Colors blended using https://www.w3schools.com/colors/colors_mixer.asp
 $rgb-btn-primary-blue--night: #2a4e6c; // #337ab7 blended with #222

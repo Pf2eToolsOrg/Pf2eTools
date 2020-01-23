@@ -638,7 +638,7 @@ class TabUiUtil {
 				.click(() => {
 					const prevTab = tabMeta[opts.stateObj[activeProp]];
 					prevTab.$btnTab.removeClass("stat-tab-sel");
-					prevTab.$wrpTab.hide();
+					prevTab.$wrpTab.toggleClass("hidden", true);
 
 					opts.stateObj[activeProp] = ix;
 					$btnTab.addClass("stat-tab-sel");
@@ -1152,12 +1152,15 @@ class InputUiUtil {
 	 * @param opts.int If the value returned should be an integer.
 	 * @param opts.title Prompt title.
 	 * @param opts.default Default value.
+	 * @param [opts.$elePre] Element to add before the number input.
+	 * @param [opts.$elePost] Element to add after the number input.
+	 * @param [opts.isPermanent] If the prompt can only be closed by entering a number.
 	 * @return {Promise<number>} A promise which resolves to the number if the user entered one, or null otherwise.
 	 */
 	static pGetUserNumber (opts) {
 		opts = opts || {};
 		return new Promise(resolve => {
-			const $iptNumber = $(`<input class="form-control mb-2 text-right" type="number" ${opts.min ? `min="${opts.min}"` : ""} ${opts.max ? `max="${opts.max}"` : ""} ${opts.default != null ? `value="${opts.default}"` : ""}>`)
+			const $iptNumber = $(`<input class="form-control mb-2 text-right" ${opts.min ? `min="${opts.min}"` : ""} ${opts.max ? `max="${opts.max}"` : ""} ${opts.default != null ? `value="${opts.default}"` : ""}>`)
 				.keydown(evt => {
 					// return key
 					if (evt.which === 13) doClose(true);
@@ -1172,14 +1175,17 @@ class InputUiUtil {
 					if (!isDataEntered) return resolve(null);
 					const raw = $iptNumber.val();
 					if (!raw.trim()) return resolve(null);
-					let num = Number(raw) || 0;
+					let num = UiUtil.strToInt(raw);
 					if (opts.min) num = Math.max(opts.min, num);
 					if (opts.max) num = Math.min(opts.max, num);
 					if (opts.int) return resolve(Math.round(num));
 					else resolve(num);
 				}
 			});
+
+			if (opts.$elePre) opts.$elePre.appendTo($modalInner);
 			$iptNumber.appendTo($modalInner);
+			if (opts.$elePost) opts.$elePost.appendTo($modalInner);
 			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
 			$iptNumber.focus();
 			$iptNumber.select();
@@ -2529,21 +2535,61 @@ class ComponentUiUtil {
 	 * @param [opts.isAllowNull] If null should be allowed (and preferred) for empty inputs
 	 * @param [opts.asMeta] If a meta-object should be returned containing the hook and the checkbox.
 	 * @param [opts.autocomplete] Array of autocomplete strings. REQUIRES INCLUSION OF THE TYPEAHEAD LIBRARY.
-	 * @return {JQuery}
+	 * @param [opts.decorationLeft] Decoration to be added to the left-hand-side of the input. Can be `"search"` or `"clear"`. REQUIRES `asMeta` TO BE SET.
+	 * @param [opts.decorationRight] Decoration to be added to the right-hand-side of the input. Can be `"search"` or `"clear"`. REQUIRES `asMeta` TO BE SET.
 	 */
 	static $getIptStr (component, prop, opts) {
 		opts = opts || {};
+
+		// Validate options
+		if ((opts.decorationLeft || opts.decorationRight) && !opts.asMeta) throw new Error(`Input must be created with "asMeta" option`);
 
 		const $ipt = (opts.$ele || $(opts.html || `<input class="form-control input-xs form-control--minimal">`)).disableSpellcheck()
 			.change(() => {
 				const nxtVal = opts.isNoTrim ? $ipt.val() : $ipt.val().trim();
 				component._state[prop] = opts.isAllowNull && !nxtVal ? null : nxtVal;
 			});
+
 		if (opts.autocomplete && opts.autocomplete.length) $ipt.typeahead({source: opts.autocomplete});
 		const hook = () => $ipt.val(component._state[prop]);
 		component._addHookBase(prop, hook);
 		hook();
-		return opts.asMeta ? ({$ipt, unhook: () => component._removeHookBase(prop, hook)}) : $ipt;
+
+		if (opts.asMeta) {
+			const out = {$ipt, unhook: () => component._removeHookBase(prop, hook)};
+
+			if (opts.decorationLeft || opts.decorationRight) {
+				let $decorLeft;
+				let $decorRight;
+
+				if (opts.decorationLeft) {
+					$ipt.addClass(`ui__ipt-decorated--left`);
+					$decorLeft = ComponentUiUtil._$getDecor($ipt, opts.decorationLeft, "left");
+				}
+
+				if (opts.decorationRight) {
+					$ipt.addClass(`ui__ipt-decorated--right`);
+					$decorRight = ComponentUiUtil._$getDecor($ipt, opts.decorationRight, "right");
+				}
+
+				out.$wrp = $$`<div class="relative w-100">${$ipt}${$decorLeft}${$decorRight}</div>`
+			}
+
+			return out;
+		} else return $ipt;
+	}
+
+	static _$getDecor ($ipt, decorType, side) {
+		switch (decorType) {
+			case "search": {
+				return $(`<div class="ui__ipt-decoration ui__ipt-decoration--${side} no-events flex-vh-center"><span class="glyphicon glyphicon-search"/></div>`);
+			}
+			case "clear": {
+				return $(`<div class="ui__ipt-decoration ui__ipt-decoration--${side} flex-vh-center clickable" title="Clear"><span class="glyphicon glyphicon-remove"/></div>`)
+					.click(() => $ipt.val("").change().keydown().keyup());
+			}
+			default: throw new Error(`Unimplemented!`);
+		}
 	}
 
 	/**

@@ -57,7 +57,7 @@ class NavBar {
 		addDivider(ulRules);
 		addLi(ulRules, "books.html", "View All/Homebrew");
 
-		const ulPlayers = addDropdown(navBar, "Player Options");
+		const ulPlayers = addDropdown(navBar, "Player");
 		addLi(ulPlayers, "classes.html", "Classes");
 		addLi(ulPlayers, "backgrounds.html", "Backgrounds");
 		addLi(ulPlayers, "feats.html", "Feats");
@@ -68,7 +68,7 @@ class NavBar {
 		addLi(ulPlayers, "lifegen.html", "This Is Your Life");
 		addLi(ulPlayers, "names.html", "Names");
 
-		const ulDms = addDropdown(navBar, "DM Tools");
+		const ulDms = addDropdown(navBar, "Dungeon Master");
 		addLi(ulDms, "dmscreen.html", "DM Screen");
 		addDivider(ulDms);
 		const ulAdventures = addDropdown(ulDms, "Adventures", true);

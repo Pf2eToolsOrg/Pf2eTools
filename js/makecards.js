@@ -5,6 +5,8 @@ class MakeCards extends BaseComponent {
 		MakeCards._ = new MakeCards();
 		await MakeCards.utils.pLoadReducedData();
 		await MakeCards._.pInit();
+
+		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
 	constructor () {
@@ -884,7 +886,7 @@ MakeCards._AVAILABLE_TYPES = {
 					<div class="bold col-3-5 pl-0">${spell.name}</div>
 					<div class="col-2 text-center">${levelText}</div>
 					<div class="col-2 text-center">${time}</div>
-					<div class="col-1 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}">${school}</div>
+					<div class="col-1 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</div>
 					<div class="col-0-5 text-center" title="Concentration">${concentration}</div>
 					<div class="col-2 text-right">${range}</div>
 					<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</div>

@@ -81,6 +81,8 @@ class LangDemoUi {
 
 		loadContext();
 		// endregion
+
+		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
 	static _handleInvalidMessage (msg) {

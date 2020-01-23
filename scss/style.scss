@@ -443,7 +443,7 @@ input.ui-search__ipt-search-sub-ipt-custom[type=number]::-webkit-inner-spin-butt
 	cursor: default;
 	display: flex;
 	flex-direction: column;
-	padding: 3px;
+	padding: 4px 7px;
 	overflow-y: auto;
 
 	> * {
@@ -526,6 +526,7 @@ input.ui-search__ipt-search-sub-ipt-custom[type=number]::-webkit-inner-spin-butt
 		display: flex;
 		margin-bottom: 0;
 		justify-content: space-between;
+		align-items: center;
 		width: 100%;
 	}
 }
@@ -903,18 +904,46 @@ input[type=checkbox].sidemenu__row__label__cb {
 		font-weight: bold;
 	}
 
-	.out-roll .out-roll-item .roll-max {
-		color: #00b400;
+	.out-roll .out-roll-item .roll-min {
+		color: $rgb-roll-min;
 	}
 
-	.out-roll .out-roll-item .roll-min {
-		color: #ff3100;
+	.out-roll .out-roll-item .roll-max {
+		color: $rgb-roll-max;
 	}
 
 	.out-roll .out-roll-id {
 		width: 100%;
 		font-size: 70%;
 		padding: 1px 3px;
+	}
+}
+
+// TODO refactor rollbox CSS to here
+.rll__ {
+	&prompt-header {
+		font-size: 32px;
+	}
+
+	&dropped {
+		text-decoration: red line-through;
+	}
+
+	&list {
+		margin-bottom: 0;
+		padding-left: 24px;
+	}
+
+	&exploded {
+		color: #6f99b8;
+	}
+
+	&min--muted {
+		color: $rgb-roll-min--muted;
+	}
+
+	&max--muted {
+		color: $rgb-roll-max--muted;
 	}
 }
 
@@ -2625,6 +2654,7 @@ $flt-2stripe: 22px;
 
 	&wrp-search-glass {
 		position: absolute;
+		z-index: 3; // Bootstrap's form control "focused" z-index
 		top: 0;
 		bottom: 2px;
 		left: 6px;
@@ -2640,7 +2670,7 @@ $flt-2stripe: 22px;
 	}
 
 	&search {
-		padding-left: 22px;
+		padding-left: 23px;
 	}
 
 	&search--no-border-r {
@@ -3772,6 +3802,13 @@ ul.list.books > li > a > span.name:hover {
 		color: $rgb-link-blue--night;
 	}
 
+	.text-muted {
+		a,
+		.roller {
+			color: $rgb-link-blue--muted-night;
+		}
+	}
+
 	.nav > li:not(.active) > a {
 		&:focus,
 		&:hover {
@@ -4648,6 +4685,10 @@ ul.list.books > li > a > span.name:hover {
 	&sidebar-rhs-inner {
 		position: sticky;
 		top: 20px;
+	}
+
+	&home-footer-pad {
+		height: 100px;
 	}
 }
 

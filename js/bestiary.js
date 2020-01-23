@@ -35,6 +35,8 @@ class BestiaryPage {
 		const hash = UrlUtil.autoEncodeHash(mon);
 		if (!mon.uniqueId && _addedHashes.has(hash)) return null;
 		_addedHashes.add(hash);
+
+		Renderer.monster.updateParsed(mon);
 		const isExcluded = ExcludeUtil.isExcluded(mon.name, "monster", mon.source);
 
 		this._pageFilter.addToFilters(mon, isExcluded);
@@ -93,7 +95,6 @@ class BestiaryPage {
 		const mon = await (data.scaled ? ScaleCreature.scale(monRaw, data.scaled) : monRaw);
 		Renderer.monster.updateParsed(mon);
 		const subHash = data.scaled ? `${HASH_PART_SEP}${MON_HASH_SCALED}${HASH_SUB_KV_SEP}${data.scaled}` : "";
-		Renderer.monster.initParsed(mon);
 
 		const name = mon._displayName || mon.name;
 		const hash = `${UrlUtil.autoEncodeHash(mon)}${subHash}`;
@@ -157,7 +158,7 @@ class BestiaryPage {
 				type,
 				cr,
 				count,
-				uniqueId: data.uid || ""
+				uniqueId: data.uniqueId || ""
 			},
 			{
 				$elesCount: [$eleCount1, $eleCount2]
@@ -200,6 +201,7 @@ class BestiaryPage {
 		window.loadSubHash = this.doLoadSubHash.bind(this);
 
 		await this._pageFilter.pInitFilterBox({
+			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`)
 		});
@@ -216,6 +218,7 @@ class BestiaryPage {
 		ExcludeUtil.checkShowAllExcluded(monsters, $(`#pagecontent`));
 		bestiaryPage.handleFilterChange();
 		encounterBuilder.initState();
+		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 }
 
@@ -382,7 +385,7 @@ class EncounterBuilderUtils {
 
 					// used for encounter adjuster
 					crScaled: crScaled,
-					uid: it.values.uniqueId,
+					uniqueId: it.values.uniqueId,
 					hash: UrlUtil.autoEncodeHash(mon)
 				}
 			}
@@ -443,10 +446,10 @@ let mI = 0;
 const lastRendered = {mon: null, isScaled: false};
 function getScaledData () {
 	const last = lastRendered.mon;
-	return {scaled: last._isScaledCr, uniqueId: getUid(last.name, last.source, last._isScaledCr)};
+	return {scaled: last._isScaledCr, uniqueId: getUniqueId(last.name, last.source, last._isScaledCr)};
 }
 
-function getUid (name, source, scaledCr) {
+function getUniqueId (name, source, scaledCr) {
 	return `${name}_${source}_${scaledCr}`.toLowerCase();
 }
 
@@ -466,7 +469,8 @@ function handleBestiaryLinkClick (evt) {
 const _addedHashes = new Set();
 function addMonsters (data) {
 	if (!data || !data.length) return;
-	monsters = monsters.concat(data);
+
+	monsters.push(...data);
 
 	// build the table
 	for (; mI < monsters.length; mI++) {
@@ -866,8 +870,8 @@ function dcRollerClick (event, ele, exp) {
 	Renderer.dice.rollerClick(event, ele, JSON.stringify(it));
 }
 
-function getUnpackedUid (uid) {
-	return {scaled: Number(uid.split("_").last()), uid};
+function getUnpackedUid (uniqueId) {
+	return {scaled: Number(uniqueId.split("_").last()), uniqueId};
 }
 
 function getCr (obj) {

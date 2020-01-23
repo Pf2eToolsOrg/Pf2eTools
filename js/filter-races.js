@@ -191,7 +191,8 @@ class PageFilterRaces extends PageFilter {
 		race._fTraits = [
 			race.darkvision === 120 ? "Superior Darkvision" : race.darkvision ? "Darkvision" : null,
 			race.hasSpellcasting ? "Spellcasting" : null
-		].filter(it => it).concat(race.traitTags || []);
+		].filter(it => it);
+		race._fTraits.push(...(race.traitTags || []));
 		race._fSources = ListUtil.getCompleteFilterSources(race);
 		race._fLangs = PageFilterRaces.getLanguageProficiencyTags(race.languageProficiencies);
 		race._fMisc = race.srd ? ["SRD"] : [];

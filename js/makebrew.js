@@ -960,7 +960,9 @@ async function doPageInit () {
 	// page-specific init
 	await Builder.pInitAll();
 	Renderer.utils.bindPronounceButtons();
-	return ui.init();
+	await ui.init();
+
+	window.dispatchEvent(new Event("toolsLoaded"));
 }
 
 const ui = new PageUi();

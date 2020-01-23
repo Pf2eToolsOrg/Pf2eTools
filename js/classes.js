@@ -138,6 +138,8 @@ class ClassesPage extends BaseComponent {
 
 		// Finally, ensure the hash correctly matches the state
 		this._setHashFromState();
+
+		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
 	async _pHandleBrew (homebrew) {
@@ -195,7 +197,7 @@ class ClassesPage extends BaseComponent {
 
 		classes.filter(cls => cls.subclasses).forEach(cls => cls.subclasses.sort(ClassesPage._ascSortSubclasses));
 
-		this._dataList = this._dataList.concat(classes);
+		this._dataList.push(...classes);
 
 		const len = this._dataList.length;
 		for (; this._ixData < len; this._ixData++) {
@@ -222,7 +224,7 @@ class ClassesPage extends BaseComponent {
 			this._sourceFilter.addItem(sc.source);
 			sc.subclassFeatures.forEach(lvlFeatures => lvlFeatures.forEach(feature => this._addEntrySourcesToFilter(feature)));
 
-			cls.subclasses = cls.subclasses.concat(sc);
+			cls.subclasses.push(sc);
 
 			cls.subclasses.sort(ClassesPage._ascSortSubclasses);
 		});

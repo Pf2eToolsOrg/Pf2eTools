@@ -77,9 +77,7 @@ class AcConvert {
 			if ((basic && basic[3]) || (basicAlt && basicAlt[3])) {
 				const toUse = basic || basicAlt;
 				const brak = toUse[3];
-				let cur = {
-					ac: Number(toUse[1])
-				};
+				let cur = {ac: Number(toUse[1])};
 
 				let nextPart = null;
 
@@ -129,147 +127,51 @@ class AcConvert {
 							break;
 
 						// spells
-						case "foresight bonus":
-							from.push(`{@spell foresight} bonus`);
-							break;
+						case "foresight bonus": from.push(`{@spell foresight} bonus`); break;
+						case "natural barkskin": from.push(`natural {@spell barkskin}`); break;
+						case "mage armor": from.push("{@spell mage armor}"); break;
 
-						case "natural barkskin":
-							from.push(`natural {@spell barkskin}`);
-							break;
-
-						case "mage armor":
-							from.push("{@spell mage armor}");
-							break;
-
-						// armour
-						case "studded leather armor":
-						case "studded leather":
-							from.push("{@item studded leather armor|phb}");
-							break;
-
-						case "leather armor":
-						case "leather":
-							from.push("{@item leather armor|phb}");
-							break;
-
-						case "half plate":
-							from.push("{@item half plate armor|phb}");
-							break;
-
-						case "splint":
-						case "splint armor":
-							from.push("{@item splint armor|phb}");
-							break;
-
-						case "chain mail":
+						// armour (mostly handled by the item lookup; these are mis-named exceptions (usually for homebrew))
 						case "chainmail":
 						case "chain armor":
 							from.push("{@item chain mail|phb}");
 							break;
 
-						case "scale mail":
-						case "scale armor":
-						case "scale":
-							from.push("{@item scale mail|phb}");
-							break;
-
-						case "hide armor":
-						case "hide":
-							from.push("{@item hide armor|phb}");
-							break;
-
-						case "chain shirt":
-							from.push("{@item chain shirt|phb}");
-							break;
-
-						case "breastplate":
-							from.push("{@item breastplate|phb}");
-							break;
-
-						case "ring mail":
-							from.push("{@item ring mail|phb}");
-							break;
-
 						case "plate mail":
 						case "platemail":
-						case "plate":
-						case "plate armor":
 						case "full plate":
 							from.push("{@item plate armor|phb}");
 							break;
 
-						case "shield":
-							from.push("{@item shield|phb}");
-							break;
-
-						case "shields":
-							from.push("{@item shield|phb|shields}");
-							break;
+						case "scale armor": from.push("{@item scale mail|phb}"); break;
+						case "chain shirt": from.push("{@item chain shirt|phb}"); break;
+						case "shields": from.push("{@item shield|phb|shields}"); break;
 
 						// magic items
-						case "dwarven plate":
-							from.push("{@item dwarven plate}");
-							break;
-						case "elven chain":
-							from.push("{@item elven chain}");
-							break;
-						case "glamoured studded leather":
-							from.push("{@item glamoured studded leather}");
-							break;
-						case "bracers of defense":
-							from.push("{@item bracers of defense}");
-							break;
-						case "badge of the watch":
-							from.push("{@item Badge of the Watch|wdh}");
-							break;
-						case "ring of protection":
-							from.push("{@item ring of protection}");
-							break;
-						case "robe of the archmagi":
-							from.push("{@item robe of the archmagi}");
-							break;
-						case "staff of power":
-							from.push("{@item staff of power}");
-							break;
+						case "dwarven plate": from.push("{@item dwarven plate}"); break;
+						case "elven chain": from.push("{@item elven chain}"); break;
+						case "glamoured studded leather": from.push("{@item glamoured studded leather}"); break;
+						case "bracers of defense": from.push("{@item bracers of defense}"); break;
+						case "badge of the watch": from.push("{@item Badge of the Watch|wdh}"); break;
+						case "ring of protection": from.push("{@item ring of protection}"); break;
+						case "robe of the archmagi": from.push("{@item robe of the archmagi}"); break;
+						case "staff of power": from.push("{@item staff of power}"); break;
 
-						// TODO general auto-detect for enchanted versions of items
-						case "+3 plate armor":
-							from.push("{@item plate armor +3||+3 plate armor}");
-							break;
-						case "half plate armor +1":
-							from.push("{@item half plate armor +1||+1 half-plate armor}");
-							break;
-						case "scale mail +1":
-							from.push("{@item scale mail +1||+1 scale mail}");
-							break;
-						case "scale mail +2":
-							from.push("{@item scale mail +2||+2 scale mail}");
-							break;
-						case "splint mail +2":
-							from.push("{@item splint armor +2||+2 splint armor}");
-							break;
-						case "studded leather armor +1":
-							from.push("{@item studded leather armor +1||+1 studded leather armor}");
-							break;
-						case "+2 leather armor":
-							from.push("{@item leather armor +2||+2 leather armor}");
-							break;
-						case "+3 leather armor":
-							from.push("{@item leather armor +3||+3 leather armor}");
-							break;
-
+						// everything else
 						default: {
-							if (pLow.endsWith("with mage armor") || pLow.endsWith("with barkskin")) {
+							if (AcConvert._ITEM_LOOKUP[pLow]) {
+								const itemMeta = AcConvert._ITEM_LOOKUP[pLow];
+
+								if (itemMeta.isExact) from.push(`{@item ${pLow}${itemMeta.source === SRC_DMG ? "" : `|${itemMeta.source}`}}`);
+								else from.push(`{@item ${itemMeta.name}${itemMeta.source === SRC_DMG ? "|" : `|${itemMeta.source}`}|${pLow}}`);
+							} else if (pLow.endsWith("with mage armor") || pLow.endsWith("with barkskin")) {
 								const numMatch = /(\d+) with (.*)/.exec(pLow);
 								if (!numMatch) throw new Error("Spell AC but no leading number?");
+
 								let spell = null;
-								if (numMatch[2] === "mage armor") {
-									spell = `{@spell mage armor}`
-								} else if (numMatch[2] === "barkskin") {
-									spell = `{@spell barkskin}`
-								} else {
-									throw new Error(`Unhandled spell! ${numMatch[2]}`)
-								}
+								if (numMatch[2] === "mage armor") spell = `{@spell mage armor}`;
+								else if (numMatch[2] === "barkskin") spell = `{@spell barkskin}`;
+								else throw new Error(`Unhandled spell! ${numMatch[2]}`);
 
 								nextPart = {
 									ac: Number(numMatch[1]),
@@ -303,7 +205,34 @@ class AcConvert {
 		}
 		m.ac = nuAc;
 	}
+
+	static init (items) {
+		const handlePlusName = (item, lowName) => {
+			const mBonus = /^(.+) (\+\d+)$/.exec(lowName);
+			if (mBonus) {
+				const plusFirstName = `${mBonus[2]} ${mBonus[1]}`;
+				AcConvert._ITEM_LOOKUP[plusFirstName] = {source: item.source, name: lowName};
+			}
+		};
+
+		AcConvert._ITEM_LOOKUP = {};
+		items
+			.filter(it => it.type === "HA" || it.type === "MA" || it.type === "LA" || type === "S")
+			.forEach(it => {
+				const lowName = it.name.toLowerCase();
+				AcConvert._ITEM_LOOKUP[lowName] = {source: it.source, isExact: true};
+
+				const noArmorName = lowName.replace(/(^|\s)(?:armor|mail)(\s|$)/g, "$1$2").trim().replace(/\s+/g, " ");
+				if (noArmorName !== lowName) {
+					AcConvert._ITEM_LOOKUP[noArmorName] = {source: it.source, name: lowName};
+				}
+
+				handlePlusName(it, lowName);
+				handlePlusName(it, noArmorName);
+			});
+	}
 }
+AcConvert._ITEM_LOOKUP = null;
 
 class TagAttack {
 	static tryTagAttacks (m, cbMan) {

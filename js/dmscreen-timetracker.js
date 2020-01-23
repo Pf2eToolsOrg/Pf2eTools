@@ -1035,7 +1035,7 @@ class TimeTrackerRoot_Clock extends TimeTrackerComponent {
 										type: "list",
 										items: encounter.data.l.items.map(it => {
 											const spl = decodeURIComponent(it.h).split("_");
-											const crPart = it.uid ? Parser.numberToCr(Number(it.uid.split("_").last())) : null;
+											const crPart = it.uniqueId ? Parser.numberToCr(Number(it.uniqueId.split("_").last())) : null;
 											const name = spl[0].toTitleCase();
 											return `${it.c || 1}× {@creature ${name}|${spl[1]}${crPart != null ? `|${name} (CR ${crPart})|${crPart}` : ""}}`;
 										})

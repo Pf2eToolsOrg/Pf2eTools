@@ -1,12 +1,12 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "spells.json",
-	"version": "1.4.5",
+	"version": "1.5.0",
 	"title": "Spells",
 	"type": "object",
 
 	"definitions": {
-		"spell": {
+		"spellData": {
 			"properties": {
 				"name": {
 					"type": "string"
@@ -367,17 +367,43 @@
 					"$ref": "util.json#/definitions/srd"
 				}
 			},
-			"required": [
-				"name",
-				"level",
-				"school",
-				"time",
-				"range",
-				"duration",
-				"entries",
-				"source"
-			],
 			"additionalProperties": false
+		},
+
+		"spell": {
+			"anyOf": [
+				{
+					"type": "object",
+					"$$merge": [
+						{
+							"$ref": "#/definitions/spellData"
+						},
+						{
+							"required": [
+								"name",
+								"level",
+								"school",
+								"time",
+								"range",
+								"duration",
+								"entries",
+								"source"
+							]
+						}
+					]
+				},
+				{
+					"type": "object",
+					"$$merge": [
+						{
+							"$ref": "#/definitions/spellData"
+						},
+						{
+							"$ref": "util.json#/definitions/copyBlock"
+						}
+					]
+				}
+			]
 		},
 
 		"time": {
@@ -477,6 +503,13 @@
 		"spell": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/spell"}
+		},
+		"_meta": {
+			"$ref": "util.json#/definitions/metaBlock"
 		}
-	}
+	},
+	"required": [
+		"spell"
+	],
+	"additionalProperties": false
 }

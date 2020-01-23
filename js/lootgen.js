@@ -999,4 +999,6 @@ window.addEventListener("load", function load () {
 	randomLootTables.init();
 
 	$("select").on("change", (evt) => $(evt.currentTarget).val() === "" && $(evt.currentTarget).removeClass("form-control--error"));
+
+	window.dispatchEvent(new Event("toolsLoaded"));
 });

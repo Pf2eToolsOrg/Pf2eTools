@@ -131,6 +131,8 @@ class Blacklist {
 		const $page = $(`#main_content`);
 		$page.find(`.loading`).prop("disabled", false);
 		$page.find(`.loading-temp`).remove();
+
+		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
 	static _addListItem (name, category, source) {
@@ -140,7 +142,7 @@ class Blacklist {
 
 		const $btnRemove = $(`<button class="btn btn-xxs btn-danger m-1">Remove</button>`)
 			.click(() => {
-				Blacklist.pRemove(id, name, category, source);
+				Blacklist.remove(id, name, category, source);
 			});
 
 		const $ele = $$`<li class="row no-click flex-v-center lst--border">
@@ -154,13 +156,18 @@ class Blacklist {
 			id,
 			$ele,
 			name,
-			{category: display.displayCategory}
+			{category: display.displayCategory},
+			{
+				name: name,
+				category: category,
+				source: source
+			}
 		);
 
 		Blacklist._list.addItem(listItem);
 	}
 
-	static async add () {
+	static add () {
 		const $selSource = $(`#bl-source`);
 		const $selCategory = $(`#bl-category`);
 		const $selName = $(`#bl-name`);
@@ -171,26 +178,38 @@ class Blacklist {
 
 		if (source === "*" && category === "*" && name === "*" && !window.confirm("This will exclude all content from all list pages. Are you sure?")) return;
 
-		if (await ExcludeUtil.pAddExclude(name, category, source)) {
+		if (ExcludeUtil.addExclude(name, category, source)) {
 			Blacklist._addListItem(name, category, source);
 			Blacklist._list.update();
 		}
 	}
 
 	static addAllUa () {
-		$(`#bl-source`).find(`option`).each(async (i, e) => {
+		$(`#bl-source`).find(`option`).each((i, e) => {
 			const val = $(e).val();
 			if (val === "*" || !SourceUtil.isNonstandardSource(val)) return;
 
-			if (await ExcludeUtil.pAddExclude("*", "*", val)) {
+			if (ExcludeUtil.addExclude("*", "*", val)) {
 				Blacklist._addListItem("*", "*", val);
 				Blacklist._list.update();
 			}
 		});
 	}
 
-	static async pRemove (ix, name, category, source) {
-		await ExcludeUtil.pRemoveExclude(name, category, source);
+	static removeAllUa () {
+		$(`#bl-source`).find(`option`).each((i, e) => {
+			const val = $(e).val();
+			if (val === "*" || !SourceUtil.isNonstandardSource(val)) return;
+
+			const item = Blacklist._list.items.find(it => it.data.name === "*" && it.data.category === "*" && it.data.source === val);
+			if (item) {
+				Blacklist.remove(item.ix, "*", "*", val)
+			}
+		});
+	}
+
+	static remove (ix, name, category, source) {
+		ExcludeUtil.removeExclude(name, category, source);
 		Blacklist._list.removeItem(ix);
 		Blacklist._list.update();
 	}
@@ -232,8 +251,8 @@ class Blacklist {
 		$iptAdd.click();
 	}
 
-	static async pReset () {
-		await ExcludeUtil.pResetExcludes();
+	static reset () {
+		ExcludeUtil.resetExcludes();
 		Blacklist._list.removeAllItems();
 		Blacklist._list.update();
 	}

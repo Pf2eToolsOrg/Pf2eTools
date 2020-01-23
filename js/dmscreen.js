@@ -192,6 +192,8 @@ class Board {
 			this.doCheckFillSpaces();
 		}
 		this.initGlobalHandlers();
+
+		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
 	initGlobalHandlers () {
@@ -223,10 +225,14 @@ class Board {
 			});
 		})();
 
+		const adventureOrBookIdToSource = {};
+
 		async function pDoBuildAdventureOrAdventureIndex (dataPath, dataProp, indexStorage, indexIdField) {
 			const brew = await BrewUtil.pAddBrewData();
 
 			const data = await DataUtil.loadJSON(dataPath);
+			adventureOrBookIdToSource[dataProp] = adventureOrBookIdToSource[dataProp] || {};
+
 			indexStorage.ALL = elasticlunr(function () {
 				this.addField(indexIdField);
 				this.addField("c");
@@ -239,6 +245,8 @@ class Board {
 
 			let bookOrAdventureId = 0;
 			const handleAdventureOrBook = (adventureOrBook, isBrew) => {
+				adventureOrBookIdToSource[dataProp][adventureOrBook.id] = adventureOrBook.source;
+
 				indexStorage[adventureOrBook.id] = elasticlunr(function () {
 					this.addField(indexIdField);
 					this.addField("c");
@@ -258,7 +266,7 @@ class Board {
 						id: bookOrAdventureId++
 					};
 					if (chap.ordinal) chapDoc.o = Parser.bookOrdinalToAbv(chap.ordinal, true);
-					if (isBrew) chapDoc.b = true;
+					if (isBrew) chapDoc.w = true;
 
 					indexStorage.ALL.addDoc(chapDoc);
 					indexStorage[adventureOrBook.id].addDoc(chapDoc);
@@ -280,9 +288,9 @@ class Board {
 
 		// add tabs
 		const omniTab = new AddMenuSearchTab(this.availContent);
-		const ruleTab = new AddMenuSearchTab(this.availRules, "rules");
-		const adventureTab = new AddMenuSearchTab(this.availAdventures, "adventures");
-		const bookTab = new AddMenuSearchTab(this.availBooks, "books");
+		const ruleTab = new AddMenuSearchTab(this.availRules, "rule");
+		const adventureTab = new AddMenuSearchTab(this.availAdventures, "adventure", adventureOrBookIdToSource);
+		const bookTab = new AddMenuSearchTab(this.availBooks, "book", adventureOrBookIdToSource);
 		const embedTab = new AddMenuVideoTab();
 		const imageTab = new AddMenuImageTab();
 		const specialTab = new AddMenuSpecialTab();
@@ -2684,19 +2692,20 @@ class AddMenuSearchTab extends AddMenuTab {
 	static _getTitle (subType) {
 		switch (subType) {
 			case "content": return "Content";
-			case "rules": return "Rules";
-			case "adventures": return "Adventures";
-			case "books": return "Books";
+			case "rule": return "Rules";
+			case "adventure": return "Adventures";
+			case "book": return "Books";
 			default: throw new Error(`Unhandled search tab subtype: "${subType}"`);
 		}
 	}
 
-	constructor (indexes, subType = "content") {
+	constructor (indexes, subType = "content", adventureOrBookIdToSource) {
 		super(AddMenuSearchTab._getTitle(subType));
 		this.tabId = this.genTabId(subType);
 		this.indexes = indexes;
 		this.cat = "ALL";
 		this.subType = subType;
+		this._adventureOrBookIdToSource = adventureOrBookIdToSource;
 
 		this.$selCat = null;
 		this.$srch = null;
@@ -2715,7 +2724,7 @@ class AddMenuSearchTab extends AddMenuTab {
 				bool: "AND",
 				expand: true
 			};
-			case "rules": return {
+			case "rule": return {
 				fields: {
 					h: {boost: 5, expand: true},
 					s: {expand: true}
@@ -2723,8 +2732,8 @@ class AddMenuSearchTab extends AddMenuTab {
 				bool: "AND",
 				expand: true
 			};
-			case "adventures":
-			case "books": return {
+			case "adventure":
+			case "book": return {
 				fields: {
 					c: {boost: 5, expand: true},
 					n: {expand: true}
@@ -2744,14 +2753,14 @@ class AddMenuSearchTab extends AddMenuTab {
 					<span>${r.doc.s ? `<i title="${Parser.sourceJsonToFull(r.doc.s)}">${Parser.sourceJsonToAbv(r.doc.s)}${r.doc.p ? ` p${r.doc.p}` : ""}</i>` : ""}</span>
 				</div>
 			`);
-			case "rules": return $(`
+			case "rule": return $(`
 				<div class="ui-search__row">
 					<span>${r.doc.h}</span>
 					<span><i>${r.doc.n}, ${r.doc.s}</i></span>
 				</div>
 			`);
-			case "adventures":
-			case "books": return $(`
+			case "adventure":
+			case "book": return $(`
 				<div class="ui-search__row">
 					<span>${r.doc.c}</span>
 					<span><i>${r.doc.n}${r.doc.o ? `, ${r.doc.o}` : ""}</i></span>
@@ -2764,19 +2773,22 @@ class AddMenuSearchTab extends AddMenuTab {
 	_getAllTitle () {
 		switch (this.subType) {
 			case "content": return "All Categories";
-			case "rules": return "All Categories";
-			case "adventures": return "All Adventures";
-			case "books": return "All Books";
+			case "rule": return "All Categories";
+			case "adventure": return "All Adventures";
+			case "book": return "All Books";
 			default: throw new Error(`Unhandled search tab subtype: "${this.subType}"`);
 		}
 	}
 
-	_getCatOptionText (it) {
+	_getCatOptionText (key) {
 		switch (this.subType) {
-			case "content": return it;
-			case "rules": return it;
-			case "adventures":
-			case "books": return Parser.sourceJsonToFull(it);
+			case "content": return key;
+			case "rule": return key;
+			case "adventure":
+			case "book": {
+				key = (this._adventureOrBookIdToSource[this.subType] || {})[key] || key; // map the key (an adventure/book id) to its source if possible
+				return Parser.sourceJsonToFull(key);
+			}
 			default: throw new Error(`Unhandled search tab subtype: "${this.subType}"`);
 		}
 	}
@@ -2822,15 +2834,15 @@ class AddMenuSearchTab extends AddMenuTab {
 							this.menu.pnl.doPopulate_Stats(page, source, hash);
 							break;
 						}
-						case "rules": {
+						case "rule": {
 							this.menu.pnl.doPopulate_Rules(r.doc.b, r.doc.p, r.doc.h);
 							break;
 						}
-						case "adventures": {
+						case "adventure": {
 							this.menu.pnl.doPopulate_Adventures(r.doc.a, r.doc.p);
 							break;
 						}
-						case "books": {
+						case "book": {
 							this.menu.pnl.doPopulate_Books(r.doc.b, r.doc.p);
 							break;
 						}
@@ -2976,7 +2988,7 @@ const bookLoader = new BookLoader();
 class NoteBox {
 	static make$Notebox (board, content) {
 		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports inline rolls and content tags (CTRL-q with the cursor over some text to activate the embed):\n • Inline rolls,  [[1d20+2]]\n • Content tags (as per the Demo page), {@creature goblin}, {@spell fireball}">${content || ""}</textarea>`)
-			.on("keydown", evt => {
+			.on("keydown", async evt => {
 				if ((evt.ctrlKey || evt.metaKey) && evt.key === "q") {
 					const txt = $iptText[0];
 					if (txt.selectionStart === txt.selectionEnd) {
@@ -3031,7 +3043,7 @@ class NoteBox {
 						if (beltsAtPos === 2 && belts === 0) {
 							const str = beltStack.join("");
 							if (/^([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?$/i.exec(str)) {
-								Renderer.dice.roll2(str.replace(`[[`, "").replace(`]]`, ""), {
+								await Renderer.dice.pRoll2(str.replace(`[[`, "").replace(`]]`, ""), {
 									user: false,
 									name: "DM Screen"
 								});

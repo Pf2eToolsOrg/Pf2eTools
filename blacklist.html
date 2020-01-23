@@ -88,7 +88,8 @@
 
 	<div class="row">
 		<div class="form-group col-12">
-			<button class="btn btn-default" onclick="Blacklist.addAllUa()">Exclude All UA/etc.</button>
+			<button class="btn btn-default mr-2" onclick="Blacklist.addAllUa()">Exclude All UA/etc.</button>
+			<button class="btn btn-default help" onclick="Blacklist.removeAllUa()" title="Removes entries added by the &quot;Exclude All UA/etc.&quot; button.">Include All UA/etc.</button>
 		</div>
 	</div>
 
@@ -128,7 +129,7 @@
 		<div class="form-group col-12">
 			<button class="btn btn-default" onclick="Blacklist.export()">Export List</button>
 			<button class="btn btn-default" onclick="Blacklist.import(event)" title="SHIFT for Add Only">Import List</button>
-			<button class="btn btn-danger btn-offset" onclick="window.confirm('Are you sure?') && Blacklist.pReset()">Reset List</button>
+			<button class="btn btn-danger btn-offset" onclick="window.confirm('Are you sure?') && Blacklist.reset()">Reset List</button>
 		</div>
 	</div>
 
