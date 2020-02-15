@@ -56,9 +56,11 @@ class CultsBoonsPage extends ListPage {
 			{
 				hash,
 				source,
-				type: it.type,
-				isExcluded,
-				uniqueId: it.uniqueId ? it.uniqueId : bcI
+				type: it.type
+			},
+			{
+				uniqueId: it.uniqueId ? it.uniqueId : bcI,
+				isExcluded
 			}
 		);
 
@@ -112,9 +114,9 @@ class CultsBoonsPage extends ListPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 	}
 }
 

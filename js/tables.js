@@ -2,15 +2,11 @@
 
 class TablesPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-
+		const pageFilter = new PageFilterTables();
 		super({
 			dataSource: DataUtil.table.pLoadAll,
 
-			filters: [
-				sourceFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "tablesdata",
 			listOptions: {
@@ -21,17 +17,12 @@ class TablesPage extends ListPage {
 
 			dataProps: ["table", "tableGroup"]
 		});
-
-		this._sourceFilter = sourceFilter;
 	}
 
 	getListItem (it, tbI, isExcluded) {
-		const sortName = it.name.replace(/^\s*([\d,.]+)\s*gp/, (...m) => m[1].replace(Parser._numberCleanRegexp, "").padStart(9, "0"));
+		this._pageFilter.mutateAndAddToFilters(it, isExcluded);
 
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(it.source);
-		}
+		const sortName = it.name.replace(/^\s*([\d,.]+)\s*gp/, (...m) => m[1].replace(Parser._numberCleanRegexp, "").padStart(9, "0"));
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -51,9 +42,11 @@ class TablesPage extends ListPage {
 			{
 				hash,
 				sortName,
-				source,
-				isExcluded,
-				uniqueId: it.uniqueId ? it.uniqueId : tbI
+				source
+			},
+			{
+				uniqueId: it.uniqueId ? it.uniqueId : tbI,
+				isExcluded
 			}
 		);
 
@@ -65,13 +58,7 @@ class TablesPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter(item => {
-			const it = this._dataList[item.ix];
-			return this._filterBox.toDisplay(
-				f,
-				it.source
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
@@ -101,9 +88,9 @@ class TablesPage extends ListPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 	}
 }
 

@@ -2,261 +2,131 @@
 	"action": [
 		{
 			"name": "Attack",
-			"page": 192,
 			"source": "PHB",
+			"page": 192,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
 			"entries": [
 				"The most common action to take in combat is the Attack action, whether you are swinging a sword, firing an arrow from a bow, or brawling with your fists.",
 				"With this action, you make one melee or ranged attack. See the \"{@book Making an Attack|phb|9|making an attack}\" section for the rules that govern attacks.",
 				"Certain features, such as the Extra Attack feature of the fighter, allow you to make more than one attack with this action."
-			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
 			]
 		},
 		{
 			"name": "Cast a Spell",
-			"page": 192,
 			"source": "PHB",
+			"page": 192,
+			"time": [
+				"Varies"
+			],
 			"entries": [
 				"Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which specifies whether the caster must use an action, a reaction, minutes, or even hours to cast the spell. Casting a spell is, therefore, not necessarily an action. Most spells do have a casting time of 1 action, so a spellcaster often uses his or her action in combat to cast such a spell. See {@book chapter 10|phb|10|casting a spell} for the rules on spellcasting."
-			],
-			"time": [
-				"Varies"
-			]
-		},
-		{
-			"name": "Dash",
-			"page": 192,
-			"source": "PHB",
-			"entries": [
-				"When you take the Dash action, you gain extra movement for the current turn. The increase equals your speed, after applying any modifiers. With a speed of 30 feet, for example, you can move up to 60 feet on your turn if you dash.",
-				"Any increase or decrease to your speed changes this additional movement by the same amount. If your speed of 30 feet is reduced to 15 feet, for instance, you can move up to 30 feet this turn if you dash."
-			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			]
-		},
-		{
-			"name": "Disengage",
-			"page": 192,
-			"source": "PHB",
-			"entries": [
-				"If you take the Disengage action, your movement doesn't provoke opportunity attacks for the rest of the turn."
-			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			]
-		},
-		{
-			"name": "Dodge",
-			"page": 192,
-			"source": "PHB",
-			"entries": [
-				"When you take the Dodge action, you focus entirely on avoiding attacks. Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Dexterity saving throws with advantage. You lose this benefit if you are incapacitated (as explained in the appendix) or if your speed drops to 0."
-			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			]
-		},
-		{
-			"name": "Help",
-			"page": 192,
-			"source": "PHB",
-			"entries": [
-				"You can lend your aid to another creature in the completion of a task. When you take the Help action, the creature you aid gains advantage on the next ability check it makes to perform the task you are helping with, provided that it makes the check before the start of your next turn.",
-				"Alternatively, you can aid a friendly creature in attacking a creature within 5 feet of you. You feint, distract the target, or in some other way team up to make your ally's attack more effective. If your ally attacks the target before your next turn, the first attack roll is made with advantage."
-			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			]
-		},
-		{
-			"name": "Hide",
-			"page": 192,
-			"source": "PHB",
-			"entries": [
-				"When you take the Hide action, you make a Dexterity ({@skill Stealth}) check in an attempt to hide, following the rules in {@book chapter 7 |phb|7|hiding} for hiding. If you succeed, you gain certain benefits, as described in the \"{@book Unseen Attackers and Targets|PHB|9|unseen attackers and targets}\" section in the Player's Handbook."
-			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			]
-		},
-		{
-			"name": "Ready",
-			"page": 193,
-			"source": "PHB",
-			"entries": [
-				"Sometimes you want to get the jump on a foe or wait for a particular circumstance before you act. To do so, you can take the Ready action on your turn so that you can act later in the round using your reaction.",
-				"First, you decide what perceivable circumstance will trigger your reaction. Then, you choose the action you will take in response to that trigger, or you choose to move up to your speed in response to it. Examples include \"If the cultist steps on the trapdoor, I'll pull the lever that opens it,\" and \"If the goblin steps next to me, I move away.\"",
-				"When the trigger occurs, you can either take your reaction right after the trigger finishes or ignore the trigger. Remember that you can take only one reaction per round.",
-				"When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell's magic requires concentration (explained in {@book chapter 10|phb|10|concentration}). If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the web spell and ready magic missile, your web spell ends, and if you take damage before you release magic missile with your reaction, your concentration might be broken.",
-				"You have until the start of your next turn to use a readied action."
-			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			]
-		},
-		{
-			"name": "Search",
-			"page": 193,
-			"source": "PHB",
-			"entries": [
-				"When you take the Search action, you devote your attention to finding something. Depending on the nature of your search, the DM might have you make a Wisdom ({@skill Perception}) check or an Intelligence ({@skill Investigation}) check."
-			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			]
-		},
-		{
-			"name": "Use an Object",
-			"page": 193,
-			"source": "PHB",
-			"entries": [
-				"You normally interact with an object while doing something else, such as when you draw a sword as part of an attack. When an object requires your action for its use, you take the Use an Object action. This action is also useful when you want to interact with more than one object on your turn."
-			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			]
-		},
-		{
-			"name": "Improvising an Action",
-			"page": 193,
-			"source": "PHB",
-			"entries": [
-				"Your character can do things not covered by the actions in this chapter, such as breaking down doors, intimidating enemies, sensing weaknesses in magical defenses, or calling for a parley with a foe. The only limits to the actions you can attempt are your imagination and your character's ability scores. See the descriptions of the ability scores in {@book chapter 7|phb|7|Ability Scores and Modifiers} for inspiration as you improvise.",
-				"When you describe an action not detailed elsewhere in the rules, the DM tells you whether that action is possible and what kind of roll you need to make, if any, to determine success or failure."
-			],
-			"time": [
-				"Varies"
 			]
 		},
 		{
 			"name": "Climb onto a Bigger Creature",
-			"page": 271,
 			"source": "DMG",
+			"page": 271,
 			"isOptional": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
 			"entries": [
 				"If one creature wants to jump onto another creature, it can do so by grappling. A small or Medium creature has little chance of making a successful grapple against a Huge or Gargantuan creature, however, unless magic has granted the grappler supernatural might.",
 				"As an alternative, a suitably large opponent can be treated as terrain for the purpose of jumping onto its back or clinging to a limb. After making any ability checks necessary to get into position and onto the larger creature, the smaller creature uses its action to make a Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check contested by the target's Dexterity ({@skill Acrobatics}) check. If it wins the contest, the smaller creature successfully moves into the target creature's space, the smaller creature moves with the target and has advantage on attack rolls against it.",
 				"The smaller creature can move around within the larger creature's space, treating the space as difficult terrain. The larger creature's ability to attack the smaller creature depends on the smaller creature's location, and is left to your discretion. The larger creature can dislodge the smaller creature as an action\u2014knocking it off, scraping it against a wall, or grabbing and throwing it\u2014by making a Strength ({@skill Athletics}) check contested by the smaller creature's Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check. The smaller creature chooses which ability to use."
-			],
+			]
+		},
+		{
+			"name": "Dash",
+			"source": "PHB",
+			"page": 192,
 			"time": [
 				{
 					"number": 1,
 					"unit": "action"
 				}
+			],
+			"entries": [
+				"When you take the Dash action, you gain extra movement for the current turn. The increase equals your speed, after applying any modifiers. With a speed of 30 feet, for example, you can move up to 60 feet on your turn if you dash.",
+				"Any increase or decrease to your speed changes this additional movement by the same amount. If your speed of 30 feet is reduced to 15 feet, for instance, you can move up to 30 feet this turn if you dash."
 			]
 		},
 		{
 			"name": "Disarm",
-			"page": 271,
 			"source": "DMG",
+			"page": 271,
 			"isOptional": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
 			"entries": [
 				"A creature can use a weapon attack to knock a weapon or another item from a target's grasp. The attacker makes an attack roll contested by the target's Strength ({@skill Athletics}) check or Dexterity ({@skill Acrobatics}) check. If the attacker wins the contest, the attack causes no damage or other ill effect, but the defender drops the item.",
 				"The attacker has disadvantage on its attack roll if the target is holding the item with two or more hands. The target has advantage on its ability check if it is larger than the attacking creature, or disadvantage if it is smaller."
-			],
+			]
+		},
+		{
+			"name": "Disengage",
+			"source": "PHB",
+			"page": 192,
 			"time": [
 				{
 					"number": 1,
 					"unit": "action"
 				}
-			]
-		},
-		{
-			"name": "Mark",
-			"page": 271,
-			"source": "DMG",
-			"isOptional": true,
-			"entries": [
-				"This option makes it easier for melee combatants to harry each other with opportunity attacks.",
-				"When a creature makes a melee attack, it can also mark its target. Until the end of the attacker's next turn, any opportunity attack it makes against the marked target has advantage. The opportunity attack doesn't expend the attacker's reaction, but the attacker can't make the attack if anything, such as the {@condition incapacitated} condition or the shocking grasp spell, is preventing it from taking reactions. The attacker is limited to one opportunity attack per turn."
-			]
-		},
-		{
-			"name": "Overrun",
-			"page": 272,
-			"source": "DMG",
-			"isOptional": true,
-			"entries": [
-				"When a creature tries to move through a hostile creature's space, the mover can try to force its way through by overrunning the hostile creature. As an action or a bonus action, the mover makes a Strength ({@skill Athletics}) check contested by the hostile creature's Strength ({@skill Athletics}) check. The creature attempting the overrun has advantage on this check if it is larger than the hostile creature, or disadvantage if it is smaller. If the mover wins the contest, it can move through the hostile creature's space once this turn."
 			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				},
-				{
-					"number": 1,
-					"unit": "bonus"
-				}
+			"entries": [
+				"If you take the Disengage action, your movement doesn't provoke opportunity attacks for the rest of the turn."
 			]
 		},
 		{
-			"name": "Shove Aside",
-			"page": 272,
-			"source": "DMG",
-			"isOptional": true,
-			"entries": [
-				"With this option, a creature uses the special shove attack from the {@book Player's Handbook|9|Shoving a Creature} to force a target to the side, rather than away. The attacker has disadvantage on its Strength ({@skill Athletics}) check when it does so. If that check is successful, the attacker moves the target 5 feet to a different space within its reach."
-			],
+			"name": "Dodge",
+			"source": "PHB",
+			"page": 192,
 			"time": [
 				{
 					"number": 1,
 					"unit": "action"
 				}
+			],
+			"entries": [
+				"When you take the Dodge action, you focus entirely on avoiding attacks. Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Dexterity saving throws with advantage. You lose this benefit if you are incapacitated (as explained in the appendix) or if your speed drops to 0."
 			]
 		},
 		{
-			"name": "Tumble",
-			"page": 272,
-			"source": "DMG",
-			"isOptional": true,
-			"entries": [
-				"A creature can try to tumble through a hostile creature's space, ducking and weaving past the opponent. As an action or a bonus action, the tumbler makes a Dexterity ({@skill Acrobatics}) check contested by the hostile creature's Dexterity ({@skill Acrobatics}) check. If the tumbler wins the contest, it can move through the hostile creature's space once this turn."
-			],
+			"name": "Escape a Grapple",
+			"source": "PHB",
+			"page": 195,
 			"time": [
 				{
 					"number": 1,
 					"unit": "action"
-				},
-				{
-					"number": 1,
-					"unit": "bonus"
 				}
+			],
+			"entries": [
+				"A {@condition grappled} creature can use its action to escape. To do so, it must succeed on a Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check contested by your Strength ({@skill Athletics}) check."
 			]
 		},
 		{
 			"name": "Grapple",
-			"page": 195,
 			"source": "PHB",
+			"page": 195,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
 			"entries": [
 				"When you want to grab a creature or wrestle with it, you can use the {@action Attack} action to make a special melee attack, a grapple. If you're able to make multiple attacks with the {@action Attack} action, this attack replaces one of them. The target of your grapple must be no more than one size larger than you, and it must be within your reach.",
 				"Using at least one free hand, you try to seize the target by making a grapple check, a Strength ({@skill Athletics}) check contested by the target's Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check (the target chooses the ability to use). You succeed automatically if the target is {@condition incapacitated}. If you succeed, you subject the target to the {@condition grappled} condition (see the appendix). The condition specifies the things that end it, and you can release the target whenever you like (no action required).",
@@ -267,84 +137,42 @@
 						"When you move, you can drag or carry the {@condition grappled} creature with you, but your speed is halved, unless the creature is two or more sizes smaller than you."
 					]
 				}
-			],
+			]
+		},
+		{
+			"name": "Help",
+			"source": "PHB",
+			"page": 192,
 			"time": [
 				{
 					"number": 1,
 					"unit": "action"
 				}
+			],
+			"entries": [
+				"You can lend your aid to another creature in the completion of a task. When you take the Help action, the creature you aid gains advantage on the next ability check it makes to perform the task you are helping with, provided that it makes the check before the start of your next turn.",
+				"Alternatively, you can aid a friendly creature in attacking a creature within 5 feet of you. You feint, distract the target, or in some other way team up to make your ally's attack more effective. If your ally attacks the target before your next turn, the first attack roll is made with advantage."
 			]
 		},
 		{
-			"name": "Escape a Grapple",
-			"page": 195,
+			"name": "Hide",
 			"source": "PHB",
-			"entries": [
-				"A {@condition grappled} creature can use its action to escape. To do so, it must succeed on a Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check contested by your Strength ({@skill Athletics}) check."
-			],
+			"page": 192,
 			"time": [
 				{
 					"number": 1,
 					"unit": "action"
 				}
-			]
-		},
-		{
-			"name": "Shove",
-			"page": 195,
-			"source": "PHB",
-			"entries": [
-				"Using the {@action Attack} action, you can make a special melee attack to shove a creature, either to knock it {@condition prone} or push it away from you. If you're able to make multiple attacks with the {@action Attack} action, this attack replaces one of them.",
-				"The target of your shove must be no more than one size larger than you, and it must be within your reach. You make a Strength ({@skill Athletics}) check contested by the target's Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check (the target chooses the ability to use). You succeed automatically if the target is {@condition incapacitated}. If you succeed, you either knock the target {@condition prone} or push it 5 feet away from you."
 			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			]
-		},
-		{
-			"name": "Opportunity Attack",
-			"source": "PHB",
-			"page": 195,
 			"entries": [
-				"In a fight, everyone is constantly watching for enemies to drop their guard. You can rarely move heedlessly past your foes without putting yourself in danger; doing so provokes an opportunity attack.",
-				"You can make an opportunity attack when a hostile creature that you can see moves out of your reach. To make the opportunity attack, you use your reaction to make one melee attack against the provoking creature. The attack interrupts the provoking creature's movement, occurring right before the creature leaves your reach.",
-				"You can avoid provoking an opportunity attack by taking the {@action Disengage} action. You also don't provoke an opportunity attack when you teleport or when someone or something moves you without using your movement, action, or reaction. For example, you don't provoke an opportunity attack if an explosion hurls you out of a foe's reach or if gravity causes you to fall past an enemy."
-			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "reaction"
-				}
-			]
-		},
-		{
-			"name": "Two-Weapon Fighting",
-			"source": "PHB",
-			"page": 195,
-			"entries": [
-				"When you take the {@action Attack} action and attack with a light melee weapon that you're holding in one hand, you can use a bonus action to attack with a different light melee weapon that you're holding in the other hand. You don't add your ability modifier to the damage of the bonus attack, unless that modifier is negative.",
-				"If either weapon has the thrown property, you can throw the weapon, instead of making a melee attack with it."
-			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "bonus"
-				}
+				"When you take the Hide action, you make a Dexterity ({@skill Stealth}) check in an attempt to hide, following the rules in {@book chapter 7 |phb|7|hiding} for hiding. If you succeed, you gain certain benefits, as described in the \"{@book Unseen Attackers and Targets|PHB|9|unseen attackers and targets}\" section in the Player's Handbook."
 			]
 		},
 		{
 			"name": "Identify a Spell",
+			"source": "XGE",
 			"page": 85,
 			"isOptional": true,
-			"source": "XGE",
-			"entries": [
-				"Sometimes a character wants to identify a spell that someone else is casting or that was already cast. To do so, a character can use their reaction to identify a spell as it's being cast, or they can use an action on their turn to identify a spell by its effect after it is cast.",
-				"If the character perceived the casting, the spell's effect, or both, the character can make an Intelligence ({@skill Arcana}) check with the reaction or action. The DC equals 15 + the spell's level. If the spell is cast as a class spell and the character is a member of that class, the check is made with advantage. For example, if the spellcaster casts a spell as a cleric, another cleric has advantage on the check to identify the spell. Some spells aren't associated with any class when they're cast, such as when a monster uses its Innate Spellcasting trait.",
-				"This Intelligence ({@skill Arcana}) check represents the fact that identifying a spell requires a quick mind and familiarity with the theory and practice of casting. This is true even for a character whose spellcasting ability is Wisdom or Charisma. Being able to cast spells doesn't by itself make you adept at deducing exactly what others are doing when they cast their spells."
-			],
 			"time": [
 				{
 					"number": 1,
@@ -354,6 +182,178 @@
 					"number": 1,
 					"unit": "action"
 				}
+			],
+			"entries": [
+				"Sometimes a character wants to identify a spell that someone else is casting or that was already cast. To do so, a character can use their reaction to identify a spell as it's being cast, or they can use an action on their turn to identify a spell by its effect after it is cast.",
+				"If the character perceived the casting, the spell's effect, or both, the character can make an Intelligence ({@skill Arcana}) check with the reaction or action. The DC equals 15 + the spell's level. If the spell is cast as a class spell and the character is a member of that class, the check is made with advantage. For example, if the spellcaster casts a spell as a cleric, another cleric has advantage on the check to identify the spell. Some spells aren't associated with any class when they're cast, such as when a monster uses its Innate Spellcasting trait.",
+				"This Intelligence ({@skill Arcana}) check represents the fact that identifying a spell requires a quick mind and familiarity with the theory and practice of casting. This is true even for a character whose spellcasting ability is Wisdom or Charisma. Being able to cast spells doesn't by itself make you adept at deducing exactly what others are doing when they cast their spells."
+			]
+		},
+		{
+			"name": "Improvising an Action",
+			"source": "PHB",
+			"page": 193,
+			"time": [
+				"Varies"
+			],
+			"entries": [
+				"Your character can do things not covered by the actions in this chapter, such as breaking down doors, intimidating enemies, sensing weaknesses in magical defenses, or calling for a parley with a foe. The only limits to the actions you can attempt are your imagination and your character's ability scores. See the descriptions of the ability scores in {@book chapter 7|phb|7|Ability Scores and Modifiers} for inspiration as you improvise.",
+				"When you describe an action not detailed elsewhere in the rules, the DM tells you whether that action is possible and what kind of roll you need to make, if any, to determine success or failure."
+			]
+		},
+		{
+			"name": "Mark",
+			"source": "DMG",
+			"page": 271,
+			"isOptional": true,
+			"entries": [
+				"This option makes it easier for melee combatants to harry each other with opportunity attacks.",
+				"When a creature makes a melee attack, it can also mark its target. Until the end of the attacker's next turn, any opportunity attack it makes against the marked target has advantage. The opportunity attack doesn't expend the attacker's reaction, but the attacker can't make the attack if anything, such as the {@condition incapacitated} condition or the shocking grasp spell, is preventing it from taking reactions. The attacker is limited to one opportunity attack per turn."
+			]
+		},
+		{
+			"name": "Opportunity Attack",
+			"source": "PHB",
+			"page": 195,
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction"
+				}
+			],
+			"entries": [
+				"In a fight, everyone is constantly watching for enemies to drop their guard. You can rarely move heedlessly past your foes without putting yourself in danger; doing so provokes an opportunity attack.",
+				"You can make an opportunity attack when a hostile creature that you can see moves out of your reach. To make the opportunity attack, you use your reaction to make one melee attack against the provoking creature. The attack interrupts the provoking creature's movement, occurring right before the creature leaves your reach.",
+				"You can avoid provoking an opportunity attack by taking the {@action Disengage} action. You also don't provoke an opportunity attack when you teleport or when someone or something moves you without using your movement, action, or reaction. For example, you don't provoke an opportunity attack if an explosion hurls you out of a foe's reach or if gravity causes you to fall past an enemy."
+			]
+		},
+		{
+			"name": "Overrun",
+			"source": "DMG",
+			"page": 272,
+			"isOptional": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				},
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"entries": [
+				"When a creature tries to move through a hostile creature's space, the mover can try to force its way through by overrunning the hostile creature. As an action or a bonus action, the mover makes a Strength ({@skill Athletics}) check contested by the hostile creature's Strength ({@skill Athletics}) check. The creature attempting the overrun has advantage on this check if it is larger than the hostile creature, or disadvantage if it is smaller. If the mover wins the contest, it can move through the hostile creature's space once this turn."
+			]
+		},
+		{
+			"name": "Ready",
+			"source": "PHB",
+			"page": 193,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Sometimes you want to get the jump on a foe or wait for a particular circumstance before you act. To do so, you can take the Ready action on your turn so that you can act later in the round using your reaction.",
+				"First, you decide what perceivable circumstance will trigger your reaction. Then, you choose the action you will take in response to that trigger, or you choose to move up to your speed in response to it. Examples include \"If the cultist steps on the trapdoor, I'll pull the lever that opens it,\" and \"If the goblin steps next to me, I move away.\"",
+				"When the trigger occurs, you can either take your reaction right after the trigger finishes or ignore the trigger. Remember that you can take only one reaction per round.",
+				"When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell's magic requires concentration (explained in {@book chapter 10|phb|10|concentration}). If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the web spell and ready magic missile, your web spell ends, and if you take damage before you release magic missile with your reaction, your concentration might be broken.",
+				"You have until the start of your next turn to use a readied action."
+			]
+		},
+		{
+			"name": "Search",
+			"source": "PHB",
+			"page": 193,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"When you take the Search action, you devote your attention to finding something. Depending on the nature of your search, the DM might have you make a Wisdom ({@skill Perception}) check or an Intelligence ({@skill Investigation}) check."
+			]
+		},
+		{
+			"name": "Shove",
+			"source": "PHB",
+			"page": 195,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Using the {@action Attack} action, you can make a special melee attack to shove a creature, either to knock it {@condition prone} or push it away from you. If you're able to make multiple attacks with the {@action Attack} action, this attack replaces one of them.",
+				"The target of your shove must be no more than one size larger than you, and it must be within your reach. You make a Strength ({@skill Athletics}) check contested by the target's Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check (the target chooses the ability to use). You succeed automatically if the target is {@condition incapacitated}. If you succeed, you either knock the target {@condition prone} or push it 5 feet away from you."
+			]
+		},
+		{
+			"name": "Shove Aside",
+			"source": "DMG",
+			"page": 272,
+			"isOptional": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"With this option, a creature uses the special shove attack from the {@book Player's Handbook|9|Shoving a Creature} to force a target to the side, rather than away. The attacker has disadvantage on its Strength ({@skill Athletics}) check when it does so. If that check is successful, the attacker moves the target 5 feet to a different space within its reach."
+			]
+		},
+		{
+			"name": "Tumble",
+			"source": "DMG",
+			"page": 272,
+			"isOptional": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				},
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"entries": [
+				"A creature can try to tumble through a hostile creature's space, ducking and weaving past the opponent. As an action or a bonus action, the tumbler makes a Dexterity ({@skill Acrobatics}) check contested by the hostile creature's Dexterity ({@skill Acrobatics}) check. If the tumbler wins the contest, it can move through the hostile creature's space once this turn."
+			]
+		},
+		{
+			"name": "Two-Weapon Fighting",
+			"source": "PHB",
+			"page": 195,
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"entries": [
+				"When you take the {@action Attack} action and attack with a light melee weapon that you're holding in one hand, you can use a bonus action to attack with a different light melee weapon that you're holding in the other hand. You don't add your ability modifier to the damage of the bonus attack, unless that modifier is negative.",
+				"If either weapon has the thrown property, you can throw the weapon, instead of making a melee attack with it."
+			]
+		},
+		{
+			"name": "Use an Object",
+			"source": "PHB",
+			"page": 193,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"You normally interact with an object while doing something else, such as when you draw a sword as part of an attack. When an object requires your action for its use, you take the Use an Object action. This action is also useful when you want to interact with more than one object on your turn."
 			]
 		}
 	]

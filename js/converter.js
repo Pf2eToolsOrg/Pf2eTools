@@ -113,7 +113,7 @@ class BaseConverter extends BaseComponent {
 	_renderSidebarPagePart (parent, $wrpSidebar) {
 		if (!this._hasPageNumbers) return;
 
-		const $iptPage = ComponentUiUtil.$getIptInt(this, "page", 0, {html: `<input class="form-control input-sm" type="number" style="max-width: 9rem;">`});
+		const $iptPage = ComponentUiUtil.$getIptInt(this, "page", 0, {html: `<input class="form-control input-sm text-right" style="max-width: 9rem;">`});
 		$$`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Page</div>${$iptPage}</div>`.appendTo($wrpSidebar);
 
 		ConverterUiUtil.renderSideMenuDivider($wrpSidebar);
@@ -160,7 +160,9 @@ class BaseConverter extends BaseComponent {
 
 		const hkAvailSources = () => {
 			const curSources = new Set($selSource.find(`option`).map((i, e) => $(e).val()));
+			curSources.add("");
 			const nxtSources = new Set(parent.get("availableSources"));
+			nxtSources.add("");
 			parent.get("availableSources").forEach(source => {
 				const fullSource = BrewUtil.sourceJsonToSource(source);
 				nxtSources.add(source);
@@ -251,8 +253,7 @@ class ConverterUi extends BaseComponent {
 	getBaseSaveableState () {
 		return {
 			...super.getBaseSaveableState(),
-			...Object.values(this._converters).map(it => ({[it.converterId]: it.getBaseSaveableState()}))
-				.reduce((a, b) => Object.assign(a, b))
+			...Object.values(this._converters).mergeMap(it => ({[it.converterId]: it.getBaseSaveableState()}))
 		}
 	}
 

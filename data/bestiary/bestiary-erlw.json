@@ -15,6 +15,7 @@
 	"monster": [
 		{
 			"name": "Belashyrra",
+			"isNamedCreature": true,
 			"source": "ERLW",
 			"page": 286,
 			"size": "M",
@@ -81,10 +82,6 @@
 			"cr": {
 				"cr": "22",
 				"lair": "23"
-			},
-			"legendaryGroup": {
-				"name": "Belashyrra",
-				"source": "ERLW"
 			},
 			"trait": [
 				{
@@ -168,7 +165,6 @@
 					]
 				}
 			],
-			"isNamedCreature": true,
 			"legendary": [
 				{
 					"name": "Claw",
@@ -189,6 +185,10 @@
 					]
 				}
 			],
+			"legendaryGroup": {
+				"name": "Belashyrra",
+				"source": "ERLW"
+			},
 			"traitTags": [
 				"Legendary Resistances",
 				"Magic Resistance",
@@ -205,10 +205,10 @@
 				"TP"
 			],
 			"damageTags": [
-				"S",
-				"Y",
+				"O",
 				"R",
-				"O"
+				"S",
+				"Y"
 			],
 			"miscTags": [
 				"MW"
@@ -343,16 +343,16 @@
 				"X"
 			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"spellcastingTags": [
 				"CP"
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
 		},
 		{
@@ -449,8 +449,8 @@
 				"P"
 			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
@@ -458,13 +458,13 @@
 			"name": "Clawfoot",
 			"group": "Dinosaurs",
 			"source": "ERLW",
+			"page": 289,
 			"otherSources": [
 				{
 					"source": "UAWGE",
 					"page": 81
 				}
 			],
-			"page": 289,
 			"size": "M",
 			"type": "beast",
 			"alignment": [
@@ -526,6 +526,12 @@
 					]
 				}
 			],
+			"altArt": [
+				{
+					"name": "Clawfoot Raptor",
+					"source": "WGE"
+				}
+			],
 			"traitTags": [
 				"Pack Tactics",
 				"Pounce"
@@ -539,21 +545,20 @@
 			],
 			"miscTags": [
 				"MW"
-			],
-			"altArt": [
-				{
-					"name": "Clawfoot Raptor",
-					"source": "WGE"
-				}
 			]
 		},
 		{
 			"name": "Corrin Delmaco",
 			"isNpc": true,
 			"source": "ERLW",
+			"page": 271,
 			"_copy": {
 				"name": "Spy",
 				"source": "MM",
+				"_trait": {
+					"name": "Stout Halfling",
+					"source": "PHB"
+				},
 				"_mod": {
 					"*": {
 						"mode": "replaceTxt",
@@ -561,24 +566,19 @@
 						"with": "Corrin",
 						"flags": "i"
 					}
-				},
-				"_trait": {
-					"name": "Stout Halfling",
-					"source": "PHB"
 				}
-			},
-			"languageTags": [
-				"X",
-				"H"
-			],
-			"page": 271,
-			"hp": {
-				"average": 21,
-				"formula": "6d6"
 			},
 			"alignment": [
 				"L",
 				"E"
+			],
+			"hp": {
+				"average": 21,
+				"formula": "6d6"
+			},
+			"languageTags": [
+				"H",
+				"X"
 			]
 		},
 		{
@@ -779,9 +779,9 @@
 			],
 			"miscTags": [
 				"MW",
+				"RNG",
 				"RW",
-				"THW",
-				"RNG"
+				"THW"
 			]
 		},
 		{
@@ -926,6 +926,7 @@
 		},
 		{
 			"name": "Dyrrn",
+			"isNamedCreature": true,
 			"source": "ERLW",
 			"page": 288,
 			"size": "M",
@@ -992,10 +993,6 @@
 				"telepathy 120 ft."
 			],
 			"cr": "24",
-			"legendaryGroup": {
-				"name": "Dyrrn",
-				"source": "ERLW"
-			},
 			"trait": [
 				{
 					"name": "Alien Mind",
@@ -1055,7 +1052,6 @@
 					]
 				}
 			],
-			"isNamedCreature": true,
 			"legendary": [
 				{
 					"name": "Tentacle Whip",
@@ -1076,6 +1072,10 @@
 					]
 				}
 			],
+			"legendaryGroup": {
+				"name": "Dyrrn",
+				"source": "ERLW"
+			},
 			"traitTags": [
 				"Legendary Resistances",
 				"Magic Resistance",
@@ -1092,15 +1092,15 @@
 				"TP"
 			],
 			"damageTags": [
-				"S",
 				"N",
 				"P",
+				"S",
 				"Y"
 			],
 			"miscTags": [
+				"AOE",
 				"MW",
-				"RCH",
-				"AOE"
+				"RCH"
 			]
 		},
 		{
@@ -1185,94 +1185,6 @@
 			]
 		},
 		{
-			"name": "Iron Defender",
-			"group": "Homunculi",
-			"source": "ERLW",
-			"page": 293,
-			"size": "M",
-			"type": "construct",
-			"alignment": [
-				"N"
-			],
-			"ac": [
-				{
-					"ac": 17,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 30,
-				"formula": "4d8 + 12"
-			},
-			"speed": {
-				"walk": 40
-			},
-			"str": 16,
-			"dex": 14,
-			"con": 16,
-			"int": 8,
-			"wis": 11,
-			"cha": 7,
-			"skill": {
-				"perception": "+3",
-				"stealth": "+4"
-			},
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 13,
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"exhaustion",
-				"poisoned"
-			],
-			"languages": [
-				"understands the languages of its creator but can't speak"
-			],
-			"cr": "1",
-			"trait": [
-				{
-					"name": "Keen Senses",
-					"entries": [
-						"The defender has advantage on Wisdom (Perception) checks."
-					]
-				},
-				{
-					"name": "Telepathic Bond",
-					"entries": [
-						"While the defender is on the same plane of existence as its master, it can magically convey what it senses to its master, and the two can communicate telepathically."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage. If the target is a creature, it must succeed on a {@dc 13} Strength saving throw or take an extra 3 ({@damage 1d6}) piercing damage and be {@condition grappled} (escape {@dc 13}). The defender can have only one creature {@condition grappled} in this way at a time."
-					]
-				}
-			],
-			"traitTags": [
-				"Keen Senses"
-			],
-			"senseTags": [
-				"D"
-			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"MW"
-			],
-			"languageTags": [
-				"CS"
-			]
-		},
-		{
 			"name": "Fastieth",
 			"group": "Dinosaurs",
 			"source": "ERLW",
@@ -1327,6 +1239,7 @@
 			"name": "Garra",
 			"isNpc": true,
 			"source": "ERLW",
+			"page": 272,
 			"_copy": {
 				"name": "Half-Ogre (Ogrillon)",
 				"source": "MM"
@@ -1335,20 +1248,11 @@
 				"C",
 				"E"
 			],
-			"page": 272,
 			"int": 14
 		},
 		{
-			"name": "Sergeant",
-			"source": "WDH",
-			"_copy": {
-				"name": "Guard",
-				"source": "MM"
-			},
-			"page": 197
-		},
-		{
 			"name": "Hashalaq Quori",
+			"group": "Quori",
 			"source": "ERLW",
 			"page": 305,
 			"size": "M",
@@ -1476,8 +1380,97 @@
 				"Y"
 			],
 			"spellcastingTags": [
-				"P",
-				"I"
+				"I",
+				"P"
+			]
+		},
+		{
+			"name": "Homunculus Servant",
+			"source": "ERLW",
+			"page": 62,
+			"size": "T",
+			"type": "construct",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "equal the homunculus's Constitution modifier + your Intelligence modifier + your level in this class"
+			},
+			"speed": {
+				"walk": 20,
+				"fly": 30
+			},
+			"str": 4,
+			"dex": 15,
+			"con": 12,
+			"int": 10,
+			"wis": 10,
+			"cha": 7,
+			"save": {
+				"dex": "+4"
+			},
+			"skill": {
+				"perception": "+4",
+				"stealth": "+4"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"poisoned"
+			],
+			"languages": [
+				"understands the languages you speak"
+			],
+			"trait": [
+				{
+					"name": "Evasion",
+					"entries": [
+						"If the homunculus is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails. It can't use this trait if it's {@condition incapacitated}."
+					]
+				},
+				{
+					"name": "Might of the Master",
+					"entries": [
+						"The following numbers increase by 1 when your proficiency bonus increases by 1: the homunculus's skill and saving throw bonuses (above) and the bonuses to hit and damage of its attack (below)."
+					]
+				}
+			],
+			"actionNote": "Requires Your Bonus Action",
+			"action": [
+				{
+					"name": "Force Strike",
+					"entries": [
+						"{@atk rw} {@hit 4} to hit, range 30 ft., one target you can see. {@h}{@dice 1d4 + 2} force damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Channel Magic",
+					"entries": [
+						"The homunculus delivers a spell you cast that has a range of touch. The homunculus must be within 120 feet of you."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"miscTags": [
+				"RW"
 			]
 		},
 		{
@@ -1588,24 +1581,6 @@
 					]
 				}
 			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C"
-			],
-			"damageTags": [
-				"P",
-				"O",
-				"Y"
-			],
-			"spellcastingTags": [
-				"P",
-				"I"
-			],
-			"miscTags": [
-				"MW"
-			],
 			"variant": [
 				{
 					"type": "variant",
@@ -1642,10 +1617,117 @@
 						}
 					]
 				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"O",
+				"P",
+				"Y"
+			],
+			"spellcastingTags": [
+				"I",
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Iron Defender",
+			"group": "Homunculi",
+			"source": "ERLW",
+			"page": 293,
+			"size": "M",
+			"type": "construct",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 30,
+				"formula": "4d8 + 12"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 16,
+			"dex": 14,
+			"con": 16,
+			"int": 8,
+			"wis": 11,
+			"cha": 7,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 13,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"poisoned"
+			],
+			"languages": [
+				"understands the languages of its creator but can't speak"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Keen Senses",
+					"entries": [
+						"The defender has advantage on Wisdom (Perception) checks."
+					]
+				},
+				{
+					"name": "Telepathic Bond",
+					"entries": [
+						"While the defender is on the same plane of existence as its master, it can magically convey what it senses to its master, and the two can communicate telepathically."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage. If the target is a creature, it must succeed on a {@dc 13} Strength saving throw or take an extra 3 ({@damage 1d6}) piercing damage and be {@condition grappled} (escape {@dc 13}). The defender can have only one creature {@condition grappled} in this way at a time."
+					]
+				}
+			],
+			"traitTags": [
+				"Keen Senses"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"CS"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Kalaraq Quori",
+			"group": "Quori",
 			"source": "ERLW",
 			"page": 306,
 			"size": "M",
@@ -1815,17 +1897,17 @@
 				"Multiattack"
 			],
 			"languageTags": [
-				"XX",
-				"TP"
+				"TP",
+				"XX"
 			],
 			"damageTags": [
-				"O",
 				"N",
+				"O",
 				"Y"
 			],
 			"spellcastingTags": [
-				"P",
-				"I"
+				"I",
+				"P"
 			],
 			"miscTags": [
 				"AOE"
@@ -1906,8 +1988,8 @@
 				"Y"
 			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
@@ -2020,17 +2102,18 @@
 				"C"
 			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
 		},
 		{
 			"name": "Lady Illmarrow",
+			"isNamedCreature": true,
 			"source": "ERLW",
 			"page": 296,
 			"size": "M",
@@ -2244,7 +2327,6 @@
 					]
 				}
 			],
-			"isNamedCreature": true,
 			"legendary": [
 				{
 					"name": "Cantrip",
@@ -2285,17 +2367,17 @@
 				"E"
 			],
 			"damageTags": [
-				"N",
-				"S",
 				"C",
-				"I"
+				"I",
+				"N",
+				"S"
 			],
 			"spellcastingTags": [
 				"CW"
 			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
 			]
 		},
 		{
@@ -2690,13 +2772,14 @@
 				"P"
 			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
 			"name": "Mordakhesh",
+			"isNamedCreature": true,
 			"source": "ERLW",
 			"page": 301,
 			"size": "M",
@@ -2818,7 +2901,6 @@
 					]
 				}
 			],
-			"isNamedCreature": true,
 			"legendary": [
 				{
 					"name": "Attack",
@@ -2850,8 +2932,8 @@
 				"I"
 			],
 			"damageTags": [
-				"S",
-				"O"
+				"O",
+				"S"
 			],
 			"spellcastingTags": [
 				"I"
@@ -2994,8 +3076,8 @@
 				"Multiattack"
 			],
 			"languageTags": [
-				"XX",
-				"TP"
+				"TP",
+				"XX"
 			],
 			"damageTags": [
 				"B",
@@ -3005,12 +3087,13 @@
 				"I"
 			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
 			]
 		},
 		{
 			"name": "Rak Tulkhesh",
+			"isNamedCreature": true,
 			"source": "ERLW",
 			"page": 303,
 			"size": "H",
@@ -3165,7 +3248,6 @@
 					]
 				}
 			],
-			"isNamedCreature": true,
 			"legendary": [
 				{
 					"name": "Attack",
@@ -3197,8 +3279,8 @@
 				"Multiattack"
 			],
 			"languageTags": [
-				"XX",
-				"TP"
+				"TP",
+				"XX"
 			],
 			"damageTags": [
 				"O"
@@ -3211,6 +3293,15 @@
 				"RCH",
 				"RW"
 			]
+		},
+		{
+			"name": "Sergeant",
+			"source": "WDH",
+			"page": 197,
+			"_copy": {
+				"name": "Guard",
+				"source": "MM"
+			}
 		},
 		{
 			"name": "Shifter",
@@ -3297,7 +3388,104 @@
 			]
 		},
 		{
+			"name": "Steel Defender",
+			"source": "ERLW",
+			"page": 61,
+			"size": "M",
+			"type": "construct",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "equal the steel defender's Constitution modifier + your Intelligence modifier + five times your level in this class"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 14,
+			"dex": 12,
+			"con": 14,
+			"int": 4,
+			"wis": 10,
+			"cha": 6,
+			"save": {
+				"dex": "+3",
+				"con": "+4"
+			},
+			"skill": {
+				"athletics": "+4",
+				"perception": "+4"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"poisoned"
+			],
+			"languages": [
+				"understands the languages you speak"
+			],
+			"trait": [
+				{
+					"name": "Might of the Master",
+					"entries": [
+						"The following numbers increase by 1 when your proficiency bonus increases by 1: the defender's skill and saving throw bonuses (above), the bonuses to hit and damage of its rend attack, and the number of hit points restored by its Repair action (below)."
+					]
+				},
+				{
+					"name": "Vigilant",
+					"entries": [
+						"The defender can't be surprised."
+					]
+				}
+			],
+			"actionNote": "Requires Your Bonus Action",
+			"action": [
+				{
+					"name": "Force-Empowered Rend",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target you can see. {@h}{@dice 1d8 + 2} force damage."
+					]
+				},
+				{
+					"name": "Repair (3/Day)",
+					"entries": [
+						"The magical mechanisms inside the defender restore {@dice 2d8 + 2} hit points to itself or to one construct or object within 5 feet of it."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Deflect Attack",
+					"entries": [
+						"The defender imposes disadvantage on the attack roll of one creature it can see that is within 5 feet of it, provided the attack roll is against a creature other than the defender."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
 			"name": "Sul Khatesh",
+			"isNamedCreature": true,
 			"source": "ERLW",
 			"page": 304,
 			"size": "L",
@@ -3465,7 +3653,6 @@
 					]
 				}
 			],
-			"isNamedCreature": true,
 			"legendary": [
 				{
 					"name": "Attack",
@@ -3497,8 +3684,8 @@
 				"Multiattack"
 			],
 			"languageTags": [
-				"XX",
-				"TP"
+				"TP",
+				"XX"
 			],
 			"damageTags": [
 				"O"
@@ -3507,8 +3694,8 @@
 				"I"
 			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
 			]
 		},
 		{
@@ -3628,10 +3815,10 @@
 				"TC"
 			],
 			"damageTags": [
-				"P",
-				"I",
 				"F",
-				"O"
+				"I",
+				"O",
+				"P"
 			],
 			"spellcastingTags": [
 				"I"
@@ -3849,14 +4036,14 @@
 			],
 			"languageTags": [
 				"C",
-				"DR",
 				"D",
+				"DR",
 				"E"
 			],
 			"damageTags": [
-				"S",
+				"F",
 				"O",
-				"F"
+				"S"
 			],
 			"miscTags": [
 				"MW",
@@ -3866,6 +4053,7 @@
 		},
 		{
 			"name": "Tsucora Quori",
+			"group": "Quori",
 			"source": "ERLW",
 			"page": 307,
 			"size": "M",
@@ -3980,13 +4168,13 @@
 			],
 			"damageTags": [
 				"B",
-				"S",
 				"P",
+				"S",
 				"Y"
 			],
 			"spellcastingTags": [
-				"P",
-				"I"
+				"I",
+				"P"
 			],
 			"miscTags": [
 				"MW",
@@ -4201,8 +4389,8 @@
 				"E"
 			],
 			"damageTags": [
-				"R",
-				"F"
+				"F",
+				"R"
 			],
 			"spellcastingTags": [
 				"CC"
@@ -4326,10 +4514,10 @@
 				"R"
 			],
 			"miscTags": [
-				"RW",
+				"AOE",
 				"MW",
-				"THW",
-				"AOE"
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -4395,8 +4583,8 @@
 			],
 			"languageTags": [
 				"C",
-				"E",
 				"CS",
+				"E",
 				"S"
 			],
 			"damageTags": [
@@ -4473,8 +4661,8 @@
 			],
 			"languageTags": [
 				"C",
-				"E",
 				"CS",
+				"E",
 				"S"
 			],
 			"damageTags": [
@@ -4537,8 +4725,8 @@
 			],
 			"languageTags": [
 				"C",
-				"E",
 				"CS",
+				"E",
 				"S"
 			],
 			"damageTags": [
@@ -4700,9 +4888,9 @@
 				"R"
 			],
 			"miscTags": [
+				"AOE",
 				"MW",
-				"RCH",
-				"AOE"
+				"RCH"
 			]
 		},
 		{
@@ -4797,8 +4985,8 @@
 				"C"
 			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW",
@@ -4906,16 +5094,16 @@
 			"actionTags": [
 				"Multiattack"
 			],
+			"languageTags": [
+				"CS"
+			],
 			"damageTags": [
-				"S",
-				"B"
+				"B",
+				"S"
 			],
 			"miscTags": [
 				"MW",
 				"RCH"
-			],
-			"languageTags": [
-				"CS"
 			]
 		},
 		{
@@ -5053,8 +5241,8 @@
 				"I"
 			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"spellcastingTags": [
 				"I"
@@ -5063,191 +5251,6 @@
 				"MW",
 				"RW",
 				"THW"
-			]
-		},
-		{
-			"name": "Steel Defender",
-			"source": "ERLW",
-			"page": 61,
-			"size": "M",
-			"type": "construct",
-			"alignment": [
-				"N"
-			],
-			"ac": [
-				{
-					"ac": 15,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"special": "equal the steel defender's Constitution modifier + your Intelligence modifier + five times your level in this class"
-			},
-			"speed": {
-				"walk": 40
-			},
-			"str": 14,
-			"dex": 12,
-			"con": 14,
-			"int": 4,
-			"wis": 10,
-			"cha": 6,
-			"save": {
-				"dex": "+3",
-				"con": "+4"
-			},
-			"skill": {
-				"athletics": "+4",
-				"perception": "+4"
-			},
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 14,
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"charmed",
-				"exhaustion",
-				"poisoned"
-			],
-			"languages": [
-				"understands the languages you speak"
-			],
-			"trait": [
-				{
-					"name": "Might of the Master",
-					"entries": [
-						"The following numbers increase by 1 when your proficiency bonus increases by 1: the defender's skill and saving throw bonuses (above), the bonuses to hit and damage of its rend attack, and the number of hit points restored by its Repair action (below)."
-					]
-				},
-				{
-					"name": "Vigilant",
-					"entries": [
-						"The defender can't be surprised."
-					]
-				}
-			],
-			"actionNote": "Requires Your Bonus Action",
-			"action": [
-				{
-					"name": "Force-Empowered Rend",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target you can see. {@h}{@dice 1d8 + 2} force damage."
-					]
-				},
-				{
-					"name": "Repair (3/Day)",
-					"entries": [
-						"The magical mechanisms inside the defender restore {@dice 2d8 + 2} hit points to itself or to one construct or object within 5 feet of it."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"name": "Deflect Attack",
-					"entries": [
-						"The defender imposes disadvantage on the attack roll of one creature it can see that is within 5 feet of it, provided the attack roll is against a creature other than the defender."
-					]
-				}
-			],
-			"senseTags": [
-				"D"
-			],
-			"miscTags": [
-				"MW"
-			]
-		},
-		{
-			"name": "Homunculus Servant",
-			"source": "ERLW",
-			"page": 62,
-			"size": "T",
-			"type": "construct",
-			"alignment": [
-				"N"
-			],
-			"ac": [
-				{
-					"ac": 13,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"special": "equal the homunculus's Constitution modifier + your Intelligence modifier + your level in this class"
-			},
-			"speed": {
-				"walk": 20,
-				"fly": 30
-			},
-			"str": 4,
-			"dex": 15,
-			"con": 12,
-			"int": 10,
-			"wis": 10,
-			"cha": 7,
-			"save": {
-				"dex": "+4"
-			},
-			"skill": {
-				"perception": "+4",
-				"stealth": "+4"
-			},
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 14,
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"exhaustion",
-				"poisoned"
-			],
-			"languages": [
-				"understands the languages you speak"
-			],
-			"trait": [
-				{
-					"name": "Evasion",
-					"entries": [
-						"If the homunculus is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails. It can't use this trait if it's {@condition incapacitated}."
-					]
-				},
-				{
-					"name": "Might of the Master",
-					"entries": [
-						"The following numbers increase by 1 when your proficiency bonus increases by 1: the homunculus's skill and saving throw bonuses (above) and the bonuses to hit and damage of its attack (below)."
-					]
-				}
-			],
-			"actionNote": "Requires Your Bonus Action",
-			"action": [
-				{
-					"name": "Force Strike",
-					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 30 ft., one target you can see. {@h}{@dice 1d4 + 2} force damage."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"name": "Channel Magic",
-					"entries": [
-						"The homunculus delivers a spell you cast that has a range of touch. The homunculus must be within 120 feet of you."
-					]
-				}
-			],
-			"senseTags": [
-				"D"
-			],
-			"miscTags": [
-				"RW"
 			]
 		}
 	]

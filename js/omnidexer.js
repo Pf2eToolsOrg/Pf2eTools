@@ -718,6 +718,18 @@ Omnidexer.TO_INDEX = [
 		listProp: "action",
 		baseUrl: "actions.html",
 		hover: true
+	},
+	{
+		category: Parser.CAT_ID_LANGUAGE,
+		file: "languages.json",
+		listProp: "language",
+		baseUrl: "languages.html",
+		deepIndex: (indexer, primary, it) => {
+			return (it.dialects || []).map(d => ({
+				n: d
+			}));
+		},
+		hover: true
 	}
 ];
 

@@ -18,9 +18,10 @@
 	"monster": [
 		{
 			"name": "Amphisbaena",
+			"source": "GoS",
+			"page": 230,
 			"size": "M",
 			"type": "monstrosity",
-			"source": "GoS",
 			"alignment": [
 				"U"
 			],
@@ -44,12 +45,11 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"passive": 12,
-			"cr": "1/2",
-			"page": 230,
 			"senses": [
 				"blindsight 10 ft."
 			],
+			"passive": 12,
+			"cr": "1/2",
 			"trait": [
 				{
 					"name": "Two Heads",
@@ -72,22 +72,53 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P",
-				"I"
-			],
-			"miscTags": [
-				"MW"
-			],
 			"senseTags": [
 				"B"
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"damageTags": [
+				"I",
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Barnacle Bess",
+			"isNpc": true,
+			"source": "GoS",
+			"page": 220,
+			"_copy": {
+				"name": "Giant Crab",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the crab",
+						"with": "Bess",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"L",
+				"N"
+			],
+			"int": 10,
+			"languages": [
+				"Common"
+			],
+			"languageTags": [
+				"C"
 			]
 		},
 		{
 			"name": "Bullywug Croaker",
+			"source": "GoS",
+			"page": 232,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -95,7 +126,6 @@
 					"bullywug"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"N",
 				"E"
@@ -135,7 +165,6 @@
 				"Bullywug"
 			],
 			"cr": "2",
-			"page": 232,
 			"trait": [
 				{
 					"name": "Amphibious",
@@ -188,24 +217,26 @@
 					]
 				}
 			],
+			"traitTags": [
+				"Amphibious"
+			],
+			"languageTags": [
+				"OTH"
+			],
 			"damageTags": [
 				"P",
 				"Y"
 			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
-			],
-			"languageTags": [
-				"OTH"
-			],
-			"traitTags": [
-				"Amphibious"
 			]
 		},
 		{
 			"name": "Bullywug Royal",
+			"source": "GoS",
+			"page": 232,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -213,7 +244,6 @@
 					"bullywug"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"N",
 				"E"
@@ -255,7 +285,6 @@
 				"Bullywug"
 			],
 			"cr": "3",
-			"page": 232,
 			"trait": [
 				{
 					"name": "Amphibious",
@@ -320,31 +349,74 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"RW",
-				"MW",
-				"RCH",
-				"THW"
-			],
-			"languageTags": [
-				"OTH"
-			],
 			"traitTags": [
 				"Amphibious",
 				"Brute"
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW",
+				"THW"
+			]
+		},
+		{
+			"name": "Captain Xendros",
+			"isNpc": true,
+			"source": "GoS",
+			"page": 14,
+			"_copy": {
+				"name": "Priest",
+				"source": "MM",
+				"_trait": {
+					"name": "Tiefling",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the priest",
+						"with": "Xendros",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"I",
+				"X"
+			],
+			"spellcastingTags": [
+				"CC",
+				"I"
 			]
 		},
 		{
 			"name": "Drowned Ascetic",
+			"source": "GoS",
+			"page": 233,
+			"otherSources": [
+				{
+					"source": "LR"
+				}
+			],
 			"size": "M",
 			"type": "undead",
-			"source": "GoS",
 			"alignment": [
 				"C",
 				"E"
@@ -368,21 +440,20 @@
 			"save": {
 				"dex": "+5"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 9,
 			"immune": [
 				"poison"
 			],
 			"conditionImmune": [
 				"poisoned"
 			],
-			"passive": 9,
 			"languages": [
 				"understands the languages it knew in life but can't speak"
 			],
 			"cr": "3",
-			"page": 233,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Bottom Treader",
@@ -425,36 +496,37 @@
 					]
 				}
 			],
-			"damageTags": [
-				"B"
+			"traitTags": [
+				"Undead Fortitude"
 			],
-			"miscTags": [
-				"MW"
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"CS",
 				"LF"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"B"
 			],
-			"traitTags": [
-				"Undead Fortitude"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"otherSources": [
-				{
-					"source": "LR"
-				}
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Drowned Assassin",
+			"source": "GoS",
+			"page": 234,
+			"otherSources": [
+				{
+					"source": "LR"
+				}
+			],
 			"size": "M",
 			"type": "undead",
-			"source": "GoS",
 			"alignment": [
 				"C",
 				"E"
@@ -488,21 +560,20 @@
 				"intimidation": "+5",
 				"stealth": "+5"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 9,
 			"immune": [
 				"poison"
 			],
 			"conditionImmune": [
 				"poisoned"
 			],
-			"passive": 9,
 			"languages": [
 				"understands the languages it knew in life but can't speak"
 			],
 			"cr": "4",
-			"page": 234,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Bottom Treader",
@@ -549,39 +620,40 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P",
-				"I"
+			"traitTags": [
+				"Undead Fortitude"
 			],
-			"miscTags": [
-				"RW",
-				"RNG",
-				"MW"
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"CS",
 				"LF"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"I",
+				"P"
 			],
-			"traitTags": [
-				"Undead Fortitude"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"otherSources": [
-				{
-					"source": "LR"
-				}
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW"
 			]
 		},
 		{
 			"name": "Drowned Blade",
+			"source": "GoS",
+			"page": 235,
+			"otherSources": [
+				{
+					"source": "LR"
+				}
+			],
 			"size": "M",
 			"type": "undead",
-			"source": "GoS",
 			"alignment": [
 				"C",
 				"E"
@@ -607,21 +679,20 @@
 			"int": 3,
 			"wis": 9,
 			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 9,
 			"immune": [
 				"poison"
 			],
 			"conditionImmune": [
 				"poisoned"
 			],
-			"passive": 9,
 			"languages": [
 				"understands the languages it knew in life but can't speak"
 			],
 			"cr": "2",
-			"page": 235,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Bottom Treader",
@@ -656,36 +727,37 @@
 					]
 				}
 			],
-			"damageTags": [
-				"S"
+			"traitTags": [
+				"Undead Fortitude"
 			],
-			"miscTags": [
-				"MW"
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"CS",
 				"LF"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"S"
 			],
-			"traitTags": [
-				"Undead Fortitude"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"otherSources": [
-				{
-					"source": "LR"
-				}
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Drowned Master",
+			"source": "GoS",
+			"page": 235,
+			"otherSources": [
+				{
+					"source": "LR"
+				}
+			],
 			"size": "M",
 			"type": "undead",
-			"source": "GoS",
 			"alignment": [
 				"C",
 				"E"
@@ -718,21 +790,20 @@
 			"skill": {
 				"perception": "+10"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 20,
 			"immune": [
 				"poison"
 			],
 			"conditionImmune": [
 				"poisoned"
 			],
-			"passive": 20,
 			"languages": [
 				"understands the languages it knew in life but can't speak"
 			],
 			"cr": "9",
-			"page": 235,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Bound Together",
@@ -779,40 +850,60 @@
 					]
 				}
 			],
-			"damageTags": [
-				"S",
-				"C",
-				"N"
+			"traitTags": [
+				"Undead Fortitude"
 			],
-			"miscTags": [
-				"MW",
-				"RCH",
-				"AOE"
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"CS",
 				"LF"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"C",
+				"N",
+				"S"
 			],
-			"traitTags": [
-				"Undead Fortitude"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"otherSources": [
-				{
-					"source": "LR"
-				}
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
 			]
 		},
 		{
+			"name": "Fish",
+			"source": "GoS",
+			"page": 224,
+			"_copy": {
+				"name": "Quipper",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "quipper",
+						"with": "fish",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "removeArr",
+						"names": "Blood Frenzy"
+					}
+				}
+			},
+			"action": null,
+			"damageTags": [],
+			"miscTags": []
+		},
+		{
 			"name": "Giant Coral Snake",
+			"source": "GoS",
+			"page": 236,
 			"size": "L",
 			"type": "beast",
-			"source": "GoS",
 			"alignment": [
 				"U"
 			],
@@ -836,12 +927,11 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"passive": 12,
-			"cr": "4",
-			"page": 236,
 			"senses": [
 				"blindsight 10 ft."
 			],
+			"passive": 12,
+			"cr": "4",
 			"action": [
 				{
 					"name": "Bite",
@@ -850,21 +940,22 @@
 					]
 				}
 			],
+			"senseTags": [
+				"B"
+			],
 			"damageTags": [
 				"P"
 			],
 			"miscTags": [
 				"MW"
-			],
-			"senseTags": [
-				"B"
 			]
 		},
 		{
 			"name": "Giant Sea Eel",
+			"source": "GoS",
+			"page": 237,
 			"size": "L",
 			"type": "beast",
-			"source": "GoS",
 			"alignment": [
 				"U"
 			],
@@ -897,12 +988,11 @@
 				"perception": "+2",
 				"stealth": "+4"
 			},
-			"passive": 12,
-			"cr": "1/2",
-			"page": 237,
 			"senses": [
 				"darkvision 60 ft."
 			],
+			"passive": 12,
+			"cr": "1/2",
 			"trait": [
 				{
 					"name": "Water Breathing",
@@ -919,24 +1009,69 @@
 					]
 				}
 			],
+			"traitTags": [
+				"Water Breathing"
+			],
+			"senseTags": [
+				"D"
+			],
 			"damageTags": [
 				"P"
 			],
 			"miscTags": [
 				"MW"
-			],
-			"senseTags": [
-				"D"
-			],
+			]
+		},
+		{
+			"name": "Giant White Moray Eel",
+			"source": "GoS",
+			"page": 216,
+			"_copy": {
+				"name": "Giant Constrictor Snake",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "snake",
+						"with": "eel",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Water Breathing",
+							"entries": [
+								"The eel can breathe only underwater."
+							]
+						}
+					},
+					"action": {
+						"mode": "removeArr",
+						"names": "Constrict"
+					}
+				}
+			},
+			"speed": {
+				"walk": 0,
+				"swim": 40
+			},
+			"skill": {
+				"perception": "+2",
+				"stealth": "+4"
+			},
 			"traitTags": [
 				"Water Breathing"
+			],
+			"damageTags": [
+				"P"
 			]
 		},
 		{
 			"name": "Harpy Matriarch",
+			"source": "GoS",
+			"page": 237,
 			"size": "M",
 			"type": "monstrosity",
-			"source": "GoS",
 			"alignment": [
 				"C",
 				"E"
@@ -970,15 +1105,14 @@
 			"skill": {
 				"perception": "+3"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 13,
 			"languages": [
 				"Common"
 			],
 			"cr": "5",
-			"page": 237,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Luring Maestro",
@@ -1027,27 +1161,29 @@
 					]
 				}
 			],
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
 			"damageTags": [
 				"S"
 			],
 			"miscTags": [
 				"MW"
-			],
-			"languageTags": [
-				"C"
-			],
-			"senseTags": [
-				"D"
-			],
-			"traitTags": [
-				"Magic Resistance"
-			],
-			"actionTags": [
-				"Multiattack"
 			]
 		},
 		{
 			"name": "Juvenile Kraken",
+			"source": "GoS",
+			"page": 238,
 			"size": "H",
 			"type": {
 				"type": "monstrosity",
@@ -1055,7 +1191,6 @@
 					"titan"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"C",
 				"E"
@@ -1089,6 +1224,10 @@
 				"int": "+9",
 				"wis": "+7"
 			},
+			"senses": [
+				"truesight 120 ft."
+			],
+			"passive": 12,
 			"resist": [
 				{
 					"resist": [
@@ -1106,7 +1245,6 @@
 				"frightened",
 				"paralyzed"
 			],
-			"passive": 12,
 			"languages": [
 				"Abyssal",
 				"Celestial",
@@ -1115,10 +1253,6 @@
 				"telepathy 60 ft. but can't speak"
 			],
 			"cr": "14",
-			"page": 238,
-			"senses": [
-				"truesight 120 ft."
-			],
 			"trait": [
 				{
 					"name": "Amphibious",
@@ -1186,40 +1320,42 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P",
-				"A",
-				"B",
-				"L",
-				"I"
-			],
-			"miscTags": [
-				"MW",
-				"RCH",
-				"AOE"
-			],
-			"languageTags": [
-				"AB",
-				"CE",
-				"I",
-				"P",
-				"CS",
-				"TP"
+			"traitTags": [
+				"Amphibious"
 			],
 			"senseTags": [
 				"U"
 			],
-			"traitTags": [
-				"Amphibious"
-			],
 			"actionTags": [
 				"Multiattack",
-				"Tentacles",
-				"Swallow"
+				"Swallow",
+				"Tentacles"
+			],
+			"languageTags": [
+				"AB",
+				"CE",
+				"CS",
+				"I",
+				"P",
+				"TP"
+			],
+			"damageTags": [
+				"A",
+				"B",
+				"I",
+				"L",
+				"P"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
 			]
 		},
 		{
 			"name": "Koalinth",
+			"source": "GoS",
+			"page": 239,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1227,7 +1363,6 @@
 					"goblinoid"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"L",
 				"E"
@@ -1261,16 +1396,15 @@
 				"athletics": "+3",
 				"perception": "+2"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 12,
 			"languages": [
 				"Common",
 				"Goblin"
 			],
 			"cr": "1/2",
-			"page": 239,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Amphibious",
@@ -1293,27 +1427,29 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P"
+			"traitTags": [
+				"Amphibious"
 			],
-			"miscTags": [
-				"RW",
-				"MW",
-				"THW"
+			"senseTags": [
+				"D"
 			],
 			"languageTags": [
 				"C",
 				"GO"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"P"
 			],
-			"traitTags": [
-				"Amphibious"
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
 			"name": "Koalinth Sergeant",
+			"source": "GoS",
+			"page": 239,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1321,7 +1457,6 @@
 					"goblinoid"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"L",
 				"E"
@@ -1356,16 +1491,15 @@
 				"athletics": "+4",
 				"perception": "+2"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 12,
 			"languages": [
 				"Common",
 				"Goblin"
 			],
 			"cr": "2",
-			"page": 239,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Amphibious",
@@ -1408,31 +1542,82 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P"
+			"traitTags": [
+				"Amphibious"
 			],
-			"miscTags": [
-				"RW",
-				"MW",
-				"THW"
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"C",
 				"GO"
 			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			]
+		},
+		{
+			"name": "Krell Grohlg",
+			"isNpc": true,
+			"source": "GoS",
+			"page": 92,
+			"_copy": {
+				"name": "Druid",
+				"source": "MM",
+				"_trait": {
+					"name": "Half-Orc",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the druid",
+						"with": "Krell",
+						"flags": "i"
+					},
+					"_": {
+						"mode": "replaceSpells",
+						"spells": {
+							"2": [
+								{
+									"replace": "{@spell animal messenger}",
+									"with": "{@spell flaming sphere}"
+								}
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"str": 18,
+			"languages": [
+				"Common",
+				"Orc"
+			],
 			"senseTags": [
 				"D"
 			],
-			"traitTags": [
-				"Amphibious"
-			],
-			"actionTags": [
-				"Multiattack"
+			"languageTags": [
+				"C",
+				"O"
 			]
 		},
 		{
 			"name": "Kysh",
 			"isNpc": true,
+			"source": "GoS",
+			"page": 240,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1440,7 +1625,6 @@
 					"triton"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"L",
 				"G"
@@ -1466,15 +1650,28 @@
 				"persuasion": "+4",
 				"survival": "+3"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 11,
 			"languages": [
 				"Common",
 				"Primordial"
 			],
 			"cr": "1",
-			"page": 240,
-			"senses": [
-				"darkvision 60 ft."
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Kysh's spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). He can cast the following spell, requiring only verbal components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell fog cloud}"
+						]
+					},
+					"ability": "cha"
+				}
 			],
 			"trait": [
 				{
@@ -1504,50 +1701,37 @@
 					]
 				}
 			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Kysh's spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). He can cast the following spell, requiring only verbal components:"
-					],
-					"daily": {
-						"1": [
-							"{@spell fog cloud}"
-						]
-					},
-					"ability": "cha"
-				}
+			"traitTags": [
+				"Amphibious"
 			],
-			"damageTags": [
-				"P"
+			"senseTags": [
+				"D"
 			],
-			"miscTags": [
-				"RW",
-				"MW",
-				"THW"
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"C",
 				"P"
 			],
-			"senseTags": [
-				"D"
-			],
-			"traitTags": [
-				"Amphibious"
-			],
-			"actionTags": [
-				"Multiattack"
+			"damageTags": [
+				"P"
 			],
 			"spellcastingTags": [
 				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
 			"name": "Living Iron Statue",
+			"source": "GoS",
+			"page": 241,
 			"size": "M",
 			"type": "construct",
-			"source": "GoS",
 			"alignment": [
 				"U"
 			],
@@ -1572,9 +1756,16 @@
 			"int": 6,
 			"wis": 10,
 			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
 			"immune": [
 				"lightning",
 				"poison"
+			],
+			"vulnerable": [
+				"acid"
 			],
 			"conditionImmune": [
 				"charmed",
@@ -1584,18 +1775,10 @@
 				"petrified",
 				"poisoned"
 			],
-			"vulnerable": [
-				"acid"
-			],
-			"passive": 10,
 			"languages": [
 				"understands the languages of its creator but can't speak"
 			],
 			"cr": "5",
-			"page": 241,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Immutable Form",
@@ -1630,28 +1813,30 @@
 					]
 				}
 			],
-			"damageTags": [
-				"S",
-				"B"
-			],
-			"miscTags": [
-				"MW"
+			"traitTags": [
+				"Immutable Form"
 			],
 			"senseTags": [
 				"D"
-			],
-			"traitTags": [
-				"Immutable Form"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"CS"
+			],
+			"damageTags": [
+				"B",
+				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Lizardfolk Commoner",
+			"source": "GoS",
+			"page": 241,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1659,7 +1844,6 @@
 					"lizardfolk"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"N"
 			],
@@ -1695,7 +1879,6 @@
 				"Draconic"
 			],
 			"cr": "1/4",
-			"page": 241,
 			"trait": [
 				{
 					"name": "Hold Breath",
@@ -1712,21 +1895,31 @@
 					]
 				}
 			],
+			"traitTags": [
+				"Hold Breath"
+			],
+			"languageTags": [
+				"DR"
+			],
 			"damageTags": [
 				"P"
 			],
 			"miscTags": [
 				"MW"
-			],
-			"languageTags": [
-				"DR"
-			],
-			"traitTags": [
-				"Hold Breath"
 			]
 		},
 		{
 			"name": "Lizardfolk Render",
+			"source": "GoS",
+			"page": 241,
+			"otherSources": [
+				{
+					"source": "SLW"
+				},
+				{
+					"source": "IMR"
+				}
+			],
 			"size": "L",
 			"type": {
 				"type": "humanoid",
@@ -1734,7 +1927,6 @@
 					"lizardfolk"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"N"
 			],
@@ -1770,7 +1962,6 @@
 				"Draconic"
 			],
 			"cr": "3",
-			"page": 241,
 			"trait": [
 				{
 					"name": "Blood Frenzy",
@@ -1811,34 +2002,28 @@
 					]
 				}
 			],
-			"damageTags": [
-				"S",
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RCH"
-			],
-			"languageTags": [
-				"DR"
-			],
 			"traitTags": [
 				"Hold Breath"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
-			"otherSources": [
-				{
-					"source": "SLW"
-				},
-				{
-					"source": "IMR"
-				}
+			"languageTags": [
+				"DR"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
 			"name": "Lizardfolk Scaleshield",
+			"source": "GoS",
+			"page": 242,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1846,7 +2031,6 @@
 					"lizardfolk"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"N"
 			],
@@ -1883,7 +2067,6 @@
 				"Draconic"
 			],
 			"cr": "1",
-			"page": 242,
 			"trait": [
 				{
 					"name": "Hold Breath",
@@ -1926,24 +2109,31 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"MW"
-			],
-			"languageTags": [
-				"DR"
-			],
 			"traitTags": [
 				"Hold Breath"
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"DR"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Lizardfolk Subchief",
+			"source": "GoS",
+			"page": 242,
+			"otherSources": [
+				{
+					"source": "SLW"
+				}
+			],
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1951,7 +2141,6 @@
 					"lizardfolk"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"N"
 			],
@@ -1990,29 +2179,6 @@
 				"Draconic"
 			],
 			"cr": "3",
-			"page": 242,
-			"trait": [
-				{
-					"name": "Hold Breath",
-					"entries": [
-						"The subchief can hold its breath for 15 minutes."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Tooth Dagger",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
-					]
-				},
-				{
-					"name": "Jaws of Semuanya {@recharge 5}",
-					"entries": [
-						"The subchief invokes the primal magic of Semuanya, summoning a spectral maw around a target it can see within 60 feet of it. The target must make a {@dc 13} Dexterity saving throw, taking 22 ({@damage 5d8}) piercing damage on a failed save, or half as much damage on a successful one. A creature that fails this saving throw is also {@condition frightened} until the end of its next turn."
-					]
-				}
-			],
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -2055,29 +2221,53 @@
 					"ability": "wis"
 				}
 			],
-			"damageTags": [
-				"P"
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The subchief can hold its breath for 15 minutes."
+					]
+				}
 			],
-			"miscTags": [
-				"MW"
-			],
-			"languageTags": [
-				"DR"
+			"action": [
+				{
+					"name": "Tooth Dagger",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+					]
+				},
+				{
+					"name": "Jaws of Semuanya {@recharge 5}",
+					"entries": [
+						"The subchief invokes the primal magic of Semuanya, summoning a spectral maw around a target it can see within 60 feet of it. The target must make a {@dc 13} Dexterity saving throw, taking 22 ({@damage 5d8}) piercing damage on a failed save, or half as much damage on a successful one. A creature that fails this saving throw is also {@condition frightened} until the end of its next turn."
+					]
+				}
 			],
 			"traitTags": [
 				"Hold Breath"
 			],
+			"languageTags": [
+				"DR"
+			],
+			"damageTags": [
+				"P"
+			],
 			"spellcastingTags": [
 				"CC"
 			],
-			"otherSources": [
-				{
-					"source": "SLW"
-				}
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Locathah",
+			"source": "GoS",
+			"page": 243,
+			"otherSources": [
+				{
+					"source": "IMR"
+				}
+			],
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2085,7 +2275,6 @@
 					"locathah"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"N"
 			],
@@ -2124,7 +2313,6 @@
 				"Common"
 			],
 			"cr": "1/2",
-			"page": 243,
 			"trait": [
 				{
 					"name": "Leviathan Will",
@@ -2153,29 +2341,26 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"RW",
-				"MW",
-				"THW"
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"AQ",
 				"C"
 			],
-			"actionTags": [
-				"Multiattack"
+			"damageTags": [
+				"P"
 			],
-			"otherSources": [
-				{
-					"source": "IMR"
-				}
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
 			"name": "Locathah Hunter",
+			"source": "GoS",
+			"page": 243,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2183,7 +2368,6 @@
 					"locathah"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"N"
 			],
@@ -2223,7 +2407,6 @@
 				"Common"
 			],
 			"cr": "2",
-			"page": 243,
 			"trait": [
 				{
 					"name": "Leviathan Will",
@@ -2258,28 +2441,57 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P",
-				"B"
-			],
-			"miscTags": [
-				"RW",
-				"MW"
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"AQ",
 				"C"
 			],
-			"actionTags": [
-				"Multiattack"
+			"damageTags": [
+				"B",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
+			]
+		},
+		{
+			"name": "Master Refrum",
+			"isNpc": true,
+			"source": "GoS",
+			"page": 165,
+			"_copy": {
+				"name": "Priest",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the priest",
+						"with": "Refrum",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"G"
 			]
 		},
 		{
 			"name": "Maw of Sekolah",
 			"isNpc": true,
+			"source": "GoS",
+			"page": 244,
 			"size": "H",
 			"type": "monstrosity",
-			"source": "GoS",
 			"alignment": [
 				"N",
 				"E"
@@ -2314,16 +2526,15 @@
 				"athletics": "+8",
 				"perception": "+5"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 15,
 			"languages": [
 				"Sahuagin",
 				"telepathy 100 ft."
 			],
 			"cr": "7",
-			"page": 244,
-			"senses": [
-				"darkvision 120 ft."
-			],
 			"trait": [
 				{
 					"name": "Legendary Resistance (2/Day)",
@@ -2378,32 +2589,34 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P",
-				"B",
-				"S"
+			"traitTags": [
+				"Legendary Resistances",
+				"Water Breathing"
 			],
-			"miscTags": [
-				"MW",
-				"RCH"
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"OTH",
 				"TP"
 			],
-			"senseTags": [
-				"SD"
+			"damageTags": [
+				"B",
+				"P",
+				"S"
 			],
-			"traitTags": [
-				"Legendary Resistances",
-				"Water Breathing"
-			],
-			"actionTags": [
-				"Multiattack"
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
 			"name": "Merfolk Salvager",
+			"source": "GoS",
+			"page": 244,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2411,7 +2624,6 @@
 					"merfolk"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"N"
 			],
@@ -2445,7 +2657,6 @@
 				"Common"
 			],
 			"cr": "1",
-			"page": 244,
 			"trait": [
 				{
 					"name": "Amphibious",
@@ -2474,25 +2685,67 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P"
-			],
-			"languageTags": [
-				"AQ",
-				"C"
-			],
 			"traitTags": [
 				"Amphibious"
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"AQ",
+				"C"
+			],
+			"damageTags": [
+				"P"
+			]
+		},
+		{
+			"name": "Merfolk Scout",
+			"source": "GoS",
+			"page": 216,
+			"_copy": {
+				"name": "Scout",
+				"source": "MM",
+				"_trait": {
+					"name": "Merfolk",
+					"source": "DMG"
+				},
+				"_mod": {
+					"action": {
+						"mode": "removeArr",
+						"names": "Longbow"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"merfolk"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"traitTags": [
+				"Amphibious",
+				"Keen Senses"
+			],
+			"languageTags": [
+				"AQ",
+				"C",
+				"X"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Minotaur Living Crystal Statue",
+			"source": "GoS",
+			"page": 245,
 			"size": "L",
 			"type": "construct",
-			"source": "GoS",
 			"alignment": [
 				"U"
 			],
@@ -2517,9 +2770,16 @@
 			"int": 6,
 			"wis": 10,
 			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
 			"immune": [
 				"lightning",
 				"poison"
+			],
+			"vulnerable": [
+				"force"
 			],
 			"conditionImmune": [
 				"charmed",
@@ -2529,18 +2789,10 @@
 				"petrified",
 				"poisoned"
 			],
-			"vulnerable": [
-				"force"
-			],
-			"passive": 10,
 			"languages": [
 				"understands the languages of its creator but can't speak"
 			],
 			"cr": "6",
-			"page": 245,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Immutable Form",
@@ -2577,31 +2829,32 @@
 					]
 				}
 			],
-			"damageTags": [
-				"S",
-				"P"
-			],
-			"miscTags": [
-				"MW"
+			"traitTags": [
+				"Immutable Form"
 			],
 			"senseTags": [
 				"D"
-			],
-			"traitTags": [
-				"Immutable Form"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"CS"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Monstrous Peryton",
+			"source": "GoS",
+			"page": 245,
 			"size": "L",
 			"type": "monstrosity",
-			"source": "GoS",
 			"alignment": [
 				"C",
 				"E"
@@ -2636,15 +2889,14 @@
 			"skill": {
 				"perception": "+6"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 16,
 			"languages": [
 				"understands Common and Elvish but can't speak"
 			],
 			"cr": "11",
-			"page": 245,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Flyby",
@@ -2711,36 +2963,37 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P",
-				"S"
+			"traitTags": [
+				"Flyby",
+				"Keen Senses",
+				"Legendary Resistances"
 			],
-			"miscTags": [
-				"MW"
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"C",
 				"CS",
 				"E"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"P",
+				"S"
 			],
-			"traitTags": [
-				"Flyby",
-				"Keen Senses",
-				"Legendary Resistances"
-			],
-			"actionTags": [
-				"Multiattack"
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Mr. Dory",
 			"isNpc": true,
+			"source": "GoS",
+			"page": 246,
 			"size": "M",
 			"type": "aberration",
-			"source": "GoS",
 			"alignment": [
 				"C",
 				"E"
@@ -2776,10 +3029,13 @@
 				"perception": "+6",
 				"stealth": "+9"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 16,
 			"immune": [
 				"necrotic"
 			],
-			"passive": 16,
 			"languages": [
 				"Abyssal",
 				"Common",
@@ -2787,9 +3043,30 @@
 				"telepathy 60 ft."
 			],
 			"cr": "10",
-			"page": 246,
-			"senses": [
-				"darkvision 60 ft."
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Mr. Dory's innate spellcasting ability is Charisma (save {@dc 15}, {@hit 7} to hit with spell attacks). Mr. Dory can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell detect magic}",
+						"{@spell detect thoughts}",
+						"{@spell invisibility} (self only)"
+					],
+					"daily": {
+						"2e": [
+							"{@spell fear}",
+							"{@spell fireball}",
+							"{@spell fly}"
+						],
+						"1e": [
+							"{@spell cloudkill}",
+							"{@spell etherealness}"
+						]
+					},
+					"ability": "cha"
+				}
 			],
 			"trait": [
 				{
@@ -2825,39 +3102,14 @@
 					]
 				}
 			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Mr. Dory's innate spellcasting ability is Charisma (save {@dc 15}, {@hit 7} to hit with spell attacks). Mr. Dory can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell detect magic}",
-						"{@spell detect thoughts}",
-						"{@spell invisibility} (self only)"
-					],
-					"daily": {
-						"2e": [
-							"{@spell fear}",
-							"{@spell fireball}",
-							"{@spell fly}"
-						],
-						"1e": [
-							"{@spell cloudkill}",
-							"{@spell etherealness}"
-						]
-					},
-					"ability": "cha"
-				}
+			"traitTags": [
+				"Magic Resistance"
 			],
-			"damageTags": [
-				"P",
-				"N",
-				"I",
-				"A"
+			"senseTags": [
+				"D"
 			],
-			"miscTags": [
-				"MW"
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"AB",
@@ -2865,22 +3117,24 @@
 				"DS",
 				"TP"
 			],
-			"senseTags": [
-				"D"
-			],
-			"traitTags": [
-				"Magic Resistance"
-			],
-			"actionTags": [
-				"Multiattack"
+			"damageTags": [
+				"A",
+				"I",
+				"N",
+				"P"
 			],
 			"spellcastingTags": [
 				"I"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Oceanus",
 			"isNpc": true,
+			"source": "GoS",
+			"page": 246,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2888,7 +3142,6 @@
 					"elf"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"N",
 				"G"
@@ -2922,16 +3175,15 @@
 				"athletics": "+4",
 				"perception": "+3"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"passive": 13,
 			"languages": [
 				"Aquan",
 				"Elvish"
 			],
 			"cr": "1/2",
-			"page": 246,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Amphibious",
@@ -2960,28 +3212,62 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P"
+			"traitTags": [
+				"Amphibious"
 			],
-			"miscTags": [
-				"RW",
-				"MW",
-				"THW",
-				"RNG"
+			"senseTags": [
+				"D"
 			],
 			"languageTags": [
 				"AQ",
 				"E"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"P"
 			],
-			"traitTags": [
-				"Amphibious"
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW",
+				"THW"
+			]
+		},
+		{
+			"name": "Othokent",
+			"isNpc": true,
+			"source": "GoS",
+			"page": 81,
+			"_copy": {
+				"name": "Lizard Queen",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the lizardfolk",
+						"with": "Othokent",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"L",
+				"N"
+			],
+			"languages": [
+				"Common",
+				"Abyssal",
+				"Draconic"
+			],
+			"languageTags": [
+				"AB",
+				"C",
+				"DR"
 			]
 		},
 		{
 			"name": "Pirate Bosun",
+			"source": "GoS",
+			"page": 247,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2989,7 +3275,6 @@
 					"any race"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"A"
 			],
@@ -3023,7 +3308,6 @@
 				"any one language (usually Common)"
 			],
 			"cr": "1/2",
-			"page": 247,
 			"trait": [
 				{
 					"name": "Cargo Hauler",
@@ -3052,22 +3336,24 @@
 					]
 				}
 			],
+			"languageTags": [
+				"C",
+				"X"
+			],
 			"damageTags": [
 				"B",
 				"P"
 			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
-			],
-			"languageTags": [
-				"C",
-				"X"
 			]
 		},
 		{
 			"name": "Pirate Captain",
+			"source": "GoS",
+			"page": 247,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3075,7 +3361,6 @@
 					"any race"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"A"
 			],
@@ -3109,7 +3394,6 @@
 				"any one language (usually Common)"
 			],
 			"cr": "2",
-			"page": 247,
 			"trait": [
 				{
 					"name": "Flourish",
@@ -3152,25 +3436,27 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P",
-				"S"
-			],
-			"miscTags": [
-				"RW",
-				"RNG",
-				"MW"
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"C",
 				"X"
 			],
-			"actionTags": [
-				"Multiattack"
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW"
 			]
 		},
 		{
 			"name": "Pirate Deck Wizard",
+			"source": "GoS",
+			"page": 248,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3178,7 +3464,6 @@
 					"any race"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"A"
 			],
@@ -3212,23 +3497,6 @@
 				"any one language (usually Common)"
 			],
 			"cr": "1",
-			"page": 248,
-			"trait": [
-				{
-					"name": "Sea Legs",
-					"entries": [
-						"The deck wizard has advantage on ability checks and saving throws to resist being knocked {@condition prone}."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Quarterstaff",
-					"entries": [
-						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d6}) bludgeoning damage."
-					]
-				}
-			],
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -3265,22 +3533,40 @@
 					"ability": "int"
 				}
 			],
-			"damageTags": [
-				"B"
+			"trait": [
+				{
+					"name": "Sea Legs",
+					"entries": [
+						"The deck wizard has advantage on ability checks and saving throws to resist being knocked {@condition prone}."
+					]
+				}
 			],
-			"miscTags": [
-				"MW"
+			"action": [
+				{
+					"name": "Quarterstaff",
+					"entries": [
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d6}) bludgeoning damage."
+					]
+				}
 			],
 			"languageTags": [
 				"C",
 				"X"
 			],
+			"damageTags": [
+				"B"
+			],
 			"spellcastingTags": [
 				"CW"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Pirate First Mate",
+			"source": "GoS",
+			"page": 248,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3288,7 +3574,6 @@
 					"any race"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"A"
 			],
@@ -3322,7 +3607,6 @@
 				"any one language (usually Common)"
 			],
 			"cr": "1",
-			"page": 248,
 			"trait": [
 				{
 					"name": "Sea Legs",
@@ -3345,22 +3629,24 @@
 					]
 				}
 			],
-			"damageTags": [
-				"S"
-			],
-			"miscTags": [
-				"MW"
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"C",
 				"X"
 			],
-			"actionTags": [
-				"Multiattack"
+			"damageTags": [
+				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Rip Tide Priest",
+			"source": "GoS",
+			"page": 248,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3368,7 +3654,6 @@
 					"human"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"N",
 				"E"
@@ -3405,15 +3690,6 @@
 				"Common"
 			],
 			"cr": "2",
-			"page": 248,
-			"action": [
-				{
-					"name": "Quarterstaff",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) bludgeoning damage."
-					]
-				}
-			],
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -3455,22 +3731,40 @@
 					"ability": "cha"
 				}
 			],
-			"damageTags": [
-				"B"
-			],
-			"miscTags": [
-				"MW"
+			"action": [
+				{
+					"name": "Quarterstaff",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) bludgeoning damage."
+					]
+				}
 			],
 			"languageTags": [
 				"AQ",
 				"C"
 			],
+			"damageTags": [
+				"B"
+			],
 			"spellcastingTags": [
 				"CS"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Sahuagin Blademaster",
+			"source": "GoS",
+			"page": 249,
+			"otherSources": [
+				{
+					"source": "SDW"
+				},
+				{
+					"source": "LR"
+				}
+			],
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3478,7 +3772,6 @@
 					"sahuagin"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"L",
 				"E"
@@ -3514,15 +3807,14 @@
 				"athletics": "+6",
 				"intimidation": "+4"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 10,
 			"languages": [
 				"Sahuagin"
 			],
 			"cr": "6",
-			"page": 249,
-			"senses": [
-				"darkvision 120 ft."
-			],
 			"trait": [
 				{
 					"name": "Blood Frenzy",
@@ -3569,33 +3861,27 @@
 					]
 				}
 			],
-			"damageTags": [
-				"S",
-				"P"
-			],
-			"miscTags": [
-				"MW"
-			],
-			"languageTags": [
-				"OTH"
-			],
 			"senseTags": [
 				"SD"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
-			"otherSources": [
-				{
-					"source": "SDW"
-				},
-				{
-					"source": "LR"
-				}
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Sahuagin Champion",
+			"source": "GoS",
+			"page": 249,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3603,7 +3889,6 @@
 					"sahuagin"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"L",
 				"E"
@@ -3633,15 +3918,14 @@
 			"skill": {
 				"perception": "+5"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 15,
 			"languages": [
 				"Sahuagin"
 			],
 			"cr": "3",
-			"page": 249,
-			"senses": [
-				"darkvision 120 ft."
-			],
 			"trait": [
 				{
 					"name": "Blood Frenzy",
@@ -3688,27 +3972,29 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P",
-				"S"
-			],
-			"miscTags": [
-				"RW",
-				"MW",
-				"THW"
-			],
-			"languageTags": [
-				"OTH"
-			],
 			"senseTags": [
 				"SD"
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
 			"name": "Sahuagin Coral Smasher",
+			"source": "GoS",
+			"page": 249,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3716,7 +4002,6 @@
 					"sahuagin"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"L",
 				"E"
@@ -3746,15 +4031,14 @@
 			"skill": {
 				"perception": "+5"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 15,
 			"languages": [
 				"Sahuagin"
 			],
 			"cr": "1",
-			"page": 249,
-			"senses": [
-				"darkvision 120 ft."
-			],
 			"trait": [
 				{
 					"name": "Blood Frenzy",
@@ -3807,6 +4091,18 @@
 					]
 				}
 			],
+			"traitTags": [
+				"Siege Monster"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"OTH"
+			],
 			"damageTags": [
 				"B",
 				"P",
@@ -3814,22 +4110,17 @@
 			],
 			"miscTags": [
 				"MW"
-			],
-			"languageTags": [
-				"OTH"
-			],
-			"senseTags": [
-				"SD"
-			],
-			"traitTags": [
-				"Siege Monster"
-			],
-			"actionTags": [
-				"Multiattack"
 			]
 		},
 		{
 			"name": "Sahuagin Deep Diver",
+			"source": "GoS",
+			"page": 250,
+			"otherSources": [
+				{
+					"source": "LR"
+				}
+			],
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3837,7 +4128,6 @@
 					"sahuagin"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"L",
 				"E"
@@ -3872,15 +4162,14 @@
 				"perception": "+5",
 				"stealth": "+5"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 15,
 			"languages": [
 				"Sahuagin"
 			],
 			"cr": "4",
-			"page": 250,
-			"senses": [
-				"darkvision 120 ft."
-			],
 			"trait": [
 				{
 					"name": "Blood Frenzy",
@@ -3945,38 +4234,39 @@
 					]
 				}
 			],
-			"damageTags": [
-				"S",
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RCH",
-				"AOE"
-			],
-			"languageTags": [
-				"OTH"
-			],
 			"senseTags": [
 				"SD"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
-			"otherSources": [
-				{
-					"source": "LR"
-				}
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
 			]
 		},
 		{
 			"name": "Sahuagin Hatchling Swarm",
+			"source": "GoS",
+			"page": 250,
+			"otherSources": [
+				{
+					"source": "LR"
+				}
+			],
 			"size": "L",
 			"type": {
 				"type": "beast",
 				"swarmSize": "T"
 			},
-			"source": "GoS",
 			"alignment": [
 				"C",
 				"E"
@@ -3998,6 +4288,10 @@
 			"int": 3,
 			"wis": 10,
 			"cha": 3,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 10,
 			"resist": [
 				"bludgeoning",
 				"piercing",
@@ -4013,12 +4307,7 @@
 				"restrained",
 				"stunned"
 			],
-			"passive": 10,
 			"cr": "3",
-			"page": 250,
-			"senses": [
-				"darkvision 120 ft."
-			],
 			"trait": [
 				{
 					"name": "Blood Frenzy",
@@ -4053,26 +4342,28 @@
 					]
 				}
 			],
+			"traitTags": [
+				"Water Breathing"
+			],
+			"senseTags": [
+				"SD"
+			],
 			"damageTags": [
 				"P"
 			],
 			"miscTags": [
 				"MW"
-			],
-			"senseTags": [
-				"SD"
-			],
-			"traitTags": [
-				"Water Breathing"
-			],
-			"otherSources": [
-				{
-					"source": "LR"
-				}
 			]
 		},
 		{
 			"name": "Sahuagin High Priestess",
+			"source": "GoS",
+			"page": 251,
+			"otherSources": [
+				{
+					"source": "SDW"
+				}
+			],
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -4080,7 +4371,6 @@
 					"sahuagin"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"L",
 				"E"
@@ -4114,61 +4404,14 @@
 				"insight": "+6",
 				"perception": "+6"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 16,
 			"languages": [
 				"Sahuagin"
 			],
 			"cr": "5",
-			"page": 251,
-			"senses": [
-				"darkvision 120 ft."
-			],
-			"trait": [
-				{
-					"name": "Blood Frenzy",
-					"entries": [
-						"The high priestess has advantage on melee attack rolls against any creature that doesn't have all its hit points."
-					]
-				},
-				{
-					"name": "Limited Amphibiousness",
-					"entries": [
-						"The high priestess can breathe air and water, but she needs to be submerged at least once every 4 hours to avoid suffocating."
-					]
-				},
-				{
-					"name": "Shark Telepathy",
-					"entries": [
-						"The high priestess can magically command any shark within 120 feet of her, using a limited telepathy."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The high priestess makes two attacks with her toothsome staff, or one attack with her bite and one with her claws."
-					]
-				},
-				{
-					"name": "Toothsome Staff",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d8 + 2}) piercing damage."
-					]
-				},
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
-					]
-				},
-				{
-					"name": "Claws",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) slashing damage."
-					]
-				}
-			],
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -4218,15 +4461,51 @@
 					"ability": "wis"
 				}
 			],
-			"damageTags": [
-				"P",
-				"S"
+			"trait": [
+				{
+					"name": "Blood Frenzy",
+					"entries": [
+						"The high priestess has advantage on melee attack rolls against any creature that doesn't have all its hit points."
+					]
+				},
+				{
+					"name": "Limited Amphibiousness",
+					"entries": [
+						"The high priestess can breathe air and water, but she needs to be submerged at least once every 4 hours to avoid suffocating."
+					]
+				},
+				{
+					"name": "Shark Telepathy",
+					"entries": [
+						"The high priestess can magically command any shark within 120 feet of her, using a limited telepathy."
+					]
+				}
 			],
-			"miscTags": [
-				"MW"
-			],
-			"languageTags": [
-				"OTH"
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The high priestess makes two attacks with her toothsome staff, or one attack with her bite and one with her claws."
+					]
+				},
+				{
+					"name": "Toothsome Staff",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d8 + 2}) piercing damage."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) slashing damage."
+					]
+				}
 			],
 			"senseTags": [
 				"SD"
@@ -4234,17 +4513,24 @@
 			"actionTags": [
 				"Multiattack"
 			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
 			"spellcastingTags": [
 				"CC"
 			],
-			"otherSources": [
-				{
-					"source": "SDW"
-				}
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Sahuagin Wave Shaper",
+			"source": "GoS",
+			"page": 251,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -4252,7 +4538,6 @@
 					"sahuagin"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"L",
 				"E"
@@ -4287,14 +4572,30 @@
 				"intimidation": "+4",
 				"perception": "+5"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
 			"passive": 15,
 			"languages": [
 				"Sahuagin"
 			],
 			"cr": "5",
-			"page": 251,
-			"senses": [
-				"darkvision 120 ft."
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The wave shaper's spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). It can cast the following spells, requiring only verbal components:"
+					],
+					"will": [
+						"{@spell message}"
+					],
+					"daily": {
+						"1": [
+							"{@spell comprehend languages}"
+						]
+					},
+					"ability": "int"
+				}
 			],
 			"trait": [
 				{
@@ -4344,48 +4645,33 @@
 					]
 				}
 			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The wave shaper's spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). It can cast the following spells, requiring only verbal components:"
-					],
-					"will": [
-						"{@spell message}"
-					],
-					"daily": {
-						"1": [
-							"{@spell comprehend languages}"
-						]
-					},
-					"ability": "int"
-				}
-			],
-			"damageTags": [
-				"P",
-				"C",
-				"S",
-				"B"
-			],
-			"miscTags": [
-				"MW"
-			],
-			"languageTags": [
-				"OTH"
-			],
 			"senseTags": [
 				"SD"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"B",
+				"C",
+				"P",
+				"S"
+			],
 			"spellcastingTags": [
 				"I"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Sanbalet",
 			"isNpc": true,
+			"source": "GoS",
+			"page": 252,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -4393,7 +4679,6 @@
 					"human"
 				]
 			},
-			"source": "GoS",
 			"alignment": [
 				"N",
 				"E"
@@ -4422,15 +4707,6 @@
 				"Common"
 			],
 			"cr": "1",
-			"page": 252,
-			"action": [
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
-					]
-				}
-			],
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -4465,26 +4741,87 @@
 					"ability": "int"
 				}
 			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"RW",
-				"MW",
-				"THW"
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
+					]
+				}
 			],
 			"languageTags": [
 				"C"
 			],
+			"damageTags": [
+				"P"
+			],
 			"spellcastingTags": [
 				"CW"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			]
+		},
+		{
+			"name": "Sauriv",
+			"isNpc": true,
+			"source": "GoS",
+			"page": 79,
+			"_copy": {
+				"name": "Noble",
+				"source": "MM",
+				"_trait": {
+					"name": "Lizardfolk",
+					"source": "DMG"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the noble",
+						"with": "Sauriv",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"L",
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"wis": 18,
+			"skill": {
+				"deception": "+7",
+				"insight": "+6",
+				"persuasion": "+7"
+			},
+			"passive": 14,
+			"languages": [
+				"Common",
+				"Draconic"
+			],
+			"traitTags": [
+				"Hold Breath"
+			],
+			"languageTags": [
+				"C",
+				"DR"
 			]
 		},
 		{
 			"name": "Shell Shark",
+			"source": "GoS",
+			"page": 252,
 			"size": "M",
 			"type": "monstrosity",
-			"source": "GoS",
 			"alignment": [
 				"U"
 			],
@@ -4516,12 +4853,11 @@
 			"skill": {
 				"athletics": "+6"
 			},
-			"passive": 10,
-			"cr": "2",
-			"page": 252,
 			"senses": [
 				"darkvision 120 ft."
 			],
+			"passive": 10,
+			"cr": "2",
 			"trait": [
 				{
 					"name": "Blood Frenzy",
@@ -4550,25 +4886,26 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P"
-			],
-			"senseTags": [
-				"SD"
-			],
 			"traitTags": [
 				"Magic Resistance",
 				"Water Breathing"
 			],
+			"senseTags": [
+				"SD"
+			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"damageTags": [
+				"P"
 			]
 		},
 		{
 			"name": "Skeletal Alchemist",
+			"source": "GoS",
+			"page": 253,
 			"size": "M",
 			"type": "undead",
-			"source": "GoS",
 			"alignment": [
 				"L",
 				"E"
@@ -4592,25 +4929,24 @@
 			"skill": {
 				"arcana": "+4"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
 			"immune": [
 				"poison"
+			],
+			"vulnerable": [
+				"bludgeoning"
 			],
 			"conditionImmune": [
 				"exhaustion",
 				"poisoned"
 			],
-			"vulnerable": [
-				"bludgeoning"
-			],
-			"passive": 10,
 			"languages": [
 				"understands all languages it knew in life but can't speak"
 			],
 			"cr": "1/2",
-			"page": 253,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Magic Resistance",
@@ -4639,33 +4975,39 @@
 					]
 				}
 			],
-			"damageTags": [
-				"S",
-				"A"
+			"traitTags": [
+				"Magic Resistance"
 			],
-			"miscTags": [
-				"MW",
-				"RW"
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"CS",
 				"LF"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"A",
+				"S"
 			],
-			"traitTags": [
-				"Magic Resistance"
-			],
-			"actionTags": [
-				"Multiattack"
+			"miscTags": [
+				"MW",
+				"RW"
 			]
 		},
 		{
 			"name": "Skeletal Juggernaut",
+			"source": "GoS",
+			"page": 253,
+			"otherSources": [
+				{
+					"source": "IMR"
+				}
+			],
 			"size": "L",
 			"type": "undead",
-			"source": "GoS",
 			"alignment": [
 				"L",
 				"E"
@@ -4691,22 +5033,21 @@
 			"int": 6,
 			"wis": 8,
 			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 9,
 			"immune": [
 				"poison"
+			],
+			"vulnerable": [
+				"bludgeoning"
 			],
 			"conditionImmune": [
 				"exhaustion",
 				"poisoned"
 			],
-			"vulnerable": [
-				"bludgeoning"
-			],
-			"passive": 9,
 			"cr": "5",
-			"page": 253,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Disassemble",
@@ -4741,34 +5082,38 @@
 					]
 				}
 			],
-			"damageTags": [
-				"S",
-				"B"
-			],
-			"miscTags": [
-				"MW",
-				"RCH"
-			],
 			"senseTags": [
 				"D"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
-			"otherSources": [
-				{
-					"source": "IMR"
-				}
+			"damageTags": [
+				"B",
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
 			"name": "Skeletal Swarm",
+			"source": "GoS",
+			"page": 254,
+			"otherSources": [
+				{
+					"source": "DC"
+				},
+				{
+					"source": "IMR"
+				}
+			],
 			"size": "L",
 			"type": {
 				"type": "undead",
 				"swarmSize": "M"
 			},
-			"source": "GoS",
 			"alignment": [
 				"L",
 				"E"
@@ -4794,12 +5139,19 @@
 			"int": 6,
 			"wis": 8,
 			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 9,
 			"resist": [
 				"slashing",
 				"piercing"
 			],
 			"immune": [
 				"poison"
+			],
+			"vulnerable": [
+				"bludgeoning"
 			],
 			"conditionImmune": [
 				"charmed",
@@ -4812,15 +5164,7 @@
 				"restrained",
 				"stunned"
 			],
-			"vulnerable": [
-				"bludgeoning"
-			],
-			"passive": 9,
 			"cr": "2",
-			"page": 254,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Deafening Clatter",
@@ -4843,29 +5187,22 @@
 					]
 				}
 			],
+			"senseTags": [
+				"D"
+			],
 			"damageTags": [
 				"S"
 			],
 			"miscTags": [
 				"MW"
-			],
-			"senseTags": [
-				"D"
-			],
-			"otherSources": [
-				{
-					"source": "DC"
-				},
-				{
-					"source": "IMR"
-				}
 			]
 		},
 		{
 			"name": "Skum",
+			"source": "GoS",
+			"page": 254,
 			"size": "M",
 			"type": "aberration",
-			"source": "GoS",
 			"alignment": [
 				"L",
 				"E"
@@ -4895,20 +5232,19 @@
 			"skill": {
 				"perception": "+4"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 14,
 			"resist": [
 				"psychic"
 			],
-			"passive": 14,
 			"languages": [
 				"Common",
 				"Deep Speech",
 				"telepathy 60 ft."
 			],
 			"cr": "5",
-			"page": 254,
-			"senses": [
-				"darkvision 120 ft."
-			],
 			"trait": [
 				{
 					"name": "Abolethic Vassal",
@@ -4955,36 +5291,38 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P",
-				"Y",
-				"A"
+			"traitTags": [
+				"Amphibious"
 			],
-			"miscTags": [
-				"MW"
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"C",
 				"DS",
 				"TP"
 			],
-			"senseTags": [
-				"SD"
+			"damageTags": [
+				"A",
+				"P",
+				"Y"
 			],
-			"traitTags": [
-				"Amphibious"
-			],
-			"actionTags": [
-				"Multiattack"
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
 			"name": "Thousand Teeth",
 			"shortName": "Thousand Teeth",
 			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "GoS",
+			"page": 256,
 			"size": "L",
 			"type": "monstrosity",
-			"source": "GoS",
 			"alignment": [
 				"N",
 				"E"
@@ -5021,7 +5359,6 @@
 			},
 			"passive": 10,
 			"cr": "6",
-			"page": 256,
 			"trait": [
 				{
 					"name": "Hold Breath",
@@ -5076,28 +5413,28 @@
 					]
 				}
 			],
-			"isNamedCreature": true,
-			"damageTags": [
-				"P",
-				"B"
-			],
-			"miscTags": [
-				"MW",
-				"RCH"
-			],
 			"traitTags": [
 				"Hold Breath",
 				"Legendary Resistances"
 			],
 			"actionTags": [
 				"Multiattack"
+			],
+			"damageTags": [
+				"B",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
 			]
 		},
 		{
 			"name": "Vampiric Jade Statue",
+			"source": "GoS",
+			"page": 256,
 			"size": "L",
 			"type": "construct",
-			"source": "GoS",
 			"alignment": [
 				"U"
 			],
@@ -5122,9 +5459,16 @@
 			"int": 6,
 			"wis": 10,
 			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
 			"immune": [
 				"lightning",
 				"poison"
+			],
+			"vulnerable": [
+				"force"
 			],
 			"conditionImmune": [
 				"charmed",
@@ -5134,18 +5478,10 @@
 				"petrified",
 				"poisoned"
 			],
-			"vulnerable": [
-				"force"
-			],
-			"passive": 10,
 			"languages": [
 				"understands the languages of its creator but can't speak"
 			],
 			"cr": "8",
-			"page": 256,
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"trait": [
 				{
 					"name": "Immutable Form",
@@ -5200,277 +5536,32 @@
 					]
 				}
 			],
-			"damageTags": [
-				"P",
-				"S"
-			],
-			"miscTags": [
-				"MW"
-			],
-			"senseTags": [
-				"D"
-			],
 			"traitTags": [
 				"Immutable Form",
 				"Legendary Resistances"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"CS"
-			]
-		},
-		{
-			"name": "Othokent",
-			"isNpc": true,
-			"source": "GoS",
-			"_copy": {
-				"name": "Lizard Queen",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the lizardfolk",
-						"with": "Othokent",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L",
-				"N"
 			],
-			"languages": [
-				"Common",
-				"Abyssal",
-				"Draconic"
-			],
-			"page": 81,
-			"languageTags": [
-				"C",
-				"AB",
-				"DR"
-			]
-		},
-		{
-			"name": "Sauriv",
-			"isNpc": true,
-			"source": "GoS",
-			"_copy": {
-				"name": "Noble",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the noble",
-						"with": "Sauriv",
-						"flags": "i"
-					}
-				},
-				"_trait": {
-					"name": "Lizardfolk",
-					"source": "DMG"
-				}
-			},
-			"alignment": [
-				"L",
-				"N"
-			],
-			"languages": [
-				"Common",
-				"Draconic"
-			],
-			"wis": 18,
-			"ac": [
-				{
-					"ac": 13,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"skill": {
-				"deception": "+7",
-				"insight": "+6",
-				"persuasion": "+7"
-			},
-			"passive": 14,
-			"page": 79,
-			"languageTags": [
-				"C",
-				"DR"
-			],
-			"traitTags": [
-				"Hold Breath"
-			]
-		},
-		{
-			"name": "Krell Grohlg",
-			"isNpc": true,
-			"source": "GoS",
-			"_copy": {
-				"name": "Druid",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the druid",
-						"with": "Krell",
-						"flags": "i"
-					},
-					"_": {
-						"mode": "replaceSpells",
-						"spells": {
-							"2": [
-								{
-									"replace": "{@spell animal messenger}",
-									"with": "{@spell flaming sphere}"
-								}
-							]
-						}
-					}
-				},
-				"_trait": {
-					"name": "Half-Orc",
-					"source": "PHB"
-				}
-			},
-			"alignment": [
-				"C",
-				"E"
-			],
-			"languages": [
-				"Common",
-				"Orc"
-			],
-			"str": 18,
-			"page": 92,
-			"languageTags": [
-				"C",
-				"O"
-			],
-			"senseTags": [
-				"D"
-			]
-		},
-		{
-			"name": "Master Refrum",
-			"isNpc": true,
-			"source": "GoS",
-			"_copy": {
-				"name": "Priest",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the priest",
-						"with": "Refrum",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 165
-		},
-		{
-			"name": "Giant White Moray Eel",
-			"source": "GoS",
-			"_copy": {
-				"name": "Giant Constrictor Snake",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "snake",
-						"with": "eel",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "prependArr",
-						"items": {
-							"name": "Water Breathing",
-							"entries": [
-								"The eel can breathe only underwater."
-							]
-						}
-					},
-					"action": {
-						"mode": "removeArr",
-						"names": "Constrict"
-					}
-				}
-			},
-			"skill": {
-				"perception": "+2",
-				"stealth": "+4"
-			},
-			"speed": {
-				"walk": 0,
-				"swim": 40
-			},
-			"page": 216,
 			"damageTags": [
-				"P"
+				"P",
+				"S"
 			],
-			"traitTags": [
-				"Water Breathing"
-			]
-		},
-		{
-			"name": "Merfolk Scout",
-			"source": "GoS",
-			"_copy": {
-				"name": "Scout",
-				"source": "MM",
-				"_mod": {
-					"action": {
-						"mode": "removeArr",
-						"names": "Longbow"
-					}
-				},
-				"_trait": {
-					"name": "Merfolk",
-					"source": "DMG"
-				}
-			},
-			"alignment": [
-				"C",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"merfolk"
-				]
-			},
-			"page": 216,
 			"miscTags": [
 				"MW"
-			],
-			"languageTags": [
-				"C",
-				"X",
-				"AQ"
-			],
-			"traitTags": [
-				"Keen Senses",
-				"Amphibious"
 			]
 		},
 		{
 			"name": "Yalaga Maladwyn",
 			"isNpc": true,
 			"source": "GoS",
+			"page": 226,
 			"_copy": {
 				"name": "Drow Priestess of Lolth",
 				"source": "MM",
@@ -5492,104 +5583,13 @@
 				}
 			},
 			"type": "undead",
-			"page": 226,
-			"damageTags": [
-				"P",
-				"I"
-			],
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"damageTags": [
+				"I",
+				"P"
 			]
-		},
-		{
-			"name": "Barnacle Bess",
-			"isNpc": true,
-			"source": "GoS",
-			"_copy": {
-				"name": "Giant Crab",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the crab",
-						"with": "Bess",
-						"flags": "i"
-					}
-				}
-			},
-			"int": 10,
-			"languages": [
-				"Common"
-			],
-			"alignment": [
-				"L",
-				"N"
-			],
-			"page": 220,
-			"languageTags": [
-				"C"
-			]
-		},
-		{
-			"name": "Captain Xendros",
-			"isNpc": true,
-			"source": "GoS",
-			"_copy": {
-				"name": "Priest",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the priest",
-						"with": "Xendros",
-						"flags": "i"
-					}
-				},
-				"_trait": {
-					"name": "Tiefling",
-					"source": "PHB"
-				}
-			},
-			"alignment": [
-				"C",
-				"E"
-			],
-			"page": 14,
-			"languageTags": [
-				"X",
-				"I"
-			],
-			"senseTags": [
-				"D"
-			],
-			"spellcastingTags": [
-				"CC",
-				"I"
-			]
-		},
-		{
-			"name": "Fish",
-			"source": "GoS",
-			"_copy": {
-				"name": "Quipper",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "quipper",
-						"with": "fish",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "removeArr",
-						"names": "Blood Frenzy"
-					}
-				}
-			},
-			"action": null,
-			"page": 224,
-			"miscTags": [],
-			"damageTags": []
 		}
 	]
 }

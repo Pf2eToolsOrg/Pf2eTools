@@ -1,0 +1,83 @@
+{
+	"monster": [
+		{
+			"name": "Dancing Item",
+			"source": "UA2020SubclassesPt2",
+			"page": 2,
+			"size": "L",
+			"sizeNote": "or smaller",
+			"type": "construct",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "equal the dancing item's Constitution modifier + your Charisma modifier + five times your level in this class"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 18,
+			"dex": 14,
+			"con": 16,
+			"int": 4,
+			"wis": 10,
+			"cha": 6,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"poisoned",
+				"frightened"
+			],
+			"languages": [
+				"understands the languages you speak"
+			],
+			"trait": [
+				{
+					"name": "Endless Waltz",
+					"entries": [
+						"Immediately after the item makes a slam attack, it can take the Dodge action as a bonus action."
+					]
+				},
+				{
+					"name": "Immutable Form",
+					"entries": [
+						"The item is immune to any spell or effect that would alter its form."
+					]
+				}
+			],
+			"actionNote": "Requires Your Bonus Action",
+			"action": [
+				{
+					"name": "Force-Empowered Slam",
+					"entries": [
+						"{@atk mw} your spell attack modifier to hit, reach 5 ft., one target you can see. {@h}{@dice 1d10} + your Charisma modifier force damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Immutable Form"
+			],
+			"senseTags": [
+				"D"
+			],
+			"miscTags": [
+				"MW"
+			]
+		}
+	]
+}

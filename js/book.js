@@ -4,11 +4,6 @@ const JSON_URL = "data/books.json";
 
 window.onload = function load () {
 	BookUtil.renderArea = $(`#pagecontent`);
-
-	BookUtil.renderArea.append(Renderer.utils.getBorderTr());
-	BookUtil.renderArea.append(`<tr><td colspan="6" class="initial-message book-loading-message">Loading...</td></tr>`);
-	BookUtil.renderArea.append(Renderer.utils.getBorderTr());
-
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
 };

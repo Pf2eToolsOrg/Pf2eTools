@@ -20,7 +20,8 @@ const MSG = {
 	LootCheck: "",
 	TableDiceTest: "",
 	SpellClassCheck: "",
-	EscapeCharacterCheck: ""
+	EscapeCharacterCheck: "",
+	DuplicateEntityCheck: ""
 };
 
 const TAG_TO_PAGE = {
@@ -43,7 +44,8 @@ const TAG_TO_PAGE = {
 	"hazard": UrlUtil.PG_TRAPS_HAZARDS,
 	"deity": UrlUtil.PG_DEITIES,
 	"variantrule": UrlUtil.PG_VARIATNRULES,
-	"action": UrlUtil.PG_ACTIONS
+	"action": UrlUtil.PG_ACTIONS,
+	"language": UrlUtil.PG_LANGUAGES
 };
 
 const VALID_SKILLS = new Set([
@@ -73,13 +75,13 @@ function isIgnored (directory) {
 	return directory === "./data/roll20-module";
 }
 
-function fileRecurse (file, fileHandler, filenameMatcher) {
+function fileRecurse (file, fileHandler, doParse, filenameMatcher) {
 	if (file.endsWith(".json") && (filenameMatcher == null || filenameMatcher.test(file.split("/").last()))) {
-		fileHandler(file);
+		doParse ? fileHandler(file, JSON.parse(fs.readFileSync(file, "utf-8"))) : fileHandler(file);
 		Object.keys(MSG).forEach(k => {
 			if (MSG[k] && MSG[k].trim() && MSG[k].slice(-2) !== "\n\n") MSG[k] += "\n\n";
 		});
-	} else if (fs.lstatSync(file).isDirectory() && !isIgnored(file)) fs.readdirSync(file).forEach(nxt => fileRecurse(`${file}/${nxt}`, fileHandler, filenameMatcher))
+	} else if (fs.lstatSync(file).isDirectory() && !isIgnored(file)) fs.readdirSync(file).forEach(nxt => fileRecurse(`${file}/${nxt}`, fileHandler, doParse, filenameMatcher))
 }
 
 const PRIMITIVE_HANDLERS = {
@@ -89,6 +91,20 @@ const PRIMITIVE_HANDLERS = {
 	string: [],
 	object: []
 };
+
+// Runs multiple handlers on each file, to avoid re-reading each file for each handler
+class ParsedJsonChecker {
+	static runAll () {
+		fileRecurse("./data", (file, contents) => {
+			ParsedJsonChecker._FILE_HANDLERS.forEach(handler => handler(file, contents));
+		}, true);
+	}
+
+	static register (clazz) {
+		ParsedJsonChecker._FILE_HANDLERS.push(clazz);
+	}
+}
+ParsedJsonChecker._FILE_HANDLERS = [];
 
 function getSimilar (url) {
 	// scan for a list of similar entries, to aid debugging
@@ -395,9 +411,10 @@ class AreaCheck {
 		});
 	}
 
-	static checkFile (file) {
+	static checkFile (file, contents) {
+		if (!AreaCheck.fileMatcher.test(file)) return;
+
 		AreaCheck.errorSet = new Set();
-		const contents = JSON.parse(fs.readFileSync(file, "utf8"));
 		AreaCheck._buildMap(file, contents.data);
 		ut.dataRecurse(file, contents, {string: AreaCheck.checkString});
 		if (AreaCheck.errorSet.size) {
@@ -410,10 +427,6 @@ class AreaCheck {
 		if (AreaCheck.headerMap.__BAD) {
 			AreaCheck.headerMap.__BAD.forEach(dupId => MSG.AreaCheck += `Duplicate ID: "${dupId}"\n`)
 		}
-	}
-
-	static run () {
-		fileRecurse("./data", AreaCheck.checkFile, AreaCheck.fileMatcher);
 	}
 }
 AreaCheck.errorSet = new Set();
@@ -506,21 +519,58 @@ class EscapeCharacterCheck {
 		}
 	}
 
-	static checkFile (file) {
+	static checkFile (file, contents) {
 		EscapeCharacterCheck.errors = [];
-		const contents = JSON.parse(fs.readFileSync(file, "utf8"));
 		ut.dataRecurse(file, contents, {string: EscapeCharacterCheck.checkString});
 		if (EscapeCharacterCheck.errors.length) {
 			MSG.EscapeCharacterCheck += `Unwanted escape characters in ${file}! See below:\n`;
 			MSG.EscapeCharacterCheck += `\t${EscapeCharacterCheck.errors.join("\n\t")}`;
 		}
 	}
-
-	static run () {
-		fileRecurse("./data", EscapeCharacterCheck.checkFile);
-	}
 }
 EscapeCharacterCheck._CHARS = 16;
+
+class DuplicateEntityCheck {
+	static checkFile (file, contents) {
+		DuplicateEntityCheck.errors = [];
+
+		Object.entries(contents)
+			.filter(([_, arr]) => arr instanceof Array)
+			.forEach(([prop, arr]) => {
+				const positions = {};
+				arr.forEach((ent, i) => {
+					const name = ent.name;
+					const source = ent.source ? ent.source : (ent.inherits && ent.inherits.source) ? ent.inherits.source : null;
+
+					// special handling for deities
+					if (prop === "deity") {
+						if (name && source) {
+							const key = `${source} :: ${ent.pantheon} :: ${name}`;
+							if (positions[key]) positions[key].push(i);
+							else positions[key] = [i];
+						}
+					} else {
+						if (name && source) {
+							const key = `${source} :: ${name}`;
+							if (positions[key]) positions[key].push(i);
+							else positions[key] = [i];
+						}
+					}
+				});
+
+				if (Object.keys(positions).length) {
+					const withDuplicates = Object.entries(positions)
+						.filter(([k, v]) => v.length > 1);
+					if (withDuplicates.length) {
+						MSG.DuplicateEntityCheck += `Duplicate entity keys in ${file} array .${prop}! See below:\n`;
+						withDuplicates.forEach(([k, v]) => {
+							MSG.DuplicateEntityCheck += `\t${k} (at indexes ${v.join(", ")})\n`;
+						});
+					}
+				}
+			});
+	}
+}
 
 async function main () {
 	const primaryIndex = od.Omnidexer.decompressIndex(await utS.UtilSearchIndex.pGetIndex(false, true));
@@ -536,16 +586,15 @@ async function main () {
 	StripTagTest.addHandlers();
 	TableDiceTest.addHandlers();
 
-	fileRecurse("./data", (file) => {
-		const contents = JSON.parse(fs.readFileSync(file, "utf8"));
-		ut.dataRecurse(file, contents, PRIMITIVE_HANDLERS);
-	});
+	ParsedJsonChecker.register((file, contents) => ut.dataRecurse(file, contents, PRIMITIVE_HANDLERS));
+	ParsedJsonChecker.register(AreaCheck.checkFile.bind(AreaCheck));
+	ParsedJsonChecker.register(EscapeCharacterCheck.checkFile.bind(EscapeCharacterCheck));
+	ParsedJsonChecker.register(DuplicateEntityCheck.checkFile.bind(DuplicateEntityCheck));
+	ParsedJsonChecker.runAll();
 
 	AttachedSpellAndGroupItemsCheck.run();
-	AreaCheck.run();
 	LootCheck.run();
 	SpellClassCheck.run();
-	EscapeCharacterCheck.run();
 
 	let outMessage = "";
 	Object.entries(MSG).forEach(([k, v]) => {

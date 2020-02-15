@@ -4,7 +4,7 @@
 
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.0.7",
+	"version": "1.0.8",
 
 	"definitions" : {
 		"metaBlock": {
@@ -694,9 +694,18 @@
 								"source": {"type": "string"}
 							},
 							"required": ["name", "source"]
+						},
+						"_preserve": {
+							"type": "object",
+							"patternProperties": {
+								".*": {
+									"type": "boolean"
+								}
+							}
 						}
 					},
-					"required": ["name", "source"]
+					"required": ["name", "source"],
+					"additionalProperties": false
 				}
 			},
 			"required": [

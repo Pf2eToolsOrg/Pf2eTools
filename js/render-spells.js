@@ -85,9 +85,11 @@ class RenderSpells {
 
 				const target = subclassLookup[c.source][c.name];
 				c.subclasses.forEach(sc => {
+					sc.source = sc.source || c.source;
+					sc.shortName = sc.shortName || sc.name;
 					(target[sc.source] =
-						target[sc.source] || {})[sc.shortName || sc.name] =
-						target[sc.source][sc.shortName || sc.name] || {name: sc.name}
+						target[sc.source] || {})[sc.shortName] =
+						target[sc.source][sc.shortName] || {name: sc.name}
 				});
 			})
 		}
@@ -95,14 +97,16 @@ class RenderSpells {
 		if (homebrew.subclass) {
 			homebrew.subclass.forEach(sc => {
 				const clSrc = sc.classSource || SRC_PHB;
+				sc.shortName = sc.shortName || sc.name;
+
 				(subclassLookup[clSrc] =
 					subclassLookup[clSrc] || {})[sc.class] =
 					subclassLookup[clSrc][sc.class] || {};
 
 				const target = subclassLookup[clSrc][sc.class];
 				(target[sc.source] =
-					target[sc.source] || {})[sc.shortName || sc.name] =
-					target[sc.source][sc.shortName || sc.name] || {name: sc.name}
+					target[sc.source] || {})[sc.shortName] =
+					target[sc.source][sc.shortName] || {name: sc.name}
 			})
 		}
 	}

@@ -2,9 +2,10 @@
 	"monster": [
 		{
 			"name": "Adult Sapphire Dragon",
+			"source": "SADS",
+			"page": 1,
 			"size": "H",
 			"type": "dragon",
-			"source": "SADS",
 			"alignment": [
 				"L",
 				"N"
@@ -45,17 +46,17 @@
 				"persuasion": "+14",
 				"stealth": "+8"
 			},
+			"senses": [
+				"blindsight 60 ft.",
+				"darkvision 120 ft."
+			],
+			"passive": 23,
 			"immune": [
 				"thunder"
 			],
 			"conditionImmune": [
 				"frightened"
 			],
-			"senses": [
-				"blindsight 60 ft.",
-				"darkvision 120 ft."
-			],
-			"passive": 23,
 			"languages": [
 				"telepathy 120 ft.",
 				"Common",
@@ -136,10 +137,6 @@
 					]
 				}
 			],
-			"legendaryGroup": {
-				"name": "Sapphire Dragon",
-				"source": "SADS"
-			},
 			"legendary": [
 				{
 					"name": "Tail Attack",
@@ -160,33 +157,36 @@
 					]
 				}
 			],
-			"page": 1,
+			"legendaryGroup": {
+				"name": "Sapphire Dragon",
+				"source": "SADS"
+			},
 			"traitTags": [
 				"Legendary Resistances"
 			],
+			"senseTags": [
+				"B",
+				"SD"
+			],
 			"actionTags": [
-				"Multiattack",
-				"Frightful Presence"
+				"Frightful Presence",
+				"Multiattack"
 			],
 			"languageTags": [
 				"C",
 				"DR",
 				"TP"
 			],
-			"senseTags": [
-				"B",
-				"SD"
-			],
 			"damageTags": [
 				"B",
-				"S",
 				"P",
+				"S",
 				"T"
 			],
 			"miscTags": [
+				"AOE",
 				"MW",
-				"RCH",
-				"AOE"
+				"RCH"
 			]
 		}
 	]

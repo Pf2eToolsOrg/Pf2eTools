@@ -431,13 +431,13 @@ class ClassesPage extends BaseComponent {
 			cls.name,
 			{
 				hash,
-				source,
-				isExcluded,
-				uniqueId: cls.uniqueId ? cls.uniqueId : clsI
+				source
 			},
 			{
 				$lnk,
-				class: cls
+				class: cls,
+				uniqueId: cls.uniqueId ? cls.uniqueId : clsI,
+				isExcluded
 			}
 		);
 	}
@@ -473,8 +473,7 @@ class ClassesPage extends BaseComponent {
 				.filter(sc => !this._filterBox.toDisplay(f, sc.source, sc._fMisc))
 				.map(sc => UrlUtil.getStateKeySubclass(sc))
 				.filter(stateKey => this._state[stateKey])
-				.map(stateKey => ({[stateKey]: false}))
-				.reduce((a, b) => Object.assign(a, b), {})
+				.mergeMap(stateKey => ({[stateKey]: false}))
 		);
 	}
 
@@ -793,7 +792,7 @@ class ClassesPage extends BaseComponent {
 		}
 
 		// starting proficiencies
-		const renderArmorProfs = (armorProfs) => armorProfs.map(a => a === "light" || a === "medium" || a === "heavy" ? `${a} armor` : a).join(", ");
+		const renderArmorProfs = (armorProfs) => armorProfs.map(a => a.full ? a.full : a === "light" || a === "medium" || a === "heavy" ? `${a} armor` : a).join(", ");
 		const renderWeaponsProfs = (weaponProfs) => weaponProfs.map(w => w === "simple" || w === "martial" ? `${w} weapons` : w).join(", ");
 		const renderSkillsProfs = skills => `${Parser.skillProficienciesToFull(skills).uppercaseFirst()}.`;
 
@@ -954,7 +953,7 @@ class ClassesPage extends BaseComponent {
 
 		this._sourceFilter.doSetPillsClear();
 		this._filterBox.fireChangeEvent();
-		this._proxyAssign("state", "_state", "__state", allStateKeys.map(stateKey => ({[stateKey]: true})).reduce((a, b) => Object.assign(a, b), {}));
+		this._proxyAssign("state", "_state", "__state", allStateKeys.mergeMap(stateKey => ({[stateKey]: true})));
 	}
 
 	async _render_pInitSubclassControls ($wrp) {
@@ -1006,7 +1005,7 @@ class ClassesPage extends BaseComponent {
 
 		const $btnReset = $(`<button class="btn btn-xs btn-default" title="Reset Selection"><span class="glyphicon glyphicon-refresh"/></button>`)
 			.click(() => {
-				this._proxyAssign("state", "_state", "__state", cls.subclasses.map(sc => ({[UrlUtil.getStateKeySubclass(sc)]: false})).reduce((a, b) => Object.assign(a, b), {}));
+				this._proxyAssign("state", "_state", "__state", cls.subclasses.mergeMap(sc => ({[UrlUtil.getStateKeySubclass(sc)]: false})));
 			});
 
 		$(this._filterBox).on(FilterBox.EVNT_VALCHANGE, this._handleSubclassFilterChange.bind(this));
@@ -1094,8 +1093,10 @@ class ClassesPage extends BaseComponent {
 				source: sc.source,
 				shortName: sc.shortName,
 				stateKey,
-				isExcluded,
 				mod
+			},
+			{
+				isExcluded
 			}
 		);
 	}
@@ -1521,6 +1522,15 @@ ClassesPage.ClassBookView = class {
 		(this._hooks["isHideFeatures"] = this._hooks["isHideFeatures"] || []).push(hkFeatures);
 		this._parent.addHook("isHideFeatures", hkFeatures);
 		hkFeatures();
+
+		const f = this._classPage.filterBox.getValues();
+		this._$wrpBook.find(`tr`).each((i, e) => {
+			const $tr = $(e);
+			$tr.find(`[data-source]`).each((i, e) => {
+				const source = e.dataset.source;
+				$(e).toggleClass("hidden", !this._classPage.filterBox.toDisplay(f, source, []));
+			})
+		})
 
 		this._$body.append(this._$wrpBook);
 	}

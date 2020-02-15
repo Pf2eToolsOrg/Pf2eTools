@@ -14,28 +14,11 @@
 	},
 	"monster": [
 		{
-			"name": "Sandesyl Morgia",
-			"_copy": {
-				"name": "Vampire",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the vampire",
-						"with": "Sandesyl",
-						"flags": "i"
-					}
-				}
-			},
-			"isNpc": true,
-			"source": "HotDQ",
-			"page": 81
-		},
-		{
 			"name": "Ambush Drake",
+			"source": "HotDQ",
+			"page": 88,
 			"size": "M",
 			"type": "dragon",
-			"source": "HotDQ",
 			"alignment": [
 				"U"
 			],
@@ -64,13 +47,13 @@
 				"perception": "+4",
 				"stealth": "+4"
 			},
-			"resist": [
-				"poison"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 14,
+			"resist": [
+				"poison"
+			],
 			"languages": [
 				"understands Draconic but can't speak it"
 			],
@@ -97,16 +80,15 @@
 					]
 				}
 			],
-			"page": 88,
 			"traitTags": [
 				"Pack Tactics"
+			],
+			"senseTags": [
+				"D"
 			],
 			"languageTags": [
 				"CS",
 				"DR"
-			],
-			"senseTags": [
-				"D"
 			],
 			"damageTags": [
 				"P"
@@ -118,6 +100,8 @@
 		{
 			"name": "Azbara Jos",
 			"isNpc": true,
+			"source": "HotDQ",
+			"page": 88,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -125,7 +109,6 @@
 					"human"
 				]
 			},
-			"source": "HotDQ",
 			"alignment": [
 				"L",
 				"E"
@@ -242,29 +225,30 @@
 					]
 				}
 			],
-			"page": 88,
 			"languageTags": [
 				"C",
 				"DR",
 				"I",
-				"P",
-				"OTH"
-			],
-			"spellcastingTags": [
-				"CW"
+				"OTH",
+				"P"
 			],
 			"damageTags": [
 				"P"
 			],
+			"spellcastingTags": [
+				"CW"
+			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
 			"name": "Blagothkus",
 			"isNpc": true,
+			"source": "HotDQ",
+			"page": 89,
 			"size": "H",
 			"type": {
 				"type": "giant",
@@ -272,7 +256,6 @@
 					"cloud giant"
 				]
 			},
-			"source": "HotDQ",
 			"alignment": [
 				"N",
 				"E"
@@ -392,7 +375,6 @@
 					]
 				}
 			],
-			"page": 89,
 			"traitTags": [
 				"Keen Senses"
 			],
@@ -404,12 +386,12 @@
 				"DR",
 				"GI"
 			],
-			"spellcastingTags": [
-				"I",
-				"CW"
-			],
 			"damageTags": [
 				"P"
+			],
+			"spellcastingTags": [
+				"CW",
+				"I"
 			],
 			"miscTags": [
 				"MW",
@@ -419,6 +401,8 @@
 		{
 			"name": "Captain Othelstan",
 			"isNpc": true,
+			"source": "HotDQ",
+			"page": 89,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -426,7 +410,6 @@
 					"human"
 				]
 			},
-			"source": "HotDQ",
 			"alignment": [
 				"L",
 				"E"
@@ -504,7 +487,6 @@
 					]
 				}
 			],
-			"page": 89,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -524,8 +506,240 @@
 			]
 		},
 		{
+			"name": "Dragonclaw",
+			"source": "HotDQ",
+			"page": 89,
+			"otherSources": [
+				{
+					"source": "RoT",
+					"page": 89
+				}
+			],
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 16,
+				"formula": "3d8 + 3"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 9,
+			"dex": 16,
+			"con": 13,
+			"int": 11,
+			"wis": 10,
+			"cha": 12,
+			"save": {
+				"wis": "+2"
+			},
+			"skill": {
+				"deception": "+3",
+				"stealth": "+5"
+			},
+			"passive": 10,
+			"languages": [
+				"Common",
+				"Draconic"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Dragon Fanatic",
+					"entries": [
+						"The dragonclaw has advantage on saving throws against being {@condition charmed} or {@condition frightened}. While the dragonclaw can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonclaw ignores the effects of being {@condition charmed} or {@condition frightened}."
+					]
+				},
+				{
+					"name": "Fanatic Advantage",
+					"entries": [
+						"Once per turn, if the dragonclaw makes a weapon attack with advantage on the attack roll and hits, it deals an extra 7 ({@dice 2d6}) damage."
+					]
+				},
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"The dragonclaw has advantage on an attack roll against a creature if at least one of the dragonclaw's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The dragonclaw attacks twice with its scimitar."
+					]
+				},
+				{
+					"name": "Scimitar",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Pack Tactics"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR"
+			],
+			"damageTags": [
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Dragonwing",
+			"source": "HotDQ",
+			"page": 90,
+			"otherSources": [
+				{
+					"source": "RoT",
+					"page": 89
+				}
+			],
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 33,
+				"formula": "6d8 + 6"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 11,
+			"dex": 16,
+			"con": 13,
+			"int": 11,
+			"wis": 11,
+			"cha": 13,
+			"save": {
+				"wis": "+2"
+			},
+			"skill": {
+				"deception": "+3",
+				"stealth": "+5"
+			},
+			"passive": 10,
+			"resist": [
+				{
+					"resist": [
+						"acid",
+						"cold",
+						"fire",
+						"lightning",
+						"poison"
+					],
+					"preNote": "one of the following:"
+				}
+			],
+			"languages": [
+				"Common",
+				"Draconic"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Dragon Fanatic",
+					"entries": [
+						"The dragonwing has advantage on saving throws against being {@condition charmed} or {@condition frightened}. While the dragonwing can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonwing ignores the effects of being {@condition charmed} or {@condition frightened}."
+					]
+				},
+				{
+					"name": "Fanatic Advantage",
+					"entries": [
+						"Once per turn, if the dragonwing makes a weapon attack with advantage on the attack roll and hits, the target takes an extra 7 ({@dice 2d6}) damage."
+					]
+				},
+				{
+					"name": "Limited Flight",
+					"entries": [
+						"The dragonwing can use a bonus action to gain a flying speed of 30 feet until the end of its turn."
+					]
+				},
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"The dragonwing has advantage on an attack roll against a creature if at least one of the dragonwing's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The dragonwing attacks twice with its scimitar."
+					]
+				},
+				{
+					"name": "Scimitar",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage plus 3 ({@dice 1d6}) damage of the type to which the cultist has resistance."
+					]
+				}
+			],
+			"traitTags": [
+				"Pack Tactics"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR"
+			],
+			"damageTags": [
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
 			"name": "Dralmorrer Borngray",
 			"isNpc": true,
+			"source": "HotDQ",
+			"page": 90,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -533,7 +747,6 @@
 					"high elf"
 				]
 			},
-			"source": "HotDQ",
 			"alignment": [
 				"N",
 				"E"
@@ -658,30 +871,29 @@
 					]
 				}
 			],
-			"page": 90,
 			"traitTags": [
 				"Fey Ancestry"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"C",
-				"OTH",
 				"DR",
 				"E",
 				"GO",
+				"OTH",
 				"S"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"P",
+				"S"
 			],
 			"spellcastingTags": [
 				"CW"
-			],
-			"damageTags": [
-				"S",
-				"P"
 			],
 			"miscTags": [
 				"MW",
@@ -692,6 +904,8 @@
 		{
 			"name": "Frulam Mondath",
 			"isNpc": true,
+			"source": "HotDQ",
+			"page": 90,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -699,7 +913,6 @@
 					"human"
 				]
 			},
-			"source": "HotDQ",
 			"alignment": [
 				"L",
 				"E"
@@ -797,7 +1010,6 @@
 					]
 				}
 			],
-			"page": 90,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -806,11 +1018,11 @@
 				"DR",
 				"I"
 			],
-			"spellcastingTags": [
-				"CC"
-			],
 			"damageTags": [
 				"B"
+			],
+			"spellcastingTags": [
+				"CC"
 			],
 			"miscTags": [
 				"MW",
@@ -818,8 +1030,108 @@
 			]
 		},
 		{
+			"name": "Golden Stag",
+			"source": "HotDQ",
+			"page": 35,
+			"_copy": {
+				"name": "Elk",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Guard Drake",
+			"source": "HotDQ",
+			"page": 91,
+			"otherSources": [
+				{
+					"source": "RoT",
+					"page": 90
+				}
+			],
+			"size": "M",
+			"type": "dragon",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 52,
+				"formula": "7d8 + 21"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 11,
+			"con": 16,
+			"int": 4,
+			"wis": 10,
+			"cha": 7,
+			"skill": {
+				"perception": "+2"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 12,
+			"resist": [
+				"lightning"
+			],
+			"languages": [
+				"understands Draconic but can't speak it"
+			],
+			"cr": "2",
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The drake attacks twice, once with its bite and once with its tail."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) bludgeoning damage."
+					]
+				}
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/254/guard-drake.mp3",
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"CS",
+				"DR"
+			],
+			"damageTags": [
+				"B",
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
 			"name": "Jamna Gleamsilver",
 			"isNpc": true,
+			"source": "HotDQ",
+			"page": 91,
 			"size": "S",
 			"type": {
 				"type": "humanoid",
@@ -827,7 +1139,6 @@
 					"gnome"
 				]
 			},
-			"source": "HotDQ",
 			"alignment": [
 				"N"
 			],
@@ -931,7 +1242,9 @@
 					]
 				}
 			],
-			"page": 91,
+			"senseTags": [
+				"D"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
@@ -941,14 +1254,11 @@
 				"GO",
 				"S"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"P"
 			],
 			"spellcastingTags": [
 				"CW"
-			],
-			"damageTags": [
-				"P"
 			],
 			"miscTags": [
 				"MW"
@@ -957,6 +1267,8 @@
 		{
 			"name": "Langdedrosa Cyanwrath",
 			"isNpc": true,
+			"source": "HotDQ",
+			"page": 91,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -964,7 +1276,6 @@
 					"half-dragon"
 				]
 			},
-			"source": "HotDQ",
 			"alignment": [
 				"L",
 				"E"
@@ -999,14 +1310,14 @@
 				"intimidation": "+3",
 				"perception": "+4"
 			},
-			"resist": [
-				"lightning"
-			],
 			"senses": [
 				"blindsight 10 ft.",
 				"darkvision 60 ft."
 			],
 			"passive": 14,
+			"resist": [
+				"lightning"
+			],
 			"languages": [
 				"Common",
 				"Draconic"
@@ -1052,7 +1363,10 @@
 					]
 				}
 			],
-			"page": 91,
+			"senseTags": [
+				"B",
+				"D"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
@@ -1060,25 +1374,95 @@
 				"C",
 				"DR"
 			],
-			"senseTags": [
-				"B",
-				"D"
+			"damageTags": [
+				"L",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RW",
+				"THW"
+			]
+		},
+		{
+			"name": "Leosin Erlanthar",
+			"isNpc": true,
+			"source": "HotDQ",
+			"page": 87,
+			"_copy": {
+				"name": "Martial Arts Adept",
+				"source": "VGM",
+				"_mod": {
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "5etools Note",
+							"entries": [
+								"Leosin Erlanthar is presented in {@adventure Hoard of the Dragon Queen|HotDQ} as a half-elf monk. The {@creature martial arts adept|vgm} statblock from {@book Volo's Guide to Monsters|VGM} has been provided here for ease of use."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Linan Swift",
+			"isNpc": true,
+			"source": "HotDQ",
+			"page": 8,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 8,
+				"formula": "1d8"
+			},
+			"action": [
+				{
+					"name": "Spear",
+					"entries": [
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d6}) piercing damage."
+					]
+				}
 			],
 			"damageTags": [
-				"S",
-				"P",
-				"L"
+				"P"
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"THW",
-				"AOE"
+				"RCH",
+				"THW"
 			]
+		},
+		{
+			"name": "Ontharr Frume",
+			"isNpc": true,
+			"source": "HotDQ",
+			"page": 28,
+			"_copy": {
+				"name": "War Priest",
+				"source": "VGM",
+				"_mod": {
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "5etools Note",
+							"entries": [
+								"Ontharr Frume is presented in {@adventure Hoard of the Dragon Queen|HotDQ} and The {@adventure Rise of Tiamat|RoT} as a lawful good, human paladin of Torm. The {@creature war priest|vgm} statblock from {@book Volo's Guide to Monsters|VGM} has been provided here for ease of use."
+							]
+						}
+					}
+				}
+			}
 		},
 		{
 			"name": "Pharblex Spattergoo",
 			"isNpc": true,
+			"source": "HotDQ",
+			"page": 91,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1086,7 +1470,6 @@
 					"bullywug"
 				]
 			},
-			"source": "HotDQ",
 			"alignment": [
 				"C",
 				"E"
@@ -1217,7 +1600,6 @@
 					]
 				}
 			],
-			"page": 91,
 			"traitTags": [
 				"Amphibious"
 			],
@@ -1228,12 +1610,12 @@
 				"C",
 				"OTH"
 			],
+			"damageTags": [
+				"I",
+				"P"
+			],
 			"spellcastingTags": [
 				"CD"
-			],
-			"damageTags": [
-				"P",
-				"I"
 			],
 			"miscTags": [
 				"MW",
@@ -1242,8 +1624,37 @@
 			]
 		},
 		{
+			"name": "Raggnar Redtooth",
+			"isNpc": true,
+			"source": "HotDQ",
+			"page": 74,
+			"_copy": {
+				"name": "Veteran",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the veteran",
+						"with": "Raggnar",
+						"flags": "i"
+					}
+				}
+			},
+			"ac": [
+				11
+			]
+		},
+		{
 			"name": "Rath Modar",
 			"isNpc": true,
+			"source": "HotDQ",
+			"page": 92,
+			"otherSources": [
+				{
+					"source": "RoT",
+					"page": 91
+				}
+			],
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1251,13 +1662,6 @@
 					"human"
 				]
 			},
-			"source": "HotDQ",
-			"otherSources": [
-				{
-					"source": "RoT",
-					"page": 91
-				}
-			],
 			"alignment": [
 				"L",
 				"E"
@@ -1390,19 +1794,18 @@
 					]
 				}
 			],
-			"page": 92,
 			"languageTags": [
 				"C",
 				"DR",
 				"I",
-				"P",
-				"OTH"
-			],
-			"spellcastingTags": [
-				"CW"
+				"OTH",
+				"P"
 			],
 			"damageTags": [
 				"B"
+			],
+			"spellcastingTags": [
+				"CW"
 			],
 			"miscTags": [
 				"MW"
@@ -1410,6 +1813,15 @@
 		},
 		{
 			"name": "Rezmir",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "HotDQ",
+			"page": 93,
+			"otherSources": [
+				{
+					"source": "RoT"
+				}
+			],
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1417,12 +1829,6 @@
 					"half-black dragon"
 				]
 			},
-			"source": "HotDQ",
-			"otherSources": [
-				{
-					"source": "RoT"
-				}
-			],
 			"alignment": [
 				"N",
 				"E"
@@ -1456,6 +1862,11 @@
 				"arcana": "+5",
 				"stealth": "+9"
 			},
+			"senses": [
+				"blindsight 10 ft.",
+				"darkvision 120 ft."
+			],
+			"passive": 11,
 			"immune": [
 				"acid"
 			],
@@ -1463,11 +1874,6 @@
 				"charmed",
 				"frightened"
 			],
-			"senses": [
-				"blindsight 10 ft.",
-				"darkvision 120 ft."
-			],
-			"passive": 11,
 			"languages": [
 				"Common",
 				"Draconic",
@@ -1555,37 +1961,54 @@
 					]
 				}
 			],
-			"page": 93,
-			"isNamedCreature": true,
-			"isNpc": true,
 			"traitTags": [
 				"Amphibious",
 				"Legendary Resistances"
-			],
-			"languageTags": [
-				"C",
-				"DR",
-				"I",
-				"GI",
-				"OTH"
 			],
 			"senseTags": [
 				"B",
 				"SD"
 			],
+			"languageTags": [
+				"C",
+				"DR",
+				"GI",
+				"I",
+				"OTH"
+			],
 			"damageTags": [
-				"S",
+				"A",
 				"N",
-				"A"
+				"S"
 			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
 			]
+		},
+		{
+			"name": "Sandesyl Morgia",
+			"isNpc": true,
+			"source": "HotDQ",
+			"page": 81,
+			"_copy": {
+				"name": "Vampire",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the vampire",
+						"with": "Sandesyl",
+						"flags": "i"
+					}
+				}
+			}
 		},
 		{
 			"name": "Talis the White",
 			"isNpc": true,
+			"source": "HotDQ",
+			"page": 93,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1593,7 +2016,6 @@
 					"half-elf"
 				]
 			},
-			"source": "HotDQ",
 			"alignment": [
 				"L",
 				"E"
@@ -1725,9 +2147,11 @@
 					]
 				}
 			],
-			"page": 93,
 			"traitTags": [
 				"Fey Ancestry"
+			],
+			"senseTags": [
+				"D"
 			],
 			"languageTags": [
 				"C",
@@ -1735,28 +2159,26 @@
 				"E",
 				"I"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"C",
+				"P"
 			],
 			"spellcastingTags": [
 				"CC"
 			],
-			"damageTags": [
-				"P",
-				"C"
-			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
 			"name": "Trepsin",
 			"isNpc": true,
+			"source": "HotDQ",
+			"page": 63,
 			"size": "L",
 			"type": "giant",
-			"source": "HotDQ",
 			"alignment": [
 				"C",
 				"E"
@@ -1827,10 +2249,12 @@
 					]
 				}
 			],
-			"page": 63,
 			"traitTags": [
 				"Keen Senses",
 				"Regeneration"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -1838,9 +2262,6 @@
 			"languageTags": [
 				"GI"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
 				"P",
 				"S"
@@ -1848,427 +2269,6 @@
 			"miscTags": [
 				"MW"
 			]
-		},
-		{
-			"name": "Dragonclaw",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"source": "HotDQ",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"{@item leather armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 16,
-				"formula": "3d8 + 3"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 9,
-			"dex": 16,
-			"con": 13,
-			"int": 11,
-			"wis": 10,
-			"cha": 12,
-			"save": {
-				"wis": "+2"
-			},
-			"skill": {
-				"deception": "+3",
-				"stealth": "+5"
-			},
-			"passive": 10,
-			"languages": [
-				"Common",
-				"Draconic"
-			],
-			"cr": "1",
-			"trait": [
-				{
-					"name": "Dragon Fanatic",
-					"entries": [
-						"The dragonclaw has advantage on saving throws against being {@condition charmed} or {@condition frightened}. While the dragonclaw can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonclaw ignores the effects of being {@condition charmed} or {@condition frightened}."
-					]
-				},
-				{
-					"name": "Fanatic Advantage",
-					"entries": [
-						"Once per turn, if the dragonclaw makes a weapon attack with advantage on the attack roll and hits, it deals an extra 7 ({@dice 2d6}) damage."
-					]
-				},
-				{
-					"name": "Pack Tactics",
-					"entries": [
-						"The dragonclaw has advantage on an attack roll against a creature if at least one of the dragonclaw's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The dragonclaw attacks twice with its scimitar."
-					]
-				},
-				{
-					"name": "Scimitar",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
-					]
-				}
-			],
-			"page": 89,
-			"otherSources": [
-				{
-					"source": "RoT",
-					"page": 89
-				}
-			],
-			"traitTags": [
-				"Pack Tactics"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C",
-				"DR"
-			],
-			"damageTags": [
-				"S"
-			],
-			"miscTags": [
-				"MW"
-			]
-		},
-		{
-			"name": "Dragonwing",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"source": "HotDQ",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"{@item leather armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 33,
-				"formula": "6d8 + 6"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 11,
-			"dex": 16,
-			"con": 13,
-			"int": 11,
-			"wis": 11,
-			"cha": 13,
-			"save": {
-				"wis": "+2"
-			},
-			"skill": {
-				"deception": "+3",
-				"stealth": "+5"
-			},
-			"resist": [
-				{
-					"resist": [
-						"acid",
-						"cold",
-						"fire",
-						"lightning",
-						"poison"
-					],
-					"preNote": "one of the following:"
-				}
-			],
-			"passive": 10,
-			"languages": [
-				"Common",
-				"Draconic"
-			],
-			"cr": "2",
-			"trait": [
-				{
-					"name": "Dragon Fanatic",
-					"entries": [
-						"The dragonwing has advantage on saving throws against being {@condition charmed} or {@condition frightened}. While the dragonwing can see a dragon or higher-ranking Cult of the Dragon cultist friendly to it, the dragonwing ignores the effects of being {@condition charmed} or {@condition frightened}."
-					]
-				},
-				{
-					"name": "Fanatic Advantage",
-					"entries": [
-						"Once per turn, if the dragonwing makes a weapon attack with advantage on the attack roll and hits, the target takes an extra 7 ({@dice 2d6}) damage."
-					]
-				},
-				{
-					"name": "Limited Flight",
-					"entries": [
-						"The dragonwing can use a bonus action to gain a flying speed of 30 feet until the end of its turn."
-					]
-				},
-				{
-					"name": "Pack Tactics",
-					"entries": [
-						"The dragonwing has advantage on an attack roll against a creature if at least one of the dragonwing's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The dragonwing attacks twice with its scimitar."
-					]
-				},
-				{
-					"name": "Scimitar",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage plus 3 ({@dice 1d6}) damage of the type to which the cultist has resistance."
-					]
-				}
-			],
-			"page": 90,
-			"otherSources": [
-				{
-					"source": "RoT",
-					"page": 89
-				}
-			],
-			"traitTags": [
-				"Pack Tactics"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C",
-				"DR"
-			],
-			"damageTags": [
-				"S"
-			],
-			"miscTags": [
-				"MW"
-			]
-		},
-		{
-			"name": "Golden Stag",
-			"source": "HotDQ",
-			"_copy": {
-				"name": "Elk",
-				"source": "MM"
-			},
-			"page": 35
-		},
-		{
-			"name": "Guard Drake",
-			"size": "M",
-			"type": "dragon",
-			"source": "HotDQ",
-			"alignment": [
-				"U"
-			],
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 52,
-				"formula": "7d8 + 21"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 16,
-			"dex": 11,
-			"con": 16,
-			"int": 4,
-			"wis": 10,
-			"cha": 7,
-			"skill": {
-				"perception": "+2"
-			},
-			"resist": [
-				"lightning"
-			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 12,
-			"languages": [
-				"understands Draconic but can't speak it"
-			],
-			"cr": "2",
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The drake attacks twice, once with its bite and once with its tail."
-					]
-				},
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
-					]
-				},
-				{
-					"name": "Tail",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) bludgeoning damage."
-					]
-				}
-			],
-			"page": 91,
-			"otherSources": [
-				{
-					"source": "RoT",
-					"page": 90
-				}
-			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/254/guard-drake.mp3",
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"CS",
-				"DR"
-			],
-			"senseTags": [
-				"D"
-			],
-			"damageTags": [
-				"P",
-				"B"
-			],
-			"miscTags": [
-				"MW"
-			]
-		},
-		{
-			"name": "Leosin Erlanthar",
-			"isNpc": true,
-			"source": "HotDQ",
-			"_copy": {
-				"name": "Martial Arts Adept",
-				"source": "VGM",
-				"_mod": {
-					"trait": {
-						"mode": "prependArr",
-						"items": {
-							"name": "5etools Note",
-							"entries": [
-								"Leosin Erlanthar is presented in {@adventure Hoard of the Dragon Queen|HotDQ} as a half-elf monk. The {@creature martial arts adept|vgm} statblock from {@book Volo's Guide to Monsters|VGM} has been provided here for ease of use."
-							]
-						}
-					}
-				}
-			},
-			"page": 87
-		},
-		{
-			"name": "Linan Swift",
-			"isNpc": true,
-			"source": "HotDQ",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"hp": {
-				"average": 8,
-				"formula": "1d8"
-			},
-			"action": [
-				{
-					"name": "Spear",
-					"entries": [
-						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d6}) piercing damage."
-					]
-				}
-			],
-			"miscTags": [
-				"THW",
-				"MW",
-				"RCH"
-			],
-			"damageTags": [
-				"P"
-			],
-			"page": 8
-		},
-		{
-			"name": "Ontharr Frume",
-			"isNpc": true,
-			"source": "HotDQ",
-			"_copy": {
-				"name": "War Priest",
-				"source": "VGM",
-				"_mod": {
-					"trait": {
-						"mode": "prependArr",
-						"items": {
-							"name": "5etools Note",
-							"entries": [
-								"Ontharr Frume is presented in {@adventure Hoard of the Dragon Queen|HotDQ} and The {@adventure Rise of Tiamat|RoT} as a lawful good, human paladin of Torm. The {@creature war priest|vgm} statblock from {@book Volo's Guide to Monsters|VGM} has been provided here for ease of use."
-							]
-						}
-					}
-				}
-			},
-			"page": 28
-		},
-		{
-			"name": "Raggnar Redtooth",
-			"isNpc": true,
-			"source": "HotDQ",
-			"ac": [
-				11
-			],
-			"_copy": {
-				"name": "Veteran",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the veteran",
-						"with": "Raggnar",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 74
 		}
 	]
 }

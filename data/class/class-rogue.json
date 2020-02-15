@@ -3,6 +3,7 @@
 		{
 			"name": "Rogue",
 			"source": "PHB",
+			"page": 94,
 			"srd": true,
 			"hd": {
 				"number": 1,
@@ -12,6 +13,84 @@
 				"dex",
 				"int"
 			],
+			"startingProficiencies": {
+				"armor": [
+					"light"
+				],
+				"weapons": [
+					"simple",
+					"hand crossbows",
+					"longswords",
+					"rapiers",
+					"shortswords"
+				],
+				"tools": [
+					"thieves' tools"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"acrobatics",
+								"athletics",
+								"deception",
+								"insight",
+								"intimidation",
+								"investigation",
+								"perception",
+								"performance",
+								"persuasion",
+								"sleight of hand",
+								"stealth"
+							],
+							"count": 4
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item rapier|phb} or (b) a {@item shortsword|phb}",
+					"(a) a {@item shortbow|phb} and {@item quiver|phb} of {@item arrows (20)|phb|20 arrows} or (b) a {@item shortsword|phb}",
+					"(a) a {@item burglar's pack|phb}, (b) a {@item dungeoneer's pack|phb}, or (c) an {@item explorer's pack|phb}",
+					"{@item Leather armor|phb}, two {@item dagger|phb|daggers}, and {@item thieves' tools|phb}"
+				],
+				"goldAlternative": "{@dice 4d4×10|4d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"dex": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light"
+					],
+					"skills": [
+						{
+							"choose": {
+								"from": [
+									"acrobatics",
+									"athletics",
+									"deception",
+									"insight",
+									"intimidation",
+									"investigation",
+									"perception",
+									"performance",
+									"persuasion",
+									"sleight of hand",
+									"stealth"
+								],
+								"count": 1
+							}
+						}
+					],
+					"tools": [
+						"thieves' tools"
+					]
+				}
+			},
 			"classTableGroups": [
 				{
 					"colLabels": [
@@ -241,84 +320,6 @@
 					]
 				}
 			],
-			"startingProficiencies": {
-				"armor": [
-					"light"
-				],
-				"weapons": [
-					"simple",
-					"hand crossbows",
-					"longswords",
-					"rapiers",
-					"shortswords"
-				],
-				"tools": [
-					"thieves' tools"
-				],
-				"skills": [
-					{
-						"choose": {
-							"from": [
-								"acrobatics",
-								"athletics",
-								"deception",
-								"insight",
-								"intimidation",
-								"investigation",
-								"perception",
-								"performance",
-								"persuasion",
-								"sleight of hand",
-								"stealth"
-							],
-							"count": 4
-						}
-					}
-				]
-			},
-			"startingEquipment": {
-				"additionalFromBackground": true,
-				"default": [
-					"(a) a {@item rapier|phb} or (b) a {@item shortsword|phb}",
-					"(a) a {@item shortbow|phb} and {@item quiver|phb} of {@item arrows (20)|phb|20 arrows} or (b) a {@item shortsword|phb}",
-					"(a) a {@item burglar's pack|phb}, (b) a {@item dungeoneer's pack|phb}, or (c) an {@item explorer's pack|phb}",
-					"{@item Leather armor|phb}, two {@item dagger|phb|daggers}, and {@item thieves' tools|phb}"
-				],
-				"goldAlternative": "{@dice 4d4×10|4d4 × 10|Starting Gold}"
-			},
-			"multiclassing": {
-				"requirements": {
-					"dex": 13
-				},
-				"proficienciesGained": {
-					"armor": [
-						"light"
-					],
-					"skills": [
-						{
-							"choose": {
-								"from": [
-									"acrobatics",
-									"athletics",
-									"deception",
-									"insight",
-									"intimidation",
-									"investigation",
-									"perception",
-									"performance",
-									"persuasion",
-									"sleight of hand",
-									"stealth"
-								],
-								"count": 1
-							}
-						}
-					],
-					"tools": [
-						"thieves' tools"
-					]
-				}
-			},
 			"classFeatures": [
 				[
 					{
@@ -587,6 +588,10 @@
 			"subclasses": [
 				{
 					"name": "Arcane Trickster",
+					"shortName": "Arcane Trickster",
+					"source": "PHB",
+					"spellcastingAbility": "int",
+					"casterProgression": "1/3",
 					"subclassTableGroups": [
 						{
 							"subclasses": [
@@ -820,8 +825,6 @@
 							]
 						}
 					],
-					"spellcastingAbility": "int",
-					"casterProgression": "1/3",
 					"subclassFeatures": [
 						[
 							{
@@ -962,12 +965,12 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Arcane Trickster"
+					]
 				},
 				{
 					"name": "Assassin",
+					"shortName": "Assassin",
+					"source": "PHB",
 					"subclassFeatures": [
 						[
 							{
@@ -1033,12 +1036,13 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Assassin"
+					]
 				},
 				{
 					"name": "Mastermind",
+					"shortName": "Mastermind",
+					"source": "SCAG",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1113,13 +1117,13 @@
 								]
 							}
 						]
-					],
-					"source": "SCAG",
-					"shortName": "Mastermind",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Inquisitive (UA)",
+					"shortName": "Inquisitive (UA)",
+					"source": "UAGothicHeroes",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1190,13 +1194,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAGothicHeroes",
-					"shortName": "Inquisitive (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Swashbuckler",
+					"shortName": "Swashbuckler",
+					"source": "SCAG",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1263,13 +1267,13 @@
 								]
 							}
 						]
-					],
-					"source": "SCAG",
-					"shortName": "Swashbuckler",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Thief",
+					"shortName": "Thief",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1333,13 +1337,13 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Thief",
-					"srd": true
+					]
 				},
 				{
 					"name": "Scout (UA)",
+					"shortName": "Scout (UA)",
+					"source": "UARangerAndRogue",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1403,13 +1407,12 @@
 								]
 							}
 						]
-					],
-					"source": "UARangerAndRogue",
-					"shortName": "Scout (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Inquisitive",
+					"shortName": "Inquisitive",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -1481,12 +1484,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Inquisitive"
+					]
 				},
 				{
 					"name": "Mastermind",
+					"shortName": "Mastermind",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -1561,12 +1564,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Mastermind"
+					]
 				},
 				{
 					"name": "Scout",
+					"shortName": "Scout",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -1630,12 +1633,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Scout"
+					]
 				},
 				{
 					"name": "Swashbuckler",
+					"shortName": "Swashbuckler",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -1702,12 +1705,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Swashbuckler"
+					]
 				},
 				{
 					"name": "Acrobat (Livestream)",
+					"shortName": "Acrobat (Stream)",
+					"source": "Stream",
 					"subclassFeatures": [
 						[
 							{
@@ -1765,12 +1768,12 @@
 								]
 							}
 						]
-					],
-					"source": "Stream",
-					"shortName": "Acrobat (Stream)"
+					]
 				},
 				{
 					"name": "The Revived (UA)",
+					"shortName": "Revived (UA)",
+					"source": "UAFighterRangerRogue",
 					"subclassFeatures": [
 						[
 							{
@@ -1883,12 +1886,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAFighterRangerRogue",
-					"shortName": "Revived (UA)"
+					]
 				},
 				{
 					"name": "Soulknife (UA)",
+					"shortName": "Soulknife (UA)",
+					"source": "UAFighterRogueWizard",
+					"page": 2,
 					"subclassFeatures": [
 						[
 							{
@@ -1968,10 +1972,7 @@
 								]
 							}
 						]
-					],
-					"source": "UAFighterRogueWizard",
-					"shortName": "Soulknife (UA)",
-					"page": 2
+					]
 				}
 			],
 			"fluff": [
@@ -2263,8 +2264,7 @@
 					"page": 44,
 					"source": "XGE"
 				}
-			],
-			"page": 94
+			]
 		}
 	]
 }

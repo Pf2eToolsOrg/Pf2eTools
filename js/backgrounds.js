@@ -18,7 +18,7 @@ class BackgroundPage extends ListPage {
 	}
 
 	getListItem (bg, bgI, isExcluded) {
-		this._pageFilter.addToFilters(bg, isExcluded);
+		this._pageFilter.mutateAndAddToFilters(bg, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -40,9 +40,11 @@ class BackgroundPage extends ListPage {
 			{
 				hash,
 				source,
-				skills: bg._skillDisplay,
-				isExcluded,
-				uniqueId: bg.uniqueId || bgI
+				skills: bg._skillDisplay
+			},
+			{
+				uniqueId: bg.uniqueId || bgI,
+				isExcluded
 			}
 		);
 
@@ -98,7 +100,7 @@ class BackgroundPage extends ListPage {
 				isImageTab,
 				$pgContent,
 				bg,
-				(fluffJson) => bg.fluff || fluffJson.background.find(it => it.name === bg.name && it.source === bg.source),
+				(fluffJson) => bg.fluff || fluffJson.backgroundFluff.find(it => it.name === bg.name && it.source === bg.source),
 				this._dataSourcefluff,
 				() => true
 			);
@@ -125,9 +127,9 @@ class BackgroundPage extends ListPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 	}
 }
 

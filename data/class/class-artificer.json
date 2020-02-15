@@ -3,6 +3,7 @@
 		{
 			"name": "Artificer",
 			"source": "UAArtificer",
+			"page": 1,
 			"isReprinted": true,
 			"hd": {
 				"number": 1,
@@ -14,6 +15,46 @@
 			],
 			"spellcastingAbility": "int",
 			"casterProgression": "1/3",
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium"
+				],
+				"weapons": [
+					"simple"
+				],
+				"tools": [
+					"Thieves' tools",
+					"tinker's tools",
+					"one type of artisan's tools of your choice"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"deception",
+								"history",
+								"investigation",
+								"medicine",
+								"nature",
+								"religion",
+								"sleight of hand"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item handaxe|phb} and a {@item light hammer|phb} or (b) any two {@filter simple weapons|items|source=phb|category=basic|type=simple weapon}",
+					"a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts}",
+					"(a) {@item scale mail|phb} or (b) {@item studded leather armor|phb}",
+					"{@item thieves' tools|phb} and a {@item dungeoneer's pack|phb}"
+				]
+			},
 			"classTableGroups": [
 				{
 					"colLabels": [
@@ -214,46 +255,6 @@
 					]
 				}
 			],
-			"startingProficiencies": {
-				"armor": [
-					"light",
-					"medium"
-				],
-				"weapons": [
-					"simple"
-				],
-				"tools": [
-					"Thieves' tools",
-					"tinker's tools",
-					"one type of artisan's tools of your choice"
-				],
-				"skills": [
-					{
-						"choose": {
-							"from": [
-								"arcana",
-								"deception",
-								"history",
-								"investigation",
-								"medicine",
-								"nature",
-								"religion",
-								"sleight of hand"
-							],
-							"count": 2
-						}
-					}
-				]
-			},
-			"startingEquipment": {
-				"additionalFromBackground": true,
-				"default": [
-					"(a) a {@item handaxe|phb} and a {@item light hammer|phb} or (b) any two {@filter simple weapons|items|source=phb|category=basic|type=simple weapon}",
-					"a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts}",
-					"(a) {@item scale mail|phb} or (b) {@item studded leather armor|phb}",
-					"{@item thieves' tools|phb} and a {@item dungeoneer's pack|phb}"
-				]
-			},
 			"classFeatures": [
 				[
 					{
@@ -581,6 +582,8 @@
 			"subclasses": [
 				{
 					"name": "Alchemist",
+					"shortName": "Alchemist",
+					"source": "UAArtificer",
 					"subclassFeatures": [
 						[
 							{
@@ -743,12 +746,12 @@
 								]
 							}
 						]
-					],
-					"source": "UAArtificer",
-					"shortName": "Alchemist"
+					]
 				},
 				{
 					"name": "Gunsmith",
+					"shortName": "Gunsmith",
+					"source": "UAArtificer",
 					"subclassFeatures": [
 						[
 							{
@@ -837,16 +840,14 @@
 								]
 							}
 						]
-					],
-					"source": "UAArtificer",
-					"shortName": "Gunsmith"
+					]
 				}
-			],
-			"page": 1
+			]
 		},
 		{
 			"name": "Artificer (Revisited)",
 			"source": "UAArtificerRevisited",
+			"page": 1,
 			"isReprinted": true,
 			"hd": {
 				"number": 1,
@@ -858,6 +859,49 @@
 			],
 			"spellcastingAbility": "int",
 			"casterProgression": "1/2",
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					"shields"
+				],
+				"weapons": [
+					"simple",
+					"hand crossbows",
+					"heavy crossbows"
+				],
+				"tools": [
+					"thieves' tools",
+					"tinker's tools",
+					"one type of artisan's tools of your choice"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"history",
+								"investigation",
+								"medicine",
+								"nature",
+								"perception",
+								"sleight of hand"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"any two {@filter simple weapons|items|source=phb|category=basic|type=simple weapon}",
+					"a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts}",
+					"(a) {@item studded leather armor|phb} or (b) {@item scale mail|phb}",
+					"{@item thieves' tools|phb} and a {@item dungeoneer's pack|phb}"
+				],
+				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
+			},
 			"multiclassing": {
 				"requirements": {
 					"int": 13
@@ -1134,137 +1178,6 @@
 							3,
 							2
 						]
-					]
-				}
-			],
-			"startingProficiencies": {
-				"armor": [
-					"light",
-					"medium",
-					"shields"
-				],
-				"weapons": [
-					"simple",
-					"hand crossbows",
-					"heavy crossbows"
-				],
-				"tools": [
-					"thieves' tools",
-					"tinker's tools",
-					"one type of artisan's tools of your choice"
-				],
-				"skills": [
-					{
-						"choose": {
-							"from": [
-								"arcana",
-								"history",
-								"investigation",
-								"medicine",
-								"nature",
-								"perception",
-								"sleight of hand"
-							],
-							"count": 2
-						}
-					}
-				]
-			},
-			"startingEquipment": {
-				"additionalFromBackground": true,
-				"default": [
-					"any two {@filter simple weapons|items|source=phb|category=basic|type=simple weapon}",
-					"a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts}",
-					"(a) {@item studded leather armor|phb} or (b) {@item scale mail|phb}",
-					"{@item thieves' tools|phb} and a {@item dungeoneer's pack|phb}"
-				],
-				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
-			},
-			"fluff": [
-				{
-					"page": 1,
-					"source": "UAArtificerRevisited",
-					"type": "section",
-					"entries": [
-						"Masters of unlocking magic in everyday objects, artificers are supreme inventors. They see magic as a complex system waiting to be decoded and controlled. Artificers use tools to channel arcane power, crafting temporary and permanent magical objects. To cast a spell, an artificer could use alchemist's supplies to create a potent elixir, calligrapher's supplies to inscribe a sigil of power on an ally's armor, or tinker's tools to craft a temporary charm. The magic of artificers is tied to their tools and their talents.",
-						{
-							"type": "entries",
-							"name": "Arcane Science",
-							"entries": [
-								"In the world of Eberron, arcane magic has been harnessed as a form of science and deployed throughout society. Artificers reflect this development. Their knowledge of magical devices, and their ability to infuse mundane items with magical energy, allows the grand magical projects of Eberron to continue running. During the Last War, artificers were marshaled on a massive scale. Many lives were saved because of the inventions of brave artificers, but also countless lives were lost because of the mass destruction that artificers' creations unleashed."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Seekers of New Lore",
-							"entries": [
-								"Nothing excites an artificer quite like uncovering a new metal or discovering a source of elemental energy. In artificer circles, new inventions and strange discoveries create the most excitement. Artificers who wish to make a mark must find something fresh, rather than uncover someone else's work.",
-								"This drive for novelty pushes artificers to become adventurers. Eberron's main travel routes and populated regions have long since been explored. Thus, artificers take to the edge of civilization in hopes of making the next great discovery in arcane research."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Creating an Artificer",
-							"entries": [
-								"When creating an artificer character, think about your character's background and drive for adventure. Does the character have a rival? What is the character's relationship with the artisan or artificer who taught the basics of the craft? Talk to your DM about the role played by artificers in the campaign, and what sort of organizations and NPCs you might have ties to.",
-								{
-									"type": "entries",
-									"name": "Quick Build",
-									"entries": [
-										"You can make an artificer quickly by following these suggestions. First, put your highest ability score in Intelligence, followed by Constitution or Dexterity. Second, choose the guild artisan background."
-									]
-								}
-							]
-						},
-						{
-							"type": "inset",
-							"name": "Artificers in Other Worlds",
-							"entries": [
-								"Eberron is the world most associated with artificers, yet the class can be found throughout the multiverse. In the Forgotten Realms, for example, the island of Lantan is home to many artificers, and in the world of Dragonlance, tinker gnomes are often members of this class. The strange technologies in the Barrier Peaks of the World of Greyhawk have inspired some folk to walk the path of the artificer, and in Mystara, various nations employ artificers to keep airships and other wondrous devices operational. In the City of Sigil, artificers share discoveries from throughout the cosmos, and one in particular\u2014the gnome inventor named Vi\u2014runs a multiverse-spanning business from there. In the worldcity Ravnica, the Izzet League trains numerous artificers, the destructiveness of whom is unparalleled in other worlds, except by the tinker gnomes of Krynn."
-							]
-						},
-						{
-							"type": "inset",
-							"name": "Optional Rule: Firearm Proficiency",
-							"entries": [
-								"The creation and operation of gunpowder weapons have been discovered in various corners of the D&D multiverse. If your Dungeon Master uses the rules on firearms in the Dungeon Master's Guide (p. 267) and your artificer has been exposed to the operation of such weapons, your artificer is proficient with them."
-							]
-						},
-						{
-							"type": "inset",
-							"name": "Optional Rule: Multiclassing",
-							"entries": [
-								"If your group uses the optional rule on multiclassing in the Player's Handbook (p. 163), here's what you need to know if you choose artificer as one of your classes.",
-								{
-									"type": "entries",
-									"name": "Ability Score Minimum",
-									"entries": [
-										"As a multiclass character, you must have at least an Intelligence score of 13 to take a level in this class."
-									]
-								},
-								{
-									"type": "entries",
-									"name": "Proficiencies Gained",
-									"entries": [
-										"If artificer isn't your initial class, here are the proficiencies you gain when you take your first level as an artificer: light armor, medium armor, shields, thieves' tools, tinker's tools."
-									]
-								},
-								{
-									"type": "entries",
-									"name": "Extra Attack",
-									"entries": [
-										"The Arcane Armament feature doesn't give you an additional attack if you also have the Extra Attack feature."
-									]
-								},
-								{
-									"type": "entries",
-									"name": "Spell Slots",
-									"entries": [
-										"Add half your levels (rounded up) in the artificer class to the appropriate levels from other classes to determine your available spell slots."
-									]
-								}
-							]
-						}
 					]
 				}
 			],
@@ -1577,6 +1490,9 @@
 			"subclasses": [
 				{
 					"name": "Alchemist",
+					"shortName": "Alchemist",
+					"source": "UAArtificerRevisited",
+					"page": 6,
 					"subclassFeatures": [
 						[
 							{
@@ -1687,13 +1603,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAArtificerRevisited",
-					"shortName": "Alchemist",
-					"page": 6
+					]
 				},
 				{
 					"name": "Archivist",
+					"shortName": "Archivist",
+					"source": "UAArtificerRevisited",
+					"page": 7,
 					"subclassFeatures": [
 						[
 							{
@@ -1891,13 +1807,13 @@
 								]
 							}
 						]
-					],
-					"shortName": "Archivist",
-					"page": 7,
-					"source": "UAArtificerRevisited"
+					]
 				},
 				{
 					"name": "Artillerist",
+					"shortName": "Artillerist",
+					"source": "UAArtificerRevisited",
+					"page": 9,
 					"subclassFeatures": [
 						[
 							{
@@ -2036,13 +1952,13 @@
 								]
 							}
 						]
-					],
-					"shortName": "Artillerist",
-					"page": 9,
-					"source": "UAArtificerRevisited"
+					]
 				},
 				{
 					"name": "Battle Smith",
+					"shortName": "Battle Smith",
+					"source": "UAArtificerRevisited",
+					"page": 11,
 					"subclassFeatures": [
 						[
 							{
@@ -2182,17 +2098,102 @@
 								]
 							}
 						]
-					],
-					"shortName": "Battle Smith",
-					"page": 11,
-					"source": "UAArtificerRevisited"
+					]
 				}
 			],
-			"page": 1
+			"fluff": [
+				{
+					"page": 1,
+					"source": "UAArtificerRevisited",
+					"type": "section",
+					"entries": [
+						"Masters of unlocking magic in everyday objects, artificers are supreme inventors. They see magic as a complex system waiting to be decoded and controlled. Artificers use tools to channel arcane power, crafting temporary and permanent magical objects. To cast a spell, an artificer could use alchemist's supplies to create a potent elixir, calligrapher's supplies to inscribe a sigil of power on an ally's armor, or tinker's tools to craft a temporary charm. The magic of artificers is tied to their tools and their talents.",
+						{
+							"type": "entries",
+							"name": "Arcane Science",
+							"entries": [
+								"In the world of Eberron, arcane magic has been harnessed as a form of science and deployed throughout society. Artificers reflect this development. Their knowledge of magical devices, and their ability to infuse mundane items with magical energy, allows the grand magical projects of Eberron to continue running. During the Last War, artificers were marshaled on a massive scale. Many lives were saved because of the inventions of brave artificers, but also countless lives were lost because of the mass destruction that artificers' creations unleashed."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Seekers of New Lore",
+							"entries": [
+								"Nothing excites an artificer quite like uncovering a new metal or discovering a source of elemental energy. In artificer circles, new inventions and strange discoveries create the most excitement. Artificers who wish to make a mark must find something fresh, rather than uncover someone else's work.",
+								"This drive for novelty pushes artificers to become adventurers. Eberron's main travel routes and populated regions have long since been explored. Thus, artificers take to the edge of civilization in hopes of making the next great discovery in arcane research."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating an Artificer",
+							"entries": [
+								"When creating an artificer character, think about your character's background and drive for adventure. Does the character have a rival? What is the character's relationship with the artisan or artificer who taught the basics of the craft? Talk to your DM about the role played by artificers in the campaign, and what sort of organizations and NPCs you might have ties to.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"You can make an artificer quickly by following these suggestions. First, put your highest ability score in Intelligence, followed by Constitution or Dexterity. Second, choose the guild artisan background."
+									]
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Artificers in Other Worlds",
+							"entries": [
+								"Eberron is the world most associated with artificers, yet the class can be found throughout the multiverse. In the Forgotten Realms, for example, the island of Lantan is home to many artificers, and in the world of Dragonlance, tinker gnomes are often members of this class. The strange technologies in the Barrier Peaks of the World of Greyhawk have inspired some folk to walk the path of the artificer, and in Mystara, various nations employ artificers to keep airships and other wondrous devices operational. In the City of Sigil, artificers share discoveries from throughout the cosmos, and one in particular\u2014the gnome inventor named Vi\u2014runs a multiverse-spanning business from there. In the worldcity Ravnica, the Izzet League trains numerous artificers, the destructiveness of whom is unparalleled in other worlds, except by the tinker gnomes of Krynn."
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Optional Rule: Firearm Proficiency",
+							"entries": [
+								"The creation and operation of gunpowder weapons have been discovered in various corners of the D&D multiverse. If your Dungeon Master uses the rules on firearms in the Dungeon Master's Guide (p. 267) and your artificer has been exposed to the operation of such weapons, your artificer is proficient with them."
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Optional Rule: Multiclassing",
+							"entries": [
+								"If your group uses the optional rule on multiclassing in the Player's Handbook (p. 163), here's what you need to know if you choose artificer as one of your classes.",
+								{
+									"type": "entries",
+									"name": "Ability Score Minimum",
+									"entries": [
+										"As a multiclass character, you must have at least an Intelligence score of 13 to take a level in this class."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Proficiencies Gained",
+									"entries": [
+										"If artificer isn't your initial class, here are the proficiencies you gain when you take your first level as an artificer: light armor, medium armor, shields, thieves' tools, tinker's tools."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Extra Attack",
+									"entries": [
+										"The Arcane Armament feature doesn't give you an additional attack if you also have the Extra Attack feature."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Spell Slots",
+									"entries": [
+										"Add half your levels (rounded up) in the artificer class to the appropriate levels from other classes to determine your available spell slots."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Artificer",
 			"source": "ERLW",
+			"page": 54,
 			"hd": {
 				"number": 1,
 				"faces": 8
@@ -2203,6 +2204,47 @@
 			],
 			"spellcastingAbility": "int",
 			"casterProgression": "1/2",
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					"shields"
+				],
+				"weapons": [
+					"simple"
+				],
+				"tools": [
+					"thieves' tools",
+					"tinker's tools",
+					"one type of artisan's tools of your choice"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"history",
+								"investigation",
+								"medicine",
+								"nature",
+								"perception",
+								"sleight of hand"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"any two {@filter simple weapons|items|source=phb|category=basic|type=simple weapon} of your choice",
+					"a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts}",
+					"(a) {@item studded leather armor|phb} or (b) {@item scale mail|phb}",
+					"{@item thieves' tools|phb} and a {@item dungeoneer's pack|phb}"
+				],
+				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
+			},
 			"multiclassing": {
 				"requirements": {
 					"int": 13
@@ -2482,47 +2524,6 @@
 					]
 				}
 			],
-			"startingProficiencies": {
-				"armor": [
-					"light",
-					"medium",
-					"shields"
-				],
-				"weapons": [
-					"simple"
-				],
-				"tools": [
-					"thieves' tools",
-					"tinker's tools",
-					"one type of artisan's tools of your choice"
-				],
-				"skills": [
-					{
-						"choose": {
-							"from": [
-								"arcana",
-								"history",
-								"investigation",
-								"medicine",
-								"nature",
-								"perception",
-								"sleight of hand"
-							],
-							"count": 2
-						}
-					}
-				]
-			},
-			"startingEquipment": {
-				"additionalFromBackground": true,
-				"default": [
-					"any two {@filter simple weapons|items|source=phb|category=basic|type=simple weapon} of your choice",
-					"a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts}",
-					"(a) {@item studded leather armor|phb} or (b) {@item scale mail|phb}",
-					"{@item thieves' tools|phb} and a {@item dungeoneer's pack|phb}"
-				],
-				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
-			},
 			"classFeatures": [
 				[
 					{
@@ -2881,6 +2882,8 @@
 			"subclasses": [
 				{
 					"name": "Alchemist",
+					"shortName": "Alchemist",
+					"source": "ERLW",
 					"subclassFeatures": [
 						[
 							{
@@ -3039,12 +3042,12 @@
 								]
 							}
 						]
-					],
-					"source": "ERLW",
-					"shortName": "Alchemist"
+					]
 				},
 				{
 					"name": "Artillerist",
+					"shortName": "Artillerist",
+					"source": "ERLW",
 					"subclassFeatures": [
 						[
 							{
@@ -3193,12 +3196,12 @@
 								]
 							}
 						]
-					],
-					"source": "ERLW",
-					"shortName": "Artillerist"
+					]
 				},
 				{
 					"name": "Battle Smith",
+					"shortName": "Battle Smith",
+					"source": "ERLW",
 					"subclassFeatures": [
 						[
 							{
@@ -3336,9 +3339,7 @@
 								]
 							}
 						]
-					],
-					"source": "ERLW",
-					"shortName": "Battle Smith"
+					]
 				}
 			],
 			"fluff": [
@@ -3414,8 +3415,7 @@
 					"source": "ERLW",
 					"page": 0
 				}
-			],
-			"page": 54
+			]
 		}
 	]
 }

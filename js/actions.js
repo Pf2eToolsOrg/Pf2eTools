@@ -62,9 +62,11 @@ class ActionsPage extends ListPage {
 			{
 				hash,
 				source,
-				time,
-				isExcluded,
-				uniqueId: it.uniqueId ? it.uniqueId : anI
+				time
+			},
+			{
+				uniqueId: it.uniqueId ? it.uniqueId : anI,
+				isExcluded
 			}
 		);
 
@@ -118,9 +120,9 @@ class ActionsPage extends ListPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 	}
 }
 

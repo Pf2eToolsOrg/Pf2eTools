@@ -17,7 +17,132 @@
 	},
 	"monster": [
 		{
+			"name": "Animated Tile Chimera",
+			"source": "RoT",
+			"page": 42,
+			"_copy": {
+				"name": "Chimera",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Rejuvenation",
+							"entries": [
+								"If destroyed, the tile creature regains all its hit points and becomes active again in 24 hours unless at least half its tiles are collected and kept separate from the rest of the creature's tiles."
+							]
+						}
+					},
+					"reaction": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Narrow Dodge",
+							"entries": [
+								"When targeted by a melee attack, the tile creature can take a reaction to turn its narrowest aspect toward the attacker. The attacker has disadvantage on the attack roll."
+							]
+						}
+					}
+				}
+			},
+			"resist": [
+				"piercing"
+			],
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"traitTags": [
+				"Rejuvenation"
+			]
+		},
+		{
+			"name": "Aquatic Troll",
+			"source": "RoT",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "PotA",
+					"page": 88
+				}
+			],
+			"_copy": {
+				"name": "Troll",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Water Breathing",
+							"entries": [
+								"The troll can breathe underwater."
+							]
+						}
+					}
+				}
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"resist": [
+				"cold"
+			],
+			"traitTags": [
+				"Keen Senses",
+				"Regeneration",
+				"Water Breathing"
+			]
+		},
+		{
+			"name": "Carnivorous Flower",
+			"source": "RoT",
+			"page": 67,
+			"_copy": {
+				"name": "Otyugh",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "otyugh",
+						"with": "plant"
+					}
+				}
+			},
+			"type": "plant",
+			"speed": {
+				"walk": 0
+			}
+		},
+		{
+			"name": "Diderius",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "RoT",
+			"page": 40,
+			"_copy": {
+				"name": "Mummy Lord",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mummy lord",
+						"with": "Diderius",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
 			"name": "Dragonfang",
+			"source": "RoT",
+			"page": 89,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -25,7 +150,6 @@
 					"human"
 				]
 			},
-			"source": "RoT",
 			"alignment": [
 				"N",
 				"E"
@@ -58,6 +182,7 @@
 				"deception": "+4",
 				"stealth": "+5"
 			},
+			"passive": 11,
 			"resist": [
 				{
 					"resist": [
@@ -70,7 +195,6 @@
 					"preNote": "one of the following:"
 				}
 			],
-			"passive": 11,
 			"languages": [
 				"Common",
 				"Draconic",
@@ -95,6 +219,12 @@
 					"entries": [
 						"The dragonfang can use a bonus action to gain a flying speed of 30 feet until the end of its turn."
 					]
+				},
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"The dragonfang has advantage on an attack roll against a creature if at least one of the dragonfang's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
+					]
 				}
 			],
 			"action": [
@@ -117,7 +247,9 @@
 					]
 				}
 			],
-			"page": 89,
+			"traitTags": [
+				"Pack Tactics"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
@@ -135,6 +267,8 @@
 		},
 		{
 			"name": "Dragonsoul",
+			"source": "RoT",
+			"page": 89,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -142,7 +276,6 @@
 					"human"
 				]
 			},
-			"source": "RoT",
 			"alignment": [
 				"N",
 				"E"
@@ -175,6 +308,7 @@
 				"deception": "+6",
 				"stealth": "+7"
 			},
+			"passive": 11,
 			"resist": [
 				{
 					"resist": [
@@ -187,7 +321,6 @@
 					"preNote": "one of the following:"
 				}
 			],
-			"passive": 11,
 			"languages": [
 				"Common",
 				"Draconic",
@@ -216,7 +349,7 @@
 				{
 					"name": "Pack Tactics",
 					"entries": [
-						"The dragonsoul has advantage on an attack roll against a creature if at least one of the dragonclaw's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
+						"The dragonsoul has advantage on an attack roll against a creature if at least one of the dragonsoul's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
 					]
 				}
 			],
@@ -240,7 +373,6 @@
 					]
 				}
 			],
-			"page": 89,
 			"traitTags": [
 				"Pack Tactics"
 			],
@@ -260,10 +392,210 @@
 			]
 		},
 		{
+			"name": "Galvan",
+			"isNpc": true,
+			"source": "RoT",
+			"page": 9,
+			"_copy": {
+				"name": "Dragonsoul",
+				"source": "RoT",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the dragonsoul",
+						"with": "Galvan",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": [
+							{
+								"name": "5etools Note",
+								"entries": [
+									"While Galvan is not presented in an encounter in {@adventure The Rise of Tiamat|RoT}, the {@creature dragonsoul|RoT} stat block has been provided here for ease of use, with optional alterations for the {@item Blue Dragon Mask|RoTOS}."
+								]
+							},
+							{
+								"name": "Special Equipment",
+								"entries": [
+									"Galvan has the {@item Blue Dragon Mask|RoTOS}."
+								]
+							},
+							{
+								"name": "Draconic Majesty",
+								"entries": [
+									"While wearing no armor and wearing the Blue Dragon Mask, Galvan adds his Charisma bonus to her AC (included)."
+								]
+							},
+							{
+								"name": "Lingering Shock",
+								"entries": [
+									"If Galvan deals lightning damage to a creature while wearing the Blue Dragon Mask, that creature can't take reactions until its next turn."
+								]
+							},
+							{
+								"name": "Legendary Resistance (1/Day)",
+								"entries": [
+									"If Galvan fails a saving throw while wearing the Blue Dragon Mask, he can choose to succeed instead."
+								]
+							}
+						]
+					}
+				}
+			},
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				},
+				{
+					"ac": 15,
+					"condition": "with the Black Dragon Mask",
+					"braces": true
+				}
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"immune": [
+				"lightning"
+			],
+			"traitTags": [
+				"Legendary Resistances",
+				"Pack Tactics"
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"name": "Half-Blue Dragon Gladiator",
+			"source": "RoT",
+			"page": 55,
+			"otherSources": [
+				{
+					"source": "DC"
+				}
+			],
+			"_copy": {
+				"name": "Gladiator",
+				"source": "MM",
+				"_trait": {
+					"name": "Large or Smaller Half-Blue Dragon",
+					"source": "MM"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "gladiator",
+						"with": "half-dragon"
+					}
+				}
+			},
+			"senseTags": [
+				"B",
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"X"
+			],
+			"damageTags": [
+				"B",
+				"L",
+				"P"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RW",
+				"THW"
+			]
+		},
+		{
+			"name": "Half-Green Dragon Assassin",
+			"source": "RoT",
+			"page": 56,
+			"_copy": {
+				"name": "Assassin",
+				"source": "MM",
+				"_trait": {
+					"name": "Large or Smaller Half-Green Dragon",
+					"source": "MM"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "assassin",
+						"with": "half-dragon"
+					}
+				}
+			},
+			"senseTags": [
+				"B",
+				"D"
+			],
+			"languageTags": [
+				"DR",
+				"TC",
+				"X"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RNG",
+				"RW"
+			]
+		},
+		{
+			"name": "Half-Red Dragon Gladiator",
+			"source": "RoT",
+			"page": 56,
+			"_copy": {
+				"name": "Gladiator",
+				"source": "MM",
+				"_trait": {
+					"name": "Large or Smaller Half-Red Dragon",
+					"source": "MM"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "gladiator",
+						"with": "half-dragon"
+					}
+				}
+			},
+			"senseTags": [
+				"B",
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"X"
+			],
+			"damageTags": [
+				"B",
+				"F",
+				"P"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RW",
+				"THW"
+			]
+		},
+		{
 			"name": "Ice Toad",
+			"source": "RoT",
+			"page": 90,
 			"size": "M",
 			"type": "monstrosity",
-			"source": "RoT",
 			"alignment": [
 				"N"
 			],
@@ -292,13 +624,13 @@
 			"skill": {
 				"perception": "+2"
 			},
-			"immune": [
-				"cold"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 12,
+			"immune": [
+				"cold"
+			],
 			"languages": [
 				"Ice Toad"
 			],
@@ -331,15 +663,14 @@
 					]
 				}
 			],
-			"page": 90,
 			"traitTags": [
 				"Amphibious"
 			],
-			"languageTags": [
-				"OTH"
-			],
 			"senseTags": [
 				"D"
+			],
+			"languageTags": [
+				"OTH"
 			],
 			"damageTags": [
 				"C"
@@ -349,11 +680,106 @@
 			]
 		},
 		{
+			"name": "Ice Troll",
+			"source": "RoT",
+			"page": 30,
+			"_copy": {
+				"name": "Troll",
+				"source": "MM"
+			},
+			"resist": [
+				"cold"
+			]
+		},
+		{
+			"name": "Iskander",
+			"isNpc": true,
+			"source": "RoT",
+			"page": 62,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "5etools Note",
+							"entries": [
+								"Iskander is presented in {@adventure The Rise of Tiamat|RoT} as a neutral evil male human wizard. The {@creature mage} statblock has been provided here for ease of use."
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
+			"name": "Maccath the Crimson",
+			"isNpc": true,
+			"source": "RoT",
+			"page": 33,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_trait": {
+					"name": "Tiefling",
+					"source": "PHB"
+				},
+				"_mod": {
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "5etools Note",
+							"entries": [
+								"Maccath the Crimson is presented in {@adventure The Rise of Tiamat|RoT} as a female tiefling sorcerer and member of the Arcane Brotherhood. The {@creature mage} statblock, modified with tiefling racial traits, has been provided here for ease of use."
+							]
+						}
+					}
+				}
+			},
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"I",
+				"X"
+			],
+			"spellcastingTags": [
+				"CW",
+				"I"
+			]
+		},
+		{
+			"name": "Marfulb",
+			"isNpc": true,
+			"source": "RoT",
+			"page": 35,
+			"_copy": {
+				"name": "Ice Toad",
+				"source": "RoT"
+			},
+			"int": 13
+		},
+		{
+			"name": "Mend-nets",
+			"isNpc": true,
+			"source": "RoT",
+			"page": 32,
+			"_copy": {
+				"name": "Tribal Warrior",
+				"source": "MM"
+			}
+		},
+		{
 			"name": "Naergoth Bladelord",
 			"isNpc": true,
+			"source": "RoT",
+			"page": 90,
 			"size": "M",
 			"type": "undead",
-			"source": "RoT",
 			"alignment": [
 				"N",
 				"E"
@@ -387,6 +813,10 @@
 				"perception": "+6",
 				"stealth": "+5"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 16,
 			"resist": [
 				"necrotic",
 				{
@@ -405,10 +835,6 @@
 				"exhaustion",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 16,
 			"languages": [
 				"Common",
 				"Draconic"
@@ -448,9 +874,11 @@
 					]
 				}
 			],
-			"page": 90,
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -459,23 +887,22 @@
 				"C",
 				"DR"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
 				"N",
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
 		},
 		{
 			"name": "Neronvain",
 			"isNpc": true,
+			"source": "RoT",
+			"page": 91,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -483,7 +910,6 @@
 					"elf"
 				]
 			},
-			"source": "RoT",
 			"alignment": [
 				"N",
 				"E"
@@ -512,6 +938,10 @@
 				"arcana": "+7",
 				"perception": "+5"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 15,
 			"immune": [
 				"poison"
 			],
@@ -520,10 +950,6 @@
 				"frightened",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 15,
 			"languages": [
 				"Common",
 				"Draconic",
@@ -571,9 +997,11 @@
 					]
 				}
 			],
-			"page": 91,
 			"traitTags": [
 				"Fey Ancestry"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -584,21 +1012,47 @@
 				"E",
 				"I"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
-				"P",
 				"I",
-				"O"
+				"O",
+				"P"
 			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
 			]
 		},
 		{
+			"name": "Paper Whirlwind",
+			"source": "RoT",
+			"page": 72,
+			"_copy": {
+				"name": "Swarm of Ravens",
+				"source": "MM"
+			},
+			"type": {
+				"type": "construct",
+				"swarmSize": "T"
+			},
+			"vulnerable": [
+				"fire"
+			]
+		},
+		{
+			"name": "Red Wizard",
+			"source": "RoT",
+			"page": 76,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM"
+			}
+		},
+		{
 			"name": "Severin",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "RoT",
+			"page": 92,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -606,7 +1060,6 @@
 					"human"
 				]
 			},
-			"source": "RoT",
 			"alignment": [
 				"N",
 				"E"
@@ -635,6 +1088,10 @@
 				"arcana": "+7",
 				"religion": "+7"
 			},
+			"senses": [
+				"While wearing the Mask of the Dragon Queen: darkvision 60 ft."
+			],
+			"passive": 11,
 			"resist": [
 				{
 					"resist": [
@@ -672,10 +1129,6 @@
 					"preNote": "While wearing the mask of the Dragon Queen:"
 				}
 			],
-			"senses": [
-				"While wearing the Mask of the Dragon Queen: darkvision 60 ft."
-			],
-			"passive": 11,
 			"languages": [
 				"Common",
 				"Draconic",
@@ -753,30 +1206,80 @@
 					]
 				}
 			],
-			"page": 92,
-			"isNamedCreature": true,
-			"isNpc": true,
 			"traitTags": [
 				"Legendary Resistances"
+			],
+			"senseTags": [
+				"D"
 			],
 			"languageTags": [
 				"C",
 				"DR",
 				"I"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
 				"F"
 			]
 		},
 		{
+			"name": "Sled Dog",
+			"source": "RoT",
+			"page": 27,
+			"_copy": {
+				"name": "Wolf",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "wolf",
+						"with": "dog"
+					}
+				}
+			}
+		},
+		{
+			"name": "Snake Horror",
+			"source": "RoT",
+			"page": 46,
+			"_copy": {
+				"name": "Helmed Horror",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "helmed horror",
+						"with": "snake horror"
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Longsword",
+						"items": {
+							"name": "Longsword",
+							"entries": [
+								"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) slashing damage, or 9 ({@damage 1d10 + 4}) slashing damage if used with two hands, and the target must make a DC 12 Constitution saving throw, taking 9 ({@damage 2d8}) poison damage on a failed save, or half as much damage on a successful one."
+							]
+						}
+					}
+				}
+			},
+			"damageTags": [
+				"I",
+				"S"
+			]
+		},
+		{
 			"name": "Tiamat",
 			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "RoT",
+			"page": 92,
+			"otherSources": [
+				{
+					"source": "BGDIA"
+				}
+			],
 			"size": "G",
 			"type": "fiend",
-			"source": "RoT",
 			"alignment": [
 				"C",
 				"E"
@@ -813,6 +1316,11 @@
 				"perception": "+26",
 				"religion": "+17"
 			},
+			"senses": [
+				"darkvision 240 ft.",
+				"truesight 120 ft."
+			],
+			"passive": 36,
 			"immune": [
 				"acid",
 				"cold",
@@ -836,11 +1344,6 @@
 				"poisoned",
 				"stunned"
 			],
-			"senses": [
-				"darkvision 240 ft.",
-				"truesight 120 ft."
-			],
-			"passive": 36,
 			"languages": [
 				"Common",
 				"Draconic",
@@ -969,524 +1472,54 @@
 					]
 				}
 			],
-			"page": 92,
-			"isNamedCreature": true,
 			"traitTags": [
 				"Legendary Resistances",
 				"Magic Weapons",
 				"Regeneration"
 			],
+			"senseTags": [
+				"SD",
+				"U"
+			],
 			"actionTags": [
-				"Multiattack",
-				"Frightful Presence"
+				"Frightful Presence",
+				"Multiattack"
 			],
 			"languageTags": [
 				"C",
 				"DR",
 				"I"
 			],
-			"senseTags": [
-				"SD",
-				"U"
-			],
-			"spellcastingTags": [
-				"I"
-			],
 			"damageTags": [
-				"S",
-				"P",
 				"A",
-				"L",
-				"I",
+				"C",
 				"F",
-				"C"
-			],
-			"miscTags": [
-				"MW",
-				"RCH",
-				"AOE"
-			],
-			"otherSources": [
-				{
-					"source": "BGDIA"
-				}
-			]
-		},
-		{
-			"name": "Ice Troll",
-			"source": "RoT",
-			"_copy": {
-				"name": "Troll",
-				"source": "MM"
-			},
-			"resist": [
-				"cold"
-			],
-			"page": 30
-		},
-		{
-			"name": "Aquatic Troll",
-			"source": "RoT",
-			"_copy": {
-				"name": "Troll",
-				"source": "MM",
-				"_mod": {
-					"trait": {
-						"mode": "appendArr",
-						"items": {
-							"name": "Water Breathing",
-							"entries": [
-								"The troll can breathe underwater."
-							]
-						}
-					}
-				}
-			},
-			"resist": [
-				"cold"
-			],
-			"speed": {
-				"walk": 30,
-				"swim": 30
-			},
-			"traitTags": [
-				"Keen Senses",
-				"Regeneration",
-				"Water Breathing"
-			],
-			"page": 36,
-			"otherSources": [
-				{
-					"source": "PotA",
-					"page": 88
-				}
-			]
-		},
-		{
-			"name": "Animated Tile Chimera",
-			"source": "RoT",
-			"_copy": {
-				"name": "Chimera",
-				"source": "MM",
-				"_mod": {
-					"trait": {
-						"mode": "prependArr",
-						"items": {
-							"name": "Rejuvenation",
-							"entries": [
-								"If destroyed, the tile creature regains all its hit points and becomes active again in 24 hours unless at least half its tiles are collected and kept separate from the rest of the creature's tiles."
-							]
-						}
-					},
-					"reaction": {
-						"mode": "appendArr",
-						"items": {
-							"name": "Narrow Dodge",
-							"entries": [
-								"When targeted by a melee attack, the tile creature can take a reaction to turn its narrowest aspect toward the attacker. The attacker has disadvantage on the attack roll."
-							]
-						}
-					}
-				}
-			},
-			"resist": [
-				"piercing"
-			],
-			"immune": [
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"charmed",
-				"frightened",
-				"paralyzed",
-				"petrified",
-				"poisoned"
-			],
-			"traitTags": [
-				"Rejuvenation"
-			],
-			"page": 42
-		},
-		{
-			"name": "Carnivorous Flower",
-			"source": "RoT",
-			"_copy": {
-				"name": "Otyugh",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "otyugh",
-						"with": "plant"
-					}
-				}
-			},
-			"type": "plant",
-			"speed": {
-				"walk": 0
-			},
-			"page": 67
-		},
-		{
-			"name": "Half-Blue Dragon Gladiator",
-			"source": "RoT",
-			"_copy": {
-				"name": "Gladiator",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "gladiator",
-						"with": "half-dragon"
-					}
-				},
-				"_trait": {
-					"name": "Large or Smaller Half-Blue Dragon",
-					"source": "MM"
-				}
-			},
-			"miscTags": [
-				"RW",
-				"MW",
-				"THW",
-				"AOE"
-			],
-			"damageTags": [
+				"I",
+				"L",
 				"P",
-				"B",
-				"L"
-			],
-			"languageTags": [
-				"C",
-				"X",
-				"DR"
-			],
-			"senseTags": [
-				"B",
-				"D"
-			],
-			"page": 55,
-			"otherSources": [
-				{
-					"source": "DC"
-				}
-			]
-		},
-		{
-			"name": "Half-Red Dragon Gladiator",
-			"source": "RoT",
-			"_copy": {
-				"name": "Gladiator",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "gladiator",
-						"with": "half-dragon"
-					}
-				},
-				"_trait": {
-					"name": "Large or Smaller Half-Red Dragon",
-					"source": "MM"
-				}
-			},
-			"miscTags": [
-				"RW",
-				"MW",
-				"THW",
-				"AOE"
-			],
-			"damageTags": [
-				"P",
-				"B",
-				"F"
-			],
-			"languageTags": [
-				"C",
-				"X",
-				"DR"
-			],
-			"senseTags": [
-				"B",
-				"D"
-			],
-			"page": 56
-		},
-		{
-			"name": "Half-Green Dragon Assassin",
-			"source": "RoT",
-			"_copy": {
-				"name": "Assassin",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "assassin",
-						"with": "half-dragon"
-					}
-				},
-				"_trait": {
-					"name": "Large or Smaller Half-Green Dragon",
-					"source": "MM"
-				}
-			},
-			"miscTags": [
-				"MW",
-				"RW",
-				"RNG",
-				"AOE"
-			],
-			"languageTags": [
-				"X",
-				"TC",
-				"DR"
-			],
-			"senseTags": [
-				"B",
-				"D"
-			],
-			"page": 56
-		},
-		{
-			"name": "Galvan",
-			"isNpc": true,
-			"source": "RoT",
-			"_copy": {
-				"name": "Dragonsoul",
-				"source": "RoT",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the dragonsoul",
-						"with": "Galvan",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "prependArr",
-						"items": [
-							{
-								"name": "5etools Note",
-								"entries": [
-									"While Galvan is not presented in an encounter in {@adventure The Rise of Tiamat|RoT}, the {@creature dragonsoul|RoT} stat block has been provided here for ease of use, with optional alterations for the {@item Blue Dragon Mask|RoTOS}."
-								]
-							},
-							{
-								"name": "Special Equipment",
-								"entries": [
-									"Galvan has the {@item Blue Dragon Mask|RoTOS}."
-								]
-							},
-							{
-								"name": "Draconic Majesty",
-								"entries": [
-									"While wearing no armor and wearing the Blue Dragon Mask, Galvan adds his Charisma bonus to her AC (included)."
-								]
-							},
-							{
-								"name": "Lingering Shock",
-								"entries": [
-									"If Galvan deals lightning damage to a creature while wearing the Blue Dragon Mask, that creature can't take reactions until its next turn."
-								]
-							},
-							{
-								"name": "Legendary Resistance (1/Day)",
-								"entries": [
-									"If Galvan fails a saving throw while wearing the Blue Dragon Mask, he can choose to succeed instead."
-								]
-							}
-						]
-					}
-				}
-			},
-			"ac": [
-				{
-					"ac": 16,
-					"from": [
-						"{@item studded leather armor|phb}"
-					]
-				},
-				{
-					"ac": 15,
-					"condition": "with the Black Dragon Mask",
-					"braces": true
-				}
-			],
-			"immune": [
-				"lightning"
-			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"senseTags": [
-				"D"
-			],
-			"traitTags": [
-				"Legendary Resistances",
-				"Pack Tactics"
-			],
-			"page": 9
-		},
-		{
-			"name": "Iskander",
-			"isNpc": true,
-			"source": "RoT",
-			"_copy": {
-				"name": "Mage",
-				"source": "MM",
-				"_mod": {
-					"trait": {
-						"mode": "prependArr",
-						"items": {
-							"name": "5etools Note",
-							"entries": [
-								"Iskander is presented in {@adventure The Rise of Tiamat|RoT} as a neutral evil male human wizard. The {@creature mage} statblock has been provided here for ease of use."
-							]
-						}
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"page": 62
-		},
-		{
-			"name": "Maccath the Crimson",
-			"isNpc": true,
-			"source": "RoT",
-			"_copy": {
-				"name": "Mage",
-				"source": "MM",
-				"_mod": {
-					"trait": {
-						"mode": "prependArr",
-						"items": {
-							"name": "5etools Note",
-							"entries": [
-								"Maccath the Crimson is presented in {@adventure The Rise of Tiamat|RoT} as a female tiefling sorcerer and member of the Arcane Brotherhood. The {@creature mage} statblock, modified with tiefling racial traits, has been provided here for ease of use."
-							]
-						}
-					}
-				},
-				"_trait": {
-					"name": "Tiefling",
-					"source": "PHB"
-				}
-			},
-			"languageTags": [
-				"X",
-				"I"
-			],
-			"senseTags": [
-				"D"
+				"S"
 			],
 			"spellcastingTags": [
-				"CW",
 				"I"
 			],
-			"page": 33
-		},
-		{
-			"name": "Marfulb",
-			"isNpc": true,
-			"source": "RoT",
-			"_copy": {
-				"name": "Ice Toad",
-				"source": "RoT"
-			},
-			"int": 13,
-			"page": 35
-		},
-		{
-			"name": "Mend-nets",
-			"isNpc": true,
-			"source": "RoT",
-			"_copy": {
-				"name": "Tribal Warrior",
-				"source": "MM"
-			},
-			"page": 32
-		},
-		{
-			"name": "Paper Whirlwind",
-			"source": "RoT",
-			"_copy": {
-				"name": "Swarm of Ravens",
-				"source": "MM"
-			},
-			"type": {
-				"type": "construct",
-				"swarmSize": "T"
-			},
-			"vulnerable": [
-				"fire"
-			],
-			"page": 72
-		},
-		{
-			"name": "Red Wizard",
-			"source": "RoT",
-			"_copy": {
-				"name": "Mage",
-				"source": "MM"
-			},
-			"page": 76
-		},
-		{
-			"name": "Sled Dog",
-			"source": "RoT",
-			"_copy": {
-				"name": "Wolf",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "wolf",
-						"with": "dog"
-					}
-				}
-			},
-			"page": 27
-		},
-		{
-			"name": "Snake Horror",
-			"source": "RoT",
-			"_copy": {
-				"name": "Helmed Horror",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "helmed horror",
-						"with": "snake horror"
-					},
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Longsword",
-						"items": {
-							"name": "Longsword",
-							"entries": [
-								"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) slashing damage, or 9 ({@damage 1d10 + 4}) slashing damage if used with two hands, and the target must make a DC 12 Constitution saving throw, taking 9 ({@damage 2d8}) poison damage on a failed save, or half as much damage on a successful one."
-							]
-						}
-					}
-				}
-			},
-			"damageTags": [
-				"S",
-				"I"
-			],
-			"page": 46
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			]
 		},
 		{
 			"name": "Varram",
 			"isNpc": true,
 			"source": "RoT",
+			"page": 9,
 			"_copy": {
 				"name": "Dragonsoul",
 				"source": "RoT",
+				"_trait": {
+					"name": "Mountain Dwarf",
+					"source": "PHB"
+				},
 				"_mod": {
 					"*": {
 						"mode": "replaceTxt",
@@ -1503,41 +1536,17 @@
 							]
 						}
 					}
-				},
-				"_trait": {
-					"name": "Mountain Dwarf",
-					"source": "PHB"
 				}
 			},
-			"languageTags": [
-				"C",
-				"DR",
-				"I",
-				"D"
-			],
 			"senseTags": [
 				"D"
 			],
-			"page": 9
-		},
-		{
-			"name": "Diderius",
-			"isNpc": true,
-			"isNamedCreature": true,
-			"source": "RoT",
-			"_copy": {
-				"name": "Mummy Lord",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the mummy lord",
-						"with": "Diderius",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 40
+			"languageTags": [
+				"C",
+				"D",
+				"DR",
+				"I"
+			]
 		}
 	]
 }

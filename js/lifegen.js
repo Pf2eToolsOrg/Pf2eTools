@@ -336,7 +336,7 @@ const LIFE_EVENTS = [
 	{min: 1, max: 10, result: "You suffered a tragedy. Roll on the Tragedies table.", nextRoll: () => _lifeEvtResult("Tragedy", rollEvtTragedy())},
 	{min: 11, max: 20, result: "You gained a bit of good fortune. Roll on the Boons table.", nextRoll: () => _lifeEvtResult("Boon", rollEvtBoon())},
 	{min: 21, max: 30, result: "You fell in love or got married. If you get this result more than once, you can choose to have a child instead. Work with your DM to determine the identity of your love interest.", nextRoll: () => _lifeEvtPerson(marriageIndex++ === 0 ? "Spouse" : "Spouse/Child", getPersonDetails())},
-	{min: 31, max: 40, result: () => `You made an enemy of an adventurer. Roll a {@dice d6} ${fmtChoice(RNG(6))}. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.`, display: "You made an enemy of an adventurer. Roll a {@dice d6}. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.", nextRoll: () => _lifeEvtPerson("Enemy", getPersonDetails())},
+	{min: 31, max: 40, result: () => `You made an enemy of an adventurer. Roll a {@dice d6} ${fmtChoice(RNG(6))}. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.`, display: "You made an enemy of an adventurer. Roll a {@dice d6}. An odd number indicates you are to blame for the rift, and an even number indicates you are blameless. Use the supplemental tables and work with your DM to determine this hostile character's identity and the danger this enemy poses to you.", nextRoll: () => _lifeEvtPerson("Enemy", getPersonDetails({isAdventurer: true}))},
 	{min: 41, max: 50, result: "You made a friend of an adventurer. Use the supplemental tables and work with your DM to add more detail to this friendly character and establish how your friendship began.", nextRoll: () => _lifeEvtPerson("Friend", getPersonDetails({isAdventurer: true}))},
 	{min: 51, max: 70, result: () => `You spent time working in a job related to your background. Start the game with an extra {@dice 2d6} ${fmtChoice(RNG(6) + RNG(6))} gp.`, display: "You spent time working in a job related to your background. Start the game with an extra {@dice 2d6} gp."},
 	{min: 71, max: 75, result: "You met someone important. Use the supplemental tables to determine this character's identity and how this individual feels about you. Work out additional details with your DM as needed to fit this character into your backstory.", nextRoll: () => _lifeEvtPerson("Meeting", getPersonDetails())},
@@ -454,7 +454,7 @@ const LIFE_EVENTS_WEIRD_STUFF = [
 	{min: 3, result: () => `You were enslaved by a hag, a satyr, or some other being and lived in that creature's thrall for {@dice 1d6} ${fmtChoice(RNG(6))} years.`, display: "You were enslaved by a hag, a satyr, or some other being and lived in that creature’s thrall for {@dice 1d6} years."},
 	{min: 4, result: () => `A dragon held you as a prisoner for {@dice 1d4} ${fmtChoice(RNG(4))} months until adventurers killed it.`, display: "A dragon held you as a prisoner for {@dice 1d4} months until adventurers killed it."},
 	{min: 5, result: "You were taken captive by a race of evil humanoids such as drow, kuo-toa, or quaggoths. You lived as a slave in the Underdark until you escaped."},
-	{min: 6, result: "You served a powerful adventurer as a hireling. You have only recently left that service. Use the supplemental tables and work with your DM to determine the basic details about your former employer."},
+	{min: 6, result: "You served a powerful adventurer as a hireling. You have only recently left that service. Use the supplemental tables and work with your DM to determine the basic details about your former employer.", nextRoll: () => _lifeEvtPerson("Employer", getPersonDetails({isAdventurer: true}))},
 	{min: 7, result: () => `You went insane for {@dice 1d6} ${fmtChoice(RNG(6))} years and recently regained your sanity. A tic or some other bit of odd behavior might linger.`, display: "You went insane for {@dice 1d6} years and recently regained your sanity. A tic or some other bit of odd behavior might linger."},
 	{min: 8, result: "A lover of yours was secretly a silver dragon."},
 	{min: 9, result: "You were captured by a cult and nearly sacrificed on an altar to the foul being the cultists served. You escaped, but you fear they will find you."},
@@ -632,7 +632,8 @@ function concatSentences (...lst) {
 }
 
 function joinParaList (lst) {
-	return lst.join(`<br>`);
+	if (lst.join) return lst.join(`<br>`);
+	return lst;
 }
 
 const _VOWELS = ["a", "e", "i", "o", "u"];
@@ -842,14 +843,21 @@ function sectLifeEvents () {
 		$events.append(`${evt.result}<br>`);
 		if (evt.nextRoll) {
 			if (evt.nextRoll.title) {
-				const $wrp = $(`<div class="life__output-wrp-border p-3 my-2"/>`);
-				$wrp.append(`<h5 class="mt-0">${evt.nextRoll.title}</h5>`);
-				$wrp.append(joinParaList(evt.nextRoll.result));
-				$events.append($wrp);
+				$(`<div class="life__output-wrp-border p-3 my-2">
+					<h5 class="mt-0">${evt.nextRoll.title}</h5>
+					${joinParaList(evt.nextRoll.result)}
+				</div>`).appendTo($events);
 			} else {
-				$events.append(`${evt.nextRoll.result}<br>`);
+				$events.append(`${joinParaList(evt.nextRoll.result)}<br>`);
 				if (evt.nextRoll.nextRoll) {
-					$events.append(`${evt.nextRoll.nextRoll.result}<br>`);
+					if (evt.nextRoll.nextRoll.title) {
+						$(`<div class="life__output-wrp-border p-3 my-2">
+							<h5 class="mt-0">${evt.nextRoll.nextRoll.title}</h5>
+							${joinParaList(evt.nextRoll.nextRoll.result)}
+						</div>`).appendTo($events);
+					} else {
+						$events.append(`${joinParaList(evt.nextRoll.nextRoll.result)}<br>`);
+					}
 				}
 			}
 		}

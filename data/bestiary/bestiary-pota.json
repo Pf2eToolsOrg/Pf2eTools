@@ -21,6 +21,8 @@
 		{
 			"name": "Aerisi Kalinoth",
 			"isNpc": true,
+			"source": "PotA",
+			"page": 192,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -28,7 +30,6 @@
 					"elf"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -59,52 +60,19 @@
 				"history": "+6",
 				"perception": "+3"
 			},
-			"resist": [
-				"lightning"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 13,
+			"resist": [
+				"lightning"
+			],
 			"languages": [
 				"Auran",
 				"Common",
 				"Elvish"
 			],
 			"cr": "7",
-			"trait": [
-				{
-					"name": "Fey Ancestry",
-					"entries": [
-						"Aerisi has advantage on saving throws against being {@condition charmed}, and magic can't put her to sleep."
-					]
-				},
-				{
-					"name": "Howling Defeat",
-					"entries": [
-						"When Aerisi drops to 0 hit points, her body disappears in a howling whirlwind that disperses quickly and harmlessly. Anything she is wearing or carrying is left behind."
-					]
-				},
-				{
-					"name": "Legendary Resistance (2/Day)",
-					"entries": [
-						"If Aerisi fails a saving throw, she can choose to succeed instead."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Windvane",
-					"entries": [
-						"{@atk mw,rw} {@hit 9} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}9 ({@damage 1d6 + 6}) piercing damage, or 10 ({@damage 1d8 + 6}) piercing damage if used with two hands to make a melee attack, plus 3 ({@damage 1d6}) lightning damage."
-					]
-				}
-			],
-			"legendaryGroup": {
-				"name": "Aerisi Kalinoth",
-				"source": "PotA"
-			},
-			"page": 192,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -171,33 +139,80 @@
 					"ability": "int"
 				}
 			],
+			"trait": [
+				{
+					"name": "Fey Ancestry",
+					"entries": [
+						"Aerisi has advantage on saving throws against being {@condition charmed}, and magic can't put her to sleep."
+					]
+				},
+				{
+					"name": "Howling Defeat",
+					"entries": [
+						"When Aerisi drops to 0 hit points, her body disappears in a howling whirlwind that disperses quickly and harmlessly. Anything she is wearing or carrying is left behind."
+					]
+				},
+				{
+					"name": "Legendary Resistance (2/Day)",
+					"entries": [
+						"If Aerisi fails a saving throw, she can choose to succeed instead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Windvane",
+					"entries": [
+						"{@atk mw,rw} {@hit 9} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}9 ({@damage 1d6 + 6}) piercing damage, or 10 ({@damage 1d8 + 6}) piercing damage if used with two hands to make a melee attack, plus 3 ({@damage 1d6}) lightning damage."
+					]
+				}
+			],
+			"legendaryGroup": {
+				"name": "Aerisi Kalinoth",
+				"source": "PotA"
+			},
 			"traitTags": [
 				"Fey Ancestry",
 				"Legendary Resistances"
+			],
+			"senseTags": [
+				"D"
 			],
 			"languageTags": [
 				"AU",
 				"C",
 				"E"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"L",
+				"P"
 			],
 			"spellcastingTags": [
 				"CW"
 			],
-			"damageTags": [
-				"P",
-				"L"
-			],
 			"miscTags": [
-				"RW",
-				"MW"
+				"MW",
+				"RW"
 			]
+		},
+		{
+			"name": "Aquatic Ghoul",
+			"source": "PotA",
+			"page": 87,
+			"_copy": {
+				"name": "Ghoul",
+				"source": "MM"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			}
 		},
 		{
 			"name": "Bastian Thermandar",
 			"isNpc": true,
+			"source": "PotA",
+			"page": 201,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -205,7 +220,6 @@
 					"fire genasi"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -235,27 +249,18 @@
 				"arcana": "+3",
 				"deception": "+7"
 			},
-			"resist": [
-				"fire"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 9,
+			"resist": [
+				"fire"
+			],
 			"languages": [
 				"Common",
 				"Ignan"
 			],
 			"cr": "8",
-			"action": [
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
-					]
-				}
-			],
-			"page": 201,
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
@@ -326,28 +331,38 @@
 					"ability": "cha"
 				}
 			],
-			"languageTags": [
-				"C",
-				"IG"
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+					]
+				}
 			],
 			"senseTags": [
 				"D"
 			],
-			"spellcastingTags": [
-				"I",
-				"CS"
+			"languageTags": [
+				"C",
+				"IG"
 			],
 			"damageTags": [
 				"P"
 			],
+			"spellcastingTags": [
+				"CS",
+				"I"
+			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
 			"name": "Black Earth Guard",
+			"source": "PotA",
+			"page": 195,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -355,7 +370,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -412,7 +426,6 @@
 					]
 				}
 			],
-			"page": 195,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -428,6 +441,8 @@
 		},
 		{
 			"name": "Black Earth Priest",
+			"source": "PotA",
+			"page": 195,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -435,7 +450,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -472,29 +486,6 @@
 				"Terran"
 			],
 			"cr": "3",
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The priest makes two melee attacks."
-					]
-				},
-				{
-					"name": "Glaive",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}7 ({@damage 1d10 + 2}) slashing damage."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"name": "Unyielding",
-					"entries": [
-						"When the priest is subjected to an effect that would move it, knock it {@condition prone}, or both, it can use its reaction to be neither moved nor knocked {@condition prone}."
-					]
-				}
-			],
-			"page": 195,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -536,6 +527,28 @@
 					"ability": "cha"
 				}
 			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The priest makes two melee attacks."
+					]
+				},
+				{
+					"name": "Glaive",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}7 ({@damage 1d10 + 2}) slashing damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Unyielding",
+					"entries": [
+						"When the priest is subjected to an effect that would move it, knock it {@condition prone}, or both, it can use its reaction to be neither moved nor knocked {@condition prone}."
+					]
+				}
+			],
 			"actionTags": [
 				"Multiattack"
 			],
@@ -543,11 +556,11 @@
 				"C",
 				"T"
 			],
-			"spellcastingTags": [
-				"CS"
-			],
 			"damageTags": [
 				"S"
+			],
+			"spellcastingTags": [
+				"CS"
 			],
 			"miscTags": [
 				"MW",
@@ -555,7 +568,46 @@
 			]
 		},
 		{
+			"name": "Braelen Hatherhand",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 156,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"hp": {
+				"average": 2,
+				"formula": "1d8"
+			},
+			"action": null,
+			"miscTags": []
+		},
+		{
+			"name": "Bronzefume",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 92,
+			"_copy": {
+				"name": "Dragon Turtle",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 220,
+				"formula": "22d20 + 110"
+			},
+			"cr": "13"
+		},
+		{
 			"name": "Burrowshark",
+			"source": "PotA",
+			"page": 196,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -563,7 +615,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -630,7 +681,6 @@
 					]
 				}
 			],
-			"page": 196,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -641,13 +691,39 @@
 				"P"
 			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
+			"name": "Cavil Zaltobar",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 182,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mage",
+						"with": "Cavil",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
 			"name": "Crushing Wave Priest",
+			"source": "PotA",
+			"page": 205,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -655,7 +731,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -692,15 +767,6 @@
 				"Common"
 			],
 			"cr": "2",
-			"action": [
-				{
-					"name": "Quarterstaff",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) bludgeoning damage."
-					]
-				}
-			],
-			"page": 205,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -743,15 +809,23 @@
 					"ability": "cha"
 				}
 			],
+			"action": [
+				{
+					"name": "Quarterstaff",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) bludgeoning damage."
+					]
+				}
+			],
 			"languageTags": [
 				"AQ",
 				"C"
 			],
-			"spellcastingTags": [
-				"CS"
-			],
 			"damageTags": [
 				"B"
+			],
+			"spellcastingTags": [
+				"CS"
 			],
 			"miscTags": [
 				"MW"
@@ -759,6 +833,8 @@
 		},
 		{
 			"name": "Crushing Wave Reaver",
+			"source": "PotA",
+			"page": 205,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -766,7 +842,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -815,13 +890,12 @@
 					]
 				}
 			],
-			"page": 205,
 			"languageTags": [
 				"C"
 			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW",
@@ -830,7 +904,38 @@
 			]
 		},
 		{
+			"name": "Darathra Shendrel",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 37,
+			"_copy": {
+				"name": "Knight",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the knight",
+						"with": "Darathra",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
 			"name": "Dark Tide Knight",
+			"source": "PotA",
+			"page": 205,
+			"otherSources": [
+				{
+					"source": "SLW"
+				}
+			],
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -838,7 +943,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"L",
 				"E"
@@ -910,7 +1014,6 @@
 					]
 				}
 			],
-			"page": 205,
 			"traitTags": [
 				"Sneak Attack"
 			],
@@ -926,16 +1029,39 @@
 			"miscTags": [
 				"MW",
 				"RCH"
-			],
-			"otherSources": [
-				{
-					"source": "SLW"
-				}
 			]
+		},
+		{
+			"name": "Deseyna Majarra",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 126,
+			"_copy": {
+				"name": "Noble",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the noble",
+						"with": "Deseyna",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"action": null,
+			"miscTags": []
 		},
 		{
 			"name": "Drannin Splithelm",
 			"isNpc": true,
+			"source": "PotA",
+			"page": 210,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -943,7 +1069,6 @@
 					"shield dwarf"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -973,14 +1098,14 @@
 				"athletics": "+7",
 				"intimidation": "+4"
 			},
-			"resist": [
-				"cold",
-				"poison"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 9,
+			"resist": [
+				"cold",
+				"poison"
+			],
 			"languages": [
 				"Common",
 				"Dwarvish"
@@ -1038,18 +1163,17 @@
 					]
 				}
 			],
-			"page": 210,
 			"traitTags": [
 				"Brute"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"C",
-				"D"
-			],
-			"senseTags": [
 				"D"
 			],
 			"damageTags": [
@@ -1062,6 +1186,8 @@
 		{
 			"name": "Elizar Dryflagon",
 			"isNpc": true,
+			"source": "PotA",
+			"page": 202,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1069,7 +1195,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -1105,23 +1230,6 @@
 				"Druidic"
 			],
 			"cr": "5",
-			"trait": [
-				{
-					"name": "Summon Mephits (Recharges after a Long Rest)",
-					"entries": [
-						"By puffing on his pipe, Elizar can use an action to cast {@spell conjure minor elementals}. If he does so, he summons four smoke mephits."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Dagger +1",
-					"entries": [
-						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
-					]
-				}
-			],
-			"page": 202,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -1172,24 +1280,74 @@
 					"ability": "wis"
 				}
 			],
+			"trait": [
+				{
+					"name": "Summon Mephits (Recharges after a Long Rest)",
+					"entries": [
+						"By puffing on his pipe, Elizar can use an action to cast {@spell conjure minor elementals}. If he does so, he summons four smoke mephits."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger +1",
+					"entries": [
+						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
+					]
+				}
+			],
 			"languageTags": [
 				"C",
 				"DU"
 			],
-			"spellcastingTags": [
-				"CD"
-			],
 			"damageTags": [
 				"P"
 			],
+			"spellcastingTags": [
+				"CD"
+			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
+			"name": "Emberhorn Minotaur",
+			"source": "PotA",
+			"page": 120,
+			"_copy": {
+				"name": "Minotaur",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Burning Breath {@recharge 5}",
+							"entries": [
+								"The minotaur exhales a cloud of burning embers in a 15-foot cone. Each creature in that area must succeed on a DC 14 Dexterity saving throw, taking 21 ({@damage 6d6}) fire damage on a failed save, or half as much damage on a successful one."
+							]
+						}
+					}
+				}
+			},
+			"immune": [
+				"fire"
+			],
+			"damageTags": [
+				"F",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			]
+		},
+		{
 			"name": "Eternal Flame Guardian",
+			"source": "PotA",
+			"page": 200,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1197,7 +1355,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"C",
 				"E"
@@ -1232,10 +1389,10 @@
 				"intimidation": "+3",
 				"perception": "+2"
 			},
+			"passive": 12,
 			"resist": [
 				"fire"
 			],
-			"passive": 12,
 			"languages": [
 				"Common"
 			],
@@ -1268,7 +1425,6 @@
 					]
 				}
 			],
-			"page": 200,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -1276,18 +1432,20 @@
 				"C"
 			],
 			"damageTags": [
-				"S",
+				"F",
 				"P",
-				"F"
+				"S"
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
 		},
 		{
 			"name": "Eternal Flame Priest",
+			"source": "PotA",
+			"page": 200,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1295,7 +1453,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -1326,24 +1483,15 @@
 				"intimidation": "+5",
 				"religion": "+2"
 			},
+			"passive": 10,
 			"resist": [
 				"fire"
 			],
-			"passive": 10,
 			"languages": [
 				"Common",
 				"Ignan"
 			],
 			"cr": "3",
-			"action": [
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
-					]
-				}
-			],
-			"page": 200,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -1385,24 +1533,39 @@
 					"ability": "cha"
 				}
 			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+					]
+				}
+			],
 			"languageTags": [
 				"C",
 				"IG"
 			],
-			"spellcastingTags": [
-				"CS"
-			],
 			"damageTags": [
 				"P"
 			],
+			"spellcastingTags": [
+				"CS"
+			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
 			"name": "Fathomer",
+			"source": "PotA",
+			"page": 207,
+			"otherSources": [
+				{
+					"source": "GoS"
+				}
+			],
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1410,7 +1573,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -1447,36 +1609,6 @@
 				"Common"
 			],
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Shapechanger (2/Day)",
-					"entries": [
-						"The fathomer can use its action to polymorph into a Medium serpent composed of water, or back into its true form. Anything the fathomer is wearing or carrying is subsumed into the serpent form during the change, inaccessible until the fathomer returns to its true form. The fathomer reverts to its true form after 4 hours, unless it can expend another use of this trait. If the fathomer is knocked {@condition unconscious} or dies, it also reverts to its true form.",
-						"While in serpent form, the fathomer gains a swimming speed of 40 feet, the ability to breathe underwater, immunity to poison damage, as well as resistance to fire damage and bludgeoning, piercing, and slashing damage from nonmagical attacks. It also has immunity to the following conditions: {@condition exhaustion}, {@condition grappled}, {@condition paralyzed}, {@condition poisoned}, {@condition restrained}, {@condition prone}, {@condition unconscious}. The serpent form can enter a hostile creature's space and stop there. In addition, if water can pass through a space, the serpent can do so without squeezing."
-					]
-				},
-				{
-					"name": "Olhydra's Armor (Human Form Only)",
-					"entries": [
-						"The fathomer can cast {@spell mage armor} at will, without expending material components."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Constrict (Serpent Form Only)",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}9 ({@damage 2d6 + 2}) bludgeoning damage. If the target is Medium or smaller, it is {@condition grappled} (escape {@dc 12}). Until the grapple ends, the target is {@condition restrained}, and the fathomer can't constrict another target."
-					]
-				},
-				{
-					"name": "Dagger (Human Form Only)",
-					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
-					]
-				}
-			],
-			"page": 207,
 			"spellcasting": [
 				{
 					"name": "Spellcasting (Human Form Only)",
@@ -1506,31 +1638,57 @@
 					"ability": "cha"
 				}
 			],
+			"trait": [
+				{
+					"name": "Shapechanger (2/Day)",
+					"entries": [
+						"The fathomer can use its action to polymorph into a Medium serpent composed of water, or back into its true form. Anything the fathomer is wearing or carrying is subsumed into the serpent form during the change, inaccessible until the fathomer returns to its true form. The fathomer reverts to its true form after 4 hours, unless it can expend another use of this trait. If the fathomer is knocked {@condition unconscious} or dies, it also reverts to its true form.",
+						"While in serpent form, the fathomer gains a swimming speed of 40 feet, the ability to breathe underwater, immunity to poison damage, as well as resistance to fire damage and bludgeoning, piercing, and slashing damage from nonmagical attacks. It also has immunity to the following conditions: {@condition exhaustion}, {@condition grappled}, {@condition paralyzed}, {@condition poisoned}, {@condition restrained}, {@condition prone}, {@condition unconscious}. The serpent form can enter a hostile creature's space and stop there. In addition, if water can pass through a space, the serpent can do so without squeezing."
+					]
+				},
+				{
+					"name": "Olhydra's Armor (Human Form Only)",
+					"entries": [
+						"The fathomer can cast {@spell mage armor} at will, without expending material components."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Constrict (Serpent Form Only)",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}9 ({@damage 2d6 + 2}) bludgeoning damage. If the target is Medium or smaller, it is {@condition grappled} (escape {@dc 12}). Until the grapple ends, the target is {@condition restrained}, and the fathomer can't constrict another target."
+					]
+				},
+				{
+					"name": "Dagger (Human Form Only)",
+					"entries": [
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+					]
+				}
+			],
 			"languageTags": [
 				"AQ",
 				"C"
-			],
-			"spellcastingTags": [
-				"F",
-				"CL"
 			],
 			"damageTags": [
 				"B",
 				"P"
 			],
+			"spellcastingTags": [
+				"CL",
+				"F"
+			],
 			"miscTags": [
 				"MW",
 				"RW",
 				"THW"
-			],
-			"otherSources": [
-				{
-					"source": "GoS"
-				}
 			]
 		},
 		{
 			"name": "Feathergale Knight",
+			"source": "PotA",
+			"page": 189,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1538,7 +1696,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"L",
 				"E"
@@ -1574,27 +1731,6 @@
 				"Common"
 			],
 			"cr": "1",
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The knight makes two melee attacks."
-					]
-				},
-				{
-					"name": "Longsword",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) slashing damage, or 7 ({@damage 1d10 + 2}) slashing damage if used with two hands."
-					]
-				},
-				{
-					"name": "Spear",
-					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage, or 6 ({@damage 1d8 + 2}) piercing damage if used with two hands to make a melee attack."
-					]
-				}
-			],
-			"page": 189,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -1621,6 +1757,26 @@
 					"ability": "cha"
 				}
 			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The knight makes two melee attacks."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) slashing damage, or 7 ({@damage 1d10 + 2}) slashing damage if used with two hands."
+					]
+				},
+				{
+					"name": "Spear",
+					"entries": [
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage, or 6 ({@damage 1d8 + 2}) piercing damage if used with two hands to make a melee attack."
+					]
+				}
+			],
 			"actionTags": [
 				"Multiattack"
 			],
@@ -1628,12 +1784,12 @@
 				"AU",
 				"C"
 			],
+			"damageTags": [
+				"P",
+				"S"
+			],
 			"spellcastingTags": [
 				"CS"
-			],
-			"damageTags": [
-				"S",
-				"P"
 			],
 			"miscTags": [
 				"MW",
@@ -1642,7 +1798,53 @@
 			]
 		},
 		{
+			"name": "Fennor",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 170,
+			"_copy": {
+				"name": "Berserker",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the berserker",
+						"with": "Fennor",
+						"flags": "i"
+					}
+				}
+			},
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item chain shirt|phb}"
+					]
+				}
+			],
+			"cr": "3",
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Fennor makes two attacks with her greatsword"
+					]
+				},
+				{
+					"name": "Greatsword",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) slashing damage."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			]
+		},
+		{
 			"name": "Flamewrath",
+			"source": "PotA",
+			"page": 201,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1650,7 +1852,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"C",
 				"E"
@@ -1680,32 +1881,15 @@
 				"arcana": "+3",
 				"religion": "+3"
 			},
+			"passive": 10,
 			"immune": [
 				"fire"
 			],
-			"passive": 10,
 			"languages": [
 				"Common",
 				"Ignan"
 			],
 			"cr": "6",
-			"trait": [
-				{
-					"name": "Wreathed in Flame",
-					"entries": [
-						"For the flamewrath, the warm version of the {@spell fire shield} spell has a duration of \"until dispelled.\" The fire shield burns for 10 minutes after the flamewrath dies, consuming its body."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
-					]
-				}
-			],
-			"page": 201,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -1754,25 +1938,43 @@
 					"ability": "cha"
 				}
 			],
+			"trait": [
+				{
+					"name": "Wreathed in Flame",
+					"entries": [
+						"For the flamewrath, the warm version of the {@spell fire shield} spell has a duration of \"until dispelled.\" The fire shield burns for 10 minutes after the flamewrath dies, consuming its body."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+					]
+				}
+			],
 			"languageTags": [
 				"C",
 				"IG"
 			],
-			"spellcastingTags": [
-				"CS"
-			],
 			"damageTags": [
 				"P"
 			],
+			"spellcastingTags": [
+				"CS"
+			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
 			"name": "Gar Shatterkeel",
 			"isNpc": true,
+			"source": "PotA",
+			"page": 208,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1780,7 +1982,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -1811,66 +2012,15 @@
 				"nature": "+8",
 				"survival": "+8"
 			},
+			"passive": 14,
 			"resist": [
 				"cold"
 			],
-			"passive": 14,
 			"languages": [
 				"Aquan",
 				"Common"
 			],
 			"cr": "9",
-			"trait": [
-				{
-					"name": "Amphibious",
-					"entries": [
-						"Gar can breathe air and water."
-					]
-				},
-				{
-					"name": "Legendary Resistance (2/Day)",
-					"entries": [
-						"If Gar fails a saving throw, he can choose to succeed instead."
-					]
-				},
-				{
-					"name": "Water Walk",
-					"entries": [
-						"Gar can stand and move on liquid surfaces as if they were solid ground."
-					]
-				},
-				{
-					"name": "Watery Fall",
-					"entries": [
-						"When Gar drops to 0 hit points, his body collapses into a pool of inky water that rapidly disperses. Anything he was wearing or carrying is left behind."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Gar makes two melee attacks, one with his claw and one with Drown."
-					]
-				},
-				{
-					"name": "Claw",
-					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 2d6 + 2}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 13}). Until the grapple ends, Gar can't attack other creatures with his claw."
-					]
-				},
-				{
-					"name": "Drown",
-					"entries": [
-						"{@atk mw,rw} {@hit 7} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage plus 4 ({@damage 1d8}) cold damage."
-					]
-				}
-			],
-			"legendaryGroup": {
-				"name": "Gar Shatterkeel",
-				"source": "PotA"
-			},
-			"page": 208,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -1927,6 +2077,56 @@
 					"ability": "wis"
 				}
 			],
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Gar can breathe air and water."
+					]
+				},
+				{
+					"name": "Legendary Resistance (2/Day)",
+					"entries": [
+						"If Gar fails a saving throw, he can choose to succeed instead."
+					]
+				},
+				{
+					"name": "Water Walk",
+					"entries": [
+						"Gar can stand and move on liquid surfaces as if they were solid ground."
+					]
+				},
+				{
+					"name": "Watery Fall",
+					"entries": [
+						"When Gar drops to 0 hit points, his body collapses into a pool of inky water that rapidly disperses. Anything he was wearing or carrying is left behind."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Gar makes two melee attacks, one with his claw and one with Drown."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 2d6 + 2}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 13}). Until the grapple ends, Gar can't attack other creatures with his claw."
+					]
+				},
+				{
+					"name": "Drown",
+					"entries": [
+						"{@atk mw,rw} {@hit 7} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage plus 4 ({@damage 1d8}) cold damage."
+					]
+				}
+			],
+			"legendaryGroup": {
+				"name": "Gar Shatterkeel",
+				"source": "PotA"
+			},
 			"traitTags": [
 				"Amphibious",
 				"Legendary Resistances"
@@ -1938,13 +2138,13 @@
 				"AQ",
 				"C"
 			],
-			"spellcastingTags": [
-				"CD"
-			],
 			"damageTags": [
 				"B",
-				"P",
-				"C"
+				"C",
+				"P"
+			],
+			"spellcastingTags": [
+				"CD"
 			],
 			"miscTags": [
 				"MW",
@@ -1954,6 +2154,8 @@
 		{
 			"name": "Ghald",
 			"isNpc": true,
+			"source": "PotA",
+			"page": 210,
 			"size": "L",
 			"type": {
 				"type": "humanoid",
@@ -1961,7 +2163,6 @@
 					"sahuagin"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"L",
 				"E"
@@ -2059,9 +2260,11 @@
 					]
 				}
 			],
-			"page": 210,
 			"traitTags": [
 				"Sneak Attack"
+			],
+			"senseTags": [
+				"SD"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -2070,20 +2273,53 @@
 				"C",
 				"OTH"
 			],
-			"senseTags": [
-				"SD"
-			],
 			"damageTags": [
-				"P",
-				"B"
+				"B",
+				"P"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "Grumink the Renegade",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 210,
+			"_copy": {
+				"name": "Assassin",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the assassin",
+						"with": "Grumink",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
 			"name": "Hellenrae",
 			"isNpc": true,
+			"source": "PotA",
+			"page": 198,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2091,7 +2327,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"L",
 				"E"
@@ -2118,6 +2353,10 @@
 				"insight": "+5",
 				"perception": "+5"
 			},
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 15,
 			"immune": [
 				"poison"
 			],
@@ -2125,10 +2364,6 @@
 				"blinded",
 				"poisoned"
 			],
-			"senses": [
-				"blindsight 60 ft. (blind beyond this radius)"
-			],
-			"passive": 15,
 			"languages": [
 				"Common",
 				"Terran"
@@ -2182,16 +2417,15 @@
 					]
 				}
 			],
-			"page": 198,
+			"senseTags": [
+				"B"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"C",
 				"T"
-			],
-			"senseTags": [
-				"B"
 			],
 			"damageTags": [
 				"B"
@@ -2202,6 +2436,8 @@
 		},
 		{
 			"name": "Howling Hatred Initiate",
+			"source": "PotA",
+			"page": 190,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2209,7 +2445,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -2267,7 +2502,6 @@
 					]
 				}
 			],
-			"page": 190,
 			"traitTags": [
 				"Hold Breath"
 			],
@@ -2278,13 +2512,15 @@
 				"P"
 			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
 			"name": "Howling Hatred Priest",
+			"source": "PotA",
+			"page": 190,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2292,7 +2528,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -2329,35 +2564,6 @@
 				"Common"
 			],
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Hold Breath",
-					"entries": [
-						"The priest can hold its breath for 30 minutes."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The priest makes two melee attacks or two ranged attacks."
-					]
-				},
-				{
-					"name": "Scimitar",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
-					]
-				},
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
-					]
-				}
-			],
-			"page": 190,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -2399,6 +2605,34 @@
 					"ability": "cha"
 				}
 			],
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"The priest can hold its breath for 30 minutes."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The priest makes two melee attacks or two ranged attacks."
+					]
+				},
+				{
+					"name": "Scimitar",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
+					]
+				}
+			],
 			"traitTags": [
 				"Hold Breath"
 			],
@@ -2409,12 +2643,12 @@
 				"AU",
 				"C"
 			],
+			"damageTags": [
+				"P",
+				"S"
+			],
 			"spellcastingTags": [
 				"CS"
-			],
-			"damageTags": [
-				"S",
-				"P"
 			],
 			"miscTags": [
 				"MW",
@@ -2424,6 +2658,8 @@
 		},
 		{
 			"name": "Hurricane",
+			"source": "PotA",
+			"page": 191,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2431,7 +2667,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"L",
 				"E"
@@ -2461,6 +2696,39 @@
 				"Common"
 			],
 			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The hurricane is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save {@dc 11}, {@hit 3} to hit with spell attacks). It knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell blade ward}",
+								"{@spell gust|xge}",
+								"{@spell light}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell feather fall}",
+								"{@spell jump}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell gust of wind}"
+							]
+						}
+					},
+					"ability": "wis"
+				}
+			],
 			"trait": [
 				{
 					"name": "Unarmored Defense",
@@ -2497,40 +2765,6 @@
 					]
 				}
 			],
-			"page": 191,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"The hurricane is a 3rd-level spellcaster. Its spellcasting ability is Wisdom (spell save {@dc 11}, {@hit 3} to hit with spell attacks). It knows the following sorcerer spells:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell blade ward}",
-								"{@spell gust|xge}",
-								"{@spell light}",
-								"{@spell prestidigitation}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell feather fall}",
-								"{@spell jump}",
-								"{@spell thunderwave}"
-							]
-						},
-						"2": {
-							"slots": 2,
-							"spells": [
-								"{@spell gust of wind}"
-							]
-						}
-					},
-					"ability": "wis"
-				}
-			],
 			"actionTags": [
 				"Multiattack"
 			],
@@ -2538,11 +2772,11 @@
 				"AU",
 				"C"
 			],
-			"spellcastingTags": [
-				"CS"
-			],
 			"damageTags": [
 				"B"
+			],
+			"spellcastingTags": [
+				"CS"
 			],
 			"miscTags": [
 				"MW"
@@ -2551,9 +2785,11 @@
 		{
 			"name": "Imix",
 			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "PotA",
+			"page": 214,
 			"size": "H",
 			"type": "elemental",
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -2580,6 +2816,10 @@
 				"con": "+13",
 				"cha": "+13"
 			},
+			"senses": [
+				"blindsight 120 ft."
+			],
+			"passive": 13,
 			"resist": [
 				{
 					"resist": [
@@ -2603,15 +2843,31 @@
 				"prone",
 				"restrained"
 			],
-			"senses": [
-				"blindsight 120 ft."
-			],
-			"passive": 13,
 			"languages": [
 				"Common",
 				"Ignan"
 			],
 			"cr": "19",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Imix's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell fireball}",
+						"{@spell wall of fire}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell fire storm}",
+							"{@spell haste}",
+							"{@spell teleport}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"name": "Empowered Attacks",
@@ -2700,32 +2956,13 @@
 				"name": "Imix",
 				"source": "PotA"
 			},
-			"page": 214,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Imix's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell fireball}",
-						"{@spell wall of fire}"
-					],
-					"daily": {
-						"3e": [
-							"{@spell fire storm}",
-							"{@spell haste}",
-							"{@spell teleport}"
-						]
-					},
-					"ability": "cha"
-				}
-			],
-			"isNamedCreature": true,
 			"traitTags": [
 				"Illumination",
 				"Legendary Resistances",
 				"Magic Resistance"
+			],
+			"senseTags": [
+				"B"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -2734,28 +2971,122 @@
 				"C",
 				"IG"
 			],
-			"senseTags": [
-				"B"
-			],
-			"spellcastingTags": [
-				"I"
-			],
 			"damageTags": [
 				"B",
 				"F"
 			],
+			"spellcastingTags": [
+				"I"
+			],
 			"miscTags": [
+				"AOE",
 				"MW",
-				"RCH",
-				"AOE"
+				"RCH"
 			]
+		},
+		{
+			"name": "Lyzandra \"Lyzzie\" Calderos",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 110,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mage",
+						"with": "Lyzandra",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Lyzandra is a 9th-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). Lyzandra has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell mage armor}",
+								"{@spell magic missile}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell misty step}",
+								"{@spell suggestion}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fireball}",
+								"{@spell fly}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell greater invisibility}",
+								"{@spell wall of fire}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell immolation|xge}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			]
+		},
+		{
+			"name": "Maegla Tarnlar",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 25,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
 		},
 		{
 			"name": "Marlos Urnrayle",
 			"isNpc": true,
+			"source": "PotA",
+			"page": 199,
 			"size": "M",
 			"type": "monstrosity",
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -2786,14 +3117,14 @@
 				"deception": "+6",
 				"perception": "+4"
 			},
-			"resist": [
-				"acid"
-			],
 			"senses": [
 				"darkvision 60 ft.",
 				"tremorsense 60 ft."
 			],
 			"passive": 14,
+			"resist": [
+				"acid"
+			],
 			"languages": [
 				"Common",
 				"Terran"
@@ -2851,9 +3182,12 @@
 				"name": "Marlos Urnrayle",
 				"source": "PotA"
 			},
-			"page": 199,
 			"traitTags": [
 				"Legendary Resistances"
+			],
+			"senseTags": [
+				"D",
+				"T"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -2862,13 +3196,9 @@
 				"C",
 				"T"
 			],
-			"senseTags": [
-				"D",
-				"T"
-			],
 			"damageTags": [
-				"P",
 				"I",
+				"P",
 				"T"
 			],
 			"miscTags": [
@@ -2878,6 +3208,8 @@
 		{
 			"name": "Miraj Vizann",
 			"isNpc": true,
+			"source": "PotA",
+			"page": 198,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2885,7 +3217,6 @@
 					"earth genasi"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -2921,23 +3252,6 @@
 				"Primordial"
 			],
 			"cr": "6",
-			"trait": [
-				{
-					"name": "Earth Walk",
-					"entries": [
-						"Moving through difficult terrain made of earth or stone costs Miraj no extra movement."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Staff",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) bludgeoning damage, or 5 ({@damage 1d8 + 1}) bludgeoning damage when used with two hands."
-					]
-				}
-			],
-			"page": 198,
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
@@ -3013,27 +3327,121 @@
 					"ability": "cha"
 				}
 			],
+			"trait": [
+				{
+					"name": "Earth Walk",
+					"entries": [
+						"Moving through difficult terrain made of earth or stone costs Miraj no extra movement."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Staff",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) bludgeoning damage, or 5 ({@damage 1d8 + 1}) bludgeoning damage when used with two hands."
+					]
+				}
+			],
 			"languageTags": [
 				"C",
 				"P"
 			],
-			"spellcastingTags": [
-				"I",
-				"CS"
-			],
 			"damageTags": [
 				"B"
+			],
+			"spellcastingTags": [
+				"CS",
+				"I"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "Molten Magma Roper",
+			"source": "PotA",
+			"page": 143,
+			"_copy": {
+				"name": "Roper",
+				"source": "MM",
+				"_mod": {
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Tendril",
+							"items": {
+								"name": "Tendril",
+								"entries": [
+									"{@atk mw} {@hit 7} to hit, reach 50 ft., one creature. {@h}4 ({@damage 1d8}) fire damage and the target is {@condition grappled} (escape DC 15). Until the grapple ends, the target is {@condition restrained} and has disadvantage on Strength checks and Strength saving throws, and the roper can't use the same tendril on another target. A creature takes 4 ({@damage 1d8}) fire damage each time it ends its turn grappled by the roper."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Bite",
+							"items": {
+								"name": "Bite",
+								"entries": [
+									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}22 ({@damage 4d8 + 4}) fire damage."
+								]
+							}
+						}
+					]
+				}
+			},
+			"immune": [
+				"fire"
+			],
+			"vulnerable": [
+				"cold"
+			],
+			"damageTags": [
+				"F"
+			]
+		},
+		{
+			"name": "Nurvureem, The Dark Lady",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "PotA",
+			"page": 180,
+			"_copy": {
+				"name": "Adult Black Dragon",
+				"source": "MM",
+				"_trait": {
+					"name": "Shadow Dragon",
+					"source": "MM"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the dragon",
+						"with": "Nurvureem",
+						"flags": "i"
+					}
+				}
+			},
+			"traitTags": [
+				"Amphibious",
+				"Legendary Resistances",
+				"Sunlight Sensitivity"
+			],
+			"damageTags": [
+				"B",
+				"N",
+				"P",
+				"S"
+			]
+		},
+		{
 			"name": "Ogrémoch",
 			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "PotA",
+			"page": 216,
 			"size": "G",
 			"type": "elemental",
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -3065,6 +3473,11 @@
 				"con": "+15",
 				"wis": "+8"
 			},
+			"senses": [
+				"blindsight 120 ft.",
+				"tremorsense 120 ft."
+			],
+			"passive": 12,
 			"resist": [
 				{
 					"resist": [
@@ -3086,16 +3499,25 @@
 				"poisoned",
 				"prone"
 			],
-			"senses": [
-				"blindsight 120 ft.",
-				"tremorsense 120 ft."
-			],
-			"passive": 12,
 			"languages": [
 				"Common",
 				"Terran"
 			],
 			"cr": "20",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Ogrémoch's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell meld into stone}",
+						"{@spell move earth}",
+						"{@spell wall of stone}"
+					],
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"name": "Empowered Attacks",
@@ -3172,26 +3594,14 @@
 				"name": "Ogrémoch",
 				"source": "PotA"
 			},
-			"page": 216,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Ogrémoch's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell meld into stone}",
-						"{@spell move earth}",
-						"{@spell wall of stone}"
-					],
-					"ability": "cha"
-				}
-			],
-			"isNamedCreature": true,
 			"traitTags": [
 				"Legendary Resistances",
 				"Magic Resistance",
 				"Siege Monster"
+			],
+			"senseTags": [
+				"B",
+				"T"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -3200,29 +3610,27 @@
 				"C",
 				"T"
 			],
-			"senseTags": [
-				"B",
-				"T"
+			"damageTags": [
+				"B"
 			],
 			"spellcastingTags": [
 				"I"
 			],
-			"damageTags": [
-				"B"
-			],
 			"miscTags": [
+				"AOE",
 				"MW",
 				"RCH",
-				"RW",
-				"AOE"
+				"RW"
 			]
 		},
 		{
 			"name": "Olhydra",
 			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "PotA",
+			"page": 218,
 			"size": "H",
 			"type": "elemental",
-			"source": "PotA",
 			"alignment": [
 				"N",
 				"E"
@@ -3254,6 +3662,10 @@
 				"con": "+13",
 				"wis": "+10"
 			},
+			"senses": [
+				"blindsight 120 ft."
+			],
+			"passive": 14,
 			"resist": [
 				"lightning",
 				{
@@ -3279,14 +3691,30 @@
 				"prone",
 				"restrained"
 			],
-			"senses": [
-				"blindsight 120 ft."
-			],
-			"passive": 14,
 			"languages": [
 				"Aquan"
 			],
 			"cr": "18",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Olhydra's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). She can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell wall of ice}"
+					],
+					"daily": {
+						"1": [
+							"{@spell storm of vengeance}"
+						],
+						"3": [
+							"{@spell ice storm}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"name": "Empowered Attacks",
@@ -3363,31 +3791,12 @@
 				"name": "Olhydra",
 				"source": "PotA"
 			},
-			"page": 218,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Olhydra's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). She can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell wall of ice}"
-					],
-					"daily": {
-						"1": [
-							"{@spell storm of vengeance}"
-						],
-						"3": [
-							"{@spell ice storm}"
-						]
-					},
-					"ability": "cha"
-				}
-			],
-			"isNamedCreature": true,
 			"traitTags": [
 				"Legendary Resistances",
 				"Magic Resistance"
+			],
+			"senseTags": [
+				"B"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -3395,15 +3804,12 @@
 			"languageTags": [
 				"AQ"
 			],
-			"senseTags": [
+			"damageTags": [
+				"A",
 				"B"
 			],
 			"spellcastingTags": [
 				"I"
-			],
-			"damageTags": [
-				"B",
-				"A"
 			],
 			"miscTags": [
 				"MW",
@@ -3413,6 +3819,8 @@
 		},
 		{
 			"name": "One-Eyed Shiver",
+			"source": "PotA",
+			"page": 207,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3420,7 +3828,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"C",
 				"E"
@@ -3451,37 +3858,14 @@
 				"perception": "+3",
 				"intimidation": "+5"
 			},
+			"passive": 13,
 			"immune": [
 				"cold"
 			],
-			"passive": 13,
 			"languages": [
 				"Common"
 			],
 			"cr": "3",
-			"trait": [
-				{
-					"name": "Chilling Mist",
-					"entries": [
-						"While it is alive, the one-eyed shiver projects an aura of cold mist within 10 feet of itself. If the one-eyed shiver deals damage to a creature in this area, the creature also takes 5 ({@damage 1d10}) cold damage."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
-					]
-				},
-				{
-					"name": "Eye of Frost",
-					"entries": [
-						"The one-eyed shiver casts ray of frost from its missing eye. If it hits, the target is also {@condition restrained}. A target {@condition restrained} in this way can end the condition by using an action, succeeding on a {@dc 13} Strength check."
-					]
-				}
-			],
-			"page": 207,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -3520,15 +3904,37 @@
 					"ability": "cha"
 				}
 			],
+			"trait": [
+				{
+					"name": "Chilling Mist",
+					"entries": [
+						"While it is alive, the one-eyed shiver projects an aura of cold mist within 10 feet of itself. If the one-eyed shiver deals damage to a creature in this area, the creature also takes 5 ({@damage 1d10}) cold damage."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+					]
+				},
+				{
+					"name": "Eye of Frost",
+					"entries": [
+						"The one-eyed shiver casts ray of frost from its missing eye. If it hits, the target is also {@condition restrained}. A target {@condition restrained} in this way can end the condition by using an action, succeeding on a {@dc 13} Strength check."
+					]
+				}
+			],
 			"languageTags": [
 				"C"
 			],
+			"damageTags": [
+				"C",
+				"P"
+			],
 			"spellcastingTags": [
 				"CS"
-			],
-			"damageTags": [
-				"P",
-				"C"
 			],
 			"miscTags": [
 				"MW"
@@ -3537,6 +3943,8 @@
 		{
 			"name": "Oreioth",
 			"isNpc": true,
+			"source": "PotA",
+			"page": 212,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3544,7 +3952,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"C",
 				"E"
@@ -3584,29 +3991,6 @@
 				"Common"
 			],
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Grim Harvest",
-					"entries": [
-						"Once per turn when Oreioth kills one or more creatures with a spell of 1st level or higher, he regains hit points equal to twice the spell's level."
-					]
-				},
-				{
-					"name": "Swift Animation (Recharges after a Long Rest)",
-					"entries": [
-						"When a living Medium or Small humanoid within 30 feet of Oreioth dies, he can use an action on his next turn to cast {@spell animate dead} on that humanoid's corpse, instead of using the spell's normal casting time."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
-					]
-				}
-			],
-			"page": 212,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -3649,22 +4033,75 @@
 					"ability": "int"
 				}
 			],
+			"trait": [
+				{
+					"name": "Grim Harvest",
+					"entries": [
+						"Once per turn when Oreioth kills one or more creatures with a spell of 1st level or higher, he regains hit points equal to twice the spell's level."
+					]
+				},
+				{
+					"name": "Swift Animation (Recharges after a Long Rest)",
+					"entries": [
+						"When a living Medium or Small humanoid within 30 feet of Oreioth dies, he can use an action on his next turn to cast {@spell animate dead} on that humanoid's corpse, instead of using the spell's normal casting time."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
+					]
+				}
+			],
 			"languageTags": [
 				"AB",
 				"C"
 			],
-			"spellcastingTags": [
-				"CW"
-			],
 			"damageTags": [
 				"P"
+			],
+			"spellcastingTags": [
+				"CW"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "Padraich",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 170,
+			"_copy": {
+				"name": "Berserker",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the berserker",
+						"with": "Padraich",
+						"flags": "i"
+					}
+				}
+			},
+			"action": [
+				{
+					"name": "Maul",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) bludgeoning damage."
+					]
+				}
+			],
+			"damageTags": [
+				"B"
+			]
+		},
+		{
 			"name": "Razerblast",
+			"source": "PotA",
+			"page": 201,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3672,7 +4109,6 @@
 					"human"
 				]
 			},
-			"source": "PotA",
 			"alignment": [
 				"C",
 				"E"
@@ -3702,10 +4138,10 @@
 				"intimidation": "+4",
 				"perception": "+3"
 			},
+			"passive": 13,
 			"immune": [
 				"fire"
 			],
-			"passive": 13,
 			"languages": [
 				"Common",
 				"Ignan"
@@ -3739,7 +4175,6 @@
 					]
 				}
 			],
-			"page": 201,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -3748,1760 +4183,21 @@
 				"IG"
 			],
 			"damageTags": [
-				"P",
-				"F"
-			],
-			"miscTags": [
-				"RW",
-				"MW",
-				"THW"
-			]
-		},
-		{
-			"name": "Sacred Stone Monk",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"source": "PotA",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				14
-			],
-			"hp": {
-				"average": 22,
-				"formula": "4d8 + 4"
-			},
-			"speed": {
-				"walk": 40
-			},
-			"str": 13,
-			"dex": 15,
-			"con": 12,
-			"int": 10,
-			"wis": 14,
-			"cha": 9,
-			"skill": {
-				"acrobatics": "+4",
-				"athletics": "+3",
-				"perception": "+4"
-			},
-			"senses": [
-				"tremorsense 10 ft."
-			],
-			"passive": 14,
-			"languages": [
-				"Common"
-			],
-			"cr": "1/2",
-			"trait": [
-				{
-					"name": "Unarmored Defense",
-					"entries": [
-						"While the monk is wearing no armor and wielding no shield, its AC includes its Wisdom modifier."
-					]
-				},
-				{
-					"name": "Unarmored Movement",
-					"entries": [
-						"While the monk is wearing no armor and wielding no shield, its walking speed increases by 10 feet (included in its speed)."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The monk makes two melee attacks."
-					]
-				},
-				{
-					"name": "Unarmed Strike",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) bludgeoning damage."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"name": "Parry",
-					"entries": [
-						"The monk adds 2 to its AC against one melee or ranged weapon attack that would hit it. To do so, the monk must see the attacker."
-					]
-				}
-			],
-			"page": 196,
-			"actionTags": [
-				"Multiattack",
-				"Parry"
-			],
-			"languageTags": [
-				"C"
-			],
-			"senseTags": [
-				"T"
-			],
-			"damageTags": [
-				"B"
-			],
-			"miscTags": [
-				"MW"
-			]
-		},
-		{
-			"name": "Shoalar Quanderil",
-			"isNpc": true,
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"water genasi"
-				]
-			},
-			"source": "PotA",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				10,
-				{
-					"ac": 13,
-					"condition": "with {@spell mage armor}",
-					"braces": true
-				}
-			],
-			"hp": {
-				"average": 60,
-				"formula": "8d8 + 24"
-			},
-			"speed": {
-				"walk": 30,
-				"swim": 30
-			},
-			"str": 11,
-			"dex": 12,
-			"con": 16,
-			"int": 14,
-			"wis": 10,
-			"cha": 17,
-			"skill": {
-				"arcana": "+4",
-				"deception": "+5",
-				"insight": "+2",
-				"persuasion": "+5"
-			},
-			"resist": [
-				"acid"
-			],
-			"passive": 10,
-			"languages": [
-				"Aquan",
-				"Common"
-			],
-			"cr": "4",
-			"trait": [
-				{
-					"name": "Amphibious",
-					"entries": [
-						"Shoalar can breathe air and water."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or ranged 20/60 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
-					]
-				}
-			],
-			"page": 208,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Shoalar's innate spellcasting ability is Constitution (spell save {@dc 13}, {@hit 5} to hit with spell attacks). He can innately cast the following spells:"
-					],
-					"will": [
-						"{@spell shape water|xge}"
-					],
-					"daily": {
-						"1": [
-							"{@spell create or destroy water}"
-						]
-					},
-					"ability": "con"
-				},
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Shoalar is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). He knows the following sorcerer spells:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell acid splash}",
-								"{@spell chill touch}",
-								"{@spell friends}",
-								"{@spell prestidigitation}",
-								"{@spell ray of frost}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell disguise self}",
-								"{@spell mage armor}",
-								"{@spell magic missile}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell hold person}",
-								"{@spell misty step}"
-							]
-						},
-						"3": {
-							"slots": 2,
-							"spells": [
-								"{@spell tidal wave|xge}"
-							]
-						}
-					},
-					"ability": "cha"
-				}
-			],
-			"traitTags": [
-				"Amphibious"
-			],
-			"languageTags": [
-				"AQ",
-				"C"
-			],
-			"spellcastingTags": [
-				"I",
-				"CS"
-			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"RW",
-				"MW",
-				"THW"
-			]
-		},
-		{
-			"name": "Skyweaver",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"source": "PotA",
-			"alignment": [
-				"C",
-				"E"
-			],
-			"ac": [
-				12,
-				{
-					"ac": 15,
-					"condition": "with {@spell mage armor}",
-					"braces": true
-				}
-			],
-			"hp": {
-				"average": 44,
-				"formula": "8d8 + 8"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 8,
-			"dex": 14,
-			"con": 12,
-			"int": 11,
-			"wis": 10,
-			"cha": 16,
-			"skill": {
-				"deception": "+5",
-				"persuasion": "+5"
-			},
-			"passive": 10,
-			"languages": [
-				"Auran",
-				"Common"
-			],
-			"cr": "3",
-			"action": [
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
-					]
-				}
-			],
-			"page": 191,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"The Skyweaver is a 6th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell blade ward}",
-								"{@spell light}",
-								"{@spell message}",
-								"{@spell ray of frost}",
-								"{@spell shocking grasp}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell feather fall}",
-								"{@spell mage armor}",
-								"{@spell witch bolt}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell gust of wind}",
-								"{@spell invisibility}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell fly}",
-								"{@spell lightning bolt}"
-							]
-						}
-					},
-					"ability": "cha"
-				}
-			],
-			"languageTags": [
-				"AU",
-				"C"
-			],
-			"spellcastingTags": [
-				"CS"
-			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"RW",
-				"MW",
-				"THW"
-			]
-		},
-		{
-			"name": "Stonemelder",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"source": "PotA",
-			"alignment": [
-				"N",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 17,
-					"from": [
-						"{@item splint armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 75,
-				"formula": "10d8 + 30"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 15,
-			"dex": 10,
-			"con": 16,
-			"int": 12,
-			"wis": 11,
-			"cha": 17,
-			"skill": {
-				"intimidation": "+5",
-				"perception": "+2"
-			},
-			"senses": [
-				"tremorsense 30 ft."
-			],
-			"passive": 12,
-			"languages": [
-				"Common",
-				"Terran"
-			],
-			"cr": "4",
-			"trait": [
-				{
-					"name": "Death Burst",
-					"entries": [
-						"When the Stonemelder dies, it turns to stone and explodes in a burst of rock shards, becoming a smoking pile of rubble. Each creature within 10 feet of the exploding Stonemelder must make a {@dc 14} Dexterity saving throw, taking 11 ({@damage 2d10}) bludgeoning damage on a failed save, or half as much damage on a successful one."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Black Earth Rod",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) bludgeoning damage. The Stonemelder can also expend a spell slot to deal extra damage, dealing {@dice 2d8} bludgeoning damage for a 1st level slot, plus an additional {@dice 1d8} for each level of the slot above 1st."
-					]
-				}
-			],
-			"page": 197,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"The Stonemelder is a 7th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell acid splash}",
-								"{@spell blade ward}",
-								"{@spell light}",
-								"{@spell mending}",
-								"{@spell mold earth|xge}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell expeditious retreat}",
-								"{@spell false life}",
-								"{@spell shield}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell Maximilian's earthen grasp|xge}",
-								"{@spell shatter}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell erupting earth|xge}",
-								"{@spell meld into stone}"
-							]
-						},
-						"4": {
-							"slots": 1,
-							"spells": [
-								"{@spell stoneskin}"
-							]
-						}
-					},
-					"ability": "cha"
-				}
-			],
-			"traitTags": [
-				"Death Burst"
-			],
-			"languageTags": [
-				"C",
-				"T"
-			],
-			"senseTags": [
-				"T"
-			],
-			"spellcastingTags": [
-				"CS"
-			],
-			"damageTags": [
-				"B"
-			],
-			"miscTags": [
-				"MW"
-			]
-		},
-		{
-			"name": "Thurl Merosska",
-			"isNpc": true,
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"source": "PotA",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 16,
-					"from": [
-						"{@item breastplate|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 71,
-				"formula": "11d8 + 21"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 16,
-			"dex": 14,
-			"con": 14,
-			"int": 11,
-			"wis": 10,
-			"cha": 15,
-			"skill": {
-				"animal handling": "+2",
-				"athletics": "+5",
-				"deception": "+4",
-				"persuasion": "+4"
-			},
-			"passive": 10,
-			"languages": [
-				"Auran",
-				"Common"
-			],
-			"cr": "3",
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Thurl makes two melee attacks."
-					]
-				},
-				{
-					"name": "Greatsword",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) slashing damage."
-					]
-				},
-				{
-					"name": "Lance",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. {@h}9 ({@damage 1d12 + 3}) piercing damage."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"name": "Parry",
-					"entries": [
-						"Thurl adds 2 to his AC against one melee attack that would hit him. To do so, Thurl must see the attacker and be wielding a melee weapon."
-					]
-				}
-			],
-			"page": 192,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Thurl is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). Thurl knows the following sorcerer spells:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell friends}",
-								"{@spell gust|xge}",
-								"{@spell light}",
-								"{@spell message}",
-								"{@spell ray of frost}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell expeditious retreat}",
-								"{@spell feather fall}",
-								"{@spell jump}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell levitate}",
-								"{@spell misty step}"
-							]
-						},
-						"3": {
-							"slots": 2,
-							"spells": [
-								"{@spell haste}"
-							]
-						}
-					},
-					"ability": "cha"
-				}
-			],
-			"actionTags": [
-				"Multiattack",
-				"Parry"
-			],
-			"languageTags": [
-				"AU",
-				"C"
-			],
-			"spellcastingTags": [
-				"CS"
-			],
-			"damageTags": [
-				"S",
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RCH"
-			]
-		},
-		{
-			"name": "Vanifer",
-			"isNpc": true,
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"tiefling"
-				]
-			},
-			"source": "PotA",
-			"alignment": [
-				"N",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 15,
-					"from": [
-						"{@item studded leather armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 112,
-				"formula": "15d8 + 45"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 11,
-			"dex": 16,
-			"con": 17,
-			"int": 12,
-			"wis": 13,
-			"cha": 19,
-			"skill": {
-				"arcana": "+5",
-				"deception": "+8",
-				"performance": "+8"
-			},
-			"immune": [
-				"fire"
-			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 11,
-			"languages": [
-				"Common",
-				"Ignan",
-				"Infernal"
-			],
-			"cr": "9",
-			"trait": [
-				{
-					"name": "Funeral Pyre",
-					"entries": [
-						"When Vanifer drops to 0 hit points, her body is consumed in a flash of fire and smoke. Anything she was wearing or carrying is left behind among ashes."
-					]
-				},
-				{
-					"name": "Legendary Resistance (2/Day)",
-					"entries": [
-						"If Vanifer fails a saving throw, she can choose to succeed instead."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Vanifer makes two attacks."
-					]
-				},
-				{
-					"name": "Tinderstrike",
-					"entries": [
-						"{@atk mw,rw} {@hit 9} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}7 ({@damage 1d4 + 5}) piercing damage plus 7 ({@damage 2d6}) fire damage."
-					]
-				}
-			],
-			"legendaryGroup": {
-				"name": "Vanifer",
-				"source": "PotA"
-			},
-			"page": 203,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Vanifer is a 10th-level spellcaster. Her spellcasting ability is Charisma (spell save {@dc 16}, {@hit 8} to hit with spell attacks). Vanifer knows the following sorcerer spells:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell chill touch}",
-								"{@spell fire bolt}",
-								"{@spell friends}",
-								"{@spell mage hand}",
-								"{@spell message}",
-								"{@spell produce flame}",
-								"{@spell thaumaturgy}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell burning hands}",
-								"{@spell chromatic orb}",
-								"{@spell hellish rebuke}",
-								"{@spell shield}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell darkness}",
-								"{@spell detect thoughts}",
-								"{@spell misty step}",
-								"{@spell scorching ray}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell counterspell}",
-								"{@spell fireball}",
-								"{@spell hypnotic pattern}"
-							]
-						},
-						"4": {
-							"slots": 3,
-							"spells": [
-								"{@spell wall of fire}"
-							]
-						},
-						"5": {
-							"slots": 2,
-							"spells": [
-								"{@spell dominate person}"
-							]
-						}
-					},
-					"ability": "cha"
-				}
-			],
-			"traitTags": [
-				"Legendary Resistances"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C",
-				"IG",
-				"I"
-			],
-			"senseTags": [
-				"D"
-			],
-			"spellcastingTags": [
-				"CS"
-			],
-			"damageTags": [
-				"P",
-				"F"
-			],
-			"miscTags": [
-				"RW",
-				"MW"
-			]
-		},
-		{
-			"name": "Wiggan Nettlebee",
-			"isNpc": true,
-			"size": "S",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"halfling"
-				]
-			},
-			"source": "PotA",
-			"alignment": [
-				"N",
-				"E"
-			],
-			"ac": [
-				11,
-				{
-					"ac": 16,
-					"condition": "with {@spell barkskin}",
-					"braces": true
-				}
-			],
-			"hp": {
-				"average": 36,
-				"formula": "8d6 + 8"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 8,
-			"dex": 12,
-			"con": 12,
-			"int": 14,
-			"wis": 15,
-			"cha": 13,
-			"skill": {
-				"deception": "+3",
-				"insight": "+4"
-			},
-			"passive": 12,
-			"languages": [
-				"Common",
-				"Halfling"
-			],
-			"cr": "2",
-			"trait": [
-				{
-					"name": "Brave Devotion",
-					"entries": [
-						"Wiggan has advantage on saving throws against being {@condition charmed} or {@condition frightened}."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Wiggan makes two attacks with his wooden cane."
-					]
-				},
-				{
-					"name": "Wooden Cane",
-					"entries": [
-						"{@atk mw} {@hit 0} to hit ({@hit 4} to hit with shillelagh), reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) bludgeoning damage, or 6 ({@damage 1d8 + 2}) bludgeoning damage with shillelagh."
-					]
-				}
-			],
-			"page": 212,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Wiggan is a 4th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc 12}, {@hit 4} to hit with spell attacks). He has the following cleric spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell guidance}",
-								"{@spell light}",
-								"{@spell mending}",
-								"{@spell shillelagh}",
-								"{@spell thaumaturgy}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell animal friendship}",
-								"{@spell cure wounds}",
-								"{@spell healing word}",
-								"{@spell inflict wounds}",
-								"{@spell speak with animals}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell barkskin}",
-								"{@spell spike growth}",
-								"{@spell spiritual weapon}"
-							]
-						}
-					},
-					"ability": "wis"
-				}
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C",
-				"H"
-			],
-			"spellcastingTags": [
-				"CC"
-			],
-			"damageTags": [
-				"B"
-			],
-			"miscTags": [
-				"MW"
-			]
-		},
-		{
-			"name": "Windharrow",
-			"isNpc": true,
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"half-elf"
-				]
-			},
-			"source": "PotA",
-			"alignment": [
-				"N",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 15,
-					"from": [
-						"{@item studded leather armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 55,
-				"formula": "10d8 + 10"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 10,
-			"dex": 16,
-			"con": 12,
-			"int": 14,
-			"wis": 10,
-			"cha": 17,
-			"skill": {
-				"acrobatics": "+5",
-				"deception": "+7",
-				"persuasion": "+5",
-				"performance": "+7",
-				"stealth": "+5"
-			},
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 10,
-			"languages": [
-				"Auran",
-				"Common",
-				"Elvish"
-			],
-			"cr": "3",
-			"trait": [
-				{
-					"name": "Fey Ancestry",
-					"entries": [
-						"Windharrow has advantage on saving throws against being {@condition charmed}, and magic can't put him to sleep."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Windharrow makes two melee attacks."
-					]
-				},
-				{
-					"name": "Rapier",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. {@h}7 ({@damage 1d8 + 3}) piercing damage."
-					]
-				}
-			],
-			"page": 192,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Windharrow is an 8th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). Windharrow knows the following bard spells:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell friends}",
-								"{@spell prestidigitation}",
-								"{@spell vicious mockery}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell disguise self}",
-								"{@spell dissonant whispers}",
-								"{@spell thunderwave}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell invisibility}",
-								"{@spell shatter}",
-								"{@spell silence}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell nondetection}",
-								"{@spell sending}",
-								"{@spell tongues}"
-							]
-						},
-						"4": {
-							"slots": 2,
-							"spells": [
-								"{@spell confusion}",
-								"{@spell dimension door}"
-							]
-						}
-					},
-					"ability": "cha"
-				}
-			],
-			"traitTags": [
-				"Fey Ancestry"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"AU",
-				"C",
-				"E"
-			],
-			"senseTags": [
-				"D"
-			],
-			"spellcastingTags": [
-				"CB"
-			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"MW"
-			]
-		},
-		{
-			"name": "Yan-C-Bin",
-			"isNpc": true,
-			"size": "H",
-			"type": "elemental",
-			"source": "PotA",
-			"alignment": [
-				"N",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 22,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 283,
-				"formula": "21d12 + 147"
-			},
-			"speed": {
-				"walk": 50,
-				"fly": 150
-			},
-			"str": 18,
-			"dex": 24,
-			"con": 24,
-			"int": 16,
-			"wis": 21,
-			"cha": 23,
-			"save": {
-				"dex": "+13",
-				"wis": "+11",
-				"cha": "+12"
-			},
-			"resist": [
-				"cold",
-				"fire",
-				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks"
-				}
-			],
-			"immune": [
-				"lightning",
-				"poison",
-				"thunder"
-			],
-			"conditionImmune": [
-				"charmed",
-				"frightened",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone",
-				"restrained"
-			],
-			"senses": [
-				"blindsight 120 ft."
-			],
-			"passive": 15,
-			"languages": [
-				"Auran"
-			],
-			"cr": "18",
-			"trait": [
-				{
-					"name": "Air Form",
-					"entries": [
-						"Yan-C-Bin can enter a hostile creature's space and stop there. He can move through a space as narrow as 1 inch wide without squeezing if air could pass through that space."
-					]
-				},
-				{
-					"name": "Empowered Attacks",
-					"entries": [
-						"Yan-C-Bin's slam attacks are treated as magical for the purpose of bypassing resistance and immunity to nonmagical attacks."
-					]
-				},
-				{
-					"name": "Legendary Resistance (3/Day)",
-					"entries": [
-						"If Yan-C-Bin fails a saving throw, he can choose to succeed instead."
-					]
-				},
-				{
-					"name": "Magic Resistance",
-					"entries": [
-						"Yan-C-Bin has advantage on saving throws against spells and other magical effects."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Yan-C-Bin makes two slam attacks."
-					]
-				},
-				{
-					"name": "Slam",
-					"entries": [
-						"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. {@h}20 ({@damage 3d8 + 7}) force damage plus 10 ({@damage 3d6}) lightning damage."
-					]
-				},
-				{
-					"name": "Thundercrack (Recharges after a Short or Long Rest)",
-					"entries": [
-						"Yan-C-Bin unleashes a terrible thundercrack in a 100-foot-radius sphere centered on himself. All other creatures in the area must succeed on a {@dc 24} Constitution saving throw or take 31 ({@damage 9d6}) thunder damage and be {@condition deafened} for 1 minute. On a successful save, a creature takes half as much damage and is {@condition deafened} until the start of Yan-C-Bin's next turn."
-					]
-				},
-				{
-					"name": "Change Shape",
-					"entries": [
-						"Yan-C-Bin polymorphs into a Medium humanoid. While in polymorphed form, a swirling breeze surrounds him, his eyes are pale and cloudy, and he loses the Air Form trait. He can remain in polymorphed form for up to 1 hour. Reverting to his true form requires an action."
-					]
-				},
-				{
-					"name": "Summon Elementals (1/Day)",
-					"entries": [
-						"Yan-C-Bin summons up to three {@creature air elemental||air elementals} and loses 30 hit points for each elemental he summons. Summoned elementals have maximum hit points, appear within 100 feet of Yan-C-Bin, and disappear if Yan-C-Bin is reduced to 0 hit points."
-					]
-				}
-			],
-			"legendary": [
-				{
-					"name": "Peal of Thunder",
-					"entries": [
-						"Yan-C-Bin unleashes a peal of thunder that can be heard out to a range of 300 feet. Each creature within 30 feet of Yan-C-Bin takes 5 ({@damage 1d10}) thunder damage."
-					]
-				},
-				{
-					"name": "Teleport (Costs 2 Actions)",
-					"entries": [
-						"Yan-C-Bin magically teleports up to 120 feet to an unoccupied space he can see. Anything Yan-C-Bin is wearing or carrying is teleported with him."
-					]
-				},
-				{
-					"name": "Suffocate (Costs 3 Actions)",
-					"entries": [
-						"Yan-C-Bin steals the air of one breathing creature he can see within 60 feet of him. The target must make a {@dc 21} Constitution saving throw. On a failed save, the target drops to 0 hit points and is dying. On a successful save, the target can't breathe or speak until the start of its next turn."
-					]
-				}
-			],
-			"legendaryGroup": {
-				"name": "Yan-C-Bin",
-				"source": "PotA"
-			},
-			"page": 221,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Yan-C-Bin's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell gust of wind}",
-						"{@spell invisibility}",
-						"{@spell lightning bolt}"
-					],
-					"daily": {
-						"2e": [
-							"{@spell chain lightning}",
-							"{@spell cloudkill}",
-							"{@spell haste}"
-						]
-					},
-					"ability": "cha"
-				}
-			],
-			"isNamedCreature": true,
-			"traitTags": [
-				"Legendary Resistances",
-				"Magic Resistance"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"AU"
-			],
-			"senseTags": [
-				"B"
-			],
-			"spellcastingTags": [
-				"I"
-			],
-			"damageTags": [
-				"O",
-				"L",
-				"T"
-			],
-			"miscTags": [
-				"MW",
-				"RCH",
-				"AOE"
-			]
-		},
-		{
-			"name": "Aquatic Ghoul",
-			"source": "PotA",
-			"_copy": {
-				"name": "Ghoul",
-				"source": "MM"
-			},
-			"speed": {
-				"walk": 30,
-				"swim": 30
-			},
-			"page": 87
-		},
-		{
-			"name": "Braelen Hatherhand",
-			"isNpc": true,
-			"source": "PotA",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"hp": {
-				"average": 2,
-				"formula": "1d8"
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"action": null,
-			"page": 156,
-			"miscTags": []
-		},
-		{
-			"name": "Bronzefume",
-			"isNpc": true,
-			"source": "PotA",
-			"_copy": {
-				"name": "Dragon Turtle",
-				"source": "MM"
-			},
-			"hp": {
-				"average": 220,
-				"formula": "22d20 + 110"
-			},
-			"page": 92,
-			"cr": "13"
-		},
-		{
-			"name": "Cavil Zaltobar",
-			"isNpc": true,
-			"source": "PotA",
-			"_copy": {
-				"name": "Mage",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the mage",
-						"with": "Cavil",
-						"flags": "i"
-					}
-				}
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 182
-		},
-		{
-			"name": "Darathra Shendrel",
-			"isNpc": true,
-			"source": "PotA",
-			"_copy": {
-				"name": "Knight",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the knight",
-						"with": "Darathra",
-						"flags": "i"
-					}
-				}
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 37
-		},
-		{
-			"name": "Deseyna Majarra",
-			"isNpc": true,
-			"source": "PotA",
-			"_copy": {
-				"name": "Noble",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the noble",
-						"with": "Deseyna",
-						"flags": "i"
-					}
-				}
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"action": null,
-			"page": 126,
-			"miscTags": []
-		},
-		{
-			"name": "Emberhorn Minotaur",
-			"source": "PotA",
-			"_copy": {
-				"name": "Minotaur",
-				"source": "MM",
-				"_mod": {
-					"action": {
-						"mode": "prependArr",
-						"items": {
-							"name": "Burning Breath {@recharge 5}",
-							"entries": [
-								"The minotaur exhales a cloud of burning embers in a 15-foot cone. Each creature in that area must succeed on a DC 14 Dexterity saving throw, taking 21 ({@damage 6d6}) fire damage on a failed save, or half as much damage on a successful one."
-							]
-						}
-					}
-				}
-			},
-			"immune": [
-				"fire"
-			],
-			"miscTags": [
-				"AOE",
-				"MW"
-			],
-			"damageTags": [
 				"F",
-				"S",
 				"P"
 			],
-			"page": 120
-		},
-		{
-			"name": "Zegdar",
-			"isNpc": true,
-			"source": "PotA",
-			"_copy": {
-				"name": "Emberhorn Minotaur",
-				"source": "PotA",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the minotaur",
-						"with": "Zegdar",
-						"flags": "i"
-					}
-				}
-			},
-			"hp": {
-				"average": 117,
-				"formula": "9d10 + 27"
-			},
-			"ac": [
-				{
-					"ac": 16,
-					"from": [
-						"{@item chain mail|phb}"
-					]
-				}
-			],
-			"int": 11,
-			"page": 120
-		},
-		{
-			"name": "Fennor",
-			"isNpc": true,
-			"source": "PotA",
-			"_copy": {
-				"name": "Berserker",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the berserker",
-						"with": "Fennor",
-						"flags": "i"
-					}
-				}
-			},
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"{@item chain shirt|phb}"
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Fennor makes two attacks with her greatsword"
-					]
-				},
-				{
-					"name": "Greatsword",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) slashing damage."
-					]
-				}
-			],
-			"cr": "3",
-			"actionTags": [
-				"Multiattack"
-			],
-			"page": 170
-		},
-		{
-			"name": "Grumink the Renegade",
-			"isNpc": true,
-			"source": "PotA",
-			"_copy": {
-				"name": "Assassin",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the assassin",
-						"with": "Grumink",
-						"flags": "i"
-					}
-				}
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"dwarf"
-				]
-			},
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"alignment": [
-				"C",
-				"E"
-			],
-			"senseTags": [
-				"D"
-			],
-			"page": 210
-		},
-		{
-			"name": "Lyzandra \"Lyzzie\" Calderos",
-			"isNpc": true,
-			"source": "PotA",
-			"_copy": {
-				"name": "Mage",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the mage",
-						"with": "Lyzandra",
-						"flags": "i"
-					}
-				}
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Lyzandra is a 9th-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). Lyzandra has the following wizard spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell fire bolt}",
-								"{@spell light}",
-								"{@spell mage hand}",
-								"{@spell prestidigitation}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell detect magic}",
-								"{@spell mage armor}",
-								"{@spell magic missile}",
-								"{@spell shield}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell misty step}",
-								"{@spell suggestion}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell counterspell}",
-								"{@spell fireball}",
-								"{@spell fly}"
-							]
-						},
-						"4": {
-							"slots": 3,
-							"spells": [
-								"{@spell greater invisibility}",
-								"{@spell wall of fire}"
-							]
-						},
-						"5": {
-							"slots": 1,
-							"spells": [
-								"{@spell immolation|xge}"
-							]
-						}
-					},
-					"ability": "int"
-				}
-			],
-			"page": 110
-		},
-		{
-			"name": "Maegla Tarnlar",
-			"isNpc": true,
-			"source": "PotA",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 25
-		},
-		{
-			"name": "Molten Magma Roper",
-			"source": "PotA",
-			"_copy": {
-				"name": "Roper",
-				"source": "MM",
-				"_mod": {
-					"action": [
-						{
-							"mode": "replaceArr",
-							"replace": "Tendril",
-							"items": {
-								"name": "Tendril",
-								"entries": [
-									"{@atk mw} {@hit 7} to hit, reach 50 ft., one creature. {@h}4 ({@damage 1d8}) fire damage and the target is {@condition grappled} (escape DC 15). Until the grapple ends, the target is {@condition restrained} and has disadvantage on Strength checks and Strength saving throws, and the roper can't use the same tendril on another target. A creature takes 4 ({@damage 1d8}) fire damage each time it ends its turn grappled by the roper."
-								]
-							}
-						},
-						{
-							"mode": "replaceArr",
-							"replace": "Bite",
-							"items": {
-								"name": "Bite",
-								"entries": [
-									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}22 ({@damage 4d8 + 4}) fire damage."
-								]
-							}
-						}
-					]
-				}
-			},
-			"immune": [
-				"fire"
-			],
-			"vulnerable": [
-				"cold"
-			],
-			"damageTags": [
-				"F"
-			],
-			"page": 143
-		},
-		{
-			"name": "Nurvureem, The Dark Lady",
-			"isNpc": true,
-			"isNamedCreature": true,
-			"source": "PotA",
-			"_copy": {
-				"name": "Adult Black Dragon",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the dragon",
-						"with": "Nurvureem",
-						"flags": "i"
-					}
-				},
-				"_trait": {
-					"name": "Shadow Dragon",
-					"source": "MM"
-				}
-			},
-			"damageTags": [
-				"P",
-				"N",
-				"S",
-				"B"
-			],
-			"traitTags": [
-				"Amphibious",
-				"Legendary Resistances",
-				"Sunlight Sensitivity"
-			],
-			"page": 180
-		},
-		{
-			"name": "Padraich",
-			"isNpc": true,
-			"source": "PotA",
-			"_copy": {
-				"name": "Berserker",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the berserker",
-						"with": "Padraich",
-						"flags": "i"
-					}
-				}
-			},
-			"action": [
-				{
-					"name": "Maul",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) bludgeoning damage."
-					]
-				}
-			],
-			"damageTags": [
-				"B"
-			],
-			"page": 170
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			]
 		},
 		{
 			"name": "Renwick",
 			"isNpc": true,
 			"isNamedCreature": true,
 			"source": "PotA",
+			"page": 66,
 			"_copy": {
 				"name": "Lich",
 				"source": "MM",
@@ -5599,13 +4295,13 @@
 					},
 					"ability": "int"
 				}
-			],
-			"page": 66
+			]
 		},
 		{
 			"name": "Rhundorth",
 			"isNpc": true,
 			"source": "PotA",
+			"page": 140,
 			"_copy": {
 				"name": "Guard",
 				"source": "MM",
@@ -5630,21 +4326,371 @@
 					]
 				}
 			],
+			"damageTags": [
+				"B"
+			],
 			"miscTags": [
 				"MW"
+			]
+		},
+		{
+			"name": "Sacred Stone Monk",
+			"source": "PotA",
+			"page": 196,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				14
+			],
+			"hp": {
+				"average": 22,
+				"formula": "4d8 + 4"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 13,
+			"dex": 15,
+			"con": 12,
+			"int": 10,
+			"wis": 14,
+			"cha": 9,
+			"skill": {
+				"acrobatics": "+4",
+				"athletics": "+3",
+				"perception": "+4"
+			},
+			"senses": [
+				"tremorsense 10 ft."
+			],
+			"passive": 14,
+			"languages": [
+				"Common"
+			],
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Unarmored Defense",
+					"entries": [
+						"While the monk is wearing no armor and wielding no shield, its AC includes its Wisdom modifier."
+					]
+				},
+				{
+					"name": "Unarmored Movement",
+					"entries": [
+						"While the monk is wearing no armor and wielding no shield, its walking speed increases by 10 feet (included in its speed)."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The monk makes two melee attacks."
+					]
+				},
+				{
+					"name": "Unarmed Strike",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) bludgeoning damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Parry",
+					"entries": [
+						"The monk adds 2 to its AC against one melee or ranged weapon attack that would hit it. To do so, the monk must see the attacker."
+					]
+				}
+			],
+			"senseTags": [
+				"T"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Parry"
+			],
+			"languageTags": [
+				"C"
 			],
 			"damageTags": [
 				"B"
 			],
-			"page": 140
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Shoalar Quanderil",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 208,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"water genasi"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				10,
+				{
+					"ac": 13,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
+			"hp": {
+				"average": 60,
+				"formula": "8d8 + 24"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 11,
+			"dex": 12,
+			"con": 16,
+			"int": 14,
+			"wis": 10,
+			"cha": 17,
+			"skill": {
+				"arcana": "+4",
+				"deception": "+5",
+				"insight": "+2",
+				"persuasion": "+5"
+			},
+			"passive": 10,
+			"resist": [
+				"acid"
+			],
+			"languages": [
+				"Aquan",
+				"Common"
+			],
+			"cr": "4",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Shoalar's innate spellcasting ability is Constitution (spell save {@dc 13}, {@hit 5} to hit with spell attacks). He can innately cast the following spells:"
+					],
+					"will": [
+						"{@spell shape water|xge}"
+					],
+					"daily": {
+						"1": [
+							"{@spell create or destroy water}"
+						]
+					},
+					"ability": "con"
+				},
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Shoalar is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). He knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell acid splash}",
+								"{@spell chill touch}",
+								"{@spell friends}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell disguise self}",
+								"{@spell mage armor}",
+								"{@spell magic missile}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell misty step}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell tidal wave|xge}"
+							]
+						}
+					},
+					"ability": "cha"
+				}
+			],
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Shoalar can breathe air and water."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 3} to hit, reach 5 ft. or ranged 20/60 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious"
+			],
+			"languageTags": [
+				"AQ",
+				"C"
+			],
+			"damageTags": [
+				"P"
+			],
+			"spellcastingTags": [
+				"CS",
+				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			]
+		},
+		{
+			"name": "Skyweaver",
+			"source": "PotA",
+			"page": 191,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				12,
+				{
+					"ac": 15,
+					"condition": "with {@spell mage armor}",
+					"braces": true
+				}
+			],
+			"hp": {
+				"average": 44,
+				"formula": "8d8 + 8"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 8,
+			"dex": 14,
+			"con": 12,
+			"int": 11,
+			"wis": 10,
+			"cha": 16,
+			"skill": {
+				"deception": "+5",
+				"persuasion": "+5"
+			},
+			"passive": 10,
+			"languages": [
+				"Auran",
+				"Common"
+			],
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The Skyweaver is a 6th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell blade ward}",
+								"{@spell light}",
+								"{@spell message}",
+								"{@spell ray of frost}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell feather fall}",
+								"{@spell mage armor}",
+								"{@spell witch bolt}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell gust of wind}",
+								"{@spell invisibility}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell fly}",
+								"{@spell lightning bolt}"
+							]
+						}
+					},
+					"ability": "cha"
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
+					]
+				}
+			],
+			"languageTags": [
+				"AU",
+				"C"
+			],
+			"damageTags": [
+				"P"
+			],
+			"spellcastingTags": [
+				"CS"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			]
 		},
 		{
 			"name": "Stone Warrior",
 			"source": "PotA",
-			"hp": {
-				"average": 102,
-				"formula": "17d10 + 85"
-			},
+			"page": 97,
 			"_copy": {
 				"name": "Stone Golem",
 				"source": "MM",
@@ -5655,14 +4701,289 @@
 					}
 				}
 			},
+			"hp": {
+				"average": 102,
+				"formula": "17d10 + 85"
+			},
 			"cr": "4",
-			"page": 97,
 			"actionTags": []
+		},
+		{
+			"name": "Stonemelder",
+			"source": "PotA",
+			"page": 197,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item splint armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 75,
+				"formula": "10d8 + 30"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 15,
+			"dex": 10,
+			"con": 16,
+			"int": 12,
+			"wis": 11,
+			"cha": 17,
+			"skill": {
+				"intimidation": "+5",
+				"perception": "+2"
+			},
+			"senses": [
+				"tremorsense 30 ft."
+			],
+			"passive": 12,
+			"languages": [
+				"Common",
+				"Terran"
+			],
+			"cr": "4",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The Stonemelder is a 7th-level spellcaster. Its spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). It knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell acid splash}",
+								"{@spell blade ward}",
+								"{@spell light}",
+								"{@spell mending}",
+								"{@spell mold earth|xge}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell expeditious retreat}",
+								"{@spell false life}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell Maximilian's earthen grasp|xge}",
+								"{@spell shatter}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell erupting earth|xge}",
+								"{@spell meld into stone}"
+							]
+						},
+						"4": {
+							"slots": 1,
+							"spells": [
+								"{@spell stoneskin}"
+							]
+						}
+					},
+					"ability": "cha"
+				}
+			],
+			"trait": [
+				{
+					"name": "Death Burst",
+					"entries": [
+						"When the Stonemelder dies, it turns to stone and explodes in a burst of rock shards, becoming a smoking pile of rubble. Each creature within 10 feet of the exploding Stonemelder must make a {@dc 14} Dexterity saving throw, taking 11 ({@damage 2d10}) bludgeoning damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Black Earth Rod",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) bludgeoning damage. The Stonemelder can also expend a spell slot to deal extra damage, dealing {@dice 2d8} bludgeoning damage for a 1st level slot, plus an additional {@dice 1d8} for each level of the slot above 1st."
+					]
+				}
+			],
+			"traitTags": [
+				"Death Burst"
+			],
+			"senseTags": [
+				"T"
+			],
+			"languageTags": [
+				"C",
+				"T"
+			],
+			"damageTags": [
+				"B"
+			],
+			"spellcastingTags": [
+				"CS"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Thurl Merosska",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 192,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item breastplate|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 71,
+				"formula": "11d8 + 21"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 14,
+			"con": 14,
+			"int": 11,
+			"wis": 10,
+			"cha": 15,
+			"skill": {
+				"animal handling": "+2",
+				"athletics": "+5",
+				"deception": "+4",
+				"persuasion": "+4"
+			},
+			"passive": 10,
+			"languages": [
+				"Auran",
+				"Common"
+			],
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Thurl is a 5th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). Thurl knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell friends}",
+								"{@spell gust|xge}",
+								"{@spell light}",
+								"{@spell message}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell expeditious retreat}",
+								"{@spell feather fall}",
+								"{@spell jump}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell levitate}",
+								"{@spell misty step}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell haste}"
+							]
+						}
+					},
+					"ability": "cha"
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Thurl makes two melee attacks."
+					]
+				},
+				{
+					"name": "Greatsword",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}10 ({@damage 2d6 + 3}) slashing damage."
+					]
+				},
+				{
+					"name": "Lance",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 10 ft., one target. {@h}9 ({@damage 1d12 + 3}) piercing damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Parry",
+					"entries": [
+						"Thurl adds 2 to his AC against one melee attack that would hit him. To do so, Thurl must see the attacker and be wielding a melee weapon."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack",
+				"Parry"
+			],
+			"languageTags": [
+				"AU",
+				"C"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"spellcastingTags": [
+				"CS"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			]
 		},
 		{
 			"name": "Tornscale",
 			"isNpc": true,
 			"source": "PotA",
+			"page": 90,
 			"_copy": {
 				"name": "Lizardfolk",
 				"source": "MM",
@@ -5678,26 +4999,661 @@
 			"hp": {
 				"average": 36,
 				"formula": "4d8 + 4"
-			},
-			"page": 90
+			}
 		},
 		{
-			"name": "Young Purple Worm",
+			"name": "Vanifer",
+			"isNpc": true,
 			"source": "PotA",
-			"_copy": {
-				"name": "Purple Worm",
-				"source": "MM"
+			"page": 203,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"tiefling"
+				]
 			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
 			"hp": {
-				"average": 184,
-				"formula": "15d20 + 90"
+				"average": 112,
+				"formula": "15d8 + 45"
 			},
-			"cr": "13",
-			"page": 113
+			"speed": {
+				"walk": 30
+			},
+			"str": 11,
+			"dex": 16,
+			"con": 17,
+			"int": 12,
+			"wis": 13,
+			"cha": 19,
+			"skill": {
+				"arcana": "+5",
+				"deception": "+8",
+				"performance": "+8"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 11,
+			"immune": [
+				"fire"
+			],
+			"languages": [
+				"Common",
+				"Ignan",
+				"Infernal"
+			],
+			"cr": "9",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Vanifer is a 10th-level spellcaster. Her spellcasting ability is Charisma (spell save {@dc 16}, {@hit 8} to hit with spell attacks). Vanifer knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell chill touch}",
+								"{@spell fire bolt}",
+								"{@spell friends}",
+								"{@spell mage hand}",
+								"{@spell message}",
+								"{@spell produce flame}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell chromatic orb}",
+								"{@spell hellish rebuke}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell darkness}",
+								"{@spell detect thoughts}",
+								"{@spell misty step}",
+								"{@spell scorching ray}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fireball}",
+								"{@spell hypnotic pattern}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell wall of fire}"
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								"{@spell dominate person}"
+							]
+						}
+					},
+					"ability": "cha"
+				}
+			],
+			"trait": [
+				{
+					"name": "Funeral Pyre",
+					"entries": [
+						"When Vanifer drops to 0 hit points, her body is consumed in a flash of fire and smoke. Anything she was wearing or carrying is left behind among ashes."
+					]
+				},
+				{
+					"name": "Legendary Resistance (2/Day)",
+					"entries": [
+						"If Vanifer fails a saving throw, she can choose to succeed instead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Vanifer makes two attacks."
+					]
+				},
+				{
+					"name": "Tinderstrike",
+					"entries": [
+						"{@atk mw,rw} {@hit 9} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}7 ({@damage 1d4 + 5}) piercing damage plus 7 ({@damage 2d6}) fire damage."
+					]
+				}
+			],
+			"legendaryGroup": {
+				"name": "Vanifer",
+				"source": "PotA"
+			},
+			"traitTags": [
+				"Legendary Resistances"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"I",
+				"IG"
+			],
+			"damageTags": [
+				"F",
+				"P"
+			],
+			"spellcastingTags": [
+				"CS"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
+			]
+		},
+		{
+			"name": "Wiggan Nettlebee",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 212,
+			"size": "S",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"halfling"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				11,
+				{
+					"ac": 16,
+					"condition": "with {@spell barkskin}",
+					"braces": true
+				}
+			],
+			"hp": {
+				"average": 36,
+				"formula": "8d6 + 8"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 8,
+			"dex": 12,
+			"con": 12,
+			"int": 14,
+			"wis": 15,
+			"cha": 13,
+			"skill": {
+				"deception": "+3",
+				"insight": "+4"
+			},
+			"passive": 12,
+			"languages": [
+				"Common",
+				"Halfling"
+			],
+			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Wiggan is a 4th-level spellcaster. His spellcasting ability is Wisdom (spell save {@dc 12}, {@hit 4} to hit with spell attacks). He has the following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell light}",
+								"{@spell mending}",
+								"{@spell shillelagh}",
+								"{@spell thaumaturgy}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell animal friendship}",
+								"{@spell cure wounds}",
+								"{@spell healing word}",
+								"{@spell inflict wounds}",
+								"{@spell speak with animals}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell barkskin}",
+								"{@spell spike growth}",
+								"{@spell spiritual weapon}"
+							]
+						}
+					},
+					"ability": "wis"
+				}
+			],
+			"trait": [
+				{
+					"name": "Brave Devotion",
+					"entries": [
+						"Wiggan has advantage on saving throws against being {@condition charmed} or {@condition frightened}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Wiggan makes two attacks with his wooden cane."
+					]
+				},
+				{
+					"name": "Wooden Cane",
+					"entries": [
+						"{@atk mw} {@hit 0} to hit ({@hit 4} to hit with shillelagh), reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) bludgeoning damage, or 6 ({@damage 1d8 + 2}) bludgeoning damage with shillelagh."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"H"
+			],
+			"damageTags": [
+				"B"
+			],
+			"spellcastingTags": [
+				"CC"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Windharrow",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 192,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"half-elf"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 55,
+				"formula": "10d8 + 10"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 16,
+			"con": 12,
+			"int": 14,
+			"wis": 10,
+			"cha": 17,
+			"skill": {
+				"acrobatics": "+5",
+				"deception": "+7",
+				"persuasion": "+5",
+				"performance": "+7",
+				"stealth": "+5"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"languages": [
+				"Auran",
+				"Common",
+				"Elvish"
+			],
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Windharrow is an 8th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). Windharrow knows the following bard spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell friends}",
+								"{@spell prestidigitation}",
+								"{@spell vicious mockery}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell disguise self}",
+								"{@spell dissonant whispers}",
+								"{@spell thunderwave}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell invisibility}",
+								"{@spell shatter}",
+								"{@spell silence}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell nondetection}",
+								"{@spell sending}",
+								"{@spell tongues}"
+							]
+						},
+						"4": {
+							"slots": 2,
+							"spells": [
+								"{@spell confusion}",
+								"{@spell dimension door}"
+							]
+						}
+					},
+					"ability": "cha"
+				}
+			],
+			"trait": [
+				{
+					"name": "Fey Ancestry",
+					"entries": [
+						"Windharrow has advantage on saving throws against being {@condition charmed}, and magic can't put him to sleep."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Windharrow makes two melee attacks."
+					]
+				},
+				{
+					"name": "Rapier",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. {@h}7 ({@damage 1d8 + 3}) piercing damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Fey Ancestry"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"AU",
+				"C",
+				"E"
+			],
+			"damageTags": [
+				"P"
+			],
+			"spellcastingTags": [
+				"CB"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Yan-C-Bin",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "PotA",
+			"page": 221,
+			"size": "H",
+			"type": "elemental",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 22,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 283,
+				"formula": "21d12 + 147"
+			},
+			"speed": {
+				"walk": 50,
+				"fly": 150
+			},
+			"str": 18,
+			"dex": 24,
+			"con": 24,
+			"int": 16,
+			"wis": 21,
+			"cha": 23,
+			"save": {
+				"dex": "+13",
+				"wis": "+11",
+				"cha": "+12"
+			},
+			"senses": [
+				"blindsight 120 ft."
+			],
+			"passive": 15,
+			"resist": [
+				"cold",
+				"fire",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"immune": [
+				"lightning",
+				"poison",
+				"thunder"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained"
+			],
+			"languages": [
+				"Auran"
+			],
+			"cr": "18",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Yan-C-Bin's innate spellcasting ability is Charisma (spell save {@dc 20}, {@hit 12} to hit with spell attacks). He can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell gust of wind}",
+						"{@spell invisibility}",
+						"{@spell lightning bolt}"
+					],
+					"daily": {
+						"2e": [
+							"{@spell chain lightning}",
+							"{@spell cloudkill}",
+							"{@spell haste}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
+			"trait": [
+				{
+					"name": "Air Form",
+					"entries": [
+						"Yan-C-Bin can enter a hostile creature's space and stop there. He can move through a space as narrow as 1 inch wide without squeezing if air could pass through that space."
+					]
+				},
+				{
+					"name": "Empowered Attacks",
+					"entries": [
+						"Yan-C-Bin's slam attacks are treated as magical for the purpose of bypassing resistance and immunity to nonmagical attacks."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"If Yan-C-Bin fails a saving throw, he can choose to succeed instead."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"Yan-C-Bin has advantage on saving throws against spells and other magical effects."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Yan-C-Bin makes two slam attacks."
+					]
+				},
+				{
+					"name": "Slam",
+					"entries": [
+						"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. {@h}20 ({@damage 3d8 + 7}) force damage plus 10 ({@damage 3d6}) lightning damage."
+					]
+				},
+				{
+					"name": "Thundercrack (Recharges after a Short or Long Rest)",
+					"entries": [
+						"Yan-C-Bin unleashes a terrible thundercrack in a 100-foot-radius sphere centered on himself. All other creatures in the area must succeed on a {@dc 24} Constitution saving throw or take 31 ({@damage 9d6}) thunder damage and be {@condition deafened} for 1 minute. On a successful save, a creature takes half as much damage and is {@condition deafened} until the start of Yan-C-Bin's next turn."
+					]
+				},
+				{
+					"name": "Change Shape",
+					"entries": [
+						"Yan-C-Bin polymorphs into a Medium humanoid. While in polymorphed form, a swirling breeze surrounds him, his eyes are pale and cloudy, and he loses the Air Form trait. He can remain in polymorphed form for up to 1 hour. Reverting to his true form requires an action."
+					]
+				},
+				{
+					"name": "Summon Elementals (1/Day)",
+					"entries": [
+						"Yan-C-Bin summons up to three {@creature air elemental||air elementals} and loses 30 hit points for each elemental he summons. Summoned elementals have maximum hit points, appear within 100 feet of Yan-C-Bin, and disappear if Yan-C-Bin is reduced to 0 hit points."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Peal of Thunder",
+					"entries": [
+						"Yan-C-Bin unleashes a peal of thunder that can be heard out to a range of 300 feet. Each creature within 30 feet of Yan-C-Bin takes 5 ({@damage 1d10}) thunder damage."
+					]
+				},
+				{
+					"name": "Teleport (Costs 2 Actions)",
+					"entries": [
+						"Yan-C-Bin magically teleports up to 120 feet to an unoccupied space he can see. Anything Yan-C-Bin is wearing or carrying is teleported with him."
+					]
+				},
+				{
+					"name": "Suffocate (Costs 3 Actions)",
+					"entries": [
+						"Yan-C-Bin steals the air of one breathing creature he can see within 60 feet of him. The target must make a {@dc 21} Constitution saving throw. On a failed save, the target drops to 0 hit points and is dying. On a successful save, the target can't breathe or speak until the start of its next turn."
+					]
+				}
+			],
+			"legendaryGroup": {
+				"name": "Yan-C-Bin",
+				"source": "PotA"
+			},
+			"traitTags": [
+				"Legendary Resistances",
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"AU"
+			],
+			"damageTags": [
+				"L",
+				"O",
+				"T"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			]
 		},
 		{
 			"name": "Young Bulette",
 			"source": "PotA",
+			"page": 139,
 			"_copy": {
 				"name": "Rhinoceros",
 				"source": "MM",
@@ -5722,10 +5678,54 @@
 				}
 			],
 			"damageTags": [
-				"P",
-				"B"
+				"B",
+				"P"
+			]
+		},
+		{
+			"name": "Young Purple Worm",
+			"source": "PotA",
+			"page": 113,
+			"_copy": {
+				"name": "Purple Worm",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 184,
+				"formula": "15d20 + 90"
+			},
+			"cr": "13"
+		},
+		{
+			"name": "Zegdar",
+			"isNpc": true,
+			"source": "PotA",
+			"page": 120,
+			"_copy": {
+				"name": "Emberhorn Minotaur",
+				"source": "PotA",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the minotaur",
+						"with": "Zegdar",
+						"flags": "i"
+					}
+				}
+			},
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item chain mail|phb}"
+					]
+				}
 			],
-			"page": 139
+			"hp": {
+				"average": 117,
+				"formula": "9d10 + 27"
+			},
+			"int": 11
 		}
 	]
 }

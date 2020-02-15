@@ -2,6 +2,8 @@
 	"spell": [
 		{
 			"name": "Distort Value",
+			"source": "AI",
+			"page": 75,
 			"level": 1,
 			"school": "I",
 			"time": [
@@ -28,6 +30,19 @@
 					}
 				}
 			],
+			"entries": [
+				"Do you need to squeeze a few more gold pieces out of a merchant as you try to sell that weird octopus statue you liberated from the chaos temple? Do you need to downplay the worth of some magical assets when the tax collector stops by? Distort value has you covered.",
+				"You cast this spell on an object no more than 1 foot on a side, doubling the object's perceived value by adding illusory flourishes or polish to it, or reducing its perceived value by half with the help of illusory scratches, dents, and other unsightly features. Anyone examining the object can ascertain its true value with a successful Intelligence ({@skill Investigation}) check against your spell save DC."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"When you cast this spell using a spell slot of 2nd level or higher, the maximum size of the object increases by 1 foot for each slot level above 1st."
+					]
+				}
+			],
 			"classes": {
 				"fromClassList": [
 					{
@@ -47,25 +62,12 @@
 						"source": "PHB"
 					}
 				]
-			},
-			"source": "AI",
-			"page": 75,
-			"entries": [
-				"Do you need to squeeze a few more gold pieces out of a merchant as you try to sell that weird octopus statue you liberated from the chaos temple? Do you need to downplay the worth of some magical assets when the tax collector stops by? Distort value has you covered.",
-				"You cast this spell on an object no more than 1 foot on a side, doubling the object's perceived value by adding illusory flourishes or polish to it, or reducing its perceived value by half with the help of illusory scratches, dents, and other unsightly features. Anyone examining the object can ascertain its true value with a successful Intelligence ({@skill Investigation}) check against your spell save DC."
-			],
-			"entriesHigherLevel": [
-				{
-					"type": "entries",
-					"name": "At Higher Levels",
-					"entries": [
-						"When you cast this spell using a spell slot of 2nd level or higher, the maximum size of the object increases by 1 foot for each slot level above 1st."
-					]
-				}
-			]
+			}
 		},
 		{
 			"name": "Fast Friends",
+			"source": "AI",
+			"page": 75,
 			"level": 3,
 			"school": "E",
 			"time": [
@@ -94,24 +96,6 @@
 					"concentration": true
 				}
 			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Bard",
-						"source": "PHB"
-					},
-					{
-						"name": "Cleric",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			},
-			"source": "AI",
-			"page": 75,
 			"entries": [
 				"When you need to make sure something gets done, you can't rely on vague promises, sworn oaths, or binding contracts of employment. When you cast this spell, choose one humanoid within range that can see and hear you, and that can understand you. The creature must succeed on a Wisdom saving throw or become {@condition charmed} by you for the duration. While the creature is {@condition charmed} in this way, it undertakes to perform any services or activities you ask of it in a friendly manner, to the best of its ability.",
 				"You can set the creature new tasks when a previous task is completed, or if you decide to end its current task. If the service or activity might cause harm to the creature, or if it conflicts with the creature's normal activities and desires, the creature can make another Wisdom saving throw to try to end the effect. This save is made with advantage if you or your companions are fighting the creature. If the activity would result in certain death for the creature, the spell ends.",
@@ -132,16 +116,34 @@
 			"savingThrow": [
 				"wisdom"
 			],
+			"miscTags": [
+				"SGT"
+			],
 			"areaTags": [
 				"ST",
 				"MT"
 			],
-			"miscTags": [
-				"SGT"
-			]
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
 		},
 		{
 			"name": "Gift of Gab",
+			"source": "AI",
+			"page": 76,
 			"level": 2,
 			"school": "E",
 			"time": [
@@ -167,20 +169,6 @@
 					"type": "instant"
 				}
 			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Bard",
-						"source": "PHB"
-					},
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			},
-			"source": "AI",
-			"page": 76,
 			"entries": [
 				{
 					"type": "quote",
@@ -194,10 +182,24 @@
 			],
 			"areaTags": [
 				"MT"
-			]
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
 		},
 		{
 			"name": "Incite Greed",
+			"source": "AI",
+			"page": 76,
 			"level": 3,
 			"school": "E",
 			"time": [
@@ -218,7 +220,7 @@
 				"s": true,
 				"m": {
 					"text": "a gem worth at least 50 gp",
-					"cost": 50
+					"cost": 50000
 				}
 			},
 			"duration": [
@@ -230,6 +232,22 @@
 					},
 					"concentration": true
 				}
+			],
+			"entries": [
+				"When you cast this spell, you present the gem used as the material component and choose any number of creatures within range that can see you. Each target must succeed on a Wisdom saving throw or be {@condition charmed} by you until the spell ends, or until you or your companions do anything harmful to it. While {@condition charmed} in this way, a creature can do nothing but use its movement to approach you in a safe manner. While an affected creature is within 5 feet of you, it cannot move, but simply stares greedily at the gem you present.",
+				"At the end of each of its turns, an affected target can make a Wisdom saving throw. If it succeeds, this effect ends for that target."
+			],
+			"conditionInflict": [
+				"charmed"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"MT"
 			],
 			"classes": {
 				"fromClassList": [
@@ -246,28 +264,12 @@
 						"source": "PHB"
 					}
 				]
-			},
-			"source": "AI",
-			"page": 76,
-			"entries": [
-				"When you cast this spell, you present the gem used as the material component and choose any number of creatures within range that can see you. Each target must succeed on a Wisdom saving throw or be {@condition charmed} by you until the spell ends, or until you or your companions do anything harmful to it. While {@condition charmed} in this way, a creature can do nothing but use its movement to approach you in a safe manner. While an affected creature is within 5 feet of you, it cannot move, but simply stares greedily at the gem you present.",
-				"At the end of each of its turns, an affected target can make a Wisdom saving throw. If it succeeds, this effect ends for that target."
-			],
-			"savingThrow": [
-				"wisdom"
-			],
-			"conditionInflict": [
-				"charmed"
-			],
-			"areaTags": [
-				"MT"
-			],
-			"miscTags": [
-				"SGT"
-			]
+			}
 		},
 		{
 			"name": "Jim's Glowing Coin",
+			"source": "AI",
+			"page": 76,
 			"level": 2,
 			"school": "E",
 			"time": [
@@ -297,6 +299,15 @@
 					}
 				}
 			],
+			"entries": [
+				"Of the many tactics employed by master magician and renowned adventurer Jim Darkmagic, the old glowing coin trick is a time-honored classic. When you cast the spell, you hurl the coin that is the spell's material component to any spot within range. The coin lights up as if under the effect of a {@spell light} spell. Each creature of your choice that you can see within 30 feet of the coin must succeed on a Wisdom saving throw or be distracted for the duration. While distracted, a creature has disadvantage on Wisdom ({@skill Perception}) checks and initiative rolls."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"MT"
+			],
 			"classes": {
 				"fromClassList": [
 					{
@@ -304,21 +315,12 @@
 						"source": "PHB"
 					}
 				]
-			},
-			"source": "AI",
-			"page": 76,
-			"entries": [
-				"Of the many tactics employed by master magician and renowned adventurer Jim Darkmagic, the old glowing coin trick is a time-honored classic. When you cast the spell, you hurl the coin that is the spell's material component to any spot within range. The coin lights up as if under the effect of a {@spell light} spell. Each creature of your choice that you can see within 30 feet of the coin must succeed on a Wisdom saving throw or be distracted for the duration. While distracted, a creature has disadvantage on Wisdom ({@skill Perception}) checks and initiative rolls."
-			],
-			"areaTags": [
-				"MT"
-			],
-			"miscTags": [
-				"SGT"
-			]
+			}
 		},
 		{
 			"name": "Jim's Magic Missile",
+			"source": "AI",
+			"page": 76,
 			"level": 1,
 			"school": "V",
 			"time": [
@@ -344,16 +346,6 @@
 					"type": "instant"
 				}
 			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					}
-				]
-			},
-			"source": "AI",
-			"page": 76,
 			"entries": [
 				{
 					"type": "quote",
@@ -378,16 +370,26 @@
 			"damageInflict": [
 				"force"
 			],
+			"miscTags": [
+				"SGT"
+			],
 			"areaTags": [
 				"ST",
 				"MT"
 			],
-			"miscTags": [
-				"SGT"
-			]
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
 		},
 		{
 			"name": "Motivational Speech",
+			"source": "AI",
+			"page": 77,
 			"level": 3,
 			"school": "E",
 			"time": [
@@ -415,20 +417,6 @@
 					}
 				}
 			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Bard",
-						"source": "PHB"
-					},
-					{
-						"name": "Cleric",
-						"source": "PHB"
-					}
-				]
-			},
-			"source": "AI",
-			"page": 77,
 			"entries": [
 				{
 					"type": "quote",
@@ -448,12 +436,24 @@
 					]
 				}
 			],
+			"miscTags": [
+				"SGT"
+			],
 			"areaTags": [
 				"MT"
 			],
-			"miscTags": [
-				"SGT"
-			]
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			}
 		}
 	]
 }

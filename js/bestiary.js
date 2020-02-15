@@ -2,7 +2,6 @@
 
 const JSON_DIR = "data/bestiary/";
 const FLUFF_INDEX = "fluff-index.json";
-const JSON_LIST_NAME = "monster";
 const ECGEN_BASE_PLAYERS = 4; // assume a party size of four
 const renderer = Renderer.get();
 
@@ -29,6 +28,10 @@ class BestiaryPage {
 
 	constructor () {
 		this._pageFilter = new PageFilterBestiary();
+		this._multiSource = new MultiSource({
+			fnHandleData: addMonsters,
+			prop: "monster"
+		});
 	}
 
 	getListItem (mon, mI) {
@@ -39,9 +42,7 @@ class BestiaryPage {
 		Renderer.monster.updateParsed(mon);
 		const isExcluded = ExcludeUtil.isExcluded(mon.name, "monster", mon.source);
 
-		this._pageFilter.addToFilters(mon, isExcluded);
-
-		this._pageFilter.addToFilters(mon);
+		this._pageFilter.mutateAndAddToFilters(mon, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -53,7 +54,7 @@ class BestiaryPage {
 		const cr = mon._pCr || "\u2014";
 
 		eleLi.innerHTML += `<a href="#${hash}" onclick="handleBestiaryLinkClick(event)" class="lst--border">
-			${EncounterBuilder.getButtons(mI, mon.uniqueId)}
+			${EncounterBuilder.getButtons(mI)}
 			<span class="ecgen__name bold col-4-2 pl-0">${mon.name}</span>
 			<span class="type col-4-1">${type}</span>
 			<span class="col-1-7 text-center">${cr}</span>
@@ -70,9 +71,11 @@ class BestiaryPage {
 				type,
 				cr,
 				group: mon.group || "",
-				alias: (mon.alias || []).map(it => `"${it}"`).join(","),
-				isExcluded,
-				uniqueId: mon.uniqueId ? mon.uniqueId : mI
+				alias: (mon.alias || []).map(it => `"${it}"`).join(",")
+			},
+			{
+				uniqueId: mon.uniqueId ? mon.uniqueId : mI,
+				isExcluded
 			}
 		);
 
@@ -87,7 +90,7 @@ class BestiaryPage {
 			const m = monsters[li.ix];
 			return this._pageFilter.toDisplay(f, m);
 		});
-		onFilterChangeMulti(monsters);
+		MultiSource.onFilterChangeMulti(monsters);
 		encounterBuilder.resetCache();
 	}
 
@@ -120,7 +123,7 @@ class BestiaryPage {
 			if (cr === "Unknown") return $(`<span class="col-1-2 text-center">${cr}</span>`);
 
 			const $iptCr = $(`<input value="${cr}" class="ecgen__cr_input form-control form-control--minimal input-xs">`)
-				.change(() => encounterBuilder.doCrChange($iptCr, pinId, mon._isScaledCr));
+				.change(() => encounterBuilder.pDoCrChange($iptCr, pinId, mon._isScaledCr));
 
 			return $$`<span class="col-1-2 text-center">${$iptCr}</span>`;
 		})();
@@ -136,8 +139,8 @@ class BestiaryPage {
 				${$eleCount1}
 			</a>
 
-			<div class="list__item_inner ecgen__visible--flex lst--border">
-				${EncounterBuilder.$getSublistButtons(pinId, mon.uniqueId, true)}
+			<div class="lst__wrp-cells ecgen__visible--flex lst--border">
+				${EncounterBuilder.$getSublistButtons(pinId, getMonCustomHashId(mon))}
 				<span class="ecgen__name--sub col-3-5">${name}</span>
 				${$hovStatblock}
 				${$hovToken}
@@ -157,10 +160,11 @@ class BestiaryPage {
 				source: Parser.sourceJsonToAbv(mon.source),
 				type,
 				cr,
-				count,
-				uniqueId: data.uniqueId || ""
+				count
 			},
 			{
+				uniqueId: data.uniqueId || "",
+				customHashId: getMonCustomHashId(mon),
 				$elesCount: [$eleCount1, $eleCount2]
 			}
 		);
@@ -177,9 +181,9 @@ class BestiaryPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub, sublistFuncPreload);
+		await ListUtil.pSetFromSubHashes(sub, pPreloadSublistSources);
 
 		printBookView.handleSub(sub);
 
@@ -198,7 +202,7 @@ class BestiaryPage {
 
 	async pOnLoad () {
 		window.loadHash = this.doLoadHash.bind(this);
-		window.loadSubHash = this.doLoadSubHash.bind(this);
+		window.loadSubHash = this.pDoLoadSubHash.bind(this);
 
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
@@ -213,7 +217,7 @@ class BestiaryPage {
 			Renderer.monster.pPopulateMetaAndLanguages(meta, languages),
 			(async () => ixFluff = await DataUtil.loadJSON(JSON_DIR + FLUFF_INDEX))()
 		]);
-		await pMultisourceLoad(JSON_DIR, JSON_LIST_NAME, this._pageFilter.filterBox, pPageInit, addMonsters, pPostLoad);
+		await bestiaryPage._multiSource.pMultisourceLoad(JSON_DIR, this._pageFilter.filterBox, pPageInit, addMonsters, pPostLoad);
 		if (Hist.lastLoadedId == null) Hist._freshLoad();
 		ExcludeUtil.checkShowAllExcluded(monsters, $(`#pagecontent`));
 		bestiaryPage.handleFilterChange();
@@ -250,7 +254,7 @@ let printBookView;
 
 async function pPageInit (loadedSources) {
 	Object.keys(loadedSources)
-		.map(src => new FilterItem({item: src, changeFn: loadSource(JSON_LIST_NAME, addMonsters)}))
+		.map(src => new FilterItem({item: src, pFnChange: bestiaryPage._multiSource.pLoadSource.bind(bestiaryPage._multiSource)}))
 		.forEach(fi => bestiaryPage._pageFilter.sourceFilter.addItem(fi));
 
 	list = ListUtil.initList(
@@ -277,8 +281,8 @@ async function pPageInit (loadedSources) {
 		listClass: "submonsters",
 		fnSort: PageFilterBestiary.sortMonsters,
 		onUpdate: onSublistChange,
-		uidHandler: (mon, uid) => ScaleCreature.scale(mon, Number(uid.split("_").last())),
-		uidUnpacker: getUnpackedUid
+		customHashHandler: (mon, uid) => ScaleCreature.scale(mon, Number(uid.split("_").last())),
+		customHashUnpacker: getUnpackedCustomHashId
 	});
 	SortUtil.initBtnSortHandlers($("#sublistsort"), subList);
 
@@ -378,14 +382,14 @@ class EncounterBuilderUtils {
 		return ListUtil.sublist.items.map(it => {
 			const mon = monsters[it.ix];
 			if (mon.cr) {
-				const crScaled = it.values.uniqueId ? Number(getUnpackedUid(it.values.uniqueId).scaled) : null;
+				const crScaled = it.data.customHashId ? Number(getUnpackedCustomHashId(it.data.customHashId).scaled) : null;
 				return {
 					cr: it.values.cr,
 					count: Number(it.values.count),
 
 					// used for encounter adjuster
 					crScaled: crScaled,
-					uniqueId: it.values.uniqueId,
+					customHashId: it.data.customHashId,
 					hash: UrlUtil.autoEncodeHash(mon)
 				}
 			}
@@ -446,11 +450,16 @@ let mI = 0;
 const lastRendered = {mon: null, isScaled: false};
 function getScaledData () {
 	const last = lastRendered.mon;
-	return {scaled: last._isScaledCr, uniqueId: getUniqueId(last.name, last.source, last._isScaledCr)};
+	return {scaled: last._isScaledCr, customHashId: getMonCustomHashId(last)};
 }
 
-function getUniqueId (name, source, scaledCr) {
+function getCustomHashId (name, source, scaledCr) {
 	return `${name}_${source}_${scaledCr}`.toLowerCase();
+}
+
+function getMonCustomHashId (mon) {
+	if (mon._isScaledCr != null) return getCustomHashId(mon.name, mon.source, mon._isScaledCr);
+	return null;
 }
 
 function handleBestiaryLiClick (evt, listItem) {
@@ -528,32 +537,25 @@ function addMonsters (data) {
 	Renderer.hover.bindPopoutButton(monsters, popoutHandlerGenerator);
 	UrlUtil.bindLinkExportButton(bestiaryPage._pageFilter.filterBox);
 	ListUtil.bindDownloadButton();
-	ListUtil.bindUploadButton(sublistFuncPreload);
+	ListUtil.bindUploadButton(pPreloadSublistSources);
 
 	Renderer.utils.bindPronounceButtons();
 }
 
-function sublistFuncPreload (json, funcOnload) {
+async function pPreloadSublistSources (json) {
 	if (json.l && json.l.items && json.l.sources) { // if it's an encounter file
 		json.items = json.l.items;
 		json.sources = json.l.sources;
 	}
-	const loaded = Object.keys(loadedSources).filter(it => loadedSources[it].loaded);
+	const loaded = Object.keys(bestiaryPage._multiSource.loadedSources)
+		.filter(it => bestiaryPage._multiSource.loadedSources[it].loaded);
 	const lowerSources = json.sources.map(it => it.toLowerCase());
-	const toLoad = Object.keys(loadedSources).filter(it => !loaded.includes(it)).filter(it => lowerSources.includes(it.toLowerCase()));
+	const toLoad = Object.keys(bestiaryPage._multiSource.loadedSources)
+		.filter(it => !loaded.includes(it))
+		.filter(it => lowerSources.includes(it.toLowerCase()));
 	const loadTotal = toLoad.length;
 	if (loadTotal) {
-		let loadCount = 0;
-		toLoad.forEach(src => {
-			loadSource(JSON_LIST_NAME, (monsters) => {
-				addMonsters(monsters);
-				if (++loadCount === loadTotal) {
-					funcOnload();
-				}
-			})(src, "yes");
-		});
-	} else {
-		funcOnload();
+		await Promise.all(toLoad.map(src => bestiaryPage._multiSource.pLoadSource(src, "yes")));
 	}
 }
 
@@ -625,7 +627,7 @@ function renderStatblock (mon, isScaled) {
 				const $img = $(`<img src="${imgLink}" class="mon__token" alt="${mon.name}">`)
 					.on("error", () => imgError($img));
 				$tokenImages.push($img);
-				const $lnkToken = $$`<a href="${imgLink}" class="mon__wrp-token" target="_blank" rel="noopener">${$img}</a>`.appendTo($floatToken);
+				const $lnkToken = $$`<a href="${imgLink}" class="mon__wrp-token" target="_blank" rel="noopener noreferrer">${$img}</a>`.appendTo($floatToken);
 
 				const altArtMeta = [];
 
@@ -656,7 +658,7 @@ function renderStatblock (mon, isScaled) {
 									);
 								});
 							$tokenImages.push($img);
-							meta.$ele = $$`<a href="${imgLink}" class="mon__wrp-token" target="_blank" rel="noopener">${$img}</a>`
+							meta.$ele = $$`<a href="${imgLink}" class="mon__wrp-token" target="_blank" rel="noopener noreferrer">${$img}</a>`
 								.hide()
 								.css("max-width", "100%") // hack to ensure the token gets shown at max width on first look
 								.appendTo($floatToken);
@@ -850,12 +852,11 @@ function renderStatblock (mon, isScaled) {
 }
 
 function handleUnknownHash (link, sub) {
-	const src = Object.keys(loadedSources).find(src => src.toLowerCase() === decodeURIComponent(link.split(HASH_LIST_SEP)[1]).toLowerCase());
+	const src = Object.keys(bestiaryPage._multiSource.loadedSources)
+		.find(src => src.toLowerCase() === decodeURIComponent(link.split(HASH_LIST_SEP)[1]).toLowerCase());
 	if (src) {
-		loadSource(JSON_LIST_NAME, (monsters) => {
-			addMonsters(monsters);
-			Hist.hashChange();
-		})(src, "yes");
+		bestiaryPage._multiSource.pLoadSource(src, "yes")
+			.then(() => Hist.hashChange());
 	}
 }
 
@@ -870,8 +871,8 @@ function dcRollerClick (event, ele, exp) {
 	Renderer.dice.rollerClick(event, ele, JSON.stringify(it));
 }
 
-function getUnpackedUid (uniqueId) {
-	return {scaled: Number(uniqueId.split("_").last()), uniqueId};
+function getUnpackedCustomHashId (customHashId) {
+	return {scaled: Number(customHashId.split("_").last()), customHashId};
 }
 
 function getCr (obj) {

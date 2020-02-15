@@ -217,7 +217,7 @@ class AcConvert {
 
 		AcConvert._ITEM_LOOKUP = {};
 		items
-			.filter(it => it.type === "HA" || it.type === "MA" || it.type === "LA" || type === "S")
+			.filter(it => it.type === "HA" || it.type === "MA" || it.type === "LA" || it.type === "S")
 			.forEach(it => {
 				const lowName = it.name.toLowerCase();
 				AcConvert._ITEM_LOOKUP[lowName] = {source: it.source, isExact: true};

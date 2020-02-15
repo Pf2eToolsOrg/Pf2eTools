@@ -55,8 +55,7 @@ class TimeTrackerComponent extends BaseComponent {
 	_triggerMapUpdate (prop) {
 		this._state[prop] = Object.values(this._state[prop])
 			.filter(it => !it.isDeleted)
-			.map(it => ({[it.id]: it}))
-			.reduce((a, b) => Object.assign(a, b), {});
+			.mergeMap(it => ({[it.id]: it}));
 	}
 }
 
@@ -566,30 +565,26 @@ TimeTrackerBase._DEFAULT_STATE = {
 	days: {
 		...[...new Array(7)]
 			.map((_, i) => TimeTrackerBase.getGenericDay(i))
-			.map(it => ({[it.id]: it}))
-			.reduce((a, b) => Object.assign(a, b), {})
+			.mergeMap(it => ({[it.id]: it}))
 	},
 	months: {
 		...[...new Array(12)]
 			.map((_, i) => TimeTrackerBase.getGenericMonth(i))
-			.map(it => ({[it.id]: it}))
-			.reduce((a, b) => Object.assign(a, b), {})
+			.mergeMap(it => ({[it.id]: it}))
 	},
 	events: {},
 	encounters: {},
 	seasons: {
 		...[...new Array(4)]
 			.map((_, i) => TimeTrackerBase.getGenericSeason(i))
-			.map(it => ({[it.id]: it}))
-			.reduce((a, b) => Object.assign(a, b), {})
+			.mergeMap(it => ({[it.id]: it}))
 	},
 	years: {},
 	eras: {},
 	moons: {
 		...[...new Array(1)]
 			.map((_, i) => TimeTrackerBase.getGenericMoon(i))
-			.map(it => ({[it.id]: it}))
-			.reduce((a, b) => Object.assign(a, b), {})
+			.mergeMap(it => ({[it.id]: it}))
 	}
 };
 TimeTrackerBase._MOON_PHASES = [
@@ -1035,7 +1030,7 @@ class TimeTrackerRoot_Clock extends TimeTrackerComponent {
 										type: "list",
 										items: encounter.data.l.items.map(it => {
 											const spl = decodeURIComponent(it.h).split("_");
-											const crPart = it.uniqueId ? Parser.numberToCr(Number(it.uniqueId.split("_").last())) : null;
+											const crPart = it.customHashId ? Parser.numberToCr(Number(it.customHashId.split("_").last())) : null;
 											const name = spl[0].toTitleCase();
 											return `${it.c || 1}× {@creature ${name}|${spl[1]}${crPart != null ? `|${name} (CR ${crPart})|${crPart}` : ""}}`;
 										})
@@ -1183,7 +1178,7 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 		this._parent = parent;
 		const {getTimeInfo} = parent;
 
-		const $btnRandomise = $(`<button class="btn btn-xxs btn-default dm-time__btn-random-weather" title="Randomize Weather (SHIFT to Reroll Using Previous Settings)"><span class="fal fa-dice"/></button>`)
+		const $btnRandomise = $(`<button class="btn btn-xxs btn-default dm-time__btn-random-weather" title="Roll Weather (SHIFT to Reroll Using Previous Settings)"><span class="fal fa-dice"/></button>`)
 			.click(async evt => {
 				const randomState = await TimeTrackerRoot_Clock_RandomWeather.pGetUserInput(
 					{
@@ -1211,7 +1206,7 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 						const meta = TimeTrackerRoot_Clock_Weather._TEMPERATURE_META[i];
 						return {
 							name: it.uppercaseFirst(),
-							buttonClass: meta.class,
+							buttonClassActive: meta.class ? `${meta.class} active` : null,
 							iconClass: `fal ${meta.icon}`
 						}
 					}),
@@ -1436,7 +1431,7 @@ TimeTrackerRoot_Clock_Weather._DEFAULT_STATE = {
 TimeTrackerRoot_Clock_Weather._TEMPERATURE_META = [
 	{icon: "fa-temperature-frigid", class: "btn-primary"},
 	{icon: "fa-thermometer-quarter", class: "btn-info"},
-	{icon: "fa-thermometer-half", class: "btn-default"},
+	{icon: "fa-thermometer-half"},
 	{icon: "fa-thermometer-three-quarters", class: "btn-warning"},
 	{icon: "fa-temperature-hot", class: "btn-danger"}
 ];
@@ -1483,7 +1478,7 @@ class TimeTrackerRoot_Clock_RandomWeather extends BaseComponent {
 				}
 			})
 			.map(v => {
-				const $btn = $$`<div class="m-2 btn ${v.buttonClass} ui__btn-xxl-square flex-col flex-h-center">
+				const $btn = $$`<div class="m-2 btn btn-default ui__btn-xxl-square flex-col flex-h-center">
 						<div class="ui-icn__wrp-icon ${v.iconClass} mb-1"></div>
 						<div class="whitespace-normal w-100">${v.name}</div>
 					</div>`
@@ -1492,7 +1487,14 @@ class TimeTrackerRoot_Clock_RandomWeather extends BaseComponent {
 						else this._state.allowedTemperatures = [...this._state.allowedTemperatures, v.temperature];
 					});
 
-				const hookTemperature = () => $btn.toggleClass("active", this._state.allowedTemperatures.includes(v.temperature));
+				const hookTemperature = () => {
+					const isActive = this._state.allowedTemperatures.includes(v.temperature);
+					if (v.buttonClass) {
+						$btn.toggleClass("btn-default", !isActive);
+						$btn.toggleClass(v.buttonClass, isActive);
+					}
+					$btn.toggleClass("active", isActive);
+				};
 				this._addHookBase("allowedTemperatures", hookTemperature);
 				hookTemperature();
 
@@ -1562,7 +1564,7 @@ class TimeTrackerRoot_Clock_RandomWeather extends BaseComponent {
 				return $btn;
 			});
 
-		const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
+		const $btnOk = $(`<button class="btn btn-default">Confirm and Roll Weather</button>`)
 			.click(() => {
 				if (!this._state.allowedTemperatures.length || !this._state.allowedPrecipitations.length || !this._state.allowedWindSpeeds.length) {
 					JqueryUtil.doToast({content: `Please select allowed values for all sections!`, type: "warning"})
@@ -2166,7 +2168,7 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 				}
 			}
 
-			this._parent.set("encounters", [...Object.values(this._parent.get("encounters")), nuEncounter].map(it => ({[it.id]: it})).reduce((a, b) => Object.assign(a, b), {}));
+			this._parent.set("encounters", [...Object.values(this._parent.get("encounters")), nuEncounter].mergeMap(it => ({[it.id]: it})));
 		};
 
 		const ctxEncounterId = ContextUtil.getNextGenericMenuId();
@@ -2193,18 +2195,9 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 				return pHandleContextSwitch(evt, ele, $invokedOn, $selectedMenu, nuEncounter);
 			},
 			[
-				{
-					text: "From Current Bestiary Encounter",
-					title: "SHIFT to Add at Current Time"
-				},
-				{
-					text: "From Saved Bestiary Encounter",
-					title: "SHIFT to Add at Current Time"
-				},
-				{
-					text: "From Bestiary Encounter File",
-					title: "SHIFT to Add at Current Time"
-				}
+				new ContextUtil.Action("From Current Bestiary Encounter", null, {helpText: "SHIFT to Add at Current Time"}),
+				new ContextUtil.Action("From Saved Bestiary Encounter", null, {helpText: "SHIFT to Add at Current Time"}),
+				new ContextUtil.Action("From Bestiary Encounter File", null, {helpText: "SHIFT to Add at Current Time"})
 			]
 		);
 		const $btnAddEncounter = $(`<button class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus"/> Add Encounter</button>`)
@@ -2989,7 +2982,7 @@ class TimeTrackerRoot_Settings extends TimeTrackerComponent {
 				const comp = new Cls(this._board, this._$wrpPanel);
 				this._tmpComps[prop].push(comp);
 				comp.setStateFrom({state: nxt});
-				comp._addHookAll("state", () => this._parent.set(prop, (this._tmpComps[prop] || []).map(c => c.getState()).filter(it => !it.isDeleted).map(it => ({[it.id]: it})).reduce((a, b) => Object.assign(a, b), {})));
+				comp._addHookAll("state", () => this._parent.set(prop, (this._tmpComps[prop] || []).map(c => c.getState()).filter(it => !it.isDeleted).mergeMap(it => ({[it.id]: it}))));
 				comp.render($wrp, this._tmpComps, prop);
 			});
 
@@ -3248,7 +3241,7 @@ class TimeTrackerRoot_Settings_Event extends TimeTrackerComponent {
 			const otherEvents = Object.values(parent.get("events"))
 				.filter(it => !(it.isDeleted || it.id === comp.getState().id));
 
-			parent.set("events", [...otherEvents, comp.getState()].map(it => ({[it.id]: it})).reduce((a, b) => Object.assign(a, b), {}));
+			parent.set("events", [...otherEvents, comp.getState()].mergeMap(it => ({[it.id]: it})));
 		});
 		return comp;
 	}

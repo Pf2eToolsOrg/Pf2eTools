@@ -14,6 +14,71 @@
 	},
 	"monster": [
 		{
+			"name": "Skull Flier",
+			"source": "SLW",
+			"size": "M",
+			"type": "construct",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 24,
+				"formula": "3d8"
+			},
+			"speed": {
+				"walk": 10,
+				"fly": 50
+			},
+			"str": 10,
+			"dex": 14,
+			"con": 10,
+			"int": 1,
+			"wis": 10,
+			"cha": 3,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"cr": "1/2",
+			"action": [
+				{
+					"name": "Sting",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}5 ({@damage 1d6 + 2}) piercing damage, and the target must make a {@dc 11} Constitution saving throw, taking 10 ({@damage 3d6}) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but {@condition poisoned} for 1 hour, even after regaining hit points, and is {@condition paralyzed} while {@condition poisoned} in this way."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"damageTags": [
+				"I",
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
 			"name": "Statue of Talos",
 			"source": "SLW",
 			"size": "L",
@@ -125,74 +190,9 @@
 			]
 		},
 		{
-			"name": "Skull Flier",
-			"source": "SLW",
-			"size": "M",
-			"type": "construct",
-			"alignment": [
-				"U"
-			],
-			"ac": [
-				{
-					"ac": 16,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 24,
-				"formula": "3d8"
-			},
-			"speed": {
-				"walk": 10,
-				"fly": 50
-			},
-			"str": 10,
-			"dex": 14,
-			"con": 10,
-			"int": 1,
-			"wis": 10,
-			"cha": 3,
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 10,
-			"immune": [
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"charmed",
-				"frightened",
-				"paralyzed",
-				"petrified",
-				"poisoned"
-			],
-			"cr": "1/2",
-			"action": [
-				{
-					"name": "Sting",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}5 ({@damage 1d6 + 2}) piercing damage, and the target must make a {@dc 11} Constitution saving throw, taking 10 ({@damage 3d6}) poison damage on a failed save, or half as much damage on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but {@condition poisoned} for 1 hour, even after regaining hit points, and is {@condition paralyzed} while {@condition poisoned} in this way."
-					]
-				}
-			],
-			"senseTags": [
-				"D"
-			],
-			"damageTags": [
-				"P",
-				"I"
-			],
-			"miscTags": [
-				"MW"
-			]
-		},
-		{
 			"name": "Tooth-N-Claw",
-			"source": "SLW",
 			"isNpc": true,
+			"source": "SLW",
 			"size": "M",
 			"type": "fiend",
 			"alignment": [
@@ -274,12 +274,12 @@
 				"I"
 			],
 			"damageTags": [
-				"P",
-				"C"
+				"C",
+				"P"
 			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
 			]
 		}
 	]

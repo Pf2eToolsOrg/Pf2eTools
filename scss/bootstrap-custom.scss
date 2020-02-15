@@ -12,6 +12,11 @@
 /* Generic/utilities */
 .code {
 	font-family: 'Courier New', monospace;
+
+	&--narrow {
+		// This has slightly narrower characters on my Windows machine :^)
+		font-family: monospace;
+	}
 }
 
 .clickable {
@@ -36,6 +41,10 @@
 
 .italic {
 	font-style: italic !important;
+}
+
+i > i {
+	font-style: initial;
 }
 
 .underline {
@@ -138,16 +147,40 @@
 	width: 100% !important;
 }
 
+.w-90 {
+	width: 90% !important;
+}
+
+.w-80 {
+	width: 80% !important;
+}
+
 .w-75 {
 	width: 75% !important;
+}
+
+.w-70 {
+	width: 70% !important;
 }
 
 .w-66 {
 	width: 66.6666666% !important;
 }
 
+.w-60 {
+	width: 60% !important;
+}
+
 .w-50 {
 	width: 50% !important;
+
+	&--mr-2 {
+		width: calc(50% - #{$spacer * 0.5}) !important;
+	}
+}
+
+.w-40 {
+	width: 40% !important;
 }
 
 .w-33 {
@@ -176,6 +209,11 @@
 
 .h-100 {
 	height: 100% !important;
+}
+
+// Often useful as a hack to force flexbox to behave
+.min-h-0 {
+	min-height: 0;
 }
 
 .min-h-100 {
@@ -240,7 +278,7 @@
 	flex-shrink: 0;
 }
 
-.grow {
+.ve-grow {
 	flex-grow: 1;
 }
 
@@ -337,6 +375,10 @@
 	column-count: 2;
 	break-inside: avoid-column;
 
+	> * {
+		break-inside: avoid-column;
+	}
+
 	@media (max-width: 768px) {
 		column-count: 1;
 	}
@@ -345,6 +387,10 @@
 .columns-3 {
 	column-count: 3;
 	break-inside: avoid-column;
+
+	> * {
+		break-inside: avoid-column;
+	}
 
 	@media (max-width: 768px) {
 		column-count: 2;
@@ -359,6 +405,10 @@
 	column-count: 4;
 	break-inside: avoid-column;
 
+	> * {
+		break-inside: avoid-column;
+	}
+
 	@media (max-width: 768px) {
 		column-count: 3;
 	}
@@ -372,6 +422,10 @@
 	column-count: 5;
 	break-inside: avoid-column;
 
+	> * {
+		break-inside: avoid-column;
+	}
+
 	@media (max-width: 768px) {
 		column-count: 3;
 	}
@@ -384,6 +438,10 @@
 .columns-6 {
 	column-count: 6;
 	break-inside: avoid-column;
+
+	> * {
+		break-inside: avoid-column;
+	}
 
 	@media (max-width: 768px) {
 		column-count: 3;
@@ -514,7 +572,7 @@ body::-webkit-scrollbar {
 }
 
 .fade {
-	transition: opacity 0.05s linear;
+	transition: opacity $time-3-frames linear;
 }
 
 .dropdown-menu--side {
@@ -1631,15 +1689,28 @@ body::-webkit-scrollbar {
 }
 
 .dropdown-menu > .disabled > span {
-	color: #777;
+	pointer-events: none;
+	color: $rgb-ctx-item-text-disabled;
 
 	&:focus,
 	&:hover {
-		color: #777;
+		color: $rgb-ctx-item-text-disabled;
 		text-decoration: none;
 		cursor: not-allowed;
 		background-color: transparent;
 		background-image: none;
+	}
+}
+
+.dropdown-menu > .ctx-danger > span {
+	background: $rgb-btn-danger-bg-red;
+	color: white;
+
+	&:focus,
+	&:hover {
+		color: white;
+		text-decoration: none;
+		background-color: $rgb-btn-danger-border-red;
 	}
 }
 /* *** */
@@ -1690,28 +1761,39 @@ body::-webkit-scrollbar {
 }
 
 // redefine this here to ensure it overrides all the important display types above
-.hidden {
+.hidden,
+// the namespaced Foundry alias
+.ve-hidden {
 	display: none !important;
 }
 
 .mobile__ {
-	&flex-col {
-		@media only screen and (max-width: $width-screen-sm) {
+	@media only screen and (min-width: $width-screen-sm) {
+		&visible {
+			display: none !important;
+		}
+	}
+
+	@media only screen and (max-width: $width-screen-sm) {
+		&hidden {
+			display: none !important;
+		}
+
+		&flex-col {
 			display: flex !important;
 			flex-direction: column !important;
 		}
 
-		@media only screen and (max-width: $width-screen-xs) {
-			display: flex !important;
-			flex-direction: column !important;
+		&m-1 {
+			margin: ($spacer * 0.25) !important;
+		}
+
+		&mb-2 {
+			margin-bottom: ($spacer * 0.5) !important;
 		}
 	}
+}
 
-	&m-1 {
-		margin: ($spacer * 0.25) !important;
-	}
-
-	&mb-2 {
-		margin-bottom: ($spacer * 0.5) !important;
-	}
+.last-mr-0:last-child {
+	margin-right: 0 !important;
 }

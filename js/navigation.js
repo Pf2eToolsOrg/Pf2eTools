@@ -120,6 +120,7 @@ class NavBar {
 		addLi(ulReferences, "conditionsdiseases.html", "Conditions & Diseases");
 		addLi(ulReferences, "deities.html", "Deities");
 		addLi(ulReferences, "items.html", "Items");
+		addLi(ulReferences, "languages.html", "Languages");
 		addLi(ulReferences, "optionalfeatures.html", "Other Options and Features");
 		addLi(ulReferences, "rewards.html", "Other Rewards");
 		addLi(ulReferences, "psionics.html", "Psionics");
@@ -128,10 +129,11 @@ class NavBar {
 
 		const ulUtils = addDropdown(navBar, "Utilities");
 		addLi(ulUtils, "blacklist.html", "Content Blacklist");
+		addLi(ulUtils, "makebrew.html", "Homebrew Builder");
 		addLi(ulUtils, "managebrew.html", "Homebrew Manager");
+		addDivider(ulUtils);
 		addLi(ulUtils, "inittrackerplayerview.html", "Initiative Tracker Player View");
 		addDivider(ulUtils);
-		addLi(ulUtils, "makebrew.html", "Homebrew Builder");
 		addLi(ulUtils, "renderdemo.html", "Renderer Demo");
 		addLi(ulUtils, "makecards.html", "RPG Cards JSON Builder");
 		addLi(ulUtils, "converter.html", "Text Converter");

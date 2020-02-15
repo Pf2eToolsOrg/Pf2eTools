@@ -58,9 +58,11 @@ class RewardsPage extends ListPage {
 			{
 				hash,
 				source,
-				type: reward.type,
-				isExcluded,
-				uniqueId: reward.uniqueId ? reward.uniqueId : rwI
+				type: reward.type
+			},
+			{
+				uniqueId: reward.uniqueId ? reward.uniqueId : rwI,
+				isExcluded
 			}
 		);
 
@@ -115,9 +117,9 @@ class RewardsPage extends ListPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 	}
 }
 

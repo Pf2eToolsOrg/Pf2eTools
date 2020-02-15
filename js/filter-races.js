@@ -167,7 +167,7 @@ class PageFilterRaces extends PageFilter {
 			],
 			umbrellaItems: ["Choose"]
 		});
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["Base Race", "SRD"]});
 
 		this._sizeFilter = sizeFilter;
 		this._asiFilter = asiFilter;
@@ -178,7 +178,7 @@ class PageFilterRaces extends PageFilter {
 		this._miscFilter = miscFilter;
 	}
 
-	addToFilters (race, isExcluded) {
+	mutateForFilters (race) {
 		if (race.ability) {
 			const abils = PageFilterRaces.getAbilityObjs(race.ability);
 			race._fAbility = abils.map(a => PageFilterRaces.mapAbilityObjToFull(a));
@@ -196,18 +196,19 @@ class PageFilterRaces extends PageFilter {
 		race._fSources = ListUtil.getCompleteFilterSources(race);
 		race._fLangs = PageFilterRaces.getLanguageProficiencyTags(race.languageProficiencies);
 		race._fMisc = race.srd ? ["SRD"] : [];
+		if (race._isBaseRace) race._fMisc.push("Base Race");
 
 		const ability = race.ability ? Renderer.getAbilityData(race.ability) : {asTextShort: "None"};
 		race._slAbility = ability.asTextShort;
+	}
 
-		// region populate filters
-		if (!isExcluded) {
-			this._sourceFilter.addItem(race._fSources);
-			this._sizeFilter.addItem(race.size);
-			this._asiFilter.addItem(race._fAbility);
-			this._baseRaceFilter.addItem(race._baseName);
-		}
-		// endregion
+	addToFilters (race, isExcluded) {
+		if (isExcluded) return;
+
+		this._sourceFilter.addItem(race._fSources);
+		this._sizeFilter.addItem(race.size);
+		this._asiFilter.addItem(race._fAbility);
+		this._baseRaceFilter.addItem(race._baseName);
 	}
 
 	async _pPopulateBoxOptions (opts) {

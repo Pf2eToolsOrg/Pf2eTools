@@ -13,7 +13,13 @@ class ListItem {
 		this.values = values || {};
 		this.data = data || {};
 
-		this.searchText = `${this.name} - ${Object.values(this.values).join(" - ")}`.toLowerCase();
+		let searchText = `${this.name} - `;
+		for (const k in this.values) {
+			const v = this.values[k]; // unsafe for performance
+			if (!v) continue;
+			searchText += `${v} - `;
+		}
+		this.searchText = searchText.toLowerCase();
 
 		this._isSelected = false;
 	}
@@ -37,7 +43,8 @@ class ListItem {
 class List {
 	/**
 	 * @param [opts] Options object.
-	 * @param [opts.fnSort] Sort function. Should accept `(a, b, o)` where `o` is an options object.
+	 * @param [opts.fnSort] Sort function. Should accept `(a, b, o)` where `o` is an options object. Pass `null` to
+	 * disable sorting.
 	 * @param [opts.$iptSearch] Search input.
 	 * @param opts.$wrpList List wrapper.
 	 * @param [opts.isUseJquery] If the list items are using jQuery elements. Significantly slower for large lists.
@@ -47,7 +54,7 @@ class List {
 	constructor (opts) {
 		this._$iptSearch = opts.$iptSearch;
 		this._$wrpList = opts.$wrpList;
-		this._fnSort = opts.fnSort || SortUtil.listSort;
+		this._fnSort = opts.fnSort === undefined ? SortUtil.listSort : opts.fnSort;
 
 		this._items = [];
 		this._eventHandlers = {};
@@ -69,7 +76,6 @@ class List {
 		this._nextList = null;
 		this._lastSelection = null;
 		this._isMultiSelection = false;
-		this._selectedItems = [];
 		// endregion
 	}
 
@@ -85,7 +91,7 @@ class List {
 
 		// This should only be run after all the elements are ready from page load
 		if (this._$iptSearch) {
-			UiUtil.bindTypingEnd(this._$iptSearch, () => this.search(this._$iptSearch.val()));
+			SearchWidget.bindTypingEnd({$iptSearch: this._$iptSearch, fnKeyup: () => this.search(this._$iptSearch.val())});
 			this._searchTerm = List._getCleanSearchTerm(this._$iptSearch.val());
 		}
 		this._doSearch();
@@ -103,7 +109,7 @@ class List {
 		else this._searchedItems = [...this._items];
 
 		// Never show excluded items
-		this._searchedItems = this._searchedItems.filter(it => !it.values.isExcluded);
+		this._searchedItems = this._searchedItems.filter(it => !it.data.isExcluded);
 
 		this._doFilter();
 	}
@@ -116,7 +122,7 @@ class List {
 
 	_doSort () {
 		const opts = {sortBy: this._sortBy};
-		this._filteredSortedItems.sort((a, b) => this._fnSort(a, b, opts));
+		if (this._fnSort) this._filteredSortedItems.sort((a, b) => this._fnSort(a, b, opts));
 		if (this._sortDir === "desc") this._filteredSortedItems.reverse();
 
 		this._doRender();
@@ -182,11 +188,6 @@ class List {
 		if (~ixItem) {
 			this._isDirty = true;
 			this._items.splice(ixItem, 1);
-
-			if (this._selectedItems.length) {
-				const ixSelectedItem = this._selectedItems.findIndex(it => it.ix === ix);
-				this._selectedItems.splice(ixSelectedItem, 1);
-			}
 		}
 	}
 
@@ -195,18 +196,20 @@ class List {
 		if (~ixItem) {
 			this._isDirty = true;
 			this._items.splice(ixItem, 1);
+		}
+	}
 
-			if (this._selectedItems.length) {
-				const ixSelectedItem = this._selectedItems.findIndex(it => it.values[valueName] === value);
-				this._selectedItems.splice(ixSelectedItem, 1);
-			}
+	removeItemByData (dataName, value) {
+		const ixItem = this._items.findIndex(it => it.data[dataName] === value);
+		if (~ixItem) {
+			this._isDirty = true;
+			this._items.splice(ixItem, 1);
 		}
 	}
 
 	removeAllItems () {
 		this._isDirty = true;
 		this._items = [];
-		this._selectedItems = [];
 	}
 
 	on (eventName, handler) { (this._eventHandlers[eventName] = this._eventHandlers[eventName] || []).push(handler); }
@@ -222,6 +225,7 @@ class List {
 	 * @param opts Options object.
 	 * @param opts.fnGetName Function which gets the name from a dataSource item.
 	 * @param opts.fnGetValues Function which gets list values from a dataSource item.
+	 * @param opts.fnGetData Function which gets list data from a listItem and dataSource item.
 	 * @param [opts.fnBindListeners] Function which binds event listeners to the list.
 	 */
 	doAbsorbItems (dataArr, opts) {
@@ -240,9 +244,11 @@ class List {
 				i,
 				node,
 				opts.fnGetName(dataItem),
-				opts.fnGetValues ? opts.fnGetValues(dataItem) : {}
+				opts.fnGetValues ? opts.fnGetValues(dataItem) : {},
+				{}
 			);
-			if (opts.fnBindListeners) opts.fnBindListeners(this, listItem, dataItem);
+			if (opts.fnGetData) listItem.data = opts.fnGetData(listItem, dataItem);
+			if (opts.fnBindListeners) opts.fnBindListeners(listItem, dataItem);
 			this.addItem(listItem);
 		}
 	}

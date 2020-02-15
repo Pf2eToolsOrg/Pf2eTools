@@ -37,6 +37,27 @@ Be sure to close any running Chrome instances (and kill any remaining Chrome pro
 You can convert stat blocks to JSON for importing via [this converter](converter.html).
 
 ## Dev Notes
+### Data Sources and Versioning
+Only "official" (that is, published by WotC) data is to be included in the site. Anything else should be added to the homebrew repository.
+
+Prioritise RAW above all else. Aim to provide a 1:1 copy of the original data. Obvious typos (for instance, mathematical errors in creature statblocks) may be corrected at the discretion of the maintainer(s).
+
+Aim to use the latest version of any published material. Older versions which are sufficiently different (and relevant to community interests) can be moved to the homebrew repository.
+
+#### Page-Specific Notes
+
+*Languages page.* As there is no well-defined RAW format for language data, the languages page collects together information from several disjoint places. A priority list of sources to be considered is:
+- The "Languages" section on PHB p123
+- official sources, in order of:
+  - PHB > (DMG) > MM
+  - Other "official" (i.e. published) products in release-date order
+  - "Unofficial" products (i.e. Unearthed Arcana; Plane Shift) in release-date order
+
+Within this ordering, the following prioritisation should be made:
+- text that directly refers to or describes a language, in order of first appearance in the product (i.e. if a language is mentioned on page 2 and 10 of a book, the entry on page 2 should be taken as the primary source)
+- text that is given for player use (e.g. the "Druidic" feature of the Druid class) (the text of which may have to be adapted to fit a reference format; i.e. changing "You can understand..." to "A speaker or X language can understand...).
+
+
 ### Target JavaScript Version
 Targeting ES6 was the original intent, but more modern features have long since crept into the code. Therefore, if something is available as standard in both Chrome and Firefox (preferably in versions dating back at least a couple of months), and isn't bleeding-edge, one can reasonable justify using it. As with all things, use common sense.
 
@@ -84,15 +105,11 @@ Replace: `$1$3`
 - Nouns: a space and the short name of the unit of measure (including the trailing period) should be used, e.g. `blindsight 60 ft.`, `darkvision 120 ft.`
 - Time: a slash, `/`, with no spaces on either side followed by the capitalised unit of time, e.g. `2/Turn`, `3/Day`
 
-##### Convention for Dice
+#### Convention for Dice
 Dice should be written as `[X]dY[ <+|-|×> Z]`, i.e. with a space between dice and operator, and a space between operator and modifier. Some examples of acceptable formatting are: `d6`, `2d6`, or `2d6 + 1`.
 
-##### Convention for Item Names
+#### Convention for Item Names
 Item names should be title-case, with the exception of units in parentheses, which should be sentence-case. Items who's volume or amount is specified by container (e.g. `(vial)`) treat the container as a unit.
-
-##### Misc
-
-- A handy dice regex: `([1-9]\d*)?d([1-9]\d*)(\s?([+-])\s?(\d+))?` (and to output as tagged dice in the basic case: `{@dice $0}`). Warning: does not detect already-tagged dice expressions; be wary of double-tagging.
 
 ### Mouse/Keyboard Events
 Avoid binding ALT-modified events, as these are not available under MacOS or various Linux flavors. Binding SHIFT-/CTRL-modified events is preferred.

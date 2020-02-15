@@ -25,10 +25,12 @@
 	width: 600px;
 	max-width: 92vw;
 	min-width: 150px;
-	z-index: 200;
+	z-index: $z-hwin;
 	box-shadow: 0 0 12px 0 black;
 	animation-name: kf-fade-in, kf-pop-in;
 	animation-duration: 150ms, 75ms;
+	display: flex;
+	flex-direction: column;
 
 	&--minified {
 		.hoverborder {

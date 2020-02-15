@@ -58,9 +58,11 @@ class ConditionsDiseasesPage extends ListPage {
 			{
 				hash,
 				source,
-				type: it.__prop,
-				isExcluded,
-				uniqueId: it.uniqueId ? it.uniqueId : cdI
+				type: it.__prop
+			},
+			{
+				uniqueId: it.uniqueId ? it.uniqueId : cdI,
+				isExcluded
 			}
 		);
 
@@ -120,7 +122,7 @@ class ConditionsDiseasesPage extends ListPage {
 				isImageTab,
 				$content,
 				it,
-				(fluffJson) => it.fluff || fluffJson.condition.find(cd => it.name === cd.name && it.source === cd.source),
+				(fluffJson) => it.fluff || fluffJson.conditionFluff.find(cd => it.name === cd.name && it.source === cd.source),
 				`data/fluff-conditionsdiseases.json`,
 				() => true
 			);
@@ -142,9 +144,9 @@ class ConditionsDiseasesPage extends ListPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 	}
 }
 

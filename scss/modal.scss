@@ -1,0 +1,40 @@
+@import 'vars';
+
+.modal__ {
+	&wrp {
+		position: fixed;
+		z-index: $z-modal-wrapper;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $rgb-modal-overlay-grey;
+
+		&--no-centre {
+			display: block;
+		}
+	}
+
+	&outer {
+		position: relative;
+		z-index: $z-modal-inner;
+		top: initial;
+		left: initial;
+		margin: 60px auto;
+		padding: 5px 10px;
+		min-width: 600px;
+		display: flex;
+		max-height: 95%;
+		max-width: 95%;
+		overflow: auto;
+		transform: translateZ(0);
+	}
+
+	&inner {
+		width: 100%;
+		height: 100%;
+	}
+}

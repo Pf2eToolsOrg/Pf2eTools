@@ -17,32 +17,12 @@ function getHiddenModeList (psionic) {
 }
 
 class PsionicsPage extends ListPage {
-	static _sortFilterTypes (a, b) {
-		a = a.item; b = b.item;
-		a = Parser.psiTypeToMeta(a);
-		b = Parser.psiTypeToMeta(b);
-		return (Number(a.hasOrder) - Number(b.hasOrder)) || SortUtil.ascSortLower(a.full, b.full);
-	}
-
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance({
-			deselFn: () => false
-		});
-		const typeFilter = new Filter({header: "Type", items: [Parser.PSI_ABV_TYPE_TALENT, Parser.PSI_ABV_TYPE_DISCIPLINE], displayFn: Parser.psiTypeToFull, itemSortFn: PsionicsPage._sortFilterTypes});
-		const orderFilter = new Filter({
-			header: "Order",
-			items: ["Avatar", "Awakened", "Immortal", "Nomad", "Wu Jen", Parser.PSI_ORDER_NONE]
-		});
-
+		const pageFilter = new PageFilterPsionics();
 		super({
 			dataSource: "data/psionics.json",
 
-			filters: [
-				sourceFilter,
-				typeFilter,
-				orderFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "psionics",
 
@@ -100,19 +80,10 @@ class PsionicsPage extends ListPage {
 				sorter: (a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source)
 			}
 		});
-
-		this._sourceFilter = sourceFilter;
-		this._typeFilter = typeFilter;
 	}
 
 	getListItem (p, psI, isExcluded) {
-		p._fOrder = Parser.psiOrderToFull(p.order);
-
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(p.source);
-			this._typeFilter.addItem(p.type);
-		}
+		this._pageFilter.mutateAndAddToFilters(p, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -137,9 +108,11 @@ class PsionicsPage extends ListPage {
 				source,
 				type: typeMeta.full,
 				order: p._fOrder,
-				uniqueId: p.uniqueId ? p.uniqueId : psI,
-				isExcluded,
 				searchModeList: getHiddenModeList(p)
+			},
+			{
+				uniqueId: p.uniqueId ? p.uniqueId : psI,
+				isExcluded
 			}
 		);
 
@@ -151,15 +124,7 @@ class PsionicsPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter(item => {
-			const p = this._dataList[item.ix];
-			return this._filterBox.toDisplay(
-				f,
-				p.source,
-				p.type,
-				p._fOrder
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
@@ -194,14 +159,12 @@ class PsionicsPage extends ListPage {
 
 		$(`#pagecontent`).empty().append(RenderPsionics.$getRenderedPsionic(psi));
 
-		loadSubHash([]);
-
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 
 		this._bookView.handleSub(sub);
 	}

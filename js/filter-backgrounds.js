@@ -10,21 +10,21 @@ class PageFilterBackgrounds extends PageFilter {
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
 	}
 
-	addToFilters (bg, isExcluded) {
+	mutateForFilters (bg) {
 		const skillDisplay = Renderer.background.getSkillSummary(bg.skillProficiencies, true, bg._fSkills = []);
 		Renderer.background.getToolSummary(bg.toolProficiencies, true, bg._fTools = []);
 		Renderer.background.getLanguageSummary(bg.languageProficiencies, true, bg._fLangs = []);
 		bg._fMisc = bg.srd ? ["SRD"] : [];
 		bg._skillDisplay = skillDisplay;
+	}
 
-		// region populate filters
-		if (!isExcluded) {
-			this._sourceFilter.addItem(bg.source);
-			this._skillFilter.addItem(bg._fSkills);
-			this._toolFilter.addItem(bg._fTools);
-			this._languageFilter.addItem(bg._fLangs);
-		}
-		// endregion
+	addToFilters (bg, isExcluded) {
+		if (isExcluded) return;
+
+		this._sourceFilter.addItem(bg.source);
+		this._skillFilter.addItem(bg._fSkills);
+		this._toolFilter.addItem(bg._fTools);
+		this._languageFilter.addItem(bg._fLangs);
 	}
 
 	async _pPopulateBoxOptions (opts) {

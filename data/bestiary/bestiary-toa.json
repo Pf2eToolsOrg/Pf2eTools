@@ -17,8 +17,11 @@
 	},
 	"monster": [
 		{
-			"source": "ToA",
 			"name": "Acererak",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "ToA",
+			"page": 209,
 			"size": "M",
 			"type": "undead",
 			"alignment": [
@@ -57,6 +60,10 @@
 				"insight": "+12",
 				"perception": "+12"
 			},
+			"senses": [
+				"truesight 120 ft."
+			],
+			"passive": 22,
 			"resist": [
 				"cold",
 				"lightning"
@@ -84,10 +91,6 @@
 				"poisoned",
 				"stunned"
 			],
-			"senses": [
-				"truesight 120 ft."
-			],
-			"passive": 22,
 			"languages": [
 				"Abyssal",
 				"Common",
@@ -260,43 +263,41 @@
 					]
 				}
 			],
-			"page": 209,
-			"isNamedCreature": true,
-			"isNpc": true,
 			"traitTags": [
 				"Legendary Resistances",
 				"Rejuvenation",
 				"Turn Resistance"
 			],
+			"senseTags": [
+				"U"
+			],
 			"languageTags": [
 				"AB",
 				"C",
-				"DR",
 				"D",
+				"DR",
 				"E",
 				"GI",
 				"I",
 				"P",
 				"U"
 			],
-			"senseTags": [
-				"U"
+			"damageTags": [
+				"B",
+				"C",
+				"N"
 			],
 			"spellcastingTags": [
 				"CW"
-			],
-			"damageTags": [
-				"C",
-				"B",
-				"N"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Albino Dwarf Spirit Warrior",
+			"source": "ToA",
+			"page": 210,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -333,13 +334,13 @@
 				"stealth": "+3",
 				"survival": "+4"
 			},
-			"resist": [
-				"poison"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 14,
+			"resist": [
+				"poison"
+			],
 			"languages": [
 				"Common",
 				"Dwarvish"
@@ -379,29 +380,29 @@
 					]
 				}
 			],
-			"page": 210,
+			"senseTags": [
+				"D"
+			],
 			"languageTags": [
 				"C",
 				"D"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"S"
 			],
 			"spellcastingTags": [
 				"I"
 			],
-			"damageTags": [
-				"S"
-			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Albino Dwarf Warrior",
+			"source": "ToA",
+			"page": 210,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -438,13 +439,13 @@
 				"stealth": "+3",
 				"survival": "+4"
 			},
-			"resist": [
-				"poison"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 14,
+			"resist": [
+				"poison"
+			],
 			"languages": [
 				"Common",
 				"Dwarvish"
@@ -466,26 +467,26 @@
 					]
 				}
 			],
-			"page": 210,
-			"languageTags": [
-				"C",
+			"senseTags": [
 				"D"
 			],
-			"senseTags": [
+			"languageTags": [
+				"C",
 				"D"
 			],
 			"damageTags": [
 				"S"
 			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Aldani (Lobsterfolk)",
+			"source": "ToA",
+			"page": 210,
 			"size": "M",
 			"type": "monstrosity",
 			"alignment": [
@@ -518,13 +519,13 @@
 				"perception": "+4",
 				"survival": "+4"
 			},
-			"resist": [
-				"poison"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 14,
+			"resist": [
+				"poison"
+			],
 			"languages": [
 				"Common"
 			],
@@ -551,18 +552,17 @@
 					]
 				}
 			],
-			"page": 210,
 			"traitTags": [
 				"Amphibious"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"C"
-			],
-			"senseTags": [
-				"D"
 			],
 			"damageTags": [
 				"S"
@@ -572,8 +572,9 @@
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Almiraj",
+			"source": "ToA",
+			"page": 211,
 			"size": "S",
 			"type": "beast",
 			"alignment": [
@@ -626,7 +627,6 @@
 					]
 				}
 			],
-			"page": 211,
 			"familiar": true,
 			"traitTags": [
 				"Keen Senses"
@@ -642,8 +642,9 @@
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Ankylosaurus Zombie",
+			"source": "ToA",
+			"page": 240,
 			"size": "H",
 			"type": "undead",
 			"alignment": [
@@ -670,16 +671,16 @@
 			"int": 2,
 			"wis": 6,
 			"cha": 3,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 8,
 			"immune": [
 				"poison"
 			],
 			"conditionImmune": [
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 8,
 			"cr": "3",
 			"trait": [
 				{
@@ -697,7 +698,6 @@
 					]
 				}
 			],
-			"page": 240,
 			"traitTags": [
 				"Undead Fortitude"
 			],
@@ -713,9 +713,10 @@
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Artus Cimber",
 			"isNpc": true,
+			"source": "ToA",
+			"page": 212,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -758,6 +759,7 @@
 				"insight": "+6",
 				"survival": "+9"
 			},
+			"passive": 13,
 			"immune": [
 				{
 					"immune": [
@@ -766,7 +768,6 @@
 					"preNote": "While wearing the Ring of Winter:"
 				}
 			],
-			"passive": 13,
 			"languages": [
 				"Common",
 				"Draconic",
@@ -826,29 +827,30 @@
 					]
 				}
 			],
-			"page": 212,
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"C",
-				"DR",
 				"D",
+				"DR",
 				"GO"
 			],
 			"damageTags": [
 				"P"
 			],
 			"miscTags": [
+				"AOE",
 				"MW",
-				"RW",
 				"RNG",
-				"AOE"
+				"RW"
 			]
 		},
 		{
 			"name": "Asharra",
 			"isNpc": true,
+			"source": "ToA",
+			"page": 69,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -856,7 +858,6 @@
 					"aarakocra"
 				]
 			},
-			"source": "ToA",
 			"alignment": [
 				"L",
 				"N"
@@ -889,42 +890,6 @@
 				"Common"
 			],
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Dive Attack",
-					"entries": [
-						"If the aarakocra is flying and dives at least 30 ft. straight toward a target and then hits it with a melee weapon attack, the attack deals an extra 3 ({@dice 1d6}) damage to the target."
-					]
-				},
-				{
-					"type": "inset",
-					"name": "Dance of the Seven Winds",
-					"entries": [
-						"Asharra knows a ritual called the Dance of the Seven Winds, which temporarily grants magical flight to as many as ten nonflying creatures. The ritual, which takes 10 minutes to complete, can only be performed by an aarakocra elder and requires a black orchid as a material component.",
-						"Asharra must grind the orchid to powder, inhale it, and dance in circles around the ritual's beneficiaries uninterrupted while seven other aarakocra chant prayers to the Wind Dukes of Aaqa. When the dance concludes, Asharra's wings disappear and she loses the ability to fly. The ritual's beneficiaries each gain a magical flying speed of 30 feet (allowing them to fly 4 miles per hour). This benefit lasts for 3 days, after which Asharra's wings reappear and she regains the ability to fly."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Talon",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) slashing damage."
-					]
-				},
-				{
-					"name": "Javelin",
-					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
-					]
-				},
-				{
-					"name": "Summon Air Elemental",
-					"entries": [
-						"Five aarakocra within 30 feet of each other can magically summon an {@creature air elemental}. Each of the five must use its action and movement on three consecutive turns to perform an aerial dance and must maintain concentration while doing so (as if concentrating on a spell). When all five have finished their third turn of the dance, the elemental appears in an unoccupied space within 60 feet of them. It is friendly toward them and obeys their spoken commands. It remains for 1 hour, until it or all its summoners die, or until any of its summoners dismisses it as a bonus action. A summoner can't perform the dance again until it finishes a short rest. When the elemental returns to the Elemental Plane of Air, any aarakocra within 5 feet of it can return with it."
-					]
-				}
-			],
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -966,17 +931,52 @@
 					"ability": "wis"
 				}
 			],
-			"page": 69,
+			"trait": [
+				{
+					"name": "Dive Attack",
+					"entries": [
+						"If the aarakocra is flying and dives at least 30 ft. straight toward a target and then hits it with a melee weapon attack, the attack deals an extra 3 ({@dice 1d6}) damage to the target."
+					]
+				},
+				{
+					"type": "inset",
+					"name": "Dance of the Seven Winds",
+					"entries": [
+						"Asharra knows a ritual called the Dance of the Seven Winds, which temporarily grants magical flight to as many as ten nonflying creatures. The ritual, which takes 10 minutes to complete, can only be performed by an aarakocra elder and requires a black orchid as a material component.",
+						"Asharra must grind the orchid to powder, inhale it, and dance in circles around the ritual's beneficiaries uninterrupted while seven other aarakocra chant prayers to the Wind Dukes of Aaqa. When the dance concludes, Asharra's wings disappear and she loses the ability to fly. The ritual's beneficiaries each gain a magical flying speed of 30 feet (allowing them to fly 4 miles per hour). This benefit lasts for 3 days, after which Asharra's wings reappear and she regains the ability to fly."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Talon",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) slashing damage."
+					]
+				},
+				{
+					"name": "Javelin",
+					"entries": [
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
+					]
+				},
+				{
+					"name": "Summon Air Elemental",
+					"entries": [
+						"Five aarakocra within 30 feet of each other can magically summon an {@creature air elemental}. Each of the five must use its action and movement on three consecutive turns to perform an aerial dance and must maintain concentration while doing so (as if concentrating on a spell). When all five have finished their third turn of the dance, the elemental appears in an unoccupied space within 60 feet of them. It is friendly toward them and obeys their spoken commands. It remains for 1 hour, until it or all its summoners die, or until any of its summoners dismisses it as a bonus action. A summoner can't perform the dance again until it finishes a short rest. When the elemental returns to the Elemental Plane of Air, any aarakocra within 5 feet of it can return with it."
+					]
+				}
+			],
 			"languageTags": [
 				"AU",
 				"C"
 			],
+			"damageTags": [
+				"P",
+				"S"
+			],
 			"spellcastingTags": [
 				"CD"
-			],
-			"damageTags": [
-				"S",
-				"P"
 			],
 			"miscTags": [
 				"MW",
@@ -985,8 +985,17 @@
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Assassin Vine",
+			"source": "ToA",
+			"page": 213,
+			"otherSources": [
+				{
+					"source": "GoS"
+				},
+				{
+					"source": "SDW"
+				}
+			],
 			"size": "L",
 			"type": "plant",
 			"alignment": [
@@ -1014,6 +1023,10 @@
 			"int": 1,
 			"wis": 10,
 			"cha": 1,
+			"senses": [
+				"blindsight 30 ft."
+			],
+			"passive": 10,
 			"resist": [
 				"cold",
 				"fire"
@@ -1024,10 +1037,6 @@
 				"exhaustion",
 				"prone"
 			],
-			"senses": [
-				"blindsight 30 ft."
-			],
-			"passive": 10,
 			"cr": "3",
 			"trait": [
 				{
@@ -1051,7 +1060,6 @@
 					]
 				}
 			],
-			"page": 213,
 			"traitTags": [
 				"False Appearance"
 			],
@@ -1065,19 +1073,12 @@
 			"miscTags": [
 				"MW",
 				"RCH"
-			],
-			"otherSources": [
-				{
-					"source": "GoS"
-				},
-				{
-					"source": "SDW"
-				}
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Atropal",
+			"source": "ToA",
+			"page": 214,
 			"size": "H",
 			"type": {
 				"type": "undead",
@@ -1114,6 +1115,11 @@
 				"con": "+11",
 				"wis": "+9"
 			},
+			"senses": [
+				"darkvision 120 ft.",
+				"truesight 120 ft."
+			],
+			"passive": 14,
 			"immune": [
 				"cold",
 				"necrotic",
@@ -1126,20 +1132,15 @@
 					"note": "from nonmagical attacks"
 				}
 			],
+			"vulnerable": [
+				"radiant"
+			],
 			"conditionImmune": [
 				"charmed",
 				"exhaustion",
 				"frightened",
 				"poisoned"
 			],
-			"vulnerable": [
-				"radiant"
-			],
-			"senses": [
-				"darkvision 120 ft.",
-				"truesight 120 ft."
-			],
-			"passive": 14,
 			"languages": [
 				"understands Celestial but utters only obscene nonsense"
 			],
@@ -1210,29 +1211,52 @@
 					]
 				}
 			],
-			"page": 214,
 			"traitTags": [
 				"Magic Resistance",
 				"Turn Resistance"
-			],
-			"languageTags": [
-				"CE"
 			],
 			"senseTags": [
 				"SD",
 				"U"
 			],
+			"languageTags": [
+				"CE"
+			],
 			"damageTags": [
-				"N",
-				"C"
+				"C",
+				"N"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "Azaka Stormfang",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 33,
+			"_copy": {
+				"name": "Weretiger",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "weretiger",
+						"with": "Azaka",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"G"
+			]
+		},
+		{
 			"name": "Bag of Nails",
 			"isNpc": true,
+			"source": "ToA",
+			"page": 102,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1240,7 +1264,6 @@
 					"tabaxi"
 				]
 			},
-			"source": "ToA",
 			"alignment": [
 				"C",
 				"N"
@@ -1277,20 +1300,19 @@
 				"perception": "+3",
 				"stealth": "+9"
 			},
-			"resist": [
-				"poison"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 13,
+			"resist": [
+				"poison"
+			],
 			"languages": [
 				"Thieves' cant",
 				"Common",
 				"Dwarvish"
 			],
 			"cr": "8",
-			"page": 102,
 			"trait": [
 				{
 					"name": "Feline Agility",
@@ -1346,31 +1368,83 @@
 			"traitTags": [
 				"Sneak Attack"
 			],
+			"senseTags": [
+				"D"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
-				"TC",
 				"C",
-				"D"
-			],
-			"senseTags": [
-				"D"
+				"D",
+				"TC"
 			],
 			"damageTags": [
-				"S",
+				"I",
 				"P",
-				"I"
+				"S"
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
 		},
 		{
+			"name": "Blind Artist",
+			"isNpc": true,
 			"source": "ToA",
+			"page": 164,
+			"_copy": {
+				"name": "Zombie",
+				"source": "MM"
+			},
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
+			"conditionImmune": [
+				"blinded",
+				"poisoned"
+			],
+			"senseTags": [
+				"B"
+			]
+		},
+		{
+			"name": "Bosco Daggerhand",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 68,
+			"_copy": {
+				"name": "Thug",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the thug",
+						"with": "Bosco",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Special Equipment",
+							"entries": [
+								"Bosco wears a {@item ring of animal influence}."
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
 			"name": "Chwinga",
+			"source": "ToA",
+			"page": 216,
 			"size": "T",
 			"type": "elemental",
 			"alignment": [
@@ -1394,7 +1468,6 @@
 			"int": 14,
 			"wis": 16,
 			"cha": 16,
-			"passive": 17,
 			"skill": {
 				"acrobatics": "+7",
 				"perception": "+7",
@@ -1403,6 +1476,7 @@
 			"senses": [
 				"blindsight 60 ft."
 			],
+			"passive": 17,
 			"cr": "0",
 			"spellcasting": [
 				{
@@ -1447,7 +1521,6 @@
 					]
 				}
 			],
-			"page": 216,
 			"senseTags": [
 				"B"
 			],
@@ -1457,9 +1530,10 @@
 		},
 		{
 			"name": "Clay Gladiator",
+			"source": "ToA",
+			"page": 100,
 			"size": "M",
 			"type": "construct",
-			"source": "ToA",
 			"alignment": [
 				"U"
 			],
@@ -1495,6 +1569,7 @@
 				"athletics": "+10",
 				"intimidation": "+5"
 			},
+			"passive": 11,
 			"immune": [
 				"poison"
 			],
@@ -1503,9 +1578,7 @@
 				"frightened",
 				"poisoned"
 			],
-			"passive": 11,
 			"cr": "5",
-			"page": 100,
 			"trait": [
 				{
 					"name": "Climbing",
@@ -1562,17 +1635,51 @@
 				"Parry"
 			],
 			"damageTags": [
-				"P",
-				"B"
+				"B",
+				"P"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "Clay No-Face",
+			"isNpc": true,
 			"source": "ToA",
+			"page": 179,
+			"size": "T",
+			"type": "construct",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				10
+			],
+			"hp": {
+				"special": "1"
+			},
+			"speed": {
+				"walk": 10
+			},
+			"str": 10,
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"passive": 10,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			]
+		},
+		{
 			"name": "Dragonbait",
 			"isNpc": true,
+			"source": "ToA",
+			"page": 218,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1653,7 +1760,6 @@
 					]
 				}
 			],
-			"page": 218,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -1665,17 +1771,40 @@
 				"CS"
 			],
 			"damageTags": [
-				"S",
-				"R"
+				"R",
+				"S"
 			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
 			]
 		},
 		{
+			"name": "Drufi",
+			"isNpc": true,
 			"source": "ToA",
+			"page": 64,
+			"_copy": {
+				"name": "Frost Giant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the giant",
+						"with": "Drufi",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
 			"name": "Eblis",
+			"source": "ToA",
+			"page": 219,
 			"size": "L",
 			"type": "monstrosity",
 			"alignment": [
@@ -1738,7 +1867,6 @@
 					]
 				}
 			],
-			"page": 219,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -1746,19 +1874,152 @@
 				"AU",
 				"C"
 			],
-			"spellcastingTags": [
-				"I"
-			],
 			"damageTags": [
 				"P"
+			],
+			"spellcastingTags": [
+				"I"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "Ekene-Afa",
+			"isNpc": true,
 			"source": "ToA",
+			"page": 25,
+			"_copy": {
+				"name": "Gladiator",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the gladiator",
+						"with": "Ekene-Afa",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"G"
+			]
+		},
+		{
+			"name": "Eku",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 34,
+			"_copy": {
+				"name": "Couatl",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the couatl",
+						"with": "Eku",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Elok Jaharwon",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 67,
+			"_copy": {
+				"name": "Wereboar",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the wereboar",
+						"with": "Elok",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
+			"name": "Faroul",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 34,
+			"_copy": {
+				"name": "Scout",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the scout",
+						"with": "Faroul",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"G"
+			]
+		},
+		{
+			"name": "Fenthaza",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 113,
+			"_copy": {
+				"name": "Yuan-ti Nightmare Speaker",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the yuan-ti",
+						"with": "Fenthaza",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Flask of Wine",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 35,
+			"_copy": {
+				"name": "Tabaxi Hunter",
+				"source": "ToA",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the tabaxi",
+						"with": "Flask of Wine",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
 			"name": "Flying Monkey",
+			"source": "ToA",
+			"page": 220,
 			"size": "S",
 			"type": "beast",
 			"alignment": [
@@ -1806,11 +2067,10 @@
 					]
 				}
 			],
-			"page": 220,
+			"familiar": true,
 			"traitTags": [
 				"Pack Tactics"
 			],
-			"familiar": true,
 			"damageTags": [
 				"P"
 			],
@@ -1819,8 +2079,9 @@
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Giant Four-Armed Gargoyle",
+			"source": "ToA",
+			"page": 221,
 			"size": "L",
 			"type": "elemental",
 			"alignment": [
@@ -1855,6 +2116,10 @@
 			"skill": {
 				"perception": "+4"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
 			"resist": [
 				{
 					"resist": [
@@ -1873,10 +2138,6 @@
 				"petrified",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 14,
 			"languages": [
 				"Terran"
 			],
@@ -1909,18 +2170,17 @@
 					]
 				}
 			],
-			"page": 221,
 			"traitTags": [
 				"False Appearance"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"T"
-			],
-			"senseTags": [
-				"D"
 			],
 			"damageTags": [
 				"P",
@@ -1931,8 +2191,9 @@
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Giant Snapping Turtle",
+			"source": "ToA",
+			"page": 222,
 			"size": "L",
 			"type": "beast",
 			"alignment": [
@@ -1991,7 +2252,6 @@
 					]
 				}
 			],
-			"page": 222,
 			"traitTags": [
 				"Amphibious"
 			],
@@ -2006,8 +2266,9 @@
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Girallon Zombie",
+			"source": "ToA",
+			"page": 240,
 			"size": "L",
 			"type": "undead",
 			"alignment": [
@@ -2036,16 +2297,16 @@
 			"int": 3,
 			"wis": 7,
 			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 8,
 			"immune": [
 				"poison"
 			],
 			"conditionImmune": [
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 8,
 			"cr": "3",
 			"trait": [
 				{
@@ -2081,16 +2342,15 @@
 					]
 				}
 			],
-			"page": 240,
 			"traitTags": [
 				"Aggressive",
 				"Undead Fortitude"
 			],
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"damageTags": [
 				"P",
@@ -2101,8 +2361,91 @@
 			]
 		},
 		{
+			"name": "Gondolo",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 34,
+			"_copy": {
+				"name": "Scout",
+				"source": "MM",
+				"_trait": {
+					"name": "Stout Halfling",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the scout",
+						"with": "Gondolo",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"G"
+			],
+			"hp": {
+				"average": 13,
+				"formula": "3d6 + 3"
+			},
+			"languageTags": [
+				"C",
+				"H",
+				"X"
+			]
+		},
+		{
+			"name": "Grabstab",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 89,
+			"_copy": {
+				"name": "Goblin Boss",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the goblin",
+						"with": "Grabstab",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Grandfather Zitembe",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 20,
+			"_copy": {
+				"name": "Priest",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the priest",
+						"with": "Zitembe",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"G"
+			]
+		},
+		{
 			"name": "Hew Hackinstone",
 			"isNpc": true,
+			"source": "ToA",
+			"page": 33,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2110,7 +2453,6 @@
 					"dwarf"
 				]
 			},
-			"source": "ToA",
 			"alignment": [
 				"C",
 				"N"
@@ -2139,18 +2481,17 @@
 			"skill": {
 				"survival": "+4"
 			},
-			"resist": [
-				"poison"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 10,
+			"resist": [
+				"poison"
+			],
 			"languages": [
 				"any one language (usually Common)"
 			],
 			"cr": "2",
-			"page": 33,
 			"trait": [
 				{
 					"name": "Dwarven Resilience",
@@ -2176,12 +2517,12 @@
 			"traitTags": [
 				"Reckless"
 			],
+			"senseTags": [
+				"D"
+			],
 			"languageTags": [
 				"C",
 				"X"
-			],
-			"senseTags": [
-				"D"
 			],
 			"damageTags": [
 				"S"
@@ -2191,8 +2532,37 @@
 			]
 		},
 		{
+			"name": "Ifan Talro'a",
+			"isNpc": true,
 			"source": "ToA",
+			"page": 25,
+			"_copy": {
+				"name": "Noble",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the noble",
+						"with": "Ifan",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
 			"name": "Jaculi",
+			"source": "ToA",
+			"page": 225,
 			"size": "L",
 			"type": "beast",
 			"alignment": [
@@ -2258,7 +2628,6 @@
 					]
 				}
 			],
-			"page": 225,
 			"traitTags": [
 				"Keen Senses"
 			],
@@ -2273,8 +2642,97 @@
 			]
 		},
 		{
+			"name": "Jessamine",
+			"isNpc": true,
 			"source": "ToA",
+			"page": 26,
+			"_copy": {
+				"name": "Assassin",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the noble",
+						"with": "Ifan",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N"
+			]
+		},
+		{
+			"name": "Jobal",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 26,
+			"_copy": {
+				"name": "Scout",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the scout",
+						"with": "Jobal",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
+			"name": "Joho",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 179,
+			"size": "T",
+			"type": "construct",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				10
+			],
+			"hp": {
+				"special": "1"
+			},
+			"speed": {
+				"walk": 10
+			},
+			"str": 10,
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"passive": 10,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			]
+		},
+		{
 			"name": "Kamadan",
+			"source": "ToA",
+			"page": 225,
 			"size": "L",
 			"type": "monstrosity",
 			"alignment": [
@@ -2353,7 +2811,6 @@
 					]
 				}
 			],
-			"page": 225,
 			"traitTags": [
 				"Keen Senses",
 				"Pounce"
@@ -2362,21 +2819,22 @@
 				"Multiattack"
 			],
 			"damageTags": [
+				"I",
 				"P",
-				"S",
-				"I"
+				"S"
 			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
 			]
 		},
 		{
 			"name": "King of Feathers",
 			"isNpc": true,
+			"source": "ToA",
+			"page": 106,
 			"size": "H",
 			"type": "monstrosity",
-			"source": "ToA",
 			"alignment": [
 				"U"
 			],
@@ -2406,6 +2864,18 @@
 			},
 			"passive": 14,
 			"cr": "8",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The King of Feathers's innate spellcasting ability is Wisdom. It can innately cast the following spell, requiring no material components:"
+					],
+					"will": [
+						"{@spell misty step}"
+					],
+					"ability": "wis"
+				}
+			],
 			"trait": [
 				{
 					"name": "Detect Invisibility",
@@ -2446,31 +2916,18 @@
 					]
 				}
 			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The King of Feathers's innate spellcasting ability is Wisdom. It can innately cast the following spell, requiring no material components:"
-					],
-					"will": [
-						"{@spell misty step}"
-					],
-					"ability": "wis"
-				}
-			],
-			"page": 106,
 			"traitTags": [
 				"Legendary Resistances"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
+			"damageTags": [
+				"B",
+				"P"
+			],
 			"spellcastingTags": [
 				"I"
-			],
-			"damageTags": [
-				"P",
-				"B"
 			],
 			"miscTags": [
 				"MW",
@@ -2478,9 +2935,98 @@
 			]
 		},
 		{
+			"name": "Kupalué",
+			"isNpc": true,
 			"source": "ToA",
+			"page": 35,
+			"_copy": {
+				"name": "Vegepygmy",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the vegepygmy",
+						"with": "Kupalué",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Kwayothé",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 26,
+			"_copy": {
+				"name": "Priest",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the priest",
+						"with": "Kwayothé",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
+			"name": "Laskilar",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 67,
+			"_copy": {
+				"name": "Bandit Captain",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the captain",
+						"with": "Laskilar",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Special Equipment",
+							"entries": [
+								"Laskilar wears a {@item cape of the mountebank}."
+							]
+						}
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
 			"name": "Liara Portyr",
 			"isNpc": true,
+			"source": "ToA",
+			"page": 227,
+			"otherSources": [
+				{
+					"source": "BGDIA"
+				}
+			],
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2565,34 +3111,29 @@
 					]
 				}
 			],
-			"page": 227,
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"C",
-				"DR",
-				"D"
+				"D",
+				"DR"
 			],
 			"damageTags": [
-				"S",
+				"F",
 				"P",
-				"F"
+				"S"
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
-			],
-			"otherSources": [
-				{
-					"source": "BGDIA"
-				}
+				"RNG",
+				"RW"
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Mantrap",
+			"source": "ToA",
+			"page": 227,
 			"size": "L",
 			"type": "plant",
 			"alignment": [
@@ -2618,16 +3159,16 @@
 				"perception": "+4",
 				"stealth": "+7"
 			},
+			"senses": [
+				"tremorsense 30 ft."
+			],
+			"passive": 10,
 			"conditionImmune": [
 				"blinded",
 				"deafened",
 				"exhaustion",
 				"prone"
 			],
-			"senses": [
-				"tremorsense 30 ft."
-			],
-			"passive": 10,
 			"cr": "1",
 			"trait": [
 				{
@@ -2651,7 +3192,6 @@
 					]
 				}
 			],
-			"page": 227,
 			"traitTags": [
 				"False Appearance"
 			],
@@ -2666,9 +3206,50 @@
 			]
 		},
 		{
+			"name": "Mister Threadneedle",
+			"isNpc": true,
 			"source": "ToA",
+			"page": 183,
+			"_copy": {
+				"name": "Scarecrow",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the scarecrow",
+						"with": "Mister Threadneedle",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Musharib",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 34,
+			"_copy": {
+				"name": "Albino Dwarf Spirit Warrior",
+				"source": "ToA",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the dwarf",
+						"with": "Musharib",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"L",
+				"G"
+			]
+		},
+		{
 			"name": "Mwaxanaré",
 			"isNpc": true,
+			"source": "ToA",
+			"page": 228,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2743,27 +3324,207 @@
 					]
 				}
 			],
-			"page": 228,
 			"languageTags": [
 				"AU",
 				"C",
 				"TP"
 			],
-			"spellcastingTags": [
-				"CL"
-			],
 			"damageTags": [
 				"P"
 			],
+			"spellcastingTags": [
+				"CL"
+			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
+			"name": "Na",
+			"isNpc": true,
 			"source": "ToA",
+			"page": 228,
+			"size": "S",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				10
+			],
+			"hp": {
+				"average": 3,
+				"formula": "1d6"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"passive": 10,
+			"languages": [
+				"Common"
+			],
+			"cr": "0",
+			"languageTags": [
+				"C"
+			]
+		},
+		{
+			"name": "Nanny Pu'pu",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 72,
+			"_copy": {
+				"name": "Green Hag",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the hag",
+						"with": "Pu'pu",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Nepartak",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 137,
+			"_copy": {
+				"name": "Flameskull",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the flameskull",
+						"with": "Nepartak",
+						"flags": "i"
+					}
+				}
+			},
+			"languages": [
+				"Common",
+				"telepathy 30 ft."
+			],
+			"languageTags": [
+				"C",
+				"TP"
+			]
+		},
+		{
+			"name": "Niles Breakbone",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 47,
+			"_copy": {
+				"name": "Noble",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the noble",
+						"with": "Niles",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"G"
+			]
+		},
+		{
+			"name": "Ortimay Swift and Dark",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 21,
+			"_copy": {
+				"name": "Bandit Captain",
+				"source": "MM",
+				"_trait": {
+					"name": "Rock Gnome",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the captain",
+						"with": "Ortimay",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"G"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"G",
+				"X"
+			]
+		},
+		{
+			"name": "Orvex Ocrammas",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 96,
+			"_copy": {
+				"name": "Spy",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the spy",
+						"with": "Orvex",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"languages": [
+				"Common",
+				"Grung"
+			],
+			"languageTags": [
+				"C",
+				"OTH"
+			]
+		},
+		{
 			"name": "Pterafolk",
+			"source": "ToA",
+			"page": 229,
 			"size": "L",
 			"type": "monstrosity",
 			"alignment": [
@@ -2835,7 +3596,6 @@
 					]
 				}
 			],
-			"page": 229,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -2853,9 +3613,38 @@
 			]
 		},
 		{
+			"name": "Qawasha",
+			"isNpc": true,
 			"source": "ToA",
+			"page": 35,
+			"_copy": {
+				"name": "Druid",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the druid",
+						"with": "Qawasha",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"G"
+			]
+		},
+		{
 			"name": "Ras Nsi",
 			"isNpc": true,
+			"source": "ToA",
+			"page": 230,
 			"size": "M",
 			"type": {
 				"type": "monstrosity",
@@ -2898,16 +3687,16 @@
 				"religion": "+7",
 				"stealth": "+6"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
 			"immune": [
 				"poison"
 			],
 			"conditionImmune": [
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 14,
 			"languages": [
 				"Abyssal",
 				"Common",
@@ -3041,10 +3830,12 @@
 					]
 				}
 			],
-			"page": 230,
 			"traitTags": [
-				"Shapechanger",
-				"Magic Resistance"
+				"Magic Resistance",
+				"Shapechanger"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -3054,29 +3845,238 @@
 				"C",
 				"DR"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"B",
+				"F",
+				"I",
+				"P",
+				"S"
 			],
 			"spellcastingTags": [
-				"I",
-				"CW"
-			],
-			"damageTags": [
-				"P",
-				"I",
-				"B",
-				"S",
-				"F"
+				"CW",
+				"I"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "River Mist",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 35,
+			"_copy": {
+				"name": "Tabaxi Hunter",
+				"source": "ToA",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the tabaxi",
+						"with": "River Mist",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Salida",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 35,
+			"_copy": {
+				"name": "Yuan-ti Pureblood",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the yuan-ti",
+						"with": "Salida",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"skill": {
+				"deception": "+6",
+				"perception": "+3",
+				"stealth": "+3",
+				"survival": "+5"
+			}
+		},
+		{
+			"name": "Sekelok",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 120,
+			"_copy": {
+				"name": "Champion",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the champion",
+						"with": "Sekelok",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Magic Resistance",
+							"entries": [
+								"Sekelok has advantage on saving throws against spells and other magical effects."
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"languages": [
+				"Abyssal",
+				"Common",
+				"Draconic"
+			],
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Sekelok's spellcasting ability is Charisma (spell save {@dc 13}). Sekelok can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell animal friendship} (snakes only)",
+						"{@spell poison spray}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell suggestion}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"AB",
+				"C",
+				"DR"
+			],
+			"spellcastingTags": [
+				"I"
+			]
+		},
+		{
+			"name": "Shago",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 35,
+			"_copy": {
+				"name": "Gladiator",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the gladiator",
+						"with": "Shago",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"C",
+				"G"
+			],
+			"skill": {
+				"athletics": "+10",
+				"intimidation": "+5",
+				"survival": "+7"
+			}
+		},
+		{
+			"name": "Skeleton Key",
+			"source": "ToA",
+			"page": 126,
+			"_copy": {
+				"name": "Skeleton",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Spider Climb",
+							"entries": [
+								"The skeleton can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"U"
+			],
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The skeleton makes two dagger attacks."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Spider Climb"
+			],
+			"actionTags": [
+				"Multiattack"
+			]
+		},
+		{
 			"name": "Spiked Tomb Guardian",
+			"source": "ToA",
+			"page": 154,
 			"size": "M",
 			"type": "construct",
-			"source": "ToA",
 			"alignment": [
 				"N"
 			],
@@ -3096,6 +4096,10 @@
 			"int": 6,
 			"wis": 10,
 			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
 			"immune": [
 				"lightning",
 				"poison",
@@ -3116,15 +4120,10 @@
 				"petrified",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 10,
 			"languages": [
 				"understands the languages of its creator but can't speak"
 			],
 			"cr": "6",
-			"page": 154,
 			"trait": [
 				{
 					"name": "Berserk",
@@ -3185,16 +4184,19 @@
 				}
 			],
 			"traitTags": [
-				"Immutable Form",
 				"Damage Absorption",
+				"Immutable Form",
 				"Magic Resistance",
 				"Magic Weapons"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
-			"senseTags": [
-				"D"
+			"languageTags": [
+				"CS"
 			],
 			"damageTags": [
 				"B",
@@ -3202,14 +4204,12 @@
 			],
 			"miscTags": [
 				"MW"
-			],
-			"languageTags": [
-				"CS"
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Stone Juggernaut",
+			"source": "ToA",
+			"page": 231,
 			"size": "L",
 			"type": "construct",
 			"alignment": [
@@ -3239,6 +4239,10 @@
 			"int": 14,
 			"wis": 14,
 			"cha": 16,
+			"senses": [
+				"blindsight 120 ft."
+			],
+			"passive": 10,
 			"immune": [
 				"poison",
 				{
@@ -3261,10 +4265,6 @@
 				"poisoned",
 				"prone"
 			],
-			"senses": [
-				"blindsight 120 ft."
-			],
-			"passive": 10,
 			"cr": "12",
 			"trait": [
 				{
@@ -3300,7 +4300,6 @@
 					]
 				}
 			],
-			"page": 231,
 			"traitTags": [
 				"Immutable Form",
 				"Regeneration",
@@ -3317,8 +4316,42 @@
 			]
 		},
 		{
+			"name": "Strawbundle",
+			"isNpc": true,
 			"source": "ToA",
+			"page": 179,
+			"size": "T",
+			"type": "construct",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				10
+			],
+			"hp": {
+				"special": "1"
+			},
+			"speed": {
+				"walk": 10
+			},
+			"str": 10,
+			"dex": 10,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 10,
+			"passive": 10,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			]
+		},
+		{
 			"name": "Su-monster",
+			"source": "ToA",
+			"page": 232,
 			"size": "M",
 			"type": "monstrosity",
 			"alignment": [
@@ -3374,7 +4407,6 @@
 					]
 				}
 			],
-			"page": 232,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -3388,8 +4420,48 @@
 			]
 		},
 		{
+			"name": "Syndra Silvane",
+			"isNpc": true,
 			"source": "ToA",
+			"page": 8,
+			"_copy": {
+				"name": "Archmage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the archmage",
+						"with": "Syndra",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L"
+			],
+			"languages": [
+				"Common",
+				"Dwarvish",
+				"Elvish",
+				"Halfling"
+			],
+			"languageTags": [
+				"C",
+				"D",
+				"E",
+				"H"
+			]
+		},
+		{
 			"name": "Tabaxi Hunter",
+			"source": "ToA",
+			"page": 232,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3471,7 +4543,9 @@
 					]
 				}
 			],
-			"page": 232,
+			"senseTags": [
+				"D"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
@@ -3479,22 +4553,20 @@
 				"C",
 				"X"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Tabaxi Minstrel",
+			"source": "ToA",
+			"page": 233,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3571,7 +4643,9 @@
 					]
 				}
 			],
-			"page": 233,
+			"senseTags": [
+				"D"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
@@ -3579,12 +4653,9 @@
 				"C",
 				"X"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW",
@@ -3593,10 +4664,61 @@
 			]
 		},
 		{
+			"name": "Terracotta Warrior",
+			"source": "ToA",
+			"page": 161,
+			"_copy": {
+				"name": "Animated Armor",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "armor",
+						"with": "terracotta warrior"
+					},
+					"trait": [
+						{
+							"mode": "replaceArr",
+							"replace": "False Appearance",
+							"items": {
+								"name": "False Appearance",
+								"entries": [
+									"While the terracotta warrior remains motionless, it is indistinguishable from a terracotta statue."
+								]
+							}
+						},
+						{
+							"mode": "prependArr",
+							"items": {
+								"name": "Fragile",
+								"entries": [
+									"If a critical hit is scored against the terracotta warrior, it shatters and is destroyed."
+								]
+							}
+						}
+					],
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Slam",
+						"items": {
+							"name": "Shortsword",
+							"entries": [
+								"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
+							]
+						}
+					}
+				}
+			},
+			"damageTags": [
+				"P"
+			]
+		},
+		{
 			"name": "Tomb Dwarf",
+			"source": "ToA",
+			"page": 135,
 			"size": "M",
 			"type": "undead",
-			"source": "ToA",
 			"alignment": [
 				"L",
 				"E"
@@ -3626,6 +4748,10 @@
 				"perception": "+3",
 				"stealth": "+4"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 13,
 			"resist": [
 				"necrotic",
 				{
@@ -3644,15 +4770,10 @@
 				"exhaustion",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 13,
 			"languages": [
 				"the languages it knew in life"
 			],
 			"cr": "3",
-			"page": 135,
 			"trait": [
 				{
 					"name": "Sunlight Sensitivity",
@@ -3690,31 +4811,32 @@
 			"traitTags": [
 				"Sunlight Sensitivity"
 			],
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"D"
 			],
-			"damageTags": [
-				"N",
-				"S",
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"RNG"
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"LF"
+			],
+			"damageTags": [
+				"N",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW"
 			]
 		},
 		{
 			"name": "Tomb Guardian",
+			"source": "ToA",
+			"page": 127,
 			"size": "M",
 			"type": "construct",
-			"source": "ToA",
 			"alignment": [
 				"N"
 			],
@@ -3734,6 +4856,10 @@
 			"int": 6,
 			"wis": 10,
 			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
 			"immune": [
 				"lightning",
 				"poison",
@@ -3754,15 +4880,10 @@
 				"petrified",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 10,
 			"languages": [
 				"understands the languages of its creator but can't speak"
 			],
 			"cr": "5",
-			"page": 127,
 			"trait": [
 				{
 					"name": "Berserk",
@@ -3816,30 +4937,31 @@
 				}
 			],
 			"traitTags": [
-				"Immutable Form",
 				"Damage Absorption",
+				"Immutable Form",
 				"Magic Resistance",
 				"Magic Weapons"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
-			"senseTags": [
-				"D"
+			"languageTags": [
+				"CS"
 			],
 			"damageTags": [
 				"B"
 			],
 			"miscTags": [
 				"MW"
-			],
-			"languageTags": [
-				"CS"
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Tri-flower Frond",
+			"source": "ToA",
+			"page": 234,
 			"size": "M",
 			"type": "plant",
 			"alignment": [
@@ -3861,16 +4983,16 @@
 			"int": 9,
 			"wis": 13,
 			"cha": 9,
+			"senses": [
+				"blindsight 30 ft."
+			],
+			"passive": 10,
 			"conditionImmune": [
 				"blinded",
 				"deafened",
 				"exhaustion",
 				"prone"
 			],
-			"senses": [
-				"blindsight 30 ft."
-			],
-			"passive": 10,
 			"cr": "1/2",
 			"action": [
 				{
@@ -3898,24 +5020,24 @@
 					]
 				}
 			],
-			"page": 234,
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"B"
 			],
+			"actionTags": [
+				"Multiattack"
+			],
 			"damageTags": [
-				"P",
-				"I"
+				"I",
+				"P"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Tyrannosaurus Zombie",
+			"source": "ToA",
+			"page": 241,
 			"size": "H",
 			"type": "undead",
 			"alignment": [
@@ -3942,16 +5064,16 @@
 			"int": 1,
 			"wis": 3,
 			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 6,
 			"immune": [
 				"poison"
 			],
 			"conditionImmune": [
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 6,
 			"cr": "8",
 			"trait": [
 				{
@@ -3987,19 +5109,18 @@
 					]
 				}
 			],
-			"page": 241,
 			"traitTags": [
 				"Undead Fortitude"
-			],
-			"actionTags": [
-				"Multiattack"
 			],
 			"senseTags": [
 				"D"
 			],
+			"actionTags": [
+				"Multiattack"
+			],
 			"damageTags": [
-				"P",
-				"B"
+				"B",
+				"P"
 			],
 			"miscTags": [
 				"MW",
@@ -4009,9 +5130,11 @@
 		{
 			"name": "Valindra Shadowmantle",
 			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "ToA",
+			"page": 58,
 			"size": "M",
 			"type": "undead",
-			"source": "ToA",
 			"alignment": [
 				"N",
 				"E"
@@ -4048,6 +5171,10 @@
 				"insight": "+9",
 				"perception": "+9"
 			},
+			"senses": [
+				"truesight 120 ft."
+			],
+			"passive": 19,
 			"resist": [
 				"cold",
 				"lightning",
@@ -4071,10 +5198,6 @@
 				"paralyzed",
 				"poisoned"
 			],
-			"senses": [
-				"truesight 120 ft."
-			],
-			"passive": 19,
 			"languages": [
 				"Common",
 				"Abyssal",
@@ -4084,73 +5207,6 @@
 				"Infernal"
 			],
 			"cr": "21",
-			"page": 58,
-			"trait": [
-				{
-					"name": "Mask",
-					"entries": [
-						"As a bonus action, Valindra can mask her shriveled flesh and appear to be a living elf. This magical illusion lasts until she ends it as a bonus action or until she uses her Frightening Gaze legendary action. The effect also ends if Valindra drops to 30 hit points or fewer, or if dispel magic is cast on her."
-					]
-				},
-				{
-					"name": "Preparation",
-					"entries": [
-						"When preparing her spells, Valindra can swap out any spell on her list of prepared spells for another wizard spell of the same level."
-					]
-				},
-				{
-					"name": "Legendary Resistance (3/Day)",
-					"entries": [
-						"If Valindra fails a saving throw, she can choose to succeed instead."
-					]
-				},
-				{
-					"name": "Rejuvenation",
-					"entries": [
-						"If destroyed Valindra gains a new body in {@dice 1d10} days, regaining all her hit points and becoming active again. The new body appears within 5 feet of the phylactery."
-					]
-				},
-				{
-					"name": "Turn Resistance",
-					"entries": [
-						"Valindra has advantage on saving throws against any effect that turns undead."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Paralyzing Touch",
-					"entries": [
-						"{@atk ms} {@hit 12} to hit, reach 5 ft., one creature. {@h}10 ({@damage 3d6}) cold damage. The target must succeed on a {@dc 18} Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
-					]
-				}
-			],
-			"legendary": [
-				{
-					"name": "Cantrip",
-					"entries": [
-						"Valindra casts a cantrip."
-					]
-				},
-				{
-					"name": "Paralyzing Touch (Costs 2 Actions)",
-					"entries": [
-						"Valindra uses her Paralyzing Touch."
-					]
-				},
-				{
-					"name": "Frightening Gaze (Costs 2 Actions)",
-					"entries": [
-						"Valindra fixes her gaze on one creature she can see within 10 feet of her. The target must succeed on a {@dc 18} Wisdom saving throw against this magic or become {@condition frightened} for 1 minute. The {@condition frightened} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to the Valindra's gaze for the next 24 hours."
-					]
-				},
-				{
-					"name": "Disrupt Life (Costs 3 Actions)",
-					"entries": [
-						"Each non-undead creature within 20 feet of Valindra must make a {@dc 18} Constitution saving throw against this magic, taking 21 ({@damage 6d6}) necrotic damage on a failed save, or half as much damage on a successful one."
-					]
-				}
-			],
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -4237,35 +5293,106 @@
 					"ability": "int"
 				}
 			],
-			"isNamedCreature": true,
+			"trait": [
+				{
+					"name": "Mask",
+					"entries": [
+						"As a bonus action, Valindra can mask her shriveled flesh and appear to be a living elf. This magical illusion lasts until she ends it as a bonus action or until she uses her Frightening Gaze legendary action. The effect also ends if Valindra drops to 30 hit points or fewer, or if dispel magic is cast on her."
+					]
+				},
+				{
+					"name": "Preparation",
+					"entries": [
+						"When preparing her spells, Valindra can swap out any spell on her list of prepared spells for another wizard spell of the same level."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"If Valindra fails a saving throw, she can choose to succeed instead."
+					]
+				},
+				{
+					"name": "Rejuvenation",
+					"entries": [
+						"If destroyed Valindra gains a new body in {@dice 1d10} days, regaining all her hit points and becoming active again. The new body appears within 5 feet of the phylactery."
+					]
+				},
+				{
+					"name": "Turn Resistance",
+					"entries": [
+						"Valindra has advantage on saving throws against any effect that turns undead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Paralyzing Touch",
+					"entries": [
+						"{@atk ms} {@hit 12} to hit, reach 5 ft., one creature. {@h}10 ({@damage 3d6}) cold damage. The target must succeed on a {@dc 18} Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Cantrip",
+					"entries": [
+						"Valindra casts a cantrip."
+					]
+				},
+				{
+					"name": "Paralyzing Touch (Costs 2 Actions)",
+					"entries": [
+						"Valindra uses her Paralyzing Touch."
+					]
+				},
+				{
+					"name": "Frightening Gaze (Costs 2 Actions)",
+					"entries": [
+						"Valindra fixes her gaze on one creature she can see within 10 feet of her. The target must succeed on a {@dc 18} Wisdom saving throw against this magic or become {@condition frightened} for 1 minute. The {@condition frightened} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to the Valindra's gaze for the next 24 hours."
+					]
+				},
+				{
+					"name": "Disrupt Life (Costs 3 Actions)",
+					"entries": [
+						"Each non-undead creature within 20 feet of Valindra must make a {@dc 18} Constitution saving throw against this magic, taking 21 ({@damage 6d6}) necrotic damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
 			"traitTags": [
 				"Legendary Resistances",
 				"Rejuvenation",
 				"Turn Resistance"
 			],
-			"languageTags": [
-				"C",
-				"AB",
-				"DR",
-				"D",
-				"E",
-				"I"
-			],
 			"senseTags": [
 				"U"
 			],
-			"spellcastingTags": [
-				"CW"
+			"languageTags": [
+				"AB",
+				"C",
+				"D",
+				"DR",
+				"E",
+				"I"
 			],
 			"damageTags": [
 				"C",
 				"N"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Volothamp \"Volo\" Geddarm",
 			"isNpc": true,
+			"source": "ToA",
+			"page": 235,
+			"otherSources": [
+				{
+					"source": "WDH"
+				}
+			],
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -4351,35 +5478,92 @@
 					]
 				}
 			],
-			"page": 235,
-			"otherSources": [
-				{
-					"source": "WDH"
-				}
-			],
 			"languageTags": [
 				"C",
 				"D",
 				"E"
 			],
-			"spellcastingTags": [
-				"CW"
-			],
 			"damageTags": [
 				"P"
 			],
+			"spellcastingTags": [
+				"CW"
+			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
+			"name": "Wakanga O'tamu",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 27,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mage",
+						"with": "Wakanga",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"N"
+			]
+		},
+		{
+			"name": "Wild Dog",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 96,
+			"_copy": {
+				"name": "Jackal",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "jackal",
+						"with": "dog"
+					}
+				}
+			}
+		},
+		{
+			"name": "Wine Weird",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 141,
+			"_copy": {
+				"name": "Water Weird",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "water weird",
+						"with": "wine weird"
+					}
+				}
+			}
+		},
+		{
 			"name": "Withers",
 			"isNpc": true,
+			"source": "ToA",
+			"page": 145,
 			"size": "M",
 			"type": "undead",
-			"source": "ToA",
 			"alignment": [
 				"N",
 				"E"
@@ -4409,6 +5593,10 @@
 				"perception": "+3",
 				"stealth": "+4"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 13,
 			"resist": [
 				"necrotic",
 				{
@@ -4427,49 +5615,10 @@
 				"exhaustion",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 13,
 			"languages": [
 				"the languages he knew in life"
 			],
 			"cr": "4",
-			"trait": [
-				{
-					"name": "Special Equipment",
-					"entries": [
-						"Withers carries the {@item amulet of the black skull|ToA}."
-					]
-				},
-				{
-					"name": "Sunlight Sensitivity",
-					"entries": [
-						"While in sunlight, Withers has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Withers makes two longsword attacks. He can use his Life Drain in place of one longsword attack."
-					]
-				},
-				{
-					"name": "Life Drain",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}5 ({@damage 1d6 + 2}) necrotic damage. The target must succeed on a {@dc 13} Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0.",
-						"A humanoid slain by this attack rises 24 hours later as a zombie under the Withers's control, unless the humanoid is restored to life or its body is destroyed. Withers can have no more than twelve zombies under its control at one time."
-					]
-				},
-				{
-					"name": "Longsword",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) slashing damage, or 7 ({@damage 1d10 + 2}) slashing damage if used with two hands."
-					]
-				}
-			],
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -4526,34 +5675,69 @@
 					"ability": "int"
 				}
 			],
-			"page": 145,
+			"trait": [
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Withers carries the {@item amulet of the black skull|ToA}."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"While in sunlight, Withers has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Withers makes two longsword attacks. He can use his Life Drain in place of one longsword attack."
+					]
+				},
+				{
+					"name": "Life Drain",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}5 ({@damage 1d6 + 2}) necrotic damage. The target must succeed on a {@dc 13} Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the target finishes a long rest. The target dies if this effect reduces its hit point maximum to 0.",
+						"A humanoid slain by this attack rises 24 hours later as a zombie under the Withers's control, unless the humanoid is restored to life or its body is destroyed. Withers can have no more than twelve zombies under its control at one time."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) slashing damage, or 7 ({@damage 1d10 + 2}) slashing damage if used with two hands."
+					]
+				}
+			],
 			"traitTags": [
 				"Sunlight Sensitivity"
-			],
-			"actionTags": [
-				"Multiattack"
 			],
 			"senseTags": [
 				"D"
 			],
-			"spellcastingTags": [
-				"CW"
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"LF"
 			],
 			"damageTags": [
 				"N",
 				"S"
 			],
+			"spellcastingTags": [
+				"CW"
+			],
 			"miscTags": [
 				"MW"
-			],
-			"languageTags": [
-				"LF"
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Xandala",
 			"isNpc": true,
+			"source": "ToA",
+			"page": 236,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -4677,27 +5861,27 @@
 					]
 				}
 			],
-			"page": 236,
 			"languageTags": [
 				"C",
-				"DR",
 				"D",
+				"DR",
 				"E",
 				"H"
 			],
-			"spellcastingTags": [
-				"CS"
-			],
 			"damageTags": [
 				"B"
+			],
+			"spellcastingTags": [
+				"CS"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Yellow Musk Creeper",
+			"source": "ToA",
+			"page": 237,
 			"size": "M",
 			"type": "plant",
 			"alignment": [
@@ -4720,16 +5904,16 @@
 			"int": 1,
 			"wis": 10,
 			"cha": 3,
+			"senses": [
+				"blindsight 30 ft."
+			],
+			"passive": 10,
 			"conditionImmune": [
 				"blinded",
 				"deafened",
 				"exhaustion",
 				"prone"
 			],
-			"senses": [
-				"blindsight 30 ft."
-			],
-			"passive": 10,
 			"cr": "2",
 			"trait": [
 				{
@@ -4759,7 +5943,6 @@
 					]
 				}
 			],
-			"page": 237,
 			"traitTags": [
 				"False Appearance",
 				"Regeneration"
@@ -4775,8 +5958,9 @@
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Yellow Musk Zombie",
+			"source": "ToA",
+			"page": 237,
 			"size": "M",
 			"type": "undead",
 			"alignment": [
@@ -4798,14 +5982,14 @@
 			"int": 1,
 			"wis": 6,
 			"cha": 3,
-			"conditionImmune": [
-				"charmed",
-				"exhaustion"
-			],
 			"senses": [
 				"blindsight 30 ft."
 			],
 			"passive": 8,
+			"conditionImmune": [
+				"charmed",
+				"exhaustion"
+			],
 			"cr": "1/4",
 			"trait": [
 				{
@@ -4823,7 +6007,6 @@
 					]
 				}
 			],
-			"page": 237,
 			"traitTags": [
 				"Undead Fortitude"
 			],
@@ -4838,9 +6021,152 @@
 			]
 		},
 		{
+			"name": "Yorb",
+			"isNpc": true,
 			"source": "ToA",
+			"page": 108,
+			"_copy": {
+				"name": "Grung Elite Warrior",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the grung",
+						"with": "Yorb",
+						"flags": "i"
+					}
+				},
+				"_preserve": {
+					"variant": true
+				}
+			}
+		},
+		{
+			"name": "Yuan-ti Priest",
+			"source": "ToA",
+			"page": 118,
+			"_copy": {
+				"name": "Yuan-ti Malison (Type 3)",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "removeArr",
+						"names": "Longbow (Yuan-ti Form Only)"
+					}
+				}
+			},
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting (Yuan-ti Form Only)",
+					"headerEntries": [
+						"The yuan-ti's innate spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). The yuan-ti can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell animal friendship} (snakes only)",
+						"{@spell eldritch blast} (2 beams)",
+						"{@spell minor illusion}",
+						"{@spell poison spray}"
+					],
+					"daily": {
+						"3": [
+							"{@spell suggestion}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Zalkoré",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 79,
+			"_copy": {
+				"name": "Medusa",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the medusa",
+						"with": "Zalkoré",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Zaroum Al-Saryak",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 67,
+			"_copy": {
+				"name": "Bandit Captain",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the captain",
+						"with": "Zaroum",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			]
+		},
+		{
+			"name": "Zebra",
+			"source": "ToA",
+			"page": 106,
+			"_copy": {
+				"name": "Riding Horse",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Zhanthi",
+			"isNpc": true,
+			"source": "ToA",
+			"page": 27,
+			"_copy": {
+				"name": "Noble",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the noble",
+						"with": "Zhanthi",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"G"
+			]
+		},
+		{
 			"name": "Zindar",
 			"isNpc": true,
+			"source": "ToA",
+			"page": 239,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -4883,14 +6209,14 @@
 				"insight": "+5",
 				"investigation": "+9"
 			},
-			"resist": [
-				"fire"
-			],
 			"senses": [
 				"blindsight 10 ft.",
 				"darkvision 60 ft."
 			],
 			"passive": 12,
+			"resist": [
+				"fire"
+			],
 			"languages": [
 				"Common",
 				"Draconic",
@@ -5001,32 +6327,32 @@
 					]
 				}
 			],
-			"page": 239,
-			"languageTags": [
-				"C",
-				"DR",
-				"D",
-				"P"
-			],
 			"senseTags": [
 				"B",
 				"D"
 			],
-			"spellcastingTags": [
-				"CS"
+			"languageTags": [
+				"C",
+				"D",
+				"DR",
+				"P"
 			],
 			"damageTags": [
 				"B",
 				"F"
 			],
+			"spellcastingTags": [
+				"CS"
+			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
 			]
 		},
 		{
-			"source": "ToA",
 			"name": "Zorbo",
+			"source": "ToA",
+			"page": 241,
 			"size": "S",
 			"type": "monstrosity",
 			"alignment": [
@@ -5081,7 +6407,6 @@
 					]
 				}
 			],
-			"page": 241,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -5091,1331 +6416,6 @@
 			"miscTags": [
 				"MW"
 			]
-		},
-		{
-			"name": "Azaka Stormfang",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Weretiger",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "weretiger",
-						"with": "Azaka",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"G"
-			],
-			"page": 33
-		},
-		{
-			"name": "Blind Artist",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Zombie",
-				"source": "MM"
-			},
-			"conditionImmune": [
-				"blinded",
-				"poisoned"
-			],
-			"senses": [
-				"blindsight 30 ft. (blind beyond this radius)"
-			],
-			"senseTags": [
-				"B"
-			],
-			"page": 164
-		},
-		{
-			"name": "Bosco Daggerhand",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Thug",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the thug",
-						"with": "Bosco",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "prependArr",
-						"items": {
-							"name": "Special Equipment",
-							"entries": [
-								"Bosco wears a {@item ring of animal influence}."
-							]
-						}
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"page": 68
-		},
-		{
-			"name": "Elok Jaharwon",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Wereboar",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the wereboar",
-						"with": "Elok",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"page": 67
-		},
-		{
-			"name": "Laskilar",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Bandit Captain",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the captain",
-						"with": "Laskilar",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "prependArr",
-						"items": {
-							"name": "Special Equipment",
-							"entries": [
-								"Laskilar wears a {@item cape of the mountebank}."
-							]
-						}
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 67
-		},
-		{
-			"name": "Ortimay Swift and Dark",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Bandit Captain",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the captain",
-						"with": "Ortimay",
-						"flags": "i"
-					}
-				},
-				"_trait": {
-					"name": "Rock Gnome",
-					"source": "PHB"
-				}
-			},
-			"alignment": [
-				"C",
-				"G"
-			],
-			"languageTags": [
-				"X",
-				"G"
-			],
-			"senseTags": [
-				"D"
-			],
-			"page": 21
-		},
-		{
-			"name": "Zaroum Al-Saryak",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Bandit Captain",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the captain",
-						"with": "Zaroum",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 67
-		},
-		{
-			"name": "Yorb",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Grung Elite Warrior",
-				"source": "VGM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the grung",
-						"with": "Yorb",
-						"flags": "i"
-					}
-				},
-				"_preserve": {
-					"variant": true
-				}
-			},
-			"page": 108
-		},
-		{
-			"name": "Clay No-Face",
-			"size": "T",
-			"type": "construct",
-			"isNpc": true,
-			"source": "ToA",
-			"ac": [
-				10
-			],
-			"speed": {
-				"walk": 10
-			},
-			"str": 10,
-			"dex": 10,
-			"con": 10,
-			"int": 10,
-			"wis": 10,
-			"cha": 10,
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"poisoned"
-			],
-			"alignment": [
-				"N"
-			],
-			"hp": {
-				"special": "1"
-			},
-			"passive": 10,
-			"page": 179
-		},
-		{
-			"name": "Strawbundle",
-			"size": "T",
-			"type": "construct",
-			"isNpc": true,
-			"source": "ToA",
-			"ac": [
-				10
-			],
-			"speed": {
-				"walk": 10
-			},
-			"str": 10,
-			"dex": 10,
-			"con": 10,
-			"int": 10,
-			"wis": 10,
-			"cha": 10,
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"poisoned"
-			],
-			"alignment": [
-				"N"
-			],
-			"hp": {
-				"special": "1"
-			},
-			"passive": 10,
-			"page": 179
-		},
-		{
-			"name": "Joho",
-			"size": "T",
-			"type": "construct",
-			"isNpc": true,
-			"source": "ToA",
-			"ac": [
-				10
-			],
-			"speed": {
-				"walk": 10
-			},
-			"str": 10,
-			"dex": 10,
-			"con": 10,
-			"int": 10,
-			"wis": 10,
-			"cha": 10,
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"poisoned"
-			],
-			"alignment": [
-				"N"
-			],
-			"hp": {
-				"special": "1"
-			},
-			"passive": 10,
-			"page": 179
-		},
-		{
-			"name": "Niles Breakbone",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Noble",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the noble",
-						"with": "Niles",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 47
-		},
-		{
-			"name": "Drufi",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Frost Giant",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the giant",
-						"with": "Drufi",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"page": 64
-		},
-		{
-			"name": "Ekene-Afa",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Gladiator",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the gladiator",
-						"with": "Ekene-Afa",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 25
-		},
-		{
-			"name": "Faroul",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Scout",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the scout",
-						"with": "Faroul",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 34
-		},
-		{
-			"name": "Gondolo",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Scout",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the scout",
-						"with": "Gondolo",
-						"flags": "i"
-					}
-				},
-				"_trait": {
-					"name": "Stout Halfling",
-					"source": "PHB"
-				}
-			},
-			"alignment": [
-				"C",
-				"G"
-			],
-			"hp": {
-				"average": 13,
-				"formula": "3d6 + 3"
-			},
-			"languageTags": [
-				"C",
-				"X",
-				"H"
-			],
-			"page": 34
-		},
-		{
-			"name": "Fenthaza",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Yuan-ti Nightmare Speaker",
-				"source": "VGM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the yuan-ti",
-						"with": "Fenthaza",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "River Mist",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Tabaxi Hunter",
-				"source": "ToA",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the tabaxi",
-						"with": "River Mist",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 35
-		},
-		{
-			"name": "Flask of Wine",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Tabaxi Hunter",
-				"source": "ToA",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the tabaxi",
-						"with": "Flask of Wine",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 35
-		},
-		{
-			"name": "Eku",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Couatl",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the couatl",
-						"with": "Eku",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 34
-		},
-		{
-			"name": "Grandfather Zitembe",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Priest",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the priest",
-						"with": "Zitembe",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 20
-		},
-		{
-			"name": "Ifan Talro'a",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Noble",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the noble",
-						"with": "Ifan",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 25
-		},
-		{
-			"name": "Jessamine",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Assassin",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the noble",
-						"with": "Ifan",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 26
-		},
-		{
-			"name": "Jobal",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Scout",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the scout",
-						"with": "Jobal",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 26
-		},
-		{
-			"name": "Kupalué",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Vegepygmy",
-				"source": "VGM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the vegepygmy",
-						"with": "Kupalué",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 35
-		},
-		{
-			"name": "Kwayothé",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Priest",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the priest",
-						"with": "Kwayothé",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 26
-		},
-		{
-			"name": "Mister Threadneedle",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Scarecrow",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the scarecrow",
-						"with": "Mister Threadneedle",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 183
-		},
-		{
-			"name": "Musharib",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Albino Dwarf Spirit Warrior",
-				"source": "ToA",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the dwarf",
-						"with": "Musharib",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L",
-				"G"
-			],
-			"page": 34
-		},
-		{
-			"name": "Nanny Pu'pu",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Green Hag",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the hag",
-						"with": "Pu'pu",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 72
-		},
-		{
-			"name": "Nepartak",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Flameskull",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the flameskull",
-						"with": "Nepartak",
-						"flags": "i"
-					}
-				}
-			},
-			"languages": [
-				"Common",
-				"telepathy 30 ft."
-			],
-			"languageTags": [
-				"C",
-				"TP"
-			],
-			"page": 137
-		},
-		{
-			"name": "Orvex Ocrammas",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Spy",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the spy",
-						"with": "Orvex",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"languages": [
-				"Common",
-				"Grung"
-			],
-			"languageTags": [
-				"C",
-				"OTH"
-			],
-			"page": 96
-		},
-		{
-			"name": "Na",
-			"isNpc": true,
-			"source": "ToA",
-			"size": "S",
-			"alignment": [
-				"N"
-			],
-			"ac": [
-				10
-			],
-			"speed": {
-				"walk": 30
-			},
-			"hp": {
-				"average": 3,
-				"formula": "1d6"
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"languages": [
-				"Common"
-			],
-			"str": 10,
-			"dex": 10,
-			"con": 10,
-			"int": 10,
-			"wis": 10,
-			"cha": 10,
-			"passive": 10,
-			"cr": "0",
-			"languageTags": [
-				"C"
-			],
-			"page": 228
-		},
-		{
-			"name": "Qawasha",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Druid",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the druid",
-						"with": "Qawasha",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 35
-		},
-		{
-			"name": "Grabstab",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Goblin Boss",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the goblin",
-						"with": "Grabstab",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 89
-		},
-		{
-			"name": "Salida",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Yuan-ti Pureblood",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the yuan-ti",
-						"with": "Salida",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"skill": {
-				"deception": "+6",
-				"perception": "+3",
-				"stealth": "+3",
-				"survival": "+5"
-			},
-			"page": 35
-		},
-		{
-			"name": "Sekelok",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Champion",
-				"source": "VGM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the champion",
-						"with": "Sekelok",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "prependArr",
-						"items": {
-							"name": "Magic Resistance",
-							"entries": [
-								"Sekelok has advantage on saving throws against spells and other magical effects."
-							]
-						}
-					}
-				}
-			},
-			"ac": [
-				{
-					"ac": 18,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"alignment": [
-				"N",
-				"E"
-			],
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"poisoned"
-			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"languages": [
-				"Abyssal",
-				"Common",
-				"Draconic"
-			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Sekelok's spellcasting ability is Charisma (spell save {@dc 13}). Sekelok can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell animal friendship} (snakes only)",
-						"{@spell poison spray}"
-					],
-					"daily": {
-						"3e": [
-							"{@spell suggestion}"
-						]
-					},
-					"ability": "cha"
-				}
-			],
-			"languageTags": [
-				"AB",
-				"C",
-				"DR"
-			],
-			"senseTags": [
-				"D"
-			],
-			"traitTags": [
-				"Magic Resistance"
-			],
-			"spellcastingTags": [
-				"I"
-			],
-			"page": 120
-		},
-		{
-			"name": "Shago",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Gladiator",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the gladiator",
-						"with": "Shago",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"C",
-				"G"
-			],
-			"skill": {
-				"athletics": "+10",
-				"intimidation": "+5",
-				"survival": "+7"
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 35
-		},
-		{
-			"name": "Skeleton Key",
-			"source": "ToA",
-			"_copy": {
-				"name": "Skeleton",
-				"source": "MM",
-				"_mod": {
-					"trait": {
-						"mode": "prependArr",
-						"items": {
-							"name": "Spider Climb",
-							"entries": [
-								"The skeleton can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
-							]
-						}
-					}
-				}
-			},
-			"alignment": [
-				"U"
-			],
-			"speed": {
-				"walk": 30,
-				"climb": 30
-			},
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The skeleton makes two dagger attacks."
-					]
-				},
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
-					]
-				}
-			],
-			"traitTags": [
-				"Spider Climb"
-			],
-			"page": 126,
-			"actionTags": [
-				"Multiattack"
-			]
-		},
-		{
-			"name": "Syndra Silvane",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Archmage",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the archmage",
-						"with": "Syndra",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"languages": [
-				"Common",
-				"Dwarvish",
-				"Elvish",
-				"Halfling"
-			],
-			"languageTags": [
-				"C",
-				"D",
-				"E",
-				"H"
-			],
-			"page": 8
-		},
-		{
-			"name": "Terracotta Warrior",
-			"source": "ToA",
-			"_copy": {
-				"name": "Animated Armor",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "armor",
-						"with": "terracotta warrior"
-					},
-					"trait": [
-						{
-							"mode": "replaceArr",
-							"replace": "False Appearance",
-							"items": {
-								"name": "False Appearance",
-								"entries": [
-									"While the terracotta warrior remains motionless, it is indistinguishable from a terracotta statue."
-								]
-							}
-						},
-						{
-							"mode": "prependArr",
-							"items": {
-								"name": "Fragile",
-								"entries": [
-									"If a critical hit is scored against the terracotta warrior, it shatters and is destroyed."
-								]
-							}
-						}
-					],
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Slam",
-						"items": {
-							"name": "Shortsword",
-							"entries": [
-								"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
-							]
-						}
-					}
-				}
-			},
-			"damageTags": [
-				"P"
-			],
-			"page": 161
-		},
-		{
-			"name": "Wakanga O'tamu",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Mage",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the mage",
-						"with": "Wakanga",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L",
-				"N"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 27
-		},
-		{
-			"name": "Wild Dog",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Jackal",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "jackal",
-						"with": "dog"
-					}
-				}
-			},
-			"page": 96
-		},
-		{
-			"name": "Wine Weird",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Water Weird",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "water weird",
-						"with": "wine weird"
-					}
-				}
-			},
-			"page": 141
-		},
-		{
-			"name": "Yuan-ti Priest",
-			"source": "ToA",
-			"_copy": {
-				"name": "Yuan-ti Malison (Type 3)",
-				"source": "MM",
-				"_mod": {
-					"action": {
-						"mode": "removeArr",
-						"names": "Longbow (Yuan-ti Form Only)"
-					}
-				}
-			},
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting (Yuan-ti Form Only)",
-					"headerEntries": [
-						"The yuan-ti's innate spellcasting ability is Charisma (spell save {@dc 13}, {@hit 5} to hit with spell attacks). The yuan-ti can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell animal friendship} (snakes only)",
-						"{@spell eldritch blast} (2 beams)",
-						"{@spell minor illusion}",
-						"{@spell poison spray}"
-					],
-					"daily": {
-						"3": [
-							"{@spell suggestion}"
-						]
-					},
-					"ability": "cha"
-				}
-			],
-			"miscTags": [
-				"MW"
-			],
-			"page": 118
-		},
-		{
-			"name": "Zalkoré",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Medusa",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the medusa",
-						"with": "Zalkoré",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 79
-		},
-		{
-			"name": "Zebra",
-			"source": "ToA",
-			"_copy": {
-				"name": "Riding Horse",
-				"source": "MM"
-			},
-			"page": 106
-		},
-		{
-			"name": "Zhanthi",
-			"isNpc": true,
-			"source": "ToA",
-			"_copy": {
-				"name": "Noble",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the noble",
-						"with": "Zhanthi",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 27
 		}
 	]
 }

@@ -8,60 +8,25 @@
 	},
 	"monster": [
 		{
-			"name": "Enormous Tentacle",
-			"size": "L",
-			"type": "beast",
+			"name": "Clockwork Behir",
 			"source": "OoW",
-			"page": 94,
-			"alignment": [
-				"U"
-			],
-			"ac": [
-				12
-			],
-			"hp": {
-				"average": 13,
-				"formula": "2d10 + 2"
+			"page": 173,
+			"_copy": {
+				"name": "Behir",
+				"source": "MM"
 			},
-			"speed": {
-				"walk": 30,
-				"swim": 30
-			},
-			"str": 15,
-			"dex": 14,
-			"con": 12,
-			"int": 1,
-			"wis": 10,
-			"cha": 3,
-			"passive": 10,
-			"cr": "1/4",
-			"senses": [
-				"blindsight 10 ft."
+			"type": "construct",
+			"immune": [
+				"poison",
+				"psychic"
 			],
-			"trait": [
-				{
-					"name": "Reach",
-					"entries": [
-						"The tentacle can reach anywhere in the room."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Constrict",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}6 ({@damage 1d8 + 2}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 14}). Until this grapple ends, the creature is {@condition restrained}, and the tentacle can't constrict another target."
-					]
-				}
-			],
-			"damageTags": [
-				"B"
-			],
-			"miscTags": [
-				"MW"
-			],
-			"senseTags": [
-				"B"
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
 			]
 		},
 		{
@@ -72,6 +37,10 @@
 			"_copy": {
 				"name": "Priest",
 				"source": "MM",
+				"_trait": {
+					"name": "Mountain Dwarf",
+					"source": "PHB"
+				},
 				"_mod": {
 					"*": {
 						"mode": "replaceTxt",
@@ -88,10 +57,6 @@
 							]
 						}
 					}
-				},
-				"_trait": {
-					"name": "Mountain Dwarf",
-					"source": "PHB"
 				}
 			},
 			"ac": [
@@ -103,17 +68,180 @@
 				}
 			],
 			"languageTags": [
-				"X",
-				"D"
+				"D",
+				"X"
+			]
+		},
+		{
+			"name": "Devil Dog",
+			"shortName": "Devil Dog",
+			"isNpc": true,
+			"source": "OoW",
+			"page": 85,
+			"_copy": {
+				"name": "Acolyte",
+				"source": "MM",
+				"_trait": {
+					"name": "Tiefling",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the acolyte",
+						"with": "Devil Dog",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"languageTags": [
+				"C",
+				"I",
+				"X"
+			]
+		},
+		{
+			"name": "Enormous Tentacle",
+			"source": "OoW",
+			"page": 94,
+			"_copy": {
+				"name": "Giant Constrictor Snake",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "snake",
+						"with": "tentacle"
+					}
+				}
+			},
+			"trait": [
+				{
+					"name": "Reach",
+					"entries": [
+						"The tentacle can reach anywhere in the room."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Constrict",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 35 ft., one creature. {@h}13 ({@damage 2d8 + 4}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 16}). Until this grapple ends, the creature is {@condition restrained}, and the tentacle can't constrict another target."
+					]
+				}
+			]
+		},
+		{
+			"name": "Gildha Duhn",
+			"isNpc": true,
+			"source": "OoW",
+			"page": 110,
+			"_copy": {
+				"name": "Acolyte",
+				"source": "MM",
+				"_trait": {
+					"name": "Half-Orc",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the acolyte",
+						"with": "Gildha",
+						"flags": "i"
+					}
+				}
+			},
+			"languageTags": [
+				"C",
+				"O",
+				"X"
+			]
+		},
+		{
+			"name": "Grunka",
+			"isNpc": true,
+			"source": "OoW",
+			"page": 115,
+			"_copy": {
+				"name": "Hobgoblin",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the hobgoblin",
+						"with": "Grunka",
+						"flags": "i"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Acid Spray Gun {@recharge 5}",
+							"entries": [
+								"The hobgoblin sprays acid in a 10-foot cone. Each creature in the area must make a DC 10 Dexterity saving throw, taking 7 ({@damage 2d6}) acid damage on a failed save, or half as much damage on a successful one.",
+								"The spray gun has a tank that can be filled with ten standard vials of acid mixed with water, allowing it to be used five times."
+							]
+						}
+					}
+				}
+			},
+			"damageTags": [
+				"A",
+				"P",
+				"S"
+			]
+		},
+		{
+			"name": "Jelayne",
+			"isNpc": true,
+			"source": "OoW",
+			"page": 84,
+			"_copy": {
+				"name": "Skeleton",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the skeleton",
+						"with": "Jelayne",
+						"flags": "i"
+					}
+				}
+			},
+			"cha": 14,
+			"languages": [
+				"Common"
+			],
+			"languageTags": [
+				"C"
+			]
+		},
+		{
+			"name": "Mechachimera",
+			"source": "OoW",
+			"page": 134,
+			"_copy": {
+				"name": "Chimera",
+				"source": "MM"
+			},
+			"type": "construct",
+			"immune": [
+				"poison",
+				"psychic"
 			]
 		},
 		{
 			"name": "Onyx",
 			"isNpc": true,
-			"size": "H",
-			"type": "beast",
 			"source": "OoW",
 			"page": 186,
+			"size": "H",
+			"type": "beast",
 			"alignment": [
 				"U"
 			],
@@ -168,184 +296,21 @@
 					]
 				}
 			],
+			"traitTags": [
+				"Keen Senses"
+			],
 			"damageTags": [
 				"S"
 			],
 			"miscTags": [
 				"MW",
 				"RCH"
-			],
-			"traitTags": [
-				"Keen Senses"
-			]
-		},
-		{
-			"name": "Jelayne",
-			"isNpc": true,
-			"source": "OoW",
-			"_copy": {
-				"name": "Skeleton",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the skeleton",
-						"with": "Jelayne",
-						"flags": "i"
-					}
-				}
-			},
-			"cha": 14,
-			"languages": [
-				"Common"
-			],
-			"page": 84,
-			"languageTags": [
-				"C"
-			]
-		},
-		{
-			"name": "Devil Dog",
-			"shortName": "Devil Dog",
-			"isNpc": true,
-			"source": "OoW",
-			"_copy": {
-				"name": "Acolyte",
-				"source": "MM",
-				"_trait": {
-					"name": "Tiefling",
-					"source": "PHB"
-				},
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the acolyte",
-						"with": "Devil Dog",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 85,
-			"alignment": [
-				"C",
-				"E"
-			],
-			"languageTags": [
-				"C",
-				"X",
-				"I"
-			]
-		},
-		{
-			"name": "Stomping Foot",
-			"source": "OoW",
-			"_copy": {
-				"name": "Crawling Claw",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "claw",
-						"with": "foot",
-						"flags": "i"
-					}
-				}
-			},
-			"action": [
-				{
-					"name": "Stomp",
-					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d4 + 1}) bludgeoning damage."
-					]
-				}
-			],
-			"page": 92,
-			"speed": {
-				"walk": 30
-			},
-			"damageTags": [
-				"B"
-			]
-		},
-		{
-			"name": "Gildha Duhn",
-			"isNpc": true,
-			"source": "OoW",
-			"_copy": {
-				"name": "Acolyte",
-				"source": "MM",
-				"_trait": {
-					"name": "Half-Orc",
-					"source": "PHB"
-				},
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the acolyte",
-						"with": "Gildha",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 110,
-			"languageTags": [
-				"C",
-				"X",
-				"O"
-			]
-		},
-		{
-			"name": "Undead Cockatrice",
-			"source": "OoW",
-			"_copy": {
-				"name": "Cockatrice",
-				"source": "MM"
-			},
-			"type": "undead",
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"poisoned"
-			],
-			"page": 114
-		},
-		{
-			"name": "Grunka",
-			"isNpc": true,
-			"source": "OoW",
-			"_copy": {
-				"name": "Hobgoblin",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the hobgoblin",
-						"with": "Grunka",
-						"flags": "i"
-					},
-					"action": {
-						"mode": "appendArr",
-						"items": {
-							"name": "Acid Spray Gun {@recharge 5}",
-							"entries": [
-								"The hobgoblin sprays acid in a 10-foot cone. Each creature in the area must make a DC 10 Dexterity saving throw, taking 7 ({@damage 2d6}) acid damage on a failed save, or half as much damage on a successful one.",
-								"The spray gun has a tank that can be filled with ten standard vials of acid mixed with water, allowing it to be used five times."
-							]
-						}
-					}
-				}
-			},
-			"page": 115,
-			"damageTags": [
-				"S",
-				"P",
-				"A"
 			]
 		},
 		{
 			"name": "Replica Duodrone",
 			"source": "OoW",
+			"page": 132,
 			"_copy": {
 				"name": "Duodrone",
 				"source": "MM",
@@ -362,22 +327,22 @@
 					}
 				}
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"languages": [
 				"Modron",
 				"can understand Common but speaks only preprogrammed responses"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"page": 132,
 			"languageTags": [
-				"OTH",
-				"C"
+				"C",
+				"OTH"
 			]
 		},
 		{
 			"name": "Replica Monodrone",
 			"source": "OoW",
+			"page": 132,
 			"_copy": {
 				"name": "Monodrone",
 				"source": "MM",
@@ -394,25 +359,25 @@
 					}
 				}
 			},
+			"speed": {
+				"walk": 30
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"languages": [
 				"Modron",
 				"can understand Common but speaks only preprogrammed responses"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"page": 132,
-			"speed": {
-				"walk": 30
-			},
 			"languageTags": [
-				"OTH",
-				"C"
+				"C",
+				"OTH"
 			]
 		},
 		{
 			"name": "Replica Pentadrone",
 			"source": "OoW",
+			"page": 132,
 			"_copy": {
 				"name": "Pentadrone",
 				"source": "MM",
@@ -429,22 +394,22 @@
 					}
 				}
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"languages": [
 				"Modron",
 				"can understand Common but speaks only preprogrammed responses"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"page": 132,
 			"languageTags": [
-				"OTH",
-				"C"
+				"C",
+				"OTH"
 			]
 		},
 		{
 			"name": "Replica Quadrone",
 			"source": "OoW",
+			"page": 132,
 			"_copy": {
 				"name": "Quadrone",
 				"source": "MM",
@@ -461,25 +426,25 @@
 					}
 				}
 			},
+			"speed": {
+				"walk": 30
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"languages": [
 				"Modron",
 				"can understand Common but speaks only preprogrammed responses"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"page": 132,
-			"speed": {
-				"walk": 30
-			},
 			"languageTags": [
-				"OTH",
-				"C"
+				"C",
+				"OTH"
 			]
 		},
 		{
 			"name": "Replica Tridrone",
 			"source": "OoW",
+			"page": 132,
 			"_copy": {
 				"name": "Tridrone",
 				"source": "MM",
@@ -496,60 +461,55 @@
 					}
 				}
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
 			"languages": [
 				"Modron",
 				"can understand Common but speaks only preprogrammed responses"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"page": 132,
 			"languageTags": [
-				"OTH",
-				"C"
+				"C",
+				"OTH"
 			]
 		},
 		{
-			"name": "Mechachimera",
-			"type": "construct",
+			"name": "Stomping Foot",
 			"source": "OoW",
+			"page": 92,
 			"_copy": {
-				"name": "Chimera",
-				"source": "MM"
+				"name": "Crawling Claw",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "claw",
+						"with": "foot",
+						"flags": "i"
+					}
+				}
 			},
-			"immune": [
-				"poison",
-				"psychic"
-			],
-			"page": 134
-		},
-		{
-			"name": "Clockwork Behir",
-			"type": "construct",
-			"source": "OoW",
-			"_copy": {
-				"name": "Behir",
-				"source": "MM"
+			"speed": {
+				"walk": 30
 			},
-			"immune": [
-				"poison",
-				"psychic"
+			"action": [
+				{
+					"name": "Stomp",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d4 + 1}) bludgeoning damage."
+					]
+				}
 			],
-			"conditionImmune": [
-				"charmed",
-				"exhaustion",
-				"frightened",
-				"paralyzed",
-				"petrified",
-				"poisoned"
-			],
-			"page": 173
+			"damageTags": [
+				"B"
+			]
 		},
 		{
 			"name": "Two Dry Cloaks",
 			"shortName": "Two Dry Cloaks",
 			"isNpc": true,
 			"source": "OoW",
+			"page": 162,
 			"_copy": {
 				"name": "Spy",
 				"source": "MM",
@@ -566,10 +526,25 @@
 					}
 				}
 			},
-			"page": 162,
 			"damageTags": [
 				"P",
 				"S"
+			]
+		},
+		{
+			"name": "Undead Cockatrice",
+			"source": "OoW",
+			"page": 114,
+			"_copy": {
+				"name": "Cockatrice",
+				"source": "MM"
+			},
+			"type": "undead",
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
 			]
 		}
 	]

@@ -17,7 +17,7 @@ class FeatsPage extends ListPage {
 	}
 
 	getListItem (feat, ftI, isExcluded) {
-		this._pageFilter.addToFilters(feat, isExcluded);
+		this._pageFilter.mutateAndAddToFilters(feat, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -40,9 +40,11 @@ class FeatsPage extends ListPage {
 				hash,
 				source,
 				ability: feat._slAbility,
-				prerequisite: feat._slPrereq,
-				isExcluded,
-				uniqueId: feat.uniqueId ? feat.uniqueId : ftI
+				prerequisite: feat._slPrereq
+			},
+			{
+				uniqueId: feat.uniqueId ? feat.uniqueId : ftI,
+				isExcluded
 			}
 		);
 
@@ -91,9 +93,9 @@ class FeatsPage extends ListPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 	}
 }
 

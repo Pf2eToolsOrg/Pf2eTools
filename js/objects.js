@@ -51,9 +51,11 @@ class ObjectsPage extends ListPage {
 			{
 				hash,
 				source,
-				size,
-				isExcluded,
-				uniqueId: obj.uniqueId ? obj.uniqueId : obI
+				size
+			},
+			{
+				uniqueId: obj.uniqueId ? obj.uniqueId : obI,
+				isExcluded
 			}
 		);
 
@@ -114,7 +116,7 @@ class ObjectsPage extends ListPage {
 		if (obj.tokenUrl || !obj.uniqueId) {
 			const imgLink = obj.tokenUrl || UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
 			$floatToken.append(`
-			<a href="${imgLink}" target="_blank" rel="noopener">
+			<a href="${imgLink}" target="_blank" rel="noopener noreferrer">
 				<img src="${imgLink}" id="token_image" class="token" onerror="TokenUtil.imgError(this)" alt="${obj.name}">
 			</a>`
 			);
@@ -123,9 +125,9 @@ class ObjectsPage extends ListPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 	}
 }
 

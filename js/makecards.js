@@ -14,9 +14,9 @@ class MakeCards extends BaseComponent {
 
 		this._list = null;
 
-		this._pageFilterItems = new PageFilterItems();
-		this._pageFilterBestiary = new PageFilterBestiary();
-		this._pageFilterSpells = new PageFilterSpells();
+		this._modalFilterItems = new ModalFilterItems("makecards.items");
+		this._modalFilterBestiary = new ModalFilterBestiary("makecards.bestiary");
+		this._modalFilterSpells = new ModalFilterSpells("makecards.spells");
 
 		this._doSaveStateDebounced = MiscUtil.debounce(() => this._pDoSaveState(), 50);
 	}
@@ -78,10 +78,7 @@ class MakeCards extends BaseComponent {
 		// region Search bar/add button
 		const contextIdSearch = ContextUtil.getNextGenericMenuId();
 		const _CONTEXT_OPTIONS = this._render_getContextMenuOptions();
-		ContextUtil.doInitContextMenu(contextIdSearch, (evt, ele, $invokedOn, $selectedMenu) => {
-			const val = Number($selectedMenu.data("ctx-id"));
-			_CONTEXT_OPTIONS.filter(Boolean)[val].action(evt, $invokedOn);
-		}, _CONTEXT_OPTIONS.map(it => it ? it.name : null));
+		ContextUtil.doInitActionContextMenu(contextIdSearch, _CONTEXT_OPTIONS);
 
 		const $iptSearch = $(`<input type="search" class="form-control mr-2" placeholder="Search cards...">`);
 		const $btnAdd = $(`<button class="btn btn-primary mr-2"><span class="glyphicon glyphicon-plus"/> Add</button>`)
@@ -124,39 +121,36 @@ class MakeCards extends BaseComponent {
 
 		const contextIdMass = ContextUtil.getNextGenericMenuId();
 		const _CONTEXT_OPTIONS_MASS = [
-			{
-				name: "Set Color",
-				action: async () => {
+			new ContextUtil.Action(
+				"Set Color",
+				async () => {
 					const sel = getSelCards();
 					if (!sel) return;
 					const rgb = await InputUiUtil.pGetUserColor({default: MiscUtil.randomColor()});
 					if (rgb) sel.forEach(it => it.data.setColor(rgb));
 				}
-			},
-			{
-				name: "Set Icon",
-				action: async () => {
+			),
+			new ContextUtil.Action(
+				"Set Icon",
+				async () => {
 					const sel = getSelCards();
 					if (!sel) return;
 					const icon = await MakeCards._pGetUserIcon();
 					if (icon) sel.forEach(it => it.data.setIcon(icon));
 				}
-			},
-			{
-				name: "Remove",
-				action: async () => {
+			),
+			new ContextUtil.Action(
+				"Remove",
+				async () => {
 					const sel = getSelCards();
 					if (!sel) return;
 					sel.forEach(it => this._list.removeItem(it.ix));
 					this._list.update();
 					this._doSaveStateDebounced();
 				}
-			}
+			)
 		];
-		ContextUtil.doInitContextMenu(contextIdMass, (evt, ele, $invokedOn, $selectedMenu) => {
-			const val = Number($selectedMenu.data("ctx-id"));
-			_CONTEXT_OPTIONS_MASS.filter(Boolean)[val].action(evt, $invokedOn);
-		}, _CONTEXT_OPTIONS_MASS.map(it => it ? it.name : null));
+		ContextUtil.doInitActionContextMenu(contextIdMass, _CONTEXT_OPTIONS_MASS);
 		const $btnMass = $(`<button class="btn btn-xs btn-default" title="Carry out actions on selected cards">Mass...</button>`)
 			.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnMass, contextIdMass));
 		$$`<div class="w-100 no-shrink flex-v-center mb-2">${$btnMass}</div>`.appendTo($wrpContainer);
@@ -199,9 +193,9 @@ class MakeCards extends BaseComponent {
 	}
 
 	_render_getContextMenuOptionsSearch () {
-		return Object.entries(MakeCards._AVAILABLE_TYPES).map(([entityType, it]) => ({
-			name: `Search for ${it.searchTitle}`,
-			action: async () => {
+		return Object.entries(MakeCards._AVAILABLE_TYPES).map(([entityType, it]) => new ContextUtil.Action(
+			`Search for ${it.searchTitle}`,
+			async () => {
 				const fromSearch = await it.pFnSearch();
 				if (!fromSearch) return;
 
@@ -217,129 +211,41 @@ class MakeCards extends BaseComponent {
 				this._list.update();
 				this._doSaveStateDebounced();
 			}
-		}));
+		));
 	}
 
 	_render_getContextMenuOptionsFilter () {
-		return Object.entries(MakeCards._AVAILABLE_TYPES).map(([entityType, type]) => ({
-			name: `Filter for ${type.searchTitle}`,
-			action: async () => {
-				let $wrpModalInner;
+		return Object.entries(MakeCards._AVAILABLE_TYPES).map(([entityType, type]) => new ContextUtil.Action(
+			`Filter for ${type.searchTitle}`,
+			async () => {
+				const modalFilter = (() => {
+					switch (entityType) {
+						case "creature": return this._modalFilterBestiary;
+						case "item": return this._modalFilterItems;
+						case "spell": return this._modalFilterSpells;
+						default: throw new Error(`Unhandled branch!`);
+					}
+				})();
+				const selected = await modalFilter.pGetUserSelection();
+				if (selected == null || !selected.length) return;
 
-				const {$modalInner, doClose} = UiUtil.getShowModal({
-					fullHeight: true,
-					title: `Filter/Search for ${type.searchTitle}`,
-					cbClose: () => {
-						$wrpModalInner.detach();
-					},
-					isLarge: true,
-					zIndex: 999
-				});
-
-				if (type._filterCache) {
-					$wrpModalInner = type._filterCache.$wrpModalInner.appendTo($modalInner);
-				} else {
-					const $ovlLoading = $(`<div class="w-100 h-100 flex-vh-center"><i class="dnd-font text-muted">Loading...</i></div>`).appendTo($modalInner);
-
-					const $cbSelAll = $(`<input type="checkbox">`)
-						.click(() => {
-							const val = $cbSelAll.prop("checked");
-							list.items.forEach(it => it.data.eleCb.checked = false);
-							list.visibleItems.forEach(it => it.data.eleCb.checked = val);
-						});
-					const $iptSearch = $(`<input class="form-control" type="search" placeholder="Search...">`);
-					const $btnReset = $(`<button class="btn btn-default">Reset</button>`);
-					const $wrpFormTop = $$`<div class="flex input-group btn-group w-100 lst__form-top">${$iptSearch}${$btnReset}</div>`;
-					const $wrpFormBottom = $(`<div class="w-100"/>`);
-					const $wrpFormHeaders = $(`<div class="sortlabel lst__form-bottom"/>`);
-					type.fnGetListHeaders().forEach($ele => $wrpFormHeaders.append($ele));
-					const $wrpForm = $$`<div class="flex-col w-100">${$wrpFormTop}${$wrpFormBottom}${$wrpFormHeaders}</div>`;
-					const $wrpList = $(`<ul class="list mb-2 h-100"/>`);
-
-					const $btnConfirm = $(`<button class="btn btn-default">Confirm</button>`)
-						.click(async () => {
-							doClose();
-							const checked = list.visibleItems.filter(it => it.data.eleCb.checked);
-							const len = checked.length;
-							// do this in serial to avoid bombarding the hover cache
-							for (let i = 0; i < len; ++i) {
-								const filterListItem = checked[i];
-								const listItem = await this._pGetListItem({page: type.page, source: filterListItem.values.jsonSource, hash: filterListItem.values.hash, entityType}, true);
-								this._list.addItem(listItem);
-							}
-							this._list.update();
-							this._doSaveStateDebounced();
-						});
-
-					const list = new List({
-						$iptSearch,
-						$wrpList,
-						fnSort: type.fnSort
-					});
-
-					SortUtil.initBtnSortHandlers($wrpFormHeaders, list);
-
-					const allData = await type.pFnLoadAllData();
-					const pageFilter = (() => {
-						switch (entityType) {
-							case "creature": return this._pageFilterBestiary;
-							case "item": return this._pageFilterItems;
-							case "spell": {
-								this._pageFilterSpells.populateHomebrewClassLookup(BrewUtil.homebrew);
-								return this._pageFilterSpells;
-							}
-							default: throw new Error(`Unhandled branch!`);
-						}
-					})();
-
-					await pageFilter.pInitFilterBox({
-						$wrpFormTop,
-						$btnReset,
-						$wrpMiniPills: $wrpFormBottom
-					});
-
-					allData.forEach((it, i) => {
-						pageFilter.addToFilters(it);
-						const filterListItem = type.fnGetListItem(pageFilter, it, i);
-						list.addItem(filterListItem);
-					});
-
-					list.init();
-					list.update();
-
-					const handleFilterChange = () => {
-						const f = pageFilter.filterBox.getValues();
-						list.filter(li => {
-							const it = allData[li.ix];
-							return pageFilter.toDisplay(f, it);
-						});
-					};
-
-					$(pageFilter.filterBox).on(FilterBox.EVNT_VALCHANGE, handleFilterChange);
-					pageFilter.filterBox.render();
-					handleFilterChange();
-
-					$ovlLoading.remove();
-
-					$wrpModalInner = $$`<div class="flex-col h-100">
-							<div class="flex mb-2">
-								<label class="flex-h-center flex-v-bottom col-1 pl-0 no-shrink">${$cbSelAll}</label>
-								${$wrpForm}
-							</div>
-							${$wrpList}
-							<div class="flex-vh-center">${$btnConfirm}</div>
-						</div>`.appendTo($modalInner);
-
-					type._filterCache = {$wrpModalInner, pageFilter};
+				// do this in serial to avoid bombarding the hover cache
+				const len = selected.length;
+				for (let i = 0; i < len; ++i) {
+					const filterListItem = selected[i];
+					const listItem = await this._pGetListItem({page: type.page, source: filterListItem.values.sourceJson, hash: filterListItem.values.hash, entityType}, true);
+					this._list.addItem(listItem);
 				}
+				this._list.update();
+				this._doSaveStateDebounced();
 			}
-		}));
+		));
 	}
 
 	_render_getContextMenuOptionsSublist () {
-		return Object.entries(MakeCards._AVAILABLE_TYPES).map(([entityType, type]) => ({
-			name: `Load from ${type.pageTitle}${type.isPageTitleSkipSuffix ? "" : " Page"} Pinned List`,
-			action: async () => {
+		return Object.entries(MakeCards._AVAILABLE_TYPES).map(([entityType, type]) => new ContextUtil.Action(
+			`Load from ${type.pageTitle}${type.isPageTitleSkipSuffix ? "" : " Page"} Pinned List`,
+			async () => {
 				const storageKey = StorageUtil.getPageKey("sublist", type.page);
 				const pinnedList = await StorageUtil.pGet(storageKey);
 
@@ -356,7 +262,7 @@ class MakeCards extends BaseComponent {
 				this._list.update();
 				this._doSaveStateDebounced();
 			}
-		}))
+		))
 	}
 
 	_getStateForType (entityType) {
@@ -449,8 +355,8 @@ class MakeCards extends BaseComponent {
 				this._doSaveStateDebounced();
 			});
 
-		const $ele = $$`<div class="flex-v-center my-1 w-100 lst--border">
-			<label class="col-1 mr-2 flex-vh-center">${$cbSel}</label>
+		const $ele = $$`<label class="flex-v-center my-1 w-100 lst--border">
+			<div class="col-1 mr-2 flex-vh-center">${$cbSel}</div>
 			<div class="col-3 mr-2 flex-v-center">${loaded.name}</div>
 			<div class="col-1-5 mr-2 flex-vh-center ${Parser.sourceJsonToColor(loaded.source)}" title="${Parser.sourceJsonToFull(loaded.source)}" ${BrewUtil.sourceJsonToStyle(loaded.source)}>${Parser.sourceJsonToAbv(loaded.source)}</div>
 			<div class="col-1-5 mr-2 flex-vh-center">${cardMeta.entityType.toTitleCase()}</div>
@@ -458,7 +364,7 @@ class MakeCards extends BaseComponent {
 			<div class="col-1-1 mr-2 flex-vh-center">${$btnIcon}</div>
 			<div class="col-1 mr-2 flex-vh-center">${$iptCount}</div>
 			<div class="col-1-1 flex-v-center flex-h-right">${$btnCopy}${$btnDelete}</div>
-		</div>`;
+		</label>`;
 
 		const listItem = new ListItem(
 			uid,
@@ -692,10 +598,6 @@ class MakeCards extends BaseComponent {
 		});
 		return cpy;
 	}
-
-	static _$getFilterColumnHeaders (btnMeta) {
-		return btnMeta.map((it, i) => $(`<button class="col-${it.width} ${i === 0 ? "pl-0" : i === btnMeta.length ? "pr-0" : ""} sort btn btn-default btn-xs" data-sort="${it.sort}" ${it.title ? `title="${it.title}"` : ""}>${it.text} <span class="caret_wrp"></span></button>`));
-	}
 }
 MakeCards._DEFAULT_STATE = {
 
@@ -712,65 +614,11 @@ MakeCards._AVAILABLE_TYPES = {
 		colorDefault: "#008000",
 		iconDefault: "imp-laugh",
 		pFnSearch: SearchWidget.pGetUserCreatureSearch,
-		fnSort: PageFilterBestiary.sortMonsters,
 		fnGetContents: MakeCards._getCardContents_creature.bind(MakeCards),
 		fnGetTags: (mon) => {
 			const types = Parser.monTypeToFullObj(mon.type);
 			const cr = mon.cr == null ? "unknown CR" : `CR ${(mon.cr.cr || mon.cr)}`;
 			return ["creature", Parser.sourceJsonToAbv(mon.source), types.type, cr, Parser.sizeAbvToFull(mon.size)]
-		},
-		pFnLoadAllData: async () => {
-			const brew = await BrewUtil.pAddBrewData();
-			const fromData = await DataUtil.monster.pLoadAll();
-			const fromBrew = brew.monster || [];
-			return [...fromData, ...fromBrew];
-		},
-		fnGetListHeaders: () => {
-			const btnMeta = [
-				{sort: "name", text: "Name", width: "5"},
-				{sort: "type", text: "Type", width: "4"},
-				{sort: "cr", text: "CR", width: "2"},
-				{sort: "source", text: "Source", width: "1"}
-			];
-			return MakeCards._$getFilterColumnHeaders(btnMeta);
-		},
-		fnGetListItem: (pageFilter, mon, itI) => {
-			Renderer.monster.initParsed(mon);
-			pageFilter.addToFilters(mon);
-
-			const eleLi = document.createElement("li");
-			eleLi.className = "row px-0";
-
-			const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](mon);
-			const source = Parser.sourceJsonToAbv(mon.source);
-			const type = mon._pTypes.asText.uppercaseFirst();
-			const cr = mon._pCr || "\u2014";
-
-			eleLi.innerHTML = `<div>
-				<div class="flex-vh-center col-1 pl-0"><input type="checkbox"></div>
-				<div class="col-11 pr-0">
-					<div class="col-5 pl-0 bold">${mon.name}</div>
-					<div class="col-4">${type}</div>
-					<div class="col-2 text-center">${cr}</div>
-					<div class="col-1 text-center ${Parser.sourceJsonToColor(mon.source)} pr-0" title="${Parser.sourceJsonToFull(mon.source)}" ${BrewUtil.sourceJsonToStyle(mon.source)}>${source}</div>
-				</div>
-			</div>`;
-
-			return new ListItem(
-				itI,
-				eleLi,
-				mon.name,
-				{
-					hash,
-					source,
-					jsonSource: mon.source,
-					type,
-					cr
-				},
-				{
-					eleCb: eleLi.firstElementChild.firstElementChild.firstElementChild
-				}
-			);
 		}
 	},
 	item: {
@@ -784,56 +632,6 @@ MakeCards._AVAILABLE_TYPES = {
 		fnGetTags: (item) => {
 			const [typeListText] = Renderer.item.getHtmlAndTextTypes(item);
 			return ["item", Parser.sourceJsonToAbv(item.source), ...typeListText]
-		},
-		pFnLoadAllData: async () => {
-			const brew = await BrewUtil.pAddBrewData();
-			const fromData = await Renderer.item.pBuildList({isAddGroups: true, isBlacklistVariants: true});
-			const fromBrew = await Renderer.item.getItemsFromHomebrew(brew);
-			return [...fromData, ...fromBrew];
-		},
-		fnGetListHeaders: () => {
-			const btnMeta = [
-				{sort: "name", text: "Name", width: "5"},
-				{sort: "type", text: "Type", width: "6"},
-				{sort: "source", text: "Source", width: "1"}
-			];
-			return MakeCards._$getFilterColumnHeaders(btnMeta);
-		},
-		fnGetListItem: (pageFilter, item, itI) => {
-			if (item.noDisplay) return null;
-			Renderer.item.enhanceItem(item);
-			pageFilter.addToFilters(item);
-
-			const eleLi = document.createElement("li");
-			eleLi.className = "row px-0";
-
-			const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
-			const source = Parser.sourceJsonToAbv(item.source);
-			const type = item._typeListText.join(", ");
-
-			eleLi.innerHTML = `<div>
-				<div class="flex-vh-center col-1 pl-0"><input type="checkbox"></div>
-				<div class="col-11 pr-0">
-					<span class="col-5 pl-0 bold">${item.name}</span>
-					<span class="col-6">${type}</span>
-					<span class="col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
-				</div>
-			</div>`;
-
-			return new ListItem(
-				itI,
-				eleLi,
-				item.name,
-				{
-					hash,
-					source,
-					jsonSource: item.source,
-					type
-				},
-				{
-					eleCb: eleLi.firstElementChild.firstElementChild.firstElementChild
-				}
-			);
 		}
 	},
 	spell: {
@@ -843,76 +641,11 @@ MakeCards._AVAILABLE_TYPES = {
 		colorDefault: "#4a6898",
 		iconDefault: "magic-swirl",
 		pFnSearch: SearchWidget.pGetUserSpellSearch,
-		fnSort: PageFilterSpells.sortSpells,
 		fnGetContents: MakeCards._getCardContents_spell.bind(MakeCards),
 		fnGetTags: (spell) => {
 			const out = ["spell", Parser.sourceJsonToAbv(spell.source), Parser.spLevelToFullLevelText(spell.level), Parser.spSchoolAbvToFull(spell.school)];
 			if (spell.duration.filter(d => d.concentration).length) out.push("concentration");
 			return out;
-		},
-		pFnLoadAllData: async () => {
-			const brew = await BrewUtil.pAddBrewData();
-			const fromData = await DataUtil.spell.pLoadAll();
-			const fromBrew = brew.spell || [];
-			return [...fromData, ...fromBrew];
-		},
-		fnGetListHeaders: () => {
-			const btnMeta = [
-				{sort: "name", text: "Name", width: "3-5"},
-				{sort: "level", text: "Level", width: "2"},
-				{sort: "time", text: "Time", width: "2"},
-				{sort: "school", text: "School", width: "1"},
-				{sort: "concentration", text: "C.", title: "Concentration", width: "0-5"},
-				{sort: "range", text: "Range", width: "2"},
-				{sort: "source", text: "Source", width: "1"}
-			];
-			return MakeCards._$getFilterColumnHeaders(btnMeta);
-		},
-		fnGetListItem: (pageFilter, spell, spI) => {
-			const eleLi = document.createElement("li");
-			eleLi.className = "row";
-
-			const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS](spell);
-			const source = Parser.sourceJsonToAbv(spell.source);
-			const levelText = `${Parser.spLevelToFull(spell.level)}${spell.meta && spell.meta.ritual ? " (rit.)" : ""}${spell.meta && spell.meta.technomagic ? " (tec.)" : ""}`;
-			const time = PageFilterSpells.getTblTimeStr(spell.time[0]);
-			const school = Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools);
-			const concentration = spell._isConc ? "×" : "";
-			const range = Parser.spRangeToFull(spell.range);
-
-			eleLi.innerHTML = `<label class="lst--border">
-				<div class="flex-vh-center col-1 pl-0"><input type="checkbox"></div>
-				<div class="col-11 pr-0">
-					<div class="bold col-3-5 pl-0">${spell.name}</div>
-					<div class="col-2 text-center">${levelText}</div>
-					<div class="col-2 text-center">${time}</div>
-					<div class="col-1 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</div>
-					<div class="col-0-5 text-center" title="Concentration">${concentration}</div>
-					<div class="col-2 text-right">${range}</div>
-					<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</div>
-				</div>
-			</label>`;
-
-			return new ListItem(
-				spI,
-				eleLi,
-				spell.name,
-				{
-					hash,
-					source,
-					jsonSource: spell.source,
-					level: spell.level,
-					time,
-					school: Parser.spSchoolAbvToFull(spell.school),
-					classes: Parser.spClassesToFull(spell.classes, true),
-					concentration,
-					normalisedTime: spell._normalisedTime,
-					normalisedRange: spell._normalisedRange
-				},
-				{
-					eleCb: eleLi.firstElementChild.firstElementChild.firstElementChild
-				}
-			);
 		}
 	}
 	// TODO add more entities

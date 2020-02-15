@@ -35,6 +35,7 @@ function Renderer () {
 	this._fnPostProcess = null;
 	this._extraSourceClasses = null;
 	this._depthTracker = null;
+	this._isIternalLinksDisabled = false;
 
 	/**
 	 * Enables/disables lazy-load image rendering.
@@ -120,10 +121,18 @@ function Renderer () {
 
 	this.setRoll20Ids = function (roll20Ids) {
 		this._roll20Ids = roll20Ids;
+		return this;
 	};
 
 	this.resetRoll20Ids = function () {
 		this._roll20Ids = null;
+		return this;
+	};
+
+	/** Used by Foundry config. */
+	this.setInternalLinksDisabled = function (bool) {
+		this._isIternalLinksDisabled = bool;
+		return this;
 	};
 
 	/**
@@ -348,7 +357,7 @@ function Renderer () {
 		const svg = this._lazyImages && entry.width != null && entry.height != null
 			? `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${entry.width}" height="${entry.height}"><rect width="100%" height="100%" fill="#ccc3"></rect></svg>`)}`
 			: null;
-		textStack[0] += `<div class="${this._renderImage_getWrapperClasses(entry, meta)}"><a href="${href}" target="_blank" rel="noopener" ${entry.title ? `title="${Renderer.stripTags(entry.title)}"` : ""}><img class="rd__image" src="${svg || href}" ${entry.altText ? `alt="${entry.altText}"` : ""} ${svg ? `data-src="${href}"` : ""} ${getStylePart()}></a></div>`;
+		textStack[0] += `<div class="${this._renderImage_getWrapperClasses(entry, meta)}"><a href="${href}" target="_blank" rel="noopener noreferrer" ${entry.title ? `title="${Renderer.stripTags(entry.title)}"` : ""}><img class="rd__image" src="${svg || href}" ${entry.altText ? `alt="${entry.altText}"` : ""} ${svg ? `data-src="${href}"` : ""} ${getStylePart()}></a></div>`;
 		if (entry.title) textStack[0] += `<div class="rd__image-title"><div class="rd__image-title-inner">${this.render(entry.title)}</div></div>`;
 		else if (entry._galleryTitlePad) textStack[0] += `<div class="rd__image-title">&nbsp;</div>`;
 
@@ -560,6 +569,8 @@ function Renderer () {
 				for (let i = 0; i < len; ++i) {
 					meta.depth = nextDepth;
 					this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
+					// Add a spacer for style sets that have vertical whitespace instead of indents
+					if (i === 0 && meta.depth >= 2) textStack[0] += `<div class="rd__spc-inline-post"></div>`;
 				}
 				meta.depth = cacheDepth;
 			}
@@ -993,8 +1004,15 @@ function Renderer () {
 	};
 
 	this._renderCode = function (entry, textStack, meta, options) {
-		textStack[0] += `<button class="btn btn-default btn-xs mb-1" onclick="{const $e = $(this).next('pre'); MiscUtil.pCopyTextToClipboard($e.text());JqueryUtil.showCopiedEffect($e)}">Copy Code</button>
-			<pre>${entry.preformatted}</pre>
+		const isWrapped = !!StorageUtil.syncGet("rendererCodeWrap");
+		textStack[0] += `
+			<div class="flex-col h-100">
+				<div class="flex no-shrink pt-1">
+					<button class="btn btn-default btn-xs mb-1 mr-2" onclick="Renderer.events.handleClick_copyCode(event, this)">Copy Code</button>
+					<button class="btn btn-default btn-xs mb-1 ${isWrapped ? "active" : ""}" onclick="Renderer.events.handleClick_toggleCodeWrap(event, this)">Word Wrap</button>
+				</div>
+				<pre class="h-100 w-100 mb-1 ${isWrapped ? "rd__pre-wrap" : ""}">${entry.preformatted}</pre>
+			</div>
 		`;
 	};
 
@@ -1189,6 +1207,7 @@ function Renderer () {
 						// format: {@filter Warlock Spells|spells|level=1;2|class=Warlock}
 						const [displayText, page, ...filters] = text.split("|");
 
+						let customHash;
 						const fauxEntry = {
 							type: "link",
 							text: displayText,
@@ -1199,11 +1218,22 @@ function Renderer () {
 								hashPreEncoded: true,
 								subhashes: filters.map(f => {
 									const [fname, fvals, fopts] = f.split("=").map(s => s.trim()).filter(s => s);
-									const key = fname.startsWith("fb") ? fname : `flst${UrlUtil.encodeForHash(fname)}`;
+									const isBoxData = fname.startsWith("fb");
+									const key = isBoxData ? fname : `flst${UrlUtil.encodeForHash(fname)}`;
 
 									let value;
-									if (fname === "search") {
+									// special cases for "search" and "hash" keywords
+									if (isBoxData) {
+										return {
+											key,
+											value: fvals,
+											preEncoded: true
+										}
+									} else if (fname === "search") {
 										value = UrlUtil.encodeForHash(fvals);
+									} else if (fname === "hash") {
+										customHash = fvals;
+										return null;
 									} else if (fvals.startsWith("[") && fvals.endsWith("]")) { // range
 										const [min, max] = fvals.substring(1, fvals.length - 1).split(";").map(it => it.trim());
 										if (max == null) { // shorthand version, with only one value, becomes min _and_ max
@@ -1239,9 +1269,12 @@ function Renderer () {
 										}];
 									}
 									return out;
-								}).flat()
+								}).flat().filter(Boolean)
 							}
 						};
+
+						if (customHash) fauxEntry.href.hash = customHash;
+
 						this._recursiveRender(fauxEntry, textStack, meta);
 
 						break;
@@ -1349,7 +1382,7 @@ function Renderer () {
 						} else {
 							const area = BookUtil.curRender.headerMap[areaId] || {entry: {name: ""}}; // default to prevent rendering crash on bad tag
 							const hoverMeta = Renderer.hover.getMakePredefinedHover(area.entry, true);
-							textStack[0] += `<a href="#${BookUtil.curRender.curBookId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}" ${hoverMeta.html} onclick="BookUtil.handleReNav(this)">${renderText}</a>`;
+							textStack[0] += `<a href="#${BookUtil.curRender.curBookId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}" ${hoverMeta.html}>${renderText}</a>`;
 						}
 
 						break;
@@ -1469,7 +1502,7 @@ function Renderer () {
 									const subhashObj = UrlUtil.unpackSubHash(UrlUtil.getClassesPageStatePart(classStateOpts));
 
 									fauxEntry.href.subhashes = [
-										{key: "state", value: subhashObj.state, preEncoded: true},
+										{key: "state", value: subhashObj.state.join(HASH_SUB_LIST_SEP), preEncoded: true},
 										{key: "fltsource", value: "clear"},
 										{key: "flstmiscellaneous", value: "clear"}
 									];
@@ -1634,6 +1667,15 @@ function Renderer () {
 								};
 								this._recursiveRender(fauxEntry, textStack, meta);
 								break;
+							case "@language":
+								fauxEntry.href.path = UrlUtil.PG_LANGUAGES;
+								if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+								fauxEntry.href.hover = {
+									page: UrlUtil.PG_LANGUAGES,
+									source: source || SRC_PHB
+								};
+								this._recursiveRender(fauxEntry, textStack, meta);
+								break;
 						}
 
 						break;
@@ -1657,7 +1699,11 @@ function Renderer () {
 			}
 		}
 
-		textStack[0] += `<a href="${href}" ${entry.href.type === "internal" ? "" : `target="_blank" rel="noopener"`} ${this._renderLink_getHoverString(entry)} ${this._getHooks("link", "ele").map(hook => hook(entry)).join(" ")}>${this.render(entry.text)}</a>`;
+		if (this._isIternalLinksDisabled && entry.href.type === "internal") {
+			textStack[0] += `<span class="bold" ${this._renderLink_getHoverString(entry)} ${this._getHooks("link", "ele").map(hook => hook(entry)).join(" ")}>${this.render(entry.text)}</span>`
+		} else {
+			textStack[0] += `<a href="${href}" ${entry.href.type === "internal" ? "" : `target="_blank" rel="noopener noreferrer"`} ${this._renderLink_getHoverString(entry)} ${this._getHooks("link", "ele").map(hook => hook(entry)).join(" ")}>${this.render(entry.text)}</a>`;
+		}
 	};
 
 	this._renderLink_getHref = function (entry) {
@@ -1736,6 +1782,22 @@ Renderer.ENTRIES_WITH_CHILDREN = [
 	{type: "table", key: "rows"}
 ];
 
+Renderer.events = {
+	handleClick_copyCode (evt, ele) {
+		const $e = $(ele).parent().next("pre");
+		MiscUtil.pCopyTextToClipboard($e.text());
+		JqueryUtil.showCopiedEffect($e);
+	},
+
+	handleClick_toggleCodeWrap (evt, ele) {
+		const nxt = !StorageUtil.syncGet("rendererCodeWrap");
+		StorageUtil.syncSet("rendererCodeWrap", nxt);
+		const $btn = $(ele).toggleClass("active", nxt);
+		const $e = $btn.parent().next("pre");
+		$e.toggleClass("rd__pre-wrap", nxt);
+	}
+};
+
 Renderer.applyProperties = function (entry, object) {
 	const propSplit = Renderer.splitByPropertyInjectors(entry);
 	const len = propSplit.length;
@@ -1770,6 +1832,11 @@ Renderer.applyProperties = function (entry, object) {
 	return textStack;
 };
 Renderer.applyProperties._leadingAn = new Set(["a", "e", "i", "o", "u"]);
+
+Renderer.applyAllProperties = function (entries, object) {
+	const handlers = {string: (ident, str) => Renderer.applyProperties(str, object)};
+	return MiscUtil.getWalker().walk("applyAllProperties", entries, handlers);
+};
 
 Renderer.attackTagToFull = function (tagStr) {
 	function renderTag (tags) {
@@ -1887,9 +1954,18 @@ Renderer.getEntryDice = function (entry, name, isAddHandlers = true) {
 		}
 
 		const handlerPart = isAddHandlers ? `onmousedown="event.preventDefault()" onclick="Renderer.dice.pRollerClickUseData(event, this)" data-packed-dice=${pack(toPack)}` : "";
-		const titlePart = isAddHandlers ? `title="Click to roll. ${toPack.subType === "damage" ? "SHIFT to roll a critical hit, CTRL to half damage (rounding down)." : toPack.subType === "d20" ? "SHIFT to roll with advantage, CTRL to roll with disadvantage." : "SHIFT/CTRL to roll twice."}" data-no-roll-name="true"` : "";
-		return `<span class="roller render-roller" ${name ? `title="${name ? `${name.escapeQuotes()}` : ""}"` : ""} ${handlerPart} ${titlePart}>${toDisplay}</span>`;
+
+		const rollableTitlePart = isAddHandlers ? Renderer.getEntryDiceTitle(toPack.subType) : null;
+		const titlePart = isAddHandlers
+			? `title="${[name, rollableTitlePart].filter(Boolean).join(". ").escapeQuotes()}" ${name ? `data-roll-name="${name}"` : ""}`
+			: name ? `title="${name.escapeQuotes()}" data-roll-name="${name.escapeQuotes()}"` : "";
+
+		return `<span class="roller render-roller" ${titlePart} ${handlerPart}>${toDisplay}</span>`;
 	} else return toDisplay;
+};
+
+Renderer.getEntryDiceTitle = function (subType) {
+	return `Click to roll. ${subType === "damage" ? "SHIFT to roll a critical hit, CTRL to half damage (rounding down)." : subType === "d20" ? "SHIFT to roll with advantage, CTRL to roll with disadvantage." : "SHIFT/CTRL to roll twice."}`
 };
 
 Renderer.legacyDiceToString = function (array) {
@@ -2374,8 +2450,8 @@ Renderer.utils = {
 		otherSummary: 11,
 		[undefined]: 12
 	},
-	getPrerequisiteText: (prerequisites, listMode = false, blacklistKeys = new Set()) => {
-		if (!prerequisites) return listMode ? "\u2014" : "";
+	getPrerequisiteText: (prerequisites, isListMode = false, blacklistKeys = new Set()) => {
+		if (!prerequisites) return isListMode ? "\u2014" : "";
 
 		const listOfChoices = prerequisites.map(pr => {
 			return Object.entries(pr)
@@ -2387,7 +2463,7 @@ Renderer.utils = {
 						case "level": {
 							const isSubclassVisible = v.subclass && v.subclass.visible;
 							const isClassVisible = v.class && (v.class.visible || isSubclassVisible); // force the class name to be displayed if there's a subclass being displayed
-							if (listMode) {
+							if (isListMode) {
 								const shortNameRaw = isClassVisible ? v.class.name.toTitleCase().replace(/[aeiou]/g, "") : null;
 								return `${isClassVisible ? `${shortNameRaw.slice(0, 4)}${isSubclassVisible ? "*" : "."} ` : ""} Lvl ${v.level}`
 							} else {
@@ -2399,51 +2475,103 @@ Renderer.utils = {
 							}
 						}
 						case "pact": return Parser.prereqPactToFull(v);
-						case "patron": return listMode ? `${Parser.prereqPatronToShort(v)} patron` : `${v} patron`;
+						case "patron": return isListMode ? `${Parser.prereqPatronToShort(v)} patron` : `${v} patron`;
 						case "spell":
-							return listMode
+							return isListMode
 								? v.map(x => x.split("#")[0].split("|")[0].toTitleCase()).join("/")
 								: v.map(sp => Parser.prereqSpellToFull(sp)).joinConjunct(", ", " or ");
 						case "feature":
-							return listMode ? v.map(x => x.toTitleCase()).join("/") : v.joinConjunct(", ", " or ");
+							return isListMode ? v.map(x => x.toTitleCase()).join("/") : v.joinConjunct(", ", " or ");
 						case "item":
-							return listMode ? v.map(x => x.toTitleCase()).join("/") : v.joinConjunct(", ", " or ");
+							return isListMode ? v.map(x => x.toTitleCase()).join("/") : v.joinConjunct(", ", " or ");
 						case "otherSummary":
-							return listMode ? (v.entrySummary || Renderer.stripTags(v.entry)) : Renderer.get().render(v.entry);
-						case "other": return listMode ? "Special" : Renderer.get().render(v);
+							return isListMode ? (v.entrySummary || Renderer.stripTags(v.entry)) : Renderer.get().render(v.entry);
+						case "other": return isListMode ? "Special" : Renderer.get().render(v);
 						case "race": {
 							const parts = v.map((it, i) => {
-								if (listMode) {
+								if (isListMode) {
 									return `${it.name.toTitleCase()}${it.subrace != null ? ` (${it.subrace})` : ""}`;
 								} else {
 									const raceName = it.displayEntry ? Renderer.get().render(it.displayEntry) : i === 0 ? it.name.toTitleCase() : it.name;
 									return `${raceName}${it.subrace != null ? ` (${it.subrace})` : ""}`;
 								}
 							});
-							return listMode ? parts.join("/") : parts.joinConjunct(", ", " or ");
+							return isListMode ? parts.join("/") : parts.joinConjunct(", ", " or ");
 						}
 						case "ability": {
-							// this assumes all ability requirements are the same (13), correct as of 2017-10-06
+							// `v` is an array or objects with str/dex/... properties; array is "OR"'d togther, object is "AND"'d together
+
 							let hadMultipleInner = false;
+							let hadMultiMultipleInner = false;
+							let allValuesEqual = null;
+
+							outer: for (const abMeta of v) {
+								for (const req of Object.values(abMeta)) {
+									if (allValuesEqual == null) allValuesEqual = req;
+									else {
+										if (req !== allValuesEqual) {
+											allValuesEqual = null;
+											break outer;
+										}
+									}
+								}
+							}
+
 							const abilityOptions = v.map(abMeta => {
-								const abList = Object.keys(abMeta);
-								hadMultipleInner = hadMultipleInner || abList.length > 1;
-								return listMode ? abList.map(ab => ab.uppercaseFirst()).join(", ") : abList.map(ab => Parser.attAbvToFull(ab)).joinConjunct(", ", " and ");
+								if (allValuesEqual) {
+									const abList = Object.keys(abMeta);
+									hadMultipleInner = hadMultipleInner || abList.length > 1;
+									return isListMode ? abList.map(ab => ab.uppercaseFirst()).join(", ") : abList.map(ab => Parser.attAbvToFull(ab)).joinConjunct(", ", " and ");
+								} else {
+									const groups = {};
+
+									Object.entries(abMeta).forEach(([ab, req]) => {
+										(groups[req] = groups[req] || []).push(ab);
+									});
+
+									let isMulti = false;
+									const byScore = Object.entries(groups)
+										.sort(([reqA], [reqB]) => SortUtil.ascSort(Number(reqB), Number(reqA)))
+										.map(([req, abs]) => {
+											hadMultipleInner = hadMultipleInner || abs.length > 1;
+											if (abs.length > 1) hadMultiMultipleInner = isMulti = true;
+
+											abs = abs.sort(SortUtil.ascSortAtts);
+											return isListMode
+												? `${abs.map(ab => ab.uppercaseFirst()).join(", ")} ${req}+`
+												: `${abs.map(ab => Parser.attAbvToFull(ab)).joinConjunct(", ", " and ")} ${req} or higher`;
+										});
+
+									return isListMode
+										? `${isMulti || byScore.length > 1 ? "(" : ""}${byScore.join(" & ")}${isMulti || byScore.length > 1 ? ")" : ""}`
+										: isMulti ? byScore.joinConjunct("; ", " and ") : byScore.joinConjunct(", ", " and ");
+								}
 							});
-							return listMode ? `${abilityOptions.join("/")} 13+` : `${abilityOptions.joinConjunct(hadMultipleInner ? "; " : ", ", " or ")} 13 or higher`
+
+							// if all values were equal, add the "X+" text at the end, as the options render doesn't include it
+							if (isListMode) {
+								return `${abilityOptions.join("/")}${allValuesEqual != null ? ` ${allValuesEqual}+` : ""}`
+							} else {
+								const isComplex = hadMultiMultipleInner || hadMultipleInner || allValuesEqual == null;
+								const joined = abilityOptions.joinConjunct(
+									hadMultiMultipleInner ? " - " : hadMultipleInner ? "; " : ", ",
+									isComplex ? ` <i>or</i> ` : " or "
+								);
+								return `${joined}${allValuesEqual != null ? ` 13 or higher` : ""}`
+							}
 						}
 						case "proficiency": {
 							// only handles armor proficiency requirements,
 							const parts = v.map(obj => {
 								return Object.entries(obj).map(([profType, prof]) => {
 									if (profType === "armor") {
-										return listMode ? `Prof ${Parser.armorFullToAbv(prof)} armor` : `Proficiency with ${prof} armor`;
+										return isListMode ? `Prof ${Parser.armorFullToAbv(prof)} armor` : `Proficiency with ${prof} armor`;
 									}
 								})
 							});
-							return listMode ? parts.join("/") : parts.joinConjunct(", ", " or ");
+							return isListMode ? parts.join("/") : parts.joinConjunct(", ", " or ");
 						}
-						case "spellcasting": return listMode ? "Spellcasting" : "The ability to cast at least one spell";
+						case "spellcasting": return isListMode ? "Spellcasting" : "The ability to cast at least one spell";
 						default: throw new Error(`Unhandled key: ${k}`);
 					}
 				})
@@ -2451,8 +2579,8 @@ Renderer.utils = {
 				.join(", ");
 		}).filter(Boolean);
 
-		if (!listOfChoices.length) return listMode ? "\u2014" : "";
-		return listMode ? listOfChoices.join("/") : `Prerequisites: ${listOfChoices.joinConjunct("; ", " or ")}`;
+		if (!listOfChoices.length) return isListMode ? "\u2014" : "";
+		return isListMode ? listOfChoices.join("/") : `Prerequisites: ${listOfChoices.joinConjunct("; ", " or ")}`;
 	}
 };
 
@@ -2500,7 +2628,7 @@ Renderer.feat = {
 		}
 	},
 
-	getCompactRenderedString: (feat) => {
+	getCompactRenderedString (feat) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
@@ -2525,7 +2653,7 @@ Renderer.get = () => {
 };
 
 Renderer.spell = {
-	getCompactRenderedString: (spell) => {
+	getCompactRenderedString (spell) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
@@ -2658,15 +2786,44 @@ Renderer.spell = {
 		// add homebrew class/subclass
 		if (brewSpellClasses) {
 			const lowName = spell.name.toLowerCase();
-			if (brewSpellClasses[spell.source] && brewSpellClasses[spell.source][lowName]) {
-				spell.classes = spell.classes || {};
-				if (brewSpellClasses[spell.source][lowName].fromClassList.length) {
-					spell.classes.fromClassList = spell.classes.fromClassList || [];
-					spell.classes.fromClassList = spell.classes.fromClassList.concat(brewSpellClasses[spell.source][lowName].fromClassList);
+
+			if (brewSpellClasses.spell) {
+				if (brewSpellClasses.spell[spell.source] && brewSpellClasses.spell[spell.source][lowName]) {
+					spell.classes = spell.classes || {};
+					if (brewSpellClasses.spell[spell.source][lowName].fromClassList.length) {
+						spell.classes.fromClassList = spell.classes.fromClassList || [];
+						spell.classes.fromClassList.push(...brewSpellClasses.spell[spell.source][lowName].fromClassList);
+					}
+					if (brewSpellClasses.spell[spell.source][lowName].fromSubclass.length) {
+						spell.classes.fromSubclass = spell.classes.fromSubclass || [];
+						spell.classes.fromSubclass.push(...brewSpellClasses.spell[spell.source][lowName].fromSubclass);
+					}
 				}
-				if (brewSpellClasses[spell.source][lowName].fromSubclass.length) {
-					spell.classes.fromSubclass = spell.classes.fromSubclass || [];
-					spell.classes.fromSubclass = spell.classes.fromSubclass.concat(brewSpellClasses[spell.source][lowName].fromSubclass);
+			}
+
+			if (brewSpellClasses.class && spell.classes && spell.classes.fromClassList) {
+				// speed over safety
+				outer: for (const src in brewSpellClasses.class) {
+					const searchForClasses = brewSpellClasses.class[src];
+
+					for (const clsLowName in searchForClasses) {
+						const spellHasClass = spell.classes.fromClassList.some(cls => cls.source === src && cls.name.toLowerCase() === clsLowName);
+						if (!spellHasClass) continue;
+
+						const fromDetails = searchForClasses[clsLowName];
+
+						if (fromDetails.fromClassList) {
+							spell.classes.fromClassList.push(...fromDetails.fromClassList);
+						}
+
+						if (fromDetails.fromSubclass) {
+							spell.classes.fromSubclass = spell.classes.fromSubclass || [];
+							spell.classes.fromSubclass.push(...fromDetails.fromSubclass);
+						}
+
+						// Only add it once regardless of how many classes match
+						break outer;
+					}
 				}
 			}
 		}
@@ -2684,7 +2841,7 @@ Renderer.spell = {
 };
 
 Renderer.condition = {
-	getCompactRenderedString: (cond) => {
+	getCompactRenderedString (cond) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
@@ -2768,7 +2925,7 @@ Renderer.optionalfeature = {
 		return it.data && it.data.previousVersion ? `<tr><td colspan="6"><p>${Renderer.get().render(`{@i An earlier version of this ${Parser.optFeatureTypeToFull(it.featureType)} is available in }${Parser.sourceJsonToFull(it.data.previousVersion.source)} {@i as {@optfeature ${it.data.previousVersion.name}|${it.data.previousVersion.source}}.}`)}</p></td></tr>` : ""
 	},
 
-	getCompactRenderedString: (it) => {
+	getCompactRenderedString (it) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
@@ -2794,7 +2951,7 @@ Renderer.reward = {
 		return `<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>`;
 	},
 
-	getCompactRenderedString: (reward) => {
+	getCompactRenderedString (reward) {
 		return `
 			${Renderer.utils.getExcludedTr(reward, "reward")}
 			${Renderer.utils.getNameTr(reward, {page: UrlUtil.PG_REWARDS})}
@@ -2804,7 +2961,7 @@ Renderer.reward = {
 };
 
 Renderer.race = {
-	getCompactRenderedString: (race) => {
+	getCompactRenderedString (race) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
@@ -2812,6 +2969,7 @@ Renderer.race = {
 		renderStack.push(`
 			${Renderer.utils.getExcludedTr(race, "race")}
 			${Renderer.utils.getNameTr(race, {page: UrlUtil.PG_RACES})}
+			${!race._isBaseRace ? `
 			<tr><td colspan="6">
 				<table class="summary striped-even">
 					<tr>
@@ -2825,102 +2983,179 @@ Renderer.race = {
 						<td class="text-center">${Parser.getSpeedString(race)}</td>
 					</tr>
 				</table>
-			</td></tr>
+			</td></tr>` : ""}
 			<tr class="text"><td colspan="6">
 		`);
-		renderer.recursiveRender({type: "entries", entries: race.entries}, renderStack, {depth: 1});
+		race._isBaseRace
+			? renderer.recursiveRender({type: "entries", entries: race._baseRaceEntries}, renderStack, {depth: 1})
+			: renderer.recursiveRender({type: "entries", entries: race.entries}, renderStack, {depth: 1});
 		renderStack.push("</td></tr>");
 
 		return renderStack.join("");
 	},
 
-	mergeSubraces: (races) => {
+	/**
+	 * @param races
+	 * @param [opts] Options object.
+	 * @param [opts.isAddBaseRaces] If an entity should be created for each base race.
+	 */
+	mergeSubraces (races, opts) {
+		opts = opts || {};
+
 		const out = [];
 		races.forEach(r => {
-			Array.prototype.push.apply(out, Renderer.race._mergeSubrace(r));
+			if (r.subraces) {
+				r.subraces.forEach(sr => sr.source = sr.source || r.source);
+				r.subraces.sort((a, b) => SortUtil.ascSortLower(a.name || "_", b.name || "_") || SortUtil.ascSortLower(Parser.sourceJsonToAbv(a.source), Parser.sourceJsonToAbv(b.source)));
+			}
+
+			if (opts.isAddBaseRaces && r.subraces) {
+				const baseRace = MiscUtil.copy(r);
+
+				baseRace._isBaseRace = true;
+
+				const isAnyNoName = r.subraces.some(it => !it.name);
+				if (isAnyNoName) baseRace.name = `${baseRace.name} (Base)`;
+
+				const nameCounts = {};
+				r.subraces.filter(sr => sr.name).forEach(sr => nameCounts[sr.name.toLowerCase()] = (nameCounts[sr.name.toLowerCase()] || 0) + 1);
+				nameCounts._ = r.subraces.filter(sr => !sr.name).length;
+
+				const lst = {
+					type: "list",
+					items: r.subraces.map(sr => {
+						const count = nameCounts[(sr.name || "_").toLowerCase()];
+						const idName = `${r.name}${sr.name ? ` (${sr.name})` : ""}`;
+						return `{@race ${idName}|${sr.source}${count > 1 ? `|${idName} (<span title="${Parser.sourceJsonToFull(sr.source).escapeQuotes()}">${Parser.sourceJsonToAbv(sr.source)}</span>)` : ""}}`;
+					})
+				};
+
+				baseRace._baseRaceEntries = [
+					"This race has multiple subraces, as listed below:",
+					lst
+				];
+
+				delete baseRace.subraces;
+
+				out.push(baseRace);
+			}
+
+			out.push(...Renderer.race._mergeSubrace(r));
 		});
+
 		return out;
 	},
 
-	_mergeSubrace: (race) => {
+	_mergeSubrace (race) {
 		if (race.subraces) {
 			const srCopy = JSON.parse(JSON.stringify(race.subraces));
 			const out = [];
 
-			srCopy.forEach(s => {
-				const cpy = JSON.parse(JSON.stringify(race));
-				cpy._baseName = cpy.name;
-				cpy._baseSource = cpy.source;
-				delete cpy.subraces;
-				delete cpy.srd;
+			srCopy
+				.forEach(s => {
+					const cpy = JSON.parse(JSON.stringify(race));
+					cpy._baseName = cpy.name;
+					cpy._baseSource = cpy.source;
+					delete cpy.subraces;
+					delete cpy.srd;
 
-				// merge names, abilities, entries, tags
-				if (s.name) {
-					cpy.name = `${cpy.name} (${s.name})`;
-					delete s.name;
-				}
-				if (s.ability) {
-					// If the base race doesn't have any ability scores, make a set of empty records
-					if ((s.overwrite && s.overwrite.ability) || !cpy.ability) cpy.ability = s.ability.map(() => ({}));
+					// merge names, abilities, entries, tags
+					if (s.name) {
+						cpy.name = `${cpy.name} (${s.name})`;
+						delete s.name;
+					}
+					if (s.ability) {
+						// If the base race doesn't have any ability scores, make a set of empty records
+						if ((s.overwrite && s.overwrite.ability) || !cpy.ability) cpy.ability = s.ability.map(() => ({}));
 
-					if (cpy.ability.length !== s.ability.length) throw new Error(`Race and subrace ability array lengths did not match!`);
-					s.ability.forEach((obj, i) => Object.assign(cpy.ability[i], obj));
-					delete s.ability;
-				}
-				if (s.entries) {
-					s.entries.forEach(e => {
-						if (e.data && e.data.overwrite) {
-							const toOverwrite = cpy.entries.findIndex(it => it.name.toLowerCase().trim() === e.data.overwrite.toLowerCase().trim());
-							if (~toOverwrite) cpy.entries[toOverwrite] = e;
-							else cpy.entries.push(e);
-						} else {
-							cpy.entries.push(e);
-						}
-					});
-					delete s.entries;
-				}
-
-				if (s.traitTags) {
-					if (s.overwrite && s.overwrite.traitTags) cpy.traitTags = s.traitTags;
-					else cpy.traitTags = (cpy.traitTags || []).concat(s.traitTags);
-					delete s.traitTags;
-				}
-
-				if (s.languageProficiencies) {
-					if (s.overwrite && s.overwrite.languageProficiencies) cpy.languageProficiencies = s.languageProficiencies;
-					else cpy.languageProficiencies = cpy.languageProficiencies = (cpy.languageProficiencies || []).concat(s.languageProficiencies);
-					delete s.languageProficiencies;
-				}
-
-				// TODO make a generalised merge system? Probably have one of those lying around somewhere [bestiary schema?]
-				if (s.skillProficiencies) {
-					// Overwrite if possible
-					if (!cpy.skillProficiencies || (s.overwrite && s.overwrite["skillProficiencies"])) cpy.skillProficiencies = s.skillProficiencies;
-					else {
-						if (!s.skillProficiencies.length || !cpy.skillProficiencies.length) throw new Error(`No items!`);
-						if (s.skillProficiencies.length > 1 || cpy.skillProficiencies.length > 1) throw new Error(`Subrace merging does not handle choices!`); // Implement if required
-
-						// Otherwise, merge
-						if (s.skillProficiencies.choose) {
-							if (cpy.skillProficiencies.choose) throw new Error(`Subrace choose merging is not supported!!`); // Implement if required
-							cpy.skillProficiencies.choose = s.skillProficiencies.choose;
-							delete s.skillProficiencies.choose;
-						}
-						Object.assign(cpy.skillProficiencies[0], s.skillProficiencies[0]);
+						if (cpy.ability.length !== s.ability.length) throw new Error(`Race and subrace ability array lengths did not match!`);
+						s.ability.forEach((obj, i) => Object.assign(cpy.ability[i], obj));
+						delete s.ability;
+					}
+					if (s.entries) {
+						s.entries.forEach(e => {
+							if (e.data && e.data.overwrite) {
+								const toOverwrite = cpy.entries.findIndex(it => it.name.toLowerCase().trim() === e.data.overwrite.toLowerCase().trim());
+								if (~toOverwrite) cpy.entries[toOverwrite] = e;
+								else cpy.entries.push(e);
+							} else {
+								cpy.entries.push(e);
+							}
+						});
+						delete s.entries;
 					}
 
-					delete s.skillProficiencies;
-				}
+					if (s.traitTags) {
+						if (s.overwrite && s.overwrite.traitTags) cpy.traitTags = s.traitTags;
+						else cpy.traitTags = (cpy.traitTags || []).concat(s.traitTags);
+						delete s.traitTags;
+					}
 
-				// overwrite everything else
-				Object.assign(cpy, s);
+					if (s.languageProficiencies) {
+						if (s.overwrite && s.overwrite.languageProficiencies) cpy.languageProficiencies = s.languageProficiencies;
+						else cpy.languageProficiencies = cpy.languageProficiencies = (cpy.languageProficiencies || []).concat(s.languageProficiencies);
+						delete s.languageProficiencies;
+					}
 
-				out.push(cpy);
-			});
+					// TODO make a generalised merge system? Probably have one of those lying around somewhere [bestiary schema?]
+					if (s.skillProficiencies) {
+						// Overwrite if possible
+						if (!cpy.skillProficiencies || (s.overwrite && s.overwrite["skillProficiencies"])) cpy.skillProficiencies = s.skillProficiencies;
+						else {
+							if (!s.skillProficiencies.length || !cpy.skillProficiencies.length) throw new Error(`No items!`);
+							if (s.skillProficiencies.length > 1 || cpy.skillProficiencies.length > 1) throw new Error(`Subrace merging does not handle choices!`); // Implement if required
+
+							// Otherwise, merge
+							if (s.skillProficiencies.choose) {
+								if (cpy.skillProficiencies.choose) throw new Error(`Subrace choose merging is not supported!!`); // Implement if required
+								cpy.skillProficiencies.choose = s.skillProficiencies.choose;
+								delete s.skillProficiencies.choose;
+							}
+							Object.assign(cpy.skillProficiencies[0], s.skillProficiencies[0]);
+						}
+
+						delete s.skillProficiencies;
+					}
+
+					// overwrite everything else
+					Object.assign(cpy, s);
+
+					out.push(cpy);
+				});
 			return out;
 		} else {
 			return [race];
 		}
+	},
+
+	adoptSubraces (allRaces, subraces) {
+		const nxtData = [];
+
+		subraces.forEach(sr => {
+			if (!sr.race || !sr.race.name || !sr.race.source) throw new Error(`Subrace was missing parent race!`);
+
+			const _baseRace = allRaces.find(r => r.name === sr.race.name && r.source === sr.race.source);
+			if (!_baseRace) throw new Error(`Could not find parent race for subrace!`);
+
+			const subraceListEntry = _baseRace._baseRaceEntries.find(it => it.type === "list");
+			subraceListEntry.items.push(`{@race ${_baseRace.name} (${sr.name})|${sr.source || _baseRace.source}}`);
+
+			// Attempt to graft multiple subraces from the same data set onto the same base race copy
+			let baseRace = nxtData.find(r => r.name === sr.race.name && r.source === sr.race.source);
+			if (!baseRace) {
+				// copy and remove base-race-specific data
+				baseRace = MiscUtil.copy(_baseRace);
+				delete baseRace._isBaseRace;
+				delete baseRace._baseRaceEntries;
+
+				nxtData.push(baseRace);
+			}
+
+			baseRace.subraces = baseRace.subraces || [];
+			baseRace.subraces.push(sr);
+		});
+
+		return nxtData;
 	}
 };
 
@@ -2965,7 +3200,7 @@ Renderer.deity = {
 		return allKeys.map(k => `${prefix}<b>${k}: </b>${Renderer.get().render(parts[k])}${suffix}`).join("");
 	},
 
-	getCompactRenderedString: (deity) => {
+	getCompactRenderedString (deity) {
 		const renderer = Renderer.get();
 		return `
 			${Renderer.utils.getExcludedTr(deity, "deity")}
@@ -2979,7 +3214,7 @@ Renderer.deity = {
 };
 
 Renderer.object = {
-	getCompactRenderedString: (obj) => {
+	getCompactRenderedString (obj) {
 		const renderer = Renderer.get();
 		const row2Width = 12 / ((!!obj.resist + !!obj.vulnerable) || 1);
 		return `
@@ -3104,7 +3339,7 @@ Renderer.traphazard = {
 		return "";
 	},
 
-	getCompactRenderedString: (it) => {
+	getCompactRenderedString (it) {
 		const renderer = Renderer.get();
 		const subtitle = Renderer.traphazard.getSubtitle(it);
 		return `
@@ -3174,7 +3409,7 @@ Renderer.cultboon = {
 		if (benefits.items.length) renderer.recursiveRender(benefits, renderStack, {depth: 1});
 	},
 
-	getCompactRenderedString: (it) => {
+	getCompactRenderedString (it) {
 		const renderer = Renderer.get();
 
 		const renderStack = [];
@@ -3349,11 +3584,11 @@ Renderer.monster = {
 		` : "";
 	},
 
-	getTypeAlignmentPart (mon) { return `${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${Parser.monTypeToFullObj(mon.type).asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}` : ""}`; },
+	getTypeAlignmentPart (mon) { return `${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)}${mon.sizeNote ? ` ${mon.sizeNote}` : ""} ${Parser.monTypeToFullObj(mon.type).asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}` : ""}`; },
 	getSavesPart (mon) { return `${Object.keys(mon.save).sort(SortUtil.ascSortAtts).map(s => Renderer.monster.getSave(Renderer.get(), s, mon.save[s])).join(", ")}` },
 	getSensesPart (mon) { return `${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses)}, ` : ""}passive Perception ${mon.passive || "\u2014"}`; },
 
-	getCompactRenderedString: (mon, renderer, options = {}) => {
+	getCompactRenderedString (mon, renderer, options = {}) {
 		renderer = renderer || Renderer.get();
 
 		const renderStack = [];
@@ -3518,7 +3753,7 @@ Renderer.monster = {
 	getFluff (mon, legendaryMeta, fluffJson) {
 		const predefined = Renderer.utils.getPredefinedFluff(mon, "monsterFluff");
 
-		const rawFluff = predefined || (fluffJson || {monster: []}).monster.find(it => it.name === mon.name && it.source === mon.source);
+		const rawFluff = predefined || (fluffJson || {monsterFluff: []}).monsterFluff.find(it => it.name === mon.name && it.source === mon.source);
 
 		if (!rawFluff) return null;
 		const fluff = MiscUtil.copy(rawFluff);
@@ -3560,7 +3795,7 @@ Renderer.monster = {
 			const cachedAppendCopy = fluff._appendCopy; // prevent _copy from overwriting this
 
 			if (fluff._copy) {
-				const cpy = MiscUtil.copy(fluffJson.monster.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source));
+				const cpy = MiscUtil.copy(fluffJson.monsterFluff.find(it => fluff._copy.name === it.name && fluff._copy.source === it.source));
 				// preserve these
 				const name = fluff.name;
 				const src = fluff.source;
@@ -3582,7 +3817,7 @@ Renderer.monster = {
 			}
 
 			if (cachedAppendCopy) {
-				const cpy = MiscUtil.copy(fluffJson.monster.find(it => cachedAppendCopy.name === it.name && cachedAppendCopy.source === it.source));
+				const cpy = MiscUtil.copy(fluffJson.monsterFluff.find(it => cachedAppendCopy.name === it.name && cachedAppendCopy.source === it.source));
 				if (cpy.images) {
 					if (!fluff.images) fluff.images = cpy.images;
 					else fluff.images = fluff.images.concat(cpy.images);
@@ -3873,7 +4108,7 @@ Renderer.item = {
 			}
 		};
 
-		const walkerKeyBlacklist = new Set(["caption", "type", "colLabels"]);
+		const walkerKeyBlacklist = new Set(["caption", "type", "colLabels", "dataCreature", "dataSpell", "name"]);
 
 		const renderStack = [];
 		if (item._fullEntries || (item.entries && item.entries.length)) {
@@ -4096,12 +4331,9 @@ Renderer.item = {
 					case "nameSuffix": specificVariant.name = `${specificVariant.name}${inherits.nameSuffix}`; break;
 					case "entries": {
 						Renderer.item._initFullEntries(specificVariant);
-						inherits.entries.forEach((ent, i) => {
-							if (typeof ent === "string") {
-								ent = Renderer.applyProperties(ent, Renderer.item._getInjectableProps(baseItem, inherits));
-							}
-							specificVariant._fullEntries.splice(i, 0, ent);
-						});
+
+						const appliedPropertyEntries = Renderer.applyAllProperties(inherits.entries, Renderer.item._getInjectableProps(baseItem, inherits));
+						appliedPropertyEntries.forEach((ent, i) => specificVariant._fullEntries.splice(i, 0, ent));
 						break;
 					}
 					default: specificVariant[inheritedProperty] = inherits[inheritedProperty];
@@ -4189,7 +4421,7 @@ Renderer.item = {
 		}
 
 		if (!genericVariant.entries && genericVariant.inherits.entries) {
-			genericVariant.entries = MiscUtil.copy(genericVariant.inherits.entries.map(ent => typeof ent === "string" ? Renderer.applyProperties(ent, genericVariant.inherits) : ent));
+			genericVariant.entries = MiscUtil.copy(Renderer.applyAllProperties(genericVariant.inherits.entries, genericVariant.inherits));
 		}
 		if (genericVariant.requires.armor) genericVariant.armor = genericVariant.requires.armor;
 	},
@@ -4269,7 +4501,7 @@ Renderer.item = {
 			}
 		}
 		// add additional entries based on type (e.g. XGE variants)
-		if (item.type === "T" || item.type === "AT" || item.type === "INS" || item.type === "GS") { // tools, artisan tools, instruments, gaming sets
+		if (item.type === "T" || item.type === "AT" || item.type === "INS" || item.type === "GS") { // tools, artisan's tools, instruments, gaming sets
 			Renderer.item._initFullAdditionalEntries(item);
 			item._fullAdditionalEntries.push({type: "hr"}, `{@note See the {@variantrule Tool Proficiencies|XGE} entry for more information.}`);
 		}
@@ -4504,7 +4736,7 @@ Renderer.psionic = {
 			: typeMeta.full;
 	},
 
-	getCompactRenderedString: (psi) => {
+	getCompactRenderedString (psi) {
 		return `
 			${Renderer.utils.getExcludedTr(psi, "psionic")}
 			${Renderer.utils.getNameTr(psi, {page: UrlUtil.PG_PSIONICS})}
@@ -4769,6 +5001,39 @@ Renderer.action = {
 	}
 };
 
+Renderer.language = {
+	getCompactRenderedString (it) {
+		return Renderer.language.getRenderedString(it);
+	},
+
+	getRenderedString (it) {
+		const allEntries = [];
+
+		const hasMeta = it.typicalSpeakers || it.script;
+
+		if (it.entries) allEntries.push(...it.entries);
+		if (it.dialects) {
+			allEntries.push(`This language is a family which includes the following dialects: ${it.dialects.sort(SortUtil.ascSortLower).join(", ")}. Creatures that speak different dialects of the same language can communicate with one another.`);
+		}
+
+		if (!allEntries.length && !hasMeta) allEntries.push("{@i No information available.}");
+
+		return `
+		${Renderer.utils.getExcludedTr(it, "language")}
+		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_LANGUAGES})}
+		${it.type ? `<tr class="text"><td colspan="6" class="pt-0"><i>${it.type.toTitleCase()} language</i></td></tr>` : ""}
+		${hasMeta ? `<tr class="text"><td colspan="6">
+		${it.typicalSpeakers ? `<div><b>Typical Speakers</b> ${Renderer.get().render(it.typicalSpeakers.join(", "))}</b>` : ""}
+		${it.script ? `<div><b>Script</b> ${Renderer.get().render(it.script)}</div>` : ""}
+		<div></div>
+		</td></tr>` : ""}
+		${allEntries.length ? `<tr class="text"><td colspan="6">
+		${Renderer.get().setFirstSection(true).render({entries: allEntries})}
+		</td></tr>` : ""}
+		${Renderer.utils.getPageTr(it)}`;
+	}
+};
+
 Renderer.hover = {
 	LinkMeta: function () {
 		this.isHovered = false;
@@ -4826,7 +5091,7 @@ Renderer.hover = {
 
 	_handleGenericMouseOverStart (evt, ele) {
 		// Don't open on small screens unless forced
-		if (Renderer.hover._isSmallScreen() && !evt.shiftKey) return;
+		if (Renderer.hover.isSmallScreen() && !evt.shiftKey) return;
 
 		Renderer.hover._cleanTempWindows();
 
@@ -5212,9 +5477,10 @@ Renderer.hover = {
 		$brdrTop.attr("data-display-title", false);
 		$brdrTop.on("dblclick", () => {
 			const curState = $brdrTop.attr("data-display-title");
-			$brdrTop.attr("data-display-title", curState === "false");
+			const isNextMinified = curState === "false";
+			$brdrTop.attr("data-display-title", isNextMinified);
 			$brdrTop.attr("data-perm", true);
-			$hov.toggleClass("hwin--minified", curState === "false");
+			$hov.toggleClass("hwin--minified", isNextMinified);
 		});
 		$brdrTop.append($hovTitle);
 		const $brdTopRhs = $(`<div class="flex" style="margin-left: auto;"/>`).appendTo($brdrTop);
@@ -5332,7 +5598,10 @@ Renderer.hover = {
 			}
 		}
 
-		const setIsPermanent = (isPermanent) => $brdrTop.attr("data-perm", isPermanent);
+		const setIsPermanent = (isPermanent) => {
+			opts.isPermanent = isPermanent;
+			$brdrTop.attr("data-perm", isPermanent);
+		};
 
 		out.$windowTitle = $hovTitle;
 		out.setPosition = setPosition;
@@ -5365,7 +5634,7 @@ Renderer.hover = {
 
 	handleTouchStart (evt, ele) {
 		// on large touchscreen devices only (e.g. iPads)
-		if (!Renderer.hover._isSmallScreen()) {
+		if (!Renderer.hover.isSmallScreen()) {
 			// cache the link location and redirect it to void
 			$(ele).data("href", $(ele).data("href") || $(ele).attr("href"));
 			$(ele).attr("href", "javascript:void(0)");
@@ -5392,12 +5661,16 @@ Renderer.hover = {
 			Renderer.hover._linkCache[page][source] || [])[hash] = item;
 	},
 
-	_getFromCache: (page, source, hash) => {
+	_getFromCache: (page, source, hash, opts) => {
+		opts = opts || {};
+
 		page = page.toLowerCase();
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
 
-		return Renderer.hover._linkCache[page][source][hash];
+		const out = Renderer.hover._linkCache[page][source][hash];
+		if (opts.isCopy) return MiscUtil.copy(out);
+		return out;
 	},
 
 	_isCached: (page, source, hash) => {
@@ -5406,7 +5679,17 @@ Renderer.hover = {
 
 	_psCacheLoading: {},
 	_flagsCacheLoaded: {},
-	async pCacheAndGet (page, source, hash) {
+
+	/**
+	 * @param page
+	 * @param source
+	 * @param hash
+	 * @param [opts] Options object.
+	 * @param [opts.isCopy] If a copy, rather than the original entity, should be returned.
+	 */
+	async pCacheAndGet (page, source, hash, opts) {
+		opts = opts || {};
+
 		page = page.toLowerCase();
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
@@ -5414,7 +5697,7 @@ Renderer.hover = {
 		/**
 		 * @param data the data
 		 * @param listProp list property in the data
-		 * @param itemModifier optional function to run per item; takes listProp and an item as parameters
+		 * @param [itemModifier] optional function to run per item; takes listProp and an item as parameters
 		 */
 		function populate (data, listProp, itemModifier) {
 			data[listProp].forEach(it => {
@@ -5449,7 +5732,7 @@ Renderer.hover = {
 				await Renderer.hover._psCacheLoading[loadKey];
 			}
 
-			return Renderer.hover._getFromCache(page, source, hash);
+			return Renderer.hover._getFromCache(page, source, hash, opts);
 		}
 
 		async function _pLoadSingleBrew (listProps, itemModifier) {
@@ -5481,7 +5764,7 @@ Renderer.hover = {
 				await Renderer.hover._psCacheLoading[loadKey];
 			}
 
-			return Renderer.hover._getFromCache(page, source, hash);
+			return Renderer.hover._getFromCache(page, source, hash, opts);
 		}
 
 		async function pLoadCustom (page, jsonFile, listProps, itemModifier, loader) {
@@ -5500,7 +5783,7 @@ Renderer.hover = {
 				await Renderer.hover._psCacheLoading[loadKey];
 			}
 
-			return Renderer.hover._getFromCache(page, source, hash);
+			return Renderer.hover._getFromCache(page, source, hash, opts);
 		}
 
 		switch (page) {
@@ -5540,7 +5823,7 @@ Renderer.hover = {
 					await Renderer.hover._psCacheLoading[loadKey];
 				}
 
-				return Renderer.hover._getFromCache(page, source, hash);
+				return Renderer.hover._getFromCache(page, source, hash, opts);
 			}
 			case UrlUtil.PG_SPELLS: return pLoadMultiSource(page, `data/spells/`, "spell");
 			case UrlUtil.PG_BESTIARY: return pLoadMultiSource(page, `data/bestiary/`, "monster");
@@ -5577,7 +5860,7 @@ Renderer.hover = {
 					await Renderer.hover._psCacheLoading[loadKey];
 				}
 
-				return Renderer.hover._getFromCache(page, source, hash);
+				return Renderer.hover._getFromCache(page, source, hash, opts);
 			}
 			case UrlUtil.PG_BACKGROUNDS: return pLoadSimple(page, "backgrounds.json", "background");
 			case UrlUtil.PG_FEATS: return pLoadSimple(page, "feats.json", "feat");
@@ -5592,21 +5875,31 @@ Renderer.hover = {
 				if (!Renderer.hover._flagsCacheLoaded[loadKey] || !Renderer.hover._isCached(page, source, hash)) {
 					Renderer.hover._psCacheLoading[loadKey] = (async () => {
 						const brewData = await BrewUtil.pAddBrewData();
-						if (brewData.race) populate(brewData, "race");
+						let mergedBrewData = [];
+						if (brewData.race) {
+							mergedBrewData = Renderer.race.mergeSubraces(brewData.race, {isAddBaseRaces: true})
+							populate({race: mergedBrewData}, "race");
+						}
 
 						const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/races.json`);
-						const merged = Renderer.race.mergeSubraces(data.race);
-						merged.forEach(race => {
-							const raceHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](race);
-							Renderer.hover._addToCache(page, race.source, raceHash, race)
-						});
+						const merged = Renderer.race.mergeSubraces(data.race, {isAddBaseRaces: true});
+						populate({race: merged}, "race");
+
+						if (brewData.subrace) {
+							const racesWithNuSubraces = Renderer.race.adoptSubraces(
+								[...mergedBrewData, ...merged],
+								brewData.subrace
+							);
+							const mergedBrew = Renderer.race.mergeSubraces(racesWithNuSubraces);
+							populate({race: mergedBrew}, "race");
+						}
 
 						Renderer.hover._flagsCacheLoaded[loadKey] = true;
 					})();
 					await Renderer.hover._psCacheLoading[loadKey];
 				}
 
-				return Renderer.hover._getFromCache(page, source, hash);
+				return Renderer.hover._getFromCache(page, source, hash, opts);
 			}
 			case UrlUtil.PG_DEITIES: return pLoadCustom(page, "deities.json", "deity", null, "deity");
 			case UrlUtil.PG_OBJECTS: return pLoadSimple(page, "objects.json", "object");
@@ -5617,6 +5910,7 @@ Renderer.hover = {
 			case UrlUtil.PG_TABLES: return pLoadSimple(page, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item._type = listProp === "table" ? "t" : "g");
 			case UrlUtil.PG_VEHICLES: return pLoadSimple(page, "vehicles.json", "vehicle");
 			case UrlUtil.PG_ACTIONS: return pLoadSimple(page, "actions.json", "action");
+			case UrlUtil.PG_LANGUAGES: return pLoadSimple(page, "languages.json", "language");
 			default: throw new Error(`No load function defined for page ${page}`);
 		}
 	},
@@ -5653,11 +5947,12 @@ Renderer.hover = {
 			case UrlUtil.PG_TABLES: return Renderer.table.getCompactRenderedString;
 			case UrlUtil.PG_VEHICLES: return Renderer.vehicle.getCompactRenderedString;
 			case UrlUtil.PG_ACTIONS: return Renderer.action.getCompactRenderedString;
+			case UrlUtil.PG_LANGUAGES: return Renderer.language.getCompactRenderedString;
 			default: return null;
 		}
 	},
 
-	_isSmallScreen () {
+	isSmallScreen () {
 		const outerWindow = (() => {
 			let loops = 100;
 			let curr = window.top;
@@ -5918,8 +6213,7 @@ Renderer.dice = {
 	async pRollerClickUseData (evt, ele) {
 		const $ele = $(ele);
 		const rollData = $ele.data("packed-dice");
-		const isNoName = $ele.data("no-roll-name") === true;
-		let name = isNoName ? null : $ele.title() || null;
+		let name = $ele.data("roll-name");
 		let shiftKey = evt.shiftKey;
 		let ctrlKey = evt.ctrlKey;
 
@@ -5930,12 +6224,20 @@ Renderer.dice = {
 			chosenRollData = await new Promise(resolve => {
 				const cpy = MiscUtil.copy(rollData);
 
-				ContextUtil.doInitContextMenu(Renderer.dice._contextRollLabel, (mostRecentEvt, _1, _2, _3, invokedOnId) => {
-					shiftKey = shiftKey || mostRecentEvt.shiftKey;
-					ctrlKey = ctrlKey || mostRecentEvt.ctrlKey;
-					cpy.toRoll = options[invokedOnId];
-					resolve(cpy);
-				}, [{text: "Choose Roll", disabled: true}, null, ...options.map(it => `Roll ${it}`)]);
+				ContextUtil.doInitContextMenu(
+					Renderer.dice._contextRollLabel,
+					(mostRecentEvt, _1, _2, _3, invokedOnId) => {
+						shiftKey = shiftKey || mostRecentEvt.shiftKey;
+						ctrlKey = ctrlKey || mostRecentEvt.ctrlKey;
+						cpy.toRoll = options[invokedOnId];
+						resolve(cpy);
+					},
+					[
+						new ContextUtil.Action("Choose Roll", null, {isDisabled: true}),
+						null,
+						...options.map(it => `Roll ${it}`)
+					]
+				);
 
 				ContextUtil.handleOpenContextMenu(evt, ele, Renderer.dice._contextRollLabel, (choseOption) => {
 					if (!choseOption) resolve();
@@ -5984,22 +6286,30 @@ Renderer.dice = {
 			rollDataCpyToRoll = await new Promise(resolve => {
 				const sortedKeys = Object.keys(rollDataCpy.prompt.options).sort(SortUtil.ascSortLower);
 
-				ContextUtil.doInitContextMenu(Renderer.dice._contextPromptLabel, (mostRecentEvt, _1, _2, _3, invokedOnId) => {
-					if (invokedOnId == null) resolve();
+				ContextUtil.doInitContextMenu(
+					Renderer.dice._contextPromptLabel,
+					(mostRecentEvt, _1, _2, _3, invokedOnId) => {
+						if (invokedOnId == null) resolve();
 
-					shiftKey = shiftKey || mostRecentEvt.shiftKey;
-					ctrlKey = ctrlKey || mostRecentEvt.ctrlKey;
-					const k = sortedKeys[invokedOnId];
-					const fromScaling = rollDataCpy.prompt.options[k];
-					if (!fromScaling) {
-						name = "";
-						resolve(rollDataCpy);
-					} else {
-						name = rollDataCpy.prompt.mode === "psi" ? `${k} psi activation` : `${Parser.spLevelToFull(k)}-level cast`;
-						rollDataCpy.toRoll += `+${fromScaling}`;
-						resolve(rollDataCpy);
-					}
-				}, [{text: rollDataCpy.prompt.entry, disabled: true}, null, ...sortedKeys.map(it => rollDataCpy.prompt.mode === "psi" ? `${it} point${it === "1" ? "" : "s"}` : `${Parser.spLevelToFull(it)} level`)]);
+						shiftKey = shiftKey || mostRecentEvt.shiftKey;
+						ctrlKey = ctrlKey || mostRecentEvt.ctrlKey;
+						const k = sortedKeys[invokedOnId];
+						const fromScaling = rollDataCpy.prompt.options[k];
+						if (!fromScaling) {
+							name = "";
+							resolve(rollDataCpy);
+						} else {
+							name = rollDataCpy.prompt.mode === "psi" ? `${k} psi activation` : `${Parser.spLevelToFull(k)}-level cast`;
+							rollDataCpy.toRoll += `+${fromScaling}`;
+							resolve(rollDataCpy);
+						}
+					},
+					[
+						new ContextUtil.Action(rollDataCpy.prompt.entry, null, {isDisabled: true}),
+						null,
+						...sortedKeys.map(it => rollDataCpy.prompt.mode === "psi" ? `${it} point${it === "1" ? "" : "s"}` : `${Parser.spLevelToFull(it)} level`)
+					]
+				);
 
 				ContextUtil.handleOpenContextMenu(evt, ele, Renderer.dice._contextPromptLabel, (choseOption) => {
 					if (!choseOption) resolve();
@@ -6026,28 +6336,36 @@ Renderer.dice = {
 	rollerClick (evtMock, ele, packed, name) {
 		const $ele = $(ele);
 		const entry = JSON.parse(packed);
-		function attemptToGetTitle () {
+		function attemptToGetNameOfRoll () {
 			// try use table caption
 			let titleMaybe = $(ele).closest(`table:not(.stats)`).children(`caption`).text();
 			if (titleMaybe) return titleMaybe.trim();
+
 			// try use list item title
 			titleMaybe = $(ele).parent().children(`.list-item-title`).text();
 			if (titleMaybe) return titleMaybe.trim();
+
+			// use the section title, where applicable
+			titleMaybe = $(ele).closest(`div`).children(`.rd__h`).first().find(`.entry-title-inner`).text();
+			if (titleMaybe) {
+				titleMaybe = titleMaybe.trim().replace(/[.,:]\s*$/, "");
+				return titleMaybe;
+			}
+
 			// try use stats table name row
 			titleMaybe = $(ele).closest(`table.stats`).children(`tbody`).first().children(`tr`).first().find(`th.name .stats-name`).text();
 			if (titleMaybe) return titleMaybe.trim();
+
 			if (UrlUtil.getCurrentPage() === UrlUtil.PG_CHARACTERS) {
 				// try use mini-entity name
-				titleMaybe = $(ele).closest(`.chr-entity__row`).find(".chr-entity__ipt-name").val().trim();
+				titleMaybe = ($(ele).closest(`.chr-entity__row`).find(".chr-entity__ipt-name").val() || "").trim();
 				if (titleMaybe) return titleMaybe;
 			}
-			// otherwise, use the section title, where applicable
-			titleMaybe = $(ele).closest(`div`).children(`.rd__h`).first().find(`.entry-title-inner`).text();
-			if (titleMaybe) titleMaybe = titleMaybe.trim().replace(/[.,:]\s*$/, "");
+
 			return titleMaybe;
 		}
 
-		function attemptToGetName () {
+		function attemptToGetNameOfRoller () {
 			const $hov = $ele.closest(`.hwin`);
 			if ($hov.length) return $hov.find(`.stats-name`).first().text();
 			const $roll = $ele.closest(`.out-roll-wrp`);
@@ -6080,8 +6398,8 @@ Renderer.dice = {
 		}
 
 		const rolledBy = {
-			name: attemptToGetName(),
-			label: name != null ? name : attemptToGetTitle(ele)
+			name: attemptToGetNameOfRoller(),
+			label: name != null ? name : attemptToGetNameOfRoll(ele)
 		};
 
 		const modRollMeta = Renderer.dice.getEventModifiedRollMeta(evtMock, entry);
@@ -6249,15 +6567,16 @@ Renderer.dice = {
 
 		if (!tree) return JqueryUtil.doToast({type: "danger", content: `Invalid roll input!`});
 
-		const $dispDice = $(`<div class="p-2 bold flex-vh-center rll__prompt-header">${tree.txt()}</div>`);
+		const title = (rolledBy.label || "").toTitleCase() || "Roll Dice";
+		const $dispDice = $(`<div class="p-2 bold flex-vh-center rll__prompt-header">${tree.toString()}</div>`);
 		if (opts.isResultUsed) {
 			return InputUiUtil.pGetUserNumber({
-				title: "Roll Dice",
+				title,
 				$elePre: $dispDice
 			});
 		} else {
 			const {$modalInner} = UiUtil.getShowModal({
-				title: "Roll Dice",
+				title,
 				noMinHeight: true
 			});
 			$dispDice.appendTo($modalInner);
@@ -6309,7 +6628,18 @@ Renderer.dice = {
 					<li>Explode greater; <span class="out-roll-item-code">2d4x&gt;2</span></li>
 					<li>Explode greater equal; <span class="out-roll-item-code">2d4x&gt;=3</span></li>
 
+					<li>Count Successes equal; <span class="out-roll-item-code">2d4cs=4</span></li>
+					<li>Count Successes less; <span class="out-roll-item-code">2d4cs&lt;2</span></li>
+					<li>Count Successes less or equal; <span class="out-roll-item-code">2d4cs&lt;=2</span></li>
+					<li>Count Successes greater; <span class="out-roll-item-code">2d4cs&gt;2</span></li>
+					<li>Count Successes greater equal; <span class="out-roll-item-code">2d4cs&gt;=3</span></li>
+
+					<li>Dice pools; <span class="out-roll-item-code">{2d8, 1d6}</span></li>
+					<li>Dice pools with modifiers; <span class="out-roll-item-code">{1d20+7, 10}kh1</span></li>
+
 					<li>Rounding; <span class="out-roll-item-code">floor(1.5)</span>, <span class="out-roll-item-code">ceil(1.5)</span>, <span class="out-roll-item-code">round(1.5)</span></li>
+
+					<li>Average; <span class="out-roll-item-code">avg(8d6)</span></li>
 				</ul>
 				Up and down arrow keys cycle input history.<br>
 				Anything before a colon is treated as a label (<span class="out-roll-item-code">Fireball: 8d6</span>)<br>
@@ -6451,14 +6781,15 @@ Renderer.dice.lang = {
 	},
 
 	// region Lexer
-	_M_TEXT_CHAR: /[0-9.,]/,
-	_M_SYMBOL_CHAR: /[-+/*^=><florceidhkxun]/,
+	_M_NUMBER_CHAR: /[0-9.]/,
+	_M_SYMBOL_CHAR: /[-+/*^=><florceidhkxunavgs,]/,
 
 	_M_NUMBER: /^[\d.,]+$/,
 	_lex3 (str) {
 		const self = {
 			tokenStack: [],
 			parenCount: 0,
+			braceCount: 0,
 			mode: null,
 			token: ""
 		};
@@ -6470,7 +6801,8 @@ Renderer.dice.lang = {
 			.replace(/[×]/g, "*") // convert mult signs
 			.replace(/\*\*/g, "^") // convert ** to ^
 			.replace(/÷/g, "/") // convert div signs
-			.replace(Parser._numberCleanRegexp, "") // remove commas (or periods as appropriate)
+			.replace(/--/g, "+") // convert double negatives
+			.replace(/\+-|-\+/g, "-") // convert negatives
 		;
 
 		if (!str) return [];
@@ -6494,14 +6826,33 @@ Renderer.dice.lang = {
 					this._lex3_outputToken(self);
 					break;
 				case ")":
-					self.parenCount++;
+					self.parenCount--;
 					if (self.parenCount < 0) throw new Error(`Syntax error: closing <code>)</code> without opening <code>(</code>`);
 					this._lex3_outputToken(self);
 					self.token = ")";
 					this._lex3_outputToken(self);
 					break;
+				case "{":
+					self.braceCount++;
+					this._lex3_outputToken(self);
+					self.token = "{";
+					this._lex3_outputToken(self);
+					break;
+				case "}":
+					self.braceCount--;
+					if (self.parenCount < 0) throw new Error(`Syntax error: closing <code>}</code> without opening <code>(</code>`);
+					this._lex3_outputToken(self);
+					self.token = "}";
+					this._lex3_outputToken(self);
+					break;
+				// single-character operators
+				case "+": case "-": case "*": case "/": case "^": case ",":
+					this._lex3_outputToken(self);
+					self.token += c;
+					this._lex3_outputToken(self);
+					break;
 				default: {
-					if (Renderer.dice.lang._M_TEXT_CHAR.test(c)) {
+					if (Renderer.dice.lang._M_NUMBER_CHAR.test(c)) {
 						if (self.mode === "symbol") this._lex3_outputToken(self);
 						self.token += c;
 						self.mode = "text";
@@ -6525,14 +6876,18 @@ Renderer.dice.lang = {
 		switch (self.token) {
 			case "(": self.tokenStack.push(Renderer.dice.tk.PAREN_OPEN); break;
 			case ")": self.tokenStack.push(Renderer.dice.tk.PAREN_CLOSE); break;
-			case "+": case "--": self.tokenStack.push(Renderer.dice.tk.ADD); break;
-			case "-": case "+-": case "-+": self.tokenStack.push(Renderer.dice.tk.SUB); break;
+			case "{": self.tokenStack.push(Renderer.dice.tk.BRACE_OPEN); break;
+			case "}": self.tokenStack.push(Renderer.dice.tk.BRACE_CLOSE); break;
+			case ",": self.tokenStack.push(Renderer.dice.tk.SET_SEPARATOR); break;
+			case "+": self.tokenStack.push(Renderer.dice.tk.ADD); break;
+			case "-": self.tokenStack.push(Renderer.dice.tk.SUB); break;
 			case "*": self.tokenStack.push(Renderer.dice.tk.MULT); break;
 			case "/": self.tokenStack.push(Renderer.dice.tk.DIV); break;
 			case "^": self.tokenStack.push(Renderer.dice.tk.POW); break;
 			case "floor": self.tokenStack.push(Renderer.dice.tk.FLOOR); break;
 			case "ceil": self.tokenStack.push(Renderer.dice.tk.CEIL); break;
 			case "round": self.tokenStack.push(Renderer.dice.tk.ROUND); break;
+			case "avg": self.tokenStack.push(Renderer.dice.tk.AVERAGE); break;
 			case "d": self.tokenStack.push(Renderer.dice.tk.DICE); break;
 			case "dh": self.tokenStack.push(Renderer.dice.tk.DROP_HIGHEST); break;
 			case "kh": self.tokenStack.push(Renderer.dice.tk.KEEP_HIGHEST); break;
@@ -6548,6 +6903,11 @@ Renderer.dice.lang = {
 			case "x>=": self.tokenStack.push(Renderer.dice.tk.EXPLODE_GTEQ); break;
 			case "x<": self.tokenStack.push(Renderer.dice.tk.EXPLODE_LT); break;
 			case "x<=": self.tokenStack.push(Renderer.dice.tk.EXPLODE_LTEQ); break;
+			case "cs=": self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_EXACT); break;
+			case "cs>": self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_GT); break;
+			case "cs>=": self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_GTEQ); break;
+			case "cs<": self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_LT); break;
+			case "cs<=": self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_LTEQ); break;
 			default: {
 				if (Renderer.dice.lang._M_NUMBER.test(self.token)) {
 					if (self.token.split(Parser._decimalSeparator).length > 2) throw new Error(`Syntax error: too many decimal separators <code>${self.token}</code>`);
@@ -6605,17 +6965,35 @@ Renderer.dice.lang = {
 
 	_parse3_factor (self) {
 		if (this._parse3_accept(self, Renderer.dice.tk.TYP_NUMBER)) return new Renderer.dice.parsed.Factor(self.lastAccepted);
-		else if (this._parse3_match(self, Renderer.dice.tk.FLOOR) || this._parse3_match(self, Renderer.dice.tk.CEIL) || this._parse3_match(self, Renderer.dice.tk.ROUND)) {
+		else if (
+			this._parse3_match(self, Renderer.dice.tk.FLOOR)
+			|| this._parse3_match(self, Renderer.dice.tk.CEIL)
+			|| this._parse3_match(self, Renderer.dice.tk.ROUND)
+			|| this._parse3_match(self, Renderer.dice.tk.AVERAGE)) {
 			const children = [];
+
 			children.push(this._parse3_nextSym(self));
 			this._parse3_expect(self, Renderer.dice.tk.PAREN_OPEN);
 			children.push(this._parse3_expression(self));
 			this._parse3_expect(self, Renderer.dice.tk.PAREN_CLOSE);
+
 			return new Renderer.dice.parsed.Function(children);
 		} else if (this._parse3_accept(self, Renderer.dice.tk.PAREN_OPEN)) {
 			const exp = this._parse3_expression(self);
 			this._parse3_expect(self, Renderer.dice.tk.PAREN_CLOSE);
 			return new Renderer.dice.parsed.Factor(exp, {hasParens: true})
+		} else if (this._parse3_accept(self, Renderer.dice.tk.BRACE_OPEN)) {
+			const children = [];
+
+			children.push(this._parse3_expression(self));
+			while (this._parse3_accept(self, Renderer.dice.tk.SET_SEPARATOR)) children.push(this._parse3_expression(self));
+
+			this._parse3_expect(self, Renderer.dice.tk.BRACE_CLOSE);
+
+			const modPart = [];
+			this._parse3__dice_modifiers(self, modPart);
+
+			return new Renderer.dice.parsed.Pool(children, modPart)
 		} else {
 			if (self.sym) throw new Error(`Unexpected input: <code>${self.sym}</code>`);
 			else throw new Error(`Unexpected end of input`);
@@ -6632,27 +7010,36 @@ Renderer.dice.lang = {
 		while (this._parse3_match(self, Renderer.dice.tk.DICE)) {
 			this._parse3_nextSym(self);
 			children.push(this._parse3_factor(self));
-			if (
-				this._parse3_match(self, Renderer.dice.tk.DROP_HIGHEST)
-				|| this._parse3_match(self, Renderer.dice.tk.KEEP_HIGHEST)
-				|| this._parse3_match(self, Renderer.dice.tk.DROP_LOWEST)
-				|| this._parse3_match(self, Renderer.dice.tk.KEEP_LOWEST)
-				|| this._parse3_match(self, Renderer.dice.tk.REROLL_EXACT)
-				|| this._parse3_match(self, Renderer.dice.tk.REROLL_GT)
-				|| this._parse3_match(self, Renderer.dice.tk.REROLL_GTEQ)
-				|| this._parse3_match(self, Renderer.dice.tk.REROLL_LT)
-				|| this._parse3_match(self, Renderer.dice.tk.REROLL_LTEQ)
-				|| this._parse3_match(self, Renderer.dice.tk.EXPLODE_EXACT)
-				|| this._parse3_match(self, Renderer.dice.tk.EXPLODE_GT)
-				|| this._parse3_match(self, Renderer.dice.tk.EXPLODE_GTEQ)
-				|| this._parse3_match(self, Renderer.dice.tk.EXPLODE_LT)
-				|| this._parse3_match(self, Renderer.dice.tk.EXPLODE_LTEQ)
-			) {
-				children.push(this._parse3_nextSym(self));
-				children.push(this._parse3_factor(self));
-			}
+			this._parse3__dice_modifiers(self, children);
 		}
 		return new Renderer.dice.parsed.Dice(children);
+	},
+
+	_parse3__dice_modifiers (self, children) { // used in both dice and dice pools
+		if (
+			this._parse3_match(self, Renderer.dice.tk.DROP_HIGHEST)
+			|| this._parse3_match(self, Renderer.dice.tk.KEEP_HIGHEST)
+			|| this._parse3_match(self, Renderer.dice.tk.DROP_LOWEST)
+			|| this._parse3_match(self, Renderer.dice.tk.KEEP_LOWEST)
+			|| this._parse3_match(self, Renderer.dice.tk.REROLL_EXACT)
+			|| this._parse3_match(self, Renderer.dice.tk.REROLL_GT)
+			|| this._parse3_match(self, Renderer.dice.tk.REROLL_GTEQ)
+			|| this._parse3_match(self, Renderer.dice.tk.REROLL_LT)
+			|| this._parse3_match(self, Renderer.dice.tk.REROLL_LTEQ)
+			|| this._parse3_match(self, Renderer.dice.tk.EXPLODE_EXACT)
+			|| this._parse3_match(self, Renderer.dice.tk.EXPLODE_GT)
+			|| this._parse3_match(self, Renderer.dice.tk.EXPLODE_GTEQ)
+			|| this._parse3_match(self, Renderer.dice.tk.EXPLODE_LT)
+			|| this._parse3_match(self, Renderer.dice.tk.EXPLODE_LTEQ)
+			|| this._parse3_match(self, Renderer.dice.tk.COUNT_SUCCESS_EXACT)
+			|| this._parse3_match(self, Renderer.dice.tk.COUNT_SUCCESS_GT)
+			|| this._parse3_match(self, Renderer.dice.tk.COUNT_SUCCESS_GTEQ)
+			|| this._parse3_match(self, Renderer.dice.tk.COUNT_SUCCESS_LT)
+			|| this._parse3_match(self, Renderer.dice.tk.COUNT_SUCCESS_LTEQ)
+		) {
+			children.push(this._parse3_nextSym(self));
+			children.push(this._parse3_factor(self));
+		}
 	},
 
 	_parse3_exponent (self) {
@@ -6696,6 +7083,7 @@ Renderer.dice.tk = {
 		 * @param asString
 		 * @param [opts] Options object.
 		 * @param [opts.isDiceModifier] If the token is a dice modifier, e.g. "dl"
+		 * @param [opts.isSuccessMode] If the token is a "success"-based dice modifier, e.g. "cs="
 		 */
 		constructor (type, value, asString, opts) {
 			opts = opts || {};
@@ -6703,6 +7091,7 @@ Renderer.dice.tk = {
 			this.value = value;
 			this._asString = asString;
 			if (opts.isDiceModifier) this.isDiceModifier = true;
+			if (opts.isSuccessMode) this.isSuccessMode = true;
 		}
 
 		eq (other) { return other && other.type === this.type; }
@@ -6725,6 +7114,9 @@ Renderer.dice.tk = {
 };
 Renderer.dice.tk.PAREN_OPEN = Renderer.dice.tk._new("PAREN_OPEN", "(");
 Renderer.dice.tk.PAREN_CLOSE = Renderer.dice.tk._new("PAREN_CLOSE", ")");
+Renderer.dice.tk.BRACE_OPEN = Renderer.dice.tk._new("BRACE_OPEN", "{");
+Renderer.dice.tk.BRACE_CLOSE = Renderer.dice.tk._new("BRACE_CLOSE", "}");
+Renderer.dice.tk.SET_SEPARATOR = Renderer.dice.tk._new("SET_SEPARATOR", ",");
 Renderer.dice.tk.ADD = Renderer.dice.tk._new("ADD", "+");
 Renderer.dice.tk.SUB = Renderer.dice.tk._new("SUB", "-");
 Renderer.dice.tk.MULT = Renderer.dice.tk._new("MULT", "*");
@@ -6733,6 +7125,7 @@ Renderer.dice.tk.POW = Renderer.dice.tk._new("POW", "^");
 Renderer.dice.tk.FLOOR = Renderer.dice.tk._new("FLOOR", "floor");
 Renderer.dice.tk.CEIL = Renderer.dice.tk._new("CEIL", "ceil");
 Renderer.dice.tk.ROUND = Renderer.dice.tk._new("ROUND", "round");
+Renderer.dice.tk.AVERAGE = Renderer.dice.tk._new("AVERAGE", "avg");
 Renderer.dice.tk.DICE = Renderer.dice.tk._new("DICE", "d");
 Renderer.dice.tk.DROP_HIGHEST = Renderer.dice.tk._new("DH", "dh", {isDiceModifier: true});
 Renderer.dice.tk.KEEP_HIGHEST = Renderer.dice.tk._new("KH", "kh", {isDiceModifier: true});
@@ -6748,6 +7141,11 @@ Renderer.dice.tk.EXPLODE_GT = Renderer.dice.tk._new("EXPLODE_GT", "x>", {isDiceM
 Renderer.dice.tk.EXPLODE_GTEQ = Renderer.dice.tk._new("EXPLODE_GTEQ", "x>=", {isDiceModifier: true});
 Renderer.dice.tk.EXPLODE_LT = Renderer.dice.tk._new("EXPLODE_LT", "x<", {isDiceModifier: true});
 Renderer.dice.tk.EXPLODE_LTEQ = Renderer.dice.tk._new("EXPLODE_LTEQ", "x<=", {isDiceModifier: true});
+Renderer.dice.tk.COUNT_SUCCESS_EXACT = Renderer.dice.tk._new("COUNT_SUCCESS_EXACT", "cs=", {isDiceModifier: true, isSuccessMode: true});
+Renderer.dice.tk.COUNT_SUCCESS_GT = Renderer.dice.tk._new("COUNT_SUCCESS_GT", "cs>", {isDiceModifier: true, isSuccessMode: true});
+Renderer.dice.tk.COUNT_SUCCESS_GTEQ = Renderer.dice.tk._new("COUNT_SUCCESS_GTEQ", "cs>=", {isDiceModifier: true, isSuccessMode: true});
+Renderer.dice.tk.COUNT_SUCCESS_LT = Renderer.dice.tk._new("COUNT_SUCCESS_LT", "cs<", {isDiceModifier: true, isSuccessMode: true});
+Renderer.dice.tk.COUNT_SUCCESS_LTEQ = Renderer.dice.tk._new("COUNT_SUCCESS_LTEQ", "cs<=", {isDiceModifier: true, isSuccessMode: true});
 
 Renderer.dice.AbstractSymbol = class {
 	constructor () { this.type = Renderer.dice.tk.TYP_SYMBOL; }
@@ -6774,6 +7172,141 @@ Renderer.dice.parsed = {
 	_PARTITION_LT: (r, compareTo) => r < compareTo,
 	_PARTITION_LTEQ: (r, compareTo) => r <= compareTo,
 
+	/**
+	 * @param fnName
+	 * @param meta
+	 * @param vals
+	 * @param modNodes
+	 * @param opts Options object.
+	 * @param [opts.fnGetRerolls] Function which takes a set of rolls to be rerolled and generates the next set of rolls.
+	 * @param [opts.fnGetExplosions] Function which takes a set of rolls to be exploded and generates the next set of rolls.
+	 */
+	_handleModifiers (fnName, meta, vals, modNodes, opts) {
+		opts = opts || {};
+
+		const displayVals = vals.slice(); // copy the array so we can sort the original
+
+		vals.sort(SortUtil.ascSortProp.bind(null, "val")).reverse();
+
+		const [mod, modNumSym] = modNodes;
+		const modNum = modNumSym[fnName]();
+
+		switch (mod.type) {
+			case Renderer.dice.tk.DROP_HIGHEST.type:
+			case Renderer.dice.tk.KEEP_HIGHEST.type:
+			case Renderer.dice.tk.DROP_LOWEST.type:
+			case Renderer.dice.tk.KEEP_LOWEST.type: {
+				const isHighest = mod.type.endsWith("H");
+
+				const splitPoint = isHighest ? modNum : vals.length - modNum;
+
+				const highSlice = vals.slice(0, splitPoint);
+				const lowSlice = vals.slice(splitPoint, vals.length);
+
+				switch (mod.type) {
+					case Renderer.dice.tk.DROP_HIGHEST.type:
+					case Renderer.dice.tk.KEEP_LOWEST.type:
+						highSlice.forEach(val => val.isDropped = true);
+						break;
+					case Renderer.dice.tk.KEEP_HIGHEST.type:
+					case Renderer.dice.tk.DROP_LOWEST.type:
+						lowSlice.forEach(val => val.isDropped = true);
+						break;
+					default: throw new Error(`Unimplemented!`);
+				}
+				break;
+			}
+
+			case Renderer.dice.tk.REROLL_EXACT.type:
+			case Renderer.dice.tk.REROLL_GT.type:
+			case Renderer.dice.tk.REROLL_GTEQ.type:
+			case Renderer.dice.tk.REROLL_LT.type:
+			case Renderer.dice.tk.REROLL_LTEQ.type: {
+				let fnPartition;
+				switch (mod.type) {
+					case Renderer.dice.tk.REROLL_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
+					case Renderer.dice.tk.REROLL_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
+					case Renderer.dice.tk.REROLL_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
+					case Renderer.dice.tk.REROLL_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
+					case Renderer.dice.tk.REROLL_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
+					default: throw new Error(`Unimplemented!`);
+				}
+
+				const toReroll = vals.filter(val => fnPartition(val.val, modNum));
+				toReroll.forEach(val => val.isDropped = true);
+
+				const nuVals = opts.fnGetRerolls(toReroll);
+
+				vals.push(...nuVals);
+				displayVals.push(...nuVals);
+				break;
+			}
+
+			case Renderer.dice.tk.EXPLODE_EXACT.type:
+			case Renderer.dice.tk.EXPLODE_GT.type:
+			case Renderer.dice.tk.EXPLODE_GTEQ.type:
+			case Renderer.dice.tk.EXPLODE_LT.type:
+			case Renderer.dice.tk.EXPLODE_LTEQ.type: {
+				let fnPartition;
+				switch (mod.type) {
+					case Renderer.dice.tk.EXPLODE_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
+					case Renderer.dice.tk.EXPLODE_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
+					case Renderer.dice.tk.EXPLODE_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
+					case Renderer.dice.tk.EXPLODE_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
+					case Renderer.dice.tk.EXPLODE_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
+					default: throw new Error(`Unimplemented!`);
+				}
+
+				let tries = 999; // limit the maximum explosions to a sane amount
+				let lastLen;
+				let toExplodeNext = vals;
+				do {
+					lastLen = vals.length;
+
+					const [toExplode] = toExplodeNext.partition(roll => !roll.isExploded && fnPartition(roll.val, modNum));
+					toExplode.forEach(roll => roll.isExploded = true);
+
+					const nuVals = opts.fnGetExplosions(toExplode);
+
+					// cache the new rolls, to improve performance over massive explosion sets
+					toExplodeNext = nuVals;
+
+					vals.push(...nuVals);
+					displayVals.push(...nuVals);
+				} while (tries-- > 0 && vals.length !== lastLen);
+
+				if (!~tries) JqueryUtil.doToast({type: "warning", content: `Stopped exploding after 999 additional rolls.`});
+
+				break;
+			}
+
+			case Renderer.dice.tk.COUNT_SUCCESS_EXACT.type:
+			case Renderer.dice.tk.COUNT_SUCCESS_GT.type:
+			case Renderer.dice.tk.COUNT_SUCCESS_GTEQ.type:
+			case Renderer.dice.tk.COUNT_SUCCESS_LT.type:
+			case Renderer.dice.tk.COUNT_SUCCESS_LTEQ.type: {
+				let fnPartition;
+				switch (mod.type) {
+					case Renderer.dice.tk.COUNT_SUCCESS_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
+					case Renderer.dice.tk.COUNT_SUCCESS_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
+					case Renderer.dice.tk.COUNT_SUCCESS_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
+					case Renderer.dice.tk.COUNT_SUCCESS_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
+					case Renderer.dice.tk.COUNT_SUCCESS_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
+					default: throw new Error(`Unimplemented!`);
+				}
+
+				const successes = vals.filter(val => fnPartition(val.val, modNum));
+				successes.forEach(val => val.isSuccess = true);
+
+				break;
+			}
+
+			default: throw new Error(`Unimplemented!`);
+		}
+
+		return displayVals;
+	},
+
 	Function: class extends Renderer.dice.AbstractSymbol {
 		constructor (nodes) {
 			super();
@@ -6781,9 +7314,9 @@ Renderer.dice.parsed = {
 		}
 
 		evl (meta) { return this._invoke("evl", meta); }
-		avg () { return this._invoke("avg"); }
-		min () { return this._invoke("min"); }
-		max () { return this._invoke("max"); }
+		avg (meta) { return this._invoke("avg", meta); }
+		min (meta) { return this._invoke("min", meta); }
+		max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
 			const [symFunc, symExp] = this._nodes;
@@ -6806,6 +7339,9 @@ Renderer.dice.parsed = {
 					this.addToMeta(meta, ")");
 					return out;
 				}
+				case Renderer.dice.tk.AVERAGE.type: {
+					return symExp.avg(meta);
+				}
 				default: throw new Error(`Unimplemented!`);
 			}
 		}
@@ -6817,10 +7353,73 @@ Renderer.dice.parsed = {
 				case Renderer.dice.tk.FLOOR.type: out = "floor"; break;
 				case Renderer.dice.tk.CEIL.type: out = "ceil"; break;
 				case Renderer.dice.tk.ROUND.type: out = "round"; break;
+				case Renderer.dice.tk.AVERAGE.type: out = "avg"; break;
 				default: throw new Error(`Unimplemented!`);
 			}
 			out += `(${symExp.toString()})`;
 			return out;
+		}
+	},
+
+	Pool: class extends Renderer.dice.AbstractSymbol {
+		constructor (nodesPool, nodesMod) {
+			super();
+			this._nodesPool = nodesPool;
+			this._nodesMod = nodesMod;
+		}
+
+		evl (meta) { return this._invoke("evl", meta) }
+		avg (meta) { return this._invoke("avg", meta) }
+		min (meta) { return this._invoke("min", meta); }
+		max (meta) { return this._invoke("max", meta); }
+
+		_invoke (fnName, meta) {
+			const vals = this._nodesPool.map((it, i) => {
+				const subMeta = {};
+				return {node: it, val: it[fnName](subMeta), meta: subMeta};
+			});
+
+			if (this._nodesMod.length && vals.length) {
+				const isSuccessMode = this._nodesMod[0].isSuccessMode;
+
+				const modOpts = {
+					fnGetRerolls: toReroll => toReroll.map(val => {
+						const subMeta = {};
+						return {node: val.node, val: val.node[fnName](subMeta), meta: subMeta};
+					}),
+					fnGetExplosions: toExplode => toExplode.map(val => {
+						const subMeta = {};
+						return {node: val.node, val: val.node[fnName](subMeta), meta: subMeta};
+					})
+				};
+
+				const displayVals = Renderer.dice.parsed._handleModifiers(fnName, meta, vals, this._nodesMod, modOpts);
+
+				const asHtml = displayVals.map(v => {
+					const html = v.meta.html.join("");
+					if (v.isDropped) return `<span class="rll__dropped">(${html})</span>`;
+					else if (v.isExploded) return `<span class="rll__exploded">(</span>${html}<span class="rll__exploded">)</span>`;
+					else if (v.isSuccess) return `<span class="rll__success">(${html})</span>`;
+					else return `(${html})`;
+				}).join("+");
+
+				const asText = displayVals.map(v => `(${v.meta.text.join("")})`).join("+");
+
+				this.addToMeta(meta, asHtml, asText);
+
+				if (isSuccessMode) {
+					return vals.filter(it => !it.isDropped && it.isSuccess).length;
+				} else {
+					return Math.sum(...vals.filter(it => !it.isDropped).map(it => it.val));
+				}
+			} else {
+				this.addToMeta(meta, `${vals.map(it => `(${it.meta.html.join("")})`).join("+")}`, `${vals.map(it => `(${it.meta.text.join("")})`).join("+")}`);
+				return Math.sum(...vals.map(it => it.val));
+			}
+		}
+
+		toString () {
+			return `{${this._nodesPool.map(it => it.toString()).join(", ")}}${this._nodesMod.map(it => it.toString()).join("")}`
 		}
 	},
 
@@ -6833,9 +7432,9 @@ Renderer.dice.parsed = {
 		}
 
 		evl (meta) { return this._invoke("evl", meta) }
-		avg () { return this._invoke("avg") }
-		min () { return this._invoke("min"); }
-		max () { return this._invoke("max"); }
+		avg (meta) { return this._invoke("avg", meta) }
+		min (meta) { return this._invoke("min", meta); }
+		max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
 			switch (this._node.type) {
@@ -6880,9 +7479,9 @@ Renderer.dice.parsed = {
 		}
 
 		evl (meta) { return this._invoke("evl", meta); }
-		avg () { return this._invoke("avg"); }
-		min () { return this._invoke("min"); }
-		max () { return this._invoke("max"); }
+		avg (meta) { return this._invoke("avg", meta); }
+		min (meta) { return this._invoke("min", meta); }
+		max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
 			if (this._nodes.length === 1) return this._nodes[0][fnName](meta); // if it's just a factor
@@ -6910,119 +7509,35 @@ Renderer.dice.parsed = {
 			if (Math.round(faces) !== faces) throw new Error(`Dice face count (${faces}) was not an integer!`);
 
 			const rolls = [...new Array(num)].map(() => ({val: Renderer.dice.parsed.Dice._facesToValue(faces, fnName)}));
-			const displayRolls = rolls.slice(); // copy the array so we can sort the original
+			let displayRolls;
+			let isSuccessMode = false;
 
 			if (view.length && view[0].isDiceModifier) {
 				if (fnName === "evl" || fnName === "min" || fnName === "max") { // avoid handling dice modifiers in "average" mode
-					rolls.sort(SortUtil.ascSortProp.bind(null, "val")).reverse();
+					isSuccessMode = view[0].isSuccessMode;
 
-					const [mod, modNumSym] = view;
-					const modNum = modNumSym.evl();
+					const modOpts = {
+						fnGetRerolls: toReroll => [...new Array(toReroll.length)].map(() => ({val: Renderer.dice.parsed.Dice._facesToValue(faces, fnName)})),
+						fnGetExplosions: toExplode => [...new Array(toExplode.length)].map(() => ({val: Renderer.dice.parsed.Dice._facesToValue(faces, fnName)}))
+					};
 
-					switch (mod.type) {
-						case Renderer.dice.tk.DROP_HIGHEST.type:
-						case Renderer.dice.tk.KEEP_HIGHEST.type:
-						case Renderer.dice.tk.DROP_LOWEST.type:
-						case Renderer.dice.tk.KEEP_LOWEST.type: {
-							const isHighest = mod.type.endsWith("H");
-
-							const splitPoint = isHighest ? modNum : rolls.length - modNum;
-
-							const highSlice = rolls.slice(0, splitPoint);
-							const lowSlice = rolls.slice(splitPoint, rolls.length);
-
-							switch (mod.type) {
-								case Renderer.dice.tk.DROP_HIGHEST.type:
-								case Renderer.dice.tk.KEEP_LOWEST.type:
-									highSlice.forEach(roll => roll.isDropped = true);
-									break;
-								case Renderer.dice.tk.KEEP_HIGHEST.type:
-								case Renderer.dice.tk.DROP_LOWEST.type:
-									lowSlice.forEach(roll => roll.isDropped = true);
-									break;
-								default: throw new Error(`Unimplemented!`);
-							}
-							break;
-						}
-
-						case Renderer.dice.tk.REROLL_EXACT.type:
-						case Renderer.dice.tk.REROLL_GT.type:
-						case Renderer.dice.tk.REROLL_GTEQ.type:
-						case Renderer.dice.tk.REROLL_LT.type:
-						case Renderer.dice.tk.REROLL_LTEQ.type: {
-							let fnPartition;
-							switch (mod.type) {
-								case Renderer.dice.tk.REROLL_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
-								case Renderer.dice.tk.REROLL_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
-								case Renderer.dice.tk.REROLL_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
-								case Renderer.dice.tk.REROLL_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
-								case Renderer.dice.tk.REROLL_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
-								default: throw new Error(`Unimplemented!`);
-							}
-
-							const toReroll = rolls.filter(roll => fnPartition(roll.val, modNum));
-							toReroll.forEach(roll => roll.isDropped = true);
-
-							const nuRolls = [...new Array(toReroll.length)].map(() => ({val: Renderer.dice.parsed.Dice._facesToValue(faces, fnName)}));
-							rolls.push(...nuRolls);
-							displayRolls.push(...nuRolls);
-							break;
-						}
-
-						case Renderer.dice.tk.EXPLODE_EXACT.type:
-						case Renderer.dice.tk.EXPLODE_GT.type:
-						case Renderer.dice.tk.EXPLODE_GTEQ.type:
-						case Renderer.dice.tk.EXPLODE_LT.type:
-						case Renderer.dice.tk.EXPLODE_LTEQ.type: {
-							let fnPartition;
-							switch (mod.type) {
-								case Renderer.dice.tk.EXPLODE_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
-								case Renderer.dice.tk.EXPLODE_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
-								case Renderer.dice.tk.EXPLODE_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
-								case Renderer.dice.tk.EXPLODE_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
-								case Renderer.dice.tk.EXPLODE_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
-								default: throw new Error(`Unimplemented!`);
-							}
-
-							let tries = 999; // limit the maximum explosions to a sane amount
-							let lastLen;
-							let toExplodeNext = rolls;
-							do {
-								lastLen = rolls.length;
-
-								const [toExplode] = toExplodeNext.partition(roll => !roll.isExploded && fnPartition(roll.val, modNum));
-								toExplode.forEach(roll => roll.isExploded = true);
-								const nuRolls = [...new Array(toExplode.length)].map(() => ({val: Renderer.dice.parsed.Dice._facesToValue(faces, fnName)}));
-
-								// cache the new rolls, to improve performance over massive explosion sets
-								toExplodeNext = nuRolls;
-
-								rolls.push(...nuRolls);
-								displayRolls.push(...nuRolls);
-							} while (tries-- > 0 && rolls.length !== lastLen);
-
-							if (!~tries) JqueryUtil.doToast({type: "warning", content: `Stopped exploding after 999 additional rolls.`});
-
-							break;
-						}
-
-						default: throw new Error(`Unimplemented!`);
-					}
+					displayRolls = Renderer.dice.parsed._handleModifiers(fnName, meta, rolls, view, modOpts);
 				}
 
 				view.shift(); view.shift();
-			}
+			} else displayRolls = rolls;
 
 			if (isLast) { // only display the dice for the final roll, e.g. in 2d3d4 show the Xd4
 				const asHtml = displayRolls.map(r => {
 					const numPart = r.val === faces ? `<span class="rll__max--muted">${r.val}</span>` : r.val === 1 ? `<span class="rll__min--muted">${r.val}</span>` : r.val;
 
-					if (r.isDropped) return `<span class="rll__dropped">[${numPart}]</span>`
-					else if (r.isExploded) return `<span class="rll__exploded">[</span>${numPart}<span class="rll__exploded">]</span>`
+					if (r.isDropped) return `<span class="rll__dropped">[${numPart}]</span>`;
+					else if (r.isExploded) return `<span class="rll__exploded">[</span>${numPart}<span class="rll__exploded">]</span>`;
+					else if (r.isSuccess) return `<span class="rll__success">[${numPart}]</span>`;
 					else return `[${numPart}]`;
 				}).join("+");
 
-				const asText = rolls.map(r => `[${r.val}]`).join("+");
+				const asText = displayRolls.map(r => `[${r.val}]`).join("+");
 
 				this.addToMeta(
 					meta,
@@ -7040,7 +7555,11 @@ Renderer.dice.parsed = {
 				meta.allMin.push(minRolls.length && minRolls.length === rolls.length);
 			}
 
-			return Math.sum(...rolls.filter(it => !it.isDropped).map(it => it.val));
+			if (isSuccessMode) {
+				return rolls.filter(it => !it.isDropped && it.isSuccess).length;
+			} else {
+				return Math.sum(...rolls.filter(it => !it.isDropped).map(it => it.val));
+			}
 		}
 
 		toString () {
@@ -7065,9 +7584,9 @@ Renderer.dice.parsed = {
 		}
 
 		evl (meta) { return this._invoke("evl", meta) }
-		avg () { return this._invoke("avg") }
-		min () { return this._invoke("min"); }
-		max () { return this._invoke("max"); }
+		avg (meta) { return this._invoke("avg", meta) }
+		min (meta) { return this._invoke("min", meta); }
+		max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
 			const view = this._nodes.slice();
@@ -7094,9 +7613,9 @@ Renderer.dice.parsed = {
 		}
 
 		evl (meta) { return this._invoke("evl", meta) }
-		avg () { return this._invoke("avg") }
-		min () { return this._invoke("min"); }
-		max () { return this._invoke("max"); }
+		avg (meta) { return this._invoke("avg", meta) }
+		min (meta) { return this._invoke("min", meta); }
+		max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
 			let out = this._nodes[0][fnName](meta);
@@ -7132,9 +7651,9 @@ Renderer.dice.parsed = {
 		}
 
 		evl (meta) { return this._invoke("evl", meta) }
-		avg () { return this._invoke("avg") }
-		min () { return this._invoke("min"); }
-		max () { return this._invoke("max"); }
+		avg (meta) { return this._invoke("avg", meta) }
+		min (meta) { return this._invoke("min", meta); }
+		max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
 			const view = this._nodes.slice();
@@ -7366,6 +7885,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@feat":
 					case "@hazard":
 					case "@item":
+					case "@language":
 					case "@object":
 					case "@optfeature":
 					case "@psionic":

@@ -1,9 +1,9 @@
 {
 	"monster": [
 		{
+			"name": "Archon Of Redemption",
 			"source": "PSZ",
 			"page": 22,
-			"name": "Archon Of Redemption",
 			"size": "L",
 			"type": "celestial",
 			"alignment": [
@@ -40,6 +40,10 @@
 				"insight": "+9",
 				"perception": "+9"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 19,
 			"resist": [
 				"radiant",
 				{
@@ -56,10 +60,6 @@
 				"exhaustion",
 				"frightened"
 			],
-			"senses": [
-				"darkvision 120 ft."
-			],
-			"passive": 19,
 			"languages": [
 				"all",
 				"telepathy 120 ft."
@@ -132,23 +132,23 @@
 			"traitTags": [
 				"Magic Resistance"
 			],
+			"senseTags": [
+				"SD"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
-				"XX",
-				"TP"
+				"TP",
+				"XX"
 			],
-			"senseTags": [
-				"SD"
+			"damageTags": [
+				"P",
+				"R",
+				"S"
 			],
 			"spellcastingTags": [
 				"I"
-			],
-			"damageTags": [
-				"S",
-				"R",
-				"P"
 			],
 			"miscTags": [
 				"MW",
@@ -156,9 +156,9 @@
 			]
 		},
 		{
+			"name": "Felidar",
 			"source": "PSZ",
 			"page": 23,
-			"name": "Felidar",
 			"size": "L",
 			"type": "celestial",
 			"alignment": [
@@ -181,6 +181,10 @@
 			"int": 11,
 			"wis": 17,
 			"cha": 16,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 13,
 			"immune": [
 				"poison"
 			],
@@ -189,10 +193,6 @@
 				"paralyzed",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 13,
 			"languages": [
 				"Celestial",
 				"telepathy 60 ft."
@@ -292,9 +292,12 @@
 				}
 			],
 			"traitTags": [
-				"Pounce",
 				"Magic Resistance",
-				"Magic Weapons"
+				"Magic Weapons",
+				"Pounce"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -303,24 +306,21 @@
 				"CE",
 				"TP"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"P",
+				"S"
 			],
 			"spellcastingTags": [
 				"I"
-			],
-			"damageTags": [
-				"S",
-				"P"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "Kraken",
 			"source": "PSZ",
 			"page": 25,
-			"name": "Kraken",
 			"size": "H",
 			"type": "monstrosity",
 			"alignment": [
@@ -353,6 +353,10 @@
 				"athletics": "+14",
 				"perception": "+9"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 19,
 			"resist": [
 				"cold"
 			],
@@ -360,10 +364,6 @@
 				"lightning",
 				"thunder"
 			],
-			"senses": [
-				"darkvision 120 ft."
-			],
-			"passive": 19,
 			"languages": [
 				"Common"
 			],
@@ -421,6 +421,9 @@
 			"traitTags": [
 				"Amphibious"
 			],
+			"senseTags": [
+				"SD"
+			],
 			"actionTags": [
 				"Multiattack",
 				"Tentacles"
@@ -428,16 +431,13 @@
 			"languageTags": [
 				"C"
 			],
-			"senseTags": [
-				"SD"
+			"damageTags": [
+				"B",
+				"L",
+				"S"
 			],
 			"spellcastingTags": [
 				"I"
-			],
-			"damageTags": [
-				"S",
-				"B",
-				"L"
 			],
 			"miscTags": [
 				"MW",

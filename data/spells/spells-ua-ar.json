@@ -2,6 +2,8 @@
 	"spell": [
 		{
 			"name": "Arcane Weapon",
+			"source": "UAArtificerRevisited",
+			"page": 10,
 			"level": 1,
 			"school": "T",
 			"time": [
@@ -30,15 +32,6 @@
 					"concentration": true
 				}
 			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Artificer (Revisited)",
-						"source": "UAArtificerRevisited"
-					}
-				]
-			},
-			"source": "UAArtificerRevisited",
 			"entries": [
 				"You channel arcane energy into one simple or martial weapon you're holding, and choose one damage type: acid, cold, fire, lightning, poison, or thunder. Until the spell ends, you deal an extra {@damage 1d6} damage of the chosen type to any target you hit with the weapon. If the weapon isn't magical, it becomes a magic weapon for the spell's duration.",
 				"As a bonus action, you can change the damage type, choosing from the options above."
@@ -52,7 +45,6 @@
 					]
 				}
 			],
-			"page": 10,
 			"damageInflict": [
 				"acid",
 				"cold",
@@ -63,7 +55,15 @@
 			],
 			"areaTags": [
 				"ST"
-			]
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer (Revisited)",
+						"source": "UAArtificerRevisited"
+					}
+				]
+			}
 		}
 	]
 }

@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.3.2",
+	"version": "1.4.1",
 
 	"title": "ClassArray",
 	"type": "object",
@@ -98,7 +98,30 @@
 				"armor": {
 					"type": "array",
 					"items": {
-						"type": "string"
+						"oneOf": [
+							{
+								"type": "string",
+								"enum": [
+									"light", "medium", "heavy", "shields"
+								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"proficiency": {
+										"type": "string",
+										"enum": [
+											"light", "medium", "heavy", "shields", "special"
+										]
+									},
+									"full": {
+										"description": "The complete text for this proficiency.",
+										"type": "string"
+									}
+								},
+								"required": ["proficiency", "full"]
+							}
+						]
 					}
 				},
 				"weapons": {
@@ -175,7 +198,7 @@
 					"type": "integer"
 				},
 				"casterProgression": {
-					"enum": ["full", "1/2", "1/3"]
+					"enum": ["full", "1/2", "1/3", "pact"]
 				},
 				"spellcastingAbility": {
 					"enum": ["str", "dex", "con", "int", "wis", "cha"]
@@ -348,7 +371,7 @@
 					"additionalProperties": false
 				},
 				"casterProgression": {
-					"enum": ["full", "1/2", "1/3"]
+					"enum": ["full", "1/2", "1/3", "pact"]
 				},
 				"spellcastingAbility": {
 					"enum": ["str", "dex", "con", "int", "wis", "cha"]

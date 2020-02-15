@@ -2,6 +2,8 @@
 	"spell": [
 		{
 			"name": "Mind Sliver",
+			"source": "UASorcererAndWarlock",
+			"page": 4,
 			"level": 0,
 			"school": "E",
 			"time": [
@@ -17,6 +19,9 @@
 					"amount": 60
 				}
 			},
+			"components": {
+				"v": true
+			},
 			"duration": [
 				{
 					"type": "timed",
@@ -25,6 +30,31 @@
 						"amount": 1
 					}
 				}
+			],
+			"entries": [
+				"You drive a disorienting spike of psychic energy into the mind of one creature you can see within range. The target must make an Intelligence saving throw. Unless the saving throw is successful, the target takes {@damage 1d6} psychic damage, and the first time it makes a saving throw before the end of your next turn, it must roll a {@dice d4} and subtract the number rolled from the save.",
+				"This spell's damage increases by {@dice 1d6} when you reach certain levels: 5th level ({@damage 2d6}), 11th level ({@damage 3d6}), and 17th level ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "psychic damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
 			],
 			"classes": {
 				"fromClassList": [
@@ -41,28 +71,7 @@
 						"source": "PHB"
 					}
 				]
-			},
-			"entries": [
-				"You drive a disorienting spike of psychic energy into the mind of one creature you can see within range. The target must make an Intelligence saving throw. Unless the saving throw is successful, the target takes {@damage 1d6} psychic damage, and the first time it makes a saving throw before the end of your next turn, it must roll a {@dice d4} and subtract the number rolled from the save.",
-				"This spell's damage increases by {@dice 1d6} when you reach certain levels: 5th level ({@damage 2d6}), 11th level ({@damage 3d6}), and 17th level ({@damage 4d6})."
-			],
-			"source": "UASorcererAndWarlock",
-			"page": 4,
-			"components": {
-				"v": true
-			},
-			"damageInflict": [
-				"psychic"
-			],
-			"savingThrow": [
-				"intelligence"
-			],
-			"areaTags": [
-				"ST"
-			],
-			"miscTags": [
-				"SGT"
-			]
+			}
 		}
 	]
 }

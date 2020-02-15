@@ -2,6 +2,8 @@
 	"spell": [
 		{
 			"name": "Ego Whip",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
 			"level": 4,
 			"school": "E",
 			"time": [
@@ -17,6 +19,9 @@
 					"amount": 30
 				}
 			},
+			"components": {
+				"v": true
+			},
 			"duration": [
 				{
 					"type": "timed",
@@ -26,6 +31,18 @@
 					},
 					"concentration": true
 				}
+			],
+			"entries": [
+				"You lash the mind of one creature you can see within range, filling it with despair. The target must succeed on an Intelligence saving throw or suffer disadvantage on attack rolls, ability checks, and saving throws, and it can't cast spells. At the end of each of its turns, the target can make another Intelligence saving throw. On a success, the spell ends on the target."
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
 			],
 			"classes": {
 				"fromClassList": [
@@ -46,27 +63,12 @@
 						"source": "PHB"
 					}
 				]
-			},
-			"entries": [
-				"You lash the mind of one creature you can see within range, filling it with despair. The target must succeed on an Intelligence saving throw or suffer disadvantage on attack rolls, ability checks, and saving throws, and it can't cast spells. At the end of each of its turns, the target can make another Intelligence saving throw. On a success, the spell ends on the target."
-			],
-			"source": "UAFighterRogueWizard",
-			"page": 7,
-			"components": {
-				"v": true
-			},
-			"savingThrow": [
-				"intelligence"
-			],
-			"areaTags": [
-				"ST"
-			],
-			"miscTags": [
-				"SGT"
-			]
+			}
 		},
 		{
 			"name": "Id Insinuation",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
 			"level": 1,
 			"school": "E",
 			"time": [
@@ -82,6 +84,10 @@
 					"amount": 60
 				}
 			},
+			"components": {
+				"v": true,
+				"s": true
+			},
 			"duration": [
 				{
 					"type": "timed",
@@ -91,6 +97,24 @@
 					},
 					"concentration": true
 				}
+			],
+			"entries": [
+				"You unleash a torrent of conflicting desires in the mind of one creature you can see within range, impairing its ability to make decisions. The target must succeed on a Wisdom saving throw or be incapacitated. At the end of each of its turns, it takes {@damage 1d12} psychic damage, and it can then make another Wisdom saving throw. On a success, the spell ends on the target."
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"conditionInflict": [
+				"incapacitated"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
 			],
 			"classes": {
 				"fromClassList": [
@@ -111,34 +135,12 @@
 						"source": "PHB"
 					}
 				]
-			},
-			"entries": [
-				"You unleash a torrent of conflicting desires in the mind of one creature you can see within range, impairing its ability to make decisions. The target must succeed on a Wisdom saving throw or be incapacitated. At the end of each of its turns, it takes {@damage 1d12} psychic damage, and it can then make another Wisdom saving throw. On a success, the spell ends on the target."
-			],
-			"source": "UAFighterRogueWizard",
-			"page": 7,
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"areaTags": [
-				"ST"
-			],
-			"damageInflict": [
-				"psychic"
-			],
-			"conditionInflict": [
-				"incapacitated"
-			],
-			"savingThrow": [
-				"wisdom"
-			],
-			"miscTags": [
-				"SGT"
-			]
+			}
 		},
 		{
 			"name": "Intellect Fortress",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
 			"level": 5,
 			"school": "A",
 			"time": [
@@ -153,6 +155,10 @@
 					"type": "self"
 				}
 			},
+			"components": {
+				"v": true,
+				"s": true
+			},
 			"duration": [
 				{
 					"type": "timed",
@@ -162,6 +168,10 @@
 					},
 					"concentration": true
 				}
+			],
+			"entries": [
+				"You create a faintly shimmering barrier of protective psychic power around you. For the duration, you have advantage on all saving throws.",
+				"When another creature that you can see within 30 feet of you fails a saving throw, you can use your reaction to allow them to reroll the save. They must use the new roll."
 			],
 			"classes": {
 				"fromClassList": [
@@ -182,20 +192,12 @@
 						"source": "PHB"
 					}
 				]
-			},
-			"entries": [
-				"You create a faintly shimmering barrier of protective psychic power around you. For the duration, you have advantage on all saving throws.",
-				"When another creature that you can see within 30 feet of you fails a saving throw, you can use your reaction to allow them to reroll the save. They must use the new roll."
-			],
-			"source": "UAFighterRogueWizard",
-			"page": 7,
-			"components": {
-				"v": true,
-				"s": true
 			}
 		},
 		{
 			"name": "Mental Barrier",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
 			"level": 2,
 			"school": "A",
 			"time": [
@@ -211,6 +213,9 @@
 					"type": "self"
 				}
 			},
+			"components": {
+				"v": true
+			},
 			"duration": [
 				{
 					"type": "timed",
@@ -219,6 +224,9 @@
 						"amount": 1
 					}
 				}
+			],
+			"entries": [
+				"You protect your mind with a wall of looping, repetitive thought. Until the start of your next turn, you have advantage on Intelligence, Wisdom, and Charisma saving throws, and you have resistance to psychic damage."
 			],
 			"classes": {
 				"fromClassList": [
@@ -239,18 +247,12 @@
 						"source": "PHB"
 					}
 				]
-			},
-			"entries": [
-				"You protect your mind with a wall of looping, repetitive thought. Until the start of your next turn, you have advantage on Intelligence, Wisdom, and Charisma saving throws, and you have resistance to psychic damage."
-			],
-			"source": "UAFighterRogueWizard",
-			"page": 7,
-			"components": {
-				"v": true
 			}
 		},
 		{
 			"name": "Mind Sliver",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
 			"level": 0,
 			"school": "E",
 			"time": [
@@ -266,6 +268,9 @@
 					"amount": 60
 				}
 			},
+			"components": {
+				"v": true
+			},
 			"duration": [
 				{
 					"type": "timed",
@@ -274,6 +279,32 @@
 						"amount": 1
 					}
 				}
+			],
+			"entries": [
+				"You drive a disorienting spike of psychic energy into the mind of one creature you can see within range. The target must make an Intelligence saving throw. Unless the saving throw is successful, the target takes {@damage 1d6} psychic damage, and the first time it makes a saving throw before the end of your next turn, it must roll a {@dice d4} and subtract the number rolled from the save.",
+				"This spell's damage increases by {@dice 1d6} when you reach certain levels: 5th level ({@damage 2d6}), 11th level ({@damage 3d6}), and 17th level ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "psychic damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT",
+				"SCL"
+			],
+			"areaTags": [
+				"ST"
 			],
 			"classes": {
 				"fromClassList": [
@@ -294,32 +325,12 @@
 						"source": "PHB"
 					}
 				]
-			},
-			"entries": [
-				"You drive a disorienting spike of psychic energy into the mind of one creature you can see within range. The target must make an Intelligence saving throw. Unless the saving throw is successful, the target takes {@damage 1d6} psychic damage, and the first time it makes a saving throw before the end of your next turn, it must roll a {@dice d4} and subtract the number rolled from the save.",
-				"This spell's damage increases by {@dice 1d6} when you reach certain levels: 5th level ({@damage 2d6}), 11th level ({@damage 3d6}), and 17th level ({@damage 4d6})."
-			],
-			"source": "UAFighterRogueWizard",
-			"page": 7,
-			"components": {
-				"v": true
-			},
-			"damageInflict": [
-				"psychic"
-			],
-			"savingThrow": [
-				"intelligence"
-			],
-			"areaTags": [
-				"ST"
-			],
-			"miscTags": [
-				"SGT",
-				"SCL"
-			]
+			}
 		},
 		{
 			"name": "Mind Thrust",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
 			"level": 2,
 			"school": "E",
 			"time": [
@@ -335,6 +346,10 @@
 					"amount": 60
 				}
 			},
+			"components": {
+				"v": true,
+				"s": true
+			},
 			"duration": [
 				{
 					"type": "timed",
@@ -343,6 +358,31 @@
 						"amount": 1
 					}
 				}
+			],
+			"entries": [
+				"You propel a lance of psionic disruption into the mind of one creature you can see within range. The target must make an Intelligence saving throw. On a failed save, the target takes {@damage 3d6} psychic damage, and it can use its action only to {@action Dash} or {@action Disengage} on its next turn. On a successful save, the target takes half as much damage, and this spell doesn't limit its action options."
+			],
+			"entriesHigherLevel": [
+				{
+					"name": "At Higher Levels",
+					"type": "entries",
+					"entries": [
+						"When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd. The creatures must be within 30 feet of each other when you target them."
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST",
+				"MT"
 			],
 			"classes": {
 				"fromClassList": [
@@ -363,41 +403,12 @@
 						"source": "PHB"
 					}
 				]
-			},
-			"entries": [
-				"You propel a lance of psionic disruption into the mind of one creature you can see within range. The target must make an Intelligence saving throw. On a failed save, the target takes {@damage 3d6} psychic damage, and it can use its action only to {@action Dash} or {@action Disengage} on its next turn. On a successful save, the target takes half as much damage, and this spell doesn't limit its action options."
-			],
-			"source": "UAFighterRogueWizard",
-			"page": 7,
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"entriesHigherLevel": [
-				{
-					"name": "At Higher Levels",
-					"type": "entries",
-					"entries": [
-						"When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd. The creatures must be within 30 feet of each other when you target them."
-					]
-				}
-			],
-			"damageInflict": [
-				"psychic"
-			],
-			"areaTags": [
-				"ST",
-				"MT"
-			],
-			"savingThrow": [
-				"intelligence"
-			],
-			"miscTags": [
-				"SGT"
-			]
+			}
 		},
 		{
 			"name": "Psionic Blast",
+			"source": "UAFighterRogueWizard",
+			"page": 8,
 			"level": 3,
 			"school": "V",
 			"time": [
@@ -413,39 +424,17 @@
 					"amount": 30
 				}
 			},
+			"components": {
+				"v": true
+			},
 			"duration": [
 				{
 					"type": "instant"
 				}
 			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Wizard",
-						"source": "PHB"
-					},
-					{
-						"name": "Sorcerer",
-						"source": "PHB"
-					},
-					{
-						"name": "Warlock",
-						"source": "PHB"
-					},
-					{
-						"name": "Bard",
-						"source": "PHB"
-					}
-				]
-			},
 			"entries": [
 				"You unleash a destructive wave of mental power in a 30-foot cone. Each creature in the area must make a Dexterity saving throw. On a failed save, a target takes {@damage 5d8} force damage, is pushed 20 feet directly away from you, and is knocked {@condition prone}. On a successful save, a target takes half as much damage and isn't pushed or knocked prone."
 			],
-			"source": "UAFighterRogueWizard",
-			"page": 8,
-			"components": {
-				"v": true
-			},
 			"entriesHigherLevel": [
 				{
 					"name": "At Higher Levels",
@@ -466,10 +455,32 @@
 			],
 			"areaTags": [
 				"N"
-			]
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
 		},
 		{
 			"name": "Psychic Crush",
+			"source": "UAFighterRogueWizard",
+			"page": 8,
 			"level": 6,
 			"school": "E",
 			"time": [
@@ -485,6 +496,10 @@
 					"amount": 60
 				}
 			},
+			"components": {
+				"v": true,
+				"s": true
+			},
 			"duration": [
 				{
 					"type": "timed",
@@ -493,6 +508,25 @@
 						"amount": 1
 					}
 				}
+			],
+			"entries": [
+				"You overload the mind of one creature you can see within range, filling its psyche with discordant emotions. The target must make an Intelligence saving throw. On a failed save, the target takes {@damage 12d6} psychic damage and is {@condition stunned} for 1 minute. On a successful save, the target takes half as much damage and isn't stunned.",
+				"The stunned target can make an Intelligence saving throw at the end of each of its turns. On a successful save, the spell ends on the target."
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"conditionInflict": [
+				"stunned"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
 			],
 			"classes": {
 				"fromClassList": [
@@ -513,35 +547,12 @@
 						"source": "PHB"
 					}
 				]
-			},
-			"entries": [
-				"You overload the mind of one creature you can see within range, filling its psyche with discordant emotions. The target must make an Intelligence saving throw. On a failed save, the target takes {@damage 12d6} psychic damage and is {@condition stunned} for 1 minute. On a successful save, the target takes half as much damage and isn't stunned.",
-				"The stunned target can make an Intelligence saving throw at the end of each of its turns. On a successful save, the spell ends on the target."
-			],
-			"source": "UAFighterRogueWizard",
-			"page": 8,
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"damageInflict": [
-				"psychic"
-			],
-			"conditionInflict": [
-				"stunned"
-			],
-			"savingThrow": [
-				"intelligence"
-			],
-			"areaTags": [
-				"ST"
-			],
-			"miscTags": [
-				"SGT"
-			]
+			}
 		},
 		{
 			"name": "Thought Shield",
+			"source": "UAFighterRogueWizard",
+			"page": 8,
 			"level": 2,
 			"school": "A",
 			"time": [
@@ -556,6 +567,10 @@
 					"type": "touch"
 				}
 			},
+			"components": {
+				"v": true,
+				"s": true
+			},
 			"duration": [
 				{
 					"type": "timed",
@@ -564,6 +579,12 @@
 						"amount": 8
 					}
 				}
+			],
+			"entries": [
+				"You weave a clouding veil over the mind of one creature you touch. For the duration, the target's mind can't be read or detected, creatures can't telepathically communicate with the target unless the target allows it, and the target has advantage on saving throws against any effect that would determine whether it is telling the truth."
+			],
+			"areaTags": [
+				"ST"
 			],
 			"classes": {
 				"fromClassList": [
@@ -584,19 +605,7 @@
 						"source": "PHB"
 					}
 				]
-			},
-			"entries": [
-				"You weave a clouding veil over the mind of one creature you touch. For the duration, the target's mind can't be read or detected, creatures can't telepathically communicate with the target unless the target allows it, and the target has advantage on saving throws against any effect that would determine whether it is telling the truth."
-			],
-			"source": "UAFighterRogueWizard",
-			"page": 8,
-			"components": {
-				"v": true,
-				"s": true
-			},
-			"areaTags": [
-				"ST"
-			]
+			}
 		}
 	]
 }

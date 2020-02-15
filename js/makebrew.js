@@ -245,10 +245,12 @@ class PageUi {
 	}
 
 	_getJsonOutputTemplate () {
+		const timestamp = Math.round(Date.now() / 1000);
 		return {
 			_meta: {
 				sources: [MiscUtil.copy(BrewUtil.sourceJsonToSource(this._settings.activeSource))],
-				dateAdded: Math.round(Date.now() / 1000)
+				dateAdded: timestamp,
+				dateLastModified: timestamp
 			}
 		};
 	}
@@ -415,9 +417,9 @@ class Builder extends ProxyBase {
 
 			const contextId = ContextUtil.getNextGenericMenuId();
 			const _CONTEXT_OPTIONS = [
-				{
-					name: "Duplicate",
-					action: async () => {
+				new ContextUtil.Action(
+					"Duplicate",
+					async () => {
 						const copy = MiscUtil.copy(entry);
 
 						// Get the root name without trailing numbers, e.g. "Goblin (2)" -> "Goblin"
@@ -427,10 +429,10 @@ class Builder extends ProxyBase {
 						await BrewUtil.pAddEntry(this._prop, copy);
 						this.doUpdateSidemenu();
 					}
-				},
-				{
-					name: "View JSON",
-					action: (evt) => {
+				),
+				new ContextUtil.Action(
+					"View JSON",
+					(evt) => {
 						const out = this._ui._getJsonOutputTemplate();
 						out[this._prop] = [PropOrder.getOrdered(DataUtil.cleanJson(MiscUtil.copy(entry)), this._prop)];
 
@@ -446,20 +448,17 @@ class Builder extends ProxyBase {
 							}
 						);
 					}
-				},
-				{
-					name: "Download JSON",
-					action: () => {
+				),
+				new ContextUtil.Action(
+					"Download JSON",
+					() => {
 						const out = this._ui._getJsonOutputTemplate();
 						out[this._prop] = [DataUtil.cleanJson(MiscUtil.copy(entry))];
 						DataUtil.userDownload(DataUtil.getCleanFilename(entry.name), out);
 					}
-				}
+				)
 			];
-			ContextUtil.doInitContextMenu(contextId, (evt, ele, $invokedOn, $selectedMenu) => {
-				const val = Number($selectedMenu.data("ctx-id"));
-				_CONTEXT_OPTIONS[val].action(evt, $invokedOn);
-			}, _CONTEXT_OPTIONS.map(it => it.name));
+			ContextUtil.doInitActionContextMenu(contextId, _CONTEXT_OPTIONS);
 
 			const $btnBurger = $(`<button class="btn btn-xs btn-default mr-2" title="More Options"><span class="glyphicon glyphicon-option-vertical"/></button>`)
 				.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnBurger, contextId));

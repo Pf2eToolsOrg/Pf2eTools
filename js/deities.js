@@ -133,9 +133,11 @@ class DeitiesPage extends ListPage {
 				source,
 				pantheon: g.pantheon,
 				alignment,
-				domains,
-				isExcluded,
-				uniqueId: g.uniqueId ? g.uniqueId : dtI
+				domains
+			},
+			{
+				uniqueId: g.uniqueId ? g.uniqueId : dtI,
+				isExcluded
 			}
 		);
 
@@ -200,9 +202,9 @@ class DeitiesPage extends ListPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 	}
 }
 

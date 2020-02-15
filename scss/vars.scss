@@ -79,13 +79,17 @@ $rgb-stripe-grey--night: #aaa4;
 $rgb-font--night: #bbb;
 $rgb-bg--night: #222;
 
-//$rgb-form-control-bg--night: #252525;
 $rgb-form-control-bg--night: #222;
+
+$rgb-ctx-item-text-disabled: #777;
 
 $rgb-alert-text-success: #3c763d;
 $rgb-alert-text-info: #31708f;
 $rgb-alert-text-warning: #8a6d3b;
 $rgb-alert-text-danger: #a94442;
+
+$rgb-btn-danger-bg-red: #d9534f;
+$rgb-btn-danger-bg-red--night: #7e3a38;
 
 $rgb-btn-danger-border-red: #ac2925;
 
@@ -141,6 +145,14 @@ $z-temp-effect: 2000;
 
 /* *** */
 
+/* region Timing */
+$time-1-frame: 17ms;
+$time-2-frames: 34ms;
+$time-3-frames: 51ms;
+$time-4-frames: 67ms;
+$time-5-frames: 84ms;
+/* endregion */
+
 @mixin shadow-1 () {
 	box-shadow: 0 6px 12px $rgb-shadow-grey;
 }
@@ -151,6 +163,10 @@ $z-temp-effect: 2000;
 
 @mixin shadow-active--night {
 	box-shadow: 0 0 3px 0 #fffb;
+}
+
+@mixin row-glow-active {
+	box-shadow: inset 0 0 0 200px rgba(0, 107, 196, 0.3);
 }
 
 /* *** */
@@ -194,6 +210,49 @@ $width-screen-lg: 1200px;
 		right: 20px;
 		margin-right: -30px;
 		font-size: 85%;
+	}
+}
+// endregion
+
+// region filters
+$fltr-stripe: 11px;
+$fltr-2stripe: 22px;
+// endregion
+
+// region Shared UI
+@mixin cb-custom {
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	flex-shrink: 0;
+	flex-grow: 0;
+	display: inline-block;
+	cursor: pointer;
+	border: 1px solid $rgb-border-grey;
+	border-radius: 4px;
+	outline: none;
+	user-select: none;
+
+	&:active {
+		@include shadow-active();
+	}
+
+	&.active {
+		background: $rgb-off-black;
+		border-color: lighten($rgb-off-black, 30%);
+	}
+}
+
+@mixin cb-custom--night {
+	background: $rgb-bg--night;
+	border-color: $rgb-border-grey--night;
+
+	&:active {
+		@include shadow-active--night();
+	}
+
+	&.active {
+		background: $rgb-border-grey--night;
 	}
 }
 // endregion

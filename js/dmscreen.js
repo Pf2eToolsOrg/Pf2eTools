@@ -2305,10 +2305,12 @@ class AddMenu {
 	constructor () {
 		this.tabs = [];
 
-		this.$menu = null;
+		this._$menuInner = null;
 		this.$tabView = null;
 		this.activeTab = null;
 		this.pnl = null; // panel where an add button was last clicked
+
+		this._doClose = null;
 	}
 
 	addTab (tab) {
@@ -2317,12 +2319,10 @@ class AddMenu {
 		return this;
 	}
 
-	get$Menu () {
-		return this.$menu;
-	}
-
 	setActiveTab (tab) {
-		this.$menu.find(`.panel-addmenu-tab-head`).attr(`active`, false);
+		$(document.activeElement).blur();
+
+		this._$menuInner.find(`.panel-addmenu-tab-head`).attr(`active`, false);
 		if (this.activeTab) this.activeTab.get$Tab().detach();
 		this.activeTab = tab;
 		this.$tabView.append(tab.get$Tab());
@@ -2345,12 +2345,10 @@ class AddMenu {
 	}
 
 	render () {
-		if (!this.$menu) {
-			const $menu = $(`<div class="ui-modal__overlay">`);
-			this.$menu = $menu;
-			const $menuInner = $(`<div class="ui-modal__inner dropdown-menu">`).appendTo($menu);
-			const $tabBar = $(`<div class="panel-addmenu-bar"/>`).appendTo($menuInner);
-			this.$tabView = $(`<div class="panel-addmenu-view"/>`).appendTo($menuInner);
+		if (!this._$menuInner) {
+			this._$menuInner = $(`<div class="flex-col w-100 h-100">`);
+			const $tabBar = $(`<div class="panel-addmenu-bar"/>`).appendTo(this._$menuInner);
+			this.$tabView = $(`<div class="panel-addmenu-view"/>`).appendTo(this._$menuInner);
 
 			this.tabs.forEach(t => {
 				t.render();
@@ -2361,17 +2359,6 @@ class AddMenu {
 				t.$body = $body;
 				$head.on("click", () => this.setActiveTab(t));
 			});
-
-			$menu.on("click", () => {
-				this.doClose();
-
-				// undo entering "tabbed mode" if we close without adding a tab
-				if (this.pnl.isTabs && this.pnl.tabDatas.filter(it => !it.isDeleted).length === 1) {
-					this.pnl.isTabs = false;
-					this.pnl.doRenderTabs();
-				}
-			});
-			$menuInner.on("click", (e) => e.stopPropagation());
 		}
 	}
 
@@ -2380,11 +2367,23 @@ class AddMenu {
 	}
 
 	doClose () {
-		this.$menu.detach();
+		if (this._doClose) this._doClose();
 	}
 
 	doOpen () {
-		$(`body`).append(this.$menu);
+		const {$modalInner, doClose} = UiUtil.getShowModal({
+			cbClose: () => {
+				this._$menuInner.detach();
+
+				// undo entering "tabbed mode" if we close without adding a tab
+				if (this.pnl.isTabs && this.pnl.tabDatas.filter(it => !it.isDeleted).length === 1) {
+					this.pnl.isTabs = false;
+					this.pnl.doRenderTabs();
+				}
+			}
+		});
+		this._doClose = doClose;
+		$modalInner.append(this._$menuInner);
 	}
 }
 
@@ -2521,7 +2520,7 @@ class AddMenuImageTab extends AddMenuTab {
 			const $tab = $(`<div class="ui-search__wrp-output underline-tabs" id="${this.tabId}"/>`);
 
 			const $wrpImgur = $(`<div class="ui-modal__row"/>`).appendTo($tab);
-			$(`<span>Imgur (Anonymous Upload) <i class="text-muted">(accepts <a href="https://help.imgur.com/hc/articles/115000083326" target="_blank" rel="noopener">imgur-friendly formats</a>)</i></span>`).appendTo($wrpImgur);
+			$(`<span>Imgur (Anonymous Upload) <i class="text-muted">(accepts <a href="https://help.imgur.com/hc/articles/115000083326" target="_blank" rel="noopener noreferrer">imgur-friendly formats</a>)</i></span>`).appendTo($wrpImgur);
 			const $iptFile = $(`<input type="file" class="hidden">`).on("change", (evt) => {
 				const input = evt.target;
 				const reader = new FileReader();
@@ -2712,6 +2711,7 @@ class AddMenuSearchTab extends AddMenuTab {
 		this.$results = null;
 		this.showMsgIpt = null;
 		this.doSearch = null;
+		this._$ptrRows = null;
 	}
 
 	_getSearchOptions () {
@@ -2745,23 +2745,23 @@ class AddMenuSearchTab extends AddMenuTab {
 		}
 	}
 
-	_get$Row (r) {
+	_$getRow (r) {
 		switch (this.subType) {
 			case "content": return $(`
-				<div class="ui-search__row">
+				<div class="ui-search__row" tabindex="0">
 					<span>${r.doc.n}</span>
 					<span>${r.doc.s ? `<i title="${Parser.sourceJsonToFull(r.doc.s)}">${Parser.sourceJsonToAbv(r.doc.s)}${r.doc.p ? ` p${r.doc.p}` : ""}</i>` : ""}</span>
 				</div>
 			`);
 			case "rule": return $(`
-				<div class="ui-search__row">
+				<div class="ui-search__row" tabindex="0">
 					<span>${r.doc.h}</span>
 					<span><i>${r.doc.n}, ${r.doc.s}</i></span>
 				</div>
 			`);
 			case "adventure":
 			case "book": return $(`
-				<div class="ui-search__row">
+				<div class="ui-search__row" tabindex="0">
 					<span>${r.doc.c}</span>
 					<span><i>${r.doc.n}${r.doc.o ? `, ${r.doc.o}` : ""}</i></span>
 				</div>
@@ -2801,17 +2801,19 @@ class AddMenuSearchTab extends AddMenuTab {
 
 		this.showMsgIpt = () => {
 			flags.isWait = true;
-			this.$results.empty().append(UiUtil.getSearchEnter());
+			this.$results.empty().append(SearchWidget.getSearchEnter());
 		};
 
 		const showMsgDots = () => {
-			this.$results.empty().append(UiUtil.getSearchLoading());
+			this.$results.empty().append(SearchWidget.getSearchLoading());
 		};
 
 		const showNoResults = () => {
 			flags.isWait = true;
-			this.$results.empty().append(UiUtil.getSearchEnter());
+			this.$results.empty().append(SearchWidget.getSearchEnter());
 		};
+
+		this._$ptrRows = {_: []};
 
 		this.doSearch = () => {
 			const srch = this.$srch.val().trim();
@@ -2823,6 +2825,8 @@ class AddMenuSearchTab extends AddMenuTab {
 			const toProcess = results.length ? results : Object.values(index.documentStore.docs).slice(0, UiUtil.SEARCH_RESULTS_CAP).map(it => ({doc: it}));
 
 			this.$results.empty();
+			this._$ptrRows._ = [];
+
 			if (toProcess.length) {
 				const handleClick = (r) => {
 					switch (this.subType) {
@@ -2860,7 +2864,9 @@ class AddMenuSearchTab extends AddMenuTab {
 				const res = toProcess.slice(0, UiUtil.SEARCH_RESULTS_CAP);
 
 				res.forEach(r => {
-					this._get$Row(r).on("click", () => handleClick(r)).appendTo(this.$results);
+					const $row = this._$getRow(r).appendTo(this.$results);
+					SearchWidget.bindRowHandlers({result: r, $row, $ptrRows: this._$ptrRows, fnHandleClick: handleClick});
+					this._$ptrRows._.push($row);
 				});
 
 				if (resultCount > UiUtil.SEARCH_RESULTS_CAP) {
@@ -2890,13 +2896,14 @@ class AddMenuSearchTab extends AddMenuTab {
 				this.doSearch();
 			});
 
-			const $srch = $(`<input class="ui-search__ipt-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($wrpCtrls);
+			const $srch = $(`<input class="ui-search__ipt-search search form-control" autocomplete="off" placeholder="Search...">`).blurOnEsc().appendTo($wrpCtrls);
 			const $results = $(`<div class="ui-search__wrp-results"/>`).appendTo($tab);
 
-			UiUtil.bindAutoSearch($srch, {
-				flags: flags,
-				search: this.doSearch,
-				showWait: showMsgDots
+			SearchWidget.bindAutoSearch($srch, {
+				flags,
+				fnSearch: this.doSearch,
+				fnShowWait: showMsgDots,
+				$ptrRows: this._$ptrRows
 			});
 
 			this.$tab = $tab;
@@ -3155,7 +3162,7 @@ class UnitConverter {
 			board.doSaveStateDebounced();
 		};
 
-		UiUtil.bindTypingEnd($iptLeft, handleInput);
+		SearchWidget.bindTypingEnd({$iptSearch: $iptLeft, fnKeyup: handleInput});
 
 		updateDisplay();
 

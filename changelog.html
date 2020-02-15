@@ -1011,7 +1011,7 @@ Homebrew support:
 - "Checkbox" columns can now be added to DM Screen Initiative Tracker, with options to have them set/reset at start of turn
 - DM Screen embedded adventures/books now have "next/previous chapter" navigation controls
 - Adventure/book images now "lazy load" as you scroll, rather than all at once at the start (should make giant chapters/entire books smoother)
-- Artisan tools now have additional XGE info when shown in hover windows, etc
+- Artisan's toolss now have additional XGE info when shown in hover windows, etc
 - (Fixed typos/added tags)`
 		},
 		{
@@ -2167,6 +2167,114 @@ Filters -- completely overhauled internally:
 - (Homebrew) Added "_copy" support for spells
 - (Homebrew) Fixed Bestiary creature footers never being rendered
 - (Homebrew) Improved rendering of complex creature armor text
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.95.2",
+			date: "2020-02-02",
+			txt: `
+- Added "code wrap" toggle button to code popout windows
+- Added support for dice expressions in some input fields
+- Added support for "avg" function in dice roller (note that this does not yet average rolls affected by modifiers correctly)
+- Restored missing Text Converter "Save to Homebrew" button
+- Added class generation for every adventurer in This Is Your Life generator
+- Fixed This Is Your Life generator failing to generate details for adventurers in some cases
+- Some input fields now accept unary offsets (e.g. "-1"); to set an absolute value of -1, use "=-1"
+- Improved filter layout on mobile
+- Get Homebrew listing now shows Date Last Modified per homebrew file
+- (Homebrew) Item names within creature statblocks within items are no longer italicised
+- (Homebrew) Added support for prerequisite ability scores not equal to 13
+- (Homebrew) Added support for "copy of class X" class/subclass spell lists, similar to e.g. Arcane Trickster rogue gaining all Wizard spells
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.95.3",
+			date: "2020-02-03",
+			txt: `
+- Fixed Bestiary failing to load if TftYP was included in filters`
+		},
+		{
+			ver: "1.95.4",
+			date: "2020-02-03",
+			txt: `
+- DM Screen search lists may now be navigated with arrow keys
+- Fixed various bugs around incomplete Races page "base race" feature
+- (Homebrew) Added "hash" field to @filter tag (example usage in the demo page)
+- (Homebrew) Fixed @class links with subclass features failing to load
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.95.5",
+			date: "2020-02-04",
+			txt: `
+- Fixed DM Screen search lists only being navigable with arrow keys
+- Fixed homebrew subclass spell lists breaking Spells page filters`
+		},
+		{
+			ver: "1.96.0",
+			date: "2020-02-04",
+			txt: `
+- Added UA: 2020 Subclasses, Part 2
+- Fixed Fighting Styles failing to display on Classes page if UA was filtered out
+- Added swarm handling to Creature Text Converter
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.96.1",
+			date: "2020-02-04",
+			txt: `
+- (Homebrew) Fixed @filter tag meta options
+- (Homebrew) Fixed @adventure/@book tags failing to re-scroll current adventure/book
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.96.2",
+			date: "2020-02-05",
+			txt: `
+- Improved tooltips for dice rollers
+- Fixed dice rollers failing to find labels in many cases (e.g. clicking a "Scimitar" attack roll on a Goblin statblock would not name the roll "Scimitar")
+- Fixed searching for existing entities in Homebrew Builder failing
+- (Homebrew) Fixed feature requirements containing non-PHB spells displaying junk text in the filter
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.96.3",
+			date: "2020-02-06",
+			txt: `
+- Updated UA 2020 Subclasses, Part 2
+- Fixed OR-ing together nested filter behaving strangely
+- Filters now correctly serialize hidden states/custom combining states to URL
+- Get Homebrew list may now be navigated with arrow keys
+- ESC now closes open modal windows
+- (Homebrew) Improved formatting of spell sub-heading when subschools and meta tags are present
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.97.0",
+			date: "2020-02-15",
+			title: "Controversial Language",
+			txt: `
+- Added Languages page <a href="https://noads.5e.tools/languages.html">https://noads.5e.tools/languages.html</a>
+- Added page numbers to ERLW and Acq. Inc. books
+- Added page numbers to various other entities that were lacking them
+
+- Filters:
+  - Added "Homebrew" quick-select button to Source filter (if some homebrew is loaded)
+  - Now require you to click "Save" for your changes to take effect
+  - Fixed filter links failing to update Source filter correctly in some cases
+
+- BestiaryEncounter Builder group information now only resets on SHIFT-clicking the "Reset" button
+- Fixed Bestiary Encounter Builder XP calculations for CR-scaled creatures
+- Restored Love domain :see_no_evil:
+- Fixed Classes page Book View displaying filtered-out features (e.g. UA Class Feature Variants content)
+- Fixed various pieces of internal data being indexed by the search on list pages
+- Fixed Homebrew Spell Builder crashing when adding subclass sources
+- (Homebrew) Fixed DM Screen failing to load in the presence of some homebrew types
+- (Homebrew) Fixed rare case where spell homebrews were un-saveable
+- (Homebrew) Migrated spell "cost" field from gold value to copper value to match items. Renamed the item properties to match; breaking changes are:
+  - itemValueConversions -> currencyConversions
+  - valueConversion -> currencyConversion
+- (Homebrew) Creatures with string speeds are no longer always filtered out in the Bestiary
 - (Fixed typos/added tags)`
 		},
 	];

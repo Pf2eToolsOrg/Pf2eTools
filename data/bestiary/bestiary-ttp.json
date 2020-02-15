@@ -8,8 +8,9 @@
 	},
 	"monster": [
 		{
-			"source": "TTP",
 			"name": "Decapus",
+			"source": "TTP",
+			"page": 21,
 			"size": "L",
 			"type": "monstrosity",
 			"alignment": [
@@ -67,17 +68,16 @@
 					]
 				}
 			],
-			"page": 21,
+			"senseTags": [
+				"D"
+			],
 			"actionTags": [
 				"Multiattack",
 				"Tentacles"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
-				"P",
-				"B"
+				"B",
+				"P"
 			],
 			"miscTags": [
 				"MW",
@@ -85,8 +85,9 @@
 			]
 		},
 		{
-			"source": "TTP",
 			"name": "Geonid",
+			"source": "TTP",
+			"page": 22,
 			"size": "S",
 			"type": "elemental",
 			"alignment": [
@@ -145,7 +146,6 @@
 					]
 				}
 			],
-			"page": 22,
 			"senseTags": [
 				"D",
 				"T"
@@ -160,9 +160,10 @@
 		{
 			"name": "Giant Slug",
 			"isNpc": true,
+			"source": "TTP",
+			"page": 18,
 			"size": "L",
 			"type": "monstrosity",
-			"source": "TTP",
 			"alignment": [
 				"U"
 			],
@@ -194,13 +195,29 @@
 			"senses": [
 				"darkvision 60 ft."
 			],
+			"passive": 13,
 			"languages": [
 				"Abyssal",
 				"Aquan",
 				"Common"
 			],
-			"passive": 13,
 			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The slug's innate spellcasting ability is Wisdom (spell save {@dc 11}, {@hit 3} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell guiding bolt}",
+							"{@spell sanctuary}",
+							"{@spell spiritual weapon}"
+						]
+					},
+					"ability": "wis"
+				}
+			],
 			"trait": [
 				{
 					"name": "Keen Smell",
@@ -243,26 +260,12 @@
 					]
 				}
 			],
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The slug's innate spellcasting ability is Wisdom (spell save {@dc 11}, {@hit 3} to hit with spell attacks). It can innately cast the following spells, requiring no material components:"
-					],
-					"daily": {
-						"1e": [
-							"{@spell guiding bolt}",
-							"{@spell sanctuary}",
-							"{@spell spiritual weapon}"
-						]
-					},
-					"ability": "wis"
-				}
-			],
-			"page": 18,
 			"traitTags": [
 				"Keen Senses",
 				"Spider Climb"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack",
@@ -273,16 +276,13 @@
 				"AQ",
 				"C"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"B",
+				"I",
+				"P"
 			],
 			"spellcastingTags": [
 				"I"
-			],
-			"damageTags": [
-				"I",
-				"P",
-				"B"
 			],
 			"miscTags": [
 				"MW",
@@ -290,8 +290,9 @@
 			]
 		},
 		{
-			"source": "TTP",
 			"name": "Topi",
+			"source": "TTP",
+			"page": 22,
 			"size": "S",
 			"type": "undead",
 			"alignment": [
@@ -319,6 +320,10 @@
 			"int": 6,
 			"wis": 10,
 			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
 			"resist": [
 				"bludgeoning"
 			],
@@ -328,13 +333,9 @@
 			"conditionImmune": [
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
 			"languages": [
 				"understands the languages it knew in life but can't speak"
 			],
-			"passive": 10,
 			"cr": "1/2",
 			"trait": [
 				{
@@ -358,7 +359,6 @@
 					]
 				}
 			],
-			"page": 22,
 			"traitTags": [
 				"Turn Resistance",
 				"Undead Fortitude"
@@ -371,8 +371,8 @@
 				"LF"
 			],
 			"damageTags": [
-				"S",
-				"I"
+				"I",
+				"S"
 			],
 			"miscTags": [
 				"MW"

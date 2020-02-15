@@ -2,6 +2,7 @@
 	"legendaryGroup": [
 		{
 			"name": "Aboleth",
+			"source": "MM",
 			"lairActions": [
 				"When fighting inside its lair, an aboleth can invoke the ambient magic to take lair actions. On initiative count 20 (losing initiative ties), the aboleth takes a lair action to cause one of the following effects:",
 				{
@@ -24,19 +25,60 @@
 					]
 				},
 				"If the aboleth dies, the first two effects fade over the course of {@dice 3d10} days."
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Aerisi Kalinoth",
+			"source": "PotA",
 			"lairActions": [
 				"If Aerisi is in the air node while {@creature Yan-C-Bin|PotA} isn't, Aerisi can take lair actions. On initiative count 20 (losing initiative ties), Aerisi uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Aerisi can take no other lair actions while concentrating on a spell cast as a lair action.",
 				"If Aerisi casts {@spell invisibility} using this lair action, she also draws the power of the air node into herself. By doing so, she regains 15 ({@dice 3d8+2}) hit points."
+			]
+		},
+		{
+			"name": "Ancient Deep Crow",
+			"source": "AI",
+			"regionalEffects": [
+				"The region containing an ancient deep crow's lair is transformed by the creature's presence, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Supernatural shadow turns all bright light to dim light in underground regions within 6 miles of the lair.",
+						"Intermittent, echoing caws can be heard coming from all directions within 6 miles of the lair.",
+						"Subterranean beasts within 1 mile of the ancient deep crow's lair serve as the creature's eyes and ears, alerting it to the presence of intruders and making it all but impossible to surprise the ancient deep crow. If the ancient deep crow dies, these effects fade immediately."
+					]
+				}
+			]
+		},
+		{
+			"name": "Balhannoth",
+			"source": "MTF",
+			"lairActions": [
+				"When fighting inside its lair, a balhannoth can use lair actions. On initiative count 20 (losing initiative ties), a balhannoth can take one lair action to cause one of the following effects; the balhannoth can't use the same lair action two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"The balhannoth warps reality around it in an area up to 500 feet square. After 10 minutes, the terrain in the area reshapes to assume the appearance of a location sought by one intelligent creature whose mind the balhannoth has read (see Regional Effects below). The transformation affects nonliving material only and can't create anything with moving parts or magical properties. Any object created in this area is, upon close inspection, revealed as a fake. Books are filled with empty pages, golden items are obvious counterfeits, and so on. The transformation lasts until the balhannoth dies or uses this lair action again.",
+						"The balhannoth targets one creature within 500 feet of it. The target must succeed on a DC 16 Wisdom saving throw or the target, along with whatever it is wearing and carrying, teleports to an unoccupied space of the balhannoth's choice within 60 feet of it.",
+						"The balhannoth targets one creature within 500 feet of it. The target must succeed on a DC 16 Wisdom saving throw or the balhannoth becomes invisible to that creature for 1 minute. This effect ends if the balhannoth attacks the target."
+					]
+				}
 			],
-			"source": "PotA"
+			"regionalEffects": [
+				"A region containing a balhannoth's lair becomes warped by the creature's unnatural presence, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Creatures within 1 mile of the balhannoth's lair experience a sensation of being close to whatever they desire most. The sensation grows stronger the closer the creatures come to the balhannoth's lair.",
+						"The balhannoth can sense the strongest desires of any humanoid within 1 mile of it and learns whether those desires involve a place: a safe location to rest, a temple, home, or somewhere else."
+					]
+				},
+				"If the balhannoth dies, these effects end immediately."
+			]
 		},
 		{
 			"name": "Baphomet",
+			"source": "MTF",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), Baphomet can take a lair action to cause one of the following magical effects; he can't use the same effect two rounds in a row:",
 				{
@@ -100,11 +142,11 @@
 						}
 					]
 				}
-			],
-			"source": "MTF"
+			]
 		},
 		{
 			"name": "Beholder",
+			"source": "MM",
 			"lairActions": [
 				"When fighting inside its lair, a beholder can invoke the ambient magic to take lair actions. On initiative count 20 (losing initiative ties), the beholder can take one lair action to cause one of the following effects:",
 				{
@@ -127,11 +169,38 @@
 					]
 				},
 				"If the beholder dies, these effects fade over the course of {@dice 1d10} days."
+			]
+		},
+		{
+			"name": "Belashyrra",
+			"source": "ERLW",
+			"lairActions": [
+				"While within the Citadel of Lidless Eyes, Belashyrra can invoke the ambient magic to take lair actions. On initiative count 20 (losing initiative ties), Belashyrra can take a lair action to cause one of the following effects; it can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"An eye opens on a solid surface within 60 feet of Belashyrra. One random eye ray of Belashyrra's shoots from that eye at a target of Belashyrra's choice that it can see. The eye then closes and disappears.",
+						"Belashyrra creates a wave of madness. Each creature it can see within its lair must succeed on a DC 22 Wisdom saving throw or be {@condition charmed} for 1 minute. While {@condition charmed} in this way, a creature must use its action at the start of its turn before moving to make a melee attack against another creature of Belashyrra's choice within reach. If there are no creatures within reach, the {@condition charmed} creature can act normally for that turn. A {@condition charmed} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+						"Belashyrra taps into the eyesight of creatures in its lair and alters their perception. Each creature of Belashyrra's choice in the lair must make a DC 22 Wisdom saving throw. On a failure, the affected creature perceives objects and creatures a short distance from their actual locations, imposing disadvantage on the creature's attack rolls against those targets. An affected creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to this lair action for the next 24 hours."
+					]
+				}
 			],
-			"source": "MM"
+			"regionalEffects": [
+				"Belashyrra's lair is known to touch remote areas of the Shadow Marches and caverns below Xen'drik. A region containing a passage to Belashyrra's lair is warped by its magic, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Creatures within 1 mile of the passage sometimes feel as if they're being watched.",
+						"Beasts that live within 5 miles of the passage undergo magical transmutation, growing eyes or eyestalks that Belashyrra can see through.",
+						"A humanoid who spends at least 1 hour within 1 mile of the passage must succeed on a DC 21 Wisdom saving throw or descend into a type of madness (see \"Madness of Belashyrra\" below). A creature that succeeds on this saving throw can't be affected by this regional effect again for 24 hours."
+					]
+				},
+				"If Belashyrra dies, these effects fade over the course of {@dice 1d10} days."
+			]
 		},
 		{
 			"name": "Black Dragon",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
 				{
@@ -154,11 +223,11 @@
 					]
 				},
 				"If the dragon dies, vegetation remains as it has grown, but other effects fade over {@dice 1d10} days."
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Blue Dragon",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
 				{
@@ -181,11 +250,11 @@
 					]
 				},
 				"If the dragon dies, the dust devils disappear immediately, and the thunderstorms abate within {@dice 1d10} days. Any sinkholes remain where they are."
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Brass Dragon",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects:",
 				{
@@ -207,11 +276,11 @@
 					]
 				},
 				"If the dragon dies, the tracks fade in {@dice 1d10} days, but the other effects fade immediately."
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Bronze Dragon",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects:",
 				{
@@ -233,11 +302,11 @@
 					]
 				},
 				"If the dragon dies, changed weather reverts to normal, as described in the spell, and the other effects fade in {@dice 1d10} days."
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Copper Dragon",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects:",
 				{
@@ -259,11 +328,11 @@
 					]
 				},
 				"If the dragon dies, the magic carvings fade over the course of {@dice 1d10} days. The other effects end immediately."
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Death Tyrant",
+			"source": "MM",
 			"lairActions": [
 				"When fighting inside its lair, a death tyrant can invoke the ambient magic to take lair actions. On initiative count 20 (losing initiative ties), the death tyrant can take one lair action to cause one of the following effects:",
 				{
@@ -286,11 +355,11 @@
 					]
 				},
 				"If the death tyrant dies, these effects fade over the course of {@dice 1d10} days."
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Demilich",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the demilich rolls a {@dice d20}. On a result of 11 or higher, the demilich takes a lair action to cause one of the following effects. It can't use the same effect two rounds in a row.",
 				{
@@ -313,11 +382,11 @@
 					]
 				},
 				"If the demilich is destroyed, these effects fade over the course of 10 days."
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Demogorgon",
+			"source": "MTF",
 			"lairActions": [
 				"On Initiative count 20 (losing initiative ties), Demogorgon can take a lair action to cause one of the following effects: Demogorgon can't use the same effect two rounds in a row:",
 				{
@@ -380,11 +449,38 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"name": "Dyrrn",
+			"source": "ERLW",
+			"lairActions": [
+				"While within the Palace of Sinew, Dyrrn can invoke the ambient magic to take lair actions. On initiative count 20 (losing initiative ties), Dyrrn can take a lair action to cause one of the following effects; it can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"Dyrrn uses its Corruption action.",
+						"A 30-foot-square area of ground within 120 feet of Dyrrn sprouts tentacles until initiative count 20 on the next round. Any creature that starts or ends its turn in the area must succeed on a DC 23 Strength saving throw or be {@condition restrained}. A creature can escape the tentacles with a successful DC 23 Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check as an action.",
+						"Each creature of Dyrrn's choice that it can see within 120 feet of it must succeed on a DC 23 Wisdom saving throw or take 26 ({@dice 4d12}) psychic damage. Unless the target has immunity to psychic damage, its Intelligence score is reduced by {@dice 1d4} each time it fails the saving throw for this lair action. The target dies if its Intelligence score is reduced to 0. The reduction lasts until the target finishes a short or long rest."
+					]
+				}
 			],
-			"source": "MTF"
+			"regionalEffects": [
+				"A region containing a passage to Dyrrn's lair is warped in one or more of these ways:",
+				{
+					"type": "list",
+					"items": [
+						"Plants and animals raised within 2 mile of the passage have twisted, aberrant forms. Use the Daelkyr Modifications table for inspiration.",
+						"Creatures within 1 mile of the passage frequently feel as if something is crawling under their skin.",
+						"If a humanoid spends at least 1 hour within 1 mile of the passage, that creature must succeed on a DC 22 Wisdom saving throw or descend into a type of madness (see \"Madness of Dyrrn\" below). A creature that succeeds on this saving throw can't be affected by this regional effect again for 24 hours."
+					]
+				},
+				"If Dyrrn dies, these effects fade away after {@dice 1d10} days."
+			]
 		},
 		{
 			"name": "Elder Brain",
+			"source": "VGM",
 			"lairActions": [
 				"When fighting inside its lair, an elder brain can use lair actions. On initiative count 20 (losing initiative ties), an elder brain can take one lair action to cause one of the following effects; the elder brain can't use the same lair action two rounds in a row:",
 				{
@@ -407,11 +503,26 @@
 					]
 				},
 				"If the elder brain dies, these effects immediately end."
-			],
-			"source": "VGM"
+			]
+		},
+		{
+			"name": "Fazrian",
+			"source": "WDMM",
+			"lairActions": [
+				"Unless he is {@condition incapacitated}, Fazrian can take one of the following lair actions on initiative count 20 (losing initiative ties) while on the Terminus Level:",
+				{
+					"type": "list",
+					"items": [
+						"Blood flows from Fazrian's eyes until initiative count 20 on the next round. No creature within 120 feet of the planetar can regain hit points until the effect ends.",
+						"Fazrian's eyes become smoldering black voids until initiative count 20 on the next round. All other creatures within 120 feet of the planetar have disadvantage on saving throws until the effect ends.",
+						"Blinding magical light springs from Fazrian's eyes until initiative count 20 on the next round. If a creature starts its turn within 120 feet of the planetar and the two of them can see each other, Fazrian can force the creature to make a DC 20 Constitution saving throw. On a failed save, the creature is {@condition blinded}. The blindness lasts until the creature receives a {@spell lesser restoration} spell or similar magic."
+					]
+				}
+			]
 		},
 		{
 			"name": "Fraz-Urb'luu",
+			"source": "MTF",
 			"lairActions": [
 				"On Initiative count 20 (losing initiative ties), Fraz-Urb'luu can take a lair action to cause one of the following effects: he can't use the same effect two rounds in a row:",
 				{
@@ -475,19 +586,88 @@
 						}
 					]
 				}
-			],
-			"source": "MTF"
+			]
 		},
 		{
 			"name": "Gar Shatterkeel",
+			"source": "LR",
+			"lairActions": [
+				"Gar can employ lair actions while he's within the coral mountain.",
+				"On initiative count 20 (losing initiative ties), Gar Shatterkeel takes a lair action to cause one of the following effects; Gar can't use the same effect two rounds in a row.",
+				{
+					"type": "list",
+					"items": [
+						"Gar may teleport anywhere within the coral mountain, bringing up to five willing creatures with him.",
+						"The coral in a 60-foot radius grows rapidly around creatures inside the coral mountain. Each creature must succeed on a DC 18 Strength saving throw or become {@condition restrained}. Restrained creatures can take an action on their turn to make a DC 18 Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check to free themselves. This effect lasts for 1 minute unless dispelled (it counts as a 6th level spell), and doesn't require Gar to maintain concentration. Gar Shatterkeel and any creatures he designates are immune to this effect.",
+						"Up to five corpses that Gar can see within 60 feet rise up as {@creature drowned blade|GoS|drowned blades} and attack anyone Gar directs them to on his turn."
+					]
+				}
+			]
+		},
+		{
+			"name": "Gar Shatterkeel",
+			"source": "PotA",
 			"lairActions": [
 				"If Gar is in the water node while {@creature Olhydra|PotA} isn't, he can take lair actions. On initiative count 20 (losing initiative ties), Gar uses a lair action to use his Multiattack or cast one of his spells, up to 3rd level, without using components or a spell slot. He can't cast the same spell two rounds in a row, but he can continue to concentrate on a spell he previously cast using a lair action. He can take no other lair actions while concentrating on a spell cast as a lair action. His favorite use of this capability is casting {@spell inflict wounds} or {@spell call lightning}.",
 				"If Gar casts {@spell cure wounds} using this lair action, he regains the maximum number of hit points from the spell (28)."
+			]
+		},
+		{
+			"name": "Geryon",
+			"source": "MTF",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), Geryon can take a lair action to cause one of the following effects; he can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"Geryon causes a blast of cold to burst from the ground at a point he can see within 120 feet of him. The cold fills a cube, 10 feet on each side, centered on that point. Each creature in that area must succeed on a DC 21 Constitution saving throw or take 28 ({@dice 8d6}) cold damage.",
+						"Geryon targets one creature he can see within 60 feet of him. The target must succeed on a DC 21 Wisdom saving throw or become restrained for 1 minute. The target can end the effect on itself if it deals any damage to one or more of its allies.",
+						"Geryon casts the {@spell banishment} spell."
+					]
+				}
 			],
-			"source": "PotA"
+			"regionalEffects": [
+				"The region containing Geryon's lair is warped by his magic, creating one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Intelligent creatures within 1 mile of the lair frequently see shimmering portals leading to places they consider safe. Passing through a portal always deposits a traveler somewhere in Stygia.",
+						"Freezing strong winds howl around the area within 1 mile of the lair.",
+						"Howls and screams fill the air within 1 mile of the lair. Any creature that finishes a short or long rest in this area must succeed on a DC 21 Wisdom saving throw or derive no benefit from the rest."
+					]
+				},
+				"If Geryon dies, these effects fade over the course of {@dice 1d10} days."
+			]
+		},
+		{
+			"name": "Githzerai Anarch",
+			"source": "MTF",
+			"lairActions": [
+				"An anarch can use lair actions. On initiative count 20 (losing initiative ties), the anarch can take a lair action to cause one of the following effects; the anarch can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"The anarch casts the {@spell lightning bolt} spell (at 5th level), but the anarch can change the damage type from lightning to cold, fire, psychic, radiant, or thunder. If the spell deals damage other than fire or lightning, it doesn't ignite flammable objects.",
+						"The anarch casts the {@spell creation} spell (as a 9th-level spell) using the unformed substance of Limbo instead of shadow material. If used in Limbo, the object remains until the anarch's concentration is broken, regardless of its composition. If the anarch moves more than 120 feet from the object, its concentration breaks.",
+						"The anarch can magically move an object it can see within 150 feet of it by making a Wisdom check with advantage. The DC depends on the object's size: DC 5 for Tiny, DC 10 for Small, DC 15 for Medium, DC 20 for Large, and DC 25 for Huge or larger."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The region containing an anarch's lair is warped by its presence, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"In Limbo, the anarch can spend 10 minutes stabilizing a 5-mile area centered on it, causing the unformed substance to take whatever inanimate form the anarch chooses. During that process, the anarch determines the shape and composition of the forms created.",
+						"The anarch stabilizes any object created in Limbo and brought to the Material Plane for as long as the anarch remains within 1 mile of it (no action required)."
+					]
+				},
+				"If the anarch dies, these effects end after {@dice 1d6} rounds. All formed substance becomes a chaotic churn of energy and matter, unraveling into unformed substance that dissipates {@dice 1d6} rounds later."
+			]
 		},
 		{
 			"name": "Gold Dragon",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
 				{
@@ -509,11 +689,11 @@
 					]
 				},
 				"If the dragon dies, these effects end immediately."
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Graz'zt",
+			"source": "MTF",
 			"lairActions": [
 				"On Initiative count 20 (losing initiative ties), Graz'zt can take a lair action to cause one of the following effects: he can't use the same effect two rounds in a row:",
 				{
@@ -580,11 +760,11 @@
 						}
 					]
 				}
-			],
-			"source": "MTF"
+			]
 		},
 		{
 			"name": "Green Dragon",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
 				{
@@ -608,11 +788,52 @@
 					]
 				},
 				"If the dragon dies, the rodents and birds lose their supernatural link to it. The thickets remain, but within {@dice 1d10} days, they become mundane plants and normal difficult terrain, losing their thorns."
+			]
+		},
+		{
+			"name": "Halaster Blackcloak",
+			"source": "WDMM",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), Halaster takes a lair action to cause one of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Halaster targets a volume of unoccupied space or solid stone no larger than four 10-foot cubes within 30 feet of him, turning the open space to solid, worked stone or vice versa.",
+						"Halaster causes one door or archway within 30 feet of him to disappear and be replaced by a blank wall, or he restores a door or an archway previously removed in this way.",
+						"Halaster deactivates or reactivates one of Undermountain's magic gates. The gate must be within 120 feet of him."
+					]
+				}
 			],
-			"source": "MM"
+			"regionalEffects": [
+				"When Halaster is in Undermountain, the following effects can occur in any location within the dungeon or in any extraplanar extension of the dungeon:",
+				{
+					"type": "list",
+					"items": [
+						"A magical scrying sensor appears, taking the form of a ghostly, 1-foot-diameter humanoid eye surrounded by motes of light. The sensor is stationary, though Halaster can reorient the eye to face in any direction. Halaster can see through the eye as though he was in its space. The eye can't be harmed or dispelled, but it winks out within an antimagic field. A scrying eye lasts until Halaster ends the effect (no action required).",
+						"A minor illusory effect is triggered, as though Halaster had cast {@spell minor illusion} in an area. Common illusions include the echo of rattling chains, the distant sound of explosive spells being cast, a dusty cloak or a rusty helm floating as though worn by an invisible figure, and illusory footprints appearing on a dusty floor.",
+						"Silent apparitions of dead adventurers drift through halls and rooms as though they are lost. An apparition can't be harmed, and it doesn't acknowledge creatures or objects in any way. It can't be dispelled but is suppressed within an antimagic field."
+					]
+				}
+			]
+		},
+		{
+			"name": "Illithilich",
+			"source": "VGM",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), the illithilich can take a lair action to cause one of the following magical effects; the illithilich can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"The illithilich rolls a {@dice d8} and regains a spell slot of that level or lower. If it has no spent spell slots of that level or lower, nothing happens.",
+						"The illithilich targets one creature it can see within 30 feet of it. A crackling cord of negative energy tethers the illithilich to the target. Whenever the illithilich takes damage, the target must make a DC 18 Constitution saving throw. On a failed save, the illithilich takes half the damage (rounded down), and the target takes the remaining damage. This tether lasts until initiative count 20 on the next round or until the illithilich or the target is no longer in the illithilich's lair.",
+						"The illithilich calls forth the spirits of creatures that died in its lair. These apparitions materialize and attack one creature that the illithilich can see within 60 feet of it. The target must succeed on a DC 18 Constitution saving throw, taking 52 ({@dice 15d6}) necrotic damage on a failed save, or half as much damage on a success. The apparitions then disappear."
+					]
+				}
+			]
 		},
 		{
 			"name": "Imix",
+			"source": "PotA",
 			"lairActions": [
 				"Imix is master of heat and flames in his vicinity. He can take lair actions on the Elemental Plane of Fire, or in any elemental fire node (such as the Weeping Colossus in chapter 5). On initiative count 20 (losing initiative ties), Imix uses his lair action to cause one of the following effects:",
 				{
@@ -636,11 +857,11 @@
 					]
 				},
 				"If Imix is destroyed or banished back to his home plane, the regional effects fade over the next {@dice 1d10} days."
-			],
-			"source": "PotA"
+			]
 		},
 		{
 			"name": "Juiblex",
+			"source": "MTF",
 			"lairActions": [
 				"On Initiative count 20 (losing initiative ties), Juiblex can take a lair action to cause one of the following effects: he can't use the same effect two rounds in a row:",
 				{
@@ -703,11 +924,26 @@
 						}
 					]
 				}
-			],
-			"source": "MTF"
+			]
+		},
+		{
+			"name": "Keresta Delvingstone",
+			"source": "WDMM",
+			"regionalEffects": [
+				"Vanrakdoom is Keresta's lair, and the following regional effects are noticeable throughout it:",
+				{
+					"type": "list",
+					"items": [
+						"Fog creeps into areas of dim light or darkness. It vanishes when light is brought to bear on it but reappears when the light passes. A permanent fog hangs in some areas regardless of light, as noted in the descriptions of those areas.",
+						"Rats and bats are plentiful. In areas where they are not specifically mentioned, droppings and guano betray their presence, and they can be heard constantly scuttling and shrieking in the distant darkness."
+					]
+				},
+				"If Keresta is destroyed, the fog disperses, and the rats and bats gradually die off until only a scattered few remain."
+			]
 		},
 		{
 			"name": "Ki-rin",
+			"source": "VGM",
 			"lairActions": [
 				"Inside its lair, a ki-rin has the power to conjure objects up to three times per day, using each of the following versions of the power once. One version permanently creates enough objects made of soft, plant-based material - including manufactured objects such as cloth, pillows, rope, blankets, and clothing - to fill a cube 20 feet on a side. The second version enough objects made of wood, or similarly hard plant-based material, to fill a cube 10 feet on a side. The third version creates enough objects made of stone or metal to fill a cube 2 feet on a side, but any materials created in this way last for only 1 hour."
 			],
@@ -724,11 +960,11 @@
 					]
 				},
 				"When the ki-rin dies, all these effects disappear immediately, although the invigorating effect on flora and fauna remains for 3 years."
-			],
-			"source": "VGM"
+			]
 		},
 		{
 			"name": "Kraken",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the kraken takes a lair action to cause one of the following magical effects:",
 				{
@@ -751,11 +987,11 @@
 					]
 				},
 				"When the kraken dies, all of these regional effects fade immediately."
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Lich",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the lich can take a lair action to cause one of the following magical effects; the lich can't use the same effect two rounds in a row:",
 				{
@@ -766,34 +1002,73 @@
 						"The lich calls forth the spirits of creatures that died in its lair. These apparitions materialize and attack one creature that the lich can see within 60 feet of it. The target must succeed on a DC 18 Constitution saving throw, taking 52 ({@dice 15d6}) necrotic damage on a failed save, or half as much damage on a success. The apparitions then disappear."
 					]
 				}
-			],
-			"source": "MM"
-		},
-		{
-			"name": "Illithilich",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the illithilich can take a lair action to cause one of the following magical effects; the illithilich can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"The illithilich rolls a {@dice d8} and regains a spell slot of that level or lower. If it has no spent spell slots of that level or lower, nothing happens.",
-						"The illithilich targets one creature it can see within 30 feet of it. A crackling cord of negative energy tethers the illithilich to the target. Whenever the illithilich takes damage, the target must make a DC 18 Constitution saving throw. On a failed save, the illithilich takes half the damage (rounded down), and the target takes the remaining damage. This tether lasts until initiative count 20 on the next round or until the illithilich or the target is no longer in the illithilich's lair.",
-						"The illithilich calls forth the spirits of creatures that died in its lair. These apparitions materialize and attack one creature that the illithilich can see within 60 feet of it. The target must succeed on a DC 18 Constitution saving throw, taking 52 ({@dice 15d6}) necrotic damage on a failed save, or half as much damage on a success. The apparitions then disappear."
-					]
-				}
-			],
-			"source": "VGM"
+			]
 		},
 		{
 			"name": "Marlos Urnrayle",
+			"source": "PotA",
 			"lairActions": [
 				"If Marlos is in the earth node while {@creature Ogrémoch|PotA} isn't, the medusa can take lair actions. On initiative count 20 (losing initiative ties), Marlos uses a lair action to cast {@spell earthquake} without using components. As long as he maintains concentration on {@spell earthquake}, initiative count 20 is the start of Marlos's turn for the purpose of the spell. He can take no other lair actions while concentrating on {@spell earthquake}.",
 				"Marlos's second option for a lair action is to draw power from the earth node to heal. When he does so, he regains 30 ({@dice 6d8+3}) hit points."
+			]
+		},
+		{
+			"name": "Merrenoloth",
+			"source": "MTF",
+			"lairActions": [
+				"Any ship a merrenoloth is contracted to captain becomes the creature's lair. When fighting on the ship, the merrenoloth can invoke its ability to take lair actions. On initiative count 20 (losing initiative ties), the merrenoloth can take one lair action to cause one of the following effects; it can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"The ship regains 22 ({@dice 4d10}) hit points.",
+						"A strong wind propels the ship, increasing its speed by 30 feet until initiative count 20 on the next round.",
+						"The air within 60 feet of the ship is filled with howling wind. Until initiative count 20 on the next round, that area is difficult terrain, and when a Medium or smaller creature flies into that area or starts its turn flying there, it must succeed on a DC 13 Strength saving throw or be knocked prone."
+					]
+				}
 			],
-			"source": "PotA"
+			"regionalEffects": [
+				"A merrenoloth imbues its vessel with powerful magic that creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"The ship doesn't sink even if its hull is breached.",
+						"The ship always stays on course to the destination the merrenoloth names.",
+						"Creatures the merrenoloth chooses to take on the ship aren't discomfited by wind or weather, though this effect doesn't protect against damage."
+					]
+				},
+				"If the merrenoloth dies, these effects fade over the course of {@dice 1d6} hours."
+			]
+		},
+		{
+			"name": "Morkoth",
+			"source": "VGM",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), the morkoth takes a lair action to cause one of the effects described below:",
+				{
+					"type": "list",
+					"items": [
+						"The morkoth uses its Hypnosis action, originating at a point within 120 feet of itself. It doesn't need to see the effect's point of origin.",
+						"The morkoth casts {@spell darkness}, {@spell dispel magic}, or {@spell misty step}, using Intelligence as its spellcasting ability and without expending a spell slot."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The island surrounding a morkoth's lair is warped by the creature's presence, creating the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"The morkoth is aware of any new arrival, whether an object or a creature, on its island or in its sanctum. As an action, the morkoth can locate any one creature or object on the island. Visitors to the island feel as though they are being watched, even when they aren't.",
+						"Each time a creature that has been on the island for less than a year finishes a short or long rest, it must make a DC 10 Intelligence (Investigation) check. On a failure, the creature has misplaced one possession (chosen by the player, if the creature is that player's character). The possession remains nearby but concealed for a short time, so it can be recovered with a successful DC 15 Wisdom (Perception) check. An object that is misplaced but not recovered ends up in the morkoth's lair 1 hour later. If the creature later goes to the morkoth's lair, its lost possessions stand out in its perception and are easily recovered.",
+						"Entrances to the morkoth's lair have an enchantment that the morkoth can activate or suppress at any time while it's in its lair and not incapacitated. Any creature within 30 feet of such an entrance and able to see it must make a DC 15 Wisdom saving throw. On a failed save, the creature feels an intense urge to use its movement on each of its turns to enter the lair and to move toward the morkoth's location (the target doesn't realize it's heading toward a creature). The target moves toward the morkoth by the most direct route. As soon as it can see the morkoth, the target can repeat the saving throw, ending the effect on itself on a success. It can also repeat the saving throw at the end of each of its turns and every time it takes damage.",
+						"With a thought (no action required), the morkoth can initiate a change in the water within its lair that takes effect 1 minute later. The water can be as breathable and clear as air, or it can be normal water (ranging in clarity from murky to clear)."
+					]
+				},
+				"If the morkoth dies, these regional effects end immediately."
+			]
 		},
 		{
 			"name": "Mummy Lord",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the mummy lord takes a lair action to cause one of the following effects; the mummy lord can't use the same effect two rounds in a row:",
 				{
@@ -816,11 +1091,11 @@
 					]
 				},
 				"If the mummy lord is destroyed, these regional effects end immediately."
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Ogrémoch",
+			"source": "PotA",
 			"lairActions": [
 				"Ogrémoch can assert his dominion over the rock and stone around him to take lair actions on the Elemental Plane of Earth, or in any elemental earth node (including the Black Geode, described in chapter 5). On initiative count 20 (losing initiative ties), Ogrémoch uses his lair action to cause one of the following effects:",
 				{
@@ -844,11 +1119,11 @@
 					]
 				},
 				"If Ogrémoch is destroyed or banished back to his home plane, the regional effects fade over the next {@dice 1d10} days."
-			],
-			"source": "PotA"
+			]
 		},
 		{
 			"name": "Olhydra",
+			"source": "PotA",
 			"lairActions": [
 				"Olhydra can command the waters around herself to take lair actions on the Elemental Plane of Water, or in any elemental water node (such as the Plunging Torrents, described in chapter 5). On initiative count 20 (losing initiative ties), Olhydra uses her lair action to cause one of the following effects:",
 				{
@@ -872,11 +1147,11 @@
 					]
 				},
 				"If Olhydra is destroyed or banished back to her home plane, the regional effects fade over the next {@dice 1d10} days."
-			],
-			"source": "PotA"
+			]
 		},
 		{
 			"name": "Orcus",
+			"source": "MTF",
 			"lairActions": [
 				"On Initiative count 20 (losing initiative ties), Orcus can take a lair action to cause one of the following effects: he can't use the same effect two rounds in a row:",
 				{
@@ -940,11 +1215,11 @@
 						}
 					]
 				}
-			],
-			"source": "MTF"
+			]
 		},
 		{
 			"name": "Red Dragon",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
 				{
@@ -967,11 +1242,37 @@
 					]
 				},
 				"If the dragon dies, these effects fade over the course of {@dice 1d10} days."
+			]
+		},
+		{
+			"name": "Sapphire Dragon",
+			"source": "SADS",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"The dragon targets a creature within 120 feet of it that can hear and understand it. The creature must succeed on a {@dc 15} Wisdom saving throw or be {@condition charmed} by the dragon until initiative count 20 on the following round. A creature {@condition charmed} in this way obeys to the best of its ability any command the dragon issues that isn't directly harmful to itself.",
+						"The dragon touches a section of stone up to 10 feet in any dimension. The dragon can form the stone into any shape that suits its purpose.",
+						"A wall of stone springs into existence on a solid surface within 120 feet of the dragon. The wall is up to 60 feet long, 10 feet high, and 1 foot thick. When the wall appears, each creature in its space is pushed to either side of the wall the creature wants. Each 5-foot section of wall has AC 17, 20 hit points, vulnerability to thunder damage, and immunity to poison and psychic damage. The wall vanishes when the dragon uses this lair action again or when the dragon dies."
+					]
+				}
 			],
-			"source": "MM"
+			"regionalEffects": [
+				"The region surrounding a legendary sapphire dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"{@creature Giant spider||Giant spiders} are attracted to the area within 6 miles of the lair and settle there in large numbers.",
+						"Natural stone within 6 miles of the lair grows plentiful crystal formations and sapphire gemstone veins, particularly underground.",
+						"Natural stone within 6 miles of the lair becomes a conduit for the dragon's psionic presence. As an action, the dragon can cast the {@spell clairvoyance} spell, requiring no components, targeting any natural stone formation in that region."
+					]
+				}
+			]
 		},
 		{
 			"name": "Silver Dragon",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects:",
 				{
@@ -993,11 +1294,11 @@
 					]
 				},
 				"If the dragon dies, changed weather reverts to normal, as described in the spell, and the other effects fade in {@dice 1d10} days."
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Sphinx",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the sphinx can take a lair action to cause one of the following magical effects; the sphinx can't use an effect again until it finishes a short or long rest:",
 				{
@@ -1009,11 +1310,11 @@
 						"The sphinx shifts itself and up to seven other creatures it can see within in its lair to another plane of existence. Once outside its lair, the sphinx can't use lair actions, but it can return to its lair as a bonus action on its turn, taking up to seven creatures with it."
 					]
 				}
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Storm Giant Quintessent",
+			"source": "VGM",
 			"lairActions": [
 				"A storm giant quintessent can use lair actions in giant form and while transformed into a storm. On initiative count 20 (losing initiative ties), the giant can take a lair action to cause one of the following effects; the giant can't use the same effect two rounds in a row:",
 				{
@@ -1036,11 +1337,11 @@
 					]
 				},
 				"If the giant dies, the lightning, thunder, and high wind regional effects end immediately. Rain, snow, and blowing dust abate gradually within {@dice 1d8} days."
-			],
-			"source": "VGM"
+			]
 		},
 		{
 			"name": "Strahd von Zarovich",
+			"source": "CoS",
 			"lairActions": [
 				"While Strahd is in Castle Ravenloft, he can take lair actions as long as he isn't incapacitated. ",
 				"On initiative count 20 (losing initiative ties), Strahd can take one of the following lair action options, or forgo using any of them in that round:",
@@ -1053,11 +1354,26 @@
 						"Strahd targets one Medium or smaller creature that casts a shadow. The target's shadow must be visible to Strahd and within 30 feet of him. If the target fails a DC 17 Charisma saving throw, its shadow detaches from it and becomes a {@creature shadow} that obeys Strahd's commands, acting on initiative count 20. A {@spell greater restoration} spell or a {@spell remove curse} spell cast on the target restores its natural shadow, but only if its undead shadow has been destroyed."
 					]
 				}
-			],
-			"source": "CoS"
+			]
+		},
+		{
+			"name": "Thessalkraken",
+			"source": "IMR",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), the thessalkraken takes a lair action to cause one of the following magical effects:",
+				{
+					"type": "list",
+					"items": [
+						"A strong current moves through the thessalkraken's lair. Each creature within 60 feet of the thessalkraken must succeed on a DC 18 Strength saving throw or be pushed up to 60 feet away from the thessalkraken. On a success, the creature is pushed 10 feet away from the thessalkraken.",
+						"Creatures in the water within 60 feet of the thessalkraken have vulnerability to acid damage until initiative count 20 on the next round.",
+						"The alluring gleam of treasure beneath the water in the thessalkraken's lair compels potential victims to draw near. Each creature within 120 feet of the thessalkraken must succeed on a DC 18 Wisdom saving throw or move 10 feet closer to the thessalkraken if able to do so."
+					]
+				}
+			]
 		},
 		{
 			"name": "Unicorn",
+			"source": "MM",
 			"regionalEffects": [
 				"Transformed by the creature's celestial presence, the domain of a unicorn might include any of the following magical effects:",
 				{
@@ -1070,19 +1386,11 @@
 					]
 				},
 				"If the unicorn dies, these effects end immediately."
-			],
-			"source": "MM"
-		},
-		{
-			"name": "Vanifer",
-			"lairActions": [
-				"If Vanifer is in the fire node while {@creature Imix|PotA} isn't, the tiefling can take lair actions. On initiative count 20 (losing initiative ties), Vanifer uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Vanifer can take no other lair actions while concentrating on a spell cast as a lair action. Her favorite use of this capability is casting {@spell fireball} or {@spell hypnotic pattern}.",
-				"If Vanifer casts {@spell misty step} using this lair action, she also draws the power of the fire node into herself. By doing so, she regains 15 ({@dice 3d8+2}) hit points."
-			],
-			"source": "PotA"
+			]
 		},
 		{
 			"name": "Vampire",
+			"source": "MM",
 			"regionalEffects": [
 				"The region surrounding a vampire's lair is warped by the creature's unnatural presence, creating any of the following effects:",
 				{
@@ -1095,11 +1403,19 @@
 					]
 				},
 				"If the vampire is destroyed, these effects end after {@dice 2d6} days."
-			],
-			"source": "MM"
+			]
+		},
+		{
+			"name": "Vanifer",
+			"source": "PotA",
+			"lairActions": [
+				"If Vanifer is in the fire node while {@creature Imix|PotA} isn't, the tiefling can take lair actions. On initiative count 20 (losing initiative ties), Vanifer uses a lair action to cast one of her spells, up to 3rd level, without using components or a spell slot. She can't cast the same spell two rounds in a row, although she can continue to concentrate on a spell she previously cast using a lair action. Vanifer can take no other lair actions while concentrating on a spell cast as a lair action. Her favorite use of this capability is casting {@spell fireball} or {@spell hypnotic pattern}.",
+				"If Vanifer casts {@spell misty step} using this lair action, she also draws the power of the fire node into herself. By doing so, she regains 15 ({@dice 3d8+2}) hit points."
+			]
 		},
 		{
 			"name": "White Dragon",
+			"source": "MM",
 			"lairActions": [
 				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
 				{
@@ -1123,11 +1439,11 @@
 					]
 				},
 				"If the dragon dies, the fog and precipitation fade within 1 day. The ice walls melt over the course of {@dice 1d10} days."
-			],
-			"source": "MM"
+			]
 		},
 		{
 			"name": "Yan-C-Bin",
+			"source": "PotA",
 			"lairActions": [
 				"Yan-C-Bin dwells in a palace of air on the Elemental Plane of Air. In his palace and in air nodes on the Material Plane (including the Howling Caves, described in chapter 5), Yan-C-Bin is master. He can use the following actions in his lair. On initiative count 20 (losing initiative ties), Yan-C-Bin takes a lair action to cause one of the following effects; he can't use the same effect two rounds in a row:",
 				{
@@ -1151,11 +1467,11 @@
 					]
 				},
 				"If Yan-C-Bin is destroyed or banished back to his home plane, the regional effects fade over the next {@dice 1d10} days."
-			],
-			"source": "PotA"
+			]
 		},
 		{
 			"name": "Yeenoghu",
+			"source": "MTF",
 			"lairActions": [
 				"On Initiative count 20 (losing initiative ties), Yeenoghu can take a lair action to cause one of the following effects: he can't use the same effect two rounds in a row:",
 				{
@@ -1219,11 +1535,37 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"name": "Zariel",
+			"source": "MTF",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), Zariel can take a lair action to cause one of the following effects; she can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"Zariel casts major image four times at its lowest level, targeting different areas with the spell. Zariel prefers to create images of intruders' loved ones being burned alive. Zariel doesn't need to concentrate on the spells, which end on initiative count 20 of the next round. Each creature that can see these illusions must succeed on a DC 26 Wisdom saving throw or become frightened of the illusion for 1 minute. A frightened creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+						"Zariel casts her innate {@spell fireball} spell."
+					]
+				}
 			],
-			"source": "MTF"
+			"regionalEffects": [
+				"The region containing Zariel's lair is warped by her magic, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"The area within 9 miles of the lair is filled with screaming voices and the stench of burning meat.",
+						"Once every 60 feet within 1 mile of the lair, 10-foot-high gouts of flame rise from the ground. Any creature or object that touches the flame takes 7 ({@dice 2d6}) fire damage, though it can take this damage no more than once per round.",
+						"The area within 2 miles, but no closer than 500 feet, of the lair is filled with smoke, which causes the area to be heavily obscured. The smoke can't be cleared away."
+					]
+				},
+				"If Zariel dies, these effects fade over the course of {@dice 1d10} days."
+			]
 		},
 		{
 			"name": "Zuggtmoy",
+			"source": "MTF",
 			"lairActions": [
 				"On Initiative count 20 (losing initiative ties), Zuggtmoy can take a lair action to cause one of the following effects: he can't use the same effect two rounds in a row:",
 				{
@@ -1285,348 +1627,6 @@
 								]
 							]
 						}
-					]
-				}
-			],
-			"source": "MTF"
-		},
-		{
-			"name": "Morkoth",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the morkoth takes a lair action to cause one of the effects described below:",
-				{
-					"type": "list",
-					"items": [
-						"The morkoth uses its Hypnosis action, originating at a point within 120 feet of itself. It doesn't need to see the effect's point of origin.",
-						"The morkoth casts {@spell darkness}, {@spell dispel magic}, or {@spell misty step}, using Intelligence as its spellcasting ability and without expending a spell slot."
-					]
-				}
-			],
-			"regionalEffects": [
-				"The island surrounding a morkoth's lair is warped by the creature's presence, creating the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"The morkoth is aware of any new arrival, whether an object or a creature, on its island or in its sanctum. As an action, the morkoth can locate any one creature or object on the island. Visitors to the island feel as though they are being watched, even when they aren't.",
-						"Each time a creature that has been on the island for less than a year finishes a short or long rest, it must make a DC 10 Intelligence (Investigation) check. On a failure, the creature has misplaced one possession (chosen by the player, if the creature is that player's character). The possession remains nearby but concealed for a short time, so it can be recovered with a successful DC 15 Wisdom (Perception) check. An object that is misplaced but not recovered ends up in the morkoth's lair 1 hour later. If the creature later goes to the morkoth's lair, its lost possessions stand out in its perception and are easily recovered.",
-						"Entrances to the morkoth's lair have an enchantment that the morkoth can activate or suppress at any time while it's in its lair and not incapacitated. Any creature within 30 feet of such an entrance and able to see it must make a DC 15 Wisdom saving throw. On a failed save, the creature feels an intense urge to use its movement on each of its turns to enter the lair and to move toward the morkoth's location (the target doesn't realize it's heading toward a creature). The target moves toward the morkoth by the most direct route. As soon as it can see the morkoth, the target can repeat the saving throw, ending the effect on itself on a success. It can also repeat the saving throw at the end of each of its turns and every time it takes damage.",
-						"With a thought (no action required), the morkoth can initiate a change in the water within its lair that takes effect 1 minute later. The water can be as breathable and clear as air, or it can be normal water (ranging in clarity from murky to clear)."
-					]
-				},
-				"If the morkoth dies, these regional effects end immediately."
-			],
-			"source": "VGM"
-		},
-		{
-			"name": "Balhannoth",
-			"lairActions": [
-				"When fighting inside its lair, a balhannoth can use lair actions. On initiative count 20 (losing initiative ties), a balhannoth can take one lair action to cause one of the following effects; the balhannoth can't use the same lair action two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"The balhannoth warps reality around it in an area up to 500 feet square. After 10 minutes, the terrain in the area reshapes to assume the appearance of a location sought by one intelligent creature whose mind the balhannoth has read (see Regional Effects below). The transformation affects nonliving material only and can't create anything with moving parts or magical properties. Any object created in this area is, upon close inspection, revealed as a fake. Books are filled with empty pages, golden items are obvious counterfeits, and so on. The transformation lasts until the balhannoth dies or uses this lair action again.",
-						"The balhannoth targets one creature within 500 feet of it. The target must succeed on a DC 16 Wisdom saving throw or the target, along with whatever it is wearing and carrying, teleports to an unoccupied space of the balhannoth's choice within 60 feet of it.",
-						"The balhannoth targets one creature within 500 feet of it. The target must succeed on a DC 16 Wisdom saving throw or the balhannoth becomes invisible to that creature for 1 minute. This effect ends if the balhannoth attacks the target."
-					]
-				}
-			],
-			"regionalEffects": [
-				"A region containing a balhannoth's lair becomes warped by the creature's unnatural presence, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"Creatures within 1 mile of the balhannoth's lair experience a sensation of being close to whatever they desire most. The sensation grows stronger the closer the creatures come to the balhannoth's lair.",
-						"The balhannoth can sense the strongest desires of any humanoid within 1 mile of it and learns whether those desires involve a place: a safe location to rest, a temple, home, or somewhere else."
-					]
-				},
-				"If the balhannoth dies, these effects end immediately."
-			],
-			"source": "MTF"
-		},
-		{
-			"name": "Geryon",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), Geryon can take a lair action to cause one of the following effects; he can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"Geryon causes a blast of cold to burst from the ground at a point he can see within 120 feet of him. The cold fills a cube, 10 feet on each side, centered on that point. Each creature in that area must succeed on a DC 21 Constitution saving throw or take 28 ({@dice 8d6}) cold damage.",
-						"Geryon targets one creature he can see within 60 feet of him. The target must succeed on a DC 21 Wisdom saving throw or become restrained for 1 minute. The target can end the effect on itself if it deals any damage to one or more of its allies.",
-						"Geryon casts the {@spell banishment} spell."
-					]
-				}
-			],
-			"regionalEffects": [
-				"The region containing Geryon's lair is warped by his magic, creating one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"Intelligent creatures within 1 mile of the lair frequently see shimmering portals leading to places they consider safe. Passing through a portal always deposits a traveler somewhere in Stygia.",
-						"Freezing strong winds howl around the area within 1 mile of the lair.",
-						"Howls and screams fill the air within 1 mile of the lair. Any creature that finishes a short or long rest in this area must succeed on a DC 21 Wisdom saving throw or derive no benefit from the rest."
-					]
-				},
-				"If Geryon dies, these effects fade over the course of {@dice 1d10} days."
-			],
-			"source": "MTF"
-		},
-		{
-			"name": "Zariel",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), Zariel can take a lair action to cause one of the following effects; she can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"Zariel casts major image four times at its lowest level, targeting different areas with the spell. Zariel prefers to create images of intruders' loved ones being burned alive. Zariel doesn't need to concentrate on the spells, which end on initiative count 20 of the next round. Each creature that can see these illusions must succeed on a DC 26 Wisdom saving throw or become frightened of the illusion for 1 minute. A frightened creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
-						"Zariel casts her innate {@spell fireball} spell."
-					]
-				}
-			],
-			"regionalEffects": [
-				"The region containing Zariel's lair is warped by her magic, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"The area within 9 miles of the lair is filled with screaming voices and the stench of burning meat.",
-						"Once every 60 feet within 1 mile of the lair, 10-foot-high gouts of flame rise from the ground. Any creature or object that touches the flame takes 7 ({@dice 2d6}) fire damage, though it can take this damage no more than once per round.",
-						"The area within 2 miles, but no closer than 500 feet, of the lair is filled with smoke, which causes the area to be heavily obscured. The smoke can't be cleared away."
-					]
-				},
-				"If Zariel dies, these effects fade over the course of {@dice 1d10} days."
-			],
-			"source": "MTF"
-		},
-		{
-			"name": "Githzerai Anarch",
-			"lairActions": [
-				"An anarch can use lair actions. On initiative count 20 (losing initiative ties), the anarch can take a lair action to cause one of the following effects; the anarch can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"The anarch casts the {@spell lightning bolt} spell (at 5th level), but the anarch can change the damage type from lightning to cold, fire, psychic, radiant, or thunder. If the spell deals damage other than fire or lightning, it doesn't ignite flammable objects.",
-						"The anarch casts the {@spell creation} spell (as a 9th-level spell) using the unformed substance of Limbo instead of shadow material. If used in Limbo, the object remains until the anarch's concentration is broken, regardless of its composition. If the anarch moves more than 120 feet from the object, its concentration breaks.",
-						"The anarch can magically move an object it can see within 150 feet of it by making a Wisdom check with advantage. The DC depends on the object's size: DC 5 for Tiny, DC 10 for Small, DC 15 for Medium, DC 20 for Large, and DC 25 for Huge or larger."
-					]
-				}
-			],
-			"regionalEffects": [
-				"The region containing an anarch's lair is warped by its presence, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"In Limbo, the anarch can spend 10 minutes stabilizing a 5-mile area centered on it, causing the unformed substance to take whatever inanimate form the anarch chooses. During that process, the anarch determines the shape and composition of the forms created.",
-						"The anarch stabilizes any object created in Limbo and brought to the Material Plane for as long as the anarch remains within 1 mile of it (no action required)."
-					]
-				},
-				"If the anarch dies, these effects end after {@dice 1d6} rounds. All formed substance becomes a chaotic churn of energy and matter, unraveling into unformed substance that dissipates {@dice 1d6} rounds later."
-			],
-			"source": "MTF"
-		},
-		{
-			"name": "Merrenoloth",
-			"lairActions": [
-				"Any ship a merrenoloth is contracted to captain becomes the creature's lair. When fighting on the ship, the merrenoloth can invoke its ability to take lair actions. On initiative count 20 (losing initiative ties), the merrenoloth can take one lair action to cause one of the following effects; it can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"The ship regains 22 ({@dice 4d10}) hit points.",
-						"A strong wind propels the ship, increasing its speed by 30 feet until initiative count 20 on the next round.",
-						"The air within 60 feet of the ship is filled with howling wind. Until initiative count 20 on the next round, that area is difficult terrain, and when a Medium or smaller creature flies into that area or starts its turn flying there, it must succeed on a DC 13 Strength saving throw or be knocked prone."
-					]
-				}
-			],
-			"regionalEffects": [
-				"A merrenoloth imbues its vessel with powerful magic that creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"The ship doesn't sink even if its hull is breached.",
-						"The ship always stays on course to the destination the merrenoloth names.",
-						"Creatures the merrenoloth chooses to take on the ship aren't discomfited by wind or weather, though this effect doesn't protect against damage."
-					]
-				},
-				"If the merrenoloth dies, these effects fade over the course of {@dice 1d6} hours."
-			],
-			"source": "MTF"
-		},
-		{
-			"name": "Halaster Blackcloak",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), Halaster takes a lair action to cause one of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"Halaster targets a volume of unoccupied space or solid stone no larger than four 10-foot cubes within 30 feet of him, turning the open space to solid, worked stone or vice versa.",
-						"Halaster causes one door or archway within 30 feet of him to disappear and be replaced by a blank wall, or he restores a door or an archway previously removed in this way.",
-						"Halaster deactivates or reactivates one of Undermountain's magic gates. The gate must be within 120 feet of him."
-					]
-				}
-			],
-			"regionalEffects": [
-				"When Halaster is in Undermountain, the following effects can occur in any location within the dungeon or in any extraplanar extension of the dungeon:",
-				{
-					"type": "list",
-					"items": [
-						"A magical scrying sensor appears, taking the form of a ghostly, 1-foot-diameter humanoid eye surrounded by motes of light. The sensor is stationary, though Halaster can reorient the eye to face in any direction. Halaster can see through the eye as though he was in its space. The eye can't be harmed or dispelled, but it winks out within an antimagic field. A scrying eye lasts until Halaster ends the effect (no action required).",
-						"A minor illusory effect is triggered, as though Halaster had cast {@spell minor illusion} in an area. Common illusions include the echo of rattling chains, the distant sound of explosive spells being cast, a dusty cloak or a rusty helm floating as though worn by an invisible figure, and illusory footprints appearing on a dusty floor.",
-						"Silent apparitions of dead adventurers drift through halls and rooms as though they are lost. An apparition can't be harmed, and it doesn't acknowledge creatures or objects in any way. It can't be dispelled but is suppressed within an antimagic field."
-					]
-				}
-			],
-			"source": "WDMM"
-		},
-		{
-			"name": "Fazrian",
-			"lairActions": [
-				"Unless he is {@condition incapacitated}, Fazrian can take one of the following lair actions on initiative count 20 (losing initiative ties) while on the Terminus Level:",
-				{
-					"type": "list",
-					"items": [
-						"Blood flows from Fazrian's eyes until initiative count 20 on the next round. No creature within 120 feet of the planetar can regain hit points until the effect ends.",
-						"Fazrian's eyes become smoldering black voids until initiative count 20 on the next round. All other creatures within 120 feet of the planetar have disadvantage on saving throws until the effect ends.",
-						"Blinding magical light springs from Fazrian's eyes until initiative count 20 on the next round. If a creature starts its turn within 120 feet of the planetar and the two of them can see each other, Fazrian can force the creature to make a DC 20 Constitution saving throw. On a failed save, the creature is {@condition blinded}. The blindness lasts until the creature receives a {@spell lesser restoration} spell or similar magic."
-					]
-				}
-			],
-			"source": "WDMM"
-		},
-		{
-			"name": "Keresta Delvingstone",
-			"regionalEffects": [
-				"Vanrakdoom is Keresta's lair, and the following regional effects are noticeable throughout it:",
-				{
-					"type": "list",
-					"items": [
-						"Fog creeps into areas of dim light or darkness. It vanishes when light is brought to bear on it but reappears when the light passes. A permanent fog hangs in some areas regardless of light, as noted in the descriptions of those areas.",
-						"Rats and bats are plentiful. In areas where they are not specifically mentioned, droppings and guano betray their presence, and they can be heard constantly scuttling and shrieking in the distant darkness."
-					]
-				},
-				"If Keresta is destroyed, the fog disperses, and the rats and bats gradually die off until only a scattered few remain."
-			],
-			"source": "WDMM"
-		},
-		{
-			"name": "Ancient Deep Crow",
-			"regionalEffects": [
-				"The region containing an ancient deep crow's lair is transformed by the creature's presence, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"Supernatural shadow turns all bright light to dim light in underground regions within 6 miles of the lair.",
-						"Intermittent, echoing caws can be heard coming from all directions within 6 miles of the lair.",
-						"Subterranean beasts within 1 mile of the ancient deep crow's lair serve as the creature's eyes and ears, alerting it to the presence of intruders and making it all but impossible to surprise the ancient deep crow. If the ancient deep crow dies, these effects fade immediately."
-					]
-				}
-			],
-			"source": "AI"
-		},
-		{
-			"name": "Gar Shatterkeel",
-			"source": "LR",
-			"lairActions": [
-				"Gar can employ lair actions while he's within the coral mountain.",
-				"On initiative count 20 (losing initiative ties), Gar Shatterkeel takes a lair action to cause one of the following effects; Gar can't use the same effect two rounds in a row.",
-				{
-					"type": "list",
-					"items": [
-						"Gar may teleport anywhere within the coral mountain, bringing up to five willing creatures with him.",
-						"The coral in a 60-foot radius grows rapidly around creatures inside the coral mountain. Each creature must succeed on a DC 18 Strength saving throw or become {@condition restrained}. Restrained creatures can take an action on their turn to make a DC 18 Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check to free themselves. This effect lasts for 1 minute unless dispelled (it counts as a 6th level spell), and doesn't require Gar to maintain concentration. Gar Shatterkeel and any creatures he designates are immune to this effect.",
-						"Up to five corpses that Gar can see within 60 feet rise up as {@creature drowned blade|GoS|drowned blades} and attack anyone Gar directs them to on his turn."
-					]
-				}
-			]
-		},
-		{
-			"name": "Belashyrra",
-			"lairActions": [
-				"While within the Citadel of Lidless Eyes, Belashyrra can invoke the ambient magic to take lair actions. On initiative count 20 (losing initiative ties), Belashyrra can take a lair action to cause one of the following effects; it can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"An eye opens on a solid surface within 60 feet of Belashyrra. One random eye ray of Belashyrra's shoots from that eye at a target of Belashyrra's choice that it can see. The eye then closes and disappears.",
-						"Belashyrra creates a wave of madness. Each creature it can see within its lair must succeed on a DC 22 Wisdom saving throw or be {@condition charmed} for 1 minute. While {@condition charmed} in this way, a creature must use its action at the start of its turn before moving to make a melee attack against another creature of Belashyrra's choice within reach. If there are no creatures within reach, the {@condition charmed} creature can act normally for that turn. A {@condition charmed} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
-						"Belashyrra taps into the eyesight of creatures in its lair and alters their perception. Each creature of Belashyrra's choice in the lair must make a DC 22 Wisdom saving throw. On a failure, the affected creature perceives objects and creatures a short distance from their actual locations, imposing disadvantage on the creature's attack rolls against those targets. An affected creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to this lair action for the next 24 hours."
-					]
-				}
-			],
-			"regionalEffects": [
-				"Belashyrra's lair is known to touch remote areas of the Shadow Marches and caverns below Xen'drik. A region containing a passage to Belashyrra's lair is warped by its magic, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"Creatures within 1 mile of the passage sometimes feel as if they're being watched.",
-						"Beasts that live within 5 miles of the passage undergo magical transmutation, growing eyes or eyestalks that Belashyrra can see through.",
-						"A humanoid who spends at least 1 hour within 1 mile of the passage must succeed on a DC 21 Wisdom saving throw or descend into a type of madness (see \"Madness of Belashyrra\" below). A creature that succeeds on this saving throw can't be affected by this regional effect again for 24 hours."
-					]
-				},
-				"If Belashyrra dies, these effects fade over the course of {@dice 1d10} days."
-			],
-			"source": "ERLW"
-		},
-		{
-			"name": "Dyrrn",
-			"lairActions": [
-				"While within the Palace of Sinew, Dyrrn can invoke the ambient magic to take lair actions. On initiative count 20 (losing initiative ties), Dyrrn can take a lair action to cause one of the following effects; it can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"Dyrrn uses its Corruption action.",
-						"A 30-foot-square area of ground within 120 feet of Dyrrn sprouts tentacles until initiative count 20 on the next round. Any creature that starts or ends its turn in the area must succeed on a DC 23 Strength saving throw or be {@condition restrained}. A creature can escape the tentacles with a successful DC 23 Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check as an action.",
-						"Each creature of Dyrrn's choice that it can see within 120 feet of it must succeed on a DC 23 Wisdom saving throw or take 26 ({@dice 4d12}) psychic damage. Unless the target has immunity to psychic damage, its Intelligence score is reduced by {@dice 1d4} each time it fails the saving throw for this lair action. The target dies if its Intelligence score is reduced to 0. The reduction lasts until the target finishes a short or long rest."
-					]
-				}
-			],
-			"regionalEffects": [
-				"A region containing a passage to Dyrrn's lair is warped in one or more of these ways:",
-				{
-					"type": "list",
-					"items": [
-						"Plants and animals raised within 2 mile of the passage have twisted, aberrant forms. Use the Daelkyr Modifications table for inspiration.",
-						"Creatures within 1 mile of the passage frequently feel as if something is crawling under their skin.",
-						"If a humanoid spends at least 1 hour within 1 mile of the passage, that creature must succeed on a DC 22 Wisdom saving throw or descend into a type of madness (see \"Madness of Dyrrn\" below). A creature that succeeds on this saving throw can't be affected by this regional effect again for 24 hours."
-					]
-				},
-				"If Dyrrn dies, these effects fade away after {@dice 1d10} days."
-			],
-			"source": "ERLW"
-		},
-		{
-			"name": "Thessalkraken",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the thessalkraken takes a lair action to cause one of the following magical effects:",
-				{
-					"type": "list",
-					"items": [
-						"A strong current moves through the thessalkraken's lair. Each creature within 60 feet of the thessalkraken must succeed on a DC 18 Strength saving throw or be pushed up to 60 feet away from the thessalkraken. On a success, the creature is pushed 10 feet away from the thessalkraken.",
-						"Creatures in the water within 60 feet of the thessalkraken have vulnerability to acid damage until initiative count 20 on the next round.",
-						"The alluring gleam of treasure beneath the water in the thessalkraken's lair compels potential victims to draw near. Each creature within 120 feet of the thessalkraken must succeed on a DC 18 Wisdom saving throw or move 10 feet closer to the thessalkraken if able to do so."
-					]
-				}
-			],
-			"source": "IMR"
-		},
-		{
-			"name": "Sapphire Dragon",
-			"source": "SADS",
-			"lairActions": [
-				"On initiative count 20 (losing initiative ties), the dragon takes a lair action to cause one of the following effects; the dragon can't use the same effect two rounds in a row:",
-				{
-					"type": "list",
-					"items": [
-						"The dragon targets a creature within 120 feet of it that can hear and understand it. The creature must succeed on a {@dc 15} Wisdom saving throw or be {@condition charmed} by the dragon until initiative count 20 on the following round. A creature {@condition charmed} in this way obeys to the best of its ability any command the dragon issues that isn't directly harmful to itself.",
-						"The dragon touches a section of stone up to 10 feet in any dimension. The dragon can form the stone into any shape that suits its purpose.",
-						"A wall of stone springs into existence on a solid surface within 120 feet of the dragon. The wall is up to 60 feet long, 10 feet high, and 1 foot thick. When the wall appears, each creature in its space is pushed to either side of the wall the creature wants. Each 5-foot section of wall has AC 17, 20 hit points, vulnerability to thunder damage, and immunity to poison and psychic damage. The wall vanishes when the dragon uses this lair action again or when the dragon dies."
-					]
-				}
-			],
-			"regionalEffects": [
-				"The region surrounding a legendary sapphire dragon's lair is warped by the dragon's magic, which creates one or more of the following effects:",
-				{
-					"type": "list",
-					"items": [
-						"{@creature Giant spider||Giant spiders} are attracted to the area within 6 miles of the lair and settle there in large numbers.",
-						"Natural stone within 6 miles of the lair grows plentiful crystal formations and sapphire gemstone veins, particularly underground.",
-						"Natural stone within 6 miles of the lair becomes a conduit for the dragon's psionic presence. As an action, the dragon can cast the {@spell clairvoyance} spell, requiring no components, targeting any natural stone formation in that region."
 					]
 				}
 			]

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--5ETOOLS_CMP-->
+	<!--5ETOOLS_ANALYTICS-->
+	<!--5ETOOLS_ADCODE-->
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Languages - 5etools</title>
+
+	<link rel="manifest" href="manifest.webmanifest">
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+
+	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
+
+	<script type="text/javascript" src="js/styleswitch.js"></script>
+	<script type="text/javascript" src="js/navigation.js"></script>
+	<script type="text/javascript" src="js/browsercheck.js"></script>
+</head>
+
+<body>
+<div class="viewport-wrapper">
+	<header class="hidden-xs hidden-sm page__header">
+		<div class="container">
+
+			<h1 class="page__title">Languages</h1>
+			<p class="page__subtitle">Search by name on the left, click a name to display on the right.</p>
+		</div>
+	</header>
+
+	<nav class="container page__nav" id="navigation">
+		<ul class="nav page__nav-inner" id="navbar"></ul>
+	</nav>
+
+	<div class="view-col-group--cancer">
+		<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
+		<div class="cancer__wrp-sidebar-rhs"><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+
+		<div class="container view-col-wrapper view-col-wrapper--cancer">
+			<div class="view-col" id="listcontainer">
+				<div class="lst__form-top" id="filter-search-input-group">
+					<div class="w-100 relative">
+						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
+						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+					</div>
+					<button class="btn btn-default" id="reset">Reset</button>
+				</div>
+
+				<div id="filtertools" class="sortlabel lst__form-bottom">
+					<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+					<button class="col-2 sort btn btn-default btn-xs" data-sort="type">Type <span class="caret_wrp"></span></button>
+					<button class="col-2 sort btn btn-default btn-xs" data-sort="script">Script <span class="caret_wrp"></span></button>
+					<button class="sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
+				</div>
+
+				<ul class="list list--stats languages"></ul>
+			</div>
+
+			<div id="contentwrapper" class="view-col">
+				<div id="sublistcontainer" class="sublist sublist--resizable">
+					<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
+						<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+						<button class="col-2 sort btn btn-default btn-xs" data-sort="type">Type <span class="caret_wrp"></span></button>
+						<button class="col-2 sort btn btn-default btn-xs" data-sort="script">Script <span class="caret_wrp"></span></button>
+					</div>
+					<ul class="list sublanguages">
+						<!-- populate with JS -->
+					</ul>
+				</div>
+
+				<div class="wrp-stat-tab" id="stat-tabs">
+					<div id="tabs-right"></div>
+				</div>
+
+				<div class="wrp-stats-table">
+					<table id="pagecontent" class="stats">
+						<tr><th class="border" colspan="6"></th></tr>
+						<tr><td colspan="6" class="initial-message">Select a language from the list to view it here</td></tr>
+						<tr><th class="border" colspan="6"></th></tr>
+					</table>
+				</div>
+
+				<div class="text-center wrp-footer-buttons">
+					<button class="btn btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--5ETOOLS_SCRIPT_ANCHOR-->
+<!--5ETOOLS_AD_ADHESION-->
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
+<script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/utils-ui.js"></script>
+<script type="text/javascript" src="lib/localforage.js"></script>
+<script type="text/javascript" src="js/omnidexer.js"></script>
+<script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/filter.js"></script>
+<script type="text/javascript" src="js/render.js"></script>
+<script type="text/javascript" src="js/render-languages.js"></script>
+<script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/hist.js"></script>
+<script type="text/javascript" src="js/listpage.js"></script>
+<script type="text/javascript" src="js/languages.js"></script>
+<script type="text/javascript" src="js/list2.js"></script>
+<script type="text/javascript" src="lib/elasticlunr.js"></script>
+</body>
+
+</html>

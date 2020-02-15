@@ -93,7 +93,7 @@ class OptionalFeaturesPage extends ListPage {
 				return it.patron;
 			});
 			it._fprereqSpell = it.prerequisite.filter(it => it.spell).map(it => {
-				const mapped = (it.spell || []).map(it => it.split("#")[0]);
+				const mapped = (it.spell || []).map(it => it.split("#")[0].split("|")[0]);
 				this._spellFilter.addItem(mapped);
 				return mapped;
 			});
@@ -153,9 +153,11 @@ class OptionalFeaturesPage extends ListPage {
 				source,
 				prerequisite,
 				level,
-				type: it._lFeatureType,
-				isExcluded,
-				uniqueId: it.uniqueId ? it.uniqueId : ivI
+				type: it._lFeatureType
+			},
+			{
+				uniqueId: it.uniqueId ? it.uniqueId : ivI,
+				isExcluded
 			}
 		);
 
@@ -246,9 +248,9 @@ class OptionalFeaturesPage extends ListPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 	}
 }
 

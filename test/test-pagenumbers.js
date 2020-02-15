@@ -15,7 +15,8 @@ const BLACKLIST_FILE_PREFIXES = [
 	"srd-monsters.json",
 	"roll20.json",
 	"spells-stream.json",
-	"makecards.json"
+	"makecards.json",
+	"foundry.json"
 ];
 
 const BLACKLIST_KEYS = new Set([

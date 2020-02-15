@@ -161,7 +161,7 @@ const Omnisearch = {
 				for (let i = base; i < Math.max(Math.min(results.length, MAX_RESULTS + base), base); ++i) {
 					const r = results[i].doc;
 					const $link = $(`<a href="${Renderer.get().baseUrl}${UrlUtil.categoryToPage(r.c)}#${r.u}" ${r.h ? getHoverStr(r.c, r.u, r.s) : ""}>${r.cf}: ${r.n}</a>`)
-						.keydown(evt => Omnisearch.handleLinkKeyDown(evt, $link, $searchOut));
+						.keydown(evt => Omnisearch.handleLinkKeyDown(evt, $link, $searchIn, $searchOut));
 					$$`<p>
 						${$link}
 						${r.s ? `<i title="${Parser.sourceJsonToFull(r.s)}">${Parser.sourceJsonToAbv(r.s)}${r.p ? ` p${r.p}` : ""}</i>` : ""}
@@ -225,7 +225,7 @@ const Omnisearch = {
 		function initScrollHandler () {
 			const $window = $(window);
 			$window.on("scroll", () => {
-				if ($window.width() < 768) {
+				if (Renderer.hover.isSmallScreen()) {
 					$searchIn.attr("placeholder", Omnisearch._PLACEHOLDER_TEXT);
 					$searchInputWrapper.removeClass("omni__wrp-input--scrolled");
 					$searchOut.removeClass("omni__output--scrolled");
@@ -310,7 +310,7 @@ const Omnisearch = {
 		Omnisearch._searchIndex.addDoc(d);
 	},
 
-	handleLinkKeyDown (e, $ele, $searchOut) {
+	handleLinkKeyDown (e, $ele, $searchIn, $searchOut) {
 		switch (e.which) {
 			case 37: { // left
 				e.preventDefault();
@@ -329,6 +329,8 @@ const Omnisearch = {
 				} else if ($(`.has-results-left`).length) {
 					$(`.omni__paginate-left`).click();
 					$searchOut.find(`a`).last().focus();
+				} else {
+					$searchIn.focus();
 				}
 				break;
 			}

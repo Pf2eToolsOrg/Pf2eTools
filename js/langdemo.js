@@ -112,9 +112,8 @@ class LangDemoUi {
 		$dispOutParsed.html(`${parsed}`);
 
 		const ctx = LangDemoUi._metasContext
-			.map(it => ({[it.$iptName.val().trim()]: Number(it.$iptVal.val()) || 0}))
-			.reduce((a, b) => Object.assign(a, b), {});
-		const result = await parsed.pEvl(ctx);
+			.mergeMap(it => ({[it.$iptName.val().trim()]: Number(it.$iptVal.val()) || 0}));
+		const result = await parsed.pEvl(ctx, LangDemoUi.RESOLVER);
 		if (result.isCancelled) $dispOutResult.text("Cancelled!");
 		else $dispOutResult.text(result.val == null ? `(null)` : result.val);
 	}
@@ -183,33 +182,44 @@ else:
 	},
 	{
 		name: "Parentheses",
-		code: `(2 + 3) * 4` // 20
+		code: `(2 + 3) * 4  # Should equal 20`
 	},
 	{
 		name: "Dynamic Int",
-		code: `if {{user_int}} > 10: 2`
+		code: `if @user_int > 10: 2`
 	},
 	{
 		name: "Labelled Dynamic Int",
-		code: `if {{user_int|Enter: a /*+-^,!#= (Number)}} > 10: 2`
+		code: `if (@user_int|Enter: a /*+-^,!= (Number)) > 10: 2`
 	},
 	{
 		name: "Selectable Dynamic Int",
-		code: `if {{user_int| 1 = One Apple| 2 = Two Bananas |3|4|11=11 Oranges}} > 10: 2`
+		code: `if (@user_int|| 1 = One Apple| 2 = Two Bananas |3|4|11=11 Oranges) > 10: 2`
 	},
 	{
 		name: "Dynamic Bool",
-		code: `if not {{user_bool}}: 3`
+		code: `if not @user_bool: 3`
 	},
 	{
 		name: "Labelled Dynamic Bool",
-		code: `if not {{user_bool|Choose: /*+-^,!#= (Yes\\No)}}: 4`
+		code: `if not (@user_bool|Choose: /*+-^,!= (Yes\\No)): 4`
+	},
+	{
+		name: "Custom Buttons Dynamic Bool",
+		code: `if (@user_bool||Good | Evil): 2`
 	},
 	{
 		name: "Selectable Dynamic Bool",
-		code: `if {{user_bool| true = Good| false = Evil |true|false|true=Lawful}}: 2`
+		code: `if not (@user_bool|Pick| true = Good| false = Evil |true|false|true=Lawful): 2`
 	}
 ];
-LangDemoUi.RESOLVER = {has: () => true, get: (path) => `store.${path}`};
+LangDemoUi.RESOLVER = {
+	has: () => true,
+	get: (path) => {
+		const out = Math.round(Math.random() * 50);
+		JqueryUtil.doToast(`Randomized ${path} as ${out}`);
+		return out;
+	}
+};
 
 window.addEventListener("load", () => LangDemoUi.init());

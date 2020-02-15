@@ -3,6 +3,7 @@
 		{
 			"name": "Barbarian",
 			"source": "PHB",
+			"page": 46,
 			"srd": true,
 			"hd": {
 				"number": 1,
@@ -12,6 +13,55 @@
 				"str",
 				"con"
 			],
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					"shields"
+				],
+				"weapons": [
+					"simple",
+					"martial"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"animal handling",
+								"athletics",
+								"intimidation",
+								"nature",
+								"perception",
+								"survival"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item greataxe|phb} or (b) any {@filter martial melee weapon|items|source=phb|category=basic|type=martial weapon;melee weapon=sand}",
+					"(a) two {@item handaxe|phb|handaxes} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"An {@item explorer's pack|phb}, and four {@item javelin|phb|javelins}"
+				],
+				"goldAlternative": "{@dice 2d4×10|2d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"str": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"shields"
+					],
+					"weapons": [
+						"simple",
+						"martial"
+					]
+				}
+			},
 			"classTableGroups": [
 				{
 					"colLabels": [
@@ -162,55 +212,6 @@
 					]
 				}
 			],
-			"startingProficiencies": {
-				"armor": [
-					"light",
-					"medium",
-					"shields"
-				],
-				"weapons": [
-					"simple",
-					"martial"
-				],
-				"skills": [
-					{
-						"choose": {
-							"from": [
-								"animal handling",
-								"athletics",
-								"intimidation",
-								"nature",
-								"perception",
-								"survival"
-							],
-							"count": 2
-						}
-					}
-				]
-			},
-			"startingEquipment": {
-				"additionalFromBackground": true,
-				"default": [
-					"(a) a {@item greataxe|phb} or (b) any {@filter martial melee weapon|items|source=phb|category=basic|type=martial weapon;melee weapon=sand}",
-					"(a) two {@item handaxe|phb|handaxes} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
-					"An {@item explorer's pack|phb}, and four {@item javelin|phb|javelins}"
-				],
-				"goldAlternative": "{@dice 2d4×10|2d4 × 10|Starting Gold}"
-			},
-			"multiclassing": {
-				"requirements": {
-					"str": 13
-				},
-				"proficienciesGained": {
-					"armor": [
-						"shields"
-					],
-					"weapons": [
-						"simple",
-						"martial"
-					]
-				}
-			},
 			"classFeatures": [
 				[
 					{
@@ -494,6 +495,9 @@
 			"subclasses": [
 				{
 					"name": "Path of the Berserker",
+					"shortName": "Berserker",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -550,13 +554,12 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Berserker",
-					"srd": true
+					]
 				},
 				{
 					"name": "Path of the Totem Warrior",
+					"shortName": "Totem Warrior",
+					"source": "PHB",
 					"subclassFeatures": [
 						[
 							{
@@ -813,12 +816,12 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Totem Warrior"
+					]
 				},
 				{
 					"name": "Path of the Battlerager",
+					"shortName": "Battlerager",
+					"source": "SCAG",
 					"subclassFeatures": [
 						[
 							{
@@ -884,12 +887,13 @@
 								]
 							}
 						]
-					],
-					"source": "SCAG",
-					"shortName": "Battlerager"
+					]
 				},
 				{
 					"name": "Path of the Ancestral Guardian (UA)",
+					"shortName": "Ancestral Guardian (UA)",
+					"source": "UABarbarianPrimalPaths",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -947,13 +951,12 @@
 								]
 							}
 						]
-					],
-					"source": "UABarbarianPrimalPaths",
-					"shortName": "Ancestral Guardian (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Path of the Ancestral Guardian v2 (UA)",
+					"shortName": "Ancestral Guardian v2 (UA)",
+					"source": "UARevisedSubclasses",
 					"spellcastingAbility": "wis",
 					"subclassFeatures": [
 						[
@@ -1012,12 +1015,13 @@
 								]
 							}
 						]
-					],
-					"source": "UARevisedSubclasses",
-					"shortName": "Ancestral Guardian v2 (UA)"
+					]
 				},
 				{
 					"name": "Path of the Storm Herald (UA)",
+					"shortName": "Storm Herald (UA)",
+					"source": "UABarbarianPrimalPaths",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1182,13 +1186,13 @@
 								]
 							}
 						]
-					],
-					"source": "UABarbarianPrimalPaths",
-					"shortName": "Storm Herald (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Path of the Zealot (UA)",
+					"shortName": "Zealot (UA)",
+					"source": "UABarbarianPrimalPaths",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1254,13 +1258,12 @@
 								]
 							}
 						]
-					],
-					"source": "UABarbarianPrimalPaths",
-					"shortName": "Zealot (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Path of the Ancestral Guardian",
+					"shortName": "Ancestral Guardian",
+					"source": "XGE",
 					"spellcastingAbility": "wis",
 					"subclassFeatures": [
 						[
@@ -1320,12 +1323,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Ancestral Guardian"
+					]
 				},
 				{
 					"name": "Path of the Storm Herald",
+					"shortName": "Storm Herald",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -1462,12 +1465,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Storm Herald"
+					]
 				},
 				{
 					"name": "Path of the Zealot",
+					"shortName": "Zealot",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -1533,12 +1536,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Zealot"
+					]
 				},
 				{
 					"name": "Path of the Wild Soul (UA)",
+					"shortName": "Wild Soul (UA)",
+					"source": "UABarbarianAndMonk",
 					"subclassFeatures": [
 						[
 							{
@@ -1659,12 +1662,12 @@
 								]
 							}
 						]
-					],
-					"source": "UABarbarianAndMonk",
-					"shortName": "Wild Soul (UA)"
+					]
 				},
 				{
 					"name": "Path of the Beast (UA)",
+					"shortName": "Beast (UA)",
+					"source": "UA2020SubclassesPt1",
 					"subclassFeatures": [
 						[
 							{
@@ -1793,9 +1796,7 @@
 								]
 							}
 						]
-					],
-					"source": "UA2020SubclassesPt1",
-					"shortName": "Beast (UA)"
+					]
 				}
 			],
 			"fluff": [
@@ -2087,8 +2088,7 @@
 					"source": "XGE",
 					"page": 8
 				}
-			],
-			"page": 46
+			]
 		}
 	]
 }

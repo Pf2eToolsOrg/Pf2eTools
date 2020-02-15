@@ -3,6 +3,7 @@
 		{
 			"name": "Druid",
 			"source": "PHB",
+			"page": 64,
 			"srd": true,
 			"hd": {
 				"number": 1,
@@ -14,6 +15,72 @@
 			],
 			"spellcastingAbility": "wis",
 			"casterProgression": "full",
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					{
+						"proficiency": "shields",
+						"full": "shields (druids will not wear armor or use shields made of metal)"
+					}
+				],
+				"weapons": [
+					"clubs",
+					"daggers",
+					"darts",
+					"javelins",
+					"maces",
+					"quarterstaffs",
+					"scimitars",
+					"sickles",
+					"slings",
+					"spears"
+				],
+				"tools": [
+					"Herbalism kit"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"animal handling",
+								"insight",
+								"medicine",
+								"nature",
+								"perception",
+								"religion",
+								"survival"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a wooden {@item shield|phb} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item scimitar|phb} or (b) any {@filter simple melee weapon|items|source=phb|category=basic|type=simple weapon;melee weapon=sand}",
+					"{@item Leather armor|phb}, an {@item explorer's pack|phb}, and a {@item druidic focus|phb}"
+				],
+				"goldAlternative": "{@dice 2d4×10|2d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"wis": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light",
+						"medium",
+						{
+							"proficiency": "shields",
+							"full": "shields (druids will not wear armor or use shields made of metal)"
+						}
+					]
+				}
+			},
 			"classTableGroups": [
 				{
 					"colLabels": [
@@ -319,72 +386,12 @@
 					]
 				}
 			],
-			"startingProficiencies": {
-				"armor": [
-					"light",
-					"medium",
-					"shields (druids will not wear armor or use shields made of metal)"
-				],
-				"weapons": [
-					"clubs",
-					"daggers",
-					"darts",
-					"javelins",
-					"maces",
-					"quarterstaffs",
-					"scimitars",
-					"sickles",
-					"slings",
-					"spears"
-				],
-				"tools": [
-					"Herbalism kit"
-				],
-				"skills": [
-					{
-						"choose": {
-							"from": [
-								"arcana",
-								"animal handling",
-								"insight",
-								"medicine",
-								"nature",
-								"perception",
-								"religion",
-								"survival"
-							],
-							"count": 2
-						}
-					}
-				]
-			},
-			"startingEquipment": {
-				"additionalFromBackground": true,
-				"default": [
-					"(a) a wooden {@item shield|phb} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
-					"(a) a {@item scimitar|phb} or (b) any {@filter simple melee weapon|items|source=phb|category=basic|type=simple weapon;melee weapon=sand}",
-					"{@item Leather armor|phb}, an {@item explorer's pack|phb}, and a {@item druidic focus|phb}"
-				],
-				"goldAlternative": "{@dice 2d4×10|2d4 × 10|Starting Gold}"
-			},
-			"multiclassing": {
-				"requirements": {
-					"wis": 13
-				},
-				"proficienciesGained": {
-					"armor": [
-						"light",
-						"medium",
-						"shields (druids will not wear armor or use shields made of metal)"
-					]
-				}
-			},
 			"classFeatures": [
 				[
 					{
 						"name": "Druidic",
 						"entries": [
-							"You know Druidic, the secret language of druids. You can speak the language and use it to leave hidden messages. You and others who know this language automatically spot such a message. Others spot the message's presence with a successful DC 15 Wisdom (Perception) check but can't decipher it without magic."
+							"You know Druidic, the secret language of druids. You can speak the language and use it to leave hidden messages. You and others who know this language automatically spot such a message. Others spot the message's presence with a successful DC 15 Wisdom ({@skill Perception}) check but can't decipher it without magic."
 						]
 					},
 					{
@@ -704,6 +711,9 @@
 			"subclasses": [
 				{
 					"name": "Circle of the Land",
+					"shortName": "Land",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1017,13 +1027,12 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Land",
-					"srd": true
+					]
 				},
 				{
 					"name": "Circle of the Moon",
+					"shortName": "Moon",
+					"source": "PHB",
 					"subclassFeatures": [
 						[
 							{
@@ -1145,12 +1154,13 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Moon"
+					]
 				},
 				{
 					"name": "Circle of Dreams (UA)",
+					"shortName": "Dreams (UA)",
+					"source": "UADruid",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1211,13 +1221,13 @@
 								]
 							}
 						]
-					],
-					"source": "UADruid",
-					"shortName": "Dreams (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Circle of the Shepherd (UA)",
+					"shortName": "Shepherd (UA)",
+					"source": "UADruid",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1320,13 +1330,13 @@
 								]
 							}
 						]
-					],
-					"source": "UADruid",
-					"shortName": "Shepherd (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Circle of the Shepherd v2 (UA)",
+					"shortName": "Shepherd v2 (UA)",
+					"source": "UARevisedClassOptions",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1438,13 +1448,12 @@
 								]
 							}
 						]
-					],
-					"source": "UARevisedClassOptions",
-					"shortName": "Shepherd v2 (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Circle of Twilight (UA)",
+					"shortName": "Twilight (UA)",
+					"source": "UADruid",
 					"subclassFeatures": [
 						[
 							{
@@ -1504,12 +1513,12 @@
 								]
 							}
 						]
-					],
-					"source": "UADruid",
-					"shortName": "Twilight (UA)"
+					]
 				},
 				{
 					"name": "Circle of Dreams",
+					"shortName": "Dreams",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -1573,12 +1582,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Dreams"
+					]
 				},
 				{
 					"name": "Circle of the Shepherd",
+					"shortName": "Shepherd",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -1680,12 +1689,13 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Shepherd"
+					]
 				},
 				{
 					"name": "Circle of Spores (UA)",
+					"shortName": "Spores (UA)",
+					"source": "UAThreeSubclasses",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1788,13 +1798,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAThreeSubclasses",
-					"shortName": "Spores (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Circle of Spores",
+					"shortName": "Spores",
+					"source": "GGR",
+					"page": 26,
 					"subclassFeatures": [
 						[
 							{
@@ -1916,13 +1926,13 @@
 								]
 							}
 						]
-					],
-					"source": "GGR",
-					"shortName": "Spores",
-					"page": 26
+					]
 				},
 				{
 					"name": "Circle of Wildfire (UA)",
+					"shortName": "Wildfire (UA)",
+					"source": "UAClericDruidWizard",
+					"page": 2,
 					"subclassFeatures": [
 						[
 							{
@@ -2026,10 +2036,7 @@
 								]
 							}
 						]
-					],
-					"source": "UAClericDruidWizard",
-					"shortName": "Wildfire (UA)",
-					"page": 2
+					]
 				}
 			],
 			"fluff": [
@@ -3407,8 +3414,7 @@
 					"source": "XGE",
 					"page": 21
 				}
-			],
-			"page": 64
+			]
 		}
 	]
 }

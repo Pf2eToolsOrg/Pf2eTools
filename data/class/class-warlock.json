@@ -3,6 +3,7 @@
 		{
 			"name": "Warlock",
 			"source": "PHB",
+			"page": 105,
 			"srd": true,
 			"hd": {
 				"number": 1,
@@ -13,6 +14,54 @@
 				"cha"
 			],
 			"spellcastingAbility": "cha",
+			"casterProgression": "pact",
+			"startingProficiencies": {
+				"armor": [
+					"light"
+				],
+				"weapons": [
+					"simple"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"deception",
+								"history",
+								"intimidation",
+								"investigation",
+								"nature",
+								"religion"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item component pouch|phb} or (b) an {@item arcane focus|phb}",
+					"(a) a {@item scholar's pack|phb} or (b) a {@item dungeoneer's pack|phb}",
+					"{@item Leather armor|phb}, any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}, and two {@item dagger|phb|daggers}"
+				],
+				"goldAlternative": "{@dice 4d4×10|4d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"cha": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light"
+					],
+					"weapons": [
+						"simple"
+					]
+				}
+			},
 			"classTableGroups": [
 				{
 					"colLabels": [
@@ -166,53 +215,6 @@
 					]
 				}
 			],
-			"startingProficiencies": {
-				"armor": [
-					"light"
-				],
-				"weapons": [
-					"simple"
-				],
-				"skills": [
-					{
-						"choose": {
-							"from": [
-								"arcana",
-								"deception",
-								"history",
-								"intimidation",
-								"investigation",
-								"nature",
-								"religion"
-							],
-							"count": 2
-						}
-					}
-				]
-			},
-			"startingEquipment": {
-				"additionalFromBackground": true,
-				"default": [
-					"(a) a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
-					"(a) a {@item component pouch|phb} or (b) an {@item arcane focus|phb}",
-					"(a) a {@item scholar's pack|phb} or (b) a {@item dungeoneer's pack|phb}",
-					"{@item Leather armor|phb}, any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}, and two {@item dagger|phb|daggers}"
-				],
-				"goldAlternative": "{@dice 4d4×10|4d4 × 10|Starting Gold}"
-			},
-			"multiclassing": {
-				"requirements": {
-					"cha": 13
-				},
-				"proficienciesGained": {
-					"armor": [
-						"light"
-					],
-					"weapons": [
-						"simple"
-					]
-				}
-			},
 			"classFeatures": [
 				[
 					{
@@ -551,6 +553,8 @@
 			"subclasses": [
 				{
 					"name": "The Archfey",
+					"shortName": "Archfey",
+					"source": "PHB",
 					"subclassFeatures": [
 						[
 							{
@@ -651,12 +655,13 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Archfey"
+					]
 				},
 				{
 					"name": "The Fiend",
+					"shortName": "Fiend",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -756,13 +761,12 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Fiend",
-					"srd": true
+					]
 				},
 				{
 					"name": "Ghost in the Machine (UA)",
+					"shortName": "Ghost in the Machine (UA)",
+					"source": "UAModernMagic",
 					"subclassFeatures": [
 						[
 							{
@@ -870,12 +874,12 @@
 								]
 							}
 						]
-					],
-					"source": "UAModernMagic",
-					"shortName": "Ghost in the Machine (UA)"
+					]
 				},
 				{
 					"name": "The Great Old One",
+					"shortName": "Great Old One",
+					"source": "PHB",
 					"subclassFeatures": [
 						[
 							{
@@ -974,12 +978,12 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Great Old One"
+					]
 				},
 				{
 					"name": "The Undying",
+					"shortName": "Undying",
+					"source": "SCAG",
 					"subclassFeatures": [
 						[
 							{
@@ -1081,12 +1085,13 @@
 								]
 							}
 						]
-					],
-					"source": "SCAG",
-					"shortName": "Undying"
+					]
 				},
 				{
 					"name": "The Undying Light (UA)",
+					"shortName": "Undying Light (UA)",
+					"source": "UALightDarkUnderdark",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1225,13 +1230,13 @@
 								]
 							}
 						]
-					],
-					"source": "UALightDarkUnderdark",
-					"shortName": "Undying Light (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "The Celestial (UA)",
+					"shortName": "Celestial (UA)",
+					"source": "UARevisedClassOptions",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1339,13 +1344,12 @@
 								]
 							}
 						]
-					],
-					"source": "UARevisedClassOptions",
-					"shortName": "Celestial (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "The Seeker (UA)",
+					"shortName": "Seeker (UA)",
+					"source": "UATheFaithful",
 					"subclassFeatures": [
 						[
 							{
@@ -1447,12 +1451,12 @@
 								]
 							}
 						]
-					],
-					"source": "UATheFaithful",
-					"shortName": "Seeker (UA)"
+					]
 				},
 				{
 					"name": "The Raven Queen (UA)",
+					"shortName": "Raven Queen (UA)",
+					"source": "UAWarlockAndWizard",
 					"subclassFeatures": [
 						[
 							{
@@ -1554,12 +1558,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAWarlockAndWizard",
-					"shortName": "Raven Queen (UA)"
+					]
 				},
 				{
 					"name": "The Hexblade (UA)",
+					"shortName": "Hexblade (UA)",
+					"source": "UAWarlockAndWizard",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1673,13 +1678,12 @@
 								]
 							}
 						]
-					],
-					"source": "UAWarlockAndWizard",
-					"shortName": "Hexblade (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "The Celestial",
+					"shortName": "Celestial",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -1787,12 +1791,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Celestial"
+					]
 				},
 				{
 					"name": "The Hexblade",
+					"shortName": "Hexblade",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -1909,12 +1913,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Hexblade"
+					]
 				},
 				{
 					"name": "The Kraken (Livestream)",
+					"shortName": "Kraken (Stream)",
+					"source": "Stream",
 					"subclassFeatures": [
 						[
 							{
@@ -2043,12 +2047,12 @@
 								]
 							}
 						]
-					],
-					"source": "Stream",
-					"shortName": "Kraken (Stream)"
+					]
 				},
 				{
 					"name": "Lolth (Twitter)",
+					"shortName": "Lolth (Twitter)",
+					"source": "Twitter",
 					"subclassFeatures": [
 						[
 							{
@@ -2176,12 +2180,12 @@
 								]
 							}
 						]
-					],
-					"source": "Twitter",
-					"shortName": "Lolth (Twitter)"
+					]
 				},
 				{
 					"name": "The Lurker in the Deep (UA)",
+					"shortName": "Lurker in the Deep (UA)",
+					"source": "UASorcererAndWarlock",
 					"subclassFeatures": [
 						[
 							{
@@ -2331,12 +2335,12 @@
 								]
 							}
 						]
-					],
-					"source": "UASorcererAndWarlock",
-					"shortName": "Lurker in the Deep (UA)"
+					]
 				},
 				{
 					"name": "The Noble Genie (UA)",
+					"shortName": "Noble Genie (UA)",
+					"source": "UA2020SubclassesPt1",
 					"subclassFeatures": [
 						[
 							{
@@ -2514,9 +2518,7 @@
 								]
 							}
 						]
-					],
-					"source": "UA2020SubclassesPt1",
-					"shortName": "Noble Genie (UA)"
+					]
 				}
 			],
 			"fluff": [
@@ -2778,8 +2780,7 @@
 					"page": 53,
 					"source": "XGE"
 				}
-			],
-			"page": 105
+			]
 		}
 	]
 }

@@ -4,6 +4,10 @@ class FilterUtil {}
 FilterUtil.SUB_HASH_PREFIX_LENGTH = 4;
 
 class PageFilter {
+	static defaultSourceSelFn (val) {
+		return !SourceUtil.isNonstandardSource(val);
+	}
+
 	constructor () {
 		this._sourceFilter = SourceFilter.getInstance();
 
@@ -13,6 +17,12 @@ class PageFilter {
 	get filterBox () { return this._filterBox; }
 	get sourceFilter () { return this._sourceFilter; }
 
+	mutateAndAddToFilters (entity, isExcluded) {
+		this.mutateForFilters(entity);
+		this.addToFilters(entity, isExcluded);
+	}
+
+	mutateForFilters (entity) { throw new Error("Unimplemented!"); }
 	addToFilters (entity, isExcluded) { throw new Error("Unimplemented!"); }
 	toDisplay (values, entity) { throw new Error("Unimplemented!"); }
 	async _pPopulateBoxOptions () { throw new Error("Unimplemented!"); }
@@ -23,6 +33,225 @@ class PageFilter {
 		await this._filterBox.pDoLoadState();
 		return this._filterBox;
 	}
+}
+
+class ModalFilter {
+	static _$getFilterColumnHeaders (btnMeta) {
+		return btnMeta.map((it, i) => $(`<button class="col-${it.width} ${i === 0 ? "pl-0" : i === btnMeta.length ? "pr-0" : ""} sort btn btn-default btn-xs" data-sort="${it.sort}" ${it.title ? `title="${it.title}"` : ""}>${it.text} <span class="caret_wrp"></span></button>`));
+	}
+
+	/**
+	 * (Public method for Plutonium use)
+	 * Handle doing a checkbox-based selection toggle on a list.
+	 * @param list
+	 * @param item List item. Must have a "data" property with a "cbSel" (the checkbox).
+	 * @param evt Click event.
+	 * @param [opts] Options object.
+	 * @param [opts.isNoHighlightSelection] If highlighting selected rows should be skipped.
+	 * @param [opts.fnOnSelectionChange] Function to call when selection status of an item changes.
+	 */
+	static handleSelectClick (list, item, evt, opts) {
+		opts = opts || {};
+		evt.preventDefault();
+		evt.stopPropagation();
+
+		if (evt && evt.shiftKey && list.__firstListSelection && list.__firstListSelection !== item) {
+			// on a shift-click, toggle all the checkboxes to the value of the first selected one
+			// if it's a _further_ shift-click, toggle the range to the opposite of whatever the target box was...
+
+			const setTo = list.__lastListSelection
+				? item.data.cbSel ? !item.data.cbSel.checked : false
+				: list.__firstListSelection.data.cbSel ? list.__firstListSelection.data.cbSel.checked : false;
+
+			const ix1 = list.visibleItems.indexOf(list.__firstListSelection);
+			const ix2 = list.visibleItems.indexOf(item);
+
+			const [ixStart, ixEnd] = [ix1, ix2].sort(SortUtil.ascSort);
+			for (let i = ixStart; i <= ixEnd; ++i) {
+				const it = list.visibleItems[i];
+
+				//   ...except for the first item, which gets left at whatever it was set to
+				if (list.__lastListSelection && it === list.__firstListSelection) continue;
+
+				if (it.data.cbSel) {
+					it.data.cbSel.checked = setTo;
+					if (opts.fnOnSelectionChange) opts.fnOnSelectionChange(it, setTo);
+				}
+
+				if (!opts.isNoHighlightSelection) {
+					if (setTo) it.ele.classList.add("list-multi-selected");
+					else it.ele.classList.remove("list-multi-selected");
+				}
+			}
+
+			list.__lastListSelection = item;
+		} else {
+			// on a normal click, or if there's been no initial selection, just toggle the checkbox
+
+			if (item.data.cbSel) {
+				item.data.cbSel.checked = !item.data.cbSel.checked;
+
+				if (opts.fnOnSelectionChange) opts.fnOnSelectionChange(item, item.data.cbSel.checked);
+
+				if (!opts.isNoHighlightSelection) {
+					if (item.data.cbSel.checked) item.ele.classList.add("list-multi-selected");
+					else item.ele.classList.remove("list-multi-selected");
+				}
+			} else {
+				if (!opts.isNoHighlightSelection) {
+					item.ele.classList.remove("list-multi-selected");
+				}
+			}
+
+			list.__firstListSelection = item;
+			list.__lastListSelection = null;
+		}
+	}
+
+	/**
+	 * (Public method for Plutonium use)
+	 */
+	static bindSelectAllCheckbox ($cbAll, list) {
+		$cbAll.change(() => {
+			const isChecked = $cbAll.prop("checked");
+			list.visibleItems.forEach(it => {
+				if (it.data.cbSel) it.data.cbSel.checked = isChecked;
+
+				if (isChecked) it.ele.classList.add("list-multi-selected");
+				else it.ele.classList.remove("list-multi-selected");
+			});
+		});
+	}
+
+	/**
+	 * @param opts Options object.
+	 * @param opts.modalTitle
+	 * @param opts.fnSort
+	 * @param opts.pageFilter
+	 * @param [opts.namespace]
+	 */
+	constructor (opts) {
+		this._modalTitle = opts.modalTitle;
+		this._fnSort = opts.fnSort;
+		this._pageFilter = opts.pageFilter;
+		this._namespace = opts.namespace;
+
+		this._filterCache = null;
+	}
+
+	async pGetUserSelection () {
+		// eslint-disable-next-line no-async-promise-executor
+		return new Promise(async resolve => {
+			let $wrpModalInner;
+
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				fullHeight: true,
+				title: `Filter/Search for ${this._modalTitle}`,
+				cbClose: (isDataEntered) => {
+					$wrpModalInner.detach();
+					if (!isDataEntered) resolve([]);
+				},
+				isLarge: true,
+				zIndex: 999
+			});
+
+			if (this._filterCache) {
+				$wrpModalInner = this._filterCache.$wrpModalInner.appendTo($modalInner);
+			} else {
+				await this._pInit();
+
+				const $ovlLoading = $(`<div class="w-100 h-100 flex-vh-center"><i class="dnd-font text-muted">Loading...</i></div>`).appendTo($modalInner);
+
+				const $iptSearch = $(`<input class="form-control" type="search" placeholder="Search...">`);
+				const $btnReset = $(`<button class="btn btn-default">Reset</button>`);
+				const $wrpFormTop = $$`<div class="flex input-group btn-group w-100 lst__form-top">${$iptSearch}${$btnReset}</div>`;
+
+				const $wrpFormBottom = $(`<div class="w-100"/>`);
+
+				const $wrpFormHeaders = $(`<div class="sortlabel lst__form-bottom"/>`);
+				const $cbSelAll = $(`<input type="checkbox">`);
+
+				$$`<label class="btn btn-default col-1 flex-vh-center">${$cbSelAll}</label>`.appendTo($wrpFormHeaders);
+				this._$getColumnHeaders().forEach($ele => $wrpFormHeaders.append($ele));
+
+				const $wrpForm = $$`<div class="flex-col w-100 mb-2">${$wrpFormTop}${$wrpFormBottom}${$wrpFormHeaders}</div>`;
+				const $wrpList = $(`<ul class="list mb-2 h-100"/>`);
+
+				const $btnConfirm = $(`<button class="btn btn-default">Confirm</button>`);
+
+				const list = new List({
+					$iptSearch,
+					$wrpList,
+					fnSort: this._fnSort
+				});
+
+				ModalFilter.bindSelectAllCheckbox($cbSelAll, list);
+				SortUtil.initBtnSortHandlers($wrpFormHeaders, list);
+
+				const allData = await this._pLoadAllData();
+				const pageFilter = this._pageFilter;
+
+				await pageFilter.pInitFilterBox({
+					$wrpFormTop,
+					$btnReset,
+					$wrpMiniPills: $wrpFormBottom,
+					namespace: this._namespace
+				});
+
+				allData.forEach((it, i) => {
+					pageFilter.mutateAndAddToFilters(it);
+					const filterListItem = this._getListItem(pageFilter, it, i);
+					list.addItem(filterListItem);
+					filterListItem.ele.addEventListener("click", evt => ModalFilter.handleSelectClick(list, filterListItem, evt));
+				});
+
+				list.init();
+				list.update();
+
+				const handleFilterChange = () => {
+					const f = pageFilter.filterBox.getValues();
+					list.filter(li => {
+						const it = allData[li.ix];
+						return pageFilter.toDisplay(f, it);
+					});
+				};
+
+				$(pageFilter.filterBox).on(FilterBox.EVNT_VALCHANGE, handleFilterChange);
+				pageFilter.filterBox.render();
+				handleFilterChange();
+
+				$ovlLoading.remove();
+
+				$wrpModalInner = $$`<div class="flex-col h-100">
+					${$wrpForm}
+					${$wrpList}
+					<div class="flex-vh-center">${$btnConfirm}</div>
+				</div>`.appendTo($modalInner);
+
+				this._filterCache = {$wrpModalInner, $btnConfirm, pageFilter, list, $cbSelAll};
+			}
+
+			this._filterCache.$btnConfirm.off("click").click(async () => {
+				const checked = this._filterCache.list.visibleItems.filter(it => it.data.cbSel.checked);
+				resolve(checked);
+
+				doClose(true);
+
+				// region reset selection state
+				this._filterCache.$cbSelAll.prop("checked", false);
+				this._filterCache.list.items.forEach(it => {
+					if (it.data.cbSel) it.data.cbSel.checked = false;
+					it.ele.classList.remove("list-multi-selected");
+				});
+				// endregion
+			});
+		});
+	}
+
+	_$getColumnHeaders () { throw new Error(`Unimplemented!`); }
+	async _pInit () { /* Implement as required */ }
+	async _pLoadAllData () { throw new Error(`Unimplemented!`); }
+	async _getListItem () { throw new Error(`Unimplemented!`); }
 }
 
 class FilterBox extends ProxyBase {
@@ -81,6 +310,8 @@ class FilterBox extends ProxyBase {
 		this._$body = $(`body`);
 		this._$overlay = null;
 
+		this._cachedState = null;
+
 		this._filters.forEach(f => f.filterBox = this);
 	}
 
@@ -116,22 +347,21 @@ class FilterBox extends ProxyBase {
 
 	async pDoLoadState () {
 		const toLoad = await StorageUtil.pGetForPage(this._getNamespacedStorageKey());
-		if (toLoad != null) {
-			this._setStateFromLoaded(toLoad.box);
-			this._filters.forEach(it => it.setStateFromLoaded(toLoad.filters));
-		}
+		if (toLoad != null) this._setStateFromLoaded(toLoad);
 	}
 
 	_setStateFromLoaded (state) {
-		this._proxyAssign("meta", "_meta", "__meta", state.meta || {}, true);
-		this._proxyAssign("minisHidden", "_minisHidden", "__minisHidden", state.minisHidden || {}, true);
-		this._proxyAssign("combineAs", "_combineAs", "__combineAs", state.combineAs || {}, true);
+		state.box = state.box || {};
+		this._proxyAssign("meta", "_meta", "__meta", state.box.meta || {}, true);
+		this._proxyAssign("minisHidden", "_minisHidden", "__minisHidden", state.box.minisHidden || {}, true);
+		this._proxyAssign("combineAs", "_combineAs", "__combineAs", state.box.combineAs || {}, true);
+		this._filters.forEach(it => it.setStateFromLoaded(state.filters));
 	}
 
-	async _pDoSaveState () {
+	_getSaveableState () {
 		const filterOut = {};
 		this._filters.forEach(it => Object.assign(filterOut, it.getSaveableState()));
-		const toSave = {
+		return {
 			box: {
 				meta: {...this.__meta},
 				minisHidden: {...this.__minisHidden},
@@ -139,7 +369,10 @@ class FilterBox extends ProxyBase {
 			},
 			filters: filterOut
 		};
-		await StorageUtil.pSetForPage(this._getNamespacedStorageKey(), toSave);
+	}
+
+	async _pDoSaveState () {
+		await StorageUtil.pSetForPage(this._getNamespacedStorageKey(), this._getSaveableState());
 	}
 
 	render () {
@@ -164,8 +397,11 @@ class FilterBox extends ProxyBase {
 			const $btnReset = $(`<button class="btn btn-xs btn-default mr-3" title="Reset filters. SHIFT to reset everything.">Reset</button>`)
 				.click(evt => this.reset(evt.shiftKey));
 
-			const $btnSettings = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-cog"/></button>`)
+			const $btnSettings = $(`<button class="btn btn-xs btn-default mr-3"><span class="glyphicon glyphicon-cog"/></button>`)
 				.click(() => this._openSettingsModal());
+
+			const $btnSaveAlt = $(`<button class="btn btn-xs btn-primary" title="Save"><span class="glyphicon glyphicon-ok"/></button>`)
+				.click(() => this.pHide());
 
 			const $wrpBtnCombineFilters = $(`<div class="btn-group mr-3"></div>`);
 			const $btnCombineFilterSettings = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-cog"/></button>`)
@@ -183,7 +419,13 @@ class FilterBox extends ProxyBase {
 			this._addHook("meta", "modeCombineFilters", hook);
 			hook();
 
-			$$`<div class="ui-modal__inner ui-modal__inner--large dropdown-menu">
+			const $btnSave = $(`<button class="btn btn-primary fltr__btn-close mr-2">Save</button>`)
+				.click(() => this.pHide());
+
+			const $btnCancel = $(`<button class="btn btn-default fltr__btn-close">Cancel</button>`)
+				.click(() => this.pHide(true));
+
+			$$`<div class="ui-modal__inner flex-col ui-modal__inner--large dropdown-menu">
 			<div class="split mb-2 mt-2 flex-v-center mobile__flex-col">
 				<h4 class="m-0 mobile__mb-2">Filters</h4>
 				<div class="flex-v-center mobile__flex-col">
@@ -198,6 +440,7 @@ class FilterBox extends ProxyBase {
 						</div>
 						${$btnReset}
 						${$btnSettings}
+						${$btnSaveAlt}
 					</div>
 				</div>
 			</div>
@@ -207,6 +450,8 @@ class FilterBox extends ProxyBase {
 			<div class="ui-modal__scroller smooth-scroll px-1">
 				${$children}
 			</div>
+			<hr class="my-1 w-100">
+			<div class="w-100 flex-vh-center my-1">${$btnSave}${$btnCancel}</div>
 			</div>`
 				.click((evt) => evt.stopPropagation())
 				.appendTo(this._$overlay);
@@ -225,7 +470,7 @@ class FilterBox extends ProxyBase {
 				.prependTo(this._$wrpFormTop);
 			const summaryHiddenHook = () => {
 				$btnToggleSummaryHidden.toggleClass("active", !!this._meta.isSummaryHidden);
-				this._$wrpMiniPills.toggleClass("hidden", !!this._meta.isSummaryHidden);
+				this._$wrpMiniPills.toggleClass("ve-hidden", !!this._meta.isSummaryHidden);
 			};
 			this._addHook("meta", "isSummaryHidden", summaryHiddenHook);
 			summaryHiddenHook();
@@ -252,11 +497,8 @@ class FilterBox extends ProxyBase {
 	}
 
 	_render_$getOverlay () {
-		const $overlay = $(`<div class="modal__wrp modal__wrp--no-centre"/>`).hide().appendTo(this._$body);
-
-		$overlay.click(() => this.hide());
-
-		return $overlay;
+		return $(`<div class="modal__wrp modal__wrp--no-centre"/>`).hide().appendTo(this._$body)
+			.click(() => this.pHide(true));
 	}
 
 	_openSettingsModal () {
@@ -312,14 +554,38 @@ class FilterBox extends ProxyBase {
 	}
 
 	show () {
+		this._cachedState = this._getSaveableState();
 		this._$body.css("overflow", "hidden");
 		this._$overlay.show();
 	}
 
-	hide () {
-		this._$body.css("overflow", "");
-		this._$overlay.hide();
-		this.fireChangeEvent();
+	async pHide (isCancel = false) {
+		if (this._cachedState && isCancel) {
+			const curState = this._getSaveableState();
+			const hasChanges = !CollectionUtil.deepEquals(curState, this._cachedState);
+
+			this._$body.css("overflow", "");
+			this._$overlay.hide();
+
+			if (hasChanges) {
+				const isSave = await InputUiUtil.pGetUserBoolean({
+					title: "Unsaved Changes",
+					textYes: "Save",
+					textNo: "Discard"
+				});
+				if (isSave) {
+					this._cachedState = null;
+					this.fireChangeEvent();
+					return;
+				} else this._setStateFromLoaded(this._cachedState);
+			}
+		} else {
+			this._$body.css("overflow", "");
+			this._$overlay.hide();
+			this.fireChangeEvent();
+		}
+
+		this._cachedState = null;
 	}
 
 	showAllFilters () {
@@ -347,7 +613,7 @@ class FilterBox extends ProxyBase {
 		});
 		const updatedUrlHeaders = new Set();
 		const consumed = new Set();
-		let search;
+		let filterInitialSearch;
 
 		const filterBoxState = {};
 		const statePerFilter = {};
@@ -361,7 +627,7 @@ class FilterBox extends ProxyBase {
 
 				// special case for the "search" keyword
 				if (urlHeader === "search") {
-					search = data.clean[0];
+					filterInitialSearch = data.clean[0];
 					consumed.add(data.raw);
 					return;
 				}
@@ -406,7 +672,7 @@ class FilterBox extends ProxyBase {
 				`${location.origin}${location.pathname}#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`
 			);
 
-			if (search && this._$iptSearch) this._$iptSearch.val(search).change().keydown().keyup();
+			if (filterInitialSearch && this._$iptSearch) this._$iptSearch.val(filterInitialSearch).change().keydown().keyup();
 			this.fireChangeEvent();
 			Hist.hashChange();
 			return outSub;
@@ -474,7 +740,7 @@ class FilterBox extends ProxyBase {
 		const anyNotDefault = Object.keys(defaultMeta).find(k => this._meta[k] !== defaultMeta[k]);
 		if (anyNotDefault) {
 			const serMeta = Object.keys(defaultMeta).map(k => UrlUtil.mini.compress(this._meta[k] === undefined ? defaultMeta[k] : this._meta[k]));
-			return [UrlUtil.packSubHash(this._getSubhashPrefix("meta"), serMeta)]
+			out.push(UrlUtil.packSubHash(this._getSubhashPrefix("meta"), serMeta));
 		}
 
 		// serialize minisHidden as `key=value` pairs
@@ -506,7 +772,7 @@ class FilterBox extends ProxyBase {
 		const isOrDisplay = (filters, vals = entryVals) => {
 			const res = filters.map((f, i) => {
 				// filter out "ignored" filter (i.e. all white)
-				if (!boxState[f.header] || !boxState[f.header]._isActive) return null;
+				if (!f.isActive(boxState)) return null;
 				return f.toDisplay(boxState, vals[i]);
 			}).filter(it => it != null);
 			return res.length === 0 || res.find(it => it);
@@ -582,7 +848,7 @@ class FilterItem {
 	 * An alternative to string `Filter.items` with a change-handling function
 	 * @param options containing:
 	 * @param options.item the item string
-	 * @param [options.changeFn] (optional) function to call when filter is changed
+	 * @param [options.pFnChange] (optional) function to call when filter is changed
 	 * @param [options.group] (optional) group this item belongs to.
 	 * @param [options.nest] (optional) nest this item belongs to
 	 * @param [options.nestHidden] (optional) if nested, default visibility state
@@ -591,7 +857,7 @@ class FilterItem {
 	 */
 	constructor (options) {
 		this.item = options.item;
-		this.changeFn = options.changeFn;
+		this.pFnChange = options.pFnChange;
 		this.group = options.group;
 		this.nest = options.nest;
 		this.nestHidden = options.nestHidden;
@@ -668,8 +934,29 @@ class FilterBase extends BaseComponent {
 		return Parser._parse_bToA(FilterBase._SUB_HASH_PREFIXES, prefix);
 	}
 
+	_$getBtnMobToggleControls ($wrpControls) {
+		const $btnMobToggleControls = $(`<button class="btn btn-xs btn-default mobile__visible ml-2 px-3"><span class="glyphicon glyphicon-option-vertical"/></button>`)
+			.click(() => this._meta.isMobileHeaderHidden = !this._meta.isMobileHeaderHidden);
+		const hkMobHeaderHidden = () => {
+			$btnMobToggleControls.toggleClass("active", !this._meta.isMobileHeaderHidden);
+			$wrpControls.toggleClass("mobile__hidden", !!this._meta.isMobileHeaderHidden);
+		};
+		this._addHook("meta", "isMobileHeaderHidden", hkMobHeaderHidden);
+		hkMobHeaderHidden();
+
+		return $btnMobToggleControls;
+	}
+
 	getChildFilters () { return []; }
 	getDefaultMeta () { return {...FilterBase._DEFAULT_META}; }
+
+	/**
+	 * @param vals Previously-read filter value may be passed in for performance.
+	 */
+	isActive (vals) {
+		vals = vals || this.getValues();
+		return vals[this.header]._isActive;
+	}
 
 	$render () { throw new Error(`Unimplemented!`); }
 	getValues () { throw new Error(`Unimplemented!`); }
@@ -686,7 +973,8 @@ class FilterBase extends BaseComponent {
 	setFromValues () { throw new Error(`Unimplemented!`); }
 }
 FilterBase._DEFAULT_META = {
-	isHidden: false
+	isHidden: false,
+	isMobileHeaderHidden: true
 };
 // These are assumed to be the same length (4 characters)
 FilterBase._SUB_HASH_STATE_PREFIX = "flst";
@@ -818,7 +1106,7 @@ class Filter extends FilterBase {
 				case "state": {
 					hasState = true;
 					const nxtState = {};
-					Object.keys(this._state).forEach(k => nxtState[k] = 0);
+					Object.keys(this._state).forEach(k => nxtState[k] = this._getDefaultState(k));
 					vals.forEach(v => {
 						const [statePropLower, state] = v.split("=");
 						const stateProp = Object.keys(this._state).find(k => k.toLowerCase() === statePropLower);
@@ -882,7 +1170,7 @@ class Filter extends FilterBase {
 		const hook = () => {
 			const val = FilterBox._PILL_STATES[this._state[item.item]];
 			$btnPill.attr("state", val);
-			if (item.changeFn) item.changeFn(item.item, val);
+			if (item.pFnChange) item.pFnChange(item.item, val);
 		};
 		this._addHook("state", item.item, hook);
 		hook();
@@ -911,7 +1199,7 @@ class Filter extends FilterBase {
 
 		// This one-liner is slightly more performant than doing it nicely
 		const $btnMini = $(
-			`<div class="fltr__mini-pill ${this._filterBox.isMinisHidden(this.header) ? "hidden" : ""} ${this._deselFn && this._deselFn(item.item) ? "fltr__mini-pill--default-desel" : ""} ${this._selFn && this._selFn(item.item) ? "fltr__mini-pill--default-sel" : ""}" state="${FilterBox._PILL_STATES[this._state[item.item]]}">${toDisplay}</div>`
+			`<div class="fltr__mini-pill ${this._filterBox.isMinisHidden(this.header) ? "ve-hidden" : ""} ${this._deselFn && this._deselFn(item.item) ? "fltr__mini-pill--default-desel" : ""} ${this._selFn && this._selFn(item.item) ? "fltr__mini-pill--default-sel" : ""}" state="${FilterBox._PILL_STATES[this._state[item.item]]}">${toDisplay}</div>`
 		).title(`${this._displayFnTitle ? `${this._displayFnTitle(item.item)} (` : ""}Filter: ${this.header}${this._displayFnTitle ? ")" : ""}`).click(() => {
 			this._state[item.item] = 0;
 			this._filterBox.fireChangeEvent();
@@ -920,7 +1208,7 @@ class Filter extends FilterBase {
 		const hook = () => $btnMini.attr("state", FilterBox._PILL_STATES[this._state[item.item]]);
 		this._addHook("state", item.item, hook);
 
-		const hideHook = () => $btnMini.toggleClass("hidden", this._filterBox.isMinisHidden(this.header));
+		const hideHook = () => $btnMini.toggleClass("ve-hidden", this._filterBox.isMinisHidden(this.header));
 		this._filterBox.registerMinisHiddenHook(this.header, hideHook);
 
 		return $btnMini;
@@ -971,7 +1259,7 @@ class Filter extends FilterBase {
 		const hookShowHide = () => {
 			$btnShowHide.toggleClass("active", this._meta.isHidden);
 			$wrpStateBtnsOuter.toggle(!this._meta.isHidden);
-			$wrpSummary.toggleClass("hidden", !this._meta.isHidden).empty();
+			$wrpSummary.toggleClass("ve-hidden", !this._meta.isHidden).empty();
 
 			// render summary
 			const cur = this.getValues()[this.header];
@@ -1061,10 +1349,12 @@ class Filter extends FilterBase {
 		this._doRenderPills();
 		this._doRenderMiniPills();
 
+		const $btnMobToggleControls = this._$getBtnMobToggleControls($wrpControls);
+
 		this.__$wrpFilter = $$`<div>
 			${opts.isFirst ? "" : `<div class="fltr__dropdown-divider ${opts.isMulti ? "fltr__dropdown-divider--indented" : ""} mb-1"/>`}
 			<div class="split fltr__h ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
-				<div class="ml-2">${opts.isMulti ? "\u2012" : ""} ${this.header}</div>
+				<div class="ml-2 fltr__h-text flex-h-center">${opts.isMulti ? `<span class="mr-2">\u2012</span>` : ""}${this.header}${$btnMobToggleControls}</div>
 				${$wrpControls}
 			</div>
 			${this.__$wrpPills}
@@ -1344,7 +1634,25 @@ Filter._DEFAULT_META = {
 };
 
 class SourceFilter extends Filter {
+	constructor (opts) {
+		super(opts);
+		this.__tmpState = {ixAdded: 0};
+		this._tmpState = this._getProxy("tmpState", this.__tmpState);
+	}
+
 	doSetPillsClear () { return this._doSetPillsClear(); }
+
+	addItem (item) {
+		const out = super.addItem(item);
+		this._tmpState.ixAdded++;
+		return out;
+	}
+
+	removeItem (item) {
+		const out = super.removeItem(item);
+		this._tmpState.ixAdded--;
+		return out;
+	}
 
 	_$getHeaderControls_addExtraStateBtns (opts, $wrpStateBtnsOuter) {
 		const $btnSupplements = $(`<button class="btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}" title="SHIFT to include UA/etc.">Core/Supplements</button>`)
@@ -1353,7 +1661,16 @@ class SourceFilter extends Filter {
 		const $btnAdventures = $(`<button class="btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}" title="SHIFT to include UA/etc.">Adventures</button>`)
 			.click(evt => this._doSetPinsAdventures(evt.shiftKey));
 
-		$$`<div class="btn-group mr-2 w-100 flex-v-center">${$btnSupplements}${$btnAdventures}</div>`.prependTo($wrpStateBtnsOuter);
+		const $btnHomebrew = $(`<button class="btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}">Homebrew</button>`)
+			.click(() => this._doSetPinsHomebrew());
+		const hkIsBrewActive = () => {
+			const hasBrew = Object.keys(this.__state).some(src => SourceUtil.getFilterGroup(src) === 2);
+			$btnHomebrew.toggleClass("ve-hidden", !hasBrew);
+		};
+		this._addHook("tmpState", "ixAdded", hkIsBrewActive);
+		hkIsBrewActive();
+
+		$$`<div class="btn-group mr-2 w-100 flex-v-center mobile__m-1 mobile__mb-2">${$btnSupplements}${$btnAdventures}${$btnHomebrew}</div>`.prependTo($wrpStateBtnsOuter);
 	}
 
 	_doSetPinsSupplements (isIncludeUnofficial) {
@@ -1365,13 +1682,18 @@ class SourceFilter extends Filter {
 		Object.keys(this._state).forEach(k => this._state[k] = SourceUtil.isAdventure(k) && (isIncludeUnofficial || !SourceUtil.isNonstandardSource(k)) ? 1 : 0);
 	}
 
+	_doSetPinsHomebrew () {
+		Object.keys(this._state)
+			.forEach(k => this._state[k] = SourceUtil.getFilterGroup(k) === 2 ? 1 : 0);
+	}
+
 	static getInstance (options) {
 		if (!options) options = {};
 
 		const baseOptions = {
 			header: FilterBox.SOURCE_HEADER,
 			displayFn: (item) => Parser.sourceJsonToFullCompactPrefix(item.item || item),
-			selFn: defaultSourceSelFn,
+			selFn: PageFilter.defaultSourceSelFn,
 			groupFn: SourceUtil.getFilterGroup
 		};
 		Object.assign(baseOptions, options);
@@ -1434,6 +1756,20 @@ class RangeFilter extends FilterBase {
 		if (filterState && filterState[this.header]) {
 			const toLoad = filterState[this.header];
 			this.setBaseStateFromLoaded(toLoad);
+
+			// Reduce the maximum/minimum ranges to their current values +/-1
+			//   This allows the range filter to recover from being stretched out by homebrew
+			//   The off-by-one trick is to prevent later filter expansion from assuming the filters are set to their min/max
+			if (toLoad.state && !this._labels) {
+				if (toLoad.state.curMax != null && toLoad.state.max != null) {
+					if (toLoad.state.curMax + 1 < toLoad.state.max) toLoad.state.max = toLoad.state.curMax + 1;
+				}
+
+				if (toLoad.state.curMin != null && toLoad.state.min != null) {
+					if (toLoad.state.curMin - 1 > toLoad.state.min) toLoad.state.min = toLoad.state.curMin - 1;
+				}
+			}
+
 			Object.assign(this._state, toLoad.state);
 		}
 	}
@@ -1644,9 +1980,9 @@ class RangeFilter extends FilterBase {
 
 		const hideHook = () => {
 			const isHidden = this._filterBox.isMinisHidden(this.header);
-			$btnMiniGt.toggleClass("hidden", isHidden);
-			$btnMiniLt.toggleClass("hidden", isHidden);
-			$btnMiniEq.toggleClass("hidden", isHidden);
+			$btnMiniGt.toggleClass("ve-hidden", isHidden);
+			$btnMiniLt.toggleClass("ve-hidden", isHidden);
+			$btnMiniEq.toggleClass("ve-hidden", isHidden);
 		};
 		this._filterBox.registerMinisHiddenHook(this.header, hideHook);
 		hideHook();
@@ -1719,19 +2055,21 @@ class RangeFilter extends FilterBase {
 		handleLimitUpdate();
 
 		if (opts.isMulti) {
-			this._$slider.addClass("grow");
-			$wrpSlider.addClass("grow");
-			$wrpDropdowns.addClass("grow");
+			this._$slider.addClass("ve-grow");
+			$wrpSlider.addClass("ve-grow");
+			$wrpDropdowns.addClass("ve-grow");
 			return $$`<div class="flex">
 				<div class="fltr__range-inline-label">${this.header}</div>
 				${$wrpSlider}
 				${$wrpDropdowns}
 			</div>`;
 		} else {
+			const $btnMobToggleControls = this._$getBtnMobToggleControls($wrpControls);
+
 			return $$`<div class="flex-col">
 				${opts.isFirst ? "" : `<div class="fltr__dropdown-divider mb-1"/>`}
 				<div class="split fltr__h ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
-					<div>${this.header}</div>
+					<div class="fltr__h-text flex-h-center">${this.header}${$btnMobToggleControls}</div>
 					${$wrpControls}
 				</div>
 				${$wrpSlider}
@@ -1818,7 +2156,11 @@ class RangeFilter extends FilterBase {
 		}
 	}
 
-	getDefaultMeta () { return {...RangeFilter._DEFAULT_META, ...super.getDefaultMeta()}; }
+	getDefaultMeta () {
+		const out = {...RangeFilter._DEFAULT_META, ...super.getDefaultMeta()};
+		if (Renderer.hover.isSmallScreen()) out.isUseDropdowns = true;
+		return out;
+	}
 }
 RangeFilter._DEFAULT_META = {
 	isUseDropdowns: false
@@ -1962,7 +2304,7 @@ class MultiFilter extends FilterBase {
 
 		return $$`<div class="flex-col">
 			${opts.isFirst ? "" : `<div class="fltr__dropdown-divider mb-1"/>`}
-			<div class="split fltr__h ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
+			<div class="split fltr__h fltr__h--multi ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
 				<div class="flex-v-center">
 					<div class="mr-2">${this.header}</div>
 					${$btnAndOr}
@@ -1971,6 +2313,14 @@ class MultiFilter extends FilterBase {
 			</div>
 			${$wrpChildren}
 		</div>`;
+	}
+
+	/**
+	 * @param vals Previously-read filter value may be passed in for performance.
+	 */
+	isActive (vals) {
+		vals = vals || this.getValues();
+		return this._filters.some(it => it.isActive(vals));
 	}
 
 	getValues () {
@@ -2037,3 +2387,17 @@ MultiFilter._DETAULT_STATE = {
 	if (allPrefixes.length) throw new Error(`Invalid prefixes! ${allPrefixes.map(it => `"${it}"`).join(", ")} ${allPrefixes.length === 1 ? `is` : `was`} not of length ${FilterUtil.SUB_HASH_PREFIX_LENGTH}`);
 })();
 FilterUtil.SUB_HASH_PREFIXES = new Set([...Object.values(FilterBox._SUB_HASH_PREFIXES), ...Object.values(FilterBase._SUB_HASH_PREFIXES)]);
+
+if (typeof module !== "undefined") {
+	module.exports = {
+		FilterUtil,
+		PageFilter,
+		FilterBox,
+		FilterItem,
+		FilterBase,
+		Filter,
+		SourceFilter,
+		RangeFilter,
+		MultiFilter
+	};
+}

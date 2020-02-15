@@ -1,5 +1,10 @@
 "use strict";
 
+if (typeof module !== "undefined") {
+	const imports = require("./filter");
+	Object.assign(global, imports);
+}
+
 class PageFilterSpells extends PageFilter {
 	// region static
 	static sortSpells (a, b, o) {
@@ -206,7 +211,7 @@ class PageFilterSpells extends PageFilter {
 	constructor () {
 		super();
 
-		this._brewSpellClasses = {PHB: {}};
+		this._brewSpellClasses = {};
 
 		const levelFilter = new Filter({
 			header: "Level",
@@ -332,48 +337,82 @@ class PageFilterSpells extends PageFilter {
 
 	populateHomebrewClassLookup (homebrew) {
 		// load homebrew class spell list addons
-		const handleSubclass = (className, classSource = SRC_PHB, sc) => {
-			const genSubclassSpell = (it, subSubclass) => {
-				const name = (typeof it === "string" ? it : it.name).toLowerCase();
-				const source = typeof it === "string" ? "PHB" : it.source;
-				this._brewSpellClasses[source] = this._brewSpellClasses[source] || {fromClassList: [], fromSubclass: []};
-				this._brewSpellClasses[source][name] = this._brewSpellClasses[source][name] || {fromClassList: [], fromSubclass: []};
-				const toAdd = {
-					class: {
-						name: className,
-						source: classSource
-					},
-					subclass: {
-						name: sc.shortName,
-						source: sc.source
-					}
-				};
-				if (subSubclass) toAdd.subclass.subSubclass = subSubclass;
-				this._brewSpellClasses[source][name].fromSubclass.push(toAdd);
+		// Three formats are available. A string (shorthand for "spell" format with source "PHB"), "spell" format (object
+		//   with a `name` and a `source`), and "class" format (object with a `class` and a `source`).
+
+		const handleSpellListItem = (it, className, classSource, subclassShortName, subclassSource, subSubclassName) => {
+			const doAdd = (target) => {
+				if (subclassShortName) {
+					const toAdd = {
+						class: {name: className, source: classSource},
+						subclass: {name: subclassShortName, source: subclassSource}
+					};
+					if (subSubclassName) toAdd.subclass.subSubclass = subSubclassName;
+
+					target.fromSubclass = target.fromSubclass || [];
+					target.fromSubclass.push(toAdd);
+				} else {
+					const toAdd = {name: className, source: classSource};
+
+					target.fromClassList = target.fromClassList || [];
+					target.fromClassList.push(toAdd);
+				}
 			};
 
-			if (sc.subclassSpells) sc.subclassSpells.forEach(it => genSubclassSpell(it));
-			if (sc.subSubclassSpells) $.each(sc.subSubclassSpells, (ssC, arr) => arr.forEach(it => genSubclassSpell(it, ssC)));
+			if (it.class) {
+				if (!it.class) return;
+
+				this._brewSpellClasses.class = this._brewSpellClasses.class || {};
+
+				const cls = it.class.toLowerCase();
+				const source = it.source || SRC_PHB;
+
+				this._brewSpellClasses.class[source] = this._brewSpellClasses.class[source] || {};
+				this._brewSpellClasses.class[source][cls] = this._brewSpellClasses.class[source][cls] || {};
+
+				doAdd(this._brewSpellClasses.class[source][cls]);
+			} else {
+				this._brewSpellClasses.spell = this._brewSpellClasses.spell || {};
+
+				const name = (typeof it === "string" ? it : it.name).toLowerCase();
+				const source = typeof it === "string" ? "PHB" : it.source;
+				this._brewSpellClasses.spell[source] = this._brewSpellClasses.spell[source] || {};
+				this._brewSpellClasses.spell[source][name] = this._brewSpellClasses.spell[source][name] || {fromClassList: [], fromSubclass: []};
+
+				doAdd(this._brewSpellClasses.spell[source][name]);
+			}
 		};
 
 		if (homebrew.class) {
 			homebrew.class.forEach(c => {
-				if (c.classSpells) {
-					c.classSpells.forEach(it => {
-						const name = (typeof it === "string" ? it : it.name).toLowerCase();
-						const source = typeof it === "string" ? "PHB" : it.source;
-						this._brewSpellClasses[source] = this._brewSpellClasses[source] || {};
-						this._brewSpellClasses[source][name] = this._brewSpellClasses[source][name] || {fromClassList: [], fromSubclass: []};
-						this._brewSpellClasses[source][name].fromClassList.push({name: c.name, source: c.source});
+				c.source = c.source || SRC_PHB;
+
+				if (c.classSpells) c.classSpells.forEach(it => handleSpellListItem(it, c.name, c.source));
+				if (c.subclasses) {
+					c.subclasses.forEach(sc => {
+						sc.shortName = sc.shortName || sc.name;
+						sc.source = sc.source || c.source;
+
+						if (sc.subclassSpells) sc.subclassSpells.forEach(it => handleSpellListItem(it, c.name, c.source, sc.shortName, sc.source));
+						if (sc.subSubclassSpells) Object.entries(sc.subSubclassSpells).forEach(([ssC, arr]) => arr.forEach(it => handleSpellListItem(it, c.name, c.source, sc.shortName, sc.source, ssC)));
 					});
 				}
-				if (c.subclasses) c.subclasses.forEach(sc => handleSubclass(c.name, c.source, sc));
 			})
 		}
-		if (homebrew.subclass) homebrew.subclass.forEach(sc => handleSubclass(sc.class, sc.classSource, sc));
+
+		if (homebrew.subclass) {
+			homebrew.subclass.forEach(sc => {
+				sc.classSource = sc.classSource || SRC_PHB;
+				sc.shortName = sc.shortName || sc.name;
+				sc.source = sc.source || sc.classSource;
+
+				if (sc.subclassSpells) sc.subclassSpells.forEach(it => handleSpellListItem(it, sc.class, sc.classSource, sc.shortName, sc.source));
+				if (sc.subSubclassSpells) Object.entries(sc.subSubclassSpells).forEach(([ssC, arr]) => arr.forEach(it => handleSpellListItem(it, sc.class, sc.classSource, sc.shortName, sc.source, ssC)));
+			});
+		}
 	}
 
-	addToFilters (spell, isExcluded) {
+	mutateForFilters (spell) {
 		Renderer.spell.initClasses(spell, this._brewSpellClasses);
 
 		// used for sorting
@@ -406,24 +445,24 @@ class PageFilterSpells extends PageFilter {
 		spell._fTimeType = spell.time.map(t => t.unit);
 		spell._fDurationType = PageFilterSpells.getFilterDuration(spell);
 		spell._fRangeType = PageFilterSpells.getRangeType(spell.range);
+	}
 
-		// region populate filters
-		if (!isExcluded) {
-			if (spell.level > 9) this._levelFilter.addItem(spell.level);
-			this._schoolFilter.addItem(spell.school);
-			this._sourceFilter.addItem(spell._fSources);
-			this._metaFilter.addItem(spell._fMeta);
-			this._raceFilter.addItem(spell._fRaces);
-			this._backgroundFilter.addItem(spell._fBackgrounds);
-			spell._fClasses.forEach(c => this._classFilter.addItem(c));
-			spell._fSubclasses.forEach(sc => {
-				this._subclassFilter.addNest(sc.userData.class.name, {isHidden: true});
-				this._subclassFilter.addItem(sc);
-			});
-			spell._fVariantClasses.forEach(c => this._variantClassFilter.addItem(c));
-			this._subSchoolFilter.addItem(spell.subschools);
-		}
-		// endregion
+	addToFilters (spell, isExcluded) {
+		if (isExcluded) return;
+
+		if (spell.level > 9) this._levelFilter.addItem(spell.level);
+		this._schoolFilter.addItem(spell.school);
+		this._sourceFilter.addItem(spell._fSources);
+		this._metaFilter.addItem(spell._fMeta);
+		this._raceFilter.addItem(spell._fRaces);
+		this._backgroundFilter.addItem(spell._fBackgrounds);
+		spell._fClasses.forEach(c => this._classFilter.addItem(c));
+		spell._fSubclasses.forEach(sc => {
+			this._subclassFilter.addNest(sc.userData.class.name, {isHidden: true});
+			this._subclassFilter.addItem(sc);
+		});
+		spell._fVariantClasses.forEach(c => this._variantClassFilter.addItem(c));
+		this._subSchoolFilter.addItem(spell.subschools);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -492,3 +531,89 @@ PageFilterSpells._META_FILTER_BASE_ITEMS = [PageFilterSpells._META_ADD_CONC, Pag
 
 PageFilterSpells.INCHES_PER_FOOT = 12;
 PageFilterSpells.FEET_PER_MILE = 5280;
+
+class ModalFilterSpells extends ModalFilter {
+	constructor (namespace) {
+		super({
+			modalTitle: "Spells",
+			pageFilter: new PageFilterSpells(),
+			fnSort: PageFilterSpells.sortSpells,
+			namespace: namespace
+		});
+	}
+
+	_$getColumnHeaders () {
+		const btnMeta = [
+			{sort: "name", text: "Name", width: "3"},
+			{sort: "level", text: "Level", width: "1-5"},
+			{sort: "time", text: "Time", width: "2"},
+			{sort: "school", text: "School", width: "1"},
+			{sort: "concentration", text: "C.", title: "Concentration", width: "0-5"},
+			{sort: "range", text: "Range", width: "2"},
+			{sort: "source", text: "Source", width: "1"}
+		];
+		return ModalFilter._$getFilterColumnHeaders(btnMeta);
+	}
+
+	async _pInit () {
+		this._pageFilter.populateHomebrewClassLookup(BrewUtil.homebrew);
+	}
+
+	async _pLoadAllData () {
+		const brew = await BrewUtil.pAddBrewData();
+		const fromData = await DataUtil.spell.pLoadAll();
+		const fromBrew = brew.spell || [];
+		return [...fromData, ...fromBrew];
+	}
+
+	_getListItem (pageFilter, spell, spI) {
+		const eleLi = document.createElement("li");
+		eleLi.className = "row";
+
+		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS](spell);
+		const source = Parser.sourceJsonToAbv(spell.source);
+		const levelText = `${Parser.spLevelToFull(spell.level)}${spell.meta && spell.meta.ritual ? " (rit.)" : ""}${spell.meta && spell.meta.technomagic ? " (tec.)" : ""}`;
+		const time = PageFilterSpells.getTblTimeStr(spell.time[0]);
+		const school = Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools);
+		const concentration = spell._isConc ? "×" : "";
+		const range = Parser.spRangeToFull(spell.range);
+
+		eleLi.innerHTML = `<label class="lst--border unselectable">
+			<div class="lst__wrp-cells">
+				<div class="col-1 pl-0 flex-vh-center"><input type="checkbox" class="no-events"></div>
+				<div class="bold col-3">${spell.name}</div>
+				<div class="col-1-5 text-center">${levelText}</div>
+				<div class="col-2 text-center">${time}</div>
+				<div class="col-1 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</div>
+				<div class="col-0-5 text-center" title="Concentration">${concentration}</div>
+				<div class="col-2 text-right">${range}</div>
+				<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</div>
+			</div>
+		</label>`;
+
+		return new ListItem(
+			spI,
+			eleLi,
+			spell.name,
+			{
+				hash,
+				source,
+				sourceJson: spell.source,
+				level: spell.level,
+				time,
+				school: Parser.spSchoolAbvToFull(spell.school),
+				classes: Parser.spClassesToFull(spell.classes, true),
+				concentration,
+				normalisedTime: spell._normalisedTime,
+				normalisedRange: spell._normalisedRange
+			},
+			{
+				cbSel: eleLi.firstElementChild.firstElementChild.firstElementChild.firstElementChild
+			}
+		);
+	}
+}
+
+if (typeof module !== "undefined") {
+	module.exports = PageFilterSpells;
+}

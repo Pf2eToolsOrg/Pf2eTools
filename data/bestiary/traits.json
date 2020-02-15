@@ -5,6 +5,20 @@
 			"source": "PHB",
 			"page": 216,
 			"ref": "{@spell Awaken}",
+			"prerequisite": {
+				"size": {
+					"max": "H"
+				},
+				"type": {
+					"oneOf": [
+						"beast",
+						"plant"
+					]
+				},
+				"int": {
+					"max": 3
+				}
+			},
 			"apply": {
 				"_root": {
 					"int": 10
@@ -15,790 +29,6 @@
 						"replace": "one language known by its creator",
 						"items": "one language known by its creator"
 					}
-				}
-			},
-			"prerequisite": {
-				"int": {
-					"max": 3
-				},
-				"size": {
-					"max": "H"
-				},
-				"type": {
-					"oneOf": [
-						"beast",
-						"plant"
-					]
-				}
-			}
-		},
-		{
-			"name": "Shadow Dragon",
-			"source": "MM",
-			"page": "84",
-			"apply": {
-				"_root": {
-					"int": 10
-				},
-				"_mod": {
-					"resist": {
-						"mode": "appendArr",
-						"items": "necrotic"
-					},
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Living Shadow",
-								"entries": [
-									"While in dim light or darkness, the dragon has resistance to damage that isn't force, psychic, or radiant."
-								]
-							},
-							{
-								"name": "Shadow Stealth",
-								"entries": [
-									"While in dim light or darkness, the dragon can take the {@action Hide} action as a bonus action."
-								]
-							},
-							{
-								"name": "Sunlight Sensitivity",
-								"entries": [
-									"While in sunlight, the dragon has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
-								]
-							}
-						]
-					},
-					"action": [
-						{
-							"mode": "replaceTxt",
-							"replace": "(acid|cold|fire|lightning|poison)",
-							"with": "necrotic"
-						},
-						{
-							"mode": "replaceTxt",
-							"replace": "(Acid|Cold|Fire|Lightning|Poison)",
-							"with": "Necrotic"
-						}
-					],
-					"_": [
-						{
-							"mode": "addSkills",
-							"skills": {
-								"stealth": 2
-							}
-						}
-					]
-				}
-			}
-		},
-		{
-			"name": "Mountain Dwarf",
-			"source": "PHB",
-			"page": 18,
-			"ref": "{@race Dwarf (Mountain)||Mountain Dwarf}",
-			"apply": {
-				"_root": {
-					"speed": 25,
-					"type": {
-						"type": "humanoid",
-						"tags": [
-							"dwarf"
-						]
-					}
-				},
-				"_mod": {
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Dwarven Resilience",
-								"entries": [
-									"<$title_name$> has advantage on saving throws against poison, and has resistance against poison damage."
-								]
-							}
-						]
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Dwarvish",
-						"items": "Dwarvish"
-					},
-					"_": {
-						"mode": "addSenses",
-						"senses": {
-							"type": "darkvision",
-							"range": 60
-						}
-					}
-				}
-			}
-		},
-		{
-			"name": "Duergar",
-			"source": "MTF",
-			"page": 81,
-			"ref": "{@race Dwarf (Duergar)|mtf|Duergar}",
-			"apply": {
-				"_root": {
-					"speed": 25,
-					"type": {
-						"type": "humanoid",
-						"tags": [
-							"dwarf"
-						]
-					}
-				},
-				"_mod": {
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Dwarven Resilience",
-								"entries": [
-									"<$title_name$> has advantage on saving throws against poison, and has resistance against poison damage."
-								]
-							},
-							{
-								"name": "Enlarge (Recharges after a Short or Long Rest)",
-								"entries": [
-									"For 1 minute, <$short_name$> magically increases in size, along with anything they are wearing or carrying. While enlarged, <$short_name$> is Large, doubles their damage dice on Strength-based weapon attacks (included in the attacks), and makes Strength checks and Strength saving throws with advantage. If <$short_name$> lacks the room to become Large, they attain the maximum size possible in the space available."
-								]
-							},
-							{
-								"name": "Invisibility (Recharges after a Short or Long Rest)",
-								"entries": [
-									"<$title_name$> magically turns {@condition invisible} until they attack, cast a spell, or use their Enlarge, or until their concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment <$short_name$> wears or carries is invisible with them."
-								]
-							}
-						]
-					},
-					"languages": [
-						{
-							"mode": "replaceOrAppendArr",
-							"replace": "Dwarvish",
-							"items": "Dwarvish"
-						},
-						{
-							"mode": "replaceOrAppendArr",
-							"replace": "Undercommon",
-							"items": "Undercommon"
-						}
-					],
-					"_": {
-						"mode": "addSenses",
-						"senses": {
-							"type": "darkvision",
-							"range": 120
-						}
-					}
-				}
-			}
-		},
-		{
-			"name": "Tiefling",
-			"source": "PHB",
-			"page": 42,
-			"ref": "{@race Tiefling}",
-			"apply": {
-				"_root": {
-					"type": {
-						"type": "humanoid",
-						"tags": [
-							"tiefling"
-						]
-					}
-				},
-				"_mod": {
-					"spellcasting": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Innate Spellcasting",
-								"headerEntries": [
-									"<$title_name$>'s innate spellcasting ability is Charisma (spell save DC <$spell_dc__cha$>). <$title_name$> can innately cast the following spells, requiring no material components:"
-								],
-								"will": [
-									"{@spell thaumaturgy}"
-								],
-								"daily": {
-									"1e": [
-										"{@spell darkness}",
-										"{@spell hellish rebuke}"
-									]
-								},
-								"ability": "cha"
-							}
-						]
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Infernal",
-						"items": "Infernal"
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
-						"items": "fire"
-					},
-					"_": {
-						"mode": "addSenses",
-						"senses": {
-							"type": "darkvision",
-							"range": 60
-						}
-					}
-				}
-			}
-		},
-		{
-			"name": "Rock Gnome",
-			"source": "PHB",
-			"page": 35,
-			"ref": "{@race Gnome (Rock)||Rock Gnome}",
-			"apply": {
-				"_root": {
-					"speed": 25,
-					"size": "S",
-					"type": {
-						"type": "humanoid",
-						"tags": [
-							"gnome"
-						]
-					}
-				},
-				"_mod": {
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Gnome Cunning",
-								"entries": [
-									"<$title_name$> has advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
-								]
-							}
-						]
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Gnomish",
-						"items": "Gnomish"
-					},
-					"_": {
-						"mode": "addSenses",
-						"senses": {
-							"type": "darkvision",
-							"range": 60
-						}
-					}
-				}
-			}
-		},
-		{
-			"name": "Half-Orc",
-			"source": "PHB",
-			"page": 40,
-			"ref": "{@race Half-Orc}",
-			"apply": {
-				"_root": {
-					"type": {
-						"type": "humanoid",
-						"tags": [
-							"half-orc"
-						]
-					}
-				},
-				"_mod": {
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Relentless Endurance",
-								"entries": [
-									"When reduced to 0 hit points, <$title_name$> drops to 1 hit point instead (but can't do this again until they finish a long rest)."
-								]
-							},
-							{
-								"name": "Savage Attacks",
-								"entries": [
-									"When they score a critical hit, <$title_name$> can roll one of the weapon's damage dice and add it to the extra damage of the critical hit."
-								]
-							}
-						]
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Orc",
-						"items": "Orc"
-					},
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": {
-								"type": "darkvision",
-								"range": 60
-							}
-						},
-						{
-							"mode": "addSkills",
-							"skills": {
-								"intimidation": 1
-							}
-						}
-					]
-				}
-			}
-		},
-		{
-			"name": "Half-Elf",
-			"source": "PHB",
-			"page": 38,
-			"ref": "{@race Half-Elf}",
-			"apply": {
-				"_root": {
-					"type": {
-						"type": "humanoid",
-						"tags": [
-							"half-elf"
-						]
-					}
-				},
-				"_mod": {
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Fey Ancestry",
-								"entries": [
-									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$title_name$> to sleep."
-								]
-							}
-						]
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Elvish",
-						"items": "Elvish"
-					},
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": {
-								"type": "darkvision",
-								"range": 60
-							}
-						}
-					]
-				}
-			}
-		},
-		{
-			"name": "Wood Elf",
-			"source": "PHB",
-			"page": 21,
-			"ref": "{@race Elf (Wood)||Wood Elf}",
-			"apply": {
-				"_root": {
-					"speed": 35,
-					"type": {
-						"type": "humanoid",
-						"tags": [
-							"elf"
-						]
-					}
-				},
-				"_mod": {
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Fey Ancestry",
-								"entries": [
-									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$title_name$> to sleep."
-								]
-							},
-							{
-								"name": "Mask of the Wild",
-								"entries": [
-									"<$title_name$> can attempt to hide even when they are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
-								]
-							}
-						]
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Elvish",
-						"items": "Elvish"
-					},
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": {
-								"type": "darkvision",
-								"range": 60
-							}
-						},
-						{
-							"mode": "addSkills",
-							"skills": {
-								"perception": 1
-							}
-						}
-					]
-				}
-			}
-		},
-		{
-			"name": "Drow",
-			"source": "PHB",
-			"page": 21,
-			"ref": "{@race Elf (Drow)||Drow}",
-			"apply": {
-				"_root": {
-					"type": {
-						"type": "humanoid",
-						"tags": [
-							"elf"
-						]
-					}
-				},
-				"_mod": {
-					"spellcasting": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Innate Spellcasting",
-								"headerEntries": [
-									"<$title_name$>'s innate spellcasting ability is Charisma (spell save DC <$spell_dc__cha$>). <$title_name$> can innately cast the following spells, requiring no material components:"
-								],
-								"will": [
-									"{@spell dancing lights}"
-								],
-								"daily": {
-									"1e": [
-										"{@spell darkness}",
-										"{@spell faerie fire}"
-									]
-								},
-								"ability": "cha"
-							}
-						]
-					},
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Fey Ancestry",
-								"entries": [
-									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$title_name$> to sleep."
-								]
-							},
-							{
-								"name": "Sunlight Sensitivity",
-								"entries": [
-									"While in sunlight, <$short_name$> has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
-								]
-							}
-						]
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Elvish",
-						"items": "Elvish"
-					},
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": {
-								"type": "darkvision",
-								"range": 120
-							}
-						},
-						{
-							"mode": "addSkills",
-							"skills": {
-								"perception": 1
-							}
-						}
-					]
-				}
-			}
-		},
-		{
-			"name": "Orc",
-			"source": "DMG",
-			"page": 120,
-			"ref": "{@race Orc|DMG}",
-			"apply": {
-				"_root": {
-					"type": {
-						"type": "humanoid",
-						"tags": [
-							"orc"
-						]
-					}
-				},
-				"_mod": {
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Aggressive",
-								"entries": [
-									"As a bonus action, <$title_name$> can move up to your speed toward a hostile creature that they can see."
-								]
-							}
-						]
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Orc",
-						"items": "Orc"
-					},
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": {
-								"type": "darkvision",
-								"range": 60
-							}
-						}
-					]
-				}
-			}
-		},
-		{
-			"name": "Tabaxi",
-			"source": "VGM",
-			"page": 113,
-			"ref": "{@race Tabaxi|VGM}",
-			"apply": {
-				"_root": {
-					"type": {
-						"type": "humanoid",
-						"tags": [
-							"tabaxi"
-						]
-					}
-				},
-				"_mod": {
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Feline Agility",
-								"entries": [
-									"When <$title_name$> moves on its turn in combat, they can double their speed until the end of the turn. Once they uses this ability, <$title_name$> can't use it again until they moves 0 feet on one of their turns."
-								]
-							}
-						]
-					},
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Claws",
-								"entries": [
-									"{@atk mw} {@hit <$to_hit__str$>} to hit, reach 5 ft., one target. {@h}<$damage_avg__2.5+str$> ({@damage 1d4<$damage_mod__str$>}) slashing damage."
-								]
-							}
-						]
-					},
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": {
-								"type": "darkvision",
-								"range": 60
-							}
-						}
-					]
-				}
-			}
-		},
-		{
-			"name": "Stout Halfling",
-			"source": "PHB",
-			"page": 35,
-			"ref": "{@race Halfling (Stout)||Stout Halfling}",
-			"apply": {
-				"_root": {
-					"speed": 25,
-					"size": "S",
-					"type": {
-						"type": "humanoid",
-						"tags": [
-							"halfling"
-						]
-					}
-				},
-				"_mod": {
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Halfling Nimbleness",
-								"entries": [
-									"<$title_name$> can move through a space of a Medium or larger creature."
-								]
-							},
-							{
-								"name": "Brave",
-								"entries": [
-									"<$title_name$> has advantage on saving throws against being {@condition frightened}."
-								]
-							}
-						]
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Halfling",
-						"items": "Halfling"
-					}
-				}
-			}
-		},
-		{
-			"name": "Goblin",
-			"source": "DMG",
-			"page": 282,
-			"ref": "{@race Goblin|DMG}",
-			"apply": {
-				"_root": {
-					"size": "S",
-					"type": {
-						"type": "humanoid",
-						"tags": [
-							"goblin"
-						]
-					}
-				},
-				"_mod": {
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Nimble Escape",
-								"entries": [
-									"<$title_name$> can take the {@action Disengage} or {@action Hide} action as a bonus action on each of its turns."
-								]
-							}
-						]
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Goblin",
-						"items": "Goblin"
-					},
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": {
-								"type": "darkvision",
-								"range": 60
-							}
-						}
-					]
-				}
-			}
-		},
-		{
-			"name": "Kobold",
-			"source": "DMG",
-			"page": 282,
-			"ref": "{@race Kobold|DMG}",
-			"apply": {
-				"_root": {
-					"size": "S",
-					"type": {
-						"type": "humanoid",
-						"tags": [
-							"kobold"
-						]
-					}
-				},
-				"_mod": {
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Sunlight Sensitivity",
-								"entries": [
-									"While in sunlight, <$title_name$> has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
-								]
-							},
-							{
-								"name": "Pack Tactics",
-								"entries": [
-									"<$title_name$> has advantage on an attack roll against a creature if at least one of their allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
-								]
-							}
-						]
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					},
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": {
-								"type": "darkvision",
-								"range": 60
-							}
-						}
-					]
-				}
-			}
-		},
-		{
-			"name": "Skeleton",
-			"source": "DMG",
-			"page": 282,
-			"ref": "{@race Skeleton|DMG}",
-			"apply": {
-				"_root": {
-					"type": {
-						"type": "undead"
-					}
-				},
-				"_mod": {
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "understands all languages it spoke in life but can't speak",
-						"items": "understands all languages it spoke in life but can't speak"
-					},
-					"vulnerable": {
-						"mode": "replaceOrAppendArr",
-						"replace": "bludgeoning",
-						"items": "bludgeoning"
-					},
-					"immune": {
-						"mode": "replaceOrAppendArr",
-						"replace": "poison",
-						"items": "poison"
-					},
-					"conditionImmune": [
-						{
-							"mode": "replaceOrAppendArr",
-							"replace": "exhaustion",
-							"items": "exhaustion"
-						},
-						{
-							"mode": "replaceOrAppendArr",
-							"replace": "poisoned",
-							"items": "poisoned"
-						}
-					],
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": {
-								"type": "darkvision",
-								"range": 60
-							}
-						}
-					]
 				}
 			}
 		},
@@ -852,21 +82,1784 @@
 			}
 		},
 		{
+			"name": "Drow",
+			"source": "PHB",
+			"page": 21,
+			"ref": "{@race Elf (Drow)||Drow}",
+			"apply": {
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"elf"
+						]
+					}
+				},
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": {
+								"type": "darkvision",
+								"range": 120
+							}
+						},
+						{
+							"mode": "addSkills",
+							"skills": {
+								"perception": 1
+							}
+						}
+					],
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Elvish",
+						"items": "Elvish"
+					},
+					"spellcasting": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Innate Spellcasting",
+								"headerEntries": [
+									"<$title_name$>'s innate spellcasting ability is Charisma (spell save DC <$spell_dc__cha$>). <$title_name$> can innately cast the following spells, requiring no material components:"
+								],
+								"will": [
+									"{@spell dancing lights}"
+								],
+								"daily": {
+									"1e": [
+										"{@spell darkness}",
+										"{@spell faerie fire}"
+									]
+								},
+								"ability": "cha"
+							}
+						]
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Fey Ancestry",
+								"entries": [
+									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$title_name$> to sleep."
+								]
+							},
+							{
+								"name": "Sunlight Sensitivity",
+								"entries": [
+									"While in sunlight, <$short_name$> has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Duergar",
+			"source": "MTF",
+			"page": 81,
+			"ref": "{@race Dwarf (Duergar)|mtf|Duergar}",
+			"apply": {
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"dwarf"
+						]
+					},
+					"speed": 25
+				},
+				"_mod": {
+					"_": {
+						"mode": "addSenses",
+						"senses": {
+							"type": "darkvision",
+							"range": 120
+						}
+					},
+					"languages": [
+						{
+							"mode": "replaceOrAppendArr",
+							"replace": "Dwarvish",
+							"items": "Dwarvish"
+						},
+						{
+							"mode": "replaceOrAppendArr",
+							"replace": "Undercommon",
+							"items": "Undercommon"
+						}
+					],
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Dwarven Resilience",
+								"entries": [
+									"<$title_name$> has advantage on saving throws against poison, and has resistance against poison damage."
+								]
+							},
+							{
+								"name": "Enlarge (Recharges after a Short or Long Rest)",
+								"entries": [
+									"For 1 minute, <$short_name$> magically increases in size, along with anything they are wearing or carrying. While enlarged, <$short_name$> is Large, doubles their damage dice on Strength-based weapon attacks (included in the attacks), and makes Strength checks and Strength saving throws with advantage. If <$short_name$> lacks the room to become Large, they attain the maximum size possible in the space available."
+								]
+							},
+							{
+								"name": "Invisibility (Recharges after a Short or Long Rest)",
+								"entries": [
+									"<$title_name$> magically turns {@condition invisible} until they attack, cast a spell, or use their Enlarge, or until their concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment <$short_name$> wears or carries is invisible with them."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Gargantuan Half-Black Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "8",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "acid",
+						"items": "acid"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Acid Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales acid in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 54 ({@damage 12d8}) acid damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Gargantuan Half-Blue Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "8",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "lightning",
+						"items": "lightning"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Lightning Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales lightning in a 90-foot line that is 5 feet wide. Each creature in that line must make a DC 19 Dexterity saving throw, taking 66 ({@damage 12d10}) lightning damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Gargantuan Half-Brass Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "8",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "fire",
+						"items": "fire"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Breath Weapons {@recharge 5}",
+								"entries": [
+									"The half-dragon uses one of the following breath weapons.",
+									{
+										"type": "list",
+										"style": "list-hang-notitle",
+										"items": [
+											{
+												"type": "item",
+												"name": "Fire Breath.",
+												"entry": "The half-dragon exhales fire in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 45 ({@damage 13d6}) fire damage on a failed save, or half as much damage on a successful one."
+											},
+											{
+												"type": "item",
+												"name": "Sleep Breath.",
+												"entry": "The half-dragon exhales sleep gas in a 60-foot cone. Each creature in that area must succeed on a DC 18 Constitution saving throw or fall {@condition unconscious} for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it."
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Gargantuan Half-Copper Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "8",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "acid",
+						"items": "acid"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Breath Weapons {@recharge 5}",
+								"entries": [
+									"The half-dragon uses one of the following breath weapons.",
+									{
+										"type": "list",
+										"style": "list-hang-notitle",
+										"items": [
+											{
+												"type": "item",
+												"name": "Acid Breath.",
+												"entry": "The half-dragon exhales acid in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 54 ({@damage 12d8}) acid damage on a failed save, or half as much damage on a successful one."
+											},
+											{
+												"type": "item",
+												"name": "Slowing Breath.",
+												"entry": "The half-dragon exhales gas in a 60-foot cone. Each creature in that area must succeed on a DC 18 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save."
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Gargantuan Half-Gold Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "8",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "fire",
+						"items": "fire"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Breath Weapons {@recharge 5}",
+								"entries": [
+									"The half-dragon uses one of the following breath weapons.",
+									{
+										"type": "list",
+										"style": "list-hang-notitle",
+										"items": [
+											{
+												"type": "item",
+												"name": "Fire Breath.",
+												"entry": "The half-dragon exhales fire in a 60-foot cone. Each creature in that area must make a DC 21 Dexterity saving throw, taking 66 ({@damage 12d10}) fire damage on a failed save, or half as much damage on a successful one."
+											},
+											{
+												"type": "item",
+												"name": "Weakening Breath.",
+												"entry": "The half-dragon exhales gas in a 60-foot cone. Each creature in that area must succeed on a DC 21 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Gargantuan Half-Green Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "8",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "poison",
+						"items": "poison"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Poison Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales poisonous gas in a 60-foot cone. Each creature in that area must make a DC 18 Constitution saving throw, taking 56 ({@damage 16d6}) poison damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Gargantuan Half-Red Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "8",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "fire",
+						"items": "fire"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Fire Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales fire in a 60-foot cone. Each creature in that area must make a DC 21 Dexterity saving throw, taking 63 ({@damage 18d6}) fire damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Gargantuan Half-Silver Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "8",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "cold",
+						"items": "cold"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Breath Weapons {@recharge 5}",
+								"entries": [
+									"The half-dragon uses one of the following breath weapons.",
+									{
+										"type": "list",
+										"style": "list-hang-notitle",
+										"items": [
+											{
+												"type": "item",
+												"name": "Cold Breath.",
+												"entry": "The half-dragon exhales an icy blast in a 60-foot cone. Each creature in that area must make a DC 20 Constitution saving throw, taking 58 ({@damage 13d8}) cold damage on a failed save, or half as much damage on a successful one."
+											},
+											{
+												"type": "item",
+												"name": "Paralyzing Breath.",
+												"entry": "The half-dragon exhales paralyzing gas in a 60-foot cone. Each creature in that area must succeed on a DC 20 Constitution saving throw or be {@condition paralyzed} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Gargantuan Half-White Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "8",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "cold",
+						"items": "cold"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Cold Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales an icy blast in a 60-foot cone. Each creature in that area must make a DC 19 Constitution saving throw, taking 54 ({@damage 12d8}) cold damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Goblin",
+			"source": "DMG",
+			"page": 282,
+			"ref": "{@race Goblin|DMG}",
+			"apply": {
+				"_root": {
+					"size": "S",
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"goblin"
+						]
+					}
+				},
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": {
+								"type": "darkvision",
+								"range": 60
+							}
+						}
+					],
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Goblin",
+						"items": "Goblin"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Nimble Escape",
+								"entries": [
+									"<$title_name$> can take the {@action Disengage} or {@action Hide} action as a bonus action on each of its turns."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Half-Elf",
+			"source": "PHB",
+			"page": 38,
+			"ref": "{@race Half-Elf}",
+			"apply": {
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"half-elf"
+						]
+					}
+				},
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": {
+								"type": "darkvision",
+								"range": 60
+							}
+						}
+					],
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Elvish",
+						"items": "Elvish"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Fey Ancestry",
+								"entries": [
+									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$title_name$> to sleep."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Half-Orc",
+			"source": "PHB",
+			"page": 40,
+			"ref": "{@race Half-Orc}",
+			"apply": {
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"half-orc"
+						]
+					}
+				},
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": {
+								"type": "darkvision",
+								"range": 60
+							}
+						},
+						{
+							"mode": "addSkills",
+							"skills": {
+								"intimidation": 1
+							}
+						}
+					],
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Orc",
+						"items": "Orc"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Relentless Endurance",
+								"entries": [
+									"When reduced to 0 hit points, <$title_name$> drops to 1 hit point instead (but can't do this again until they finish a long rest)."
+								]
+							},
+							{
+								"name": "Savage Attacks",
+								"entries": [
+									"When they score a critical hit, <$title_name$> can roll one of the weapon's damage dice and add it to the extra damage of the critical hit."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Huge Half-Black Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "7",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "acid",
+						"items": "acid"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Acid Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales acid in a 30-foot line that is 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 49 ({@damage 11d8}) acid damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Huge Half-Blue Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "7",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "lightning",
+						"items": "lightning"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Lightning Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales lightning in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 16 Dexterity saving throw, taking 55 ({@damage 10d10}) lightning damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Huge Half-Brass Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "7",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "fire",
+						"items": "fire"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Breath Weapons {@recharge 5}",
+								"entries": [
+									"The half-dragon uses one of the following breath weapons.",
+									{
+										"type": "list",
+										"style": "list-hang-notitle",
+										"items": [
+											{
+												"type": "item",
+												"name": "Fire Breath.",
+												"entry": "The half-dragon exhales fire in a 40-foot line that is 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 42 ({@damage 12d6}) fire damage on a failed save, or half as much damage on a successful one."
+											},
+											{
+												"type": "item",
+												"name": "Sleep Breath.",
+												"entry": "The half-dragon exhales sleep gas in a 30-foot cone. Each creature in that area must succeed on a DC 14 Constitution saving throw or fall {@condition unconscious} for 5 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it."
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Huge Half-Copper Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "7",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "acid",
+						"items": "acid"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Breath Weapons {@recharge 5}",
+								"entries": [
+									"The half-dragon uses one of the following breath weapons.",
+									{
+										"type": "list",
+										"style": "list-hang-notitle",
+										"items": [
+											{
+												"type": "item",
+												"name": "Acid Breath.",
+												"entry": "The half-dragon exhales acid in a 40-foot line that is 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 40 ({@damage 9d8}) acid damage on a failed save, or half as much damage on a successful one."
+											},
+											{
+												"type": "item",
+												"name": "Slowing Breath.",
+												"entry": "The half-dragon exhales gas in a 30-foot cone. Each creature in that area must succeed on a DC 14 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save."
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Huge Half-Gold Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "7",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "fire",
+						"items": "fire"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Breath Weapons {@recharge 5}",
+								"entries": [
+									"The half-dragon uses one of the following breath weapons.",
+									{
+										"type": "list",
+										"style": "list-hang-notitle",
+										"items": [
+											{
+												"type": "item",
+												"name": "Fire Breath.",
+												"entry": "The half-dragon exhales fire in a 30-foot cone. Each creature in that area must make a DC 17 Dexterity saving throw, taking 55 ({@damage 10d10}) fire damage on a failed save, or half as much damage on a successful one."
+											},
+											{
+												"type": "item",
+												"name": "Weakening Breath.",
+												"entry": "The half-dragon exhales gas in a 30-foot cone. Each creature in that area must succeed on a DC 17 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Huge Half-Green Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "7",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "poison",
+						"items": "poison"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Poison Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales poisonous gas in a 30-foot cone. Each creature in that area must make a DC 14 Constitution saving throw, taking 42 ({@damage 12d6}) poison damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Huge Half-Red Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "7",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "fire",
+						"items": "fire"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Fire Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales fire in a 30-foot cone. Each creature in that area must make a DC 17 Dexterity saving throw, taking 56 ({@damage 16d6}) fire damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Huge Half-Silver Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "7",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "cold",
+						"items": "cold"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Breath Weapons {@recharge 5}",
+								"entries": [
+									"The half-dragon uses one of the following breath weapons.",
+									{
+										"type": "list",
+										"style": "list-hang-notitle",
+										"items": [
+											{
+												"type": "item",
+												"name": "Cold Breath.",
+												"entry": "The half-dragon exhales an icy blast in a 30-foot cone. Each creature in that area must make a DC 17 Constitution saving throw, taking 54 ({@damage 12d8}) cold damage on a failed save, or half as much damage on a successful one."
+											},
+											{
+												"type": "item",
+												"name": "Paralyzing Breath.",
+												"entry": "The half-dragon exhales paralyzing gas in a 30-foot cone. Each creature in that area must succeed on a DC 17 Constitution saving throw or be {@condition paralyzed} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Huge Half-White Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "7",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "cold",
+						"items": "cold"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Cold Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales an icy blast in a 30-foot cone. Each creature in that area must make a DC 15 Constitution saving throw, taking 45 ({@damage 10d8}) cold damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Kobold",
+			"source": "DMG",
+			"page": 282,
+			"ref": "{@race Kobold|DMG}",
+			"apply": {
+				"_root": {
+					"size": "S",
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"kobold"
+						]
+					}
+				},
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": {
+								"type": "darkvision",
+								"range": 60
+							}
+						}
+					],
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Sunlight Sensitivity",
+								"entries": [
+									"While in sunlight, <$title_name$> has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+								]
+							},
+							{
+								"name": "Pack Tactics",
+								"entries": [
+									"<$title_name$> has advantage on an attack roll against a creature if at least one of their allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Large or Smaller Half-Black Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "2",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "acid",
+						"items": "acid"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Acid Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales acid in a 15-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 22 ({@damage 5d8}) acid damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Large or Smaller Half-Blue Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "2",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "lightning",
+						"items": "lightning"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Lightning Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales lightning in a 30-foot line that is 5 feet wide. Each creature in that line must make a DC 12 Dexterity saving throw, taking 22 ({@damage 4d10}) lightning damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Large or Smaller Half-Brass Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "2",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "fire",
+						"items": "fire"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Breath Weapons {@recharge 5}",
+								"entries": [
+									"The half-dragon uses one of the following breath weapons.",
+									{
+										"type": "list",
+										"style": "list-hang-notitle",
+										"items": [
+											{
+												"type": "item",
+												"name": "Fire Breath.",
+												"entry": "The half-dragon exhales fire in a 20-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 14 ({@damage 4d6}) fire damage on a failed save, or half as much damage on a successful one."
+											},
+											{
+												"type": "item",
+												"name": "Sleep Breath.",
+												"entry": "The half-dragon exhales sleep gas in a 15-foot cone. Each creature in that area must succeed on a DC 11 Constitution saving throw or fall {@condition unconscious} for 1 minute. This effect ends for a creature if the creature takes damage or someone uses an action to wake it."
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Large or Smaller Half-Copper Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "2",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "acid",
+						"items": "acid"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Breath Weapons {@recharge 5}",
+								"entries": [
+									"The half-dragon uses one of the following breath weapons.",
+									{
+										"type": "list",
+										"style": "list-hang-notitle",
+										"items": [
+											{
+												"type": "item",
+												"name": "Acid Breath.",
+												"entry": "The half-dragon exhales acid in a 20-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 18 ({@damage 4d8}) acid damage on a failed save, or half as much damage on a successful one."
+											},
+											{
+												"type": "item",
+												"name": "Slowing Breath.",
+												"entry": "The half-dragon exhales gas in a 15-foot cone. Each creature in that area must succeed on a DC 11 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save."
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Large or Smaller Half-Gold Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "2",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "fire",
+						"items": "fire"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Breath Weapons {@recharge 5}",
+								"entries": [
+									"The half-dragon uses one of the following breath weapons.",
+									{
+										"type": "list",
+										"style": "list-hang-notitle",
+										"items": [
+											{
+												"type": "item",
+												"name": "Fire Breath.",
+												"entry": "The half-dragon exhales fire in a 15-foot cone. Each creature in that area must make a DC 13 Dexterity saving throw, taking 22 ({@damage 4d10}) fire damage on a failed save, or half as much damage on a successful one."
+											},
+											{
+												"type": "item",
+												"name": "Weakening Breath.",
+												"entry": "The half-dragon exhales gas in a 15-foot cone. Each creature in that area must succeed on a DC 13 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Large or Smaller Half-Green Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "2",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "poison",
+						"items": "poison"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Poison Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales poisonous gas in a 15-foot cone. Each creature in that area must make a DC 11 Constitution saving throw, taking 21 ({@damage 6d6}) poison damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Large or Smaller Half-Red Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "2",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "fire",
+						"items": "fire"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Fire Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales fire in a 15-foot cone. Each creature in that area must make a DC 13 Dexterity saving throw, taking 24 ({@damage 7d6}) fire damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Large or Smaller Half-Silver Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "2",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "cold",
+						"items": "cold"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Breath Weapons {@recharge 5}",
+								"entries": [
+									"The half-dragon uses one of the following breath weapons.",
+									{
+										"type": "list",
+										"style": "list-hang-notitle",
+										"items": [
+											{
+												"type": "item",
+												"name": "Cold Breath.",
+												"entry": "The half-dragon exhales an icy blast in a 15-foot cone. Each creature in that area must make a DC 13 Constitution saving throw, taking 18 ({@damage 4d8}) cold damage on a failed save, or half as much damage on a successful one."
+											},
+											{
+												"type": "item",
+												"name": "Paralyzing Breath.",
+												"entry": "The half-dragon exhales paralyzing gas in a 15-foot cone. Each creature in that area must succeed on a DC 13 Constitution saving throw or be {@condition paralyzed} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Large or Smaller Half-White Dragon",
+			"source": "MM",
+			"page": 180,
+			"crMin": "2",
+			"apply": {
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": [
+								{
+									"type": "blindsight",
+									"range": 10
+								},
+								{
+									"type": "darkvision",
+									"range": 60
+								}
+							]
+						}
+					],
+					"resist": {
+						"mode": "replaceOrAppendArr",
+						"replace": "cold",
+						"items": "cold"
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Draconic",
+						"items": "Draconic"
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Cold Breath {@recharge 5}",
+								"entries": [
+									"The half-dragon exhales an icy blast of hail in a 15-foot cone. Each creature in that area must make a DC 12 Constitution saving throw, taking 22 ({@damage 5d8}) cold damage on a failed save, or half as much damage on a successful one."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
 			"name": "Lizardfolk",
 			"source": "DMG",
 			"page": 282,
 			"ref": "{@race Lizardfolk|DMG}",
 			"apply": {
 				"_root": {
-					"speed": {
-						"walk": 30,
-						"swim": 30
-					},
 					"type": {
 						"type": "humanoid",
 						"tags": [
 							"lizardfolk"
 						]
+					},
+					"speed": {
+						"walk": 30,
+						"swim": 30
 					}
 				},
 				"_mod": {
@@ -897,18 +1890,23 @@
 			"ref": "{@race Merfolk|dmg}",
 			"apply": {
 				"_root": {
-					"speed": {
-						"walk": 10,
-						"swim": 40
-					},
 					"type": {
 						"type": "humanoid",
 						"tags": [
 							"merfolk"
 						]
+					},
+					"speed": {
+						"walk": 10,
+						"swim": 40
 					}
 				},
 				"_mod": {
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Aquan",
+						"items": "Aquan"
+					},
 					"trait": {
 						"mode": "appendArr",
 						"items": [
@@ -919,11 +1917,91 @@
 								]
 							}
 						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Mountain Dwarf",
+			"source": "PHB",
+			"page": 18,
+			"ref": "{@race Dwarf (Mountain)||Mountain Dwarf}",
+			"apply": {
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"dwarf"
+						]
+					},
+					"speed": 25
+				},
+				"_mod": {
+					"_": {
+						"mode": "addSenses",
+						"senses": {
+							"type": "darkvision",
+							"range": 60
+						}
 					},
 					"languages": {
 						"mode": "replaceOrAppendArr",
-						"replace": "Aquan",
-						"items": "Aquan"
+						"replace": "Dwarvish",
+						"items": "Dwarvish"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Dwarven Resilience",
+								"entries": [
+									"<$title_name$> has advantage on saving throws against poison, and has resistance against poison damage."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Orc",
+			"source": "DMG",
+			"page": 120,
+			"ref": "{@race Orc|DMG}",
+			"apply": {
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"orc"
+						]
+					}
+				},
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": {
+								"type": "darkvision",
+								"range": 60
+							}
+						}
+					],
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Orc",
+						"items": "Orc"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Aggressive",
+								"entries": [
+									"As a bonus action, <$title_name$> can move up to your speed toward a hostile creature that they can see."
+								]
+							}
+						]
 					}
 				}
 			}
@@ -934,22 +2012,53 @@
 			"page": 113,
 			"apply": {
 				"_mod": {
+					"_": [
+						{
+							"mode": "maxSize",
+							"max": "L"
+						},
+						{
+							"mode": "scalarMultXp",
+							"scalar": 0.5,
+							"floor": true
+						}
+					],
 					"hp": {
 						"mode": "scalarMultProp",
 						"prop": "average",
 						"scalar": 0.5,
 						"floor": true
 					},
-					"skill": {
-						"mode": "scalarAddProp",
-						"scalar": -2,
-						"prop": "*"
-					},
 					"save": {
 						"mode": "scalarAddProp",
 						"scalar": -2,
 						"prop": "*"
 					},
+					"skill": {
+						"mode": "scalarAddProp",
+						"scalar": -2,
+						"prop": "*"
+					},
+					"spellcasting": [
+						{
+							"mode": "scalarAddHit",
+							"scalar": -2
+						},
+						{
+							"mode": "scalarAddDc",
+							"scalar": -2
+						}
+					],
+					"trait": [
+						{
+							"mode": "scalarAddHit",
+							"scalar": -2
+						},
+						{
+							"mode": "scalarAddDc",
+							"scalar": -2
+						}
+					],
 					"action": [
 						{
 							"mode": "scalarAddHit",
@@ -961,16 +2070,6 @@
 						}
 					],
 					"reaction": [
-						{
-							"mode": "scalarAddHit",
-							"scalar": -2
-						},
-						{
-							"mode": "scalarAddDc",
-							"scalar": -2
-						}
-					],
-					"trait": [
 						{
 							"mode": "scalarAddHit",
 							"scalar": -2
@@ -999,1461 +2098,362 @@
 							"mode": "scalarAddDc",
 							"scalar": -2
 						}
-					],
-					"spellcasting": [
-						{
-							"mode": "scalarAddHit",
-							"scalar": -2
-						},
-						{
-							"mode": "scalarAddDc",
-							"scalar": -2
+					]
+				}
+			}
+		},
+		{
+			"name": "Rock Gnome",
+			"source": "PHB",
+			"page": 35,
+			"ref": "{@race Gnome (Rock)||Rock Gnome}",
+			"apply": {
+				"_root": {
+					"size": "S",
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"gnome"
+						]
+					},
+					"speed": 25
+				},
+				"_mod": {
+					"_": {
+						"mode": "addSenses",
+						"senses": {
+							"type": "darkvision",
+							"range": 60
 						}
-					],
+					},
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Gnomish",
+						"items": "Gnomish"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Gnome Cunning",
+								"entries": [
+									"<$title_name$> has advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Shadow Dragon",
+			"source": "MM",
+			"page": "84",
+			"apply": {
+				"_root": {
+					"int": 10
+				},
+				"_mod": {
 					"_": [
 						{
-							"mode": "maxSize",
-							"max": "L"
+							"mode": "addSkills",
+							"skills": {
+								"stealth": 2
+							}
+						}
+					],
+					"resist": {
+						"mode": "appendArr",
+						"items": "necrotic"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Living Shadow",
+								"entries": [
+									"While in dim light or darkness, the dragon has resistance to damage that isn't force, psychic, or radiant."
+								]
+							},
+							{
+								"name": "Shadow Stealth",
+								"entries": [
+									"While in dim light or darkness, the dragon can take the {@action Hide} action as a bonus action."
+								]
+							},
+							{
+								"name": "Sunlight Sensitivity",
+								"entries": [
+									"While in sunlight, the dragon has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+								]
+							}
+						]
+					},
+					"action": [
+						{
+							"mode": "replaceTxt",
+							"replace": "(acid|cold|fire|lightning|poison)",
+							"with": "necrotic"
 						},
 						{
-							"mode": "scalarMultXp",
-							"scalar": 0.5,
-							"floor": true
+							"mode": "replaceTxt",
+							"replace": "(Acid|Cold|Fire|Lightning|Poison)",
+							"with": "Necrotic"
 						}
 					]
 				}
 			}
 		},
 		{
-			"name": "Large or Smaller Half-Black Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "2",
+			"name": "Skeleton",
+			"source": "DMG",
+			"page": 282,
+			"ref": "{@race Skeleton|DMG}",
 			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Acid Breath {@recharge 5}",
-								"entries": [
-									"The half-dragon exhales acid in a 15-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 22 ({@damage 5d8}) acid damage on a failed save, or half as much damage on a successful one."
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "acid",
-						"items": "acid"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
+				"_root": {
+					"type": {
+						"type": "undead"
 					}
-				}
-			}
-		},
-		{
-			"name": "Huge Half-Black Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "7",
-			"apply": {
+				},
 				"_mod": {
 					"_": [
 						{
 							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
+							"senses": {
+								"type": "darkvision",
+								"range": 60
+							}
 						}
 					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Acid Breath {@recharge 5}",
-								"entries": [
-									"The half-dragon exhales acid in a 30-foot line that is 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 49 ({@damage 11d8}) acid damage on a failed save, or half as much damage on a successful one."
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "acid",
-						"items": "acid"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Gargantuan Half-Black Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "8",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Acid Breath {@recharge 5}",
-								"entries": [
-									"The half-dragon exhales acid in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 54 ({@damage 12d8}) acid damage on a failed save, or half as much damage on a successful one."
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "acid",
-						"items": "acid"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Large or Smaller Half-Copper Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "2",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Breath Weapons {@recharge 5}",
-								"entries": [
-									"The half-dragon uses one of the following breath weapons.",
-									{
-										"type": "list",
-										"style": "list-hang-notitle",
-										"items": [
-											{
-												"type": "item",
-												"name": "Acid Breath.",
-												"entry": "The half-dragon exhales acid in a 20-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 18 ({@damage 4d8}) acid damage on a failed save, or half as much damage on a successful one."
-											},
-											{
-												"type": "item",
-												"name": "Slowing Breath.",
-												"entry": "The half-dragon exhales gas in a 15-foot cone. Each creature in that area must succeed on a DC 11 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save."
-											}
-										]
-									}
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "acid",
-						"items": "acid"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Huge Half-Copper Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "7",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Breath Weapons {@recharge 5}",
-								"entries": [
-									"The half-dragon uses one of the following breath weapons.",
-									{
-										"type": "list",
-										"style": "list-hang-notitle",
-										"items": [
-											{
-												"type": "item",
-												"name": "Acid Breath.",
-												"entry": "The half-dragon exhales acid in a 40-foot line that is 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 40 ({@damage 9d8}) acid damage on a failed save, or half as much damage on a successful one."
-											},
-											{
-												"type": "item",
-												"name": "Slowing Breath.",
-												"entry": "The half-dragon exhales gas in a 30-foot cone. Each creature in that area must succeed on a DC 14 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save."
-											}
-										]
-									}
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "acid",
-						"items": "acid"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Gargantuan Half-Copper Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "8",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Breath Weapons {@recharge 5}",
-								"entries": [
-									"The half-dragon uses one of the following breath weapons.",
-									{
-										"type": "list",
-										"style": "list-hang-notitle",
-										"items": [
-											{
-												"type": "item",
-												"name": "Acid Breath.",
-												"entry": "The half-dragon exhales acid in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 54 ({@damage 12d8}) acid damage on a failed save, or half as much damage on a successful one."
-											},
-											{
-												"type": "item",
-												"name": "Slowing Breath.",
-												"entry": "The half-dragon exhales gas in a 60-foot cone. Each creature in that area must succeed on a DC 18 Constitution saving throw. On a failed save, the creature can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the creature can use either an action or a bonus action on its turn, but not both. These effects last for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself with a successful save."
-											}
-										]
-									}
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "acid",
-						"items": "acid"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Large or Smaller Half-Blue Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "2",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Lightning Breath {@recharge 5}",
-								"entries": [
-									"The half-dragon exhales lightning in a 30-foot line that is 5 feet wide. Each creature in that line must make a DC 12 Dexterity saving throw, taking 22 ({@damage 4d10}) lightning damage on a failed save, or half as much damage on a successful one."
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "lightning",
-						"items": "lightning"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Huge Half-Blue Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "7",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Lightning Breath {@recharge 5}",
-								"entries": [
-									"The half-dragon exhales lightning in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 16 Dexterity saving throw, taking 55 ({@damage 10d10}) lightning damage on a failed save, or half as much damage on a successful one."
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "lightning",
-						"items": "lightning"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Gargantuan Half-Blue Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "8",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Lightning Breath {@recharge 5}",
-								"entries": [
-									"The half-dragon exhales lightning in a 90-foot line that is 5 feet wide. Each creature in that line must make a DC 19 Dexterity saving throw, taking 66 ({@damage 12d10}) lightning damage on a failed save, or half as much damage on a successful one."
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "lightning",
-						"items": "lightning"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Large or Smaller Half-Brass Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "2",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Breath Weapons {@recharge 5}",
-								"entries": [
-									"The half-dragon uses one of the following breath weapons.",
-									{
-										"type": "list",
-										"style": "list-hang-notitle",
-										"items": [
-											{
-												"type": "item",
-												"name": "Fire Breath.",
-												"entry": "The half-dragon exhales fire in a 20-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 14 ({@damage 4d6}) fire damage on a failed save, or half as much damage on a successful one."
-											},
-											{
-												"type": "item",
-												"name": "Sleep Breath.",
-												"entry": "The half-dragon exhales sleep gas in a 15-foot cone. Each creature in that area must succeed on a DC 11 Constitution saving throw or fall {@condition unconscious} for 1 minute. This effect ends for a creature if the creature takes damage or someone uses an action to wake it."
-											}
-										]
-									}
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
-						"items": "fire"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Huge Half-Brass Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "7",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Breath Weapons {@recharge 5}",
-								"entries": [
-									"The half-dragon uses one of the following breath weapons.",
-									{
-										"type": "list",
-										"style": "list-hang-notitle",
-										"items": [
-											{
-												"type": "item",
-												"name": "Fire Breath.",
-												"entry": "The half-dragon exhales fire in a 40-foot line that is 5 feet wide. Each creature in that line must make a DC 14 Dexterity saving throw, taking 42 ({@damage 12d6}) fire damage on a failed save, or half as much damage on a successful one."
-											},
-											{
-												"type": "item",
-												"name": "Sleep Breath.",
-												"entry": "The half-dragon exhales sleep gas in a 30-foot cone. Each creature in that area must succeed on a DC 14 Constitution saving throw or fall {@condition unconscious} for 5 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it."
-											}
-										]
-									}
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
-						"items": "fire"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Huge Half-Brass Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "8",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Breath Weapons {@recharge 5}",
-								"entries": [
-									"The half-dragon uses one of the following breath weapons.",
-									{
-										"type": "list",
-										"style": "list-hang-notitle",
-										"items": [
-											{
-												"type": "item",
-												"name": "Fire Breath.",
-												"entry": "The half-dragon exhales fire in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 18 Dexterity saving throw, taking 45 ({@damage 13d6}) fire damage on a failed save, or half as much damage on a successful one."
-											},
-											{
-												"type": "item",
-												"name": "Sleep Breath.",
-												"entry": "The half-dragon exhales sleep gas in a 60-foot cone. Each creature in that area must succeed on a DC 18 Constitution saving throw or fall {@condition unconscious} for 10 minutes. This effect ends for a creature if the creature takes damage or someone uses an action to wake it."
-											}
-										]
-									}
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
-						"items": "fire"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Large or Smaller Half-Gold Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "2",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Breath Weapons {@recharge 5}",
-								"entries": [
-									"The half-dragon uses one of the following breath weapons.",
-									{
-										"type": "list",
-										"style": "list-hang-notitle",
-										"items": [
-											{
-												"type": "item",
-												"name": "Fire Breath.",
-												"entry": "The half-dragon exhales fire in a 15-foot cone. Each creature in that area must make a DC 13 Dexterity saving throw, taking 22 ({@damage 4d10}) fire damage on a failed save, or half as much damage on a successful one."
-											},
-											{
-												"type": "item",
-												"name": "Weakening Breath.",
-												"entry": "The half-dragon exhales gas in a 15-foot cone. Each creature in that area must succeed on a DC 13 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
-											}
-										]
-									}
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
-						"items": "fire"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Huge Half-Gold Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "7",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Breath Weapons {@recharge 5}",
-								"entries": [
-									"The half-dragon uses one of the following breath weapons.",
-									{
-										"type": "list",
-										"style": "list-hang-notitle",
-										"items": [
-											{
-												"type": "item",
-												"name": "Fire Breath.",
-												"entry": "The half-dragon exhales fire in a 30-foot cone. Each creature in that area must make a DC 17 Dexterity saving throw, taking 55 ({@damage 10d10}) fire damage on a failed save, or half as much damage on a successful one."
-											},
-											{
-												"type": "item",
-												"name": "Weakening Breath.",
-												"entry": "The half-dragon exhales gas in a 30-foot cone. Each creature in that area must succeed on a DC 17 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
-											}
-										]
-									}
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
-						"items": "fire"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Huge Half-Gold Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "8",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Breath Weapons {@recharge 5}",
-								"entries": [
-									"The half-dragon uses one of the following breath weapons.",
-									{
-										"type": "list",
-										"style": "list-hang-notitle",
-										"items": [
-											{
-												"type": "item",
-												"name": "Fire Breath.",
-												"entry": "The half-dragon exhales fire in a 60-foot cone. Each creature in that area must make a DC 21 Dexterity saving throw, taking 66 ({@damage 12d10}) fire damage on a failed save, or half as much damage on a successful one."
-											},
-											{
-												"type": "item",
-												"name": "Weakening Breath.",
-												"entry": "The half-dragon exhales gas in a 60-foot cone. Each creature in that area must succeed on a DC 21 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
-											}
-										]
-									}
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
-						"items": "fire"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Large or Smaller Half-Red Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "2",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Fire Breath {@recharge 5}",
-								"entries": [
-									"The half-dragon exhales fire in a 15-foot cone. Each creature in that area must make a DC 13 Dexterity saving throw, taking 24 ({@damage 7d6}) fire damage on a failed save, or half as much damage on a successful one."
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
-						"items": "fire"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Huge Half-Red Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "7",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Fire Breath {@recharge 5}",
-								"entries": [
-									"The half-dragon exhales fire in a 30-foot cone. Each creature in that area must make a DC 17 Dexterity saving throw, taking 56 ({@damage 16d6}) fire damage on a failed save, or half as much damage on a successful one."
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
-						"items": "fire"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Gargantuan Half-Red Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "8",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Fire Breath {@recharge 5}",
-								"entries": [
-									"The half-dragon exhales fire in a 60-foot cone. Each creature in that area must make a DC 21 Dexterity saving throw, taking 63 ({@damage 18d6}) fire damage on a failed save, or half as much damage on a successful one."
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
-						"items": "fire"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Large or Smaller Half-Green Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "2",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Poison Breath {@recharge 5}",
-								"entries": [
-									"The half-dragon exhales poisonous gas in a 15-foot cone. Each creature in that area must make a DC 11 Constitution saving throw, taking 21 ({@damage 6d6}) poison damage on a failed save, or half as much damage on a successful one."
-								]
-							}
-						]
-					},
-					"resist": {
+					"immune": {
 						"mode": "replaceOrAppendArr",
 						"replace": "poison",
 						"items": "poison"
 					},
+					"vulnerable": {
+						"mode": "replaceOrAppendArr",
+						"replace": "bludgeoning",
+						"items": "bludgeoning"
+					},
+					"conditionImmune": [
+						{
+							"mode": "replaceOrAppendArr",
+							"replace": "exhaustion",
+							"items": "exhaustion"
+						},
+						{
+							"mode": "replaceOrAppendArr",
+							"replace": "poisoned",
+							"items": "poisoned"
+						}
+					],
 					"languages": {
 						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
+						"replace": "understands all languages it spoke in life but can't speak",
+						"items": "understands all languages it spoke in life but can't speak"
 					}
 				}
 			}
 		},
 		{
-			"name": "Huge Half-Green Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "7",
+			"name": "Stout Halfling",
+			"source": "PHB",
+			"page": 35,
+			"ref": "{@race Halfling (Stout)||Stout Halfling}",
 			"apply": {
+				"_root": {
+					"size": "S",
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"halfling"
+						]
+					},
+					"speed": 25
+				},
 				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Halfling",
+						"items": "Halfling"
+					},
+					"trait": {
 						"mode": "appendArr",
 						"items": [
 							{
-								"name": "Poison Breath {@recharge 5}",
+								"name": "Halfling Nimbleness",
 								"entries": [
-									"The half-dragon exhales poisonous gas in a 30-foot cone. Each creature in that area must make a DC 14 Constitution saving throw, taking 42 ({@damage 12d6}) poison damage on a failed save, or half as much damage on a successful one."
+									"<$title_name$> can move through a space of a Medium or larger creature."
+								]
+							},
+							{
+								"name": "Brave",
+								"entries": [
+									"<$title_name$> has advantage on saving throws against being {@condition frightened}."
 								]
 							}
 						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "poison",
-						"items": "poison"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
 					}
 				}
 			}
 		},
 		{
-			"name": "Gargantuan Half-Green Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "8",
+			"name": "Tabaxi",
+			"source": "VGM",
+			"page": 113,
+			"ref": "{@race Tabaxi|VGM}",
 			"apply": {
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"tabaxi"
+						]
+					}
+				},
 				"_mod": {
 					"_": [
 						{
 							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
+							"senses": {
+								"type": "darkvision",
+								"range": 60
+							}
 						}
 					],
-					"action": {
+					"trait": {
 						"mode": "appendArr",
 						"items": [
 							{
-								"name": "Poison Breath {@recharge 5}",
+								"name": "Feline Agility",
 								"entries": [
-									"The half-dragon exhales poisonous gas in a 60-foot cone. Each creature in that area must make a DC 18 Constitution saving throw, taking 56 ({@damage 16d6}) poison damage on a failed save, or half as much damage on a successful one."
+									"When <$title_name$> moves on its turn in combat, they can double their speed until the end of the turn. Once they uses this ability, <$title_name$> can't use it again until they moves 0 feet on one of their turns."
 								]
 							}
 						]
 					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "poison",
-						"items": "poison"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
+					"action": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Claws",
+								"entries": [
+									"{@atk mw} {@hit <$to_hit__str$>} to hit, reach 5 ft., one target. {@h}<$damage_avg__2.5+str$> ({@damage 1d4<$damage_mod__str$>}) slashing damage."
+								]
+							}
+						]
 					}
 				}
 			}
 		},
 		{
-			"name": "Large or Smaller Half-Silver Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "2",
+			"name": "Tiefling",
+			"source": "PHB",
+			"page": 42,
+			"ref": "{@race Tiefling}",
 			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Breath Weapons {@recharge 5}",
-								"entries": [
-									"The half-dragon uses one of the following breath weapons.",
-									{
-										"type": "list",
-										"style": "list-hang-notitle",
-										"items": [
-											{
-												"type": "item",
-												"name": "Cold Breath.",
-												"entry": "The half-dragon exhales an icy blast in a 15-foot cone. Each creature in that area must make a DC 13 Constitution saving throw, taking 18 ({@damage 4d8}) cold damage on a failed save, or half as much damage on a successful one."
-											},
-											{
-												"type": "item",
-												"name": "Paralyzing Breath.",
-												"entry": "The half-dragon exhales paralyzing gas in a 15-foot cone. Each creature in that area must succeed on a DC 13 Constitution saving throw or be {@condition paralyzed} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
-											}
-										]
-									}
-								]
-							}
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"tiefling"
 						]
+					}
+				},
+				"_mod": {
+					"_": {
+						"mode": "addSenses",
+						"senses": {
+							"type": "darkvision",
+							"range": 60
+						}
 					},
 					"resist": {
 						"mode": "replaceOrAppendArr",
-						"replace": "cold",
-						"items": "cold"
+						"replace": "fire",
+						"items": "fire"
 					},
 					"languages": {
 						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
+						"replace": "Infernal",
+						"items": "Infernal"
+					},
+					"spellcasting": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Innate Spellcasting",
+								"headerEntries": [
+									"<$title_name$>'s innate spellcasting ability is Charisma (spell save DC <$spell_dc__cha$>). <$title_name$> can innately cast the following spells, requiring no material components:"
+								],
+								"will": [
+									"{@spell thaumaturgy}"
+								],
+								"daily": {
+									"1e": [
+										"{@spell darkness}",
+										"{@spell hellish rebuke}"
+									]
+								},
+								"ability": "cha"
+							}
+						]
 					}
 				}
 			}
 		},
 		{
-			"name": "Huge Half-Silver Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "7",
+			"name": "Wood Elf",
+			"source": "PHB",
+			"page": 21,
+			"ref": "{@race Elf (Wood)||Wood Elf}",
 			"apply": {
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"elf"
+						]
+					},
+					"speed": 35
+				},
 				"_mod": {
 					"_": [
 						{
 							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Breath Weapons {@recharge 5}",
-								"entries": [
-									"The half-dragon uses one of the following breath weapons.",
-									{
-										"type": "list",
-										"style": "list-hang-notitle",
-										"items": [
-											{
-												"type": "item",
-												"name": "Cold Breath.",
-												"entry": "The half-dragon exhales an icy blast in a 30-foot cone. Each creature in that area must make a DC 17 Constitution saving throw, taking 54 ({@damage 12d8}) cold damage on a failed save, or half as much damage on a successful one."
-											},
-											{
-												"type": "item",
-												"name": "Paralyzing Breath.",
-												"entry": "The half-dragon exhales paralyzing gas in a 30-foot cone. Each creature in that area must succeed on a DC 17 Constitution saving throw or be {@condition paralyzed} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
-											}
-										]
-									}
-								]
+							"senses": {
+								"type": "darkvision",
+								"range": 60
 							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "cold",
-						"items": "cold"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Gargantuan Half-Silver Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "8",
-			"apply": {
-				"_mod": {
-					"_": [
+						},
 						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
+							"mode": "addSkills",
+							"skills": {
+								"perception": 1
+							}
 						}
 					],
-					"action": {
+					"languages": {
+						"mode": "replaceOrAppendArr",
+						"replace": "Elvish",
+						"items": "Elvish"
+					},
+					"trait": {
 						"mode": "appendArr",
 						"items": [
 							{
-								"name": "Breath Weapons {@recharge 5}",
+								"name": "Fey Ancestry",
 								"entries": [
-									"The half-dragon uses one of the following breath weapons.",
-									{
-										"type": "list",
-										"style": "list-hang-notitle",
-										"items": [
-											{
-												"type": "item",
-												"name": "Cold Breath.",
-												"entry": "The half-dragon exhales an icy blast in a 60-foot cone. Each creature in that area must make a DC 20 Constitution saving throw, taking 58 ({@damage 13d8}) cold damage on a failed save, or half as much damage on a successful one."
-											},
-											{
-												"type": "item",
-												"name": "Paralyzing Breath.",
-												"entry": "The half-dragon exhales paralyzing gas in a 60-foot cone. Each creature in that area must succeed on a DC 20 Constitution saving throw or be {@condition paralyzed} for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
-											}
-										]
-									}
+									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$title_name$> to sleep."
 								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "cold",
-						"items": "cold"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Large or Smaller Half-White Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "2",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
+							},
 							{
-								"name": "Cold Breath {@recharge 5}",
+								"name": "Mask of the Wild",
 								"entries": [
-									"The half-dragon exhales an icy blast of hail in a 15-foot cone. Each creature in that area must make a DC 12 Constitution saving throw, taking 22 ({@damage 5d8}) cold damage on a failed save, or half as much damage on a successful one."
+									"<$title_name$> can attempt to hide even when they are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
 								]
 							}
 						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "cold",
-						"items": "cold"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Huge Half-White Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "7",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Cold Breath {@recharge 5}",
-								"entries": [
-									"The half-dragon exhales an icy blast in a 30-foot cone. Each creature in that area must make a DC 15 Constitution saving throw, taking 45 ({@damage 10d8}) cold damage on a failed save, or half as much damage on a successful one."
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "cold",
-						"items": "cold"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
-					}
-				}
-			}
-		},
-		{
-			"name": "Gargantuan Half-White Dragon",
-			"source": "MM",
-			"page": 180,
-			"crMin": "8",
-			"apply": {
-				"_mod": {
-					"_": [
-						{
-							"mode": "addSenses",
-							"senses": [
-								{
-									"type": "blindsight",
-									"range": 10
-								},
-								{
-									"type": "darkvision",
-									"range": 60
-								}
-							]
-						}
-					],
-					"action": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Cold Breath {@recharge 5}",
-								"entries": [
-									"The half-dragon exhales an icy blast in a 60-foot cone. Each creature in that area must make a DC 19 Constitution saving throw, taking 54 ({@damage 12d8}) cold damage on a failed save, or half as much damage on a successful one."
-								]
-							}
-						]
-					},
-					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "cold",
-						"items": "cold"
-					},
-					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
-						"items": "Draconic"
 					}
 				}
 			}

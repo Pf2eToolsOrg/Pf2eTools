@@ -3,6 +3,7 @@
 		{
 			"name": "Mystic",
 			"source": "UATheMysticClass",
+			"page": 1,
 			"hd": {
 				"number": 1,
 				"faces": 8
@@ -11,6 +12,43 @@
 				"int",
 				"wis"
 			],
+			"startingProficiencies": {
+				"armor": [
+					"light"
+				],
+				"weapons": [
+					"simple"
+				],
+				"tools": [
+					"None"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"history",
+								"insight",
+								"medicine",
+								"nature",
+								"perception",
+								"religion"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item spear|phb} or (b) a {@item mace|phb}",
+					"(a) {@item leather armor|phb} or (b) {@item studded leather armor|phb}",
+					"(a) a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item scholar's pack|phb} or (b) an {@item explorer's pack|phb}"
+				],
+				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
+			},
 			"classTableGroups": [
 				{
 					"colLabels": [
@@ -143,43 +181,6 @@
 					]
 				}
 			],
-			"startingProficiencies": {
-				"armor": [
-					"light"
-				],
-				"weapons": [
-					"simple"
-				],
-				"tools": [
-					"None"
-				],
-				"skills": [
-					{
-						"choose": {
-							"from": [
-								"arcana",
-								"history",
-								"insight",
-								"medicine",
-								"nature",
-								"perception",
-								"religion"
-							],
-							"count": 2
-						}
-					}
-				]
-			},
-			"startingEquipment": {
-				"additionalFromBackground": true,
-				"default": [
-					"(a) a {@item spear|phb} or (b) a {@item mace|phb}",
-					"(a) {@item leather armor|phb} or (b) {@item studded leather armor|phb}",
-					"(a) a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
-					"(a) a {@item scholar's pack|phb} or (b) an {@item explorer's pack|phb}"
-				],
-				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
-			},
 			"classFeatures": [
 				[
 					{
@@ -566,6 +567,8 @@
 			"subclasses": [
 				{
 					"name": "Order of the Avatar",
+					"shortName": "Avatar",
+					"source": "UATheMysticClass",
 					"subclassFeatures": [
 						[
 							{
@@ -629,12 +632,12 @@
 								]
 							}
 						]
-					],
-					"source": "UATheMysticClass",
-					"shortName": "Avatar"
+					]
 				},
 				{
 					"name": "Order of the Awakened",
+					"shortName": "Awakened",
+					"source": "UATheMysticClass",
 					"subclassFeatures": [
 						[
 							{
@@ -703,12 +706,12 @@
 								]
 							}
 						]
-					],
-					"source": "UATheMysticClass",
-					"shortName": "Awakened"
+					]
 				},
 				{
 					"name": "Order of the Immortal",
+					"shortName": "Immortal",
+					"source": "UATheMysticClass",
 					"subclassFeatures": [
 						[
 							{
@@ -774,12 +777,12 @@
 								]
 							}
 						]
-					],
-					"source": "UATheMysticClass",
-					"shortName": "Immortal"
+					]
 				},
 				{
 					"name": "Order of the Nomad",
+					"shortName": "Nomad",
+					"source": "UATheMysticClass",
 					"subclassFeatures": [
 						[
 							{
@@ -843,12 +846,12 @@
 								]
 							}
 						]
-					],
-					"source": "UATheMysticClass",
-					"shortName": "Nomad"
+					]
 				},
 				{
 					"name": "Order of the Soul Knife",
+					"shortName": "Soul Knife",
+					"source": "UATheMysticClass",
 					"subclassFeatures": [
 						[
 							{
@@ -939,12 +942,12 @@
 								]
 							}
 						]
-					],
-					"source": "UATheMysticClass",
-					"shortName": "Soul Knife"
+					]
 				},
 				{
 					"name": "Order of the Wu Jen",
+					"shortName": "Wu Jen",
+					"source": "UATheMysticClass",
 					"subclassFeatures": [
 						[
 							{
@@ -1044,12 +1047,9 @@
 								]
 							}
 						]
-					],
-					"source": "UATheMysticClass",
-					"shortName": "Wu Jen"
+					]
 				}
-			],
-			"page": 1
+			]
 		}
 	]
 }

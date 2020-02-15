@@ -20,8 +20,33 @@
 	},
 	"monster": [
 		{
+			"name": "Amphisbaena",
 			"source": "TftYP",
+			"page": 84,
+			"_copy": {
+				"name": "Giant Constrictor Snake",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Multiattack",
+							"entries": [
+								"The amphisbaena makes two attacks, only one of which can be a constrict attack."
+							]
+						}
+					}
+				}
+			},
+			"cr": "3",
+			"actionTags": [
+				"Multiattack"
+			]
+		},
+		{
 			"name": "Animated Table",
+			"source": "TftYP",
+			"page": 230,
 			"size": "L",
 			"type": "construct",
 			"alignment": [
@@ -48,6 +73,10 @@
 			"int": 1,
 			"wis": 3,
 			"cha": 1,
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 6,
 			"immune": [
 				"poison",
 				"psychic"
@@ -62,10 +91,6 @@
 				"petrified",
 				"poisoned"
 			],
-			"senses": [
-				"blindsight 60 ft. (blind beyond this radius)"
-			],
-			"passive": 6,
 			"cr": "2",
 			"trait": [
 				{
@@ -95,11 +120,10 @@
 					]
 				}
 			],
-			"page": 230,
 			"traitTags": [
 				"Antimagic Susceptibility",
-				"False Appearance",
-				"Charge"
+				"Charge",
+				"False Appearance"
 			],
 			"senseTags": [
 				"B"
@@ -112,9 +136,53 @@
 			]
 		},
 		{
+			"name": "Ashdra",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 158,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				}
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"traitTags": [
+				"Fey Ancestry",
+				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"languageTags": [
+				"C",
+				"E",
+				"X"
+			],
+			"spellcastingTags": [
+				"I"
+			]
+		},
+		{
+			"name": "Bandagh",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 159,
+			"_copy": {
+				"name": "Orc",
+				"source": "MM"
+			}
+		},
+		{
 			"name": "Belak the Outcast",
 			"isNpc": true,
 			"source": "TftYP",
+			"page": 9,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -198,27 +266,89 @@
 					]
 				}
 			],
-			"page": 9,
 			"languageTags": [
 				"DU",
 				"X"
 			],
-			"spellcastingTags": [
-				"CD"
-			],
 			"damageTags": [
 				"B"
+			],
+			"spellcastingTags": [
+				"CD"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "Bugbear Gardener",
+			"source": "TftYP",
+			"page": 29,
+			"_copy": {
+				"name": "Bugbear",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Morningstar",
+						"items": {
+							"name": "Glaive",
+							"entries": [
+								"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}13 ({@damage 2d10 + 2}) slashing damage."
+							]
+						}
+					}
+				}
+			},
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW",
+				"THW"
+			]
+		},
+		{
+			"name": "Bugbear Lieutenant",
+			"source": "TftYP",
+			"page": 173,
+			"_copy": {
+				"name": "Bugbear",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Morningstar",
+						"items": {
+							"name": "Longsword",
+							"entries": [
+								"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d8 + 2}) slashing damage, or 13 ({@damage 2d10 + 2}) slashing damage if used with both hands."
+							]
+						}
+					}
+				}
+			},
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW",
+				"THW"
+			]
+		},
+		{
 			"name": "Calcryx",
 			"isNpc": true,
+			"source": "TftYP",
+			"page": 23,
 			"size": "M",
 			"type": "dragon",
-			"source": "TftYP",
 			"alignment": [
 				"C",
 				"E"
@@ -257,14 +387,14 @@
 				"perception": "+4",
 				"stealth": "+2"
 			},
-			"immune": [
-				"cold"
-			],
 			"senses": [
 				"blindsight 10 ft.",
 				"darkvision 60 ft."
 			],
 			"passive": 14,
+			"immune": [
+				"cold"
+			],
 			"languages": [
 				"Draconic"
 			],
@@ -283,26 +413,26 @@
 					]
 				}
 			],
-			"page": 23,
-			"languageTags": [
-				"DR"
-			],
 			"senseTags": [
 				"B",
 				"D"
 			],
+			"languageTags": [
+				"DR"
+			],
 			"damageTags": [
-				"P",
-				"C"
+				"C",
+				"P"
 			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
 			]
 		},
 		{
-			"source": "TftYP",
 			"name": "Centaur Mummy",
+			"source": "TftYP",
+			"page": 231,
 			"size": "L",
 			"type": "undead",
 			"alignment": [
@@ -333,9 +463,10 @@
 			"save": {
 				"wis": "+5"
 			},
-			"vulnerable": [
-				"fire"
+			"senses": [
+				"darkvision 60 ft."
 			],
+			"passive": 12,
 			"resist": [
 				{
 					"resist": [
@@ -350,6 +481,9 @@
 				"necrotic",
 				"poison"
 			],
+			"vulnerable": [
+				"fire"
+			],
 			"conditionImmune": [
 				"charmed",
 				"exhaustion",
@@ -357,10 +491,6 @@
 				"paralyzed",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 12,
 			"languages": [
 				"Common",
 				"Sylvan"
@@ -400,9 +530,11 @@
 					]
 				}
 			],
-			"page": 231,
 			"traitTags": [
 				"Charge"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -411,12 +543,9 @@
 				"C",
 				"S"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
-				"P",
-				"N"
+				"N",
+				"P"
 			],
 			"miscTags": [
 				"MW",
@@ -424,8 +553,104 @@
 			]
 		},
 		{
+			"name": "Chief Nosnra",
+			"isNpc": true,
 			"source": "TftYP",
+			"page": 170,
+			"_copy": {
+				"name": "Frost Giant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the giant",
+						"with": "Chief Nosnra",
+						"flags": "i"
+					}
+				}
+			},
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item splint armor|phb}"
+					]
+				}
+			],
+			"immune": null
+		},
+		{
+			"name": "Cloud Giant Noble",
+			"source": "TftYP",
+			"page": 206,
+			"_copy": {
+				"name": "Cloud Giant",
+				"source": "MM"
+			},
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item chain mail|phb}"
+					]
+				}
+			]
+		},
+		{
+			"name": "Curran Corvalin",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 158,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Stout Halfling",
+					"source": "PHB"
+				}
+			},
+			"languageTags": [
+				"C",
+				"H",
+				"X"
+			]
+		},
+		{
+			"name": "Dragonpriest",
+			"source": "TftYP",
+			"page": 16,
+			"_copy": {
+				"name": "Troll",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "troll",
+						"with": "dragonpriest",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Regeneration",
+						"items": {
+							"name": "Regeneration",
+							"entries": [
+								"The dragonpriest regains 5 hit points at the start of its turn. If the dragonpriest takes acid or fire damage, this trait doesn't function at the start of the dragonpriest's next turn. The dragonpriest dies only if it starts its turn with 0 hit points and doesn't regenerate."
+							]
+						}
+					},
+					"action": {
+						"mode": "removeArr",
+						"names": "Multiattack"
+					}
+				}
+			},
+			"actionTags": []
+		},
+		{
 			"name": "Dread Warrior",
+			"source": "TftYP",
+			"page": 233,
 			"size": "M",
 			"type": "undead",
 			"alignment": [
@@ -461,6 +686,10 @@
 				"athletics": "+4",
 				"perception": "+3"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 13,
 			"immune": [
 				"poison"
 			],
@@ -468,10 +697,6 @@
 				"exhaustion",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 13,
 			"languages": [
 				"Common"
 			],
@@ -504,9 +729,11 @@
 					]
 				}
 			],
-			"page": 233,
 			"traitTags": [
 				"Undead Fortitude"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -514,12 +741,9 @@
 			"languageTags": [
 				"C"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW",
@@ -528,8 +752,90 @@
 			]
 		},
 		{
+			"name": "Drevin",
+			"isNpc": true,
 			"source": "TftYP",
+			"page": 126,
+			"_copy": {
+				"name": "Spy",
+				"source": "MM",
+				"_trait": {
+					"name": "Stout Halfling",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the spy",
+						"with": "Drevin",
+						"flags": "i"
+					}
+				}
+			},
+			"languageTags": [
+				"H",
+				"X"
+			]
+		},
+		{
+			"name": "Drow Commander",
+			"source": "TftYP",
+			"page": 209,
+			"_copy": {
+				"name": "Drow Elite Warrior",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Special Equipment",
+							"entries": [
+								"The drow carries three magical bolts, as follows:",
+								{
+									"type": "list",
+									"items": [
+										"A {@i bolt of holding}, which casts {@spell hold person} on a target hit with the bolt, as well as up to two other targets within 30 feet of that target",
+										"A {@i bolt of blinding}, which casts {@spell blindness/deafness} to blind on a target hit with the bolt, as well as up to two other targets within 30 feet of that target",
+										"A {@i bolt of vapors}, which casts {@spell stinking cloud} centered on the point it hits"
+									]
+								},
+								"Each of these effects has a spell save DC of 15 and a duration of 1 minute."
+							]
+						}
+					},
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Shortsword",
+							"items": {
+								"name": "Shortsword +2",
+								"entries": [
+									"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d6 + 6}) piercing damage plus 10 ({@damage 3d6}) poison damage."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Hand Crossbow",
+							"items": {
+								"name": "Hand Crossbow +1",
+								"entries": [
+									"{@atk rw} {@hit 8} to hit, range 30/120 ft., one target. {@h}8 ({@damage 1d6 + 5}) piercing damage, and the target must succeed on a DC 13 Constitution saving throw or be {@condition poisoned} for 1 hour. If the saving throw fails by 5 or more, the target is also {@condition unconscious} while {@condition poisoned} in this way. The target wakes up if it takes damage or if another creature takes an action to shake it awake."
+								]
+							}
+						}
+					]
+				}
+			},
+			"hp": {
+				"average": 110,
+				"formula": "11d8 + 22"
+			}
+		},
+		{
 			"name": "Duergar Spy",
+			"source": "TftYP",
+			"page": 234,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -571,13 +877,13 @@
 				"sleight of hand": "+5",
 				"stealth": "+7"
 			},
-			"resist": [
-				"poison"
-			],
 			"senses": [
 				"darkvision 120 ft."
 			],
 			"passive": 14,
+			"resist": [
+				"poison"
+			],
 			"languages": [
 				"Dwarvish",
 				"Undercommon"
@@ -641,10 +947,12 @@
 					]
 				}
 			],
-			"page": 234,
 			"traitTags": [
 				"Sneak Attack",
 				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -653,22 +961,20 @@
 				"D",
 				"U"
 			],
-			"senseTags": [
-				"SD"
-			],
 			"damageTags": [
 				"P"
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
 		},
 		{
 			"name": "Durnn",
 			"isNpc": true,
 			"source": "TftYP",
+			"page": 25,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -733,28 +1039,87 @@
 					]
 				}
 			],
-			"page": 25,
+			"senseTags": [
+				"D"
+			],
 			"languageTags": [
 				"C",
 				"GO"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
+			]
+		},
+		{
+			"name": "Eira",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 159,
+			"_copy": {
+				"name": "Druid",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the druid",
+						"with": "Eira",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Elder Black Pudding",
+			"source": "TftYP",
+			"page": 143,
+			"_copy": {
+				"name": "Black Pudding",
+				"source": "MM"
+			},
+			"size": "H",
+			"hp": {
+				"average": 130,
+				"formula": "10d12 + 30"
+			}
+		},
+		{
+			"name": "Elder Giant Lizard",
+			"source": "TftYP",
+			"page": 176,
+			"_copy": {
+				"name": "Giant Crocodile",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "crocodile",
+						"with": "lizard",
+						"flags": "i"
+					}
+				}
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
 			]
 		},
 		{
 			"name": "Erky Timbers",
 			"isNpc": true,
 			"source": "TftYP",
+			"page": 22,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -837,29 +1202,154 @@
 					]
 				}
 			],
-			"page": 22,
+			"senseTags": [
+				"D"
+			],
 			"languageTags": [
 				"C",
 				"DR",
 				"G",
 				"GO"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"B"
 			],
 			"spellcastingTags": [
 				"CC"
-			],
-			"damageTags": [
-				"B"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "Estia",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 189,
+			"_copy": {
+				"name": "Cloud Giant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the giant",
+						"with": "Estia",
+						"flags": "i"
+					},
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Morningstar",
+							"items": {
+								"name": "Morningstar +2",
+								"entries": [
+									"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. {@h}23 ({@damage 3d8 + 10}) piercing damage."
+								]
+							}
+						}
+					]
+				}
+			},
+			"immune": [
+				"cold"
+			],
+			"spellcasting": null,
+			"trait": null,
+			"traitTags": [],
+			"spellcastingTags": []
+		},
+		{
+			"name": "Fire Giant Royal Headsman",
+			"source": "TftYP",
+			"page": 201,
+			"_copy": {
+				"name": "Fire Giant",
+				"source": "MM",
+				"_mod": {
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"The giant makes two greataxe attacks."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Greatsword",
+							"items": {
+								"name": "Greataxe +2",
+								"entries": [
+									"{@atk mw} {@hit 13} to hit, reach 10 ft., one target. {@h}28 ({@damage 3d12 + 9}) slashing damage."
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Fire Giant Servant",
+			"source": "TftYP",
+			"page": 171,
+			"_copy": {
+				"name": "Hill Giant",
+				"source": "MM",
+				"_mod": {
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"The giant makes two longsword attacks."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Greatclub",
+							"items": {
+								"name": "Longsword",
+								"entries": [
+									"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. {@h}18 ({@damage 3d8 + 5}) slashing damage, or 21 ({@damage 3d10 + 5}) slashing damage if used with both hands."
+								]
+							}
+						}
+					]
+				}
+			},
+			"immune": [
+				"fire"
+			]
+		},
+		{
+			"name": "Flying Shield",
+			"source": "TftYP",
+			"page": 224,
+			"_copy": {
+				"name": "Flying Sword",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "sword",
+						"with": "shield",
+						"flags": "i"
+					}
+				}
+			},
+			"action": null,
+			"miscTags": []
+		},
+		{
 			"name": "Four-Armed Gargoyle",
 			"source": "TftYP",
+			"page": 129,
 			"size": "M",
 			"type": "elemental",
 			"alignment": [
@@ -888,6 +1378,10 @@
 			"int": 6,
 			"wis": 11,
 			"cha": 7,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
 			"resist": [
 				{
 					"resist": [
@@ -906,10 +1400,6 @@
 				"petrified",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 10,
 			"languages": [
 				"Terran"
 			],
@@ -942,18 +1432,17 @@
 					]
 				}
 			],
-			"page": 129,
 			"traitTags": [
 				"False Appearance"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"T"
-			],
-			"senseTags": [
-				"D"
 			],
 			"damageTags": [
 				"P",
@@ -964,8 +1453,35 @@
 			]
 		},
 		{
+			"name": "Frost Giant Servant",
 			"source": "TftYP",
+			"page": 187,
+			"_copy": {
+				"name": "Hill Giant",
+				"source": "MM"
+			},
+			"immune": [
+				"cold"
+			]
+		},
+		{
+			"name": "Gargantuan Rug of Smothering",
+			"source": "TftYP",
+			"page": 56,
+			"_copy": {
+				"name": "Rug of Smothering",
+				"source": "MM"
+			},
+			"size": "G",
+			"hp": {
+				"average": 63,
+				"formula": "6d20"
+			}
+		},
+		{
 			"name": "Giant Crayfish",
+			"source": "TftYP",
+			"page": 235,
 			"size": "L",
 			"type": "beast",
 			"alignment": [
@@ -1023,15 +1539,14 @@
 					]
 				}
 			],
-			"page": 235,
 			"traitTags": [
 				"Amphibious"
 			],
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"B"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"damageTags": [
 				"B"
@@ -1041,8 +1556,9 @@
 			]
 		},
 		{
-			"source": "TftYP",
 			"name": "Giant Ice Toad",
+			"source": "TftYP",
+			"page": 235,
 			"size": "L",
 			"type": "monstrosity",
 			"alignment": [
@@ -1069,13 +1585,13 @@
 			"int": 8,
 			"wis": 10,
 			"cha": 6,
-			"immune": [
-				"cold"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 10,
+			"immune": [
+				"cold"
+			],
 			"languages": [
 				"Ice Toad"
 			],
@@ -1115,9 +1631,11 @@
 					]
 				}
 			],
-			"page": 235,
 			"traitTags": [
 				"Amphibious"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Swallow"
@@ -1125,21 +1643,19 @@
 			"languageTags": [
 				"OTH"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
-				"P",
 				"A",
-				"C"
+				"C",
+				"P"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
-			"source": "TftYP",
 			"name": "Giant Lightning Eel",
+			"source": "TftYP",
+			"page": 236,
 			"size": "L",
 			"type": "beast",
 			"alignment": [
@@ -1162,13 +1678,13 @@
 			"int": 2,
 			"wis": 12,
 			"cha": 3,
-			"resist": [
-				"lightning"
-			],
 			"senses": [
 				"blindsight 60 ft."
 			],
 			"passive": 11,
+			"resist": [
+				"lightning"
+			],
 			"cr": "3",
 			"trait": [
 				{
@@ -1198,27 +1714,38 @@
 					]
 				}
 			],
-			"page": 236,
 			"traitTags": [
 				"Water Breathing"
-			],
-			"actionTags": [
-				"Multiattack"
 			],
 			"senseTags": [
 				"B"
 			],
+			"actionTags": [
+				"Multiattack"
+			],
 			"damageTags": [
-				"P",
-				"L"
+				"L",
+				"P"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
-			"source": "TftYP",
 			"name": "Giant Skeleton",
+			"source": "TftYP",
+			"page": 236,
+			"otherSources": [
+				{
+					"source": "DC"
+				},
+				{
+					"source": "SDW"
+				},
+				{
+					"source": "IMR"
+				}
+			],
 			"size": "H",
 			"type": "undead",
 			"alignment": [
@@ -1246,20 +1773,20 @@
 			"int": 4,
 			"wis": 6,
 			"cha": 6,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 8,
 			"immune": [
 				"poison"
+			],
+			"vulnerable": [
+				"bludgeoning"
 			],
 			"conditionImmune": [
 				"exhaustion",
 				"poisoned"
 			],
-			"vulnerable": [
-				"bludgeoning"
-			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 8,
 			"languages": [
 				"understands Giant but can't speak"
 			],
@@ -1298,10 +1825,12 @@
 					]
 				}
 			],
-			"page": 236,
 			"traitTags": [
 				"Magic Resistance",
 				"Turn Immunity"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -1310,31 +1839,18 @@
 				"CS",
 				"GI"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
 				"S"
 			],
 			"miscTags": [
 				"MW",
 				"RCH"
-			],
-			"otherSources": [
-				{
-					"source": "DC"
-				},
-				{
-					"source": "SDW"
-				},
-				{
-					"source": "IMR"
-				}
 			]
 		},
 		{
-			"source": "TftYP",
 			"name": "Giant Subterranean Lizard",
+			"source": "TftYP",
+			"page": 236,
 			"size": "H",
 			"type": "beast",
 			"alignment": [
@@ -1394,14 +1910,13 @@
 					]
 				}
 			],
-			"page": 236,
 			"actionTags": [
 				"Multiattack",
 				"Swallow"
 			],
 			"damageTags": [
-				"P",
-				"A"
+				"A",
+				"P"
 			],
 			"miscTags": [
 				"MW",
@@ -1409,8 +1924,104 @@
 			]
 		},
 		{
+			"name": "Goblin Commoner",
 			"source": "TftYP",
+			"page": 24,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Goblin",
+					"source": "DMG"
+				}
+			},
+			"hp": {
+				"average": 3,
+				"formula": "1d6"
+			},
+			"str": 8,
+			"action": [
+				{
+					"name": "Club",
+					"entries": [
+						"{@atk mw} {@hit 1} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) bludgeoning damage."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"GO",
+				"X"
+			]
+		},
+		{
+			"name": "Gorvan Ironheart",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 151,
+			"_copy": {
+				"name": "Priest",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the priest",
+						"with": "Gorvan",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Great Ulfe",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 42,
+			"_copy": {
+				"name": "Ogre",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the ogre",
+						"with": "Ulfe",
+						"flags": "i"
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Greatclub",
+						"items": {
+							"name": "Greataxe",
+							"entries": [
+								"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}17 ({@damage 2d12 + 4}) slashing damage."
+							]
+						}
+					}
+				}
+			},
+			"damageTags": [
+				"P",
+				"S"
+			]
+		},
+		{
 			"name": "Greater Zombie",
+			"source": "TftYP",
+			"page": 237,
+			"otherSources": [
+				{
+					"source": "DC"
+				},
+				{
+					"source": "SDW"
+				},
+				{
+					"source": "IMR"
+				}
+			],
 			"size": "M",
 			"type": "undead",
 			"alignment": [
@@ -1441,6 +2052,10 @@
 			"save": {
 				"wis": "+1"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 8,
 			"resist": [
 				"cold",
 				"necrotic"
@@ -1455,10 +2070,6 @@
 				"paralyzed",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 8,
 			"languages": [
 				"understands the languages it knew in life but can't speak"
 			],
@@ -1491,16 +2102,15 @@
 					]
 				}
 			],
-			"page": 237,
 			"traitTags": [
 				"Turn Resistance",
 				"Undead Fortitude"
 			],
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"CS",
@@ -1512,23 +2122,13 @@
 			],
 			"miscTags": [
 				"MW"
-			],
-			"otherSources": [
-				{
-					"source": "DC"
-				},
-				{
-					"source": "SDW"
-				},
-				{
-					"source": "IMR"
-				}
 			]
 		},
 		{
-			"source": "TftYP",
-			"isNpc": true,
 			"name": "Grenl",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 25,
 			"size": "S",
 			"type": {
 				"type": "humanoid",
@@ -1574,29 +2174,6 @@
 				"Goblin"
 			],
 			"cr": "1/4",
-			"trait": [
-				{
-					"name": "Nimble Escape",
-					"entries": [
-						"The goblin can take the Disengage or Hide action as a bonus action on each of its turns."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Scimitar",
-					"entries": [
-						"{@atk mw} +4, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
-					]
-				},
-				{
-					"name": "Shortbow",
-					"entries": [
-						"{@atk rw} +4, range 80/320 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
-					]
-				}
-			],
-			"page": 25,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -1621,29 +2198,70 @@
 					"ability": "wis"
 				}
 			],
-			"languageTags": [
-				"C",
-				"GO"
+			"trait": [
+				{
+					"name": "Nimble Escape",
+					"entries": [
+						"The goblin can take the Disengage or Hide action as a bonus action on each of its turns."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Scimitar",
+					"entries": [
+						"{@atk mw} +4, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
+					]
+				},
+				{
+					"name": "Shortbow",
+					"entries": [
+						"{@atk rw} +4, range 80/320 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
+					]
+				}
 			],
 			"senseTags": [
 				"D"
 			],
-			"spellcastingTags": [
-				"CC"
+			"languageTags": [
+				"C",
+				"GO"
 			],
 			"damageTags": [
 				"P"
 			],
+			"spellcastingTags": [
+				"CC"
+			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
+		},
+		{
+			"name": "Grutha",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 170,
+			"_copy": {
+				"name": "Hill Giant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the giant",
+						"with": "Grutha",
+						"flags": "i"
+					}
+				}
+			}
 		},
 		{
 			"name": "Guthash",
 			"isNpc": true,
 			"source": "TftYP",
+			"page": 21,
 			"size": "M",
 			"type": "beast",
 			"alignment": [
@@ -1678,7 +2296,6 @@
 					]
 				}
 			],
-			"page": 21,
 			"senseTags": [
 				"D"
 			],
@@ -1690,8 +2307,79 @@
 			]
 		},
 		{
+			"name": "Hedrun Arnsfirth",
+			"isNpc": true,
 			"source": "TftYP",
+			"page": 160,
+			"_copy": {
+				"name": "Deathlock Wight",
+				"source": "MTF",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the wight",
+						"with": "Hedrun",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Hill Giant Sergeant",
+			"source": "TftYP",
+			"page": 170,
+			"_copy": {
+				"name": "Hill Giant",
+				"source": "MM"
+			},
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item chain mail|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 115,
+				"formula": "10d12 + 40"
+			}
+		},
+		{
+			"name": "Hill Giant Servant",
+			"source": "TftYP",
+			"page": 170,
+			"_copy": {
+				"name": "Ogre",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "ogre",
+						"with": "giant"
+					}
+				}
+			}
+		},
+		{
+			"name": "Hill Giant Subchief",
+			"source": "TftYP",
+			"page": 170,
+			"_copy": {
+				"name": "Stone Giant",
+				"source": "MM"
+			},
+			"trait": null
+		},
+		{
 			"name": "Huge Giant Crab",
+			"source": "TftYP",
+			"page": 103,
+			"otherSources": [
+				{
+					"source": "SLW"
+				}
+			],
 			"size": "H",
 			"type": "beast",
 			"alignment": [
@@ -1722,15 +2410,15 @@
 			"skill": {
 				"stealth": "+4"
 			},
+			"senses": [
+				"blindsight 30 ft."
+			],
+			"passive": 9,
 			"conditionImmune": [
 				"charmed",
 				"frightened",
 				"paralyzed"
 			],
-			"senses": [
-				"blindsight 30 ft."
-			],
-			"passive": 9,
 			"cr": "8",
 			"trait": [
 				{
@@ -1754,7 +2442,6 @@
 					]
 				}
 			],
-			"page": 103,
 			"traitTags": [
 				"Amphibious"
 			],
@@ -1767,16 +2454,149 @@
 			"miscTags": [
 				"MW",
 				"RCH"
-			],
-			"otherSources": [
-				{
-					"source": "SLW"
-				}
 			]
+		},
+		{
+			"name": "Huge Ochre Jelly",
+			"source": "TftYP",
+			"page": 225,
+			"_copy": {
+				"name": "Ochre Jelly",
+				"source": "MM"
+			},
+			"size": "H",
+			"hp": {
+				"average": 51,
+				"formula": "6d12 + 12"
+			}
+		},
+		{
+			"name": "Huge Polar Bear",
+			"source": "TftYP",
+			"page": 187,
+			"_copy": {
+				"name": "Polar Bear",
+				"source": "MM"
+			},
+			"size": "H",
+			"hp": {
+				"average": 65,
+				"formula": "5d12 + 15"
+			}
+		},
+		{
+			"name": "Irisoth",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 157,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Half-Elf",
+					"source": "PHB"
+				}
+			},
+			"traitTags": [
+				"Fey Ancestry"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"E",
+				"X"
+			]
+		},
+		{
+			"name": "Jarl Grugnur",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 189,
+			"_copy": {
+				"name": "Cloud Giant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the giant",
+						"with": "Grugnur",
+						"flags": "i"
+					},
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"Grugnur makes two longsword attacks."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Morningstar",
+							"items": {
+								"name": "Longsword +2",
+								"entries": [
+									"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. {@h}23 ({@damage 3d8 + 10}) slashing damage, or 26 ({@damage 3d10 + 10}) slashing damage if used with both hands."
+								]
+							}
+						}
+					]
+				}
+			},
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item chain mail|phb}",
+						"{@item arrow-catching shield}"
+					]
+				},
+				{
+					"ac": 20,
+					"condition": "against ranged attacks",
+					"braces": true
+				}
+			],
+			"immune": [
+				"cold"
+			],
+			"spellcasting": null,
+			"trait": null,
+			"traitTags": [],
+			"damageTags": [
+				"B",
+				"S"
+			],
+			"spellcastingTags": []
+		},
+		{
+			"name": "Jot",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 15,
+			"_copy": {
+				"name": "Quasit",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the quasit",
+						"with": "Jot",
+						"flags": "i"
+					}
+				}
+			}
 		},
 		{
 			"name": "Kaarghaz",
 			"isNpc": true,
+			"source": "TftYP",
+			"page": 45,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1784,7 +2604,6 @@
 					"troglodyte"
 				]
 			},
-			"source": "TftYP",
 			"alignment": [
 				"C",
 				"E"
@@ -1822,6 +2641,41 @@
 				"Troglodyte"
 			],
 			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Kaarghaz is a 4th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). He knows the following sorcerer spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell mage hand}",
+								"{@spell poison spray}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 6,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell shield}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell invisibility}",
+								"{@spell scorching ray}"
+							]
+						}
+					},
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"name": "Chameleon Skin",
@@ -1862,44 +2716,11 @@
 					]
 				}
 			],
-			"page": 45,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Kaarghaz is a 4th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 12}, {@hit 4} to hit with spell attacks). He knows the following sorcerer spells:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell fire bolt}",
-								"{@spell mage hand}",
-								"{@spell poison spray}",
-								"{@spell prestidigitation}",
-								"{@spell ray of frost}"
-							]
-						},
-						"1": {
-							"slots": 6,
-							"spells": [
-								"{@spell burning hands}",
-								"{@spell shield}",
-								"{@spell sleep}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell invisibility}",
-								"{@spell scorching ray}"
-							]
-						}
-					},
-					"ability": "cha"
-				}
-			],
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -1908,24 +2729,22 @@
 				"DR",
 				"OTH"
 			],
-			"senseTags": [
-				"D"
-			],
-			"spellcastingTags": [
-				"CS"
-			],
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"spellcastingTags": [
+				"CS"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
-			"source": "TftYP",
-			"isNpc": true,
 			"name": "Kalka-Kylla",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 238,
 			"size": "L",
 			"type": "monstrosity",
 			"alignment": [
@@ -2000,19 +2819,18 @@
 					]
 				}
 			],
-			"page": 238,
 			"traitTags": [
 				"Amphibious",
 				"False Appearance"
+			],
+			"senseTags": [
+				"B"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"OTH"
-			],
-			"senseTags": [
-				"B"
 			],
 			"damageTags": [
 				"B"
@@ -2022,8 +2840,62 @@
 			]
 		},
 		{
+			"name": "Keeper",
+			"isNpc": true,
 			"source": "TftYP",
+			"page": 173,
+			"_copy": {
+				"name": "Stone Giant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "giant",
+						"with": "Keeper",
+						"flags": "i"
+					},
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"The Keeper makes two battleaxe attacks."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Greatclub",
+							"items": {
+								"name": "Battleaxe +2",
+								"entries": [
+									"{@atk mw} {@hit 10} to hit, reach 15 ft., one target. {@h}20 ({@damage 3d8 + 7}) slashing damage, or 23 ({@damage 3d10 + 7}) slashing damage if used with both hands."
+								]
+							}
+						}
+					]
+				}
+			},
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item chain mail|phb}"
+					]
+				}
+			],
+			"trait": null,
+			"damageTags": [
+				"B",
+				"S"
+			]
+		},
+		{
 			"name": "Kelpie",
+			"source": "TftYP",
+			"page": 238,
 			"size": "M",
 			"type": "plant",
 			"alignment": [
@@ -2056,6 +2928,10 @@
 				"perception": "+3",
 				"stealth": "+4"
 			},
+			"senses": [
+				"blindsight 60 ft."
+			],
+			"passive": 13,
 			"resist": [
 				"fire",
 				"bludgeoning",
@@ -2066,10 +2942,6 @@
 				"deafened",
 				"exhaustion"
 			],
-			"senses": [
-				"blindsight 60 ft."
-			],
-			"passive": 13,
 			"languages": [
 				"Common",
 				"Sylvan"
@@ -2117,10 +2989,12 @@
 					]
 				}
 			],
-			"page": 238,
 			"traitTags": [
 				"Amphibious",
 				"False Appearance"
+			],
+			"senseTags": [
+				"B"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -2128,9 +3002,6 @@
 			"languageTags": [
 				"C",
 				"S"
-			],
-			"senseTags": [
-				"B"
 			],
 			"damageTags": [
 				"P"
@@ -2141,8 +3012,217 @@
 			]
 		},
 		{
+			"name": "Kelson Darktreader",
+			"isNpc": true,
 			"source": "TftYP",
+			"page": 132,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Half-Elf",
+					"source": "PHB"
+				}
+			},
+			"traitTags": [
+				"Fey Ancestry"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"E",
+				"X"
+			]
+		},
+		{
+			"name": "Kieren",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 157,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			}
+		},
+		{
+			"name": "King Snurre",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 193,
+			"_copy": {
+				"name": "Fire Giant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the giant",
+						"with": "Snurre",
+						"flags": "i"
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Greatsword",
+						"items": {
+							"name": "Greatsword",
+							"entries": [
+								"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. {@h}28 ({@damage 6d6 + 7}) slashing damage plus 7 ({@damage 2d6}) fire damage."
+							]
+						}
+					}
+				}
+			},
+			"hp": {
+				"average": 187,
+				"formula": "15d12 + 90"
+			},
+			"resist": [
+				"cold"
+			],
+			"languages": [
+				"Common",
+				"Giant"
+			],
+			"cr": "11",
+			"languageTags": [
+				"C",
+				"GI"
+			],
+			"damageTags": [
+				"B",
+				"F",
+				"S"
+			]
+		},
+		{
+			"name": "Kobold Commoner",
+			"source": "TftYP",
+			"page": 18,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Kobold",
+					"source": "DMG"
+				}
+			},
+			"hp": {
+				"average": 3,
+				"formula": "1d6"
+			},
+			"action": [
+				{
+					"name": "Club",
+					"entries": [
+						"{@atk mw} {@hit 1} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) bludgeoning damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Pack Tactics",
+				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"X"
+			]
+		},
+		{
+			"name": "Kobold Elite",
+			"source": "TftYP",
+			"page": 18,
+			"_copy": {
+				"name": "Kobold",
+				"source": "MM"
+			},
+			"hp": {
+				"average": 7,
+				"formula": "2d6 - 2"
+			}
+		},
+		{
+			"name": "Lacedon",
+			"source": "TftYP",
+			"page": 147,
+			"_copy": {
+				"name": "Ghoul",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "ghoul",
+						"with": "lacedon",
+						"flags": "i"
+					}
+				}
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			}
+		},
+		{
+			"name": "Lahnis",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 131,
+			"_copy": {
+				"name": "Evoker",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the evoker",
+						"with": "Lahnis",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Lesser Mummy Lord",
+			"source": "TftYP",
+			"page": 224,
+			"_copy": {
+				"name": "Mummy Lord",
+				"source": "MM"
+			},
+			"spellcasting": null,
+			"spellcastingTags": []
+		},
+		{
+			"name": "Lumalia",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 153,
+			"_copy": {
+				"name": "Deva",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the deva",
+						"with": "Lumalia",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
 			"name": "Malformed Kraken",
+			"source": "TftYP",
+			"page": 239,
 			"size": "H",
 			"type": "monstrosity",
 			"alignment": [
@@ -2178,6 +3258,10 @@
 				"wis": "+6",
 				"cha": "+6"
 			},
+			"senses": [
+				"truesight 60 ft."
+			],
+			"passive": 12,
 			"resist": [
 				{
 					"resist": [
@@ -2195,12 +3279,9 @@
 				"frightened",
 				"paralyzed"
 			],
-			"senses": [
-				"truesight 60 ft."
-			],
-			"passive": 12,
 			"languages": [
-				"understands Common but can't speak; telepathy 60 ft."
+				"understands Common but can't speak",
+				"telepathy 60 ft."
 			],
 			"cr": "10",
 			"trait": [
@@ -2249,10 +3330,12 @@
 					]
 				}
 			],
-			"page": 239,
 			"traitTags": [
 				"Amphibious",
 				"Siege Monster"
+			],
+			"senseTags": [
+				"U"
 			],
 			"actionTags": [
 				"Multiattack",
@@ -2263,13 +3346,10 @@
 				"CS",
 				"TP"
 			],
-			"senseTags": [
-				"U"
-			],
 			"damageTags": [
-				"P",
 				"B",
-				"L"
+				"L",
+				"P"
 			],
 			"miscTags": [
 				"MW",
@@ -2277,9 +3357,28 @@
 			]
 		},
 		{
+			"name": "Mennek Ariz",
+			"isNpc": true,
 			"source": "TftYP",
+			"page": 157,
+			"_copy": {
+				"name": "Enchanter",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the enchanter",
+						"with": "Mennek",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
 			"name": "Nahual",
 			"isNpc": true,
+			"source": "TftYP",
+			"page": 91,
 			"size": "M",
 			"type": {
 				"type": "fiend",
@@ -2311,13 +3410,13 @@
 				"deception": "+6",
 				"insight": "+3"
 			},
-			"conditionImmune": [
-				"charmed"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 11,
+			"conditionImmune": [
+				"charmed"
+			],
 			"languages": [
 				"Common"
 			],
@@ -2362,19 +3461,18 @@
 					]
 				}
 			],
-			"page": 91,
 			"traitTags": [
-				"Shapechanger",
-				"Ambusher"
+				"Ambusher",
+				"Shapechanger"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"C"
-			],
-			"senseTags": [
-				"D"
 			],
 			"damageTags": [
 				"B"
@@ -2384,8 +3482,46 @@
 			]
 		},
 		{
+			"name": "Nedylene",
+			"isNpc": true,
 			"source": "TftYP",
+			"page": 209,
+			"_copy": {
+				"name": "Drow Priestess of Lolth",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the drow",
+						"with": "Nedylene",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Special Equipment",
+							"entries": [
+								"Nedylene carries a {@item staff of swarming insects}."
+							]
+						}
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Scourge",
+						"items": {
+							"name": "Scourge +2",
+							"entries": [
+								"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) piercing damage plus 17 ({@damage 5d6}) poison damage."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
 			"name": "Nereid",
+			"source": "TftYP",
+			"page": 240,
 			"size": "M",
 			"type": "fey",
 			"alignment": [
@@ -2480,18 +3616,17 @@
 					]
 				}
 			],
-			"page": 240,
 			"traitTags": [
 				"Amphibious"
+			],
+			"senseTags": [
+				"D"
 			],
 			"languageTags": [
 				"AQ",
 				"C",
 				"E",
 				"S"
-			],
-			"senseTags": [
-				"D"
 			],
 			"damageTags": [
 				"A",
@@ -2505,6 +3640,7 @@
 			"name": "Nimira",
 			"isNpc": true,
 			"source": "TftYP",
+			"page": 54,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2537,13 +3673,13 @@
 			"int": 11,
 			"wis": 10,
 			"cha": 9,
-			"resist": [
-				"poison"
-			],
 			"senses": [
 				"darkvision 120 ft."
 			],
 			"passive": 10,
+			"resist": [
+				"poison"
+			],
 			"languages": [
 				"Dwarvish",
 				"Undercommon"
@@ -2601,9 +3737,11 @@
 					]
 				}
 			],
-			"page": 54,
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -2612,12 +3750,9 @@
 				"D",
 				"U"
 			],
-			"senseTags": [
-				"SD"
-			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW",
@@ -2626,8 +3761,58 @@
 			]
 		},
 		{
+			"name": "Obmi",
+			"isNpc": true,
 			"source": "TftYP",
+			"page": 196,
+			"_copy": {
+				"name": "Assassin",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the assassin",
+						"with": "Obmi",
+						"flags": "i"
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Multiattack",
+						"items": {
+							"name": "Multiattack",
+							"entries": [
+								"Obmi makes three shortsword attacks."
+							]
+						}
+					}
+				}
+			},
+			"str": 16,
+			"cha": 16
+		},
+		{
+			"name": "Ogre Skeleton",
+			"source": "TftYP",
+			"page": 54,
+			"_copy": {
+				"name": "Ogre",
+				"source": "MM",
+				"_trait": {
+					"name": "Skeleton",
+					"source": "DMG"
+				}
+			},
+			"languageTags": [
+				"C",
+				"CS",
+				"GI",
+				"LF"
+			]
+		},
+		{
 			"name": "Ooze Master",
+			"source": "TftYP",
+			"page": 241,
 			"size": "H",
 			"type": "undead",
 			"alignment": [
@@ -2664,6 +3849,10 @@
 				"arcana": "+7",
 				"insight": "+4"
 			},
+			"senses": [
+				"blindsight 120 ft."
+			],
+			"passive": 10,
 			"resist": [
 				"lightning",
 				"necrotic",
@@ -2691,54 +3880,12 @@
 				"poisoned",
 				"prone"
 			],
-			"senses": [
-				"blindsight 120 ft."
-			],
-			"passive": 10,
 			"languages": [
 				"Common",
 				"Primordial",
 				"Thayan"
 			],
 			"cr": "10",
-			"trait": [
-				{
-					"name": "Corrosive Form",
-					"entries": [
-						"A creature that touches the Ooze Master or hits it with a melee attack while within 5 feet of it takes 9 ({@damage 2d8}) acid damage. Any nonmagical weapon that hits the Ooze Master corrodes. After dealing damage, the weapon takes a permanent and cumulative \u22121 penalty to damage rolls. If its penalty drops to \u22125, the weapon is destroyed. Nonmagical ammunition that hits the Ooze Master is destroyed after dealing damage.",
-						"The Ooze Master can eat through 2-inch-thick, nonmagical wood or metal in 1 round."
-					]
-				},
-				{
-					"name": "Instinctive Attack",
-					"entries": [
-						"When the Ooze Master casts a spell with a casting time of 1 action, it can make one pseudopod attack as a bonus action."
-					]
-				},
-				{
-					"name": "Spider Climb",
-					"entries": [
-						"The Ooze Master can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Pseudopod",
-					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 10 ft., one target. {@h}13 ({@damage 3d6 + 3}) bludgeoning damage plus 10 ({@damage 3d6}) acid damage."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"name": "Instinctive Charm",
-					"entries": [
-						"If a creature the Ooze Master can see makes an attack roll against it while within 30 feet of it, the Ooze Master can use a reaction to divert the attack if another creature is within the attack's range. The attacker must make a {@dc 15} Wisdom saving throw. On a failed save, the attacker targets the creature that is closest to it, not including itself or the Ooze Master. If multiple creatures are closest, the attacker chooses which one to target. On a successful save, the attacker is immune to this Instinctive Charm for 24 hours. Creatures that can't be {@condition charmed} are immune to this effect."
-					]
-				}
-			],
-			"page": 241,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -2796,23 +3943,60 @@
 					"ability": "int"
 				}
 			],
+			"trait": [
+				{
+					"name": "Corrosive Form",
+					"entries": [
+						"A creature that touches the Ooze Master or hits it with a melee attack while within 5 feet of it takes 9 ({@damage 2d8}) acid damage. Any nonmagical weapon that hits the Ooze Master corrodes. After dealing damage, the weapon takes a permanent and cumulative \u22121 penalty to damage rolls. If its penalty drops to \u22125, the weapon is destroyed. Nonmagical ammunition that hits the Ooze Master is destroyed after dealing damage.",
+						"The Ooze Master can eat through 2-inch-thick, nonmagical wood or metal in 1 round."
+					]
+				},
+				{
+					"name": "Instinctive Attack",
+					"entries": [
+						"When the Ooze Master casts a spell with a casting time of 1 action, it can make one pseudopod attack as a bonus action."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"The Ooze Master can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Pseudopod",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 10 ft., one target. {@h}13 ({@damage 3d6 + 3}) bludgeoning damage plus 10 ({@damage 3d6}) acid damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Instinctive Charm",
+					"entries": [
+						"If a creature the Ooze Master can see makes an attack roll against it while within 30 feet of it, the Ooze Master can use a reaction to divert the attack if another creature is within the attack's range. The attacker must make a {@dc 15} Wisdom saving throw. On a failed save, the attacker targets the creature that is closest to it, not including itself or the Ooze Master. If multiple creatures are closest, the attacker chooses which one to target. On a successful save, the attacker is immune to this Instinctive Charm for 24 hours. Creatures that can't be {@condition charmed} are immune to this effect."
+					]
+				}
+			],
 			"traitTags": [
 				"Spider Climb"
-			],
-			"languageTags": [
-				"C",
-				"P",
-				"OTH"
 			],
 			"senseTags": [
 				"B"
 			],
-			"spellcastingTags": [
-				"CW"
+			"languageTags": [
+				"C",
+				"OTH",
+				"P"
 			],
 			"damageTags": [
-				"B",
-				"A"
+				"A",
+				"B"
+			],
+			"spellcastingTags": [
+				"CW"
 			],
 			"miscTags": [
 				"MW",
@@ -2820,8 +4004,498 @@
 			]
 		},
 		{
+			"name": "Orc Commoner",
 			"source": "TftYP",
+			"page": 167,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Orc",
+					"source": "DMG"
+				}
+			},
+			"traitTags": [
+				"Aggressive"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"O",
+				"X"
+			]
+		},
+		{
+			"name": "Oussa",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 157,
+			"_copy": {
+				"name": "Yuan-ti Malison (Type 3)",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the yuan-ti",
+						"with": "Oussa",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Phaia",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 132,
+			"_copy": {
+				"name": "Necromancer",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the necromancer",
+						"with": "Phaia",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Aboleth",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Aboleth",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Basilisk",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Basilisk",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Behir",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Behir",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				},
+				"_mod": {
+					"action": {
+						"mode": "removeArr",
+						"names": [
+							"Constrict",
+							"Swallow"
+						]
+					}
+				}
+			},
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"L",
+				"P"
+			]
+		},
+		{
+			"name": "Reduced-Threat Beholder",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Beholder",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Black Pudding",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Black Pudding",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Carrion Crawler",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Carrion Crawler",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Clay Golem",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Clay Golem",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Darkmantle",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Darkmantle",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Displacer Beast",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Displacer Beast",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Dragon Turtle",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Dragon Turtle",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				},
+				"_mod": {
+					"action": [
+						{
+							"mode": "removeArr",
+							"names": [
+								"Tail"
+							]
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"The dragon turtle makes three attacks: one with its bite and two with its claws."
+								]
+							}
+						}
+					]
+				}
+			},
+			"damageTags": [
+				"F",
+				"P",
+				"S"
+			]
+		},
+		{
+			"name": "Reduced-Threat Ettercap",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Ettercap",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			},
+			"damageTags": [
+				"I",
+				"P",
+				"S"
+			]
+		},
+		{
+			"name": "Reduced-Threat Flesh Golem",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Flesh Golem",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Glabrezu",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Glabrezu",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Gray Ooze",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Gray Ooze",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			},
+			"damageTags": [
+				"A",
+				"B"
+			]
+		},
+		{
+			"name": "Reduced-Threat Helmed Horror",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Helmed Horror",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Hezrou",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Hezrou",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Hook Horror",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Hook Horror",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Ochre Jelly",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Ochre Jelly",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Otyugh",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Otyugh",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				},
+				"_mod": {
+					"action": [
+						{
+							"mode": "removeArr",
+							"names": [
+								"Tentacle Slam"
+							]
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Tentacle",
+							"items": {
+								"name": "Tentacle",
+								"entries": [
+									"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. {@h}7 ({@damage 1d8 + 3}) bludgeoning damage plus 4 ({@damage 1d8}) piercing damage."
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Owlbear",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Owlbear",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Peryton",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Peryton",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Remorhaz",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Remorhaz",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Stone Golem",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Stone Golem",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Vrock",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Vrock",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Wight",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Wight",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Reduced-Threat Wyvern",
+			"source": "TftYP",
+			"page": 113,
+			"_copy": {
+				"name": "Wyvern",
+				"source": "MM",
+				"_trait": {
+					"name": "Reduced Threat",
+					"source": "TftYP"
+				}
+			}
+		},
+		{
+			"name": "Scrag",
+			"source": "TftYP",
+			"page": 147,
+			"_copy": {
+				"name": "Troll",
+				"source": "MM"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			}
+		},
+		{
 			"name": "Sea Lion",
+			"source": "TftYP",
+			"page": 242,
+			"otherSources": [
+				{
+					"source": "GoS"
+				},
+				{
+					"source": "LR"
+				}
+			],
 			"size": "L",
 			"type": "monstrosity",
 			"alignment": [
@@ -2901,7 +4575,12 @@
 					]
 				}
 			],
-			"page": 242,
+			"altArt": [
+				{
+					"name": "Sea Lion (Alt)",
+					"source": "GoS"
+				}
+			],
 			"traitTags": [
 				"Amphibious",
 				"Keen Senses",
@@ -2915,26 +4594,71 @@
 			],
 			"miscTags": [
 				"MW"
-			],
-			"otherSources": [
-				{
-					"source": "GoS"
-				},
-				{
-					"source": "LR"
-				}
-			],
-			"altArt": [
-				{
-					"name": "Sea Lion (Alt)",
-					"source": "GoS"
-				}
 			]
 		},
 		{
+			"name": "Sentient Gray Ooze",
 			"source": "TftYP",
+			"page": 158,
+			"_copy": {
+				"name": "Gray Ooze",
+				"source": "MM",
+				"_mod": {
+					"conditionImmune": {
+						"mode": "removeArr",
+						"items": "charmed"
+					}
+				}
+			},
+			"int": 5,
+			"languages": [
+				"Common"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"A",
+				"B"
+			]
+		},
+		{
+			"name": "Sentient Ochre Jelly",
+			"source": "TftYP",
+			"page": 158,
+			"_copy": {
+				"name": "Ochre Jelly",
+				"source": "MM",
+				"_mod": {
+					"conditionImmune": {
+						"mode": "removeArr",
+						"items": "charmed"
+					}
+				}
+			},
+			"int": 5,
+			"languages": [
+				"Common"
+			],
+			"languageTags": [
+				"C"
+			]
+		},
+		{
+			"name": "Shalendra Floshin",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 119,
+			"_copy": {
+				"name": "Knight",
+				"source": "MM"
+			}
+		},
+		{
 			"name": "Sharwyn Hucrele",
 			"isNpc": true,
+			"source": "TftYP",
+			"page": 242,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2979,6 +4703,33 @@
 				"Goblin"
 			],
 			"cr": "1/2",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Sharwyn is a 1st-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 13}, {@hit 5} to hit with spell attacks). She has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell light}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 2,
+							"spells": [
+								"{@spell color spray}",
+								"{@spell magic missile}",
+								"{@spell shield}",
+								"{@spell sleep}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
 			"trait": [
 				{
 					"name": "Barkskin",
@@ -3007,53 +4758,26 @@
 					]
 				}
 			],
-			"page": 242,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Sharwyn is a 1st-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 13}, {@hit 5} to hit with spell attacks). She has the following wizard spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell light}",
-								"{@spell prestidigitation}",
-								"{@spell ray of frost}"
-							]
-						},
-						"1": {
-							"slots": 2,
-							"spells": [
-								"{@spell color spray}",
-								"{@spell magic missile}",
-								"{@spell shield}",
-								"{@spell sleep}"
-							]
-						}
-					},
-					"ability": "int"
-				}
-			],
 			"languageTags": [
 				"C",
 				"DR",
 				"GO"
 			],
-			"spellcastingTags": [
-				"CW"
-			],
 			"damageTags": [
 				"P"
+			],
+			"spellcastingTags": [
+				"CW"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
-			"source": "TftYP",
 			"name": "Sir Braford",
 			"isNpc": true,
+			"source": "TftYP",
+			"page": 243,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3132,7 +4856,6 @@
 					]
 				}
 			],
-			"page": 243,
 			"languageTags": [
 				"C"
 			],
@@ -3144,9 +4867,10 @@
 			]
 		},
 		{
-			"source": "TftYP",
-			"isNpc": true,
 			"name": "Siren",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 243,
 			"size": "M",
 			"type": "fey",
 			"alignment": [
@@ -3186,6 +4910,23 @@
 				"Sylvan"
 			],
 			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Siren's innate spellcasting ability is Charisma (spell save {@dc 13}). She can innately cast the following spells, requiring no material components:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell charm person}",
+							"{@spell fog cloud}",
+							"{@spell greater invisibility}",
+							"{@spell polymorph} (self only)"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"name": "Amphibious",
@@ -3214,52 +4955,35 @@
 					]
 				}
 			],
-			"page": 243,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Siren's innate spellcasting ability is Charisma (spell save {@dc 13}). She can innately cast the following spells, requiring no material components:"
-					],
-					"daily": {
-						"1e": [
-							"{@spell charm person}",
-							"{@spell fog cloud}",
-							"{@spell greater invisibility}",
-							"{@spell polymorph} (self only)"
-						]
-					},
-					"ability": "cha"
-				}
-			],
 			"traitTags": [
 				"Amphibious",
 				"Magic Resistance"
+			],
+			"senseTags": [
+				"D"
 			],
 			"languageTags": [
 				"C",
 				"E",
 				"S"
 			],
-			"senseTags": [
-				"D"
-			],
-			"spellcastingTags": [
-				"I"
-			],
 			"damageTags": [
 				"P",
 				"Y"
+			],
+			"spellcastingTags": [
+				"I"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
-			"source": "TftYP",
-			"isNpc": true,
 			"name": "Snarla",
 			"group": "Lycanthropes",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 102,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3304,6 +5028,7 @@
 			"skill": {
 				"perception": "+4"
 			},
+			"passive": 14,
 			"immune": [
 				{
 					"immune": [
@@ -3314,52 +5039,10 @@
 					"note": "from nonmagical attacks that aren't silvered"
 				}
 			],
-			"passive": 14,
 			"languages": [
 				"Common (can't speak in wolf form)"
 			],
 			"cr": "5",
-			"trait": [
-				{
-					"name": "Shapechanger",
-					"entries": [
-						"The werewolf can use its action to polymorph into a wolf-humanoid hybrid or into a wolf, or back into its true form, which is humanoid. Its statistics, other than its AC, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
-					]
-				},
-				{
-					"name": "Keen Hearing and Smell",
-					"entries": [
-						"The werewolf has advantage on Wisdom ({@skill Perception}) checks that rely on hearing or smell."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack (Humanoid or Hybrid Form Only)",
-					"entries": [
-						"The werewolf makes two attacks: one with its bite and one with its claws or spear."
-					]
-				},
-				{
-					"name": "Bite (Wolf or Hybrid Form Only)",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage. If the target is a humanoid, it must succeed on a {@dc 12} Constitution saving throw or be cursed with werewolf lycanthropy."
-					]
-				},
-				{
-					"name": "Claws (Hybrid Form Only)",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}7 ({@damage 2d4 + 2}) slashing damage."
-					]
-				},
-				{
-					"name": "Spear (Humanoid Form Only)",
-					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one creature. {@h}5 ({@damage 1d6 + 2}) piercing damage, or 6 ({@damage 1d8 + 2}) piercing damage if used with two hands to make a melee attack."
-					]
-				}
-			],
-			"page": 102,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -3403,20 +5086,60 @@
 					"ability": "int"
 				}
 			],
+			"trait": [
+				{
+					"name": "Shapechanger",
+					"entries": [
+						"The werewolf can use its action to polymorph into a wolf-humanoid hybrid or into a wolf, or back into its true form, which is humanoid. Its statistics, other than its AC, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its true form if it dies."
+					]
+				},
+				{
+					"name": "Keen Hearing and Smell",
+					"entries": [
+						"The werewolf has advantage on Wisdom ({@skill Perception}) checks that rely on hearing or smell."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack (Humanoid or Hybrid Form Only)",
+					"entries": [
+						"The werewolf makes two attacks: one with its bite and one with its claws or spear."
+					]
+				},
+				{
+					"name": "Bite (Wolf or Hybrid Form Only)",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage. If the target is a humanoid, it must succeed on a {@dc 12} Constitution saving throw or be cursed with werewolf lycanthropy."
+					]
+				},
+				{
+					"name": "Claws (Hybrid Form Only)",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}7 ({@damage 2d4 + 2}) slashing damage."
+					]
+				},
+				{
+					"name": "Spear (Humanoid Form Only)",
+					"entries": [
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one creature. {@h}5 ({@damage 1d6 + 2}) piercing damage, or 6 ({@damage 1d8 + 2}) piercing damage if used with two hands to make a melee attack."
+					]
+				}
+			],
 			"traitTags": [
-				"Shapechanger",
-				"Keen Senses"
+				"Keen Senses",
+				"Shapechanger"
 			],
 			"languageTags": [
 				"C",
 				"CS"
 			],
-			"spellcastingTags": [
-				"CW"
-			],
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"spellcastingTags": [
+				"CW"
 			],
 			"miscTags": [
 				"MW",
@@ -3425,9 +5148,27 @@
 			]
 		},
 		{
+			"name": "Snow Leopard",
+			"source": "TftYP",
+			"page": 183,
+			"_copy": {
+				"name": "Tiger",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "tiger",
+						"with": "leopard",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
 			"name": "Snurrevin",
 			"isNpc": true,
 			"source": "TftYP",
+			"page": 53,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3461,18 +5202,52 @@
 			"int": 14,
 			"wis": 10,
 			"cha": 9,
-			"resist": [
-				"poison"
-			],
 			"senses": [
 				"darkvision 120 ft."
 			],
 			"passive": 10,
+			"resist": [
+				"poison"
+			],
 			"languages": [
 				"Dwarvish",
 				"Undercommon"
 			],
 			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Snurrevin is a 3rd-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 12}, {@hit 4} to hit with spell attacks). He has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell mage hand}",
+								"{@spell minor illusion}",
+								"{@spell shocking grasp}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell color spray}",
+								"{@spell shield}",
+								"{@spell silent image}"
+							]
+						},
+						"2": {
+							"slots": 2,
+							"spells": [
+								"{@spell hold person}",
+								"{@spell shatter}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
 			"trait": [
 				{
 					"name": "Duergar Resilience",
@@ -3513,56 +5288,21 @@
 					]
 				}
 			],
-			"page": 53,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Snurrevin is a 3rd-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 12}, {@hit 4} to hit with spell attacks). He has the following wizard spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell fire bolt}",
-								"{@spell mage hand}",
-								"{@spell minor illusion}",
-								"{@spell shocking grasp}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell color spray}",
-								"{@spell shield}",
-								"{@spell silent image}"
-							]
-						},
-						"2": {
-							"slots": 2,
-							"spells": [
-								"{@spell hold person}",
-								"{@spell shatter}"
-							]
-						}
-					},
-					"ability": "int"
-				}
-			],
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
 			],
 			"languageTags": [
 				"D",
 				"U"
 			],
-			"senseTags": [
-				"SD"
+			"damageTags": [
+				"P"
 			],
 			"spellcastingTags": [
 				"CW"
-			],
-			"damageTags": [
-				"P"
 			],
 			"miscTags": [
 				"MW",
@@ -3571,9 +5311,41 @@
 			]
 		},
 		{
+			"name": "Stone Dragon Statue",
 			"source": "TftYP",
-			"isNpc": true,
+			"page": 85,
+			"_copy": {
+				"name": "Stone Golem",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "golem",
+						"with": "statue",
+						"flags": "i"
+					}
+				}
+			},
+			"action": [
+				{
+					"name": "Steam Breath",
+					"entries": [
+						"The statue exhales steam in a line that is 30 ft. long and 10 ft. wide. Each creature in that area must make a {@dc 15} Constitution saving throw, taking 7 ({@damage 2d4 + 2}) fire damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"actionTags": [],
+			"damageTags": [
+				"F"
+			],
+			"miscTags": []
+		},
+		{
 			"name": "Tarul Var",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "TftYP",
+			"page": 244,
 			"size": "M",
 			"type": "undead",
 			"alignment": [
@@ -3612,6 +5384,10 @@
 				"insight": "+7",
 				"perception": "+7"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 17,
 			"resist": [
 				"cold",
 				"lightning",
@@ -3635,10 +5411,6 @@
 				"paralyzed",
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 17,
 			"languages": [
 				"Abyssal",
 				"Common",
@@ -3647,67 +5419,6 @@
 				"Thayan"
 			],
 			"cr": "13",
-			"trait": [
-				{
-					"name": "Focused Conjuration",
-					"entries": [
-						"While Var is concentrating on a conjuration spell, his concentration can't be broken as a result of taking damage."
-					]
-				},
-				{
-					"name": "Legendary Resistance (3/Day)",
-					"entries": [
-						"If Var fails a saving throw, he can choose to succeed instead."
-					]
-				},
-				{
-					"name": "Rejuvenation",
-					"entries": [
-						"If Var is destroyed but his phylactery remains intact, Var gains a new body in {@dice 1d10} days, regaining all his hit points and becoming active again. The new body appears within 5 feet of the phylactery."
-					]
-				},
-				{
-					"name": "Turn Resistance",
-					"entries": [
-						"Var has advantage on saving throws against any effect that turns undead."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Paralyzing Touch",
-					"entries": [
-						"{@atk ms} {@hit 9} to hit, reach 5 ft., one creature. {@h}10 ({@damage 3d6}) cold damage. The target must succeed on a {@dc 17} Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
-					]
-				},
-				{
-					"name": "Benign Transposition",
-					"entries": [
-						"Var teleports up to 30 feet to an unoccupied space he can see. Alternatively, he can choose a space within range that is occupied by a Small or Medium creature. If that creature is willing, both creatures teleport, swapping places. Var can use this feature again only after he finishes a long rest or casts a conjuration spell of 1st level or higher."
-					]
-				}
-			],
-			"legendary": [
-				{
-					"name": "Cantrip",
-					"entries": [
-						"Var casts a cantrip."
-					]
-				},
-				{
-					"name": "Paralyzing Touch (Costs 2 Actions)",
-					"entries": [
-						"Var uses Paralyzing Touch."
-					]
-				},
-				{
-					"name": "Frightening Gaze (Costs 2 Actions)",
-					"entries": [
-						"Var fixes his gaze on one creature he can see within 10 feet of him. The target must succeed on a {@dc 17} Wisdom saving throw against this magic or become {@condition frightened} for 1 minute. The {@condition frightened} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to Var's gaze for the next 24 hours."
-					]
-				}
-			],
-			"page": 244,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -3775,33 +5486,93 @@
 					"ability": "int"
 				}
 			],
-			"isNamedCreature": true,
+			"trait": [
+				{
+					"name": "Focused Conjuration",
+					"entries": [
+						"While Var is concentrating on a conjuration spell, his concentration can't be broken as a result of taking damage."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"If Var fails a saving throw, he can choose to succeed instead."
+					]
+				},
+				{
+					"name": "Rejuvenation",
+					"entries": [
+						"If Var is destroyed but his phylactery remains intact, Var gains a new body in {@dice 1d10} days, regaining all his hit points and becoming active again. The new body appears within 5 feet of the phylactery."
+					]
+				},
+				{
+					"name": "Turn Resistance",
+					"entries": [
+						"Var has advantage on saving throws against any effect that turns undead."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Paralyzing Touch",
+					"entries": [
+						"{@atk ms} {@hit 9} to hit, reach 5 ft., one creature. {@h}10 ({@damage 3d6}) cold damage. The target must succeed on a {@dc 17} Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+					]
+				},
+				{
+					"name": "Benign Transposition",
+					"entries": [
+						"Var teleports up to 30 feet to an unoccupied space he can see. Alternatively, he can choose a space within range that is occupied by a Small or Medium creature. If that creature is willing, both creatures teleport, swapping places. Var can use this feature again only after he finishes a long rest or casts a conjuration spell of 1st level or higher."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Cantrip",
+					"entries": [
+						"Var casts a cantrip."
+					]
+				},
+				{
+					"name": "Paralyzing Touch (Costs 2 Actions)",
+					"entries": [
+						"Var uses Paralyzing Touch."
+					]
+				},
+				{
+					"name": "Frightening Gaze (Costs 2 Actions)",
+					"entries": [
+						"Var fixes his gaze on one creature he can see within 10 feet of him. The target must succeed on a {@dc 17} Wisdom saving throw against this magic or become {@condition frightened} for 1 minute. The {@condition frightened} target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to Var's gaze for the next 24 hours."
+					]
+				}
+			],
 			"traitTags": [
 				"Legendary Resistances",
 				"Rejuvenation",
 				"Turn Resistance"
 			],
+			"senseTags": [
+				"D"
+			],
 			"languageTags": [
 				"AB",
 				"C",
 				"I",
-				"P",
-				"OTH"
-			],
-			"senseTags": [
-				"D"
-			],
-			"spellcastingTags": [
-				"CW"
+				"OTH",
+				"P"
 			],
 			"damageTags": [
 				"C"
+			],
+			"spellcastingTags": [
+				"CW"
 			]
 		},
 		{
-			"source": "TftYP",
-			"isNpc": true,
 			"name": "Tecuziztecatl",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 245,
 			"size": "L",
 			"type": "monstrosity",
 			"alignment": [
@@ -3834,6 +5605,10 @@
 				"deception": "+3",
 				"stealth": "+2"
 			},
+			"senses": [
+				"blindsight 30 ft."
+			],
+			"passive": 13,
 			"resist": [
 				{
 					"resist": [
@@ -3845,13 +5620,9 @@
 			"immune": [
 				"acid"
 			],
-			"senses": [
-				"blindsight 30 ft."
-			],
-			"passive": 13,
 			"languages": [
 				"Olman",
-				"Primal"
+				"Primordial"
 			],
 			"cr": "4",
 			"trait": [
@@ -3900,10 +5671,12 @@
 					]
 				}
 			],
-			"page": 245,
 			"traitTags": [
 				"Amphibious",
 				"Spider Climb"
+			],
+			"senseTags": [
+				"B"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -3911,22 +5684,20 @@
 			"languageTags": [
 				"OTH"
 			],
-			"senseTags": [
+			"damageTags": [
+				"A",
 				"B"
 			],
-			"damageTags": [
-				"B",
-				"A"
-			],
 			"miscTags": [
+				"AOE",
 				"MW",
-				"RCH",
-				"AOE"
+				"RCH"
 			]
 		},
 		{
-			"source": "TftYP",
 			"name": "Thayan Apprentice",
+			"source": "TftYP",
+			"page": 245,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -3971,23 +5742,6 @@
 				"Thayan"
 			],
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Doomvault Devotion",
-					"entries": [
-						"Within the Doomvault, the apprentice has advantage on saving throws against being {@condition charmed} or {@condition frightened}."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
-					]
-				}
-			],
-			"page": 245,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -4023,25 +5777,42 @@
 					"ability": "int"
 				}
 			],
+			"trait": [
+				{
+					"name": "Doomvault Devotion",
+					"entries": [
+						"Within the Doomvault, the apprentice has advantage on saving throws against being {@condition charmed} or {@condition frightened}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+					]
+				}
+			],
 			"languageTags": [
 				"C",
 				"OTH"
 			],
-			"spellcastingTags": [
-				"CW"
-			],
 			"damageTags": [
 				"P"
 			],
+			"spellcastingTags": [
+				"CW"
+			],
 			"miscTags": [
-				"RW",
 				"MW",
+				"RW",
 				"THW"
 			]
 		},
 		{
-			"source": "TftYP",
 			"name": "Thayan Warrior",
+			"source": "TftYP",
+			"page": 246,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -4121,7 +5892,6 @@
 					]
 				}
 			],
-			"page": 246,
 			"traitTags": [
 				"Pack Tactics"
 			],
@@ -4133,8 +5903,8 @@
 				"OTH"
 			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW",
@@ -4143,8 +5913,38 @@
 			]
 		},
 		{
+			"name": "Therzt",
+			"isNpc": true,
 			"source": "TftYP",
+			"page": 158,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				}
+			},
+			"traitTags": [
+				"Fey Ancestry",
+				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"languageTags": [
+				"C",
+				"E",
+				"X"
+			],
+			"spellcastingTags": [
+				"I"
+			]
+		},
+		{
 			"name": "Thorn Slinger",
+			"source": "TftYP",
+			"page": 246,
 			"size": "L",
 			"type": "plant",
 			"alignment": [
@@ -4166,15 +5966,15 @@
 			"int": 1,
 			"wis": 10,
 			"cha": 1,
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
 			"conditionImmune": [
 				"blinded",
 				"deafened",
 				"frightened"
 			],
-			"senses": [
-				"blindsight 60 ft. (blind beyond this radius)"
-			],
-			"passive": 10,
 			"cr": "1/2",
 			"trait": [
 				{
@@ -4199,7 +5999,6 @@
 					]
 				}
 			],
-			"page": 246,
 			"traitTags": [
 				"False Appearance"
 			],
@@ -4207,18 +6006,19 @@
 				"B"
 			],
 			"damageTags": [
-				"P",
-				"A"
+				"A",
+				"P"
 			],
 			"miscTags": [
-				"RW",
-				"MW"
+				"MW",
+				"RW"
 			]
 		},
 		{
-			"source": "TftYP",
 			"name": "Tloques-Popolocas",
 			"isNpc": true,
+			"source": "TftYP",
+			"page": 68,
 			"size": "M",
 			"type": "undead",
 			"alignment": [
@@ -4254,6 +6054,10 @@
 				"perception": "+3",
 				"stealth": "+7"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 13,
 			"resist": [
 				"necrotic",
 				{
@@ -4265,14 +6069,24 @@
 					"note": "from nonmagical attacks"
 				}
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 13,
 			"languages": [
 				"the languages it knew in life"
 			],
 			"cr": "5",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Tloques can cast {@spell hold person} ({@dc 14}) at will, requiring no components, but his target must be able to see him."
+					],
+					"hidden": [
+						"will"
+					],
+					"will": [
+						"{@spell hold person}"
+					]
+				}
+			],
 			"trait": [
 				{
 					"name": "Regeneration",
@@ -4335,49 +6149,70 @@
 					]
 				}
 			],
-			"page": 68,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Tloques can cast {@spell hold person} ({@dc 14}) at will, requiring no components, but his target must be able to see him."
-					],
-					"hidden": [
-						"will"
-					],
-					"will": [
-						"{@spell hold person}"
-					]
-				}
-			],
 			"traitTags": [
 				"Regeneration",
-				"Spider Climb",
-				"Shapechanger"
-			],
-			"actionTags": [
-				"Multiattack"
+				"Shapechanger",
+				"Spider Climb"
 			],
 			"senseTags": [
 				"D"
 			],
-			"spellcastingTags": [
-				"I"
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"LF"
 			],
 			"damageTags": [
 				"S"
 			],
+			"spellcastingTags": [
+				"I"
+			],
 			"miscTags": [
 				"MW"
-			],
-			"languageTags": [
-				"LF"
 			]
 		},
 		{
-			"source": "TftYP",
+			"name": "Torlin Silvershield",
 			"isNpc": true,
+			"source": "TftYP",
+			"page": 159,
+			"_copy": {
+				"name": "Wight",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the wight",
+						"with": "Torlin",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Werejaguar",
+			"source": "TftYP",
+			"page": 79,
+			"_copy": {
+				"name": "Weretiger",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "tiger",
+						"with": "jaguar",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
 			"name": "White Maw",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 248,
 			"size": "G",
 			"type": "ooze",
 			"alignment": [
@@ -4400,6 +6235,10 @@
 			"int": 12,
 			"wis": 10,
 			"cha": 3,
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
 			"resist": [
 				"acid",
 				"cold",
@@ -4417,10 +6256,6 @@
 				"poisoned",
 				"prone"
 			],
-			"senses": [
-				"blindsight 60 ft. (blind beyond this radius)"
-			],
-			"passive": 10,
 			"languages": [
 				"telepathy 50 ft."
 			],
@@ -4460,20 +6295,19 @@
 					]
 				}
 			],
-			"page": 248,
 			"traitTags": [
 				"Amorphous",
 				"False Appearance"
 			],
-			"languageTags": [
-				"TP"
-			],
 			"senseTags": [
 				"B"
 			],
+			"languageTags": [
+				"TP"
+			],
 			"damageTags": [
-				"B",
-				"A"
+				"A",
+				"B"
 			],
 			"miscTags": [
 				"MW",
@@ -4481,9 +6315,162 @@
 			]
 		},
 		{
+			"name": "Xilonen",
+			"isNpc": true,
+			"source": "TftYP",
+			"page": 83,
+			"_copy": {
+				"name": "Roper",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the roper",
+						"with": "Xilonen",
+						"flags": "i"
+					}
+				}
+			},
+			"int": 2
+		},
+		{
+			"name": "Yeti Leader",
+			"source": "TftYP",
+			"page": 183,
+			"_copy": {
+				"name": "Yeti",
+				"source": "MM",
+				"_mod": {
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"The yeti can use its Chilling Gaze and makes two greatsword attacks."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Claw",
+							"items": {
+								"name": "Frost Brand Greatsword",
+								"entries": [
+									"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) slashing damage plus 3 ({@damage 1d6}) cold damage."
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Young Fire Giant",
+			"source": "TftYP",
+			"page": 192,
+			"_copy": {
+				"name": "Ogre",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "ogre",
+						"with": "giant",
+						"flags": "i"
+					}
+				}
+			},
+			"immune": [
+				"fire"
+			]
+		},
+		{
+			"name": "Young Frost Giant",
+			"source": "TftYP",
+			"page": 187,
+			"_copy": {
+				"name": "Ogre",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "ogre",
+						"with": "giant",
+						"flags": "i"
+					}
+				}
+			},
+			"immune": [
+				"cold"
+			]
+		},
+		{
+			"name": "Young Hill Giant",
+			"source": "TftYP",
+			"page": 167,
+			"_copy": {
+				"name": "Orc",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "orc",
+						"with": "giant",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Young Ogre Servant",
+			"source": "TftYP",
+			"page": 171,
+			"_copy": {
+				"name": "Orc",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "orc",
+						"with": "ogre",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Young Troglodyte",
+			"source": "TftYP",
+			"page": 176,
+			"_copy": {
+				"name": "Kobold",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "kobold",
+						"with": "troglodyte",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Young Winter Wolf",
+			"source": "TftYP",
+			"page": 181,
+			"_copy": {
+				"name": "Dire Wolf",
+				"source": "MM"
+			}
+		},
+		{
 			"name": "Yusdrayl",
 			"isNpc": true,
 			"source": "TftYP",
+			"page": 248,
 			"size": "S",
 			"type": {
 				"type": "humanoid",
@@ -4530,29 +6517,6 @@
 				"Draconic"
 			],
 			"cr": "1",
-			"trait": [
-				{
-					"name": "Sunlight Sensitivity",
-					"entries": [
-						"While in sunlight, Yusdrayl has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
-					]
-				},
-				{
-					"name": "Pack Tactics",
-					"entries": [
-						"Yusdrayl has advantage on an attack roll against a creature if at least one of her allies is within 5 ft. of the creature and the ally isn't {@condition incapacitated}."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
-					]
-				}
-			],
-			"page": 248,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -4580,2005 +6544,48 @@
 					"ability": "cha"
 				}
 			],
+			"trait": [
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"While in sunlight, Yusdrayl has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+					]
+				},
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"Yusdrayl has advantage on an attack roll against a creature if at least one of her allies is within 5 ft. of the creature and the ally isn't {@condition incapacitated}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+					]
+				}
+			],
 			"traitTags": [
-				"Sunlight Sensitivity",
-				"Pack Tactics"
+				"Pack Tactics",
+				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"D"
 			],
 			"languageTags": [
 				"C",
 				"DR"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"P"
 			],
 			"spellcastingTags": [
 				"CS"
 			],
-			"damageTags": [
-				"P"
-			],
 			"miscTags": [
 				"MW"
 			]
-		},
-		{
-			"name": "Amphisbaena",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Giant Constrictor Snake",
-				"source": "MM",
-				"_mod": {
-					"action": {
-						"mode": "prependArr",
-						"items": {
-							"name": "Multiattack",
-							"entries": [
-								"The amphisbaena makes two attacks, only one of which can be a constrict attack."
-							]
-						}
-					}
-				}
-			},
-			"cr": "3",
-			"actionTags": [
-				"Multiattack"
-			],
-			"page": 84
-		},
-		{
-			"name": "Ashdra",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM",
-				"_trait": {
-					"name": "Drow",
-					"source": "PHB"
-				}
-			},
-			"alignment": [
-				"C",
-				"E"
-			],
-			"languageTags": [
-				"C",
-				"X",
-				"E"
-			],
-			"senseTags": [
-				"SD"
-			],
-			"traitTags": [
-				"Fey Ancestry",
-				"Sunlight Sensitivity"
-			],
-			"spellcastingTags": [
-				"I"
-			],
-			"page": 158
-		},
-		{
-			"name": "Bandagh",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Orc",
-				"source": "MM"
-			},
-			"page": 159
-		},
-		{
-			"name": "Bugbear Gardener",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Bugbear",
-				"source": "MM",
-				"_mod": {
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Morningstar",
-						"items": {
-							"name": "Glaive",
-							"entries": [
-								"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}13 ({@damage 2d10 + 2}) slashing damage."
-							]
-						}
-					}
-				}
-			},
-			"damageTags": [
-				"S",
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RCH",
-				"RW",
-				"THW"
-			],
-			"page": 29
-		},
-		{
-			"name": "Bugbear Lieutenant",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Bugbear",
-				"source": "MM",
-				"_mod": {
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Morningstar",
-						"items": {
-							"name": "Longsword",
-							"entries": [
-								"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d8 + 2}) slashing damage, or 13 ({@damage 2d10 + 2}) slashing damage if used with both hands."
-							]
-						}
-					}
-				}
-			},
-			"damageTags": [
-				"S",
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RCH",
-				"RW",
-				"THW"
-			],
-			"page": 173
-		},
-		{
-			"name": "Chief Nosnra",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Frost Giant",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the giant",
-						"with": "Chief Nosnra",
-						"flags": "i"
-					}
-				}
-			},
-			"ac": [
-				{
-					"ac": 17,
-					"from": [
-						"{@item splint armor|phb}"
-					]
-				}
-			],
-			"immune": null,
-			"page": 170
-		},
-		{
-			"name": "Grutha",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Hill Giant",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the giant",
-						"with": "Grutha",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 170
-		},
-		{
-			"name": "Hill Giant Subchief",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Stone Giant",
-				"source": "MM"
-			},
-			"trait": null,
-			"page": 170
-		},
-		{
-			"name": "Hill Giant Sergeant",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Hill Giant",
-				"source": "MM"
-			},
-			"ac": [
-				{
-					"ac": 16,
-					"from": [
-						"{@item chain mail|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 115,
-				"formula": "10d12 + 40"
-			},
-			"page": 170
-		},
-		{
-			"name": "Hill Giant Servant",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Ogre",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "ogre",
-						"with": "giant"
-					}
-				}
-			},
-			"page": 170
-		},
-		{
-			"name": "Cloud Giant Noble",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Cloud Giant",
-				"source": "MM"
-			},
-			"ac": [
-				{
-					"ac": 16,
-					"from": [
-						"{@item chain mail|phb}"
-					]
-				}
-			],
-			"page": 206
-		},
-		{
-			"name": "Curran Corvalin",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM",
-				"_trait": {
-					"name": "Stout Halfling",
-					"source": "PHB"
-				}
-			},
-			"languageTags": [
-				"C",
-				"X",
-				"H"
-			],
-			"page": 158
-		},
-		{
-			"name": "Dragonpriest",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Troll",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "troll",
-						"with": "dragonpriest",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "replaceArr",
-						"replace": "Regeneration",
-						"items": {
-							"name": "Regeneration",
-							"entries": [
-								"The dragonpriest regains 5 hit points at the start of its turn. If the dragonpriest takes acid or fire damage, this trait doesn't function at the start of the dragonpriest's next turn. The dragonpriest dies only if it starts its turn with 0 hit points and doesn't regenerate."
-							]
-						}
-					},
-					"action": {
-						"mode": "removeArr",
-						"names": "Multiattack"
-					}
-				}
-			},
-			"page": 16,
-			"actionTags": []
-		},
-		{
-			"name": "Drevin",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Spy",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the spy",
-						"with": "Drevin",
-						"flags": "i"
-					}
-				},
-				"_trait": {
-					"name": "Stout Halfling",
-					"source": "PHB"
-				}
-			},
-			"languageTags": [
-				"X",
-				"H"
-			],
-			"page": 126
-		},
-		{
-			"name": "Drow Commander",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Drow Elite Warrior",
-				"source": "MM",
-				"_mod": {
-					"trait": {
-						"mode": "prependArr",
-						"items": {
-							"name": "Special Equipment",
-							"entries": [
-								"The drow carries three magical bolts, as follows:",
-								{
-									"type": "list",
-									"items": [
-										"A {@i bolt of holding}, which casts {@spell hold person} on a target hit with the bolt, as well as up to two other targets within 30 feet of that target",
-										"A {@i bolt of blinding}, which casts {@spell blindness/deafness} to blind on a target hit with the bolt, as well as up to two other targets within 30 feet of that target",
-										"A {@i bolt of vapors}, which casts {@spell stinking cloud} centered on the point it hits"
-									]
-								},
-								"Each of these effects has a spell save DC of 15 and a duration of 1 minute."
-							]
-						}
-					},
-					"action": [
-						{
-							"mode": "replaceArr",
-							"replace": "Shortsword",
-							"items": {
-								"name": "Shortsword +2",
-								"entries": [
-									"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d6 + 6}) piercing damage plus 10 ({@damage 3d6}) poison damage."
-								]
-							}
-						},
-						{
-							"mode": "replaceArr",
-							"replace": "Hand Crossbow",
-							"items": {
-								"name": "Hand Crossbow +1",
-								"entries": [
-									"{@atk rw} {@hit 8} to hit, range 30/120 ft., one target. {@h}8 ({@damage 1d6 + 5}) piercing damage, and the target must succeed on a DC 13 Constitution saving throw or be {@condition poisoned} for 1 hour. If the saving throw fails by 5 or more, the target is also {@condition unconscious} while {@condition poisoned} in this way. The target wakes up if it takes damage or if another creature takes an action to shake it awake."
-								]
-							}
-						}
-					]
-				}
-			},
-			"hp": {
-				"average": 110,
-				"formula": "11d8 + 22"
-			},
-			"page": 209
-		},
-		{
-			"name": "Eira",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Druid",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the druid",
-						"with": "Eira",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 159
-		},
-		{
-			"name": "Elder Black Pudding",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Black Pudding",
-				"source": "MM"
-			},
-			"size": "H",
-			"hp": {
-				"average": 130,
-				"formula": "10d12 + 30"
-			},
-			"page": 143
-		},
-		{
-			"name": "Elder Giant Lizard",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Giant Crocodile",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "crocodile",
-						"with": "lizard",
-						"flags": "i"
-					}
-				}
-			},
-			"speed": {
-				"walk": 30,
-				"climb": 30
-			},
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"senseTags": [
-				"D"
-			],
-			"page": 176
-		},
-		{
-			"name": "Jarl Grugnur",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Cloud Giant",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the giant",
-						"with": "Grugnur",
-						"flags": "i"
-					},
-					"action": [
-						{
-							"mode": "replaceArr",
-							"replace": "Multiattack",
-							"items": {
-								"name": "Multiattack",
-								"entries": [
-									"Grugnur makes two longsword attacks."
-								]
-							}
-						},
-						{
-							"mode": "replaceArr",
-							"replace": "Morningstar",
-							"items": {
-								"name": "Longsword +2",
-								"entries": [
-									"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. {@h}23 ({@damage 3d8 + 10}) slashing damage, or 26 ({@damage 3d10 + 10}) slashing damage if used with both hands."
-								]
-							}
-						}
-					]
-				}
-			},
-			"immune": [
-				"cold"
-			],
-			"spellcasting": null,
-			"trait": null,
-			"ac": [
-				{
-					"ac": 18,
-					"from": [
-						"{@item chain mail|phb}",
-						"{@item arrow-catching shield}"
-					]
-				},
-				{
-					"ac": 20,
-					"condition": "against ranged attacks",
-					"braces": true
-				}
-			],
-			"damageTags": [
-				"S",
-				"B"
-			],
-			"page": 189,
-			"traitTags": [],
-			"spellcastingTags": []
-		},
-		{
-			"name": "Estia",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Cloud Giant",
-				"source": "MM",
-				"*": {
-					"mode": "replaceTxt",
-					"replace": "the giant",
-					"with": "Estia",
-					"flags": "i"
-				},
-				"action": [
-					{
-						"mode": "replaceArr",
-						"replace": "Morningstar",
-						"items": {
-							"name": "Morningstar +2",
-							"entries": [
-								"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. {@h}23 ({@damage 3d8 + 10}) piercing damage."
-							]
-						}
-					}
-				]
-			},
-			"immune": [
-				"cold"
-			],
-			"spellcasting": null,
-			"trait": null,
-			"page": 189,
-			"traitTags": [],
-			"spellcastingTags": []
-		},
-		{
-			"name": "Fire Giant Royal Headsman",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Fire Giant",
-				"source": "MM",
-				"action": [
-					{
-						"mode": "replaceArr",
-						"replace": "Multiattack",
-						"items": {
-							"name": "Multiattack",
-							"entries": [
-								"The giant makes two greataxe attacks."
-							]
-						}
-					},
-					{
-						"mode": "replaceArr",
-						"replace": "Greatsword",
-						"items": {
-							"name": "Greataxe +2",
-							"entries": [
-								"{@atk mw} {@hit 13} to hit, reach 10 ft., one target. {@h}28 ({@damage 3d12 + 9}) slashing damage."
-							]
-						}
-					}
-				]
-			},
-			"page": 201
-		},
-		{
-			"name": "Fire Giant Servant",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Hill Giant",
-				"source": "MM",
-				"action": [
-					{
-						"mode": "replaceArr",
-						"replace": "Multiattack",
-						"items": {
-							"name": "Multiattack",
-							"entries": [
-								"The giant makes two longsword attacks."
-							]
-						}
-					},
-					{
-						"mode": "replaceArr",
-						"replace": "Greatsword",
-						"items": {
-							"name": "Longsword",
-							"entries": [
-								"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. {@h}18 ({@damage 3d8 + 5}) slashing damage, or 21 ({@damage 3d10 + 5}) slashing damage if used with both hands."
-							]
-						}
-					}
-				]
-			},
-			"immune": [
-				"fire"
-			],
-			"page": 171
-		},
-		{
-			"name": "Flying Shield",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Flying Sword",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "sword",
-						"with": "shield",
-						"flags": "i"
-					}
-				}
-			},
-			"action": null,
-			"page": 224,
-			"miscTags": []
-		},
-		{
-			"name": "Frost Giant Servant",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Hill Giant",
-				"source": "MM"
-			},
-			"immune": [
-				"cold"
-			],
-			"page": 187
-		},
-		{
-			"name": "Young Frost Giant",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Ogre",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "ogre",
-						"with": "giant",
-						"flags": "i"
-					}
-				}
-			},
-			"immune": [
-				"cold"
-			],
-			"page": 187
-		},
-		{
-			"name": "Gargantuan Rug of Smothering",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Rug of Smothering",
-				"source": "MM"
-			},
-			"hp": {
-				"average": 63,
-				"formula": "6d20"
-			},
-			"size": "G",
-			"page": 56
-		},
-		{
-			"name": "Goblin Commoner",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM",
-				"_trait": {
-					"name": "Goblin",
-					"source": "DMG"
-				}
-			},
-			"str": 8,
-			"hp": {
-				"average": 3,
-				"formula": "1d6"
-			},
-			"action": [
-				{
-					"name": "Club",
-					"entries": [
-						"{@atk mw} {@hit 1} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) bludgeoning damage."
-					]
-				}
-			],
-			"languageTags": [
-				"C",
-				"X",
-				"GO"
-			],
-			"senseTags": [
-				"D"
-			],
-			"page": 24
-		},
-		{
-			"name": "Gorvan Ironheart",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Priest",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the priest",
-						"with": "Gorvan",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 151
-		},
-		{
-			"name": "Great Ulfe",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Ogre",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the ogre",
-						"with": "Ulfe",
-						"flags": "i"
-					},
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Greatclub",
-						"items": {
-							"name": "Greataxe",
-							"entries": [
-								"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}17 ({@damage 2d12 + 4}) slashing damage."
-							]
-						}
-					}
-				}
-			},
-			"damageTags": [
-				"S",
-				"P"
-			],
-			"page": 42
-		},
-		{
-			"name": "Hedrun Arnsfirth",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Deathlock Wight",
-				"source": "MTF",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the wight",
-						"with": "Hedrun",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 160
-		},
-		{
-			"name": "Huge Ochre Jelly",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Ochre Jelly",
-				"source": "MM"
-			},
-			"hp": {
-				"average": 51,
-				"formula": "6d12 + 12"
-			},
-			"size": "H",
-			"page": 225
-		},
-		{
-			"name": "Huge Polar Bear",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Polar Bear",
-				"source": "MM"
-			},
-			"hp": {
-				"average": 65,
-				"formula": "5d12 + 15"
-			},
-			"size": "H",
-			"page": 187
-		},
-		{
-			"name": "Irisoth",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM",
-				"_trait": {
-					"name": "Half-Elf",
-					"source": "PHB"
-				}
-			},
-			"languageTags": [
-				"C",
-				"X",
-				"E"
-			],
-			"senseTags": [
-				"D"
-			],
-			"traitTags": [
-				"Fey Ancestry"
-			],
-			"page": 157
-		},
-		{
-			"name": "Jot",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Quasit",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the quasit",
-						"with": "Jot",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 15
-		},
-		{
-			"name": "Keeper",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Stone Giant",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "giant",
-						"with": "Keeper",
-						"flags": "i"
-					},
-					"action": [
-						{
-							"mode": "replaceArr",
-							"replace": "Multiattack",
-							"items": {
-								"name": "Multiattack",
-								"entries": [
-									"The Keeper makes two battleaxe attacks."
-								]
-							}
-						},
-						{
-							"mode": "replaceArr",
-							"replace": "Greatclub",
-							"items": {
-								"name": "Battleaxe +2",
-								"entries": [
-									"{@atk mw} {@hit 10} to hit, reach 15 ft., one target. {@h}20 ({@damage 3d8 + 7}) slashing damage, or 23 ({@damage 3d10 + 7}) slashing damage if used with both hands."
-								]
-							}
-						}
-					]
-				}
-			},
-			"trait": null,
-			"ac": [
-				{
-					"ac": 17,
-					"from": [
-						"{@item chain mail|phb}"
-					]
-				}
-			],
-			"damageTags": [
-				"S",
-				"B"
-			],
-			"page": 173
-		},
-		{
-			"name": "Kelson Darktreader",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM",
-				"_trait": {
-					"name": "Half-Elf",
-					"source": "PHB"
-				}
-			},
-			"languageTags": [
-				"C",
-				"X",
-				"E"
-			],
-			"senseTags": [
-				"D"
-			],
-			"traitTags": [
-				"Fey Ancestry"
-			],
-			"page": 132
-		},
-		{
-			"name": "Kieren",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 157
-		},
-		{
-			"name": "King Snurre",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Fire Giant",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the giant",
-						"with": "Snurre",
-						"flags": "i"
-					},
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Greatsword",
-						"items": {
-							"name": "Greatsword",
-							"entries": [
-								"{@atk mw} {@hit 11} to hit, reach 10 ft., one target. {@h}28 ({@damage 6d6 + 7}) slashing damage plus 7 ({@damage 2d6}) fire damage."
-							]
-						}
-					}
-				}
-			},
-			"hp": {
-				"average": 187,
-				"formula": "15d12 + 90"
-			},
-			"resist": [
-				"cold"
-			],
-			"languages": [
-				"Common",
-				"Giant"
-			],
-			"cr": "11",
-			"damageTags": [
-				"S",
-				"F",
-				"B"
-			],
-			"languageTags": [
-				"C",
-				"GI"
-			],
-			"page": 193
-		},
-		{
-			"name": "Kobold Commoner",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM",
-				"_trait": {
-					"name": "Kobold",
-					"source": "DMG"
-				}
-			},
-			"hp": {
-				"average": 3,
-				"formula": "1d6"
-			},
-			"action": [
-				{
-					"name": "Club",
-					"entries": [
-						"{@atk mw} {@hit 1} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 1}) bludgeoning damage."
-					]
-				}
-			],
-			"languageTags": [
-				"C",
-				"X",
-				"DR"
-			],
-			"senseTags": [
-				"D"
-			],
-			"traitTags": [
-				"Sunlight Sensitivity",
-				"Pack Tactics"
-			],
-			"page": 18
-		},
-		{
-			"name": "Kobold Elite",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Kobold",
-				"source": "MM"
-			},
-			"hp": {
-				"average": 7,
-				"formula": "2d6 - 2"
-			},
-			"page": 18
-		},
-		{
-			"name": "Lacedon",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Ghoul",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "ghoul",
-						"with": "lacedon",
-						"flags": "i"
-					}
-				}
-			},
-			"speed": {
-				"walk": 30,
-				"swim": 30
-			},
-			"page": 147
-		},
-		{
-			"name": "Lahnis",
-			"source": "TftYP",
-			"isNpc": true,
-			"_copy": {
-				"name": "Evoker",
-				"source": "VGM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the evoker",
-						"with": "Lahnis",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 131
-		},
-		{
-			"name": "Lesser Mummy Lord",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Mummy Lord",
-				"source": "MM"
-			},
-			"spellcasting": null,
-			"page": 224,
-			"spellcastingTags": []
-		},
-		{
-			"name": "Lumalia",
-			"source": "TftYP",
-			"isNpc": true,
-			"_copy": {
-				"name": "Deva",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the deva",
-						"with": "Lumalia",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 153
-		},
-		{
-			"name": "Mennek Ariz",
-			"source": "TftYP",
-			"isNpc": true,
-			"_copy": {
-				"name": "Enchanter",
-				"source": "VGM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the enchanter",
-						"with": "Mennek",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 157
-		},
-		{
-			"name": "Nedylene",
-			"source": "TftYP",
-			"isNpc": true,
-			"_copy": {
-				"name": "Drow Priestess of Lolth",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the drow",
-						"with": "Nedylene",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "prependArr",
-						"items": {
-							"name": "Special Equipment",
-							"entries": [
-								"Nedylene carries a {@item staff of swarming insects}."
-							]
-						}
-					},
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Scourge",
-						"items": {
-							"name": "Scourge +2",
-							"entries": [
-								"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) piercing damage plus 17 ({@damage 5d6}) poison damage."
-							]
-						}
-					}
-				}
-			},
-			"page": 209
-		},
-		{
-			"name": "Obmi",
-			"source": "TftYP",
-			"isNpc": true,
-			"_copy": {
-				"name": "Assassin",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the assassin",
-						"with": "Obmi",
-						"flags": "i"
-					},
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Multiattack",
-						"items": {
-							"name": "Multiattack",
-							"entries": [
-								"Obmi makes three shortsword attacks."
-							]
-						}
-					}
-				}
-			},
-			"str": 16,
-			"cha": 16,
-			"page": 196
-		},
-		{
-			"name": "Ogre Skeleton",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Ogre",
-				"source": "MM",
-				"_trait": {
-					"name": "Skeleton",
-					"source": "DMG"
-				}
-			},
-			"languageTags": [
-				"C",
-				"GI",
-				"CS",
-				"LF"
-			],
-			"page": 54
-		},
-		{
-			"name": "Orc Commoner",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM",
-				"_trait": {
-					"name": "Orc",
-					"source": "DMG"
-				}
-			},
-			"languageTags": [
-				"C",
-				"X",
-				"O"
-			],
-			"senseTags": [
-				"D"
-			],
-			"traitTags": [
-				"Aggressive"
-			],
-			"page": 167
-		},
-		{
-			"name": "Oussa",
-			"source": "TftYP",
-			"isNpc": true,
-			"_copy": {
-				"name": "Yuan-ti Malison (Type 3)",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the yuan-ti",
-						"with": "Oussa",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 157
-		},
-		{
-			"name": "Phaia",
-			"source": "TftYP",
-			"isNpc": true,
-			"_copy": {
-				"name": "Necromancer",
-				"source": "VGM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the necromancer",
-						"with": "Phaia",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 132
-		},
-		{
-			"name": "Reduced-Threat Aboleth",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Aboleth",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Basilisk",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Basilisk",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Remorhaz",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Remorhaz",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Darkmantle",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Darkmantle",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Ettercap",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Ettercap",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"damageTags": [
-				"P",
-				"I",
-				"S"
-			],
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Carrion Crawler",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Carrion Crawler",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Behir",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Behir",
-				"source": "MM",
-				"_mod": {
-					"action": {
-						"mode": "removeArr",
-						"names": [
-							"Constrict",
-							"Swallow"
-						]
-					}
-				},
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"damageTags": [
-				"P",
-				"L"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Hook Horror",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Hook Horror",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Wyvern",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Wyvern",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Beholder",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Beholder",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Black Pudding",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Black Pudding",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Clay Golem",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Clay Golem",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Displacer Beast",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Displacer Beast",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Dragon Turtle",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Dragon Turtle",
-				"source": "MM",
-				"_mod": {
-					"action": [
-						{
-							"mode": "removeArr",
-							"names": [
-								"Tail"
-							]
-						},
-						{
-							"mode": "replaceArr",
-							"replace": "Multiattack",
-							"items": {
-								"name": "Multiattack",
-								"entries": [
-									"The dragon turtle makes three attacks: one with its bite and two with its claws."
-								]
-							}
-						}
-					]
-				},
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"damageTags": [
-				"P",
-				"S",
-				"F"
-			],
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Flesh Golem",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Flesh Golem",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Glabrezu",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Glabrezu",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Gray Ooze",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Gray Ooze",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"damageTags": [
-				"B",
-				"A"
-			],
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Helmed Horror",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Helmed Horror",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Hezrou",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Hezrou",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Ochre Jelly",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Ochre Jelly",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Otyugh",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Otyugh",
-				"source": "MM",
-				"_mod": {
-					"action": [
-						{
-							"mode": "removeArr",
-							"names": [
-								"Tentacle Slam"
-							]
-						},
-						{
-							"mode": "replaceArr",
-							"replace": "Tentacle",
-							"items": {
-								"name": "Tentacle",
-								"entries": [
-									"{@atk mw} {@hit 6} to hit, reach 10 ft., one target. {@h}7 ({@damage 1d8 + 3}) bludgeoning damage plus 4 ({@damage 1d8}) piercing damage."
-								]
-							}
-						}
-					]
-				},
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Owlbear",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Owlbear",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Peryton",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Peryton",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Stone Golem",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Stone Golem",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Vrock",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Vrock",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Reduced-Threat Wight",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Wight",
-				"source": "MM",
-				"_trait": {
-					"name": "Reduced Threat",
-					"source": "TftYP"
-				}
-			},
-			"page": 113
-		},
-		{
-			"name": "Scrag",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Troll",
-				"source": "MM"
-			},
-			"speed": {
-				"walk": 30,
-				"swim": 30
-			},
-			"page": 147
-		},
-		{
-			"name": "Sentient Gray Ooze",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Gray Ooze",
-				"source": "MM",
-				"_mod": {
-					"conditionImmune": {
-						"mode": "removeArr",
-						"items": "charmed"
-					}
-				}
-			},
-			"int": 5,
-			"languages": [
-				"Common"
-			],
-			"damageTags": [
-				"B",
-				"A"
-			],
-			"languageTags": [
-				"C"
-			],
-			"page": 158
-		},
-		{
-			"name": "Sentient Ochre Jelly",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Ochre Jelly",
-				"source": "MM",
-				"_mod": {
-					"conditionImmune": {
-						"mode": "removeArr",
-						"items": "charmed"
-					}
-				}
-			},
-			"int": 5,
-			"languages": [
-				"Common"
-			],
-			"languageTags": [
-				"C"
-			],
-			"page": 158
-		},
-		{
-			"name": "Shalendra Floshin",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Knight",
-				"source": "MM"
-			},
-			"page": 119
-		},
-		{
-			"name": "Snow Leopard",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Tiger",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "tiger",
-						"with": "leopard",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 183
-		},
-		{
-			"name": "Stone Dragon Statue",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Stone Golem",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "golem",
-						"with": "statue",
-						"flags": "i"
-					}
-				}
-			},
-			"action": [
-				{
-					"name": "Steam Breath",
-					"entries": [
-						"The statue exhales steam in a line that is 30 ft. long and 10 ft. wide. Each creature in that area must make a {@dc 15} Constitution saving throw, taking 7 ({@damage 2d4 + 2}) fire damage on a failed save, or half as much damage on a successful one."
-					]
-				}
-			],
-			"damageTags": [
-				"F"
-			],
-			"page": 85,
-			"miscTags": [],
-			"actionTags": []
-		},
-		{
-			"name": "Therzt",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM",
-				"_trait": {
-					"name": "Drow",
-					"source": "PHB"
-				}
-			},
-			"languageTags": [
-				"C",
-				"X",
-				"E"
-			],
-			"senseTags": [
-				"SD"
-			],
-			"traitTags": [
-				"Fey Ancestry",
-				"Sunlight Sensitivity"
-			],
-			"spellcastingTags": [
-				"I"
-			],
-			"page": 158
-		},
-		{
-			"name": "Torlin Silvershield",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Wight",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the wight",
-						"with": "Torlin",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 159
-		},
-		{
-			"name": "Werejaguar",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Weretiger",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "tiger",
-						"with": "jaguar",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 79
-		},
-		{
-			"name": "Xilonen",
-			"isNpc": true,
-			"source": "TftYP",
-			"_copy": {
-				"name": "Roper",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the roper",
-						"with": "Xilonen",
-						"flags": "i"
-					}
-				}
-			},
-			"int": 2,
-			"page": 83
-		},
-		{
-			"name": "Yeti Leader",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Yeti",
-				"source": "MM",
-				"_mod": {
-					"action": [
-						{
-							"mode": "replaceArr",
-							"replace": "Multiattack",
-							"items": {
-								"name": "Multiattack",
-								"entries": [
-									"The yeti can use its Chilling Gaze and makes two greatsword attacks."
-								]
-							}
-						},
-						{
-							"mode": "replaceArr",
-							"replace": "Claw",
-							"items": {
-								"name": "Frost Brand Greatsword",
-								"entries": [
-									"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) slashing damage plus 3 ({@damage 1d6}) cold damage."
-								]
-							}
-						}
-					]
-				}
-			},
-			"page": 183
-		},
-		{
-			"name": "Young Fire Giant",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Ogre",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "ogre",
-						"with": "giant",
-						"flags": "i"
-					}
-				}
-			},
-			"immune": [
-				"fire"
-			],
-			"page": 192
-		},
-		{
-			"name": "Young Hill Giant",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Orc",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "orc",
-						"with": "giant",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 167
-		},
-		{
-			"name": "Young Ogre Servant",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Orc",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "orc",
-						"with": "ogre",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 171
-		},
-		{
-			"name": "Young Troglodyte",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Kobold",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "kobold",
-						"with": "troglodyte",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 176
-		},
-		{
-			"name": "Young Winter Wolf",
-			"source": "TftYP",
-			"_copy": {
-				"name": "Dire Wolf",
-				"source": "MM"
-			},
-			"page": 181
 		}
 	]
 }

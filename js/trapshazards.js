@@ -73,9 +73,11 @@ class TrapsHazardsPage extends ListPage {
 			{
 				hash,
 				source,
-				trapType,
-				isExcluded,
-				uniqueId: it.uniqueId ? it.uniqueId : thI
+				trapType
+			},
+			{
+				uniqueId: it.uniqueId ? it.uniqueId : thI,
+				isExcluded
 			}
 		);
 
@@ -131,9 +133,9 @@ class TrapsHazardsPage extends ListPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 	}
 }
 

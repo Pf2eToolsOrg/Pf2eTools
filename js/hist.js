@@ -123,6 +123,11 @@ class Hist {
 		const nxtHash = Hist.util.setSubhash(window.location.hash, key, val);
 		Hist.cleanSetHash(nxtHash);
 	}
+
+	static setMainHash (hash) {
+		const subHashPart = Hist.util.getHashParts(window.location.hash, key, val).slice(1).join(HASH_PART_SEP);
+		Hist.cleanSetHash([hash, subHashPart].filter(Boolean).join(HASH_PART_SEP));
+	}
 }
 Hist.lastLoadedLink = null;
 Hist.lastLoadedId = null;

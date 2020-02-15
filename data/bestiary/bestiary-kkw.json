@@ -1,8 +1,9 @@
 {
 	"monster": [
 		{
-			"name": "Krenko",
-			"isNpc": true,
+			"name": "Goblin Gang Member",
+			"source": "KKW",
+			"page": 167,
 			"size": "S",
 			"type": {
 				"type": "humanoid",
@@ -10,8 +11,93 @@
 					"goblinoid"
 				]
 			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 10,
+				"formula": "3d6"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 8,
+			"dex": 16,
+			"con": 10,
+			"int": 10,
+			"wis": 10,
+			"cha": 8,
+			"skill": {
+				"stealth": "+5"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"languages": [
+				"Common",
+				"Goblin"
+			],
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Nimble Escape",
+					"entries": [
+						"The goblin can take the Disengage or Hide action as a bonus action on each of its turns."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
+					]
+				},
+				{
+					"name": "Light Crossbow",
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, range 80/320 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"GO"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW"
+			]
+		},
+		{
+			"name": "Krenko",
+			"isNpc": true,
 			"source": "KKW",
 			"page": 168,
+			"size": "S",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"goblinoid"
+				]
+			},
 			"alignment": [
 				"N",
 				"E"
@@ -88,6 +174,9 @@
 					]
 				}
 			],
+			"senseTags": [
+				"D"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
@@ -95,115 +184,26 @@
 				"C",
 				"GO"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
-				"S",
 				"I",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
-			]
-		},
-		{
-			"name": "Goblin Gang Member",
-			"size": "S",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"goblinoid"
-				]
-			},
-			"source": "KKW",
-			"page": 167,
-			"alignment": [
-				"N",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"{@item leather armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 10,
-				"formula": "3d6"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 8,
-			"dex": 16,
-			"con": 10,
-			"int": 10,
-			"wis": 10,
-			"cha": 8,
-			"skill": {
-				"stealth": "+5"
-			},
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 10,
-			"languages": [
-				"Common",
-				"Goblin"
-			],
-			"cr": "1/4",
-			"trait": [
-				{
-					"name": "Nimble Escape",
-					"entries": [
-						"The goblin can take the Disengage or Hide action as a bonus action on each of its turns."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Dagger",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
-					]
-				},
-				{
-					"name": "Light Crossbow",
-					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 80/320 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
-					]
-				}
-			],
-			"languageTags": [
-				"C",
-				"GO"
-			],
-			"senseTags": [
-				"D"
-			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
 		},
 		{
 			"name": "Loading Rig",
 			"isNpc": true,
+			"source": "KKW",
+			"page": 170,
 			"size": "L",
 			"type": {
 				"type": "construct"
 			},
-			"source": "KKW",
-			"page": 170,
 			"alignment": [
 				"U"
 			],
@@ -228,6 +228,10 @@
 			"int": 1,
 			"wis": 3,
 			"cha": 1,
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 6,
 			"immune": [
 				"poison",
 				"psychic"
@@ -242,10 +246,6 @@
 				"petrified",
 				"poisoned"
 			],
-			"senses": [
-				"blindsight 60 ft. (blind beyond this radius)"
-			],
-			"passive": 6,
 			"cr": "1",
 			"trait": [
 				{
@@ -275,11 +275,11 @@
 					]
 				}
 			],
-			"senseTags": [
-				"B"
-			],
 			"traitTags": [
 				"Antimagic Susceptibility"
+			],
+			"senseTags": [
+				"B"
 			],
 			"actionTags": [
 				"Multiattack"

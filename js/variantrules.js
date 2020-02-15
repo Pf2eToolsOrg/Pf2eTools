@@ -2,17 +2,11 @@
 
 class VariantRulesPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
-
+		const pageFilter = new PageFilterVariantRules();
 		super({
 			dataSource: "data/variantrules.json",
 
-			filters: [
-				sourceFilter,
-				miscFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "variantrules",
 
@@ -20,21 +14,14 @@ class VariantRulesPage extends ListPage {
 
 			dataProps: ["variantrule"]
 		});
-
-		this._sourceFilter = sourceFilter;
 	}
 
 	getListItem (rule, rlI, isExcluded) {
-		rule._fMisc = rule.srd ? ["SRD"] : [];
+		this._pageFilter.mutateAndAddToFilters(rule, isExcluded);
 
 		const searchStack = [];
 		for (const e1 of rule.entries) {
 			Renderer.getNames(searchStack, e1);
-		}
-
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(rule.source);
 		}
 
 		const eleLi = document.createElement("li");
@@ -55,9 +42,11 @@ class VariantRulesPage extends ListPage {
 			{
 				hash,
 				search: searchStack.join(","),
-				source,
-				isExcluded,
-				uniqueId: rule.uniqueId ? rule.uniqueId : rlI
+				source
+			},
+			{
+				uniqueId: rule.uniqueId ? rule.uniqueId : rlI,
+				isExcluded
 			}
 		);
 
@@ -69,14 +58,7 @@ class VariantRulesPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter((item) => {
-			const r = this._dataList[item.ix];
-			return this._filterBox.toDisplay(
-				f,
-				r.source,
-				r._fMisc
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
@@ -102,16 +84,14 @@ class VariantRulesPage extends ListPage {
 
 		$("#pagecontent").empty().append(RenderVariantRules.$getRenderedVariantRule(rule));
 
-		loadSubHash([]);
-
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		if (!sub.length) return;
 
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 
 		const $title = $(`.rd__h[data-title-index="${sub[0]}"]`);
 		if ($title.length) $title[0].scrollIntoView();

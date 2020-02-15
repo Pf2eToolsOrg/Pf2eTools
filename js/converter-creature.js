@@ -787,12 +787,25 @@ class CreatureConverter extends BaseConverter {
 
 	static _tryParseType (strType) {
 		try {
-			const m = /^(.*?) (\(.*?\))\s*$/.exec(strType);
-			if (m) {
-				return {type: m[1].toLowerCase(), tags: m[2].split(",").map(s => s.replace(/\(/g, "").replace(/\)/g, "").trim().toLowerCase())}
+			strType = strType.trim().toLowerCase();
+			const mSwarm = /^(.*)swarm of (\w+) (\w+)$/i.exec(strType);
+			if (mSwarm) {
+				const swarmTypeSingular = Parser.monTypeFromPlural(mSwarm[3]);
+
+				return { // retain any leading junk, as we'll parse it out in a later step
+					type: `${mSwarm[1]}${swarmTypeSingular}`,
+					swarmSize: mSwarm[2][0].toUpperCase()
+				}
 			}
-			return strType.toLowerCase();
+
+			const mParens = /^(.*?) (\(.*?\))\s*$/.exec(strType);
+			if (mParens) {
+				return {type: mParens[1], tags: mParens[2].split(",").map(s => s.replace(/\(/g, "").replace(/\)/g, "").trim())}
+			}
+
+			return strType;
 		} catch (e) {
+			setTimeout(() => { throw e; });
 			return strType;
 		}
 	}
@@ -858,7 +871,25 @@ class CreatureConverter extends BaseConverter {
 			stats.alignment = line.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX)[1].toLowerCase();
 			AlignmentConvert.tryConvertAlignment(stats, (ali) => options.cbWarning(`Alignment "${ali}" requires manual conversion`));
 		}
+
 		stats.type = CreatureConverter._tryParseType(stats.type);
+
+		const validTypes = new Set(Parser.MON_TYPES);
+		if (!validTypes.has(stats.type.type || stats.type)) {
+			// check if the last word is a creature type
+			const curType = stats.type.type || stats.type;
+			let parts = curType.split(/(\W+)/g);
+			parts = parts.filter(Boolean);
+			if (validTypes.has(parts.last())) {
+				const note = parts.slice(0, -1);
+				if (stats.type.type) {
+					stats.type.type = parts.last();
+				} else {
+					stats.type = parts.last();
+				}
+				stats.sizeNote = note.join("").trim();
+			}
+		}
 	}
 
 	static _setCleanHp (stats, line) {

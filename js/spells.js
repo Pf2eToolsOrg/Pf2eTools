@@ -1,7 +1,6 @@
 "use strict";
 
 const JSON_DIR = "data/spells/";
-const JSON_LIST_NAME = "spell";
 
 const SUBCLASS_LOOKUP = {};
 
@@ -14,6 +13,10 @@ function handleBrew (homebrew) {
 class SpellsPage {
 	constructor () {
 		this._pageFilter = new PageFilterSpells();
+		this._multiSource = new MultiSource({
+			fnHandleData: addSpells,
+			prop: "spell"
+		});
 	}
 
 	getListItem (spell, spI) {
@@ -22,7 +25,7 @@ class SpellsPage {
 		_addedHashes.add(spHash);
 		const isExcluded = ExcludeUtil.isExcluded(spell.name, "spell", spell.source);
 
-		this._pageFilter.addToFilters(spell, isExcluded);
+		this._pageFilter.mutateAndAddToFilters(spell, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -57,9 +60,11 @@ class SpellsPage {
 				classes: Parser.spClassesToFull(spell.classes, true, SUBCLASS_LOOKUP),
 				concentration,
 				normalisedTime: spell._normalisedTime,
-				normalisedRange: spell._normalisedRange,
-				isExcluded,
-				uniqueId: spell.uniqueId ? spell.uniqueId : spI
+				normalisedRange: spell._normalisedRange
+			},
+			{
+				uniqueId: spell.uniqueId ? spell.uniqueId : spI,
+				isExcluded
 			}
 		);
 
@@ -75,7 +80,7 @@ class SpellsPage {
 			const s = spellList[li.ix];
 			return this._pageFilter.toDisplay(f, s);
 		});
-		onFilterChangeMulti(spellList);
+		MultiSource.onFilterChangeMulti(spellList);
 	}
 
 	getSublistItem (spell, pinId) {
@@ -157,16 +162,16 @@ class SpellsPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub, sublistFuncPreload);
+		await ListUtil.pSetFromSubHashes(sub, pPreloadSublistSources);
 
 		spellBookView.handleSub(sub);
 	}
 
 	async pOnLoad () {
 		window.loadHash = this.doLoadHash.bind(this);
-		window.loadSubHash = this.doLoadSubHash.bind(this);
+		window.loadSubHash = this.pDoLoadSubHash.bind(this);
 
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
@@ -179,7 +184,7 @@ class SpellsPage {
 			ExcludeUtil.pInitialise()
 		]);
 		Object.assign(SUBCLASS_LOOKUP, subclassLookup);
-		await pMultisourceLoad(JSON_DIR, JSON_LIST_NAME, this._pageFilter.filterBox, pPageInit, addSpells, pPostLoad);
+		await spellsPage._multiSource.pMultisourceLoad(JSON_DIR, this._pageFilter.filterBox, pPageInit, addSpells, pPostLoad);
 		if (Hist.lastLoadedId == null) Hist._freshLoad();
 		ExcludeUtil.checkShowAllExcluded(spellList, $(`#pagecontent`));
 
@@ -224,7 +229,7 @@ let spellBookView;
 
 async function pPageInit (loadedSources) {
 	Object.keys(loadedSources)
-		.map(src => new FilterItem({item: src, changeFn: loadSource(JSON_LIST_NAME, addSpells)}))
+		.map(src => new FilterItem({item: src, pFnChange: spellsPage._multiSource.pLoadSource.bind(spellsPage._multiSource)}))
 		.forEach(fi => spellsPage._pageFilter.sourceFilter.addItem(fi));
 
 	list = ListUtil.initList({
@@ -361,38 +366,28 @@ function addSpells (data) {
 	Renderer.hover.bindPopoutButton(spellList);
 	UrlUtil.bindLinkExportButton(spellsPage._pageFilter.filterBox);
 	ListUtil.bindDownloadButton();
-	ListUtil.bindUploadButton(sublistFuncPreload);
+	ListUtil.bindUploadButton(pPreloadSublistSources);
 }
 
-function sublistFuncPreload (json, funcOnload) {
-	const loaded = Object.keys(loadedSources).filter(it => loadedSources[it].loaded);
+async function pPreloadSublistSources (json) {
+	const loaded = Object.keys(spellsPage._multiSource.loadedSources)
+		.filter(it => spellsPage._multiSource.loadedSources[it].loaded);
 	const lowerSources = json.sources.map(it => it.toLowerCase());
-	const toLoad = Object.keys(loadedSources).filter(it => !loaded.includes(it)).filter(it => lowerSources.includes(it.toLowerCase()));
+	const toLoad = Object.keys(spellsPage._multiSource.loadedSources)
+		.filter(it => !loaded.includes(it))
+		.filter(it => lowerSources.includes(it.toLowerCase()));
 	const loadTotal = toLoad.length;
 	if (loadTotal) {
-		let loadCount = 0;
-		toLoad.forEach(src => {
-			loadSource(JSON_LIST_NAME, (spells) => {
-				addSpells(spells);
-				if (++loadCount === loadTotal) {
-					funcOnload();
-				}
-			})(src, "yes");
-		});
-	} else {
-		funcOnload();
+		await Promise.all(toLoad.map(src => spellsPage._multiSource.pLoadSource(src, "yes")));
 	}
 }
 
 function handleUnknownHash (link, sub) {
-	const src = Object.keys(loadedSources).find(src => src.toLowerCase() === decodeURIComponent(link.split(HASH_LIST_SEP)[1]).toLowerCase());
+	const src = Object.keys(spellsPage._multiSource.loadedSources)
+		.find(src => src.toLowerCase() === decodeURIComponent(link.split(HASH_LIST_SEP)[1]).toLowerCase());
 	if (src) {
-		loadSource(JSON_LIST_NAME, (spells) => {
-			addSpells(spells);
-			Hist.hashChange();
-		})(src, "yes");
-	} else {
-		Hist._freshLoad();
+		spellsPage._multiSource.pLoadSource(src, "yes")
+			.then(() => Hist.hashChange());
 	}
 }
 

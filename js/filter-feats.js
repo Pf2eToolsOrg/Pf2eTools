@@ -20,7 +20,7 @@ class PageFilterFeats extends PageFilter {
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
 	}
 
-	addToFilters (feat, isExcluded) {
+	mutateForFilters (feat) {
 		const ability = Renderer.getAbilityData(feat.ability);
 		feat._fAbility = ability.asCollection.filter(a => !ability.areNegative.includes(a)); // used for filtering
 
@@ -29,20 +29,18 @@ class PageFilterFeats extends PageFilter {
 		const preSet = new Set();
 		(feat.prerequisite || []).forEach(it => preSet.add(...Object.keys(it)));
 		feat._fPrereqOther = [...preSet].map(it => (it === "other" ? "special" : it).uppercaseFirst());
-		if (feat.prerequisite) {
-			feat._fPrereqLevel = feat.prerequisite.filter(it => it.level != null).map(it => `Level ${it.level.level}`);
-			this._levelFilter.addItem(feat._fPrereqLevel);
-		}
+		if (feat.prerequisite) feat._fPrereqLevel = feat.prerequisite.filter(it => it.level != null).map(it => `Level ${it.level.level}`);
 		feat._fMisc = feat.srd ? ["SRD"] : [];
 
 		feat._slAbility = ability.asText || STR_NONE;
 		feat._slPrereq = prereqText;
+	}
 
-		// region populate filters
-		if (!isExcluded) {
-			this._sourceFilter.addItem(feat.source);
-		}
-		// endregion
+	addToFilters (feat, isExcluded) {
+		if (isExcluded) return;
+
+		this._sourceFilter.addItem(feat.source);
+		if (feat.prerequisite) this._levelFilter.addItem(feat._fPrereqLevel);
 	}
 
 	async _pPopulateBoxOptions (opts) {

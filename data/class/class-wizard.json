@@ -3,6 +3,7 @@
 		{
 			"name": "Wizard",
 			"source": "PHB",
+			"page": 112,
 			"srd": true,
 			"hd": {
 				"number": 1,
@@ -14,6 +15,45 @@
 			],
 			"spellcastingAbility": "int",
 			"casterProgression": "full",
+			"startingProficiencies": {
+				"weapons": [
+					"daggers",
+					"darts",
+					"slings",
+					"quarterstaffs",
+					"light crossbows"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"history",
+								"insight",
+								"investigation",
+								"medicine",
+								"religion"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item quarterstaff|phb} or (b) a {@item dagger|phb}",
+					"(a) a {@item component pouch|phb} or (b) an {@item arcane focus|phb}",
+					"(a) a {@item scholar's pack|phb} or (b) an {@item explorer's pack|phb}",
+					"A {@item spellbook|phb}"
+				],
+				"goldAlternative": "{@dice 4d4×10|4d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"int": 13
+				}
+			},
 			"classTableGroups": [
 				{
 					"colLabels": [
@@ -319,45 +359,6 @@
 					]
 				}
 			],
-			"startingProficiencies": {
-				"weapons": [
-					"daggers",
-					"darts",
-					"slings",
-					"quarterstaffs",
-					"light crossbows"
-				],
-				"skills": [
-					{
-						"choose": {
-							"from": [
-								"arcana",
-								"history",
-								"insight",
-								"investigation",
-								"medicine",
-								"religion"
-							],
-							"count": 2
-						}
-					}
-				]
-			},
-			"startingEquipment": {
-				"additionalFromBackground": true,
-				"default": [
-					"(a) a {@item quarterstaff|phb} or (b) a {@item dagger|phb}",
-					"(a) a {@item component pouch|phb} or (b) an {@item arcane focus|phb}",
-					"(a) a {@item scholar's pack|phb} or (b) an {@item explorer's pack|phb}",
-					"A {@item spellbook|phb}"
-				],
-				"goldAlternative": "{@dice 4d4×10|4d4 × 10|Starting Gold}"
-			},
-			"multiclassing": {
-				"requirements": {
-					"int": 13
-				}
-			},
 			"classFeatures": [
 				[
 					{
@@ -665,6 +666,8 @@
 			"subclasses": [
 				{
 					"name": "Artificer (UA)",
+					"shortName": "Artificer (UA)",
+					"source": "UAEberron",
 					"subclassFeatures": [
 						[
 							{
@@ -996,12 +999,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAEberron",
-					"shortName": "Artificer (UA)"
+					]
 				},
 				{
 					"name": "School of Abjuration",
+					"shortName": "Abjuration",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1068,13 +1072,12 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Abjuration",
-					"srd": true
+					]
 				},
 				{
 					"name": "Bladesinging",
+					"shortName": "Bladesinging",
+					"source": "SCAG",
 					"subclassFeatures": [
 						[
 							{
@@ -1187,12 +1190,13 @@
 								]
 							}
 						]
-					],
-					"source": "SCAG",
-					"shortName": "Bladesinging"
+					]
 				},
 				{
 					"name": "School of Conjuration",
+					"shortName": "Conjuration",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1257,13 +1261,13 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Conjuration",
-					"srd": true
+					]
 				},
 				{
 					"name": "School of Divination",
+					"shortName": "Divination",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1375,13 +1379,13 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Divination",
-					"srd": true
+					]
 				},
 				{
 					"name": "School of Enchantment",
+					"shortName": "Enchantment",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1448,13 +1452,13 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Enchantment",
-					"srd": true
+					]
 				},
 				{
 					"name": "School of Evocation",
+					"shortName": "Evocation",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1518,13 +1522,13 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Evocation",
-					"srd": true
+					]
 				},
 				{
 					"name": "School of Illusion",
+					"shortName": "Illusion",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1590,13 +1594,12 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Illusion",
-					"srd": true
+					]
 				},
 				{
 					"name": "Technomancy (UA)",
+					"shortName": "Technomancy (UA)",
+					"source": "UAModernMagic",
 					"subclassFeatures": [
 						[
 							{
@@ -1664,12 +1667,12 @@
 								]
 							}
 						]
-					],
-					"source": "UAModernMagic",
-					"shortName": "Technomancy (UA)"
+					]
 				},
 				{
 					"name": "Theurgy (UA)",
+					"shortName": "Theurgy (UA)",
+					"source": "UAWizardRevisited",
 					"subclassFeatures": [
 						[
 							{
@@ -1753,12 +1756,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAWizardRevisited",
-					"shortName": "Theurgy (UA)"
+					]
 				},
 				{
 					"name": "War Magic (UA)",
+					"shortName": "War Magic (UA)",
+					"source": "UAWizardRevisited",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1824,13 +1828,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAWizardRevisited",
-					"shortName": "War Magic (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "School of Transmutation",
+					"shortName": "Transmutation",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1954,13 +1958,13 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Transmutation",
-					"srd": true
+					]
 				},
 				{
 					"name": "School of Necromancy",
+					"shortName": "Necromancy",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -2033,13 +2037,12 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Necromancy",
-					"srd": true
+					]
 				},
 				{
 					"name": "Lore Mastery (UA)",
+					"shortName": "Lore Mastery (UA)",
+					"source": "UAWarlockAndWizard",
 					"subclassFeatures": [
 						[
 							{
@@ -2117,12 +2120,12 @@
 								]
 							}
 						]
-					],
-					"source": "UAWarlockAndWizard",
-					"shortName": "Lore Mastery (UA)"
+					]
 				},
 				{
 					"name": "War Magic",
+					"shortName": "War Magic",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -2190,12 +2193,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "War Magic"
+					]
 				},
 				{
 					"name": "School of Invention (UA)",
+					"shortName": "Invention (UA)",
+					"source": "UAThreeSubclasses",
 					"subclassFeatures": [
 						[
 							{
@@ -2600,12 +2603,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAThreeSubclasses",
-					"shortName": "Invention (UA)"
+					]
 				},
 				{
 					"name": "Onomancy (UA)",
+					"shortName": "Onomancy (UA)",
+					"source": "UAClericDruidWizard",
+					"page": 4,
 					"subclassFeatures": [
 						[
 							{
@@ -2750,13 +2754,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAClericDruidWizard",
-					"shortName": "Onomancy (UA)",
-					"page": 4
+					]
 				},
 				{
 					"name": "Psionics (UA)",
+					"shortName": "Psionics (UA)",
+					"source": "UAFighterRogueWizard",
+					"page": 3,
 					"subclassFeatures": [
 						[
 							{
@@ -2911,10 +2915,7 @@
 								]
 							}
 						]
-					],
-					"source": "UAFighterRogueWizard",
-					"shortName": "Psionics (UA)",
-					"page": 3
+					]
 				}
 			],
 			"fluff": [
@@ -3202,8 +3203,7 @@
 					"page": 58,
 					"source": "XGE"
 				}
-			],
-			"page": 112
+			]
 		}
 	]
 }

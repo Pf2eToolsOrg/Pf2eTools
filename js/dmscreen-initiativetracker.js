@@ -493,10 +493,9 @@ class InitiativeTracker {
 			};
 
 			const {$modalInner, doClose} = UiUtil.getShowModal();
-			$modalInner.addClass("flex-col");
 
 			const $controls = $(`<div class="split" style="flex-shrink: 0"/>`).appendTo($modalInner);
-			const $srch = $(`<input class="ui-search__ipt-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($controls);
+			const $iptSearch = $(`<input class="ui-search__ipt-search search form-control" autocomplete="off" placeholder="Search...">`).blurOnEsc().appendTo($controls);
 			const $wrpCount = $(`
 				<div class="ui-search__ipt-search-sub-wrp" style="padding-right: 0;">
 					<div style="margin-right: 7px;">Add</div>
@@ -524,18 +523,20 @@ class InitiativeTracker {
 
 			const showMsgIpt = () => {
 				flags.isWait = true;
-				$results.empty().append(UiUtil.getSearchEnter());
+				$results.empty().append(SearchWidget.getSearchEnter());
 			};
 
-			const showMsgDots = () => $results.empty().append(UiUtil.getSearchLoading());
+			const showMsgDots = () => $results.empty().append(SearchWidget.getSearchLoading());
 
 			const showNoResults = () => {
 				flags.isWait = true;
-				$results.empty().append(UiUtil.getSearchNoResults());
+				$results.empty().append(SearchWidget.getSearchNoResults());
 			};
 
+			const $ptrRows = {_: []};
+
 			const doSearch = () => {
-				const srch = $srch.val().trim();
+				const srch = $iptSearch.val().trim();
 				const MAX_RESULTS = 75; // hard cap results
 
 				const index = board.availContent["Creature"];
@@ -551,6 +552,7 @@ class InitiativeTracker {
 				const toProcess = results.length ? results : Object.values(index.documentStore.docs).slice(0, 75).map(it => ({doc: it}));
 
 				$results.empty();
+				$ptrRows._ = [];
 				if (toProcess.length) {
 					const handleClick = async r => {
 						const name = r.doc.n;
@@ -578,9 +580,9 @@ class InitiativeTracker {
 						doClose();
 					};
 
-					const get$Row = (r) => {
+					const $getRow = (r) => {
 						return $(`
-							<div class="ui-search__row">
+							<div class="ui-search__row" tabindex="0">
 								<span>${r.doc.n}</span>
 								<span>${r.doc.s ? `<i title="${Parser.sourceJsonToFull(r.doc.s)}">${Parser.sourceJsonToAbv(r.doc.s)}${r.doc.p ? ` p${r.doc.p}` : ""}</i>` : ""}</span>
 							</div>
@@ -595,7 +597,11 @@ class InitiativeTracker {
 
 					const res = toProcess.slice(0, MAX_RESULTS); // hard cap at 75 results
 
-					res.forEach(r => get$Row(r).on("click", () => handleClick(r)).appendTo($results));
+					res.forEach(r => {
+						const $row = $getRow(r).appendTo($results);
+						SearchWidget.bindRowHandlers({result: r, $row, $ptrRows, fnHandleClick: handleClick});
+						$ptrRows._.push($row);
+					});
 
 					if (resultCount > MAX_RESULTS) {
 						const diff = resultCount - MAX_RESULTS;
@@ -607,13 +613,14 @@ class InitiativeTracker {
 				}
 			};
 
-			UiUtil.bindAutoSearch($srch, {
-				flags: flags,
-				search: doSearch,
-				showWait: showMsgDots
+			SearchWidget.bindAutoSearch($iptSearch, {
+				flags,
+				fnSearch: doSearch,
+				fnShowWait: showMsgDots,
+				$ptrRows
 			});
 
-			$srch.focus();
+			$iptSearch.focus();
 			doSearch();
 		});
 
@@ -1403,8 +1410,8 @@ class InitiativeTracker {
 					const count = Number(it.c);
 					const hash = it.h;
 					const scaling = (() => {
-						if (it.uniqueId) {
-							const m = /_([\d.,]+)$/.exec(it.uniqueId);
+						if (it.customHashId) {
+							const m = /_([\d.,]+)$/.exec(it.customHashId);
 							if (m) {
 								return Number(m[1]);
 							} else return null;

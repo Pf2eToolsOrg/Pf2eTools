@@ -42,7 +42,7 @@ Shared UI components
 }
 /* endregion */
 
-/* Source overlay */
+/* region Source overlay */
 .ui-source__ {
 	&row {
 		margin-left: calc(-96px - 0.5rem);
@@ -62,9 +62,66 @@ Shared UI components
 		margin: 0 3px;
 	}
 }
+/* endregion */
 
-/* Modals */
+/* region Modals */
 .ui-modal__ {
+	&row {
+		margin-bottom: 5px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-weight: initial;
+		min-height: 30px;
+
+		&:first-of-type {
+			margin-top: -1px;
+		}
+
+		&--cb {
+			padding: 0 3px;
+			border-radius: 3px;
+
+			&:hover {
+				background: whitesmoke;
+			}
+
+			input[type=checkbox] {
+				margin: 0;
+			}
+		}
+
+		&--sel {
+			padding: 0 3px;
+		}
+
+		&--stats-header {
+			min-height: initial;
+			font-weight: bold;
+			font-size: 12px;
+			margin-bottom: 0;
+		}
+
+		&--stats {
+			flex-direction: column;
+		}
+
+		> * {
+			margin-right: 5px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+
+	&row-sep {
+		height: 1px;
+		width: calc(100% - 12px);
+		margin: 2px 2px 7px;
+		background: $rgb-border-grey;
+	}
+
 	&overlay {
 		position: fixed;
 		z-index: 1000;
@@ -87,8 +144,6 @@ Shared UI components
 		padding: 5px 10px;
 		height: 400px;
 		float: none;
-		display: flex;
-		flex-direction: column;
 		min-width: 600px;
 		max-height: 400px;
 
@@ -123,8 +178,125 @@ Shared UI components
 		overflow-y: auto;
 	}
 }
+/* endregion */
 
-/* Tabs */
+/* region Search */
+.ui-search__ {
+	&wrp-output {
+		position: relative;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&wrp-controls {
+		width: 100%;
+		display: flex;
+		z-index: 10002;
+
+		&--in-tabs {
+			margin-top: -1px;
+		}
+	}
+
+	&wrp-results {
+		position: relative;
+		padding: 3px;
+		transform: translateZ(0);
+		height: 100%;
+		overflow-y: auto;
+		overflow-x: hidden;
+		font-size: 0.8em;
+	}
+
+	&row {
+		cursor: pointer;
+		font-weight: bold;
+		padding: 1px 2px;
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 1px solid $rgb-border-grey;
+
+		&:hover {
+			background: lightgrey;
+		}
+
+		&:focus {
+			@include row-glow-active();
+		}
+	}
+
+	&sel-category {
+		border-radius: 0;
+		max-width: 180px;
+		flex-shrink: 0;
+		border-right: 0;
+	}
+
+	&ipt-search {
+		border-radius: 0;
+		width: 100%;
+	}
+
+	&ipt-search-sub-ipt[type=radio] {
+		display: inline-block;
+		margin: 0 3px 0 0;
+	}
+
+	&ipt-search-sub-ipt-custom {
+		max-width: 30px;
+		border-radius: 0;
+		border-left: 0;
+		margin-right: -1px;
+		border-right-color: #e0e0e0;
+		border-left-color: #e0e0e0;
+		padding-left: 0;
+
+		/* TODO switch this field to a validated text-type input, instead of a number */
+		&[type=number]::-webkit-inner-spin-button {
+			margin: 0;
+			/* stylelint-disable-next-line property-no-vendor-prefix */
+			-webkit-appearance: none;
+		}
+	}
+
+	&ipt-search-sub-wrp {
+		flex-shrink: 0;
+		margin-bottom: 0;
+		padding: 5px;
+		font-weight: normal;
+		border: 1px solid $rgb-border-grey;
+		height: 34px;
+		border-left: 0;
+		display: flex;
+	}
+
+	&ipt-search-sub-lbl {
+		display: flex;
+		align-items: center;
+		height: 100%;
+
+		&:not(:last-child) {
+			margin-right: 7px;
+		}
+	}
+
+	&message {
+		font-size: 1.4rem;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-family: 'Andada', serif;
+		font-variant: small-caps;
+		font-weight: 500;
+	}
+}
+/* endregion */
+
+/* region Tabs */
 .ui-tab__ {
 	&wrp-tab-body {
 		width: 100%;
@@ -141,38 +313,25 @@ Shared UI components
 		border-bottom: 1px solid $rgb-border-grey;
 	}
 }
+/* endregion */
 
-/* Proficiency */
+/* region Proficiency */
 .ui-prof__ {
 	&btn-cycle {
-		width: 16px;
-		height: 16px;
-		padding: 0;
-		flex-shrink: 0;
-		flex-grow: 0;
-		display: inline-block;
-		cursor: pointer;
-		border: 1px solid $rgb-border-grey;
-		border-radius: 4px;
-		outline: none;
-		user-select: none;
-
-		&:active {
-			@include shadow-active();
-		}
+		@include cb-custom();
 
 		&[data-state='0'] {
 			background: white;
 		}
 
 		&[data-state='1'] {
-			background: #555;
-			border-color: #555;
+			background: $rgb-off-black;
+			border-color: lighten($rgb-off-black, 30%);
 		}
 
 		&[data-state='2'] {
-			border-color: #555;
-			background: #555;
+			background: $rgb-off-black;
+			border-color: lighten($rgb-off-black, 30%);
 			display: flex;
 			line-height: 14px;
 			-moz-osx-font-smoothing: grayscale;
@@ -191,13 +350,14 @@ Shared UI components
 		}
 
 		&[data-state='3'] {
-			background: repeating-linear-gradient(135deg, white, white 10px, #555 10px, #555 20px);
-			border-color: #555;
+			background: repeating-linear-gradient(135deg, white, white 10px, $rgb-off-black 10px, $rgb-off-black 20px);
+			border-color: lighten($rgb-off-black, 30%);
 		}
 	}
 }
+/* endregion */
 
-/* Direction picker */
+/* region Direction picker */
 .ui-dir__ {
 	&face {
 		position: relative;
@@ -224,15 +384,17 @@ Shared UI components
 		box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.75);
 	}
 }
+/* endregion */
 
-/* Icon picker */
+/* region Icon picker */
 .ui-icn__ {
 	&wrp-icon {
 		font-size: 24px;
 	}
 }
+/* endregion */
 
-/* Drag to re-order */
+/* region Drag to re-order */
 .ui-drag__ {
 	&wrp-drag-block {
 		position: absolute;
@@ -269,8 +431,9 @@ Shared UI components
 		text-align: center;
 	}
 }
+/* endregion */
 
-/* Hover tips */
+/* region Hover tips */
 .ui-tip__ {
 	&parent {
 		cursor: help;
@@ -289,7 +452,7 @@ Shared UI components
 		top: calc(100% + 5px);
 		padding: 5px;
 		opacity: 0;
-		transition: opacity 0.1s ease-in-out;
+		transition: opacity $time-5-frames ease-in-out;
 		pointer-events: none;
 	}
 
@@ -298,19 +461,17 @@ Shared UI components
 		opacity: 1;
 	}
 }
+/* endregion */
 
-/* Context menu */
+/* region Context menu */
 .ui-ctx {
 	z-index: $z-context-menu;
 }
+/* endregion */
 
-/* Picker */
+/* region Picker */
 .ui-pick {
 	&__ {
-		&wrp {
-			padding: 2px 0;
-		}
-
 		&btn-add {
 			font-weight: bold;
 			padding: 1px 2px;
@@ -357,8 +518,9 @@ Shared UI components
 		}
 	}
 }
+/* endregion */
 
-/* Fontawesome Icons */
+/* region Fontawesome Icons */
 .fa {
 	&--btn-sm {
 		position: relative;
@@ -383,3 +545,4 @@ Shared UI components
 		}
 	}
 }
+/* endregion */

@@ -15,9 +15,10 @@
 	"monster": [
 		{
 			"name": "Awakened Zurkhwood",
+			"source": "OotA",
+			"page": 230,
 			"size": "H",
 			"type": "plant",
-			"source": "OotA",
 			"alignment": [
 				"U"
 			],
@@ -42,6 +43,10 @@
 			"int": 10,
 			"wis": 10,
 			"cha": 7,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 10,
 			"resist": [
 				"bludgeoning",
 				"piercing"
@@ -49,10 +54,6 @@
 			"vulnerable": [
 				"fire"
 			],
-			"senses": [
-				"darkvision 120 ft."
-			],
-			"passive": 10,
 			"languages": [
 				"one language known by its creator"
 			],
@@ -79,7 +80,6 @@
 					]
 				}
 			],
-			"page": 230,
 			"traitTags": [
 				"False Appearance"
 			],
@@ -96,9 +96,10 @@
 		},
 		{
 			"name": "Bridesmaid of Zuggtmoy",
+			"source": "OotA",
+			"page": 230,
 			"size": "M",
 			"type": "plant",
-			"source": "OotA",
 			"alignment": [
 				"C",
 				"E"
@@ -154,23 +155,41 @@
 					]
 				}
 			],
-			"page": 230,
+			"senseTags": [
+				"D"
+			],
 			"languageTags": [
 				"AB",
 				"CS"
-			],
-			"senseTags": [
-				"D"
 			],
 			"miscTags": [
 				"AOE"
 			]
 		},
 		{
+			"name": "Buppido",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 6,
+			"_copy": {
+				"name": "Derro",
+				"source": "MTF",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the derro",
+						"with": "Buppido",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
 			"name": "Chamberlain of Zuggtmoy",
+			"source": "OotA",
+			"page": 230,
 			"size": "L",
 			"type": "plant",
-			"source": "OotA",
 			"alignment": [
 				"C",
 				"E"
@@ -196,14 +215,14 @@
 			"int": 11,
 			"wis": 8,
 			"cha": 12,
-			"resist": [
-				"bludgeoning",
-				"piercing"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 9,
+			"resist": [
+				"bludgeoning",
+				"piercing"
+			],
 			"languages": [
 				"Abyssal",
 				"Undercommon"
@@ -243,7 +262,9 @@
 					]
 				}
 			],
-			"page": 230,
+			"senseTags": [
+				"D"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
@@ -251,22 +272,20 @@
 				"AB",
 				"U"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
 				"B"
 			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
 			]
 		},
 		{
 			"name": "Chuul Spore Servant",
+			"source": "OotA",
+			"page": 228,
 			"size": "L",
 			"type": "plant",
-			"source": "OotA",
 			"alignment": [
 				"U"
 			],
@@ -292,6 +311,10 @@
 			"int": 2,
 			"wis": 6,
 			"cha": 1,
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
+			"passive": 8,
 			"immune": [
 				"poison"
 			],
@@ -302,10 +325,6 @@
 				"paralyzed",
 				"poisoned"
 			],
-			"senses": [
-				"blindsight 30 ft. (blind beyond this radius)"
-			],
-			"passive": 8,
 			"cr": "4",
 			"action": [
 				{
@@ -321,12 +340,11 @@
 					]
 				}
 			],
-			"page": 228,
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"B"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"damageTags": [
 				"B"
@@ -339,6 +357,8 @@
 		{
 			"name": "Deepking Horgar Steelshadow V",
 			"isNpc": true,
+			"source": "OotA",
+			"page": 82,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -346,7 +366,6 @@
 					"dwarf"
 				]
 			},
-			"source": "OotA",
 			"alignment": [
 				"L",
 				"E"
@@ -476,7 +495,6 @@
 					]
 				}
 			],
-			"page": 82,
 			"traitTags": [
 				"Sunlight Sensitivity"
 			],
@@ -485,9 +503,9 @@
 				"Parry"
 			],
 			"languageTags": [
+				"D",
 				"DR",
-				"GI",
-				"D"
+				"GI"
 			],
 			"damageTags": [
 				"B",
@@ -495,13 +513,15 @@
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
 		},
 		{
 			"name": "Droki",
 			"isNpc": true,
+			"source": "OotA",
+			"page": 231,
 			"size": "S",
 			"type": {
 				"type": "humanoid",
@@ -509,7 +529,6 @@
 					"derro"
 				]
 			},
-			"source": "OotA",
 			"alignment": [
 				"C",
 				"E"
@@ -550,6 +569,25 @@
 				"Undercommon"
 			],
 			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Droki's innate spellcasting ability is Charisma (spell save {@dc 13}). He can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell minor illusion}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell darkness}",
+							"{@spell fear}",
+							"{@spell shatter}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"name": "Special Equipment",
@@ -604,30 +642,13 @@
 					]
 				}
 			],
-			"page": 231,
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"Droki's innate spellcasting ability is Charisma (spell save {@dc 13}). He can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell minor illusion}"
-					],
-					"daily": {
-						"1e": [
-							"{@spell darkness}",
-							"{@spell fear}",
-							"{@spell shatter}"
-						]
-					},
-					"ability": "cha"
-				}
-			],
 			"traitTags": [
-				"Sneak Attack",
 				"Magic Resistance",
+				"Sneak Attack",
 				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
 			],
 			"actionTags": [
 				"Multiattack",
@@ -637,14 +658,11 @@
 				"D",
 				"U"
 			],
-			"senseTags": [
-				"SD"
+			"damageTags": [
+				"I",
+				"P"
 			],
 			"spellcastingTags": [
-				"I"
-			],
-			"damageTags": [
-				"P",
 				"I"
 			],
 			"miscTags": [
@@ -653,9 +671,10 @@
 		},
 		{
 			"name": "Drow Spore Servant",
+			"source": "OotA",
+			"page": 229,
 			"size": "M",
 			"type": "plant",
-			"source": "OotA",
 			"alignment": [
 				"U"
 			],
@@ -680,16 +699,16 @@
 			"int": 2,
 			"wis": 6,
 			"cha": 1,
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
+			"passive": 8,
 			"conditionImmune": [
 				"blinded",
 				"charmed",
 				"frightened",
 				"paralyzed"
 			],
-			"senses": [
-				"blindsight 30 ft. (blind beyond this radius)"
-			],
-			"passive": 8,
 			"cr": "1/8",
 			"action": [
 				{
@@ -699,7 +718,6 @@
 					]
 				}
 			],
-			"page": 229,
 			"senseTags": [
 				"B"
 			],
@@ -712,6 +730,8 @@
 		},
 		{
 			"name": "Duergar Darkhaft",
+			"source": "OotA",
+			"page": 226,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -719,7 +739,6 @@
 					"dwarf"
 				]
 			},
-			"source": "OotA",
 			"alignment": [
 				"L",
 				"E"
@@ -746,59 +765,18 @@
 			"int": 11,
 			"wis": 10,
 			"cha": 9,
-			"resist": [
-				"poison"
-			],
 			"senses": [
 				"darkvision 120 ft."
 			],
 			"passive": 10,
+			"resist": [
+				"poison"
+			],
 			"languages": [
 				"Dwarvish",
 				"Undercommon"
 			],
 			"cr": "2",
-			"trait": [
-				{
-					"name": "Duergar Resilience",
-					"entries": [
-						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
-					]
-				},
-				{
-					"name": "Sunlight Sensitivity",
-					"entries": [
-						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Enlarge (Recharges after a Short or Long Rest)",
-					"entries": [
-						"For 1 minute, the duergar magically increases in size, along with anything it is wearing or carrying. While enlarged, the duergar is Large, doubles its damage dice on Strength-based weapon attacks (included in the attacks), and makes Strength checks and Strength saving throws with advantage. If the duergar lacks the room to become Large, it attains the maximum size possible in the space available."
-					]
-				},
-				{
-					"name": "War Pick",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage, or 11 ({@damage 2d8 + 2}) piercing damage while enlarged."
-					]
-				},
-				{
-					"name": "Javelin",
-					"entries": [
-						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage, or 9 ({@damage 2d6 + 2}) piercing damage while enlarged."
-					]
-				},
-				{
-					"name": "Invisibility (Recharges after a Short or Long Rest)",
-					"entries": [
-						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is {@condition invisible} with it."
-					]
-				}
-			],
-			"page": 226,
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting (Psionics)",
@@ -818,77 +796,6 @@
 					"ability": "int"
 				}
 			],
-			"traitTags": [
-				"Sunlight Sensitivity"
-			],
-			"languageTags": [
-				"D",
-				"U"
-			],
-			"senseTags": [
-				"SD"
-			],
-			"spellcastingTags": [
-				"P",
-				"I"
-			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"THW"
-			]
-		},
-		{
-			"name": "Duergar Keeper of the Flame",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"dwarf"
-				]
-			},
-			"source": "OotA",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 16,
-					"from": [
-						"{@item scale mail|phb}",
-						"{@item shield|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 26,
-				"formula": "4d8 + 4"
-			},
-			"speed": {
-				"walk": 25
-			},
-			"str": 14,
-			"dex": 11,
-			"con": 14,
-			"int": 11,
-			"wis": 10,
-			"cha": 9,
-			"resist": [
-				"poison"
-			],
-			"senses": [
-				"darkvision 120 ft."
-			],
-			"passive": 10,
-			"languages": [
-				"Dwarvish",
-				"Undercommon"
-			],
-			"cr": "2",
 			"trait": [
 				{
 					"name": "Duergar Resilience",
@@ -929,7 +836,78 @@
 					]
 				}
 			],
+			"traitTags": [
+				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"damageTags": [
+				"P"
+			],
+			"spellcastingTags": [
+				"I",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			]
+		},
+		{
+			"name": "Duergar Keeper of the Flame",
+			"source": "OotA",
 			"page": 226,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dwarf"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item scale mail|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 26,
+				"formula": "4d8 + 4"
+			},
+			"speed": {
+				"walk": 25
+			},
+			"str": 14,
+			"dex": 11,
+			"con": 14,
+			"int": 11,
+			"wis": 10,
+			"cha": 9,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 10,
+			"resist": [
+				"poison"
+			],
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
+			"cr": "2",
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting (Psionics)",
@@ -979,22 +957,62 @@
 					"ability": "wis"
 				}
 			],
+			"trait": [
+				{
+					"name": "Duergar Resilience",
+					"entries": [
+						"The duergar has advantage on saving throws against poison, spells, and illusions, as well as to resist being {@condition charmed} or {@condition paralyzed}."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"While in sunlight, the duergar has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Enlarge (Recharges after a Short or Long Rest)",
+					"entries": [
+						"For 1 minute, the duergar magically increases in size, along with anything it is wearing or carrying. While enlarged, the duergar is Large, doubles its damage dice on Strength-based weapon attacks (included in the attacks), and makes Strength checks and Strength saving throws with advantage. If the duergar lacks the room to become Large, it attains the maximum size possible in the space available."
+					]
+				},
+				{
+					"name": "War Pick",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage, or 11 ({@damage 2d8 + 2}) piercing damage while enlarged."
+					]
+				},
+				{
+					"name": "Javelin",
+					"entries": [
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage, or 9 ({@damage 2d6 + 2}) piercing damage while enlarged."
+					]
+				},
+				{
+					"name": "Invisibility (Recharges after a Short or Long Rest)",
+					"entries": [
+						"The duergar magically turns {@condition invisible} until it attacks, casts a spell, or uses its Enlarge, or until its concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment the duergar wears or carries is {@condition invisible} with it."
+					]
+				}
+			],
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
 			],
 			"languageTags": [
 				"D",
 				"U"
 			],
-			"senseTags": [
-				"SD"
+			"damageTags": [
+				"P"
 			],
 			"spellcastingTags": [
-				"P",
+				"CC",
 				"I",
-				"CC"
-			],
-			"damageTags": [
 				"P"
 			],
 			"miscTags": [
@@ -1005,9 +1023,10 @@
 		},
 		{
 			"name": "Duergar Spore Servant",
+			"source": "OotA",
+			"page": 229,
 			"size": "M",
 			"type": "plant",
-			"source": "OotA",
 			"alignment": [
 				"U"
 			],
@@ -1033,6 +1052,10 @@
 			"int": 2,
 			"wis": 6,
 			"cha": 1,
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
+			"passive": 8,
 			"resist": [
 				"poison"
 			],
@@ -1042,10 +1065,6 @@
 				"frightened",
 				"paralyzed"
 			],
-			"senses": [
-				"blindsight 30 ft. (blind beyond this radius)"
-			],
-			"passive": 8,
 			"cr": "1/2",
 			"action": [
 				{
@@ -1055,7 +1074,6 @@
 					]
 				}
 			],
-			"page": 229,
 			"senseTags": [
 				"B"
 			],
@@ -1067,8 +1085,39 @@
 			]
 		},
 		{
+			"name": "Eldeth Feldrun",
+			"isNpc": true,
 			"source": "OotA",
+			"page": 6,
+			"_copy": {
+				"name": "Scout",
+				"source": "MM",
+				"_trait": {
+					"name": "Mountain Dwarf",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the scout",
+						"with": "Eldeth",
+						"flags": "i"
+					}
+				}
+			},
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"D",
+				"X"
+			]
+		},
+		{
 			"name": "Emerald Enclave Scout",
+			"source": "OotA",
+			"page": 130,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1107,13 +1156,13 @@
 				"stealth": "+6",
 				"survival": "+5"
 			},
-			"resist": [
-				"poison"
-			],
 			"senses": [
 				"darkvision 60 ft."
 			],
 			"passive": 15,
+			"resist": [
+				"poison"
+			],
 			"languages": [
 				"Common",
 				"Dwarvish"
@@ -1153,9 +1202,11 @@
 					]
 				}
 			],
-			"page": 130,
 			"traitTags": [
 				"Keen Senses"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -1164,21 +1215,19 @@
 				"C",
 				"D"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
 				"P"
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
 		},
 		{
-			"source": "OotA",
 			"name": "Giant Riding Lizard",
+			"source": "OotA",
+			"page": 131,
 			"size": "L",
 			"type": "beast",
 			"alignment": [
@@ -1227,7 +1276,6 @@
 					]
 				}
 			],
-			"page": 131,
 			"traitTags": [
 				"Spider Climb"
 			],
@@ -1242,8 +1290,44 @@
 			]
 		},
 		{
+			"name": "Giant Rocktopus",
+			"source": "OotA",
+			"page": 28,
+			"_copy": {
+				"name": "Giant Octopus",
+				"source": "MM",
+				"_mod": {
+					"trait": [
+						{
+							"mode": "replaceArr",
+							"replace": "Underwater Camouflage",
+							"items": {
+								"name": "Camouflage",
+								"entries": [
+									"The octopus has advantage on Dexterity (Stealth) checks."
+								]
+							}
+						},
+						{
+							"mode": "removeArr",
+							"names": "Hold Breath"
+						}
+					]
+				}
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 10
+			},
+			"traitTags": [
+				"Water Breathing"
+			]
+		},
+		{
 			"name": "Grisha",
 			"isNpc": true,
+			"source": "OotA",
+			"page": 232,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1254,7 +1338,6 @@
 					}
 				]
 			},
-			"source": "OotA",
 			"alignment": [
 				"C",
 				"E"
@@ -1295,21 +1378,6 @@
 				"Undercommon"
 			],
 			"cr": "2",
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Grisha makes two attacks with his +1 flail."
-					]
-				},
-				{
-					"name": "+1 Flail",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) bludgeoning damage"
-					]
-				}
-			],
-			"page": 232,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -1356,6 +1424,20 @@
 					"ability": "wis"
 				}
 			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Grisha makes two attacks with his +1 flail."
+					]
+				},
+				{
+					"name": "+1 Flail",
+					"entries": [
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) bludgeoning damage"
+					]
+				}
+			],
 			"actionTags": [
 				"Multiattack"
 			],
@@ -1363,11 +1445,11 @@
 				"C",
 				"U"
 			],
-			"spellcastingTags": [
-				"CC"
-			],
 			"damageTags": [
 				"B"
+			],
+			"spellcastingTags": [
+				"CC"
 			],
 			"miscTags": [
 				"MW"
@@ -1375,9 +1457,10 @@
 		},
 		{
 			"name": "Hook Horror Spore Servant",
+			"source": "OotA",
+			"page": 68,
 			"size": "M",
 			"type": "plant",
-			"source": "OotA",
 			"alignment": [
 				"U"
 			],
@@ -1403,6 +1486,10 @@
 			"int": 2,
 			"wis": 6,
 			"cha": 1,
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
+			"passive": 8,
 			"resist": [
 				"poison"
 			],
@@ -1412,10 +1499,6 @@
 				"frightened",
 				"paralyzed"
 			],
-			"senses": [
-				"blindsight 30 ft. (blind beyond this radius)"
-			],
-			"passive": 8,
 			"cr": "3",
 			"action": [
 				{
@@ -1431,12 +1514,11 @@
 					]
 				}
 			],
-			"page": 68,
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"B"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"damageTags": [
 				"P"
@@ -1448,9 +1530,10 @@
 		},
 		{
 			"name": "Ixitxachitl",
+			"source": "OotA",
+			"page": 225,
 			"size": "S",
 			"type": "aberration",
-			"source": "OotA",
 			"alignment": [
 				"C",
 				"E"
@@ -1503,13 +1586,12 @@
 					]
 				}
 			],
-			"page": 225,
+			"senseTags": [
+				"D"
+			],
 			"languageTags": [
 				"AB",
 				"OTH"
-			],
-			"senseTags": [
-				"D"
 			],
 			"damageTags": [
 				"P"
@@ -1520,9 +1602,10 @@
 		},
 		{
 			"name": "Ixitxachitl Cleric",
+			"source": "OotA",
+			"page": 225,
 			"size": "S",
 			"type": "aberration",
-			"source": "OotA",
 			"alignment": [
 				"C",
 				"E"
@@ -1558,24 +1641,6 @@
 				"Ixitxachitl"
 			],
 			"cr": "1/4",
-			"action": [
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) piercing damage."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"name": "Barbed Tail",
-					"entries": [
-						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
-					]
-				}
-			],
-			"page": 225,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -1614,26 +1679,44 @@
 					"ability": "wis"
 				}
 			],
-			"languageTags": [
-				"AB",
-				"OTH"
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) piercing damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Barbed Tail",
+					"entries": [
+						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
+					]
+				}
 			],
 			"senseTags": [
 				"D"
 			],
-			"spellcastingTags": [
-				"CC"
+			"languageTags": [
+				"AB",
+				"OTH"
 			],
 			"damageTags": [
 				"P"
+			],
+			"spellcastingTags": [
+				"CC"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
-			"source": "OotA",
 			"name": "Lords' Alliance Guard",
+			"source": "OotA",
+			"page": 131,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1691,7 +1774,6 @@
 					]
 				}
 			],
-			"page": 131,
 			"senseTags": [
 				"D"
 			],
@@ -1704,8 +1786,9 @@
 			]
 		},
 		{
-			"source": "OotA",
 			"name": "Lords' Alliance Spy",
+			"source": "OotA",
+			"page": 131,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1786,7 +1869,6 @@
 					]
 				}
 			],
-			"page": 131,
 			"traitTags": [
 				"Sneak Attack"
 			],
@@ -1802,13 +1884,15 @@
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
 		},
 		{
 			"name": "Narrak",
 			"isNpc": true,
+			"source": "OotA",
+			"page": 232,
 			"size": "S",
 			"type": {
 				"type": "humanoid",
@@ -1816,7 +1900,6 @@
 					"derro"
 				]
 			},
-			"source": "OotA",
 			"alignment": [
 				"C",
 				"E"
@@ -1855,6 +1938,36 @@
 				"Undercommon"
 			],
 			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Narrak is a 5th-level spellcaster. His spellcasting ability is Charisma (Save {@dc 13}, {@hit 5} to hit with spell attacks) Narrak has two 2nd-level spell slots, which he regains after finishing a short or long rest, and knows the following warlock spells:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell eldritch blast}",
+								"{@spell friends}",
+								"{@spell poison spray}"
+							]
+						},
+						"2": {
+							"lower": 1,
+							"slots": 2,
+							"spells": [
+								"{@spell armor of Agathys}",
+								"{@spell charm person}",
+								"{@spell hex}",
+								"{@spell hold person}",
+								"{@spell ray of enfeeblement}",
+								"{@spell spider climb}"
+							]
+						}
+					},
+					"ability": "cha"
+				}
+			],
 			"trait": [
 				{
 					"name": "Insanity",
@@ -1895,63 +2008,51 @@
 					]
 				}
 			],
-			"page": 232,
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Narrak is a 5th-level spellcaster. His spellcasting ability is Charisma (Save {@dc 13}, {@hit 5} to hit with spell attacks) Narrak has two 2nd-level spell slots, which he regains after finishing a short or long rest, and knows the following warlock spells:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell eldritch blast}",
-								"{@spell friends}",
-								"{@spell poison spray}"
-							]
-						},
-						"2": {
-							"lower": 1,
-							"slots": 2,
-							"spells": [
-								"{@spell armor of Agathys}",
-								"{@spell charm person}",
-								"{@spell hex}",
-								"{@spell hold person}",
-								"{@spell ray of enfeeblement}",
-								"{@spell spider climb}"
-							]
-						}
-					},
-					"ability": "cha"
-				}
-			],
 			"traitTags": [
 				"Magic Resistance",
 				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
 			],
 			"languageTags": [
 				"D",
 				"U"
 			],
-			"senseTags": [
-				"SD"
+			"damageTags": [
+				"P"
 			],
 			"spellcastingTags": [
 				"CL"
-			],
-			"damageTags": [
-				"P"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "Prince Derendil",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 6,
+			"_copy": {
+				"name": "Quaggoth",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the quaggoth",
+						"with": "Prince Derendil",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
 			"name": "Spider King",
+			"source": "OotA",
+			"page": 74,
 			"size": "L",
 			"type": "beast",
-			"source": "OotA",
 			"alignment": [
 				"U"
 			],
@@ -2031,7 +2132,6 @@
 					]
 				}
 			],
-			"page": 74,
 			"traitTags": [
 				"Spider Climb",
 				"Web Sense",
@@ -2042,8 +2142,8 @@
 				"D"
 			],
 			"damageTags": [
-				"P",
-				"I"
+				"I",
+				"P"
 			],
 			"miscTags": [
 				"MW",
@@ -2053,6 +2153,8 @@
 		{
 			"name": "The Pudding King",
 			"isNpc": true,
+			"source": "OotA",
+			"page": 233,
 			"size": "S",
 			"type": {
 				"type": "humanoid",
@@ -2061,7 +2163,6 @@
 					"shapechanger"
 				]
 			},
-			"source": "OotA",
 			"alignment": [
 				"C",
 				"E"
@@ -2097,6 +2198,10 @@
 				"stealth": "+6",
 				"survival": "+2"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 12,
 			"resist": [
 				"acid",
 				"poison"
@@ -2104,10 +2209,6 @@
 			"conditionImmune": [
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 12,
 			"languages": [
 				"Abyssal",
 				"Gnomish",
@@ -2115,47 +2216,6 @@
 				"Undercommon"
 			],
 			"cr": "4",
-			"trait": [
-				{
-					"name": "Stone Camouflage",
-					"entries": [
-						"The Pudding King has advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
-					]
-				},
-				{
-					"name": "Gnome Cunning",
-					"entries": [
-						"The Pudding King has advantage on Intelligence, Wisdom, and Charisma saving throws against magic."
-					]
-				},
-				{
-					"name": "Insanity",
-					"entries": [
-						"The Pudding King has advantage on saving throws against being {@condition charmed} or {@condition frightened}."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "War Pick",
-					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d8}) piercing damage."
-					]
-				},
-				{
-					"name": "Change Shape",
-					"entries": [
-						"The Pudding King magically transforms into an ooze, or back into his true form. He reverts to his true form if he dies. Any equipment he is wearing or carrying is absorbed by the new form. In ooze form, the Pudding King retains his alignment, hit points, Hit Dice, and Intelligence, Wisdom, and Charisma scores, as well as this action. His statistics and capabilities are otherwise replaced by those of the new form."
-					]
-				},
-				{
-					"name": "Create Green Slime (Recharges after a Long Rest)",
-					"entries": [
-						"The Pudding King creates a patch of green slime (see \"Dungeon Hazards\" in chapter 5 of the Dungeon Master's Guide). The slime appears on a section of wall, ceiling, or floor within 30 feet of the Pudding King."
-					]
-				}
-			],
-			"page": 233,
 			"spellcasting": [
 				{
 					"name": "Innate Spellcasting",
@@ -2229,21 +2289,61 @@
 					"ability": "cha"
 				}
 			],
+			"trait": [
+				{
+					"name": "Stone Camouflage",
+					"entries": [
+						"The Pudding King has advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
+					]
+				},
+				{
+					"name": "Gnome Cunning",
+					"entries": [
+						"The Pudding King has advantage on Intelligence, Wisdom, and Charisma saving throws against magic."
+					]
+				},
+				{
+					"name": "Insanity",
+					"entries": [
+						"The Pudding King has advantage on saving throws against being {@condition charmed} or {@condition frightened}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "War Pick",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d8}) piercing damage."
+					]
+				},
+				{
+					"name": "Change Shape",
+					"entries": [
+						"The Pudding King magically transforms into an ooze, or back into his true form. He reverts to his true form if he dies. Any equipment he is wearing or carrying is absorbed by the new form. In ooze form, the Pudding King retains his alignment, hit points, Hit Dice, and Intelligence, Wisdom, and Charisma scores, as well as this action. His statistics and capabilities are otherwise replaced by those of the new form."
+					]
+				},
+				{
+					"name": "Create Green Slime (Recharges after a Long Rest)",
+					"entries": [
+						"The Pudding King creates a patch of green slime (see \"Dungeon Hazards\" in chapter 5 of the Dungeon Master's Guide). The slime appears on a section of wall, ceiling, or floor within 30 feet of the Pudding King."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
 			"languageTags": [
 				"AB",
 				"G",
 				"T",
 				"U"
 			],
-			"senseTags": [
-				"D"
-			],
-			"spellcastingTags": [
-				"I",
-				"CS"
-			],
 			"damageTags": [
 				"P"
+			],
+			"spellcastingTags": [
+				"CS",
+				"I"
 			],
 			"miscTags": [
 				"MW"
@@ -2251,6 +2351,8 @@
 		},
 		{
 			"name": "Troglodyte Champion of Laogzed",
+			"source": "OotA",
+			"page": 229,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2258,7 +2360,6 @@
 					"troglodyte"
 				]
 			},
-			"source": "OotA",
 			"alignment": [
 				"C",
 				"E"
@@ -2349,9 +2450,11 @@
 					]
 				}
 			],
-			"page": 229,
 			"traitTags": [
 				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -2359,14 +2462,11 @@
 			"languageTags": [
 				"OTH"
 			],
-			"senseTags": [
-				"D"
-			],
 			"damageTags": [
-				"P",
-				"S",
+				"A",
 				"B",
-				"A"
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW"
@@ -2374,9 +2474,10 @@
 		},
 		{
 			"name": "Vampiric Ixitxachitl",
+			"source": "OotA",
+			"page": 226,
 			"size": "M",
 			"type": "aberration",
-			"source": "OotA",
 			"alignment": [
 				"C",
 				"E"
@@ -2429,13 +2530,12 @@
 					]
 				}
 			],
-			"page": 226,
+			"senseTags": [
+				"D"
+			],
 			"languageTags": [
 				"AB",
 				"OTH"
-			],
-			"senseTags": [
-				"D"
 			],
 			"damageTags": [
 				"P"
@@ -2446,9 +2546,10 @@
 		},
 		{
 			"name": "Vampiric Ixitxachitl Cleric",
+			"source": "OotA",
+			"page": 226,
 			"size": "M",
 			"type": "aberration",
-			"source": "OotA",
 			"alignment": [
 				"C",
 				"E"
@@ -2484,24 +2585,6 @@
 				"Ixitxachitl"
 			],
 			"cr": "2",
-			"action": [
-				{
-					"name": "Vampiric Bite",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage. The target must succeed on a {@dc 11} Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"name": "Barbed Tail",
-					"entries": [
-						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
-						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d10 + 4}) piercing damage."
-					]
-				}
-			],
-			"page": 226,
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -2540,26 +2623,44 @@
 					"ability": "wis"
 				}
 			],
-			"languageTags": [
-				"AB",
-				"OTH"
+			"action": [
+				{
+					"name": "Vampiric Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage. The target must succeed on a {@dc 11} Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken, and the ixitxachitl regains hit points equal to that amount. The reduction lasts until the target finishes a long rest. The target dies if its hit point maximum is reduced to 0."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Barbed Tail",
+					"entries": [
+						"When a creature provokes an opportunity attack from the ixitxachitl, the ixitxachitl can make the following attack instead of using its bite.",
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d10 + 4}) piercing damage."
+					]
+				}
 			],
 			"senseTags": [
 				"D"
 			],
-			"spellcastingTags": [
-				"CC"
+			"languageTags": [
+				"AB",
+				"OTH"
 			],
 			"damageTags": [
 				"P"
+			],
+			"spellcastingTags": [
+				"CC"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
-			"source": "OotA",
 			"name": "Veteran Of The Gauntlet",
+			"source": "OotA",
+			"page": 130,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2628,7 +2729,6 @@
 					]
 				}
 			],
-			"page": 130,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -2637,21 +2737,23 @@
 				"D"
 			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
 		},
 		{
 			"name": "Yestabrod",
 			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "OotA",
+			"page": 233,
 			"size": "L",
 			"type": "monstrosity",
-			"source": "OotA",
 			"alignment": [
 				"C",
 				"E"
@@ -2677,16 +2779,16 @@
 			"int": 13,
 			"wis": 15,
 			"cha": 10,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 12,
 			"immune": [
 				"poison"
 			],
 			"conditionImmune": [
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 120 ft."
-			],
-			"passive": 12,
 			"languages": [
 				"Abyssal",
 				"telepathy 60 ft."
@@ -2735,31 +2837,30 @@
 					]
 				}
 			],
-			"page": 233,
-			"isNamedCreature": true,
 			"traitTags": [
 				"Legendary Resistances"
+			],
+			"senseTags": [
+				"SD"
 			],
 			"languageTags": [
 				"AB",
 				"TP"
 			],
-			"senseTags": [
-				"SD"
-			],
 			"damageTags": [
+				"A",
 				"B",
-				"I",
-				"A"
+				"I"
 			],
 			"miscTags": [
-				"MW",
-				"AOE"
+				"AOE",
+				"MW"
 			]
 		},
 		{
-			"source": "OotA",
 			"name": "Zhentarim Thug",
+			"source": "OotA",
+			"page": 131,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -2824,7 +2925,6 @@
 					]
 				}
 			],
-			"page": 131,
 			"traitTags": [
 				"Pack Tactics"
 			],
@@ -2837,109 +2937,9 @@
 			],
 			"miscTags": [
 				"MW",
-				"RW",
-				"RNG"
+				"RNG",
+				"RW"
 			]
-		},
-		{
-			"name": "Buppido",
-			"isNpc": true,
-			"source": "OotA",
-			"_copy": {
-				"name": "Derro",
-				"source": "MTF",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the derro",
-						"with": "Buppido",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 6
-		},
-		{
-			"name": "Prince Derendil",
-			"isNpc": true,
-			"source": "OotA",
-			"_copy": {
-				"name": "Quaggoth",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the quaggoth",
-						"with": "Prince Derendil",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 6
-		},
-		{
-			"name": "Eldeth Feldrun",
-			"isNpc": true,
-			"source": "OotA",
-			"_copy": {
-				"name": "Scout",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the scout",
-						"with": "Eldeth",
-						"flags": "i"
-					}
-				},
-				"_trait": {
-					"name": "Mountain Dwarf",
-					"source": "PHB"
-				}
-			},
-			"languageTags": [
-				"C",
-				"X",
-				"D"
-			],
-			"senseTags": [
-				"D"
-			],
-			"page": 6
-		},
-		{
-			"name": "Giant Rocktopus",
-			"source": "OotA",
-			"_copy": {
-				"name": "Giant Octopus",
-				"source": "MM",
-				"_mod": {
-					"trait": [
-						{
-							"mode": "replaceArr",
-							"replace": "Underwater Camouflage",
-							"items": {
-								"name": "Camouflage",
-								"entries": [
-									"The octopus has advantage on Dexterity (Stealth) checks."
-								]
-							}
-						},
-						{
-							"mode": "removeArr",
-							"names": "Hold Breath"
-						}
-					]
-				}
-			},
-			"speed": {
-				"walk": 20,
-				"climb": 10
-			},
-			"traitTags": [
-				"Water Breathing"
-			],
-			"page": 28
 		}
 	]
 }

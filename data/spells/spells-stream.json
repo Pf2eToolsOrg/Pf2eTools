@@ -2,6 +2,7 @@
 	"spell": [
 		{
 			"name": "Enter Mindscape",
+			"source": "Stream",
 			"level": 0,
 			"school": "P",
 			"time": [
@@ -26,15 +27,6 @@
 					"concentration": true
 				}
 			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Psion",
-						"source": "Stream"
-					}
-				]
-			},
-			"source": "Stream",
 			"entries": [
 				"By shutting down your normal senses, you extend your mind into the psionics landscape around you. For the duration you can use a bonus action to sense the presence of creatures within a 60-foot cone. You learn the number of creatures within the cone and their creature type. You cannot detect undead or constructs with this spell.",
 				"This spell is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead,or 3 feet of wood or dirt.",
@@ -42,10 +34,19 @@
 			],
 			"areaTags": [
 				"N"
-			]
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psion",
+						"source": "Stream"
+					}
+				]
+			}
 		},
 		{
 			"name": "Mind Fist",
+			"source": "Stream",
 			"level": 0,
 			"school": "P",
 			"time": [
@@ -66,35 +67,44 @@
 					"type": "instant"
 				}
 			],
-			"classes": {
-				"fromClassList": [
-					{
-						"name": "Psion",
-						"source": "Stream"
-					}
-				]
-			},
-			"source": "Stream",
 			"entries": [
 				"You point at one creature you can see within range and project a focused beam of telekinetic power at it. The target must succeed on a Strength saving throw or take {@damage 1d6} bludgeoning damage and be pushed up to 15 feet away from you.",
 				"This spell's damage increases by one die when you reach 5th level ({@damage 2d6}), 11th level ({@damage 3d6}), and 17th level ({@damage 4d6})."
 			],
+			"scalingLevelDice": {
+				"label": "bludgeoning damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
 			"damageInflict": [
 				"bludgeoning"
 			],
 			"savingThrow": [
 				"strength"
 			],
-			"areaTags": [
-				"ST"
-			],
 			"miscTags": [
 				"SCL",
 				"SGT"
-			]
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Psion",
+						"source": "Stream"
+					}
+				]
+			}
 		},
 		{
 			"name": "Mind Strike",
+			"source": "Stream",
 			"level": 0,
 			"school": "P",
 			"time": [
@@ -115,6 +125,32 @@
 					"type": "instant"
 				}
 			],
+			"entries": [
+				"You point at one creature you can see within range, and a psychic bolt pierces its mind. The target must succeed on an Intelligence saving throw or take {@damage 1d10} psychic damage.",
+				"This spell's damage increases by one die when you reach 5th level ({@damage 2d10}), 11th level ({@damage 3d10}), and 17th level ({@damage 4d10})."
+			],
+			"scalingLevelDice": {
+				"label": "psychic damage",
+				"scaling": {
+					"1": "1d10",
+					"5": "2d10",
+					"11": "3d10",
+					"17": "4d10"
+				}
+			},
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
 			"classes": {
 				"fromClassList": [
 					{
@@ -122,28 +158,11 @@
 						"source": "Stream"
 					}
 				]
-			},
-			"source": "Stream",
-			"entries": [
-				"You point at one creature you can see within range, and a psychic bolt pierces its mind. The target must succeed on an Intelligence saving throw or take {@damage 1d10} psychic damage.",
-				"This spell's damage increases by one die when you reach 5th level ({@damage 2d10}), 11th level ({@damage 3d10}), and 17th level ({@damage 4d10})."
-			],
-			"damageInflict": [
-				"psychic"
-			],
-			"savingThrow": [
-				"intelligence"
-			],
-			"areaTags": [
-				"ST"
-			],
-			"miscTags": [
-				"SCL",
-				"SGT"
-			]
+			}
 		},
 		{
 			"name": "Psychic Step",
+			"source": "Stream",
 			"level": 0,
 			"school": "P",
 			"time": [
@@ -168,6 +187,10 @@
 					}
 				}
 			],
+			"entries": [
+				"You alter the composition of your body in a subtle manner, allowing you to take seemingly impossible steps.",
+				"Until the end of your turn, you speed increases by 10 feet and you can walk across vertical surfaces without falling. If you end your turn on such a surface, you immediately fall."
+			],
 			"classes": {
 				"fromClassList": [
 					{
@@ -175,12 +198,7 @@
 						"source": "Stream"
 					}
 				]
-			},
-			"source": "Stream",
-			"entries": [
-				"You alter the composition of your body in a subtle manner, allowing you to take seemingly impossible steps.",
-				"Until the end of your turn, you speed increases by 10 feet and you can walk across vertical surfaces without falling. If you end your turn on such a surface, you immediately fall."
-			]
+			}
 		}
 	]
 }

@@ -84,10 +84,8 @@ class BooksList {
 				this.dataIx,
 				eleLi,
 				it.name,
-				{
-					source: it.id,
-					uniqueId: it.uniqueId
-				}
+				{source: it.id},
+				{uniqueId: it.uniqueId}
 			);
 
 			this.list.addItem(listItem);

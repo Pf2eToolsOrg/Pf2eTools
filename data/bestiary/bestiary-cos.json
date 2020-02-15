@@ -16,8 +16,140 @@
 	},
 	"monster": [
 		{
+			"name": "Amber Golem",
+			"source": "CoS",
+			"page": 186,
+			"_copy": {
+				"name": "Stone Golem",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Anastrasya Karelova",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 93,
+			"_copy": {
+				"name": "Vampire Spawn",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the vampire",
+						"with": "Anastrasya",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Animated Halberd",
+			"source": "CoS",
+			"page": 59,
+			"_copy": {
+				"name": "Flying Sword",
+				"source": "MM"
+			},
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Halberd",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d10 + 1}) slashing damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Arabelle",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 38,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_mod": {
+					"action": "remove"
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"N"
+			],
+			"hp": {
+				"average": 2,
+				"formula": "1d8"
+			},
+			"miscTags": []
+		},
+		{
+			"name": "Armored Saber-Toothed Tiger",
+			"source": "CoS",
+			"page": 115,
+			"_copy": {
+				"name": "Saber-Toothed Tiger",
+				"source": "MM"
+			},
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item half plate armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 84,
+				"formula": "7d10 + 14"
+			},
+			"cr": "3"
+		},
+		{
+			"name": "Arrigal",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 121,
+			"_copy": {
+				"name": "Assassin",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the assassin",
+						"with": "Arrigal",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
 			"name": "Baba Lysaga",
 			"isNpc": true,
+			"source": "CoS",
+			"page": 228,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -26,7 +158,6 @@
 					"shapechanger"
 				]
 			},
-			"source": "CoS",
 			"alignment": [
 				"C",
 				"E"
@@ -183,7 +314,6 @@
 					]
 				}
 			],
-			"page": 228,
 			"traitTags": [
 				"Shapechanger"
 			],
@@ -193,15 +323,15 @@
 			"languageTags": [
 				"AB",
 				"C",
-				"DR",
 				"D",
+				"DR",
 				"GI"
-			],
-			"spellcastingTags": [
-				"CW"
 			],
 			"damageTags": [
 				"B"
+			],
+			"spellcastingTags": [
+				"CW"
 			],
 			"miscTags": [
 				"MW"
@@ -210,9 +340,10 @@
 		{
 			"name": "Baba Lysaga's Creeping Hut",
 			"isNpc": true,
+			"source": "CoS",
+			"page": 226,
 			"size": "G",
 			"type": "construct",
-			"source": "CoS",
 			"alignment": [
 				"U"
 			],
@@ -242,6 +373,10 @@
 				"wis": "+0",
 				"cha": "+0"
 			},
+			"senses": [
+				"blindsight 120 ft. (blind beyond this radius)"
+			],
+			"passive": 6,
 			"immune": [
 				"poison",
 				"psychic"
@@ -256,10 +391,6 @@
 				"petrified",
 				"prone"
 			],
-			"senses": [
-				"blindsight 120 ft. (blind beyond this radius)"
-			],
-			"passive": 6,
 			"cr": "11",
 			"trait": [
 				{
@@ -302,16 +433,15 @@
 					]
 				}
 			],
-			"page": 226,
 			"traitTags": [
 				"Antimagic Susceptibility",
 				"Siege Monster"
 			],
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"B"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"damageTags": [
 				"B"
@@ -323,7 +453,82 @@
 			]
 		},
 		{
+			"name": "Baron Vargas Vallakovich",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 105,
+			"_copy": {
+				"name": "Noble",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the noble",
+						"with": "Vargas",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
+			"name": "Barovian Commoner",
+			"source": "CoS",
+			"page": 29,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"action": [
+				{
+					"name": "Pitchfork",
+					"entries": [
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d6}) piercing damage."
+					]
+				}
+			],
+			"damageTags": [
+				"P"
+			]
+		},
+		{
+			"name": "Barovian Scout",
+			"source": "CoS",
+			"page": 29,
+			"_copy": {
+				"name": "Scout",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Longbow",
+						"items": {
+							"name": "Light Crossbows",
+							"entries": [
+								"{@atk rw} {@hit 4} to hit, ranged 80/320 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage."
+							]
+						}
+					}
+				}
+			},
+			"miscTags": [
+				"MW",
+				"RW"
+			]
+		},
+		{
 			"name": "Barovian Witch",
+			"source": "CoS",
+			"page": 229,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -331,7 +536,6 @@
 					"human"
 				]
 			},
-			"source": "CoS",
 			"alignment": [
 				"C",
 				"E"
@@ -411,19 +615,18 @@
 					]
 				}
 			],
-			"page": 229,
-			"languageTags": [
-				"C"
-			],
 			"senseTags": [
 				"D"
 			],
-			"spellcastingTags": [
-				"CW"
+			"languageTags": [
+				"C"
 			],
 			"damageTags": [
-				"S",
-				"P"
+				"P",
+				"S"
+			],
+			"spellcastingTags": [
+				"CW"
 			],
 			"miscTags": [
 				"MW",
@@ -432,10 +635,53 @@
 			]
 		},
 		{
+			"name": "Beucephalus",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 93,
+			"_copy": {
+				"name": "Nightmare",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the nightmare",
+						"with": "Beucephalus",
+						"flags": "i"
+					}
+				}
+			},
+			"hp": {
+				"average": 104,
+				"formula": "8d10 + 24"
+			}
+		},
+		{
+			"name": "Bluto Krogarov",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 38,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
 			"name": "Broom of Animated Attack",
+			"source": "CoS",
+			"page": 226,
 			"size": "S",
 			"type": "construct",
-			"source": "CoS",
 			"alignment": [
 				"U"
 			],
@@ -465,6 +711,10 @@
 			"int": 1,
 			"wis": 5,
 			"cha": 1,
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
+			"passive": 7,
 			"immune": [
 				"poison",
 				"psychic"
@@ -480,10 +730,6 @@
 				"poisoned",
 				"prone"
 			],
-			"senses": [
-				"blindsight 30 ft. (blind beyond this radius)"
-			],
-			"passive": 7,
 			"cr": "1/4",
 			"trait": [
 				{
@@ -528,16 +774,15 @@
 					]
 				}
 			],
-			"page": 226,
 			"traitTags": [
 				"Antimagic Susceptibility",
 				"False Appearance"
 			],
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"B"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"damageTags": [
 				"B"
@@ -547,8 +792,242 @@
 			]
 		},
 		{
+			"name": "Clovin Belview",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 147,
+			"_copy": {
+				"name": "Mongrelfolk",
+				"source": "CoS",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mongrelfolk",
+						"with": "Clovin",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Extraordinary Feature",
+						"items": {
+							"name": "Two-Headed",
+							"entries": [
+								"The mongrelfolk has advantage on Wisdom ({@skill Perception}) checks and on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, or knocked {@condition unconscious}."
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
+			"name": "Cyrus Belview",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 77,
+			"_copy": {
+				"name": "Mongrelfolk",
+				"source": "CoS",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mongrelfolk",
+						"with": "Cyrus",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Extraordinary Feature",
+						"items": {
+							"name": "Keen Hearing and Smell",
+							"entries": [
+								"The mongrelfolk has advantage on Wisdom ({@skill Perception}) checks that rely on hearing or smell."
+							]
+						}
+					}
+				}
+			},
+			"traitTags": [
+				"Keen Senses"
+			]
+		},
+		{
+			"name": "Davian Martikov",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 173,
+			"_copy": {
+				"name": "Wereraven",
+				"source": "CoS",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the wereraven",
+						"with": "Davian",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Distended Corpse",
+			"source": "CoS",
+			"page": 165,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"speed": {
+				"walk": 20
+			},
+			"conditionImmune": [
+				"charmed",
+				"frightened"
+			],
+			"trait": [
+				{
+					"name": "Snake-Swollen",
+					"entries": [
+						"When a corpse is reduced to 0 hit points, it splits open, disgorging a {@creature swarm of poisonous snakes}. The snakes are hungry and fight until slain."
+					]
+				}
+			]
+		},
+		{
+			"name": "Donavich",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 46,
+			"_copy": {
+				"name": "Acolyte",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the acolyte",
+						"with": "Donavich",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"G"
+			]
+		},
+		{
+			"name": "Doru",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 47,
+			"_copy": {
+				"name": "Vampire Spawn",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the vampire",
+						"with": "Doru",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Emil Toranescu",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 81,
+			"_copy": {
+				"name": "Werewolf",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the werewolf",
+						"with": "Emil",
+						"flags": "i"
+					}
+				}
+			},
+			"hp": {
+				"average": 72,
+				"formula": "9d8 + 18"
+			}
+		},
+		{
+			"name": "Escher",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 70,
+			"_copy": {
+				"name": "Vampire Spawn",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the vampire",
+						"with": "Escher",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Exethanter",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 189,
+			"_copy": {
+				"name": "Lich",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the lich",
+						"with": "Exethanter",
+						"flags": "i"
+					}
+				}
+			},
+			"hp": {
+				"average": 99,
+				"formula": "18d8 + 54"
+			},
+			"cr": "10",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The lich is an 18th-level spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 20}, {@hit 12} to hit with spell attacks). The lich has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell mage hand}",
+								"{@spell prestidigitation}",
+								"{@spell ray of frost}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			]
+		},
+		{
 			"name": "Ezmerelda d'Avenir",
 			"isNpc": true,
+			"source": "CoS",
+			"page": 231,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -556,7 +1035,6 @@
 					"human"
 				]
 			},
-			"source": "CoS",
 			"alignment": [
 				"C",
 				"G"
@@ -698,7 +1176,6 @@
 					]
 				}
 			],
-			"page": 231,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -706,12 +1183,12 @@
 				"C",
 				"E"
 			],
-			"spellcastingTags": [
-				"CW"
-			],
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"spellcastingTags": [
+				"CW"
 			],
 			"miscTags": [
 				"MW",
@@ -720,10 +1197,51 @@
 			]
 		},
 		{
+			"name": "Gadof Blinsky",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 118,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"C",
+				"G"
+			]
+		},
+		{
+			"name": "Gertruda",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 68,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"G"
+			]
+		},
+		{
 			"name": "Guardian Portrait",
+			"source": "CoS",
+			"page": 227,
 			"size": "M",
 			"type": "construct",
-			"source": "CoS",
 			"alignment": [
 				"U"
 			],
@@ -748,6 +1266,10 @@
 			"int": 14,
 			"wis": 10,
 			"cha": 10,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
 			"immune": [
 				"poison"
 			],
@@ -762,10 +1284,6 @@
 				"prone",
 				"restrained"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 10,
 			"languages": [
 				"Common",
 				"plus up to two other languages"
@@ -809,25 +1327,124 @@
 					]
 				}
 			],
-			"page": 227,
 			"traitTags": [
 				"Antimagic Susceptibility",
 				"False Appearance"
 			],
+			"senseTags": [
+				"D"
+			],
 			"languageTags": [
 				"C",
 				"X"
-			],
-			"senseTags": [
-				"D"
 			],
 			"spellcastingTags": [
 				"I"
 			]
 		},
 		{
+			"name": "Helga Ruvak",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 64,
+			"_copy": {
+				"name": "Vampire Spawn",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the vampire",
+						"with": "Helga",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Henrik van der Voort",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 116,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			]
+		},
+		{
+			"name": "Ireena Kolyana",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 44,
+			"_copy": {
+				"name": "Noble",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the noble",
+						"with": "Ireena",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"hp": {
+				"average": 14,
+				"formula": "2d8"
+			}
+		},
+		{
+			"name": "Ismark Kolyanovich",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 43,
+			"_copy": {
+				"name": "Veteran",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the veteran",
+						"with": "Ismark",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"G"
+			]
+		},
+		{
 			"name": "Izek Strazni",
 			"isNpc": true,
+			"source": "CoS",
+			"page": 232,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -835,7 +1452,6 @@
 					"human"
 				]
 			},
-			"source": "CoS",
 			"alignment": [
 				"N",
 				"E"
@@ -898,7 +1514,6 @@
 					]
 				}
 			],
-			"page": 232,
 			"traitTags": [
 				"Brute"
 			],
@@ -909,16 +1524,340 @@
 				"C"
 			],
 			"damageTags": [
-				"S",
-				"F"
+				"F",
+				"S"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "Kasimir Velikov",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 233,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mage",
+						"with": "Kasimir",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Fey Ancestry",
+								"entries": [
+									"Kasimir has advantage on saving throws against being {@condition charmed}, and magic can't put the him to sleep."
+								]
+							},
+							{
+								"name": "Special Equipment",
+								"entries": [
+									"Kasimir wears a {@item ring of warmth} and carries a spellbook containing all the spells he has prepared plus the following spells: {@spell arcane lock}, {@spell comprehend languages}, {@spell hold person}, {@spell identify}, {@spell locate object}, {@spell nondetection}, {@spell polymorph}, {@spell protection from evil and good}, {@spell ray of frost}, and {@spell wall of stone}."
+								]
+							}
+						]
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dusk elf"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Kasimir is a 9th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). Kasimir has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell detect magic}",
+								"{@spell mage armor}",
+								"{@spell magic missile}",
+								"{@spell shield}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell misty step}",
+								"{@spell suggestion}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell counterspell}",
+								"{@spell fireball}",
+								"{@spell fly}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell greater invisibility}",
+								"{@spell ice storm}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell cone of cold}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
+			"traitTags": [
+				"Fey Ancestry"
+			],
+			"senseTags": [
+				"D"
+			]
+		},
+		{
+			"name": "Kiril Stoyanovich",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 203,
+			"_copy": {
+				"name": "Werewolf",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the werewolf",
+						"with": "Kiril",
+						"flags": "i"
+					}
+				}
+			},
+			"hp": {
+				"average": 90,
+				"formula": "9d8 + 18"
+			}
+		},
+		{
+			"name": "Knight of the Order",
+			"source": "CoS",
+			"page": 139,
+			"_copy": {
+				"name": "Revenant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "revenant",
+						"with": "knight"
+					},
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"The knight makes two longsword attacks or two fist attacks."
+								]
+							}
+						},
+						{
+							"mode": "insertArr",
+							"index": 1,
+							"items": {
+								"name": "Longsword",
+								"entries": [
+									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}15 ({@damage 2d10 + 4}) slashing damage. If the target is a creature against which the knight has sworn vengeance, the target takes an extra 14 ({@damage 4d6}) slashing damage."
+								]
+							}
+						}
+					]
+				}
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"broken chainmail"
+					]
+				}
+			],
+			"damageTags": [
+				"B",
+				"S"
+			]
+		},
+		{
+			"name": "Lady Fiona Wachter",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 110,
+			"_copy": {
+				"name": "Priest",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the priest",
+						"with": "Fiona",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				10
+			]
+		},
+		{
+			"name": "Lady Lydia Petrovna",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 105,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"G"
+			]
+		},
+		{
+			"name": "Lief Lipsiege",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 62,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			]
+		},
+		{
+			"name": "Ludmilla Vilisevic",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 93,
+			"_copy": {
+				"name": "Vampire Spawn",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the vampire",
+						"with": "Ludmilla",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Luvash",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 121,
+			"_copy": {
+				"name": "Bandit Captain",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the captain",
+						"with": "Luvash",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			]
+		},
+		{
+			"name": "Mad Mary",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 44,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"C",
+				"N"
+			]
+		},
+		{
 			"name": "Madam Eva",
 			"isNpc": true,
+			"source": "CoS",
+			"page": 233,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -926,7 +1865,6 @@
 					"human"
 				]
 			},
-			"source": "CoS",
 			"alignment": [
 				"C",
 				"N"
@@ -1066,25 +2004,139 @@
 					]
 				}
 			],
-			"page": 233,
 			"languageTags": [
 				"AB",
 				"C",
 				"E",
 				"I"
 			],
-			"spellcastingTags": [
-				"CC"
-			],
 			"damageTags": [
 				"P"
+			],
+			"spellcastingTags": [
+				"CC"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "Majesto",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 115,
+			"_copy": {
+				"name": "Imp",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the imp",
+						"with": "Majesto",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Marzena Belview",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 150,
+			"_copy": {
+				"name": "Mongrelfolk",
+				"source": "CoS",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mongrelfolk",
+						"with": "Marzena",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Extraordinary Feature",
+						"items": {
+							"name": "Flight",
+							"entries": [
+								"The mongrelfolk has leathery wings and a flying speed of 40 feet."
+							]
+						}
+					}
+				}
+			},
+			"speed": {
+				"walk": 20,
+				"fly": 40
+			}
+		},
+		{
+			"name": "Milivoj",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 97,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"str": 15,
+			"action": [
+				{
+					"name": "Shovel",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) bludgeoning damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mishka Belview",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 150,
+			"_copy": {
+				"name": "Mongrelfolk",
+				"source": "CoS",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mongrelfolk",
+						"with": "Mishka",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Extraordinary Feature",
+						"items": {
+							"name": "Spider Climb",
+							"entries": [
+								"The mongrelfolk can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"traitTags": [
+				"Spider Climb"
+			]
+		},
+		{
 			"name": "Mongrelfolk",
+			"source": "CoS",
+			"page": 234,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1092,7 +2144,6 @@
 					"mongrelfolk"
 				]
 			},
-			"source": "CoS",
 			"alignment": [
 				"A"
 			],
@@ -1174,7 +2225,6 @@
 					]
 				}
 			],
-			"page": 234,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -1192,10 +2242,150 @@
 			]
 		},
 		{
+			"name": "Morgantha",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 48,
+			"_copy": {
+				"name": "Night Hag",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the hag",
+						"with": "Morgantha",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Nikolai Wachter",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 110,
+			"_copy": {
+				"name": "Noble",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the noble",
+						"with": "Nikolai",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"N"
+			]
+		},
+		{
+			"name": "Otto Belview",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 147,
+			"_copy": {
+				"name": "Mongrelfolk",
+				"source": "CoS",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mongrelfolk",
+						"with": "Otto",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Extraordinary Feature",
+						"items": {
+							"name": "Standing Leap",
+							"entries": [
+								"The mongrelfolk's long jump is up to 20 feet and its high jump up to 10 feet, with or without a running start."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Parriwimple",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 43,
+			"_copy": {
+				"name": "Gladiator",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the gladiator",
+						"with": "Parriwimple",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
+			"int": 6
+		},
+		{
+			"name": "Patrina Velikovna",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 89,
+			"_copy": {
+				"name": "Archmage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the archmage",
+						"with": "Patrina",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dusk elf"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			]
+		},
+		{
 			"name": "Phantom Warrior",
+			"source": "CoS",
+			"page": 235,
 			"size": "M",
 			"type": "undead",
-			"source": "CoS",
 			"alignment": [
 				"A"
 			],
@@ -1219,6 +2409,10 @@
 				"perception": "+2",
 				"stealth": "+4"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 12,
 			"resist": [
 				{
 					"resist": [
@@ -1245,10 +2439,6 @@
 				"prone",
 				"restrained"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 12,
 			"languages": [
 				"any languages it knew in life"
 			],
@@ -1293,32 +2483,50 @@
 					]
 				}
 			],
-			"page": 235,
 			"traitTags": [
 				"Incorporeal Movement"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
 			],
-			"senseTags": [
-				"D"
+			"languageTags": [
+				"LF"
 			],
 			"damageTags": [
 				"O"
 			],
 			"miscTags": [
 				"MW"
-			],
-			"languageTags": [
-				"LF"
 			]
+		},
+		{
+			"name": "Piccolo",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 118,
+			"_copy": {
+				"name": "Baboon",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the baboon",
+						"with": "Piccolo",
+						"flags": "i"
+					}
+				}
+			}
 		},
 		{
 			"name": "Pidlwick II",
 			"isNpc": true,
+			"source": "CoS",
+			"page": 236,
 			"size": "S",
 			"type": "construct",
-			"source": "CoS",
 			"alignment": [
 				"N",
 				"E"
@@ -1347,6 +2555,7 @@
 			"skill": {
 				"performance": "+2"
 			},
+			"passive": 11,
 			"immune": [
 				"poison"
 			],
@@ -1355,7 +2564,6 @@
 				"petrified",
 				"poisoned"
 			],
-			"passive": 11,
 			"languages": [
 				"understands Common but doesn't speak and can't read or write"
 			],
@@ -1382,7 +2590,6 @@
 					]
 				}
 			],
-			"page": 236,
 			"traitTags": [
 				"Ambusher"
 			],
@@ -1402,6 +2609,8 @@
 		{
 			"name": "Rahadin",
 			"isNpc": true,
+			"source": "CoS",
+			"page": 237,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1409,7 +2618,6 @@
 					"elf"
 				]
 			},
-			"source": "CoS",
 			"alignment": [
 				"L",
 				"E"
@@ -1514,9 +2722,11 @@
 					]
 				}
 			],
-			"page": 237,
 			"traitTags": [
 				"Fey Ancestry"
+			],
+			"senseTags": [
+				"D"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -1525,17 +2735,14 @@
 				"C",
 				"E"
 			],
-			"senseTags": [
-				"D"
+			"damageTags": [
+				"I",
+				"P",
+				"S",
+				"Y"
 			],
 			"spellcastingTags": [
 				"I"
-			],
-			"damageTags": [
-				"S",
-				"P",
-				"I",
-				"Y"
 			],
 			"miscTags": [
 				"MW",
@@ -1546,6 +2753,8 @@
 		{
 			"name": "Rictavio",
 			"isNpc": true,
+			"source": "CoS",
+			"page": 238,
 			"size": "M",
 			"type": {
 				"type": "humanoid",
@@ -1553,7 +2762,6 @@
 					"human"
 				]
 			},
-			"source": "CoS",
 			"alignment": [
 				"L",
 				"G"
@@ -1684,7 +2892,6 @@
 					]
 				}
 			],
-			"page": 238,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -1694,18 +2901,325 @@
 				"E",
 				"I"
 			],
-			"spellcastingTags": [
-				"CC"
-			],
 			"damageTags": [
 				"B"
+			],
+			"spellcastingTags": [
+				"CC"
 			],
 			"miscTags": [
 				"MW"
 			]
 		},
 		{
+			"name": "Rosavalda \"Rose\" Durst",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 217,
+			"_copy": {
+				"name": "Ghost",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the ghost",
+						"with": "Rose",
+						"flags": "i"
+					},
+					"action": {
+						"mode": "removeArr",
+						"names": "Horrifying Visage"
+					}
+				}
+			},
+			"size": "S",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"hp": {
+				"average": 35,
+				"formula": "10d6"
+			},
+			"languages": [
+				"Common"
+			],
+			"cr": "3",
+			"languageTags": [
+				"C"
+			]
+		},
+		{
+			"name": "Sangzor",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 160,
+			"_copy": {
+				"name": "Giant Goat",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the goat",
+						"with": "Sangzor",
+						"flags": "i"
+					}
+				}
+			},
+			"hp": {
+				"average": 33,
+				"formula": "3d10 + 3"
+			},
+			"int": 6,
+			"resist": [
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"cr": "1"
+		},
+		{
+			"name": "Savid",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 133,
+			"_copy": {
+				"name": "Scout",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the scout",
+						"with": "Savid",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dusk elf"
+				]
+			},
+			"alignment": [
+				"N"
+			]
+		},
+		{
+			"name": "Sir Godfrey Gwilym",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 139,
+			"_copy": {
+				"name": "Knight of the Order",
+				"source": "CoS",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the revenant",
+						"with": "Sir Godfrey",
+						"flags": "i"
+					}
+				}
+			},
+			"cr": "6",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Sir Godfrey is a 16th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 15}, {@hit 7} to hit with spell attacks). He has the following paladin spells prepared:"
+					],
+					"spells": {
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell command}",
+								"{@spell divine favor}",
+								"{@spell thunderous smite}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell branding smite}",
+								"{@spell magic weapon}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell blinding smite}",
+								"{@spell dispel magic}"
+							]
+						},
+						"4": {
+							"slots": 2,
+							"spells": [
+								"{@spell staggering smite}"
+							]
+						}
+					},
+					"ability": "cha"
+				}
+			],
+			"spellcastingTags": [
+				"CP"
+			]
+		},
+		{
+			"name": "Snow Maiden",
+			"source": "CoS",
+			"page": 159,
+			"_copy": {
+				"name": "Specter",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Life Drain",
+						"items": {
+							"name": "Life Drain",
+							"entries": [
+								"{@atk ms} {@hit 4} to hit, reach 5 ft., one creature. {@h}10 ({@damage 3d6}) cold damage. The target must succeed on a DC 10 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the creature finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
+							]
+						}
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"dusk elf"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"immune": [
+				"cold",
+				"necrotic",
+				"poison"
+			],
+			"damageTags": [
+				"C",
+				"O"
+			]
+		},
+		{
+			"name": "Stanimir",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 20,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mage",
+						"with": "Stanimir",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"C",
+				"N"
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"The mage is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). The mage has the following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell friends}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell prestidigitation}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell charm person}",
+								"{@spell mage armor}",
+								"{@spell shield}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell misty step}",
+								"{@spell suggestion}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell bestow curse}",
+								"{@spell phantom steed}",
+								"{@spell vampiric touch}"
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								"{@spell greater invisibility}",
+								"{@spell stoneskin}"
+							]
+						},
+						"5": {
+							"slots": 1,
+							"spells": [
+								"{@spell dominate person}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			]
+		},
+		{
+			"name": "Stella Wachter",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 113,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM"
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"C",
+				"G"
+			]
+		},
+		{
 			"name": "Strahd von Zarovich",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "CoS",
+			"page": 240,
 			"size": "M",
 			"type": {
 				"type": "undead",
@@ -1713,7 +3227,6 @@
 					"shapechanger"
 				]
 			},
-			"source": "CoS",
 			"alignment": [
 				"L",
 				"E"
@@ -1750,6 +3263,10 @@
 				"religion": "+10",
 				"stealth": "+14"
 			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 22,
 			"resist": [
 				"necrotic",
 				{
@@ -1761,10 +3278,6 @@
 					"note": "from nonmagical attacks"
 				}
 			],
-			"senses": [
-				"darkvision 120 ft."
-			],
-			"passive": 22,
 			"languages": [
 				"Abyssal",
 				"Common",
@@ -1909,10 +3422,6 @@
 					]
 				}
 			],
-			"legendaryGroup": {
-				"name": "Strahd von Zarovich",
-				"source": "CoS"
-			},
 			"legendary": [
 				{
 					"name": "Move",
@@ -1933,14 +3442,18 @@
 					]
 				}
 			],
-			"page": 240,
-			"isNamedCreature": true,
-			"isNpc": true,
+			"legendaryGroup": {
+				"name": "Strahd von Zarovich",
+				"source": "CoS"
+			},
 			"traitTags": [
-				"Shapechanger",
 				"Legendary Resistances",
 				"Regeneration",
+				"Shapechanger",
 				"Spider Climb"
+			],
+			"senseTags": [
+				"SD"
 			],
 			"languageTags": [
 				"AB",
@@ -1950,16 +3463,13 @@
 				"GI",
 				"I"
 			],
-			"senseTags": [
-				"SD"
-			],
-			"spellcastingTags": [
-				"CW"
-			],
 			"damageTags": [
 				"B",
 				"N",
 				"P"
+			],
+			"spellcastingTags": [
+				"CW"
 			],
 			"miscTags": [
 				"MW"
@@ -1967,9 +3477,10 @@
 		},
 		{
 			"name": "Strahd Zombie",
+			"source": "CoS",
+			"page": 241,
 			"size": "M",
 			"type": "undead",
-			"source": "CoS",
 			"alignment": [
 				"U"
 			],
@@ -1992,16 +3503,16 @@
 			"save": {
 				"wis": "+0"
 			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 8,
 			"immune": [
 				"poison"
 			],
 			"conditionImmune": [
 				"poisoned"
 			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 8,
 			"languages": [
 				"understands the languages it knew in life but can't speak"
 			],
@@ -2042,12 +3553,11 @@
 					]
 				}
 			],
-			"page": 241,
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"D"
+			],
+			"actionTags": [
+				"Multiattack"
 			],
 			"languageTags": [
 				"CS",
@@ -2063,9 +3573,10 @@
 		},
 		{
 			"name": "Strahd's Animated Armor",
+			"source": "CoS",
+			"page": 227,
 			"size": "M",
 			"type": "construct",
-			"source": "CoS",
 			"alignment": [
 				"L",
 				"E"
@@ -2094,6 +3605,10 @@
 			"skill": {
 				"perception": "+3"
 			},
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 13,
 			"resist": [
 				"cold",
 				"fire"
@@ -2112,10 +3627,6 @@
 				"petrified",
 				"poisoned"
 			],
-			"senses": [
-				"blindsight 60 ft. (blind beyond this radius)"
-			],
-			"passive": 13,
 			"languages": [
 				"understands Common but can't speak"
 			],
@@ -2161,10 +3672,12 @@
 					]
 				}
 			],
-			"page": 227,
 			"traitTags": [
 				"Antimagic Susceptibility",
 				"False Appearance"
+			],
+			"senseTags": [
+				"B"
 			],
 			"actionTags": [
 				"Multiattack"
@@ -2173,260 +3686,8 @@
 				"C",
 				"CS"
 			],
-			"senseTags": [
-				"B"
-			],
 			"damageTags": [
-				"S",
-				"L"
-			],
-			"miscTags": [
-				"MW"
-			]
-		},
-		{
-			"name": "Tree Blight",
-			"size": "H",
-			"type": "plant",
-			"source": "CoS",
-			"alignment": [
-				"N",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 15,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 149,
-				"formula": "13d12 + 65"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 23,
-			"dex": 10,
-			"con": 20,
-			"int": 6,
-			"wis": 10,
-			"cha": 3,
-			"conditionImmune": [
-				"blinded",
-				"deafened"
-			],
-			"senses": [
-				"blindsight 60 ft. (blind beyond this radius)"
-			],
-			"passive": 10,
-			"languages": [
-				"understands Common and Druidic but doesn't speak"
-			],
-			"cr": "7",
-			"trait": [
-				{
-					"name": "False Appearance",
-					"entries": [
-						"While the blight remains motionless, it is indistinguishable from a dead tree."
-					]
-				},
-				{
-					"name": "Siege Monster",
-					"entries": [
-						"The blight deals double damage to objects and structures."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The blight makes four attacks: two with its branches and two with its grasping roots. If it has a target {@condition grappled}, the blight can also make a bite attack against that target as a bonus action."
-					]
-				},
-				{
-					"name": "Bite",
-					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}19 ({@damage 3d8 + 6}) piercing damage."
-					]
-				},
-				{
-					"name": "Branch",
-					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 15 ft., one target. {@h}16 ({@damage 3d6 + 6}) bludgeoning damage."
-					]
-				},
-				{
-					"name": "Grasping Root",
-					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 15 ft., one creature not {@condition grappled} by the blight. {@h}The target is {@condition grappled} (escape {@dc 15}). Until the grapple ends, the target takes 9 ({@damage 1d6 + 6}) bludgeoning damage at the start of each of its turns. The root has AC 15 and can be severed by dealing 6 slashing damage or more to it at once. Cutting the root doesn't hurt the blight, but ends the grapple."
-					]
-				}
-			],
-			"page": 230,
-			"traitTags": [
-				"False Appearance",
-				"Siege Monster"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C",
-				"DU"
-			],
-			"senseTags": [
-				"B"
-			],
-			"damageTags": [
-				"P",
-				"B"
-			],
-			"miscTags": [
-				"MW",
-				"RCH"
-			]
-		},
-		{
-			"name": "Vladimir Horngaard",
-			"isNpc": true,
-			"size": "M",
-			"type": "undead",
-			"source": "CoS",
-			"alignment": [
 				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 17,
-					"from": [
-						"{@item half plate armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 192,
-				"formula": "16d8 + 64"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 18,
-			"dex": 14,
-			"con": 18,
-			"int": 13,
-			"wis": 16,
-			"cha": 18,
-			"save": {
-				"str": "+7",
-				"con": "+7",
-				"wis": "+6",
-				"cha": "+7"
-			},
-			"resist": [
-				"necrotic",
-				"psychic"
-			],
-			"immune": [
-				"poison"
-			],
-			"conditionImmune": [
-				"charmed",
-				"exhaustion",
-				"frightened",
-				"paralyzed",
-				"poisoned",
-				"stunned"
-			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 13,
-			"languages": [
-				"Common",
-				"Draconic"
-			],
-			"cr": "7",
-			"trait": [
-				{
-					"name": "Regeneration",
-					"entries": [
-						"Vladimir regains 10 hit points at the start of his turn. If he takes fire or radiant damage, this trait doesn't function at the start of his next turn. Vladimir's body is destroyed only if he starts his turn with 0 hit points and doesn't regenerate."
-					]
-				},
-				{
-					"name": "Rejuvenation",
-					"entries": [
-						"When Vladimir's body is destroyed, his soul lingers. After 24 hours, the soul inhabits and animates another corpse on the same plane of existence and regains all its hit points. While the soul is bodiless, a {@spell wish} spell can be used to force the soul to go to the afterlife and not return."
-					]
-				},
-				{
-					"name": "Special Equipment",
-					"entries": [
-						"Vladimir wields a +2 greatsword with a hilt sculpted to resemble silver dragon wings and a pommel shaped like a silver dragon's head clutching a black opal between its teeth. "
-					]
-				},
-				{
-					"name": "Turn Immunity",
-					"entries": [
-						"Vladimir is immune to effects that turn undead."
-					]
-				},
-				{
-					"name": "Vengeful Tracker",
-					"entries": [
-						"Vladimir knows the distance to and direction of Strahd, even if Strahd and Vladimir are on different planes of existence. If Strahd is destroyed, Vladimir knows."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"Vladimir makes two fist attacks or two attacks with his +2 Greatsword."
-					]
-				},
-				{
-					"name": "Fist",
-					"entries": [
-						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) bludgeoning damage. Strahd, the target of Vladimir's sworn vengeance, takes an extra 14 ({@damage 4d6}) bludgeoning damage. Instead of dealing damage, Vladimir can grapple the target (escape {@dc 14}) provided the target is Large or smaller."
-					]
-				},
-				{
-					"name": "Greatsword +2",
-					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}20 ({@damage 4d6 + 4}) slashing damage. Against Strahd, Vladimir deals an extra 14 ({@damage 4d6}) slashing damage with this weapon."
-					]
-				},
-				{
-					"name": "Vengeful Glare",
-					"entries": [
-						"Vladimir can target Strahd within 30 feet provided he can see Strahd. Strahd must make a {@dc 15} Wisdom saving throw. One a failure, Strahd is {@condition paralyzed} until Vladimir deals damage to him, or until the end of Vladimir's next turn. When the paralysis ends, Strahd is {@condition frightened} of Vladimir for 1 minute. Strahd can repeat the saving throw at the end of each of his turns, with disadvantage if he can see Vladimir, ending the {@condition frightened} condition on itself on a success."
-					]
-				}
-			],
-			"page": 241,
-			"traitTags": [
-				"Regeneration",
-				"Rejuvenation",
-				"Turn Immunity"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C",
-				"DR"
-			],
-			"senseTags": [
-				"D"
-			],
-			"damageTags": [
-				"B",
 				"S"
 			],
 			"miscTags": [
@@ -2434,1711 +3695,10 @@
 			]
 		},
 		{
-			"name": "Wereraven",
-			"group": "Lycanthropes",
-			"size": "M",
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human",
-					"shapechanger"
-				]
-			},
-			"source": "CoS",
-			"alignment": [
-				"L",
-				"G"
-			],
-			"ac": [
-				12
-			],
-			"hp": {
-				"average": 31,
-				"formula": "7d8"
-			},
-			"speed": {
-				"walk": {
-					"number": 30,
-					"condition": " (fly 50 ft. in raven and hybrid forms)"
-				}
-			},
-			"str": 10,
-			"dex": 15,
-			"con": 11,
-			"int": 13,
-			"wis": 15,
-			"cha": 14,
-			"skill": {
-				"insight": "+4",
-				"perception": "+6"
-			},
-			"immune": [
-				{
-					"immune": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks not made with silvered weapons"
-				}
-			],
-			"passive": 16,
-			"languages": [
-				"Common (can't speak in raven form)"
-			],
-			"cr": "2",
-			"trait": [
-				{
-					"name": "Shapechanger",
-					"entries": [
-						"The wereraven can use its action to polymorph into a raven-humanoid hybrid or into a raven, or back into its human form. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its human form if it dies."
-					]
-				},
-				{
-					"name": "Mimicry",
-					"entries": [
-						"The wereraven can mimic simple sounds it has heard, such as a person whispering, a baby crying, or an animal chittering. A creature that hears the sounds can tell they are imitations with a successful {@dc 10} Wisdom (Insight) check."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack (Human or Hybrid Form Only)",
-					"entries": [
-						"The wereraven makes two weapon attacks, one of which can be with its hand crossbow."
-					]
-				},
-				{
-					"name": "Beak (Raven or Hybrid Form Only)",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}1 piercing damage in raven form, or 4 ({@damage 1d4 + 2}) piercing damage in hybrid form. If the target is humanoid, it must succeed on a {@dc 10} Constitution saving throw or be cursed with wereraven lycanthropy."
-					]
-				},
-				{
-					"name": "Shortsword (Human or Hybrid Form Only)",
-					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
-					]
-				},
-				{
-					"name": "Hand Crossbow (Human or Hybrid Form Only)",
-					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
-					]
-				}
-			],
-			"page": 242,
-			"traitTags": [
-				"Shapechanger"
-			],
-			"languageTags": [
-				"C",
-				"CS"
-			],
-			"damageTags": [
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RW",
-				"RNG"
-			]
-		},
-		{
-			"name": "Amber Golem",
-			"source": "CoS",
-			"_copy": {
-				"name": "Stone Golem",
-				"source": "MM"
-			},
-			"page": 186
-		},
-		{
-			"name": "Ludmilla Vilisevic",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Vampire Spawn",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the vampire",
-						"with": "Ludmilla",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 93
-		},
-		{
-			"name": "Anastrasya Karelova",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Vampire Spawn",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the vampire",
-						"with": "Anastrasya",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 93
-		},
-		{
-			"name": "Volenta Popofsky",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Vampire Spawn",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the vampire",
-						"with": "Volenta",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 93
-		},
-		{
-			"name": "Animated Halberd",
-			"source": "CoS",
-			"_copy": {
-				"name": "Flying Sword",
-				"source": "MM"
-			},
-			"ac": [
-				{
-					"ac": 15,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Halberd",
-					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d10 + 1}) slashing damage."
-					]
-				}
-			],
-			"page": 59
-		},
-		{
-			"name": "Arabelle",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM",
-				"_mod": {
-					"action": "remove"
-				}
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"alignment": [
-				"L",
-				"N"
-			],
-			"hp": {
-				"average": 2,
-				"formula": "1d8"
-			},
-			"page": 38,
-			"miscTags": []
-		},
-		{
-			"name": "Armored Saber-Toothed Tiger",
-			"source": "CoS",
-			"_copy": {
-				"name": "Saber-Toothed Tiger",
-				"source": "MM"
-			},
-			"ac": [
-				{
-					"ac": 17,
-					"from": [
-						"{@item half plate armor|phb}"
-					]
-				}
-			],
-			"hp": {
-				"average": 84,
-				"formula": "7d10 + 14"
-			},
-			"cr": "3",
-			"page": 115
-		},
-		{
-			"name": "Arrigal",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Assassin",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the assassin",
-						"with": "Arrigal",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 121
-		},
-		{
-			"name": "Baron Vargas Vallakovich",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Noble",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the noble",
-						"with": "Vargas",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 105
-		},
-		{
-			"name": "Barovian Commoner",
-			"source": "CoS",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"action": [
-				{
-					"name": "Pitchfork",
-					"entries": [
-						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d6}) piercing damage."
-					]
-				}
-			],
-			"damageTags": [
-				"P"
-			],
-			"page": 29
-		},
-		{
-			"name": "Barovian Scout",
-			"source": "CoS",
-			"_copy": {
-				"name": "Scout",
-				"source": "MM",
-				"_mod": {
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Longbow",
-						"items": {
-							"name": "Light Crossbows",
-							"entries": [
-								"{@atk rw} {@hit 4} to hit, ranged 80/320 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage."
-							]
-						}
-					}
-				}
-			},
-			"miscTags": [
-				"MW",
-				"RW"
-			],
-			"page": 29
-		},
-		{
-			"name": "Beucephalus",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Nightmare",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the nightmare",
-						"with": "Beucephalus",
-						"flags": "i"
-					}
-				}
-			},
-			"hp": {
-				"average": 104,
-				"formula": "8d10 + 24"
-			},
-			"page": 93
-		},
-		{
-			"name": "Bluto Krogarov",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 38
-		},
-		{
-			"name": "Clovin Belview",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Mongrelfolk",
-				"source": "CoS",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the mongrelfolk",
-						"with": "Clovin",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "replaceArr",
-						"replace": "Extraordinary Feature",
-						"items": {
-							"name": "Two-Headed",
-							"entries": [
-								"The mongrelfolk has advantage on Wisdom ({@skill Perception}) checks and on saving throws against being {@condition blinded}, {@condition charmed}, {@condition deafened}, {@condition frightened}, {@condition stunned}, or knocked {@condition unconscious}."
-							]
-						}
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"page": 147
-		},
-		{
-			"name": "Cyrus Belview",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Mongrelfolk",
-				"source": "CoS",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the mongrelfolk",
-						"with": "Cyrus",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "replaceArr",
-						"replace": "Extraordinary Feature",
-						"items": {
-							"name": "Keen Hearing and Smell",
-							"entries": [
-								"The mongrelfolk has advantage on Wisdom ({@skill Perception}) checks that rely on hearing or smell."
-							]
-						}
-					}
-				}
-			},
-			"traitTags": [
-				"Keen Senses"
-			],
-			"page": 77
-		},
-		{
-			"name": "Davian Martikov",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Wereraven",
-				"source": "CoS",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the wereraven",
-						"with": "Davian",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 173
-		},
-		{
-			"name": "Distended Corpse",
-			"source": "CoS",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"speed": {
-				"walk": 20
-			},
-			"conditionImmune": [
-				"charmed",
-				"frightened"
-			],
-			"trait": [
-				{
-					"name": "Snake-Swollen",
-					"entries": [
-						"When a corpse is reduced to 0 hit points, it splits open, disgorging a {@creature swarm of poisonous snakes}. The snakes are hungry and fight until slain."
-					]
-				}
-			],
-			"page": 165
-		},
-		{
-			"name": "Donavich",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Acolyte",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the acolyte",
-						"with": "Donavich",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 46
-		},
-		{
-			"name": "Doru",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Vampire Spawn",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the vampire",
-						"with": "Doru",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 47
-		},
-		{
-			"name": "Emil Toranescu",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Werewolf",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the werewolf",
-						"with": "Emil",
-						"flags": "i"
-					}
-				}
-			},
-			"hp": {
-				"average": 72,
-				"formula": "9d8 + 18"
-			},
-			"page": 81
-		},
-		{
-			"name": "Escher",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Vampire Spawn",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the vampire",
-						"with": "Escher",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 70
-		},
-		{
-			"name": "Exethanter",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Lich",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the lich",
-						"with": "Exethanter",
-						"flags": "i"
-					}
-				}
-			},
-			"cr": "10",
-			"hp": {
-				"average": 99,
-				"formula": "18d8 + 54"
-			},
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"The lich is an 18th-level spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 20}, {@hit 12} to hit with spell attacks). The lich has the following wizard spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell mage hand}",
-								"{@spell prestidigitation}",
-								"{@spell ray of frost}"
-							]
-						}
-					},
-					"ability": "int"
-				}
-			],
-			"page": 189
-		},
-		{
-			"name": "Gadof Blinsky",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"alignment": [
-				"C",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 118
-		},
-		{
-			"name": "Gertruda",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"alignment": [
-				"N",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 68
-		},
-		{
-			"name": "Helga Ruvak",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Vampire Spawn",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the vampire",
-						"with": "Helga",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 64
-		},
-		{
-			"name": "Henrik van der Voort",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"alignment": [
-				"L",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 116
-		},
-		{
-			"name": "Ireena Kolyana",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Noble",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the noble",
-						"with": "Ireena",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"hp": {
-				"average": 14,
-				"formula": "2d8"
-			},
-			"page": 44
-		},
-		{
-			"name": "Ismark Kolyanovich",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Veteran",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the veteran",
-						"with": "Ismark",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 43
-		},
-		{
-			"name": "Kasimir Velikov",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Mage",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the mage",
-						"with": "Kasimir",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "appendArr",
-						"items": [
-							{
-								"name": "Fey Ancestry",
-								"entries": [
-									"Kasimir has advantage on saving throws against being {@condition charmed}, and magic can't put the him to sleep."
-								]
-							},
-							{
-								"name": "Special Equipment",
-								"entries": [
-									"Kasimir wears a {@item ring of warmth} and carries a spellbook containing all the spells he has prepared plus the following spells: {@spell arcane lock}, {@spell comprehend languages}, {@spell hold person}, {@spell identify}, {@spell locate object}, {@spell nondetection}, {@spell polymorph}, {@spell protection from evil and good}, {@spell ray of frost}, and {@spell wall of stone}."
-								]
-							}
-						]
-					}
-				}
-			},
-			"alignment": [
-				"N"
-			],
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"dusk elf"
-				]
-			},
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Kasimir is a 9th-level spellcaster. His spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). Kasimir has the following wizard spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell fire bolt}",
-								"{@spell light}",
-								"{@spell mage hand}",
-								"{@spell prestidigitation}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell detect magic}",
-								"{@spell mage armor}",
-								"{@spell magic missile}",
-								"{@spell shield}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell misty step}",
-								"{@spell suggestion}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell counterspell}",
-								"{@spell fireball}",
-								"{@spell fly}"
-							]
-						},
-						"4": {
-							"slots": 3,
-							"spells": [
-								"{@spell greater invisibility}",
-								"{@spell ice storm}"
-							]
-						},
-						"5": {
-							"slots": 1,
-							"spells": [
-								"{@spell cone of cold}"
-							]
-						}
-					},
-					"ability": "int"
-				}
-			],
-			"senseTags": [
-				"D"
-			],
-			"traitTags": [
-				"Fey Ancestry"
-			],
-			"page": 233
-		},
-		{
-			"name": "Kiril Stoyanovich",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Werewolf",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the werewolf",
-						"with": "Kiril",
-						"flags": "i"
-					}
-				}
-			},
-			"hp": {
-				"average": 90,
-				"formula": "9d8 + 18"
-			},
-			"page": 203
-		},
-		{
-			"name": "Lady Fiona Wachter",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Priest",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the priest",
-						"with": "Fiona",
-						"flags": "i"
-					}
-				}
-			},
-			"ac": [
-				10
-			],
-			"alignment": [
-				"L",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 110
-		},
-		{
-			"name": "Lady Lydia Petrovna",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"alignment": [
-				"L",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 105
-		},
-		{
-			"name": "Lief Lipsiege",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"alignment": [
-				"C",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 62
-		},
-		{
-			"name": "Luvash",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Bandit Captain",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the captain",
-						"with": "Luvash",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"C",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 121
-		},
-		{
-			"name": "Mad Mary",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"alignment": [
-				"C",
-				"N"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 44
-		},
-		{
-			"name": "Majesto",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Imp",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the imp",
-						"with": "Majesto",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 115
-		},
-		{
-			"name": "Marzena Belview",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Mongrelfolk",
-				"source": "CoS",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the mongrelfolk",
-						"with": "Marzena",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "replaceArr",
-						"replace": "Extraordinary Feature",
-						"items": {
-							"name": "Flight",
-							"entries": [
-								"The mongrelfolk has leathery wings and a flying speed of 40 feet."
-							]
-						}
-					}
-				}
-			},
-			"speed": {
-				"walk": 20,
-				"fly": 40
-			},
-			"page": 150
-		},
-		{
-			"name": "Milivoj",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"alignment": [
-				"N"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 97
-		},
-		{
-			"name": "Mishka Belview",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Mongrelfolk",
-				"source": "CoS",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the mongrelfolk",
-						"with": "Mishka",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "replaceArr",
-						"replace": "Extraordinary Feature",
-						"items": {
-							"name": "Spider Climb",
-							"entries": [
-								"The mongrelfolk can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
-							]
-						}
-					}
-				}
-			},
-			"alignment": [
-				"C",
-				"E"
-			],
-			"traitTags": [
-				"Spider Climb"
-			],
-			"page": 150
-		},
-		{
-			"name": "Morgantha",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Night Hag",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the hag",
-						"with": "Morgantha",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 48
-		},
-		{
-			"name": "Nikolai Wachter",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Noble",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the noble",
-						"with": "Nikolai",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L",
-				"N"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"page": 110
-		},
-		{
-			"name": "Otto Belview",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Mongrelfolk",
-				"source": "CoS",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the mongrelfolk",
-						"with": "Otto",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "replaceArr",
-						"replace": "Extraordinary Feature",
-						"items": {
-							"name": "Standing Leap",
-							"entries": [
-								"The mongrelfolk's long jump is up to 20 feet and its high jump up to 10 feet, with or without a running start."
-							]
-						}
-					}
-				}
-			},
-			"page": 147
-		},
-		{
-			"name": "Zygfrek Belview",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Mongrelfolk",
-				"source": "CoS",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the mongrelfolk",
-						"with": "Zygfrek",
-						"flags": "i"
-					},
-					"trait": {
-						"mode": "replaceArr",
-						"replace": "Extraordinary Feature",
-						"items": {
-							"name": "Darkvision",
-							"entries": [
-								"The mongrelfolk has darkvision out to a range of 60 feet."
-							]
-						}
-					}
-				}
-			},
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"senseTags": [
-				"D"
-			],
-			"page": 148
-		},
-		{
-			"name": "Parriwimple",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Gladiator",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the gladiator",
-						"with": "Parriwimple",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"L",
-				"G"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"int": 6,
-			"ac": [
-				{
-					"ac": 14,
-					"from": [
-						"{@item studded leather armor|phb}"
-					]
-				}
-			],
-			"page": 43
-		},
-		{
-			"name": "Patrina Velikovna",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Archmage",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the archmage",
-						"with": "Patrina",
-						"flags": "i"
-					}
-				}
-			},
-			"alignment": [
-				"N",
-				"E"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"dusk elf"
-				]
-			},
-			"page": 89
-		},
-		{
-			"name": "Piccolo",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Baboon",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the baboon",
-						"with": "Piccolo",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 118
-		},
-		{
-			"name": "Rosavalda \"Rose\" Durst",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Ghost",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the ghost",
-						"with": "Rose",
-						"flags": "i"
-					},
-					"action": {
-						"mode": "removeArr",
-						"names": "Horrifying Visage"
-					}
-				}
-			},
-			"size": "S",
-			"alignment": [
-				"L",
-				"G"
-			],
-			"hp": {
-				"average": 35,
-				"formula": "10d6"
-			},
-			"languages": [
-				"Common"
-			],
-			"cr": "3",
-			"languageTags": [
-				"C"
-			],
-			"page": 217
-		},
-		{
-			"name": "Thornboldt \"Thorn\" Durst",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Ghost",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the ghost",
-						"with": "Thorn",
-						"flags": "i"
-					},
-					"action": {
-						"mode": "removeArr",
-						"names": "Horrifying Visage"
-					}
-				}
-			},
-			"size": "S",
-			"alignment": [
-				"L",
-				"G"
-			],
-			"hp": {
-				"average": 35,
-				"formula": "10d6"
-			},
-			"languages": [
-				"Common"
-			],
-			"cr": "3",
-			"languageTags": [
-				"C"
-			],
-			"page": 217
-		},
-		{
-			"name": "Sangzor",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Giant Goat",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the goat",
-						"with": "Sangzor",
-						"flags": "i"
-					}
-				}
-			},
-			"int": 6,
-			"hp": {
-				"average": 33,
-				"formula": "3d10 + 3"
-			},
-			"resist": [
-				{
-					"resist": [
-						"bludgeoning",
-						"piercing",
-						"slashing"
-					],
-					"note": "from nonmagical attacks"
-				}
-			],
-			"cr": "1",
-			"page": 160
-		},
-		{
-			"name": "Savid",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Scout",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the scout",
-						"with": "Savid",
-						"flags": "i"
-					}
-				}
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"dusk elf"
-				]
-			},
-			"alignment": [
-				"N"
-			],
-			"page": 133
-		},
-		{
-			"name": "Knight of the Order",
-			"source": "CoS",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"_copy": {
-				"name": "Revenant",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "revenant",
-						"with": "knight"
-					},
-					"action": [
-						{
-							"mode": "replaceArr",
-							"replace": "Multiattack",
-							"items": {
-								"name": "Multiattack",
-								"entries": [
-									"The knight makes two longsword attacks or two fist attacks."
-								]
-							}
-						},
-						{
-							"mode": "insertArr",
-							"index": 1,
-							"items": {
-								"name": "Longsword",
-								"entries": [
-									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}15 ({@damage 2d10 + 4}) slashing damage. If the target is a creature against which the knight has sworn vengeance, the target takes an extra 14 ({@damage 4d6}) slashing damage."
-								]
-							}
-						}
-					]
-				}
-			},
-			"ac": [
-				{
-					"ac": 13,
-					"from": [
-						"broken chainmail"
-					]
-				}
-			],
-			"page": 139,
-			"damageTags": [
-				"S",
-				"B"
-			]
-		},
-		{
-			"name": "Sir Godfrey Gwilym",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Knight of the Order",
-				"source": "CoS",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the revenant",
-						"with": "Sir Godfrey",
-						"flags": "i"
-					}
-				}
-			},
-			"cr": "6",
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"Sir Godfrey is a 16th-level spellcaster. His spellcasting ability is Charisma (spell save {@dc 15}, {@hit 7} to hit with spell attacks). He has the following paladin spells prepared:"
-					],
-					"spells": {
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell command}",
-								"{@spell divine favor}",
-								"{@spell thunderous smite}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell branding smite}",
-								"{@spell magic weapon}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell blinding smite}",
-								"{@spell dispel magic}"
-							]
-						},
-						"4": {
-							"slots": 2,
-							"spells": [
-								"{@spell staggering smite}"
-							]
-						}
-					},
-					"ability": "cha"
-				}
-			],
-			"spellcastingTags": [
-				"CP"
-			],
-			"page": 139
-		},
-		{
-			"name": "Snow Maiden",
-			"source": "CoS",
-			"_copy": {
-				"name": "Specter",
-				"source": "MM",
-				"_mod": {
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Life Drain",
-						"items": {
-							"name": "Life Drain",
-							"entries": [
-								"{@atk ms} {@hit 4} to hit, reach 5 ft., one creature. {@h}10 ({@damage 3d6}) cold damage. The target must succeed on a DC 10 Constitution saving throw or its hit point maximum is reduced by an amount equal to the damage taken. This reduction lasts until the creature finishes a long rest. The target dies if this effect reduces its hit point maximum to 0."
-							]
-						}
-					}
-				}
-			},
-			"immune": [
-				"cold",
-				"necrotic",
-				"poison"
-			],
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"dusk elf"
-				]
-			},
-			"alignment": [
-				"N"
-			],
-			"damageTags": [
-				"C",
-				"O"
-			],
-			"page": 159
-		},
-		{
-			"name": "Stanimir",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Mage",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the mage",
-						"with": "Stanimir",
-						"flags": "i"
-					}
-				}
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"alignment": [
-				"C",
-				"N"
-			],
-			"spellcasting": [
-				{
-					"name": "Spellcasting",
-					"headerEntries": [
-						"The mage is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). The mage has the following wizard spells prepared:"
-					],
-					"spells": {
-						"0": {
-							"spells": [
-								"{@spell friends}",
-								"{@spell light}",
-								"{@spell mage hand}",
-								"{@spell prestidigitation}"
-							]
-						},
-						"1": {
-							"slots": 4,
-							"spells": [
-								"{@spell charm person}",
-								"{@spell mage armor}",
-								"{@spell shield}",
-								"{@spell sleep}"
-							]
-						},
-						"2": {
-							"slots": 3,
-							"spells": [
-								"{@spell misty step}",
-								"{@spell suggestion}"
-							]
-						},
-						"3": {
-							"slots": 3,
-							"spells": [
-								"{@spell bestow curse}",
-								"{@spell phantom steed}",
-								"{@spell vampiric touch}"
-							]
-						},
-						"4": {
-							"slots": 3,
-							"spells": [
-								"{@spell greater invisibility}",
-								"{@spell stoneskin}"
-							]
-						},
-						"5": {
-							"slots": 1,
-							"spells": [
-								"{@spell dominate person}"
-							]
-						}
-					},
-					"ability": "int"
-				}
-			],
-			"page": 20
-		},
-		{
-			"name": "Stella Wachter",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Commoner",
-				"source": "MM"
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"alignment": [
-				"C",
-				"G"
-			],
-			"page": 113
-		},
-		{
 			"name": "Szoldar Szoldarovich",
 			"isNpc": true,
 			"source": "CoS",
+			"page": 100,
 			"_copy": {
 				"name": "Scout",
 				"source": "MM",
@@ -4159,40 +3719,13 @@
 			},
 			"alignment": [
 				"N"
-			],
-			"page": 100
-		},
-		{
-			"name": "Yevgeni Krushkin",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Scout",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the scout",
-						"with": "Yevgeni",
-						"flags": "i"
-					}
-				}
-			},
-			"type": {
-				"type": "humanoid",
-				"tags": [
-					"human"
-				]
-			},
-			"alignment": [
-				"N"
-			],
-			"page": 100
+			]
 		},
 		{
 			"name": "The Abbot",
 			"isNpc": true,
 			"source": "CoS",
+			"page": 151,
 			"_copy": {
 				"name": "Deva",
 				"source": "MM",
@@ -4204,31 +3737,13 @@
 						"flags": "i"
 					}
 				}
-			},
-			"page": 151
-		},
-		{
-			"name": "Vasilka",
-			"isNpc": true,
-			"source": "CoS",
-			"_copy": {
-				"name": "Flesh Golem",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "the golem",
-						"with": "Vasilka",
-						"flags": "i"
-					}
-				}
-			},
-			"page": 151
+			}
 		},
 		{
 			"name": "The Mad Mage of Mount Baratok",
 			"isNpc": true,
 			"source": "CoS",
+			"page": 39,
 			"_copy": {
 				"name": "Archmage",
 				"source": "MM",
@@ -4247,6 +3762,10 @@
 					"human"
 				]
 			},
+			"alignment": [
+				"C",
+				"N"
+			],
 			"spellcasting": [
 				{
 					"name": "Spellcasting",
@@ -4331,17 +3850,175 @@
 					},
 					"ability": "int"
 				}
-			],
+			]
+		},
+		{
+			"name": "Thornboldt \"Thorn\" Durst",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 217,
+			"_copy": {
+				"name": "Ghost",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the ghost",
+						"with": "Thorn",
+						"flags": "i"
+					},
+					"action": {
+						"mode": "removeArr",
+						"names": "Horrifying Visage"
+					}
+				}
+			},
+			"size": "S",
 			"alignment": [
-				"C",
-				"N"
+				"L",
+				"G"
 			],
-			"page": 39
+			"hp": {
+				"average": 35,
+				"formula": "10d6"
+			},
+			"languages": [
+				"Common"
+			],
+			"cr": "3",
+			"languageTags": [
+				"C"
+			]
+		},
+		{
+			"name": "Tree Blight",
+			"source": "CoS",
+			"page": 230,
+			"size": "H",
+			"type": "plant",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 149,
+				"formula": "13d12 + 65"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 23,
+			"dex": 10,
+			"con": 20,
+			"int": 6,
+			"wis": 10,
+			"cha": 3,
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"conditionImmune": [
+				"blinded",
+				"deafened"
+			],
+			"languages": [
+				"understands Common and Druidic but doesn't speak"
+			],
+			"cr": "7",
+			"trait": [
+				{
+					"name": "False Appearance",
+					"entries": [
+						"While the blight remains motionless, it is indistinguishable from a dead tree."
+					]
+				},
+				{
+					"name": "Siege Monster",
+					"entries": [
+						"The blight deals double damage to objects and structures."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The blight makes four attacks: two with its branches and two with its grasping roots. If it has a target {@condition grappled}, the blight can also make a bite attack against that target as a bonus action."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}19 ({@damage 3d8 + 6}) piercing damage."
+					]
+				},
+				{
+					"name": "Branch",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 15 ft., one target. {@h}16 ({@damage 3d6 + 6}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Grasping Root",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 15 ft., one creature not {@condition grappled} by the blight. {@h}The target is {@condition grappled} (escape {@dc 15}). Until the grapple ends, the target takes 9 ({@damage 1d6 + 6}) bludgeoning damage at the start of each of its turns. The root has AC 15 and can be severed by dealing 6 slashing damage or more to it at once. Cutting the root doesn't hurt the blight, but ends the grapple."
+					]
+				}
+			],
+			"traitTags": [
+				"False Appearance",
+				"Siege Monster"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DU"
+			],
+			"damageTags": [
+				"B",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			]
+		},
+		{
+			"name": "Vasilka",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 151,
+			"_copy": {
+				"name": "Flesh Golem",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the golem",
+						"with": "Vasilka",
+						"flags": "i"
+					}
+				}
+			}
 		},
 		{
 			"name": "Victor Vallakovich",
 			"isNpc": true,
 			"source": "CoS",
+			"page": 105,
 			"_copy": {
 				"name": "Mage",
 				"source": "MM",
@@ -4363,13 +4040,13 @@
 			"alignment": [
 				"N",
 				"E"
-			],
-			"page": 105
+			]
 		},
 		{
 			"name": "Vilnius",
 			"isNpc": true,
 			"source": "CoS",
+			"page": 185,
 			"_copy": {
 				"name": "Mage",
 				"source": "MM",
@@ -4391,13 +4068,312 @@
 			"alignment": [
 				"N",
 				"E"
+			]
+		},
+		{
+			"name": "Vladimir Horngaard",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 241,
+			"size": "M",
+			"type": "undead",
+			"alignment": [
+				"L",
+				"E"
 			],
-			"page": 185
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item half plate armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 192,
+				"formula": "16d8 + 64"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 18,
+			"dex": 14,
+			"con": 18,
+			"int": 13,
+			"wis": 16,
+			"cha": 18,
+			"save": {
+				"str": "+7",
+				"con": "+7",
+				"wis": "+6",
+				"cha": "+7"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 13,
+			"resist": [
+				"necrotic",
+				"psychic"
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"poisoned",
+				"stunned"
+			],
+			"languages": [
+				"Common",
+				"Draconic"
+			],
+			"cr": "7",
+			"trait": [
+				{
+					"name": "Regeneration",
+					"entries": [
+						"Vladimir regains 10 hit points at the start of his turn. If he takes fire or radiant damage, this trait doesn't function at the start of his next turn. Vladimir's body is destroyed only if he starts his turn with 0 hit points and doesn't regenerate."
+					]
+				},
+				{
+					"name": "Rejuvenation",
+					"entries": [
+						"When Vladimir's body is destroyed, his soul lingers. After 24 hours, the soul inhabits and animates another corpse on the same plane of existence and regains all its hit points. While the soul is bodiless, a {@spell wish} spell can be used to force the soul to go to the afterlife and not return."
+					]
+				},
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Vladimir wields a +2 greatsword with a hilt sculpted to resemble silver dragon wings and a pommel shaped like a silver dragon's head clutching a black opal between its teeth. "
+					]
+				},
+				{
+					"name": "Turn Immunity",
+					"entries": [
+						"Vladimir is immune to effects that turn undead."
+					]
+				},
+				{
+					"name": "Vengeful Tracker",
+					"entries": [
+						"Vladimir knows the distance to and direction of Strahd, even if Strahd and Vladimir are on different planes of existence. If Strahd is destroyed, Vladimir knows."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Vladimir makes two fist attacks or two attacks with his +2 Greatsword."
+					]
+				},
+				{
+					"name": "Fist",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) bludgeoning damage. Strahd, the target of Vladimir's sworn vengeance, takes an extra 14 ({@damage 4d6}) bludgeoning damage. Instead of dealing damage, Vladimir can grapple the target (escape {@dc 14}) provided the target is Large or smaller."
+					]
+				},
+				{
+					"name": "Greatsword +2",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}20 ({@damage 4d6 + 4}) slashing damage. Against Strahd, Vladimir deals an extra 14 ({@damage 4d6}) slashing damage with this weapon."
+					]
+				},
+				{
+					"name": "Vengeful Glare",
+					"entries": [
+						"Vladimir can target Strahd within 30 feet provided he can see Strahd. Strahd must make a {@dc 15} Wisdom saving throw. One a failure, Strahd is {@condition paralyzed} until Vladimir deals damage to him, or until the end of Vladimir's next turn. When the paralysis ends, Strahd is {@condition frightened} of Vladimir for 1 minute. Strahd can repeat the saving throw at the end of each of his turns, with disadvantage if he can see Vladimir, ending the {@condition frightened} condition on itself on a success."
+					]
+				}
+			],
+			"traitTags": [
+				"Regeneration",
+				"Rejuvenation",
+				"Turn Immunity"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR"
+			],
+			"damageTags": [
+				"B",
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Volenta Popofsky",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 93,
+			"_copy": {
+				"name": "Vampire Spawn",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the vampire",
+						"with": "Volenta",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Wereraven",
+			"group": "Lycanthropes",
+			"source": "CoS",
+			"page": 242,
+			"size": "M",
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human",
+					"shapechanger"
+				]
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 31,
+				"formula": "7d8"
+			},
+			"speed": {
+				"walk": {
+					"number": 30,
+					"condition": " (fly 50 ft. in raven and hybrid forms)"
+				}
+			},
+			"str": 10,
+			"dex": 15,
+			"con": 11,
+			"int": 13,
+			"wis": 15,
+			"cha": 14,
+			"skill": {
+				"insight": "+4",
+				"perception": "+6"
+			},
+			"passive": 16,
+			"immune": [
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks not made with silvered weapons"
+				}
+			],
+			"languages": [
+				"Common (can't speak in raven form)"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Shapechanger",
+					"entries": [
+						"The wereraven can use its action to polymorph into a raven-humanoid hybrid or into a raven, or back into its human form. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn't transformed. It reverts to its human form if it dies."
+					]
+				},
+				{
+					"name": "Mimicry",
+					"entries": [
+						"The wereraven can mimic simple sounds it has heard, such as a person whispering, a baby crying, or an animal chittering. A creature that hears the sounds can tell they are imitations with a successful {@dc 10} Wisdom (Insight) check."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack (Human or Hybrid Form Only)",
+					"entries": [
+						"The wereraven makes two weapon attacks, one of which can be with its hand crossbow."
+					]
+				},
+				{
+					"name": "Beak (Raven or Hybrid Form Only)",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}1 piercing damage in raven form, or 4 ({@damage 1d4 + 2}) piercing damage in hybrid form. If the target is humanoid, it must succeed on a {@dc 10} Constitution saving throw or be cursed with wereraven lycanthropy."
+					]
+				},
+				{
+					"name": "Shortsword (Human or Hybrid Form Only)",
+					"entries": [
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
+					]
+				},
+				{
+					"name": "Hand Crossbow (Human or Hybrid Form Only)",
+					"entries": [
+						"{@atk rw} {@hit 4} to hit, range 30/120 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Shapechanger"
+			],
+			"languageTags": [
+				"C",
+				"CS"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW"
+			]
+		},
+		{
+			"name": "Yevgeni Krushkin",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 100,
+			"_copy": {
+				"name": "Scout",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the scout",
+						"with": "Yevgeni",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N"
+			]
 		},
 		{
 			"name": "Zuleika Toranescu",
 			"isNpc": true,
 			"source": "CoS",
+			"page": 204,
 			"_copy": {
 				"name": "Werewolf",
 				"source": "MM",
@@ -4409,8 +4385,41 @@
 						"flags": "i"
 					}
 				}
+			}
+		},
+		{
+			"name": "Zygfrek Belview",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 148,
+			"_copy": {
+				"name": "Mongrelfolk",
+				"source": "CoS",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mongrelfolk",
+						"with": "Zygfrek",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "replaceArr",
+						"replace": "Extraordinary Feature",
+						"items": {
+							"name": "Darkvision",
+							"entries": [
+								"The mongrelfolk has darkvision out to a range of 60 feet."
+							]
+						}
+					}
+				}
 			},
-			"page": 204
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"senseTags": [
+				"D"
+			]
 		}
 	]
 }

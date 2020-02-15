@@ -282,7 +282,7 @@ class RendererCard {
 
 	_renderLink (entry, textStack, meta, options) {
 		const href = this._renderLink_getHref(entry);
-		textStack[0] += `<a href="${href}" rel="noopener">${this.render(entry.text)}</a>`;
+		textStack[0] += `<a href="${href}" rel="noopener noreferrer">${this.render(entry.text)}</a>`;
 	}
 
 	/*

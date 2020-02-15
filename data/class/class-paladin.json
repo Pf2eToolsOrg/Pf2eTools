@@ -3,6 +3,7 @@
 		{
 			"name": "Paladin",
 			"source": "PHB",
+			"page": 82,
 			"srd": true,
 			"hd": {
 				"number": 1,
@@ -14,6 +15,60 @@
 			],
 			"spellcastingAbility": "cha",
 			"casterProgression": "1/2",
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					"heavy",
+					"shields"
+				],
+				"weapons": [
+					"simple",
+					"martial"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"athletics",
+								"insight",
+								"intimidation",
+								"medicine",
+								"persuasion",
+								"religion"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@filter martial weapon|items|source=phb|category=basic|type=martial weapon} and a {@item shield|phb} or (b) two {@filter martial weapons|items|source=phb|category=basic|type=martial weapon}",
+					"(a) five {@item javelin|phb|javelins} or (b) any {@filter simple melee weapon|items|source=phb|category=basic|type=simple weapon;melee weapon=sand}",
+					"(a) a {@item priest's pack|phb} or (b) an {@item explorer's pack|phb}",
+					"{@item Chain mail|phb} and a {@item holy symbol|phb}"
+				],
+				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"str": 13,
+					"cha": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light",
+						"medium",
+						"shields"
+					],
+					"weapons": [
+						"simple",
+						"martial"
+					]
+				}
+			},
 			"classTableGroups": [
 				{
 					"title": "Spell Slots per Spell Level",
@@ -168,60 +223,6 @@
 					]
 				}
 			],
-			"startingProficiencies": {
-				"armor": [
-					"light",
-					"medium",
-					"heavy",
-					"shields"
-				],
-				"weapons": [
-					"simple",
-					"martial"
-				],
-				"skills": [
-					{
-						"choose": {
-							"from": [
-								"athletics",
-								"insight",
-								"intimidation",
-								"medicine",
-								"persuasion",
-								"religion"
-							],
-							"count": 2
-						}
-					}
-				]
-			},
-			"startingEquipment": {
-				"additionalFromBackground": true,
-				"default": [
-					"(a) a {@filter martial weapon|items|source=phb|category=basic|type=martial weapon} and a {@item shield|phb} or (b) two {@filter martial weapons|items|source=phb|category=basic|type=martial weapon}",
-					"(a) five {@item javelin|phb|javelins} or (b) any {@filter simple melee weapon|items|source=phb|category=basic|type=simple weapon;melee weapon=sand}",
-					"(a) a {@item priest's pack|phb} or (b) an {@item explorer's pack|phb}",
-					"{@item Chain mail|phb} and a {@item holy symbol|phb}"
-				],
-				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
-			},
-			"multiclassing": {
-				"requirements": {
-					"str": 13,
-					"cha": 13
-				},
-				"proficienciesGained": {
-					"armor": [
-						"light",
-						"medium",
-						"shields"
-					],
-					"weapons": [
-						"simple",
-						"martial"
-					]
-				}
-			},
 			"classFeatures": [
 				[
 					{
@@ -648,6 +649,8 @@
 			"subclasses": [
 				{
 					"name": "Oath of the Ancients",
+					"shortName": "Ancients",
+					"source": "PHB",
 					"subclassFeatures": [
 						[
 							{
@@ -820,12 +823,13 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Ancients"
+					]
 				},
 				{
 					"name": "Oath of Devotion",
+					"shortName": "Devotion",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1002,13 +1006,12 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Devotion",
-					"srd": true
+					]
 				},
 				{
 					"name": "Oath of Vengeance",
+					"shortName": "Vengeance",
+					"source": "PHB",
 					"subclassFeatures": [
 						[
 							{
@@ -1177,12 +1180,12 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Vengeance"
+					]
 				},
 				{
 					"name": "Oathbreaker",
+					"shortName": "Oathbreaker",
+					"source": "DMG",
 					"subclassFeatures": [
 						[
 							{
@@ -1290,12 +1293,12 @@
 								]
 							}
 						]
-					],
-					"source": "DMG",
-					"shortName": "Oathbreaker"
+					]
 				},
 				{
 					"name": "Oath of the Crown",
+					"shortName": "Crown",
+					"source": "SCAG",
 					"subclassFeatures": [
 						[
 							{
@@ -1463,12 +1466,13 @@
 								]
 							}
 						]
-					],
-					"source": "SCAG",
-					"shortName": "Crown"
+					]
 				},
 				{
 					"name": "Oath of Conquest (UA)",
+					"shortName": "Conquest (UA)",
+					"source": "UAPaladin",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1625,13 +1629,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAPaladin",
-					"shortName": "Conquest (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Oath of Conquest v2 (UA)",
+					"shortName": "Conquest v2 (UA)",
+					"source": "UARevisedClassOptions",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1789,13 +1793,12 @@
 								]
 							}
 						]
-					],
-					"source": "UARevisedClassOptions",
-					"shortName": "Conquest v2 (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Oath of Treachery (UA)",
+					"shortName": "Treachery (UA)",
+					"source": "UAPaladin",
 					"subclassFeatures": [
 						[
 							{
@@ -1941,12 +1944,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAPaladin",
-					"shortName": "Treachery (UA)"
+					]
 				},
 				{
 					"name": "Oath of Redemption (UA)",
+					"shortName": "Redemption (UA)",
+					"source": "UAATrioOfSubclasses",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -2128,13 +2132,12 @@
 								]
 							}
 						]
-					],
-					"source": "UAATrioOfSubclasses",
-					"shortName": "Redemption (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Oath of Conquest",
+					"shortName": "Conquest",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -2283,12 +2286,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Conquest"
+					]
 				},
 				{
 					"name": "Oath of Redemption",
+					"shortName": "Redemption",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -2457,12 +2460,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Redemption"
+					]
 				},
 				{
 					"name": "Oath of Heroism (UA)",
+					"shortName": "Heroism (UA)",
+					"source": "UABardAndPaladin",
 					"subclassFeatures": [
 						[
 							{
@@ -2630,12 +2633,12 @@
 								]
 							}
 						]
-					],
-					"source": "UABardAndPaladin",
-					"shortName": "Heroism (UA)"
+					]
 				},
 				{
 					"name": "Oath of the Watchers (UA)",
+					"shortName": "Watchers (UA)",
+					"source": "UA2020SubclassesPt1",
 					"subclassFeatures": [
 						[
 							{
@@ -2790,9 +2793,7 @@
 								]
 							}
 						]
-					],
-					"source": "UA2020SubclassesPt1",
-					"shortName": "Watchers (UA)"
+					]
 				}
 			],
 			"fluff": [
@@ -3158,8 +3159,7 @@
 					"source": "XGE",
 					"page": 36
 				}
-			],
-			"page": 82
+			]
 		}
 	]
 }

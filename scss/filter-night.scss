@@ -1,0 +1,71 @@
+@import 'vars';
+
+.night-mode .fltr__ {
+	&btn_nest {
+		background: $rgb-bg--night;
+		border-color: $rgb-border-grey--night;
+
+		&--include {
+			background: repeating-linear-gradient(135deg, $rgb-active-blue, $rgb-active-blue $fltr-stripe, transparent $fltr-stripe, transparent $fltr-2stripe);
+		}
+
+		&--include-all {
+			background: $rgb-active-blue;
+		}
+
+		&--exclude {
+			background: repeating-linear-gradient(135deg, transparent, transparent $fltr-stripe, $rgb-active-red $fltr-stripe, $rgb-active-red $fltr-2stripe);
+		}
+
+		&--exclude-all {
+			background: $rgb-active-red;
+		}
+
+		&--both {
+			background: repeating-linear-gradient(135deg, $rgb-active-blue, $rgb-active-blue $fltr-stripe, $rgb-active-red $fltr-stripe, $rgb-active-red $fltr-2stripe);
+		}
+	}
+
+	&dropdown-divider {
+		border-color: $rgb-border-grey--night;
+
+		@media only screen and (max-width: $width-screen-sm) {
+			box-shadow: inset 0 0 2px 2px $rgb-off-black;
+			background: $rgb-border-grey--night;
+		}
+	}
+
+	&pill {
+		border-color: $rgb-border-grey--night;
+
+		&[state=ignore] {
+			background: $rgb-bg--night;
+		}
+
+		&:hover:not([state]) {
+			background: #323232;
+		}
+	}
+
+	&mini-view {
+		background: #343434;
+		border-color: $rgb-border-grey--night;
+		background: linear-gradient(to top, $rgb-border-grey--night, #343434  1px);
+	}
+
+	&h-btn-logic--blue {
+		color: $rgb-active-blue;
+
+		&:hover {
+			color: $rgb-active-blue--light;
+		}
+	}
+
+	&h-btn-logic--red {
+		color: $rgb-active-red;
+
+		&:hover {
+			color: $rgb-active-red--light;
+		}
+	}
+}

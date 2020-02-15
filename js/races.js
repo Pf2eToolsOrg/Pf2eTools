@@ -6,7 +6,7 @@ class RacesPage extends ListPage {
 		super({
 			dataSource: async () => {
 				const rawRaceData = await DataUtil.loadJSON("data/races.json");
-				const raceData = Renderer.race.mergeSubraces(rawRaceData.race);
+				const raceData = Renderer.race.mergeSubraces(rawRaceData.race, {isAddBaseRaces: true});
 				return {race: raceData};
 			},
 			dataSourceFluff: "data/fluff-races.json",
@@ -23,8 +23,18 @@ class RacesPage extends ListPage {
 		});
 	}
 
+	_addData (data) {
+		if (data.race && data.race.length) super._addData(data);
+		if (!data.subrace || !data.subrace.length) return;
+
+		// Attach each subrace to a parent race, and recurse
+		const nxtData = Renderer.race.adoptSubraces(this._dataList, data.subrace);
+
+		if (nxtData.length) this._addData({race: Renderer.race.mergeSubraces(nxtData)})
+	}
+
 	getListItem (race, rcI, isExcluded) {
-		this._pageFilter.addToFilters(race, isExcluded);
+		this._pageFilter.mutateAndAddToFilters(race, isExcluded);
 
 		const ability = race.ability ? Renderer.getAbilityData(race.ability) : {asTextShort: "None"};
 
@@ -54,9 +64,11 @@ class RacesPage extends ListPage {
 				ability: ability.asTextShort,
 				size,
 				source,
-				cleanName: bracketMatch ? `${bracketMatch[2]} ${bracketMatch[1]}` : "",
-				isExcluded,
-				uniqueId: race.uniqueId ? race.uniqueId : rcI
+				cleanName: bracketMatch ? `${bracketMatch[2]} ${bracketMatch[1]}` : ""
+			},
+			{
+				uniqueId: race.uniqueId ? race.uniqueId : rcI,
+				isExcluded
 			}
 		);
 
@@ -122,13 +134,13 @@ class RacesPage extends ListPage {
 			const predefined = Renderer.utils.getPredefinedFluff(race, "raceFluff");
 			if (predefined) return predefined;
 
-			const subFluff = fluffJson.race.find(it => it.name.toLowerCase() === race.name.toLowerCase() && it.source.toLowerCase() === race.source.toLowerCase());
+			const subFluff = fluffJson.raceFluff.find(it => it.name.toLowerCase() === race.name.toLowerCase() && it.source.toLowerCase() === race.source.toLowerCase());
 
-			const baseFluff = race._baseName && race.name.toLowerCase() === race._baseName.toLowerCase() ? "" : fluffJson.race.find(it => race._baseName && it.name.toLowerCase() === race._baseName.toLowerCase() && race._baseSource && it.source.toLowerCase() === race._baseSource.toLowerCase());
+			const baseFluff = race._baseName && race.name.toLowerCase() === race._baseName.toLowerCase() ? "" : fluffJson.raceFluff.find(it => race._baseName && it.name.toLowerCase() === race._baseName.toLowerCase() && race._baseSource && it.source.toLowerCase() === race._baseSource.toLowerCase());
 
 			if (!subFluff && !baseFluff) return null;
 
-			const findFluff = (toFind) => fluffJson.race.find(it => toFind.name.toLowerCase() === it.name.toLowerCase() && toFind.source.toLowerCase() === it.source.toLowerCase());
+			const findFluff = (toFind) => fluffJson.raceFluff.find(it => toFind.name.toLowerCase() === it.name.toLowerCase() && toFind.source.toLowerCase() === it.source.toLowerCase());
 
 			const fluff = {type: "section"};
 
@@ -210,9 +222,9 @@ class RacesPage extends ListPage {
 		ListUtil.updateSelected();
 	}
 
-	doLoadSubHash (sub) {
+	async pDoLoadSubHash (sub) {
 		sub = this._filterBox.setFromSubHashes(sub);
-		ListUtil.setFromSubHashes(sub);
+		await ListUtil.pSetFromSubHashes(sub);
 	}
 }
 

@@ -108,7 +108,7 @@ class ListPage {
 
 		// bind hash-change functions for hist.js to use
 		window.loadHash = this.doLoadHash.bind(this);
-		window.loadSubHash = this.doLoadSubHash.bind(this);
+		window.loadSubHash = this.pDoLoadSubHash.bind(this);
 
 		this._list.init();
 		this._listSub.init();
@@ -171,5 +171,5 @@ class ListPage {
 	handleFilterChange () { throw new Error(`Unimplemented!`); }
 	getSublistItem () { throw new Error(`Unimplemented!`); }
 	doLoadHash () { throw new Error(`Unimplemented!`); }
-	doLoadSubHash () { throw new Error(`Unimplemented!`); }
+	pDoLoadSubHash () { throw new Error(`Unimplemented!`); }
 }

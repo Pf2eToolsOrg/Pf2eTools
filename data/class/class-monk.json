@@ -3,6 +3,7 @@
 		{
 			"name": "Monk",
 			"source": "PHB",
+			"page": 76,
 			"srd": true,
 			"hd": {
 				"number": 1,
@@ -12,6 +13,51 @@
 				"str",
 				"dex"
 			],
+			"startingProficiencies": {
+				"weapons": [
+					"simple",
+					"shortswords"
+				],
+				"tools": [
+					"any one type of artisan's tools or any one musical instrument of your choice"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"acrobatics",
+								"athletics",
+								"history",
+								"insight",
+								"religion",
+								"stealth"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item shortsword|phb} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
+					"10 {@item dart|phb|darts}"
+				],
+				"goldAlternative": "{@dice 5d4|5d4|Starting Gold}"
+			},
+			"multiclassing": {
+				"requirements": {
+					"dex": 13,
+					"wis": 13
+				},
+				"proficienciesGained": {
+					"weapons": [
+						"simple",
+						"shortswords"
+					]
+				}
+			},
 			"classTableGroups": [
 				{
 					"colLabels": [
@@ -343,51 +389,6 @@
 					]
 				}
 			],
-			"startingProficiencies": {
-				"weapons": [
-					"simple",
-					"shortswords"
-				],
-				"tools": [
-					"any one type of artisan's tools or any one musical instrument of your choice"
-				],
-				"skills": [
-					{
-						"choose": {
-							"from": [
-								"acrobatics",
-								"athletics",
-								"history",
-								"insight",
-								"religion",
-								"stealth"
-							],
-							"count": 2
-						}
-					}
-				]
-			},
-			"startingEquipment": {
-				"additionalFromBackground": true,
-				"default": [
-					"(a) a {@item shortsword|phb} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
-					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
-					"10 {@item dart|phb|darts}"
-				],
-				"goldAlternative": "{@dice 5d4|5d4|Starting Gold}"
-			},
-			"multiclassing": {
-				"requirements": {
-					"dex": 13,
-					"wis": 13
-				},
-				"proficienciesGained": {
-					"weapons": [
-						"simple",
-						"shortswords"
-					]
-				}
-			},
 			"classFeatures": [
 				[
 					{
@@ -755,6 +756,8 @@
 			"subclasses": [
 				{
 					"name": "Way of Shadow",
+					"shortName": "Shadow",
+					"source": "PHB",
 					"subclassFeatures": [
 						[
 							{
@@ -810,12 +813,13 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Shadow"
+					]
 				},
 				{
 					"name": "Way of the Open Hand",
+					"shortName": "Open Hand",
+					"source": "PHB",
+					"srd": true,
 					"subclassFeatures": [
 						[
 							{
@@ -882,13 +886,12 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Open Hand",
-					"srd": true
+					]
 				},
 				{
 					"name": "Way of the Four Elements",
+					"shortName": "Four Elements",
+					"source": "PHB",
 					"spellcastingAbility": "wis",
 					"subclassFeatures": [
 						[
@@ -1130,12 +1133,12 @@
 								]
 							}
 						]
-					],
-					"source": "PHB",
-					"shortName": "Four Elements"
+					]
 				},
 				{
 					"name": "Way of the Long Death",
+					"shortName": "Long Death",
+					"source": "SCAG",
 					"subclassFeatures": [
 						[
 							{
@@ -1191,12 +1194,13 @@
 								]
 							}
 						]
-					],
-					"source": "SCAG",
-					"shortName": "Long Death"
+					]
 				},
 				{
 					"name": "Way of the Sun Soul",
+					"shortName": "Sun Soul",
+					"source": "SCAG",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1258,13 +1262,13 @@
 								]
 							}
 						]
-					],
-					"source": "SCAG",
-					"shortName": "Sun Soul",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Way of the Kensei (UA)",
+					"shortName": "Kensei (UA)",
+					"source": "UAMonk",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1354,13 +1358,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAMonk",
-					"shortName": "Kensei (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Way of the Kensei v2 (UA)",
+					"shortName": "Kensei v2 (UA)",
+					"source": "UARevisedSubclasses",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1449,13 +1453,12 @@
 								]
 							}
 						]
-					],
-					"source": "UARevisedSubclasses",
-					"shortName": "Kensei v2 (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Way of Tranquility (UA)",
+					"shortName": "Tranquility (UA)",
+					"source": "UAMonk",
 					"subclassFeatures": [
 						[
 							{
@@ -1526,12 +1529,13 @@
 								]
 							}
 						]
-					],
-					"source": "UAMonk",
-					"shortName": "Tranquility (UA)"
+					]
 				},
 				{
 					"name": "Way of the Drunken Master (UA)",
+					"shortName": "Drunken Master (UA)",
+					"source": "UAATrioOfSubclasses",
+					"isReprinted": true,
 					"subclassFeatures": [
 						[
 							{
@@ -1588,13 +1592,12 @@
 								]
 							}
 						]
-					],
-					"source": "UAATrioOfSubclasses",
-					"shortName": "Drunken Master (UA)",
-					"isReprinted": true
+					]
 				},
 				{
 					"name": "Way of the Drunken Master",
+					"shortName": "Drunken Master",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -1672,12 +1675,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Drunken Master"
+					]
 				},
 				{
 					"name": "Way of the Kensei",
+					"shortName": "Kensei",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -1776,12 +1779,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Kensei"
+					]
 				},
 				{
 					"name": "Way of the Sun Soul",
+					"shortName": "Sun Soul",
+					"source": "XGE",
 					"subclassFeatures": [
 						[
 							{
@@ -1844,12 +1847,12 @@
 								]
 							}
 						]
-					],
-					"source": "XGE",
-					"shortName": "Sun Soul"
+					]
 				},
 				{
 					"name": "Way of the Soul Knife (Livestream)",
+					"shortName": "Soul Knife (Stream)",
+					"source": "Stream",
 					"subclassFeatures": [
 						[
 							{
@@ -1954,12 +1957,12 @@
 								]
 							}
 						]
-					],
-					"source": "Stream",
-					"shortName": "Soul Knife (Stream)"
+					]
 				},
 				{
 					"name": "Way of the Astral Self (UA)",
+					"shortName": "Astral Self (UA)",
+					"source": "UABarbarianAndMonk",
 					"subclassFeatures": [
 						[
 							{
@@ -2103,12 +2106,12 @@
 								]
 							}
 						]
-					],
-					"source": "UABarbarianAndMonk",
-					"shortName": "Astral Self (UA)"
+					]
 				},
 				{
 					"name": "Way of Mercy (UA)",
+					"shortName": "Mercy (UA)",
+					"source": "UA2020SubclassesPt1",
 					"subclassFeatures": [
 						[
 							{
@@ -2226,9 +2229,7 @@
 								]
 							}
 						]
-					],
-					"source": "UA2020SubclassesPt1",
-					"shortName": "Mercy (UA)"
+					]
 				}
 			],
 			"fluff": [
@@ -2518,8 +2519,7 @@
 					"source": "XGE",
 					"page": 32
 				}
-			],
-			"page": 76
+			]
 		}
 	]
 }

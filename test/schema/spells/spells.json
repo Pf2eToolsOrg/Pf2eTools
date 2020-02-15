@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "spells.json",
-	"version": "1.5.0",
+	"version": "1.5.2",
 	"title": "Spells",
 	"type": "object",
 
@@ -135,7 +135,8 @@
 											"type": "string"
 										},
 										"cost": {
-											"type": "integer"
+											"description": "In copper pieces.",
+											"type": "number"
 										},
 										"consume": {
 											"type": "boolean"
@@ -365,6 +366,19 @@
 				},
 				"srd": {
 					"$ref": "util.json#/definitions/srd"
+				},
+				"scalingLevelDice": {
+					"oneOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/scalingLevelDiceItem"
+							}
+						},
+						{
+							"$ref": "#/definitions/scalingLevelDiceItem"
+						}
+					]
 				}
 			},
 			"additionalProperties": false
@@ -495,6 +509,25 @@
 				"name",
 				"source"
 			],
+			"additionalProperties": false
+		},
+
+		"scalingLevelDiceItem": {
+			"type": "object",
+			"properties": {
+				"label": {
+					"type": "string"
+				},
+				"scaling": {
+					"type": "object",
+					"patternProperties": {
+						"\\d+": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false
+				}
+			},
 			"additionalProperties": false
 		}
 	},

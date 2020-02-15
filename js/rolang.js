@@ -101,14 +101,15 @@ class Ro_Lexer {
 		let indent = 0;
 		let isBOL = true;
 		let token = "";
-		let braceCount = 0;
+		let attribParenCount = 0;
 		let parenCount = 0;
+		let braceCount = 0;
 		let mode = null;
 
 		const outputToken = () => {
 			if (token) {
 				if (opts.isDynamicsOnly) {
-					if (token.startsWith("{{") && token.endsWith("}}")) this._tokenStack.push(Ro_Token.DYNAMIC(token, l));
+					if (token.startsWith("@") || token.startsWith("(@")) this._tokenStack.push(Ro_Token.DYNAMIC(token, l));
 					else this._tokenStack.push(Ro_Token.UNPARSED(token, l));
 				} else {
 					switch (token) {
@@ -132,7 +133,7 @@ class Ro_Lexer {
 						case ":": this._tokenStack.push(Ro_Token.COLON._(l)); break;
 						case "=": this._tokenStack.push(Ro_Token.ASSIGN._(l)); break;
 						default: {
-							if (token.startsWith("{{") && token.endsWith("}}")) this._tokenStack.push(Ro_Token.DYNAMIC(token, l));
+							if (token.startsWith("@") || token.startsWith("(@")) this._tokenStack.push(Ro_Token.DYNAMIC(token, l));
 							else if (Ro_Lexer._M_IDENT.test(token)) this._tokenStack.push(Ro_Token.IDENTIFIER(token, l));
 							else if (Ro_Lexer._M_NUMBER.test(token)) this._tokenStack.push(Ro_Token.NUMBER(token, l));
 							else throw new Error(`Syntax error: unexpected token <code>${token}</code> (line <code>${l}</code>)`);
@@ -146,6 +147,7 @@ class Ro_Lexer {
 
 		outer: for (let i = 0; i < l.length; ++i) {
 			const c = l[i];
+			const d = l[i + 1];
 
 			// handle "beginning of line" case
 			if (isBOL) {
@@ -188,20 +190,20 @@ class Ro_Lexer {
 
 			// handle everything else
 			switch (c) {
-				case "#": {
+				case "#": { // comments
 					if (opts.isDynamicsOnly) {
 						token += c;
 						break;
 					} else break outer;
 				}
 				case " ": {
-					if (braceCount >= 2) token += c;
+					if (attribParenCount) token += c;
 					else if (opts.isDynamicsOnly) token += c;
 					else outputToken();
 					break;
 				}
 				case ":": {
-					if (braceCount >= 2) token += c;
+					if (attribParenCount) token += c;
 					else if (opts.isDynamicsOnly) token += c;
 					else {
 						outputToken();
@@ -211,18 +213,31 @@ class Ro_Lexer {
 					break;
 				}
 				case "(":
-					if (braceCount >= 2) token += c;
-					else if (opts.isDynamicsOnly) token += c;
-					else {
-						parenCount++;
-						outputToken();
-						token = "(";
-						outputToken();
+					if (attribParenCount) {
+						attribParenCount++;
+						token += c;
+					} else {
+						if (d === "@") { // the start of a dynamic
+							attribParenCount++;
+							outputToken();
+							token += c;
+						} else { // the start of some parentheses
+							if (opts.isDynamicsOnly) token += c;
+							else {
+								parenCount++;
+								outputToken();
+								token = "(";
+								outputToken();
+							}
+						}
 					}
 					break;
 				case ")":
-					if (braceCount >= 2) token += c;
-					else if (opts.isDynamicsOnly) token += c;
+					if (attribParenCount) {
+						attribParenCount--;
+						token += c;
+						if (!attribParenCount) outputToken();
+					} else if (opts.isDynamicsOnly) token += c;
 					else {
 						parenCount--;
 						if (parenCount < 0) throw new Error(`Syntax error: closing <code>)</code> without opening <code>(</code> in line <code>${l}</code>`);
@@ -232,22 +247,36 @@ class Ro_Lexer {
 					}
 					break;
 				case "{": {
-					if (braceCount === 0) outputToken();
-					braceCount++;
-					token += c;
+					if (attribParenCount) token += c;
+					else if (opts.isDynamicsOnly) token += c;
+					else {
+						braceCount++;
+						outputToken();
+						token = "{";
+						outputToken();
+					}
 					break;
 				}
 				case "}": {
-					braceCount--;
-					if (braceCount < 0) throw new Error(`Syntax error: closing <code>}</code> without opening <code>{</code> in line <code>${l}</code>`);
-					token += c;
-					if (braceCount === 0) outputToken();
+					if (attribParenCount) token += c;
+					else if (opts.isDynamicsOnly) token += c;
+					else {
+						braceCount--;
+						if (braceCount < 0) throw new Error(`Syntax error: closing <code>}</code> without opening <code>{</code> in line <code>${l}</code>`);
+						outputToken();
+						token = "}";
+						outputToken();
+					}
 					break;
 				}
 				default: {
-					if (braceCount >= 2) token += c;
-					else if (opts.isDynamicsOnly) token += c;
-					else {
+					if (attribParenCount) token += c;
+					else if (opts.isDynamicsOnly) {
+						if (c === "@" && token.last() !== "(") {
+							outputToken();
+							token = "@";
+						} else token += c;
+					} else {
 						if (Ro_Lexer._M_TEXT_CHAR.test(c)) {
 							if (mode === "symbol") outputToken();
 							token += c;
@@ -267,7 +296,7 @@ class Ro_Lexer {
 		outputToken();
 	}
 }
-Ro_Lexer._M_TEXT_CHAR = /[a-zA-Z0-9_]/;
+Ro_Lexer._M_TEXT_CHAR = /[a-zA-Z0-9_@]/;
 Ro_Lexer._M_SYMBOL_CHAR = /[-+/*^=!:><]/;
 
 Ro_Lexer._M_NUMBER = /^\d+$/;
@@ -885,8 +914,9 @@ class Ro_Lang {
 
 		const getInvalidMessage = (type) => `Unknown property: <code>${type}</code> (line <code>${token.line}</code>)`;
 
-		const clean = token.value.replace(/^{{(.*)}}$/, "$1");
-		const [type, ...labelParts] = clean.split("|").map(it => it.trim()).filter(Boolean);
+		const clean = token.value.replace(/^\(?@(.*?)\)?$/, "$1");
+		const [type, ...labelParts] = clean.split("|").map(it => it.trim());
+		while (labelParts.length && !labelParts.last()) labelParts.pop(); // pop empty strings from the end of the array
 		switch (type) {
 			case "user_int": return this._pResolveDynamic_getUserInt(token, labelParts, opts);
 			case "user_bool": return this._pResolveDynamic_getUserBool(token, labelParts, opts);
@@ -910,13 +940,15 @@ class Ro_Lang {
 			if (opts.isValidateOnly) return;
 
 			const nxtOpts = {int: true};
-			if (labelParts.length) nxtOpts.title = labelParts[0];
+			if (labelParts.length) nxtOpts.title = labelParts[0].trim();
 			const val = await InputUiUtil.pGetUserNumber(nxtOpts);
 			if (val == null) out.isCancelled = true;
 			else out.val = val;
 		} else {
-			// Format: ...|1=Label One|2=Label Two|3|4|...
-			const choices = labelParts.map(it => {
+			// Format: ...|Window Title|1=Label One|2=Label Two|3|4|...
+			const titlePart = labelParts[0].trim();
+
+			const choices = labelParts.slice(1).map(it => {
 				const spl = it.split("=").map(it => it.trim());
 
 				const asNum = Number(spl[0]);
@@ -931,7 +963,8 @@ class Ro_Lang {
 
 			const ixOut = await InputUiUtil.pGetUserEnum({
 				fnDisplay: it => it.label,
-				values: choices
+				values: choices,
+				title: titlePart
 			});
 
 			if (ixOut == null) out.isCancelled = true;
@@ -948,14 +981,29 @@ class Ro_Lang {
 		if (labelParts.length <= 1) {
 			if (opts.isValidateOnly) return;
 
-			const nxtOpts = {int: true};
-			if (labelParts.length) nxtOpts.title = labelParts[0];
+			const nxtOpts = {};
+			if (labelParts.length) nxtOpts.title = labelParts[0].trim();
+			const val = await InputUiUtil.pGetUserBoolean(nxtOpts);
+			if (val == null) out.isCancelled = true;
+			else out.val = val;
+		} else if (labelParts.length === 3) {
+			// Format: ...|Window title|True Label|False Label
+			if (opts.isValidateOnly) return;
+
+			const nxtOpts = {
+				title: labelParts[0].trim(),
+				textYes: labelParts[1].trim(),
+				textNo: labelParts[2].trim()
+			};
+
 			const val = await InputUiUtil.pGetUserBoolean(nxtOpts);
 			if (val == null) out.isCancelled = true;
 			else out.val = val;
 		} else {
-			// Format: ...|true=Label One|false=Label Two|true|false|...
-			const choices = labelParts.map(it => {
+			// Format: ...|Window title|true=Label One|false=Label Two|true|false|...
+			const titlePart = labelParts[0].trim();
+
+			const choices = labelParts.slice(1).map(it => {
 				const spl = it.split("=").map(it => it.trim());
 
 				const asBool = UiUtil.strToBool(spl[0], null);
@@ -970,7 +1018,8 @@ class Ro_Lang {
 
 			const ixOut = await InputUiUtil.pGetUserEnum({
 				fnDisplay: it => it.label,
-				values: choices
+				values: choices,
+				title: titlePart
 			});
 
 			if (ixOut == null) out.isCancelled = true;

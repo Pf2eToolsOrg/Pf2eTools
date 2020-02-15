@@ -233,6 +233,8 @@ const BookUtil = {
 		BookUtil.curRender.data = data;
 		BookUtil.curRender.fromIndex = fromIndex;
 		BookUtil.curRender.headerMap = BookUtil.getEntryIdLookup(data);
+
+		// If it's a new chapter or a new book
 		if (BookUtil.curRender.chapter !== chapter || UrlUtil.encodeForHash(BookUtil.curRender.curBookId.toLowerCase()) !== UrlUtil.encodeForHash(bookId)) {
 			BookUtil.thisContents.children(`ul`).children(`ul, li`).removeClass("active");
 			if (~chapter) {
@@ -417,6 +419,7 @@ const BookUtil = {
 				}
 			}
 		} else {
+			// It's the same chapter/same book
 			if (hashParts.length <= 1) {
 				if (~chapter) {
 					if (BookUtil.referenceId) MiscUtil.scrollPageTop();
@@ -439,6 +442,11 @@ const BookUtil = {
 				setTimeout(() => {
 					BookUtil.scrollClick(scrollTo, scrollIndex);
 				}, BookUtil.isHashReload ? 15 : 75);
+			} else if (scrollTo) {
+				setTimeout(() => {
+					BookUtil.scrollClick(scrollTo, scrollIndex);
+				}, BookUtil.isHashReload ? 15 : 75);
+				BookUtil.isHashReload = false;
 			}
 		}
 
@@ -571,6 +579,8 @@ const BookUtil = {
 					pHandleFound(fromIndex, bookData);
 				})
 		} else handleNotFound();
+
+		$(`.bk__overlay-loading`).remove();
 	},
 
 	_renderer: new Renderer().setEnumerateTitlesRel(true),
@@ -594,7 +604,7 @@ const BookUtil = {
 
 	handleReNav (ele) {
 		const hash = window.location.hash.slice(1).toLowerCase();
-		const linkHash = $(ele).attr("href").slice(1).toLowerCase();
+		const linkHash = ($(ele).attr("href").split("#")[1] || "").toLowerCase();
 		if (hash === linkHash) {
 			BookUtil.isHashReload = true;
 			BookUtil.booksHashChange();
@@ -668,9 +678,7 @@ const BookUtil = {
 								$row.append($ptLink);
 
 								if (!isPageMode && f.previews) {
-									const $ptPreviews = $(`<a href="#${getHash(f)}"/>`).click(function () {
-										BookUtil.handleReNav(this);
-									});
+									const $ptPreviews = $(`<a href="#${getHash(f)}"/>`);
 									const re = new RegExp(f.term.escapeRegexp(), "gi");
 
 									$ptPreviews.on("click", () => {
@@ -699,10 +707,6 @@ const BookUtil = {
 										const $ptPage = $(`<span>Page ${f.page}</span>`);
 										$row.append($ptPage);
 									}
-
-									$link.click(function () {
-										BookUtil.handleReNav(this);
-									});
 								}
 
 								$results.append($row);
@@ -869,8 +873,11 @@ if (typeof module !== "undefined") {
 	module.exports.BookUtil = BookUtil;
 } else {
 	window.addEventListener("load", () => $("body").on("click", "a", (evt) => {
-		let $a = $(evt.target);
-		while ($a.length && !$a.is("a")) $a = $a.parent();
-		BookUtil._lastClickedLink = $a[0];
+		const lnk = evt.target;
+		let $lnk = $(lnk);
+		while ($lnk.length && !$lnk.is("a")) $lnk = $lnk.parent();
+		BookUtil._lastClickedLink = $lnk[0];
+
+		if (`#${$lnk.attr("href").split("#")[1] || ""}` === window.location.hash) BookUtil.handleReNav(lnk);
 	}));
 }

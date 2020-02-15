@@ -59,7 +59,9 @@ if (fs.existsSync("./img")) {
 		"races",
 		"vehicles",
 		"characters",
-		"conditionsdiseases"
+		"conditionsdiseases",
+		"languages",
+		"plutonium"
 	]);
 
 	fs.readdirSync("./img")

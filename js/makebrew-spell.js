@@ -522,13 +522,13 @@ class SpellBuilder extends Builder {
 		const $cbConsumed = $(`<input type="checkbox" class="mkbru__ipt-cb--plain">`)
 			.prop("checked", this._state.components && this._state.components.m && this._state.components.m.consume)
 			.change(() => doUpdateState());
-		const $iptCost = $(`<input class="form-control form-control--minimal input-xs">`)
+		const $iptCost = $(`<input class="form-control form-control--minimal input-xs mr-1">`)
 			.val(this._state.components && this._state.components.m && this._state.components.m.cost ? this._state.components.m.cost : null)
 			.change(() => doUpdateState());
 		const TITLE_FILTERS_EXTERNAL = "Used in filtering/external applications. The full text of the material component should be entered in the &quot;Materials&quot; field, above.";
 		const $stageMaterialConsumable = $$`<div class="mt-2">
 			<div class="flex-v-center mb-2"><div class="mr-2 mkbru__sub-name--33 help" title="${TITLE_FILTERS_EXTERNAL}">Is Consumed</div>${$cbConsumed}</div>
-			<div class="flex-v-center"><div class="mr-2 mkbru__sub-name--33 help" title="${TITLE_FILTERS_EXTERNAL}">Component Cost</div>${$iptCost}</div>
+			<div class="flex-v-center"><div class="mr-2 mkbru__sub-name--33 help" title="${TITLE_FILTERS_EXTERNAL} Specified in copper pieces (1gp = 100cp).">Component Cost</div>${$iptCost}<div>cp</div></div>
 		</div>`.appendTo($rowInner).toggle(initialMaterialMode === "2");
 
 		return $row;

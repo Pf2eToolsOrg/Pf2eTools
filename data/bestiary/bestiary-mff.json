@@ -93,8 +93,8 @@
 				"DU"
 			],
 			"damageTags": [
-				"P",
-				"F"
+				"F",
+				"P"
 			],
 			"miscTags": [
 				"MW"
@@ -352,6 +352,11 @@
 			"name": "Eye of Fear and Flame",
 			"source": "MFF",
 			"page": 8,
+			"otherSources": [
+				{
+					"source": "IMR"
+				}
+			],
 			"size": "M",
 			"type": "undead",
 			"alignment": [
@@ -490,143 +495,14 @@
 				"XX"
 			],
 			"damageTags": [
-				"S",
-				"F"
+				"F",
+				"S"
 			],
 			"spellcastingTags": [
 				"I"
 			],
 			"miscTags": [
 				"MW"
-			],
-			"otherSources": [
-				{
-					"source": "IMR"
-				}
-			]
-		},
-		{
-			"name": "Forlarren",
-			"source": "MFF",
-			"page": 9,
-			"size": "M",
-			"type": "fey",
-			"alignment": [
-				"C",
-				"N"
-			],
-			"ac": [
-				{
-					"ac": 16,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 45,
-				"formula": "6d8 + 18"
-			},
-			"speed": {
-				"walk": 40
-			},
-			"str": 14,
-			"dex": 16,
-			"con": 17,
-			"int": 12,
-			"wis": 11,
-			"cha": 18,
-			"skill": {
-				"acrobatics": "+5",
-				"deception": "+8",
-				"stealth": "+5"
-			},
-			"passive": 10,
-			"languages": [
-				"Common",
-				"Sylvan"
-			],
-			"cr": "3",
-			"spellcasting": [
-				{
-					"name": "Innate Spellcasting",
-					"headerEntries": [
-						"The forlarren's innate spellcasting ability is Charisma (spell save {@dc 14}). It can innately cast the following spells, requiring no material components:"
-					],
-					"will": [
-						"{@spell expeditious retreat}",
-						"{@spell false life}",
-						"{@spell minor illusion}",
-						"{@spell prestidigitation}"
-					],
-					"daily": {
-						"3e": [
-							"{@spell aid}",
-							"{@spell misty step}",
-							"{@spell Tasha's hideous laughter}"
-						],
-						"1e": [
-							"{@spell heal}",
-							"{@spell heat metal}",
-							"{@spell mirror image}"
-						]
-					},
-					"ability": "cha"
-				}
-			],
-			"trait": [
-				{
-					"name": "Magic Resistance",
-					"entries": [
-						"The forlarren has advantage on saving throws against spells and other magical effects."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The forlarren makes two claw attacks and one gore attack, or it makes three chromatic ray attacks."
-					]
-				},
-				{
-					"name": "Claw",
-					"entries": [
-						"Melee weapon attack: {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
-					]
-				},
-				{
-					"name": "Gore",
-					"entries": [
-						"Melee weapon attack: {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
-					]
-				},
-				{
-					"name": "Chromatic Ray",
-					"entries": [
-						"{@atk rs} {@hit 6} to hit, range 60 ft., one target. {@h}3 ({@damage 1d6}) lightning damage plus 3 ({@damage 1d6}) fire damage plus 3 ({@damage 1d6}) cold damage."
-					]
-				}
-			],
-			"traitTags": [
-				"Magic Resistance"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C",
-				"S"
-			],
-			"damageTags": [
-				"S",
-				"P",
-				"L",
-				"F",
-				"C"
-			],
-			"spellcastingTags": [
-				"I"
 			]
 		},
 		{
@@ -747,8 +623,8 @@
 				"GI"
 			],
 			"damageTags": [
-				"S",
-				"B"
+				"B",
+				"S"
 			],
 			"spellcastingTags": [
 				"I"
@@ -757,6 +633,130 @@
 				"MW",
 				"RCH",
 				"RW"
+			]
+		},
+		{
+			"name": "Forlarren",
+			"source": "MFF",
+			"page": 9,
+			"size": "M",
+			"type": "fey",
+			"alignment": [
+				"C",
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 45,
+				"formula": "6d8 + 18"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 14,
+			"dex": 16,
+			"con": 17,
+			"int": 12,
+			"wis": 11,
+			"cha": 18,
+			"skill": {
+				"acrobatics": "+5",
+				"deception": "+8",
+				"stealth": "+5"
+			},
+			"passive": 10,
+			"languages": [
+				"Common",
+				"Sylvan"
+			],
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The forlarren's innate spellcasting ability is Charisma (spell save {@dc 14}). It can innately cast the following spells, requiring no material components:"
+					],
+					"will": [
+						"{@spell expeditious retreat}",
+						"{@spell false life}",
+						"{@spell minor illusion}",
+						"{@spell prestidigitation}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell aid}",
+							"{@spell misty step}",
+							"{@spell Tasha's hideous laughter}"
+						],
+						"1e": [
+							"{@spell heal}",
+							"{@spell heat metal}",
+							"{@spell mirror image}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The forlarren has advantage on saving throws against spells and other magical effects."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The forlarren makes two claw attacks and one gore attack, or it makes three chromatic ray attacks."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"Melee weapon attack: {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
+					]
+				},
+				{
+					"name": "Gore",
+					"entries": [
+						"Melee weapon attack: {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
+					]
+				},
+				{
+					"name": "Chromatic Ray",
+					"entries": [
+						"{@atk rs} {@hit 6} to hit, range 60 ft., one target. {@h}3 ({@damage 1d6}) lightning damage plus 3 ({@damage 1d6}) fire damage plus 3 ({@damage 1d6}) cold damage."
+					]
+				}
+			],
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"S"
+			],
+			"damageTags": [
+				"C",
+				"F",
+				"L",
+				"P",
+				"S"
+			],
+			"spellcastingTags": [
+				"I"
 			]
 		},
 		{
@@ -936,8 +936,8 @@
 				"T"
 			],
 			"damageTags": [
-				"P",
-				"O"
+				"O",
+				"P"
 			],
 			"miscTags": [
 				"MW"
@@ -991,8 +991,7 @@
 				{
 					"name": "Blessing of Bountiful Generosity (1/day)",
 					"entries": [
-						"The killmoulis targets up to eight creatures within 100 feet of it that it can see. The next time a target finishes a long rest, it regains all spent Hit",
-						"Dice and gains 10 temporary hit points."
+						"The killmoulis targets up to eight creatures within 100 feet of it that it can see. The next time a target finishes a long rest, it regains all spent Hit Dice and gains 10 temporary hit points."
 					]
 				},
 				{
@@ -1078,91 +1077,6 @@
 			],
 			"damageTags": [
 				"P"
-			]
-		},
-		{
-			"name": "Needle Spawn",
-			"source": "MFF",
-			"page": 16,
-			"size": "M",
-			"type": "plant",
-			"alignment": [
-				"C",
-				"E"
-			],
-			"ac": [
-				13
-			],
-			"hp": {
-				"average": 16,
-				"formula": "3d8 + 3"
-			},
-			"speed": {
-				"walk": 30,
-				"climb": 20
-			},
-			"str": 13,
-			"dex": 17,
-			"con": 12,
-			"int": 6,
-			"wis": 13,
-			"cha": 6,
-			"skill": {
-				"stealth": "+5"
-			},
-			"senses": [
-				"blindsight 30 ft."
-			],
-			"passive": 11,
-			"conditionImmune": [
-				"blinded",
-				"deafened",
-				"exhaustion"
-			],
-			"languages": [
-				"Sylvan"
-			],
-			"cr": "1/2",
-			"trait": [
-				{
-					"name": "Close Quarters Shooting",
-					"entries": [
-						"The needle spawn does not suffer disadvantage on ranged attacks while within 5 feet of a hostile creature that can see it and isn't {@condition incapacitated}, if the target of the attack is also within 5 feet of the needle spawn."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Needle Volley",
-					"entries": [
-						"The needle spawn makes up to {@dice 1d6} needle attacks, but it cannot attack the same target more than twice during its turn."
-					]
-				},
-				{
-					"name": "Claw",
-					"entries": [
-						"Melee weapon attack: {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
-					]
-				},
-				{
-					"name": "Needle",
-					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 60 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
-					]
-				}
-			],
-			"senseTags": [
-				"B"
-			],
-			"languageTags": [
-				"S"
-			],
-			"damageTags": [
-				"S",
-				"P"
-			],
-			"miscTags": [
-				"RW"
 			]
 		},
 		{
@@ -1267,6 +1181,91 @@
 			]
 		},
 		{
+			"name": "Needle Spawn",
+			"source": "MFF",
+			"page": 16,
+			"size": "M",
+			"type": "plant",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"average": 16,
+				"formula": "3d8 + 3"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 20
+			},
+			"str": 13,
+			"dex": 17,
+			"con": 12,
+			"int": 6,
+			"wis": 13,
+			"cha": 6,
+			"skill": {
+				"stealth": "+5"
+			},
+			"senses": [
+				"blindsight 30 ft."
+			],
+			"passive": 11,
+			"conditionImmune": [
+				"blinded",
+				"deafened",
+				"exhaustion"
+			],
+			"languages": [
+				"Sylvan"
+			],
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Close Quarters Shooting",
+					"entries": [
+						"The needle spawn does not suffer disadvantage on ranged attacks while within 5 feet of a hostile creature that can see it and isn't {@condition incapacitated}, if the target of the attack is also within 5 feet of the needle spawn."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Needle Volley",
+					"entries": [
+						"The needle spawn makes up to {@dice 1d6} needle attacks, but it cannot attack the same target more than twice during its turn."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"Melee weapon attack: {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
+					]
+				},
+				{
+					"name": "Needle",
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, range 60 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			],
+			"languageTags": [
+				"S"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"RW"
+			]
+		},
+		{
 			"name": "Norker",
 			"source": "MFF",
 			"page": 17,
@@ -1347,8 +1346,8 @@
 				"GO"
 			],
 			"damageTags": [
-				"P",
-				"B"
+				"B",
+				"P"
 			]
 		},
 		{
@@ -1514,6 +1513,86 @@
 				"S"
 			],
 			"damageTags": [
+				"P"
+			]
+		},
+		{
+			"name": "Xill",
+			"source": "MFF",
+			"page": 21,
+			"size": "M",
+			"type": "monstrosity",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 33,
+				"formula": "6d8 + 6"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 14,
+			"dex": 18,
+			"con": 13,
+			"int": 11,
+			"wis": 14,
+			"cha": 9,
+			"skill": {
+				"acrobatics": "+6",
+				"athletics": "+4",
+				"perception": "+4"
+			},
+			"passive": 14,
+			"languages": [
+				"Common"
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Ethereal Jaunt",
+					"entries": [
+						"As a bonus action, a xill can magically shift from the Material Plane to the Ethereal Plane, or vice versa."
+					]
+				},
+				{
+					"name": "Poison Stinger",
+					"entries": [
+						"The xill injects poison into one creature it hit with its claws this turn. The chosen creature must make a {@dc 11} Constitution saving throw, with disadvantage if the xill hit it more than once this turn, taking 14 ({@damage 4d6}) poison damage on a failed save, or half as much on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but {@condition poisoned} for 1 hour, even after regaining hit points, and is {@condition paralyzed} while {@condition poisoned} this way."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The xill makes four claw attacks."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"Melee weapon attack: {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d4 + 4}) piercing damage."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"I",
 				"P"
 			]
 		},
@@ -1718,12 +1797,12 @@
 				"Teleport"
 			],
 			"languageTags": [
-				"XX",
-				"TP"
+				"TP",
+				"XX"
 			],
 			"damageTags": [
-				"S",
-				"N"
+				"N",
+				"S"
 			],
 			"spellcastingTags": [
 				"I"
@@ -1731,86 +1810,6 @@
 			"miscTags": [
 				"MW",
 				"RCH"
-			]
-		},
-		{
-			"name": "Xill",
-			"source": "MFF",
-			"page": 21,
-			"size": "M",
-			"type": "monstrosity",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 16,
-					"from": [
-						"natural armor"
-					]
-				}
-			],
-			"hp": {
-				"average": 33,
-				"formula": "6d8 + 6"
-			},
-			"speed": {
-				"walk": 40
-			},
-			"str": 14,
-			"dex": 18,
-			"con": 13,
-			"int": 11,
-			"wis": 14,
-			"cha": 9,
-			"skill": {
-				"acrobatics": "+6",
-				"athletics": "+4",
-				"perception": "+4"
-			},
-			"passive": 14,
-			"languages": [
-				"Common"
-			],
-			"cr": "3",
-			"trait": [
-				{
-					"name": "Ethereal Jaunt",
-					"entries": [
-						"As a bonus action, a xill can magically shift from the Material Plane to the Ethereal Plane, or vice versa."
-					]
-				},
-				{
-					"name": "Poison Stinger",
-					"entries": [
-						"The xill injects poison into one creature it hit with its claws this turn. The chosen creature must make a {@dc 11} Constitution saving throw, with disadvantage if the xill hit it more than once this turn, taking 14 ({@damage 4d6}) poison damage on a failed save, or half as much on a successful one. If the poison damage reduces the target to 0 hit points, the target is stable but {@condition poisoned} for 1 hour, even after regaining hit points, and is {@condition paralyzed} while {@condition poisoned} this way."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The xill makes four claw attacks."
-					]
-				},
-				{
-					"name": "Claw",
-					"entries": [
-						"Melee weapon attack: {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d4 + 4}) piercing damage."
-					]
-				}
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C"
-			],
-			"damageTags": [
-				"P",
-				"I"
 			]
 		}
 	]

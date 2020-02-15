@@ -8,8 +8,89 @@
 	},
 	"monster": [
 		{
+			"name": "Adult Amonkhet Dragon",
+			"source": "PSA",
+			"page": 33,
+			"_copy": {
+				"name": "Adult Red Dragon",
+				"source": "MM"
+			},
+			"int": 8
+		},
+		{
+			"name": "Ammit",
+			"source": "PSA",
+			"page": 30,
+			"_copy": {
+				"name": "Giant Crocodile",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "crocodile",
+						"with": "ammit"
+					}
+				}
+			}
+		},
+		{
+			"name": "Amonkhet Dragon Wyrmling",
+			"source": "PSA",
+			"page": 33,
+			"_copy": {
+				"name": "Red Dragon Wyrmling",
+				"source": "MM"
+			},
+			"int": 5
+		},
+		{
+			"name": "Amonkhet Hydra",
+			"source": "PSA",
+			"page": 35,
+			"_copy": {
+				"name": "Hydra",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Bite",
+						"items": {
+							"name": "Bite",
+							"entries": [
+								"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. {@h}7 ({@damage 1d4 + 5}) piercing damage, and the target must make on a DC 16 Constitution saving throw, taking 7 ({@damage 2d6}) poison damage on a failed save, or half as much damage on a successful one."
+							]
+						}
+					}
+				}
+			},
+			"damageTags": [
+				"I",
+				"P"
+			]
+		},
+		{
+			"name": "Amonkhet Sphinx",
+			"source": "PSA",
+			"page": 31,
+			"_copy": {
+				"name": "Androsphinx",
+				"source": "MM"
+			}
+		},
+		{
+			"name": "Ancient Amonkhet Dragon",
+			"source": "PSA",
+			"page": 33,
+			"_copy": {
+				"name": "Ancient Red Dragon",
+				"source": "MM"
+			},
+			"int": 10
+		},
+		{
 			"name": "Angel of Amonkhet",
 			"source": "PSA",
+			"page": 30,
 			"_copy": {
 				"name": "Deva",
 				"source": "MM",
@@ -30,12 +111,28 @@
 						}
 					}
 				}
-			},
-			"page": 30
+			}
+		},
+		{
+			"name": "Anointed",
+			"source": "PSA",
+			"page": 34,
+			"_copy": {
+				"name": "Zombie",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "zombie",
+						"with": "anointed"
+					}
+				}
+			}
 		},
 		{
 			"name": "Archfiend of Ifnir",
 			"source": "PSA",
+			"page": 30,
 			"_copy": {
 				"name": "Nalfeshnee",
 				"source": "MM",
@@ -47,237 +144,12 @@
 					},
 					"variant": "remove"
 				}
-			},
-			"page": 30
-		},
-		{
-			"name": "Ammit",
-			"source": "PSA",
-			"_copy": {
-				"name": "Giant Crocodile",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "crocodile",
-						"with": "ammit"
-					}
-				}
-			},
-			"page": 30
-		},
-		{
-			"name": "Soulstinger Demon",
-			"source": "PSA",
-			"_copy": {
-				"name": "Bone Devil",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "devil",
-						"with": "demon"
-					},
-					"variant": "remove"
-				}
-			},
-			"type": {
-				"type": "fiend",
-				"tags": [
-					"demon"
-				]
-			},
-			"page": 30
-		},
-		{
-			"name": "Amonkhet Sphinx",
-			"source": "PSA",
-			"_copy": {
-				"name": "Androsphinx",
-				"source": "MM"
-			},
-			"page": 31
-		},
-		{
-			"name": "Ancient Amonkhet Dragon",
-			"source": "PSA",
-			"_copy": {
-				"name": "Ancient Red Dragon",
-				"source": "MM"
-			},
-			"int": 10,
-			"page": 33
-		},
-		{
-			"name": "Adult Amonkhet Dragon",
-			"source": "PSA",
-			"_copy": {
-				"name": "Adult Red Dragon",
-				"source": "MM"
-			},
-			"int": 8,
-			"page": 33
-		},
-		{
-			"name": "Young Amonkhet Dragon",
-			"source": "PSA",
-			"_copy": {
-				"name": "Young Red Dragon",
-				"source": "MM"
-			},
-			"int": 6,
-			"page": 33
-		},
-		{
-			"name": "Amonkhet Dragon Wyrmling",
-			"source": "PSA",
-			"_copy": {
-				"name": "Red Dragon Wyrmling",
-				"source": "MM"
-			},
-			"int": 5,
-			"page": 33
-		},
-		{
-			"name": "Large Drake",
-			"source": "PSA",
-			"_copy": {
-				"name": "Giant Eagle",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "eagle",
-						"with": "drake"
-					}
-				}
-			},
-			"page": 33
-		},
-		{
-			"name": "Small Drake",
-			"source": "PSA",
-			"_copy": {
-				"name": "Pteranodon",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "pteranodon",
-						"with": "drake"
-					}
-				}
-			},
-			"page": 33
-		},
-		{
-			"name": "Mindless Marauder",
-			"source": "PSA",
-			"_copy": {
-				"name": "Mummy",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "mummy",
-						"with": "marauder"
-					}
-				}
-			},
-			"page": 34
-		},
-		{
-			"name": "Mindful Marauder",
-			"source": "PSA",
-			"_copy": {
-				"name": "Mummy Lord",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "mummy lord",
-						"with": "marauder"
-					}
-				}
-			},
-			"page": 34
-		},
-		{
-			"name": "Anointed",
-			"source": "PSA",
-			"_copy": {
-				"name": "Zombie",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "zombie",
-						"with": "anointed"
-					}
-				}
-			},
-			"page": 34
-		},
-		{
-			"name": "Eternal",
-			"source": "PSA",
-			"_copy": {
-				"name": "Wight",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "wight",
-						"with": "eternal"
-					}
-				}
-			},
-			"page": 34
-		},
-		{
-			"name": "Sandwurm",
-			"source": "PSA",
-			"_copy": {
-				"name": "Purple Worm",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "worm",
-						"with": "wurm"
-					}
-				}
-			},
-			"page": 35
-		},
-		{
-			"name": "Amonkhet Hydra",
-			"source": "PSA",
-			"_copy": {
-				"name": "Hydra",
-				"source": "MM",
-				"_mod": {
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Bite",
-						"items": {
-							"name": "Bite",
-							"entries": [
-								"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. {@h}7 ({@damage 1d4 + 5}) piercing damage, and the target must make on a DC 16 Constitution saving throw, taking 7 ({@damage 2d6}) poison damage on a failed save, or half as much damage on a successful one."
-							]
-						}
-					}
-				}
-			},
-			"damageTags": [
-				"P",
-				"I"
-			],
-			"page": 35
+			}
 		},
 		{
 			"name": "Cerodon",
 			"source": "PSA",
+			"page": 37,
 			"_copy": {
 				"name": "Mammoth",
 				"source": "MM",
@@ -300,98 +172,12 @@
 			},
 			"traitTags": [
 				"Siege Monster"
-			],
-			"page": 37
+			]
 		},
 		{
-			"name": "Hippopotamus",
-			"source": "PSA",
-			"_copy": {
-				"name": "Elephant",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "elephant",
-						"with": "hippopotamus"
-					},
-					"trait": {
-						"mode": "appendArr",
-						"items": {
-							"name": "Hold Breath",
-							"entries": [
-								"The hippopotamus can hold its breath for 30 minutes."
-							]
-						}
-					},
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Gore",
-						"items": {
-							"name": "Bite",
-							"entries": [
-								"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}19 ({@damage 3d8 + 6}) piercing damage."
-							]
-						}
-					}
-				}
-			},
-			"speed": {
-				"walk": 40,
-				"swim": 30
-			},
-			"traitTags": [
-				"Hold Breath"
-			],
-			"page": 38
-		},
-		{
-			"name": "River Serpent",
-			"source": "PSA",
-			"_copy": {
-				"name": "Giant Constrictor Snake",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "snake",
-						"with": "serpent"
-					}
-				}
-			},
-			"page": 38
-		},
-		{
-			"name": "Giant River Serpent",
-			"source": "PSA",
-			"_copy": {
-				"name": "Behir",
-				"source": "MM",
-				"_mod": {
-					"*": {
-						"mode": "replaceTxt",
-						"replace": "behir",
-						"with": "serpent"
-					},
-					"action": {
-						"mode": "removeArr",
-						"names": "Lightning Breath {@recharge 5}"
-					}
-				}
-			},
-			"immune": null,
-			"damageTags": [
-				"P",
-				"B",
-				"S",
-				"A"
-			],
-			"page": 38
-		},
-		{
+			"name": "Criosphinx",
 			"source": "PSA",
 			"page": 32,
-			"name": "Criosphinx",
 			"size": "L",
 			"type": "monstrosity",
 			"alignment": [
@@ -425,6 +211,10 @@
 				"perception": "+8",
 				"religion": "+8"
 			},
+			"senses": [
+				"truesight 120 ft."
+			],
+			"passive": 18,
 			"resist": [
 				{
 					"resist": [
@@ -442,10 +232,6 @@
 				"charmed",
 				"frightened"
 			],
-			"senses": [
-				"truesight 120 ft."
-			],
-			"passive": 18,
 			"languages": [
 				"understands Common",
 				"Sphinx"
@@ -502,15 +288,15 @@
 			"traitTags": [
 				"Magic Weapons"
 			],
+			"senseTags": [
+				"U"
+			],
 			"actionTags": [
 				"Multiattack"
 			],
 			"languageTags": [
 				"C",
 				"OTH"
-			],
-			"senseTags": [
-				"U"
 			],
 			"damageTags": [
 				"B",
@@ -521,9 +307,110 @@
 			]
 		},
 		{
+			"name": "Eternal",
+			"source": "PSA",
+			"page": 34,
+			"_copy": {
+				"name": "Wight",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "wight",
+						"with": "eternal"
+					}
+				}
+			}
+		},
+		{
+			"name": "Giant River Serpent",
+			"source": "PSA",
+			"page": 38,
+			"_copy": {
+				"name": "Behir",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "behir",
+						"with": "serpent"
+					},
+					"action": {
+						"mode": "removeArr",
+						"names": "Lightning Breath {@recharge 5}"
+					}
+				}
+			},
+			"immune": null,
+			"damageTags": [
+				"A",
+				"B",
+				"P",
+				"S"
+			]
+		},
+		{
+			"name": "Hippopotamus",
+			"source": "PSA",
+			"page": 38,
+			"_copy": {
+				"name": "Elephant",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "elephant",
+						"with": "hippopotamus"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Hold Breath",
+							"entries": [
+								"The hippopotamus can hold its breath for 30 minutes."
+							]
+						}
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Gore",
+						"items": {
+							"name": "Bite",
+							"entries": [
+								"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}19 ({@damage 3d8 + 6}) piercing damage."
+							]
+						}
+					}
+				}
+			},
+			"speed": {
+				"walk": 40,
+				"swim": 30
+			},
+			"traitTags": [
+				"Hold Breath"
+			]
+		},
+		{
+			"name": "Large Drake",
+			"source": "PSA",
+			"page": 33,
+			"_copy": {
+				"name": "Giant Eagle",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "eagle",
+						"with": "drake"
+					}
+				}
+			}
+		},
+		{
+			"name": "Manticore, Heart-Piercer",
 			"source": "PSA",
 			"page": 36,
-			"name": "Manticore, Heart-Piercer",
 			"size": "L",
 			"type": "monstrosity",
 			"alignment": [
@@ -585,16 +472,16 @@
 					]
 				}
 			],
-			"actionTags": [
-				"Multiattack"
-			],
 			"senseTags": [
 				"D"
 			],
+			"actionTags": [
+				"Multiattack"
+			],
 			"damageTags": [
+				"I",
 				"P",
-				"S",
-				"I"
+				"S"
 			],
 			"miscTags": [
 				"MW",
@@ -602,9 +489,73 @@
 			]
 		},
 		{
+			"name": "Mindful Marauder",
+			"source": "PSA",
+			"page": 34,
+			"_copy": {
+				"name": "Mummy Lord",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "mummy lord",
+						"with": "marauder"
+					}
+				}
+			}
+		},
+		{
+			"name": "Mindless Marauder",
+			"source": "PSA",
+			"page": 34,
+			"_copy": {
+				"name": "Mummy",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "mummy",
+						"with": "marauder"
+					}
+				}
+			}
+		},
+		{
+			"name": "River Serpent",
+			"source": "PSA",
+			"page": 38,
+			"_copy": {
+				"name": "Giant Constrictor Snake",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "snake",
+						"with": "serpent"
+					}
+				}
+			}
+		},
+		{
+			"name": "Sandwurm",
+			"source": "PSA",
+			"page": 35,
+			"_copy": {
+				"name": "Purple Worm",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "worm",
+						"with": "wurm"
+					}
+				}
+			}
+		},
+		{
+			"name": "Serpopard",
 			"source": "PSA",
 			"page": 37,
-			"name": "Serpopard",
 			"size": "L",
 			"type": "beast",
 			"alignment": [
@@ -659,12 +610,61 @@
 				"Pounce"
 			],
 			"damageTags": [
-				"P",
-				"I"
+				"I",
+				"P"
 			],
 			"miscTags": [
 				"MW"
 			]
+		},
+		{
+			"name": "Small Drake",
+			"source": "PSA",
+			"page": 33,
+			"_copy": {
+				"name": "Pteranodon",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "pteranodon",
+						"with": "drake"
+					}
+				}
+			}
+		},
+		{
+			"name": "Soulstinger Demon",
+			"source": "PSA",
+			"page": 30,
+			"_copy": {
+				"name": "Bone Devil",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "devil",
+						"with": "demon"
+					},
+					"variant": "remove"
+				}
+			},
+			"type": {
+				"type": "fiend",
+				"tags": [
+					"demon"
+				]
+			}
+		},
+		{
+			"name": "Young Amonkhet Dragon",
+			"source": "PSA",
+			"page": 33,
+			"_copy": {
+				"name": "Young Red Dragon",
+				"source": "MM"
+			},
+			"int": 6
 		}
 	]
 }
