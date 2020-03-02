@@ -120,14 +120,13 @@ class RacesPage extends ListPage {
 		}
 
 		function buildFluffTab (isImageTab) {
-			return Renderer.utils.pBuildFluffTab(
+			return Renderer.utils.pBuildFluffTab({
 				isImageTab,
 				$content,
-				race,
-				getFluff,
-				`data/fluff-races.json`,
-				() => true
-			);
+				entity: race,
+				fnFluffBuilder: getFluff,
+				fluffUrl: `data/fluff-races.json`
+			});
 		}
 
 		function getFluff (fluffJson) {
@@ -142,27 +141,27 @@ class RacesPage extends ListPage {
 
 			const findFluff = (toFind) => fluffJson.raceFluff.find(it => toFind.name.toLowerCase() === it.name.toLowerCase() && toFind.source.toLowerCase() === it.source.toLowerCase());
 
-			const fluff = {type: "section"};
+			const fluff = {};
 
 			const addFluff = (fluffToAdd, isBase) => {
 				if (fluffToAdd.entries && !(isBase && subFluff && subFluff._excludeBaseEntries)) {
 					fluff.entries = fluff.entries || [];
-					const toAdd = {type: "section", entries: MiscUtil.copy(fluffToAdd.entries)};
-					if (isBase && !fluffToAdd.entries.length) toAdd.name = race._baseName;
-					fluff.entries.push(toAdd);
+					fluff.entries.push(...MiscUtil.copy(fluffToAdd.entries));
 				}
+
 				if (fluffToAdd.images && !(isBase && subFluff && subFluff._excludeBaseImages)) {
 					fluff.images = fluff.images || [];
 					fluff.images.push(...MiscUtil.copy(fluffToAdd.images));
 				}
+
 				if (fluffToAdd._appendCopy) {
 					const toAppend = findFluff(fluffToAdd._appendCopy);
+
 					if (toAppend.entries) {
 						fluff.entries = fluff.entries || [];
-						const toAdd = {type: "section", entries: MiscUtil.copy(toAppend.entries)};
-						if (isBase && !fluffToAdd.entries.length) toAdd.name = race._baseName;
-						fluff.entries.push(toAdd);
+						fluff.images.push(...MiscUtil.copy(toAppend.images));
 					}
+
 					if (toAppend.images) {
 						fluff.images = fluff.images || [];
 						fluff.images.push(...MiscUtil.copy(toAppend.images));
@@ -174,28 +173,21 @@ class RacesPage extends ListPage {
 			if (baseFluff) addFluff(baseFluff, true);
 
 			if ((subFluff && subFluff.uncommon) || (baseFluff && baseFluff.uncommon)) {
-				const entryUncommon = {type: "section", entries: [MiscUtil.copy(fluffJson.meta.uncommon)]};
 				if (fluff.entries) {
-					fluff.entries.push(entryUncommon);
+					fluff.entries.push(MiscUtil.copy(fluffJson.meta.uncommon));
 				} else {
 					fluff.entries = [Renderer.utils.HTML_NO_INFO];
-					fluff.entries.push(...entryUncommon.entries)
+					fluff.entries.push(MiscUtil.copy(fluffJson.meta.uncommon))
 				}
 			}
 
 			if ((subFluff && subFluff.monstrous) || (baseFluff && baseFluff.monstrous && (!subFluff || (subFluff.monstrous == null || subFluff.monstrous)))) {
-				const entryMonstrous = {type: "section", entries: [MiscUtil.copy(fluffJson.meta.monstrous)]};
 				if (fluff.entries) {
-					fluff.entries.push(entryMonstrous);
+					fluff.entries.push(MiscUtil.copy(fluffJson.meta.monstrous));
 				} else {
 					fluff.entries = [Renderer.utils.HTML_NO_INFO];
-					fluff.entries.push(...entryMonstrous.entries)
+					fluff.entries.push(MiscUtil.copy(fluffJson.meta.monstrous))
 				}
-			}
-
-			if (fluff.entries && fluff.entries.length && fluff.entries[0].type === "section") {
-				const firstSection = fluff.entries.splice(0, 1)[0];
-				fluff.entries.unshift(...firstSection.entries);
 			}
 
 			return fluff;

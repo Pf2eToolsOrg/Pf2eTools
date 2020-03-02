@@ -5,7 +5,7 @@ const JSON_URL = "data/generated/bookref-quick.json";
 
 let reference;
 
-window.onload = function load () {
+window.addEventListener("load", () => {
 	BookUtil.renderArea = $(`#pagecontent`);
 
 	if (!window.location.hash.length) {
@@ -18,7 +18,7 @@ window.onload = function load () {
 
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-};
+});
 
 function onJsonLoad (data) {
 	reference = [data.reference["bookref-quick"]];

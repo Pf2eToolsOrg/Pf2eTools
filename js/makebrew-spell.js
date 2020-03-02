@@ -719,7 +719,7 @@ class SpellBuilder extends Builder {
 
 		// CLASSES
 		const $wrpRowsCls = $(`<div/>`).appendTo($rowInnerCls);
-		this._state.classes.fromClassList.forEach(cls => this.__$getClassesInputs__getClassRow(doUpdateState, classRows, cls).$wrp.appendTo($wrpRowsCls));
+		((this._state.classes || {}).fromClassList || []).forEach(cls => this.__$getClassesInputs__getClassRow(doUpdateState, classRows, cls).$wrp.appendTo($wrpRowsCls));
 
 		const $wrpBtnAddCls = $(`<div/>`).appendTo($rowInnerCls);
 		$(`<button class="btn btn-xs btn-default">Add Class</button>`)
@@ -731,7 +731,7 @@ class SpellBuilder extends Builder {
 
 		// SUBCLASSES
 		const $wrpRowsSc = $(`<div/>`).appendTo($rowInnerSc);
-		(this._state.classes.fromSubclass || []).forEach(sc => this.__$getClassesInputs__getSubclassRow(doUpdateState, subclassRows, sc).$wrp.appendTo($wrpRowsSc));
+		((this._state.classes || {}).fromSubclass || []).forEach(sc => this.__$getClassesInputs__getSubclassRow(doUpdateState, subclassRows, sc).$wrp.appendTo($wrpRowsSc));
 
 		const $wrpBtnAddSc = $(`<div/>`).appendTo($rowInnerSc);
 		$(`<button class="btn btn-xs btn-default">Add Subclass</button>`)

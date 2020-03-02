@@ -1093,7 +1093,7 @@ async function rebuildShapedSources () {
 	});
 }
 
-window.onload = function load () {
+window.addEventListener("load", () => {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 
 	window.handleBrew = data => {
@@ -1151,4 +1151,4 @@ window.onload = function load () {
 	});
 
 	window.dispatchEvent(new Event("toolsLoaded"));
-};
+});

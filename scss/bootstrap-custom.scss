@@ -9,6 +9,10 @@
 	color: $rgb-link-blue--muted;
 }
 
+.font-ui {
+	font-family: Arial, sans-serif;
+}
+
 /* Generic/utilities */
 .code {
 	font-family: 'Courier New', monospace;
@@ -187,12 +191,20 @@ i > i {
 	width: 33.3333333% !important;
 }
 
+.mw-33 {
+	max-width: 33.3333333% !important;
+}
+
 .w-30 {
 	width: 30% !important;
 }
 
 .w-25 {
 	width: 25% !important;
+}
+
+.mw-25 {
+	max-width: 25% !important;
 }
 
 .w-20 {
@@ -301,6 +313,12 @@ i > i {
 	display: inline-flex !important;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.split-v-end {
+	display: flex !important;
+	justify-content: space-between;
+	align-items: flex-end;
 }
 
 .split-child {
@@ -475,6 +493,15 @@ body {
 // Fix inputs on Firefox
 input {
 	min-width: 0;
+}
+
+label {
+	font-weight: initial;
+}
+
+input[type=checkbox],
+input[type=radio] {
+	margin: 0;
 }
 
 main {

@@ -134,83 +134,28 @@ InitiativeTrackerUtil._WOUND_META = {
 		color: MiscUtil.COLOR_DEFEATED
 	}
 };
+
 InitiativeTrackerUtil.CONDITIONS = [
-	{
-		name: "Blinded",
-		color: "#434343"
-	},
-	{
-		name: "Charmed",
-		color: "#f01789"
-	},
+	...Object.keys(Parser.CONDITION_TO_COLOR).map(k => ({
+		name: k,
+		color: Parser.CONDITION_TO_COLOR[k]
+	})),
 	{
 		name: "Concentrating",
 		color: "#009f7a",
 		condName: null
 	},
 	{
-		name: "Deafened",
-		color: "#c7d0d3"
-	},
-	{
 		name: "Drunk",
-		color: "#ffcc00"
-	},
-	{
-		name: "Exhausted",
-		color: "#947a47",
-		condName: "Exhaustion"
-	},
-	{
-		name: "Frightened",
-		color: "#c9ca18"
-	},
-	{
-		name: "Grappled",
-		color: "#8784a0"
-	},
-	{
-		name: "Incapacitated",
-		color: "#3165a0"
-	},
-	{
-		name: "Invisible",
-		color: "#7ad2d6"
+		color: "#ffcc00",
+		condName: null
 	},
 	{
 		name: "!!On Fire!!",
 		color: "#ff6800",
 		condName: null
-	},
-	{
-		name: "Paralyzed",
-		color: "#c00900"
-	},
-	{
-		name: "Petrified",
-		color: "#a0a0a0"
-	},
-	{
-		name: "Poisoned",
-		color: "#4dc200"
-	},
-	{
-		name: "Prone",
-		color: "#5e60a0"
-	},
-	{
-		name: "Restrained",
-		color: "#d98000"
-	},
-	{
-		name: "Stunned",
-		color: "#a23bcb"
-	},
-	{
-		name: "Unconscious",
-		color: "#1c2383"
 	}
-];
+].sort((a, b) => SortUtil.ascSortLower(a.name.replace(/\W+/g, ""), b.name.replace(/\W+/g, "")));
 
 class InitiativeTrackerPlayerUi {
 	constructor (view, playerName, serverToken) {

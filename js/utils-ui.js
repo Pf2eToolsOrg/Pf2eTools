@@ -225,7 +225,7 @@ class UiUtil {
 
 	static getEntriesAsText (entryArray) {
 		if (!entryArray || !entryArray.length) return "";
-		return JSON.stringify(entryArray, null, 2)
+		const lines = JSON.stringify(entryArray, null, 2)
 			.replace(/^\s*\[/, "").replace(/]\s*$/, "")
 			.split("\n")
 			.filter(it => it.trim())
@@ -234,8 +234,19 @@ class UiUtil {
 				const mQuotes = /^"(.*?)",?$/.exec(trim);
 				if (mQuotes) return mQuotes[1]; // if string, strip quotes
 				else return `  ${trim}`; // if object, indent
-			})
-			.join("\n")
+			});
+
+		let out = "";
+		const len = lines.length;
+		for (let i = 0; i < len; ++i) {
+			out += lines[i];
+
+			if (i < len - 1) {
+				out += "\n";
+				if (!lines[i].startsWith("  ")) out += "\n";
+			}
+		}
+		return out;
 	}
 
 	static getTextAsEntries (text) {
@@ -397,6 +408,25 @@ class UiUtil {
 		const out = tree.evl({});
 		if (!isNaN(out) && isInt) return Math.round(out);
 		return out;
+	}
+
+	static bindTypingEnd ({$ipt, fnKeyup, fnKeypress, fnKeydown, fnClick} = {}) {
+		let timerTyping;
+		$ipt
+			.on("keyup search paste", evt => {
+				clearTimeout(timerTyping);
+				timerTyping = setTimeout(() => { fnKeyup(evt); }, UiUtil.TYPE_TIMEOUT_MS);
+			})
+			.on("keypress", (e) => {
+				if (fnKeypress) fnKeypress(e);
+			})
+			.on("keydown", evt => {
+				if (fnKeydown) fnKeydown(evt);
+				clearTimeout(timerTyping);
+			})
+			.on("click", () => {
+				if (fnClick) fnClick();
+			});
 	}
 }
 UiUtil.SEARCH_RESULTS_CAP = 75;
@@ -640,8 +670,8 @@ class SearchWidget {
 	 * @param opts.$ptrRows Pointer to array of rows.
 	 */
 	static bindAutoSearch ($iptSearch, opts) {
-		SearchWidget.bindTypingEnd({
-			$iptSearch,
+		UiUtil.bindTypingEnd({
+			$ipt: $iptSearch,
 			fnKeyup: () => {
 				opts.fnSearch();
 			},
@@ -670,25 +700,6 @@ class SearchWidget {
 				if ($iptSearch.val() && $iptSearch.val().trim().length) opts.fnSearch();
 			}
 		});
-	}
-
-	static bindTypingEnd ({$iptSearch, fnKeyup, fnKeypress, fnKeydown, fnClick} = {}) {
-		let timerTyping;
-		$iptSearch
-			.on("keyup search", evt => {
-				clearTimeout(timerTyping);
-				timerTyping = setTimeout(() => { fnKeyup(evt); }, UiUtil.TYPE_TIMEOUT_MS);
-			})
-			.on("keypress", (e) => {
-				if (fnKeypress) fnKeypress(e);
-			})
-			.on("keydown", evt => {
-				if (fnKeydown) fnKeydown(evt);
-				clearTimeout(timerTyping);
-			})
-			.on("click", () => {
-				if (fnClick) fnClick();
-			});
 	}
 
 	static bindRowHandlers ({result, $row, $ptrRows, fnHandleClick}) {
@@ -1167,14 +1178,31 @@ class InputUiUtil {
 	/**
 	 * @param [opts] Options.
 	 * @param [opts.title] Prompt title.
+	 * @param [opts.textYesRemember] Text for "yes, and remember" button.
 	 * @param [opts.textYes] Text for "yes" button.
 	 * @param [opts.textNo] Text for "no" button.
+	 * @param [opts.storageKey] Storage key to use when "remember" options are passed.
+	 * @param [opts.isGlobal] If the stored setting is global when "remember" options are passed.
 	 * @return {Promise} A promise which resolves to true/false if the user chose, or null otherwise.
 	 */
-	static pGetUserBoolean (opts) {
+	static async pGetUserBoolean (opts) {
 		opts = opts || {};
+
+		if (opts.storageKey) {
+			const prev = await (opts.isGlobal ? StorageUtil.pGet(opts.storageKey) : StorageUtil.pGetForPage(opts.storageKey));
+			if (prev != null) return prev;
+		}
+
 		return new Promise(resolve => {
-			const $btnTrue = $(`<button class="btn btn-primary flex-v-center mr-2"><span class="glyphicon glyphicon-ok mr-2"/><span>${opts.textYes || "Yes"}</span></button>`)
+			const $btnTrueRemember = opts.textYesRemember ? $(`<button class="btn btn-primary flex-v-center mr-2"><span class="glyphicon glyphicon-ok mr-2"/><span>${opts.textYesRemember}</span></button>`)
+				.click(() => {
+					doClose(true, true);
+					opts.isGlobal
+						? StorageUtil.pSet(opts.storageKey, true)
+						: StorageUtil.pSetForPage(opts.storageKey, true);
+				}) : null;
+
+			const $btnTrue = $(`<button class="btn btn-primary flex-v-center mr-3"><span class="glyphicon glyphicon-ok mr-2"/><span>${opts.textYes || "Yes"}</span></button>`)
 				.click(() => doClose(true, true));
 
 			const $btnFalse = $(`<button class="btn btn-default flex-v-center"><span class="glyphicon glyphicon-remove mr-2"/><span>${opts.textNo || "No"}</span></button>`)
@@ -1190,7 +1218,7 @@ class InputUiUtil {
 				}
 			});
 
-			$$`<div class="flex-vh-center py-1">${$btnTrue}${$btnFalse}</div>`.appendTo($modalInner);
+			$$`<div class="flex-vh-center py-1">${$btnTrueRemember}${$btnTrue}${$btnFalse}</div>`.appendTo($modalInner);
 			$btnTrue.focus();
 			$btnTrue.select();
 		});
@@ -1206,12 +1234,15 @@ class InputUiUtil {
 	 * @param [opts.isResolveItem] True if the promise should resolve the item instead of the index.
 	 * @param [opts.$elePost] Element to add below the select box.
 	 * @param [opts.fnGetExtraState] Function which returns additional state from, generally, other elements in the modal.
+	 * @param [opts.isAllowNull] If an empty input should be treated as null.
 	 * @return {Promise} A promise which resolves to the index of the item the user selected (or an object if fnGetExtraState is passed), or null otherwise.
 	 */
 	static pGetUserEnum (opts) {
 		opts = opts || {};
 		return new Promise(resolve => {
 			const $selEnum = $(`<select class="form-control mb-2"><option value="-1" disabled>${opts.placeholder || "Select..."}</option></select>`);
+
+			if (opts.isAllowNull) $(`<option value="-1"/>`).text(opts.fnDisplay ? opts.fnDisplay(null, -1) : "(None)").appendTo($selEnum);
 
 			opts.values.forEach((v, i) => $(`<option value="${i}"/>`).text(opts.fnDisplay ? opts.fnDisplay(v, i) : v).appendTo($selEnum));
 			if (opts.default != null) $selEnum.val(opts.default);
@@ -2548,10 +2579,13 @@ class ComponentUiUtil {
 		if ((opts.decorationLeft || opts.decorationRight) && !opts.asMeta) throw new Error(`Input must be created with "asMeta" option`);
 
 		const $ipt = (opts.$ele || $(opts.html || `<input class="form-control input-xs form-control--minimal">`)).disableSpellcheck()
-			.change(() => {
+		UiUtil.bindTypingEnd({
+			$ipt,
+			fnKeyup: () => {
 				const nxtVal = opts.isNoTrim ? $ipt.val() : $ipt.val().trim();
 				component._state[prop] = opts.isAllowNull && !nxtVal ? null : nxtVal;
-			});
+			}
+		});
 
 		if (opts.autocomplete && opts.autocomplete.length) $ipt.typeahead({source: opts.autocomplete});
 		const hook = () => $ipt.val(component._state[prop]);

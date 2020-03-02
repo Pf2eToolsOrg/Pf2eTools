@@ -1,39 +1,12 @@
 "use strict";
 
-class TableConverter extends BaseConverter {
-	constructor (ui) {
-		super(
-			ui,
-			{
-				converterId: "Table",
-				modes: ["html", "md"],
-				prop: "table"
-			}
-		);
-	}
+if (typeof module !== "undefined") {
+	const cv = require("./converterutils.js");
+	Object.assign(global, cv);
+	global.PropOrder = require("./utils-proporder.js");
+}
 
-	_renderSidebar (parent, $wrpSidebar) {
-		$wrpSidebar.empty();
-	}
-
-	handleParse (input, cbOutput, cbWarning, isAppend) {
-		const opts = {cbWarning, cbOutput, isAppend};
-
-		switch (this._state.mode) {
-			case "html": return this.doParseHtml(input, opts);
-			case "md": return this.doParseMarkdown(input, opts);
-			default: throw new Error(`Unimplemented!`);
-		}
-	}
-
-	_getSample (format) {
-		switch (format) {
-			case "html": return TableConverter.SAMPLE_HTML;
-			case "md": return TableConverter.SAMPLE_MARKDOWN;
-			default: throw new Error(`Unknown format "${format}"`)
-		}
-	}
-
+class TableParser extends BaseParser {
 	/**
 	 * Parses tables from HTML.
 	 * @param inText Input text.
@@ -41,8 +14,14 @@ class TableConverter extends BaseConverter {
 	 * @param options.cbWarning Warning callback.
 	 * @param options.cbOutput Output callback.
 	 * @param options.isAppend Default output append mode.
+	 * @param options.source Entity source.
+	 * @param options.page Entity page.
+	 * @param options.titleCaseFields Array of fields to be title-cased in this entity (if enabled).
+	 * @param options.isTitleCase Whether title-case fields should be title-cased in this entity.
 	 */
-	doParseHtml (inText, options) {
+	static doParseHtml (inText, options) {
+		options = this._getValidOptions(options);
+
 		if (!inText || !inText.trim()) return options.cbWarning("No input!");
 		inText = this._getCleanInput(inText);
 
@@ -130,8 +109,12 @@ class TableConverter extends BaseConverter {
 	 * @param options.cbWarning Warning callback.
 	 * @param options.cbOutput Output callback.
 	 * @param options.isAppend Default output append mode.
+	 * @param options.source Entity source.
+	 * @param options.page Entity page.
+	 * @param options.titleCaseFields Array of fields to be title-cased in this entity (if enabled).
+	 * @param options.isTitleCase Whether title-case fields should be title-cased in this entity.
 	 */
-	doParseMarkdown (inText, options) {
+	static doParseMarkdown (inText, options) {
 		if (!inText || !inText.trim()) return options.cbWarning("No input!");
 		inText = this._getCleanInput(inText);
 
@@ -159,49 +142,9 @@ class TableConverter extends BaseConverter {
 		});
 	}
 }
-// region samples
-TableConverter.SAMPLE_HTML =
-	`<table>
-  <thead>
-    <tr>
-      <td><p><strong>Character Level</strong></p></td>
-      <td><p><strong>Low Magic Campaign</strong></p></td>
-      <td><p><strong>Standard Campaign</strong></p></td>
-      <td><p><strong>High Magic Campaign</strong></p></td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><p>1st–4th</p></td>
-      <td><p>Normal starting equipment</p></td>
-      <td><p>Normal starting equipment</p></td>
-      <td><p>Normal starting equipment</p></td>
-    </tr>
-    <tr>
-      <td><p>5th–10th</p></td>
-      <td><p>500 gp plus 1d10 × 25 gp, normal starting equipment</p></td>
-      <td><p>500 gp plus 1d10 × 25 gp, normal starting equipment</p></td>
-      <td><p>500 gp plus 1d10 × 25 gp, one uncommon magic item, normal starting equipment</p></td>
-    </tr>
-    <tr>
-      <td><p>11th–16th</p></td>
-      <td><p>5,000 gp plus 1d10 × 250 gp, one uncommon magic item, normal starting equipment</p></td>
-      <td><p>5,000 gp plus 1d10 × 250 gp, two uncommon magic items, normal starting equipment</p></td>
-      <td><p>5,000 gp plus 1d10 × 250 gp, three uncommon magic items, one rare item, normal starting equipment</p></td>
-    </tr>
-    <tr>
-      <td><p>17th–20th</p></td>
-      <td><p>20,000 gp plus 1d10 × 250 gp, two uncommon magic items, normal starting equipment</p></td>
-      <td><p>20,000 gp plus 1d10 × 250 gp, two uncommon magic items, one rare item, normal starting equipment</p></td>
-      <td><p>20,000 gp plus 1d10 × 250 gp, three uncommon magic items, two rare items, one very rare item, normal starting equipment</p></td>
-    </tr>
-  </tbody>
-</table>`;
-TableConverter.SAMPLE_MARKDOWN =
-	`| Character Level | Low Magic Campaign                                                                | Standard Campaign                                                                                | High Magic Campaign                                                                                                     |
-|-----------------|-----------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| 1st–4th         | Normal starting equipment                                                         | Normal starting equipment                                                                        | Normal starting equipment                                                                                               |
-| 5th–10th        | 500 gp plus 1d10 × 25 gp, normal starting equipment                               | 500 gp plus 1d10 × 25 gp, normal starting equipment                                              | 500 gp plus 1d10 × 25 gp, one uncommon magic item, normal starting equipment                                            |
-| 11th–16th       | 5,000 gp plus 1d10 × 250 gp, one uncommon magic item, normal starting equipment   | 5,000 gp plus 1d10 × 250 gp, two uncommon magic items, normal starting equipment                 | 5,000 gp plus 1d10 × 250 gp, three uncommon magic items, one rare item, normal starting equipment                       |
-| 17th–20th       | 20,000 gp plus 1d10 × 250 gp, two uncommon magic items, normal starting equipment | 20,000 gp plus 1d10 × 250 gp, two uncommon magic items, one rare item, normal starting equipment | 20,000 gp plus 1d10 × 250 gp, three uncommon magic items, two rare items, one very rare item, normal starting equipment |`;
-// endregion
+
+if (typeof module !== "undefined") {
+	module.exports = {
+		TableParser
+	};
+}

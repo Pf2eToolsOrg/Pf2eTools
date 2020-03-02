@@ -63,20 +63,13 @@ class ManageBrew {
 					};
 
 					switch (metaType) {
-						case "actions": {
-							populateGenericSection("Actions");
-							break;
-						}
-						case "spellDistanceUnits": {
-							populateGenericSection("Spell Distance Units");
-							break;
-						}
-						case "spellSchools":
-							populateGenericSection("Spell Schools", (brew, metaType, k) => brew[metaType][k].full || k);
-							break;
-						case "currencyConversions":
-							populateGenericSection("Currency Conversion Tables", (brew, metaType, k) => `${k}: ${brew[metaType][k].map(it => `${it.coin}=${it.mult}`).join(", ")}`);
-							break;
+						case "spellDistanceUnits": populateGenericSection("Spell Distance Units"); break;
+						case "spellSchools": populateGenericSection("Spell Schools", (brew, metaType, k) => brew[metaType][k].full || k); break;
+						case "currencyConversions": populateGenericSection("Currency Conversion Tables", (brew, metaType, k) => `${k}: ${brew[metaType][k].map(it => `${it.coin}=${it.mult}`).join(", ")}`); break;
+						case "skill": populateGenericSection("Skills"); break;
+						case "senses": populateGenericSection("Senses"); break;
+						case "optionalFeatureTypes": populateGenericSection("Optional Feature Types", (brew, metaType, k) => brew[metaType][k] || k); break;
+						case "psionicTypes": populateGenericSection("Psionic Types", (brew, metaType, k) => brew[metaType][k].full || k); break;
 					}
 					handleSecChange(i);
 				})

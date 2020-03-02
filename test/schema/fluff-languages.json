@@ -1,0 +1,38 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"version": "1.0.0",
+	"type": "object",
+	"properties": {
+		"languageFluff": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"images": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json#/definitions/entryImage"
+						}
+					},
+					"entries": {
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "entry.json"
+							}
+						}
+					}
+				},
+				"required": ["name", "source"],
+				"additionalProperties": false
+			}
+		}
+	},
+	"additionalProperties": false
+}

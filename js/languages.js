@@ -5,7 +5,7 @@ class LanguagesPage extends ListPage {
 		const sourceFilter = SourceFilter.getInstance();
 		const typeFilter = new Filter({header: "Type", items: ["standard", "exotic", "secret"], itemSortFn: null, displayFn: StrUtil.uppercaseFirst});
 		const scriptFilter = new Filter({header: "Script", displayFn: StrUtil.uppercaseFirst});
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["Has Fonts", "SRD"]});
 
 		super({
 			dataSource: "data/languages.json",
@@ -30,7 +30,8 @@ class LanguagesPage extends ListPage {
 	}
 
 	getListItem (it, anI, isExcluded) {
-		it._fMisc = it.srd ? ["SRD"] : [];
+		it._fMisc = it.fonts ? ["Has Fonts"] : [];
+		if (it.srd) it._fMisc.push("SRD");
 
 		if (!isExcluded) {
 			// populate filters
@@ -123,14 +124,13 @@ class LanguagesPage extends ListPage {
 		}
 
 		function buildFluffTab (isImageTab) {
-			return Renderer.utils.pBuildFluffTab(
+			return Renderer.utils.pBuildFluffTab({
 				isImageTab,
 				$content,
-				it,
-				(fluffJson) => it.fluff || fluffJson.languageFluff.find(l => it.name === l.name && it.source === l.source),
-				`data/fluff-languages.json`,
-				() => true
-			);
+				entity: it,
+				fnFluffBuilder: (fluffJson) => it.fluff || fluffJson.languageFluff.find(l => it.name === l.name && it.source === l.source),
+				fluffUrl: `data/fluff-languages.json`
+			});
 		}
 
 		const statTab = Renderer.utils.tabButton(
@@ -143,8 +143,90 @@ class LanguagesPage extends ListPage {
 			() => {},
 			buildFluffTab.bind(null, true)
 		);
+		const fontTab = Renderer.utils.tabButton(
+			"Fonts",
+			() => {},
+			() => {
+				$content.append(Renderer.utils.getBorderTr());
+				$content.append(Renderer.utils.getNameTr(it));
+				const $td = $(`<td colspan="6" class="text"/>`);
+				$$`<tr class="text">${$td}</tr>`.appendTo($content);
+				$content.append(Renderer.utils.getBorderTr());
 
-		Renderer.utils.bindTabButtons(statTab, picTab);
+				if (!it.fonts) {
+					$td.append("<i>No fonts available.</i>");
+					return;
+				}
+
+				const $styleFont = $(`<style/>`);
+
+				let lastStyleIndex = null;
+				let lastStyleClass = null;
+				const renderStyle = (ix) => {
+					if (ix === lastStyleIndex) return;
+
+					const font = it.fonts[ix];
+					const slugName = Parser.stringToSlug(font.split("/").last().split(".")[0]);
+
+					const styleClass = `languages__sample--${slugName}`;
+
+					$styleFont.empty().append(`
+						@font-face { font-family: ${slugName}; src: url('${font}'); }
+						.${styleClass} { font-family: ${slugName}, sans-serif; }
+					`);
+
+					if (lastStyleClass) $ptOutput.removeClass(lastStyleClass);
+					lastStyleClass = styleClass;
+					$ptOutput.addClass(styleClass);
+					lastStyleIndex = ix;
+				};
+
+				const saveTextDebounced = MiscUtil.debounce((text) => StorageUtil.pSetForPage("sampleText", text), 500);
+				const updateText = (val) => {
+					if (val === undefined) val = $iptSample.val();
+					else $iptSample.val(val);
+					$ptOutput.text(val);
+					saveTextDebounced(val);
+				};
+
+				const DEFAULT_TEXT = "The big quick brown flumph jumped over the lazy dire xorn";
+
+				const $iptSample = $(`<textarea class="form-control w-100 mr-2 resize-vertical font-ui mb-2" style="height: 110px">${DEFAULT_TEXT}</textarea>`)
+					.keyup(() => updateText())
+					.change(() => updateText());
+
+				const $selFont = it.fonts.length === 1
+					? null
+					: $(`<select class="form-control font-ui languages__sel-sample input-xs">${it.fonts.map((f, i) => `<option value="${i}">${f.split("/").last().split(".")[0]}</option>`).join("")}</select>`)
+						.change(() => {
+							const ix = Number($selFont.val());
+							renderStyle(ix);
+						});
+
+				const $ptOutput = $(`<pre class="languages__sample p-2 mb-0">${DEFAULT_TEXT}</pre>`);
+
+				renderStyle(0);
+
+				StorageUtil.pGetForPage("sampleText")
+					.then(val => {
+						if (val != null) updateText(val);
+					});
+
+				$$`<div class="flex-col w-100">
+					${$styleFont}
+					${$selFont ? $$`<label class="flex-v-center mb-2"><div class="mr-2">Font:</div>${$selFont}</div>` : ""}
+					${$iptSample}
+					${$ptOutput}
+					<hr class="hr-4">
+					<h5 class="mb-2 mt-0">Downloads</h5>
+					<ul class="pl-5 mb-0">
+						${it.fonts.map(f => `<li><a href="${f}" target="_blank">${f.split("/").last()}</a></li>`).join("")}
+					</ul>
+				</div>`.appendTo($td);
+			}
+		);
+
+		Renderer.utils.bindTabButtons(statTab, picTab, fontTab);
 
 		ListUtil.updateSelected();
 	}

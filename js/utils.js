@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.97.0"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.99.1"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -175,6 +175,14 @@ String.prototype.toUrlified = String.prototype.toUrlified || function () {
 	return encodeURIComponent(this).toLowerCase();
 };
 
+String.prototype.toChunks = String.prototype.toChunks || function (size) {
+	// https://stackoverflow.com/a/29202760/5987433
+	const numChunks = Math.ceil(this.length / size)
+	const chunks = new Array(numChunks)
+	for (let i = 0, o = 0; i < numChunks; ++i, o += size) chunks[i] = this.substr(o, size);
+	return chunks
+};
+
 Array.prototype.joinConjunct = Array.prototype.joinConjunct || function (joiner, lastJoiner, nonOxford) {
 	if (this.length === 0) return "";
 	if (this.length === 1) return this[0];
@@ -250,7 +258,7 @@ CleanUtil = {
 		} else {
 			return str
 				.replace(CleanUtil.JSON_REPLACEMENTS_REGEX, (match) => CleanUtil.JSON_REPLACEMENTS[match])
-				.replace(/\s*([\u2014\u2013])\s*/g, "$1");
+				.replace(/[ ]*([\u2014\u2013])[ ]*/g, "$1");
 		}
 	}
 };
@@ -631,10 +639,11 @@ Parser.DRAGON_COLOR_TO_FULL = {
 	S: "silver"
 };
 
-Parser.acToFull = function (ac) {
+Parser.acToFull = function (ac, renderer) {
 	if (typeof ac === "string") return ac; // handle classic format
 
-	const renderer = Renderer.get();
+	renderer = renderer || Renderer.get();
+
 	let stack = "";
 	let inBraces = false;
 	for (let i = 0; i < ac.length; ++i) {
@@ -950,6 +959,8 @@ Parser.spLevelToFull = function (level) {
 };
 
 Parser.getArticle = function (str) {
+	str = `${str}`;
+	str = str.replace(/\d+/g, (...m) => Parser.numberToText(m[0]));
 	return /^[aeiou]/.test(str) ? "an" : "a";
 };
 
@@ -1486,6 +1497,41 @@ Parser.MON_MISC_TAG_TO_FULL = {
 };
 Parser.monMiscTagToFull = function (tag) {
 	return Parser._parse_aToB(Parser.MON_MISC_TAG_TO_FULL, tag);
+};
+
+Parser.MON_LANGUAGE_TAG_TO_FULL = {
+	"AB": "Abyssal",
+	"AQ": "Aquan",
+	"AU": "Auran",
+	"C": "Common",
+	"CE": "Celestial",
+	"CS": "Can't Speak Known Languages",
+	"D": "Dwarvish",
+	"DR": "Draconic",
+	"DS": "Deep Speech",
+	"DU": "Druidic",
+	"E": "Elvish",
+	"G": "Gnomish",
+	"GI": "Giant",
+	"GO": "Goblin",
+	"GTH": "Gith",
+	"H": "Halfling",
+	"I": "Infernal",
+	"IG": "Ignan",
+	"LF": "Languages Known in Life",
+	"O": "Orc",
+	"OTH": "Other",
+	"P": "Primordial",
+	"S": "Sylvan",
+	"T": "Terran",
+	"TC": "Thieves' cant",
+	"TP": "Telepathy",
+	"U": "Undercommon",
+	"X": "Any (Choose)",
+	"XX": "All"
+};
+Parser.monLanguageTagToFull = function (tag) {
+	return Parser._parse_aToB(Parser.MON_LANGUAGE_TAG_TO_FULL, tag);
 };
 
 Parser.ENVIRONMENTS = ["arctic", "coastal", "desert", "forest", "grassland", "hill", "mountain", "swamp", "underdark", "underwater", "urban"];
@@ -2158,6 +2204,24 @@ Parser.ARMOR_ABV_TO_FULL = {
 	"h.": "heavy"
 };
 
+Parser.CONDITION_TO_COLOR = {
+	"Blinded": "#525252",
+	"Charmed": "#f01789",
+	"Deafened": "#ababab",
+	"Exhausted": "#947a47",
+	"Frightened": "#c9ca18",
+	"Grappled": "#8784a0",
+	"Incapacitated": "#3165a0",
+	"Invisible": "#7ad2d6",
+	"Paralyzed": "#c00900",
+	"Petrified": "#a0a0a0",
+	"Poisoned": "#4dc200",
+	"Prone": "#5e60a0",
+	"Restrained": "#d98000",
+	"Stunned": "#a23bcb",
+	"Unconscious": "#1c2383"
+};
+
 SRC_CoS = "CoS";
 SRC_DMG = "DMG";
 SRC_EEPC = "EEPC";
@@ -2289,6 +2353,7 @@ SRC_UACFV = `${SRC_UA_PREFIX}ClassFeatureVariants`;
 SRC_UAFRW = `${SRC_UA_PREFIX}FighterRogueWizard`;
 SRC_UA2020SC1 = `${SRC_UA_PREFIX}2020SubclassesPt1`;
 SRC_UA2020SC2 = `${SRC_UA_PREFIX}2020SubclassesPt2`;
+SRC_UA2020SC3 = `${SRC_UA_PREFIX}2020SubclassesPt3`;
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -2425,6 +2490,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UACFV] = `${UA_PREFIX}Class Feature Variants`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UAFRW] = `${UA_PREFIX}Fighter, Rogue, and Wizard`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC1] = `${UA_PREFIX}2020 Subclasses, Part 1`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC2] = `${UA_PREFIX}2020 Subclasses, Part 2`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC3] = `${UA_PREFIX}2020 Subclasses, Part 3`;
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -2551,6 +2617,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UACFV] = "UACFV";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAFRW] = "UAFRW";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC1] = "UA20S1";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC2] = "UA20S2";
+Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC3] = "UA20S3";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -2675,6 +2742,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_UACFV] = "2019-11-04";
 Parser.SOURCE_JSON_TO_DATE[SRC_UAFRW] = "2019-11-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC1] = "2020-01-14";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC2] = "2020-02-04";
+Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC3] = "2020-02-24";
 
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_LMoP,
@@ -3077,7 +3145,11 @@ JqueryUtil = {
 				return this.keydown(evt => {
 					if (evt.which === 27) this.blur(); // escape
 				});
-			}
+			},
+
+			hideVe: function () { return this.addClass("ve-hidden"); },
+			showVe: function () { return this.removeClass("ve-hidden"); },
+			toggleVe: function (val) { return this.toggleClass("ve-hidden", !!val); }
 		});
 
 		$.event.special.destroyed = {
@@ -4247,7 +4319,7 @@ ListUtil = {
 		try {
 			const store = await StorageUtil.pGetForPage("sublist");
 			if (store && store.items) {
-				ListUtil._pLoadSavedSublist(store.items);
+				await ListUtil._pLoadSavedSublist(store.items);
 			}
 		} catch (e) {
 			setTimeout(() => { throw e });
@@ -4978,6 +5050,8 @@ SortUtil = {
 		return SortUtil._ascSort(a.toLowerCase(), b.toLowerCase());
 	},
 
+	ascSortLowerSafe (a, b) { return SortUtil.ascSortLower(a || "", b || ""); },
+
 	ascSortLowerProp: (prop, a, b) => { return SortUtil.ascSortLower(a[prop], b[prop]); },
 
 	// warning: slow
@@ -5225,7 +5299,7 @@ DataUtil = {
 		DataUtil._merged[ident] = data;
 	},
 
-	userDownload: function (filename, data) {
+	userDownload (filename, data) {
 		if (typeof data !== "string") data = JSON.stringify(data, null, "\t");
 		const a = document.createElement("a");
 		const t = new Blob([data], {type: "text/json"});
@@ -5775,13 +5849,44 @@ DataUtil = {
 			return DataUtil.generic._pMergeCopy(DataUtil.monster, UrlUtil.PG_BESTIARY, monList, mon, options);
 		},
 
+		async pPreloadMeta () {
+			if (DataUtil.monster._isMetaLoaded) return;
+
+			const meta = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/meta.json`);
+			DataUtil.monster.populateMetaReference(meta);
+			DataUtil.monster._isMetaLoaded = true;
+		},
+
 		async pLoadAll () {
-			const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`);
+			const [index, meta] = await Promise.all([
+				DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`),
+				DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/meta.json`)
+			]);
+
+			if (!DataUtil.monster._isMetaLoaded) {
+				DataUtil.monster.populateMetaReference(meta);
+				DataUtil.monster._isMetaLoaded = true;
+			}
+
 			const allData = await Promise.all(Object.entries(index).map(async ([source, file]) => {
 				const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/${file}`);
 				return data.monster.filter(it => it.source === source);
 			}));
 			return allData.flat();
+		},
+
+		_isMetaLoaded: false,
+		metaGroupMap: {},
+		getMetaGroup (mon) {
+			if (!mon.legendaryGroup || !mon.legendaryGroup.source || !mon.legendaryGroup.name) return null;
+			return (DataUtil.monster.metaGroupMap[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name];
+		},
+		populateMetaReference (data) {
+			(data.legendaryGroup || []).forEach(it => {
+				(DataUtil.monster.metaGroupMap[it.source] =
+					DataUtil.monster.metaGroupMap[it.source] || {})[it.name] =
+					DataUtil.monster.metaGroupMap[it.source][it.name] || it;
+			});
 		}
 	},
 
@@ -6615,15 +6720,19 @@ BrewUtil = {
 
 		const $btnDelAll = isModal ? null : BrewUtil._$getBtnDeleteAll();
 
-		const $wrpBtns = $$`<div class="flex-vh-center no-shrink">
-			<div class="flex-v-center btn-group mr-2">
-				${$btnGet}
-				${$btnCustomUrl}
+		const $wrpBtns = $$`<div class="flex-vh-center no-shrink mobile__flex-col">
+			<div class="flex-v-center mobile__mb-2">
+				<div class="flex-v-center btn-group mr-2">
+					${$btnGet}
+					${$btnCustomUrl}
+				</div>
+				<label role="button" class="btn btn-default btn-sm btn-file mr-2">Upload File${$iptAdd}</label>
+				${$btnLoadFromUrl}
 			</div>
-			<label role="button" class="btn btn-default btn-sm btn-file mr-2">Upload File${$iptAdd}</label>
-			${$btnLoadFromUrl}
-			<a href="https://github.com/TheGiddyLimit/homebrew" class="flex-v-center" target="_blank" rel="noopener noreferrer"><button class="btn btn-default btn-sm btn-file">Browse Source Repository</button></a>
-			${$btnDelAll}
+			<div class="flex-v-center">
+				<a href="https://github.com/TheGiddyLimit/homebrew" class="flex-v-center" target="_blank" rel="noopener noreferrer"><button class="btn btn-default btn-sm btn-file">Browse Source Repository</button></a>
+				${$btnDelAll}
+			</div>
 		</div>`;
 
 		if (isModal) {
@@ -6722,7 +6831,7 @@ BrewUtil = {
 				<div class="filtertools manbrew__filtertools sortlabel btn-group">
 					<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name</button>
 					<button class="col-5 sort btn btn-default btn-xs" data-sort="category">Category</button>
-					<label class="col-1 wrp-cb-all pr-0">${$cbAll}</label>
+					<label class="wrp-cb-all pr-0 flex-vh-center mb-0 h-100">${$cbAll}</label>
 				</div>
 				${$ulRows}`;
 
@@ -6862,16 +6971,18 @@ BrewUtil = {
 			SortUtil.initBtnSortHandlers($lst.find(".manbrew__filtertools"), list);
 
 			const createButtons = (src, $row) => {
-				const $btns = $(`<span class="col-2 text-right"/>`).appendTo($row);
-				$(`<button class="btn btn-sm btn-default">View/Manage</button>`)
+				const $btnViewManage = $(`<button class="btn btn-sm btn-default">View/Manage</button>`)
 					.on("click", () => {
 						showSourceManager(src.json, src._all);
-					})
-					.appendTo($btns);
-				$btns.append(" ");
-				$(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>`)
-					.on("click", () => BrewUtil._pRenderBrewScreen_pDeleteSource($brewList, src.json, true, src._all))
-					.appendTo($btns);
+					});
+
+				const $btnDeleteAll = $(`<button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>`)
+					.on("click", () => BrewUtil._pRenderBrewScreen_pDeleteSource($brewList, src.json, true, src._all));
+
+				$$`<div class="flex-h-right flex-v-center btn-group">
+					${$btnViewManage}
+					${$btnDeleteAll}
+				</div>`.appendTo($row);
 			};
 
 			const page = UrlUtil.getCurrentPage();
@@ -6940,9 +7051,9 @@ BrewUtil = {
 			});
 
 			const createGroupRow = (fullText, modeProp) => {
-				const $row = $(`<li class="row manbrew__row">
-					<span class="col-10 manbrew__col--tall source manbrew__source text-right"><i>${fullText}</i></span>
-				</li>`);
+				const $row = $(`<div class="row manbrew__row flex-h-right">
+					<div class="manbrew__col--tall source manbrew__source text-right"><i class="mr-3">${fullText}</i></div>
+				</div>`);
 				createButtons({[modeProp]: true}, $row);
 				$ulGroup.append($row);
 			};
@@ -7887,6 +7998,10 @@ function BookModeView (opts) {
 	this._$body = null;
 	this._$wrpBook = null;
 
+	this._$wrpRenderedContent = null;
+	this._$wrpNoneShown = null;
+	this._doRenderContent = null; // N.B. currently unused, but can be used to refresh the contents of the view
+
 	this.$openBtn.off("click").on("click", () => {
 		if (this.stateKey) {
 			this.state[this.stateKey] = true;
@@ -7900,6 +8015,31 @@ function BookModeView (opts) {
 			this.state[this.stateKey] = false;
 		} else {
 			Hist.cleanSetHash(window.location.hash.replace(`${this.hashKey}${HASH_SUB_KV_SEP}true`, ""));
+		}
+	};
+
+	this._renderContent = async ($wrpContent, $dispName, $wrpControlsToPass) => {
+		this._$wrpRenderedContent = this._$wrpRenderedContent
+			? this._$wrpRenderedContent.empty()
+			: $$`<div class="bkmv__scroller h-100 overflow-y-auto ${isFlex ? "flex" : ""}">${$wrpContent}</div>`.appendTo(this._$wrpBook);
+
+		const numShown = await this.popTblGetNumShown($wrpContent, $dispName, $wrpControlsToPass);
+
+		if (numShown) {
+			if (this._$wrpNoneShown) {
+				this._$wrpNoneShown.remove();
+				this._$wrpNoneShown = null;
+			}
+		} else {
+			if (!this._$wrpNoneShown) {
+				const $btnClose = $(`<button class="btn btn-default">Close</button>`)
+					.click(() => this._doHashTeardown());
+
+				this._$wrpNoneShown = $$`<div class="w-100 flex-col no-shrink bkmv__footer mb-3">
+					<div class="mb-2 flex-vh-center"><span class="initial-message">${this.noneVisibleMsg}</span></div>
+					<div class="flex-vh-center">${$btnClose}</div>
+				</div>`.appendTo(this._$wrpBook);
+			}
 		}
 	};
 
@@ -7937,7 +8077,7 @@ function BookModeView (opts) {
 
 			const lastColumns = StorageUtil.syncGetForPage(BookModeView._BOOK_VIEW_COLUMNS_K);
 
-			const $selColumns = $(`<select class="form-control">
+			const $selColumns = $(`<select class="form-control input-sm">
 				<option value="0">Two (book style)</option>
 				<option value="1">One</option>
 			</select>`)
@@ -7958,19 +8098,10 @@ function BookModeView (opts) {
 		// endregion
 
 		const $wrpContent = $(`<div class="bkmv__wrp p-2"/>`);
-		$$`<div class="bkmv__scroller h-100 overflow-y-auto ${isFlex ? "flex" : ""}">${$wrpContent}</div>`.appendTo(this._$wrpBook);
 
-		const numShown = await this.popTblGetNumShown($wrpContent, $dispName, $wrpControlsToPass);
+		await this._renderContent($wrpContent, $dispName, $wrpControlsToPass);
 
-		if (!numShown) {
-			const $btnClose = $(`<button class="btn btn-default">Close</button>`)
-				.click(() => this._doHashTeardown());
-
-			$$`<div class="w-100 flex-col no-shrink bkmv__footer mb-3">
-				<div class="mb-2 flex-vh-center"><span class="initial-message">${this.noneVisibleMsg}</span></div>
-				<div class="flex-vh-center">${$btnClose}</div>
-			</div>`.appendTo(this._$wrpBook);
-		}
+		this._pRenderContent = () => this._renderContent($wrpContent, $dispName, $wrpControlsToPass);
 
 		this._$body.append(this._$wrpBook);
 	};
@@ -7981,14 +8112,18 @@ function BookModeView (opts) {
 			this._$body.removeClass("bkmv-active");
 			this._$wrpBook.remove();
 			this.active = false;
+
+			this._$wrpRenderedContent = null;
+			this._$wrpNoneShown = null;
+			this._pRenderContent = null;
 		}
 	};
 
-	this.handleSub = (sub) => {
+	this.pHandleSub = (sub) => {
 		if (this.stateKey) return; // Assume anything with state will handle this itself.
 
 		const bookViewHash = sub.find(it => it.startsWith(this.hashKey));
-		if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[this.hashKey][0] === "true") this.pOpen();
+		if (bookViewHash && UrlUtil.unpackSubHash(bookViewHash)[this.hashKey][0] === "true") return this.pOpen();
 		else this.teardown();
 	};
 }

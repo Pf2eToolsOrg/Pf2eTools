@@ -3,8 +3,8 @@
 		{
 			"name": "Airship",
 			"source": "UAOfShipsAndSea",
-			"vehicleType": "SHIP",
 			"page": 2,
+			"vehicleType": "SHIP",
 			"size": "G",
 			"dimensions": [
 				"80 ft.",
@@ -89,10 +89,432 @@
 			]
 		},
 		{
+			"name": "Battle Balloon",
+			"source": "AI",
+			"page": 218,
+			"vehicleType": "SHIP",
+			"size": "G",
+			"dimensions": [
+				"80 ft.",
+				"20 ft."
+			],
+			"capCrew": 20,
+			"capPassenger": 10,
+			"capCargo": 1,
+			"pace": 9,
+			"str": 18,
+			"dex": 17,
+			"con": 20,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 15,
+				"hp": 500,
+				"dt": 15
+			},
+			"control": [
+				{
+					"name": "Helm",
+					"ac": 18,
+					"hp": 50,
+					"entries": [
+						"Move up to the speed of the ship's propeller, with one 90-degree turn. If the helm is destroyed, the ship can't turn."
+					]
+				},
+				{
+					"name": "Balloon",
+					"ac": 12,
+					"hp": 75,
+					"entries": [
+						"If its balloon is destroyed, a battle balloon cannot maintain altitude."
+					]
+				}
+			],
+			"movement": [
+				{
+					"name": "Propeller",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 25 damage taken",
+					"speed": [
+						{
+							"mode": "air",
+							"entries": [
+								"80 ft.; 50 ft. while flying into the wind; 100 ft. while flying with the wind"
+							]
+						}
+					]
+				}
+			],
+			"weapon": [
+				{
+					"name": "Green Flame Arbalester",
+					"ac": 15,
+					"hp": 75,
+					"entries": [
+						"{@atk rw} {@hit 8} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it) one target. {@h}16 ({@damage 3d10}) piercing damage and 22 ({@damage 4d10}) fire damage. If the attack misses, the DM determines where the arbalester bolt hits. Each creature within 10 feet of that spot must make a DC 15 Dexterity saving throw to avoid the bolt as it shatters, taking 5 ({@damage 1d10}) piercing damage and 5 ({@damage 1d10}) fire damage on a failed save."
+					]
+				},
+				{
+					"name": "Harpoon Gun",
+					"count": 3,
+					"ac": 15,
+					"hp": 50,
+					"entries": [
+						"{@atk rw} {@hit 8} to hit, range 120/480 ft., one target. {@h}11 ({@damage 2d10}) piercing damage, and the target is {@condition grappled} (escape DC 16). Until the grapple ends, the target's speed is halved, and it can't move farther away from the battle balloon. Each of the battle balloon's harpoon guns can grapple one target. While it has one or more targets {@condition grappled} with its harpoon gun attack, the battle balloon's speed is not halved."
+					]
+				}
+			],
+			"action": [
+				"On its turn the battle balloon can take 3 actions if it has twenty or more crew, 2 actions if it has ten or more crew, or 1 action if it has fewer than ten crew, choosing from the options below. It cannot take any actions if it has no remaining crew.",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Fire Ballista.",
+							"entry": "The battle balloon can fire its harpoon guns."
+						},
+						{
+							"type": "item",
+							"name": "Fire Green Flame Arbalester.",
+							"entry": "The battle balloon can fire its green flame arbalester."
+						},
+						{
+							"type": "item",
+							"name": "Move.",
+							"entry": "The battle balloon can use its helm to move using its propeller. If the battle balloon enters a Large or smaller creature's space, that creature is automatically pushed to the edge of the battle balloon's space. The creature must also succeed on a DC 15 Dexterity saving throw or take 5 ({@damage 1d10}) bludgeoning damage."
+						},
+						{
+							"type": "item",
+							"name": "Harpoon Haul.",
+							"entry": "The battle balloon can pull each target {@condition grappled} by it up to 30 feet toward the battle balloon."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Demon Grinder",
+			"source": "BGDIA",
+			"page": 219,
+			"vehicleType": "INFWAR",
+			"size": "G",
+			"weight": 12000,
+			"capCreature": 8,
+			"capCargo": 2000,
+			"speed": 100,
+			"str": 18,
+			"dex": 10,
+			"con": 18,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"hp": {
+				"hp": 200,
+				"dt": 10,
+				"mt": 20
+			},
+			"immune": [
+				"fire",
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"stunned",
+				"unconscious"
+			],
+			"trait": [
+				{
+					"name": "Crushing Wheels",
+					"entries": [
+						"The Demon Grinder can move through the space of any Large or smaller creature. When it does, the creature must succeed on a DC 11 Dexterity saving throw or take 22 ({@damage 4d10}) bludgeoning damage and be knocked {@condition prone}. If the creature was already {@condition prone}, it takes an extra 22 ({@damage 4d10}) bludgeoning damage. This trait can't be used against a particular creature more than once each turn."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"The Demon Grinder's weapon attacks are magical."
+					]
+				},
+				{
+					"name": "Prone Deficiency",
+					"entries": [
+						"If the Demon Grinder rolls over and falls {@condition prone}, it can't right itself and is {@condition incapacitated} until flipped upright."
+					]
+				}
+			],
+			"actionStation": [
+				{
+					"name": "Helm (Requires 1 Crew and Grants Three-Quarters Cover)",
+					"entries": [
+						"Drive and steer the Demon Grinder."
+					]
+				},
+				{
+					"name": "Chomper (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}25 ({@damage 6d6 + 4}) piercing damage. A target reduced to 0 hit points by this damage is ground to bits and spit out through pipes on both sides of the Demon Grinder.Any nonmagical items the target was holding or carrying are destroyed as well."
+					]
+				},
+				{
+					"name": "Wrecking Ball (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"{@atk mw} {@hit 9} to hit, reach 15 ft., one target. {@h}40 ({@damage 8d8 + 4}) bludgeoning damage. Double the damage if the target is an object or a structure."
+					]
+				},
+				{
+					"name": "2 Harpoon Flingers (Each Station Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, range 120 ft., one target. {@h}9 ({@damage 2d8}) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Devil's Ride",
+			"source": "BGDIA",
+			"page": 218,
+			"vehicleType": "INFWAR",
+			"size": "L",
+			"weight": 500,
+			"capCreature": 1,
+			"capCargo": 100,
+			"speed": 120,
+			"str": 14,
+			"dex": 18,
+			"con": 12,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"hp": {
+				"hp": 30,
+				"dt": 5,
+				"mt": 10
+			},
+			"immune": [
+				"fire",
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"stunned",
+				"unconscious"
+			],
+			"trait": [
+				{
+					"name": "Jump",
+					"entries": [
+						"If the Devil's Ride moves at least 30 feet in a straight line, it can clear a distance of up to 60 feet when jumping over a chasm, ravine, or other gap. Each foot it clears on the jump costs a foot of movement."
+					]
+				},
+				{
+					"name": "Prone Deficiency",
+					"entries": [
+						"If the Devil's Ride falls {@condition prone}, it can't right itself and is {@condition incapacitated} until pulled upright."
+					]
+				},
+				{
+					"name": "Stunt",
+					"entries": [
+						"On its turn, the driver of the Devil's Ride can expend 10 feet of movement to perform one free vehicle stunt, such as a wheelie or a burnout. Before the stunt can be performed, the Devil's Ride must move at least 10 feet in a straight line. If the driver succeeds on a DC 10 Dexterity check using the bike's Dexterity, the stunt is successful. Otherwise, the driver is unable to perform the stunt and can't attempt another stunt until the start of its next turn. If the check fails by 5 or more, the Devil's Ride and all creatures riding it immediately fall {@condition prone} as the bike wipes out and comes to a dead stop."
+					]
+				}
+			],
+			"actionStation": [
+				{
+					"name": "Helm (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"Drive and steer the Devil's Ride."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"type": "entries",
+					"name": "Juke",
+					"entries": [
+						"If the Devil's Ride is able to move, the driver can use its reaction to grant the Devil's Ride advantage on a Dexterity saving throw."
+					]
+				}
+			]
+		},
+		{
+			"name": "Galley",
+			"source": "GoS",
+			"page": 187,
+			"vehicleType": "SHIP",
+			"size": "G",
+			"dimensions": [
+				"130 ft.",
+				"20 ft."
+			],
+			"capCrew": 80,
+			"capPassenger": 40,
+			"capCargo": 150,
+			"pace": 4,
+			"str": 24,
+			"dex": 4,
+			"con": 20,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 15,
+				"hp": 500,
+				"dt": 20
+			},
+			"control": [
+				{
+					"name": "Helm",
+					"ac": 16,
+					"hp": 50,
+					"entries": [
+						"Move up to the speed of one of its movement components, with one 90-degree turn. If the helm is destroyed, the galley can't turn."
+					]
+				}
+			],
+			"movement": [
+				{
+					"name": "Oars",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 25 damage taken",
+					"speed": [
+						{
+							"mode": "water",
+							"entries": [
+								"30 ft. (requires at least 40 crew)"
+							]
+						}
+					]
+				},
+				{
+					"name": "Sails",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-10 ft. speed per 25 damage taken",
+					"speed": [
+						{
+							"mode": "water",
+							"entries": [
+								"35 ft.; 15 ft. while sailing into the wind; 50 ft. while sailing with the wind"
+							]
+						}
+					]
+				}
+			],
+			"weapon": [
+				{
+					"name": "Ballistas",
+					"count": 4,
+					"ac": 15,
+					"hp": 50,
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+					]
+				},
+				{
+					"name": "Mangonels",
+					"count": 2,
+					"ac": 15,
+					"hp": 100,
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Naval Ram",
+					"ac": 20,
+					"hp": 100,
+					"dt": 10,
+					"entries": [
+						"The galley has advantage on all saving throws relating to crashing when it crashes into a creature or an object. Any damage it takes from the crash is applied to the naval ram rather than to the ship. These benefits don't apply if another vessel crashes into the galley."
+					]
+				}
+			],
+			"action": [
+				"On its turn, the galley can take 3 actions, choosing from the options below. It can take only 2 actions if it has fewer than forty crew and only 1 action if it has fewer than twenty. It can't take these actions if it has fewer than three crew.",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Fire Ballistas.",
+							"entry": "The galley can fire its {@object ballista||ballistas} (DMG, ch. 8)."
+						},
+						{
+							"type": "item",
+							"name": "Fire Mangonels.",
+							"entry": "The galley can fire its {@object mangonel||mangonels} (DMG, ch. 8)."
+						},
+						{
+							"type": "item",
+							"name": "Move.",
+							"entry": "The galley can use its helm to move with its oars or sails. As part of this move, it can use its naval ram."
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Galley",
 			"source": "UAOfShipsAndSea",
-			"vehicleType": "SHIP",
 			"page": 2,
+			"vehicleType": "SHIP",
 			"size": "G",
 			"dimensions": [
 				"130 ft.",
@@ -211,9 +633,123 @@
 		},
 		{
 			"name": "Keelboat",
-			"source": "UAOfShipsAndSea",
+			"source": "GoS",
+			"page": 188,
 			"vehicleType": "SHIP",
+			"size": "G",
+			"dimensions": [
+				"60 ft.",
+				"20 ft."
+			],
+			"capCrew": 3,
+			"capPassenger": 4,
+			"capCargo": 0.5,
+			"pace": 3,
+			"str": 16,
+			"dex": 7,
+			"con": 13,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 15,
+				"hp": 100,
+				"dt": 10
+			},
+			"control": [
+				{
+					"name": "Helm",
+					"ac": 12,
+					"hp": 50,
+					"entries": [
+						"Move up to the speed of one of its movement components, with one 90-degree turn. If the helm is destroyed, the keelboat can't turn."
+					]
+				}
+			],
+			"movement": [
+				{
+					"name": "Oars",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 25 damage taken",
+					"speed": [
+						{
+							"mode": "water",
+							"entries": [
+								"20 ft."
+							]
+						}
+					]
+				},
+				{
+					"name": "Sails",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 20 damage taken ",
+					"speed": [
+						{
+							"mode": "water",
+							"entries": [
+								"25 ft.; 15 ft. while sailing into the wind; 35 ft. while sailing with the wind."
+							]
+						}
+					]
+				}
+			],
+			"weapon": [
+				{
+					"name": "Ballista",
+					"ac": 15,
+					"hp": 50,
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage.",
+						"Keelboats typically include a ballista only when they are equipped for combat."
+					]
+				}
+			],
+			"action": [
+				"On its turn, the keelboat can take 2 actions, choosing from the options below. It can take only 1 action if it has only one crew. It can't take these actions if it has no crew.",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Fire Ballista.",
+							"entry": "The keelboat can fire its {@object ballista} (DMG, ch. 8)."
+						},
+						{
+							"type": "item",
+							"name": "Move.",
+							"entry": "The keelboat can use its helm to move with its oars or sails."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Keelboat",
+			"source": "UAOfShipsAndSea",
 			"page": 3,
+			"vehicleType": "SHIP",
 			"size": "G",
 			"dimensions": [
 				"60 ft.",
@@ -313,9 +849,107 @@
 		},
 		{
 			"name": "Longship",
-			"source": "UAOfShipsAndSea",
+			"source": "GoS",
+			"page": 190,
 			"vehicleType": "SHIP",
+			"size": "G",
+			"dimensions": [
+				"70 ft.",
+				"20 ft."
+			],
+			"capCrew": 40,
+			"capPassenger": 100,
+			"capCargo": 10,
+			"pace": 5,
+			"str": 20,
+			"dex": 6,
+			"con": 17,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 15,
+				"hp": 300,
+				"dt": 15
+			},
+			"control": [
+				{
+					"name": "Helm",
+					"ac": 16,
+					"hp": 50,
+					"entries": [
+						"Move up to the speed of one of its movement components, with one 90-degree turn. If the helm is destroyed, the longship can't turn."
+					]
+				}
+			],
+			"movement": [
+				{
+					"name": "Oars",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 25 damage taken",
+					"speed": [
+						{
+							"mode": "water",
+							"entries": [
+								"20 ft. (requires at least 20 crew)"
+							]
+						}
+					]
+				},
+				{
+					"name": "Sails",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-10 ft. speed per 25 damage taken",
+					"speed": [
+						{
+							"mode": "water",
+							"entries": [
+								"45 ft.; 15 ft. while sailing into the wind; 60 ft. while sailing with the wind."
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				"On its turn, the longship can take the move action below. It can't take this action if it has no crew.",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Move.",
+							"entry": "The longship can use its helm to move with its oars or sails."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Longship",
+			"source": "UAOfShipsAndSea",
 			"page": 4,
+			"vehicleType": "SHIP",
 			"size": "G",
 			"dimensions": [
 				"70 ft.",
@@ -404,10 +1038,205 @@
 			]
 		},
 		{
+			"name": "Mechanical Beholder",
+			"source": "AI",
+			"page": 219,
+			"vehicleType": "SHIP",
+			"size": "H",
+			"dimensions": [
+				"15 ft.",
+				"15 ft."
+			],
+			"capCrew": 1,
+			"capPassenger": 5,
+			"capCargo": "crew and passengers' normal gear",
+			"pace": 3,
+			"str": 18,
+			"dex": 12,
+			"con": 18,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 18,
+				"hp": 200,
+				"dt": 10
+			},
+			"control": [
+				{
+					"name": "Helm",
+					"ac": 16,
+					"hp": 25,
+					"entries": [
+						"Move up to the speed of the ship's magical propulsion unit, with one 90-degree turn. The helm can be attacked only if the hull has taken 100 or more damage. If the helm is destroyed, the mechanical beholder can't move."
+					]
+				}
+			],
+			"movement": [
+				{
+					"name": "Magical Propulsion Unit",
+					"ac": 16,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 25 damage taken",
+					"speed": [
+						{
+							"mode": "magical",
+							"entries": [
+								"burrowing speed 30 ft., flying speed 30 ft. (hover), swimming speed 30 ft."
+							]
+						}
+					]
+				}
+			],
+			"weapon": [
+				{
+					"name": "Eye Ray Tentacles",
+					"count": 6,
+					"ac": 14,
+					"hp": 50,
+					"entries": [
+						"{@atk g} The mechanical beholder shoots the following magical eye rays at up to three targets that would be visible to the crew and are within 120 feet of it.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Disintegration Ray.",
+									"entry": "If the target is a creature, it must succeed on a DC 15 Dexterity saving throw or take 18 ({@damage 4d8}) force damage. If this damage reduces the creature to 0 hit points, its body becomes a pile of fine gray dust. If the target is a Large or smaller nonmagical object or creation of magical force, it is disintegrated without a saving throw. If the target is a Huge or larger object or creation of magical force, this ray disintegrates a 10-foot cube of it."
+								},
+								{
+									"type": "item",
+									"name": "Enervation Ray.",
+									"entry": "The targeted creature must make a DC 15 Constitution saving throw, taking 18 ({@damage 4d8}) necrotic damage on a failed save, or half as much damage on a successful one."
+								},
+								{
+									"type": "item",
+									"name": "Paralyzing Ray.",
+									"entry": "The targeted creature must succeed on a DC 15 Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				"On its turn the mechanical beholder can take 1 action. It cannot take any actions if it has no crew.",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Eye Rays.",
+							"entry": "The mechanical beholder can use its eye ray tentacles."
+						},
+						{
+							"type": "item",
+							"name": "Move.",
+							"entry": "The mechanical beholder can use its helm to move using its magical propulsion unit."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Rowboat",
+			"source": "GoS",
+			"page": 190,
+			"vehicleType": "SHIP",
+			"size": "L",
+			"dimensions": [
+				"10 ft.",
+				"5 ft."
+			],
+			"capCrew": 2,
+			"capPassenger": 2,
+			"capCargo": 0.25,
+			"pace": 3,
+			"str": 11,
+			"dex": 8,
+			"con": 11,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 11,
+				"hp": 50
+			},
+			"movement": [
+				{
+					"name": "Oars",
+					"isControl": true,
+					"ac": 12,
+					"hp": 25,
+					"speed": [
+						{
+							"mode": "water",
+							"entries": [
+								"15 ft.",
+								"Move up to its speed, with one 90-degree turn. Without oars, the rowboat's speed is 0."
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				"On its turn, the rowboat can take the move action below. It can't take this action if it has no crew.",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Move.",
+							"entry": "The rowboat can move using its oars."
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Rowboat",
 			"source": "UAOfShipsAndSea",
-			"vehicleType": "SHIP",
 			"page": 4,
+			"vehicleType": "SHIP",
 			"size": "L",
 			"dimensions": [
 				"10 ft.",
@@ -473,9 +1302,121 @@
 		},
 		{
 			"name": "Sailing Ship",
-			"source": "UAOfShipsAndSea",
+			"source": "GoS",
+			"page": 192,
 			"vehicleType": "SHIP",
+			"size": "G",
+			"dimensions": [
+				"100 ft.",
+				"20 ft."
+			],
+			"capCrew": 30,
+			"capPassenger": 20,
+			"capCargo": 100,
+			"pace": 5,
+			"str": 20,
+			"dex": 7,
+			"con": 17,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 15,
+				"hp": 300,
+				"dt": 15
+			},
+			"control": [
+				{
+					"name": "Helm",
+					"ac": 18,
+					"hp": 50,
+					"entries": [
+						"Move up to the speed of its sails, with one 90-degree turn. If the helm is destroyed, the ship can't turn."
+					]
+				}
+			],
+			"movement": [
+				{
+					"name": "Sails",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 25 damage taken",
+					"speed": [
+						{
+							"mode": "water",
+							"entries": [
+								"45 ft.; 15 ft. while sailing into the wind; 60 ft. while sailing with the wind."
+							]
+						}
+					]
+				}
+			],
+			"weapon": [
+				{
+					"name": "Ballista",
+					"ac": 15,
+					"hp": 50,
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+					]
+				},
+				{
+					"name": "Mangonel",
+					"ac": 15,
+					"hp": 100,
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
+					]
+				}
+			],
+			"action": [
+				"On its turn, the ship can take 3 actions, choosing from the options below. It can take only 2 actions if it has fewer than twenty crew and only 1 action if it has fewer than ten. It can't take these actions if it has fewer than three crew.",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Fire Ballista.",
+							"entry": "The ship can fire its {@object ballista} (DMG, ch. 8)."
+						},
+						{
+							"type": "item",
+							"name": "Fire Mangonel.",
+							"entry": "The ship can fire its {@object mangonel} (DMG, ch. 8)."
+						},
+						{
+							"type": "item",
+							"name": "Move.",
+							"entry": "The ship can use its helm to move with its sails."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Sailing Ship",
+			"source": "UAOfShipsAndSea",
 			"page": 4,
+			"vehicleType": "SHIP",
 			"size": "G",
 			"dimensions": [
 				"80 ft.",
@@ -568,10 +1509,312 @@
 			]
 		},
 		{
+			"name": "Scavenger",
+			"source": "BGDIA",
+			"page": 219,
+			"vehicleType": "INFWAR",
+			"size": "H",
+			"weight": 9000,
+			"capCreature": 8,
+			"capCargo": 4000,
+			"speed": 100,
+			"str": 20,
+			"dex": 12,
+			"con": 20,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"hp": {
+				"hp": 150,
+				"dt": 10,
+				"mt": 20
+			},
+			"immune": [
+				"fire",
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"stunned",
+				"unconscious"
+			],
+			"trait": [
+				{
+					"name": "Crushing Wheels",
+					"entries": [
+						"The Scavenger can move through the space of any Large or smaller creature. When it does, the creature must succeed on a DC 12 Dexterity saving throw or take 16 ({@damage 3d10}) bludgeoning damage and be knocked {@condition prone}. If the creature was already {@condition prone}, it takes an extra 16 ({@damage 3d10}) bludgeoning damage. This trait can't be used against a particular creature more than once each turn."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"The Scavenger's weapon attacks are magical."
+					]
+				},
+				{
+					"name": "Prone Deficiency",
+					"entries": [
+						"If the Scavenger rolls over and falls {@condition prone}, it can't right itself and is {@condition incapacitated} until flipped upright."
+					]
+				}
+			],
+			"actionStation": [
+				{
+					"name": "Helm (Requires 1 Crew and Grants Three-Quarters Cover)",
+					"entries": [
+						"Drive and steer the Scavenger."
+					]
+				},
+				{
+					"name": "Grappling Claw (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"{@atk mw} {@hit 10} to hit, reach 15 ft., one target. {@h}The target is {@condition grappled} (escape DC 12). If the target is a creature, it is {@condition restrained} until the grapple ends.The grappling claw can grapple only one target at a time, and the claw's operator can use a bonus action to make the claw release whatever it's holding."
+					]
+				},
+				{
+					"name": "2 Harpoon Flingers (Each Station Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120 ft., one target. {@h}10 ({@damage 2d8 + 1}) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Tormentor",
+			"source": "BGDIA",
+			"page": 218,
+			"vehicleType": "INFWAR",
+			"size": "H",
+			"weight": 3000,
+			"capCreature": 4,
+			"capCargo": 500,
+			"speed": 100,
+			"str": 16,
+			"dex": 14,
+			"con": 14,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"hp": {
+				"hp": 60,
+				"dt": 10,
+				"mt": 20
+			},
+			"immune": [
+				"fire",
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"stunned",
+				"unconscious"
+			],
+			"trait": [
+				{
+					"name": "Crushing Wheels",
+					"entries": [
+						"The Tormentor can move through the space of any Medium or smaller creature.When it does, the creature must succeed on a DC 13 Dexterity saving throw or take 11 ({@damage 2d10}) bludgeoning damage and be knocked {@condition prone}.If the creature was already {@condition prone}, it takes an extra 11 ({@damage 2d10}) bludgeoning damage.This trait can't be used against a particular creature more than once each turn."
+					]
+				},
+				{
+					"name": "Prone Deficiency",
+					"entries": [
+						"If the Tormentor rolls over and falls {@condition prone}, it can't right itself and is {@condition incapacitated} until flipped upright."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"The Tormentor's weapon attacks are magical."
+					]
+				},
+				{
+					"name": "Raking Scythes",
+					"entries": [
+						"When the Tormentor moves within 5 feet of a creature that isn't {@condition prone} or another vehicle for the first time on a turn, it can rake the creature or vehicle with its protruding blades for 13 ({@damage 2d10 + 2}) slashing damage. A creature moves out of the way and takes no damage if it succeeds on a DC 13 Dexterity saving throw.A vehicle moves out of the way and takes no damage if its driver succeeds on the saving throw."
+					]
+				}
+			],
+			"actionStation": [
+				{
+					"name": "(Requires 1 Crew and Grants Three-Quarters Cover)",
+					"entries": [
+						"Drive and steer the Tormentor"
+					]
+				},
+				{
+					"name": "Harpoon Flinger (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"{@atk rw} {@hit 7} to hit, range 120 ft., one target. {@h}11 ({@damage 2d8 + 2}) piercing damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"type": "entries",
+					"name": "Juke",
+					"entries": [
+						"If the Tormentor is able to move, the driver can use its reaction to grant the Devil's Ride advantage on a Dexterity saving throw."
+					]
+				}
+			]
+		},
+		{
+			"name": "Warship",
+			"source": "GoS",
+			"page": 194,
+			"vehicleType": "SHIP",
+			"size": "G",
+			"dimensions": [
+				"100 ft.",
+				"20 ft."
+			],
+			"capCrew": 40,
+			"capPassenger": 60,
+			"capCargo": 200,
+			"pace": 4,
+			"str": 20,
+			"dex": 4,
+			"con": 20,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"incapacitated",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"stunned",
+				"unconscious"
+			],
+			"hull": {
+				"ac": 15,
+				"hp": 500,
+				"dt": 20
+			},
+			"control": [
+				{
+					"name": "Helm",
+					"ac": 18,
+					"hp": 50,
+					"entries": [
+						"Move up to the speed of one of its movement components, with one 90-degree turn. If the helm is destroyed, the warship can't turn."
+					]
+				}
+			],
+			"movement": [
+				{
+					"name": "Oars",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-5 ft. speed per 25 damage taken",
+					"speed": [
+						{
+							"mode": "water",
+							"entries": [
+								"20 ft. (requires at least 20 crew)"
+							]
+						}
+					]
+				},
+				{
+					"name": "Sails",
+					"ac": 12,
+					"hp": 100,
+					"hpNote": "-10 ft. speed per 25 damage taken",
+					"speed": [
+						{
+							"mode": "water",
+							"entries": [
+								"35 ft.; 15 ft. while sailing into the wind; 50 ft. while sailing with the wind."
+							]
+						}
+					]
+				}
+			],
+			"weapon": [
+				{
+					"name": "Ballistas",
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+					]
+				},
+				{
+					"name": "Mangonels",
+					"count": 2,
+					"ac": 15,
+					"hp": 100,
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Naval Ram",
+					"ac": 20,
+					"hp": 100,
+					"dt": 10,
+					"entries": [
+						"The warship has advantage on all saving throws relating to crashing when it crashes into a creature or object. Any damage it takes from the crash is applied to the naval ram rather than to the ship. These benefits don't apply if another vessel crashes into the warship."
+					]
+				}
+			],
+			"action": [
+				"On its turn, the warship can take 3 actions, choosing from the options below. It can take only 2 actions if it has fewer than twenty crew and only 1 action if it has fewer than ten. It can't take these actions if it has fewer than three crew.",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Fire Ballistas.",
+							"entry": "The warship can fire its {@object ballista||ballistas} (DMG, ch. 8)."
+						},
+						{
+							"type": "item",
+							"name": "Fire Mangonels.",
+							"entry": "The warship can fire its {@object mangonel||mangonels} (DMG, ch. 8)."
+						},
+						{
+							"type": "item",
+							"name": "Move.",
+							"entry": "The warship can use its helm to move with its oars or sails. As part of this move, it can use its naval ram."
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Warship",
 			"source": "UAOfShipsAndSea",
-			"vehicleType": "SHIP",
 			"page": 5,
+			"vehicleType": "SHIP",
 			"size": "G",
 			"dimensions": [
 				"100 ft.",
@@ -684,1249 +1927,6 @@
 					"name": "Actions",
 					"entries": [
 						"On its turn, the warship can move using its helm. It can also fire its ballistas and mangonels. If it has half its crew or fewer, it moves at half speed and can fire only half of its weapons."
-					]
-				}
-			]
-		},
-		{
-			"name": "Galley",
-			"source": "GoS",
-			"vehicleType": "SHIP",
-			"size": "G",
-			"dimensions": [
-				"130 ft.",
-				"20 ft."
-			],
-			"capCrew": 80,
-			"capPassenger": 40,
-			"capCargo": 150,
-			"pace": 4,
-			"str": 24,
-			"dex": 4,
-			"con": 20,
-			"int": 0,
-			"wis": 0,
-			"cha": 0,
-			"immune": [
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"exhaustion",
-				"frightened",
-				"incapacitated",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone",
-				"stunned",
-				"unconscious"
-			],
-			"action": [
-				"On its turn, the galley can take 3 actions, choosing from the options below. It can take only 2 actions if it has fewer than forty crew and only 1 action if it has fewer than twenty. It can't take these actions if it has fewer than three crew.",
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Fire Ballistas.",
-							"entry": "The galley can fire its {@object ballista||ballistas} (DMG, ch. 8)."
-						},
-						{
-							"type": "item",
-							"name": "Fire Mangonels.",
-							"entry": "The galley can fire its {@object mangonel||mangonels} (DMG, ch. 8)."
-						},
-						{
-							"type": "item",
-							"name": "Move.",
-							"entry": "The galley can use its helm to move with its oars or sails. As part of this move, it can use its naval ram."
-						}
-					]
-				}
-			],
-			"hull": {
-				"ac": 15,
-				"hp": 500,
-				"dt": 20
-			},
-			"control": [
-				{
-					"name": "Helm",
-					"ac": 16,
-					"hp": 50,
-					"entries": [
-						"Move up to the speed of one of its movement components, with one 90-degree turn. If the helm is destroyed, the galley can't turn."
-					]
-				}
-			],
-			"movement": [
-				{
-					"name": "Oars",
-					"ac": 12,
-					"hp": 100,
-					"hpNote": "-5 ft. speed per 25 damage taken",
-					"speed": [
-						{
-							"mode": "water",
-							"entries": [
-								"30 ft. (requires at least 40 crew)"
-							]
-						}
-					]
-				},
-				{
-					"name": "Sails",
-					"ac": 12,
-					"hp": 100,
-					"hpNote": "-10 ft. speed per 25 damage taken",
-					"speed": [
-						{
-							"mode": "water",
-							"entries": [
-								"35 ft.; 15 ft. while sailing into the wind; 50 ft. while sailing with the wind"
-							]
-						}
-					]
-				}
-			],
-			"weapon": [
-				{
-					"name": "Ballistas",
-					"count": 4,
-					"ac": 15,
-					"hp": 50,
-					"entries": [
-						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
-					]
-				},
-				{
-					"name": "Mangonels",
-					"count": 2,
-					"ac": 15,
-					"hp": 100,
-					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
-					]
-				},
-				{
-					"name": "Naval Ram",
-					"ac": 20,
-					"hp": 100,
-					"dt": 10,
-					"entries": [
-						"The galley has advantage on all saving throws relating to crashing when it crashes into a creature or an object. Any damage it takes from the crash is applied to the naval ram rather than to the ship. These benefits don't apply if another vessel crashes into the galley."
-					]
-				}
-			],
-			"page": 187
-		},
-		{
-			"name": "Keelboat",
-			"source": "GoS",
-			"vehicleType": "SHIP",
-			"size": "G",
-			"dimensions": [
-				"60 ft.",
-				"20 ft."
-			],
-			"capCrew": 3,
-			"capPassenger": 4,
-			"capCargo": 0.5,
-			"pace": 3,
-			"str": 16,
-			"dex": 7,
-			"con": 13,
-			"int": 0,
-			"wis": 0,
-			"cha": 0,
-			"immune": [
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"exhaustion",
-				"frightened",
-				"incapacitated",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone",
-				"stunned",
-				"unconscious"
-			],
-			"action": [
-				"On its turn, the keelboat can take 2 actions, choosing from the options below. It can take only 1 action if it has only one crew. It can't take these actions if it has no crew.",
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Fire Ballista.",
-							"entry": "The keelboat can fire its {@object ballista} (DMG, ch. 8)."
-						},
-						{
-							"type": "item",
-							"name": "Move.",
-							"entry": "The keelboat can use its helm to move with its oars or sails."
-						}
-					]
-				}
-			],
-			"hull": {
-				"ac": 15,
-				"hp": 100,
-				"dt": 10
-			},
-			"control": [
-				{
-					"name": "Helm",
-					"ac": 12,
-					"hp": 50,
-					"entries": [
-						"Move up to the speed of one of its movement components, with one 90-degree turn. If the helm is destroyed, the keelboat can't turn."
-					]
-				}
-			],
-			"movement": [
-				{
-					"name": "Oars",
-					"ac": 12,
-					"hp": 100,
-					"hpNote": "-5 ft. speed per 25 damage taken",
-					"speed": [
-						{
-							"mode": "water",
-							"entries": [
-								"20 ft."
-							]
-						}
-					]
-				},
-				{
-					"name": "Sails",
-					"ac": 12,
-					"hp": 100,
-					"hpNote": "-5 ft. speed per 20 damage taken ",
-					"speed": [
-						{
-							"mode": "water",
-							"entries": [
-								"25 ft.; 15 ft. while sailing into the wind; 35 ft. while sailing with the wind."
-							]
-						}
-					]
-				}
-			],
-			"weapon": [
-				{
-					"name": "Ballista",
-					"ac": 15,
-					"hp": 50,
-					"entries": [
-						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage.",
-						"Keelboats typically include a ballista only when they are equipped for combat."
-					]
-				}
-			],
-			"page": 188
-		},
-		{
-			"name": "Longship",
-			"source": "GoS",
-			"vehicleType": "SHIP",
-			"size": "G",
-			"dimensions": [
-				"70 ft.",
-				"20 ft."
-			],
-			"capCrew": 40,
-			"capPassenger": 100,
-			"capCargo": 10,
-			"pace": 5,
-			"str": 20,
-			"dex": 6,
-			"con": 17,
-			"int": 0,
-			"wis": 0,
-			"cha": 0,
-			"immune": [
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"exhaustion",
-				"frightened",
-				"incapacitated",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone",
-				"stunned",
-				"unconscious"
-			],
-			"action": [
-				"On its turn, the longship can take the move action below. It can't take this action if it has no crew.",
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Move.",
-							"entry": "The longship can use its helm to move with its oars or sails."
-						}
-					]
-				}
-			],
-			"hull": {
-				"ac": 15,
-				"hp": 300,
-				"dt": 15
-			},
-			"control": [
-				{
-					"name": "Helm",
-					"ac": 16,
-					"hp": 50,
-					"entries": [
-						"Move up to the speed of one of its movement components, with one 90-degree turn. If the helm is destroyed, the longship can't turn."
-					]
-				}
-			],
-			"movement": [
-				{
-					"name": "Oars",
-					"ac": 12,
-					"hp": 100,
-					"hpNote": "-5 ft. speed per 25 damage taken",
-					"speed": [
-						{
-							"mode": "water",
-							"entries": [
-								"20 ft. (requires at least 20 crew)"
-							]
-						}
-					]
-				},
-				{
-					"name": "Sails",
-					"ac": 12,
-					"hp": 100,
-					"hpNote": "-10 ft. speed per 25 damage taken",
-					"speed": [
-						{
-							"mode": "water",
-							"entries": [
-								"45 ft.; 15 ft. while sailing into the wind; 60 ft. while sailing with the wind."
-							]
-						}
-					]
-				}
-			],
-			"page": 190
-		},
-		{
-			"name": "Rowboat",
-			"source": "GoS",
-			"vehicleType": "SHIP",
-			"size": "L",
-			"dimensions": [
-				"10 ft.",
-				"5 ft."
-			],
-			"capCrew": 2,
-			"capPassenger": 2,
-			"capCargo": 0.25,
-			"pace": 3,
-			"str": 11,
-			"dex": 8,
-			"con": 11,
-			"int": 0,
-			"wis": 0,
-			"cha": 0,
-			"immune": [
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"exhaustion",
-				"frightened",
-				"incapacitated",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone",
-				"stunned",
-				"unconscious"
-			],
-			"action": [
-				"On its turn, the rowboat can take the move action below. It can't take this action if it has no crew.",
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Move.",
-							"entry": "The rowboat can move using its oars."
-						}
-					]
-				}
-			],
-			"hull": {
-				"ac": 11,
-				"hp": 50
-			},
-			"movement": [
-				{
-					"name": "Oars",
-					"isControl": true,
-					"ac": 12,
-					"hp": 25,
-					"speed": [
-						{
-							"mode": "water",
-							"entries": [
-								"15 ft.",
-								"Move up to its speed, with one 90-degree turn. Without oars, the rowboat's speed is 0."
-							]
-						}
-					]
-				}
-			],
-			"page": 190
-		},
-		{
-			"name": "Sailing Ship",
-			"source": "GoS",
-			"vehicleType": "SHIP",
-			"size": "G",
-			"dimensions": [
-				"100 ft.",
-				"20 ft."
-			],
-			"capCrew": 30,
-			"capPassenger": 20,
-			"capCargo": 100,
-			"pace": 5,
-			"str": 20,
-			"dex": 7,
-			"con": 17,
-			"int": 0,
-			"wis": 0,
-			"cha": 0,
-			"immune": [
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"exhaustion",
-				"frightened",
-				"incapacitated",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone",
-				"stunned",
-				"unconscious"
-			],
-			"action": [
-				"On its turn, the ship can take 3 actions, choosing from the options below. It can take only 2 actions if it has fewer than twenty crew and only 1 action if it has fewer than ten. It can't take these actions if it has fewer than three crew.",
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Fire Ballista.",
-							"entry": "The ship can fire its {@object ballista} (DMG, ch. 8)."
-						},
-						{
-							"type": "item",
-							"name": "Fire Mangonel.",
-							"entry": "The ship can fire its {@object mangonel} (DMG, ch. 8)."
-						},
-						{
-							"type": "item",
-							"name": "Move.",
-							"entry": "The ship can use its helm to move with its sails."
-						}
-					]
-				}
-			],
-			"hull": {
-				"ac": 15,
-				"hp": 300,
-				"dt": 15
-			},
-			"control": [
-				{
-					"name": "Helm",
-					"ac": 18,
-					"hp": 50,
-					"entries": [
-						"Move up to the speed of its sails, with one 90-degree turn. If the helm is destroyed, the ship can't turn."
-					]
-				}
-			],
-			"movement": [
-				{
-					"name": "Sails",
-					"ac": 12,
-					"hp": 100,
-					"hpNote": "-5 ft. speed per 25 damage taken",
-					"speed": [
-						{
-							"mode": "water",
-							"entries": [
-								"45 ft.; 15 ft. while sailing into the wind; 60 ft. while sailing with the wind."
-							]
-						}
-					]
-				}
-			],
-			"weapon": [
-				{
-					"name": "Ballista",
-					"ac": 15,
-					"hp": 50,
-					"entries": [
-						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
-					]
-				},
-				{
-					"name": "Mangonel",
-					"ac": 15,
-					"hp": 100,
-					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
-					]
-				}
-			],
-			"page": 192
-		},
-		{
-			"name": "Warship",
-			"source": "GoS",
-			"vehicleType": "SHIP",
-			"size": "G",
-			"dimensions": [
-				"100 ft.",
-				"20 ft."
-			],
-			"capCrew": 40,
-			"capPassenger": 60,
-			"capCargo": 200,
-			"pace": 4,
-			"str": 20,
-			"dex": 4,
-			"con": 20,
-			"int": 0,
-			"wis": 0,
-			"cha": 0,
-			"immune": [
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"exhaustion",
-				"frightened",
-				"incapacitated",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone",
-				"stunned",
-				"unconscious"
-			],
-			"action": [
-				"On its turn, the warship can take 3 actions, choosing from the options below. It can take only 2 actions if it has fewer than twenty crew and only 1 action if it has fewer than ten. It can't take these actions if it has fewer than three crew.",
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Fire Ballistas.",
-							"entry": "The warship can fire its {@object ballista||ballistas} (DMG, ch. 8)."
-						},
-						{
-							"type": "item",
-							"name": "Fire Mangonels.",
-							"entry": "The warship can fire its {@object mangonel||mangonels} (DMG, ch. 8)."
-						},
-						{
-							"type": "item",
-							"name": "Move.",
-							"entry": "The warship can use its helm to move with its oars or sails. As part of this move, it can use its naval ram."
-						}
-					]
-				}
-			],
-			"hull": {
-				"ac": 15,
-				"hp": 500,
-				"dt": 20
-			},
-			"control": [
-				{
-					"name": "Helm",
-					"ac": 18,
-					"hp": 50,
-					"entries": [
-						"Move up to the speed of one of its movement components, with one 90-degree turn. If the helm is destroyed, the warship can't turn."
-					]
-				}
-			],
-			"movement": [
-				{
-					"name": "Oars",
-					"ac": 12,
-					"hp": 100,
-					"hpNote": "-5 ft. speed per 25 damage taken",
-					"speed": [
-						{
-							"mode": "water",
-							"entries": [
-								"20 ft. (requires at least 20 crew)"
-							]
-						}
-					]
-				},
-				{
-					"name": "Sails",
-					"ac": 12,
-					"hp": 100,
-					"hpNote": "-10 ft. speed per 25 damage taken",
-					"speed": [
-						{
-							"mode": "water",
-							"entries": [
-								"35 ft.; 15 ft. while sailing into the wind; 50 ft. while sailing with the wind."
-							]
-						}
-					]
-				}
-			],
-			"weapon": [
-				{
-					"name": "Ballistas",
-					"count": 2,
-					"ac": 15,
-					"hp": 50,
-					"entries": [
-						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
-					]
-				},
-				{
-					"name": "Mangonels",
-					"count": 2,
-					"ac": 15,
-					"hp": 100,
-					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
-					]
-				},
-				{
-					"name": "Naval Ram",
-					"ac": 20,
-					"hp": 100,
-					"dt": 10,
-					"entries": [
-						"The warship has advantage on all saving throws relating to crashing when it crashes into a creature or object. Any damage it takes from the crash is applied to the naval ram rather than to the ship. These benefits don't apply if another vessel crashes into the warship."
-					]
-				}
-			],
-			"page": 194
-		},
-		{
-			"name": "Battle Balloon",
-			"source": "AI",
-			"vehicleType": "SHIP",
-			"page": 218,
-			"size": "G",
-			"dimensions": [
-				"80 ft.",
-				"20 ft."
-			],
-			"capCrew": 20,
-			"capPassenger": 10,
-			"capCargo": 1,
-			"pace": 9,
-			"str": 18,
-			"dex": 17,
-			"con": 20,
-			"int": 0,
-			"wis": 0,
-			"cha": 0,
-			"immune": [
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"exhaustion",
-				"frightened",
-				"incapacitated",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone",
-				"stunned",
-				"unconscious"
-			],
-			"action": [
-				"On its turn the battle balloon can take 3 actions if it has twenty or more crew, 2 actions if it has ten or more crew, or 1 action if it has fewer than ten crew, choosing from the options below. It cannot take any actions if it has no remaining crew.",
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Fire Ballista.",
-							"entry": "The battle balloon can fire its harpoon guns."
-						},
-						{
-							"type": "item",
-							"name": "Fire Green Flame Arbalester.",
-							"entry": "The battle balloon can fire its green flame arbalester."
-						},
-						{
-							"type": "item",
-							"name": "Move.",
-							"entry": "The battle balloon can use its helm to move using its propeller. If the battle balloon enters a Large or smaller creature's space, that creature is automatically pushed to the edge of the battle balloon's space. The creature must also succeed on a DC 15 Dexterity saving throw or take 5 ({@damage 1d10}) bludgeoning damage."
-						},
-						{
-							"type": "item",
-							"name": "Harpoon Haul.",
-							"entry": "The battle balloon can pull each target {@condition grappled} by it up to 30 feet toward the battle balloon."
-						}
-					]
-				}
-			],
-			"hull": {
-				"ac": 15,
-				"hp": 500,
-				"dt": 15
-			},
-			"control": [
-				{
-					"name": "Helm",
-					"ac": 18,
-					"hp": 50,
-					"entries": [
-						"Move up to the speed of the ship's propeller, with one 90-degree turn. If the helm is destroyed, the ship can't turn."
-					]
-				},
-				{
-					"name": "Balloon",
-					"ac": 12,
-					"hp": 75,
-					"entries": [
-						"If its balloon is destroyed, a battle balloon cannot maintain altitude."
-					]
-				}
-			],
-			"movement": [
-				{
-					"name": "Propeller",
-					"ac": 12,
-					"hp": 100,
-					"hpNote": "-5 ft. speed per 25 damage taken",
-					"speed": [
-						{
-							"mode": "air",
-							"entries": [
-								"80 ft.; 50 ft. while flying into the wind; 100 ft. while flying with the wind"
-							]
-						}
-					]
-				}
-			],
-			"weapon": [
-				{
-					"name": "Green Flame Arbalester",
-					"ac": 15,
-					"hp": 75,
-					"entries": [
-						"{@atk rw} {@hit 8} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it) one target. {@h}16 ({@damage 3d10}) piercing damage and 22 ({@damage 4d10}) fire damage. If the attack misses, the DM determines where the arbalester bolt hits. Each creature within 10 feet of that spot must make a DC 15 Dexterity saving throw to avoid the bolt as it shatters, taking 5 ({@damage 1d10}) piercing damage and 5 ({@damage 1d10}) fire damage on a failed save."
-					]
-				},
-				{
-					"name": "Harpoon Gun",
-					"count": 3,
-					"ac": 15,
-					"hp": 50,
-					"entries": [
-						"{@atk rw} {@hit 8} to hit, range 120/480 ft., one target. {@h}11 ({@damage 2d10}) piercing damage, and the target is {@condition grappled} (escape DC 16). Until the grapple ends, the target's speed is halved, and it can't move farther away from the battle balloon. Each of the battle balloon's harpoon guns can grapple one target. While it has one or more targets {@condition grappled} with its harpoon gun attack, the battle balloon's speed is not halved."
-					]
-				}
-			]
-		},
-		{
-			"name": "Mechanical Beholder",
-			"source": "AI",
-			"vehicleType": "SHIP",
-			"page": 219,
-			"size": "H",
-			"dimensions": [
-				"15 ft.",
-				"15 ft."
-			],
-			"capCrew": 1,
-			"capPassenger": 5,
-			"capCargo": "crew and passengers' normal gear",
-			"pace": 3,
-			"str": 18,
-			"dex": 12,
-			"con": 18,
-			"int": 0,
-			"wis": 0,
-			"cha": 0,
-			"immune": [
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"exhaustion",
-				"frightened",
-				"incapacitated",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone",
-				"stunned",
-				"unconscious"
-			],
-			"action": [
-				"On its turn the mechanical beholder can take 1 action. It cannot take any actions if it has no crew.",
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Eye Rays.",
-							"entry": "The mechanical beholder can use its eye ray tentacles."
-						},
-						{
-							"type": "item",
-							"name": "Move.",
-							"entry": "The mechanical beholder can use its helm to move using its magical propulsion unit."
-						}
-					]
-				}
-			],
-			"hull": {
-				"ac": 18,
-				"hp": 200,
-				"dt": 10
-			},
-			"control": [
-				{
-					"name": "Helm",
-					"ac": 16,
-					"hp": 25,
-					"entries": [
-						"Move up to the speed of the ship's magical propulsion unit, with one 90-degree turn. The helm can be attacked only if the hull has taken 100 or more damage. If the helm is destroyed, the mechanical beholder can't move."
-					]
-				}
-			],
-			"movement": [
-				{
-					"name": "Magical Propulsion Unit",
-					"ac": 16,
-					"hp": 100,
-					"hpNote": "-5 ft. speed per 25 damage taken",
-					"speed": [
-						{
-							"mode": "magical",
-							"entries": [
-								"burrowing speed 30 ft., flying speed 30 ft. (hover), swimming speed 30 ft."
-							]
-						}
-					]
-				}
-			],
-			"weapon": [
-				{
-					"name": "Eye Ray Tentacles",
-					"count": 6,
-					"ac": 14,
-					"hp": 50,
-					"entries": [
-						"{@atk g} The mechanical beholder shoots the following magical eye rays at up to three targets that would be visible to the crew and are within 120 feet of it.",
-						{
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Disintegration Ray.",
-									"entry": "If the target is a creature, it must succeed on a DC 15 Dexterity saving throw or take 18 ({@damage 4d8}) force damage. If this damage reduces the creature to 0 hit points, its body becomes a pile of fine gray dust. If the target is a Large or smaller nonmagical object or creation of magical force, it is disintegrated without a saving throw. If the target is a Huge or larger object or creation of magical force, this ray disintegrates a 10-foot cube of it."
-								},
-								{
-									"type": "item",
-									"name": "Enervation Ray.",
-									"entry": "The targeted creature must make a DC 15 Constitution saving throw, taking 18 ({@damage 4d8}) necrotic damage on a failed save, or half as much damage on a successful one."
-								},
-								{
-									"type": "item",
-									"name": "Paralyzing Ray.",
-									"entry": "The targeted creature must succeed on a DC 15 Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
-								}
-							]
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Devil's Ride",
-			"source": "BGDIA",
-			"page": 218,
-			"vehicleType": "INFWAR",
-			"size": "L",
-			"weight": 500,
-			"capCreature": 1,
-			"capCargo": 100,
-			"speed": 120,
-			"str": 14,
-			"dex": 18,
-			"con": 12,
-			"int": 0,
-			"wis": 0,
-			"cha": 0,
-			"hp": {
-				"hp": 30,
-				"dt": 5,
-				"mt": 10
-			},
-			"immune": [
-				"fire",
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"frightened",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"stunned",
-				"unconscious"
-			],
-			"trait": [
-				{
-					"name": "Jump",
-					"entries": [
-						"If the Devil's Ride moves at least 30 feet in a straight line, it can clear a distance of up to 60 feet when jumping over a chasm, ravine, or other gap. Each foot it clears on the jump costs a foot of movement."
-					]
-				},
-				{
-					"name": "Prone Deficiency",
-					"entries": [
-						"If the Devil's Ride falls {@condition prone}, it can't right itself and is {@condition incapacitated} until pulled upright."
-					]
-				},
-				{
-					"name": "Stunt",
-					"entries": [
-						"On its turn, the driver of the Devil's Ride can expend 10 feet of movement to perform one free vehicle stunt, such as a wheelie or a burnout. Before the stunt can be performed, the Devil's Ride must move at least 10 feet in a straight line. If the driver succeeds on a DC 10 Dexterity check using the bike's Dexterity, the stunt is successful. Otherwise, the driver is unable to perform the stunt and can't attempt another stunt until the start of its next turn. If the check fails by 5 or more, the Devil's Ride and all creatures riding it immediately fall {@condition prone} as the bike wipes out and comes to a dead stop."
-					]
-				}
-			],
-			"actionStation": [
-				{
-					"name": "Helm (Requires 1 Crew and Grants Half Cover)",
-					"entries": [
-						"Drive and steer the Devil's Ride."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"type": "entries",
-					"name": "Juke",
-					"entries": [
-						"If the Devil's Ride is able to move, the driver can use its reaction to grant the Devil's Ride advantage on a Dexterity saving throw."
-					]
-				}
-			]
-		},
-		{
-			"name": "Tormentor",
-			"source": "BGDIA",
-			"page": 218,
-			"vehicleType": "INFWAR",
-			"size": "H",
-			"weight": 3000,
-			"capCreature": 4,
-			"capCargo": 500,
-			"speed": 100,
-			"str": 16,
-			"dex": 14,
-			"con": 14,
-			"int": 0,
-			"wis": 0,
-			"cha": 0,
-			"hp": {
-				"hp": 60,
-				"dt": 10,
-				"mt": 20
-			},
-			"immune": [
-				"fire",
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"frightened",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"stunned",
-				"unconscious"
-			],
-			"trait": [
-				{
-					"name": "Crushing Wheels",
-					"entries": [
-						"The Tormentor can move through the space of any Medium or smaller creature.When it does, the creature must succeed on a DC 13 Dexterity saving throw or take 11 ({@damage 2d10}) bludgeoning damage and be knocked {@condition prone}.If the creature was already {@condition prone}, it takes an extra 11 ({@damage 2d10}) bludgeoning damage.This trait can't be used against a particular creature more than once each turn."
-					]
-				},
-				{
-					"name": "Prone Deficiency",
-					"entries": [
-						"If the Tormentor rolls over and falls {@condition prone}, it can't right itself and is {@condition incapacitated} until flipped upright."
-					]
-				},
-				{
-					"name": "Magic Weapons",
-					"entries": [
-						"The Tormentor's weapon attacks are magical."
-					]
-				},
-				{
-					"name": "Raking Scythes",
-					"entries": [
-						"When the Tormentor moves within 5 feet of a creature that isn't {@condition prone} or another vehicle for the first time on a turn, it can rake the creature or vehicle with its protruding blades for 13 ({@damage 2d10 + 2}) slashing damage. A creature moves out of the way and takes no damage if it succeeds on a DC 13 Dexterity saving throw.A vehicle moves out of the way and takes no damage if its driver succeeds on the saving throw."
-					]
-				}
-			],
-			"actionStation": [
-				{
-					"name": "(Requires 1 Crew and Grants Three-Quarters Cover)",
-					"entries": [
-						"Drive and steer the Tormentor"
-					]
-				},
-				{
-					"name": "Harpoon Flinger (Requires 1 Crew and Grants Half Cover)",
-					"entries": [
-						"{@atk rw} {@hit 7} to hit, range 120 ft., one target. {@h}11 ({@damage 2d8 + 2}) piercing damage."
-					]
-				}
-			],
-			"reaction": [
-				{
-					"type": "entries",
-					"name": "Juke",
-					"entries": [
-						"If the Tormentor is able to move, the driver can use its reaction to grant the Devil's Ride advantage on a Dexterity saving throw."
-					]
-				}
-			]
-		},
-		{
-			"name": "Demon Grinder",
-			"source": "BGDIA",
-			"page": 219,
-			"vehicleType": "INFWAR",
-			"size": "G",
-			"weight": 12000,
-			"capCreature": 8,
-			"capCargo": 2000,
-			"speed": 100,
-			"str": 18,
-			"dex": 10,
-			"con": 18,
-			"int": 0,
-			"wis": 0,
-			"cha": 0,
-			"hp": {
-				"hp": 200,
-				"dt": 10,
-				"mt": 20
-			},
-			"immune": [
-				"fire",
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"frightened",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"stunned",
-				"unconscious"
-			],
-			"trait": [
-				{
-					"name": "Crushing Wheels",
-					"entries": [
-						"The Demon Grinder can move through the space of any Large or smaller creature. When it does, the creature must succeed on a DC 11 Dexterity saving throw or take 22 ({@damage 4d10}) bludgeoning damage and be knocked {@condition prone}. If the creature was already {@condition prone}, it takes an extra 22 ({@damage 4d10}) bludgeoning damage. This trait can't be used against a particular creature more than once each turn."
-					]
-				},
-				{
-					"name": "Magic Weapons",
-					"entries": [
-						"The Demon Grinder's weapon attacks are magical."
-					]
-				},
-				{
-					"name": "Prone Deficiency",
-					"entries": [
-						"If the Demon Grinder rolls over and falls {@condition prone}, it can't right itself and is {@condition incapacitated} until flipped upright."
-					]
-				}
-			],
-			"actionStation": [
-				{
-					"name": "Helm (Requires 1 Crew and Grants Three-Quarters Cover)",
-					"entries": [
-						"Drive and steer the Demon Grinder."
-					]
-				},
-				{
-					"name": "Chomper (Requires 1 Crew and Grants Half Cover)",
-					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 5 ft., one target. {@h}25 ({@damage 6d6 + 4}) piercing damage. A target reduced to 0 hit points by this damage is ground to bits and spit out through pipes on both sides of the Demon Grinder.Any nonmagical items the target was holding or carrying are destroyed as well."
-					]
-				},
-				{
-					"name": "Wrecking Ball (Requires 1 Crew and Grants Half Cover)",
-					"entries": [
-						"{@atk mw} {@hit 9} to hit, reach 15 ft., one target. {@h}40 ({@damage 8d8 + 4}) bludgeoning damage. Double the damage if the target is an object or a structure."
-					]
-				},
-				{
-					"name": "2 Harpoon Flingers (Each Station Requires 1 Crew and Grants Half Cover)",
-					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 120 ft., one target. {@h}9 ({@damage 2d8}) piercing damage."
-					]
-				}
-			]
-		},
-		{
-			"name": "Scavenger",
-			"source": "BGDIA",
-			"page": 219,
-			"vehicleType": "INFWAR",
-			"size": "H",
-			"weight": 9000,
-			"capCreature": 8,
-			"capCargo": 4000,
-			"speed": 100,
-			"str": 20,
-			"dex": 12,
-			"con": 20,
-			"int": 0,
-			"wis": 0,
-			"cha": 0,
-			"hp": {
-				"hp": 150,
-				"dt": 10,
-				"mt": 20
-			},
-			"immune": [
-				"fire",
-				"poison",
-				"psychic"
-			],
-			"conditionImmune": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"frightened",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"stunned",
-				"unconscious"
-			],
-			"trait": [
-				{
-					"name": "Crushing Wheels",
-					"entries": [
-						"The Scavenger can move through the space of any Large or smaller creature. When it does, the creature must succeed on a DC 12 Dexterity saving throw or take 16 ({@damage 3d10}) bludgeoning damage and be knocked {@condition prone}. If the creature was already {@condition prone}, it takes an extra 16 ({@damage 3d10}) bludgeoning damage. This trait can't be used against a particular creature more than once each turn."
-					]
-				},
-				{
-					"name": "Magic Weapons",
-					"entries": [
-						"The Scavenger's weapon attacks are magical."
-					]
-				},
-				{
-					"name": "Prone Deficiency",
-					"entries": [
-						"If the Scavenger rolls over and falls {@condition prone}, it can't right itself and is {@condition incapacitated} until flipped upright."
-					]
-				}
-			],
-			"actionStation": [
-				{
-					"name": "Helm (Requires 1 Crew and Grants Three-Quarters Cover)",
-					"entries": [
-						"Drive and steer the Scavenger."
-					]
-				},
-				{
-					"name": "Grappling Claw (Requires 1 Crew and Grants Half Cover)",
-					"entries": [
-						"{@atk mw} {@hit 10} to hit, reach 15 ft., one target. {@h}The target is {@condition grappled} (escape DC 12). If the target is a creature, it is {@condition restrained} until the grapple ends.The grappling claw can grapple only one target at a time, and the claw's operator can use a bonus action to make the claw release whatever it's holding."
-					]
-				},
-				{
-					"name": "2 Harpoon Flingers (Each Station Requires 1 Crew and Grants Half Cover)",
-					"entries": [
-						"{@atk rw} {@hit 6} to hit, range 120 ft., one target. {@h}10 ({@damage 2d8 + 1}) piercing damage."
 					]
 				}
 			]

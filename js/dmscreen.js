@@ -3162,7 +3162,7 @@ class UnitConverter {
 			board.doSaveStateDebounced();
 		};
 
-		SearchWidget.bindTypingEnd({$iptSearch: $iptLeft, fnKeyup: handleInput});
+		UiUtil.bindTypingEnd({$ipt: $iptLeft, fnKeyup: handleInput});
 
 		updateDisplay();
 

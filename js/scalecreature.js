@@ -159,6 +159,7 @@
 		"30": [303, 320]
 	},
 
+	// Manual smoothing applied to ensure e.g. going down a CR doesn't increase the mod
 	_crToEstimatedDamageMod: {
 		"0": [-1, 2],
 		"0.125": [0, 2],
@@ -174,26 +175,26 @@
 		"8": [2, 5],
 		"9": [2, 6],
 		"10": [3, 6],
-		"11": [3, 7],
-		"12": [2, 6],
+		"11": [3, 6],
+		"12": [3, 6],
 		"13": [3, 7],
-		"14": [4, 7],
+		"14": [3, 7],
 		"15": [3, 7],
 		"16": [4, 8],
 		"17": [4, 8],
-		"18": [3, 7],
+		"18": [4, 8],
 		"19": [5, 8],
 		"20": [6, 9],
-		"21": [5, 9],
+		"21": [6, 9],
 		"22": [6, 10],
 		"23": [6, 10],
 		"24": [6, 11],
-		"25": [8, 11],
-		"26": [7, 9],
-		// no creatures for these CRs; use 26
-		"27": [7, 9],
-		"28": [7, 9],
-		"29": [7, 9],
+		"25": [7, 11],
+		"26": [7, 11],
+		// no creatures for these CRs; use 26 with modifications
+		"27": [7, 11],
+		"28": [8, 11],
+		"29": [8, 11],
 		// end
 		"30": [9, 11]
 	},
@@ -256,7 +257,8 @@
 		"15": 16,
 		"16": 17,
 		"17": 18,
-		"18": 19
+		"18": 19,
+		"19": 20 // (no samples; manually added)
 	},
 
 	_crToCasterLevel (cr) {
@@ -1202,7 +1204,8 @@
 
 		mon.hp.average = Math.floor(getAvg(numHdOut));
 		const outModTotal = numHdOut * hpModOut;
-		mon.hp.formula = `${numHdOut}d${hdFaces}${outModTotal === 0 ? "" : ` ${outModTotal >= 0 ? "+" : ""} ${outModTotal}`}`;
+		mon.hp.formula = `${numHdOut}d${hdFaces}${outModTotal === 0 ? "" : `${outModTotal >= 0 ? "+" : ""}${outModTotal}`}`
+			.replace(/([-+])\s*(\d+)$/g, " $1 $2"); // add spaces around the operator
 
 		if (hpModOut !== modPerHd) {
 			const conOut = this._calcNewAbility(mon, "con", hpModOut);
@@ -1605,7 +1608,7 @@
 							doPostCalc();
 							const diceExpOut = getDiceExp(undefined, undefined, modOut + offsetEnchant);
 							const avgDamOut = Math.floor(getAvgDpr(diceExpOut));
-							if (avgDamOut <= 0) return `1 ${suffix.replace(/^[^\w]+/, " ")}`;
+							if (avgDamOut <= 0) return `1 ${suffix.replace(/^[^\w]+/, " ").replace(/ +/, " ")}`;
 							return `${Math.floor(getAvgDpr(diceExpOut))}${prefix}${diceExpOut}${suffix}`;
 						});
 

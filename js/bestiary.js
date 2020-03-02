@@ -1,7 +1,5 @@
 "use strict";
 
-const JSON_DIR = "data/bestiary/";
-const FLUFF_INDEX = "fluff-index.json";
 const ECGEN_BASE_PLAYERS = 4; // assume a party size of four
 const renderer = Renderer.get();
 
@@ -9,23 +7,7 @@ window.PROF_MODE_BONUS = "bonus";
 window.PROF_MODE_DICE = "dice";
 window.PROF_DICE_MODE = PROF_MODE_BONUS;
 
-const meta = {};
-const languages = {};
-let ixFluff = {};
-
 class BestiaryPage {
-	// region static
-	// for use in homebrew only
-	static addLegendaryGroups (toAdd) {
-		if (!toAdd || !toAdd.length) return;
-
-		toAdd.forEach(lg => {
-			meta[lg.source] = meta[lg.source] || {};
-			meta[lg.source][lg.name] = lg;
-		});
-	}
-	// endregion
-
 	constructor () {
 		this._pageFilter = new PageFilterBestiary();
 		this._multiSource = new MultiSource({
@@ -185,7 +167,7 @@ class BestiaryPage {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub, pPreloadSublistSources);
 
-		printBookView.handleSub(sub);
+		await printBookView.pHandleSub(sub);
 
 		const scaledHash = sub.find(it => it.startsWith(MON_HASH_SCALED));
 		if (scaledHash) {
@@ -214,10 +196,9 @@ class BestiaryPage {
 		encounterBuilder.initUi();
 		await Promise.all([
 			ExcludeUtil.pInitialise(),
-			Renderer.monster.pPopulateMetaAndLanguages(meta, languages),
-			(async () => ixFluff = await DataUtil.loadJSON(JSON_DIR + FLUFF_INDEX))()
+			DataUtil.monster.pPreloadMeta()
 		]);
-		await bestiaryPage._multiSource.pMultisourceLoad(JSON_DIR, this._pageFilter.filterBox, pPageInit, addMonsters, pPostLoad);
+		await bestiaryPage._multiSource.pMultisourceLoad("data/bestiary/", this._pageFilter.filterBox, pPageInit, addMonsters, pPostLoad);
 		if (Hist.lastLoadedId == null) Hist._freshLoad();
 		ExcludeUtil.checkShowAllExcluded(monsters, $(`#pagecontent`));
 		bestiaryPage.handleFilterChange();
@@ -227,7 +208,7 @@ class BestiaryPage {
 }
 
 function handleBrew (homebrew) {
-	BestiaryPage.addLegendaryGroups(homebrew.legendaryGroup);
+	DataUtil.monster.populateMetaReference(homebrew);
 	addMonsters(homebrew.monster);
 	return Promise.resolve();
 }
@@ -315,7 +296,7 @@ async function pPageInit (loadedSources) {
 		$openBtn: $(`#btn-printbook`),
 		noneVisibleMsg: "If you wish to view multiple creatures, please first make a list",
 		pageTitle: "Bestiary Printer View",
-		popTblGetNumShown: async ($wrpContent) => {
+		popTblGetNumShown: async ($wrpContent, $dispName, $wrpControlsToPass) => {
 			const toShow = await Promise.all(ListUtil.genericPinKeyMapper());
 
 			toShow.sort((a, b) => SortUtil.ascSort(a._displayName || a.name, b._displayName || b.name));
@@ -328,7 +309,7 @@ async function pPageInit (loadedSources) {
 				stack.push(`<div class="bkmv__wrp-item"><table class="stats stats--book stats--bkmv"><tbody>`);
 				stack.push(Renderer.monster.getCompactRenderedString(mon, renderer));
 				if (mon.legendaryGroup) {
-					const thisGroup = (meta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name];
+					const thisGroup = DataUtil.monster.getMetaGroup(mon);
 					if (thisGroup) {
 						stack.push(Renderer.monster.getCompactRenderedStringSection(thisGroup, renderer, "Lair Actions", "lairActions", 0));
 						stack.push(Renderer.monster.getCompactRenderedStringSection(thisGroup, renderer, "Regional Effects", "regionalEffects", 0));
@@ -346,6 +327,31 @@ async function pPageInit (loadedSources) {
 
 			numShown += toShow.length;
 			$wrpContent.append(stack.join(""));
+
+			// region Markdown
+			const pGetAsMarkdown = async () => {
+				const toRender = toShow.length ? toShow : [monsters[Hist.lastLoadedId]];
+				return RendererMarkdown.monster.pGetMarkdownDoc(toRender);
+			};
+
+			const $btnDownloadMarkdown = $(`<button class="btn btn-default btn-sm">Download as Markdown</button>`)
+				.click(async () => DataUtil.userDownloadText("bestiary.md", await pGetAsMarkdown()));
+
+			const $btnCopyMarkdown = $(`<button class="btn btn-default btn-sm px-2" title="Copy Markdown to Clipboard"><span class="glyphicon glyphicon-copy"/></button>`)
+				.click(async () => {
+					await MiscUtil.pCopyTextToClipboard(await pGetAsMarkdown());
+					JqueryUtil.showCopiedEffect($btnCopyMarkdown);
+				});
+
+			const $btnDownloadMarkdownSettings = $(`<button class="btn btn-default btn-sm px-2" title="Markdown Settings"><span class="glyphicon glyphicon-cog"/></button>`)
+				.click(async () => RendererMarkdown.pShowSettingsModal());
+
+			$$`<div class="flex-v-center btn-group ml-2">
+				${$btnDownloadMarkdown}
+				${$btnCopyMarkdown}
+				${$btnDownloadMarkdownSettings}
+			</div>`.appendTo($wrpControlsToPass);
+			// endregion
 
 			return numShown;
 		},
@@ -503,38 +509,52 @@ function addMonsters (data) {
 	function popoutHandlerGenerator (toList) {
 		return (evt) => {
 			const mon = toList[Hist.lastLoadedId];
+			const toRender = lastRendered.mon != null && lastRendered.isScaled ? lastRendered.mon : mon;
+
 			if (evt.shiftKey) {
-				const $content = Renderer.hover.$getHoverContent_statsCode(mon);
+				const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
 				Renderer.hover.getShowWindow(
 					$content,
 					Renderer.hover.getWindowPositionFromEvent(evt),
 					{
-						title: `${mon.name} \u2014 Source Data`,
+						title: `${toRender._displayName || toRender.name} \u2014 Source Data`,
+						isPermanent: true,
+						isBookContent: true
+					}
+				);
+			} else if (evt.ctrlKey || evt.metaKey) {
+				const name = `${toRender._displayName || toRender.name} \u2014 Markdown`;
+				const mdText = RendererMarkdown.get().render({entries: [{type: "dataCreature", dataCreature: toRender}]});
+				const $content = Renderer.hover.$getHoverContent_miscCode(name, mdText);
+
+				Renderer.hover.getShowWindow(
+					$content,
+					Renderer.hover.getWindowPositionFromEvent(evt),
+					{
+						title: name,
 						isPermanent: true,
 						isBookContent: true
 					}
 				);
 			} else {
-				if (lastRendered.mon != null && lastRendered.isScaled) {
-					const renderFn = Renderer.hover._pageToRenderFn(UrlUtil.getCurrentPage());
-					const $content = $$`<table class="stats">${renderFn(lastRendered.mon)}</table>`;
-					Renderer.hover.getShowWindow(
-						$content,
-						Renderer.hover.getWindowPositionFromEvent(evt),
-						{
-							pageUrl: `#${UrlUtil.autoEncodeHash(lastRendered.mon)}`,
-							title: lastRendered.mon._displayName || lastRendered.mon.name,
-							isPermanent: true
-						}
-					);
-				} else {
-					Renderer.hover.doPopoutCurPage(evt, toList, Hist.lastLoadedId);
-				}
+				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${toRender._isScaledCr ? `${HASH_PART_SEP}${MON_HASH_SCALED}${HASH_SUB_KV_SEP}${toRender._isScaledCr}` : ""}`;
+
+				const renderFn = Renderer.hover._pageToRenderFn(UrlUtil.getCurrentPage());
+				const $content = $$`<table class="stats">${renderFn(toRender)}</table>`;
+				Renderer.hover.getShowWindow(
+					$content,
+					Renderer.hover.getWindowPositionFromEvent(evt),
+					{
+						pageUrl,
+						title: toRender._displayName || toRender.name,
+						isPermanent: true
+					}
+				);
 			}
 		};
 	}
 
-	Renderer.hover.bindPopoutButton(monsters, popoutHandlerGenerator);
+	Renderer.hover.bindPopoutButton(monsters, popoutHandlerGenerator, "Popout Window (SHIFT for Source Data; CTRL for Markdown Render)");
 	UrlUtil.bindLinkExportButton(bestiaryPage._pageFilter.filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton(pPreloadSublistSources);
@@ -595,7 +615,7 @@ function renderStatblock (mon, isScaled) {
 			.click(() => Hist.setSubhash(MON_HASH_SCALED, null))
 			.toggle(isScaled) : null;
 
-		$content.append(RenderBestiary.$getRenderedCreature(mon, meta, {$btnScaleCr, $btnResetScaleCr}));
+		$content.append(RenderBestiary.$getRenderedCreature(mon, {$btnScaleCr, $btnResetScaleCr}));
 
 		// tokens
 		(() => {
@@ -813,14 +833,54 @@ function renderStatblock (mon, isScaled) {
 	}
 
 	function buildFluffTab (isImageTab) {
-		return Renderer.utils.pBuildFluffTab(
+		const pGetFluff = () => {
+			const mon = monsters[Hist.lastLoadedId];
+			return Renderer.utils.pGetFluff({
+				noInfoDisplay: "",
+				entity: mon,
+				fnFluffBuilder: Renderer.monster.getFluff.bind(null, mon),
+				fluffBaseUrl: `data/bestiary/`
+			});
+		};
+
+		// Add Markdown copy button
+		const $headerControls = isImageTab ? null : (() => {
+			const contextId = ContextUtil.getNextGenericMenuId();
+			const _CONTEXT_OPTIONS = [
+				new ContextUtil.Action(
+					"Copy as JSON",
+					async () => {
+						const fluff = await pGetFluff();
+						MiscUtil.pCopyTextToClipboard(JSON.stringify(fluff, null, "\t"));
+						JqueryUtil.showCopiedEffect($btnOptions);
+					}
+				),
+				new ContextUtil.Action(
+					"Copy as Markdown",
+					async () => {
+						const fluff = await pGetFluff();
+						const rendererMd = RendererMarkdown.get().setFirstSection(true);
+						MiscUtil.pCopyTextToClipboard(fluff.map(f => rendererMd.render(f)).join("\n"));
+						JqueryUtil.showCopiedEffect($btnOptions);
+					}
+				)
+			];
+			ContextUtil.doInitActionContextMenu(contextId, _CONTEXT_OPTIONS);
+
+			const $btnOptions = $(`<button class="btn btn-default btn-xs btn-stats-name"><span class="glyphicon glyphicon-option-vertical"/></button>`)
+				.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnOptions, contextId));
+
+			return $$`<div class="flex-v-center btn-group ml-2">${$btnOptions}</div>`;
+		})();
+
+		return Renderer.utils.pBuildFluffTab({
 			isImageTab,
 			$content,
-			mon,
-			Renderer.monster.getFluff.bind(null, mon, meta),
-			`${JSON_DIR}${ixFluff[mon.source]}`,
-			() => ixFluff[mon.source]
-		);
+			entity: mon,
+			fnFluffBuilder: Renderer.monster.getFluff.bind(null, mon),
+			fluffBaseUrl: `data/bestiary/`,
+			$headerControls
+		});
 	}
 
 	// reset tabs

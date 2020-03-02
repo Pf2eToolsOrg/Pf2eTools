@@ -166,7 +166,7 @@ class PsionicsPage extends ListPage {
 		sub = this._filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub);
 
-		this._bookView.handleSub(sub);
+		await this._bookView.pHandleSub(sub);
 	}
 }
 

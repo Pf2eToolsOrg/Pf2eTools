@@ -2103,6 +2103,7 @@
 			],
 			"fluff": [
 				{
+					"name": "Artificer",
 					"page": 1,
 					"source": "UAArtificerRevisited",
 					"type": "section",
@@ -3340,10 +3341,214 @@
 							}
 						]
 					]
+				},
+				{
+					"name": "Armorer (UA)",
+					"shortName": "Armorer (UA)",
+					"source": "UA2020SubclassesPt3",
+					"page": 1,
+					"subclassFeatures": [
+						[
+							{
+								"name": "Armorer",
+								"entries": [
+									"An artificer who specializes as an Armorer modifies armor to function almost like a second skin. The armor is enhanced to hone the artificer's magic, unleash potent attacks, and generate a formidable defense. The artificer bonds with this armor, becoming one with it even as they experiment with it and refine its magical capabilities.",
+									{
+										"type": "entries",
+										"name": "Tools of the Trade",
+										"entries": [
+											"{@i 3rd-level Armorer feature}",
+											"You gain proficiency with heavy armor. You also gain proficiency with smith's tools. If you already have this tool proficiency, you gain proficiency with one other type of artisan's tools of your choice."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Armorer Spells",
+										"entries": [
+											"{@i 3rd-level Armorer feature}",
+											"You always have certain spells prepared after you reach particular levels in this class, as shown in the Armorer Spells table. These spells count as artificer spells for you, but they don't count against the number of artificer spells you prepare.",
+											{
+												"type": "table",
+												"caption": "Armorer Spells",
+												"colLabels": [
+													"Artificer Level",
+													"Spell"
+												],
+												"colStyles": [
+													"col-2 text-center",
+													"col-10"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell magic missile}, {@spell shield}"
+													],
+													[
+														"5th",
+														"{@spell mirror image}, {@spell shatter}"
+													],
+													[
+														"9th",
+														"{@spell hypnotic pattern}, {@spell lightning bolt}"
+													],
+													[
+														"13th",
+														"{@spell fire shield}, {@spell greater invisibility}"
+													],
+													[
+														"17th",
+														"{@spell passwall}, {@spell wall of force}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Power Armor",
+										"entries": [
+											"{@i 3rd-level Armorer feature}",
+											"Your metallurgical pursuits have led to you making armor a conduit for your artificer magic. As an action, you can turn a suit of heavy armor you are wearing into power armor, provided you have smith's tools in hand.",
+											"You gain the following benefits while wearing the power armor:",
+											{
+												"type": "list",
+												"items": [
+													"If the armor normally has a Strength requirement, the power armor lacks this requirement for you.",
+													"You can use the power armor as a spellcasting focus for your artificer spells.",
+													"The power armor attaches to you and can't be removed against your will. It also expands to cover your entire body, and it replaces any missing limbs, functioning identically to a body part it is replacing."
+												]
+											},
+											"The armor continues to be power armor until you doff it, you don another suit of armor, or you die."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Armor Model",
+										"entries": [
+											"{@i 3rd-level Armorer feature}",
+											"You can customize your power armor. When you do so, choose one of the following armor models: guardian or infiltrator. The model you choose gives you special benefits while you wear it.",
+											"Each model includes a special weapon. When you attack with that weapon, you can use your Intelligence modifier, instead of Strength or Dexterity, for the attack and damage rolls.",
+											"You can change your power armor's model whenever you finish a short or long rest, provided you have smith's tools in hand.",
+											{
+												"type": "entries",
+												"name": "Guardian",
+												"entries": [
+													"You design your armor to be in the frontline of conflict. It has the following features:",
+													{
+														"type": "list",
+														"style": "list-hang-notitle",
+														"items": [
+															{
+																"type": "item",
+																"name": "Thunder Gauntlets.",
+																"entry": "Your armored fists each count as a simple melee weapon, and each deals {@dice 1d8} thunder damage on a hit. A creature hit by the gauntlet has disadvantage on attack rolls against targets other than you until the start of your next turn, as the armor magically emits a distracting pulse when the creature attacks someone else."
+															},
+															{
+																"type": "item",
+																"name": "Defensive Field.",
+																"entry": "You gain a bonus action that you can use on each of your turns to gain temporary hit points equal to your level in this class, replacing any temporary hit points you already have. You lose these temporary hit points if you doff the armor."
+															}
+														]
+													}
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Infiltrator",
+												"entries": [
+													"You customize your armor for subtle undertakings. It has the following features:",
+													{
+														"type": "list",
+														"style": "list-hang-notitle",
+														"items": [
+															{
+																"type": "item",
+																"name": "Lightning Launcher.",
+																"entry": "A gemlike node appears on one of your armored fists or on the chest (your choice). It counts as a simple ranged weapon, with a normal range of 90 feet and a long range of 300 feet, and it deals {@dice 1d6} lightning damage on a hit. Once on each of your turns when you hit a creature with it, you can deal an extra {@dice 1d6} lightning damage to that target."
+															},
+															{
+																"type": "item",
+																"name": "Powered Steps.",
+																"entry": "Your walking speed increases by 5 feet."
+															},
+															{
+																"type": "item",
+																"name": "Second Skin.",
+																"entry": "The armor's weight is negligible, and it becomes formfitting and wearable under clothing. If the armor normally imposes disadvantage on Dexterity ({@skill Stealth}) checks, the power armor doesn't."
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"name": "Extra Attack",
+										"type": "entries",
+										"entries": [
+											"{@i 5th-level Armorer feature}",
+											"You can attack twice, rather than once, whenever you take the {@action Attack} action on your turn."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Armor Modifications",
+										"entries": [
+											"{@i 9th-level Armorer feature}",
+											"You learn how to use your artificer infusions to specially modify the armor enhanced by your Power Armor feature. That armor now counts as separate items for the purposes of your Infuse Items feature: armor (the chest piece), boots, bracers, and a weapon. Each of those items can bear one of your infusions. In addition, the maximum number of items you can infuse at once increases by 2, but those extra items must be part of your power armor."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Perfected Armor",
+										"entries": [
+											"{@i 15th-level Armorer feature}",
+											"Your power armor gains additional benefits based on its model, as shown below.",
+											{
+												"type": "entries",
+												"name": "Guardian",
+												"entries": [
+													"Tinkering with your armor's energy system leads you to discover a powerful pulling force. When a creature you can see ends its turn within 30 feet of you, you can use your reaction to force the creature to succeed on a Strength saving throw against your spell save DC or be pulled up to 30 feet toward you to an unoccupied space. If you pull the target to space within 5 feet of you, you can make a melee weapon attack against it as part of this reaction.",
+													"You can use this reaction a number of times equal to your Intelligence modifier (minimum of once). You regain all expended uses of it when you finish a long rest."
+												]
+											},
+											{
+												"type": "entries",
+												"name": "Infiltrator",
+												"entries": [
+													"Any creature that takes lightning damage from your Lightning Launcher glimmers with light until the start of your next turn. The glimmering creature sheds dim light in a 5 foot radius, and the next attack roll against it by a creature other than you has advantage. If that attack hits, it deals an extra {@dice 1d6} lightning damage."
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					]
 				}
 			],
 			"fluff": [
 				{
+					"name": "Artificer",
+					"type": "section",
 					"entries": [
 						"Masters of unlocking magic in everyday objects, artificers are supreme inventors. They see magic as a complex system waiting to be decoded and controlled. Artificers use tools to channel arcane power, crafting magical objects. To cast a spell, an artificer could use alchemist's supplies to create a potent elixir, calligrapher's supplies to inscribe a sigil of power on an ally's armor, or tinker's tools to craft a temporary charm. The magic of artificers is tied to their tools and their talents.",
 						{

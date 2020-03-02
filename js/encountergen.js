@@ -19,10 +19,10 @@ function getTableName (loc, table) {
 	return `${loc.name} Encounters (Levels ${table.minlvl}\u2014${table.maxlvl})`;
 }
 
-window.onload = function load () {
+window.addEventListener("load", () => {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	DataUtil.loadJSON(JSON_URL).then(onJsonLoad);
-};
+});
 
 window.onhashchange = () => {
 	const [link] = Hist.getHashParts();

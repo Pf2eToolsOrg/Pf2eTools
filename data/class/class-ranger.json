@@ -2022,10 +2022,178 @@
 							}
 						]
 					]
+				},
+				{
+					"name": "Fey Wanderer (UA)",
+					"shortName": "Fey Wanderer (UA)",
+					"source": "UA2020SubclassesPt3",
+					"page": 5,
+					"subclassFeatures": [
+						[
+							{
+								"name": "Fey Wanderer",
+								"entries": [
+									"As a Fey Wanderer, you guard the border between the Feywild and the Material Plane, guiding the lost out of the Feywild and preventing dangerous fey from damaging the Material Plane. Your experience with both domains makes you an exceptional negotiator between inhabitants of these worlds, as you understand both humanoid mindsets and the wiles of the fey courts.",
+									"Fey Wanderers possess a preternatural blessing from a fey ally or a place of fey power. Choose your blessing from the Feywild Gifts table or determine it randomly.",
+									{
+										"type": "table",
+										"caption": "Feywild Gifts",
+										"colLabels": [
+											"d6",
+											"Gift"
+										],
+										"colStyles": [
+											"col-2 text-center",
+											"col-10"
+										],
+										"rows": [
+											[
+												"1",
+												"Illusory butterflies flutter around you while you take a short or long rest."
+											],
+											[
+												"2",
+												"Fresh, seasonal flowers sprout from your hair each dawn."
+											],
+											[
+												"3",
+												"You faintly smell of cinnamon, lavender, nutmeg, or another comforting herb or spice."
+											],
+											[
+												"4",
+												"Your shadow dances while no one is looking directly at it."
+											],
+											[
+												"5",
+												"Delicate horns or antlers sprout from your head."
+											],
+											[
+												"6",
+												"Your skin and hair change color to match the season at each dawn."
+											]
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Fey Wanderer Magic",
+										"entries": [
+											"{@i 3rd-level Fey Wanderer feature}",
+											"You learn an additional spell when you reach certain levels in this class, as shown in the Fey Wanderer Spells table. The spell counts as a ranger spell for you, but it doesn't count against the number of ranger spells you know.",
+											{
+												"type": "table",
+												"caption": "Fey Wanderer Spells",
+												"colLabels": [
+													"Ranger Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-3 text-center",
+													"col-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell charm person}"
+													],
+													[
+														"5th",
+														"{@spell misty step}"
+													],
+													[
+														"9th",
+														"{@spell dispel magic}"
+													],
+													[
+														"13th",
+														"{@spell banishment}"
+													],
+													[
+														"17th",
+														"{@spell mislead}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Cunning Will",
+										"entries": [
+											"{@i 3rd-level Fey Wanderer feature}",
+											"Your experience with the fey has guarded your mind and sharpened your tongue. You have advantage on saving throws against being {@condition charmed} or {@condition frightened}.",
+											"In addition, you gain proficiency in one of the following skills of your choice: {@skill Deception}, {@skill Performance}, or {@skill Persuasion}."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Dreadful Strikes",
+										"entries": [
+											"{@i 3rd-level Fey Wanderer feature}",
+											"You augment your attacks with mind-scarring magic, drawn from the gloomy hollows of the unseelie fey. You gain a bonus action that you can use to imbue the weapon, or weapons, you're currently holding with magic. Until the end of the turn, the weapons are magical, and they deal an extra {@dice 1d6} psychic damage on a hit. A creature can take this extra damage only once per turn.",
+											"When you engage in two-weapon fighting, you can imbue your weapons as part of the same bonus action you use to make the attack."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Blessings of the Courts",
+										"entries": [
+											"{@i 7th-level Fey Wanderer feature}",
+											"You have learned eerie techniques from both the Gloaming Court and the Summer Court of the Feywild. Once during each of your turns, when you hit a creature with a weapon attack, you can expend a spell slot to deal extra psychic damage. The extra damage is {@dice 3d6} psychic damage and the creature must succeed on a Wisdom saving throw against your spell save DC or be {@condition frightened} of you until the end of your next turn.",
+											"In addition, whenever you make a Charisma check, you gain a bonus to the check equal to your Wisdom modifier."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Beguiling Twist",
+										"entries": [
+											"{@i 11th-level Fey Wanderer feature}",
+											"You learn how to manipulate mind-altering magic, channeling it from your allies toward others. Whenever a creature you can see within 120 feet of you succeeds on a saving throw against being {@condition charmed} or {@condition frightened}, you can use your reaction to force a different creature you can see within 120 feet of you to succeed on a Wisdom saving throw against your spell save DC or suffer your choice of one of the following effects:",
+											{
+												"type": "list",
+												"items": [
+													"The creature is {@condition charmed} or {@condition frightened} by you (your choice) for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a successful save.",
+													"The creature takes {@dice 3d10} psychic damage."
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Misty Presence",
+										"entries": [
+											"{@i 15th-level Fey Wanderer feature}",
+											"You can magically remove yourself from one creature's perception: you gain a bonus action that you can use to force a creature you can see within 30 feet of you to make a Wisdom saving throw against your spell save DC. On a failed save, the target can't see or hear you for 24 hours. The target can repeat the saving throw at the end of any turn during which you hit it with an attack roll, forced it to make a saving throw, or dealt damage to it. The effect ends early if you use this bonus action again. On a successful save, the target is immune to this feature for 7 days.",
+											"Once you've used this bonus action, you can't use it again until you finish a long rest or until you expend a spell slot of 4th level or higher to use it again."
+										]
+									}
+								]
+							}
+						]
+					]
 				}
 			],
 			"fluff": [
 				{
+					"name": "Ranger",
+					"type": "section",
 					"entries": [
 						"Rough and wild looking, a human stalks alone through the shadows of trees, hunting the orcs he knows are planning a raid on a nearby farm. Clutching a shortsword in each hand, he becomes a whirlwind of steel, cutting down one enemy after another.",
 						"After tumbling away from a cone of freezing air, an elf finds her feet and draws back her bow to loose an arrow at the white dragon. Shrugging off the wave of fear that emanates from the dragon like the cold of its breath, she sends one arrow after another to find the gaps between the dragon's thick scales.",
@@ -2067,6 +2235,7 @@
 					"page": 89
 				},
 				{
+					"type": "section",
 					"entries": [
 						{
 							"type": "quote",
@@ -3862,10 +4031,178 @@
 							}
 						]
 					]
+				},
+				{
+					"name": "Fey Wanderer (UA)",
+					"shortName": "Fey Wanderer (UA)",
+					"source": "UA2020SubclassesPt3",
+					"page": 5,
+					"subclassFeatures": [
+						[
+							{
+								"name": "Fey Wanderer",
+								"entries": [
+									"As a Fey Wanderer, you guard the border between the Feywild and the Material Plane, guiding the lost out of the Feywild and preventing dangerous fey from damaging the Material Plane. Your experience with both domains makes you an exceptional negotiator between inhabitants of these worlds, as you understand both humanoid mindsets and the wiles of the fey courts.",
+									"Fey Wanderers possess a preternatural blessing from a fey ally or a place of fey power. Choose your blessing from the Feywild Gifts table or determine it randomly.",
+									{
+										"type": "table",
+										"caption": "Feywild Gifts",
+										"colLabels": [
+											"d6",
+											"Gift"
+										],
+										"colStyles": [
+											"col-2 text-center",
+											"col-10"
+										],
+										"rows": [
+											[
+												"1",
+												"Illusory butterflies flutter around you while you take a short or long rest."
+											],
+											[
+												"2",
+												"Fresh, seasonal flowers sprout from your hair each dawn."
+											],
+											[
+												"3",
+												"You faintly smell of cinnamon, lavender, nutmeg, or another comforting herb or spice."
+											],
+											[
+												"4",
+												"Your shadow dances while no one is looking directly at it."
+											],
+											[
+												"5",
+												"Delicate horns or antlers sprout from your head."
+											],
+											[
+												"6",
+												"Your skin and hair change color to match the season at each dawn."
+											]
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Fey Wanderer Magic",
+										"entries": [
+											"{@i 3rd-level Fey Wanderer feature}",
+											"You learn an additional spell when you reach certain levels in this class, as shown in the Fey Wanderer Spells table. The spell counts as a ranger spell for you, but it doesn't count against the number of ranger spells you know.",
+											{
+												"type": "table",
+												"caption": "Fey Wanderer Spells",
+												"colLabels": [
+													"Ranger Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-3 text-center",
+													"col-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell charm person}"
+													],
+													[
+														"5th",
+														"{@spell misty step}"
+													],
+													[
+														"9th",
+														"{@spell dispel magic}"
+													],
+													[
+														"13th",
+														"{@spell banishment}"
+													],
+													[
+														"17th",
+														"{@spell mislead}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Cunning Will",
+										"entries": [
+											"{@i 3rd-level Fey Wanderer feature}",
+											"Your experience with the fey has guarded your mind and sharpened your tongue. You have advantage on saving throws against being {@condition charmed} or {@condition frightened}.",
+											"In addition, you gain proficiency in one of the following skills of your choice: {@skill Deception}, {@skill Performance}, or {@skill Persuasion}."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Dreadful Strikes",
+										"entries": [
+											"{@i 3rd-level Fey Wanderer feature}",
+											"You augment your attacks with mind-scarring magic, drawn from the gloomy hollows of the unseelie fey. You gain a bonus action that you can use to imbue the weapon, or weapons, you're currently holding with magic. Until the end of the turn, the weapons are magical, and they deal an extra {@dice 1d6} psychic damage on a hit. A creature can take this extra damage only once per turn.",
+											"When you engage in two-weapon fighting, you can imbue your weapons as part of the same bonus action you use to make the attack."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Blessings of the Courts",
+										"entries": [
+											"{@i 7th-level Fey Wanderer feature}",
+											"You have learned eerie techniques from both the Gloaming Court and the Summer Court of the Feywild. Once during each of your turns, when you hit a creature with a weapon attack, you can expend a spell slot to deal extra psychic damage. The extra damage is {@dice 3d6} psychic damage and the creature must succeed on a Wisdom saving throw against your spell save DC or be {@condition frightened} of you until the end of your next turn.",
+											"In addition, whenever you make a Charisma check, you gain a bonus to the check equal to your Wisdom modifier."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Beguiling Twist",
+										"entries": [
+											"{@i 11th-level Fey Wanderer feature}",
+											"You learn how to manipulate mind-altering magic, channeling it from your allies toward others. Whenever a creature you can see within 120 feet of you succeeds on a saving throw against being {@condition charmed} or {@condition frightened}, you can use your reaction to force a different creature you can see within 120 feet of you to succeed on a Wisdom saving throw against your spell save DC or suffer your choice of one of the following effects:",
+											{
+												"type": "list",
+												"items": [
+													"The creature is {@condition charmed} or {@condition frightened} by you (your choice) for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a successful save.",
+													"The creature takes {@dice 3d10} psychic damage."
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Misty Presence",
+										"entries": [
+											"{@i 15th-level Fey Wanderer feature}",
+											"You can magically remove yourself from one creature's perception: you gain a bonus action that you can use to force a creature you can see within 30 feet of you to make a Wisdom saving throw against your spell save DC. On a failed save, the target can't see or hear you for 24 hours. The target can repeat the saving throw at the end of any turn during which you hit it with an attack roll, forced it to make a saving throw, or dealt damage to it. The effect ends early if you use this bonus action again. On a successful save, the target is immune to this feature for 7 days.",
+											"Once you've used this bonus action, you can't use it again until you finish a long rest or until you expend a spell slot of 4th level or higher to use it again."
+										]
+									}
+								]
+							}
+						]
+					]
 				}
 			],
 			"fluff": [
 				{
+					"name": "Ranger",
+					"type": "section",
 					"entries": [
 						"Rough and wild looking, a human stalks alone through the shadows of trees, hunting the orcs he knows are planning a raid on a nearby farm. Clutching a shortsword in each hand, he becomes a whirlwind of steel, cutting down one enemy after another.",
 						"After tumbling away from a cone of freezing air, an elf finds her feet and draws back her bow to loose an arrow at the white dragon. Shrugging off the wave of fear that emanates from the dragon like the cold of its breath, she sends one arrow after another to find the gaps between the dragon's thick scales.",
@@ -3907,6 +4244,7 @@
 					"page": 89
 				},
 				{
+					"type": "section",
 					"entries": [
 						{
 							"type": "quote",
@@ -6225,10 +6563,191 @@
 							}
 						]
 					]
+				},
+				{
+					"name": "Fey Wanderer (UA)",
+					"shortName": "Fey Wanderer (UA)",
+					"source": "UA2020SubclassesPt3",
+					"page": 5,
+					"subclassFeatures": [
+						[
+							{
+								"name": "Fey Wanderer",
+								"entries": [
+									"As a Fey Wanderer, you guard the border between the Feywild and the Material Plane, guiding the lost out of the Feywild and preventing dangerous fey from damaging the Material Plane. Your experience with both domains makes you an exceptional negotiator between inhabitants of these worlds, as you understand both humanoid mindsets and the wiles of the fey courts.",
+									"Fey Wanderers possess a preternatural blessing from a fey ally or a place of fey power. Choose your blessing from the Feywild Gifts table or determine it randomly.",
+									{
+										"type": "table",
+										"caption": "Feywild Gifts",
+										"colLabels": [
+											"d6",
+											"Gift"
+										],
+										"colStyles": [
+											"col-2 text-center",
+											"col-10"
+										],
+										"rows": [
+											[
+												"1",
+												"Illusory butterflies flutter around you while you take a short or long rest."
+											],
+											[
+												"2",
+												"Fresh, seasonal flowers sprout from your hair each dawn."
+											],
+											[
+												"3",
+												"You faintly smell of cinnamon, lavender, nutmeg, or another comforting herb or spice."
+											],
+											[
+												"4",
+												"Your shadow dances while no one is looking directly at it."
+											],
+											[
+												"5",
+												"Delicate horns or antlers sprout from your head."
+											],
+											[
+												"6",
+												"Your skin and hair change color to match the season at each dawn."
+											]
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Fey Wanderer Magic",
+										"entries": [
+											"{@i 3rd-level Fey Wanderer feature}",
+											"You learn an additional spell when you reach certain levels in this class, as shown in the Fey Wanderer Spells table. The spell counts as a ranger spell for you, but it doesn't count against the number of ranger spells you know.",
+											{
+												"type": "table",
+												"caption": "Fey Wanderer Spells",
+												"colLabels": [
+													"Ranger Level",
+													"Spells"
+												],
+												"colStyles": [
+													"col-3 text-center",
+													"col-9"
+												],
+												"rows": [
+													[
+														"3rd",
+														"{@spell charm person}"
+													],
+													[
+														"5th",
+														"{@spell misty step}"
+													],
+													[
+														"9th",
+														"{@spell dispel magic}"
+													],
+													[
+														"13th",
+														"{@spell banishment}"
+													],
+													[
+														"17th",
+														"{@spell mislead}"
+													]
+												]
+											}
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Cunning Will",
+										"entries": [
+											"{@i 3rd-level Fey Wanderer feature}",
+											"Your experience with the fey has guarded your mind and sharpened your tongue. You have advantage on saving throws against being {@condition charmed} or {@condition frightened}.",
+											"In addition, you gain proficiency in one of the following skills of your choice: {@skill Deception}, {@skill Performance}, or {@skill Persuasion}."
+										]
+									},
+									{
+										"type": "entries",
+										"name": "Dreadful Strikes",
+										"entries": [
+											"{@i 3rd-level Fey Wanderer feature}",
+											"You augment your attacks with mind-scarring magic, drawn from the gloomy hollows of the unseelie fey. You gain a bonus action that you can use to imbue the weapon, or weapons, you're currently holding with magic. Until the end of the turn, the weapons are magical, and they deal an extra {@dice 1d6} psychic damage on a hit. A creature can take this extra damage only once per turn.",
+											"When you engage in two-weapon fighting, you can imbue your weapons as part of the same bonus action you use to make the attack."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Extra Attack",
+										"entries": [
+											"Beginning at 5th level, you can attack twice, instead of once, whenever you take the {@action Attack} action on your turn."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Blessings of the Courts",
+										"entries": [
+											"{@i 7th-level Fey Wanderer feature}",
+											"You have learned eerie techniques from both the Gloaming Court and the Summer Court of the Feywild. Once during each of your turns, when you hit a creature with a weapon attack, you can expend a spell slot to deal extra psychic damage. The extra damage is {@dice 3d6} psychic damage and the creature must succeed on a Wisdom saving throw against your spell save DC or be {@condition frightened} of you until the end of your next turn.",
+											"In addition, whenever you make a Charisma check, you gain a bonus to the check equal to your Wisdom modifier."
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Beguiling Twist",
+										"entries": [
+											"{@i 11th-level Fey Wanderer feature}",
+											"You learn how to manipulate mind-altering magic, channeling it from your allies toward others. Whenever a creature you can see within 120 feet of you succeeds on a saving throw against being {@condition charmed} or {@condition frightened}, you can use your reaction to force a different creature you can see within 120 feet of you to succeed on a Wisdom saving throw against your spell save DC or suffer your choice of one of the following effects:",
+											{
+												"type": "list",
+												"items": [
+													"The creature is {@condition charmed} or {@condition frightened} by you (your choice) for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a successful save.",
+													"The creature takes {@dice 3d10} psychic damage."
+												]
+											}
+										]
+									}
+								]
+							}
+						],
+						[
+							{
+								"entries": [
+									{
+										"type": "entries",
+										"name": "Misty Presence",
+										"entries": [
+											"{@i 15th-level Fey Wanderer feature}",
+											"You can magically remove yourself from one creature's perception: you gain a bonus action that you can use to force a creature you can see within 30 feet of you to make a Wisdom saving throw against your spell save DC. On a failed save, the target can't see or hear you for 24 hours. The target can repeat the saving throw at the end of any turn during which you hit it with an attack roll, forced it to make a saving throw, or dealt damage to it. The effect ends early if you use this bonus action again. On a successful save, the target is immune to this feature for 7 days.",
+											"Once you've used this bonus action, you can't use it again until you finish a long rest or until you expend a spell slot of 4th level or higher to use it again."
+										]
+									}
+								]
+							}
+						]
+					]
 				}
 			],
 			"fluff": [
 				{
+					"name": "Ranger",
+					"type": "section",
 					"entries": [
 						"Rough and wild looking, a human stalks alone through the shadows of trees, hunting the orcs he knows are planning a raid on a nearby farm. Clutching a shortsword in each hand, he becomes a whirlwind of steel, cutting down one enemy after another.",
 						"After tumbling away from a cone of freezing air, an elf finds her feet and draws back her bow to loose an arrow at the white dragon. Shrugging off the wave of fear that emanates from the dragon like the cold of its breath, she sends one arrow after another to find the gaps between the dragon's thick scales.",
@@ -6270,6 +6789,7 @@
 					"page": 89
 				},
 				{
+					"type": "section",
 					"entries": [
 						{
 							"type": "quote",

@@ -53,9 +53,6 @@ class PageFilterBestiary extends PageFilter {
 	constructor () {
 		super();
 
-		this._creatureMeta = {};
-		this._languages = {};
-
 		const crFilter = new RangeFilter({
 			header: "Challenge Rating",
 			isLabelled: true,
@@ -107,7 +104,7 @@ class PageFilterBestiary extends PageFilter {
 		});
 		const languageFilter = new Filter({
 			header: "Languages",
-			displayFn: (k) => this._languages[k],
+			displayFn: (k) => Parser.monLanguageTagToFull(k),
 			umbrellaItems: ["X", "XX"],
 			umbrellaExcludes: ["CS"]
 		});
@@ -115,6 +112,11 @@ class PageFilterBestiary extends PageFilter {
 			header: "Damage Inflicted",
 			displayFn: (it) => Parser.dmgTypeToFull(it).toTitleCase(),
 			items: ["A", "B", "C", "F", "O", "L", "N", "P", "I", "Y", "R", "S", "T"]
+		});
+		const conditionsInflictedFilter = new Filter({
+			header: "Conditions Inflicted",
+			displayFn: StrUtil.toTitleCase,
+			items: [...Parser.CONDITIONS]
 		});
 		const senseFilter = new Filter({
 			header: "Senses",
@@ -201,6 +203,7 @@ class PageFilterBestiary extends PageFilter {
 		this._alignmentFilter = alignmentFilter;
 		this._languageFilter = languageFilter;
 		this._damageTypeFilter = damageTypeFilter;
+		this._conditionsInflictedFilter = conditionsInflictedFilter;
 		this._senseFilter = senseFilter;
 		this._skillFilter = skillFilter;
 		this._saveFilter = saveFilter;
@@ -260,9 +263,10 @@ class PageFilterBestiary extends PageFilter {
 			});
 		}
 		if (mon.isNpc) mon._fMisc.push("Adventure NPC");
-		if (mon.legendaryGroup && (this._creatureMeta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name]) {
-			if ((this._creatureMeta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name].lairActions) mon._fMisc.push("Lair Actions");
-			if ((this._creatureMeta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name].regionalEffects) mon._fMisc.push("Regional Effects");
+		const legGroup = DataUtil.monster.getMetaGroup(mon);
+		if (legGroup) {
+			if (legGroup.lairActions) mon._fMisc.push("Lair Actions");
+			if (legGroup.regionalEffects) mon._fMisc.push("Regional Effects");
 		}
 		if (mon.reaction) mon._fMisc.push("Reactions");
 		if (mon.variant) mon._fMisc.push("Has Variants");
@@ -293,9 +297,9 @@ class PageFilterBestiary extends PageFilter {
 	}
 
 	async _pPopulateBoxOptions (opts) {
-		await Renderer.monster.pPopulateMetaAndLanguages(this._creatureMeta, this._languages);
-		Object.keys(this._languages).sort((a, b) => SortUtil.ascSortLower(this._languages[a], this._languages[b]))
-			.forEach(la => this._languageFilter.addItem(la));
+		Object.entries(Parser.MON_LANGUAGE_TAG_TO_FULL)
+			.sort(([kA, vA], [kB, vB]) => SortUtil.ascSortLower(vA, vB))
+			.forEach(([k]) => this._languageFilter.addItem(k));
 
 		opts.filters = [
 			this._sourceFilter,
@@ -318,6 +322,7 @@ class PageFilterBestiary extends PageFilter {
 			this._senseFilter,
 			this._languageFilter,
 			this._damageTypeFilter,
+			this._conditionsInflictedFilter,
 			this._acFilter,
 			this._averageHpFilter,
 			this._abilityScoreFilter
@@ -351,6 +356,7 @@ class PageFilterBestiary extends PageFilter {
 			m.senseTags,
 			m.languageTags,
 			m.damageTags,
+			m.conditionInflicted,
 			m._fAc,
 			m._fHp,
 			[
@@ -366,21 +372,7 @@ class PageFilterBestiary extends PageFilter {
 }
 PageFilterBestiary._NEUT_ALIGNS = ["NX", "NY"];
 PageFilterBestiary.MISC_FILTER_SPELLCASTER = "Spellcaster, ";
-PageFilterBestiary.DMG_TYPES = [
-	"acid",
-	"bludgeoning",
-	"cold",
-	"fire",
-	"force",
-	"lightning",
-	"necrotic",
-	"piercing",
-	"poison",
-	"psychic",
-	"radiant",
-	"slashing",
-	"thunder"
-];
+PageFilterBestiary.DMG_TYPES = [...Parser.DMG_TYPES];
 PageFilterBestiary.CONDS = [
 	"blinded",
 	"charmed",

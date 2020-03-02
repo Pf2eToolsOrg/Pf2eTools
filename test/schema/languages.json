@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"type": "object",
 
 	"properties": {
@@ -44,6 +44,12 @@
 						"$ref": "util.json#/definitions/additionalSources"
 					},
 					"dialects": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"fonts": {
 						"type": "array",
 						"items": {
 							"type": "string"

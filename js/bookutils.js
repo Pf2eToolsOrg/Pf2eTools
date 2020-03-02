@@ -474,6 +474,8 @@ const BookUtil = {
 				}
 			}
 		})();
+
+		$(`.bk__overlay-loading`).remove();
 	},
 
 	indexListToggle (evt, ele) {
@@ -579,8 +581,6 @@ const BookUtil = {
 					pHandleFound(fromIndex, bookData);
 				})
 		} else handleNotFound();
-
-		$(`.bk__overlay-loading`).remove();
 	},
 
 	_renderer: new Renderer().setEnumerateTitlesRel(true),

@@ -1,22 +1,41 @@
 // TODO implement remaining methods
 class RendererMarkdown {
+	static async pInit () {
+		const settings = await StorageUtil.pGet("bookViewSettingsMarkdown") || Object.entries(RendererMarkdown._CONFIG).mergeMap(([k, v]) => ({[k]: v.default}));
+		Object.assign(RendererMarkdown, settings);
+		RendererMarkdown._isInit = true;
+	}
+
+	static checkInit () {
+		if (!RendererMarkdown._isInit) throw new Error(`RendererMarkdown has not been initialised!`);
+	}
+
 	constructor () {
 		// FIXME this is awful
 		const renderer = new Renderer();
+		this.__super = {};
 		for (const k in renderer) {
 			if (this[k] === undefined) {
 				if (typeof renderer[k] === "function") this[k] = renderer[k].bind(this);
 				else this[k] = MiscUtil.copy(renderer[k]);
+			} else {
+				if (typeof renderer[k] === "function") this.__super[k] = renderer[k].bind(this);
+				else this.__super[k] = MiscUtil.copy(renderer[k]);
 			}
 		}
 	}
 
 	static get () {
+		RendererMarkdown.checkInit();
+
 		return new RendererMarkdown().setFnPostProcess(RendererMarkdown._fnPostProcess);
 	}
 
 	static _fnPostProcess (str) {
-		return str.replace(/\n\n+/g, "\n\n");
+		return str
+			.trim()
+			.replace(/\n\n+/g, "\n\n")
+			.replace(/(>\n>\n)+/g, ">\n");
 	}
 
 	static _getNextPrefix (options, prefix) {
@@ -51,8 +70,10 @@ class RendererMarkdown {
 			for (let i = 0; i < len; ++i) {
 				meta.depth = nextDepth;
 				const isFirstInline = i === 0 && entry.name && isInlineTitle;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: isFirstInline ? "" : RendererMarkdown._getNextPrefix(options), suffix: "\n\n"});
+				const suffix = meta.isDataCreature ? `  \n` : `\n\n`;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: isFirstInline ? "" : RendererMarkdown._getNextPrefix(options), suffix});
 			}
+			if (meta.isDataCreature) textStack[0] += "\n";
 			meta.depth = cacheDepth;
 		}
 	}
@@ -78,16 +99,26 @@ class RendererMarkdown {
 
 		if (entry.name) textStack[0] += `##### ${entry.name}`;
 		const indentSpaces = "  ".repeat(listDepth);
-
 		const len = entry.items.length;
-		for (let i = 0; i < len; ++i) {
-			const item = entry.items[i];
-			// Special case for child lists -- avoid double-hyphen-prefixing
-			textStack[0] += `${RendererMarkdown._getNextPrefix(options)}${indentSpaces}${item.type === "list" ? "" : `- `}`;
 
-			const cacheDepth = this._adjustDepth(meta, 1);
-			this._recursiveRender(entry.items[i], textStack, meta, {suffix: "\n"});
-			meta.depth = cacheDepth;
+		// Special formatting for spellcasting lists (data attrib added by main renderer spellcasting -> entries)
+		if (entry.data && entry.data.isSpellList) {
+			for (let i = 0; i < len; ++i) {
+				textStack[0] += `${RendererMarkdown._getNextPrefix(options)}${indentSpaces}`;
+				const cacheDepth = this._adjustDepth(meta, 1);
+				this._recursiveRender(entry.items[i], textStack, meta, {suffix: "\n"});
+				meta.depth = cacheDepth;
+			}
+		} else {
+			for (let i = 0; i < len; ++i) {
+				const item = entry.items[i];
+				// Special case for child lists -- avoid double-hyphen-prefixing
+				textStack[0] += `${RendererMarkdown._getNextPrefix(options)}${indentSpaces}${item.type === "list" ? "" : `- `}`;
+
+				const cacheDepth = this._adjustDepth(meta, 1);
+				this._recursiveRender(entry.items[i], textStack, meta, {suffix: "\n"});
+				meta.depth = cacheDepth;
+			}
 		}
 
 		textStack[0] += "\n";
@@ -346,6 +377,7 @@ class RendererMarkdown {
 	_renderItem (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		textStack[0] += `**${this.render(entry.name)}** `;
+		let addedNewline = false;
 		if (entry.entry) this._recursiveRender(entry.entry, textStack, meta);
 		else if (entry.entries) {
 			const len = entry.entries.length;
@@ -353,8 +385,9 @@ class RendererMarkdown {
 				const nxtPrefix = RendererMarkdown._getNextPrefix(options, i > 0 ? "  " : "");
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: nxtPrefix, suffix: "\n"});
 			}
+			addedNewline = true;
 		}
-		textStack[0] += "\n";
+		if (!addedNewline) textStack[0] += "\n";
 		this._renderSuffix(entry, textStack, meta, options);
 	}
 
@@ -367,13 +400,19 @@ class RendererMarkdown {
 
 	_renderItemSpell (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		this._recursiveRender(entry.entry, textStack, meta, {prefix: RendererMarkdown._getNextPrefix(options, `${entry.name} `), suffix: "\n"});
+		this._recursiveRender(entry.entry, textStack, meta, {prefix: RendererMarkdown._getNextPrefix(options, `${entry.name} `), suffix: "  \n"});
 		this._renderSuffix(entry, textStack, meta, options);
 	}
 	// endregion
 
 	// region data
 	_renderDataCreature (entry, textStack, meta, options) {
+		let addedDataCreature;
+		if (!meta.isDataCreature) {
+			meta.isDataCreature = true;
+			addedDataCreature = true;
+		}
+
 		const mon = entry.dataCreature;
 
 		const monTypes = Parser.monTypeToFullObj(mon.type);
@@ -384,34 +423,54 @@ class RendererMarkdown {
 		const damImmPart = mon.immune ? `\n>- **Damage Immunities** ${Parser.monImmResToFull(mon.immune)}` : "";
 		const condImmPart = mon.conditionImmune ? `\n>- **Condition Immunities** ${Parser.monCondImmToFull(mon.conditionImmune, true)}` : "";
 
-		const traitArray = RendererMarkdown.monster.getOrderedTraits(mon);
-		const traitsPart = traitArray && traitArray.length ? `\n${RendererMarkdown.monster._getRenderedSection(traitArray, 1)}` : "";
+		const traitArray = RendererMarkdown.monster.getOrderedTraits(mon, meta);
+		const traitsPart = traitArray && traitArray.length ? `\n${RendererMarkdown.monster._getRenderedSection(traitArray, 1, meta)}` : "";
 
-		const actionsPart = mon.action ? `\n>### Actions\n${RendererMarkdown.monster._getRenderedSection(mon.action, 1)}` : "";
-		const reactionsPart = mon.reaction ? `\n>### Reactions\n${RendererMarkdown.monster._getRenderedSection(mon.reaction, 1)}` : "";
-		const legendaryActionsPart = mon.legendary ? `\n>### Legendary Actions\n>${Renderer.monster.getLegendaryActionIntro(mon, RendererMarkdown.get())}\n${RendererMarkdown.monster._getRenderedSection(mon.legendary, 1)}` : "";
+		const actionsPart = mon.action ? `\n>### Actions\n${RendererMarkdown.monster._getRenderedSection(mon.action, 1, meta)}` : "";
+		const reactionsPart = mon.reaction ? `\n>### Reactions\n${RendererMarkdown.monster._getRenderedSection(mon.reaction, 1, meta)}` : "";
+		const legendaryActionsPart = mon.legendary ? `\n>### Legendary Actions\n>${Renderer.monster.getLegendaryActionIntro(mon, RendererMarkdown.get())}\n>\n${RendererMarkdown.monster._getRenderedLegendarySection(mon.legendary, 1, meta)}` : "";
 
-		const footerPart = mon.footer ? `\n${RendererMarkdown.monster._getRenderedSection(mon.footer, 0)}` : "";
+		const footerPart = mon.footer ? `\n${RendererMarkdown.monster._getRenderedSection(mon.footer, 0, meta)}` : "";
 
-		const str = `---
+		const unbreakablePart = `___
 >## ${mon._displayName || mon.name}
 >*${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${monTypes.asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}` : ""}*
 >___
->- **Armor Class** ${Parser.acToFull(mon.ac)}
+>- **Armor Class** ${Parser.acToFull(mon.ac, this)}
 >- **Hit Points** ${Renderer.monster.getRenderedHp(mon.hp, true)}
 >- **Speed** ${Parser.getSpeedString(mon)}
 >___
 >|${Parser.ABIL_ABVS.map(it => `${it.toUpperCase()}|`).join("")}
 >|:---:|:---:|:---:|:---:|:---:|:---:|
->|${Parser.ABIL_ABVS.map(ab => `${mon[ab]} (${Parser.getAbilityModifier(mon[ab])})|`)}
+>|${Parser.ABIL_ABVS.map(ab => `${mon[ab]} (${Parser.getAbilityModifier(mon[ab])})|`).join("")}
 >___${savePart}${skillPart}${damVulnPart}${damResPart}${damImmPart}${condImmPart}
 >- **Senses** ${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses, true)}, ` : ""}passive Perception ${mon.passive || "\u2014"}
 >- **Languages** ${Renderer.monster.getRenderedLanguages(mon.languages)}
 >- **Challenge** ${mon.cr ? Parser.monCrToFull(mon.cr) : "\u2014"}
->___${traitsPart}${actionsPart}${reactionsPart}${legendaryActionsPart}${footerPart}`;
+>___`;
+
+		let breakablePart = `${traitsPart}${actionsPart}${reactionsPart}${legendaryActionsPart}${footerPart}`;
+
+		if (RendererMarkdown._isAddColumnBreaks) {
+			let charAllowanceFirstCol = 2200 - unbreakablePart.length;
+
+			const breakableLines = breakablePart.split("\n");
+			for (let i = 0; i < breakableLines.length; ++i) {
+				const l = breakableLines[i];
+				if ((charAllowanceFirstCol -= l.length) < 0) {
+					breakableLines.splice(i, 0, ">", "> \\columnbreak", ">");
+					break;
+				}
+			}
+			breakablePart = breakableLines.join("\n");
+		}
+
+		const str = `${unbreakablePart}${breakablePart}`;
 
 		const monRender = str.trim().split("\n").map(it => it.trim() ? it : `>`).join("\n");
 		textStack[0] += `\n${monRender}\n\n`;
+
+		if (addedDataCreature) delete meta.isDataCreature;
 	}
 
 	_renderDataSpell (entry, textStack, meta, options) {
@@ -529,10 +588,186 @@ class RendererMarkdown {
 	// endregion
 
 	// region primitives
-	_renderString (entry, textStack, meta, options) { textStack[0] += entry }
+	_renderString (entry, textStack, meta, options) {
+		switch (RendererMarkdown._tagRenderMode || 0) {
+			// render tags where possible
+			case 0: {
+				this._renderString_renderMode0(entry, textStack, meta, options);
+				break;
+			}
+			// leave tags as-is
+			case 1: {
+				textStack[0] += entry;
+				break;
+			}
+			// strip tags
+			case 2: {
+				textStack[0] += Renderer.stripTags(entry);
+				break;
+			}
+		}
+	}
+
+	_renderString_renderMode0 (entry, textStack, meta, options) {
+		const tagSplit = Renderer.splitByTags(entry);
+		const len = tagSplit.length;
+		for (let i = 0; i < len; ++i) {
+			const s = tagSplit[i];
+			if (!s) continue;
+			if (s[0] === "@") {
+				const [tag, text] = Renderer.splitFirstSpace(s);
+				this._renderString_renderTag(textStack, meta, options, tag, text);
+			} else textStack[0] += s;
+		}
+	}
+
+	_renderString_renderTag (textStack, meta, options, tag, text) {
+		switch (tag) {
+			// BASIC STYLES/TEXT ///////////////////////////////////////////////////////////////////////////////
+			case "@b":
+			case "@bold":
+				textStack[0] += `**`;
+				this._recursiveRender(text, textStack, meta);
+				textStack[0] += `**`;
+				break;
+			case "@i":
+			case "@italic":
+				textStack[0] += `*`;
+				this._recursiveRender(text, textStack, meta);
+				textStack[0] += `*`;
+				break;
+			case "@s":
+			case "@strike":
+				textStack[0] += `~~`;
+				this._recursiveRender(text, textStack, meta);
+				textStack[0] += `~~`;
+				break;
+			case "@atk": textStack[0] += `*${Renderer.attackTagToFull(text)}*`; break;
+			case "@h": textStack[0] += `*Hit:* `; break;
+
+			// DCs /////////////////////////////////////////////////////////////////////////////////////////////
+			case "@dc": textStack[0] += `DC ${text}`; break;
+
+			// DICE ////////////////////////////////////////////////////////////////////////////////////////////
+			case "@dice":
+			case "@damage":
+			case "@hit":
+			case "@d20":
+			case "@chance":
+			case "@recharge":
+				textStack[0] += Renderer.stripTags(`{${tag} ${text}}`); break;
+
+			// SCALE DICE //////////////////////////////////////////////////////////////////////////////////////
+			case "@scaledice":
+			case "@scaledamage":
+				textStack[0] += Renderer.stripTags(`{${tag} ${text}}`); break;
+
+			// LINKS ///////////////////////////////////////////////////////////////////////////////////////////
+			case "@filter":
+				textStack[0] += Renderer.stripTags(`{${tag} ${text}}`); break;
+
+			case "@link":
+			case "@5etools":
+				this.__super._renderString_renderTag(textStack, meta, options, tag, text); break;
+
+			// OTHER HOVERABLES ////////////////////////////////////////////////////////////////////////////////
+			case "@footnote":
+			case "@homebrew":
+			case "@skill":
+			case "@sense":
+			case "@area":
+				textStack[0] += Renderer.stripTags(`{${tag} ${text}}`); break;
+
+			// HOMEBREW LOADING ////////////////////////////////////////////////////////////////////////////////
+			case "@loader": {
+				const {name, path} = this._renderString_getLoaderTagMeta(text);
+				textStack[0] += `[${name}](${path})`;
+				break;
+			}
+
+			// CONTENT TAGS ////////////////////////////////////////////////////////////////////////////////////
+			case "@book":
+			case "@adventure":
+				textStack[0] += `*${Renderer.stripTags(`{${tag} ${text}}`)}*`; break;
+
+			case "@deity":
+				textStack[0] += `**${Renderer.stripTags(`{${tag} ${text}}`)}**`; break;
+
+			default: {
+				switch (tag) {
+					case "@spell":
+					case "@item":
+					case "@psionic":
+						textStack[0] += `*${Renderer.stripTags(`{${tag} ${text}}`)}*`; break;
+					case "@creature":
+						textStack[0] += `**${Renderer.stripTags(`{${tag} ${text}}`)}**`; break;
+					default:
+						textStack[0] += Renderer.stripTags(`{${tag} ${text}}`); break;
+				}
+			}
+		}
+	}
+
 	_renderPrimitive (entry, textStack, meta, options) { textStack[0] += `${entry}` }
 	// endregion
+
+	// region Static options
+	static async pShowSettingsModal () {
+		RendererMarkdown.checkInit();
+
+		const {$modalInner} = UiUtil.getShowModal({
+			title: "Markdown Settings",
+			cbClose: () => RendererMarkdown.__$wrpSettings.detach()
+		});
+		if (!RendererMarkdown.__$wrpSettings) {
+			const _compMarkdownSettings = BaseComponent.fromObject({
+				_tagRenderMode: RendererMarkdown._tagRenderMode,
+				_isAddColumnBreaks: RendererMarkdown._isAddColumnBreaks
+			});
+			const compMarkdownSettings = _compMarkdownSettings.getPod();
+			const saveMarkdownSettingsDebounced = MiscUtil.debounce(() => StorageUtil.pSet("bookViewSettingsMarkdown", _compMarkdownSettings.toObject()), 100);
+			compMarkdownSettings.addHookAll(() => {
+				Object.assign(RendererMarkdown, compMarkdownSettings.getState());
+				saveMarkdownSettingsDebounced();
+			});
+
+			const $rows = Object.entries(RendererMarkdown._CONFIG)
+				.map(([k, v]) => {
+					let $ipt;
+					switch (v.type) {
+						case "boolean": {
+							$ipt = ComponentUiUtil.$getCbBool(_compMarkdownSettings, k).addClass("mr-1");
+							break;
+						}
+						case "enum": {
+							$ipt = ComponentUiUtil.$getSelEnum(_compMarkdownSettings, k, {values: v.values, fnDisplay: v.fnDisplay});
+							break;
+						}
+						default: throw new Error(`Unhandled input type!`);
+					}
+
+					return $$`<div class="m-1 stripe-even"><label class="split-v-center">
+						<div class="w-100 mr-2">${v.name}</div>
+						${$ipt.addClass("mw-33")}
+					</label></div>`
+				});
+
+			RendererMarkdown.__$wrpSettings = $$`<div class="flex-v-col w-100 h-100">${$rows}</div>`;
+		}
+		RendererMarkdown.__$wrpSettings.appendTo($modalInner);
+	}
+	// endregion
 }
+RendererMarkdown._isInit = false;
+RendererMarkdown.__$wrpSettings = null;
+RendererMarkdown._TAG_RENDER_MODES = ["Convert to Markdown", "Leave As-Is", "Convert to Text"];
+RendererMarkdown._CONFIG = {
+	_tagRenderMode: {default: 0, name: "Tag Handling (<code>@tag</code>)", fnDisplay: ix => RendererMarkdown._TAG_RENDER_MODES[ix], type: "enum", values: [0, 1, 2]},
+	_isAddColumnBreaks: {default: false, name: "Add GM Binder Column Breaks (<code>\\columnbreak</code>)", type: "boolean"},
+	_isAddPageBreaks: {default: false, name: "Add GM Binder Page Breaks (<code>\\pagebreak</code>)", type: "boolean"}
+};
+
+window.addEventListener("load", () => RendererMarkdown.pInit());
 
 RendererMarkdown.utils = class {
 	static getPageText (it) {
@@ -581,32 +816,115 @@ RendererMarkdown.monster = class {
 		} else return skills;
 	}
 
-	static _getRenderedSection (sectionEntries, sectionLevel) {
+	static _getRenderedSection (sectionEntries, sectionLevel, meta) {
 		const renderer = RendererMarkdown.get();
-		const renderStack = [];
+		const renderStack = [""];
 		sectionEntries.forEach(e => {
-			if (e.rendered) renderStack.push(e.rendered);
-			else renderer.recursiveRender(e, renderStack, {depth: sectionLevel + 1}, {prefix: ">"});
+			if (e.rendered) renderStack[0] += e.rendered;
+			else {
+				const cacheDepth = meta.depth;
+				meta.depth = sectionLevel + 1;
+				renderer._recursiveRender(e, renderStack, meta, {prefix: ">"});
+				meta.depth = cacheDepth;
+			}
 		});
 		return renderStack.join("");
 	}
 
-	static getOrderedTraits (mon) {
+	static _getRenderedLegendarySection (sectionEntries, sectionLevel, meta) {
+		const renderer = RendererMarkdown.get();
+		const renderStack = [""];
+
+		const cpy = MiscUtil.copy(sectionEntries).map(it => {
+			if (it.name && it.entries) {
+				it.name = `${it.name}.`;
+				it.type = it.type || "item";
+			}
+			return it;
+		});
+
+		const toRender = {type: "list", style: "list-hang-notitle", items: cpy};
+		const cacheDepth = meta.depth;
+		meta.depth = sectionLevel;
+		renderer._recursiveRender(toRender, renderStack, meta, {prefix: ">"});
+		meta.depth = cacheDepth;
+
+		return renderStack.join("");
+	}
+
+	static getOrderedTraits (mon, meta) {
 		let traits = mon.trait ? MiscUtil.copy(mon.trait) : null;
-		if (mon.spellcasting) traits = (traits || []).concat(RendererMarkdown.monster.getSpellcastingRenderedTraits(mon));
+		if (mon.spellcasting) traits = (traits || []).concat(RendererMarkdown.monster.getSpellcastingRenderedTraits(mon, meta));
 		if (traits) return traits.sort((a, b) => SortUtil.monTraitSort(a.name, b.name));
 	}
 
-	static getSpellcastingRenderedTraits (mon) {
+	static getSpellcastingRenderedTraits (mon, meta) {
+		const renderer = RendererMarkdown.get();
 		const out = [];
+		const cacheDepth = meta.depth;
+		meta.depth = 2;
 		mon.spellcasting.forEach(entry => {
 			entry.type = entry.type || "spellcasting";
-			const renderStack = [];
-			RendererMarkdown.get().recursiveRender(entry, renderStack, {depth: 2}, {prefix: ">"});
+			const renderStack = [""];
+			renderer._recursiveRender(entry, renderStack, meta, {prefix: ">"});
 			out.push({name: entry.name, rendered: renderStack.join("")});
 		});
+		meta.depth = cacheDepth;
 		return out;
 	}
+
+	// region Exporting
+	static async pGetMarkdownDoc (monsters) {
+		const asEntries = (await Promise.all(monsters
+			.map(async (mon, i) => {
+				const monEntry = ({type: "dataCreature", dataCreature: mon});
+
+				const fluff = await Renderer.utils.pGetFluff({
+					isImages: false,
+					noInfoDisplay: "",
+					noImagesDisplay: "",
+					entity: mon,
+					fnFluffBuilder: Renderer.monster.getFluff.bind(null, mon),
+					fluffBaseUrl: `data/bestiary/`
+				});
+
+				RendererMarkdown.get().setFirstSection(true);
+				const fluffText = fluff.map(ent => RendererMarkdown.get().render(ent)).join("\n\n");
+
+				const out = [monEntry];
+
+				if (fluffText) {
+					// Insert a page break before every fluff section
+					if (RendererMarkdown._isAddPageBreaks) out.push("", "\\pagebreak", "");
+
+					out.push(`## ${mon.name}`);
+
+					const PAGE_CHARS = 5500;
+
+					// Split into runs of <6000 characters, and join these with page breaks
+					let stack = [];
+					let charLimit = PAGE_CHARS;
+					fluffText.split("\n").forEach(l => {
+						if ((charLimit -= l.length) < 0) {
+							out.push(stack.join("\n"));
+							if (RendererMarkdown._isAddPageBreaks) out.push("", "\\pagebreak", "");
+							stack = [];
+							charLimit = PAGE_CHARS - l.length;
+						}
+						stack.push(l);
+					});
+					if (stack.length) out.push(stack.join("\n"));
+				}
+
+				// Insert a page break after every creature statblock or fluff section
+				if (i !== monsters.length - 1 && RendererMarkdown._isAddPageBreaks) out.push("", "\\pagebreak", "");
+				return out;
+			})))
+			.flat();
+
+		return RendererMarkdown.get().render({entries: asEntries});
+	}
+	// endregion
 };
 
 class MarkdownConverter {

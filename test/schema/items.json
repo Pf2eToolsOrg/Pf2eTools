@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.5.5",
+	"version": "1.5.6",
 	"type": "object",
 	"definitions": {
 		"itemData": {
@@ -128,6 +128,7 @@
 					"type": "boolean"
 				},
 				"staff": {
+					"description": "Adds the italicized \"Staff\" text to the item info line (below the name).",
 					"type": "boolean"
 				},
 				"tier": {
@@ -285,6 +286,42 @@
 				},
 				"srd": {
 					"$ref": "util.json#/definitions/srd"
+				},
+				"packContents": {
+					"type": "array",
+					"items": {
+						"oneOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"special": {
+										"type": "string"
+									},
+									"quantity": {
+										"type": "integer"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["special"]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"item": {
+										"type": "string"
+									},
+									"quantity": {
+										"type": "integer"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["item", "quantity"]
+							}
+						]
+					}
 				}
 			},
 			"additionalProperties": false

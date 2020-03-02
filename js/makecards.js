@@ -691,7 +691,7 @@ MakeCards.utils = class {
 
 		if (item.type && (MakeCards.utils.itemPropertyMap[item.type] || Renderer.item.typeMap[item.type])) {
 			Renderer.item._initFullEntries(item);
-			(MakeCards.utils.itemTypeMap[item.type] || Renderer.item.typeMap[item.type]).entries.forEach(e => item._fullEntries.push(e));
+			(((MakeCards.utils.itemTypeMap[item.type] || Renderer.item.typeMap[item.type]) || {}).entries || []).forEach(e => item._fullEntries.push(e));
 		}
 
 		if (item.property) {

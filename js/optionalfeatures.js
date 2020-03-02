@@ -9,54 +9,14 @@ function optFeatSort (itemA, itemB, options) {
 	return SortUtil.listSort(itemA, itemB, options);
 }
 
-function filterFeatureTypeSort (a, b) {
-	return SortUtil.ascSort(Parser.optFeatureTypeToFull(a.item), Parser.optFeatureTypeToFull(b.item))
-}
-
 class OptionalFeaturesPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-		const typeFilter = new Filter({
-			header: "Feature Type",
-			items: ["AI", "ED", "EI", "MM", "MV", "MV:B", "OTH", "FS:F", "FS:B", "FS:P", "FS:R", "PB"],
-			displayFn: Parser.optFeatureTypeToFull,
-			itemSortFn: filterFeatureTypeSort
-		});
-		const pactFilter = new Filter({
-			header: "Pact Boon",
-			items: ["Blade", "Chain", "Tome"],
-			displayFn: Parser.prereqPactToFull
-		});
-		const patronFilter = new Filter({
-			header: "Otherworldly Patron",
-			items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Kraken", "The Raven Queen", "The Seeker"],
-			displayFn: Parser.prereqPatronToShort
-		});
-		const spellFilter = new Filter({
-			header: "Spell",
-			items: ["eldritch blast", "hex/curse"],
-			displayFn: StrUtil.toTitleCase
-		});
-		const featureFilter = new Filter({
-			header: "Feature",
-			displayFn: StrUtil.toTitleCase
-		});
-		const levelFilter = new Filter({
-			header: "Level",
-			itemSortFn: SortUtil.ascSortNumericalSuffix,
-			nests: []
-		});
-		const prerequisiteFilter = new MultiFilter({header: "Prerequisite", filters: [pactFilter, patronFilter, spellFilter, levelFilter, featureFilter]});
+		const pageFilter = new PageFilterOptionalFeatures();
 
 		super({
 			dataSource: "data/optionalfeatures.json",
 
-			filters: [
-				sourceFilter,
-				typeFilter,
-				prerequisiteFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "optfeatures",
 			listOptions: {
@@ -70,63 +30,10 @@ class OptionalFeaturesPage extends ListPage {
 
 			dataProps: ["optionalfeature"]
 		});
-
-		this._sourceFilter = sourceFilter;
-		this._typeFilter = typeFilter;
-		this._pactFilter = pactFilter;
-		this._patronFilter = patronFilter;
-		this._spellFilter = spellFilter;
-		this._featureFilter = featureFilter;
-		this._levelFilter = levelFilter;
 	}
 
 	getListItem (it, ivI, isExcluded) {
-		it.featureType = it.featureType || "OTH";
-		if (it.prerequisite) {
-			it._sPrereq = true;
-			it._fPrereqPact = it.prerequisite.filter(it => it.pact).map(it => {
-				this._pactFilter.addItem(it.pact);
-				return it.pact;
-			});
-			it._fPrereqPatron = it.prerequisite.filter(it => it.patron).map(it => {
-				this._patronFilter.addItem(it.patron);
-				return it.patron;
-			});
-			it._fprereqSpell = it.prerequisite.filter(it => it.spell).map(it => {
-				const mapped = (it.spell || []).map(it => it.split("#")[0].split("|")[0]);
-				this._spellFilter.addItem(mapped);
-				return mapped;
-			});
-			it._fprereqFeature = it.prerequisite.filter(it => it.feature).map(it => {
-				this._featureFilter.addItem(it.feature);
-				return it.feature;
-			});
-			it._fPrereqLevel = it.prerequisite.filter(it => it.level).map(it => {
-				const lvlMeta = it.level;
-				const item = new FilterItem({
-					item: `${lvlMeta.class.name}${lvlMeta.subclass ? ` (${lvlMeta.subclass.name})` : ""} Level ${lvlMeta.level}`,
-					nest: lvlMeta.class.name
-				});
-				this._levelFilter.addNest(lvlMeta.class.name, {isHidden: true});
-				this._levelFilter.addItem(item);
-				return item;
-			});
-		}
-
-		if (it.featureType instanceof Array) {
-			it._dFeatureType = it.featureType.map(ft => Parser.optFeatureTypeToFull(ft));
-			it._lFeatureType = it.featureType.join(", ");
-			it.featureType.sort((a, b) => SortUtil.ascSortLower(Parser.optFeatureTypeToFull(a), Parser.optFeatureTypeToFull(b)));
-		} else {
-			it._dFeatureType = Parser.optFeatureTypeToFull(it.featureType);
-			it._lFeatureType = it.featureType;
-		}
-
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(it.source);
-			this._typeFilter.addItem(it.featureType);
-		}
+		this._pageFilter.mutateAndAddToFilters(it, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -169,21 +76,7 @@ class OptionalFeaturesPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter(item => {
-			const it = this._dataList[item.ix];
-			return this._filterBox.toDisplay(
-				f,
-				it.source,
-				it.featureType,
-				[
-					it._fPrereqPact,
-					it._fPrereqPatron,
-					it._fprereqSpell,
-					it._fPrereqLevel,
-					it._fprereqFeature
-				]
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 

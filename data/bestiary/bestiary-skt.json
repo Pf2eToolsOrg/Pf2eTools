@@ -1030,6 +1030,9 @@
 				"MW",
 				"RCH",
 				"RW"
+			],
+			"conditionInflicted": [
+				"prone"
 			]
 		},
 		{
@@ -1112,6 +1115,9 @@
 			],
 			"miscTags": [
 				"MW"
+			],
+			"conditionInflicted": [
+				"prone"
 			]
 		},
 		{
@@ -1139,6 +1145,7 @@
 		{
 			"name": "Cryovain",
 			"isNpc": true,
+			"isNamedCreature": true,
 			"source": "SKT",
 			"page": 165,
 			"_copy": {
@@ -1339,6 +1346,9 @@
 				"MW",
 				"RNG",
 				"RW"
+			],
+			"conditionInflicted": [
+				"incapacitated"
 			]
 		},
 		{
@@ -1553,6 +1563,9 @@
 				"MW",
 				"RCH",
 				"RW"
+			],
+			"conditionInflicted": [
+				"prone"
 			]
 		},
 		{
@@ -1800,6 +1813,7 @@
 		{
 			"name": "Felgolos",
 			"isNpc": true,
+			"isNamedCreature": true,
 			"source": "SKT",
 			"page": 192,
 			"_copy": {
@@ -2088,6 +2102,9 @@
 				"RCH",
 				"RW",
 				"THW"
+			],
+			"conditionInflicted": [
+				"restrained"
 			]
 		},
 		{
@@ -2196,6 +2213,9 @@
 			"miscTags": [
 				"MW",
 				"RCH"
+			],
+			"conditionInflicted": [
+				"grappled"
 			]
 		},
 		{
@@ -2358,6 +2378,7 @@
 		{
 			"name": "Isendraug",
 			"isNpc": true,
+			"isNamedCreature": true,
 			"source": "SKT",
 			"page": 164,
 			"_copy": {
@@ -2551,6 +2572,10 @@
 				"AOE",
 				"MW",
 				"RCH"
+			],
+			"conditionInflicted": [
+				"frightened",
+				"prone"
 			]
 		},
 		{
@@ -2680,6 +2705,9 @@
 				"RCH",
 				"RW",
 				"THW"
+			],
+			"conditionInflicted": [
+				"restrained"
 			]
 		},
 		{
@@ -2989,6 +3017,9 @@
 				"MW",
 				"RCH",
 				"RW"
+			],
+			"conditionInflicted": [
+				"deafened"
 			]
 		},
 		{
@@ -3250,6 +3281,10 @@
 				"AOE",
 				"MW",
 				"RCH"
+			],
+			"conditionInflicted": [
+				"frightened",
+				"prone"
 			]
 		},
 		{
@@ -4716,6 +4751,10 @@
 			],
 			"miscTags": [
 				"MW"
+			],
+			"conditionInflicted": [
+				"blinded",
+				"restrained"
 			]
 		},
 		{
@@ -5005,6 +5044,9 @@
 				"MW",
 				"RNG",
 				"RW"
+			],
+			"conditionInflicted": [
+				"incapacitated"
 			]
 		},
 		{
@@ -5640,6 +5682,12 @@
 				"AOE",
 				"MW",
 				"RCH"
+			],
+			"conditionInflicted": [
+				"blinded",
+				"grappled",
+				"prone",
+				"restrained"
 			]
 		},
 		{
@@ -5865,6 +5913,9 @@
 				"MW",
 				"RCH",
 				"RW"
+			],
+			"conditionInflicted": [
+				"prone"
 			]
 		},
 		{
@@ -5988,9 +6039,6 @@
 			"int": 2,
 			"wis": 12,
 			"cha": 5,
-			"save": {
-				"str": "+7"
-			},
 			"senses": [
 				"darkvision 60 ft."
 			],
@@ -6030,6 +6078,9 @@
 			"miscTags": [
 				"MW",
 				"RCH"
+			],
+			"conditionInflicted": [
+				"prone"
 			]
 		},
 		{
@@ -6408,7 +6459,12 @@
 				"E"
 			],
 			"ac": [
-				13
+				{
+					"ac": 13,
+					"from": [
+						"{@item hide armor|phb}"
+					]
+				}
 			],
 			"hp": {
 				"average": 38,
@@ -6800,6 +6856,9 @@
 			],
 			"miscTags": [
 				"MW"
+			],
+			"conditionInflicted": [
+				"incapacitated"
 			]
 		},
 		{
@@ -6887,6 +6946,9 @@
 				"MW",
 				"RNG",
 				"RW"
+			],
+			"conditionInflicted": [
+				"incapacitated"
 			]
 		},
 		{
@@ -7222,6 +7284,9 @@
 				"MW",
 				"RCH",
 				"RW"
+			],
+			"conditionInflicted": [
+				"prone"
 			]
 		},
 		{

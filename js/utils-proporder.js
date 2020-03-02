@@ -176,13 +176,14 @@ PropOrder._MONSTER = [
 
 	"altArt",
 
-	new PropOrder._ArrayKey("traitTags", {fnSort: SortUtil.ascSortLower}),
-	new PropOrder._ArrayKey("senseTags", {fnSort: SortUtil.ascSortLower}),
-	new PropOrder._ArrayKey("actionTags", {fnSort: SortUtil.ascSortLower}),
-	new PropOrder._ArrayKey("languageTags", {fnSort: SortUtil.ascSortLower}),
-	new PropOrder._ArrayKey("damageTags", {fnSort: SortUtil.ascSortLower}),
-	new PropOrder._ArrayKey("spellcastingTags", {fnSort: SortUtil.ascSortLower}),
-	new PropOrder._ArrayKey("miscTags", {fnSort: SortUtil.ascSortLower})
+	new PropOrder._ArrayKey("traitTags", {fnSort: SortUtil.ascSortLowerSafe}),
+	new PropOrder._ArrayKey("senseTags", {fnSort: SortUtil.ascSortLowerSafe}),
+	new PropOrder._ArrayKey("actionTags", {fnSort: SortUtil.ascSortLowerSafe}),
+	new PropOrder._ArrayKey("languageTags", {fnSort: SortUtil.ascSortLowerSafe}),
+	new PropOrder._ArrayKey("damageTags", {fnSort: SortUtil.ascSortLowerSafe}),
+	new PropOrder._ArrayKey("spellcastingTags", {fnSort: SortUtil.ascSortLowerSafe}),
+	new PropOrder._ArrayKey("miscTags", {fnSort: SortUtil.ascSortLowerSafe}),
+	new PropOrder._ArrayKey("conditionInflicted", {fnSort: SortUtil.ascSortLowerSafe})
 ];
 PropOrder._MONSTER__COPY_MOD = [
 	"*",
@@ -194,6 +195,8 @@ PropOrder._MONSTER_FLUFF = [
 	"source",
 
 	"_copy",
+
+	"_prependCopy",
 
 	"type",
 	"entries",
@@ -402,7 +405,138 @@ PropOrder._LANGUAGE = [
 	"typicalSpeakers",
 	"script",
 
+	"fonts",
+
 	"entries"
+];
+PropOrder._CONDITION = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"entries"
+];
+PropOrder._DISEASE = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"entries"
+];
+PropOrder._CULT = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"goal",
+	"cultists",
+	"signaturespells",
+
+	"entries"
+];
+PropOrder._BOON = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"type",
+
+	"ability",
+
+	"goal",
+	"cultists",
+	"signaturespells",
+
+	"entries"
+];
+PropOrder._DEITY = [
+	"name",
+	"reprintAlias",
+	"altNames",
+
+	"source",
+	"page",
+	"srd",
+
+	"additionalSources",
+
+	"alignment",
+	"title",
+	"pantheon",
+	"category",
+	"domains",
+	"province",
+	"symbol",
+	"symbolImg",
+
+	"entries"
+];
+PropOrder._FEAT = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"additionalSources",
+	"otherSources",
+
+	"prerequisite",
+	"ability",
+
+	"entries"
+];
+PropOrder._VEHICLE = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"vehicleType",
+
+	"size",
+	"dimensions",
+	"weight",
+
+	"capCreature",
+	"capCrew",
+	"capPassenger",
+	"capCargo",
+
+	"pace",
+	"speed",
+
+	"str",
+	"dex",
+	"con",
+	"int",
+	"wis",
+	"cha",
+
+	"hp",
+
+	"immune",
+	"conditionImmune",
+
+	"hull",
+	"control",
+	"movement",
+	"weapon",
+	"other",
+
+	"trait",
+	"action",
+	"actionStation",
+	"reaction"
 ];
 
 PropOrder._PROP_TO_LIST = {
@@ -416,7 +550,14 @@ PropOrder._PROP_TO_LIST = {
 	"trait": PropOrder._TRAIT,
 	"legendaryGroup": PropOrder._LEGENDARY_GROUP,
 	"class": PropOrder._CLASS,
-	"language": PropOrder._LANGUAGE
+	"language": PropOrder._LANGUAGE,
+	"condition": PropOrder._CONDITION,
+	"disease": PropOrder._DISEASE,
+	"cult": PropOrder._CULT,
+	"boon": PropOrder._BOON,
+	"deity": PropOrder._DEITY,
+	"feat": PropOrder._FEAT,
+	"vehicle": PropOrder._VEHICLE
 };
 
 if (typeof module !== "undefined") {

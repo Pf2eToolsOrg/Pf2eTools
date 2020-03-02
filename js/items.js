@@ -139,14 +139,13 @@ class ItemsPage {
 		}
 
 		function buildFluffTab (isImageTab) {
-			return Renderer.utils.pBuildFluffTab(
+			return Renderer.utils.pBuildFluffTab({
 				isImageTab,
 				$content,
-				item,
-				(fluffJson) => item.fluff || fluffJson.itemFluff.find(it => it.name === item.name && it.source === item.source),
-				`data/fluff-items.json`,
-				() => true
-			);
+				entity: item,
+				fnFluffBuilder: (fluffJson) => item.fluff || fluffJson.itemFluff.find(it => it.name === item.name && it.source === item.source),
+				fluffUrl: `data/fluff-items.json`
+			});
 		}
 
 		const statTab = Renderer.utils.tabButton(

@@ -1,89 +1,12 @@
 "use strict";
 
-class SchoolConvert {
-	static tryConvertSchool (s, cbMan) {
-		const school = (s.school || "").toLowerCase().trim();
-		if (!school) return cbMan ? cbMan(s.school, "Spell school requires manual conversion") : null;
-
-		const out = SchoolConvert._RES_SCHOOL.find(it => it.regex.test(school));
-		if (out) s.school = out;
-		else cbMan(s.school, "Spell school requires manual conversion");
-	}
+if (typeof module !== "undefined") {
+	const cv = require("./converterutils.js");
+	Object.assign(global, cv);
+	global.PropOrder = require("./utils-proporder.js");
 }
-SchoolConvert._RES_SCHOOL = [];
-Object.entries({
-	"transmutation": "T",
-	"necromancy": "N",
-	"conjuration": "C",
-	"abjuration": "A",
-	"enchantment": "E",
-	"evocation": "V",
-	"illusion": "I",
-	"divination": "D"
-}).forEach(([k, v]) => {
-	SchoolConvert._RES_SCHOOL.push({
-		output: v,
-		regex: RegExp(k, "i")
-	});
-});
 
-// TODO rework this to be written in JavaScript
-class SpellConverter extends BaseConverter {
-	constructor (ui) {
-		super(
-			ui,
-			{
-				converterId: "Spell",
-				canSaveLocal: true,
-				modes: ["txt"],
-				hasPageNumbers: true,
-				titleCaseFields: ["name"],
-				hasSource: true,
-				prop: "spell"
-			}
-		);
-	}
-
-	_renderSidebar (parent, $wrpSidebar) {
-		$wrpSidebar.empty();
-	}
-
-	handleParse (input, cbOutput, cbWarning, isAppend) {
-		const opts = {cbWarning, cbOutput, isAppend};
-
-		switch (this._state.mode) {
-			case "txt": return this.doParseText(input, opts);
-			default: throw new Error(`Unimplemented!`);
-		}
-	}
-
-	_getSample (format) {
-		switch (format) {
-			case "txt": return SpellConverter.SAMPLE_TEXT;
-			default: throw new Error(`Unknown format "${format}"`);
-		}
-	}
-
-	/**
-	 * Takes a string with a unit of time for duration, and converts it to the proper input form. Instantaneous becomes
-	 * instant, and any plural form such as minutes or hours becomes singular, minute or hours.
-	 */
-	static getTimeUnit (input) {
-		if (input.toLowerCase() === "instantaneous") {
-			return "instant";
-		} else if (input.toLowerCase().endsWith("s")) {
-			return input.toLowerCase().substring(0, input.length - 1);
-		} else {
-			return input.toLowerCase();
-		}
-	}
-
-	static getDistanceUnit (input) {
-		input = input.toLowerCase();
-		if (input === "foot") return "feet";
-		return input;
-	}
-
+class SpellParser extends BaseParser {
 	/**
 	 * Parses spells from raw text pastes
 	 * @param inText Input text.
@@ -91,9 +14,13 @@ class SpellConverter extends BaseConverter {
 	 * @param options.cbWarning Warning callback.
 	 * @param options.cbOutput Output callback.
 	 * @param options.isAppend Default output append mode.
+	 * @param options.source Entity source.
+	 * @param options.page Entity page.
+	 * @param options.titleCaseFields Array of fields to be title-cased in this entity (if enabled).
+	 * @param options.isTitleCase Whether title-case fields should be title-cased in this entity.
 	 */
-	doParseText (inText, options) {
-		options = BaseConverter._getValidOptions(options);
+	static doParseText (inText, options) {
+		options = this._getValidOptions(options);
 
 		/**
 		 * If the current line ends in a comma, we can assume the next line is a broken/wrapped part of the current line
@@ -104,7 +31,6 @@ class SpellConverter extends BaseConverter {
 				"RANGE",
 				"COMPONENTS",
 				"DURATION",
-				"CLASSES",
 				"AT HIGHER LEVELS"
 			];
 
@@ -135,14 +61,13 @@ class SpellConverter extends BaseConverter {
 			return clean.split("\n").filter(it => it && it.trim());
 		})();
 		const spell = {};
-		spell.source = this._state.source;
+		spell.source = options.source;
 		// for the user to fill out
-		spell.page = this._state.page;
+		spell.page = options.page;
 
-		let prevLine = null; // last line of text
-		let curLine = null; // current line of text
-		let i; // integer count for line number
-
+		let prevLine = null;
+		let curLine = null;
+		let i;
 		for (i = 0; i < toConvert.length; i++) {
 			prevLine = curLine;
 			curLine = toConvert[i].trim();
@@ -151,67 +76,79 @@ class SpellConverter extends BaseConverter {
 
 			// name of spell
 			if (i === 0) {
-				spell.name = this._getAsTitle("name", curLine);
+				spell.name = this._getAsTitle("name", curLine, options.titleCaseFields, options.isTitleCase);
 				continue;
 			}
 
 			// spell level, and school plus ritual
 			if (i === 1) {
-				SpellConverter._setCleanLevelSchoolRitual(spell, curLine, options);
+				this._setCleanLevelSchoolRitual(spell, curLine, options);
 				continue;
 			}
 
 			// casting time
 			if (i === 2) {
-				SpellConverter._setCleanCastingTime(spell, curLine);
+				this._setCleanCastingTime(spell, curLine, options);
 				continue;
 			}
 
 			// range
 			if (!curLine.indexOf_handleColon("Range")) {
-				SpellConverter._setCleanRange(spell, curLine);
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine(true)) ;
+				this._setCleanRange(spell, curLine, options);
 				continue;
 			}
 
 			// components
 			if (!curLine.indexOf_handleColon("Components")) {
-				SpellConverter._setCleanComponents(spell, curLine, options);
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine(true)) ;
+				this._setCleanComponents(spell, curLine, options);
 				continue;
 			}
 
 			// duration
 			if (!curLine.indexOf_handleColon("Duration")) {
-				SpellConverter._setCleanDuration(spell, curLine, options);
+				// avoid absorbing main body text
+				this._setCleanDuration(spell, curLine, options);
 				continue;
 			}
 
-			// classes (optional)
-			if (!curLine.indexOf_handleColon("Classes") || !curLine.indexOf_handleColon("Class")) {
-				SpellConverter._setCleanClasses(spell, curLine, options);
-				continue;
-			}
-
-			let isEntry = true; // turn false once we get to the end of the base level spell text, unless the loop ends at that time
-
+			let isHigherLevelPart = false;
 			spell.entries = [];
+			spell.entriesHigherLevel = [];
+
+			const addTo = (prop) => {
+				const target = spell[prop];
+				// The line is probably a wrapped continuation of the previous line if it starts with:
+				//  - a lowercase word
+				//  - numbers (e.g. damage; "8d6")
+				//  - an ability score name followed by "saving throw"
+				if (typeof target.last() === "string"
+					&& /^([a-z]|\d+\s+|(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\s+saving throw)/.test(curLine.trim())) {
+					target.last(`${target.last().trim()} ${curLine.trim()}`);
+				} else {
+					target.push(curLine.trim());
+				}
+			};
 
 			while (i < toConvert.length) {
-				// goes into actions
-				if (!curLine.indexOf_handleColon("At Higher Levels.") || !curLine.indexOf_handleColon("At Higher Levels")) {
-					// make sure the last bit doesn't get added to the spell text
-					isEntry = false;
-
-					// noinspection StatementWithEmptyBodyJS
-					while (absorbBrokenLine(true)) ;
-					SpellConverter._setCleanHigherLevel(spell, curLine);
-				} else if (isEntry) {
-					// since all the headers have been put in everything else must be spell text until we get to the at higher level
-					spell.entries.push(curLine);
+				if (!curLine.indexOf_handleColon("At Higher Levels")) {
+					isHigherLevelPart = true;
+					curLine = curLine.replace(/At Higher Levels\s*\.\s*?/i, "");
 				}
+
+				if (isHigherLevelPart) addTo("entriesHigherLevel");
+				else addTo("entries");
+
 				i++;
 				curLine = toConvert[i];
 			}
 		}
+
+		if (!spell.entriesHigherLevel.length) delete spell.entriesHigherLevel;
+		else spell.entriesHigherLevel = [{type: "entries", name: "At Higher Levels", entries: spell.entriesHigherLevel}];
 
 		this._doSpellPostProcess(spell, options);
 		const statsOut = PropOrder.getOrdered(spell, "spell");
@@ -219,7 +156,16 @@ class SpellConverter extends BaseConverter {
 	}
 
 	// SHARED UTILITY FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
-	_doSpellPostProcess (stats, options) {
+	static _tryConvertSchool (s, cbMan) {
+		const school = (s.school || "").toLowerCase().trim();
+		if (!school) return cbMan ? cbMan(s.school, "Spell school requires manual conversion") : null;
+
+		const out = SpellParser._RES_SCHOOL.find(it => it.regex.test(school));
+		if (out) s.school = out.output;
+		else cbMan(s.school, "Spell school requires manual conversion");
+	}
+
+	static _doSpellPostProcess (stats, options) {
 		const doCleanup = () => {
 			// remove any empty arrays
 			Object.keys(stats).forEach(k => {
@@ -230,275 +176,256 @@ class SpellConverter extends BaseConverter {
 		};
 		TagCondition.tryTagConditions(stats);
 		DamageTypeTag.tryRun(stats);
+		this._addTags(stats, options);
 		doCleanup();
 	}
 
+	static _addTags (stats, options) {
+		DamageInflictTagger.tryRun(stats, options);
+		DamageResVulnImmuneTagger.tryRun(stats, "damageResist", options);
+		DamageResVulnImmuneTagger.tryRun(stats, "damageImmune", options);
+		DamageResVulnImmuneTagger.tryRun(stats, "damageVulnerable", options);
+		ConditionInflictTagger.tryRun(stats, options);
+		SavingThrowTagger.tryRun(stats, options);
+		OpposedCheckTagger.tryRun(stats, options);
+		SpellAttackTagger.tryRun(stats, options);
+		// TODO areaTags
+		MiscTagsTagger.tryRun(stats, options);
+		ScalingLevelDiceTagger.tryRun(stats, options);
+	}
+
 	// SHARED PARSING FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
-	// cuts the string for spell level, school and ritual, checks if the first character is a number "4th-level transmutation" and parses as a leveled spell.
-	// if not it treats it as a cantrip "Transmutation cantrip" does not check for ritual tag if its a cantrip
-	// throws a warning if no valid school was found, does not process 10th-level or higher spells at all
-	// calls setSchool for adding the correct school letter tag
-	static _setCleanLevelSchoolRitual (stats, line) {
-		const leveledSpell = /^(\d)(?:st|nd|rd|th)(-?|\s)(\S+)\s+(\w+)(\s?)(\(ritual\))?/gi.exec(line.trim());
-		if (leveledSpell) {
-			// if a level 1-9 spell
-			stats.level = leveledSpell[1];
-			stats.school = leveledSpell[4].trim();
-			SchoolConvert.tryConvertSchool(stats);
-			if (/ritual/i.exec(leveledSpell[6])) stats.meta = {ritual: true};
-		} else {
-			// cantrip
+	static _setCleanLevelSchoolRitual (stats, line, options) {
+		const rawLine = line;
+		line = ConvertUtil.cleanDashes(line).toLowerCase().trim();
+
+		const mCantrip = /cantrip/i.exec(line);
+		const mSpellLevel = /^(\d+)(?:st|nd|rd|th)-level/i.exec(line);
+
+		if (mCantrip) {
+			const trailing = line.slice(mCantrip.index + "cantrip".length, line.length);
+			line = line.slice(0, mCantrip.index).trim();
+
+			// TODO implement as required (see at e.g. Deep Magic series)
+			if (trailing) {
+				options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Level/school/ritual trailing part "${trailing}" requires manual conversion`);
+			}
+
 			stats.level = 0;
-			stats.school = line.split(" ")[0];
-			SchoolConvert.tryConvertSchool(stats);
+			stats.school = line;
+
+			this._tryConvertSchool(stats);
+		} else if (mSpellLevel) {
+			line = line.slice(mSpellLevel.index + mSpellLevel[1].length);
+
+			let isRitual = false;
+			line = line.replace(/\((.*?)(?:[,;]\s*)?ritual(?:[,;]\s*)?(.*?)\)/i, (...m) => {
+				isRitual = true;
+				// preserve any extra info inside the brackets
+				return m[1] || m[2] ? `(${m[1]}${m[2]})` : "";
+			}).trim();
+
+			if (isRitual) {
+				stats.meta = stats.meta || {};
+				stats.meta.ritual = true;
+			}
+
+			stats.level = Number(mSpellLevel[1]);
+
+			// TODO further handling of non-school text (see e.g. Deep Magic series)
+			stats.school = line.trim();
+
+			this._tryConvertSchool(stats);
+		} else {
+			options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Level/school/ritual part "${rawLine}" requires manual conversion`);
 		}
 	}
 
-	// strips off the word range
-	// tests with if else, first if its touch, then self range aura, self range cone, self range line, just self, ranged point, and a catch all for special ranges
-	// used examples to have it hard code the correct tags for each range variant.
-	static _setCleanRange (stats, line) {
-		const rawRange = line.split_handleColon("Range", 1)[1];
-		if (/touch/gi.exec(rawRange.trim())) {
-			stats.range = {
-				type: "point",
-				distance: {
-					type: "touch"
+	static _setCleanRange (stats, line, options) {
+		const getUnit = (str) => str.toLowerCase().includes("mile") ? "miles" : "feet";
+
+		const range = ConvertUtil.cleanDashes(line.split_handleColon("Range", 1)[1].trim());
+
+		if (range.toLowerCase() === "self") return stats.range = {type: "point", distance: {type: "self"}};
+		if (range.toLowerCase() === "special") return stats.range = {type: "special"};
+		if (range.toLowerCase() === "unlimited") return stats.range = {type: "point", distance: {type: "unlimited"}};
+		if (range.toLowerCase() === "unlimited on the same plane") return stats.range = {type: "point", distance: {type: "plane"}};
+		if (range.toLowerCase() === "sight") return stats.range = {type: "point", distance: {type: "sight"}};
+		if (range.toLowerCase() === "touch") return stats.range = {type: "point", distance: {type: "touch"}};
+
+		const mFeetMiles = /^(\d+) (feet|foot|miles?)$/i.exec(range);
+		if (mFeetMiles) return stats.range = {type: "point", distance: {type: getUnit(mFeetMiles[2]), amount: Number(mFeetMiles[1])}};
+
+		const mSelfRadius = /^self \((\d+)-(foot|mile) radius\)$/i.exec(range);
+		if (mSelfRadius) return stats.range = {type: "radius", distance: {type: getUnit(mSelfRadius[2]), amount: Number(mSelfRadius[1])}};
+
+		const mSelfSphere = /^self \((\d+)-(foot|mile)-radius sphere\)$/i.exec(range);
+		if (mSelfSphere) return stats.range = {type: "sphere", distance: {type: getUnit(mSelfSphere[2]), amount: Number(mSelfSphere[1])}};
+
+		const mSelfCone = /^self \((\d+)-(foot|mile) cone\)$/i.exec(range);
+		if (mSelfCone) return stats.range = {type: "cone", distance: {type: getUnit(mSelfCone[2]), amount: Number(mSelfCone[1])}};
+
+		const mSelfLine = /^self \((\d+)-(foot|mile) line\)$/i.exec(range);
+		if (mSelfLine) return stats.range = {type: "line", distance: {type: getUnit(mSelfLine[2]), amount: Number(mSelfLine[1])}};
+
+		const mSelfCube = /^self \((\d+)-(foot|mile) cube\)$/i.exec(range);
+		if (mSelfCube) return stats.range = {type: "cube", distance: {type: getUnit(mSelfCube[2]), amount: Number(mSelfCube[1])}};
+
+		const mSelfHemisphere = /^self \((\d+)-(foot|mile)-radius hemisphere\)$/i.exec(range);
+		if (mSelfHemisphere) return stats.range = {type: "hemisphere", distance: {type: getUnit(mSelfHemisphere[2]), amount: Number(mSelfHemisphere[1])}};
+
+		options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Range part "${range}" requires manual conversion`);
+	}
+
+	static _getCleanTimeUnit (unit, isDuration, options) {
+		unit = unit.toLowerCase().trim();
+		switch (unit) {
+			case "days":
+			case "years":
+			case "hours":
+			case "minutes":
+			case "actions":
+			case "rounds": return unit.slice(0, -1);
+
+			case "day":
+			case "year":
+			case "hour":
+			case "minute":
+			case "action":
+			case "round":
+			case "bonus action":
+			case "reaction": return unit;
+			default:
+				options.cbWarning(`Unit part "${unit}" requires manual conversion`);
+				return unit;
+		}
+	}
+
+	static _setCleanCastingTime (stats, line, options) {
+		const allParts = line.split_handleColon("Casting Time", 1)[1].trim();
+		const parts = allParts.toLowerCase().includes("reaction")
+			? [allParts]
+			: allParts.split(/; | or /gi);
+
+		stats.time = parts
+			.map(it => it.trim())
+			.filter(Boolean)
+			.map(str => {
+				const mNumber = /^(\d+)(.*?)$/.exec(str);
+
+				if (!mNumber) {
+					options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Casting time part "${str}" requires manual conversion`);
+					return str;
 				}
-			};
-		} else if (/self/gi.exec(rawRange.trim())) {
-			if (/foot/gi.exec(rawRange.trim())) {
-				if (/radius/gi.exec(rawRange.trim())) {
-					const x = rawRange.split(/[\s-()]+/);
-					stats.range = {
-						type: "radius",
-						distance: {
-							type: SpellConverter.getDistanceUnit(x[2]),
-							amount: Number(x[1])
-						}
-					};
-				} else if (/cone/gi.exec(rawRange.trim())) {
-					const x = rawRange.split(/[\s-()]+/);
-					stats.range = {
-						type: "cone",
-						distance: {
-							type: SpellConverter.getDistanceUnit(x[2]),
-							amount: Number(x[1])
-						}
-					};
-				} else if (/line/gi.exec(rawRange.trim())) {
-					const x = rawRange.split(/[\s-()]+/);
-					stats.range = {
-						type: "line",
-						distance: {
-							type: SpellConverter.getDistanceUnit(x[2]),
-							amount: Number(x[1])
-						}
-					};
-				}
-			} else {
-				stats.range = {
-					type: "point",
-					distance: {
-						type: "self"
-					}
+
+				const amount = Number(mNumber[1].trim());
+				const [unit, ...conditionParts] = mNumber[2].split(", ");
+				const out = {
+					number: amount,
+					unit: this._getCleanTimeUnit(unit, false, options),
+					condition: conditionParts.join(", ")
 				};
-			}
-		} else if (/feet/gi.exec(rawRange.trim())) {
-			const x = rawRange.split(/[\s-()]+/);
-			stats.range = {
-				type: "point",
-				distance: {
-					type: SpellConverter.getDistanceUnit(x[1]),
-					amount: Number(x[0])
-				}
-			};
-		} else {
-			stats.range = {
-				type: rawRange.split(/[\s-()]+/)
-			};
-		}
+				if (!out.condition) delete out.condition;
+				return out;
+			})
+		;
 	}
 
-	// splits the number from the string '1' from 'bonus action' then puts the number as the amount variable, and the text as the time and sets the tags with them.
-	// incase there is no number for some reason there is an else.
-	static _setCleanCastingTime (stats, line) {
-		const str = line.split_handleColon("Casting Time", 1)[1].trim();
-		if (/^([0-9]+)/.exec(str)) {
-			const amount = str.split(" ")[0].trim();
-			const time = str.replace(/[0-9]/g, "").trim();
-			if (time.split(" ").length > 1) {
-				const firstWord = time.match(/^(\S+)\s(.*)/).slice(1);
-				firstWord[0] = firstWord[0].replace(/,/, "");
-				stats.time = [{
-					number: Number(amount),
-					unit: SpellConverter.getTimeUnit(firstWord[0]),
-					condition: firstWord[1]
-				}];
-			} else {
-				stats.time = [{
-					number: Number(amount),
-					unit: SpellConverter.getTimeUnit(time)
-				}];
-			}
-		} else {
-			stats.time = [{
-				unit: time
-			}];
-		}
-	}
-
-	// splits the line using commas before any () to make sure it keeps the material component text together
-	// flips through each compnent in a loop incase they don't have all of them
-	// material takes off the M and () to add the text
-	// if there is a cost and extracts the number for it
-	// checks if the word consume is in the line and sets the tag to true if it is
 	static _setCleanComponents (stats, line, options) {
-		const rawComponent = line.split_handleColon("Components", 1)[1].trim();
-		const list = rawComponent.split(/,\s?(?![^(]*\))/gi);
+		const components = line.split_handleColon("Components", 1)[1].trim();
+		const parts = components.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX);
+
 		stats.components = {};
-		for (let i = 0; list.length > i; i++) {
-			if (/^v/i.exec(list[i].trim())) {
-				stats.components["v"] = true;
-			} else if (/^s/i.exec(list[i].trim())) {
-				stats.components["s"] = true;
-			} else if (/^m/i.test(list[i].trim())) {
-				try {
-					const materialText = /\(.+\)/.exec(list[i])[0].replace(/[()]/g, "");
-					const cost = /\d*,?\d+\s?(?:cp|sp|ep|gp|pp)/gi.exec(/\(.+\)/.exec(list[i].trim()));
-					const consume = /consume/i.exec(list[i].trim());
-					if (cost && consume) {
-						stats.components.m = {
-							text: materialText,
-							cost: Number(cost[0].split(" ")[0].replace(/,/g, "")),
-							consume: true
-						};
-					} else if (cost) {
-						stats.components.m = {
-							text: materialText,
-							cost: Number(cost[0].split(" ")[0].replace(/,/g, ""))
-						};
-					} else {
-						stats.components.m = materialText;
+
+		parts
+			.map(it => it.trim())
+			.filter(Boolean)
+			.forEach(pt => {
+				pt = pt.trim();
+				const lowerPt = pt.toLowerCase();
+				switch (lowerPt) {
+					case "v": stats.components.v = true; break;
+					case "s": stats.components.s = true; break;
+					default: {
+						if (lowerPt.startsWith("m ")) {
+							const materialText = pt.replace(/^m\s*\((.*)\)$/i, "$1").trim();
+							const mCost = /(\d*,?\d+)\s?(cp|sp|ep|gp|pp)/gi.exec(materialText);
+							const isConsumed = pt.toLowerCase().includes("consume");
+
+							if (mCost) {
+								const valueMult = Parser.COIN_CONVERSIONS[Parser.COIN_ABVS.indexOf(mCost[2].toLowerCase())];
+								const valueNum = Number(mCost[1].replace(/,/g, ""));
+
+								stats.components.m = {
+									text: materialText,
+									cost: valueNum * valueMult
+								};
+								if (isConsumed) stats.components.m.consume = true;
+							} else stats.components.m = materialText;
+						} else if (lowerPt.startsWith("r ")) stats.components.r = true;
+						else options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Components part "${pt}" requires manual conversion`);
 					}
-				} catch (error) {
-					options.cbWarning(`Alignment "${rawComponent}" requires manual conversion`)
 				}
-			}
-		}
+			});
 	}
 
-	// takes line and takes off duration header, then checks for in that order concentration, Instantaneous, until dispelled, and special
-	// sets value same as in document, document sets all text inputs to lowercase through the getTimeUnit function
-	// empty else statment at end is for putting in an error message when no duration was found
 	static _setCleanDuration (stats, line, options) {
-		const rawDuration = line.split_handleColon("Duration", 1)[1].trim();
-		const focused = /^(Concentration)/gi.exec(rawDuration.trim());
-		const instant = /^(Instantaneous)/gi.exec(rawDuration.trim());
-		const permanent = /^(Until dispelled)/gi.exec(rawDuration.trim());
-		const special = /^(special)/gi.exec(rawDuration.trim());
+		const dur = line.split_handleColon("Duration", 1)[1].trim();
 
-		if (focused) {
-			const time = rawDuration.match(/\d+\s+[a-z]+/i);
-			const time2 = time[0].split(" ");
-			stats.duration = [{
-				type: "timed",
-				duration: {
-					type: SpellConverter.getTimeUnit(time2[1]),
-					amount: Number(time2[0])
-				},
-				concentration: true
-			}];
-		} else if (instant) {
-			stats.duration = [{
-				type: "instant"
-			}];
-		} else if (permanent) {
-			const trigger = /(triggered)/gi.exec(rawDuration.trim());
-			if (trigger) {
-				stats.duration = [{
-					type: "permanent",
-					ends: [
-						"dispel",
-						"trigger"
-					]
-				}
-				];
-			} else {
-				stats.duration = [{
-					type: "permanent",
-					ends: [
-						"dispel"
-					]
-				}];
-			}
-		} else if (special) {
-			stats.duration = [{
-				type: "special"
-			}];
-		} else {
-			const exists = /\d+\s+[a-z]+/gi.exec(rawDuration.trim());
-			if (exists) {
-				const time = rawDuration.match(/\d+\s+[a-z]+/i);
-				const time2 = time[0].split(" ");
-				stats.duration = [{
-					type: "timed",
-					duration: {
-						type: SpellConverter.getTimeUnit(time2[1]),
-						amount: Number(time2[0])
-					}
-				}];
-			} else {
-				// nothing was found/done
-			}
-		}
-	}
+		if (dur.toLowerCase() === "instantaneous") return stats.duration = [{type: "instant"}];
+		if (dur.toLowerCase() === "instantaneous (see text)") return stats.duration = [{type: "instant", condition: "see text"}];
+		if (dur.toLowerCase() === "special") return stats.duration = [{type: "special"}];
+		if (dur.toLowerCase() === "permanent") return stats.duration = [{type: "permanent"}];
 
-	// takes the line, removes the Classes: fromt he front, then splits the classes into an array, using the comma's as the separator
-	// loops through the array adding each class name with proper casing to a temporary array of objects
-	// giving each object the source of PHB unless it is the artificer which gets ERLW
-	// sets stats.classes' fromClassList key to the value of the array of objects
-	static _setCleanClasses (stats, line, options) {
-		let rawClasses;
-		if (/^(Classes)/i.test(line)) {
-			rawClasses = line.split_handleColon("Classes", 1)[1].trim();
-		} else {
-			rawClasses = line.split_handleColon("Class", 1)[1].trim();
+		const mConcOrUpTo = /^(concentration, )?up to (\d+|an?) (hour|minute|turn|round|week|day|year)(?:s)?$/i.exec(dur);
+		if (mConcOrUpTo) {
+			const amount = mConcOrUpTo[2].toLowerCase().startsWith("a") ? 1 : Number(mConcOrUpTo[2]);
+			const out = {type: "timed", duration: {type: this._getCleanTimeUnit(mConcOrUpTo[3], true, options), amount}, concentration: true};
+			if (mConcOrUpTo[1]) out.concentration = true;
+			else out.upTo = true;
+			return stats.duration = [out];
 		}
 
-		const classList = rawClasses.split(/,\s*/i);
-		const list = [];
-		for (let i = 0; classList.length > i; i++) {
-			classList[i] = classList[i].uppercaseFirst();
-			if (classList[i] === "Artificer") {
-				list.push({name: classList[i].uppercaseFirst(), source: "ERLW"});
-			} else {
-				list.push({name: classList[i].uppercaseFirst(), source: "PHB"});
-			}
-		}
-		stats.classes = {fromClassList: list};
-	}
+		const mTimed = /^(\d+) (hour|minute|turn|round|week|day|year)(?:s)?$/i.exec(dur);
+		if (mTimed) return stats.duration = [{type: "timed", duration: {type: this._getCleanTimeUnit(mTimed[2], true, options), amount: Number(mTimed[1])}}];
 
-	static _setCleanHigherLevel (stats, line) {
-		const rawHigher = line.split_handleColon("At Higher Levels.", 1)[1].trim();
-		if (!stats.entriesHigherLevel) {
-			stats.entriesHigherLevel = [{
-				type: "entries",
-				name: "At Higher Levels",
-				entries: [rawHigher]
-			}];
+		const mDispelledTriggered = /^until dispelled( or triggered)?$/i.exec(dur);
+		if (mDispelledTriggered) {
+			const out = {type: "permanent", ends: ["dispel"]};
+			if (mDispelledTriggered[1]) out.ends.push("trigger");
+			return stats.duration = [out];
 		}
+
+		const mPermDischarged = /^permanent until discharged$/i.exec(dur);
+		if (mPermDischarged) {
+			const out = {type: "permanent", ends: ["discharge"]};
+			return stats.duration = [out];
+		}
+
+		// TODO handle splitting "or"'d durations up as required
+
+		options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Duration part "${dur}" requires manual conversion`);
 	}
 }
-// region sample
-SpellConverter.SAMPLE_TEXT = `Chromatic Orb
-1st-level evocation
-Casting Time: 1 action
-Range: 90 feet
-Components: V, S, M (a diamond worth at least 50 gp)
-Duration: Instantaneous
+SpellParser._RES_SCHOOL = [];
+Object.entries({
+	"transmutation": "T",
+	"necromancy": "N",
+	"conjuration": "C",
+	"abjuration": "A",
+	"enchantment": "E",
+	"evocation": "V",
+	"illusion": "I",
+	"divination": "D"
+}).forEach(([k, v]) => {
+	SpellParser._RES_SCHOOL.push({
+		output: v,
+		regex: RegExp(k, "i")
+	});
+});
 
-You hurl a 4-inch-diameter sphere of energy at a creature that you can see within range. You choose acid, cold, fire, lightning, poison, or thunder for the type of orb you create, and then make a ranged spell attack against the target. If the attack hits, the creature takes 3d8 damage of the type you chose.
-
-At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.`;
-// endregion
+if (typeof module !== "undefined") {
+	module.exports = {
+		SpellParser
+	};
+}

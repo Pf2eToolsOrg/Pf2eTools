@@ -118,14 +118,13 @@ class ConditionsDiseasesPage extends ListPage {
 		}
 
 		function buildFluffTab (isImageTab) {
-			return Renderer.utils.pBuildFluffTab(
+			return Renderer.utils.pBuildFluffTab({
 				isImageTab,
 				$content,
-				it,
-				(fluffJson) => it.fluff || fluffJson.conditionFluff.find(cd => it.name === cd.name && it.source === cd.source),
-				`data/fluff-conditionsdiseases.json`,
-				() => true
-			);
+				entity: it,
+				fnFluffBuilder: (fluffJson) => it.fluff || fluffJson.conditionFluff.find(cd => it.name === cd.name && it.source === cd.source),
+				fluffUrl: `data/fluff-conditionsdiseases.json`
+			});
 		}
 
 		const statTab = Renderer.utils.tabButton(

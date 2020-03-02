@@ -8,19 +8,69 @@ class CreatureBuilder extends Builder {
 		super({
 			titleSidebarLoadExisting: "Load Existing Creature",
 			titleSidebarDownloadJson: "Download Creatures as JSON",
+			metaSidebarDownloadMarkdown: {
+				title: "Download Creatures as Markdown",
+				pFnGetText: (mons) => {
+					return RendererMarkdown.monster.pGetMarkdownDoc(mons);
+				}
+			},
+			// TODO refactor this if/when more Markdown rendering is supported (e.g. spells)
+			sidebarItemOptionsMetas: [
+				{
+					name: "View Markdown",
+					pAction: (evt, entry) => {
+						const name = `${entry._displayName || entry.name} \u2014 Markdown`;
+						const mdText = RendererMarkdown.get().render({entries: [{type: "dataCreature", dataCreature: entry}]});
+						const $content = Renderer.hover.$getHoverContent_miscCode(name, mdText);
+
+						Renderer.hover.getShowWindow(
+							$content,
+							Renderer.hover.getWindowPositionFromEvent(evt),
+							{
+								title: name,
+								isPermanent: true,
+								isBookContent: true
+							}
+						);
+					}
+				},
+				{
+					name: "Download Markdown",
+					pAction: (evt, entry) => {
+						const mdText = CreatureBuilder._getAsMarkdown(entry).trim();
+						DataUtil.userDownloadText(`${DataUtil.getCleanFilename(entry.name)}.md`, mdText);
+					}
+				}
+			],
 			prop: "monster"
 		});
 
-		this._bestiaryMetaRaw = null;
 		this._bestiaryFluffIndex = null;
 		this._bestiaryTypeTags = null;
-		// FUTURE mechanism to update this select/etc if the user creates/edits homebrew legendary groups
-		this._bestiaryMetaCache = null;
+		// TODO(future) mechanism to update this select/etc if the user creates/edits homebrew legendary groups
 		this._legendaryGroups = null;
 
 		this._renderOutputDebounced = MiscUtil.debounce(() => this._renderOutput(), 50);
 
 		this._generateAttackCache = null;
+	}
+
+	static _getAsMarkdown (mon) {
+		return RendererMarkdown.get().render({entries: [{type: "dataCreature", dataCreature: mon}]});
+	}
+
+	_getRenderedMarkdownCode () {
+		const mdText = CreatureBuilder._getAsMarkdown(this._state);
+		return Renderer.get().render({
+			type: "entries",
+			entries: [
+				{
+					type: "code",
+					name: `Markdown`,
+					preformatted: mdText
+				}
+			]
+		});
 	}
 
 	async pHandleSidebarLoadExistingClick () {
@@ -40,7 +90,7 @@ class CreatureBuilder extends Builder {
 
 			if (this._bestiaryFluffIndex[creature.source] && !creature.fluff) {
 				const rawFluff = await DataUtil.loadJSON(`data/bestiary/${this._bestiaryFluffIndex[creature.source]}`);
-				const fluff = Renderer.monster.getFluff(creature, this._bestiaryMetaRaw, rawFluff);
+				const fluff = Renderer.monster.getFluff(creature, rawFluff);
 				if (fluff) creature.fluff = fluff;
 			}
 
@@ -69,18 +119,17 @@ class CreatureBuilder extends Builder {
 	}
 
 	async pInit () {
-		const [bestiaryMetaRaw, bestiaryFluffIndex, jsonCreature] = await Promise.all([
-			DataUtil.loadJSON("data/bestiary/meta.json"),
+		const [bestiaryFluffIndex, jsonCreature] = await Promise.all([
 			DataUtil.loadJSON("data/bestiary/fluff-index.json"),
-			DataUtil.loadJSON("data/makebrew-creature.json")
+			DataUtil.loadJSON("data/makebrew-creature.json"),
+			DataUtil.monster.pPreloadMeta()
 		]);
 
 		this._bestiaryFluffIndex = bestiaryFluffIndex;
 
-		this._bestiaryMetaRaw = bestiaryMetaRaw;
-		this._legendaryGroups = [...this._bestiaryMetaRaw.legendaryGroup, ...(BrewUtil.homebrew.legendaryGroup || [])];
-		this._bestiaryMetaCache = {};
-		this._legendaryGroups.forEach(it => (this._bestiaryMetaCache[it.source] = (this._bestiaryMetaCache[it.source] || {}))[it.name] = it);
+		const baseLegendaryGroups = Object.values(DataUtil.monster.metaGroupMap).map(obj => Object.values(obj)).flat();
+
+		this._legendaryGroups = [...baseLegendaryGroups, ...(BrewUtil.homebrew.legendaryGroup || [])];
 
 		this._jsonCreature = jsonCreature;
 		this._indexedTraits = elasticlunr(function () {
@@ -851,6 +900,14 @@ class CreatureBuilder extends Builder {
 			cb();
 		};
 
+		const doUpdateVisibleStage = () => {
+			switch ($selMode.val()) {
+				case "0": $wrpSimpleFormula.showVe(); $wrpComplexFormula.hideVe(); $wrpSpecial.hideVe(); break;
+				case "1": $wrpSimpleFormula.hideVe(); $wrpComplexFormula.showVe(); $wrpSpecial.hideVe(); break;
+				case "2": $wrpSimpleFormula.hideVe(); $wrpComplexFormula.hideVe(); $wrpSpecial.showVe(); break;
+			}
+		};
+
 		const $selMode = $(`<select class="form-control input-xs mb-2">
 			<option value="0">Simple Formula</option>
 			<option value="1">Complex Formula</option>
@@ -859,11 +916,7 @@ class CreatureBuilder extends Builder {
 			.appendTo($rowInner)
 			.val(initialMode)
 			.change(() => {
-				switch ($selMode.val()) {
-					case "0": $wrpSimpleFormula.show(); $wrpComplexFormula.hide(); $wrpSpecial.hide(); break;
-					case "1": $wrpSimpleFormula.hide(); $wrpComplexFormula.show(); $wrpSpecial.hide(); break;
-					case "2": $wrpSimpleFormula.hide(); $wrpComplexFormula.hide(); $wrpSpecial.show(); break;
-				}
+				doUpdateVisibleStage();
 				doUpdateState();
 			});
 
@@ -950,7 +1003,7 @@ class CreatureBuilder extends Builder {
 			${$btnAutoSimpleFormula}
 		</div>
 		<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--50">Average</span>${$iptSimpleAverage}${$btnAutoSimpleAverage}</div>
-		</div>`.toggle(initialMode === "0").appendTo($rowInner);
+		</div>`.toggleVe(initialMode === "0").appendTo($rowInner);
 		if (initialMode === "0") {
 			const formulaParts = CreatureBuilder.__$getHpInput__getFormulaParts(this._state.hp.formula);
 			$selSimpleNum.val(`${formulaParts.hdNum}`);
@@ -994,7 +1047,7 @@ class CreatureBuilder extends Builder {
 		const $wrpComplexFormula = $$`<div class="flex-col">
 		<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--50">Formula</span>${$iptComplexFormula}</div>
 		<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--50">Average</span>${$iptComplexAverage}${$btnAutoComplexAverage}</div>
-		</div>`.toggle(initialMode === "1").appendTo($rowInner);
+		</div>`.toggleVe(initialMode === "1").appendTo($rowInner);
 		if (initialMode === "1") {
 			$iptComplexFormula.val(this._state.hp.formula);
 			$iptComplexAverage.val(this._state.hp.average);
@@ -1003,8 +1056,10 @@ class CreatureBuilder extends Builder {
 		// SPECIAL STAGE
 		const $iptSpecial = $(`<input class="form-control form-control--minimal input-xs mb-2">`)
 			.change(() => doUpdateState());
-		const $wrpSpecial = $$`<div>${$iptSpecial}</div>`.toggle(initialMode === "1").appendTo($rowInner);
-		if (initialMode === "1") $iptSpecial.val(this._state.hp.special);
+		const $wrpSpecial = $$`<div>${$iptSpecial}</div>`.toggleVe(initialMode === "1").appendTo($rowInner);
+		if (initialMode === "2") $iptSpecial.val(this._state.hp.special);
+
+		doUpdateVisibleStage();
 
 		return $row;
 	}
@@ -1520,7 +1575,7 @@ class CreatureBuilder extends Builder {
 			.change(() => doUpdateState());
 		if (this._state.languages && this._state.languages.length) $iptLanguages.val(this._state.languages.join(", "));
 
-		const availLanguages = Object.entries(this._bestiaryMetaRaw.language).filter(([k, v]) => !CreatureBuilder._LANGUAGE_BLACKLIST.has(k))
+		const availLanguages = Object.entries(Parser.MON_LANGUAGE_TAG_TO_FULL).filter(([k]) => !CreatureBuilder._LANGUAGE_BLACKLIST.has(k))
 			.map(([k, v]) => v === "Telepathy" ? "telepathy" : v); // lowercase telepathy
 
 		const $btnAddGeneric = $(`<button class="btn btn-xs btn-default mr-2 mkbru_mon__btn-add-sense-language">Add Language</button>`)
@@ -2825,35 +2880,36 @@ class CreatureBuilder extends Builder {
 
 		// initialise tabs
 		this._resetTabs("output");
-		const tabs = ["Statblock", "Info", "Images", "Data"].map((it, ix) => this._getTab(ix, it, {tabGroup: "output", stateObj: this._meta, cbTabChange: this.doUiSave.bind(this)}));
-		const [statTab, infoTab, imageTab, dataTab] = tabs;
+		const tabs = ["Statblock", "Info", "Images", "Data", "Markdown"].map((it, ix) => this._getTab(ix, it, {tabGroup: "output", stateObj: this._meta, cbTabChange: this.doUiSave.bind(this)}));
+		const [statTab, infoTab, imageTab, dataTab, markdownTab] = tabs;
 		$$`<div class="flex-v-center w-100 no-shrink">${tabs.map(it => it.$btnTab)}</div>`.appendTo($wrp);
 		tabs.forEach(it => it.$wrpTab.appendTo($wrp));
 
 		// statblock
 		const $tblMon = $(`<table class="stats monster"/>`).appendTo(statTab.$wrpTab);
-		RenderBestiary.$getRenderedCreature(this._state, this._bestiaryMetaCache).appendTo($tblMon);
+		RenderBestiary.$getRenderedCreature(this._state).appendTo($tblMon);
 
 		// info
 		const $tblInfo = $(`<table class="stats"/>`).appendTo(infoTab.$wrpTab);
-		Renderer.utils.pBuildFluffTab(
-			false,
-			$tblInfo,
-			this._state,
-			Renderer.monster.getFluff.bind(null, this._state, this._bestiaryMetaCache)
-		);
+		Renderer.utils.pBuildFluffTab({
+			isImageTab: false,
+			$content: $tblInfo,
+			entity: this._state,
+			fnFluffBuilder: Renderer.monster.getFluff.bind(null, this._state)
+		});
 
 		// images
 		const $tblImages = $(`<table class="stats"/>`).appendTo(imageTab.$wrpTab);
-		Renderer.utils.pBuildFluffTab(
-			true,
-			$tblImages,
-			this._state,
-			Renderer.monster.getFluff.bind(null, this._state, this._bestiaryMetaCache)
-		);
+		Renderer.utils.pBuildFluffTab({
+			isImageTab: true,
+			$content: $tblImages,
+			entity: this._state,
+			fnFluffBuilder: Renderer.monster.getFluff.bind(null, this._state)
+		});
 
+		// data
 		const $tblData = $(`<table class="stats stats--book mkbru__wrp-output-tab-data"/>`).appendTo(dataTab.$wrpTab);
-		const asCode = Renderer.get().render({
+		const asJson = Renderer.get().render({
 			type: "entries",
 			entries: [
 				{
@@ -2864,8 +2920,14 @@ class CreatureBuilder extends Builder {
 			]
 		});
 		$tblData.append(Renderer.utils.getBorderTr());
-		$tblData.append(`<tr><td colspan="6">${asCode}</td></tr>`);
+		$tblData.append(`<tr><td colspan="6">${asJson}</td></tr>`);
 		$tblData.append(Renderer.utils.getBorderTr());
+
+		// markdown
+		const $tblMarkdown = $(`<table class="stats stats--book mkbru__wrp-output-tab-data"/>`).appendTo(markdownTab.$wrpTab);
+		$tblMarkdown.append(Renderer.utils.getBorderTr());
+		$tblMarkdown.append(`<tr><td colspan="6">${this._getRenderedMarkdownCode()}</td></tr>`);
+		$tblMarkdown.append(Renderer.utils.getBorderTr());
 	}
 }
 CreatureBuilder._ALIGNMENTS = [

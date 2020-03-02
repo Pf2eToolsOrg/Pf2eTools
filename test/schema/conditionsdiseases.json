@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"type": "object",
 	"definitions": {
 		"conditionDisease": {
@@ -23,6 +23,10 @@
 				},
 				"srd": {
 					"$ref": "util.json#/definitions/srd"
+				},
+				"color": {
+					"description": "For homebrew use only.",
+					"type": "string"
 				}
 			},
 			"required": [

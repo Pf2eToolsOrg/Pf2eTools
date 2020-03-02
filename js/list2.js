@@ -91,7 +91,7 @@ class List {
 
 		// This should only be run after all the elements are ready from page load
 		if (this._$iptSearch) {
-			SearchWidget.bindTypingEnd({$iptSearch: this._$iptSearch, fnKeyup: () => this.search(this._$iptSearch.val())});
+			UiUtil.bindTypingEnd({$ipt: this._$iptSearch, fnKeyup: () => this.search(this._$iptSearch.val())});
 			this._searchTerm = List._getCleanSearchTerm(this._$iptSearch.val());
 		}
 		this._doSearch();

@@ -129,14 +129,12 @@ class SpellsPage {
 		}
 
 		function buildFluffTab (isImageTab) {
-			return Renderer.utils.pBuildFluffTab(
+			return Renderer.utils.pBuildFluffTab({
 				isImageTab,
 				$content,
-				spell,
-				(fluffJson) => spell.fluff || fluffJson.spell.find(it => it.name === spell.name && it.source === spell.source),
-				null,
-				() => false
-			);
+				entity: spell,
+				fnFluffBuilder: (fluffJson) => spell.fluff || fluffJson.spell.find(it => it.name === spell.name && it.source === spell.source)
+			});
 		}
 
 		const statTab = Renderer.utils.tabButton(
@@ -166,7 +164,7 @@ class SpellsPage {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub, pPreloadSublistSources);
 
-		spellBookView.handleSub(sub);
+		await spellBookView.pHandleSub(sub);
 	}
 
 	async pOnLoad () {

@@ -3,15 +3,13 @@
 const JSON_URL = "data/renderdemo.json";
 const STORAGE_LOCATION = "demoInput";
 
-window.onload = pLoadJson;
-
-async function pLoadJson () {
+window.addEventListener("load", async () => {
 	const rendererType = await StorageUtil.pGetForPage("renderer");
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	BrewUtil.pAddBrewData(); // don't await, as this is only used for tags
 	const data = await DataUtil.loadJSON(JSON_URL);
 	return initDemo(data, rendererType);
-}
+});
 
 async function initDemo (data, rendererType) {
 	const defaultJson = data.data[0];

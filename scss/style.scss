@@ -191,6 +191,7 @@
 	@media (max-width: $width-screen-md) {
 		bottom: auto;
 		height: initial;
+		min-height: 100vh;
 	}
 }
 
@@ -217,7 +218,7 @@
 	@media (max-width: $width-screen-md) {
 		flex-direction: column;
 		max-height: none;
-		height: auto;
+		height: initial;
 		display: block;
 	}
 }
@@ -524,7 +525,6 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 .btn-name-pronounce,
 .btn-stats-name {
-	margin-left: 5px;
 	vertical-align: top;
 	height: 24px;
 	width: 24px;
@@ -802,6 +802,12 @@ input[type=checkbox].sidemenu__row__label__cb {
 	display: flex;
 	flex-direction: column;
 	height: calc(100% - 19px);
+
+	&--wrp-book-contents {
+		height: initial;
+		position: relative;
+		flex: 1;
+	}
 }
 
 .wrp-footer-buttons {
@@ -862,6 +868,11 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 	&[type=number] {
 		appearance: textfield;
+	}
+
+	&[type=checkbox] {
+		width: initial;
+		margin: initial;
 	}
 }
 
@@ -2313,11 +2324,6 @@ tr.regionaleffect {
 }
 
 /* Book/Adventure Pages */
-#listcontainer.book-contents {
-	position: relative;
-	flex: 1;
-}
-
 #listcontainer.book-contents > ul > li {
 	max-height: initial;
 }

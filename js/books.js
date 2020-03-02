@@ -25,7 +25,7 @@ const booksList = new BooksList({
 	}
 });
 
-window.onload = booksList.pOnPageLoad.bind(booksList);
+window.addEventListener("load", () => booksList.pOnPageLoad());
 
 function handleBrew (homebrew) {
 	booksList.addData(homebrew);

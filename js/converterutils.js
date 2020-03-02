@@ -62,11 +62,31 @@ String.prototype.indexOf_handleColon = String.prototype.indexOf_handleColon || f
 	return this.toLowerCase().indexOf(str.toLowerCase());
 };
 
-const CREATURE_SUB_ENTRY_PROPS = [
-	"entries",
-	"headerEntries",
-	"footerEntries"
-];
+class BaseParser {
+	static _getValidOptions (options) {
+		options = options || {};
+		if (!options.cbWarning || !options.cbOutput) throw new Error(`Missing required callback options!`);
+		return options;
+	}
+
+	// region conversion
+	static _getAsTitle (prop, line, titleCaseFields, isTitleCase) {
+		return titleCaseFields && titleCaseFields.includes(prop) && isTitleCase
+			? line.toLowerCase().toTitleCase()
+			: line;
+	}
+
+	static _getCleanInput (ipt) {
+		return ipt
+			.replace(/[−–‒]/g, "-") // convert minus signs to hyphens
+		;
+	}
+
+	static _hasEntryContent (trait) {
+		return trait && (trait.name || (trait.entries.length === 1 && trait.entries[0]) || trait.entries.length > 1);
+	}
+	// endregion
+}
 
 class AcConvert {
 	static tryPostProcessAc (m, cbMan, cbErr) {
@@ -321,30 +341,93 @@ class TagDc {
 }
 
 class TagCondition {
-	static tryTagConditions (m) {
-		const handleProp = (prop) => {
-			if (m[prop]) {
-				m[prop].forEach(it => {
-					CREATURE_SUB_ENTRY_PROPS.forEach(subProp => {
-						if (it[subProp]) {
-							let str = JSON.stringify(it[subProp], null, "\t");
-
-							TagCondition._CONDITION_MATCHERS.forEach(r => str = str.replace(r, (...mt) => `${mt[1]}{@condition ${mt[2]}}${mt[3]}`));
-
-							it[subProp] = JSON.parse(str);
-						}
-					});
-				})
-			}
+	static _getConvertedEntry (mon, entry, inflictedSet) {
+		const walker = MiscUtil.getWalker(TagCondition._WALKER_KEY_BLACKLIST);
+		const walkerHandlers = {
+			string: [
+				(ident, str) => {
+					const ptrStack = {_: ""};
+					return TagCondition._walkerStringHandler(mon, 0, inflictedSet, ptrStack, 0, str)
+				}
+			]
 		};
+		entry = MiscUtil.copy(entry);
+		return walker.walk("tagConditions", entry, walkerHandlers);
+	}
 
-		handleProp("action");
-		handleProp("reaction");
-		handleProp("trait");
-		handleProp("legendary");
-		handleProp("variant");
+	static _walkerStringHandler (mon, depth, inflictedSet, stack, conditionCount, str) {
+		const tagSplit = Renderer.splitByTags(str);
+		const len = tagSplit.length;
+		for (let i = 0; i < len; ++i) {
+			const s = tagSplit[i];
+			if (!s) continue;
+			if (s[0] === "@") {
+				const [tag, text] = Renderer.splitFirstSpace(s);
+
+				switch (tag) {
+					case "@condition": {
+						stack._ += `{${tag}${text.length ? " " : ""}`;
+						this._walkerStringHandler(mon, depth + 1, inflictedSet, stack, conditionCount + 1, text);
+						stack._ += `}`;
+						break;
+					}
+					default: {
+						stack._ += `{${tag}${text.length ? " " : ""}`;
+						this._walkerStringHandler(mon, depth + 1, inflictedSet, stack, conditionCount, text);
+						stack._ += `}`;
+						break;
+					}
+				}
+			} else {
+				// avoid tagging conditions wrapped in @condition tags
+				if (conditionCount) {
+					stack._ += s;
+				} else {
+					let sMod = s;
+					TagCondition._CONDITION_MATCHERS.forEach(r => sMod = sMod.replace(r, (...mt) => `{@condition ${mt[1]}}`));
+					stack._ += sMod;
+				}
+			}
+		}
+
+		// Only the outermost loop needs return the final string
+		if (depth !== 0) return;
+
+		// region generate tags
+		TagCondition._CONDITION_INFLICTED_MATCHERS.forEach(re => stack._.replace(re, (...m) => {
+			inflictedSet.add(m[1]);
+
+			// ", {@condition ...}, ..."
+			if (m[2]) m[2].replace(/{@condition ([^}]+)}/g, (...n) => inflictedSet.add(n[1]));
+
+			// " and {@condition ...}
+			if (m[3]) m[3].replace(/{@condition ([^}]+)}/g, (...n) => inflictedSet.add(n[1]));
+		}));
+		// endregion
+
+		return stack._;
+	}
+
+	static _handleProp (m, prop, inflictedSet) {
+		if (!m[prop]) return;
+
+		m[prop] = m[prop].map(entry => this._getConvertedEntry(m, entry, inflictedSet));
+	}
+
+	static tryTagConditions (m) {
+		const inflictedSet = new Set();
+
+		this._handleProp(m, "action", inflictedSet);
+		this._handleProp(m, "reaction", inflictedSet);
+		this._handleProp(m, "trait", inflictedSet);
+		this._handleProp(m, "legendary", inflictedSet);
+		this._handleProp(m, "variant", inflictedSet);
+
+		if (inflictedSet.size) m.conditionInflicted = [...inflictedSet];
+		else delete m.conditionInflicted;
 	}
 }
+TagCondition._WALKER_KEY_BLACKLIST = new Set(["caption", "type", "colLabels", "name"]);
 TagCondition._CONDITIONS = [
 	"blinded",
 	"charmed",
@@ -362,7 +445,48 @@ TagCondition._CONDITIONS = [
 	"stunned",
 	"unconscious"
 ];
-TagCondition._CONDITION_MATCHERS = TagCondition._CONDITIONS.map(it => new RegExp(`([^\\w])(${it})([^\\w}|])`, "gi"));
+TagCondition._CONDITION_MATCHERS = TagCondition._CONDITIONS.map(it => new RegExp(`(${it})`, "gi"));
+// Each should have one group which matches the condition name.
+//   A comma/and part is appended to the end to handle chains of conditions.
+TagCondition.__TGT = `(?:target|wielder)`;
+TagCondition._CONDITION_INFLICTED_MATCHERS = [
+	`(?:creature|enemy|target) (?:is|becomes) (?:\\w+ )?{@condition ([^}]+)}`,
+	`saving throw (?:by \\d+ or more, it )?is (?:\\w+ )?{@condition ([^}]+)}`, // MM :: Sphinx :: First Roar
+	`(?:the save|fails) by \\d+ or more, [^.!?]+?{@condition ([^}]+)}`, // VGM :: Fire Giant Dreadnought :: Shield Charge
+	`(?:${TagCondition.__TGT}|creatures?|humanoid|undead|other creatures|enemy) [^.!?]+?(?:succeed|make|pass)[^.!?]+?saving throw[^.!?]+?or (?:fall|be(?:come)?|is) (?:\\w+ )?{@condition ([^}]+)}`,
+	`and then be (?:\\w+ )?{@condition ([^}]+)}`,
+	`(?:be|is) knocked (?:\\w+ )?{@condition (prone|unconscious)}`,
+	`a (?:\\w+ )?{@condition [^}]+} (?:creature|enemy) is (?:\\w+ )?{@condition ([^}]+)}`, // e.g. `a frightened creature is paralyzed`
+	`the[^.!?]+?${TagCondition.__TGT} is[^.!?]+?{@condition ([^}]+)}`,
+	`the[^.!?]+?${TagCondition.__TGT} is [^.!?]+?, it is {@condition ([^}]+)}(?: \\(escape [^\\)]+\\))?`,
+	`begins to [^.!?]+? and is {@condition ([^}]+)}`, // e.g. `begins to turn to stone and is restrained`
+	`saving throw[^.!?]+?or [^.!?]+? and remain {@condition ([^}]+)}`, // e.g. `or fall asleep and remain unconscious`
+	`saving throw[^.!?]+?or be [^.!?]+? and land {@condition (prone)}`, // MM :: Cloud Giant :: Fling
+	`saving throw[^.!?]+?or be (?:pushed|pulled) [^.!?]+? and (?:\\w+ )?{@condition ([^}]+)}`, // MM :: Dragon Turtle :: Tail
+	`the engulfed (?:creature|enemy) [^.!?]+? {@condition ([^}]+)}`, // MM :: Gelatinous Cube :: Engulf
+	`the ${TagCondition.__TGT} is [^.!?]+? and (?:is )?{@condition ([^}]+)} while`, // MM :: Giant Centipede :: Bite
+	`on a failed save[^.!?]+?the (?:${TagCondition.__TGT}|creature) [^.!?]+? {@condition ([^}]+)}`, // MM :: Jackalwere :: Sleep Gaze
+	`on a failure[^.!?]+?${TagCondition.__TGT}[^.!?]+?(?:pushed|pulled)[^.!?]+?and (?:\\w+ )?{@condition ([^}]+)}`, // MM :: Marid :: Water Jet
+	`a[^.!?]+?(?:creature|enemy)[^.!?]+?to the[^.!?]+?is (?:also )?{@condition ([^}]+)}`, // MM :: Mimic :: Adhesive
+	`(?:creature|enemy) gains? \\w+ levels? of {@condition (exhaustion)}`, // MM :: Myconid Adult :: Euphoria Spores
+	`(?:saving throw|failed save)[^.!?]+? gains? \\w+ levels? of {@condition (exhaustion)}`, // ERLW :: Belashyrra :: Rend Reality
+	`(?:on a successful save|if the saving throw is successful), (?:the ${TagCondition.__TGT} |(?:a|the )creature |(?:an |the )enemy )[^.!?]*?isn't {@condition ([^}]+)}`,
+	`or take[^.!?]+?damage and (?:becomes?|is|be) {@condition ([^}]+)}`, // MM :: Quasit || Claw
+	`the (?:${TagCondition.__TGT}|creature|enemy) [^.!?]+? and is {@condition ([^}]+)}`, // MM :: Satyr :: Gentle Lullaby
+	`${TagCondition.__TGT}\\. [^.!?]+?damage[^.!?]+?and[^.!?]+?${TagCondition.__TGT} is {@condition ([^}]+)}`, // MM :: Vine Blight :: Constrict
+	`on a failure[^.!?]+?${TagCondition.__TGT} [^.!?]+?\\. [^.!?]+?is also {@condition ([^}]+)}`, // MM :: Water Elemental :: Whelm
+	`(?:(?:a|the|each) ${TagCondition.__TGT}|(?:a|the|each) creature|(?:an|each) enemy)[^.!?]+?takes?[^.!?]+?damage[^.!?]+?and [^.!?]+? {@condition ([^}]+)}`, // AI :: Keg Robot :: Hot Oil Spray
+	`(?:creatures|enemies) within \\d+ feet[^.!?]+must succeed[^.!?]+saving throw or be {@condition ([^}]+)}`, // VGM :: Deep Scion :: Psychic Screech
+	`creature that fails the save[^.!?]+?{@condition ([^}]+)}`, // VGM :: Gauth :: Stunning Gaze
+	`if the ${TagCondition.__TGT} is a creature[^.!?]+?saving throw[^.!?]*?\\. On a failed save[^.!?]+?{@condition ([^}]+)}`, // VGM :: Mindwitness :: Eye Rays
+	`while {@condition (?:[^}]+)} in this way, an? (?:${TagCondition.__TGT}|creature|enemy) [^.!?]+{@condition ([^}]+)}`, // VGM :: Vargouille :: Stunning Shriek
+	`${TagCondition.__TGT} must succeed[^.!?]+?saving throw[^.!?]+?{@condition ([^}]+)}`, // VGM :: Yuan-ti Pit Master :: Merrshaulk's Slumber
+	`fails the saving throw[^.!?]+?is instead{@condition ([^}]+)}`, // ERLW :: Sul Khatesh :: Maddening Secrets
+	`on a failure, the [^.!?]+? can [^.!?]+?{@condition ([^}]+)}`, // ERLW :: Zakya Rakshasa :: Martial Prowess
+	`the {@condition ([^}]+)} creature can repeat the saving throw`, // GGR :: Archon of the Triumvirate :: Pacifying Presence
+	`if the (?:${TagCondition.__TGT}|creature) is already {@condition [^}]+}, it becomes {@condition ([^}]+)}`,
+	`(?:creature|${TagCondition.__TGT}) (?:also becomes|is) {@condition ([^}]+)}` // MTF :: Eidolon :: Divine Dread
+].map(it => new RegExp(`${it}((?:, {@condition [^}]+})*)(,? (?:and|or) {@condition [^}]+})?`, "gi"));
 
 class AlignmentConvert {
 	static tryConvertAlignment (m, cbMan) {
@@ -1117,12 +1241,12 @@ class DiceConvert {
 
 		do {
 			last = str;
-			str = str.replace(/{@(dice|damage|scaledice|d20) ([^}]*){@(?:dice|damage|scaledice|d20) ([^}]*)}([^}]*)}/gi, "{@$1 $2$3$4}");
+			str = str.replace(/{@(dice|damage|scaledice|scaledamage|d20) ([^}]*){@(?:dice|damage|scaledice|scaledamage|d20) ([^}]*)}([^}]*)}/gi, "{@$1 $2$3$4}");
 		} while (last !== str);
 
 		do {
 			last = str;
-			str = str.replace(/{@b ({@(?:dice|damage|scaledice|d20) ([^}]*)})}/gi, "$1");
+			str = str.replace(/{@b ({@(?:dice|damage|scaledice|scaledamage|d20) ([^}]*)})}/gi, "$1");
 		} while (last !== str);
 
 		// tag @damage (creature style)
@@ -1309,10 +1433,14 @@ class ConvertUtil {
 
 		return cleanString;
 	}
+
+	static cleanDashes (str) { return str.replace(/[-\u2011-\u2015]/g, "-"); }
 }
 
 if (typeof module !== "undefined") {
 	module.exports = {
+		ConvertUtil,
+		BaseParser,
 		AcConvert,
 		TagAttack,
 		TagHit,

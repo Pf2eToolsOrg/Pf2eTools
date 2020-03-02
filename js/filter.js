@@ -8,26 +8,27 @@ class PageFilter {
 		return !SourceUtil.isNonstandardSource(val);
 	}
 
-	constructor () {
-		this._sourceFilter = SourceFilter.getInstance();
-
+	constructor (opts) {
+		opts = opts || {};
+		this._sourceFilter = SourceFilter.getInstance(opts.sourceFilterOpts);
 		this._filterBox = null;
 	}
 
 	get filterBox () { return this._filterBox; }
 	get sourceFilter () { return this._sourceFilter; }
 
-	mutateAndAddToFilters (entity, isExcluded) {
-		this.mutateForFilters(entity);
-		this.addToFilters(entity, isExcluded);
+	mutateAndAddToFilters (entity, isExcluded, opts) {
+		this.mutateForFilters(entity, opts);
+		this.addToFilters(entity, isExcluded, opts);
 	}
 
-	mutateForFilters (entity) { throw new Error("Unimplemented!"); }
-	addToFilters (entity, isExcluded) { throw new Error("Unimplemented!"); }
+	mutateForFilters (entity, opts) { throw new Error("Unimplemented!"); }
+	addToFilters (entity, isExcluded, opts) { throw new Error("Unimplemented!"); }
 	toDisplay (values, entity) { throw new Error("Unimplemented!"); }
 	async _pPopulateBoxOptions () { throw new Error("Unimplemented!"); }
 
 	async pInitFilterBox (opts) {
+		opts = opts || {};
 		await this._pPopulateBoxOptions(opts);
 		this._filterBox = new FilterBox(opts);
 		await this._filterBox.pDoLoadState();
@@ -312,6 +313,8 @@ class FilterBox extends ProxyBase {
 
 		this._cachedState = null;
 
+		this._compSearch = BaseComponent.fromObject({search: ""});
+
 		this._filters.forEach(f => f.filterBox = this);
 	}
 
@@ -389,6 +392,15 @@ class FilterBox extends ProxyBase {
 
 			const $children = this._filters.map((f, i) => f.$render({filterBox: this, isFirst: i === 0, $wrpMini: this._$wrpMiniPills}));
 
+			const metaIptSearch = ComponentUiUtil.$getIptStr(
+				this._compSearch, "search",
+				{decorationRight: "clear", asMeta: true, html: `<input class="form-control input-xs" placeholder="Search...">`}
+			);
+			this._compSearch._addHookBase("search", () => {
+				const searchTerm = this._compSearch._state.search.toLowerCase();
+				this._filters.forEach(f => f.handleSearch(searchTerm));
+			});
+
 			const $btnShowAllFilters = $(`<button class="btn btn-xs btn-default">Show All</button>`)
 				.click(() => this.showAllFilters());
 			const $btnHideAllFilters = $(`<button class="btn btn-xs btn-default">Hide All</button>`)
@@ -427,7 +439,10 @@ class FilterBox extends ProxyBase {
 
 			$$`<div class="ui-modal__inner flex-col ui-modal__inner--large dropdown-menu">
 			<div class="split mb-2 mt-2 flex-v-center mobile__flex-col">
-				<h4 class="m-0 mobile__mb-2">Filters</h4>
+				<div class="flex-v-baseline mobile__flex-col">
+					<h4 class="m-0 mr-2 mobile__mb-2">Filters</h4>
+					${metaIptSearch.$wrp.addClass("mobile__mb-2")}
+				</div>
 				<div class="flex-v-center mobile__flex-col">
 					<div class="flex-v-center mobile__m-1">
 						<div class="mr-2">Combine as</div>
@@ -570,8 +585,11 @@ class FilterBox extends ProxyBase {
 			if (hasChanges) {
 				const isSave = await InputUiUtil.pGetUserBoolean({
 					title: "Unsaved Changes",
+					textYesRemember: "Always Save",
 					textYes: "Save",
-					textNo: "Discard"
+					textNo: "Discard",
+					storageKey: FilterBox._STORAGE_KEY_ALWAYS_SAVE_UNCHANGED,
+					isGlobal: true
 				});
 				if (isSave) {
 					this._cachedState = null;
@@ -832,6 +850,7 @@ FilterBox._DEFAULT_META = {
 	isSummaryHidden: false,
 	isBrewDefaultHidden: false
 };
+FilterBox._STORAGE_KEY_ALWAYS_SAVE_UNCHANGED = "filterAlwaysSaveUnchanged";
 
 // These are assumed to be the same length (4 characters)
 FilterBox._SUB_HASH_BOX_META_PREFIX = "fbmt";
@@ -865,6 +884,7 @@ class FilterItem {
 		this.userData = options.userData;
 
 		this.$rendered = null;
+		this.searchText = null;
 	}
 }
 
@@ -971,6 +991,7 @@ class FilterBase extends BaseComponent {
 	getSubHashes () { throw new Error(`Unimplemented!`); }
 	setFromSubHashState () { throw new Error(`Unimplemented!`); }
 	setFromValues () { throw new Error(`Unimplemented!`); }
+	handleSearch () { throw new Error(`Unimplemented`); }
 }
 FilterBase._DEFAULT_META = {
 	isHidden: false,
@@ -1158,7 +1179,9 @@ class Filter extends FilterBase {
 	_getDefaultState (k) { return this._deselFn && this._deselFn(k) ? 2 : this._selFn && this._selFn(k) ? 1 : 0; }
 
 	_$getPill (item) {
-		const $btnPill = $(`<div class="fltr__pill">${this._displayFn ? this._displayFn(item.item) : item.item}</div>`)
+		const displayText = this._displayFn ? this._displayFn(item.item) : item.item;
+
+		const $btnPill = $(`<div class="fltr__pill">${displayText}</div>`)
 			.click(() => {
 				if (++this._state[item.item] > 2) this._state[item.item] = 0;
 			})
@@ -1174,6 +1197,8 @@ class Filter extends FilterBase {
 		};
 		this._addHook("state", item.item, hook);
 		hook();
+
+		item.searchText = displayText.toLowerCase();
 
 		return $btnPill;
 	}
@@ -1627,6 +1652,33 @@ class Filter extends FilterBase {
 			...super.getDefaultMeta()
 		};
 	}
+
+	handleSearch (searchTerm) {
+		const isHeaderMatch = this.header.toLowerCase().includes(searchTerm);
+
+		if (isHeaderMatch) {
+			this._items.forEach(it => {
+				if (!it.$rendered) return;
+				it.$rendered.toggleClass("fltr__hidden--search", false);
+			});
+
+			if (this.__$wrpFilter) this.__$wrpFilter.toggleClass("fltr__hidden--search", false);
+
+			return true;
+		}
+
+		let visibleCount = 0;
+		this._items.forEach(it => {
+			if (!it.$rendered) return;
+			const isVisible = it.searchText.includes(searchTerm);
+			it.$rendered.toggleClass("fltr__hidden--search", !isVisible);
+			if (isVisible) visibleCount++;
+		});
+
+		if (this.__$wrpFilter) this.__$wrpFilter.toggleClass("fltr__hidden--search", visibleCount === 0);
+
+		return visibleCount !== 0;
+	}
 }
 Filter._DEFAULT_META = {
 	combineBlue: "or",
@@ -1699,6 +1751,24 @@ class SourceFilter extends Filter {
 		Object.assign(baseOptions, options);
 		return new SourceFilter(baseOptions);
 	}
+
+	getSources () {
+		const out = {
+			all: [],
+			official: [],
+			unofficial: [],
+			homebrew: []
+		};
+		this._items.forEach(it => {
+			out.all.push(it.item);
+			switch (this._groupFn(it)) {
+				case 0: out.official.push(it.item); break;
+				case 1: out.unofficial.push(it.item); break;
+				case 2: out.homebrew.push(it.item); break;
+			}
+		});
+		return out;
+	}
 }
 
 class RangeFilter extends FilterBase {
@@ -1736,9 +1806,12 @@ class RangeFilter extends FilterBase {
 				curMax: this._max
 			}
 		);
+		this.__$wrpFilter = null;
 		this.__$wrpMini = null;
 		this._$btnsMini = [];
 		this._$slider = null;
+
+		this._labelSearchCache = null;
 	}
 
 	set isUseDropdowns (val) { this._meta.isUseDropdowns = !!val; }
@@ -1913,6 +1986,8 @@ class RangeFilter extends FilterBase {
 			if (this._labels) {
 				if (this._labelSortFn) sliderOpts.labels = this._labels.sort(this._labelSortFn);
 				else sliderOpts.labels = this._labels;
+
+				this._labelSearchCache = this._labels.join(" -- ").toLowerCase();
 			} else if (this._isAllowGreater) {
 				sliderOpts.labels = {last: `${this._state.max}+`};
 			}
@@ -2058,7 +2133,8 @@ class RangeFilter extends FilterBase {
 			this._$slider.addClass("ve-grow");
 			$wrpSlider.addClass("ve-grow");
 			$wrpDropdowns.addClass("ve-grow");
-			return $$`<div class="flex">
+
+			return this.__$wrpFilter = $$`<div class="flex">
 				<div class="fltr__range-inline-label">${this.header}</div>
 				${$wrpSlider}
 				${$wrpDropdowns}
@@ -2066,7 +2142,7 @@ class RangeFilter extends FilterBase {
 		} else {
 			const $btnMobToggleControls = this._$getBtnMobToggleControls($wrpControls);
 
-			return $$`<div class="flex-col">
+			return this.__$wrpFilter = $$`<div class="flex-col">
 				${opts.isFirst ? "" : `<div class="fltr__dropdown-divider mb-1"/>`}
 				<div class="split fltr__h ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
 					<div class="fltr__h-text flex-h-center">${this.header}${$btnMobToggleControls}</div>
@@ -2134,6 +2210,8 @@ class RangeFilter extends FilterBase {
 				// Fake an update to trigger label handling
 			}
 
+			this._labelSearchCache = this._labels.join(" -- ").toLowerCase();
+
 			this._addItem_addNumber(this._labels.length - 1);
 		} else {
 			this._addItem_addNumber(item);
@@ -2161,6 +2239,19 @@ class RangeFilter extends FilterBase {
 		if (Renderer.hover.isSmallScreen()) out.isUseDropdowns = true;
 		return out;
 	}
+
+	handleSearch (searchTerm) {
+		if (this.__$wrpFilter == null) return;
+
+		const isVisible = this.header.toLowerCase().includes(searchTerm)
+			|| (this._labelSearchCache != null
+				? this._labelSearchCache.includes(searchTerm)
+				: [...new Array(this._state.max - this._state.min)].map((_, n) => n + this._state.min).join(" -- ").includes(searchTerm));
+
+		this.__$wrpFilter.toggleClass("fltr__hidden--search", !isVisible);
+
+		return isVisible;
+	}
 }
 RangeFilter._DEFAULT_META = {
 	isUseDropdowns: false
@@ -2181,6 +2272,8 @@ class MultiFilter extends FilterBase {
 		);
 		this._baseState = MiscUtil.copy(this.__state);
 		this._state = this._getProxy("state", this.__state);
+
+		this.__$wrpFilter = null;
 	}
 
 	getChildFilters () {
@@ -2302,7 +2395,7 @@ class MultiFilter extends FilterBase {
 		this._addHook("meta", "isHidden", hookShowHide);
 		hookShowHide();
 
-		return $$`<div class="flex-col">
+		return this.__$wrpFilter = $$`<div class="flex-col">
 			${opts.isFirst ? "" : `<div class="fltr__dropdown-divider mb-1"/>`}
 			<div class="split fltr__h fltr__h--multi ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
 				<div class="flex-v-center">
@@ -2374,6 +2467,21 @@ class MultiFilter extends FilterBase {
 	}
 
 	addItem () { throw new Error(`Cannot add item to MultiFilter! Add the item to a child filter instead.`); }
+
+	handleSearch (searchTerm) {
+		const isHeaderMatch = this.header.toLowerCase().includes(searchTerm);
+
+		if (isHeaderMatch) {
+			if (this.__$wrpFilter) this.__$wrpFilter.toggleClass("fltr__hidden--search", false);
+			// Force-display the children if the parent is visible
+			this._filters.forEach(it => it.handleSearch(""));
+			return true;
+		}
+
+		const numVisible = this._filters.map(it => it.handleSearch(searchTerm)).reduce((a, b) => a + b, 0);
+		if (!this.__$wrpFilter) return;
+		this.__$wrpFilter.toggleClass("fltr__hidden--search", numVisible === 0);
+	}
 }
 MultiFilter._DETAULT_STATE = {
 	mode: "or"

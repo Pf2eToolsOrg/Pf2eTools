@@ -368,7 +368,7 @@ class StatGen {
 		if ($("input.choose:checked").length > this.raceChoiceCount) return ele.checked = false;
 
 		const baseStat = this.raceStats[$(ele).closest("tr").attr("id")] || 0;
-		$(".racial", ele.parentNode.parentNode)
+		$(".racial", $(ele).closest("tr"))
 			.val(ele.checked ? baseStat + this.raceChoiceAmount : baseStat);
 		if (updateTotal) this.changeTotal();
 	}
@@ -493,12 +493,12 @@ StatGen.DEFAULT_POINTS = 27;
 
 const statGen = new StatGen();
 
-window.onload = async function load () {
+window.addEventListener("load", async () => {
 	await statGen.init();
 	hashchange();
 
 	window.dispatchEvent(new Event("toolsLoaded"));
-};
+});
 
 function hashchange () {
 	const VALID_HASHES = [

@@ -887,7 +887,7 @@ class EncounterBuilder extends ProxyBase {
 		};
 
 		const handleHasImages = (data) => {
-			const fluff = Renderer.monster.getFluff(mon, meta, data);
+			const fluff = Renderer.monster.getFluff(mon, data);
 			if (fluff && fluff.images && fluff.images.length) {
 				const hoverMeta = Renderer.hover.getMakePredefinedHover(
 					{
@@ -906,10 +906,12 @@ class EncounterBuilder extends ProxyBase {
 			} else handleNoImages();
 		};
 
-		if (ixFluff[mon.source] || mon.fluff) {
+		// TODO(fluff) refactor this to go through main fluff pipeline
+		const fluffIndex = await DataUtil.loadJSON("data/bestiary/fluff-index.json");
+		if (fluffIndex[mon.source] || mon.fluff) {
 			if (mon.fluff) handleHasImages();
 			else {
-				const data = await DataUtil.loadJSON(`${JSON_DIR}${ixFluff[mon.source]}`);
+				const data = await DataUtil.loadJSON(`data/bestiary/${fluffIndex[mon.source]}`);
 				handleHasImages(data);
 			}
 		} else handleNoImages();

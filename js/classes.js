@@ -21,41 +21,18 @@ class ClassesPage extends BaseComponent {
 		return sc.shortName.trim().replace(re, "").trim();
 	}
 
-	static _enhanceSubclassData (cls, sc) {
-		sc.source = sc.source || cls.source; // default subclasses to same source as parent
-		sc.shortName = sc.shortName || sc.name; // ensure shortName
-
-		sc._fMisc = [];
-		if (sc.srd) sc._fMisc.push("SRD");
-		if (sc.isReprinted) sc._fMisc.push("Reprinted");
-	}
-
 	constructor () {
 		super();
 		// Don't include classId in the main state/proxy, as we want special handling for it as the main hash part
 		this.__classId = {_: 0};
 		this._classId = this._getProxy("classId", this.__classId);
 
-		this._filterBox = null;
 		this._list = null;
 		this._ixData = 0;
 		this._dataList = [];
 		this._lastScrollFeature = null;
 		this._outlineData = {};
-
-		this._sourceFilter = SourceFilter.getInstance({
-			displayFnMini: it => Parser.sourceJsonToAbv(it),
-			displayFnTitle: it => Parser.sourceJsonToFull(it),
-			itemSortFnMini: (a, b) => SortUtil.ascSort(Parser.sourceJsonToAbv(a.item), Parser.sourceJsonToAbv(b.item))
-		});
-		this._miscFilter = new Filter({
-			header: "Miscellaneous",
-			items: ["Reprinted", "SRD"],
-			deselFn: (it) => { return it === "Reprinted" },
-			displayFnMini: it => it === "Reprinted" ? "Repr." : it,
-			displayFnTitle: it => it === "Reprinted" ? it : ""
-		});
-		this._filters = [this._sourceFilter, this._miscFilter];
+		this._pageFilter = new PageFilterClasses();
 
 		// region subclass list/filter
 		this._listSubclass = null;
@@ -72,22 +49,10 @@ class ClassesPage extends BaseComponent {
 		this._subclassComparisonView = null;
 		this._classBookView = null;
 		// endregion
-
-		// region source
-		this._sourceWalker = MiscUtil.getWalker(new Set(["type", "data"])).walk;
-		this._sourcePrimitiveHandlers = {
-			string: (ident, obj, lastKey) => {
-				if (lastKey === "source") this._sourceFilter.addItem(obj);
-				return obj;
-			}
-		};
-		// endregion
 	}
 
-	_addEntrySourcesToFilter (entry) { this._sourceWalker("sourceWalker", entry, this._sourcePrimitiveHandlers); }
-
 	get activeClass () { return this._dataList[this._classId._]; }
-	get filterBox () { return this._filterBox; }
+	get filterBox () { return this._pageFilter.filterBox; }
 
 	async pOnLoad () {
 		await ExcludeUtil.pInitialise();
@@ -98,16 +63,17 @@ class ClassesPage extends BaseComponent {
 		ListUtil.setOptions({primaryLists: [this._list]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 
-		this._filterBox = await pInitFilterBox({
-			filters: this._filters,
-			isCompact: true
+		await this._pageFilter.pInitFilterBox({
+			$iptSearch: $(`#lst__search`),
+			$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
+			$btnReset: $(`#reset`)
 		});
 
 		this._addData(data);
 
 		BrewUtil.bind({
-			filterBox: this._filterBox,
-			sourceFilter: this._filterSource,
+			filterBox: this.filterBox,
+			sourceFilter: this._pageFilter.sourceFilter,
 			list: this._list,
 			pHandleBrew: async homebrew => this._addData(homebrew)
 		});
@@ -132,7 +98,7 @@ class ClassesPage extends BaseComponent {
 
 		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#pagecontent`));
 		this._initLinkGrabbers();
-		UrlUtil.bindLinkExportButton(this._filterBox, $(`#btn-link-export`));
+		UrlUtil.bindLinkExportButton(this.filterBox, $(`#btn-link-export`));
 
 		Hist.initialLoad = false;
 
@@ -153,7 +119,7 @@ class ClassesPage extends BaseComponent {
 
 		if (isAddedAny) {
 			this._list.update();
-			this._filterBox.render();
+			this.filterBox.render();
 			this._handleFilterChange();
 
 			ListUtil.setOptions({
@@ -165,27 +131,17 @@ class ClassesPage extends BaseComponent {
 
 	_addData_addClassData (classes) {
 		classes.forEach(cls => {
-			cls.source = cls.source || SRC_PHB;
-			cls.subclasses = cls.subclasses || [];
-
 			const isExcluded = ExcludeUtil.isExcluded(cls.name, "class", cls.source);
-			if (!isExcluded) {
-				this._sourceFilter.addItem(cls.source);
-				if (cls.fluff) cls.fluff.forEach(it => this._addEntrySourcesToFilter(it));
-				cls.classFeatures.forEach(lvlFeatures => lvlFeatures.forEach(feature => this._addEntrySourcesToFilter(feature)));
-			}
 
-			cls.subclasses.forEach(sc => {
-				ClassesPage._enhanceSubclassData(cls, sc);
+			// Build a map of subclass source => subclass name => is excluded
+			const subclassExclusions = {};
+			(cls.subclasses || []).forEach(sc => {
+				if (isExcluded) return;
 
-				if (!isExcluded) {
-					const isScExcluded = ExcludeUtil.isExcluded(sc.name, "subclass", sc.source);
-					if (!isScExcluded) {
-						this._sourceFilter.addItem(sc.source);
-						sc.subclassFeatures.forEach(lvlFeatures => lvlFeatures.forEach(feature => this._addEntrySourcesToFilter(feature)))
-					}
-				}
+				(subclassExclusions[sc.source] = subclassExclusions[sc.source] || {})[sc.name] = subclassExclusions[sc.source][sc.name] || ExcludeUtil.isExcluded(sc.name, "subclass", sc.source);
 			});
+
+			this._pageFilter.mutateAndAddToFilters(cls, isExcluded, {subclassExclusions});
 		});
 
 		// Force data on any classes with unusual sources to behave as though they have normal sources
@@ -218,14 +174,11 @@ class ClassesPage extends BaseComponent {
 				return;
 			}
 
-			ClassesPage._enhanceSubclassData(cls, sc);
-
-			// Don't bother checking exclusion for individually-added subclasses, as they should be from homebrew
-			this._sourceFilter.addItem(sc.source);
-			sc.subclassFeatures.forEach(lvlFeatures => lvlFeatures.forEach(feature => this._addEntrySourcesToFilter(feature)));
+			const isExcludedClass = ExcludeUtil.isExcluded(cls.name, "class", cls.source);
 
 			cls.subclasses.push(sc);
-
+			// Don't bother checking subclass exclusion for individually-added subclasses, as they should be from homebrew
+			this._pageFilter.mutateAndAddToFilters(cls, isExcludedClass);
 			cls.subclasses.sort(ClassesPage._ascSortSubclasses);
 		});
 	}
@@ -290,7 +243,7 @@ class ClassesPage extends BaseComponent {
 
 	_setStateFromHash (isInitialLoad) {
 		let [_, ...subs] = Hist.getHashParts();
-		subs = this._filterBox.setFromSubHashes(subs);
+		subs = this.filterBox.setFromSubHashes(subs);
 
 		const target = isInitialLoad ? this.__state : this._state;
 
@@ -336,7 +289,19 @@ class ClassesPage extends BaseComponent {
 			if (!seenKeys.has(k) && v !== target[k]) target[k] = v;
 		});
 
-		if (requiredSources.size && this._sourceFilter.getValues().Source._isActive) requiredSources.forEach(source => this._sourceFilter.setValue(source, 1));
+		if (requiredSources.size) {
+			const sourceFilterValues = this._pageFilter.sourceFilter.getValues().Source;
+			if (sourceFilterValues._isActive) {
+				// If the filter includes "blue" values, set our sources to be included
+				if (sourceFilterValues._totals.yes > 0) {
+					requiredSources.forEach(source => this._pageFilter.sourceFilter.setValue(source, 1));
+				} else { // if there are only "red"s active, disable them for our sources
+					requiredSources.forEach(source => {
+						if (sourceFilterValues[source] !== 0) this._pageFilter.sourceFilter.setValue(source, 0);
+					});
+				}
+			}
+		}
 
 		Object.keys(validScLookup).forEach(k => {
 			if (!seenKeys.has(k) && target[k]) target[k] = false;
@@ -409,12 +374,6 @@ class ClassesPage extends BaseComponent {
 	}
 
 	getListItem (cls, clsI, isExcluded) {
-		cls._fMisc = [];
-		if (cls.isReprinted) cls._fMisc.push("Reprinted");
-		if (cls.srd) cls._fMisc.push("SRD");
-
-		this._sourceFilter.addItem(cls.source);
-
 		const hash = UrlUtil.autoEncodeHash(cls);
 		const source = Parser.sourceJsonToAbv(cls.source);
 
@@ -443,21 +402,14 @@ class ClassesPage extends BaseComponent {
 	}
 
 	_handleFilterChange () {
-		const f = this._filterBox.getValues();
+		const f = this.filterBox.getValues();
 
-		this._list.filter(li => {
-			const it = this._dataList[li.ix];
-			return this._filterBox.toDisplay(
-				f,
-				it.source,
-				it._fMisc
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 
 		this._$trsContent.forEach($tr => {
 			$tr.find(`[data-source]`).each((i, e) => {
 				const source = e.dataset.source;
-				$(e).toggleClass("hidden", !this._filterBox.toDisplay(f, source, []));
+				$(e).toggleClass("hidden", !this.filterBox.toDisplay(f, source, []));
 			})
 		});
 
@@ -470,7 +422,7 @@ class ClassesPage extends BaseComponent {
 			"_state",
 			"__state",
 			this.activeClass.subclasses
-				.filter(sc => !this._filterBox.toDisplay(f, sc.source, sc._fMisc))
+				.filter(sc => !this.filterBox.toDisplay(f, sc.source, sc._fMisc))
 				.map(sc => UrlUtil.getStateKeySubclass(sc))
 				.filter(stateKey => this._state[stateKey])
 				.mergeMap(stateKey => ({[stateKey]: false}))
@@ -483,7 +435,7 @@ class ClassesPage extends BaseComponent {
 		const pDoRender = async () => {
 			// reset all hooks in preparation for rendering
 			this._initHashAndStateSync();
-			$(this._filterBox)
+			$(this.filterBox)
 				.off(FilterBox.EVNT_VALCHANGE)
 				.on(FilterBox.EVNT_VALCHANGE, this._handleFilterChange.bind(this));
 
@@ -730,7 +682,7 @@ class ClassesPage extends BaseComponent {
 			metasTblRows.forEach(metaTblRow => {
 				metaTblRow.metasFeatureLinks.forEach(metaFeatureLink => {
 					if (metaFeatureLink.source) {
-						const isHidden = !this._filterBox.toDisplay(filterValues, metaFeatureLink.source, []);
+						const isHidden = !this.filterBox.toDisplay(filterValues, metaFeatureLink.source, []);
 						metaFeatureLink.isHidden = isHidden;
 						metaFeatureLink.$wrpLink.toggleClass("hidden", isHidden);
 					}
@@ -951,8 +903,8 @@ class ClassesPage extends BaseComponent {
 		const cls = this.activeClass;
 		const allStateKeys = cls.subclasses.map(sc => UrlUtil.getStateKeySubclass(sc));
 
-		this._sourceFilter.doSetPillsClear();
-		this._filterBox.fireChangeEvent();
+		this._pageFilter.sourceFilter.doSetPillsClear();
+		this.filterBox.fireChangeEvent();
 		this._proxyAssign("state", "_state", "__state", allStateKeys.mergeMap(stateKey => ({[stateKey]: true})));
 	}
 
@@ -964,7 +916,7 @@ class ClassesPage extends BaseComponent {
 				const allStateKeys = cls.subclasses.map(sc => UrlUtil.getStateKeySubclass(sc));
 				if (evt.shiftKey) {
 					this._doSelectAllSubclasses();
-				} else if (evt.ctrlKey) {
+				} else if (evt.ctrlKey || evt.metaKey) {
 					const nxtState = {};
 					allStateKeys.forEach(k => nxtState[k] = false);
 					this._listSubclass.visibleItems
@@ -984,14 +936,27 @@ class ClassesPage extends BaseComponent {
 			});
 
 		const filterSets = [
-			{name: "View Official", subHashes: []},
-			{name: "View Most Recent", subHashes: ["flstsource:dmg=0~erlw=0~ggr=0~phb=0~scag=0~xge=0"]},
-			{name: "View All", subHashes: ["flstsource:dmg=0~erlw=0~ggr=0~phb=0~scag=0~xge=0", "flstmiscellaneous:reprinted=0"]}
+			{name: "View Official", subHashes: [], isClearSources: false},
+			{name: "View Most Recent", subHashes: [], isClearSources: true},
+			{name: "View All", subHashes: ["flstmiscellaneous:reprinted=0"], isClearSources: true}
 		];
 		const setFilterSet = ix => {
 			const filterSet = filterSets[ix];
-			const boxSubhashes = this._filterBox.getBoxSubHashes() || [];
-			this._filterBox.setFromSubHashes([...boxSubhashes, ...filterSet.subHashes].filter(Boolean), true);
+			const boxSubhashes = this.filterBox.getBoxSubHashes() || [];
+
+			const cpySubHashes = MiscUtil.copy(filterSet.subHashes);
+			if (filterSet.isClearSources) {
+				const classifiedSources = this._pageFilter.sourceFilter.getSources();
+				const sourcePart = [...classifiedSources.official, ...classifiedSources.homebrew]
+					.map(src => `${src.toUrlified()}=0`)
+					.join(HASH_SUB_LIST_SEP);
+				cpySubHashes.push(`flstsource:${sourcePart}`)
+			}
+
+			this.filterBox.setFromSubHashes([
+				...boxSubhashes,
+				...cpySubHashes
+			].filter(Boolean), true);
 			$selFilterPreset.val("-1");
 		};
 		const $selFilterPreset = $(`<select class="input-xs form-control cls-tabs__sel-preset"><option value="-1" disabled>Filter...</option></select>`)
@@ -1008,7 +973,7 @@ class ClassesPage extends BaseComponent {
 				this._proxyAssign("state", "_state", "__state", cls.subclasses.mergeMap(sc => ({[UrlUtil.getStateKeySubclass(sc)]: false})));
 			});
 
-		$(this._filterBox).on(FilterBox.EVNT_VALCHANGE, this._handleSubclassFilterChange.bind(this));
+		$(this.filterBox).on(FilterBox.EVNT_VALCHANGE, this._handleSubclassFilterChange.bind(this));
 		this._handleSubclassFilterChange();
 		// Remove the temporary "hidden" class used to prevent popping
 		this._listSubclass.items.forEach(it => it.ele.removeClass("hidden"));
@@ -1043,12 +1008,12 @@ class ClassesPage extends BaseComponent {
 	}
 
 	_handleSubclassFilterChange () {
-		const f = this._filterBox.getValues();
+		const f = this.filterBox.getValues();
 		const cls = this.activeClass;
 		this._listSubclass.filter(li => {
 			if (li.values.isAlwaysVisible) return true;
 			const it = cls.subclasses[li.ix];
-			return this._filterBox.toDisplay(
+			return this.filterBox.toDisplay(
 				f,
 				it.source,
 				it._fMisc
@@ -1142,13 +1107,13 @@ class ClassesPage extends BaseComponent {
 		const _hkRender = async () => {
 			await this._pLock("render-outline");
 			$wrpBody.empty();
-			const filterValues = this._filterBox.getValues();
+			const filterValues = this.filterBox.getValues();
 
 			const makeItem = (depthData, cssClass) => {
 				// Skip inline entries
 				if (depthData.depth >= 2) return;
 				// Skip filtered sources
-				if (depthData.source && !this._filterBox.toDisplay(filterValues, depthData.source, [])) return;
+				if (depthData.source && !this.filterBox.toDisplay(filterValues, depthData.source, [])) return;
 
 				// If there was not a class specified, then this is not a subclass item, so we can color it with grellow as required
 				cssClass = cssClass || (depthData.source && SourceUtil.isNonstandardSource(depthData.source) ? `cls-nav__item--spicy` : "");
@@ -1335,9 +1300,7 @@ class ClassesPage extends BaseComponent {
 				const cpy = MiscUtil.copy(f);
 
 				if (typeof cpy !== "string") {
-					cpy.type = cpy.type || "section";
-					if (i === 0 && !cpy.name) cpy.name = cls.name;
-					if (f.source && f.source !== SRC_PHB && cpy.entries) cpy.entries.unshift(`{@note The following information is from ${Parser.sourceJsonToFull(f.source)}${f.page > 0 ? `, page ${f.page}` : ""}.}`);
+					if (f.source && f.source !== cls.source && cpy.entries) cpy.entries.unshift(`{@note The following information is from ${Parser.sourceJsonToFull(f.source)}${f.page > 0 ? `, page ${f.page}` : ""}.}`);
 				}
 
 				stack += Renderer.get().setDepthTracker(depthArr).render(cpy);

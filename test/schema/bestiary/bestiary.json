@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.13.4",
+	"version": "1.13.5",
 	"title": "Bestiary Schema",
 	"$id": "bestiary.json",
 	"type": "object",
@@ -992,6 +992,29 @@
 					"items": {
 						"type": "string",
 						"enum": ["MW", "RW", "RCH", "THW", "RNG", "AOE"]
+					}
+				},
+				"conditionInflicted": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": [
+							"blinded",
+							"charmed",
+							"deafened",
+							"exhaustion",
+							"frightened",
+							"grappled",
+							"incapacitated",
+							"invisible",
+							"paralyzed",
+							"petrified",
+							"poisoned",
+							"prone",
+							"restrained",
+							"stunned",
+							"unconscious"
+						]
 					}
 				},
 				"footer": {

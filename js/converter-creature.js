@@ -1,53 +1,12 @@
 "use strict";
 
 if (typeof module !== "undefined") {
+	const cv = require("./converterutils.js");
+	Object.assign(global, cv);
 	global.PropOrder = require("./utils-proporder.js");
 }
 
-class CreatureConverter extends BaseConverter {
-	constructor (ui) {
-		super(
-			ui,
-			{
-				converterId: "Creature",
-				canSaveLocal: true,
-				modes: ["txt", "md"],
-				hasPageNumbers: true,
-				titleCaseFields: ["name"],
-				hasSource: true,
-				prop: "monster"
-			}
-		);
-	}
-
-	_renderSidebar (parent, $wrpSidebar) {
-		$wrpSidebar.empty();
-
-		$(`<div class="sidemenu__row split-v-center">
-			<small>This parser is <span class="help" title="Notably poor at handling text split across multiple lines, as Carriage Return is used to separate blocks of text.">very particular</span> about its input. Use at your own risk.</small>
-		</div>`).appendTo($wrpSidebar);
-
-		ConverterUiUtil.renderSideMenuDivider($wrpSidebar);
-	}
-
-	handleParse (input, cbOutput, cbWarning, isAppend) {
-		const opts = {cbWarning, cbOutput, isAppend};
-
-		switch (this._state.mode) {
-			case "txt": return this.doParseText(input, opts);
-			case "md": return this.doParseMarkdown(input, opts);
-			default: throw new Error(`Unimplemented!`);
-		}
-	}
-
-	_getSample (format) {
-		switch (format) {
-			case "txt": return CreatureConverter.SAMPLE_TEXT;
-			case "md": return CreatureConverter.SAMPLE_MARKDOWN;
-			default: throw new Error(`Unknown format "${format}"`);
-		}
-	}
-
+class CreatureParser extends BaseParser {
 	/**
 	 * Parses statblocks from raw text pastes
 	 * @param inText Input text.
@@ -55,9 +14,13 @@ class CreatureConverter extends BaseConverter {
 	 * @param options.cbWarning Warning callback.
 	 * @param options.cbOutput Output callback.
 	 * @param options.isAppend Default output append mode.
+	 * @param options.source Entity source.
+	 * @param options.page Entity page.
+	 * @param options.titleCaseFields Array of fields to be title-cased in this entity (if enabled).
+	 * @param options.isTitleCase Whether title-case fields should be title-cased in this entity.
 	 */
-	doParseText (inText, options) {
-		options = BaseConverter._getValidOptions(options);
+	static doParseText (inText, options) {
+		options = this._getValidOptions(options);
 
 		function startNextPhase (cur) {
 			return (!cur.toUpperCase().indexOf("ACTION") || !cur.toUpperCase().indexOf("LEGENDARY ACTION") || !cur.toUpperCase().indexOf("REACTION"))
@@ -117,28 +80,26 @@ class CreatureConverter extends BaseConverter {
 			return spl.join("").split("\n").filter(it => it && it.trim());
 		})();
 		const stats = {};
-		stats.source = this._state.source || "";
+		stats.source = options.source || "";
 		// for the user to fill out
-		stats.page = this._state.page;
+		stats.page = options.page;
 
-		let prevLine = null;
 		let curLine = null;
 		let i;
 		for (i = 0; i < toConvert.length; i++) {
-			prevLine = curLine;
 			curLine = toConvert[i].trim();
 
 			if (curLine === "") continue;
 
 			// name of monster
 			if (i === 0) {
-				stats.name = this._getAsTitle("name", curLine);
+				stats.name = this._getAsTitle("name", curLine, options.titleCaseFields, options.isTitleCase);
 				continue;
 			}
 
 			// size type alignment
 			if (i === 1) {
-				CreatureConverter._setCleanSizeTypeAlignment(stats, curLine, options);
+				this._setCleanSizeTypeAlignment(stats, curLine, options);
 				continue;
 			}
 
@@ -150,7 +111,7 @@ class CreatureConverter extends BaseConverter {
 
 			// hit points
 			if (i === 3) {
-				CreatureConverter._setCleanHp(stats, curLine);
+				this._setCleanHp(stats, curLine);
 				continue;
 			}
 
@@ -165,12 +126,12 @@ class CreatureConverter extends BaseConverter {
 				// skip forward a line and grab the ability scores
 				++i;
 				const abilities = toConvert[i].trim().split(/ ?\(([+\-—])?[0-9]*\) ?/g);
-				stats.str = CreatureConverter._tryConvertNumber(abilities[0]);
-				stats.dex = CreatureConverter._tryConvertNumber(abilities[2]);
-				stats.con = CreatureConverter._tryConvertNumber(abilities[4]);
-				stats.int = CreatureConverter._tryConvertNumber(abilities[6]);
-				stats.wis = CreatureConverter._tryConvertNumber(abilities[8]);
-				stats.cha = CreatureConverter._tryConvertNumber(abilities[10]);
+				stats.str = this._tryConvertNumber(abilities[0]);
+				stats.dex = this._tryConvertNumber(abilities[2]);
+				stats.con = this._tryConvertNumber(abilities[4]);
+				stats.int = this._tryConvertNumber(abilities[6]);
+				stats.wis = this._tryConvertNumber(abilities[8]);
+				stats.cha = this._tryConvertNumber(abilities[10]);
 				continue;
 			}
 
@@ -179,12 +140,12 @@ class CreatureConverter extends BaseConverter {
 				// skip forward a line and grab the ability score
 				++i;
 				switch (curLine.toLowerCase()) {
-					case "str": stats.str = CreatureConverter._tryGetStat(toConvert[i]); continue;
-					case "dex": stats.dex = CreatureConverter._tryGetStat(toConvert[i]); continue;
-					case "con": stats.con = CreatureConverter._tryGetStat(toConvert[i]); continue;
-					case "int": stats.int = CreatureConverter._tryGetStat(toConvert[i]); continue;
-					case "wis": stats.wis = CreatureConverter._tryGetStat(toConvert[i]); continue;
-					case "cha": stats.cha = CreatureConverter._tryGetStat(toConvert[i]); continue;
+					case "str": stats.str = this._tryGetStat(toConvert[i]); continue;
+					case "dex": stats.dex = this._tryGetStat(toConvert[i]); continue;
+					case "con": stats.con = this._tryGetStat(toConvert[i]); continue;
+					case "int": stats.int = this._tryGetStat(toConvert[i]); continue;
+					case "wis": stats.wis = this._tryGetStat(toConvert[i]); continue;
+					case "cha": stats.cha = this._tryGetStat(toConvert[i]); continue;
 				}
 			}
 
@@ -192,7 +153,7 @@ class CreatureConverter extends BaseConverter {
 			if (!curLine.indexOf_handleColon("Saving Throws ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				CreatureConverter._setCleanSaves(stats, curLine, options);
+				this._setCleanSaves(stats, curLine, options);
 				continue;
 			}
 
@@ -200,7 +161,7 @@ class CreatureConverter extends BaseConverter {
 			if (!curLine.indexOf_handleColon("Skills ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				CreatureConverter._setCleanSkills(stats, curLine);
+				this._setCleanSkills(stats, curLine);
 				continue;
 			}
 
@@ -208,7 +169,7 @@ class CreatureConverter extends BaseConverter {
 			if (!curLine.indexOf_handleColon("Damage Vulnerabilities ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				CreatureConverter._setCleanDamageVuln(stats, curLine);
+				this._setCleanDamageVuln(stats, curLine);
 				continue;
 			}
 
@@ -216,7 +177,7 @@ class CreatureConverter extends BaseConverter {
 			if (!curLine.indexOf_handleColon("Damage Resistance")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				CreatureConverter._setCleanDamageRes(stats, curLine);
+				this._setCleanDamageRes(stats, curLine);
 				continue;
 			}
 
@@ -224,7 +185,7 @@ class CreatureConverter extends BaseConverter {
 			if (!curLine.indexOf_handleColon("Damage Immunities ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				CreatureConverter._setCleanDamageImm(stats, curLine);
+				this._setCleanDamageImm(stats, curLine);
 				continue;
 			}
 
@@ -232,7 +193,7 @@ class CreatureConverter extends BaseConverter {
 			if (!curLine.indexOf_handleColon("Condition Immunities ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				CreatureConverter._setCleanConditionImm(stats, curLine);
+				this._setCleanConditionImm(stats, curLine);
 				continue;
 			}
 
@@ -240,7 +201,7 @@ class CreatureConverter extends BaseConverter {
 			if (!curLine.indexOf_handleColon("Senses ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				CreatureConverter._setCleanSenses(stats, curLine);
+				this._setCleanSenses(stats, curLine);
 				continue;
 			}
 
@@ -248,7 +209,7 @@ class CreatureConverter extends BaseConverter {
 			if (!curLine.indexOf_handleColon("Languages ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine());
-				CreatureConverter._setCleanLanguages(stats, curLine);
+				this._setCleanLanguages(stats, curLine);
 				continue;
 			}
 
@@ -257,7 +218,7 @@ class CreatureConverter extends BaseConverter {
 			if (!curLine.indexOf_handleColon("Challenge ")) {
 				// noinspection StatementWithEmptyBodyJS
 				while (absorbBrokenLine(true));
-				CreatureConverter._setCleanCr(stats, curLine);
+				this._setCleanCr(stats, curLine);
 				continue;
 			}
 
@@ -347,12 +308,12 @@ class CreatureConverter extends BaseConverter {
 								else stats.spellcasting = curTrait.out;
 							} else stats.trait.push(curTrait.out);
 						} else {
-							if (BaseConverter._hasEntryContent(curTrait)) stats.trait.push(curTrait);
+							if (this._hasEntryContent(curTrait)) stats.trait.push(curTrait);
 						}
 					}
-					if (isActions && BaseConverter._hasEntryContent(curTrait)) stats.action.push(curTrait);
-					if (isReactions && BaseConverter._hasEntryContent(curTrait)) stats.reaction.push(curTrait);
-					if (isLegendaryActions && BaseConverter._hasEntryContent(curTrait)) stats.legendary.push(curTrait);
+					if (isActions && this._hasEntryContent(curTrait)) stats.action.push(curTrait);
+					if (isReactions && this._hasEntryContent(curTrait)) stats.reaction.push(curTrait);
+					if (isLegendaryActions && this._hasEntryContent(curTrait)) stats.legendary.push(curTrait);
 				}
 				curTrait = {};
 			}
@@ -388,38 +349,28 @@ class CreatureConverter extends BaseConverter {
 	 * @param options.cbWarning Warning callback.
 	 * @param options.cbOutput Output callback.
 	 * @param options.isAppend Default output append mode.
+	 * @param options.source Entity source.
+	 * @param options.page Entity page.
+	 * @param options.titleCaseFields Array of fields to be title-cased in this entity (if enabled).
+	 * @param options.isTitleCase Whether title-case fields should be title-cased in this entity.
 	 */
-	doParseMarkdown (inText, options) {
-		options = BaseConverter._getValidOptions(options);
+	static doParseMarkdown (inText, options) {
+		options = this._getValidOptions(options);
 
-		const self = this;
+		const stripDashStarStar = (line) => line.replace(/\**/g, "").replace(/^-/, "").trim();
 
-		function stripQuote (line) {
-			return line.replace(/^\s*>\s*/, "").trim();
-		}
+		const stripTripleHash = (line) => line.replace(/^###/, "").trim();
 
-		function stripDashStarStar (line) {
-			return line.replace(/\**/g, "").replace(/^-/, "").trim();
-		}
-
-		function stripTripleHash (line) {
-			return line.replace(/^###/, "").trim();
-		}
-
-		function stripLeadingSymbols (line) {
+		const stripLeadingSymbols = (line) => {
 			const removeFirstInnerStar = line.trim().startsWith("*");
 			const clean = line.replace(/^[^A-Za-z0-9]*/, "").trim();
 			return removeFirstInnerStar ? clean.replace(/\*/, "") : clean;
-		}
+		};
 
-		function isInlineHeader (line) {
-			// it should really start with "***" but, homebrew
-			return line.trim().startsWith("**");
-		}
+		// it should really start with "***" but, homebrew
+		const isInlineHeader = (line) => line.trim().startsWith("**");
 
-		function isInlineLegendaryActionItem (line) {
-			return /^-\s*\*\*\*?[^*]+/gi.test(line.trim());
-		}
+		const isInlineLegendaryActionItem = (line) => /^-\s*\*\*\*?[^*]+/gi.test(line.trim());
 
 		if (!inText || !inText.trim()) return options.cbWarning("No input!");
 		const toConvert = this._getCleanInput(inText).split("\n");
@@ -427,12 +378,12 @@ class CreatureConverter extends BaseConverter {
 
 		const getNewStatblock = () => {
 			return {
-				source: this._state.source,
-				page: this._state.page
+				source: options.source,
+				page: options.page
 			}
 		};
 
-		let parsed = 0;
+		let step = 0;
 		let hasMultipleBlocks = false;
 		const doOutputStatblock = () => {
 			if (trait != null) doAddFromParsed();
@@ -443,49 +394,48 @@ class CreatureConverter extends BaseConverter {
 			}
 			stats = getNewStatblock();
 			if (hasMultipleBlocks) options.isAppend = true; // append any further blocks we find in this parse
-			parsed = 0;
+			step = 0;
 		};
 
-		let prevLine = null;
 		let curLineRaw = null;
 		let curLine = null;
-		let prevBlank = true;
+		let isPrevBlank = true;
 		let nextPrevBlank = true;
 		let trait = null;
 
-		function getCleanTraitText (line) {
+		const getCleanTraitText = (line) => {
 			const [name, text] = line.replace(/^\*\*\*?/, "").split(/.\s*\*\*\*?/).map(it => it.trim());
 			return [
 				name,
 				text.replace(/\*Hit(\*:|:\*) /g, "Hit: ") // clean hit tags for later replacement
 			]
-		}
+		};
 
-		function getCleanLegendaryActionText (line) {
+		const getCleanLegendaryActionText = (line) => {
 			return getCleanTraitText(line.trim().replace(/^-\s*/, ""));
-		}
+		};
 
-		function doAddFromParsed () {
-			if (parsed === 9) { // traits
+		const doAddFromParsed = () => {
+			if (step === 9) { // traits
 				doAddTrait();
-			} else if (parsed === 10) { // actions
+			} else if (step === 10) { // actions
 				doAddAction();
-			} else if (parsed === 11) { // reactions
+			} else if (step === 11) { // reactions
 				doAddReaction();
-			} else if (parsed === 12) { // legendary actions
+			} else if (step === 12) { // legendary actions
 				doAddLegendary();
 			}
-		}
+		};
 
-		function doAddTrait () {
-			if (BaseConverter._hasEntryContent(trait)) {
+		const doAddTrait = () => {
+			if (this._hasEntryContent(trait)) {
 				stats.trait = stats.trait || [];
 
 				DiceConvert.convertTraitActionDice(trait);
 
 				// convert spellcasting
 				if (trait.name.toLowerCase().includes("spellcasting")) {
-					trait = self._tryParseSpellcasting(trait, true, options);
+					trait = this._tryParseSpellcasting(trait, true, options);
 					if (trait.success) {
 						// merge in e.g. innate spellcasting
 						if (stats.spellcasting) stats.spellcasting = stats.spellcasting.concat(trait.out);
@@ -496,170 +446,179 @@ class CreatureConverter extends BaseConverter {
 				}
 			}
 			trait = null;
-		}
+		};
 
-		function doAddAction () {
-			if (BaseConverter._hasEntryContent(trait)) {
+		const doAddAction = () => {
+			if (this._hasEntryContent(trait)) {
 				stats.action = stats.action || [];
 
 				DiceConvert.convertTraitActionDice(trait);
 				stats.action.push(trait);
 			}
 			trait = null;
-		}
+		};
 
-		function doAddReaction () {
-			if (BaseConverter._hasEntryContent(trait)) {
+		const doAddReaction = () => {
+			if (this._hasEntryContent(trait)) {
 				stats.reaction = stats.reaction || [];
 
 				DiceConvert.convertTraitActionDice(trait);
 				stats.reaction.push(trait);
 			}
 			trait = null;
-		}
+		};
 
-		function doAddLegendary () {
-			if (BaseConverter._hasEntryContent(trait)) {
+		const doAddLegendary = () => {
+			if (this._hasEntryContent(trait)) {
 				stats.legendary = stats.legendary || [];
 
 				DiceConvert.convertTraitActionDice(trait);
 				stats.legendary.push(trait);
 			}
 			trait = null;
-		}
+		};
 
-		function getCleanedRaw (str) {
+		const getCleanedRaw = (str) => {
 			return str.trim()
 				.replace(/<br\s*(\/)?>/gi, ""); // remove <br>
-		}
+		};
 
 		let i = 0;
 		for (; i < toConvert.length; i++) {
-			prevLine = curLine;
 			curLineRaw = getCleanedRaw(toConvert[i]);
 			curLine = curLineRaw;
 
-			if (curLine === "" || curLine.toLowerCase() === "\\pagebreak" || curLine.toLowerCase() === "\\columnbreak") {
-				prevBlank = true;
+			if (this._isBlankLineMarkdown(curLineRaw)) {
+				isPrevBlank = true;
 				continue;
 			} else nextPrevBlank = false;
-			curLine = stripQuote(curLine).trim();
-			if (curLine === "") continue;
+			curLine = this._stripMarkdownQuote(curLine);
+
+			if (this._isBlankLineMarkdown(curLine)) continue;
 			else if (
-				(curLine === "___" && prevBlank) // handle nicely separated blocks
+				(curLine === "___" && isPrevBlank) // handle nicely separated blocks
 				|| curLineRaw === "___" // handle multiple stacked blocks
 			) {
 				if (stats !== null) hasMultipleBlocks = true;
 				doOutputStatblock();
-				prevBlank = nextPrevBlank;
+				isPrevBlank = nextPrevBlank;
 				continue;
 			} else if (curLine === "___") {
-				prevBlank = nextPrevBlank;
+				isPrevBlank = nextPrevBlank;
 				continue;
 			}
 
 			// name of monster
-			if (parsed === 0) {
+			if (step === 0) {
 				curLine = curLine.replace(/^\s*##/, "").trim();
-				stats.name = this._getAsTitle("name", curLine);
-				parsed++;
+				stats.name = this._getAsTitle("name", curLine, options.titleCaseFields, options.isTitleCase);
+				step++;
 				continue;
 			}
 
 			// size type alignment
-			if (parsed === 1) {
+			if (step === 1) {
 				curLine = curLine.replace(/^\**(.*?)\**$/, "$1");
-				CreatureConverter._setCleanSizeTypeAlignment(stats, curLine, options);
-				parsed++;
+				this._setCleanSizeTypeAlignment(stats, curLine, options);
+				step++;
 				continue;
 			}
 
 			// armor class
-			if (parsed === 2) {
+			if (step === 2) {
 				stats.ac = stripDashStarStar(curLine).replace(/Armor Class/g, "").trim();
-				parsed++;
+				step++;
 				continue;
 			}
 
 			// hit points
-			if (parsed === 3) {
-				CreatureConverter._setCleanHp(stats, stripDashStarStar(curLine));
-				parsed++;
+			if (step === 3) {
+				this._setCleanHp(stats, stripDashStarStar(curLine));
+				step++;
 				continue;
 			}
 
 			// speed
-			if (parsed === 4) {
+			if (step === 4) {
 				this._setCleanSpeed(stats, stripDashStarStar(curLine), options);
-				parsed++;
+				step++;
 				continue;
 			}
 
 			// ability scores
-			if (parsed === 5 || parsed === 6 || parsed === 7) {
+			if (step === 5 || step === 6 || step === 7) {
 				// skip the two header rows
 				if (curLine.replace(/\s*/g, "").startsWith("|STR") || curLine.replace(/\s*/g, "").startsWith("|:-")) {
-					parsed++;
+					step++;
 					continue;
 				}
 				const abilities = curLine.split("|").map(it => it.trim()).filter(Boolean);
-				Parser.ABIL_ABVS.map((abi, j) => stats[abi] = CreatureConverter._tryGetStat(abilities[j]));
-				parsed++;
+				Parser.ABIL_ABVS.map((abi, j) => stats[abi] = this._tryGetStat(abilities[j]));
+				step++;
 				continue;
 			}
 
-			if (parsed === 8) {
+			if (step === 8) {
 				// saves (optional)
 				if (~curLine.indexOf("Saving Throws")) {
-					CreatureConverter._setCleanSaves(stats, stripDashStarStar(curLine), options);
+					this._setCleanSaves(stats, stripDashStarStar(curLine), options);
 					continue;
 				}
 
 				// skills (optional)
 				if (~curLine.indexOf("Skills")) {
-					CreatureConverter._setCleanSkills(stats, stripDashStarStar(curLine));
+					this._setCleanSkills(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
 				// damage vulnerabilities (optional)
 				if (~curLine.indexOf("Damage Vulnerabilities")) {
-					CreatureConverter._setCleanDamageVuln(stats, stripDashStarStar(curLine));
+					this._setCleanDamageVuln(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
 				// damage resistances (optional)
 				if (~curLine.indexOf("Damage Resistance")) {
-					CreatureConverter._setCleanDamageRes(stats, stripDashStarStar(curLine));
+					this._setCleanDamageRes(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
 				// damage immunities (optional)
 				if (~curLine.indexOf("Damage Immunities")) {
-					CreatureConverter._setCleanDamageImm(stats, stripDashStarStar(curLine));
+					this._setCleanDamageImm(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
 				// condition immunities (optional)
 				if (~curLine.indexOf("Condition Immunities")) {
-					CreatureConverter._setCleanConditionImm(stats, stripDashStarStar(curLine));
+					this._setCleanConditionImm(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
 				// senses
 				if (~curLine.indexOf("Senses")) {
-					CreatureConverter._setCleanSenses(stats, stripDashStarStar(curLine));
+					this._setCleanSenses(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
 				// languages
 				if (~curLine.indexOf("Languages")) {
-					CreatureConverter._setCleanLanguages(stats, stripDashStarStar(curLine));
+					this._setCleanLanguages(stats, stripDashStarStar(curLine));
 					continue;
 				}
 
+				// CR
 				if (~curLine.indexOf("Challenge")) {
-					CreatureConverter._setCleanCr(stats, stripDashStarStar(curLine));
-					parsed++;
+					this._setCleanCr(stats, stripDashStarStar(curLine));
+
+					const [nextLine1, nextLine2] = this._getNextLinesMarkdown(toConvert, {ixCur: i, isPrevBlank, nextPrevBlank}, 2);
+
+					// Skip past Giffyglyph builder junk
+					if (nextLine1 && nextLine2 && ~nextLine1.indexOf("Attacks") && ~nextLine2.indexOf("Attack DCs")) {
+						i = this._advanceLinesMarkdown(toConvert, {ixCur: i, isPrevBlank, nextPrevBlank}, 2);
+					}
+
+					step++;
 					continue;
 				}
 			}
@@ -667,20 +626,20 @@ class CreatureConverter extends BaseConverter {
 			const cleanedLine = stripTripleHash(curLine);
 			if (cleanedLine.toLowerCase() === "actions") {
 				doAddFromParsed();
-				parsed = 10;
+				step = 10;
 				continue;
 			} else if (cleanedLine.toLowerCase() === "reactions") {
 				doAddFromParsed();
-				parsed = 11;
+				step = 11;
 				continue;
 			} else if (cleanedLine.toLowerCase() === "legendary actions") {
 				doAddFromParsed();
-				parsed = 12;
+				step = 12;
 				continue;
 			}
 
 			// traits
-			if (parsed === 9) {
+			if (step === 9) {
 				if (isInlineHeader(curLine)) {
 					doAddTrait();
 					trait = {name: "", entries: []};
@@ -693,7 +652,7 @@ class CreatureConverter extends BaseConverter {
 			}
 
 			// actions
-			if (parsed === 10) {
+			if (step === 10) {
 				if (isInlineHeader(curLine)) {
 					doAddAction();
 					trait = {name: "", entries: []};
@@ -706,7 +665,7 @@ class CreatureConverter extends BaseConverter {
 			}
 
 			// reactions
-			if (parsed === 11) {
+			if (step === 11) {
 				if (isInlineHeader(curLine)) {
 					doAddReaction();
 					trait = {name: "", entries: []};
@@ -719,7 +678,7 @@ class CreatureConverter extends BaseConverter {
 			}
 
 			// legendary actions
-			if (parsed === 12) {
+			if (step === 12) {
 				if (isInlineLegendaryActionItem(curLine)) {
 					doAddLegendary();
 					trait = {name: "", entries: []};
@@ -746,8 +705,65 @@ class CreatureConverter extends BaseConverter {
 		doOutputStatblock();
 	}
 
+	static _isBlankLineMarkdown (line) {
+		return line === "" || line.toLowerCase() === "\\pagebreak" || line.toLowerCase() === "\\columnbreak";
+	}
+
+	static _isStatblockTransitionMarkdown (line, cleanLine, isPrevBlank) {
+		return (cleanLine === "___" && isPrevBlank) // handle nicely separated blocks
+		|| line === "___";
+	}
+
+	static _stripMarkdownQuote (line) {
+		return line.replace(/^\s*>\s*/, "").trim();
+	}
+
+	static _callOnNextLinesMarkdown (toConvert, {ixCur, isPrevBlank, nextPrevBlank}, numLines, fn) {
+		const len = toConvert.length;
+
+		for (let i = ixCur + 1; i < len; ++i) {
+			const line = toConvert[i];
+
+			if (this._isBlankLineMarkdown(line)) {
+				isPrevBlank = true;
+				continue;
+			} else nextPrevBlank = false;
+
+			const cleanLine = this._stripMarkdownQuote(line);
+
+			if (this._isBlankLineMarkdown(cleanLine)) continue;
+			else if (
+				(cleanLine === "___" && isPrevBlank) // handle nicely separated blocks
+				|| line === "___" // handle multiple stacked blocks
+			) {
+				break;
+			} else if (cleanLine === "___") {
+				isPrevBlank = nextPrevBlank;
+				continue;
+			}
+
+			fn(cleanLine, i);
+
+			if (!--numLines) break;
+		}
+	}
+
+	static _getNextLinesMarkdown (toConvert, {ixCur, isPrevBlank, nextPrevBlank}, numLines) {
+		const out = [];
+		const fn = cleanLine => out.push(cleanLine);
+		this._callOnNextLinesMarkdown(toConvert, {ixCur, isPrevBlank, nextPrevBlank}, numLines, fn);
+		return out;
+	}
+
+	static _advanceLinesMarkdown (toConvert, {ixCur, isPrevBlank, nextPrevBlank}, numLines) {
+		let ixOut = ixCur + 1;
+		const fn = (_, i) => ixOut = i + 1;
+		this._callOnNextLinesMarkdown(toConvert, {ixCur, isPrevBlank, nextPrevBlank}, numLines, fn);
+		return ixOut;
+	}
+
 	// SHARED UTILITY FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
-	_doStatblockPostProcess (stats, options) {
+	static _doStatblockPostProcess (stats, options) {
 		const doCleanup = () => {
 			// remove any empty arrays
 			Object.keys(stats).forEach(k => {
@@ -812,7 +828,7 @@ class CreatureConverter extends BaseConverter {
 
 	static _tryGetStat (strLine) {
 		try {
-			return CreatureConverter._tryConvertNumber(/(\d+) \(.*?\)/.exec(strLine)[1]);
+			return this._tryConvertNumber(/(\d+) \(.*?\)/.exec(strLine)[1]);
 		} catch (e) {
 			return 0;
 		}
@@ -851,7 +867,7 @@ class CreatureConverter extends BaseConverter {
 		}
 	}
 
-	_tryParseSpellcasting (trait, isMarkdown, options) {
+	static _tryParseSpellcasting (trait, isMarkdown, options) {
 		return SpellcastingTraitConvert.tryParseSpellcasting(trait, isMarkdown, (err) => options.cbWarning(err));
 	}
 
@@ -872,7 +888,7 @@ class CreatureConverter extends BaseConverter {
 			AlignmentConvert.tryConvertAlignment(stats, (ali) => options.cbWarning(`Alignment "${ali}" requires manual conversion`));
 		}
 
-		stats.type = CreatureConverter._tryParseType(stats.type);
+		stats.type = this._tryParseType(stats.type);
 
 		const validTypes = new Set(Parser.MON_TYPES);
 		if (!validTypes.has(stats.type.type || stats.type)) {
@@ -906,7 +922,7 @@ class CreatureConverter extends BaseConverter {
 		}
 	}
 
-	_setCleanSpeed (stats, line, options) {
+	static _setCleanSpeed (stats, line, options) {
 		stats.speed = line;
 		SpeedConvert.tryConvertSpeed(stats, options.cbWarning);
 	}
@@ -931,41 +947,41 @@ class CreatureConverter extends BaseConverter {
 
 	static _setCleanSkills (stats, line) {
 		stats.skill = line.split_handleColon("Skills", 1)[1].trim().toLowerCase();
-		const split = stats.skill.split(",");
+		const split = stats.skill.split(",").map(it => it.trim()).filter(Boolean);
 		const newSkills = {};
 		try {
 			split.forEach(s => {
 				const splSpace = s.split(" ");
 				const val = splSpace.pop().trim();
 				let name = splSpace.join(" ").toLowerCase().trim().replace(/ /g, "");
-				name = CreatureConverter.SKILL_SPACE_MAP[name] || name;
+				name = this.SKILL_SPACE_MAP[name] || name;
 				newSkills[name] = val;
 			});
 			stats.skill = newSkills;
 			if (stats.skill[""]) delete stats.skill[""]; // remove empty properties
 		} catch (ignored) {
-			return 0;
+			setTimeout(() => { throw ignored });
 		}
 	}
 
 	static _setCleanDamageVuln (stats, line) {
 		stats.vulnerable = line.split_handleColon("Vulnerabilities", 1)[1].trim();
-		stats.vulnerable = CreatureConverter._tryParseDamageResVulnImmune(stats.vulnerable, "vulnerable");
+		stats.vulnerable = this._tryParseDamageResVulnImmune(stats.vulnerable, "vulnerable");
 	}
 
 	static _setCleanDamageRes (stats, line) {
 		stats.resist = (line.toLowerCase().includes("resistances") ? line.split_handleColon("Resistances", 1) : line.split_handleColon("Resistance", 1))[1].trim();
-		stats.resist = CreatureConverter._tryParseDamageResVulnImmune(stats.resist, "resist");
+		stats.resist = this._tryParseDamageResVulnImmune(stats.resist, "resist");
 	}
 
 	static _setCleanDamageImm (stats, line) {
 		stats.immune = line.split_handleColon("Immunities", 1)[1].trim();
-		stats.immune = CreatureConverter._tryParseDamageResVulnImmune(stats.immune, "immune");
+		stats.immune = this._tryParseDamageResVulnImmune(stats.immune, "immune");
 	}
 
 	static _setCleanConditionImm (stats, line) {
 		stats.conditionImmune = line.split_handleColon("Immunities", 1)[1];
-		stats.conditionImmune = CreatureConverter._tryParseDamageResVulnImmune(stats.conditionImmune, "conditionImmune");
+		stats.conditionImmune = this._tryParseDamageResVulnImmune(stats.conditionImmune, "conditionImmune");
 	}
 
 	static _setCleanSenses (stats, line) {
@@ -974,7 +990,7 @@ class CreatureConverter extends BaseConverter {
 		senses.split(StrUtil.COMMA_SPACE_NOT_IN_PARENTHESES_REGEX).forEach(s => {
 			s = s.trim();
 			if (s) {
-				if (s.includes("passive perception")) stats.passive = CreatureConverter._tryConvertNumber(s.split("passive perception")[1].trim());
+				if (s.includes("passive perception")) stats.passive = this._tryConvertNumber(s.split("passive perception")[1].trim());
 				else tempSenses.push(s.trim());
 			}
 		});
@@ -987,7 +1003,7 @@ class CreatureConverter extends BaseConverter {
 		if (stats.languages && /^([-–‒—]|\\u201\d)+$/.exec(stats.languages.trim())) delete stats.languages;
 		else {
 			stats.languages = stats.languages
-			// Clean caps words
+				// Clean caps words
 				.split(/(\W)/g)
 				.map(s => {
 					return s
@@ -1006,106 +1022,13 @@ class CreatureConverter extends BaseConverter {
 		stats.cr = line.split_handleColon("Challenge", 1)[1].trim().split("(")[0].trim();
 	}
 }
-CreatureConverter.SKILL_SPACE_MAP = {
+CreatureParser.SKILL_SPACE_MAP = {
 	"sleightofhand": "sleight of hand",
 	"animalhandling": "animal handling"
 };
-// region samples
-CreatureConverter.SAMPLE_TEXT =
-	`Mammon
-Huge fiend (devil), lawful evil
-Armor Class 20 (natural armor)
-Hit Points 378 (28d12 + 196)
-Speed 50 ft.
-STR DEX CON INT WIS CHA
-22 (+6) 13 (+1) 24 (+7) 23 (+6) 21 (+5) 26 (+8)
-Saving Throws Dex +9, Int +14, Wis +13, Cha +16
-Skills Deception +16, Insight +13, Perception +13, Persuasion +16
-Damage Resistances cold
-Damage Immunities fire, poison; bludgeoning, piercing, and slashing from weapons that aren't silvered
-Condition Immunities charmed, exhaustion, frightened, poisoned
-Senses truesight 120 ft., passive Perception 23
-Languages all, telepathy 120 ft.
-Challenge 25 (75,000 XP)
-Innate Spellcasting. Mammon's innate spellcasting ability is Charisma (spell save DC 24, +16 to hit with spell attacks). He can innately cast the following spells, requiring no material components:
-At will: charm person, detect magic, dispel magic, fabricate (Mammon can create valuable objects), heat metal, magic aura
-3/day each: animate objects, counterspell, creation, instant summons, legend lore, teleport
-1/day: imprisonment (minimus containment only, inside gems), sunburst
-Spellcasting. Mammon is a 6th level spellcaster. His spellcasting ability is Intelligence (spell save DC 13; +5 to hit with spell attacks). He has the following wizard spells prepared:
-Cantrips (at will): fire bolt, light, mage hand, prestidigitation
-1st level (4 slots): mage armor, magic missile, shield
-2nd level (3 slots): misty step, suggestion
-3rd level (3 slots): fly, lightning bolt
-Legendary Resistance (3/day). If Mammon fails a saving throw, he can choose to succeed instead.
-Magic Resistance. Mammon has advantage on saving throws against spells and other magical effects.
-Magic Weapons. Mammon's weapon attacks are magical.
-ACTIONS
-Multiattack. Mammon makes three attacks.
-Purse. Melee Weapon Attack: +14 to hit, reach 10 ft., one target. Hit: 19 (3d8 + 6) bludgeoning damage plus 18 (4d8) radiant damage.
-Molten Coins. Ranged Weapon Attack: +14 to hit, range 40/120 ft., one target. Hit: 16 (3d6 + 6) bludgeoning damage plus 18 (4d8) fire damage.
-Your Weight In Gold (Recharge 5-6). Mammon can use this ability as a bonus action immediately after hitting a creature with his purse attack. The creature must make a DC 24 Constitution saving throw. If the saving throw fails by 5 or more, the creature is instantly petrified by being turned to solid gold. Otherwise, a creature that fails the saving throw is restrained. A restrained creature repeats the saving throw at the end of its next turn, becoming petrified on a failure or ending the effect on a success. The petrification lasts until the creature receives a greater restoration spell or comparable magic.
-LEGENDARY ACTIONS
-Mammon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. Mammon regains spent legendary actions at the start of his turn.
-Attack. Mammon makes one purse or molten coins attack.
-Make It Rain! Mammon casts gold and jewels into a 5-foot radius within 60 feet. One creature within 60 feet of the treasure that can see it must make a DC 24 Wisdom saving throw. On a failure, the creature must use its reaction to move its speed toward the trinkets, which vanish at the end of the turn.
-Deep Pockets (3 actions). Mammon recharges his Your Weight In Gold ability.`;
-CreatureConverter.SAMPLE_MARKDOWN =
-	`___
->## Lich
->*Medium undead, any evil alignment*
->___
->- **Armor Class** 17
->- **Hit Points** 135 (18d8 + 54)
->- **Speed** 30 ft.
->___
->|STR|DEX|CON|INT|WIS|CHA|
->|:---:|:---:|:---:|:---:|:---:|:---:|
->|11 (+0)|16 (+3)|16 (+3)|20 (+5)|14 (+2)|16 (+3)|
->___
->- **Saving Throws** Con +10, Int +12, Wis +9
->- **Skills** Arcana +19, History +12, Insight +9, Perception +9
->- **Damage Resistances** cold, lightning, necrotic
->- **Damage Immunities** poison; bludgeoning, piercing, and slashing from nonmagical attacks
->- **Condition Immunities** charmed, exhaustion, frightened, paralyzed, poisoned
->- **Senses** truesight 120 ft., passive Perception 19
->- **Languages** Common plus up to five other languages
->- **Challenge** 21 (33000 XP)
->___
->***Legendary Resistance (3/Day).*** If the lich fails a saving throw, it can choose to succeed instead.
->
->***Rejuvenation.*** If it has a phylactery, a destroyed lich gains a new body in 1d10 days, regaining all its hit points and becoming active again. The new body appears within 5 feet of the phylactery.
->
->***Spellcasting.*** The lich is an 18th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 20, +12 to hit with spell attacks). The lich has the following wizard spells prepared:
->
->• Cantrips (at will): mage hand, prestidigitation, ray of frost
->• 1st level (4 slots): detect magic, magic missile, shield, thunderwave
->• 2nd level (3 slots): detect thoughts, invisibility, Melf's acid arrow, mirror image
->• 3rd level (3 slots): animate dead, counterspell, dispel magic, fireball
->• 4th level (3 slots): blight, dimension door
->• 5th level (3 slots): cloudkill, scrying
->• 6th level (1 slot): disintegrate, globe of invulnerability
->• 7th level (1 slot): finger of death, plane shift
->• 8th level (1 slot): dominate monster, power word stun
->• 9th level (1 slot): power word kill
->
->***Turn Resistance.*** The lich has advantage on saving throws against any effect that turns undead.
->
->### Actions
->***Paralyzing Touch.*** Melee Spell Attack: +12 to hit, reach 5 ft., one creature. *Hit*: 10 (3d6) cold damage. The target must succeed on a DC 18 Constitution saving throw or be paralyzed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.
->
->### Legendary Actions
->The lich can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The lich regains spent legendary actions at the start of its turn.
->
->- **Cantrip.** The lich casts a cantrip.
->- **Paralyzing Touch (Costs 2 Actions).** The lich uses its Paralyzing Touch.
->- **Frightening Gaze (Costs 2 Actions).** The lich fixes its gaze on one creature it can see within 10 feet of it. The target must succeed on a DC 18 Wisdom saving throw against this magic or become frightened for 1 minute. The frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to the lich's gaze for the next 24 hours.
->- **Disrupt Life (Costs 3 Actions).** Each non-undead creature within 20 feet of the lich must make a DC 18 Constitution saving throw against this magic, taking 21 (6d6) necrotic damage on a failed save, or half as much damage on a successful one.
->
->`;
-// endregion
 
 if (typeof module !== "undefined") {
 	module.exports = {
-		CreatureConverter
+		CreatureParser
 	};
 }

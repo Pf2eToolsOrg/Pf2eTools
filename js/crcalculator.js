@@ -5,14 +5,14 @@ const MONSTER_FEATURES_JSON_URL = "data/monsterfeatures.json";
 let msbcr;
 let monsterFeatures;
 
-window.onload = async function load () {
+window.addEventListener("load", async () => {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	msbcr = await DataUtil.loadJSON(MONSTER_STATS_BY_CR_JSON_URL);
 	const mfData = await DataUtil.loadJSON(MONSTER_FEATURES_JSON_URL);
 	addMonsterFeatures(mfData);
 
 	window.dispatchEvent(new Event("toolsLoaded"));
-};
+});
 
 function addMonsterFeatures (mfData) {
 	monsterFeatures = mfData.monsterfeatures;

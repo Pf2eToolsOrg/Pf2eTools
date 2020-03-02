@@ -2,11 +2,11 @@
 
 const CONTENTS_URL = "data/adventures.json";
 
-window.onload = function load () {
+window.addEventListener("load", () => {
 	BookUtil.renderArea = $(`#pagecontent`);
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	DataUtil.loadJSON(CONTENTS_URL).then(onJsonLoad);
-};
+});
 
 let adventures = [];
 let adI = 0;

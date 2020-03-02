@@ -163,13 +163,21 @@ class AttachedSpellAndGroupItemsCheck {
 
 		function checkRoot (file, root, name, source) {
 			function checkDuplicates (prop, tag) {
-				const asUrls = root[prop].map(it => getEncoded(it, tag));
+				const asUrls = root[prop].map(it => {
+					if (it.item) it = it.item;
+					if (it.special) return null;
+
+					return getEncoded(it, tag);
+				}).filter(Boolean);
 
 				if (asUrls.length !== new Set(asUrls).size) MSG.AttachedSpellAndGroupItemsCheck += `Duplicate ${prop} in ${file} for ${source}, ${name}: ${asUrls.filter(s => asUrls.filter(it => it === s).length > 1).join(", ")}\n`;
 			}
 
 			function checkExists (prop, tag) {
 				root[prop].forEach(s => {
+					if (s.item) s = s.item;
+					if (s.special) return;
+
 					const url = getEncoded(s, tag);
 					if (!ALL_URLS.has(url)) MSG.AttachedSpellAndGroupItemsCheck += `Missing link: ${s} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
 				})
@@ -184,6 +192,11 @@ class AttachedSpellAndGroupItemsCheck {
 				if (root.items) {
 					checkDuplicates("items", "item");
 					checkExists("items", "item");
+				}
+
+				if (root.packContents) {
+					checkDuplicates("packContents", "item");
+					checkExists("packContents", "item");
 				}
 
 				if (root.baseItem) {

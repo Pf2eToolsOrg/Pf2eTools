@@ -107,14 +107,13 @@ class VehiclesPage extends ListPage {
 		}
 
 		function buildFluffTab (isImageTab) {
-			return Renderer.utils.pBuildFluffTab(
+			return Renderer.utils.pBuildFluffTab({
 				isImageTab,
 				$content,
-				veh,
-				(fluffJson) => veh.fluff || fluffJson.vehicleFluff.find(it => it.name === veh.name && it.source === veh.source),
-				`data/fluff-vehicles.json`,
-				() => true
-			);
+				entity: veh,
+				fnFluffBuilder: (fluffJson) => veh.fluff || fluffJson.vehicleFluff.find(it => it.name === veh.name && it.source === veh.source),
+				fluffUrl: `data/fluff-vehicles.json`
+			});
 		}
 
 		const statTab = Renderer.utils.tabButton(

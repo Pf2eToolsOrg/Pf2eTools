@@ -1,8 +1,8 @@
 "use strict";
 
-window.onload = () => {
+window.addEventListener("load", () => {
 	doPageInit().catch(e => { throw e })
-};
+});
 
 class PageUi {
 	constructor () {
@@ -267,6 +267,8 @@ class Builder extends ProxyBase {
 	 * @param opts Options object.
 	 * @param opts.titleSidebarLoadExisting Text for "Load Existing" sidebar button.
 	 * @param opts.titleSidebarDownloadJson Text for "Download JSON" sidebar button.
+	 * @param opts.metaSidebarDownloadMarkdown Meta for a "Download Markdown" sidebar button.
+	 * @param opts.sidebarItemOptionsMetas Additional sidebar item options, displayed in each burger context menu.
 	 * @param opts.prop Homebrew prop.
 	 */
 	constructor (opts) {
@@ -274,6 +276,8 @@ class Builder extends ProxyBase {
 		opts = opts || {};
 		this._titleSidebarLoadExisting = opts.titleSidebarLoadExisting;
 		this._titleSidebarDownloadJson = opts.titleSidebarDownloadJson;
+		this._metaSidebarDownloadMarkdown = opts.metaSidebarDownloadMarkdown;
+		this._sidebarItemOptionsMetas = opts.sidebarItemOptionsMetas;
 		this._prop = opts.prop;
 
 		Builder._BUILDERS.push(this);
@@ -374,10 +378,27 @@ class Builder extends ProxyBase {
 		const $btnDownloadJson = $(`<button class="btn btn-default btn-xs mb-2">${this._titleSidebarDownloadJson}</button>`)
 			.click(() => this.handleSidebarDownloadJsonClick());
 
+		const $wrpDownloadMarkdown = (() => {
+			if (!this._metaSidebarDownloadMarkdown) return null;
+
+			const $btnDownload = $(`<button class="btn btn-default btn-xs mb-2">${this._metaSidebarDownloadMarkdown.title}</button>`)
+				.click(async () => {
+					const entities = this._getSidebarVisibleEntities();
+					const mdOut = await this._metaSidebarDownloadMarkdown.pFnGetText(entities);
+					DataUtil.userDownloadText(`${DataUtil.getCleanFilename(BrewUtil.sourceJsonToFull(this._ui.source))}.md`, mdOut);
+				});
+
+			const $btnSettings = $(`<button class="btn btn-default btn-xs mb-2"><span class="glyphicon glyphicon-cog"/></button>`)
+				.click(() => RendererMarkdown.pShowSettingsModal());
+
+			return $$`<div class="flex-v-center btn-group">${$btnDownload}${$btnSettings}</div>`
+		})();
+
 		this._$sideMenuWrpList = $(`<div class="sidemenu__row flex-col">`);
 		this._$sideMenuStageSaved = $$`<div>
 		${PageUi.__$getSideMenuDivider().hide()}
 		<div class="flex-v-center">${$btnDownloadJson}</div>
+		${$wrpDownloadMarkdown}
 		${this._$sideMenuWrpList}
 		</div>`.appendTo(this._ui.$wrpSideMenu);
 
@@ -456,7 +477,11 @@ class Builder extends ProxyBase {
 						out[this._prop] = [DataUtil.cleanJson(MiscUtil.copy(entry))];
 						DataUtil.userDownload(DataUtil.getCleanFilename(entry.name), out);
 					}
-				)
+				),
+				...(this._sidebarItemOptionsMetas || []).map(it => new ContextUtil.Action(
+					it.name,
+					(evt) => it.pAction(evt, entry)
+				))
 			];
 			ContextUtil.doInitActionContextMenu(contextId, _CONTEXT_OPTIONS);
 
@@ -485,9 +510,13 @@ class Builder extends ProxyBase {
 		});
 	}
 
+	_getSidebarVisibleEntities () {
+		return (BrewUtil.homebrew[this._prop] || []).filter(entry => entry.source === this._ui.source);
+	}
+
 	handleSidebarDownloadJsonClick () {
 		const out = this._ui._getJsonOutputTemplate();
-		out[this._prop] = (BrewUtil.homebrew[this._prop] || []).filter(entry => entry.source === this._ui.source).map(entry => PropOrder.getOrdered(DataUtil.cleanJson(MiscUtil.copy(entry)), this._prop));
+		out[this._prop] = this._getSidebarVisibleEntities().map(entry => PropOrder.getOrdered(DataUtil.cleanJson(MiscUtil.copy(entry)), this._prop));
 		DataUtil.userDownload(DataUtil.getCleanFilename(BrewUtil.sourceJsonToFull(this._ui.source)), out);
 	}
 

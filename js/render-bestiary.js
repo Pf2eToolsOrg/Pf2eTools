@@ -24,7 +24,7 @@ class RenderBestiary {
 	static _getPronunciationButton (mon) {
 		const basename = mon.soundClip.substr(mon.soundClip.lastIndexOf("/") + 1);
 
-		return `<button class="btn btn-xs btn-default btn-name-pronounce">
+		return `<button class="btn btn-xs btn-default btn-name-pronounce ml-2">
 			<span class="glyphicon glyphicon-volume-up name-pronounce-icon"></span>
 			<audio class="name-pronounce">
 			   <source src="${mon.soundClip}" type="audio/mpeg">
@@ -35,18 +35,17 @@ class RenderBestiary {
 
 	/**
 	 * @param {Object} mon Creature data.
-	 * @param {Object} meta Legendary metadata.
 	 * @param {Object} options
 	 * @param {jQuery} options.$btnScaleCr CR scaler button.
 	 * @param {jQuery} options.$btnResetScaleCr CR scaler reset button.
 	 */
-	static $getRenderedCreature (mon, meta, options) {
+	static $getRenderedCreature (mon, options) {
 		options = options || {};
 		const renderer = Renderer.get();
 		Renderer.monster.initParsed(mon);
 
 		const allTraits = Renderer.monster.getOrderedTraits(mon, renderer);
-		const legGroup = mon.legendaryGroup ? (meta[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name] : null;
+		const legGroup = DataUtil.monster.getMetaGroup(mon);
 
 		const renderedVariants = (() => {
 			const dragonVariant = Renderer.monster.getDragonCasterVariant(renderer, mon);
@@ -93,17 +92,17 @@ class RenderBestiary {
 		return $$`
 		${Renderer.utils.getBorderTr()}
 		${Renderer.utils.getExcludedTr(mon, "monster")}
-		${Renderer.utils.getNameTr(mon, {pronouncePart: mon.soundClip ? RenderBestiary._getPronunciationButton(mon) : "", extraThClasses: ["mon__name--token"], page: UrlUtil.PG_BESTIARY})}
+		${Renderer.utils.getNameTr(mon, {controlRhs: mon.soundClip ? RenderBestiary._getPronunciationButton(mon) : "", extraThClasses: ["mon__name--token"], page: UrlUtil.PG_BESTIARY})}
 		<tr><td colspan="6">
 			<div class="mon__wrp-size-type-align"><i>${Renderer.monster.getTypeAlignmentPart(mon)}</i></div>
 		</td></tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
-		
+
 		<tr><td colspan="6"><div class="mon__wrp-avoid-token"><strong>Armor Class</strong> ${Parser.acToFull(mon.ac)}</div></td></tr>
 		<tr><td colspan="6"><div class="mon__wrp-avoid-token"><strong>Hit Points</strong> ${Renderer.monster.getRenderedHp(mon.hp)}</div></td></tr>
 		<tr><td colspan="6"><strong>Speed</strong> ${Parser.getSpeedString(mon)}</td></tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
-		
+
 		<tr class="mon__ability-names">
 			<th>STR</th><th>DEX</th><th>CON</th><th>INT</th><th>WIS</th><th>CHA</th>
 		</tr>
@@ -111,7 +110,7 @@ class RenderBestiary {
 			${Parser.ABIL_ABVS.map(ab => `<td>${Renderer.utils.getAbilityRoller(mon, ab)}</td>`).join("")}
 		</tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
-		
+
 		${mon.save ? `<tr><td colspan="6"><strong>Saving Throws</strong> ${Renderer.monster.getSavesPart(mon)}</td></tr>` : ""}
 		${mon.skill ? `<tr><td colspan="6"><strong>Skills</strong> ${Renderer.monster.getSkillsString(renderer, mon)}</td></tr>` : ""}
 		${mon.vulnerable ? `<tr><td colspan="6"><strong>Damage Vulnerabilities</strong> ${Parser.monImmResToFull(mon.vulnerable)}</td></tr>` : ""}
@@ -120,7 +119,7 @@ class RenderBestiary {
 		${mon.conditionImmune ? `<tr><td colspan="6"><strong>Condition Immunities</strong> ${Parser.monCondImmToFull(mon.conditionImmune)}</td></tr>` : ""}
 		<tr><td colspan="6"><strong>Senses</strong> ${Renderer.monster.getSensesPart(mon)}</td></tr>
 		<tr><td colspan="6"><strong>Languages</strong> ${Renderer.monster.getRenderedLanguages(mon.languages)}</td></tr>
-		
+
 		<tr>${Parser.crToNumber(mon.cr) !== 100 ? $$`
 		<td colspan="6" style="position: relative;"><strong>Challenge</strong>
 			<span>${Parser.monCrToFull(mon.cr)}</span>
@@ -128,7 +127,7 @@ class RenderBestiary {
 			${options.$btnResetScaleCr || ""}
 		</td>
 		` : ""}</tr>
-		
+
 		${allTraits ? `<tr><td class="divider" colspan="6"><div></div></td></tr>${RenderBestiary._getRenderedSection("trait", allTraits, 1)}` : ""}
 		${mon.action ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Actions${mon.actionNote ? ` (<span class="small">${mon.actionNote}</span>)` : ""}</span></td></tr>
 		${RenderBestiary._getRenderedSection("action", mon.action, 1)}` : ""}
@@ -137,12 +136,12 @@ class RenderBestiary {
 		${mon.legendary ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Legendary Actions</span></td></tr>
 		<tr class="legendary"><td colspan="6"><span class="name"></span> <span>${Renderer.monster.getLegendaryActionIntro(mon)}</span></td></tr>
 		${RenderBestiary._getRenderedSection("legendary", mon.legendary, 1)}` : ""}
-		
+
 		${legGroup && legGroup.lairActions ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Lair Actions</span></td></tr>
 		${RenderBestiary._getRenderedSection("lairaction", legGroup.lairActions, -1)}` : ""}
 		${legGroup && legGroup.regionalEffects ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Regional Effects</span></td></tr>
 		${RenderBestiary._getRenderedSection("regionaleffect", legGroup.regionalEffects, -1)}` : ""}
-		
+
 		${renderedVariants ? `<tr>${renderedVariants}</tr>` : ""}
 		${mon.footer ? `<tr><td colspan=6 class="mon__sect-row-inner">${renderer.render({entries: mon.footer})}</td></tr>` : ""}
 		${renderedSources.length === 2

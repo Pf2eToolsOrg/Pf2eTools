@@ -116,6 +116,8 @@ class GenTables {
 
 		if (table.type === "table") delete table.type;
 		delete table.data;
+
+		if (table.name) table.name = Renderer.stripTags(table.name);
 	}
 
 	run () {

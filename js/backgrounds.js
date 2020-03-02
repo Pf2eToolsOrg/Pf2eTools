@@ -96,14 +96,13 @@ class BackgroundPage extends ListPage {
 		};
 
 		const buildFluffTab = (isImageTab) => {
-			return Renderer.utils.pBuildFluffTab(
+			return Renderer.utils.pBuildFluffTab({
 				isImageTab,
-				$pgContent,
-				bg,
-				(fluffJson) => bg.fluff || fluffJson.backgroundFluff.find(it => it.name === bg.name && it.source === bg.source),
-				this._dataSourcefluff,
-				() => true
-			);
+				$content: $pgContent,
+				entity: bg,
+				fnFluffBuilder: (fluffJson) => bg.fluff || fluffJson.backgroundFluff.find(it => it.name === bg.name && it.source === bg.source),
+				fluffUrl: this._dataSourcefluff
+			});
 		};
 
 		const traitTab = Renderer.utils.tabButton(
