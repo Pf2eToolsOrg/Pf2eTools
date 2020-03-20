@@ -841,7 +841,7 @@ class EncounterBuilder extends ProxyBase {
 		const mon = monsters[ixMon];
 
 		const hash = UrlUtil.autoEncodeHash(mon);
-		const preloadId = scaledTo != null ? `${MON_HASH_SCALED}:${scaledTo}` : null;
+		const preloadId = scaledTo != null ? `${VeCt.HASH_MON_SCALED}:${scaledTo}` : null;
 		return Renderer.hover.pHandleLinkMouseOver(evt, ele, UrlUtil.PG_BESTIARY, mon.source, hash, preloadId);
 	}
 
@@ -1007,7 +1007,7 @@ class EncounterBuilder extends ProxyBase {
 
 	static getAdvancedPlayerDetailHeader (name) {
 		return `
-			<input class="ecgen__player_advanced_narrow ecgen__player_advanced_extra_head form-control form-control--minimal input-xs text-center mr-1" value="${(name || "").escapeQuotes()}" onchange="encounterBuilder.doSaveStateDebounced()">
+			<input class="ecgen__player_advanced_narrow ecgen__player_advanced_extra_head form-control form-control--minimal input-xs text-center mr-1" autocomplete="new-password" value="${(name || "").escapeQuotes()}" onchange="encounterBuilder.doSaveStateDebounced()">
 		`;
 	}
 
@@ -1128,10 +1128,10 @@ class EncounterBuilder extends ProxyBase {
 		this._addHook("state", "activeKey", hookName);
 		hookName();
 
-		this._$btnNew = $(`<button class="btn btn-default btn-xs mr-2" title="New Encounter"><span class="glyphicon glyphicon glyphicon-file"/></button>`)
-			.click(() => {
+		this._$btnNew = $(`<button class="btn btn-default btn-xs mr-2" title="New Encounter (SHIFT-click to reset players)"><span class="glyphicon glyphicon glyphicon-file"/></button>`)
+			.click(evt => {
 				this._state.activeKey = null;
-				encounterBuilder.pReset();
+				encounterBuilder.pReset({isNotResetPlayers: !evt.shiftKey, isNotAddInitialPlayers: !evt.shiftKey});
 			});
 		const hookDisplayNew = () => this._$btnNew.toggleClass("hidden", !this._state.activeKey);
 		this._addHook("state", "activeKey", hookDisplayNew);

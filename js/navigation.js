@@ -51,6 +51,7 @@ class NavBar {
 		addLi(ulRules, "book.html", "Xanathar's Guide to Everything", {aHash: "XGE"});
 		addLi(ulRules, "book.html", "Eberron: Rising from the Last War", {aHash: "ERLW"});
 		addLi(ulRules, "book.html", "Dungeons & Dragons vs. Rick and Morty: Basic Rules", {aHash: "RMR"});
+		addLi(ulRules, "book.html", "Explorer's Guide to Wildemount", {aHash: "EGW"});
 		addDivider(ulRules);
 		addLi(ulRules, "book.html", "Adventurers League", {aHash: "AL"});
 		addLi(ulRules, "book.html", "Sage Advice Compendium", {aHash: "SAC"});
@@ -154,12 +155,24 @@ class NavBar {
 		addButton(
 			ulSettings,
 			{
-				html: styleSwitcher.getActiveStyleSheet() === StyleSwitcher.STYLE_DAY ? "Night Mode" : "Day Mode",
+				html: styleSwitcher.getActiveDayNight() === StyleSwitcher.STYLE_NIGHT ? "Day Mode" : "Night Mode",
 				click: (evt) => {
 					evt.preventDefault();
-					styleSwitcher.toggleActiveStyleSheet();
+					styleSwitcher.toggleDayNight();
 				},
 				className: "nightModeToggle"
+			}
+		);
+		addButton(
+			ulSettings,
+			{
+				html: styleSwitcher.getActiveWide() === true ? "Disable Wide Mode" : "Enable Wide Mode (Experimental)",
+				click: (evt) => {
+					evt.preventDefault();
+					styleSwitcher.toggleWide();
+				},
+				className: "wideModeToggle",
+				title: "This feature is unsupported. Expect bugs."
 			}
 		);
 		addDivider(ulSettings);

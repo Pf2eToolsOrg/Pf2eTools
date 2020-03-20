@@ -125,6 +125,8 @@ class PageFilterRaces extends PageFilter {
 			items: [
 				"Amphibious",
 				"Armor Proficiency",
+				"Blindsight",
+				"Damage Immunity",
 				"Damage Resistance",
 				"Darkvision", "Superior Darkvision",
 				"Dragonmark",
@@ -209,6 +211,7 @@ class PageFilterRaces extends PageFilter {
 		this._sizeFilter.addItem(race.size);
 		this._asiFilter.addItem(race._fAbility);
 		this._baseRaceFilter.addItem(race._baseName);
+		this._traitFilter.addItem(race._fTraits);
 	}
 
 	async _pPopulateBoxOptions (opts) {

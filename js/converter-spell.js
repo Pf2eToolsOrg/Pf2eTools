@@ -3,6 +3,8 @@
 if (typeof module !== "undefined") {
 	const cv = require("./converterutils.js");
 	Object.assign(global, cv);
+	const cvSpells = require("./converterutils-spell.js");
+	Object.assign(global, cvSpells);
 	global.PropOrder = require("./utils-proporder.js");
 }
 
@@ -56,10 +58,9 @@ class SpellParser extends BaseParser {
 		}
 
 		if (!inText || !inText.trim()) return options.cbWarning("No input!");
-		const toConvert = (() => {
-			const clean = this._getCleanInput(inText);
-			return clean.split("\n").filter(it => it && it.trim());
-		})();
+		const toConvert = this._getCleanInput(inText)
+			.split("\n")
+			.filter(it => it && it.trim());
 		const spell = {};
 		spell.source = options.source;
 		// for the user to fill out
@@ -121,12 +122,7 @@ class SpellParser extends BaseParser {
 
 			const addTo = (prop) => {
 				const target = spell[prop];
-				// The line is probably a wrapped continuation of the previous line if it starts with:
-				//  - a lowercase word
-				//  - numbers (e.g. damage; "8d6")
-				//  - an ability score name followed by "saving throw"
-				if (typeof target.last() === "string"
-					&& /^([a-z]|\d+\s+|(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\s+saving throw)/.test(curLine.trim())) {
+				if (BaseParser._isContinuationLine(target, curLine)) {
 					target.last(`${target.last().trim()} ${curLine.trim()}`);
 				} else {
 					target.push(curLine.trim());
@@ -174,8 +170,9 @@ class SpellParser extends BaseParser {
 				}
 			});
 		};
-		TagCondition.tryTagConditions(stats);
-		DamageTypeTag.tryRun(stats);
+		TagCondition.tryTagConditions(stats, true);
+		if (stats.entries) stats.entries = stats.entries.map(it => DiceConvert.getTaggedEntry(it))
+		if (stats.entriesHigherLevel) stats.entriesHigherLevel = stats.entriesHigherLevel.map(it => DiceConvert.getTaggedEntry(it))
 		this._addTags(stats, options);
 		doCleanup();
 	}
@@ -253,25 +250,27 @@ class SpellParser extends BaseParser {
 		if (range.toLowerCase() === "sight") return stats.range = {type: "point", distance: {type: "sight"}};
 		if (range.toLowerCase() === "touch") return stats.range = {type: "point", distance: {type: "touch"}};
 
-		const mFeetMiles = /^(\d+) (feet|foot|miles?)$/i.exec(range);
+		const cleanRange = range.replace(/(\d),(\d)/g, "$1$2");
+
+		const mFeetMiles = /^(\d+) (feet|foot|miles?)$/i.exec(cleanRange);
 		if (mFeetMiles) return stats.range = {type: "point", distance: {type: getUnit(mFeetMiles[2]), amount: Number(mFeetMiles[1])}};
 
-		const mSelfRadius = /^self \((\d+)-(foot|mile) radius\)$/i.exec(range);
+		const mSelfRadius = /^self \((\d+)-(foot|mile) radius\)$/i.exec(cleanRange);
 		if (mSelfRadius) return stats.range = {type: "radius", distance: {type: getUnit(mSelfRadius[2]), amount: Number(mSelfRadius[1])}};
 
-		const mSelfSphere = /^self \((\d+)-(foot|mile)-radius sphere\)$/i.exec(range);
+		const mSelfSphere = /^self \((\d+)-(foot|mile)-radius sphere\)$/i.exec(cleanRange);
 		if (mSelfSphere) return stats.range = {type: "sphere", distance: {type: getUnit(mSelfSphere[2]), amount: Number(mSelfSphere[1])}};
 
-		const mSelfCone = /^self \((\d+)-(foot|mile) cone\)$/i.exec(range);
+		const mSelfCone = /^self \((\d+)-(foot|mile) cone\)$/i.exec(cleanRange);
 		if (mSelfCone) return stats.range = {type: "cone", distance: {type: getUnit(mSelfCone[2]), amount: Number(mSelfCone[1])}};
 
-		const mSelfLine = /^self \((\d+)-(foot|mile) line\)$/i.exec(range);
+		const mSelfLine = /^self \((\d+)-(foot|mile) line\)$/i.exec(cleanRange);
 		if (mSelfLine) return stats.range = {type: "line", distance: {type: getUnit(mSelfLine[2]), amount: Number(mSelfLine[1])}};
 
-		const mSelfCube = /^self \((\d+)-(foot|mile) cube\)$/i.exec(range);
+		const mSelfCube = /^self \((\d+)-(foot|mile) cube\)$/i.exec(cleanRange);
 		if (mSelfCube) return stats.range = {type: "cube", distance: {type: getUnit(mSelfCube[2]), amount: Number(mSelfCube[1])}};
 
-		const mSelfHemisphere = /^self \((\d+)-(foot|mile)-radius hemisphere\)$/i.exec(range);
+		const mSelfHemisphere = /^self \((\d+)-(foot|mile)-radius hemisphere\)$/i.exec(cleanRange);
 		if (mSelfHemisphere) return stats.range = {type: "hemisphere", distance: {type: getUnit(mSelfHemisphere[2]), amount: Number(mSelfHemisphere[1])}};
 
 		options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Range part "${range}" requires manual conversion`);
@@ -361,7 +360,14 @@ class SpellParser extends BaseParser {
 									cost: valueNum * valueMult
 								};
 								if (isConsumed) stats.components.m.consume = true;
-							} else stats.components.m = materialText;
+							} else if (isConsumed) {
+								stats.components.m = {
+									text: materialText,
+									consume: true
+								};
+							} else {
+								stats.components.m = materialText;
+							}
 						} else if (lowerPt.startsWith("r ")) stats.components.r = true;
 						else options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Components part "${pt}" requires manual conversion`);
 					}

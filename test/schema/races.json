@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.3.3",
+	"version": "1.3.5",
 	"type": "object",
 
 	"definitions": {
@@ -10,6 +10,12 @@
 				"name": {
 					"type": "string"
 				},
+				"alias": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
 				"source": {
 					"type": "string"
 				},
@@ -18,6 +24,9 @@
 				},
 				"otherSources": {
 					"$ref": "util.json#/definitions/otherSources"
+				},
+				"additionalSources": {
+					"$ref": "util.json#/definitions/additionalSources"
 				},
 				"ability": {
 					"$ref": "#/definitions/abilityScores"
@@ -45,6 +54,12 @@
 						"properties": {
 							"name": {
 								"type": "string"
+							},
+							"alias": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
 							},
 							"source": {
 								"type": "string"
@@ -91,6 +106,9 @@
 							},
 							"srd": {
 								"$ref": "util.json#/definitions/srd"
+							},
+							"heightAndWeight": {
+								"$ref": "#/definitions/heightAndWeight"
 							}
 						},
 						"additionalProperties": false
@@ -166,6 +184,9 @@
 				},
 				"srd": {
 					"$ref": "util.json#/definitions/srd"
+				},
+				"heightAndWeight": {
+					"$ref": "#/definitions/heightAndWeight"
 				}
 			},
 			"additionalProperties": false
@@ -176,6 +197,8 @@
 			"enum": [
 				"Amphibious",
 				"Armor Proficiency",
+				"Blindsight",
+				"Damage Immunity",
 				"Damage Resistance",
 				"Dragonmark",
 				"Improved Resting",
@@ -254,6 +277,22 @@
 					}
 				}
 			}
+		},
+
+		"heightAndWeight": {
+			"type": "object",
+			"properties": {
+				"baseHeight":  {"type": "integer"},
+				"heightMod": {"type": "string"},
+				"baseWeight":  {"type": "integer"},
+				"weightMod": {"type": "string"}
+			},
+			"required": [
+				"baseHeight",
+				"heightMod",
+				"baseWeight"
+			],
+			"additionalProperties": false
 		},
 
 		"race": {

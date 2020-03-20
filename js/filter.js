@@ -161,7 +161,7 @@ class ModalFilter {
 			} else {
 				await this._pInit();
 
-				const $ovlLoading = $(`<div class="w-100 h-100 flex-vh-center"><i class="dnd-font text-muted">Loading...</i></div>`).appendTo($modalInner);
+				const $ovlLoading = $(`<div class="w-100 h-100 flex-vh-center"><i class="dnd-font ve-muted">Loading...</i></div>`).appendTo($modalInner);
 
 				const $iptSearch = $(`<input class="form-control" type="search" placeholder="Search...">`);
 				const $btnReset = $(`<button class="btn btn-default">Reset</button>`);
@@ -643,19 +643,14 @@ class FilterBox extends ProxyBase {
 
 				const urlHeader = hashKey.substring(prefixLen);
 
-				// special case for the "search" keyword
-				if (urlHeader === "search") {
-					filterInitialSearch = data.clean[0];
-					consumed.add(data.raw);
-					return;
-				}
-
 				if (FilterUtil.SUB_HASH_PREFIXES.has(prefix) && urlHeaderToFilter[urlHeader]) {
 					(statePerFilter[urlHeader] = statePerFilter[urlHeader] || {})[prefix] = data.clean;
 					updatedUrlHeaders.add(urlHeader);
 					consumed.add(data.raw);
 				} else if (Object.values(FilterBox._SUB_HASH_PREFIXES).includes(prefix)) {
-					filterBoxState[prefix] = data.clean;
+					// special case for the search """state"""
+					if (prefix === VeCt.FILTER_BOX_SUB_HASH_SEARCH_PREFIX) filterInitialSearch = data.clean[0];
+					else filterBoxState[prefix] = data.clean;
 					consumed.add(data.raw);
 				} else if (FilterUtil.SUB_HASH_PREFIXES.has(prefix)) throw new Error(`Could not find filter with header ${urlHeader} for subhash ${data.raw}`)
 			});
@@ -741,11 +736,20 @@ class FilterBox extends ProxyBase {
 		if (!hasCombineAs) this._reset_combineAs();
 	}
 
-	getSubHashes () {
+	/**
+	 * @param [opts] Options object.
+	 * @param [opts.isAddSearchTerm] If the active search should be added to the subhashes.
+	 */
+	getSubHashes (opts) {
+		opts = opts || {};
 		const out = [];
 		const boxSubHashes = this.getBoxSubHashes();
 		if (boxSubHashes) out.push(boxSubHashes);
 		out.push(...this._filters.map(f => f.getSubHashes()).filter(Boolean));
+		if (opts.isAddSearchTerm && this._$iptSearch) {
+			const searchTerm = UrlUtil.encodeForHash(this._$iptSearch.val().trim());
+			if (searchTerm) out.push(UrlUtil.packSubHash(this._getSubhashPrefix("search"), [searchTerm]));
+		}
 		return out.flat();
 	}
 
@@ -859,7 +863,8 @@ FilterBox._SUB_HASH_BOX_COMBINE_AS_PREFIX = "fbca";
 FilterBox._SUB_HASH_PREFIXES = {
 	meta: FilterBox._SUB_HASH_BOX_META_PREFIX,
 	minisHidden: FilterBox._SUB_HASH_BOX_MINIS_HIDDEN_PREFIX,
-	combineAs: FilterBox._SUB_HASH_BOX_COMBINE_AS_PREFIX
+	combineAs: FilterBox._SUB_HASH_BOX_COMBINE_AS_PREFIX,
+	search: VeCt.FILTER_BOX_SUB_HASH_SEARCH_PREFIX
 };
 
 class FilterItem {
@@ -912,9 +917,10 @@ class FilterBase extends BaseComponent {
 	}
 
 	getMetaSubHashes () {
-		const anyNotDefault = Object.keys(FilterBase._DEFAULT_META).find(k => this._meta[k] !== FilterBase._DEFAULT_META[k]);
+		const defaultMeta = this.getDefaultMeta();
+		const anyNotDefault = Object.keys(defaultMeta).find(k => this._meta[k] !== defaultMeta[k]);
 		if (anyNotDefault) {
-			const serMeta = Object.keys(FilterBase._DEFAULT_META).map(k => UrlUtil.mini.compress(this._meta[k] === undefined ? FilterBase._DEFAULT_META[k] : this._meta[k]));
+			const serMeta = Object.keys(defaultMeta).map(k => UrlUtil.mini.compress(this._meta[k] === undefined ? defaultMeta[k] : this._meta[k]));
 			return [UrlUtil.packSubHash(this.getSubHashPrefix("meta", this.header), serMeta)]
 		} else return null;
 	}
@@ -1001,10 +1007,12 @@ FilterBase._DEFAULT_META = {
 FilterBase._SUB_HASH_STATE_PREFIX = "flst";
 FilterBase._SUB_HASH_META_PREFIX = "flmt";
 FilterBase._SUB_HASH_NESTS_HIDDEN_PREFIX = "flnh";
+FilterBase._SUB_HASH_OPTIONS_PREFIX = "flop";
 FilterBase._SUB_HASH_PREFIXES = {
 	state: FilterBase._SUB_HASH_STATE_PREFIX,
 	meta: FilterBase._SUB_HASH_META_PREFIX,
-	nestsHidden: FilterBase._SUB_HASH_NESTS_HIDDEN_PREFIX
+	nestsHidden: FilterBase._SUB_HASH_NESTS_HIDDEN_PREFIX,
+	options: FilterBase._SUB_HASH_OPTIONS_PREFIX
 };
 
 class Filter extends FilterBase {
@@ -1014,8 +1022,9 @@ class Filter extends FilterBase {
 
 	static _validateItemNests (items, nests) {
 		if (!nests) return;
+		items = items.filter(it => it.nest);
 		const noNest = items.find(it => !nests[it.nest]);
-		if (noNest) throw new Error(`Did not have a nest: "${noNest.item}"`);
+		if (noNest) throw new Error(`Filter does not have matching nest: "${noNest.item}" (call addNest first)`);
 		const invalid = items.find(it => !it.nest || !nests[it.nest]);
 		if (invalid) throw new Error(`Invalid nest: "${invalid.item}"`);
 	}
@@ -1115,8 +1124,33 @@ class Filter extends FilterBase {
 		return out.length ? out : null;
 	}
 
+	/**
+	 * Get transient options used when setting state from URL.
+	 * @private
+	 */
+	_getOptionsFromSubHashState (state) {
+		// `flopsource:thing1~thing2` => `{options: ["thing1", "thing2"]}`
+		const opts = {};
+		Object.entries(state).forEach(([k, vals]) => {
+			const prop = FilterBase.getProp(k);
+			switch (prop) {
+				case "options": {
+					vals.forEach(val => {
+						switch (val) {
+							case "extend": {
+								opts.isExtendDefaultState = true;
+							}
+						}
+					});
+				}
+			}
+		});
+		return new FilterTransientOptions(opts);
+	}
+
 	setFromSubHashState (state) {
 		this.setMetaFromSubHashState(state);
+		const transientOptions = this._getOptionsFromSubHashState(state);
 
 		let hasState = false;
 		let hasNestsHidden = false;
@@ -1127,7 +1161,14 @@ class Filter extends FilterBase {
 				case "state": {
 					hasState = true;
 					const nxtState = {};
-					Object.keys(this._state).forEach(k => nxtState[k] = this._getDefaultState(k));
+
+					if (transientOptions.isExtendDefaultState) {
+						Object.keys(this._state).forEach(k => nxtState[k] = this._getDefaultState(k));
+					} else {
+						// This allows e.g. @filter tags to cleanly specify their sources
+						Object.keys(this._state).forEach(k => nxtState[k] = 0);
+					}
+
 					vals.forEach(v => {
 						const [statePropLower, state] = v.split("=");
 						const stateProp = Object.keys(this._state).find(k => k.toLowerCase() === statePropLower);
@@ -1182,7 +1223,13 @@ class Filter extends FilterBase {
 		const displayText = this._displayFn ? this._displayFn(item.item) : item.item;
 
 		const $btnPill = $(`<div class="fltr__pill">${displayText}</div>`)
-			.click(() => {
+			.click(evt => {
+				if (evt.shiftKey) {
+					const nxtState = {};
+					Object.keys(this._state).forEach(k => nxtState[k] = 0);
+					this._proxyAssign("state", "_state", "__state", nxtState, true);
+				}
+
 				if (++this._state[item.item] > 2) this._state[item.item] = 0;
 			})
 			.contextmenu((evt) => {
@@ -1269,13 +1316,13 @@ class Filter extends FilterBase {
 
 		const $btnCombineBlue = $$`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn-logic--blue fltr__h-btn-logic w-100" title="Positive matches mode for this filter. AND requires all blues to match, OR requires at least one blue to match."/>`
 			.click(() => this._meta.combineBlue = this._meta.combineBlue === "or" ? "and" : "or");
-		const hookCombineBlue = () => $btnCombineBlue.text(this._meta.combineBlue.toUpperCase());
+		const hookCombineBlue = () => $btnCombineBlue.text(`${this._meta.combineBlue}`.toUpperCase());
 		this._addHook("meta", "combineBlue", hookCombineBlue);
 		hookCombineBlue();
 
 		const $btnCombineRed = $$`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn-logic--red fltr__h-btn-logic w-100" title="Negative match mode for this filter. AND requires all reds to match, OR requires at least one red to match."/>`
 			.click(() => this._meta.combineRed = this._meta.combineRed === "or" ? "and" : "or");
-		const hookCombineRed = () => $btnCombineRed.text(this._meta.combineRed.toUpperCase());
+		const hookCombineRed = () => $btnCombineRed.text(`${this._meta.combineRed}`.toUpperCase());
 		this._addHook("meta", "combineRed", hookCombineRed);
 		hookCombineRed();
 
@@ -1684,6 +1731,16 @@ Filter._DEFAULT_META = {
 	combineBlue: "or",
 	combineRed: "or"
 };
+
+class FilterTransientOptions {
+	/**
+	 * @param opts Options object.
+	 * @param [opts.isExtendDefaultState]
+	 */
+	constructor (opts) {
+		this.isExtendDefaultState = opts.isExtendDefaultState;
+	}
+}
 
 class SourceFilter extends Filter {
 	constructor (opts) {
@@ -2270,7 +2327,7 @@ class MultiFilter extends FilterBase {
 				mode: opts.mode || MultiFilter._DETAULT_STATE.mode
 			}
 		);
-		this._baseState = MiscUtil.copy(this.__state);
+		this._defaultState = MiscUtil.copy(this.__state);
 		this._state = this._getProxy("state", this.__state);
 
 		this.__$wrpFilter = null;
@@ -2306,9 +2363,9 @@ class MultiFilter extends FilterBase {
 		const baseMeta = this.getMetaSubHashes();
 		if (baseMeta) out.push(...baseMeta);
 
-		const anyNotDefault = Object.keys(MultiFilter._DETAULT_STATE).find(k => this._state[k] !== MultiFilter._DETAULT_STATE[k]);
+		const anyNotDefault = Object.keys(this._defaultState).find(k => this._state[k] !== this._defaultState[k]);
 		if (anyNotDefault) {
-			const serState = Object.keys(MultiFilter._DETAULT_STATE).map(k => UrlUtil.mini.compress(this._state[k] === undefined ? MultiFilter._DEFAULT_META[k] : this._state[k]));
+			const serState = Object.keys(this._defaultState).map(k => UrlUtil.mini.compress(this._state[k] === undefined ? this._defaultState[k] : this._state[k]));
 			out.push(UrlUtil.packSubHash(this.getSubHashPrefix("state", this.header), serState));
 		}
 
@@ -2328,7 +2385,7 @@ class MultiFilter extends FilterBase {
 			if (prop === "state") {
 				hasState = true;
 				const data = vals.map(v => UrlUtil.mini.decompress(v));
-				Object.keys(MultiFilter._DETAULT_STATE).forEach((k, i) => this._state[k] = data[i]);
+				Object.keys(this._defaultState).forEach((k, i) => this._state[k] = data[i]);
 			}
 		});
 
@@ -2340,7 +2397,7 @@ class MultiFilter extends FilterBase {
 	}
 
 	$render (opts) {
-		const $btnAndOr = $(`<div class="fltr__group-comb-toggle text-muted"/>`)
+		const $btnAndOr = $(`<div class="fltr__group-comb-toggle ve-muted"/>`)
 			.click(() => this._state.mode = this._state.mode === "and" ? "or" : "and");
 		const hookAndOr = () => $btnAndOr.text(`(group ${this._state.mode.toUpperCase()})`);
 		this._addHook("state", "mode", hookAndOr);
@@ -2423,7 +2480,7 @@ class MultiFilter extends FilterBase {
 	}
 
 	_reset () {
-		Object.assign(this._state, this._baseState);
+		Object.assign(this._state, this._defaultState);
 	}
 
 	reset (isResetAll) {
@@ -2484,7 +2541,7 @@ class MultiFilter extends FilterBase {
 	}
 }
 MultiFilter._DETAULT_STATE = {
-	mode: "or"
+	mode: "and"
 };
 
 // validate subhash prefixes

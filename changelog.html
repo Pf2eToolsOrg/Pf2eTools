@@ -2254,7 +2254,7 @@ Filters -- completely overhauled internally:
 			date: "2020-02-15",
 			title: "Controversial Language",
 			txt: `
-- Added Languages page <a href="https://noads.5e.tools/languages.html">https://noads.5e.tools/languages.html</a>
+- Added Languages page <a href="https://5e.tools/languages.html">https://5e.tools/languages.html</a>
 - Added page numbers to ERLW and Acq. Inc. books
 - Added page numbers to various other entities that were lacking them
 
@@ -2332,6 +2332,73 @@ Filters -- completely overhauled internally:
 			date: "2020-02-25",
 			txt: `
 - Fixed Adventures/Books contents failing to scroll with viewport
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.99.2",
+			date: "2020-03-06",
+			txt: `
+- Added diseases inflicted by Contagion spell to Diseases page
+- Added links from variant/optional entries on Actions page to their source rules
+- Added SRD information to Optional Features page
+- Added current search term to URL exported when copying a filter link from a list pages ("magnet" button)
+- Fixed excess vertical whitespace in Adventure/Book renders
+- Fixed inconsistent position of "Actions" section in Vehicle statblocks
+- Fixed dice roller failing to handle comma-grouped digits
+- Fixed dice rollers in popout windows
+- Fixed Statgen racial bonus checkboxes having no effect
+- Tweaked CR scaler DPR scaling (now less likely to increase damage on scaling down)
+- Fixed certain text inputs being over-eager in removing trailing spaces
+- Fixed Classes page sidebar not applying UA (green) colouring to UA feature sub-headers
+- Fixed filter URL serialization inconsistently serializing certain meta options
+- Fixed DM Screen adventure/book panels failing to remember their active chapter on refresh
+- (Homebrew) Custom trap/hazard types are now added to the Traps/Hazards page "Type" filter
+- (Homebrew) Markdown Statblock Converter now handles extra text from Giffyglyph's Monster Maker (GMBinder export)
+- (Homebrew) Removed extra "(Base)" in subrace name when creating subrace of certain races
+- (Homebrew) Fixed Text Converter handling of lines ending in long-dash
+- (Homebrew) Fixed Text Converter regression on handling skills
+- (Homebrew) Fixed rendering of multi-line Lair/Regional sections in Bestiary
+- (Homebrew) Setting a "reqAttune" value of "false" on an item no longer breaks the Items page
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.100.0",
+			date: "2020-03-14",
+			title: "💯",
+			txt: `
+- Added random weight and height rollers to Races, where available
+- A handful of "name" tables (e.g. Hag Names) now generate a name on rolling, rather than using default table behaviour
+- Added missing PHB errata
+- Bestiary Encounter Builder no longer resets player state by default (still available with SHIFT-click) when creating a new encounter after saving the current encounter
+- Spells page Race filter now includes every available subrace, as opposed to base races only
+- Added "Bonus" filter to Items page
+- (Homebrew) Added support for non-class-specific level requirements in Feats and Optional Features
+- (Homebrew) @tags now support nesting better; pipe characters ("|") are no longer assumed to belong to the outermost tag in a nest
+- (Homebrew) Added support for Homebrew Creature Builder trait templates, as a homebrew entity (under the new "makebrew" directory in the repo)
+- (Homebrew) Reworked Boons to be more flexible
+- Fixed Homebrew Creature Builder HP auto-calculations being too lazy in choosing when to re-calculate
+- Fixed Homebrew Creature Builder Attack Generator failing to include ability score modifiers in its average damage calculation
+- Fixed Classes page crashing on some subclass homebrew data (thanks @ Smashman)
+- Fixed Classes page subclass toggles filtering incorrectly in the presence of homebrew subclasses
+- Improved responsiveness of drag-to-reorder mouse release checking
+- Fixed various search popups failing to show their "loading results" and "no results found" messages (previously, would just display a default list in both cases)
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.101.0",
+			date: "2020-03-20",
+			title: "Critical State",
+			txt: `
+- Added Explorer's Guide to Wildemount <a href="https://5e.tools/book.html#egw">https://5e.tools/book.html#egw</a>
+- Added initial Item support to Text Converter
+- Added Damage Immunity and Blindsight filters to Races page Traits filter
+- Moved Volo's orc gods to Deities page
+- Fixed drag-dropping hover windows onto DM Screen empty panel "plus" buttons failing to move the hover window into that panel
+- (Homebrew) Fixed Spell Text Converter failing to tag conditions
+- (Homebrew) Fixed Creature Builder lowercasing spell names in spellcasting traits
+- (Homebrew) Made Creature Text Converter more tolerant of different Warlock spellcasting trait formats
+- (Fixed Plutonium double-import on clicking the Rivet import button)
+- (Added workaround for Shaped Sheet import of Yuan-Ti Malison types)
 - (Fixed typos/added tags)`
 		},
 	];

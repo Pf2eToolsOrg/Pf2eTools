@@ -24,7 +24,7 @@ class PageFilterFeats extends PageFilter {
 		const ability = Renderer.getAbilityData(feat.ability);
 		feat._fAbility = ability.asCollection.filter(a => !ability.areNegative.includes(a)); // used for filtering
 
-		const prereqText = Renderer.utils.getPrerequisiteText(feat.prerequisite, true) || STR_NONE;
+		const prereqText = Renderer.utils.getPrerequisiteText(feat.prerequisite, true) || VeCt.STR_NONE;
 
 		const preSet = new Set();
 		(feat.prerequisite || []).forEach(it => preSet.add(...Object.keys(it)));
@@ -32,7 +32,7 @@ class PageFilterFeats extends PageFilter {
 		if (feat.prerequisite) feat._fPrereqLevel = feat.prerequisite.filter(it => it.level != null).map(it => `Level ${it.level.level}`);
 		feat._fMisc = feat.srd ? ["SRD"] : [];
 
-		feat._slAbility = ability.asText || STR_NONE;
+		feat._slAbility = ability.asText || VeCt.STR_NONE;
 		feat._slPrereq = prereqText;
 	}
 

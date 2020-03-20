@@ -83,7 +83,6 @@ class PageFilterBestiary extends PageFilter {
 		const charismaFilter = new RangeFilter({header: "Charisma", min: 1, max: 30});
 		const abilityScoreFilter = new MultiFilter({
 			header: "Ability Scores",
-			mode: "and",
 			filters: [strengthFilter, dexterityFilter, constitutionFilter, intelligenceFilter, wisdomFilter, charismaFilter],
 			isAddDropdownToggle: true
 		});
@@ -154,7 +153,7 @@ class PageFilterBestiary extends PageFilter {
 			items: PageFilterBestiary.DMG_TYPES,
 			displayFn: PageFilterBestiary.dispImmFilter
 		});
-		const defenceFilter = new MultiFilter({header: "Damage", mode: "and", filters: [vulnerableFilter, resistFilter, immuneFilter]});
+		const defenceFilter = new MultiFilter({header: "Damage", filters: [vulnerableFilter, resistFilter, immuneFilter]});
 		const conditionImmuneFilter = new Filter({
 			header: "Condition Immunity",
 			items: PageFilterBestiary.CONDS,
@@ -356,7 +355,7 @@ class PageFilterBestiary extends PageFilter {
 			m.senseTags,
 			m.languageTags,
 			m.damageTags,
-			m.conditionInflicted,
+			m.conditionInflict,
 			m._fAc,
 			m._fHp,
 			[

@@ -95,7 +95,7 @@ class PsionicsPage extends ListPage {
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-6 pl-0">${p.name}</span>
 			<span class="col-2">${typeMeta.short}</span>
-			<span class="col-2 ${p._fOrder === STR_NONE ? "list-entry-none" : ""}">${p._fOrder}</span>
+			<span class="col-2 ${p._fOrder === VeCt.STR_NONE ? "list-entry-none" : ""}">${p._fOrder}</span>
 			<span class="col-2 text-center pr-0" title="${Parser.sourceJsonToFull(p.source)}" ${BrewUtil.sourceJsonToStyle(p.source)}>${source}</span>
 		</a>`;
 
@@ -136,7 +136,7 @@ class PsionicsPage extends ListPage {
 			<a href="#${hash}" class="lst--border">
 				<span class="bold col-6 pl-0">${p.name}</span>
 				<span class="col-3">${typeMeta.short}</span>
-				<span class="col-3 ${p._fOrder === STR_NONE ? "list-entry-none" : ""} pr-0">${p._fOrder}</span>
+				<span class="col-3 ${p._fOrder === VeCt.STR_NONE ? "list-entry-none" : ""} pr-0">${p._fOrder}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));

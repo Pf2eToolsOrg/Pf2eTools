@@ -25,8 +25,7 @@
 				},
 				"_mod": {
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "one language known by its creator",
+						"mode": "appendIfNotExistsArr",
 						"items": "one language known by its creator"
 					}
 				}
@@ -48,8 +47,7 @@
 				},
 				"_mod": {
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Bullywug",
+						"mode": "appendIfNotExistsArr",
 						"items": "Bullywug"
 					},
 					"trait": {
@@ -78,6 +76,61 @@
 							}
 						]
 					}
+				}
+			}
+		},
+		{
+			"name": "Dracolich",
+			"source": "MM",
+			"page": 83,
+			"apply": {
+				"_root": {
+					"type": {
+						"type": "undead"
+					}
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "dragon",
+						"with": "dracolich"
+					},
+					"resist": {
+						"mode": "appendIfNotExistsArr",
+						"items": "necrotic"
+					},
+					"immune": {
+						"mode": "appendIfNotExistsArr",
+						"items": "poison"
+					},
+					"conditionImmune": {
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"charmed",
+							"frightened",
+							"paralyzed",
+							"poisoned",
+							"exhaustion"
+						]
+					},
+					"trait": [
+						{
+							"mode": "appendArr",
+							"items": [
+								{
+									"name": "Magic Resistance",
+									"entries": [
+										"The dracolich has advantage on saving throws against spells and other magical effects."
+									]
+								}
+							]
+						},
+						{
+							"mode": "removeArr",
+							"names": "Amphibious",
+							"force": true
+						}
+					]
 				}
 			}
 		},
@@ -112,8 +165,7 @@
 						}
 					],
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Elvish",
+						"mode": "appendIfNotExistsArr",
 						"items": "Elvish"
 					},
 					"spellcasting": {
@@ -182,14 +234,11 @@
 					},
 					"languages": [
 						{
-							"mode": "replaceOrAppendArr",
-							"replace": "Dwarvish",
-							"items": "Dwarvish"
-						},
-						{
-							"mode": "replaceOrAppendArr",
-							"replace": "Undercommon",
-							"items": "Undercommon"
+							"mode": "appendIfNotExistsArr",
+							"items": [
+								"Dwarvish",
+								"Undercommon"
+							]
 						}
 					],
 					"trait": {
@@ -241,13 +290,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "acid",
+						"mode": "appendIfNotExistsArr",
 						"items": "acid"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -287,13 +334,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "lightning",
+						"mode": "appendIfNotExistsArr",
 						"items": "lightning"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -333,13 +378,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
+						"mode": "appendIfNotExistsArr",
 						"items": "fire"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -395,13 +438,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "acid",
+						"mode": "appendIfNotExistsArr",
 						"items": "acid"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -457,13 +498,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
+						"mode": "appendIfNotExistsArr",
 						"items": "fire"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -519,13 +558,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "poison",
+						"mode": "appendIfNotExistsArr",
 						"items": "poison"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -565,13 +602,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
+						"mode": "appendIfNotExistsArr",
 						"items": "fire"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -611,13 +646,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "cold",
+						"mode": "appendIfNotExistsArr",
 						"items": "cold"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -673,13 +706,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "cold",
+						"mode": "appendIfNotExistsArr",
 						"items": "cold"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -722,8 +753,7 @@
 						}
 					],
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Goblin",
+						"mode": "appendIfNotExistsArr",
 						"items": "Goblin"
 					},
 					"trait": {
@@ -765,8 +795,7 @@
 						}
 					],
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Elvish",
+						"mode": "appendIfNotExistsArr",
 						"items": "Elvish"
 					},
 					"trait": {
@@ -814,8 +843,7 @@
 						}
 					],
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Orc",
+						"mode": "appendIfNotExistsArr",
 						"items": "Orc"
 					},
 					"trait": {
@@ -861,13 +889,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "acid",
+						"mode": "appendIfNotExistsArr",
 						"items": "acid"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -907,13 +933,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "lightning",
+						"mode": "appendIfNotExistsArr",
 						"items": "lightning"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -953,13 +977,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
+						"mode": "appendIfNotExistsArr",
 						"items": "fire"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1015,13 +1037,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "acid",
+						"mode": "appendIfNotExistsArr",
 						"items": "acid"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1077,13 +1097,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
+						"mode": "appendIfNotExistsArr",
 						"items": "fire"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1139,13 +1157,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "poison",
+						"mode": "appendIfNotExistsArr",
 						"items": "poison"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1185,13 +1201,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
+						"mode": "appendIfNotExistsArr",
 						"items": "fire"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1231,13 +1245,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "cold",
+						"mode": "appendIfNotExistsArr",
 						"items": "cold"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1293,13 +1305,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "cold",
+						"mode": "appendIfNotExistsArr",
 						"items": "cold"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1342,8 +1352,7 @@
 						}
 					],
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"trait": {
@@ -1389,13 +1398,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "acid",
+						"mode": "appendIfNotExistsArr",
 						"items": "acid"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1435,13 +1442,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "lightning",
+						"mode": "appendIfNotExistsArr",
 						"items": "lightning"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1481,13 +1486,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
+						"mode": "appendIfNotExistsArr",
 						"items": "fire"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1543,13 +1546,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "acid",
+						"mode": "appendIfNotExistsArr",
 						"items": "acid"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1605,13 +1606,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
+						"mode": "appendIfNotExistsArr",
 						"items": "fire"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1667,13 +1666,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "poison",
+						"mode": "appendIfNotExistsArr",
 						"items": "poison"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1713,13 +1710,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
+						"mode": "appendIfNotExistsArr",
 						"items": "fire"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1759,13 +1754,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "cold",
+						"mode": "appendIfNotExistsArr",
 						"items": "cold"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1821,13 +1814,11 @@
 						}
 					],
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "cold",
+						"mode": "appendIfNotExistsArr",
 						"items": "cold"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"action": {
@@ -1864,8 +1855,7 @@
 				},
 				"_mod": {
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Draconic",
+						"mode": "appendIfNotExistsArr",
 						"items": "Draconic"
 					},
 					"trait": {
@@ -1903,8 +1893,7 @@
 				},
 				"_mod": {
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Aquan",
+						"mode": "appendIfNotExistsArr",
 						"items": "Aquan"
 					},
 					"trait": {
@@ -1945,8 +1934,7 @@
 						}
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Dwarvish",
+						"mode": "appendIfNotExistsArr",
 						"items": "Dwarvish"
 					},
 					"trait": {
@@ -1988,8 +1976,7 @@
 						}
 					],
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Orc",
+						"mode": "appendIfNotExistsArr",
 						"items": "Orc"
 					},
 					"trait": {
@@ -2127,8 +2114,7 @@
 						}
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Gnomish",
+						"mode": "appendIfNotExistsArr",
 						"items": "Gnomish"
 					},
 					"trait": {
@@ -2148,11 +2134,8 @@
 		{
 			"name": "Shadow Dragon",
 			"source": "MM",
-			"page": "84",
+			"page": 84,
 			"apply": {
-				"_root": {
-					"int": 10
-				},
 				"_mod": {
 					"_": [
 						{
@@ -2163,7 +2146,7 @@
 						}
 					],
 					"resist": {
-						"mode": "appendArr",
+						"mode": "appendIfNotExistsArr",
 						"items": "necrotic"
 					},
 					"trait": {
@@ -2226,29 +2209,24 @@
 						}
 					],
 					"immune": {
-						"mode": "replaceOrAppendArr",
-						"replace": "poison",
+						"mode": "appendIfNotExistsArr",
 						"items": "poison"
 					},
 					"vulnerable": {
-						"mode": "replaceOrAppendArr",
-						"replace": "bludgeoning",
+						"mode": "appendIfNotExistsArr",
 						"items": "bludgeoning"
 					},
 					"conditionImmune": [
 						{
-							"mode": "replaceOrAppendArr",
-							"replace": "exhaustion",
-							"items": "exhaustion"
-						},
-						{
-							"mode": "replaceOrAppendArr",
-							"replace": "poisoned",
-							"items": "poisoned"
+							"mode": "appendIfNotExistsArr",
+							"items": [
+								"exhaustion",
+								"poisoned"
+							]
 						}
 					],
 					"languages": {
-						"mode": "replaceOrAppendArr",
+						"mode": "appendIfNotExistsArr",
 						"replace": "understands all languages it spoke in life but can't speak",
 						"items": "understands all languages it spoke in life but can't speak"
 					}
@@ -2273,8 +2251,7 @@
 				},
 				"_mod": {
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Halfling",
+						"mode": "appendIfNotExistsArr",
 						"items": "Halfling"
 					},
 					"trait": {
@@ -2369,13 +2346,11 @@
 						}
 					},
 					"resist": {
-						"mode": "replaceOrAppendArr",
-						"replace": "fire",
+						"mode": "appendIfNotExistsArr",
 						"items": "fire"
 					},
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Infernal",
+						"mode": "appendIfNotExistsArr",
 						"items": "Infernal"
 					},
 					"spellcasting": {
@@ -2434,8 +2409,7 @@
 						}
 					],
 					"languages": {
-						"mode": "replaceOrAppendArr",
-						"replace": "Elvish",
+						"mode": "appendIfNotExistsArr",
 						"items": "Elvish"
 					},
 					"trait": {

@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.6.2",
+	"version": "1.7.0",
 	"title": "Optional Features",
 	"type": "object",
 
@@ -28,8 +28,18 @@
 						"$ref": "entry.json"
 					}
 				},
-				"data": {
-					"type": "object"
+				"previousVersion": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"source": {
+							"type": "string"
+						}
+					},
+					"required": ["name", "source"],
+					"additionalProperties": false
 				},
 				"source": {
 					"type": "string"

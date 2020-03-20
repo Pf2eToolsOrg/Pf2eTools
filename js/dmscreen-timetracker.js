@@ -2680,7 +2680,7 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 				try {
 					await $tracker.data("doConvertAndLoadBestiaryList")(toLoad.data);
 				} catch (e) {
-					JqueryUtil.doToast({type: "error", content: `Failed to add encounter! ${MiscUtil.STR_SEE_CONSOLE}`});
+					JqueryUtil.doToast({type: "error", content: `Failed to add encounter! ${VeCt.STR_SEE_CONSOLE}`});
 					throw e;
 				}
 				JqueryUtil.doToast({type: "success", content: "Encounter added to Initiative Tracker."});

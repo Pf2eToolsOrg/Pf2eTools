@@ -4,7 +4,7 @@
 
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.0.8",
+	"version": "1.0.10",
 
 	"definitions" : {
 		"metaBlock": {
@@ -349,48 +349,56 @@
 				"type": "object",
 				"properties": {
 					"level": {
-						"type": "object",
-						"properties": {
-							"level": {
-								"type": "integer"
-							},
-							"class": {
+						"oneOf": [
+							{
 								"type": "object",
 								"properties": {
-									"name": {
-										"type": "string"
+									"level": {
+										"type": "integer"
 									},
-									"source": {
-										"type": "string"
+									"class": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"type": "string"
+											},
+											"visible": {
+												"description": "Governs whether or not the class name is visible in the list display/prerequisite line. *Not* recommended for features which implicitly carry a class restriction, such as Eldritch Invocations.",
+												"type": "boolean"
+											}
+										},
+										"required": ["name"],
+										"additionalProperties": false
 									},
-									"visible": {
-										"description": "Governs whether or not the class name is visible in the list display/prerequisite line. *Not* recommended for features which implicitly carry a class restriction, such as Eldritch Invocations.",
-										"type": "boolean"
+									"subclass": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"source": {
+												"type": "string"
+											},
+											"visible": {
+												"description": "Governs whether or not the class name is visible in the list display/prerequisite line. *Not* recommended for features which implicitly carry a class restriction, such as Eldritch Invocations.",
+												"type": "boolean"
+											}
+										},
+										"required": ["name"],
+										"additionalProperties": false
 									}
 								},
-								"required": ["name"],
+								"required": ["level"],
 								"additionalProperties": false
 							},
-							"subclass": {
-								"type": "object",
-								"properties": {
-									"name": {
-										"type": "string"
-									},
-									"source": {
-										"type": "string"
-									},
-									"visible": {
-										"description": "Governs whether or not the class name is visible in the list display/prerequisite line. *Not* recommended for features which implicitly carry a class restriction, such as Eldritch Invocations.",
-										"type": "boolean"
-									}
-								},
-								"required": ["name"],
-								"additionalProperties": false
+							{
+								"type": "integer",
+								"minimum": 1
 							}
-						},
-						"required": ["level"],
-						"additionalProperties": false
+						]
 					},
 					"pact": {
 						"type": "string",
@@ -563,7 +571,43 @@
 				{
 					"type": "object",
 					"properties": {
+						"mode": {"const": "appendIfNotExistsArr"},
+						"items": {
+							"anyOf": [
+								{"type":  "string"},
+								{"type":  "object"},
+								{"type":  "array"}
+							]
+						}
+					},
+					"required": ["items"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
 						"mode": {"const": "replaceArr"},
+						"replace": {
+							"oneOf": [
+								{"type":  "string"},
+								{"type":  "object", "properties": {"index":  {"type": "integer"}}, "required": ["index"], "additionalProperties": false},
+								{"type":  "object", "properties": {"regex":  {"type": "string"}, "flags": {"type": "string"}}, "required": ["regex"], "additionalProperties": false}
+							]
+						},
+						"items": {
+							"anyOf": [
+								{"type":  "object"},
+								{"type":  "array"}
+							]
+						}
+					},
+					"required": ["replace", "items"],
+					"additionalProperties": false
+				},
+				{
+					"type": "object",
+					"properties": {
+						"mode": {"const": "replaceOrAppendArr"},
 						"replace": {
 							"oneOf": [
 								{"type":  "string"},
@@ -612,6 +656,9 @@
 								{"type":  "string"},
 								{"type":  "array"}
 							]
+						},
+						"force": {
+							"type": "boolean"
 						}
 					},
 					"additionalProperties": false
@@ -666,6 +713,9 @@
 					"properties": {
 						"name": {"type": "string"},
 						"source": {"type": "string"},
+
+						"pantheon": {"description": "Used in deity data", "type": "string"},
+
 						"_mod": {
 							"type": "object",
 							"patternProperties": {

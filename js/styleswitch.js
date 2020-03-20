@@ -2,82 +2,115 @@
 
 class StyleSwitcher {
 	constructor () {
-		this.currentStylesheet = StyleSwitcher.STYLE_DAY;
-		this.loadStyleFromCookie();
+		this.currentStylesheet = StyleSwitcher._STYLE_DAY;
+		this._setActiveDayNight(StyleSwitcher.storage.getItem(StyleSwitcher._STORAGE_DAY_NIGHT) || StyleSwitcher._getDefaultStyleDayNight());
+		this._setActiveWide(StyleSwitcher.storage.getItem(StyleSwitcher._STORAGE_WIDE) === "true");
 	}
 
-	setActiveStyleSheet (style) {
+	static _setButtonText (btnClassName, text) {
+		[...document.getElementsByClassName(btnClassName)].forEach(ele => ele.innerHTML = text)
+	}
+
+	// region Night Mode
+	_setActiveDayNight (style) {
 		const htmlClasses = document.documentElement.classList;
-		const setMethod = style === StyleSwitcher.STYLE_DAY ? htmlClasses.remove : htmlClasses.add;
+		const setMethod = style === StyleSwitcher._STYLE_DAY ? htmlClasses.remove : htmlClasses.add;
 		setMethod.call(htmlClasses, StyleSwitcher.NIGHT_CLASS);
 
-		StyleSwitcher.setButtonText(style);
+		StyleSwitcher._setButtonText("nightModeToggle", `${style === StyleSwitcher._STYLE_DAY ? "Night" : "Day"} Mode`);
 
 		this.currentStylesheet = style;
-		StyleSwitcher.createCookie(this.currentStylesheet);
+		StyleSwitcher.storage.setItem(StyleSwitcher._STORAGE_DAY_NIGHT, this.currentStylesheet);
 	}
 
-	static setButtonText (style) {
-		const $button = StyleSwitcher.getButton();
-		if (!$button || !$button.length) return;
-		$button.html(`${style === StyleSwitcher.STYLE_DAY ? "Night" : "Day"} Mode`);
-	}
-
-	getActiveStyleSheet () {
+	getActiveDayNight () {
 		return this.currentStylesheet;
 	}
 
-	loadStyleFromCookie () {
-		this.cookie = StyleSwitcher.readCookie();
-		this.cookie = this.cookie ? this.cookie : StyleSwitcher.getDefaultStyle();
-		this.setActiveStyleSheet(this.cookie);
-	}
-
-	static getButton () {
-		if (!window.$) return;
-		return $(".nightModeToggle");
-	}
-
-	static getDefaultStyle () {
+	static _getDefaultStyleDayNight () {
 		if (window.matchMedia("(prefers-color-scheme: dark)").matches) return StyleSwitcher.STYLE_NIGHT;
-		return StyleSwitcher.STYLE_DAY;
+		return StyleSwitcher._STYLE_DAY;
 	}
 
-	static createCookie (value) {
-		StyleSwitcher.storage.setItem(StyleSwitcher.STYLE_STORAGE, value);
+	toggleDayNight () {
+		const newStyle = this.currentStylesheet === StyleSwitcher._STYLE_DAY ? StyleSwitcher.STYLE_NIGHT : StyleSwitcher._STYLE_DAY;
+		this._setActiveDayNight(newStyle);
+	}
+	// endregion
+
+	// region Wide Mode
+	_setActiveWide (isActive) {
+		const existing = document.getElementById(StyleSwitcher._WIDE_ID);
+		if (!isActive) {
+			if (existing) existing.parentNode.removeChild(existing);
+		} else {
+			if (!existing) {
+				const eleScript = document.createElement(`style`);
+				eleScript.id = StyleSwitcher._WIDE_ID;
+				eleScript.innerHTML = `
+				/* region Book/Adventure pages */
+				@media only screen and (min-width: 1600px) {
+					#listcontainer.book-contents {
+						position: relative;
+					}
+
+					.book-contents ul.contents {
+						position: sticky;
+					}
+				}
+				/* endregion */
+
+				/* region Overwrite Bootstrap containers */
+				@media (min-width: 768px) {
+					.container {
+						width: 100%;
+					}
+				}
+
+				@media (min-width: 992px) {
+					.container {
+						width: 100%;
+					}
+				}
+
+				@media (min-width: 1200px) {
+					.container {
+						width: 100%;
+					}
+				}
+				/* endregion */`;
+				document.documentElement.appendChild(eleScript);
+			}
+		}
+		StyleSwitcher._setButtonText("wideModeToggle", isActive ? "Disable Wide Mode" : "Enable Wide Mode (Experimental)");
+		StyleSwitcher.storage.setItem(StyleSwitcher._STORAGE_WIDE, isActive);
 	}
 
-	static readCookie () {
-		return StyleSwitcher.storage.getItem(StyleSwitcher.STYLE_STORAGE);
+	toggleWide () {
+		if (this.getActiveWide()) this._setActiveWide(false);
+		else this._setActiveWide(true);
 	}
 
-	toggleActiveStyleSheet () {
-		const newStyle = this.currentStylesheet === StyleSwitcher.STYLE_DAY ? StyleSwitcher.STYLE_NIGHT : StyleSwitcher.STYLE_DAY;
-		this.setActiveStyleSheet(newStyle);
-	}
+	getActiveWide () { return document.getElementById(StyleSwitcher._WIDE_ID) != null; }
+	// endregion
 }
-
-StyleSwitcher.STYLE_STORAGE = "StyleSwitcher_style";
-StyleSwitcher.STYLE_DAY = "day";
+StyleSwitcher._STORAGE_DAY_NIGHT = "StyleSwitcher_style";
+StyleSwitcher._STORAGE_WIDE = "StyleSwitcher_style-wide";
+StyleSwitcher._STYLE_DAY = "day";
 StyleSwitcher.STYLE_NIGHT = "night";
 StyleSwitcher.NIGHT_CLASS = "night-mode";
+StyleSwitcher._WIDE_ID = "style-switch__wide";
 
 try {
 	StyleSwitcher.storage = window.localStorage;
 } catch (e) { // cookies are disabled
 	StyleSwitcher.storage = {
 		getItem () {
-			return StyleSwitcher.STYLE_DAY;
+			return StyleSwitcher._STYLE_DAY;
 		},
 
 		setItem (k, v) {}
 	}
 }
 
-// NIGHT MODE ==========================================================================================================
 const styleSwitcher = new StyleSwitcher();
-
-window.addEventListener("unload", function () {
-	const title = styleSwitcher.getActiveStyleSheet();
-	StyleSwitcher.createCookie(title);
-});

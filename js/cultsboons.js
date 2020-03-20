@@ -5,7 +5,7 @@ class CultsBoonsPage extends ListPage {
 		const sourceFilter = SourceFilter.getInstance();
 		const typeFilter = new Filter({
 			header: "Type",
-			items: ["Cult", "Demonic Boon"]
+			items: ["Boon, Demonic", "Cult"]
 		});
 
 		super({
@@ -29,13 +29,16 @@ class CultsBoonsPage extends ListPage {
 	}
 
 	getListItem (it, bcI, isExcluded) {
-		it.type = it.type || (it.__prop === "cult" ? "Cult" : "Demonic Boon");
+		it._fType = it.__prop === "cult" ? "Cult" : it.type ? `Boon, ${it.type}` : "Boon";
 
 		if (!isExcluded) {
 			// populate filters
 			this._sourceFilter.addItem(it.source);
-			this._typeFilter.addItem(it.type);
+			this._typeFilter.addItem(it._fType);
 		}
+
+		it._lType = it.__prop === "cult" ? "Cult" : "Boon";
+		it._lSubType = it.type || "\u2014";
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -44,8 +47,9 @@ class CultsBoonsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="col-3 text-center pl-0">${it.type}</span>
-			<span class="bold col-7">${it.name}</span>
+			<span class="col-2 text-center pl-0">${it._lType}</span>
+			<span class="col-2 text-center">${it._lSubType}</span>
+			<span class="bold col-6">${it.name}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
@@ -56,7 +60,8 @@ class CultsBoonsPage extends ListPage {
 			{
 				hash,
 				source,
-				type: it.type
+				type: it._lType,
+				subType: it._lSubType
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : bcI,
@@ -77,7 +82,7 @@ class CultsBoonsPage extends ListPage {
 			return this._filterBox.toDisplay(
 				f,
 				cb.source,
-				cb.type
+				cb._fType
 			);
 		});
 		FilterBox.selectFirstVisible(this._dataList);
@@ -88,8 +93,9 @@ class CultsBoonsPage extends ListPage {
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="col-3 text-center pl-0">${it.type}</span>
-				<span class="bold col-9 pr-0">${it.name}</span>
+				<span class="col-2 text-center pl-0">${it._lType}</span>
+				<span class="col-2 text-center">${it._lSubType}</span>
+				<span class="bold col-8 pr-0">${it.name}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -100,7 +106,8 @@ class CultsBoonsPage extends ListPage {
 			it.name,
 			{
 				hash,
-				type: it.__prop
+				type: it._lType,
+				subType: it._lSubType
 			}
 		);
 		return listItem;

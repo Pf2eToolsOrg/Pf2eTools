@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.5.6",
+	"version": "1.6.1",
 	"type": "object",
 	"definitions": {
 		"itemData": {
@@ -172,6 +172,14 @@
 				"crew": {
 					"type": "integer"
 				},
+				"crewMin": {
+					"description": "For crews specified as an X-Y min-max.",
+					"type": "integer"
+				},
+				"crewMax": {
+					"description": "For crews specified as an X-Y min-max.",
+					"type": "integer"
+				},
 				"capPassenger": {
 					"type": "integer"
 				},
@@ -188,6 +196,14 @@
 					"type": "integer"
 				},
 				"vehDmgThresh": {
+					"type": "integer"
+				},
+				"travelCost": {
+					"description": "In copper pieces per mile per passenger.",
+					"type": "integer"
+				},
+				"shippingCost": {
+					"description": "In copper pieces per 100 lbs per mile.",
 					"type": "integer"
 				},
 				"charges": {
@@ -277,8 +293,22 @@
 					"description": "Adventurers League item certificate ID; for use in homebrew.",
 					"type": "string"
 				},
-				"bonus": {
-					"description": "Used externally, in VTT modules.",
+				"bonusAc": {
+					"type": "string"
+				},
+				"bonusWeapon": {
+					"type": "string"
+				},
+				"bonusWeaponAttack": {
+					"type": "string"
+				},
+				"bonusWeaponDamage": {
+					"type": "string"
+				},
+				"bonusSpellAttack": {
+					"type": "string"
+				},
+				"bonusSavingThrow": {
 					"type": "string"
 				},
 				"otherSources": {

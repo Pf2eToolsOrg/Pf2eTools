@@ -2,7 +2,9 @@ class RenderBestiary {
 	static _getRenderedSection (sectionTrClass, sectionEntries, sectionLevel) {
 		const renderer = Renderer.get();
 		const renderStack = [];
-		if (sectionTrClass === "legendary") {
+		if (sectionTrClass === "lairaction" || sectionTrClass === "regionaleffect") {
+			renderer.recursiveRender({entries: sectionEntries}, renderStack, {depth: sectionLevel + 2});
+		} else if (sectionTrClass === "legendary") {
 			const cpy = MiscUtil.copy(sectionEntries).map(it => {
 				if (it.name && it.entries) {
 					it.name = `${it.name}.`;

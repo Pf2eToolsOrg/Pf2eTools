@@ -1165,6 +1165,10 @@ th.name {
 		color: #333bab;
 	}
 
+	&EGW {
+		color: #855a6e;
+	}
+
 	&AL {
 		color: #ed1c24;
 	}
@@ -2249,6 +2253,13 @@ tr.regionaleffect {
 	}
 }
 
+tr.lairaction,
+tr.regionaleffect {
+	p {
+		margin-bottom: 5px;
+	}
+}
+
 // Classes page colors
 .subclass-feature {
 	.rd__h--0,
@@ -2316,6 +2327,10 @@ tr.regionaleffect {
 	.rd__spc-inline-post {
 		width: 100%;
 		height: 15px;
+
+		&:last-child {
+			height: 0;
+		}
 	}
 
 	.rd__list {

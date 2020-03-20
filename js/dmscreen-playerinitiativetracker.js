@@ -63,7 +63,7 @@ class InitiativeTrackerPlayer {
 
 						$btnGenConnect.attr("disabled", true);
 					} catch (e) {
-						JqueryUtil.doToast({content: `Failed to get connect. ${STR_SEE_CONSOLE}`, type: "danger"});
+						JqueryUtil.doToast({content: `Failed to get connect. ${VeCt.STR_SEE_CONSOLE}`, type: "danger"});
 						setTimeout(() => { throw e; });
 					}
 				});
@@ -84,7 +84,7 @@ class InitiativeTrackerPlayer {
 						await ui.pInit();
 						InitiativeTrackerPlayerMessageHandlerScreen.initUnloadMessage();
 					} catch (e) {
-						JqueryUtil.doToast({content: `Failed to get connect. ${STR_SEE_CONSOLE}`, type: "danger"});
+						JqueryUtil.doToast({content: `Failed to get connect. ${VeCt.STR_SEE_CONSOLE}`, type: "danger"});
 						setTimeout(() => { throw e; })
 					}
 				} else {
@@ -110,7 +110,7 @@ class InitiativeTrackerPlayer {
 								await ui.pInit();
 								InitiativeTrackerPlayerMessageHandlerScreen.initUnloadMessage();
 							} catch (e) {
-								JqueryUtil.doToast({content: `Failed to get connect. ${STR_SEE_CONSOLE}`, type: "danger"});
+								JqueryUtil.doToast({content: `Failed to get connect. ${VeCt.STR_SEE_CONSOLE}`, type: "danger"});
 								// restore original state
 								$btnCancel.remove(); $wrpSel.remove();
 								view.$wrpInitial.append($btnConnectRemote).append($btnConnectLocal);

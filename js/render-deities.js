@@ -19,7 +19,17 @@ class RenderDeities {
 		const renderer = Renderer.get();
 
 		const renderStack = [];
-		if (deity.entries) renderer.recursiveRender({entries: deity.entries}, renderStack);
+		if (deity.entries) {
+			renderer.recursiveRender(
+				{
+					entries: [
+						...deity.customExtensionOf ? [`{@note This deity is a custom extension of {@deity ${deity.customExtensionOf}} with additional information from <i title="${Parser.sourceJsonToFull(deity.source).escapeQuotes()}">${Parser.sourceJsonToAbv(deity.source)}</i>.}`] : [],
+						...deity.entries
+					]
+				},
+				renderStack
+			);
+		}
 		return `
 			${reprintIndex ? `
 				<tr><td colspan="6">
@@ -28,11 +38,11 @@ class RenderDeities {
 				</i>
 				</td></tr>
 			` : ""}
-	
+
 			${Renderer.deity.getOrderedParts(deity, `<tr><td colspan="6">`, `</td></tr>`)}
-			
+
 			${deity.symbolImg ? `<tr><td colspan="6">${renderer.render({entries: [deity.symbolImg]})}<div class="mb-2"/></td></tr>` : ""}
-			${renderStack.length ? `<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>` : ""}
+			${renderStack.length ? `<tr class="text"><td class="pt-2" colspan="6">${renderStack.join("")}</td></tr>` : ""}
 			`;
 	}
 }

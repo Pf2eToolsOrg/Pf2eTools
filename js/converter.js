@@ -409,6 +409,67 @@ You hurl a 4-inch-diameter sphere of energy at a creature that you can see withi
 At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.`;
 // endregion
 
+class ItemConverter extends BaseConverter {
+	constructor (ui) {
+		super(
+			ui,
+			{
+				converterId: "Item",
+				canSaveLocal: true,
+				modes: ["txt"],
+				hasPageNumbers: true,
+				titleCaseFields: ["name"],
+				hasSource: true,
+				prop: "item"
+			}
+		);
+	}
+
+	_renderSidebar (parent, $wrpSidebar) {
+		$wrpSidebar.empty();
+	}
+
+	handleParse (input, cbOutput, cbWarning, isAppend) {
+		const opts = {
+			cbWarning,
+			cbOutput,
+			isAppend,
+			titleCaseFields: this._titleCaseFields,
+			isTitleCase: this._state.isTitleCase,
+			source: this._state.source,
+			page: this._state.page
+		};
+
+		switch (this._state.mode) {
+			case "txt": return ItemParser.doParseText(input, opts);
+			default: throw new Error(`Unimplemented!`);
+		}
+	}
+
+	_getSample (format) {
+		switch (format) {
+			case "txt": return ItemConverter.SAMPLE_TEXT;
+			default: throw new Error(`Unknown format "${format}"`);
+		}
+	}
+}
+// region sample
+ItemConverter.SAMPLE_TEXT = `Wreath of the Prism
+Wondrous Item, legendary (requires attunement)
+This loop of golden thorns is inset with dozens of gems representing the five colors of Tiamat.
+Dormant
+While wearing the wreath in its dormant state, you have darkvision out to a range of 60 feet. If you already have darkvision, wearing the wreath increases the range of your darkvision by 60 feet.
+When you hit a beast, dragon, or monstrosity of challenge rating 5 or lower with an attack, or when you grapple it, you can use the wreath to cast dominate monster on the creature (save DC 13). On a successful save, the target is immune to the power of the wreath for 24 hours. On a failure, a shimmering, golden image of the wreath appears as a collar around the target’s neck or as a crown on its head (your choice) until it is no longer charmed by the spell. If you use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was charmed by you.
+Awakened
+Once the Wreath of the Prism reaches an awakened state, it gains the following benefits:
+• You can affect creatures of challenge rating 10 or lower with the wreath.
+• The save DC of the wreath’s spell increases to 15.
+Exalted
+Once the Wreath of the Prism reaches an exalted state, it gains the following benefits:
+• You can affect creatures of challenge rating 15 or lower with the wreath.
+• The save DC of the wreath’s spell increases to 17.`;
+// endregion
+
 class TableConverter extends BaseConverter {
 	constructor (ui) {
 		super(
@@ -528,7 +589,9 @@ class ConverterUi extends BaseComponent {
 		const savedState = await StorageUtil.pGetForPage(ConverterUi.STORAGE_STATE);
 		if (savedState) {
 			this.setBaseSaveableStateFrom(savedState);
-			Object.values(this._converters).forEach(it => it.setBaseSaveableStateFrom(savedState[it.converterId]));
+			Object.values(this._converters)
+				.filter(it => savedState[it.converterId])
+				.forEach(it => it.setBaseSaveableStateFrom(savedState[it.converterId]));
 		}
 
 		// forcibly overwrite available sources with fresh data
@@ -731,6 +794,7 @@ class ConverterUi extends BaseComponent {
 			{
 				values: [
 					"Creature",
+					"Item",
 					"Spell",
 					"Table"
 				],
@@ -801,16 +865,19 @@ async function doPageInit () {
 		BrewUtil.pAddBrewData() // init homebrew
 	]);
 	SpellcastingTraitConvert.init(spellData);
+	ItemParser.init(itemData);
 	AcConvert.init(itemData);
 
 	const ui = new ConverterUi();
 
-	const statblockConverter = new SpellConverter(ui);
-	const spellConverter = new CreatureConverter(ui);
+	const statblockConverter = new CreatureConverter(ui)
+	const itemConverter = new ItemConverter(ui);
+	const spellConverter = new SpellConverter(ui);
 	const tableConverter = new TableConverter(ui);
 
 	ui.converters = {
 		[statblockConverter.converterId]: statblockConverter,
+		[itemConverter.converterId]: itemConverter,
 		[spellConverter.converterId]: spellConverter,
 		[tableConverter.converterId]: tableConverter
 	};

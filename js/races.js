@@ -1,6 +1,12 @@
 "use strict";
 
 class RacesPage extends ListPage {
+	static _getInvertedName (name) {
+		// convert e.g. "Elf (High)" to "High Elf" for use as a searchable field
+		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(name);
+		return bracketMatch ? `${bracketMatch[2]} ${bracketMatch[1]}` : null;
+	}
+
 	constructor () {
 		const pageFilter = new PageFilterRaces();
 		super({
@@ -38,9 +44,6 @@ class RacesPage extends ListPage {
 
 		const ability = race.ability ? Renderer.getAbilityData(race.ability) : {asTextShort: "None"};
 
-		// convert e.g. "Elf (High)" to "High Elf" and add as a searchable field
-		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(race.name);
-
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
@@ -64,7 +67,14 @@ class RacesPage extends ListPage {
 				ability: ability.asTextShort,
 				size,
 				source,
-				cleanName: bracketMatch ? `${bracketMatch[2]} ${bracketMatch[1]}` : ""
+				cleanName: RacesPage._getInvertedName(race.name) || "",
+				alias: (race.alias || [])
+					.map(it => {
+						const invertedName = RacesPage._getInvertedName(it);
+						return [`"${it}"`, invertedName ? `"${invertedName}"` : false].filter(Boolean);
+					})
+					.flat()
+					.join(",")
 			},
 			{
 				uniqueId: race.uniqueId ? race.uniqueId : rcI,

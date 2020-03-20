@@ -49,6 +49,10 @@ class CreatureBuilder extends Builder {
 		this._bestiaryTypeTags = null;
 		// TODO(future) mechanism to update this select/etc if the user creates/edits homebrew legendary groups
 		this._legendaryGroups = null;
+		// Indexed template creature traits
+		this._jsonCreatureTraits = null;
+		this._indexedTraits = null;
+		this._addedHashesCreatureTraits = new Set();
 
 		this._renderOutputDebounced = MiscUtil.debounce(() => this._renderOutput(), 50);
 
@@ -119,6 +123,10 @@ class CreatureBuilder extends Builder {
 	}
 
 	async pInit () {
+		BrewUtil.bind({
+			pHandleBrew: this._pHandleBrew.bind(this)
+		})
+
 		const [bestiaryFluffIndex, jsonCreature] = await Promise.all([
 			DataUtil.loadJSON("data/bestiary/fluff-index.json"),
 			DataUtil.loadJSON("data/makebrew-creature.json"),
@@ -131,13 +139,13 @@ class CreatureBuilder extends Builder {
 
 		this._legendaryGroups = [...baseLegendaryGroups, ...(BrewUtil.homebrew.legendaryGroup || [])];
 
-		this._jsonCreature = jsonCreature;
+		this._jsonCreatureTraits = [...jsonCreature.makebrewCreatureTrait, ...(BrewUtil.homebrew.makebrewCreatureTrait || [])];
 		this._indexedTraits = elasticlunr(function () {
 			this.addField("n");
 			this.setRef("id");
 		});
 		SearchUtil.removeStemmer(this._indexedTraits);
-		this._jsonCreature.trait.forEach((it, i) => this._indexedTraits.addDoc({
+		this._jsonCreatureTraits.forEach((it, i) => this._indexedTraits.addDoc({
 			n: it.name,
 			id: i
 		}));
@@ -149,6 +157,33 @@ class CreatureBuilder extends Builder {
 			mons.forEach(mon => mon.type && mon.type.tags ? mon.type.tags.forEach(tp => allTypes.add(tp.tag || tp)) : "");
 			this._bestiaryTypeTags.push(...allTypes);
 		});
+	}
+
+	/**
+	 * Called when adding homebrew via the homebrew manager.
+	 * This is bound late, so it only runs on adding new homebrew after the page has finished
+	 * loading.
+	 * @param brew
+	 */
+	async _pHandleBrew (brew) {
+		if (brew.makebrewCreatureTrait && brew.makebrewCreatureTrait.length) {
+			// Extend the array, and index the new content
+			let ix = this._jsonCreatureTraits.length - 1;
+			this._jsonCreatureTraits = [...this._jsonCreatureTraits, ...brew.makebrewCreatureTrait];
+			for (; ix < this._jsonCreatureTraits.length; ++ix) {
+				const it = this._jsonCreatureTraits[ix];
+
+				// Arbitrary deduplication hash
+				const itHash = UrlUtil.encodeForHash([it.name, it.source]);
+				if (!this._addedHashesCreatureTraits.has(itHash)) {
+					this._addedHashesCreatureTraits.add(itHash);
+					this._indexedTraits.addDoc({
+						n: it.name,
+						id: ix
+					});
+				}
+			}
+		}
 	}
 
 	_getInitialState () {
@@ -298,7 +333,7 @@ class CreatureBuilder extends Builder {
 			TagAttack.tryTagAttacks(this._state);
 			TagHit.tryTagHits(this._state);
 			TagDc.tryTagDcs(this._state);
-			TagCondition.tryTagConditions(this._state);
+			TagCondition.tryTagConditions(this._state, true);
 			TraitActionTag.tryRun(this._state);
 			LanguageTag.tryRun(this._state);
 			SenseTag.tryRun(this._state);
@@ -323,7 +358,7 @@ class CreatureBuilder extends Builder {
 
 		// INFO
 		BuilderUi.$getStateIptString("Name", cb, this._state, {nullable: false, callback: () => this.renderSideMenu()}, "name").appendTo(infoTab.$wrpTab);
-		BuilderUi.$getStateIptString("Short Name", cb, this._state, {title: "If not supplied, this will be generated from the creature's full name. Used in Legendary Action header text."}, "shortName").appendTo(infoTab.$wrpTab);
+		this.__$getShortNameInput(cb).appendTo(infoTab.$wrpTab);
 		this._$selSource = this.$getSourceInput(cb).appendTo(infoTab.$wrpTab);
 		BuilderUi.$getStateIptNumber("Page", cb, this._state, {}, "page").appendTo(infoTab.$wrpTab);
 		this.__$getAlignmentInput(cb).appendTo(infoTab.$wrpTab);
@@ -552,6 +587,66 @@ class CreatureBuilder extends Builder {
 		const out = {$wrp, $iptPrefix, $iptTag};
 		tagRows.push(out);
 		return out;
+	}
+
+	__$getShortNameInput (cb) {
+		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Short Name", {isMarked: true, title: "If not supplied, this will be generated from the creature's full name. Used in Legendary Action header text."});
+
+		const initialMode = this._state.shortName === true ? "1" : "0";
+
+		const setState = mode => {
+			switch (mode) {
+				case 0: {
+					const val = $iptCustom.val().trim();
+					if (val) this._state.shortName = val;
+					else delete this._state.shortName;
+					break;
+				}
+				case 1: {
+					if ($cbFullName.prop("checked")) this._state.shortName = true;
+					else delete this._state.shortName;
+					break;
+				}
+			}
+			cb();
+		};
+
+		const $selMode = $(`<select class="form-control input-xs mb-2">
+			<option value="0">Custom</option>
+			<option value="1">Use Full Name</option>
+		</select>`)
+			.change(() => {
+				switch ($selMode.val()) {
+					case "0": {
+						$stageCustom.showVe(); $stageMatchesName.hideVe();
+						setState(0);
+						break;
+					}
+					case "1": {
+						$stageCustom.hideVe(); $stageMatchesName.showVe();
+						setState(1);
+						break;
+					}
+				}
+			})
+			.appendTo($rowInner)
+			.val(initialMode);
+
+		const $iptCustom = $(`<input class="form-control form-control--minimal input-xs">`)
+			.change(() => setState(0))
+			.val(this._state.shortName && this._state.shortName !== true ? this._state.shortName : null)
+		const $stageCustom = $$`<div>${$iptCustom}</div>`
+			.toggleVe(initialMode === "0")
+			.appendTo($rowInner);
+
+		const $cbFullName = $(`<input type="checkbox">`)
+			.change(() => setState(1))
+			.prop("checked", this._state.shortName === true)
+		const $stageMatchesName = $$`<label class="flex-v-center"><div class="mr-2">Enabled</div>${$cbFullName}</label>`
+			.toggleVe(initialMode === "1")
+			.appendTo($rowInner);
+
+		return $row;
 	}
 
 	__$getAlignmentInput (cb) {
@@ -972,6 +1067,7 @@ class CreatureBuilder extends Builder {
 					conHook();
 				}
 				$btnAutoSimpleFormula.toggleClass("active", this._meta.autoCalc.hpModifier);
+				doUpdateState();
 			});
 
 		const $iptSimpleAverage = $(`<input class="form-control form-control--minimal input-xs mr-2">`)
@@ -990,6 +1086,7 @@ class CreatureBuilder extends Builder {
 					hpSimpleAverageHook();
 				}
 				$btnAutoSimpleAverage.toggleClass("active", this._meta.autoCalc.hpAverageSimple);
+				doUpdateState();
 			});
 
 		const $wrpSimpleFormula = $$`<div class="flex-col">
@@ -1003,7 +1100,7 @@ class CreatureBuilder extends Builder {
 			${$btnAutoSimpleFormula}
 		</div>
 		<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--50">Average</span>${$iptSimpleAverage}${$btnAutoSimpleAverage}</div>
-		</div>`.toggleVe(initialMode === "0").appendTo($rowInner);
+		</div>`.toggleVe(initialMode === "1").appendTo($rowInner);
 		if (initialMode === "0") {
 			const formulaParts = CreatureBuilder.__$getHpInput__getFormulaParts(this._state.hp.formula);
 			$selSimpleNum.val(`${formulaParts.hdNum}`);
@@ -1042,12 +1139,13 @@ class CreatureBuilder extends Builder {
 					hpComplexAverageHook();
 				}
 				$btnAutoComplexAverage.toggleClass("active", this._meta.autoCalc.hpAverageComplex);
+				doUpdateState();
 			});
 
 		const $wrpComplexFormula = $$`<div class="flex-col">
 		<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--50">Formula</span>${$iptComplexFormula}</div>
 		<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--50">Average</span>${$iptComplexAverage}${$btnAutoComplexAverage}</div>
-		</div>`.toggleVe(initialMode === "1").appendTo($rowInner);
+		</div>`.toggleVe(initialMode === "0").appendTo($rowInner);
 		if (initialMode === "1") {
 			$iptComplexFormula.val(this._state.hp.formula);
 			$iptComplexAverage.val(this._state.hp.average);
@@ -1056,7 +1154,7 @@ class CreatureBuilder extends Builder {
 		// SPECIAL STAGE
 		const $iptSpecial = $(`<input class="form-control form-control--minimal input-xs mb-2">`)
 			.change(() => doUpdateState());
-		const $wrpSpecial = $$`<div>${$iptSpecial}</div>`.toggleVe(initialMode === "1").appendTo($rowInner);
+		const $wrpSpecial = $$`<div>${$iptSpecial}</div>`.toggleVe(initialMode === "2").appendTo($rowInner);
 		if (initialMode === "2") $iptSpecial.val(this._state.hp.special);
 
 		doUpdateVisibleStage();
@@ -1336,6 +1434,7 @@ class CreatureBuilder extends Builder {
 					hook();
 				}
 				$btnAuto.toggleClass("active", this._meta.autoCalc.passivePerception);
+				cb();
 			});
 
 		$$`<div class="flex-v-center">${$iptPerception}${$btnAuto}</div>`.appendTo($rowInner);
@@ -1715,6 +1814,7 @@ class CreatureBuilder extends Builder {
 					hook();
 				}
 				$btnAuto.toggleClass("active", this._meta.autoCalc.proficiency);
+				cb();
 			});
 
 		$$`<div class="flex-v-center">${$iptProfBonus}${$btnAuto}</div>`.appendTo($rowInner);
@@ -1885,7 +1985,7 @@ class CreatureBuilder extends Builder {
 
 			const meta = {mode: contextMeta.mode, type: contextMeta.type};
 			if (contextMeta.mode === "level") {
-				const level = await InputUiUtil.pGetUserNumber({min: 1, int: true});
+				const level = await InputUiUtil.pGetUserNumber({min: 1, int: true, title: "Enter Spell Level"});
 				if (level == null) return;
 				meta.level = level;
 			}
@@ -2189,7 +2289,7 @@ class CreatureBuilder extends Builder {
 								cbClose: (isDataEntered) => {
 									searchWidget.$wrpSearch.detach();
 									if (!isDataEntered) return resolve(null);
-									const trait = MiscUtil.copy(this._jsonCreature.trait[traitIndex]);
+									const trait = MiscUtil.copy(this._jsonCreatureTraits[traitIndex]);
 									let name = this._state.shortName || this._state.name;
 									if (!this._state.isNamedCreature) name = name.toLowerCase();
 									trait.entries = JSON.parse(JSON.stringify(trait.entries).replace(/<\$name\$>/gi, name));
@@ -2348,7 +2448,7 @@ class CreatureBuilder extends Builder {
 										const faces = UiUtil.strToInt($iptFaces.val(), 6, {fallbackOnNaN: 6});
 										const bonusVal = UiUtil.strToInt($iptBonus.val());
 										const totalBonus = abilMod + bonusVal;
-										return `${Math.floor(num * ((faces + 1) / 2)) + (bonusVal || 0)} ({@damage ${num}d${faces}${totalBonus ? ` ${UiUtil.intToBonus(totalBonus).replace(/([-+])/g, "$1 ")}` : ``}})`;
+										return `${Math.floor(num * ((faces + 1) / 2)) + (totalBonus || 0)} ({@damage ${num}d${faces}${totalBonus ? ` ${UiUtil.intToBonus(totalBonus).replace(/([-+])/g, "$1 ")}` : ``}})`;
 									};
 									const getDamageTypePt = ($ipDamType) => $ipDamType.val().trim() ? ` ${$ipDamType.val().trim()}` : "";
 									const ptDamage = [

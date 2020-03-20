@@ -38,8 +38,9 @@ class InitiativeTracker {
 			// 	$wrpTracker.find(`.dm-init-row-mid`).hide();
 			// }
 		};
-		board.reactor.on("panelResize", handleResize);
-		$wrpTracker.on("destroyed", () => board.reactor.off("panelResize", handleResize));
+		const evtId = CryptUtil.uid();
+		board.$creen.on(`panelResize.${evtId}`, handleResize);
+		$wrpTracker.on("destroyed", () => board.$creen.off(`panelResize.${evtId}`));
 
 		let srvPeer = null;
 		const p2pMeta = {rows: [], serverInfo: null};
@@ -201,7 +202,7 @@ class InitiativeTracker {
 				if (opts.fnDispServerStoppedState) opts.fnDispServerStoppedState();
 				if (opts.$btnStartServer) opts.$btnStartServer.prop("disabled", false);
 				srvPeer = null;
-				JqueryUtil.doToast({content: `Failed to start server! ${STR_SEE_CONSOLE}`, type: "danger"});
+				JqueryUtil.doToast({content: `Failed to start server! ${VeCt.STR_SEE_CONSOLE}`, type: "danger"});
 				setTimeout(() => { throw e; });
 			}
 
@@ -1024,7 +1025,7 @@ class InitiativeTracker {
 						$iptHpMax.val(hpVals.maxHp);
 					} else if (isRollHp && m.hp.formula) {
 						const roll = await Renderer.dice.pRoll2(m.hp.formula, {
-							user: false,
+							isUser: false,
 							name: getRollName(m),
 							label: "HP"
 						}, {isResultUsed: true});
@@ -1295,7 +1296,7 @@ class InitiativeTracker {
 
 		function pRollInitiative (monster) {
 			return Renderer.dice.pRoll2(`1d20${Parser.getAbilityModifier(monster.dex)}`, {
-				user: false,
+				isUser: false,
 				name: getRollName(monster),
 				label: "Initiative"
 			}, {isResultUsed: true});
@@ -1306,7 +1307,7 @@ class InitiativeTracker {
 				return `${monster.hp.average}`;
 			} else if (cfg.isRollHp && monster.hp.formula) {
 				return `${await Renderer.dice.pRoll2(monster.hp.formula, {
-					user: false,
+					isUser: false,
 					name: getRollName(monster),
 					label: "HP"
 				}, {isResultUsed: true})}`;

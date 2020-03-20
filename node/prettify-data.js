@@ -15,6 +15,7 @@ const FILE_BLACKLIST = new Set([
 	"life.json",
 	"makecards.json",
 	"renderdemo.json",
+	"roll20-items.json",
 	"roll20-spells.json",
 	"roll20-tables.json",
 	"foundry.json",
@@ -40,10 +41,26 @@ function getFnListSort (prop) {
 		case "disease":
 		case "cult":
 		case "boon":
-		case "deity":
 		case "feat":
 		case "vehicle":
+		case "backgroundFluff":
+		case "conditionFluff":
+		case "itemFluff":
+		case "languageFluff":
+		case "vehicleFluff":
+		case "raceFluff":
+		case "item":
+		case "baseitem":
+		case "variant":
+		case "itemGroup":
+		case "object":
+		case "optionalfeature":
+		case "psionic":
+		case "reward":
+		case "variantrule":
 			return (a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source);
+		case "deity":
+			return (a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source) || SortUtil.ascSortLower(a.pantheon, b.pantheon);
 		case "class":
 			return (a, b) => SortUtil.ascSortDateString(Parser.sourceJsonToDate(b.source), Parser.sourceJsonToDate(a.source)) || SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source);
 		case "adventure":

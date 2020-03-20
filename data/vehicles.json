@@ -1587,6 +1587,78 @@
 			]
 		},
 		{
+			"name": "Stahlmaster",
+			"source": "EGW",
+			"page": 0,
+			"vehicleType": "CREATURE",
+			"size": "L",
+			"type": "vehicle",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"speed": {
+				"walk": 30
+			},
+			"str": 18,
+			"dex": 10,
+			"con": 14,
+			"int": 0,
+			"wis": 0,
+			"cha": 0,
+			"hp": {
+				"average": 67,
+				"formula": "9d10 + 18"
+			},
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"unconscious"
+			],
+			"trait": [
+				{
+					"name": "Pilot",
+					"entries": [
+						"The Stahlmaster requires a Medium humanoid to pilot it. While inside the Stahlmaster, the pilot uses the vehicle's speed and action options and can't take reactions or use bonus actions, and the pilot has total cover. If the Stahlmaster drops to 0 hit points, the pilot is ejected from it and lands {@condition prone} in an unoccupied space within 5 feet of the vehicle."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The Stahlmaster makes two melee attacks, or one melee attack and one ranged attack."
+					]
+				},
+				{
+					"name": "Slam",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d10 + 4}) bludgeoning damage."
+					]
+				},
+				{
+					"name": "Shoulder-Mounted Crossbow",
+					"entries": [
+						"{@atk rw} {@hit 2} to hit, range 30/120 ft., one target. {@h}6 ({@damage 1d12}) piercing damage."
+					]
+				}
+			]
+		},
+		{
 			"name": "Tormentor",
 			"source": "BGDIA",
 			"page": 218,

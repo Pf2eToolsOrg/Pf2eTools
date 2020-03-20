@@ -102,6 +102,9 @@ class SpellBuilder extends Builder {
 		this.doCreateProxies();
 
 		const _cb = () => {
+			// do post-processing
+			TagCondition.tryTagConditions(this._state, true);
+
 			this.renderOutput();
 			this.doUiSave();
 			this.isEntrySaved = false;

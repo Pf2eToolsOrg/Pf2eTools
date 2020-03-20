@@ -767,7 +767,7 @@ RendererMarkdown._CONFIG = {
 	_isAddPageBreaks: {default: false, name: "Add GM Binder Page Breaks (<code>\\pagebreak</code>)", type: "boolean"}
 };
 
-window.addEventListener("load", () => RendererMarkdown.pInit());
+if (typeof window !== "undefined") window.addEventListener("load", () => RendererMarkdown.pInit());
 
 RendererMarkdown.utils = class {
 	static getPageText (it) {
@@ -1566,6 +1566,8 @@ class MarkdownConverter {
 		opts.tableWidth = opts.tableWidth || 80;
 		opts.diceColWidth = opts.diceColWidth || 1;
 
+		tbl.colStyles = tbl.colStyles || [];
+
 		// Post-processing
 		(function normalizeCellCounts () {
 			// pad all rows to max width
@@ -1650,6 +1652,7 @@ class MarkdownConverter {
 				twelfthWidths.forEach((it, i) => {
 					const widthPart = `col-${it}`;
 					const iOffset = isDiceCol0 ? i + 1 : i;
+
 					tbl.colStyles[iOffset] = tbl.colStyles[iOffset] ? `${tbl.colStyles[iOffset]} ${widthPart}` : widthPart;
 				});
 			};

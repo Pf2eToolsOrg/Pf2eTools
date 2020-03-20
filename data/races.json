@@ -74,11 +74,29 @@
 					"other": true,
 					"primordial": true
 				}
+			],
+			"otherSources": [
+				{
+					"source": "EGW",
+					"page": 0
+				}
 			]
 		},
 		{
 			"name": "Genasi",
 			"source": "EEPC",
+			"otherSources": [
+				{
+					"source": "EGW",
+					"page": 0
+				}
+			],
+			"additionalSources": [
+				{
+					"source": "EGW",
+					"page": 0
+				}
+			],
 			"page": 9,
 			"size": "M",
 			"speed": 30,
@@ -262,7 +280,13 @@
 					"common": true,
 					"primordial": true
 				}
-			]
+			],
+			"heightAndWeight": {
+				"baseHeight": 56,
+				"heightMod": "2d10",
+				"baseWeight": 110,
+				"weightMod": "2d4"
+			}
 		},
 		{
 			"name": "Elf",
@@ -338,6 +362,9 @@
 			"subraces": [
 				{
 					"name": "Drow",
+					"alias": [
+						"Dark"
+					],
 					"ability": [
 						{
 							"cha": 1
@@ -380,7 +407,13 @@
 					"traitTags": [
 						"Spellcasting",
 						"Weapon Proficiency"
-					]
+					],
+					"heightAndWeight": {
+						"baseHeight": 53,
+						"heightMod": "2d6",
+						"baseWeight": 75,
+						"weightMod": "1d6"
+					}
 				},
 				{
 					"name": "Eladrin",
@@ -447,7 +480,13 @@
 						"Weapon Proficiency",
 						"Spellcasting"
 					],
-					"srd": true
+					"srd": true,
+					"heightAndWeight": {
+						"baseHeight": 54,
+						"heightMod": "2d10",
+						"baseWeight": 90,
+						"weightMod": "1d4"
+					}
 				},
 				{
 					"name": "Wood",
@@ -482,7 +521,13 @@
 					],
 					"traitTags": [
 						"Weapon Proficiency"
-					]
+					],
+					"heightAndWeight": {
+						"baseHeight": 54,
+						"heightMod": "2d10",
+						"baseWeight": 100,
+						"weightMod": "1d4"
+					}
 				},
 				{
 					"name": "Eladrin",
@@ -571,6 +616,11 @@
 								"You have a flying speed of 30 feet. To use this speed, you can't be wearing medium or heavy armor."
 							],
 							"type": "entries"
+						}
+					],
+					"languageProficiencies": [
+						{
+							"auran": true
 						}
 					]
 				},
@@ -764,7 +814,13 @@
 							],
 							"type": "entries"
 						}
-					]
+					],
+					"heightAndWeight": {
+						"baseHeight": 54,
+						"heightMod": "2d12",
+						"baseWeight": 90,
+						"weightMod": "1d4"
+					}
 				},
 				{
 					"name": "Sea",
@@ -809,9 +865,21 @@
 							"type": "entries"
 						}
 					],
+					"heightAndWeight": {
+						"baseHeight": 54,
+						"heightMod": "2d8",
+						"baseWeight": 90,
+						"weightMod": "1d4"
+					},
 					"traitTags": [
 						"Weapon Proficiency",
 						"Amphibious"
+					],
+					"otherSources": [
+						{
+							"source": "EGW",
+							"page": 0
+						}
 					]
 				},
 				{
@@ -840,6 +908,12 @@
 							"type": "entries"
 						}
 					],
+					"heightAndWeight": {
+						"baseHeight": 56,
+						"heightMod": "2d8",
+						"baseWeight": 90,
+						"weightMod": "1d4"
+					},
 					"traitTags": [
 						"Damage Resistance"
 					]
@@ -1071,6 +1145,41 @@
 						"Spellcasting",
 						"Dragonmark"
 					]
+				},
+				{
+					"name": "Pallid",
+					"source": "EGW",
+					"page": 0,
+					"ability": [
+						{
+							"wis": 1
+						}
+					],
+					"entries": [
+						{
+							"name": "Incisive Sense",
+							"entries": [
+								"You have advantage on Intelligence ({@skill Investigation}) and Wisdom ({@skill Insight}) checks."
+							],
+							"type": "entries"
+						},
+						{
+							"type": "entries",
+							"name": "Blessing of the Moon Weaver",
+							"entries": [
+								"You know the {@spell light} cantrip. When you reach 3rd level, you can cast the {@spell sleep} spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell invisibility} spell (targeting yourself only) once with this trait and regain the ability to do so when you finish a long rest. Casting these spells with this trait doesn't require material components. Wisdom is your spellcasting ability for these spells."
+							]
+						}
+					],
+					"traitTags": [
+						"Spellcasting"
+					],
+					"heightAndWeight": {
+						"baseHeight": 54,
+						"heightMod": "2d10",
+						"baseWeight": 90,
+						"weightMod": "1d4"
+					}
 				}
 			],
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/152/elf.mp3",
@@ -1820,6 +1929,11 @@
 					]
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 35,
+				"heightMod": "2d4",
+				"baseWeight": 35
+			},
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/231/gnome.mp3",
 			"traitTags": [
 				"Uncommon Race"
@@ -1962,6 +2076,85 @@
 					"type": "entries"
 				}
 			],
+			"subraces": [
+				{},
+				{
+					"name": "Draconblood",
+					"source": "EGW",
+					"page": 0,
+					"ability": [
+						{
+							"int": 2,
+							"cha": 1
+						}
+					],
+					"darkvision": 60,
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Darkvision",
+							"entries": [
+								"You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Forceful Presence",
+							"entries": [
+								"You can use your understanding of creative diplomacy or intimidation to guide a conversation in your favor. When you make a Charisma ({@skill Intimidation} or {@skill Persuasion}) check, you can do so with advantage. Once you use this trait, you can't do so again until you finish a short or long rest."
+							],
+							"data": {
+								"replace": "Damage Resistance"
+							}
+						}
+					],
+					"overwrite": {
+						"ability": true
+					},
+					"traitTags": []
+				},
+				{
+					"name": "Ravenite",
+					"source": "EGW",
+					"page": 0,
+					"ability": [
+						{
+							"str": 2,
+							"con": 1
+						}
+					],
+					"darkvision": 60,
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Darkvision",
+							"entries": [
+								"You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Vengeful Assault",
+							"entries": [
+								"When you take damage from a creature in range of a weapon you are wielding, you can use your reaction to make an attack with the weapon against that creature. Once you use this trait, you can't do so again until you finish a short or long rest."
+							],
+							"data": {
+								"replace": "Damage Resistance"
+							}
+						}
+					],
+					"overwrite": {
+						"ability": true
+					},
+					"traitTags": []
+				}
+			],
+			"heightAndWeight": {
+				"baseHeight": 66,
+				"heightMod": "2d8",
+				"baseWeight": 175,
+				"weightMod": "2d6"
+			},
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/135/dragonborn.mp3",
 			"traitTags": [
 				"Damage Resistance",
@@ -1983,6 +2176,10 @@
 				{
 					"source": "EEPC",
 					"page": 10
+				},
+				{
+					"source": "EGW",
+					"page": 0
 				}
 			],
 			"size": "M",
@@ -2051,6 +2248,12 @@
 					"type": "entries"
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 74,
+				"heightMod": "2d10",
+				"baseWeight": 200,
+				"weightMod": "2d6"
+			},
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/238/goliath.mp3",
 			"traitTags": [
 				"Skill Proficiency",
@@ -2640,6 +2843,12 @@
 					}
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 57,
+				"heightMod": "2d8",
+				"baseWeight": 110,
+				"weightMod": "2d4"
+			},
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/259/half-elf.mp3",
 			"traitTags": [
 				"Skill Proficiency",
@@ -2874,6 +3083,12 @@
 					]
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 58,
+				"heightMod": "2d10",
+				"baseWeight": 140,
+				"weightMod": "2d6"
+			},
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/262/half-orc.mp3",
 			"traitTags": [
 				"Uncommon Race"
@@ -2980,7 +3195,13 @@
 							"type": "entries"
 						}
 					],
-					"srd": true
+					"srd": true,
+					"heightAndWeight": {
+						"baseHeight": 44,
+						"heightMod": "2d4",
+						"baseWeight": 115,
+						"weightMod": "2d6"
+					}
 				},
 				{
 					"name": "Mountain",
@@ -3000,7 +3221,13 @@
 					],
 					"traitTags": [
 						"Armor Proficiency"
-					]
+					],
+					"heightAndWeight": {
+						"baseHeight": 48,
+						"heightMod": "2d4",
+						"baseWeight": 130,
+						"weightMod": "2d6"
+					}
 				},
 				{
 					"name": "Duergar",
@@ -3850,6 +4077,12 @@
 					]
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 56,
+				"heightMod": "2d10",
+				"baseWeight": 110,
+				"weightMod": "2d4"
+			},
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/279/human.mp3",
 			"languageProficiencies": [
 				{
@@ -4131,8 +4364,42 @@
 						"Spellcasting",
 						"Dragonmark"
 					]
+				},
+				{
+					"name": "Lotusden",
+					"source": "EGW",
+					"page": 0,
+					"ability": [
+						{
+							"wis": 1
+						}
+					],
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Child of the Wood",
+							"entries": [
+								"You know the {@spell druidcraft} cantrip. When you reach 3rd level, you can cast the {@spell entangle} spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell spike growth} spell once with this trait and regain the ability to do so when you finish a long rest. Casting these spells with this trait doesn't require material components. Wisdom is your spellcasting ability for these spells."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Timberwalk",
+							"entries": [
+								"Ability checks made to track you have disadvantage, and you can move across difficult terrain made of nonmagical plants and undergrowth without expending extra movement."
+							]
+						}
+					],
+					"traitTags": [
+						"Spellcasting"
+					]
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 31,
+				"heightMod": "2d4",
+				"baseWeight": 35
+			},
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/260/halfling.mp3",
 			"languageProficiencies": [
 				{
@@ -4960,6 +5227,12 @@
 					]
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 57,
+				"heightMod": "2d8",
+				"baseWeight": 110,
+				"weightMod": "2d4"
+			},
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/488/tiefling.mp3",
 			"traitTags": [
 				"Damage Resistance",
@@ -4975,6 +5248,12 @@
 		{
 			"name": "Bugbear",
 			"source": "VGM",
+			"otherSources": [
+				{
+					"source": "EGW",
+					"page": 0
+				}
+			],
 			"page": 119,
 			"size": "M",
 			"speed": 30,
@@ -5070,18 +5349,27 @@
 							"type": "entries",
 							"name": "Size",
 							"entries": [
-								"Your size is Medium. To set your height and weight randomly, start with rolling a size modifier:",
-								"Size modifier = {@dice 2d12}",
-								"Height = 6 feet + your size modifier in inches",
-								"Weight in pounds = 200 + ({@dice 2d6} × your size modifier)"
+								"Your size is Medium."
 							],
 							"data": {
 								"overwrite": "Size"
 							}
 						}
-					]
+					],
+					"heightAndWeight": {
+						"baseHeight": 72,
+						"heightMod": "2d12",
+						"baseWeight": 200,
+						"weightMod": "2d6"
+					}
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 72,
+				"heightMod": "2d12",
+				"baseWeight": 200,
+				"weightMod": "2d6"
+			},
 			"traitTags": [
 				"Powerful Build",
 				"Monstrous Race",
@@ -5228,6 +5516,12 @@
 					]
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 56,
+				"heightMod": "2d10",
+				"baseWeight": 110,
+				"weightMod": "2d4"
+			},
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/8/aasimar.mp3",
 			"traitTags": [
 				"Damage Resistance",
@@ -5244,6 +5538,12 @@
 			"name": "Firbolg",
 			"source": "VGM",
 			"page": 107,
+			"otherSources": [
+				{
+					"source": "EGW",
+					"page": 0
+				}
+			],
 			"size": "M",
 			"speed": 30,
 			"ability": [
@@ -5310,6 +5610,12 @@
 					"type": "entries"
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 74,
+				"heightMod": "2d12",
+				"baseWeight": 175,
+				"weightMod": "2d6"
+			},
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/161/firbolg.mp3",
 			"traitTags": [
 				"Spellcasting",
@@ -5326,6 +5632,12 @@
 		{
 			"name": "Goblin",
 			"source": "VGM",
+			"otherSources": [
+				{
+					"source": "EGW",
+					"page": 0
+				}
+			],
 			"page": 119,
 			"size": "S",
 			"speed": 30,
@@ -5433,6 +5745,11 @@
 							}
 						}
 					],
+					"heightAndWeight": {
+						"baseHeight": 41,
+						"heightMod": "2d4",
+						"baseWeight": 35
+					},
 					"overwrite": {
 						"traitTags": true
 					},
@@ -5462,16 +5779,18 @@
 							"type": "entries",
 							"name": "Size",
 							"entries": [
-								"Your size is Small. To set your height and weight randomly, start with rolling a size modifier:",
-								"Size modifier = {@dice 2d4}",
-								"Height = 3 feet + 5 inches + your size modifier in inches",
-								"Weight in pounds = 35 + your size modifier"
+								"Your size is Small."
 							],
 							"data": {
 								"overwrite": "Size"
 							}
 						}
 					],
+					"heightAndWeight": {
+						"baseHeight": 41,
+						"heightMod": "2d4",
+						"baseWeight": 35
+					},
 					"overwrite": {
 						"traitTags": true
 					}
@@ -5512,12 +5831,23 @@
 						"ability": true
 					}
 				}
-			]
+			],
+			"heightAndWeight": {
+				"baseHeight": 41,
+				"heightMod": "2d4",
+				"baseWeight": 35
+			}
 		},
 		{
 			"name": "Hobgoblin",
 			"source": "VGM",
 			"page": 119,
+			"otherSources": [
+				{
+					"source": "EGW",
+					"page": 0
+				}
+			],
 			"size": "M",
 			"speed": 30,
 			"darkvision": 60,
@@ -5598,18 +5928,27 @@
 							"type": "entries",
 							"name": "Size",
 							"entries": [
-								"Your size is Medium. To set your height and weight randomly, start with rolling a size modifier:",
-								"Size modifier = {@dice 2d10}",
-								"Height = 4 feet + 8 inches + your size modifier in inches",
-								"Weight in pounds = 110 + ({@dice 2d4} × your size modifier)"
+								"Your size is Medium."
 							],
 							"data": {
 								"overwrite": "Size"
 							}
 						}
-					]
+					],
+					"heightAndWeight": {
+						"baseHeight": 56,
+						"heightMod": "2d10",
+						"baseWeight": 110,
+						"weightMod": "2d4"
+					}
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 56,
+				"heightMod": "2d10",
+				"baseWeight": 110,
+				"weightMod": "2d4"
+			},
 			"traitTags": [
 				"Monstrous Race",
 				"Armor Proficiency",
@@ -5626,6 +5965,12 @@
 			"name": "Kenku",
 			"source": "VGM",
 			"page": 109,
+			"otherSources": [
+				{
+					"source": "EGW",
+					"page": 0
+				}
+			],
 			"size": "M",
 			"speed": 30,
 			"ability": [
@@ -5685,6 +6030,12 @@
 					"type": "entries"
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 52,
+				"heightMod": "2d8",
+				"baseWeight": 50,
+				"weightMod": "1d6"
+			},
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/294/kenku-2.mp3",
 			"skillProficiencies": [
 				{
@@ -5780,6 +6131,11 @@
 					"type": "entries"
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 25,
+				"heightMod": "2d4",
+				"baseWeight": 25
+			},
 			"traitTags": [
 				"Monstrous Race"
 			],
@@ -5884,6 +6240,12 @@
 					"type": "entries"
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 57,
+				"heightMod": "2d10",
+				"baseWeight": 120,
+				"weightMod": "2d6"
+			},
 			"traitTags": [
 				"Unarmed Strike",
 				"Skill Proficiency",
@@ -5914,6 +6276,12 @@
 			"name": "Orc",
 			"source": "VGM",
 			"page": 120,
+			"otherSources": [
+				{
+					"source": "EGW",
+					"page": 0
+				}
+			],
 			"size": "M",
 			"speed": 30,
 			"darkvision": 60,
@@ -6011,10 +6379,7 @@
 							"type": "entries",
 							"name": "Size",
 							"entries": [
-								"Your size is Medium. To set your height and weight randomly, start with rolling a size modifier:",
-								"Size modifier = {@dice 2d8}",
-								"Height = 5 feet + 4 inches + your size modifier in inches",
-								"Weight in pounds = 175 + ({@dice 2d6} × your size modifier)"
+								"Your size is Medium."
 							],
 							"data": {
 								"overwrite": "Size"
@@ -6031,6 +6396,12 @@
 							}
 						}
 					],
+					"heightAndWeight": {
+						"baseHeight": 64,
+						"heightMod": "2d8",
+						"baseWeight": 175,
+						"weightMod": "2d6"
+					},
 					"skillProficiencies": [
 						{
 							"choose": {
@@ -6049,6 +6420,12 @@
 					]
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 64,
+				"heightMod": "2d8",
+				"baseWeight": 175,
+				"weightMod": "2d6"
+			},
 			"traitTags": [
 				"Powerful Build",
 				"Monstrous Race",
@@ -6070,6 +6447,12 @@
 			"name": "Tabaxi",
 			"source": "VGM",
 			"page": 113,
+			"otherSources": [
+				{
+					"source": "EGW",
+					"page": 0
+				}
+			],
 			"size": "M",
 			"speed": {
 				"walk": 30,
@@ -6140,6 +6523,12 @@
 					"type": "entries"
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 58,
+				"heightMod": "2d10",
+				"baseWeight": 90,
+				"weightMod": "2d4"
+			},
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/482/tabaxi.mp3",
 			"traitTags": [
 				"Unarmed Strike",
@@ -6239,6 +6628,12 @@
 					"type": "entries"
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 54,
+				"heightMod": "2d10",
+				"baseWeight": 90,
+				"weightMod": "2d4"
+			},
 			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/496/triton.mp3",
 			"traitTags": [
 				"Amphibious",
@@ -6323,9 +6718,16 @@
 					"type": "entries"
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 56,
+				"heightMod": "2d10",
+				"baseWeight": 110,
+				"weightMod": "2d4"
+			},
 			"traitTags": [
 				"Spellcasting",
-				"Monstrous Race"
+				"Monstrous Race",
+				"Damage Immunity"
 			],
 			"languageProficiencies": [
 				{
@@ -8144,7 +8546,8 @@
 			],
 			"traitTags": [
 				"Unarmed Strike",
-				"Tool Proficiency"
+				"Tool Proficiency",
+				"Damage Immunity"
 			],
 			"languageProficiencies": [
 				{
@@ -8379,6 +8782,12 @@
 							"type": "entries"
 						}
 					],
+					"heightAndWeight": {
+						"baseHeight": 60,
+						"heightMod": "2d12",
+						"baseWeight": 100,
+						"weightMod": "2d4"
+					},
 					"traitTags": [
 						"Spellcasting",
 						"Armor Proficiency",
@@ -8447,6 +8856,12 @@
 							"type": "entries"
 						}
 					],
+					"heightAndWeight": {
+						"baseHeight": 59,
+						"heightMod": "2d12",
+						"baseWeight": 90,
+						"weightMod": "1d4"
+					},
 					"traitTags": [
 						"Spellcasting"
 					]
@@ -8463,6 +8878,12 @@
 			"name": "Tortle",
 			"source": "TTP",
 			"page": 3,
+			"otherSources": [
+				{
+					"source": "EGW",
+					"page": 0
+				}
+			],
 			"ability": [
 				{
 					"str": 2,
@@ -8593,7 +9014,7 @@
 					"type": "entries",
 					"name": "Size",
 					"entries": [
-						"Grungs stand between 2 ½ and 3 ½ feet tall and average about 30 pounds. Your size is Small."
+						"Grungs stand between 2½ and 3½ feet tall and average about 30 pounds. Your size is Small."
 					]
 				},
 				{
@@ -8649,7 +9070,8 @@
 			],
 			"traitTags": [
 				"Skill Proficiency",
-				"Amphibious"
+				"Amphibious",
+				"Damage Immunity"
 			],
 			"skillProficiencies": [
 				{
@@ -8808,7 +9230,8 @@
 				}
 			],
 			"traitTags": [
-				"NPC Race"
+				"NPC Race",
+				"Blindsight"
 			],
 			"languageProficiencies": [
 				{
@@ -8966,7 +9389,8 @@
 			],
 			"traitTags": [
 				"Improved Resting",
-				"NPC Race"
+				"NPC Race",
+				"Damage Immunity"
 			]
 		},
 		{
@@ -9086,7 +9510,8 @@
 			],
 			"traitTags": [
 				"Improved Resting",
-				"NPC Race"
+				"NPC Race",
+				"Damage Immunity"
 			]
 		},
 		{
@@ -10299,10 +10724,7 @@
 					"type": "entries",
 					"name": "Size",
 					"entries": [
-						"Your size is Medium. To set your height and weight randomly, start with rolling a size modifier:",
-						"Size modifier = {@dice 2d6}",
-						"Height = 5 feet + 4 inches + your size modifier in inches",
-						"Weight in pounds = 110 + ({@dice 1d6} × your size modifier)"
+						"Your size is Medium."
 					]
 				},
 				{
@@ -10342,6 +10764,12 @@
 					"type": "entries"
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 64,
+				"heightMod": "2d6",
+				"baseWeight": 110,
+				"weightMod": "1d6"
+			},
 			"traitTags": [
 				"Damage Resistance"
 			],
@@ -10615,10 +11043,7 @@
 					"type": "entries",
 					"name": "Size",
 					"entries": [
-						"Your size is Medium. To set your height and weight randomly, start with rolling a size modifier:",
-						"Size modifier = {@dice 2d8}",
-						"Height = 4 feet + 6 inches + your size modifier in inches",
-						"Weight in pounds = 90 + ({@dice 2d4} × your size modifier)"
+						"Your size is Medium."
 					]
 				},
 				{
@@ -10787,6 +11212,12 @@
 					]
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 54,
+				"heightMod": "2d8",
+				"baseWeight": 90,
+				"weightMod": "2d4"
+			},
 			"languageProficiencies": [
 				{
 					"common": true
@@ -11087,10 +11518,7 @@
 					"type": "entries",
 					"name": "Size",
 					"entries": [
-						"Your size is Medium. To set your height and weight randomly, start with rolling a size modifier:",
-						"Size modifier = {@dice 2d6}",
-						"Height = 5 feet + 10 inches + your size modifier in inches",
-						"Weight in pounds = 270 + (4 × your size modifier)"
+						"Your size is Medium."
 					]
 				},
 				{
@@ -11146,6 +11574,12 @@
 					]
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 70,
+				"heightMod": "2d6",
+				"baseWeight": 270,
+				"weightMod": "4"
+			},
 			"traitTags": [
 				"Natural Armor",
 				"Improved Resting",
@@ -11576,6 +12010,12 @@
 					"type": "entries"
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 72,
+				"heightMod": "1d10",
+				"baseWeight": 600,
+				"weightMod": "2d12"
+			},
 			"traitTags": [
 				"Powerful Build",
 				"Skill Proficiency",
@@ -11686,6 +12126,12 @@
 					]
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 79,
+				"heightMod": "2d10",
+				"baseWeight": 295,
+				"weightMod": "2d4"
+			},
 			"traitTags": [
 				"Natural Armor",
 				"Tool Proficiency",
@@ -11774,6 +12220,12 @@
 					"type": "entries"
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 64,
+				"heightMod": "2d8",
+				"baseWeight": 175,
+				"weightMod": "2d6"
+			},
 			"traitTags": [
 				"Skill Proficiency",
 				"Unarmed Strike"
@@ -11989,6 +12441,12 @@
 					"type": "entries"
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 64,
+				"heightMod": "2d10",
+				"baseWeight": 110,
+				"weightMod": "2d4"
+			},
 			"languageProficiencies": [
 				{
 					"common": true,
@@ -12355,10 +12813,7 @@
 					"type": "entries",
 					"name": "Size",
 					"entries": [
-						"Your size is Medium. To set your height and weight randomly, start with rolling a size modifier:",
-						"Size modifier = {@dice 2d4}",
-						"Height = 5 feet + 1 inch + your size modifier in inches",
-						"Weight in pounds = 115 + ({@dice 2d4} × your size modifier)"
+						"Your size is Medium."
 					]
 				},
 				{
@@ -12384,6 +12839,12 @@
 					"type": "entries"
 				}
 			],
+			"heightAndWeight": {
+				"baseHeight": 61,
+				"heightMod": "2d4",
+				"baseWeight": 115,
+				"weightMod": "2d4"
+			},
 			"traitTags": [
 				"Skill Proficiency",
 				"Tool Proficiency"

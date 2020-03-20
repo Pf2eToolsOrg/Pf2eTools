@@ -812,7 +812,7 @@ class SearchWidget {
 
 	__showMsgNoResults () {
 		this._flags.isWait = true;
-		this._$wrpResults.empty().append(SearchWidget.getSearchEnter());
+		this._$wrpResults.empty().append(SearchWidget.getSearchNoResults());
 	}
 
 	__doSearch () {
@@ -836,6 +836,15 @@ class SearchWidget {
 					}
 				}
 			} else {
+				// If the user has entered a search and we found nothing, return no results
+				if (searchInput.trim()) {
+					return {
+						toProcess: [],
+						resultCount: 0
+					};
+				}
+
+				// Otherwise, we have no search term, so show a default list of results
 				if (this._resultFilter) {
 					const filtered = Object.values(index.documentStore.docs).filter(it => this._resultFilter(it)).map(it => ({doc: it}));
 					return {
@@ -854,7 +863,7 @@ class SearchWidget {
 		this._$wrpResults.empty();
 		this._$ptrRows._ = [];
 
-		if (toProcess.length) {
+		if (resultCount) {
 			const handleClick = (r) => {
 				if (this._fnTransform) this._cbSearch(this._fnTransform(r.doc));
 				else {
@@ -908,11 +917,20 @@ class SearchWidget {
 			this._$iptSearch = $(`<input class="ui-search__ipt-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($wrpControls);
 			this._$wrpResults = $(`<div class="ui-search__wrp-results"/>`).appendTo(this._$rendered);
 
+			let lastSearchTerm = "";
 			SearchWidget.bindAutoSearch(this._$iptSearch, {
 				flags: this._flags,
 				fnSearch: this.__doSearch.bind(this),
 				fnShowWait: this.__showMsgWait.bind(this),
 				$ptrRows: this._$ptrRows
+			});
+
+			// On the first keypress, switch to loading dots
+			this._$iptSearch.keydown(evt => {
+				if (evt.which !== 13) {
+					if (lastSearchTerm === "") this.__showMsgWait();
+					lastSearchTerm = this._$iptSearch.val();
+				}
 			});
 
 			this.__doSearch();
@@ -950,7 +968,7 @@ class SearchWidget {
 
 		const nxtOpts = {};
 		if (opts.level != null) nxtOpts.resultFilter = result => result.lvl === opts.level;
-		const tagBuilder = (encName, encSource) => `{@spell ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_PHB) ? `|${decodeURIComponent(encSource)}` : ""}}`;
+		const tagBuilder = (encName, encSource) => `{@spell ${decodeURIComponent(encName).toSpellCase()}${encSource !== UrlUtil.encodeForHash(SRC_PHB) ? `|${decodeURIComponent(encSource)}` : ""}}`;
 		const title = opts.level === 0 ? "Select Cantrip" : "Select Spell";
 		return SearchWidget.pGetUserEntitySearch(title, "alt_Spell", tagBuilder, nxtOpts);
 	}
@@ -1082,7 +1100,7 @@ class SearchWidget {
 				SearchWidget.P_LOADING_INDICES[contentIndexName] = (SearchWidget.CONTENT_INDICES[contentIndexName] = await SearchWidget._pGetIndex(dataSource, jsonProp, catId, page));
 				SearchWidget.P_LOADING_INDICES[contentIndexName] = null;
 			} catch (e) {
-				JqueryUtil.doToast({type: "danger", content: `Could not load ${errorName}! ${MiscUtil.STR_SEE_CONSOLE}`});
+				JqueryUtil.doToast({type: "danger", content: `Could not load ${errorName}! ${VeCt.STR_SEE_CONSOLE}`});
 				throw e;
 			} finally {
 				doClose();
@@ -1118,7 +1136,7 @@ class SearchWidget {
 
 	static _showLoadingModal () {
 		const {$modalInner, doClose} = UiUtil.getShowModal({isPermanent: true});
-		$(`<div class="flex-vh-center w-100 h-100"><span class="dnd-font italic text-muted">Loading...</span></div>`).appendTo($modalInner);
+		$(`<div class="flex-vh-center w-100 h-100"><span class="dnd-font italic ve-muted">Loading...</span></div>`).appendTo($modalInner);
 		return doClose;
 	}
 	// endregion
@@ -1335,7 +1353,7 @@ class InputUiUtil {
 					$cb,
 					$ele: $$`<label class="flex-v-center row my-1">
 						<div class="col-2 flex-vh-center">${$cb}</div>
-						<div class="col-10">${opts.fnDisplay ? opts.fnDisplay(v, i) : v}</div>
+						<div class="col-10 flex-v-center">${opts.fnDisplay ? opts.fnDisplay(v, i) : v}</div>
 					</label>`,
 					comp
 				});
@@ -1733,10 +1751,15 @@ class DragReorderUiUtil {
 			dragMeta.on = false;
 			dragMeta.$wrap.remove();
 			dragMeta.$dummies.forEach($d => $d.remove());
+			$(document.body).off(`mouseup.drag__stop`);
 		};
 
 		const doDragRender = () => {
 			if (dragMeta.on) doDragCleanup();
+
+			$(document.body).on(`mouseup.drag__stop`, () => {
+				if (dragMeta.on) doDragCleanup();
+			});
 
 			dragMeta.on = true;
 			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"/>`).appendTo(opts.$parent);
@@ -1788,10 +1811,15 @@ class DragReorderUiUtil {
 			dragMeta.on = false;
 			dragMeta.$wrap.remove();
 			dragMeta.$dummies.forEach($d => $d.remove());
+			$(document.body).off(`mouseup.drag__stop`);
 		};
 
 		const doDragRender = () => {
 			if (dragMeta.on) doDragCleanup();
+
+			$(document.body).on(`mouseup.drag__stop`, () => {
+				if (dragMeta.on) doDragCleanup();
+			});
 
 			dragMeta.on = true;
 			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"/>`).appendTo(opts.$parent);
@@ -1828,7 +1856,7 @@ class DragReorderUiUtil {
 	/**
 	 * @param $fnGetRow Function which returns a $row element. Is a function instead of a value so it can be lazy-loaded later.
 	 * @param $parent Parent elements to attach row elements to. Should have (e.g.) "relative" CSS positioning.
-	 * @param parent Parent component which has a pod decomposable as {swapRowPositions, <childComponents|getChildComponents>}.
+	 * @param parent Parent component which has a pod decomposable as {swapRowPositions, <$children|$getChildren>}.
 	 * @return jQuery
 	 */
 	static $getDragPad2 ($fnGetRow, $parent, parent) {
@@ -2055,6 +2083,7 @@ class BaseComponent extends ProxyBase {
 	 * Asynchronous version available below.
 	 * @param opts Options object.
 	 * @param opts.prop The state property.
+	 * @param opts.fnDeleteExisting Function to run on deleted render meta. Arguments are `rendered, item`.
 	 * @param opts.fnUpdateExisting Function to run on existing render meta. Arguments are `rendered, item`.
 	 * @param opts.fnGetNew Function to run which generates existing render meta. Arguments are `item`.
 	 * @param [opts.isDiffMode] If a diff of the state should be taken/checked before updating renders.
@@ -2172,6 +2201,7 @@ class BaseComponent extends ProxyBase {
 			else meta.$wrpRow.remove();
 			if (opts.additionalCaches) opts.additionalCaches.forEach(it => delete it[id]);
 			delete rendered[id];
+			if (opts.fnDeleteExisting) opts.fnDeleteExisting(meta);
 		});
 	}
 
@@ -2588,7 +2618,13 @@ class ComponentUiUtil {
 		});
 
 		if (opts.autocomplete && opts.autocomplete.length) $ipt.typeahead({source: opts.autocomplete});
-		const hook = () => $ipt.val(component._state[prop]);
+		const hook = () => {
+			if (component._state[prop] == null) $ipt.val(null);
+			else {
+				// If the only difference is start/end whitespace, leave it; otherwise, adding spaces is frustrating
+				if ($ipt.val().trim() !== component._state[prop]) $ipt.val(component._state[prop]);
+			}
+		};
 		component._addHookBase(prop, hook);
 		hook();
 

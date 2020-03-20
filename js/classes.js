@@ -131,6 +131,8 @@ class ClassesPage extends BaseComponent {
 
 	_addData_addClassData (classes) {
 		classes.forEach(cls => {
+			this._pageFilter.mutateForFilters(cls);
+
 			const isExcluded = ExcludeUtil.isExcluded(cls.name, "class", cls.source);
 
 			// Build a map of subclass source => subclass name => is excluded
@@ -141,7 +143,7 @@ class ClassesPage extends BaseComponent {
 				(subclassExclusions[sc.source] = subclassExclusions[sc.source] || {})[sc.name] = subclassExclusions[sc.source][sc.name] || ExcludeUtil.isExcluded(sc.name, "subclass", sc.source);
 			});
 
-			this._pageFilter.mutateAndAddToFilters(cls, isExcluded, {subclassExclusions});
+			this._pageFilter.addToFilters(cls, isExcluded, {subclassExclusions});
 		});
 
 		// Force data on any classes with unusual sources to behave as though they have normal sources
@@ -394,7 +396,7 @@ class ClassesPage extends BaseComponent {
 			},
 			{
 				$lnk,
-				class: cls,
+				entity: cls,
 				uniqueId: cls.uniqueId ? cls.uniqueId : clsI,
 				isExcluded
 			}
@@ -404,7 +406,7 @@ class ClassesPage extends BaseComponent {
 	_handleFilterChange () {
 		const f = this.filterBox.getValues();
 
-		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
+		this._list.filter(item => this._pageFilter.toDisplay(f, item.data.entity));
 
 		this._$trsContent.forEach($tr => {
 			$tr.find(`[data-source]`).each((i, e) => {
@@ -446,7 +448,7 @@ class ClassesPage extends BaseComponent {
 					this._list.items
 						.filter(it => it.data.$lnk)
 						.forEach(it => {
-							const href = `#${this._getHashState({class: it.data.class})}`;
+							const href = `#${this._getHashState({class: it.data.entity})}`;
 							it.data.$lnk.attr("href", href)
 						});
 				}, 5);
@@ -955,7 +957,8 @@ class ClassesPage extends BaseComponent {
 
 			this.filterBox.setFromSubHashes([
 				...boxSubhashes,
-				...cpySubHashes
+				...cpySubHashes,
+				`flopsource:extend`
 			].filter(Boolean), true);
 			$selFilterPreset.val("-1");
 		};
@@ -1012,11 +1015,10 @@ class ClassesPage extends BaseComponent {
 		const cls = this.activeClass;
 		this._listSubclass.filter(li => {
 			if (li.values.isAlwaysVisible) return true;
-			const it = cls.subclasses[li.ix];
 			return this.filterBox.toDisplay(
 				f,
-				it.source,
-				it._fMisc
+				li.data.entity.source,
+				li.data.entity._fMisc
 			);
 		});
 	}
@@ -1061,7 +1063,8 @@ class ClassesPage extends BaseComponent {
 				mod
 			},
 			{
-				isExcluded
+				isExcluded,
+				entity: sc
 			}
 		);
 	}

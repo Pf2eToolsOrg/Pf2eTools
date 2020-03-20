@@ -4,6 +4,7 @@
 			"name": "Attack",
 			"source": "PHB",
 			"page": 192,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
@@ -20,6 +21,7 @@
 			"name": "Cast a Spell",
 			"source": "PHB",
 			"page": 192,
+			"srd": true,
 			"time": [
 				"Varies"
 			],
@@ -31,7 +33,7 @@
 			"name": "Climb onto a Bigger Creature",
 			"source": "DMG",
 			"page": 271,
-			"isOptional": true,
+			"fromVariant": "Action Options",
 			"time": [
 				{
 					"number": 1,
@@ -48,6 +50,7 @@
 			"name": "Dash",
 			"source": "PHB",
 			"page": 192,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
@@ -63,7 +66,7 @@
 			"name": "Disarm",
 			"source": "DMG",
 			"page": 271,
-			"isOptional": true,
+			"fromVariant": "Action Options",
 			"time": [
 				{
 					"number": 1,
@@ -79,6 +82,7 @@
 			"name": "Disengage",
 			"source": "PHB",
 			"page": 192,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
@@ -93,6 +97,7 @@
 			"name": "Dodge",
 			"source": "PHB",
 			"page": 192,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
@@ -107,6 +112,7 @@
 			"name": "Don or Doff a Shield",
 			"source": "PHB",
 			"page": 146,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
@@ -121,6 +127,7 @@
 			"name": "Escape a Grapple",
 			"source": "PHB",
 			"page": 195,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
@@ -135,6 +142,7 @@
 			"name": "Grapple",
 			"source": "PHB",
 			"page": 195,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
@@ -154,9 +162,26 @@
 			]
 		},
 		{
+			"name": "Healing Surge",
+			"source": "DMG",
+			"page": 266,
+			"fromVariant": "Healing",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"As an action, a character can use a healing surge and spend up to half his or her Hit Dice. For each Hit Die spent in this way, the player rolls the die and adds the character's Constitution modifier. The character regains hit points equal to the total. The player can decide to spend an additional Hit Die after each roll.",
+				"A character who uses a healing surge can't do so again until he or she finishes a short or long rest. Under this optional rule, a character regains all spent Hit Dice at the end of a long rest. With a short rest, a character regains Hit Dice equal to his or her level divided by four (minimum of one dice)."
+			]
+		},
+		{
 			"name": "Help",
 			"source": "PHB",
 			"page": 192,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
@@ -172,6 +197,7 @@
 			"name": "Hide",
 			"source": "PHB",
 			"page": 192,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
@@ -186,7 +212,7 @@
 			"name": "Identify a Spell",
 			"source": "XGE",
 			"page": 85,
-			"isOptional": true,
+			"fromVariant": "Spellcasting|XGE",
 			"time": [
 				{
 					"number": 1,
@@ -219,7 +245,7 @@
 			"name": "Mark",
 			"source": "DMG",
 			"page": 271,
-			"isOptional": true,
+			"fromVariant": "Action Options",
 			"entries": [
 				"This option makes it easier for melee combatants to harry each other with opportunity attacks.",
 				"When a creature makes a melee attack, it can also mark its target. Until the end of the attacker's next turn, any opportunity attack it makes against the marked target has advantage. The opportunity attack doesn't expend the attacker's reaction, but the attacker can't make the attack if anything, such as the {@condition incapacitated} condition or the shocking grasp spell, is preventing it from taking reactions. The attacker is limited to one opportunity attack per turn."
@@ -229,6 +255,7 @@
 			"name": "Opportunity Attack",
 			"source": "PHB",
 			"page": 195,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
@@ -245,7 +272,7 @@
 			"name": "Overrun",
 			"source": "DMG",
 			"page": 272,
-			"isOptional": true,
+			"fromVariant": "Action Options",
 			"time": [
 				{
 					"number": 1,
@@ -264,6 +291,7 @@
 			"name": "Ready",
 			"source": "PHB",
 			"page": 193,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
@@ -271,7 +299,7 @@
 				}
 			],
 			"entries": [
-				"Sometimes you want to get the jump on a foe or wait for a particular circumstance before you act. To do so, you can take the Ready action on your turn so that you can act later in the round using your reaction.",
+				"Sometimes you want to get the jump on a foe or wait for a particular circumstance before you act. To do so, you can take the Ready action on your turn, which lets you act using your reaction before the start of your next turn.",
 				"First, you decide what perceivable circumstance will trigger your reaction. Then, you choose the action you will take in response to that trigger, or you choose to move up to your speed in response to it. Examples include \"If the cultist steps on the trapdoor, I'll pull the lever that opens it,\" and \"If the goblin steps next to me, I move away.\"",
 				"When the trigger occurs, you can either take your reaction right after the trigger finishes or ignore the trigger. Remember that you can take only one reaction per round.",
 				"When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell's magic requires concentration (explained in {@book chapter 10|phb|10|concentration}). If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the web spell and ready magic missile, your web spell ends, and if you take damage before you release magic missile with your reaction, your concentration might be broken.",
@@ -296,6 +324,7 @@
 			"name": "Shove",
 			"source": "PHB",
 			"page": 195,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
@@ -311,7 +340,7 @@
 			"name": "Shove Aside",
 			"source": "DMG",
 			"page": 272,
-			"isOptional": true,
+			"fromVariant": "Action Options",
 			"time": [
 				{
 					"number": 1,
@@ -319,14 +348,14 @@
 				}
 			],
 			"entries": [
-				"With this option, a creature uses the special shove attack from the {@book Player's Handbook|9|Shoving a Creature} to force a target to the side, rather than away. The attacker has disadvantage on its Strength ({@skill Athletics}) check when it does so. If that check is successful, the attacker moves the target 5 feet to a different space within its reach."
+				"With this option, a creature uses the special {@action shove} attack from the {@book Player's Handbook|9|Shoving a Creature} to force a target to the side, rather than away. The attacker has disadvantage on its Strength ({@skill Athletics}) check when it does so. If that check is successful, the attacker moves the target 5 feet to a different space within its reach."
 			]
 		},
 		{
 			"name": "Tumble",
 			"source": "DMG",
 			"page": 272,
-			"isOptional": true,
+			"fromVariant": "Action Options",
 			"time": [
 				{
 					"number": 1,
@@ -345,6 +374,7 @@
 			"name": "Two-Weapon Fighting",
 			"source": "PHB",
 			"page": 195,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
@@ -360,6 +390,7 @@
 			"name": "Use an Object",
 			"source": "PHB",
 			"page": 193,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,

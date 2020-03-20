@@ -256,8 +256,9 @@ class CreatureParser extends BaseParser {
 				curTrait.entries = [];
 
 				const parseFirstLine = line => {
-					curTrait.name = line.split(/([.!?])/g)[0];
-					curTrait.entries.push(line.substring(curTrait.name.length + 1, line.length).trim());
+					const {name, entry} = ConvertUtil.splitNameLine(line);
+					curTrait.name = name;
+					curTrait.entries.push(entry);
 				};
 
 				if (isLegendaryDescription) {
@@ -279,13 +280,7 @@ class CreatureParser extends BaseParser {
 
 				// collect subsequent paragraphs
 				while (curLine && !ConvertUtil.isNameLine(curLine) && !startNextPhase(curLine)) {
-					// The line is probably a wrapped continuation of the previous line if it starts with:
-					//  - a lowercase word
-					//  - "Hit:"
-					//  - numbers (e.g. damage; "5 (1d6 + 2)")
-					//  - opening brackets (e.g. damage; "(1d6 + 2)")
-					//  - a spellcasting ability score name (Intelligence, Charisma, Wisdom) followed by an opening bracket
-					if (typeof curTrait.entries.last() === "string" && /^([a-z]|Hit:|\d+\s+|\(|(Intelligence|Wisdom|Charisma)\s+\()/.test(curLine.trim())) {
+					if (BaseParser._isContinuationLine(curTrait.entries, curLine)) {
 						curTrait.entries.last(`${curTrait.entries.last().trim()} ${curLine.trim()}`);
 					} else {
 						curTrait.entries.push(curLine.trim());
@@ -783,7 +778,7 @@ class CreatureParser extends BaseParser {
 		TagAttack.tryTagAttacks(stats, (atk) => options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Manual attack tagging required for "${atk}"`));
 		TagHit.tryTagHits(stats);
 		TagDc.tryTagDcs(stats);
-		TagCondition.tryTagConditions(stats);
+		TagCondition.tryTagConditions(stats, true);
 		TraitActionTag.tryRun(stats);
 		LanguageTag.tryRun(stats);
 		SenseTag.tryRun(stats);

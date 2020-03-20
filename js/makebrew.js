@@ -166,6 +166,10 @@ class PageUi {
 			this._saveSettingsDebounced();
 		});
 
+		const $btnManageHomebrew = $(`<button class="btn btn-xs btn-info">Manage Homebrew</button>`)
+			.click(() => BrewUtil.manageBrew());
+		$$`<div class="sidemenu__row">${$btnManageHomebrew}</div>`.appendTo($mnu)
+
 		$mnu.append(PageUi.__$getSideMenuDivider(true));
 
 		const $wrpSource = $(`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label mr-2">Source</div></div>`).appendTo($mnu);
@@ -593,7 +597,7 @@ class Builder extends ProxyBase {
 			this._isLastRenderInputFail = false;
 		} catch (e) {
 			if (!this._isLastRenderInputFail) {
-				JqueryUtil.doToast({type: "danger", content: `Could not load homebrew, it contained errors! ${STR_SEE_CONSOLE}`});
+				JqueryUtil.doToast({type: "danger", content: `Could not load homebrew, it contained errors! ${VeCt.STR_SEE_CONSOLE}`});
 				setTimeout(() => { throw e; });
 			}
 			const tmp = this._isLastRenderInputFail;
@@ -925,16 +929,22 @@ class BuilderUi {
 			})
 	}
 
+	// FIXME refactor this to use one of the variant in utils-ui
 	static $getDragPad (cbUpdate, rows, myRow, options) {
 		const dragMeta = {};
 		const doDragCleanup = () => {
 			dragMeta.on = false;
 			dragMeta.$wrap.remove();
 			dragMeta.$dummies.forEach($d => $d.remove());
+			$(document.body).off(`mouseup.drag__stop`);
 		};
 
 		const doDragRender = () => {
 			if (dragMeta.on) doDragCleanup();
+
+			$(document.body).on(`mouseup.drag__stop`, () => {
+				if (dragMeta.on) doDragCleanup();
+			});
 
 			dragMeta.on = true;
 			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"/>`).appendTo(options.$wrpRowsOuter);

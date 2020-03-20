@@ -1,13 +1,14 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"type": "object",
 
 	"definitions": {
 		"vehicle": {
 			"oneOf": [
 				{"$ref": "#/definitions/vehicleShip"},
-				{"$ref": "#/definitions/vehicleInfernalWarMachine"}
+				{"$ref": "#/definitions/vehicleInfernalWarMachine"},
+				{"$ref": "#/definitions/vehicleCreature"}
 			]
 		},
 
@@ -397,6 +398,12 @@
 			},
 			"required": ["name", "source"],
 			"additionalProperties": false
+		},
+
+		"vehicleCreature": {
+			"properties": {
+				"vehicleType": {"const": "CREATURE"}
+			}
 		}
 	},
 

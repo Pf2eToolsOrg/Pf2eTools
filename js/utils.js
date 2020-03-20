@@ -4,13 +4,14 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.99.1"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.101.0"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
 
 IMGUR_CLIENT_ID = `abdea4de492d3b0`;
 
+// TODO refactor into VeCt
 HASH_PART_SEP = ",";
 HASH_LIST_SEP = "_";
 HASH_SUB_LIST_SEP = "~";
@@ -18,23 +19,24 @@ HASH_SUB_KV_SEP = ":";
 HASH_BLANK = "blankhash";
 HASH_SUB_NONE = "null";
 
-CLSS_NON_STANDARD_SOURCE = "spicy-sauce";
-CLSS_HOMEBREW_SOURCE = "refreshing-brew";
+VeCt = {
+	STR_NONE: "None",
+	STR_SEE_CONSOLE: "See the console (CTRL+SHIFT+J) for details.",
 
-MON_HASH_SCALED = "scaled";
+	HASH_MON_SCALED: "scaled",
 
-STR_NONE = "None";
-STR_SEE_CONSOLE = "See the console (CTRL+SHIFT+J) for details.";
+	FILTER_BOX_SUB_HASH_SEARCH_PREFIX: "fbsr",
 
-HOMEBREW_STORAGE = "HOMEBREW_STORAGE";
-HOMEBREW_META_STORAGE = "HOMEBREW_META_STORAGE";
-EXCLUDES_STORAGE = "EXCLUDES_STORAGE";
-DMSCREEN_STORAGE = "DMSCREEN_STORAGE";
-ROLLER_MACRO_STORAGE = "ROLLER_MACRO_STORAGE";
-ENCOUNTER_STORAGE = "ENCOUNTER_STORAGE";
-POINTBUY_STORAGE = "POINTBUY_STORAGE";
+	JSON_HOMEBREW_INDEX: `homebrew/index.json`,
 
-JSON_HOMEBREW_INDEX = `homebrew/index.json`;
+	STORAGE_HOMEBREW: "HOMEBREW_STORAGE",
+	STORAGE_HOMEBREW_META: "HOMEBREW_META_STORAGE",
+	STORAGE_EXCLUDES: "EXCLUDES_STORAGE",
+	STORAGE_DMSCREEN: "DMSCREEN_STORAGE",
+	STORAGE_ROLLER_MACRO: "ROLLER_MACRO_STORAGE",
+	STORAGE_ENCOUNTER: "ENCOUNTER_STORAGE",
+	STORAGE_POINTBUY: "POINTBUY_STORAGE"
+};
 
 // STRING ==============================================================================================================
 String.prototype.uppercaseFirst = String.prototype.uppercaseFirst || function () {
@@ -97,7 +99,7 @@ String.prototype.toSentenceCase = String.prototype.toSentenceCase || function ()
 };
 
 String.prototype.toSpellCase = String.prototype.toSpellCase || function () {
-	return this.toLowerCase().replace(/(^|of )(bigby|otiluke|mordenkainen|evard|hadar|agatys|abi-dalzim|aganazzar|drawmij|leomund|maximilian|melf|nystul|otto|rary|snilloc|tasha|tenser|jim)('s|$| )/g, (...m) => `${m[1]}${m[2].toTitleCase()}${m[3]}`);
+	return this.toLowerCase().replace(/(^|of )(bigby|otiluke|mordenkainen|evard|hadar|agathys|abi-dalzim|aganazzar|drawmij|leomund|maximilian|melf|nystul|otto|rary|snilloc|tasha|tenser|jim)('s|$| )/g, (...m) => `${m[1]}${m[2].toTitleCase()}${m[3]}`);
 };
 
 String.prototype.toCamelCase = String.prototype.toCamelCase || function () {
@@ -368,6 +370,24 @@ Parser.numberToText = function (number) {
 		}
 	}
 	return `${number < 0 ? "negative " : ""}${getAsText(number)}`;
+};
+
+Parser.textToNumber = function (str) {
+	str = str.trim().toLowerCase();
+	switch (str) {
+		case "zero": return 0;
+		case "one": return 1;
+		case "two": return 2;
+		case "three": return 3;
+		case "four": return 4;
+		case "five": return 5;
+		case "six": return 6;
+		case "seven": return 7;
+		case "eight": return 8;
+		case "nine": return 9;
+		case "ten": return 10;
+	}
+	return NaN;
 };
 
 Parser.numberToVulgar = function (number) {
@@ -788,6 +808,13 @@ Parser.itemValueToFull = function (item, isShortForm) {
 	return Parser._moneyToFull(item, "value", "valueMult", isShortForm);
 };
 
+Parser.itemVehicleCostsToFull = function (item, isShortForm) {
+	return {
+		travelCostFull: Parser._moneyToFull(item, "travelCost", "travelCostMult", isShortForm),
+		shippingCostFull: Parser._moneyToFull(item, "shippingCost", "shippingCostMult", isShortForm)
+	};
+};
+
 Parser.spellComponentCostToFull = function (item, isShortForm) {
 	return Parser._moneyToFull(item, "cost", "costMult", isShortForm);
 };
@@ -1104,12 +1131,12 @@ Parser.spRangeToShortHtml._renderPoint = function (range) {
 		case UNT_FEET:
 		case UNT_MILES:
 		default:
-			return `${dist.amount} <span class="small">${Parser.getSingletonUnit(dist.type, true)}</span>`;
+			return `${dist.amount} <span class="ve-small">${Parser.getSingletonUnit(dist.type, true)}</span>`;
 	}
 };
 Parser.spRangeToShortHtml._renderArea = function (range) {
 	const size = range.distance;
-	return `<span class="fas ${Parser.spRangeTypeToIcon(RNG_SELF)} help--subtle" title="Self"/> ${size.amount}<span class="small">-${Parser.getSingletonUnit(size.type, true)}</span> ${Parser.spRangeToShortHtml._getAreaStyleString(range)}`;
+	return `<span class="fas ${Parser.spRangeTypeToIcon(RNG_SELF)} help--subtle" title="Self"/> ${size.amount}<span class="ve-small">-${Parser.getSingletonUnit(size.type, true)}</span> ${Parser.spRangeToShortHtml._getAreaStyleString(range)}`;
 };
 Parser.spRangeToShortHtml._getAreaStyleString = function (range) {
 	return `<span class="fas ${Parser.spRangeTypeToIcon(range.type)} help--subtle" title="${Parser.spRangeTypeToFull(range.type)}"/>`
@@ -1455,7 +1482,7 @@ Parser.monCondImmToFull = function (condImm, isPlainText) {
 		if (it.special) return it.special;
 		if (it.conditionImmune) return `${it.preNote ? `${it.preNote} ` : ""}${it.conditionImmune.map(render).join(", ")}${it.note ? ` ${it.note}` : ""}`;
 		return render(it);
-	}).join(", ");
+	}).sort(SortUtil.ascSortLower).join(", ");
 };
 
 Parser.MON_SENSE_TAG_TO_FULL = {
@@ -1562,7 +1589,7 @@ Parser.prereqSpellToFull = function (spell) {
 		if (!suffix) return Renderer.get().render(`{@spell ${spell}}`);
 		else if (suffix === "c") return Renderer.get().render(`{@spell ${text}} cantrip`);
 		else if (suffix === "x") return Renderer.get().render("{@spell hex} spell or a warlock feature that curses");
-	} else return STR_NONE;
+	} else return VeCt.STR_NONE;
 };
 
 Parser.prereqPactToFull = function (pact) {
@@ -1691,8 +1718,8 @@ Parser.weightToFull = function (lbs, isSmallUnit) {
 	const tons = Math.floor(lbs / 2000);
 	lbs = lbs - (2000 * tons);
 	return [
-		tons ? `${tons}${isSmallUnit ? `<span class="small ml-1">` : " "}ton${tons === 1 ? "" : "s"}${isSmallUnit ? `</span>` : ""}` : null,
-		lbs ? `${lbs}${isSmallUnit ? `<span class="small ml-1">` : " "}lb.${isSmallUnit ? `</span>` : ""}` : null
+		tons ? `${tons}${isSmallUnit ? `<span class="ve-small ml-1">` : " "}ton${tons === 1 ? "" : "s"}${isSmallUnit ? `</span>` : ""}` : null,
+		lbs ? `${lbs}${isSmallUnit ? `<span class="ve-small ml-1">` : " "}lb.${isSmallUnit ? `</span>` : ""}` : null
 	].filter(Boolean).join(", ");
 };
 
@@ -2061,7 +2088,7 @@ Parser.spTimeToShort = function (time, isHtml) {
 	if (!time) return "";
 	return (time.number === 1 && Parser.SP_TIME_SINGLETONS.includes(time.unit))
 		? `${Parser.spTimeUnitToAbv(time.unit).uppercaseFirst()}${time.condition ? "*" : ""}`
-		: `${time.number} ${isHtml ? `<span class="small">` : ""}${Parser.spTimeUnitToAbv(time.unit)}${isHtml ? `</span>` : ""}${time.condition ? "*" : ""}`;
+		: `${time.number} ${isHtml ? `<span class="ve-small">` : ""}${Parser.spTimeUnitToAbv(time.unit)}${isHtml ? `</span>` : ""}${time.condition ? "*" : ""}`;
 };
 
 SKL_ABJ = "Abjuration";
@@ -2159,7 +2186,7 @@ Parser.SIZE_ABV_TO_FULL[SZ_GARGANTUAN] = "Gargantuan";
 Parser.SIZE_ABV_TO_FULL[SZ_COLOSSAL] = "Colossal";
 Parser.SIZE_ABV_TO_FULL[SZ_VARIES] = "Varies";
 
-Parser.XP_CHART = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 30000, 41000, 50000, 62000, 75000, 90000, 105000, 120000, 135000, 155000];
+Parser.XP_CHART = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 33000, 41000, 50000, 62000, 75000, 90000, 105000, 120000, 135000, 155000];
 
 Parser.XP_CHART_ALT = {
 	"0": 10,
@@ -2186,7 +2213,7 @@ Parser.XP_CHART_ALT = {
 	"18": 20000,
 	"19": 22000,
 	"20": 25000,
-	"21": 30000,
+	"21": 33000,
 	"22": 41000,
 	"23": 50000,
 	"24": 62000,
@@ -2278,6 +2305,7 @@ SRC_MFF = "MFF";
 SRC_AWM = "AWM";
 SRC_IMR = "IMR";
 SRC_SADS = "SADS";
+SRC_EGW = "EGW";
 SRC_SCREEN = "Screen";
 
 SRC_AL_PREFIX = "AL";
@@ -2424,6 +2452,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_MFF] = "Mordenkainen's Fiendish Folio";
 Parser.SOURCE_JSON_TO_FULL[SRC_AWM] = "Adventure with Muk";
 Parser.SOURCE_JSON_TO_FULL[SRC_IMR] = "Infernal Machine Rebuild";
 Parser.SOURCE_JSON_TO_FULL[SRC_SADS] = "Sapphire Anniversary Dice Set";
+Parser.SOURCE_JSON_TO_FULL[SRC_EGW] = "Explorer's Guide to Wildemount";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = `${AL_PREFIX}Curse of Strahd`;
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = `${AL_PREFIX}Elemental Evil`;
@@ -2551,6 +2580,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_MFF] = "MFF";
 Parser.SOURCE_JSON_TO_ABV[SRC_AWM] = "AWM";
 Parser.SOURCE_JSON_TO_ABV[SRC_IMR] = "IMR";
 Parser.SOURCE_JSON_TO_ABV[SRC_SADS] = "SADS";
+Parser.SOURCE_JSON_TO_ABV[SRC_EGW] = "EGW";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
@@ -2676,6 +2706,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_MFF] = "2019-11-12";
 Parser.SOURCE_JSON_TO_DATE[SRC_AWM] = "2019-11-12";
 Parser.SOURCE_JSON_TO_DATE[SRC_IMR] = "2019-11-12";
 Parser.SOURCE_JSON_TO_DATE[SRC_SADS] = "2019-12-12";
+Parser.SOURCE_JSON_TO_DATE[SRC_EGW] = "2020-03-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN] = "2015-01-20";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALCoS] = "2016-03-15";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALEE] = "2015-04-07";
@@ -3112,14 +3143,25 @@ JqueryUtil = {
 					else return `${html}${handleArg(args[myIxArg])}${p}`;
 				});
 				const $res = $(raw);
-				$res.find(`[data-r=true]`).replaceWith(i => $eles[i]);
+
+				if ($res.length === 1) {
+					if ($res.attr("data-r") === "true") return $eles[0];
+					else $res.find(`[data-r=true]`).replaceWith(i => $eles[i]);
+				} else {
+					// Handle case where user has passed in a bunch of elements with no outer wrapper
+					const $tmp = $(`<div/>`);
+					$tmp.append($res);
+					$tmp.find(`[data-r=true]`).replaceWith(i => $eles[i]);
+					return $tmp.children();
+				}
+
 				return $res;
 			}
 		};
 
 		$.fn.extend({
 			// avoid setting input type to "search" as it visually offsets the contents of the input
-			disableSpellcheck: function () { return this.attr("autocomplete", "off").attr("autocapitalize", "off").attr("spellcheck", "false"); },
+			disableSpellcheck: function () { return this.attr("autocomplete", "new-password").attr("autocapitalize", "off").attr("spellcheck", "false"); },
 
 			tag: function () {
 				return this.prop("tagName").toLowerCase();
@@ -3149,7 +3191,7 @@ JqueryUtil = {
 
 			hideVe: function () { return this.addClass("ve-hidden"); },
 			showVe: function () { return this.removeClass("ve-hidden"); },
-			toggleVe: function (val) { return this.toggleClass("ve-hidden", !!val); }
+			toggleVe: function (val) { return this.toggleClass("ve-hidden", !val); }
 		});
 
 		$.event.special.destroyed = {
@@ -3304,8 +3346,6 @@ MiscUtil = {
 	COLOR_HURT: "#c5ca00",
 	COLOR_BLOODIED: "#f7a100",
 	COLOR_DEFEATED: "#cc0000",
-
-	STR_SEE_CONSOLE: "See the console (CTRL+SHIFT+J) for more information.",
 
 	copy (obj) {
 		return JSON.parse(JSON.stringify(obj));
@@ -4108,7 +4148,7 @@ ListUtil = {
 					DataUtil.userDownload(ListUtil._getDownloadName(), JSON.stringify(ListUtil.getExportableSublist(), null, "\t"));
 				}
 			})
-			.title("Download List (SHIFT for Link)");
+			.title("Download Pinned List (SHIFT for Link)");
 	},
 
 	async pDoJsonLoad (json, additive) {
@@ -4140,7 +4180,7 @@ ListUtil = {
 					.appendTo($(`body`));
 				$iptAdd.click();
 			})
-			.title("Upload List (SHIFT for Add Only)");
+			.title("Upload Pinned List (SHIFT for Add Only)");
 	},
 
 	async pSetFromSubHashes (subHashes, pFnPreLoad) {
@@ -4480,7 +4520,12 @@ ListUtil = {
 
 			Renderer.hover.getShowWindow(
 				Renderer.hover.$getHoverContent_stats(UrlUtil.getCurrentPage(), toRender),
-				{mode: "exact", x: elePos.x + posOffset, y: elePos.y + posOffset},
+				{
+					window: (evt.view || {}).window || window,
+					mode: "exact",
+					x: elePos.x + posOffset,
+					y: elePos.y + posOffset
+				},
 				{
 					title: toRender.name,
 					isPermanent: true,
@@ -4782,7 +4827,7 @@ UrlUtil = {
 			.on("click", async evt => {
 				let url = window.location.href;
 
-				const parts = filterBox.getSubHashes();
+				const parts = filterBox.getSubHashes({isAddSearchTerm: true});
 				parts.unshift(url);
 
 				if (evt.shiftKey && ListUtil.sublist) {
@@ -5269,6 +5314,7 @@ DataUtil = {
 								case "item": return DataUtil.item.pMergeCopy(data[prop], entry, options);
 								case "background": return DataUtil.background.pMergeCopy(data[prop], entry, options);
 								case "race": return DataUtil.race.pMergeCopy(data[prop], entry, options);
+								case "deity": return DataUtil.deity.pMergeCopy(data[prop], entry, options);
 								default: throw new Error(`No internal _copy merge strategy specified for property "${prop}"`);
 							}
 						}
@@ -5392,16 +5438,18 @@ DataUtil = {
 		async _pMergeCopy (impl, page, entryList, entry, options) {
 			if (entry._copy) {
 				const hash = UrlUtil.URL_TO_HASH_BUILDER[page](entry._copy);
-				const it = impl._mergeCache[hash] || DataUtil.generic._pMergeCopy_search(impl, page, entryList, entry);
+				const it = impl._mergeCache[hash] || DataUtil.generic._pMergeCopy_search(impl, page, entryList, entry, options);
 				if (!it) return;
 				return DataUtil.generic._pApplyCopy(impl, MiscUtil.copy(it), entry, options);
 			}
 		},
 
-		_pMergeCopy_search (impl, page, entryList, entry) {
+		_pMergeCopy_search (impl, page, entryList, entry, options) {
+			const entryHash = UrlUtil.URL_TO_HASH_BUILDER[page](entry._copy);
 			return entryList.find(it => {
-				impl._mergeCache[UrlUtil.URL_TO_HASH_BUILDER[page](it)] = it;
-				return it.name === entry._copy.name && it.source === entry._copy.source;
+				const hash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
+				impl._mergeCache[hash] = it;
+				return hash === entryHash;
 			});
 		},
 
@@ -5452,7 +5500,11 @@ DataUtil = {
 			});
 
 			// apply any root racial properties after doing base copy
-			if (racials && racials.apply._root) Object.entries(racials.apply._root).forEach(([k, v]) => copyTo[k] = v);
+			if (racials && racials.apply._root) {
+				Object.entries(racials.apply._root)
+					.filter(([k, v]) => copyTo[k] === undefined) // avoid overwriting any real root properties
+					.forEach(([k, v]) => copyTo[k] = v);
+			}
 
 			// mod helpers /////////////////
 			function doEnsureArray (obj, prop) {
@@ -5483,6 +5535,12 @@ DataUtil = {
 			function doMod_appendArr (modInfo, prop) {
 				doEnsureArray(modInfo, "items");
 				copyTo[prop] = copyTo[prop] ? copyTo[prop].concat(modInfo.items) : modInfo.items
+			}
+
+			function doMod_appendIfNotExistsArr (modInfo, prop) {
+				doEnsureArray(modInfo, "items");
+				if (!copyTo[prop]) return copyTo[prop] = modInfo.items;
+				copyTo[prop] = copyTo[prop].concat(modInfo.items.filter(it => !copyTo[prop].some(x => CollectionUtil.deepEquals(it, x))));
 			}
 
 			function doMod_replaceArr (modInfo, prop, isThrow = true) {
@@ -5527,7 +5585,9 @@ DataUtil = {
 					modInfo.names.forEach(nameToRemove => {
 						const ixOld = copyTo[prop].findIndex(it => it.name === nameToRemove);
 						if (~ixOld) copyTo[prop].splice(ixOld, 1);
-						else throw new Error(`Could not find "${prop}" item with name "${nameToRemove}" to remove`);
+						else {
+							if (!modInfo.force) throw new Error(`Could not find "${prop}" item with name "${nameToRemove}" to remove`);
+						}
 					});
 				} else if (modInfo.items) {
 					doEnsureArray(modInfo, "items");
@@ -5751,6 +5811,7 @@ DataUtil = {
 								case "appendArr": return doMod_appendArr(modInfo, prop);
 								case "replaceArr": return doMod_replaceArr(modInfo, prop);
 								case "replaceOrAppendArr": return doMod_replaceOrAppendArr(modInfo, prop);
+								case "appendIfNotExistsArr": return doMod_appendIfNotExistsArr(modInfo, prop);
 								case "insertArr": return doMod_insertArr(modInfo, prop);
 								case "removeArr": return doMod_removeArr(modInfo, prop);
 								case "calculateProp": return doMod_calculateProp(modInfo, prop);
@@ -5968,11 +6029,22 @@ DataUtil = {
 	},
 
 	deity: {
+		_MERGE_REQUIRES_PRESERVE: {
+			page: true,
+			otherSources: true,
+			srd: true
+		},
+		_mergeCache: {},
+		async pMergeCopy (deityList, deity, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.deity, UrlUtil.PG_DEITIES, deityList, deity, options);
+		},
+
 		doPostLoad: function (data) {
 			const PRINT_ORDER = [
 				SRC_PHB,
 				SRC_DMG,
 				SRC_SCAG,
+				SRC_VGM,
 				SRC_MTF,
 				SRC_ERLW
 			];
@@ -6402,8 +6474,8 @@ BrewUtil = {
 			return BrewUtil.homebrew;
 		} else {
 			try {
-				const homebrew = await StorageUtil.pGet(HOMEBREW_STORAGE) || {};
-				BrewUtil.homebrewMeta = StorageUtil.syncGet(HOMEBREW_META_STORAGE) || {sources: []};
+				const homebrew = await StorageUtil.pGet(VeCt.STORAGE_HOMEBREW) || {};
+				BrewUtil.homebrewMeta = StorageUtil.syncGet(VeCt.STORAGE_HOMEBREW_META) || {sources: []};
 				BrewUtil.homebrewMeta.sources = BrewUtil.homebrewMeta.sources || [];
 
 				BrewUtil.homebrew = homebrew;
@@ -6422,8 +6494,8 @@ BrewUtil = {
 			content: "Error when loading homebrew! Purged homebrew data. (See the log for more information.)",
 			type: "danger"
 		});
-		await StorageUtil.pRemove(HOMEBREW_STORAGE);
-		StorageUtil.syncRemove(HOMEBREW_META_STORAGE);
+		await StorageUtil.pRemove(VeCt.STORAGE_HOMEBREW);
+		StorageUtil.syncRemove(VeCt.STORAGE_HOMEBREW_META);
 		BrewUtil.homebrew = null;
 		window.location.hash = "";
 		BrewUtil.homebrew = {};
@@ -6433,7 +6505,7 @@ BrewUtil = {
 
 	async pAddLocalBrewData (callbackFn = async (d, page) => BrewUtil.pDoHandleBrewJson(d, page, null)) {
 		if (!IS_VTT && !IS_DEPLOYED) {
-			const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${JSON_HOMEBREW_INDEX}`);
+			const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${VeCt.JSON_HOMEBREW_INDEX}`);
 			// auto-load from `homebrew/`, for custom versions of the site
 			if (data.toImport.length) {
 				const page = UrlUtil.getCurrentPage();
@@ -6559,8 +6631,8 @@ BrewUtil = {
 						case UrlUtil.PG_BOOKS: return ["book"];
 						case UrlUtil.PG_TABLES: return ["table"];
 						case UrlUtil.PG_MAKE_SHAPED: return ["spell", "creature"];
+						case UrlUtil.PG_MAKE_BREW: return ["spell", "creature", "makebrew"];
 						case UrlUtil.PG_MANAGE_BREW:
-						case UrlUtil.PG_MAKE_BREW:
 						case UrlUtil.PG_DEMO_RENDER: return BrewUtil._DIRS;
 						case UrlUtil.PG_VEHICLES: return ["vehicle"];
 						case UrlUtil.PG_ACTIONS: return ["action"];
@@ -6769,8 +6841,8 @@ BrewUtil = {
 		return $(`<button class="btn ${isModal ? "btn-xs" : "btn-sm ml-2"} btn-danger">Delete All</button>`)
 			.click(async () => {
 				if (!window.confirm("Are you sure?")) return;
-				await StorageUtil.pSet(HOMEBREW_STORAGE, {});
-				StorageUtil.syncSet(HOMEBREW_META_STORAGE, {});
+				await StorageUtil.pSet(VeCt.STORAGE_HOMEBREW, {});
+				StorageUtil.syncSet(VeCt.STORAGE_HOMEBREW_META, {});
 				window.location.hash = "";
 				location.reload();
 			});
@@ -6783,7 +6855,7 @@ BrewUtil = {
 				Object.keys(ent).filter(k => k.startsWith("_")).forEach(k => delete ent[k]);
 			});
 		});
-		await StorageUtil.pSet(HOMEBREW_STORAGE, cpy);
+		await StorageUtil.pSet(VeCt.STORAGE_HOMEBREW, cpy);
 	},
 
 	async _pRenderBrewScreen_pDeleteSource ($brewList, source, doConfirm, isAllSources) {
@@ -6987,11 +7059,14 @@ BrewUtil = {
 
 			const page = UrlUtil.getCurrentPage();
 			const isSourceRelevantForCurrentPage = (source) => {
+				const _PG_SPELLS = ["spell"];
+				const _PG_BESTIARY = ["monster", "legendaryGroup", "monsterFluff"];
+
 				const getPageCats = () => {
 					switch (page) {
-						case UrlUtil.PG_SPELLS: return ["spell"];
+						case UrlUtil.PG_SPELLS: return _PG_SPELLS;
 						case UrlUtil.PG_CLASSES: return ["class", "subclass"];
-						case UrlUtil.PG_BESTIARY: return ["monster", "legendaryGroup", "monsterFluff"];
+						case UrlUtil.PG_BESTIARY: return _PG_BESTIARY;
 						case UrlUtil.PG_BACKGROUNDS: return ["background"];
 						case UrlUtil.PG_FEATS: return ["feat"];
 						case UrlUtil.PG_OPT_FEATURES: return ["optionalfeature"];
@@ -7007,9 +7082,13 @@ BrewUtil = {
 						case UrlUtil.PG_ADVENTURES: return ["adventure", "adventureData"];
 						case UrlUtil.PG_BOOKS: return ["book", "bookData"];
 						case UrlUtil.PG_TABLES: return ["table", "tableGroup"];
-						case UrlUtil.PG_MAKE_SHAPED: return ["spell", "creature"];
+						case UrlUtil.PG_MAKE_SHAPED: return ["spell", "monster"];
+						case UrlUtil.PG_MAKE_BREW: return [
+							..._PG_SPELLS,
+							..._PG_BESTIARY,
+							"makebrewCreatureTrait"
+						];
 						case UrlUtil.PG_MANAGE_BREW:
-						case UrlUtil.PG_MAKE_BREW:
 						case UrlUtil.PG_DEMO_RENDER: return BrewUtil._STORABLE;
 						case UrlUtil.PG_VEHICLES: return ["vehicle"];
 						case UrlUtil.PG_ACTIONS: return ["action"];
@@ -7074,6 +7153,7 @@ BrewUtil = {
 				case "creature": return "monster";
 				case "collection": return dir;
 				case "magicvariant": return "variant";
+				case "makebrew": return "makebrewCreatureTrait";
 			}
 			throw new Error(`Directory was not mapped to a category: "${dir}"`);
 		}
@@ -7091,6 +7171,7 @@ BrewUtil = {
 		if (cat === "baseitem") return "Base Item";
 		if (cat === "variant") return "Magic Item Variant";
 		if (cat === "monsterFluff") return "Monster Fluff";
+		if (cat === "makebrewCreatureTrait") return "Homebrew Builder Creature Trait";
 		return cat.uppercaseFirst();
 	},
 
@@ -7154,7 +7235,8 @@ BrewUtil = {
 			case "action":
 			case "cult":
 			case "boon":
-			case "language": return BrewUtil._genPDeleteGenericBrew(category);
+			case "language":
+			case "makebrewCreatureTrait": return BrewUtil._genPDeleteGenericBrew(category);
 			case "subclass": return BrewUtil._pDeleteSubclassBrew;
 			case "class": return BrewUtil._pDeleteClassBrew;
 			case "adventure":
@@ -7252,8 +7334,8 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_DIRS: ["action", "adventure", "background", "book", "boon", "class", "condition", "creature", "cult", "deity", "disease", "feat", "hazard", "item", "language", "magicvariant", "object", "optionalfeature", "psionic", "race", "reward", "spell", "subclass", "subrace", "table", "trap", "variantrule", "vehicle"],
-	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "raceFluff", "subrace", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle", "action", "cult", "boon", "language"],
+	_DIRS: ["action", "adventure", "background", "book", "boon", "class", "condition", "creature", "cult", "deity", "disease", "feat", "hazard", "item", "language", "magicvariant", "makebrew", "object", "optionalfeature", "psionic", "race", "reward", "spell", "subclass", "subrace", "table", "trap", "variantrule", "vehicle"],
+	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "raceFluff", "subrace", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle", "action", "cult", "boon", "language", "makebrewCreatureTrait"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		await BrewUtil._lockHandleBrewJson.pLock();
 		try {
@@ -7361,7 +7443,7 @@ BrewUtil = {
 		sourcesToAdd = checkAndAddMetaGetNewSources(); // adding source(s) to Filter should happen in per-page addX functions
 		await Promise.all(BrewUtil._STORABLE.map(async k => toAdd[k] = await pCheckAndAdd(k))); // only add if unique ID not already present
 		BrewUtil._persistHomebrewDebounced(); // Debounce this for mass adds, e.g. "Add All"
-		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
+		StorageUtil.syncSet(VeCt.STORAGE_HOMEBREW_META, BrewUtil.homebrewMeta);
 
 		// wipe old cache
 		BrewUtil._resetSourceCache();
@@ -7395,10 +7477,13 @@ BrewUtil = {
 			case UrlUtil.PG_LANGUAGES:
 				await (BrewUtil._pHandleBrew || handleBrew)(MiscUtil.copy(toAdd));
 				break;
-			case UrlUtil.PG_MANAGE_BREW:
 			case UrlUtil.PG_MAKE_BREW:
+				await BrewUtil._pHandleBrew(MiscUtil.copy(toAdd));
+				break;
+			case UrlUtil.PG_MANAGE_BREW:
 			case UrlUtil.PG_DEMO_RENDER:
 			case "NO_PAGE":
+				// No-op
 				break;
 			default:
 				throw new Error(`No homebrew add function defined for category ${page}`);
@@ -7441,7 +7526,7 @@ BrewUtil = {
 			BrewUtil._sourceCache = {};
 
 			if (!BrewUtil.homebrewMeta) {
-				const temp = StorageUtil.syncGet(HOMEBREW_META_STORAGE) || {};
+				const temp = StorageUtil.syncGet(VeCt.STORAGE_HOMEBREW_META) || {};
 				temp.sources = temp.sources || [];
 				BrewUtil.homebrewMeta = temp;
 				doBuild();
@@ -7461,7 +7546,7 @@ BrewUtil = {
 		BrewUtil._resetSourceCache();
 		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json.toLowerCase() === source);
 		if (~ix) BrewUtil.homebrewMeta.sources.splice(ix, 1);
-		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
+		StorageUtil.syncSet(VeCt.STORAGE_HOMEBREW_META, BrewUtil.homebrewMeta);
 	},
 
 	getJsonSources () {
@@ -7533,7 +7618,7 @@ BrewUtil = {
 		const exists = BrewUtil.homebrewMeta.sources.some(it => it.json === sourceObj.json);
 		if (exists) throw new Error(`Source "${sourceObj.json}" already exists!`);
 		(BrewUtil.homebrewMeta.sources = BrewUtil.homebrewMeta.sources || []).push(sourceObj);
-		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
+		StorageUtil.syncSet(VeCt.STORAGE_HOMEBREW_META, BrewUtil.homebrewMeta);
 	},
 
 	updateSource (sourceObj) {
@@ -7545,7 +7630,7 @@ BrewUtil = {
 			...sourceObj,
 			json
 		};
-		StorageUtil.syncSet(HOMEBREW_META_STORAGE, BrewUtil.homebrewMeta);
+		StorageUtil.syncSet(VeCt.STORAGE_HOMEBREW_META, BrewUtil.homebrewMeta);
 	},
 
 	_getActiveVetoolsSources () {
@@ -8137,14 +8222,14 @@ ExcludeUtil = {
 	async pInitialise () {
 		ExcludeUtil.pSave = MiscUtil.throttle(ExcludeUtil._pSave, 50);
 		try {
-			ExcludeUtil._excludes = await StorageUtil.pGet(EXCLUDES_STORAGE) || [];
+			ExcludeUtil._excludes = await StorageUtil.pGet(VeCt.STORAGE_EXCLUDES) || [];
 		} catch (e) {
 			JqueryUtil.doToast({
 				content: "Error when loading content blacklist! Purged blacklist data. (See the log for more information.)",
 				type: "danger"
 			});
 			try {
-				await StorageUtil.pRemove(EXCLUDES_STORAGE);
+				await StorageUtil.pRemove(VeCt.STORAGE_EXCLUDES);
 			} catch (e) {
 				setTimeout(() => { throw e });
 			}
@@ -8167,6 +8252,8 @@ ExcludeUtil = {
 	_excludeCount: 0,
 	isExcluded (name, category, source) {
 		if (!ExcludeUtil._excludes || !ExcludeUtil._excludes.length) return false;
+		if (!source) throw new Error(`Entity had no source!`);
+
 		source = source.source || source;
 		const out = !!ExcludeUtil._excludes.find(row => (row.source === "*" || row.source === source) && (row.category === "*" || row.category === category) && (row.name === "*" || row.name === name));
 		if (out) ++ExcludeUtil._excludeCount;
@@ -8201,7 +8288,7 @@ ExcludeUtil = {
 	},
 
 	async _pSave () {
-		return StorageUtil.pSet(EXCLUDES_STORAGE, ExcludeUtil._excludes);
+		return StorageUtil.pSet(VeCt.STORAGE_EXCLUDES, ExcludeUtil._excludes);
 	},
 
 	// The throttled version, available post-initialisation
@@ -8249,24 +8336,24 @@ EncounterUtil = {
 	},
 
 	async _pHasSavedStateLocal () {
-		return !!StorageUtil.pGet(ENCOUNTER_STORAGE);
+		return !!StorageUtil.pGet(VeCt.STORAGE_ENCOUNTER);
 	},
 
 	async _pGetSavedStateLocal () {
 		try {
-			return await StorageUtil.pGet(ENCOUNTER_STORAGE);
+			return await StorageUtil.pGet(VeCt.STORAGE_ENCOUNTER);
 		} catch (e) {
 			JqueryUtil.doToast({
 				content: "Error when loading encounters! Purged encounter data. (See the log for more information.)",
 				type: "danger"
 			});
-			await StorageUtil.pRemove(ENCOUNTER_STORAGE);
+			await StorageUtil.pRemove(VeCt.STORAGE_ENCOUNTER);
 			setTimeout(() => { throw e; });
 		}
 	},
 
 	async pDoSaveState (toSave) {
-		StorageUtil.pSet(ENCOUNTER_STORAGE, toSave);
+		StorageUtil.pSet(VeCt.STORAGE_ENCOUNTER, toSave);
 	},
 
 	async pGetSavedState () {
@@ -8309,55 +8396,14 @@ ExtensionUtil = {
 };
 if (typeof window !== "undefined") window.addEventListener("rivet.active", () => ExtensionUtil.ACTIVE = true);
 
-// REACTOR =============================================================================================================
-class Reactor {
-	constructor () {
-		this.rvents = {};
-	}
-
-	_registerEvent (eventName) {
-		this.rvents[eventName] = new ReactorEvent(eventName);
-	}
-
-	fire (eventName, eventArgs) {
-		if (this.rvents[eventName]) this.rvents[eventName].callbacks.forEach(callback => callback(eventArgs));
-	}
-
-	on (eventName, callback) {
-		if (!this.rvents[eventName]) this._registerEvent(eventName);
-		this.rvents[eventName]._registerCallback(callback);
-	}
-
-	off (eventName, callback) {
-		if (!this.rvents[eventName]) return;
-		this.rvents[eventName]._unregisterCallback(callback);
-	}
-}
-
-class ReactorEvent {
-	constructor (name) {
-		this.name = name;
-		this.callbacks = [];
-	}
-
-	_registerCallback (callback) {
-		this.callbacks.push(callback);
-	}
-
-	_unregisterCallback (callback) {
-		const ix = this.callbacks.indexOf(callback);
-		this.callbacks.splice(ix, 1);
-	}
-}
-
 // TOKENS ==============================================================================================================
-class TokenUtil {
-	static imgError (x) {
+TokenUtil = {
+	imgError (x) {
 		if (x) $(x).parent().remove();
 		$(`.rnd-name`).find(`span.stats-source`).css("margin-right", "0");
-	}
+	},
 
-	static handleStatblockScroll (event, ele) {
+	handleStatblockScroll (event, ele) {
 		$(`#token_image`)
 			.toggle(ele.scrollTop < 32)
 			.css({
@@ -8368,10 +8414,10 @@ class TokenUtil {
 }
 
 // LOCKS ===============================================================================================================
-class VeLock {
-	constructor () { this._lockMeta = null; }
+VeLock = function () {
+	this._lockMeta = null;
 
-	async pLock () {
+	this.pLock = async () => {
 		while (this._lockMeta) await this._lockMeta.lock;
 		let unlock = null;
 		const lock = new Promise(resolve => unlock = resolve);
@@ -8379,15 +8425,15 @@ class VeLock {
 			lock,
 			unlock
 		}
-	}
+	};
 
-	unlock () {
+	this.unlock = () => {
 		const lockMeta = this._lockMeta;
 		if (lockMeta) {
 			this._lockMeta = null;
 			lockMeta.unlock();
 		}
-	}
+	};
 }
 BrewUtil._lockHandleBrewJson = new VeLock();
 

@@ -41,7 +41,7 @@ class DeitiesPage extends ListPage {
 		const categoryFilter = new Filter({
 			header: "Category",
 			items: [
-				STR_NONE,
+				VeCt.STR_NONE,
 				"Other Faiths of Eberron",
 				"The Dark Six",
 				"The Gods of Evil",
@@ -59,7 +59,7 @@ class DeitiesPage extends ListPage {
 		});
 		const domainFilter = new Filter({
 			header: "Domain",
-			items: ["Arcana", "Death", "Forge", "Grave", "Knowledge", "Life", "Light", "Nature", STR_NONE, "Order", "Tempest", "Trickery", "War"]
+			items: ["Arcana", "Death", "Forge", "Grave", "Knowledge", "Life", "Light", "Nature", VeCt.STR_NONE, "Order", "Tempest", "Trickery", "War"]
 		});
 		const miscFilter = new Filter({
 			header: "Miscellaneous",
@@ -95,8 +95,8 @@ class DeitiesPage extends ListPage {
 
 	getListItem (g, dtI, isExcluded) {
 		g._fAlign = g.alignment ? unpackAlignment(g) : [];
-		if (!g.category) g.category = STR_NONE;
-		if (!g.domains) g.domains = [STR_NONE];
+		if (!g.category) g.category = VeCt.STR_NONE;
+		if (!g.domains) g.domains = [VeCt.STR_NONE];
 		g.domains.sort(SortUtil.ascSort);
 
 		g._fMisc = g.reprinted ? [STR_REPRINTED] : [];
@@ -120,7 +120,7 @@ class DeitiesPage extends ListPage {
 			<span class="bold col-3 pl-0">${g.name}</span>
 			<span class="col-2 text-center">${g.pantheon}</span>
 			<span class="col-2 text-center">${alignment}</span>
-			<span class="col-3 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""}">${domains}</span>
+			<span class="col-3 ${g.domains[0] === VeCt.STR_NONE ? `list-entry-none` : ""}">${domains}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(g.source)} pr-0" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${source}</span>
 		</a>`;
 
@@ -175,7 +175,7 @@ class DeitiesPage extends ListPage {
 				<span class="bold col-4 pl-0">${g.name}</span>
 				<span class="col-2">${g.pantheon}</span>
 				<span class="col-2">${alignment}</span>
-				<span class="col-4 ${g.domains[0] === STR_NONE ? `list-entry-none` : ""} pr-0">${domains}</span>
+				<span class="col-4 ${g.domains[0] === VeCt.STR_NONE ? `list-entry-none` : ""} pr-0">${domains}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));

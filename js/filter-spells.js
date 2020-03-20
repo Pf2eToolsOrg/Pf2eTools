@@ -206,6 +206,18 @@ class PageFilterSpells extends PageFilter {
 			userData: SourceUtil.getFilterGroup(c.source || SRC_PHB)
 		});
 	}
+
+	static getRaceFilterItem (r) {
+		const addSuffix = (r.source === SRC_DMG || SourceUtil.isNonstandardSource(r.source || SRC_PHB) || BrewUtil.hasSourceJson(r.source || SRC_PHB)) && !r.name.includes(Parser.sourceJsonToAbv(r.source));
+		const name = `${r.name}${addSuffix ? ` (${Parser.sourceJsonToAbv(r.source)})` : ""}`;
+		const opts = {
+			item: name,
+			userData: SourceUtil.getFilterGroup(r.source || SRC_PHB)
+		};
+		if (r.baseName) opts.nest = r.baseName;
+		else opts.nest = "(No Subraces)"
+		return new FilterItem(opts);
+	}
 	// endregion
 
 	constructor () {
@@ -230,8 +242,12 @@ class PageFilterSpells extends PageFilter {
 			groupFn: (it) => SourceUtil.isSubclassReprinted(it.userData.class.name, it.userData.class.source, it.userData.subClass.name, it.userData.subClass.source) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(PS_PREFIX)
 		});
 		const variantClassFilter = new Filter({header: "Variant Class"});
-		const classAndSubclassFilter = new MultiFilter({header: "Classes", filters: [classFilter, subclassFilter, variantClassFilter]});
-		const raceFilter = new Filter({header: "Race"});
+		const classAndSubclassFilter = new MultiFilter({header: "Classes", mode: "or", filters: [classFilter, subclassFilter, variantClassFilter]});
+		const raceFilter = new Filter({
+			header: "Race",
+			nests: {},
+			groupFn: it => it.userData
+		});
 		const backgroundFilter = new Filter({header: "Background"});
 		const metaFilter = new Filter({
 			header: "Components & Miscellaneous",
@@ -440,7 +456,7 @@ class PageFilterSpells extends PageFilter {
 			}))
 			: [];
 		spell._fVariantClasses = spell.classes && spell.classes.fromClassListVariant ? spell.classes.fromClassListVariant.map(PageFilterSpells.getClassFilterItem) : [];
-		spell._fRaces = spell.races ? spell.races.map(r => r.baseName || r.name) : [];
+		spell._fRaces = spell.races ? spell.races.map(PageFilterSpells.getRaceFilterItem) : [];
 		spell._fBackgrounds = spell.backgrounds ? spell.backgrounds.map(bg => bg.name) : [];
 		spell._fTimeType = spell.time.map(t => t.unit);
 		spell._fDurationType = PageFilterSpells.getFilterDuration(spell);
@@ -454,12 +470,15 @@ class PageFilterSpells extends PageFilter {
 		this._schoolFilter.addItem(spell.school);
 		this._sourceFilter.addItem(spell._fSources);
 		this._metaFilter.addItem(spell._fMeta);
-		this._raceFilter.addItem(spell._fRaces);
 		this._backgroundFilter.addItem(spell._fBackgrounds);
 		spell._fClasses.forEach(c => this._classFilter.addItem(c));
 		spell._fSubclasses.forEach(sc => {
-			this._subclassFilter.addNest(sc.userData.class.name, {isHidden: true});
+			this._subclassFilter.addNest(sc.nest, {isHidden: true});
 			this._subclassFilter.addItem(sc);
+		});
+		spell._fRaces.forEach(r => {
+			if (r.nest) this._raceFilter.addNest(r.nest, {isHidden: true});
+			this._raceFilter.addItem(r);
 		});
 		spell._fVariantClasses.forEach(c => this._variantClassFilter.addItem(c));
 		this._subSchoolFilter.addItem(spell.subschools);

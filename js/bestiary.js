@@ -79,7 +79,7 @@ class BestiaryPage {
 	async pGetSublistItem (monRaw, pinId, addCount, data = {}) {
 		const mon = await (data.scaled ? ScaleCreature.scale(monRaw, data.scaled) : monRaw);
 		Renderer.monster.updateParsed(mon);
-		const subHash = data.scaled ? `${HASH_PART_SEP}${MON_HASH_SCALED}${HASH_SUB_KV_SEP}${data.scaled}` : "";
+		const subHash = data.scaled ? `${HASH_PART_SEP}${VeCt.HASH_MON_SCALED}${HASH_SUB_KV_SEP}${data.scaled}` : "";
 
 		const name = mon._displayName || mon.name;
 		const hash = `${UrlUtil.autoEncodeHash(mon)}${subHash}`;
@@ -169,9 +169,9 @@ class BestiaryPage {
 
 		await printBookView.pHandleSub(sub);
 
-		const scaledHash = sub.find(it => it.startsWith(MON_HASH_SCALED));
+		const scaledHash = sub.find(it => it.startsWith(VeCt.HASH_MON_SCALED));
 		if (scaledHash) {
-			const scaleTo = Number(UrlUtil.unpackSubHash(scaledHash)[MON_HASH_SCALED][0]);
+			const scaleTo = Number(UrlUtil.unpackSubHash(scaledHash)[VeCt.HASH_MON_SCALED][0]);
 			const scaleToStr = Parser.numberToCr(scaleTo);
 			const mon = monsters[Hist.lastLoadedId];
 			if (Parser.isValidCr(scaleToStr) && scaleTo !== Parser.crToNumber(lastRendered.mon.cr)) {
@@ -537,7 +537,7 @@ function addMonsters (data) {
 					}
 				);
 			} else {
-				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${toRender._isScaledCr ? `${HASH_PART_SEP}${MON_HASH_SCALED}${HASH_SUB_KV_SEP}${toRender._isScaledCr}` : ""}`;
+				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${toRender._isScaledCr ? `${HASH_PART_SEP}${VeCt.HASH_MON_SCALED}${HASH_SUB_KV_SEP}${toRender._isScaledCr}` : ""}`;
 
 				const renderFn = Renderer.hover._pageToRenderFn(UrlUtil.getCurrentPage());
 				const $content = $$`<table class="stats">${renderFn(toRender)}</table>`;
@@ -600,11 +600,12 @@ function renderStatblock (mon, isScaled) {
 			</button>`)
 			.off("click").click((evt) => {
 				evt.stopPropagation();
+				const win = (evt.view || {}).window;
 				const mon = monsters[Hist.lastLoadedId];
 				const lastCr = lastRendered.mon ? lastRendered.mon.cr.cr || lastRendered.mon.cr : mon.cr.cr || mon.cr;
-				Renderer.monster.getCrScaleTarget($btnScaleCr, lastCr, (targetCr) => {
+				Renderer.monster.getCrScaleTarget(win, $btnScaleCr, lastCr, (targetCr) => {
 					if (targetCr === Parser.crToNumber(mon.cr)) renderStatblock(mon);
-					else Hist.setSubhash(MON_HASH_SCALED, targetCr);
+					else Hist.setSubhash(VeCt.HASH_MON_SCALED, targetCr);
 				});
 			}).toggle(Parser.crToNumber(mon.cr.cr || mon.cr) !== 100) : null;
 
@@ -612,7 +613,7 @@ function renderStatblock (mon, isScaled) {
 			<button id="btn-reset-cr" title="Reset CR Scaling" class="mon__btn-reset-cr btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-refresh"></span>
 			</button>`)
-			.click(() => Hist.setSubhash(MON_HASH_SCALED, null))
+			.click(() => Hist.setSubhash(VeCt.HASH_MON_SCALED, null))
 			.toggle(isScaled) : null;
 
 		$content.append(RenderBestiary.$getRenderedCreature(mon, {$btnScaleCr, $btnResetScaleCr}));
@@ -788,7 +789,7 @@ function renderStatblock (mon, isScaled) {
 						const nu = `
 							(function(it) {
 								if (PROF_DICE_MODE === PROF_MODE_DICE) {
-									Renderer.dice.rollerClick(event, it, '{"type":"dice","rollable":true,"toRoll":"1d20 + ${profDiceString}"}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
+									Renderer.dice.pRollerClick(event, it, '{"type":"dice","rollable":true,"toRoll":"1d20 + ${profDiceString}"}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
 								} else {
 									${cached.replace(/this/g, "it")}
 								}
@@ -928,7 +929,7 @@ function dcRollerClick (event, ele, exp) {
 		rollable: true,
 		toRoll: exp
 	};
-	Renderer.dice.rollerClick(event, ele, JSON.stringify(it));
+	Renderer.dice.pRollerClick(event, ele, JSON.stringify(it));
 }
 
 function getUnpackedCustomHashId (customHashId) {

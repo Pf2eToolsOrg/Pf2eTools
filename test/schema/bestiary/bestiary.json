@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.13.5",
+	"version": "1.14.0",
 	"title": "Bestiary Schema",
 	"$id": "bestiary.json",
 	"type": "object",
@@ -157,8 +157,16 @@
 					"type": "string"
 				},
 				"shortName": {
-					"description": "Used anywhere a shortened form of the creatures name is required (e.g. in legendary action headers). If not supplied, a shortened name will be automatically generated from the creature's full name.",
-					"type": "string"
+					"oneOf": [
+						{
+							"description": "Used anywhere a shortened form of the creatures name is required (e.g. in legendary action headers). If not supplied, a shortened name will be automatically generated from the creature's full name.",
+							"type": "string"
+						},
+						{
+							"description": "As above, but \"true\" if the \"shortName\" should be an exact copy of the creature's \"name\".",
+							"type": "boolean"
+						}
+					]
 				},
 				"alias": {
 					"type": "array",
@@ -994,7 +1002,7 @@
 						"enum": ["MW", "RW", "RCH", "THW", "RNG", "AOE"]
 					}
 				},
-				"conditionInflicted": {
+				"conditionInflict": {
 					"type": "array",
 					"items": {
 						"type": "string",

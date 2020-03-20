@@ -224,8 +224,8 @@ const Omnisearch = {
 
 		function initScrollHandler () {
 			const $window = $(window);
-			$window.on("scroll", () => {
-				if (Renderer.hover.isSmallScreen()) {
+			$window.on("scroll", evt => {
+				if (Renderer.hover.isSmallScreen(evt)) {
 					$searchIn.attr("placeholder", Omnisearch._PLACEHOLDER_TEXT);
 					$searchInputWrapper.removeClass("omni__wrp-input--scrolled");
 					$searchOut.removeClass("omni__output--scrolled");

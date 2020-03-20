@@ -27,7 +27,7 @@ class StatGen {
 
 		// load from local storage
 		try {
-			const savedState = await StorageUtil.pGet(POINTBUY_STORAGE);
+			const savedState = await StorageUtil.pGet(VeCt.STORAGE_POINTBUY);
 			if (StatGen.isValidState(savedState)) this.doLoadStateFrom(savedState);
 			else this.savedState = MiscUtil.copy(StatGen.DEFAULT_COSTS);
 		} catch (e) {
@@ -144,7 +144,7 @@ class StatGen {
 
 	doSaveState () {
 		if (!this.isInit) return;
-		StorageUtil.pSet(POINTBUY_STORAGE, this.getSaveableState());
+		StorageUtil.pSet(VeCt.STORAGE_POINTBUY, this.getSaveableState());
 	}
 
 	async pLoadRaceJson () {

@@ -53,7 +53,6 @@ class Board {
 		this.menu = new AddMenu();
 		this.isFullscreen = false;
 		this.isLocked = false;
-		this.reactor = new Reactor();
 		this.isAlertOnNav = false;
 
 		this.nextId = 1;
@@ -67,7 +66,7 @@ class Board {
 		this.$btnFullscreen = null;
 		this.$btnLockPanels = null;
 
-		this._pDoSaveStateDebounced = MiscUtil.debounce(() => StorageUtil.pSet(DMSCREEN_STORAGE, this.getSaveableState()), 25);
+		this._pDoSaveStateDebounced = MiscUtil.debounce(() => StorageUtil.pSet(VeCt.STORAGE_DMSCREEN, this.getSaveableState()), 25);
 	}
 
 	getInitialWidth () {
@@ -111,7 +110,7 @@ class Board {
 			this.sideMenu.doUpdateDimensions();
 		}
 		this.doCheckFillSpaces();
-		this.reactor.fire("panelResize");
+		this.$creen.trigger("panelResize");
 	}
 
 	doCullPanels (oldWidth, oldHeight) {
@@ -198,7 +197,6 @@ class Board {
 
 	initGlobalHandlers () {
 		window.onhashchange = () => this.doLoadUrlState();
-		$(window).resize(() => this.reactor.fire("panelResize"));
 	}
 
 	async pLoadIndex () {
@@ -398,7 +396,7 @@ class Board {
 	}
 
 	async pHasSavedState () {
-		return !!await StorageUtil.pGet(DMSCREEN_STORAGE);
+		return !!await StorageUtil.pGet(VeCt.STORAGE_DMSCREEN);
 	}
 
 	getSaveableState () {
@@ -443,7 +441,7 @@ class Board {
 
 	async pDoLoadState () {
 		try {
-			const toLoad = await StorageUtil.pGet(DMSCREEN_STORAGE);
+			const toLoad = await StorageUtil.pGet(VeCt.STORAGE_DMSCREEN);
 			this.doLoadStateFrom(toLoad);
 		} catch (e) {
 			// on error, purge saved data and reset
@@ -451,7 +449,7 @@ class Board {
 				content: "Error when loading DM screen! Purged saved data. (See the log for more information.)",
 				type: "danger"
 			});
-			await StorageUtil.pRemove(DMSCREEN_STORAGE);
+			await StorageUtil.pRemove(VeCt.STORAGE_DMSCREEN);
 			setTimeout(() => { throw e; });
 		}
 	}
@@ -546,7 +544,7 @@ class SideMenu {
 			else $(`body`).removeClass(`is-fullscreen`);
 			this.board.doAdjust$creenCss();
 			this.board.doSaveStateDebounced();
-			this.board.reactor.fire("panelResize")
+			this.board.$creen.trigger("panelResize");
 		});
 		const $btnLockPanels = $(`<button class="btn btn-danger" title="Lock Panels"><span class="glyphicon glyphicon-lock"/></button>`).appendTo($wrpFullscreen);
 		this.board.$btnLockPanels = $btnLockPanels;
@@ -952,10 +950,12 @@ class Panel {
 		const self = this;
 		$contentStats.off("click", ".mon__btn-scale-cr").on("click", ".mon__btn-scale-cr", function (evt) {
 			evt.stopPropagation();
+			const win = (evt.view || {}).window;
+
 			const $this = $(this);
 			const lastCr = self.contentMeta.cr != null ? Parser.numberToCr(self.contentMeta.cr) : mon.cr ? (mon.cr.cr || mon.cr) : null;
 
-			Renderer.monster.getCrScaleTarget($this, lastCr, (targetCr) => {
+			Renderer.monster.getCrScaleTarget(win, $this, lastCr, (targetCr) => {
 				const originalCr = Parser.crToNumber(mon.cr) === targetCr;
 
 				const doRender = (toRender) => {
@@ -1057,7 +1057,7 @@ class Panel {
 		);
 		adventureLoader.pFill(adventure).then(() => {
 			const data = adventureLoader.getFromCache(adventure, chapter);
-			const view = new AdventureOrBookView("adventure", this, adventureLoader, ix, {adventure, chapter});
+			const view = new AdventureOrBookView("a", this, adventureLoader, ix, meta);
 			this.set$Tab(
 				ix,
 				PANEL_TYP_ADVENTURES,
@@ -1078,7 +1078,7 @@ class Panel {
 		);
 		bookLoader.pFill(book).then(() => {
 			const data = bookLoader.getFromCache(book, chapter);
-			const view = new AdventureOrBookView("book", this, bookLoader, ix, {book, chapter});
+			const view = new AdventureOrBookView("b", this, bookLoader, ix, meta);
 			this.set$Tab(
 				ix,
 				PANEL_TYP_BOOKS,
@@ -2075,7 +2075,7 @@ class JoystickMenu {
 				}
 				MiscUtil.clearSelection();
 				this.board.doSaveStateDebounced();
-				this.board.reactor.fire("panelResize");
+				this.board.$creen.trigger("panelResize");
 			});
 		});
 
@@ -2280,7 +2280,7 @@ class JoystickMenu {
 				this.panel.render();
 				this.panel.board.doCheckFillSpaces();
 				MiscUtil.clearSelection();
-				this.board.reactor.fire("panelResize");
+				this.board.$creen.trigger("panelResize");
 			});
 		}
 
@@ -3051,7 +3051,7 @@ class NoteBox {
 							const str = beltStack.join("");
 							if (/^([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?$/i.exec(str)) {
 								await Renderer.dice.pRoll2(str.replace(`[[`, "").replace(`]]`, ""), {
-									user: false,
+									isUser: false,
 									name: "DM Screen"
 								});
 							}
@@ -3188,12 +3188,12 @@ class UnitConverterUnit {
 }
 
 class AdventureOrBookView {
-	constructor (type, panel, loader, tabIx, state) {
-		this._type = type;
+	constructor (prop, panel, loader, tabIx, contentMeta) {
+		this._prop = prop;
 		this._panel = panel;
 		this._loader = loader;
 		this._tabIx = tabIx;
-		this._state = state;
+		this._contentMeta = contentMeta;
 
 		this._$wrpContent = null;
 		this._$wrpContentOuter = null;
@@ -3223,32 +3223,31 @@ class AdventureOrBookView {
 		// assumes the data has already been loaded/cached
 		this._render();
 
-		$wrp.data("getState", () => this._state);
-
 		return $wrp;
 	}
 
 	_handleButtonClick (direction) {
-		this._state.chapter += direction;
+		this._contentMeta.c += direction;
 		const renderedData = this._render();
-		if (!renderedData) this._state.chapter -= direction;
+		if (!renderedData) this._contentMeta.c -= direction;
 		else {
 			this._$wrpContentOuter.scrollTop(0);
 			this._panel.setTabTitle(this._tabIx, renderedData.name);
+			this._panel.board.doSaveStateDebounced();
 		}
 	}
 
 	_getData (chapter) {
-		return this._loader.getFromCache(this._state[this._type], chapter);
+		return this._loader.getFromCache(this._contentMeta[this._prop], chapter);
 	}
 
 	_render () {
-		const data = this._getData(this._state.chapter);
+		const data = this._getData(this._contentMeta.c);
 		if (!data) return null;
 		this._$wrpContent.empty().append(Renderer.get().setFirstSection(true).render(data));
 
-		const dataPrev = this._getData(this._state.chapter - 1);
-		const dataNext = this._getData(this._state.chapter + 1);
+		const dataPrev = this._getData(this._contentMeta.c - 1);
+		const dataNext = this._getData(this._contentMeta.c + 1);
 		this._$titlePrev.text(dataPrev ? dataPrev.name : "").title(dataPrev ? dataPrev.name : "");
 		this._$titleNext.text(dataNext ? dataNext.name : "").title(dataNext ? dataNext.name : "");
 
@@ -3263,7 +3262,7 @@ window.addEventListener("load", () => {
 	Renderer.hover.bindDmScreen(window.DM_SCREEN);
 	window.DM_SCREEN.pInitialise()
 		.catch(err => {
-			JqueryUtil.doToast({content: `Failed to load with error "${err.message}". ${MiscUtil.STR_SEE_CONSOLE}`, type: "danger"});
+			JqueryUtil.doToast({content: `Failed to load with error "${err.message}". ${VeCt.STR_SEE_CONSOLE}`, type: "danger"});
 			$(`.dm-screen-loading`).find(`.initial-message`).text("Failed!");
 			setTimeout(() => { throw err; });
 		});

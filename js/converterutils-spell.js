@@ -18,6 +18,7 @@ class DamageInflictTagger extends DamageTagger {
 			if (m[3]) this._addDamageTypeToArray(sp.damageInflict, m[3].split(" ").last(), options);
 		});
 		if (!sp.damageInflict.length) delete sp.damageInflict;
+		else sp.damageInflict = [...new Set(sp.damageInflict)].sort(SortUtil.ascSort);
 	}
 }
 
@@ -30,6 +31,7 @@ class DamageResVulnImmuneTagger extends DamageTagger {
 			if (m[3]) this._addDamageTypeToArray(sp[prop], m[3].split(" ").last(), options);
 		});
 		if (!sp[prop].length) delete sp[prop];
+		else sp[prop] = [...new Set(sp[prop])].sort(SortUtil.ascSort);
 	}
 }
 
@@ -38,6 +40,7 @@ class ConditionInflictTagger {
 		sp.conditionInflict = [];
 		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/{@condition ([^}]+)}/ig, (...m) => sp.conditionInflict.push(m[1].toLowerCase()));
 		if (!sp.conditionInflict.length) delete sp.conditionInflict;
+		else sp.conditionInflict = [...new Set(sp.conditionInflict)].sort(SortUtil.ascSort);
 	}
 }
 
@@ -46,6 +49,7 @@ class SavingThrowTagger {
 		sp.savingThrow = [];
 		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma) saving throw/ig, (...m) => sp.savingThrow.push(m[1].toLowerCase()));
 		if (!sp.savingThrow.length) delete sp.savingThrow;
+		else sp.savingThrow = [...new Set(sp.savingThrow)].sort(SortUtil.ascSort);
 	}
 }
 
@@ -54,6 +58,7 @@ class OpposedCheckTagger {
 		sp.opposedCheck = [];
 		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/a (Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma) check/ig, (...m) => sp.opposedCheck.push(m[1].toLowerCase()));
 		if (!sp.opposedCheck.length) delete sp.opposedCheck;
+		else sp.opposedCheck = [...new Set(sp.opposedCheck)].sort(SortUtil.ascSort);
 	}
 }
 
@@ -62,6 +67,7 @@ class SpellAttackTagger {
 		sp.spellAttack = [];
 		JSON.stringify([sp.entries, sp.entriesHigherLevel]).replace(/make a (ranged|melee) spell attack/ig, (...m) => sp.spellAttack.push(m[1][0].toUpperCase()));
 		if (!sp.spellAttack.length) delete sp.spellAttack;
+		else sp.spellAttack = [...new Set(sp.spellAttack)].sort(SortUtil.ascSort);
 	}
 }
 
@@ -96,12 +102,12 @@ class ScalingLevelDiceTagger {
 		const getLabel = () => {
 			let label;
 
-			const mDamageType = cv.DamageTypeTag._TYPE_REGEX.exec(strEntries);
+			const mDamageType = DamageTypeTag.TYPE_REGEX.exec(strEntries);
 			if (mDamageType) {
 				label = `${mDamageType[1]} damage`
 			}
 
-			cv.DamageTypeTag._TYPE_REGEX.lastIndex = 0;
+			DamageTypeTag.TYPE_REGEX.lastIndex = 0;
 
 			if (!label) options.cbWarning(`${sp.name ? `(${sp.name}) ` : ""}Could not create scalingLevelDice label!`);
 			return label || "NO_LABEL";

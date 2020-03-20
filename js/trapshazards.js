@@ -1,9 +1,7 @@
 "use strict";
 
 function filterTypeSort (a, b) {
-	a = a.item;
-	b = b.item;
-	return SortUtil.ascSortLower(Parser.trapHazTypeToFull(a), Parser.trapHazTypeToFull(b));
+	return SortUtil.ascSortLower(Parser.trapHazTypeToFull(a.item), Parser.trapHazTypeToFull(b.item));
 }
 
 class TrapsHazardsPage extends ListPage {
@@ -43,6 +41,7 @@ class TrapsHazardsPage extends ListPage {
 		});
 
 		this._sourceFilter = sourceFilter;
+		this._typeFilter = typeFilter;
 	}
 
 	getListItem (it, thI, isExcluded) {
@@ -51,6 +50,7 @@ class TrapsHazardsPage extends ListPage {
 		if (!isExcluded) {
 			// populate filters
 			this._sourceFilter.addItem(it.source);
+			this._typeFilter.addItem(it.trapHazType);
 		}
 
 		const eleLi = document.createElement("li");

@@ -12,6 +12,8 @@ console.time(TIME_TAG);
 const MSG = {
 	LinkCheck: "",
 	AttachedSpellAndGroupItemsCheck: "",
+	ActionVariantCheck: "",
+	DeityExtensionCheck: "",
 	BraceCheck: "",
 	FilterCheck: "",
 	ScaleDiceCheck: "",
@@ -116,6 +118,16 @@ function getSimilar (url) {
 	return JSON.stringify(similarUrls, null, 2);
 }
 
+function getEncoded (str, tag) {
+	const [name, source] = str.split("|");
+	return `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash([name, source || ut.TAG_TO_DEFAULT_SOURCE[tag]])}`.toLowerCase().trim();
+}
+
+function getEncodedDeity (str, tag) {
+	const [name, pantheon, source] = str.split("|");
+	return `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash([name, pantheon, source || ut.TAG_TO_DEFAULT_SOURCE[tag]])}`.toLowerCase().trim();
+}
+
 class LinkCheck {
 	static addHandlers () {
 		PRIMITIVE_HANDLERS.string.push(LinkCheck.checkString);
@@ -156,11 +168,6 @@ LinkCheck.skillRe = /{@skill (.*?)(\|.*?)?}/g;
 
 class AttachedSpellAndGroupItemsCheck {
 	static run () {
-		function getEncoded (str, tag) {
-			const [name, source] = str.split("|");
-			return `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash([name, source || ut.TAG_TO_DEFAULT_SOURCE[tag]])}`.toLowerCase().trim();
-		}
-
 		function checkRoot (file, root, name, source) {
 			function checkDuplicates (prop, tag) {
 				const asUrls = root[prop].map(it => {
@@ -215,6 +222,32 @@ class AttachedSpellAndGroupItemsCheck {
 
 		const magicVariants = require(`../data/magicvariants.json`);
 		magicVariants.variant.forEach(va => checkRoot("data/magicvariants.json", va, va.name, va.source) || (va.inherits && checkRoot("data/magicvariants.json", va.inherits, `${va.name} (inherits)`, va.source)));
+	}
+}
+
+class ActionVariantCheck {
+	static run () {
+		const file = `data/actions.json`;
+		const actions = require(`../${file}`);
+		actions.action.forEach(it => {
+			if (!it.fromVariant) return;
+
+			const url = getEncoded(it.fromVariant, "variantrule");
+			if (!ALL_URLS.has(url)) MSG.ActionVariantCheck += `Missing link: ${it.fromVariant} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
+		});
+	}
+}
+
+class DeityExtensionCheck {
+	static run () {
+		const file = `data/deities.json`;
+		const deities = require(`../${file}`);
+		deities.deity.forEach(it => {
+			if (!it.customExtensionOf) return;
+
+			const url = getEncodedDeity(it.customExtensionOf, "deity");
+			if (!ALL_URLS.has(url)) MSG.DeityExtensionCheck += `Missing link: ${it.customExtensionOf} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
+		});
 	}
 }
 
@@ -317,6 +350,8 @@ class StripTagTest {
 	}
 
 	static checkString (file, str) {
+		if (file === "./data/bestiary/traits.json") return;
+
 		try {
 			Renderer.stripTags(str)
 		} catch (e) {
@@ -606,6 +641,8 @@ async function main () {
 	ParsedJsonChecker.runAll();
 
 	AttachedSpellAndGroupItemsCheck.run();
+	ActionVariantCheck.run();
+	DeityExtensionCheck.run();
 	LootCheck.run();
 	SpellClassCheck.run();
 

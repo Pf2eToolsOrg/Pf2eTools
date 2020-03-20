@@ -286,7 +286,7 @@ class ShapedConverter {
 					if (entry.items) {
 						if (isObject(entry.items[0])) {
 							return entry.items.map(item => {
-								const cleanName = item.name.replace(/^([^.]+)\.$/, "$1");
+								const cleanName = item.name.replace(/^([^.]+)[.:]$/, "$1");
 								const out = this.makeTraitAction(cleanName);
 								out.text = this.fixLinks(item.entry);
 								return out;

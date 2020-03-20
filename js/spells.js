@@ -133,7 +133,8 @@ class SpellsPage {
 				isImageTab,
 				$content,
 				entity: spell,
-				fnFluffBuilder: (fluffJson) => spell.fluff || fluffJson.spell.find(it => it.name === spell.name && it.source === spell.source)
+				fluffBaseUrl: `data/spells/`,
+				fnFluffBuilder: (fluffJson) => spell.fluff || fluffJson.spellFluff.find(it => it.name === spell.name && it.source === spell.source)
 			});
 		}
 
@@ -153,9 +154,9 @@ class SpellsPage {
 			buildFluffTab.bind(null, true)
 		);
 
-		// only display the "Info"/"Images" tabs if there's some fluff info--currently (2019-12-08), no official spell has fluff
+		// only display the "Info" tab if there's some fluff text--currently (2020-03-20), no official spell has fluff text
 		if (spell.fluff && spell.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
-		else Renderer.utils.bindTabButtons(statTab);
+		else Renderer.utils.bindTabButtons(statTab, picTab);
 
 		ListUtil.updateSelected();
 	}

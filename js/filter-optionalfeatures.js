@@ -76,11 +76,24 @@ class PageFilterOptionalFeatures extends PageFilter {
 			});
 			it._fPrereqLevel = it.prerequisite.filter(it => it.level).map(it => {
 				const lvlMeta = it.level;
-				const item = new FilterItem({
-					item: `${lvlMeta.class.name}${lvlMeta.subclass ? ` (${lvlMeta.subclass.name})` : ""} Level ${lvlMeta.level}`,
-					nest: lvlMeta.class.name
-				});
-				this._levelFilter.addNest(lvlMeta.class.name, {isHidden: true});
+
+				let item;
+				let className;
+				if (typeof lvlMeta === "number") {
+					className = `(No Class)`;
+					item = new FilterItem({
+						item: `Level ${lvlMeta}`,
+						nest: className
+					});
+				} else {
+					className = lvlMeta.class ? lvlMeta.class.name : `(No Class)`;
+					item = new FilterItem({
+						item: `${lvlMeta.class ? className : ""}${lvlMeta.subclass ? ` (${lvlMeta.subclass.name})` : ""} Level ${lvlMeta.level}`,
+						nest: className
+					});
+				}
+
+				this._levelFilter.addNest(className, {isHidden: true});
 				this._levelFilter.addItem(item);
 				return item;
 			});

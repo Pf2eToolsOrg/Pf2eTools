@@ -33,9 +33,10 @@
 		},
 		{
 			"name": "Cannon",
+			"source": "DMG",
+			"page": 255,
 			"size": "L",
 			"type": "SW",
-			"source": "DMG",
 			"ac": "19",
 			"hp": "75",
 			"immune": "poison, psychic",
@@ -43,7 +44,6 @@
 				"A cannon uses gunpowder to propel heavy balls of cast iron through the air at destructive speeds. In a campaign without gunpowder, a cannon might be an arcane device built by clever gnomes or wizardly engineers.",
 				"A cannon is usually supported in a wooden frame with wheels. Before it can be fired, the cannon must be loaded and aimed. It takes one action to load the weapon, one action to aim it, and one action to fire it."
 			],
-			"page": 255,
 			"actionEntries": [
 				{
 					"type": "actions",
@@ -64,10 +64,48 @@
 			]
 		},
 		{
+			"name": "Captain A-Hole",
+			"source": "RMBRE",
+			"page": 21,
+			"size": "L",
+			"type": "U",
+			"ac": "17",
+			"hp": "50",
+			"speed": 0,
+			"str": 14,
+			"dex": 10,
+			"int": 3,
+			"wis": 3,
+			"cha": 1,
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
+			"immune": "poison, psychic",
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Cannon",
+					"entries": [
+						{
+							"type": "attack",
+							"attackType": "RW",
+							"attackEntries": [
+								"{@hit +5} to hit, range 30 ft., one target."
+							],
+							"hitEntries": [
+								"3 ({@dice 1d6}) bludgeoning damage."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Cauldron, Suspended",
+			"source": "DMG",
+			"page": 255,
 			"size": "L",
 			"type": "SW",
-			"source": "DMG",
 			"ac": "19",
 			"hp": "20",
 			"immune": "poison, psychic",
@@ -75,7 +113,6 @@
 				"A cauldron is an iron pot suspended so that it can be tipped easily, spilling its contents. Once emptied, a cauldron must be refilled-and its contents must usually be reheated-before it can be used again. It takes three actions to fill a cauldron and one action to tip it.",
 				"Cauldrons can be filled with other liquids, such as acid or green slime, with different effects."
 			],
-			"page": 255,
 			"actionEntries": [
 				{
 					"type": "entries",
@@ -87,122 +124,12 @@
 			]
 		},
 		{
-			"name": "Mangonel",
-			"size": "L",
-			"type": "SW",
-			"source": "DMG",
-			"ac": "15",
-			"hp": "100",
-			"immune": "poison, psychic",
-			"entries": [
-				"A mangonel is a type of catapult that hurls heavy projectiles in a high arc. This payload can hit targets behind cover. Before the mangonel can be fired, it must be loaded and aimed. It takes two actions to load the weapon, two actions to aim it, and one action to fire it.",
-				"A mangonel typically hurls a heavy stone, although it can hurl other kinds of projectiles, with different effects."
-			],
-			"page": 255,
-			"actionEntries": [
-				{
-					"type": "actions",
-					"name": "Mangonel Stone",
-					"entries": [
-						{
-							"type": "attack",
-							"attackType": "RW",
-							"attackEntries": [
-								"{@hit +5} to hit, range 200/800 ft. (can't hit targets within 60 feet of it), one target."
-							],
-							"hitEntries": [
-								"27 ({@dice 5d10}) bludgeoning damage."
-							]
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Ram",
-			"size": "L",
-			"type": "SW",
-			"source": "DMG",
-			"ac": "15",
-			"hp": "100",
-			"immune": "poison, psychic",
-			"entries": [
-				"A ram consists of a movable gallery equipped with a heavy log suspended from two roof beams by chains.",
-				"The log is shod in iron and used to batter through doors and barricades.",
-				"It takes a minimum of four Medium creatures to operate a ram. Because of the gallery roof, these operators have total cover against attacks from above."
-			],
-			"page": 255,
-			"actionEntries": [
-				{
-					"type": "actions",
-					"name": "Ram",
-					"entries": [
-						{
-							"type": "attack",
-							"attackType": "MW",
-							"attackEntries": [
-								"{@hit +8} to hit, reach 5 ft., one object."
-							],
-							"hitEntries": [
-								"16 ({@dice 3d10}) bludgeoning damage."
-							]
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Siege Tower",
-			"size": "G",
-			"type": "SW",
-			"source": "DMG",
-			"ac": "15",
-			"hp": "200",
-			"immune": "poison, psychic",
-			"entries": [
-				"A siege tower is a mobile wooden structure with a beam frame and slats in its walls. Large wooden wheels or rollers allow the tower to be pushed or pulled by soldiers or beasts of burden. Medium or smaller creatures can use the siege tower to reach the top of walls up to 40 feet high. A creature in the tower has total cover from attacks outside the tower."
-			],
-			"page": 256
-		},
-		{
-			"name": "Trebuchet",
-			"size": "H",
-			"type": "SW",
-			"source": "DMG",
-			"ac": "15",
-			"hp": "150",
-			"immune": "poison, psychic",
-			"page": 256,
-			"entries": [
-				"A trebuchet is a powerful catapult that throws its payload in a high arc, so it can hit targets behind cover.",
-				"Before the trebuchet can be fired, it must be loaded and aimed. It takes two actions to load the weapon, two actions to aim it, and one action to fire it.",
-				"A trebuchet typically hurls a heavy stone. However, it can launch other kinds of projectiles, such as barrels of oil or sewage, with different effects."
-			],
-			"actionEntries": [
-				{
-					"type": "actions",
-					"name": "Trebuchet Stone",
-					"entries": [
-						{
-							"type": "attack",
-							"attackType": "RW",
-							"attackEntries": [
-								"{@hit +5} to hit, range 300/1,200 ft. (can't hit targets within 60 feet of it), one target."
-							],
-							"hitEntries": [
-								"44 ({@dice 8d10}) bludgeoning damage."
-							]
-						}
-					]
-				}
-			]
-		},
-		{
 			"name": "Generic Object",
-			"size": "V",
-			"type": "GEN",
 			"source": "DMG",
 			"page": 246,
+			"srd": true,
+			"size": "V",
+			"type": "GEN",
 			"ac": "Varies (see below)",
 			"hp": "Varies (see below)",
 			"immune": "Varies (see below)",
@@ -328,17 +255,16 @@
 						}
 					]
 				}
-			],
-			"srd": true
+			]
 		},
 		{
 			"name": "Gulthias Tree",
 			"source": "TftYP",
 			"page": 31,
 			"size": "G",
+			"type": "U",
 			"ac": "10",
 			"hp": "35",
-			"type": "U",
 			"immune": "necrotic, poison, psychic",
 			"resist": "piercing",
 			"vulnerable": "fire",
@@ -376,36 +302,110 @@
 			]
 		},
 		{
-			"name": "Captain A-Hole",
+			"name": "Mangonel",
+			"source": "DMG",
+			"page": 255,
 			"size": "L",
-			"type": "U",
-			"source": "RMBRE",
-			"ac": "17",
-			"hp": "50",
-			"speed": 0,
-			"str": 14,
-			"dex": 10,
-			"int": 3,
-			"wis": 3,
-			"cha": 1,
-			"senses": [
-				"blindsight 30 ft. (blind beyond this radius)"
-			],
+			"type": "SW",
+			"ac": "15",
+			"hp": "100",
 			"immune": "poison, psychic",
-			"page": 21,
+			"entries": [
+				"A mangonel is a type of catapult that hurls heavy projectiles in a high arc. This payload can hit targets behind cover. Before the mangonel can be fired, it must be loaded and aimed. It takes two actions to load the weapon, two actions to aim it, and one action to fire it.",
+				"A mangonel typically hurls a heavy stone, although it can hurl other kinds of projectiles, with different effects."
+			],
 			"actionEntries": [
 				{
 					"type": "actions",
-					"name": "Cannon",
+					"name": "Mangonel Stone",
 					"entries": [
 						{
 							"type": "attack",
 							"attackType": "RW",
 							"attackEntries": [
-								"{@hit +5} to hit, range 30 ft., one target."
+								"{@hit +5} to hit, range 200/800 ft. (can't hit targets within 60 feet of it), one target."
 							],
 							"hitEntries": [
-								"3 ({@dice 1d6}) bludgeoning damage."
+								"27 ({@dice 5d10}) bludgeoning damage."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ram",
+			"source": "DMG",
+			"page": 255,
+			"size": "L",
+			"type": "SW",
+			"ac": "15",
+			"hp": "100",
+			"immune": "poison, psychic",
+			"entries": [
+				"A ram consists of a movable gallery equipped with a heavy log suspended from two roof beams by chains.",
+				"The log is shod in iron and used to batter through doors and barricades.",
+				"It takes a minimum of four Medium creatures to operate a ram. Because of the gallery roof, these operators have total cover against attacks from above."
+			],
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Ram",
+					"entries": [
+						{
+							"type": "attack",
+							"attackType": "MW",
+							"attackEntries": [
+								"{@hit +8} to hit, reach 5 ft., one object."
+							],
+							"hitEntries": [
+								"16 ({@dice 3d10}) bludgeoning damage."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Siege Tower",
+			"source": "DMG",
+			"page": 256,
+			"size": "G",
+			"type": "SW",
+			"ac": "15",
+			"hp": "200",
+			"immune": "poison, psychic",
+			"entries": [
+				"A siege tower is a mobile wooden structure with a beam frame and slats in its walls. Large wooden wheels or rollers allow the tower to be pushed or pulled by soldiers or beasts of burden. Medium or smaller creatures can use the siege tower to reach the top of walls up to 40 feet high. A creature in the tower has total cover from attacks outside the tower."
+			]
+		},
+		{
+			"name": "Trebuchet",
+			"source": "DMG",
+			"page": 256,
+			"size": "H",
+			"type": "SW",
+			"ac": "15",
+			"hp": "150",
+			"immune": "poison, psychic",
+			"entries": [
+				"A trebuchet is a powerful catapult that throws its payload in a high arc, so it can hit targets behind cover.",
+				"Before the trebuchet can be fired, it must be loaded and aimed. It takes two actions to load the weapon, two actions to aim it, and one action to fire it.",
+				"A trebuchet typically hurls a heavy stone. However, it can launch other kinds of projectiles, such as barrels of oil or sewage, with different effects."
+			],
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Trebuchet Stone",
+					"entries": [
+						{
+							"type": "attack",
+							"attackType": "RW",
+							"attackEntries": [
+								"{@hit +5} to hit, range 300/1,200 ft. (can't hit targets within 60 feet of it), one target."
+							],
+							"hitEntries": [
+								"44 ({@dice 8d10}) bludgeoning damage."
 							]
 						}
 					]

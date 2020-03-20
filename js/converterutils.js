@@ -77,13 +77,55 @@ class BaseParser {
 	}
 
 	static _getCleanInput (ipt) {
-		return ipt
+		const iptClean = ipt
 			.replace(/[−–‒]/g, "-") // convert minus signs to hyphens
 		;
+		return CleanUtil.getCleanString(iptClean, false);
 	}
 
 	static _hasEntryContent (trait) {
 		return trait && (trait.name || (trait.entries.length === 1 && trait.entries[0]) || trait.entries.length > 1);
+	}
+
+	/**
+	 * Check if a line is likely to be a badly-newline'd continuation of the previous line.
+	 * @param entryArray
+	 * @param curLine
+	 * @param [opts]
+	 * @param [opts.noLowercase] Disable lowercase-word checking.
+	 * @param [opts.noNumber] Disable number checking.
+	 * @param [opts.noParenthesis] Disable parenthesis ("(") checking.
+	 * @param [opts.noSavingThrow] Disable saving throw checking.
+	 * @param [opts.noHit] Disable "Hit:" checking.
+	 * @param [opts.noSpellcastingAbility] Disable spellcasting ability checking.
+	 */
+	static _isContinuationLine (entryArray, curLine, opts) {
+		opts = opts || {};
+
+		// If there is no previous entry to add to, do not continue
+		if (typeof entryArray.last() !== "string") return false;
+
+		const cleanLine = curLine.trim();
+
+		// A lowercase word
+		if (/^[a-z]/.test(cleanLine) && !opts.noLowercase) return true;
+		// A number (e.g. damage; "5 (1d6 + 2)")
+		if (/^\d+\s+/.test(cleanLine) && !opts.noNumber) return true;
+		// Opening brackets (e.g. damage; "(1d6 + 2)")
+		if (/^\(/.test(cleanLine) && !opts.noParenthesis) return true;
+		// An ability score name followed by "saving throw"
+		if (/^(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\s+saving throw/.test(cleanLine) && !opts.noSavingThrow) return true;
+		// "Hit:" e.g. inside creature attacks
+		if (/^Hit:/.test(cleanLine) && !opts.noHit) return true;
+		if (/^(Intelligence|Wisdom|Charisma)\s+\(/.test(cleanLine) && !opts.noSpellcastingAbility) return true;
+
+		return false;
+	}
+
+	static _isJsonLine (curLine) { return curLine.startsWith(`__VE_JSON__`); }
+	static _getJsonFromLine (curLine) {
+		curLine = curLine.replace(/^__VE_JSON__/, "");
+		return JSON.parse(curLine);
 	}
 	// endregion
 }
@@ -108,7 +150,7 @@ class AcConvert {
 				const parts = brak.split(splitter).map(it => it.trim());
 
 				parts.forEach(p => {
-					const pLow = p.toLowerCase();
+					const pLow = p.toLowerCase().replace(/^\(|\)$/g, "");
 					switch (pLow) {
 						// unhandled/other
 						case "unarmored defense":
@@ -394,15 +436,17 @@ class TagCondition {
 		if (depth !== 0) return;
 
 		// region generate tags
-		TagCondition._CONDITION_INFLICTED_MATCHERS.forEach(re => stack._.replace(re, (...m) => {
-			inflictedSet.add(m[1]);
+		if (inflictedSet) {
+			TagCondition._CONDITION_INFLICTED_MATCHERS.forEach(re => stack._.replace(re, (...m) => {
+				inflictedSet.add(m[1]);
 
-			// ", {@condition ...}, ..."
-			if (m[2]) m[2].replace(/{@condition ([^}]+)}/g, (...n) => inflictedSet.add(n[1]));
+				// ", {@condition ...}, ..."
+				if (m[2]) m[2].replace(/{@condition ([^}]+)}/g, (...n) => inflictedSet.add(n[1]));
 
-			// " and {@condition ...}
-			if (m[3]) m[3].replace(/{@condition ([^}]+)}/g, (...n) => inflictedSet.add(n[1]));
-		}));
+				// " and {@condition ...}
+				if (m[3]) m[3].replace(/{@condition ([^}]+)}/g, (...n) => inflictedSet.add(n[1]));
+			}));
+		}
 		// endregion
 
 		return stack._;
@@ -414,17 +458,21 @@ class TagCondition {
 		m[prop] = m[prop].map(entry => this._getConvertedEntry(m, entry, inflictedSet));
 	}
 
-	static tryTagConditions (m) {
-		const inflictedSet = new Set();
+	static tryTagConditions (m, isTagInflicted) {
+		const inflictedSet = isTagInflicted ? new Set() : null;
 
 		this._handleProp(m, "action", inflictedSet);
 		this._handleProp(m, "reaction", inflictedSet);
 		this._handleProp(m, "trait", inflictedSet);
 		this._handleProp(m, "legendary", inflictedSet);
 		this._handleProp(m, "variant", inflictedSet);
+		this._handleProp(m, "entries", inflictedSet);
+		this._handleProp(m, "entriesHigherLevel", inflictedSet);
 
-		if (inflictedSet.size) m.conditionInflicted = [...inflictedSet];
-		else delete m.conditionInflicted;
+		if (!isTagInflicted) return;
+
+		if (inflictedSet.size) m.conditionInflict = [...inflictedSet];
+		else delete m.conditionInflict;
 	}
 }
 TagCondition._WALKER_KEY_BLACKLIST = new Set(["caption", "type", "colLabels", "name"]);
@@ -937,7 +985,7 @@ class DamageTypeTag {
 					const str = JSON.stringify(it.entries, null, "\t");
 
 					str.replace(RollerUtil.REGEX_DAMAGE_DICE, (m0, average, prefix, diceExp, suffix) => {
-						suffix.replace(DamageTypeTag._TYPE_REGEX, (m0, type) => typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]));
+						suffix.replace(DamageTypeTag.TYPE_REGEX, (m0, type) => typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]));
 					});
 
 					str.replace(DamageTypeTag._ONE_DAMAGE_REGEX, (m0, type) => {
@@ -964,7 +1012,7 @@ class DamageTypeTag {
 }
 DamageTypeTag._isInit = false;
 DamageTypeTag._TYPE_PART = "(acid|bludgeoning|cold|fire|force|lightning|necrotic|piercing|poison|psychic|radiant|slashing|thunder)";
-DamageTypeTag._TYPE_REGEX = new RegExp(DamageTypeTag._TYPE_PART, "gi");
+DamageTypeTag.TYPE_REGEX = new RegExp(DamageTypeTag._TYPE_PART, "gi");
 DamageTypeTag._ONE_DAMAGE_REGEX = new RegExp(`1 ${DamageTypeTag._TYPE_PART} damage`, "gi");
 DamageTypeTag._TYPE_LOOKUP = {};
 
@@ -1122,7 +1170,7 @@ class SpellcastingTraitConvert {
 
 					const out = {};
 					if (thisLine.includes(" slot")) {
-						const mWarlock = /^(\d)..(?: level)-(\d).. level \((\d) (\d)..-level slots?\)/.exec(thisLine);
+						const mWarlock = /^(\d)..(?: level)?-(\d).. level \((\d) (\d)..-level slots?\)/.exec(thisLine);
 						if (mWarlock) {
 							out.lower = parseInt(mWarlock[1]);
 							out.slots = parseInt(mWarlock[3]);
@@ -1360,8 +1408,27 @@ class SpeedConvert {
 }
 SpeedConvert._SPEED_TYPES = new Set(["walk", "fly", "swim", "climb", "burrow"]);
 
+class ArtifactPropertiesTag {
+	static tryRun (it, opts) {
+		const walker = MiscUtil.getWalker(new Set("type"));
+		walker.walk("artifactProperties", it, {
+			string: (ident, str) => str.replace(/major beneficial|minor beneficial|major detrimental|minor detrimental/gi, (...m) => {
+				const mode = m[0].trim().toLowerCase();
+
+				switch (mode) {
+					case "major beneficial": return `{@table Artifact Properties; Major Beneficial Properties|dmg|${m[0]}}`;
+					case "minor beneficial": return `{@table Artifact Properties; Minor Beneficial Properties|dmg|${m[0]}}`;
+					case "major detrimental": return `{@table Artifact Properties; Major Detrimental Properties|dmg|${m[0]}}`;
+					case "minor detrimental": return `{@table Artifact Properties; Minor Detrimental Properties|dmg|${m[0]}}`;
+				}
+			})
+		})
+	}
+}
+
 class ConvertUtil {
 	/**
+	 * (Inline titles)
 	 * Checks if a line of text starts with a name, e.g.
 	 * "Big Attack. Lorem ipsum..." vs "Lorem ipsum..."
 	 */
@@ -1387,6 +1454,20 @@ class ConvertUtil {
 
 		// if it's in title case after removing all stopwords, it's a name
 		return namePartNoStopwords.toTitleCase() === namePartNoStopwords;
+	}
+
+	static isTitleLine (line) {
+		line = line.trim();
+		if (/[.!?:]/.test(line)) return false;
+		return line.toTitleCase() === line;
+	}
+
+	static isListItemLine (line) { return line.trim().startsWith("•") }
+
+	static splitNameLine (line) {
+		const name = line.split(/([.!?])/g)[0];
+		const entry = line.substring(name.length + 1, line.length).trim();
+		return {name, entry};
 	}
 
 	/**
@@ -1456,6 +1537,7 @@ if (typeof module !== "undefined") {
 		SpellcastingTraitConvert,
 		DiceConvert,
 		RechargeConvert,
-		SpeedConvert
+		SpeedConvert,
+		ArtifactPropertiesTag
 	};
 }

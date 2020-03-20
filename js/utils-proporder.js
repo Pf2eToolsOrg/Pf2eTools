@@ -183,14 +183,14 @@ PropOrder._MONSTER = [
 	new PropOrder._ArrayKey("damageTags", {fnSort: SortUtil.ascSortLowerSafe}),
 	new PropOrder._ArrayKey("spellcastingTags", {fnSort: SortUtil.ascSortLowerSafe}),
 	new PropOrder._ArrayKey("miscTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("conditionInflicted", {fnSort: SortUtil.ascSortLowerSafe})
+	new PropOrder._ArrayKey("conditionInflict", {fnSort: SortUtil.ascSortLowerSafe})
 ];
 PropOrder._MONSTER__COPY_MOD = [
 	"*",
 	"_",
 	...PropOrder._MONSTER
 ];
-PropOrder._MONSTER_FLUFF = [
+PropOrder._GENERIC_FLUFF = [
 	"name",
 	"source",
 
@@ -198,7 +198,6 @@ PropOrder._MONSTER_FLUFF = [
 
 	"_prependCopy",
 
-	"type",
 	"entries",
 	"images",
 
@@ -252,7 +251,7 @@ PropOrder._ACTION = [
 	"page",
 	"srd",
 
-	"isOptional",
+	"fromVariant",
 
 	"time",
 
@@ -434,6 +433,8 @@ PropOrder._CULT = [
 	"page",
 	"srd",
 
+	"type",
+
 	"goal",
 	"cultists",
 	"signaturespells",
@@ -468,9 +469,24 @@ PropOrder._DEITY = [
 
 	"additionalSources",
 
+	new PropOrder._ObjectKey("_copy", {
+		order: [
+			"name",
+			"source",
+			"pantheon",
+			new PropOrder._ObjectKey("_mod", {
+				fnGetOrder: () => PropOrder._DEITY__COPY_MOD
+			})
+		]
+	}),
+
+	// This is used as part of the ID key
+	"pantheon",
+
+	"customExtensionOf",
+
 	"alignment",
 	"title",
-	"pantheon",
 	"category",
 	"domains",
 	"province",
@@ -478,6 +494,11 @@ PropOrder._DEITY = [
 	"symbolImg",
 
 	"entries"
+];
+PropOrder._DEITY__COPY_MOD = [
+	"*",
+	"_",
+	...PropOrder._DEITY
 ];
 PropOrder._FEAT = [
 	"name",
@@ -507,11 +528,14 @@ PropOrder._VEHICLE = [
 	"dimensions",
 	"weight",
 
+	"type",
+
 	"capCreature",
 	"capCrew",
 	"capPassenger",
 	"capCargo",
 
+	"ac",
 	"pace",
 	"speed",
 
@@ -538,10 +562,239 @@ PropOrder._VEHICLE = [
 	"actionStation",
 	"reaction"
 ];
+PropOrder._RACE_FLUFF = [
+	"name",
+	"source",
+
+	"uncommon",
+	"monstrous",
+
+	"_excludeBaseEntries",
+	"_excludeBaseImages",
+
+	"_copy",
+
+	"_prependCopy",
+
+	"entries",
+	"images",
+
+	"_appendCopy"
+];
+PropOrder._ITEM = [
+	"name",
+	"namePrefix",
+	"nameSuffix",
+
+	"source",
+	"page",
+	"srd",
+
+	"additionalSources",
+	"otherSources",
+
+	new PropOrder._ObjectKey("_copy", {
+		order: [
+			"name",
+			"source",
+			new PropOrder._ObjectKey("_mod", {
+				fnGetOrder: () => PropOrder._ITEM__COPY_MOD
+			})
+		]
+	}),
+
+	"baseItem",
+
+	"type",
+	"scfType",
+	"resist",
+
+	"tier",
+	"rarity",
+	"wondrous",
+	"reqAttune",
+	"curse",
+	"sentient",
+
+	"weight",
+	"weightMult",
+	"weightNote",
+	"value",
+	"valueMult",
+	"quantity",
+
+	"weaponCategory",
+	"age",
+
+	"property",
+	"range",
+	"reload",
+
+	"dmg1",
+	"dmgType",
+	"dmg2",
+
+	"ac",
+	"strength",
+
+	"crew",
+	"crewMin",
+	"crewMax",
+	"vehAc",
+	"vehHp",
+	"vehDmgThresh",
+	"vehSpeed",
+	"capPassenger",
+	"capCargo",
+	"travelCost",
+	"shippingCost",
+
+	"carryingCapacity",
+	"speed",
+
+	"ability",
+
+	"bonusWeapon",
+	"bonusWeaponAttack",
+	"bonusWeaponDamage",
+	"bonusSpellAttack",
+	"bonusAc",
+	"bonusSavingThrow",
+
+	"recharge",
+	"charges",
+
+	"axe",
+	"armor",
+	"firearm",
+	"focus",
+	"poison",
+	"staff",
+	"stealth",
+	"sword",
+	"weapon",
+
+	"entries",
+	"additionalEntries",
+	"items",
+
+	"packContents",
+
+	"attachedSpells",
+	"lootTables"
+];
+PropOrder._ITEM__COPY_MOD = [
+	"*",
+	"_",
+	...PropOrder._ITEM
+];
+PropOrder._VARIANT = [
+	"name",
+	"source",
+
+	"type",
+
+	"requires",
+	"excludes",
+
+	"entries",
+
+	new PropOrder._ObjectKey("inherits", {
+		order: PropOrder._ITEM
+	})
+];
+PropOrder._OBJECT = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"size",
+	"type",
+
+	"ac",
+	"hp",
+	"speed",
+
+	"str",
+	"dex",
+	"con",
+	"int",
+	"wis",
+	"cha",
+
+	"senses",
+
+	"immune",
+	"resist",
+	"vulnerable",
+
+	"entries",
+	"actionEntries"
+];
+PropOrder._OPTIONALFEATURE = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+	"otherSources",
+
+	"previousVersion",
+
+	"featureType",
+
+	"prerequisite",
+
+	"entries"
+];
+PropOrder._PSIONIC = [
+	"name",
+
+	"source",
+	"page",
+
+	"type",
+	"order",
+
+	"entries",
+
+	"focus",
+	"modes"
+];
+PropOrder._REWARD = [
+	"name",
+
+	"source",
+	"page",
+
+	"type",
+
+	"entries"
+];
+PropOrder._VARIANTRULE = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"ruleType",
+
+	"type",
+	"entries"
+];
 
 PropOrder._PROP_TO_LIST = {
 	"monster": PropOrder._MONSTER,
-	"monsterFluff": PropOrder._MONSTER_FLUFF,
+	"monsterFluff": PropOrder._GENERIC_FLUFF,
+	"backgroundFluff": PropOrder._GENERIC_FLUFF,
+	"conditionFluff": PropOrder._GENERIC_FLUFF,
+	"itemFluff": PropOrder._GENERIC_FLUFF,
+	"languageFluff": PropOrder._GENERIC_FLUFF,
+	"vehicleFluff": PropOrder._GENERIC_FLUFF,
+	"raceFluff": PropOrder._RACE_FLUFF,
 	"spell": PropOrder._SPELL,
 	"action": PropOrder._ACTION,
 	"adventure": PropOrder._ADVENTURE,
@@ -557,7 +810,16 @@ PropOrder._PROP_TO_LIST = {
 	"boon": PropOrder._BOON,
 	"deity": PropOrder._DEITY,
 	"feat": PropOrder._FEAT,
-	"vehicle": PropOrder._VEHICLE
+	"vehicle": PropOrder._VEHICLE,
+	"item": PropOrder._ITEM,
+	"baseitem": PropOrder._ITEM,
+	"variant": PropOrder._VARIANT,
+	"itemGroup": PropOrder._ITEM,
+	"object": PropOrder._OBJECT,
+	"optionalfeature": PropOrder._OPTIONALFEATURE,
+	"psionic": PropOrder._PSIONIC,
+	"reward": PropOrder._REWARD,
+	"variantrule": PropOrder._VARIANTRULE
 };
 
 if (typeof module !== "undefined") {

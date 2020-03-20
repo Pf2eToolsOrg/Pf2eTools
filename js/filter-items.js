@@ -54,6 +54,7 @@ class PageFilterItems extends PageFilter {
 			deselFn: (it) => it === "Specific Variant",
 			itemSortFn: null
 		});
+		const bonusFilter = new Filter({header: "Bonus", items: ["Armor Class", "Spell Attacks", "Saving Throws", "Weapon Attack and Damage Rolls", "Weapon Attack Rolls", "Weapon Damage Rolls"]})
 		const damageTypeFilter = new Filter({header: "Damage Type", displayFn: it => Parser.dmgTypeToFull(it).uppercaseFirst(), itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.dmgTypeToFull(a), Parser.dmgTypeToFull(b))});
 		const miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Item Group", "Magic", "Mundane", "Sentient", "SRD"]});
 
@@ -68,6 +69,7 @@ class PageFilterItems extends PageFilter {
 		this._attunementFilter = attunementFilter;
 		this._categoryFilter = categoryFilter;
 		this._damageTypeFilter = damageTypeFilter;
+		this._bonusFilter = bonusFilter;
 		this._miscFilter = miscFilter;
 	}
 
@@ -109,6 +111,14 @@ class PageFilterItems extends PageFilter {
 				}
 			}
 		}
+
+		item._fBonus = [];
+		if (item.bonusAc) item._fBonus.push("Armor Class");
+		if (item.bonusWeapon) item._fBonus.push("Weapon Attack and Damage Rolls");
+		if (item.bonusWeaponAttack) item._fBonus.push("Weapon Attack Rolls");
+		if (item.bonusWeaponDamage) item._fBonus.push("Weapon Damage Rolls");
+		if (item.bonusSpellAttack) item._fBonus.push("Spell Attacks");
+		if (item.bonusSavingThrow) item._fBonus.push("Saving Throws");
 	}
 
 	addToFilters (item, isExcluded) {
@@ -135,6 +145,7 @@ class PageFilterItems extends PageFilter {
 			this._costFilter,
 			this._focusFilter,
 			this._damageTypeFilter,
+			this._bonusFilter,
 			this._miscFilter,
 			this._lootTableFilter,
 			this._attachedSpellsFilter
@@ -154,6 +165,7 @@ class PageFilterItems extends PageFilter {
 			(it.value || 0) / 100,
 			it._fFocus,
 			it.dmgType,
+			it._fBonus,
 			it._fMisc,
 			it.lootTables,
 			it.attachedSpells
