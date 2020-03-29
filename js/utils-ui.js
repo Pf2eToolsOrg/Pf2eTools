@@ -1024,7 +1024,7 @@ class SearchWidget {
 				item: allItems.filter(it => {
 					if (it.type === "GV") return false;
 					if (isBasicIndex == null) return true;
-					const isBasic = it.rarity === "None" || it.rarity === "Unknown" || it._category === "Basic";
+					const isBasic = it.rarity === "none" || it.rarity === "unknown" || it._category === "basic";
 					return isBasicIndex ? isBasic : !isBasic;
 				})
 			};

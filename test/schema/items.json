@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.6.1",
+	"version": "1.7.1",
 	"type": "object",
 	"definitions": {
 		"itemData": {
@@ -16,16 +16,16 @@
 					"type": "string",
 					"description": "\"None\" is for mundane items. \"Unknown (Magic)\" is for miscellaneous magical items. \"Unknown\" is for miscellaneous mundane items. \"Varies\" is for item groups.",
 					"enum": [
-						"Rare",
-						"None",
-						"Uncommon",
-						"Very Rare",
-						"Legendary",
-						"Artifact",
-						"Unknown",
-						"Common",
-						"Unknown (Magic)",
-						"Varies"
+						"rare",
+						"none",
+						"uncommon",
+						"very rare",
+						"legendary",
+						"artifact",
+						"unknown",
+						"common",
+						"unknown (magic)",
+						"varies"
 					]
 				},
 				"source": {
@@ -161,6 +161,9 @@
 					"type": "string"
 				},
 				"wondrous": {
+					"type": "boolean"
+				},
+				"tattoo": {
 					"type": "boolean"
 				},
 				"sentient": {

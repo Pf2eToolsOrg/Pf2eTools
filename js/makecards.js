@@ -491,7 +491,7 @@ class MakeCards extends BaseComponent {
 		}
 
 		return [
-			this._ct_subtitle(Renderer.item.getTypeRarityAndAttunementText(item)),
+			this._ct_subtitle(Renderer.item.getTypeRarityAndAttunementText(item).uppercaseFirst()),
 			ptValueWeight || ptDamageProperties ? this._ct_rule() : null,
 			ptValueWeight ? this._ct_text(ptValueWeight) : null,
 			ptDamageProperties ? this._ct_text(ptDamageProperties) : null,

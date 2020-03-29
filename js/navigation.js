@@ -233,12 +233,23 @@ class NavBar {
 						return;
 					}
 
+					// a pipe with has "port1" and "port2" props; we'll send "port2" to the service worker so it can
+					//   send messages back down the pipe to us
 					const messageChannel = new MessageChannel();
+					let hasSentPort = false;
 					const sendMessage = (data) => {
 						try {
-							navigator.serviceWorker.controller.postMessage(data, [messageChannel.port2]);
-						} catch (ignored) {
+							// Only send the MessageChannel port once, as the first send will transfer ownership of the
+							//   port over to the service worker (and we can no longer access it to even send it)
+							if (!hasSentPort) {
+								hasSentPort = true;
+								navigator.serviceWorker.controller.postMessage(data, [messageChannel.port2]);
+							} else {
+								navigator.serviceWorker.controller.postMessage(data);
+							}
+						} catch (e) {
 							// Ignore errors
+							setTimeout(() => { throw e; })
 						}
 					};
 
@@ -293,7 +304,10 @@ class NavBar {
 									NavBar._downloadBarMeta.$wrpBar.addClass("page__wrp-download-bar--error");
 									NavBar._downloadBarMeta.$dispProgress.addClass("page__disp-download-progress-bar--error");
 									NavBar._downloadBarMeta.$dispPct.text("Error!");
+
+									JqueryUtil.doToast(`An error occurred. ${VeCt.STR_SEE_CONSOLE}`);
 								}
+								setTimeout(() => { throw new Error(msg.message); })
 								break;
 							}
 						}

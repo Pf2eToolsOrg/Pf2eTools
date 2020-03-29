@@ -1,10 +1,15 @@
 "use strict";
 
 class GenUtil {
-	static getFromTable (table, roll) {
+	/**
+	 * @param table An array of objects with a `min` and optional `max` per item.
+	 * @param roll The roll to look up.
+	 * @param maxZero A value to convert `max` values of `0` to.
+	 */
+	static getFromTable (table, roll, maxZero = 100) {
 		const it = {};
 		Object.assign(it, table.find(it => {
-			return it.min === roll || (it.max && roll >= it.min && roll <= it.max);
+			return it.min === roll || (it.max && roll >= it.min && roll <= (it.max === 0 ? maxZero : it.max));
 		}));
 		Object.keys(it).forEach(k => {
 			if (typeof it[k] === "function") {

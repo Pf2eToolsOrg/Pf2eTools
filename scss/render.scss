@@ -57,6 +57,11 @@ $rgb-inset-border: #656565;
 			margin-top: 5px;
 			margin-bottom: 10px;
 			padding-left: 24px;
+
+			// FIXME(future) alternately, `&:has(+ .rd__list) { margin-bottom: 0; }` when browser support exists for :has
+			+ .rd__list {
+				margin-top: -5px;
+			}
 		}
 
 		&compact-stats {
@@ -101,10 +106,18 @@ $rgb-inset-border: #656565;
 			max-width: 33%;
 		}
 
-		&quote-by {
-			width: 100%;
-			text-align: right;
-			display: block;
+		&quote {
+			&-line {
+				&--last {
+					margin-bottom: 5px;
+				}
+			}
+
+			&-by {
+				width: 100%;
+				text-align: right;
+				display: block;
+			}
 		}
 
 		&p-cont-indent {
@@ -370,6 +383,11 @@ $rgb-inset-border: #656565;
 					display: block;
 				}
 			}
+		}
+
+		&img-small {
+			max-width: 25vw;
+			max-height: 25vh;
 		}
 
 		&s-v-flow {

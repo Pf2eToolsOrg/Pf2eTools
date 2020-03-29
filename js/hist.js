@@ -128,6 +128,14 @@ class Hist {
 		const subHashPart = Hist.util.getHashParts(window.location.hash, key, val).slice(1).join(HASH_PART_SEP);
 		Hist.cleanSetHash([hash, subHashPart].filter(Boolean).join(HASH_PART_SEP));
 	}
+
+	static replaceHistoryHash (hash) {
+		window.history.replaceState(
+			{},
+			document.title,
+			`${location.origin}${location.pathname}#${hash}`
+		);
+	}
 }
 Hist.lastLoadedLink = null;
 Hist.lastLoadedId = null;

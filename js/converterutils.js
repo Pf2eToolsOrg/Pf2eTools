@@ -96,6 +96,7 @@ class BaseParser {
 	 * @param [opts.noNumber] Disable number checking.
 	 * @param [opts.noParenthesis] Disable parenthesis ("(") checking.
 	 * @param [opts.noSavingThrow] Disable saving throw checking.
+	 * @param [opts.noAbilityName] Disable ability checking.
 	 * @param [opts.noHit] Disable "Hit:" checking.
 	 * @param [opts.noSpellcastingAbility] Disable spellcasting ability checking.
 	 */
@@ -115,6 +116,8 @@ class BaseParser {
 		if (/^\(/.test(cleanLine) && !opts.noParenthesis) return true;
 		// An ability score name followed by "saving throw"
 		if (/^(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\s+saving throw/.test(cleanLine) && !opts.noSavingThrow) return true;
+		// An ability score name
+		if (/^(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\s/.test(cleanLine) && !opts.noAbilityName) return true;
 		// "Hit:" e.g. inside creature attacks
 		if (/^Hit:/.test(cleanLine) && !opts.noHit) return true;
 		if (/^(Intelligence|Wisdom|Charisma)\s+\(/.test(cleanLine) && !opts.noSpellcastingAbility) return true;
@@ -383,6 +386,11 @@ class TagDc {
 }
 
 class TagCondition {
+	static init (legendaryGroups, spells) {
+		TagCondition._ALL_LEGENDARY_GROUPS = legendaryGroups;
+		TagCondition._ALL_SPELLS = spells;
+	}
+
 	static _getConvertedEntry (mon, entry, inflictedSet) {
 		const walker = MiscUtil.getWalker(TagCondition._WALKER_KEY_BLACKLIST);
 		const walkerHandlers = {
@@ -435,19 +443,8 @@ class TagCondition {
 		// Only the outermost loop needs return the final string
 		if (depth !== 0) return;
 
-		// region generate tags
-		if (inflictedSet) {
-			TagCondition._CONDITION_INFLICTED_MATCHERS.forEach(re => stack._.replace(re, (...m) => {
-				inflictedSet.add(m[1]);
-
-				// ", {@condition ...}, ..."
-				if (m[2]) m[2].replace(/{@condition ([^}]+)}/g, (...n) => inflictedSet.add(n[1]));
-
-				// " and {@condition ...}
-				if (m[3]) m[3].replace(/{@condition ([^}]+)}/g, (...n) => inflictedSet.add(n[1]));
-			}));
-		}
-		// endregion
+		// Collect inflicted conditions for tagging
+		if (inflictedSet) this._collectInflictedConditions(stack._, inflictedSet)
 
 		return stack._;
 	}
@@ -474,7 +471,62 @@ class TagCondition {
 		if (inflictedSet.size) m.conditionInflict = [...inflictedSet];
 		else delete m.conditionInflict;
 	}
+
+	static _collectInflictedConditions (str, inflictedSet) {
+		TagCondition._CONDITION_INFLICTED_MATCHERS.forEach(re => str.replace(re, (...m) => {
+			inflictedSet.add(m[1]);
+
+			// ", {@condition ...}, ..."
+			if (m[2]) m[2].replace(/{@condition ([^}]+)}/g, (...n) => inflictedSet.add(n[1]));
+
+			// " and {@condition ...}
+			if (m[3]) m[3].replace(/{@condition ([^}]+)}/g, (...n) => inflictedSet.add(n[1]));
+		}));
+	}
+
+	static tryTagConditionsSpells (m, cbMan) {
+		if (!m.spellcasting) return false;
+
+		const inflictedSet = new Set();
+
+		// Collect known spells
+		const strSpellcasting = JSON.stringify(m.spellcasting);
+		const knownSpells = {};
+		strSpellcasting.replace(/{@spell ([^}]+)}/g, (...m) => {
+			let [spellName, spellSource] = m[1].split("|").map(it => it.toLowerCase());
+			spellSource = spellSource || SRC_PHB.toLowerCase();
+
+			(knownSpells[spellSource] = knownSpells[spellSource] || new Set()).add(spellName);
+		});
+
+		Object.entries(knownSpells)
+			.forEach(([source, spellSet]) => {
+				spellSet.forEach(it => {
+					const spell = TagCondition._ALL_SPELLS.find(s => (s.name.toLowerCase() === it || (typeof s.srd === "string" && s.srd.toLowerCase() === it)) && s.source.toLowerCase() === source);
+					if (!spell) return cbMan ? cbMan(`${it} :: ${source}`) : null;
+					if (spell.conditionInflict) spell.conditionInflict.forEach(c => inflictedSet.add(c));
+				});
+			});
+
+		if (inflictedSet.size) m.conditionInflictSpell = [...inflictedSet];
+		else delete m.conditionInflict;
+	}
+
+	static tryTagConditionsRegionalsLairs (m, cbMan) {
+		if (!m.legendaryGroup) return;
+
+		const inflictedSet = new Set();
+
+		const meta = TagCondition._ALL_LEGENDARY_GROUPS.find(it => it.name === m.legendaryGroup.name && it.source === m.legendaryGroup.source);
+		if (!meta) return cbMan ? cbMan(m.legendaryGroup) : null;
+		this._collectInflictedConditions(JSON.stringify(meta), inflictedSet);
+
+		if (inflictedSet.size) m.conditionInflictLegendary = [...inflictedSet];
+		else delete m.conditionInflictLegendary;
+	}
 }
+TagCondition._ALL_LEGENDARY_GROUPS = null;
+TagCondition._ALL_SPELLS = null;
 TagCondition._WALKER_KEY_BLACKLIST = new Set(["caption", "type", "colLabels", "name"]);
 TagCondition._CONDITIONS = [
 	"blinded",
@@ -1087,13 +1139,9 @@ MiscTag._RANGED_WEAPONS = [
 MiscTag._RANGED_WEAPON_MATCHERS = MiscTag._RANGED_WEAPONS.map(it => new RegExp(`(^|[^\\w])(${it})([^\\w]|$)`, "gi"));
 
 class SpellcastingTraitConvert {
-	static async pGetSpellData () {
-		return {spell: await DataUtil.spell.pLoadAll()};
-	}
-
 	static init (spellData) {
 		// reversed so official sources take precedence over 3pp
-		spellData.spell.forEach(s => SpellcastingTraitConvert.SPELL_SRC_MAP[s.name.toLowerCase()] = s.source)
+		spellData.forEach(s => SpellcastingTraitConvert.SPELL_SRC_MAP[s.name.toLowerCase()] = s.source)
 	}
 
 	static tryParseSpellcasting (trait, isMarkdown, cbErr) {
@@ -1426,6 +1474,57 @@ class ArtifactPropertiesTag {
 	}
 }
 
+// FIXME this duplicates functionality in converter-item
+class EntryConvert {
+	static tryRun (stats, prop) {
+		if (!stats[prop]) return;
+		const walker = MiscUtil.getWalker(new Set(["caption", "type", "colLabels", "name"]));
+		walker.walk(
+			"entryConvert",
+			stats,
+			{
+				array: (ident, arr, objProp) => {
+					if (objProp !== prop) return arr;
+
+					const getNewList = () => ({type: "list", items: []});
+					const checkFinalizeList = () => {
+						if (tmpList.items.length) {
+							out.push(tmpList);
+							tmpList = getNewList();
+						}
+					};
+
+					const out = [];
+					let tmpList = getNewList();
+
+					for (let i = 0; i < arr.length; ++i) {
+						const it = arr[i];
+
+						if (typeof it !== "string") {
+							checkFinalizeList();
+							out.push(it);
+							continue;
+						}
+
+						const mBullet = /^\s*[-•]\s*(.*)$/.exec(it);
+						if (!mBullet) {
+							checkFinalizeList();
+							out.push(it);
+							continue;
+						}
+
+						tmpList.items.push(mBullet[1].trim());
+					}
+
+					checkFinalizeList();
+
+					return out;
+				}
+			}
+		)
+	}
+}
+
 class ConvertUtil {
 	/**
 	 * (Inline titles)
@@ -1538,6 +1637,7 @@ if (typeof module !== "undefined") {
 		DiceConvert,
 		RechargeConvert,
 		SpeedConvert,
-		ArtifactPropertiesTag
+		ArtifactPropertiesTag,
+		EntryConvert
 	};
 }

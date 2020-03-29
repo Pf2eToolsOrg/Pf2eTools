@@ -516,6 +516,31 @@
 
 		},
 
+		"tagsConditions": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "string",
+				"enum": [
+					"blinded",
+					"charmed",
+					"deafened",
+					"exhaustion",
+					"frightened",
+					"grappled",
+					"incapacitated",
+					"invisible",
+					"paralyzed",
+					"petrified",
+					"poisoned",
+					"prone",
+					"restrained",
+					"stunned",
+					"unconscious"
+				]
+			}
+		},
+
 		"copyModifier": {
 			"anyOf": [
 				{

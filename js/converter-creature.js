@@ -779,6 +779,8 @@ class CreatureParser extends BaseParser {
 		TagHit.tryTagHits(stats);
 		TagDc.tryTagDcs(stats);
 		TagCondition.tryTagConditions(stats, true);
+		TagCondition.tryTagConditionsSpells(stats, (sp) => options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Spell "${sp}" could not be found during condition tagging`));
+		TagCondition.tryTagConditionsRegionalsLairs(stats, (legendaryGroup) => options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Legendary group "${legendaryGroup.name} :: ${legendaryGroup.source}" could not be found during condition tagging`));
 		TraitActionTag.tryRun(stats);
 		LanguageTag.tryRun(stats);
 		SenseTag.tryRun(stats);

@@ -313,14 +313,14 @@
 			this._adjustSpellcasting(mon, crInNumber, toCr);
 
 			// adjust AC after DPR/etc, as DPR takes priority for adjusting DEX
-			this._adjustAc(mon, crInNumber, toCr);
+			this._armorClass.adjustAc(mon, crInNumber, toCr);
 
 			// TODO update not-yet-scaled abilities
 
 			this._handleUpdateAbilityScoresSkillsSaves(mon, pbOut);
 
 			// cleanup
-			[`str`, `dex`, `con`, `int`, `wis`, `cha`].forEach(a => delete mon[`${a}Old`]);
+			[`strOld`, `dexOld`, `conOld`, `intOld`, `wisOld`, `chaOld`].forEach(a => delete mon[a]);
 
 			const crOutStr = Parser.numberToCr(toCr);
 			if (mon.cr.cr) mon.cr.cr = crOutStr;
@@ -416,27 +416,8 @@
 		handleGenericEntries("variant");
 	},
 
-	_acHeavy: {
-		"ring mail": 14,
-		"chain mail": 16,
-		"splint armor": 17,
-		"plate armor": 18
-	},
-	_acMedium: {
-		"hide armor": 12,
-		"chain shirt": 13,
-		"scale mail": 14,
-		"breastplate": 14,
-		"half plate armor": 15
-	},
-	_acLight: {
-		"padded armor": 11,
-		"leather armor": 11,
-		"studded leather armor": 12
-	},
-	_acMageArmor: "@spell mage armor",
-	_adjustAc (mon, crIn, crOut) {
-		const getEnchanted = (item, baseMod) => {
+	_armorClass: {
+		_getEnchanted (item, baseMod) {
 			const out = [];
 			for (let i = 0; i < 3; ++i) {
 				out.push({
@@ -449,64 +430,53 @@
 				});
 			}
 			return out;
-		};
+		},
 
-		const getAllVariants = (obj) => {
+		_getAllVariants (obj) {
 			return Object.keys(obj).map(armor => {
 				const mod = obj[armor];
 				return [{
 					tag: `${armor}|phb`,
 					mod
-				}].concat(getEnchanted(armor, mod));
+				}].concat(this._getEnchanted(armor, mod));
 			}).reduce((a, b) => a.concat(b), []);
-		};
+		},
 
-		const shields = (() => {
-			return [{
-				tag: "shield|phb",
-				mod: 2
-			}].concat(getEnchanted("shield", 2));
-		})();
-
-		const heavyArmor = getAllVariants(this._acHeavy);
-		const mediumArmor = getAllVariants(this._acMedium);
-		const lightArmor = getAllVariants(this._acLight);
-
-		const getAcBaseAndMod = (all, tag) => {
+		_getAcBaseAndMod (all, tag) {
 			const tagBaseType = tag.replace(/( \+\d)?\|.*$/, "");
 			const tagBase = all[tagBaseType];
 			const tagModM = /^.*? (\+\d)\|.*$/.exec(tag);
 			const tagMod = tagModM ? Number(tagModM[1]) : 0;
 			return [tagBase, tagMod];
-		};
+		},
 
-		const findTag = (tagSet, str) => {
+		_isStringContainsTag (tagSet, str) {
 			return tagSet.find(it => str.includes(`@item ${it}`));
-		};
+		},
 
-		const replaceTag = (str, oldTag, nuTag) => {
+		_replaceTag (str, oldTag, nuTag) {
 			const out = str.replace(`@item ${oldTag}`, `@item ${nuTag}`);
 			const spl = out.split("|");
 			if (spl.length > 2) {
 				return `${spl.slice(0, 2).join("|")}}`;
 			}
 			return out;
-		};
+		},
 
-		const canDropShield = () => {
+		_canDropShield (mon) {
 			return mon._shieldRequired === false && mon._shieldDropped === false;
-		};
+		},
 
-		const dropShield = (it) => {
-			const idxShield = it.from.findIndex(f => shields.find(s => f._.includes(s.tag)));
+		_dropShield (acItem) {
+			const idxShield = acItem.from.findIndex(f => this._ALL_SHIELD_VARIANTS.find(s => f._.includes(s.tag)));
 			if (idxShield === -1) throw new Error("Should never occur!");
-			it.from.splice(idxShield, 1);
-		};
+			acItem.from.splice(idxShield, 1);
+		},
 
 		// normalises results as "value above 10"
-		const getAcVal = (name) => {
+		_getAcVal (name) {
 			name = name.trim().toLowerCase();
-			const toCheck = [this._acHeavy, this._acMedium, this._acLight, {shield: 2}];
+			const toCheck = [this._HEAVY, this._MEDIUM, this._LIGHT, {shield: 2}];
 			for (const tc of toCheck) {
 				const armorKey = Object.keys(tc).find(k => name === k);
 				if (armorKey) {
@@ -514,515 +484,72 @@
 					if (acBonus > 10) return acBonus - 10;
 				}
 			}
-		};
+		},
 
-		const getDexCapVal = name => {
+		_getDexCapVal (name) {
 			name = name.trim().toLowerCase();
-			const ix = [this._acHeavy, this._acMedium, this._acLight].findIndex(tc => !!Object.keys(tc).find(k => name === k));
+			const ix = [this._HEAVY, this._MEDIUM, this._LIGHT].findIndex(tc => !!Object.keys(tc).find(k => name === k));
 			return ix === 0 ? 0 : ix === 1 ? 2 : ix === 3 ? 999 : null;
-		};
+		},
 
-		// if the DPR calculations didn't already adjust DEX, we can adjust it here
-		// otherwise, respect the changes made in the DPR calculations, and find a combination of AC factors to meet the desired number
-		mon.ac = mon.ac.map(acItem => {
-			let loop = 0;
+		_HEAVY: {
+			"ring mail": 14,
+			"chain mail": 16,
+			"splint armor": 17,
+			"plate armor": 18
+		},
+		_MEDIUM: {
+			"hide armor": 12,
+			"chain shirt": 13,
+			"scale mail": 14,
+			"breastplate": 14,
+			"half plate armor": 15
+		},
+		_LIGHT: {
+			"padded armor": 11,
+			"leather armor": 11,
+			"studded leather armor": 12
+		},
+		_MAGE_ARMOR: "@spell mage armor",
 
-			const handleAc = () => {
-				const getEnchTotal = () => acItem._enchTotal || 0;
-				const getBaseGearBonus = () => acItem._gearBonus || 0;
-				const getDexCap = () => acItem._dexCap || 999;
+		_ALL_SHIELD_VARIANTS: null,
+		_ALL_HEAVY_VARIANTS: null,
+		_ALL_MEDIUM_VARIANTS: null,
+		_ALL_LIGHT_VARIANTS: null,
+		_initAllVariants () {
+			this._ALL_SHIELD_VARIANTS = this._ALL_SHIELD_VARIANTS || [
+				{
+					tag: "shield|phb",
+					mod: 2
+				},
+				...this._getEnchanted("shield", 2)
+			];
 
-				// strip enchantments and total bonuses
-				if (typeof acItem !== "number") {
-					acItem._enchTotal = acItem._enchTotal || 0; // maintain this between loops, in case we throw away the enchanted gear
-					acItem._gearBonus = 0; // recalculate this each time
-					acItem._dexCap = 999; // recalculate this each time
-				}
-				if (acItem.from) {
-					acItem.from = acItem.from.map(f => {
-						if (f._) f = f._; // if a previous loop modified it
+			this._ALL_HEAVY_VARIANTS = this._ALL_HEAVY_VARIANTS || this._getAllVariants(this._HEAVY);
+			this._ALL_MEDIUM_VARIANTS = this._ALL_MEDIUM_VARIANTS || this._getAllVariants(this._MEDIUM);
+			this._ALL_LIGHT_VARIANTS = this._ALL_LIGHT_VARIANTS || this._getAllVariants(this._LIGHT);
+		},
 
-						// normalise to "true name" format
-						// e.g. {@item +1 chain mail} -> {@item chain mail +1||+1 chain mail}
-						const pre = /@item (\+\d+)([^+\d}]+)/gi.exec(f);
-						if (pre) {
-							const [_, bonus, name, rest] = pre.map(it => it.trim());
-							const restSpl = (rest || "").split("|");
-							const restPart = restSpl.length > 1 ? restSpl.last() : null;
-							f = `{@item ${name} ${bonus}||${restPart || `${bonus} ${name}`}}`;
-						}
+		adjustAc (mon, crIn, crOut) {
+			this._initAllVariants();
 
-						const m = /@item ([^+\d]+)(\+\d+)\|([^|}]+)/gi.exec(f); // e.g. {@item chain mail +1|dmg|+1 chain mail}
-						if (m) {
-							const [_, name, bonus, source] = m;
+			// if the DPR calculations didn't already adjust DEX, we can adjust it here
+			// otherwise, respect the changes made in the DPR calculations, and find a combination of AC factors to meet the desired number
+			mon.ac = mon.ac.map(acItem => this._getAdjustedAcItem(mon, crIn, crOut, acItem));
+		},
 
-							const acVal = getAcVal(name);
-							if (acVal) acItem._gearBonus += acVal;
-
-							const dexCap = getDexCapVal(name);
-							if (dexCap != null) acItem._dexCap = Math.min(acItem._dexCap, dexCap);
-
-							const ench = Number(bonus);
-							acItem._enchTotal += ench;
-							return {
-								_: f,
-								name: name.trim(),
-								ench: ench,
-								source: source
-							}
-						} else {
-							const m = /@item ([^|}]+)(\|[^|}]+)?(\|[^|}]+)?/gi.exec(f);
-							if (m) {
-								const [_, name, source, display] = m;
-								const out = {_: f, name};
-								if (source) out.source = source;
-								if (display) out.display = display;
-
-								const acVal = getAcVal(name);
-								if (acVal) {
-									acItem._gearBonus += acVal;
-									out._gearBonus = acVal;
-								}
-
-								const dexCap = getDexCapVal(name);
-								if (dexCap != null) acItem._dexCap = Math.min(acItem._dexCap, dexCap);
-
-								return out;
-							} else return {_: f, name: f};
-						}
-					});
-				}
-				// for armored creatures, try to calculate the expected AC, and use this as a starting point for scaling
-				const expectedBaseScore = mon.dexOld != null ? (getBaseGearBonus() + Math.min(Parser.getAbilityModNumber(mon.dexOld), getDexCap()) + 10) : null;
-
-				let canAdjustDex = mon.dexOld == null;
-				const dexGain = Parser.getAbilityModNumber(mon.dex) - Parser.getAbilityModNumber((mon.dexOld || mon.dex));
-
-				const curr = acItem.ac || acItem;
-				// don't include enchantments in AC-CR calculations
-				const currWithoutEnchants = curr - (loop === 0 ? getEnchTotal() : 0); // only take it off on the first loop, as it gets saved
-
-				// ignore any other misc modifications from abilities, enchanted items, etc
-				if (typeof acItem !== "number") {
-					acItem._miscOffset = acItem._miscOffset || (expectedBaseScore != null ? currWithoutEnchants - expectedBaseScore : null); // maintain this between loops, keep the original "pure" version
-				}
-
-				const idealAcIn = this._crToAc(crIn);
-				const idealAcOut = this._crToAc(crOut);
-				const effectiveCurrent = expectedBaseScore == null ? currWithoutEnchants : expectedBaseScore;
-				const target = this._getScaledToRatio(effectiveCurrent, idealAcIn, idealAcOut);
-				let targetNoShield = target;
-				const acGain = target - effectiveCurrent;
-
-				const dexMismatch = acGain - dexGain;
-
-				const adjustDex = () => {
-					mon.dexOld = mon.dex;
-					mon.dex = this._calcNewAbility(mon, "dex", Parser.getAbilityModNumber(mon.dex) + dexMismatch);
-					canAdjustDex = false;
-					return true;
-				};
-
-				const handleNoArmor = () => {
-					if (dexMismatch > 0) {
-						if (canAdjustDex) {
-							adjustDex();
-							return target;
-						} else {
-							return { // fill the gap with natural armor
-								ac: target,
-								from: ["natural armor"]
-							}
-						}
-					} else if (dexMismatch < 0 && canAdjustDex) { // increase/reduce DEX to move the AC up/down
-						adjustDex();
-						return target;
-					} else return target; // AC adjustment perfectly matches DEX adjustment; or there's nothing we can do because of a previous DEX adjustment
-				};
-
-				// "FROM" ADJUSTERS ========================================================================================
-
-				const handleMageArmor = () => {
-					// if there's mage armor, try adjusting dex
-					if (acItem.condition && acItem.condition.toLowerCase().includes(this._acMageArmor)) {
-						if (canAdjustDex) {
-							acItem.ac = target;
-							return adjustDex();
-						} else {
-							acItem.ac = 13 + Parser.getAbilityModNumber(mon.dex);
-							return true; // mage armor means there was no other armor, so stop here
-						}
-					}
-					return false;
-				};
-
-				const handleShield = () => {
-					// if there's a shield, try dropping it
-					const DUAL_SHIELD_AC = 3; // dual-wield shields is 3 AC, according to VGM's Fire Giant Dreadnought
-
-					if (acItem.from) {
-						const fromShields = acItem.from.filter(f => shields.find(s => f._.includes(`@item ${s.tag}`)));
-						if (fromShields.length) {
-							if (fromShields.length > 1) throw new Error("AC contained multiple shields!"); // should be impossible
-
-							// check if shields are an important part of this creature
-							// if they have abilities/etc which refer to the shield, don't remove the shield
-							const shieldRequired = mon._shieldRequired != null ? mon._shieldRequired : (() => {
-								const checkShields = (prop) => {
-									if (!mon[prop]) return false;
-									for (const it of mon[prop]) {
-										if (it.name && it.name.toLowerCase().includes("shield")) return true;
-										if (it.entries && JSON.stringify(it.entries).match(/shield/i)) return true;
-									}
-								};
-								return mon._shieldRequired = checkShields("trait")
-									|| checkShields("action")
-									|| checkShields("reaction")
-									|| checkShields("legendary");
-							})();
-							mon._shieldDropped = false;
-
-							const fromShield = fromShields[0]._;
-							const idx = acItem.from.findIndex(it => it === fromShield);
-
-							if (fromShield.endsWith("|shields}")) {
-								targetNoShield -= DUAL_SHIELD_AC;
-
-								if (!shieldRequired && (acGain <= -DUAL_SHIELD_AC)) {
-									acItem.from.splice(idx, 1);
-									acItem.ac -= DUAL_SHIELD_AC;
-									mon._shieldDropped = true;
-									if (acItem.ac === target) return true;
-								}
-							} else {
-								const shieldVal = shields.find(s => fromShield.includes(s.tag));
-								targetNoShield -= shieldVal.mod;
-
-								if (!shieldRequired && (acGain <= -shieldVal.mod)) {
-									acItem.from.splice(idx, 1);
-									acItem.ac -= shieldVal.mod;
-									mon._shieldDropped = true;
-									if (acItem.ac === target) return true;
-								}
-							}
-						}
-					}
-					return false;
-				};
-
-				// FIXME this can result in armor with strength requirements greater than the user can manage
-				const handleHeavyArmor = () => {
-					// if there's heavy armor, try adjusting it
-					const PL3_PLATE = 21;
-
-					const heavyTags = heavyArmor.map(it => it.tag);
-
-					const isHeavy = (ac) => {
-						return ac >= 14 && ac <= PL3_PLATE; // ring mail (14) to +3 Plate (21)
-					};
-
-					const isBeyondHeavy = (ac) => {
-						return ac > PL3_PLATE; // more than +3 plate
-					};
-
-					const getHeavy = (ac) => {
-						const nonEnch = Object.keys(this._acHeavy).find(armor => this._acHeavy[armor] === ac);
-						if (nonEnch) return `${nonEnch}|phb`;
-						switch (ac) {
-							case 19:
-								return [`plate armor +1|dmg`, `splint armor +2|dmg`][RollerUtil.roll(1, this._rng)];
-							case 20:
-								return `plate armor +2|dmg`;
-							case PL3_PLATE:
-								return `plate armor +3|dmg`
-						}
-					};
-
-					if (acItem.from) {
-						for (let i = 0; i < acItem.from.length; ++i) {
-							const heavyTag = findTag(heavyTags, acItem.from[i]._);
-							if (heavyTag) {
-								if (isHeavy(targetNoShield)) {
-									const bumpOne = targetNoShield === 15; // there's no heavy armor with 15 AC
-									if (bumpOne) targetNoShield++;
-									acItem.from[i]._ = replaceTag(acItem.from[i]._, heavyTag, getHeavy(targetNoShield));
-									acItem.ac = target + (bumpOne ? 1 : 0);
-									return true;
-								} else if (canDropShield() && isHeavy(target)) {
-									const targetWithBump = target + (target === 15 ? 1 : 0); // there's no heavy armor with 15 AC
-									acItem.from[i]._ = replaceTag(acItem.from[i]._, heavyTag, getHeavy(targetWithBump));
-									acItem.ac = targetWithBump;
-									dropShield(acItem);
-									return true;
-								} else if (isBeyondHeavy(targetNoShield)) { // cap it at +3 plate and call it a day
-									const max = PL3_PLATE;
-									acItem.from[i]._ = replaceTag(acItem.from[i]._, heavyTag, getHeavy(max));
-									acItem.ac = max;
-									return true;
-								} else { // drop to medium
-									const [tagBase, tagMod] = getAcBaseAndMod(this._acLight, heavyTag);
-									const tagAc = tagBase + tagMod;
-									acItem.from[i]._ = replaceTag(acItem.from[i]._, heavyTag, `half plate armor|phb`);
-									acItem.ac = (acItem.ac - tagAc) + 15 + Math.min(2, Parser.getAbilityModNumber(mon.dex));
-									return false;
-								}
-							}
-						}
-					}
-					return false;
-				};
-
-				const handleMediumArmor = () => {
-					// if there's medium armor, try adjusting dex, then try adjusting it
-					const mediumTags = mediumArmor.map(it => it.tag);
-
-					const isMedium = (ac, asPos) => {
-						const min = 12 + (canAdjustDex ? -5 : Parser.getAbilityModNumber(mon.dex)); // hide; 12
-						const max = 18 + (canAdjustDex ? 2 : Math.min(2, Parser.getAbilityModNumber(mon.dex))); // half-plate +3; 18
-						if (asPos) return ac < min ? -1 : ac > max ? 1 : 0;
-						return ac >= min && ac <= max;
-					};
-
-					const getMedium = (ac, curArmor) => {
-						const getByBase = (base) => {
-							switch (base) {
-								case 14:
-									return [`scale mail|phb`, `breastplate|phb`][RollerUtil.roll(1, this._rng)];
-								case 16:
-									return [`half plate armor +1|dmg`, `breastplate +2|dmg`, `scale mail +2|dmg`][RollerUtil.roll(2, this._rng)];
-								case 17:
-									return `half plate armor +2|dmg`;
-								case 18:
-									return `half plate armor +3|dmg`;
-								default: {
-									const nonEnch = Object.keys(this._acMedium).find(it => this._acMedium[it] === base);
-									return `${nonEnch}|phb`;
-								}
-							}
-						};
-
-						if (canAdjustDex) {
-							let fromArmor = curArmor.ac;
-							let maxFromArmor = fromArmor + 2;
-							let minFromArmor = fromArmor - 5;
-
-							const withinDexRange = () => {
-								return ac >= minFromArmor && ac <= maxFromArmor;
-							};
-
-							const getTotalAc = () => {
-								return fromArmor + Math.min(2, Parser.getAbilityModNumber(mon.dex));
-							};
-
-							let loops = 0;
-							while (1) {
-								if (loops > 1000) throw new Error(`Failed to find valid light armor!`);
-
-								if (withinDexRange()) {
-									canAdjustDex = false;
-									if (mon.dexOld == null) mon.dexOld = mon.dex;
-
-									if (ac > getTotalAc()) mon.dex += 2;
-									else mon.dex -= 2;
-								} else {
-									if (ac < minFromArmor) fromArmor -= 1;
-									else fromArmor += 1;
-									if (fromArmor < 12 || fromArmor > 18) throw Error("Should never occur!"); // sanity check
-									maxFromArmor = fromArmor + 2;
-									minFromArmor = fromArmor - 5;
-								}
-
-								if (getTotalAc() === ac) break;
-								loops++;
-							}
-
-							return getByBase(fromArmor);
-						} else {
-							const dexOffset = Math.min(Parser.getAbilityModNumber(mon.dex), 2);
-							return getByBase(ac - dexOffset);
-						}
-					};
-
-					if (acItem.from) {
-						for (let i = 0; i < acItem.from.length; ++i) {
-							const mediumTag = findTag(mediumTags, acItem.from[i]._);
-							if (mediumTag) {
-								const [tagBase, tagMod] = getAcBaseAndMod(this._acMedium, mediumTag);
-								const tagAc = tagBase + tagMod;
-								if (isMedium(targetNoShield)) {
-									acItem.from[i]._ = replaceTag(acItem.from[i]._, mediumTag, getMedium(targetNoShield, {tag: mediumTag, ac: tagAc}));
-									acItem.ac = target;
-									return true;
-								} else if (canDropShield() && isMedium(target)) {
-									acItem.from[i]._ = replaceTag(acItem.from[i]._, mediumTag, getMedium(target, {tag: mediumTag, ac: tagAc}));
-									acItem.ac = target;
-									dropShield(acItem);
-									return true;
-								} else if (canAdjustDex && isMedium(targetNoShield, true) === -1) { // drop to light
-									acItem.from[i]._ = replaceTag(acItem.from[i]._, mediumTag, `studded leather armor|phb`);
-									acItem.ac = (acItem.ac - tagAc - Math.min(2, Parser.getAbilityModNumber(mon.dex))) + 12 + Parser.getAbilityModNumber(mon.dex);
-									return false;
-								} else {
-									// if we need more AC, switch to heavy, and restart the conversion
-									acItem.from[i]._ = replaceTag(acItem.from[i]._, mediumTag, `ring mail|phb`);
-									acItem.ac = (acItem.ac - tagAc - Math.min(2, Parser.getAbilityModNumber(mon.dex))) + 14;
-									return -1;
-								}
-							}
-						}
-					}
-					return false;
-				};
-
-				const handleLightArmor = () => {
-					// if there's light armor, try adjusting dex, then try adjusting it
-					const lightTags = lightArmor.map(it => it.tag);
-
-					const isLight = (ac, asPos) => {
-						const min = 11 + (canAdjustDex ? -5 : Parser.getAbilityModNumber(mon.dex)); // padded/leather; 11
-						const max = 15 + (canAdjustDex ? 100 : Parser.getAbilityModNumber(mon.dex)); // studded leather +3; 15
-						if (asPos) return ac < min ? -1 : ac > max ? 1 : 0;
-						return ac >= min && ac <= max;
-					};
-
-					const getLight = (ac, curArmor) => {
-						const getByBase = (base) => {
-							switch (base) {
-								case 11:
-									return [`padded armor|phb`, `leather armor|phb`][RollerUtil.roll(1, this._rng)];
-								case 12:
-									return `studded leather armor|phb`;
-								case 13:
-									return [`padded armor +1|dmg`, `leather armor +1|dmg`][RollerUtil.roll(1, this._rng)];
-								case 14:
-									return [`padded armor +2|dmg`, `leather armor +2|dmg`, `studded leather armor +1|dmg`][RollerUtil.roll(2, this._rng)];
-								case 15:
-									return `studded leather armor +2|dmg`;
-							}
-						};
-
-						if (canAdjustDex) {
-							let fromArmor = curArmor.ac;
-							let minFromArmor = fromArmor - 5;
-
-							const withinDexRange = () => {
-								return ac >= minFromArmor;
-							};
-
-							const getTotalAc = () => {
-								return fromArmor + Parser.getAbilityModNumber(mon.dex);
-							};
-
-							let loops = 0;
-							while (1) {
-								if (loops > 1000) throw new Error(`Failed to find valid light armor!`);
-
-								if (withinDexRange()) {
-									canAdjustDex = false;
-									if (mon.dexOld == null) mon.dexOld = mon.dex;
-
-									if (ac > getTotalAc()) mon.dex += 2;
-									else mon.dex -= 2;
-								} else {
-									if (ac < minFromArmor) fromArmor -= 1;
-									else fromArmor += 1;
-									if (fromArmor < 11 || fromArmor > 15) throw Error("Should never occur!"); // sanity check
-									minFromArmor = fromArmor - 5;
-								}
-
-								if (getTotalAc() === ac) break;
-								loops++;
-							}
-
-							return getByBase(fromArmor);
-						} else {
-							const dexOffset = Parser.getAbilityModNumber(mon.dex);
-							return getByBase(ac - dexOffset);
-						}
-					};
-
-					if (acItem.from) {
-						for (let i = 0; i < acItem.from.length; ++i) {
-							const lightTag = findTag(lightTags, acItem.from[i]._);
-							if (lightTag) {
-								const [tagBase, tagMod] = getAcBaseAndMod(this._acLight, lightTag);
-								const tagAc = tagBase + tagMod;
-								if (isLight(targetNoShield)) {
-									acItem.from[i]._ = replaceTag(acItem.from[i]._, lightTag, getLight(targetNoShield, {tag: lightTag, ac: tagAc}));
-									acItem.ac = target;
-									return true;
-								} else if (canDropShield() && isLight(target)) {
-									acItem.from[i]._ = replaceTag(acItem.from[i]._, lightTag, getLight(target, {tag: lightTag, ac: tagAc}));
-									acItem.ac = target;
-									dropShield(acItem);
-									return true;
-								} else if (!canAdjustDex && isLight(targetNoShield, true) === -1) { // drop armor
-									if (acItem.from.length === 1) { // revert to pure numerical
-										acItem._droppedArmor = true;
-										return -1;
-									} else { // revert to base 10
-										acItem.from.splice(i, 1);
-										acItem.ac = (acItem.ac - tagAc) + 10;
-										return -1;
-									}
-								} else {
-									// if we need more, switch to medium, and restart the conversion
-									acItem.from[i]._ = replaceTag(acItem.from[i]._, lightTag, `chain shirt|phb`);
-									acItem.ac = (acItem.ac - tagAc - Parser.getAbilityModNumber(mon.dex)) + 13 + Math.min(2, Parser.getAbilityModNumber(mon.dex));
-									return -1;
-								}
-							}
-						}
-					}
-					return false;
-				};
-
-				const handleNaturalArmor = () => {
-					// if there's natural armor, try adjusting dex, then try adjusting it
-
-					if (acItem.from && acItem.from.map(it => it._).includes("natural armor")) {
-						if (canAdjustDex) {
-							acItem.ac = target;
-							return adjustDex();
-						} else {
-							acItem.ac = target; // natural armor of all modifiers is still just "natural armor," so this works
-							return true;
-						}
-					}
-					return false;
-				};
-
-				if (acItem.ac && !acItem._droppedArmor) {
-					const toRun = [
-						handleMageArmor,
-						handleShield,
-						handleHeavyArmor,
-						handleMediumArmor,
-						handleLightArmor,
-						handleNaturalArmor
-					];
-					let lastVal = 0;
-					for (let i = 0; i < toRun.length; ++i) {
-						lastVal = toRun[i]();
-						if (lastVal === -1) return null;
-						else if (lastVal) break;
-					}
-
-					// if there was no reasonable way to adjust the AC, forcibly set it here as a fallback
-					if (!lastVal) acItem.ac = target;
-					return acItem;
-				} else {
-					return handleNoArmor();
-				}
-			};
-
+		_getAdjustedAcItem (mon, crIn, crOut, acItem) {
+			// region Attempt to adjust this item until we find some output that works
+			let iter = 0;
 			let out = null;
 			while (out == null) {
-				if (loop > 100) throw new Error(`Failed to calculate new AC! Input was:\n${JSON.stringify(acItem, null, "\t")}`);
-				out = handleAc();
-				loop++;
+				if (iter > 100) throw new Error(`Failed to calculate new AC! Input was:\n${JSON.stringify(acItem, null, "\t")}`);
+				out = this._getAdjustedAcItem_getAdjusted(mon, crIn, crOut, acItem, iter);
+				iter++;
 			}
+			// endregion
 
+			// region Finalisation/cleanup
 			// finalise "from"
 			let handledEnchBonus = !acItem._enchTotal;
 			if (acItem.from) {
@@ -1062,9 +589,505 @@
 
 			// cleanup
 			["_enchTotal", "_gearBonus", "_dexCap", "_miscOffset"].forEach(it => delete acItem[it]);
+			// endregion
 
 			return out;
-		});
+		},
+
+		_getAdjustedAcItem_getAdjusted (mon, crIn, crOut, acItem, iter) {
+			const getEnchTotal = () => acItem._enchTotal || 0;
+			const getBaseGearBonus = () => acItem._gearBonus || 0;
+			const getDexCap = () => acItem._dexCap || 999;
+
+			const isMageArmor = () => acItem.condition && acItem.condition.toLowerCase().includes(this._MAGE_ARMOR);
+
+			// strip enchantments and total bonuses
+			if (typeof acItem !== "number") {
+				acItem._enchTotal = acItem._enchTotal || 0; // maintain this between loops, in case we throw away the enchanted gear
+				acItem._gearBonus = 0; // recalculate this each time
+				acItem._dexCap = 999; // recalculate this each time
+			}
+
+			if (acItem.from) {
+				acItem.from = acItem.from.map(f => {
+					if (f._) f = f._; // if a previous loop modified it
+
+					// normalise to "true name" format
+					// e.g. {@item +1 chain mail} -> {@item chain mail +1||+1 chain mail}
+					const pre = /@item (\+\d+)([^+\d}]+)/gi.exec(f);
+					if (pre) {
+						const [_, bonus, name, rest] = pre.map(it => it.trim());
+						const restSpl = (rest || "").split("|");
+						const restPart = restSpl.length > 1 ? restSpl.last() : null;
+						f = `{@item ${name} ${bonus}||${restPart || `${bonus} ${name}`}}`;
+					}
+
+					const m = /@item ([^+\d]+)(\+\d+)\|([^|}]+)/gi.exec(f); // e.g. {@item chain mail +1|dmg|+1 chain mail}
+					if (m) {
+						const [_, name, bonus, source] = m;
+
+						const acVal = this._getAcVal(name);
+						if (acVal) acItem._gearBonus += acVal;
+
+						const dexCap = this._getDexCapVal(name);
+						if (dexCap != null) acItem._dexCap = Math.min(acItem._dexCap, dexCap);
+
+						const ench = Number(bonus);
+						acItem._enchTotal += ench;
+						return {
+							_: f,
+							name: name.trim(),
+							ench: ench,
+							source: source
+						}
+					} else {
+						const m = /@item ([^|}]+)(\|[^|}]+)?(\|[^|}]+)?/gi.exec(f);
+						if (m) {
+							const [_, name, source, display] = m;
+							const out = {_: f, name};
+							if (source) out.source = source;
+							if (display) out.display = display;
+
+							const acVal = this._getAcVal(name);
+							if (acVal) {
+								acItem._gearBonus += acVal;
+								out._gearBonus = acVal;
+							}
+
+							const dexCap = this._getDexCapVal(name);
+							if (dexCap != null) acItem._dexCap = Math.min(acItem._dexCap, dexCap);
+
+							return out;
+						} else return {_: f, name: f};
+					}
+				});
+			}
+
+			// for armored creatures, try to calculate the expected AC, and use this as a starting point for scaling
+			const expectedBaseScore = mon.dexOld != null
+				? (getBaseGearBonus() + Math.min(Parser.getAbilityModNumber(mon.dexOld), getDexCap()) + (isMageArmor() ? 13 : 10))
+				: null;
+
+			let canAdjustDex = mon.dexOld == null;
+			const dexGain = Parser.getAbilityModNumber(mon.dex) - Parser.getAbilityModNumber((mon.dexOld || mon.dex));
+
+			const curr = acItem.ac || acItem;
+			// don't include enchantments in AC-CR calculations
+			const currWithoutEnchants = curr - (iter === 0 ? getEnchTotal() : 0); // only take it off on the first iteration, as it gets saved
+
+			// ignore any other misc modifications from abilities, enchanted items, etc
+			if (typeof acItem !== "number") {
+				acItem._miscOffset = acItem._miscOffset || (expectedBaseScore != null ? currWithoutEnchants - expectedBaseScore : null); // maintain this between loops, keep the original "pure" version
+			}
+
+			const idealAcIn = ScaleCreature._crToAc(crIn);
+			const idealAcOut = ScaleCreature._crToAc(crOut);
+			const effectiveCurrent = expectedBaseScore == null ? currWithoutEnchants : expectedBaseScore;
+			const target = ScaleCreature._getScaledToRatio(effectiveCurrent, idealAcIn, idealAcOut);
+			let targetNoShield = target;
+			const acGain = target - effectiveCurrent;
+
+			const dexMismatch = acGain - dexGain;
+
+			const adjustDex = () => {
+				if (mon.dexOld == null) mon.dexOld = mon.dex;
+				mon.dex = ScaleCreature._calcNewAbility(mon, "dex", Parser.getAbilityModNumber(mon.dex) + dexMismatch);
+				canAdjustDex = false;
+				return true;
+			};
+
+			const handleNoArmor = () => {
+				if (dexMismatch > 0) {
+					if (canAdjustDex) {
+						adjustDex();
+						return target;
+					} else {
+						return { // fill the gap with natural armor
+							ac: target,
+							from: ["natural armor"]
+						}
+					}
+				} else if (dexMismatch < 0 && canAdjustDex) { // increase/reduce DEX to move the AC up/down
+					adjustDex();
+					return target;
+				} else return target; // AC adjustment perfectly matches DEX adjustment; or there's nothing we can do because of a previous DEX adjustment
+			};
+
+			// "FROM" ADJUSTERS ========================================================================================
+
+			const handleMageArmor = () => {
+				// if there's mage armor, try adjusting dex
+				if (isMageArmor()) {
+					if (canAdjustDex) {
+						acItem.ac = target;
+						return adjustDex();
+					} else {
+						acItem.ac = 13 + Parser.getAbilityModNumber(mon.dex);
+						return true; // mage armor means there was no other armor, so stop here
+					}
+				}
+				return false;
+			};
+
+			const handleShield = () => {
+				// if there's a shield, try dropping it
+				const DUAL_SHIELD_AC = 3; // dual-wield shields is 3 AC, according to VGM's Fire Giant Dreadnought
+
+				if (acItem.from) {
+					const fromShields = acItem.from.filter(f => this._ALL_SHIELD_VARIANTS.find(s => f._.includes(`@item ${s.tag}`)));
+					if (fromShields.length) {
+						if (fromShields.length > 1) throw new Error("AC contained multiple shields!"); // should be impossible
+
+						// check if shields are an important part of this creature
+						// if they have abilities/etc which refer to the shield, don't remove the shield
+						const shieldRequired = mon._shieldRequired != null ? mon._shieldRequired : (() => {
+							const checkShields = (prop) => {
+								if (!mon[prop]) return false;
+								for (const it of mon[prop]) {
+									if (it.name && it.name.toLowerCase().includes("shield")) return true;
+									if (it.entries && JSON.stringify(it.entries).match(/shield/i)) return true;
+								}
+							};
+							return mon._shieldRequired = checkShields("trait")
+								|| checkShields("action")
+								|| checkShields("reaction")
+								|| checkShields("legendary");
+						})();
+						mon._shieldDropped = false;
+
+						const fromShield = fromShields[0]._;
+						const idx = acItem.from.findIndex(it => it === fromShield);
+
+						if (fromShield.endsWith("|shields}")) {
+							targetNoShield -= DUAL_SHIELD_AC;
+
+							if (!shieldRequired && (acGain <= -DUAL_SHIELD_AC)) {
+								acItem.from.splice(idx, 1);
+								acItem.ac -= DUAL_SHIELD_AC;
+								mon._shieldDropped = true;
+								if (acItem.ac === target) return true;
+							}
+						} else {
+							const shieldVal = this._ALL_SHIELD_VARIANTS.find(s => fromShield.includes(s.tag));
+							targetNoShield -= shieldVal.mod;
+
+							if (!shieldRequired && (acGain <= -shieldVal.mod)) {
+								acItem.from.splice(idx, 1);
+								acItem.ac -= shieldVal.mod;
+								mon._shieldDropped = true;
+								if (acItem.ac === target) return true;
+							}
+						}
+					}
+				}
+				return false;
+			};
+
+			// FIXME this can result in armor with strength requirements greater than the user can manage
+			const handleHeavyArmor = () => {
+				// if there's heavy armor, try adjusting it
+				const PL3_PLATE = 21;
+
+				const heavyTags = this._ALL_HEAVY_VARIANTS.map(it => it.tag);
+
+				const isHeavy = (ac) => {
+					return ac >= 14 && ac <= PL3_PLATE; // ring mail (14) to +3 Plate (21)
+				};
+
+				const isBeyondHeavy = (ac) => {
+					return ac > PL3_PLATE; // more than +3 plate
+				};
+
+				const getHeavy = (ac) => {
+					const nonEnch = Object.keys(this._HEAVY).find(armor => this._HEAVY[armor] === ac);
+					if (nonEnch) return `${nonEnch}|phb`;
+					switch (ac) {
+						case 19:
+							return [`plate armor +1|dmg`, `splint armor +2|dmg`][RollerUtil.roll(1, ScaleCreature._rng)];
+						case 20:
+							return `plate armor +2|dmg`;
+						case PL3_PLATE:
+							return `plate armor +3|dmg`
+					}
+				};
+
+				if (acItem.from) {
+					for (let i = 0; i < acItem.from.length; ++i) {
+						const heavyTag = this._isStringContainsTag(heavyTags, acItem.from[i]._);
+						if (heavyTag) {
+							if (isHeavy(targetNoShield)) {
+								const bumpOne = targetNoShield === 15; // there's no heavy armor with 15 AC
+								if (bumpOne) targetNoShield++;
+								acItem.from[i]._ = this._replaceTag(acItem.from[i]._, heavyTag, getHeavy(targetNoShield));
+								acItem.ac = target + (bumpOne ? 1 : 0);
+								return true;
+							} else if (this._canDropShield(mon) && isHeavy(target)) {
+								const targetWithBump = target + (target === 15 ? 1 : 0); // there's no heavy armor with 15 AC
+								acItem.from[i]._ = this._replaceTag(acItem.from[i]._, heavyTag, getHeavy(targetWithBump));
+								acItem.ac = targetWithBump;
+								this._dropShield(acItem);
+								return true;
+							} else if (isBeyondHeavy(targetNoShield)) { // cap it at +3 plate and call it a day
+								const max = PL3_PLATE;
+								acItem.from[i]._ = this._replaceTag(acItem.from[i]._, heavyTag, getHeavy(max));
+								acItem.ac = max;
+								return true;
+							} else { // drop to medium
+								const [tagBase, tagMod] = this._getAcBaseAndMod(this._LIGHT, heavyTag);
+								const tagAc = tagBase + tagMod;
+								acItem.from[i]._ = this._replaceTag(acItem.from[i]._, heavyTag, `half plate armor|phb`);
+								acItem.ac = (acItem.ac - tagAc) + 15 + Math.min(2, Parser.getAbilityModNumber(mon.dex));
+								return false;
+							}
+						}
+					}
+				}
+				return false;
+			};
+
+			const handleMediumArmor = () => {
+				// if there's medium armor, try adjusting dex, then try adjusting it
+				const mediumTags = this._ALL_MEDIUM_VARIANTS.map(it => it.tag);
+
+				const isMedium = (ac, asPos) => {
+					const min = 12 + (canAdjustDex ? -5 : Parser.getAbilityModNumber(mon.dex)); // hide; 12
+					const max = 18 + (canAdjustDex ? 2 : Math.min(2, Parser.getAbilityModNumber(mon.dex))); // half-plate +3; 18
+					if (asPos) return ac < min ? -1 : ac > max ? 1 : 0;
+					return ac >= min && ac <= max;
+				};
+
+				const getMedium = (ac, curArmor) => {
+					const getByBase = (base) => {
+						switch (base) {
+							case 14:
+								return [`scale mail|phb`, `breastplate|phb`][RollerUtil.roll(1, ScaleCreature._rng)];
+							case 16:
+								return [`half plate armor +1|dmg`, `breastplate +2|dmg`, `scale mail +2|dmg`][RollerUtil.roll(2, ScaleCreature._rng)];
+							case 17:
+								return `half plate armor +2|dmg`;
+							case 18:
+								return `half plate armor +3|dmg`;
+							default: {
+								const nonEnch = Object.keys(this._MEDIUM).find(it => this._MEDIUM[it] === base);
+								return `${nonEnch}|phb`;
+							}
+						}
+					};
+
+					if (canAdjustDex) {
+						let fromArmor = curArmor.ac;
+						let maxFromArmor = fromArmor + 2;
+						let minFromArmor = fromArmor - 5;
+
+						const withinDexRange = () => {
+							return ac >= minFromArmor && ac <= maxFromArmor;
+						};
+
+						const getTotalAc = () => {
+							return fromArmor + Math.min(2, Parser.getAbilityModNumber(mon.dex));
+						};
+
+						let loops = 0;
+						while (1) {
+							if (loops > 1000) throw new Error(`Failed to find valid light armor!`);
+
+							if (withinDexRange()) {
+								canAdjustDex = false;
+								if (mon.dexOld == null) mon.dexOld = mon.dex;
+
+								if (ac > getTotalAc()) mon.dex += 2;
+								else mon.dex -= 2;
+							} else {
+								if (ac < minFromArmor) fromArmor -= 1;
+								else fromArmor += 1;
+								if (fromArmor < 12 || fromArmor > 18) throw Error("Should never occur!"); // sanity check
+								maxFromArmor = fromArmor + 2;
+								minFromArmor = fromArmor - 5;
+							}
+
+							if (getTotalAc() === ac) break;
+							loops++;
+						}
+
+						return getByBase(fromArmor);
+					} else {
+						const dexOffset = Math.min(Parser.getAbilityModNumber(mon.dex), 2);
+						return getByBase(ac - dexOffset);
+					}
+				};
+
+				if (acItem.from) {
+					for (let i = 0; i < acItem.from.length; ++i) {
+						const mediumTag = this._isStringContainsTag(mediumTags, acItem.from[i]._);
+						if (mediumTag) {
+							const [tagBase, tagMod] = this._getAcBaseAndMod(this._MEDIUM, mediumTag);
+							const tagAc = tagBase + tagMod;
+							if (isMedium(targetNoShield)) {
+								acItem.from[i]._ = this._replaceTag(acItem.from[i]._, mediumTag, getMedium(targetNoShield, {tag: mediumTag, ac: tagAc}));
+								acItem.ac = target;
+								return true;
+							} else if (this._canDropShield(mon) && isMedium(target)) {
+								acItem.from[i]._ = this._replaceTag(acItem.from[i]._, mediumTag, getMedium(target, {tag: mediumTag, ac: tagAc}));
+								acItem.ac = target;
+								this._dropShield(acItem);
+								return true;
+							} else if (canAdjustDex && isMedium(targetNoShield, true) === -1) { // drop to light
+								acItem.from[i]._ = this._replaceTag(acItem.from[i]._, mediumTag, `studded leather armor|phb`);
+								acItem.ac = (acItem.ac - tagAc - Math.min(2, Parser.getAbilityModNumber(mon.dex))) + 12 + Parser.getAbilityModNumber(mon.dex);
+								return false;
+							} else {
+								// if we need more AC, switch to heavy, and restart the conversion
+								acItem.from[i]._ = this._replaceTag(acItem.from[i]._, mediumTag, `ring mail|phb`);
+								acItem.ac = (acItem.ac - tagAc - Math.min(2, Parser.getAbilityModNumber(mon.dex))) + 14;
+								return -1;
+							}
+						}
+					}
+				}
+				return false;
+			};
+
+			const handleLightArmor = () => {
+				// if there's light armor, try adjusting dex, then try adjusting it
+				const lightTags = this._ALL_LIGHT_VARIANTS.map(it => it.tag);
+
+				const isLight = (ac, asPos) => {
+					const min = 11 + (canAdjustDex ? -5 : Parser.getAbilityModNumber(mon.dex)); // padded/leather; 11
+					const max = 15 + (canAdjustDex ? 100 : Parser.getAbilityModNumber(mon.dex)); // studded leather +3; 15
+					if (asPos) return ac < min ? -1 : ac > max ? 1 : 0;
+					return ac >= min && ac <= max;
+				};
+
+				const getLight = (ac, curArmor) => {
+					const getByBase = (base) => {
+						switch (base) {
+							case 11:
+								return [`padded armor|phb`, `leather armor|phb`][RollerUtil.roll(1, ScaleCreature._rng)];
+							case 12:
+								return `studded leather armor|phb`;
+							case 13:
+								return [`padded armor +1|dmg`, `leather armor +1|dmg`][RollerUtil.roll(1, ScaleCreature._rng)];
+							case 14:
+								return [`padded armor +2|dmg`, `leather armor +2|dmg`, `studded leather armor +1|dmg`][RollerUtil.roll(2, ScaleCreature._rng)];
+							case 15:
+								return `studded leather armor +2|dmg`;
+						}
+					};
+
+					if (canAdjustDex) {
+						let fromArmor = curArmor.ac;
+						let minFromArmor = fromArmor - 5;
+
+						const withinDexRange = () => {
+							return ac >= minFromArmor;
+						};
+
+						const getTotalAc = () => {
+							return fromArmor + Parser.getAbilityModNumber(mon.dex);
+						};
+
+						let loops = 0;
+						while (1) {
+							if (loops > 1000) throw new Error(`Failed to find valid light armor!`);
+
+							if (withinDexRange()) {
+								canAdjustDex = false;
+								if (mon.dexOld == null) mon.dexOld = mon.dex;
+
+								if (ac > getTotalAc()) mon.dex += 2;
+								else mon.dex -= 2;
+							} else {
+								if (ac < minFromArmor) fromArmor -= 1;
+								else fromArmor += 1;
+								if (fromArmor < 11 || fromArmor > 15) throw Error("Should never occur!"); // sanity check
+								minFromArmor = fromArmor - 5;
+							}
+
+							if (getTotalAc() === ac) break;
+							loops++;
+						}
+
+						return getByBase(fromArmor);
+					} else {
+						const dexOffset = Parser.getAbilityModNumber(mon.dex);
+						return getByBase(ac - dexOffset);
+					}
+				};
+
+				if (acItem.from) {
+					for (let i = 0; i < acItem.from.length; ++i) {
+						const lightTag = this._isStringContainsTag(lightTags, acItem.from[i]._);
+						if (lightTag) {
+							const [tagBase, tagMod] = this._getAcBaseAndMod(this._LIGHT, lightTag);
+							const tagAc = tagBase + tagMod;
+							if (isLight(targetNoShield)) {
+								acItem.from[i]._ = this._replaceTag(acItem.from[i]._, lightTag, getLight(targetNoShield, {tag: lightTag, ac: tagAc}));
+								acItem.ac = target;
+								return true;
+							} else if (this._canDropShield(mon) && isLight(target)) {
+								acItem.from[i]._ = this._replaceTag(acItem.from[i]._, lightTag, getLight(target, {tag: lightTag, ac: tagAc}));
+								acItem.ac = target;
+								this._dropShield(acItem);
+								return true;
+							} else if (!canAdjustDex && isLight(targetNoShield, true) === -1) { // drop armor
+								if (acItem.from.length === 1) { // revert to pure numerical
+									acItem._droppedArmor = true;
+									return -1;
+								} else { // revert to base 10
+									acItem.from.splice(i, 1);
+									acItem.ac = (acItem.ac - tagAc) + 10;
+									return -1;
+								}
+							} else {
+								// if we need more, switch to medium, and restart the conversion
+								acItem.from[i]._ = this._replaceTag(acItem.from[i]._, lightTag, `chain shirt|phb`);
+								acItem.ac = (acItem.ac - tagAc - Parser.getAbilityModNumber(mon.dex)) + 13 + Math.min(2, Parser.getAbilityModNumber(mon.dex));
+								return -1;
+							}
+						}
+					}
+				}
+				return false;
+			};
+
+			const handleNaturalArmor = () => {
+				// if there's natural armor, try adjusting dex, then try adjusting it
+
+				if (acItem.from && acItem.from.map(it => it._).includes("natural armor")) {
+					if (canAdjustDex) {
+						acItem.ac = target;
+						return adjustDex();
+					} else {
+						acItem.ac = target; // natural armor of all modifiers is still just "natural armor," so this works
+						return true;
+					}
+				}
+				return false;
+			};
+
+			if (acItem.ac && !acItem._droppedArmor) {
+				const toRun = [
+					handleMageArmor,
+					handleShield,
+					handleHeavyArmor,
+					handleMediumArmor,
+					handleLightArmor,
+					handleNaturalArmor
+				];
+				let lastVal = 0;
+				for (let i = 0; i < toRun.length; ++i) {
+					lastVal = toRun[i]();
+					if (lastVal === -1) return null;
+					else if (lastVal) break;
+				}
+
+				// if there was no reasonable way to adjust the AC, forcibly set it here as a fallback
+				if (!lastVal) acItem.ac = target;
+				return acItem;
+			} else {
+				return handleNoArmor();
+			}
+		}
 	},
 
 	/**
@@ -1316,7 +1339,15 @@
 					if (curDc === outDc) return m0;
 
 					if (["int", "wis", "cha"].includes(castingAbility)) {
-						const oldKey = `${castingAbility}Old`;
+						// Written out in long-form to make ctrl-F easier
+						const oldKey = (() => {
+							switch (castingAbility) {
+								case "int": return "intOld";
+								case "wis": return "wisOld";
+								case "cha": return "chaOld";
+								default: throw new Error(`Unimplemented!`);
+							}
+						})();
 						if (mon[oldKey] == null) {
 							mon[oldKey] = mon[castingAbility];
 							const dcDiff = outDc - origDc;
@@ -1646,8 +1677,14 @@
 
 		// update ability scores, as required
 		const updateAbility = (prop) => {
-			const tempKey = `_${prop}TmpMod`;
-			const oldKey = `${prop}Old`;
+			// Written out in full to make ctrl-F easier
+			const [tempKey, oldKey] = (() => {
+				switch (prop) {
+					case "str": return [`_strTmpMod`, `strOld`];
+					case "dex": return [`_dexTmpMod`, `dexOld`];
+					default: throw new Error(`Unimplemented!`);
+				}
+			})();
 			if (mon[tempKey] != null) {
 				mon[oldKey] = mon[prop];
 				mon[prop] = this._calcNewAbility(mon, prop, mon[tempKey])
@@ -1666,7 +1703,17 @@
 		};
 
 		TO_HANDLE.forEach(abil => {
-			const abilOld = `${abil}Old`;
+			const abilOld = (() => {
+				// Written out in full to make ctrl-F easier
+				switch (abil) {
+					case "str": return `strOld`;
+					case "dex": return `dexOld`;
+					case "int": return `intOld`;
+					case "wis": return `wisOld`;
+					case "con": return `conOld`;
+					default: throw new Error(`Unimplemented!`);
+				}
+			})();
 			if (mon[abilOld] != null) {
 				const diff = Parser.getAbilityModNumber(mon[abil]) - Parser.getAbilityModNumber(mon[abilOld]);
 

@@ -12,13 +12,15 @@ class ActionsPage extends ListPage {
 			displayFn: StrUtil.uppercaseFirst,
 			itemSortFn: SortUtil.ascSortLower
 		});
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action", "SRD"]});
 
 		super({
 			dataSource: "data/actions.json",
 
 			filters: [
 				sourceFilter,
-				timeFilter
+				timeFilter,
+				miscFilter
 			],
 			filterSource: sourceFilter,
 
@@ -31,10 +33,13 @@ class ActionsPage extends ListPage {
 
 		this._sourceFilter = sourceFilter;
 		this._timeFilter = timeFilter;
+		this._miscFilter = miscFilter;
 	}
 
 	getListItem (it, anI, isExcluded) {
 		it._fTime = it.time ? it.time.map(it => it.unit || it) : null;
+		it._fMisc = it.srd ? ["SRD"] : [];
+		if (it.fromVariant) it._fMisc.push("Optional/Variant Action");
 
 		if (!isExcluded) {
 			// populate filters
@@ -83,7 +88,8 @@ class ActionsPage extends ListPage {
 			return this._filterBox.toDisplay(
 				f,
 				it.source,
-				it._fTime
+				it._fTime,
+				it._fMisc
 			);
 		});
 		FilterBox.selectFirstVisible(this._dataList);

@@ -562,11 +562,7 @@ const BookUtil = {
 		if (BookUtil.curRender.chapter === -1
 			&& hashParts.length && hashParts[0] !== "-1"
 			&& UrlUtil.encodeForHash(BookUtil.curRender.curBookId) === UrlUtil.encodeForHash(bookId)) {
-			window.history.replaceState(
-				{},
-				document.title,
-				`${location.origin}${location.pathname}#${[bookIdRaw, -1, ...hashParts.slice(1)].join(HASH_PART_SEP)}`
-			);
+			Hist.replaceHistoryHash([bookIdRaw, -1, ...hashParts.slice(1)].join(HASH_PART_SEP));
 			return BookUtil.booksHashChange();
 		}
 

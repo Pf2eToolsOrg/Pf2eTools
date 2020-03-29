@@ -30,6 +30,9 @@ class RenderDeities {
 				renderStack
 			);
 		}
+
+		if (deity.symbolImg) deity.symbolImg.style = deity.symbolImg.style || "deity-symbol";
+
 		return `
 			${reprintIndex ? `
 				<tr><td colspan="6">

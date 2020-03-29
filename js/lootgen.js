@@ -521,81 +521,81 @@ const randomLootTables = {
 		Minor: {},
 		Other: {}
 	},
-	_rarityOrder: ["Common", "Uncommon", "Rare", "Very Rare", "Legendary"],
+	_rarityOrder: ["common", "uncommon", "rare", "very rare", "legendary"],
 	_tableItemCountPerLevelTier: {
 		1: {
-			"Major": {
-				"Uncommon": 0,
-				"Rare": 0,
-				"Very Rare": 0,
-				"Legendary": 0
+			"major": {
+				"uncommon": 0,
+				"rare": 0,
+				"very rare": 0,
+				"legendary": 0
 			},
-			"Minor": {
-				"Common": 0,
-				"Uncommon": 0,
-				"Rare": 0,
-				"Very Rare": 0,
-				"Legendary": 0
+			"minor": {
+				"common": 0,
+				"uncommon": 0,
+				"rare": 0,
+				"very rare": 0,
+				"legendary": 0
 			}
 		},
 		4: {
-			"Major": {
-				"Uncommon": 2,
-				"Rare": 0,
-				"Very Rare": 0,
-				"Legendary": 0
+			"major": {
+				"uncommon": 2,
+				"rare": 0,
+				"very rare": 0,
+				"legendary": 0
 			},
-			"Minor": {
-				"Common": 6,
-				"Uncommon": 2,
-				"Rare": 1,
-				"Very Rare": 0,
-				"Legendary": 0
+			"minor": {
+				"common": 6,
+				"uncommon": 2,
+				"rare": 1,
+				"very rare": 0,
+				"legendary": 0
 			}
 		},
 		10: {
-			"Major": {
-				"Uncommon": 5,
-				"Rare": 1,
-				"Very Rare": 0,
-				"Legendary": 0
+			"major": {
+				"uncommon": 5,
+				"rare": 1,
+				"very rare": 0,
+				"legendary": 0
 			},
-			"Minor": {
-				"Common": 10,
-				"Uncommon": 12,
-				"Rare": 5,
-				"Very Rare": 1,
-				"Legendary": 0
+			"minor": {
+				"common": 10,
+				"uncommon": 12,
+				"rare": 5,
+				"very rare": 1,
+				"legendary": 0
 			}
 		},
 		16: {
-			"Major": {
-				"Uncommon": 1,
-				"Rare": 2,
-				"Very Rare": 2,
-				"Legendary": 1
+			"major": {
+				"uncommon": 1,
+				"rare": 2,
+				"very rare": 2,
+				"legendary": 1
 			},
-			"Minor": {
-				"Common": 3,
-				"Uncommon": 6,
-				"Rare": 9,
-				"Very Rare": 5,
-				"Legendary": 1
+			"minor": {
+				"common": 3,
+				"uncommon": 6,
+				"rare": 9,
+				"very rare": 5,
+				"legendary": 1
 			}
 		},
 		20: {
-			"Major": {
-				"Uncommon": 0,
-				"Rare": 1,
-				"Very Rare": 2,
-				"Legendary": 3
+			"major": {
+				"uncommon": 0,
+				"rare": 1,
+				"very rare": 2,
+				"legendary": 3
 			},
-			"Minor": {
-				"Common": 0,
-				"Uncommon": 0,
-				"Rare": 4,
-				"Very Rare": 9,
-				"Legendary": 6
+			"minor": {
+				"common": 0,
+				"uncommon": 0,
+				"rare": 4,
+				"very rare": 9,
+				"legendary": 6
 			}
 		}
 	},
@@ -752,18 +752,18 @@ const randomLootTables = {
 
 	getNumberOfItemsNeeded (charLevel, estimateBetweenLevels = false, accumulateTiers = true) {
 		const count = {
-			"Major": {
-				"Uncommon": 0,
-				"Rare": 0,
-				"Very Rare": 0,
-				"Legendary": 0
+			"major": {
+				"uncommon": 0,
+				"rare": 0,
+				"very rare": 0,
+				"legendary": 0
 			},
-			"Minor": {
-				"Common": 0,
-				"Uncommon": 0,
-				"Rare": 0,
-				"Very Rare": 0,
-				"Legendary": 0
+			"minor": {
+				"common": 0,
+				"uncommon": 0,
+				"rare": 0,
+				"very rare": 0,
+				"legendary": 0
 			}
 		};
 

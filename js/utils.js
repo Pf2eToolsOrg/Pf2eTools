@@ -4,7 +4,7 @@
 // ************************************************************************* //
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.101.0"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.102.1"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -670,10 +670,14 @@ Parser.acToFull = function (ac, renderer) {
 		const cur = ac[i];
 		const nxt = ac[i + 1];
 
-		if (cur.ac) {
+		if (cur.special) {
+			if (inBraces) inBraces = false;
+
+			stack += cur.special;
+		} else if (cur.ac) {
 			const isNxtBraces = nxt && nxt.braces;
 
-			if (i === 0 && cur.braces) {
+			if (!inBraces && cur.braces) {
 				stack += "(";
 				inBraces = true;
 			}
@@ -702,19 +706,19 @@ Parser.acToFull = function (ac, renderer) {
 
 			if (cur.condition) stack += ` ${renderer.render(cur.condition)}`;
 
-			if (cur.braces) {
-				if (!isNxtBraces) {
-					stack += ")";
-					inBraces = false;
-				}
+			if (inBraces && !isNxtBraces) {
+				stack += ")";
+				inBraces = false;
 			}
 		} else {
 			stack += cur;
 		}
 
 		if (nxt) {
-			if (nxt.braces) stack += inBraces ? "; " : " (";
-			else stack += ", ";
+			if (nxt.braces) {
+				stack += inBraces ? "; " : " (";
+				inBraces = true;
+			} else stack += ", ";
 		}
 	}
 	if (inBraces) stack += ")";
@@ -1652,30 +1656,30 @@ Parser.alignmentAbvToFull = function (alignment) {
 			return alignment.special;
 		} else {
 			// e.g. `{alignment: ["N", "G"], chance: 50}` or `{alignment: ["N", "G"]}`
-			return `${alignment.alignment.map(a => Parser.alignmentAbvToFull(a)).join(" ")}${alignment.chance ? ` (${alignment.chance}%)` : ""}`;
+			return `${alignment.alignment.map(a => Parser.alignmentAbvToFull(a)).join(" ")}${alignment.chance ? ` (${alignment.chance}%)` : ""}${alignment.note ? ` (${alignment.note})` : ""}`;
 		}
 	} else {
 		alignment = alignment.toUpperCase();
 		switch (alignment) {
 			case "L":
-				return "Lawful";
+				return "lawful";
 			case "N":
-				return "Neutral";
+				return "neutral";
 			case "NX":
-				return "Neutral (Law/Chaos axis)";
+				return "neutral (law/chaos axis)";
 			case "NY":
-				return "Neutral (Good/Evil axis)";
+				return "neutral (good/evil axis)";
 			case "C":
-				return "Chaotic";
+				return "chaotic";
 			case "G":
-				return "Good";
+				return "good";
 			case "E":
-				return "Evil";
+				return "evil";
 			// "special" values
 			case "U":
-				return "Unaligned";
+				return "unaligned";
 			case "A":
-				return "Any alignment";
+				return "any alignment";
 		}
 		return alignment;
 	}
@@ -1686,7 +1690,7 @@ Parser.alignmentListToFull = function (alignList) {
 		if (alignList.some(it => typeof it === "string")) throw new Error(`Mixed alignment types: ${JSON.stringify(alignList)}`);
 		// filter out any nonexistent alignments, as we don't care about "alignment does not exist" if there are other alignments
 		alignList = alignList.filter(it => it.alignment === undefined || it.alignment != null);
-		return alignList.map(it => it.special != null || it.chance != null ? Parser.alignmentAbvToFull(it) : Parser.alignmentListToFull(it.alignment)).join(" or ");
+		return alignList.map(it => it.special != null || it.chance != null || it.note != null ? Parser.alignmentAbvToFull(it) : Parser.alignmentListToFull(it.alignment)).join(" or ");
 	} else {
 		// assume all single-length arrays can be simply parsed
 		if (alignList.length === 1) return Parser.alignmentAbvToFull(alignList[0]);
@@ -1695,20 +1699,20 @@ Parser.alignmentListToFull = function (alignList) {
 			return alignList.map(a => Parser.alignmentAbvToFull(a)).join(" ");
 		}
 		if (alignList.length === 3) {
-			if (alignList.includes("NX") && alignList.includes("NY") && alignList.includes("N")) return "Any Neutral Alignment";
+			if (alignList.includes("NX") && alignList.includes("NY") && alignList.includes("N")) return "any neutral alignment";
 		}
 		// longer arrays should have a custom mapping
 		if (alignList.length === 5) {
-			if (!alignList.includes("G")) return "Any Non-Good Alignment";
-			if (!alignList.includes("E")) return "Any Non-Evil Alignment";
-			if (!alignList.includes("L")) return "Any Non-Lawful Alignment";
-			if (!alignList.includes("C")) return "Any Non-Chaotic Alignment";
+			if (!alignList.includes("G")) return "any non-good alignment";
+			if (!alignList.includes("E")) return "any non-evil alignment";
+			if (!alignList.includes("L")) return "any non-lawful alignment";
+			if (!alignList.includes("C")) return "any non-chaotic alignment";
 		}
 		if (alignList.length === 4) {
-			if (!alignList.includes("L") && !alignList.includes("NX")) return "Any Chaotic Alignment";
-			if (!alignList.includes("G") && !alignList.includes("NY")) return "Any Evil Alignment";
-			if (!alignList.includes("C") && !alignList.includes("NX")) return "Any Lawful Alignment";
-			if (!alignList.includes("E") && !alignList.includes("NY")) return "Any Good Alignment";
+			if (!alignList.includes("L") && !alignList.includes("NX")) return "any chaotic alignment";
+			if (!alignList.includes("G") && !alignList.includes("NY")) return "any evil alignment";
+			if (!alignList.includes("C") && !alignList.includes("NX")) return "any lawful alignment";
+			if (!alignList.includes("E") && !alignList.includes("NY")) return "any good alignment";
 		}
 		throw new Error(`Unmapped alignment: ${JSON.stringify(alignList)}`);
 	}
@@ -1723,7 +1727,7 @@ Parser.weightToFull = function (lbs, isSmallUnit) {
 	].filter(Boolean).join(", ");
 };
 
-Parser.ITEM_RARITIES = ["None", "Common", "Uncommon", "Rare", "Very Rare", "Legendary", "Artifact", "Unknown", "Unknown (Magic)", "Other"];
+Parser.ITEM_RARITIES = ["none", "common", "uncommon", "rare", "very rare", "legendary", "artifact", "unknown", "unknown (magic)", "other"];
 
 Parser.CAT_ID_CREATURE = 1;
 Parser.CAT_ID_SPELL = 2;
@@ -2382,6 +2386,7 @@ SRC_UAFRW = `${SRC_UA_PREFIX}FighterRogueWizard`;
 SRC_UA2020SC1 = `${SRC_UA_PREFIX}2020SubclassesPt1`;
 SRC_UA2020SC2 = `${SRC_UA_PREFIX}2020SubclassesPt2`;
 SRC_UA2020SC3 = `${SRC_UA_PREFIX}2020SubclassesPt3`;
+SRC_UA2020SMT = `${SRC_UA_PREFIX}2020SpellsAndMagicTattoos`;
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -2520,6 +2525,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UAFRW] = `${UA_PREFIX}Fighter, Rogue, and Wizard`
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC1] = `${UA_PREFIX}2020 Subclasses, Part 1`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC2] = `${UA_PREFIX}2020 Subclasses, Part 2`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC3] = `${UA_PREFIX}2020 Subclasses, Part 3`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SMT] = `${UA_PREFIX}2020 Spells and Magic Tattoos`;
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -2645,9 +2651,10 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UACDW] = "UACDW";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAFRR] = "UAFRR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UACFV] = "UACFV";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAFRW] = "UAFRW";
-Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC1] = "UA20S1";
-Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC2] = "UA20S2";
-Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC3] = "UA20S3";
+Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC1] = "UA2S1";
+Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC2] = "UA2S2";
+Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC3] = "UA2S3";
+Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SMT] = "UA2SMT";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -2774,6 +2781,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_UAFRW] = "2019-11-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC1] = "2020-01-14";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC2] = "2020-02-04";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC3] = "2020-02-24";
+Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SMT] = "2020-03-26";
 
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_LMoP,
@@ -2827,36 +2835,36 @@ Parser.SOURCES_NON_STANDARD_WOTC = new Set([
 ]);
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
-	"A": "Ammunition",
-	"AF": "Ammunition",
-	"AT": "Artisan's Tools",
-	"EM": "Eldritch Machine",
-	"EXP": "Explosive",
-	"G": "Adventuring Gear",
-	"GS": "Gaming Set",
-	"HA": "Heavy Armor",
-	"INS": "Instrument",
-	"LA": "Light Armor",
-	"M": "Melee Weapon",
-	"MA": "Medium Armor",
-	"MNT": "Mount",
-	"GV": "Generic Variant",
-	"P": "Potion",
-	"R": "Ranged Weapon",
-	"RD": "Rod",
-	"RG": "Ring",
-	"S": "Shield",
-	"SC": "Scroll",
-	"SCF": "Spellcasting Focus",
-	"OTH": "Other",
-	"T": "Tools",
-	"TAH": "Tack and Harness",
-	"TG": "Trade Good",
-	"$": "Treasure",
-	"VEH": "Vehicle (land)",
-	"SHP": "Vehicle (water)",
-	"AIR": "Vehicle (air)",
-	"WD": "Wand"
+	"A": "ammunition",
+	"AF": "ammunition",
+	"AT": "artisan's tools",
+	"EM": "eldritch machine",
+	"EXP": "explosive",
+	"G": "adventuring gear",
+	"GS": "gaming set",
+	"HA": "heavy armor",
+	"INS": "instrument",
+	"LA": "light armor",
+	"M": "melee weapon",
+	"MA": "medium armor",
+	"MNT": "mount",
+	"GV": "generic variant",
+	"P": "potion",
+	"R": "ranged weapon",
+	"RD": "rod",
+	"RG": "ring",
+	"S": "shield",
+	"SC": "scroll",
+	"SCF": "spellcasting focus",
+	"OTH": "other",
+	"T": "tools",
+	"TAH": "tack and harness",
+	"TG": "trade good",
+	"$": "treasure",
+	"VEH": "vehicle (land)",
+	"SHP": "vehicle (water)",
+	"AIR": "vehicle (air)",
+	"WD": "wand"
 };
 
 Parser.DMGTYPE_JSON_TO_FULL = {
@@ -5158,9 +5166,18 @@ SortUtil = {
 		"shapechanger"
 	],
 	monTraitSort: (a, b) => {
-		if (!a && !b) return 0;
-		const aClean = a.toLowerCase().trim();
-		const bClean = b.toLowerCase().trim();
+		if (a.sort != null && b.sort != null) return a.sort - b.sort;
+		if (a.sort != null && b.sort == null) return -1;
+		if (a.sort == null && b.sort != null) return 1;
+
+		if (!a.name && !b.name) return 0;
+		const aClean = a.name.toLowerCase().trim();
+		const bClean = b.name.toLowerCase().trim();
+
+		const isOnlyA = a.name.endsWith(" Only)");
+		const isOnlyB = b.name.endsWith(" Only)");
+		if (!isOnlyA && isOnlyB) return -1;
+		if (isOnlyA && !isOnlyB) return 1;
 
 		const ixA = SortUtil._MON_TRAIT_ORDER.indexOf(aClean);
 		const ixB = SortUtil._MON_TRAIT_ORDER.indexOf(bClean);
@@ -5440,6 +5457,8 @@ DataUtil = {
 				const hash = UrlUtil.URL_TO_HASH_BUILDER[page](entry._copy);
 				const it = impl._mergeCache[hash] || DataUtil.generic._pMergeCopy_search(impl, page, entryList, entry, options);
 				if (!it) return;
+				// Handle recursive copy
+				if (it._copy) await DataUtil.generic._pMergeCopy(impl, page, entryList, it, options);
 				return DataUtil.generic._pApplyCopy(impl, MiscUtil.copy(it), entry, options);
 			}
 		},
@@ -5489,6 +5508,8 @@ DataUtil = {
 				delete copyMeta._trait;
 			}
 
+			const copyToRootProps = new Set(Object.keys(copyTo));
+
 			// copy over required values
 			Object.keys(copyFrom).forEach(k => {
 				if (copyTo[k] === null) return delete copyTo[k];
@@ -5502,7 +5523,7 @@ DataUtil = {
 			// apply any root racial properties after doing base copy
 			if (racials && racials.apply._root) {
 				Object.entries(racials.apply._root)
-					.filter(([k, v]) => copyTo[k] === undefined) // avoid overwriting any real root properties
+					.filter(([k, v]) => !copyToRootProps.has(k)) // avoid overwriting any real root properties
 					.forEach(([k, v]) => copyTo[k] = v);
 			}
 
@@ -5913,19 +5934,19 @@ DataUtil = {
 		async pPreloadMeta () {
 			if (DataUtil.monster._isMetaLoaded) return;
 
-			const meta = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/meta.json`);
-			DataUtil.monster.populateMetaReference(meta);
+			const legendaryGroups = await DataUtil.legendaryGroup.pLoadAll();
+			DataUtil.monster.populateMetaReference({legendaryGroup: legendaryGroups});
 			DataUtil.monster._isMetaLoaded = true;
 		},
 
 		async pLoadAll () {
-			const [index, meta] = await Promise.all([
+			const [index, legendaryGroups] = await Promise.all([
 				DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`),
-				DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/meta.json`)
+				DataUtil.legendaryGroup.pLoadAll()
 			]);
 
 			if (!DataUtil.monster._isMetaLoaded) {
-				DataUtil.monster.populateMetaReference(meta);
+				DataUtil.monster.populateMetaReference({legendaryGroup: legendaryGroups});
 				DataUtil.monster._isMetaLoaded = true;
 			}
 
@@ -6095,6 +6116,12 @@ DataUtil = {
 				});
 			});
 			return combined;
+		}
+	},
+
+	legendaryGroup: {
+		async pLoadAll () {
+			return (await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/legendarygroups.json`)).legendaryGroup;
 		}
 	},
 
@@ -7593,7 +7620,7 @@ BrewUtil = {
 		if (!source) return "";
 		source = source.toLowerCase();
 		const color = BrewUtil.sourceJsonToColor(source);
-		if (color) return `style="color: #${color};"`;
+		if (color) return `style="color: #${color}; border-color: #${color}; text-decoration-color: #${color};"`;
 		return "";
 	},
 
@@ -8377,7 +8404,8 @@ ExtensionUtil = {
 	ACTIVE: false,
 
 	_doSend (type, data) {
-		window.dispatchEvent(new CustomEvent("rivet.send", {detail: {type, data}}));
+		const detail = MiscUtil.copy({type, data});
+		window.dispatchEvent(new CustomEvent("rivet.send", {detail}));
 	},
 
 	async pDoSendStats (evt, ele) {

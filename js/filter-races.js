@@ -169,7 +169,7 @@ class PageFilterRaces extends PageFilter {
 			],
 			umbrellaItems: ["Choose"]
 		});
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["Base Race", "SRD"]});
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["Base Race", "Modified Copy", "SRD"]});
 
 		this._sizeFilter = sizeFilter;
 		this._asiFilter = asiFilter;
@@ -199,6 +199,7 @@ class PageFilterRaces extends PageFilter {
 		race._fLangs = PageFilterRaces.getLanguageProficiencyTags(race.languageProficiencies);
 		race._fMisc = race.srd ? ["SRD"] : [];
 		if (race._isBaseRace) race._fMisc.push("Base Race");
+		if (race._isCopy) race._fMisc.push("Modified Copy");
 
 		const ability = race.ability ? Renderer.getAbilityData(race.ability) : {asTextShort: "None"};
 		race._slAbility = ability.asTextShort;

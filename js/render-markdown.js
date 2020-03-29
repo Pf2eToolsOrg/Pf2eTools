@@ -434,7 +434,7 @@ class RendererMarkdown {
 
 		const unbreakablePart = `___
 >## ${mon._displayName || mon.name}
->*${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${monTypes.asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}` : ""}*
+>*${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${monTypes.asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment)}` : ""}*
 >___
 >- **Armor Class** ${Parser.acToFull(mon.ac, this)}
 >- **Hit Points** ${Renderer.monster.getRenderedHp(mon.hp, true)}
@@ -855,7 +855,7 @@ RendererMarkdown.monster = class {
 	static getOrderedTraits (mon, meta) {
 		let traits = mon.trait ? MiscUtil.copy(mon.trait) : null;
 		if (mon.spellcasting) traits = (traits || []).concat(RendererMarkdown.monster.getSpellcastingRenderedTraits(mon, meta));
-		if (traits) return traits.sort((a, b) => SortUtil.monTraitSort(a.name, b.name));
+		if (traits) return traits.sort((a, b) => SortUtil.monTraitSort(a, b));
 	}
 
 	static getSpellcastingRenderedTraits (mon, meta) {

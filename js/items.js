@@ -26,7 +26,7 @@ class ItemsPage {
 
 		const hash = UrlUtil.autoEncodeHash(item);
 		const source = Parser.sourceJsonToAbv(item.source);
-		const type = item._typeListText.join(", ");
+		const type = item._typeListText.join(", ").toTitleCase();
 
 		if (item._fIsMundane) {
 			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
@@ -62,7 +62,7 @@ class ItemsPage {
 				<span class="col-4">${type}</span>
 				<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
 				<span class="attunement col-0-6 text-center">${item._attunementCategory !== "No" ? "×" : ""}</span>
-				<span class="rarity col-1-4">${item.rarity}</span>
+				<span class="rarity col-1-4">${(item.rarity || "").toTitleCase()}</span>
 				<span class="source col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
 

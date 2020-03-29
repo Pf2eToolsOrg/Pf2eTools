@@ -180,7 +180,7 @@ class InitiativeTrackerPlayerUi {
 				content: `Failed to create client! Are you sure the token was valid? (See the log for more details.)`,
 				type: "danger"
 			});
-			setTimeout(() => { throw e; });
+			throw e;
 		}
 	}
 }

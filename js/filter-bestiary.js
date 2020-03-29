@@ -112,11 +112,22 @@ class PageFilterBestiary extends PageFilter {
 			displayFn: (it) => Parser.dmgTypeToFull(it).toTitleCase(),
 			items: ["A", "B", "C", "F", "O", "L", "N", "P", "I", "Y", "R", "S", "T"]
 		});
-		const conditionsInflictedFilter = new Filter({
-			header: "Conditions Inflicted",
+		const conditionsInflictedFilterBase = new Filter({
+			header: "By Traits/Actions",
 			displayFn: StrUtil.toTitleCase,
 			items: [...Parser.CONDITIONS]
 		});
+		const conditionsInflictedFilterLegendary = new Filter({
+			header: "By Lair Actions/Regional Effects",
+			displayFn: StrUtil.toTitleCase,
+			items: [...Parser.CONDITIONS]
+		});
+		const conditionsInflictedFilterSpells = new Filter({
+			header: "By Spells",
+			displayFn: StrUtil.toTitleCase,
+			items: [...Parser.CONDITIONS]
+		});
+		const conditionsInflictedFilter = new MultiFilter({header: "Conditions Inflicted", filters: [conditionsInflictedFilterBase, conditionsInflictedFilterLegendary, conditionsInflictedFilterSpells]});
 		const senseFilter = new Filter({
 			header: "Senses",
 			displayFn: (it) => Parser.monSenseTagToFull(it).toTitleCase(),
@@ -202,6 +213,9 @@ class PageFilterBestiary extends PageFilter {
 		this._alignmentFilter = alignmentFilter;
 		this._languageFilter = languageFilter;
 		this._damageTypeFilter = damageTypeFilter;
+		this._conditionsInflictedFilterBase = conditionsInflictedFilterBase;
+		this._conditionsInflictedFilterLegendary = conditionsInflictedFilterLegendary;
+		this._conditionsInflictedFilterSpells = conditionsInflictedFilterSpells;
 		this._conditionsInflictedFilter = conditionsInflictedFilter;
 		this._senseFilter = senseFilter;
 		this._skillFilter = skillFilter;
@@ -231,7 +245,7 @@ class PageFilterBestiary extends PageFilter {
 			if (mon.speed.canHover) mon._fSpeedType.push("hover");
 		}
 
-		mon._fAc = mon.ac.map(it => it.ac || it);
+		mon._fAc = mon.ac.map(it => it.special ? null : (it.ac || it)).filter(it => it !== null);
 		mon._fHp = mon.hp.average;
 		if (mon.alignment) {
 			const tempAlign = typeof mon.alignment[0] === "object"
@@ -355,7 +369,11 @@ class PageFilterBestiary extends PageFilter {
 			m.senseTags,
 			m.languageTags,
 			m.damageTags,
-			m.conditionInflict,
+			[
+				m.conditionInflict,
+				m.conditionInflictLegendary,
+				m.conditionInflictSpell
+			],
 			m._fAc,
 			m._fHp,
 			[

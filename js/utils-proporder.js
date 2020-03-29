@@ -183,7 +183,9 @@ PropOrder._MONSTER = [
 	new PropOrder._ArrayKey("damageTags", {fnSort: SortUtil.ascSortLowerSafe}),
 	new PropOrder._ArrayKey("spellcastingTags", {fnSort: SortUtil.ascSortLowerSafe}),
 	new PropOrder._ArrayKey("miscTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("conditionInflict", {fnSort: SortUtil.ascSortLowerSafe})
+	new PropOrder._ArrayKey("conditionInflict", {fnSort: SortUtil.ascSortLowerSafe}),
+	new PropOrder._ArrayKey("conditionInflictLegendary", {fnSort: SortUtil.ascSortLowerSafe}),
+	new PropOrder._ArrayKey("conditionInflictSpell", {fnSort: SortUtil.ascSortLowerSafe})
 ];
 PropOrder._MONSTER__COPY_MOD = [
 	"*",
@@ -611,8 +613,10 @@ PropOrder._ITEM = [
 
 	"tier",
 	"rarity",
-	"wondrous",
 	"reqAttune",
+
+	"wondrous",
+	"tattoo",
 	"curse",
 	"sentient",
 
@@ -785,6 +789,103 @@ PropOrder._VARIANTRULE = [
 	"type",
 	"entries"
 ];
+PropOrder._RACE = [
+	"name",
+	"alias",
+
+	"source",
+	"page",
+	"srd",
+
+	"additionalSources",
+	"otherSources",
+
+	new PropOrder._ObjectKey("_copy", {
+		order: [
+			"name",
+			"source",
+			new PropOrder._ObjectKey("_mod", {
+				fnGetOrder: () => PropOrder._RACE__COPY_MOD
+			})
+		]
+	}),
+
+	"size",
+	"speed",
+	"ability",
+
+	"heightAndWeight",
+
+	"darkvision",
+
+	"traitTags",
+	"languageProficiencies",
+	"skillProficiencies",
+
+	"soundClip",
+
+	"entries",
+
+	new PropOrder._ArrayKey("subraces", {
+		fnGetOrder: () => PropOrder._RACE,
+		fnSort: (a, b) => SortUtil.ascSortLower(a.name || "", b.name || "") || SortUtil.ascSortLower(a.source || "", b.source || "")
+	}),
+
+	"overwrite"
+];
+PropOrder._RACE__COPY_MOD = [
+	"*",
+	"_",
+	...PropOrder._RACE
+];
+PropOrder._TABLE = [
+	"name",
+
+	"source",
+	"page",
+
+	"caption",
+
+	"colLabels",
+	"colStyles",
+
+	"rows"
+];
+PropOrder._TRAP = [
+	"name",
+
+	"source",
+	"page",
+
+	"trapHazType",
+
+	"tier",
+	"threat",
+	"effect",
+
+	"trigger",
+
+	"initiative",
+	"initiativeNote",
+
+	"eActive",
+	"eDynamic",
+	"eConstant",
+
+	"countermeasures",
+
+	"entries"
+];
+PropOrder._HAZARD = [
+	"name",
+
+	"source",
+	"page",
+
+	"trapHazType",
+
+	"entries"
+];
 
 PropOrder._PROP_TO_LIST = {
 	"monster": PropOrder._MONSTER,
@@ -819,7 +920,12 @@ PropOrder._PROP_TO_LIST = {
 	"optionalfeature": PropOrder._OPTIONALFEATURE,
 	"psionic": PropOrder._PSIONIC,
 	"reward": PropOrder._REWARD,
-	"variantrule": PropOrder._VARIANTRULE
+	"variantrule": PropOrder._VARIANTRULE,
+	"spellFluff": PropOrder._GENERIC_FLUFF,
+	"race": PropOrder._RACE,
+	"table": PropOrder._TABLE,
+	"trap": PropOrder._TRAP,
+	"hazard": PropOrder._HAZARD
 };
 
 if (typeof module !== "undefined") {

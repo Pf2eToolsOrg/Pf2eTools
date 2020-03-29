@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "spells.json",
-	"version": "1.5.3",
+	"version": "1.5.4",
 	"title": "Spells",
 	"type": "object",
 
@@ -227,9 +227,6 @@
 							}
 						}
 					},
-					"required": [
-						"fromClassList"
-					],
 					"additionalProperties": false
 				},
 				"races": {
@@ -318,14 +315,7 @@
 					}
 				},
 				"conditionInflict": {
-					"type": "array",
-					"uniqueItems": true,
-					"items": {
-						"type": "string",
-						"enum": [
-							"blinded", "charmed", "deafened", "exhaustion", "frightened", "grappled", "incapacitated", "invisible", "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious"
-						]
-					}
+					"$ref": "util.json#/definitions/tagsConditions"
 				},
 				"savingThrow": {
 					"type": "array",

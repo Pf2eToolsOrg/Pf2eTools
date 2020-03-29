@@ -679,11 +679,7 @@ class FilterBox extends ProxyBase {
 				.forEach(v => outSub.push(v.raw));
 
 			Hist.setSuppressHistory(true);
-			window.history.replaceState(
-				{},
-				document.title,
-				`${location.origin}${location.pathname}#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`
-			);
+			Hist.replaceHistoryHash(`${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`);
 
 			if (filterInitialSearch && this._$iptSearch) this._$iptSearch.val(filterInitialSearch).change().keydown().keyup();
 			this.fireChangeEvent();
@@ -1744,6 +1740,7 @@ class FilterTransientOptions {
 
 class SourceFilter extends Filter {
 	constructor (opts) {
+		opts.itemSortFn = opts.itemSortFn || ((a, b) => SortUtil.ascSortLower(Parser.sourceJsonToFull(a.item), Parser.sourceJsonToFull(b.item)));
 		super(opts);
 		this.__tmpState = {ixAdded: 0};
 		this._tmpState = this._getProxy("tmpState", this.__tmpState);
@@ -1848,6 +1845,8 @@ class RangeFilter extends FilterBase {
 
 		this._min = Number(opts.min || 0);
 		this._max = Number(opts.max || 0);
+		this._hasPredefinedMin = opts.min != null;
+		this._hasPredefinedMax = opts.max != null;
 		this._labels = opts.isLabelled ? opts.labels : null;
 		this._isAllowGreater = !!opts.isAllowGreater;
 		this._suffix = opts.suffix;
@@ -1885,17 +1884,30 @@ class RangeFilter extends FilterBase {
 	setStateFromLoaded (filterState) {
 		if (filterState && filterState[this.header]) {
 			const toLoad = filterState[this.header];
+
+			// region Ensure the provided min/max are a lower/upper bounds for the range to be set
+			if (this._hasPredefinedMax) {
+				const tgt = (toLoad.state || {});
+				tgt.max = Math.max(this._max, tgt.max == null ? Number.MIN_SAFE_INTEGER : tgt.max);
+			}
+
+			if (this._hasPredefinedMin) {
+				const tgt = (toLoad.state || {});
+				tgt.min = Math.max(this._min, tgt.min == null ? Number.MAX_SAFE_INTEGER : tgt.min);
+			}
+			// endregion
+
 			this.setBaseStateFromLoaded(toLoad);
 
 			// Reduce the maximum/minimum ranges to their current values +/-1
 			//   This allows the range filter to recover from being stretched out by homebrew
 			//   The off-by-one trick is to prevent later filter expansion from assuming the filters are set to their min/max
 			if (toLoad.state && !this._labels) {
-				if (toLoad.state.curMax != null && toLoad.state.max != null) {
+				if (!this._hasPredefinedMax && toLoad.state.curMax != null && toLoad.state.max != null) {
 					if (toLoad.state.curMax + 1 < toLoad.state.max) toLoad.state.max = toLoad.state.curMax + 1;
 				}
 
-				if (toLoad.state.curMin != null && toLoad.state.min != null) {
+				if (!this._hasPredefinedMin && toLoad.state.curMin != null && toLoad.state.min != null) {
 					if (toLoad.state.curMin - 1 > toLoad.state.min) toLoad.state.min = toLoad.state.curMin - 1;
 				}
 			}

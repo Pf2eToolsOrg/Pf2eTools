@@ -664,7 +664,7 @@ function renderStatblock (mon, isScaled) {
 
 					const buildEle = (meta) => {
 						if (!meta.$ele) {
-							const imgLink = Renderer.monster.getTokenUrl({name: meta.name, source: meta.source});
+							const imgLink = Renderer.monster.getTokenUrl({name: meta.name, source: meta.source, tokenUrl: meta.tokenUrl});
 							const $img = $(`<img src="${imgLink}" class="mon__token" alt="${meta.displayName || meta.name}">`)
 								.on("error", () => {
 									$img.attr(

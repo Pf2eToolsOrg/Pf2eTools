@@ -45,6 +45,7 @@ function getFnListSort (prop) {
 		case "vehicle":
 		case "backgroundFluff":
 		case "conditionFluff":
+		case "spellFluff":
 		case "itemFluff":
 		case "languageFluff":
 		case "vehicleFluff":
@@ -58,6 +59,10 @@ function getFnListSort (prop) {
 		case "psionic":
 		case "reward":
 		case "variantrule":
+		case "race":
+		case "table":
+		case "trap":
+		case "hazard":
 			return (a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source);
 		case "deity":
 			return (a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source) || SortUtil.ascSortLower(a.pantheon, b.pantheon);

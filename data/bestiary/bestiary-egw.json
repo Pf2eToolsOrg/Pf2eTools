@@ -7,7 +7,8 @@
 		},
 		"otherSources": {
 			"monster": {
-				"MM": "EGW"
+				"MM": "EGW",
+				"TftYP": "EGW"
 			}
 		},
 		"internalCopies": [
@@ -282,11 +283,6 @@
 			"miscTags": [
 				"MW",
 				"RCH"
-			],
-			"conditionInflict": [
-				"frightened",
-				"grappled",
-				"stunned"
 			]
 		},
 		{
@@ -564,9 +560,15 @@
 				{
 					"name": "Innate Spellcasting (1/Day)",
 					"headerEntries": [
-						"The blood hunter can innately cast hex. Its innate spellcasting ability is Intelligence."
+						"The blood hunter can innately cast {@spell hex}. Its innate spellcasting ability is Intelligence."
 					],
-					"ability": "int"
+					"ability": "int",
+					"will": [
+						"{@spell hex}"
+					],
+					"hidden": [
+						"will"
+					]
 				}
 			],
 			"trait": [
@@ -3027,6 +3029,11 @@
 			],
 			"conditionInflict": [
 				"incapacitated"
+			],
+			"conditionInflictSpell": [
+				"blinded",
+				"charmed",
+				"invisible"
 			]
 		},
 		{
@@ -3204,6 +3211,12 @@
 			],
 			"miscTags": [
 				"MW"
+			],
+			"conditionInflictLegendary": [
+				"prone"
+			],
+			"conditionInflictSpell": [
+				"frightened"
 			]
 		},
 		{
@@ -3614,8 +3627,8 @@
 				"_mod": {
 					"*": {
 						"mode": "replaceTxt",
-						"replace": "priest",
-						"with": "priestess"
+						"replace": "the captain",
+						"with": "Three Earrings"
 					}
 				}
 			},

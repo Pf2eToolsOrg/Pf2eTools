@@ -4,17 +4,17 @@ class PageFilterItems extends PageFilter {
 	// region static
 	static _rarityValue (rarity) {
 		switch (rarity) {
-			case "None": return 0;
-			case "Common": return 1;
-			case "Uncommon": return 2;
-			case "Rare": return 3;
-			case "Very Rare": return 4;
-			case "Legendary": return 5;
-			case "Artifact": return 6;
-			case "Other": return 7;
-			case "Varies": return 8;
-			case "Unknown (Magic)": return 9;
-			case "Unknown": return 10;
+			case "none": return 0;
+			case "common": return 1;
+			case "uncommon": return 2;
+			case "rare": return 3;
+			case "very rare": return 4;
+			case "legendary": return 5;
+			case "artifact": return 6;
+			case "other": return 7;
+			case "varies": return 8;
+			case "unknown (magic)": return 9;
+			case "unknown": return 10;
 			default: return 11;
 		}
 	}
@@ -35,8 +35,8 @@ class PageFilterItems extends PageFilter {
 	constructor () {
 		super();
 
-		const typeFilter = new Filter({header: "Type", deselFn: (it) => PageFilterItems._DEFAULT_HIDDEN_TYPES.has(it)});
-		const tierFilter = new Filter({header: "Tier", items: ["None", "Minor", "Major"], itemSortFn: null});
+		const typeFilter = new Filter({header: "Type", deselFn: (it) => PageFilterItems._DEFAULT_HIDDEN_TYPES.has(it), displayFn: StrUtil.toTitleCase});
+		const tierFilter = new Filter({header: "Tier", items: ["none", "minor", "major"], itemSortFn: null, displayFn: StrUtil.toTitleCase});
 		const propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});
 		const costFilter = new RangeFilter({header: "Cost", min: 0, max: 100, isAllowGreater: true, suffix: "gp"});
 		const focusFilter = new Filter({header: "Spellcasting Focus", items: ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"]});
@@ -45,7 +45,8 @@ class PageFilterItems extends PageFilter {
 		const rarityFilter = new Filter({
 			header: "Rarity",
 			items: [...Parser.ITEM_RARITIES],
-			itemSortFn: null
+			itemSortFn: null,
+			displayFn: StrUtil.toTitleCase
 		});
 		const attunementFilter = new Filter({header: "Attunement", items: ["Yes", "By...", "Optional", "No"], itemSortFn: null});
 		const categoryFilter = new Filter({
@@ -82,7 +83,7 @@ class PageFilterItems extends PageFilter {
 		item._fProperties = item.property ? item.property.map(p => Renderer.item.propertyMap[p].name).filter(n => n) : [];
 		item._fMisc = item.sentient ? ["Sentient"] : [];
 		if (item.curse) item._fMisc.push("Cursed");
-		const isMundane = item.rarity === "None" || item.rarity === "Unknown" || item._category === "Basic";
+		const isMundane = item.rarity === "none" || item.rarity === "unknown" || item._category === "basic";
 		item._fMisc.push(isMundane ? "Mundane" : "Magic");
 		item._fIsMundane = isMundane;
 		if (item.ability) item._fMisc.push("Ability Score Adjustment");

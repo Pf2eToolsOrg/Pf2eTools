@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.3.5",
+	"version": "1.3.6",
 	"type": "object",
 
 	"definitions": {
@@ -86,10 +86,17 @@
 								"type": "integer"
 							},
 							"traitTags": {
-								"type": "array",
-								"items": {
-									"$ref": "#/definitions/traitTag"
-								}
+								"oneOf": [
+									{
+										"type": "array",
+										"items": {
+											"$ref": "#/definitions/traitTag"
+										}
+									},
+									{
+										"type": "null"
+									}
+								]
 							},
 							"languageProficiencies": {
 								"$ref": "util.json#/definitions/languageProficiencies"
@@ -108,7 +115,14 @@
 								"$ref": "util.json#/definitions/srd"
 							},
 							"heightAndWeight": {
-								"$ref": "#/definitions/heightAndWeight"
+								"oneOf": [
+									{
+										"$ref": "#/definitions/heightAndWeight"
+									},
+									{
+										"type": "null"
+									}
+								]
 							}
 						},
 						"additionalProperties": false
@@ -118,10 +132,17 @@
 					"type": "integer"
 				},
 				"traitTags": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/traitTag"
-					}
+					"oneOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/traitTag"
+							}
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"languageProficiencies": {
 					"$ref": "util.json#/definitions/languageProficiencies"
@@ -186,7 +207,14 @@
 					"$ref": "util.json#/definitions/srd"
 				},
 				"heightAndWeight": {
-					"$ref": "#/definitions/heightAndWeight"
+					"oneOf": [
+						{
+							"$ref": "#/definitions/heightAndWeight"
+						},
+						{
+							"type": "null"
+						}
+					]
 				}
 			},
 			"additionalProperties": false

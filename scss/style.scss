@@ -1031,103 +1031,180 @@ th.name {
 }
 
 .source {
+	$rgb-source-PHB: #4a6898;
+	$rgb-source-DMG: purple;
+	$rgb-source-MM: green;
+	$rgb-source-SCAG: #76af76;
+	$rgb-source-VGM: grey;
+	$rgb-source-XGE: #ba7c00;
+	$rgb-source-HotDQ: #ad8eba;
+	$rgb-source-RoT: #ff2900;
+	$rgb-source-CoS: purple;
+	$rgb-source-OotA: grey;
+	$rgb-source-SKT: darkcyan;
+	$rgb-source-PotA: #57b6c6;
+	$rgb-source-LMoP: #8da851;
+	$rgb-source-TftYP: red;
+	$rgb-source-Homebrew: $rgb-class-brew;
+	$rgb-source-ToA: #666f30;
+	$rgb-source-MTF: #1f6e7b;
+	$rgb-source-WDH: #d4af37;
+	$rgb-source-GGR: #bfa76c;
+	$rgb-source-WDMM: #a2201f;
+	$rgb-source-LLK: #6e7a71;
+	$rgb-source-GoS: #3d695a;
+	$rgb-source-AI: #5baf04;
+	$rgb-source-ESK: #6b909a;
+	$rgb-source-BGDIA: #752418;
+	$rgb-source-ERLW: #983426;
+	$rgb-source-RMR: #5c7c27;
+	$rgb-source-MFF: #92817f;
+	$rgb-source-LR: #78613c;
+	$rgb-source-IMR: #a19364;
+	$rgb-source-SADS: #333bab;
+	$rgb-source-EGW: #855a6e;
+	$rgb-source-AL: #ed1c24;
+
 	&PHB {
-		color: #4a6898;
+		color: $rgb-source-PHB !important;
+		border-color: $rgb-source-PHB !important;
+		text-decoration-color: $rgb-source-PHB !important;
 	}
 
 	&DMG {
-		color: purple;
+		color: $rgb-source-DMG !important;
+		border-color: $rgb-source-DMG !important;
+		text-decoration-color: $rgb-source-DMG !important;
 	}
 
 	&MM {
-		color: green;
+		color: $rgb-source-MM !important;
+		border-color: $rgb-source-MM !important;
+		text-decoration-color: $rgb-source-MM !important;
 	}
 
 	&SCAG {
-		color: #76af76;
+		color: $rgb-source-SCAG !important;
+		border-color: $rgb-source-SCAG !important;
+		text-decoration-color: $rgb-source-SCAG !important;
 	}
 
 	&VGM {
-		color: grey;
+		color: $rgb-source-VGM !important;
+		border-color: $rgb-source-VGM !important;
+		text-decoration-color: $rgb-source-VGM !important;
 	}
 
 	&XGE,
 	&TTP { // Tortles are counted as an XGE race for AL
-		color: #ba7c00;
+		color: $rgb-source-XGE !important;
+		border-color: $rgb-source-XGE !important;
+		text-decoration-color: $rgb-source-XGE !important;
 	}
 
 	&HotDQ {
-		color: #cc5800;
+		color: $rgb-source-HotDQ !important;
+		border-color: $rgb-source-HotDQ !important;
+		text-decoration-color: $rgb-source-HotDQ !important;
 	}
 
 	&RoT {
-		color: #ff2900;
+		color: $rgb-source-RoT !important;
+		border-color: $rgb-source-RoT !important;
+		text-decoration-color: $rgb-source-RoT !important;
 	}
 
 	&CoS {
-		color: purple;
+		color: $rgb-source-CoS !important;
+		border-color: $rgb-source-CoS !important;
+		text-decoration-color: $rgb-source-CoS !important;
 	}
 
 	&OotA {
-		color: grey;
+		color: $rgb-source-OotA !important;
+		border-color: $rgb-source-OotA !important;
+		text-decoration-color: $rgb-source-OotA !important;
 	}
 
 	&SKT {
-		color: darkcyan;
+		color: $rgb-source-SKT !important;
+		border-color: $rgb-source-SKT !important;
+		text-decoration-color: $rgb-source-SKT !important;
 	}
 
-	// matches EEPC
-	&PotA {
-		color: #57b6c6;
+	&PotA,
+	&EEPC {
+		color: $rgb-source-PotA !important;
+		border-color: $rgb-source-PotA !important;
+		text-decoration-color: $rgb-source-PotA !important;
 	}
 
 	&LMoP {
-		color: #24ee79;
+		color: $rgb-source-LMoP !important;
+		border-color: $rgb-source-LMoP !important;
+		text-decoration-color: $rgb-source-LMoP !important;
 	}
 
 	&TftYP {
-		color: red;
-	}
-
-	&EEPC {
-		color: #57b6c6;
+		color: $rgb-source-TftYP !important;
+		border-color: $rgb-source-TftYP !important;
+		text-decoration-color: $rgb-source-TftYP !important;
 	}
 
 	&Homebrew {
-		color: $rgb-class-brew;
+		color: $rgb-source-Homebrew !important;
+		border-color: $rgb-source-Homebrew !important;
+		text-decoration-color: $rgb-source-Homebrew !important;
 	}
 
 	&ToA {
-		color: #666f30;
+		color: $rgb-source-ToA !important;
+		border-color: $rgb-source-ToA !important;
+		text-decoration-color: $rgb-source-ToA !important;
 	}
 
 	&MTF {
-		color: #1f6e7b;
+		color: $rgb-source-MTF !important;
+		border-color: $rgb-source-MTF !important;
+		text-decoration-color: $rgb-source-MTF !important;
 	}
 
 	&WDH {
-		color: #d4af37;
+		color: $rgb-source-WDH !important;
+		border-color: $rgb-source-WDH !important;
+		text-decoration-color: $rgb-source-WDH !important;
 	}
 
 	&GGR,
 	&KKW {
-		color: #bfa76c;
+		color: $rgb-source-GGR !important;
+		border-color: $rgb-source-GGR !important;
+		text-decoration-color: $rgb-source-GGR !important;
 	}
 
 	&WDMM {
-		color: #a2201f;
+		color: $rgb-source-WDMM !important;
+		border-color: $rgb-source-WDMM !important;
+		text-decoration-color: $rgb-source-WDMM !important;
 	}
 
 	&LLK {
-		color: #6e7a71;
+		color: $rgb-source-LLK !important;
+		border-color: $rgb-source-LLK !important;
+		text-decoration-color: $rgb-source-LLK !important;
 	}
 
 	&GoS {
-		color: #3d695a;
+		color: $rgb-source-GoS !important;
+		border-color: $rgb-source-GoS !important;
+		text-decoration-color: $rgb-source-GoS !important;
 	}
 
-	&AI {
-		color: #5baf04;
+	&AI,
+	&OoW {
+		color: $rgb-source-AI !important;
+		border-color: $rgb-source-AI !important;
+		text-decoration-color: $rgb-source-AI !important;
 	}
 
 	// These are all from the same family
@@ -1136,41 +1213,65 @@ th.name {
 	&DC,
 	&SDW,
 	&SLW {
-		color: #6b909a;
+		color: $rgb-source-ESK !important;
+		border-color: $rgb-source-ESK !important;
+		text-decoration-color: $rgb-source-ESK !important;
 	}
 
 	&BGDIA {
-		color: #752418;
+		color: $rgb-source-BGDIA !important;
+		border-color: $rgb-source-BGDIA !important;
+		text-decoration-color: $rgb-source-BGDIA !important;
 	}
 
 	&ERLW,
 	&EFR {
-		color: #983426;
+		color: $rgb-source-ERLW !important;
+		border-color: $rgb-source-ERLW !important;
+		text-decoration-color: $rgb-source-ERLW !important;
 	}
 
 	&RMR,
 	&RMBRE {
-		color: #5c7c27;
+		color: $rgb-source-RMR !important;
+		border-color: $rgb-source-RMR !important;
+		text-decoration-color: $rgb-source-RMR !important;
 	}
 
 	&MFF {
-		color: #92817f;
+		color: $rgb-source-MFF !important;
+		border-color: $rgb-source-MFF !important;
+		text-decoration-color: $rgb-source-MFF !important;
+	}
+
+	&LR {
+		color: $rgb-source-LR !important;
+		border-color: $rgb-source-LR !important;
+		text-decoration-color: $rgb-source-LR !important;
 	}
 
 	&IMR {
-		color: #a19364;
+		color: $rgb-source-IMR !important;
+		border-color: $rgb-source-IMR !important;
+		text-decoration-color: $rgb-source-IMR !important;
 	}
 
 	&SADS {
-		color: #333bab;
+		color: $rgb-source-SADS !important;
+		border-color: $rgb-source-SADS !important;
+		text-decoration-color: $rgb-source-SADS !important;
 	}
 
 	&EGW {
-		color: #855a6e;
+		color: $rgb-source-EGW !important;
+		border-color: $rgb-source-EGW !important;
+		text-decoration-color: $rgb-source-EGW !important;
 	}
 
 	&AL {
-		color: #ed1c24;
+		color: $rgb-source-AL !important;
+		border-color: $rgb-source-AL !important;
+		text-decoration-color: $rgb-source-AL !important;
 	}
 }
 
@@ -2335,6 +2436,18 @@ tr.regionaleffect {
 
 	.rd__list {
 		margin-bottom: 15px;
+
+		+ .rd__list {
+			margin-top: -10px;
+		}
+	}
+
+	.rd__quote-line {
+		margin-bottom: 10px;
+
+		&--last {
+			margin-bottom: 5px;
+		}
 	}
 }
 
@@ -2733,6 +2846,42 @@ tr.legendary td {
 
 	&overlay-loading {
 		background: $rgb-bg--night;
+	}
+}
+
+.bks__ {
+	&wrp-bookshelf {
+		align-items: stretch;
+	}
+
+	&wrp-bookshelf-item,
+	&wrp-bookshelf-item:hover {
+		@include shadow-1();
+
+		border: 2px solid $rgb-border-grey;
+		color: $rgb-off-black;
+		text-decoration-color: $rgb-off-black;
+	}
+
+	&bookshelf-item-name {
+		min-height: 40px;
+		max-width: 220px;
+		font-weight: bold;
+		flex-grow: 1;
+	}
+
+	&bookshelf-image {
+		width: 300px;
+	}
+}
+
+.night-mode .bks__ {
+	&wrp-bookshelf-item,
+	&wrp-bookshelf-item:hover {
+		background: $rgb-bg--night;
+		border-color: $rgb-border-grey--night;
+		color: $rgb-font--night;
+		text-decoration-color: $rgb-font--night;
 	}
 }
 
@@ -3678,12 +3827,19 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.source {
+		$rgb-source-PHB: $rgb-subclass--night;
+		$rgb-source-SADS: #4f63f5;
+
 		&PHB {
-			color: $rgb-subclass--night;
+			color: $rgb-source-PHB !important;
+			border-color: $rgb-source-PHB !important;
+			text-decoration-color: $rgb-source-PHB !important;
 		}
 
 		&SADS {
-			color: #4f63f5;
+			color: $rgb-source-SADS !important;
+			border-color: $rgb-source-SADS !important;
+			text-decoration-color: $rgb-source-SADS !important;
 		}
 	}
 
@@ -4024,7 +4180,7 @@ ul.list.books > li > a > span.name:hover {
 
 /* Night Mode End */
 
-/* Cancer start */
+/* region Cancer */
 .cancer__ {
 	&wrp-leaderboard {
 		margin: 0 auto;
@@ -4066,6 +4222,18 @@ ul.list.books > li > a > span.name:hover {
 		height: 100px;
 	}
 }
+
+[id^=div-gpt-ad]::before {
+	content: 'advertisement';
+	margin: 0 auto;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	font-size: 9px;
+	padding: 2px 0;
+	opacity: 0.6;
+}
+/* endregion */
 
 // "Update your Browser" overlay
 .edge__ {

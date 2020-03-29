@@ -105,6 +105,7 @@ class CreatureBuilder extends Builder {
 
 			creature.source = this._ui.source;
 			delete creature.otherSources;
+			delete creature.srd;
 
 			if (Parser.crToNumber(creature.cr) !== 100) {
 				const ixDefault = Parser.CRS.indexOf(creature.cr.cr || creature.cr);
@@ -693,10 +694,10 @@ class CreatureBuilder extends Builder {
 					return [...CreatureBuilder._ALIGNMENTS[$selAlign.val()]];
 				}
 				case "1": {
-					return {
-						alignment: [...CreatureBuilder._ALIGNMENTS[$selAlign.val()]],
-						chance: UiUtil.strToInt($iptChance.val(), 0, {min: 0, max: 100})
-					}
+					const out = {alignment: [...CreatureBuilder._ALIGNMENTS[$selAlign.val()]]};
+					if ($iptChance.val().trim()) out.chance = UiUtil.strToInt($iptChance.val(), 0, {min: 0, max: 100});
+					if ($iptNote.val().trim()) out.note = $iptNote.val().trim();
+					return out;
 				}
 				case "2": {
 					const specials = $iptSpecial.val().trim().split(",").map(it => it.trim()).filter(Boolean);
@@ -710,28 +711,28 @@ class CreatureBuilder extends Builder {
 
 		const $selMode = $(`<select class="form-control input-xs mb-2">
 				<option value="0">Basic Alignment</option>
-				<option value="1">Chance-Based Alignment</option>
+				<option value="1">Chance-Based Alignment/Alignment with Note</option>
 				<option value="2">Special Alignment</option>
 				<option value="3">No Alignment (Sidekick)</option>
 			</select>`).val(initialMode).change(() => {
 			switch ($selMode.val()) {
 				case "0": {
-					$stageSingle.show(); $stageMultiple.hide(); $stageSpecial.hide();
+					$stageSingle.showVe(); $stageMultiple.hideVe(); $stageSpecial.hideVe();
 					doUpdateState();
 					break;
 				}
 				case "1": {
-					$stageSingle.show(); $stageMultiple.show(); $stageSpecial.hide();
+					$stageSingle.showVe(); $stageMultiple.showVe(); $stageSpecial.hideVe();
 					doUpdateState();
 					break;
 				}
 				case "2": {
-					$stageSingle.hide(); $stageMultiple.hide(); $stageSpecial.show();
+					$stageSingle.hideVe(); $stageMultiple.hideVe(); $stageSpecial.showVe();
 					doUpdateState();
 					break;
 				}
 				case "3": {
-					$stageSingle.hide(); $stageMultiple.hide(); $stageSpecial.hide();
+					$stageSingle.hideVe(); $stageMultiple.hideVe(); $stageSpecial.hideVe();
 					doUpdateState();
 					break;
 				}
@@ -739,22 +740,30 @@ class CreatureBuilder extends Builder {
 		});
 
 		// SINGLE CONTROLS ("multiple" also uses these)
-		const $selAlign = $(`<select class="form-control input-xs mb-2">${CreatureBuilder._ALIGNMENTS.map((it, i) => it ? `<option value="${i}">${Parser.alignmentListToFull(it)}</option>` : `<option disabled>\u2014</option>`).join("")}</select>`)
+		const $selAlign = $(`<select class="form-control input-xs mb-2">${CreatureBuilder._ALIGNMENTS.map((it, i) => it ? `<option value="${i}">${Parser.alignmentListToFull(it).toTitleCase()}</option>` : `<option disabled>\u2014</option>`).join("")}</select>`)
 			.change(() => doUpdateState());
-		const $stageSingle = $$`<div>${$selAlign}</div>`.toggle(initialMode === "0" || initialMode === "1");
+		const $stageSingle = $$`<div>${$selAlign}</div>`.toggleVe(initialMode === "0" || initialMode === "1");
 		initialMode === "0" && alignment && $selAlign.val(CreatureBuilder.__$getAlignmentInput__getAlignmentIx(alignment.alignment || alignment));
 		initialMode === "1" && alignment && $selAlign.val(CreatureBuilder.__$getAlignmentInput__getAlignmentIx(alignment.alignment));
 
 		// MULTIPLE CONTROLS
 		const $iptChance = $(`<input class="form-control form-control--minimal input-xs mr-2" min="1" max="100" placeholder="Chance of alignment">`)
 			.change(() => doUpdateState());
-		const $stageMultiple = $$`<div class="mb-2 flex-v-center">${$iptChance}<span>%</span></div>`.toggle(initialMode === "1");
-		initialMode === "1" && alignment && $iptChance.val(alignment.chance);
+		const $iptNote = $(`<input class="form-control form-control--minimal input-xs mx-1" placeholder="Alignment note">`)
+			.change(() => doUpdateState());
+		const $stageMultiple = $$`<div class="flex-col">
+			<div class="mb-2 flex-v-center">${$iptChance}<span>%</span></div>
+			<div class="mb-2 flex-v-center"><span>(</span>${$iptNote}<span>)</span></div>
+		</div>`.toggleVe(initialMode === "1");
+		if (initialMode === "1" && alignment) {
+			$iptChance.val(alignment.chance);
+			$iptNote.val(alignment.note);
+		}
 
 		// SPECIAL CONTROLS
 		const $iptSpecial = $(`<input class="form-control input-xs form-control--minimal mb-2">`)
 			.change(() => doUpdateState());
-		const $stageSpecial = $$`<div>${$iptSpecial}</div>`.toggle(initialMode === "2");
+		const $stageSpecial = $$`<div>${$iptSpecial}</div>`.toggleVe(initialMode === "2");
 		initialMode === "2" && alignment && $iptSpecial.val(alignment.special);
 
 		const $btnRemove = $(`<button class="btn btn-xs btn-danger mkbru__btn-rm-row mb-2" title="Remove Alignment"><span class="glyphicon glyphicon-trash"/></button>`)
@@ -799,7 +808,7 @@ class CreatureBuilder extends Builder {
 	}
 
 	static __$getAcInput__getAcRow (ac, acRows, doUpdateState) {
-		const initialMode = ac && ac.from ? "1" : "0";
+		const initialMode = ac && ac.special ? "2" : ac && ac.from ? "1" : "0";
 
 		const getAc = () => {
 			const acValRaw = UiUtil.strToInt($iptAc.val(), 10, {fallbackOnNaN: 10});
@@ -834,22 +843,37 @@ class CreatureBuilder extends Builder {
 						return out;
 					} else return getBaseAC();
 				}
+				case "2": {
+					return {special: $iptSpecial.val()};
+				}
 			}
 		};
 
 		const $selMode = $(`<select class="form-control input-xs mkbru_mon__ac-split">
 				<option value="0">Unarmored</option>
 				<option value="1">Armor Class From...</option>
+				<option value="2">Special</option>
 			</select>`).val(initialMode).change(() => {
 			switch ($selMode.val()) {
 				case "0": {
 					$stageFrom.hide();
+					$iptAc.show();
+					$iptSpecial.hide();
 					doUpdateState();
 					break;
 				}
 				case "1": {
 					$stageFrom.show();
+					$iptAc.show();
+					$iptSpecial.hide();
 					if (!fromRows.length) CreatureBuilder.__$getAcInput__getFromRow(null, fromRows, doUpdateState).$wrpFrom.appendTo($wrpFromRows);
+					doUpdateState();
+					break;
+				}
+				case "2": {
+					$stageFrom.hide();
+					$iptAc.hide();
+					$iptSpecial.show();
 					doUpdateState();
 					break;
 				}
@@ -857,8 +881,14 @@ class CreatureBuilder extends Builder {
 		});
 
 		const $iptAc = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ac-split">`)
-			.val(ac ? ac.ac || ac : 10)
-			.change(() => doUpdateState());
+			.val(ac && ac.special == null ? ac.ac || ac : 10)
+			.change(() => doUpdateState())
+			.toggle(initialMode !== "2");
+
+		const $iptSpecial = $(`<input class="form-control form-control--minimal input-xs mr-2 mkbru_mon__ac-split">`)
+			.val(ac && ac.special ? ac.special : null)
+			.change(() => doUpdateState())
+			.toggle(initialMode === "2");
 
 		const $iptCond = $(`<input class="form-control form-control--minimal input-xs" placeholder="when...">`)
 			.change(() => doUpdateState());
@@ -892,7 +922,7 @@ class CreatureBuilder extends Builder {
 			});
 
 		const $wrp = $$`<div class="flex-col mkbru__wrp-rows mkbru__wrp-rows--removable">
-			<div class="flex-v-center mb-2">${$iptAc}${$selMode}</div>
+			<div class="flex-v-center mb-2">${$iptAc}${$iptSpecial}${$selMode}</div>
 			${$$`<div>${$stageFrom}</div>`}
 			<div class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--50">Condition</span>${$iptCond}</div>
 			<label class="flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--50">Surround with brackets</span>${$cbBraces}</label>
@@ -2291,7 +2321,7 @@ class CreatureBuilder extends Builder {
 									if (!isDataEntered) return resolve(null);
 									const trait = MiscUtil.copy(this._jsonCreatureTraits[traitIndex]);
 									let name = this._state.shortName || this._state.name;
-									if (!this._state.isNamedCreature) name = name.toLowerCase();
+									if (!this._state.isNamedCreature) name = (name || "").toLowerCase();
 									trait.entries = JSON.parse(JSON.stringify(trait.entries).replace(/<\$name\$>/gi, name));
 									resolve(trait);
 								}

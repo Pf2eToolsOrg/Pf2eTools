@@ -171,8 +171,14 @@ class SpellParser extends BaseParser {
 			});
 		};
 		TagCondition.tryTagConditions(stats, true);
-		if (stats.entries) stats.entries = stats.entries.map(it => DiceConvert.getTaggedEntry(it))
-		if (stats.entriesHigherLevel) stats.entriesHigherLevel = stats.entriesHigherLevel.map(it => DiceConvert.getTaggedEntry(it))
+		if (stats.entries) {
+			stats.entries = stats.entries.map(it => DiceConvert.getTaggedEntry(it));
+			EntryConvert.tryRun(stats, "entries");
+		}
+		if (stats.entriesHigherLevel) {
+			stats.entriesHigherLevel = stats.entriesHigherLevel.map(it => DiceConvert.getTaggedEntry(it))
+			EntryConvert.tryRun(stats, "entriesHigherLevel");
+		}
 		this._addTags(stats, options);
 		doCleanup();
 	}

@@ -461,6 +461,10 @@ class PageFilterSpells extends PageFilter {
 		spell._fTimeType = spell.time.map(t => t.unit);
 		spell._fDurationType = PageFilterSpells.getFilterDuration(spell);
 		spell._fRangeType = PageFilterSpells.getRangeType(spell.range);
+		if (!spell._fAreaTags && (spell.areaTags || spell.range.type === "line")) {
+			spell._fAreaTags = spell.areaTags || [];
+			if (spell.range.type === "line") spell._fAreaTags.push("L")
+		}
 	}
 
 	addToFilters (spell, isExcluded) {
@@ -527,7 +531,7 @@ class PageFilterSpells extends PageFilter {
 			s._fTimeType,
 			s._fDurationType,
 			s._fRangeType,
-			s.areaTags
+			s._fAreaTags
 		)
 	}
 }

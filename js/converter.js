@@ -278,7 +278,7 @@ Senses truesight 120 ft., passive Perception 23
 Languages all, telepathy 120 ft.
 Challenge 25 (75,000 XP)
 Innate Spellcasting. Mammon's innate spellcasting ability is Charisma (spell save DC 24, +16 to hit with spell attacks). He can innately cast the following spells, requiring no material components:
-At will: charm person, detect magic, dispel magic, fabricate (Mammon can create valuable objects), heat metal, magic aura
+At will: charm person, detect magic, dispel magic, fabricate (Mammon can create valuable objects), heat metal, arcanist's magic aura
 3/day each: animate objects, counterspell, creation, instant summons, legend lore, teleport
 1/day: imprisonment (minimus containment only, inside gems), sunburst
 Spellcasting. Mammon is a 6th level spellcaster. His spellcasting ability is Intelligence (spell save DC 13; +5 to hit with spell attacks). He has the following wizard spells prepared:
@@ -859,14 +859,16 @@ ConverterUi._DEFAULT_STATE = {
 
 async function doPageInit () {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-	const [spellData, itemData] = await Promise.all([
-		SpellcastingTraitConvert.pGetSpellData(),
+	const [spells, items, legendaryGroups] = await Promise.all([
+		DataUtil.spell.pLoadAll(),
 		Renderer.item.pBuildList(),
+		DataUtil.legendaryGroup.pLoadAll(),
 		BrewUtil.pAddBrewData() // init homebrew
 	]);
-	SpellcastingTraitConvert.init(spellData);
-	ItemParser.init(itemData);
-	AcConvert.init(itemData);
+	SpellcastingTraitConvert.init(spells);
+	ItemParser.init(items);
+	AcConvert.init(items);
+	TagCondition.init(legendaryGroups, spells);
 
 	const ui = new ConverterUi();
 

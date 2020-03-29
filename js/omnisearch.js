@@ -31,9 +31,14 @@ const Omnisearch = {
 
 		const $body = $(`body`);
 		$body.on("click", () => $searchOutWrapper.hide());
-		$searchOut.on("click", (e) => e.stopPropagation());
+		$searchOut.on("click", e => {
+			e.stopPropagation();
+			Renderer.hover.cleanTempWindows();
+		});
 
 		$searchIn.on("keydown", (e) => {
+			e.stopPropagation();
+			Renderer.hover.cleanTempWindows();
 			switch (e.which) {
 				case 13: // enter
 					clickFirst = true;
@@ -50,7 +55,6 @@ const Omnisearch = {
 					$searchIn.val("");
 					$searchIn.blur();
 			}
-			e.stopPropagation();
 		});
 
 		// auto-search after 100ms
@@ -64,12 +68,14 @@ const Omnisearch = {
 		});
 		$searchIn.on("keydown", () => clearTimeout(typeTimer));
 		$searchIn.on("click", (e) => {
-			if ($searchIn.val() && $searchIn.val().trim().length) $searchSubmit.click();
 			e.stopPropagation();
+			Renderer.hover.cleanTempWindows();
+			if ($searchIn.val() && $searchIn.val().trim().length) $searchSubmit.click();
 		});
 
 		$searchSubmit.on("click", (e) => {
 			e.stopPropagation();
+			Renderer.hover.cleanTempWindows();
 			pDoSearch();
 		});
 
@@ -311,6 +317,7 @@ const Omnisearch = {
 	},
 
 	handleLinkKeyDown (e, $ele, $searchIn, $searchOut) {
+		Renderer.hover.cleanTempWindows();
 		switch (e.which) {
 			case 37: { // left
 				e.preventDefault();

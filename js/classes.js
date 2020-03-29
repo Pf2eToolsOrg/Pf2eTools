@@ -103,7 +103,7 @@ class ClassesPage extends BaseComponent {
 		Hist.initialLoad = false;
 
 		// Finally, ensure the hash correctly matches the state
-		this._setHashFromState();
+		this._setHashFromState(true);
 
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
@@ -195,14 +195,21 @@ class ClassesPage extends BaseComponent {
 		this._addHookAll("state", () => this._setHashFromState());
 	}
 
-	_setHashFromState () {
+	_setHashFromState (isSuppressHistory) {
+		// During the initial load, force-suppress all changes
+		if (isSuppressHistory === undefined) isSuppressHistory = Hist.initialLoad;
+
 		const nxtHash = this._getHashState();
 		const rawLocation = window.location.hash;
 		const location = rawLocation[0] === "#" ? rawLocation.slice(1) : rawLocation;
-		if (nxtHash !== location) window.location.hash = nxtHash;
+		if (nxtHash !== location) {
+			if (isSuppressHistory) Hist.replaceHistoryHash(nxtHash);
+			else window.location.hash = nxtHash;
+		}
 	}
 
 	_handleHashChange () {
+		// Parity with the implementation in hist.js
 		if (Hist.isHistorySuppressed) return Hist.setSuppressHistory(false);
 
 		this._setClassFromHash();

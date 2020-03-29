@@ -25,7 +25,7 @@ class ShapedConverter {
 			`${SOURCE_INFO.bestiary.dir}index.json`,
 			`${SOURCE_INFO.spells.dir}index.json`,
 			`${SOURCE_INFO.spells.dir}roll20.json`,
-			`${SOURCE_INFO.bestiary.dir}meta.json`
+			`${SOURCE_INFO.bestiary.dir}legendarygroups.json`
 		];
 
 		this._inputPromise = Promise.all(urls.map(url => DataUtil.loadJSON(url)));
@@ -406,7 +406,7 @@ class ShapedConverter {
 		output.name = monster.name;
 		output.size = Parser.sizeAbvToFull(monster.size);
 		output.type = Parser.monTypeToFullObj(monster.type).asText.replace(/^[a-z]/, (char) => char.toLocaleUpperCase());
-		output.alignment = monster.alignment ? Parser.alignmentListToFull(monster.alignment).toLowerCase() : "Unknown";
+		output.alignment = monster.alignment ? Parser.alignmentListToFull(monster.alignment) : "Unknown";
 		output.AC = this.processAC(monster.ac);
 		this.processHP(monster, output);
 		output.speed = Parser.getSpeedString(monster);

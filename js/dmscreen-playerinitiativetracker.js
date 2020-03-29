@@ -57,13 +57,14 @@ class InitiativeTrackerPlayer {
 					if (!$iptServerToken.val().trim()) return $iptServerToken.addClass("form-control--error");
 
 					try {
+						$btnGenConnect.attr("disabled", true);
+
 						ui = new InitiativeTrackerPlayerUi(view, $iptPlayerName.val(), $iptServerToken.val());
 						await ui.pInit();
 						InitiativeTrackerPlayerMessageHandlerScreen.initUnloadMessage();
-
-						$btnGenConnect.attr("disabled", true);
 					} catch (e) {
-						JqueryUtil.doToast({content: `Failed to get connect. ${VeCt.STR_SEE_CONSOLE}`, type: "danger"});
+						$btnGenConnect.attr("disabled", false);
+						JqueryUtil.doToast({content: `Failed to connect. ${VeCt.STR_SEE_CONSOLE}`, type: "danger"});
 						setTimeout(() => { throw e; });
 					}
 				});
@@ -84,7 +85,7 @@ class InitiativeTrackerPlayer {
 						await ui.pInit();
 						InitiativeTrackerPlayerMessageHandlerScreen.initUnloadMessage();
 					} catch (e) {
-						JqueryUtil.doToast({content: `Failed to get connect. ${VeCt.STR_SEE_CONSOLE}`, type: "danger"});
+						JqueryUtil.doToast({content: `Failed to connect. ${VeCt.STR_SEE_CONSOLE}`, type: "danger"});
 						setTimeout(() => { throw e; })
 					}
 				} else {
@@ -110,7 +111,7 @@ class InitiativeTrackerPlayer {
 								await ui.pInit();
 								InitiativeTrackerPlayerMessageHandlerScreen.initUnloadMessage();
 							} catch (e) {
-								JqueryUtil.doToast({content: `Failed to get connect. ${VeCt.STR_SEE_CONSOLE}`, type: "danger"});
+								JqueryUtil.doToast({content: `Failed to connect. ${VeCt.STR_SEE_CONSOLE}`, type: "danger"});
 								// restore original state
 								$btnCancel.remove(); $wrpSel.remove();
 								view.$wrpInitial.append($btnConnectRemote).append($btnConnectLocal);

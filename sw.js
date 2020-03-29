@@ -1,6 +1,14 @@
+/**
+ * Dbgging notes:
+ *   - **CTRL+F5 is unreliable**
+ *   - spam "Clear Site Data" in DevTools
+ *   - use "update on reload" in Service Workers DevTools section
+ *   - sanity-check code to ensure it has updated
+ */
+
 importScripts("./js/sw-files.js");
 
-const cacheName = /* 5ETOOLS_VERSION__OPEN */"1.101.0"/* 5ETOOLS_VERSION__CLOSE */;
+const cacheName = /* 5ETOOLS_VERSION__OPEN */"1.102.1"/* 5ETOOLS_VERSION__CLOSE */;
 const cacheableFilenames = new Set(filesToCache);
 
 let isCacheRunning;
@@ -26,38 +34,59 @@ self.addEventListener("activate", e => {
 	})());
 });
 
-async function getOrCache (url, retryCount = 0) {
+async function getOrCache (url, responseMeta) {
+	responseMeta = responseMeta || {};
+
 	const path = getPath(url);
 
 	const fromCache = await caches.match(path);
-	if (fromCache) return fromCache;
+	if (fromCache) {
+		responseMeta.fromCache = true;
+		return fromCache;
+	}
 
+	let retryCount = 3;
 	while (true) {
 		let response;
 		try {
-			response = await fetch(url);
+			const controller = new AbortController();
+			setTimeout(() => controller.abort(), 30 * 1000);
+			response = await fetch(url, {signal: controller.signal});
 		} catch (e) {
 			if (retryCount-- > 0) continue;
 			else throw e;
 		}
 		const cache = await caches.open(cacheName);
-		cache.put(path, response.clone()); // don't await
+		// throttle this with `await` to ensure Firefox doesn't die under load
+		await cache.put(path, response.clone());
+		responseMeta.fromCache = false;
 		return response;
 	}
 }
 
+// All data loading (JSON, images, etc) passes through here when the service worker is active
 self.addEventListener("fetch", e => {
 	const url = e.request.url;
 	const path = getPath(url);
 
 	if (!cacheableFilenames.has(path)) return;
-	e.respondWith(getOrCache(url));
+	const responseMeta = {};
+
+	e.respondWith((async () => {
+		const toReturn = await getOrCache(url, responseMeta);
+		if (responseMeta.fromCache) {
+			// TODO if we grabbed the result from the cache, we could here asynchronously launch a hard fetch to
+			//    update the cache? Currently is of no relevance, as the user can simply refresh to have the service
+			//    worker realise it is outdated and flush everything.
+		}
+		return toReturn;
+	})());
 });
 
-self.addEventListener("message", async e => {
-	const send = (msgOut) => e.ports[0].postMessage(msgOut);
+self.addEventListener("message", async evt => {
+	const send = (msgOut) => evt.ports[0].postMessage(msgOut);
 
-	const msg = e.data;
+	const msg = evt.data;
 	switch (msg.type) {
 		case "cache-cancel":
 			isCacheRunning = false;
@@ -69,7 +98,8 @@ self.addEventListener("message", async e => {
 				try {
 					await getOrCache(filesToCache[i]);
 				} catch (e) {
-					return send({type: "download-error"});
+					debugger
+					return send({type: "download-error", message: ((e.stack || "").trim()) || e.name});
 				}
 				if (!isCacheRunning) return send({type: "download-cancelled"});
 				if (i % 50) send({type: "download-progress", data: {pct: `${((i / filesToCache.length) * 100).toFixed(2)}%`}});

@@ -19,6 +19,7 @@ class SpellBuilder extends Builder {
 		if (result) {
 			const spell = MiscUtil.copy(await Renderer.hover.pCacheAndGet(result.page, result.source, result.hash));
 			spell.source = this._ui.source;
+			delete spell.srd;
 			this.setStateFromLoaded({s: spell, m: this.getInitialMetaState()});
 
 			this.renderInput();

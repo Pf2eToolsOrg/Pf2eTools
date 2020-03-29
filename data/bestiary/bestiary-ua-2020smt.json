@@ -1,0 +1,828 @@
+{
+	"monster": [
+		{
+			"name": "Aberrant Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 3,
+			"size": "M",
+			"type": "aberration",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"special": "11 + the level of the spell (natural armor)"
+				}
+			],
+			"hp": {
+				"special": "equal the aberration's Constitution modifier + your spellcasting ability modifier + ten times the spell's level"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 30,
+					"condition": "(beholderkin only; hover)"
+				},
+				"canHover": true
+			},
+			"str": 16,
+			"dex": 10,
+			"con": 15,
+			"int": 16,
+			"wis": 10,
+			"cha": 6,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"immune": [
+				"psychic"
+			],
+			"languages": [
+				"Deep Speech",
+				"understands the languages you speak"
+			],
+			"trait": [
+				{
+					"name": "Regeneration (Slaadi Only)",
+					"entries": [
+						"The aberration regains 10 hit points at the start of its turn if it has at least 1 hit point."
+					]
+				},
+				{
+					"name": "Whispering Aura (Star Spawn Only)",
+					"entries": [
+						"At the start of each of the aberration's turns, each creature within 5 feet of it must succeed on a Wisdom saving throw against your spell save DC or take {@damage 3d6} psychic damage, provided that the aberration isn't {@condition incapacitated}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The aberration makes a number of attacks equal to half this spell's level (rounded down)."
+					]
+				},
+				{
+					"name": "Eye Ray (Beholderkin Only)",
+					"entries": [
+						"{@atk rs} +3 + the spell's level to hit, range 30 ft., one creature. {@h}{@dice 1d8 + 3} + the spell's level psychic damage."
+					]
+				},
+				{
+					"name": "Claws (Slaadi Only)",
+					"entries": [
+						"{@atk mw} +3 + the spell's level to hit, reach 5 ft., one target. {@h}{@dice 1d10 + 3} + the spell's level slashing damage. If the target is a creature, it can't regain hit points until the start of the aberration's next turn."
+					]
+				},
+				{
+					"name": "Psychic Slam (Star Spawn Only)",
+					"entries": [
+						"{@atk ms} +3 + the spell's level to hit, reach 5 ft., one creature. {@h}{@dice 1d6 + 3} + the spell's level psychic damage."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"DS"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Bestial Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 4,
+			"size": "S",
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"special": "11 + the level of the spell (natural armor)"
+				}
+			],
+			"hp": {
+				"special": "equal the beast's Constitution modifier + your spellcasting ability modifier + ten times the spell's level"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": {
+					"number": 30,
+					"condition": "(land only)"
+				},
+				"fly": {
+					"number": 60,
+					"condition": "(air only)"
+				},
+				"swim": {
+					"number": 30,
+					"condition": "(water only)"
+				}
+			},
+			"str": 18,
+			"dex": 11,
+			"con": 16,
+			"int": 4,
+			"wis": 14,
+			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 12,
+			"languages": [
+				"understands the languages you speak"
+			],
+			"trait": [
+				{
+					"name": "Amphibious (Water Only)",
+					"entries": [
+						"The beast can breathe air and water."
+					]
+				},
+				{
+					"name": "Flyby (Air Only)",
+					"entries": [
+						"The beast doesn't provoke opportunity attacks when it flies out of an enemy's reach."
+					]
+				},
+				{
+					"name": "Pack Tactics (Land and Water Only)",
+					"entries": [
+						"The beast has advantage on an attack roll against a creature if at least one of the beast's allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The beast makes a number of attacks equal to half this spell's level (rounded down)."
+					]
+				},
+				{
+					"name": "Maul",
+					"entries": [
+						"{@atk mw} +4 + the spell's level to hit, reach 5 ft., one target. {@h}{@dice 1d8 + 4} + the spell's level piercing damage."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Celestial Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 4,
+			"size": "L",
+			"type": "celestial",
+			"alignment": [
+				"N",
+				"G"
+			],
+			"ac": [
+				{
+					"special": "11 + the level of the spell (natural armor)"
+				}
+			],
+			"hp": {
+				"special": "equal the celestial's Constitution modifier + your spellcasting ability modifier + ten times the spell's level"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 40
+			},
+			"str": 16,
+			"dex": 14,
+			"con": 16,
+			"int": 10,
+			"wis": 14,
+			"cha": 16,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"resist": [
+				"radiant"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened"
+			],
+			"languages": [
+				"Celestial",
+				"understands the languages you speak"
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The celestial makes a number of attacks equal to half this spell's level (rounded down)."
+					]
+				},
+				{
+					"name": "Radiant Bow (Avenger Only)",
+					"entries": [
+						"{@atk rw} +2 + the spell's level to hit, range 150/600 ft., one target. {@h}{@dice 2d6 + 2} + the spell's level radiant damage."
+					]
+				},
+				{
+					"name": "Radiant Mace (Defender Only)",
+					"entries": [
+						"{@atk mw} +3 + the spell's level to hit, reach 5 ft., one target. {@h}{@dice 1d10 + 3} + the spell's level radiant damage, and the celestial can choose itself or another creature it can see within 10 feet of the target. The chosen creature gains temporary hit points equal to the damage dealt, provided it doesn't already have temporary hit points."
+					]
+				},
+				{
+					"name": "Healing Touch (1/Day)",
+					"entries": [
+						"The celestial touches another creature. The target magically regains hit points equal to {@dice 2d8} + the spell's level."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"CE"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
+			]
+		},
+		{
+			"name": "Elemental Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 5,
+			"size": "M",
+			"type": "elemental",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				{
+					"special": "11 + the level of the spell (natural armor)"
+				}
+			],
+			"hp": {
+				"special": "equal the elemental's Constitution modifier + your spellcasting ability modifier + ten times the spell's level"
+			},
+			"speed": {
+				"walk": 40,
+				"fly": {
+					"number": 40,
+					"condition": "(air only hover)"
+				},
+				"burrow": {
+					"number": 40,
+					"condition": "(earth only)"
+				},
+				"swim": {
+					"number": 40,
+					"condition": "(water only)"
+				},
+				"canHover": true
+			},
+			"str": 18,
+			"dex": 15,
+			"con": 17,
+			"int": 4,
+			"wis": 10,
+			"cha": 16,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"resist": [
+				"lightning",
+				{
+					"resist": [
+						"thunder"
+					],
+					"note": "(air only)"
+				},
+				"piercing",
+				{
+					"resist": [
+						"slashing"
+					],
+					"note": "(earth only)"
+				},
+				{
+					"resist": [
+						"acid"
+					],
+					"note": "(water only)"
+				}
+			],
+			"immune": [
+				"poison",
+				{
+					"immune": [
+						"fire"
+					],
+					"note": "(fire only)"
+				}
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"unconscious"
+			],
+			"languages": [
+				"Primordial",
+				"understands the languages you speak"
+			],
+			"trait": [
+				{
+					"name": "Amorphous Form (Air, Fire, and Water Only)",
+					"entries": [
+						"The elemental can move through a space as narrow as 1 inch wide without squeezing."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The elemental makes a number of attacks equal to half this spell's level (rounded down)."
+					]
+				},
+				{
+					"name": "Slam",
+					"entries": [
+						"{@atk mw} +4 + the spell's level to hit, reach 5 ft., one target. {@h}{@dice 1d10 + 4} + the spell's level bludgeoning damage (Air, Earth, and Water only) or fire damage (Fire only)."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Fey Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 5,
+			"size": "S",
+			"type": "fey",
+			"alignment": [
+				"C",
+				"G"
+			],
+			"ac": [
+				{
+					"special": "11 + the level of the spell (natural armor)"
+				}
+			],
+			"hp": {
+				"special": "equal the fey's Constitution modifier + your spellcasting ability modifier + ten times the spell's level"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 13,
+			"dex": 16,
+			"con": 14,
+			"int": 14,
+			"wis": 11,
+			"cha": 16,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"conditionImmune": [
+				"charmed"
+			],
+			"languages": [
+				"Sylvan",
+				"understands the languages you speak"
+			],
+			"trait": [
+				{
+					"name": "Fey Step",
+					"entries": [
+						"As a bonus action, the fey can magically teleport up to 30 feet to an unoccupied space it can see."
+					]
+				},
+				{
+					"name": "Darkening Step (Deceitful Only)",
+					"entries": [
+						"Immediately after using its Fey Step, the fey can fill a 5-foot cube within 5 feet of it with magical darkness, which remains until the end of the fey's next turn."
+					]
+				},
+				{
+					"name": "Ecstatic Step (Joyful Only)",
+					"entries": [
+						"Immediately after using its Fey Step, the fey can choose a creature it can see within 10 feet of it and force it to succeed on a Wisdom saving throw against your spell save DC or be {@condition charmed} by the fey for 1 minute. The charm ends if the fey or any of its companions deals any damage to the target."
+					]
+				},
+				{
+					"name": "Impassioned Step (Furious Only)",
+					"entries": [
+						"Immediately after using its Fey Step, the fey has advantage on the next attack roll it makes before the end of its turn."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The fey makes a number of attacks equal to half this spell's level (rounded down)."
+					]
+				},
+				{
+					"name": "Shortsword",
+					"entries": [
+						"{@atk mw} +3 + the spell's level to hit, reach 5 ft., one target. {@h}{@dice 1d6 + 3} + the spell's level piercing damage{@damage  + 1d6} force damage."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			],
+			"conditionInflict": [
+				"charmed"
+			]
+		},
+		{
+			"name": "Fiendish Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 6,
+			"size": "L",
+			"type": "fiend",
+			"alignment": [
+				{
+					"alignment": [
+						"C",
+						"E"
+					],
+					"note": "Demon only"
+				},
+				{
+					"alignment": [
+						"L",
+						"E"
+					],
+					"note": "Devil only"
+				},
+				{
+					"alignment": [
+						"N",
+						"E"
+					],
+					"note": "Yugoloth only"
+				}
+			],
+			"ac": [
+				{
+					"special": "11 + the level of the spell (natural armor)"
+				}
+			],
+			"hp": {
+				"special": "equal the fiend's Constitution modifier + your spellcasting ability modifier + ten times the spell's level"
+			},
+			"speed": {
+				"walk": 40,
+				"climb": {
+					"number": 40,
+					"condition": "(demon only)"
+				},
+				"fly": {
+					"number": 60,
+					"condition": "(devil only)"
+				}
+			},
+			"str": 13,
+			"dex": 16,
+			"con": 15,
+			"int": 10,
+			"wis": 10,
+			"cha": 16,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"resist": [
+				"fire"
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"languages": [
+				"Abyssal",
+				"Infernal",
+				"telepathy 60 ft."
+			],
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The fiend has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Death Throes (Demon Only)",
+					"entries": [
+						"When the fiend drops to 0 hit points or the spell ends, the fiend explodes, and each creature within 10 feet of it must make a Dexterity saving throw against your spell save DC. A creature takes {@dice 2d10} + this spell's level fire damage on a failed save, or half as much damage on a successful one."
+					]
+				},
+				{
+					"name": "Devil's Sight (Devil Only)",
+					"entries": [
+						"Magical darkness doesn't impede the fiend's darkvision."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The fiend makes a number of attacks equal to half this spell's level (rounded down)."
+					]
+				},
+				{
+					"name": "Bite (Demon Only)",
+					"entries": [
+						"{@atk mw} +3 + the spell's level to hit, reach 5 ft., one target. {@h}{@dice 1d12 + 3} + the spell's level necrotic damage."
+					]
+				},
+				{
+					"name": "Claws (Yugoloth Only)",
+					"entries": [
+						"{@atk mw} +3 + the spell's level to hit, reach 5 ft., one target. {@h}{@dice 1d8 + 3} + the spell's level slashing damage. Immediately after the attack hits or misses, the fiend can magically teleport up to 30 feet to an unoccupied space it can see."
+					]
+				},
+				{
+					"name": "Hurl Flame (Devil Only)",
+					"entries": [
+						"{@atk rs} +3 + the spell's level to hit, range 150 ft., one target. {@h}{@dice 2d6 + 3} + the spell's level fire damage. If the target is a flammable object that isn't being worn or carried, it also catches fire."
+					]
+				}
+			],
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"AB",
+				"I",
+				"TP"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Shadow Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 7,
+			"size": "M",
+			"type": "monstrosity",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"special": "11 + the level of the spell (natural armor)"
+				}
+			],
+			"hp": {
+				"special": "equal the shadow's Constitution modifier + your spellcasting ability modifier + ten times the spell's level"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 13,
+			"dex": 16,
+			"con": 15,
+			"int": 4,
+			"wis": 10,
+			"cha": 16,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 10,
+			"resist": [
+				"necrotic"
+			],
+			"conditionImmune": [
+				"frightened"
+			],
+			"languages": [
+				"Common",
+				"understands the languages you speak"
+			],
+			"trait": [
+				{
+					"name": "Bloodthirsty Frenzy (Fury Only)",
+					"entries": [
+						"The spirit has advantage on attack rolls against {@condition frightened} creatures."
+					]
+				},
+				{
+					"name": "Shadow Stealth (Fear Only)",
+					"entries": [
+						"While in dim light or darkness, the spirit can take the Hide action as a bonus action."
+					]
+				},
+				{
+					"name": "Weight of Ages (Despair Only)",
+					"entries": [
+						"Any beast or humanoid, other than you, that starts its turn within 5 feet of the spirit has its speed reduced by 20 feet until the start of that beast or humanoid's next turn."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The spirit makes a number of attacks equal to half this spell's level (rounded down)."
+					]
+				},
+				{
+					"name": "Chilling Rend",
+					"entries": [
+						"{@atk mw} +3 + the spell's level to hit, reach 5 ft., one target. {@h}{@dice 2d8 + 3} + the spell's level cold damage."
+					]
+				},
+				{
+					"name": "Dreadful Scream (1/Day)",
+					"entries": [
+						"The spirit screams. Each creature within 30 feet of it must succeed on a Wisdom saving throw against your spell save DC or be {@condition frightened} of the spirit for 1 minute. The {@condition frightened} creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+					]
+				}
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"frightened"
+			]
+		},
+		{
+			"name": "Undead Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 8,
+			"size": "M",
+			"type": "undead",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				{
+					"special": "11 + the level of the spell (natural armor)"
+				}
+			],
+			"hp": {
+				"special": "equal the undead's Constitution modifier + your spellcasting ability modifier + ten times the spell's level"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 40,
+					"condition": "(ghostly only; hover)"
+				},
+				"canHover": true
+			},
+			"str": 12,
+			"dex": 16,
+			"con": 15,
+			"int": 4,
+			"wis": 10,
+			"cha": 9,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"immune": [
+				"necrotic",
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"poisoned"
+			],
+			"languages": [
+				"Common",
+				"understands the languages you speak"
+			],
+			"trait": [
+				{
+					"name": "Incorporeal Movement (Ghostly Only)",
+					"entries": [
+						"The undead can become incorporeal while moving and pass through other creatures and objects as if they were difficult terrain. If it ends its turn inside an object, it is shunted to the nearest unoccupied space and takes {@damage 1d10} force damage for every 5 feet traveled."
+					]
+				},
+				{
+					"name": "Festering Aura (Putrid Only)",
+					"entries": [
+						"Any creature, other than you, that starts its turn within 5 feet of the undead must succeed on a Constitution saving throw against your spell save DC or be {@condition poisoned} until the start of its next turn."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The spirit makes a number of attacks equal to half this spell's level (rounded down)."
+					]
+				},
+				{
+					"name": "Deathly Touch (Ghostly Only)",
+					"entries": [
+						"{@atk mw} +3 + the spell's level to hit, reach 5 ft., one creature. {@h}{@dice 1d8 + 3} + the spell's level necrotic damage, and the creature must succeed on a Wisdom saving throw against your spell save DC or be {@condition frightened} of the undead until the end of the target's next turn."
+					]
+				},
+				{
+					"name": "Grave Bolt (Skeletal Only)",
+					"entries": [
+						"{@atk rs} +3 + the spell's level to hit, range 150 ft., one target. {@h}{@dice 2d8 + 3} + the spell's level necrotic damage."
+					]
+				},
+				{
+					"name": "Rotting Claw (Putrid Only)",
+					"entries": [
+						"{@atk mw} +3 + the spell's level to hit, reach 5 ft., one target. {@h}{@dice 1d6 + 3} + the spell's level slashing damage. If the target is {@condition poisoned}, it must succeed on a Constitution saving throw against your spell save DC or be {@condition paralyzed} until the end of its next turn."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"frightened",
+				"paralyzed",
+				"poisoned"
+			]
+		}
+	]
+}

@@ -359,7 +359,7 @@ function Renderer () {
 		const svg = this._lazyImages && entry.width != null && entry.height != null
 			? `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${entry.width}" height="${entry.height}"><rect width="100%" height="100%" fill="#ccc3"></rect></svg>`)}`
 			: null;
-		textStack[0] += `<div class="${this._renderImage_getWrapperClasses(entry, meta)}"><a href="${href}" target="_blank" rel="noopener noreferrer" ${entry.title ? `title="${Renderer.stripTags(entry.title)}"` : ""}><img class="rd__image" src="${svg || href}" ${entry.altText ? `alt="${entry.altText}"` : ""} ${svg ? `data-src="${href}"` : ""} ${getStylePart()}></a></div>`;
+		textStack[0] += `<div class="${this._renderImage_getWrapperClasses(entry, meta)}"><a href="${href}" target="_blank" rel="noopener noreferrer" ${entry.title ? `title="${Renderer.stripTags(entry.title)}"` : ""}><img class="${this._renderImage_getImageClasses(entry, meta)}" src="${svg || href}" ${entry.altText ? `alt="${entry.altText}"` : ""} ${svg ? `data-src="${href}"` : ""} ${getStylePart()}></a></div>`;
 		if (entry.title) textStack[0] += `<div class="rd__image-title"><div class="rd__image-title-inner">${this.render(entry.title)}</div></div>`;
 		else if (entry._galleryTitlePad) textStack[0] += `<div class="rd__image-title">&nbsp;</div>`;
 
@@ -371,10 +371,19 @@ function Renderer () {
 	this._renderImage_getWrapperClasses = function (entry) {
 		const out = ["rd__wrp-image"];
 		if (entry.style) {
-			if (entry.style === "comic-speaker-left") {
-				out.push("rd__comic-img-speaker", "rd__comic-img-speaker--left");
-			} else if (entry.style === "comic-speaker-right") {
-				out.push("rd__comic-img-speaker", "rd__comic-img-speaker--right");
+			switch (entry.style) {
+				case "comic-speaker-left": out.push("rd__comic-img-speaker", "rd__comic-img-speaker--left"); break;
+				case "comic-speaker-right": out.push("rd__comic-img-speaker", "rd__comic-img-speaker--right"); break;
+			}
+		}
+		return out.join(" ");
+	};
+
+	this._renderImage_getImageClasses = function (entry) {
+		const out = ["rd__image"];
+		if (entry.style) {
+			switch (entry.style) {
+				case "deity-symbol": out.push("rd__img-small"); break;
 			}
 		}
 		return out.join(" ");
@@ -788,19 +797,19 @@ function Renderer () {
 	};
 
 	this._renderQuote = function (entry, textStack, meta, options) {
-		textStack[0] += `<p><i>`;
 		const len = entry.entries.length;
 		for (let i = 0; i < len; ++i) {
-			this._recursiveRender(entry.entries[i], textStack, meta);
-			if (i !== entry.entries.length - 1) textStack[0] += `<br>`;
-			else textStack[0] += `</i>`;
+			textStack[0] += `<p class="rd__quote-line ${i === len - 1 && entry.by ? `rd__quote-line--last` : ""}">`;
+			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<i>", suffix: "</i>"});
+			textStack[0] += `</p>`;
 		}
 		if (entry.by) {
+			textStack[0] += `<p>`;
 			const tempStack = [""];
 			this._recursiveRender(entry.by, tempStack, meta);
 			textStack[0] += `<span class="rd__quote-by">\u2014 ${tempStack.join("")}${entry.from ? `, <i>${entry.from}</i>` : ""}</span>`;
+			textStack[0] += `</p>`;
 		}
-		textStack[0] += `</p>`;
 	};
 
 	this._renderOptfeature = function (entry, textStack, meta, options) {
@@ -3758,7 +3767,7 @@ Renderer.monster = {
 		</td></tr>`;
 	},
 
-	getTypeAlignmentPart (mon) { return `${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)}${mon.sizeNote ? ` ${mon.sizeNote}` : ""} ${Parser.monTypeToFullObj(mon.type).asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment).toLowerCase()}` : ""}`; },
+	getTypeAlignmentPart (mon) { return `${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)}${mon.sizeNote ? ` ${mon.sizeNote}` : ""} ${Parser.monTypeToFullObj(mon.type).asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment)}` : ""}`; },
 	getSavesPart (mon) { return `${Object.keys(mon.save).sort(SortUtil.ascSortAtts).map(s => Renderer.monster.getSave(Renderer.get(), s, mon.save[s])).join(", ")}` },
 	getSensesPart (mon) { return `${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses)}, ` : ""}passive Perception ${mon.passive || "\u2014"}`; },
 
@@ -3897,7 +3906,7 @@ Renderer.monster = {
 			// weave spellcasting in with other traits
 			trait = trait ? trait.concat(spellTraits) : spellTraits;
 		}
-		if (trait) return trait.sort((a, b) => SortUtil.monTraitSort(a.name, b.name));
+		if (trait) return trait.sort((a, b) => SortUtil.monTraitSort(a, b));
 	},
 
 	getSkillsString (renderer, mon) {
@@ -4190,7 +4199,7 @@ Renderer.item = {
 	getTypeRarityAndAttunementText (item) {
 		const typeRarity = [
 			item._typeHtml === "Other" ? "" : item._typeHtml,
-			[item.tier, (item.rarity && Renderer.item.doRenderRarity(item.rarity) ? item.rarity : "")].map(it => (it || "").trim()).filter(it => it).join(", ")
+			[item.tier ? `${item.tier} tier` : "", (item.rarity && Renderer.item.doRenderRarity(item.rarity) ? item.rarity : "")].map(it => (it || "").trim()).filter(it => it).join(", ")
 		].filter(Boolean).join(", ");
 		return item.reqAttune ? `${typeRarity} ${item._attunement}` : typeRarity
 	},
@@ -4201,16 +4210,16 @@ Renderer.item = {
 		if (item.reqAttune != null && item.reqAttune !== false) {
 			if (item.reqAttune === true) {
 				attunementCat = "Yes";
-				attunement = "(Requires Attunement)"
-			} else if (item.reqAttune === "OPTIONAL") {
+				attunement = "(requires attunement)"
+			} else if (item.reqAttune === "optional") {
 				attunementCat = "Optional";
-				attunement = "(Attunement Optional)"
+				attunement = "(attunement optional)"
 			} else if (item.reqAttune.toLowerCase().startsWith("by")) {
 				attunementCat = "By...";
-				attunement = `(Requires Attunement ${item.reqAttune})`;
+				attunement = `(requires attunement ${item.reqAttune})`;
 			} else {
 				attunementCat = "Yes"; // throw any weird ones in the "Yes" category (e.g. "outdoors at night")
-				attunement = `(Requires Attunement ${item.reqAttune})`;
+				attunement = `(requires attunement ${item.reqAttune})`;
 			}
 		}
 		return [attunement, attunementCat]
@@ -4221,29 +4230,32 @@ Renderer.item = {
 		const typeListText = [];
 		let showingBase = false;
 		if (item.wondrous) {
-			typeListHtml.push("Wondrous Item");
-			typeListText.push("Wondrous Item");
+			typeListHtml.push(`wondrous item${item.tattoo ? ` (tattoo)` : ""}`);
+			typeListText.push("wondrous item");
+		}
+		if (item.tattoo) {
+			typeListText.push("tattoo");
 		}
 		if (item.staff) {
-			typeListHtml.push("Staff");
-			typeListText.push("Staff");
+			typeListHtml.push("staff");
+			typeListText.push("staff");
 		}
 		if (item.firearm) {
-			typeListHtml.push("Firearm");
-			typeListText.push("Firearm");
+			typeListHtml.push("firearm");
+			typeListText.push("firearm");
 		}
 		if (item.age) {
 			typeListHtml.push(item.age);
 			typeListText.push(item.age);
 		}
 		if (item.weaponCategory) {
-			typeListHtml.push(`${item.weaponCategory} Weapon${item.baseItem ? ` (${Renderer.get().render(`{@item ${item.baseItem}`)})` : ""}`);
-			typeListText.push(`${item.weaponCategory} Weapon`);
+			typeListHtml.push(`${item.weaponCategory} weapon${item.baseItem ? ` (${Renderer.get().render(`{@item ${item.baseItem}`)})` : ""}`);
+			typeListText.push(`${item.weaponCategory} weapon`);
 			showingBase = true;
 		}
 		if (item.staff && item.type !== "M") { // DMG p140: "Unless a staff's description says otherwise, a staff can be used as a quarterstaff."
-			typeListHtml.push("Melee Weapon");
-			typeListText.push("Melee Weapon");
+			typeListHtml.push("melee weapon");
+			typeListText.push("melee weapon");
 		}
 		if (item.type) {
 			const abv = Parser.itemTypeToFull(item.type);
@@ -4252,8 +4264,8 @@ Renderer.item = {
 			typeListText.push(abv);
 		}
 		if (item.poison) {
-			typeListHtml.push("Poison");
-			typeListText.push("Poison");
+			typeListHtml.push("poison");
+			typeListText.push("poison");
 		}
 		return [typeListText, typeListHtml.join(", ")];
 	},
@@ -4331,7 +4343,7 @@ Renderer.item = {
 		return `
 		${Renderer.utils.getExcludedTr(item, "item")}
 		${Renderer.utils.getNameTr(item, {page: UrlUtil.PG_ITEMS})}
-		<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item)}</td></tr>
+		<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item).uppercaseFirst()}</td></tr>
 		<tr>
 			<td colspan="2">${[Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
 			<td class="text-right" colspan="4">${damage} ${damageType} ${propertiesTxt}</td>
@@ -4339,7 +4351,7 @@ Renderer.item = {
 		${hasEntries ? `${Renderer.utils.getDividerTr()}<tr class="text"><td colspan="6" class="text">${Renderer.item.getRenderedEntries(item, true)}</td></tr>` : ""}`;
 	},
 
-	_hiddenRarity: new Set(["None", "Unknown", "Unknown (Magic)", "Varies"]),
+	_hiddenRarity: new Set(["none", "unknown", "unknown (magic)", "varies"]),
 	doRenderRarity (rarity) {
 		return !Renderer.item._hiddenRarity.has(rarity);
 	},
@@ -5269,7 +5281,7 @@ Renderer.hover = {
 		if (!Renderer.hover._isInit) {
 			Renderer.hover._isInit = true;
 
-			$(`body`).on("click", () => Renderer.hover._cleanTempWindows());
+			$(`body`).on("click", () => Renderer.hover.cleanTempWindows());
 
 			ContextUtil.doInitContextMenu(
 				"hoverBorder",
@@ -5286,7 +5298,7 @@ Renderer.hover = {
 		}
 	},
 
-	_cleanTempWindows () {
+	cleanTempWindows () {
 		for (const [ele, meta] of Renderer.hover._eleCache.entries()) {
 			if (!meta.isPermanent && !document.body.contains(ele) && meta.windowMeta) {
 				meta.windowMeta.doClose();
@@ -5303,7 +5315,7 @@ Renderer.hover = {
 		// Don't open on small screens unless forced
 		if (Renderer.hover.isSmallScreen(evt) && !evt.shiftKey) return;
 
-		Renderer.hover._cleanTempWindows();
+		Renderer.hover.cleanTempWindows();
 
 		const meta = Renderer.hover._getSetMeta(ele);
 		if (meta.isHovered || meta.isLoading) return; // Another hover is already in progress
@@ -5450,7 +5462,7 @@ Renderer.hover = {
 		const meta = Renderer.hover._handleGenericMouseOverStart(evt, ele);
 		if (meta == null) return;
 
-		Renderer.hover._cleanTempWindows();
+		Renderer.hover.cleanTempWindows();
 
 		const toRender = Renderer.hover._entryCache[entryId];
 

@@ -72,6 +72,7 @@ const VALID_SKILLS = new Set([
 ]);
 
 const ALL_URLS = new Set();
+const CLASS_SUBCLASS_LOOKUP = {};
 
 function isIgnored (directory) {
 	return directory === "./data/roll20-module";
@@ -81,7 +82,7 @@ function fileRecurse (file, fileHandler, doParse, filenameMatcher) {
 	if (file.endsWith(".json") && (filenameMatcher == null || filenameMatcher.test(file.split("/").last()))) {
 		doParse ? fileHandler(file, JSON.parse(fs.readFileSync(file, "utf-8"))) : fileHandler(file);
 		Object.keys(MSG).forEach(k => {
-			if (MSG[k] && MSG[k].trim() && MSG[k].slice(-2) !== "\n\n") MSG[k] += "\n\n";
+			if (MSG[k] && MSG[k].trim() && MSG[k].slice(-5) !== "\n---\n") MSG[k] = `${MSG[k].trimRight()}\n---\n`;
 		});
 	} else if (fs.lstatSync(file).isDirectory() && !isIgnored(file)) fs.readdirSync(file).forEach(nxt => fileRecurse(`${file}/${nxt}`, fileHandler, doParse, filenameMatcher))
 }
@@ -118,6 +119,18 @@ function getSimilar (url) {
 	return JSON.stringify(similarUrls, null, 2);
 }
 
+function getSubclassFeatureIndex (className, classSource, subclassName, subclassSource) {
+	classSource = classSource || ut.TAG_TO_DEFAULT_SOURCE.class;
+	subclassSource = subclassSource || SRC_PHB;
+
+	className = className.toLowerCase();
+	classSource = classSource.toLowerCase();
+	subclassName = subclassName.toLowerCase();
+	subclassSource = subclassSource.toLowerCase();
+
+	return MiscUtil.get(CLASS_SUBCLASS_LOOKUP, classSource, className, subclassSource, subclassName);
+}
+
 function getEncoded (str, tag) {
 	const [name, source] = str.split("|");
 	return `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash([name, source || ut.TAG_TO_DEFAULT_SOURCE[tag]])}`.toLowerCase().trim();
@@ -135,8 +148,7 @@ class LinkCheck {
 
 	static checkString (file, str) {
 		let match;
-		// eslint-disable-next-line no-cond-assign
-		while ((match = LinkCheck.re.exec(str))) {
+		while ((match = LinkCheck.RE.exec(str))) {
 			const tag = match[1];
 			const toEncode = [match[2]];
 
@@ -155,7 +167,7 @@ class LinkCheck {
 			}
 		}
 
-		while ((match = LinkCheck.skillRe.exec(str))) {
+		while ((match = LinkCheck.SKILL_RE.exec(str))) {
 			const skill = match[1];
 			if (!VALID_SKILLS.has(skill)) {
 				MSG.LinkCheck += `Unknown skill: ${match[0]} in file ${file} (evaluates to "${skill}")\n`
@@ -163,8 +175,39 @@ class LinkCheck {
 		}
 	}
 }
-LinkCheck.re = /{@(spell|item|class|creature|condition|disease|background|race|optfeature|feat|reward|psionic|object|cult|boon|trap|hazard|deity|variantrule|action) (.*?)(\|(.*?))?(\|(.*?))?(\|.*?)?}/g;
-LinkCheck.skillRe = /{@skill (.*?)(\|.*?)?}/g;
+LinkCheck.RE = /{@(spell|item|class|creature|condition|disease|background|race|optfeature|feat|reward|psionic|object|cult|boon|trap|hazard|deity|variantrule|action) (.*?)(\|(.*?))?(\|(.*?))?(\|.*?)?}/g;
+LinkCheck.SKILL_RE = /{@skill (.*?)(\|.*?)?}/g;
+
+class ClassLinkCheck {
+	static addHandlers () {
+		PRIMITIVE_HANDLERS.string.push(ClassLinkCheck.checkString);
+	}
+
+	static checkString (file, str) {
+		// e.g. "{@class fighter|phb|and class feature added|Eldritch Knight|phb|2-0}"
+
+		let match;
+		while ((match = ClassLinkCheck.RE.exec(str))) {
+			const className = match[1];
+			const classSource = match[3];
+			const subclassShortName = match[7];
+			const subclassSource = match[9];
+			const ixFeature = match[11];
+
+			if (!subclassShortName) return; // Regular tags will be handled by the general tag checker
+
+			const featureIndex = getSubclassFeatureIndex(className, classSource, subclassShortName, subclassSource);
+			if (!featureIndex) {
+				MSG.LinkCheck += `Missing subclass link: ${match[0]} in file ${file} -- could not find subclass with matching shortname/source\n`;
+			}
+
+			if (ixFeature && !featureIndex.includes(ixFeature)) {
+				MSG.LinkCheck += `Malformed subclass link: ${match[0]} in file ${file} -- feature index "${ixFeature}" was outside expected range\n`;
+			}
+		}
+	}
+}
+ClassLinkCheck.RE = /{@class (.*?)(\|(.*?))?(\|(.*?))?(\|(.*?))?(\|(.*?))?(\|(.*?))?(\|(.*?))?}/g;
 
 class AttachedSpellAndGroupItemsCheck {
 	static run () {
@@ -627,7 +670,37 @@ async function main () {
 	const secondaryIndexItem = od.Omnidexer.decompressIndex(await utS.UtilSearchIndex.pGetIndexAdditionalItem(highestId + 1, false));
 	secondaryIndexItem.forEach(it => ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${it.u.toLowerCase().trim()}`));
 
+	// populate class/subclass index
+	const classIndex = ut.readJson("./data/class/index.json");
+	Object.values(classIndex).forEach(filename => {
+		const data = ut.readJson(`./data/class/${filename}`);
+		data.class.forEach(cls => {
+			cls.name = cls.name.toLowerCase();
+			cls.source = (cls.source || SRC_PHB).toLowerCase();
+
+			CLASS_SUBCLASS_LOOKUP[cls.source] = CLASS_SUBCLASS_LOOKUP[cls.source] || {};
+			CLASS_SUBCLASS_LOOKUP[cls.source][cls.name] = {};
+
+			(cls.subclasses || []).forEach(sc => {
+				sc.shortName = (sc.shortName || sc.name).toLowerCase();
+				sc.source = (sc.source || cls.source).toLowerCase();
+
+				CLASS_SUBCLASS_LOOKUP[cls.source][cls.name][sc.source] = CLASS_SUBCLASS_LOOKUP[cls.source][cls.name][sc.source] || {};
+
+				const ixFeatures = [];
+				cls.classFeatures.forEach((levelFeatures, ixLevel) => {
+					levelFeatures.forEach((_, ixFeature) => {
+						ixFeatures.push(`${ixLevel}-${ixFeature}`)
+					});
+				});
+
+				CLASS_SUBCLASS_LOOKUP[cls.source][cls.name][sc.source][sc.shortName] = ixFeatures;
+			});
+		});
+	});
+
 	LinkCheck.addHandlers();
+	ClassLinkCheck.addHandlers();
 	BraceCheck.addHandlers();
 	FilterCheck.addHandlers();
 	ScaleDiceCheck.addHandlers();

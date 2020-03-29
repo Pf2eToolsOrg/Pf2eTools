@@ -43,6 +43,7 @@ class ItemParser extends BaseParser {
 		// for the user to fill out
 		item.page = options.page;
 
+		// FIXME this duplicates functionality in converterutils
 		let prevLine = null;
 		let curLine = null;
 		let i;
@@ -120,7 +121,7 @@ class ItemParser extends BaseParser {
 					}
 
 					curLine = curLine.replace(/^\s*•\s*/, "");
-					addEntry(curLine);
+					addEntry(curLine.trim());
 				} else if (ConvertUtil.isNameLine(curLine)) {
 					popNestedEntries(); // this implicitly pops nested lists
 
@@ -159,6 +160,8 @@ class ItemParser extends BaseParser {
 		if (!item.entries.length) delete item.entries;
 		else this._setWeight(item, options);
 
+		if (item.staff) this._setQuarterstaffStats(item, options);
+
 		this._doItemPostProcess(item, options);
 		this._setCleanTaglineInfo_handleGenericType(item, options);
 		this._doVariantPostProcess(item, options);
@@ -170,7 +173,10 @@ class ItemParser extends BaseParser {
 	static _doItemPostProcess (stats, options) {
 		TagCondition.tryTagConditions(stats);
 		ArtifactPropertiesTag.tryRun(stats);
-		if (stats.entries) stats.entries = stats.entries.map(it => DiceConvert.getTaggedEntry(it))
+		if (stats.entries) {
+			stats.entries = stats.entries.map(it => DiceConvert.getTaggedEntry(it))
+			EntryConvert.tryRun(stats, "entries");
+		}
 		this._doItemPostProcess_addTags(stats, options);
 		BasicTextClean.tryRun(stats);
 	}
@@ -202,12 +208,17 @@ class ItemParser extends BaseParser {
 		const handlePartRarity = (rarity) => {
 			rarity = rarity.trim().toLowerCase();
 			switch (rarity) {
-				case "common": stats.rarity = rarity.toTitleCase(); return true;
-				case "uncommon": stats.rarity = rarity.toTitleCase(); return true;
-				case "rare": stats.rarity = rarity.toTitleCase(); return true;
-				case "very rare": stats.rarity = rarity.toTitleCase(); return true;
-				case "legendary": stats.rarity = rarity.toTitleCase(); return true;
-				case "artifact": stats.rarity = rarity.toTitleCase(); return true;
+				case "common": stats.rarity = rarity; return true;
+				case "uncommon": stats.rarity = rarity; return true;
+				case "rare": stats.rarity = rarity; return true;
+				case "very rare": stats.rarity = rarity; return true;
+				case "legendary": stats.rarity = rarity; return true;
+				case "artifact": stats.rarity = rarity; return true;
+				case "rarity varies": {
+					stats.rarity = "varies";
+					stats.__prop = "itemGroup";
+					return true;
+				}
 			}
 			return false;
 		};
@@ -221,6 +232,11 @@ class ItemParser extends BaseParser {
 			// region wondrous/item type/staff
 			switch (partLower) {
 				case "wondrous item": stats.wondrous = true; return;
+				case "wondrous item (tattoo)": {
+					stats.wondrous = true;
+					stats.tattoo = true;
+					return;
+				}
 				case "potion": stats.type = "P"; return;
 				case "ring": stats.type = "RG"; return;
 				case "rod": stats.type = "RD"; return;
@@ -245,7 +261,7 @@ class ItemParser extends BaseParser {
 				if (!attunement) {
 					stats.reqAttune = true;
 				} else {
-					stats.reqAttune = attunement;
+					stats.reqAttune = attunement.toLowerCase();
 				}
 
 				return;
@@ -341,6 +357,24 @@ class ItemParser extends BaseParser {
 
 			if (!stats.weight) options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Weight "${m[1]}" requires manual conversion`)
 		});
+	}
+
+	static _setQuarterstaffStats (stats) {
+		const cpyStatsQuarterstaff = MiscUtil.copy(ItemParser._ALL_ITEMS.find(it => it.name === "Quarterstaff" && it.source === SRC_PHB));
+
+		// remove unwanted properties
+		delete cpyStatsQuarterstaff.name;
+		delete cpyStatsQuarterstaff.source;
+		delete cpyStatsQuarterstaff.page;
+		delete cpyStatsQuarterstaff.rarity;
+		delete cpyStatsQuarterstaff.value;
+		delete cpyStatsQuarterstaff.weapon; // tag found only on basic items
+
+		Object.entries(cpyStatsQuarterstaff)
+			.filter(([k]) => !k.startsWith("_"))
+			.forEach(([k, v]) => {
+				if (stats[k] == null) stats[k] = v;
+			});
 	}
 }
 ItemParser._ALL_ITEMS = null;

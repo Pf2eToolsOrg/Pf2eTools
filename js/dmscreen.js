@@ -2994,7 +2994,7 @@ const bookLoader = new BookLoader();
 
 class NoteBox {
 	static make$Notebox (board, content) {
-		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports inline rolls and content tags (CTRL-q with the cursor over some text to activate the embed):\n • Inline rolls,  [[1d20+2]]\n • Content tags (as per the Demo page), {@creature goblin}, {@spell fireball}">${content || ""}</textarea>`)
+		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports inline rolls and content tags (CTRL-q with the cursor over some text to activate the embed):\n • Inline rolls,  [[1d20+2]]\n • Content tags (as per the Demo page), {@creature goblin}, {@spell fireball}\n • Link tags, {@link https://5e.tools}">${content || ""}</textarea>`)
 			.on("keydown", async evt => {
 				if ((evt.ctrlKey || evt.metaKey) && evt.key === "q") {
 					const txt = $iptText[0];
@@ -3058,11 +3058,15 @@ class NoteBox {
 						} else if (bracesAtPos === 1 && braces === 0) {
 							const str = braceStack.join("");
 							const tag = str.split(" ")[0].replace(/^@/, "");
+							const text = str.split(" ").slice(1).join(" ");
 							if (Renderer.HOVER_TAG_TO_PAGE[tag]) {
 								const r = Renderer.get().render(`{${str}`);
 								evt.type = "mouseover";
 								evt.shiftKey = true;
 								$(r).trigger(evt);
+							} else if (tag === "link") {
+								const [txt, link] = Renderer.splitTagByPipe(text);
+								window.open(link && link.trim() ? link : txt);
 							}
 						}
 					}
