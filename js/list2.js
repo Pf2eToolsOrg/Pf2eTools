@@ -93,9 +93,18 @@ class List {
 		if (this._$iptSearch) {
 			UiUtil.bindTypingEnd({$ipt: this._$iptSearch, fnKeyup: () => this.search(this._$iptSearch.val())});
 			this._searchTerm = List._getCleanSearchTerm(this._$iptSearch.val());
+			this._init_bindEscapeKey();
 		}
 		this._doSearch();
 		this._isInit = true;
+	}
+
+	_init_bindEscapeKey () {
+		this._$iptSearch.on("keydown", evt => {
+			if (evt.which !== 27) return; // escape
+			this._$iptSearch.val("");
+			this.search("");
+		});
 	}
 
 	update () {
@@ -187,7 +196,8 @@ class List {
 		const ixItem = this._items.findIndex(it => it.ix === ix);
 		if (~ixItem) {
 			this._isDirty = true;
-			this._items.splice(ixItem, 1);
+			const removed = this._items.splice(ixItem, 1);
+			return removed[0];
 		}
 	}
 
@@ -195,7 +205,8 @@ class List {
 		const ixItem = this._items.findIndex(it => it.values[valueName] === value);
 		if (~ixItem) {
 			this._isDirty = true;
-			this._items.splice(ixItem, 1);
+			const removed = this._items.splice(ixItem, 1);
+			return removed[0];
 		}
 	}
 
@@ -203,7 +214,8 @@ class List {
 		const ixItem = this._items.findIndex(it => it.data[dataName] === value);
 		if (~ixItem) {
 			this._isDirty = true;
-			this._items.splice(ixItem, 1);
+			const removed = this._items.splice(ixItem, 1);
+			return removed[0];
 		}
 	}
 

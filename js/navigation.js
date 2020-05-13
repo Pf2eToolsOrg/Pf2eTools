@@ -39,24 +39,25 @@ class NavBar {
 		addLi(ulRules, "variantrules.html", "Variant & Optional Rules/Misc");
 		addLi(ulRules, "tables.html", "Tables");
 		addDivider(ulRules);
-		addLi(ulRules, "book.html", "Dungeon Master's Guide", {aHash: "DMG"});
-		addLi(ulRules, "book.html", "Monster Manual", {aHash: "MM"});
-		addLi(ulRules, "book.html", "Player's Handbook", {aHash: "PHB"});
-		addDivider(ulRules);
-		addLi(ulRules, "book.html", "Acquisitions Incorporated", {aHash: "AI"});
-		addLi(ulRules, "book.html", "Guildmasters' Guide to Ravnica", {aHash: "GGR"});
-		addLi(ulRules, "book.html", "Mordenkainen's Tome of Foes", {aHash: "MTF"});
-		addLi(ulRules, "book.html", "Sword Coast Adventurer's Guide", {aHash: "SCAG"});
-		addLi(ulRules, "book.html", "Volo's Guide to Monsters", {aHash: "VGM"});
-		addLi(ulRules, "book.html", "Xanathar's Guide to Everything", {aHash: "XGE"});
-		addLi(ulRules, "book.html", "Eberron: Rising from the Last War", {aHash: "ERLW"});
-		addLi(ulRules, "book.html", "Dungeons & Dragons vs. Rick and Morty: Basic Rules", {aHash: "RMR"});
-		addLi(ulRules, "book.html", "Explorer's Guide to Wildemount", {aHash: "EGW"});
-		addDivider(ulRules);
-		addLi(ulRules, "book.html", "Adventurers League", {aHash: "AL"});
-		addLi(ulRules, "book.html", "Sage Advice Compendium", {aHash: "SAC"});
-		addDivider(ulRules);
-		addLi(ulRules, "books.html", "View All/Homebrew");
+		const ulBooks = addDropdown(ulRules, "Books", true);
+		addLi(ulBooks, "books.html", "View All/Homebrew");
+		addDivider(ulBooks);
+		addLi(ulBooks, "book.html", "Player's Handbook", {aHash: "PHB"});
+		addLi(ulBooks, "book.html", "Monster Manual", {aHash: "MM"});
+		addLi(ulBooks, "book.html", "Dungeon Master's Guide", {aHash: "DMG"});
+		addDivider(ulBooks);
+		addLi(ulBooks, "book.html", "Sword Coast Adventurer's Guide", {aHash: "SCAG"});
+		addLi(ulBooks, "book.html", "Volo's Guide to Monsters", {aHash: "VGM"});
+		addLi(ulBooks, "book.html", "Xanathar's Guide to Everything", {aHash: "XGE"});
+		addLi(ulBooks, "book.html", "Mordenkainen's Tome of Foes", {aHash: "MTF"});
+		addLi(ulBooks, "book.html", "Guildmasters' Guide to Ravnica", {aHash: "GGR"});
+		addLi(ulBooks, "book.html", "Acquisitions Incorporated", {aHash: "AI"});
+		addLi(ulBooks, "book.html", "Eberron: Rising from the Last War", {aHash: "ERLW"});
+		addLi(ulBooks, "book.html", "Dungeons & Dragons vs. Rick and Morty: Basic Rules", {aHash: "RMR"});
+		addLi(ulBooks, "book.html", "Explorer's Guide to Wildemount", {aHash: "EGW"});
+		addDivider(ulBooks);
+		addLi(ulBooks, "book.html", "Adventurers League", {aHash: "AL"});
+		addLi(ulBooks, "book.html", "Sage Advice Compendium", {aHash: "SAC"});
 
 		const ulPlayers = addDropdown(navBar, "Player");
 		addLi(ulPlayers, "classes.html", "Classes");
@@ -73,6 +74,8 @@ class NavBar {
 		addLi(ulDms, "dmscreen.html", "DM Screen");
 		addDivider(ulDms);
 		const ulAdventures = addDropdown(ulDms, "Adventures", true);
+		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
+		addDivider(ulAdventures);
 		addLi(ulAdventures, "adventure.html", "Lost Mines of Phandelver", {isSide: true, aHash: "LMoP"});
 		addLi(ulAdventures, "adventure.html", "Hoard of the Dragon Queen", {isSide: true, aHash: "HotDQ"});
 		addLi(ulAdventures, "adventure.html", "Rise of Tiamat", {isSide: true, aHash: "RoT"});
@@ -105,8 +108,10 @@ class NavBar {
 		addLi(ulAdventures, "adventure.html", "Eberron: Forgotten Relics", {isSide: true, aHash: "EFR"});
 		addLi(ulAdventures, "adventure.html", "Rick and Morty: Big Rick Energy", {isSide: true, aHash: "RMBRE"});
 		addLi(ulAdventures, "adventure.html", "Infernal Machine Rebuild", {isSide: true, aHash: "IMR"});
-		addDivider(ulAdventures);
-		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
+		addLi(ulAdventures, "adventure.html", "Wildemount: Tide of Retribution", {isSide: true, aHash: "ToR"});
+		addLi(ulAdventures, "adventure.html", "Wildemount: Dangerous Designs", {isSide: true, aHash: "DD"});
+		addLi(ulAdventures, "adventure.html", "Wildemount: Frozen Sick", {isSide: true, aHash: "FS"});
+		addLi(ulAdventures, "adventure.html", "Wildemount: Unwelcome Spirits", {isSide: true, aHash: "US"});
 		addLi(ulDms, "cultsboons.html", "Cults & Supernatural Boons");
 		addLi(ulDms, "objects.html", "Objects");
 		addLi(ulDms, "trapshazards.html", "Traps & Hazards");
@@ -218,7 +223,7 @@ class NavBar {
 						// Ignore errors
 					}
 				},
-				title: "Add the site to your home screen. When used in conjunction with the Preload Offline Data option, this can create a functional offline copy off the site."
+				title: "Add the site to your home screen. When used in conjunction with the Preload Offline Data option, this can create a functional offline copy of the site."
 			}
 		);
 		addButton(
@@ -401,7 +406,7 @@ class NavBar {
 			a.innerHTML = `${text} <span class="caret ${isSide ? "caret--right" : ""}"></span>`;
 
 			const ul = document.createElement("li");
-			ul.className = `dropdown-menu ${isSide ? "dropdown-menu--side" : ""}`;
+			ul.className = `dropdown-menu ${isSide ? "dropdown-menu--side" : "dropdown-menu--top"}`;
 			ul.onclick = function (event) { event.stopPropagation(); };
 
 			li.appendChild(a);
@@ -483,10 +488,6 @@ class NavBar {
 	static initHandlers () {
 		NavBar._dropdowns = [...document.getElementById("navbar").querySelectorAll(`li.dropdown--navbar`)];
 		document.addEventListener("click", () => NavBar._dropdowns.forEach(ele => ele.classList.remove("open")));
-		document.addEventListener("mousemove", evt => {
-			NavBar._mouseX = evt.clientX;
-			NavBar._mouseY = evt.clientY;
-		});
 
 		NavBar._clearAllTimers();
 	}
@@ -532,9 +533,9 @@ class NavBar {
 						const [xStart, yStart] = NavBar._timerMousePos[timerId];
 						// for generalised use, this should be made check against the bounding box for the side menu
 						// and possibly also check Y pos; e.g.
-						// || NavBar._mouseY > yStart + NavBar.MIN_MOVE_PX
-						if (NavBar._mouseX > xStart + NavBar.MIN_MOVE_PX) {
-							NavBar._timerMousePos[timerId] = [NavBar._mouseX, NavBar._mouseY];
+						// || EventUtil._mouseY > yStart + NavBar.MIN_MOVE_PX
+						if (EventUtil._mouseX > xStart + NavBar.MIN_MOVE_PX) {
+							NavBar._timerMousePos[timerId] = [EventUtil._mouseX, EventUtil._mouseY];
 							NavBar._timersClose[timerId] = setTimeout(() => getTimeoutFn(), NavBar.DROP_TIME / 2);
 						} else {
 							$ele.removeClass("open");
@@ -574,7 +575,7 @@ class NavBar {
 			NavBar._timersOpen[timerId] = setTimeout(() => {
 				NavBar._openDropdown(ele);
 				delete NavBar._timersOpen[timerId];
-				NavBar._timerMousePos[timerId] = [NavBar._mouseX, NavBar._mouseY];
+				NavBar._timerMousePos[timerId] = [EventUtil._mouseX, EventUtil._mouseY];
 			}, NavBar.DROP_TIME);
 		}
 	}
@@ -604,8 +605,6 @@ NavBar._timerId = 1;
 NavBar._timersOpen = {};
 NavBar._timersClose = {};
 NavBar._timerMousePos = {};
-NavBar._mouseX = null;
-NavBar._mouseY = null;
 NavBar._cachedInstallEvent = null;
 NavBar._downloadBarMeta = null;
 NavBar.init();

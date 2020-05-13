@@ -169,7 +169,7 @@ class PageFilterRaces extends PageFilter {
 			],
 			umbrellaItems: ["Choose"]
 		});
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["Base Race", "Modified Copy", "SRD"]});
+		const miscFilter = new Filter({header: "Miscellaneous", items: ["Base Race", "Key Race", "Modified Copy", "SRD"]});
 
 		this._sizeFilter = sizeFilter;
 		this._asiFilter = asiFilter;
@@ -189,16 +189,17 @@ class PageFilterRaces extends PageFilter {
 			Object.keys(increases).forEach(it => race._fAbility.push(`Any ${Parser.attAbvToFull(it)} Increase`));
 			if (race.ability.some(it => it.choose)) race._fAbility.push("Player Choice");
 		} else race._fAbility = [];
-		race._fSpeed = race.speed.walk ? [race.speed.climb ? "Climb" : null, race.speed.fly ? "Fly" : null, race.speed.swim ? "Swim" : null, PageFilterRaces.getSpeedRating(race.speed.walk)].filter(it => it) : PageFilterRaces.getSpeedRating(race.speed);
+		race._fSpeed = race.speed ? race.speed.walk ? [race.speed.climb ? "Climb" : null, race.speed.fly ? "Fly" : null, race.speed.swim ? "Swim" : null, PageFilterRaces.getSpeedRating(race.speed.walk)].filter(it => it) : PageFilterRaces.getSpeedRating(race.speed) : [];
 		race._fTraits = [
 			race.darkvision === 120 ? "Superior Darkvision" : race.darkvision ? "Darkvision" : null,
 			race.hasSpellcasting ? "Spellcasting" : null
 		].filter(it => it);
 		race._fTraits.push(...(race.traitTags || []));
-		race._fSources = ListUtil.getCompleteFilterSources(race);
+		race._fSources = SourceFilter.getCompleteFilterSources(race);
 		race._fLangs = PageFilterRaces.getLanguageProficiencyTags(race.languageProficiencies);
 		race._fMisc = race.srd ? ["SRD"] : [];
 		if (race._isBaseRace) race._fMisc.push("Base Race");
+		if (race._isBaseRace || !race._isSubRace) race._fMisc.push("Key Race");
 		if (race._isCopy) race._fMisc.push("Modified Copy");
 
 		const ability = race.ability ? Renderer.getAbilityData(race.ability) : {asTextShort: "None"};

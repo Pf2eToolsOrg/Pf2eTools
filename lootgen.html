@@ -50,22 +50,21 @@
 	</ul>
 </nav>
 
-<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
-<div class="cancer__wrp-sidebar-rhs"><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+<div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
 
 <main class="container">
 	<div class="row">
 		<div class="col-sm-5">
-			<div class="btn-group w-100">
+			<div class="btn-group w-100 mb-2">
 				<span class="btn btn-default col-4" id="btn-lootgen">Find Treasure</span>
 				<span class="btn btn-default col-4" id="btn-loot-table">Loot Tables</span>
 				<span class="btn btn-default col-4" id="btn-random-magic-item">Party Loot</span>
 			</div>
 
 			<div id="container-lootgen" class="hidden">
-				<br/>
 				<div id="controls">
-					<div class="input-group">
+					<div class="input-group mb-2">
 						<span class="input-group-addon">Challenge Rating</span>
 						<select class="form-control clickable" id="cr">
 							<option value="0" selected>1-4</option>
@@ -79,7 +78,7 @@
 							</label>
 						</span>
 					</div>
-					<br/>
+
 					<button class="col-9 btn btn-default" id="genloot">Roll Loot!</button>
 					<button class="col-2-9 btn btn-default pull-right id-clear">Clear</button>
 					<p>
@@ -91,14 +90,13 @@
 			</div>
 
 			<div id="container-loot-table" class="hidden">
-				<div class="mb-2"></div>
 				<div class="btn-group w-100 mb-2">
-					<span class="btn btn-default col-6" id="btn-dmg-loot-table">DMG</span>
-					<span class="btn btn-default col-6" id="btn-xge-loot-table">XGE</span>
+					<span class="btn btn-default col-6" id="btn-dmg-loot-table">DMG Tables</span>
+					<span class="btn btn-default col-6" id="btn-xge-loot-table">XGE Rules</span>
 				</div>
-				<br/>
+
 				<div id="container-dmg-loot-table">
-					<div class="input-group w-100">
+					<div class="input-group w-100 mb-2">
 						<span class="input-group-addon">Select Table </span>
 						<select class="form-control clickable" id="table-sel">
 							<option value="" selected>View individual tables...</option>
@@ -109,15 +107,15 @@
 							</label>
 						</span>
 					</div>
-					<br>
 					<button class="col-9 btn btn-default" id="rollAgaintTable">Roll Loot!</button>
 					<button class="col-2-9 btn btn-default pull-right id-clear">Clear</button>
 					<small>Based on the tables and rules in the
 						<a href="book.html#DMG,7,random%20treasure"><em>Dungeon Master's Guide</em>, pages 133-149.</a>
 					</small>
 				</div>
+
 				<div id="container-xge-loot-table">
-					<div class="input-group">
+					<div class="input-group mb-2">
 						<span class="input-group-addon">Select Category</span>
 						<select class="form-control clickable" id="random-from-loot-table">
 							<option value="" selected>View Loot Category...</option>
@@ -128,28 +126,27 @@
 							</label>
 						</span>
 					</div>
-					<br/>
-					<div style="display: flex; justify-content: space-between">
+					<div class="split-v-center">
 						<button class="col-9 btn btn-default" id="get-random-item-from-table">Pick Random Item</button>
 						<button class="col-2-9 btn btn-default pull-right id-clear">Clear</button>
 					</div>
 					<p>
-						<small>Based on the tables and rules in the
-							<a href="book.html#XGE,2,awarding%20magic%20items"><em>Xanathar's Guide to Everything</em>, pages 135-136</a>.
+						<small>Based on the rules in the
+							<a href="book.html#XGE,2,choosing%20items%20piecemeal"><em>Xanathar's Guide to Everything</em>, pages 135-136</a>.
 						</small>
 					</p>
 				</div>
 			</div>
 
 			<div id="container-random-magic-item" class="hidden">
-				<br/>
 				<p>
 					Generates a set of magical items for a party, based on the tables and rules in <a href="book.html#XGE,2,awarding%20magic%20items"><em>Xanathar's Guide to Everything</em>, pages 135-136</a>.
 				</p>
 				<p><i>
 					If the "Exact Level" option is selected, the output will include a proportional number of items for any partially-completed tier.
 				</i></p>
-				<div>
+
+				<div class="mb-2">
 					<div class="mb-3">
 						<div class="input-group">
 							<span class="input-group-addon" style="width: 10%" id="selectCharLevel">Character Level</span>
@@ -160,7 +157,9 @@
 							</span>
 						</div>
 					</div>
-					<div class="slider w-100" style="margin-bottom: 23px;"></div>
+
+					<div class="slider w-100" style="margin-bottom: 34px;"></div>
+
 					<div id="random-magic-item-select-tier" class="input-group w-100">
 						<select class="form-control clickable" id="charLevel" style="border-top-right-radius: 3px; border-bottom-right-radius: 3px;">
 							<option value="4" selected>1-4</option>
@@ -175,8 +174,8 @@
 						</span>
 					</div>
 				</div>
-				<br>
-				<div style="display: flex; justify-content: space-between">
+
+				<div class="split-v-center">
 					<button class="col-9 btn btn-default" id="get-group-of-items-for-character">Generate Items for a Party</button>
 					<button class="col-2-9 btn btn-default pull-right id-clear">Clear</button>
 				</div>
@@ -194,6 +193,7 @@
 <script type="text/javascript" src="lib/jquery-ui.js"></script>
 <script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
+<script type="text/javascript" src="js/parser.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>

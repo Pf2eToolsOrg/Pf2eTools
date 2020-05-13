@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.4.1",
+	"version": "1.4.3",
 
 	"title": "ClassArray",
 	"type": "object",
@@ -153,6 +153,10 @@
 					"wis": {"type": "int"},
 					"cha": {"type": "int"}
 				},
+				"requirementsSpecial": {
+					"description": "To be used in homebrew only.",
+					"type": "string"
+				},
 				"proficienciesGained": {
 					"armor": {
 						"type": "array",
@@ -175,6 +179,18 @@
 					"skills": {
 						"$ref": "util.json#/definitions/skillProficiencies"
 					}
+				}
+			}
+		},
+
+		"additionalSpellObject": {
+			"patternProperties": {
+				"^\\d+$": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"uniqueItems": true
 				}
 			}
 		},
@@ -217,6 +233,23 @@
 				},
 				"source": {
 					"type": "string"
+				},
+				"additionalSpells": {
+					"description": "A collection of additional spells which this subclass grants.",
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"prepared": {
+								"$ref": "#/definitions/additionalSpellObject"
+							},
+							"expanded": {
+								"$ref": "#/definitions/additionalSpellObject"
+							}
+						},
+						"additionalProperties": false,
+						"minProperties": 1
+					}
 				},
 				"subclassSpells": {
 					"description": "Homebrew use only",

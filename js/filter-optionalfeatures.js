@@ -23,7 +23,7 @@ class PageFilterOptionalFeatures extends PageFilter {
 		});
 		this._patronFilter = new Filter({
 			header: "Otherworldly Patron",
-			items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Kraken", "The Raven Queen", "The Seeker"],
+			items: ["The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker"],
 			displayFn: Parser.prereqPatronToShort
 		});
 		this._spellFilter = new Filter({

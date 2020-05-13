@@ -37,12 +37,13 @@
 </header>
 <nav class="container page__nav" id="navigation"><ul class="nav page__nav-inner" id="navbar"></ul></nav>
 
-<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
-<div class="cancer__wrp-sidebar-rhs"><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+<div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
 
 <main class="container" id="pagecontent"></main>
 <!--5ETOOLS_SCRIPT_ANCHOR-->
 <!--5ETOOLS_AD_ADHESION-->
+<script type="text/javascript" src="js/parser.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
@@ -237,7 +238,7 @@
   - NB: 30+ attributes are staying, because they're cooler than you
 - Fixed various instances of missing fluff (especially in dragons)
 - Made converter output editable, and title-casing of names toggle-able
-- Pinned list data can now be downloaded, as a rightclick option
+- Pinned list data can now be downloaded, as a right-click option
 - Added various missing tags to the Demo page
 - Browsing to the Bestiary/Spells page from a bad URL now selects the first item
 - (Typo fixes/other hover-link tagging/etc)`
@@ -388,8 +389,8 @@ Books:
 - Added "book list" page (https://5e.tools/books.html) from which homebrew can be managed (the general page at https://5e.tools/managebrew.html can be used too)
 
 Pinned lists:
-- Added "Feeling Lucky" rightclick option
-- Fixed bug when using list rightclick->Add in the Bestiary
+- Added "Feeling Lucky" right-click option
+- Fixed bug when using list right-click->Add in the Bestiary
 
 - Actions in Classes page now have hoverable descriptions (e.g. "Dash," "Disengage")
 - Statgen now respects blacklist
@@ -454,7 +455,7 @@ Adventures/Books:
 - Added various missing ToA flavour images
 
 DM Screen:
-- Inverted Initiative Tracker status turn "tick" direction on click (add a turn of duration on click, remove a turn of duration on rightclick; was previously the opposite)
+- Inverted Initiative Tracker status turn "tick" direction on click (add a turn of duration on click, remove a turn of duration on right-click; was previously the opposite)
 - Fixed resetting CR-scaled creatures
 
 Homebrew:
@@ -664,7 +665,7 @@ Bestiary:
   - "Close Tab" X buttons are now hidden when the screen is locked
   - Fullscreen/locked state is now saved/loaded as part of the layout configuration
   - Pressing return in various input fields now submits the value in the field
-  - Rightclicking a "Close Tab" button when trying to rename a tab will no longer close the tab
+  - Right-clicking a "Close Tab" button when trying to rename a tab will no longer close the tab
 - Fixed Shaped JS builder crashing on Guildmasters' Guide to Ravnica creatures
 - Fixed issue where Bestiary tokens could be cut off by the bottom of the statblock
 - (Fixed typos/added tags)`
@@ -2465,6 +2466,202 @@ Filters -- completely overhauled internally:
 			txt: `
 - Added @link support to DM Screen Notes
 - (Foundry) Fixed Rivet failing to send data
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.102.2",
+			date: "2020-03-29",
+			txt: `
+- Loot Generator "reroll" buttons are now positioned consistently to the left of the subject of their reroll, allowing them to be spam-clicked more easily
+- Improved styling of Names and Encounter Generator pages
+- (Homebrew) Add "requirementsSpecial" property to multiclass requirements
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.102.3",
+			date: "2020-04-04",
+			txt: `
+- Fixed DM Screen Tracker creatures being able to gain the same numerical identifier multiple times
+- Fixed DM Screen Tracker creatures failing to gain a numerical identifier
+- Fixed DM Screen Tracker creatures with different initiative scores being highlighted as active when copying existing creatures
+- Fixed DM Screen Adventure/Book loading failing if the same adventure/book was loaded twice
+- (Rivet) Added ability to send scaled creature statblocks
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.102.4",
+			date: "2020-04-06",
+			txt: `
+- Added 2020-04-06 errata (PHB, XGE, OotA, MTF)
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.102.5",
+			date: "2020-04-07",
+			txt: `
+- Added page numbers to EGW book, deities, items, races, and backgrounds
+- Split out EGW adventures into individual entries on the Adventures page
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.102.6",
+			date: "2020-04-09",
+			txt: `
+- Updated all Monster Manual fluff images to higher-quality versions
+- Fixed homebrew subclass deletion failing to properly remove the subclass until reload
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.102.7",
+			date: "2020-04-09",
+			txt: `
+- (Fixed typo)`
+		},
+		{
+			ver: "1.103.0",
+			date: "2020-04-14",
+			title: "An Easy Mystic to Make",
+			txt: `
+- Added UA: Psionic Options Revisited
+- Added CTRL+hover over links to load and view fluff, where available
+- Added missing page numbers to all subclasses
+- Tweaked layout and wording of some Loot Generator sections
+- (Homebrew) Fixed fluff failing to load in some cases
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.103.1",
+			date: "2020-04-15",
+			txt: `
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.103.2",
+			date: "2020-04-15",
+			txt: `
+- (Homebrew) Added support for cross-file monsterFluff references`
+		},
+		{
+			ver: "1.103.3",
+			date: "2020-04-27",
+			txt: `
+- Added (unpaid) Foundry shilling to the homepage, and warnings about the absolute state of betteR20
+- Added right-click -> Send to DM Screen option to pinned lists
+- Added "Has Token" filter to Bestiary
+- Added Elemental Evil cults to Cults & Boons page
+- Fixed link hovering failing to load subclasses from certain sources
+- Improved culling of rogue hover windows
+- Added tagging of actions/senses/skills to Text Converter
+- Added support for ammo in Item Text Converter
+- Fixed extra token gap in creature statblocks with no token
+- (Homebrew) Fixed disappearing "Variant" titles in fluff
+- (Homebrew) Fixed rare rendering issue in damage resistances/immunities
+- (Homebrew) Fixed CTRL-hover failing to load available fluff
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.103.4",
+			date: "2020-04-27",
+			txt: `
+- Tweaked load performance`
+		},
+		{
+			ver: "1.103.5",
+			date: "2020-04-27",
+			txt: `
+- Tweaked load performance`
+		},
+		{
+			ver: "1.103.6",
+			date: "2020-04-28",
+			txt: `
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.103.7",
+			date: "2020-05-01",
+			txt: `
+- Fixed Encounter Builder buttons failing to remove creatures
+- Fixed Encounter Builder adding to the wrong creature stack in some cases
+- Fixed Point Buy "Random" button rolling numbers greater than the maximum allowed
+- Fixed rare case where ">=0" would be incorrectly set in range (slider) filters
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.103.8",
+			date: "2020-05-01",
+			txt: `
+- (Fixed typos)`
+		},
+		{
+			ver: "1.103.9",
+			date: "2020-05-07",
+			txt: `
+- Improved search indexing of Quick Reference
+  - Added a curated handful of headers as searchable terms
+  - Search results are now hoverable
+  - Search results now have page numbers
+  - Fixed search results only being displayed when "UA" toggle was enabled
+- Lair Actions now respect Bestiary "Proficiency Dice" mode
+- Added "Key Race" filter to Races page, where "Key" is "race with no subraces or base race"
+- (Fixed typos/add tags)`
+		},
+		{
+			ver: "1.103.10",
+			date: "2020-05-07",
+			txt: `
+- (Literally nothing)`
+		},
+		{
+			ver: "1.103.11",
+			date: "2020-05-07",
+			txt: `
+- (Literally nothing)`
+		},
+		{
+			ver: "1.103.12",
+			date: "2020-05-08",
+			txt: `
+- (Literally nothing)`
+		},
+		{
+			ver: "1.104.0",
+			title: "The Map Is the Territory",
+			date: "2020-05-11",
+			txt: `
+- Added experimental "Dynamic Viewer" tool to WDMM maps
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.104.1",
+			date: "2020-05-11",
+			txt: `
+- Fixed Quick Reference failing to load
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.104.2",
+			date: "2020-05-12",
+			txt: `
+- Dynamic Viewer
+  - Added DM Screen integration--the "search" menu can be found in the "Images" section when adding content to a Screen panel
+  - Right-click panning now works when mousing over the entire browser window, rather than just the map itself
+  - Clicking an area while already having its window open will now maximize that window and bring it to the front, rather than opening a new copy
+  - (Homebrew) Improved support(?) by removing reliance on pre-computed width and height`
+		},
+		{
+			ver: "1.104.3",
+			date: "2020-05-12",
+			txt: `
+- Fixed non-DM-Screen dynamic map viewer failing to load
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.105.0",
+			date: "2020-05-12",
+			txt: `
+- Added UA 2020 Subclasses Revisited content
+- Fixed DM Screen Map Viewer pan jittering/flickering when zoomed out
 - (Fixed typos/added tags)`
 		},
 	];

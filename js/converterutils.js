@@ -385,27 +385,18 @@ class TagDc {
 	}
 }
 
-class TagCondition {
-	static init (legendaryGroups, spells) {
-		TagCondition._ALL_LEGENDARY_GROUPS = legendaryGroups;
-		TagCondition._ALL_SPELLS = spells;
-	}
-
-	static _getConvertedEntry (mon, entry, inflictedSet) {
-		const walker = MiscUtil.getWalker(TagCondition._WALKER_KEY_BLACKLIST);
-		const walkerHandlers = {
-			string: [
-				(ident, str) => {
-					const ptrStack = {_: ""};
-					return TagCondition._walkerStringHandler(mon, 0, inflictedSet, ptrStack, 0, str)
-				}
-			]
-		};
-		entry = MiscUtil.copy(entry);
-		return walker.walk("tagConditions", entry, walkerHandlers);
-	}
-
-	static _walkerStringHandler (mon, depth, inflictedSet, stack, conditionCount, str) {
+class TaggerUtils {
+	/**
+	 *
+	 * @param targetTag e.g. `"@condition"`
+	 * @param ptrStack
+	 * @param depth
+	 * @param str
+	 * @param tagCount
+	 * @param meta
+	 * @param meta.fnTag
+	 */
+	static walkerStringHandler (targetTag, ptrStack, depth, tagCount, str, meta) {
 		const tagSplit = Renderer.splitByTags(str);
 		const len = tagSplit.length;
 		for (let i = 0; i < len; ++i) {
@@ -416,37 +407,79 @@ class TagCondition {
 
 				switch (tag) {
 					case "@condition": {
-						stack._ += `{${tag}${text.length ? " " : ""}`;
-						this._walkerStringHandler(mon, depth + 1, inflictedSet, stack, conditionCount + 1, text);
-						stack._ += `}`;
+						ptrStack._ += `{${tag}${text.length ? " " : ""}`;
+						this.walkerStringHandler(targetTag, ptrStack, depth + 1, tagCount + 1, text, meta);
+						ptrStack._ += `}`;
 						break;
 					}
 					default: {
-						stack._ += `{${tag}${text.length ? " " : ""}`;
-						this._walkerStringHandler(mon, depth + 1, inflictedSet, stack, conditionCount, text);
-						stack._ += `}`;
+						ptrStack._ += `{${tag}${text.length ? " " : ""}`;
+						this.walkerStringHandler(targetTag, ptrStack, depth + 1, tagCount, text, meta);
+						ptrStack._ += `}`;
 						break;
 					}
 				}
 			} else {
-				// avoid tagging conditions wrapped in @condition tags
-				if (conditionCount) {
-					stack._ += s;
+				// avoid tagging things wrapped in existing tags
+				if (tagCount) {
+					ptrStack._ += s;
 				} else {
 					let sMod = s;
-					TagCondition._CONDITION_MATCHERS.forEach(r => sMod = sMod.replace(r, (...mt) => `{@condition ${mt[1]}}`));
-					stack._ += sMod;
+					sMod = meta.fnTag(sMod);
+					ptrStack._ += sMod;
 				}
 			}
 		}
+	}
+}
+
+class TagCondition {
+	static init (legendaryGroups, spells) {
+		TagCondition._ALL_LEGENDARY_GROUPS = legendaryGroups;
+		TagCondition._ALL_SPELLS = spells;
+	}
+
+	static _getConvertedEntry (mon, entry, inflictedSet) {
+		const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
+		const nameStack = [];
+		const walkerHandlers = {
+			preObject: (ident, obj) => nameStack.push(obj.name),
+			postObject: () => nameStack.pop(),
+			string: [
+				(ident, str) => {
+					if (nameStack.includes("Antimagic Susceptibility")) return str;
+					if (nameStack.includes("Sneak Attack (1/Turn)")) return str;
+					const ptrStack = {_: ""};
+					return TagCondition._walkerStringHandler(ptrStack, 0, 0, str, inflictedSet)
+				}
+			]
+		};
+		entry = MiscUtil.copy(entry);
+		return walker.walk("tagConditions", entry, walkerHandlers);
+	}
+
+	static _walkerStringHandler (ptrStack, depth, conditionCount, str, inflictedSet) {
+		TaggerUtils.walkerStringHandler(
+			"@condition",
+			ptrStack,
+			depth,
+			conditionCount,
+			str,
+			{
+				fnTag: sMod => {
+					TagCondition._CONDITION_MATCHERS.forEach(r => sMod = sMod.replace(r, (...mt) => `{@condition ${mt[1]}}`));
+					return sMod;
+				}
+			}
+		);
 
 		// Only the outermost loop needs return the final string
 		if (depth !== 0) return;
 
 		// Collect inflicted conditions for tagging
-		if (inflictedSet) this._collectInflictedConditions(stack._, inflictedSet)
+		if (inflictedSet) this._collectInflictedConditions(ptrStack._, inflictedSet)
 
-		return stack._;
+		return ptrStack._;
 	}
 
 	static _handleProp (m, prop, inflictedSet) {
@@ -527,7 +560,6 @@ class TagCondition {
 }
 TagCondition._ALL_LEGENDARY_GROUPS = null;
 TagCondition._ALL_SPELLS = null;
-TagCondition._WALKER_KEY_BLACKLIST = new Set(["caption", "type", "colLabels", "name"]);
 TagCondition._CONDITIONS = [
 	"blinded",
 	"charmed",
@@ -768,6 +800,7 @@ TraitActionTag.tags = { // true = map directly; string = map to this string
 		"shapechanger": true,
 
 		"false appearance": true,
+		"false appearance (object form only)": "False Appearance",
 
 		"spider climb": true,
 
@@ -954,7 +987,7 @@ LanguageTag.LANGUAGE_MAP = {
 	"spoke in life": "LF"
 };
 
-class SenseTag {
+class SenseFilterTag {
 	static tryRun (m, cbAll) {
 		if (m.senses) {
 			m.senses = m.senses.filter(it => !TagUtil.isNoneOrEmpty(it));
@@ -963,7 +996,7 @@ class SenseTag {
 				const senseTags = new Set();
 				m.senses.map(it => it.trim().toLowerCase())
 					.forEach(s => {
-						Object.entries(SenseTag.TAGS).forEach(([k, v]) => {
+						Object.entries(SenseFilterTag.TAGS).forEach(([k, v]) => {
 							if (s.includes(k)) {
 								if (v === "D" && /\d\d\d ft/.exec(s)) senseTags.add("SD");
 								else senseTags.add(v);
@@ -979,7 +1012,7 @@ class SenseTag {
 		} else delete m.senseTags;
 	}
 }
-SenseTag.TAGS = {
+SenseFilterTag.TAGS = {
 	"blindsight": "B",
 	"darkvision": "D",
 	"tremorsense": "T",
@@ -1309,8 +1342,7 @@ class DiceConvert {
 
 	static _getConvertedEntry (entry, isTagHits = false) {
 		if (!DiceConvert._walker) {
-			const walkerKeyBlacklist = new Set(["caption", "type", "colLabels"]);
-			DiceConvert._walker = MiscUtil.getWalker(walkerKeyBlacklist);
+			DiceConvert._walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
 			DiceConvert._walkerHandlers = {string: DiceConvert._walkerStringHandler.bind(DiceConvert, isTagHits)};
 		}
 		entry = MiscUtil.copy(entry);
@@ -1346,10 +1378,10 @@ class DiceConvert {
 		} while (last !== str);
 
 		// tag @damage (creature style)
-		str = str.replace(/\d+ \({@dice ([-+0-9d ]*)}\)( [a-z]+((?:, |, or | or )[a-z]+)*)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
+		str = str.replace(/\d+ \({@dice (?:[-+0-9d ]*)}\)(?:\s+[-+]\s+[-+a-zA-Z0-9 ]*?)?(?: [a-z]+(?:(?:, |, or | or )[a-z]+)*)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
 
 		// tag @damage (spell/etc style)
-		str = str.replace(/{@dice ([-+0-9d ]*)}( [a-z]+((?:, |, or | or )[a-z]+)*)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
+		str = str.replace(/{@dice (?:[-+0-9d ]*)}(?:\s+[-+]\s+[-+a-zA-Z0-9 ]*?)?(?: [a-z]+(?:(?:, |, or | or )[a-z]+)*)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
 
 		return str;
 	}
@@ -1458,7 +1490,7 @@ SpeedConvert._SPEED_TYPES = new Set(["walk", "fly", "swim", "climb", "burrow"]);
 
 class ArtifactPropertiesTag {
 	static tryRun (it, opts) {
-		const walker = MiscUtil.getWalker(new Set("type"));
+		const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
 		walker.walk("artifactProperties", it, {
 			string: (ident, str) => str.replace(/major beneficial|minor beneficial|major detrimental|minor detrimental/gi, (...m) => {
 				const mode = m[0].trim().toLowerCase();
@@ -1474,11 +1506,101 @@ class ArtifactPropertiesTag {
 	}
 }
 
+class SkillTag {
+	static tryRun (it) {
+		const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
+		return walker.walk(
+			"skillTagger",
+			it,
+			{
+				string: (ident, str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						"@skill",
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag
+						}
+					);
+					return ptrStack._;
+				}
+			}
+		);
+	}
+
+	static _fnTag (strMod) {
+		return strMod.replace(/(Acrobatics|Animal Handling|Arcana|Athletics|Deception|History|Insight|Intimidation|Investigation|Medicine|Nature|Perception|Performance|Persuasion|Religion|Sleight of Hand|Stealth|Survival)/g, (...m) => `{@skill ${m[0]}}`);
+	}
+}
+
+class ActionTag {
+	static tryRun (it) {
+		const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
+		return walker.walk(
+			"actionTagger",
+			it,
+			{
+				string: (ident, str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						"@action",
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag
+						}
+					);
+					return ptrStack._;
+				}
+			}
+		);
+	}
+
+	static _fnTag (strMod) {
+		return strMod.replace(/(Attack|Dash|Disengage|Dodge|Help|Hide|Ready|Search|Use an Object)/g, (...m) => `{@action ${m[0]}}`);
+	}
+}
+
+class SenseTag {
+	static tryRun (it) {
+		const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
+		return walker.walk(
+			"senseTagger",
+			it,
+			{
+				string: (ident, str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						"@sense",
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag
+						}
+					);
+					return ptrStack._;
+				}
+			}
+		);
+	}
+
+	static _fnTag (strMod) {
+		return strMod.replace(/(tremorsense|blindsight|truesight|darkvision)/g, (...m) => `{@sense ${m[0]}}`);
+	}
+}
+
 // FIXME this duplicates functionality in converter-item
 class EntryConvert {
 	static tryRun (stats, prop) {
 		if (!stats[prop]) return;
-		const walker = MiscUtil.getWalker(new Set(["caption", "type", "colLabels", "name"]));
+		const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
 		walker.walk(
 			"entryConvert",
 			stats,
@@ -1564,9 +1686,17 @@ class ConvertUtil {
 	static isListItemLine (line) { return line.trim().startsWith("•") }
 
 	static splitNameLine (line) {
-		const name = line.split(/([.!?])/g)[0];
-		const entry = line.substring(name.length + 1, line.length).trim();
+		const rawName = line.split(/([.!?])/g)[0];
+		const entry = line.substring(rawName.length + 1, line.length).trim();
+		const name = this.getCleanTraitActionName(rawName)
 		return {name, entry};
+	}
+
+	static getCleanTraitActionName (name) {
+		return name
+			// capitalise unit in e.g. "(3/Day)"
+			.replace(/(\(\d+\/)([a-z])([^)]+\))/g, (...m) => `${m[1]}${m[2].toUpperCase()}${m[3]}`)
+		;
 	}
 
 	/**
@@ -1629,6 +1759,7 @@ if (typeof module !== "undefined") {
 		AlignmentConvert,
 		TraitActionTag,
 		LanguageTag,
+		SenseFilterTag,
 		SenseTag,
 		SpellcastingTypeTag,
 		DamageTypeTag,
@@ -1638,6 +1769,8 @@ if (typeof module !== "undefined") {
 		RechargeConvert,
 		SpeedConvert,
 		ArtifactPropertiesTag,
-		EntryConvert
+		EntryConvert,
+		SkillTag,
+		ActionTag
 	};
 }

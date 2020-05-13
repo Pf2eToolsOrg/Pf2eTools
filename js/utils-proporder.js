@@ -171,6 +171,7 @@ PropOrder._MONSTER = [
 	"familiar",
 	"dragonCastingColor",
 
+	"hasToken",
 	"tokenUrl",
 	"soundClip",
 
@@ -198,12 +199,8 @@ PropOrder._GENERIC_FLUFF = [
 
 	"_copy",
 
-	"_prependCopy",
-
 	"entries",
-	"images",
-
-	"_appendCopy"
+	"images"
 ];
 PropOrder._SPELL = [
 	"name",
@@ -265,8 +262,9 @@ PropOrder._ADVENTURE = [
 	"id",
 	"source",
 
-	"image",
+	"coverUrl",
 	"published",
+	"publishedOrder",
 	"storyline",
 	"level",
 
@@ -278,7 +276,7 @@ PropOrder._BOOK = [
 	"id",
 	"source",
 
-	"image",
+	"coverUrl",
 	"published",
 	"author",
 
@@ -388,6 +386,8 @@ PropOrder._CLASS__SUBCLASS = [
 
 	"spellcastingAbility",
 	"casterProgression",
+
+	"additionalSpells",
 
 	"subclassTableGroups",
 	"subclassFeatures"
@@ -562,7 +562,10 @@ PropOrder._VEHICLE = [
 	"trait",
 	"action",
 	"actionStation",
-	"reaction"
+	"reaction",
+
+	"hasToken",
+	"tokenUrl"
 ];
 PropOrder._RACE_FLUFF = [
 	"name",
@@ -571,17 +574,10 @@ PropOrder._RACE_FLUFF = [
 	"uncommon",
 	"monstrous",
 
-	"_excludeBaseEntries",
-	"_excludeBaseImages",
-
 	"_copy",
 
-	"_prependCopy",
-
 	"entries",
-	"images",
-
-	"_appendCopy"
+	"images"
 ];
 PropOrder._ITEM = [
 	"name",
@@ -683,6 +679,7 @@ PropOrder._ITEM = [
 	"items",
 
 	"packContents",
+	"containerCapacity",
 
 	"attachedSpells",
 	"lootTables"
@@ -710,12 +707,15 @@ PropOrder._VARIANT = [
 PropOrder._OBJECT = [
 	"name",
 
+	"isNpc",
+
 	"source",
 	"page",
 	"srd",
 
 	"size",
-	"type",
+	"objectType",
+	"creatureType",
 
 	"ac",
 	"hp",
@@ -733,9 +733,13 @@ PropOrder._OBJECT = [
 	"immune",
 	"resist",
 	"vulnerable",
+	"conditionImmune",
 
 	"entries",
-	"actionEntries"
+	"actionEntries",
+
+	"hasToken",
+	"tokenUrl"
 ];
 PropOrder._OPTIONALFEATURE = [
 	"name",

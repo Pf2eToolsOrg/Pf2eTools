@@ -33,7 +33,7 @@ class BestiaryPage {
 
 		const source = Parser.sourceJsonToAbv(mon.source);
 		const type = mon._pTypes.asText.uppercaseFirst();
-		const cr = mon._pCr || "\u2014";
+		const cr = mon._pCr;
 
 		eleLi.innerHTML += `<a href="#${hash}" onclick="handleBestiaryLinkClick(event)" class="lst--border">
 			${EncounterBuilder.getButtons(mI)}
@@ -85,7 +85,7 @@ class BestiaryPage {
 		const hash = `${UrlUtil.autoEncodeHash(mon)}${subHash}`;
 		const type = mon._pTypes.asText.uppercaseFirst();
 		const count = addCount || 1;
-		const cr = mon._pCr || "Unknown";
+		const cr = mon._pCr;
 
 		const $hovStatblock = $(`<span class="col-1-4 help--hover ecgen__visible">Statblock</span>`)
 			.mouseover(evt => EncounterBuilder.doStatblockMouseOver(evt, $hovStatblock[0], pinId, mon._isScaledCr))
@@ -105,6 +105,7 @@ class BestiaryPage {
 			if (cr === "Unknown") return $(`<span class="col-1-2 text-center">${cr}</span>`);
 
 			const $iptCr = $(`<input value="${cr}" class="ecgen__cr_input form-control form-control--minimal input-xs">`)
+				.click(() => $iptCr.select())
 				.change(() => encounterBuilder.pDoCrChange($iptCr, pinId, mon._isScaledCr));
 
 			return $$`<span class="col-1-2 text-center">${$iptCr}</span>`;
@@ -554,7 +555,8 @@ function addMonsters (data) {
 		};
 	}
 
-	Renderer.hover.bindPopoutButton(monsters, popoutHandlerGenerator, "Popout Window (SHIFT for Source Data; CTRL for Markdown Render)");
+	const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
+	Renderer.hover.bindPopoutButton($btnPop, monsters, popoutHandlerGenerator, "Popout Window (SHIFT for Source Data; CTRL for Markdown Render)");
 	UrlUtil.bindLinkExportButton(bestiaryPage._pageFilter.filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton(pPreloadSublistSources);
@@ -636,107 +638,100 @@ function renderStatblock (mon, isScaled) {
 
 			const $floatToken = $(`#float-token`).empty();
 
-			function imgError (ele) {
-				if (ele) $(ele).parent().remove();
-				$(`#pagecontent th.name`).css("padding-right", "0.3em");
-				$(`.mon__wrp-size-type-align`).css("max-width", "none");
-				$(`.mon__wrp-avoid-token`).css("max-width", "none");
+			const hasToken = mon.tokenUrl || mon.hasToken;
+			if (!hasToken) return;
+
+			const imgLink = Renderer.monster.getTokenUrl(mon);
+			const $img = $(`<img src="${imgLink}" class="mon__token" alt="${mon.name}">`);
+			$tokenImages.push($img);
+			const $lnkToken = $$`<a href="${imgLink}" class="mon__wrp-token" target="_blank" rel="noopener noreferrer">${$img}</a>`.appendTo($floatToken);
+
+			const altArtMeta = [];
+
+			if (mon.altArt) altArtMeta.push(...MiscUtil.copy(mon.altArt));
+			if (mon.variant) {
+				const variantTokens = mon.variant.filter(it => it.token).map(it => it.token);
+				if (variantTokens.length) altArtMeta.push(...MiscUtil.copy(variantTokens).map(it => ({...it, displayName: `Variant; ${it.name}`})));
 			}
 
-			if (mon.tokenUrl || !mon.uniqueId) {
-				const imgLink = Renderer.monster.getTokenUrl(mon);
-				const $img = $(`<img src="${imgLink}" class="mon__token" alt="${mon.name}">`)
-					.on("error", () => imgError($img));
-				$tokenImages.push($img);
-				const $lnkToken = $$`<a href="${imgLink}" class="mon__wrp-token" target="_blank" rel="noopener noreferrer">${$img}</a>`.appendTo($floatToken);
+			if (altArtMeta.length) {
+				// make a fake entry for the original token
+				altArtMeta.unshift({$ele: $lnkToken});
 
-				const altArtMeta = [];
+				const buildEle = (meta) => {
+					if (!meta.$ele) {
+						const imgLink = Renderer.monster.getTokenUrl({name: meta.name, source: meta.source, tokenUrl: meta.tokenUrl});
+						const $img = $(`<img src="${imgLink}" class="mon__token" alt="${meta.displayName || meta.name}">`)
+							.on("error", () => {
+								$img.attr(
+									"src",
+									`data:image/svg+xml,${encodeURIComponent(`
+										<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+											<circle cx="200" cy="200" r="175" fill="#b00"/>
+											<rect x="190" y="40" height="320" width="20" fill="#ddd" transform="rotate(45 200 200)"/>
+											<rect x="190" y="40" height="320" width="20" fill="#ddd" transform="rotate(135 200 200)"/>
+										</svg>`
+									)}`
+								);
+							});
+						$tokenImages.push($img);
+						meta.$ele = $$`<a href="${imgLink}" class="mon__wrp-token" target="_blank" rel="noopener noreferrer">${$img}</a>`
+							.hide()
+							.css("max-width", "100%") // hack to ensure the token gets shown at max width on first look
+							.appendTo($floatToken);
+					}
+				};
+				altArtMeta.forEach(buildEle);
 
-				if (mon.altArt) altArtMeta.push(...MiscUtil.copy(mon.altArt));
-				if (mon.variant) {
-					const variantTokens = mon.variant.filter(it => it.token).map(it => it.token);
-					if (variantTokens.length) altArtMeta.push(...MiscUtil.copy(variantTokens).map(it => ({...it, displayName: `Variant; ${it.name}`})));
-				}
+				let ix = 0;
+				const handleClick = (evt, direction) => {
+					evt.stopPropagation();
+					evt.preventDefault();
 
-				if (altArtMeta.length) {
-					// make a fake entry for the original token
-					altArtMeta.unshift({$ele: $lnkToken});
+					// avoid going off the edge of the list
+					if (ix === 0 && !~direction) return;
+					if (ix === altArtMeta.length - 1 && ~direction) return;
 
-					const buildEle = (meta) => {
-						if (!meta.$ele) {
-							const imgLink = Renderer.monster.getTokenUrl({name: meta.name, source: meta.source, tokenUrl: meta.tokenUrl});
-							const $img = $(`<img src="${imgLink}" class="mon__token" alt="${meta.displayName || meta.name}">`)
-								.on("error", () => {
-									$img.attr(
-										"src",
-										`data:image/svg+xml,${encodeURIComponent(`
-											<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400">
-												<circle cx="200" cy="200" r="175" fill="#b00"/>
-												<rect x="190" y="40" height="320" width="20" fill="#ddd" transform="rotate(45 200 200)"/>
-												<rect x="190" y="40" height="320" width="20" fill="#ddd" transform="rotate(135 200 200)"/>
-											</svg>`
-										)}`
-									);
-								});
-							$tokenImages.push($img);
-							meta.$ele = $$`<a href="${imgLink}" class="mon__wrp-token" target="_blank" rel="noopener noreferrer">${$img}</a>`
-								.hide()
-								.css("max-width", "100%") // hack to ensure the token gets shown at max width on first look
-								.appendTo($floatToken);
+					ix += direction;
+
+					if (!~direction) { // left
+						if (ix === 0) {
+							$btnLeft.hide();
+							$wrpFooter.hide();
 						}
-					};
-					altArtMeta.forEach(buildEle);
-
-					let ix = 0;
-					const handleClick = (evt, direction) => {
-						evt.stopPropagation();
-						evt.preventDefault();
-
-						// avoid going off the edge of the list
-						if (ix === 0 && !~direction) return;
-						if (ix === altArtMeta.length - 1 && ~direction) return;
-
-						ix += direction;
-
-						if (!~direction) { // left
-							if (ix === 0) {
-								$btnLeft.hide();
-								$wrpFooter.hide();
-							}
-							$btnRight.show();
-						} else {
-							$btnLeft.show();
-							$wrpFooter.show();
-							if (ix === altArtMeta.length - 1) {
-								$btnRight.hide();
-							}
+						$btnRight.show();
+					} else {
+						$btnLeft.show();
+						$wrpFooter.show();
+						if (ix === altArtMeta.length - 1) {
+							$btnRight.hide();
 						}
-						altArtMeta.filter(it => it.$ele).forEach(it => it.$ele.hide());
+					}
+					altArtMeta.filter(it => it.$ele).forEach(it => it.$ele.hide());
 
-						const meta = altArtMeta[ix];
-						meta.$ele.show();
-						setTimeout(() => meta.$ele.css("max-width", ""), 10); // hack to clear the earlier 100% width
+					const meta = altArtMeta[ix];
+					meta.$ele.show();
+					setTimeout(() => meta.$ele.css("max-width", ""), 10); // hack to clear the earlier 100% width
 
-						if (meta.name && meta.source) $footer.html(`<div>${meta.displayName || meta.name}; <span title="${Parser.sourceJsonToFull(meta.source)}">${Parser.sourceJsonToAbv(meta.source)}${meta.page > 0 ? ` p${meta.page}` : ""}</span></div>`);
-						else $footer.html("");
+					if (meta.name && meta.source) $footer.html(`<div>${meta.displayName || meta.name}; <span title="${Parser.sourceJsonToFull(meta.source)}">${Parser.sourceJsonToAbv(meta.source)}${meta.page > 0 ? ` p${meta.page}` : ""}</span></div>`);
+					else $footer.html("");
 
-						$wrpFooter.detach().appendTo(meta.$ele);
-						$btnLeft.detach().appendTo(meta.$ele);
-						$btnRight.detach().appendTo(meta.$ele);
-					};
+					$wrpFooter.detach().appendTo(meta.$ele);
+					$btnLeft.detach().appendTo(meta.$ele);
+					$btnRight.detach().appendTo(meta.$ele);
+				};
 
-					// append footer first to be behind buttons
-					const $footer = $(`<div class="mon__token-footer"/>`);
-					const $wrpFooter = $$`<div class="mon__wrp-token-footer">${$footer}</div>`.hide().appendTo($lnkToken);
+				// append footer first to be behind buttons
+				const $footer = $(`<div class="mon__token-footer"/>`);
+				const $wrpFooter = $$`<div class="mon__wrp-token-footer">${$footer}</div>`.hide().appendTo($lnkToken);
 
-					const $btnLeft = $$`<div class="mon__btn-token-cycle mon__btn-token-cycle--left"><span class="glyphicon glyphicon-chevron-left"/></div>`
-						.click(evt => handleClick(evt, -1)).appendTo($lnkToken)
-						.hide();
+				const $btnLeft = $$`<div class="mon__btn-token-cycle mon__btn-token-cycle--left"><span class="glyphicon glyphicon-chevron-left"/></div>`
+					.click(evt => handleClick(evt, -1)).appendTo($lnkToken)
+					.hide();
 
-					const $btnRight = $$`<div class="mon__btn-token-cycle mon__btn-token-cycle--right"><span class="glyphicon glyphicon-chevron-right"/></div>`
-						.click(evt => handleClick(evt, 1)).appendTo($lnkToken);
-				}
-			} else imgError();
+				const $btnRight = $$`<div class="mon__btn-token-cycle mon__btn-token-cycle--right"><span class="glyphicon glyphicon-chevron-right"/></div>`
+					.click(evt => handleClick(evt, 1)).appendTo($lnkToken);
+			}
 		})();
 
 		// inline rollers //////////////////////////////////////////////////////////////////////////////////////////////
@@ -808,7 +803,7 @@ function renderStatblock (mon, isScaled) {
 				}
 			});
 
-		$content.find("p").each(function () {
+		$content.find("p, li").each(function () {
 			$(this).find(`.rd__dc`).each((i, e) => {
 				const $e = $(e);
 				const dc = Number($e.html());
@@ -834,14 +829,10 @@ function renderStatblock (mon, isScaled) {
 	}
 
 	function buildFluffTab (isImageTab) {
-		const pGetFluff = () => {
+		const pGetFluffEntries = async () => {
 			const mon = monsters[Hist.lastLoadedId];
-			return Renderer.utils.pGetFluff({
-				noInfoDisplay: "",
-				entity: mon,
-				fnFluffBuilder: Renderer.monster.getFluff.bind(null, mon),
-				fluffBaseUrl: `data/bestiary/`
-			});
+			const fluff = await Renderer.monster.pGetFluff(mon);
+			return fluff.entries || [];
 		};
 
 		// Add Markdown copy button
@@ -851,17 +842,17 @@ function renderStatblock (mon, isScaled) {
 				new ContextUtil.Action(
 					"Copy as JSON",
 					async () => {
-						const fluff = await pGetFluff();
-						MiscUtil.pCopyTextToClipboard(JSON.stringify(fluff, null, "\t"));
+						const fluffEntries = await pGetFluffEntries();
+						MiscUtil.pCopyTextToClipboard(JSON.stringify(fluffEntries, null, "\t"));
 						JqueryUtil.showCopiedEffect($btnOptions);
 					}
 				),
 				new ContextUtil.Action(
 					"Copy as Markdown",
 					async () => {
-						const fluff = await pGetFluff();
+						const fluffEntries = await pGetFluffEntries();
 						const rendererMd = RendererMarkdown.get().setFirstSection(true);
-						MiscUtil.pCopyTextToClipboard(fluff.map(f => rendererMd.render(f)).join("\n"));
+						MiscUtil.pCopyTextToClipboard(fluffEntries.map(f => rendererMd.render(f)).join("\n"));
 						JqueryUtil.showCopiedEffect($btnOptions);
 					}
 				)
@@ -878,8 +869,7 @@ function renderStatblock (mon, isScaled) {
 			isImageTab,
 			$content,
 			entity: mon,
-			fnFluffBuilder: Renderer.monster.getFluff.bind(null, mon),
-			fluffBaseUrl: `data/bestiary/`,
+			pFnGetFluff: Renderer.monster.pGetFluff,
 			$headerControls
 		});
 	}
@@ -938,7 +928,7 @@ function getUnpackedCustomHashId (customHashId) {
 
 function getCr (obj) {
 	if (obj.crScaled != null) return obj.crScaled;
-	if (obj.cr == null) return null;
+	if (obj.cr == null || obj.cr === "Unknown" || obj.cr === "\u2014") return null;
 	return typeof obj.cr === "string" ? obj.cr.includes("/") ? Parser.crToNumber(obj.cr) : Number(obj.cr) : obj.cr;
 }
 

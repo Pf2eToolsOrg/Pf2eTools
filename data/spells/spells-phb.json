@@ -1795,7 +1795,7 @@
 				"s": true,
 				"m": {
 					"text": "for each creature you affect with this spell, you must provide one jacinth worth at least 1,000 gp and one ornately carved bar of silver worth at least 100 gp, all of which the spell consumes",
-					"cost": 100000,
+					"cost": 110000,
 					"consume": true
 				}
 			},
@@ -3056,7 +3056,7 @@
 				"ritual": true
 			},
 			"entries": [
-				"You touch a willing beast. For the duration of the spell, you can use your action to see through the beast's eyes and hear what it hears, and continue to do so until you use your action to return to your normal senses. While perceiving through the beast's senses, you gain the benefits of any special senses possessed by that creature, though you are blinded and deafened to your own surroundings."
+				"You touch a willing beast. For the duration of the spell, you can use your action to see through the beast's eyes and hear what it hears, and continue to do so until you use your action to return to your normal senses. While perceiving through the beast's senses, you gain the benefits of any special senses possessed by that creature, though you are {@condition blinded} and {@condition deafened} to your own surroundings."
 			],
 			"areaTags": [
 				"ST"
@@ -4202,6 +4202,17 @@
 							"name": "Hexblade",
 							"source": "XGE"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Marid"
+						}
 					}
 				]
 			}
@@ -4446,6 +4457,17 @@
 							"name": "Giant Soul (UA)",
 							"source": "UAGiantSoulSorcerer",
 							"subSubclass": "Fire"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Efreeti"
 						}
 					}
 				]
@@ -6198,6 +6220,16 @@
 							"name": "Lurker in the Deep (UA)",
 							"source": "UASorcererAndWarlock"
 						}
+					},
+					{
+						"class": {
+							"name": "Barbarian",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Totem Warrior",
+							"source": "PHB"
+						}
 					}
 				]
 			},
@@ -6660,6 +6692,17 @@
 						"subclass": {
 							"name": "Artillerist",
 							"source": "ERLW"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Marid"
 						}
 					}
 				],
@@ -7993,6 +8036,17 @@
 							"name": "Lurker in the Deep (UA)",
 							"source": "UASorcererAndWarlock"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Marid"
+						}
 					}
 				]
 			},
@@ -8424,6 +8478,16 @@
 							"name": "Noble Genie (UA)",
 							"source": "UA2020SubclassesPt1"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited"
+						}
 					}
 				]
 			},
@@ -8741,6 +8805,16 @@
 						"subclass": {
 							"name": "Noble Genie (UA)",
 							"source": "UA2020SubclassesPt1"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited"
 						}
 					}
 				]
@@ -9999,6 +10073,18 @@
 					{
 						"name": "Paladin",
 						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited"
+						}
 					}
 				]
 			},
@@ -14029,7 +14115,7 @@
 				"{@note Additional {@filter animal form choices|bestiary|Miscellaneous=Familiar} may be available at the DM's discretion.}",
 				"Your familiar acts independently of you, but it always obeys your commands. In combat, it rolls its own initiative and acts on its own turn. A familiar can't attack, but it can take other actions as normal.",
 				"When the familiar drops to 0 hit points, it disappears, leaving behind no physical form. It reappears after you cast this spell again.",
-				"While your familiar is within 100 feet of you, you can communicate with it telepathically. Additionally, as an action, you can see through your familiar's eyes and hear what it hears until the start of your next turn, gaining the benefits of any special senses that the familiar has. During this time, you are deaf and blind with regard to your own senses.",
+				"While your familiar is within 100 feet of you, you can communicate with it telepathically. Additionally, as an action, you can see through your familiar's eyes and hear what it hears until the start of your next turn, gaining the benefits of any special senses that the familiar has. During this time, you are {@condition deafened||deaf} and {@condition blinded||blind} with regard to your own senses.",
 				"As an action, you can temporarily dismiss your familiar. It disappears into a pocket dimension where it awaits your summons. Alternatively, you can dismiss it forever. As an action while it is temporarily dismissed, you can cause it to reappear in any unoccupied space within 30 feet of you.",
 				"You can't have more than one familiar at a time. If you cast this spell while you already have a familiar, you instead cause it to adopt a new form. Choose one of the forms from the above list. Your familiar transforms into the chosen creature.",
 				"Finally, when you cast a spell with a range of touch, your familiar can deliver the spell as if it had cast the spell. Your familiar must be within 100 feet of you, and it must use its reaction to deliver the spell when you cast it. If the spell requires an attack roll, you use your attack modifier for the roll."
@@ -14264,6 +14350,7 @@
 				"constitution"
 			],
 			"miscTags": [
+				"SMN",
 				"PRM",
 				"SGT"
 			],
@@ -14510,6 +14597,17 @@
 							"name": "Armorer (UA)",
 							"source": "UA2020SubclassesPt3"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Efreeti"
+						}
 					}
 				],
 				"fromClassListVariant": [
@@ -14715,6 +14813,17 @@
 						"subclass": {
 							"name": "Artillerist",
 							"source": "ERLW"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Efreeti"
 						}
 					}
 				]
@@ -14948,6 +15057,17 @@
 						"subclass": {
 							"name": "Wildfire (UA)",
 							"source": "UAClericDruidWizard"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Efreeti"
 						}
 					}
 				],
@@ -15365,6 +15485,17 @@
 							"name": "Noble Genie (UA)",
 							"source": "UA2020SubclassesPt1"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Marid"
+						}
 					}
 				]
 			},
@@ -15421,7 +15552,7 @@
 				"ritual": true
 			},
 			"entries": [
-				"You create a ward against magical travel that protects up to 40,000 square feet of floor space to a height of 30 feet above the floor. For the duration, creatures can't teleport into the area or use portals, such as those created by the gate spell, to enter the area. The spell proofs the area against planar travel, and therefore prevents creatures from accessing the area by way of the Astral Plane, Ethereal Plane, Feywild, Shadowfell, or the plane shift spell.",
+				"You create a ward against magical travel that protects up to 40,000 square feet of floor space to a height of 30 feet above the floor. For the duration, creatures can't teleport into the area or use portals, such as those created by the {@spell gate} spell, to enter the area. The spell proofs the area against planar travel, and therefore prevents creatures from accessing the area by way of the Astral Plane, Ethereal Plane, Feywild, Shadowfell, or the plane shift spell.",
 				"In addition, the spell damages types of creatures that you choose when you cast it. Choose one or more of the following: celestials, elementals, fey, fiends, and undead. When a chosen creature enters the spell's area for the first time on a turn or starts its turn there, the creature takes {@damage 5d10} radiant or necrotic damage (your choice when you cast this spell).",
 				"When you cast this spell, you can designate a password. A creature that speaks the password as it enters the area takes no damage from the spell.",
 				"The spell's area can't overlap with the area of another forbiddance spell. If you cast forbiddance every day for 30 days in the same location, the spell lasts until it is dispelled, and the material components are consumed on the last casting."
@@ -17023,6 +17154,17 @@
 							"name": "Armorer (UA)",
 							"source": "UA2020SubclassesPt3"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Djinni"
+						}
 					}
 				]
 			},
@@ -17677,6 +17819,17 @@
 						"subclass": {
 							"name": "Lurker in the Deep (UA)",
 							"source": "UASorcererAndWarlock"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Djinni"
 						}
 					}
 				],
@@ -22393,7 +22546,7 @@
 			],
 			"entries": [
 				"Your body falls into a catatonic state as your soul leaves it and enters the container you used for the spell's material component. While your soul inhabits the container, you are aware of your surroundings as if you were in the container's space. You can't move or use reactions. The only action you can take is to project your soul up to 100 feet out of the container, either returning to your living body (and ending the spell) or attempting to possess a humanoids body.",
-				"You can attempt to possess any humanoid within 100 feet of you that you can see (creatures warded by a protection from evil and good or magic circle spell can't be possessed). The target must make a Charisma saving throw. On a failure, your soul moves into the target's body, and the target's soul becomes trapped in the container. On a success, the target resists your efforts to possess it, and you can't attempt to possess it again for 24 hours.",
+				"You can attempt to possess any humanoid within 100 feet of you that you can see (creatures warded by a {@spell protection from evil and good} or {@spell magic circle} spell can't be possessed). The target must make a Charisma saving throw. On a failure, your soul moves into the target's body, and the target's soul becomes trapped in the container. On a success, the target resists your efforts to possess it, and you can't attempt to possess it again for 24 hours.",
 				"Once you possess a creature's body, you control it. Your game statistics are replaced by the statistics of the creature, though you retain your alignment and your Intelligence, Wisdom, and Charisma scores. You retain the benefit of your own class features. If the target has any class levels, you can't use any of its class features.",
 				"Meanwhile, the possessed creature's soul can perceive from the container using its own senses, but it can't move or take actions at all.",
 				"While possessing a body, you can use your action to return from the host body to the container if it is within 100 feet of you, returning the host creature's soul to its body. If the host body dies while you're in it, the creature dies, and you must make a Charisma saving throw against your own spellcasting DC. On a success, you return to the container if it is within 100 feet of you. Otherwise, you die.",
@@ -23303,6 +23456,17 @@
 							"name": "Land",
 							"source": "PHB",
 							"subSubclass": "Mountain"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Dao"
 						}
 					}
 				],
@@ -24661,6 +24825,9 @@
 			"miscTags": [
 				"PRM"
 			],
+			"areaTags": [
+				"C"
+			],
 			"classes": {
 				"fromClassList": [
 					{
@@ -25551,6 +25718,16 @@
 							"name": "Noble Genie (UA)",
 							"source": "UA2020SubclassesPt1"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited"
+						}
 					}
 				]
 			}
@@ -25662,6 +25839,16 @@
 						"subclass": {
 							"name": "Noble Genie (UA)",
 							"source": "UA2020SubclassesPt1"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited"
 						}
 					}
 				],
@@ -28523,6 +28710,9 @@
 				},
 				"The reincarnated creature recalls its former life and experiences. It retains the capabilities it had in its original form, except it exchanges its original race for the new one and changes its racial traits accordingly."
 			],
+			"miscTags": [
+				"HL"
+			],
 			"classes": {
 				"fromClassList": [
 					{
@@ -29202,6 +29392,17 @@
 							"name": "Raven Queen (UA)",
 							"source": "UAWarlockAndWizard"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Dao"
+						}
 					}
 				]
 			}
@@ -29318,6 +29519,17 @@
 						"subclass": {
 							"name": "Artillerist",
 							"source": "ERLW"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Efreeti"
 						}
 					}
 				]
@@ -29846,6 +30058,17 @@
 						"subclass": {
 							"name": "Gloom Stalker",
 							"source": "XGE"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Djinni"
 						}
 					}
 				]
@@ -31082,6 +31305,17 @@
 							"name": "Lurker in the Deep (UA)",
 							"source": "UASorcererAndWarlock"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Marid"
+						}
 					}
 				]
 			},
@@ -31776,6 +32010,17 @@
 							"source": "UAGiantSoulSorcerer",
 							"subSubclass": "Stone"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Dao"
+						}
 					}
 				]
 			}
@@ -32299,6 +32544,17 @@
 							"name": "Land",
 							"source": "PHB",
 							"subSubclass": "Underdark"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Dao"
 						}
 					}
 				]
@@ -34020,6 +34276,17 @@
 							"name": "Artillerist",
 							"source": "ERLW"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Djinni"
+						}
 					}
 				],
 				"fromClassListVariant": [
@@ -35388,6 +35655,17 @@
 							"source": "PHB",
 							"subSubclass": "Mountain"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Dao"
+						}
 					}
 				]
 			}
@@ -36155,6 +36433,17 @@
 							"name": "Artillerist",
 							"source": "ERLW"
 						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited",
+							"subSubclass": "Djinni"
+						}
 					}
 				]
 			},
@@ -36247,6 +36536,18 @@
 					{
 						"name": "Wizard",
 						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Genie (UA)",
+							"source": "UA2020SubclassesRevisited"
+						}
 					}
 				]
 			}

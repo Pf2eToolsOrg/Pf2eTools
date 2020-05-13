@@ -223,8 +223,6 @@
 
 		.content-tab-title {
 			max-width: 80px;
-			overflow: hidden;
-			text-overflow: ellipsis;
 			display: block;
 		}
 
@@ -940,6 +938,7 @@
 		.dm-book__wrp-content {
 			overflow-y: auto;
 			overflow-x: hidden;
+			transform: translateZ(0);
 		}
 
 		.dm-book__wrp-controls {
@@ -955,9 +954,6 @@
 		.dm-book__controls-title {
 			height: 20px;
 			padding: 0 3px;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
 			width: 50%;
 			flex-grow: 0;
 		}
@@ -1268,6 +1264,51 @@
 		}
 		/* endregion */
 
+		/* region Map viewer */
+		.dm-map__picker-wrp-img {
+			display: inline-block;
+			width: 320px;
+			height: 340px;
+			line-height: 320px;
+			text-align: center;
+			font-size: 0;
+			border: 2px solid #ccc;
+		}
+
+		.dm-map__picker-img {
+			width: auto;
+			height: 320px;
+			vertical-align: middle;
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.dm-map__picker-disp-name {
+			right: 14px;
+			bottom: 0;
+			left: 14px;
+			top: calc(100% - 20px);
+			line-height: 20px;
+			font-size: 14px;
+			background: white;
+			border-top: 1px solid #ccc;
+			border-right: 1px solid #ccc;
+			border-left: 1px solid #ccc;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+		}
+
+		.night-mode .dm-map__picker-wrp-img {
+			border-color: #555;
+		}
+
+		.night-mode .dm-map__picker-disp-name {
+			background: #222;
+			border-color: #555;
+		}
+		/* endregion */
+
 		.dm-blank__panel {
 			background: white;
 		}
@@ -1310,6 +1351,7 @@
 <script type="text/javascript" src="lib/jquery-ui.js"></script>
 <script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
 <script type="text/javascript" src="lib/lzma.js"></script>
+<script type="text/javascript" src="js/parser.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="js/utils-p2p.js"></script>
@@ -1317,6 +1359,7 @@
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
+<script type="text/javascript" src="js/render-map.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/initiativetrackerutils.js"></script>
 <script type="text/javascript" src="js/dmscreen.js"></script>
@@ -1325,6 +1368,7 @@
 <script type="text/javascript" src="js/dmscreen-moneyconverter.js"></script>
 <script type="text/javascript" src="js/dmscreen-timetracker.js"></script>
 <script type="text/javascript" src="js/dmscreen-counter.js"></script>
+<script type="text/javascript" src="js/dmscreen-mapper.js"></script>
 <script type="text/javascript" src="js/hist.js"></script>
 <script type="text/javascript" src="js/list2.js"></script>
 <script type="text/javascript" src="lib/bootstrap-tooltip.js"></script>

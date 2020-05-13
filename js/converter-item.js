@@ -176,6 +176,9 @@ class ItemParser extends BaseParser {
 		if (stats.entries) {
 			stats.entries = stats.entries.map(it => DiceConvert.getTaggedEntry(it))
 			EntryConvert.tryRun(stats, "entries");
+			stats.entries = SkillTag.tryRun(stats.entries);
+			stats.entries = ActionTag.tryRun(stats.entries);
+			stats.entries = SenseTag.tryRun(stats.entries);
 		}
 		this._doItemPostProcess_addTags(stats, options);
 		BasicTextClean.tryRun(stats);
@@ -240,6 +243,8 @@ class ItemParser extends BaseParser {
 				case "potion": stats.type = "P"; return;
 				case "ring": stats.type = "RG"; return;
 				case "rod": stats.type = "RD"; return;
+				case "wand": stats.type = "WD"; return;
+				case "ammunition": stats.type = "A"; return;
 				case "staff": stats.staff = true; return;
 			}
 			// endregion

@@ -133,8 +133,7 @@ class SpellsPage {
 				isImageTab,
 				$content,
 				entity: spell,
-				fluffBaseUrl: `data/spells/`,
-				fnFluffBuilder: (fluffJson) => spell.fluff || fluffJson.spellFluff.find(it => it.name === spell.name && it.source === spell.source)
+				pFnGetFluff: Renderer.spell.pGetFluff
 			});
 		}
 
@@ -362,7 +361,8 @@ function addSpells (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	Renderer.hover.bindPopoutButton(spellList);
+	const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
+	Renderer.hover.bindPopoutButton($btnPop, spellList);
 	UrlUtil.bindLinkExportButton(spellsPage._pageFilter.filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton(pPreloadSublistSources);

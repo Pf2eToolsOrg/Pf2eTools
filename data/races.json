@@ -296,6 +296,7 @@
 			"subraces": [
 				{
 					"name": "Fallen",
+					"page": 105,
 					"ability": [
 						{
 							"str": 1
@@ -315,6 +316,7 @@
 				},
 				{
 					"name": "Protector",
+					"page": 105,
 					"ability": [
 						{
 							"wis": 1
@@ -334,6 +336,7 @@
 				},
 				{
 					"name": "Scourge",
+					"page": 105,
 					"ability": [
 						{
 							"con": 1
@@ -513,6 +516,7 @@
 			"subraces": [
 				{
 					"name": "Hawk-Headed",
+					"page": 16,
 					"ability": [
 						{
 							"wis": 2
@@ -538,6 +542,7 @@
 				},
 				{
 					"name": "Ibis-Headed",
+					"page": 16,
 					"ability": [
 						{
 							"int": 1
@@ -1137,8 +1142,7 @@
 				"weightMod": "2d4"
 			},
 			"traitTags": [
-				"Skill Proficiency",
-				"Tool Proficiency"
+				"Skill Proficiency"
 			],
 			"languageProficiencies": [
 				{
@@ -1518,7 +1522,7 @@
 				{
 					"name": "Draconblood",
 					"source": "EGW",
-					"page": 0,
+					"page": 168,
 					"ability": [
 						{
 							"int": 2,
@@ -1544,6 +1548,82 @@
 							"data": {
 								"overwrite": "Damage Resistance"
 							}
+						},
+						{
+							"name": "Draconic Ancestry",
+							"entries": [
+								"You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon is determined by the dragon type, as shown in the table.",
+								{
+									"type": "table",
+									"caption": "Draconic Ancestry",
+									"colLabels": [
+										"Dragon",
+										"Damage Type",
+										"Breath Weapon"
+									],
+									"colStyles": [
+										"col-3 text-center",
+										"col-3 text-center",
+										"col-6"
+									],
+									"rows": [
+										[
+											"Black",
+											"Acid",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Blue",
+											"Lightning",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Brass",
+											"Fire",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Bronze",
+											"Lightning",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Copper",
+											"Acid",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Gold",
+											"Fire",
+											"15 ft. cone (Dex. save)"
+										],
+										[
+											"Green",
+											"Poison",
+											"15 ft. cone (Con. save)"
+										],
+										[
+											"Red",
+											"Fire",
+											"15 ft. cone (Dex. save)"
+										],
+										[
+											"Silver",
+											"Cold",
+											"15 ft. cone (Con. save)"
+										],
+										[
+											"White",
+											"Cold",
+											"15 ft. cone (Con. save)"
+										]
+									]
+								}
+							],
+							"type": "entries",
+							"data": {
+								"overwrite": "Draconic Ancestry"
+							}
 						}
 					],
 					"overwrite": {
@@ -1553,7 +1633,7 @@
 				{
 					"name": "Ravenite",
 					"source": "EGW",
-					"page": 0,
+					"page": 168,
 					"ability": [
 						{
 							"str": 2,
@@ -1578,6 +1658,82 @@
 							],
 							"data": {
 								"overwrite": "Damage Resistance"
+							}
+						},
+						{
+							"name": "Draconic Ancestry",
+							"entries": [
+								"You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon is determined by the dragon type, as shown in the table.",
+								{
+									"type": "table",
+									"caption": "Draconic Ancestry",
+									"colLabels": [
+										"Dragon",
+										"Damage Type",
+										"Breath Weapon"
+									],
+									"colStyles": [
+										"col-3 text-center",
+										"col-3 text-center",
+										"col-6"
+									],
+									"rows": [
+										[
+											"Black",
+											"Acid",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Blue",
+											"Lightning",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Brass",
+											"Fire",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Bronze",
+											"Lightning",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Copper",
+											"Acid",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Gold",
+											"Fire",
+											"15 ft. cone (Dex. save)"
+										],
+										[
+											"Green",
+											"Poison",
+											"15 ft. cone (Con. save)"
+										],
+										[
+											"Red",
+											"Fire",
+											"15 ft. cone (Dex. save)"
+										],
+										[
+											"Silver",
+											"Cold",
+											"15 ft. cone (Con. save)"
+										],
+										[
+											"White",
+											"Cold",
+											"15 ft. cone (Con. save)"
+										]
+									]
+								}
+							],
+							"type": "entries",
+							"data": {
+								"overwrite": "Draconic Ancestry"
 							}
 						}
 					],
@@ -1764,6 +1920,7 @@
 				},
 				{
 					"name": "Hill",
+					"page": 20,
 					"srd": true,
 					"ability": [
 						{
@@ -1865,6 +2022,7 @@
 				},
 				{
 					"name": "Mountain",
+					"page": 20,
 					"ability": [
 						{
 							"str": 2
@@ -2072,6 +2230,7 @@
 				{
 					"name": "Avariel",
 					"source": "UAElfSubraces",
+					"page": 1,
 					"speed": {
 						"walk": 30,
 						"fly": 30
@@ -2103,6 +2262,7 @@
 					"alias": [
 						"Dark"
 					],
+					"page": 24,
 					"ability": [
 						{
 							"cha": 1
@@ -2305,6 +2465,7 @@
 				{
 					"name": "Grugach",
 					"source": "UAElfSubraces",
+					"page": 1,
 					"ability": [
 						{
 							"str": 1
@@ -2353,6 +2514,7 @@
 				},
 				{
 					"name": "High",
+					"page": 23,
 					"srd": true,
 					"speed": 30,
 					"ability": [
@@ -2551,7 +2713,7 @@
 				{
 					"name": "Pallid",
 					"source": "EGW",
-					"page": 0,
+					"page": 21,
 					"ability": [
 						{
 							"wis": 1
@@ -2646,6 +2808,7 @@
 				{
 					"name": "Sea",
 					"source": "UAElfSubraces",
+					"page": 1,
 					"speed": {
 						"walk": 30,
 						"swim": 30
@@ -2729,6 +2892,7 @@
 				{
 					"name": "Shadar-kai",
 					"source": "UAElfSubraces",
+					"page": 2,
 					"ability": [
 						{
 							"cha": 1
@@ -2777,6 +2941,7 @@
 				},
 				{
 					"name": "Wood",
+					"page": 24,
 					"speed": 35,
 					"ability": [
 						{
@@ -2990,6 +3155,7 @@
 			"subraces": [
 				{
 					"name": "Bishatar and Tirahar",
+					"page": 21,
 					"speed": 35,
 					"entries": [
 						{
@@ -3010,6 +3176,7 @@
 				},
 				{
 					"name": "Vadahar",
+					"page": 21,
 					"traitTags": [
 						"Spellcasting"
 					],
@@ -3112,6 +3279,7 @@
 			"subraces": [
 				{
 					"name": "Joraga Nation",
+					"page": 19,
 					"speed": 35,
 					"ability": [
 						{
@@ -3147,6 +3315,7 @@
 				},
 				{
 					"name": "Mul Daya Nation",
+					"page": 19,
 					"ability": [
 						{
 							"str": 1
@@ -3193,6 +3362,7 @@
 				},
 				{
 					"name": "Tajuru Nation",
+					"page": 18,
 					"ability": [
 						{
 							"cha": 1
@@ -3408,6 +3578,7 @@
 			"subraces": [
 				{
 					"name": "Air",
+					"page": 9,
 					"ability": [
 						{
 							"dex": 1
@@ -3435,6 +3606,7 @@
 				},
 				{
 					"name": "Earth",
+					"page": 9,
 					"ability": [
 						{
 							"str": 1
@@ -3462,6 +3634,7 @@
 				},
 				{
 					"name": "Fire",
+					"page": 9,
 					"ability": [
 						{
 							"int": 1
@@ -3498,6 +3671,7 @@
 				},
 				{
 					"name": "Water",
+					"page": 10,
 					"speed": {
 						"walk": 30,
 						"swim": 30
@@ -3588,6 +3762,7 @@
 			"subraces": [
 				{
 					"name": "Githyanki",
+					"page": 96,
 					"ability": [
 						{
 							"str": 2
@@ -3669,6 +3844,7 @@
 				},
 				{
 					"name": "Githzerai",
+					"page": 96,
 					"ability": [
 						{
 							"wis": 2
@@ -3754,6 +3930,7 @@
 			"subraces": [
 				{
 					"name": "Githyanki",
+					"page": 2,
 					"ability": [
 						{
 							"str": 2
@@ -3827,6 +4004,7 @@
 				},
 				{
 					"name": "Githzerai",
+					"page": 3,
 					"ability": [
 						{
 							"wis": 2
@@ -4144,6 +4322,7 @@
 				},
 				{
 					"name": "Forest",
+					"page": 37,
 					"ability": [
 						{
 							"dex": 1
@@ -4248,6 +4427,7 @@
 				},
 				{
 					"name": "Rock",
+					"page": 37,
 					"srd": true,
 					"ability": [
 						{
@@ -4765,6 +4945,7 @@
 			"subraces": [
 				{
 					"name": "Grotag Tribe",
+					"page": 17,
 					"traitTags": [
 						"Skill Proficiency"
 					],
@@ -4785,6 +4966,7 @@
 				},
 				{
 					"name": "Lavastep Tribe",
+					"page": 17,
 					"entries": [
 						{
 							"name": "Lavastep Grit",
@@ -4797,6 +4979,7 @@
 				},
 				{
 					"name": "Tuktuk Tribe",
+					"page": 17,
 					"traitTags": [
 						"Tool Proficiency"
 					],
@@ -5075,6 +5258,126 @@
 			"name": "Half-Elf",
 			"source": "PHB",
 			"page": 38,
+			"srd": true,
+			"size": "M",
+			"speed": 30,
+			"ability": [
+				{
+					"cha": 2,
+					"choose": {
+						"from": [
+							"str",
+							"dex",
+							"con",
+							"int",
+							"wis"
+						],
+						"count": 2
+					}
+				}
+			],
+			"heightAndWeight": {
+				"baseHeight": 57,
+				"heightMod": "2d8",
+				"baseWeight": 110,
+				"weightMod": "2d4"
+			},
+			"darkvision": 60,
+			"traitTags": [
+				"Skill Proficiency",
+				"Uncommon Race"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"elvish": true,
+					"anyStandard": 1
+				}
+			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"athletics",
+							"acrobatics",
+							"sleight of hand",
+							"stealth",
+							"arcana",
+							"history",
+							"investigation",
+							"nature",
+							"religion",
+							"animal handling",
+							"insight",
+							"medicine",
+							"perception",
+							"survival",
+							"deception",
+							"intimidation",
+							"performance",
+							"persuasion"
+						],
+						"count": 2
+					}
+				}
+			],
+			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/259/half-elf.mp3",
+			"entries": [
+				{
+					"name": "Age",
+					"type": "entries",
+					"entries": [
+						"Half-elves mature at the same rate humans do and reach adulthood around the age of 20. They live much longer than humans, however, often exceeding 180 years."
+					]
+				},
+				{
+					"name": "Alignment",
+					"type": "entries",
+					"entries": [
+						"Half-elves share the chaotic bent of their elven heritage. They value both personal freedom and creative expression, demonstrating neither love of leaders nor desire for followers. They chafe at rules, resent others' demands, and sometimes prove unreliable, or at least unpredictable."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Half-elves are about the same size as humans, ranging from 5 to 6 feet tall. Your size is Medium."
+					]
+				},
+				{
+					"name": "Darkvision",
+					"entries": [
+						"Thanks to your elf blood, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Fey Ancestry",
+					"entries": [
+						"You have advantage on saving throws against being {@condition charmed}, and magic can't put you to sleep."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Skill Versatility",
+					"entries": [
+						"You gain proficiency in two skills of your choice."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common, Elvish, and one extra language of your choice."
+					],
+					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Half-Elf (Variant)",
+			"source": "PHB",
+			"page": 38,
 			"size": "M",
 			"speed": 30,
 			"ability": [
@@ -5190,9 +5493,6 @@
 				}
 			],
 			"subraces": [
-				{
-					"srd": true
-				},
 				{
 					"name": "Aquatic Elf Descent",
 					"source": "SCAG",
@@ -6009,6 +6309,7 @@
 				},
 				{
 					"name": "Lightfoot",
+					"page": 28,
 					"srd": true,
 					"ability": [
 						{
@@ -6028,7 +6329,7 @@
 				{
 					"name": "Lotusden",
 					"source": "EGW",
-					"page": 0,
+					"page": 164,
 					"ability": [
 						{
 							"wis": 1
@@ -6210,6 +6511,7 @@
 				},
 				{
 					"name": "Stout",
+					"page": 28,
 					"ability": [
 						{
 							"con": 1
@@ -7026,6 +7328,7 @@
 				},
 				{
 					"name": "Variant",
+					"page": 31,
 					"srd": true,
 					"ability": [
 						{
@@ -7243,6 +7546,7 @@
 			"subraces": [
 				{
 					"name": "Gavony",
+					"page": 8,
 					"ability": [
 						{
 							"str": 1,
@@ -7265,6 +7569,7 @@
 				},
 				{
 					"name": "Kessig",
+					"page": 8,
 					"speed": 40,
 					"ability": [
 						{
@@ -7313,6 +7618,7 @@
 				},
 				{
 					"name": "Nephalia",
+					"page": 8,
 					"ability": [
 						{
 							"int": 1,
@@ -7365,6 +7671,7 @@
 				},
 				{
 					"name": "Stensia",
+					"page": 8,
 					"ability": [
 						{
 							"str": 1,
@@ -8469,7 +8776,6 @@
 			},
 			"traitTags": [
 				"Natural Armor",
-				"Tool Proficiency",
 				"Powerful Build"
 			],
 			"languageProficiencies": [
@@ -8760,6 +9066,7 @@
 			"subraces": [
 				{
 					"name": "Blue",
+					"page": 12,
 					"ability": [
 						{
 							"int": 2
@@ -8793,6 +9100,7 @@
 				},
 				{
 					"name": "Green",
+					"page": 12,
 					"ability": [
 						{
 							"wis": 2
@@ -8891,6 +9199,7 @@
 			"subraces": [
 				{
 					"name": "Cosi Creed",
+					"page": 13,
 					"ability": [
 						{
 							"int": 1,
@@ -8926,6 +9235,7 @@
 				},
 				{
 					"name": "Emeria Creed",
+					"page": 13,
 					"ability": [
 						{
 							"wis": 2
@@ -8960,6 +9270,7 @@
 				},
 				{
 					"name": "Ula Creed",
+					"page": 13,
 					"ability": [
 						{
 							"int": 2
@@ -9517,6 +9828,53 @@
 		},
 		{
 			"name": "Orc",
+			"source": "EGW",
+			"page": 178,
+			"_copy": {
+				"name": "Orc",
+				"source": "ERLW",
+				"_mod": {
+					"entries": [
+						{
+							"mode": "replaceArr",
+							"replace": "Age",
+							"items": {
+								"name": "Age",
+								"type": "entries",
+								"entries": [
+									"Orcs reach adulthood at age 16, and live up to 80 years."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Alignment",
+							"items": {
+								"name": "Alignment",
+								"type": "entries",
+								"entries": [
+									"Orcs fear the curse of ruin that is said to plague their race, and tend strongly toward either chaos (accepting their fate), or toward law (rejecting it)."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Size",
+							"items": {
+								"name": "Size",
+								"type": "entries",
+								"entries": [
+									"Orcs stand easily 8 feet tall and corded with powerful muscles, weighing up to 280 pounds. Your size is Medium."
+								]
+							}
+						}
+					]
+				}
+			},
+			"heightAndWeight": null
+		},
+		{
+			"name": "Orc",
 			"source": "ERLW",
 			"page": 31,
 			"size": "M",
@@ -9623,12 +9981,6 @@
 			"name": "Orc",
 			"source": "VGM",
 			"page": 120,
-			"otherSources": [
-				{
-					"source": "EGW",
-					"page": 0
-				}
-			],
 			"size": "M",
 			"speed": 30,
 			"ability": [
@@ -9971,6 +10323,7 @@
 			"subraces": [
 				{
 					"name": "Beasthide",
+					"page": 34,
 					"ability": [
 						{
 							"con": 2,
@@ -10005,6 +10358,7 @@
 				},
 				{
 					"name": "Longtooth",
+					"page": 34,
 					"ability": [
 						{
 							"str": 2,
@@ -10039,6 +10393,7 @@
 				},
 				{
 					"name": "Swiftstride",
+					"page": 34,
 					"ability": [
 						{
 							"dex": 2,
@@ -10072,6 +10427,7 @@
 				},
 				{
 					"name": "Wildhunt",
+					"page": 34,
 					"ability": [
 						{
 							"wis": 2,
@@ -10158,6 +10514,7 @@
 			"subraces": [
 				{
 					"name": "Beasthide",
+					"page": 2,
 					"ability": [
 						{
 							"con": 1
@@ -10178,6 +10535,7 @@
 				},
 				{
 					"name": "Cliffwalk",
+					"page": 2,
 					"ability": [
 						{
 							"dex": 2
@@ -10195,6 +10553,7 @@
 				},
 				{
 					"name": "Longstride",
+					"page": 2,
 					"ability": [
 						{
 							"dex": 2
@@ -10212,6 +10571,7 @@
 				},
 				{
 					"name": "Longtooth",
+					"page": 2,
 					"ability": [
 						{
 							"str": 1
@@ -10229,6 +10589,7 @@
 				},
 				{
 					"name": "Razorclaw",
+					"page": 2,
 					"ability": [
 						{
 							"dex": 2
@@ -10249,6 +10610,7 @@
 				},
 				{
 					"name": "Wildhunt",
+					"page": 3,
 					"ability": [
 						{
 							"wis": 1
@@ -10346,7 +10708,7 @@
 			"subraces": [
 				{
 					"name": "Beasthide",
-					"page": 66,
+					"page": 6,
 					"ability": [
 						{
 							"con": 2
@@ -10380,7 +10742,7 @@
 				},
 				{
 					"name": "Longtooth",
-					"page": 66,
+					"page": 6,
 					"ability": [
 						{
 							"str": 2
@@ -10414,7 +10776,7 @@
 				},
 				{
 					"name": "Swiftstride",
-					"page": 66,
+					"page": 6,
 					"speed": 35,
 					"ability": [
 						{
@@ -10456,7 +10818,7 @@
 				},
 				{
 					"name": "Wildhunt",
-					"page": 66,
+					"page": 6,
 					"ability": [
 						{
 							"wis": 2
@@ -10971,6 +11333,12 @@
 			"page": 42,
 			"size": "M",
 			"speed": 30,
+			"ability": [
+				{
+					"cha": 2,
+					"int": 1
+				}
+			],
 			"heightAndWeight": {
 				"baseHeight": 57,
 				"heightMod": "2d8",
@@ -10980,7 +11348,8 @@
 			"darkvision": 60,
 			"traitTags": [
 				"Damage Resistance",
-				"Uncommon Race"
+				"Uncommon Race",
+				"Spellcasting"
 			],
 			"languageProficiencies": [
 				{
@@ -11026,6 +11395,13 @@
 					"type": "entries"
 				},
 				{
+					"name": "Infernal Legacy",
+					"entries": [
+						"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell hellish rebuke} spell as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
+					],
+					"type": "entries"
+				},
+				{
 					"name": "Languages",
 					"entries": [
 						"You can speak, read, and write Common and Infernal."
@@ -11035,25 +11411,7 @@
 			],
 			"subraces": [
 				{
-					"srd": true,
-					"ability": [
-						{
-							"cha": 2,
-							"int": 1
-						}
-					],
-					"traitTags": [
-						"Spellcasting"
-					],
-					"entries": [
-						{
-							"name": "Infernal Legacy",
-							"entries": [
-								"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell hellish rebuke} spell as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-							],
-							"type": "entries"
-						}
-					]
+					"srd": true
 				},
 				{
 					"name": "Abyssal",
@@ -11138,7 +11496,7 @@
 							],
 							"type": "entries",
 							"data": {
-								"overwrite": "Hellish Resistance"
+								"overwrite": "Infernal Legacy"
 							}
 						},
 						{
@@ -11146,6 +11504,9 @@
 							"entries": [
 								"Your hit point maximum increases by half your level (minimum 1)."
 							],
+							"data": {
+								"overwrite": "Hellish Resistance"
+							},
 							"type": "entries"
 						},
 						{
@@ -11160,75 +11521,34 @@
 						}
 					],
 					"overwrite": {
-						"languageProficiencies": true
+						"languageProficiencies": true,
+						"ability": true
 					}
 				},
 				{
 					"name": "Asmodeus",
 					"source": "MTF",
-					"page": 21,
-					"ability": [
-						{
-							"cha": 2,
-							"int": 1
-						}
-					],
-					"traitTags": [
-						"Spellcasting"
-					],
-					"entries": [
-						{
-							"name": "Infernal Legacy",
-							"entries": [
-								"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell hellish rebuke} spell as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-							],
-							"type": "entries"
-						}
-					]
+					"page": 21
 				},
 				{
 					"name": "Asmodeus",
 					"source": "UAFiendishOptions",
-					"page": 1,
-					"ability": [
-						{
-							"cha": 2,
-							"int": 1
-						}
-					],
-					"traitTags": [
-						"Spellcasting"
-					],
-					"entries": [
-						{
-							"name": "Infernal Legacy",
-							"entries": [
-								"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell hellish rebuke} spell as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-							],
-							"type": "entries"
-						}
-					]
+					"page": 1
 				},
 				{
 					"name": "Baalzebul",
 					"source": "MTF",
 					"page": 21,
-					"ability": [
-						{
-							"cha": 2,
-							"int": 1
-						}
-					],
-					"traitTags": [
-						"Spellcasting"
-					],
 					"entries": [
 						{
 							"name": "Legacy of Maladomini",
 							"entries": [
 								"You know the {@spell thaumaturgy} cantrip. When you reach 3rd level, you can cast the {@spell ray of sickness} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell crown of madness} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
 					]
 				},
@@ -11236,22 +11556,16 @@
 					"name": "Baalzebul",
 					"source": "UAFiendishOptions",
 					"page": 1,
-					"ability": [
-						{
-							"cha": 2,
-							"int": 1
-						}
-					],
-					"traitTags": [
-						"Spellcasting"
-					],
 					"entries": [
 						{
 							"name": "Legacy of Maladomini",
 							"entries": [
 								"You know the {@spell thaumaturgy} cantrip. When you reach 3rd level, you can cast the {@spell ray of sickness} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell crown of madness} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
 					]
 				},
@@ -11264,9 +11578,6 @@
 							"cha": 2,
 							"dex": 1
 						}
-					],
-					"traitTags": [
-						"Spellcasting"
 					],
 					"entries": [
 						{
@@ -11274,9 +11585,15 @@
 							"entries": [
 								"You know the {@spell thaumaturgy} cantrip. When you reach 3rd level, you can cast the {@spell disguise self} spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell detect thoughts} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Dispater",
@@ -11288,18 +11605,21 @@
 							"dex": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
-					],
 					"entries": [
 						{
 							"name": "Legacy of Dis",
 							"entries": [
 								"You know the {@spell thaumaturgy} cantrip. When you reach 3rd level, you can cast the {@spell disguise self} spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell invisibility} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Fierna",
@@ -11311,18 +11631,21 @@
 							"wis": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
-					],
 					"entries": [
 						{
 							"name": "Legacy of Phlegethos",
 							"entries": [
 								"You know the {@spell friends} cantrip. When you reach 3rd level, you can cast the {@spell charm person} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell suggestion} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Fierna",
@@ -11334,18 +11657,21 @@
 							"wis": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
-					],
 					"entries": [
 						{
 							"name": "Legacy of Phlegethos",
 							"entries": [
 								"You know the {@spell friends} cantrip. When you reach 3rd level, you can cast the {@spell charm person} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell suggestion} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Glasya",
@@ -11357,18 +11683,21 @@
 							"dex": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
-					],
 					"entries": [
 						{
 							"name": "Legacy of Malbolge",
 							"entries": [
 								"You know the {@spell minor illusion} cantrip. When you reach 3rd level, you can cast the {@spell disguise self} spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell invisibility} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Glasya",
@@ -11380,23 +11709,52 @@
 							"dex": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
-					],
 					"entries": [
 						{
 							"name": "Legacy of Malbolge",
 							"entries": [
 								"You know the {@spell minor illusion} cantrip. When you reach 3rd level, you can cast the {@spell disguise self} spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell invisibility} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Levistus",
 					"source": "MTF",
 					"page": 22,
+					"ability": [
+						{
+							"cha": 2,
+							"con": 1
+						}
+					],
+					"entries": [
+						{
+							"name": "Legacy of Stygia",
+							"entries": [
+								"You know the {@spell ray of frost} cantrip. When you reach 3rd level, you can cast the {@spell armor of Agathys} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell darkness} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
+							],
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
+						}
+					],
+					"overwrite": {
+						"ability": true
+					}
+				},
+				{
+					"name": "Levistus",
+					"source": "UAFiendishOptions",
+					"page": 2,
 					"ability": [
 						{
 							"cha": 2,
@@ -11412,53 +11770,30 @@
 							"entries": [
 								"You know the {@spell ray of frost} cantrip. When you reach 3rd level, you can cast the {@spell armor of Agathys} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell darkness} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
-						}
-					]
-				},
-				{
-					"name": "Levistus",
-					"source": "UAFiendishOptions",
-					"page": 2,
-					"ability": [
-						{
-							"cha": 2,
-							"con": 1
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
-					],
-					"entries": [
-						{
-							"name": "Legacy of Stygia",
-							"entries": [
-								"You know the {@spell ray of frost} cantrip. When you reach 3rd level, you can cast the {@spell armor of Agathys} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell darkness} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
-							],
-							"type": "entries"
-						}
-					]
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Mammon",
 					"source": "MTF",
 					"page": 22,
-					"ability": [
-						{
-							"cha": 2,
-							"int": 1
-						}
-					],
-					"traitTags": [
-						"Spellcasting"
-					],
 					"entries": [
 						{
 							"name": "Legacy of Minauros",
 							"entries": [
 								"You know the {@spell mage hand} cantrip. When you reach 3rd level, you can cast the {@spell Tenser's floating disk} spell once with this trait and regain the ability to do so when you finish a short or long rest. When you reach 5th level, you can cast the {@spell arcane lock} spell once with this trait, requiring no material component, and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
 					]
 				},
@@ -11466,22 +11801,16 @@
 					"name": "Mammon",
 					"source": "UAFiendishOptions",
 					"page": 2,
-					"ability": [
-						{
-							"cha": 2,
-							"int": 1
-						}
-					],
-					"traitTags": [
-						"Spellcasting"
-					],
 					"entries": [
 						{
 							"name": "Legacy of Minauros",
 							"entries": [
 								"You know the {@spell mage hand} cantrip. When you reach 3rd level, you can cast the {@spell Tenser's floating disk} spell once with this trait and regain the ability to do so when you finish a short or long rest. When you reach 5th level, you can cast the {@spell arcane lock} spell once with this trait, requiring no material component, and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
 					]
 				},
@@ -11489,44 +11818,33 @@
 					"name": "Mephistopheles",
 					"source": "MTF",
 					"page": 23,
-					"ability": [
-						{
-							"cha": 2,
-							"int": 1
-						}
-					],
-					"traitTags": [
-						"Spellcasting"
-					],
 					"entries": [
 						{
 							"name": "Legacy of Cania",
 							"entries": [
 								"You know the {@spell mage hand} cantrip. When you reach 3rd level, you can cast the {@spell burning hands} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell flame blade} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
 					]
 				},
 				{
 					"name": "Mephistopheles",
 					"source": "UAFiendishOptions",
-					"ability": [
-						{
-							"cha": 2,
-							"int": 1
-						}
-					],
-					"traitTags": [
-						"Spellcasting"
-					],
+					"page": 2,
 					"entries": [
 						{
 							"name": "Legacy of Cania",
 							"entries": [
 								"You know the {@spell mage hand} cantrip. When you reach 3rd level, you can cast the {@spell magic missile} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell web} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
 					]
 				},
@@ -11546,9 +11864,6 @@
 								"amount": 2
 							}
 						}
-					],
-					"traitTags": [
-						"Spellcasting"
 					],
 					"entries": [
 						{
@@ -11590,9 +11905,15 @@
 									],
 									"type": "entries"
 								}
-							]
+							],
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Zariel",
@@ -11604,40 +11925,47 @@
 							"str": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
-					],
 					"entries": [
 						{
 							"name": "Legacy of Avernus",
 							"entries": [
 								"You know the {@spell thaumaturgy} cantrip. When you reach 3rd level, you can cast the {@spell searing smite} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell branding smite} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Zariel",
 					"source": "UAFiendishOptions",
+					"page": 2,
 					"ability": [
 						{
 							"cha": 2,
 							"str": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
-					],
 					"entries": [
 						{
 							"name": "Legacy of Avernus",
 							"entries": [
 								"You know the {@spell thaumaturgy} cantrip. When you reach 3rd level, you can cast the {@spell searing smite} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell branding smite} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				}
 			]
 		},
@@ -12163,6 +12491,69 @@
 			],
 			"languageProficiencies": [
 				{
+					"common": true,
+					"other": true
+				}
+			],
+			"entries": [
+				{
+					"name": "Age",
+					"type": "entries",
+					"entries": [
+						"Vedalken mature at the same rate humans do, and most are expected to settle down into an adult life by around age 40. They can live 350 to almost 500 years."
+					]
+				},
+				{
+					"name": "Alignment",
+					"type": "entries",
+					"entries": [
+						"Vedalken are most often lawful and rarely evil."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Vedalken are taller than humans but more slender. They average 6 to 6½ feet tall, but usually weigh less than 200 pounds. Your size is Medium."
+					]
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and Vedalken. The Vedalken language is renowned for its technical treatises and its catalogs of knowledge about the natural world and the aether that pervades it."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Vedalken Cunning",
+					"entries": [
+						"You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Aether Lore",
+					"entries": [
+						"Whenever you make an Intelligence ({@skill History}) check related to magic items or aether-powered technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply."
+					],
+					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Vedalken",
+			"source": "UARacesOfRavnica",
+			"page": 4,
+			"size": "M",
+			"speed": 30,
+			"ability": [
+				{
+					"int": 2,
+					"wis": 1
+				}
+			],
+			"languageProficiencies": [
+				{
 					"common": true
 				}
 			],
@@ -12194,66 +12585,21 @@
 						"You can speak, read, and write Common."
 					],
 					"type": "entries"
-				}
-			],
-			"subraces": [
-				{
-					"languageProficiencies": [
-						{
-							"common": true,
-							"other": true
-						}
-					],
-					"entries": [
-						{
-							"name": "Vedalken Cunning",
-							"entries": [
-								"You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Aether Lore",
-							"entries": [
-								"Whenever you make an Intelligence ({@skill History}) check related to magic items or aether-powered technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Languages",
-							"entries": [
-								"You can speak, read, and write Common and Vedalken. The Vedalken language is renowned for its technical treatises and its catalogs of knowledge about the natural world and the aether that pervades it."
-							],
-							"type": "entries",
-							"data": {
-								"overwrite": "Languages"
-							}
-						}
-					],
-					"overwrite": {
-						"languageProficiencies": true
-					}
 				},
 				{
-					"source": "UARacesOfRavnica",
-					"page": 4,
+					"name": "Vedalken Dispassion",
 					"entries": [
-						{
-							"name": "Vedalken Dispassion",
-							"entries": [
-								"You have advantage on all Intelligence, Wisdom, and Charisma saving throws."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Tireless Precision",
-							"entries": [
-								"You are proficient in one of the following skills of your choice: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance}, or {@skill Sleight of Hand}. You are also proficient with one {@book tool|phb|5|tools} of your choice.",
-								"Whenever you make an ability check with the chosen skill or tool, roll a {@dice d4}, and add the number rolled to the check's total."
-							],
-							"type": "entries"
-						}
-					]
+						"You have advantage on all Intelligence, Wisdom, and Charisma saving throws."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Tireless Precision",
+					"entries": [
+						"You are proficient in one of the following skills of your choice: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance}, or {@skill Sleight of Hand}. You are also proficient with one {@book tool|phb|5|tools} of your choice.",
+						"Whenever you make an ability check with the chosen skill or tool, roll a {@dice d4}, and add the number rolled to the check's total."
+					],
+					"type": "entries"
 				}
 			]
 		},

@@ -184,8 +184,8 @@ class BaseConverter extends BaseComponent {
 				if (!curSource) return;
 				rebuildStageSource({mode: "edit", source: MiscUtil.copy(curSource)});
 				modalMeta = UiUtil.getShowModal({
-					fullHeight: true,
-					isLarge: true,
+					isHeight100: true,
+					isUncappedHeight: true,
 					cbClose: () => $wrpSourceOverlay.detach()
 				});
 				$wrpSourceOverlay.appendTo(modalMeta.$modalInner);
@@ -195,8 +195,8 @@ class BaseConverter extends BaseComponent {
 		const $btnSourceAdd = $(`<button class="btn btn-default btn-sm">Add New Source</button>`).click(() => {
 			rebuildStageSource({mode: "add"});
 			modalMeta = UiUtil.getShowModal({
-				fullHeight: true,
-				isLarge: true,
+				isHeight100: true,
+				isUncappedHeight: true,
 				cbClose: () => $wrpSourceOverlay.detach()
 			});
 			$wrpSourceOverlay.appendTo(modalMeta.$modalInner);

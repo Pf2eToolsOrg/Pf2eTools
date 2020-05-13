@@ -139,6 +139,14 @@
 	}
 }
 
+.nav {
+	.dropdown-menu--top {
+		margin-top: 0;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+	}
+}
+
 @media (max-width: $width-screen-sm) {
 	.nav > li > a {
 		border: 1px solid $rgb-border-grey;
@@ -363,7 +371,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 		&--scrolled {
 			position: fixed;
-			top: 50px;
+			top: 42px;
 			right: 10px;
 		}
 
@@ -1030,251 +1038,6 @@ th.name {
 	margin-right: 0.2em;
 }
 
-.source {
-	$rgb-source-PHB: #4a6898;
-	$rgb-source-DMG: purple;
-	$rgb-source-MM: green;
-	$rgb-source-SCAG: #76af76;
-	$rgb-source-VGM: grey;
-	$rgb-source-XGE: #ba7c00;
-	$rgb-source-HotDQ: #ad8eba;
-	$rgb-source-RoT: #ff2900;
-	$rgb-source-CoS: purple;
-	$rgb-source-OotA: grey;
-	$rgb-source-SKT: darkcyan;
-	$rgb-source-PotA: #57b6c6;
-	$rgb-source-LMoP: #8da851;
-	$rgb-source-TftYP: red;
-	$rgb-source-Homebrew: $rgb-class-brew;
-	$rgb-source-ToA: #666f30;
-	$rgb-source-MTF: #1f6e7b;
-	$rgb-source-WDH: #d4af37;
-	$rgb-source-GGR: #bfa76c;
-	$rgb-source-WDMM: #a2201f;
-	$rgb-source-LLK: #6e7a71;
-	$rgb-source-GoS: #3d695a;
-	$rgb-source-AI: #5baf04;
-	$rgb-source-ESK: #6b909a;
-	$rgb-source-BGDIA: #752418;
-	$rgb-source-ERLW: #983426;
-	$rgb-source-RMR: #5c7c27;
-	$rgb-source-MFF: #92817f;
-	$rgb-source-LR: #78613c;
-	$rgb-source-IMR: #a19364;
-	$rgb-source-SADS: #333bab;
-	$rgb-source-EGW: #855a6e;
-	$rgb-source-AL: #ed1c24;
-
-	&PHB {
-		color: $rgb-source-PHB !important;
-		border-color: $rgb-source-PHB !important;
-		text-decoration-color: $rgb-source-PHB !important;
-	}
-
-	&DMG {
-		color: $rgb-source-DMG !important;
-		border-color: $rgb-source-DMG !important;
-		text-decoration-color: $rgb-source-DMG !important;
-	}
-
-	&MM {
-		color: $rgb-source-MM !important;
-		border-color: $rgb-source-MM !important;
-		text-decoration-color: $rgb-source-MM !important;
-	}
-
-	&SCAG {
-		color: $rgb-source-SCAG !important;
-		border-color: $rgb-source-SCAG !important;
-		text-decoration-color: $rgb-source-SCAG !important;
-	}
-
-	&VGM {
-		color: $rgb-source-VGM !important;
-		border-color: $rgb-source-VGM !important;
-		text-decoration-color: $rgb-source-VGM !important;
-	}
-
-	&XGE,
-	&TTP { // Tortles are counted as an XGE race for AL
-		color: $rgb-source-XGE !important;
-		border-color: $rgb-source-XGE !important;
-		text-decoration-color: $rgb-source-XGE !important;
-	}
-
-	&HotDQ {
-		color: $rgb-source-HotDQ !important;
-		border-color: $rgb-source-HotDQ !important;
-		text-decoration-color: $rgb-source-HotDQ !important;
-	}
-
-	&RoT {
-		color: $rgb-source-RoT !important;
-		border-color: $rgb-source-RoT !important;
-		text-decoration-color: $rgb-source-RoT !important;
-	}
-
-	&CoS {
-		color: $rgb-source-CoS !important;
-		border-color: $rgb-source-CoS !important;
-		text-decoration-color: $rgb-source-CoS !important;
-	}
-
-	&OotA {
-		color: $rgb-source-OotA !important;
-		border-color: $rgb-source-OotA !important;
-		text-decoration-color: $rgb-source-OotA !important;
-	}
-
-	&SKT {
-		color: $rgb-source-SKT !important;
-		border-color: $rgb-source-SKT !important;
-		text-decoration-color: $rgb-source-SKT !important;
-	}
-
-	&PotA,
-	&EEPC {
-		color: $rgb-source-PotA !important;
-		border-color: $rgb-source-PotA !important;
-		text-decoration-color: $rgb-source-PotA !important;
-	}
-
-	&LMoP {
-		color: $rgb-source-LMoP !important;
-		border-color: $rgb-source-LMoP !important;
-		text-decoration-color: $rgb-source-LMoP !important;
-	}
-
-	&TftYP {
-		color: $rgb-source-TftYP !important;
-		border-color: $rgb-source-TftYP !important;
-		text-decoration-color: $rgb-source-TftYP !important;
-	}
-
-	&Homebrew {
-		color: $rgb-source-Homebrew !important;
-		border-color: $rgb-source-Homebrew !important;
-		text-decoration-color: $rgb-source-Homebrew !important;
-	}
-
-	&ToA {
-		color: $rgb-source-ToA !important;
-		border-color: $rgb-source-ToA !important;
-		text-decoration-color: $rgb-source-ToA !important;
-	}
-
-	&MTF {
-		color: $rgb-source-MTF !important;
-		border-color: $rgb-source-MTF !important;
-		text-decoration-color: $rgb-source-MTF !important;
-	}
-
-	&WDH {
-		color: $rgb-source-WDH !important;
-		border-color: $rgb-source-WDH !important;
-		text-decoration-color: $rgb-source-WDH !important;
-	}
-
-	&GGR,
-	&KKW {
-		color: $rgb-source-GGR !important;
-		border-color: $rgb-source-GGR !important;
-		text-decoration-color: $rgb-source-GGR !important;
-	}
-
-	&WDMM {
-		color: $rgb-source-WDMM !important;
-		border-color: $rgb-source-WDMM !important;
-		text-decoration-color: $rgb-source-WDMM !important;
-	}
-
-	&LLK {
-		color: $rgb-source-LLK !important;
-		border-color: $rgb-source-LLK !important;
-		text-decoration-color: $rgb-source-LLK !important;
-	}
-
-	&GoS {
-		color: $rgb-source-GoS !important;
-		border-color: $rgb-source-GoS !important;
-		text-decoration-color: $rgb-source-GoS !important;
-	}
-
-	&AI,
-	&OoW {
-		color: $rgb-source-AI !important;
-		border-color: $rgb-source-AI !important;
-		text-decoration-color: $rgb-source-AI !important;
-	}
-
-	// These are all from the same family
-	&ESK,
-	&DIP,
-	&DC,
-	&SDW,
-	&SLW {
-		color: $rgb-source-ESK !important;
-		border-color: $rgb-source-ESK !important;
-		text-decoration-color: $rgb-source-ESK !important;
-	}
-
-	&BGDIA {
-		color: $rgb-source-BGDIA !important;
-		border-color: $rgb-source-BGDIA !important;
-		text-decoration-color: $rgb-source-BGDIA !important;
-	}
-
-	&ERLW,
-	&EFR {
-		color: $rgb-source-ERLW !important;
-		border-color: $rgb-source-ERLW !important;
-		text-decoration-color: $rgb-source-ERLW !important;
-	}
-
-	&RMR,
-	&RMBRE {
-		color: $rgb-source-RMR !important;
-		border-color: $rgb-source-RMR !important;
-		text-decoration-color: $rgb-source-RMR !important;
-	}
-
-	&MFF {
-		color: $rgb-source-MFF !important;
-		border-color: $rgb-source-MFF !important;
-		text-decoration-color: $rgb-source-MFF !important;
-	}
-
-	&LR {
-		color: $rgb-source-LR !important;
-		border-color: $rgb-source-LR !important;
-		text-decoration-color: $rgb-source-LR !important;
-	}
-
-	&IMR {
-		color: $rgb-source-IMR !important;
-		border-color: $rgb-source-IMR !important;
-		text-decoration-color: $rgb-source-IMR !important;
-	}
-
-	&SADS {
-		color: $rgb-source-SADS !important;
-		border-color: $rgb-source-SADS !important;
-		text-decoration-color: $rgb-source-SADS !important;
-	}
-
-	&EGW {
-		color: $rgb-source-EGW !important;
-		border-color: $rgb-source-EGW !important;
-		text-decoration-color: $rgb-source-EGW !important;
-	}
-
-	&AL {
-		color: $rgb-source-AL !important;
-		border-color: $rgb-source-AL !important;
-		text-decoration-color: $rgb-source-AL !important;
-	}
-}
-
 .stats {
 	font-family: 'Convergence', Arial, sans-serif;
 	width: 100%;
@@ -1299,10 +1062,6 @@ th {
 
 .stats th {
 	color: $rgb-name-red;
-}
-
-.stats li {
-	margin: 0 0 5px;
 }
 
 /* sub-tables */
@@ -1353,11 +1112,11 @@ td.divider div {
 }
 
 tr.text > td {
-	padding-bottom: 0.7em !important;
+	padding-bottom: 0.7em;
 }
 
 tr.text.compact > td {
-	padding-bottom: 0 !important;
+	padding-bottom: 0;
 }
 
 tr.text.compact > td p:last-child {
@@ -1425,13 +1184,9 @@ div#lootoutput {
 		width: 16%;
 	}
 
-	&wrp-size-type-align,
+	&wrp-size-type-align--token,
 	&wrp-avoid-token {
 		max-width: calc(100% - 11rem);
-	}
-
-	&wrp-size-type-align {
-		color: black;
 	}
 
 	&sect-header-inner {
@@ -1717,10 +1472,6 @@ img.token:hover {
 
 .classes .stats {
 	font-family: inherit;
-}
-
-.stats tr.trait td p:first-of-type {
-	display: inline;
 }
 
 .stats p.subtrait {
@@ -2442,6 +2193,25 @@ tr.regionaleffect {
 		}
 	}
 
+	.rd__list-hang-notitle {
+		p {
+			text-indent: -1.1em;
+		}
+
+		> .rd__li {
+			margin-bottom: 5px;
+
+			> * {
+				margin: 0 0 5px;
+			}
+		}
+	}
+
+	.rd__p-cont-indent {
+		text-indent: 0;
+		margin-top: 5px;
+	}
+
 	.rd__quote-line {
 		margin-bottom: 10px;
 
@@ -2760,14 +2530,14 @@ ul.list li:hover {
 	background: lightgrey;
 }
 
+table.striped-odd > tbody > tr:nth-child(odd),
+table.striped-even > tbody > tr:nth-child(even) {
+	background: #c0c0c080; // pre-blend (50% opacity): e0 e0 e0
+}
+
 .stats table.striped-odd > tbody > tr:nth-child(odd),
 .stats table.striped-even > tbody > tr:nth-child(even) {
 	background: #cbbfaa80; // pre-blend (50% opacity): e4 d8 c3
-}
-
-.stats--book table.striped-odd > tbody > tr:nth-child(odd),
-.stats--book table.striped-even > tbody > tr:nth-child(even) {
-	background: #c0c0c080; // pre-blend (50% opacity): e0 e0 e0
 }
 
 .hwin .hoverborder,
@@ -2778,14 +2548,6 @@ th.border {
 .hwin .hoverborder.hoverborder-book,
 .stats--book th.border {
 	background: silver;
-}
-
-tr.text td,
-tr.trait td,
-tr.action td,
-tr.reaction td,
-tr.legendary td {
-	color: black;
 }
 
 .bk__ {
@@ -2818,7 +2580,7 @@ tr.legendary td {
 			display: flex;
 			flex-direction: column;
 			position: fixed;
-			z-index: $z-omnisearch;
+			z-index: $z-omnisearch - 1;
 			top: 42px;
 			right: 10px;
 			padding: 2px 0;
@@ -2872,6 +2634,8 @@ tr.legendary td {
 
 	&bookshelf-image {
 		width: 300px;
+		height: 300px;
+		object-fit: none;
 	}
 }
 
@@ -2917,10 +2681,6 @@ tr.legendary td {
 
 /* end section: lootgen */
 
-tr.trait td {
-	color: black !important;
-}
-
 li.contents-item {
 	position: relative;
 	border-bottom: 0;
@@ -2954,11 +2714,6 @@ ul.list.contents > li > ul.bk-contents > li a:hover {
 ul.list.books > li > a > span.showhide:hover,
 ul.list.books > li > a > span.name:hover {
 	background: lightgrey;
-}
-
-.hwin table.summary-noback th,
-.hwin table.summary th {
-	color: black;
 }
 
 .hwin .hoverborder .window-title {
@@ -3003,15 +2758,21 @@ ul.list.books > li > a > span.name:hover {
 .homebrew-section {
 	background-color: rgba(255, 0, 0, 0.05);
 
-	.homebrew-old-content {
+	.homebrew-float {
 		float: right;
+		border: 1px dotted;
+		margin-bottom: 5px;
+		margin-left: 5px;
+		padding-right: 2px;
+		padding-left: 2px;
+	}
+
+	.homebrew-old-content {
 		color: #a00;
 		margin-left: 5px;
 	}
 
 	.homebrew-notice {
-		float: right;
-
 		&::before {
 			content: 'Homebrew';
 		}
@@ -3055,7 +2816,7 @@ ul.list.books > li > a > span.name:hover {
 		background: gold;
 		width: 0;
 		text-align: right;
-		color: black;
+		color: $rgb-off-black;
 	}
 }
 
@@ -3285,10 +3046,6 @@ ul.list.books > li > a > span.name:hover {
 
 	.text-muted {
 		color: darken($rgb-font--night, 15%) !important;
-	}
-
-	header p.lead {
-		color: black;
 	}
 
 	h1,
@@ -3652,10 +3409,6 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	.mon__ {
-		&wrp-size-type-align {
-			color: $rgb-font--night;
-		}
-
 		&btn-token-cycle {
 			color: #ddd;
 			background: rgba(255, 255, 255, 0.15);
@@ -3801,8 +3554,8 @@ ul.list.books > li > a > span.name:hover {
 		}
 	}
 
-	.stats table.striped-odd > tbody > tr:nth-child(odd),
-	.stats table.striped-even > tbody > tr:nth-child(even) {
+	table.striped-odd > tbody > tr:nth-child(odd),
+	table.striped-even > tbody > tr:nth-child(even) {
 		background-color: #4e4e4e80; // pre-blend (50% opacity): 38 38 38
 	}
 
@@ -4186,11 +3939,27 @@ ul.list.books > li > a > span.name:hover {
 		margin: 0 auto;
 		width: 100%;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		flex-shrink: 0;
 		flex-grow: 0;
 		min-height: 0;
 		overflow: hidden;
+
+		&-inner {
+			display: flex;
+			width: 100%;
+			justify-content: center;
+		}
+	}
+
+	&disp-cancer {
+		width: 100%;
+		justify-content: center;
+		font-size: 9px;
+		padding: 2px 0;
+		opacity: 0.6;
+		display: none;
 	}
 
 	&wrp-sidebar-rhs {
@@ -4221,17 +3990,11 @@ ul.list.books > li > a > span.name:hover {
 	&home-footer-pad {
 		height: 100px;
 	}
-}
 
-[id^=div-gpt-ad]::before {
-	content: 'advertisement';
-	margin: 0 auto;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	font-size: 9px;
-	padding: 2px 0;
-	opacity: 0.6;
+	&wrp-mobile-1 {
+		display: flex;
+		flex-direction: column;
+	}
 }
 /* endregion */
 

@@ -134,37 +134,6 @@ const BookUtil = {
 		}
 	},
 
-	getEntryIdLookup (bookData, doThrowError = true) {
-		const out = {};
-
-		const handlers = {
-			object: (chapIx, obj) => {
-				Renderer.ENTRIES_WITH_CHILDREN
-					.filter(meta => meta.key === "entries")
-					.forEach(meta => {
-						if (obj.type !== meta.type) return;
-						if (obj.id) {
-							if (out[obj.id]) {
-								(out.__BAD = out.__BAD || []).push(obj.id);
-							} else {
-								out[obj.id] = {
-									chapter: chapIx,
-									entry: obj
-								};
-							}
-						}
-					});
-				return obj;
-			}
-		};
-
-		bookData.forEach((chap, chapIx) => MiscUtil.getWalker().walk(chapIx, chap, handlers));
-
-		if (doThrowError) if (out.__BAD) throw new Error(`IDs were already in storage: ${out.__BAD.map(it => `"${it}"`).join(", ")}`);
-
-		return out;
-	},
-
 	thisContents: null,
 	curRender: {
 		curBookId: "NONE",
@@ -232,7 +201,7 @@ const BookUtil = {
 
 		BookUtil.curRender.data = data;
 		BookUtil.curRender.fromIndex = fromIndex;
-		BookUtil.curRender.headerMap = BookUtil.getEntryIdLookup(data);
+		BookUtil.curRender.headerMap = Renderer.adventureBook.getEntryIdLookup(data);
 
 		// If it's a new chapter or a new book
 		if (BookUtil.curRender.chapter !== chapter || UrlUtil.encodeForHash(BookUtil.curRender.curBookId.toLowerCase()) !== UrlUtil.encodeForHash(bookId)) {
@@ -865,15 +834,11 @@ const BookUtil = {
 	}
 };
 
-if (typeof module !== "undefined") {
-	module.exports.BookUtil = BookUtil;
-} else {
-	window.addEventListener("load", () => $("body").on("click", "a", (evt) => {
-		const lnk = evt.target;
-		let $lnk = $(lnk);
-		while ($lnk.length && !$lnk.is("a")) $lnk = $lnk.parent();
-		BookUtil._lastClickedLink = $lnk[0];
+window.addEventListener("load", () => $("body").on("click", "a", (evt) => {
+	const lnk = evt.target;
+	let $lnk = $(lnk);
+	while ($lnk.length && !$lnk.is("a")) $lnk = $lnk.parent();
+	BookUtil._lastClickedLink = $lnk[0];
 
-		if (`#${$lnk.attr("href").split("#")[1] || ""}` === window.location.hash) BookUtil.handleReNav(lnk);
-	}));
-}
+	if (`#${$lnk.attr("href").split("#")[1] || ""}` === window.location.hash) BookUtil.handleReNav(lnk);
+}));

@@ -66,6 +66,10 @@ Shared UI components
 
 /* region Modals */
 .ui-modal__ {
+	&body-active {
+		overflow-y: hidden !important;
+	}
+
 	&row {
 		margin-bottom: 5px;
 		display: flex;
@@ -159,11 +163,19 @@ Shared UI components
 			max-width: 1170px;
 		}
 
-		&--large {
-			width: 100%;
-			margin: 60px auto;
+		&--no-min-height {
+			min-height: 0;
+			height: initial;
+		}
+
+		&--uncap-height {
 			max-height: calc(100% - 120px);
 			height: initial;
+		}
+
+		&--uncap-width {
+			max-width: calc(100% - 180px);
+			width: initial;
 		}
 	}
 

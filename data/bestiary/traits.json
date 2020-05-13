@@ -867,6 +867,54 @@
 			}
 		},
 		{
+			"name": "High Elf",
+			"source": "PHB",
+			"page": 23,
+			"ref": "{@race Elf (High)||High Elf}",
+			"apply": {
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"elf"
+						]
+					}
+				},
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": {
+								"type": "darkvision",
+								"range": 60
+							}
+						},
+						{
+							"mode": "addSkills",
+							"skills": {
+								"perception": 1
+							}
+						}
+					],
+					"languages": {
+						"mode": "appendIfNotExistsArr",
+						"items": "Elvish"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Fey Ancestry",
+								"entries": [
+									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$title_name$> to sleep."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
 			"name": "Huge Half-Black Dragon",
 			"source": "MM",
 			"page": 180,

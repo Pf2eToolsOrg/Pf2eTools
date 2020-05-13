@@ -113,14 +113,12 @@ class ObjectsPage extends ListPage {
 		$(`#pagecontent`).empty().append(RenderObjects.$getRenderedObject(obj));
 
 		const $floatToken = $(`#float-token`).empty();
-		if (obj.tokenUrl || !obj.uniqueId) {
+
+		const hasToken = obj.tokenUrl || obj.hasToken;
+		if (hasToken) {
 			const imgLink = obj.tokenUrl || UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
-			$floatToken.append(`
-			<a href="${imgLink}" target="_blank" rel="noopener noreferrer">
-				<img src="${imgLink}" id="token_image" class="token" onerror="TokenUtil.imgError(this)" alt="${obj.name}">
-			</a>`
-			);
-		} else TokenUtil.imgError();
+			$floatToken.append(`<a href="${imgLink}" target="_blank" rel="noopener noreferrer"><img src="${imgLink}" id="token_image" class="token" alt="${obj.name}"></a>`);
+		}
 
 		ListUtil.updateSelected();
 	}

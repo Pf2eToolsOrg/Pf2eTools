@@ -23,7 +23,11 @@ class RendererMarkdown {
 				else this.__super[k] = MiscUtil.copy(renderer[k]);
 			}
 		}
+
+		this._isSkipStylingItemLinks = false;
 	}
+
+	set isSkipStylingItemLinks (val) { this._isSkipStylingItemLinks = val; return this; }
 
 	static get () {
 		RendererMarkdown.checkInit();
@@ -103,6 +107,7 @@ class RendererMarkdown {
 
 		// Special formatting for spellcasting lists (data attrib added by main renderer spellcasting -> entries)
 		if (entry.data && entry.data.isSpellList) {
+			textStack[0] += `${RendererMarkdown._getNextPrefix(options)}\n`;
 			for (let i = 0; i < len; ++i) {
 				textStack[0] += `${RendererMarkdown._getNextPrefix(options)}${indentSpaces}`;
 				const cacheDepth = this._adjustDepth(meta, 1);
@@ -416,6 +421,9 @@ class RendererMarkdown {
 		const mon = entry.dataCreature;
 
 		const monTypes = Parser.monTypeToFullObj(mon.type);
+		this.isSkipStylingItemLinks = true;
+		const acPart = Parser.acToFull(mon.ac, this);
+		this.isSkipStylingItemLinks = false;
 		const savePart = mon.save ? `\n>- **Saving Throws** ${Object.keys(mon.save).sort(SortUtil.ascSortAtts).map(it => RendererMarkdown.monster.getSave(it, mon.save[it])).join(", ")}` : "";
 		const skillPart = mon.skill ? `\n>- **Skills** ${RendererMarkdown.monster.getSkillsString(mon)}` : "";
 		const damVulnPart = mon.vulnerable ? `\n>- **Damage Vulnerabilities** ${Parser.monImmResToFull(mon.vulnerable)}` : "";
@@ -436,7 +444,7 @@ class RendererMarkdown {
 >## ${mon._displayName || mon.name}
 >*${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${monTypes.asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment)}` : ""}*
 >___
->- **Armor Class** ${Parser.acToFull(mon.ac, this)}
+>- **Armor Class** ${acPart}
 >- **Hit Points** ${Renderer.monster.getRenderedHp(mon.hp, true)}
 >- **Speed** ${Parser.getSpeedString(mon)}
 >___
@@ -695,8 +703,13 @@ class RendererMarkdown {
 
 			default: {
 				switch (tag) {
+					case "@item": {
+						if (this._isSkipStylingItemLinks) textStack[0] += `${Renderer.stripTags(`{${tag} ${text}}`)}`;
+						else textStack[0] += `*${Renderer.stripTags(`{${tag} ${text}}`)}*`;
+						break;
+					}
+
 					case "@spell":
-					case "@item":
 					case "@psionic":
 						textStack[0] += `*${Renderer.stripTags(`{${tag} ${text}}`)}*`; break;
 					case "@creature":
@@ -879,17 +892,12 @@ RendererMarkdown.monster = class {
 			.map(async (mon, i) => {
 				const monEntry = ({type: "dataCreature", dataCreature: mon});
 
-				const fluff = await Renderer.utils.pGetFluff({
-					isImages: false,
-					noInfoDisplay: "",
-					noImagesDisplay: "",
-					entity: mon,
-					fnFluffBuilder: Renderer.monster.getFluff.bind(null, mon),
-					fluffBaseUrl: `data/bestiary/`
-				});
+				const fluff = await Renderer.monster.pGetFluff(mon);
+
+				const fluffEntries = fluff.entries || [];
 
 				RendererMarkdown.get().setFirstSection(true);
-				const fluffText = fluff.map(ent => RendererMarkdown.get().render(ent)).join("\n\n");
+				const fluffText = fluffEntries.map(ent => RendererMarkdown.get().render(ent)).join("\n\n");
 
 				const out = [monEntry];
 

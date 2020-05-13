@@ -535,7 +535,7 @@ class MakeCards extends BaseComponent {
 				.click(() => doClose(true));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: "Enter Icon",
-				noMinHeight: true,
+				isMinHeight0: true,
 				cbClose: (isDataEntered) => {
 					if (!isDataEntered) return resolve(null);
 					const raw = $iptStr.val();

@@ -1,82 +1,10 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.14.2",
+	"version": "1.14.3",
 	"title": "Bestiary Schema",
 	"$id": "bestiary.json",
 	"type": "object",
 	"definitions": {
-		"damResist": {
-			"oneOf": [
-				{
-					"$ref": "entry.json#/definitions/dataDmgType"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"special": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": ["special"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"preNote": {
-							"type": "string"
-						},
-						"resist": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/damResist"
-							}
-						},
-						"note": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": ["resist"]
-				}
-			]
-		},
-		"damVuln": {
-			"oneOf": [
-				{
-					"$ref": "entry.json#/definitions/dataDmgType"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"special": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": ["special"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"preNote": {
-							"type": "string"
-						},
-						"vulnerable": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/damVuln"
-							}
-						},
-						"note": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": ["vulnerable"]
-				}
-			]
-		},
 		"align": {
 			"oneOf": [
 				{
@@ -220,23 +148,7 @@
 							"type": "object",
 							"properties": {
 								"type": {
-									"type": "string",
-									"enum": [
-										"aberration",
-										"beast",
-										"celestial",
-										"construct",
-										"dragon",
-										"elemental",
-										"fey",
-										"fiend",
-										"giant",
-										"humanoid",
-										"monstrosity",
-										"ooze",
-										"plant",
-										"undead"
-									]
+									"$ref": "util.json#/definitions/creatureType"
 								},
 								"swarmSize": {
 									"type": "string",
@@ -287,23 +199,7 @@
 							"additionalProperties": false
 						},
 						{
-							"type": "string",
-							"enum": [
-								"aberration",
-								"beast",
-								"celestial",
-								"construct",
-								"dragon",
-								"elemental",
-								"fey",
-								"fiend",
-								"giant",
-								"humanoid",
-								"monstrosity",
-								"ooze",
-								"plant",
-								"undead"
-							]
+							"$ref": "util.json#/definitions/creatureType"
 						}
 					]
 				},
@@ -585,35 +481,16 @@
 					]
 				},
 				"vulnerable": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/damVuln"
-					}
+					"$ref": "util.json#/definitions/damageVulnerabilityArray"
 				},
 				"resist": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/damResist"
-					}
-				},
-				"conditionImmune": {
-					"type": "array",
-					"items": {
-						"$ref": "entry.json#/definitions/dataCondImmune"
-					}
+					"$ref": "util.json#/definitions/damageResistArray"
 				},
 				"immune": {
-					"oneOf": [
-						{
-							"type": "array",
-							"items": {
-								"$ref": "entry.json#/definitions/dataDamImmune"
-							}
-						},
-						{
-							"type": "null"
-						}
-					]
+					"$ref": "util.json#/definitions/damageImmunityArray"
+				},
+				"conditionImmune": {
+					"$ref": "util.json#/definitions/conditionImmunityArray"
 				},
 				"spellcasting": {
 					"oneOf": [
@@ -815,6 +692,9 @@
 				},
 				"additionalSources": {
 					"$ref": "util.json#/definitions/additionalSources"
+				},
+				"hasToken": {
+					"type": "boolean"
 				},
 				"tokenUrl": {
 					"type": "string"

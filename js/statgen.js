@@ -179,7 +179,8 @@ class StatGen {
 			while (tries > 0) {
 				tries--;
 
-				const $toBump = RollerUtil.rollOnArray($iptAttrs);
+				const $iptAttrsCanIncrease = $iptAttrs.filter(it => Number(it.val()) < this.statMax);
+				const $toBump = RollerUtil.rollOnArray($iptAttrsCanIncrease);
 				const oldVal = Number($toBump.val());
 				$toBump.val(oldVal + 1);
 				this.changeBase();

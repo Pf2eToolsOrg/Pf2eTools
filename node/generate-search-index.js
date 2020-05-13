@@ -9,7 +9,7 @@ async function main () {
 	const indexItems = await utS.UtilSearchIndex.pGetIndexAdditionalItem();
 	fs.writeFileSync("search/index-item.json", JSON.stringify(indexItems), "utf8");
 	console.log("Creating alternate index: Spells...");
-	const indexAltSpells = await utS.UtilSearchIndex.pGetIndexAlternate("spell");
+	const indexAltSpells = utS.UtilSearchIndex.getIndexAlternate("spell");
 	fs.writeFileSync("search/index-alt-spell.json", JSON.stringify(indexAltSpells), "utf8");
 }
 

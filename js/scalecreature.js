@@ -289,49 +289,49 @@
 	 * @param toCr target CR, as a number.
 	 * @return {Promise<creature>} the scaled creature.
 	 */
-	scale (mon, toCr) {
-		return this._pInitSpellCache().then(() => {
-			if (toCr == null || toCr === "Unknown") throw new Error("Attempting to scale unknown CR!");
+	async scale (mon, toCr) {
+		await this._pInitSpellCache();
 
-			this._initRng(mon, toCr);
-			mon = JSON.parse(JSON.stringify(mon));
+		if (toCr == null || toCr === "Unknown") throw new Error("Attempting to scale unknown CR!");
 
-			const crIn = mon.cr.cr || mon.cr;
-			const crInNumber = Parser.crToNumber(crIn);
-			if (crInNumber === toCr) throw new Error("Attempting to scale creature to own CR!");
-			if (crInNumber > 30) throw new Error("Attempting to scale a creature beyond 30 CR!");
-			if (crInNumber < 0) throw new Error("Attempting to scale a creature below 0 CR!");
+		this._initRng(mon, toCr);
+		mon = JSON.parse(JSON.stringify(mon));
 
-			const pbIn = Parser.crToPb(crIn);
-			const pbOut = Parser.crToPb(String(toCr));
+		const crIn = mon.cr.cr || mon.cr;
+		const crInNumber = Parser.crToNumber(crIn);
+		if (crInNumber === toCr) throw new Error("Attempting to scale creature to own CR!");
+		if (crInNumber > 30) throw new Error("Attempting to scale a creature beyond 30 CR!");
+		if (crInNumber < 0) throw new Error("Attempting to scale a creature below 0 CR!");
 
-			if (pbIn !== pbOut) this._applyPb(mon, pbIn, pbOut);
+		const pbIn = Parser.crToPb(crIn);
+		const pbOut = Parser.crToPb(String(toCr));
 
-			this._adjustHp(mon, crInNumber, toCr);
-			this._adjustAtkBonusAndSaveDc(mon, crInNumber, toCr, pbIn, pbOut);
-			this._adjustDpr(mon, crInNumber, toCr);
-			this._adjustSpellcasting(mon, crInNumber, toCr);
+		if (pbIn !== pbOut) this._applyPb(mon, pbIn, pbOut);
 
-			// adjust AC after DPR/etc, as DPR takes priority for adjusting DEX
-			this._armorClass.adjustAc(mon, crInNumber, toCr);
+		this._adjustHp(mon, crInNumber, toCr);
+		this._adjustAtkBonusAndSaveDc(mon, crInNumber, toCr, pbIn, pbOut);
+		this._adjustDpr(mon, crInNumber, toCr);
+		this._adjustSpellcasting(mon, crInNumber, toCr);
 
-			// TODO update not-yet-scaled abilities
+		// adjust AC after DPR/etc, as DPR takes priority for adjusting DEX
+		this._armorClass.adjustAc(mon, crInNumber, toCr);
 
-			this._handleUpdateAbilityScoresSkillsSaves(mon, pbOut);
+		// TODO update not-yet-scaled abilities
 
-			// cleanup
-			[`strOld`, `dexOld`, `conOld`, `intOld`, `wisOld`, `chaOld`].forEach(a => delete mon[a]);
+		this._handleUpdateAbilityScoresSkillsSaves(mon, pbOut);
 
-			const crOutStr = Parser.numberToCr(toCr);
-			if (mon.cr.cr) mon.cr.cr = crOutStr;
-			else mon.cr = crOutStr;
+		// cleanup
+		[`strOld`, `dexOld`, `conOld`, `intOld`, `wisOld`, `chaOld`].forEach(a => delete mon[a]);
 
-			mon._displayName = `${mon.name} (CR ${crOutStr})`;
-			mon._isScaledCr = toCr;
-			mon._originalCr = mon._originalCr || crIn;
+		const crOutStr = Parser.numberToCr(toCr);
+		if (mon.cr.cr) mon.cr.cr = crOutStr;
+		else mon.cr = crOutStr;
 
-			return mon;
-		});
+		mon._displayName = `${mon.name} (CR ${crOutStr})`;
+		mon._isScaledCr = toCr;
+		mon._originalCr = mon._originalCr || crIn;
+
+		return mon;
 	},
 
 	_applyPb (mon, pbIn, pbOut) {

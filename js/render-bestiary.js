@@ -91,17 +91,20 @@ class RenderBestiary {
 			}
 		})();
 
+		const hasToken = (mon.tokenUrl && mon.uniqueId) || mon.hasToken;
+		const extraThClasses = hasToken ? ["mon__name--token"] : null;
+
 		return $$`
 		${Renderer.utils.getBorderTr()}
 		${Renderer.utils.getExcludedTr(mon, "monster")}
-		${Renderer.utils.getNameTr(mon, {controlRhs: mon.soundClip ? RenderBestiary._getPronunciationButton(mon) : "", extraThClasses: ["mon__name--token"], page: UrlUtil.PG_BESTIARY})}
+		${Renderer.utils.getNameTr(mon, {controlRhs: mon.soundClip ? RenderBestiary._getPronunciationButton(mon) : "", extraThClasses, page: UrlUtil.PG_BESTIARY, extensionData: mon._isScaledCr})}
 		<tr><td colspan="6">
-			<div class="mon__wrp-size-type-align"><i>${Renderer.monster.getTypeAlignmentPart(mon)}</i></div>
+			<div ${hasToken ? `class="mon__wrp-size-type-align--token"` : ""}><i>${Renderer.monster.getTypeAlignmentPart(mon)}</i></div>
 		</td></tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 
-		<tr><td colspan="6"><div class="mon__wrp-avoid-token"><strong>Armor Class</strong> ${Parser.acToFull(mon.ac)}</div></td></tr>
-		<tr><td colspan="6"><div class="mon__wrp-avoid-token"><strong>Hit Points</strong> ${Renderer.monster.getRenderedHp(mon.hp)}</div></td></tr>
+		<tr><td colspan="6"><div ${hasToken ? `class="mon__wrp-avoid-token"` : ""}><strong>Armor Class</strong> ${Parser.acToFull(mon.ac)}</div></td></tr>
+		<tr><td colspan="6"><div ${hasToken ? `class="mon__wrp-avoid-token"` : ""}><strong>Hit Points</strong> ${Renderer.monster.getRenderedHp(mon.hp)}</div></td></tr>
 		<tr><td colspan="6"><strong>Speed</strong> ${Parser.getSpeedString(mon)}</td></tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 

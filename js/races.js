@@ -48,7 +48,7 @@ class RacesPage extends ListPage {
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const hash = UrlUtil.autoEncodeHash(race);
-		const size = Parser.sizeAbvToFull(race.size);
+		const size = Parser.sizeAbvToFull(race.size || SZ_VARIES);
 		const source = Parser.sourceJsonToAbv(race.source);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
@@ -102,7 +102,7 @@ class RacesPage extends ListPage {
 				<a href="#${UrlUtil.autoEncodeHash(race)}" class="lst--border">
 					<span class="bold col-5 pl-0">${race.name}</span>
 					<span class="col-5">${race._slAbility}</span>
-					<span class="col-2 pr-0">${Parser.sizeAbvToFull(race.size)}</span>
+					<span class="col-2 pr-0">${Parser.sizeAbvToFull(race.size || SZ_VARIES)}</span>
 				</a>
 			</li>
 		`).contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -134,73 +134,8 @@ class RacesPage extends ListPage {
 				isImageTab,
 				$content,
 				entity: race,
-				fnFluffBuilder: getFluff,
-				fluffUrl: `data/fluff-races.json`
+				pFnGetFluff: Renderer.race.pGetFluff
 			});
-		}
-
-		function getFluff (fluffJson) {
-			const predefined = Renderer.utils.getPredefinedFluff(race, "raceFluff");
-			if (predefined) return predefined;
-
-			const subFluff = fluffJson.raceFluff.find(it => it.name.toLowerCase() === race.name.toLowerCase() && it.source.toLowerCase() === race.source.toLowerCase());
-
-			const baseFluff = race._baseName && race.name.toLowerCase() === race._baseName.toLowerCase() ? "" : fluffJson.raceFluff.find(it => race._baseName && it.name.toLowerCase() === race._baseName.toLowerCase() && race._baseSource && it.source.toLowerCase() === race._baseSource.toLowerCase());
-
-			if (!subFluff && !baseFluff) return null;
-
-			const findFluff = (toFind) => fluffJson.raceFluff.find(it => toFind.name.toLowerCase() === it.name.toLowerCase() && toFind.source.toLowerCase() === it.source.toLowerCase());
-
-			const fluff = {};
-
-			const addFluff = (fluffToAdd, isBase) => {
-				if (fluffToAdd.entries && !(isBase && subFluff && subFluff._excludeBaseEntries)) {
-					fluff.entries = fluff.entries || [];
-					fluff.entries.push(...MiscUtil.copy(fluffToAdd.entries));
-				}
-
-				if (fluffToAdd.images && !(isBase && subFluff && subFluff._excludeBaseImages)) {
-					fluff.images = fluff.images || [];
-					fluff.images.push(...MiscUtil.copy(fluffToAdd.images));
-				}
-
-				if (fluffToAdd._appendCopy) {
-					const toAppend = findFluff(fluffToAdd._appendCopy);
-
-					if (toAppend.entries) {
-						fluff.entries = fluff.entries || [];
-						fluff.images.push(...MiscUtil.copy(toAppend.images));
-					}
-
-					if (toAppend.images) {
-						fluff.images = fluff.images || [];
-						fluff.images.push(...MiscUtil.copy(toAppend.images));
-					}
-				}
-			};
-
-			if (subFluff) addFluff(subFluff);
-			if (baseFluff) addFluff(baseFluff, true);
-
-			if ((subFluff && subFluff.uncommon) || (baseFluff && baseFluff.uncommon)) {
-				if (fluff.entries) {
-					fluff.entries.push(MiscUtil.copy(fluffJson.meta.uncommon));
-				} else {
-					fluff.entries = [Renderer.utils.HTML_NO_INFO];
-					fluff.entries.push(MiscUtil.copy(fluffJson.meta.uncommon))
-				}
-			}
-
-			if ((subFluff && subFluff.monstrous) || (baseFluff && baseFluff.monstrous && (!subFluff || (subFluff.monstrous == null || subFluff.monstrous)))) {
-				if (fluff.entries) {
-					fluff.entries.push(MiscUtil.copy(fluffJson.meta.monstrous));
-				} else {
-					fluff.entries = [Renderer.utils.HTML_NO_INFO];
-					fluff.entries.push(MiscUtil.copy(fluffJson.meta.monstrous))
-				}
-			}
-
-			return fluff;
 		}
 
 		const traitTab = Renderer.utils.tabButton(

@@ -174,10 +174,16 @@ class SpellParser extends BaseParser {
 		if (stats.entries) {
 			stats.entries = stats.entries.map(it => DiceConvert.getTaggedEntry(it));
 			EntryConvert.tryRun(stats, "entries");
+			stats.entries = SkillTag.tryRun(stats.entries);
+			stats.entries = ActionTag.tryRun(stats.entries);
+			stats.entries = SenseTag.tryRun(stats.entries);
 		}
 		if (stats.entriesHigherLevel) {
 			stats.entriesHigherLevel = stats.entriesHigherLevel.map(it => DiceConvert.getTaggedEntry(it))
 			EntryConvert.tryRun(stats, "entriesHigherLevel");
+			stats.entriesHigherLevel = SkillTag.tryRun(stats.entriesHigherLevel);
+			stats.entriesHigherLevel = ActionTag.tryRun(stats.entriesHigherLevel);
+			stats.entriesHigherLevel = SenseTag.tryRun(stats.entriesHigherLevel);
 		}
 		this._addTags(stats, options);
 		doCleanup();

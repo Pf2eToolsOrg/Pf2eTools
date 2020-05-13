@@ -984,7 +984,7 @@ class TimeTrackerRoot_Clock extends TimeTrackerComponent {
 					$wrpEventsEncounters.show();
 
 					todayEvents.forEach(event => {
-						const hoverMeta = Renderer.hover.getMakePredefinedHover({type: "entries", entries: []}, true);
+						const hoverMeta = Renderer.hover.getMakePredefinedHover({type: "entries", entries: []}, {isBookContent: true});
 						const doUpdateMeta = () => {
 							let name = event.name;
 							if (event.hasTime) {
@@ -1015,7 +1015,7 @@ class TimeTrackerRoot_Clock extends TimeTrackerComponent {
 					});
 
 					todayEncounters.forEach(encounter => {
-						const hoverMeta = Renderer.hover.getMakePredefinedHover({type: "entries", entries: []}, true);
+						const hoverMeta = Renderer.hover.getMakePredefinedHover({type: "entries", entries: []}, {isBookContent: true});
 						const doUpdateMeta = () => {
 							let name = encounter.displayName != null ? encounter.displayName : (encounter.name || "(Unnamed Encounter)");
 							if (encounter.hasTime) {
@@ -1673,7 +1673,7 @@ class TimeTrackerRoot_Clock_RandomWeather extends BaseComponent {
 		return new Promise(resolve => {
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: "Random Weather Configuration",
-				isLarge: true,
+				isUncappedHeight: true,
 				cbClose: (isDataEntered) => {
 					if (!isDataEntered) resolve(null);
 					else resolve(getWeather());
@@ -2213,8 +2213,8 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 				ContextUtil.doTeardownContextMenu(ctxEncounterId);
 			},
 			zIndex: TimeTrackerRoot_Calendar._Z_INDEX_MODAL,
-			isLarge: true,
-			fullHeight: true,
+			isUncappedHeight: true,
+			isHeight100: true,
 			titleSplit: $btnJumpToDay
 		});
 

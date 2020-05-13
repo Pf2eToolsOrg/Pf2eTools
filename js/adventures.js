@@ -8,7 +8,7 @@ class Adventures {
 		if (o.sortBy === "name") return byName();
 		if (o.sortBy === "storyline") return orFallback(SortUtil.ascSort, "storyline");
 		if (o.sortBy === "level") return orFallback(SortUtil.ascSort, "_startLevel");
-		if (o.sortBy === "published") return orFallback(SortUtil.ascSortDate, "_pubDate");
+		if (o.sortBy === "published") return SortUtil.ascSortDate(a._pubDate, b._pubDate) || SortUtil.ascSort(b.publishedOrder || 0, a.publishedOrder || 0) || byName();
 
 		function byName () {
 			return SortUtil.ascSort(a.name, b.name);

@@ -57,7 +57,8 @@ class PageFilterBestiary extends PageFilter {
 			header: "Challenge Rating",
 			isLabelled: true,
 			labelSortFn: SortUtil.ascSortCr,
-			labels: [...Parser.CRS]
+			labels: [...Parser.CRS, "Unknown", "\u2014"],
+			labelDisplayFn: it => it === "\u2014" ? "None" : it
 		});
 		const sizeFilter = new Filter({
 			header: "Size",
@@ -103,7 +104,7 @@ class PageFilterBestiary extends PageFilter {
 		});
 		const languageFilter = new Filter({
 			header: "Languages",
-			displayFn: (k) => Parser.monLanguageTagToFull(k),
+			displayFn: (k) => Parser.monLanguageTagToFull(k).toTitleCase(),
 			umbrellaItems: ["X", "XX"],
 			umbrellaExcludes: ["CS"]
 		});
@@ -184,7 +185,7 @@ class PageFilterBestiary extends PageFilter {
 		});
 		const miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Lair Actions", "Legendary", "Adventure NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${PageFilterBestiary.MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Swarm", "Has Variants", "Modified Copy", "Has Alternate Token", "SRD"],
+			items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Lair Actions", "Legendary", "Adventure NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${PageFilterBestiary.MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Swarm", "Has Variants", "Modified Copy", "Has Alternate Token", "Has Token", "SRD"],
 			displayFn: (it) => Parser.monMiscTagToFull(it).uppercaseFirst(),
 			deselFn: (it) => it === "Adventure NPC",
 			itemSortFn: PageFilterBestiary.ascSortMiscFilter
@@ -264,7 +265,7 @@ class PageFilterBestiary extends PageFilter {
 		mon._fCondImm = mon.conditionImmune ? PageFilterBestiary.getAllImmRest(mon.conditionImmune, "conditionImmune") : [];
 		mon._fSave = mon.save ? Object.keys(mon.save) : [];
 		mon._fSkill = mon.skill ? Object.keys(mon.skill) : [];
-		mon._fSources = ListUtil.getCompleteFilterSources(mon);
+		mon._fSources = SourceFilter.getCompleteFilterSources(mon);
 
 		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
 		if (mon.familiar) mon._fMisc.push("Familiar");
@@ -287,6 +288,7 @@ class PageFilterBestiary extends PageFilter {
 		if (mon._isCopy) mon._fMisc.push("Modified Copy");
 		if (mon.altArt) mon._fMisc.push("Has Alternate Token");
 		if (mon.srd) mon._fMisc.push("SRD");
+		if (mon.tokenUrl || mon.hasToken) mon._fMisc.push("Has Token");
 	}
 
 	addToFilters (mon, isExcluded) {
@@ -447,7 +449,7 @@ class ModalFilterBestiary extends ModalFilter {
 		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](mon);
 		const source = Parser.sourceJsonToAbv(mon.source);
 		const type = mon._pTypes.asText.uppercaseFirst();
-		const cr = mon._pCr || "\u2014";
+		const cr = mon._pCr;
 
 		eleLi.innerHTML = `<label class="lst--border unselectable">
 			<div class="lst__wrp-cells">

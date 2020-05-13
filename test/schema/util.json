@@ -4,7 +4,7 @@
 
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.0.10",
+	"version": "1.0.14",
 
 	"definitions" : {
 		"metaBlock": {
@@ -407,7 +407,7 @@
 					"patron": {
 						"type": "string",
 						"enum": [
-							"The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker", "The Kraken"
+							"The Archfey", "The Fiend", "The Great Old One", "The Hexblade", "The Raven Queen", "The Seeker"
 						]
 					},
 					"spell": {
@@ -496,6 +496,9 @@
 					"spellcasting": {
 						"type": "boolean"
 					},
+					"psionics": {
+						"type": "boolean"
+					},
 					"proficiency": {
 						"type": "array",
 						"items": {
@@ -513,7 +516,309 @@
 				},
 				"additionalProperties": false
 			}
+		},
 
+		"creatureType": {
+			"type": "string",
+			"enum": [
+				"aberration",
+				"beast",
+				"celestial",
+				"construct",
+				"dragon",
+				"elemental",
+				"fey",
+				"fiend",
+				"giant",
+				"humanoid",
+				"monstrosity",
+				"ooze",
+				"plant",
+				"undead"
+			]
+		},
+
+		"dataCondition": {
+			"type": "string",
+			"enum": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"grappled",
+				"incapacitated",
+				"invisible",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained",
+				"stunned",
+				"unconscious",
+
+				"disease"
+			]
+		},
+
+		"dataDamageType": {
+			"type": "string",
+			"enum": [
+				"acid",
+				"bludgeoning",
+				"cold",
+				"fire",
+				"force",
+				"lightning",
+				"necrotic",
+				"piercing",
+				"poison",
+				"psychic",
+				"radiant",
+				"slashing",
+				"thunder"
+			]
+		},
+
+		"damageImmunityArray": {
+			"oneOf": [
+				{
+					"type": "array",
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "#/definitions/dataDamageType"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"special": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["special"]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"preNote": {
+										"type": "string"
+									},
+									"immune": {
+										"$ref": "#/definitions/damageImmunityArray"
+									},
+									"note": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["immune"]
+							}
+						]
+					}
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+
+		"damageResistArray": {
+			"oneOf": [
+				{
+					"type": "array",
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "#/definitions/dataDamageType"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"special": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["special"]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"preNote": {
+										"type": "string"
+									},
+									"resist": {
+										"$ref": "#/definitions/damageResistArray"
+									},
+									"note": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["resist"]
+							}
+						]
+					}
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+
+		"damageVulnerabilityArray":  {
+			"oneOf": [
+				{
+					"type": "array",
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "#/definitions/dataDamageType"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"special": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["special"]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"preNote": {
+										"type": "string"
+									},
+									"vulnerable": {
+										"$ref": "#/definitions/damageVulnerabilityArray"
+									},
+									"note": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["vulnerable"]
+							}
+						]
+					}
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+
+		"conditionImmunityArray": {
+			"oneOf": [
+				{
+					"type": "array",
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "#/definitions/dataCondition"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"special": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["special"]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"preNote": {
+										"type": "string"
+									},
+									"conditionImmune": {
+										"$ref": "#/definitions/conditionImmunityArray"
+									},
+									"note": {
+										"type": "string"
+									}
+								},
+								"additionalProperties": false,
+								"required": ["conditionImmune"]
+							}
+						]
+					}
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+
+		"genericFluffArrayItemData": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				},
+				"images": {
+					"oneOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "entry.json#/definitions/entryImage"
+							}
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"entries": {
+					"entries": {
+						"type": "array",
+						"items": {
+							"$ref": "entry.json"
+						}
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+
+		"genericFluffArray": {
+			"type": "array",
+			"items": {
+				"anyOf": [
+					{
+						"type": "object",
+						"$$merge": [
+							{
+								"$ref": "#/definitions/genericFluffArrayItemData"
+							},
+							{
+								"required": ["name", "source"]
+							}
+						]
+					},
+					{
+						"type": "object",
+						"$comment": "This is a custom pre-processor tag, which merges together the array of objects into one. This allows proper inheritance, which JSON schema don't really do.",
+						"$$merge": [
+							{
+								"$ref": "#/definitions/genericFluffArrayItemData"
+							},
+							{
+								"$ref": "util.json#/definitions/copyBlock"
+							}
+						]
+					}
+				]
+			}
 		},
 
 		"tagsConditions": {
@@ -570,6 +875,7 @@
 						"mode": {"const": "prependArr"},
 						"items": {
 							"anyOf": [
+								{"type":  "string"},
 								{"type":  "object"},
 								{"type":  "array"}
 							]

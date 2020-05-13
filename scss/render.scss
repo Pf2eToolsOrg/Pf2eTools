@@ -28,6 +28,12 @@ $rgb-inset-border: #656565;
 
 .rd {
 	&__ {
+		&b {
+			p {
+				margin-bottom: 5px;
+			}
+		}
+
 		&b--0,
 		&b--1,
 		&b--2,
@@ -64,6 +70,10 @@ $rgb-inset-border: #656565;
 			}
 		}
 
+		&li {
+			margin-bottom: 5px;
+		}
+
 		&compact-stats {
 			display: flex;
 			flex-wrap: wrap;
@@ -95,7 +105,6 @@ $rgb-inset-border: #656565;
 
 		&wrp-gallery {
 			display: flex;
-			margin: 0 -5px;
 			flex-wrap: wrap;
 			justify-content: center;
 			align-items: flex-end;
@@ -142,6 +151,20 @@ $rgb-inset-border: #656565;
 			display: inline;
 		}
 
+		&image-btn-viewer {
+			font-style: initial;
+		}
+
+		// Thicker scrollbars for viewer
+		&scroller-viewer {
+			scrollbar-width: auto;
+
+			&::-webkit-scrollbar {
+				width: 15px;
+				height: 15px;
+			}
+		}
+
 		&prerequisite {
 			font-style: italic;
 			display: block;
@@ -157,8 +180,8 @@ $rgb-inset-border: #656565;
 			padding: 0;
 			list-style: none;
 
-			> li {
-				margin-bottom: 0;
+			> .rd__li {
+				margin-bottom: 3px;
 
 				> * {
 					margin: 0 0 3px;

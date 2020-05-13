@@ -3,7 +3,6 @@ require("../js/utils.js");
 require("../js/render.js");
 const utS = require("../node/util-search-index");
 const od = require("../js/omnidexer.js");
-const bu = require("../js/bookutils");
 const ut = require("../node/util.js");
 
 const TIME_TAG = "\tRun duration";
@@ -11,9 +10,9 @@ console.time(TIME_TAG);
 
 const MSG = {
 	LinkCheck: "",
-	AttachedSpellAndGroupItemsCheck: "",
-	ActionVariantCheck: "",
-	DeityExtensionCheck: "",
+	ItemDataCheck: "",
+	ActionDataCheck: "",
+	DeityDataCheck: "",
 	BraceCheck: "",
 	FilterCheck: "",
 	ScaleDiceCheck: "",
@@ -21,9 +20,10 @@ const MSG = {
 	AreaCheck: "",
 	LootCheck: "",
 	TableDiceTest: "",
-	SpellClassCheck: "",
+	SpellDataCheck: "",
 	EscapeCharacterCheck: "",
-	DuplicateEntityCheck: ""
+	DuplicateEntityCheck: "",
+	ClassDataCheck: ""
 };
 
 const TAG_TO_PAGE = {
@@ -209,66 +209,79 @@ class ClassLinkCheck {
 }
 ClassLinkCheck.RE = /{@class (.*?)(\|(.*?))?(\|(.*?))?(\|(.*?))?(\|(.*?))?(\|(.*?))?(\|(.*?))?}/g;
 
-class AttachedSpellAndGroupItemsCheck {
-	static run () {
-		function checkRoot (file, root, name, source) {
-			function checkDuplicates (prop, tag) {
-				const asUrls = root[prop].map(it => {
-					if (it.item) it = it.item;
-					if (it.special) return null;
+class ItemDataCheck {
+	static _checkArrayDuplicates (file, name, source, arr, prop, tag) {
+		const asUrls = arr
+			.map(it => {
+				if (it.item) it = it.item;
+				if (it.special) return null;
 
-					return getEncoded(it, tag);
-				}).filter(Boolean);
+				return getEncoded(it, tag);
+			})
+			.filter(Boolean);
 
-				if (asUrls.length !== new Set(asUrls).size) MSG.AttachedSpellAndGroupItemsCheck += `Duplicate ${prop} in ${file} for ${source}, ${name}: ${asUrls.filter(s => asUrls.filter(it => it === s).length > 1).join(", ")}\n`;
-			}
+		if (asUrls.length !== new Set(asUrls).size) {
+			MSG.ItemDataCheck += `Duplicate ${prop} in ${file} for ${source}, ${name}: ${asUrls.filter(s => asUrls.filter(it => it === s).length > 1).join(", ")}\n`;
+		}
+	}
 
-			function checkExists (prop, tag) {
-				root[prop].forEach(s => {
-					if (s.item) s = s.item;
-					if (s.special) return;
+	static _checkArrayItemsExist (file, name, source, arr, prop, tag) {
+		arr.forEach(s => {
+			if (s.item) s = s.item;
+			if (s.special) return;
 
-					const url = getEncoded(s, tag);
-					if (!ALL_URLS.has(url)) MSG.AttachedSpellAndGroupItemsCheck += `Missing link: ${s} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
-				})
-			}
+			const url = getEncoded(s, tag);
+			if (!ALL_URLS.has(url)) MSG.ItemDataCheck += `Missing link: ${s} in file ${file} (evaluates to "${url}") in "${prop}"\nSimilar URLs were:\n${getSimilar(url)}\n`;
+		})
+	}
 
-			if (root) {
-				if (root.attachedSpells) {
-					checkDuplicates("attachedSpells", "spell");
-					checkExists("attachedSpells", "spell");
-				}
+	static _checkRoot (file, root, name, source) {
+		if (!root) return;
 
-				if (root.items) {
-					checkDuplicates("items", "item");
-					checkExists("items", "item");
-				}
-
-				if (root.packContents) {
-					checkDuplicates("packContents", "item");
-					checkExists("packContents", "item");
-				}
-
-				if (root.baseItem) {
-					const url = `${TAG_TO_PAGE.item}#${UrlUtil.encodeForHash(root.baseItem.split("|"))}`.toLowerCase().trim()
-						.replace(/%5c/gi, "");
-					if (!ALL_URLS.has(url)) {
-						MSG.AttachedSpellAndGroupItemsCheck += `Missing link: ${root.baseItem} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
-					}
-				}
-			}
+		if (root.attachedSpells) {
+			ItemDataCheck._checkArrayDuplicates(file, name, source, root.attachedSpells, "attachedSpells", "spell");
+			ItemDataCheck._checkArrayItemsExist(file, name, source, root.attachedSpells, "attachedSpells", "spell");
 		}
 
+		if (root.items) {
+			ItemDataCheck._checkArrayDuplicates(file, name, source, root.items, "items", "item");
+			ItemDataCheck._checkArrayItemsExist(file, name, source, root.items, "items", "item");
+		}
+
+		if (root.packContents) {
+			ItemDataCheck._checkArrayDuplicates(file, name, source, root.packContents, "packContents", "item");
+			ItemDataCheck._checkArrayItemsExist(file, name, source, root.packContents, "packContents", "item");
+		}
+
+		if (root.containerCapacity && root.containerCapacity.item) {
+			root.containerCapacity.item.forEach(itemToCount => {
+				ItemDataCheck._checkArrayItemsExist(file, name, source, Object.keys(itemToCount), "containerCapacity", "item");
+			});
+		}
+
+		if (root.baseItem) {
+			const url = `${TAG_TO_PAGE.item}#${UrlUtil.encodeForHash(root.baseItem.split("|"))}`
+				.toLowerCase()
+				.trim()
+				.replace(/%5c/gi, "");
+
+			if (!ALL_URLS.has(url)) {
+				MSG.ItemDataCheck += `Missing link: ${root.baseItem} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
+			}
+		}
+	}
+
+	static run () {
 		const items = require(`../data/items.json`);
-		items.item.forEach(it => checkRoot("data/items.json", it, it.name, it.source));
-		items.itemGroup.forEach(it => checkRoot("data/items.json", it, it.name, it.source));
+		items.item.forEach(it => this._checkRoot("data/items.json", it, it.name, it.source));
+		items.itemGroup.forEach(it => this._checkRoot("data/items.json", it, it.name, it.source));
 
 		const magicVariants = require(`../data/magicvariants.json`);
-		magicVariants.variant.forEach(va => checkRoot("data/magicvariants.json", va, va.name, va.source) || (va.inherits && checkRoot("data/magicvariants.json", va.inherits, `${va.name} (inherits)`, va.source)));
+		magicVariants.variant.forEach(va => this._checkRoot("data/magicvariants.json", va, va.name, va.source) || (va.inherits && this._checkRoot("data/magicvariants.json", va.inherits, `${va.name} (inherits)`, va.source)));
 	}
 }
 
-class ActionVariantCheck {
+class ActionData {
 	static run () {
 		const file = `data/actions.json`;
 		const actions = require(`../${file}`);
@@ -276,12 +289,12 @@ class ActionVariantCheck {
 			if (!it.fromVariant) return;
 
 			const url = getEncoded(it.fromVariant, "variantrule");
-			if (!ALL_URLS.has(url)) MSG.ActionVariantCheck += `Missing link: ${it.fromVariant} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
+			if (!ALL_URLS.has(url)) MSG.ActionDataCheck += `Missing link: ${it.fromVariant} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
 		});
 	}
 }
 
-class DeityExtensionCheck {
+class DeityDataCheck {
 	static run () {
 		const file = `data/deities.json`;
 		const deities = require(`../${file}`);
@@ -289,7 +302,7 @@ class DeityExtensionCheck {
 			if (!it.customExtensionOf) return;
 
 			const url = getEncodedDeity(it.customExtensionOf, "deity");
-			if (!ALL_URLS.has(url)) MSG.DeityExtensionCheck += `Missing link: ${it.customExtensionOf} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
+			if (!ALL_URLS.has(url)) MSG.DeityDataCheck += `Missing link: ${it.customExtensionOf} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
 		});
 	}
 }
@@ -489,7 +502,7 @@ class TableDiceTest {
 
 class AreaCheck {
 	static _buildMap (file, data) {
-		AreaCheck.headerMap = bu.BookUtil.getEntryIdLookup(data, false);
+		AreaCheck.headerMap = Renderer.adventureBook.getEntryIdLookup(data, false);
 	}
 
 	static checkString (file, str) {
@@ -523,15 +536,15 @@ class AreaCheck {
 AreaCheck.errorSet = new Set();
 AreaCheck.fileMatcher = /^(adventure-).*\.json/;
 
-class LootCheck {
+class LootDataCheck {
 	static run () {
 		function handleItem (it) {
 			const toCheck = typeof it === "string" ? {name: it, source: SRC_DMG} : it;
 			const url = `${TAG_TO_PAGE["item"]}#${UrlUtil.encodeForHash([toCheck.name, toCheck.source])}`.toLowerCase().trim();
-			if (!ALL_URLS.has(url)) MSG.LootCheck += `Missing link: ${JSON.stringify(it)} in file "${LootCheck.file}" (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
+			if (!ALL_URLS.has(url)) MSG.LootCheck += `Missing link: ${JSON.stringify(it)} in file "${LootDataCheck.file}" (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
 		}
 
-		const loot = require(`../${LootCheck.file}`);
+		const loot = require(`../${LootDataCheck.file}`);
 		loot.magicitems.forEach(it => {
 			if (it.table) {
 				it.table.forEach(row => {
@@ -553,11 +566,11 @@ class LootCheck {
 		})
 	}
 }
-LootCheck.file = `data/loot.json`;
+LootDataCheck.file = `data/loot.json`;
 
-class SpellClassCheck {
+class SpellDataCheck {
 	static run () {
-		const classIndex = JSON.parse(fs.readFileSync(SpellClassCheck._FILE_CLASS_INDEX, "utf8"));
+		const classIndex = JSON.parse(fs.readFileSync(SpellDataCheck._FILE_CLASS_INDEX, "utf8"));
 		Object.values(classIndex).forEach(f => {
 			const data = JSON.parse(fs.readFileSync(`data/class/${f}`, "utf8"));
 			data.class.forEach(c => {
@@ -565,39 +578,74 @@ class SpellClassCheck {
 				if (c.subclasses) {
 					classMeta.subclasses = c.subclasses.map(sc => ({name: sc.shortName, source: sc.source}));
 				}
-				SpellClassCheck._CLASS_LIST.push(classMeta);
+				SpellDataCheck._CLASS_LIST.push(classMeta);
 			});
 		});
 
-		const spellIndex = JSON.parse(fs.readFileSync(SpellClassCheck._FILE_SPELL_INDEX, "utf8"));
+		const spellIndex = JSON.parse(fs.readFileSync(SpellDataCheck._FILE_SPELL_INDEX, "utf8"));
 		Object.values(spellIndex).forEach(f => {
 			const data = JSON.parse(fs.readFileSync(`data/spells/${f}`, "utf8"));
 			data.spell.filter(sp => sp.classes).forEach(sp => {
 				if (sp.classes.fromClassList) {
 					const invalidClasses = sp.classes.fromClassList
-						.filter(c => !SpellClassCheck._IGNORED_CLASSES.some(it => it.name === c.name && it.source === c.source))
-						.filter(c => !SpellClassCheck._CLASS_LIST.some(it => it.name === c.name && it.source === c.source));
-					invalidClasses.forEach(ic => MSG.SpellClassCheck += `Invalid class: ${JSON.stringify(ic)} in spell "${sp.name}" in file "${f}"\n`);
+						.filter(c => !SpellDataCheck._IGNORED_CLASSES.some(it => it.name === c.name && it.source === c.source))
+						.filter(c => !SpellDataCheck._CLASS_LIST.some(it => it.name === c.name && it.source === c.source));
+					invalidClasses.forEach(ic => MSG.SpellDataCheck += `Invalid class: ${JSON.stringify(ic)} in spell "${sp.name}" in file "${f}"\n`);
 				}
 
 				if (sp.classes.fromSubclass) {
 					sp.classes.fromSubclass.forEach(sc => {
-						const clazz = SpellClassCheck._CLASS_LIST.find(it => it.name === sc.class.name && it.source === sc.class.source);
-						if (!clazz) return MSG.SpellClassCheck += `Invalid subclass class: ${JSON.stringify(sc)} in spell "${sp.name}" in file "${f}"\n`;
-						if (!clazz.subclasses) return MSG.SpellClassCheck += `Subclass class has no known subclasses: ${JSON.stringify(sc)} in spell "${sp.name}" in file "${f}"\n`;
+						const clazz = SpellDataCheck._CLASS_LIST.find(it => it.name === sc.class.name && it.source === sc.class.source);
+						if (!clazz) return MSG.SpellDataCheck += `Invalid subclass class: ${JSON.stringify(sc)} in spell "${sp.name}" in file "${f}"\n`;
+						if (!clazz.subclasses) return MSG.SpellDataCheck += `Subclass class has no known subclasses: ${JSON.stringify(sc)} in spell "${sp.name}" in file "${f}"\n`;
 
 						const isValidSubclass = clazz.subclasses.some(it => it.name === sc.subclass.name && it.source === sc.subclass.source);
-						if (!isValidSubclass) return MSG.SpellClassCheck += `Subclass (shortName) does not exist: ${JSON.stringify(sc)} in spell "${sp.name}" in file "${f}"\n`;
+						if (!isValidSubclass) return MSG.SpellDataCheck += `Subclass (shortName) does not exist: ${JSON.stringify(sc)} in spell "${sp.name}" in file "${f}"\n`;
 					});
 				}
 			});
 		});
 	}
 }
-SpellClassCheck._IGNORED_CLASSES = [{name: "Psion", source: "Stream"}];
-SpellClassCheck._FILE_CLASS_INDEX = `data/class/index.json`;
-SpellClassCheck._FILE_SPELL_INDEX = `data/spells/index.json`;
-SpellClassCheck._CLASS_LIST = [];
+SpellDataCheck._IGNORED_CLASSES = [{name: "Psion", source: "Stream"}];
+SpellDataCheck._FILE_CLASS_INDEX = `data/class/index.json`;
+SpellDataCheck._FILE_SPELL_INDEX = `data/spells/index.json`;
+SpellDataCheck._CLASS_LIST = [];
+
+class ClassDataCheck {
+	static _doCheckClass (file, cls) {
+		if (cls.subclasses) cls.subclasses.forEach(sc => this._doCheckSubclass(file, cls, sc));
+	}
+
+	static _doCheckSubclass (file, cls, sc) {
+		if (sc.additionalSpells) {
+			sc.additionalSpells
+				.forEach(additionalSpellOption => {
+					Object.values(additionalSpellOption)
+						.forEach(levelToSpells => {
+							Object.values(levelToSpells).forEach(spells => {
+								spells.forEach(spell => {
+									const url = getEncoded(spell, "spell");
+
+									if (!ALL_URLS.has(url)) {
+										MSG.ClassDataCheck += `Missing link: ${url} in file ${file} (evaluates to "${url}") in "additionalSpells"\nSimilar URLs were:\n${getSimilar(url)}\n`;
+									}
+								});
+							});
+						});
+				})
+		}
+	}
+
+	static run () {
+		const index = ut.readJson("./data/class/index.json");
+		Object.values(index)
+			.map(filename => ({filename: filename, data: ut.readJson(`./data/class/${filename}`)}))
+			.forEach(({filename, data}) => {
+				data.class.forEach(cls => ClassDataCheck._doCheckClass(filename, cls));
+			});
+	}
+}
 
 class EscapeCharacterCheck {
 	static checkString (file, str) {
@@ -713,11 +761,12 @@ async function main () {
 	ParsedJsonChecker.register(DuplicateEntityCheck.checkFile.bind(DuplicateEntityCheck));
 	ParsedJsonChecker.runAll();
 
-	AttachedSpellAndGroupItemsCheck.run();
-	ActionVariantCheck.run();
-	DeityExtensionCheck.run();
-	LootCheck.run();
-	SpellClassCheck.run();
+	ItemDataCheck.run();
+	ActionData.run();
+	DeityDataCheck.run();
+	LootDataCheck.run();
+	SpellDataCheck.run();
+	ClassDataCheck.run();
 
 	let outMessage = "";
 	Object.entries(MSG).forEach(([k, v]) => {

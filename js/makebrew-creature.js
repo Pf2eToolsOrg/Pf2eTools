@@ -93,9 +93,9 @@ class CreatureBuilder extends Builder {
 			const creature = MiscUtil.copy(await Renderer.hover.pCacheAndGet(result.page, result.source, result.hash));
 
 			if (this._bestiaryFluffIndex[creature.source] && !creature.fluff) {
-				const rawFluff = await DataUtil.loadJSON(`data/bestiary/${this._bestiaryFluffIndex[creature.source]}`);
-				const fluff = Renderer.monster.getFluff(creature, rawFluff);
-				if (fluff) creature.fluff = fluff;
+				const fluff = await Renderer.monster.pGetFluff(creature);
+
+				if (fluff) creature.fluff = MiscUtil.copy(fluff);
 			}
 
 			const rawTokenUrl = await pFetchToken(creature);
@@ -106,6 +106,8 @@ class CreatureBuilder extends Builder {
 			creature.source = this._ui.source;
 			delete creature.otherSources;
 			delete creature.srd;
+			delete creature.hasToken;
+			delete creature.uniqueId;
 
 			if (Parser.crToNumber(creature.cr) !== 100) {
 				const ixDefault = Parser.CRS.indexOf(creature.cr.cr || creature.cr);
@@ -337,7 +339,7 @@ class CreatureBuilder extends Builder {
 			TagCondition.tryTagConditions(this._state, true);
 			TraitActionTag.tryRun(this._state);
 			LanguageTag.tryRun(this._state);
-			SenseTag.tryRun(this._state);
+			SenseFilterTag.tryRun(this._state);
 			SpellcastingTypeTag.tryRun(this._state);
 			DamageTypeTag.tryRun(this._state);
 			MiscTag.tryRun(this._state);
@@ -954,9 +956,8 @@ class CreatureBuilder extends Builder {
 			.click(() => {
 				const searchWidget = new SearchWidget(
 					{Item: SearchWidget.CONTENT_INDICES.Item},
-					(page, source, hash) => {
-						const [encName, encSource] = hash.split(HASH_LIST_SEP);
-						$iptFrom.val(`{@item ${decodeURIComponent(encName)}${encSource !== UrlUtil.encodeForHash(SRC_DMG) ? `|${decodeURIComponent(encSource)}` : ""}}`);
+					(doc) => {
+						$iptFrom.val(`{@item ${doc.n}${doc.s !== SRC_DMG ? `|${doc.s}` : ""}}`.toLowerCase());
 						doUpdateState();
 						doClose();
 					},
@@ -2355,7 +2356,7 @@ class CreatureBuilder extends Builder {
 										if (!data) return resolve(null);
 										resolve(data);
 									},
-									fullHeight: true
+									isHeight100: true
 								});
 
 								const $iptName = $(`<input class="form-control form-control--minimal input-xs mr-2" placeholder="Weapon">`);
@@ -2794,7 +2795,7 @@ class CreatureBuilder extends Builder {
 							url: val
 						}
 					},
-					true
+					{isBookContent: true}
 				);
 				Renderer.hover.getShowWindow(
 					$content,
@@ -2899,7 +2900,7 @@ class CreatureBuilder extends Builder {
 				const toRender = getState();
 				if (!toRender) return JqueryUtil.doToast({content: "Please enter an image URL", type: "warning"});
 
-				const $content = Renderer.hover.$getHoverContent_generic(toRender, true);
+				const $content = Renderer.hover.$getHoverContent_generic(toRender, {isBookContent: true});
 				Renderer.hover.getShowWindow(
 					$content,
 					Renderer.hover.getWindowPositionFromEvent(evt),
@@ -3025,7 +3026,7 @@ class CreatureBuilder extends Builder {
 			isImageTab: false,
 			$content: $tblInfo,
 			entity: this._state,
-			fnFluffBuilder: Renderer.monster.getFluff.bind(null, this._state)
+			pFnGetFluff: Renderer.monster.pGetFluff
 		});
 
 		// images
@@ -3034,7 +3035,7 @@ class CreatureBuilder extends Builder {
 			isImageTab: true,
 			$content: $tblImages,
 			entity: this._state,
-			fnFluffBuilder: Renderer.monster.getFluff.bind(null, this._state)
+			pFnGetFluff: Renderer.monster.pGetFluff
 		});
 
 		// data

@@ -1098,7 +1098,12 @@
 			"value": 200,
 			"entries": [
 				"A backpack can hold one cubic foot or 30 pounds of gear. You can also strap items, such as a bedroll or a coil of rope, to the outside of a backpack."
-			]
+			],
+			"containerCapacity": {
+				"weight": [
+					30
+				]
+			}
 		},
 		{
 			"name": "Backpack Parachute",
@@ -1281,6 +1286,12 @@
 				"If the bag is overloaded, pierced, or torn, it ruptures and is destroyed, and its contents are scattered in the Astral Plane. If the bag is turned inside out, its contents spill forth, unharmed, but the bag must be put right before it can be used again. Breathing creatures inside the bag can survive up to a number of minutes equal to 10 divided by the number of creatures (minimum 1 minute), after which time they begin to suffocate.",
 				"Placing a bag of holding inside an extradimensional space created by a {@item Heward's handy haversack}, {@item portable hole}, or similar item instantly destroys both items and opens a gate to the Astral Plane. The gate originates where the one item was placed inside the other. Any creature within 10 feet of the gate is sucked through it to a random location on the Astral Plane. The gate then closes. The gate is one-way only and can't be reopened."
 			],
+			"containerCapacity": {
+				"weight": [
+					500
+				],
+				"weightless": true
+			},
 			"lootTables": [
 				"Magic Item Table A",
 				"Magic Item Table B"
@@ -1952,7 +1963,12 @@
 			"value": 40,
 			"entries": [
 				"A basket holds 2 cubic feet or 40 pounds of gear."
-			]
+			],
+			"containerCapacity": {
+				"weight": [
+					40
+				]
+			}
 		},
 		{
 			"name": "Battering Shield",
@@ -2404,7 +2420,7 @@
 		{
 			"name": "Black Sap",
 			"source": "EGW",
-			"page": 0,
+			"page": 152,
 			"type": "P",
 			"rarity": "none",
 			"value": 30000,
@@ -2509,7 +2525,6 @@
 			"dmgType": "B",
 			"dmg2": "1d8",
 			"bonusWeapon": "+2",
-			"bonusWeaponAttack": "+2",
 			"bonusSpellAttack": "+2",
 			"bonusAc": "+2",
 			"bonusSavingThrow": "+2",
@@ -2592,7 +2607,7 @@
 					"type": "entries",
 					"name": "Master of Enchantment",
 					"entries": [
-						"When you cast an enchantment spell of 1st level or higher while holding the staff, you can make an Intelligence (Arcana) check with a DC of 10 + the level of the spell. If the check succeeds, you cast the spell without expending a spell slot."
+						"When you cast an enchantment spell of 1st level or higher while holding the staff, you can make an Intelligence ({@skill Arcana}) check with a DC of 10 + the level of the spell. If the check succeeds, you cast the spell without expending a spell slot."
 					]
 				},
 				{
@@ -2721,7 +2736,7 @@
 					"type": "entries",
 					"name": "Sentience",
 					"entries": [
-						"The Blade of Broken Mirrors is a sentient chaotic evil weapon with an Intelligence of 21, a Wisdom of 24, and a Charisma of 24. It has hearing and darkvision out to a range of 120 feet.",
+						"The Blade of Broken Mirrors is a sentient chaotic evil weapon with an Intelligence of 21, a Wisdom of 24, and a Charisma of 24. It has hearing and {@sense darkvision} out to a range of 120 feet.",
 						"The weapon communicates telepathically with its wielder and can speak, read, and understand Abyssal and Common."
 					]
 				},
@@ -2729,7 +2744,7 @@
 					"type": "entries",
 					"name": "Personality",
 					"entries": [
-						"An insane glabrezu named Ragazuu lives within the Blade of Broken Mirrors. The weapon yearns to cause chaos. It learns its wielder's principles, then uses those ideals to encourage reckless action. The dagger whispers ideas of revolution."
+						"An insane {@creature glabrezu} named Ragazuu lives within the Blade of Broken Mirrors. The weapon yearns to cause chaos. It learns its wielder's principles, then uses those ideals to encourage reckless action. The dagger whispers ideas of revolution."
 					]
 				},
 				{
@@ -2825,7 +2840,7 @@
 		{
 			"name": "Blasting Powder",
 			"source": "EGW",
-			"page": 0,
+			"page": 225,
 			"type": "G",
 			"rarity": "none",
 			"entries": [
@@ -2836,7 +2851,7 @@
 		{
 			"name": "Blight Ichor",
 			"source": "EGW",
-			"page": 0,
+			"page": 152,
 			"type": "P",
 			"rarity": "none",
 			"value": 20000,
@@ -3038,7 +3053,7 @@
 					"type": "entries",
 					"name": "Dragon Sight",
 					"entries": [
-						"You gain {@sense darkvision} out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain blindsight out to 30 feet for 5 minutes."
+						"You gain {@sense darkvision} out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain {@sense blindsight} out to 30 feet for 5 minutes."
 					]
 				},
 				{
@@ -4215,6 +4230,7 @@
 			"name": "Canvas (1 sq. yd.)",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"value": 10
@@ -4458,7 +4474,7 @@
 					"type": "entries",
 					"name": "Map of Shortcuts",
 					"entries": [
-						"At rank 3, your map case becomes a common magic item. In addition to storing normal maps, your cartographer's map case can be used to generate a special map identifying a shortcut. You can use your action to make a DC 15 Wisdom (Perception) check, with a success revealing a map buried in your cartographer's map case noting a relevant shortcut . Your travel time is reduced by half while you follow that route. If you succeed at the check by 5 or more, the map includes notes on the terrain, granting you advantage on the next ability check you make to travel through the mapped area in the next hour. Once you use this feature, you cannot use it again until you finish a long rest."
+						"At rank 3, your map case becomes a common magic item. In addition to storing normal maps, your cartographer's map case can be used to generate a special map identifying a shortcut. You can use your action to make a DC 15 Wisdom ({@skill Perception}) check, with a success revealing a map buried in your cartographer's map case noting a relevant shortcut . Your travel time is reduced by half while you follow that route. If you succeed at the check by 5 or more, the map includes notes on the terrain, granting you advantage on the next ability check you make to travel through the mapped area in the next hour. Once you use this feature, you cannot use it again until you finish a long rest."
 					]
 				},
 				{
@@ -4765,7 +4781,12 @@
 			"value": 500,
 			"entries": [
 				"A chest holds 12 cubic feet or 300 pounds of gear."
-			]
+			],
+			"containerCapacity": {
+				"weight": [
+					300
+				]
+			}
 		},
 		{
 			"name": "Chest of Preserving",
@@ -4782,6 +4803,7 @@
 			"name": "Chicken",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"value": 2
@@ -4862,6 +4884,7 @@
 			"name": "Cinnamon",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"weight": 1,
@@ -5055,7 +5078,7 @@
 			"reqAttune": true,
 			"wondrous": true,
 			"entries": [
-				"While you wear this cloak with its hood up, Wisdom ({@skill Perception}) checks made to see you have disadvantage. and you have advantage on Dexterity ({@skill Stealth}) checks made to hide, as the cloak's color shifts to camouflage you. Pulling the hood up or down requires an action."
+				"While you wear this cloak with its hood up, Wisdom ({@skill Perception}) checks made to see you have disadvantage, and you have advantage on Dexterity ({@skill Stealth}) checks made to hide, as the cloak's color shifts to camouflage you. Pulling the hood up or down requires an action."
 			],
 			"lootTables": [
 				"Magic Item Table F"
@@ -5194,6 +5217,7 @@
 			"name": "Cloves",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"weight": 1,
@@ -5248,7 +5272,7 @@
 					"type": "entries",
 					"name": "Craft Hidden Compartment",
 					"entries": [
-						"With 8 hours of work, you can add a hidden compartment to a pair of shoes. The compartment can hold an object up to 3 inches long and 1 inch wide and deep. You make an Intelligence check using your tool proficiency to determine the Intelligence (Investigation) check DC needed to find the compartment."
+						"With 8 hours of work, you can add a hidden compartment to a pair of shoes. The compartment can hold an object up to 3 inches long and 1 inch wide and deep. You make an Intelligence check using your tool proficiency to determine the Intelligence ({@skill Investigation}) check DC needed to find the compartment."
 					]
 				},
 				{
@@ -5284,7 +5308,7 @@
 			"wondrous": true,
 			"tattoo": true,
 			"entries": [
-				"This tattoo has long intertwining designs. While the tattoo is on your skin, you can, as an action, cause the tattoo to extrude into inky tendrils, which reach for a creature you can see within 15 feet of you. The creature must succeed on a DC 14 Strength saving throw or take {@damage 3d6} force damage and be {@condition grappled} by you. As an action, the creature can escape the grapple by succeeding on a DC 14 Strength (Athletics) or Dexterity (Acrobatics) check. The grapple also ends if you halt it (no action required), if the creature is ever more than 15 feet away from you, or if you use this tattoo on a different creature.",
+				"This tattoo has long intertwining designs. While the tattoo is on your skin, you can, as an action, cause the tattoo to extrude into inky tendrils, which reach for a creature you can see within 15 feet of you. The creature must succeed on a DC 14 Strength saving throw or take {@damage 3d6} force damage and be {@condition grappled} by you. As an action, the creature can escape the grapple by succeeding on a DC 14 Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check. The grapple also ends if you halt it (no action required), if the creature is ever more than 15 feet away from you, or if you use this tattoo on a different creature.",
 				{
 					"type": "entries",
 					"name": "Tattoo Attunement",
@@ -5518,6 +5542,7 @@
 			"name": "Copper",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"weight": 1,
@@ -5616,6 +5641,7 @@
 			"name": "Cotton Cloth (1 sq. yd.)",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"value": 50
@@ -5624,6 +5650,7 @@
 			"name": "Cow",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"value": 1000
@@ -5638,8 +5665,15 @@
 			"weight": 1,
 			"value": 100,
 			"entries": [
-				"This wooden case can hold up to twenty crossbow bolts."
-			]
+				"This wooden case can hold up to twenty {@item crossbow bolt|phb|crossbow bolts}."
+			],
+			"containerCapacity": {
+				"item": [
+					{
+						"crossbow bolt|phb": 20
+					}
+				]
+			}
 		},
 		{
 			"name": "Crowbar",
@@ -5738,7 +5772,7 @@
 			"weight": 3,
 			"entries": [
 				"This {@item crystal ball} is about 6 inches in diameter. While touching it, you can cast the {@spell scrying} spell (save DC 17) with it.",
-				"While {@spell scrying} with the {@item crystal ball}, you have truesight with a radius of 120 feet centered on the spell's sensor."
+				"While {@spell scrying} with the {@item crystal ball}, you have {@sense truesight} with a radius of 120 feet centered on the spell's sensor."
 			],
 			"attachedSpells": [
 				"scrying"
@@ -5925,7 +5959,7 @@
 			"dmg1": "1d4",
 			"dmgType": "P",
 			"entries": [
-				"This rare magic item requires attunement. A creature attuned to it gains blindsight out to a range of 30 feet. The dagger has a saw-toothed edge and a black pearl nested in its pommel."
+				"This rare magic item requires attunement. A creature attuned to it gains {@sense blindsight} out to a range of 30 feet. The dagger has a saw-toothed edge and a black pearl nested in its pommel."
 			]
 		},
 		{
@@ -6004,7 +6038,7 @@
 					"type": "entries",
 					"name": "Dormant",
 					"entries": [
-						"While wearing the goggles in their dormant state, you can see normally in darkness, both magical and nonmagical, to a distance of 60 feet. Additionally, you have advantage on Intelligence (Investigation) and Wisdom (Perception) checks that rely on sight."
+						"While wearing the goggles in their dormant state, you can see normally in darkness, both magical and nonmagical, to a distance of 60 feet. Additionally, you have advantage on Intelligence ({@skill Investigation}) and Wisdom ({@skill Perception}) checks that rely on sight."
 					]
 				},
 				{
@@ -7676,7 +7710,6 @@
 			"page": 284,
 			"rarity": "rare",
 			"wondrous": true,
-			"bonusWeaponAttack": "+5",
 			"entries": [
 				"This twelve-sided metal die is 12 inches across and bears the numbers 1 through 12 engraved on its pentagonal sides. The dodecahedron contains arcane clockwork mechanisms that whir and click whenever the die is cast.",
 				"The dodecahedron can be hurled up to 60 feet as an action. A random magical effect occurs when the die comes to rest after rolling across the ground for at least 10 feet. If an effect requires a target and no eligible target is within range, nothing happens. Spells cast by the dodecahedron require no components. Roll a {@dice d12} and consult the following table to determine the effect:",
@@ -7876,7 +7909,7 @@
 			"source": "LMoP",
 			"page": 48,
 			"type": "MA",
-			"rarity": "uncommon",
+			"rarity": "rare",
 			"weight": 20,
 			"ac": 14,
 			"bonusAc": "+1",
@@ -8282,7 +8315,6 @@
 			"dmg1": "1d4",
 			"dmgType": "S",
 			"bonusWeapon": "+2",
-			"bonusWeaponAttack": "+2",
 			"weapon": true,
 			"entries": [
 				"This long, whip-like strand of tough muscle bears a sharp stinger at one end. To attune to this symbiotic weapon, you wrap the whip around your wrist for the entire attunement period, during which time the whip painfully embeds its tendrils into your arm.",
@@ -8870,7 +8902,7 @@
 		{
 			"name": "Explosive Seed",
 			"source": "EGW",
-			"page": 0,
+			"page": 225,
 			"type": "G",
 			"rarity": "none",
 			"entries": [
@@ -8929,7 +8961,7 @@
 				{
 					"type": "list",
 					"items": [
-						"You have truesight.",
+						"You have {@sense truesight}.",
 						"You can use an action to see as if you were wearing a {@item ring of X-ray vision}. You can end this effect as a bonus action.",
 						"The eye has 8 charges. You can use an action and expend 1 or more charges to cast one of the following spells (save DC 18) from it: {@spell clairvoyance} (2 charges), {@spell crown of madness} (1 charge), {@spell disintegrate} (4 charges), {@spell dominate monster} (5 charges), or {@spell eyebite} (4 charges). The eye regains {@dice 1d4 + 4} expended charges daily at dawn. Each time you cast a spell from the eye, there is a {@chance 5} chance that Vecna tears your soul from your body, devours it, and then takes control of the body like a puppet. If that happens, you become an NPC under the DM's control."
 					]
@@ -9500,6 +9532,7 @@
 			"name": "Flour",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"weight": 1,
@@ -9601,7 +9634,7 @@
 					"type": "entries",
 					"name": "Quick Fake",
 					"entries": [
-						"As part of a short rest, you can produce a forged document no more than one page in length. As part of a long rest, you can produce a document that is up to four pages long. Your Intelligence check using a forgery kit determines the DC for someone else's Intelligence (Investigation) check to spot the fake."
+						"As part of a short rest, you can produce a forged document no more than one page in length. As part of a long rest, you can produce a document that is up to four pages long. Your Intelligence check using a forgery kit determines the DC for someone else's Intelligence ({@skill Investigation}) check to spot the fake."
 					]
 				},
 				{
@@ -9789,7 +9822,7 @@
 			"recharge": "dawn",
 			"charges": 3,
 			"entries": [
-				"This gem has 3 charges. As an action, you can speak the gem's command word and expend 1 charge. For the next 10 minutes, you have truesight out to 120 feet when you peer through the gem.",
+				"This gem has 3 charges. As an action, you can speak the gem's command word and expend 1 charge. For the next 10 minutes, you have {@sense truesight} out to 120 feet when you peer through the gem.",
 				"The gem regains {@dice 1d3} expended charges daily at dawn."
 			],
 			"lootTables": [
@@ -9850,6 +9883,7 @@
 			"name": "Ginger",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"weight": 1,
@@ -10034,6 +10068,7 @@
 			"name": "Goat",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"value": 100
@@ -10061,7 +10096,7 @@
 			"reqAttune": true,
 			"wondrous": true,
 			"entries": [
-				"These leather-framed goggles feature purple crystal lenses. While wearing the goggles, you have advantage on Intelligence (Arcana) checks made to reveal information about a creature or object you can see.",
+				"These leather-framed goggles feature purple crystal lenses. While wearing the goggles, you have advantage on Intelligence ({@skill Arcana}) checks made to reveal information about a creature or object you can see.",
 				"In addition, you can cast the {@spell identify} spell using the googles. Once you do so, you can't do so again until the next dawn."
 			],
 			"attachedSpells": [
@@ -10072,6 +10107,7 @@
 			"name": "Gold",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"weight": 1,
@@ -10389,7 +10425,7 @@
 					"type": "entries",
 					"name": "Dragon Sight",
 					"entries": [
-						"You gain {@sense darkvision} out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain blindsight out to 30 feet for 5 minutes."
+						"You gain {@sense darkvision} out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain {@sense blindsight} out to 30 feet for 5 minutes."
 					]
 				},
 				{
@@ -10520,7 +10556,7 @@
 					"type": "entries",
 					"name": "Sentience",
 					"entries": [
-						"Grovelthrash is a sentient neutral evil weapon with an Intelligence of 18, a Wisdom of 15, and a Charisma of 19. It has hearing and darkvision out to a range of 120 feet.",
+						"Grovelthrash is a sentient neutral evil weapon with an Intelligence of 18, a Wisdom of 15, and a Charisma of 19. It has hearing and {@sense darkvision} out to a range of 120 feet.",
 						"The weapon communicates telepathically with its wielder and can speak, read, and understand Abyssal, Common, and Infernal."
 					]
 				},
@@ -10528,7 +10564,7 @@
 					"type": "entries",
 					"name": "Personality",
 					"entries": [
-						"A covetous ultroloth named Ciria lives within Grovelthrash. The weapon values material possessions and doling out pain. It compliments its wielder whenever they claim treasure and takes pleasure in harming others."
+						"A covetous {@creature ultroloth} named Ciria lives within Grovelthrash. The weapon values material possessions and doling out pain. It compliments its wielder whenever they claim treasure and takes pleasure in harming others."
 					]
 				},
 				{
@@ -10541,7 +10577,7 @@
 							"items": [
 								"You can speak, read, and write Abyssal and Infernal.",
 								"You gain a +1 bonus to attack and damage rolls made with this magic weapon. When you hit with an attack using this warhammer, you can deal an extra {@damage 2d6} bludgeoning damage to the target. If you do, you take {@damage 1d6} psychic damage. The warhammer deals double damage to objects and structures.",
-								"While holding this weapon, you have advantage on Wisdom (Insight) checks made to discern a lie spoken in a language you understand."
+								"While holding this weapon, you have advantage on Wisdom ({@skill Insight}) checks made to discern a lie spoken in a language you understand."
 							]
 						}
 					]
@@ -11360,6 +11396,14 @@
 				"The haversack has a few limitations. If it is overloaded, or if a sharp object pierces it or tears it, the haversack ruptures and is destroyed. If the haversack is destroyed, its contents are lost forever, although an artifact always turns up again somewhere. If the haversack is turned inside out, its contents spill forth, unharmed, and the haversack must be put right before it can be used again. If a breathing creature is placed within the haversack, the creature can survive for up to 10 minutes, after which time it begins to suffocate.",
 				"Placing the haversack inside an extradimensional space created by a {@item bag of holding}, {@item portable hole}, or similar item instantly destroys both items and opens a gate to the Astral Plane. The gate originates where the one item was placed inside the other. Any creature within 10-feet of the gate is sucked through it and deposited in a random location on the Astral Plane. The gate then closes. The gate is one-way only and can't be reopened."
 			],
+			"containerCapacity": {
+				"weight": [
+					20,
+					20,
+					80
+				],
+				"weightless": true
+			},
 			"lootTables": [
 				"Magic Item Table C"
 			]
@@ -11392,7 +11436,18 @@
 				"A number of Kwalish's experiments were attempts to research the works of the legendary mage Heward, who first crafted what he named hireling armor. While wearing this armor, you gain a +1 bonus to AC. In addition, the armor's animated straps can assist with the drawing and sheathing of weapons, such that you can draw or stow two one-handed weapons when you would normally be able to draw or stow only one.",
 				"This armor also has six pockets, each of which is an extradimensional space. Each pocket can hold up to 20 pounds of material, not exceeding a volume of 2 cubic feet. The armor always weighs 10 pounds, regardless of its pockets' contents. Placing an object into one of the armor's pockets follows the normal rules for interacting with objects. Retrieving an item from a pocket of the armor requires you to use an action. When you reach into a pocket for a specific item, the item is always magically on top.",
 				"Placing the armor inside an extradimensional space created by a {@item bag of holding}, a {@item Heward's handy haversack}, or a similar item instantly destroys both items and opens a gate to the Astral Plane. The gate originates where the one item was placed inside the other. Any creature within 10 feet of the gate is sucked through it and deposited in a random location on the Astral Plane. The gate then closes. The gate is one-way only and can't be reopened."
-			]
+			],
+			"containerCapacity": {
+				"weight": [
+					20,
+					20,
+					20,
+					20,
+					20,
+					20
+				],
+				"weightless": true
+			}
 		},
 		{
 			"name": "Hide of the Feral Guardian",
@@ -11419,7 +11474,7 @@
 							"items": [
 								"The armor grants you a +1 bonus to AC.",
 								"While you are transformed by an effect that replaces any of your game statistics with those of another creature, you have a +1 bonus to melee attack and damage rolls, and you retain the benefits of this armor.",
-								"As an action, you can use the armor to cast {@spell polymorph} on yourself, transforming into a giant owl while retaining your Intelligence, Wisdom, and Charisma scores. This property can't be used again until the next dawn."
+								"As an action, you can use the armor to cast {@spell polymorph} on yourself, transforming into a {@creature giant owl} while retaining your Intelligence, Wisdom, and Charisma scores. This property can't be used again until the next dawn."
 							]
 						}
 					]
@@ -11434,7 +11489,7 @@
 							"items": [
 								"The AC bonus of the armor increases to +2.",
 								"While you are transformed by an effect that replaces any of your game statistics with those of another creature, your bonus to melee attack and damage rolls increases by 1 (to +2).",
-								"When you cast the {@spell polymorph} spell using this armor, you can transform into a cave bear (use the polar bear statistics)."
+								"When you cast the {@spell polymorph} spell using this armor, you can transform into a {@creature cave bear}."
 							]
 						}
 					]
@@ -11449,7 +11504,7 @@
 							"items": [
 								"The AC bonus of the armor increases to +3.",
 								"While you are transformed by an effect that replaces any of your game statistics with those of another creature, your bonus to melee attack and damage rolls increases by 1 (to +3).",
-								"When you cast the {@spell polymorph} spell using this armor, you can transform into a guardian wolf (see the accompanying stat block)."
+								"When you cast the {@spell polymorph} spell using this armor, you can transform into a {@creature guardian wolf|EGW}."
 							]
 						}
 					]
@@ -11869,8 +11924,8 @@
 						{
 							"type": "list",
 							"items": [
-								"The key can be used as thieves' tools for the purpose of opening locks. When using the key, you are considered proficient in thieves' tools and you have advantage on ability checks made to open locks.",
-								"While holding the key, your steps are muffled, giving you advantage on Dexterity (Stealth) checks made to move silently."
+								"The key can be used as {@item thieves' tools|phb} for the purpose of opening locks. When using the key, you are considered proficient in thieves' tools and you have advantage on ability checks made to open locks.",
+								"While holding the key, your steps are muffled, giving you advantage on Dexterity ({@skill Stealth}) checks made to move silently."
 							]
 						}
 					]
@@ -12017,8 +12072,7 @@
 			"page": 94,
 			"rarity": "uncommon",
 			"wondrous": true,
-			"bonusWeaponAttack": "+1",
-			"bonusWeaponDamage": "+1",
+			"bonusWeapon": "+1",
 			"entries": [
 				"The jewels in the insignia of the Cult of the Dragon flare with purple light when you enter combat, empowering your natural fists or natural weapons.",
 				"While wearing the insignia you gain a +1 bonus to the attack rolls and the damage rolls you make with unarmed strikes and natural weapons. Such attacks are considered to be magical."
@@ -12656,6 +12710,7 @@
 			"name": "Iron",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"weight": 1,
@@ -12892,7 +12947,7 @@
 							"items": [
 								"You can speak Terran fluently.",
 								"You have resistance to acid damage.",
-								"You have tremorsense out to a range of 60 feet.",
+								"You have {@sense tremorsense} out to a range of 60 feet.",
 								"You can sense the presence of precious metals and stones within 60 feet of you, but not their exact location.",
 								"You can cast {@spell dominate monster} (save DC 17) on an {@creature earth elemental}. Once you have done so, Ironfang can't be used this way again until the next dawn."
 							]
@@ -13540,7 +13595,7 @@
 					"type": "entries",
 					"name": "Sentience",
 					"entries": [
-						"The Lash of Shadows is a sentient chaotic evil weapon with an Intelligence of 18, a Wisdom of 16, and a Charisma of 20. It has hearing and darkvision out to a range of 120 feet.",
+						"The Lash of Shadows is a sentient chaotic evil weapon with an Intelligence of 18, a Wisdom of 16, and a Charisma of 20. It has hearing and {@sense darkvision} out to a range of 120 feet.",
 						"The weapon communicates telepathically with its wielder and can speak, read, and understand Abyssal, Common, and Draconic."
 					]
 				},
@@ -13548,7 +13603,7 @@
 					"type": "entries",
 					"name": "Personality",
 					"entries": [
-						"A mad marilith named Sizlifeth lives within the Lash of Shadows. The weapon has a short temper and experiences only extreme emotions. It is most happy when dealing harm."
+						"A mad {@creature marilith} named Sizlifeth lives within the Lash of Shadows. The weapon has a short temper and experiences only extreme emotions. It is most happy when dealing harm."
 					]
 				},
 				{
@@ -13561,23 +13616,25 @@
 							"items": [
 								"You can speak, read, and write Abyssal and Draconic.",
 								"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
-								"You can attempt to poison any creature that is hit by the whip. The creature must succeed on a DC 13 Constitution saving throw or suffer the effect of one of the following poisons of your choice; once a poison other than Serpent Venom has been used, that poison can't be used again until the next dawn:"
+								"You can attempt to poison any creature that is hit by the whip. The creature must succeed on a DC 13 Constitution saving throw or suffer the effect of one of the following poisons of your choice; once a poison other than Serpent Venom has been used, that poison can't be used again until the next dawn:",
+								{
+									"type": "list",
+									"style": "list-hang-notitle",
+									"items": [
+										{
+											"type": "item",
+											"name": "Dead Eyes.",
+											"entry": "A creature that fails the saving throw against this poison is {@condition poisoned} for 1 hour. While {@condition poisoned} in this way, the creature is {@condition blinded}."
+										},
+										{
+											"type": "item",
+											"name": "Serpent Venom.",
+											"entry": "A creature that fails the saving throw against this poison takes {@damage 3d6} poison damage, or half as much damage on a successful save."
+										}
+									]
+								}
 							]
 						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Dead Eyes",
-					"entries": [
-						"A creature that fails the saving throw against this poison is {@condition poisoned} for 1 hour. While {@condition poisoned} in this way, the creature is {@condition blinded}."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Serpent Venom",
-					"entries": [
-						"A creature that fails the saving throw against this poison takes {@damage 3d6} poison damage, or half as much damage on a successful save."
 					]
 				},
 				{
@@ -13672,7 +13729,7 @@
 									"type": "entries",
 									"name": "Berserk",
 									"entries": [
-										"Whenever a critical hit is made against you, roll a d6. On a 6, the armor causes you to go berserk. On each of your turns while berserk, you attack the nearest creature you can see. If no creature is near enough to move to and attack, you attack an object, with preference for an object smaller than yourself. Once the armor causes you to go berserk, it cannot be removed. You continue to attack until you are incapacitated or until another creature is able to calm you with appropriate magic (such as a calm emotions spell) or a successful DC 15 Charisma (Persuasion) check."
+										"Whenever a critical hit is made against you, roll a d6. On a 6, the armor causes you to go berserk. On each of your turns while berserk, you attack the nearest creature you can see. If no creature is near enough to move to and attack, you attack an object, with preference for an object smaller than yourself. Once the armor causes you to go berserk, it cannot be removed. You continue to attack until you are incapacitated or until another creature is able to calm you with appropriate magic (such as a calm emotions spell) or a successful DC 15 Charisma ({@skill Persuasion}) check."
 									]
 								}
 							]
@@ -13797,6 +13854,7 @@
 			"name": "Linen (1 sq. yd.)",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"value": 500
@@ -14229,7 +14287,7 @@
 					"type": "entries",
 					"name": "Sentience",
 					"entries": [
-						"The Mace of the Black Crown is a sentient lawful evil weapon with an Intelligence of 20, a Wisdom of 12, and a Charisma of 18. It has hearing and darkvision out to a range of 120 feet.",
+						"The Mace of the Black Crown is a sentient lawful evil weapon with an Intelligence of 20, a Wisdom of 12, and a Charisma of 18. It has hearing and {@sense darkvision} out to a range of 120 feet.",
 						"The weapon communicates telepathically with its wielder and can speak, read, and understand Common and Infernal."
 					]
 				},
@@ -14237,7 +14295,7 @@
 					"type": "entries",
 					"name": "Personality",
 					"entries": [
-						"A greedy erinyes named Xartaza lives within the Mace of the Black Crown. Xartaza wants to recruit more souls for Asmodeus, so the weapon pushes its wielder toward lawful evil actions by manipulating the wielder's dreams. A former Blood War general, Xartaza hates demons and relishes crafting sound battle plans in any conflict."
+						"A greedy {@creature erinyes} named Xartaza lives within the Mace of the Black Crown. Xartaza wants to recruit more souls for Asmodeus, so the weapon pushes its wielder toward lawful evil actions by manipulating the wielder's dreams. A former Blood War general, Xartaza hates demons and relishes crafting sound battle plans in any conflict."
 					]
 				},
 				{
@@ -14251,7 +14309,7 @@
 								"You can speak, read, and write Infernal.",
 								"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
 								"While holding the mace, you can use a bonus action to speak its Infernal command word, causing flames to erupt from the head. These flames shed bright light in a 40-foot radius and dim light for an additional 40 feet. While the mace is ablaze, it deals an extra {@damage 1d6} fire damage to any target it hits. The flames last until you use a bonus action to speak the command word again or until you are no longer holding the mace.",
-								"While holding the mace, you can use an action to summon an imp. Any devil you summon with this mace is friendly to you and your companions for the duration. The imp obeys any verbal commands that you issue to it and returns to the Nine Hells 10 minutes after you summoned it. This property can't be used again until the next dawn."
+								"While holding the mace, you can use an action to summon an {@creature imp}. Any devil you summon with this mace is friendly to you and your companions for the duration. The imp obeys any verbal commands that you issue to it and returns to the Nine Hells 10 minutes after you summoned it. This property can't be used again until the next dawn."
 							]
 						}
 					]
@@ -14265,7 +14323,7 @@
 							"type": "list",
 							"items": [
 								"The weapon's bonus to attack and damage rolls increases to +2, and the extra fire damage dealt by the weapon when it is ignited increases to {@dice 2d6}.",
-								"The weapon's Summon Devil feature can also be used to summon a bearded devil.",
+								"The weapon's Summon Devil feature can also be used to summon a {@creature bearded devil}.",
 								"You have resistance to poison damage while holding this weapon."
 							]
 						}
@@ -14280,7 +14338,7 @@
 							"type": "list",
 							"items": [
 								"The weapon's bonus to attack and damage rolls increases to +3, and the extra fire damage dealt by the weapon when it is ignited increases to {@dice 3d6}. Fire damage dealt by the mace ignores resistance to fire damage.",
-								"The weapon's Summon Devil feature can also be used to summon a barbed devil.",
+								"The weapon's Summon Devil feature can also be used to summon a {@creature barbed devil}.",
 								"You have resistance to fire damage while you hold this weapon."
 							]
 						}
@@ -14516,8 +14574,16 @@
 			"weight": 1,
 			"value": 100,
 			"entries": [
-				"This cylindrical leather case can hold up to ten rolled-up sheets of paper or five rolled-up sheets of parchment."
-			]
+				"This cylindrical leather case can hold up to ten rolled-up {@item paper (one sheet)|phb|sheets of paper} or five rolled-up {@item parchment (one sheet)|phb|sheets of parchment}."
+			],
+			"containerCapacity": {
+				"item": [
+					{
+						"parchment (one sheet)|phb": 5,
+						"paper (one sheet)|phb": 10
+					}
+				]
+			}
 		},
 		{
 			"name": "Marble font with gold inlay (Legion of Dusk)",
@@ -14885,7 +14951,7 @@
 			"entries": [
 				"Innovation is a dangerous pursuit, at least the way the mages of the Izzet League engage in it. As protection against the risk of an experiment going awry, they have developed a device to help channel and control their magic. This apparatus is a collection of leather straps, flexible tubing, glass cylinders, and plates, bracers, and fittings made from a magic-infused metal alloy called mizzium, all assembled into a harness. The item weighs 8 pounds.",
 				"While you are wearing the mizzium apparatus, you can use it as an arcane focus. In addition, you can attempt to cast a spell that you do not know or have prepared. The spell you choose must be on your class's spell list and of a level for which you have a spell slot, and you must provide the spell's components.",
-				"You expend a spell slot to cast the spell as normal, but before resolving it you must make an Intelligence (Arcana) check. The DC is 10 + twice the level of the spell slot you expend to cast the spell.",
+				"You expend a spell slot to cast the spell as normal, but before resolving it you must make an Intelligence ({@skill Arcana}) check. The DC is 10 + twice the level of the spell slot you expend to cast the spell.",
 				"On a successful check, you cast the spell as normal, using your spell save DC and spellcasting ability modifier. On a failed check, you cast a different spell from the one you intended. Randomly determine the spell you cast by rolling on the table for the level of the spell slot you expended. If the slot is 6th level or higher, roll on the table for 5th-level spells.",
 				"If you try to cast a cantrip you don't know, the DC for the Intelligence ({@skill Arcana}) check is 10, and on a failed check, there is no effect.",
 				{
@@ -15249,7 +15315,7 @@
 		{
 			"name": "Moorbounder",
 			"source": "EGW",
-			"page": 0,
+			"page": 132,
 			"type": "MNT",
 			"rarity": "none",
 			"value": 40000,
@@ -15293,7 +15359,7 @@
 		{
 			"name": "Muroosa Balm",
 			"source": "EGW",
-			"page": 0,
+			"page": 70,
 			"type": "P",
 			"rarity": "none",
 			"value": 10000,
@@ -15893,7 +15959,7 @@
 		{
 			"name": "Olisuba Leaf",
 			"source": "EGW",
-			"page": 0,
+			"page": 70,
 			"type": "P",
 			"rarity": "none",
 			"value": 5000,
@@ -16134,7 +16200,7 @@
 					"type": "list",
 					"items": [
 						"Your Wisdom score increases by 2, as does your maximum for that score.",
-						"You gain darkvision out to a range of 60 feet. If you already have darkvision, the orb increases its range by 60 feet.",
+						"You gain {@sense darkvision} out to a range of 60 feet. If you already have {@sense darkvision}, the orb increases its range by 60 feet.",
 						"You have advantage on Wisdom checks to find hidden doors and paths."
 					]
 				},
@@ -16350,6 +16416,7 @@
 			"name": "Ox",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"value": 1500
@@ -16495,10 +16562,7 @@
 			"srd": true,
 			"type": "G",
 			"rarity": "none",
-			"value": 20,
-			"entries": [
-				"Paper (one sheet)"
-			]
+			"value": 20
 		},
 		{
 			"name": "Paper Bird",
@@ -16526,10 +16590,7 @@
 			"srd": true,
 			"type": "G",
 			"rarity": "none",
-			"value": 10,
-			"entries": [
-				"Parchment (one sheet)"
-			]
+			"value": 10
 		},
 		{
 			"name": "Pariah's Shield",
@@ -16675,6 +16736,7 @@
 			"name": "Pepper",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"weight": 1,
@@ -16834,6 +16896,7 @@
 			"name": "Pig",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"value": 300
@@ -17015,6 +17078,7 @@
 			"name": "Platinum",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"weight": 1,
@@ -18090,8 +18154,19 @@
 			"weight": 1,
 			"value": 50,
 			"entries": [
-				"A cloth or leather pouch can hold up to 20 sling bullets or 50 blowgun needles, among other things. A compartmentalized pouch for holding spell components is called a component pouch. A pouch can hold up to ⅕ cubic foot or 6 pounds of gear."
-			]
+				"A cloth or leather pouch can hold up to 20 {@item sling bullet|phb|sling bullets} or 50 {@item blowgun needle|phb|blowgun needles}, among other things. A compartmentalized pouch for holding spell components is called a {@item component pouch|phb}. A pouch can hold up to ⅕ cubic foot or 6 pounds of gear."
+			],
+			"containerCapacity": {
+				"weight": [
+					6
+				],
+				"item": [
+					{
+						"sling bullet|phb": 20,
+						"blowgun needle|phb": 50
+					}
+				]
+			}
 		},
 		{
 			"name": "Powered Armor",
@@ -18126,7 +18201,7 @@
 					"items": [
 						"Emit a force field to gain {@dice 2d6 + 5} temporary hit points (1 charge or 5 hit points).",
 						"Activate boosters to gain a flying speed of 15 feet for 1 minute (1 charge or 5 hit points).",
-						"Fire arm-mounted laser: {@atk rw} {@hit 8} to hit, range 120 feet, one target. {@h}{@dice 2d6} radiant damage (1 charge or 5 hit points).",
+						"Fire arm-mounted laser: {@atk rw} {@hit 8} to hit, range 120 feet, one target. {@h}{@damage 2d6} radiant damage (1 charge or 5 hit points).",
 						"Translate any writing you can see in any nonmagical language, to a total of one thousand words over 1 minute (1 charge or 5 hit points).",
 						"Fill the armor with air, allowing you to breathe normally in any environment for up to 1 hour (1 charge or 5 hit points).",
 						"Gain {@sense darkvision} to a range of 60 feet for up to 1 hour (1 charge or 5 hit points)."
@@ -18184,7 +18259,7 @@
 		{
 			"name": "Pride Silk",
 			"source": "EGW",
-			"page": 0,
+			"page": 103,
 			"type": "G",
 			"rarity": "none",
 			"weight": 1,
@@ -18196,11 +18271,11 @@
 		{
 			"name": "Pride Silk Outfit",
 			"source": "EGW",
-			"page": 0,
-			"type": "LA",
+			"page": 103,
+			"type": "G",
 			"rarity": "none",
-			"weight": 5,
-			"value": 10000,
+			"weight": 4,
+			"value": 50000,
 			"entries": [
 				"An outfit made of pride silk weighs 4 pounds and costs 500 gp. If you aren't wearing armor, your base Armor Class is 11 + your Dexterity modifier while wearing it."
 			]
@@ -18467,8 +18542,15 @@
 			"weight": 1,
 			"value": 100,
 			"entries": [
-				"A quiver can hold up to 20 arrows."
-			]
+				"A quiver can hold up to 20 {@item arrow|phb|arrows}."
+			],
+			"containerCapacity": {
+				"item": [
+					{
+						"arrow|phb": 20
+					}
+				]
+			}
 		},
 		{
 			"name": "Quiver of Ehlonna",
@@ -18483,6 +18565,22 @@
 				"Each of the quiver's three compartments connects to an extradimensional space that allows the quiver to hold numerous items while never weighing more than 2 pounds. The shortest compartment can hold up to sixty {@item arrow|phb|arrows}, {@item crossbow bolt|phb|bolts}, or similar objects. The midsize compartment holds up to eighteen {@item javelin|phb|javelins} or similar objects. The longest compartment holds up to six long objects, such as bows, {@item quarterstaff|phb|quarterstaffs}, or {@item spear|phb|spears}.",
 				"You can draw any item the quiver contains as if doing so from a regular quiver or scabbard."
 			],
+			"containerCapacity": {
+				"item": [
+					{
+						"crossbow bolt|phb": 60,
+						"arrow|phb": 60
+					},
+					{
+						"javelin|phb": 18
+					},
+					{
+						"quarterstaff|phb": 6,
+						"spear|phb": 6
+					}
+				],
+				"weightless": true
+			},
 			"lootTables": [
 				"Magic Item Table F"
 			]
@@ -18616,7 +18714,7 @@
 					"type": "entries",
 					"name": "Dragon Sight",
 					"entries": [
-						"You gain {@sense darkvision} out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain blindsight out to 30 feet for 5 minutes."
+						"You gain {@sense darkvision} out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain {@sense blindsight} out to 30 feet for 5 minutes."
 					]
 				},
 				{
@@ -18701,7 +18799,6 @@
 			"dmg1": "1d4+1",
 			"dmgType": "P",
 			"bonusWeapon": "+1",
-			"bonusWeaponAttack": "+1",
 			"entries": [
 				"You have a +1 bonus to attack and damage rolls made with this weapon, which doesn't make noise when it hits or cuts something.",
 				"The name \"Reszur\" is graven on the dagger's pommel. If the wielder speaks the name, the blade gives off a faint, cold glow, shedding dim light in a 10-foot radius until the wielder speaks the name again."
@@ -19325,7 +19422,7 @@
 			"rarity": "uncommon",
 			"reqAttune": true,
 			"entries": [
-				"While wearing this ring, you have advantage on Wisdom (Insight) checks to determine whether someone is lying to you."
+				"While wearing this ring, you have advantage on Wisdom ({@skill Insight}) checks to determine whether someone is lying to you."
 			]
 		},
 		{
@@ -19923,7 +20020,6 @@
 			"rarity": "uncommon",
 			"reqAttune": "by a warlock",
 			"weight": 2,
-			"bonusWeaponAttack": "+1",
 			"bonusSpellAttack": "+1",
 			"entries": [
 				"While holding this rod, you gain a +1 bonus to spell attack rolls and to the saving throw DCs of your warlock spells.",
@@ -19942,7 +20038,6 @@
 			"rarity": "rare",
 			"reqAttune": "by a warlock",
 			"weight": 2,
-			"bonusWeaponAttack": "+2",
 			"bonusSpellAttack": "+2",
 			"entries": [
 				"While holding this rod, you gain a +2 bonus to spell attack rolls and to the saving throw DCs of your warlock spells.",
@@ -19961,7 +20056,6 @@
 			"rarity": "very rare",
 			"reqAttune": "by a warlock",
 			"weight": 2,
-			"bonusWeaponAttack": "+3",
 			"bonusSpellAttack": "+3",
 			"entries": [
 				"While holding this rod, you gain a +3 bonus to spell attack rolls and to the saving throw DCs of your warlock spells.",
@@ -20130,7 +20224,6 @@
 			"dmgType": "P",
 			"dmg2": "1d8",
 			"bonusWeapon": "+1",
-			"bonusWeaponAttack": "+1",
 			"weapon": true,
 			"entries": [
 				"This spear is made from the ivory bone of an ancient gold dragon and carved with an Orc hymn to Gruumsh.",
@@ -20138,7 +20231,7 @@
 					"type": "entries",
 					"name": "Sentience",
 					"entries": [
-						"Ruin's Wake is a sentient chaotic evil weapon with an Intelligence of 20, a Wisdom of 16, and a Charisma of 22. It has hearing and darkvision out to a range of 120 feet.",
+						"Ruin's Wake is a sentient chaotic evil weapon with an Intelligence of 20, a Wisdom of 16, and a Charisma of 22. It has hearing and {@sense darkvision} out to a range of 120 feet.",
 						"The weapon communicates telepathically with its wielder and can speak, read, and understand Abyssal, Common, and Orc."
 					]
 				},
@@ -20146,7 +20239,7 @@
 					"type": "entries",
 					"name": "Personality",
 					"entries": [
-						"A slaughter-loving balor named Yarrowish lives within Ruin's Wake. The weapon desires only to draw blood and pushes its wielder to solve problems with violence."
+						"A slaughter-loving {@creature balor} named Yarrowish lives within Ruin's Wake. The weapon desires only to draw blood and pushes its wielder to solve problems with violence."
 					]
 				},
 				{
@@ -20305,7 +20398,12 @@
 			"value": 1,
 			"entries": [
 				"A sack can hold up to 1 cubic foot or 30 pounds of gear."
-			]
+			],
+			"containerCapacity": {
+				"weight": [
+					30
+				]
+			}
 		},
 		{
 			"name": "Saddle of the Cavalier",
@@ -20335,6 +20433,7 @@
 			"name": "Saffron",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"weight": 1,
@@ -20379,6 +20478,7 @@
 			"name": "Salt",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"weight": 1,
@@ -20750,7 +20850,7 @@
 					"type": "entries",
 					"name": "Rumor Mill",
 					"entries": [
-						"Also at rank 2, whenever your franchise begins a major quest or mission, make a DC 15 Intelligence (History) check. On a success, you can learn up to three rumors related to creatures or organizations involved in the mission, which come to you through your sending stone. These rumors reflect current or historical knowledge possessed by Acquisitions Incorporated or the organization's many contacts."
+						"Also at rank 2, whenever your franchise begins a major quest or mission, make a DC 15 Intelligence ({@skill History}) check. On a success, you can learn up to three rumors related to creatures or organizations involved in the mission, which come to you through your sending stone. These rumors reflect current or historical knowledge possessed by Acquisitions Incorporated or the organization's many contacts."
 					]
 				},
 				{
@@ -20818,7 +20918,7 @@
 			"wondrous": true,
 			"tattoo": true,
 			"entries": [
-				"This tattoo is dark in color and abstract. While it's on your skin, you have advantage on Dexterity (Stealth) checks.",
+				"This tattoo is dark in color and abstract. While it's on your skin, you have advantage on Dexterity ({@skill Stealth}) checks.",
 				{
 					"type": "entries",
 					"name": "Shadowy Defense",
@@ -20967,6 +21067,7 @@
 			"name": "Sheep",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"value": 200
@@ -21171,6 +21272,7 @@
 			"name": "Silk (1 sq. yd.)",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"value": 1000
@@ -21222,7 +21324,7 @@
 					"type": "entries",
 					"name": "Sentience",
 					"entries": [
-						"Silken Spite is a sentient chaotic evil weapon with an Intelligence of 13, a Wisdom of 15, and a Charisma of 15. It has hearing and darkvision out to a range of 120 feet.",
+						"Silken Spite is a sentient chaotic evil weapon with an Intelligence of 13, a Wisdom of 15, and a Charisma of 15. It has hearing and {@sense darkvision} out to a range of 120 feet.",
 						"The weapon communicates telepathically with its wielder and can speak, read, and understand Abyssal, Common, Elvish, and Undercommon."
 					]
 				},
@@ -21230,7 +21332,7 @@
 					"type": "entries",
 					"name": "Personality",
 					"entries": [
-						"A murderous yochlol named Sinnafex lives within Silken Spite. The weapon speaks in whispers, pushing its wielder to trust no one and to kill those who cause the slightest personal offense."
+						"A murderous {@creature yochlol} named Sinnafex lives within Silken Spite. The weapon speaks in whispers, pushing its wielder to trust no one and to kill those who cause the slightest personal offense."
 					]
 				},
 				{
@@ -21242,7 +21344,7 @@
 							"type": "list",
 							"items": [
 								"You can speak, read, and write Abyssal, Elvish, and Undercommon.",
-								"You have darkvision out to a range of 60 feet. If you already have darkvision, being attuned to the rapier increases the range of your darkvision by 60 feet.",
+								"You have {@sense darkvision} out to a range of 60 feet. If you already have {@sense darkvision}, being attuned to the rapier increases the range of your {@sense darkvision} by 60 feet.",
 								"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
 								"You can use an action to cause poison to coat the rapier's blade. The poison remains for 1 minute or until an attack using this weapon hits a creature. That creature must succeed on a DC 13 Constitution saving throw or become {@condition poisoned} for 1 hour. If the saving throw fails by 5 or more, the creature is also {@condition unconscious} while {@condition poisoned} in this way. The creature wakes up if it takes damage or if another creature uses its action to shake the creature awake.",
 								"While carrying the rapier, you can move up, down, and across vertical surfaces and upside down along ceilings, while leaving your hands free. You have a climbing speed equal to your walking speed. Additionally, you can't be caught in webs of any sort and can move through webs as if they were difficult terrain."
@@ -21275,7 +21377,7 @@
 							"items": [
 								"The weapon's bonus to attack and damage rolls increases to +3.",
 								"The saving throw DC for the weapon's poison and spells cast from the weapon increases to 17.",
-								"Magical darkness doesn't impede your darkvision.",
+								"Magical darkness doesn't impede your {@sense darkvision}.",
 								"While holding the weapon in dim light or darkness, you can use a bonus action to teleport up to 60 feet to an unoccupied space you can see that is also in dim light or darkness. This property can't be used again until the next dawn."
 							]
 						}
@@ -21300,6 +21402,7 @@
 			"name": "Silver",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"weight": 1,
@@ -21480,7 +21583,6 @@
 			"dmgType": "B",
 			"dmg2": "1d8",
 			"bonusWeapon": "+1",
-			"bonusWeaponAttack": "+1",
 			"bonusSpellAttack": "+1",
 			"staff": true,
 			"entries": [
@@ -21491,7 +21593,7 @@
 		{
 			"name": "Skyship",
 			"source": "EGW",
-			"page": 0,
+			"page": 72,
 			"type": "AIR",
 			"rarity": "none",
 			"value": 10000000,
@@ -21691,7 +21793,7 @@
 		{
 			"name": "Soothsalts",
 			"source": "EGW",
-			"page": 0,
+			"page": 152,
 			"type": "P",
 			"rarity": "none",
 			"value": 15000,
@@ -22762,7 +22864,6 @@
 			"dmgType": "B",
 			"dmg2": "1d8",
 			"bonusWeapon": "+2",
-			"bonusWeaponAttack": "+2",
 			"bonusSpellAttack": "+2",
 			"bonusAc": "+2",
 			"bonusSavingThrow": "+2",
@@ -22947,7 +23048,6 @@
 			"dmgType": "B",
 			"dmg2": "1d8",
 			"bonusWeapon": "+3",
-			"bonusWeaponAttack": "+3",
 			"recharge": "dawn",
 			"charges": 7,
 			"staff": true,
@@ -23006,7 +23106,6 @@
 			"dmg1": "1d6",
 			"dmgType": "B",
 			"dmg2": "1d8",
-			"bonusWeaponAttack": "+1",
 			"bonusSpellAttack": "+1",
 			"staff": true,
 			"entries": [
@@ -23030,7 +23129,6 @@
 			"dmgType": "B",
 			"dmg2": "1d8",
 			"bonusWeapon": "+2",
-			"bonusWeaponAttack": "+2",
 			"bonusSpellAttack": "+2",
 			"recharge": "dawn",
 			"charges": 50,
@@ -23155,7 +23253,6 @@
 			"dmgType": "B",
 			"dmg2": "1d8",
 			"bonusWeapon": "+2",
-			"bonusWeaponAttack": "+2",
 			"bonusSpellAttack": "+2",
 			"recharge": "dawn",
 			"charges": 10,
@@ -24291,7 +24388,6 @@
 			"reqAttune": "by a creature of good alignment",
 			"wondrous": true,
 			"weight": 1,
-			"bonusWeaponAttack": "+2",
 			"bonusSpellAttack": "+2",
 			"charges": 7,
 			"entries": [
@@ -24330,7 +24426,6 @@
 			"reqAttune": "by a creature of evil alignment",
 			"wondrous": true,
 			"weight": 1,
-			"bonusWeaponAttack": "+2",
 			"bonusSpellAttack": "+2",
 			"charges": 6,
 			"entries": [
@@ -24351,7 +24446,7 @@
 			"reqAttune": true,
 			"wondrous": true,
 			"entries": [
-				"While this stuffed doll is within 5 feet of you, you can spend a short rest telling it to say up to six phrases, none of which can be more than six words long, and set a condition under which the doll speaks each phrase. You can also replace old phrases with new ones. Whatever the condition, it must occur within 5 feet of the doll to make it speak. For example, whenever someone picks up the doll, it might say, \"I want a piece of candy.\" The doll's phrases are lost when your attunement to the doll ends."
+				"While this stuffed doll is within 5 feet of you, you can spend a short rest telling it to say up to six phrases, none of which can be more than six words long, and set an observable condition under which the doll speaks each phrase. You can also replace old phrases with new ones. Whatever the condition, it must occur within 5 feet of the doll to make it speak. For example, whenever someone picks up the doll, it might say, \"I want a piece of candy.\" The doll's phrases are lost when your attunement to the doll ends."
 			]
 		},
 		{
@@ -24531,7 +24626,7 @@
 					"type": "entries",
 					"name": "Sentience",
 					"entries": [
-						"The Bloody End is a sentient lawful evil weapon with an Intelligence of 22, a Wisdom of 18, and a Charisma of 24. It has hearing and darkvision out to a range of 120 feet.",
+						"The Bloody End is a sentient lawful evil weapon with an Intelligence of 22, a Wisdom of 18, and a Charisma of 24. It has hearing and {@sense darkvision} out to a range of 120 feet.",
 						"The weapon communicates telepathically with its wielder and can speak, read, and understand Common and Infernal."
 					]
 				},
@@ -24539,7 +24634,7 @@
 					"type": "entries",
 					"name": "Personality",
 					"entries": [
-						"A tyrannical pit fiend named Izeelzee lives within The Bloody End. The weapon boisterously pushes its wielder to subjugate others and to never back down from a challenge. If the wielder doesn't demand fealty from others, the weapon is happy to demand it on their behalf."
+						"A tyrannical {@creature pit fiend} named Izeelzee lives within The Bloody End. The weapon boisterously pushes its wielder to subjugate others and to never back down from a challenge. If the wielder doesn't demand fealty from others, the weapon is happy to demand it on their behalf."
 					]
 				},
 				{
@@ -24553,7 +24648,7 @@
 								"You can speak, read, and write Infernal.",
 								"You gain a +1 bonus to attack and damage rolls made with this magic weapon.",
 								"While holding the morningstar, you can use an action to cast one of the following spells from it (save DC 13): {@spell charm person}, {@spell dominate person}, or {@spell fear}. Once a spell has been cast using the morningstar, that spell can't be cast from it again until the next dawn.",
-								"While holding the morningstar, you have advantage on Charisma (Intimidation) checks."
+								"While holding the morningstar, you have advantage on Charisma ({@skill Intimidation}) checks."
 							]
 						}
 					]
@@ -25220,7 +25315,7 @@
 		{
 			"name": "Theki Root",
 			"source": "EGW",
-			"page": 0,
+			"page": 70,
 			"type": "P",
 			"rarity": "none",
 			"value": 300,
@@ -27391,8 +27486,8 @@
 						{
 							"type": "list",
 							"items": [
-								"You have advantage on Wisdom (Perception) checks that rely on smell, you are immune to disease, and you have darkvision out to a range of 60 feet. If you already have darkvision, wearing the cloak increases the range of your darkvision by 60 feet.",
-								"As an action, you can use the Verminshroud to cast {@spell polymorph} on yourself, transforming into a giant rat or rat while retaining your Intelligence, Wisdom, and Charisma scores, as well as the properties of the cloak. This property can't be used again until the next dawn."
+								"You have advantage on Wisdom ({@skill Perception}) checks that rely on smell, you are immune to disease, and you have {@sense darkvision} out to a range of 60 feet. If you already have {@sense darkvision}, wearing the cloak increases the range of your {@sense darkvision} by 60 feet.",
+								"As an action, you can use the Verminshroud to cast {@spell polymorph} on yourself, transforming into a {@creature giant rat} or {@creature rat} while retaining your Intelligence, Wisdom, and Charisma scores, as well as the properties of the cloak. This property can't be used again until the next dawn."
 							]
 						}
 					]
@@ -27407,7 +27502,7 @@
 							"items": [
 								"You have resistance to poison damage.",
 								"You can use an action to cast the {@spell insect plague} spell (save DC 15) from the Verminshroud, requiring no material components. This property can't be used again until the next dawn.",
-								"When you cast the {@spell polymorph} spell using the Verminshroud, you can transform into a giant wasp."
+								"When you cast the {@spell polymorph} spell using the Verminshroud, you can transform into a {@creature giant wasp}."
 							]
 						}
 					]
@@ -27422,7 +27517,7 @@
 							"items": [
 								"You gain a climbing speed equal to your walking speed.",
 								"Your teeth become razor-sharp natural weapons, which you can use to make unarmed strikes. If you hit with them, you deal piercing damage equal to {@dice 1d6} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike. You can make this attack as a bonus action. When you bite a creature and deal damage to it, the creature must succeed on a DC 17 Constitution saving throw or be {@condition poisoned} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the condition on itself on a success.",
-								"When you cast the {@spell polymorph} spell using the Verminshroud, you can transform into a giant scorpion."
+								"When you cast the {@spell polymorph} spell using the Verminshroud, you can transform into a {@creature giant scorpion}."
 							]
 						}
 					]
@@ -27518,7 +27613,6 @@
 			"dmgType": "B",
 			"dmg2": "1d8",
 			"bonusWeapon": "+1",
-			"bonusWeaponAttack": "+1",
 			"bonusSpellAttack": "+1",
 			"recharge": "dawn",
 			"charges": 10,
@@ -27960,7 +28054,6 @@
 			"rarity": "uncommon",
 			"reqAttune": "by a spellcaster",
 			"weight": 1,
-			"bonusWeaponAttack": "+1",
 			"bonusSpellAttack": "+1",
 			"entries": [
 				"While you are holding this wand, you gain a +1 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
@@ -27979,7 +28072,6 @@
 			"rarity": "rare",
 			"reqAttune": "by a spellcaster",
 			"weight": 1,
-			"bonusWeaponAttack": "+2",
 			"bonusSpellAttack": "+2",
 			"entries": [
 				"While you are holding this wand, you gain a +2 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
@@ -27998,7 +28090,6 @@
 			"rarity": "very rare",
 			"reqAttune": "by a spellcaster",
 			"weight": 1,
-			"bonusWeaponAttack": "+3",
 			"bonusSpellAttack": "+3",
 			"entries": [
 				"While you are holding this wand, you gain a +3 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
@@ -28053,7 +28144,6 @@
 			"type": "WD",
 			"rarity": "rare",
 			"reqAttune": true,
-			"bonusWeaponAttack": "+5",
 			"recharge": "dawn",
 			"charges": 7,
 			"entries": [
@@ -28476,6 +28566,7 @@
 			"name": "Wheat",
 			"source": "PHB",
 			"page": 157,
+			"srd": true,
 			"type": "TG",
 			"rarity": "none",
 			"weight": 1,
@@ -28744,7 +28835,7 @@
 					"type": "entries",
 					"name": "Dragon Sight",
 					"entries": [
-						"You gain {@sense darkvision} out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain blindsight out to 30 feet for 5 minutes."
+						"You gain {@sense darkvision} out to 60 feet, or to an additional 60 feet if you already have that sense. Once per day, you can gain {@sense blindsight} out to 30 feet for 5 minutes."
 					]
 				},
 				{
@@ -28823,7 +28914,7 @@
 					"type": "entries",
 					"name": "Sentience",
 					"entries": [
-						"Will of the Talon is a sentient lawful evil weapon with an Intelligence of 14, a Wisdom of 15, and a Charisma of 19. It has hearing and darkvision out to a range of 120 feet.",
+						"Will of the Talon is a sentient lawful evil weapon with an Intelligence of 14, a Wisdom of 15, and a Charisma of 19. It has hearing and {@sense darkvision} out to a range of 120 feet.",
 						"The weapon communicates telepathically with its wielder and can speak, read, and understand Common, Draconic, and Infernal."
 					]
 				},
@@ -28831,7 +28922,7 @@
 					"type": "entries",
 					"name": "Personality",
 					"entries": [
-						"A short-tempered bone devil named Ashtyrlon lives within Will of the Talon. The weapon is greedy and values strong leadership. It demands that its wielder take decisive action to keep order in high-pressure situations\u2014and to always take a fair share of treasure in return."
+						"A short-tempered {@creature bone devil} named Ashtyrlon lives within Will of the Talon. The weapon is greedy and values strong leadership. It demands that its wielder take decisive action to keep order in high-pressure situations\u2014and to always take a fair share of treasure in return."
 					]
 				},
 				{
@@ -28935,10 +29026,10 @@
 		{
 			"name": "Willowshade Oil",
 			"source": "EGW",
-			"page": 0,
+			"page": 70,
 			"type": "P",
 			"rarity": "none",
-			"value": 30,
+			"value": 3000,
 			"entries": [
 				"A dark blue oil can be extracted from the rare fruit of the willowshade plant. A creature can use its action to apply the oil to another creature that has been {@condition petrified} for less than 1 minute, causing the {@condition petrified} condition on that creature to end at the start of what would be that creature's next turn."
 			]
@@ -29192,7 +29283,7 @@
 					"type": "entries",
 					"name": "Dormant",
 					"entries": [
-						"While wearing the wreath in its dormant state, you have darkvision out to a range of 60 feet. If you already have darkvision, wearing the wreath increases the range of your darkvision by 60 feet.",
+						"While wearing the wreath in its dormant state, you have {@sense darkvision} out to a range of 60 feet. If you already have {@sense darkvision}, wearing the wreath increases the range of your {@sense darkvision} by 60 feet.",
 						"When you hit a beast, dragon, or monstrosity of challenge rating 5 or lower with an attack, or when you grapple it, you can use the wreath to cast {@spell dominate monster} on the creature (save DC 13). On a successful save, the target is immune to the power of the wreath for 24 hours. On a failure, a shimmering, golden image of the wreath appears as a collar around the target's neck or as a crown on its head (your choice) until it is no longer {@condition charmed} by the spell. If you use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was {@condition charmed} by you."
 					]
 				},

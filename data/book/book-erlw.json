@@ -2287,7 +2287,7 @@
 							"page": 40,
 							"id": "0dd",
 							"entries": [
-								"See the {@race Half-Elf (Mark of Detection)|ERLW} entry."
+								"See the {@race Half-Elf (Variant; Mark of Detection)|ERLW} entry."
 							]
 						}
 					]
@@ -2843,7 +2843,7 @@
 							"page": 50,
 							"id": "133",
 							"entries": [
-								"See the {@race Half-Elf (Mark of Storm)|ERLW} entry."
+								"See the {@race Half-Elf (Variant; Mark of Storm)|ERLW} entry."
 							]
 						}
 					]
@@ -20035,6 +20035,54 @@
 							]
 						}
 					]
+				},
+				{
+					"type": "section",
+					"name": "Living Spells",
+					"entries": [
+						"Of all the anomalies that emerged from the magical cataclysm that created the Mournland, the appearance of living spells might be the most mysterious. In some unknown fashion, the magical energy unleashed during the Last War caused spell effects to take on sentience. A living spell appears much like a normal spell effect, except that its magical energy endures indefinitely.",
+						"Living spells haunt the Mournland and other areas blasted by the Last War, somehow subsisting on ambient magical energy as they writhe and across the landscape. Though they have no need for sustenance, they attack any creatures they come into contact with, lashing out indiscriminately with their corrupted magic.",
+						{
+							"type": "entries",
+							"name": "Customizing a Living Spell",
+							"entries": [
+								"Living spells come in many varieties; the stat blocks here are three examples. Living spells most often manifest from evocation and conjuration spells. To make a living spell from a different spell, choose a damage-dealing evocation or conjuration spell from the wizard spell list of up to 5th level. Then consult the Living Spell Customization table to see which stat block to customize, based on the chosen spell's level.",
+								{
+									"type": "table",
+									"caption": "Living Spell Customization",
+									"colLabels": [
+										"Spell Level",
+										"Stat Block to Customize"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-10"
+									],
+									"rows": [
+										[
+											"1\u20132",
+											"Living burning hands"
+										],
+										[
+											"3\u20134",
+											"Living lightning bolt"
+										],
+										[
+											"5",
+											"Living cloudkill"
+										]
+									]
+								},
+								"Now make the following changes to that stat block:",
+								"{@b Damage Immunity}. Replace the living spell's damage immunity with immunity to the type (or types) of damage dealt by the chosen spell.",
+								"{@b Magical Strike}. Replace the damage that Magical Strike deals with one type of damage dealt by the chosen spell.",
+								"{@b Spell Mimicry}. Replace the effect of Spell Mimicry with the effect of the chosen spell. If that spell requires a saving throw, use spell save DC from the replaced spell, and if the spell involves an attack roll, use the attack bonus from the living spell's Magical Strike.",
+								"For example, if you turn {@spell fireball} (a 3rd-level spell) into a living spell, customize the {@creature living lightning bolt|ERLW}. The living fireball has immunity to fire damage, instead of lightning damage; deals fire damage with its Magical Strike; and replicates {@spell fireball} with Spell Mimicry."
+							],
+							"id": "02d"
+						}
+					],
+					"id": "02c"
 				}
 			]
 		}

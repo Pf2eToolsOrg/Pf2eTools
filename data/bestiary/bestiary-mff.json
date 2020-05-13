@@ -53,8 +53,7 @@
 				{
 					"name": "Keen Smell",
 					"entries": [
-						"The assassin bug has advantage on Wisdom",
-						"(Perception) checks that rely on smell."
+						"The assassin bug has advantage on Wisdom (Perception) checks that rely on smell."
 					]
 				}
 			],
@@ -79,6 +78,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Keen Senses"
 			],
@@ -161,7 +161,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee weapon attack: {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@damage 1d6 + 2}) piercing damage."
+						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. Hit: 5 ({@damage 1d6 + 2}) piercing damage."
 					]
 				},
 				{
@@ -171,6 +171,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"languageTags": [
 				"U"
 			],
@@ -179,7 +180,8 @@
 				"R"
 			],
 			"miscTags": [
-				"AOE"
+				"AOE",
+				"MW"
 			],
 			"conditionInflict": [
 				"blinded"
@@ -244,6 +246,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -342,6 +345,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Keen Senses"
 			],
@@ -491,6 +495,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Turn Immunity"
 			],
@@ -622,6 +627,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Keen Senses"
 			],
@@ -732,13 +738,13 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee weapon attack: {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
 					]
 				},
 				{
 					"name": "Gore",
 					"entries": [
-						"Melee weapon attack: {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) piercing damage."
 					]
 				},
 				{
@@ -748,6 +754,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -767,6 +774,9 @@
 			],
 			"spellcastingTags": [
 				"I"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -841,16 +851,17 @@
 				{
 					"name": "Club",
 					"entries": [
-						"Melee weapon attack: {@hit -1} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 3}) bludgeoning damage."
+						"{@atk mw} {@hit -1} to hit, reach 5 ft., one target. {@h}1 ({@damage 1d4 - 3}) bludgeoning damage."
 					]
 				},
 				{
 					"name": "Dart",
 					"entries": [
-						"Ranged weapon attack: {@hit 3} to hit, range 20/60 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
+						"{@atk rw} {@hit 3} to hit, range 20/60 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -863,6 +874,11 @@
 			"damageTags": [
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -939,6 +955,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"senseTags": [
 				"D"
 			],
@@ -995,17 +1012,17 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"Melee weapon attack: {@hit -1} to hit, reach 5 ft., one target. {@h}1 bludgeoning damage."
+						"{@atk mw} {@hit -1} to hit, reach 5 ft., one target. {@h}1 bludgeoning damage."
 					]
 				},
 				{
-					"name": "Blessing of Bountiful Generosity (1/day)",
+					"name": "Blessing of Bountiful Generosity (1/Day)",
 					"entries": [
 						"The killmoulis targets up to eight creatures within 100 feet of it that it can see. The next time a target finishes a long rest, it regains all spent Hit Dice and gains 10 temporary hit points."
 					]
 				},
 				{
-					"name": "Curse of Poor Hospitality (1/day)",
+					"name": "Curse of Poor Hospitality (1/Day)",
 					"entries": [
 						"The killmoulis targets up to eight creatures within 100 feet of it that it can see. The next time a target completes a long rest, it does not regain spent Hit Dice."
 					]
@@ -1018,6 +1035,9 @@
 			],
 			"damageTags": [
 				"B"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1070,7 +1090,7 @@
 				{
 					"name": "Dagger",
 					"entries": [
-						"Melee or Ranged weapon attack: {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
+						"{@atk mw,rw} {@hit 4} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
 					]
 				},
 				{
@@ -1080,12 +1100,18 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"languageTags": [
 				"S",
 				"U"
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
 			]
 		},
 		{
@@ -1171,6 +1197,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"senseTags": [
 				"B"
 			],
@@ -1253,7 +1280,7 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee weapon attack: {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) slashing damage."
 					]
 				},
 				{
@@ -1263,6 +1290,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"senseTags": [
 				"B"
 			],
@@ -1274,6 +1302,7 @@
 				"S"
 			],
 			"miscTags": [
+				"MW",
 				"RW"
 			]
 		},
@@ -1332,13 +1361,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee weapon attack: {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) piercing damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) piercing damage."
 					]
 				},
 				{
 					"name": "Mace",
 					"entries": [
-						"Melee weapon attack: {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) bludgeoning damage."
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d6 + 1}) bludgeoning damage."
 					]
 				}
 			],
@@ -1350,6 +1379,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -1360,6 +1390,9 @@
 			"damageTags": [
 				"B",
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1419,13 +1452,13 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Melee weapon attack: {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage."
 					]
 				},
 				{
 					"name": "Greataxe",
 					"entries": [
-						"Melee weapon attack: {@hit 5} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d12 + 3}) slashing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d12 + 3}) slashing damage."
 					]
 				},
 				{
@@ -1443,6 +1476,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -1453,6 +1487,9 @@
 			"damageTags": [
 				"P",
 				"S"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -1517,15 +1554,19 @@
 				{
 					"name": "Barbed Tail",
 					"entries": [
-						"Melee weapon attack: {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
+						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
 					]
 				}
 			],
+			"hasToken": true,
 			"languageTags": [
 				"S"
 			],
 			"damageTags": [
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			],
 			"conditionInflict": [
 				"incapacitated"
@@ -1596,10 +1637,11 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"Melee weapon attack: {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d4 + 4}) piercing damage."
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d4 + 4}) piercing damage."
 					]
 				}
 			],
+			"hasToken": true,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -1609,6 +1651,9 @@
 			"damageTags": [
 				"I",
 				"P"
+			],
+			"miscTags": [
+				"MW"
 			],
 			"conditionInflict": [
 				"paralyzed",
@@ -1774,7 +1819,7 @@
 				{
 					"name": "Summon Slaadi (1/Day)",
 					"entries": [
-						"Ygorl summons {@dice 1d4 + 1} death slaadi. A summoned slaad appears in an unoccupied space within 60 feet of Ygorl, acts as an ally of Ygorl, and can't summon other slaadi. It remains for 1 minute, until it or Ygorl dies, or until Ygorl dismisses it as an action."
+						"Ygorl summons {@dice 1d4 + 1} {@creature death slaad||death slaadi}. A summoned slaad appears in an unoccupied space within 60 feet of Ygorl, acts as an ally of Ygorl, and can't summon other slaadi. It remains for 1 minute, until it or Ygorl dies, or until Ygorl dismisses it as an action."
 					]
 				},
 				{
@@ -1804,6 +1849,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Legendary Resistances",
 				"Magic Resistance"

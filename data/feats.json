@@ -2113,6 +2113,38 @@
 			]
 		},
 		{
+			"name": "Metabolic Control",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 8,
+			"prerequisite": [
+				{
+					"psionics": true
+				}
+			],
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex",
+							"con"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You have refined psionic control over your body's functions.",
+				{
+					"type": "list",
+					"items": [
+						"If your Psionic Talent die is available, you can take an action to channel your psionic power to nourish yourself for the next 24 hours, as if you consumed sufficient food and water for a day. When you take this action, your Psionic Talent die decreases by one die size.",
+						"If your Psionic Talent die is available, you can meditate for 1 minute, at the end of which you gain the benefits of finishing a short rest, and your Psionic Talent die decreases by one die size. You can't meditate in this way again until you finish a long rest."
+					]
+				}
+			]
+		},
+		{
 			"name": "Mobile",
 			"source": "PHB",
 			"page": 168,
@@ -2515,7 +2547,7 @@
 							"cha"
 						],
 						"amount": 1,
-						"textreference": true
+						"entry": "Increase the chosen ability score by 1, to a maximum of 20."
 					}
 				}
 			],
@@ -3007,6 +3039,38 @@
 		},
 		{
 			"name": "Telekinetic",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 8,
+			"prerequisite": [
+				{
+					"psionics": true
+				}
+			],
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You learn to move things with your mind. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You learn the {@spell mage hand} cantrip. You can cast it without verbal or somatic components, and you can make the spectral hand {@condition invisible}. If you already know this spell, its range increases by 30 feet when you cast it. Its spellcasting ability is the ability increased by this feat.",
+						"As a bonus action, you can try to telekinetically shove one creature you can see within 30 feet of you. When you do so, roll your Psionic Talent die, and the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + the ability modifier of the score increased by this feat) or be moved toward you or away from you a number of feet equal to 5 times the number you rolled. A creature can willingly fail this save."
+					]
+				}
+			]
+		},
+		{
+			"name": "Telekinetic",
 			"source": "UAFighterRogueWizard",
 			"page": 8,
 			"ability": [
@@ -3021,6 +3085,38 @@
 					"items": [
 						"You learn the {@spell mage hand} cantrip. You can cast it without verbal or somatic components, and you can make the spectral hand invisible.",
 						"As a bonus action, you can try to shove one creature you can see within 5 feet of the spectral hand created by your mage hand spell. When you do so, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + your Intelligence modifier) or be pushed 5 feet away from you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Telepathic",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 8,
+			"prerequisite": [
+				{
+					"psionics": true
+				}
+			],
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You awaken the ability to mentally connect with others. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You can speak telepathically to any creature you can see within 30 feet of you. Your telepathic utterances are in a language you know, and the creature understands you only if it knows that language. Your communication doesn't give the creature the ability to respond to you telepathically.",
+						"If your Psionic Talent die is available, you can cast the detect thoughts spell, requiring no components. When you start casting the spell, your Psionic Talent die decreases by one die size. Your spellcasting ability for the spell is the ability increased by this feat."
 					]
 				}
 			]
@@ -3071,6 +3167,19 @@
 			"page": 170,
 			"entries": [
 				"Your hit point maximum increases by an amount equal to twice your level when you gain this feat. Whenever you gain a level thereafter, your hit point maximum increases by an additional 2 hit points."
+			]
+		},
+		{
+			"name": "Tower of Iron Will",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 9,
+			"prerequisite": [
+				{
+					"psionics": true
+				}
+			],
+			"entries": [
+				"Your mind's defenses are formidable. After you or another creature you can see within 30 feet of you fails a saving throw, you can use your reaction to roll your Psionic Talent die and add the number rolled to the saving throw, potentially causing it to succeed."
 			]
 		},
 		{
@@ -3142,6 +3251,70 @@
 					"type": "list",
 					"items": [
 						"You gain proficiency with four simple or martial weapons of your choice. Each one must be a simple or a martial weapon."
+					]
+				}
+			]
+		},
+		{
+			"name": "Wild Talent",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 9,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex",
+							"con",
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					},
+					"hidden": true
+				}
+			],
+			"entries": [
+				"You awaken to your psionic potential, which enhances your mind or body. Increase one ability score of your choice by 1, to a maximum of 20, to represent this enhancement.",
+				"You also harbor a wellspring of psionic power within yourself, an energy that ebbs and flows as you channel it in various ways. This power is represented by your Psionic Talent die, the starting size of which is a {@dice d6}.",
+				{
+					"type": "entries",
+					"name": "Psionic Talent Options",
+					"entries": [
+						"You can use your Psionic Talent die in the following ways:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Psi-Boosted Ability.",
+									"entry": "When you make an ability check with the ability increased by this feat, you can roll your Psionic Talent die and add the number rolled to the check. You can choose to do so before or after rolling the {@dice d20}, but before you know whether the check succeeded or failed."
+								},
+								{
+									"type": "item",
+									"name": "Psi-Guided Strike.",
+									"entry": "Once on each of your turns when you hit with an attack roll that uses the ability increased by this feat, you can roll your Psionic Talent die after you make the damage roll and then replace one of the damage dice with the number rolled on the Psionic Talent die."
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Changing the Die's Size",
+					"entries": [
+						"If you roll the highest number on your Psionic Talent die, it decreases by one die size after the roll. This represents you burning through your psionic energy. For example, if the die is a {@dice d6} and you roll a 6, it becomes a {@dice d4}. If it's a {@dice d4} and you roll a 4, it becomes unusable until you finish a long rest.",
+						"Conversely, if you roll a 1 on your Psionic Talent die, it increases by one die size after the roll, up to its starting size. This represents you conserving psionic energy for later use. For example, if you roll a 1 on a {@dice d4}, the die then becomes a {@dice d6}.",
+						"Whenever you finish a long rest, your Psionic Talent die resets to its starting size. When you reach certain levels, the starting size of your Psionic Talent die increases: at 5th level ({@dice d8}), 11th level ({@dice d10}), and 17th level ({@dice d12}). If you have a Psionic Talent die from another source, such as a class feature, you don't get more than one die; use only the one with the largest starting size."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Psi Replenishment",
+					"entries": [
+						"As a bonus action, you can calm your mind for a moment and restore your Psionic Talent die to its starting size. You then can't use Psi Replenishment again until you finish a long rest."
 					]
 				}
 			]

@@ -133,6 +133,7 @@ $z-bookmode: 100;
 $z-rollerbox-hidden: 100;
 $z-rollerbox-active: 110;
 
+// Z-indices 200-300 reserved for hover windows
 $z-hwin: 200;
 
 $z-modal-wrapper: 1000;
@@ -167,6 +168,12 @@ $time-5-frames: 84ms;
 
 @mixin row-glow-active {
 	box-shadow: inset 0 0 0 200px rgba(0, 107, 196, 0.3);
+}
+
+@mixin overflow-dots {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 /* *** */

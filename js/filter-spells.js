@@ -241,7 +241,7 @@ class PageFilterSpells extends PageFilter {
 			nests: {},
 			groupFn: (it) => SourceUtil.isSubclassReprinted(it.userData.class.name, it.userData.class.source, it.userData.subClass.name, it.userData.subClass.source) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(PS_PREFIX)
 		});
-		const variantClassFilter = new Filter({header: "Variant Class"});
+		const variantClassFilter = new Filter({header: "Variant Class", headerHelp: `Source: ${Parser.sourceJsonToFull(SRC_UACFV)}`});
 		const classAndSubclassFilter = new MultiFilter({header: "Classes", mode: "or", filters: [classFilter, subclassFilter, variantClassFilter]});
 		const raceFilter = new Filter({
 			header: "Race",
@@ -436,7 +436,7 @@ class PageFilterSpells extends PageFilter {
 		spell._normalisedRange = PageFilterSpells.getNormalisedRange(spell.range);
 
 		// used for filtering
-		spell._fSources = ListUtil.getCompleteFilterSources(spell);
+		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
 		spell._fMeta = PageFilterSpells.getMetaFilterObj(spell);
 		spell._fClasses = spell.classes && spell.classes.fromClassList ? spell.classes.fromClassList.map(PageFilterSpells.getClassFilterItem) : [];
 		spell._fSubclasses = spell.classes && spell.classes.fromSubclass

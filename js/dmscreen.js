@@ -29,6 +29,7 @@ const PANEL_TYP_BOOKS = 14;
 const PANEL_TYP_INITIATIVE_TRACKER_PLAYER = 15;
 const PANEL_TYP_COUNTER = 16;
 const PANEL_TYP_IMAGE = 20;
+const PANEL_TYP_ADVENTURE_DYNAMIC_MAP = 21;
 const PANEL_TYP_GENERIC_EMBED = 90;
 const PANEL_TYP_BLANK = 99;
 
@@ -191,6 +192,7 @@ class Board {
 			this.doCheckFillSpaces();
 		}
 		this.initGlobalHandlers();
+		await this._pLoadTempData();
 
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
@@ -199,10 +201,42 @@ class Board {
 		window.onhashchange = () => this.doLoadUrlState();
 	}
 
+	async _pLoadTempData () {
+		const temp = await StorageUtil.pGet(VeCt.STORAGE_DMSCREEN_TEMP_SUBLIST);
+		if (!temp) return;
+
+		const entities = await Promise.all(temp.list.items.map(it => Renderer.hover.pCacheAndGetHash(temp.page, it.h)));
+		const len = entities.length;
+		if (!len) return;
+
+		let panels = this.getPanels(0, 0, this.width, this.height);
+		const availablePanels = panels.filter(it => it.getEmpty()).length;
+
+		// Prefer to increase the number of panels on the vertical axis
+		if (availablePanels < len) {
+			const diff = len - availablePanels;
+			const heightIncrease = Math.ceil(diff / this.width);
+			this.setDimensions(this.width, this.height + heightIncrease);
+			panels = this.getPanels(0, 0, this.width, this.height);
+		}
+
+		let ixEntity = 0;
+		for (const p of panels) {
+			if (!p.getEmpty()) continue;
+
+			p.doPopulate_Stats(temp.page, entities[ixEntity].source, temp.list.items[ixEntity].h);
+			++ixEntity;
+
+			if (ixEntity >= entities.length) break;
+		}
+
+		await StorageUtil.pRemove(VeCt.STORAGE_DMSCREEN_TEMP_SUBLIST);
+	}
+
 	async pLoadIndex () {
 		await SearchUiUtil.pDoGlobalInit();
 
-		// rules
+		// region rules
 		await (async () => {
 			const data = await DataUtil.loadJSON("data/generated/bookref-dmscreen-index.json");
 			this.availRules.ALL = elasticlunr(function () {
@@ -222,7 +256,9 @@ class Board {
 				this.availRules.ALL.addDoc(d);
 			});
 		})();
+		// endregion
 
+		// region adventures/books
 		const adventureOrBookIdToSource = {};
 
 		async function pDoBuildAdventureOrAdventureIndex (dataPath, dataProp, indexStorage, indexIdField) {
@@ -280,6 +316,7 @@ class Board {
 
 		// books
 		await pDoBuildAdventureOrAdventureIndex(`data/books.json`, "book", this.availBooks, "b");
+		// endregion
 
 		// search
 		this.availContent = await SearchUiUtil.pGetContentIndices();
@@ -835,6 +872,10 @@ class Panel {
 					p.doPopulate_Image(saved.c.u, saved.r);
 					handleTabRenamed(p);
 					return p;
+				case PANEL_TYP_ADVENTURE_DYNAMIC_MAP:
+					p.doPopulate_AdventureDynamicMap(saved.s, saved.r);
+					handleTabRenamed(p);
+					return p;
 				case PANEL_TYP_BLANK:
 					p.doPopulate_Blank(saved.r);
 					handleTabRenamed(p);
@@ -1243,6 +1284,16 @@ class Panel {
 			maxScale: 8,
 			duration: 100
 		});
+	}
+
+	doPopulate_AdventureDynamicMap (state, title = "Map Viewer") {
+		this.set$ContentTab(
+			PANEL_TYP_ADVENTURE_DYNAMIC_MAP,
+			state,
+			$(`<div class="panel-content-wrapper-inner"/>`).append(DmMapper.$getMapper(this.board, state)),
+			title || "Time Tracker",
+			true
+		);
 	}
 
 	doPopulate_Blank (title = "") {
@@ -1709,7 +1760,7 @@ class Panel {
 
 	_get$BtnSelTab (ix, title, tabCanRename) {
 		title = title || "[Untitled]";
-		const $btnSelTab = $(`<span class="btn btn-default content-tab flex ${tabCanRename ? "content-tab-can-rename" : ""}"><span class="content-tab-title" title="${title}">${title}</span></span>`)
+		const $btnSelTab = $(`<span class="btn btn-default content-tab flex ${tabCanRename ? "content-tab-can-rename" : ""}"><span class="content-tab-title overflow-ellipsis" title="${title}">${title}</span></span>`)
 			.on("mousedown", (evt) => {
 				if (evt.which === 1) {
 					this.setActiveTab(ix);
@@ -1963,6 +2014,13 @@ class Panel {
 						t: type,
 						r: toSaveTitle,
 						s: $content.find(`.dm-time__root`).data("getState")()
+					};
+				}
+				case PANEL_TYP_ADVENTURE_DYNAMIC_MAP: {
+					return {
+						t: type,
+						r: toSaveTitle,
+						s: $content.find(`.dm-map__root`).data("getState")()
 					};
 				}
 				case PANEL_TYP_TUBE:
@@ -2519,6 +2577,7 @@ class AddMenuImageTab extends AddMenuTab {
 		if (!this.$tab) {
 			const $tab = $(`<div class="ui-search__wrp-output underline-tabs" id="${this.tabId}"/>`);
 
+			// region Imgur
 			const $wrpImgur = $(`<div class="ui-modal__row"/>`).appendTo($tab);
 			$(`<span>Imgur (Anonymous Upload) <i class="text-muted">(accepts <a href="https://help.imgur.com/hc/articles/115000083326" target="_blank" rel="noopener noreferrer">imgur-friendly formats</a>)</i></span>`).appendTo($wrpImgur);
 			const $iptFile = $(`<input type="file" class="hidden">`).on("change", (evt) => {
@@ -2569,8 +2628,9 @@ class AddMenuImageTab extends AddMenuTab {
 			$btnAdd.on("click", () => {
 				$iptFile.click();
 			});
-			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
+			// endregion
 
+			// region URL
 			const $wrpUtl = $(`<div class="ui-modal__row"/>`).appendTo($tab);
 			const $iptUrl = $(`<input class="form-control" placeholder="Paste image URL">`)
 				.on("keydown", (e) => {
@@ -2590,6 +2650,19 @@ class AddMenuImageTab extends AddMenuTab {
 					});
 				}
 			});
+			// endregion
+
+			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
+
+			// region Adventure dynamic viewer
+			const $btnSelectAdventure = $(`<button class="btn btn-primary">Add</button>`)
+				.click(() => DmMapper.pHandleMenuButtonClick(this.menu));
+
+			$$`<div class="ui-modal__row">
+				<div>Adventure Map Dynamic Viewer</div>
+				${$btnSelectAdventure}
+			</div>`.appendTo($tab)
+			// endregion
 
 			this.$tab = $tab;
 		}
@@ -2949,6 +3022,7 @@ class AdventureOrBookLoader {
 	constructor (type) {
 		this._type = type;
 		this._cache = {};
+		this._pLoading = null;
 	}
 
 	_getJsonPath (bookOrAdventure) {
@@ -2973,12 +3047,15 @@ class AdventureOrBookLoader {
 	}
 
 	async pFill (bookOrAdventure) {
-		if (this._cache[bookOrAdventure]) return this._cache[bookOrAdventure];
-
-		this._cache[bookOrAdventure] = {};
-		const fromBrew = this._getBrewData(bookOrAdventure);
-		const data = fromBrew || await DataUtil.loadJSON(this._getJsonPath(bookOrAdventure));
-		data.data.forEach((chap, i) => this._cache[bookOrAdventure][i] = chap);
+		if (!this._pLoading) {
+			this._pLoading = (async () => {
+				this._cache[bookOrAdventure] = {};
+				const fromBrew = this._getBrewData(bookOrAdventure);
+				const data = fromBrew || await DataUtil.loadJSON(this._getJsonPath(bookOrAdventure));
+				data.data.forEach((chap, i) => this._cache[bookOrAdventure][i] = chap);
+			})();
+		}
+		await this._pLoading;
 	}
 
 	getFromCache (adventure, chapter) {
@@ -3059,10 +3136,11 @@ class NoteBox {
 							const str = braceStack.join("");
 							const tag = str.split(" ")[0].replace(/^@/, "");
 							const text = str.split(" ").slice(1).join(" ");
-							if (Renderer.HOVER_TAG_TO_PAGE[tag]) {
+							if (Renderer.hover.TAG_TO_PAGE[tag]) {
 								const r = Renderer.get().render(`{${str}`);
 								evt.type = "mouseover";
 								evt.shiftKey = true;
+								evt.ctrlKey = false;
 								$(r).trigger(evt);
 							} else if (tag === "link") {
 								const [txt, link] = Renderer.splitTagByPipe(text);
@@ -3206,8 +3284,8 @@ class AdventureOrBookView {
 	}
 
 	$getEle () {
-		this._$titlePrev = $(`<div class="dm-book__controls-title text-right"/>`);
-		this._$titleNext = $(`<div class="dm-book__controls-title"/>`);
+		this._$titlePrev = $(`<div class="dm-book__controls-title overflow-ellipsis text-right"/>`);
+		this._$titleNext = $(`<div class="dm-book__controls-title overflow-ellipsis"/>`);
 
 		const $btnPrev = $(`<button class="btn btn-xs btn-default mr-2" title="Previous Chapter"><span class="glyphicon glyphicon-chevron-left"/></button>`)
 			.click(() => this._handleButtonClick(-1));

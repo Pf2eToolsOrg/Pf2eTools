@@ -90,8 +90,16 @@ i > i {
 	overflow-y: auto;
 }
 
+.overflow-y-scroll {
+	overflow-y: scroll;
+}
+
 .overflow-y-hidden {
 	overflow-y: hidden;
+}
+
+.overflow-x-scroll {
+	overflow-x: scroll;
 }
 
 .overflow-x-hidden {
@@ -99,9 +107,7 @@ i > i {
 }
 
 .overflow-ellipsis {
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
+	@include overflow-dots();
 }
 
 .resize-vertical {

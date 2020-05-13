@@ -128,8 +128,7 @@ class LanguagesPage extends ListPage {
 				isImageTab,
 				$content,
 				entity: it,
-				fnFluffBuilder: (fluffJson) => it.fluff || fluffJson.languageFluff.find(l => it.name === l.name && it.source === l.source),
-				fluffUrl: `data/fluff-languages.json`
+				pFnGetFluff: Renderer.language.pGetFluff
 			});
 		}
 

@@ -11,11 +11,10 @@ class PageFilterItems extends PageFilter {
 			case "very rare": return 4;
 			case "legendary": return 5;
 			case "artifact": return 6;
-			case "other": return 7;
-			case "varies": return 8;
-			case "unknown (magic)": return 9;
-			case "unknown": return 10;
-			default: return 11;
+			case "varies": return 7;
+			case "unknown (magic)": return 8;
+			case "unknown": return 9;
+			default: return 10;
 		}
 	}
 
@@ -76,7 +75,7 @@ class PageFilterItems extends PageFilter {
 
 	mutateForFilters (item) {
 		const tierTags = [];
-		tierTags.push(item.tier ? item.tier : "None");
+		tierTags.push(item.tier ? item.tier : "none");
 
 		// for filter to use
 		item._fTier = tierTags;

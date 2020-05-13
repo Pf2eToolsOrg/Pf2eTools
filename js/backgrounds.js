@@ -99,9 +99,8 @@ class BackgroundPage extends ListPage {
 			return Renderer.utils.pBuildFluffTab({
 				isImageTab,
 				$content: $pgContent,
-				entity: bg,
-				fnFluffBuilder: (fluffJson) => bg.fluff || fluffJson.backgroundFluff.find(it => it.name === bg.name && it.source === bg.source),
-				fluffUrl: this._dataSourcefluff
+				pFnGetFluff: Renderer.background.pGetFluff,
+				entity: bg
 			});
 		};
 

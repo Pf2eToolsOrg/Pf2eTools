@@ -761,7 +761,7 @@ class EncounterBuilder extends ProxyBase {
 			};
 
 			if (this._infoHoverId == null) {
-				const hoverMeta = Renderer.hover.getMakePredefinedHover(infoEntry, true);
+				const hoverMeta = Renderer.hover.getMakePredefinedHover(infoEntry, {isBookContent: true});
 				this._infoHoverId = hoverMeta.id;
 
 				const $hvInfo = $(`.ecgen__adjusted_total_info`);
@@ -857,7 +857,7 @@ class EncounterBuilder extends ProxyBase {
 					hoverTitle: `Token \u2014 ${mon.name}`
 				}
 			},
-			true
+			{isBookContent: true}
 		);
 	}
 
@@ -878,7 +878,7 @@ class EncounterBuilder extends ProxyBase {
 						hoverTitle: `Image \u2014 ${mon.name}`
 					}
 				},
-				true
+				{isBookContent: true}
 			);
 			$ele.mouseover(evt => hoverMeta.mouseOver(evt, $ele[0]))
 				.mousemove(evt => hoverMeta.mouseMove(evt, $ele[0]))
@@ -886,8 +886,7 @@ class EncounterBuilder extends ProxyBase {
 			$ele.mouseover();
 		};
 
-		const handleHasImages = (data) => {
-			const fluff = Renderer.monster.getFluff(mon, data);
+		const handleHasImages = () => {
 			if (fluff && fluff.images && fluff.images.length) {
 				const hoverMeta = Renderer.hover.getMakePredefinedHover(
 					{
@@ -897,24 +896,19 @@ class EncounterBuilder extends ProxyBase {
 							hoverTitle: `Image \u2014 ${mon.name}`
 						}
 					},
-					true
+					{isBookContent: true}
 				);
 				$ele.mouseover(evt => hoverMeta.mouseOver(evt, $ele[0]))
 					.mousemove(evt => hoverMeta.mouseMove(evt, $ele[0]))
 					.mouseleave(evt => hoverMeta.mouseLeave(evt, $ele[0]));
 				$ele.mouseover();
-			} else handleNoImages();
+			} else return handleNoImages();
 		};
 
-		// TODO(fluff) refactor this to go through main fluff pipeline
-		const fluffIndex = await DataUtil.loadJSON("data/bestiary/fluff-index.json");
-		if (fluffIndex[mon.source] || mon.fluff) {
-			if (mon.fluff) handleHasImages();
-			else {
-				const data = await DataUtil.loadJSON(`data/bestiary/${fluffIndex[mon.source]}`);
-				handleHasImages(data);
-			}
-		} else handleNoImages();
+		const fluff = await Renderer.monster.pGetFluff(mon);
+
+		if (fluff) handleHasImages();
+		else handleNoImages();
 	}
 
 	async pDoCrChange ($iptCr, ixMon, scaledTo) {
@@ -1070,10 +1064,10 @@ class EncounterBuilder extends ProxyBase {
 
 	static $getSublistButtons (monId, customHashId) {
 		const $btnAdd = $(`<button title="Add (SHIFT for 5)" class="btn btn-success btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-plus"/></button>`)
-			.click(evt => encounterBuilder.handleClick(evt, monId, 1, customHashId));
+			.click(evt => encounterBuilder.handleClick(evt, monId, true, customHashId));
 
 		const $btnSub = $(`<button title="Subtract (SHIFT for 5)" class="btn btn-danger btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-minus"/></button>`)
-			.click(evt => encounterBuilder.handleClick(evt, monId, 0, customHashId));
+			.click(evt => encounterBuilder.handleClick(evt, monId, false, customHashId));
 
 		const $btnRandomize = $(`<button title="Randomize Monster" class="btn btn-default btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-random" style="right: 1px"/></button>`)
 			.click(() => encounterBuilder.pHandleShuffleClick(monId));

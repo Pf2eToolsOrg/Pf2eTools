@@ -12,12 +12,12 @@ const Omnisearch = {
 
 		const $nav = $(`#navbar`);
 
-		const $searchIn = $(`<input class="form-control search omni__input" placeholder="${Omnisearch._PLACEHOLDER_TEXT}" title="Hotkey: F. Disclaimer: unlikely to search everywhere. Use with caution.">`).disableSpellcheck();
+		const $iptSearch = $(`<input class="form-control search omni__input" placeholder="${Omnisearch._PLACEHOLDER_TEXT}" title="Hotkey: F. Disclaimer: unlikely to search everywhere. Use with caution.">`).disableSpellcheck();
 		const $searchSubmit = $(`<button class="btn btn-default omni__submit" tabindex="-1"><span class="glyphicon glyphicon-search"></span></button>`);
 
 		const $searchInputWrapper = $$`
 			<div class="input-group omni__wrp-input">
-				${$searchIn}
+				${$iptSearch}
 				<div class="input-group-btn">
 					${$searchSubmit}
 				</div>
@@ -36,7 +36,7 @@ const Omnisearch = {
 			Renderer.hover.cleanTempWindows();
 		});
 
-		$searchIn.on("keydown", (e) => {
+		$iptSearch.on("keydown", (e) => {
 			e.stopPropagation();
 			Renderer.hover.cleanTempWindows();
 			switch (e.which) {
@@ -52,25 +52,25 @@ const Omnisearch = {
 					$searchOut.find(`a`).first().focus();
 					break;
 				case 27: // escape
-					$searchIn.val("");
-					$searchIn.blur();
+					$iptSearch.val("");
+					$iptSearch.blur();
 			}
 		});
 
 		// auto-search after 100ms
 		const TYPE_TIMEOUT_MS = 100;
 		let typeTimer;
-		$searchIn.on("keyup", (e) => {
+		$iptSearch.on("keyup", (e) => {
 			clickFirst = false;
 			if (e.which >= 37 && e.which <= 40) return;
 			clearTimeout(typeTimer);
 			typeTimer = setTimeout(() => $searchSubmit.click(), TYPE_TIMEOUT_MS);
 		});
-		$searchIn.on("keydown", () => clearTimeout(typeTimer));
-		$searchIn.on("click", (e) => {
+		$iptSearch.on("keydown", () => clearTimeout(typeTimer));
+		$iptSearch.on("click", (e) => {
 			e.stopPropagation();
 			Renderer.hover.cleanTempWindows();
-			if ($searchIn.val() && $searchIn.val().trim().length) $searchSubmit.click();
+			if ($iptSearch.val() && $iptSearch.val().trim().length) $searchSubmit.click();
 		});
 
 		$searchSubmit.on("click", (e) => {
@@ -85,7 +85,7 @@ const Omnisearch = {
 		async function pDoSearch () {
 			await Omnisearch.pInit();
 
-			const srch = $searchIn.val();
+			const srch = $iptSearch.val();
 
 			const tokens = elasticlunr.tokenizer(srch);
 			const tokensIsCat = tokens.map(t => {
@@ -167,7 +167,7 @@ const Omnisearch = {
 				for (let i = base; i < Math.max(Math.min(results.length, MAX_RESULTS + base), base); ++i) {
 					const r = results[i].doc;
 					const $link = $(`<a href="${Renderer.get().baseUrl}${UrlUtil.categoryToPage(r.c)}#${r.u}" ${r.h ? getHoverStr(r.c, r.u, r.s) : ""}>${r.cf}: ${r.n}</a>`)
-						.keydown(evt => Omnisearch.handleLinkKeyDown(evt, $link, $searchIn, $searchOut));
+						.keydown(evt => Omnisearch.handleLinkKeyDown(evt, $link, $iptSearch, $searchOut));
 					$$`<p>
 						${$link}
 						${r.s ? `<i title="${Parser.sourceJsonToFull(r.s)}">${Parser.sourceJsonToAbv(r.s)}${r.p ? ` p${r.p}` : ""}</i>` : ""}
@@ -232,16 +232,16 @@ const Omnisearch = {
 			const $window = $(window);
 			$window.on("scroll", evt => {
 				if (Renderer.hover.isSmallScreen(evt)) {
-					$searchIn.attr("placeholder", Omnisearch._PLACEHOLDER_TEXT);
+					$iptSearch.attr("placeholder", Omnisearch._PLACEHOLDER_TEXT);
 					$searchInputWrapper.removeClass("omni__wrp-input--scrolled");
 					$searchOut.removeClass("omni__output--scrolled");
 				} else {
 					if ($window.scrollTop() > 50) {
-						$searchIn.attr("placeholder", "");
+						$iptSearch.attr("placeholder", "");
 						$searchInputWrapper.addClass("omni__wrp-input--scrolled");
 						$searchOut.addClass("omni__output--scrolled");
 					} else {
-						$searchIn.attr("placeholder", Omnisearch._PLACEHOLDER_TEXT);
+						$iptSearch.attr("placeholder", Omnisearch._PLACEHOLDER_TEXT);
 						$searchInputWrapper.removeClass("omni__wrp-input--scrolled");
 						$searchOut.removeClass("omni__output--scrolled");
 					}
@@ -252,7 +252,7 @@ const Omnisearch = {
 		$body.on("keypress", (e) => {
 			if (!noModifierKeys(e) || MiscUtil.isInInput(e)) return;
 			if (e.key === "f" || e.key === "F") {
-				const toSel = e.key === "F" ? $searchIn : $(`#filter-search-input-group`).find(`.search`);
+				const toSel = e.key === "F" ? $iptSearch : $(`#filter-search-input-group`).find(`.search`);
 				// defer, otherwise the "f" will be input into the search field
 				setTimeout(() => toSel.select().focus(), 0);
 			}

@@ -10,7 +10,7 @@ class PageFilterFeats extends PageFilter {
 		this._asiFilter = getAsiFilter();
 		this._otherPrereqFilter = new Filter({
 			header: "Other",
-			items: ["Ability", "Race", "Proficiency", "Special", "Spellcasting"]
+			items: ["Ability", "Race", "Psionics", "Proficiency", "Special", "Spellcasting"]
 		});
 		this._levelFilter = new Filter({
 			header: "Level",

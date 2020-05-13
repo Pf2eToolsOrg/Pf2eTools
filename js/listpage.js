@@ -150,7 +150,8 @@ class ListPage {
 			primaryLists: [this._list]
 		});
 		ListUtil.bindPinButton();
-		Renderer.hover.bindPopoutButton(this._dataList);
+		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
+		Renderer.hover.bindPopoutButton($btnPop, this._dataList);
 		UrlUtil.bindLinkExportButton(this._filterBox);
 		ListUtil.bindDownloadButton();
 		ListUtil.bindUploadButton();

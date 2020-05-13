@@ -102,8 +102,8 @@
 	</ul>
 </nav>
 
-<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
-<div class="cancer__wrp-sidebar-rhs"><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+<div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
 
 <main class="container">
 
@@ -114,11 +114,10 @@
 				<button class="btn btn-sm btn-danger crc__reset mt-3" id="crcalc_reset" type="button">Reset</button>
 				<h4>Instructions</h4>
 				<ol>
-					<li>Enter expected CR of creature.</li>
-					<li>Fill in the HP, AC, and other defensive attributes of creature.</li>
-					<li>Fill in offensives attributes of creature. DPR is averaged over three rounds!</li>
-					<li>Click which special Monster Features it has.</li>
-					<li>Done!</li>
+					<li>Enter expected CR of the creature.</li>
+					<li>Fill in the HP, AC, and other defensive attributes of the creature.</li>
+					<li>Fill in offensives attributes of the creature. DPR is averaged over three rounds!</li>
+					<li>Add any special Monster Features of creature.</li>
 				</ol>
 				<p>
 					<small>Be sure to read the <em>Dungeon Master's Guide</em> section on monster creation, pages 273
@@ -343,6 +342,7 @@
 </main>
 <!--5ETOOLS_SCRIPT_ANCHOR-->
 <!--5ETOOLS_AD_ADHESION-->
+<script type="text/javascript" src="js/parser.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>

@@ -19,7 +19,7 @@ class PageFilterClasses extends PageFilter {
 		});
 
 		// region source
-		this._sourceWalker = MiscUtil.getWalker(new Set(["type", "data"])).walk;
+		this._sourceWalker = MiscUtil.getWalker({keyBlacklist: new Set(["type", "data"])}).walk;
 		this._sourcePrimitiveHandlers = {
 			string: (ident, obj, lastKey) => {
 				if (lastKey === "source") this._sourceFilter.addItem(obj);

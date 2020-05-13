@@ -96,12 +96,11 @@ class VehiclesPage extends ListPage {
 		const $floatToken = $(`#float-token`).empty();
 
 		function buildStatsTab () {
-			if (veh.tokenUrl || !veh.uniqueId) {
+			const hasToken = veh.tokenUrl || veh.hasToken;
+			if (hasToken) {
 				const imgLink = veh.tokenUrl || UrlUtil.link(`img/vehicles/tokens/${Parser.sourceJsonToAbv(veh.source)}/${veh.name.replace(/"/g, "")}.png`);
-				$floatToken.append(`<a href="${imgLink}" target="_blank" rel="noopener noreferrer">
-					<img src="${imgLink}" id="token_image" class="token" onerror="TokenUtil.imgError(this)" alt="${veh.name}">
-				</a>`);
-			} else TokenUtil.imgError();
+				$floatToken.append(`<a href="${imgLink}" target="_blank" rel="noopener noreferrer"><img src="${imgLink}" id="token_image" class="token" alt="${veh.name}"></a>`);
+			}
 
 			$content.append(RenderVehicles.$getRenderedVehicle(veh));
 		}
@@ -111,8 +110,7 @@ class VehiclesPage extends ListPage {
 				isImageTab,
 				$content,
 				entity: veh,
-				fnFluffBuilder: (fluffJson) => veh.fluff || fluffJson.vehicleFluff.find(it => it.name === veh.name && it.source === veh.source),
-				fluffUrl: `data/fluff-vehicles.json`
+				pFnGetFluff: Renderer.vehicle.pGetFluff
 			});
 		}
 

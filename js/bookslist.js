@@ -98,12 +98,9 @@ class BooksList {
 
 			this._list.addItem(listItem);
 
-			// TODO make the border use the 5etools source color, where available
-			// TODO add all the adventure pics
-			// TODO make the link text look cooler; bolded text that isn't blue? I.e. same as list text
 			// region alt
-			const eleLiAlt = $(`<a href="${this._rootPage}#${UrlUtil.encodeForHash(it.id)}" class="flex-col flex-v-center m-3 bks__wrp-bookshelf-item py-3 ${Parser.sourceJsonToColor(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>
-				<img src="img/${it.image || "covers/blank.png"}" class="mb-2">
+			const eleLiAlt = $(`<a href="${this._rootPage}#${UrlUtil.encodeForHash(it.id)}" class="flex-col flex-v-center m-3 bks__wrp-bookshelf-item py-3 px-2 ${Parser.sourceJsonToColor(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>
+				<img src="${it.coverUrl || "img/covers/blank.png"}" class="mb-2 bks__bookshelf-image">
 				<div class="bks__bookshelf-item-name flex-vh-center text-center">${it.name}</div>
 			</a>`)[0];
 			const listItemAlt = new ListItem(

@@ -30,7 +30,6 @@ class Blacklist {
 			isUseJquery: true
 		});
 		Blacklist._listId = 1;
-		ListUtil.bindEscapeKey(Blacklist._list, $iptSearch);
 
 		const FILES = [
 			"backgrounds.json",

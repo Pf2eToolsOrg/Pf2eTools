@@ -50,38 +50,58 @@ class ModalFilter {
 	 * @param [opts] Options object.
 	 * @param [opts.isNoHighlightSelection] If highlighting selected rows should be skipped.
 	 * @param [opts.fnOnSelectionChange] Function to call when selection status of an item changes.
+	 * @param [opts.fnGetCb] Function which gets the checkbox from a list item.
 	 */
 	static handleSelectClick (list, item, evt, opts) {
 		opts = opts || {};
 		evt.preventDefault();
 		evt.stopPropagation();
 
-		if (evt && evt.shiftKey && list.__firstListSelection && list.__firstListSelection !== item) {
-			// on a shift-click, toggle all the checkboxes to the value of the first selected one
-			// if it's a _further_ shift-click, toggle the range to the opposite of whatever the target box was...
+		if (evt && evt.shiftKey && list.__firstListSelection) {
+			if (list.__lastListSelection === item) {
+				// on double-tapping the end of the selection, toggle it on/off
 
-			const setTo = list.__lastListSelection
-				? item.data.cbSel ? !item.data.cbSel.checked : false
-				: list.__firstListSelection.data.cbSel ? list.__firstListSelection.data.cbSel.checked : false;
+				const cb = this._getCb(item, opts);
+				this._updateCb(item, opts, !cb.checked);
+			} else if (list.__firstListSelection === item && list.__lastListSelection) {
+				// If the item matches the last clicked, clear all checkboxes from our last selection
 
-			const ix1 = list.visibleItems.indexOf(list.__firstListSelection);
-			const ix2 = list.visibleItems.indexOf(item);
+				const ix1 = list.visibleItems.indexOf(list.__firstListSelection);
+				const ix2 = list.visibleItems.indexOf(list.__lastListSelection);
 
-			const [ixStart, ixEnd] = [ix1, ix2].sort(SortUtil.ascSort);
-			for (let i = ixStart; i <= ixEnd; ++i) {
-				const it = list.visibleItems[i];
-
-				//   ...except for the first item, which gets left at whatever it was set to
-				if (list.__lastListSelection && it === list.__firstListSelection) continue;
-
-				if (it.data.cbSel) {
-					it.data.cbSel.checked = setTo;
-					if (opts.fnOnSelectionChange) opts.fnOnSelectionChange(it, setTo);
+				const [ixStart, ixEnd] = [ix1, ix2].sort(SortUtil.ascSort);
+				for (let i = ixStart; i <= ixEnd; ++i) {
+					const it = list.visibleItems[i];
+					this._updateCb(it, opts, false);
 				}
 
-				if (!opts.isNoHighlightSelection) {
-					if (setTo) it.ele.classList.add("list-multi-selected");
-					else it.ele.classList.remove("list-multi-selected");
+				this._updateCb(item, opts);
+			} else {
+				// on a shift-click, toggle all the checkboxes to true...
+
+				const ix1 = list.visibleItems.indexOf(list.__firstListSelection);
+				const ix2 = list.visibleItems.indexOf(item);
+				const ix2Prev = list.__lastListSelection ? list.visibleItems.indexOf(list.__lastListSelection) : null;
+
+				const [ixStart, ixEnd] = [ix1, ix2].sort(SortUtil.ascSort);
+				for (let i = ixStart; i <= ixEnd; ++i) {
+					const it = list.visibleItems[i];
+					this._updateCb(it, opts);
+				}
+
+				// ...except those between the last selection and this selection, set those to false
+				if (ix2Prev != null) {
+					if (ix2Prev > ixEnd) {
+						for (let i = ixEnd + 1; i <= ix2Prev; ++i) {
+							const it = list.visibleItems[i];
+							this._updateCb(it, opts, false);
+						}
+					} else if (ix2Prev < ixStart) {
+						for (let i = ix2Prev; i < ixStart; ++i) {
+							const it = list.visibleItems[i];
+							this._updateCb(it, opts, false);
+						}
+					}
 				}
 			}
 
@@ -89,13 +109,14 @@ class ModalFilter {
 		} else {
 			// on a normal click, or if there's been no initial selection, just toggle the checkbox
 
-			if (item.data.cbSel) {
-				item.data.cbSel.checked = !item.data.cbSel.checked;
+			const cbMaster = this._getCb(item, opts);
+			if (cbMaster) {
+				cbMaster.checked = !cbMaster.checked;
 
-				if (opts.fnOnSelectionChange) opts.fnOnSelectionChange(item, item.data.cbSel.checked);
+				if (opts.fnOnSelectionChange) opts.fnOnSelectionChange(item, cbMaster.checked);
 
 				if (!opts.isNoHighlightSelection) {
-					if (item.data.cbSel.checked) item.ele.classList.add("list-multi-selected");
+					if (cbMaster.checked) item.ele.classList.add("list-multi-selected");
 					else item.ele.classList.remove("list-multi-selected");
 				}
 			} else {
@@ -106,6 +127,21 @@ class ModalFilter {
 
 			list.__firstListSelection = item;
 			list.__lastListSelection = null;
+		}
+	}
+
+	static _getCb (item, opts) { return opts.fnGetCb ? opts.fnGetCb(item) : item.data.cbSel; }
+
+	static _updateCb (item, opts, toVal = true) {
+		const cbSlave = this._getCb(item, opts);
+		if (cbSlave) {
+			cbSlave.checked = toVal;
+			if (opts.fnOnSelectionChange) opts.fnOnSelectionChange(item, toVal);
+		}
+
+		if (!opts.isNoHighlightSelection) {
+			if (toVal) item.ele.classList.add("list-multi-selected");
+			else item.ele.classList.remove("list-multi-selected");
 		}
 	}
 
@@ -146,13 +182,13 @@ class ModalFilter {
 			let $wrpModalInner;
 
 			const {$modalInner, doClose} = UiUtil.getShowModal({
-				fullHeight: true,
+				isHeight100: true,
 				title: `Filter/Search for ${this._modalTitle}`,
 				cbClose: (isDataEntered) => {
 					$wrpModalInner.detach();
 					if (!isDataEntered) resolve([]);
 				},
-				isLarge: true,
+				isUncappedHeight: true,
 				zIndex: 999
 			});
 
@@ -295,6 +331,7 @@ class FilterBox extends ProxyBase {
 		this._$btnReset = opts.$btnReset;
 		this._$btnOpen = opts.$btnOpen;
 		this._$wrpMiniPills = opts.$wrpMiniPills;
+		this._$btnToggleSummaryHidden = opts.$btnToggleSummaryHidden;
 		this._filters = opts.filters;
 		this._isCompact = opts.isCompact;
 		this._namespace = opts.namespace;
@@ -309,7 +346,7 @@ class FilterBox extends ProxyBase {
 		this.__combineAs = {};
 		this._combineAs = this._getProxy("combineAs", this.__combineAs);
 		this._$body = $(`body`);
-		this._$overlay = null;
+		this._modalMeta = null;
 
 		this._cachedState = null;
 
@@ -317,6 +354,8 @@ class FilterBox extends ProxyBase {
 
 		this._filters.forEach(f => f.filterBox = this);
 	}
+
+	teardown () { if (this._modalMeta) this._modalMeta.doTeardown(); }
 
 	_getNamespacedStorageKey () { return `${FilterBox._STORAGE_KEY}${this._namespace ? `.${this._namespace}` : ""}` }
 	getNamespacedHashKey (k) { return `${k || "_".repeat(FilterUtil.SUB_HASH_PREFIX_LENGTH)}${this._namespace ? `.${this._namespace}` : ""}`; }
@@ -379,149 +418,167 @@ class FilterBox extends ProxyBase {
 	}
 
 	render () {
-		if (this._$overlay) {
+		if (this._modalMeta) {
 			// already rendered previously; simply update the filters
 			this._filters.map(f => f.update());
-		} else {
-			this._$overlay = this._render_$getOverlay();
-			if (!this._$wrpMiniPills) {
-				this._$wrpMiniPills = $(`<div class="fltr__mini-view btn-group"/>`).insertAfter(this._$wrpFormTop);
-			} else {
-				this._$wrpMiniPills.addClass("fltr__mini-view");
-			}
-
-			const $children = this._filters.map((f, i) => f.$render({filterBox: this, isFirst: i === 0, $wrpMini: this._$wrpMiniPills}));
-
-			const metaIptSearch = ComponentUiUtil.$getIptStr(
-				this._compSearch, "search",
-				{decorationRight: "clear", asMeta: true, html: `<input class="form-control input-xs" placeholder="Search...">`}
-			);
-			this._compSearch._addHookBase("search", () => {
-				const searchTerm = this._compSearch._state.search.toLowerCase();
-				this._filters.forEach(f => f.handleSearch(searchTerm));
-			});
-
-			const $btnShowAllFilters = $(`<button class="btn btn-xs btn-default">Show All</button>`)
-				.click(() => this.showAllFilters());
-			const $btnHideAllFilters = $(`<button class="btn btn-xs btn-default">Hide All</button>`)
-				.click(() => this.hideAllFilters());
-
-			const $btnReset = $(`<button class="btn btn-xs btn-default mr-3" title="Reset filters. SHIFT to reset everything.">Reset</button>`)
-				.click(evt => this.reset(evt.shiftKey));
-
-			const $btnSettings = $(`<button class="btn btn-xs btn-default mr-3"><span class="glyphicon glyphicon-cog"/></button>`)
-				.click(() => this._openSettingsModal());
-
-			const $btnSaveAlt = $(`<button class="btn btn-xs btn-primary" title="Save"><span class="glyphicon glyphicon-ok"/></button>`)
-				.click(() => this.pHide());
-
-			const $wrpBtnCombineFilters = $(`<div class="btn-group mr-3"></div>`);
-			const $btnCombineFilterSettings = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-cog"/></button>`)
-				.click(() => this._openCombineAsModal());
-
-			const $btnCombineFiltersAs = $(`<button class="btn btn-xs btn-default"/>`)
-				.appendTo($wrpBtnCombineFilters)
-				.click(() => this._meta.modeCombineFilters = FilterBox._COMBINE_MODES.getNext(this._meta.modeCombineFilters));
-			const hook = () => {
-				$btnCombineFiltersAs.text(this._meta.modeCombineFilters === "custom" ? this._meta.modeCombineFilters.uppercaseFirst() : this._meta.modeCombineFilters.toUpperCase());
-				if (this._meta.modeCombineFilters === "custom") $wrpBtnCombineFilters.append($btnCombineFilterSettings);
-				else $btnCombineFilterSettings.detach();
-				this._doSaveStateDebounced();
-			};
-			this._addHook("meta", "modeCombineFilters", hook);
-			hook();
-
-			const $btnSave = $(`<button class="btn btn-primary fltr__btn-close mr-2">Save</button>`)
-				.click(() => this.pHide());
-
-			const $btnCancel = $(`<button class="btn btn-default fltr__btn-close">Cancel</button>`)
-				.click(() => this.pHide(true));
-
-			$$`<div class="ui-modal__inner flex-col ui-modal__inner--large dropdown-menu">
-			<div class="split mb-2 mt-2 flex-v-center mobile__flex-col">
-				<div class="flex-v-baseline mobile__flex-col">
-					<h4 class="m-0 mr-2 mobile__mb-2">Filters</h4>
-					${metaIptSearch.$wrp.addClass("mobile__mb-2")}
-				</div>
-				<div class="flex-v-center mobile__flex-col">
-					<div class="flex-v-center mobile__m-1">
-						<div class="mr-2">Combine as</div>
-						${$wrpBtnCombineFilters}
-					</div>
-					<div class="flex-v-center mobile__m-1">
-						<div class="btn-group mr-2">
-							${$btnShowAllFilters}
-							${$btnHideAllFilters}
-						</div>
-						${$btnReset}
-						${$btnSettings}
-						${$btnSaveAlt}
-					</div>
-				</div>
-			</div>
-			<hr class="w-100 m-0 mb-2">
-
-			<hr class="mt-1 mb-1">
-			<div class="ui-modal__scroller smooth-scroll px-1">
-				${$children}
-			</div>
-			<hr class="my-1 w-100">
-			<div class="w-100 flex-vh-center my-1">${$btnSave}${$btnCancel}</div>
-			</div>`
-				.click((evt) => evt.stopPropagation())
-				.appendTo(this._$overlay);
-
-			if (this._$btnReset) {
-				this._$btnReset
-					.title("Reset filters. SHIFT to reset everything.")
-					.click((evt) => this.reset(evt.shiftKey));
-			}
-
-			const $btnToggleSummaryHidden = $(`<button class="btn btn-default ${this._isCompact ? "p-2" : ""}" title="Toggle Filter Summary Display"><span class="glyphicon glyphicon-resize-small"/></button>`)
-				.click(() => {
-					this._meta.isSummaryHidden = !this._meta.isSummaryHidden;
-					this._doSaveStateDebounced();
-				})
-				.prependTo(this._$wrpFormTop);
-			const summaryHiddenHook = () => {
-				$btnToggleSummaryHidden.toggleClass("active", !!this._meta.isSummaryHidden);
-				this._$wrpMiniPills.toggleClass("ve-hidden", !!this._meta.isSummaryHidden);
-			};
-			this._addHook("meta", "isSummaryHidden", summaryHiddenHook);
-			summaryHiddenHook();
-
-			if (this._$btnOpen) this._$btnOpen.click(() => this.show());
-			else {
-				$(`<button class="btn btn-default ${this._isCompact ? "px-2" : ""}">Filter</button>`)
-					.click(() => this.show())
-					.prependTo(this._$wrpFormTop);
-			}
-
-			const sourceFilter = this._filters.find(it => it.header === FilterBox.SOURCE_HEADER);
-			if (sourceFilter) {
-				const selFnAlt = (val) => !SourceUtil.isNonstandardSource(val) && !BrewUtil.hasSourceJson(val);
-				const hkSelFn = () => {
-					if (this._meta.isBrewDefaultHidden) sourceFilter.setTempFnSel(selFnAlt);
-					else sourceFilter.setTempFnSel(null);
-					sourceFilter.updateMiniPillClasses();
-				};
-				this._addHook("meta", "isBrewDefaultHidden", hkSelFn);
-				hkSelFn();
-			}
+			return;
 		}
-	}
 
-	_render_$getOverlay () {
-		return $(`<div class="modal__wrp modal__wrp--no-centre"/>`).hide().appendTo(this._$body)
-			.click(() => this.pHide(true));
+		this._modalMeta = UiUtil.getShowModal({
+			isHeight100: true,
+			isWidth100: true,
+			isUncappedHeight: true,
+			isIndestructible: true,
+			isClosed: true,
+			isEmpty: true,
+			cbClose: (isDataEntered) => this._pHandleHide(!isDataEntered)
+		});
+
+		if (!this._$wrpMiniPills) {
+			this._$wrpMiniPills = $(`<div class="fltr__mini-view btn-group"/>`).insertAfter(this._$wrpFormTop);
+		} else {
+			this._$wrpMiniPills.addClass("fltr__mini-view");
+		}
+
+		const $children = this._filters.map((f, i) => f.$render({filterBox: this, isFirst: i === 0, $wrpMini: this._$wrpMiniPills}));
+
+		const metaIptSearch = ComponentUiUtil.$getIptStr(
+			this._compSearch, "search",
+			{decorationRight: "clear", asMeta: true, html: `<input class="form-control input-xs" placeholder="Search...">`}
+		);
+		this._compSearch._addHookBase("search", () => {
+			const searchTerm = this._compSearch._state.search.toLowerCase();
+			this._filters.forEach(f => f.handleSearch(searchTerm));
+		});
+
+		const $btnShowAllFilters = $(`<button class="btn btn-xs btn-default">Show All</button>`)
+			.click(() => this.showAllFilters());
+		const $btnHideAllFilters = $(`<button class="btn btn-xs btn-default">Hide All</button>`)
+			.click(() => this.hideAllFilters());
+
+		const $btnReset = $(`<button class="btn btn-xs btn-default mr-3" title="Reset filters. SHIFT to reset everything.">Reset</button>`)
+			.click(evt => this.reset(evt.shiftKey));
+
+		const $btnSettings = $(`<button class="btn btn-xs btn-default mr-3"><span class="glyphicon glyphicon-cog"/></button>`)
+			.click(() => this._openSettingsModal());
+
+		const $btnSaveAlt = $(`<button class="btn btn-xs btn-primary" title="Save"><span class="glyphicon glyphicon-ok"/></button>`)
+			.click(() => this._modalMeta.doClose(true));
+
+		const $wrpBtnCombineFilters = $(`<div class="btn-group mr-3"></div>`);
+		const $btnCombineFilterSettings = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-cog"/></button>`)
+			.click(() => this._openCombineAsModal());
+
+		const $btnCombineFiltersAs = $(`<button class="btn btn-xs btn-default"/>`)
+			.appendTo($wrpBtnCombineFilters)
+			.click(() => this._meta.modeCombineFilters = FilterBox._COMBINE_MODES.getNext(this._meta.modeCombineFilters));
+		const hook = () => {
+			$btnCombineFiltersAs.text(this._meta.modeCombineFilters === "custom" ? this._meta.modeCombineFilters.uppercaseFirst() : this._meta.modeCombineFilters.toUpperCase());
+			if (this._meta.modeCombineFilters === "custom") $wrpBtnCombineFilters.append($btnCombineFilterSettings);
+			else $btnCombineFilterSettings.detach();
+			this._doSaveStateDebounced();
+		};
+		this._addHook("meta", "modeCombineFilters", hook);
+		hook();
+
+		const $btnSave = $(`<button class="btn btn-primary fltr__btn-close mr-2">Save</button>`)
+			.click(() => this._modalMeta.doClose(true));
+
+		const $btnCancel = $(`<button class="btn btn-default fltr__btn-close">Cancel</button>`)
+			.click(() => this._modalMeta.doClose(false));
+
+		$$(this._modalMeta.$modal)`<div class="split mb-2 mt-2 flex-v-center mobile__flex-col">
+			<div class="flex-v-baseline mobile__flex-col">
+				<h4 class="m-0 mr-2 mobile__mb-2">Filters</h4>
+				${metaIptSearch.$wrp.addClass("mobile__mb-2")}
+			</div>
+			<div class="flex-v-center mobile__flex-col">
+				<div class="flex-v-center mobile__m-1">
+					<div class="mr-2">Combine as</div>
+					${$wrpBtnCombineFilters}
+				</div>
+				<div class="flex-v-center mobile__m-1">
+					<div class="btn-group mr-2">
+						${$btnShowAllFilters}
+						${$btnHideAllFilters}
+					</div>
+					${$btnReset}
+					${$btnSettings}
+					${$btnSaveAlt}
+				</div>
+			</div>
+		</div>
+		<hr class="w-100 m-0 mb-2">
+
+		<hr class="mt-1 mb-1">
+		<div class="ui-modal__scroller smooth-scroll px-1">
+			${$children}
+		</div>
+		<hr class="my-1 w-100">
+		<div class="w-100 flex-vh-center my-1">${$btnSave}${$btnCancel}</div>`
+			.click((evt) => evt.stopPropagation());
+
+		if (this._$btnReset) {
+			this._$btnReset
+				.title("Reset filters. SHIFT to reset everything.")
+				.click((evt) => this.reset(evt.shiftKey));
+		}
+
+		if (!this._$btnToggleSummaryHidden) {
+			this._$btnToggleSummaryHidden = $(`<button class="btn btn-default ${this._isCompact ? "p-2" : ""}" title="Toggle Filter Summary Display"><span class="glyphicon glyphicon-resize-small"/></button>`)
+				.prependTo(this._$wrpFormTop);
+		}
+		this._$btnToggleSummaryHidden
+			.click(() => {
+				this._meta.isSummaryHidden = !this._meta.isSummaryHidden;
+				this._doSaveStateDebounced();
+			});
+		const summaryHiddenHook = () => {
+			this._$btnToggleSummaryHidden.toggleClass("active", !!this._meta.isSummaryHidden);
+			this._$wrpMiniPills.toggleClass("ve-hidden", !!this._meta.isSummaryHidden);
+		};
+		this._addHook("meta", "isSummaryHidden", summaryHiddenHook);
+		summaryHiddenHook();
+
+		if (!this._$btnOpen) {
+			this._$btnOpen = $(`<button class="btn btn-default ${this._isCompact ? "px-2" : ""}">Filter</button>`)
+				.prependTo(this._$wrpFormTop);
+		}
+		this._$btnOpen.click(() => this.show());
+
+		const sourceFilter = this._filters.find(it => it.header === FilterBox.SOURCE_HEADER);
+		if (sourceFilter) {
+			const selFnAlt = (val) => !SourceUtil.isNonstandardSource(val) && !BrewUtil.hasSourceJson(val);
+			const hkSelFn = () => {
+				if (this._meta.isBrewDefaultHidden) sourceFilter.setTempFnSel(selFnAlt);
+				else sourceFilter.setTempFnSel(null);
+				sourceFilter.updateMiniPillClasses();
+			};
+			this._addHook("meta", "isBrewDefaultHidden", hkSelFn);
+			hkSelFn();
+		}
 	}
 
 	_openSettingsModal () {
 		const {$modalInner} = UiUtil.getShowModal({title: "Settings"});
+
 		UiUtil.$getAddModalRowCb($modalInner, "Deselect Homebrew Sources by Default", this._meta, "isBrewDefaultHidden");
+
 		UiUtil.addModalSep($modalInner);
+
 		UiUtil.$getAddModalRowHeader($modalInner, "Hide summary for filter...", {helpText: "The summary is the small red and blue button panel which appear below the search bar."});
 		this._filters.forEach(f => UiUtil.$getAddModalRowCb($modalInner, f.header, this._minisHidden, f.header));
+
+		UiUtil.addModalSep($modalInner);
+
+		const $rowResetAlwaysSave = UiUtil.$getAddModalRow($modalInner, "div").addClass("pr-2");
+		$rowResetAlwaysSave.append(`<span>Always Save on Close</span>`);
+		$(`<button class="btn btn-xs btn-default">Reset</button>`)
+			.appendTo($rowResetAlwaysSave)
+			.click(async () => {
+				await StorageUtil.pRemove(FilterBox._STORAGE_KEY_ALWAYS_SAVE_UNCHANGED);
+				JqueryUtil.doToast("Saved!");
+			});
 	}
 
 	_openCombineAsModal () {
@@ -570,17 +627,13 @@ class FilterBox extends ProxyBase {
 
 	show () {
 		this._cachedState = this._getSaveableState();
-		this._$body.css("overflow", "hidden");
-		this._$overlay.show();
+		this._modalMeta.doOpen();
 	}
 
-	async pHide (isCancel = false) {
+	async _pHandleHide (isCancel = false) {
 		if (this._cachedState && isCancel) {
 			const curState = this._getSaveableState();
 			const hasChanges = !CollectionUtil.deepEquals(curState, this._cachedState);
-
-			this._$body.css("overflow", "");
-			this._$overlay.hide();
 
 			if (hasChanges) {
 				const isSave = await InputUiUtil.pGetUserBoolean({
@@ -598,8 +651,6 @@ class FilterBox extends ProxyBase {
 				} else this._setStateFromLoaded(this._cachedState);
 			}
 		} else {
-			this._$body.css("overflow", "");
-			this._$overlay.hide();
 			this.fireChangeEvent();
 		}
 
@@ -890,14 +941,24 @@ class FilterItem {
 }
 
 class FilterBase extends BaseComponent {
+	/**
+	 * @param opts
+	 * @param opts.header Filter header (name)
+	 * @param [opts.headerHelp] Filter header help text (tooltip)
+	 */
 	constructor (opts) {
 		super();
 		this._filterBox = null;
 
 		this.header = opts.header;
+		this._headerHelp = opts.headerHelp;
 
 		this.__meta = {...this.getDefaultMeta()};
 		this._meta = this._getProxy("meta", this.__meta);
+	}
+
+	_getRenderedHeader () {
+		return `<span ${this._headerHelp ? `title="${this._headerHelp.escapeQuotes()}" class="help--subtle"` : ""}>${this.header}</span>`;
 	}
 
 	set filterBox (it) { this._filterBox = it; }
@@ -1027,6 +1088,8 @@ class Filter extends FilterBase {
 
 	/**
 	 * @param opts Options object.
+	 * @param opts.header Filter header (name)
+	 * @param [opts.headerHelp] Filter header help text (tooltip)
 	 * @param opts.items Array of filter items, either `FilterItem` or strings. e.g. `["DMG", "VGM"]`
 	 * @param [opts.nests] Key-value object of `"Nest Name": {...nestMeta}`. Nests are used to group/nest filters.
 	 * @param [opts.displayFn] Function which translates an item to a displayable form, e.g. `"MM` -> "Monster Manual"`
@@ -1283,15 +1346,21 @@ class Filter extends FilterBase {
 	}
 
 	_doSetPillsAll () {
-		Object.keys(this._state).forEach(k => this._state[k] = 1);
+		Object.keys(this._state).forEach(k => {
+			if (this._state[k] !== 1) this._state[k] = 1;
+		});
 	}
 
 	_doSetPillsClear () {
-		Object.keys(this._state).forEach(k => this._state[k] = 0);
+		Object.keys(this._state).forEach(k => {
+			if (this._state[k] !== 0) this._state[k] = 0;
+		});
 	}
 
 	_doSetPillsNone () {
-		Object.keys(this._state).forEach(k => this._state[k] = 2);
+		Object.keys(this._state).forEach(k => {
+			if (this._state[k] !== 2) this._state[k] = 2;
+		});
 	}
 
 	_doSetPinsDefault () {
@@ -1422,7 +1491,7 @@ class Filter extends FilterBase {
 		this.__$wrpFilter = $$`<div>
 			${opts.isFirst ? "" : `<div class="fltr__dropdown-divider ${opts.isMulti ? "fltr__dropdown-divider--indented" : ""} mb-1"/>`}
 			<div class="split fltr__h ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
-				<div class="ml-2 fltr__h-text flex-h-center">${opts.isMulti ? `<span class="mr-2">\u2012</span>` : ""}${this.header}${$btnMobToggleControls}</div>
+				<div class="ml-2 fltr__h-text flex-h-center">${opts.isMulti ? `<span class="mr-2">\u2012</span>` : ""}${this._getRenderedHeader()}${$btnMobToggleControls}</div>
 				${$wrpControls}
 			</div>
 			${this.__$wrpPills}
@@ -1806,6 +1875,12 @@ class SourceFilter extends Filter {
 		return new SourceFilter(baseOptions);
 	}
 
+	static getCompleteFilterSources (ent) {
+		return ent.otherSources
+			? [ent.source].concat(ent.otherSources.map(src => new FilterItem({item: src.source, isIgnoreRed: true})))
+			: ent.source;
+	}
+
 	getSources () {
 		const out = {
 			all: [],
@@ -1828,7 +1903,8 @@ class SourceFilter extends Filter {
 class RangeFilter extends FilterBase {
 	/**
 	 * @param opts Options object.
-	 * @param [opts.header] Filter header.
+	 * @param opts.header Filter header (name)
+	 * @param [opts.headerHelp] Filter header help text (tooltip)
 	 * @param [opts.min] Minimum slider value.
 	 * @param [opts.max] Maximum slider value.
 	 * @param [opts.isLabelled] If this slider has labels.
@@ -1836,6 +1912,7 @@ class RangeFilter extends FilterBase {
 	 * @param [opts.isAllowGreater] If this slider should allow all items greater than its max.
 	 * @param [opts.suffix] Suffix to add to numbers displayed above slider.
 	 * @param [opts.labelSortFn] Function used to sort labels if new labels are added. Defaults to ascending alphabetical.
+	 * @param [opts.labelDisplayFn] Function which converts a lable to a display value.
 	 */
 	constructor (opts) {
 		super(opts);
@@ -1851,6 +1928,7 @@ class RangeFilter extends FilterBase {
 		this._isAllowGreater = !!opts.isAllowGreater;
 		this._suffix = opts.suffix;
 		this._labelSortFn = opts.labelSortFn === undefined ? SortUtil.ascSort : opts.labelSortFn;
+		this._labelDisplayFn = opts.labelDisplayFn;
 
 		this._filterBox = null;
 		Object.assign(
@@ -1888,12 +1966,22 @@ class RangeFilter extends FilterBase {
 			// region Ensure the provided min/max are a lower/upper bounds for the range to be set
 			if (this._hasPredefinedMax) {
 				const tgt = (toLoad.state || {});
-				tgt.max = Math.max(this._max, tgt.max == null ? Number.MIN_SAFE_INTEGER : tgt.max);
+
+				if (tgt.max == null) tgt.max = this._max;
+				else if (tgt.max > this._max) tgt.max = this._max;
+
+				if (tgt.curMax == null) tgt.curMax = tgt.max;
+				else if (tgt.curMax > tgt.max) tgt.curMax = tgt.max;
 			}
 
 			if (this._hasPredefinedMin) {
 				const tgt = (toLoad.state || {});
-				tgt.min = Math.max(this._min, tgt.min == null ? Number.MAX_SAFE_INTEGER : tgt.min);
+
+				if (tgt.min == null) tgt.min = this._min;
+				else if (tgt.min < this._min) tgt.min = this._min;
+
+				if (tgt.curMin == null) tgt.curMin = tgt.min;
+				else if (tgt.curMin < tgt.min) tgt.curMin = tgt.min;
 			}
 			// endregion
 
@@ -2056,6 +2144,8 @@ class RangeFilter extends FilterBase {
 				if (this._labelSortFn) sliderOpts.labels = this._labels.sort(this._labelSortFn);
 				else sliderOpts.labels = this._labels;
 
+				if (this._labelDisplayFn) sliderOpts.labels = sliderOpts.labels.map(it => this._labelDisplayFn(it));
+
 				this._labelSearchCache = this._labels.join(" -- ").toLowerCase();
 			} else if (this._isAllowGreater) {
 				sliderOpts.labels = {last: `${this._state.max}+`};
@@ -2204,7 +2294,7 @@ class RangeFilter extends FilterBase {
 			$wrpDropdowns.addClass("ve-grow");
 
 			return this.__$wrpFilter = $$`<div class="flex">
-				<div class="fltr__range-inline-label">${this.header}</div>
+				<div class="fltr__range-inline-label">${this._getRenderedHeader()}</div>
 				${$wrpSlider}
 				${$wrpDropdowns}
 			</div>`;
@@ -2214,7 +2304,7 @@ class RangeFilter extends FilterBase {
 			return this.__$wrpFilter = $$`<div class="flex-col">
 				${opts.isFirst ? "" : `<div class="fltr__dropdown-divider mb-1"/>`}
 				<div class="split fltr__h ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
-					<div class="fltr__h-text flex-h-center">${this.header}${$btnMobToggleControls}</div>
+					<div class="fltr__h-text flex-h-center">${this._getRenderedHeader()}${$btnMobToggleControls}</div>
 					${$wrpControls}
 				</div>
 				${$wrpSlider}
@@ -2468,7 +2558,7 @@ class MultiFilter extends FilterBase {
 			${opts.isFirst ? "" : `<div class="fltr__dropdown-divider mb-1"/>`}
 			<div class="split fltr__h fltr__h--multi ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
 				<div class="flex-v-center">
-					<div class="mr-2">${this.header}</div>
+					<div class="mr-2">${this._getRenderedHeader()}</div>
 					${$btnAndOr}
 				</div>
 				${$wrpControls}

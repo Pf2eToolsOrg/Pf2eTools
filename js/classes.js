@@ -13,7 +13,7 @@ class ClassesPage extends BaseComponent {
 
 	static getBtnTitleSubclass (sc) {
 		const titlePartReprint = sc.isReprinted ? " (this subclass has been reprinted in a more recent source)" : "";
-		return `${sc.name}; Source: ${Parser.sourceJsonToFull(sc.source)}${titlePartReprint}`;
+		return `${sc.name}; Source: ${Parser.sourceJsonToFull(sc.source)}${sc.page ? `, page ${sc.page}` : ""}${titlePartReprint}`;
 	}
 
 	static getBaseShortName (sc) {
@@ -75,7 +75,7 @@ class ClassesPage extends BaseComponent {
 			filterBox: this.filterBox,
 			sourceFilter: this._pageFilter.sourceFilter,
 			list: this._list,
-			pHandleBrew: async homebrew => this._addData(homebrew)
+			pHandleBrew: this._pHandleBrew.bind(this)
 		});
 
 		const homebrew = await BrewUtil.pAddBrewData();
@@ -94,7 +94,7 @@ class ClassesPage extends BaseComponent {
 		this._setClassFromHash(Hist.initialLoad);
 		this._setStateFromHash(Hist.initialLoad);
 
-		await this._pRender();
+		await this._pInitAndRunRender();
 
 		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#pagecontent`));
 		this._initLinkGrabbers();
@@ -109,15 +109,18 @@ class ClassesPage extends BaseComponent {
 	}
 
 	async _pHandleBrew (homebrew) {
-		this._addData(homebrew);
+		const {isAddedAnyClass, isAddedAnySubclass} = this._addData(homebrew);
+
+		if (isAddedAnySubclass && !Hist.initialLoad) await this._pDoRender();
 	}
 
 	_addData (data) {
-		let isAddedAny = false;
-		if (data.class && data.class.length) (isAddedAny = true) && this._addData_addClassData(data.class);
-		if (data.subclass && data.subclass.length) (isAddedAny = true) && this._addData_addSubclassData(data.subclass);
+		let isAddedAnyClass = false;
+		let isAddedAnySubclass = false;
+		if (data.class && data.class.length) (isAddedAnyClass = true) && this._addData_addClassData(data.class);
+		if (data.subclass && data.subclass.length) (isAddedAnySubclass = true) && this._addData_addSubclassData(data.subclass);
 
-		if (isAddedAny) {
+		if (isAddedAnyClass || isAddedAnySubclass) {
 			this._list.update();
 			this.filterBox.render();
 			this._handleFilterChange();
@@ -127,6 +130,8 @@ class ClassesPage extends BaseComponent {
 				primaryLists: [this._list]
 			});
 		}
+
+		return {isAddedAnyClass, isAddedAnySubclass};
 	}
 
 	_addData_addClassData (classes) {
@@ -166,6 +171,11 @@ class ClassesPage extends BaseComponent {
 	}
 
 	_addData_addSubclassData (subclasses) {
+		let isBlankSourceFilter;
+		if (!Hist.initialLoad) {
+			isBlankSourceFilter = !this._pageFilter.sourceFilter.getValues()._isActive;
+		}
+
 		subclasses.forEach(sc => {
 			const cls = this._dataList.find(c => c.name.toLowerCase() === sc.class.toLowerCase() && c.source.toLowerCase() === (sc.classSource || SRC_PHB).toLowerCase());
 			if (!cls) {
@@ -176,6 +186,10 @@ class ClassesPage extends BaseComponent {
 				return;
 			}
 
+			// Avoid re-adding existing brew subclasses
+			const existingBrewSc = sc.uniqueId ? cls.subclasses.find(it => it.uniqueId === sc.uniqueId) : null;
+			if (existingBrewSc) return;
+
 			const isExcludedClass = ExcludeUtil.isExcluded(cls.name, "class", cls.source);
 
 			cls.subclasses.push(sc);
@@ -183,6 +197,10 @@ class ClassesPage extends BaseComponent {
 			this._pageFilter.mutateAndAddToFilters(cls, isExcludedClass);
 			cls.subclasses.sort(ClassesPage._ascSortSubclasses);
 		});
+
+		// If we load a homebrew source when we have no source filters active, the homebrew source will set itself high
+		//   and force itself as the only visible source. Fix it in post.
+		if (isBlankSourceFilter) this._pageFilter.sourceFilter.doSetPillsClear();
 	}
 
 	_initHashAndStateSync () {
@@ -438,121 +456,121 @@ class ClassesPage extends BaseComponent {
 		);
 	}
 
-	async _pRender () {
+	async _pInitAndRunRender () {
 		this._$wrpOutline = $(`#sticky-nav`);
-
-		const pDoRender = async () => {
-			// reset all hooks in preparation for rendering
-			this._initHashAndStateSync();
-			$(this.filterBox)
-				.off(FilterBox.EVNT_VALCHANGE)
-				.on(FilterBox.EVNT_VALCHANGE, this._handleFilterChange.bind(this));
-
-			// region bind list updates
-			const hkSetHref = () => {
-				// defer this for performance
-				setTimeout(() => {
-					this._list.items
-						.filter(it => it.data.$lnk)
-						.forEach(it => {
-							const href = `#${this._getHashState({class: it.data.entity})}`;
-							it.data.$lnk.attr("href", href)
-						});
-				}, 5);
-			};
-			this._addHook("classId", "_", hkSetHref);
-			this._addHookAll("state", hkSetHref);
-			hkSetHref();
-			// endregion
-
-			// region rendering
-			this._render_renderClassTable();
-			this._render_renderSidebar();
-			await this._render_pRenderSubclassTabs();
-			this._render_renderClassContent();
-			this._render_renderOutline();
-			this._render_renderAltViews();
-			// endregion
-
-			// region state handling
-			const hkScrollToFeature = () => {
-				// `state.feature` is set by clicking links in the class feature table
-				if (this._state.feature) {
-					// track last scrolled, otherwise *any* further hash/state change will cause us to scroll
-					if (this._lastScrollFeature === this._state.feature) return;
-					this._lastScrollFeature = this._state.feature;
-
-					const $scrollTo = $(`[data-scroll-id="${this._state.feature}"]`);
-					if (!$scrollTo[0]) {
-						// This should never occur, but just in case, clean up
-						this._state.feature = null;
-						this._lastScrollFeature = null;
-					} else {
-						setTimeout(() => $scrollTo[0].scrollIntoView(), 100);
-					}
-				}
-			};
-			this._addHookBase("feature", hkScrollToFeature);
-			hkScrollToFeature();
-
-			const hkDisplayFluff = () => $(`.cls-main__cls-fluff`).toggleClass("hidden", !this._state.isShowFluff);
-			this._addHookBase("isShowFluff", hkDisplayFluff);
-			MiscUtil.pDefer(hkDisplayFluff);
-
-			const hkDisplayFeatures = () => {
-				const $dispClassFeatures = $(`[data-feature-type="class"]`);
-				const $dispFeaturesSubclassHeader = $(`[data-feature-type="gain-subclass"]`);
-
-				if (this._state.isHideFeatures) {
-					if (this._isAnySubclassActive()) {
-						this._$wrpOutline.toggleClass("hidden", false);
-						this._$trNoContent.toggleClass("hidden", true);
-						$dispClassFeatures.toggleClass("hidden", true);
-						$dispFeaturesSubclassHeader.toggleClass("hidden", false);
-					} else {
-						this._$wrpOutline.toggleClass("hidden", true);
-						this._$trNoContent.toggleClass("hidden", false);
-						$dispClassFeatures.toggleClass("hidden", true);
-						$dispFeaturesSubclassHeader.toggleClass("hidden", true);
-					}
-				} else {
-					this._$wrpOutline.toggleClass("hidden", false);
-					this._$trNoContent.toggleClass("hidden", true);
-					$dispClassFeatures.toggleClass("hidden", false);
-					$dispFeaturesSubclassHeader.toggleClass("hidden", false);
-				}
-			};
-			this._addHookBase("isHideFeatures", hkDisplayFeatures);
-			MiscUtil.pDefer(hkDisplayFeatures);
-
-			const cls = this.activeClass;
-			cls.subclasses.forEach(sc => {
-				const stateKey = UrlUtil.getStateKeySubclass(sc);
-				const hkDisplaySubclass = () => {
-					const isVisible = this._state[stateKey];
-					$(`[data-subclass-id="${stateKey}"]`).toggleClass("hidden", !isVisible);
-				};
-				this._addHookBase(stateKey, hkDisplaySubclass);
-				// Check/update main feature display here, as if there are no subclasses active we can hide more
-				this._addHookBase(stateKey, hkDisplayFeatures);
-				MiscUtil.pDefer(hkDisplaySubclass);
-			});
-			// endregion
-
-			this._handleFilterChange();
-		};
 
 		// Use hookAll to allow us to reset temp hooks on the property itself
 		this._addHookAll("classId", async () => {
 			await this._pLock("render");
 			try {
-				await pDoRender();
+				await this._pDoRender();
 			} finally {
 				this._unlock("render");
 			}
 		});
 
-		await pDoRender();
+		await this._pDoRender();
+	}
+
+	async _pDoRender () {
+		// reset all hooks in preparation for rendering
+		this._initHashAndStateSync();
+		$(this.filterBox)
+			.off(FilterBox.EVNT_VALCHANGE)
+			.on(FilterBox.EVNT_VALCHANGE, this._handleFilterChange.bind(this));
+
+		// region bind list updates
+		const hkSetHref = () => {
+			// defer this for performance
+			setTimeout(() => {
+				this._list.items
+					.filter(it => it.data.$lnk)
+					.forEach(it => {
+						const href = `#${this._getHashState({class: it.data.entity})}`;
+						it.data.$lnk.attr("href", href)
+					});
+			}, 5);
+		};
+		this._addHook("classId", "_", hkSetHref);
+		this._addHookAll("state", hkSetHref);
+		hkSetHref();
+		// endregion
+
+		// region rendering
+		this._render_renderClassTable();
+		this._render_renderSidebar();
+		await this._render_pRenderSubclassTabs();
+		this._render_renderClassContent();
+		this._render_renderOutline();
+		this._render_renderAltViews();
+		// endregion
+
+		// region state handling
+		const hkScrollToFeature = () => {
+			// `state.feature` is set by clicking links in the class feature table
+			if (this._state.feature) {
+				// track last scrolled, otherwise *any* further hash/state change will cause us to scroll
+				if (this._lastScrollFeature === this._state.feature) return;
+				this._lastScrollFeature = this._state.feature;
+
+				const $scrollTo = $(`[data-scroll-id="${this._state.feature}"]`);
+				if (!$scrollTo[0]) {
+					// This should never occur, but just in case, clean up
+					this._state.feature = null;
+					this._lastScrollFeature = null;
+				} else {
+					setTimeout(() => $scrollTo[0].scrollIntoView(), 100);
+				}
+			}
+		};
+		this._addHookBase("feature", hkScrollToFeature);
+		hkScrollToFeature();
+
+		const hkDisplayFluff = () => $(`.cls-main__cls-fluff`).toggleClass("hidden", !this._state.isShowFluff);
+		this._addHookBase("isShowFluff", hkDisplayFluff);
+		MiscUtil.pDefer(hkDisplayFluff);
+
+		const hkDisplayFeatures = () => {
+			const $dispClassFeatures = $(`[data-feature-type="class"]`);
+			const $dispFeaturesSubclassHeader = $(`[data-feature-type="gain-subclass"]`);
+
+			if (this._state.isHideFeatures) {
+				if (this._isAnySubclassActive()) {
+					this._$wrpOutline.toggleClass("hidden", false);
+					this._$trNoContent.toggleClass("hidden", true);
+					$dispClassFeatures.toggleClass("hidden", true);
+					$dispFeaturesSubclassHeader.toggleClass("hidden", false);
+				} else {
+					this._$wrpOutline.toggleClass("hidden", true);
+					this._$trNoContent.toggleClass("hidden", false);
+					$dispClassFeatures.toggleClass("hidden", true);
+					$dispFeaturesSubclassHeader.toggleClass("hidden", true);
+				}
+			} else {
+				this._$wrpOutline.toggleClass("hidden", false);
+				this._$trNoContent.toggleClass("hidden", true);
+				$dispClassFeatures.toggleClass("hidden", false);
+				$dispFeaturesSubclassHeader.toggleClass("hidden", false);
+			}
+		};
+		this._addHookBase("isHideFeatures", hkDisplayFeatures);
+		MiscUtil.pDefer(hkDisplayFeatures);
+
+		const cls = this.activeClass;
+		cls.subclasses.forEach(sc => {
+			const stateKey = UrlUtil.getStateKeySubclass(sc);
+			const hkDisplaySubclass = () => {
+				const isVisible = this._state[stateKey];
+				$(`[data-subclass-id="${stateKey}"]`).toggleClass("hidden", !isVisible);
+			};
+			this._addHookBase(stateKey, hkDisplaySubclass);
+			// Check/update main feature display here, as if there are no subclasses active we can hide more
+			this._addHookBase(stateKey, hkDisplayFeatures);
+			MiscUtil.pDefer(hkDisplaySubclass);
+		});
+		// endregion
+
+		this._handleFilterChange();
 	}
 
 	_isAnySubclassActive () { return !!this._getActiveSubclasses().length; }
@@ -784,6 +802,7 @@ class ClassesPage extends BaseComponent {
 		if (cls.multiclassing) {
 			const mc = cls.multiclassing;
 
+			const htmlMCcPrereqPreText = mc.requirements || mc.requirementsSpecial ? `<div>To qualify for a new class, you must meet the ${mc.requirementsSpecial ? "" : "ability score "}prerequisites for both your current class and your new one.</div>` : "";
 			let $ptMcPrereq = null;
 			if (mc.requirements) {
 				const renderPart = (obj, joiner = ", ") => Object.keys(obj).filter(k => k !== "or").sort(SortUtil.ascSortAtts).map(k => `${Parser.attAbvToFull(k)} ${obj[k]}`).join(joiner);
@@ -791,8 +810,16 @@ class ClassesPage extends BaseComponent {
 				const basePart = renderPart(mc.requirements);
 
 				$ptMcPrereq = $$`<div>
-					<div>To qualify for a new class, you must meet the ability score prerequisites for both your current class and your new one.</div>
+					${htmlMCcPrereqPreText}
 					<b>Ability Score Minimum:</b> ${[orPart, basePart].filter(Boolean).join("; ")}
+				</div>`
+			}
+
+			let $ptMcPrereqSpecial = null;
+			if (mc.requirementsSpecial) {
+				$ptMcPrereqSpecial = $$`<div>
+					${mc.requirements ? "" : htmlMCcPrereqPreText}
+					<b>${mc.requirements ? "Other " : ""}Prerequisites:</b> ${Renderer.get().render(mc.requirementsSpecial || "")}
 				</div>`
 			}
 
@@ -802,7 +829,7 @@ class ClassesPage extends BaseComponent {
 			let $ptMcProfsTools = null;
 			let $ptMcProfsSkills = null;
 			if (mc.proficienciesGained) {
-				$ptMcProfsIntro = $(`<div ${mc.requirements ? `class="cls-side__mc-prof-intro--requirements"` : ""}>When you gain a level in a class other than your first, you gain only some of that class's starting proficiencies.</div>`);
+				$ptMcProfsIntro = $(`<div ${mc.requirements || mc.requirementsSpecial ? `class="cls-side__mc-prof-intro--requirements"` : ""}>When you gain a level in a class other than your first, you gain only some of that class's starting proficiencies.</div>`);
 
 				if (mc.proficienciesGained.armor) $ptMcProfsArmor = $(`<div><b>Armor:</b> ${renderArmorProfs(mc.proficienciesGained.armor)}</div>`);
 
@@ -817,6 +844,7 @@ class ClassesPage extends BaseComponent {
 				<td class="cls-side__section" colspan="6">
 					<h5 class="cls-side__section-head">Multiclassing</h5>
 					${$ptMcPrereq}
+					${$ptMcPrereqSpecial}
 					${$ptMcProfsIntro}
 					${$ptMcProfsArmor}
 					${$ptMcProfsWeapons}
@@ -1071,7 +1099,8 @@ class ClassesPage extends BaseComponent {
 			},
 			{
 				isExcluded,
-				entity: sc
+				entity: sc,
+				uniqueId: sc.uniqueId ? sc.uniqueId : ix
 			}
 		);
 	}
@@ -1363,6 +1392,24 @@ class ClassesPage extends BaseComponent {
 		$content.append(Renderer.utils.getBorderTr());
 	}
 
+	async pDeleteSubclassBrew (uniqueId, sc) {
+		sc.classSource = sc.classSource || SRC_PHB;
+		const cls = this._dataList.find(c => c.name.toLowerCase() === sc.class.toLowerCase() && c.source.toLowerCase() === sc.classSource.toLowerCase());
+
+		if (!cls) {
+			setTimeout(() => { throw new Error(`Could not find class "${sc.class}" with source "${sc.classSource}" to delete subclass "${sc.name}" from!`); })
+			return;
+		}
+
+		const ixSc = cls.subclasses.findIndex(it => it.uniqueId === uniqueId);
+		if (~ixSc) {
+			cls.subclasses.splice(ixSc, 1);
+			if (this._listSubclass) this._listSubclass.removeItemByData("uniqueId", uniqueId);
+			const stateKey = UrlUtil.getStateKeySubclass(sc);
+			this._state[stateKey] = false;
+		}
+	}
+
 	static _render_$getTrNoContent () {
 		return $(`<tr class="cls-main__msg-no-content"><td colspan="6">Toggle a button to view class and subclass information</td></tr>`);
 	}
@@ -1432,6 +1479,24 @@ ClassesPage.ClassBookView = class {
 		Renderer.get().recursiveRender({type: "section", name: cls.name}, renderStack);
 		renderStack.push(`</td></tr>`);
 
+		renderStack.push(`<tr class="text" data-cls-book-fluff="true"><td colspan="6" class="py-3 px-5">`);
+		Renderer.get().setFirstSection(true);
+		(cls.fluff || []).forEach((f, i) => {
+			f = MiscUtil.copy(f);
+
+			// Remove the name from the first section if it is a copy of the class name
+			if (i === 0 && f.name && f.name.toLowerCase() === cls.name.toLowerCase()) {
+				delete f.name;
+			}
+
+			if (f.source && f.source !== cls.source && f.entries) {
+				f.entries.unshift(`{@note The following information is from ${Parser.sourceJsonToFull(f.source)}${f.page > 0 ? `, page ${f.page}` : ""}.}`);
+			}
+
+			Renderer.get().recursiveRender(f, renderStack);
+		});
+		renderStack.push(`</td></tr>`);
+
 		renderStack.push(`<tr class="text" data-cls-book-cf="true"><td colspan="6" class="py-3 px-5">`);
 		cls.classFeatures.forEach(lvl => {
 			lvl.forEach(cf => Renderer.get().recursiveRender(cf, renderStack));
@@ -1452,13 +1517,18 @@ ClassesPage.ClassBookView = class {
 		$tblBook.append(renderStack.join(""));
 
 		// Menu panel
-		const $btnToggleCf = $(`<span class="cls-bkmv__btn-tab">Class Features</span>`).on("click", () => {
+		const $btnToggleCf = $(`<span class="cls-bkmv__btn-tab">Features</span>`).on("click", () => {
 			this._parent.set("isHideFeatures", !this._parent.get("isHideFeatures"));
+		});
+		const $btnToggleInfo = $(`<span class="cls-bkmv__btn-tab">Info</span>`).on("click", () => {
+			this._parent.set("isShowFluff", !this._parent.get("isShowFluff"));
 		});
 
 		if (this._parent.get("isHideFeatures")) this._parent.set("isHideFeatures", false);
+		if (!this._parent.get("isShowFluff")) this._parent.set("isShowFluff", true);
 
 		$pnlMenu.append($btnToggleCf);
+		$pnlMenu.append($btnToggleInfo);
 
 		const filterValues = this._classPage.filterBox.getValues();
 		cls.subclasses
@@ -1495,6 +1565,16 @@ ClassesPage.ClassBookView = class {
 		(this._hooks["isHideFeatures"] = this._hooks["isHideFeatures"] || []).push(hkFeatures);
 		this._parent.addHook("isHideFeatures", hkFeatures);
 		hkFeatures();
+
+		const hkFluff = () => {
+			const $dispFluff = this._$wrpBook.find(`[data-cls-book-fluff="true"]`);
+			const isHidden = !this._parent.get("isShowFluff");
+			$btnToggleInfo.toggleClass("active", !isHidden);
+			$dispFluff.toggleClass("hidden", !!isHidden);
+		};
+		(this._hooks["isShowFluff"] = this._hooks["isShowFluff"] || []).push(hkFluff);
+		this._parent.addHook("isShowFluff", hkFluff);
+		hkFluff();
 
 		const f = this._classPage.filterBox.getValues();
 		this._$wrpBook.find(`tr`).each((i, e) => {

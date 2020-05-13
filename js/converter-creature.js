@@ -401,7 +401,7 @@ class CreatureParser extends BaseParser {
 		const getCleanTraitText = (line) => {
 			const [name, text] = line.replace(/^\*\*\*?/, "").split(/.\s*\*\*\*?/).map(it => it.trim());
 			return [
-				name,
+				ConvertUtil.getCleanTraitActionName(name),
 				text.replace(/\*Hit(\*:|:\*) /g, "Hit: ") // clean hit tags for later replacement
 			]
 		};
@@ -783,7 +783,7 @@ class CreatureParser extends BaseParser {
 		TagCondition.tryTagConditionsRegionalsLairs(stats, (legendaryGroup) => options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Legendary group "${legendaryGroup.name} :: ${legendaryGroup.source}" could not be found during condition tagging`));
 		TraitActionTag.tryRun(stats);
 		LanguageTag.tryRun(stats);
-		SenseTag.tryRun(stats);
+		SenseFilterTag.tryRun(stats);
 		SpellcastingTypeTag.tryRun(stats);
 		DamageTypeTag.tryRun(stats);
 		MiscTag.tryRun(stats);
