@@ -5,6 +5,9 @@ module.exports = {
 		"es6": true,
 		"node": true
 	},
+	"parserOptions": {
+		"ecmaVersion": 9
+	},
 	"rules": {
 		"accessor-pairs": "error",
 		"arrow-spacing": ["error", {"before": true, "after": true}],
