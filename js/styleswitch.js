@@ -42,8 +42,10 @@ class StyleSwitcher {
 	_setActiveWide (isActive) {
 		const existing = document.getElementById(StyleSwitcher._WIDE_ID);
 		if (!isActive) {
+			document.documentElement.classList.remove(StyleSwitcher._WIDE_ID);
 			if (existing) existing.parentNode.removeChild(existing);
 		} else {
+			document.documentElement.classList.add(StyleSwitcher._WIDE_ID);
 			if (!existing) {
 				const eleScript = document.createElement(`style`);
 				eleScript.id = StyleSwitcher._WIDE_ID;

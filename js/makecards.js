@@ -444,8 +444,11 @@ class MakeCards extends BaseComponent {
 			mon.reaction ? this._ct_section("Reactions") : null,
 			...(mon.reaction ? this._ct_renderEntries(mon.reaction, 2) : []),
 			mon.legendary ? this._ct_section("Legendary Actions") : null,
-			mon.legendary ? this._ct_text(this._ct_htmlToText(Renderer.monster.getLegendaryActionIntro(mon))) : null,
-			...(mon.legendary ? this._ct_renderEntries(mon.legendary, 2) : [])
+			mon.legendary ? this._ct_text(this._ct_htmlToText(Renderer.monster.getLegendaryActionIntro(mon, renderer))) : null,
+			...(mon.legendary ? this._ct_renderEntries(mon.legendary, 2) : []),
+			mon.mythic ? this._ct_section("Mythic Actions") : null,
+			mon.mythic ? this._ct_text(this._ct_htmlToText(Renderer.monster.getMythicActionIntro(mon, renderer))) : null,
+			...(mon.mythic ? this._ct_renderEntries(mon.mythic, 2) : [])
 		].filter(Boolean)
 	}
 
@@ -478,7 +481,7 @@ class MakeCards extends BaseComponent {
 		MakeCards.utils.enhanceItemAlt(item);
 
 		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item);
-		const ptValueWeight = [Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst();
+		const ptValueWeight = [Parser.itemValueToFullMultiCurrency(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst();
 		const ptDamageProperties = this._ct_htmlToText([damage, damageType, propertiesTxt].filter(Boolean).join(" "));
 
 		const itemEntries = [];

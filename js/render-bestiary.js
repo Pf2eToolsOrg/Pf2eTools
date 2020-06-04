@@ -4,7 +4,7 @@ class RenderBestiary {
 		const renderStack = [];
 		if (sectionTrClass === "lairaction" || sectionTrClass === "regionaleffect") {
 			renderer.recursiveRender({entries: sectionEntries}, renderStack, {depth: sectionLevel + 2});
-		} else if (sectionTrClass === "legendary") {
+		} else if (sectionTrClass === "legendary" || sectionTrClass === "mythic") {
 			const cpy = MiscUtil.copy(sectionEntries).map(it => {
 				if (it.name && it.entries) {
 					it.name = `${it.name}.`;
@@ -24,13 +24,10 @@ class RenderBestiary {
 	}
 
 	static _getPronunciationButton (mon) {
-		const basename = mon.soundClip.substr(mon.soundClip.lastIndexOf("/") + 1);
-
 		return `<button class="btn btn-xs btn-default btn-name-pronounce ml-2">
 			<span class="glyphicon glyphicon-volume-up name-pronounce-icon"></span>
 			<audio class="name-pronounce">
-			   <source src="${mon.soundClip}" type="audio/mpeg">
-			   <source src="${Renderer.get().baseUrl}audio/bestiary/${basename}" type="audio/mpeg">
+			   <source src="${Renderer.utils.getMediaUrl(mon, "soundClip", "audio")}" type="audio/mpeg">
 			</audio>
 		</button>`;
 	}
@@ -141,6 +138,9 @@ class RenderBestiary {
 		${mon.legendary ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Legendary Actions</span></td></tr>
 		<tr class="legendary"><td colspan="6"><span class="name"></span> <span>${Renderer.monster.getLegendaryActionIntro(mon)}</span></td></tr>
 		${RenderBestiary._getRenderedSection("legendary", mon.legendary, 1)}` : ""}
+		${mon.mythic ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Mythic Actions</span></td></tr>
+		<tr class="mythic"><td colspan="6"><span class="name"></span> <span>${Renderer.monster.getMythicActionIntro(mon)}</span></td></tr>
+		${RenderBestiary._getRenderedSection("mythic", mon.mythic, 1)}` : ""}
 
 		${legGroup && legGroup.lairActions ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Lair Actions</span></td></tr>
 		${RenderBestiary._getRenderedSection("lairaction", legGroup.lairActions, -1)}` : ""}

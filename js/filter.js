@@ -203,16 +203,16 @@ class ModalFilter {
 				const $btnReset = $(`<button class="btn btn-default">Reset</button>`);
 				const $wrpFormTop = $$`<div class="flex input-group btn-group w-100 lst__form-top">${$iptSearch}${$btnReset}</div>`;
 
-				const $wrpFormBottom = $(`<div class="w-100"/>`);
+				const $wrpFormBottom = $(`<div class="w-100"></div>`);
 
-				const $wrpFormHeaders = $(`<div class="sortlabel lst__form-bottom"/>`);
+				const $wrpFormHeaders = $(`<div class="sortlabel lst__form-bottom"></div>`);
 				const $cbSelAll = $(`<input type="checkbox">`);
 
 				$$`<label class="btn btn-default col-1 flex-vh-center">${$cbSelAll}</label>`.appendTo($wrpFormHeaders);
 				this._$getColumnHeaders().forEach($ele => $wrpFormHeaders.append($ele));
 
 				const $wrpForm = $$`<div class="flex-col w-100 mb-2">${$wrpFormTop}${$wrpFormBottom}${$wrpFormHeaders}</div>`;
-				const $wrpList = $(`<ul class="list mb-2 h-100"/>`);
+				const $wrpList = $(`<ul class="list mb-2 h-100"></ul>`);
 
 				const $btnConfirm = $(`<button class="btn btn-default">Confirm</button>`);
 
@@ -435,7 +435,7 @@ class FilterBox extends ProxyBase {
 		});
 
 		if (!this._$wrpMiniPills) {
-			this._$wrpMiniPills = $(`<div class="fltr__mini-view btn-group"/>`).insertAfter(this._$wrpFormTop);
+			this._$wrpMiniPills = $(`<div class="fltr__mini-view btn-group"></div>`).insertAfter(this._$wrpFormTop);
 		} else {
 			this._$wrpMiniPills.addClass("fltr__mini-view");
 		}
@@ -459,17 +459,17 @@ class FilterBox extends ProxyBase {
 		const $btnReset = $(`<button class="btn btn-xs btn-default mr-3" title="Reset filters. SHIFT to reset everything.">Reset</button>`)
 			.click(evt => this.reset(evt.shiftKey));
 
-		const $btnSettings = $(`<button class="btn btn-xs btn-default mr-3"><span class="glyphicon glyphicon-cog"/></button>`)
+		const $btnSettings = $(`<button class="btn btn-xs btn-default mr-3"><span class="glyphicon glyphicon-cog"></span></button>`)
 			.click(() => this._openSettingsModal());
 
-		const $btnSaveAlt = $(`<button class="btn btn-xs btn-primary" title="Save"><span class="glyphicon glyphicon-ok"/></button>`)
+		const $btnSaveAlt = $(`<button class="btn btn-xs btn-primary" title="Save"><span class="glyphicon glyphicon-ok"></span></button>`)
 			.click(() => this._modalMeta.doClose(true));
 
 		const $wrpBtnCombineFilters = $(`<div class="btn-group mr-3"></div>`);
-		const $btnCombineFilterSettings = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-cog"/></button>`)
+		const $btnCombineFilterSettings = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-cog"></span></button>`)
 			.click(() => this._openCombineAsModal());
 
-		const $btnCombineFiltersAs = $(`<button class="btn btn-xs btn-default"/>`)
+		const $btnCombineFiltersAs = $(`<button class="btn btn-xs btn-default"></button>`)
 			.appendTo($wrpBtnCombineFilters)
 			.click(() => this._meta.modeCombineFilters = FilterBox._COMBINE_MODES.getNext(this._meta.modeCombineFilters));
 		const hook = () => {
@@ -525,7 +525,7 @@ class FilterBox extends ProxyBase {
 		}
 
 		if (!this._$btnToggleSummaryHidden) {
-			this._$btnToggleSummaryHidden = $(`<button class="btn btn-default ${this._isCompact ? "p-2" : ""}" title="Toggle Filter Summary Display"><span class="glyphicon glyphicon-resize-small"/></button>`)
+			this._$btnToggleSummaryHidden = $(`<button class="btn btn-default ${this._isCompact ? "p-2" : ""}" title="Toggle Filter Summary Display"><span class="glyphicon glyphicon-resize-small"></span></button>`)
 				.prependTo(this._$wrpFormTop);
 		}
 		this._$btnToggleSummaryHidden
@@ -1018,7 +1018,7 @@ class FilterBase extends BaseComponent {
 	}
 
 	_$getBtnMobToggleControls ($wrpControls) {
-		const $btnMobToggleControls = $(`<button class="btn btn-xs btn-default mobile__visible ml-2 px-3"><span class="glyphicon glyphicon-option-vertical"/></button>`)
+		const $btnMobToggleControls = $(`<button class="btn btn-xs btn-default mobile__visible ml-2 px-3"><span class="glyphicon glyphicon-option-vertical"></span></button>`)
 			.click(() => this._meta.isMobileHeaderHidden = !this._meta.isMobileHeaderHidden);
 		const hkMobHeaderHidden = () => {
 			$btnMobToggleControls.toggleClass("active", !this._meta.isMobileHeaderHidden);
@@ -1180,7 +1180,11 @@ class Filter extends FilterBase {
 			out.push(UrlUtil.packSubHash(this.getSubHashPrefix("nestsHidden", this.header), nestsHidden));
 		}
 
-		return out.length ? out : null;
+		if (!out.length) return null;
+
+		// Always extend default state
+		out.push(UrlUtil.packSubHash(this.getSubHashPrefix("options", this.header), ["extend"]))
+		return out;
 	}
 
 	/**
@@ -1377,15 +1381,15 @@ class Filter extends FilterBase {
 		const $wrpStateBtnsOuter = $$`<div class="flex-v-center fltr__h-wrp-state-btns-outer">${$wrpStateBtns}</div>`;
 		this._$getHeaderControls_addExtraStateBtns(opts, $wrpStateBtnsOuter);
 
-		const $wrpSummary = $(`<div class="flex-vh-center"/>`).hide();
+		const $wrpSummary = $(`<div class="flex-vh-center"></div>`).hide();
 
-		const $btnCombineBlue = $$`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn-logic--blue fltr__h-btn-logic w-100" title="Positive matches mode for this filter. AND requires all blues to match, OR requires at least one blue to match."/>`
+		const $btnCombineBlue = $$`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn-logic--blue fltr__h-btn-logic w-100" title="Positive matches mode for this filter. AND requires all blues to match, OR requires at least one blue to match."></button>`
 			.click(() => this._meta.combineBlue = this._meta.combineBlue === "or" ? "and" : "or");
 		const hookCombineBlue = () => $btnCombineBlue.text(`${this._meta.combineBlue}`.toUpperCase());
 		this._addHook("meta", "combineBlue", hookCombineBlue);
 		hookCombineBlue();
 
-		const $btnCombineRed = $$`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn-logic--red fltr__h-btn-logic w-100" title="Negative match mode for this filter. AND requires all reds to match, OR requires at least one red to match."/>`
+		const $btnCombineRed = $$`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn-logic--red fltr__h-btn-logic w-100" title="Negative match mode for this filter. AND requires all reds to match, OR requires at least one red to match."></button>`
 			.click(() => this._meta.combineRed = this._meta.combineRed === "or" ? "and" : "or");
 		const hookCombineRed = () => $btnCombineRed.text(`${this._meta.combineRed}`.toUpperCase());
 		this._addHook("meta", "combineRed", hookCombineRed);
@@ -1401,17 +1405,17 @@ class Filter extends FilterBase {
 			// render summary
 			const cur = this.getValues()[this.header];
 
-			$(`<span class="fltr__summary_item fltr__summary_item--include"/>`)
+			$(`<span class="fltr__summary_item fltr__summary_item--include"></span>`)
 				.title(`${cur._totals.yes} hidden "required" tags`)
 				.text(cur._totals.yes)
 				.toggle(!!cur._totals.yes)
 				.appendTo($wrpSummary);
 
-			$(`<span class="fltr__summary_item_spacer"/>`)
+			$(`<span class="fltr__summary_item_spacer"></span>`)
 				.toggle(!!(cur._totals.yes && cur._totals.no))
 				.appendTo($wrpSummary);
 
-			$(`<span class="fltr__summary_item fltr__summary_item--exclude"/>`)
+			$(`<span class="fltr__summary_item fltr__summary_item--exclude"></span>`)
 				.title(`${cur._totals.no} hidden "excluded" tags`)
 				.text(cur._totals.no)
 				.toggle(!!cur._totals.no)
@@ -1449,16 +1453,16 @@ class Filter extends FilterBase {
 
 		const $wrpControls = this._$getHeaderControls(opts);
 
-		this.__$wrpPills = $$`<div class="fltr__wrp-pills ${this._groupFn ? "fltr__wrp-subs" : ""}"/>`;
+		this.__$wrpPills = $$`<div class="fltr__wrp-pills ${this._groupFn ? "fltr__wrp-subs" : ""}"></div>`;
 		const hook = () => this.__$wrpPills.toggle(!this._meta.isHidden);
 		this._addHook("meta", "isHidden", hook);
 		hook();
 
 		if (this._nests) {
-			const $wrpNestHead = $(`<div class="fltr__wrp-pills--sub"/>`).appendTo(this.__$wrpPills);
-			this.__$wrpNestHeadInner = $(`<div class="flex flex-wrap"/>`).appendTo($wrpNestHead);
+			const $wrpNestHead = $(`<div class="fltr__wrp-pills--sub"></div>`).appendTo(this.__$wrpPills);
+			this.__$wrpNestHeadInner = $(`<div class="flex flex-wrap"></div>`).appendTo($wrpNestHead);
 
-			const $wrpNestHeadSummary = $(`<div class="fltr__summary_nest"/>`).appendTo($wrpNestHead);
+			const $wrpNestHeadSummary = $(`<div class="fltr__summary_nest"></div>`).appendTo($wrpNestHead);
 
 			this._updateNestSummary = () => {
 				const stats = {high: 0, low: 0};
@@ -1472,7 +1476,7 @@ class Filter extends FilterBase {
 						.title(`${stats.high} hidden "required" tag${stats.high === 1 ? "" : "s"}`)
 						.appendTo($wrpNestHeadSummary);
 				}
-				if (stats.high && stats.low) $(`<span class="fltr__summary_item_spacer"/>`).appendTo($wrpNestHeadSummary);
+				if (stats.high && stats.low) $(`<span class="fltr__summary_item_spacer"></span>`).appendTo($wrpNestHeadSummary);
 				if (stats.low) {
 					$(`<span class="fltr__summary_item fltr__summary_item--exclude">${stats.low}</span>`)
 						.title(`${stats.low} hidden "excluded" tag${stats.low === 1 ? "" : "s"}`)
@@ -1489,7 +1493,7 @@ class Filter extends FilterBase {
 		const $btnMobToggleControls = this._$getBtnMobToggleControls($wrpControls);
 
 		this.__$wrpFilter = $$`<div>
-			${opts.isFirst ? "" : `<div class="fltr__dropdown-divider ${opts.isMulti ? "fltr__dropdown-divider--indented" : ""} mb-1"/>`}
+			${opts.isFirst ? "" : `<div class="fltr__dropdown-divider ${opts.isMulti ? "fltr__dropdown-divider--indented" : ""} mb-1"></div>`}
 			<div class="split fltr__h ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
 				<div class="ml-2 fltr__h-text flex-h-center">${opts.isMulti ? `<span class="mr-2">\u2012</span>` : ""}${this._getRenderedHeader()}${$btnMobToggleControls}</div>
 				${$wrpControls}
@@ -1547,7 +1551,7 @@ class Filter extends FilterBase {
 				if (!this._pillGroupsMeta[group]) {
 					this._pillGroupsMeta[group] = {
 						$hrDivider: $(`<hr class="fltr__dropdown-divider--sub">`).appendTo(this.__$wrpPills),
-						$wrpPills: $(`<div class="fltr__wrp-pills--sub"/>`).appendTo(this.__$wrpPills)
+						$wrpPills: $(`<div class="fltr__wrp-pills--sub"></div>`).appendTo(this.__$wrpPills)
 					};
 
 					Object.entries(this._pillGroupsMeta)
@@ -2084,7 +2088,7 @@ class RangeFilter extends FilterBase {
 		const $btnReset = $(`<button class="btn btn-default btn-xs">Reset</button>`).click(() => this.reset());
 		const $wrpBtns = $$`<div>${$btnForceMobile}${$btnReset}</div>`;
 
-		const $wrpSummary = $(`<div class="flex-v-center fltr__summary_item fltr__summary_item--include"/>`).hide();
+		const $wrpSummary = $(`<div class="flex-v-center fltr__summary_item fltr__summary_item--include"></div>`).hide();
 
 		const $btnShowHide = $(`<button class="btn btn-default btn-xs ml-2 ${this._meta.isHidden ? "active" : ""}">Hide</button>`)
 			.click(() => this._meta.isHidden = !this._meta.isHidden);
@@ -2126,8 +2130,8 @@ class RangeFilter extends FilterBase {
 
 		const $wrpControls = opts.isMulti ? null : this._$getHeaderControls();
 
-		const $wrpSlider = $$`<div class="fltr__wrp-pills fltr__wrp-pills--flex"/>`;
-		const $wrpDropdowns = $$`<div class="fltr__wrp-pills fltr__wrp-pills--flex"/>`;
+		const $wrpSlider = $$`<div class="fltr__wrp-pills fltr__wrp-pills--flex"></div>`;
+		const $wrpDropdowns = $$`<div class="fltr__wrp-pills fltr__wrp-pills--flex"></div>`;
 		const hookHidden = () => {
 			$wrpSlider.toggle(!this._meta.isHidden && !this._meta.isUseDropdowns);
 			$wrpDropdowns.toggle(!this._meta.isHidden && !!this._meta.isUseDropdowns);
@@ -2155,7 +2159,7 @@ class RangeFilter extends FilterBase {
 		};
 		const sliderOpts = getSliderOpts();
 
-		this._$slider = $(`<div class="fltr__slider"/>`).appendTo($wrpSlider);
+		this._$slider = $(`<div class="fltr__slider"></div>`).appendTo($wrpSlider);
 		this._$slider
 			.slider({
 				min: this._min,
@@ -2173,14 +2177,14 @@ class RangeFilter extends FilterBase {
 		// endregion
 
 		// region Dropdowns
-		const $selMin = $(`<select class="form-control mr-2"/>`)
+		const $selMin = $(`<select class="form-control mr-2"></select>`)
 			.change(() => {
 				const nxtMin = Number($selMin.val());
 				const [min, max] = [nxtMin, this._state.curMax].sort(SortUtil.ascSort);
 				this._state.curMin = min;
 				this._state.curMax = max;
 			});
-		const $selMax = $(`<select class="form-control"/>`)
+		const $selMax = $(`<select class="form-control"></select>`)
 			.change(() => {
 				const nxMax = Number($selMax.val());
 				const [min, max] = [this._state.curMin, nxMax].sort(SortUtil.ascSort);
@@ -2191,19 +2195,19 @@ class RangeFilter extends FilterBase {
 		// endregion
 
 		// region Mini pills
-		const $btnMiniGt = $(`<div class="fltr__mini-pill" state="ignore"/>`)
+		const $btnMiniGt = $(`<div class="fltr__mini-pill" state="ignore"></div>`)
 			.click(() => {
 				this._state.curMin = this._state.min;
 				this._filterBox.fireChangeEvent();
 			})
 			.appendTo(this.__$wrpMini);
-		const $btnMiniLt = $(`<div class="fltr__mini-pill" state="ignore"/>`)
+		const $btnMiniLt = $(`<div class="fltr__mini-pill" state="ignore"></div>`)
 			.click(() => {
 				this._state.curMax = this._state.max;
 				this._filterBox.fireChangeEvent();
 			})
 			.appendTo(this.__$wrpMini);
-		const $btnMiniEq = $(`<div class="fltr__mini-pill" state="ignore"/>`)
+		const $btnMiniEq = $(`<div class="fltr__mini-pill" state="ignore"></div>`)
 			.click(() => {
 				this._state.curMin = this._state.min;
 				this._state.curMax = this._state.max;
@@ -2302,7 +2306,7 @@ class RangeFilter extends FilterBase {
 			const $btnMobToggleControls = this._$getBtnMobToggleControls($wrpControls);
 
 			return this.__$wrpFilter = $$`<div class="flex-col">
-				${opts.isFirst ? "" : `<div class="fltr__dropdown-divider mb-1"/>`}
+				${opts.isFirst ? "" : `<div class="fltr__dropdown-divider mb-1"></div>`}
 				<div class="split fltr__h ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
 					<div class="fltr__h-text flex-h-center">${this._getRenderedHeader()}${$btnMobToggleControls}</div>
 					${$wrpControls}
@@ -2499,7 +2503,7 @@ class MultiFilter extends FilterBase {
 	}
 
 	$render (opts) {
-		const $btnAndOr = $(`<div class="fltr__group-comb-toggle ve-muted"/>`)
+		const $btnAndOr = $(`<div class="fltr__group-comb-toggle ve-muted"></div>`)
 			.click(() => this._state.mode = this._state.mode === "and" ? "or" : "and");
 		const hookAndOr = () => $btnAndOr.text(`(group ${this._state.mode.toUpperCase()})`);
 		this._addHook("state", "mode", hookAndOr);
@@ -2508,7 +2512,7 @@ class MultiFilter extends FilterBase {
 		const $children = this._filters.map((it, i) => it.$render({...opts, isMulti: true, isFirst: i === 0}));
 		const $wrpChildren = $$`<div>${$children}</div>`;
 
-		const $wrpSummary = $(`<div class="fltr__summary_item"/>`).hide();
+		const $wrpSummary = $(`<div class="fltr__summary_item"></div>`).hide();
 
 		const $btnForceMobile = this._isAddDropdownToggle ? ComponentUiUtil.$getBtnBool(
 			this,
@@ -2555,7 +2559,7 @@ class MultiFilter extends FilterBase {
 		hookShowHide();
 
 		return this.__$wrpFilter = $$`<div class="flex-col">
-			${opts.isFirst ? "" : `<div class="fltr__dropdown-divider mb-1"/>`}
+			${opts.isFirst ? "" : `<div class="fltr__dropdown-divider mb-1"></div>`}
 			<div class="split fltr__h fltr__h--multi ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
 				<div class="flex-v-center">
 					<div class="mr-2">${this._getRenderedHeader()}</div>

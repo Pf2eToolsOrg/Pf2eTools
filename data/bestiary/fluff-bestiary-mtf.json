@@ -483,7 +483,7 @@
 									"type": "entries",
 									"name": "Changeable Nature",
 									"entries": [
-										"Whenever one of the eladrin presented here finishes a long rest, it can associate itself with a different season, provided it isn't incapacitated. When the eladrin makes this change, it uses the stat block of the new season, rather than its old stat block. Any damage the eladrin sustained in its original form applies to the new form, as do any conditions or other ongoing effects affecting it."
+										"Whenever one of the eladrin presented here finishes a long rest, it can associate itself with a different season, provided it isn't {@condition incapacitated}. When the eladrin makes this change, it uses the stat block of the new season, rather than its old stat block. Any damage the eladrin sustained in its original form applies to the new form, as do any conditions or other ongoing effects affecting it."
 									]
 								}
 							]
@@ -728,7 +728,7 @@
 									"name": "Spectral Spy",
 									"type": "entries",
 									"entries": [
-										"The pursuit of knowledge drives everything berbalangs do. Although they mostly learn their secrets from the dead, they aren't above spying on the living to take knowledge from them as well. A berbalang can create a spectral duplicate of itself and send the duplicate out to gather information on other planes by watching places where the gods and their servants gather. When a berbalang is perceiving its environment through its duplicate, its actual body is unconscious and can't protect or nourish itself. Thus, a berbalang typically uses its duplicate for only a short time before returning its consciousness to its body."
+										"The pursuit of knowledge drives everything berbalangs do. Although they mostly learn their secrets from the dead, they aren't above spying on the living to take knowledge from them as well. A berbalang can create a spectral duplicate of itself and send the duplicate out to gather information on other planes by watching places where the gods and their servants gather. When a berbalang is perceiving its environment through its duplicate, its actual body is {@condition unconscious} and can't protect or nourish itself. Thus, a berbalang typically uses its duplicate for only a short time before returning its consciousness to its body."
 									]
 								},
 								{
@@ -1235,11 +1235,11 @@
 							"rows": [
 								[
 									"1",
-									"{@b Camouflaged.} The clockwork gains proficiency in Stealth if it doesn't already have it. While motionless, it is indistinguishable from a stopped machine."
+									"{@b Camouflaged.} The clockwork gains proficiency in {@skill Stealth} if it doesn't already have it. While motionless, it is indistinguishable from a stopped machine."
 								],
 								[
 									"2",
-									"{@b Sensors.} The range of the clockwork's darkvision becomes 120 feet, unless it is higher, and it gains proficiency in Perception if it doesn't already have it."
+									"{@b Sensors.} The range of the clockwork's {@sense darkvision} becomes 120 feet, unless it is higher, and it gains proficiency in {@skill Perception} if it doesn't already have it."
 								],
 								[
 									"3",
@@ -1289,7 +1289,7 @@
 							"rows": [
 								[
 									"1",
-									"{@b Faulty Sensors.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork is blinded until the end of its turn."
+									"{@b Faulty Sensors.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork is {@condition blinded} until the end of its turn."
 								],
 								[
 									"2",
@@ -1305,7 +1305,7 @@
 								],
 								[
 									"5",
-									"{@b Leaking Lubricant.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork gains 1 level of exhaustion that it isn't immune to."
+									"{@b Leaking Lubricant.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork gains 1 level of {@condition exhaustion} that it isn't immune to."
 								],
 								[
 									"6",
@@ -1317,7 +1317,7 @@
 								],
 								[
 									"8",
-									"{@b Overheats.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork is incapacitated until the end of its turn."
+									"{@b Overheats.} Roll a {@dice d6} at the start of the clockwork's turn. If you roll a 1, the clockwork is {@condition incapacitated} until the end of its turn."
 								],
 								[
 									"9",
@@ -3010,7 +3010,7 @@
 									"type": "entries",
 									"name": "Gunpowder by the Keg",
 									"entries": [
-										"Aside from their personal gunpowder weapons, giff ships and mercenary companies carry spare gunpowder in kegs. In an emergency, or any time a large explosion is needed, a whole keg can be detonated. A giff lights the fuse on the keg and can then throw the keg up to 15 feet as part of the same action. The keg explodes at the start of the giff's next turn. Each creature within 20 feet of the exploding keg must make a DC 12 Dexterity saving throw. On a failed save, a creature takes 24 ({@dice 7d6}) fire damage and is knocked prone. On a successful save, a creature takes half as much damage and isn't knocked prone.",
+										"Aside from their personal gunpowder weapons, giff ships and mercenary companies carry spare gunpowder in kegs. In an emergency, or any time a large explosion is needed, a whole keg can be detonated. A giff lights the fuse on the keg and can then throw the keg up to 15 feet as part of the same action. The keg explodes at the start of the giff's next turn. Each creature within 20 feet of the exploding keg must make a DC 12 Dexterity saving throw. On a failed save, a creature takes 24 ({@damage 7d6}) fire damage and is knocked {@condition prone}. On a successful save, a creature takes half as much damage and isn't knocked {@condition prone}.",
 										"Every other keg of gunpowder within 20 feet of an exploding keg has a {@chance 50} chance of also exploding. Check each keg only once per turn, no matter how many other kegs explode around it."
 									]
 								}
@@ -5151,7 +5151,7 @@
 									"type": "entries",
 									"name": "Unseen and All-Seeing",
 									"entries": [
-										"Orthons are infamous for their sharp senses. Because an orthon can become invisible at will, its quarry is often unaware of being hunted until the orthon strikes. The orthon's invisibility can be disrupted when the devil is attacked, however, so a strong counterattack is often the best defense against it."
+										"Orthons are infamous for their sharp senses. Because an orthon can become {@condition invisible} at will, its quarry is often unaware of being hunted until the orthon strikes. The orthon's invisibility can be disrupted when the devil is attacked, however, so a strong counterattack is often the best defense against it."
 									]
 								},
 								{
@@ -5806,7 +5806,7 @@
 									"type": "entries",
 									"name": "Changeable Nature",
 									"entries": [
-										"Whenever one of the eladrin presented here finishes a long rest, it can associate itself with a different season, provided it isn't incapacitated. When the eladrin makes this change, it uses the stat block of the new season, rather than its old stat block. Any damage the eladrin sustained in its original form applies to the new form, as do any conditions or other ongoing effects affecting it."
+										"Whenever one of the eladrin presented here finishes a long rest, it can associate itself with a different season, provided it isn't {@condition incapacitated}. When the eladrin makes this change, it uses the stat block of the new season, rather than its old stat block. Any damage the eladrin sustained in its original form applies to the new form, as do any conditions or other ongoing effects affecting it."
 									]
 								}
 							]
@@ -6201,7 +6201,7 @@
 									"type": "entries",
 									"name": "Cryptic Whispers",
 									"entries": [
-										"Even though creatures transformed into stone cursed are long dead, a vague whisper of their memories lives on in the obsidian skull embedded within the stone cursed's body. At the end of a short rest, a character can make a DC 20 Intelligence (Arcana) check to attempt to extract a memory from the skull\u2014a memory that is a response to a verbal question posed by the character to the skull. Once this check is made, whether it succeeds or fails, the skull can't be used in this manner again."
+										"Even though creatures transformed into stone cursed are long dead, a vague whisper of their memories lives on in the obsidian skull embedded within the stone cursed's body. At the end of a short rest, a character can make a DC 20 Intelligence ({@skill Arcana}) check to attempt to extract a memory from the skull\u2014a memory that is a response to a verbal question posed by the character to the skull. Once this check is made, whether it succeeds or fails, the skull can't be used in this manner again."
 									]
 								}
 							]
@@ -6316,7 +6316,7 @@
 									"type": "entries",
 									"name": "Changeable Nature",
 									"entries": [
-										"Whenever one of the eladrin presented here finishes a long rest, it can associate itself with a different season, provided it isn't incapacitated. When the eladrin makes this change, it uses the stat block of the new season, rather than its old stat block. Any damage the eladrin sustained in its original form applies to the new form, as do any conditions or other ongoing effects affecting it."
+										"Whenever one of the eladrin presented here finishes a long rest, it can associate itself with a different season, provided it isn't {@condition incapacitated}. When the eladrin makes this change, it uses the stat block of the new season, rather than its old stat block. Any damage the eladrin sustained in its original form applies to the new form, as do any conditions or other ongoing effects affecting it."
 									]
 								}
 							]
@@ -6942,7 +6942,7 @@
 									"type": "entries",
 									"entries": [
 										"Creatures that ingest water that has been corrupted by a wastrilith risk their very souls. Those who drink the poisonous liquid might wither away until they finally die, or remain alive only to become a thrall of chaos and evil.",
-										"To represent this defilement, you can use the optional rule on {@variantrule planar effects||abyssal corruption} in chapter 2 of the {@book Dungeon Master's Guide|dmg}, causing the poisoned creature to be corrupted."
+										"To represent this defilement, you can use the optional rule on {@variantrule planar effects||abyssal corruption} in chapter 2 of the {@book Dungeon Master's Guide|dmg}, causing the {@condition poisoned} creature to be corrupted."
 									]
 								}
 							]
@@ -7103,7 +7103,7 @@
 									"type": "entries",
 									"name": "Changeable Nature",
 									"entries": [
-										"Whenever one of the eladrin presented here finishes a long rest, it can associate itself with a different season, provided it isn't incapacitated. When the eladrin makes this change, it uses the stat block of the new season, rather than its old stat block. Any damage the eladrin sustained in its original form applies to the new form, as do any conditions or other ongoing effects affecting it."
+										"Whenever one of the eladrin presented here finishes a long rest, it can associate itself with a different season, provided it isn't {@condition incapacitated}. When the eladrin makes this change, it uses the stat block of the new season, rather than its old stat block. Any damage the eladrin sustained in its original form applies to the new form, as do any conditions or other ongoing effects affecting it."
 									]
 								}
 							]

@@ -634,7 +634,7 @@
 					"type": "entries",
 					"name": "Atonement",
 					"entries": [
-						"You touch one willing creature whose alignment has changed, and you make a DC 20 Wisdom (Insight) check. On a successful check, you restore the target to its original alignment."
+						"You touch one willing creature whose alignment has changed, and you make a DC 20 Wisdom ({@skill Insight}) check. On a successful check, you restore the target to its original alignment."
 					]
 				},
 				{
@@ -2283,7 +2283,7 @@
 				"You summon a spirit that assumes the form of a loyal, majestic mount. Appearing in an unoccupied space within range, the spirit takes on a form you choose: a {@creature griffon}, a {@creature pegasus}, a {@creature peryton}, a {@creature dire wolf}, a {@creature rhinoceros}, or a {@creature saber-toothed tiger}. The creature has the statistics provided in the Monster Manual for the chosen form, though it is a celestial, a fey, or a fiend (your choice) instead of its normal creature type. Additionally, if it has an Intelligence score of 5 or lower, its Intelligence becomes 6, and it gains the ability to understand one language of your choice that you speak.",
 				"You control the mount in combat. While the mount is within 1 mile of you, you can communicate with it telepathically. While mounted on it, you can make any spell you cast that targets only you also target the mount.",
 				"The mount disappears temporarily when it drops to 0 hit points or when you dismiss it as an action. Casting this spell again re-summons the bonded mount, with all its hit points restored and any conditions removed.",
-				"You can't have more than one mount bonded by this spell or find steed at the same time. As an action, you can release a mount from its bond, causing it to disappear permanently.",
+				"You can't have more than one mount bonded by this spell or {@spell find steed} at the same time. As an action, you can release a mount from its bond, causing it to disappear permanently.",
 				"Whenever the mount disappears, it leaves behind any objects it was wearing or carrying."
 			],
 			"miscTags": [
@@ -2882,7 +2882,7 @@
 				"By gathering threads of shadow material from the Shadowfell, you create a Huge shadowy dragon in an unoccupied space that you can see within range. The illusion lasts for the spell's duration and occupies its space, as if it were a creature.",
 				"When the illusion appears, any of your enemies that can see it must succeed on a Wisdom saving throw or become {@condition frightened} of it for 1 minute. If a {@condition frightened} creature ends its turn in a location where it doesn't have line of sight to the illusion, it can repeat the saving throw, ending the effect on itself on a success.",
 				"As a bonus action on your turn, you can move the illusion up to 60 feet. At any point during its movement, you can cause it to exhale a blast of energy in a 60-foot cone originating from its space. When you create the dragon, choose a damage type: acid, cold, fire, lightning, necrotic, or poison. Each creature in the cone must make an Intelligence saving throw, taking {@damage 7d6} damage of the chosen damage type on a failed save, or half as much damage on a successful one.",
-				"The illusion is tangible because of the shadow stuff used to create it, but attacks miss it automatically, it succeeds on all saving throws, and it is immune to all damage and conditions. A creature that uses an action to examine the dragon can determine that it is an illusion by succeeding on an Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through it and has advantage on saving throws against its breath."
+				"The illusion is tangible because of the shadow stuff used to create it, but attacks miss it automatically, it succeeds on all saving throws, and it is immune to all damage and conditions. A creature that uses an action to examine the dragon can determine that it is an illusion by succeeding on an Intelligence ({@skill Investigation}) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through it and has advantage on saving throws against its breath."
 			],
 			"damageInflict": [
 				"acid",
@@ -3030,7 +3030,7 @@
 			"entries": [
 				"Uttering a dark incantation, you summon a devil from the Nine Hells. You choose the devil's type, which must be one of {@filter challenge rating 6 or lower|bestiary|challenge rating=[&0;&6]|tag=devil|miscellaneous=!swarm}, such as a {@creature barbed devil} or a {@creature bearded devil}. The devil appears in an unoccupied space that you can see within range. The devil disappears when it drops to 0 hit points or when the spell ends.",
 				"The devil is unfriendly toward you and your companions. Roll initiative for the devil, which has its own turns. It is under the Dungeon Master's control and acts according to its nature on each of its turns, which might result in its attacking you if it thinks it can prevail, or trying to tempt you to undertake an evil act in exchange for limited service. The DM has the creature's statistics.",
-				"On each of your turns, you can try to issue a verbal command to the devil (no action required by you). It obeys the command if the likely outcome is in accordance with its desires, especially if the result would draw you toward evil. Otherwise, you must make a Charisma (Deception, Intimidation, or Persuasion) check contested by its Wisdom (Insight) check. You make the check with advantage if you say the devil's true name. If your check fails, the devil becomes immune to your verbal commands for the duration of the spell, though it can still carry out your commands if it chooses. If your check succeeds, the devil carries out your command\u2014such as \"attack my enemies,\" \"explore the room ahead,\" or \"bear this message to the queen\"\u2014until it completes the activity, at which point it returns to you to report having done so.",
+				"On each of your turns, you can try to issue a verbal command to the devil (no action required by you). It obeys the command if the likely outcome is in accordance with its desires, especially if the result would draw you toward evil. Otherwise, you must make a Charisma ({@skill Deception}, {@skill Intimidation}, or {@skill Persuasion}) check contested by its Wisdom ({@skill Insight}) check. You make the check with advantage if you say the devil's true name. If your check fails, the devil becomes immune to your verbal commands for the duration of the spell, though it can still carry out your commands if it chooses. If your check succeeds, the devil carries out your command\u2014such as \"attack my enemies,\" \"explore the room ahead,\" or \"bear this message to the queen\"\u2014until it completes the activity, at which point it returns to you to report having done so.",
 				"If your concentration ends before the spell reaches its full duration, the devil doesn't disappear if it has become immune to your verbal commands. Instead, it acts in whatever manner it chooses for {@dice 3d6} minutes, and then it disappears.",
 				"If you possess an individual devil's talisman, you can summon that devil if it is of the appropriate challenge rating plus 1, and it obeys all your commands, with no Charisma checks required."
 			],
@@ -3285,7 +3285,7 @@
 			],
 			"areaTags": [
 				"N",
-				"R"
+				"S"
 			],
 			"classes": {
 				"fromClassList": [
@@ -3370,7 +3370,7 @@
 				"dexterity"
 			],
 			"areaTags": [
-				"R"
+				"S"
 			],
 			"classes": {
 				"fromClassList": [
@@ -4527,13 +4527,18 @@
 				"You have resistance to acid, cold, fire, lightning, and thunder damage for the spell's duration.",
 				"When you take damage of one of those types, you can use your reaction to gain immunity to that type of damage, including against the triggering damage. If you do so, the resistances end, and you have the immunity until the end of your next turn, at which time the spell ends."
 			],
+			"damageResist": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"thunder"
+			],
 			"damageImmune": [
 				"acid",
 				"cold",
 				"fire",
-				"lightning"
-			],
-			"damageInflict": [
+				"lightning",
 				"thunder"
 			],
 			"classes": {
@@ -5219,9 +5224,9 @@
 			],
 			"entries": [
 				"As you cast this spell, you use the rope to create a circle with a 5-foot radius on the ground or the floor. When you finish casting, the rope disappears and the circle becomes a magic trap.",
-				"This trap is nearly invisible, requiring a successful Intelligence (Investigation) check against your spell save DC to be discerned.",
+				"This trap is nearly invisible, requiring a successful Intelligence ({@skill Investigation}) check against your spell save DC to be discerned.",
 				"The trap triggers when a Small, Medium, or Large creature moves onto the ground or the floor in the spell's radius. That creature must succeed on a Dexterity saving throw or be magically hoisted into the air, leaving it hanging upside down 3 feet above the ground or the floor. The creature is {@condition restrained} there until the spell ends.",
-				"A {@condition restrained} creature can make a Dexterity saving throw at the end of each of its turns, ending the effect on itself on a success. Alternatively, the creature or someone else who can reach it can use an action to make an Intelligence (Arcana) check against your spell save DC. On a success, the {@condition restrained} effect ends.",
+				"A {@condition restrained} creature can make a Dexterity saving throw at the end of each of its turns, ending the effect on itself on a success. Alternatively, the creature or someone else who can reach it can use an action to make an Intelligence ({@skill Arcana}) check against your spell save DC. On a success, the {@condition restrained} effect ends.",
 				"After the trap is triggered, the spell ends when no creature is {@condition restrained} by it."
 			],
 			"conditionInflict": [
@@ -5397,7 +5402,7 @@
 						"You can use an action to name a place the humanoid saw in life, which creates an invisible sensor somewhere in that place if it is on the plane of existence you're currently on. The sensor remains for as long as you concentrate, up to 10 minutes (as if you were concentrating on a spell). You receive visual and auditory information from the sensor as if you were in its space using your senses."
 					]
 				},
-				"A creature that can see the sensor (such as one using {@spell see invisibility} or truesight) sees a translucent image of the tormented humanoid whose soul you caged."
+				"A creature that can see the sensor (such as one using {@spell see invisibility} or {@sense truesight}) sees a translucent image of the tormented humanoid whose soul you caged."
 			],
 			"miscTags": [
 				"HL"
@@ -5514,7 +5519,7 @@
 			"entries": [
 				"A 20-foot-radius sphere of whirling air springs into existence, centered on a point you choose within range. The sphere remains for the spell's duration. Each creature in the sphere when it appears or that ends its turn there must succeed on a Strength saving throw or take {@damage 2d6} bludgeoning damage. The sphere's space is difficult terrain.",
 				"Until the spell ends, you can use a bonus action on each of your turns to cause a bolt of lightning to leap from the center of the sphere toward one creature you choose within 60 feet of the center. Make a ranged spell attack. You have advantage on the attack roll if the target is in the sphere. On a hit, the target takes {@damage 4d6} lightning damage.",
-				"Creatures within 30 feet of the sphere have disadvantage on Wisdom (Perception) checks made to listen."
+				"Creatures within 30 feet of the sphere have disadvantage on Wisdom ({@skill Perception}) checks made to listen."
 			],
 			"entriesHigherLevel": [
 				{
@@ -6658,6 +6663,10 @@
 				{
 					"source": "VGM",
 					"page": 116
+				},
+				{
+					"source": "MOT",
+					"page": 0
 				}
 			],
 			"level": 3,
@@ -7069,7 +7078,7 @@
 					"type": "entries",
 					"name": "Roots and Vines",
 					"entries": [
-						"At the end of each of your turns, one creature of your choice that is on the ground in the cube must succeed on a Strength saving throw or become {@condition restrained} until the spell ends. A {@condition restrained} creature can use an action to make a Strength (Athletics) check against your spell save DC, ending the effect on itself on a success."
+						"At the end of each of your turns, one creature of your choice that is on the ground in the cube must succeed on a Strength saving throw or become {@condition restrained} until the spell ends. A {@condition restrained} creature can use an action to make a Strength ({@skill Athletics}) check against your spell save DC, ending the effect on itself on a success."
 					]
 				},
 				{

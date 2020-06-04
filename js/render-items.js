@@ -10,7 +10,7 @@ class RenderItems {
 			${Renderer.utils.getNameTr(item, {page: UrlUtil.PG_ITEMS})}
 			<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item).uppercaseFirst()}</td></tr>
 			<tr>
-				<td colspan="2">${[Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
+				<td colspan="2">${[Parser.itemValueToFullMultiCurrency(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
 				<td class="text-right" colspan="4">${[damage, damageType, propertiesTxt].filter(Boolean).join(" ")}</td>
 			</tr>
 			${renderedText ? `<tr><td class="divider" colspan="6"><div/></td></tr>

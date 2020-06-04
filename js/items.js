@@ -37,7 +37,7 @@ class ItemsPage {
 			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 				<span class="col-3-5 pl-0 bold">${item.name}</span>
 				<span class="col-4-5">${type}</span>
-				<span class="col-1-5 text-center">${item.value || item.valueMult ? Parser.itemValueToFull(item, true).replace(/ +/g, "\u00A0") : "\u2014"}</span>
+				<span class="col-1-5 text-center">${item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, true).replace(/ +/g, "\u00A0") : "\u2014"}</span>
 				<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
 				<span class="col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
@@ -111,7 +111,7 @@ class ItemsPage {
 			<a href="#${hash}" class="lst--border">
 				<span class="bold col-6 pl-0">${item.name}</span>
 				<span class="text-center col-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
-				<span class="text-center col-2">${item.value || item.valueMult ? Parser.itemValueToFull(item, true).replace(/ +/g, "\u00A0") : "\u2014"}</span>
+				<span class="text-center col-2">${item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, true).replace(/ +/g, "\u00A0") : "\u2014"}</span>
 				${$dispCount}
 			</a>
 		</li>`.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -196,11 +196,11 @@ class ItemsPage {
 			if (item.value) value += item.value * count;
 		});
 
-		this._$totalwWeight.text(`${weight.toLocaleString()} lb${weight !== 1 ? "s" : ""}.`);
+		this._$totalwWeight.text(`${weight.toLocaleString(undefined, {maximumFractionDigits: 5})} lb${weight !== 1 ? "s" : ""}.`);
 
 		if (availConversions.size) {
 			this._$totalValue
-				.text(Parser.itemValueToFull({value, currencyConversion: this._sublistCurrencyConversion}))
+				.text(Parser.itemValueToFullMultiCurrency({value, currencyConversion: this._sublistCurrencyConversion}))
 				.off("click")
 				.click(async () => {
 					const values = ["(Default)", ...[...availConversions].sort(SortUtil.ascSortLower)];
@@ -223,14 +223,14 @@ class ItemsPage {
 				switch (this._sublistCurrencyDisplayMode) {
 					case modes[1]: return Parser.itemValueToFull({value});
 					case modes[2]: {
-						return value ? `${Parser._DEFAULT_CURRENCY_CONVERSION_TABLE.find(it => it.coin === "gp").mult * value} gp` : "";
+						return value ? `${Parser.DEFAULT_CURRENCY_CONVERSION_TABLE.find(it => it.coin === "gp").mult * value} gp` : "";
 					}
 					default:
 					case modes[0]: {
 						const CURRENCIES = ["gp", "sp", "cp"];
 						const coins = {cp: value};
-						CurrencyUtil.doSimplifyCoins(coins, CURRENCIES);
-						return CURRENCIES.filter(it => coins[it]).map(it => `${coins[it]} ${it}`).join(", ");
+						CurrencyUtil.doSimplifyCoins(coins);
+						return CURRENCIES.filter(it => coins[it]).map(it => `${coins[it].toLocaleString(undefined, {maximumFractionDigits: 5})} ${it}`).join(", ");
 					}
 				}
 			})();
@@ -293,6 +293,8 @@ class ItemsPage {
 			itemsPage.handleFilterChange();
 		});
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
+		const $wrpListMundane = $(`.itm__wrp-list--mundane`);
+		const $wrpListMagic = $(`.itm__wrp-list--magic`);
 		this._mundaneList.on("updated", () => {
 			const $elesMundane = $(`.ele-mundane`);
 
@@ -304,6 +306,9 @@ class ItemsPage {
 			const current = this._mundaneList.visibleItems.length + this._magicList.visibleItems.length;
 			const total = this._mundaneList.items.length + this._magicList.items.length;
 			$outVisibleResults.html(`${current}/${total}`);
+
+			// Collapse the mundane section if there are no magic items displayed
+			$wrpListMundane.toggleClass(`itm__wrp-list--empty`, this._mundaneList.visibleItems.length === 0);
 		});
 		this._magicList.on("updated", () => {
 			const $elesMundane = $(`.ele-mundane`);
@@ -318,6 +323,9 @@ class ItemsPage {
 			const current = this._mundaneList.visibleItems.length + this._magicList.visibleItems.length;
 			const total = this._mundaneList.items.length + this._magicList.items.length;
 			$outVisibleResults.html(`${current}/${total}`);
+
+			// Collapse the magic section if there are no magic items displayed
+			$wrpListMagic.toggleClass(`itm__wrp-list--empty`, this._magicList.visibleItems.length === 0);
 		});
 
 		// filtering function
@@ -362,7 +370,7 @@ class ItemsPage {
 						_attunement: {name: "Attunement", transform: it => it._attunement ? it._attunement.slice(1, it._attunement.length - 1) : ""},
 						_properties: {name: "Properties", transform: it => Renderer.item.getDamageAndPropertiesText(it).filter(Boolean).join(", ")},
 						_weight: {name: "Weight", transform: it => Parser.itemWeightToFull(it)},
-						_value: {name: "Value", transform: it => Parser.itemValueToFull(it)},
+						_value: {name: "Value", transform: it => Parser.itemValueToFullMultiCurrency(it)},
 						_entries: {name: "Text", transform: (it) => Renderer.item.getRenderedEntries(it, true), flex: 3}
 					},
 					{generator: ListUtil.basicFilterGenerator},

@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.3.6",
+	"version": "1.4.2",
 	"type": "object",
 
 	"definitions": {
@@ -45,7 +45,7 @@
 					}
 				},
 				"soundClip": {
-					"type": "string"
+					"$ref": "entry.json#/definitions/mediaHref"
 				},
 				"subraces": {
 					"type": "array",
@@ -123,6 +123,9 @@
 										"type": "null"
 									}
 								]
+							},
+							"additionalSpells": {
+								"$ref": "util.json#/definitions/additionalSpellsArray"
 							}
 						},
 						"additionalProperties": false
@@ -215,6 +218,9 @@
 							"type": "null"
 						}
 					]
+				},
+				"additionalSpells": {
+					"$ref": "util.json#/definitions/additionalSpellsArray"
 				}
 			},
 			"additionalProperties": false
@@ -230,6 +236,7 @@
 				"Damage Resistance",
 				"Dragonmark",
 				"Improved Resting",
+				"Magic Resistance",
 				"Monstrous Race",
 				"Natural Armor",
 				"NPC Race",

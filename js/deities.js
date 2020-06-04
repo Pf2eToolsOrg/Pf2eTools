@@ -15,71 +15,11 @@ function unpackAlignment (g) {
 
 class DeitiesPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-		const pantheonFilter = new Filter({
-			header: "Pantheon",
-			items: [
-				"Celtic",
-				"Dawn War",
-				"Dragonlance",
-				"Drow",
-				"Dwarven",
-				"Eberron",
-				"Egyptian",
-				"Elven",
-				"Faerûnian",
-				"Forgotten Realms",
-				"Gnomish",
-				"Greek",
-				"Greyhawk",
-				"Halfling",
-				"Nonhuman",
-				"Norse",
-				"Orc"
-			]
-		});
-		const categoryFilter = new Filter({
-			header: "Category",
-			items: [
-				VeCt.STR_NONE,
-				"Other Faiths of Eberron",
-				"The Dark Six",
-				"The Gods of Evil",
-				"The Gods of Good",
-				"The Gods of Neutrality",
-				"The Sovereign Host"
-			],
-			itemSortFn: null
-		});
-		const alignmentFilter = new Filter({
-			header: "Alignment",
-			items: ["L", "NX", "C", "G", "NY", "E", "N"],
-			displayFn: Parser.alignmentAbvToFull,
-			itemSortFn: null
-		});
-		const domainFilter = new Filter({
-			header: "Domain",
-			items: ["Arcana", "Death", "Forge", "Grave", "Knowledge", "Life", "Light", "Nature", VeCt.STR_NONE, "Order", "Tempest", "Trickery", "War"]
-		});
-		const miscFilter = new Filter({
-			header: "Miscellaneous",
-			items: [STR_REPRINTED, "SRD"],
-			displayFn: StrUtil.uppercaseFirst,
-			deselFn: (it) => { return it === STR_REPRINTED }
-		});
-
+		const pageFilter = new PageFilterDeities();
 		super({
 			dataSource: DataUtil.deity.loadJSON,
 
-			filters: [
-				sourceFilter,
-				alignmentFilter,
-				pantheonFilter,
-				categoryFilter,
-				domainFilter,
-				miscFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "deities",
 
@@ -87,26 +27,10 @@ class DeitiesPage extends ListPage {
 
 			dataProps: ["deity"]
 		});
-
-		this._sourceFilter = sourceFilter;
-		this._pantheonFilter = pantheonFilter;
-		this._categoryFilter = categoryFilter;
 	}
 
 	getListItem (g, dtI, isExcluded) {
-		g._fAlign = g.alignment ? unpackAlignment(g) : [];
-		if (!g.category) g.category = VeCt.STR_NONE;
-		if (!g.domains) g.domains = [VeCt.STR_NONE];
-		g.domains.sort(SortUtil.ascSort);
-
-		g._fMisc = g.reprinted ? [STR_REPRINTED] : [];
-		if (g.srd) g._fMisc.push("SRD");
-
-		if (!isExcluded) {
-			this._sourceFilter.addItem(g.source);
-			this._pantheonFilter.addItem(g.pantheon);
-			this._categoryFilter.addItem(g.category);
-		}
+		this._pageFilter.mutateAndAddToFilters(g, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -149,18 +73,7 @@ class DeitiesPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter(item => {
-			const g = this._dataList[item.ix];
-			return this._filterBox.toDisplay(
-				f,
-				g.source,
-				g._fAlign,
-				g.pantheon,
-				g.category,
-				g.domains,
-				g._fMisc
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 

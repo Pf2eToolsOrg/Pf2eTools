@@ -325,6 +325,7 @@ class TagAttack {
 		handleProp("reaction");
 		handleProp("trait");
 		handleProp("legendary");
+		handleProp("mythic");
 		handleProp("variant");
 	}
 }
@@ -360,6 +361,7 @@ class TagHit {
 		handleProp("reaction");
 		handleProp("trait");
 		handleProp("legendary");
+		handleProp("mythic");
 		handleProp("variant");
 	}
 }
@@ -380,6 +382,7 @@ class TagDc {
 		handleProp("reaction");
 		handleProp("trait");
 		handleProp("legendary");
+		handleProp("mythic");
 		handleProp("variant");
 		handleProp("spellcasting");
 	}
@@ -388,7 +391,7 @@ class TagDc {
 class TaggerUtils {
 	/**
 	 *
-	 * @param targetTag e.g. `"@condition"`
+	 * @param targetTags e.g. `["@condition"]`
 	 * @param ptrStack
 	 * @param depth
 	 * @param str
@@ -396,7 +399,7 @@ class TaggerUtils {
 	 * @param meta
 	 * @param meta.fnTag
 	 */
-	static walkerStringHandler (targetTag, ptrStack, depth, tagCount, str, meta) {
+	static walkerStringHandler (targetTags, ptrStack, depth, tagCount, str, meta) {
 		const tagSplit = Renderer.splitByTags(str);
 		const len = tagSplit.length;
 		for (let i = 0; i < len; ++i) {
@@ -405,20 +408,13 @@ class TaggerUtils {
 			if (s[0] === "@") {
 				const [tag, text] = Renderer.splitFirstSpace(s);
 
-				switch (tag) {
-					case "@condition": {
-						ptrStack._ += `{${tag}${text.length ? " " : ""}`;
-						this.walkerStringHandler(targetTag, ptrStack, depth + 1, tagCount + 1, text, meta);
-						ptrStack._ += `}`;
-						break;
-					}
-					default: {
-						ptrStack._ += `{${tag}${text.length ? " " : ""}`;
-						this.walkerStringHandler(targetTag, ptrStack, depth + 1, tagCount, text, meta);
-						ptrStack._ += `}`;
-						break;
-					}
+				ptrStack._ += `{${tag}${text.length ? " " : ""}`;
+				if (targetTags.includes(tag)) {
+					this.walkerStringHandler(targetTags, ptrStack, depth + 1, tagCount + 1, text, meta);
+				} else {
+					this.walkerStringHandler(targetTags, ptrStack, depth + 1, tagCount, text, meta);
 				}
+				ptrStack._ += `}`;
 			} else {
 				// avoid tagging things wrapped in existing tags
 				if (tagCount) {
@@ -495,6 +491,7 @@ class TagCondition {
 		this._handleProp(m, "reaction", inflictedSet);
 		this._handleProp(m, "trait", inflictedSet);
 		this._handleProp(m, "legendary", inflictedSet);
+		this._handleProp(m, "mythic", inflictedSet);
 		this._handleProp(m, "variant", inflictedSet);
 		this._handleProp(m, "entries", inflictedSet);
 		this._handleProp(m, "entriesHigherLevel", inflictedSet);
@@ -557,6 +554,32 @@ class TagCondition {
 		if (inflictedSet.size) m.conditionInflictLegendary = [...inflictedSet];
 		else delete m.conditionInflictLegendary;
 	}
+
+	// region Run basic tagging
+	static tryRunBasic (it) {
+		const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
+		return walker.walk(
+			"conditionTagger",
+			it,
+			{
+				string: (ident, str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@condition"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: strMod => strMod.replace(TagCondition._CONDITION_MATCHER_WORD, (...m) => `${m[1]}{@condition ${m[2]}}${m[3]}`)
+						}
+					);
+					return ptrStack._;
+				}
+			}
+		);
+	}
+	// endregion
 }
 TagCondition._ALL_LEGENDARY_GROUPS = null;
 TagCondition._ALL_SPELLS = null;
@@ -577,7 +600,8 @@ TagCondition._CONDITIONS = [
 	"stunned",
 	"unconscious"
 ];
-TagCondition._CONDITION_MATCHERS = TagCondition._CONDITIONS.map(it => new RegExp(`(${it})`, "gi"));
+TagCondition._CONDITION_MATCHERS = TagCondition._CONDITIONS.map(it => new RegExp(`(${it})`, "g"));
+TagCondition._CONDITION_MATCHER_WORD = new RegExp(`(^|[ "(\\u2013\\u2014])(${TagCondition._CONDITIONS.join("|")})([ "',.:;)\\u2013\\u2014]|$)`, "g");
 // Each should have one group which matches the condition name.
 //   A comma/and part is appended to the end to handle chains of conditions.
 TagCondition.__TGT = `(?:target|wielder)`;
@@ -848,6 +872,9 @@ TraitActionTag.tags = { // true = map directly; string = map to this string
 	},
 	legendary: {
 		// unused
+	},
+	mythic: {
+		// unused
 	}
 };
 TraitActionTag.tagsDeep = {
@@ -1091,6 +1118,7 @@ class DamageTypeTag {
 		DamageTypeTag._handleProp(m, "reaction", typeSet);
 		DamageTypeTag._handleProp(m, "trait", typeSet);
 		DamageTypeTag._handleProp(m, "legendary", typeSet);
+		DamageTypeTag._handleProp(m, "mythic", typeSet);
 		DamageTypeTag._handleProp(m, "variant", typeSet);
 		if (typeSet.size) m.damageTags = [...typeSet];
 	}
@@ -1145,6 +1173,7 @@ class MiscTag {
 		MiscTag._handleProp(m, "trait", typeSet);
 		MiscTag._handleProp(m, "reaction", typeSet);
 		MiscTag._handleProp(m, "legendary", typeSet);
+		MiscTag._handleProp(m, "mythic", typeSet);
 		if (typeSet.size) m.miscTags = [...typeSet];
 		else delete m.miscTags;
 	}
@@ -1516,7 +1545,7 @@ class SkillTag {
 				string: (ident, str) => {
 					const ptrStack = {_: ""};
 					TaggerUtils.walkerStringHandler(
-						"@skill",
+						["@skill"],
 						ptrStack,
 						0,
 						0,
@@ -1532,7 +1561,7 @@ class SkillTag {
 	}
 
 	static _fnTag (strMod) {
-		return strMod.replace(/(Acrobatics|Animal Handling|Arcana|Athletics|Deception|History|Insight|Intimidation|Investigation|Medicine|Nature|Perception|Performance|Persuasion|Religion|Sleight of Hand|Stealth|Survival)/g, (...m) => `{@skill ${m[0]}}`);
+		return strMod.replace(/(^|[ "(\u2013\u2014])(Acrobatics|Animal Handling|Arcana|Athletics|Deception|History|Insight|Intimidation|Investigation|Medicine|Nature|Perception|Performance|Persuasion|Religion|Sleight of Hand|Stealth|Survival)([ "',.:;)\u2013\u2014]|$)/g, (...m) => `${m[1]}{@skill ${m[2]}}${m[3]}`);
 	}
 }
 
@@ -1546,7 +1575,7 @@ class ActionTag {
 				string: (ident, str) => {
 					const ptrStack = {_: ""};
 					TaggerUtils.walkerStringHandler(
-						"@action",
+						["@action"],
 						ptrStack,
 						0,
 						0,
@@ -1562,7 +1591,13 @@ class ActionTag {
 	}
 
 	static _fnTag (strMod) {
-		return strMod.replace(/(Attack|Dash|Disengage|Dodge|Help|Hide|Ready|Search|Use an Object)/g, (...m) => `{@action ${m[0]}}`);
+		return strMod
+			.replace(/(^|[ "(\u2013\u2014])(Attack|Dash|Disengage|Dodge|Help|Hide|Ready|Search|Use an Object)([ "',.:;)\u2013\u2014]|$)/g, (...m) => `${m[1]}{@action ${m[2]}}${m[3]}`)
+			.replace(/(Extra|Sneak) {@action Attack}/g, "$1 Attack")
+			.replace(/{@action Attack} and damage roll/g, "Attack and damage roll")
+			.replace(/Armored {@action Hide}/g, "Armored Hide")
+			.replace(/Weapon {@action Attack}/g, "Weapon Attack")
+		;
 	}
 }
 
@@ -1576,7 +1611,7 @@ class SenseTag {
 				string: (ident, str) => {
 					const ptrStack = {_: ""};
 					TaggerUtils.walkerStringHandler(
-						"@sense",
+						["@sense"],
 						ptrStack,
 						0,
 						0,
@@ -1593,6 +1628,38 @@ class SenseTag {
 
 	static _fnTag (strMod) {
 		return strMod.replace(/(tremorsense|blindsight|truesight|darkvision)/g, (...m) => `{@sense ${m[0]}}`);
+	}
+}
+
+class DetectNamedCreature {
+	static tryRun (mon) {
+		const totals = {yes: 0, no: 0};
+		this._doCheckProp(mon, totals, "action");
+		this._doCheckProp(mon, totals, "reaction");
+		this._doCheckProp(mon, totals, "legendary");
+		this._doCheckProp(mon, totals, "mythic");
+
+		if (totals.yes && totals.yes > totals.no) mon.isNamedCreature = true;
+	}
+
+	static _doCheckProp (mon, totals, prop) {
+		if (!mon.name) return;
+		if (mon.isNamedCreature) return;
+		if (!mon[prop]) return;
+
+		mon[prop].forEach(it => {
+			if (!it.entries || !it.entries.length) return;
+			if (typeof it.entries[0] !== "string") return;
+
+			const namePart = mon.name.split(/[ ,:.!;]/g)[0] || "".trim();
+
+			const isNotNamedCreature = new RegExp(`^The ${namePart}`).test(it.entries[0]);
+			const isNamedCreature = new RegExp(`^${namePart}`).test(it.entries[0]);
+
+			if (isNotNamedCreature && isNamedCreature) return;
+			if (isNamedCreature) totals.yes++;
+			if (isNotNamedCreature) totals.no++;
+		});
 	}
 }
 
@@ -1686,7 +1753,7 @@ class ConvertUtil {
 	static isListItemLine (line) { return line.trim().startsWith("•") }
 
 	static splitNameLine (line) {
-		const rawName = line.split(/([.!?])/g)[0];
+		const rawName = line.split(/([.!?:])/g)[0];
 		const entry = line.substring(rawName.length + 1, line.length).trim();
 		const name = this.getCleanTraitActionName(rawName)
 		return {name, entry};
@@ -1771,6 +1838,8 @@ if (typeof module !== "undefined") {
 		ArtifactPropertiesTag,
 		EntryConvert,
 		SkillTag,
-		ActionTag
+		ActionTag,
+		TaggerUtils,
+		DetectNamedCreature
 	};
 }

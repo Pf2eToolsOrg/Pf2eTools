@@ -45,6 +45,7 @@
 					"type": "AF"
 				}
 			],
+			"ammo": true,
 			"entries": [
 				"Ammunition made of or coated with adamantine is unusually effective when used to break objects. Whenever a piece of adamantine ammunition hits an object, the hit is a critical hit.",
 				"The adamantine version of ten pieces of ammunition costs 500 gp more than the normal version, whether the ammunition is made of the metal or coated with it."
@@ -107,6 +108,7 @@
 				"page": 78,
 				"tier": "major",
 				"rarity": "unknown",
+				"valueExpression": "[[baseItem.value]] + 50000",
 				"entries": [
 					"Whenever you hit an object with this weapon, the hit is a critical hit."
 				]
@@ -123,6 +125,7 @@
 					"type": "AF"
 				}
 			],
+			"ammo": true,
 			"inherits": {
 				"nameSuffix": " +1",
 				"source": "DMG",
@@ -150,6 +153,7 @@
 					"type": "AF"
 				}
 			],
+			"ammo": true,
 			"inherits": {
 				"nameSuffix": " +2",
 				"source": "DMG",
@@ -177,6 +181,7 @@
 					"type": "AF"
 				}
 			],
+			"ammo": true,
 			"inherits": {
 				"nameSuffix": " +3",
 				"source": "DMG",
@@ -508,6 +513,7 @@
 			"excludes": {
 				"page": 268
 			},
+			"ammo": true,
 			"entries": [
 				"An {@italic arrow of slaying} is a magic weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both {@italic arrows of dragon slaying} and {@italic arrows of blue dragon slaying}. If a creature belonging to the type, race, or group associated with an {@italic arrow of slaying} takes damage from the arrow, the creature must make a DC 17 Constitution saving throw, taking an extra {@dice 6d10} piercing damage on a failed save, or half as much extra damage on a successful one.",
 				"Once an {@italic arrow of slaying} deals its extra damage to a creature, it becomes a nonmagical arrow.",
@@ -1960,6 +1966,7 @@
 					"type": "AF"
 				}
 			],
+			"ammo": true,
 			"entries": [
 				"Some monsters that have immunity or resistance to nonmagical weapons are susceptible to silver ammunition, so cautious adventurers invest extra coin to plate their ammunition in silver. You can silver ten pieces of ammunition for 100 gp. This cost represents not only the price of the silver, but the time and expertise needed to add silver to the ammunition without making it less effective."
 			],
@@ -1990,7 +1997,8 @@
 				"source": "PHB",
 				"page": 148,
 				"tier": "major",
-				"rarity": "unknown"
+				"rarity": "unknown",
+				"valueExpression": "[[baseItem.value]] + 10000"
 			}
 		},
 		{
@@ -2224,6 +2232,7 @@
 					"type": "AF"
 				}
 			],
+			"ammo": true,
 			"inherits": {
 				"namePrefix": "Walloping ",
 				"source": "XGE",

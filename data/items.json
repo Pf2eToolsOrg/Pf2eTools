@@ -174,6 +174,96 @@
 			"capCargo": 1
 		},
 		{
+			"name": "Akmon, Hammer of Purphoros",
+			"source": "MOT",
+			"page": 198,
+			"srd": true,
+			"baseItem": "warhammer|PHB",
+			"type": "M",
+			"rarity": "artifact",
+			"reqAttune": true,
+			"weight": 2,
+			"value": 1500,
+			"weaponCategory": "martial",
+			"property": [
+				"V"
+			],
+			"dmg1": "1d8",
+			"dmgType": "B",
+			"dmg2": "1d10",
+			"bonusWeapon": "+3",
+			"weapon": true,
+			"entries": [
+				"Purphoros's hammer works wonders and disasters, the god of the forge using it to craft ground-breaking marvels and dangerous inventions in equal measure. Purphoros rarely bestows Akmon on mortals but occasionally leaves it unattended at his forge in Mount Velus. When Purphoros does permit a mortal to use the hammer, it's usually so they might bring an important work into being, wreck a force of destruction, or forge something remarkable somewhere the god isn't welcome.",
+				{
+					"type": "entries",
+					"name": "Hammer of the Forge",
+					"entries": [
+						"This magic warhammer grants a +3 bonus to attack and damage rolls made with it. When you hit with an attack using it, the target takes an extra {@damage 3d10} fire damage."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Blessing of the Forge",
+					"entries": [
+						"If you are a worshiper of Purphoros, you gain all the following benefits for which you have the required piety:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Piety 10+.",
+									"entry": "The hammer has 1 randomly determined {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial} property."
+								},
+								{
+									"type": "item",
+									"name": "Piety 25+.",
+									"entry": "The hammer has 1 randomly determined {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial} property."
+								},
+								{
+									"type": "item",
+									"name": "Piety 50+.",
+									"entry": "The hammer has 1 additional randomly determined {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial} property."
+								}
+							]
+						},
+						"If you aren't a worshiper of Purphoros, the hammer has 2 randomly determined {@table Artifact Properties; Minor Detrimental Properties|dmg|minor detrimental} properties.",
+						"See \"Artifacts\" in chapter 7 of the Dungeon Master's Guide for details on randomly determined properties."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Reforged",
+					"entries": [
+						"While holding the hammer, you have resistance to fire damage and are immune to {@condition exhaustion}. Additionally, you have proficiency with smith's tools and have advantage on all ability checks made using them."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spells",
+					"entries": [
+						"While the hammer is on your person, you can use an action to cast one of the following spells (save DC 18): {@spell animate objects}, {@spell heat metal}, {@spell fabricate}, {@spell magic weapon}, {@spell mending}, {@spell shatter}. Once you use the hammer to cast a spell, the spell can't be cast again from it until the next dusk."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Destroying the Hammer",
+					"entries": [
+						"To destroy the hammer, it must be taken to the realm of Tizerus, in the Underworld. There it must be coated in clay from the Mire of Punishment. The heat of the hammer hardens the clay, which fuses to it after one month. Once fully hardened, the clay-covered hammer must be swallowed and digested by a kraken."
+					]
+				}
+			],
+			"attachedSpells": [
+				"animate objects",
+				"heat metal",
+				"fabricate",
+				"magic weapon",
+				"mending",
+				"shatter"
+			]
+		},
+		{
 			"name": "Alchemist's Fire (flask)",
 			"source": "PHB",
 			"page": 148,
@@ -335,6 +425,24 @@
 			"lootTables": [
 				"Magic Item Table B"
 			]
+		},
+		{
+			"name": "Ale (Gallon)",
+			"source": "PHB",
+			"page": 158,
+			"srd": true,
+			"type": "FD",
+			"rarity": "none",
+			"value": 20
+		},
+		{
+			"name": "Ale (Mug)",
+			"source": "PHB",
+			"page": 158,
+			"srd": true,
+			"type": "FD",
+			"rarity": "none",
+			"value": 4
 		},
 		{
 			"name": "Alexandrite",
@@ -1535,8 +1643,15 @@
 			"rarity": "none",
 			"weight": 2,
 			"value": 100,
+			"quantity": 1000,
 			"entries": [
 				"As an action, you can spill these tiny metal balls from their pouch to cover a level area 10 feet square. A creature moving across the covered area must succeed on a DC 10 Dexterity saving throw or fall {@condition prone}. A creature moving through the area at half speed doesn't need to make the saving throw."
+			],
+			"packContents": [
+				{
+					"item": "ball bearing|phb",
+					"quantity": 1000
+				}
 			]
 		},
 		{
@@ -4087,8 +4202,15 @@
 			"rarity": "none",
 			"weight": 2,
 			"value": 100,
+			"quantity": 20,
 			"entries": [
 				"As an action, you can spread a single bag of caltrops to cover a 5-foot-square area. Any creature that enters the area must succeed on a DC 15 Dexterity saving throw or stop moving and take 1 piercing damage. Until the creature regains at least 1 hit point, its walking speed is reduced by 10 feet. A creature moving through the area at half speed doesn't need to make the saving throw."
+			],
+			"packContents": [
+				{
+					"item": "caltrop|phb",
+					"quantity": 20
+				}
 			]
 		},
 		{
@@ -4881,6 +5003,15 @@
 			]
 		},
 		{
+			"name": "Chunk of Meat",
+			"source": "PHB",
+			"page": 158,
+			"srd": true,
+			"type": "FD",
+			"rarity": "none",
+			"value": 30
+		},
+		{
 			"name": "Cinnamon",
 			"source": "PHB",
 			"page": 157,
@@ -5401,6 +5532,15 @@
 			"entries": [
 				"Glamerweave is clothing imbued with harmless illusory magic. While wearing the common version of these clothes, you can use a bonus action to create a moving illusory pattern within the cloth."
 			]
+		},
+		{
+			"name": "Common Wine (Pitcher)",
+			"source": "PHB",
+			"page": 158,
+			"srd": true,
+			"type": "FD",
+			"rarity": "none",
+			"value": 20
 		},
 		{
 			"name": "Component Pouch",
@@ -7248,6 +7388,95 @@
 			]
 		},
 		{
+			"name": "Dekella, Bident of Thassa",
+			"source": "MOT",
+			"page": 199,
+			"srd": true,
+			"baseItem": "trident|PHB",
+			"type": "M",
+			"rarity": "artifact",
+			"reqAttune": true,
+			"weight": 4,
+			"value": 500,
+			"weaponCategory": "martial",
+			"property": [
+				"T",
+				"V"
+			],
+			"range": "20/60",
+			"dmg1": "1d6",
+			"dmgType": "P",
+			"dmg2": "1d8",
+			"bonusWeapon": "+3",
+			"weapon": true,
+			"entries": [
+				"Thassa wields Dekella, a two-pronged weapon gifted to her by Purphoros. When the god of the sea bestows her weapon on a mortal, it's often so they might work her will far from the ocean, right some wrong affecting those she'd prefer not to harm, or give a mortal a glimpse of her terrible responsibilities.",
+				{
+					"type": "entries",
+					"name": "Bident of the Deep",
+					"entries": [
+						"Thassa's signature weapon thrums with the icy currents of the deep ocean. This weapon functions as a trident that grants a +3 bonus to attack and damage rolls made with it. When you hit with an attack using the bident, the target takes an extra {@damage 2d10} cold damage."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Blessing of the Deep",
+					"entries": [
+						"If you are a worshiper of Thassa, you gain all the following benefits for which you have the required piety:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Piety 10+.",
+									"entry": "You can breathe underwater, and you gain a swimming speed of 60 feet."
+								},
+								{
+									"type": "item",
+									"name": "Piety 25+.",
+									"entry": "The bident has 1 randomly determined {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial} property."
+								},
+								{
+									"type": "item",
+									"name": "Piety 50+.",
+									"entry": "The bident has 1 randomly determined {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial} property."
+								}
+							]
+						},
+						"If you aren't a worshiper of Thassa, the bident has 1 {@table Artifact Properties; Minor Detrimental Properties|dmg|minor detrimental} property and 1 {@table Artifact Properties; Major Detrimental Properties|dmg|major detrimental} property, both randomly determined.",
+						"See \"Artifacts\" in chapter 7 of the Dungeon Master's Guide for details on randomly determined properties."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Command the Deep",
+					"entries": [
+						"The bident holds the power to command the waves and its creatures. As an action, you can change the condition of the sea within 1 mile of you, creating strong winds and heavy rain that cause violent waves (see \"Weather at Sea\" in chapter 5 of the Dungeon Master's Guide) or calming a storm. In either case, the unnatural weather lasts for 1 hour before returning to normal. Once used, this property of the bident can't be used again until the next dusk.",
+						"Additionally, you can cast the {@spell dominate monster} spell (save DC 18) from the bident, but only on beasts and monstrosities that have an innate swimming speed. Once used, this property of the bident can't be used again until the next dusk."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Aquatic Metamorphosis",
+					"entries": [
+						"You can cast the {@spell true polymorph} spell (save DC 18) from the bident, but you must cast it on a creature to turn it into a kind of creature that has an innate swimming speed. Once used, this property of the bident can't be used again until the next dusk."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Destroying the Bident",
+					"entries": [
+						"To destroy the bident, it must be heated by the breath of an {@creature ancient red dragon} and then, while still hot, immersed in the Tartyx River."
+					]
+				}
+			],
+			"attachedSpells": [
+				"dominate monster",
+				"true polymorph"
+			]
+		},
+		{
 			"name": "Demon Armor",
 			"source": "DMG",
 			"page": 165,
@@ -8783,6 +9012,106 @@
 			]
 		},
 		{
+			"name": "Ephixis, Bow of Nylea",
+			"source": "MOT",
+			"page": 200,
+			"srd": true,
+			"baseItem": "shortbow|PHB",
+			"type": "R",
+			"rarity": "artifact",
+			"reqAttune": true,
+			"weight": 2,
+			"value": 2500,
+			"weaponCategory": "simple",
+			"property": [
+				"A",
+				"2H"
+			],
+			"range": "80/320",
+			"dmg1": "1d6",
+			"dmgType": "P",
+			"bonusWeapon": "+3",
+			"weapon": true,
+			"entries": [
+				"Nylea wields the shortbow Ephixis, the bow whose arrows herald the turning of the seasons. Nylea is quick to let her favored followers borrow her bow, particularly when they intend to use it to perform great deeds, put an end to foul creatures, or cast down the arrogant.",
+				{
+					"type": "entries",
+					"name": "Bow of the Wild",
+					"entries": [
+						"This divine weapon includes a shortbow and a quiver with four arrows, each tied to one of the four seasons. You gain a +3 bonus to attack and damage rolls made with this bow, and you suffer no disadvantage when attacking at the weapon's long range. Additionally, Ephixis scores a critical hit on a {@dice d20} roll of 19 or 20."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Blessing of the Wild",
+					"entries": [
+						"If you are a worshiper of Nylea, you gain all the following benefits for which you have the required piety:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Piety 10+.",
+									"entry": "The bow has 1 randomly determined {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial} property."
+								},
+								{
+									"type": "item",
+									"name": "Piety 25+.",
+									"entry": "The bow has 1 randomly determined {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial} property."
+								}
+							]
+						},
+						"If you aren't a worshiper of Nylea, the bow has 1 randomly determined {@table Artifact Properties; Major Detrimental Properties|dmg|major detrimental} property.",
+						"See \"Artifacts\" in chapter 7 of the Dungeon Master's Guide for details on randomly determined properties."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Arrows of the Seasons",
+					"entries": [
+						"The four arrows\u2014each associated with a season\u2014that accompany this bow can be fired only from it. Each arrow disappears immediately after it's used, and it reappears in the quiver at the next dusk. The save DC against spells cast with the arrows is 18. Each arrow has a unique property:"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spring",
+					"entries": [
+						"As an action, you can fire this arrow, targeting a beast or a plant creature you can see within 320 feet of you. On a hit, the arrow deals no damage, and the target gains the benefits of the {@spell awaken} spell for 8 hours."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Summer",
+					"entries": [
+						"As an action, you can fire this arrow at an unoccupied space on the ground that you can see within 320 feet of you, no attack roll required. A Nyxborn lynx is summoned in that space (use the stat block for a {@creature tiger} with the {@book Nyxborn traits|MOT|6|Nyxborn Creatures} from chapter 6). The lynx understands your verbal commands and obeys them as best it can, and it takes its turns immediately after yours. The emissary remains for 1 hour before fading away."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Autumn",
+					"entries": [
+						"As an action, you can fire this arrow at a space on the ground that you can see within 320 feet of you, no attack roll required, casting the {@spell wall of thorns} spell there."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Winter",
+					"entries": [
+						"As an action, you can fire this arrow at a space that you can see within 320 feet of you, no attack roll required, casting the {@spell ice storm} spell there."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Destroying the Bow",
+					"entries": [
+						"The bow can't be destroyed without first destroying all its arrows. The winter arrow must be fed to a cerberus on the winter solstice. The spring arrow must be planted at the base of a Black Oak of Asphodel on the spring equinox. The summer arrow must be broken by a sea giant on the summer solstice. Then the autumn arrow must be shot into the carcass of a hydra on the autumnal equinox. When all four arrows are destroyed, the bow and quiver dissolve into dust."
+					]
+				}
+			],
+			"ammoType": "arrow|phb"
+		},
+		{
 			"name": "Ersatz Eye",
 			"source": "XGE",
 			"page": 137,
@@ -9461,6 +9790,15 @@
 			"value": 75000
 		},
 		{
+			"name": "Fine Wine (Bottle)",
+			"source": "PHB",
+			"page": 158,
+			"srd": true,
+			"type": "FD",
+			"rarity": "none",
+			"value": 1000
+		},
+		{
 			"name": "Finely articulated jade glove (River Heralds)",
 			"source": "PSX",
 			"page": 25,
@@ -9547,6 +9885,34 @@
 			"rarity": "none",
 			"weight": 1,
 			"value": 200
+		},
+		{
+			"name": "Flying Chariot",
+			"source": "MOT",
+			"page": 196,
+			"rarity": "rare",
+			"wondrous": true,
+			"bonusAc": "+1",
+			"entries": [
+				"The chariot's riders and creatures pulling the chariot gain a +1 bonus to their AC.",
+				"If this magic chariot is pulled by one or more flying creatures, it too can fly.",
+				{
+					"type": "inset",
+					"name": "Chariots",
+					"entries": [
+						"Chariots and the creatures pulling them work like controlled mounts, as described in the mounted combat rules in the {@book Player's Handbook|PHB|9|Mounted Combat}, but with the following differences:",
+						{
+							"type": "list",
+							"items": [
+								"Mounting or dismounting a chariot costs you 5 feet of movement, rather than a number of feet equal to half your speed.",
+								"Being mounted on a chariot grants you half cover.",
+								"A chariot's speed is equal to the speed of the slowest creature pulling it.",
+								"If multiple creatures are pulling the chariot, they all act on the same initiative, and they must take the same action on their turn."
+							]
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Folding Boat",
@@ -11187,6 +11553,94 @@
 			]
 		},
 		{
+			"name": "Helm of the Gods",
+			"source": "MOT",
+			"page": 196,
+			"rarity": "rare",
+			"reqAttune": true,
+			"wondrous": true,
+			"recharge": "dawn",
+			"charges": 3,
+			"entries": [
+				"While wearing this helm, you know whether there is a celestial or fiend within 30 feet of you, as well as where the creature is located, provided the creature isn't behind total cover.",
+				"Whenever you finish a long rest while wearing the helm, you can pray to one of the gods listed on the Helm of the Gods table and store the listed spell in the helm, replacing any spell that is already stored there. The save DC for the spell is 13.",
+				"The helm has 3 charges. To cast a spell from the helm, you must expend 1 charge, and the helm regains {@dice 1d3} charges daily at dawn.",
+				{
+					"type": "table",
+					"colStyles": [
+						"col-2 text-center",
+						"col-10 text-center"
+					],
+					"colLabels": [
+						"God",
+						"Spell"
+					],
+					"rows": [
+						[
+							"Athreos",
+							"{@spell protection from evil and good}"
+						],
+						[
+							"Ephara",
+							"{@spell sanctuary}"
+						],
+						[
+							"Erebos",
+							"{@spell inflict wounds}"
+						],
+						[
+							"Heliod",
+							"{@spell guiding bolt}"
+						],
+						[
+							"Iroas",
+							"{@spell heroism}"
+						],
+						[
+							"Karametra",
+							"{@spell goodberry}"
+						],
+						[
+							"Keranos",
+							"{@spell thunderous smite}"
+						],
+						[
+							"Klothys",
+							"{@spell entangle}"
+						],
+						[
+							"Kruphix",
+							"{@spell dissonant whispers}"
+						],
+						[
+							"Mogis",
+							"{@spell hellish rebuke}"
+						],
+						[
+							"Nylea",
+							"{@spell faerie fire}"
+						],
+						[
+							"Pharika",
+							"{@spell lesser restoration}"
+						],
+						[
+							"Phenax",
+							"{@spell charm person}"
+						],
+						[
+							"Purphoros",
+							"{@spell searing smite}"
+						],
+						[
+							"Thassa",
+							"{@spell identify}"
+						]
+					]
+				}
+			]
+		},
+		{
 			"name": "Helm of the Scavenger",
 			"source": "WDMM",
 			"page": 297,
@@ -11753,6 +12207,15 @@
 			"rarity": "none",
 			"weight": 1,
 			"value": 2500
+		},
+		{
+			"name": "Hunk of Cheese",
+			"source": "PHB",
+			"page": 158,
+			"srd": true,
+			"type": "FD",
+			"rarity": "none",
+			"value": 10
 		},
 		{
 			"name": "Hunter's Coat",
@@ -12917,7 +13380,14 @@
 			"type": "G",
 			"rarity": "none",
 			"weight": 5,
-			"value": 100
+			"value": 100,
+			"quantity": 10,
+			"packContents": [
+				{
+					"item": "iron spike|phb",
+					"quantity": 10
+				}
+			]
 		},
 		{
 			"name": "Ironfang",
@@ -13378,6 +13848,109 @@
 			"wondrous": true,
 			"entries": [
 				"This small stylized key plays a vital role in the work of House Kundarak. If you cast the {@spell alarm}, {@spell arcane lock}, or {@spell glyph of warding} spell, you can tie the effect to the keycharm so that whoever holds it receives the notification from the {@spell alarm} spell, bypasses the lock of the {@spell arcane lock} spell, or avoids triggering the glyph placed by the {@spell glyph of warding} spell. In addition, the holder (who needn't be attuned to the item) can take an action to end any one spell tied to it, provided the holder knows the command word you set for ending the tied spells. The keycharm can have up to three tied spells at one time."
+			]
+		},
+		{
+			"name": "Khrusor, Spear of Heliod",
+			"source": "MOT",
+			"page": 200,
+			"srd": true,
+			"baseItem": "spear|PHB",
+			"type": "M",
+			"rarity": "artifact",
+			"reqAttune": true,
+			"weight": 3,
+			"value": 100,
+			"weaponCategory": "simple",
+			"property": [
+				"T",
+				"V"
+			],
+			"range": "20/60",
+			"dmg1": "1d6",
+			"dmgType": "P",
+			"dmg2": "1d8",
+			"bonusWeapon": "+3",
+			"recharge": "dawn",
+			"charges": 10,
+			"weapon": true,
+			"entries": [
+				"Heliod wields Khrusor, a spear blessed with the power of the sun. In his hands, it can be pitched from Nyx to any point on Theros. When Heliod lends his weapon to a mortal, it's typically so they can perform some great work in his name or as a test of their worthiness.",
+				{
+					"type": "entries",
+					"name": "Spear of the Sun",
+					"entries": [
+						"This spear grants a +3 bonus to attack and damage rolls made with it. When you hit with an attack using this spear, the target takes an extra {@damage 2d8} radiant damage."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Blessing of the Sun",
+					"entries": [
+						"If you are a worshiper of Heliod, you gain all the following benefits for which you have the required piety:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Piety 3+.",
+									"entry": "You gain 15 temporary hit points each dawn."
+								},
+								{
+									"type": "item",
+									"name": "Piety 10+.",
+									"entry": "The spear has 1 randomly determined {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial} property."
+								},
+								{
+									"type": "item",
+									"name": "Piety 25+.",
+									"entry": "The spear has 1 additional randomly determined {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial} property."
+								},
+								{
+									"type": "item",
+									"name": "Piety 50+.",
+									"entry": "The spear has 1 randomly determined {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial} property."
+								}
+							]
+						},
+						"If you aren't a worshiper of Heliod, the spear has 2 randomly determined {@table Artifact Properties; Major Detrimental Properties|dmg|major detrimental} properties.",
+						"See \"Artifacts\" in chapter 7 of the Dungeon Master's Guide for details on randomly determined properties."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Luminous",
+					"entries": [
+						"The spear sheds bright light in a 30-foot radius and dim light for an additional 30 feet. The light is sunlight."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sun's Retaliation",
+					"entries": [
+						"When you take damage from a creature within 5 feet of you, you can use your reaction to make a melee attack with the spear against that creature. On a hit, the spear deals damage as normal, and the creature is {@condition blinded} until the start of its next turn. This property of the spear can't be used again until the next dawn."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spells",
+					"entries": [
+						"The spear has 10 charges. While holding it, you can use an action to expend 1 or more of its charges to cast one of the following spells (save DC 18) from it: {@spell guiding bolt} (1 charge), {@spell daylight} (3 charges, targeting the tip of the spear only), {@spell sunbeam} (6 charges). The spear regains {@dice 1d6 + 4} expended charges daily at dawn."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Destroying the Spear",
+					"entries": [
+						"If taken to Erebos's palace in Tizerus, and used to sacrifice a champion of Heliod to Erebos, Khrusor is either destroyed or fundamentally twisted to Erebos's service."
+					]
+				}
+			],
+			"attachedSpells": [
+				"guiding bolt",
+				"sunbeam",
+				"daylight"
 			]
 		},
 		{
@@ -14006,6 +14579,15 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Loaf of Bread",
+			"source": "PHB",
+			"page": 158,
+			"srd": true,
+			"type": "FD",
+			"rarity": "none",
+			"value": 2
 		},
 		{
 			"name": "Lock",
@@ -14747,6 +15329,82 @@
 			"speed": 40
 		},
 		{
+			"name": "Mastix, Whip of Erebos",
+			"source": "MOT",
+			"page": 201,
+			"srd": true,
+			"baseItem": "whip|PHB",
+			"type": "M",
+			"rarity": "artifact",
+			"reqAttune": true,
+			"weight": 3,
+			"value": 200,
+			"weaponCategory": "martial",
+			"property": [
+				"F",
+				"R"
+			],
+			"dmg1": "1d4",
+			"dmgType": "S",
+			"bonusWeapon": "+3",
+			"weapon": true,
+			"entries": [
+				"Erebos wields Mastix, a whip capable of extending like an impossibly long shadow. In the hands of the god of the dead, the whip snares the reluctant dead and drags them into his realm. When Erebos grants his weapon to a mortal follower, it's typically to reclaim a powerful soul or to humiliate Heliod.",
+				{
+					"type": "entries",
+					"name": "Whip of the Dead",
+					"entries": [
+						"Erebos's whip seethes with the enervating energy of the Underworld. This magic whip grants a +3 bonus to attack and damage rolls made with it. When you hit with an attack using this whip, the target takes an extra {@damage 2d8} necrotic damage and you regain hit points equal to half the amount of necrotic damage dealt.",
+						"Additionally, when you make an attack with the whip on your turn, you can increase the range of the attack to 300 feet. This property of the weapon can't be used again until the next dusk."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Blessing of the Dead",
+					"entries": [
+						"If you are a worshiper of Erebos, you gain all the following benefits for which you have the required piety:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Piety 1+.",
+									"entry": "The whip has 1 randomly determined {@table Artifact Properties; Minor Detrimental Properties|dmg|minor detrimental} property\u2014a burden Erebos imposes to test his faithful."
+								},
+								{
+									"type": "item",
+									"name": "Piety 25+.",
+									"entry": "The whip has 1 randomly determined {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial} property."
+								},
+								{
+									"type": "item",
+									"name": "Piety 50+.",
+									"entry": "The whip has 1 additional randomly determined {@table Artifact Properties; Major Beneficial Properties|dmg|major beneficial} property."
+								}
+							]
+						},
+						"If you aren't a worshiper of Erebos, the whip has 2 randomly determined {@table Artifact Properties; Major Detrimental Properties|dmg|major detrimental} properties.",
+						"See \"Artifacts\" in chapter 7 of the Dungeon Master's Guide for details on randomly determined properties."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Erebos's Claim",
+					"entries": [
+						"While carrying the whip, you can use an action to cast either {@spell circle of death} or {@spell dominate monster} (targeting only undead) from the whip. The save DC for these spells is 18. Once you use the whip to cast a spell, that spell can't be cast from it again until the next dusk."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Destroying the Whip",
+					"entries": [
+						"To destroy the whip, it must be taken to the heights of Mount Hiastos in Nyx, unraveled by a Returned, and left to bask in continual daylight for one month."
+					]
+				}
+			]
+		},
+		{
 			"name": "Matalotok",
 			"source": "BGDIA",
 			"page": 224,
@@ -15155,6 +15813,52 @@
 						"You can expend 3 charges as an action to launch a hail of molten projectiles in a 20-foot-radius, 40-foot-high cylinder centered on a point you can see within 60 feet of you. Each creature in the area must make a DC 15 Dexterity saving throw. A creature takes {@dice 5d8} fire damage on a failed save, or half as much damage on a successful one."
 					]
 				}
+			]
+		},
+		{
+			"name": "Molten Bronze Skin (Breastplate)",
+			"source": "MOT",
+			"page": 197,
+			"baseItem": "breastplate|phb",
+			"type": "MA",
+			"rarity": "rare",
+			"reqAttune": true,
+			"weight": 20,
+			"ac": 14,
+			"entries": [
+				"This magical armor appears as a jug of molten bronze. When you attune to it, the bronze adheres and contours to your skin. The armor can be worn under normal clothes, but it doesn't impede bodily functions. Once you put it on, it can't be removed unless you choose to do so.",
+				"While wearing the armor, you have resistance to fire damage. The armor also doesn't impose disadvantage on Dexterity ({@skill Stealth}) checks."
+			]
+		},
+		{
+			"name": "Molten Bronze Skin (Half Plate)",
+			"source": "MOT",
+			"page": 197,
+			"baseItem": "half plate armor|phb",
+			"type": "MA",
+			"rarity": "rare",
+			"reqAttune": true,
+			"weight": 40,
+			"ac": 15,
+			"entries": [
+				"This magical armor appears as a jug of molten bronze. When you attune to it, the bronze adheres and contours to your skin. The armor can be worn under normal clothes, but it doesn't impede bodily functions. Once you put it on, it can't be removed unless you choose to do so.",
+				"While wearing the armor, you have resistance to fire damage. The armor also doesn't impose disadvantage on Dexterity ({@skill Stealth}) checks."
+			]
+		},
+		{
+			"name": "Molten Bronze Skin (Plate)",
+			"source": "MOT",
+			"page": 197,
+			"baseItem": "plate armor|phb",
+			"type": "HA",
+			"rarity": "rare",
+			"reqAttune": true,
+			"weight": 65,
+			"ac": 18,
+			"strength": "15",
+			"entries": [
+				"This magical armor appears as a jug of molten bronze. When you attune to it, the bronze adheres and contours to your skin. The armor can be worn under normal clothes, but it doesn't impede bodily functions. Once you put it on, it can't be removed unless you choose to do so.",
+				"While wearing the armor, you have resistance to fire damage. The armor also doesn't impose disadvantage on Dexterity ({@skill Stealth}) checks."
 			]
 		},
 		{
@@ -15715,6 +16419,7 @@
 				"When you make a ranged attack roll with this weapon against your sworn enemy, you have advantage on the roll. In addition, your target gains no benefit from cover, other than total cover, and you suffer no disadvantage due to long range. If the attack hits, your sworn enemy takes an extra {@dice 3d6} piercing damage.",
 				"While your sworn enemy lives, you have disadvantage on attack rolls with all other weapons."
 			],
+			"ammoType": "arrow|phb",
 			"lootTables": [
 				"Magic Item Table H"
 			]
@@ -16410,7 +17115,8 @@
 			"dmgType": "P",
 			"entries": [
 				"This unique weapon can be used only by a Medium or larger creature that has a Strength of 18 or higher. The bow shoots oversized arrows that deal piercing damage equal to 2d6 + the wielder's Strength modifier."
-			]
+			],
+			"ammoType": "arrow|phb"
 		},
 		{
 			"name": "Ox",
@@ -17396,6 +18102,38 @@
 			],
 			"lootTables": [
 				"Magic Item Table B"
+			]
+		},
+		{
+			"name": "Potion of Aqueous Form",
+			"source": "MOT",
+			"page": 197,
+			"type": "P",
+			"rarity": "rare",
+			"entries": [
+				"When you drink this potion, you transform into a pool of water. You return to your true form after 10 minutes or if you are {@condition incapacitated} or die.",
+				"You're under the following effects while in this form:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Liquid Movement.",
+							"entry": "You have a swimming speed of 30 feet. You can move over or through other liquids. You can enter and occupy the space of another creature. You can rise up to your normal height, and you can pass through even Tiny openings. You extinguish nonmagical flames in any space you enter."
+						},
+						{
+							"type": "item",
+							"name": "Watery Resilience.",
+							"entry": "You have resistance to nonmagical damage. You also have advantage on Strength, Dexterity, and Constitution saving throws."
+						},
+						{
+							"type": "item",
+							"name": "Limitations.",
+							"entry": "You can't talk, attack, cast spells, or activate magic items. Any objects you were carrying or wearing meld into your new form and are inaccessible, though you continue to be affected by anything you're wearing, such as armor."
+						}
+					]
+				}
 			]
 		},
 		{
@@ -18404,6 +19142,70 @@
 				"A Pyroconverger is an Izzet-made flamethrower. It carries a risk of malfunction each time you use it.",
 				"As an action, you can cause the Pyroconverger to project fire in a 10-foot cone. Each creature in that area must make a DC 13 Dexterity saving throw, taking {@dice 4d6} fire damage on a failed save, or half as much damage on a successful one.",
 				"Each time you use the Pyroconverger, roll a {@dice d10} and add the number of times you have used it since your last long rest. If the total is 11 or higher, the Pyroconverger malfunctions: you take {@dice 4d6} fire damage, and you can't use the Pyroconverger again until you finish a long rest."
+			]
+		},
+		{
+			"name": "Pyxis of Pandemonium",
+			"source": "MOT",
+			"page": 197,
+			"rarity": "legendary",
+			"wondrous": true,
+			"curse": true,
+			"entries": [
+				"A creature that touches this ornate wooden vessel for 1 minute gains the benefits of a short rest. That creature also gains the effects of the {@spell bless} spell until the creature finishes a short or long rest. The creature can't gain these benefits again until it finishes a long rest.",
+				"If the vessel is opened, roll on the Pyxis of Pandemonium table to determine what happens. Any spells cast by the vessel have a spell save DC of 17. One minute after the vessel is opened, it disappears. It reappears, sealed, in a random location on the same plane of existence 24 hours later.",
+				{
+					"type": "entries",
+					"name": "Curse",
+					"entries": [
+						"Any creature that gains the benefit of a short rest from the vessel hears cloying telepathic whispers emanating from it. That creature must make a DC 17 Wisdom saving throw. On a failed save, the creature is {@condition charmed} by the vessel for 1 hour. The {@condition charmed} creature does everything it can to open the vessel as soon as possible. On a successful save, the creature is immune to the vessel's whispers for 24 hours."
+					]
+				},
+				{
+					"type": "table",
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"colLabels": [
+						"d8",
+						"Calamity"
+					],
+					"rows": [
+						[
+							"1",
+							"{@b Androphagia.} Each creature within 60 feet of the vessel must succeed on a DC 17 Wisdom saving throw or go berserk for 1 minute. The berserk creature must begin its turn using the {@action Attack} action to make one melee or ranged attack (its choice) against the creature nearest to it. The berserk creature can repeat the save at the end of its turn, ending the effect on itself on a success."
+						],
+						[
+							"2",
+							"{@b Bile Blight.} The vessel casts the {@spell harm} spell on each creature within 30 feet of it."
+						],
+						[
+							"3",
+							"{@b Flood.} The vessel casts the {@spell tsunami} spell at a point of the DM's choice within 120 feet of it."
+						],
+						[
+							"4",
+							"{@b Medusa's Gaze.} The vessel casts the {@spell flesh to stone} spell on each creature within 30 feet of it."
+						],
+						[
+							"5",
+							"{@b Labyrinth.} The vessel casts the {@spell maze} spell on each creature within 30 feet of it."
+						],
+						[
+							"6",
+							"{@b Nightmare.} Tendrils of shadow seep from the vessel and form into {@dice 1d4} {@creature shadow demon||shadow demons} (see the Monster Manual for their stat block), which appear in unoccupied spaces within 30 feet of it and are hostile."
+						],
+						[
+							"7",
+							"{@b Swarming Insects.} The vessel casts the {@spell insect plague} spell, centered on itself and with a radius of 30 feet."
+						],
+						[
+							"8",
+							"{@b Unbridled Revel.} The vessel casts the {@spell Otto's irresistible dance} spell on each creature within 30 feet of it."
+						]
+					]
+				}
 			]
 		},
 		{
@@ -21569,6 +22371,24 @@
 			]
 		},
 		{
+			"name": "Siren Song Lyre",
+			"source": "MOT",
+			"page": 198,
+			"rarity": "rare",
+			"reqAttune": true,
+			"wondrous": true,
+			"entries": [
+				"You can use an action to play this lyre and cast one of the following spells from it: {@spell animal friendship}, {@spell charm person}, {@spell enthrall}, {@spell suggestion}. If the spell requires a saving throw, the spell save DC is 13.",
+				"Once the instrument has been used to cast a spell, it can't be used to cast that spell again until the next dawn."
+			],
+			"attachedSpells": [
+				"animal friendship",
+				"charm person",
+				"enthrall",
+				"suggestion"
+			]
+		},
+		{
 			"name": "Skyblinder Staff",
 			"source": "GGR",
 			"page": 181,
@@ -21624,6 +22444,48 @@
 			"rarity": "none",
 			"weight": 10,
 			"value": 200
+		},
+		{
+			"name": "Sling Bullets of Althemone",
+			"source": "MOT",
+			"page": 198,
+			"type": "A",
+			"rarity": "very rare",
+			"bonusWeapon": "+2",
+			"entries": [
+				"The sling bullets come in a pouch, which contains {@dice 1d4 + 4} bullets. Roll on the Magic Sling Bullets table for each bullet to determine its magical property.",
+				"You have a +2 bonus to attack and damage rolls made with each of these bullets. If a bullet misses its target, the bullet teleports back into the pouch. Once a bullet hits a target, the bullet loses its magic.",
+				{
+					"type": "table",
+					"caption": "Magic Sling Bullets",
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"colLabels": [
+						"d4",
+						"Bullet"
+					],
+					"rows": [
+						[
+							"1",
+							"{@b Banishment.} A creature that takes damage from this bullet must succeed on a DC 15 Charisma saving throw or be banished as though affected by the {@spell banishment} spell."
+						],
+						[
+							"2",
+							"{@b Fulguration.} On a hit, this bullet deals an extra {@damage 2d8} lightning damage to its target. All other creatures within 10 feet of the target must each succeed on a DC 15 Constitution saving throw or take {@damage 1d8} thunder damage."
+						],
+						[
+							"3",
+							"{@b Stunning.} On a hit, this bullet deals an extra {@damage 1d10} force damage, and the target is {@condition stunned} until the end of your next turn."
+						],
+						[
+							"4",
+							"{@b Tracking.} A creature that takes damage from this bullet is marked with a glowing rune where the bullet hit. The mark lasts 24 hours. While the creature is marked, you always know the direction to it."
+						]
+					]
+				}
+			]
 		},
 		{
 			"name": "Slippers of Spider Climbing",
@@ -27378,6 +28240,30 @@
 			]
 		},
 		{
+			"name": "Two-Birds Sling",
+			"source": "MOT",
+			"page": 198,
+			"srd": true,
+			"baseItem": "sling|PHB",
+			"type": "R",
+			"rarity": "rare",
+			"value": 10,
+			"weaponCategory": "simple",
+			"property": [
+				"A"
+			],
+			"range": "30/120",
+			"dmg1": "1d4",
+			"dmgType": "B",
+			"bonusWeapon": "+1",
+			"weapon": true,
+			"entries": [
+				"You have a +1 bonus to attack and damage rolls made with this weapon.",
+				"When you make a ranged attack with this sling and hit a target, you can cause the ammunition to ricochet toward a second target within 10 feet of the first, and then make a ranged attack against the second target."
+			],
+			"ammoType": "sling bullet|phb"
+		},
+		{
 			"name": "Two-Person Tent",
 			"source": "PHB",
 			"page": 153,
@@ -29881,6 +30767,19 @@
 			],
 			"lootTables": [
 				"Magic Item Table H"
+			]
+		},
+		{
+			"name": "Molten Bronze Skin",
+			"source": "MOT",
+			"page": 197,
+			"type": "GV",
+			"rarity": "rare",
+			"reqAttune": true,
+			"items": [
+				"Molten Bronze Skin (Breastplate)|MOT",
+				"Molten Bronze Skin (Half Plate)|MOT",
+				"Molten Bronze Skin (Plate)|MOT"
 			]
 		},
 		{

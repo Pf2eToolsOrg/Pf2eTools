@@ -84,7 +84,10 @@
 					"primordial": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/7/aarakocra.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/aarakocra.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -153,7 +156,26 @@
 					"celestial": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/8/aasimar.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/aasimar.mp3"
+			},
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"light"
+						],
+						"3": [
+							"lesser restoration"
+						],
+						"5": [
+							"daylight"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"entries": [
 				{
 					"name": "Age",
@@ -234,7 +256,20 @@
 					"celestial": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/8/aasimar.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/aasimar.mp3"
+			},
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"light"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"entries": [
 				{
 					"name": "Age",
@@ -1015,6 +1050,52 @@
 		},
 		{
 			"name": "Centaur",
+			"source": "MOT",
+			"page": 0,
+			"_copy": {
+				"name": "Centaur",
+				"source": "GGR",
+				"_mod": {
+					"entries": [
+						{
+							"mode": "replaceArr",
+							"replace": "Alignment",
+							"items": {
+								"name": "Alignment",
+								"type": "entries",
+								"entries": [
+									"Centaurs are inclined toward neutrality. Lagonna centaurs tend to be more lawful, while Pheres centaurs are more often chaotic."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Size",
+							"items": {
+								"name": "Size",
+								"type": "entries",
+								"entries": [
+									"Centaurs stand between 6 and 7 feet tall, with their equine bodies reaching about 4 feet at the withers. Pheres centaurs tend to be slightly larger than Lagonna centaurs. Your size is Medium."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Languages",
+							"items": {
+								"name": "Languages",
+								"type": "entries",
+								"entries": [
+									"You can speak, read, and write Common and Sylvan."
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Centaur",
 			"source": "UACentaursMinotaurs",
 			"page": 1,
 			"size": "M",
@@ -1397,7 +1478,10 @@
 					"draconic": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/135/dragonborn.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/dragonborn.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -1767,7 +1851,10 @@
 					"dwarvish": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/146/dwarf.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/dwarf.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -1868,6 +1955,19 @@
 							"undercommon": true
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"3": [
+									"enlarge/reduce"
+								],
+								"5": [
+									"invisibility"
+								]
+							},
+							"ability": "int"
+						}
+					],
 					"entries": [
 						{
 							"name": "Superior Darkvision",
@@ -1961,6 +2061,38 @@
 					"traitTags": [
 						"Spellcasting",
 						"Dragonmark"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"alarm",
+									"mage armor"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"alarm",
+									"armor of agathys"
+								],
+								"s2": [
+									"arcane lock",
+									"knock"
+								],
+								"s3": [
+									"glyph of warding",
+									"magic circle"
+								],
+								"s4": [
+									"leomund's secret chest",
+									"mordenkainen's faithful hound"
+								],
+								"s5": [
+									"antilife shell"
+								]
+							},
+							"ability": "int"
+						}
 					],
 					"entries": [
 						{
@@ -2166,7 +2298,10 @@
 					"perception": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/152/elf.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/elf.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -2278,6 +2413,22 @@
 					"traitTags": [
 						"Spellcasting",
 						"Weapon Proficiency"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"dancing lights"
+								],
+								"3": [
+									"faerie fire"
+								],
+								"5": [
+									"darkness"
+								]
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -2413,6 +2564,18 @@
 					],
 					"traitTags": [
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"friends",
+									"chill touch",
+									"minor illusion",
+									"fire bolt"
+								]
+							}
+						}
 					],
 					"entries": [
 						{
@@ -2652,6 +2815,40 @@
 						"Spellcasting",
 						"Dragonmark"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"minor illusion"
+								],
+								"3": [
+									"invisibility"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"disguise self",
+									"silent image"
+								],
+								"s2": [
+									"darkness",
+									"pass without trace"
+								],
+								"s3": [
+									"clairvoyance",
+									"major image"
+								],
+								"s4": [
+									"greater invisibility",
+									"hallucinatory terrain"
+								],
+								"s5": [
+									"mislead"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -2727,6 +2924,22 @@
 					},
 					"traitTags": [
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"light"
+								],
+								"3": [
+									"sleep"
+								],
+								"5": [
+									"invisibility"
+								]
+							},
+							"ability": "wis"
+						}
 					],
 					"entries": [
 						{
@@ -2907,6 +3120,32 @@
 							"common": true,
 							"elvish": true,
 							"anyStandard": 1
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"chill touch"
+								]
+							},
+							"ability": "cha"
+						},
+						{
+							"innate": {
+								"1": [
+									"spare the dying"
+								]
+							},
+							"ability": "cha"
+						},
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								]
+							},
+							"ability": "cha"
 						}
 					],
 					"entries": [
@@ -3326,6 +3565,22 @@
 						"Spellcasting",
 						"Weapon Proficiency"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"chill touch"
+								],
+								"3": [
+									"hex"
+								],
+								"5": [
+									"darkness"
+								]
+							},
+							"ability": "wis"
+						}
+					],
 					"entries": [
 						{
 							"name": "Mul Daya Magic",
@@ -3449,7 +3704,20 @@
 					"giant": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/161/firbolg.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/firbolg.mp3"
+			},
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"detect magic",
+							"disguise self"
+						]
+					}
+				}
+			],
 			"entries": [
 				{
 					"name": "Age",
@@ -3544,7 +3812,10 @@
 					"primordial": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/576/genasi.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/genasi.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -3587,6 +3858,16 @@
 					"traitTags": [
 						"Spellcasting"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"levitate"
+								]
+							},
+							"ability": "con"
+						}
+					],
 					"entries": [
 						{
 							"name": "Unending Breath",
@@ -3614,6 +3895,16 @@
 					],
 					"traitTags": [
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"pass without trace"
+								]
+							},
+							"ability": "con"
+						}
 					],
 					"entries": [
 						{
@@ -3644,6 +3935,19 @@
 					"traitTags": [
 						"Damage Resistance",
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"produce flame"
+								],
+								"3": [
+									"burning hands"
+								]
+							},
+							"ability": "con"
+						}
 					],
 					"entries": [
 						{
@@ -3685,6 +3989,19 @@
 						"Damage Resistance",
 						"Amphibious",
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"shape water|xge"
+								],
+								"3": [
+									"create or destroy water"
+								]
+							},
+							"ability": "con"
+						}
 					],
 					"entries": [
 						{
@@ -3809,6 +4126,22 @@
 							}
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": [
+									"jump"
+								],
+								"5": [
+									"misty step"
+								]
+							},
+							"ability": "int"
+						}
+					],
 					"entries": [
 						{
 							"name": "Alignment",
@@ -3858,6 +4191,22 @@
 					},
 					"traitTags": [
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": [
+									"shield"
+								],
+								"5": [
+									"detect thoughts"
+								]
+							},
+							"ability": "wis"
+						}
 					],
 					"entries": [
 						{
@@ -3970,6 +4319,22 @@
 							}
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": [
+									"jump"
+								],
+								"5": [
+									"misty step"
+								]
+							},
+							"ability": "int"
+						}
+					],
 					"entries": [
 						{
 							"name": "Alignment",
@@ -4013,6 +4378,22 @@
 					"traitTags": [
 						"Natural Armor",
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": [
+									"shield"
+								],
+								"5": [
+									"detect thoughts"
+								]
+							},
+							"ability": "wis"
+						}
 					],
 					"entries": [
 						{
@@ -4108,7 +4489,10 @@
 					"gnomish": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/231/gnome.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/gnome.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -4331,6 +4715,16 @@
 					"traitTags": [
 						"Spellcasting"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"minor illusion"
+								]
+							},
+							"ability": "int"
+						}
+					],
 					"entries": [
 						{
 							"name": "Natural Illusionist",
@@ -4366,6 +4760,41 @@
 					"traitTags": [
 						"Spellcasting",
 						"Dragonmark"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"comprehend languages",
+									"message"
+								],
+								"3": [
+									"magic mouth"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"comprehend languages",
+									"illusory script"
+								],
+								"s2": [
+									"animal messenger",
+									"silence"
+								],
+								"s3": [
+									"sending",
+									"tongues"
+								],
+								"s4": [
+									"arcane eye",
+									"confusion"
+								],
+								"s5": [
+									"dream"
+								]
+							},
+							"ability": "int"
+						}
 					],
 					"entries": [
 						{
@@ -4500,6 +4929,19 @@
 					"gnomish": true,
 					"primordial": true,
 					"undercommon": true
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"nondetection",
+							"blindness/deafness",
+							"blur",
+							"disguise self"
+						]
+					},
+					"ability": "int"
 				}
 			],
 			"entries": [
@@ -5038,7 +5480,10 @@
 					"athletics": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/238/goliath.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/goliath.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -5321,7 +5766,10 @@
 					}
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/259/half-elf.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/half-elf.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -5440,7 +5888,10 @@
 					}
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/259/half-elf.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/half-elf.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -5602,6 +6053,22 @@
 							}
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"dancing lights"
+								],
+								"3": [
+									"faerie fire"
+								],
+								"5": [
+									"darkness"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"type": "inset",
@@ -5666,6 +6133,41 @@
 					"traitTags": [
 						"Spellcasting",
 						"Dragonmark"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"detect magic",
+									"detect poison and disease"
+								],
+								"3": [
+									"see invisibility"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"detect evil and good",
+									"detect poison and disease"
+								],
+								"s2": [
+									"detect thoughts",
+									"find traps"
+								],
+								"s3": [
+									"clairvoyance",
+									"nondetection"
+								],
+								"s4": [
+									"arcane eye",
+									"divination"
+								],
+								"s5": [
+									"legend lore"
+								]
+							},
+							"ability": "int"
+						}
 					],
 					"entries": [
 						{
@@ -5751,6 +6253,37 @@
 						"Damage Resistance",
 						"Spellcasting",
 						"Dragonmark"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"gust|xge"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"feather fall",
+									"fog cloud"
+								],
+								"s2": [
+									"gust of wind",
+									"levitate"
+								],
+								"s3": [
+									"sleet storm",
+									"wind wall"
+								],
+								"s4": [
+									"conjure minor elementals",
+									"control water"
+								],
+								"s5": [
+									"conjure elemental"
+								]
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -6024,7 +6557,10 @@
 					"intimidation": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/262/half-orc.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/half-orc.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -6119,7 +6655,44 @@
 					"goblin": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/262/half-orc.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/half-orc.mp3"
+			},
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"hunter's mark"
+						],
+						"3": [
+							"locate object"
+						]
+					},
+					"expanded": {
+						"s1": [
+							"faerie fire",
+							"longstrider"
+						],
+						"s2": [
+							"locate animals or plants",
+							"locate object"
+						],
+						"s3": [
+							"clairvoyance",
+							"speak with plants"
+						],
+						"s4": [
+							"divination",
+							"locate creature"
+						],
+						"s5": [
+							"commune with nature"
+						]
+					},
+					"ability": "wis"
+				}
+			],
 			"entries": [
 				{
 					"name": "Age",
@@ -6235,7 +6808,10 @@
 					"halfling": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/260/halfling.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/halfling.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -6338,6 +6914,22 @@
 					"traitTags": [
 						"Spellcasting"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"druidcraft"
+								],
+								"3": [
+									"entangle"
+								],
+								"5": [
+									"spike growth"
+								]
+							},
+							"ability": "wis"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -6374,12 +6966,46 @@
 						"Dragonmark",
 						"Spellcasting"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"cure wounds"
+								],
+								"3": [
+									"lesser restoration"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"cure wounds",
+									"healing word"
+								],
+								"s2": [
+									"lesser restoration",
+									"prayer of healing"
+								],
+								"s3": [
+									"aura of vitality",
+									"mass healing word"
+								],
+								"s4": [
+									"aura of purity",
+									"aura of life"
+								],
+								"s5": [
+									"greater restoration"
+								]
+							},
+							"ability": "wis"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
 							"name": "Medical Intuition",
 							"entries": [
-								"When you make a Wisdom ({@skill Medicine}) check or an ability check using an herbalism kit, you can roll a {@dice d4} and add the number rolled to the ability check."
+								"When you make a Wisdom ({@skill Medicine}) check or an ability check using an {@item herbalism kit|phb}, you can roll a {@dice d4} and add the number rolled to the ability check."
 							]
 						},
 						{
@@ -6450,6 +7076,39 @@
 					"traitTags": [
 						"Spellcasting",
 						"Dragonmark"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"prestidigitation",
+									"purify food and drink",
+									"unseen servant"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"goodberry",
+									"sleep"
+								],
+								"s2": [
+									"aid",
+									"calm emotions"
+								],
+								"s3": [
+									"create food and water",
+									"leomund's tiny hut"
+								],
+								"s4": [
+									"aura of purity",
+									"mordenkainen's private sanctum"
+								],
+								"s5": [
+									"hallow"
+								]
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -6717,7 +7376,10 @@
 					"anyStandard": 1
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/279/human.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/human.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -6874,6 +7536,40 @@
 							"goblin": true
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"hunter's mark"
+								],
+								"3": [
+									"locate object"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"faerie fire",
+									"longstrider"
+								],
+								"s2": [
+									"locate animals or plants",
+									"locate object"
+								],
+								"s3": [
+									"clairvoyance",
+									"speak with plants"
+								],
+								"s4": [
+									"divination",
+									"locate creature"
+								],
+								"s5": [
+									"commune with nature"
+								]
+							},
+							"ability": "wis"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -6982,6 +7678,32 @@
 						"Spellcasting",
 						"Dragonmark"
 					],
+					"additionalSpells": [
+						{
+							"expanded": {
+								"s1": [
+									"animal friendship",
+									"speak with animals"
+								],
+								"s2": [
+									"beast sense",
+									"calm emotions"
+								],
+								"s3": [
+									"beacon of hope",
+									"conjure animals"
+								],
+								"s4": [
+									"aura of life",
+									"dominate beast"
+								],
+								"s5": [
+									"awaken"
+								]
+							},
+							"ability": "wis"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -7081,6 +7803,38 @@
 							"tool": true
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mending",
+									"magic weapon"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"identify",
+									"tenser's floating disk"
+								],
+								"s2": [
+									"continual flame",
+									"magic weapon"
+								],
+								"s3": [
+									"conjure barrage",
+									"elemental weapon"
+								],
+								"s4": [
+									"fabricate",
+									"stone shape"
+								],
+								"s5": [
+									"creation"
+								]
+							},
+							"ability": "int"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -7176,6 +7930,37 @@
 						"Spellcasting",
 						"Dragonmark"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"misty step"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"expeditious retreat",
+									"jump"
+								],
+								"s2": [
+									"misty step",
+									"pass without trace"
+								],
+								"s3": [
+									"blink",
+									"phantom steed"
+								],
+								"s4": [
+									"dimension door",
+									"freedom of movement"
+								],
+								"s5": [
+									"teleportation circle"
+								]
+							},
+							"ability": "dex"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -7260,6 +8045,37 @@
 					"traitTags": [
 						"Spellcasting",
 						"Dragonmark"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"shield"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"compelled duel",
+									"shield of faith"
+								],
+								"s2": [
+									"warding bond",
+									"zone of truth"
+								],
+								"s3": [
+									"counterspell",
+									"protection from energy"
+								],
+								"s4": [
+									"death ward",
+									"guardian of faith"
+								],
+								"s5": [
+									"bigby's hand"
+								]
+							},
+							"ability": "wis"
+						}
 					],
 					"entries": [
 						{
@@ -8080,7 +8896,10 @@
 					}
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/294/kenku-2.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/kenku-2.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -8486,6 +9305,106 @@
 					"name": "Languages",
 					"entries": [
 						"You can speak, read, and write Undercommon."
+					],
+					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Leonin",
+			"source": "MOT",
+			"page": 0,
+			"size": "M",
+			"speed": 35,
+			"ability": [
+				{
+					"str": 1,
+					"con": 2
+				}
+			],
+			"heightAndWeight": {
+				"baseHeight": 66,
+				"heightMod": "2d10",
+				"baseWeight": 180,
+				"weightMod": "2d6"
+			},
+			"darkvision": 60,
+			"traitTags": [
+				"Skill Proficiency",
+				"Unarmed Strike"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"athletics",
+							"intimidation",
+							"perception",
+							"survival"
+						]
+					}
+				}
+			],
+			"entries": [
+				{
+					"name": "Age",
+					"type": "entries",
+					"entries": [
+						"Leonin mature and age at about the same rate as humans."
+					]
+				},
+				{
+					"name": "Alignment",
+					"type": "entries",
+					"entries": [
+						"Leonin tend toward good alignments. Leonin who are focused on the pride lean toward lawful good."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Leonin are typically over 6 feet tall, with some standing over 7 feet. Your size is Medium."
+					]
+				},
+				{
+					"name": "Darkvision",
+					"entries": [
+						"You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"Your claws are natural weapons, which you can use to make unarmed strikes. If you hit with them, you can deal slashing damage equal to {@dice 1d4} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Hunter's Instincts",
+					"entries": [
+						"You have proficiency in one of the following skills of your choice: {@skill Athletics}, {@skill Intimidation}, {@skill Perception}, or {@skill Survival}."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Daunting Roar",
+					"entries": [
+						"As a bonus action, you can let out an especially menacing roar. Creatures of your choice within 10 feet of you that can hear you must succeed on a Wisdom saving throw or become {@condition frightened} of you until the end of your next turn. The DC of the save equals 8 + your proficiency bonus + your Constitution modifier. Once you use this trait, you can't use it again until you finish a short or long rest."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and Leonin."
 					],
 					"type": "entries"
 				}
@@ -9410,6 +10329,41 @@
 		},
 		{
 			"name": "Minotaur",
+			"source": "MOT",
+			"page": 0,
+			"_copy": {
+				"name": "Minotaur",
+				"source": "GGR",
+				"_mod": {
+					"entries": [
+						{
+							"mode": "replaceArr",
+							"replace": "Age",
+							"items": {
+								"name": "Age",
+								"type": "entries",
+								"entries": [
+									"Minotaurs mature and age at about the same rate as humans."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Alignment",
+							"items": {
+								"name": "Alignment",
+								"type": "entries",
+								"entries": [
+									"Minotaurs who leave the walls of Skophos have the opportunity to be free of its culture and pursue chaotic alignments, while those who remain within the polis and its tyrannical regime tend toward lawful alignments."
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Minotaur",
 			"source": "UACentaursMinotaurs",
 			"page": 2,
 			"size": "M",
@@ -10239,6 +11193,109 @@
 							]
 						},
 						"When your goal is complete, you finally find rest. You die and cannot be restored to life."
+					],
+					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Satyr",
+			"source": "MOT",
+			"page": 0,
+			"size": "M",
+			"speed": 35,
+			"ability": [
+				{
+					"cha": 2,
+					"dex": 1
+				}
+			],
+			"heightAndWeight": {
+				"baseHeight": 56,
+				"heightMod": "2d8",
+				"baseWeight": 100,
+				"weightMod": "2d4"
+			},
+			"traitTags": [
+				"Skill Proficiency",
+				"Unarmed Strike",
+				"Tool Proficiency",
+				"Magic Resistance"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"sylvan": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"performance": true,
+					"persuasion": true,
+					"tool": true
+				}
+			],
+			"entries": [
+				{
+					"name": "Age",
+					"type": "entries",
+					"entries": [
+						"Satyrs mature and age at about the same rate as humans."
+					]
+				},
+				{
+					"name": "Alignment",
+					"type": "entries",
+					"entries": [
+						"Satyrs delight in living a life free of the mantle of law. They gravitate toward being good, but some have devious streaks and enjoy causing dismay."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Satyrs range from just under 5 feet to about 6 feet in height, with generally slender builds. Your size is Medium."
+					]
+				},
+				{
+					"name": "Fey",
+					"entries": [
+						"Your creature type is fey, rather than humanoid."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Ram",
+					"entries": [
+						"You can use your head and horns to make unarmed strikes. If you hit with them, you deal bludgeoning damage equal to {@dice 1d4} + your Strength modifier."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"You have advantage on saving throws against spells and other magical effects."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Mirthful Leaps",
+					"entries": [
+						"Whenever you make a long or high jump, you can roll a {@dice d8} and add the number rolled to the number of feet you cover, even when making a standing jump. This extra distance costs movement as normal."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Reveler",
+					"entries": [
+						"You have proficiency in the {@skill Performance} and {@skill Persuasion} skills, and you have proficiency with one musical instrument of your choice."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and Sylvan."
 					],
 					"type": "entries"
 				}
@@ -11135,6 +12192,15 @@
 					"other": true
 				}
 			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"friends"
+						]
+					}
+				}
+			],
 			"entries": [
 				{
 					"name": "Alignment",
@@ -11267,7 +12333,10 @@
 					"stealth": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/482/tabaxi.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/tabaxi.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -11357,7 +12426,26 @@
 					"infernal": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/488/tiefling.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/tiefling.mp3"
+			},
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"thaumaturgy"
+						],
+						"3": [
+							"hellish rebuke"
+						],
+						"5": [
+							"darkness"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"entries": [
 				{
 					"name": "Age",
@@ -11430,6 +12518,36 @@
 						{
 							"common": true,
 							"abyssal": true
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"dancing lights",
+									"true strike",
+									"light",
+									"message",
+									"spare the dying",
+									"prestidigitation"
+								],
+								"3": [
+									"burning hands",
+									"charm person",
+									"magic missile",
+									"cure wounds",
+									"tasha's hideous laughter",
+									"thunderwave"
+								],
+								"5": [
+									"alter self",
+									"darkness",
+									"invisibility",
+									"levitate",
+									"mirror image",
+									"spider climb"
+								]
+							}
 						}
 					],
 					"entries": [
@@ -11539,6 +12657,22 @@
 					"name": "Baalzebul",
 					"source": "MTF",
 					"page": 21,
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": [
+									"ray of sickness"
+								],
+								"5": [
+									"crown of madness"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"name": "Legacy of Maladomini",
@@ -11556,6 +12690,22 @@
 					"name": "Baalzebul",
 					"source": "UAFiendishOptions",
 					"page": 1,
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": [
+									"ray of sickness"
+								],
+								"5": [
+									"crown of madness"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"name": "Legacy of Maladomini",
@@ -11577,6 +12727,22 @@
 						{
 							"cha": 2,
 							"dex": 1
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": [
+									"disguise self"
+								],
+								"5": [
+									"detect thoughts"
+								]
+							},
+							"ability": "cha"
 						}
 					],
 					"entries": [
@@ -11605,6 +12771,22 @@
 							"dex": 1
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": [
+									"disguise self"
+								],
+								"5": [
+									"invisibility"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"name": "Legacy of Dis",
@@ -11629,6 +12811,22 @@
 						{
 							"cha": 2,
 							"wis": 1
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"friends"
+								],
+								"3": [
+									"charm person"
+								],
+								"5": [
+									"suggestion"
+								]
+							},
+							"ability": "cha"
 						}
 					],
 					"entries": [
@@ -11657,6 +12855,22 @@
 							"wis": 1
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"friends"
+								],
+								"3": [
+									"charm person"
+								],
+								"5": [
+									"suggestion"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"name": "Legacy of Phlegethos",
@@ -11681,6 +12895,22 @@
 						{
 							"cha": 2,
 							"dex": 1
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"minor illusion"
+								],
+								"3": [
+									"disguise self"
+								],
+								"5": [
+									"invisibility"
+								]
+							},
+							"ability": "cha"
 						}
 					],
 					"entries": [
@@ -11709,6 +12939,22 @@
 							"dex": 1
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"minor illusion"
+								],
+								"3": [
+									"disguise self"
+								],
+								"5": [
+									"invisibility"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"name": "Legacy of Malbolge",
@@ -11733,6 +12979,22 @@
 						{
 							"cha": 2,
 							"con": 1
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"ray of frost"
+								],
+								"3": [
+									"armor of agathys"
+								],
+								"5": [
+									"darkness"
+								]
+							},
+							"ability": "cha"
 						}
 					],
 					"entries": [
@@ -11764,6 +13026,22 @@
 					"traitTags": [
 						"Spellcasting"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"ray of frost"
+								],
+								"3": [
+									"armor of agathys"
+								],
+								"5": [
+									"darkness"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"name": "Legacy of Stygia",
@@ -11784,6 +13062,22 @@
 					"name": "Mammon",
 					"source": "MTF",
 					"page": 22,
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": [
+									"tenser's floating disk"
+								],
+								"5": [
+									"arcane lock"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"name": "Legacy of Minauros",
@@ -11801,6 +13095,22 @@
 					"name": "Mammon",
 					"source": "UAFiendishOptions",
 					"page": 2,
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": [
+									"tenser's floating disk"
+								],
+								"5": [
+									"arcane lock"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"name": "Legacy of Minauros",
@@ -11818,6 +13128,22 @@
 					"name": "Mephistopheles",
 					"source": "MTF",
 					"page": 23,
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": [
+									"burning hands"
+								],
+								"5": [
+									"flame blade"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"name": "Legacy of Cania",
@@ -11835,6 +13161,22 @@
 					"name": "Mephistopheles",
 					"source": "UAFiendishOptions",
 					"page": 2,
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": [
+									"magic missile"
+								],
+								"5": [
+									"web"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"name": "Legacy of Cania",
@@ -11863,6 +13205,50 @@
 								"count": 1,
 								"amount": 2
 							}
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": [
+									"hellish rebuke"
+								],
+								"5": [
+									"darkness"
+								]
+							},
+							"ability": "cha"
+						},
+						{
+							"innate": {
+								"1": [
+									"vicious mockery"
+								],
+								"3": [
+									"charm person"
+								],
+								"5": [
+									"enthrall"
+								]
+							},
+							"ability": "cha"
+						},
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": [
+									"burning hands"
+								],
+								"5": [
+									"darkness"
+								]
+							},
+							"ability": "cha"
 						}
 					],
 					"entries": [
@@ -11925,6 +13311,22 @@
 							"str": 1
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": [
+									"searing smite"
+								],
+								"5": [
+									"branding smite"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"name": "Legacy of Avernus",
@@ -11949,6 +13351,22 @@
 						{
 							"cha": 2,
 							"str": 1
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": [
+									"searing smite"
+								],
+								"5": [
+									"branding smite"
+								]
+							},
+							"ability": "cha"
 						}
 					],
 					"entries": [
@@ -12077,6 +13495,41 @@
 		},
 		{
 			"name": "Triton",
+			"source": "MOT",
+			"page": 0,
+			"_copy": {
+				"name": "Triton",
+				"source": "VGM",
+				"_mod": {
+					"entries": [
+						{
+							"mode": "replaceArr",
+							"replace": "Alignment",
+							"items": {
+								"name": "Alignment",
+								"type": "entries",
+								"entries": [
+									"Tritons tend toward neutrality. Their culture encourages them to be mindful of life's currents, knowing when to harness fate's tides and when to flow along with them."
+								]
+							}
+						},
+						{
+							"mode": "appendArr",
+							"items": {
+								"name": "Darkvision",
+								"type": "entries",
+								"entries": [
+									"You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+								]
+							}
+						}
+					]
+				}
+			},
+			"darkvision": 60
+		},
+		{
+			"name": "Triton",
 			"source": "VGM",
 			"page": 115,
 			"size": "M",
@@ -12108,7 +13561,26 @@
 					"primordial": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/496/triton.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/triton.mp3"
+			},
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"fog cloud"
+						],
+						"3": [
+							"gust of wind"
+						],
+						"5": [
+							"wall of water|xge"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"entries": [
 				{
 					"name": "Age",
@@ -13248,13 +14720,28 @@
 			"traitTags": [
 				"Spellcasting",
 				"Monstrous Race",
-				"Damage Immunity"
+				"Damage Immunity",
+				"Magic Resistance"
 			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"abyssal": true,
 					"draconic": true
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"poison spray",
+							"animal friendship"
+						],
+						"3": [
+							"suggestion"
+						]
+					},
+					"ability": "cha"
 				}
 			],
 			"entries": [

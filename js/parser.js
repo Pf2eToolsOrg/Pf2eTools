@@ -516,6 +516,10 @@ Parser.itemValueToFull = function (item, isShortForm) {
 	return Parser._moneyToFull(item, "value", "valueMult", isShortForm);
 };
 
+Parser.itemValueToFullMultiCurrency = function (item, isShortForm) {
+	return Parser._moneyToFullMultiCurrency(item, "value", "valueMult", isShortForm);
+};
+
 Parser.itemVehicleCostsToFull = function (item, isShortForm) {
 	return {
 		travelCostFull: Parser._moneyToFull(item, "travelCost", "travelCostMult", isShortForm),
@@ -530,12 +534,34 @@ Parser.spellComponentCostToFull = function (item, isShortForm) {
 Parser._moneyToFull = function (it, prop, propMult, isShortForm) {
 	if (it[prop]) {
 		const {coin, mult} = Parser.getCurrencyAndMultiplier(it[prop], it.currencyConversion);
-		return `${(it[prop] * mult).toLocaleString()} ${coin}`;
+		return `${(it[prop] * mult).toLocaleString(undefined, {maximumFractionDigits: 5})} ${coin}`;
 	} else if (it[propMult]) return isShortForm ? `×${it[propMult]}` : `base value ×${it[propMult]}`;
 	return "";
 };
 
-Parser._DEFAULT_CURRENCY_CONVERSION_TABLE = [
+Parser._moneyToFullMultiCurrency = function (it, prop, propMult, isShortForm) {
+	if (it[prop]) {
+		const simplified = CurrencyUtil.doSimplifyCoins(
+			{
+				cp: it[prop]
+			},
+			{
+				currencyConversionId: it.currencyConversion
+			}
+		);
+
+		const conversionTable = Parser.getCurrencyConversionTable(it.currencyConversion);
+
+		return [...conversionTable]
+			.reverse()
+			.filter(meta => simplified[meta.coin])
+			.map(meta => `${simplified[meta.coin].toLocaleString(undefined, {maximumFractionDigits: 5})} ${meta.coin}`)
+			.join(", ");
+	} else if (it[propMult]) return isShortForm ? `×${it[propMult]}` : `base value ×${it[propMult]}`;
+	return "";
+};
+
+Parser.DEFAULT_CURRENCY_CONVERSION_TABLE = [
 	{
 		coin: "cp",
 		mult: 1
@@ -550,10 +576,14 @@ Parser._DEFAULT_CURRENCY_CONVERSION_TABLE = [
 		isFallback: true
 	}
 ];
-Parser.getCurrencyAndMultiplier = function (value, currencyConversionId) {
+Parser.getCurrencyConversionTable = function (currencyConversionId) {
 	const fromBrew = currencyConversionId ? MiscUtil.get(BrewUtil.homebrewMeta, "currencyConversions", currencyConversionId) : null;
-	const conversionTable = fromBrew && fromBrew.length ? fromBrew : Parser._DEFAULT_CURRENCY_CONVERSION_TABLE;
-	if (conversionTable !== Parser._DEFAULT_CURRENCY_CONVERSION_TABLE) conversionTable.sort((a, b) => SortUtil.ascSort(b.mult, a.mult));
+	const conversionTable = fromBrew && fromBrew.length ? fromBrew : Parser.DEFAULT_CURRENCY_CONVERSION_TABLE;
+	if (conversionTable !== Parser.DEFAULT_CURRENCY_CONVERSION_TABLE) conversionTable.sort((a, b) => SortUtil.ascSort(b.mult, a.mult));
+	return conversionTable;
+};
+Parser.getCurrencyAndMultiplier = function (value, currencyConversionId) {
+	const conversionTable = Parser.getCurrencyConversionTable(currencyConversionId);
 
 	if (!value) return conversionTable.find(it => it.isFallback) || conversionTable[0];
 	if (conversionTable.length === 1) return conversionTable[0];
@@ -582,7 +612,7 @@ Parser.coinAbvToFull = function (coin) {
 
 Parser.itemWeightToFull = function (item, isShortForm) {
 	return item.weight
-		? `${item.weight} lb.${(item.weightNote ? ` ${item.weightNote}` : "")}`
+		? `${item.weight < 1 ? item.weight * 16 : item.weight} ${item.weight < 1 ? "oz" : "lb"}.${(item.weightNote ? ` ${item.weightNote}` : "")}`
 		: item.weightMult ? isShortForm ? `×${item.weightMult}` : `base weight ×${item.weightMult}` : "";
 };
 
@@ -815,7 +845,7 @@ Parser.spRangeTypeToIcon = function (range) {
 
 Parser.spRangeToShortHtml = function (range) {
 	switch (range.type) {
-		case RNG_SPECIAL: return `<span class="fas ${Parser.spRangeTypeToIcon(range.type)} help--subtle" title="Special"/>`;
+		case RNG_SPECIAL: return `<span class="fas ${Parser.spRangeTypeToIcon(range.type)} help--subtle" title="Special"></span>`;
 		case RNG_POINT: return Parser.spRangeToShortHtml._renderPoint(range);
 		case RNG_LINE:
 		case RNG_CUBE:
@@ -835,7 +865,7 @@ Parser.spRangeToShortHtml._renderPoint = function (range) {
 		case RNG_UNLIMITED:
 		case RNG_UNLIMITED_SAME_PLANE:
 		case RNG_SPECIAL:
-		case RNG_TOUCH: return `<span class="fas ${Parser.spRangeTypeToIcon(dist.type)} help--subtle" title="${Parser.spRangeTypeToFull(dist.type)}"/>`;
+		case RNG_TOUCH: return `<span class="fas ${Parser.spRangeTypeToIcon(dist.type)} help--subtle" title="${Parser.spRangeTypeToFull(dist.type)}"></span>`;
 		case UNT_FEET:
 		case UNT_MILES:
 		default:
@@ -844,10 +874,10 @@ Parser.spRangeToShortHtml._renderPoint = function (range) {
 };
 Parser.spRangeToShortHtml._renderArea = function (range) {
 	const size = range.distance;
-	return `<span class="fas ${Parser.spRangeTypeToIcon(RNG_SELF)} help--subtle" title="Self"/> ${size.amount}<span class="ve-small">-${Parser.getSingletonUnit(size.type, true)}</span> ${Parser.spRangeToShortHtml._getAreaStyleString(range)}`;
+	return `<span class="fas ${Parser.spRangeTypeToIcon(RNG_SELF)} help--subtle" title="Self"></span> ${size.amount}<span class="ve-small">-${Parser.getSingletonUnit(size.type, true)}</span> ${Parser.spRangeToShortHtml._getAreaStyleString(range)}`;
 };
 Parser.spRangeToShortHtml._getAreaStyleString = function (range) {
-	return `<span class="fas ${Parser.spRangeTypeToIcon(range.type)} help--subtle" title="${Parser.spRangeTypeToFull(range.type)}"/>`
+	return `<span class="fas ${Parser.spRangeTypeToIcon(range.type)} help--subtle" title="${Parser.spRangeTypeToFull(range.type)}"></span>`
 };
 
 Parser.spRangeToFull = function (range) {
@@ -2018,6 +2048,7 @@ SRC_EGW_ToR = "ToR";
 SRC_EGW_DD = "DD";
 SRC_EGW_FS = "FS";
 SRC_EGW_US = "US";
+SRC_MOT = "MOT";
 SRC_SCREEN = "Screen";
 
 SRC_AL_PREFIX = "AL";
@@ -2172,6 +2203,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_EGW_ToR] = "Tide of Retribution";
 Parser.SOURCE_JSON_TO_FULL[SRC_EGW_DD] = "Dangerous Designs";
 Parser.SOURCE_JSON_TO_FULL[SRC_EGW_FS] = "Frozen Sick";
 Parser.SOURCE_JSON_TO_FULL[SRC_EGW_US] = "Unwelcome Spirits";
+Parser.SOURCE_JSON_TO_FULL[SRC_MOT] = "Mythic Odysseys of Theros";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = `${AL_PREFIX}Curse of Strahd`;
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = `${AL_PREFIX}Elemental Evil`;
@@ -2307,6 +2339,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_EGW_ToR] = "ToR";
 Parser.SOURCE_JSON_TO_ABV[SRC_EGW_DD] = "DD";
 Parser.SOURCE_JSON_TO_ABV[SRC_EGW_FS] = "FS";
 Parser.SOURCE_JSON_TO_ABV[SRC_EGW_US] = "US";
+Parser.SOURCE_JSON_TO_ABV[SRC_MOT] = "MOT";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
@@ -2440,6 +2473,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_EGW_ToR] = "2020-03-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_EGW_DD] = "2020-03-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_EGW_FS] = "2020-03-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_EGW_US] = "2020-03-17";
+Parser.SOURCE_JSON_TO_DATE[SRC_MOT] = "2020-06-02";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN] = "2015-01-20";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALCoS] = "2016-03-15";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALEE] = "2015-04-07";
@@ -2546,6 +2580,10 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_EFR,
 	SRC_RMBRE,
 	SRC_IMR,
+	SRC_EGW_ToR,
+	SRC_EGW_DD,
+	SRC_EGW_FS,
+	SRC_EGW_US,
 
 	SRC_AWM
 ]);
@@ -2562,6 +2600,67 @@ Parser.SOURCES_NON_STANDARD_WOTC = new Set([
 	SRC_IMR,
 	SRC_SADS
 ]);
+Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
+[
+	SRC_PHB,
+	SRC_MM,
+	SRC_DMG,
+	SRC_SCAG,
+	SRC_VGM,
+	SRC_XGE,
+	SRC_MTF,
+	SRC_GGR,
+	SRC_AI,
+	SRC_ERLW,
+	SRC_RMR,
+	SRC_EGW,
+	SRC_MOT
+].forEach(src => {
+	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
+	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
+});
+Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
+[
+	SRC_LMoP,
+	SRC_HotDQ,
+	SRC_RoT,
+	SRC_PotA,
+	SRC_OotA,
+	SRC_CoS,
+	SRC_SKT,
+	SRC_TYP_AtG,
+	SRC_TYP_DiT,
+	SRC_TYP_TFoF,
+	SRC_TYP_THSoT,
+	SRC_TYP_TSC,
+	SRC_TYP_ToH,
+	SRC_TYP_WPM,
+	SRC_ToA,
+	SRC_TTP,
+	SRC_WDH,
+	SRC_LLK,
+	SRC_WDMM,
+	SRC_KKW,
+	SRC_GoS,
+	SRC_HftT,
+	SRC_OoW,
+	SRC_DIP,
+	SRC_SLW,
+	SRC_SDW,
+	SRC_DC,
+	SRC_BGDIA,
+	SRC_LR,
+	SRC_EFR,
+	SRC_RMBRE,
+	SRC_IMR,
+	SRC_EGW_ToR,
+	SRC_EGW_DD,
+	SRC_EGW_FS,
+	SRC_EGW_US
+].forEach(src => {
+	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
+	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
+});
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"A": "ammunition",
@@ -2569,6 +2668,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"AT": "artisan's tools",
 	"EM": "eldritch machine",
 	"EXP": "explosive",
+	"FD": "food and drink",
 	"G": "adventuring gear",
 	"GS": "gaming set",
 	"HA": "heavy armor",

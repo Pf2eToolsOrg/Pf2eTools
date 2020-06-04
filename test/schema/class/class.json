@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.4.3",
+	"version": "1.4.4",
 
 	"title": "ClassArray",
 	"type": "object",
@@ -183,18 +183,6 @@
 			}
 		},
 
-		"additionalSpellObject": {
-			"patternProperties": {
-				"^\\d+$": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					},
-					"uniqueItems": true
-				}
-			}
-		},
-
 		"subclass": {
 			"type": "object",
 			"properties": {
@@ -234,23 +222,7 @@
 				"source": {
 					"type": "string"
 				},
-				"additionalSpells": {
-					"description": "A collection of additional spells which this subclass grants.",
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"prepared": {
-								"$ref": "#/definitions/additionalSpellObject"
-							},
-							"expanded": {
-								"$ref": "#/definitions/additionalSpellObject"
-							}
-						},
-						"additionalProperties": false,
-						"minProperties": 1
-					}
-				},
+				"additionalSpells": { "$ref": "util.json#/definitions/additionalSpellsArray" },
 				"subclassSpells": {
 					"description": "Homebrew use only",
 					"type": "array",

@@ -57,6 +57,11 @@ class PageFilterItems extends PageFilter {
 		const bonusFilter = new Filter({header: "Bonus", items: ["Armor Class", "Spell Attacks", "Saving Throws", "Weapon Attack and Damage Rolls", "Weapon Attack Rolls", "Weapon Damage Rolls"]})
 		const damageTypeFilter = new Filter({header: "Damage Type", displayFn: it => Parser.dmgTypeToFull(it).uppercaseFirst(), itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.dmgTypeToFull(a), Parser.dmgTypeToFull(b))});
 		const miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Item Group", "Magic", "Mundane", "Sentient", "SRD"]});
+		const baseSourceFilter = new SourceFilter({
+			header: "Base Source",
+			displayFn: (item) => Parser.sourceJsonToFullCompactPrefix(item.item || item),
+			groupFn: SourceUtil.getFilterGroup
+		});
 
 		this._typeFilter = typeFilter;
 		this._tierFilter = tierFilter;
@@ -71,6 +76,7 @@ class PageFilterItems extends PageFilter {
 		this._damageTypeFilter = damageTypeFilter;
 		this._bonusFilter = bonusFilter;
 		this._miscFilter = miscFilter;
+		this._baseSourceFilter = baseSourceFilter;
 	}
 
 	mutateForFilters (item) {
@@ -131,6 +137,7 @@ class PageFilterItems extends PageFilter {
 		this._attachedSpellsFilter.addItem(item.attachedSpells);
 		this._lootTableFilter.addItem(item.lootTables);
 		this._damageTypeFilter.addItem(item.dmgType);
+		this._baseSourceFilter.addItem(item._baseSource);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -148,6 +155,7 @@ class PageFilterItems extends PageFilter {
 			this._bonusFilter,
 			this._miscFilter,
 			this._lootTableFilter,
+			this._baseSourceFilter,
 			this._attachedSpellsFilter
 		];
 	}
@@ -168,6 +176,7 @@ class PageFilterItems extends PageFilter {
 			it._fBonus,
 			it._fMisc,
 			it.lootTables,
+			it._baseSource,
 			it.attachedSpells
 		);
 	}

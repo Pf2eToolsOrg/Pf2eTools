@@ -99,7 +99,7 @@ class PageFilterBestiary extends PageFilter {
 		const alignmentFilter = new Filter({
 			header: "Alignment",
 			items: ["L", "NX", "C", "G", "NY", "E", "N", "U", "A"],
-			displayFn: Parser.alignmentAbvToFull,
+			displayFn: alignment => Parser.alignmentAbvToFull(alignment).toTitleCase(),
 			itemSortFn: null
 		});
 		const languageFilter = new Filter({
@@ -111,7 +111,7 @@ class PageFilterBestiary extends PageFilter {
 		const damageTypeFilter = new Filter({
 			header: "Damage Inflicted",
 			displayFn: (it) => Parser.dmgTypeToFull(it).toTitleCase(),
-			items: ["A", "B", "C", "F", "O", "L", "N", "P", "I", "Y", "R", "S", "T"]
+			items: Object.keys(Parser.DMGTYPE_JSON_TO_FULL)
 		});
 		const conditionsInflictedFilterBase = new Filter({
 			header: "By Traits/Actions",
@@ -185,7 +185,7 @@ class PageFilterBestiary extends PageFilter {
 		});
 		const miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Lair Actions", "Legendary", "Adventure NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${PageFilterBestiary.MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Swarm", "Has Variants", "Modified Copy", "Has Alternate Token", "Has Token", "SRD"],
+			items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Lair Actions", "Legendary", "Mythic", "Adventure NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${PageFilterBestiary.MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Swarm", "Has Variants", "Modified Copy", "Has Alternate Token", "Has Token", "SRD"],
 			displayFn: (it) => Parser.monMiscTagToFull(it).uppercaseFirst(),
 			deselFn: (it) => it === "Adventure NPC",
 			itemSortFn: PageFilterBestiary.ascSortMiscFilter
@@ -289,6 +289,7 @@ class PageFilterBestiary extends PageFilter {
 		if (mon.altArt) mon._fMisc.push("Has Alternate Token");
 		if (mon.srd) mon._fMisc.push("SRD");
 		if (mon.tokenUrl || mon.hasToken) mon._fMisc.push("Has Token");
+		if (mon.mythic) mon._fMisc.push("Mythic");
 	}
 
 	addToFilters (mon, isExcluded) {

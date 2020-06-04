@@ -12,7 +12,7 @@ class UtilSearchIndex {
 		if (aCore !== bCore) return bCore - aCore;
 		const aStandard = Number(!SourceUtil.isNonstandardSource(a));
 		const bStandard = Number(!SourceUtil.isNonstandardSource(b));
-		return aStandard !== bStandard ? bStandard - aStandard : SortUtil.ascSortLowerSafe(a, b);
+		return aStandard !== bStandard ? bStandard - aStandard : SortUtil.ascSortLower(a, b);
 	}
 
 	static async pGetIndex (doLogging = true, noFilter = false) {

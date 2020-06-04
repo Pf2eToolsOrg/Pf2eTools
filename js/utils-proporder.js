@@ -163,6 +163,8 @@ PropOrder._MONSTER = [
 	"legendaryHeader",
 	"legendaryActions",
 	"legendary",
+	"mythicHeader",
+	"mythic",
 	"legendaryGroup",
 	"variant",
 
@@ -177,16 +179,16 @@ PropOrder._MONSTER = [
 
 	"altArt",
 
-	new PropOrder._ArrayKey("traitTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("senseTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("actionTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("languageTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("damageTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("spellcastingTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("miscTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("conditionInflict", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("conditionInflictLegendary", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("conditionInflictSpell", {fnSort: SortUtil.ascSortLowerSafe})
+	new PropOrder._ArrayKey("traitTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("senseTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("actionTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("languageTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("damageTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("spellcastingTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("miscTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("conditionInflict", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("conditionInflictLegendary", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("conditionInflictSpell", {fnSort: SortUtil.ascSortLower})
 ];
 PropOrder._MONSTER__COPY_MOD = [
 	"*",
@@ -612,6 +614,7 @@ PropOrder._ITEM = [
 	"reqAttune",
 
 	"wondrous",
+	"ammunition",
 	"tattoo",
 	"curse",
 	"sentient",
@@ -621,6 +624,7 @@ PropOrder._ITEM = [
 	"weightNote",
 	"value",
 	"valueMult",
+	"valueExpression",
 	"quantity",
 
 	"weaponCategory",
@@ -678,6 +682,8 @@ PropOrder._ITEM = [
 	"additionalEntries",
 	"items",
 
+	"ammoType",
+
 	"packContents",
 	"containerCapacity",
 
@@ -697,6 +703,8 @@ PropOrder._VARIANT = [
 
 	"requires",
 	"excludes",
+
+	"ammo",
 
 	"entries",
 
@@ -827,6 +835,8 @@ PropOrder._RACE = [
 	"skillProficiencies",
 
 	"soundClip",
+
+	"additionalSpells",
 
 	"entries",
 

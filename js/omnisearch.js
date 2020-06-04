@@ -3,6 +3,7 @@
 const Omnisearch = {
 	_PLACEHOLDER_TEXT: "Search everywhere...",
 	_searchIndex: null,
+	_adventureBookLookup: null, // A map of `<sourceLower>: (adventureCatId|bookCatId)`
 	_pLoadSearch: null,
 	_CATEGORY_COUNTS: {},
 	highestId: -1,
@@ -87,39 +88,87 @@ const Omnisearch = {
 
 			const srch = $iptSearch.val();
 
-			const tokens = elasticlunr.tokenizer(srch);
-			const tokensIsCat = tokens.map(t => {
-				const category = Object.keys(Omnisearch._CATEGORY_COUNTS).map(k => k.toLowerCase()).find(k => (`in:${k}` === t.toLowerCase().trim() || `in:${k}s` === t.toLowerCase().trim()));
-				return {
-					t: t,
-					isCat: !!category,
-					c: category
-				};
+			const basicTokens = srch.split(/\s+/g);
+
+			const tokenMetas = [];
+			// Filter out any special tokens
+			const filteredBasicTokens = basicTokens.filter(t => {
+				t = t.toLowerCase().trim();
+
+				let category = Object.keys(Omnisearch._CATEGORY_COUNTS)
+					.map(k => k.toLowerCase())
+					.find(k => (`in:${k}` === t || `in:${k}s` === t));
+
+				// Alias categories
+				if (!category) {
+					if (t === "in:creature" || t === "in:creatures" || t === "in:monster" || t === "in:monsters") category = "bestiary";
+				}
+
+				const mSource = /^source:(.*)$/.exec(t);
+				const mPage = /^page:\s*(\d+)\s*(-\s*(\d+)\s*)?$/.exec(t);
+
+				if (category || mSource || mPage) {
+					tokenMetas.push({
+						token: t,
+						hasCategory: !!category,
+						hasSource: !!mSource,
+						hasPageRange: !!mPage,
+						category,
+						source: mSource ? mSource[1].trim() : null,
+						pageRange: mPage ? [Number(mPage[1]), mPage[3] ? Number(mPage[3]) : Number(mPage[1])] : null
+					});
+					return false;
+				}
+				return true;
 			});
 
 			let page = 0;
-
-			const catTokens = tokensIsCat.filter(tc => tc.isCat);
 			let results;
-			if (catTokens.length === 1) {
-				const noCatTokens = tokensIsCat.filter(tc => !tc.isCat).map(tc => tc.t);
-				results = Omnisearch._searchIndex.search(noCatTokens.join(" "), {
-					fields: {
-						n: {boost: 5, expand: true},
-						s: {expand: true}
-					},
-					bool: "AND",
-					expand: true
-				}).filter(r => catTokens[0].c && r.doc.cf.toLowerCase() === catTokens[0].c.toLowerCase());
+
+			const specialTokenMetasCategory = tokenMetas.filter(it => it.hasCategory);
+			const specialTokenMetasSource = tokenMetas.filter(it => it.hasSource);
+			const specialTokenMetasPageRange = tokenMetas.filter(it => it.hasPageRange);
+			if (
+				(specialTokenMetasCategory.length === 1 || specialTokenMetasSource.length >= 1 || specialTokenMetasPageRange.length >= 1)
+				&& (specialTokenMetasCategory.length <= 1) // Sanity constraints--on an invalid search, run the default search
+			) {
+				const categoryTerm = specialTokenMetasCategory.length ? specialTokenMetasCategory[0].category.toLowerCase() : null;
+				const sourceTerms = specialTokenMetasSource.map(it => it.source);
+				const pageRanges = specialTokenMetasPageRange.map(it => it.pageRange);
+				// Glue the remaining tokens back together, and pass them to search lib
+				const searchTerm = filteredBasicTokens.join(" ");
+
+				results = searchTerm
+					? Omnisearch._searchIndex
+						.search(
+							searchTerm,
+							{
+								fields: {
+									n: {boost: 5, expand: true},
+									s: {expand: true}
+								},
+								bool: "AND",
+								expand: true
+							}
+						)
+					: Object.values(Omnisearch._searchIndex.documentStore.docs).map(it => ({doc: it}));
+
+				results = results
+					.filter(r => !categoryTerm || (r.doc.cf.toLowerCase() === categoryTerm))
+					.filter(r => !sourceTerms.length || (sourceTerms.includes(r.doc.s.toLowerCase())))
+					.filter(r => !pageRanges.length || (r.doc.p && pageRanges.some(range => r.doc.p >= range[0] && r.doc.p <= range[1])));
 			} else {
-				results = Omnisearch._searchIndex.search(srch, {
-					fields: {
-						n: {boost: 5, expand: true},
-						s: {expand: true}
-					},
-					bool: "AND",
-					expand: true
-				});
+				results = Omnisearch._searchIndex.search(
+					srch,
+					{
+						fields: {
+							n: {boost: 5, expand: true},
+							s: {expand: true}
+						},
+						bool: "AND",
+						expand: true
+					}
+				);
 			}
 
 			if (!doShowUaEtc()) {
@@ -148,29 +197,56 @@ const Omnisearch = {
 				}
 
 				$searchOut.empty();
+
 				const showUa = doShowUaEtc();
-				const $btnUaEtc = $(`<button class="btn btn-default btn-xs btn-file ${showUa ? "active" : ""}" title="Filter Unearthed Arcana and other unofficial source results" tabindex="-1">Include UA/etc.</button>`)
+				const $btnUaEtc = $(`<button class="btn btn-default btn-xs mr-2 ${showUa ? "active" : ""}" title="Filter Unearthed Arcana and other unofficial source results" tabindex="-1">Include UA/etc.</button>`)
 					.on("click", () => {
 						setShowUaEtc(!showUa);
 						pDoSearch();
 					});
 
 				const hideBlacklisted = doHideBlacklisted();
-				const $btnBlacklist = $(`<button class="btn btn-default btn-xs btn-file ${hideBlacklisted ? "active" : ""}" style="margin-left: 6px;" title="Filter blacklisted content results" tabindex="-1">Include Blacklisted</button>`)
+				const $btnBlacklist = $(`<button class="btn btn-default btn-xs mr-2 ${hideBlacklisted ? "active" : ""}" title="Filter blacklisted content results" tabindex="-1">Include Blacklisted</button>`)
 					.on("click", () => {
 						setShowBlacklisted(!hideBlacklisted);
 						pDoSearch();
 					});
 
-				$searchOut.append($(`<div class="text-right"/>`).append([$btnUaEtc, $btnBlacklist]));
+				const $btnHelp = $(`<button class="btn btn-default btn-xs" title="Help"><span class="glyphicon glyphicon-info-sign"></span></button>`)
+					.click(() => {
+						const {$modalInner} = UiUtil.getShowModal({
+							title: "Help",
+							isMinHeight0: true
+						});
+
+						$modalInner.append(`
+							<p>The following search syntax is available:</p>
+							<ul>
+								<li><code>in:&lt;category&gt;</code> where <code>&lt;category&gt;</code> can be &quot;spell&quot;, &quot;item&quot;, &quot;bestiary&quot;, etc.</li>
+								<li><code>source:&lt;abbreviation&gt;</code> where <code>&lt;abbreviation&gt;</code> is an abbreviated source/book name (&quot;PHB&quot;, &quot;MM&quot;, etc.)</li>
+								<li><code>page:&lt;number&gt;</code> or <code>page:&lt;rangeStart&gt;-&lt;rangeEnd&gt;</code></li>
+							</ul>
+						`);
+					});
+
+				$searchOut.append($(`<div class="text-right"/>`).append([$btnUaEtc, $btnBlacklist, $btnHelp]));
 				const base = page * MAX_RESULTS;
 				for (let i = base; i < Math.max(Math.min(results.length, MAX_RESULTS + base), base); ++i) {
 					const r = results[i].doc;
+
 					const $link = $(`<a href="${Renderer.get().baseUrl}${UrlUtil.categoryToPage(r.c)}#${r.u}" ${r.h ? getHoverStr(r.c, r.u, r.s) : ""}>${r.cf}: ${r.n}</a>`)
 						.keydown(evt => Omnisearch.handleLinkKeyDown(evt, $link, $iptSearch, $searchOut));
+
+					const ptSourceInner = `<i title="${Parser.sourceJsonToFull(r.s)}">${Parser.sourceJsonToAbv(r.s)}${r.p ? ` p${r.p}` : ""}</i>`;
+					const {s: source, p: page} = r;
+					const adventureBookSourceHref = SourceUtil.getAdventureBookSourceHref(source, page);
+					const ptSource = adventureBookSourceHref
+						? `<a href="${adventureBookSourceHref}">${ptSourceInner}</a>`
+						: ptSourceInner;
+
 					$$`<p>
 						${$link}
-						${r.s ? `<i title="${Parser.sourceJsonToFull(r.s)}">${Parser.sourceJsonToAbv(r.s)}${r.p ? ` p${r.p}` : ""}</i>` : ""}
+						${ptSource}
 					</p>`.appendTo($searchOut);
 				}
 				$searchOutWrapper.css("display", "flex");
@@ -289,6 +365,13 @@ const Omnisearch = {
 		const brewIndex = await BrewUtil.pGetSearchIndex();
 		brewIndex.forEach(Omnisearch._addToIndex);
 		if (brewIndex.length) Omnisearch.highestId = brewIndex.last().id
+
+		Omnisearch._adventureBookLookup = {};
+		[brewIndex, data].forEach(index => {
+			index.forEach(it => {
+				if (it.c === Parser.CAT_ID_ADVENTURE || it.c === Parser.CAT_ID_BOOK) Omnisearch._adventureBookLookup[it.s.toLowerCase()] = it.c;
+			});
+		});
 	},
 
 	async pAddToIndex (prop, ...entries) {

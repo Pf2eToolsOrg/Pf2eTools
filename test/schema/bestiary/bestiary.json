@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.14.3",
+	"version": "1.15.1",
 	"title": "Bestiary Schema",
 	"$id": "bestiary.json",
 	"type": "object",
@@ -637,6 +637,33 @@
 						"additionalProperties": false
 					}
 				},
+				"mythicHeader": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					}
+				},
+				"mythic": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							}
+						},
+						"required": [
+							"entries"
+						],
+						"additionalProperties": false
+					}
+				},
 				"variant": {
 					"type": "array",
 					"items": {
@@ -794,7 +821,7 @@
 					}
 				},
 				"soundClip": {
-					"type": "string"
+					"$ref": "entry.json#/definitions/mediaHref"
 				},
 				"dragonCastingColor": {
 					"type": "string",

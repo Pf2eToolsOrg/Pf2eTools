@@ -7,7 +7,19 @@ class PageFilterFeats extends PageFilter {
 	constructor () {
 		super();
 
-		this._asiFilter = getAsiFilter();
+		this._asiFilter = new Filter({
+			header: "Ability Bonus",
+			items: [
+				"str",
+				"dex",
+				"con",
+				"int",
+				"wis",
+				"cha"
+			],
+			displayFn: Parser.attAbvToFull,
+			itemSortFn: null
+		});
 		this._otherPrereqFilter = new Filter({
 			header: "Other",
 			items: ["Ability", "Race", "Psionics", "Proficiency", "Special", "Spellcasting"]

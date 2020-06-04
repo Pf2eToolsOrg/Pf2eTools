@@ -119,7 +119,7 @@
 											"type": "entries",
 											"entries": [
 												"The gemstone that has given life to Baba Lysaga's hut was previously buried in the Wizard of Wines vineyard. The gem was one of three imbued with life-giving magic that made the grapevines in the vineyard healthier, guaranteeing the finest wines. Baba Lysaga stole one of the gems and perverted its magic, using it instead to animate her wooden hut.",
-												"Removing the gem from the hut renders the hut incapacitated. That task is easier said than done, however. The glowing green gem is contained in a cavity in the stump, beneath the rotted floorboards of the hut. The floorboards can be ripped up with a successful DC 14 Strength check or smashed by dealing 10 damage to them. Once the floorboards are out of the way, a creature can reach into the cavity and snatch the gem. But if someone attempts this while the hut is alive, the cavity sprouts wooden teeth, becoming a mouth that bites anything that tries to remove the gem; a creature trying to remove the gem must make a DC 20 Dexterity saving throw. On a successful save, the creature claims the stone without getting bitten. On a failed save, the creature is bitten for 10 (3d6) piercing damage and fails to obtain the gem."
+												"Removing the gem from the hut renders the hut {@condition incapacitated}. That task is easier said than done, however. The glowing green gem is contained in a cavity in the stump, beneath the rotted floorboards of the hut. The floorboards can be ripped up with a successful DC 14 Strength check or smashed by dealing 10 damage to them. Once the floorboards are out of the way, a creature can reach into the cavity and snatch the gem. But if someone attempts this while the hut is alive, the cavity sprouts wooden teeth, becoming a mouth that bites anything that tries to remove the gem; a creature trying to remove the gem must make a DC 20 Dexterity saving throw. On a successful save, the creature claims the stone without getting bitten. On a failed save, the creature is bitten for 10 ({@damage 3d6}) piercing damage and fails to obtain the gem."
 											]
 										}
 									]
@@ -143,7 +143,7 @@
 								{
 									"type": "entries",
 									"entries": [
-										"The mad women and men known as Barovian witches forge pacts with Strahd and the Dark Powers of Ravenloft in exchange for magic and longevity. They prefer to live in the shadows and can see in the dark. When traveling in the open, they use alter self spells to assume less conspicuous forms. They also use these spells to grow long, sharp claws with which they can attack.",
+										"The mad women and men known as Barovian witches forge pacts with Strahd and the Dark Powers of Ravenloft in exchange for magic and longevity. They prefer to live in the shadows and can see in the dark. When traveling in the open, they use {@spell alter self} spells to assume less conspicuous forms. They also use these spells to grow long, sharp claws with which they can attack.",
 										{
 											"name": "Brothers and Sisters of Strahd",
 											"type": "entries",
@@ -153,7 +153,7 @@
 													"name": "Pack Rats with Cats",
 													"entries": [
 														" Barovian witches are obsessive collectors, each believing that almost anything found - a piece of broken bone, a dead rodent, a handful of dust, or some other worthless item or substance - could be valuable or useful as a spell component, a ritual object, or a potion ingredient.",
-														"Barovian witches use the find familiar spell to call forth familiars. They are particularly fond of cats, though snakes and toads are also common. These animals lurk amid the clutter of the witches' lairs, seldom wandering far from their vile masters."
+														"Barovian witches use the {@spell find familiar} spell to call forth familiars. They are particularly fond of cats, though snakes and toads are also common. These animals lurk amid the clutter of the witches' lairs, seldom wandering far from their vile masters."
 													],
 													"type": "entries"
 												}
@@ -310,7 +310,7 @@
 											"name": "Living Image",
 											"type": "entries",
 											"entries": [
-												"The eyes of the figure depicted in the painting are imbued with darkvision, and they appear to follow creatures that move in front of them."
+												"The eyes of the figure depicted in the painting are imbued with {@sense darkvision}, and they appear to follow creatures that move in front of them."
 											]
 										},
 										{
@@ -519,14 +519,14 @@
 											"name": "Camouflage Experts",
 											"type": "entries",
 											"entries": [
-												"Mongrelfolk often hide their deformities under cloaks and cowls. In this way, they can sometimes pass as stout humans or thin dwarves. They are fond of camouflage, attaching leaves and twigs to their cloaks, making brown paint to cover their skin, and weaving grass nets under which they can hide. They use such camouflage while hunting in the wild or while standing guard outside their lairs. Until it is seen, a camouflaged mongrelfolk has advantage on Stealth checks made to hide."
+												"Mongrelfolk often hide their deformities under cloaks and cowls. In this way, they can sometimes pass as stout humans or thin dwarves. They are fond of camouflage, attaching leaves and twigs to their cloaks, making brown paint to cover their skin, and weaving grass nets under which they can hide. They use such camouflage while hunting in the wild or while standing guard outside their lairs. Until it is seen, a camouflaged mongrelfolk has advantage on {@skill Stealth} checks made to hide."
 											]
 										},
 										{
 											"name": "Horrific Offspring",
 											"type": "entries",
 											"entries": [
-												"It's possible to restore a mongrel-folk to its original form using a greater restoration spell, but the same can't be said for a mongrelfolk's offspring. Only mongrelfolk that are made by magic can be restored to their original forms. Mongrelfolk that are born are true mongrelfolk and not the subjects of a spell or an effect that can be undone.",
+												"It's possible to restore a mongrel-folk to its original form using a {@spell greater restoration} spell, but the same can't be said for a mongrelfolk's offspring. Only mongrelfolk that are made by magic can be restored to their original forms. Mongrelfolk that are born are true mongrelfolk and not the subjects of a spell or an effect that can be undone.",
 												"Mongrelfolk can breed with other humanoids, but nearly all children born to such parents are mongrelfolk. (About one child in every hundred is born looking like its non-mongrelfolk parent.)"
 											]
 										}
@@ -563,14 +563,14 @@
 											"name": "Faded Memories",
 											"type": "entries",
 											"entries": [
-												"A phantom warrior retains the alignment and personality it had before it died, and it remembers how it died. Memories of its life from shortly before it died are hazy, and older memories are forgotten. A phantom warrior can usually remember the last 1d10 + 10 days of its life; everything that happened before that is an impenetrable fog."
+												"A phantom warrior retains the alignment and personality it had before it died, and it remembers how it died. Memories of its life from shortly before it died are hazy, and older memories are forgotten. A phantom warrior can usually remember the last {@dice 1d10 + 10} days of its life; everything that happened before that is an impenetrable fog."
 											]
 										},
 										{
 											"name": "Forceful Presence",
 											"type": "entries",
 											"entries": [
-												"Although they are incorporeal, phantom warriors can harness the energy around them to deflect incoming attacks and strike with great force. An invisible sheath of energy surrounds a phantom warrior's ghostly armor, shields, and weapons, which become as hard as steel yet don't impede the warrior's ability to move through walls and other solid objects."
+												"Although they are incorporeal, phantom warriors can harness the energy around them to deflect incoming attacks and strike with great force. An {@condition invisible} sheath of energy surrounds a phantom warrior's ghostly armor, shields, and weapons, which become as hard as steel yet don't impede the warrior's ability to move through walls and other solid objects."
 											]
 										},
 										{
@@ -852,7 +852,7 @@
 											"items": [
 												"Strahd attacks at the most advantageous moment and from the most advantageous position.",
 												"Strahd knows when he's in over his head. If he begins taking more damage than he can regenerate, he moves beyond the reach of melee combatants and spellcasters, or he flies away (using summoned wolves or swarms of bats or rats to guard his retreat).",
-												"Strahd observes the characters to see who among them are most easily swayed, then tries to charm characters who have low Wisdom scores and use them as thralls. At the very least, he can order a charmed character to guard him against other members of the adventuring party."
+												"Strahd observes the characters to see who among them are most easily swayed, then tries to charm characters who have low Wisdom scores and use them as thralls. At the very least, he can order a {@condition charmed} character to guard him against other members of the adventuring party."
 											]
 										}
 									]
@@ -861,7 +861,7 @@
 									"type": "entries",
 									"name": "The Vampire's Minions",
 									"entries": [
-										"Whenever Strahd appears in a location other than his tomb or the place indicated by the card reading, roll a d20 and consult the Strahd's Minions table to determine what creatures he brings with him, if any."
+										"Whenever Strahd appears in a location other than his tomb or the place indicated by the card reading, roll a {@dice d20} and consult the Strahd's Minions table to determine what creatures he brings with him, if any."
 									]
 								},
 								{
@@ -881,27 +881,27 @@
 											"rows": [
 												[
 													"1\u20133",
-													"1d4 + 2 dire wolves"
+													"{@dice 1d4 + 2} dire wolves"
 												],
 												[
 													"4\u20136",
-													"1d6 + 3 ghouls"
+													"{@dice 1d6 + 3} ghouls"
 												],
 												[
 													"7\u20139",
-													"1d4 + 2 Strahd zombies (in this appendix)"
+													"{@dice 1d4 + 2} Strahd zombies (in this appendix)"
 												],
 												[
 													"10\u201312",
-													"2d4 swarms of bats"
+													"{@dice 2d4} swarms of bats"
 												],
 												[
 													"13\u201315",
-													"1d4 + 1 vampire spawn"
+													"{@dice 1d4 + 1} vampire spawn"
 												],
 												[
 													"16\u201318",
-													"3d6 wolves"
+													"{@dice 3d6} wolves"
 												],
 												[
 													"19\u201320",
@@ -1090,7 +1090,7 @@
 												"His Armor Class is 17 (half plate).",
 												"He has 192 hit points.",
 												"He speaks Common and Draconic.",
-												"Vladimir wields a +2 greatsword with a hilt sculpted to resemble silver dragon wings and a pommel shaped like a silver dragon's head clutching a black opal between its teeth. As an action, he can make two attacks with the sword (+9 to hit). It deals 20 (4d6 + 6) slashing damage on a hit. Against Strahd, Vladimir deals an extra 14 (4d6) slashing damage with the weapon.",
+												"Vladimir wields a +2 greatsword with a hilt sculpted to resemble silver dragon wings and a pommel shaped like a silver dragon's head clutching a black opal between its teeth. As an action, he can make two attacks with the sword (+9 to hit). It deals 20 ({@damage 4d6 + 6}) slashing damage on a hit. Against Strahd, Vladimir deals an extra 14 ({@damage 4d6}) slashing damage with the weapon.",
 												"Vladimir has a challenge rating of 7 (2,900 XP)."
 											]
 										}

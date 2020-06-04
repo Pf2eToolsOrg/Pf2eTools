@@ -91,6 +91,52 @@
 		.night-mode .itm__list-divider {
 			background: #555;
 		}
+
+		.itm__wrp-lists {
+			flex: 7;
+		}
+
+		.itm__wrp-stats {
+			flex: 5;
+		}
+
+		.itm__wrp-list {
+			height: 100%;
+		}
+
+		.itm__wrp-list--empty {
+			height: initial;
+			flex-shrink: 0;
+		}
+
+		.style-switch__wide .itm__wrp-list {
+			min-width: calc(50% - 10px);
+			max-width: calc(50% - 10px);
+		}
+
+		.style-switch__wide .itm__wrp-list--mundane {
+			margin-right: 20px;
+		}
+
+		.style-switch__wide #listcontainer.itm__wrp-lists {
+			flex: initial;
+			width: 100%;
+			flex-flow: row;
+		}
+
+		.style-switch__wide .itm__wrp-stats {
+			width: 480px;
+			flex: initial;
+			flex-shrink: 0;
+		}
+
+		.style-switch__wide .side-label {
+			display: none !important;
+		}
+
+		.style-switch__wide .itm__list-divider {
+			display: block !important;
+		}
 	</style>
 </head>
 
@@ -113,42 +159,47 @@
 		<div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
 
 		<div class="container view-col-wrapper view-col-wrapper--cancer">
-			<div class="view-col" id="listcontainer" style="flex: 7">
-				<div class="lst__form-top" id="filter-search-input-group">
-					<div class="w-100 relative">
-						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
-						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+			<div class="view-col itm__wrp-lists" id="listcontainer">
+				<div class="flex-col min-h-0 w-100 itm__wrp-list itm__wrp-list--empty itm__wrp-list--mundane">
+					<div class="lst__form-top" id="filter-search-input-group">
+						<div class="w-100 relative">
+							<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
+							<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+							<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+						</div>
+						<button class="btn btn-default" id="reset">Reset</button>
 					</div>
-					<button class="btn btn-default" id="reset">Reset</button>
-				</div>
-				<div id="filtertools-mundane" class="ele-mundane sortlabel lst__form-bottom">
-					<button class="col-3-5 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
-					<button class="col-4-5 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
-					<button class="col-1-5 sort btn btn-default btn-xs" data-sort="cost" data-sortby="asc">Cost <span class="caret_wrp"></span></button>
-					<button class="col-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight <span class="caret_wrp"></span></button>
-					<button class="sort btn btn-default btn-xs" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
-				</div>
 
-				<ul class="list list--stats mundane ele-mundane"></ul>
-				<h3 class="ele-mundane"><span class="side-label side-label--mundane clickable"></span></h3>
+					<div id="filtertools-mundane" class="ele-mundane sortlabel lst__form-bottom">
+						<button class="col-3-5 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
+						<button class="col-4-5 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
+						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="cost" data-sortby="asc">Cost <span class="caret_wrp"></span></button>
+						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight <span class="caret_wrp"></span></button>
+						<button class="sort btn btn-default btn-xs" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
+					</div>
 
-				<div class="no-shrink itm__list-divider ele-mundane-and-magic"></div>
-
-				<div id="filtertools-magic" class="ele-magic sortlabel lst__form-bottom">
-					<button class="fullborder col-3-5 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
-					<button class="fullborder col-4 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
-					<button class="fullborder col-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight <span class="caret_wrp"></span></button>
-					<button class="col-0-6 sort btn btn-default btn-xs" data-sort="attunement" title="Can Be Attuned">A. <span class="caret_wrp"></span></button>
-					<button class="fullborder col-1-4 sort btn btn-default btn-xs" data-sort="rarity" data-sortby="asc">Rarity <span class="caret_wrp"></span></button>
-					<button class="fullborder sort btn btn-default btn-xs" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
+					<ul class="list list--stats mundane ele-mundane"></ul>
+					<h3 class="ele-mundane"><span class="side-label side-label--mundane clickable"></span></h3>
 				</div>
 
-				<ul class="list list--stats magic ele-magic"></ul>
-				<h3 class="ele-magic"><span class="side-label side-label--magic clickable"></span></h3>
+				<div class="flex-col min-h-0 w-100 itm__wrp-list itm__wrp-list--empty itm__wrp-list--magic">
+					<div class="no-shrink itm__list-divider ele-mundane-and-magic"></div>
+
+					<div id="filtertools-magic" class="ele-magic sortlabel lst__form-bottom">
+						<button class="fullborder col-3-5 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
+						<button class="fullborder col-4 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
+						<button class="fullborder col-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight <span class="caret_wrp"></span></button>
+						<button class="col-0-6 sort btn btn-default btn-xs" data-sort="attunement" title="Can Be Attuned">A. <span class="caret_wrp"></span></button>
+						<button class="fullborder col-1-4 sort btn btn-default btn-xs" data-sort="rarity" data-sortby="asc">Rarity <span class="caret_wrp"></span></button>
+						<button class="fullborder sort btn btn-default btn-xs" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
+					</div>
+
+					<ul class="list list--stats magic ele-magic"></ul>
+					<h3 class="ele-magic"><span class="side-label side-label--magic clickable"></span></h3>
+				</div>
 			</div>
 
-			<div id="contentwrapper" class="view-col" style="flex: 5">
+			<div id="contentwrapper" class="view-col itm__wrp-stats">
 				<div id="sublistcontainer" class="sublist sublist--resizable">
 					<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
 						<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
@@ -180,7 +231,7 @@
 
 				<div class="text-center wrp-footer-buttons">
 					<button class="btn btn-default btn-xs" id="btn-show-table" title="View and Download Items in Tabular Format">Table View</button>
-					<button class="btn btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+					<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
 				</div>
 			</div>
 		</div>

@@ -55,13 +55,11 @@ class ListPage {
 		ListUtil.setOptions({primaryLists: [this._list]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 
-		this._filterBox = this._pageFilter
-			? await this._pageFilter.pInitFilterBox({
-				$iptSearch: $(`#lst__search`),
-				$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
-				$btnReset: $(`#reset`)
-			})
-			: await pInitFilterBox({filters: this._filters});
+		this._filterBox = await this._pageFilter.pInitFilterBox({
+			$iptSearch: $(`#lst__search`),
+			$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
+			$btnReset: $(`#reset`)
+		});
 
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
 		this._list.on("updated", () => $outVisibleResults.html(`${this._list.visibleItems.length}/${this._list.items.length}`));
@@ -82,7 +80,7 @@ class ListPage {
 			filterBox: this._filterBox,
 			sourceFilter: this._pageFilter ? this._pageFilter.sourceFilter : this._filterSource,
 			list: this._list,
-			pHandleBrew: async homebrew => this._addData(homebrew)
+			pHandleBrew: this._pHandleBrew.bind(this)
 		});
 
 		const homebrew = await BrewUtil.pAddBrewData();

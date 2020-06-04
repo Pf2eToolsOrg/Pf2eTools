@@ -38,7 +38,7 @@
 <nav class="container page__nav" id="navigation"><ul class="nav page__nav-inner" id="navbar"></ul></nav>
 
 <div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
-<div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--scrolling-page cancer__anchor"><div class="cancer__disp-cancer"></div><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
 
 <main class="container" id="pagecontent"></main>
 <!--5ETOOLS_SCRIPT_ANCHOR-->
@@ -2662,6 +2662,82 @@ Filters -- completely overhauled internally:
 			txt: `
 - Added UA 2020 Subclasses Revisited content
 - Fixed DM Screen Map Viewer pan jittering/flickering when zoomed out
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.105.1",
+			date: "2020-05-16",
+			txt: `
+- (Roll20) Added OotA module
+- Fixed search indexing treating adventures as books
+- Fixed DM Screen Notes loading fluff instead of statblocks when pressing CTRL-Q
+- (Homebrew) Fixed fluff failing to render when a legendaryGroup, but no fluff.entries, was defined
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.105.2",
+			date: "2020-05-20",
+			txt: `
+- Removed (long-since broken) links to Beyond's CDN in audio files
+- Improved display of fractional values in Items page pin summary
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.105.3",
+			date: "2020-05-23",
+			txt: `
+- Fixed copied filter links failing to correctly set "Source" filter
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.105.4",
+			date: "2020-06-01",
+			txt: `
+- Added search syntax for filtering by source; page
+- Added "Help" button to Omnisearch results
+- Page numbers are now clickable in Omnisearch results, which links to the closest page available in the source
+- Adventure/Book pages now show the closest page found when searching for a page number with "G"
+- Added price to silvered/adamantine weapons in the Items page
+- Added "Base Source" filter to Items page, which allows e.g. the filtering out of DMG base items (guns) where the source has been overridden by a variant from e.g. the PHB/XGE
+- Improved Items page display of some awkward coin/weight values
+- Improved night mode text highlight styling in adventures/books
+- Fixed non-PHB subclass link hovers failing to load
+- Fixed lootgen rolling platinum pieces instead of electrum pieces in 17+ treasure generator
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.105.5",
+			date: "2020-06-01",
+			txt: `
+- Fixed various pages failing to load
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.106.0",
+			title: "Olympic Pace",
+			date: "2020-06-02",
+			txt: `
+- Added <a href="book.html#mot">Mythic Odysseys of Theros</a>
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.106.1",
+			date: "2020-06-03",
+			txt: `
+- (Fixed typos/added tags)`
+		},
+		{
+			ver: "1.106.2",
+			date: "2020-06-04",
+			txt: `
+- Added "Mythic" to Miscellaneous filter to Bestiary
+- Improved Text Converter detection of named creatures
+- Added Mythic Action support to Creature Builder
+- Added Mythic Action support to Markdown Text Converter
+- Added missing GM maps to MOT
+- Fixed Bestiary "Damage Inflicted" filter
+- (Homebrew) Fixed deleting and re-loading a race failing to clean orphaned subraces
+- (Homebrew) Fixed base races failing to display a list of subraces
 - (Fixed typos/added tags)`
 		},
 	];

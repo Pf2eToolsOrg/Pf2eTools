@@ -5185,7 +5185,7 @@
 											"type": "row",
 											"style": "row-indent-first",
 											"row": [
-												"Gallon",
+												"{@item Ale (Gallon)|PHB|Gallon}",
 												"2 sp"
 											]
 										},
@@ -5193,7 +5193,7 @@
 											"type": "row",
 											"style": "row-indent-first",
 											"row": [
-												"Mug",
+												"{@item Ale (mug)|phb|Mug}",
 												"4 cp"
 											]
 										},
@@ -5202,11 +5202,11 @@
 											"10 gp"
 										],
 										[
-											"Bread, loaf",
+											"{@item loaf of bread|phb|Bread, loaf}",
 											"2 cp"
 										],
 										[
-											"Cheese, hunk",
+											"{@item hunk of cheese|phb|Cheese, hunk}",
 											"1 sp"
 										],
 										[
@@ -5314,7 +5314,7 @@
 											]
 										},
 										[
-											"Meat, chunk",
+											"{@item chunk of meat|phb|Meat, chunk}",
 											"3 sp"
 										],
 										[
@@ -5325,7 +5325,7 @@
 											"type": "row",
 											"style": "row-indent-first",
 											"row": [
-												"Common (pitcher)",
+												"{@item common wine (pitcher)|phb|Common (pitcher)}",
 												"2 sp"
 											]
 										},
@@ -5333,7 +5333,7 @@
 											"type": "row",
 											"style": "row-indent-first",
 											"row": [
-												"Fine (bottle)",
+												"{@item fine wine (bottle)|phb|Fine (bottle)}",
 												"10 gp"
 											]
 										}
@@ -8866,77 +8866,53 @@
 							"page": 203,
 							"entries": [
 								{
-									"type": "entries",
-									"name": "Abjuration",
-									"page": 203,
-									"entries": [
-										"spells are protective in nature, though some of them have aggressive uses. They create magical barriers, negate harmful effects, harm trespassers, or banish creatures to other planes of existence."
-									],
-									"id": "1e6"
-								},
-								{
-									"type": "entries",
-									"name": "Conjuration",
-									"page": 203,
-									"entries": [
-										"spells involve the transportation of objects and creatures from one location to another. Some spells summon creatures or objects to the caster's side, whereas others allow the caster to teleport to another location. Some conjurations create objects or effects out of nothing."
-									],
-									"id": "1e7"
-								},
-								{
-									"type": "entries",
-									"name": "Divination",
-									"page": 203,
-									"entries": [
-										"spells reveal information, whether in the form of secrets long forgotten, glimpses of the future, the locations of hidden things, the truth behind illusions, or visions of distant people or places."
-									],
-									"id": "1e8"
-								},
-								{
-									"type": "entries",
-									"name": "Enchantment",
-									"page": 203,
-									"entries": [
-										"spells affect the minds of others, influencing or controlling their behavior. Such spells can make enemies see the caster as a friend, force creatures to take a course of action, or even control another creature like a puppet."
-									],
-									"id": "1e9"
-								},
-								{
-									"type": "entries",
-									"name": "Evocation",
-									"page": 203,
-									"entries": [
-										"spells manipulate magical energy to produce a desired effect. Some call up blasts of fire or lightning. Others channel positive energy to heal wounds."
-									],
-									"id": "1ea"
-								},
-								{
-									"type": "entries",
-									"name": "Illusion",
-									"page": 203,
-									"entries": [
-										"spells deceive the senses or minds of others. They cause people to see things that are not there, to miss things that are there, to hear phantom noises, or to remember things that never happened. Some illusions create phantom images that any creature can see, but the most insidious illusions plant an image directly in the mind of a creature."
-									],
-									"id": "1eb"
-								},
-								{
-									"type": "entries",
-									"name": "Necromancy",
-									"page": 203,
-									"entries": [
-										"spells manipulate the energies of life and death. Such spells can grant an extra reserve of life force, drain the life energy from another creature, create the undead, or even bring the dead back to life.",
-										"Creating the undead through the use of necromancy spells such as animate dead is not a good act, and only evil casters use such spells frequently."
-									],
-									"id": "1ec"
-								},
-								{
-									"type": "entries",
-									"name": "Transmutation",
-									"page": 203,
-									"entries": [
-										"spells change the properties of a creature, object, or environment. They might turn an enemy into a harmless creature, bolster the strength of an ally, make an object move at the caster's command, or enhance a creature's innate healing abilities to rapidly recover from injury."
-									],
-									"id": "1ed"
+									"type": "list",
+									"style": "list-hang-notitle",
+									"items": [
+										{
+											"type": "item",
+											"name": "Abjuration",
+											"entry": "spells are protective in nature, though some of them have aggressive uses. They create magical barriers, negate harmful effects, harm trespassers, or banish creatures to other planes of existence."
+										},
+										{
+											"type": "item",
+											"name": "Conjuration",
+											"entry": "spells involve the transportation of objects and creatures from one location to another. Some spells summon creatures or objects to the caster's side, whereas others allow the caster to teleport to another location. Some conjurations create objects or effects out of nothing."
+										},
+										{
+											"type": "item",
+											"name": "Divination",
+											"entry": "spells reveal information, whether in the form of secrets long forgotten, glimpses of the future, the locations of hidden things, the truth behind illusions, or visions of distant people or places."
+										},
+										{
+											"type": "item",
+											"name": "Enchantment",
+											"entry": "spells affect the minds of others, influencing or controlling their behavior. Such spells can make enemies see the caster as a friend, force creatures to take a course of action, or even control another creature like a puppet."
+										},
+										{
+											"type": "item",
+											"name": "Evocation",
+											"entry": "spells manipulate magical energy to produce a desired effect. Some call up blasts of fire or lightning. Others channel positive energy to heal wounds."
+										},
+										{
+											"type": "item",
+											"name": "Illusion",
+											"entry": "spells deceive the senses or minds of others. They cause people to see things that are not there, to miss things that are there, to hear phantom noises, or to remember things that never happened. Some illusions create phantom images that any creature can see, but the most insidious illusions plant an image directly in the mind of a creature."
+										},
+										{
+											"type": "item",
+											"name": "Necromancy",
+											"entries": [
+												"spells manipulate the energies of life and death. Such spells can grant an extra reserve of life force, drain the life energy from another creature, create the undead, or even bring the dead back to life.",
+												"Creating the undead through the use of necromancy spells such as {@spell animate dead} is not a good act, and only evil casters use such spells frequently."
+											]
+										},
+										{
+											"type": "item",
+											"name": "Transmutation",
+											"entry": "spells change the properties of a creature, object, or environment. They might turn an enemy into a harmless creature, bolster the strength of an ally, make an object move at the caster's command, or enhance a creature's innate healing abilities to rapidly recover from injury."
+										}
+									]
 								}
 							],
 							"id": "1e5"

@@ -6,7 +6,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.105.0"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.106.2"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -65,7 +65,8 @@ String.prototype.toTitleCase = String.prototype.toTitleCase || function () {
 	});
 
 	if (!StrUtil._TITLE_LOWER_WORDS_RE) {
-		StrUtil._TITLE_LOWER_WORDS_RE = StrUtil.TITLE_LOWER_WORDS.map(it => new RegExp(`\\s${it}\\s`, "g"));
+		// Require space surrounded, as title-case requires a full word on either side
+		StrUtil._TITLE_LOWER_WORDS_RE = StrUtil.TITLE_LOWER_WORDS.map(it => new RegExp(`\\s${it}\\s`, "gi"));
 	}
 
 	for (let i = 0; i < StrUtil.TITLE_LOWER_WORDS.length; i++) {
@@ -213,7 +214,7 @@ StrUtil = {
 		return string.uppercaseFirst();
 	},
 	// Certain minor words should be left lowercase unless they are the first or last words in the string
-	TITLE_LOWER_WORDS: ["A", "An", "The", "And", "But", "Or", "For", "Nor", "As", "At", "By", "For", "From", "In", "Into", "Near", "Of", "On", "Onto", "To", "With"],
+	TITLE_LOWER_WORDS: ["a", "an", "the", "and", "but", "or", "for", "nor", "as", "at", "by", "for", "from", "in", "into", "near", "of", "on", "onto", "to", "with"],
 	// Certain words such as initialisms or acronyms should be left uppercase
 	TITLE_UPPER_WORDS: ["Id", "Tv", "Dm"],
 
@@ -337,6 +338,18 @@ SourceUtil = {
 		if (source instanceof FilterItem) source = source.item;
 		if (BrewUtil.hasSourceJson(source)) return 2;
 		return Number(SourceUtil.isNonstandardSource(source));
+	},
+
+	getAdventureBookSourceHref (source, page) {
+		if (!source) return null;
+		source = source.toLowerCase();
+
+		let docPage;
+		if (Parser.SOURCES_AVAILABLE_DOCS_BOOK[source]) docPage = UrlUtil.PG_BOOK;
+		else if (Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[source]) docPage = UrlUtil.PG_ADVENTURE;
+		if (!docPage) return null;
+
+		return `${docPage}#${[source, page ? `page:${page}` : null].filter(Boolean).join(HASH_PART_SEP)}`;
 	}
 };
 
@@ -345,15 +358,27 @@ CurrencyUtil = {
 	/**
 	 * Convert 10 gold -> 1 platinum, etc.
 	 * @param obj Object of the form {cp: 123, sp: 456, ...} (values optional)
-	 * @param [coinAbvs] List of allowed coin abbreviations e.g. `["cp", "gp"]`
+	 * @param [opts]
+	 * @param [opts.currencyConversionId] Currency conversion table ID.
 	 */
-	doSimplifyCoins (obj, coinAbvs) {
-		coinAbvs = coinAbvs || [];
+	doSimplifyCoins (obj, opts) {
+		opts = opts || {};
+
+		const conversionTable = Parser.getCurrencyConversionTable(opts.currencyConversionId);
+		const normalized = conversionTable
+			.map(it => {
+				return {
+					...it,
+					normalizedMult: 1 / it.mult
+				}
+			})
+			.sort((a, b) => SortUtil.ascSort(a.normalizedMult, b.normalizedMult));
+
 		// Simplify currencies
-		for (let i = 0; i < Parser.COIN_CONVERSIONS.length - 1; ++i) {
-			const coinCur = Parser.COIN_ABVS[i];
-			const coinNxt = Parser.COIN_ABVS[i + 1];
-			const coinRatio = Parser.COIN_CONVERSIONS[i + 1] / Parser.COIN_CONVERSIONS[i];
+		for (let i = 0; i < normalized.length - 1; ++i) {
+			const coinCur = normalized[i].coin;
+			const coinNxt = normalized[i + 1].coin;
+			const coinRatio = normalized[i + 1].normalizedMult / normalized[i].normalizedMult;
 
 			if (obj[coinCur] && Math.abs(obj[coinCur]) >= coinRatio) {
 				const nxtVal = obj[coinCur] >= 0 ? Math.floor(obj[coinCur] / coinRatio) : Math.ceil(obj[coinCur] / coinRatio);
@@ -362,19 +387,7 @@ CurrencyUtil = {
 			}
 		}
 
-		// Convert undesirable currencies to their previous currencies
-		for (let i = Parser.COIN_CONVERSIONS.length - 1; i >= 0; --i) {
-			const coinCur = Parser.COIN_ABVS[i];
-			const coinNxt = Parser.COIN_ABVS[i - 1];
-			const coinRatio = Parser.COIN_CONVERSIONS[i] / Parser.COIN_CONVERSIONS[i - 1];
-
-			if (!coinAbvs.includes(coinCur)) {
-				obj[coinNxt] = (obj[coinNxt] || 0) + (obj[coinCur] || 0) * coinRatio;
-				delete obj[coinCur];
-			}
-		}
-
-		Parser.COIN_ABVS.filter(coin => obj[coin] === 0).forEach(coin => delete obj[coin]);
+		normalized.filter(coinMeta => obj[coinMeta.coin] === 0).forEach(coinMeta => delete obj[coinMeta.coin]);
 
 		return obj;
 	}
@@ -471,7 +484,7 @@ JqueryUtil = {
 				const handleArg = (arg) => {
 					if (arg instanceof $) {
 						$eles.push(arg);
-						return `<${arg.tag()} data-r="true"/>`;
+						return `<${arg.tag()} data-r="true"></${arg.tag()}>`;
 					} else if (arg instanceof HTMLElement) {
 						return handleArg($(arg));
 					} else return arg
@@ -490,7 +503,7 @@ JqueryUtil = {
 					else $res.find(`[data-r=true]`).replaceWith(i => $eles[i]);
 				} else {
 					// Handle case where user has passed in a bunch of elements with no outer wrapper
-					const $tmp = $(`<div/>`);
+					const $tmp = $(`<div></div>`);
 					$tmp.append($res);
 					$tmp.find(`[data-r=true]`).replaceWith(i => $eles[i]);
 					return $tmp.children();
@@ -503,15 +516,11 @@ JqueryUtil = {
 		$.fn.extend({
 			// avoid setting input type to "search" as it visually offsets the contents of the input
 			disableSpellcheck: function () { return this.attr("autocomplete", "new-password").attr("autocapitalize", "off").attr("spellcheck", "false"); },
-
-			tag: function () {
-				return this.prop("tagName").toLowerCase();
-			},
-
+			tag: function () { return this.prop("tagName").toLowerCase(); },
 			title: function (...args) { return this.attr("title", ...args); },
 
 			/**
-			 * Quickly set the innerHTML of the innermost element, wihtout parsing the whole thing with jQuery.
+			 * Quickly set the innerHTML of the innermost element, without parsing the whole thing with jQuery.
 			 * Useful for populating e.g. a table row.
 			 */
 			fastSetHtml: function (html) {
@@ -548,7 +557,7 @@ JqueryUtil = {
 	addSelectors () {
 		// Add a selector to match exact text (case insensitive) to jQuery's arsenal
 		//   Note that the search text should be `trim().toLowerCase()`'d before being passed in
-		$.expr[":"].textEquals = (el, i, m) => $(el).text().toLowerCase().trim() === m[3];
+		$.expr[":"].textEquals = (el, i, m) => $(el).text().toLowerCase().trim() === m[3].unescapeQuotes();
 
 		// Add a selector to match contained text (case insensitive)
 		$.expr[":"].containsInsensitive = (el, i, m) => {
@@ -626,7 +635,7 @@ JqueryUtil = {
 			JqueryUtil._ACTIVE_TOAST.splice(JqueryUtil._ACTIVE_TOAST.indexOf($toast), 1);
 		};
 
-		const $btnToastDismiss = $(`<button class="btn toast__btn-close"><span class="glyphicon glyphicon-remove"/></button>`)
+		const $btnToastDismiss = $(`<button class="btn toast__btn-close"><span class="glyphicon glyphicon-remove"></span></button>`)
 			.click(() => doCleanup($toast));
 
 		const $toast = $$`
@@ -1184,7 +1193,7 @@ ContextUtil = {
 		let tempString = `<ul id="${menuId}" class="dropdown-menu ui-ctx" role="menu">`;
 		let i = 0;
 		labels.forEach(it => {
-			if (it === null) tempString += `<li class="divider"/>`;
+			if (it === null) tempString += `<li class="divider"></li>`;
 			else if (typeof it === "object") {
 				tempString += `<li class="${it.isDisabled ? `disabled` : ``} ${it.style || ""}"><span ${!it.isDisabled ? `data-ctx-id="${i}"` : ""} ${it.title ? `title="${it.title.escapeQuotes()}"` : ""}>${it.text}</span></li>`;
 				if (!it.isDisabled) i++;
@@ -1264,42 +1273,6 @@ SearchUtil = {
 		elasticSearch.pipeline.remove(stemmer);
 	}
 };
-
-function getAsiFilter (options) {
-	const baseOptions = {
-		header: "Ability Bonus",
-		items: [
-			"str",
-			"dex",
-			"con",
-			"int",
-			"wis",
-			"cha"
-		],
-		displayFn: Parser.attAbvToFull,
-		itemSortFn: null
-	};
-	return getFilterWithMergedOptions(baseOptions, options);
-}
-
-function getFilterWithMergedOptions (baseOptions, addOptions) {
-	if (addOptions) Object.assign(baseOptions, addOptions); // merge in anything we get passed
-	return new Filter(baseOptions);
-}
-
-/**
- * @param opts Options object.
- * @param opts.filters Array of filters to be included in this box.
- * @param [opts.isCompact] True if this box should have a compact/reduced UI.
- */
-async function pInitFilterBox (opts) {
-	opts.$iptSearch = $(`#lst__search`);
-	opts.$wrpFormTop = $(`#filter-search-input-group`).title("Hotkey: f");
-	opts.$btnReset = $(`#reset`);
-	const filterBox = new FilterBox(opts);
-	await filterBox.pDoLoadState();
-	return filterBox;
-}
 
 // ENCODING/DECODING ===================================================================================================
 UrlUtil = {
@@ -1649,10 +1622,11 @@ SortUtil = {
 			if (b instanceof FilterItem) b = b.item;
 		}
 
-		return SortUtil._ascSort(a.toLowerCase(), b.toLowerCase());
-	},
+		a = a ? a.toLowerCase() : a;
+		b = b ? b.toLowerCase() : b;
 
-	ascSortLowerSafe (a, b) { return SortUtil.ascSortLower(a || "", b || ""); },
+		return SortUtil._ascSort(a, b);
+	},
 
 	ascSortLowerProp: (prop, a, b) => { return SortUtil.ascSortLower(a[prop], b[prop]); },
 
@@ -1972,6 +1946,7 @@ DataUtil = {
 
 	cleanJson (cpy) {
 		cpy.name = cpy._displayName || cpy.name;
+		delete cpy.uniqueId;
 		DataUtil.__cleanJsonObject(cpy);
 		return cpy;
 	},
@@ -2461,7 +2436,7 @@ DataUtil = {
 				});
 
 				Object.entries(copyMeta._mod).forEach(([prop, modInfos]) => {
-					if (prop === "*") doMod(modInfos, "action", "reaction", "trait", "legendary", "variant", "spellcasting");
+					if (prop === "*") doMod(modInfos, "action", "reaction", "trait", "legendary", "mythic", "variant", "spellcasting");
 					else if (prop === "_") doMod(modInfos);
 					else doMod(modInfos, prop);
 				});
@@ -3139,7 +3114,7 @@ BrewUtil = {
 	async _pRenderBrewScreen ($appendTo, isModal, cbGetBrewOnClose) {
 		const page = UrlUtil.getCurrentPage();
 
-		const $brewList = $(`<div class="manbrew__current_brew flex-col h-100"/>`);
+		const $brewList = $(`<div class="manbrew__current_brew flex-col h-100"></div>`);
 
 		await BrewUtil._pRenderBrewScreen_pRefreshBrewList($brewList);
 
@@ -3329,7 +3304,7 @@ BrewUtil = {
 					const timestampAdded = it._brewAdded ? MiscUtil.dateToStr(new Date(it._brewAdded * 1000), true) : "";
 					const timestampModified = it._brewModified ? MiscUtil.dateToStr(new Date(it._brewModified * 1000), true) : "";
 
-					const $btnAdd = $(`<span class="col-4 bold manbrew__load_from_url pl-0 clickable"/>`)
+					const $btnAdd = $(`<span class="col-4 bold manbrew__load_from_url pl-0 clickable"></span>`)
 						.text(it._brewName)
 						.click(() => BrewUtil.addBrewRemote($btnAdd, it.download_url || "", true));
 
@@ -3398,7 +3373,7 @@ BrewUtil = {
 				$iptSearch.focus();
 			});
 
-		const $btnCustomUrl = $(`<button class="btn btn-info btn-sm px-2" title="Set Custom Repository URL"><span class="glyphicon glyphicon-cog"/></button>`)
+		const $btnCustomUrl = $(`<button class="btn btn-info btn-sm px-2" title="Set Custom Repository URL"><span class="glyphicon glyphicon-cog"></span></button>`)
 			.click(async () => {
 				const customBrewUtl = await StorageUtil.pGet(`HOMEBREW_CUSTOM_REPO_URL`);
 
@@ -3419,11 +3394,11 @@ BrewUtil = {
 					${$btnGet}
 					${$btnCustomUrl}
 				</div>
-				<label role="button" class="btn btn-default btn-sm btn-file mr-2">Upload File${$iptAdd}</label>
+				<label role="button" class="btn btn-default btn-sm mr-2">Upload File${$iptAdd}</label>
 				${$btnLoadFromUrl}
 			</div>
 			<div class="flex-v-center">
-				<a href="https://github.com/TheGiddyLimit/homebrew" class="flex-v-center" target="_blank" rel="noopener noreferrer"><button class="btn btn-default btn-sm btn-file">Browse Source Repository</button></a>
+				<a href="https://github.com/TheGiddyLimit/homebrew" class="flex-v-center" target="_blank" rel="noopener noreferrer"><button class="btn btn-default btn-sm">Browse Source Repository</button></a>
 				${$btnDelAll}
 			</div>
 		</div>`;
@@ -3506,7 +3481,7 @@ BrewUtil = {
 
 	async _pRenderBrewScreen_pRefreshBrewList ($brewList) {
 		function showSourceManager (source, showAll) {
-			const $wrpBtnDel = $(`<div class="flex-v-center"/>`);
+			const $wrpBtnDel = $(`<div class="flex-v-center"></div>`);
 
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				isHeight100: true,
@@ -3518,7 +3493,7 @@ BrewUtil = {
 			});
 
 			const $cbAll = $(`<input type="checkbox">`);
-			const $ulRows = $$`<ul class="list"/>`;
+			const $ulRows = $$`<ul class="list"></ul>`;
 			const $iptSearch = $(`<input type="search" class="search manbrew__search form-control w-100" placeholder="Search entries...">`);
 			const $wrpBtnsSort = $$`<div class="filtertools manbrew__filtertools sortlabel btn-group">
 				<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name</button>
@@ -3803,11 +3778,11 @@ BrewUtil = {
 		const cached = $ele.html();
 		const cachedTitle = $ele.title();
 		$ele.title("");
-		$ele.removeClass("rd__wrp-loadbrew--ready").html(`${name}<span class="glyphicon glyphicon-refresh rd__loadbrew-icon rd__loadbrew-icon--active"/>`);
+		$ele.removeClass("rd__wrp-loadbrew--ready").html(`${name}<span class="glyphicon glyphicon-refresh rd__loadbrew-icon rd__loadbrew-icon--active"></span>`);
 		jsonUrl = jsonUrl.unescapeQuotes();
 		const data = await DataUtil.loadJSON(`${jsonUrl}?${(new Date()).getTime()}`);
 		await BrewUtil.pDoHandleBrewJson(data, UrlUtil.getCurrentPage());
-		$ele.html(`${name}<span class="glyphicon glyphicon-saved rd__loadbrew-icon"/>`);
+		$ele.html(`${name}<span class="glyphicon glyphicon-saved rd__loadbrew-icon"></span>`);
 		setTimeout(() => $ele.html(cached).addClass("rd__wrp-loadbrew--ready").title(cachedTitle), 500);
 	},
 
@@ -3818,10 +3793,12 @@ BrewUtil = {
 
 		const index = getIndex(arrName, uniqueId, isChild);
 		if (~index) {
+			const toRemove = BrewUtil.homebrew[arrName][index];
 			BrewUtil.homebrew[arrName].splice(index, 1);
 			if (BrewUtil._lists) {
 				BrewUtil._lists.forEach(l => l.removeItemByData(isChild ? "parentuniqueId" : "uniqueId", uniqueId));
 			}
+			return toRemove;
 		}
 	},
 
@@ -3833,7 +3810,6 @@ BrewUtil = {
 			case "background":
 			case "feat":
 			case "optionalfeature":
-			case "race":
 			case "raceFluff":
 			case "subrace":
 			case "object":
@@ -3860,6 +3836,7 @@ BrewUtil = {
 			case "language":
 			case "class":
 			case "makebrewCreatureTrait": return BrewUtil._genPDeleteGenericBrew(category);
+			case "race": return BrewUtil._pDeleteRaceBrew;
 			case "subclass": return BrewUtil._pDeleteSubclassBrew;
 			case "adventure":
 			case "book": return BrewUtil._genPDeleteGenericBookBrew(category);
@@ -3887,6 +3864,27 @@ BrewUtil = {
 			if (typeof ClassesPage === "undefined") return;
 			await classesPage.pDeleteSubclassBrew(uniqueId, sc);
 		}
+	},
+
+	async _pDeleteRaceBrew (uniqueId) {
+		const removedRace = await BrewUtil._pDoRemove("race", uniqueId);
+		if (!removedRace || !removedRace.subraces) return;
+		if (typeof racesPage === "undefined" || !BrewUtil._lists) return;
+
+		const subraceMetas = removedRace.subraces
+			.map(it => ({name: it.name, source: it.source || removedRace.source}))
+			.filter(it => it.name);
+		if (!subraceMetas.length) return;
+
+		const allAttachedRaces = racesPage.getMergedSubraces(uniqueId)
+			.filter(it => subraceMetas.some(meta => meta.name === it._subraceName && meta.source === it.source))
+			.filter(it => it.uniqueId);
+
+		if (!allAttachedRaces) return;
+
+		allAttachedRaces.forEach(attachedRace => {
+			BrewUtil._lists.forEach(l => l.removeItemByData("uniqueId", attachedRace.uniqueId));
+		});
 	},
 
 	_genPDeleteGenericBrew (category) {
@@ -3965,7 +3963,6 @@ BrewUtil = {
 		}
 
 		// prepare for storage
-		if (json.race && json.race.length) json.race = Renderer.race.mergeSubraces(json.race, {isAddBaseRaces: true});
 		BrewUtil._STORABLE.forEach(storePrep);
 
 		const bookPairs = [
@@ -4747,19 +4744,19 @@ function BookModeView (opts) {
 		document.title = `${pageTitle} - 5etools`;
 
 		this._$body = $(`body`);
-		this._$wrpBook = $(`<div class="bkmv"/>`);
+		this._$wrpBook = $(`<div class="bkmv"></div>`);
 
 		this._$body.css("overflow", "hidden");
 		this._$body.addClass("bkmv-active");
 
-		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"/>`)
+		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
 			.click(() => this._doHashTeardown());
-		const $dispName = $(`<div/>`); // pass this to the content function to allow it to set a main header
+		const $dispName = $(`<div></div>`); // pass this to the content function to allow it to set a main header
 		$$`<div class="bkmv__spacer-name split-v-center no-shrink">${$dispName}${$btnClose}</div>`.appendTo(this._$wrpBook);
 
 		// region controls
 		// Optionally usable "controls" section at the top of the pane
-		const $wrpControls = $(`<div class="w-100 flex-col bkmv__wrp-controls"/>`)
+		const $wrpControls = $(`<div class="w-100 flex-col bkmv__wrp-controls"></div>`)
 			.appendTo(this._$wrpBook);
 
 		let $wrpControlsToPass = $wrpControls;
@@ -4794,7 +4791,7 @@ function BookModeView (opts) {
 		}
 		// endregion
 
-		const $wrpContent = $(`<div class="bkmv__wrp p-2"/>`);
+		const $wrpContent = $(`<div class="bkmv__wrp p-2"></div>`);
 
 		await this._renderContent($wrpContent, $dispName, $wrpControlsToPass);
 

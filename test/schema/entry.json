@@ -4,7 +4,7 @@
 
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.2.21",
+	"version": "1.2.22",
 
 	"definitions" : {
 		"_arrayOfString": {
@@ -14,7 +14,7 @@
 				"type": "string"
 			}
 		},
-		"_imageHref": {
+		"mediaHref": {
 			"oneOf": [
 				{
 					"properties": {
@@ -902,11 +902,11 @@
 					"properties": {
 						"type": {"const": "image"},
 						"href": {
-							"$ref": "#/definitions/_imageHref"
+							"$ref": "#/definitions/mediaHref"
 						},
 						"hrefThumbnail": {
 							"title": "A thumbnail image used in rare cases, e.g. when loading a wall of maps to choose from in the DM Screen.",
-							"$ref": "#/definitions/_imageHref"
+							"$ref": "#/definitions/mediaHref"
 						},
 						"title": {
 							"type": "string"

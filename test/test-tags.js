@@ -201,7 +201,7 @@ class ClassLinkCheck {
 				MSG.LinkCheck += `Missing subclass link: ${match[0]} in file ${file} -- could not find subclass with matching shortname/source\n`;
 			}
 
-			if (ixFeature && !featureIndex.includes(ixFeature)) {
+			if (featureIndex && ixFeature && !featureIndex.includes(ixFeature)) {
 				MSG.LinkCheck += `Malformed subclass link: ${match[0]} in file ${file} -- feature index "${ixFeature}" was outside expected range\n`;
 			}
 		}
@@ -259,6 +259,10 @@ class ItemDataCheck {
 			});
 		}
 
+		if (root.ammoType) {
+			ItemDataCheck._checkArrayItemsExist(file, name, source, [root.ammoType], "ammoType", "item");
+		}
+
 		if (root.baseItem) {
 			const url = `${TAG_TO_PAGE.item}#${UrlUtil.encodeForHash(root.baseItem.split("|"))}`
 				.toLowerCase()
@@ -272,6 +276,9 @@ class ItemDataCheck {
 	}
 
 	static run () {
+		const basicItems = require(`../data/items-base.json`);
+		basicItems.baseitem.forEach(it => this._checkRoot("data/items-base.json", it, it.name, it.source));
+
 		const items = require(`../data/items.json`);
 		items.item.forEach(it => this._checkRoot("data/items.json", it, it.name, it.source));
 		items.itemGroup.forEach(it => this._checkRoot("data/items.json", it, it.name, it.source));

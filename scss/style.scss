@@ -1017,15 +1017,6 @@ input[type=checkbox].sidemenu__row__label__cb {
 th.name {
 	position: relative;
 
-	span.stats-name {
-		float: left;
-	}
-
-	span.stats-source {
-		float: right;
-		text-align: right;
-	}
-
 	div.name-inner {
 		display: flex;
 		justify-content: space-between;
@@ -1033,7 +1024,7 @@ th.name {
 	}
 }
 
-.monster th.name span.source {
+.monster th.name .source {
 	position: relative;
 	margin-right: 0.2em;
 }
@@ -1316,7 +1307,7 @@ div#lootoutput {
 
 // FIXME temporary element selectors
 tr th.mon__name--token {
-	padding-right: calc(11.2rem + 2px);
+	padding-right: calc(12rem);
 }
 
 #crcalc {
@@ -2098,6 +2089,7 @@ tr.trait,
 tr.action,
 tr.reaction,
 tr.legendary,
+tr.mythic,
 tr.lairaction,
 tr.regionaleffect {
 	.rd__b--3 {
@@ -2393,7 +2385,7 @@ tr.regionaleffect {
 }
 
 .highlight {
-	background-color: yellow;
+	background-color: $rgb-bg-highlight;
 }
 
 /* *** */
@@ -2530,6 +2522,8 @@ ul.list li:hover {
 	background: lightgrey;
 }
 
+.stripe-odd:nth-child(odd),
+.stripe-even:nth-child(even),
 table.striped-odd > tbody > tr:nth-child(odd),
 table.striped-even > tbody > tr:nth-child(even) {
 	background: #c0c0c080; // pre-blend (50% opacity): e0 e0 e0
@@ -2598,6 +2592,7 @@ th.border {
 		bottom: 4px;
 		left: 0;
 		background: white;
+		border-bottom: 4px solid silver;
 	}
 }
 
@@ -2608,6 +2603,7 @@ th.border {
 
 	&overlay-loading {
 		background: $rgb-bg--night;
+		border-bottom-color: #565656;
 	}
 }
 
@@ -3554,6 +3550,8 @@ ul.list.books > li > a > span.name:hover {
 		}
 	}
 
+	.stripe-odd:nth-child(odd),
+	.stripe-even:nth-child(even),
 	table.striped-odd > tbody > tr:nth-child(odd),
 	table.striped-even > tbody > tr:nth-child(even) {
 		background-color: #4e4e4e80; // pre-blend (50% opacity): 38 38 38
@@ -3862,6 +3860,11 @@ ul.list.books > li > a > span.name:hover {
 		background-color: rgba(255, 0, 0, 0.1);
 	}
 
+	.highlight {
+		color: $rgb-bg--night;
+		background-color: $rgb-bg-highlight--night;
+	}
+
 	/* *** */
 
 	/* Ace JS */
@@ -3977,6 +3980,10 @@ ul.list.books > li > a > span.name:hover {
 			height: calc(100% - 80px);
 		}
 
+		&--scrolling-page {
+			position: absolute;
+		}
+
 		@media (max-width: 1800px) {
 			display: none;
 		}
@@ -3987,7 +3994,7 @@ ul.list.books > li > a > span.name:hover {
 		top: 20px;
 	}
 
-	&home-footer-pad {
+	&footer-pad {
 		height: 100px;
 	}
 

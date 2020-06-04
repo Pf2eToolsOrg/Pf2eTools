@@ -91,6 +91,7 @@ class CreatureBuilder extends Builder {
 		const result = await SearchWidget.pGetUserCreatureSearch();
 		if (result) {
 			const creature = MiscUtil.copy(await Renderer.hover.pCacheAndGet(result.page, result.source, result.hash));
+			creature.source = this._ui.source;
 
 			if (this._bestiaryFluffIndex[creature.source] && !creature.fluff) {
 				const fluff = await Renderer.monster.pGetFluff(creature);
@@ -98,12 +99,20 @@ class CreatureBuilder extends Builder {
 				if (fluff) creature.fluff = MiscUtil.copy(fluff);
 			}
 
+			const cleanOrigin = window.location.origin.replace(/\/+$/, "");
+
 			const rawTokenUrl = await pFetchToken(creature);
 			if (rawTokenUrl) {
-				creature.tokenUrl = /^[a-zA-Z0-9]+:\/\//.test(rawTokenUrl) ? rawTokenUrl : `${window.location.origin.replace(/\/+$/, "")}/${rawTokenUrl}`;
+				creature.tokenUrl = /^[a-zA-Z0-9]+:\/\//.test(rawTokenUrl) ? rawTokenUrl : `${cleanOrigin}/${rawTokenUrl}`;
 			}
 
-			creature.source = this._ui.source;
+			if (creature.soundClip && creature.soundClip.type === "internal") {
+				creature.soundClip = {
+					type: "external",
+					url: `${cleanOrigin}/${Renderer.utils.getMediaUrl(creature, "soundClip", "audio")}`
+				};
+			}
+
 			delete creature.otherSources;
 			delete creature.srd;
 			delete creature.hasToken;
@@ -426,6 +435,8 @@ class CreatureBuilder extends Builder {
 		).appendTo(abilTab.$wrpTab);
 		this.__$getLegendaryActionInput(cb).appendTo(abilTab.$wrpTab);
 		this.__$getLegendaryGroupInput(cb).appendTo(abilTab.$wrpTab);
+		BuilderUi.$getStateIptEntries("Mythic Action Intro", cb, this._state, {}, "mythicHeader").appendTo(abilTab.$wrpTab);
+		this.__$getMythicActionInput(cb).appendTo(abilTab.$wrpTab);
 		this.__$getVariantInput(cb).appendTo(abilTab.$wrpTab);
 
 		// FLAVOR/MISC
@@ -433,7 +444,7 @@ class CreatureBuilder extends Builder {
 		this.__$getFluffInput(cb).appendTo(miscTab.$wrpTab);
 		this.__$getEnvironmentInput(cb).appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptString("Group", cb, this._state, {title: "The family this creature belongs to, e.g. 'Modrons' in the case of a Duodrone."}, "group").appendTo(miscTab.$wrpTab);
-		BuilderUi.$getStateIptString("Sound Clip URL", cb, this._state, {type: "url"}, "soundClip").appendTo(miscTab.$wrpTab);
+		this.__$getSoundClipInput(cb).appendTo(miscTab.$wrpTab);
 		BuilderUi.$getStateIptEnum(
 			"Dragon Casting Color",
 			cb,
@@ -999,7 +1010,7 @@ class CreatureBuilder extends Builder {
 
 		const _getSimpleFormula = () => {
 			const mod = UiUtil.strToInt($iptSimpleMod.val());
-			return `${$selSimpleNum.val()}d${$selSimpleFace.val()}${UiUtil.intToBonus(mod)}`;
+			return `${$selSimpleNum.val()}d${$selSimpleFace.val()}${mod === 0 ? "" : UiUtil.intToBonus(mod)}`;
 		};
 
 		const doUpdateState = () => {
@@ -1051,7 +1062,8 @@ class CreatureBuilder extends Builder {
 			if (this._meta.autoCalc.hpModifier) {
 				const num = Number($selSimpleNum.val());
 				const mod = Parser.getAbilityModNumber(this._state.con);
-				$iptSimpleMod.val(num * mod);
+				const total = num * mod;
+				$iptSimpleMod.val(total || null);
 				hpSimpleAverageHook();
 				doUpdateState();
 			}
@@ -2587,6 +2599,10 @@ class CreatureBuilder extends Builder {
 		return this.__$getGenericEntryInput(cb, {name: "Legendary Actions", shortName: "Legendary Action", prop: "legendary"});
 	}
 
+	__$getMythicActionInput (cb) {
+		return this.__$getGenericEntryInput(cb, {name: "Mythic Actions", shortName: "Mythic Action", prop: "mythic"});
+	}
+
 	__$getGenericEntryInput (cb, options) {
 		if (options.canReorder == null) options.canReorder = true;
 
@@ -2999,6 +3015,35 @@ class CreatureBuilder extends Builder {
 
 		envRows.push(out);
 		return out;
+	}
+
+	__$getSoundClipInput (cb) {
+		// BuilderUi.$getStateIptString(cb, this._state, {type: "url"}, "soundClip").appendTo(miscTab.$wrpTab);
+		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Sound Clip URL", {isMarked: true});
+
+		const doUpdateState = () => {
+			const url = $iptUrl.val().trim();
+
+			if (!url) {
+				delete this._state.soundClip;
+			} else {
+				this._state.soundClip = {
+					type: "external",
+					url
+				}
+			}
+
+			cb();
+		};
+
+		const $iptUrl = $(`<input class="form-control form-control--minimal input-xs mr-2">`)
+			.change(() => doUpdateState());
+
+		if (this._state.soundClip) $iptUrl.val(this._state.soundClip.url);
+
+		$$`<div class="flex">${$iptUrl}</div>`.appendTo($rowInner);
+
+		return $row;
 	}
 
 	renderOutput () {

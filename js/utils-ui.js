@@ -320,7 +320,7 @@ class UiUtil {
 		const $overlay = $(`<div class="ui-modal__overlay">`);
 		if (opts.zIndex != null) $overlay.css({zIndex: opts.zIndex});
 		if (opts.overlayColor != null) $overlay.css({backgroundColor: opts.overlayColor});
-		const $scroller = $(`<div class="ui-modal__scroller flex-col"/>`);
+		const $scroller = $(`<div class="ui-modal__scroller flex-col"></div>`);
 
 		const modalWindowClasses = [
 			opts.isWidth100 ? `w-100` : "",
@@ -411,7 +411,7 @@ class UiUtil {
 	}
 
 	static $getAddModalRow ($modalInner, tag = "div") {
-		return $(`<${tag} class="ui-modal__row"/>`).appendTo($modalInner);
+		return $(`<${tag} class="ui-modal__row"></${tag}>`).appendTo($modalInner);
 	}
 
 	/**
@@ -457,7 +457,7 @@ class UiUtil {
 		if (opts.helpText) $row.title(opts.helpText);
 		$row.append(`<span>${labelText}</span>`);
 		const $sel = $(`<select class="form-control input-xs w-30">`).appendTo($row);
-		values.forEach((val, i) => $(`<option value="${i}"/>`).text(opts.fnDisplay ? opts.fnDisplay(val) : val).appendTo($sel));
+		values.forEach((val, i) => $(`<option value="${i}"></option>`).text(opts.fnDisplay ? opts.fnDisplay(val) : val).appendTo($sel));
 		// N.B. this doesn't support null values
 		const ix = values.indexOf(objectWithProp[propName]);
 		$sel.val(`${~ix ? ix : 0}`)
@@ -514,7 +514,7 @@ class ProfUiUtil {
 		if (state >= NUM_STATES) state = NUM_STATES - 1;
 		else if (state < 0) state = 0;
 
-		const $btnCycle = $(`<button class="ui-prof__btn-cycle"/>`)
+		const $btnCycle = $(`<button class="ui-prof__btn-cycle"></button>`)
 			.click(() => {
 				$btnCycle
 					.attr("data-state", ++state >= NUM_STATES ? state = 0 : state)
@@ -596,7 +596,7 @@ class TabUiUtil {
 					if (opts.cbTabChange) opts.cbTabChange();
 				});
 
-			const $wrpTab = $(`<div class="ui-tab__wrp-tab-body ${isActive ? "" : "hidden"} ${opts.hasBorder ? "ui-tab__wrp-tab-body--border" : ""}"/>`);
+			const $wrpTab = $(`<div class="ui-tab__wrp-tab-body ${isActive ? "" : "hidden"} ${opts.hasBorder ? "ui-tab__wrp-tab-body--border" : ""}"></div>`);
 
 			const out = {ix, $btnTab, $wrpTab};
 			tabMeta[ix] = out;
@@ -974,8 +974,8 @@ class SearchWidget {
 
 	_render () {
 		if (!this._$rendered) {
-			this._$rendered = $(`<div class="ui-search__wrp-output"/>`);
-			const $wrpControls = $(`<div class="ui-search__wrp-controls"/>`).appendTo(this._$rendered);
+			this._$rendered = $(`<div class="ui-search__wrp-output"></div>`);
+			const $wrpControls = $(`<div class="ui-search__wrp-controls"></div>`).appendTo(this._$rendered);
 
 			this._$selCat = $(`<select class="form-control ui-search__sel-category">
 				<option value="ALL">${SearchWidget.__getAllTitle()}</option>
@@ -988,7 +988,7 @@ class SearchWidget {
 				});
 
 			this._$iptSearch = $(`<input class="ui-search__ipt-search search form-control" autocomplete="off" placeholder="Search...">`).appendTo($wrpControls);
-			this._$wrpResults = $(`<div class="ui-search__wrp-results"/>`).appendTo(this._$rendered);
+			this._$wrpResults = $(`<div class="ui-search__wrp-results"></div>`).appendTo(this._$rendered);
 
 			let lastSearchTerm = "";
 			SearchWidget.bindAutoSearch(this._$iptSearch, {
@@ -1043,7 +1043,7 @@ class SearchWidget {
 			fnTransform: doc => {
 				const cpy = MiscUtil.copy(doc);
 				Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
-				cpy.tag = `{@spell ${doc.n}${doc.s !== SRC_PHB ? `|${doc.s}` : ""}}`;
+				cpy.tag = `{@spell ${doc.n.toSpellCase()}${doc.s !== SRC_PHB ? `|${doc.s}` : ""}}`;
 				return cpy;
 			}
 		};
@@ -1365,7 +1365,7 @@ class InputUiUtil {
 		}
 
 		return new Promise(resolve => {
-			const $btnTrueRemember = opts.textYesRemember ? $(`<button class="btn btn-primary flex-v-center mr-2"><span class="glyphicon glyphicon-ok mr-2"/><span>${opts.textYesRemember}</span></button>`)
+			const $btnTrueRemember = opts.textYesRemember ? $(`<button class="btn btn-primary flex-v-center mr-2"><span class="glyphicon glyphicon-ok mr-2"></span><span>${opts.textYesRemember}</span></button>`)
 				.click(() => {
 					doClose(true, true);
 					opts.isGlobal
@@ -1373,10 +1373,10 @@ class InputUiUtil {
 						: StorageUtil.pSetForPage(opts.storageKey, true);
 				}) : null;
 
-			const $btnTrue = $(`<button class="btn btn-primary flex-v-center mr-3"><span class="glyphicon glyphicon-ok mr-2"/><span>${opts.textYes || "Yes"}</span></button>`)
+			const $btnTrue = $(`<button class="btn btn-primary flex-v-center mr-3"><span class="glyphicon glyphicon-ok mr-2"></span><span>${opts.textYes || "Yes"}</span></button>`)
 				.click(() => doClose(true, true));
 
-			const $btnFalse = $(`<button class="btn btn-default flex-v-center"><span class="glyphicon glyphicon-remove mr-2"/><span>${opts.textNo || "No"}</span></button>`)
+			const $btnFalse = $(`<button class="btn btn-default flex-v-center"><span class="glyphicon glyphicon-remove mr-2"></span><span>${opts.textNo || "No"}</span></button>`)
 				.click(() => doClose(true, false));
 
 			const {$modalInner, doClose} = UiUtil.getShowModal({
@@ -1414,9 +1414,9 @@ class InputUiUtil {
 		return new Promise(resolve => {
 			const $selEnum = $(`<select class="form-control mb-2"><option value="-1" disabled>${opts.placeholder || "Select..."}</option></select>`);
 
-			if (opts.isAllowNull) $(`<option value="-1"/>`).text(opts.fnDisplay ? opts.fnDisplay(null, -1) : "(None)").appendTo($selEnum);
+			if (opts.isAllowNull) $(`<option value="-1"></option>`).text(opts.fnDisplay ? opts.fnDisplay(null, -1) : "(None)").appendTo($selEnum);
 
-			opts.values.forEach((v, i) => $(`<option value="${i}"/>`).text(opts.fnDisplay ? opts.fnDisplay(v, i) : v).appendTo($selEnum));
+			opts.values.forEach((v, i) => $(`<option value="${i}"></option>`).text(opts.fnDisplay ? opts.fnDisplay(v, i) : v).appendTo($selEnum));
 			if (opts.default != null) $selEnum.val(opts.default);
 			else $selEnum[0].selectedIndex = 0;
 
@@ -1628,7 +1628,7 @@ class InputUiUtil {
 	static pGetUserString (opts) {
 		opts = opts || {};
 		return new Promise(resolve => {
-			const $iptStr = $(`<input class="form-control mb-2">`)
+			const $iptStr = $(`<input class="form-control mb-2" type="text">`)
 				.val(opts.default)
 				.keydown(async evt => {
 					if (opts.autocomplete) {
@@ -1650,8 +1650,7 @@ class InputUiUtil {
 				cbClose: (isDataEntered) => {
 					if (!isDataEntered) return resolve(null);
 					const raw = $iptStr.val();
-					if (!raw.trim()) return resolve(null);
-					else return resolve(raw);
+					return resolve(raw);
 				}
 			});
 			$iptStr.appendTo($modalInner);
@@ -1673,7 +1672,7 @@ class InputUiUtil {
 	static pGetUserText (opts) {
 		opts = opts || {};
 		return new Promise(resolve => {
-			const $iptStr = $(`<textarea class="form-control mb-2 resize-vertical w-100" ${opts.disabled ? "disabled" : ""}/>`)
+			const $iptStr = $(`<textarea class="form-control mb-2 resize-vertical w-100" ${opts.disabled ? "disabled" : ""}></textarea>`)
 				.val(opts.default);
 			if (opts.isCode) $iptStr.addClass("code");
 			const $btnOk = $(`<button class="btn btn-default">${opts.buttonText || "Enter"}</button>`)
@@ -1750,7 +1749,7 @@ class InputUiUtil {
 			let active = false;
 			let curAngle = Math.min(DEG_CIRCLE, opts.default) || 0;
 
-			const $arm = $(`<div class="ui-dir__arm"/>`);
+			const $arm = $(`<div class="ui-dir__arm"></div>`);
 			const handleAngle = () => $arm.css({transform: `rotate(${curAngle + 180}deg)`});
 			handleAngle();
 
@@ -1941,13 +1940,13 @@ class DragReorderUiUtil {
 			});
 
 			dragMeta.on = true;
-			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"/>`).appendTo(opts.$parent);
+			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"></div>`).appendTo(opts.$parent);
 			dragMeta.$dummies = [];
 
 			const ids = opts.componentsParent[opts.componentsProp].map(it => it.id);
 
 			ids.forEach(id => {
-				const $dummy = $(`<div class="w-100 ${id === opts.componentId ? "ui-drag__wrp-drag-dummy--highlight" : "ui-drag__wrp-drag-dummy--lowlight"}"/>`)
+				const $dummy = $(`<div class="w-100 ${id === opts.componentId ? "ui-drag__wrp-drag-dummy--highlight" : "ui-drag__wrp-drag-dummy--lowlight"}"></div>`)
 					.height(getComponentById(id).height)
 					.mouseup(() => {
 						if (dragMeta.on) doDragCleanup();
@@ -2001,7 +2000,7 @@ class DragReorderUiUtil {
 			});
 
 			dragMeta.on = true;
-			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"/>`).appendTo(opts.$parent);
+			dragMeta.$wrap = $(`<div class="flex-col ui-drag__wrp-drag-block"></div>`).appendTo(opts.$parent);
 			dragMeta.$dummies = [];
 
 			const $children = opts.$getChildren ? opts.$getChildren() : opts.$children;
@@ -2009,7 +2008,7 @@ class DragReorderUiUtil {
 
 			$children.forEach(($child, i) => {
 				const dimensions = {w: $child.outerWidth(true), h: $child.outerHeight(true)};
-				const $dummy = $(`<div class="${i === ixRow ? "ui-drag__wrp-drag-dummy--highlight" : "ui-drag__wrp-drag-dummy--lowlight"}"/>`)
+				const $dummy = $(`<div class="${i === ixRow ? "ui-drag__wrp-drag-dummy--highlight" : "ui-drag__wrp-drag-dummy--lowlight"}"></div>`)
 					.width(dimensions.w).height(dimensions.h)
 					.mouseup(() => {
 						if (dragMeta.on) doDragCleanup();
@@ -2164,7 +2163,7 @@ class SourceUiUtil {
 			</div></div>
 			<div class="text-center mb-2">${$btnCancel}${$btnConfirm}</div>
 
-			${!isEditMode && BrewUtil.homebrewMeta.sources && BrewUtil.homebrewMeta.sources.length ? $$`<div class="flex-vh-center mb-3 mt-3"><span class="ui-source__divider"/>or<span class="ui-source__divider"/></div>
+			${!isEditMode && BrewUtil.homebrewMeta.sources && BrewUtil.homebrewMeta.sources.length ? $$`<div class="flex-vh-center mb-3 mt-3"><span class="ui-source__divider"></span>or<span class="ui-source__divider"></span></div>
 			<div class="flex-vh-center">${$btnUseExisting}</div>` : ""}
 		</div></div>`.appendTo(options.$parent);
 
@@ -2837,10 +2836,10 @@ class ComponentUiUtil {
 	static _$getDecor ($ipt, decorType, side) {
 		switch (decorType) {
 			case "search": {
-				return $(`<div class="ui__ipt-decoration ui__ipt-decoration--${side} no-events flex-vh-center"><span class="glyphicon glyphicon-search"/></div>`);
+				return $(`<div class="ui__ipt-decoration ui__ipt-decoration--${side} no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>`);
 			}
 			case "clear": {
-				return $(`<div class="ui__ipt-decoration ui__ipt-decoration--${side} flex-vh-center clickable" title="Clear"><span class="glyphicon glyphicon-remove"/></div>`)
+				return $(`<div class="ui__ipt-decoration ui__ipt-decoration--${side} flex-vh-center clickable" title="Clear"><span class="glyphicon glyphicon-remove"></span></div>`)
 					.click(() => $ipt.val("").change().keydown().keyup());
 			}
 			default: throw new Error(`Unimplemented!`);
@@ -2857,7 +2856,7 @@ class ComponentUiUtil {
 	static $getIptEntries (component, prop, opts) {
 		opts = opts || {};
 
-		const $ipt = (opts.$ele || $(`<textarea class="form-control input-xs form-control--minimal resize-vertical"/>`))
+		const $ipt = (opts.$ele || $(`<textarea class="form-control input-xs form-control--minimal resize-vertical"></textarea>`))
 			.change(() => component._state[prop] = UiUtil.getTextAsEntries($ipt.val().trim()));
 		const hook = () => $ipt.val(UiUtil.getEntriesAsText(component._state[prop]));
 		hook();
@@ -2955,7 +2954,7 @@ class ComponentUiUtil {
 	static $getSelEnum (component, prop, opts) {
 		opts = opts || {};
 
-		const $sel = (opts.$ele || $(opts.html || `<select class="form-control input-xs"/>`))
+		const $sel = (opts.$ele || $(opts.html || `<select class="form-control input-xs"></select>`))
 			.change(() => {
 				const ix = Number($sel.val());
 				if (~ix) component._state[prop] = opts.values[ix];
@@ -3014,7 +3013,7 @@ class ComponentUiUtil {
 		const $btnAdd = $(`<button class="btn btn-xxs btn-default ui-pick__btn-add mb-1">+</button>`)
 			.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnAdd, contextId));
 
-		const $wrpPills = $(`<div class="flex flex-wrap w-100"/>`);
+		const $wrpPills = $(`<div class="flex flex-wrap w-100"></div>`);
 		const $wrp = $$`<div class="flex-v-center">${$btnAdd}${$wrpPills}</div>`;
 		pickComp._addHookAll("state", () => {
 			component._state[prop] = Object.keys(pickComp._state).filter(k => pickComp._state[k]);
@@ -3038,7 +3037,7 @@ class ComponentUiUtil {
 	static $getCbsEnum (component, prop, opts) {
 		opts = opts || {};
 
-		const $wrp = $(`<div class="flex-col w-100"/>`);
+		const $wrp = $(`<div class="flex-col w-100"></div>`);
 		const metas = opts.values.map(it => {
 			const $cb = $(`<input type="checkbox">`)
 				.change(() => {

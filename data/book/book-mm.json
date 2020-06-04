@@ -295,9 +295,9 @@
 							"page": 7,
 							"entries": [
 								"A monster usually dies or is destroyed when it drops to 0 hit points. For more on hit points, see the {@i Player's Handbook.}",
-								"A monster's hit points are presented both as a die expression and as an average number. For example, a monster with 2d8 hit points has 9 hit points on average (2 × 4½).",
+								"A monster's hit points are presented both as a die expression and as an average number. For example, a monster with {@dice 2d8} hit points has 9 hit points on average (2 × 4½).",
 								"A monster's size determines the die used to calculate its hit points, as shown in the Hit Dice by Size table.",
-								"A monster's Constitution modifier also affects the number of hit points it has. Its Constitution modifier is multiplied by the number of Hit Dice it possesses, and the result is added to its hit points. For example, if a monster has a Constitution of 12 (+1 modifier) and 2d8 Hit Dice, it has 2d8 + 2 hit points (average 11).",
+								"A monster's Constitution modifier also affects the number of hit points it has. Its Constitution modifier is multiplied by the number of Hit Dice it possesses, and the result is added to its hit points. For example, if a monster has a Constitution of 12 (+1 modifier) and {@dice 2d8} Hit Dice, it has {@dice 2d8 + 2} hit points (average 11).",
 								{
 									"type": "table",
 									"caption": "Hit Dice by Size",
@@ -314,32 +314,32 @@
 									"rows": [
 										[
 											"Tiny",
-											"d4",
+											"{@dice d4}",
 											"2½"
 										],
 										[
 											"Small",
-											"d6",
+											"{@dice d6}",
 											"3½"
 										],
 										[
 											"Medium",
-											"d8",
+											"{@dice d8}",
 											"4½"
 										],
 										[
 											"Large",
-											"d10",
+											"{@dice d10}",
 											"5½"
 										],
 										[
 											"Huge",
-											"d12",
+											"{@dice d12}",
 											"6½"
 										],
 										[
 											"Gargantuan",
-											"d20",
+											"{@dice d20}",
 											"10½"
 										]
 									]
@@ -408,7 +408,7 @@
 							"name": "Saving Throws",
 							"page": 8,
 							"entries": [
-								"The Saving Throws entry is reserved for creatures that are adept at resisting certain kinds of effects. For example, a creature that isn't easily charmed or frightened might gain a bonus on its Wisdom saving throws. Most creatures don't have special saving throw bonuses, in which case this section is absent.",
+								"The Saving Throws entry is reserved for creatures that are adept at resisting certain kinds of effects. For example, a creature that isn't easily {@condition charmed} or {@condition frightened} might gain a bonus on its Wisdom saving throws. Most creatures don't have special saving throw bonuses, in which case this section is absent.",
 								"A saving throw bonus is the sum of a monster's relevant ability modifier and its proficiency bonus, which is determined by the monster's challenge rating (as shown in the Proficiency Bonus by Challenge Rating table).",
 								{
 									"type": "table",
@@ -538,7 +538,7 @@
 							"name": "Skills",
 							"page": 8,
 							"entries": [
-								"The Skills entry is reserved for monsters that are proficient in one or more skills. For example, a monster that is very perceptive and stealthy might have bonuses to Wisdom (Perception) and Dexterity (Stealth) checks.",
+								"The Skills entry is reserved for monsters that are proficient in one or more skills. For example, a monster that is very perceptive and stealthy might have bonuses to Wisdom ({@skill Perception}) and Dexterity ({@skill Stealth}) checks.",
 								"A skill bonus is the sum of a monster's relevant ability modifier and its proficiency bonus, which is determined by the monster's challenge rating (as shown in the Proficiency Bonus by Challenge Rating table). Other modifiers might apply. For instance, a monster might have a larger-than-expected bonus (usually double its proficiency bonus) to account for its heightened expertise."
 							],
 							"id": "01a"
@@ -557,14 +557,14 @@
 							"name": "Senses",
 							"page": 8,
 							"entries": [
-								"The Senses entry notes a monster's passive Wisdom (Perception) score, as well as any special senses the monster might have. Special senses are described below.",
+								"The Senses entry notes a monster's passive Wisdom ({@skill Perception}) score, as well as any special senses the monster might have. Special senses are described below.",
 								{
 									"type": "entries",
 									"name": "Blindsight",
 									"page": 8,
 									"entries": [
-										"A monster with blindsight can perceive its surroundings without relying on sight, within a specific radius. Creatures without eyes, such as grimlocks and gray oozes, typically have this special sense, as do creatures with echolocation or heightened senses, such as bats and true dragons.",
-										"If a monster is naturally blind, it has a parenthetical note to this effect, indicating that the radius of its blindsight defines the maximum range of its perception."
+										"A monster with {@sense blindsight} can perceive its surroundings without relying on sight, within a specific radius. Creatures without eyes, such as grimlocks and gray oozes, typically have this special sense, as do creatures with echolocation or heightened senses, such as bats and true dragons.",
+										"If a monster is naturally blind, it has a parenthetical note to this effect, indicating that the radius of its {@sense blindsight} defines the maximum range of its perception."
 									],
 									"id": "01d"
 								},
@@ -573,7 +573,7 @@
 									"name": "Darkvision",
 									"page": 9,
 									"entries": [
-										"A monster with darkvision can see in the dark within a specific radius. The monster can see in dim light within the radius as if it were bright light, and in darkness as if it were dim light. The monster can't discern color in darkness, only shades of gray. Many creatures that live underground have this special sense."
+										"A monster with {@sense darkvision} can see in the dark within a specific radius. The monster can see in dim light within the radius as if it were bright light, and in darkness as if it were dim light. The monster can't discern color in darkness, only shades of gray. Many creatures that live underground have this special sense."
 									],
 									"id": "01e"
 								},
@@ -582,7 +582,7 @@
 									"name": "Tremorsense",
 									"page": 9,
 									"entries": [
-										"A monster with tremorsense can detect and pinpoint the origin of vibrations within a specific radius, provided that the monster and the source of the vibrations are in contact with the same ground or substance. Tremorsense can't be used to detect flying or incorporeal creatures. Many burrowing creatures, such as ankhegs and umber hulks, have this special sense."
+										"A monster with {@sense tremorsense} can detect and pinpoint the origin of vibrations within a specific radius, provided that the monster and the source of the vibrations are in contact with the same ground or substance. Tremorsense can't be used to detect flying or incorporeal creatures. Many burrowing creatures, such as ankhegs and umber hulks, have this special sense."
 									],
 									"id": "01f"
 								},
@@ -591,7 +591,7 @@
 									"name": "Truesight",
 									"page": 9,
 									"entries": [
-										"A monster with truesight can, out to a specific range, see in normal and magical darkness, see invisible creatures and objects, automatically detect visual illusions and succeed on saving throws against them, and perceive the original form of a shapechanger or a creature that is transformed by magic. Furthermore, the monster can see into the Ethereal Plane within the same range."
+										"A monster with {@sense truesight} can, out to a specific range, see in normal and magical darkness, see {@condition invisible} creatures and objects, automatically detect visual illusions and succeed on saving throws against them, and perceive the original form of a shapechanger or a creature that is transformed by magic. Furthermore, the monster can see into the Ethereal Plane within the same range."
 									],
 									"id": "020"
 								}
@@ -610,7 +610,7 @@
 									"page": 9,
 									"entries": [
 										"Telepathy is a magical ability that allows a monster to communicate mentally with another creature within a specified range. The contacted creature doesn't need to share a language with the monster to communicate in this way with it, but it must be able to understand at least one language. A creature without telepathy can receive and respond to telepathic messages but can't initiate or terminate a telepathic conversation.",
-										"A telepathic monster doesn't need to see a contacted creature and can end the telepathic contact at any time. The contact is broken as soon as the two creatures are no longer within range of each other or if the telepathic monster contacts a different creature within range. A telepathic monster can initiate or terminate a telepathic conversation without using an action, but while the monster is incapacitated, it can't initiate telepathic contact, and any current contact is terminated.",
+										"A telepathic monster doesn't need to see a contacted creature and can end the telepathic contact at any time. The contact is broken as soon as the two creatures are no longer within range of each other or if the telepathic monster contacts a different creature within range. A telepathic monster can initiate or terminate a telepathic conversation without using an action, but while the monster is {@condition incapacitated}, it can't initiate telepathic contact, and any current contact is terminated.",
 										"A creature within the area of an antimagic field or in any other location where magic doesn't function can't send or receive telepathic messages."
 									],
 									"id": "022"
@@ -784,7 +784,7 @@
 									"page": 10,
 									"entries": [
 										"A monster with the innate ability to cast spells has the Innate Spellcasting special trait. Unless noted otherwise, an innate spell of 1st level or higher is always cast at its lowest possible level and can't be cast at a higher level. If a monster has a cantrip where its level matters and no level is given, use the monster's challenge rating.",
-										"An innate spell can have special rules or restrictions. For example, a drow mage can innately cast the levitate spell, but the spell has a \"self only\" restriction, which means that the spell affects only the drow mage.",
+										"An innate spell can have special rules or restrictions. For example, a drow mage can innately cast the {@spell levitate} spell, but the spell has a \"self only\" restriction, which means that the spell affects only the drow mage.",
 										"A monster's innate spells can't be swapped out with other spells. If a monster's innate spells don't require attack rolls, no attack bonus is given for them."
 									],
 									"id": "027"
@@ -796,7 +796,7 @@
 									"entries": [
 										"A monster with the Spellcasting class feature has a spellcaster level and spell slots, which it uses to cast its spells of 1st level and higher (as explained in the {@i Player's Handbook).} The spellcaster level is also used for any cantrips included in the feature.",
 										"The monster has a list of spells known or prepared from a particular class. The list might also include spells from a feature in that class, such as the Divine Domain feature of the cleric or the Druid Circle feature of the druid. The monster is considered a member of that class when attuning to or using a magic item that requires member-ship in the class or access to its spell list.",
-										"A monster can cast a spell from its list at a higher level if it has the spell slot to do so. For example, a drow mage with the 3rd-level lightning bolt spell can cast it as a 5th-level spell by using one of its 5th-level spell slots.",
+										"A monster can cast a spell from its list at a higher level if it has the spell slot to do so. For example, a drow mage with the 3rd-level {@spell lightning bolt} spell can cast it as a 5th-level spell by using one of its 5th-level spell slots.",
 										"You can change the spells that a monster knows or has prepared, replacing any spell on a monster's spell list with a different spell of the same level and from the same class list. If you do so, you might cause the monster to be a greater or lesser threat than suggested by its challenge rating."
 									],
 									"id": "028"
@@ -818,7 +818,7 @@
 							"name": "Actions",
 							"page": 10,
 							"entries": [
-								"When a monster takes its action, it can choose from the options in the Actions section of its stat block or use one of the actions available to all creatures, such as the Dash or Hide action, as described in the {@i Player's Handbook.}",
+								"When a monster takes its action, it can choose from the options in the Actions section of its stat block or use one of the actions available to all creatures, such as the {@action Dash} or {@action Hide} action, as described in the {@i Player's Handbook.}",
 								{
 									"type": "entries",
 									"name": "Melee and Ranged Attacks",
@@ -869,7 +869,7 @@
 									"name": "Ammunition",
 									"page": 11,
 									"entries": [
-										"A monster carries enough ammunition to make its ranged attacks. You can assume that a monster has 2d4 pieces of ammunition for a thrown weapon attack, and 2d10 pieces of ammunition for a projectile weapon such as a bow or crossbow."
+										"A monster carries enough ammunition to make its ranged attacks. You can assume that a monster has {@dice 2d4} pieces of ammunition for a thrown weapon attack, and {@dice 2d10} pieces of ammunition for a projectile weapon such as a bow or crossbow."
 									],
 									"id": "030"
 								}
@@ -908,7 +908,7 @@
 											"name": "Recharge X-Y",
 											"page": 11,
 											"entries": [
-												"The notation \"Recharge X-Y\" means a monster can use a special ability once and that the ability then has a random chance of recharging during each subsequent round of combat. At the start of each of the monster's turns, roll a d6. If the roll is one of the numbers in the recharge notation, the monster regains the use of the special ability. The ability also recharges when the monster finishes a short or long rest. For example, \"Recharge 5-6\" means a monster can use the special ability once. Then, at the start of the monster's turn, it regains the use of that ability if it rolls a 5 or 6 on a d6."
+												"The notation \"Recharge X-Y\" means a monster can use a special ability once and that the ability then has a random chance of recharging during each subsequent round of combat. At the start of each of the monster's turns, roll a {@dice d6}. If the roll is one of the numbers in the recharge notation, the monster regains the use of the special ability. The ability also recharges when the monster finishes a short or long rest. For example, \"Recharge 5-6\" means a monster can use the special ability once. Then, at the start of the monster's turn, it regains the use of that ability if it rolls a 5 or 6 on a {@dice d6}."
 											],
 											"id": "035"
 										},
@@ -933,7 +933,7 @@
 							"page": 11,
 							"entries": [
 								"Many monsters have special attacks that allow them to quickly grapple prey. When a monster hits with such an attack, it doesn't need to make an additional ability check to determine whether the grapple succeeds, unless the attack says otherwise.",
-								"A creature grappled by the monster can use its action to try to escape. To do so, it must succeed on a Strength (Athletics) or Dexterity (Acrobatics) check against the escape DC in the monster's stat block. If no escape DC is given, assume the DC is 10 + the monster's Strength (Athletics) modifier."
+								"A creature {@condition grappled} by the monster can use its action to try to escape. To do so, it must succeed on a Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check against the escape DC in the monster's stat block. If no escape DC is given, assume the DC is 10 + the monster's Strength ({@skill Athletics}) modifier."
 							],
 							"id": "037"
 						},
@@ -963,7 +963,7 @@
 							"name": "Legendary Actions",
 							"page": 11,
 							"entries": [
-								"A legendary creature can take a certain number of special actions-called legendary actions-outside its turn. Only one legendary action option can be used at a time and only at the end of another creature's turn. A legendary creature regains spent legendary actions at the start of its turn. It can forgo using them, and it can't use them while incapacitated or otherwise unable to take actions. If surprised, it can't use them until after its first turn in the combat."
+								"A legendary creature can take a certain number of special actions-called legendary actions-outside its turn. Only one legendary action option can be used at a time and only at the end of another creature's turn. A legendary creature regains spent legendary actions at the start of its turn. It can forgo using them, and it can't use them while {@condition incapacitated} or otherwise unable to take actions. If surprised, it can't use them until after its first turn in the combat."
 							],
 							"id": "03a"
 						},
@@ -978,7 +978,7 @@
 									"name": "Lair Actions",
 									"page": 11,
 									"entries": [
-										"If a legendary creature has lair actions, it can use them to harness the ambient magic in its lair. On initiative count 20 (losing all initiative ties), it can use one of its lair action options. It can't do so while incapacitated or otherwise unable to take actions. If surprised, it can't use one until after its first turn in the combat."
+										"If a legendary creature has lair actions, it can use them to harness the ambient magic in its lair. On initiative count 20 (losing all initiative ties), it can use one of its lair action options. It can't do so while {@condition incapacitated} or otherwise unable to take actions. If surprised, it can't use one until after its first turn in the combat."
 									],
 									"id": "03c"
 								},

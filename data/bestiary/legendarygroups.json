@@ -51,6 +51,31 @@
 			]
 		},
 		{
+			"name": "Arasta",
+			"source": "MOT",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), Arasta can take a lair action to cause one of the following effects. She can't use the same effect two rounds in a row.",
+				{
+					"type": "list",
+					"items": [
+						"Arasta learns about any creature touching her webs. Each creature {@condition restrained} by a web or Arasta's Web of Hair must make a {@dc 21} Intelligence saving throw. On a failed save, Arasta gains knowledge of a creature's name, race, where they consider home, and what brought them to her web.",
+						"Arasta casts the {@spell giant insect} spell (spiders only). It lasts until she uses this lair action again or until she dies."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The region containing Arasta's lair is warped by her presence, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"Spiders and insects within 1 mile of Arasta's lair serve as her eyes and ears. Birds and other flying creatures are absent from the skies and occasionally found trapped in webs.",
+						"Within 1 mile of Arasta's lair, webs fill all 10-foot cubes of open space, so long as the webs can be anchored between two solid masses (such as walls or trees). The webs are flammable. Any webs exposed to fire burn away in 1 round. Any destroyed webs are magically repaired at the next dawn."
+					]
+				},
+				"If Arasta dies, the spiders and insects lose their supernatural link to her. The webs remain, but they dissolve within 1d10 days."
+			]
+		},
+		{
 			"name": "Balhannoth",
 			"source": "MTF",
 			"lairActions": [
@@ -812,6 +837,31 @@
 						"A magical scrying sensor appears, taking the form of a ghostly, 1-foot-diameter humanoid eye surrounded by motes of light. The sensor is stationary, though Halaster can reorient the eye to face in any direction. Halaster can see through the eye as though he was in its space. The eye can't be harmed or dispelled, but it winks out within an antimagic field. A scrying eye lasts until Halaster ends the effect (no action required).",
 						"A minor illusory effect is triggered, as though Halaster had cast {@spell minor illusion} in an area. Common illusions include the echo of rattling chains, the distant sound of explosive spells being cast, a dusty cloak or a rusty helm floating as though worn by an invisible figure, and illusory footprints appearing on a dusty floor.",
 						"Silent apparitions of dead adventurers drift through halls and rooms as though they are lost. An apparition can't be harmed, and it doesn't acknowledge creatures or objects in any way. It can't be dispelled but is suppressed within an antimagic field."
+					]
+				}
+			]
+		},
+		{
+			"name": "Hythonia",
+			"source": "MOT",
+			"lairActions": [
+				"On initiative count 20 (losing initiative ties), Hythonia can take a lair action to cause one of the following effects. She can't use the same effect two rounds in a row:",
+				{
+					"type": "list",
+					"items": [
+						"Hythonia briefly animates creatures that have been {@condition petrified} by her gaze. Each statue attacks one creature within 5 feet of it, with a +11 bonus to hit and dealing 10 ({@damage 3d6}) bludgeoning damage on a hit. If a Medium or smaller creature takes this damage, it is also {@condition grappled} (escape {@dc 15}).",
+						"Hythonia causes spectral snakes to erupt from a point she can see within 150 feet of her. Each creature within 20 feet of that point must succeed on a {@dc 19} Constitution saving throw or take 5 ({@damage 2d4}) piercing damage and become {@condition poisoned} until the end of its next turn. While {@condition poisoned} in this way, the creature has disadvantage on Intelligence checks and Intelligence saving throws, and it behaves as if under the effect of the confusion spell."
+					]
+				}
+			],
+			"regionalEffects": [
+				"The region containing Hythonia's lair is warped by her presence, which creates one or more of the following effects:",
+				{
+					"type": "list",
+					"items": [
+						"A large population of snakes dwells in the region.",
+						"Trees within 1 mile of the lair are petrified wood. Plants that stay within 500 feet of the lair for 1 day turn to stone.",
+						"Small bodies of water within 1 mile of the lair become poisonous. A creature that drinks the water must succeed on a {@dc 19} Constitution saving throw or become {@condition poisoned} for 8 hours. An affected creature can repeat the saving throw at the end of each hour."
 					]
 				}
 			]

@@ -864,10 +864,10 @@ class IndexableFileBooks extends IndexableFile {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_BOOK,
-			file: "adventures.json",
+			file: "books.json",
 			source: "id",
-			listProp: "adventure",
-			baseUrl: "adventure.html"
+			listProp: "book",
+			baseUrl: "book.html"
 		});
 	}
 }

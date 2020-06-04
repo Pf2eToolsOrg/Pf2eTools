@@ -55,6 +55,7 @@ class NavBar {
 		addLi(ulBooks, "book.html", "Eberron: Rising from the Last War", {aHash: "ERLW"});
 		addLi(ulBooks, "book.html", "Dungeons & Dragons vs. Rick and Morty: Basic Rules", {aHash: "RMR"});
 		addLi(ulBooks, "book.html", "Explorer's Guide to Wildemount", {aHash: "EGW"});
+		addLi(ulBooks, "book.html", "Mythic Odysseys of Theros", {aHash: "MOT"});
 		addDivider(ulBooks);
 		addLi(ulBooks, "book.html", "Adventurers League", {aHash: "AL"});
 		addLi(ulBooks, "book.html", "Sage Advice Compendium", {aHash: "SAC"});

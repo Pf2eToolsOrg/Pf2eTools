@@ -437,6 +437,7 @@ class RendererMarkdown {
 		const actionsPart = mon.action ? `\n>### Actions\n${RendererMarkdown.monster._getRenderedSection(mon.action, 1, meta)}` : "";
 		const reactionsPart = mon.reaction ? `\n>### Reactions\n${RendererMarkdown.monster._getRenderedSection(mon.reaction, 1, meta)}` : "";
 		const legendaryActionsPart = mon.legendary ? `\n>### Legendary Actions\n>${Renderer.monster.getLegendaryActionIntro(mon, RendererMarkdown.get())}\n>\n${RendererMarkdown.monster._getRenderedLegendarySection(mon.legendary, 1, meta)}` : "";
+		const mythicActionsPart = mon.mythic ? `\n>### Mythic Actions\n>${Renderer.monster.getMythicActionIntro(mon, RendererMarkdown.get())}\n>\n${RendererMarkdown.monster._getRenderedLegendarySection(mon.mythic, 1, meta)}` : "";
 
 		const footerPart = mon.footer ? `\n${RendererMarkdown.monster._getRenderedSection(mon.footer, 0, meta)}` : "";
 
@@ -457,7 +458,7 @@ class RendererMarkdown {
 >- **Challenge** ${mon.cr ? Parser.monCrToFull(mon.cr) : "\u2014"}
 >___`;
 
-		let breakablePart = `${traitsPart}${actionsPart}${reactionsPart}${legendaryActionsPart}${footerPart}`;
+		let breakablePart = `${traitsPart}${actionsPart}${reactionsPart}${legendaryActionsPart}${mythicActionsPart}${footerPart}`;
 
 		if (RendererMarkdown._isAddColumnBreaks) {
 			let charAllowanceFirstCol = 2200 - unbreakablePart.length;
@@ -1739,6 +1740,14 @@ class MarkdownConverter {
 				tbl.colStyles = ["col-6 text-center", "col-6 text-center"]
 			}
 		})();
+
+		// Convert "--" cells to long-dashes
+		tbl.rows = tbl.rows.map(r => {
+			return r.map(cell => {
+				if (cell === "--") return "\u2014";
+				return cell;
+			});
+		})
 	}
 
 	static _doCleanTable (tbl) {

@@ -83,7 +83,8 @@ const FILE_EXTENSION_WHITELIST = [
 
 const FILE_PREFIX_BLACKLIST = [
 	"bookref-",
-	"roll20-module-",
+	"roll20-",
+	"foundry-",
 	"gendata-"
 ];
 

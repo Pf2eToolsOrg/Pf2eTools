@@ -36,7 +36,7 @@ function Renderer () {
 	this._extraSourceClasses = null;
 	this._depthTracker = null;
 	this._lastDepthTrackerSource = null;
-	this._isIternalLinksDisabled = false;
+	this._isInternalLinksDisabled = false;
 
 	/**
 	 * Enables/disables lazy-load image rendering.
@@ -132,8 +132,12 @@ function Renderer () {
 
 	/** Used by Foundry config. */
 	this.setInternalLinksDisabled = function (bool) {
-		this._isIternalLinksDisabled = bool;
+		this._isInternalLinksDisabled = bool;
 		return this;
+	};
+
+	this.isInternalLinksDisabled = function () {
+		return !!this._isInternalLinksDisabled;
 	};
 
 	/**
@@ -424,21 +428,8 @@ function Renderer () {
 		return out.join(" ");
 	};
 
-	this._renderImage_getUrl = function (entry) { return this._renderImage_getUrlByProp(entry, "href"); };
-	this._renderImage_getUrlThumbnail = function (entry) { return this._renderImage_getUrlByProp(entry, "hrefThumbnail"); };
-
-	this._renderImage_getUrlByProp = function (entry, prop) {
-		if (!entry[prop]) return "";
-
-		let href;
-		if (entry[prop].type === "internal") {
-			const imgPart = `img/${entry[prop].path}`;
-			href = this.baseUrl !== "" ? `${this.baseUrl}${imgPart}` : UrlUtil.link(imgPart);
-		} else if (entry[prop].type === "external") {
-			href = entry[prop].url;
-		}
-		return href;
-	};
+	this._renderImage_getUrl = function (entry) { return Renderer.utils.getMediaUrl(entry, "href", "img"); };
+	this._renderImage_getUrlThumbnail = function (entry) { return Renderer.utils.getMediaUrl(entry, "hrefThumbnail", "img"); };
 
 	this._renderList_getListCssClasses = function (entry, textStack, meta, options) {
 		const out = [`rd__list`];
@@ -1167,15 +1158,20 @@ function Renderer () {
 			case "@h":
 				textStack[0] += `<i>Hit:</i> `;
 				break;
-			case "@color":
-			case "@highlight": {
+			case "@color": {
 				const [toDisplay, color] = Renderer.splitTagByPipe(text);
 				const scrubbedColor = BrewUtil.getValidColor(color);
 
-				if (tag === "@color") textStack[0] += `<span style="color: #${scrubbedColor}">`;
-				else if (tag === "@highlight") textStack[0] += `<span style="background-color: #${scrubbedColor}">`;
-				else throw new Error(`Unhandled tag!`);
+				textStack[0] += `<span style="color: #${scrubbedColor}">`;
+				textStack[0] += toDisplay;
+				textStack[0] += `</span>`;
+				break;
+			}
+			case "@highlight": {
+				const [toDisplay, color] = Renderer.splitTagByPipe(text);
+				const scrubbedColor = color ? BrewUtil.getValidColor(color) : null;
 
+				textStack[0] += scrubbedColor ? `<span style="background-color: #${scrubbedColor}">` : `<span class="rd__highlight">`;
 				textStack[0] += toDisplay;
 				textStack[0] += `</span>`;
 				break;
@@ -1811,7 +1807,7 @@ function Renderer () {
 		const metasHooks = this._getHooks("link", "ele").map(hook => hook(entry)).filter(Boolean);
 		const isDisableEvents = metasHooks.some(it => it.isDisableEvents);
 
-		if (this._isIternalLinksDisabled && entry.href.type === "internal") {
+		if (this._isInternalLinksDisabled && entry.href.type === "internal") {
 			textStack[0] += `<span class="bold" ${isDisableEvents ? "" : this._renderLink_getHoverString(entry)} ${metasHooks.map(it => it.string).join(" ")}>${this.render(entry.text)}</span>`
 		} else {
 			textStack[0] += `<a href="${href}" ${entry.href.type === "internal" ? "" : `target="_blank" rel="noopener noreferrer"`} ${isDisableEvents ? "" : this._renderLink_getHoverString(entry)} ${metasHooks.map(it => it.string)}>${this.render(entry.text)}</a>`;
@@ -2337,24 +2333,26 @@ Renderer.utils = {
 		opts = opts || {};
 
 		let dataPart = "";
+		let pageLinkPart;
 		if (opts.page) {
 			const hash = UrlUtil.URL_TO_HASH_BUILDER[opts.page](it);
 			dataPart = `data-page="${opts.page}" data-source="${it.source.escapeQuotes()}" data-hash="${hash.escapeQuotes()}" ${opts.extensionData != null ? `data-extension="${`${opts.extensionData}`.escapeQuotes()}"` : ""}`;
+			pageLinkPart = SourceUtil.getAdventureBookSourceHref(it.source, it.page);
 		}
 
 		// Add data-page/source/hash attributes for external script use (e.g. Rivet)
 		const $ele = $$`<tr>
 			<th class="rnd-name name ${opts.extraThClasses ? opts.extraThClasses.join(" ") : ""}" colspan="6" ${dataPart}>
-				<div class="name-inner pr-2">
+				<div class="name-inner">
 					<div class="flex-v-center">
 						<span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>
 						${opts.controlRhs || ""}
 						${ExtensionUtil.ACTIVE && opts.page ? `<button title="Send to Foundry (SHIFT for Temporary Import)" class="btn btn-xs btn-default btn-stats-name ml-2" onclick="ExtensionUtil.pDoSendStats(event, this)"><span class="glyphicon glyphicon-send"></span></button>` : ""}
 					</div>
-					<span class="stats-source flex-v-baseline">
+					<div class="stats-source flex-v-baseline">
 						<span class="help--subtle ${it.source ? `${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}` : ""}" ${BrewUtil.sourceJsonToStyle(it.source)}">${it.source ? Parser.sourceJsonToAbv(it.source) : ""}</span>
-						${it.page > 0 ? ` <span class="rd__stats-name-page ml-1" title="Page ${it.page}">p${it.page}</span>` : ""}
-					</span>
+						${it.page > 0 ? ` <${pageLinkPart ? `a href="${pageLinkPart}"` : "span"} class="rd__stats-name-page ml-1" title="Page ${it.page}">p${it.page}</${pageLinkPart ? "a" : "span"}>` : ""}
+					</div>
 				</div>
 			</th>
 		</tr>`;
@@ -2552,7 +2550,7 @@ Renderer.utils = {
 
 		$content.append(Renderer.utils.getBorderTr());
 		$content.append(Renderer.utils.getNameTr(entity, {controlRhs: $headerControls, asJquery: true}));
-		const $td = $(`<td colspan="6" class="text"/>`);
+		const $td = $(`<td colspan="6" class="text"></td>`);
 		$$`<tr class="text">${$td}</tr>`.appendTo($content);
 		$content.append(Renderer.utils.getBorderTr());
 
@@ -2750,6 +2748,20 @@ Renderer.utils = {
 
 		if (!listOfChoices.length) return isListMode ? "\u2014" : "";
 		return isListMode ? listOfChoices.join("/") : `Prerequisites: ${listOfChoices.joinConjunct("; ", " or ")}`;
+	},
+
+	getMediaUrl (entry, prop, mediaDir) {
+		if (!entry[prop]) return "";
+
+		let href = "";
+		if (entry[prop].type === "internal") {
+			const baseUrl = Renderer.get().baseUrl;
+			const mediaPart = `${mediaDir}/${entry[prop].path}`;
+			href = baseUrl !== "" ? `${baseUrl}${mediaPart}` : UrlUtil.link(mediaPart);
+		} else if (entry[prop].type === "external") {
+			href = entry[prop].url;
+		}
+		return href;
 	}
 };
 
@@ -2875,6 +2887,7 @@ Renderer.spell = {
 		if (spell._isInitClasses) return;
 		spell._isInitClasses = true;
 
+		// TODO make a `_tempClasses` object that mirrors `classes` and add this temp data to it instead, to avoid polluting the main data
 		// add eldritch knight and arcane trickster
 		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === Renderer.spell.STR_WIZARD && c.source === SRC_PHB).length) {
 			if (!spell.classes.fromSubclass) spell.classes.fromSubclass = [];
@@ -3274,6 +3287,8 @@ Renderer.race = {
 
 					// merge names, abilities, entries, tags
 					if (s.name) {
+						cpy._subraceName = s.name;
+
 						if (s.alias) {
 							cpy.alias = s.alias.map(it => Renderer.race._getSubraceName(cpy.name, it));
 							delete s.alias;
@@ -3687,7 +3702,7 @@ Renderer.cultboon = {
 };
 
 Renderer.monster = {
-	getLegendaryActionIntro: (mon, renderer = Renderer.get()) => {
+	getLegendaryActionIntro (mon, renderer = Renderer.get()) {
 		function getCleanName () {
 			if (mon.shortName === true) return mon.name;
 			else if (mon.shortName) return mon.shortName;
@@ -3704,6 +3719,11 @@ Renderer.monster = {
 			const legendaryName = getCleanName();
 			return `${mon.isNamedCreature ? "" : "The "}${legendaryName} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${mon.isNamedCreature ? "" : "The "}${legendaryName} regains spent legendary actions at the start of its turn.`
 		}
+	},
+
+	getMythicActionIntro (mon, renderer = Renderer.get()) {
+		if (mon.mythicHeader) return renderer.render({entries: mon.mythicHeader});
+		return "";
 	},
 
 	getSave (renderer, attr, mod) {
@@ -3797,8 +3817,8 @@ Renderer.monster = {
 			$btnScaleCr.off(evtName);
 		}
 
-		const $wrp = $(`<div class="mon__cr_slider_wrp ${isCompact ? "mon__cr_slider_wrp--compact" : ""}"/>`);
-		const $sld = $(`<div class="mon__cr_slider"/>`).appendTo($wrp);
+		const $wrp = $(`<div class="mon__cr_slider_wrp ${isCompact ? "mon__cr_slider_wrp--compact" : ""}"></div>`);
+		const $sld = $(`<div class="mon__cr_slider"></div>`).appendTo($wrp);
 
 		const curr = Parser.CRS.indexOf(initialCr);
 		if (curr === -1) throw new Error(`Initial CR ${initialCr} was not valid!`);
@@ -3839,6 +3859,7 @@ Renderer.monster = {
 		return `<tr class="mon__stat-header-underline"><td colspan="6"><span class="mon__sect-header-inner">${title}${mon[noteKey] ? ` (<span class="ve-small">${mon[noteKey]}</span>)` : ""}</span></td></tr>
 		<tr class="text compact"><td colspan="6">
 		${key === "legendary" && mon.legendary ? `<p>${Renderer.monster.getLegendaryActionIntro(mon)}</p>` : ""}
+		${key === "mythic" && mon.mythic ? `<p>${Renderer.monster.getMythicActionIntro(mon)}</p>` : ""}
 		${toRender.map(it => it.rendered || renderer.render(it, depth)).join("")}
 		</td></tr>`;
 	},
@@ -3934,6 +3955,7 @@ Renderer.monster = {
 			${Renderer.monster.getCompactRenderedStringSection(mon, renderer, "Actions", "action", 2)}
 			${Renderer.monster.getCompactRenderedStringSection(mon, renderer, "Reactions", "reaction", 2)}
 			${Renderer.monster.getCompactRenderedStringSection(mon, renderer, "Legendary Actions", "legendary", 2)}
+			${Renderer.monster.getCompactRenderedStringSection(mon, renderer, "Mythic Actions", "mythic", 2)}
 			${legGroup && legGroup.lairActions ? Renderer.monster.getCompactRenderedStringSection(legGroup, renderer, "Lair Actions", "lairActions", 1) : ""}
 			${legGroup && legGroup.regionalEffects ? Renderer.monster.getCompactRenderedStringSection(legGroup, renderer, "Regional Effects", "regionalEffects", 1) : ""}
 			${mon.variant || (mon.dragonCastingColor && !mon.spellcasting) ? `
@@ -4024,6 +4046,7 @@ Renderer.monster = {
 		const thisGroup = DataUtil.monster.getMetaGroup(mon);
 		const handleGroupProp = (prop, name) => {
 			if (thisGroup && thisGroup[prop]) {
+				cpy.entries = cpy.entries || [];
 				cpy.entries.push({
 					type: "entries",
 					entries: [
@@ -4240,6 +4263,10 @@ Renderer.item = {
 			typeListHtml.push("staff");
 			typeListText.push("staff");
 		}
+		if (item.ammo) {
+			typeListHtml.push("ammunition");
+			typeListText.push("ammunition");
+		}
 		if (item.firearm) {
 			typeListHtml.push("firearm");
 			typeListText.push("firearm");
@@ -4345,7 +4372,7 @@ Renderer.item = {
 		${Renderer.utils.getNameTr(item, {page: UrlUtil.PG_ITEMS})}
 		<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item).uppercaseFirst()}</td></tr>
 		<tr>
-			<td colspan="2">${[Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
+			<td colspan="2">${[Parser.itemValueToFullMultiCurrency(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
 			<td class="text-right" colspan="4">${damage} ${damageType} ${propertiesTxt}</td>
 		</tr>
 		${hasEntries ? `${Renderer.utils.getDividerTr()}<tr class="text"><td colspan="6" class="text">${Renderer.item.getRenderedEntries(item, true)}</td></tr>` : ""}`;
@@ -4524,6 +4551,10 @@ Renderer.item = {
 				specificVariant._fullEntries.unshift(`{@note The base item can be found in ${Parser.sourceJsonToFull(baseItem.source)}.}`);
 			}
 
+			specificVariant._baseName = baseItem.name;
+			specificVariant._baseSrd = baseItem.srd;
+			if (baseItem.source !== inherits.source) specificVariant._baseSource = baseItem.source;
+
 			// Magic items do not inherit the value of the non-magical item
 			delete specificVariant.value;
 
@@ -4540,6 +4571,20 @@ Renderer.item = {
 
 						const appliedPropertyEntries = Renderer.applyAllProperties(inherits.entries, Renderer.item._getInjectableProps(baseItem, inherits));
 						appliedPropertyEntries.forEach((ent, i) => specificVariant._fullEntries.splice(i, 0, ent));
+						break;
+					}
+					case "valueExpression": {
+						const exp = inherits.valueExpression.replace(/\[\[([^\]]+)]]/g, (...m) => {
+							const propPath = m[1].split(".");
+							return propPath[0] === "item"
+								? MiscUtil.get(specificVariant, ...propPath.slice(1))
+								: propPath[0] === "baseItem"
+									? MiscUtil.get(baseItem, ...propPath.slice(1))
+									: MiscUtil.get(specificVariant, ...propPath);
+						});
+						const result = Renderer.dice.parseRandomise2(exp);
+						if (result != null) specificVariant.value = result;
+
 						break;
 					}
 					default: specificVariant[inheritedProperty] = inherits[inheritedProperty];
@@ -5505,7 +5550,7 @@ Renderer.hover = {
 			{
 				title: toRender ? toRender.name : "",
 				isPermanent: meta.isPermanent,
-				pageUrl: `${page}#${hash}`,
+				pageUrl: `${Renderer.get().baseUrl}${page}#${hash}`,
 				cbClose: () => meta.isHovered = meta.isPermanent = meta.isLoading = meta.isFluff = false
 			},
 			sourceData
@@ -5745,13 +5790,13 @@ Renderer.hover = {
 		const initialZIndex = Renderer.hover._getNextZIndex();
 
 		const $body = $(position.window.document.body);
-		const $hov = $(`<div class="hwin"/>`)
+		const $hov = $(`<div class="hwin"></div>`)
 			.css({
 				"right": -initialWidth,
 				"width": initialWidth,
 				"zIndex": initialZIndex
 			});
-		const $wrpContent = $(`<div class="hwin__wrp-table"/>`);
+		const $wrpContent = $(`<div class="hwin__wrp-table"></div>`);
 		if (opts.height != null) $wrpContent.css("height", opts.height);
 		const $hovTitle = $(`<span class="window-title">${opts.title || ""}</span>`);
 
@@ -5797,31 +5842,31 @@ Renderer.hover = {
 			}
 		}
 
-		const $brdrTopRightResize = $(`<div class="hoverborder__resize-ne"/>`)
+		const $brdrTopRightResize = $(`<div class="hoverborder__resize-ne"></div>`)
 			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 1));
 
-		const $brdrRightResize = $(`<div class="hoverborder__resize-e"/>`)
+		const $brdrRightResize = $(`<div class="hoverborder__resize-e"></div>`)
 			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 2));
 
-		const $brdrBottomRightResize = $(`<div class="hoverborder__resize-se"/>`)
+		const $brdrBottomRightResize = $(`<div class="hoverborder__resize-se"></div>`)
 			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 3));
 
-		const $brdrBtm = $(`<div class="hoverborder hoverborder--btm ${opts.isBookContent ? "hoverborder-book" : ""}"><div class="hoverborder__resize-s"/></div>`)
+		const $brdrBtm = $(`<div class="hoverborder hoverborder--btm ${opts.isBookContent ? "hoverborder-book" : ""}"><div class="hoverborder__resize-s"></div></div>`)
 			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 4));
 
-		const $brdrBtmLeftResize = $(`<div class="hoverborder__resize-sw"/>`)
+		const $brdrBtmLeftResize = $(`<div class="hoverborder__resize-sw"></div>`)
 			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 5));
 
-		const $brdrLeftResize = $(`<div class="hoverborder__resize-w"/>`)
+		const $brdrLeftResize = $(`<div class="hoverborder__resize-w"></div>`)
 			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 6));
 
-		const $brdrTopLeftResize = $(`<div class="hoverborder__resize-nw"/>`)
+		const $brdrTopLeftResize = $(`<div class="hoverborder__resize-nw"></div>`)
 			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 7));
 
-		const $brdrTopResize = $(`<div class="hoverborder__resize-n"/>`)
+		const $brdrTopResize = $(`<div class="hoverborder__resize-n"></div>`)
 			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 8));
 
-		const $brdrTop = $(`<div class="hoverborder hoverborder--top ${opts.isBookContent ? "hoverborder-book" : ""}" ${opts.isPermanent ? `data-perm="true"` : ""}/>`)
+		const $brdrTop = $(`<div class="hoverborder hoverborder--top ${opts.isBookContent ? "hoverborder-book" : ""}" ${opts.isPermanent ? `data-perm="true"` : ""}></div>`)
 			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 9))
 			.on("contextmenu", (evt) => ContextUtil.handleOpenContextMenu(evt, $brdrTop[0], "hoverBorder", null, out));
 
@@ -5960,9 +6005,9 @@ Renderer.hover = {
 		$brdrTop.attr("data-display-title", false);
 		$brdrTop.on("dblclick", () => doToggleMinimizedMaximized());
 		$brdrTop.append($hovTitle);
-		const $brdTopRhs = $(`<div class="flex" style="margin-left: auto;"/>`).appendTo($brdrTop);
+		const $brdTopRhs = $(`<div class="flex" style="margin-left: auto;"></div>`).appendTo($brdrTop);
 
-		if (opts.pageUrl && !position.window._IS_POPOUT) {
+		if (opts.pageUrl && !position.window._IS_POPOUT && !Renderer.get().isInternalLinksDisabled()) {
 			const $btnGotoPage = $(`<a class="top-border-icon glyphicon glyphicon-modal-window" style="margin-right: 2px;" title="Go to Page" href="${opts.pageUrl}"></a>`)
 				.appendTo($brdTopRhs);
 		}
@@ -5982,14 +6027,11 @@ Renderer.hover = {
 					win._IS_POPOUT = true;
 					win.document.write(`
 						<!DOCTYPE html>
-						<html lang="en" class="${styleSwitcher && styleSwitcher.getActiveDayNight() === StyleSwitcher.STYLE_NIGHT ? StyleSwitcher.NIGHT_CLASS : ""}"><head>
+						<html lang="en" class="${typeof styleSwitcher !== "undefined" && styleSwitcher.getActiveDayNight() === StyleSwitcher.STYLE_NIGHT ? StyleSwitcher.NIGHT_CLASS : ""}"><head>
 							<meta name="viewport" content="width=device-width, initial-scale=1">
 							<title>${opts.title}</title>
 							<link rel="manifest" href="manifest.webmanifest">
-							<link rel="stylesheet" href="css/bootstrap.css">
-							<link rel="stylesheet" href="css/jquery-ui.css">
-							<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
-							<link rel="stylesheet" href="css/style.css">
+							${$(`link[rel="stylesheet"][href]`).map((i, e) => e.outerHTML).get().join("\n")}
 							<link rel="icon" href="favicon.png">
 
 							<style>
@@ -5997,7 +6039,7 @@ Renderer.hover = {
 								body { overflow-y: scroll; }
 								.hwin--popout { max-width: 100%; max-height: 100%; box-shadow: initial; width: 100%; overflow-y: auto; }
 							</style>
-						</head><body>
+						</head><body class="rd__body-popout">
 						<div class="hwin hoverbox--popout hwin--popout"></div>
 						<script type="text/javascript" src="js/parser.js"></script>
 						<script type="text/javascript" src="js/utils.js"></script>
@@ -6258,7 +6300,7 @@ Renderer.hover = {
 							(cls.subclasses || []).forEach(sc => {
 								const scHash = `${clsHash}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: sc})}`;
 								const scEntries = {name: `${sc.name} (${cls.name})`, type: "section", entries: MiscUtil.copy((sc.subclassFeatures || []).flat())};
-								Renderer.hover._addToCache(UrlUtil.PG_CLASSES, sc.source || cls.source || SRC_PHB, scHash, scEntries);
+								Renderer.hover._addToCache(UrlUtil.PG_CLASSES, cls.source || SRC_PHB, scHash, scEntries);
 							});
 
 							// add all class/subclass features
@@ -6841,7 +6883,7 @@ Renderer.dice = {
 
 	/** Initialise the roll box UI. */
 	async _pInit () {
-		const $wrpRoll = $(`<div class="rollbox"/>`);
+		const $wrpRoll = $(`<div class="rollbox"></div>`);
 		const $minRoll = $(`<div class="rollbox-min"><span class="glyphicon glyphicon-chevron-up"></span></div>`).on("click", () => {
 			Renderer.dice._showBox();
 			Renderer.dice._$iptRoll.focus();
@@ -7501,7 +7543,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 	_checkHandleName (name) {
 		if (!Renderer.dice._$lastRolledBy || Renderer.dice._$lastRolledBy.data("name") !== name) {
 			Renderer.dice._$outRoll.prepend(`<div class="ve-muted out-roll-id">${name}</div>`);
-			Renderer.dice._$lastRolledBy = $(`<div class="out-roll-wrp"/>`).data("name", name);
+			Renderer.dice._$lastRolledBy = $(`<div class="out-roll-wrp"></div>`).data("name", name);
 			Renderer.dice._$outRoll.prepend(Renderer.dice._$lastRolledBy);
 		}
 	}

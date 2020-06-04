@@ -992,9 +992,6 @@
 				"MW",
 				"RNG",
 				"RW"
-			],
-			"conditionInflict": [
-				"incapacitated"
 			]
 		},
 		{
@@ -4484,7 +4481,10 @@
 					]
 				}
 			},
-			"hasToken": true
+			"hasToken": true,
+			"conditionInflict": [
+				"poisoned"
+			]
 		},
 		{
 			"name": "Reduced-Threat Owlbear",
@@ -4995,6 +4995,11 @@
 			"isNpc": true,
 			"source": "TftYP",
 			"page": 243,
+			"otherSources": [
+				{
+					"source": "MOT"
+				}
+			],
 			"size": "M",
 			"type": "fey",
 			"alignment": [

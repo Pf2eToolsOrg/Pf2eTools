@@ -4,7 +4,7 @@
 
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.0.14",
+	"version": "1.0.15",
 
 	"definitions" : {
 		"metaBlock": {
@@ -1103,6 +1103,53 @@
 					"type": "string"
 				}
 			]
+		},
+
+		"_additionalSpellObject": {
+			"patternProperties": {
+				"^\\d+$": {
+					"description": "Spells keyed by character/class level.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"uniqueItems": true
+				},
+				"^s\\d+$": {
+					"description": "Spells keyed by spell level, access to which is gated behind the character advancing to a point where they could cast those spells with e.g. a Spellcasting class feature (Mark spells from ERLW races)",
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"uniqueItems": true
+				}
+			}
+		},
+
+		"additionalSpellsArray": {
+			"description": "A collection of additional spells which this subclass grants.",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"ability": {
+						"description": "Optionally specify the ability score used for e.g. racial spellcasting.",
+						"type": "string",
+						"enum": ["str", "dex", "con", "int", "wis", "cha"]
+					},
+					"innate": {
+						"$ref": "#/definitions/_additionalSpellObject"
+					},
+					"prepared": {
+						"$ref": "#/definitions/_additionalSpellObject"
+					},
+					"expanded": {
+						"$ref": "#/definitions/_additionalSpellObject"
+					}
+				},
+				"additionalProperties": false,
+				"minProperties": 1
+			}
 		}
 	}
 }

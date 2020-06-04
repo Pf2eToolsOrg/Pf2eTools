@@ -413,6 +413,7 @@
 		handleGenericEntries("action");
 		handleGenericEntries("reaction");
 		handleGenericEntries("legendary");
+		handleGenericEntries("mythic");
 		handleGenericEntries("variant");
 	},
 
@@ -751,7 +752,8 @@
 							return mon._shieldRequired = checkShields("trait")
 								|| checkShields("action")
 								|| checkShields("reaction")
-								|| checkShields("legendary");
+								|| checkShields("legendary")
+								|| checkShields("mythic");
 						})();
 						mon._shieldDropped = false;
 
@@ -1383,6 +1385,7 @@
 		handleGenericEntries("action");
 		handleGenericEntries("reaction");
 		handleGenericEntries("legendary");
+		handleGenericEntries("mythic");
 		handleGenericEntries("variant");
 
 		const checkSetTempMod = (abil) => {
@@ -1666,6 +1669,7 @@
 			if (!handleDpr("action")) continue;
 			if (!handleDpr("reaction")) continue;
 			if (!handleDpr("legendary")) continue;
+			if (!handleDpr("mythic")) continue;
 			if (!handleDpr("variant")) continue;
 			dprAdjustmentComplete = true;
 		}

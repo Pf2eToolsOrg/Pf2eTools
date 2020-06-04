@@ -28,8 +28,7 @@ class RenderRaces {
 		return `<button class="btn btn-xs btn-default btn-name-pronounce ml-2">
 			<span class="glyphicon glyphicon-volume-up name-pronounce-icon"></span>
 			<audio class="name-pronounce">
-			   <source src="${race.soundClip}" type="audio/mpeg">
-			   <source src="${Renderer.get().baseUrl}audio/races/${/^(.*?)(\(.*?\))?$/.exec(race._baseName || race.name)[1].trim().toLowerCase()}.mp3" type="audio/mpeg">
+			   <source src="${Renderer.utils.getMediaUrl(race, "soundClip", "audio")}" type="audio/mpeg">
 			</audio>
 		</button>`;
 	}

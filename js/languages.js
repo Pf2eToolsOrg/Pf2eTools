@@ -2,21 +2,11 @@
 
 class LanguagesPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-		const typeFilter = new Filter({header: "Type", items: ["standard", "exotic", "secret"], itemSortFn: null, displayFn: StrUtil.uppercaseFirst});
-		const scriptFilter = new Filter({header: "Script", displayFn: StrUtil.uppercaseFirst});
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["Has Fonts", "SRD"]});
-
+		const pageFilter = new PageFilterLanguages();
 		super({
 			dataSource: "data/languages.json",
 
-			filters: [
-				sourceFilter,
-				typeFilter,
-				scriptFilter,
-				miscFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "languages",
 
@@ -24,20 +14,10 @@ class LanguagesPage extends ListPage {
 
 			dataProps: ["language"]
 		});
-
-		this._sourceFilter = sourceFilter;
-		this._scriptFilter = scriptFilter;
 	}
 
 	getListItem (it, anI, isExcluded) {
-		it._fMisc = it.fonts ? ["Has Fonts"] : [];
-		if (it.srd) it._fMisc.push("SRD");
-
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(it.source);
-			this._scriptFilter.addItem(it.script);
-		}
+		this._pageFilter.mutateAndAddToFilters(it, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -77,16 +57,7 @@ class LanguagesPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter(li => {
-			const it = this._dataList[li.ix];
-			return this._filterBox.toDisplay(
-				f,
-				it.source,
-				it.type,
-				it.script,
-				it._fMisc
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 

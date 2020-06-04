@@ -14,6 +14,102 @@
 	},
 	"monster": [
 		{
+			"name": "Expert",
+			"source": "SLW",
+			"level": 7,
+			"size": "M",
+			"type": "humanoid",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 44,
+				"formula": "8d8 + 8"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 16,
+			"con": 12,
+			"int": 14,
+			"wis": 10,
+			"cha": 14,
+			"save": {
+				"dex": "+6"
+			},
+			"skill": {
+				"acrobatics": "+9",
+				"performance": "+5",
+				"persuasion": "+5",
+				"sleight of hand": "+6",
+				"stealth": "+9"
+			},
+			"passive": 10,
+			"languages": [
+				"Common",
+				"plus one of your choice"
+			],
+			"trait": [
+				{
+					"name": "Helpful",
+					"entries": [
+						"The expert can take the Help action as a bonus action, and the creature who receives the help gains a 1d6 bonus to the d20 roll. If that roll is an attack roll, the creature can forgo adding the bonus to it, and then if the attack hits, the creature can add the bonus to the attack's damage roll against one target."
+					]
+				},
+				{
+					"name": "Tools",
+					"entries": [
+						"The expert has {@item thieves' tools|phb} and a musical instrument."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Extra Attack",
+					"entries": [
+						"The expert can attack twice, instead of once, whenever it takes the {@action Attack} action on its turn."
+					]
+				},
+				{
+					"name": "Shortsword",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 6} to hit, reach 5 ft. or range 20/60 ft., one target. {@h}5 ({@damage 1d4 + 3}) piercing damage."
+					]
+				},
+				{
+					"name": "Shortbow",
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 80/320 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage."
+					]
+				}
+			],
+			"hasToken": true,
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW",
+				"THW"
+			]
+		},
+		{
 			"name": "Skull Flier",
 			"source": "SLW",
 			"size": "M",
@@ -81,6 +177,242 @@
 			"conditionInflict": [
 				"paralyzed",
 				"poisoned"
+			]
+		},
+		{
+			"name": "Spellcaster (Healer)",
+			"source": "SLW",
+			"level": 7,
+			"size": "M",
+			"type": "humanoid",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 36,
+				"formula": "8d8"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 12,
+			"con": 10,
+			"int": 15,
+			"wis": 16,
+			"cha": 13,
+			"save": {
+				"wis": "+6"
+			},
+			"skill": {
+				"arcana": "+5",
+				"investigation": "+5",
+				"religion": "+5"
+			},
+			"passive": 13,
+			"languages": [
+				"Common",
+				"plus one of your choice"
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Healer)",
+					"headerEntries": [
+						"The spellcaster's spellcasting ability is Wisdom (spell save {@dc 14}, {@hit 6} to hit with spell attacks). The spellcaster has following cleric spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell guidance}",
+								"{@spell light}",
+								"{@spell resistance}",
+								"{@spell sacred flame}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell bless}",
+								"{@spell cure wounds}",
+								"{@spell shield of faith}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell aid}",
+								"{@spell lesser restoration}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell protection from energy}",
+								"{@spell revivify}"
+							]
+						},
+						"4": {
+							"slots": 1,
+							"spells": [
+								"{@spell death ward}"
+							]
+						}
+					},
+					"ability": "wis"
+				}
+			],
+			"trait": [
+				{
+					"name": "Potent Cantrip",
+					"entries": [
+						"The spellcaster can add its spellcasting ability modifier to the damage it deals with any cantrip."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Quarterstaff",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d6}) bludgeoning damage, or 4 ({@damage 1d8}) bludgeoning damage if used with two hands."
+					]
+				}
+			],
+			"hasToken": true,
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"B"
+			],
+			"spellcastingTags": [
+				"CC",
+				"CW"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Spellcaster (Mage)",
+			"source": "SLW",
+			"level": 7,
+			"size": "M",
+			"type": "humanoid",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item studded leather armor|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 36,
+				"formula": "8d8"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 12,
+			"con": 10,
+			"int": 16,
+			"wis": 14,
+			"cha": 13,
+			"save": {
+				"wis": "+5"
+			},
+			"skill": {
+				"arcana": "+6",
+				"investigation": "+6",
+				"religion": "+6"
+			},
+			"passive": 12,
+			"languages": [
+				"Common",
+				"plus one of your choice"
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Mage)",
+					"headerEntries": [
+						"The spellcaster's spellcasting ability is Intelligence (spell save {@dc 14}, {@hit 6} to hit with spell attacks). The spellcaster has following wizard spells prepared:"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell fire bolt}",
+								"{@spell light}",
+								"{@spell mage hand}",
+								"{@spell minor illusion}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell shield}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell flaming sphere}",
+								"{@spell invisibility}"
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								"{@spell fireball}",
+								"{@spell fly}"
+							]
+						},
+						"4": {
+							"slots": 1,
+							"spells": [
+								"{@spell wall of fire}"
+							]
+						}
+					},
+					"ability": "int"
+				}
+			],
+			"trait": [
+				{
+					"name": "Potent Cantrip",
+					"entries": [
+						"The spellcaster can add its spellcasting ability modifier to the damage it deals with any cantrip."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Quarterstaff",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d6}) bludgeoning damage, or 4 ({@damage 1d8}) bludgeoning damage if used with two hands."
+					]
+				}
+			],
+			"hasToken": true,
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"B"
+			],
+			"spellcastingTags": [
+				"CC",
+				"CW"
+			],
+			"miscTags": [
+				"MW"
 			]
 		},
 		{
@@ -287,6 +619,131 @@
 			"miscTags": [
 				"AOE",
 				"MW"
+			]
+		},
+		{
+			"name": "Warrior",
+			"source": "SLW",
+			"level": 7,
+			"size": "M",
+			"type": "humanoid",
+			"ac": [
+				{
+					"ac": 20,
+					"from": [
+						"{@item plate armor|phb}",
+						"{@item shield|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 52,
+				"formula": "8d8 + 16"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 14,
+			"con": 14,
+			"int": 10,
+			"wis": 12,
+			"cha": 10,
+			"save": {
+				"con": "+5"
+			},
+			"skill": {
+				"athletics": "+6",
+				"perception": "+4",
+				"survival": "+4"
+			},
+			"passive": 14,
+			"languages": [
+				"Common",
+				"plus one of your choice"
+			],
+			"trait": [
+				{
+					"name": "Battle Readiness",
+					"entries": [
+						"The warrior has advantage on initiative rolls."
+					]
+				},
+				{
+					"name": "Improved Critical",
+					"entries": [
+						"The warrior's attack rolls score a critical hit on a roll of 19 or 20 on the d20."
+					]
+				},
+				{
+					"name": "Martial Role",
+					"entries": [
+						"The warrior has one of the following traits of your choice:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Attacker",
+									"entry": "The warrior gains a +2 bonus to attack rolls."
+								},
+								{
+									"type": "item",
+									"name": "Defender",
+									"entry": "The warrior gains the Protection reaction below."
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Extra Attack",
+					"entries": [
+						"The warrior can attack twice, instead of once, whenever it takes the {@action Attack} action on its turn."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 6} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) slashing damage, or 8 ({@damage 1d10 + 3}) slashing damage if used with two hands."
+					]
+				},
+				{
+					"name": "Longbow",
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, range 150/600 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Protection (Defender Only)",
+					"entries": [
+						"The warrior imposes disadvantage on the attack roll of a creature within 5 feet of it whose target isn't the warrior. The warrior must be able to see the attacker."
+					]
+				}
+			],
+			"hasToken": true,
+			"altArt": [
+				{
+					"name": "Warrior (Defender)",
+					"source": "ESK"
+				}
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW"
 			]
 		}
 	]

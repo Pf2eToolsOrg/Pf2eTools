@@ -23,7 +23,7 @@ class CreatureParser extends BaseParser {
 		options = this._getValidOptions(options);
 
 		function startNextPhase (cur) {
-			return (!cur.toUpperCase().indexOf("ACTION") || !cur.toUpperCase().indexOf("LEGENDARY ACTION") || !cur.toUpperCase().indexOf("REACTION"))
+			return (!cur.toUpperCase().indexOf("ACTION") || !cur.toUpperCase().indexOf("LEGENDARY ACTION") || !cur.toUpperCase().indexOf("MYTHIC ACTION") || !cur.toUpperCase().indexOf("REACTION"))
 		}
 
 		/**
@@ -44,6 +44,7 @@ class CreatureParser extends BaseParser {
 			const NO_ABSORB_TITLES = [
 				"ACTION",
 				"LEGENDARY ACTION",
+				"MYTHIC ACTION",
 				"REACTION"
 			];
 
@@ -227,6 +228,7 @@ class CreatureParser extends BaseParser {
 			stats.action = [];
 			stats.reaction = [];
 			stats.legendary = [];
+			stats.mythic = [];
 
 			let curTrait = {};
 
@@ -235,6 +237,8 @@ class CreatureParser extends BaseParser {
 			let isReactions = false;
 			let isLegendaryActions = false;
 			let isLegendaryDescription = false;
+			let isMythicActions = false;
+			let isMythicDescription = false;
 
 			// keep going through traits til we hit actions
 			while (i < toConvert.length) {
@@ -248,6 +252,8 @@ class CreatureParser extends BaseParser {
 					isReactions = !curLine.toUpperCase().indexOf_handleColon("REACTION");
 					isLegendaryActions = !curLine.toUpperCase().indexOf_handleColon("LEGENDARY ACTION");
 					isLegendaryDescription = isLegendaryActions;
+					isMythicActions = !curLine.toUpperCase().indexOf_handleColon("MYTHIC ACTION");
+					isMythicDescription = isMythicActions;
 					i++;
 					curLine = toConvert[i];
 				}
@@ -261,16 +267,29 @@ class CreatureParser extends BaseParser {
 					curTrait.entries.push(entry);
 				};
 
-				if (isLegendaryDescription) {
-					// usually the first paragraph is a description of how many legendary actions the creature can make
-					// but in the case that it's missing the substring "legendary" and "action" it's probably an action
+				if (isLegendaryDescription || isMythicDescription) {
 					const compressed = curLine.replace(/\s*/g, "").toLowerCase();
-					if (!compressed.includes("legendary") && !compressed.includes("action")) isLegendaryDescription = false;
+
+					if (isLegendaryDescription) {
+						// usually the first paragraph is a description of how many legendary actions the creature can make
+						// but in the case that it's missing the substring "legendary" and "action" it's probably an action
+						if (!compressed.includes("legendary") && !compressed.includes("action")) isLegendaryDescription = false;
+					} else if (isMythicDescription) {
+						// as above--mythic action headers include the text "legendary action"
+						if (!compressed.includes("legendary") && !compressed.includes("action")) isLegendaryDescription = false;
+					}
 				}
 
 				if (isLegendaryDescription) {
 					curTrait.entries.push(curLine.trim());
 					isLegendaryDescription = false;
+				} else if (isMythicDescription) {
+					if (/mythic\s+trait/i.test(curLine)) {
+						stats.mythicHeader = [curLine.trim()];
+					} else {
+						curTrait.entries.push(curLine.trim());
+					}
+					isMythicDescription = false;
 				} else {
 					parseFirstLine(curLine);
 				}
@@ -309,7 +328,9 @@ class CreatureParser extends BaseParser {
 					if (isActions && this._hasEntryContent(curTrait)) stats.action.push(curTrait);
 					if (isReactions && this._hasEntryContent(curTrait)) stats.reaction.push(curTrait);
 					if (isLegendaryActions && this._hasEntryContent(curTrait)) stats.legendary.push(curTrait);
+					if (isMythicActions && this._hasEntryContent(curTrait)) stats.mythic.push(curTrait);
 				}
+
 				curTrait = {};
 			}
 
@@ -317,6 +338,7 @@ class CreatureParser extends BaseParser {
 			if (stats.trait.length === 0) delete stats.trait;
 			if (stats.reaction.length === 0) delete stats.reaction;
 			if (stats.legendary.length === 0) delete stats.legendary;
+			if (stats.mythic.length === 0) delete stats.mythic;
 		}
 
 		(function doCleanLegendaryActionHeader () {
@@ -419,6 +441,8 @@ class CreatureParser extends BaseParser {
 				doAddReaction();
 			} else if (step === 12) { // legendary actions
 				doAddLegendary();
+			} else if (step === 13) { // mythic actions
+				doAddMythic();
 			}
 		};
 
@@ -443,35 +467,20 @@ class CreatureParser extends BaseParser {
 			trait = null;
 		};
 
-		const doAddAction = () => {
+		const _doAddGenericAction = (prop) => {
 			if (this._hasEntryContent(trait)) {
-				stats.action = stats.action || [];
+				stats[prop] = stats[prop] || [];
 
 				DiceConvert.convertTraitActionDice(trait);
-				stats.action.push(trait);
+				stats[prop].push(trait);
 			}
 			trait = null;
 		};
 
-		const doAddReaction = () => {
-			if (this._hasEntryContent(trait)) {
-				stats.reaction = stats.reaction || [];
-
-				DiceConvert.convertTraitActionDice(trait);
-				stats.reaction.push(trait);
-			}
-			trait = null;
-		};
-
-		const doAddLegendary = () => {
-			if (this._hasEntryContent(trait)) {
-				stats.legendary = stats.legendary || [];
-
-				DiceConvert.convertTraitActionDice(trait);
-				stats.legendary.push(trait);
-			}
-			trait = null;
-		};
+		const doAddAction = () => _doAddGenericAction("action");
+		const doAddReaction = () => _doAddGenericAction("reaction");
+		const doAddLegendary = () => _doAddGenericAction("legendary");
+		const doAddMythic = () => _doAddGenericAction("mythic");
 
 		const getCleanedRaw = (str) => {
 			return str.trim()
@@ -631,6 +640,10 @@ class CreatureParser extends BaseParser {
 				doAddFromParsed();
 				step = 12;
 				continue;
+			} else if (cleanedLine.toLowerCase() === "mythic actions") {
+				doAddFromParsed();
+				step = 13;
+				continue;
 			}
 
 			// traits
@@ -691,6 +704,29 @@ class CreatureParser extends BaseParser {
 						// ignore generic LA intro; the renderer will insert it
 						if (!curLine.toLowerCase().includes("can take 3 legendary actions")) {
 							trait = {name: "", entries: [stripLeadingSymbols(curLine)]};
+						}
+					} else trait.entries.push(stripLeadingSymbols(curLine));
+				}
+			}
+
+			// mythic actions
+			if (step === 13) {
+				if (isInlineLegendaryActionItem(curLine)) {
+					doAddMythic();
+					trait = {name: "", entries: []};
+					const [name, text] = getCleanLegendaryActionText(curLine);
+					trait.name = name;
+					trait.entries.push(stripLeadingSymbols(text));
+				} else if (isInlineHeader(curLine)) {
+					doAddMythic();
+					trait = {name: "", entries: []};
+					const [name, text] = getCleanTraitText(curLine);
+					trait.name = name;
+					trait.entries.push(stripLeadingSymbols(text));
+				} else {
+					if (!trait) { // mythic action intro text
+						if (curLine.toLowerCase().includes("mythic trait is active")) {
+							stats.mythicHeader = [stripLeadingSymbols(curLine)];
 						}
 					} else trait.entries.push(stripLeadingSymbols(curLine));
 				}
@@ -787,6 +823,7 @@ class CreatureParser extends BaseParser {
 		SpellcastingTypeTag.tryRun(stats);
 		DamageTypeTag.tryRun(stats);
 		MiscTag.tryRun(stats);
+		DetectNamedCreature.tryRun(stats);
 		doCleanup();
 	}
 

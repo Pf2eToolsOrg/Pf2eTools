@@ -19,7 +19,8 @@
 			"dmg1": "6d8",
 			"dmgType": "N",
 			"firearm": true,
-			"weapon": true
+			"weapon": true,
+			"ammoType": "energy cell"
 		},
 		{
 			"name": "Arrow",
@@ -40,7 +41,13 @@
 			"rarity": "none",
 			"weight": 1,
 			"value": 100,
-			"quantity": 20
+			"quantity": 20,
+			"packContents": [
+				{
+					"item": "arrow|phb",
+					"quantity": 20
+				}
+			]
 		},
 		{
 			"name": "Automatic Pistol",
@@ -60,7 +67,8 @@
 			"dmg1": "2d6",
 			"dmgType": "P",
 			"firearm": true,
-			"weapon": true
+			"weapon": true,
+			"ammoType": "modern bullet"
 		},
 		{
 			"name": "Automatic Rifle",
@@ -82,7 +90,8 @@
 			"dmg1": "2d8",
 			"dmgType": "P",
 			"firearm": true,
-			"weapon": true
+			"weapon": true,
+			"ammoType": "modern bullet"
 		},
 		{
 			"name": "Battleaxe",
@@ -120,7 +129,8 @@
 			"range": "25/100",
 			"dmg1": "1",
 			"dmgType": "P",
-			"weapon": true
+			"weapon": true,
+			"ammoType": "blowgun needle|phb"
 		},
 		{
 			"name": "Blowgun Needle",
@@ -141,7 +151,13 @@
 			"rarity": "none",
 			"weight": 1,
 			"value": 100,
-			"quantity": 50
+			"quantity": 50,
+			"packContents": [
+				{
+					"item": "blowgun needle|phb",
+					"quantity": 50
+				}
+			]
 		},
 		{
 			"name": "Breastplate",
@@ -226,7 +242,13 @@
 			"rarity": "none",
 			"weight": 1.5,
 			"value": 100,
-			"quantity": 20
+			"quantity": 20,
+			"packContents": [
+				{
+					"item": "crossbow bolt|phb",
+					"quantity": 20
+				}
+			]
 		},
 		{
 			"name": "Crystal",
@@ -461,7 +483,8 @@
 			"range": "30/120",
 			"dmg1": "1d6",
 			"dmgType": "P",
-			"weapon": true
+			"weapon": true,
+			"ammoType": "crossbow bolt|phb"
 		},
 		{
 			"name": "Handaxe",
@@ -502,7 +525,8 @@
 			"range": "100/400",
 			"dmg1": "1d10",
 			"dmgType": "P",
-			"weapon": true
+			"weapon": true,
+			"ammoType": "crossbow bolt|phb"
 		},
 		{
 			"name": "Hide Armor",
@@ -556,7 +580,8 @@
 			"dmg1": "2d10",
 			"dmgType": "P",
 			"firearm": true,
-			"weapon": true
+			"weapon": true,
+			"ammoType": "modern bullet"
 		},
 		{
 			"name": "Javelin",
@@ -621,7 +646,8 @@
 			"dmg1": "3d6",
 			"dmgType": "R",
 			"firearm": true,
-			"weapon": true
+			"weapon": true,
+			"ammoType": "energy cell"
 		},
 		{
 			"name": "Laser Rifle",
@@ -642,7 +668,8 @@
 			"dmg1": "3d8",
 			"dmgType": "R",
 			"firearm": true,
-			"weapon": true
+			"weapon": true,
+			"ammoType": "energy cell"
 		},
 		{
 			"name": "Leather Armor",
@@ -677,7 +704,8 @@
 			"range": "80/320",
 			"dmg1": "1d8",
 			"dmgType": "P",
-			"weapon": true
+			"weapon": true,
+			"ammoType": "crossbow bolt|phb"
 		},
 		{
 			"name": "Light Hammer",
@@ -716,7 +744,8 @@
 			"weapon": true,
 			"entries": [
 				"This crossbow is fitted with a cartridge that can hold up to six crossbow bolts. It automatically reloads after firing until the cartridge runs out of ammunition. Reloading the cartridge takes an action."
-			]
+			],
+			"ammoType": "crossbow bolt|phb"
 		},
 		{
 			"name": "Longbow",
@@ -736,7 +765,8 @@
 			"range": "150/600",
 			"dmg1": "1d8",
 			"dmgType": "P",
-			"weapon": true
+			"weapon": true,
+			"ammoType": "arrow|phb"
 		},
 		{
 			"name": "Longsword",
@@ -790,6 +820,16 @@
 			"weapon": true
 		},
 		{
+			"name": "Modern Bullet",
+			"source": "DMG",
+			"page": 268,
+			"type": "AF",
+			"rarity": "none",
+			"weight": 0.1,
+			"quantity": 10,
+			"age": "modern"
+		},
+		{
 			"name": "Modern Bullets (10)",
 			"source": "DMG",
 			"page": 268,
@@ -797,7 +837,13 @@
 			"rarity": "none",
 			"weight": 1,
 			"quantity": 10,
-			"age": "modern"
+			"age": "modern",
+			"packContents": [
+				{
+					"item": "modern bullet",
+					"quantity": 10
+				}
+			]
 		},
 		{
 			"name": "Morningstar",
@@ -832,7 +878,8 @@
 			"dmg1": "1d12",
 			"dmgType": "P",
 			"firearm": true,
-			"weapon": true
+			"weapon": true,
+			"ammoType": "renaissance bullet"
 		},
 		{
 			"name": "Net",
@@ -924,7 +971,8 @@
 			"dmg1": "1d10",
 			"dmgType": "P",
 			"firearm": true,
-			"weapon": true
+			"weapon": true,
+			"ammoType": "renaissance bullet"
 		},
 		{
 			"name": "Plate Armor",
@@ -980,6 +1028,16 @@
 			"weapon": true
 		},
 		{
+			"name": "Renaissance Bullet",
+			"source": "DMG",
+			"page": 268,
+			"type": "AF",
+			"rarity": "none",
+			"weight": 0.2,
+			"value": 30,
+			"age": "renaissance"
+		},
+		{
 			"name": "Renaissance Bullets (10)",
 			"source": "DMG",
 			"page": 268,
@@ -988,7 +1046,13 @@
 			"weight": 2,
 			"value": 300,
 			"quantity": 10,
-			"age": "renaissance"
+			"age": "renaissance",
+			"packContents": [
+				{
+					"item": "renaissance bullet",
+					"quantity": 10
+				}
+			]
 		},
 		{
 			"name": "Revolver",
@@ -1008,7 +1072,8 @@
 			"dmg1": "2d8",
 			"dmgType": "P",
 			"firearm": true,
-			"weapon": true
+			"weapon": true,
+			"ammoType": "modern bullet"
 		},
 		{
 			"name": "Ring Mail",
@@ -1102,7 +1167,8 @@
 			"range": "80/320",
 			"dmg1": "1d6",
 			"dmgType": "P",
-			"weapon": true
+			"weapon": true,
+			"ammoType": "arrow|phb"
 		},
 		{
 			"name": "Shortsword",
@@ -1142,7 +1208,8 @@
 			"dmg1": "2d8",
 			"dmgType": "P",
 			"firearm": true,
-			"weapon": true
+			"weapon": true,
+			"ammoType": "modern bullet"
 		},
 		{
 			"name": "Sickle",
@@ -1176,7 +1243,8 @@
 			"range": "30/120",
 			"dmg1": "1d4",
 			"dmgType": "B",
-			"weapon": true
+			"weapon": true,
+			"ammoType": "sling bullet|phb"
 		},
 		{
 			"name": "Sling Bullet",
@@ -1197,7 +1265,13 @@
 			"rarity": "none",
 			"weight": 1.5,
 			"value": 4,
-			"quantity": 20
+			"quantity": 20,
+			"packContents": [
+				{
+					"item": "sling bullet|phb",
+					"quantity": 20
+				}
+			]
 		},
 		{
 			"name": "Spear",

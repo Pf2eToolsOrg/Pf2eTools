@@ -1041,6 +1041,9 @@
 				"The barrier prevents an affected creature from passing or reaching through. An affected creature can cast spells or make attacks with ranged or reach weapons through the barrier.",
 				"If you move so that an affected creature is forced to pass through the barrier, the spell ends."
 			],
+			"areaTags": [
+				"C"
+			],
 			"classes": {
 				"fromClassList": [
 					{
@@ -1521,7 +1524,7 @@
 				}
 			],
 			"entries": [
-				"You touch a closed door, window, gate, chest, or other entryway, and it becomes locked for the duration. You and the creatures you designate when you cast this spell can open the object normally. You can also set a password that, when spoken within 5 feet of the object, suppresses this spell for 1 minute. Otherwise, it is impassable until it is broken or the spell is dispelled or suppressed. Casting knock on the object suppresses arcane lock for 10 minutes.",
+				"You touch a closed door, window, gate, chest, or other entryway, and it becomes locked for the duration. You and the creatures you designate when you cast this spell can open the object normally. You can also set a password that, when spoken within 5 feet of the object, suppresses this spell for 1 minute. Otherwise, it is impassable until it is broken or the spell is dispelled or suppressed. Casting {@spell knock} on the object suppresses {@spell arcane lock} for 10 minutes.",
 				"While affected by this spell, the object is more difficult to break or force open; the DC to break it or pick any locks on it increases by 10."
 			],
 			"classes": {
@@ -1737,7 +1740,7 @@
 				"strength"
 			],
 			"areaTags": [
-				"R"
+				"S"
 			],
 			"classes": {
 				"fromClassList": [
@@ -1997,7 +2000,7 @@
 				"HL"
 			],
 			"areaTags": [
-				"R"
+				"S"
 			],
 			"classes": {
 				"fromClassList": [
@@ -2115,7 +2118,7 @@
 				"poison"
 			],
 			"areaTags": [
-				"R"
+				"S"
 			],
 			"classes": {
 				"fromClassList": [
@@ -2237,7 +2240,7 @@
 				"HL"
 			],
 			"areaTags": [
-				"R"
+				"S"
 			],
 			"classes": {
 				"fromClassList": [
@@ -3289,7 +3292,7 @@
 					"type": "entries",
 					"name": "Forceful Hand",
 					"entries": [
-						"The hand attempts to push a creature within 5 feet of it in a direction you choose. Make a check with the hand's Strength contested by the Strength (Athletics) check of the target. If the target is Medium or smaller, you have advantage on the check. If you succeed, the hand pushes the target up to 5 feet plus a number of feet equal to five times your spellcasting ability modifier. The hand moves with the target to remain within 5 feet of it."
+						"The hand attempts to push a creature within 5 feet of it in a direction you choose. Make a check with the hand's Strength contested by the Strength ({@skill Athletics}) check of the target. If the target is Medium or smaller, you have advantage on the check. If you succeed, the hand pushes the target up to 5 feet plus a number of feet equal to five times your spellcasting ability modifier. The hand moves with the target to remain within 5 feet of it."
 					]
 				},
 				{
@@ -4156,7 +4159,7 @@
 				}
 			],
 			"entries": [
-				"Your body becomes blurred, shifting and wavering to all who can see you. For the duration, any creature has disadvantage on attack rolls against you. An attacker is immune to this effect if it doesn't rely on sight, as with blindsight, or can see through illusions, as with truesight."
+				"Your body becomes blurred, shifting and wavering to all who can see you. For the duration, any creature has disadvantage on attack rolls against you. An attacker is immune to this effect if it doesn't rely on sight, as with blindsight, or can see through illusions, as with {@sense truesight}."
 			],
 			"classes": {
 				"fromClassList": [
@@ -5261,8 +5264,7 @@
 				"Divine energy radiates from you, distorting and diffusing magical energy within 30 feet of you. Until the spell ends, the sphere moves with you, centered on you. For the duration, each friendly creature in the area (including you) has advantage on saving throws against spells and other magical effects. Additionally, when an affected creature succeeds on a saving throw made against a spell or magical effect that allows it to make a saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw."
 			],
 			"areaTags": [
-				"S",
-				"R"
+				"S"
 			],
 			"classes": {
 				"fromClassList": [
@@ -5346,7 +5348,7 @@
 			"entries": [
 				"You create an invisible sensor within range in a location familiar to you (a place you have visited or seen before) or in an obvious location that is unfamiliar to you (such as behind a door, around a corner, or in a grove of trees). The sensor remains in place for the duration, and it can't be attacked or otherwise interacted with.",
 				"When you cast the spell, you choose seeing or hearing. You can use the chosen sense through the sensor as if you were in its space. As your action, you can switch between seeing and hearing.",
-				"A creature that can see the sensor (such as a creature benefiting from {@spell see invisibility} or truesight) sees a luminous, intangible orb about the size of your fist."
+				"A creature that can see the sensor (such as a creature benefiting from {@spell see invisibility} or {@sense truesight}) sees a luminous, intangible orb about the size of your fist."
 			],
 			"classes": {
 				"fromClassList": [
@@ -6107,6 +6109,16 @@
 							"name": "Order",
 							"source": "GGR"
 						}
+					},
+					{
+						"class": {
+							"name": "Paladin",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Glory",
+							"source": "MOT"
+						}
 					}
 				]
 			}
@@ -6538,6 +6550,16 @@
 						"subclass": {
 							"name": "Aberrant Mind (UA)",
 							"source": "UASorcererAndWarlock"
+						}
+					},
+					{
+						"class": {
+							"name": "Paladin",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Glory",
+							"source": "MOT"
 						}
 					}
 				]
@@ -7962,8 +7984,8 @@
 					"type": "entries",
 					"name": "Whirlpool",
 					"entries": [
-						"This effect requires a body of water at least 50 feet square and 25 feet deep. You cause a whirlpool to form in the center of the area. The whirlpool forms a vortex that is 5 feet wide at the base, up to 50 feet wide at the top, and 25 feet tall. Any creature or object in the water and within 25 feet of the vortex is pulled 10 feet toward it. A creature can swim away from the vortex by making a Strength (Athletics) check against your spell save DC.",
-						"When a creature enters the vortex for the first time on a turn or starts its turn there, it must make a Strength saving throw. On a failed save, the creature takes {@damage 2d8} bludgeoning damage and is caught in the vortex until the spell ends. On a successful save, the creature takes half damage, and isn't caught in the vortex. A creature caught in the vortex can use its action to try to swim away from the vortex as described above, but has disadvantage on the Strength (Athletics) check to do so.",
+						"This effect requires a body of water at least 50 feet square and 25 feet deep. You cause a whirlpool to form in the center of the area. The whirlpool forms a vortex that is 5 feet wide at the base, up to 50 feet wide at the top, and 25 feet tall. Any creature or object in the water and within 25 feet of the vortex is pulled 10 feet toward it. A creature can swim away from the vortex by making a Strength ({@skill Athletics}) check against your spell save DC.",
+						"When a creature enters the vortex for the first time on a turn or starts its turn there, it must make a Strength saving throw. On a failed save, the creature takes {@damage 2d8} bludgeoning damage and is caught in the vortex until the spell ends. On a successful save, the creature takes half damage, and isn't caught in the vortex. A creature caught in the vortex can use its action to try to swim away from the vortex as described above, but has disadvantage on the Strength ({@skill Athletics}) check to do so.",
 						"The first time each turn that an object enters the vortex, the object takes {@damage 2d8} bludgeoning damage; this damage occurs each round it remains in the vortex."
 					]
 				}
@@ -8976,7 +8998,7 @@
 				"radiant"
 			],
 			"areaTags": [
-				"R"
+				"S"
 			],
 			"classes": {
 				"fromClassList": [
@@ -9958,7 +9980,7 @@
 			],
 			"areaTags": [
 				"MT",
-				"R"
+				"S"
 			],
 			"classes": {
 				"fromClassList": [
@@ -10554,7 +10576,7 @@
 			"entries": [
 				"You make yourself\u2014including your clothing, armor, weapons, and other belongings on your person\u2014look different until the spell ends or until you use your action to dismiss it. You can seem 1 foot shorter or taller and can appear thin, fat, or in between. You can't change your body type, so you must adopt a form that has the same basic arrangement of limbs. Otherwise, the extent of the illusion is up to you.",
 				"The changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to your outfit, objects pass through the hat, and anyone who touches it would feel nothing or would feel your head and hair. If you use this spell to appear thinner than you are, the hand of someone who reaches out to touch you would bump into you while it was seemingly still in midair.",
-				"To discern that you are disguised, a creature can use its action to inspect your appearance and must succeed on an Intelligence (Investigation) check against your spell save DC."
+				"To discern that you are disguised, a creature can use its action to inspect your appearance and must succeed on an Intelligence ({@skill Investigation}) check against your spell save DC."
 			],
 			"opposedCheck": [
 				"intelligence"
@@ -10726,9 +10748,9 @@
 				}
 			],
 			"entries": [
-				"A thin green ray springs from your pointing finger to a target that you can see within range. The target can be a creature, an object, or a creation of magical force, such as the wall created by wall of force.",
+				"A thin green ray springs from your pointing finger to a target that you can see within range. The target can be a creature, an object, or a creation of magical force, such as the wall created by {@spell wall of force}.",
 				"A creature targeted by this spell must make a Dexterity saving throw. On a failed save, the target takes {@damage 10d6 + 40} force damage. The target is disintegrated if this damage leaves it with 0 hit points.",
-				"A disintegrated creature and everything it is wearing and carrying, except magic items, are reduced to a pile of fine gray dust. The creature can be restored to life only by means of a true resurrection or a {@spell wish} spell.",
+				"A disintegrated creature and everything it is wearing and carrying, except magic items, are reduced to a pile of fine gray dust. The creature can be restored to life only by means of a {@spell true resurrection} or a {@spell wish} spell.",
 				"This spell automatically disintegrates a Large or smaller nonmagical object or a creation of magical force. If the target is a Huge or larger object or creation of force, this spell disintegrates a 10-foot-cube portion of it. A magic item is unaffected by this spell."
 			],
 			"entriesHigherLevel": [
@@ -12057,7 +12079,7 @@
 					"type": "entries",
 					"name": "Structures",
 					"entries": [
-						"The tremor deals 50 bludgeoning damage to any structure in contact with the ground in the area when you cast the spell and at the start of each of your turns until the spell ends. If a structure drops to 0 hit points, it collapses and potentially damages nearby creatures. A creature within half the distance of a structure's height must make a Dexterity saving throw. On a failed save, the creature takes {@damage 5d6} bludgeoning damage, is knocked {@condition prone}, and is buried in the rubble, requiring a DC 20 Strength (Athletics) check as an action to escape. The DM can adjust the DC higher or lower, depending on the nature of the rubble. On a successful save, the creature takes half as much damage and doesn't fall {@condition prone} or become buried."
+						"The tremor deals 50 bludgeoning damage to any structure in contact with the ground in the area when you cast the spell and at the start of each of your turns until the spell ends. If a structure drops to 0 hit points, it collapses and potentially damages nearby creatures. A creature within half the distance of a structure's height must make a Dexterity saving throw. On a failed save, the creature takes {@damage 5d6} bludgeoning damage, is knocked {@condition prone}, and is buried in the rubble, requiring a DC 20 Strength ({@skill Athletics}) check as an action to escape. The DM can adjust the DC higher or lower, depending on the nature of the rubble. On a successful save, the creature takes half as much damage and doesn't fall {@condition prone} or become buried."
 					]
 				}
 			],
@@ -12464,6 +12486,16 @@
 							"name": "Order (UA)",
 							"source": "UAOrderDomain"
 						}
+					},
+					{
+						"class": {
+							"name": "Paladin",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Glory",
+							"source": "MOT"
+						}
 					}
 				],
 				"fromClassListVariant": [
@@ -12860,7 +12892,7 @@
 				}
 			],
 			"entries": [
-				"You weave a distracting string of words, causing creatures of your choice that you can see within range and that can hear you to make a Wisdom saving throw. Any creature that can't be {@condition charmed} succeeds on this saving throw automatically, and if you or your companions are fighting a creature, it has advantage on the save. On a failed save, the target has disadvantage on Wisdom (Perception) checks made to perceive any creature other than you until the spell ends or until the target can no longer hear you. The spell ends if you are {@condition incapacitated} or can no longer speak."
+				"You weave a distracting string of words, causing creatures of your choice that you can see within range and that can hear you to make a Wisdom saving throw. Any creature that can't be {@condition charmed} succeeds on this saving throw automatically, and if you or your companions are fighting a creature, it has advantage on the save. On a failed save, the target has disadvantage on Wisdom ({@skill Perception}) checks made to perceive any creature other than you until the spell ends or until the target can no longer hear you. The spell ends if you are {@condition incapacitated} or can no longer speak."
 			],
 			"savingThrow": [
 				"wisdom"
@@ -15069,6 +15101,16 @@
 							"source": "UA2020SubclassesRevisited",
 							"subSubclass": "Efreeti"
 						}
+					},
+					{
+						"class": {
+							"name": "Paladin",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Glory",
+							"source": "MOT"
+						}
 					}
 				],
 				"fromClassListVariant": [
@@ -15280,7 +15322,8 @@
 				"constitution"
 			],
 			"miscTags": [
-				"SGT"
+				"SGT",
+				"PRM"
 			],
 			"areaTags": [
 				"ST"
@@ -15863,6 +15906,16 @@
 						"subclass": {
 							"name": "Zeal (PSA)",
 							"source": "PSA"
+						}
+					},
+					{
+						"class": {
+							"name": "Paladin",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Glory",
+							"source": "MOT"
 						}
 					}
 				]
@@ -16683,7 +16736,7 @@
 			],
 			"entries": [
 				"When you cast this spell, you inscribe a glyph that later unleashes a magical effect. You inscribe it either on a surface (such as a table or a section of floor or wall) or within an object that can be closed (such as a book, a scroll, or a treasure chest) to conceal the glyph. The glyph can cover an area no larger than 10 feet in diameter. If the surface or object is moved more than 10 feet from where you cast this spell, the glyph is broken, and the spell ends without being triggered.",
-				"The glyph is nearly invisible and requires a successful Intelligence (Investigation) check against your spell save DC to be found.",
+				"The glyph is nearly invisible and requires a successful Intelligence ({@skill Investigation}) check against your spell save DC to be found.",
 				"You decide what triggers the glyph when you cast the spell. For glyphs inscribed on a surface, the most typical triggers include touching or standing on the glyph, removing another object covering the glyph, approaching within a certain distance of the glyph, or manipulating the object on which the glyph is inscribed. For glyphs inscribed within an object, the most common triggers include opening that object, approaching within a certain distance of the object, or seeing or reading the glyph. Once a glyph is triggered, this spell ends.",
 				"You can further refine the trigger so the spell activates only under certain circumstances or according to physical characteristics (such as height or weight), creature kind (for example, the ward could be set to affect aberrations or drow), or alignment. You can also set conditions for creatures that don't trigger the glyph, such as those who say a certain password.",
 				"When you inscribe the glyph, choose explosive runes or a spell glyph.",
@@ -17511,7 +17564,7 @@
 					"type": "entries",
 					"name": "Doors",
 					"entries": [
-						"All doors in the warded area are magically locked, as if sealed by an {@spell arcane lock} spell. In addition, you can cover up to ten doors with an illusion (equivalent to the illusory object function of the minor illusion spell) to make them appear as plain sections of wall."
+						"All doors in the warded area are magically locked, as if sealed by an {@spell arcane lock} spell. In addition, you can cover up to ten doors with an illusion (equivalent to the illusory object function of the {@spell minor illusion} spell) to make them appear as plain sections of wall."
 					]
 				},
 				{
@@ -17706,6 +17759,16 @@
 						"subclass": {
 							"name": "Celestial",
 							"source": "XGE"
+						}
+					},
+					{
+						"class": {
+							"name": "Paladin",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Glory",
+							"source": "MOT"
 						}
 					}
 				]
@@ -18127,7 +18190,7 @@
 			],
 			"entries": [
 				"You make natural terrain in a 150-foot cube in range look, sound, and smell like some other sort of natural terrain. Thus, open fields or a road can be made to resemble a swamp, hill, crevasse, or some other difficult or impassable terrain. A pond can be made to seem like a grassy meadow, a precipice like a gentle slope, or a rock-strewn gully like a wide and smooth road. Manufactured structures, equipment, and creatures within the area aren't changed in appearance.",
-				"The tactile characteristics of the terrain are unchanged, so creatures entering the area are likely to see through the illusion. If the difference isn't obvious by touch, a creature carefully examining the illusion can attempt an Intelligence (Investigation) check against your spell save DC to disbelieve it. A creature who discerns the illusion for what it is, sees it as a vague image superimposed on the terrain."
+				"The tactile characteristics of the terrain are unchanged, so creatures entering the area are likely to see through the illusion. If the difference isn't obvious by touch, a creature carefully examining the illusion can attempt an Intelligence ({@skill Investigation}) check against your spell save DC to disbelieve it. A creature who discerns the illusion for what it is, sees it as a vague image superimposed on the terrain."
 			],
 			"opposedCheck": [
 				"intelligence"
@@ -18369,6 +18432,16 @@
 							"name": "Horizon Walker",
 							"source": "XGE"
 						}
+					},
+					{
+						"class": {
+							"name": "Paladin",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Glory",
+							"source": "MOT"
+						}
 					}
 				]
 			},
@@ -18409,7 +18482,7 @@
 				}
 			],
 			"entries": [
-				"Choose a creature that you can see within range. A surge of positive energy washes through the creature, causing it to regain 70 hit points. This spell also ends blindness, deafness, and any diseases affecting the target. This spell has no effect on constructs or undead."
+				"Choose a creature that you can see within range. A surge of positive energy washes through the creature, causing it to regain 70 hit points. This spell also ends {@condition blinded||blindness}, {@condition deafened||deafness}, and any diseases affecting the target. This spell has no effect on constructs or undead."
 			],
 			"entriesHigherLevel": [
 				{
@@ -18960,6 +19033,16 @@
 							"name": "Love (UA)",
 							"source": "UA2020SubclassesPt2"
 						}
+					},
+					{
+						"class": {
+							"name": "Paladin",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Glory",
+							"source": "MOT"
+						}
 					}
 				]
 			},
@@ -19463,7 +19546,7 @@
 				"constitution"
 			],
 			"areaTags": [
-				"R"
+				"S"
 			],
 			"classes": {
 				"fromClassList": [
@@ -19580,7 +19663,7 @@
 				}
 			],
 			"entries": [
-				"You choose a creature you can see within range and mystically mark it as your quarry. Until the spell ends, you deal an extra {@damage 1d6} damage to the target whenever you hit it with a weapon attack, and you have advantage on any Wisdom (Perception) or Wisdom (Survival) check you make to find it. If the target drops to 0 hit points before this spell ends, you can use a bonus action on a subsequent turn of yours to mark a new creature."
+				"You choose a creature you can see within range and mystically mark it as your quarry. Until the spell ends, you deal an extra {@damage 1d6} damage to the target whenever you hit it with a weapon attack, and you have advantage on any Wisdom ({@skill Perception}) or Wisdom ({@skill Survival}) check you make to find it. If the target drops to 0 hit points before this spell ends, you can use a bonus action on a subsequent turn of yours to mark a new creature."
 			],
 			"entriesHigherLevel": [
 				{
@@ -20055,7 +20138,7 @@
 				"You write on parchment, paper, or some other suitable writing material and imbue it with a potent illusion that lasts for the duration.",
 				"To you and any creatures you designate when you cast the spell, the writing appears normal, written in your hand, and conveys whatever meaning you intended when you wrote the text. To all others, the writing appears as if it were written in an unknown or magical script that is unintelligible. Alternatively, you can cause the writing to appear to be an entirely different message, written in a different hand and language, though the language must be one you know.",
 				"Should the spell be dispelled, the original script and the illusion both disappear.",
-				"A creature with truesight can read the hidden message."
+				"A creature with {@sense truesight} can read the hidden message."
 			],
 			"classes": {
 				"fromClassList": [
@@ -20887,9 +20970,9 @@
 				}
 			],
 			"entries": [
-				"Choose an object that you can see within range. The object can be a door, a box, a chest, a set of manacles, a padlock, or another object that contains a mundane or magical means that prevents access.",
+				"Choose an object that you can see within range. The object can be a door, a box, a {@item chest|phb}, a set of {@item manacles|phb}, a padlock, or another object that contains a mundane or magical means that prevents access.",
 				"A target that is held shut by a mundane lock or that is stuck or barred becomes unlocked, unstuck, or unbarred. If the object has multiple locks, only one of them is unlocked.",
-				"If you choose a target that is held shut with arcane lock, that spell is suppressed for 10 minutes, during which time the target can be opened and shut normally.",
+				"If you choose a target that is held shut with {@spell arcane lock}, that spell is suppressed for 10 minutes, during which time the target can be opened and shut normally.",
 				"When you cast the spell, a loud knock, audible from as far away as 300 feet, emanates from the target object."
 			],
 			"miscTags": [
@@ -22889,6 +22972,16 @@
 							"name": "Forge",
 							"source": "XGE"
 						}
+					},
+					{
+						"class": {
+							"name": "Paladin",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Glory",
+							"source": "MOT"
+						}
 					}
 				],
 				"fromClassListVariant": [
@@ -22945,7 +23038,7 @@
 			"entries": [
 				"You create the image of an object, a creature, or some other visible phenomenon that is no larger than a 20-foot cube. The image appears at a spot that you can see within range and lasts for the duration. It seems completely real, including sounds, smells, and temperature appropriate to the thing depicted. You can't create sufficient heat or cold to cause damage, a sound loud enough to deal thunder damage or deafen a creature, or a smell that might sicken a creature (like a troglodyte's stench).",
 				"As long as you are within range of the illusion, you can use your action to cause the image to move to any other spot within range. As the image changes location, you can alter its appearance so that its movements appear natural for the image. For example, if you create an image of a creature and move it, you can alter the image so that it appears to be walking. Similarly, you can cause the illusion to make different sounds at different times, even making it carry on a conversation, for example.",
-				"Physical interaction with the image reveals it to be an illusion, because things can pass through it. A creature that uses its action to examine the image can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image, and its other sensory qualities become faint to the creature."
+				"Physical interaction with the image reveals it to be an illusion, because things can pass through it. A creature that uses its action to examine the image can determine that it is an illusion with a successful Intelligence ({@skill Investigation}) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image, and its other sensory qualities become faint to the creature."
 			],
 			"entriesHigherLevel": [
 				{
@@ -23365,7 +23458,7 @@
 			],
 			"entries": [
 				"You banish a creature that you can see within range into a labyrinthine demiplane. The target remains there for the duration or until it escapes the maze.",
-				"The target can use its action to attempt to escape. When it does so, it makes a DC 20 Intelligence check. If it succeeds, it escapes, and the spell ends (a minotaur or goristro demon automatically succeeds).",
+				"The target can use its action to attempt to escape. When it does so, it makes a DC 20 Intelligence check. If it succeeds, it escapes, and the spell ends (a {@creature minotaur} or {@creature goristro} demon automatically succeeds).",
 				"When the spell ends, the target reappears in the space it left or, if that space is occupied, in the nearest unoccupied space."
 			],
 			"miscTags": [
@@ -23426,7 +23519,7 @@
 			},
 			"entries": [
 				"You step into a stone object or surface large enough to fully contain your body, melding yourself and all the equipment you carry with the stone for the duration. Using your movement, you step into the stone at a point you can touch. Nothing of your presence remains visible or otherwise detectable by nonmagical senses.",
-				"While merged with the stone, you can't see what occurs outside it, and any Wisdom (Perception) checks you make to hear sounds outside it are made with disadvantage. You remain aware of the passage of time and can cast spells on yourself while merged in the stone. You can use your movement to leave the stone where you entered it, which ends the spell. You otherwise can't move.",
+				"While merged with the stone, you can't see what occurs outside it, and any Wisdom ({@skill Perception}) checks you make to hear sounds outside it are made with disadvantage. You remain aware of the passage of time and can cast spells on yourself while merged in the stone. You can use your movement to leave the stone where you entered it, which ends the spell. You otherwise can't move.",
 				"Minor physical damage to the stone doesn't harm you, but its partial destruction or a change in its shape (to the extent that you no longer fit within it) expels you and deals {@damage 6d6} bludgeoning damage to you. The stone's complete destruction (or transmutation into a different substance) expels you and deals 50 bludgeoning damage to you. If expelled, you fall {@condition prone} in an unoccupied space closest to where you first entered."
 			],
 			"damageInflict": [
@@ -23921,7 +24014,7 @@
 				"You create a sound or an image of an object within range that lasts for the duration. The illusion also ends if you dismiss it as an action or cast this spell again.",
 				"If you create a sound, its volume can range from a whisper to a scream. It can be your voice, someone else's voice, a lion's roar, a beating of drums, or any other sound you choose. The sound continues unabated throughout the duration, or you can make discrete sounds at different times before the spell ends.",
 				"If you create an image of an object\u2014such as a chair, muddy footprints, or a small chest\u2014it must be no larger than a 5-foot cube. The image can't create sound, light, smell, or any other sensory effect. Physical interaction with the image reveals it to be an illusion, because things can pass through it.",
-				"If a creature uses its action to examine the sound or image, the creature can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the illusion becomes faint to the creature."
+				"If a creature uses its action to examine the sound or image, the creature can determine that it is an illusion with a successful Intelligence ({@skill Investigation}) check against your spell save DC. If a creature discerns the illusion for what it is, the illusion becomes faint to the creature."
 			],
 			"opposedCheck": [
 				"intelligence"
@@ -24028,7 +24121,7 @@
 				"You make terrain in an area up to 1 mile square look, sound, smell, and even feel like some other sort of terrain. The terrain's general shape remains the same, however. Open fields or a road could be made to resemble a swamp, hill, crevasse, or some other difficult or impassable terrain. A pond can be made to seem like a grassy meadow, a precipice like a gentle slope, or a rock-strewn gully like a wide and smooth road.",
 				"Similarly, you can alter the appearance of structures, or add them where none are present. The spell doesn't disguise, conceal, or add creatures.",
 				"The illusion includes audible, visual, tactile, and olfactory elements, so it can turn clear ground into difficult terrain (or vice versa) or otherwise impede movement through the area. Any piece of the illusory terrain (such as a rock or stick) that is removed from the spell's area disappears immediately.",
-				"Creatures with truesight can see through the illusion to the terrain's true form; however, all other elements of the illusion remain, so while the creature is aware of the illusion's presence, the creature can still physically interact with the illusion."
+				"Creatures with {@sense truesight} can see through the illusion to the terrain's true form; however, all other elements of the illusion remain, so while the creature is aware of the illusion's presence, the creature can still physically interact with the illusion."
 			],
 			"classes": {
 				"fromClassList": [
@@ -24084,7 +24177,7 @@
 				"Each time a creature targets you with an attack during the spell's duration, roll a {@dice d20} to determine whether the attack instead targets one of your duplicates.",
 				"If you have three duplicates, you must roll a 6 or higher to change the attack's target to a duplicate. With two duplicates, you must roll an 8 or higher. With one duplicate, you must roll an 11 or higher.",
 				"A duplicate's AC equals 10 + your Dexterity modifier. If an attack hits a duplicate, the duplicate is destroyed. A duplicate can be destroyed only by an attack that hits it. It ignores all other damage and effects. The spell ends when all three duplicates are destroyed.",
-				"A creature is unaffected by this spell if it can't see, if it relies on senses other than sight, such as blindsight, or if it can perceive illusions as false, as with truesight."
+				"A creature is unaffected by this spell if it can't see, if it relies on senses other than sight, such as blindsight, or if it can perceive illusions as false, as with {@sense truesight}."
 			],
 			"classes": {
 				"fromClassList": [
@@ -25132,7 +25225,7 @@
 					"type": "entries",
 					"name": "False Aura",
 					"entries": [
-						"You change the way the target appears to spells and magical effects, such as detect magic, that detect magical auras. You can make a nonmagical object appear magical, a magical object appear nonmagical, or change the object's magical aura so that it appears to belong to a specific school of magic that you choose. When you use this effect on an object, you can make the false magic apparent to any creature that handles the item."
+						"You change the way the target appears to spells and magical effects, such as {@spell detect magic}, that detect magical auras. You can make a nonmagical object appear magical, a magical object appear nonmagical, or change the object's magical aura so that it appears to belong to a specific school of magic that you choose. When you use this effect on an object, you can make the false magic apparent to any creature that handles the item."
 					]
 				},
 				{
@@ -25657,7 +25750,7 @@
 			"entries": [
 				"You craft an illusion that takes root in the mind of a creature that you can see within range. The target must make an Intelligence saving throw. On a failed save, you create a phantasmal object, creature, or other visible phenomenon of your choice that is no larger than a 10-foot cube and that is perceivable only to the target for the duration. This spell has no effect on undead or constructs.",
 				"The phantasm includes sound, temperature, and other stimuli, also evident only to the creature.",
-				"The target can use its action to examine the phantasm with an Intelligence (Investigation) check against your spell save DC. If the check succeeds, the target realizes that the phantasm is an illusion, and the spell ends.",
+				"The target can use its action to examine the phantasm with an Intelligence ({@skill Investigation}) check against your spell save DC. If the check succeeds, the target realizes that the phantasm is an illusion, and the spell ends.",
 				"While a target is affected by the spell, the target treats the phantasm as if it were real. The target rationalizes any illogical outcomes from interacting with the phantasm. For example, a target attempting to walk across a phantasmal bridge that spans a chasm falls once it steps onto the bridge. If the target survives the fall, it still believes that the bridge exists and comes up with some other explanation for its fall\u2014it was pushed, it slipped, or a strong wind might have knocked it off.",
 				"An affected target is so convinced of the phantasm's reality that it can even take damage from the illusion. A phantasm created to appear as a creature can attack the target. Similarly, a phantasm created to appear as fire, a pool of acid, or lava can burn the target. Each round on your turn, the phantasm can deal {@damage 1d6} psychic damage to the target if it is in the phantasm's area or within 5 feet of the phantasm, provided that the illusion is of a creature or hazard that could logically deal damage, such as by attacking. The target perceives the damage as a type appropriate to the illusion."
 			],
@@ -27225,7 +27318,7 @@
 				"You create an illusion of an object, a creature, or some other visible phenomenon within range that activates when a specific condition occurs. The illusion is imperceptible until then. It must be no larger than a 30-foot cube, and you decide when you cast the spell how the illusion behaves and what sounds it makes. This scripted performance can last up to 5 minutes.",
 				"When the condition you specify occurs, the illusion springs into existence and performs in the manner you described. Once the illusion finishes performing, it disappears and remains dormant for 10 minutes. After this time, the illusion can be activated again.",
 				"The triggering condition can be as general or as detailed as you like, though it must be based on visual or audible conditions that occur within 30 feet of the area. For example, you could create an illusion of yourself to appear and warn off others who attempt to open a trapped door, or you could set the illusion to trigger only when a creature says the correct word or phrase.",
-				"Physical interaction with the image reveals it to be an illusion, because things can pass through it. A creature that uses its action to examine the image can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image, and any noise it makes sounds hollow to the creature."
+				"Physical interaction with the image reveals it to be an illusion, because things can pass through it. A creature that uses its action to examine the image can determine that it is an illusion with a successful Intelligence ({@skill Investigation}) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image, and any noise it makes sounds hollow to the creature."
 			],
 			"opposedCheck": [
 				"intelligence"
@@ -27285,7 +27378,7 @@
 				"You create an illusory copy of yourself that lasts for the duration. The copy can appear at any location within range that you have seen before, regardless of intervening obstacles. The illusion looks and sounds like you but is intangible. If the illusion takes any damage, it disappears, and the spell ends.",
 				"You can use your action to move this illusion up to twice your speed, and make it gesture, speak, and behave in whatever way you choose. It mimics your mannerisms perfectly.",
 				"You can see through its eyes and hear through its ears as if you were in its space. On your turn as a bonus action, you can switch from using its senses to using your own, or back again. While you are using its senses, you are {@condition blinded} and {@condition deafened} in regard to your own surroundings.",
-				"Physical interaction with the image reveals it to be an illusion, because things can pass through it. A creature that uses its action to examine the image can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image, and any noise it makes sounds hollow to the creature."
+				"Physical interaction with the image reveals it to be an illusion, because things can pass through it. A creature that uses its action to examine the image can determine that it is an illusion with a successful Intelligence ({@skill Investigation}) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image, and any noise it makes sounds hollow to the creature."
 			],
 			"conditionInflict": [
 				"blinded",
@@ -27497,6 +27590,16 @@
 						"subclass": {
 							"name": "Noble Genie (UA)",
 							"source": "UA2020SubclassesPt1"
+						}
+					},
+					{
+						"class": {
+							"name": "Paladin",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Glory",
+							"source": "MOT"
 						}
 					}
 				]
@@ -29980,7 +30083,7 @@
 				"This spell allows you to change the appearance of any number of creatures that you can see within range. You give each target you choose a new, illusory appearance. An unwilling target can make a Charisma saving throw, and if it succeeds, it is unaffected by this spell.",
 				"The spell disguises physical appearance as well as clothing, armor, weapons, and equipment. You can make each creature seem 1 foot shorter or taller and appear thin, fat, or in between. You can't change a target's body type, so you must choose a form that has the same basic arrangement of limbs. Otherwise, the extent of the illusion is up to you. The spell lasts for the duration, unless you use your action to dismiss it sooner.",
 				"The changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to a creature's outfit, objects pass through the hat, and anyone who touches it would feel nothing or would feel the creature's head and hair. If you use this spell to appear thinner than you are, the hand of someone who reaches out to touch you would bump into you while it was seemingly still in midair.",
-				"A creature can use its action to inspect a target and make an Intelligence (Investigation) check against your spell save DC. If it succeeds, it becomes aware that the target is disguised."
+				"A creature can use its action to inspect a target and make an Intelligence ({@skill Investigation}) check against your spell save DC. If it succeeds, it becomes aware that the target is disguised."
 			],
 			"savingThrow": [
 				"charisma"
@@ -30991,7 +31094,7 @@
 			"entries": [
 				"You create the image of an object, a creature, or some other visible phenomenon that is no larger than a 15-foot cube. The image appears at a spot within range and lasts for the duration. The image is purely visual; it isn't accompanied by sound, smell, or other sensory effects.",
 				"You can use your action to cause the image to move to any spot within range. As the image changes location, you can alter its appearance so that its movements appear natural for the image. For example, if you create an image of a creature and move it, you can alter the image so that it appears to be walking.",
-				"Physical interaction with the image reveals it to be an illusion, because things can pass through it. A creature that uses its action to examine the image can determine that it is an illusion with a successful Intelligence (Investigation) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image."
+				"Physical interaction with the image reveals it to be an illusion, because things can pass through it. A creature that uses its action to examine the image can determine that it is an illusion with a successful Intelligence ({@skill Investigation}) check against your spell save DC. If a creature discerns the illusion for what it is, the creature can see through the image."
 			],
 			"opposedCheck": [
 				"intelligence"
@@ -31945,7 +32048,7 @@
 			],
 			"entries": [
 				"The ground in a 20-foot radius centered on a point within range twists and sprouts hard spikes and thorns. The area becomes difficult terrain for the duration. When a creature moves into or within the area, it takes {@damage 2d4} piercing damage for every 5 feet it travels.",
-				"The transformation of the ground is camouflaged to look natural. Any creature that can't see the area at the time the spell is cast must make a Wisdom (Perception) check against your spell save DC to recognize the terrain as hazardous before entering it."
+				"The transformation of the ground is camouflaged to look natural. Any creature that can't see the area at the time the spell is cast must make a Wisdom ({@skill Perception}) check against your spell save DC to recognize the terrain as hazardous before entering it."
 			],
 			"damageInflict": [
 				"piercing"
@@ -33173,7 +33276,7 @@
 			],
 			"entries": [
 				"When you cast this spell, you inscribe a harmful glyph either on a surface (such as a section of floor, a wall, or a table) or within an object that can be closed to conceal the glyph (such as a book, a scroll, or a treasure chest). If you choose a surface, the glyph can cover an area of the surface no larger than 10 feet in diameter. If you choose an object, that object must remain in its place; if the object is moved more than 10 feet from where you cast this spell, the glyph is broken, and the spell ends without being triggered.",
-				"The glyph is nearly invisible, requiring an Intelligence (Investigation) check against your spell save DC to find it.",
+				"The glyph is nearly invisible, requiring an Intelligence ({@skill Investigation}) check against your spell save DC to find it.",
 				"You decide what triggers the glyph when you cast the spell. For glyphs inscribed on a surface, the most typical triggers include touching or stepping on the glyph, removing another object covering it, approaching within a certain distance of it, or manipulating the object that holds it. For glyphs inscribed within an object, the most common triggers are opening the object, approaching within a certain distance of it, or seeing or reading the glyph.",
 				"You can further refine the trigger so the spell is activated only under certain circumstances or according to a creature's physical characteristics (such as height or weight), or physical kind (for example, the ward could be set to affect hags or shapechangers). You can also specify creatures that don't trigger the glyph, such as those who say a certain password.",
 				"When you inscribe the glyph, choose one of the options below for its effect. Once triggered, the glyph glows, filling a 60-foot-radius sphere with dim light for 10 minutes, after which time the spell ends. Each creature in the sphere when the glyph activates is targeted by its effect, as is a creature that enters the sphere for the first time on a turn or ends its turn there.",
@@ -34758,7 +34861,7 @@
 				}
 			],
 			"entries": [
-				"This spell gives the willing creature you touch the ability to see things as they actually are. For the duration, the creature has truesight, notices secret doors hidden by magic, and can see into the Ethereal Plane, all out to a range of 120 feet."
+				"This spell gives the willing creature you touch the ability to see things as they actually are. For the duration, the creature has {@sense truesight}, notices secret doors hidden by magic, and can see into the Ethereal Plane, all out to a range of 120 feet."
 			],
 			"classes": {
 				"fromClassList": [
@@ -34886,7 +34989,7 @@
 				"A wall of water springs into existence at a point you choose within range. You can make the wall up to 300 feet long, 300 feet high, and 50 feet thick. The wall lasts for the duration.",
 				"When the wall appears, each creature within its area must make a Strength saving throw. On a failed save, a creature takes {@damage 6d10} bludgeoning damage, or half as much damage on a successful save.",
 				"At the start of each of your turns after the wall appears, the wall, along with any creatures in it, moves 50 feet away from you. Any Huge or smaller creature inside the wall or whose space the wall enters when it moves must succeed on a Strength saving throw or take {@damage 5d10} bludgeoning damage. A creature can take this damage only once per round. At the end of the turn, the wall's height is reduced by 50 feet, and the damage creatures take from the spell on subsequent rounds is reduced by {@dice 1d10}. When the wall reaches 0 feet in height, the spell ends.",
-				"A creature caught in the wall can move by swimming. Because of the force of the wave, though, the creature must make a successful Strength (Athletics) check against your spell save DC in order to move at all. If it fails the check, it can't move. A creature that moves out of the area falls to the ground."
+				"A creature caught in the wall can move by swimming. Because of the force of the wave, though, the creature must make a successful Strength ({@skill Athletics}) check against your spell save DC in order to move at all. If it fails the check, it can't move. A creature that moves out of the area falls to the ground."
 			],
 			"damageInflict": [
 				"bludgeoning"

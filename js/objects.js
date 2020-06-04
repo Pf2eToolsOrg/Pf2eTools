@@ -2,17 +2,11 @@
 
 class ObjectsPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
-
+		const pageFilter = new PageFilterObjects();
 		super({
 			dataSource: "data/objects.json",
 
-			filters: [
-				sourceFilter,
-				miscFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "objects",
 
@@ -20,16 +14,10 @@ class ObjectsPage extends ListPage {
 
 			dataProps: ["object"]
 		});
-
-		this._sourceFilter = sourceFilter;
 	}
 
 	getListItem (obj, obI, isExcluded) {
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(obj.source);
-		}
-		obj._fMisc = obj.srd ? ["SRD"] : [];
+		this._pageFilter.mutateAndAddToFilters(obj, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -67,14 +55,7 @@ class ObjectsPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter((item) => {
-			const it = this._dataList[item.ix];
-			return this._filterBox.toDisplay(
-				f,
-				it.source,
-				it._fMisc
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 

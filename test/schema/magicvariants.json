@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.2.1",
+	"version": "1.2.3",
 	"type": "object",
 	"properties": {
 		"variant": {
@@ -169,6 +169,10 @@
 							},
 							"otherSources": {
 								"$ref": "util.json#/definitions/otherSources"
+							},
+							"valueExpression": {
+								"description": "Expression used to calculate each specific variant's value.",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -214,6 +218,9 @@
 						"items": {
 							"type": "string"
 						}
+					},
+					"ammo": {
+						"type": "boolean"
 					}
 				},
 				"required": [
