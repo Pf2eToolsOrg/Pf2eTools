@@ -1,5 +1,10 @@
 {
 	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		},
 		"otherSources": {
 			"monster": {
 				"MM": "MOT",
@@ -125,6 +130,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -223,6 +229,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -343,6 +350,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -461,6 +469,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Keen Senses"
 			],
@@ -582,6 +591,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Legendary Resistances",
 				"Magic Resistance"
@@ -750,7 +760,7 @@
 				{
 					"name": "Swarm (Costs 2 Actions)",
 					"entries": [
-						"Arasta causes two swarms of spiders (see the Monster Manual) to appear in unoccupied spaces within 5 feet of her."
+						"Arasta causes two {@creature swarm of spiders||swarms of spiders} to appear in unoccupied spaces within 5 feet of her."
 					]
 				},
 				{
@@ -787,6 +797,7 @@
 				"name": "Arasta",
 				"source": "MOT"
 			},
+			"hasToken": true,
 			"traitTags": [
 				"Legendary Resistances",
 				"Magic Resistance",
@@ -953,6 +964,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -1115,6 +1127,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"senseTags": [
 				"U"
 			],
@@ -1213,6 +1226,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -1425,6 +1439,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"False Appearance",
 				"Pack Tactics"
@@ -1534,6 +1549,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Charge"
 			],
@@ -1685,6 +1701,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Damage Absorption",
 				"Immutable Form",
@@ -1804,6 +1821,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -1924,6 +1942,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -2048,6 +2067,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Keen Senses",
 				"Pounce"
@@ -2171,6 +2191,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Incorporeal Movement",
 				"Turn Resistance"
@@ -2283,6 +2304,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Incorporeal Movement",
 				"Turn Resistance"
@@ -2388,6 +2410,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Charge"
 			],
@@ -2480,6 +2503,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Amphibious",
 				"Charge"
@@ -2589,6 +2613,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"senseTags": [
 				"SD"
 			],
@@ -2773,6 +2798,7 @@
 				"name": "Hythonia",
 				"source": "MOT"
 			},
+			"hasToken": true,
 			"traitTags": [
 				"Legendary Resistances"
 			],
@@ -2888,6 +2914,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Hold Breath"
 			],
@@ -3006,6 +3033,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -3127,6 +3155,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"senseTags": [
 				"D"
 			],
@@ -3154,117 +3183,36 @@
 			]
 		},
 		{
-			"name": "Medusa (Theran variant)",
+			"name": "Medusa",
 			"source": "MOT",
 			"page": 206,
-			"size": "M",
-			"type": "monstrosity",
-			"alignment": [
-				"L",
-				"E"
-			],
-			"ac": [
-				{
-					"ac": 15,
-					"from": [
-						"natural armor"
+			"_copy": {
+				"name": "Medusa",
+				"source": "MM",
+				"_mod": {
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"The medusa makes either three melee attacks\u2014one with its snake hair, one to constrict, and one with its shortsword\u2014or two ranged attacks with its longbow."
+								]
+							}
+						},
+						{
+							"mode": "appendArr",
+							"items": {
+								"name": "Constrict",
+								"entries": [
+									"{@atk mw} {@hit 3} to hit, reach 10 ft., one target. {@h}7 ({@damage 2d6}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 11}). Until this grapple ends, the target is {@condition restrained}, and the medusa can't constrict another target."
+								]
+							}
+						}
 					]
 				}
-			],
-			"hp": {
-				"average": 127,
-				"formula": "17d8 + 51"
-			},
-			"speed": {
-				"walk": 30
-			},
-			"str": 10,
-			"dex": 15,
-			"con": 16,
-			"int": 12,
-			"wis": 13,
-			"cha": 15,
-			"skill": {
-				"deception": "+5",
-				"insight": "+4",
-				"perception": "+4",
-				"stealth": "+5"
-			},
-			"senses": [
-				"darkvision 60 ft."
-			],
-			"passive": 14,
-			"languages": [
-				"Common"
-			],
-			"cr": "6",
-			"trait": [
-				{
-					"name": "Petrifying Gaze",
-					"entries": [
-						"When a creature that can see the medusa's eyes starts its turn within 30 feet of the medusa, the medusa can force it to make a {@dc 14} Constitution saving throw if the medusa isn't {@condition incapacitated} and can see the creature. If the saving throw fails by 5 or more, the creature is instantly {@condition petrified}. Otherwise, a creature that fails the save begins to turn to stone and is {@condition restrained}. The {@condition restrained} creature must repeat the saving throw at the end of its next turn, becoming {@condition petrified} on a failure or ending the effect on a success. The petrification lasts until the creature is freed by the greater restoration spell or other magic.",
-						"Unless surprised, a creature can avert its eyes to avoid the saving throw at the start of its turn. If the creature does so, it can't see the medusa until the start of its next turn, when it can avert its eyes again. If the creature looks at the medusa in the meantime, it must immediately make the save.",
-						"If the medusa sees itself reflected on a polished surface within 30 feet of it and in an area of bright light, the medusa is, due to its curse, affected by its own gaze."
-					]
-				}
-			],
-			"action": [
-				{
-					"name": "Multiattack",
-					"entries": [
-						"The medusa makes either three melee attacks\u2014one with its snake hair, one to constrict, and one with its shortsword\u2014or two ranged attacks with its longbow."
-					]
-				},
-				{
-					"name": "Snake Hair",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one creature. {@h}4 ({@damage 1d4 + 2}) piercing damage plus 14 ({@damage 4d6}) poison damage."
-					]
-				},
-				{
-					"name": "Shortsword",
-					"entries": [
-						"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
-					]
-				},
-				{
-					"name": "Longbow",
-					"entries": [
-						"{@atk rw} {@hit 5} to hit, range 150/600 ft., one target. {@h}6 ({@damage 1d8 + 2}) piercing damage plus 7 ({@damage 2d6}) poison damage."
-					]
-				},
-				{
-					"name": "Constrict",
-					"entries": [
-						"{@atk mw} {@hit 3} to hit, reach 10 ft., one target. {@h}7 ({@damage 2d6}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 11}) if it is a Large or smaller creature. Until this grapple ends, the target is {@condition restrained}, and the medusa can't constrict another target."
-					]
-				}
-			],
-			"senseTags": [
-				"D"
-			],
-			"actionTags": [
-				"Multiattack"
-			],
-			"languageTags": [
-				"C"
-			],
-			"damageTags": [
-				"B",
-				"I",
-				"P"
-			],
-			"miscTags": [
-				"MW",
-				"RCH",
-				"RNG",
-				"RW"
-			],
-			"conditionInflict": [
-				"grappled",
-				"petrified",
-				"restrained"
-			]
+			}
 		},
 		{
 			"name": "Meletian Hoplite",
@@ -3371,6 +3319,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"actionTags": [
 				"Multiattack"
 			],
@@ -3508,6 +3457,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Amphibious",
 				"Magic Resistance"
@@ -3645,10 +3595,11 @@
 				{
 					"name": "Herd the Underworld (Recharges after a Short or Long Rest)",
 					"entries": [
-						"The shepherd pulls twisted souls from the Underworld; {@dice 1d6} shadows (without Sunlight Weakness; see the Monster Manual) arise in unoccupied spaces within 20 feet of the shepherd. The shadows act right after the shepherd on the same initiative count and fight until they're destroyed. They disappear when the shepherd dies."
+						"The shepherd pulls twisted souls from the Underworld; {@dice 1d6} {@creature shadow||shadows} (without Sunlight Weakness) arise in unoccupied spaces within 20 feet of the shepherd. The shadows act right after the shepherd on the same initiative count and fight until they're destroyed. They disappear when the shepherd dies."
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -3739,6 +3690,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Charge",
 				"Magic Resistance"
@@ -3849,6 +3801,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"languageTags": [
 				"C",
 				"CE"
@@ -3978,6 +3931,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -4094,6 +4048,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Undead Fortitude"
 			],
@@ -4248,6 +4203,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Hold Breath",
 				"Legendary Resistances",
@@ -4342,6 +4298,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Turn Resistance"
 			],
@@ -4443,6 +4400,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Turn Resistance"
 			],
@@ -4542,6 +4500,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Turn Resistance"
 			],
@@ -4639,6 +4598,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Pack Tactics",
 				"Turn Resistance"
@@ -4735,6 +4695,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -4840,6 +4801,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Magic Resistance"
 			],
@@ -4934,6 +4896,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Pack Tactics"
 			],
@@ -5040,6 +5003,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"senseTags": [
 				"D"
 			],
@@ -5153,7 +5117,7 @@
 				{
 					"name": "Summon Water Weird (Recharges after a Short or Long Rest)",
 					"entries": [
-						"As a bonus action, the triton magically summons {@dice 1d4} water weirds (see the Monster Manual). The summoned weirds appear in unoccupied spaces in water within 60 feet of the triton. The water weirds act immediately after the triton on the same initiative count and fight until they're destroyed. They disappear if the triton dies."
+						"As a bonus action, the triton magically summons {@dice 1d4} {@creature water weird||water weirds}. The summoned weirds appear in unoccupied spaces in water within 60 feet of the triton. The water weirds act immediately after the triton on the same initiative count and fight until they're destroyed. They disappear if the triton dies."
 					]
 				}
 			],
@@ -5185,6 +5149,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Amphibious"
 			],
@@ -5303,6 +5268,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Amphibious"
 			],
@@ -5503,6 +5469,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Amphibious",
 				"Legendary Resistances",
@@ -5619,6 +5586,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Aggressive",
 				"Pack Tactics"
@@ -5727,6 +5695,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Keen Senses",
 				"Regeneration"
@@ -5850,6 +5819,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Aggressive",
 				"Pack Tactics"
@@ -5923,6 +5893,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Charge"
 			],
@@ -5990,6 +5961,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"traitTags": [
 				"Pounce"
 			],
@@ -6083,6 +6055,7 @@
 					]
 				}
 			],
+			"hasToken": true,
 			"senseTags": [
 				"SD"
 			],

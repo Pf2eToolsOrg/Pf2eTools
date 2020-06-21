@@ -1,5 +1,17 @@
 @import 'vars';
 
+// region Fix Chrome
+input[type='checkbox']:checked {
+	// stylelint-disable-next-line
+	-webkit-filter: grayscale(100%);
+}
+
+input[type='radio']:checked {
+	// stylelint-disable-next-line
+	-webkit-filter: grayscale(100%);
+}
+// endregion
+
 .roller {
 	color: $rgb-link-blue;
 	cursor: pointer;

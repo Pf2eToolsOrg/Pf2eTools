@@ -309,6 +309,7 @@ function Renderer () {
 				case "dataSpell": this._renderDataSpell(entry, textStack, meta, options); break;
 				case "dataTrapHazard": this._renderDataTrapHazard(entry, textStack, meta, options); break;
 				case "dataObject": this._renderDataObject(entry, textStack, meta, options); break;
+				case "dataItem": this._renderDataItem(entry, textStack, meta, options); break;
 
 				// images
 				case "image": this._renderImage(entry, textStack, meta, options); break;
@@ -583,9 +584,11 @@ function Renderer () {
 		this._renderEntriesSubtypes(entry, textStack, meta, options, true);
 	};
 
+	this._inlineHeaderTerminators = new Set([".", ",", "!", "?", ";", ":"]);
 	this._renderEntriesSubtypes = function (entry, textStack, meta, options, incDepth) {
 		const isInlineTitle = meta.depth >= 2;
-		const pagePart = !isInlineTitle && entry.page > 0 ? ` <span class="rd__title-link">${entry.source ? `<span class="help--subtle" title="${Parser.sourceJsonToFull(entry.source)}">${Parser.sourceJsonToAbv(entry.source)}</span> ` : ""}p${entry.page}</span>` : "";
+		const isAddPeriod = isInlineTitle && entry.name && !this._inlineHeaderTerminators.has(entry.name[entry.name.length - 1]);
+		const pagePart = !isInlineTitle && Renderer.utils.isDisplayPage(entry.page) ? ` <span class="rd__title-link">${entry.source ? `<span class="help--subtle" title="${Parser.sourceJsonToFull(entry.source)}">${Parser.sourceJsonToAbv(entry.source)}</span> ` : ""}p${entry.page}</span>` : "";
 		const nextDepth = incDepth && meta.depth < 2 ? meta.depth + 1 : meta.depth;
 		const styleString = this._renderEntriesSubtypes_getStyleString(entry, meta, isInlineTitle);
 		const dataString = this._renderEntriesSubtypes_getDataString(entry);
@@ -596,7 +599,7 @@ function Renderer () {
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, meta.depth);
 
-		const headerSpan = entry.name ? `<span class="rd__h ${headerClass}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}> <span class="entry-title-inner"${!pagePart && entry.source ? ` title="Source: ${Parser.sourceJsonToFull(entry.source)}${entry.page ? `, p${entry.page}` : ""}"` : ""}>${this.render({type: "inline", entries: [entry.name]})}${isInlineTitle ? "." : ""}</span>${pagePart}</span> ` : "";
+		const headerSpan = entry.name ? `<span class="rd__h ${headerClass}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}> <span class="entry-title-inner"${!pagePart && entry.source ? ` title="Source: ${Parser.sourceJsonToFull(entry.source)}${entry.page ? `, p${entry.page}` : ""}"` : ""}>${this.render({type: "inline", entries: [entry.name]})}${isAddPeriod ? "." : ""}</span>${pagePart}</span> ` : "";
 
 		if (meta.depth === -1) {
 			if (!this._firstSection) textStack[0] += `<hr class="rd__hr rd__hr--section">`;
@@ -981,6 +984,16 @@ function Renderer () {
 		this._renderPrefix(entry, textStack, meta, options);
 		this._renderDataHeader(textStack, entry.dataObject.name);
 		textStack[0] += Renderer.object.getCompactRenderedString(entry.dataObject);
+		this._renderDataFooter(textStack);
+		this._renderSuffix(entry, textStack, meta, options);
+	};
+
+	this._renderDataItem = function (entry, textStack, meta, options) {
+		this._renderPrefix(entry, textStack, meta, options);
+		this._renderDataHeader(textStack, entry.dataItem.name);
+		const id = CryptUtil.uid();
+		const asString = JSON.stringify(entry.dataItem);
+		textStack[0] += `<script id="dataItem-${id}">Renderer.item.populatePropertyAndTypeReference().then(() => {const dataItem = ${asString}; Renderer.item.enhanceItem(dataItem); $("#dataItem-${id}").replaceWith(Renderer.item.getCompactRenderedString(dataItem))})</script>`
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -1532,13 +1545,67 @@ function Renderer () {
 					text: (displayText || name)
 				};
 
-				fauxEntry.href.path = "deities.html";
+				fauxEntry.href.path = UrlUtil.PG_DEITIES;
 				if (!pantheon) fauxEntry.href.hash += `${HASH_LIST_SEP}forgotten realms`;
 				if (!source) fauxEntry.href.hash += `${HASH_LIST_SEP}${SRC_PHB}`;
 				fauxEntry.href.hover = {
 					page: UrlUtil.PG_DEITIES,
 					source: source || SRC_PHB
 				};
+				this._recursiveRender(fauxEntry, textStack, meta);
+
+				break;
+			}
+
+			case "@classFeature": {
+				const unpacked = DataUtil.class.unpackUidClassFeature(text);
+
+				const classPageHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: unpacked.className, source: unpacked.classSource})}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({feature: {ixLevel: unpacked.level - 1, ixFeature: 0}})}`;
+
+				const fauxEntry = {
+					type: "link",
+					href: {
+						type: "internal",
+						path: UrlUtil.PG_CLASSES,
+						hash: classPageHash,
+						hashPreEncoded: true,
+						hover: {
+							page: "classfeature",
+							source: unpacked.source,
+							hash: UrlUtil.URL_TO_HASH_BUILDER["classFeature"](unpacked),
+							hashPreEncoded: true
+						}
+					},
+					text: (unpacked.displayText || unpacked.name)
+				};
+
+				this._recursiveRender(fauxEntry, textStack, meta);
+
+				break;
+			}
+
+			case "@subclassFeature": {
+				const unpacked = DataUtil.class.unpackUidSubclassFeature(text);
+
+				const classPageHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: unpacked.className, source: unpacked.classSource})}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({feature: {ixLevel: unpacked.level - 1, ixFeature: 0}})}`;
+
+				const fauxEntry = {
+					type: "link",
+					href: {
+						type: "internal",
+						path: UrlUtil.PG_CLASSES,
+						hash: classPageHash,
+						hashPreEncoded: true,
+						hover: {
+							page: "subclassfeature",
+							source: unpacked.source,
+							hash: UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](unpacked),
+							hashPreEncoded: true
+						}
+					},
+					text: (unpacked.displayText || unpacked.name)
+				};
+
 				this._recursiveRender(fauxEntry, textStack, meta);
 
 				break;
@@ -1581,10 +1648,12 @@ function Renderer () {
 							source: source || SRC_PHB
 						};
 						if (others.length) {
+							const [subclassShortName, subclassSource, featurePart] = others;
+
 							const classStateOpts = {
 								subclass: {
-									shortName: others[0].trim(),
-									source: others.length > 1 ? others[1].trim() : "phb"
+									shortName: subclassShortName.trim(),
+									source: subclassSource ? subclassSource.trim() : SRC_PHB
 								}
 							};
 
@@ -1592,8 +1661,8 @@ function Renderer () {
 							const hoverSubhashObj = UrlUtil.unpackSubHash(UrlUtil.getClassesPageStatePart(classStateOpts));
 							fauxEntry.href.hover.subhashes = [{key: "state", value: hoverSubhashObj.state, preEncoded: true}];
 
-							if (others.length > 2) {
-								const featureParts = others[2].trim().split("-");
+							if (featurePart) {
+								const featureParts = featurePart.trim().split("-");
 								classStateOpts.feature = {
 									ixLevel: featureParts[0] || "0",
 									ixFeature: featureParts[1] || "0"
@@ -1849,7 +1918,12 @@ function Renderer () {
 
 	this._renderLink_getHoverString = function (entry) {
 		if (!entry.href.hover) return "";
-		let procHash = UrlUtil.encodeForHash(entry.href.hash).replace(/'/g, "\\'");
+
+		let procHash = entry.href.hover.hash
+			? entry.href.hover.hashPreEncoded ? entry.href.hover.hash : UrlUtil.encodeForHash(entry.href.hover.hash)
+			: entry.href.hashPreEncoded ? entry.href.hash : UrlUtil.encodeForHash(entry.href.hash);
+		procHash = procHash.replace(/'/g, "\\'");
+
 		if (this._tagExportDict) {
 			this._tagExportDict[procHash] = {
 				page: entry.href.hover.page,
@@ -2342,7 +2416,7 @@ Renderer.utils = {
 
 		// Add data-page/source/hash attributes for external script use (e.g. Rivet)
 		const $ele = $$`<tr>
-			<th class="rnd-name name ${opts.extraThClasses ? opts.extraThClasses.join(" ") : ""}" colspan="6" ${dataPart}>
+			<th class="rnd-name ${opts.extraThClasses ? opts.extraThClasses.join(" ") : ""}" colspan="6" ${dataPart}>
 				<div class="name-inner">
 					<div class="flex-v-center">
 						<span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>
@@ -2351,7 +2425,7 @@ Renderer.utils = {
 					</div>
 					<div class="stats-source flex-v-baseline">
 						<span class="help--subtle ${it.source ? `${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}` : ""}" ${BrewUtil.sourceJsonToStyle(it.source)}">${it.source ? Parser.sourceJsonToAbv(it.source) : ""}</span>
-						${it.page > 0 ? ` <${pageLinkPart ? `a href="${pageLinkPart}"` : "span"} class="rd__stats-name-page ml-1" title="Page ${it.page}">p${it.page}</${pageLinkPart ? "a" : "span"}>` : ""}
+						${Renderer.utils.isDisplayPage(it.page) ? ` <${pageLinkPart ? `a href="${pageLinkPart}"` : "span"} class="rd__stats-name-page ml-1" title="Page ${it.page}">p${it.page}</${pageLinkPart ? "a" : "span"}>` : ""}
 					</div>
 				</div>
 			</th>
@@ -2360,6 +2434,8 @@ Renderer.utils = {
 		if (opts.asJquery) return $ele;
 		else return $ele[0].outerHTML;
 	},
+
+	isDisplayPage (page) { return page != null && ((!isNaN(page) && page > 0) || isNaN(page)); },
 
 	getExcludedTr (it, dataProp) {
 		if (!ExcludeUtil.isInitialised) return "";
@@ -2383,13 +2459,13 @@ Renderer.utils = {
 			return `${introText} ${it[prop].map(as => {
 				if (as.entry) return Renderer.get().render(as.entry);
 				else {
-					return `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>${as.page > 0 ? `, page ${as.page}` : ""}`;
+					return `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>${Renderer.utils.isDisplayPage(as.page) ? `, page ${as.page}` : ""}`;
 				}
 			}).join("; ")}`
 		}
 
 		const sourceSub = Renderer.utils.getSourceSubText(it);
-		const baseText = it.page > 0 ? `<b>Source:</b> <i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}` : "";
+		const baseText = Renderer.utils.isDisplayPage(it.page) ? `<b>Source:</b> <i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}` : "";
 		const addSourceText = getAltSourceText("additionalSources", "Additional information from");
 		const otherSourceText = getAltSourceText("otherSources", "Also found in");
 		const srdText = it.srd ? `Available in the <span title="Systems Reference Document">SRD</span>${typeof it.srd === "string" ? ` (as &quot;${it.srd}&quot;)` : ""}` : "";
@@ -4062,6 +4138,7 @@ Renderer.monster = {
 
 		handleGroupProp("lairActions", "Lair Actions");
 		handleGroupProp("regionalEffects", "Regional Effects");
+		handleGroupProp("mythicEncounter", `${mon.name} as a Mythic Encounter`);
 
 		return cpy;
 	},
@@ -6236,8 +6313,8 @@ Renderer.hover = {
 		hash = hash.toLowerCase();
 
 		((Renderer.hover._linkCache[page] =
-			Renderer.hover._linkCache[page] || [])[source] =
-			Renderer.hover._linkCache[page][source] || [])[hash] = item;
+			Renderer.hover._linkCache[page] || {})[source] =
+			Renderer.hover._linkCache[page][source] || {})[hash] = item;
 	},
 
 	_getFromCache: (page, source, hash, opts) => {
@@ -6248,7 +6325,7 @@ Renderer.hover = {
 		hash = hash.toLowerCase();
 
 		const out = MiscUtil.get(Renderer.hover._linkCache, page, source, hash);
-		if (opts.isCopy) return MiscUtil.copy(out);
+		if (opts.isCopy && out != null) return MiscUtil.copy(out);
 		return out;
 	},
 
@@ -6258,10 +6335,12 @@ Renderer.hover = {
 
 	_psCacheLoading: {},
 	_flagsCacheLoaded: {},
+	_locks: {},
+	_flags: {},
 
-	async pCacheAndGetHash (page, hash) {
+	async pCacheAndGetHash (page, hash, opts) {
 		const source = hash.split(HASH_LIST_SEP).last();
-		return Renderer.hover.pCacheAndGet(page, source, hash);
+		return Renderer.hover.pCacheAndGet(page, source, hash, opts);
 	},
 
 	/**
@@ -6281,41 +6360,7 @@ Renderer.hover = {
 		switch (page) {
 			case "generic":
 			case "hover": return null;
-			case UrlUtil.PG_CLASSES: {
-				const loadKey = UrlUtil.PG_CLASSES;
-
-				await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
-					page,
-					source,
-					hash,
-					loadKey,
-					async () => {
-						const addToIndex = (cls) => {
-							// add class
-							const clsHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls);
-							const clsEntries = {name: cls.name, type: "section", entries: MiscUtil.copy((cls.classFeatures || []).flat())};
-							Renderer.hover._addToCache(UrlUtil.PG_CLASSES, cls.source || SRC_PHB, clsHash, clsEntries);
-
-							// add subclasses
-							(cls.subclasses || []).forEach(sc => {
-								const scHash = `${clsHash}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: sc})}`;
-								const scEntries = {name: `${sc.name} (${cls.name})`, type: "section", entries: MiscUtil.copy((sc.subclassFeatures || []).flat())};
-								Renderer.hover._addToCache(UrlUtil.PG_CLASSES, cls.source || SRC_PHB, scHash, scEntries);
-							});
-
-							// add all class/subclass features
-							UrlUtil.class.getIndexedEntries(cls).forEach(it => Renderer.hover._addToCache(UrlUtil.PG_CLASSES, it.source, it.hash, it.entry));
-						};
-
-						const brewData = await BrewUtil.pAddBrewData();
-						(brewData.class || []).forEach(cc => addToIndex(cc));
-						const data = await DataUtil.class.loadJSON();
-						data.class.forEach(cc => addToIndex(cc));
-					}
-				);
-
-				return Renderer.hover._getFromCache(page, source, hash, opts);
-			}
+			case UrlUtil.PG_CLASSES: return Renderer.hover._pCacheAndGet_pLoadClasses(page, source, hash, opts);
 			case UrlUtil.PG_SPELLS: return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/spells/`, "spell");
 			case UrlUtil.PG_BESTIARY: return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/bestiary/`, "monster", data => DataUtil.monster.populateMetaReference(data));
 			case UrlUtil.PG_ITEMS: {
@@ -6485,7 +6530,7 @@ Renderer.hover = {
 			}
 			// enregion
 
-			// region fluff
+			// region per-page fluff
 			case `fluff__${UrlUtil.PG_BESTIARY}`: return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/bestiary/`, "monsterFluff");
 			case `fluff__${UrlUtil.PG_SPELLS}`: return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/spells/`, "spellFluff");
 			case `fluff__${UrlUtil.PG_BACKGROUNDS}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-backgrounds.json", "backgroundFluff");
@@ -6494,6 +6539,13 @@ Renderer.hover = {
 			case `fluff__${UrlUtil.PG_RACES}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-races.json", "raceFluff");
 			case `fluff__${UrlUtil.PG_LANGUAGES}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-languages.json", "languageFluff");
 			case `fluff__${UrlUtil.PG_VEHICLES}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-vehicles.json", "vehicleFluff");
+			// endregion
+
+			// region props
+			case "classfeature": return Renderer.hover._pCacheAndGet_pLoadClassFeatures(page, source, hash, opts);
+			case "subclassfeature": return Renderer.hover._pCacheAndGet_pLoadSubclassFeatures(page, source, hash, opts);
+
+			case "raw_subclassfeature": return Renderer.hover._pCacheAndGet_pLoadSubclassFeatures(page, source, hash, opts);
 			// endregion
 
 			default: throw new Error(`No load function defined for page ${page}`);
@@ -6621,6 +6673,204 @@ Renderer.hover = {
 
 		return Renderer.hover._getFromCache(page, source, hash, opts);
 	},
+
+	async _pCacheAndGet_pLoadClasses (page, source, hash, opts) {
+		const loadKey = UrlUtil.PG_CLASSES;
+
+		await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
+			page,
+			source,
+			hash,
+			loadKey,
+			async () => {
+				const pAddToIndex = async cls => {
+					// add class
+					const clsHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls);
+					cls = await DataUtil.class.pGetDereferencedClassData(cls);
+					const clsEntries = {name: cls.name, type: "section", entries: MiscUtil.copy((cls.classFeatures || []).flat())};
+					Renderer.hover._addToCache(UrlUtil.PG_CLASSES, cls.source || SRC_PHB, clsHash, clsEntries);
+
+					// add subclasses
+					await Promise.all((cls.subclasses || []).map(async sc => {
+						sc = await DataUtil.class.pGetDereferencedSubclassData(sc);
+						const scHash = `${clsHash}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: sc})}`;
+						const scEntries = {type: "section", entries: MiscUtil.copy((sc.subclassFeatures || []).flat())};
+						// Always use the class source where available, as these are all keyed as sub-hashes on the classes page
+						Renderer.hover._addToCache(UrlUtil.PG_CLASSES, cls.source || sc.source || SRC_PHB, scHash, scEntries);
+					}));
+
+					// add all class/subclass features
+					UrlUtil.class.getIndexedEntries(cls).forEach(it => Renderer.hover._addToCache(UrlUtil.PG_CLASSES, it.source, it.hash, it.entry));
+				};
+
+				const brewData = await BrewUtil.pAddBrewData();
+				await Promise.all((brewData.class || []).map(cc => pAddToIndex(cc)));
+				const data = await DataUtil.class.loadJSON();
+				await Promise.all(data.class.map(cc => pAddToIndex(cc)));
+			}
+		);
+
+		return Renderer.hover._getFromCache(page, source, hash, opts);
+	},
+
+	async _pCacheAndGet_pLoadClassFeatures (page, source, hash, opts) {
+		const loadKey = page;
+
+		await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
+			page,
+			source,
+			hash,
+			loadKey,
+			async () => {
+				const brewData = await BrewUtil.pAddBrewData();
+				(brewData.classFeature || []).forEach(cf => {
+					const hash = UrlUtil.URL_TO_HASH_BUILDER["classFeature"](cf);
+					Renderer.hover._addToCache("classFeature", cf.source, hash, cf);
+				});
+				await Renderer.hover._pCacheAndGet_pLoadOfficialClassAndSubclassFeatures();
+			}
+		);
+
+		return Renderer.hover._getFromCache(page, source, hash, opts);
+	},
+
+	async _pCacheAndGet_pLoadSubclassFeatures (page, source, hash, opts) {
+		const loadKey = page;
+
+		await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
+			page,
+			source,
+			hash,
+			loadKey,
+			async () => {
+				const brewData = await BrewUtil.pAddBrewData();
+				Renderer.hover._pCacheAndGet_doDereferenceNestedAndCache(brewData.subclassFeature);
+				await Renderer.hover._pCacheAndGet_pLoadOfficialClassAndSubclassFeatures();
+			}
+		);
+
+		return Renderer.hover._getFromCache(page, source, hash, opts);
+	},
+
+	_pCacheAndGet_doDereferenceNestedAndCache (subclassFeatures) {
+		if (!subclassFeatures) return;
+
+		const scfWithRefs = {};
+		const scfWithoutRefs = {};
+		const ptrHasRef = {_: false};
+
+		const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
+		const handlers = {
+			object: (ident, obj) => {
+				if (ptrHasRef._) return obj;
+				if (obj.type === "refSubclassFeature") ptrHasRef._ = true;
+				return obj;
+			}
+		};
+
+		subclassFeatures.forEach(scf => {
+			// Cache the raw version
+			const hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](scf);
+			Renderer.hover._addToCache("raw_subclassFeature", scf.source, hash, scf);
+
+			ptrHasRef._ = false;
+			walker.walk("hover", scf.entries, handlers);
+
+			(ptrHasRef._ ? scfWithRefs : scfWithoutRefs)[hash] = ptrHasRef._ ? MiscUtil.copy(scf) : scf;
+		});
+
+		let cntDerefLoops = 0;
+		while (Object.keys(scfWithRefs).length && cntDerefLoops < 25) { // conservatively avoid infinite looping
+			const hashes = Object.keys(scfWithRefs);
+			for (const hash of hashes) {
+				const scf = scfWithRefs[hash];
+
+				const toReplaceMetas = [];
+				walker.walk(
+					"hover",
+					scf.entries,
+					{
+						array: (ident, arr) => {
+							for (let i = 0; i < arr.length; ++i) {
+								const it = arr[i];
+								if (it.type === "refSubclassFeature") {
+									toReplaceMetas.push({array: arr, ix: i, uid: it.subclassFeature});
+								}
+							}
+							return arr;
+						}
+					}
+				);
+
+				let cntReplaces = 0;
+				for (const toReplaceMeta of toReplaceMetas) {
+					const refParts = DataUtil.class.unpackUidSubclassFeature(toReplaceMeta.uid);
+					const refHash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](refParts);
+
+					if (scfWithoutRefs[refHash]) {
+						cntReplaces++;
+						const cpy = MiscUtil.copy(scfWithoutRefs[refHash]);
+						delete cpy.className;
+						delete cpy.classSource;
+						delete cpy.subclassShortName;
+						delete cpy.subclassSource;
+						delete cpy.level;
+						delete cpy.header;
+						if (scf.source === cpy.source) delete cpy.source;
+						if (scf.page === cpy.page) delete cpy.page;
+						toReplaceMeta.array[toReplaceMeta.ix] = cpy;
+					}
+				}
+
+				if (cntReplaces === toReplaceMetas.length) {
+					delete scfWithRefs[hash];
+					scfWithoutRefs[hash] = scf;
+				}
+			}
+
+			cntDerefLoops++;
+		}
+
+		Object.values(scfWithoutRefs).forEach(scf => {
+			const hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](scf);
+			Renderer.hover._addToCache("subclassFeature", scf.source, hash, scf);
+		});
+
+		// Add the failed-to-resolve entities to the cache nonetheless
+		const scfWithRefsVals = Object.values(scfWithRefs);
+		if (scfWithRefsVals.length) JqueryUtil.doToast({type: "danger", content: `Failed to load references for ${scfWithRefsVals.length} subclass feature${scfWithRefsVals.length === 1 ? "" : "s"}!`});
+		scfWithRefsVals.forEach(scf => {
+			const hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](scf);
+			Renderer.hover._addToCache("subclassFeature", scf.source, hash, scf);
+		});
+	},
+
+	async _pCacheAndGet_pLoadOfficialClassAndSubclassFeatures () {
+		const lockKey = "classFeature__subclassFeature";
+		if (Renderer.hover._flags[lockKey]) return;
+		if (!Renderer.hover._locks[lockKey]) Renderer.hover._locks[lockKey] = new VeLock();
+		await Renderer.hover._locks[lockKey].pLock();
+		if (Renderer.hover._flags[lockKey]) return;
+
+		try {
+			const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/class/index.json`);
+			const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/class/${it}`)));
+
+			allData.forEach(json => {
+				(json.classFeature || []).forEach(cf => {
+					const hash = UrlUtil.URL_TO_HASH_BUILDER["classFeature"](cf);
+					Renderer.hover._addToCache("classFeature", cf.source, hash, cf);
+				});
+			});
+
+			const allSubclassFeatuers = allData.map(json => json.subclassFeature || []).flat();
+			Renderer.hover._pCacheAndGet_doDereferenceNestedAndCache(allSubclassFeatuers);
+
+			Renderer.hover._flags[lockKey] = true;
+		} finally {
+			Renderer.hover._locks[lockKey].unlock();
+		}
+	},
 	// endregion
 
 	getGenericCompactRenderedString (entry, depth = 0) {
@@ -6656,6 +6906,10 @@ Renderer.hover = {
 			case UrlUtil.PG_VEHICLES: return Renderer.vehicle.getCompactRenderedString;
 			case UrlUtil.PG_ACTIONS: return Renderer.action.getCompactRenderedString;
 			case UrlUtil.PG_LANGUAGES: return Renderer.language.getCompactRenderedString;
+			// region props
+			case "classfeature": return Renderer.hover.getGenericCompactRenderedString;
+			case "subclassfeature": return Renderer.hover.getGenericCompactRenderedString;
+			// endregion
 			default: return null;
 		}
 	},
@@ -7105,7 +7359,7 @@ Renderer.dice = {
 			}
 
 			// try use stats table name row
-			titleMaybe = $(ele).closest(`table.stats`).children(`tbody`).first().children(`tr`).first().find(`th.name .stats-name`).text();
+			titleMaybe = $(ele).closest(`table.stats`).children(`tbody`).first().children(`tr`).first().find(`.rnd-name .stats-name`).text();
 			if (titleMaybe) return titleMaybe.trim();
 
 			if (UrlUtil.getCurrentPage() === UrlUtil.PG_CHARACTERS) {
@@ -8719,6 +8973,16 @@ Renderer._stripTagLayer = function (str) {
 					case "@deity": {
 						const parts = Renderer.splitTagByPipe(text);
 						return parts.length >= 4 ? parts[3] : parts[0];
+					}
+
+					case "@classFeature": {
+						const parts = Renderer.splitTagByPipe(text);
+						return parts.length >= 6 ? parts[5] : parts[0];
+					}
+
+					case "@subclassFeature": {
+						const parts = Renderer.splitTagByPipe(text);
+						return parts.length >= 8 ? parts[7] : parts[0];
 					}
 
 					case "@homebrew": {

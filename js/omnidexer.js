@@ -13,7 +13,8 @@ class Omnidexer {
 		 *   n: "Display Name",
 		 *   b: "Base Name" // Optional; name is used if not specified
 		 *   s: "PHB", // source
-		 *   u: "spell name_phb,
+		 *   u: "spell name_phb, // hash
+		 *   uh: "spell name_phb, // Optional; hash for href if the link should be different from the hover lookup hash.
 		 *   p: 110, // page
 		 *   h: 1 // if isHover enabled, otherwise undefined
 		 *   c: 10, // category ID
@@ -61,7 +62,7 @@ class Omnidexer {
 	 * @param options.isNoFilter If filtering rules are to be ignored (e.g. for tests).
 	 * @param options.alt Sub-options for alternate indices.
 	 */
-	addToIndex (arbiter, json, options) {
+	async pAddToIndex (arbiter, json, options) {
 		options = options || {};
 		const index = this._index;
 		let id = this.id;
@@ -86,27 +87,32 @@ class Omnidexer {
 			return toAdd;
 		};
 
-		const handleItem = (it, i, name) => {
-			if (!it.noDisplay) {
-				const toAdd = getToAdd(it, {n: name}, i);
+		const pHandleItem = async (it, i, name) => {
+			if (it.noDisplay) return;
 
-				if ((options.isNoFilter || (!arbiter.include && !(arbiter.filter && arbiter.filter(it))) || (!arbiter.filter && (!arbiter.include || arbiter.include(it)))) && !arbiter.isOnlyDeep) index.push(toAdd);
+			const toAdd = getToAdd(it, {n: name}, i);
 
-				const primary = {it: it, ix: i, parentName: name};
-				const deepItems = arbiter.getDeepIndex(this, primary, it);
-				deepItems.forEach(item => {
-					const toAdd = getToAdd(it, item);
-					if (!arbiter.filter || !arbiter.filter(it)) index.push(toAdd);
-				});
-			}
+			if ((options.isNoFilter || (!arbiter.include && !(arbiter.filter && arbiter.filter(it))) || (!arbiter.filter && (!arbiter.include || arbiter.include(it)))) && !arbiter.isOnlyDeep) index.push(toAdd);
+
+			const primary = {it: it, ix: i, parentName: name};
+			const deepItems = await arbiter.pGetDeepIndex(this, primary, it);
+			deepItems.forEach(item => {
+				const toAdd = getToAdd(it, item);
+				if (!arbiter.filter || !arbiter.filter(it)) index.push(toAdd);
+			});
 		};
 
-		Omnidexer.getProperty(json, arbiter.listProp).forEach((it, i) => {
-			const name = Omnidexer.getProperty(it, arbiter.primary || "name");
-			handleItem(it, i, name);
+		const dataArr = Omnidexer.getProperty(json, arbiter.listProp);
+		if (dataArr) {
+			for (let i = 0; i < dataArr.length; ++i) {
+				const it = dataArr[i];
 
-			if (it.alias) it.alias.forEach(a => handleItem(it, i, a));
-		});
+				const name = Omnidexer.getProperty(it, arbiter.primary || "name");
+				await pHandleItem(it, i, name);
+
+				if (it.alias) it.alias.forEach(a => pHandleItem(it, i, a));
+			}
+		}
 
 		this.id = id;
 	}
@@ -167,7 +173,7 @@ class IndexableDirectory {
 		this.pFnPreProcBrew = opts.pFnPreProcBrew;
 	}
 
-	getDeepIndex () { return []; }
+	pGetDeepIndex () { return []; }
 }
 
 class IndexableDirectoryBestiary extends IndexableDirectory {
@@ -235,7 +241,7 @@ class IndexableDirectorySubclass extends IndexableDirectory {
 		});
 	}
 
-	getDeepIndex (indexer, primary, it) {
+	pGetDeepIndex (indexer, primary, it) {
 		if (!it.subclasses) return [];
 		return it.subclasses.map(sc => ({
 			b: sc.name,
@@ -286,34 +292,26 @@ class IndexableDirectoryClassFeature extends IndexableDirectory {
 			dir: "class",
 			primary: "name",
 			source: "source",
-			listProp: "class",
+			listProp: "classFeature",
 			baseUrl: "classes.html",
 			isOnlyDeep: true,
 			isHover: true
 		});
 	}
 
-	getDeepIndex (indexer, primary, it) {
-		const out = [];
-		const entriesIxd = UrlUtil.class.getIndexedEntries(it);
-		entriesIxd.forEach(it => {
-			switch (it._type) {
-				case "classFeature":
-					out.push({
-						b: primary.parentName,
-						n: `${primary.parentName} ${it.level}; ${it.name}`,
-						s: it.source,
-						u: it.hash
-					});
-					break;
-				case "subclassFeature":
-				case "subclassFeaturePart":
-					break;
-				default:
-					throw new Error(`Unhandled type "${it._type}"`);
+	async pGetDeepIndex (indexer, primary, it) {
+		// TODO(Future) this could pull in the class data to get an accurate feature index; default to 0 for now
+		const ixFeature = 0;
+		const classPageHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: it.className, source: it.classSource})}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({feature: {ixLevel: it.level - 1, ixFeature}})}`;
+		return [
+			{
+				n: `${it.className} ${it.level}; ${it.name}`,
+				s: it.source,
+				u: UrlUtil.URL_TO_HASH_BUILDER["classFeature"](it),
+				uh: classPageHash,
+				p: it.page
 			}
-		});
-		return out;
+		];
 	}
 }
 
@@ -324,7 +322,7 @@ class IndexableDirectorySubclassFeature extends IndexableDirectory {
 			dir: "class",
 			primary: "name",
 			source: "source",
-			listProp: "class",
+			listProp: "subclassFeature",
 			brewProp: "subclass",
 			baseUrl: "classes.html",
 			isOnlyDeep: true,
@@ -333,27 +331,22 @@ class IndexableDirectorySubclassFeature extends IndexableDirectory {
 		});
 	}
 
-	getDeepIndex (indexer, primary, it) {
-		const out = [];
-		const entriesIxd = UrlUtil.class.getIndexedEntries(it);
-		entriesIxd.forEach(it => {
-			switch (it._type) {
-				case "classFeature":
-					break;
-				case "subclassFeature":
-				case "subclassFeaturePart":
-					out.push({
-						b: it.subclassName,
-						n: `${it.subclassShortName} ${primary.parentName} ${it.level}; ${it.name}`,
-						s: indexer.getMetaId("s", it.source),
-						u: it.hash
-					});
-					break;
-				default:
-					throw new Error(`Unhandled type "${it._type}"`);
+	async pGetDeepIndex (indexer, primary, it) {
+		const ixFeature = 0;
+		const pageStateOpts = {
+			subclass: {shortName: it.subclassShortName, source: it.source},
+			feature: {ixLevel: it.level - 1, ixFeature}
+		};
+		const classPageHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: it.className, source: it.classSource})}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart(pageStateOpts)}`;
+		return [
+			{
+				n: `${it.subclassShortName} ${it.className} ${it.level}; ${it.name}`,
+				s: it.source,
+				u: UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](it),
+				uh: classPageHash,
+				p: it.page
 			}
-		});
-		return out;
+		];
 	}
 }
 
@@ -406,7 +399,7 @@ class IndexableFile {
 	/**
 	 * A function which returns an additional "deep" list of index docs.
 	 */
-	getDeepIndex () { return []; }
+	pGetDeepIndex () { return []; }
 }
 
 class IndexableFileBackgrounds extends IndexableFile {
@@ -505,7 +498,7 @@ class IndexableFileMagicVariants extends IndexableFile {
 		});
 	}
 
-	getDeepIndex (indexer, primary, it) {
+	pGetDeepIndex (indexer, primary, it) {
 		const revName = Renderer.item.modifierPostToPre(it);
 		if (revName) {
 			return [{
@@ -777,7 +770,7 @@ class IndexableFilePsionics extends IndexableFile {
 		});
 	}
 
-	getDeepIndex (indexer, primary, it) {
+	pGetDeepIndex (indexer, primary, it) {
 		if (!it.modes) return [];
 		return it.modes.map(m => ({d: 1, n: `${primary.parentName}; ${m.name}`}));
 	}
@@ -795,7 +788,7 @@ class IndexableFileRaces extends IndexableFile {
 		});
 	}
 
-	getDeepIndex (indexer, primary, it) {
+	pGetDeepIndex (indexer, primary, it) {
 		const subs = Renderer.race._mergeSubrace(it);
 		return subs.map(r => ({
 			n: r.name,
@@ -829,7 +822,7 @@ class IndexableFileVariantRules extends IndexableFile {
 	}
 
 	// FIXME is this still needed?
-	getDeepIndex (indexer, primary, it) {
+	pGetDeepIndex (indexer, primary, it) {
 		// const names = [];
 		// it.entries.forEach(e => {
 		// 	Renderer.getNames(names, e, 1);
@@ -907,7 +900,7 @@ class IndexableFileQuickReference extends IndexableFile {
 			});
 	}
 
-	getDeepIndex (indexer, primary, it) {
+	pGetDeepIndex (indexer, primary, it) {
 		return it.entries
 			.map(it => {
 				return IndexableFileQuickReference.getChapterNameMetas(it).map(nameMeta => {
@@ -1070,7 +1063,7 @@ class IndexableFileLanguages extends IndexableFile {
 		});
 	}
 
-	getDeepIndex (indexer, primary, it) {
+	pGetDeepIndex (indexer, primary, it) {
 		return (it.dialects || []).map(d => ({
 			n: d
 		}));

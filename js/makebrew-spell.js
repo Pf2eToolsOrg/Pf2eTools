@@ -106,6 +106,9 @@ class SpellBuilder extends Builder {
 		this.doCreateProxies();
 
 		const _cb = () => {
+			// Prefer numerical pages if possible
+			if (isNumber(this._state.page)) this._state.page = Number(this._state.page);
+
 			// do post-processing
 			TagCondition.tryTagConditions(this._state, true);
 
@@ -128,7 +131,7 @@ class SpellBuilder extends Builder {
 		BuilderUi.$getStateIptString("Name", cb, this._state, {nullable: false, callback: () => this.renderSideMenu()}, "name").appendTo(infoTab.$wrpTab);
 		this._$selSource = this.$getSourceInput(cb).appendTo(infoTab.$wrpTab);
 		this.__$getOtherSourcesInput(cb).appendTo(infoTab.$wrpTab);
-		BuilderUi.$getStateIptNumber("Page", cb, this._state, {}, "page").appendTo(infoTab.$wrpTab);
+		BuilderUi.$getStateIptString("Page", cb, this._state, {}, "page").appendTo(infoTab.$wrpTab);
 		BuilderUi.$getStateIptEnum("Level", cb, this._state, {nullable: false, fnDisplay: (it) => Parser.spLevelToFull(it), vals: [...new Array(21)].map((_, i) => i)}, "level").appendTo(infoTab.$wrpTab);
 		BuilderUi.$getStateIptEnum("School", cb, this._state, {nullable: false, fnDisplay: (it) => Parser.spSchoolAbvToFull(it), vals: [...Parser.SKL_ABVS]}, "school").appendTo(infoTab.$wrpTab);
 		BuilderUi.$getStateIptStringArray(
@@ -273,10 +276,13 @@ class SpellBuilder extends Builder {
 	__$getOtherSourcesInput__getOtherSourceRow (doUpdateState, otherSourceRows, os) {
 		const getOtherSource = () => {
 			const out = {source: $selSource.val()};
-			const pageNum = UiUtil.strToInt($iptPage.val());
-			if (pageNum) {
-				out.page = pageNum;
-				$iptPage.val(pageNum);
+			const pageRaw = $iptPage.val();
+			if (pageRaw) {
+				const page = isNumber(pageRaw) ? UiUtil.strToInt(pageRaw) : pageRaw;
+				if (page) {
+					out.page = page;
+					$iptPage.val(page);
+				}
 			}
 			return out;
 		};

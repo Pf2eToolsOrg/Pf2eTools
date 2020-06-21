@@ -556,7 +556,7 @@ class Builder extends ProxyBase {
 			this.ixBrew = await BrewUtil.pAddEntry(this._prop, cpy);
 			await Omnisearch.pAddToIndex(this._prop, cpy);
 			await SearchWidget.P_LOADING_CONTENT;
-			SearchWidget.addToIndexes(this._prop, cpy);
+			await SearchWidget.pAddToIndexes(this._prop, cpy);
 		}
 		this.isEntrySaved = true;
 		this.mutSavedButtonText();

@@ -345,7 +345,8 @@ PropOrder._LEGENDARY_GROUP = [
 	"name",
 	"source",
 	"lairActions",
-	"regionalEffects"
+	"regionalEffects",
+	"mythicEncounter"
 ];
 PropOrder._CLASS = [
 	"name",
@@ -393,6 +394,38 @@ PropOrder._CLASS__SUBCLASS = [
 
 	"subclassTableGroups",
 	"subclassFeatures"
+];
+PropOrder._CLASS_FEATURE = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"className",
+	"classSource",
+	"level",
+
+	"header",
+	"type",
+	"entries"
+];
+PropOrder._SUBCLASS_FEATURE = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"className",
+	"classSource",
+	"subclassShortName",
+	"subclassSource",
+	"level",
+
+	"header",
+	"type",
+	"entries"
 ];
 PropOrder._LANGUAGE = [
 	"name",
@@ -918,6 +951,8 @@ PropOrder._PROP_TO_LIST = {
 	"trait": PropOrder._TRAIT,
 	"legendaryGroup": PropOrder._LEGENDARY_GROUP,
 	"class": PropOrder._CLASS,
+	"classFeature": PropOrder._CLASS_FEATURE,
+	"subclassFeature": PropOrder._SUBCLASS_FEATURE,
 	"language": PropOrder._LANGUAGE,
 	"condition": PropOrder._CONDITION,
 	"disease": PropOrder._DISEASE,

@@ -50,7 +50,6 @@ class PageFilterClasses extends PageFilter {
 	_addEntrySourcesToFilter (entry) { this._sourceWalker("sourceWalker", entry, this._sourcePrimitiveHandlers); }
 
 	/**
-	 *
 	 * @param cls
 	 * @param isExcluded
 	 * @param opts Options object.

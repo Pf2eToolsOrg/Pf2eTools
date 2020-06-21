@@ -4,7 +4,7 @@
 
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.2.22",
+	"version": "1.2.23",
 
 	"definitions" : {
 		"_arrayOfString": {
@@ -649,6 +649,13 @@
 												},
 												"source": {
 													"type": "string"
+												},
+												"hash": {
+													"description": "Optional; overrides the href hash for hover handlers.",
+													"type": "string"
+												},
+												"hashPreEncoded": {
+													"type": "boolean"
 												}
 											},
 											"additionalProperties": false,
@@ -1134,6 +1141,30 @@
 				"dataObject"
 			]
 		},
+		"entryDataItem": {
+			"properties": {
+				"type": {"const": "dataItem"},
+				"dataItem": {
+					"$ref" : "items.json#/definitions/item"
+				}
+			},
+			"required": [
+				"type",
+				"dataItem"
+			]
+		},
+		"entryRefSubclassFeature": {
+			"properties": {
+				"type": {"const": "refSubclassFeature"},
+				"subclassFeature": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"type",
+				"subclassFeature"
+			]
+		},
 		"entryHr": {
 			"properties": {
 				"type": {"const": "hr"}
@@ -1450,6 +1481,8 @@
 		{"$ref": "#/definitions/entryDataSpell"},
 		{"$ref": "#/definitions/entryDataTrapHazard"},
 		{"$ref": "#/definitions/entryDataObject"},
+		{"$ref": "#/definitions/entryDataItem"},
+		{"$ref": "#/definitions/entryRefSubclassFeature"},
 		{"$ref": "#/definitions/entryHr"},
 		{"$ref": "#/definitions/entrySpellcasting"},
 		{"$ref": "#/definitions/entryFlowchart"},

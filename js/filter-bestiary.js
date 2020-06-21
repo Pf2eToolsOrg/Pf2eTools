@@ -267,7 +267,7 @@ class PageFilterBestiary extends PageFilter {
 		mon._fSkill = mon.skill ? Object.keys(mon.skill) : [];
 		mon._fSources = SourceFilter.getCompleteFilterSources(mon);
 
-		mon._fMisc = mon.legendary || mon.legendaryGroup ? ["Legendary"] : [];
+		mon._fMisc = mon.legendary ? ["Legendary"] : [];
 		if (mon.familiar) mon._fMisc.push("Familiar");
 		if (mon.type.swarmSize) mon._fMisc.push("Swarm");
 		if (mon.spellcasting) {

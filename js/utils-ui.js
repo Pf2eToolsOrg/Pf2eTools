@@ -801,7 +801,7 @@ class SearchWidget {
 	}
 
 	static docToPageSourceHash (doc) {
-		const page = UrlUtil.categoryToPage(doc.c);
+		const page = UrlUtil.categoryToHoverPage(doc.c);
 		const source = doc.s;
 		const hash = doc.u;
 
@@ -1014,17 +1014,18 @@ class SearchWidget {
 		this._$iptSearch.focus();
 	}
 
-	static addToIndexes (prop, entry) {
+	static async pAddToIndexes (prop, entry) {
 		const nextId = Object.values(SearchWidget.CONTENT_INDICES.ALL.documentStore.docs).length;
 
 		const indexer = new Omnidexer(nextId);
 
 		const toIndex = {[prop]: [entry]};
 
-		Omnidexer.TO_INDEX__FROM_INDEX_JSON.filter(it => it.listProp === prop)
-			.forEach(it => indexer.addToIndex(it, toIndex));
-		Omnidexer.TO_INDEX.filter(it => it.listProp === prop)
-			.forEach(it => indexer.addToIndex(it, toIndex));
+		const toIndexMultiPart = Omnidexer.TO_INDEX__FROM_INDEX_JSON.filter(it => it.listProp === prop);
+		for (const it of toIndexMultiPart) await indexer.pAddToIndex(it, toIndex);
+
+		const toIndexSinglePart = Omnidexer.TO_INDEX.filter(it => it.listProp === prop);
+		for (const it of toIndexSinglePart) await indexer.pAddToIndex(it, toIndex);
 
 		const toAdd = Omnidexer.decompressIndex(indexer.getIndex());
 		toAdd.forEach(d => {
@@ -2948,6 +2949,7 @@ class ComponentUiUtil {
 	 * @param [opts.html] HTML to convert to element to use.
 	 * @param [opts.isAllowNull] If null is allowed.
 	 * @param [opts.fnDisplay] Value display function.
+	 * @param [opts.displayNullAs] If null values are allowed, display them as this string.
 	 * @param [opts.asMeta] If a meta-object should be returned containing the hook and the select.
 	 * @return {JQuery}
 	 */
@@ -2963,7 +2965,7 @@ class ComponentUiUtil {
 					else component._state[prop] = opts.values[0];
 				}
 			});
-		if (opts.isAllowNull) $(`<option/>`, {value: -1, text: "\u2014"}).appendTo($sel);
+		if (opts.isAllowNull) $(`<option/>`, {value: -1, text: opts.displayNullAs || "\u2014"}).appendTo($sel);
 		opts.values.forEach((it, i) => $(`<option/>`, {value: i, text: opts.fnDisplay ? opts.fnDisplay(it) : it}).appendTo($sel));
 		const hook = () => {
 			const searchFor = component._state[prop] === undefined ? null : component._state[prop];

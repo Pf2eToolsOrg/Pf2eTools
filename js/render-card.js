@@ -404,7 +404,7 @@ class RendererCard {
 RendererCard.utils = class {
 	static getPageText (it) {
 		const sourceSub = Renderer.utils.getSourceSubText(it);
-		const baseText = it.page > 0 ? `text | <b>Source:</b> <i>${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}` : "";
+		const baseText = Renderer.utils.isDisplayPage(it.page) ? `text | <b>Source:</b> <i>${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}` : "";
 		const addSourceText = this._getPageText_getAltSourceText(it, "additionalSources", "Additional information from");
 		const otherSourceText = this._getPageText_getAltSourceText(it, "otherSources", "Also found in");
 		const externalSourceText = this._getPageText_getAltSourceText(it, "externalSources", "External sources:");
@@ -417,7 +417,7 @@ RendererCard.utils = class {
 
 		return `${introText} ${it[prop].map(as => {
 			if (as.entry) return Renderer.get().render(as.entry);
-			else return `<i>${Parser.sourceJsonToAbv(as.source)}</i>>${as.page > 0 ? `, page ${as.page}` : ""}`;
+			else return `<i>${Parser.sourceJsonToAbv(as.source)}</i>>${Renderer.utils.isDisplayPage(as.page) ? `, page ${as.page}` : ""}`;
 		}).join("; ")}`
 	}
 };

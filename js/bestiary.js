@@ -713,7 +713,7 @@ function renderStatblock (mon, isScaled) {
 					meta.$ele.show();
 					setTimeout(() => meta.$ele.css("max-width", ""), 10); // hack to clear the earlier 100% width
 
-					if (meta.name && meta.source) $footer.html(`<div>${meta.displayName || meta.name}; <span title="${Parser.sourceJsonToFull(meta.source)}">${Parser.sourceJsonToAbv(meta.source)}${meta.page > 0 ? ` p${meta.page}` : ""}</span></div>`);
+					if (meta.name && meta.source) $footer.html(`<div>${meta.displayName || meta.name}; <span title="${Parser.sourceJsonToFull(meta.source)}">${Parser.sourceJsonToAbv(meta.source)}${Renderer.utils.isDisplayPage(meta.page) ? ` p${meta.page}` : ""}</span></div>`);
 					else $footer.html("");
 
 					$wrpFooter.detach().appendTo(meta.$ele);
@@ -902,12 +902,12 @@ function renderStatblock (mon, isScaled) {
 	Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
 }
 
-function handleUnknownHash (link, sub) {
+async function pHandleUnknownHash (link, sub) {
 	const src = Object.keys(bestiaryPage._multiSource.loadedSources)
 		.find(src => src.toLowerCase() === decodeURIComponent(link.split(HASH_LIST_SEP)[1]).toLowerCase());
 	if (src) {
-		bestiaryPage._multiSource.pLoadSource(src, "yes")
-			.then(() => Hist.hashChange());
+		await bestiaryPage._multiSource.pLoadSource(src, "yes");
+		Hist.hashChange();
 	}
 }
 

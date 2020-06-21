@@ -841,10 +841,10 @@ class ConverterUi extends BaseComponent {
 	set _outReadOnly (val) { this._editorOut.setOptions({readOnly: val}); }
 
 	get _outText () { return this._editorOut.getValue(); }
-	set _outText (text) { return this._editorOut.setValue(text, -1); }
+	set _outText (text) { this._editorOut.setValue(text, -1); }
 
 	get inText () { return CleanUtil.getCleanString((this._editorIn.getValue() || "").trim(), false); }
-	set inText (text) { return this._editorIn.setValue(text, -1); }
+	set inText (text) { this._editorIn.setValue(text, -1); }
 
 	_getDefaultState () { return MiscUtil.copy(ConverterUi._DEFAULT_STATE); }
 }

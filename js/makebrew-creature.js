@@ -338,6 +338,9 @@ class CreatureBuilder extends Builder {
 		this.doCreateProxies();
 
 		const _cb = () => {
+			// Prefer numerical pages if possible
+			if (isNumber(this._state.page)) this._state.page = Number(this._state.page);
+
 			Renderer.monster.updateParsed(this._state);
 
 			// do post-processing
@@ -372,7 +375,7 @@ class CreatureBuilder extends Builder {
 		BuilderUi.$getStateIptString("Name", cb, this._state, {nullable: false, callback: () => this.renderSideMenu()}, "name").appendTo(infoTab.$wrpTab);
 		this.__$getShortNameInput(cb).appendTo(infoTab.$wrpTab);
 		this._$selSource = this.$getSourceInput(cb).appendTo(infoTab.$wrpTab);
-		BuilderUi.$getStateIptNumber("Page", cb, this._state, {}, "page").appendTo(infoTab.$wrpTab);
+		BuilderUi.$getStateIptString("Page", cb, this._state, {}, "page").appendTo(infoTab.$wrpTab);
 		this.__$getAlignmentInput(cb).appendTo(infoTab.$wrpTab);
 		this.__$getCrInput(cb).appendTo(infoTab.$wrpTab);
 		this.__$getProfBonusInput(cb).appendTo(infoTab.$wrpTab);
@@ -2713,9 +2716,10 @@ class CreatureBuilder extends Builder {
 
 		const sourceControls = options.prop === "variant" ? (() => {
 			const getState = () => {
+				const pageRaw = $iptPage.val();
 				const out = {
 					source: $selVariantSource.val().unescapeQuotes(),
-					page: UiUtil.strToInt($iptPage.val())
+					page: isNumber(pageRaw) ? UiUtil.strToInt(pageRaw) : pageRaw
 				};
 				if (!out.source) return null;
 				if (!out.page) delete out.page;

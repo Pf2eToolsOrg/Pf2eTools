@@ -381,12 +381,12 @@ async function pPreloadSublistSources (json) {
 	}
 }
 
-function handleUnknownHash (link, sub) {
+async function pHandleUnknownHash (link, sub) {
 	const src = Object.keys(spellsPage._multiSource.loadedSources)
 		.find(src => src.toLowerCase() === decodeURIComponent(link.split(HASH_LIST_SEP)[1]).toLowerCase());
 	if (src) {
-		spellsPage._multiSource.pLoadSource(src, "yes")
-			.then(() => Hist.hashChange());
+		await spellsPage._multiSource.pLoadSource(src, "yes");
+		Hist.hashChange();
 	}
 }
 

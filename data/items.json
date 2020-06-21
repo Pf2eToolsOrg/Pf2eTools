@@ -15887,6 +15887,26 @@
 						"3 {@item torch|phb|torches}"
 					]
 				}
+			],
+			"packContents": [
+				"backpack|phb",
+				"chest|phb",
+				"crowbar|phb",
+				"hammer|phb",
+				{
+					"special": "wooden stake",
+					"quantity": 3
+				},
+				"holy symbol|phb",
+				"holy water (flask)|phb",
+				"manacles|phb",
+				"steel mirror|phb",
+				"oil (flask)|phb",
+				"tinderbox|phb",
+				{
+					"item": "torch|phb",
+					"quantity": 3
+				}
 			]
 		},
 		{
@@ -16756,6 +16776,7 @@
 			"tier": "minor",
 			"rarity": "common",
 			"wondrous": true,
+			"weight": 3,
 			"entries": [
 				"While holding this orb, you can use an action to determine which way is north. This property functions only on the Material Plane."
 			]
@@ -16768,6 +16789,7 @@
 			"rarity": "artifact",
 			"reqAttune": true,
 			"wondrous": true,
+			"weight": 3,
 			"recharge": "dawn",
 			"charges": 7,
 			"entries": [
@@ -16840,6 +16862,7 @@
 			"rarity": "rare",
 			"reqAttune": true,
 			"wondrous": true,
+			"weight": 3,
 			"entries": [
 				"This orb of granite is about the size of an adult human's fist. The stein (stone) rune appears on it in the form of crystalline veins that run across the surface. The orb has the following properties, which work only while it's on your person.",
 				{
@@ -16899,6 +16922,7 @@
 			"reqAttune": true,
 			"wondrous": true,
 			"curse": true,
+			"weight": 3,
 			"entries": [
 				"This onyx sphere bears deep, spiraling grooves and dangles from an iron chain. While the orb is on your person, you gain the following benefits:",
 				{
@@ -16925,6 +16949,7 @@
 			"tier": "minor",
 			"rarity": "common",
 			"wondrous": true,
+			"weight": 3,
 			"entries": [
 				"While holding this orb, you can use an action to determine whether it is morning, afternoon, evening, or nighttime outside. This property functions only on the Material Plane."
 			]
@@ -20771,6 +20796,7 @@
 			"type": "RD",
 			"rarity": "uncommon",
 			"reqAttune": true,
+			"weight": 2,
 			"recharge": "dawn",
 			"charges": 3,
 			"entries": [
@@ -20874,6 +20900,7 @@
 			"type": "RD",
 			"rarity": "rare",
 			"reqAttune": true,
+			"weight": 2,
 			"recharge": "dawn",
 			"charges": 10,
 			"entries": [
@@ -25693,7 +25720,7 @@
 						[
 							"12",
 							"You have a +1 bonus to attack rolls with weapons or spells (your choice).",
-							"The cure wounds spell restores no hit points for you."
+							"The {@spell cure wounds} spell restores no hit points for you."
 						],
 						[
 							"13",
@@ -25707,7 +25734,7 @@
 						],
 						[
 							"15",
-							"You understand all languages, as if under the effect of a comprehend languages spell.",
+							"You understand all languages, as if under the effect of a {@spell comprehend languages} spell.",
 							"Whenever you speak, you speak in a random language (possibly including languages you don't normally know)."
 						],
 						[
@@ -25792,7 +25819,7 @@
 						],
 						[
 							"32",
-							"You know whether creatures within 15 feet of you are lying, as if you were the center of a zone of truth spell.",
+							"You know whether creatures within 15 feet of you are lying, as if you were the center of a {@spell zone of truth} spell.",
 							"Whenever you would speak falsely, you cannot speak at all."
 						],
 						[
@@ -26171,7 +26198,9 @@
 				"slow",
 				"healing word",
 				"modify memory",
-				"unseen servant"
+				"unseen servant",
+				"comprehend languages",
+				"zone of truth"
 			]
 		},
 		{
@@ -28563,6 +28592,7 @@
 			"type": "WD",
 			"tier": "minor",
 			"rarity": "common",
+			"weight": 1,
 			"recharge": "dawn",
 			"charges": 3,
 			"entries": [
@@ -28741,7 +28771,6 @@
 			"type": "WD",
 			"rarity": "artifact",
 			"reqAttune": true,
-			"wondrous": true,
 			"sentient": true,
 			"weight": 4,
 			"weaponCategory": "simple",
@@ -28877,6 +28906,7 @@
 			"type": "WD",
 			"tier": "minor",
 			"rarity": "common",
+			"weight": 1,
 			"recharge": "dawn",
 			"charges": 7,
 			"entries": [
@@ -28891,6 +28921,7 @@
 			"type": "WD",
 			"tier": "minor",
 			"rarity": "common",
+			"weight": 1,
 			"recharge": "dawn",
 			"charges": 3,
 			"entries": [
@@ -28923,6 +28954,7 @@
 			"type": "WD",
 			"tier": "minor",
 			"rarity": "common",
+			"weight": 1,
 			"recharge": "dawn",
 			"charges": 3,
 			"entries": [
@@ -28991,6 +29023,7 @@
 			"type": "WD",
 			"rarity": "rare",
 			"reqAttune": true,
+			"weight": 1,
 			"recharge": "midnight",
 			"charges": 7,
 			"entries": [
@@ -29030,6 +29063,7 @@
 			"type": "WD",
 			"rarity": "rare",
 			"reqAttune": true,
+			"weight": 1,
 			"recharge": "dawn",
 			"charges": 7,
 			"entries": [
@@ -30811,6 +30845,7 @@
 			"rarity": "common",
 			"reqAttune": true,
 			"wondrous": true,
+			"weight": 3,
 			"items": [
 				"Orb of Shielding (Fernian Basalt)|ERLW",
 				"Orb of Shielding (Irian Quartz)|ERLW",
@@ -30881,6 +30916,46 @@
 			"page": 188,
 			"rarity": "rare",
 			"wondrous": true,
+			"entries": [
+				"This tiny object looks like a feather. Different types of feather tokens exist, each with a different single-use effect. The DM chooses the kind of token or determines it randomly.",
+				{
+					"type": "table",
+					"colLabels": [
+						"d100",
+						"Feather Token"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"01-20",
+							"{@item Quaal's Feather Token, Anchor||Anchor}"
+						],
+						[
+							"21-35",
+							"{@item Quaal's Feather Token, Bird||Bird}"
+						],
+						[
+							"36-50",
+							"{@item Quaal's Feather Token, Fan||Fan}"
+						],
+						[
+							"51-65",
+							"{@item Quaal's Feather Token, Swan Boat||Boat}"
+						],
+						[
+							"66-90",
+							"{@item Quaal's Feather Token, Tree||Tree}"
+						],
+						[
+							"91-100",
+							"{@item Quaal's Feather Token, Whip||Whip}"
+						]
+					]
+				}
+			],
 			"items": [
 				"Quaal's Feather Token, Anchor",
 				"Quaal's Feather Token, Bird",

@@ -88,14 +88,23 @@ const BookUtil = {
 
 	makeHeadersBlock (bookId, chapterIndex, chapter, addPrefix, addOnclick, defaultHeadersHidden) {
 		let out = `<ul class="bk-headers" ${defaultHeadersHidden ? `style="display: none;"` : ""}>`;
+
+		const headerCounts = {};
+
 		chapter.headers && chapter.headers.forEach(h => {
 			const headerText = BookUtil.getHeaderText(h);
+
+			const headerPos = headerCounts[headerText] || 0;
+			headerCounts[headerText] = (headerCounts[headerText] || 0) + 1;
+
 			const displayText = h.header ? `<span class="bk-contents__sub_spacer--1">\u2013</span>${h.header}` : h; // handle entries with depth
 			out += `<li class="lst--border">
-				<a href="${addPrefix || ""}#${bookId},${chapterIndex},${UrlUtil.encodeForHash(headerText)}" data-book="${bookId}" data-chapter="${chapterIndex}" data-header="${headerText.escapeQuotes()}" ${addOnclick ? `onclick="BookUtil.scrollClick('${headerText.escapeQuotes()}', null, this)"` : ""}>${displayText}</a>
+				<a href="${addPrefix || ""}#${bookId},${chapterIndex},${UrlUtil.encodeForHash(headerText)}${headerPos > 0 ? `,${headerPos}` : ""}" data-book="${bookId}" data-chapter="${chapterIndex}" data-header="${headerText.escapeQuotes()}" ${addOnclick ? `onclick="BookUtil.scrollClick('${headerText.escapeQuotes()}', ${headerPos}, this)"` : ""}>${displayText}</a>
 			</li>`;
 		});
+
 		out += "</ul>";
+
 		return out;
 	},
 
@@ -186,16 +195,15 @@ const BookUtil = {
 		let forceScroll = false;
 		if (hashParts && hashParts.length > 0) chapter = Number(hashParts[0]);
 		if (hashParts && hashParts.length > 1) {
-			scrollTo = $(`[href="#${bookId},${chapter},${hashParts[1]}"]`).data("header");
-			if (BookUtil.referenceId) {
-				handleQuickReferenceShow(scrollTo);
-			}
-
-			// fallback to scanning the document
-			if (!scrollTo) {
+			if (hashParts[2]) {
 				scrollTo = decodeURIComponent(hashParts[1]);
 				if (hashParts[2]) scrollIndex = Number(hashParts[2]);
 				forceScroll = true;
+			} else {
+				scrollTo = $(`[href="#${bookId},${chapter},${hashParts[1]}"]`).data("header");
+				if (BookUtil.referenceId) {
+					handleQuickReferenceShow(scrollTo);
+				}
 			}
 		} else if (BookUtil.referenceId) {
 			handleQuickReferenceShowAll();

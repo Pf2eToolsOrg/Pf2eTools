@@ -1,8 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.4.4",
+	"version": "2.0.0",
 
-	"title": "ClassArray",
 	"type": "object",
 
 	"definitions": {
@@ -52,41 +51,54 @@
 
 		"classFeature": {
 			"properties": {
-				"name": {
-					"type": "string"
-				},
+				"name": {"type": "string"},
+				"source": {"type": "string"},
+				"className":  {"type": "string"},
+				"classSource": {"type": "string"},
+				"level":  {"type": "integer"},
+				"page": {"type": "integer"},
 				"entries": {
 					"type": "array",
 					"items": {
 						"$ref": "entry.json"
 					}
-				},
-				"gainSubclassFeature": {
-					"type": "boolean"
 				}
 			},
 			"required": [
 				"name",
+				"source",
+				"className",
+				"classSource",
+				"level,",
 				"entries"
 			],
 			"additionalProperties": false
 		},
 		"subclassFeature": {
 			"properties": {
-				"name": {
-					"type": "string"
-				},
+				"name": {"type": "string"},
+				"source": {"type": "string"},
+				"className":  {"type": "string"},
+				"classSource": {"type": "string"},
+				"subclassName":  {"type": "string"},
+				"subclassSource": {"type": "string"},
+				"level":  {"type": "integer"},
+				"page": {"type": "integer"},
 				"entries": {
 					"type": "array",
 					"items": {
 						"$ref": "entry.json"
 					}
-				},
-				"source": {
-					"type": "string"
 				}
 			},
 			"required": [
+				"name",
+				"source",
+				"className",
+				"classSource",
+				"subclassName",
+				"subclassSource",
+				"level",
 				"entries"
 			],
 			"additionalProperties": false
@@ -210,10 +222,24 @@
 				"subclassFeatures": {
 					"type": "array",
 					"items": {
-						"type": "array",
-						"items": {"$ref": "#/definitions/subclassFeature"}
-					},
-					"maxItems": 20
+						"oneOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"subclassFeature": {
+										"type": "string"
+									},
+									"gainSubclassFeature": {
+										"type": "boolean"
+									}
+								},
+								"required": ["subclassFeature"]
+							}
+						]
+					}
 				},
 				"subclassTableGroups": {
 					"type": "array",
@@ -233,12 +259,12 @@
 					"type": "array",
 					"items": {"$ref": "#/definitions/spellRef"}
 				},
-				"class": {
-					"description": "Homebrew use only",
+				"className": {
+					"description": "The name of the class this subclass belongs to. Homebrew use only",
 					"type": "string"
 				},
 				"classSource": {
-					"description": "Homebrew use only",
+					"description": "The source of the class this subclass belongs to (defaults to PHB). Homebrew use only",
 					"type": "string"
 				}
 			},
@@ -384,13 +410,24 @@
 				"classFeatures": {
 					"type": "array",
 					"items": {
-						"type": "array",
-						"items": {
-							"items": {"$ref": "#/definitions/classFeature"}
-						}
-					},
-					"minItems": 20,
-					"maxItems": 20
+						"oneOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"classFeature": {
+										"type": "string"
+									},
+									"gainSubclassFeature": {
+										"type": "boolean"
+									}
+								},
+								"required": ["classFeature"]
+							}
+						]
+					}
 				},
 				"subclassTitle": {
 					"type": "string"
@@ -470,6 +507,22 @@
 		"class": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/class"}
+		},
+
+		"classFeature": {
+			"type": "array",
+			"items": {
+				"items": {"$ref": "#/definitions/classFeature"}
+			}
+		},
+
+		"subclassFeature": {
+			"type": "array",
+			"items": {
+				"items": {"$ref": "#/definitions/subclassFeature"}
+			}
 		}
-	}
+	},
+	"required": ["class", "classFeature"],
+	"additionalProperties": false
 }

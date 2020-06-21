@@ -30,18 +30,11 @@ class GenTables {
 			.filter(it => it);
 	}
 
-	_doLoadClassData () {
-		const index = ut.readJson(`./data/class/index.json`);
-		const allData = Object.values(index).map(it => ut.readJson(`./data/class/${it}`));
-		const out = allData.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []});
-		return out.class;
-	}
-
-	run () {
+	async pRun () {
 		const output = {tables: [], tableGroups: []};
 
 		this._addBookAndAdventureData(output);
-		this._addClassData(output);
+		await this._pAddClassData(output);
 
 		const toSave = JSON.stringify({table: output.tables, tableGroup: output.tableGroups});
 		fs.writeFileSync(`./data/generated/gendata-tables.json`, toSave, "utf-8");
@@ -86,10 +79,12 @@ class GenTables {
 		});
 	}
 
-	_addClassData (output) {
-		const classes = this._doLoadClassData();
+	async _pAddClassData (output) {
+		ut.patchLoadJson();
+		const classData = await DataUtil.class.loadJSON();
+		ut.unpatchLoadJson();
 
-		classes.forEach(cls => {
+		classData.class.forEach(cls => {
 			const {table: foundTables} = UtilGenTables.getClassTables(cls);
 			output.tables.push(...foundTables);
 		});
@@ -99,4 +94,4 @@ GenTables.BOOK_BLACKLIST = {};
 GenTables.ADVENTURE_WHITELIST = {};
 
 const generator = new GenTables();
-generator.run();
+module.exports = generator.pRun();

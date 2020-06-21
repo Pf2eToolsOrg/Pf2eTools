@@ -109,7 +109,12 @@ class ClassesPage extends BaseComponent {
 	}
 
 	async _pHandleBrew (homebrew) {
-		const {isAddedAnyClass, isAddedAnySubclass} = this._addData(homebrew);
+		const {class: rawClassData, subclass: rawSubclassData} = homebrew;
+		const cpy = MiscUtil.copy({class: rawClassData, subclass: rawSubclassData});
+		if (cpy.class) for (let i = 0; i < cpy.class.length; ++i) cpy.class[i] = await DataUtil.class.pGetDereferencedClassData(cpy.class[i]);
+		if (cpy.subclass) for (let i = 0; i < cpy.subclass.length; ++i) cpy.subclass[i] = await DataUtil.class.pGetDereferencedSubclassData(cpy.subclass[i]);
+
+		const {isAddedAnyClass, isAddedAnySubclass} = this._addData(cpy);
 
 		if (isAddedAnySubclass && !Hist.initialLoad) await this._pDoRender();
 	}
@@ -177,7 +182,7 @@ class ClassesPage extends BaseComponent {
 		}
 
 		subclasses.forEach(sc => {
-			const cls = this._dataList.find(c => c.name.toLowerCase() === sc.class.toLowerCase() && c.source.toLowerCase() === (sc.classSource || SRC_PHB).toLowerCase());
+			const cls = this._dataList.find(c => c.name.toLowerCase() === sc.className.toLowerCase() && c.source.toLowerCase() === (sc.classSource || SRC_PHB).toLowerCase());
 			if (!cls) {
 				JqueryUtil.doToast({
 					content: `Could not add subclass; could not find class with name: ${cls.class} and source ${sc.source || SRC_PHB}`,
@@ -406,7 +411,7 @@ class ClassesPage extends BaseComponent {
 
 		const $lnk = $(`<a href="#${hash}" class="lst--border">
 			<span class="bold col-8 pl-0">${cls.name}</span>
-			<span class="col-4 text-center ${Parser.sourceJsonToColor(cls.source)}" title="${Parser.sourceJsonToFull(cls.source)} pr-0" ${BrewUtil.sourceJsonToStyle(cls.source)}>${source}</span>
+			<span class="col-4 text-center ${Parser.sourceJsonToColor(cls.source)} pr-0" title="${Parser.sourceJsonToFull(cls.source)}" ${BrewUtil.sourceJsonToStyle(cls.source)}>${source}</span>
 		</a>`);
 
 		const $ele = $$`<li class="row ${isExcluded ? "row--blacklisted" : ""}">${$lnk}</li>`;
@@ -859,8 +864,6 @@ class ClassesPage extends BaseComponent {
 			<tr><th colspan="6"><div class="split-v-center pr-1"><div class="cls-side__name">${cls.name}</div>${$btnToggleSidebar}</div></th></tr>
 			${cls.authors ? `<tr><th colspan="6">By ${cls.authors.join(", ")}</th></tr>` : ""}
 
-			<tr class="cls-side__show-hide"><td class="divider" colspan="6"><div class="my-0"/></td></tr>
-
 			${$ptHp}
 
 			<tr class="cls-side__show-hide">
@@ -1148,16 +1151,16 @@ class ClassesPage extends BaseComponent {
 			$wrpBody.empty();
 			const filterValues = this.filterBox.getValues();
 
-			const makeItem = (depthData, cssClass) => {
+			const makeItem = (depthData, scCssClass) => {
 				// Skip inline entries
 				if (depthData.depth >= 2) return;
 				// Skip filtered sources
 				if (depthData.source && !this.filterBox.toDisplay(filterValues, depthData.source, [])) return;
 
 				// If there was not a class specified, then this is not a subclass item, so we can color it with grellow as required
-				cssClass = cssClass || (depthData.source && SourceUtil.isNonstandardSource(depthData.source) ? `cls-nav__item--spicy` : "");
+				scCssClass = (depthData.source && SourceUtil.isNonstandardSource(depthData.source) ? `cls-nav__item--spicy` : "") || scCssClass;
 				const displayDepth = Math.min(depthData.depth + 1, 2);
-				$(`<div class="cls-nav__item cls-nav__item--depth-${displayDepth} ${cssClass}">${depthData.name}</div>`)
+				$(`<div class="cls-nav__item cls-nav__item--depth-${displayDepth} ${scCssClass}">${depthData.name}</div>`)
 					.click(() => {
 						const $it = $(`[data-title-index="${depthData.ixHeader}"]`);
 						if ($it.get()[0]) $it.get()[0].scrollIntoView();
@@ -1339,7 +1342,7 @@ class ClassesPage extends BaseComponent {
 				const cpy = MiscUtil.copy(f);
 
 				if (typeof cpy !== "string") {
-					if (f.source && f.source !== cls.source && cpy.entries) cpy.entries.unshift(`{@note The following information is from ${Parser.sourceJsonToFull(f.source)}${f.page > 0 ? `, page ${f.page}` : ""}.}`);
+					if (f.source && f.source !== cls.source && cpy.entries) cpy.entries.unshift(`{@note The following information is from ${Parser.sourceJsonToFull(f.source)}${Renderer.utils.isDisplayPage(f.page) ? `, page ${f.page}` : ""}.}`);
 				}
 
 				stack += Renderer.get().setDepthTracker(depthArr).render(cpy);
@@ -1394,10 +1397,10 @@ class ClassesPage extends BaseComponent {
 
 	async pDeleteSubclassBrew (uniqueId, sc) {
 		sc.classSource = sc.classSource || SRC_PHB;
-		const cls = this._dataList.find(c => c.name.toLowerCase() === sc.class.toLowerCase() && c.source.toLowerCase() === sc.classSource.toLowerCase());
+		const cls = this._dataList.find(c => c.name.toLowerCase() === sc.className.toLowerCase() && c.source.toLowerCase() === sc.classSource.toLowerCase());
 
 		if (!cls) {
-			setTimeout(() => { throw new Error(`Could not find class "${sc.class}" with source "${sc.classSource}" to delete subclass "${sc.name}" from!`); })
+			setTimeout(() => { throw new Error(`Could not find class "${sc.className}" with source "${sc.classSource}" to delete subclass "${sc.name}" from!`); })
 			return;
 		}
 
@@ -1490,7 +1493,7 @@ ClassesPage.ClassBookView = class {
 			}
 
 			if (f.source && f.source !== cls.source && f.entries) {
-				f.entries.unshift(`{@note The following information is from ${Parser.sourceJsonToFull(f.source)}${f.page > 0 ? `, page ${f.page}` : ""}.}`);
+				f.entries.unshift(`{@note The following information is from ${Parser.sourceJsonToFull(f.source)}${Renderer.utils.isDisplayPage(f.page) ? `, page ${f.page}` : ""}.}`);
 			}
 
 			Renderer.get().recursiveRender(f, renderStack);

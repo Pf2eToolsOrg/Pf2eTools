@@ -1,6 +1,7 @@
-const ut = require("../js/utils.js");
-const er = require("../js/render.js");
+require("../js/utils.js");
+require("../js/render.js");
 const od = require("../js/omnidexer.js");
+const ut = require("./util.js");
 
 class UtilSearchIndex {
 	/**
@@ -16,52 +17,63 @@ class UtilSearchIndex {
 	}
 
 	static async pGetIndex (doLogging = true, noFilter = false) {
-		return UtilSearchIndex._getIndex({}, doLogging, noFilter);
+		ut.patchLoadJson();
+		const out = await UtilSearchIndex._pGetIndex({}, doLogging, noFilter);
+		ut.unpatchLoadJson();
+		return out;
 	}
 
-	static getIndexAlternate (forProp, doLogging = true, noFilter = false) {
+	static async pGetIndexAlternate (forProp, doLogging = true, noFilter = false) {
+		ut.patchLoadJson();
 		const opts = {alternate: forProp};
-		return UtilSearchIndex._getIndex(opts, doLogging, noFilter);
+		const out = UtilSearchIndex._pGetIndex(opts, doLogging, noFilter);
+		ut.unpatchLoadJson();
+		return out;
 	}
 
-	static _getIndex (opts, doLogging = true, noFilter = false) {
+	static async _pGetIndex (opts, doLogging = true, noFilter = false) {
 		const indexer = new od.Omnidexer();
 
 		// Index entities from directories, e.g. creatures and spells
-		od.Omnidexer.TO_INDEX__FROM_INDEX_JSON
-			.filter(indexMeta => opts.alternate ? indexMeta.alternateIndexes && indexMeta.alternateIndexes[opts.alternate] : true)
-			.forEach(indexMeta => {
-				const dataIndex = require(`../data/${indexMeta.dir}/index.json`);
-				Object.entries(dataIndex)
-					.sort(([kA], [kB]) => UtilSearchIndex._sortSources(kA, kB))
-					.forEach(([_, filename]) => {
-						const filePath = `../data/${indexMeta.dir}/${filename}`;
-						const contents = require(filePath);
-						if (doLogging) console.log(`indexing ${filePath}`);
-						const optsNxt = {isNoFilter: noFilter};
-						if (opts.alternate) optsNxt.alt = indexMeta.alternateIndexes[opts.alternate];
-						indexer.addToIndex(indexMeta, contents, optsNxt);
-					})
-			});
+		const toIndexMultiPart = od.Omnidexer.TO_INDEX__FROM_INDEX_JSON
+			.filter(indexMeta => opts.alternate ? indexMeta.alternateIndexes && indexMeta.alternateIndexes[opts.alternate] : true);
 
-		// Index entities from single files
-		od.Omnidexer.TO_INDEX
-			.filter(indexMeta => opts.alternate ? indexMeta.alternateIndexes && indexMeta.alternateIndexes[opts.alternate] : true)
-			.map(async indexMeta => {
-				const filePath = `../data/${indexMeta.file}`;
-				const data = require(filePath);
+		for (const indexMeta of toIndexMultiPart) {
+			const dataIndex = require(`../data/${indexMeta.dir}/index.json`);
 
-				if (indexMeta.postLoad) indexMeta.postLoad(data);
+			const loadedFiles = Object.entries(dataIndex)
+				.sort(([kA], [kB]) => UtilSearchIndex._sortSources(kA, kB))
+				.map(([_, filename]) => filename);
 
+			for (const filename of loadedFiles) {
+				const filePath = `../data/${indexMeta.dir}/${filename}`;
+				const contents = require(filePath);
 				if (doLogging) console.log(`indexing ${filePath}`);
-				Object.values(data)
-					.filter(it => it instanceof Array)
-					.forEach(it => it.sort((a, b) => UtilSearchIndex._sortSources(a.source || MiscUtil.get(a, "inherits", "source"), b.source || MiscUtil.get(b, "inherits", "source")) || SortUtil.ascSortLower(a.name || MiscUtil.get(a, "inherits", "name") || "", b.name || MiscUtil.get(b, "inherits", "name") || "")));
-
 				const optsNxt = {isNoFilter: noFilter};
 				if (opts.alternate) optsNxt.alt = indexMeta.alternateIndexes[opts.alternate];
-				indexer.addToIndex(indexMeta, data, optsNxt);
-			})
+				await indexer.pAddToIndex(indexMeta, contents, optsNxt);
+			}
+		}
+
+		// Index entities from single files
+		const toIndexSingle = od.Omnidexer.TO_INDEX
+			.filter(indexMeta => opts.alternate ? indexMeta.alternateIndexes && indexMeta.alternateIndexes[opts.alternate] : true);
+
+		for (const indexMeta of toIndexSingle) {
+			const filePath = `../data/${indexMeta.file}`;
+			const data = require(filePath);
+
+			if (indexMeta.postLoad) indexMeta.postLoad(data);
+
+			if (doLogging) console.log(`indexing ${filePath}`);
+			Object.values(data)
+				.filter(it => it instanceof Array)
+				.forEach(it => it.sort((a, b) => UtilSearchIndex._sortSources(a.source || MiscUtil.get(a, "inherits", "source"), b.source || MiscUtil.get(b, "inherits", "source")) || SortUtil.ascSortLower(a.name || MiscUtil.get(a, "inherits", "name") || "", b.name || MiscUtil.get(b, "inherits", "name") || "")));
+
+			const optsNxt = {isNoFilter: noFilter};
+			if (opts.alternate) optsNxt.alt = indexMeta.alternateIndexes[opts.alternate];
+			await indexer.pAddToIndex(indexMeta, data, optsNxt);
+		}
 
 		return indexer.getIndex();
 	}

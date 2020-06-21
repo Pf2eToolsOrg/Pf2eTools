@@ -6,7 +6,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.106.2"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.106.9"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -180,7 +180,7 @@ String.prototype.escapeRegexp = String.prototype.escapeRegexp || function () {
 };
 
 String.prototype.toUrlified = String.prototype.toUrlified || function () {
-	return encodeURIComponent(this).toLowerCase();
+	return encodeURIComponent(this.toLowerCase()).toLowerCase();
 };
 
 String.prototype.toChunks = String.prototype.toChunks || function (size) {
@@ -738,6 +738,30 @@ MiscUtil = {
 			if (object == null) return object;
 		}
 		return object;
+	},
+
+	set (object, ...pathAndVal) {
+		if (object == null) return null;
+
+		const val = pathAndVal.pop();
+		if (!pathAndVal.length) return null;
+
+		for (let i = 0; i < pathAndVal.length; ++i) {
+			const pathPart = pathAndVal[i];
+			if (i === pathAndVal.length - 1) {
+				object[pathPart] = val;
+			} else {
+				if (!object[pathPart]) object[pathPart] = {};
+				object = object[pathPart];
+			}
+		}
+
+		return val;
+	},
+
+	getOrSet (object, orSet, ...path) {
+		const existing = MiscUtil.get(object, ...path);
+		return existing || MiscUtil.set(object, orSet, ...path);
 	},
 
 	mix: (superclass) => new MiscUtil._MixinBuilder(superclass),
@@ -1345,6 +1369,7 @@ UrlUtil = {
 	},
 
 	categoryToPage (category) { return UrlUtil.CAT_TO_PAGE[category]; },
+	categoryToHoverPage (category) { return UrlUtil.CAT_TO_HOVER_PAGE[category] || UrlUtil.categoryToPage(category); },
 
 	bindLinkExportButton (filterBox, $btn) {
 		$btn = $btn || ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
@@ -1543,6 +1568,10 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+// region Fake pages (props)
+UrlUtil.URL_TO_HASH_BUILDER["classFeature"] = (it) => UrlUtil.encodeForHash([it.name, it.className, it.classSource, it.level, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"] = (it) => UrlUtil.encodeForHash([it.name, it.className, it.classSource, it.subclassShortName, it.subclassSource, it.level, it.source]);
+// endregion
 
 UrlUtil.CAT_TO_PAGE = {};
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURE] = UrlUtil.PG_BESTIARY;
@@ -1590,6 +1619,10 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_MANEUVER] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ACTION] = UrlUtil.PG_ACTIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOOK] = UrlUtil.PG_BOOK;
+
+UrlUtil.CAT_TO_HOVER_PAGE = {};
+UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_CLASS_FEATURE] = "classfeature";
+UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_SUBCLASS_FEATURE] = "subclassfeature";
 
 if (!IS_DEPLOYED && !IS_VTT && typeof window !== "undefined") {
 	// for local testing, hotkey to get a link to the current page on the main site
@@ -2610,11 +2643,166 @@ DataUtil = {
 			DataUtil.class._pLoadingJson = (async () => {
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/class/index.json`);
 				const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/class/${it}`)));
-				DataUtil.class._loadedJson = allData.reduce((a, b) => ({class: a.class.concat(b.class)}), {class: []});
+
+				const allDereferencedData = await Promise.all(allData.map(json => Promise.all((json.class || []).map(cls => DataUtil.class.pGetDereferencedClassData(cls)))));
+				DataUtil.class._loadedJson = {class: allDereferencedData.flat()};
 			})();
 			await DataUtil.class._pLoadingJson;
 
 			return DataUtil.class._loadedJson;
+		},
+
+		/**
+		 * @param uid
+		 * @param [opts]
+		 * @param [opts.isLower] If the returned values should be lowercase.
+		 */
+		unpackUidClassFeature (uid, opts) {
+			opts = opts || {};
+			if (opts.isLower) uid = uid.toLowerCase();
+			let [name, className, classSource, level, source, displayText] = uid.split("|").map(it => it.trim());
+			classSource = classSource || (opts.isLower ? SRC_PHB.toLowerCase() : SRC_PHB);
+			source = source || classSource;
+			level = Number(level)
+			return {
+				name,
+				className,
+				classSource,
+				level,
+				source,
+				displayText
+			};
+		},
+
+		/**
+		 * @param uid
+		 * @param [opts]
+		 * @param [opts.isLower] If the returned values should be lowercase.
+		 */
+		unpackUidSubclassFeature (uid, opts) {
+			opts = opts || {};
+			if (opts.isLower) uid = uid.toLowerCase();
+			let [name, className, classSource, subclassShortName, subclassSource, level, source, displayText] = uid.split("|").map(it => it.trim());
+			classSource = classSource || (opts.isLower ? SRC_PHB.toLowerCase() : SRC_PHB);
+			subclassSource = subclassSource || (opts.isLower ? SRC_PHB.toLowerCase() : SRC_PHB);
+			source = source || subclassSource;
+			level = Number(level)
+			return {
+				name,
+				className,
+				classSource,
+				subclassShortName,
+				subclassSource,
+				level,
+				source,
+				displayText
+			};
+		},
+
+		_mutEntryNestLevel (feature) {
+			const depth = (feature.header == null ? 1 : feature.header) - 1;
+			for (let i = 0; i < depth; ++i) {
+				const nxt = {
+					name: feature.name,
+					page: feature.page,
+					source: feature.source,
+					type: "entries",
+					entries: feature.entries
+				};
+				if (!nxt.name) delete nxt.name;
+				if (!nxt.page) delete nxt.page;
+				if (!nxt.source) delete nxt.source;
+				feature.entries = [nxt];
+				delete feature.name;
+				delete feature.page;
+				delete feature.source;
+			}
+		},
+
+		async pGetDereferencedClassData (cls) {
+			// Gracefully handle legacy class data
+			if (cls.classFeatures && cls.classFeatures.every(it => typeof it !== "string" && !it.classFeature)) return cls;
+
+			cls = MiscUtil.copy(cls);
+
+			const byLevel = {}; // Build a map of `level: [classFeature]`
+			for (const classFeatureRef of (cls.classFeatures || [])) {
+				const uid = classFeatureRef.classFeature ? classFeatureRef.classFeature : classFeatureRef;
+				const {name, className, classSource, level, source} = DataUtil.class.unpackUidClassFeature(uid);
+				if (!name || !className || !level || isNaN(level)) continue; // skip over broken links
+
+				const hash = UrlUtil.URL_TO_HASH_BUILDER["classFeature"]({name, className, classSource, level, source});
+				const classFeature = await Renderer.hover.pCacheAndGet("classFeature", source, hash, {isCopy: true});
+				// skip over missing links
+				if (!classFeature) {
+					JqueryUtil.doToast({type: "danger", content: `Failed to find <code>classFeature</code> <code>${uid}</code>`});
+					continue;
+				}
+
+				if (classFeatureRef.gainSubclassFeature) classFeature.gainSubclassFeature = true;
+				// Remove sources to avoid colouring e.g. entire UA classes with the "spicy green" styling
+				if (classFeature.source === cls.source) delete classFeature.source;
+
+				DataUtil.class._mutEntryNestLevel(classFeature);
+
+				const key = `${classFeature.level || 1}`;
+				(byLevel[key] = byLevel[key] || []).push(classFeature);
+			}
+
+			const outClassFeatures = [];
+			const maxLevel = Math.max(...Object.keys(byLevel).map(it => Number(it)));
+			for (let i = 1; i <= maxLevel; ++i) {
+				outClassFeatures[i - 1] = byLevel[i] || [];
+			}
+			cls.classFeatures = outClassFeatures;
+
+			if (cls.subclasses) {
+				const outSubclasses = [];
+				for (const sc of cls.subclasses) {
+					outSubclasses.push(await DataUtil.class.pGetDereferencedSubclassData(sc));
+				}
+				cls.subclasses = outSubclasses;
+			}
+
+			return cls;
+		},
+
+		async pGetDereferencedSubclassData (sc) {
+			// Gracefully handle legacy class data
+			if (sc.subclassFeatures && sc.subclassFeatures.every(it => typeof it !== "string" && !it.subclassFeature)) return sc;
+
+			sc = MiscUtil.copy(sc);
+
+			const byLevel = {}; // Build a map of `level: [subclassFeature]`
+
+			for (const subclassFeatureRef of (sc.subclassFeatures || [])) {
+				const uid = subclassFeatureRef.subclassFeature ? subclassFeatureRef.subclassFeature : subclassFeatureRef;
+				const {name, className, classSource, subclassShortName, subclassSource, level, source} = DataUtil.class.unpackUidSubclassFeature(uid);
+				if (!name || !className || !subclassShortName || !level || isNaN(level)) continue; // skip over broken links
+
+				const hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"]({name, className, classSource, subclassShortName, subclassSource, level, source});
+				const subclassFeature = await Renderer.hover.pCacheAndGet("subclassFeature", source, hash, {isCopy: true});
+				// skip over missing links
+				if (!subclassFeature) {
+					JqueryUtil.doToast({type: "danger", content: `Failed to find <code>subclassFeature</code> <code>${uid}</code>`});
+					continue;
+				}
+
+				// Remove sources to avoid colouring e.g. entire UA classes with the "spicy green" styling
+				if (subclassFeature.source === sc.source) delete subclassFeature.source;
+
+				DataUtil.class._mutEntryNestLevel(subclassFeature);
+
+				const key = `${subclassFeature.level || 1}`;
+				(byLevel[key] = byLevel[key] || []).push(subclassFeature);
+			}
+
+			sc.subclassFeatures = Object.keys(byLevel)
+				.map(it => Number(it))
+				.sort(SortUtil.ascSort)
+				.map(k => byLevel[k]);
+
+			return sc;
 		}
 	},
 
@@ -2824,6 +3012,7 @@ StorageUtil = {
 		StorageUtil._init = true;
 
 		try {
+			window.localStorage.setItem("_test_storage", true);
 			return window.localStorage;
 		} catch (e) {
 			// if the user has disabled cookies, build a fake version
@@ -2849,8 +3038,6 @@ StorageUtil = {
 			if (StorageUtil.__fakeStorageAsync) return StorageUtil._fakeStorageAsync;
 			else return localforage;
 		}
-
-		StorageUtil._initAsync = true;
 
 		const getInitFakeStorage = () => {
 			StorageUtil.__fakeStorageAsync = {};
@@ -2881,6 +3068,8 @@ StorageUtil = {
 				return localforage;
 			} catch (e) {
 				return getInitFakeStorage();
+			} finally {
+				StorageUtil._initAsync = true;
 			}
 		} else return getInitFakeStorage();
 	},
@@ -3211,7 +3400,7 @@ BrewUtil = {
 				function getBrewDirs () {
 					switch (page) {
 						case UrlUtil.PG_SPELLS: return ["spell"];
-						case UrlUtil.PG_CLASSES: return ["class", "subclass"];
+						case UrlUtil.PG_CLASSES: return ["class", "subclass", "classFeature", "subclassFeature"];
 						case UrlUtil.PG_BESTIARY: return ["creature"];
 						case UrlUtil.PG_BACKGROUNDS: return ["background"];
 						case UrlUtil.PG_FEATS: return ["feat"];
@@ -3267,7 +3456,14 @@ BrewUtil = {
 				if (collectionFiles.length) toLoads.push({url: DataUtil.brew.getDirUrl("collection", urlRoot), _collection: true, _cat: "collection"});
 
 				const jsonStack = (await Promise.all(toLoads.map(async toLoad => {
-					const json = await DataUtil.loadJSON(toLoad.url);
+					let json;
+					// Avoid crashes on missing directories
+					try {
+						json = await DataUtil.loadJSON(toLoad.url);
+					} catch (e) {
+						setTimeout(() => { throw e; });
+						return [];
+					}
 					if (toLoad._collection) json.filter(it => it.name === "index.json" || !collectionFiles.includes(it.name)).forEach(it => it._brewSkip = true);
 					json.forEach(it => it._cat = toLoad._cat);
 					return json;
@@ -3663,7 +3859,7 @@ BrewUtil = {
 				const getPageCats = () => {
 					switch (page) {
 						case UrlUtil.PG_SPELLS: return _PG_SPELLS;
-						case UrlUtil.PG_CLASSES: return ["class", "subclass"];
+						case UrlUtil.PG_CLASSES: return ["class", "subclass", "classFeature", "subclassFeature"];
 						case UrlUtil.PG_BESTIARY: return _PG_BESTIARY;
 						case UrlUtil.PG_BACKGROUNDS: return ["background"];
 						case UrlUtil.PG_FEATS: return ["feat"];
@@ -3672,7 +3868,7 @@ BrewUtil = {
 						case UrlUtil.PG_OBJECTS: return ["object"];
 						case UrlUtil.PG_TRAPS_HAZARDS: return ["trap", "hazard"];
 						case UrlUtil.PG_DEITIES: return ["deity"];
-						case UrlUtil.PG_ITEMS: return ["item", "baseitem", "variant", "itemProperty", "itemType"];
+						case UrlUtil.PG_ITEMS: return ["item", "baseitem", "variant", "itemProperty", "itemType", "itemFluff"];
 						case UrlUtil.PG_REWARDS: return ["reward"];
 						case UrlUtil.PG_PSIONICS: return ["psionic"];
 						case UrlUtil.PG_VARIATNRULES: return ["variantrule"];
@@ -3768,6 +3964,7 @@ BrewUtil = {
 		if (cat === "baseitem") return "Base Item";
 		if (cat === "variant") return "Magic Item Variant";
 		if (cat === "monsterFluff") return "Monster Fluff";
+		if (cat === "itemFluff") return "Item Fluff";
 		if (cat === "makebrewCreatureTrait") return "Homebrew Builder Creature Trait";
 		return cat.uppercaseFirst();
 	},
@@ -3821,6 +4018,7 @@ BrewUtil = {
 			case "variant":
 			case "itemType":
 			case "itemProperty":
+			case "itemFluff":
 			case "reward":
 			case "psionic":
 			case "variantrule":
@@ -3835,7 +4033,9 @@ BrewUtil = {
 			case "boon":
 			case "language":
 			case "class":
-			case "makebrewCreatureTrait": return BrewUtil._genPDeleteGenericBrew(category);
+			case "makebrewCreatureTrait":
+			case "classFeature":
+			case "subclassFeature": return BrewUtil._genPDeleteGenericBrew(category);
 			case "race": return BrewUtil._pDeleteRaceBrew;
 			case "subclass": return BrewUtil._pDeleteSubclassBrew;
 			case "adventure":
@@ -3944,8 +4144,8 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_DIRS: ["action", "adventure", "background", "book", "boon", "class", "condition", "creature", "cult", "deity", "disease", "feat", "hazard", "item", "language", "magicvariant", "makebrew", "object", "optionalfeature", "psionic", "race", "reward", "spell", "subclass", "subrace", "table", "trap", "variantrule", "vehicle"],
-	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "raceFluff", "subrace", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle", "action", "cult", "boon", "language", "makebrewCreatureTrait"],
+	_DIRS: ["action", "adventure", "background", "book", "boon", "class", "condition", "creature", "cult", "deity", "disease", "feat", "hazard", "item", "language", "magicvariant", "makebrew", "object", "optionalfeature", "psionic", "race", "reward", "spell", "subclass", "subrace", "table", "trap", "variantrule", "vehicle", "classFeature", "subclassFeature"],
+	_STORABLE: ["class", "subclass", "classFeature", "subclassFeature", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "raceFluff", "subrace", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "itemFluff", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle", "action", "cult", "boon", "language", "makebrewCreatureTrait"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		await BrewUtil._lockHandleBrewJson.pLock();
 		try {
@@ -4274,13 +4474,14 @@ BrewUtil = {
 
 					if (arbiter.pFnPreProcBrew) {
 						const toProc = await arbiter.pFnPreProcBrew.bind(arbiter)(BrewUtil.homebrew);
-						indexer.addToIndex(arbiter, toProc)
+						await indexer.pAddToIndex(arbiter, toProc)
 					} else {
-						indexer.addToIndex(arbiter, BrewUtil.homebrew)
+						await indexer.pAddToIndex(arbiter, BrewUtil.homebrew)
 					}
 				}
 			}
 		}
+
 		return Omnidexer.decompressIndex(indexer.getIndex());
 	},
 
@@ -4314,18 +4515,20 @@ BrewUtil = {
 		if (BrewUtil.homebrew) {
 			const INDEX_DEFINITIONS = [Omnidexer.TO_INDEX__FROM_INDEX_JSON, Omnidexer.TO_INDEX];
 
-			INDEX_DEFINITIONS.forEach(IXDEF => {
-				IXDEF
-					.filter(ti => ti.alternateIndexes && (BrewUtil.homebrew[ti.listProp] || []).length)
-					.forEach(ti => {
-						Object.entries(ti.alternateIndexes)
-							.filter(([prop]) => prop === altProp)
-							.map(async ([prop, pGetIndex]) => {
-								indexer.addToIndex(ti, BrewUtil.homebrew, {alt: ti.alternateIndexes[prop]})
-							});
-					});
-			});
+			for (const IXDEF of INDEX_DEFINITIONS) {
+				const filteredIxDef = IXDEF.filter(ti => ti.alternateIndexes && (BrewUtil.homebrew[ti.listProp] || []).length);
+
+				for (const ti of filteredIxDef) {
+					const filteredAltIndexes = Object.entries(ti.alternateIndexes)
+						.filter(([prop]) => prop === altProp);
+					for (const tuple of filteredAltIndexes) {
+						const [prop, pGetIndex] = tuple;
+						await indexer.pAddToIndex(ti, BrewUtil.homebrew, {alt: ti.alternateIndexes[prop]})
+					}
+				}
+			}
 		}
+
 		return Omnidexer.decompressIndex(indexer.getIndex());
 	},
 

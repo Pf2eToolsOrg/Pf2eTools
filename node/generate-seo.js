@@ -97,14 +97,15 @@ async function main () {
 			let path;
 			while (true) {
 				const hash = builder(ent);
-				html = getTemplate(meta.page, ent.source, hash, meta.style);
-
 				const sluggedHash = Parser.stringToSlug(decodeURIComponent(hash)).replace(/_/g, "-");
 				path = `${meta.page}/${sluggedHash}${offset ? `-${offset}` : ""}.html`;
 				if (siteMapData[path]) {
 					++offset;
 					continue;
 				}
+
+				html = getTemplate(meta.page, ent.source, hash, meta.style);
+
 				siteMapData[path] = true;
 				break;
 			}

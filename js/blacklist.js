@@ -5,6 +5,8 @@ class Blacklist {
 		if (cat === "variantrule") return "Variant Rule";
 		if (cat === "optionalfeature") return "Optional Feature";
 		if (cat === "variant") return "Magic Item Variant";
+		if (cat === "classFeature") return "Class Feature";
+		if (cat === "subclassFeature") return "Subclass Feature";
 		return cat.uppercaseFirst();
 	}
 
@@ -20,6 +22,17 @@ class Blacklist {
 			.forEach(({name, category, source}) => Blacklist._addListItem(name, category, source));
 		Blacklist._list.init();
 		Blacklist._list.update();
+	}
+
+	static async _pGetClassAndSubclassFeatureData () {
+		const out = {classFeature: [], subclassFeature: []};
+		const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/class/index.json`);
+		const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/class/${it}`)));
+		allData.forEach(json => {
+			out.classFeature = [...out.classFeature, ...(json.classFeature || [])];
+			out.subclassFeature = [...out.subclassFeature, ...(json.subclassFeature || [])];
+		});
+		return out;
 	}
 
 	static async pInitialise () {
@@ -71,6 +84,10 @@ class Blacklist {
 		classData.class.forEach(c => classData.subclass = classData.subclass.concat(c.subclasses || []));
 		mergeData(classData);
 
+		// class/subclass features
+		const classAndSubclassFeatureData = await Blacklist._pGetClassAndSubclassFeatureData();
+		mergeData(classAndSubclassFeatureData);
+
 		// everything else
 		const promises = FILES.map(url => DataUtil.loadJSON(`data/${url}`));
 		promises.push(async () => ({item: await Renderer.items.pBuildList({isAddGroups: true})}));
@@ -100,13 +117,41 @@ class Blacklist {
 
 		function onSelChange () {
 			function populateName (arr, cat) {
-				const copy = cat === "subclass"
-					? arr.map(it => ({name: it.name, source: it.source, class: it.class})).sort((a, b) => SortUtil.ascSort(a.class, b.class) || SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source))
-					: arr.map(({name, source}) => ({name, source})).sort((a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source));
+				let copy;
+				switch (cat) {
+					case "subclass": {
+						copy = arr
+							.map(it => ({name: it.name, source: it.source, className: it.className}))
+							.sort((a, b) => SortUtil.ascSortLower(a.className, b.className) || SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source));
+						break;
+					}
+					case "classFeature": {
+						copy = arr
+							.map(it => ({name: it.name, source: it.source, className: it.className, level: it.level}))
+							.sort((a, b) => SortUtil.ascSortLower(a.className, b.className) || SortUtil.ascSort(a.level, b.level) || SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source));
+						break;
+					}
+					case "subclassFeature": {
+						copy = arr
+							.map(it => ({name: it.name, source: it.source, className: it.className, level: it.level, subclassShortName: it.subclassShortName}))
+							.sort((a, b) => SortUtil.ascSortLower(a.className, b.className) || SortUtil.ascSortLower(a.subclassShortName, b.subclassShortName) || SortUtil.ascSort(a.level, b.level) || SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source));
+						break;
+					}
+					default: {
+						copy = arr.map(({name, source}) => ({name, source})).sort((a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source))
+						break;
+					}
+				}
 				const dupes = new Set();
 				let temp = "";
 				copy.forEach((it, i) => {
-					temp += `<option value="${it.name}|${it.source}">${cat === "subclass" ? `${it.class}: ` : ""}${it.name}${(dupes.has(it.name) || (copy[i + 1] && copy[i + 1].name === it.name)) ? ` (${Parser.sourceJsonToAbv(it.source)})` : ""}</option>`;
+					let prefix = "";
+					switch (cat) {
+						case "subclass": prefix = `${it.className}: `; break;
+						case "classFeature": prefix = `${it.className} ${it.level}: `; break;
+						case "subclassFeature": prefix = `${it.className} (${it.subclassShortName}) ${it.level}: `; break;
+					}
+					temp += `<option value="${it.name}|${it.source}">${prefix}${it.name}${(dupes.has(it.name) || (copy[i + 1] && copy[i + 1].name === it.name)) ? ` (${Parser.sourceJsonToAbv(it.source)})` : ""}</option>`;
 					dupes.add(it.name);
 				});
 				$selName.append(temp);

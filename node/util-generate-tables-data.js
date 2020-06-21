@@ -32,13 +32,19 @@ class UtilGenTables {
 
 		if (data.entries) {
 			const nxtSection = data.name || section;
-			if (data.name) path.push(data.name);
+			if (data.name || data.page) {
+				const {name, page} = data;
+				path.push({name, page});
+			}
 			data.entries.forEach(ent => this._doSearch({...opts, section: nxtSection, data: ent}));
-			if (data.name) path.pop();
+			if (data.name || data.page) path.pop();
 		} else if (data.items) {
-			if (data.name) path.push(data.name);
+			if (data.name || data.page) {
+				const {name, page} = data;
+				path.push({name, page});
+			}
 			data.items.forEach(item => this._doSearch({...opts, data: item}));
-			if (data.name) path.pop();
+			if (data.name || data.page) path.pop();
 		} else if (data.type === "table" || data.type === "tableGroup") {
 			if (isRequireIncludes && !(data.data && data.data.tableInclude)) return;
 
@@ -60,6 +66,15 @@ class UtilGenTables {
 	static _isSectionInTitle (sections, title) {
 		const lowTitle = title.toLowerCase();
 		return sections.some(section => lowTitle.includes(section.toLowerCase()));
+	}
+
+	static _mutDataAddPage (table) {
+		for (let i = table.path.length - 1; i >= 0; --i) {
+			if (table.path[i].page) {
+				table.page = table.path[i].page;
+				break;
+			}
+		}
 	}
 
 	static _mutCleanData (table) {
@@ -131,39 +146,41 @@ class UtilGenTables {
 		});
 
 		stacks.table.forEach(tbl => {
-			const cleanSections = tbl.path.map(section => this._getCleanSectionName(section));
+			const cleanSectionNames = tbl.path.filter(ent => ent.name).map(ent => this._getCleanSectionName(ent.name));
 
 			if (tbl.data && tbl.data.tableNamePrefix && tbl.caption) {
 				tbl.name = `${tbl.data.tableNamePrefix}; ${tbl.caption}`;
 			} else if (tbl.data && tbl.data.tableName) {
 				tbl.name = tbl.data.tableName;
 			} else if (tbl.caption) {
-				if (this._isSectionInTitle(cleanSections, tbl.caption) || (tbl.data && tbl.data.skipSectionPrefix)) {
+				if (this._isSectionInTitle(cleanSectionNames, tbl.caption) || (tbl.data && tbl.data.skipSectionPrefix)) {
 					tbl.name = tbl.caption;
 				} else {
-					tbl.name = `${cleanSections.last()}; ${tbl.caption}`;
+					tbl.name = `${cleanSectionNames.last()}; ${tbl.caption}`;
 				}
 			} else {
 				// If this is the only table in this section, remove the numerical suffix
 				if (tbl.sectionIndex === 1 && sectionOrders[tbl._tmpMeta.name][tbl.section] === 2) {
-					tbl.name = cleanSections.last();
+					tbl.name = cleanSectionNames.last();
 				} else {
-					tbl.name = `${cleanSections.last()}; ${tbl.sectionIndex}`;
+					tbl.name = `${cleanSectionNames.last()}; ${tbl.sectionIndex}`;
 				}
 			}
 
+			this._mutDataAddPage(tbl);
 			tbl.source = doc[opts.headProp].id;
 			this._mutCleanData(tbl);
 		});
 
 		stacks.tableGroup.forEach(tg => {
-			const cleanSections = tg.path.map(section => this._getCleanSectionName(section));
+			const cleanSections = tg.path.filter(ent => ent.name).map(ent => this._getCleanSectionName(ent.name));
 			if (!tg.name) throw new Error("Group had no name!");
 
 			if (!this._isSectionInTitle(cleanSections, tg.name)) {
 				tg.name = `${cleanSections.last()}; ${tg.name}`;
 			}
 
+			this._mutDataAddPage(tg);
 			tg.source = doc[opts.headProp].id;
 			this._mutCleanData(tg);
 		});
@@ -235,6 +252,7 @@ class UtilGenTables {
 			it.name = it.caption;
 			it.source = it._tmpMeta.subclassSource || it._tmpMeta.classSource;
 
+			this._mutDataAddPage(it);
 			this._mutCleanData(it);
 		});
 

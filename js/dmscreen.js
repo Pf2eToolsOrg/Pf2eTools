@@ -2904,7 +2904,7 @@ class AddMenuSearchTab extends AddMenuTab {
 				const handleClick = (r) => {
 					switch (this.subType) {
 						case "content": {
-							const page = UrlUtil.categoryToPage(r.doc.c);
+							const page = UrlUtil.categoryToHoverPage(r.doc.c);
 							const source = r.doc.s;
 							const hash = r.doc.u;
 

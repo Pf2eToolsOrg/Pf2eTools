@@ -47,7 +47,9 @@ const TAG_TO_PAGE = {
 	"deity": UrlUtil.PG_DEITIES,
 	"variantrule": UrlUtil.PG_VARIATNRULES,
 	"action": UrlUtil.PG_ACTIONS,
-	"language": UrlUtil.PG_LANGUAGES
+	"language": UrlUtil.PG_LANGUAGES,
+	"classFeature": UrlUtil.PG_CLASSES,
+	"subclassFeature": UrlUtil.PG_CLASSES
 };
 
 const VALID_SKILLS = new Set([
@@ -74,17 +76,21 @@ const VALID_SKILLS = new Set([
 const ALL_URLS = new Set();
 const CLASS_SUBCLASS_LOOKUP = {};
 
-function isIgnored (directory) {
+function isIgnoredFile (file) {
+	return file === "./data/changelog.json";
+}
+
+function isIgnoredDir (directory) {
 	return directory === "./data/roll20-module";
 }
 
 function fileRecurse (file, fileHandler, doParse, filenameMatcher) {
-	if (file.endsWith(".json") && (filenameMatcher == null || filenameMatcher.test(file.split("/").last()))) {
+	if (file.endsWith(".json") && !isIgnoredFile(file) && (filenameMatcher == null || filenameMatcher.test(file.split("/").last()))) {
 		doParse ? fileHandler(file, JSON.parse(fs.readFileSync(file, "utf-8"))) : fileHandler(file);
 		Object.keys(MSG).forEach(k => {
 			if (MSG[k] && MSG[k].trim() && MSG[k].slice(-5) !== "\n---\n") MSG[k] = `${MSG[k].trimRight()}\n---\n`;
 		});
-	} else if (fs.lstatSync(file).isDirectory() && !isIgnored(file)) fs.readdirSync(file).forEach(nxt => fileRecurse(`${file}/${nxt}`, fileHandler, doParse, filenameMatcher))
+	} else if (fs.lstatSync(file).isDirectory() && !isIgnoredDir(file)) fs.readdirSync(file).forEach(nxt => fileRecurse(`${file}/${nxt}`, fileHandler, doParse, filenameMatcher))
 }
 
 const PRIMITIVE_HANDLERS = {
@@ -150,14 +156,29 @@ class LinkCheck {
 		let match;
 		while ((match = LinkCheck.RE.exec(str))) {
 			const tag = match[1];
-			const toEncode = [match[2]];
+			const parts = match[2].split("|");
 
-			if (tag === "deity") {
-				toEncode.push();
-				toEncode.push(match[4] || "forgotten realms");
-				toEncode.push(match[6] || ut.TAG_TO_DEFAULT_SOURCE[tag]);
-			} else {
-				toEncode.push(match[4] || ut.TAG_TO_DEFAULT_SOURCE[tag]);
+			const toEncode = [];
+
+			switch (tag) {
+				case "deity": {
+					toEncode.push(parts[0], parts[1] || "forgotten realms", parts[2] || ut.TAG_TO_DEFAULT_SOURCE[tag]);
+					break;
+				}
+				case "classFeature": {
+					const {name, source, className, classSource, level} = DataUtil.class.unpackUidClassFeature(match[2]);
+					toEncode.push(name, className, classSource, level, source);
+					break;
+				}
+				case "subclassFeature": {
+					const {name, source, className, classSource, subclassShortName, subclassSource, level} = DataUtil.class.unpackUidSubclassFeature(match[2]);
+					toEncode.push(name, className, classSource, subclassShortName, subclassSource, level, source);
+					break;
+				}
+				default: {
+					toEncode.push(parts[0], parts[1] || ut.TAG_TO_DEFAULT_SOURCE[tag]);
+					break;
+				}
 			}
 
 			const url = `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash(toEncode)}`.toLowerCase().trim()
@@ -175,7 +196,7 @@ class LinkCheck {
 		}
 	}
 }
-LinkCheck.RE = /{@(spell|item|class|creature|condition|disease|background|race|optfeature|feat|reward|psionic|object|cult|boon|trap|hazard|deity|variantrule|action) (.*?)(\|(.*?))?(\|(.*?))?(\|.*?)?}/g;
+LinkCheck.RE = /{@(spell|item|class|creature|condition|disease|background|race|optfeature|feat|reward|psionic|object|cult|boon|trap|hazard|deity|variantrule|action|classFeature|subclassFeature) ([^}]*?)}/g;
 LinkCheck.SKILL_RE = /{@skill (.*?)(\|.*?)?}/g;
 
 class ClassLinkCheck {
@@ -620,11 +641,70 @@ SpellDataCheck._FILE_SPELL_INDEX = `data/spells/index.json`;
 SpellDataCheck._CLASS_LIST = [];
 
 class ClassDataCheck {
-	static _doCheckClass (file, cls) {
-		if (cls.subclasses) cls.subclasses.forEach(sc => this._doCheckSubclass(file, cls, sc));
+	static _doCheckClass (file, data, cls) {
+		const featureLookup = {};
+		(data.classFeature || []).forEach(cf => {
+			const name = cf.name.toLowerCase();
+			const source = cf.source.toLowerCase();
+			const className = cf.className.toLowerCase();
+			const classSource = cf.classSource.toLowerCase();
+
+			MiscUtil.set(featureLookup, classSource, className, cf.level, source, name, true);
+		});
+
+		cls.classFeatures.forEach(ref => {
+			const uid = (ref.classFeature || ref).toLowerCase();
+			const {name, className, classSource, level, source} = DataUtil.class.unpackUidClassFeature(uid, {isLower: true});
+
+			const exists = MiscUtil.get(featureLookup, classSource, className, level, source, name);
+			if (!exists) MSG.ClassDataCheck += `Missing class feature: ${uid} in file ${file} not found in the files "classFeature" array\n`;
+		});
+
+		if (cls.subclasses) {
+			const subclassFeatureLookup = {};
+			(data.subclassFeature || []).forEach(scf => {
+				const name = scf.name.toLowerCase();
+				const source = scf.source.toLowerCase();
+				const className = scf.className.toLowerCase();
+				const classSource = scf.classSource.toLowerCase();
+				const subclassShortName = scf.subclassShortName.toLowerCase();
+				const subclassSource = scf.subclassSource.toLowerCase();
+
+				MiscUtil.set(subclassFeatureLookup, classSource, className, subclassSource, subclassShortName, scf.level, source, name, true);
+			});
+
+			cls.subclasses.forEach(sc => this._doCheckSubclass(file, data, subclassFeatureLookup, cls, sc));
+
+			const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
+			const handlersNestedRefs = {
+				array: (ident, arr) => {
+					for (let i = 0; i < arr.length; ++i) {
+						const it = arr[i];
+						if (it.type === "refSubclassFeature") {
+							const {name, className, classSource, subclassShortName, subclassSource, level, source} = DataUtil.class.unpackUidSubclassFeature(it.subclassFeature, {isLower: true});
+
+							const exists = MiscUtil.get(subclassFeatureLookup, classSource, className, subclassSource, subclassShortName, level, source, name);
+							if (!exists) MSG.ClassDataCheck += `Missing subclass feature in "refSubclassFeature": ${it.subclassFeature} in file ${file} not found in the files "subclassFeature" array\n`;
+						}
+					}
+					return arr;
+				}
+			};
+			(data.subclassFeature || []).forEach(scf => {
+				walker.walk("nestedRefLookup", scf.entries, handlersNestedRefs);
+			});
+		}
 	}
 
-	static _doCheckSubclass (file, cls, sc) {
+	static _doCheckSubclass (file, data, subclassFeatureLookup, cls, sc) {
+		sc.subclassFeatures.forEach(ref => {
+			const uid = (ref.subclassFeature || ref).toLowerCase();
+			const {name, className, classSource, subclassShortName, subclassSource, level, source} = DataUtil.class.unpackUidSubclassFeature(uid, {isLower: true});
+
+			const exists = MiscUtil.get(subclassFeatureLookup, classSource, className, subclassSource, subclassShortName, level, source, name);
+			if (!exists) MSG.ClassDataCheck += `Missing subclass feature: ${uid} in file ${file} not found in the files "subclassFeature" array\n`;
+		});
+
 		if (sc.additionalSpells) {
 			sc.additionalSpells
 				.forEach(additionalSpellOption => {
@@ -649,7 +729,7 @@ class ClassDataCheck {
 		Object.values(index)
 			.map(filename => ({filename: filename, data: ut.readJson(`./data/class/${filename}`)}))
 			.forEach(({filename, data}) => {
-				data.class.forEach(cls => ClassDataCheck._doCheckClass(filename, cls));
+				data.class.forEach(cls => ClassDataCheck._doCheckClass(filename, data, cls));
 			});
 	}
 }
@@ -688,18 +768,34 @@ class DuplicateEntityCheck {
 					const name = ent.name;
 					const source = ent.source ? ent.source : (ent.inherits && ent.inherits.source) ? ent.inherits.source : null;
 
-					// special handling for deities
-					if (prop === "deity") {
-						if (name && source) {
-							const key = `${source} :: ${ent.pantheon} :: ${name}`;
-							if (positions[key]) positions[key].push(i);
-							else positions[key] = [i];
+					switch (prop) {
+						case "deity": {
+							if (name && source) {
+								const key = `${source} :: ${ent.pantheon} :: ${name}`;
+								(positions[key] = positions[key] || []).push(i);
+							}
+							break;
 						}
-					} else {
-						if (name && source) {
-							const key = `${source} :: ${name}`;
-							if (positions[key]) positions[key].push(i);
-							else positions[key] = [i];
+						case "classFeature": {
+							if (name && source) {
+								const key = `${source} :: ${ent.level} :: ${ent.classSource} :: ${ent.className} :: ${name}`;
+								(positions[key] = positions[key] || []).push(i);
+							}
+							break;
+						}
+						case "subclassFeature": {
+							if (name && source) {
+								const key = `${source} :: ${ent.level} :: ${ent.classSource} :: ${ent.className} :: ${ent.subclassSource} :: ${ent.subclassShortName} :: ${name}`;
+								(positions[key] = positions[key] || []).push(i);
+							}
+							break;
+						}
+						default: {
+							if (name && source) {
+								const key = `${source} :: ${name}`;
+								(positions[key] = positions[key] || []).push(i);
+							}
+							break;
 						}
 					}
 				});
@@ -720,37 +816,36 @@ class DuplicateEntityCheck {
 
 async function main () {
 	const primaryIndex = od.Omnidexer.decompressIndex(await utS.UtilSearchIndex.pGetIndex(false, true));
-	primaryIndex.forEach(it => ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${it.u.toLowerCase().trim()}`));
+	primaryIndex.forEach(it => ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${(it.u).toLowerCase().trim()}`));
 	const highestId = primaryIndex.last().id;
 	const secondaryIndexItem = od.Omnidexer.decompressIndex(await utS.UtilSearchIndex.pGetIndexAdditionalItem(highestId + 1, false));
-	secondaryIndexItem.forEach(it => ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${it.u.toLowerCase().trim()}`));
+	secondaryIndexItem.forEach(it => ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${(it.u).toLowerCase().trim()}`));
 
 	// populate class/subclass index
-	const classIndex = ut.readJson("./data/class/index.json");
-	Object.values(classIndex).forEach(filename => {
-		const data = ut.readJson(`./data/class/${filename}`);
-		data.class.forEach(cls => {
-			cls.name = cls.name.toLowerCase();
-			cls.source = (cls.source || SRC_PHB).toLowerCase();
+	ut.patchLoadJson();
+	const classData = await DataUtil.class.loadJSON();
+	ut.unpatchLoadJson();
+	classData.class.forEach(cls => {
+		cls.name = cls.name.toLowerCase();
+		cls.source = (cls.source || SRC_PHB).toLowerCase();
 
-			CLASS_SUBCLASS_LOOKUP[cls.source] = CLASS_SUBCLASS_LOOKUP[cls.source] || {};
-			CLASS_SUBCLASS_LOOKUP[cls.source][cls.name] = {};
+		CLASS_SUBCLASS_LOOKUP[cls.source] = CLASS_SUBCLASS_LOOKUP[cls.source] || {};
+		CLASS_SUBCLASS_LOOKUP[cls.source][cls.name] = {};
 
-			(cls.subclasses || []).forEach(sc => {
-				sc.shortName = (sc.shortName || sc.name).toLowerCase();
-				sc.source = (sc.source || cls.source).toLowerCase();
+		(cls.subclasses || []).forEach(sc => {
+			sc.shortName = (sc.shortName || sc.name).toLowerCase();
+			sc.source = (sc.source || cls.source).toLowerCase();
 
-				CLASS_SUBCLASS_LOOKUP[cls.source][cls.name][sc.source] = CLASS_SUBCLASS_LOOKUP[cls.source][cls.name][sc.source] || {};
+			CLASS_SUBCLASS_LOOKUP[cls.source][cls.name][sc.source] = CLASS_SUBCLASS_LOOKUP[cls.source][cls.name][sc.source] || {};
 
-				const ixFeatures = [];
-				cls.classFeatures.forEach((levelFeatures, ixLevel) => {
-					levelFeatures.forEach((_, ixFeature) => {
-						ixFeatures.push(`${ixLevel}-${ixFeature}`)
-					});
+			const ixFeatures = [];
+			cls.classFeatures.forEach((levelFeatures, ixLevel) => {
+				levelFeatures.forEach((_, ixFeature) => {
+					ixFeatures.push(`${ixLevel}-${ixFeature}`)
 				});
-
-				CLASS_SUBCLASS_LOOKUP[cls.source][cls.name][sc.source][sc.shortName] = ixFeatures;
 			});
+
+			CLASS_SUBCLASS_LOOKUP[cls.source][cls.name][sc.source][sc.shortName] = ixFeatures;
 		});
 	});
 

@@ -187,6 +187,7 @@ class AcConvert {
 
 						// au naturel
 						case "natural armor":
+						case "natural armour":
 						case "natural":
 							from.push("natural armor");
 							break;

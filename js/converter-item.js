@@ -273,7 +273,7 @@ class ItemParser extends BaseParser {
 			}
 			// endregion
 
-			// region weapon
+			// region weapon/armor
 			if (partLower === "weapon" || partLower === "weapon (any)") {
 				genericType = "weapon";
 				return;
@@ -293,6 +293,7 @@ class ItemParser extends BaseParser {
 				return;
 			} else if (mBaseArmor) {
 				baseItem = ItemParser.getItem(mBaseArmor[1]);
+				if (!baseItem) baseItem = ItemParser.getItem(`${mBaseArmor[1]} armor`); // "armor (plate)" -> "plate armor"
 				if (!baseItem) throw new Error(`Could not find base item "${mBaseArmor[1]}"`);
 				return
 			}

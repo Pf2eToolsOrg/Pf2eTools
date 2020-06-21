@@ -27,7 +27,7 @@ class RendererMarkdown {
 		this._isSkipStylingItemLinks = false;
 	}
 
-	set isSkipStylingItemLinks (val) { this._isSkipStylingItemLinks = val; return this; }
+	set isSkipStylingItemLinks (val) { this._isSkipStylingItemLinks = val; }
 
 	static get () {
 		RendererMarkdown.checkInit();
@@ -786,7 +786,7 @@ if (typeof window !== "undefined") window.addEventListener("load", () => Rendere
 RendererMarkdown.utils = class {
 	static getPageText (it) {
 		const sourceSub = Renderer.utils.getSourceSubText(it);
-		const baseText = it.page > 0 ? `**Source:** *${Parser.sourceJsonToAbv(it.source)}${sourceSub}*, page ${it.page}` : "";
+		const baseText = Renderer.utils.isDisplayPage(it.page) ? `**Source:** *${Parser.sourceJsonToAbv(it.source)}${sourceSub}*, page ${it.page}` : "";
 		const addSourceText = this._getPageText_getAltSourceText(it, "additionalSources", "Additional information from");
 		const otherSourceText = this._getPageText_getAltSourceText(it, "otherSources", "Also found in");
 		const externalSourceText = this._getPageText_getAltSourceText(it, "externalSources", "External sources:");
@@ -799,7 +799,7 @@ RendererMarkdown.utils = class {
 
 		return `${introText} ${it[prop].map(as => {
 			if (as.entry) return Renderer.get().render(as.entry);
-			else return `*${Parser.sourceJsonToAbv(as.source)}*${as.page > 0 ? `, page ${as.page}` : ""}`;
+			else return `*${Parser.sourceJsonToAbv(as.source)}*${Renderer.utils.isDisplayPage(as.page) ? `, page ${as.page}` : ""}`;
 		}).join("; ")}`
 	}
 };
@@ -895,7 +895,7 @@ RendererMarkdown.monster = class {
 
 				const fluff = await Renderer.monster.pGetFluff(mon);
 
-				const fluffEntries = fluff.entries || [];
+				const fluffEntries = (fluff || {}).entries || [];
 
 				RendererMarkdown.get().setFirstSection(true);
 				const fluffText = fluffEntries.map(ent => RendererMarkdown.get().render(ent)).join("\n\n");

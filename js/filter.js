@@ -1716,14 +1716,19 @@ class Filter extends FilterBase {
 		}
 	}
 
+	_toDisplay_getMappedEntryVal (entryVal) {
+		if (!(entryVal instanceof Array)) entryVal = [entryVal];
+		entryVal = entryVal.map(it => it instanceof FilterItem ? it : new FilterItem({item: it}));
+		return entryVal;
+	}
+
 	toDisplay (boxState, entryVal) {
 		const filterState = boxState[this.header];
 		if (!filterState) return true;
 
 		const totals = filterState._totals;
 
-		if (!(entryVal instanceof Array)) entryVal = [entryVal];
-		entryVal = entryVal.map(it => it instanceof FilterItem ? it : new FilterItem({item: it}));
+		entryVal = this._toDisplay_getMappedEntryVal(entryVal);
 
 		const isUmbrella = () => {
 			if (this._umbrellaItems) {
@@ -1811,6 +1816,17 @@ class FilterTransientOptions {
 	}
 }
 
+class SourceFilterItem extends FilterItem {
+	/**
+	 * @param options
+	 * @param [options.isOtherSource] If this is not the primary source of the entity.
+	 */
+	constructor (options) {
+		super(options);
+		this.isOtherSource = options.isOtherSource;
+	}
+}
+
 class SourceFilter extends Filter {
 	constructor (opts) {
 		opts.itemSortFn = opts.itemSortFn || ((a, b) => SortUtil.ascSortLower(Parser.sourceJsonToFull(a.item), Parser.sourceJsonToFull(b.item)));
@@ -1834,13 +1850,13 @@ class SourceFilter extends Filter {
 	}
 
 	_$getHeaderControls_addExtraStateBtns (opts, $wrpStateBtnsOuter) {
-		const $btnSupplements = $(`<button class="btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}" title="SHIFT to include UA/etc.">Core/Supplements</button>`)
+		const $btnSupplements = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"}" title="SHIFT to include UA/etc.">Core/Supplements</button>`)
 			.click(evt => this._doSetPinsSupplements(evt.shiftKey));
 
-		const $btnAdventures = $(`<button class="btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}" title="SHIFT to include UA/etc.">Adventures</button>`)
+		const $btnAdventures = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"}" title="SHIFT to include UA/etc.">Adventures</button>`)
 			.click(evt => this._doSetPinsAdventures(evt.shiftKey));
 
-		const $btnHomebrew = $(`<button class="btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}">Homebrew</button>`)
+		const $btnHomebrew = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"}">Homebrew</button>`)
 			.click(() => this._doSetPinsHomebrew());
 		const hkIsBrewActive = () => {
 			const hasBrew = Object.keys(this.__state).some(src => SourceUtil.getFilterGroup(src) === 2);
@@ -1849,7 +1865,15 @@ class SourceFilter extends Filter {
 		this._addHook("tmpState", "ixAdded", hkIsBrewActive);
 		hkIsBrewActive();
 
-		$$`<div class="btn-group mr-2 w-100 flex-v-center mobile__m-1 mobile__mb-2">${$btnSupplements}${$btnAdventures}${$btnHomebrew}</div>`.prependTo($wrpStateBtnsOuter);
+		const $btnOnlyPrimary = $(`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"}" title="Consider entities as belonging to every source they appear in (i.e. reprints) as well as their primary source">Include References</button>`)
+			.click(() => this._meta.isIncludeOtherSources = !this._meta.isIncludeOtherSources);
+		const hkIsIncludeOtherSources = () => {
+			$btnOnlyPrimary.toggleClass("active", !!this._meta.isIncludeOtherSources);
+		};
+		hkIsIncludeOtherSources();
+		this._addHook("meta", "isIncludeOtherSources", hkIsIncludeOtherSources);
+
+		$$`<div class="btn-group mr-2 w-100 flex-v-center mobile__m-1 mobile__mb-2">${$btnSupplements}${$btnAdventures}${$btnHomebrew}${$btnOnlyPrimary}</div>`.prependTo($wrpStateBtnsOuter);
 	}
 
 	_doSetPinsSupplements (isIncludeUnofficial) {
@@ -1881,8 +1905,14 @@ class SourceFilter extends Filter {
 
 	static getCompleteFilterSources (ent) {
 		return ent.otherSources
-			? [ent.source].concat(ent.otherSources.map(src => new FilterItem({item: src.source, isIgnoreRed: true})))
+			? [ent.source].concat(ent.otherSources.map(src => new SourceFilterItem({item: src.source, isIgnoreRed: true, isOtherSource: true})))
 			: ent.source;
+	}
+
+	_toDisplay_getMappedEntryVal (entryVal) {
+		entryVal = super._toDisplay_getMappedEntryVal(entryVal);
+		if (!this._meta.isIncludeOtherSources) entryVal = entryVal.filter(it => !it.isOtherSource);
+		return entryVal;
 	}
 
 	getSources () {
@@ -1902,6 +1932,17 @@ class SourceFilter extends Filter {
 		});
 		return out;
 	}
+
+	getDefaultMeta () {
+		// Key order is important, as @filter tags depend on it
+		return {
+			...super.getDefaultMeta(),
+			...SourceFilter._DEFAULT_META
+		};
+	}
+}
+SourceFilter._DEFAULT_META = {
+	isIncludeOtherSources: false
 }
 
 class RangeFilter extends FilterBase {

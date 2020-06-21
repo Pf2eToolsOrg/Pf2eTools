@@ -50,7 +50,7 @@ const Omnisearch = {
 					break;
 				case 40: // down
 					e.preventDefault();
-					$searchOut.find(`a`).first().focus();
+					$searchOut.find(`a.omni__lnk-name`).first().focus();
 					break;
 				case 27: // escape
 					$iptSearch.val("");
@@ -193,7 +193,7 @@ const Omnisearch = {
 
 			function renderLinks () {
 				function getHoverStr (category, url, src) {
-					return `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this, '${UrlUtil.categoryToPage(category)}', '${src}', '${url.replace(/'/g, "\\'")}')" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)" ${Renderer.hover.getPreventTouchString()}`;
+					return `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this, '${UrlUtil.categoryToHoverPage(category)}', '${src}', '${url.replace(/'/g, "\\'")}')" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)" ${Renderer.hover.getPreventTouchString()}`;
 				}
 
 				$searchOut.empty();
@@ -234,7 +234,7 @@ const Omnisearch = {
 				for (let i = base; i < Math.max(Math.min(results.length, MAX_RESULTS + base), base); ++i) {
 					const r = results[i].doc;
 
-					const $link = $(`<a href="${Renderer.get().baseUrl}${UrlUtil.categoryToPage(r.c)}#${r.u}" ${r.h ? getHoverStr(r.c, r.u, r.s) : ""}>${r.cf}: ${r.n}</a>`)
+					const $link = $(`<a href="${Renderer.get().baseUrl}${UrlUtil.categoryToPage(r.c)}#${r.uh || r.u}" ${r.h ? getHoverStr(r.c, r.u, r.s) : ""} class="omni__lnk-name">${r.cf}: ${r.n}</a>`)
 						.keydown(evt => Omnisearch.handleLinkKeyDown(evt, $link, $iptSearch, $searchOut));
 
 					const ptSourceInner = `<i title="${Parser.sourceJsonToFull(r.s)}">${Parser.sourceJsonToAbv(r.s)}${r.p ? ` p${r.p}` : ""}</i>`;
@@ -273,7 +273,7 @@ const Omnisearch = {
 				}
 
 				if (clickFirst) {
-					$searchOut.find(`a`).first()[0].click();
+					$searchOut.find(`a.omni__lnk-name`).first()[0].click();
 				}
 			}
 		}
@@ -382,10 +382,14 @@ const Omnisearch = {
 
 		const toIndex = {[prop]: entries};
 
-		Omnidexer.TO_INDEX__FROM_INDEX_JSON.filter(it => it.listProp === prop)
-			.forEach(it => indexer.addToIndex(it, toIndex));
-		Omnidexer.TO_INDEX.filter(it => it.listProp === prop)
-			.forEach(it => indexer.addToIndex(it, toIndex));
+		const toIndexMultiPart = Omnidexer.TO_INDEX__FROM_INDEX_JSON.filter(it => it.listProp === prop);
+		for (const it of toIndexMultiPart) {
+			await indexer.pAddToIndex(it, toIndex);
+		}
+		const toIndexSingle = Omnidexer.TO_INDEX.filter(it => it.listProp === prop);
+		for (const it of toIndexSingle) {
+			await indexer.pAddToIndex(it, toIndex);
+		}
 
 		const toAdd = Omnidexer.decompressIndex(indexer.getIndex());
 		toAdd.forEach(Omnisearch._addToIndex);
@@ -408,17 +412,17 @@ const Omnisearch = {
 					const ix = $ele.parent().index() - 1; // offset as the control bar is at position 0
 					$(`.omni__paginate-left`).click();
 					const $psNext = $searchOut.find(`p`);
-					$($psNext[ix] || $psNext[$psNext.length - 1]).find(`a`).focus();
+					$($psNext[ix] || $psNext[$psNext.length - 1]).find(`a.omni__lnk-name`).focus();
 				}
 				break;
 			}
 			case 38: { // up
 				e.preventDefault();
-				if ($ele.parent().prev().find(`a`).length) {
-					$ele.parent().prev().find(`a`).focus();
+				if ($ele.parent().prev().find(`a.omni__lnk-name`).length) {
+					$ele.parent().prev().find(`a.omni__lnk-name`).focus();
 				} else if ($(`.has-results-left`).length) {
 					$(`.omni__paginate-left`).click();
-					$searchOut.find(`a`).last().focus();
+					$searchOut.find(`a.omni__lnk-name`).last().focus();
 				} else {
 					$searchIn.focus();
 				}
@@ -430,17 +434,17 @@ const Omnisearch = {
 					const ix = $ele.parent().index() - 1; // offset as the control bar is at position 0
 					$(`.omni__paginate-right`).click();
 					const $psNext = $searchOut.find(`p`);
-					$($psNext[ix] || $psNext[$psNext.length - 1]).find(`a`).focus();
+					$($psNext[ix] || $psNext[$psNext.length - 1]).find(`a.omni__lnk-name`).focus();
 				}
 				break;
 			}
 			case 40: { // down
 				e.preventDefault();
-				if ($ele.parent().next().find(`a`).length) {
-					$ele.parent().next().find(`a`).focus();
+				if ($ele.parent().next().find(`a.omni__lnk-name`).length) {
+					$ele.parent().next().find(`a.omni__lnk-name`).focus();
 				} else if ($(`.has-results-right`).length) {
 					$(`.omni__paginate-right`).click();
-					$searchOut.find(`a`).first().focus();
+					$searchOut.find(`a.omni__lnk-name`).first().focus();
 				}
 				break;
 			}

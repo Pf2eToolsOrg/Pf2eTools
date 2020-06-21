@@ -1014,8 +1014,13 @@ input[type=checkbox].sidemenu__row__label__cb {
 	}
 }
 
-th.name {
+.rnd-name {
 	position: relative;
+	font-size: 1.8em;
+	font-family: 'Andada', serif;
+	font-variant: small-caps;
+	font-weight: 500;
+	padding-left: 0.2em !important;
 
 	div.name-inner {
 		display: flex;
@@ -1024,7 +1029,7 @@ th.name {
 	}
 }
 
-.monster th.name .source {
+.monster .rnd-name .source {
 	position: relative;
 	margin-right: 0.2em;
 }
@@ -1051,7 +1056,7 @@ th {
 	padding: 1px 0.3em;
 }
 
-.stats th {
+.stats-name {
 	color: $rgb-name-red;
 }
 
@@ -1112,14 +1117,6 @@ tr.text.compact > td {
 
 tr.text.compact > td p:last-child {
 	margin-bottom: 0;
-}
-
-th.name {
-	font-size: 1.8em;
-	font-family: 'Andada', serif;
-	font-variant: small-caps;
-	font-weight: 500;
-	padding-left: 0.2em !important;
 }
 
 span.dc-roller[mode=dice] {
@@ -2182,6 +2179,10 @@ tr.regionaleffect {
 
 		+ .rd__list {
 			margin-top: -10px;
+		}
+
+		> .rd__list {
+			margin-bottom: 0;
 		}
 	}
 
@@ -3454,7 +3455,7 @@ ul.list.books > li > a > span.name:hover {
 		background: rgba(0, 0, 0, 0.31);
 	}
 
-	.stats th {
+	.stats-name {
 		color: $rgb-name-red--night;
 	}
 

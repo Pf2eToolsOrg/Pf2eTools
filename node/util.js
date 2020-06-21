@@ -141,10 +141,28 @@ const TAG_TO_DEFAULT_SOURCE = {
 	"action": "phb"
 };
 
+class PatchLoadJson {
+	static patchLoadJson () {
+		PatchLoadJson._CACHED = PatchLoadJson._CACHED || DataUtil.loadJSON;
+		DataUtil.loadJSON = async (url) => {
+			const data = readJson(url);
+			await DataUtil.pDoMetaMerge(url, data);
+			return data;
+		}
+	}
+
+	static unpatchLoadJson () {
+		if (PatchLoadJson._CACHED) DataUtil.loadJSON = PatchLoadJson._CACHED;
+	}
+}
+PatchLoadJson._CACHED = null;
+
 module.exports = {
 	dataRecurse,
 	readJson,
 	listFiles,
 	FILE_PREFIX_BLACKLIST,
-	TAG_TO_DEFAULT_SOURCE
+	TAG_TO_DEFAULT_SOURCE,
+	patchLoadJson: PatchLoadJson.patchLoadJson,
+	unpatchLoadJson: PatchLoadJson.unpatchLoadJson
 };

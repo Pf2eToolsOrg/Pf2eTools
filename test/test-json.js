@@ -117,7 +117,8 @@ async function main () {
 
 	const PRELOAD_SINGLE_FILE_SCHEMAS = [
 		"trapshazards.json",
-		"objects.json"
+		"objects.json",
+		"items.json"
 	];
 
 	ajv.addSchema(preprocess(loadJSON("spells/spell.json", "utf8")), "spell.json");
