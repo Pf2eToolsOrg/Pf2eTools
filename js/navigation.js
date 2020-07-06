@@ -597,7 +597,7 @@ class NavBar {
 	}
 }
 NavBar.DROP_TIME = 250;
-NavBar.MIN_MOVE_PX = 7;
+NavBar.MIN_MOVE_PX = 3;
 NavBar.ALT_CHILD_PAGES = {
 	"book.html": "books.html",
 	"adventure.html": "adventures.html"

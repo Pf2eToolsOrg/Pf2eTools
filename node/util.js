@@ -117,30 +117,6 @@ function listFiles (opts) {
 	}, []);
 }
 
-const TAG_TO_DEFAULT_SOURCE = {
-	"spell": "phb",
-	"item": "dmg",
-	"class": "phb",
-	"creature": "mm",
-	"condition": "phb",
-	"disease": "dmg",
-	"background": "phb",
-	"race": "phb",
-	"optfeature": "phb",
-	"reward": "dmg",
-	"feat": "phb",
-	"psionic": "UATheMysticClass",
-	"object": "dmg",
-	"cult": "mtf",
-	"boon": "mtf",
-	"trap": "dmg",
-	"hazard": "dmg",
-	"deity": "phb",
-	"variantrule": "dmg",
-	"vehicle": "gos",
-	"action": "phb"
-};
-
 class PatchLoadJson {
 	static patchLoadJson () {
 		PatchLoadJson._CACHED = PatchLoadJson._CACHED || DataUtil.loadJSON;
@@ -162,7 +138,6 @@ module.exports = {
 	readJson,
 	listFiles,
 	FILE_PREFIX_BLACKLIST,
-	TAG_TO_DEFAULT_SOURCE,
 	patchLoadJson: PatchLoadJson.patchLoadJson,
 	unpatchLoadJson: PatchLoadJson.unpatchLoadJson
 };

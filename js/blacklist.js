@@ -18,22 +18,14 @@ class Blacklist {
 
 	static _renderList () {
 		ExcludeUtil.getList()
-			.sort((a, b) => SortUtil.ascSort(a.source, b.source) || SortUtil.ascSort(a.category, b.category) || SortUtil.ascSort(a.name, b.name))
-			.forEach(({name, category, source}) => Blacklist._addListItem(name, category, source));
+			.sort((a, b) => SortUtil.ascSort(a.source, b.source) || SortUtil.ascSort(a.category, b.category) || SortUtil.ascSort(a.displayName, b.displayName))
+			.forEach(({displayName, hash, category, source}) => Blacklist._addListItem(displayName, hash, category, source));
 		Blacklist._list.init();
 		Blacklist._list.update();
 	}
 
-	static async _pGetClassAndSubclassFeatureData () {
-		const out = {classFeature: [], subclassFeature: []};
-		const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/class/index.json`);
-		const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/class/${it}`)));
-		allData.forEach(json => {
-			out.classFeature = [...out.classFeature, ...(json.classFeature || [])];
-			out.subclassFeature = [...out.subclassFeature, ...(json.subclassFeature || [])];
-		});
-		return out;
-	}
+	static _getDisplayNamePrefix_classFeature (it) { return `${it.className} ${it.level}: ` }
+	static _getDisplayNamePrefix_subclassFeature (it) { return `${it.className} (${it.subclassShortName}) ${it.level}: ` }
 
 	static async pInitialise () {
 		const $iptSearch = $(`#search`);
@@ -66,7 +58,7 @@ class Blacklist {
 		const data = {};
 
 		function mergeData (fromRec) {
-			Object.keys(fromRec).filter(it => !Blacklist.IGNORED_CATEGORIES.has(it))
+			Object.keys(fromRec).filter(it => !Blacklist._IGNORED_CATEGORIES.has(it))
 				.forEach(k => data[k] ? data[k] = data[k].concat(fromRec[k]) : data[k] = fromRec[k])
 		}
 
@@ -78,15 +70,35 @@ class Blacklist {
 		mergeData({spell: await DataUtil.spell.pLoadAll()});
 
 		// classes
-		const classData = await DataUtil.class.loadJSON();
-		classData.class.forEach(c => (c.subclasses || []).forEach(sc => sc.class = c.name));
+		const classData = await DataUtil.class.loadRawJSON();
+		classData.class.forEach(c => {
+			const classHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c);
+			const subBlacklist = (c.classFeatures || []).map(it => {
+				const uid = it.classFeature || it;
+				const unpacked = DataUtil.class.unpackUidClassFeature(uid);
+				const hash = UrlUtil.URL_TO_HASH_BUILDER["classFeature"](unpacked);
+				const displayName = `${Blacklist._getDisplayNamePrefix_classFeature(unpacked)}${unpacked.name}`;
+				return {displayName, hash, category: "classFeature", source: unpacked.source};
+			});
+			MiscUtil.set(Blacklist._SUB_BLACKLIST_ENTRIES, "class", classHash, subBlacklist);
+
+			(c.subclasses || []).forEach(sc => {
+				sc.className = c.name; // init className
+
+				const subclassHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc);
+				const subBlacklist = (sc.subclassFeatures || []).map(it => {
+					const uid = it.subclassFeature || it;
+					const unpacked = DataUtil.class.unpackUidSubclassFeature(uid);
+					const hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](unpacked);
+					const displayName = `${Blacklist._getDisplayNamePrefix_subclassFeature(unpacked)}${unpacked.name}`;
+					return {displayName, hash, category: "subclassFeature", source: unpacked.source};
+				});
+				MiscUtil.set(Blacklist._SUB_BLACKLIST_ENTRIES, "subclass", subclassHash, subBlacklist);
+			});
+		});
 		classData.subclass = classData.subclass || [];
 		classData.class.forEach(c => classData.subclass = classData.subclass.concat(c.subclasses || []));
 		mergeData(classData);
-
-		// class/subclass features
-		const classAndSubclassFeatureData = await Blacklist._pGetClassAndSubclassFeatureData();
-		mergeData(classAndSubclassFeatureData);
 
 		// everything else
 		const promises = FILES.map(url => DataUtil.loadJSON(`data/${url}`));
@@ -127,13 +139,13 @@ class Blacklist {
 					}
 					case "classFeature": {
 						copy = arr
-							.map(it => ({name: it.name, source: it.source, className: it.className, level: it.level}))
+							.map(it => ({name: it.name, source: it.source, className: it.className, classSource: it.classSource, level: it.level}))
 							.sort((a, b) => SortUtil.ascSortLower(a.className, b.className) || SortUtil.ascSort(a.level, b.level) || SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source));
 						break;
 					}
 					case "subclassFeature": {
 						copy = arr
-							.map(it => ({name: it.name, source: it.source, className: it.className, level: it.level, subclassShortName: it.subclassShortName}))
+							.map(it => ({name: it.name, source: it.source, className: it.className, classSource: it.classSource, level: it.level, subclassShortName: it.subclassShortName, subclassSource: it.subclassSource}))
 							.sort((a, b) => SortUtil.ascSortLower(a.className, b.className) || SortUtil.ascSortLower(a.subclassShortName, b.subclassShortName) || SortUtil.ascSort(a.level, b.level) || SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source));
 						break;
 					}
@@ -145,13 +157,17 @@ class Blacklist {
 				const dupes = new Set();
 				let temp = "";
 				copy.forEach((it, i) => {
+					let hash;
 					let prefix = "";
 					switch (cat) {
 						case "subclass": prefix = `${it.className}: `; break;
-						case "classFeature": prefix = `${it.className} ${it.level}: `; break;
-						case "subclassFeature": prefix = `${it.className} (${it.subclassShortName}) ${it.level}: `; break;
+						case "classFeature": hash = UrlUtil.URL_TO_HASH_BUILDER["classFeature"](it); prefix = Blacklist._getDisplayNamePrefix_classFeature(it); break;
+						case "subclassFeature": hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](it); prefix = Blacklist._getDisplayNamePrefix_subclassFeature(it); break;
 					}
-					temp += `<option value="${it.name}|${it.source}">${prefix}${it.name}${(dupes.has(it.name) || (copy[i + 1] && copy[i + 1].name === it.name)) ? ` (${Parser.sourceJsonToAbv(it.source)})` : ""}</option>`;
+					if (!hash) hash = UrlUtil.encodeForHash([it.name, it.source]);
+					const displayName = `${prefix}${it.name}${(dupes.has(it.name) || (copy[i + 1] && copy[i + 1].name === it.name)) ? ` (${Parser.sourceJsonToAbv(it.source)})` : ""}`;
+
+					temp += `<option value="${hash.escapeQuotes()}|${displayName.escapeQuotes()}">${displayName.escapeQuotes()}</option>`;
 					dupes.add(it.name);
 				});
 				$selName.append(temp);
@@ -159,7 +175,7 @@ class Blacklist {
 
 			const cat = $selCategory.val();
 			$selName.empty();
-			$selName.append(`<option value="*">*</option>`);
+			$selName.append(`<option value="*|*">*</option>`);
 			if (cat !== "*") {
 				const source = $selSource.val();
 				if (source === "*") populateName(data[cat], cat);
@@ -179,30 +195,31 @@ class Blacklist {
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
-	static _addListItem (name, category, source) {
+	static _addListItem (displayName, hash, category, source) {
 		const display = Blacklist.getDisplayValues(category, source);
 
 		const id = Blacklist._listId++;
 
 		const $btnRemove = $(`<button class="btn btn-xxs btn-danger m-1">Remove</button>`)
 			.click(() => {
-				Blacklist.remove(id, name, category, source);
+				Blacklist.remove(id, hash, category, source);
 			});
 
 		const $ele = $$`<li class="row no-click flex-v-center lst--border">
 			<span class="col-5">${Parser.sourceJsonToFull(source)}</span>
 			<span class="col-3">${display.displayCategory}</span>
-			<span class="bold col-3">${name}</span>
+			<span class="bold col-3">${displayName}</span>
 			<span class="col-1 text-center">${$btnRemove}</span>
 		</li>`;
 
 		const listItem = new ListItem(
 			id,
 			$ele,
-			name,
+			displayName,
 			{category: display.displayCategory},
 			{
-				name: name,
+				displayName: displayName,
+				hash: hash,
 				category: category,
 				source: source
 			}
@@ -218,12 +235,22 @@ class Blacklist {
 
 		const source = $selSource.val();
 		const category = $selCategory.val();
-		const name = $selName.val().split("|")[0];
+		const [hash, displayName] = $selName.val().split("|");
 
-		if (source === "*" && category === "*" && name === "*" && !window.confirm("This will exclude all content from all list pages. Are you sure?")) return;
+		if (source === "*" && category === "*" && hash === "*" && !window.confirm("This will exclude all content from all list pages. Are you sure?")) return;
 
-		if (ExcludeUtil.addExclude(name, category, source)) {
-			Blacklist._addListItem(name, category, source);
+		if (ExcludeUtil.addExclude(displayName, hash, category, source)) {
+			Blacklist._addListItem(displayName, hash, category, source);
+
+			const subBlacklist = MiscUtil.get(Blacklist._SUB_BLACKLIST_ENTRIES, category, hash);
+			if (subBlacklist) {
+				subBlacklist.forEach(it => {
+					const {displayName, hash, category, source} = it;
+					ExcludeUtil.addExclude(displayName, hash, category, source)
+					Blacklist._addListItem(displayName, hash, category, source);
+				});
+			}
+
 			Blacklist._list.update();
 		}
 	}
@@ -233,8 +260,8 @@ class Blacklist {
 			const val = $(e).val();
 			if (val === "*" || !SourceUtil.isNonstandardSource(val)) return;
 
-			if (ExcludeUtil.addExclude("*", "*", val)) {
-				Blacklist._addListItem("*", "*", val);
+			if (ExcludeUtil.addExclude("*", "*", "*", val)) {
+				Blacklist._addListItem("*", "*", "*", val);
 				Blacklist._list.update();
 			}
 		});
@@ -245,15 +272,15 @@ class Blacklist {
 			const val = $(e).val();
 			if (val === "*" || !SourceUtil.isNonstandardSource(val)) return;
 
-			const item = Blacklist._list.items.find(it => it.data.name === "*" && it.data.category === "*" && it.data.source === val);
+			const item = Blacklist._list.items.find(it => it.data.hash === "*" && it.data.category === "*" && it.data.source === val);
 			if (item) {
 				Blacklist.remove(item.ix, "*", "*", val)
 			}
 		});
 	}
 
-	static remove (ix, name, category, source) {
-		ExcludeUtil.removeExclude(name, category, source);
+	static remove (ix, hash, category, source) {
+		ExcludeUtil.removeExclude(hash, category, source);
 		Blacklist._list.removeItem(ix);
 		Blacklist._list.update();
 	}
@@ -301,10 +328,11 @@ class Blacklist {
 		Blacklist._list.update();
 	}
 }
-Blacklist.IGNORED_CATEGORIES = new Set([
+Blacklist._IGNORED_CATEGORIES = new Set([
 	"_meta",
 	"linkedLootTables"
 ]);
+Blacklist._SUB_BLACKLIST_ENTRIES = {};
 
 window.addEventListener("load", async () => {
 	await ExcludeUtil.pInitialise();

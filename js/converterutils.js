@@ -399,6 +399,7 @@ class TaggerUtils {
 	 * @param tagCount
 	 * @param meta
 	 * @param meta.fnTag
+	 * @param [meta.isAllowTagsWithinTags]
 	 */
 	static walkerStringHandler (targetTags, ptrStack, depth, tagCount, str, meta) {
 		const tagSplit = Renderer.splitByTags(str);
@@ -406,14 +407,20 @@ class TaggerUtils {
 		for (let i = 0; i < len; ++i) {
 			const s = tagSplit[i];
 			if (!s) continue;
-			if (s[0] === "@") {
-				const [tag, text] = Renderer.splitFirstSpace(s);
+			if (s.startsWith("{@")) {
+				const [tag, text] = Renderer.splitFirstSpace(s.slice(1, -1));
 
 				ptrStack._ += `{${tag}${text.length ? " " : ""}`;
-				if (targetTags.includes(tag)) {
+				if (!meta.isAllowTagsWithinTags) {
+					// Never tag anything within an existing tag
 					this.walkerStringHandler(targetTags, ptrStack, depth + 1, tagCount + 1, text, meta);
 				} else {
-					this.walkerStringHandler(targetTags, ptrStack, depth + 1, tagCount, text, meta);
+					// Tag something within an existing tag only if it doesn't match our tag(s)
+					if (targetTags.includes(tag)) {
+						this.walkerStringHandler(targetTags, ptrStack, depth + 1, tagCount + 1, text, meta);
+					} else {
+						this.walkerStringHandler(targetTags, ptrStack, depth + 1, tagCount, text, meta);
+					}
 				}
 				ptrStack._ += `}`;
 			} else {
@@ -1396,10 +1403,19 @@ class DiceConvert {
 
 		// unwrap double-tagged
 		let last;
-
 		do {
 			last = str;
-			str = str.replace(/{@(dice|damage|scaledice|scaledamage|d20) ([^}]*){@(?:dice|damage|scaledice|scaledamage|d20) ([^}]*)}([^}]*)}/gi, "{@$1 $2$3$4}");
+			str = str.replace(/{@(dice|damage|scaledice|scaledamage|d20) ([^}]*){@(dice|damage|scaledice|scaledamage|d20) ([^}]*)}([^}]*)}/gi, (...m) => {
+				// Choose the strongest dice type we have
+				const nxtType = [
+					m[1] === "scaledamage" || m[3] === "scaledamage" ? "scaledamage" : null,
+					m[1] === "damage" || m[3] === "damage" ? "damage" : null,
+					m[1] === "d20" || m[3] === "d20" ? "d20" : null,
+					m[1] === "scaledice" || m[3] === "scaledice" ? "scaledice" : null,
+					m[1] === "dice" || m[3] === "dice" ? "dice" : null
+				].filter(Boolean)[0];
+				return `{@${nxtType} ${m[2]}${m[4]}${m[5]}}`;
+			});
 		} while (last !== str);
 
 		do {
@@ -1592,12 +1608,21 @@ class ActionTag {
 	}
 
 	static _fnTag (strMod) {
-		return strMod
-			.replace(/(^|[ "(\u2013\u2014])(Attack|Dash|Disengage|Dodge|Help|Hide|Ready|Search|Use an Object)([ "',.:;)\u2013\u2014]|$)/g, (...m) => `${m[1]}{@action ${m[2]}}${m[3]}`)
-			.replace(/(Extra|Sneak) {@action Attack}/g, "$1 Attack")
-			.replace(/{@action Attack} and damage roll/g, "Attack and damage roll")
-			.replace(/Armored {@action Hide}/g, "Armored Hide")
-			.replace(/Weapon {@action Attack}/g, "Weapon Attack")
+		const mAction = /(^|[ "(\u2013\u2014])(Attack|Dash|Disengage|Dodge|Help|Hide|Ready|Search|Use an Object)([ "',.:;)\u2013\u2014]|$)/g.exec(strMod);
+		if (!mAction) return strMod;
+
+		const ixMatchEnd = mAction.index + mAction[0].length;
+
+		const reSplitTokens = /[ \u2013\u2014]/g;
+		const reCleanTokenStart = /^["'\u2013\u2014]/g;
+
+		const prevWord = (strMod.slice(0, mAction.index).split(reSplitTokens).last() || "").replace(reCleanTokenStart, "");
+		const nxtWord = (strMod.slice(ixMatchEnd, strMod.length).split(reSplitTokens)[0] || "").replace(reCleanTokenStart, "");
+		if ((prevWord && /^[A-Z]/.test(prevWord)) || (nxtWord && /^[A-Z]/.test(nxtWord))) return strMod; // Avoid tagging words in titles
+
+		const replaceAs = `${mAction[1]}{@action ${mAction[2]}}${mAction[3]}`;
+		return `${strMod.slice(0, mAction.index)}${replaceAs}${strMod.slice(ixMatchEnd, strMod.length)}`
+			.replace(/{@action Attack} (and|or) damage roll/g, "Attack $1 damage roll")
 		;
 	}
 }

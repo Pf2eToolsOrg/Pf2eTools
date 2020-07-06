@@ -3022,7 +3022,7 @@ class AdventureOrBookLoader {
 	constructor (type) {
 		this._type = type;
 		this._cache = {};
-		this._pLoading = null;
+		this._pLoadings = {};
 	}
 
 	_getJsonPath (bookOrAdventure) {
@@ -3047,15 +3047,15 @@ class AdventureOrBookLoader {
 	}
 
 	async pFill (bookOrAdventure) {
-		if (!this._pLoading) {
-			this._pLoading = (async () => {
+		if (!this._pLoadings[bookOrAdventure]) {
+			this._pLoadings[bookOrAdventure] = (async () => {
 				this._cache[bookOrAdventure] = {};
 				const fromBrew = this._getBrewData(bookOrAdventure);
 				const data = fromBrew || await DataUtil.loadJSON(this._getJsonPath(bookOrAdventure));
 				data.data.forEach((chap, i) => this._cache[bookOrAdventure][i] = chap);
 			})();
 		}
-		await this._pLoading;
+		await this._pLoadings[bookOrAdventure];
 	}
 
 	getFromCache (adventure, chapter) {

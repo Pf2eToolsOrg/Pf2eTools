@@ -1381,7 +1381,7 @@ class Filter extends FilterBase {
 		const $wrpStateBtnsOuter = $$`<div class="flex-v-center fltr__h-wrp-state-btns-outer">${$wrpStateBtns}</div>`;
 		this._$getHeaderControls_addExtraStateBtns(opts, $wrpStateBtnsOuter);
 
-		const $wrpSummary = $(`<div class="flex-vh-center"></div>`).hide();
+		const $wrpSummary = $(`<div class="flex-vh-center"></div>`).hideVe();
 
 		const $btnCombineBlue = $$`<button class="btn btn-default ${opts.isMulti ? "btn-xxs" : "btn-xs"} fltr__h-btn-logic--blue fltr__h-btn-logic w-100" title="Positive matches mode for this filter. AND requires all blues to match, OR requires at least one blue to match."></button>`
 			.click(() => this._meta.combineBlue = this._meta.combineBlue === "or" ? "and" : "or");
@@ -1399,7 +1399,7 @@ class Filter extends FilterBase {
 			.click(() => this._meta.isHidden = !this._meta.isHidden);
 		const hookShowHide = () => {
 			$btnShowHide.toggleClass("active", this._meta.isHidden);
-			$wrpStateBtnsOuter.toggle(!this._meta.isHidden);
+			$wrpStateBtnsOuter.toggleVe(!this._meta.isHidden);
 			$wrpSummary.toggleClass("ve-hidden", !this._meta.isHidden).empty();
 
 			// render summary
@@ -1408,17 +1408,17 @@ class Filter extends FilterBase {
 			$(`<span class="fltr__summary_item fltr__summary_item--include"></span>`)
 				.title(`${cur._totals.yes} hidden "required" tags`)
 				.text(cur._totals.yes)
-				.toggle(!!cur._totals.yes)
+				.toggleVe(!!cur._totals.yes)
 				.appendTo($wrpSummary);
 
 			$(`<span class="fltr__summary_item_spacer"></span>`)
-				.toggle(!!(cur._totals.yes && cur._totals.no))
+				.toggleVe(!!(cur._totals.yes && cur._totals.no))
 				.appendTo($wrpSummary);
 
 			$(`<span class="fltr__summary_item fltr__summary_item--exclude"></span>`)
 				.title(`${cur._totals.no} hidden "excluded" tags`)
 				.text(cur._totals.no)
-				.toggle(!!cur._totals.no)
+				.toggleVe(!!cur._totals.no)
 				.appendTo($wrpSummary);
 		};
 		this._addHook("meta", "isHidden", hookShowHide);
@@ -1454,7 +1454,7 @@ class Filter extends FilterBase {
 		const $wrpControls = this._$getHeaderControls(opts);
 
 		this.__$wrpPills = $$`<div class="fltr__wrp-pills ${this._groupFn ? "fltr__wrp-subs" : ""}"></div>`;
-		const hook = () => this.__$wrpPills.toggle(!this._meta.isHidden);
+		const hook = () => this.__$wrpPills.toggleVe(!this._meta.isHidden);
 		this._addHook("meta", "isHidden", hook);
 		hook();
 
@@ -1540,7 +1540,7 @@ class Filter extends FilterBase {
 			if (!it.$rendered) {
 				it.$rendered = this._$getPill(it);
 				if (it.nest) {
-					const hook = () => it.$rendered.toggle(!this._nestsHidden[it.nest]);
+					const hook = () => it.$rendered.toggleVe(!this._nestsHidden[it.nest]);
 					this._addHook("nestsHidden", it.nest, hook);
 					hook();
 				}
@@ -1558,7 +1558,7 @@ class Filter extends FilterBase {
 						.sort((a, b) => SortUtil.ascSortLower(a[0], b[0]))
 						.forEach(([groupKey, groupMeta], i) => {
 							groupMeta.$hrDivider.appendTo(this.__$wrpPills);
-							groupMeta.$hrDivider.toggle(!(i === 0 && this._nests == null));
+							groupMeta.$hrDivider.toggleVe(!(i === 0 && this._nests == null));
 							groupMeta.$wrpPills.appendTo(this.__$wrpPills);
 						});
 
@@ -1566,7 +1566,7 @@ class Filter extends FilterBase {
 						this._pillGroupsMeta[group].toggleDividerFromNestVisibility = () => {
 							const groupItems = this._items.filter(it => this._groupFn(it) === group);
 							const hiddenGroupItems = groupItems.filter(it => this._nestsHidden[it.nest]);
-							this._pillGroupsMeta[group].$hrDivider.toggle(groupItems.length !== hiddenGroupItems.length);
+							this._pillGroupsMeta[group].$hrDivider.toggleVe(groupItems.length !== hiddenGroupItems.length);
 						};
 
 						// bind group dividers to show/hide depending on nest visibility state
@@ -2129,14 +2129,14 @@ class RangeFilter extends FilterBase {
 		const $btnReset = $(`<button class="btn btn-default btn-xs">Reset</button>`).click(() => this.reset());
 		const $wrpBtns = $$`<div>${$btnForceMobile}${$btnReset}</div>`;
 
-		const $wrpSummary = $(`<div class="flex-v-center fltr__summary_item fltr__summary_item--include"></div>`).hide();
+		const $wrpSummary = $(`<div class="flex-v-center fltr__summary_item fltr__summary_item--include"></div>`).hideVe();
 
 		const $btnShowHide = $(`<button class="btn btn-default btn-xs ml-2 ${this._meta.isHidden ? "active" : ""}">Hide</button>`)
 			.click(() => this._meta.isHidden = !this._meta.isHidden);
-		const hook = () => {
+		const hkIsHidden = () => {
 			$btnShowHide.toggleClass("active", this._meta.isHidden);
-			$wrpBtns.toggle(!this._meta.isHidden);
-			$wrpSummary.toggle(this._meta.isHidden);
+			$wrpBtns.toggleVe(!this._meta.isHidden);
+			$wrpSummary.toggleVe(this._meta.isHidden);
 
 			// render summary
 			const cur = this.getValues()[this.header];
@@ -2147,8 +2147,8 @@ class RangeFilter extends FilterBase {
 				.title(isRange ? `Hidden range` : isCapped ? `Hidden limit` : "")
 				.text(isRange ? `${cur.min}-${cur.max}` : !cur.isMinVal ? `≥ ${cur.min}` : !cur.isMaxVal ? `≤ ${cur.max}` : "")
 		};
-		this._addHook("meta", "isHidden", hook);
-		hook();
+		this._addHook("meta", "isHidden", hkIsHidden);
+		hkIsHidden();
 
 		return $$`
 		<div class="flex-v-center">
@@ -2174,8 +2174,8 @@ class RangeFilter extends FilterBase {
 		const $wrpSlider = $$`<div class="fltr__wrp-pills fltr__wrp-pills--flex"></div>`;
 		const $wrpDropdowns = $$`<div class="fltr__wrp-pills fltr__wrp-pills--flex"></div>`;
 		const hookHidden = () => {
-			$wrpSlider.toggle(!this._meta.isHidden && !this._meta.isUseDropdowns);
-			$wrpDropdowns.toggle(!this._meta.isHidden && !!this._meta.isUseDropdowns);
+			$wrpSlider.toggleVe(!this._meta.isHidden && !this._meta.isUseDropdowns);
+			$wrpDropdowns.toggleVe(!this._meta.isHidden && !!this._meta.isUseDropdowns);
 		};
 		this._addHook("meta", "isHidden", hookHidden);
 		this._addHook("meta", "isUseDropdowns", hookHidden);
@@ -2553,7 +2553,7 @@ class MultiFilter extends FilterBase {
 		const $children = this._filters.map((it, i) => it.$render({...opts, isMulti: true, isFirst: i === 0}));
 		const $wrpChildren = $$`<div>${$children}</div>`;
 
-		const $wrpSummary = $(`<div class="fltr__summary_item"></div>`).hide();
+		const $wrpSummary = $(`<div class="fltr__summary_item"></div>`).hideVe();
 
 		const $btnForceMobile = this._isAddDropdownToggle ? ComponentUiUtil.$getBtnBool(
 			this,
@@ -2584,10 +2584,10 @@ class MultiFilter extends FilterBase {
 		</div>`;
 
 		const hookShowHide = () => {
-			$wrpBtns.toggle(!this._meta.isHidden);
+			$wrpBtns.toggleVe(!this._meta.isHidden);
 			$btnShowHide.toggleClass("active", this._meta.isHidden);
-			$wrpChildren.toggle(!this._meta.isHidden);
-			$wrpSummary.toggle(this._meta.isHidden);
+			$wrpChildren.toggleVe(!this._meta.isHidden);
+			$wrpSummary.toggleVe(this._meta.isHidden);
 
 			const numActive = this._filters.map(it => it.getValues()[it.header]._isActive).filter(Boolean).length;
 			if (numActive) {

@@ -198,19 +198,20 @@
 </head>
 
 <body>
+<div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+
+<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+
 <header class="hidden-xs hidden-sm page__header">
 	<div class="container">
 		<h1 class="page__title">Statgen</h1>
 		<p class="page__subtitle">Change method on the left, refer to method that appears on the right.</p>
 	</div>
 </header>
-<nav class="container page__nav" id="navigation">
-	<ul class="nav page__nav-inner" id="navbar">
-	</ul>
-</nav>
 
-<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
-<div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<nav class="container page__nav" id="navigation">
+	<ul class="nav page__nav-inner" id="navbar"></ul>
+</nav>
 
 <main class="container">
 
@@ -272,7 +273,7 @@
 							<td class="text-center">Mod</td>
 						</tr>
 						<tr id="str">
-							<td><b>STR</b></td>
+							<td class="text-right"><b>STR</b></td>
 							<td><input type="number" value="8" class="base" data-select="number"></td>
 							<td><input class="racial" readonly data-select="number"></td>
 							<td class="choose"><div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div></td>
@@ -285,7 +286,7 @@
 							<td><input readonly class="bold" data-select="number"></td>
 						</tr>
 						<tr id="dex">
-							<td><b>DEX</b></td>
+							<td class="text-right"><b>DEX</b></td>
 							<td><input type="number" value="8" class="base" data-select="number"></td>
 							<td><input class="racial" readonly data-select="number"></td>
 							<td class="choose"><div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div></td>
@@ -298,7 +299,7 @@
 							<td><input readonly class="bold" data-select="number"></td>
 						</tr>
 						<tr id="con">
-							<td><b>CON</b></td>
+							<td class="text-right"><b>CON</b></td>
 							<td><input type="number" value="8" class="base" data-select="number"></td>
 							<td><input class="racial" readonly data-select="number"></td>
 							<td class="choose"><div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div></td>
@@ -311,7 +312,7 @@
 							<td><input readonly class="bold" data-select="number"></td>
 						</tr>
 						<tr id="int">
-							<td><b>INT</b></td>
+							<td class="text-right"><b>INT</b></td>
 							<td><input type="number" value="8" class="base" data-select="number"></td>
 							<td><input class="racial" readonly data-select="number"></td>
 							<td class="choose"><div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div></td>
@@ -324,7 +325,7 @@
 							<td><input readonly class="bold" data-select="number"></td>
 						</tr>
 						<tr id="wis">
-							<td><b>WIS</b></td>
+							<td class="text-right"><b>WIS</b></td>
 							<td><input type="number" value="8" class="base" data-select="number"></td>
 							<td><input class="racial" readonly data-select="number"></td>
 							<td class="choose"><div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div></td>
@@ -337,7 +338,7 @@
 							<td><input readonly class="bold" data-select="number"></td>
 						</tr>
 						<tr id="cha">
-							<td><b>CHA</b></td>
+							<td class="text-right"><b>CHA</b></td>
 							<td><input type="number" value="8" class="base" data-select="number"></td>
 							<td><input class="racial" readonly data-select="number"></td>
 							<td class="choose"><div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div></td>
@@ -393,6 +394,7 @@
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
+<script type="text/javascript" src="js/render-dice.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/statgen.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>

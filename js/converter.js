@@ -859,14 +859,15 @@ ConverterUi._DEFAULT_STATE = {
 
 async function doPageInit () {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-	const [spells, items, legendaryGroups] = await Promise.all([
+	const [spells, items, legendaryGroups, classes] = await Promise.all([
 		DataUtil.spell.pLoadAll(),
 		Renderer.item.pBuildList(),
 		DataUtil.legendaryGroup.pLoadAll(),
+		DataUtil.class.loadJSON(),
 		BrewUtil.pAddBrewData() // init homebrew
 	]);
 	SpellcastingTraitConvert.init(spells);
-	ItemParser.init(items);
+	ItemParser.init(items, classes);
 	AcConvert.init(items);
 	TagCondition.init(legendaryGroups, spells);
 

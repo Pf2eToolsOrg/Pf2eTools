@@ -51,7 +51,7 @@
 					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"A {@item longbow|phb} and a {@item quiver|phb} of {@item arrows (20)|phb|20 arrows}"
 				],
-				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}"
 			},
 			"multiclassing": {
 				"requirements": {
@@ -1025,7 +1025,7 @@
 					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"A {@item longbow|phb} and a {@item quiver|phb} of {@item arrows (20)|phb|20 arrows}"
 				],
-				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}"
 			},
 			"classTableGroups": [
 				{
@@ -1631,7 +1631,7 @@
 					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"A {@item longbow|phb} and a {@item quiver|phb} of {@item arrows (20)|phb|20 arrows}"
 				],
-				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}"
 			},
 			"classTableGroups": [
 				{
@@ -2541,29 +2541,19 @@
 				"You are an unsurpassed explorer and survivor. Choose one of the following benefits, and then choose another one at 6th and 10th level.",
 				{
 					"type": "options",
+					"count": 1,
 					"entries": [
 						{
-							"name": "Canny",
-							"entries": [
-								"Choose one skill: {@skill Animal Handling}, {@skill Athletics}, {@skill History}, {@skill Insight}, {@skill Investigation}, {@skill Medicine}, {@skill Nature}, {@skill Perception}, {@skill Stealth}, or {@skill Survival}. You gain proficiency in the chosen skill if you don't already have it, and you can add double your proficiency bonus to ability checks using that skill.",
-								"In addition, thanks to your extensive wandering, you are able to speak, read, and write two languages of your choice."
-							],
-							"type": "entries"
+							"type": "refClassFeature",
+							"classFeature": "Canny|Ranger|UAClassFeatureVariants|1"
 						},
 						{
-							"name": "Roving",
-							"entries": [
-								"Your walking speed increases by 5, and you gain a climbing speed and a swimming speed equal to your walking speed."
-							],
-							"type": "entries"
+							"type": "refClassFeature",
+							"classFeature": "Roving|Ranger|UAClassFeatureVariants|1"
 						},
 						{
-							"name": "Tireless",
-							"entries": [
-								"As an action, you can give yourself a number of temporary hit points equal to {@dice 1d10} + your Wisdom modifier. You can use this special action a number of times equal to your Wisdom modifier (a minimum of once), and you regain all expended uses when you finish a long rest.",
-								"In addition, whenever you finish a short rest, your exhaustion level, if any, is decreased by 1."
-							],
-							"type": "entries"
+							"type": "refClassFeature",
+							"classFeature": "Tireless|Ranger|UAClassFeatureVariants|1"
 						}
 					]
 				}
@@ -2573,13 +2563,14 @@
 			"name": "Favored Enemy",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 1,
 			"entries": [
 				"Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy.",
 				"Choose a type of favored enemy: {@filter aberrations|bestiary|type=aberration}, {@filter beasts|bestiary|type=beast}, {@filter celestials|bestiary|type=celestial}, {@filter constructs|bestiary|type=construct}, {@filter dragons|bestiary|type=dragon}, {@filter elementals|bestiary|type=elemental}, {@filter fey|bestiary|type=fey}, {@filter fiends|bestiary|type=fiend}, {@filter giants|bestiary|type=giant}, {@filter monstrosities|bestiary|type=monstrosity}, {@filter oozes|bestiary|type=ooze}, {@filter plants|bestiary|type=plant}, or {@filter undead|bestiary|type=undead}. Alternatively, you can select two races of {@filter humanoid|bestiary|type=humanoid} (such as {@creature gnoll||gnolls} and {@creature orc||orcs}) as favored enemies.",
-				"You have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
+				"You have advantage on Wisdom ({@skill Survival}) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
 				"When you gain this feature, you also learn one language of your choice that is spoken by your favored enemies, if they speak one at all.",
 				"You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures."
 			]
@@ -2601,6 +2592,7 @@
 			"name": "Natural Explorer",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 1,
@@ -2625,6 +2617,7 @@
 			"name": "Fighting Style",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 2,
@@ -2632,105 +2625,55 @@
 				"At 2nd level, you adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.",
 				{
 					"type": "options",
+					"count": 1,
 					"entries": [
 						{
-							"type": "entries",
-							"name": "Archery",
-							"entries": [
-								"You gain a +2 bonus to attack rolls you make with ranged weapons."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Archery"
 						},
 						{
-							"type": "entries",
-							"name": "Close Quarters Shooter",
-							"entries": [
-								"When making a ranged attack while you are within 5 feet of a hostile creature, you do not have disadvantage on the attack roll. Your ranged attacks ignore half cover and three-quarters cover against targets within 30 feet of you. You have a +1 bonus to attack rolls on ranged attacks."
-							],
-							"source": "UALightDarkUnderdark"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Close Quarters Shooter|UALightDarkUnderdark"
 						},
 						{
-							"type": "entries",
-							"name": "Defense",
-							"entries": [
-								"While you are wearing armor, you gain a +1 bonus to AC."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Defense"
 						},
 						{
-							"type": "entries",
-							"name": "Dueling",
-							"entries": [
-								"When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
 						},
 						{
-							"type": "entries",
-							"name": "Mariner",
-							"entries": [
-								"As long as you are not wearing heavy armor or using a shield, you have a swimming speed and a climbing speed equal to your normal speed, and you gain a +1 bonus to AC."
-							],
-							"source": "UAWaterborneAdventures"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mariner|UAWaterborneAdventures"
 						},
 						{
-							"type": "entries",
-							"name": "Tunnel Fighter",
-							"entries": [
-								"As a bonus action, you can enter a defensive stance that lasts until the start of your next turn. While in your defensive stance, you can make opportunity attacks without using your reaction, and you can use your reaction to make a melee attack against a creature that moves more than 5 feet while within your reach."
-							],
-							"source": "UALightDarkUnderdark"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Tunnel Fighter|UALightDarkUnderdark"
 						},
 						{
-							"type": "entries",
-							"name": "Two-Weapon Fighting",
-							"entries": [
-								"When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Two-Weapon Fighting"
 						},
 						{
-							"type": "entries",
-							"name": "Blind Fighting",
-							"entries": [
-								"Being unable to see a creature doesn't impose disadvantage on your attack rolls against it, provided the creature isn't hidden from you."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blind Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Interception",
-							"entries": [
-								"When a creature you can see hits a target that is within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + your proficiency bonus (to a minimum of 0 damage). You must be wielding a shield or a simple or martial weapon to use this reaction."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Interception|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Thrown Weapon Fighting",
-							"entries": [
-								"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
-								"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +1 bonus to the damage roll."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Thrown Weapon Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Unarmed Fighting",
-							"entries": [
-								"Your unarmed strikes can deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier. If you strike with two free hands, the {@dice d6} becomes a {@dice d8}.",
-								"When you successfully start a grapple, you can deal {@dice 1d4} bludgeoning damage to the grappled creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Unarmed Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Druidic Warrior",
-							"entries": [
-								"You learn two cantrips of your choice from the {@filter druid spell list|spells|level=0|class=druid}. They count as druid spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the druid spell list."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 7
+							"type": "refOptionalfeature",
+							"optionalfeature": "Druidic Warrior|UAClassFeatureVariants"
 						}
 					]
 				}
@@ -2764,6 +2707,7 @@
 			"name": "Spellcasting",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 2,
@@ -2872,6 +2816,7 @@
 			"name": "Primeval Awareness",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 3,
@@ -2883,6 +2828,7 @@
 			"name": "Ranger Archetype",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 3,
@@ -2894,6 +2840,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 4,
@@ -2919,6 +2866,7 @@
 			"name": "Extra Attack",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 5,
@@ -2930,6 +2878,7 @@
 			"name": "Favored Enemy and Natural Explorer improvements",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 6,
@@ -2942,6 +2891,7 @@
 			"name": "Ranger Archetype feature",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 7,
@@ -2953,6 +2903,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 8,
@@ -2965,6 +2916,7 @@
 			"name": "Land's Stride",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 8,
@@ -3003,6 +2955,7 @@
 			"name": "Hide in Plain Sight",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 10,
@@ -3015,6 +2968,7 @@
 			"name": "Natural Explorer improvement",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 10,
@@ -3026,6 +2980,7 @@
 			"name": "Ranger Archetype feature",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 11,
@@ -3037,6 +2992,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 12,
@@ -3062,6 +3018,7 @@
 			"name": "Favored Enemy improvement",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 14,
@@ -3073,6 +3030,7 @@
 			"name": "Vanish",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 14,
@@ -3084,6 +3042,7 @@
 			"name": "Ranger Archetype feature",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 15,
@@ -3095,6 +3054,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 16,
@@ -3120,6 +3080,7 @@
 			"name": "Feral Senses",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 18,
@@ -3131,6 +3092,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 19,
@@ -3156,11 +3118,82 @@
 			"name": "Foe Slayer",
 			"source": "PHB",
 			"page": 89,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"level": 20,
 			"entries": [
 				"At 20th level, you become an unparalleled hunter of your enemies. Once on each of your turns, you can add your Wisdom modifier to the attack roll or the damage roll of an attack you make against one of your favored enemies. You can choose to use this feature before or after the roll, but before any effects of the roll are applied."
+			]
+		},
+		{
+			"name": "Canny",
+			"source": "UAClassFeatureVariants",
+			"page": 7,
+			"className": "Ranger",
+			"classSource": "UAClassFeatureVariants",
+			"level": 1,
+			"entries": [
+				"Choose one skill: {@skill Animal Handling}, {@skill Athletics}, {@skill History}, {@skill Insight}, {@skill Investigation}, {@skill Medicine}, {@skill Nature}, {@skill Perception}, {@skill Stealth}, or {@skill Survival}. You gain proficiency in the chosen skill if you don't already have it, and you can add double your proficiency bonus to ability checks using that skill.",
+				"In addition, thanks to your extensive wandering, you are able to speak, read, and write two languages of your choice."
+			]
+		},
+		{
+			"name": "Roving",
+			"source": "UAClassFeatureVariants",
+			"page": 7,
+			"className": "Ranger",
+			"classSource": "UAClassFeatureVariants",
+			"level": 1,
+			"entries": [
+				"Your walking speed increases by 5, and you gain a climbing speed and a swimming speed equal to your walking speed."
+			]
+		},
+		{
+			"name": "Tireless",
+			"source": "UAClassFeatureVariants",
+			"page": 7,
+			"className": "Ranger",
+			"classSource": "UAClassFeatureVariants",
+			"level": 1,
+			"entries": [
+				"As an action, you can give yourself a number of temporary hit points equal to {@dice 1d10} + your Wisdom modifier. You can use this special action a number of times equal to your Wisdom modifier (a minimum of once), and you regain all expended uses when you finish a long rest.",
+				"In addition, whenever you finish a short rest, your {@condition exhaustion} level, if any, is decreased by 1."
+			]
+		},
+		{
+			"name": "Canny",
+			"source": "UAClassFeatureVariants",
+			"page": 7,
+			"className": "Ranger (Spell-less)",
+			"classSource": "UAClassFeatureVariants",
+			"level": 1,
+			"entries": [
+				"Choose one skill: {@skill Animal Handling}, {@skill Athletics}, {@skill History}, {@skill Insight}, {@skill Investigation}, {@skill Medicine}, {@skill Nature}, {@skill Perception}, {@skill Stealth}, or {@skill Survival}. You gain proficiency in the chosen skill if you don't already have it, and you can add double your proficiency bonus to ability checks using that skill.",
+				"In addition, thanks to your extensive wandering, you are able to speak, read, and write two languages of your choice."
+			]
+		},
+		{
+			"name": "Roving",
+			"source": "UAClassFeatureVariants",
+			"page": 7,
+			"className": "Ranger (Spell-less)",
+			"classSource": "UAClassFeatureVariants",
+			"level": 1,
+			"entries": [
+				"Your walking speed increases by 5, and you gain a climbing speed and a swimming speed equal to your walking speed."
+			]
+		},
+		{
+			"name": "Tireless",
+			"source": "UAClassFeatureVariants",
+			"page": 7,
+			"className": "Ranger (Spell-less)",
+			"classSource": "UAClassFeatureVariants",
+			"level": 1,
+			"entries": [
+				"As an action, you can give yourself a number of temporary hit points equal to {@dice 1d10} + your Wisdom modifier. You can use this special action a number of times equal to your Wisdom modifier (a minimum of once), and you regain all expended uses when you finish a long rest.",
+				"In addition, whenever you finish a short rest, your {@condition exhaustion} level, if any, is decreased by 1."
 			]
 		},
 		{
@@ -3176,29 +3209,19 @@
 				"You are an unsurpassed explorer and survivor. Choose one of the following benefits, and then choose another one at 6th and 10th level.",
 				{
 					"type": "options",
+					"count": 1,
 					"entries": [
 						{
-							"name": "Canny",
-							"entries": [
-								"Choose one skill: {@skill Animal Handling}, {@skill Athletics}, {@skill History}, {@skill Insight}, {@skill Investigation}, {@skill Medicine}, {@skill Nature}, {@skill Perception}, {@skill Stealth}, or {@skill Survival}. You gain proficiency in the chosen skill if you don't already have it, and you can add double your proficiency bonus to ability checks using that skill.",
-								"In addition, thanks to your extensive wandering, you are able to speak, read, and write two languages of your choice."
-							],
-							"type": "entries"
+							"type": "refClassFeature",
+							"classFeature": "Canny|Ranger (Spell-less)|UAClassFeatureVariants|1"
 						},
 						{
-							"name": "Roving",
-							"entries": [
-								"Your walking speed increases by 5, and you gain a climbing speed and a swimming speed equal to your walking speed."
-							],
-							"type": "entries"
+							"type": "refClassFeature",
+							"classFeature": "Roving|Ranger (Spell-less)|UAClassFeatureVariants|1"
 						},
 						{
-							"name": "Tireless",
-							"entries": [
-								"As an action, you can give yourself a number of temporary hit points equal to {@dice 1d10} + your Wisdom modifier. You can use this special action a number of times equal to your Wisdom modifier (a minimum of once), and you regain all expended uses when you finish a long rest.",
-								"In addition, whenever you finish a short rest, your exhaustion level, if any, is decreased by 1."
-							],
-							"type": "entries"
+							"type": "refClassFeature",
+							"classFeature": "Tireless|Ranger (Spell-less)|UAClassFeatureVariants|1"
 						}
 					]
 				}
@@ -3214,7 +3237,7 @@
 			"entries": [
 				"Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy.",
 				"Choose a type of favored enemy: {@filter aberrations|bestiary|type=aberration}, {@filter beasts|bestiary|type=beast}, {@filter celestials|bestiary|type=celestial}, {@filter constructs|bestiary|type=construct}, {@filter dragons|bestiary|type=dragon}, {@filter elementals|bestiary|type=elemental}, {@filter fey|bestiary|type=fey}, {@filter fiends|bestiary|type=fiend}, {@filter giants|bestiary|type=giant}, {@filter monstrosities|bestiary|type=monstrosity}, {@filter oozes|bestiary|type=ooze}, {@filter plants|bestiary|type=plant}, or {@filter undead|bestiary|type=undead}. Alternatively, you can select two races of {@filter humanoid|bestiary|type=humanoid} (such as {@creature gnoll||gnolls} and {@creature orc||orcs}) as favored enemies.",
-				"You have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
+				"You have advantage on Wisdom ({@skill Survival}) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
 				"When you gain this feature, you also learn one language of your choice that is spoken by your favored enemies, if they speak one at all.",
 				"You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures."
 			]
@@ -3278,7 +3301,7 @@
 					"type": "entries",
 					"name": "Superiority Dice",
 					"entries": [
-						"You have four superiority dice, which are d8s. A superiority die is expended when you use it. You regain all of your expended superiority dice when you finish a short or long rest.",
+						"You have four superiority dice, which are {@dice d8}s. A superiority die is expended when you use it. You regain all of your expended superiority dice when you finish a short or long rest.",
 						"You gain another superiority die at 9th level and one more at 17th level."
 					]
 				},
@@ -3310,110 +3333,55 @@
 				"At 2nd level, you adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.",
 				{
 					"type": "options",
+					"count": 1,
 					"entries": [
 						{
-							"type": "entries",
-							"name": "Archery",
-							"entries": [
-								"You gain a +2 bonus to attack rolls you make with ranged weapons."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Archery"
 						},
 						{
-							"type": "entries",
-							"name": "Close Quarters Shooter",
-							"entries": [
-								"When making a ranged attack while you are within 5 feet of a hostile creature, you do not have disadvantage on the attack roll. Your ranged attacks ignore half cover and three-quarters cover against targets within 30 feet of you. You have a +1 bonus to attack rolls on ranged attacks."
-							],
-							"source": "UALightDarkUnderdark"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Close Quarters Shooter|UALightDarkUnderdark"
 						},
 						{
-							"type": "entries",
-							"name": "Defense",
-							"entries": [
-								"While you are wearing armor, you gain a +1 bonus to AC."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Defense"
 						},
 						{
-							"type": "entries",
-							"name": "Dueling",
-							"entries": [
-								"When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
 						},
 						{
-							"type": "entries",
-							"name": "Mariner",
-							"entries": [
-								"As long as you are not wearing heavy armor or using a shield, you have a swimming speed and a climbing speed equal to your normal speed, and you gain a +1 bonus to AC."
-							],
-							"source": "UAWaterborneAdventures"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mariner|UAWaterborneAdventures"
 						},
 						{
-							"type": "entries",
-							"name": "Tunnel Fighter",
-							"entries": [
-								"As a bonus action, you can enter a defensive stance that lasts until the start of your next turn. While in your defensive stance, you can make opportunity attacks without using your reaction, and you can use your reaction to make a melee attack against a creature that moves more than 5 feet while within your reach."
-							],
-							"source": "UALightDarkUnderdark"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Tunnel Fighter|UALightDarkUnderdark"
 						},
 						{
-							"type": "entries",
-							"name": "Two-Weapon Fighting",
-							"entries": [
-								"When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Two-Weapon Fighting"
 						},
 						{
-							"type": "entries",
-							"name": "Blind Fighting",
-							"entries": [
-								"{@note Note that this feature is intended for use with the Ranger class presented in the Player's Handbook. It is presented here for convenience, and may be unsuitable for use as a Spell-less Ranger feature.}",
-								"Being unable to see a creature doesn't impose disadvantage on your attack rolls against it, provided the creature isn't hidden from you."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blind Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Interception",
-							"entries": [
-								"{@note Note that this feature is intended for use with the Ranger class presented in the Player's Handbook. It is presented here for convenience, and may be unsuitable for use as a Spell-less Ranger feature.}",
-								"When a creature you can see hits a target that is within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + your proficiency bonus (to a minimum of 0 damage). You must be wielding a shield or a simple or martial weapon to use this reaction."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Interception|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Thrown Weapon Fighting",
-							"entries": [
-								"{@note Note that this feature is intended for use with the Ranger class presented in the Player's Handbook. It is presented here for convenience, and may be unsuitable for use as a Spell-less Ranger feature.}",
-								"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
-								"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +1 bonus to the damage roll."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Thrown Weapon Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Unarmed Fighting",
-							"entries": [
-								"{@note Note that this feature is intended for use with the Ranger class presented in the Player's Handbook. It is presented here for convenience, and may be unsuitable for use as a Spell-less Ranger feature.}",
-								"Your unarmed strikes can deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier. If you strike with two free hands, the {@dice d6} becomes a {@dice d8}.",
-								"When you successfully start a grapple, you can deal {@dice 1d4} bludgeoning damage to the grappled creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Unarmed Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Druidic Warrior",
-							"entries": [
-								"{@note Note that this feature is intended for use with the Ranger class presented in the Player's Handbook. It is presented here for convenience, and may be unsuitable for use as a Spell-less Ranger feature.}",
-								"You learn two cantrips of your choice from the {@filter druid spell list|spells|level=0|class=druid}. They count as druid spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the druid spell list."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 7
+							"type": "refOptionalfeature",
+							"optionalfeature": "Druidic Warrior|UAClassFeatureVariants"
 						}
 					]
 				}
@@ -3441,7 +3409,7 @@
 			"level": 3,
 			"entries": [
 				"At 3rd level, you can create special herbal poultices that have healing power comparable to some potions. You can spend 1 hour gathering herbs and preparing herbal poultices using treated bandages to create a number of such poultices equal to your Wisdom modifier (minimum 1). You can carry a number of poultices at one time equal to your Wisdom modifier (minimum 1). The poultices you create cannot be applied by anyone but you. After 24 hours, any poultices that you have not used lose their potency.",
-				"If you spend 1 minute applying one of your poultices to a wounded humanoid creature, thereby expending its use, that creature regains 1d6 hit points for every two ranger levels you have (rounded up)."
+				"If you spend 1 minute applying one of your poultices to a wounded humanoid creature, thereby expending its use, that creature regains {@dice 1d6} hit points for every two ranger levels you have (rounded up)."
 			]
 		},
 		{
@@ -3891,7 +3859,7 @@
 			"level": 1,
 			"entries": [
 				"Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy commonly encountered in the wilds.",
-				"Choose a type of favored enemy: {@filter beasts|bestiary|type=beast}, {@filter fey|bestiary|type=fey}, {@filter humanoids|bestiary|type=humanoid}, {@filter monstrosities|bestiary|type=monstrosity}, or {@filter undead|bestiary|type=undead}. You gain a +2 bonus to damage rolls with weapon attacks against creatures of the chosen type. Additionally, you have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
+				"Choose a type of favored enemy: {@filter beasts|bestiary|type=beast}, {@filter fey|bestiary|type=fey}, {@filter humanoids|bestiary|type=humanoid}, {@filter monstrosities|bestiary|type=monstrosity}, or {@filter undead|bestiary|type=undead}. You gain a +2 bonus to damage rolls with weapon attacks against creatures of the chosen type. Additionally, you have advantage on Wisdom ({@skill Survival}) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.",
 				"When you gain this feature, you also learn one language of your choice, typically one spoken by your favored enemy or creatures associated with it. However, you are free to pick any language you wish to learn."
 			]
 		},
@@ -3937,110 +3905,55 @@
 				"At 2nd level, you adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.",
 				{
 					"type": "options",
+					"count": 1,
 					"entries": [
 						{
-							"type": "entries",
-							"name": "Archery",
-							"entries": [
-								"You gain a +2 bonus to attack rolls you make with ranged weapons."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Archery"
 						},
 						{
-							"type": "entries",
-							"name": "Close Quarters Shooter",
-							"entries": [
-								"When making a ranged attack while you are within 5 feet of a hostile creature, you do not have disadvantage on the attack roll. Your ranged attacks ignore half cover and three-quarters cover against targets within 30 feet of you. You have a +1 bonus to attack rolls on ranged attacks."
-							],
-							"source": "UALightDarkUnderdark"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Close Quarters Shooter|UALightDarkUnderdark"
 						},
 						{
-							"type": "entries",
-							"name": "Defense",
-							"entries": [
-								"While you are wearing armor, you gain a +1 bonus to AC."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Defense"
 						},
 						{
-							"type": "entries",
-							"name": "Dueling",
-							"entries": [
-								"When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
 						},
 						{
-							"type": "entries",
-							"name": "Mariner",
-							"entries": [
-								"As long as you are not wearing heavy armor or using a shield, you have a swimming speed and a climbing speed equal to your normal speed, and you gain a +1 bonus to AC."
-							],
-							"source": "UAWaterborneAdventures"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mariner|UAWaterborneAdventures"
 						},
 						{
-							"type": "entries",
-							"name": "Tunnel Fighter",
-							"entries": [
-								"As a bonus action, you can enter a defensive stance that lasts until the start of your next turn. While in your defensive stance, you can make opportunity attacks without using your reaction, and you can use your reaction to make a melee attack against a creature that moves more than 5 feet while within your reach."
-							],
-							"source": "UALightDarkUnderdark"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Tunnel Fighter|UALightDarkUnderdark"
 						},
 						{
-							"type": "entries",
-							"name": "Two-Weapon Fighting",
-							"entries": [
-								"When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Two-Weapon Fighting"
 						},
 						{
-							"type": "entries",
-							"name": "Blind Fighting",
-							"entries": [
-								"{@note Note that this feature is intended for use with the Ranger class presented in the Player's Handbook. It is presented here for convenience, and may be unsuitable for use as a Revised Ranger feature.}",
-								"Being unable to see a creature doesn't impose disadvantage on your attack rolls against it, provided the creature isn't hidden from you."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blind Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Interception",
-							"entries": [
-								"{@note Note that this feature is intended for use with the Ranger class presented in the Player's Handbook. It is presented here for convenience, and may be unsuitable for use as a Revised Ranger feature.}",
-								"When a creature you can see hits a target that is within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + your proficiency bonus (to a minimum of 0 damage). You must be wielding a shield or a simple or martial weapon to use this reaction."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Interception|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Thrown Weapon Fighting",
-							"entries": [
-								"{@note Note that this feature is intended for use with the Ranger class presented in the Player's Handbook. It is presented here for convenience, and may be unsuitable for use as a Revised Ranger feature.}",
-								"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
-								"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +1 bonus to the damage roll."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Thrown Weapon Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Unarmed Fighting",
-							"entries": [
-								"{@note Note that this feature is intended for use with the Ranger class presented in the Player's Handbook. It is presented here for convenience, and may be unsuitable for use as a Revised Ranger feature.}",
-								"Your unarmed strikes can deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier. If you strike with two free hands, the {@dice d6} becomes a {@dice d8}.",
-								"When you successfully start a grapple, you can deal {@dice 1d4} bludgeoning damage to the grappled creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Unarmed Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Druidic Warrior",
-							"entries": [
-								"{@note Note that this feature is intended for use with the Ranger class presented in the Player's Handbook. It is presented here for convenience, and may be unsuitable for use as a Revised Ranger feature.}",
-								"You learn two cantrips of your choice from the {@filter druid spell list|spells|level=0|class=druid}. They count as druid spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the druid spell list."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 7
+							"type": "refOptionalfeature",
+							"optionalfeature": "Druidic Warrior|UAClassFeatureVariants"
 						}
 					]
 				}
@@ -4485,6 +4398,7 @@
 			"name": "Hunter",
 			"source": "PHB",
 			"page": 93,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"subclassShortName": "Hunter",
@@ -4502,6 +4416,7 @@
 			"name": "Hunter's Prey",
 			"source": "PHB",
 			"page": 93,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"subclassShortName": "Hunter",
@@ -4518,7 +4433,7 @@
 							"type": "entries",
 							"name": "Colossus Slayer",
 							"entries": [
-								"Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra {@dice 1d8} damage if it's below its hit point maximum. You can deal this extra damage only once per turn."
+								"Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra {@damage 1d8} damage if it's below its hit point maximum. You can deal this extra damage only once per turn."
 							]
 						}
 					]
@@ -4553,6 +4468,7 @@
 			"name": "Defensive Tactics",
 			"source": "PHB",
 			"page": 93,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"subclassShortName": "Hunter",
@@ -4603,6 +4519,7 @@
 			"name": "Multiattack",
 			"source": "PHB",
 			"page": 93,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"subclassShortName": "Hunter",
@@ -4641,6 +4558,7 @@
 			"name": "Superior Hunter's Defense",
 			"source": "PHB",
 			"page": 93,
+			"srd": true,
 			"className": "Ranger",
 			"classSource": "PHB",
 			"subclassShortName": "Hunter",
@@ -4781,7 +4699,7 @@
 			"type": "entries",
 			"entries": [
 				"{@i 3rd-level Fey Wanderer feature}",
-				"You augment your attacks with mind-scarring magic, drawn from the gloomy hollows of the unseelie fey. You gain a bonus action that you can use to imbue the weapon, or weapons, you're currently holding with magic. Until the end of the turn, the weapons are magical, and they deal an extra {@dice 1d6} psychic damage on a hit. A creature can take this extra damage only once per turn.",
+				"You augment your attacks with mind-scarring magic, drawn from the gloomy hollows of the unseelie fey. You gain a bonus action that you can use to imbue the weapon, or weapons, you're currently holding with magic. Until the end of the turn, the weapons are magical, and they deal an extra {@damage 1d6} psychic damage on a hit. A creature can take this extra damage only once per turn.",
 				"When you engage in two-weapon fighting, you can imbue your weapons as part of the same bonus action you use to make the attack."
 			]
 		},
@@ -4847,7 +4765,7 @@
 			"header": 2,
 			"entries": [
 				"{@i 7th-level Fey Wanderer feature}",
-				"You have learned eerie techniques from both the Gloaming Court and the Summer Court of the Feywild. Once during each of your turns, when you hit a creature with a weapon attack, you can expend a spell slot to deal extra psychic damage. The extra damage is {@dice 3d6} psychic damage and the creature must succeed on a Wisdom saving throw against your spell save DC or be {@condition frightened} of you until the end of your next turn.",
+				"You have learned eerie techniques from both the Gloaming Court and the Summer Court of the Feywild. Once during each of your turns, when you hit a creature with a weapon attack, you can expend a spell slot to deal extra psychic damage. The extra damage is {@damage 3d6} psychic damage and the creature must succeed on a Wisdom saving throw against your spell save DC or be {@condition frightened} of you until the end of your next turn.",
 				"In addition, whenever you make a Charisma check, you gain a bonus to the check equal to your Wisdom modifier."
 			]
 		},
@@ -4868,7 +4786,7 @@
 					"type": "list",
 					"items": [
 						"The creature is {@condition charmed} or {@condition frightened} by you (your choice) for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a successful save.",
-						"The creature takes {@dice 3d10} psychic damage."
+						"The creature takes {@damage 3d10} psychic damage."
 					]
 				}
 			]
@@ -4923,7 +4841,7 @@
 			"type": "entries",
 			"entries": [
 				"Starting at 3rd level, you gain the ability to study and unravel a creature's defenses. As a bonus action, choose one creature you can see within 120 feet of you. You immediately learn the target's vulnerabilities, immunities, and resistances. You also learn any special effects triggered when the target takes damage, such as fire damage halting its regeneration.",
-				"In addition, the first time each turn you hit the target with a weapon attack, the target takes an extra {@dice 1d6} damage from the weapon.",
+				"In addition, the first time each turn you hit the target with a weapon attack, the target takes an extra {@damage 1d6} damage from the weapon.",
 				"This benefit lasts until you target a different creature with this feature or until you finish a short or long rest."
 			]
 		},
@@ -5053,7 +4971,7 @@
 			"entries": [
 				"{@i 3rd-level Swarmkeeper feature}",
 				"You magically attract a swarm of fey spirits that look like Tiny beasts of your choice. The swarm remains in your space, crawling on you or through your clothing, or flying and skittering immediately around you within your space.",
-				"As a bonus action, you can agitate the swarm for 1 minute. For the duration, some of the swarm clings to your weapons or follows your strikes when you attack: once during each of your turns when you hit a creature with a weapon attack, you can deal an extra {@dice 1d6} force damage to that creature, and the swarm moves the creature up to 5 feet toward you or away from you (your choice). At 11th level, the extra damage increases to {@dice 2d6}.",
+				"As a bonus action, you can agitate the swarm for 1 minute. For the duration, some of the swarm clings to your weapons or follows your strikes when you attack: once during each of your turns when you hit a creature with a weapon attack, you can deal an extra {@damage 1d6} force damage to that creature, and the swarm moves the creature up to 5 feet toward you or away from you (your choice). At 11th level, the extra damage increases to {@dice 2d6}.",
 				"You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a long rest."
 			]
 		},
@@ -5174,7 +5092,7 @@
 			"header": 2,
 			"entries": [
 				"{@i 15th-level Swarmkeeper feature}",
-				"Your swarm can expel a seething storm of spirits that drains life from others. As an action, you create a magical sphere filled with an enraged swarm centered on a point you can see within 120 feet of you. The sphere has a 10-foot-radius and lasts for 1 minute. The sphere is difficult terrain for creatures other than you. A creature other than you that starts its turn in the sphere's area must make a Constitution saving throw against your spell save DC. On a failed save, the creature takes {@dice 2d8} necrotic damage and is {@condition blinded} until the start of its next turn. On a successful save, it takes half as much damage and isn't {@condition blinded}. At the start of your turn, if any number of Small or larger creatures took necrotic damage from the swarm, you regain 1d8 hit points. On subsequent turns, you can use a bonus action to move the sphere up to 30 feet.",
+				"Your swarm can expel a seething storm of spirits that drains life from others. As an action, you create a magical sphere filled with an enraged swarm centered on a point you can see within 120 feet of you. The sphere has a 10-foot-radius and lasts for 1 minute. The sphere is difficult terrain for creatures other than you. A creature other than you that starts its turn in the sphere's area must make a Constitution saving throw against your spell save DC. On a failed save, the creature takes {@damage 2d8} necrotic damage and is {@condition blinded} until the start of its next turn. On a successful save, it takes half as much damage and isn't {@condition blinded}. At the start of your turn, if any number of Small or larger creatures took necrotic damage from the swarm, you regain {@dice 1d8} hit points. On subsequent turns, you can use a bonus action to move the sphere up to 30 feet.",
 				"When you activate this feature, you can choose any number of creatures you can see to be unaffected by it.",
 				"Once you use this feature, you can't do so again until you finish a long rest. You can also use it again by expending a spell slot of 4th level or higher."
 			]
@@ -5212,7 +5130,7 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"From 3rd level, you have darkvision with a range of 90 feet. You also gain access to additional spells at 3rd, 5th, 9th, 13th, and 15th level. You are always able to cast these spells, and they do not count against your number of ranger spells known.",
+				"From 3rd level, you have {@sense darkvision} with a range of 90 feet. You also gain access to additional spells at 3rd, 5th, 9th, 13th, and 15th level. You are always able to cast these spells, and they do not count against your number of ranger spells known.",
 				{
 					"type": "table",
 					"caption": "Deep Stalker Spells",
@@ -5393,7 +5311,7 @@
 			"type": "entries",
 			"entries": [
 				"At 3rd level, you learn to draw on the energy of the planes to augment your attacks.",
-				"As a bonus action, choose one creature you can see within 30 feet of you. Until the end of this turn, your attacks against that creature ignore its damage resistances, and the next time you hit it on this turn, it takes an additional {@dice 1d6} force damage."
+				"As a bonus action, choose one creature you can see within 30 feet of you. Until the end of this turn, your attacks against that creature ignore its damage resistances, and the next time you hit it on this turn, it takes an additional {@damage 1d6} force damage."
 			]
 		},
 		{
@@ -5568,7 +5486,7 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"At 3rd level, your command of primal magic allows you to enhance your attacks with thorns. Once during each of your turns, you can deal an additional {@dice 1d6} piercing damage to one creature you hit with a weapon attack."
+				"At 3rd level, your command of primal magic allows you to enhance your attacks with thorns. Once during each of your turns, you can deal an additional {@damage 1d6} piercing damage to one creature you hit with a weapon attack."
 			]
 		},
 		{
@@ -5651,7 +5569,7 @@
 			"type": "entries",
 			"entries": [
 				"At 3rd level, you master the art of the ambush. You can give yourself a bonus to your initiative rolls equal to your Wisdom modifier.",
-				"At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the {@action Attack} action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra {@dice 1d8} damage of the weapon's damage type."
+				"At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the {@action Attack} action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra {@damage 1d8} damage of the weapon's damage type."
 			]
 		},
 		{
@@ -5715,8 +5633,8 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"At 3rd level, you gain darkvision out to a range of 60 feet. If you already have darkvision from your race, its range increases by 30 feet.",
-				"You are also adept at evading creatures that rely on darkvision. While in darkness, you are {@condition invisible} to any creature that relies on darkvision to see you in that darkness."
+				"At 3rd level, you gain {@sense darkvision} out to a range of 60 feet. If you already have {@sense darkvision} from your race, its range increases by 30 feet.",
+				"You are also adept at evading creatures that rely on {@sense darkvision}. While in darkness, you are {@condition invisible} to any creature that relies on {@sense darkvision} to see you in that darkness."
 			]
 		},
 		{
@@ -5865,7 +5783,7 @@
 			"type": "entries",
 			"entries": [
 				"At 3rd level, you learn to draw on the energy of the multiverse to augment your attacks.",
-				"As a bonus action, choose one creature you can see within 30 feet of you. The next time you hit that creature on this turn with a weapon attack, all damage dealt by the attack becomes force damage, and the creature takes an extra {@dice 1d8} force damage from the attack. When you reach 11th level in this class, the extra damage increases to {@dice 2d8}."
+				"As a bonus action, choose one creature you can see within 30 feet of you. The next time you hit that creature on this turn with a weapon attack, all damage dealt by the attack becomes force damage, and the creature takes an extra {@damage 1d8} force damage from the attack. When you reach 11th level in this class, the extra damage increases to {@dice 2d8}."
 			]
 		},
 		{
@@ -6014,7 +5932,7 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"Starting at 3rd level, you can focus your ire on one foe, increasing the harm you inflict on it. As a bonus action, you designate one creature you can see within 60 feet of you as the target of this feature. The first time each turn that you hit that target with a weapon attack, it takes an extra {@dice 1d6} damage from the weapon.",
+				"Starting at 3rd level, you can focus your ire on one foe, increasing the harm you inflict on it. As a bonus action, you designate one creature you can see within 60 feet of you as the target of this feature. The first time each turn that you hit that target with a weapon attack, it takes an extra {@damage 1d6} damage from the weapon.",
 				"This benefit lasts until you finish a short or long rest. It ends early if you designate a different creature."
 			]
 		},
@@ -6167,6 +6085,7 @@
 			"name": "Hunter",
 			"source": "PHB",
 			"page": 93,
+			"srd": true,
 			"className": "Ranger (Spell-less)",
 			"classSource": "UAModifyingClasses",
 			"subclassShortName": "Hunter",
@@ -6184,6 +6103,7 @@
 			"name": "Hunter's Prey",
 			"source": "PHB",
 			"page": 93,
+			"srd": true,
 			"className": "Ranger (Spell-less)",
 			"classSource": "UAModifyingClasses",
 			"subclassShortName": "Hunter",
@@ -6200,7 +6120,7 @@
 							"type": "entries",
 							"name": "Colossus Slayer",
 							"entries": [
-								"Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra 1d8 damage if it's below its hit point maximum. You can deal this extra damage only once per turn."
+								"Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra {@damage 1d8} damage if it's below its hit point maximum. You can deal this extra damage only once per turn."
 							]
 						}
 					]
@@ -6235,6 +6155,7 @@
 			"name": "Defensive Tactics",
 			"source": "PHB",
 			"page": 93,
+			"srd": true,
 			"className": "Ranger (Spell-less)",
 			"classSource": "UAModifyingClasses",
 			"subclassShortName": "Hunter",
@@ -6285,6 +6206,7 @@
 			"name": "Multiattack",
 			"source": "PHB",
 			"page": 93,
+			"srd": true,
 			"className": "Ranger (Spell-less)",
 			"classSource": "UAModifyingClasses",
 			"subclassShortName": "Hunter",
@@ -6323,6 +6245,7 @@
 			"name": "Superior Hunter's Defense",
 			"source": "PHB",
 			"page": 93,
+			"srd": true,
 			"className": "Ranger (Spell-less)",
 			"classSource": "UAModifyingClasses",
 			"subclassShortName": "Hunter",
@@ -6460,7 +6383,7 @@
 			"type": "entries",
 			"entries": [
 				"{@i 3rd-level Fey Wanderer feature}",
-				"You augment your attacks with mind-scarring magic, drawn from the gloomy hollows of the unseelie fey. You gain a bonus action that you can use to imbue the weapon, or weapons, you're currently holding with magic. Until the end of the turn, the weapons are magical, and they deal an extra {@dice 1d6} psychic damage on a hit. A creature can take this extra damage only once per turn.",
+				"You augment your attacks with mind-scarring magic, drawn from the gloomy hollows of the unseelie fey. You gain a bonus action that you can use to imbue the weapon, or weapons, you're currently holding with magic. Until the end of the turn, the weapons are magical, and they deal an extra {@damage 1d6} psychic damage on a hit. A creature can take this extra damage only once per turn.",
 				"When you engage in two-weapon fighting, you can imbue your weapons as part of the same bonus action you use to make the attack."
 			]
 		},
@@ -6476,7 +6399,7 @@
 			"header": 2,
 			"entries": [
 				"{@i 7th-level Fey Wanderer feature}",
-				"You have learned eerie techniques from both the Gloaming Court and the Summer Court of the Feywild. Once during each of your turns, when you hit a creature with a weapon attack, you can expend a spell slot to deal extra psychic damage. The extra damage is {@dice 3d6} psychic damage and the creature must succeed on a Wisdom saving throw against your spell save DC or be {@condition frightened} of you until the end of your next turn.",
+				"You have learned eerie techniques from both the Gloaming Court and the Summer Court of the Feywild. Once during each of your turns, when you hit a creature with a weapon attack, you can expend a spell slot to deal extra psychic damage. The extra damage is {@damage 3d6} psychic damage and the creature must succeed on a Wisdom saving throw against your spell save DC or be {@condition frightened} of you until the end of your next turn.",
 				"In addition, whenever you make a Charisma check, you gain a bonus to the check equal to your Wisdom modifier."
 			]
 		},
@@ -6497,7 +6420,7 @@
 					"type": "list",
 					"items": [
 						"The creature is {@condition charmed} or {@condition frightened} by you (your choice) for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a successful save.",
-						"The creature takes {@dice 3d10} psychic damage."
+						"The creature takes {@damage 3d10} psychic damage."
 					]
 				}
 			]
@@ -6549,7 +6472,7 @@
 			"type": "entries",
 			"entries": [
 				"Starting at 3rd level, you gain the ability to study and unravel a creature's defenses. As a bonus action, choose one creature you can see within 120 feet of you. You immediately learn the target's vulnerabilities, immunities, and resistances. You also learn any special effects triggered when the target takes damage, such as fire damage halting its regeneration.",
-				"In addition, the first time each turn you hit the target with a weapon attack, the target takes an extra 1d6 damage from the weapon.",
+				"In addition, the first time each turn you hit the target with a weapon attack, the target takes an extra {@damage 1d6} damage from the weapon.",
 				"This benefit lasts until you target a different creature with this feature or until you finish a short or long rest."
 			]
 		},
@@ -6564,7 +6487,7 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Eye forces you to make a saving throw, add 1d6 to your roll."
+				"At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Eye forces you to make a saving throw, add {@dice 1d6} to your roll."
 			]
 		},
 		{
@@ -6627,7 +6550,7 @@
 			"entries": [
 				"{@i 3rd-level Swarmkeeper feature}",
 				"You magically attract a swarm of fey spirits that look like Tiny beasts of your choice. The swarm remains in your space, crawling on you or through your clothing, or flying and skittering immediately around you within your space.",
-				"As a bonus action, you can agitate the swarm for 1 minute. For the duration, some of the swarm clings to your weapons or follows your strikes when you attack: once during each of your turns when you hit a creature with a weapon attack, you can deal an extra {@dice 1d6} force damage to that creature, and the swarm moves the creature up to 5 feet toward you or away from you (your choice). At 11th level, the extra damage increases to {@dice 2d6}.",
+				"As a bonus action, you can agitate the swarm for 1 minute. For the duration, some of the swarm clings to your weapons or follows your strikes when you attack: once during each of your turns when you hit a creature with a weapon attack, you can deal an extra {@damage 1d6} force damage to that creature, and the swarm moves the creature up to 5 feet toward you or away from you (your choice). At 11th level, the extra damage increases to {@dice 2d6}.",
 				"You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a long rest."
 			]
 		},
@@ -6698,7 +6621,7 @@
 			"header": 2,
 			"entries": [
 				"{@i 15th-level Swarmkeeper feature}",
-				"Your swarm can expel a seething storm of spirits that drains life from others. As an action, you create a magical sphere filled with an enraged swarm centered on a point you can see within 120 feet of you. The sphere has a 10-foot-radius and lasts for 1 minute. The sphere is difficult terrain for creatures other than you. A creature other than you that starts its turn in the sphere's area must make a Constitution saving throw against your spell save DC. On a failed save, the creature takes {@dice 2d8} necrotic damage and is {@condition blinded} until the start of its next turn. On a successful save, it takes half as much damage and isn't {@condition blinded}. At the start of your turn, if any number of Small or larger creatures took necrotic damage from the swarm, you regain 1d8 hit points. On subsequent turns, you can use a bonus action to move the sphere up to 30 feet.",
+				"Your swarm can expel a seething storm of spirits that drains life from others. As an action, you create a magical sphere filled with an enraged swarm centered on a point you can see within 120 feet of you. The sphere has a 10-foot-radius and lasts for 1 minute. The sphere is difficult terrain for creatures other than you. A creature other than you that starts its turn in the sphere's area must make a Constitution saving throw against your spell save DC. On a failed save, the creature takes {@damage 2d8} necrotic damage and is {@condition blinded} until the start of its next turn. On a successful save, it takes half as much damage and isn't {@condition blinded}. At the start of your turn, if any number of Small or larger creatures took necrotic damage from the swarm, you regain {@dice 1d8} hit points. On subsequent turns, you can use a bonus action to move the sphere up to 30 feet.",
 				"When you activate this feature, you can choose any number of creatures you can see to be unaffected by it.",
 				"Once you use this feature, you can't do so again until you finish a long rest. You can also use it again by expending a spell slot of 4th level or higher."
 			]
@@ -6813,7 +6736,7 @@
 			"type": "entries",
 			"entries": [
 				"At 3rd level, you learn to draw on the energy of the planes to augment your attacks.",
-				"As a bonus action, choose one creature you can see within 30 feet of you. Until the end of this turn, your attacks against that creature ignore its damage resistances, and the next time you hit it on this turn, it takes an additional 1d6 force damage."
+				"As a bonus action, choose one creature you can see within 30 feet of you. Until the end of this turn, your attacks against that creature ignore its damage resistances, and the next time you hit it on this turn, it takes an additional {@damage 1d6} force damage."
 			]
 		},
 		{
@@ -6936,7 +6859,7 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"At 3rd level, your command of primal magic allows you to enhance your attacks with thorns. Once during each of your turns, you can deal an additional 1d6 piercing damage to one creature you hit with a weapon attack."
+				"At 3rd level, your command of primal magic allows you to enhance your attacks with thorns. Once during each of your turns, you can deal an additional {@damage 1d6} piercing damage to one creature you hit with a weapon attack."
 			]
 		},
 		{
@@ -7016,7 +6939,7 @@
 			"type": "entries",
 			"entries": [
 				"At 3rd level, you master the art of the ambush. You can give yourself a bonus to your initiative rolls equal to your Wisdom modifier.",
-				"At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the {@action Attack} action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra 1d8 damage of the weapon's damage type."
+				"At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the {@action Attack} action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra {@damage 1d8} damage of the weapon's damage type."
 			]
 		},
 		{
@@ -7031,8 +6954,8 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"At 3rd level, you gain darkvision out to a range of 60 feet. If you already have darkvision from your race, its range increases by 30 feet.",
-				"You are also adept at evading creatures that rely on darkvision. While in darkness, you are {@condition invisible} to any creature that relies on darkvision to see you in that darkness."
+				"At 3rd level, you gain {@sense darkvision} out to a range of 60 feet. If you already have {@sense darkvision} from your race, its range increases by 30 feet.",
+				"You are also adept at evading creatures that rely on {@sense darkvision}. While in darkness, you are {@condition invisible} to any creature that relies on {@sense darkvision} to see you in that darkness."
 			]
 		},
 		{
@@ -7129,7 +7052,7 @@
 			"type": "entries",
 			"entries": [
 				"At 3rd level, you learn to draw on the energy of the multiverse to augment your attacks.",
-				"As a bonus action, choose one creature you can see within 30 feet of you. The next time you hit that creature on this turn with a weapon attack, all damage dealt by the attack becomes force damage, and the creature takes an extra 1d8 force damage from the attack. When you reach 11th level in this class, the extra damage increases to 2d8."
+				"As a bonus action, choose one creature you can see within 30 feet of you. The next time you hit that creature on this turn with a weapon attack, all damage dealt by the attack becomes force damage, and the creature takes an extra {@damage 1d8} force damage from the attack. When you reach 11th level in this class, the extra damage increases to {@dice 2d8}."
 			]
 		},
 		{
@@ -7226,7 +7149,7 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"Starting at 3rd level, you can focus your ire on one foe, increasing the harm you inflict on it. As a bonus action, you designate one creature you can see within 60 feet of you as the target of this feature. The first time each turn that you hit that target with a weapon attack, it takes an extra 1d6 damage from the weapon.",
+				"Starting at 3rd level, you can focus your ire on one foe, increasing the harm you inflict on it. As a bonus action, you designate one creature you can see within 60 feet of you as the target of this feature. The first time each turn that you hit that target with a weapon attack, it takes an extra {@damage 1d6} damage from the weapon.",
 				"This benefit lasts until you finish a short or long rest. It ends early if you designate a different creature."
 			]
 		},
@@ -7241,7 +7164,7 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Prey forces you to make a saving throw and whenever you make an ability check to escape that target's grapple, add 1d6 to your roll."
+				"At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Prey forces you to make a saving throw and whenever you make an ability check to escape that target's grapple, add {@dice 1d6} to your roll."
 			]
 		},
 		{
@@ -7368,7 +7291,7 @@
 			"type": "entries",
 			"entries": [
 				"{@i 3rd-level Fey Wanderer feature}",
-				"You augment your attacks with mind-scarring magic, drawn from the gloomy hollows of the unseelie fey. You gain a bonus action that you can use to imbue the weapon, or weapons, you're currently holding with magic. Until the end of the turn, the weapons are magical, and they deal an extra {@dice 1d6} psychic damage on a hit. A creature can take this extra damage only once per turn.",
+				"You augment your attacks with mind-scarring magic, drawn from the gloomy hollows of the unseelie fey. You gain a bonus action that you can use to imbue the weapon, or weapons, you're currently holding with magic. Until the end of the turn, the weapons are magical, and they deal an extra {@damage 1d6} psychic damage on a hit. A creature can take this extra damage only once per turn.",
 				"When you engage in two-weapon fighting, you can imbue your weapons as part of the same bonus action you use to make the attack."
 			]
 		},
@@ -7448,7 +7371,7 @@
 			"header": 2,
 			"entries": [
 				"{@i 7th-level Fey Wanderer feature}",
-				"You have learned eerie techniques from both the Gloaming Court and the Summer Court of the Feywild. Once during each of your turns, when you hit a creature with a weapon attack, you can expend a spell slot to deal extra psychic damage. The extra damage is {@dice 3d6} psychic damage and the creature must succeed on a Wisdom saving throw against your spell save DC or be {@condition frightened} of you until the end of your next turn.",
+				"You have learned eerie techniques from both the Gloaming Court and the Summer Court of the Feywild. Once during each of your turns, when you hit a creature with a weapon attack, you can expend a spell slot to deal extra psychic damage. The extra damage is {@damage 3d6} psychic damage and the creature must succeed on a Wisdom saving throw against your spell save DC or be {@condition frightened} of you until the end of your next turn.",
 				"In addition, whenever you make a Charisma check, you gain a bonus to the check equal to your Wisdom modifier."
 			]
 		},
@@ -7469,7 +7392,7 @@
 					"type": "list",
 					"items": [
 						"The creature is {@condition charmed} or {@condition frightened} by you (your choice) for 1 minute. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a successful save.",
-						"The creature takes {@dice 3d10} psychic damage."
+						"The creature takes {@damage 3d10} psychic damage."
 					]
 				}
 			]
@@ -7525,7 +7448,7 @@
 			"type": "entries",
 			"entries": [
 				"Starting at 3rd level, you gain the ability to study and unravel a creature's defenses. As a bonus action, choose one creature you can see within 120 feet of you. You immediately learn the target's vulnerabilities, immunities, and resistances. You also learn any special effects triggered when the target takes damage, such as fire damage halting its regeneration.",
-				"In addition, the first time each turn you hit the target with a weapon attack, the target takes an extra 1d6 damage from the weapon.",
+				"In addition, the first time each turn you hit the target with a weapon attack, the target takes an extra {@damage 1d6} damage from the weapon.",
 				"This benefit lasts until you target a different creature with this feature or until you finish a short or long rest."
 			]
 		},
@@ -7603,7 +7526,7 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Eye forces you to make a saving throw, add 1d6 to your roll."
+				"At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Eye forces you to make a saving throw, add {@dice 1d6} to your roll."
 			]
 		},
 		{
@@ -7670,7 +7593,7 @@
 			"entries": [
 				"{@i 3rd-level Swarmkeeper feature}",
 				"You magically attract a swarm of fey spirits that look like Tiny beasts of your choice. The swarm remains in your space, crawling on you or through your clothing, or flying and skittering immediately around you within your space.",
-				"As a bonus action, you can agitate the swarm for 1 minute. For the duration, some of the swarm clings to your weapons or follows your strikes when you attack: once during each of your turns when you hit a creature with a weapon attack, you can deal an extra {@dice 1d6} force damage to that creature, and the swarm moves the creature up to 5 feet toward you or away from you (your choice). At 11th level, the extra damage increases to {@dice 2d6}.",
+				"As a bonus action, you can agitate the swarm for 1 minute. For the duration, some of the swarm clings to your weapons or follows your strikes when you attack: once during each of your turns when you hit a creature with a weapon attack, you can deal an extra {@damage 1d6} force damage to that creature, and the swarm moves the creature up to 5 feet toward you or away from you (your choice). At 11th level, the extra damage increases to {@dice 2d6}.",
 				"You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a long rest."
 			]
 		},
@@ -7805,7 +7728,7 @@
 			"header": 2,
 			"entries": [
 				"{@i 15th-level Swarmkeeper feature}",
-				"Your swarm can expel a seething storm of spirits that drains life from others. As an action, you create a magical sphere filled with an enraged swarm centered on a point you can see within 120 feet of you. The sphere has a 10-foot-radius and lasts for 1 minute. The sphere is difficult terrain for creatures other than you. A creature other than you that starts its turn in the sphere's area must make a Constitution saving throw against your spell save DC. On a failed save, the creature takes {@dice 2d8} necrotic damage and is {@condition blinded} until the start of its next turn. On a successful save, it takes half as much damage and isn't {@condition blinded}. At the start of your turn, if any number of Small or larger creatures took necrotic damage from the swarm, you regain 1d8 hit points. On subsequent turns, you can use a bonus action to move the sphere up to 30 feet.",
+				"Your swarm can expel a seething storm of spirits that drains life from others. As an action, you create a magical sphere filled with an enraged swarm centered on a point you can see within 120 feet of you. The sphere has a 10-foot-radius and lasts for 1 minute. The sphere is difficult terrain for creatures other than you. A creature other than you that starts its turn in the sphere's area must make a Constitution saving throw against your spell save DC. On a failed save, the creature takes {@damage 2d8} necrotic damage and is {@condition blinded} until the start of its next turn. On a successful save, it takes half as much damage and isn't {@condition blinded}. At the start of your turn, if any number of Small or larger creatures took necrotic damage from the swarm, you regain {@dice 1d8} hit points. On subsequent turns, you can use a bonus action to move the sphere up to 30 feet.",
 				"When you activate this feature, you can choose any number of creatures you can see to be unaffected by it.",
 				"Once you use this feature, you can't do so again until you finish a long rest. You can also use it again by expending a spell slot of 4th level or higher."
 			]
@@ -7898,7 +7821,7 @@
 			"type": "entries",
 			"entries": [
 				"At 3rd level, you learn to draw on the energy of the planes to augment your attacks.",
-				"As a bonus action, choose one creature you can see within 30 feet of you. Until the end of this turn, your attacks against that creature ignore its damage resistances, and the next time you hit it on this turn, it takes an additional 1d6 force damage."
+				"As a bonus action, choose one creature you can see within 30 feet of you. Until the end of this turn, your attacks against that creature ignore its damage resistances, and the next time you hit it on this turn, it takes an additional {@damage 1d6} force damage."
 			]
 		},
 		{
@@ -8088,7 +8011,7 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"At 3rd level, your command of primal magic allows you to enhance your attacks with thorns. Once during each of your turns, you can deal an additional 1d6 piercing damage to one creature you hit with a weapon attack."
+				"At 3rd level, your command of primal magic allows you to enhance your attacks with thorns. Once during each of your turns, you can deal an additional {@damage 1d6} piercing damage to one creature you hit with a weapon attack."
 			]
 		},
 		{
@@ -8376,7 +8299,7 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"At 3rd level, you have darkvision out to a range of 90 feet. If you already have darkvision, you increase its range by 30 feet. You also gain access to additional spells at 3rd, 5th, 9th, 13th, and 15th level. Once you gain a deep stalker spell, it counts as a ranger spell for you but doesn't count against the number of rangers spells you know.",
+				"At 3rd level, you have {@sense darkvision} out to a range of 90 feet. If you already have {@sense darkvision}, you increase its range by 30 feet. You also gain access to additional spells at 3rd, 5th, 9th, 13th, and 15th level. Once you gain a deep stalker spell, it counts as a ranger spell for you but doesn't count against the number of rangers spells you know.",
 				{
 					"type": "table",
 					"caption": "Deep Stalker Spells",
@@ -8425,7 +8348,7 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"At 3rd level, you master the art of the ambush. On your first turn during combat, you gain a +10 bonus to your speed and if you use the attack action on that turn, you can make one additional attack. You are also adept at evading creatures that rely on darkvision. Such creatures gain no benefit when attempting to detect you in dark and dim conditions. Additionally, when the DM determines if you can hide from a creature, that creature gains no benefit from its darkvision."
+				"At 3rd level, you master the art of the ambush. On your first turn during combat, you gain a +10 bonus to your speed and if you use the attack action on that turn, you can make one additional attack. You are also adept at evading creatures that rely on {@sense darkvision}. Such creatures gain no benefit when attempting to detect you in dark and dim conditions. Additionally, when the DM determines if you can hide from a creature, that creature gains no benefit from its {@sense darkvision}."
 			]
 		},
 		{
@@ -8521,7 +8444,7 @@
 							"type": "entries",
 							"name": "Colossus Slayer",
 							"entries": [
-								"Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra 1d8 damage if it's below its hit point maximum. You can deal this extra damage only once per turn."
+								"Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra {@damage 1d8} damage if it's below its hit point maximum. You can deal this extra damage only once per turn."
 							]
 						}
 					]
@@ -8743,7 +8666,7 @@
 			"type": "entries",
 			"entries": [
 				"At 3rd level, you master the art of the ambush. You can give yourself a bonus to your initiative rolls equal to your Wisdom modifier.",
-				"At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the {@action Attack} action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra 1d8 damage of the weapon's damage type."
+				"At the start of your first turn of each combat, your walking speed increases by 10 feet, which lasts until the end of that turn. If you take the {@action Attack} action on that turn, you can make one additional weapon attack as part of that action. If that attack hits, the target takes an extra {@damage 1d8} damage of the weapon's damage type."
 			]
 		},
 		{
@@ -8807,8 +8730,8 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"At 3rd level, you gain darkvision out to a range of 60 feet. If you already have darkvision from your race, its range increases by 30 feet.",
-				"You are also adept at evading creatures that rely on darkvision. While in darkness, you are {@condition invisible} to any creature that relies on darkvision to see you in that darkness."
+				"At 3rd level, you gain {@sense darkvision} out to a range of 60 feet. If you already have {@sense darkvision} from your race, its range increases by 30 feet.",
+				"You are also adept at evading creatures that rely on {@sense darkvision}. While in darkness, you are {@condition invisible} to any creature that relies on {@sense darkvision} to see you in that darkness."
 			]
 		},
 		{
@@ -8972,7 +8895,7 @@
 			"type": "entries",
 			"entries": [
 				"At 3rd level, you learn to draw on the energy of the multiverse to augment your attacks.",
-				"As a bonus action, choose one creature you can see within 30 feet of you. The next time you hit that creature on this turn with a weapon attack, all damage dealt by the attack becomes force damage, and the creature takes an extra 1d8 force damage from the attack. When you reach 11th level in this class, the extra damage increases to 2d8."
+				"As a bonus action, choose one creature you can see within 30 feet of you. The next time you hit that creature on this turn with a weapon attack, all damage dealt by the attack becomes force damage, and the creature takes an extra {@damage 1d8} force damage from the attack. When you reach 11th level in this class, the extra damage increases to {@dice 2d8}."
 			]
 		},
 		{
@@ -9136,7 +9059,7 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"Starting at 3rd level, you can focus your ire on one foe, increasing the harm you inflict on it. As a bonus action, you designate one creature you can see within 60 feet of you as the target of this feature. The first time each turn that you hit that target with a weapon attack, it takes an extra 1d6 damage from the weapon.",
+				"Starting at 3rd level, you can focus your ire on one foe, increasing the harm you inflict on it. As a bonus action, you designate one creature you can see within 60 feet of you as the target of this feature. The first time each turn that you hit that target with a weapon attack, it takes an extra {@damage 1d6} damage from the weapon.",
 				"This benefit lasts until you finish a short or long rest. It ends early if you designate a different creature."
 			]
 		},
@@ -9165,7 +9088,7 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Prey forces you to make a saving throw and whenever you make an ability check to escape that target's grapple, add 1d6 to your roll."
+				"At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Prey forces you to make a saving throw and whenever you make an ability check to escape that target's grapple, add {@dice 1d6} to your roll."
 			]
 		},
 		{

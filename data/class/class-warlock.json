@@ -47,7 +47,7 @@
 					"(a) a {@item scholar's pack|phb} or (b) a {@item dungeoneer's pack|phb}",
 					"{@item Leather armor|phb}, any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}, and two {@item dagger|phb|daggers}"
 				],
-				"goldAlternative": "{@dice 4d4×10|4d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 4d4 × 10|4d4 × 10|Starting Gold}"
 			},
 			"multiclassing": {
 				"requirements": {
@@ -1257,6 +1257,7 @@
 			"name": "Otherworldly Patron",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 1,
@@ -1268,6 +1269,7 @@
 			"name": "Pact Magic",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 1,
@@ -1343,6 +1345,7 @@
 			"name": "Eldritch Invocations",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 2,
@@ -1362,6 +1365,7 @@
 			"name": "Pact Boon",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 3,
@@ -1369,57 +1373,27 @@
 				"At 3rd level, your otherworldly patron bestows a gift upon you for your loyal service. You gain one of the following features of your choice.",
 				{
 					"type": "options",
+					"count": 1,
 					"entries": [
 						{
-							"type": "patron",
-							"name": "Pact of the Chain",
-							"entries": [
-								"You learn the {@spell find familiar} spell and can cast it as a ritual. The spell doesn't count against your number of spells known.",
-								"When you cast the spell, you can choose one of the normal forms for your familiar or one of the following special forms: {@creature imp}, {@creature pseudodragon}, {@creature quasit}, or {@creature sprite}.",
-								"Additionally, when you take the {@action Attack} action, you can forgo one of your own attacks to allow your familiar to use its reaction to make one attack of its own."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Pact of the Chain"
 						},
 						{
-							"type": "patron",
-							"name": "Pact of the Blade",
-							"entries": [
-								"You can use your action to create a pact weapon in your empty hand. You can choose the form that this melee weapon takes each time you create it (see chapter 5 for weapon options). You are proficient with it while you wield it. This weapon counts as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.",
-								"Your pact weapon disappears if it is more than 5 feet away from you for 1 minute or more. It also disappears if you use this feature again, if you dismiss the weapon (no action required), or if you die.",
-								"You can transform one magic weapon into your pact weapon by performing a special ritual while you hold the weapon. You perform the ritual over the course of 1 hour, which can be done during a short rest. You can then dismiss the weapon, shunting it into an extradimensional space, and it appears whenever you create your pact weapon thereafter. You can't affect an artifact or a sentient weapon in this way. The weapon ceases being your pact weapon if you die, if you perform the 1-hour ritual on a different weapon, or if you use a 1-hour ritual to break your bond to it. The weapon appears at your feet if it is in the extradimensional space when the bond breaks."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Pact of the Blade"
 						},
 						{
-							"type": "patron",
-							"name": "Pact of the Tome",
-							"entries": [
-								"Your patron gives you a grimoire called a Book of Shadows. When you gain this feature, choose three {@filter cantrips|spells|level=0} from any class's spell list. The cantrips do not need to be from the same spell list. While the book is on your person, you can cast those cantrips at will. They don't count against your number of cantrips known. Any cantrip you cast with this feature is considered a warlock cantrip for you. If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous book. The book turns to ash when you die."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Pact of the Tome"
 						},
 						{
-							"type": "patron",
-							"name": "Pact of the Star Chain",
-							"entries": [
-								"At 3rd level, a character dedicated to the Seeker can select this option instead of one of the warlock's existing Pact Boon options.",
-								"The Seeker grants you a chain forged from starlight, decorated with seven gleaming motes of brightness. While the chain is on your person, you know the {@spell augury} spell and can cast it as a ritual. The spell doesn't count against your number of spells known.",
-								"Additionally, you can invoke the Seeker's power to gain advantage on an Intelligence check while you carry this item. Once you use this ability, you cannot use it again until you complete a short or long rest.",
-								"If you lose your Star Chain, you can perform a 1-hour ceremony to receive a replacement from the Seeker. The ceremony can be performed during a short or long rest, and it destroys the previous chain. The chain disappears in a flash of light when you die.",
-								"The exact form of this item might be different depending on your patron. The Star Chain is inspired by the Greyhawk deity Celestian."
-							],
-							"source": "UATheFaithful",
-							"subclass": {
-								"name": "The Seeker (UA)",
-								"source": "UATheFaithful"
-							}
+							"type": "refOptionalfeature",
+							"optionalfeature": "Pact of the Star Chain|UATheFaithful"
 						},
 						{
-							"name": "Pact of the Talisman",
-							"source": "UAClassFeatureVariants",
-							"page": 11,
-							"entries": [
-								"Your patron gives you a special amulet, a talisman that can aid you, or anyone else who wears it, when the need is great. When the wearer makes an ability check with a skill in which they lack proficiency, they can add a {@dice d4} to the roll.",
-								"If you lose the talisman, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous amulet.",
-								"The talisman turns to ash when you die."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Pact of the Talisman|UAClassFeatureVariants"
 						}
 					]
 				}
@@ -1429,6 +1403,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 4,
@@ -1454,6 +1429,7 @@
 			"name": "Otherworldly Patron feature",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 6,
@@ -1465,6 +1441,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 8,
@@ -1490,6 +1467,7 @@
 			"name": "Otherworldly Patron feature",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 10,
@@ -1501,6 +1479,7 @@
 			"name": "Mystic Arcanum (6th level)",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 11,
@@ -1514,6 +1493,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 12,
@@ -1539,6 +1519,7 @@
 			"name": "Mystic Arcanum (7th level)",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 13,
@@ -1551,6 +1532,7 @@
 			"name": "Otherworldly Patron feature",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 14,
@@ -1562,6 +1544,7 @@
 			"name": "Mystic Arcanum (8th level)",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 15,
@@ -1574,6 +1557,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 16,
@@ -1599,6 +1583,7 @@
 			"name": "Mystic Arcanum (9th level)",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 17,
@@ -1611,6 +1596,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 19,
@@ -1636,6 +1622,7 @@
 			"name": "Eldritch Master",
 			"source": "PHB",
 			"page": 105,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 20,
@@ -1768,6 +1755,7 @@
 			"name": "The Fiend",
 			"source": "PHB",
 			"page": 109,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"subclassShortName": "Fiend",
@@ -1826,6 +1814,7 @@
 			"name": "Dark One's Blessing",
 			"source": "PHB",
 			"page": 109,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"subclassShortName": "Fiend",
@@ -1841,6 +1830,7 @@
 			"name": "Dark One's Own Luck",
 			"source": "PHB",
 			"page": 109,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"subclassShortName": "Fiend",
@@ -1856,6 +1846,7 @@
 			"name": "Fiendish Resilience",
 			"source": "PHB",
 			"page": 109,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"subclassShortName": "Fiend",
@@ -1870,6 +1861,7 @@
 			"name": "Hurl Through Hell",
 			"source": "PHB",
 			"page": 109,
+			"srd": true,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"subclassShortName": "Fiend",
@@ -1878,7 +1870,7 @@
 			"header": 2,
 			"entries": [
 				"Starting at 14th level, when you hit a creature with an attack, you can use this feature to instantly transport the target through the lower planes. The creature disappears and hurtles through a nightmare landscape.",
-				"At the end of your next turn, the target returns to the space it previously occupied, or the nearest unoccupied space. If the target is not a fiend, it takes {@dice 10d10} psychic damage as it reels from its horrific experience.",
+				"At the end of your next turn, the target returns to the space it previously occupied, or the nearest unoccupied space. If the target is not a fiend, it takes {@damage 10d10} psychic damage as it reels from its horrific experience.",
 				"Once you use this feature, you can't use it again until you finish a long rest."
 			]
 		},
@@ -2247,7 +2239,7 @@
 			"level": 14,
 			"header": 3,
 			"entries": [
-				"The tentacles slam into your foes. Pick up to 5 creatures that you can see within 30 ft. of the portal. Those creatures must make Dexterity saving throws against your Warlock spell save DC. Creatures that fail their saving throws take {@dice 10d6} bludgeoning damage and are {@condition restrained} for 1 minute. Creatures that succeed take half the bludgeoning damage and are not {@condition restrained}. On its turn, a {@condition restrained} creature can use its action to attempt a DC 15 Strength (Athletics) or Dexterity (Acrobatics) check to end its {@condition restrained} condition."
+				"The tentacles slam into your foes. Pick up to 5 creatures that you can see within 30 ft. of the portal. Those creatures must make Dexterity saving throws against your Warlock spell save DC. Creatures that fail their saving throws take {@damage 10d6} bludgeoning damage and are {@condition restrained} for 1 minute. Creatures that succeed take half the bludgeoning damage and are not {@condition restrained}. On its turn, a {@condition restrained} creature can use its action to attempt a DC 15 Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check to end its {@condition restrained} condition."
 			]
 		},
 		{
@@ -2407,7 +2399,7 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"Starting at 14th level, you can channel Lolth's malevolence into a deadly kiss. As an action, you touch a creature within your reach. The target takes {@dice 12d10} poison or psychic damage (your choice), or half as much on a successful Constitution save. A creature {@condition charmed} by you has disadvantage on its saving throw. After you use this ability, you cannot cast it again until you complete a long rest."
+				"Starting at 14th level, you can channel Lolth's malevolence into a deadly kiss. As an action, you touch a creature within your reach. The target takes {@damage 12d10} poison or psychic damage (your choice), or half as much on a successful Constitution save. A creature {@condition charmed} by you has disadvantage on its saving throw. After you use this ability, you cannot cast it again until you complete a long rest."
 			]
 		},
 		{
@@ -3157,9 +3149,9 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"At 14th level, you gain the ability to infect a humanoid's body with living circuitry. You can use an action to make a melee attack against a humanoid creature using your spell attack modifier. The target must make a Constitution saving throw against your spell save DC as a techno-organic virus quickly spreads through its body. On a failed save, the target takes {@dice 8d10} psychic damage, or half as much damage on a successful one.",
+				"At 14th level, you gain the ability to infect a humanoid's body with living circuitry. You can use an action to make a melee attack against a humanoid creature using your spell attack modifier. The target must make a Constitution saving throw against your spell save DC as a techno-organic virus quickly spreads through its body. On a failed save, the target takes {@damage 8d10} psychic damage, or half as much damage on a successful one.",
 				"Additionally, if the target fails the saving throw, you can use an action to issue it a single command, as if you were casting the {@spell command} spell. The target makes its saving throw against your {@spell command} with disadvantage. You can issue this {@spell command} at any time while the target remains infected.",
-				"Once you use this feature, you can't use it again until you finish a long rest, at which point the target is cured of the technovirus. The infection can also be removed with a lesser restoration spell."
+				"Once you use this feature, you can't use it again until you finish a long rest, at which point the target is cured of the technovirus. The infection can also be removed with a {@spell lesser restoration} spell."
 			]
 		},
 		{
@@ -3381,7 +3373,7 @@
 			"entries": [
 				"{@i 1st-level Lurker in the Deep feature}",
 				"At 1st level, you gain the ability to magically summon a spectral tentacle that strikes at your foes. As a bonus action, you create a 10-foot-long tentacle at a point you can see within 60 feet of you. The tentacle lasts for 1 minute or until you use this feature to create another tentacle.",
-				"When you create the tentacle, you can make a melee spell attack against a creature within 10 feet of it. On a hit, the target takes {@dice 1d8} cold or lightning damage (your choice when it takes the damage) and its speed is reduced by 10 feet until the start of your next turn. When you reach 10th level in this class, the damage dealt by the tentacle increases to {@dice 2d8}.",
+				"When you create the tentacle, you can make a melee spell attack against a creature within 10 feet of it. On a hit, the target takes {@damage 1d8} cold or lightning damage (your choice when it takes the damage) and its speed is reduced by 10 feet until the start of your next turn. When you reach 10th level in this class, the damage dealt by the tentacle increases to {@dice 2d8}.",
 				"As a bonus action on your turn, you can move the tentacle up to 30 feet and repeat the attack. You can summon the tentacle a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a long rest."
 			]
 		},
@@ -3466,7 +3458,7 @@
 			"header": 2,
 			"entries": [
 				"{@i 10th-level Lurker in the Deep feature}",
-				"Starting at 10th level, you can magically draw forth a manifestation of your patron's insatiable hunger. As an action, choose a point you can see within 60 feet of you. For 1 minute, a translucent maw manifests in a 10-foot radius centered on that point. Each creature in that area when the maw appears must succeed on a Strength saving throw against your spell save DC or be {@condition restrained}. Any creature that starts its turn in the maw's area takes {@dice 3d6} cold or lightning damage (your choice when it takes the damage). As an action, a {@condition restrained} creature can repeat the saving throw, ending the restraint on a success. At the start of your turn, if there is a creature in the maw's area, you gain temporary hit points equal to your warlock level.",
+				"Starting at 10th level, you can magically draw forth a manifestation of your patron's insatiable hunger. As an action, choose a point you can see within 60 feet of you. For 1 minute, a translucent maw manifests in a 10-foot radius centered on that point. Each creature in that area when the maw appears must succeed on a Strength saving throw against your spell save DC or be {@condition restrained}. Any creature that starts its turn in the maw's area takes {@damage 3d6} cold or lightning damage (your choice when it takes the damage). As an action, a {@condition restrained} creature can repeat the saving throw, ending the restraint on a success. At the start of your turn, if there is a creature in the maw's area, you gain temporary hit points equal to your warlock level.",
 				"Once you use this feature, you can't do so again until you finish a short or long rest."
 			]
 		},
@@ -3494,7 +3486,7 @@
 					"type": "entries",
 					"name": "Fury",
 					"entries": [
-						"You can direct a barrage of spectral tentacles to issue forth and strike up to five creatures you can see within 30 feet of the manifestation point. Each target must make a Dexterity saving throw against your spell save DC. On a failed save, the creature takes {@dice 6d10} cold or lightning damage (your choice) and is knocked {@condition prone}. On a successful save, it takes half as much damage and is not knocked {@condition prone}. The tentacles then vanish."
+						"You can direct a barrage of spectral tentacles to issue forth and strike up to five creatures you can see within 30 feet of the manifestation point. Each target must make a Dexterity saving throw against your spell save DC. On a failed save, the creature takes {@damage 6d10} cold or lightning damage (your choice) and is knocked {@condition prone}. On a successful save, it takes half as much damage and is not knocked {@condition prone}. The tentacles then vanish."
 					]
 				}
 			]
@@ -3731,7 +3723,7 @@
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"Starting at 6th level, your shadow can split from you and transform into a hound of pure darkness. Most of the time, your shadow hound masquerades as your normal shadow. As a bonus action, you can command it to magically slip into the shadow of a creature you can see within 60 feet of you. While the shadow hound is merged in this manner, the target can't gain the benefits of half cover or three-quarters cover against your attack rolls, and you know the distance and direction to the target even if it is hidden. The hound can't be seen by anyone but you and those with truesight, and it is unaffected by light. The target has a vague feeling of dread while the hound is present.",
+				"Starting at 6th level, your shadow can split from you and transform into a hound of pure darkness. Most of the time, your shadow hound masquerades as your normal shadow. As a bonus action, you can command it to magically slip into the shadow of a creature you can see within 60 feet of you. While the shadow hound is merged in this manner, the target can't gain the benefits of half cover or three-quarters cover against your attack rolls, and you know the distance and direction to the target even if it is hidden. The hound can't be seen by anyone but you and those with {@sense truesight}, and it is unaffected by light. The target has a vague feeling of dread while the hound is present.",
 				"As a bonus action, you can command your shadow hound to return to you. It also automatically returns to you if you and the target are on different planes of existence, if you're {@condition incapacitated}, or if dispel magic, {@spell remove curse}, or similar magic is used on the target."
 			]
 		},
@@ -3835,7 +3827,7 @@
 			"type": "entries",
 			"entries": [
 				"Starting at 1st level, you gain the service of a spirit sent by the Raven Queen to watch over you. The spirit assumes the form and game statistics of a {@creature raven}, and it always obeys your commands, which you can give telepathically while it is within 100 feet of you.",
-				"While the raven is perched on your shoulder, you gain darkvision with a range of 30 feet and a bonus to your passive Wisdom ({@skill Perception}) score and to Wisdom ({@skill Perception}) checks. The bonus equals your Charisma modifier. While perched on your shoulder, the raven can't be targeted by any attack or other harmful effect; only you can cast spells on it; it can't take damage; and it is {@condition incapacitated}.",
+				"While the raven is perched on your shoulder, you gain {@sense darkvision} with a range of 30 feet and a bonus to your passive Wisdom ({@skill Perception}) score and to Wisdom ({@skill Perception}) checks. The bonus equals your Charisma modifier. While perched on your shoulder, the raven can't be targeted by any attack or other harmful effect; only you can cast spells on it; it can't take damage; and it is {@condition incapacitated}.",
 				"You can see through the raven's eyes and hear what it hears while it is within 100 feet of you. In combat, you roll initiative for the raven and control how it acts. If it is slain by a creature, you gain advantage on all attack rolls against the killer for the next 24 hours.",
 				"The raven doesn't require sleep. While it is within 100 feet of you, it can awaken you from sleep as a bonus action. The raven vanishes when it dies, if you die, or if the two of you are separated by more than 5 miles.",
 				"At the end of a short or long rest, you can call the raven back to you\u2014no matter where it is or whether it died\u2014and it reappears within 5 feet of you."

@@ -3,6 +3,7 @@
 if (typeof require !== "undefined") {
 	require("../js/utils.js");
 	require("../js/render.js");
+	require("../js/render-dice.js");
 }
 
 class Omnidexer {
@@ -254,11 +255,11 @@ class IndexableDirectorySubclass extends IndexableDirectory {
 	static async _pPreProcessSubclassBrew (brew) {
 		const classData = await DataUtil.class.loadJSON();
 
-		const subclasses = MiscUtil.copy(brew[this.brewProp]);
+		const subclasses = MiscUtil.copy(brew.subclass || []);
 		const sourceToClass = {};
-		subclasses.filter(sc => sc.class).forEach(sc => {
+		subclasses.filter(sc => sc.className).forEach(sc => {
 			sc.classSource = sc.classSource || SRC_PHB;
-			((sourceToClass[sc.classSource] = sourceToClass[sc.classSource] || {})[sc.class] = sourceToClass[sc.classSource][sc.class] || []).push(sc);
+			((sourceToClass[sc.classSource] = sourceToClass[sc.classSource] || {})[sc.className] = sourceToClass[sc.classSource][sc.className] || []).push(sc);
 		});
 
 		const out = [];
@@ -323,11 +324,9 @@ class IndexableDirectorySubclassFeature extends IndexableDirectory {
 			primary: "name",
 			source: "source",
 			listProp: "subclassFeature",
-			brewProp: "subclass",
 			baseUrl: "classes.html",
 			isOnlyDeep: true,
-			isHover: true,
-			pFnPreProcBrew: IndexableDirectorySubclass._pPreProcessSubclassBrew
+			isHover: true
 		});
 	}
 

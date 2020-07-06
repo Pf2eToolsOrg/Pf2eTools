@@ -50,7 +50,7 @@
 					"(a) a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts} or (b) two {@item handaxe|phb|handaxes}",
 					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}"
 				],
-				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}"
 			},
 			"multiclassing": {
 				"requirements": {
@@ -1109,7 +1109,8 @@
 		{
 			"name": "Fighting Style",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 1,
@@ -1117,120 +1118,63 @@
 				"You adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take the same Fighting Style option more than once, even if you get to choose again.",
 				{
 					"type": "options",
+					"count": 1,
 					"entries": [
 						{
-							"type": "entries",
-							"name": "Archery",
-							"entries": [
-								"You gain a +2 bonus to attack rolls you make with ranged weapons."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Archery"
 						},
 						{
-							"type": "entries",
-							"name": "Close Quarters Shooter",
-							"entries": [
-								"When making a ranged attack while you are within 5 feet of a hostile creature, you do not have disadvantage on the attack roll. Your ranged attacks ignore half cover and three-quarters cover against targets within 30 feet of you. You have a +1 bonus to attack rolls on ranged attacks."
-							],
-							"source": "UALightDarkUnderdark"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Close Quarters Shooter|UALightDarkUnderdark"
 						},
 						{
-							"type": "entries",
-							"name": "Defense",
-							"entries": [
-								"While you are wearing armor, you gain a +1 bonus to AC."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Defense"
 						},
 						{
-							"type": "entries",
-							"name": "Dueling",
-							"entries": [
-								"When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
 						},
 						{
-							"type": "entries",
-							"name": "Great Weapon Fighting",
-							"entries": [
-								"When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Great Weapon Fighting"
 						},
 						{
-							"type": "entries",
-							"name": "Mariner",
-							"entries": [
-								"As long as you are not wearing heavy armor or using a shield, you have a swimming speed and a climbing speed equal to your normal speed, and you gain a +1 bonus to AC."
-							],
-							"source": "UAWaterborneAdventures"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mariner|UAWaterborneAdventures"
 						},
 						{
-							"type": "entries",
-							"name": "Protection",
-							"entries": [
-								"When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Protection"
 						},
 						{
-							"type": "entries",
-							"name": "Tunnel Fighter",
-							"entries": [
-								"As a bonus action, you can enter a defensive stance that lasts until the start of your next turn. While in your defensive stance, you can make opportunity attacks without using your reaction, and you can use your reaction to make a melee attack against a creature that moves more than 5 feet while within your reach."
-							],
-							"source": "UALightDarkUnderdark"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Tunnel Fighter|UALightDarkUnderdark"
 						},
 						{
-							"type": "entries",
-							"name": "Two-Weapon Fighting",
-							"entries": [
-								"When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Two-Weapon Fighting"
 						},
 						{
-							"type": "entries",
-							"name": "Superior Technique",
-							"entries": [
-								"You learn one {@filter maneuver|optionalfeatures|feature type=MV;MV:B} of your choice from among those available to the Battle Master archetype. If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice).",
-								"You gain one superiority die, which is a {@dice d6} (this die is added to any superiority dice you have from another source). This die is used to fuel your maneuvers. A superiority die is expended when you use it. You regain your expended superiority dice when you finish a short or long rest."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 5
+							"type": "refOptionalfeature",
+							"optionalfeature": "Superior Technique|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Blind Fighting",
-							"entries": [
-								"Being unable to see a creature doesn't impose disadvantage on your attack rolls against it, provided the creature isn't hidden from you."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blind Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Interception",
-							"entries": [
-								"When a creature you can see hits a target that is within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + your proficiency bonus (to a minimum of 0 damage). You must be wielding a shield or a simple or martial weapon to use this reaction."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Interception|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Thrown Weapon Fighting",
-							"entries": [
-								"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
-								"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +1 bonus to the damage roll."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Thrown Weapon Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Unarmed Fighting",
-							"entries": [
-								"Your unarmed strikes can deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier. If you strike with two free hands, the {@dice d6} becomes a {@dice d8}.",
-								"When you successfully start a grapple, you can deal {@dice 1d4} bludgeoning damage to the grappled creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Unarmed Fighting|UAClassFeatureVariants"
 						}
 					]
 				}
@@ -1263,7 +1207,8 @@
 		{
 			"name": "Second Wind",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 1,
@@ -1275,7 +1220,8 @@
 		{
 			"name": "Action Surge",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 2,
@@ -1287,7 +1233,8 @@
 		{
 			"name": "Martial Archetype",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 3,
@@ -1298,7 +1245,8 @@
 		{
 			"name": "Ability Score Improvement",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 4,
@@ -1323,7 +1271,8 @@
 		{
 			"name": "Extra Attack",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 5,
@@ -1335,7 +1284,8 @@
 		{
 			"name": "Ability Score Improvement",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 6,
@@ -1360,7 +1310,8 @@
 		{
 			"name": "Martial Archetype feature",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 7,
@@ -1371,7 +1322,8 @@
 		{
 			"name": "Ability Score Improvement",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 8,
@@ -1396,7 +1348,8 @@
 		{
 			"name": "Indomitable",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 9,
@@ -1408,7 +1361,8 @@
 		{
 			"name": "Martial Archetype feature",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 10,
@@ -1419,7 +1373,8 @@
 		{
 			"name": "Extra Attack (2)",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 11,
@@ -1430,7 +1385,8 @@
 		{
 			"name": "Ability Score Improvement",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 12,
@@ -1455,7 +1411,8 @@
 		{
 			"name": "Indomitable (two uses)",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 13,
@@ -1466,7 +1423,8 @@
 		{
 			"name": "Ability Score Improvement",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 14,
@@ -1491,7 +1449,8 @@
 		{
 			"name": "Martial Archetype feature",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 15,
@@ -1502,7 +1461,8 @@
 		{
 			"name": "Ability Score Improvement",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 16,
@@ -1527,7 +1487,8 @@
 		{
 			"name": "Action Surge (two uses)",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 17,
@@ -1538,7 +1499,8 @@
 		{
 			"name": "Indomitable (three uses)",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 17,
@@ -1549,7 +1511,8 @@
 		{
 			"name": "Martial Archetype feature",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 18,
@@ -1560,7 +1523,8 @@
 		{
 			"name": "Ability Score Improvement",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 19,
@@ -1585,7 +1549,8 @@
 		{
 			"name": "Extra Attack (3)",
 			"source": "PHB",
-			"page": 70,
+			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"level": 20,
@@ -1833,54 +1798,32 @@
 							"type": "options",
 							"entries": [
 								{
-									"type": "entries",
-									"name": "Ambush",
-									"entries": [
-										"When you make a Dexterity ({@skill Stealth}) check or an initiative roll, you can expend one superiority die and add the die to the roll."
-									]
+									"type": "refOptionalfeature",
+									"optionalfeature": "Ambush|UAClassFeatureVariants"
 								},
 								{
-									"type": "entries",
-									"name": "Bait and Switch",
-									"entries": [
-										"When you're within 5 feet of an ally on your turn, you can expend one superiority die and switch places with that ally, provided you spend at least 5 feet of movement. This movement doesn't provoke opportunity attacks.",
-										"Roll the superiority die. Until the start of your next turn, the ally gains a bonus to AC equal to the number rolled."
-									]
+									"type": "refOptionalfeature",
+									"optionalfeature": "Bait and Switch|UAClassFeatureVariants"
 								},
 								{
-									"type": "entries",
-									"name": "Brace",
-									"entries": [
-										"When an enemy you can see moves within 5 feet of you, you can use your reaction to expend one superiority die and make one weapon attack against that creature. If the attack hits, add the superiority die to the attack's damage roll."
-									]
+									"type": "refOptionalfeature",
+									"optionalfeature": "Brace|UAClassFeatureVariants"
 								},
 								{
-									"type": "entries",
-									"name": "Restraining Strike",
-									"entries": [
-										"Immediately after you hit a creature with a melee weapon attack on your turn, you can expend one superiority die and use a bonus action to grapple the target (see chapter 9 in the Player's Handbook for rules on grappling). Add the superiority die to your Strength ({@skill Athletics}) check. The target is also restrained while grappled in this way."
-									]
+									"type": "refOptionalfeature",
+									"optionalfeature": "Restraining Strike|UAClassFeatureVariants"
 								},
 								{
-									"type": "entries",
-									"name": "Silver Tongue",
-									"entries": [
-										"When you make a Charisma ({@skill Deception}) check or a Charisma ({@skill Persuasion}) check, you can expend one superiority die, and add the superiority die to the ability check."
-									]
+									"type": "refOptionalfeature",
+									"optionalfeature": "Silver Tongue|UAClassFeatureVariants"
 								},
 								{
-									"type": "entries",
-									"name": "Snipe",
-									"entries": [
-										"As a bonus action, you can expend one superiority die and make a ranged weapon attack. You can draw a thrown weapon as part of making this attack. If you hit, add the superiority die to the attack's damage roll."
-									]
+									"type": "refOptionalfeature",
+									"optionalfeature": "Snipe|UAClassFeatureVariants"
 								},
 								{
-									"type": "entries",
-									"name": "Studious Eye",
-									"entries": [
-										"When you make a Wisdom ({@skill Insight}) check or an Intelligence ({@skill Investigation}) check, you can expend one superiority die, and add the superiority die to the ability check."
-									]
+									"type": "refOptionalfeature",
+									"optionalfeature": "Studious Eye|UAClassFeatureVariants"
 								}
 							]
 						}
@@ -1898,198 +1841,75 @@
 			"subclassSource": "PHB",
 			"level": 3,
 			"header": 1,
-			"type": "options",
 			"entries": [
+				"The maneuvers are presented in alphabetical order.",
 				{
-					"type": "entries",
+					"type": "options",
+					"count": 3,
 					"entries": [
 						{
-							"type": "entries",
-							"name": "Commander's Strike",
-							"entries": [
-								"When you take the {@action Attack} action on your turn, you can forgo one of your attacks and use a bonus action to direct one of your companions to strike. When you do so, choose a friendly creature who can see or hear you and expend one superiority die. That creature can immediately use its reaction to make one weapon attack, adding the superiority die to the attack's damage roll."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Commander's Strike"
+						},
 						{
-							"type": "entries",
-							"name": "Disarming Attack",
-							"entries": [
-								"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to disarm the target, forcing it to drop one item of your choice that it's holding. You add the superiority die to the attack's damage roll, and the target must make a Strength saving throw. On a failed save, it drops the object you choose. The object lands at its feet."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Disarming Attack"
+						},
 						{
-							"type": "entries",
-							"name": "Distracting Strike",
-							"entries": [
-								"When you hit a creature with a weapon attack, you can expend one superiority die to distract the creature, giving your allies an opening. You add the superiority die to the attack's damage roll. The next attack roll against the target by an attacker other than you has advantage if the attack is made before the start of your next turn."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Distracting Strike"
+						},
 						{
-							"type": "entries",
-							"name": "Evasive Footwork",
-							"entries": [
-								"When you move, you can expend one superiority die, rolling the die and adding the number rolled to your AC until you stop moving."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Evasive Footwork"
+						},
 						{
-							"type": "entries",
-							"name": "Feinting Attack",
-							"entries": [
-								"You can expend one superiority die and use a bonus action on your turn to feint, choosing one creature within 5 feet of you as your target. You have advantage on your next attack roll this turn against that creature. If that attack hits, add the superiority die to the attack's damage roll.",
-								"The advantage is lost if not used on the turn you gain it."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Feinting Attack"
+						},
 						{
-							"type": "entries",
-							"name": "Goading Attack",
-							"entries": [
-								"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to goad the target into attacking you. You add the superiority die to the attack's damage roll, and the target must make a Wisdom saving throw. On a failed save, the target has disadvantage on all attack rolls against targets other than you until the end of your next turn."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Goading Attack"
+						},
 						{
-							"type": "entries",
-							"name": "Lunging Attack",
-							"entries": [
-								"When you make a melee weapon attack on your turn, you can expend one superiority die to increase your reach for that attack by 5 feet. If you hit, you add the superiority die to the attack's damage roll."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Lunging Attack"
+						},
 						{
-							"type": "entries",
-							"name": "Maneuvering Attack",
-							"entries": [
-								"When you hit a creature with a weapon attack, you can expend one superiority die to maneuver one of your comrades into a more advantageous position. You add the superiority die to the attack's damage roll, and you choose a friendly creature who can see or hear you. That creature can use its reaction to move up to half its speed without provoking opportunity attacks from the target of your attack."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Maneuvering Attack"
+						},
 						{
-							"type": "entries",
-							"name": "Menacing Attack",
-							"entries": [
-								"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to frighten the target. You add the superiority die to the attack's damage roll, and the target must make a Wisdom saving throw. On a failed save, it is {@condition frightened} of you until the end of your next turn."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Menacing Attack"
+						},
 						{
-							"type": "entries",
-							"name": "Parry",
-							"entries": [
-								"When another creature damages you with a melee attack, you can use your reaction and expend one superiority die to reduce the damage by the number you roll on your superiority die + your Dexterity modifier."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Parry"
+						},
 						{
-							"type": "entries",
-							"name": "Precision Attack",
-							"entries": [
-								"When you make a weapon attack roll against a creature, you can expend one superiority die to add it to the roll. You can use this maneuver before or after making the attack roll, but before any effects of the attack are applied."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Precision Attack"
+						},
 						{
-							"type": "entries",
-							"name": "Pushing Attack",
-							"entries": [
-								"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to drive the target back. You add the superiority die to the attack's damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you push the target up to 15 feet away from you."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Pushing Attack"
+						},
 						{
-							"type": "entries",
-							"name": "Rally",
-							"entries": [
-								"On your turn, you can use a bonus action and expend one superiority die to bolster the resolve of one of your companions. When you do so, choose a friendly creature who can see or hear you. That creature gains temporary hit points equal to the superiority die roll + your Charisma modifier."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Rally"
+						},
 						{
-							"type": "entries",
-							"name": "Riposte",
-							"entries": [
-								"When a creature misses you with a melee attack, you can use your reaction and expend one superiority die to make a melee weapon attack against the creature. If you hit, you add the superiority die to the attack's damage roll."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Riposte"
+						},
 						{
-							"type": "entries",
-							"name": "Sweeping Attack",
-							"entries": [
-								"When you hit a creature with a melee weapon attack, you can expend one superiority die to attempt to damage another creature with the same attack. Choose another creature within 5 feet of the original target and within your reach. If the original attack roll would hit the second creature, it takes damage equal to the number you roll on your superiority die. The damage is of the same type dealt by the original attack."
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+							"type": "refOptionalfeature",
+							"optionalfeature": "Sweeping Attack"
+						},
 						{
-							"type": "entries",
-							"name": "Trip Attack",
-							"entries": [
-								"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to knock the target down. You add the superiority die to the attack's damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you knock the target {@condition prone}."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Trip Attack"
 						}
 					]
 				}
@@ -2252,6 +2072,7 @@
 			"name": "Champion",
 			"source": "PHB",
 			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Champion",
@@ -2269,6 +2090,7 @@
 			"name": "Improved Critical",
 			"source": "PHB",
 			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Champion",
@@ -2284,6 +2106,7 @@
 			"name": "Remarkable Athlete",
 			"source": "PHB",
 			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Champion",
@@ -2299,6 +2122,7 @@
 			"name": "Additional Fighting Style",
 			"source": "PHB",
 			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Champion",
@@ -2313,6 +2137,7 @@
 			"name": "Superior Critical",
 			"source": "PHB",
 			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Champion",
@@ -2327,6 +2152,7 @@
 			"name": "Survivor",
 			"source": "PHB",
 			"page": 72,
+			"srd": true,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Champion",
@@ -2624,7 +2450,6 @@
 		{
 			"name": "Slayer",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Slayer (Stream)",
@@ -2645,7 +2470,6 @@
 		{
 			"name": "Martial Exploits",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Slayer (Stream)",
@@ -2696,7 +2520,6 @@
 		{
 			"name": "Slayer's Exploits",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Slayer (Stream)",
@@ -2719,7 +2542,7 @@
 					"name": "Bellringer",
 					"entries": [
 						"You take careful aim at your foe's head or other sensitive point, unleashing a brutal attack that knocks the target senseless.",
-						"You can expend a martial exploit when you hit with a melee weapon attack. The target of the attack must make a Constitution saving throw. If it fails, it is paralyzed. At the end of each of its turns, it can make a Constitution saving throw to end this effect."
+						"You can expend a martial exploit when you hit with a melee weapon attack. The target of the attack must make a Constitution saving throw. If it fails, it is {@condition paralyzed}. At the end of each of its turns, it can make a Constitution saving throw to end this effect."
 					]
 				},
 				{
@@ -2727,8 +2550,8 @@
 					"name": "Masterful Strike",
 					"entries": [
 						"You strike with overwhelming strength and accuracy, battering aside your foe's defense to deliver a deadly strike.",
-						"When you make an attack, you can expend a martial exploit and roll a number of d6s equal to your proficiency bonus.",
-						"If the attack misses, you learn the target's AC and can use the result of one or more d6s of your choice as a bonus to your attack roll, possibly turning the miss into a hit. Any remaining dice are used as a bonus to your weapon's damage roll."
+						"When you make an attack, you can expend a martial exploit and roll a number of {@dice d6}s equal to your proficiency bonus.",
+						"If the attack misses, you learn the target's AC and can use the result of one or more {@dice d6}s of your choice as a bonus to your attack roll, possibly turning the miss into a hit. Any remaining dice are used as a bonus to your weapon's damage roll."
 					]
 				}
 			]
@@ -2736,7 +2559,6 @@
 		{
 			"name": "Slayer's Diplomacy",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Slayer (Stream)",
@@ -2744,13 +2566,12 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"Starting at 7th level, you blend your martial talent with the softer skills needed to navigate the world. If you are holding a weapon when you make a Charisma (Intimidation) check, you gain a bonus to the roll equal to your proficiency bonus. You use your weapon to assist in your check, such as pole vaulting with your staff, using your sword to aid your balance, or menacing an enemy with a bloodied flail."
+				"Starting at 7th level, you blend your martial talent with the softer skills needed to navigate the world. If you are holding a weapon when you make a Charisma ({@skill Intimidation}) check, you gain a bonus to the roll equal to your proficiency bonus. You use your weapon to assist in your check, such as pole vaulting with your staff, using your sword to aid your balance, or menacing an enemy with a bloodied flail."
 			]
 		},
 		{
 			"name": "Superior Exploits",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Slayer (Stream)",
@@ -2777,7 +2598,7 @@
 					"type": "entries",
 					"name": "Improved Masterful Strike",
 					"entries": [
-						"You now roll d8s instead of d6s when using Masterful Strike."
+						"You now roll {@dice d8}s instead of {@dice d6}s when using Masterful Strike."
 					]
 				}
 			]
@@ -2785,7 +2606,6 @@
 		{
 			"name": "Bloodthirsty Rush",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Slayer (Stream)",
@@ -2799,7 +2619,6 @@
 		{
 			"name": "Overwhelming Momentum",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Slayer (Stream)",
@@ -2813,7 +2632,6 @@
 		{
 			"name": "Warlord (Livestream)",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Warlord (Stream)",
@@ -2834,7 +2652,6 @@
 		{
 			"name": "Tactical Focus",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Warlord (Stream)",
@@ -2849,48 +2666,31 @@
 				{
 					"type": "options",
 					"name": "Tactics",
+					"count": 3,
 					"entries": [
 						{
-							"type": "entries",
-							"name": "Advance",
-							"entries": [
-								"You and your allies can move 10 ft. in your tactical focus for every 5 feet of movement expended there. {@i [Changed during stream to \"You and your allies can basically teleport into your focus. Movement on allies turn.\" Specifically, the movement is not made as a reaction\u2014your allies can use their movement on their turn(s) to move towards the focus, and gain bonuses to speed or other effects (for example, ignoring difficult terrain, or movement does not provoke opportunity attacks) to aid and incentivize this. Additionally, this may replace \"Cover That Flank\" in future.]}"
-							]
+							"type": "refSubclassFeature",
+							"subclassFeature": "Advance|Fighter|Stream|Warlord (Stream)|Stream|3"
 						},
 						{
-							"type": "entries",
-							"name": "Clear the area",
-							"entries": [
-								"If an ally hits a creature in your tactical focus with an attack, the ally can move that creature 5 ft. in addition to the attack's other effects."
-							]
+							"type": "refSubclassFeature",
+							"subclassFeature": "Clear the area|Fighter|Stream|Warlord (Stream)|Stream|3"
 						},
 						{
-							"type": "entries",
-							"name": "Cover That Flank",
-							"entries": [
-								"When a hostile creature that you can see enters your tactical focus, up to three target creatures of your choice that can see the creature can use a reaction to move up to their speed. The targets must end their movement in the tactical focus. A target creature that ends this movement adjacent to the triggering creature regains its reaction."
-							]
+							"type": "refSubclassFeature",
+							"subclassFeature": "Cover That Flank|Fighter|Stream|Warlord (Stream)|Stream|3"
 						},
 						{
-							"type": "entries",
-							"name": "Get Down",
-							"entries": [
-								"If an allied creature in your tactical focus must make a Dexterity saving throw it can use its reaction to move up to its speed. If this movement takes it out of the range or area of the effect that caused the saving throw, it is no longer subjected to the effect. {@i [In future, this may be changed to instead give advantage on the saving throw, or require the creature to drop prone, or cancel the creature's next move.]}"
-							]
+							"type": "refSubclassFeature",
+							"subclassFeature": "Get Down|Fighter|Stream|Warlord (Stream)|Stream|3"
 						},
 						{
-							"type": "entries",
-							"name": "Form Shield Wall",
-							"entries": [
-								"Allies in your tactical focus gain a +2 bonus to AC while they are adjacent to an ally using a shield. {@i [In future, this will likely be changed to benefit only creatures not already wielding a shield, and to affect each creature at most once.]}"
-							]
+							"type": "refSubclassFeature",
+							"subclassFeature": "Form Shield Wall|Fighter|Stream|Warlord (Stream)|Stream|3"
 						},
 						{
-							"type": "entries",
-							"name": "Reorder Ranks",
-							"entries": [
-								"Allies in your tactical focus do not provoke opportunity attacks while they are within 5 feet of an ally. In addition, you and your allies can end movement in an ally's space. That ally immediately moves so that you do not occupy the same space, but it must end that move at least partially occupying your tactical focus. {@i [Noted as requiring cleanup.]}"
-							]
+							"type": "refSubclassFeature",
+							"subclassFeature": "Reorder Ranks|Fighter|Stream|Warlord (Stream)|Stream|3"
 						}
 					]
 				}
@@ -2899,7 +2699,6 @@
 		{
 			"name": "Tactician's Insight",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Warlord (Stream)",
@@ -2980,7 +2779,6 @@
 		{
 			"name": "Additional Tactic",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Warlord (Stream)",
@@ -2994,7 +2792,6 @@
 		{
 			"name": "Tactical Gambits",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Warlord (Stream)",
@@ -3030,7 +2827,7 @@
 							"name": "Aggressive Advance",
 							"entries": [
 								"You and your allies howl in rage and glower at your foes, making a display that sends fear into their hearts.",
-								"Hostile creatures within 60 feet of you that can see you must make a Wisdom saving throw. On a failed save, a creature is frightened of your tactical focus. A creature frightened by this effect can repeat the saving throw at the end of each of its turns, ending the effect on a successful save. As part of this gambit, you may take the attack action. {@i [In future, may be changed to require you or an ally to be present within the focus.]}"
+								"Hostile creatures within 60 feet of you that can see you must make a Wisdom saving throw. On a failed save, a creature is {@condition frightened} of your tactical focus. A creature {@condition frightened} by this effect can repeat the saving throw at the end of each of its turns, ending the effect on a successful save. As part of this gambit, you may take the attack action. {@i [In future, may be changed to require you or an ally to be present within the focus.]}"
 							]
 						},
 						{
@@ -3038,7 +2835,7 @@
 							"name": "Cut Them Down!",
 							"entries": [
 								"You direct your allies to strike with perfect timing. Landing blows just as your enemies are of balance to send them tumbling to the ground.",
-								"Until the end of your next turn, hostile creatures in your tactical focus that you can see must make Strength saves each time they are hit by an attack. On a failed save, they are knocked prone. As part of this gambit, you may take the attack action."
+								"Until the end of your next turn, hostile creatures in your tactical focus that you can see must make Strength saves each time they are hit by an attack. On a failed save, they are knocked {@condition prone}. As part of this gambit, you may take the attack action."
 							]
 						},
 						{
@@ -3046,14 +2843,14 @@
 							"name": "Luring Gambit",
 							"entries": [
 								"You entangle your weapon with a chosen foe, luring it to duel you as your allies close in for the kill.",
-								"As part of this gambit, you may take the attack action. If you hit a creature with a weapon attack during your turn, it must make a Wisdom saving throw. On a failed save, your allies are invisible to it until the end of your next turn."
+								"As part of this gambit, you may take the attack action. If you hit a creature with a weapon attack during your turn, it must make a Wisdom saving throw. On a failed save, your allies are {@condition invisible} to it until the end of your next turn."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Pile On",
 							"entries": [
-								"You direct your allies' attacks against a target, each blow building on the next to build a devastating result. Select a creature in your tactical focus that you can see. At the start of your next turn, that creature must make a Constitution saving throw if you or an ally has hit it with an attack since you used this ability. It suffers disadvantage on the saving throw if it has been hit by three or more attacks {@i [in future, this may be changed to \"hit by three or more creatures\"]}. On a failed saving throw, the creature is stunned until the end of your next turn.",
+								"You direct your allies' attacks against a target, each blow building on the next to build a devastating result. Select a creature in your tactical focus that you can see. At the start of your next turn, that creature must make a Constitution saving throw if you or an ally has hit it with an attack since you used this ability. It suffers disadvantage on the saving throw if it has been hit by three or more attacks {@i [in future, this may be changed to \"hit by three or more creatures\"]}. On a failed saving throw, the creature is {@condition stunned} until the end of your next turn.",
 								"As part of this gambit, you may take the attack action."
 							]
 						},
@@ -3062,7 +2859,7 @@
 							"name": "Pincer Movement",
 							"entries": [
 								"With precise timing, you order your allies to charge into the enemy, dealing body checks that leave your foes entangled and helpless.",
-								"Up to two allies that can see or hear you can use their reactions to move up to their speed. Any creature adjacent to both of your allies or to you and one of the chosen allies at the end of their movement must make a Strength saving throw or become restrained until the end of your next turn. As part of this gambit, you may take the attack action."
+								"Up to two allies that can see or hear you can use their reactions to move up to their speed. Any creature adjacent to both of your allies or to you and one of the chosen allies at the end of their movement must make a Strength saving throw or become {@condition restrained} until the end of your next turn. As part of this gambit, you may take the attack action."
 							]
 						},
 						{
@@ -3080,7 +2877,6 @@
 		{
 			"name": "Additional Gambit",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Warlord (Stream)",
@@ -3094,7 +2890,6 @@
 		{
 			"name": "Lead from the Front",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Warlord (Stream)",
@@ -3109,7 +2904,6 @@
 		{
 			"name": "Additional Tactic",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Warlord (Stream)",
@@ -3123,7 +2917,6 @@
 		{
 			"name": "Tactical Maneuvers",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Warlord (Stream)",
@@ -3138,7 +2931,6 @@
 		{
 			"name": "Additional Gambit",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Warlord (Stream)",
@@ -3152,7 +2944,6 @@
 		{
 			"name": "Perfect Coordination",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Warlord (Stream)",
@@ -3167,7 +2958,6 @@
 		{
 			"name": "Paths of the Sublime Way",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Weapon Master (Stream)",
@@ -3191,7 +2981,6 @@
 		{
 			"name": "Weapon Master (Livestream)",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Weapon Master (Stream)",
@@ -3213,7 +3002,6 @@
 		{
 			"name": "Martial Exploits",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Weapon Master (Stream)",
@@ -3236,119 +3024,119 @@
 						"Exploit Dice"
 					],
 					"colStyles": [
-						"col-3",
-						"col-3",
-						"col-3",
-						"col-3"
+						"col-3 text-center",
+						"col-3 text-center",
+						"col-3 text-center",
+						"col-3 text-center"
 					],
 					"rows": [
 						[
 							"3",
 							"1",
 							"4",
-							"2d6"
+							"{@dice 2d6}"
 						],
 						[
 							"4",
 							"2",
 							"5",
-							"2d6"
+							"{@dice 2d6}"
 						],
 						[
 							"5",
 							"2",
 							"5",
-							"2d6"
+							"{@dice 2d6}"
 						],
 						[
 							"6",
 							"3",
 							"5",
-							"2d6"
+							"{@dice 2d6}"
 						],
 						[
 							"7",
 							"3",
 							"7",
-							"3d6"
+							"{@dice 3d6}"
 						],
 						[
 							"8",
 							"3",
 							"7",
-							"3d6"
+							"{@dice 3d6}"
 						],
 						[
 							"9",
 							"3",
 							"7",
-							"3d6"
+							"{@dice 3d6}"
 						],
 						[
 							"10",
 							"4",
 							"9",
-							"3d6"
+							"{@dice 3d6}"
 						],
 						[
 							"11",
 							"4",
 							"9",
-							"3d6"
+							"{@dice 3d6}"
 						],
 						[
 							"12",
 							"5",
 							"9",
-							"3d6"
+							"{@dice 3d6}"
 						],
 						[
 							"13",
 							"5",
 							"10",
-							"4d6"
+							"{@dice 4d6}"
 						],
 						[
 							"14",
 							"5",
 							"10",
-							"4d6"
+							"{@dice 4d6}"
 						],
 						[
 							"15",
 							"5",
 							"10",
-							"4d6"
+							"{@dice 4d6}"
 						],
 						[
 							"16",
 							"5",
 							"10",
-							"5d6"
+							"{@dice 5d6}"
 						],
 						[
 							"17",
 							"5",
 							"10",
-							"5d6"
+							"{@dice 5d6}"
 						],
 						[
 							"18",
 							"5",
 							"10",
-							"5d6"
+							"{@dice 5d6}"
 						],
 						[
 							"19",
 							"5",
 							"10",
-							"6d6"
+							"{@dice 6d6}"
 						],
 						[
 							"20",
 							"5",
 							"10",
-							"6d6"
+							"{@dice 6d6}"
 						]
 					]
 				}
@@ -3357,7 +3145,6 @@
 		{
 			"name": "Masterful Strike",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Weapon Master (Stream)",
@@ -3372,7 +3159,6 @@
 		{
 			"name": "Path of the Shadow Harlequin",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Weapon Master (Stream)",
@@ -3412,7 +3198,6 @@
 		{
 			"name": "Path of the Stone Dragon",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Weapon Master (Stream)",
@@ -3461,7 +3246,7 @@
 					"name": "Sweeping Bludgeon",
 					"entries": [
 						"As you ready to strike your enemy, you sweep your weapon around you in a great arc that builds momentum and forces your enemies to dive to the ground to avoid a crushing blow.",
-						"When you expend a martial exploit when attacking with a two-handed melee weapon or a versatile one wielded in two hands, after rolling the dice you can select one or more of them and disregard their result. For each die selected, pick a creature within reach of your attack. Each chosen creature must make a Strength saving throw or be knocked prone."
+						"When you expend a martial exploit when attacking with a two-handed melee weapon or a versatile one wielded in two hands, after rolling the dice you can select one or more of them and disregard their result. For each die selected, pick a creature within reach of your attack. Each chosen creature must make a Strength saving throw or be knocked {@condition prone}."
 					]
 				}
 			]
@@ -3469,7 +3254,6 @@
 		{
 			"name": "Way of the Blade",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Weapon Master (Stream)",
@@ -3477,13 +3261,12 @@
 			"level": 7,
 			"header": 2,
 			"entries": [
-				"Starting at 7th level, you blend your martial talent with the softer skills needed to navigate the world. If you are holding a weapon when you make a Strength (Athletics), Dexterity (Acrobatics), or Charisma (Intimidation) check, you gain a bonus to the roll equal to half your proficiency bonus. You use your weapon to assist in your check, such as pole vaulting with a staff, using your sword to aid your balance, or menacing an enemy with your bloodied flail."
+				"Starting at 7th level, you blend your martial talent with the softer skills needed to navigate the world. If you are holding a weapon when you make a Strength ({@skill Athletics}), Dexterity ({@skill Acrobatics}), or Charisma ({@skill Intimidation}) check, you gain a bonus to the roll equal to half your proficiency bonus. You use your weapon to assist in your check, such as pole vaulting with a staff, using your sword to aid your balance, or menacing an enemy with your bloodied flail."
 			]
 		},
 		{
 			"name": "Superior Fighting Style",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Weapon Master (Stream)",
@@ -3539,7 +3322,6 @@
 		{
 			"name": "Unknown",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Weapon Master (Stream)",
@@ -3553,7 +3335,6 @@
 		{
 			"name": "Unknown",
 			"source": "Stream",
-			"page": 70,
 			"className": "Fighter",
 			"classSource": "PHB",
 			"subclassShortName": "Weapon Master (Stream)",
@@ -3799,7 +3580,7 @@
 							"type": "entries",
 							"name": "Create Magic Arrow",
 							"entries": [
-								"As a bonus action on your turn, you can create one magic arrow in your hand. The arrow lasts until the end of the turn or until it hits or misses a target. You can fire the arrow from a shortbow or longbow. The arrow is a magic weapon that deals an additional {@dice 2d6} force damage on a hit.",
+								"As a bonus action on your turn, you can create one magic arrow in your hand. The arrow lasts until the end of the turn or until it hits or misses a target. You can fire the arrow from a shortbow or longbow. The arrow is a magic weapon that deals an additional {@damage 2d6} force damage on a hit.",
 								"You have two uses of this feature, and you regain all expended uses of it when you finish a short or long rest."
 							]
 						}
@@ -3835,62 +3616,39 @@
 				"The Arcane Arrow feature lets you choose Arcane Shot options at certain levels. The options are presented here in alphabetical order. These are all magical effects.",
 				{
 					"type": "options",
+					"count": 2,
 					"entries": [
 						{
-							"type": "entries",
-							"name": "Beguiling Arrow",
-							"entries": [
-								"Your enchantment magic causes this arrow to temporarily beguile its target. Choose one of your allies within 30 feet of the target. If the arrow hits the target, the target can't attack the chosen ally or include that ally in a harmful area of effect until the end of your next turn. The target ignores this effect if it is immune to the {@condition charmed} condition. This effect also ends if the chosen ally deals any damage to the target."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Beguiling Arrow|UAFighter"
 						},
 						{
-							"type": "entries",
-							"name": "Brute Bane Arrow",
-							"entries": [
-								"You weave necromantic magic into your arrow. If a creature is hit by the arrow, any bludgeoning, piercing, or slashing damage dealt by the creature's attacks is halved until the end of your next turn."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Brute Bane Arrow|UAFighter"
 						},
 						{
-							"type": "entries",
-							"name": "Bursting Arrow",
-							"entries": [
-								"You imbue your arrow with a blast of force energy drawn from the school of evocation. If you hit a creature with this arrow, each creature within 10 feet of it takes {@dice 2d6} force damage."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Bursting Arrow|UAFighter"
 						},
 						{
-							"type": "entries",
-							"name": "Defending Arrow",
-							"entries": [
-								"You use abjuration magic to weave a charm that disrupts your enemy's magic. A creature hit by this arrow suffers disadvantage on the next attack roll it makes before the end of your next turn."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Defending Arrow|UAFighter"
 						},
 						{
-							"type": "entries",
-							"name": "Grasping Arrow",
-							"entries": [
-								"When this arrow strikes its target, conjuration magic creates grasping, thorny brambles that wrap around the target. The target hit by the arrow takes a -10 penalty to speed, and it takes {@dice 2d6} slashing damage if it moves 1 foot or more without teleporting. The target or any creature that can touch it can use its action to try to remove the brambles, which requires a successful DC 10 Strength check. Otherwise, the brambles last for 1 minute."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Grasping Arrow|UAFighter"
 						},
 						{
-							"type": "entries",
-							"name": "Piercing Arrow",
-							"entries": [
-								"You use transmutation magic to transform your arrow into an ethereal dart that passes through its targets. When you attack with this arrow, it fires forward in a line that is 1 foot wide and 30 feet long. You make a separate attack using your Arcane Arrow against each creature in that line."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Piercing Arrow|UAFighter"
 						},
 						{
-							"type": "entries",
-							"name": "Seeking Arrow",
-							"entries": [
-								"Using divination magic, you grant your arrow the ability to seek out your target, allowing the arrow to curve and twist its path in search of its prey. As an action, choose one creature you have seen in the past minute, and make a ranged attack against it, using the Arcane Arrow. The arrow flies around corners if necessary, and this attack ignores three-quarters cover, half cover, and disadvantage caused by the target being out of sight or being at long range. The attack automatically misses if the target is out of the weapon's range or if there is no path large enough for the arrow to travel to the target. If the arrow hits its target, you know it, but you don't learn the target's location unless it's within your line of sight."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Seeking Arrow|UAFighter"
 						},
 						{
-							"type": "entries",
-							"name": "Shadow Arrow",
-							"entries": [
-								"You weave illusion magic into your arrow, causing it to occlude your foe's vision with grasping shadows. Until the end of your next turn, the target hit by the arrow can't see more than 30 feet away."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Shadow Arrow|UAFighter"
 						}
 					]
 				}
@@ -3993,7 +3751,7 @@
 			"level": 18,
 			"header": 2,
 			"entries": [
-				"At 18th level, your Arcane Arrow's bonus damage increases to {@dice 4d6} force damage."
+				"At 18th level, your Arcane Arrow's bonus damage increases to {@damage 4d6} force damage."
 			]
 		},
 		{
@@ -4352,7 +4110,7 @@
 			"type": "entries",
 			"entries": [
 				"{@i 3rd-level Rune Knight feature}",
-				"You gain proficiency with smith's tools, and you learn to speak, read, and write Giant."
+				"You gain proficiency with {@item smith's tools|PHB}, and you learn to speak, read, and write Giant."
 			]
 		},
 		{
@@ -4374,7 +4132,7 @@
 					"items": [
 						"If you are smaller than Large, you become Large, along with anything you are wearing. If you lack the room to become Large, your size doesn't change.",
 						"You have advantage on Strength checks and Strength saving throws.",
-						"Your weapon attacks deal an extra  {@dice 1d6} damage."
+						"Your weapon attacks deal an extra {@damage 1d6} damage."
 					]
 				},
 				"You can use this feature twice, and you regain all expended uses of it when you finish a long rest."
@@ -4413,51 +4171,33 @@
 			"entries": [
 				"Here are rune options for the Rune Magic feature. They are all magical effects. If a rune requires a saving throw, your Rune Magic save DC equals 8 + your proficiency bonus + your Intelligence modifier.",
 				{
-					"type": "entries",
-					"name": "Haug (Hill Rune)",
+					"type": "options",
+					"choose": 2,
 					"entries": [
-						"This rune's magic bestows a resilience reminiscent of a hill giant. While wearing or carrying an object inscribed with this rune, you have advantage on saving throws against being {@condition poisoned}, and you have resistance against poison damage.",
-						"In addition, you can invoke the rune as a bonus action, gaining resistance to bludgeoning, piercing, and slashing damage for 1 minute. Once you invoke the rune, you can't do so again until you finish a short or long rest."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Ild (Fire Rune)",
-					"entries": [
-						"This rune's magic channels the masterful craftsmanship of fire giant smiths. While wearing or carrying an object inscribed with this rune, your proficiency bonus is doubled for any ability check you make that uses your proficiency with a tool.",
-						"In addition, when you hit a creature with a weapon attack, you can invoke the rune to summon fiery shackles: the target must succeed on a Strength saving throw or be {@condition restrained} for 1 minute. While {@condition restrained} by the shackles, the target takes  {@dice 2d6} fire damage at the start of each of its turns. The target can repeat the saving throw at the end of each of its turns, banishing the shackles on a success. Once you invoke the rune, you can't do so again until you finish a short or long rest."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Ise (Frost Rune)",
-					"entries": [
-						"This rune's magic evokes a frost giant's stoic calm. While wearing or carrying an object inscribed with this rune, you have advantage on Wisdom ({@skill Animal Handling}) checks and Charisma ({@skill Intimidation}) checks.",
-						"In addition, you can invoke the rune as a bonus action to increase your Strength score by 2 for 10 minutes. This increase can cause your score to exceed 20, but not 30. Once you invoke the rune, you can't do so again until you finish a short or long rest."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Skye (Cloud Rune)",
-					"entries": [
-						"This rune's magic emulates the deceptiveness of a cloud giant. While wearing or carrying an object inscribed with this rune, you have advantage on Dexterity ({@skill Sleight of Hand}) checks and Charisma ({@skill Deception}) checks.",
-						"In addition, when you or a creature you can see within 30 feet of you is hit by an attack roll, you can use your reaction to invoke the rune and cause that attack to target a different creature within 30 feet of you (other than the attacker), using the same roll. This magic can transfer the attack regardless of the attack's range. Once you invoke the rune, you can't do so again until you finish a short or long rest."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Stein (Stone Rune)",
-					"entries": [
-						"This rune's magic channels the insightfulness of a stone giant. While wearing or carrying an object inscribed with this rune, you have advantage on Wisdom ({@skill Insight}) checks, and you have {@sense darkvision} out to a range of 60 feet. If you already have {@sense darkvision}, its range increases by 30 feet.",
-						"In addition, when a creature you can see ends its turn within 30 feet of you, you can use your reaction to invoke the rune and force the creature to make a Wisdom saving throw. Unless the save succeeds, the creature is {@condition charmed} by you for 1 minute. While {@condition charmed} in this way, the creature has a speed of 0 and is {@condition incapacitated}, descending into a dreamy stupor. The effect ends if the {@condition charmed} creature takes any damage or if someone else uses an action to shake the creature out of its haze. Once you invoke the rune, you can't do so again until you finish a short or long rest."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Uvar (Storm Rune)",
-					"entries": [
-						"Using this rune, you can glimpse the future like a storm giant. While wearing or carrying an object inscribed with this rune, you have advantage on Intelligence ({@skill Arcana}) checks, and you can't be surprised as long as you are not {@condition incapacitated}.",
-						"In addition, you can invoke the rune as a bonus action to enter a prophetic state for 1 minute or until you're {@condition incapacitated}. Until the state ends, when you or another creature you can see within 60 feet of you makes an attack roll, a saving throw, or an ability check, you can use your reaction to cause the roll to have advantage or disadvantage. Once you invoke the rune, you can't do so again until you finish a short or long rest."
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Haug (Hill Rune)|UAFighterRangerRogue"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Ild (Fire Rune)|UAFighterRangerRogue"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Ise (Frost Rune)|UAFighterRangerRogue"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Skye (Cloud Rune)|UAFighterRangerRogue"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Stein (Stone Rune)|UAFighterRangerRogue"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Uvar (Storm Rune)|UAFighterRangerRogue"
+						}
 					]
 				}
 			]
@@ -4572,7 +4312,7 @@
 					"type": "entries",
 					"name": "Augmented Strikes",
 					"entries": [
-						"Once during each of your turns when you hit a creature with a weapon attack, you can also deal {@dice 1d4} psychic damage to that target. When you reach 10th level in this class, the psychic damage increases to {@dice 1d6}."
+						"Once during each of your turns when you hit a creature with a weapon attack, you can also deal {@damage 1d4} psychic damage to that target. When you reach 10th level in this class, the psychic damage increases to {@dice 1d6}."
 					]
 				}
 			]
@@ -4652,7 +4392,7 @@
 			"header": 2,
 			"entries": [
 				"{@i 15th-level Psychic Warrior feature}",
-				"Your attacks can channel psychic agony. When you hit a creature with a weapon attack, you can also deal {@dice 2d10} psychic damage to that target and force it to make a Constitution saving throw against a DC equal to 8 + your proficiency bonus + your Intelligence modifier. Unless the save succeeds, the target falls {@condition prone}, and it suffers disadvantage on ability checks until the end of your next turn.",
+				"Your attacks can channel psychic agony. When you hit a creature with a weapon attack, you can also deal {@damage 2d10} psychic damage to that target and force it to make a Constitution saving throw against a DC equal to 8 + your proficiency bonus + your Intelligence modifier. Unless the save succeeds, the target falls {@condition prone}, and it suffers disadvantage on ability checks until the end of your next turn.",
 				"You can use this feature a number of times equal to your Intelligence modifier (minimum of once), and you regain all expended uses when you finish a long rest."
 			]
 		},
@@ -4759,7 +4499,7 @@
 										"When you make a weapon attack against a creature, you can expend one superiority die to add it to the attack roll. You can use this ability before or after making the attack roll, but before any of the effects of the attack are applied.",
 										"When you damage a creature with a weapon attack, you can expend one superiority die to add it to the damage roll. You can use this ability after rolling damage. If the attack causes the target to make a Constitution saving throw to maintain concentration, it has disadvantage on that save.",
 										"When you make an Intelligence, a Wisdom, or a Charisma saving throw, you can expend one superiority die to add it to the roll. You can use this feature only before you learn if the save succeeded or failed.",
-										"When you make a Wisdom (Perception) check to detect a hidden creature or object, or a Wisdom (Insight) check to determine if someone is lying to you, you can expend one superiority die to add it to the roll. You can use this feature after seeing the total but before learning if you succeeded or failed."
+										"When you make a Wisdom ({@skill Perception}) check to detect a hidden creature or object, or a Wisdom ({@skill Insight}) check to determine if someone is lying to you, you can expend one superiority die to add it to the roll. You can use this feature after seeing the total but before learning if you succeeded or failed."
 									]
 								}
 							]
@@ -5302,32 +5042,20 @@
 					"type": "options",
 					"entries": [
 						{
-							"type": "entries",
-							"name": "Control Mount",
-							"entries": [
-								"When you make a Wisdom (Animal Handling) check to influence a creature that you or an ally is riding, you can expend one superiority die, roll it, and add the number rolled to the check. You can do this before or after rolling the {@dice d20}, but before applying the results of the check."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Control Mount|UARevisedClassOptions"
 						},
 						{
-							"type": "entries",
-							"name": "Precision Attack",
-							"entries": [
-								"When you make a weapon attack against a creature, you can expend one superiority die, roll it, and add it to the attack roll. You can use this ability before or after rolling the {@dice d20}, but before any of the effects of the attack are applied."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Precision Attack|UARevisedClassOptions"
 						},
 						{
-							"type": "entries",
-							"name": "Trip Attack",
-							"entries": [
-								"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to knock the target down. Roll the die, and add it to the attack's damage roll. If the target is Large or smaller, it must also succeed on a Strength saving throw (DC 8 + your proficiency bonus + your Strength modifier) or be knocked {@condition prone}."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Trip Attack|UARevisedClassOptions"
 						},
 						{
-							"type": "entries",
-							"name": "Warding Maneuver",
-							"entries": [
-								"If you or a creature within 5 feet of you is hit by an attack, you can expend one superiority die as a reaction if you're wielding a weapon or a shield. Roll the die, and add the number rolled to the target's AC against that attack. If the attack still hits, the target has resistance against the attack's damage."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Warding Maneuver|UARevisedClassOptions"
 						}
 					]
 				}
@@ -5451,70 +5179,39 @@
 				"If an option requires a saving throw, your Arcane Shot save DC equals 8 + your proficiency bonus + your Intelligence modifier.",
 				{
 					"type": "options",
+					"count": 2,
 					"entries": [
 						{
-							"type": "entries",
-							"name": "Banishing Arrow",
-							"entries": [
-								"You use abjuration magic to try to temporarily banish your target to a harmless location in the Feywild. If the arrow hits a creature, the target must also succeed on a Charisma saving throw or be banished. While banished in this way, its speed is 0, and it is {@condition incapacitated}. At the end of its next turn, the target reappears in the space it vacated or in the nearest unoccupied space if that space is occupied.",
-								"After you reach 18th level in this class, a target also takes {@dice 2d6} force damage when the arrow hits it."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Banishing Arrow|UARevisedSubclasses"
 						},
 						{
-							"type": "entries",
-							"name": "Brute Bane Arrow",
-							"entries": [
-								"You weave necromantic magic into your arrow. If your arrow hits a creature, the target takes an extra {@dice 2d6} necrotic damage and must make a Constitution saving throw. On a failed save, the damage of the target's attacks is halved until the next turn.",
-								"The necrotic damage increases to {@dice 4d6} when you reach 18th level with this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Brute Bane Arrow|UARevisedSubclasses"
 						},
 						{
-							"type": "entries",
-							"name": "Bursting Arrow",
-							"entries": [
-								"You imbue your arrow with a blast of force energy drawn from the school of evocation. If the arrow hits a creature, the target and each creature within 10 feet of it takes {@dice 2d6} force damage.",
-								"The force damage increases to {@dice 4d6} when you reach 18th level with this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Bursting Arrow|UARevisedSubclasses"
 						},
 						{
-							"type": "entries",
-							"name": "Grasping Arrow",
-							"entries": [
-								"When this arrow strikes its target, conjuration magic creates grasping, thorny brambles that wrap around the target. If the arrow hits a creature, the target takes an extra {@dice 2d6} poison damage, its speed is reduced by 10 feet, and it takes {@dice 2d6} slashing damage the first time on each turn it moves 1 foot or more without teleporting. The target or any creature that can reach it can use its action to remove the brambles with a successful Strength ({@skill Athletics}) check against your Arcane Shot save DC. Otherwise, the brambles last for 1 minute or until you use this option again.",
-								"The poison and slashing damage both increase to {@dice 4d6} when you reach 18th level in this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Grasping Arrow|UARevisedSubclasses"
 						},
 						{
-							"type": "entries",
-							"name": "Mind-Scrambling Arrow",
-							"entries": [
-								"Your enchantment magic causes this arrow to temporarily beguile its target. Choose one of your allies within 30 feet of the target. If the arrow hits a creature, the target takes an extra {@dice 2d6} psychic damage, and it must succeed on a Wisdom saving throw or it can't attack the chosen ally or include that ally in a harmful area of effect until the start of your next turn. This effect ends early if the chosen ally deals any damage to the target.",
-								"The psychic damage increases to {@dice 4d6} when you reach 18th level in this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mind-Scrambling Arrow|UARevisedSubclasses"
 						},
 						{
-							"type": "entries",
-							"name": "Piercing Arrow",
-							"entries": [
-								"You use transmutation magic to transform your arrow into an ethereal dart that passes through its targets. You use transmutation magic to give your arrow an ethereal quality. When you use this option, you don't make an attack roll for the attack. Instead, the arrow fires forward in a line that is 1 foot wide and 30 feet long, before disappearing. The arrow passes harmlessly through objects, ignoring cover. Each creature in that line must make a Dexterity saving throw. On a failed save, a target takes damage as if it were hit by the arrow, plus an extra {@dice 1d6} piercing damage. On a successful save, a target takes half as much damage.",
-								"The piercing damage increases to {@dice 2d6} when you reach 18th level in this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Piercing Arrow|UARevisedSubclasses"
 						},
 						{
-							"type": "entries",
-							"name": "Seeking Arrow",
-							"entries": [
-								"Using divination magic, you grant your arrow the ability to seek out your target, allowing the arrow to curve and twist its path in search of its prey. When you use this option, you don't make an attack roll for the attack. Instead, choose one creature you have seen in the past minute. The arrow flies toward that creature, moving around corners if necessary and ignoring three-quarters cover and half cover. If the target is within the weapon's range and there is a path large enough for the arrow to travel to the target, the target must make a Dexterity saving throw. On a failed save, it takes damage as if it were hit by the arrow, plus an extra {@dice 1d6} force damage, and you learn the target's current location. On a successful save, the target takes half as much damage, and you don't learn its location.",
-								"The force damage increases to {@dice 2d6} when you reach 18th level in this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Seeking Arrow|UARevisedSubclasses"
 						},
 						{
-							"type": "entries",
-							"name": "Shadow Arrow",
-							"entries": [
-								"You weave illusion magic into your arrow, causing it to occlude your foe's vision with grasping shadows. If the arrow hits a creature, the target takes an extra {@dice 2d6} psychic damage, and it must succeed on a Wisdom saving throw or be unable to see anything farther than 5 feet away until the start of your next turn.",
-								"The psychic damage increases to {@dice 4d6} when you reach 18th level in this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Shadow Arrow|UARevisedSubclasses"
 						}
 					]
 				}
@@ -5833,70 +5530,39 @@
 				},
 				{
 					"type": "options",
+					"count": 2,
 					"entries": [
 						{
-							"type": "entries",
-							"name": "Banishing Arrow",
-							"entries": [
-								"You use abjuration magic to try to temporarily banish your target to a harmless location in the Feywild. The creature hit by the arrow must also succeed on a Charisma saving throw or be banished. While banished in this way, the target's speed is 0, and it is {@condition incapacitated}. At the end of its next turn, the target reappears in the space it vacated or in the nearest unoccupied space if that space is occupied.",
-								"After you reach 18th level in this class, a target also takes {@dice 2d6} force damage when the arrow hits it."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Banishing Arrow|XGE"
 						},
 						{
-							"type": "entries",
-							"name": "Beguiling Arrow",
-							"entries": [
-								"Your enchantment magic causes this arrow to temporarily beguile its target. The creature hit by the arrow takes an extra {@dice 2d6} psychic damage, and choose one of your allies within 30 feet of the target. The target must succeed on a Wisdom saving throw, or it is {@condition charmed} by the chosen ally until the start of your next turn. This effect ends early if the chosen ally attacks the {@condition charmed} target, deals damage to it, or forces it to make a saving throw.",
-								"The psychic damage increases to {@dice 4d6} when you reach 18th level in this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Beguiling Arrow|XGE"
 						},
 						{
-							"type": "entries",
-							"name": "Bursting Arrow",
-							"entries": [
-								"You imbue your arrow with force energy drawn from the school of evocation. The energy detonates after your attack. Immediately after the arrow hits the creature, the target and all other creatures within 10 feet of it take {@dice 2d6} force damage each.",
-								"The force damage increases to {@dice 4d6} when you reach 18th level in this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Bursting Arrow|XGE"
 						},
 						{
-							"type": "entries",
-							"name": "Enfeebling Arrow",
-							"entries": [
-								"You weave necromantic magic into your arrow. The creature hit by the arrow takes an extra {@dice 2d6} necrotic damage. The target must also succeed on a Constitution saving throw, or the damage dealt by its weapon attacks is halved until the start of your next turn.",
-								"The necrotic damage increases to {@dice 4d6} when you reach 18th level in this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Enfeebling Arrow|XGE"
 						},
 						{
-							"type": "entries",
-							"name": "Grasping Arrow",
-							"entries": [
-								"When this arrow strikes its target, conjuration magic creates grasping, poisonous brambles, which wrap around the target. The creature hit by the arrow takes an extra {@dice 2d6} poison damage, its speed is reduced by 10 feet, and it takes {@dice 2d6} slashing damage the first time on each turn it moves 1 foot or more without teleporting. The target or any creature that can reach it can use its action to remove the brambles with a successful Strength ({@skill Athletics}) check against your Arcane Shot save DC. Otherwise, the brambles last for 1 minute or until you use this option again.",
-								"The poison damage and slashing damage both increase to {@dice 4d6} when you reach 18th level in this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Grasping Arrow|XGE"
 						},
 						{
-							"type": "entries",
-							"name": "Piercing Arrow",
-							"entries": [
-								"You use transmutation magic to give your arrow an ethereal quality. When you use this option, you don't make an attack roll for the attack. Instead, the arrow shoots forward in a line, which is 1 foot wide and 30 feet long, before disappearing. The arrow passes harmlessly through objects, ignoring cover. Each creature in that line must make a Dexterity saving throw. On a failed save, a creature takes damage as if it were hit by the arrow, plus an extra {@dice 1d6} piercing damage. On a successful save, a target takes half as much damage.",
-								"The piercing damage increases to {@dice 2d6} when you reach 18th level in this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Piercing Arrow|XGE"
 						},
 						{
-							"type": "entries",
-							"name": "Seeking Arrow",
-							"entries": [
-								"Using divination magic, you grant your arrow the ability to seek out a target. When you use this option, you don't make an attack roll for the attack. Instead, choose one creature you have seen in the past minute. The arrow flies toward that creature, moving around corners if necessary and ignoring three-quarters cover and half cover. If the target is within the weapon's range and there is a path large enough for the arrow to travel to the target, the target must make a Dexterity saving throw. Otherwise, the arrow disappears after traveling as far as it can. On a failed save, the target takes damage as if it were hit by the arrow, plus an extra {@dice 1d6} force damage, and you learn the target's current location. On a successful save, the target takes half as much damage, and you don't learn its location.",
-								"The force damage increases to {@dice 2d6} when you reach 18th level in this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Seeking Arrow|XGE"
 						},
 						{
-							"type": "entries",
-							"name": "Shadow Arrow",
-							"entries": [
-								"You weave illusion magic into your arrow, causing it to occlude your foe's vision with shadows. The creature hit by the arrow takes an extra {@dice 2d6} psychic damage, and it must succeed on a Wisdom saving throw or be unable to see anything farther than 5 feet away until the start of your next turn.",
-								"The psychic damage increases to {@dice 4d6} when you reach 18th level in this class."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Shadow Arrow|XGE"
 						}
 					]
 				}
@@ -6239,6 +5905,78 @@
 			"entries": [
 				"Starting at 18th level, your fighting spirit can delay the grasp of death. If you take damage that reduces you to 0 hit points and doesn't kill you outright, you can use your reaction to delay falling {@condition unconscious}, and you can immediately take an extra turn, interrupting the current turn. While you have 0 hit points during that extra turn, taking damage causes death saving throw failures as normal, and three death saving throw failures can still kill you. When the extra turn ends, you fall {@condition unconscious} if you still have 0 hit points.",
 				"Once you use this feature, you can't use it again until you finish a long rest."
+			]
+		},
+		{
+			"name": "Advance",
+			"source": "Stream",
+			"className": "Fighter",
+			"classSource": "Stream",
+			"subclassShortName": "Warlord (Stream)",
+			"subclassSource": "Stream",
+			"level": 3,
+			"entries": [
+				"You and your allies can move 10 ft. in your tactical focus for every 5 feet of movement expended there. {@i [Changed during stream to \"You and your allies can basically teleport into your focus. Movement on allies turn.\" Specifically, the movement is not made as a reaction\u2014your allies can use their movement on their turn(s) to move towards the focus, and gain bonuses to speed or other effects (for example, ignoring difficult terrain, or movement does not provoke opportunity attacks) to aid and incentivize this. Additionally, this may replace \"Cover That Flank\" in future.]}"
+			]
+		},
+		{
+			"name": "Clear the area",
+			"source": "Stream",
+			"className": "Fighter",
+			"classSource": "Stream",
+			"subclassShortName": "Warlord (Stream)",
+			"subclassSource": "Stream",
+			"level": 3,
+			"entries": [
+				"If an ally hits a creature in your tactical focus with an attack, the ally can move that creature 5 ft. in addition to the attack's other effects."
+			]
+		},
+		{
+			"name": "Cover That Flank",
+			"source": "Stream",
+			"className": "Fighter",
+			"classSource": "Stream",
+			"subclassShortName": "Warlord (Stream)",
+			"subclassSource": "Stream",
+			"level": 3,
+			"entries": [
+				"When a hostile creature that you can see enters your tactical focus, up to three target creatures of your choice that can see the creature can use a reaction to move up to their speed. The targets must end their movement in the tactical focus. A target creature that ends this movement adjacent to the triggering creature regains its reaction."
+			]
+		},
+		{
+			"name": "Form Shield Wall",
+			"source": "Stream",
+			"className": "Fighter",
+			"classSource": "Stream",
+			"subclassShortName": "Warlord (Stream)",
+			"subclassSource": "Stream",
+			"level": 3,
+			"entries": [
+				"Allies in your tactical focus gain a +2 bonus to AC while they are adjacent to an ally using a shield. {@i [In future, this will likely be changed to benefit only creatures not already wielding a shield, and to affect each creature at most once.]}"
+			]
+		},
+		{
+			"name": "Get Down",
+			"source": "Stream",
+			"className": "Fighter",
+			"classSource": "Stream",
+			"subclassShortName": "Warlord (Stream)",
+			"subclassSource": "Stream",
+			"level": 3,
+			"entries": [
+				"If an allied creature in your tactical focus must make a Dexterity saving throw it can use its reaction to move up to its speed. If this movement takes it out of the range or area of the effect that caused the saving throw, it is no longer subjected to the effect. {@i [In future, this may be changed to instead give advantage on the saving throw, or require the creature to drop prone, or cancel the creature's next move.]}"
+			]
+		},
+		{
+			"name": "Reorder Ranks",
+			"source": "Stream",
+			"className": "Fighter",
+			"classSource": "Stream",
+			"subclassShortName": "Warlord (Stream)",
+			"subclassSource": "Stream",
+			"level": 3,
+			"entries": [
+				"Allies in your tactical focus do not provoke opportunity attacks while they are within 5 feet of an ally. In addition, you and your allies can end movement in an ally's space. That ally immediately moves so that you do not occupy the same space, but it must end that move at least partially occupying your tactical focus. {@i [Noted as requiring cleanup.]}"
 			]
 		}
 	]

@@ -47,7 +47,7 @@
 					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"Two {@item dagger|phb|daggers}"
 				],
-				"goldAlternative": "{@dice 3d4×10|3d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 3d4 × 10|3d4 × 10|Starting Gold}"
 			},
 			"multiclassing": {
 				"requirements": {
@@ -1216,6 +1216,7 @@
 			"name": "Sorcerous Origin",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 1,
@@ -1240,6 +1241,7 @@
 			"name": "Spellcasting",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 1,
@@ -1300,9 +1302,71 @@
 			]
 		},
 		{
+			"name": "Flexible Casting",
+			"source": "PHB",
+			"page": 99,
+			"srd": true,
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"You can use your sorcery points to gain additional spell slots, or sacrifice spell slots to gain additional sorcery points. You learn other ways to use your sorcery points as you reach higher levels.",
+				{
+					"type": "entries",
+					"name": "Creating Spell Slots",
+					"entries": [
+						"You can transform unexpended sorcery points into one spell slot as a bonus action on your turn. The created spell slots vanish at the end of a long rest. The Creating Spell Slots table shows the cost of creating a spell slot of a given level. You can create spell slots no higher in level than 5th.",
+						{
+							"type": "table",
+							"caption": "Creating Spell Slots",
+							"colLabels": [
+								"Spell Slot Level",
+								"Sorcery Point Cost"
+							],
+							"colStyles": [
+								"col-6 text-center",
+								"col-6 text-center"
+							],
+							"rows": [
+								[
+									"1st",
+									"2"
+								],
+								[
+									"2nd",
+									"3"
+								],
+								[
+									"3rd",
+									"5"
+								],
+								[
+									"4th",
+									"6"
+								],
+								[
+									"5th",
+									"7"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Converting a Spell Slot to Sorcery Points",
+					"entries": [
+						"As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot's level."
+					]
+				}
+			]
+		},
+		{
 			"name": "Font of Magic",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 2,
@@ -1316,59 +1380,8 @@
 					]
 				},
 				{
-					"type": "entries",
-					"name": "Flexible Casting",
-					"entries": [
-						"You can use your sorcery points to gain additional spell slots, or sacrifice spell slots to gain additional sorcery points. You learn other ways to use your sorcery points as you reach higher levels.",
-						{
-							"type": "entries",
-							"name": "Creating Spell Slots",
-							"entries": [
-								"You can transform unexpended sorcery points into one spell slot as a bonus action on your turn. The created spell slots vanish at the end of a long rest. The Creating Spell Slots table shows the cost of creating a spell slot of a given level. You can create spell slots no higher in level than 5th.",
-								{
-									"type": "table",
-									"caption": "Creating Spell Slots",
-									"colLabels": [
-										"Spell Slot Level",
-										"Sorcery Point Cost"
-									],
-									"colStyles": [
-										"col-6 text-center",
-										"col-6 text-center"
-									],
-									"rows": [
-										[
-											"1st",
-											"2"
-										],
-										[
-											"2nd",
-											"3"
-										],
-										[
-											"3rd",
-											"5"
-										],
-										[
-											"4th",
-											"6"
-										],
-										[
-											"5th",
-											"7"
-										]
-									]
-								}
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Converting a Spell Slot to Sorcery Points",
-							"entries": [
-								"As a bonus action on your turn, you can expend one spell slot and gain a number of sorcery points equal to the slot's level."
-							]
-						}
-					]
+					"type": "refClassFeature",
+					"classFeature": "Flexible Casting|Sorcerer||2"
 				}
 			]
 		},
@@ -1383,30 +1396,16 @@
 				"{@i 2nd-level sorcerer feature (enhances Font of Magic)}",
 				"When you gain the Font of Magic feature, you get access to the following ways to spend your sorcery points.",
 				{
-					"type": "options",
-					"entries": [
-						{
-							"name": "Empowering Reserves",
-							"entries": [
-								"When you make an ability check on your turn, you can spend 2 sorcery points to gain advantage on the check."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Imbuing Touch",
-							"entries": [
-								"As an action, you can touch one nonmagical weapon and spend 2 sorcery points to imbue it with magic for 1 minute. For the duration, the weapon is considered magical for the purpose of overcoming immunity and resistance to nonmagical attacks."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Sorcerous Fortitude",
-							"entries": [
-								"As an action, you can spend any number of sorcery points to roll a {@dice d4} for each point expended. You gain a number of temporary hit points equal to the total rolled."
-							],
-							"type": "entries"
-						}
-					]
+					"type": "refClassFeature",
+					"classFeature": "Empowering Reserves|Sorcerer|UAClassFeatureVariants|2"
+				},
+				{
+					"type": "refClassFeature",
+					"classFeature": "Imbuing Touch|Sorcerer|UAClassFeatureVariants|2"
+				},
+				{
+					"type": "refClassFeature",
+					"classFeature": "Sorcerous Fortitude|Sorcerer|UAClassFeatureVariants|2"
 				}
 			]
 		},
@@ -1414,6 +1413,7 @@
 			"name": "Metamagic",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 3,
@@ -1422,65 +1422,39 @@
 				"You can use only one Metamagic option on a spell when you cast it, unless otherwise noted.",
 				{
 					"type": "options",
+					"count": 2,
 					"entries": [
 						{
-							"type": "entries",
-							"name": "Careful Spell",
-							"entries": [
-								"When you cast a spell that forces other creatures to make a saving throw, you can protect some of those creatures from the spell's full force. To do so, you spend 1 sorcery point and choose a number of those creatures up to your Charisma modifier (minimum of one creature). A chosen creature automatically succeeds on its saving throw against the spell."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Careful Spell"
 						},
 						{
-							"type": "entries",
-							"name": "Distant Spell",
-							"entries": [
-								"When you cast a spell that has a range of 5 feet or greater, you can spend 1 sorcery point to double the range of the spell.",
-								"When you cast a spell that has a range of touch, you can spend 1 sorcery point to make the range of the spell 30 feet."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Distant Spell"
 						},
 						{
-							"type": "entries",
-							"name": "Empowered Spell",
-							"entries": [
-								"When you roll damage for a spell, you can spend 1 sorcery point to reroll a number of the damage dice up to your Charisma modifier (minimum of one). You must use the new rolls.",
-								"You can use Empowered Spell even if you have already used a different Metamagic option during the casting of the spell."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Empowered Spell"
 						},
 						{
-							"type": "entries",
-							"name": "Extended Spell",
-							"entries": [
-								"When you cast a spell that has a duration of 1 minute or longer, you can spend 1 sorcery point to double its duration, to a maximum duration of 24 hours."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Extended Spell"
 						},
 						{
-							"type": "entries",
-							"name": "Heightened Spell",
-							"entries": [
-								"When you cast a spell that forces a creature to make a saving throw to resist its effects, you can spend 3 sorcery points to give one target of the spell disadvantage on its first saving throw made against the spell."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Heightened Spell"
 						},
 						{
-							"type": "entries",
-							"name": "Quickened Spell",
-							"entries": [
-								"When you cast a spell that has a casting time of 1 action, you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Quickened Spell"
 						},
 						{
-							"type": "entries",
-							"name": "Subtle Spell",
-							"entries": [
-								"When you cast a spell, you can spend 1 sorcery point to cast it without any somatic or verbal components."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Subtle Spell"
 						},
 						{
-							"type": "entries",
-							"name": "Twinned Spell",
-							"entries": [
-								"When you cast a spell that targets only one creature and doesn't have a range of self, you can spend a number of sorcery points equal to the spell's level to target a second creature in range with the same spell (1 sorcery point if the spell is a cantrip).",
-								"To be eligible, a spell must be incapable of targeting more than one creature at the spell's current level. For example, {@spell magic missile} and {@spell scorching ray} aren't eligible, but {@spell ray of frost} and {@spell chromatic orb} are."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Twinned Spell"
 						}
 					]
 				}
@@ -1500,26 +1474,16 @@
 					"type": "options",
 					"entries": [
 						{
-							"name": "Elemental Spell",
-							"entries": [
-								"When you cast a spell that deals a type of damage from the following list, you can spend 1 sorcery point to change that damage type to one of the other listed types: acid, cold, fire, lightning, thunder."
-							],
-							"type": "entries"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Elemental Spell|UAClassFeatureVariants"
 						},
 						{
-							"name": "Seeking Spell",
-							"entries": [
-								"When you cast a spell that requires you to make a spell attack roll or that forces a target to make a Dexterity saving throw, you can spend 1 sorcery point to ignore the effects of half- and three-quarters cover against targets of the spell."
-							],
-							"type": "entries"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Seeking Spell|UAClassFeatureVariants"
 						},
 						{
-							"name": "Unerring Spell",
-							"entries": [
-								"If you make an attack roll for a spell and miss, you can spend 2 sorcery points to reroll the attack roll. You must use the result of the second roll.",
-								"You can use Unerring Spell even if you have already used a different Metamagic option during the casting of the spell."
-							],
-							"type": "entries"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Unerring Spell|UAClassFeatureVariants"
 						}
 					]
 				}
@@ -1529,6 +1493,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 4,
@@ -1554,6 +1519,7 @@
 			"name": "Sorcerous Origin feature",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 6,
@@ -1565,6 +1531,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 8,
@@ -1590,6 +1557,7 @@
 			"name": "Metamagic",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 10,
@@ -1601,6 +1569,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 12,
@@ -1626,6 +1595,7 @@
 			"name": "Sorcerous Origin feature",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 14,
@@ -1637,6 +1607,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 16,
@@ -1662,6 +1633,7 @@
 			"name": "Metamagic",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 17,
@@ -1673,6 +1645,7 @@
 			"name": "Sorcerous Origin feature",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 18,
@@ -1684,6 +1657,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 19,
@@ -1709,11 +1683,45 @@
 			"name": "Sorcerous Restoration",
 			"source": "PHB",
 			"page": 99,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 20,
 			"entries": [
 				"At 20th level, you regain 4 expended sorcery points whenever you finish a short rest."
+			]
+		},
+		{
+			"name": "Empowering Reserves",
+			"source": "UAClassFeatureVariants",
+			"page": 10,
+			"className": "Sorcerer",
+			"classSource": "UAClassFeatureVariants",
+			"level": 2,
+			"entries": [
+				"When you make an ability check on your turn, you can spend 2 sorcery points to gain advantage on the check."
+			]
+		},
+		{
+			"name": "Imbuing Touch",
+			"source": "UAClassFeatureVariants",
+			"page": 10,
+			"className": "Sorcerer",
+			"classSource": "UAClassFeatureVariants",
+			"level": 2,
+			"entries": [
+				"As an action, you can touch one nonmagical weapon and spend 2 sorcery points to imbue it with magic for 1 minute. For the duration, the weapon is considered magical for the purpose of overcoming immunity and resistance to nonmagical attacks."
+			]
+		},
+		{
+			"name": "Sorcerous Fortitude",
+			"source": "UAClassFeatureVariants",
+			"page": 10,
+			"className": "Sorcerer",
+			"classSource": "UAClassFeatureVariants",
+			"level": 2,
+			"entries": [
+				"As an action, you can spend any number of sorcery points to roll a {@dice d4} for each point expended. You gain a number of temporary hit points equal to the total rolled."
 			]
 		}
 	],
@@ -1722,6 +1730,7 @@
 			"name": "Draconic Bloodline",
 			"source": "PHB",
 			"page": 102,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"subclassShortName": "Draconic",
@@ -1743,6 +1752,7 @@
 			"name": "Draconic Resilience",
 			"source": "PHB",
 			"page": 102,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"subclassShortName": "Draconic",
@@ -1759,6 +1769,7 @@
 			"name": "Dragon Ancestor",
 			"source": "PHB",
 			"page": 102,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"subclassShortName": "Draconic",
@@ -1829,6 +1840,7 @@
 			"name": "Elemental Affinity",
 			"source": "PHB",
 			"page": 102,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"subclassShortName": "Draconic",
@@ -1843,6 +1855,7 @@
 			"name": "Dragon Wings",
 			"source": "PHB",
 			"page": 102,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"subclassShortName": "Draconic",
@@ -1858,6 +1871,7 @@
 			"name": "Draconic Presence",
 			"source": "PHB",
 			"page": 102,
+			"srd": true,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"subclassShortName": "Draconic",
@@ -2061,7 +2075,7 @@
 						],
 						[
 							"65-66",
-							"Up to three creatures you choose within 30 feet of you take {@dice 4d10} lightning damage."
+							"Up to three creatures you choose within 30 feet of you take {@damage 4d10} lightning damage."
 						],
 						[
 							"67-68",
@@ -2077,7 +2091,7 @@
 						],
 						[
 							"73-74",
-							"A random creature within 60 feet of you becomes poisoned for {@dice 1d4} hours."
+							"A random creature within 60 feet of you becomes {@condition poisoned} for {@dice 1d4} hours."
 						],
 						[
 							"75-76",
@@ -2097,7 +2111,7 @@
 						],
 						[
 							"83-84",
-							"Each creature within 30 feet of you takes {@dice 1d10} necrotic damage. You regain hit points equal to the sum of the necrotic damage dealt."
+							"Each creature within 30 feet of you takes {@damage 1d10} necrotic damage. You regain hit points equal to the sum of the necrotic damage dealt."
 						],
 						[
 							"85-86",
@@ -2900,7 +2914,7 @@
 			"header": 2,
 			"entries": [
 				"Starting at 14th level, you gain the ability to channel the souls of your ancestors into your physical form. When you start casting a sorcerer spell on your turn and expend a spell slot, you can increase your size by one category\u2014from Medium to Large, for example.",
-				"This increase lasts for 1 minute. It ends early if you die or are incapacitated. Until it ends, you enjoy the following benefits:",
+				"This increase lasts for 1 minute. It ends early if you die or are {@condition incapacitated}. Until it ends, you enjoy the following benefits:",
 				{
 					"type": "list",
 					"items": [
@@ -3001,7 +3015,7 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"From 1st level, you have darkvision with a range of 60 feet. You can cast {@spell darkness} by spending 1 sorcery point. You can see through any {@spell darkness} spell you cast using this ability."
+				"From 1st level, you have {@sense darkvision} with a range of 60 feet. You can cast {@spell darkness} by spending 1 sorcery point. You can see through any {@spell darkness} spell you cast using this ability."
 			]
 		},
 		{
@@ -3362,7 +3376,7 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"At 14th level, you become immune to disease, poison damage, and the poisoned condition."
+				"At 14th level, you become immune to disease, poison damage, and the {@condition poisoned} condition."
 			]
 		},
 		{
@@ -3581,24 +3595,14 @@
 							"entries": [
 								"If the affected target takes cold damage from your spell, the target's speed is also reduced by 15 feet until the end of your next turn. If the spell already reduces the target's speed, use whichever reduction is greater."
 							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+						},
 						{
 							"type": "entries",
 							"name": "Lightning Damage",
 							"entries": [
 								"If the affected target takes lightning damage from your spell, the target takes additional lightning damage equal to your Charisma modifier."
 							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+						},
 						{
 							"type": "entries",
 							"name": "Forced Movement",
@@ -3793,7 +3797,7 @@
 			"entries": [
 				"Starting at 6th level, your command of earth magic grows stronger, allowing you to harness it for your allies' protection.",
 				"As a bonus action, you can grant an aegis to one allied creature you can see within 60 feet of you. The aegis is a dim, gray aura of earth magic that protects the target. Any bludgeoning, piercing, or slashing damage the target takes is reduced by 2 + your sorcerer level divided by 4. This effect lasts for 1 minute, until you use it again, or until you are {@condition incapacitated}.",
-				"In addition, when a creature you can see within 60 feet of you hits the protected target with a melee attack, you can use your reaction to teleport to an unoccupied space you can see within 5 feet of the attacker. You can teleport only if you and the attacker are on the same surface. You can then make one melee weapon attack against the attacker. If that attack hits, it deals an extra {@dice 1d10} force damage. This extra damage increases to {@dice 2d10} at 11th level and {@dice 3d10} at 17th level."
+				"In addition, when a creature you can see within 60 feet of you hits the protected target with a melee attack, you can use your reaction to teleport to an unoccupied space you can see within 5 feet of the attacker. You can teleport only if you and the attacker are on the same surface. You can then make one melee weapon attack against the attacker. If that attack hits, it deals an extra {@damage 1d10} force damage. This extra damage increases to {@dice 2d10} at 11th level and {@dice 3d10} at 17th level."
 			]
 		},
 		{
@@ -4016,7 +4020,7 @@
 			"header": 2,
 			"entries": [
 				"{@i 18th-level Aberrant Mind feature}",
-				"At 18th level, you become the focal point of a reality-warping anomaly. As an action, you can magically radiate a transparent, 20-foot-radius aura for 1 minute. This might take the form of a sphere of rippling psychic energy, a fluctuating amoebic gel, an extrusion of ephemeral parasites, or some other manifestation. Other creatures treat the aura as difficult terrain, and when they start their turn in it, they take {@dice 2d10} psychic damage. When you activate this feature, you can choose any number of creatures you can see to be unaffected by the aura.",
+				"At 18th level, you become the focal point of a reality-warping anomaly. As an action, you can magically radiate a transparent, 20-foot-radius aura for 1 minute. This might take the form of a sphere of rippling psychic energy, a fluctuating amoebic gel, an extrusion of ephemeral parasites, or some other manifestation. Other creatures treat the aura as difficult terrain, and when they start their turn in it, they take {@damage 2d10} psychic damage. When you activate this feature, you can choose any number of creatures you can see to be unaffected by the aura.",
 				"As a bonus action, you can end the aura early. If you do so, you and any number of creatures you choose within the aura are teleported to a location you can see within 1 mile of you. Each creature must appear within 20 feet of you and in an unoccupied space. An unwilling creature that succeeds on a Charisma saving throw against your spell save DC is not teleported. Once you use this feature, you can't use it again until you finish a long rest."
 			]
 		},
@@ -4372,7 +4376,7 @@
 			"header": 1,
 			"type": "entries",
 			"entries": [
-				"Starting at 1st level, you have darkvision with a range of 120 feet.",
+				"Starting at 1st level, you have {@sense darkvision} with a range of 120 feet.",
 				"When you reach 3rd level in this class, you learn the {@spell darkness} spell, which doesn't count against your number of sorcerer spells known. In addition, you can cast it by spending 2 sorcery points or by expending a spell slot. If you cast it with sorcery points, you can see through the {@spell darkness} created by the spell."
 			]
 		},

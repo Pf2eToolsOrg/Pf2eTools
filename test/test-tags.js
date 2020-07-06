@@ -1,6 +1,7 @@
 const fs = require("fs");
 require("../js/utils.js");
 require("../js/render.js");
+require("../js/render-dice.js");
 const utS = require("../node/util-search-index");
 const od = require("../js/omnidexer.js");
 const ut = require("../node/util.js");
@@ -126,7 +127,7 @@ function getSimilar (url) {
 }
 
 function getSubclassFeatureIndex (className, classSource, subclassName, subclassSource) {
-	classSource = classSource || ut.TAG_TO_DEFAULT_SOURCE.class;
+	classSource = classSource || Parser.getTagSource("class");
 	subclassSource = subclassSource || SRC_PHB;
 
 	className = className.toLowerCase();
@@ -139,12 +140,12 @@ function getSubclassFeatureIndex (className, classSource, subclassName, subclass
 
 function getEncoded (str, tag) {
 	const [name, source] = str.split("|");
-	return `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash([name, source || ut.TAG_TO_DEFAULT_SOURCE[tag]])}`.toLowerCase().trim();
+	return `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash([name, Parser.getTagSource(tag, source)])}`.toLowerCase().trim();
 }
 
 function getEncodedDeity (str, tag) {
 	const [name, pantheon, source] = str.split("|");
-	return `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash([name, pantheon, source || ut.TAG_TO_DEFAULT_SOURCE[tag]])}`.toLowerCase().trim();
+	return `${TAG_TO_PAGE[tag]}#${UrlUtil.encodeForHash([name, pantheon, Parser.getTagSource(tag, source)])}`.toLowerCase().trim();
 }
 
 class LinkCheck {
@@ -162,7 +163,7 @@ class LinkCheck {
 
 			switch (tag) {
 				case "deity": {
-					toEncode.push(parts[0], parts[1] || "forgotten realms", parts[2] || ut.TAG_TO_DEFAULT_SOURCE[tag]);
+					toEncode.push(parts[0], parts[1] || "forgotten realms", Parser.getTagSource(tag, parts[2]));
 					break;
 				}
 				case "classFeature": {
@@ -176,7 +177,7 @@ class LinkCheck {
 					break;
 				}
 				default: {
-					toEncode.push(parts[0], parts[1] || ut.TAG_TO_DEFAULT_SOURCE[tag]);
+					toEncode.push(parts[0], Parser.getTagSource(tag, parts[1]));
 					break;
 				}
 			}
@@ -642,67 +643,102 @@ SpellDataCheck._CLASS_LIST = [];
 
 class ClassDataCheck {
 	static _doCheckClass (file, data, cls) {
+		const walker = MiscUtil.getWalker({
+			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
+			isNoModification: true
+		});
+
+		// region Check `classFeatures` -> `classFeature` links
 		const featureLookup = {};
 		(data.classFeature || []).forEach(cf => {
-			const name = cf.name.toLowerCase();
-			const source = cf.source.toLowerCase();
-			const className = cf.className.toLowerCase();
-			const classSource = cf.classSource.toLowerCase();
-
-			MiscUtil.set(featureLookup, classSource, className, cf.level, source, name, true);
+			const hash = UrlUtil.URL_TO_HASH_BUILDER["classFeature"](cf);
+			featureLookup[hash] = true;
 		});
 
 		cls.classFeatures.forEach(ref => {
-			const uid = (ref.classFeature || ref).toLowerCase();
-			const {name, className, classSource, level, source} = DataUtil.class.unpackUidClassFeature(uid, {isLower: true});
-
-			const exists = MiscUtil.get(featureLookup, classSource, className, level, source, name);
-			if (!exists) MSG.ClassDataCheck += `Missing class feature: ${uid} in file ${file} not found in the files "classFeature" array\n`;
+			const uid = ref.classFeature || ref;
+			const unpacked = DataUtil.class.unpackUidClassFeature(uid, {isLower: true});
+			const hash = UrlUtil.URL_TO_HASH_BUILDER["classFeature"](unpacked);
+			if (!featureLookup[hash]) MSG.ClassDataCheck += `Missing class feature: ${uid} in file ${file} not found in the files "classFeature" array\n`;
 		});
 
+		const handlersNestedRefsClass = {
+			array: (ident, arr) => {
+				arr.forEach(it => {
+					if (it.type !== "refClassFeature") return;
+
+					const uid = it.classFeature || it;
+					const unpacked = DataUtil.class.unpackUidClassFeature(uid, {isLower: true});
+					const hash = UrlUtil.URL_TO_HASH_BUILDER["classFeature"](unpacked);
+
+					if (!featureLookup[hash]) MSG.ClassDataCheck += `Missing class feature: ${uid} in file ${file} not found in the files "classFeature" array\n`;
+				});
+				return arr;
+			}
+		};
+		(data.classFeature || []).forEach(cf => {
+			walker.walk("nestedRefLookup", cf.entries, handlersNestedRefsClass);
+		});
+		// endregion
+
+		// region check `subclassFeatures` -> `subclassFeature` links
 		if (cls.subclasses) {
 			const subclassFeatureLookup = {};
 			(data.subclassFeature || []).forEach(scf => {
-				const name = scf.name.toLowerCase();
-				const source = scf.source.toLowerCase();
-				const className = scf.className.toLowerCase();
-				const classSource = scf.classSource.toLowerCase();
-				const subclassShortName = scf.subclassShortName.toLowerCase();
-				const subclassSource = scf.subclassSource.toLowerCase();
-
-				MiscUtil.set(subclassFeatureLookup, classSource, className, subclassSource, subclassShortName, scf.level, source, name, true);
+				const hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](scf);
+				subclassFeatureLookup[hash] = true;
 			});
 
 			cls.subclasses.forEach(sc => this._doCheckSubclass(file, data, subclassFeatureLookup, cls, sc));
 
-			const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
-			const handlersNestedRefs = {
+			const handlersNestedRefsSubclass = {
 				array: (ident, arr) => {
-					for (let i = 0; i < arr.length; ++i) {
-						const it = arr[i];
-						if (it.type === "refSubclassFeature") {
-							const {name, className, classSource, subclassShortName, subclassSource, level, source} = DataUtil.class.unpackUidSubclassFeature(it.subclassFeature, {isLower: true});
+					arr.forEach(it => {
+						if (it.type !== "refSubclassFeature") return;
 
-							const exists = MiscUtil.get(subclassFeatureLookup, classSource, className, subclassSource, subclassShortName, level, source, name);
-							if (!exists) MSG.ClassDataCheck += `Missing subclass feature in "refSubclassFeature": ${it.subclassFeature} in file ${file} not found in the files "subclassFeature" array\n`;
-						}
-					}
+						const uid = it.subclassFeature || it;
+						const unpacked = DataUtil.class.unpackUidSubclassFeature(uid, {isLower: true});
+						const hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](unpacked);
+
+						if (!subclassFeatureLookup[hash]) MSG.ClassDataCheck += `Missing subclass feature in "refSubclassFeature": ${it.subclassFeature} in file ${file} not found in the files "subclassFeature" array\n`;
+					});
 					return arr;
 				}
 			};
 			(data.subclassFeature || []).forEach(scf => {
-				walker.walk("nestedRefLookup", scf.entries, handlersNestedRefs);
+				walker.walk("nestedRefLookup", scf.entries, handlersNestedRefsSubclass);
 			});
 		}
+		// endregion
+
+		// region Referenced optional features
+		const handlersNestedRefsOptionalFeatures = {
+			array: (ident, arr) => {
+				arr.forEach(it => {
+					if (it.type !== "refOptionalfeature") return;
+
+					const url = getEncoded(it.optionalfeature, "optfeature");
+					if (!ALL_URLS.has(url)) MSG.ClassDataCheck += `Missing optional feature: ${it.optionalfeature} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
+				});
+				return arr;
+			}
+		};
+		(data.classFeature || []).forEach(cf => {
+			walker.walk("nestedRefLookup", cf.entries, handlersNestedRefsOptionalFeatures);
+		});
+		(data.subclassFeature || []).forEach(scf => {
+			walker.walk("nestedRefLookup", scf.entries, handlersNestedRefsOptionalFeatures);
+		});
+		// endregion
 	}
 
 	static _doCheckSubclass (file, data, subclassFeatureLookup, cls, sc) {
 		sc.subclassFeatures.forEach(ref => {
-			const uid = (ref.subclassFeature || ref).toLowerCase();
-			const {name, className, classSource, subclassShortName, subclassSource, level, source} = DataUtil.class.unpackUidSubclassFeature(uid, {isLower: true});
+			const uid = ref.subclassFeature || ref;
+			const unpacked = DataUtil.class.unpackUidSubclassFeature(uid, {isLower: true});
+			const hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](unpacked);
 
-			const exists = MiscUtil.get(subclassFeatureLookup, classSource, className, subclassSource, subclassShortName, level, source, name);
-			if (!exists) MSG.ClassDataCheck += `Missing subclass feature: ${uid} in file ${file} not found in the files "subclassFeature" array\n`;
+			if (!subclassFeatureLookup[hash]) MSG.ClassDataCheck += `Missing subclass feature: ${uid} in file ${file} not found in the files "subclassFeature" array\n`;
 		});
 
 		if (sc.additionalSpells) {

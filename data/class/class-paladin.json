@@ -50,7 +50,7 @@
 					"(a) a {@item priest's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"{@item Chain mail|phb} and a {@item holy symbol|phb}"
 				],
-				"goldAlternative": "{@dice 5d4×10|5d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}"
 			},
 			"multiclassing": {
 				"requirements": {
@@ -1178,6 +1178,7 @@
 			"name": "Divine Sense",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 1,
@@ -1190,6 +1191,7 @@
 			"name": "Lay on Hands",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 1,
@@ -1204,6 +1206,7 @@
 			"name": "Divine Smite",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 2,
@@ -1215,6 +1218,7 @@
 			"name": "Fighting Style",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 2,
@@ -1222,105 +1226,55 @@
 				"At 2nd level, you adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take the same Fighting Style option more than once, even if you get to choose again.",
 				{
 					"type": "options",
+					"count": 1,
 					"entries": [
 						{
-							"type": "entries",
-							"name": "Close Quarters Shooter",
-							"entries": [
-								"When making a ranged attack while you are within 5 feet of a hostile creature, you do not have disadvantage on the attack roll. Your ranged attacks ignore half cover and three-quarters cover against targets within 30 feet of you. You have a +1 bonus to attack rolls on ranged attacks."
-							],
-							"source": "UALightDarkUnderdark"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Close Quarters Shooter|UALightDarkUnderdark"
 						},
 						{
-							"type": "entries",
-							"name": "Defense",
-							"entries": [
-								"While you are wearing armor, you gain a +1 bonus to AC."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Defense"
 						},
 						{
-							"type": "entries",
-							"name": "Dueling",
-							"entries": [
-								"When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
 						},
 						{
-							"type": "entries",
-							"name": "Great Weapon Fighting",
-							"entries": [
-								"When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll. The weapon must have the two-handed or versatile property for you to gain this benefit."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Great Weapon Fighting"
 						},
 						{
-							"type": "entries",
-							"name": "Mariner",
-							"entries": [
-								"As long as you are not wearing heavy armor or using a shield, you have a swimming speed and a climbing speed equal to your normal speed, and you gain a +1 bonus to AC."
-							],
-							"source": "UAWaterborneAdventures"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mariner|UAWaterborneAdventures"
 						},
 						{
-							"type": "entries",
-							"name": "Protection",
-							"entries": [
-								"When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield."
-							]
+							"type": "refOptionalfeature",
+							"optionalfeature": "Protection"
 						},
 						{
-							"type": "entries",
-							"name": "Tunnel Fighter",
-							"entries": [
-								"As a bonus action, you can enter a defensive stance that lasts until the start of your next turn. While in your defensive stance, you can make opportunity attacks without using your reaction, and you can use your reaction to make a melee attack against a creature that moves more than 5 feet while within your reach."
-							],
-							"source": "UALightDarkUnderdark"
+							"type": "refOptionalfeature",
+							"optionalfeature": "Tunnel Fighter|UALightDarkUnderdark"
 						},
 						{
-							"type": "entries",
-							"name": "Blind Fighting",
-							"entries": [
-								"Being unable to see a creature doesn't impose disadvantage on your attack rolls against it, provided the creature isn't hidden from you."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blind Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Interception",
-							"entries": [
-								"When a creature you can see hits a target that is within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + your proficiency bonus (to a minimum of 0 damage). You must be wielding a shield or a simple or martial weapon to use this reaction."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Interception|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Thrown Weapon Fighting",
-							"entries": [
-								"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
-								"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +1 bonus to the damage roll."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Thrown Weapon Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Unarmed Fighting",
-							"entries": [
-								"Your unarmed strikes can deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier. If you strike with two free hands, the {@dice d6} becomes a {@dice d8}.",
-								"When you successfully start a grapple, you can deal {@dice 1d4} bludgeoning damage to the grappled creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 12
+							"type": "refOptionalfeature",
+							"optionalfeature": "Unarmed Fighting|UAClassFeatureVariants"
 						},
 						{
-							"type": "entries",
-							"name": "Blessed Warrior",
-							"entries": [
-								"You learn two cantrips of your choice from the cleric spell list. They count as paladin spells for you, and Charisma is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the cleric spell list."
-							],
-							"source": "UAClassFeatureVariants",
-							"page": 6
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blessed Warrior|UAClassFeatureVariants"
 						}
 					]
 				}
@@ -1342,6 +1296,7 @@
 			"name": "Spellcasting",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 2,
@@ -1391,6 +1346,7 @@
 			"name": "Divine Health",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 3,
@@ -1402,6 +1358,7 @@
 			"name": "Sacred Oath",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 3,
@@ -1448,6 +1405,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 4,
@@ -1473,6 +1431,7 @@
 			"name": "Extra Attack",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 5,
@@ -1484,6 +1443,7 @@
 			"name": "Aura of Protection",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 6,
@@ -1496,6 +1456,7 @@
 			"name": "Sacred Oath feature",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 7,
@@ -1507,6 +1468,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 8,
@@ -1532,6 +1494,7 @@
 			"name": "Aura of Courage",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 10,
@@ -1544,17 +1507,19 @@
 			"name": "Improved Divine Smite",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 11,
 			"entries": [
-				"By 11th level, you are so suffused with righteous might that all your melee weapon strikes carry divine power with them. Whenever you hit a creature with a melee weapon, the creature takes an extra {@dice 1d8} radiant damage."
+				"By 11th level, you are so suffused with righteous might that all your melee weapon strikes carry divine power with them. Whenever you hit a creature with a melee weapon, the creature takes an extra {@damage 1d8} radiant damage."
 			]
 		},
 		{
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 12,
@@ -1580,6 +1545,7 @@
 			"name": "Cleansing Touch",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 14,
@@ -1592,6 +1558,7 @@
 			"name": "Sacred Oath feature",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 15,
@@ -1603,6 +1570,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 16,
@@ -1628,6 +1596,7 @@
 			"name": "Aura improvements",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 18,
@@ -1639,6 +1608,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 19,
@@ -1664,6 +1634,7 @@
 			"name": "Sacred Oath feature",
 			"source": "PHB",
 			"page": 82,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 20,
@@ -1818,7 +1789,7 @@
 			"level": 20,
 			"header": 2,
 			"entries": [
-				"At 20th level, the paladin can, as an action, surround himself or herself with an aura of gloom that lasts for 1 minute. The aura reduces any bright light in a 30-foot radius around the paladin to dim light. Whenever an enemy that is {@condition frightened} by the paladin starts its turn in the aura, it takes {@dice 4d10} psychic damage. Additionally, the paladin and creatures he or she chooses in the aura are draped in deeper shadow. Creatures that rely on sight have disadvantage on attack rolls against creatures draped in this shadow.",
+				"At 20th level, the paladin can, as an action, surround himself or herself with an aura of gloom that lasts for 1 minute. The aura reduces any bright light in a 30-foot radius around the paladin to dim light. Whenever an enemy that is {@condition frightened} by the paladin starts its turn in the aura, it takes {@damage 4d10} psychic damage. Additionally, the paladin and creatures he or she chooses in the aura are draped in deeper shadow. Creatures that rely on sight have disadvantage on attack rolls against creatures draped in this shadow.",
 				"While the aura lasts, the paladin can use a bonus action on his or her turn to cause the shadows in the aura to attack one creature. The paladin makes a melee spell attack against the target. If the attack hits, the target takes necrotic damage equal to {@dice 3d10} + the paladin's Charisma modifier.",
 				"After activating the aura, the paladin can't do so again until he or she finishes a long rest."
 			]
@@ -2258,6 +2229,7 @@
 			"name": "Oath of Devotion",
 			"source": "PHB",
 			"page": 85,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"subclassShortName": "Devotion",
@@ -2287,6 +2259,7 @@
 			"name": "Channel Divinity: Sacred Weapon",
 			"source": "PHB",
 			"page": 85,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"subclassShortName": "Devotion",
@@ -2303,6 +2276,7 @@
 			"name": "Channel Divinity: Turn the Unholy",
 			"source": "PHB",
 			"page": 85,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"subclassShortName": "Devotion",
@@ -2319,6 +2293,7 @@
 			"name": "Oath Spells",
 			"source": "PHB",
 			"page": 85,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"subclassShortName": "Devotion",
@@ -2368,6 +2343,7 @@
 			"name": "Tenets of Devotion",
 			"source": "PHB",
 			"page": 85,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"subclassShortName": "Devotion",
@@ -2443,6 +2419,7 @@
 			"name": "Aura of Devotion",
 			"source": "PHB",
 			"page": 85,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"subclassShortName": "Devotion",
@@ -2458,6 +2435,7 @@
 			"name": "Purity of Spirit",
 			"source": "PHB",
 			"page": 85,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"subclassShortName": "Devotion",
@@ -2472,6 +2450,7 @@
 			"name": "Holy Nimbus",
 			"source": "PHB",
 			"page": 85,
+			"srd": true,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"subclassShortName": "Devotion",
@@ -3100,7 +3079,7 @@
 			"header": 2,
 			"entries": [
 				"{@i 15th-level Oath of the Watchers feature}",
-				"You've learned how to magically chastise anyone who dares cast unwanted spells at you and your wards. Whenever you or a creature you can see within 30 feet of you succeeds on a saving throw against a spell, you can use your reaction to deal {@dice 2d8} + your Charisma modifier force damage to the spellcaster."
+				"You've learned how to magically chastise anyone who dares cast unwanted spells at you and your wards. Whenever you or a creature you can see within 30 feet of you succeeds on a saving throw against a spell, you can use your reaction to deal {@damage 2d8} + your Charisma modifier force damage to the spellcaster."
 			]
 		},
 		{

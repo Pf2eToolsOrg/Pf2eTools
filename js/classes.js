@@ -90,6 +90,8 @@ class ClassesPage extends BaseComponent {
 
 		this._list.init();
 
+		$(`.initial-message`).text(`Select a class from the list to view it here`);
+
 		// Silently prepare our initial state
 		this._setClassFromHash(Hist.initialLoad);
 		this._setStateFromHash(Hist.initialLoad);
@@ -143,14 +145,14 @@ class ClassesPage extends BaseComponent {
 		classes.forEach(cls => {
 			this._pageFilter.mutateForFilters(cls);
 
-			const isExcluded = ExcludeUtil.isExcluded(cls.name, "class", cls.source);
+			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls), "class", cls.source);
 
 			// Build a map of subclass source => subclass name => is excluded
 			const subclassExclusions = {};
 			(cls.subclasses || []).forEach(sc => {
 				if (isExcluded) return;
 
-				(subclassExclusions[sc.source] = subclassExclusions[sc.source] || {})[sc.name] = subclassExclusions[sc.source][sc.name] || ExcludeUtil.isExcluded(sc.name, "subclass", sc.source);
+				(subclassExclusions[sc.source] = subclassExclusions[sc.source] || {})[sc.name] = subclassExclusions[sc.source][sc.name] || ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc), "subclass", sc.source);
 			});
 
 			this._pageFilter.addToFilters(cls, isExcluded, {subclassExclusions});
@@ -170,7 +172,7 @@ class ClassesPage extends BaseComponent {
 		const len = this._dataList.length;
 		for (; this._ixData < len; this._ixData++) {
 			const it = this._dataList[this._ixData];
-			const isExcluded = ExcludeUtil.isExcluded(it.name, "class", it.source);
+			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](it), "class", it.source);
 			this._list.addItem(this.getListItem(it, this._ixData, isExcluded));
 		}
 	}
@@ -195,7 +197,7 @@ class ClassesPage extends BaseComponent {
 			const existingBrewSc = sc.uniqueId ? cls.subclasses.find(it => it.uniqueId === sc.uniqueId) : null;
 			if (existingBrewSc) return;
 
-			const isExcludedClass = ExcludeUtil.isExcluded(cls.name, "class", cls.source);
+			const isExcludedClass = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls), "class", cls.source);
 
 			cls.subclasses.push(sc);
 			// Don't bother checking subclass exclusion for individually-added subclasses, as they should be from homebrew
@@ -776,8 +778,9 @@ class ClassesPage extends BaseComponent {
 		}
 
 		// starting proficiencies
-		const renderArmorProfs = (armorProfs) => armorProfs.map(a => a.full ? a.full : a === "light" || a === "medium" || a === "heavy" ? `${a} armor` : a).join(", ");
-		const renderWeaponsProfs = (weaponProfs) => weaponProfs.map(w => w === "simple" || w === "martial" ? `${w} weapons` : w).join(", ");
+		const renderArmorProfs = armorProfs => armorProfs.map(a => a.full ? a.full : a === "light" || a === "medium" || a === "heavy" ? `${a} armor` : a).join(", ");
+		const renderWeaponsProfs = weaponProfs => weaponProfs.map(w => w === "simple" || w === "martial" ? `${w} weapons` : w).join(", ");
+		const renderToolProfs = toolProfs => toolProfs.map(it => Renderer.get().render(it)).join(", ")
 		const renderSkillsProfs = skills => `${Parser.skillProficienciesToFull(skills).uppercaseFirst()}.`;
 
 		const profs = cls.startingProficiencies || {};
@@ -840,7 +843,7 @@ class ClassesPage extends BaseComponent {
 
 				if (mc.proficienciesGained.weapons) $ptMcProfsWeapons = $(`<div><b>Weapons:</b> ${renderWeaponsProfs(mc.proficienciesGained.weapons)}</div>`);
 
-				if (mc.proficienciesGained.tools) $ptMcProfsTools = $(`<div><b>Tools:</b> ${mc.proficienciesGained.tools.join(", ")}</div>`);
+				if (mc.proficienciesGained.tools) $ptMcProfsTools = $(`<div><b>Tools:</b> ${renderToolProfs(mc.proficienciesGained.tools)}</div>`);
 
 				if (mc.proficienciesGained.skills) $ptMcProfsSkills = $(`<div><b>Skills:</b> ${renderSkillsProfs(mc.proficienciesGained.skills)}</div>`);
 			}
@@ -871,7 +874,7 @@ class ClassesPage extends BaseComponent {
 					<h5 class="cls-side__section-head">Proficiencies</h5>
 					<div><b>Armor:</b> <span>${profs.armor ? renderArmorProfs(profs.armor) : "none"}</span></div>
 					<div><b>Weapons:</b> <span>${profs.weapons ? renderWeaponsProfs(profs.weapons) : "none"}</span></div>
-					<div><b>Tools:</b> <span>${profs.tools ? profs.tools.join(", ") : "none"}</span></div>
+					<div><b>Tools:</b> <span>${profs.tools ? renderToolProfs(profs.tools) : "none"}</span></div>
 					<div><b>Saving Throws:</b> <span>${cls.proficiency ? cls.proficiency.map(p => Parser.attAbvToFull(p)).join(", ") : "none"}</span></div>
 					<div><b>Skills:</b> <span>${profs.skills ? renderSkillsProfs(profs.skills) : "none"}</span></div>
 				</td>
@@ -1062,7 +1065,7 @@ class ClassesPage extends BaseComponent {
 	}
 
 	_render_getSubclassTab (cls, sc, ix) {
-		const isExcluded = ExcludeUtil.isExcluded(sc.name, "subclass", sc.source);
+		const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc), "subclass", sc.source);
 
 		const stateKey = UrlUtil.getStateKeySubclass(sc);
 		const mod = ClassesPage.getSubclassCssMod(cls, sc);
@@ -1085,7 +1088,10 @@ class ClassesPage extends BaseComponent {
 				${$dispSource}
 			</button>`
 			.click(() => this._state[stateKey] = !this._state[stateKey])
-			.contextmenu(() => this._state[stateKey] = !this._state[stateKey]);
+			.contextmenu(evt => {
+				evt.preventDefault();
+				this._state[stateKey] = !this._state[stateKey];
+			});
 		const hkVisible = () => $btn.toggleClass(clsActive, !!this._state[stateKey]);
 		this._addHookBase(stateKey, hkVisible);
 		MiscUtil.pDefer(hkVisible);
@@ -1253,7 +1259,7 @@ class ClassesPage extends BaseComponent {
 
 					renderStack.push(`<div class="flex ${isLastRow ? "mb-4" : ""}">`);
 					cls.subclasses
-						.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source))
+						.filter(sc => !ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc), "subclass", sc.source))
 						.forEach((sc, ixSubclass) => {
 							const mod = ClassesPage.getSubclassCssMod(cls, sc);
 							renderStack.push(`<div class="mx-2 no-shrink cls-comp__wrp-features cls-main__sc-feature ${mod ? `cls-main__sc-feature--${mod}` : ""}" data-cls-comp-sc-ix="${ixSubclass}">`);
@@ -1268,7 +1274,7 @@ class ClassesPage extends BaseComponent {
 
 				let numShown = 0;
 				cls.subclasses
-					.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source))
+					.filter(sc => !ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc), "subclass", sc.source))
 					.forEach((sc, i) => {
 						const key = UrlUtil.getStateKeySubclass(sc);
 
@@ -1507,7 +1513,7 @@ ClassesPage.ClassBookView = class {
 		renderStack.push(`</td></tr>`);
 
 		cls.subclasses
-			.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source))
+			.filter(sc => !ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc), "subclass", sc.source))
 			.forEach((sc, ixSubclass) => {
 				const mod = ClassesPage.getSubclassCssMod(cls, sc);
 				renderStack.push(`<tr data-cls-book-sc-ix="${ixSubclass}" class="cls-main__sc-feature ${mod ? `cls-main__sc-feature--${mod}` : ""}"><td colspan="6" class="py-3 px-5">`);
@@ -1535,7 +1541,7 @@ ClassesPage.ClassBookView = class {
 
 		const filterValues = this._classPage.filterBox.getValues();
 		cls.subclasses
-			.filter(sc => !ExcludeUtil.isExcluded(sc.name, "subclass", sc.source))
+			.filter(sc => !ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc), "subclass", sc.source))
 			.forEach((sc, i) => {
 				const name = sc.isReprinted ? `${ClassesPage.getBaseShortName(sc)} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
 				const mod = ClassesPage.getSubclassCssMod(cls, sc);

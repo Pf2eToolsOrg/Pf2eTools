@@ -47,7 +47,7 @@
 					"(a) a {@item scholar's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"A {@item spellbook|phb}"
 				],
-				"goldAlternative": "{@dice 4d4×10|4d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 4d4 × 10|4d4 × 10|Starting Gold}"
 			},
 			"multiclassing": {
 				"requirements": {
@@ -953,6 +953,7 @@
 			"name": "Arcane Recovery",
 			"source": "PHB",
 			"page": 112,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"level": 1,
@@ -978,6 +979,7 @@
 			"name": "Spellcasting",
 			"source": "PHB",
 			"page": 112,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"level": 1,
@@ -1065,7 +1067,7 @@
 										"When you find a wizard spell of 1st level or higher, you can add it to your spellbook if it is of a spell level you can prepare and if you can spare the time to decipher and copy it.",
 										"Copying a spell into your spellbook involves reproducing the basic form of the spell, then deciphering the unique system of notation used by the wizard who wrote it. You must practice the spell until you understand the sounds or gestures required, then transcribe it into your spellbook using your own notation.",
 										"For each level of the spell, the process takes 2 hours and costs 50 gp. The cost represents material components you expend as you experiment with the spell to master it, as well as the fine inks you need to record it. Once you have spent this time and money, you can prepare the spell just like your other spells.",
-										"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When you copy a spell from a spell scroll, you must succeed on an Intelligence (Arcana) check with a DC equal to 10 + the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+										"A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When you copy a spell from a spell scroll, you must succeed on an Intelligence ({@skill Arcana}) check with a DC equal to 10 + the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
 									]
 								}
 							]
@@ -1103,6 +1105,7 @@
 			"name": "Arcane Tradition",
 			"source": "PHB",
 			"page": 112,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"level": 2,
@@ -1114,6 +1117,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 112,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"level": 4,
@@ -1139,6 +1143,7 @@
 			"name": "Arcane Tradition feature",
 			"source": "PHB",
 			"page": 112,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"level": 6,
@@ -1150,6 +1155,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 112,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"level": 8,
@@ -1175,6 +1181,7 @@
 			"name": "Arcane Tradition feature",
 			"source": "PHB",
 			"page": 112,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"level": 10,
@@ -1186,6 +1193,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 112,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"level": 12,
@@ -1211,6 +1219,7 @@
 			"name": "Arcane Tradition feature",
 			"source": "PHB",
 			"page": 112,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"level": 14,
@@ -1222,6 +1231,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 112,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"level": 16,
@@ -1247,6 +1257,7 @@
 			"name": "Spell Mastery",
 			"source": "PHB",
 			"page": 112,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"level": 18,
@@ -1259,6 +1270,7 @@
 			"name": "Ability Score Improvement",
 			"source": "PHB",
 			"page": 112,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"level": 19,
@@ -1284,6 +1296,7 @@
 			"name": "Signature Spells",
 			"source": "PHB",
 			"page": 112,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"level": 20,
@@ -1459,7 +1472,7 @@
 			"header": 2,
 			"entries": [
 				"{@i 10th-level Graviturgy Magic feature}",
-				"When another creature that you can see within 60 feet of you hits with a weapon attack, you can use your reaction to increase the attack's velocity, causing the attack's target to take an extra {@dice 1d10} damage of the weapon's type.",
+				"When another creature that you can see within 60 feet of you hits with a weapon attack, you can use your reaction to increase the attack's velocity, causing the attack's target to take an extra {@damage 1d10} damage of the weapon's type.",
 				"Alternatively, if a creature within 60 feet of you takes damage from a fall, you can use your reaction to increase the fall's damage by {@dice 2d10}.",
 				"You can use this feature a number of times equal to your Intelligence modifier (a minimum of once). You regain all expended uses when you finish a long rest."
 			]
@@ -1476,7 +1489,7 @@
 			"header": 2,
 			"entries": [
 				"{@i 14th-level Graviturgy Magic feature}",
-				"As an action, you can magically emit a powerful field of gravitational energy that tugs at other creatures for up to 1 minute or until your concentration ends (as if you were concentrating on a spell). For the duration, whenever a creature hostile to you starts its turn within 30 feet of you, it must make a Strength saving throw against your spell save DC. On a failed save, it takes {@dice 2d10} force damage, and its speed is reduced to 0 until the start of its next turn. On a successful save, it takes half as much damage, and every foot it moves this turn costs 2 extra feet of movement.",
+				"As an action, you can magically emit a powerful field of gravitational energy that tugs at other creatures for up to 1 minute or until your concentration ends (as if you were concentrating on a spell). For the duration, whenever a creature hostile to you starts its turn within 30 feet of you, it must make a Strength saving throw against your spell save DC. On a failed save, it takes {@damage 2d10} force damage, and its speed is reduced to 0 until the start of its next turn. On a successful save, it takes half as much damage, and every foot it moves this turn costs 2 extra feet of movement.",
 				"Once you use this feature, you can't do so again until you finish a long rest or until you expend a spell slot of 3rd level or higher on it."
 			]
 		},
@@ -1484,6 +1497,7 @@
 			"name": "School of Abjuration",
 			"source": "PHB",
 			"page": 115,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Abjuration",
@@ -1506,6 +1520,7 @@
 			"name": "Abjuration Savant",
 			"source": "PHB",
 			"page": 115,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Abjuration",
@@ -1521,6 +1536,7 @@
 			"name": "Arcane Ward",
 			"source": "PHB",
 			"page": 115,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Abjuration",
@@ -1538,6 +1554,7 @@
 			"name": "Projected Ward",
 			"source": "PHB",
 			"page": 115,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Abjuration",
@@ -1552,6 +1569,7 @@
 			"name": "Improved Abjuration",
 			"source": "PHB",
 			"page": 115,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Abjuration",
@@ -1566,6 +1584,7 @@
 			"name": "Spell Resistance",
 			"source": "PHB",
 			"page": 115,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Abjuration",
@@ -1581,6 +1600,7 @@
 			"name": "School of Conjuration",
 			"source": "PHB",
 			"page": 116,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Conjuration",
@@ -1602,6 +1622,7 @@
 			"name": "Conjuration Savant",
 			"source": "PHB",
 			"page": 116,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Conjuration",
@@ -1617,6 +1638,7 @@
 			"name": "Minor Conjuration",
 			"source": "PHB",
 			"page": 116,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Conjuration",
@@ -1633,6 +1655,7 @@
 			"name": "Benign Transposition",
 			"source": "PHB",
 			"page": 116,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Conjuration",
@@ -1648,6 +1671,7 @@
 			"name": "Focused Conjuration",
 			"source": "PHB",
 			"page": 116,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Conjuration",
@@ -1662,6 +1686,7 @@
 			"name": "Durable Summons",
 			"source": "PHB",
 			"page": 116,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Conjuration",
@@ -1676,6 +1701,7 @@
 			"name": "School of Divination",
 			"source": "PHB",
 			"page": 116,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Divination",
@@ -1697,6 +1723,7 @@
 			"name": "Divination Savant",
 			"source": "PHB",
 			"page": 116,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Divination",
@@ -1712,6 +1739,7 @@
 			"name": "Portent",
 			"source": "PHB",
 			"page": 116,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Divination",
@@ -1728,6 +1756,7 @@
 			"name": "Expert Divination",
 			"source": "PHB",
 			"page": 116,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Divination",
@@ -1742,6 +1771,7 @@
 			"name": "The Third Eye",
 			"source": "PHB",
 			"page": 116,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Divination",
@@ -1757,7 +1787,7 @@
 							"type": "entries",
 							"name": "Darkvision",
 							"entries": [
-								"You gain darkvision out to a range of 60 feet."
+								"You gain {@sense darkvision} out to a range of 60 feet."
 							]
 						}
 					]
@@ -1804,6 +1834,7 @@
 			"name": "Greater Portent",
 			"source": "PHB",
 			"page": 116,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Divination",
@@ -1818,6 +1849,7 @@
 			"name": "School of Enchantment",
 			"source": "PHB",
 			"page": 117,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Enchantment",
@@ -1839,6 +1871,7 @@
 			"name": "Enchantment Savant",
 			"source": "PHB",
 			"page": 117,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Enchantment",
@@ -1854,6 +1887,7 @@
 			"name": "Hypnotic Gaze",
 			"source": "PHB",
 			"page": 117,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Enchantment",
@@ -1871,6 +1905,7 @@
 			"name": "Instinctive Charm",
 			"source": "PHB",
 			"page": 117,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Enchantment",
@@ -1886,6 +1921,7 @@
 			"name": "Split Enchantment",
 			"source": "PHB",
 			"page": 117,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Enchantment",
@@ -1900,6 +1936,7 @@
 			"name": "Alter Memories",
 			"source": "PHB",
 			"page": 117,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Enchantment",
@@ -1915,6 +1952,7 @@
 			"name": "School of Evocation",
 			"source": "PHB",
 			"page": 117,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Evocation",
@@ -1936,6 +1974,7 @@
 			"name": "Evocation Savant",
 			"source": "PHB",
 			"page": 117,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Evocation",
@@ -1951,6 +1990,7 @@
 			"name": "Sculpt Spells",
 			"source": "PHB",
 			"page": 117,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Evocation",
@@ -1966,6 +2006,7 @@
 			"name": "Potent Cantrip",
 			"source": "PHB",
 			"page": 117,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Evocation",
@@ -1980,6 +2021,7 @@
 			"name": "Empowered Evocation",
 			"source": "PHB",
 			"page": 117,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Evocation",
@@ -1994,6 +2036,7 @@
 			"name": "Overchannel",
 			"source": "PHB",
 			"page": 117,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Evocation",
@@ -2002,13 +2045,14 @@
 			"header": 2,
 			"entries": [
 				"Starting at 14th level, you can increase the power of your simpler spells. When you cast a wizard spell of 1st through 5th-level that deals damage, you can deal maximum damage with that spell.",
-				"The first time you do so, you suffer no adverse effect. If you use this feature again before you finish a long rest, you take {@dice 2d12} necrotic damage for each level of the spell, immediately after you cast it. Each time you use this feature again before finishing a long rest, the necrotic damage per spell level increases by {@dice 1d12}. This damage ignores resistance and immunity."
+				"The first time you do so, you suffer no adverse effect. If you use this feature again before you finish a long rest, you take {@damage 2d12} necrotic damage for each level of the spell, immediately after you cast it. Each time you use this feature again before finishing a long rest, the necrotic damage per spell level increases by {@dice 1d12}. This damage ignores resistance and immunity."
 			]
 		},
 		{
 			"name": "School of Illusion",
 			"source": "PHB",
 			"page": 118,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Illusion",
@@ -2030,6 +2074,7 @@
 			"name": "Illusion Savant",
 			"source": "PHB",
 			"page": 118,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Illusion",
@@ -2045,6 +2090,7 @@
 			"name": "Improved Minor Illusion",
 			"source": "PHB",
 			"page": 118,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Illusion",
@@ -2061,6 +2107,7 @@
 			"name": "Malleable Illusions",
 			"source": "PHB",
 			"page": 118,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Illusion",
@@ -2075,6 +2122,7 @@
 			"name": "Illusory Step",
 			"source": "PHB",
 			"page": 118,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Illusion",
@@ -2090,6 +2138,7 @@
 			"name": "Illusory Reality",
 			"source": "PHB",
 			"page": 118,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Illusion",
@@ -2105,6 +2154,7 @@
 			"name": "School of Necromancy",
 			"source": "PHB",
 			"page": 118,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Necromancy",
@@ -2127,6 +2177,7 @@
 			"name": "Grim Harvest",
 			"source": "PHB",
 			"page": 118,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Necromancy",
@@ -2142,6 +2193,7 @@
 			"name": "Necromancy Savant",
 			"source": "PHB",
 			"page": 118,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Necromancy",
@@ -2157,6 +2209,7 @@
 			"name": "Undead Thralls",
 			"source": "PHB",
 			"page": 118,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Necromancy",
@@ -2179,6 +2232,7 @@
 			"name": "Inured to Undeath",
 			"source": "PHB",
 			"page": 118,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Necromancy",
@@ -2193,6 +2247,7 @@
 			"name": "Command Undead",
 			"source": "PHB",
 			"page": 118,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Necromancy",
@@ -2208,6 +2263,7 @@
 			"name": "School of Transmutation",
 			"source": "PHB",
 			"page": 119,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Transmutation",
@@ -2230,6 +2286,7 @@
 			"name": "Minor Alchemy",
 			"source": "PHB",
 			"page": 119,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Transmutation",
@@ -2245,6 +2302,7 @@
 			"name": "Transmutation Savant",
 			"source": "PHB",
 			"page": 119,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Transmutation",
@@ -2260,6 +2318,7 @@
 			"name": "Transmuter's Stone",
 			"source": "PHB",
 			"page": 119,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Transmutation",
@@ -2285,6 +2344,7 @@
 			"name": "Shapechanger",
 			"source": "PHB",
 			"page": 119,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Transmutation",
@@ -2300,6 +2360,7 @@
 			"name": "Master Transmuter",
 			"source": "PHB",
 			"page": 119,
+			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Transmutation",
@@ -2780,38 +2841,33 @@
 					"entries": [
 						"Here are your options when choosing a Resonant:",
 						{
-							"type": "list",
+							"type": "options",
 							"style": "list-hang-notitle",
-							"items": [
+							"count": 2,
+							"entries": [
 								{
-									"type": "item",
-									"name": "Absorption.",
-									"entry": "When you cast a spell that deals damage to the named target, you gain {@dice 3d6} temporary hit points. The number of temporary hit points you gain increases by {@dice 1d6} when you reach 10th level ({@dice 4d6}) and 14th level ({@dice 5d6}) in this class."
+									"type": "refOptionalfeature",
+									"optionalfeature": "Absorption|UAClericDruidWizard"
 								},
 								{
-									"type": "item",
-									"name": "Devastation.",
-									"entry": "If the spell requires the named creature to make a saving throw, that creature has disadvantage on the first save it makes against the spell."
+									"type": "refOptionalfeature",
+									"optionalfeature": "Devastation|UAClericDruidWizard"
 								},
 								{
-									"type": "item",
-									"name": "Dissolution.",
-									"entry": "The first time the named creature takes damage from the spell, that creature takes an extra {@dice 2d8} force damage. The extra force damage increases by {@dice 1d8} when you reach 10th level ({@dice 3d8}) and 14th level ({@dice 4d8}) in this class."
+									"type": "refOptionalfeature",
+									"optionalfeature": "Dissolution|UAClericDruidWizard"
 								},
 								{
-									"type": "item",
-									"name": "Nullification.",
-									"entry": "If the named target is affected by any other spells, you know what those spells are, and you can attempt to end one of your choice by succeeding on an Intelligence check with a DC equal to 10 + the level of the chosen spell."
+									"type": "refOptionalfeature",
+									"optionalfeature": "Nullification|UAClericDruidWizard"
 								},
 								{
-									"type": "item",
-									"name": "Puppetry.",
-									"entry": "The first time the named creature takes damage from the spell, you can knock the creature {@condition prone} or move it up to 10 feet, either directly toward you or away from you."
+									"type": "refOptionalfeature",
+									"optionalfeature": "Puppetry|UAClericDruidWizard"
 								},
 								{
-									"type": "item",
-									"name": "Sympathy.",
-									"entry": "If the named creature is within range of the spell, you can target the creature with the spell even if you can't see the creature or it has total cover against the spell."
+									"type": "refOptionalfeature",
+									"optionalfeature": "Sympathy|UAClericDruidWizard"
 								}
 							]
 						}
@@ -3425,7 +3481,7 @@
 			"entries": [
 				"{@i 14th-level Psionics feature}",
 				"While using your Thought Form, you have a flying speed equal to your walking speed and can hover, and you can move through other creatures and objects as if they were difficult terrain.",
-				"You take {@dice 1d10} force damage if you end your turn inside an object. If you return to your normal form while inside an object, you are shunted to the nearest unoccupied space, and you take {@dice 1d10} force damage for every 5 feet traveled."
+				"You take {@damage 1d10} force damage if you end your turn inside an object. If you return to your normal form while inside an object, you are shunted to the nearest unoccupied space, and you take {@damage 1d10} force damage for every 5 feet traveled."
 			]
 		},
 		{
@@ -3942,7 +3998,7 @@
 			"entries": [
 				"At 6th level, you learn to channel magic through your arcanomechanical armor to augment spells in a variety of ways. When you cast a spell while wearing that armor and attuned to it, you can expend one additional spell slot of 1st or 2nd level to alter the spell. The effect depends on the spell slot you expend.",
 				"A 1st-level slot allows you to manipulate the spell's energy. When you cast a spell that deals acid, cold, fire, lightning, or thunder damage, you can substitute that damage type for another one from that list.",
-				"A 2nd-level slot increases the spell's raw force. If you roll damage for the spell when you cast it, increase that damage by {@dice 2d10} force damage against one of the spell's targets (your choice) this turn."
+				"A 2nd-level slot increases the spell's raw force. If you roll damage for the spell when you cast it, increase that damage by {@damage 2d10} force damage against one of the spell's targets (your choice) this turn."
 			]
 		},
 		{
@@ -4059,7 +4115,7 @@
 			"header": 2,
 			"entries": [
 				"At 6th level, you learn to augment spells in a variety of ways. When you cast a spell with a spell slot, you can expend one additional spell slot to augment its effects for this casting, mixing the raw stuff of magic into your spell to amplify it. The effect depends on the spell slot you expend.",
-				"An additional 1st-level spell slot can increase the spell's raw force. If you roll damage for the spell when you cast it, increase the damage against every target by {@dice 2d10} force damage. If the spell can deal damage on more than one turn, it deals this extra force damage only on the turn you cast the spell.",
+				"An additional 1st-level spell slot can increase the spell's raw force. If you roll damage for the spell when you cast it, increase the damage against every target by {@damage 2d10} force damage. If the spell can deal damage on more than one turn, it deals this extra force damage only on the turn you cast the spell.",
 				"An additional 2nd-level spell slot can increase the spell's range. If the spell's range is at least 30 feet, it becomes 1 mile.",
 				"An additional 3rd-level spell slot can increase the spell's potency. Increase the spell's save DC by 2."
 			]

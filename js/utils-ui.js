@@ -280,6 +280,7 @@ class UiUtil {
 	 * @param [opts.isHeight100] {boolean}
 	 * @param [opts.isWidth100] {boolean}
 	 * @param [opts.isMinHeight0] {boolean}
+	 * @param [opts.isMaxWidth640p] {boolean}
 	 *
 	 * @param {function} [opts.cbClose] Callback run when the modal is closed.
 	 * @param {JQuery} [opts.titleSplit] Element to have split alongside the title.
@@ -327,7 +328,8 @@ class UiUtil {
 			opts.isHeight100 ? "h-100" : "",
 			opts.isUncappedHeight ? "ui-modal__inner--uncap-height" : "",
 			opts.isUncappedWidth ? "ui-modal__inner--uncap-width" : "",
-			opts.isMinHeight0 ? `ui-modal__inner--no-min-height` : ""
+			opts.isMinHeight0 ? `ui-modal__inner--no-min-height` : "",
+			opts.isMaxWidth640p ? `ui-modal__inner--max-width-640p` : ""
 		].filter(Boolean);
 
 		const $modal = $$`<div class="ui-modal__inner flex-col dropdown-menu ${modalWindowClasses.join(" ")}">
@@ -704,6 +706,7 @@ class SearchUiUtil {
 }
 SearchUiUtil.NO_HOVER_CATEGORIES = new Set([
 	Parser.CAT_ID_ADVENTURE,
+	Parser.CAT_ID_BOOK,
 	Parser.CAT_ID_QUICKREF
 ]);
 
@@ -1320,8 +1323,10 @@ class InputUiUtil {
 					if (evt.which === 13) doClose(true);
 					evt.stopPropagation();
 				});
-			const $btnOk = $(`<button class="btn btn-default">Enter</button>`)
+			const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
 				.click(() => doClose(true));
+			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
+				.click(() => doClose(false));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Enter a Number",
 				isMinHeight0: true,
@@ -1340,7 +1345,7 @@ class InputUiUtil {
 			if (opts.$elePre) opts.$elePre.appendTo($modalInner);
 			$iptNumber.appendTo($modalInner);
 			if (opts.$elePost) opts.$elePost.appendTo($modalInner);
-			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
 			$iptNumber.focus();
 			$iptNumber.select();
 		});
@@ -1355,6 +1360,7 @@ class InputUiUtil {
 	 * @param [opts.htmlDescription] Description HTML for the modal.
 	 * @param [opts.storageKey] Storage key to use when "remember" options are passed.
 	 * @param [opts.isGlobal] If the stored setting is global when "remember" options are passed.
+	 * @param [opts.fnRemember] Custom function to run when saving the "yes and remember" option.
 	 * @return {Promise} A promise which resolves to true/false if the user chose, or null otherwise.
 	 */
 	static async pGetUserBoolean (opts) {
@@ -1366,18 +1372,22 @@ class InputUiUtil {
 		}
 
 		return new Promise(resolve => {
-			const $btnTrueRemember = opts.textYesRemember ? $(`<button class="btn btn-primary flex-v-center mr-2"><span class="glyphicon glyphicon-ok mr-2"></span><span>${opts.textYesRemember}</span></button>`)
+			const $btnTrueRemember = opts.textYesRemember ? $(`<button class="btn btn-primary flex-v-center"><span class="glyphicon glyphicon-ok mr-2"></span><span>${opts.textYesRemember}</span></button>`)
 				.click(() => {
 					doClose(true, true);
-					opts.isGlobal
-						? StorageUtil.pSet(opts.storageKey, true)
-						: StorageUtil.pSetForPage(opts.storageKey, true);
+					if (opts.fnRemember) {
+						opts.fnRemember(true);
+					} else {
+						opts.isGlobal
+							? StorageUtil.pSet(opts.storageKey, true)
+							: StorageUtil.pSetForPage(opts.storageKey, true);
+					}
 				}) : null;
 
 			const $btnTrue = $(`<button class="btn btn-primary flex-v-center mr-3"><span class="glyphicon glyphicon-ok mr-2"></span><span>${opts.textYes || "Yes"}</span></button>`)
 				.click(() => doClose(true, true));
 
-			const $btnFalse = $(`<button class="btn btn-default flex-v-center"><span class="glyphicon glyphicon-remove mr-2"></span><span>${opts.textNo || "No"}</span></button>`)
+			const $btnFalse = $(`<button class="btn btn-default btn-sm flex-v-center mr-2"><span class="glyphicon glyphicon-remove mr-2"></span><span>${opts.textNo || "No"}</span></button>`)
 				.click(() => doClose(true, false));
 
 			const {$modalInner, doClose} = UiUtil.getShowModal({
@@ -1391,7 +1401,7 @@ class InputUiUtil {
 			});
 
 			if (opts.htmlDescription && opts.htmlDescription.trim()) $$`<div class="flex w-100 mb-1">${opts.htmlDescription}</div>`.appendTo($modalInner);
-			$$`<div class="flex-vh-center py-1">${$btnTrueRemember}${$btnTrue}${$btnFalse}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right py-1 px-1">${$btnFalse}${$btnTrue}${$btnTrueRemember}</div>`.appendTo($modalInner);
 			$btnTrue.focus();
 			$btnTrue.select();
 		});
@@ -1421,8 +1431,10 @@ class InputUiUtil {
 			if (opts.default != null) $selEnum.val(opts.default);
 			else $selEnum[0].selectedIndex = 0;
 
-			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
+			const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
 				.click(() => doClose(true));
+			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
+				.click(() => doClose(false));
 
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Select an Option",
@@ -1441,21 +1453,22 @@ class InputUiUtil {
 			});
 			$selEnum.appendTo($modalInner);
 			if (opts.$elePost) opts.$elePost.appendTo($modalInner);
-			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
 			$selEnum.focus();
 		});
 	}
 
 	/**
 	 * @param opts Options.
-	 * @param [opts.values] Array of values.
-	 * @param [opts.valueGroups] Array of value groups (of the form `{name: "Group Name", values: [...]}`).
-	 * @param [opts.defaults] Array of default-selected values.
+	 * @param [opts.values] Array of values. Mutually incompatible with "valueGroups".
+	 * @param [opts.valueGroups] Array of value groups (of the form `{name: "Group Name", values: [...]}`). Mutually incompatible with "values".
 	 * @param [opts.title] Prompt title.
+	 * @param [opts.htmlDescription] Description HTML for the modal.
 	 * @param [opts.count] Number of choices the user can make (cannot be used with min/max).
 	 * @param [opts.min] Minimum number of choices the user can make (cannot be used with count).
 	 * @param [opts.max] Maximum number of choices the user can make (cannot be used with count).
-	 * @param [opts.defaults] Default selected indices.
+	 * @param [opts.defaults] Array of default-selected indices.
+	 * @param [opts.required] Array of always-selected indices.
 	 * @param [opts.isResolveItems] True if the promise should resolve to an array of the items instead of the indices.
 	 * @param [opts.fnDisplay] Function which takes a value and returns display text.
 	 * @param [opts.modalOpts] Options to pass through to the underlying modal class.
@@ -1475,62 +1488,85 @@ class InputUiUtil {
 		}
 
 		return new Promise(resolve => {
-			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
+			const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
 				.click(() => doClose(true));
+			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
+				.click(() => doClose(false));
 
 			const rowMetas = [];
 			const $eles = [];
+			const ixsSelectionOrder = [];
 
 			const valueGroups = opts.valueGroups || [{values: opts.values}];
 
 			valueGroups.forEach((group, i) => {
 				if (i !== 0) $eles.push($(`<hr class="w-100 hr-1">`));
 
-				if (group.name) $eles.push($(`<div class="flex-v-center row my-1"><span class="mr-2">‒</span><span>${group.name}</span></div>`));
+				if (group.name) $eles.push($(`<div class="flex-v-center row py-1"><span class="mr-2">‒</span><span>${group.name}</span></div>`));
 
-				if (group.text) $eles.push($(`<div class="flex-v-center row my-1"><div class="ml-1 mr-3"></div><i>${group.text}</i></div>`));
+				if (group.text) $eles.push($(`<div class="flex-v-center row py-1"><div class="ml-1 mr-3"></div><i>${group.text}</i></div>`));
 
 				group.values.forEach((v, i) => {
 					const comp = new ChoiceRow();
-					if (opts.defaults) comp._state.isActive = opts.defaults.includes(i);
+					const isRequired = opts.required && opts.required.includes(i);
+					if (opts.defaults || isRequired) {
+						const isDefault = opts.defaults && opts.defaults.includes(i);
+						comp._state.isActive = isDefault || isRequired;
+						if (isDefault) ixsSelectionOrder.push(i);
+					}
 
-					const $cb = ComponentUiUtil.$getCbBool(comp, "isActive");
-					const hookDisable = () => {
+					const $cb = isRequired
+						? $(`<input type="checkbox" disabled checked>`)
+						: ComponentUiUtil.$getCbBool(comp, "isActive");
+					const hk = () => {
+						// region Selection order
+						const ixIx = ixsSelectionOrder.findIndex(it => it === i);
+						if (~ixIx) ixsSelectionOrder.splice(ixIx, 1);
+						if (comp._state.isActive) ixsSelectionOrder.push(i);
+						// endregion
+
+						// region Enable/disable
 						const activeRows = rowMetas.filter(it => it.comp._state.isActive);
+
+						if (opts.count != null) {
+							// If we're above the max allowed count, deselect a checkbox in FIFO order
+							if (activeRows.length > opts.count) {
+								// FIFO (`.shift`) makes logical sense, but FILO (`.splice` second-from-last) _feels_ better
+								const ixFirstSelected = ixsSelectionOrder.splice(ixsSelectionOrder.length - 2, 1)[0];
+								rowMetas[ixFirstSelected].comp._state.isActive = false;
+								return;
+							}
+						}
 
 						let isAcceptable = false;
 						if (opts.count != null) {
-							if (activeRows.length >= opts.count) isAcceptable = true;
+							if (activeRows.length === opts.count) isAcceptable = true;
 						} else {
 							if (activeRows.length >= (opts.min || 0) && activeRows.length <= (opts.max || Number.MAX_SAFE_INTEGER)) isAcceptable = true;
 						}
 
-						if (isAcceptable) {
-							if (opts.count != null || (opts.max != null && activeRows.length === opts.max)) {
-								rowMetas.forEach(it => it.$cb.attr("disabled", !it.comp._state.isActive));
-							} else {
-								rowMetas.forEach(it => it.$cb.attr("disabled", false));
-							}
-							$btnOk.attr("disabled", false);
-						} else {
-							rowMetas.forEach(it => it.$cb.attr("disabled", false));
-							$btnOk.attr("disabled", true);
-						}
+						$btnOk.attr("disabled", !isAcceptable);
+						// endregion
 					};
-					comp._addHookBase("isActive", hookDisable);
-					hookDisable();
+					comp._addHookBase("isActive", hk);
+					hk();
 
 					rowMetas.push({
 						$cb,
-						comp
+						comp,
+						isRequired
 					});
 
-					$eles.push($$`<label class="flex-v-center row my-1">
+					$eles.push($$`<label class="flex-v-center row py-1">
 						<div class="col-2 flex-vh-center">${$cb}</div>
 						<div class="col-10 flex-v-center">${opts.fnDisplay ? opts.fnDisplay(v, i) : v}</div>
 					</label>`);
 				});
 			});
+
+			// Sort the initial selection order (i.e. that from defaults) by lowest to highest, such that new clicks
+			//   will remove from the first element in visual order
+			ixsSelectionOrder.sort((a, b) => SortUtil.ascSort(a, b));
 
 			const $wrpList = $$`<div class="flex-col w-100 striped-even mb-1 overflow-y-auto">${$eles}</div>`;
 
@@ -1546,6 +1582,7 @@ class InputUiUtil {
 				...(opts.modalOpts || {}),
 				title,
 				isMinHeight0: true,
+				isUncappedHeight: true,
 				cbClose: (isDataEntered) => {
 					if (!isDataEntered) return resolve(null);
 
@@ -1559,8 +1596,9 @@ class InputUiUtil {
 					}
 				}
 			});
+			if (opts.htmlDescription) $modalInner.append(opts.htmlDescription);
 			$wrpList.appendTo($modalInner);
-			$$`<div class="flex-vh-center no-shrink">${$btnOk}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right no-shrink pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
 			$wrpList.focus();
 		});
 	}
@@ -1611,10 +1649,12 @@ class InputUiUtil {
 				return $btn;
 			})}</div>`.appendTo($modalInner);
 
-			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
+			const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
 				.click(() => doClose(true));
+			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
+				.click(() => doClose(false));
 
-			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
 		});
 	}
 
@@ -1643,8 +1683,10 @@ class InputUiUtil {
 				});
 			if (opts.isCode) $iptStr.addClass("code");
 			if (opts.autocomplete && opts.autocomplete.length) $iptStr.typeahead({source: opts.autocomplete});
-			const $btnOk = $(`<button class="btn btn-default">Enter</button>`)
+			const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
 				.click(() => doClose(true));
+			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
+				.click(() => doClose(false));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Enter Text",
 				isMinHeight0: true,
@@ -1655,7 +1697,7 @@ class InputUiUtil {
 				}
 			});
 			$iptStr.appendTo($modalInner);
-			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
 			$iptStr.focus();
 			$iptStr.select();
 		});
@@ -1676,8 +1718,10 @@ class InputUiUtil {
 			const $iptStr = $(`<textarea class="form-control mb-2 resize-vertical w-100" ${opts.disabled ? "disabled" : ""}></textarea>`)
 				.val(opts.default);
 			if (opts.isCode) $iptStr.addClass("code");
-			const $btnOk = $(`<button class="btn btn-default">${opts.buttonText || "Enter"}</button>`)
+			const $btnOk = $(`<button class="btn btn-primary mr-2">${opts.buttonText || "OK"}</button>`)
 				.click(() => doClose(true));
+			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
+				.click(() => doClose(false));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Enter Text",
 				isMinHeight0: true,
@@ -1689,7 +1733,7 @@ class InputUiUtil {
 				}
 			});
 			$iptStr.appendTo($modalInner);
-			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
 			$iptStr.focus();
 			$iptStr.select();
 		});
@@ -1705,8 +1749,10 @@ class InputUiUtil {
 		opts = opts || {};
 		return new Promise(resolve => {
 			const $iptRgb = $(`<input class="form-control mb-2" ${opts.default != null ? `value="${opts.default}"` : ""} type="color">`);
-			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
+			const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
 				.click(() => doClose(true));
+			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
+				.click(() => doClose(false));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Choose Color",
 				isMinHeight0: true,
@@ -1718,7 +1764,7 @@ class InputUiUtil {
 				}
 			});
 			$iptRgb.appendTo($modalInner);
-			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
 			$iptRgb.focus();
 			$iptRgb.select();
 		});
@@ -1823,8 +1869,10 @@ class InputUiUtil {
 					})
 			})() : null;
 
-			const $btnOk = $(`<button class="btn btn-default">Confirm</button>`)
+			const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
 				.click(() => doClose(true));
+			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
+				.click(() => doClose(false));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Select Direction",
 				isMinHeight0: true,
@@ -1838,7 +1886,7 @@ class InputUiUtil {
 			$$`<div class="flex-vh-center mb-3">
 				${$padOuter || $pad}
 			</div>`.appendTo($modalInner);
-			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
 		});
 	}
 
@@ -1888,8 +1936,10 @@ class InputUiUtil {
 				return `${this._state.num}d${this._state.faces}${this._state.bonus ? UiUtil.intToBonus(this._state.bonus) : ""}`;
 			};
 
-			const $btnOk = $(`<button class="btn btn-default">Enter</button>`)
+			const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
 				.click(() => doClose(true));
+			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
+				.click(() => doClose(false));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: opts.title || "Enter Dice",
 				isMinHeight0: true,
@@ -1901,7 +1951,7 @@ class InputUiUtil {
 
 			comp.render($modalInner);
 
-			$$`<div class="flex-vh-center">${$btnOk}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-center pb-1 px-1">${$btnOk}${$btnCancel}</div>`.appendTo($modalInner);
 		});
 	}
 }
@@ -2095,7 +2145,7 @@ class SourceUiUtil {
 		const $iptConverters = $(`<input class="form-control ui-source__ipt-named">`);
 		if (options.source) $iptConverters.val((options.source.convertedBy || []).join(", "));
 
-		const $btnConfirm = $(`<button class="btn btn-default">Confirm</button>`)
+		const $btnOk = $(`<button class="btn btn-primary">OK</button>`)
 			.click(() => {
 				let incomplete = false;
 				[$iptName, $iptAbv, $iptJson].forEach($ipt => {
@@ -2125,7 +2175,7 @@ class SourceUiUtil {
 
 		const $btnCancel = options.isRequired && !isEditMode
 			? null
-			: $(`<button class="btn btn-default mr-2">Cancel</button>`).click(() => options.cbCancel());
+			: $(`<button class="btn btn-default ml-2">Cancel</button>`).click(() => options.cbCancel());
 
 		const $btnUseExisting = $(`<button class="btn btn-default">Use an Existing Source</button>`)
 			.click(() => {
@@ -2162,7 +2212,7 @@ class SourceUiUtil {
 				<span class="mr-2 ui-source__name help" title="A comma-separated list of people who converted the homebrew to 5etools' format, e.g. 'John Doe, Joe Bloggs'">Converted By</span>
 				${$iptConverters}
 			</div></div>
-			<div class="text-center mb-2">${$btnCancel}${$btnConfirm}</div>
+			<div class="text-center mb-2">${$btnOk}${$btnCancel}</div>
 
 			${!isEditMode && BrewUtil.homebrewMeta.sources && BrewUtil.homebrewMeta.sources.length ? $$`<div class="flex-vh-center mb-3 mt-3"><span class="ui-source__divider"></span>or<span class="ui-source__divider"></span></div>
 			<div class="flex-vh-center">${$btnUseExisting}</div>` : ""}

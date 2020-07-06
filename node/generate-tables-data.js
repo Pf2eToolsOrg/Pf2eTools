@@ -91,7 +91,9 @@ class GenTables {
 	}
 }
 GenTables.BOOK_BLACKLIST = {};
-GenTables.ADVENTURE_WHITELIST = {};
+GenTables.ADVENTURE_WHITELIST = {
+	[SRC_SKT]: true
+};
 
 const generator = new GenTables();
 module.exports = generator.pRun();

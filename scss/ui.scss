@@ -146,6 +146,7 @@ Shared UI components
 		float: none;
 		min-width: 600px;
 		max-height: 400px;
+		min-height: 400px;
 
 		@media (max-width: 767px) {
 			min-width: 0;
@@ -176,6 +177,10 @@ Shared UI components
 		&--uncap-width {
 			max-width: calc(100% - 180px);
 			width: initial;
+		}
+
+		&--max-width-640p {
+			max-width: 640px;
 		}
 	}
 

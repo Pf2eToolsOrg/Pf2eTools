@@ -3304,7 +3304,7 @@
 			"weight": 5,
 			"value": 2500,
 			"entries": [
-				"A book might contain poetry, historical accounts, information pertaining to a particular field of lore, diagrams and notes on gnomish contraptions, or just about anything else that can be represented using text or pictures. A book of spells is a spellbook (described later in this section)."
+				"A book might contain poetry, historical accounts, information pertaining to a particular field of lore, diagrams and notes on gnomish contraptions, or just about anything else that can be represented using text or pictures. A book of spells is a {@item spellbook|phb}."
 			]
 		},
 		{
@@ -8099,6 +8099,15 @@
 			]
 		},
 		{
+			"name": "Dragon's Blood",
+			"source": "ERLW",
+			"page": 244,
+			"rarity": "none",
+			"entries": [
+				"Introduced into Sharn by Daask, dragon's blood is a potent and highly addictive stimulant. In addition to inducing euphoria, it can enhance spellcasting ability or even temporarily imbue a user with the ability to cast sorcerer spells. The drug's effects are potentially dangerous and always unpredictable. This isn't something a player character should want to use; adventurers are more likely to interfere with Daask smugglers or deal with an addict who accidentally casts a {@spell fireball} in a crowded street. The specific effects of dragon's blood are up to you, but you can take inspiration from the {@class sorcerer|phb|Wild Magic Surge table|Wild|phb|0-1} in the {@book Player's Handbook|PHB}."
+			]
+		},
+		{
 			"name": "Dragonchess Set",
 			"source": "PHB",
 			"page": 154,
@@ -8211,6 +8220,15 @@
 			"wondrous": true,
 			"entries": [
 				"This fearsome steel helm makes your eyes glow red while you wear it."
+			]
+		},
+		{
+			"name": "Dreamlily",
+			"source": "ERLW",
+			"page": 244,
+			"rarity": "none",
+			"entries": [
+				"A psychoactive liquid that smells and tastes like your favorite beverage, essence of dreamlily is a Sarlonan opiate. First imported to help manage pain during the Last War, it's now the most commonly abused substance in Sharn. Though dreamlily isn't illegal if used for medicinal purposes, it's heavily taxed, and thus most dreamlily is smuggled in and sold on the black market. Dreamlily dens can be found across the lower wards. Consuming dreamlily causes disorienting euphoria and brings about remarkable resistance to pain. A creature under the effects of dreamlily is {@condition poisoned} for 1 hour. While {@condition poisoned} in this way, the creature is immune to fear, and the first time it drops to 0 hit points without being killed outright, it drops to 1 hit point instead. A dose of dreamlily costs around 1 gp, or up to ten times that if purchased through legal channels. There are many varieties of the drug, however, and the duration or the price might vary accordingly."
 			]
 		},
 		{
@@ -11123,6 +11141,16 @@
 			"age": "modern",
 			"entries": [
 				"This kit contains the hardware and software necessary to allow access into most computer systems and electronic devices. Proficiency with hacking tools lets you add your proficiency bonus to any Intelligence checks you make to connect to or make use of a computer system or electronic device. The kit fits snugly in a backpack or toolbox. "
+			]
+		},
+		{
+			"name": "Hag Eye",
+			"source": "MM",
+			"page": 177,
+			"rarity": "unknown",
+			"entries": [
+				"A hag coven can craft a magic item called a hag eye, which is made from a real eye coated in varnish and often fitted to a pendant or other wearable item. The hag eye is usually entrusted to a minion for safekeeping and transport. A hag in the coven can take an action to see what the hag eye sees if the hag eye is on the same plane of existence. A hag eye has AC 10, 1 hit point, and darkvision with a radius of 60 feet. If it is destroyed, each coven member takes {@dice 3d10} psychic damage and is {@condition blinded} for 24 hours.",
+				"A hag coven can have only one hag eye at a time, and creating a new one requires all three members of the coven to perform a ritual. The ritual takes 1 hour, and the hags can't perform it while {@condition blinded}. During the ritual, if the hags take any action other than performing the ritual, they must start over."
 			]
 		},
 		{
@@ -29501,19 +29529,19 @@
 			"wondrous": true,
 			"bonusSavingThrow": "+1",
 			"entries": [
-				"While attuned to this device, you have a +1 bonus to Wisdom saving throws, and you can use an action to cast the dancing lights, guidance, or message cantrips.",
+				"While attuned to this device, you have a +1 bonus to Wisdom saving throws, and you can use an action to cast the {@spell dancing lights}, {@spell guidance}, or {@spell message} cantrips.",
 				{
 					"type": "entries",
 					"name": "Portent of the Stars",
 					"entries": [
-						"As a reaction when a creature you can see within 60 feet of you makes an attack roll, saving throw, or ability check, you make that creature roll a d10 and add or subtract the number rolled (your choice) from the roll. Once you use this feature of the wheel of stars, it cannot be used again until the next dawn."
+						"As a reaction when a creature you can see within 60 feet of you makes an attack roll, saving throw, or ability check, you make that creature roll a {@dice d10} and add or subtract the number rolled (your choice) from the roll. Once you use this feature of the wheel of stars, it cannot be used again until the next dawn."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Alter Gravity",
 					"entries": [
-						"As an action, you can cast fly on yourself or you can cast levitate (save DC 15). Once you use this feature of the wheel of stars, it cannot be used again until the next dawn."
+						"As an action, you can cast {@spell fly} on yourself or you can cast {@spell levitate} (save DC 15). Once you use this feature of the wheel of stars, it cannot be used again until the next dawn."
 					]
 				},
 				{
@@ -30460,6 +30488,33 @@
 			],
 			"lootTables": [
 				"Magic Item Table G"
+			]
+		},
+		{
+			"name": "Artisan's Tools",
+			"source": "PHB",
+			"page": 154,
+			"srd": true,
+			"type": "AT",
+			"rarity": "none",
+			"items": [
+				"Alchemist's Supplies|PHB",
+				"Brewer's Supplies|PHB",
+				"Calligrapher's Supplies|PHB",
+				"Carpenter's Tools|PHB",
+				"Cartographer's Tools|PHB",
+				"Cobbler's Tools|PHB",
+				"Cook's Utensils|PHB",
+				"Glassblower's Tools|PHB",
+				"Jeweler's Tools|PHB",
+				"Leatherworker's Tools|PHB",
+				"Mason's Tools|PHB",
+				"Painter's Supplies|PHB",
+				"Potter's Tools|PHB",
+				"Smith's Tools|PHB",
+				"Tinker's Tools|PHB",
+				"Weaver's Tools|PHB",
+				"Woodcarver's Tools|PHB"
 			]
 		},
 		{

@@ -4,7 +4,7 @@
 
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.2.23",
+	"version": "1.2.24",
 
 	"definitions" : {
 		"_arrayOfString": {
@@ -242,9 +242,12 @@
 				{
 					"properties": {
 						"type": {"const": "options"},
-						"name": {
-							"type": "string"
+						"count": {
+							"description": "Used to specify how many of the listed options can be chosen as e.g. permanent character features. Leave blank for transient choices.",
+							"type": "integer"
 						},
+						"name": {"type": "string"},
+						"style": {"type": "string"},
 						"entries": {
 							"type": "array",
 							"items": {
@@ -1165,6 +1168,18 @@
 				"subclassFeature"
 			]
 		},
+		"entryRefOptionalfeature": {
+			"properties": {
+				"type": {"const": "refOptionalfeature"},
+				"subclassFeature": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"type",
+				"optionalfeature"
+			]
+		},
 		"entryHr": {
 			"properties": {
 				"type": {"const": "hr"}
@@ -1483,6 +1498,7 @@
 		{"$ref": "#/definitions/entryDataObject"},
 		{"$ref": "#/definitions/entryDataItem"},
 		{"$ref": "#/definitions/entryRefSubclassFeature"},
+		{"$ref": "#/definitions/entryRefOptionalfeature"},
 		{"$ref": "#/definitions/entryHr"},
 		{"$ref": "#/definitions/entrySpellcasting"},
 		{"$ref": "#/definitions/entryFlowchart"},

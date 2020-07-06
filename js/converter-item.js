@@ -9,7 +9,11 @@ if (typeof module !== "undefined") {
 }
 
 class ItemParser extends BaseParser {
-	static init (itemData) { ItemParser._ALL_ITEMS = itemData; }
+	static init (itemData, classData) {
+		ItemParser._ALL_ITEMS = itemData;
+		ItemParser._ALL_CLASSES = classData.class;
+	}
+
 	static getItem (itemName) {
 		itemName = itemName.trim().toLowerCase();
 		itemName = ItemParser._MAPPED_ITEM_NAMES[itemName] || itemName;
@@ -229,30 +233,27 @@ class ItemParser extends BaseParser {
 		let baseItem = null;
 		let genericType = null;
 
-		parts.forEach(part => {
+		for (let i = 0; i < parts.length; ++i) {
+			let part = parts[i];
 			const partLower = part.toLowerCase();
 
 			// region wondrous/item type/staff
 			switch (partLower) {
-				case "wondrous item": stats.wondrous = true; return;
-				case "wondrous item (tattoo)": {
-					stats.wondrous = true;
-					stats.tattoo = true;
-					return;
-				}
-				case "potion": stats.type = "P"; return;
-				case "ring": stats.type = "RG"; return;
-				case "rod": stats.type = "RD"; return;
-				case "wand": stats.type = "WD"; return;
-				case "ammunition": stats.type = "A"; return;
-				case "staff": stats.staff = true; return;
+				case "wondrous item": stats.wondrous = true; continue;
+				case "wondrous item (tattoo)": stats.wondrous = true; stats.tattoo = true; continue;
+				case "potion": stats.type = "P"; continue;
+				case "ring": stats.type = "RG"; continue;
+				case "rod": stats.type = "RD"; continue;
+				case "wand": stats.type = "WD"; continue;
+				case "ammunition": stats.type = "A"; continue;
+				case "staff": stats.staff = true; continue;
 			}
 			// endregion
 
 			// region rarity/attunement
 			// Check if the part is an exact match for a rarity string
 			const isHandledRarity = handlePartRarity(partLower);
-			if (isHandledRarity) return true;
+			if (isHandledRarity) continue;
 
 			if (partLower.includes("(requires attunement")) {
 				const [rarityRaw, ...rest] = part.split("(");
@@ -269,20 +270,37 @@ class ItemParser extends BaseParser {
 					stats.reqAttune = attunement.toLowerCase();
 				}
 
-				return;
+				// if specific attunement is required, absorb any further parts which are class names
+				if (/(^| )by a /i.test(stats.reqAttune)) {
+					for (let ii = i; ii < parts.length; ++ii) {
+						const nxtPart = parts[ii]
+							.trim()
+							.replace(/^(?:or|and) /, "")
+							.trim()
+							.replace(/\)$/, "")
+							.trim();
+						const isClassName = ItemParser._ALL_CLASSES.some(cls => cls.name.toLowerCase() === nxtPart);
+						if (isClassName) {
+							stats.reqAttune += `, ${parts[ii].replace(/\)$/, "")}`;
+							i = ii;
+						}
+					}
+				}
+
+				continue;
 			}
 			// endregion
 
 			// region weapon/armor
 			if (partLower === "weapon" || partLower === "weapon (any)") {
 				genericType = "weapon";
-				return;
+				continue;
 			} else if (partLower === "weapon (any sword)") {
 				genericType = "sword";
-				return;
+				continue;
 			} else if (partLower === "armor" || partLower === "armor (any)") {
 				genericType = "armor";
-				return;
+				continue;
 			}
 
 			const mBaseWeapon = /^weapon \(([^)]+)\)$/i.exec(part);
@@ -290,18 +308,18 @@ class ItemParser extends BaseParser {
 			if (mBaseWeapon) {
 				baseItem = ItemParser.getItem(mBaseWeapon[1]);
 				if (!baseItem) throw new Error(`Could not find base item "${mBaseWeapon[1]}"`);
-				return;
+				continue;
 			} else if (mBaseArmor) {
 				baseItem = ItemParser.getItem(mBaseArmor[1]);
 				if (!baseItem) baseItem = ItemParser.getItem(`${mBaseArmor[1]} armor`); // "armor (plate)" -> "plate armor"
 				if (!baseItem) throw new Error(`Could not find base item "${mBaseArmor[1]}"`);
-				return
+				continue
 			}
 			// endregion
 
 			// Warn about any unprocessed input
 			options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Tagline part "${part}" requires manual conversion`);
-		});
+		}
 
 		this._setCleanTaglineInfo_handleBaseItem(stats, baseItem, options);
 		// Stash the genericType for later processing/removal
@@ -384,6 +402,7 @@ class ItemParser extends BaseParser {
 	}
 }
 ItemParser._ALL_ITEMS = null;
+ItemParser._ALL_CLASSES = null;
 ItemParser._MAPPED_ITEM_NAMES = {
 	"studded leather": "studded leather armor",
 	"leather": "leather armor"

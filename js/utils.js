@@ -6,7 +6,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.106.9"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.106.13"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -621,6 +621,8 @@ JqueryUtil = {
 	 * @param {string} options.type Toast type. Can be any Bootstrap alert type ("success", "info", "warning", or "danger").
 	 */
 	doToast (options) {
+		if (typeof window === "undefined") return;
+
 		if (typeof options === "string") {
 			options = {
 				content: options,
@@ -1052,7 +1054,7 @@ MiscUtil = {
 		return new Promise(resolve => setTimeout(() => resolve(resolveAs), msecs));
 	},
 
-	GENERIC_WALKER_ENTRIES_KEY_BLACKLIST: new Set(["caption", "type", "colLabels", "name", "colStyles", "style"]),
+	GENERIC_WALKER_ENTRIES_KEY_BLACKLIST: new Set(["caption", "type", "colLabels", "name", "colStyles", "style", "shortName", "subclassShortName"]),
 
 	/**
 	 * @param [opts]
@@ -1062,7 +1064,8 @@ MiscUtil = {
 	 * @param [opts.isAllowDeleteBooleans] (Unimplemented) // TODO
 	 * @param [opts.isAllowDeleteNumbers] (Unimplemented) // TODO
 	 * @param [opts.isAllowDeleteStrings] (Unimplemented) // TODO
-	 * @param [opts.isDepthFirst] If array/object recurion should occur before array/object primitive handling.
+	 * @param [opts.isDepthFirst] If array/object recursion should occur before array/object primitive handling.
+	 * @param [opts.isNoModification] If the walker should not attempt to modify the data.
 	 */
 	getWalker (opts) {
 		opts = opts || {};
@@ -1070,7 +1073,10 @@ MiscUtil = {
 
 		function applyHandlers (handlers, ident, obj, lastKey, stack) {
 			if (!(handlers instanceof Array)) handlers = [handlers];
-			handlers.forEach(h => obj = h(ident, obj, lastKey, stack));
+			handlers.forEach(h => {
+				const out = h(ident, obj, lastKey, stack);
+				if (!opts.isNoModification) obj = out;
+			});
 			return obj;
 		}
 
@@ -1083,7 +1089,10 @@ MiscUtil = {
 			const doObjectRecurse = () => {
 				Object.keys(obj).forEach(k => {
 					const v = obj[k];
-					if (!keyBlacklist.has(k)) obj[k] = fn(ident, v, primitiveHandlers, k, stack);
+					if (!keyBlacklist.has(k)) {
+						const out = fn(ident, v, primitiveHandlers, k, stack);
+						if (!opts.isNoModification) obj[k] = out;
+					}
 				});
 			};
 
@@ -1091,22 +1100,34 @@ MiscUtil = {
 			switch (to) {
 				case undefined:
 					if (primitiveHandlers.preUndefined) primitiveHandlers.preUndefined(ident, obj);
-					if (primitiveHandlers.undefined) obj = applyHandlers(primitiveHandlers.undefined, ident, obj, lastKey, stack);
+					if (primitiveHandlers.undefined) {
+						const out = applyHandlers(primitiveHandlers.undefined, ident, obj, lastKey, stack);
+						if (!opts.isNoModification) obj = out;
+					}
 					if (primitiveHandlers.postUndefined) primitiveHandlers.postUndefined(ident, obj);
 					return obj;
 				case "boolean":
 					if (primitiveHandlers.preBoolean) primitiveHandlers.preBoolean(ident, obj);
-					if (primitiveHandlers.boolean) obj = applyHandlers(primitiveHandlers.boolean, ident, obj, lastKey, stack);
+					if (primitiveHandlers.boolean) {
+						const out = applyHandlers(primitiveHandlers.boolean, ident, obj, lastKey, stack);
+						if (!opts.isNoModification) obj = out;
+					}
 					if (primitiveHandlers.postBoolean) primitiveHandlers.postBoolean(ident, obj);
 					return obj;
 				case "number":
 					if (primitiveHandlers.preNumber) primitiveHandlers.preNumber(ident, obj);
-					if (primitiveHandlers.number) obj = applyHandlers(primitiveHandlers.number, ident, obj, lastKey, stack);
+					if (primitiveHandlers.number) {
+						const out = applyHandlers(primitiveHandlers.number, ident, obj, lastKey, stack);
+						if (!opts.isNoModification) obj = out;
+					}
 					if (primitiveHandlers.postNumber) primitiveHandlers.postNumber(ident, obj);
 					return obj;
 				case "string":
 					if (primitiveHandlers.preString) primitiveHandlers.preString(ident, obj);
-					if (primitiveHandlers.string) obj = applyHandlers(primitiveHandlers.string, ident, obj, lastKey, stack);
+					if (primitiveHandlers.string) {
+						const out = applyHandlers(primitiveHandlers.string, ident, obj, lastKey, stack);
+						if (!opts.isNoModification) obj = out;
+					}
 					if (primitiveHandlers.postString) primitiveHandlers.postString(ident, obj);
 					return obj;
 				case "object": {
@@ -1114,13 +1135,21 @@ MiscUtil = {
 						if (primitiveHandlers.preArray) primitiveHandlers.preArray(ident, obj);
 						if (opts.isDepthFirst) {
 							if (stack) stack.push(obj);
-							obj = obj.map(it => fn(ident, it, primitiveHandlers, lastKey, stack));
+							const out = obj.map(it => fn(ident, it, primitiveHandlers, lastKey, stack));
+							if (!opts.isNoModification) obj = out;
 							if (stack) stack.pop();
 
-							if (primitiveHandlers.array) obj = applyHandlers(primitiveHandlers.array, ident, obj, lastKey, stack);
+							if (primitiveHandlers.array) {
+								const out = applyHandlers(primitiveHandlers.array, ident, obj, lastKey, stack);
+								if (!opts.isNoModification) obj = out;
+							}
 						} else {
-							if (primitiveHandlers.array) obj = applyHandlers(primitiveHandlers.array, ident, obj, lastKey, stack);
-							obj = obj.map(it => fn(ident, it, primitiveHandlers, lastKey, stack));
+							if (primitiveHandlers.array) {
+								const out = applyHandlers(primitiveHandlers.array, ident, obj, lastKey, stack);
+								if (!opts.isNoModification) obj = out;
+							}
+							const out = obj.map(it => fn(ident, it, primitiveHandlers, lastKey, stack));
+							if (!opts.isNoModification) obj = out;
 						}
 						if (primitiveHandlers.postArray) primitiveHandlers.postArray(ident, obj);
 						return obj;
@@ -1131,12 +1160,18 @@ MiscUtil = {
 							doObjectRecurse();
 							if (stack) stack.pop();
 
-							if (primitiveHandlers.object) obj = applyHandlers(primitiveHandlers.object, ident, obj, lastKey, stack);
+							if (primitiveHandlers.object) {
+								const out = applyHandlers(primitiveHandlers.object, ident, obj, lastKey, stack);
+								if (!opts.isNoModification) obj = out;
+							}
 							if (obj == null) {
 								if (!opts.isAllowDeleteObjects) throw new Error(`Object handler(s) returned null!`);
 							}
 						} else {
-							if (primitiveHandlers.object) obj = applyHandlers(primitiveHandlers.object, ident, obj, lastKey, stack);
+							if (primitiveHandlers.object) {
+								const out = applyHandlers(primitiveHandlers.object, ident, obj, lastKey, stack);
+								if (!opts.isNoModification) obj = out;
+							}
 							if (obj == null) {
 								if (!opts.isAllowDeleteObjects) throw new Error(`Object handler(s) returned null!`);
 							} else {
@@ -2021,6 +2056,30 @@ DataUtil = {
 	},
 
 	generic: {
+		_walker_replaceTxt: null,
+
+		/**
+		 * @param uid
+		 * @param tag
+		 * @param [opts]
+		 * @param [opts.isLower] If the returned values should be lowercase.
+		 */
+		unpackUid (uid, tag, opts) {
+			opts = opts || {};
+			if (opts.isLower) uid = uid.toLowerCase();
+			let [name, source, displayText, ...others] = uid.split("|").map(it => it.trim());
+
+			source = Parser.getTagSource(tag, source);
+			if (opts.isLower) source = source.toLowerCase();
+
+			return {
+				name,
+				source,
+				displayText,
+				others
+			};
+		},
+
 		async _pMergeCopy (impl, page, entryList, entry, options) {
 			if (entry._copy) {
 				const hash = UrlUtil.URL_TO_HASH_BUILDER[page](entry._copy);
@@ -2107,14 +2166,28 @@ DataUtil = {
 			}
 
 			function doMod_replaceTxt (modInfo, prop) {
+				if (!copyTo[prop]) return;
+
+				DataUtil.generic._walker_replaceTxt = DataUtil.generic._walker_replaceTxt || MiscUtil.getWalker();
 				const re = new RegExp(modInfo.replace, `g${modInfo.flags || ""}`);
-				if (copyTo[prop]) {
-					copyTo[prop].forEach(it => {
-						if (it.entries) it.entries = JSON.parse(JSON.stringify(it.entries).replace(re, modInfo.with));
-						if (it.headerEntries) it.headerEntries = JSON.parse(JSON.stringify(it.headerEntries).replace(re, modInfo.with));
-						if (it.footerEntries) it.footerEntries = JSON.parse(JSON.stringify(it.footerEntries).replace(re, modInfo.with));
-					});
-				}
+				const handlers = {
+					// TODO(Future) may need to have this handle replaces inside _some_ tags
+					string: (ident, str) => {
+						const split = Renderer.splitByTags(str);
+						const len = split.length;
+						for (let i = 0; i < len; ++i) {
+							if (split[i].startsWith("{@")) continue;
+							split[i] = split[i].replace(re, modInfo.with);
+						}
+						return split.join("");
+					}
+				};
+
+				copyTo[prop].forEach(it => {
+					if (it.entries) it.entries = DataUtil.generic._walker_replaceTxt.walk("replaceTxt", it.entries, handlers);
+					if (it.headerEntries) it.headerEntries = DataUtil.generic._walker_replaceTxt.walk("replaceTxt", it.headerEntries, handlers);
+					if (it.footerEntries) it.footerEntries = DataUtil.generic._walker_replaceTxt.walk("replaceTxt", it.footerEntries, handlers);
+				});
 			}
 
 			function doMod_prependArr (modInfo, prop) {
@@ -2636,7 +2709,9 @@ DataUtil = {
 
 	class: {
 		_pLoadingJson: null,
+		_pLoadingRawJson: null,
 		_loadedJson: null,
+		_loadedRawJson: null,
 		loadJSON: async function () {
 			if (DataUtil.class._loadedJson) return DataUtil.class._loadedJson;
 
@@ -2650,6 +2725,24 @@ DataUtil = {
 			await DataUtil.class._pLoadingJson;
 
 			return DataUtil.class._loadedJson;
+		},
+
+		async loadRawJSON () {
+			if (DataUtil.class._loadedRawJson) return DataUtil.class._loadedRawJson;
+
+			DataUtil.class._pLoadingRawJson = (async () => {
+				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/class/index.json`);
+				const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/class/${it}`)));
+
+				DataUtil.class._loadedRawJson = {
+					class: allData.map(it => it.class || []).flat(),
+					classFeature: allData.map(it => it.classFeature || []).flat(),
+					subclassFeature: allData.map(it => it.subclassFeature || []).flat()
+				};
+			})();
+			await DataUtil.class._pLoadingRawJson;
+
+			return DataUtil.class._loadedRawJson;
 		},
 
 		/**
@@ -2732,6 +2825,10 @@ DataUtil = {
 				if (!name || !className || !level || isNaN(level)) continue; // skip over broken links
 
 				const hash = UrlUtil.URL_TO_HASH_BUILDER["classFeature"]({name, className, classSource, level, source});
+
+				// Skip blacklisted
+				if (ExcludeUtil.isInitialised && ExcludeUtil.isExcluded(hash, "classFeature", source, {isNoCount: true})) continue;
+
 				const classFeature = await Renderer.hover.pCacheAndGet("classFeature", source, hash, {isCopy: true});
 				// skip over missing links
 				if (!classFeature) {
@@ -2781,6 +2878,10 @@ DataUtil = {
 				if (!name || !className || !subclassShortName || !level || isNaN(level)) continue; // skip over broken links
 
 				const hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"]({name, className, classSource, subclassShortName, subclassSource, level, source});
+
+				// Skip blacklisted
+				if (ExcludeUtil.isInitialised && ExcludeUtil.isExcluded(hash, "subclassFeature", source, {isNoCount: true})) continue;
+
 				const subclassFeature = await Renderer.hover.pCacheAndGet("subclassFeature", source, hash, {isCopy: true});
 				// skip over missing links
 				if (!subclassFeature) {
@@ -4157,6 +4258,7 @@ BrewUtil = {
 
 	async _pDoHandleBrewJson (json, page, pFuncRefresh) {
 		function storePrep (arrName) {
+			if (json[arrName] != null && !(json[arrName] instanceof Array)) return;
 			if (json[arrName]) {
 				json[arrName].forEach(it => BrewUtil._mutUniqueId(it));
 			} else json[arrName] = [];
@@ -4183,7 +4285,8 @@ BrewUtil = {
 		// store
 		async function pCheckAndAdd (prop) {
 			if (!BrewUtil.homebrew[prop]) BrewUtil.homebrew[prop] = [];
-			if (IS_DEPLOYED) {
+			if (!(json[prop] instanceof Array)) return [];
+			if (IS_DEPLOYED || IS_VTT) {
 				// in production mode, skip any existing brew
 				const areNew = [];
 				const existingIds = BrewUtil.homebrew[prop].map(it => it.uniqueId);
@@ -4247,7 +4350,7 @@ BrewUtil = {
 
 		let sourcesToAdd = json._meta ? json._meta.sources : [];
 		const toAdd = {};
-		BrewUtil._STORABLE.forEach(k => toAdd[k] = json[k]);
+		BrewUtil._STORABLE.filter(k => json[k] instanceof Array).forEach(k => toAdd[k] = json[k]);
 		BrewUtil.homebrew = BrewUtil.homebrew || {};
 		sourcesToAdd = checkAndAddMetaGetNewSources(); // adding source(s) to Filter should happen in per-page addX functions
 		await Promise.all(BrewUtil._STORABLE.map(async k => toAdd[k] = await pCheckAndAdd(k))); // only add if unique ID not already present
@@ -5035,6 +5138,7 @@ ExcludeUtil = {
 		ExcludeUtil.pSave = MiscUtil.throttle(ExcludeUtil._pSave, 50);
 		try {
 			ExcludeUtil._excludes = await StorageUtil.pGet(VeCt.STORAGE_EXCLUDES) || [];
+			ExcludeUtil._excludes = ExcludeUtil._excludes.filter(it => it.hash); // remove legacy rows
 		} catch (e) {
 			JqueryUtil.doToast({
 				content: "Error when loading content blacklist! Purged blacklist data. (See the log for more information.)",
@@ -5062,13 +5166,21 @@ ExcludeUtil = {
 	},
 
 	_excludeCount: 0,
-	isExcluded (name, category, source) {
+	/**
+	 * @param hash
+	 * @param category
+	 * @param source
+	 * @param [opts]
+	 * @param [opts.isNoCount]
+	 */
+	isExcluded (hash, category, source, opts) {
 		if (!ExcludeUtil._excludes || !ExcludeUtil._excludes.length) return false;
 		if (!source) throw new Error(`Entity had no source!`);
+		opts = opts || {};
 
 		source = source.source || source;
-		const out = !!ExcludeUtil._excludes.find(row => (row.source === "*" || row.source === source) && (row.category === "*" || row.category === category) && (row.name === "*" || row.name === name));
-		if (out) ++ExcludeUtil._excludeCount;
+		const out = !!ExcludeUtil._excludes.find(row => (row.source === "*" || row.source === source) && (row.category === "*" || row.category === category) && (row.hash === "*" || row.hash === hash));
+		if (out && !opts.isNoCount) ++ExcludeUtil._excludeCount;
 		return out;
 	},
 
@@ -5082,17 +5194,17 @@ ExcludeUtil = {
 		}
 	},
 
-	addExclude (name, category, source) {
-		if (!ExcludeUtil._excludes.find(row => row.source === source && row.category === category && row.name === name)) {
-			ExcludeUtil._excludes.push({name, category, source});
+	addExclude (displayName, hash, category, source) {
+		if (!ExcludeUtil._excludes.find(row => row.source === source && row.category === category && row.hash === hash)) {
+			ExcludeUtil._excludes.push({displayName, hash, category, source});
 			ExcludeUtil.pSave();
 			return true;
 		}
 		return false;
 	},
 
-	removeExclude (name, category, source) {
-		const ix = ExcludeUtil._excludes.findIndex(row => row.source === source && row.category === category && row.name === name);
+	removeExclude (hash, category, source) {
+		const ix = ExcludeUtil._excludes.findIndex(row => row.source === source && row.category === category && row.hash === hash);
 		if (~ix) {
 			ExcludeUtil._excludes.splice(ix, 1);
 			ExcludeUtil.pSave();
@@ -5257,55 +5369,47 @@ BrewUtil._lockHandleBrewJson = new VeLock();
 
 // MISC WEBPAGE ONLOADS ================================================================================================
 if (!IS_VTT && typeof window !== "undefined") {
-	// add an obnoxious banner
-	// TODO is this something we want? If so, uncomment
-	/*
-	window.addEventListener("load", async () => {
-		if (!StorageUtil.isSyncFake() && await StorageUtil.pGet("seenLegal")) return;
-		const $wrpBanner = $(`<div id="legal-notice"><span>Don't go posting this shit to Reddit</span></div>`);
-		$(`<button class="btn btn-sm btn-default">Whatever, kid</button>`).on("click", () => {
-			StorageUtil.pSet("seenLegal", true);
-			$wrpBanner.remove();
-		}).appendTo($wrpBanner);
-		$(`body`).append($wrpBanner);
-	});
-	*/
-
 	const ivsCancer = [];
 	if (location.origin === "https://5e.tools") {
-		[
-			"div-gpt-ad-5etools35927", // main banner
-			"div-gpt-ad-5etools35930", // side banner
-			"div-gpt-ad-5etools35928", // sidebar top
-			"div-gpt-ad-5etools35929", // sidebar bottom
-			"div-gpt-ad-5etools36159", // bottom floater
-			"div-gpt-ad-5etools36834" // mobile middle
-		].forEach(id => {
-			const iv = setInterval(() => {
-				const $wrp = $(`#${id}`);
-				if (!$wrp.length) return;
-				if (!$wrp.children().length) return;
-				if ($wrp.children()[0].tagName === "SCRIPT") return;
-				const $tgt = $wrp.closest(".cancer__anchor").find(".cancer__disp-cancer");
-				if ($tgt.length) {
-					$tgt.css({display: "flex"}).text("advertisement");
-					clearInterval(iv);
-				}
-			}, 250);
+		window.addEventListener("load", () => {
+			[
+				"div-gpt-ad-5etools35927", // main banner
+				"div-gpt-ad-5etools35930", // side banner
+				"div-gpt-ad-5etools35928", // sidebar top
+				"div-gpt-ad-5etools35929", // sidebar bottom
+				"div-gpt-ad-5etools36159", // bottom floater
+				"div-gpt-ad-5etools36834" // mobile middle
+			].forEach(id => {
+				const iv = setInterval(() => {
+					const $wrp = $(`#${id}`);
+					if (!$wrp.length) return;
+					if (!$wrp.children().length) return;
+					if ($wrp.children()[0].tagName === "SCRIPT") return;
+					const $tgt = $wrp.closest(".cancer__anchor").find(".cancer__disp-cancer");
+					if ($tgt.length) {
+						$tgt.css({display: "flex"}).text("Advertisements");
+						clearInterval(iv);
+					}
+				}, 250);
 
-			ivsCancer.push(iv);
+				ivsCancer.push(iv);
+			});
+
+			// Pad the bottom of the page so the adhesive unit doesn't overlap the content
+			$(`.view-col-group--cancer`).append(`<div class="w-100 no-shrink" style="height: 110px;"></div>`)
 		});
 	}
+
+	// window.addEventListener("load", () => {
+	// 	$(`.cancer__sidebar-rhs-inner--top`).append(`<div class="TEST_RHS_TOP"></div>`)
+	// 	$(`.cancer__sidebar-rhs-inner--bottom`).append(`<div class="TEST_RHS_BOTTOM"></div>`)
+	// });
 
 	// Hack to lock the ad space at original size--prevents the screen from shifting around once loaded
 	setTimeout(() => {
 		const $wrp = $(`.cancer__wrp-leaderboard-inner`);
-		// const w = $wrp.outerWidth();
 		const h = $wrp.outerHeight();
-		$wrp.css({
-			// width: w,
-			height: h
-		});
+		$wrp.css({height: h});
 		ivsCancer.forEach(iv => clearInterval(iv));
 	}, 5000);
 }

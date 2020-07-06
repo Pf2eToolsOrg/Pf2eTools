@@ -179,8 +179,7 @@ const Omnisearch = {
 				results = results.filter(r => {
 					if (r.doc.c === Parser.CAT_ID_QUICKREF) return true;
 					const bCat = Parser.pageCategoryToProp(r.doc.c);
-					const bName = r.doc.b || r.doc.n;
-					return !ExcludeUtil.isExcluded(bName, bCat, r.doc.s);
+					return !ExcludeUtil.isExcluded(r.doc.u, bCat, r.doc.s);
 				});
 			}
 

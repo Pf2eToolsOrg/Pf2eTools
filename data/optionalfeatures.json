@@ -48,7 +48,7 @@
 			"page": 5,
 			"featureType": "AF",
 			"entries": [
-				"As an action, you can reach into your Alchemist's Satchel, pull out a vial of acid, and hurl the vial at a creature or object within 30 feet of you (the vial and its contents disappear if you don't hurl the vial by the end of the current turn). The vial shatters on impact. A creature must succeed on a Dexterity saving throw or take {@dice 1d6} acid damage. An object automatically takes that damage, and the damage is maximized. This formula's damage increases by {@dice 1d6} when you reach certain levels in this class: 3rd level ({@dice 2d6}), 5th level ({@dice 3d6}), 7th level ({@dice 4d6}), 9th level ({@dice 5d6}), 11th level ({@dice 6d6}), 13th level ({@dice 7d6}), 15th level ({@dice 8d6}), 17th level ({@dice 9d6}), and 19th level ({@dice 10d6})."
+				"As an action, you can reach into your Alchemist's Satchel, pull out a vial of acid, and hurl the vial at a creature or object within 30 feet of you (the vial and its contents disappear if you don't hurl the vial by the end of the current turn). The vial shatters on impact. A creature must succeed on a Dexterity saving throw or take {@damage 1d6} acid damage. An object automatically takes that damage, and the damage is maximized. This formula's damage increases by {@damage 1d6} when you reach certain levels in this class: 3rd level ({@damage 2d6}), 5th level ({@damage 3d6}), 7th level ({@damage 4d6}), 9th level ({@damage 5d6}), 11th level ({@damage 6d6}), 13th level ({@damage 7d6}), 15th level ({@damage 8d6}), 17th level ({@damage 9d6}), and 19th level ({@damage 10d6})."
 			]
 		},
 		{
@@ -57,7 +57,7 @@
 			"page": 5,
 			"featureType": "AF",
 			"entries": [
-				"As an action, you can reach into your Alchemist's Satchel, pull out a vial of volatile liquid, and hurl the vial at a creature, object, or surface within 30 feet of you (the vial and its contents disappear if you don't hurl the vial by the end of the current turn). On impact, the vial detonates in a 5-foot radius. Any creature in that area must succeed on a Dexterity saving throw or take {@dice 1d6} fire damage. This formula's damage increases by {@dice 1d6} when you reach certain levels in this class: 4th level ({@dice 2d6}), 7th level ({@dice 3d6}), 10th level ({@dice 4d6}), 13th level ({@dice 5d6}), 16th level ({@dice 6d6}), and 19th level ({@dice 7d6})."
+				"As an action, you can reach into your Alchemist's Satchel, pull out a vial of volatile liquid, and hurl the vial at a creature, object, or surface within 30 feet of you (the vial and its contents disappear if you don't hurl the vial by the end of the current turn). On impact, the vial detonates in a 5-foot radius. Any creature in that area must succeed on a Dexterity saving throw or take {@damage 1d6} fire damage. This formula's damage increases by {@damage 1d6} when you reach certain levels in this class: 4th level ({@damage 2d6}), 7th level ({@damage 3d6}), 10th level ({@damage 4d6}), 13th level ({@damage 5d6}), 16th level ({@damage 6d6}), and 19th level ({@damage 7d6})."
 			]
 		},
 		{
@@ -66,7 +66,7 @@
 			"page": 5,
 			"featureType": "MV",
 			"entries": [
-				"When you make a Dexterity (Stealth) check or an initiative roll, you can expend one superiority die and add the die to the roll."
+				"When you make a Dexterity ({@skill Stealth}) check or an initiative roll, you can expend one superiority die and add the die to the roll."
 			]
 		},
 		{
@@ -248,7 +248,7 @@
 			"featureType": "AS:V2-UA",
 			"entries": [
 				"You use abjuration magic to try to temporarily banish your target to a harmless location in the Feywild. If the arrow hits a creature, the target must also succeed on a Charisma saving throw or be banished. While banished in this way, its speed is 0, and it is {@condition incapacitated}. At the end of its next turn, the target reappears in the space it vacated or in the nearest unoccupied space if that space is occupied.",
-				"After you reach 18th level in this class, a target also takes {@dice 2d6} force damage when the arrow hits it."
+				"After you reach 18th level in this class, a target also takes {@damage 2d6} force damage when the arrow hits it."
 			]
 		},
 		{
@@ -258,7 +258,7 @@
 			"featureType": "AS",
 			"entries": [
 				"You use abjuration magic to try to temporarily banish your target to a harmless location in the Feywild. The creature hit by the arrow must also succeed on a Charisma saving throw or be banished. While banished in this way, the target's speed is 0, and it is {@condition incapacitated}. At the end of its next turn, the target reappears in the space it vacated or in the nearest unoccupied space if that space is occupied.",
-				"After you reach 18th level in this class, a target also takes {@dice 2d6} force damage when the arrow hits it."
+				"After you reach 18th level in this class, a target also takes {@damage 2d6} force damage when the arrow hits it."
 			]
 		},
 		{
@@ -286,8 +286,8 @@
 			"page": 29,
 			"featureType": "AS",
 			"entries": [
-				"Your enchantment magic causes this arrow to temporarily beguile its target. The creature hit by the arrow takes an extra {@dice 2d6} psychic damage, and choose one of your allies within 30 feet of the target. The target must succeed on a Wisdom saving throw, or it is {@condition charmed} by the chosen ally until the start of your next turn. This effect ends early if the chosen ally attacks the {@condition charmed} target, deals damage to it, or forces it to make a saving throw.",
-				"The psychic damage increases to {@dice 4d6} when you reach 18th level in this class."
+				"Your enchantment magic causes this arrow to temporarily beguile its target. The creature hit by the arrow takes an extra {@damage 2d6} psychic damage, and choose one of your allies within 30 feet of the target. The target must succeed on a Wisdom saving throw, or it is {@condition charmed} by the chosen ally until the start of your next turn. This effect ends early if the chosen ally attacks the {@condition charmed} target, deals damage to it, or forces it to make a saving throw.",
+				"The psychic damage increases to {@damage 4d6} when you reach 18th level in this class."
 			]
 		},
 		{
@@ -479,8 +479,8 @@
 			"page": 3,
 			"featureType": "AS:V2-UA",
 			"entries": [
-				"You weave necromantic magic into your arrow. If your arrow hits a creature, the target takes an extra {@dice 2d6} necrotic damage and must make a Constitution saving throw. On a failed save, the damage of the target's attacks is halved until the next turn.",
-				"The necrotic damage increases to {@dice 4d6} when you reach 18th level with this class."
+				"You weave necromantic magic into your arrow. If your arrow hits a creature, the target takes an extra {@damage 2d6} necrotic damage and must make a Constitution saving throw. On a failed save, the damage of the target's attacks is halved until the next turn.",
+				"The necrotic damage increases to {@damage 4d6} when you reach 18th level with this class."
 			]
 		},
 		{
@@ -503,7 +503,7 @@
 			"page": 2,
 			"featureType": "AS:V1-UA",
 			"entries": [
-				"You imbue your arrow with a blast of force energy drawn from the school of evocation. If you hit a creature with this arrow, each creature within 10 feet of it takes {@dice 2d6} force damage."
+				"You imbue your arrow with a blast of force energy drawn from the school of evocation. If you hit a creature with this arrow, each creature within 10 feet of it takes {@damage 2d6} force damage."
 			]
 		},
 		{
@@ -512,8 +512,8 @@
 			"page": 3,
 			"featureType": "AS:V2-UA",
 			"entries": [
-				"You imbue your arrow with a blast of force energy drawn from the school of evocation. If the arrow hits a creature, the target and each creature within 10 feet of it takes {@dice 2d6} force damage.",
-				"The force damage increases to {@dice 4d6} when you reach 18th level with this class."
+				"You imbue your arrow with a blast of force energy drawn from the school of evocation. If the arrow hits a creature, the target and each creature within 10 feet of it takes {@damage 2d6} force damage.",
+				"The force damage increases to {@damage 4d6} when you reach 18th level with this class."
 			]
 		},
 		{
@@ -522,8 +522,8 @@
 			"page": 29,
 			"featureType": "AS",
 			"entries": [
-				"You imbue your arrow with force energy drawn from the school of evocation. The energy detonates after your attack. Immediately after the arrow hits the creature, the target and all other creatures within 10 feet of it take {@dice 2d6} force damage each.",
-				"The force damage increases to {@dice 4d6} when you reach 18th level in this class."
+				"You imbue your arrow with force energy drawn from the school of evocation. The energy detonates after your attack. Immediately after the arrow hits the creature, the target and all other creatures within 10 feet of it take {@damage 2d6} force damage each.",
+				"The force damage increases to {@damage 4d6} when you reach 18th level in this class."
 			]
 		},
 		{
@@ -651,7 +651,7 @@
 				}
 			],
 			"entries": [
-				"You can create a black, lead flail using your Pact of the Blade feature. The flail's head is sculpted to resemble a pair of grasping tentacles. The weapon has the reach property. When you hit a creature with it, you can expend a spell slot to deal an additional 2d8 necrotic damage to the target per spell level, and you can reduce the creature's speed to 0 feet until the end of your next turn."
+				"You can create a black, lead flail using your Pact of the Blade feature. The flail's head is sculpted to resemble a pair of grasping tentacles. The weapon has the reach property. When you hit a creature with it, you can expend a spell slot to deal an additional {@damage 2d8} necrotic damage to the target per spell level, and you can reduce the creature's speed to 0 feet until the end of your next turn."
 			]
 		},
 		{
@@ -732,7 +732,7 @@
 			],
 			"entries": [
 				"As a bonus action, you can surround yourself with a magical aura that looks like buzzing flies. The aura extends 5 feet from you in every direction, but not through total cover. It lasts until you're {@condition incapacitated} or you dismiss it as a bonus action.",
-				"The aura grants you advantage on Charisma (Intimidation) checks but disadvantage on all other Charisma checks. Any other creature that starts its turn in the aura takes poison damage equal to your Charisma modifier (minimum of 0 damage).",
+				"The aura grants you advantage on Charisma ({@skill Intimidation}) checks but disadvantage on all other Charisma checks. Any other creature that starts its turn in the aura takes poison damage equal to your Charisma modifier (minimum of 0 damage).",
 				"Once you use this invocation, you can't use it again until you finish a short or long rest."
 			]
 		},
@@ -764,7 +764,7 @@
 			"page": 74,
 			"featureType": "MV:B",
 			"entries": [
-				"When you take the Attack action on your turn, you can forgo one of your attacks and use a bonus action to direct one of your companions to strike. When you do so, choose a friendly creature who can see or hear you and expend one superiority die. That creature can immediately use its reaction to make one weapon attack, adding the superiority die to the attack's damage roll."
+				"When you take the {@action Attack} action on your turn, you can forgo one of your attacks and use a bonus action to direct one of your companions to strike. When you do so, choose a friendly creature who can see or hear you and expend one superiority die. That creature can immediately use its reaction to make one weapon attack, adding the superiority die to the attack's damage roll."
 			]
 		},
 		{
@@ -782,7 +782,7 @@
 			"page": 3,
 			"featureType": "MV:C2-UA",
 			"entries": [
-				"When you make a Wisdom (Animal Handling) check to influence a creature that you or an ally is riding, you can expend one superiority die, roll it, and add the number rolled to the check. You can do this before or after rolling the {@dice d20}, but before applying the results of the check."
+				"When you make a Wisdom ({@skill Animal Handling}) check to influence a creature that you or an ally is riding, you can expend one superiority die, roll it, and add the number rolled to the check. You can do this before or after rolling the {@dice d20}, but before applying the results of the check."
 			]
 		},
 		{
@@ -798,7 +798,7 @@
 			],
 			"entries": [
 				"You can create a greatsword forged from silver, with black runes etched into its blade, using your Pact of the Blade feature. If you reduce a target cursed by your Hexblade's Curse to 0 hit points with this sword, you can immediately change the target of the curse to a different creature. This change doesn't extend the curse's duration.",
-				"When you hit a creature with this weapon, you can expend a spell slot to deal an additional 2d8 slashing damage to the target per spell level, and you can reduce the creature's speed to 0 feet until the end of your next turn."
+				"When you hit a creature with this weapon, you can expend a spell slot to deal an additional {@damage 2d8} slashing damage to the target per spell level, and you can reduce the creature's speed to 0 feet until the end of your next turn."
 			]
 		},
 		{
@@ -890,7 +890,7 @@
 			"page": 5,
 			"featureType": "OR",
 			"entries": [
-				"The first time the named creature takes damage from the spell, that creature takes an extra {@dice 2d8} force damage. The extra force damage increases by {@dice 1d8} when you reach 10th level ({@dice 3d8}) and 14th level ({@dice 4d8}) in this class."
+				"The first time the named creature takes damage from the spell, that creature takes an extra {@damage 2d8} force damage. The extra force damage increases by {@damage 1d8} when you reach 10th level ({@damage 3d8}) and 14th level ({@damage 4d8}) in this class."
 			]
 		},
 		{
@@ -1103,7 +1103,7 @@
 				}
 			],
 			"entries": [
-				"Once per turn when you hit a creature with your pact weapon, you can expend a warlock spell slot to deal an extra {@dice 1d8} force damage to the target, plus another {@dice 1d8} per level of the spell slot. If the target takes any of this damage, you can knock the target {@condition prone} if it is Huge or smaller."
+				"Once per turn when you hit a creature with your pact weapon, you can expend a warlock spell slot to deal an extra {@damage 1d8} force damage to the target, plus another {@damage 1d8} per level of the spell slot. If the target takes any of this damage, you can knock the target {@condition prone} if it is Huge or smaller."
 			]
 		},
 		{
@@ -1123,7 +1123,7 @@
 				}
 			],
 			"entries": [
-				"Once per turn when you hit a creature with your pact weapon, you can expend a warlock spell slot to deal an extra {@dice 1d8} force damage to the target, plus another {@dice 1d8} per level of the spell slot, and you can knock the target {@condition prone} if it is Huge or smaller."
+				"Once per turn when you hit a creature with your pact weapon, you can expend a warlock spell slot to deal an extra {@damage 1d8} force damage to the target, plus another {@damage 1d8} per level of the spell slot, and you can knock the target {@condition prone} if it is Huge or smaller."
 			]
 		},
 		{
@@ -1187,8 +1187,8 @@
 			"page": 29,
 			"featureType": "AS",
 			"entries": [
-				"You weave necromantic magic into your arrow. The creature hit by the arrow takes an extra {@dice 2d6} necrotic damage. The target must also succeed on a Constitution saving throw, or the damage dealt by its weapon attacks is halved until the start of your next turn.",
-				"The necrotic damage increases to {@dice 4d6} when you reach 18th level in this class."
+				"You weave necromantic magic into your arrow. The creature hit by the arrow takes an extra {@damage 2d6} necrotic damage. The target must also succeed on a Constitution saving throw, or the damage dealt by its weapon attacks is halved until the start of your next turn.",
+				"The necrotic damage increases to {@damage 4d6} when you reach 18th level in this class."
 			]
 		},
 		{
@@ -1339,7 +1339,7 @@
 			"page": 197,
 			"featureType": "SHP:W",
 			"entries": [
-				"Drawing on powerful evocation magic, this weapon's attacks are imbued with unstable energy that explodes in a fiery blast. When this weapon hits, it deals an extra {@dice 2d6} fire damage."
+				"Drawing on powerful evocation magic, this weapon's attacks are imbued with unstable energy that explodes in a fiery blast. When this weapon hits, it deals an extra {@damage 2d6} fire damage."
 			]
 		},
 		{
@@ -1368,7 +1368,7 @@
 			"page": 81,
 			"featureType": "ED",
 			"entries": [
-				"When you use the {@action Attack} action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra {@dice 1d10} fire damage."
+				"When you use the {@action Attack} action on your turn, you can spend 1 ki point to cause tendrils of flame to stretch out from your fists and feet. Your reach with your unarmed strikes increases by 10 feet for that action, as well as the rest of the turn. A hit with such an attack deals fire damage instead of bludgeoning damage, and if you spend 1 ki point when the attack hits, it also deals an extra {@damage 1d10} fire damage."
 			]
 		},
 		{
@@ -1389,7 +1389,7 @@
 			],
 			"entries": [
 				"A new page appears in your Book of Shadows. With your permission, a creature can use its action to write its name on that page, which can contain a number of names equal to your Charisma modifier (minimum of 1).",
-				"You can cast the sending spell, targeting a creature whose name is on the page, without using a spell slot and without using material components. To do so, you must write the message on the page. The target hears the message in their mind, and if the target replies, their message appears on the page, rather than in your mind. The writing disappears after 1 minute.",
+				"You can cast the {@spell sending} spell, targeting a creature whose name is on the page, without using a spell slot and without using material components. To do so, you must write the message on the page. The target hears the message in their mind, and if the target replies, their message appears on the page, rather than in your mind. The writing disappears after 1 minute.",
 				"As an action, you can magically erase a name on the page by touching the name on it."
 			]
 		},
@@ -1556,7 +1556,7 @@
 				}
 			],
 			"entries": [
-				"As an action, you gain the ability to see through solid objects to a range of 30 feet. Within that range, you have darkvision if you don't already have it. This special sight lasts until the end of the current turn. During that time, you perceive objects as ghostly, transparent images. Once you use this invocation, you can't use it again until you finish a short or long rest."
+				"As an action, you gain the ability to see through solid objects to a range of 30 feet. Within that range, you have {@sense darkvision} if you don't already have it. This special sight lasts until the end of the current turn. During that time, you perceive objects as ghostly, transparent images. Once you use this invocation, you can't use it again until you finish a short or long rest."
 			]
 		},
 		{
@@ -1575,7 +1575,7 @@
 				}
 			],
 			"entries": [
-				"As an action, you gain the ability to see through solid objects to a range of 30 feet. Within that range, you have darkvision if you don't already have it. This special sight lasts for 1 minute or until your concentration ends (as if you were concentrating on a spell). During that time, you perceive objects as ghostly, transparent images.",
+				"As an action, you gain the ability to see through solid objects to a range of 30 feet. Within that range, you have {@sense darkvision} if you don't already have it. This special sight lasts for 1 minute or until your concentration ends (as if you were concentrating on a spell). During that time, you perceive objects as ghostly, transparent images.",
 				"Once you use this invocation, you can't use it again until you finish a short or long rest."
 			]
 		},
@@ -1775,7 +1775,7 @@
 			"page": 2,
 			"featureType": "AS:V1-UA",
 			"entries": [
-				"When this arrow strikes its target, conjuration magic creates grasping, thorny brambles that wrap around the target. The target hit by the arrow takes a -10 penalty to speed, and it takes {@dice 2d6} slashing damage if it moves 1 foot or more without teleporting. The target or any creature that can touch it can use its action to try to remove the brambles, which requires a successful DC 10 Strength check. Otherwise, the brambles last for 1 minute."
+				"When this arrow strikes its target, conjuration magic creates grasping, thorny brambles that wrap around the target. The target hit by the arrow takes a -10 penalty to speed, and it takes {@damage 2d6} slashing damage if it moves 1 foot or more without teleporting. The target or any creature that can touch it can use its action to try to remove the brambles, which requires a successful DC 10 Strength check. Otherwise, the brambles last for 1 minute."
 			]
 		},
 		{
@@ -1784,8 +1784,8 @@
 			"page": 3,
 			"featureType": "AS:V2-UA",
 			"entries": [
-				"When this arrow strikes its target, conjuration magic creates grasping, thorny brambles that wrap around the target. If the arrow hits a creature, the target takes an extra {@dice 2d6} poison damage, its speed is reduced by 10 feet, and it takes {@dice 2d6} slashing damage the first time on each turn it moves 1 foot or more without teleporting. The target or any creature that can reach it can use its action to remove the brambles with a successful Strength (Athletics) check against your Arcane Shot save DC. Otherwise, the brambles last for 1 minute or until you use this option again.",
-				"The poison and slashing damage both increase to {@dice 4d6} when you reach 18th level in this class."
+				"When this arrow strikes its target, conjuration magic creates grasping, thorny brambles that wrap around the target. If the arrow hits a creature, the target takes an extra {@damage 2d6} poison damage, its speed is reduced by 10 feet, and it takes {@damage 2d6} slashing damage the first time on each turn it moves 1 foot or more without teleporting. The target or any creature that can reach it can use its action to remove the brambles with a successful Strength ({@skill Athletics}) check against your Arcane Shot save DC. Otherwise, the brambles last for 1 minute or until you use this option again.",
+				"The poison and slashing damage both increase to {@damage 4d6} when you reach 18th level in this class."
 			]
 		},
 		{
@@ -1794,8 +1794,8 @@
 			"page": 29,
 			"featureType": "AS",
 			"entries": [
-				"When this arrow strikes its target, conjuration magic creates grasping, poisonous brambles, which wrap around the target. The creature hit by the arrow takes an extra {@dice 2d6} poison damage, its speed is reduced by 10 feet, and it takes {@dice 2d6} slashing damage the first time on each turn it moves 1 foot or more without teleporting. The target or any creature that can reach it can use its action to remove the brambles with a successful Strength (Athletics) check against your Arcane Shot save DC. Otherwise, the brambles last for 1 minute or until you use this option again.",
-				"The poison damage and slashing damage both increase to {@dice 4d6} when you reach 18th level in this class."
+				"When this arrow strikes its target, conjuration magic creates grasping, poisonous brambles, which wrap around the target. The creature hit by the arrow takes an extra {@damage 2d6} poison damage, its speed is reduced by 10 feet, and it takes {@damage 2d6} slashing damage the first time on each turn it moves 1 foot or more without teleporting. The target or any creature that can reach it can use its action to remove the brambles with a successful Strength ({@skill Athletics}) check against your Arcane Shot save DC. Otherwise, the brambles last for 1 minute or until you use this option again.",
+				"The poison damage and slashing damage both increase to {@damage 4d6} when you reach 18th level in this class."
 			]
 		},
 		{
@@ -1897,7 +1897,7 @@
 				}
 			],
 			"entries": [
-				"While wearing this helmet, a creature has advantage on initiative rolls. In addition, the wearer can't be surprised, provided it isn't incapacitated."
+				"While wearing this helmet, a creature has advantage on initiative rolls. In addition, the wearer can't be surprised, provided it isn't {@condition incapacitated}."
 			]
 		},
 		{
@@ -1933,7 +1933,7 @@
 			"featureType": "RN",
 			"entries": [
 				"This rune's magic channels the masterful craftsmanship of fire giant smiths. While wearing or carrying an object inscribed with this rune, your proficiency bonus is doubled for any ability check you make that uses your proficiency with a tool.",
-				"In addition, when you hit a creature with a weapon attack, you can invoke the rune to summon fiery shackles: the target must succeed on a Strength saving throw or be {@condition restrained} for 1 minute. While {@condition restrained} by the shackles, the target takes  {@dice 2d6} fire damage at the start of each of its turns. The target can repeat the saving throw at the end of each of its turns, banishing the shackles on a success. Once you invoke the rune, you can't do so again until you finish a short or long rest."
+				"In addition, when you hit a creature with a weapon attack, you can invoke the rune to summon fiery shackles: the target must succeed on a Strength saving throw or be {@condition restrained} for 1 minute. While {@condition restrained} by the shackles, the target takes  {@damage 2d6} fire damage at the start of each of its turns. The target can repeat the saving throw at the end of each of its turns, banishing the shackles on a success. Once you invoke the rune, you can't do so again until you finish a short or long rest."
 			]
 		},
 		{
@@ -2163,7 +2163,7 @@
 				}
 			],
 			"entries": [
-				"When you create your pact weapon as a mace, it manifests as an iron mace forged in Dis, the second of the Nine Hells. When you hit a creature with it, you can expend a spell slot to deal an additional 2d8 force damage to the target per spell level, and you can knock the target {@condition prone} if it is Huge or smaller."
+				"When you create your pact weapon as a mace, it manifests as an iron mace forged in Dis, the second of the Nine Hells. When you hit a creature with it, you can expend a spell slot to deal an additional {@damage 2d8} force damage to the target per spell level, and you can knock the target {@condition prone} if it is Huge or smaller."
 			]
 		},
 		{
@@ -2317,8 +2317,8 @@
 			"page": 4,
 			"featureType": "AS:V2-UA",
 			"entries": [
-				"Your enchantment magic causes this arrow to temporarily beguile its target. Choose one of your allies within 30 feet of the target. If the arrow hits a creature, the target takes an extra {@dice 2d6} psychic damage, and it must succeed on a Wisdom saving throw or it can't attack the chosen ally or include that ally in a harmful area of effect until the start of your next turn. This effect ends early if the chosen ally deals any damage to the target.",
-				"The psychic damage increases to {@dice 4d6} when you reach 18th level in this class."
+				"Your enchantment magic causes this arrow to temporarily beguile its target. Choose one of your allies within 30 feet of the target. If the arrow hits a creature, the target takes an extra {@damage 2d6} psychic damage, and it must succeed on a Wisdom saving throw or it can't attack the chosen ally or include that ally in a harmful area of effect until the start of your next turn. This effect ends early if the chosen ally deals any damage to the target.",
+				"The psychic damage increases to {@damage 4d6} when you reach 18th level in this class."
 			]
 		},
 		{
@@ -2405,7 +2405,7 @@
 				}
 			],
 			"entries": [
-				"You can create a longbow using your Pact of the Blade feature. When you draw back its string and fire, it creates an arrow of white wood, which vanishes after 1 minute. You have advantage on attack rolls against lycanthropes with the bow. When you hit a creature with it, you can expend a spell slot to deal an additional 2d8 radiant damage to the target per spell level."
+				"You can create a longbow using your Pact of the Blade feature. When you draw back its string and fire, it creates an arrow of white wood, which vanishes after 1 minute. You have advantage on attack rolls against lycanthropes with the bow. When you hit a creature with it, you can expend a spell slot to deal an additional {@damage 2d8} radiant damage to the target per spell level."
 			]
 		},
 		{
@@ -2562,8 +2562,8 @@
 			"page": 4,
 			"featureType": "AS:V2-UA",
 			"entries": [
-				"You use transmutation magic to transform your arrow into an ethereal dart that passes through its targets. You use transmutation magic to give your arrow an ethereal quality. When you use this option, you don't make an attack roll for the attack. Instead, the arrow fires forward in a line that is 1 foot wide and 30 feet long, before disappearing. The arrow passes harmlessly through objects, ignoring cover. Each creature in that line must make a Dexterity saving throw. On a failed save, a target takes damage as if it were hit by the arrow, plus an extra {@dice 1d6} piercing damage. On a successful save, a target takes half as much damage.",
-				"The piercing damage increases to {@dice 2d6} when you reach 18th level in this class."
+				"You use transmutation magic to transform your arrow into an ethereal dart that passes through its targets. You use transmutation magic to give your arrow an ethereal quality. When you use this option, you don't make an attack roll for the attack. Instead, the arrow fires forward in a line that is 1 foot wide and 30 feet long, before disappearing. The arrow passes harmlessly through objects, ignoring cover. Each creature in that line must make a Dexterity saving throw. On a failed save, a target takes damage as if it were hit by the arrow, plus an extra {@damage 1d6} piercing damage. On a successful save, a target takes half as much damage.",
+				"The piercing damage increases to {@damage 2d6} when you reach 18th level in this class."
 			]
 		},
 		{
@@ -2572,8 +2572,8 @@
 			"page": 29,
 			"featureType": "AS",
 			"entries": [
-				"You use transmutation magic to give your arrow an ethereal quality. When you use this option, you don't make an attack roll for the attack. Instead, the arrow shoots forward in a line, which is 1 foot wide and 30 feet long, before disappearing. The arrow passes harmlessly through objects, ignoring cover. Each creature in that line must make a Dexterity saving throw. On a failed save, a creature takes damage as if it were hit by the arrow, plus an extra {@dice 1d6} piercing damage. On a successful save, a target takes half as much damage.",
-				"The piercing damage increases to {@dice 2d6} when you reach 18th level in this class."
+				"You use transmutation magic to give your arrow an ethereal quality. When you use this option, you don't make an attack roll for the attack. Instead, the arrow shoots forward in a line, which is 1 foot wide and 30 feet long, before disappearing. The arrow passes harmlessly through objects, ignoring cover. Each creature in that line must make a Dexterity saving throw. On a failed save, a creature takes damage as if it were hit by the arrow, plus an extra {@damage 1d6} piercing damage. On a successful save, a target takes half as much damage.",
+				"The piercing damage increases to {@damage 2d6} when you reach 18th level in this class."
 			]
 		},
 		{
@@ -2630,7 +2630,7 @@
 				}
 			],
 			"entries": [
-				"When the wearer of your talisman makes a saving throw in which they lack proficiency, they can add a d4 to the roll."
+				"When the wearer of your talisman makes a saving throw in which they lack proficiency, they can add a {@dice d4} to the roll."
 			]
 		},
 		{
@@ -2704,7 +2704,7 @@
 			],
 			"entries": [
 				"This magic weapon grants a +1 bonus to attack and damage rolls made with it. While holding it, the wielder can take a bonus action to cause it to shed bright light in a 30-foot radius and dim light for an additional 30 feet. The wielder can extinguish the light as a bonus action.",
-				"As a reaction immediately after being hit by a melee attack, the wielder can cause the attacker to be blinded until the end of the attacker's next turn, unless the attacker succeeds on a Constitution saving throw against your spell save DC. Once used, this reaction can't be used again until the wielder finishes a short or long rest."
+				"As a reaction immediately after being hit by a melee attack, the wielder can cause the attacker to be {@condition blinded} until the end of the attacker's next turn, unless the attacker succeeds on a Constitution saving throw against your spell save DC. Once used, this reaction can't be used again until the wielder finishes a short or long rest."
 			]
 		},
 		{
@@ -2753,7 +2753,7 @@
 			"page": 198,
 			"featureType": "SHP:F",
 			"entries": [
-				"This figurehead depicts a red dragon rearing to strike, its mouth open. As an action, the ship can activate this item to create a 60-foot cone of flame that originates from the figurehead. Each creature and object in the cone must make a DC 12 Dexterity saving throw, taking 21 ({@dice 6d6}) fire damage on a failed save, or half as much damage on a successful one. Once a ship uses this action, it can't use it again for 1 minute."
+				"This figurehead depicts a red dragon rearing to strike, its mouth open. As an action, the ship can activate this item to create a 60-foot cone of flame that originates from the figurehead. Each creature and object in the cone must make a DC 12 Dexterity saving throw, taking 21 ({@damage 6d6}) fire damage on a failed save, or half as much damage on a successful one. Once a ship uses this action, it can't use it again for 1 minute."
 			]
 		},
 		{
@@ -3507,7 +3507,7 @@
 			"page": 5,
 			"featureType": "MV",
 			"entries": [
-				"Immediately after you hit a creature with a melee weapon attack on your turn, you can expend one superiority die and use a bonus action to grapple the target (see chapter 9 in the Player's Handbook for rules on grappling). Add the superiority die to your Strength (Athletics) check. The target is also restrained while grappled in this way."
+				"Immediately after you hit a creature with a melee weapon attack on your turn, you can expend one superiority die and use a bonus action to grapple the target (see chapter 9 in the Player's Handbook for rules on grappling). Add the superiority die to your Strength ({@skill Athletics}) check. The target is also {@condition restrained} while {@condition grappled} in this way."
 			]
 		},
 		{
@@ -3610,7 +3610,7 @@
 			"page": 197,
 			"featureType": "SHP:M",
 			"entries": [
-				"Woven from the energy of captured wraiths and bound with the spirit of a banshee, these sails groan mournfully when they catch the wind. As an action, while within 5 feet of the sails, the ship's captain can cause the sails to unleash a howl. Every creature hostile to the ship who is on board or within 300 feet of it must succeed on a DC 14 Wisdom saving throw, or the creature takes {@dice 4d6} psychic damage and is then {@condition frightened} for 1 minute. Once this ability has been used, it can't be used again until {@dice 2d6} hours have passed."
+				"Woven from the energy of captured wraiths and bound with the spirit of a banshee, these sails groan mournfully when they catch the wind. As an action, while within 5 feet of the sails, the ship's captain can cause the sails to unleash a howl. Every creature hostile to the ship who is on board or within 300 feet of it must succeed on a DC 14 Wisdom saving throw, or the creature takes {@damage 4d6} psychic damage and is then {@condition frightened} for 1 minute. Once this ability has been used, it can't be used again until {@dice 2d6} hours have passed."
 			]
 		},
 		{
@@ -3639,7 +3639,7 @@
 			"page": 197,
 			"featureType": "SHP:M",
 			"entries": [
-				"Sharpened, magically reinforced oars make a vessel dangerous to approach. When the ship takes an action that moves it with these oars, any creature or object in the water within 10 feet of it at any point of the move must make a DC 10 Dexterity saving throw, taking {@dice 2d6} slashing damage on a failed save or half as much damage on a successful one."
+				"Sharpened, magically reinforced oars make a vessel dangerous to approach. When the ship takes an action that moves it with these oars, any creature or object in the water within 10 feet of it at any point of the move must make a DC 10 Dexterity saving throw, taking {@damage 2d6} slashing damage on a failed save or half as much damage on a successful one."
 			]
 		},
 		{
@@ -3686,8 +3686,8 @@
 			"page": 4,
 			"featureType": "AS:V2-UA",
 			"entries": [
-				"Using divination magic, you grant your arrow the ability to seek out your target, allowing the arrow to curve and twist its path in search of its prey. When you use this option, you don't make an attack roll for the attack. Instead, choose one creature you have seen in the past minute. The arrow flies toward that creature, moving around corners if necessary and ignoring three-quarters cover and half cover. If the target is within the weapon's range and there is a path large enough for the arrow to travel to the target, the target must make a Dexterity saving throw. On a failed save, it takes damage as if it were hit by the arrow, plus an extra {@dice 1d6} force damage, and you learn the target's current location. On a successful save, the target takes half as much damage, and you don't learn its location.",
-				"The force damage increases to {@dice 2d6} when you reach 18th level in this class."
+				"Using divination magic, you grant your arrow the ability to seek out your target, allowing the arrow to curve and twist its path in search of its prey. When you use this option, you don't make an attack roll for the attack. Instead, choose one creature you have seen in the past minute. The arrow flies toward that creature, moving around corners if necessary and ignoring three-quarters cover and half cover. If the target is within the weapon's range and there is a path large enough for the arrow to travel to the target, the target must make a Dexterity saving throw. On a failed save, it takes damage as if it were hit by the arrow, plus an extra {@damage 1d6} force damage, and you learn the target's current location. On a successful save, the target takes half as much damage, and you don't learn its location.",
+				"The force damage increases to {@damage 2d6} when you reach 18th level in this class."
 			]
 		},
 		{
@@ -3696,8 +3696,8 @@
 			"page": 30,
 			"featureType": "AS",
 			"entries": [
-				"Using divination magic, you grant your arrow the ability to seek out a target. When you use this option, you don't make an attack roll for the attack. Instead, choose one creature you have seen in the past minute. The arrow flies toward that creature, moving around corners if necessary and ignoring three-quarters cover and half cover. If the target is within the weapon's range and there is a path large enough for the arrow to travel to the target, the target must make a Dexterity saving throw. Otherwise, the arrow disappears after traveling as far as it can. On a failed save, the target takes damage as if it were hit by the arrow, plus an extra {@dice 1d6} force damage, and you learn the target's current location. On a successful save, the target takes half as much damage, and you don't learn its location.",
-				"The force damage increases to {@dice 2d6} when you reach 18th level in this class."
+				"Using divination magic, you grant your arrow the ability to seek out a target. When you use this option, you don't make an attack roll for the attack. Instead, choose one creature you have seen in the past minute. The arrow flies toward that creature, moving around corners if necessary and ignoring three-quarters cover and half cover. If the target is within the weapon's range and there is a path large enough for the arrow to travel to the target, the target must make a Dexterity saving throw. Otherwise, the arrow disappears after traveling as far as it can. On a failed save, the target takes damage as if it were hit by the arrow, plus an extra {@damage 1d6} force damage, and you learn the target's current location. On a successful save, the target takes half as much damage, and you don't learn its location.",
+				"The force damage increases to {@damage 2d6} when you reach 18th level in this class."
 			]
 		},
 		{
@@ -3724,8 +3724,8 @@
 			"page": 4,
 			"featureType": "AS:V2-UA",
 			"entries": [
-				"You weave illusion magic into your arrow, causing it to occlude your foe's vision with grasping shadows. If the arrow hits a creature, the target takes an extra {@dice 2d6} psychic damage, and it must succeed on a Wisdom saving throw or be unable to see anything farther than 5 feet away until the start of your next turn.",
-				"The psychic damage increases to {@dice 4d6} when you reach 18th level in this class."
+				"You weave illusion magic into your arrow, causing it to occlude your foe's vision with grasping shadows. If the arrow hits a creature, the target takes an extra {@damage 2d6} psychic damage, and it must succeed on a Wisdom saving throw or be unable to see anything farther than 5 feet away until the start of your next turn.",
+				"The psychic damage increases to {@damage 4d6} when you reach 18th level in this class."
 			]
 		},
 		{
@@ -3734,8 +3734,8 @@
 			"page": 30,
 			"featureType": "AS",
 			"entries": [
-				"You weave illusion magic into your arrow, causing it to occlude your foe's vision with shadows. The creature hit by the arrow takes an extra {@dice 2d6} psychic damage, and it must succeed on a Wisdom saving throw or be unable to see anything farther than 5 feet away until the start of your next turn.",
-				"The psychic damage increases to {@dice 4d6} when you reach 18th level in this class."
+				"You weave illusion magic into your arrow, causing it to occlude your foe's vision with shadows. The creature hit by the arrow takes an extra {@damage 2d6} psychic damage, and it must succeed on a Wisdom saving throw or be unable to see anything farther than 5 feet away until the start of your next turn.",
+				"The psychic damage increases to {@damage 4d6} when you reach 18th level in this class."
 			]
 		},
 		{
@@ -3835,7 +3835,7 @@
 			"page": 5,
 			"featureType": "MV",
 			"entries": [
-				"When you make a Charisma (Deception) check or a Charisma (Persuasion) check, you can expend one superiority die, and add the superiority die to the ability check."
+				"When you make a Charisma ({@skill Deception}) check or a Charisma ({@skill Persuasion}) check, you can expend one superiority die, and add the superiority die to the ability check."
 			]
 		},
 		{
@@ -3854,7 +3854,7 @@
 			"page": 5,
 			"featureType": "AF",
 			"entries": [
-				"As an action, you can reach into your Alchemist's Satchel and pull out a stick that produces a thick plume of smoke. You can hold on to the stick or throw it to a point up to 30 feet away as part of the action used to produce it. The area in a 10-foot radius around the stick is filled with thick smoke that blocks vision, including darkvision. The stick and smoke persist for 1 minute and then disappear. After using this formula, you can't do so again for 1 minute."
+				"As an action, you can reach into your Alchemist's Satchel and pull out a stick that produces a thick plume of smoke. You can hold on to the stick or throw it to a point up to 30 feet away as part of the action used to produce it. The area in a 10-foot radius around the stick is filled with thick smoke that blocks vision, including {@sense darkvision}. The stick and smoke persist for 1 minute and then disappear. After using this formula, you can't do so again for 1 minute."
 			]
 		},
 		{
@@ -3924,7 +3924,7 @@
 			"page": 198,
 			"featureType": "SHP:F",
 			"entries": [
-				"This figurehead depicts a storm giant clutching a thunderbolt. As an action, the ship can activate this item to create a 60-foot cone that originates from the figurehead. Each creature in the cone must make DC 12 Constitution saving throw, taking 14 ({@dice 4d6}) thunder damage on a failed save, or half as much damage on a successful one. A creature that fails its saving throw is also pushed 10 feet away from the figurehead. Once a ship uses this action, it can't use it again for 1 minute."
+				"This figurehead depicts a storm giant clutching a thunderbolt. As an action, the ship can activate this item to create a 60-foot cone that originates from the figurehead. Each creature in the cone must make DC 12 Constitution saving throw, taking 14 ({@damage 4d6}) thunder damage on a failed save, or half as much damage on a successful one. A creature that fails its saving throw is also pushed 10 feet away from the figurehead. Once a ship uses this action, it can't use it again for 1 minute."
 			]
 		},
 		{
@@ -3933,7 +3933,7 @@
 			"page": 5,
 			"featureType": "MV",
 			"entries": [
-				"When you make a Wisdom (Insight) check or an Intelligence (Investigation) check, you can expend one superiority die, and add the superiority die to the ability check."
+				"When you make a Wisdom ({@skill Insight}) check or an Intelligence ({@skill Investigation}) check, you can expend one superiority die, and add the superiority die to the ability check."
 			]
 		},
 		{
@@ -4085,7 +4085,7 @@
 				}
 			],
 			"entries": [
-				"You can attack with your pact weapon twice, instead of once, whenever you take the Attack action on your turn."
+				"You can attack with your pact weapon twice, instead of once, whenever you take the {@action Attack} action on your turn."
 			]
 		},
 		{
@@ -4316,8 +4316,8 @@
 				"FS:R"
 			],
 			"entries": [
-				"Your unarmed strikes can deal bludgeoning damage equal to {@dice 1d6} + your Strength modifier. If you strike with two free hands, the {@dice d6} becomes a {@dice d8}.",
-				"When you successfully start a grapple, you can deal {@dice 1d4} bludgeoning damage to the grappled creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
+				"Your unarmed strikes can deal bludgeoning damage equal to {@damage 1d6} + your Strength modifier. If you strike with two free hands, the {@damage d6} becomes a {@damage d8}.",
+				"When you successfully start a grapple, you can deal {@damage 1d4} bludgeoning damage to the {@condition grappled} creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
 			]
 		},
 		{
@@ -4326,7 +4326,7 @@
 			"page": 81,
 			"featureType": "ED",
 			"entries": [
-				"You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes {@dice 3d10} bludgeoning damage, plus an extra {@dice 1d10} bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it {@condition prone}. On a successful save, the creature takes half as much damage, and you don't push it or knock it {@condition prone}."
+				"You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes {@damage 3d10} bludgeoning damage, plus an extra {@damage 1d10} bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it {@condition prone}. On a successful save, the creature takes half as much damage, and you don't push it or knock it {@condition prone}."
 			]
 		},
 		{
@@ -4408,7 +4408,7 @@
 			"page": 81,
 			"featureType": "ED",
 			"entries": [
-				"You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes {@dice 3d10} bludgeoning damage, plus an extra {@dice 1d10} bludgeoning damage for each additional ki point you spend, and you can either knock it {@condition prone} or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don't pull it or knock it {@condition prone}."
+				"You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes {@damage 3d10} bludgeoning damage, plus an extra {@damage 1d10} bludgeoning damage for each additional ki point you spend, and you can either knock it {@condition prone} or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don't pull it or knock it {@condition prone}."
 			]
 		},
 		{

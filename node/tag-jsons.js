@@ -1,8 +1,37 @@
 const fs = require("fs");
 require("../js/utils.js");
 require("../js/render.js");
+require("../js/render-dice.js");
 const ut = require("./util.js");
 const {TaggerUtils, SkillTag, ActionTag, SenseTag, TagCondition, DiceConvert} = require("../js/converterutils");
+
+const ARGS = {};
+
+/**
+ * Args:
+ * file="./data/my-file.json"
+ * filePrefix="./data/dir/"
+ */
+class ArgParser {
+	static parse () {
+		process.argv
+			.slice(2)
+			.forEach(arg => {
+				let [k, v] = arg.split("=").map(it => it.trim()).filter(Boolean);
+				if (v == null) ARGS[k] = true;
+				else {
+					v = v
+						.replace(/^"(.*)"$/, "$1")
+						.replace(/^'(.*)'$/, "$1")
+					;
+
+					if (!isNaN(v)) ARGS[k] = Number(v);
+					else ARGS[k] = v;
+				}
+			});
+	}
+}
+ArgParser.parse();
 
 const BLACKLIST_FILE_PREFIXES = [
 	...ut.FILE_PREFIX_BLACKLIST,
@@ -17,29 +46,26 @@ const LAST_KEY_WHITELIST = new Set([
 	"items",
 	"entriesHigherLevel",
 	"rows",
-	"row"
+	"row",
+	"fluff"
 ]);
 
 class TagJsons {
-	static init () {
-		// region Spells
-		const spellIndex = ut.readJson(`./data/spells/index.json`);
-		Object.entries(spellIndex).forEach(([source, filename]) => {
-			if (SourceUtil.isNonstandardSource(source)) return;
-
-			const spellData = ut.readJson(`./data/spells/${filename}`);
-			spellData.spell.forEach(sp => {
-				TagJsons._SPELL_NAMES[sp.name.toLowerCase()] = {name: sp.name, source: sp.source};
-			});
-		});
-
-		TagJsons._SPELL_NAME_REGEX = new RegExp(`(${Object.keys(TagJsons._SPELL_NAMES).join("|")}) (spell)`, "gi");
-		TagJsons._SPELL_NAME_REGEX_AND = new RegExp(`(${Object.keys(TagJsons._SPELL_NAMES).join("|")}) (and {@spell)`, "gi");
-		// endregion
+	static async pInit () {
+		SpellTag.init();
+		await ItemTag.pInit();
 	}
 
 	static run () {
-		const files = ut.listFiles({dir: `./data`, blacklistFilePrefixes: BLACKLIST_FILE_PREFIXES});
+		let files = ut.listFiles({dir: `./data`, blacklistFilePrefixes: BLACKLIST_FILE_PREFIXES});
+		if (ARGS.file) {
+			files = files.filter(f => f === ARGS.file);
+			if (!files.length) throw new Error(`File "${ARGS.file}" not found!`);
+		}
+		if (ARGS.filePrefix) {
+			files = files.filter(f => f.startsWith(ARGS.filePrefix));
+			if (!files.length) throw new Error(`No file with prefix "${ARGS.filePrefix}" found!`);
+		}
 
 		files.forEach(file => {
 			console.log(`Tagging file "${file}"`)
@@ -49,18 +75,19 @@ class TagJsons {
 
 			Object.keys(json)
 				.forEach(k => {
-					json[k] = TagJsons._WALKER.walk(
+					json[k] = TagJsons.WALKER.walk(
 						"tagger",
 						json[k],
 						{
 							object: (ident, obj, lastKey) => {
-								if (!LAST_KEY_WHITELIST.has(lastKey)) return obj
+								if (lastKey != null && !LAST_KEY_WHITELIST.has(lastKey)) return obj
 
 								obj = TagCondition.tryRunBasic(obj);
 								obj = SkillTag.tryRun(obj);
 								obj = ActionTag.tryRun(obj);
 								obj = SenseTag.tryRun(obj);
 								obj = SpellTag.tryRun(obj);
+								obj = ItemTag.tryRun(obj);
 								obj = DiceConvert.getTaggedEntry(obj);
 
 								return obj;
@@ -76,14 +103,26 @@ class TagJsons {
 		});
 	}
 }
-TagJsons._WALKER = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
-TagJsons._SPELL_NAMES = {};
-TagJsons._SPELL_NAME_REGEX = null;
+TagJsons.WALKER = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
 
 class SpellTag {
+	static init () {
+		const spellIndex = ut.readJson(`./data/spells/index.json`);
+		Object.entries(spellIndex).forEach(([source, filename]) => {
+			if (SourceUtil.isNonstandardSource(source)) return;
+
+			const spellData = ut.readJson(`./data/spells/${filename}`);
+			spellData.spell.forEach(sp => {
+				SpellTag._SPELL_NAMES[sp.name.toLowerCase()] = {name: sp.name, source: sp.source};
+			});
+		});
+
+		SpellTag._SPELL_NAME_REGEX = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).join("|")}) (spell)`, "gi");
+		SpellTag._SPELL_NAME_REGEX_AND = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).join("|")}) (and {@spell)`, "gi");
+	}
+
 	static tryRun (it) {
-		const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
-		return walker.walk(
+		return TagJsons.WALKER.walk(
 			"spellTagger",
 			it,
 			{
@@ -107,17 +146,74 @@ class SpellTag {
 
 	static _fnTag (strMod) {
 		return strMod
-			.replace(TagJsons._SPELL_NAME_REGEX, (...m) => {
-				const spellMeta = TagJsons._SPELL_NAMES[m[1].toLowerCase()];
+			.replace(SpellTag._SPELL_NAME_REGEX, (...m) => {
+				const spellMeta = SpellTag._SPELL_NAMES[m[1].toLowerCase()];
 				return `{@spell ${m[1]}${spellMeta.source !== SRC_PHB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
 			})
-			.replace(TagJsons._SPELL_NAME_REGEX_AND, (...m) => {
-				const spellMeta = TagJsons._SPELL_NAMES[m[1].toLowerCase()];
+			.replace(SpellTag._SPELL_NAME_REGEX_AND, (...m) => {
+				const spellMeta = SpellTag._SPELL_NAMES[m[1].toLowerCase()];
 				return `{@spell ${m[1]}${spellMeta.source !== SRC_PHB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
 			})
 		;
 	}
 }
+SpellTag._SPELL_NAMES = {};
+SpellTag._SPELL_NAME_REGEX = null;
+SpellTag._SPELL_NAME_REGEX_AND = null;
 
-TagJsons.init();
-TagJsons.run();
+class ItemTag {
+	static async pInit () {
+		const itemArr = await Renderer.item.pBuildList({isAddGroups: true});
+
+		const toolTypes = new Set(["AT", "GS", "INS", "T"]);
+		const tools = itemArr.filter(it => toolTypes.has(it.type) && !SourceUtil.isNonstandardSource(it.source));
+		tools.forEach(tool => {
+			ItemTag._ITEM_NAMES_TOOLS[tool.name.toLowerCase()] = {name: tool.name, source: tool.source};
+		});
+
+		ItemTag._ITEM_NAMES_REGEX_TOOLS = new RegExp(`(^|\\W)(${tools.map(it => it.name).join("|")})(\\W|$)`, "gi");
+	}
+
+	static tryRun (it) {
+		return TagJsons.WALKER.walk(
+			"itemTagger",
+			it,
+			{
+				string: (ident, str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@item"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag
+						}
+					);
+					return ptrStack._;
+				}
+			}
+		);
+	}
+
+	static _fnTag (strMod) {
+		return strMod
+			.replace(ItemTag._ITEM_NAMES_REGEX_TOOLS, (...m) => {
+				const toolMeta = ItemTag._ITEM_NAMES_TOOLS[m[2].toLowerCase()];
+				return `${m[1]}{@item ${m[2]}${toolMeta.source !== SRC_DMG ? `|${toolMeta.source}` : ""}}${m[3]}`;
+			})
+		;
+	}
+}
+ItemTag._ITEM_NAMES_TOOLS = {};
+ItemTag._ITEM_NAMES_REGEX_TOOLS = null;
+
+async function main () {
+	ut.patchLoadJson();
+	await TagJsons.pInit();
+	TagJsons.run();
+	ut.unpatchLoadJson();
+}
+
+main().then(() => console.log("Run complete.")).catch(e => { throw e; });

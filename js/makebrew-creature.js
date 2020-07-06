@@ -2371,7 +2371,7 @@ class CreatureBuilder extends Builder {
 										if (!data) return resolve(null);
 										resolve(data);
 									},
-									isHeight100: true
+									isUncappedHeight: true
 								});
 
 								const $iptName = $(`<input class="form-control form-control--minimal input-xs mr-2" placeholder="Weapon">`);
@@ -2393,6 +2393,7 @@ class CreatureBuilder extends Builder {
 								const $iptMeleeDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Melee Damage Type" autocomplete="off">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageMelee = $$`<div class="flex-col"><hr class="hr-3">
+								<div class="bold mb-2">Melee</div>
 								<div class="flex-v-center mb-2"><span class="mr-2 no-shrink">Melee Range (ft.)</span>${$iptMeleeRange}</div>
 								<div class="flex-v-center mb-2">${$iptMeleeDamDiceCount}<span class="mr-2">d</span>${$iptMeleeDamDiceNum}${$iptMeleeDamBonus}${$iptMeleeDamType}</div>
 								</div>`;
@@ -2405,6 +2406,7 @@ class CreatureBuilder extends Builder {
 								const $iptRangedDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Ranged Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageRanged = $$`<div class="flex-col"><hr class="hr-3">
+								<div class="bold mb-2">Ranged</div>
 								<div class="flex-v-center mb-2">
 									<span class="mr-2 no-shrink">Short Range (ft.)</span>${$iptRangedShort}
 									<span class="mr-2 no-shrink">Long Range (ft.)</span>${$iptRangedLong}
@@ -2418,6 +2420,7 @@ class CreatureBuilder extends Builder {
 								const $iptVersatileDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Two-Handed Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageVersatile = $$`<div class="flex-col"><hr class="hr-3">
+								<div class="bold mb-2">Versatile Damage</div>
 								<div class="flex-v-center mb-2">${$iptVersatileDamDiceCount}<span class="mr-2">d</span>${$iptVersatileDamDiceNum}${$iptVersatileDamBonus}${$iptVersatileDamType}</div>
 								</div>`.hide();
 
@@ -2427,10 +2430,11 @@ class CreatureBuilder extends Builder {
 								const $iptBonusDamType = $(`<input class="form-control form-control--minimal input-xs" placeholder="Bonus Damage Type">`)
 									.typeahead({source: Parser.DMG_TYPES});
 								const $stageBonusDamage = $$`<div class="flex-col"><hr class="hr-3">
+								<div class="bold mb-2">Bonus Damage</div>
 								<div class="flex-v-center mb-2">${$iptBonusDamDiceCount}<span class="mr-2">d</span>${$iptBonusDamDiceNum}${$iptBonusDamBonus}${$iptBonusDamType}</div>
 								</div>`.hide();
 
-								const $btnConfirm = $(`<button class="btn btn-sm btn-default">Add</button>`)
+								const $btnConfirm = $(`<button class="btn btn-sm btn-default mr-2">Add</button>`)
 									.click(() => {
 										if (!$cbMelee.prop("checked") && !$cbRanged.prop("checked")) {
 											return JqueryUtil.doToast({type: "warning", content: "At least one of 'Melee' or 'Ranged' must be selected!"});
@@ -2585,7 +2589,7 @@ class CreatureBuilder extends Builder {
 								${$stageRanged}
 								${$stageVersatile}
 								${$stageBonusDamage}
-								<div class="split flex-v-center mt-2">${$btnConfirm}${$btnReset}</div>
+								<div class="flex-v-center flex-h-right mt-2 pb-1 px-1">${$btnConfirm}${$btnReset}</div>
 								</div>`.appendTo($modalInner)
 							});
 						}

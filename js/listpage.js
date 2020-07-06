@@ -135,7 +135,7 @@ class ListPage {
 		const len = this._dataList.length;
 		for (; this._ixData < len; this._ixData++) {
 			const it = this._dataList[this._ixData];
-			const isExcluded = ExcludeUtil.isExcluded(it.name, it.__prop, it.source);
+			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.autoEncodeHash(it), it.__prop, it.source);
 			this._list.addItem(this.getListItem(it, this._ixData, isExcluded));
 		}
 

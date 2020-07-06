@@ -22,7 +22,7 @@ class BestiaryPage {
 		_addedHashes.add(hash);
 
 		Renderer.monster.updateParsed(mon);
-		const isExcluded = ExcludeUtil.isExcluded(mon.name, "monster", mon.source);
+		const isExcluded = ExcludeUtil.isExcluded(hash, "monster", mon.source);
 
 		this._pageFilter.mutateAndAddToFilters(mon, isExcluded);
 
@@ -409,13 +409,45 @@ class EncounterBuilderUtils {
 
 	static getCrCutoff (data) {
 		data = data.filter(it => getCr(it) !== 100).sort((a, b) => SortUtil.ascSort(getCr(b), getCr(a)));
+		if (!data.length) return 0;
+
+		// no cutoff for CR 0-2
+		if (getCr(data[0]) <= 2) return 0;
 
 		// "When making this calculation, don't count any monsters whose challenge rating is significantly below the average
 		// challenge rating of the other monsters in the group unless you think the weak monsters significantly contribute
 		// to the difficulty of the encounter." -- DMG, p. 82
 
-		// no cutoff for CR 0-2
-		return getCr(data[0]) <= 2 ? 0 : getCr(data[0]) / 2;
+		// Spread the CRs into a single array
+		const crValues = [];
+		data.forEach(it => {
+			const cr = getCr(it);
+			for (let i = 0; i < it.count; ++i) crValues.push(cr);
+		});
+
+		const crMetas = [];
+
+		// If there's precisely one CR value, use it
+		if (crValues.length === 1) {
+			crMetas.push({
+				mean: crValues[0],
+				deviation: 0
+			});
+		} else {
+			// Get an average CR for every possible encounter without one of the creatures in the encounter
+			for (let i = 0; i < crValues.length; ++i) {
+				const crValueFilt = crValues.filter((_, j) => i !== j);
+				const crMean = Math.mean(...crValueFilt);
+				const crStdDev = Math.sqrt((1 / crValueFilt.length) * crValueFilt.map(it => Math.pow(it - crMean, 2)).reduce((a, b) => a + b, 0));
+				crMetas.push({mean: crMean, deviation: crStdDev});
+			}
+		}
+
+		// Sort by descending CR -> ascending deviation
+		crMetas.sort((a, b) => SortUtil.ascSort(b.mean, a.mean) || SortUtil.ascSort(a.deviation, b.deviation));
+
+		// "significantly below the average" -> cutoff at half the average
+		return crMetas[0].mean / 2;
 	}
 
 	/**

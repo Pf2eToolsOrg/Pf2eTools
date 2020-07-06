@@ -422,7 +422,7 @@ class PageFilterSpells extends PageFilter {
 				sc.shortName = sc.shortName || sc.name;
 				sc.source = sc.source || sc.classSource;
 
-				if (sc.subclassSpells) sc.subclassSpells.forEach(it => handleSpellListItem(it, sc.class, sc.classSource, sc.shortName, sc.source));
+				if (sc.subclassSpells) sc.subclassSpells.forEach(it => handleSpellListItem(it, sc.className, sc.classSource, sc.shortName, sc.source));
 				if (sc.subSubclassSpells) Object.entries(sc.subSubclassSpells).forEach(([ssC, arr]) => arr.forEach(it => handleSpellListItem(it, sc.class, sc.classSource, sc.shortName, sc.source, ssC)));
 			});
 		}

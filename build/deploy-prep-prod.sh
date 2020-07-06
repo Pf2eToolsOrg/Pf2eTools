@@ -32,8 +32,8 @@ find . -maxdepth 1 -type f -name '*.html' -print0 |
 
 echo "Optimizing the JS."
 # Improve cache performance by gluing these together. Order is important. `echo`s add newlines.
-cat js/parser.js <(echo ";") js/utils.js <(echo ";") js/utils-ui.js <(echo ";") js/omnidexer.js <(echo ";") js/omnisearch.js <(echo ";") js/render.js <(echo ";") js/scalecreature.js > js/shared.js
-rm js/utils.js js/utils-ui.js js/omnidexer.js js/omnisearch.js js/render.js js/scalecreature.js
+cat js/parser.js <(echo ";") js/utils.js <(echo ";") js/utils-ui.js <(echo ";") js/omnidexer.js <(echo ";") js/omnisearch.js <(echo ";") js/render.js <(echo ";") js/render-dice.js <(echo ";") js/scalecreature.js > js/shared.js
+rm js/utils.js js/utils-ui.js js/omnidexer.js js/omnisearch.js js/render.js js/render-dice.js js/scalecreature.js
 
 # Replace the files with the minified version we made above
 find . -maxdepth 1 -type f -name '*.html' -print0 |
@@ -44,6 +44,7 @@ find . -maxdepth 1 -type f -name '*.html' -print0 |
 		sed -n -i '/js\/omnidexer.js/!p' $line
 		sed -n -i '/js\/omnisearch.js/!p' $line
 		sed -n -i '/js\/render.js/!p' $line
+		sed -n -i '/js\/render-dice.js/!p' $line
 		sed -n -i '/js\/scalecreature.js/!p' $line
     done
 

@@ -20,7 +20,9 @@ class ItemsPage {
 	}
 
 	getListItem (item, itI, isExcluded) {
-		if (ExcludeUtil.isExcluded(item.name, "item", item.source)) return null;
+		const hash = UrlUtil.autoEncodeHash(item);
+
+		if (ExcludeUtil.isExcluded(hash, "item", item.source)) return null;
 		if (item.noDisplay) return null;
 		Renderer.item.enhanceItem(item);
 
@@ -29,7 +31,6 @@ class ItemsPage {
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
-		const hash = UrlUtil.autoEncodeHash(item);
 		const source = Parser.sourceJsonToAbv(item.source);
 		const type = item._typeListText.join(", ").toTitleCase();
 

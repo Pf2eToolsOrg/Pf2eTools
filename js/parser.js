@@ -76,7 +76,7 @@ Parser.textToNumber = function (str) {
 	str = str.trim().toLowerCase();
 	switch (str) {
 		case "zero": return 0;
-		case "one": return 1;
+		case "one": case "a": case "an": return 1;
 		case "two": return 2;
 		case "three": return 3;
 		case "four": return 4;
@@ -506,10 +506,6 @@ Parser.stringToSlug = function (str) {
 
 Parser.stringToCasedSlug = function (str) {
 	return str.replace(/[^\w ]+/g, "").replace(/ +/g, "-");
-};
-
-Parser.itemTypeToFull = function (type) {
-	return Parser._parse_aToB(Parser.ITEM_TYPE_JSON_TO_ABV, type);
 };
 
 Parser.itemValueToFull = function (item, isShortForm) {
@@ -1031,22 +1027,27 @@ Parser.spClassesToFull = function (classes, textOnly, subclassLookup = {}) {
 Parser.spMainClassesToFull = function (classes, textOnly = false, prop = "fromClassList") {
 	if (!classes) return "";
 	return (classes[prop] || [])
-		.filter(c => !ExcludeUtil.isInitialised || !ExcludeUtil.isExcluded(c.name, "class", c.source))
-		.sort((a, b) => SortUtil.ascSort(a.name, b.name))
-		.map(c => textOnly ? c.name : `<a title="Source: ${Parser.sourceJsonToFull(c.source)}" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}">${c.name}</a>`)
+		.map(c => ({hash: UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c), c}))
+		.filter(it => !ExcludeUtil.isInitialised || !ExcludeUtil.isExcluded(it.hash, "class", it.c.source))
+		.sort((a, b) => SortUtil.ascSort(a.c.name, b.c.name))
+		.map(it => textOnly ? it.c.name : `<a title="Source: ${Parser.sourceJsonToFull(it.c.source)}" href="${UrlUtil.PG_CLASSES}#${it.hash}">${it.c.name}</a>`)
 		.join(", ");
 };
 
 Parser.spSubclassesToFull = function (classes, textOnly, subclassLookup = {}) {
 	if (!classes || !classes.fromSubclass) return "";
 	return classes.fromSubclass
-		.filter(c => {
+		.filter(mt => {
 			if (!ExcludeUtil.isInitialised) return true;
-			const excludeClass = ExcludeUtil.isExcluded(c.class.name, "class", c.class.source);
+			const excludeClass = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](mt.class), "class", mt.class.source);
 			if (excludeClass) return false;
-			const fromLookup = MiscUtil.get(subclassLookup, c.class.source, c.class.name, c.subclass.source, c.subclass.name);
+			const fromLookup = MiscUtil.get(subclassLookup, mt.class.source, mt.class.name, mt.subclass.source, mt.subclass.name);
 			if (!fromLookup) return true;
-			const excludeSubclass = ExcludeUtil.isExcluded(fromLookup.name || c.subclass.name, "subclass", c.subclass.source);
+			const excludeSubclass = ExcludeUtil.isExcluded(
+				UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: fromLookup.name || mt.subclass.name, source: mt.subclass.source}),
+				"subclass",
+				mt.subclass.source
+			);
 			return !excludeSubclass;
 		})
 		.sort((a, b) => {
@@ -2661,6 +2662,43 @@ Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
 });
+
+Parser.TAG_TO_DEFAULT_SOURCE = {
+	"spell": SRC_PHB,
+	"item": SRC_DMG,
+	"class": SRC_PHB,
+	"creature": SRC_MM,
+	"condition": SRC_PHB,
+	"disease": SRC_DMG,
+	"background": SRC_PHB,
+	"race": SRC_PHB,
+	"optfeature": SRC_PHB,
+	"reward": SRC_DMG,
+	"feat": SRC_PHB,
+	"psionic": SRC_UATMC,
+	"object": SRC_DMG,
+	"cult": SRC_MTF,
+	"boon": SRC_MTF,
+	"trap": SRC_DMG,
+	"hazard": SRC_DMG,
+	"deity": SRC_PHB,
+	"variantrule": SRC_DMG,
+	"vehicle": SRC_GoS,
+	"action": SRC_PHB,
+	"classFeature": SRC_PHB,
+	"subclassFeature": SRC_PHB,
+	"table": SRC_DMG,
+	"language": SRC_PHB
+};
+Parser.getTagSource = function (tag, source) {
+	if (source && source.trim()) return source;
+
+	tag = tag.trim();
+	if (tag.startsWith("@")) tag = tag.slice(1);
+
+	if (!Parser.TAG_TO_DEFAULT_SOURCE[tag]) throw new Error(`Unhandled tag "${tag}"`);
+	return Parser.TAG_TO_DEFAULT_SOURCE[tag];
+};
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"A": "ammunition",

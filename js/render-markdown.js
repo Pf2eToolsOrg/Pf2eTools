@@ -623,8 +623,8 @@ class RendererMarkdown {
 		for (let i = 0; i < len; ++i) {
 			const s = tagSplit[i];
 			if (!s) continue;
-			if (s[0] === "@") {
-				const [tag, text] = Renderer.splitFirstSpace(s);
+			if (s.startsWith("{@")) {
+				const [tag, text] = Renderer.splitFirstSpace(s.slice(1, -1));
 				this._renderString_renderTag(textStack, meta, options, tag, text);
 			} else textStack[0] += s;
 		}

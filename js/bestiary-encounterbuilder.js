@@ -748,7 +748,7 @@ class EncounterBuilder extends ProxyBase {
 				type: "entries",
 				entries: [
 					`{@b Adjusted by a ${xp.encounter.meta.playerAdjustedXpMult}× multiplier, based on a minimum challenge rating threshold of approximately ${`${xp.encounter.meta.crCutoff.toFixed(2)}`.replace(/[,.]?0+$/, "")}*&dagger;, and a party size of ${xp.encounter.meta.playerCount} players.}`,
-					`{@note * Calculated as half of the maximum challenge rating, unless the highest challenge rating is two or less, in which case there is no threshold.}`,
+					`{@note * If the maximum challenge rating is two or less, there is no threshold. Otherwise, for each creature in the encounter, the average CR of the encounter is calculated while excluding that creature. The highest of such averages is then halved to produce the final threshold.}`,
 					`<hr>`,
 					{
 						type: "quote",

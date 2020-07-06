@@ -48,7 +48,7 @@
 
 	&nav {
 		position: relative;
-		min-height: 0;
+		min-height: 33px;
 		flex-shrink: 0;
 
 		@media (max-width: $width-screen-sm) {
@@ -219,7 +219,7 @@
 
 	&--cancer {
 		@media (min-width: $width-screen-md) {
-			min-height: calc(100vh - #{$sz-y-header});
+			// min-height: calc(100vh - #{$sz-y-header});
 		}
 	}
 
@@ -3968,7 +3968,7 @@ ul.list.books > li > a > span.name:hover {
 
 	&wrp-sidebar-rhs {
 		position: fixed;
-		top: 80px;
+		top: 0;
 		right: calc((50vw - (1170px / 2)) - 300px);
 		width: 300px;
 		height: 100%;
@@ -3983,6 +3983,7 @@ ul.list.books > li > a > span.name:hover {
 
 		&--scrolling-page {
 			position: absolute;
+			top: 80px;
 		}
 
 		@media (max-width: 1800px) {
@@ -3992,7 +3993,14 @@ ul.list.books > li > a > span.name:hover {
 
 	&sidebar-rhs-inner {
 		position: sticky;
-		top: 20px;
+
+		&--top {
+			top: 10px;
+		}
+
+		&--bottom {
+			top: 620px;
+		}
 	}
 
 	&footer-pad {
@@ -4002,6 +4010,16 @@ ul.list.books > li > a > span.name:hover {
 	&wrp-mobile-1 {
 		display: flex;
 		flex-direction: column;
+	}
+}
+
+.cancer__sidebar-rhs-inner--scrolling-page .cancer__sidebar-rhs-inner {
+	&--top {
+		top: 20px;
+	}
+
+	&--bottom {
+		top: 630px;
 	}
 }
 /* endregion */
@@ -4043,7 +4061,6 @@ ul.list.books > li > a > span.name:hover {
 	}
 }
 
-// FIXME remove
 .TEST {
 	&_LEADER {
 		background: fuchsia;
@@ -4053,12 +4070,20 @@ ul.list.books > li > a > span.name:hover {
 		height: 90px;
 	}
 
-	&_RHS {
+	&_RHS_TOP {
 		background: fuchsia;
 		user-select: none;
 		color: white;
 		width: 300px;
 		height: 600px;
+	}
+
+	&_RHS_BOTTOM {
+		background: lime;
+		user-select: none;
+		color: white;
+		width: 300px;
+		height: 250px;
 	}
 }
 /* Cancer end */
