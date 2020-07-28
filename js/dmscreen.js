@@ -1262,7 +1262,7 @@ class Panel {
 		);
 	}
 
-	doPopulate_Image (url, ixOpt, title = "Image") {
+	doPopulate_Image (url, title = "Image") {
 		const meta = {u: url};
 		const $wrpPanel = $(`<div class="panel-content-wrapper-inner"/>`);
 		const $wrpImage = $(`<div class="panel-content-wrapper-img"/>`).appendTo($wrpPanel);
@@ -1274,8 +1274,7 @@ class Panel {
 			meta,
 			$wrpPanel,
 			title,
-			true,
-			ixOpt // FIXME never used?
+			true
 		);
 		$img.panzoom({
 			$reset: $iptReset,
@@ -2482,7 +2481,7 @@ class AddMenuVideoTab extends AddMenuTab {
 					if (e.which === 13) $btnAddYT.click();
 				})
 				.appendTo($wrpYT);
-			const $btnAddYT = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpYT);
+			const $btnAddYT = $(`<button class="btn btn-primary btn-sm">Embed</button>`).appendTo($wrpYT);
 			$btnAddYT.on("click", () => {
 				let url = $iptUrlYT.val().trim();
 				const m = /https?:\/\/(www\.)?youtube\.com\/watch\?v=(.*?)(&.*$|$)/.exec(url);
@@ -2505,8 +2504,8 @@ class AddMenuVideoTab extends AddMenuTab {
 					if (e.which === 13) $btnAddTwitch.click();
 				})
 				.appendTo($wrpTwitch);
-			const $btnAddTwitch = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpTwitch);
-			const $btnAddTwitchChat = $(`<button class="btn btn-primary">Embed Chat</button>`).appendTo($wrpTwitch);
+			const $btnAddTwitch = $(`<button class="btn btn-primary btn-sm">Embed</button>`).appendTo($wrpTwitch);
+			const $btnAddTwitchChat = $(`<button class="btn btn-primary btn-sm">Embed Chat</button>`).appendTo($wrpTwitch);
 			const getTwitchM = (url) => {
 				return /https?:\/\/(www\.)?twitch\.tv\/(.*?)(\?.*$|$)/.exec(url);
 			};
@@ -2548,7 +2547,7 @@ class AddMenuVideoTab extends AddMenuTab {
 					if (e.which === 13) $iptUrlGeneric.click();
 				})
 				.appendTo($wrpGeneric);
-			const $btnAddGeneric = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpGeneric);
+			const $btnAddGeneric = $(`<button class="btn btn-primary btn-sm">Embed</button>`).appendTo($wrpGeneric);
 			$btnAddGeneric.on("click", () => {
 				let url = $iptUrlGeneric.val().trim();
 				if (url) {
@@ -2624,7 +2623,7 @@ class AddMenuImageTab extends AddMenuTab {
 				const ix = this.menu.pnl.doPopulate_Loading("Uploading"); // will be null if not in tabbed mode
 				this.menu.doClose();
 			}).appendTo($tab);
-			const $btnAdd = $(`<button class="btn btn-primary">Upload</button>`).appendTo($wrpImgur);
+			const $btnAdd = $(`<button class="btn btn-primary btn-sm">Upload</button>`).appendTo($wrpImgur);
 			$btnAdd.on("click", () => {
 				$iptFile.click();
 			});
@@ -2637,7 +2636,7 @@ class AddMenuImageTab extends AddMenuTab {
 					if (e.which === 13) $btnAddUrl.click();
 				})
 				.appendTo($wrpUtl);
-			const $btnAddUrl = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpUtl);
+			const $btnAddUrl = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpUtl);
 			$btnAddUrl.on("click", () => {
 				let url = $iptUrl.val().trim();
 				if (url) {
@@ -2655,7 +2654,7 @@ class AddMenuImageTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			// region Adventure dynamic viewer
-			const $btnSelectAdventure = $(`<button class="btn btn-primary">Add</button>`)
+			const $btnSelectAdventure = $(`<button class="btn btn-primary btn-sm">Add</button>`)
 				.click(() => DmMapper.pHandleMenuButtonClick(this.menu));
 
 			$$`<div class="ui-modal__row">
@@ -2680,7 +2679,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			const $tab = $(`<div class="ui-search__wrp-output underline-tabs overflow-y-auto pr-1" id="${this.tabId}"/>`);
 
 			const $wrpRoller = $(`<div class="ui-modal__row"><span>Dice Roller <i class="text-muted">(pins the existing dice roller to a panel)</i></span></div>`).appendTo($tab);
-			const $btnRoller = $(`<button class="btn btn-primary">Pin</button>`).appendTo($wrpRoller);
+			const $btnRoller = $(`<button class="btn btn-primary btn-sm">Pin</button>`).appendTo($wrpRoller);
 			$btnRoller.on("click", () => {
 				Renderer.dice.bindDmScreenPanel(this.menu.pnl);
 				this.menu.doClose();
@@ -2688,13 +2687,13 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpTracker = $(`<div class="ui-modal__row"><span>Initiative Tracker</span></div>`).appendTo($tab);
-			const $btnTracker = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpTracker);
+			const $btnTracker = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpTracker);
 			$btnTracker.on("click", () => {
 				this.menu.pnl.doPopulate_InitiativeTracker();
 				this.menu.doClose();
 			});
 
-			const $btnPlayertracker = $(`<button class="btn btn-primary">Add</button>`)
+			const $btnPlayertracker = $(`<button class="btn btn-primary btn-sm">Add</button>`)
 				.click(() => {
 					this.menu.pnl.doPopulate_InitiativeTrackerPlayer();
 					this.menu.doClose();
@@ -2708,7 +2707,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpText = $(`<div class="ui-modal__row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, embed a Google Doc or similar)</i></span></div>`).appendTo($tab);
-			const $btnText = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpText);
+			const $btnText = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpText);
 			$btnText.on("click", () => {
 				this.menu.pnl.doPopulate_TextBox();
 				this.menu.doClose();
@@ -2716,21 +2715,21 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpUnitConverter = $(`<div class="ui-modal__row"><span>Imperial-Metric Unit Converter</span></div>`).appendTo($tab);
-			const $btnUnitConverter = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpUnitConverter);
+			const $btnUnitConverter = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpUnitConverter);
 			$btnUnitConverter.on("click", () => {
 				this.menu.pnl.doPopulate_UnitConverter();
 				this.menu.doClose();
 			});
 
 			const $wrpMoneyConverter = $(`<div class="ui-modal__row"><span>Coin Converter</span></div>`).appendTo($tab);
-			const $btnMoneyConverter = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpMoneyConverter);
+			const $btnMoneyConverter = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpMoneyConverter);
 			$btnMoneyConverter.on("click", () => {
 				this.menu.pnl.doPopulate_MoneyConverter();
 				this.menu.doClose();
 			});
 
 			const $wrpCounter = $(`<div class="ui-modal__row"><span>Counter</span></div>`).appendTo($tab);
-			const $btnCounter = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpCounter);
+			const $btnCounter = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpCounter);
 			$btnCounter.on("click", () => {
 				this.menu.pnl.doPopulate_Counter();
 				this.menu.doClose();
@@ -2739,7 +2738,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpTimeTracker = $(`<div class="ui-modal__row"><span>In-Game Clock/Calendar</span></div>`).appendTo($tab);
-			const $btnTimeTracker = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpTimeTracker);
+			const $btnTimeTracker = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpTimeTracker);
 			$btnTimeTracker.on("click", () => {
 				this.menu.pnl.doPopulate_TimeTracker();
 				this.menu.doClose();
@@ -2748,7 +2747,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpBlank = $(`<div class="ui-modal__row"><span class="help" title="For those who don't like plus signs.">Blank Space</span></div>`).appendTo($tab);
-			$(`<button class="btn btn-primary">Add</button>`)
+			$(`<button class="btn btn-primary btn-sm">Add</button>`)
 				.on("click", () => {
 					this.menu.pnl.doPopulate_Blank();
 					this.menu.doClose();
@@ -3071,7 +3070,7 @@ const bookLoader = new BookLoader();
 
 class NoteBox {
 	static make$Notebox (board, content) {
-		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports inline rolls and content tags (CTRL-q with the cursor over some text to activate the embed):\n • Inline rolls,  [[1d20+2]]\n • Content tags (as per the Demo page), {@creature goblin}, {@spell fireball}\n • Link tags, {@link https://5e.tools}">${content || ""}</textarea>`)
+		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports inline rolls and content tags (CTRL-q with the caret in the text to activate the embed):\n • Inline rolls,  [[1d20+2]]\n • Content tags (as per the Demo page), {@creature goblin}, {@spell fireball}\n • Link tags, {@link https://5e.tools}">${content || ""}</textarea>`)
 			.on("keydown", async evt => {
 				if ((evt.ctrlKey || evt.metaKey) && evt.key === "q") {
 					const txt = $iptText[0];
@@ -3137,7 +3136,7 @@ class NoteBox {
 							const tag = str.split(" ")[0].replace(/^@/, "");
 							const text = str.split(" ").slice(1).join(" ");
 							if (Renderer.hover.TAG_TO_PAGE[tag]) {
-								const r = Renderer.get().render(`{${str}`);
+								const r = Renderer.get().render(`{${str}}`);
 								evt.type = "mouseover";
 								evt.shiftKey = true;
 								evt.ctrlKey = false;

@@ -1720,7 +1720,7 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 			this._parent.component,
 			"isBrowseMode",
 			{
-				$ele: $(`<button class="btn btn-xs btn-default">Browse</button>`),
+				$ele: $(`<button class="btn btn-xs btn-default" title="When enabled, the current calendar view will be saved. You can then freely browse. When you're done, disable Browse mode to return to your original view.">Browse</button>`),
 				fnHookPost: val => {
 					if (val) this._parent.set("browseTime", this._parent.get("time"));
 					else this._parent.set("browseTime", null);
@@ -2103,8 +2103,8 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 
 		const {year, dayInfo, date, monthInfo, seasonInfos, yearInfos, eraInfos} = getTimeInfo({year: eventYear, dayOfYear: eventDay});
 
-		const pHandleContextSwitch = async (evt, ele, $invokedOn, $selectedMenu, nuEncounter) => {
-			switch (Number($selectedMenu.data("ctx-id"))) {
+		const pHandleContextSwitch = async (mode, nuEncounter) => {
+			switch (mode) {
 				case 0: {
 					const savedState = await EncounterUtil.pGetInitialState();
 					if (savedState && savedState.data) {
@@ -2171,46 +2171,92 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 			this._parent.set("encounters", [...Object.values(this._parent.get("encounters")), nuEncounter].mergeMap(it => ({[it.id]: it})));
 		};
 
-		const ctxEncounterId = ContextUtil.getNextGenericMenuId();
-		ContextUtil.doInitContextMenu(
-			ctxEncounterId,
-			(evt, ele, $invokedOn, $selectedMenu) => {
-				const nxtPos = Object.keys(this._parent.get("encounters")).length;
-				const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, year, eventDay);
+		const menuEncounter = ContextUtil.getMenu([
+			new ContextUtil.Action(
+				"From Current Bestiary Encounter",
+				() => {
+					const nxtPos = Object.keys(this._parent.get("encounters")).length;
+					const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, year, eventDay);
+					return pHandleContextSwitch(0, nuEncounter);
+				}
+			),
+			new ContextUtil.Action(
+				"From Saved Bestiary Encounter",
+				() => {
+					const nxtPos = Object.keys(this._parent.get("encounters")).length;
+					const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, year, eventDay);
+					return pHandleContextSwitch(1, nuEncounter);
+				}
+			),
+			new ContextUtil.Action(
+				"From Bestiary Encounter File",
+				() => {
+					const nxtPos = Object.keys(this._parent.get("encounters")).length;
+					const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, year, eventDay);
+					return pHandleContextSwitch(2, nuEncounter);
+				}
+			)
+		]);
 
-				return pHandleContextSwitch(evt, ele, $invokedOn, $selectedMenu, nuEncounter);
-			},
-			["From Current Bestiary Encounter", "From Saved Bestiary Encounter", "From Bestiary Encounter File"]
-		);
-		const ctxEncounterAtTimeId = ContextUtil.getNextGenericMenuId();
-		ContextUtil.doInitContextMenu(
-			ctxEncounterAtTimeId,
-			async (evt, ele, $invokedOn, $selectedMenu) => {
-				const chosenTimeInfo = await this._render_pGetEventTimeOfDay(eventYear, eventDay, evt.shiftKey);
-				if (chosenTimeInfo == null) return;
+		const menuEncounterAtTime = ContextUtil.getMenu([
+			new ContextUtil.Action(
+				"From Current Bestiary Encounter",
+				async evt => {
+					const chosenTimeInfo = await this._render_pGetEventTimeOfDay(eventYear, eventDay, evt.shiftKey);
+					if (chosenTimeInfo == null) return;
 
-				const nxtPos = Object.keys(this._parent.get("encounters")).length;
-				const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, chosenTimeInfo.year, chosenTimeInfo.eventDay, chosenTimeInfo.timeOfDay);
+					const nxtPos = Object.keys(this._parent.get("encounters")).length;
+					const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, chosenTimeInfo.year, chosenTimeInfo.eventDay, chosenTimeInfo.timeOfDay);
 
-				return pHandleContextSwitch(evt, ele, $invokedOn, $selectedMenu, nuEncounter);
-			},
-			[
-				new ContextUtil.Action("From Current Bestiary Encounter", null, {helpText: "SHIFT to Add at Current Time"}),
-				new ContextUtil.Action("From Saved Bestiary Encounter", null, {helpText: "SHIFT to Add at Current Time"}),
-				new ContextUtil.Action("From Bestiary Encounter File", null, {helpText: "SHIFT to Add at Current Time"})
-			]
-		);
+					return pHandleContextSwitch(0, nuEncounter);
+				},
+				{
+					title: "SHIFT to Add at Current Time"
+				}
+			),
+			new ContextUtil.Action(
+				"From Saved Bestiary Encounter",
+				async evt => {
+					const chosenTimeInfo = await this._render_pGetEventTimeOfDay(eventYear, eventDay, evt.shiftKey);
+					if (chosenTimeInfo == null) return;
+
+					const nxtPos = Object.keys(this._parent.get("encounters")).length;
+					const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, chosenTimeInfo.year, chosenTimeInfo.eventDay, chosenTimeInfo.timeOfDay);
+
+					return pHandleContextSwitch(1, nuEncounter);
+				},
+				{
+					title: "SHIFT to Add at Current Time"
+				}
+			),
+			new ContextUtil.Action(
+				"From Bestiary Encounter File",
+				async evt => {
+					const chosenTimeInfo = await this._render_pGetEventTimeOfDay(eventYear, eventDay, evt.shiftKey);
+					if (chosenTimeInfo == null) return;
+
+					const nxtPos = Object.keys(this._parent.get("encounters")).length;
+					const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, chosenTimeInfo.year, chosenTimeInfo.eventDay, chosenTimeInfo.timeOfDay);
+
+					return pHandleContextSwitch(2, nuEncounter);
+				},
+				{
+					title: "SHIFT to Add at Current Time"
+				}
+			)
+		]);
+
 		const $btnAddEncounter = $(`<button class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus"/> Add Encounter</button>`)
-			.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnAddEncounter, ctxEncounterId));
+			.click(evt => ContextUtil.pOpenMenu(evt, menuEncounter));
 
 		const $btnAddEncounterAtTime = $(`<button class="btn btn-xs btn-success">At Time...</button>`)
-			.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnAddEncounterAtTime, ctxEncounterAtTimeId));
+			.click(evt => ContextUtil.pOpenMenu(evt, menuEncounterAtTime));
 
 		const {$modalInner, doClose} = UiUtil.getShowModal({
 			title: `${TimeTrackerBase.formatDateInfo(dayInfo, date, monthInfo, seasonInfos)}\u2014${TimeTrackerBase.formatYearInfo(year, yearInfos, eraInfos)}`,
 			cbClose: () => {
 				this._parent.removeHook("events", hookEvents);
-				ContextUtil.doTeardownContextMenu(ctxEncounterId);
+				ContextUtil.deleteMenu(menuEncounter);
 			},
 			zIndex: TimeTrackerRoot_Calendar._Z_INDEX_MODAL,
 			isUncappedHeight: true,

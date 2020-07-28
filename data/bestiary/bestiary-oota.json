@@ -14,6 +14,96 @@
 	},
 	"monster": [
 		{
+			"name": "Aljanor Keenblade",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 149,
+			"_copy": {
+				"name": "Knight",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the knight",
+						"with": "Aljanor",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"ac": [
+				10
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Amarith Coppervein",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 142,
+			"_copy": {
+				"name": "Veteran",
+				"source": "MM",
+				"_trait": {
+					"name": "Mountain Dwarf",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the veteran",
+						"with": "Amarith",
+						"flags": "i"
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Longsword",
+						"items": {
+							"name": "Warhammer",
+							"entries": [
+								"{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d8 + 3}) bludgeoning damage, or 8 ({@damage 1d10 + 3}) bludgeoning damage if used with two hands."
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"G"
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Animated Drow Statue",
+			"source": "OotA",
+			"page": 96,
+			"_copy": {
+				"name": "Animated Armor",
+				"source": "MM",
+				"_mod": {
+					"*": [
+						{
+							"mode": "replaceTxt",
+							"replace": "suit of armor",
+							"with": "statue"
+						},
+						{
+							"mode": "replaceTxt",
+							"replace": "armor",
+							"with": "statue"
+						}
+					]
+				}
+			},
+			"type": "elemental",
+			"hasToken": true
+		},
+		{
 			"name": "Awakened Zurkhwood",
 			"source": "OotA",
 			"page": 230,
@@ -94,6 +184,25 @@
 				"MW",
 				"RCH"
 			]
+		},
+		{
+			"name": "Blurg",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 29,
+			"_copy": {
+				"name": "Orog",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the orog",
+						"with": "Blurg",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
 		},
 		{
 			"name": "Bridesmaid of Zuggtmoy",
@@ -190,6 +299,31 @@
 				}
 			},
 			"hasToken": true
+		},
+		{
+			"name": "Cave Badger",
+			"source": "OotA",
+			"page": 96,
+			"_copy": {
+				"name": "Giant Badger",
+				"source": "MM"
+			},
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"speed": {
+				"walk": 30,
+				"burrow": 15
+			},
+			"senses": [
+				"darkvision 30 ft.",
+				"tremorsense 60 ft."
+			]
 		},
 		{
 			"name": "Chamberlain of Zuggtmoy",
@@ -690,6 +824,104 @@
 			]
 		},
 		{
+			"name": "Drow Acolyte",
+			"source": "OotA",
+			"page": 201,
+			"_copy": {
+				"name": "Acolyte",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Drow Bandit",
+			"source": "OotA",
+			"page": 194,
+			"_copy": {
+				"name": "Bandit",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Drow Commoner",
+			"source": "OotA",
+			"page": 194,
+			"_copy": {
+				"name": "Commoner",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Drow Cultist",
+			"source": "OotA",
+			"page": 196,
+			"_copy": {
+				"name": "Cultist",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Drow Guard",
+			"source": "OotA",
+			"page": 195,
+			"_copy": {
+				"name": "Guard",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Drow Noble",
+			"source": "OotA",
+			"page": 196,
+			"_copy": {
+				"name": "Noble",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Drow Scout",
+			"source": "OotA",
+			"page": 191,
+			"_copy": {
+				"name": "Scout",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				}
+			},
+			"hasToken": true
+		},
+		{
 			"name": "Drow Spore Servant",
 			"source": "OotA",
 			"page": 229,
@@ -748,6 +980,50 @@
 			"miscTags": [
 				"MW"
 			]
+		},
+		{
+			"name": "Drow Spy",
+			"source": "OotA",
+			"page": 195,
+			"_copy": {
+				"name": "Spy",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Duergar Alchemist",
+			"source": "OotA",
+			"page": 76,
+			"_copy": {
+				"name": "Duergar",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Javelin",
+						"items": [
+							{
+								"name": "Acid Vial",
+								"entries": [
+									"{@atk rw} {@hit 4} to hit, range 20 ft., one target. {@h}7 ({@damage 2d6}) acid damage."
+								]
+							},
+							{
+								"name": "Alchemist's Fire",
+								"entries": [
+									"{@atk rw} {@hit 4} to hit, range 20 ft., one target. {@h}2 ({@damage 1d4}) fire damage at the start of each of the target's turns. A creature can end this damage by using its action to make a successful {@dc 10} Dexterity check to extinguish the flames."
+								]
+							}
+						]
+					}
+				}
+			},
+			"hasToken": true
 		},
 		{
 			"name": "Duergar Darkhaft",
@@ -1257,6 +1533,126 @@
 			]
 		},
 		{
+			"name": "Fiendish Giant Spider",
+			"source": "OotA",
+			"page": 97,
+			"_copy": {
+				"name": "Giant Wolf Spider",
+				"source": "MM"
+			},
+			"resist": [
+				"cold",
+				"fire",
+				"lightning"
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"cr": "1/2"
+		},
+		{
+			"name": "Four-Armed Statue",
+			"source": "OotA",
+			"page": 206,
+			"_copy": {
+				"name": "Stone Golem",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "golem",
+						"with": "statue"
+					},
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"The statue makes four sword attacks."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Slam",
+							"items": {
+								"name": "Sword",
+								"entries": [
+									"{@atk mw} {@hit 10} to hit, reach 5 ft., one target. {@h}10 ({@damage 1d8 + 6}) slashing damage."
+								]
+							}
+						}
+					]
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Gash",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 181,
+			"_copy": {
+				"name": "Gnoll",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the gnoll",
+						"with": "Gash",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Wretched",
+							"entries": [
+								"Gash has disadvantage on Wisdom checks and Wisdom saving throws because of the physical and mental abuse he has suffered. A lesser restoration spell rids him of these effects."
+							]
+						}
+					}
+				}
+			},
+			"hp": {
+				"average": 11,
+				"formula": "5d8"
+			},
+			"speed": {
+				"walk": 25
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Ghazrim DuLoc",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 141,
+			"_copy": {
+				"name": "Noble",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the noble",
+						"with": "Ghazrim",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"hasToken": true
+		},
+		{
 			"name": "Giant Riding Lizard",
 			"source": "OotA",
 			"page": 131,
@@ -1355,6 +1751,48 @@
 			"traitTags": [
 				"Water Breathing"
 			]
+		},
+		{
+			"name": "Glabbagool",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 35,
+			"_copy": {
+				"name": "Gelatinous Cube",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the cube",
+						"with": "Glabbagool",
+						"flags": "i"
+					}
+				}
+			},
+			"int": 10,
+			"languages": [
+				"telepathy 60 ft."
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Grazilaxx",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 29,
+			"_copy": {
+				"name": "Mind Flayer",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mind flayer",
+						"with": "Grazilaxx",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
 		},
 		{
 			"name": "Grisha",
@@ -1564,6 +2002,101 @@
 			]
 		},
 		{
+			"name": "Ilvara Mizzrym",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 9,
+			"_copy": {
+				"name": "Drow Priestess of Lolth",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the drow",
+						"with": "Ilvara",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Special Equipment",
+							"entries": [
+								"Ilvara wields a {@item tentacle rod} in addition to her scourge."
+							]
+						}
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Infant Basilisk",
+			"source": "OotA",
+			"page": 100,
+			"_copy": {
+				"name": "Basilisk",
+				"source": "MM"
+			},
+			"size": "T",
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 4,
+				"formula": "1d4 + 2"
+			},
+			"speed": {
+				"walk": 10
+			},
+			"str": 10,
+			"cr": "0",
+			"trait": null,
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 2} to hit, reach 5 ft., one target. {@h}1 piercing damage plus 1 poison damage."
+					]
+				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Infant Hook Horror",
+			"source": "OotA",
+			"page": 34,
+			"_copy": {
+				"name": "Hook Horror",
+				"source": "MM"
+			},
+			"size": "T",
+			"ac": [
+				{
+					"ac": 10,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 4,
+				"formula": "1d4 + 2"
+			},
+			"speed": {
+				"walk": 10,
+				"climb": 10
+			},
+			"str": 9,
+			"cr": "0",
+			"action": null,
+			"hasToken": true
+		},
+		{
 			"name": "Ixitxachitl",
 			"source": "OotA",
 			"page": 225,
@@ -1751,6 +2284,192 @@
 			]
 		},
 		{
+			"name": "Jade Giant Spider",
+			"source": "OotA",
+			"page": 201,
+			"_copy": {
+				"name": "Stone Golem",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "golem",
+						"with": "spider",
+						"flags": "i"
+					}
+				}
+			},
+			"hp": {
+				"average": 250,
+				"formula": "17d10 + 85"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"senses": [
+				"truesight 120 ft."
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Jimjar",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 6,
+			"_copy": {
+				"name": "Spy",
+				"source": "MM",
+				"_trait": {
+					"name": "Deep Gnome",
+					"source": "DMG"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the spy",
+						"with": "Jimjar",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Juvenile Hook Horror",
+			"source": "OotA",
+			"page": 34,
+			"_copy": {
+				"name": "Hook Horror",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Hook",
+						"items": {
+							"name": "Hook",
+							"entries": [
+								"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
+							]
+						}
+					}
+				}
+			},
+			"size": "M",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 39,
+				"formula": "6d8 + 12"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 15,
+			"cr": "2",
+			"hasToken": true
+		},
+		{
+			"name": "Khalessa Draga",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 149,
+			"_copy": {
+				"name": "Spy",
+				"source": "MM",
+				"_trait": {
+					"name": "High Elf",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the spy",
+						"with": "Khalessa",
+						"flags": "i"
+					},
+					"languages": {
+						"mode": "appendIfNotExistsArr",
+						"items": "Undercommon"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Special Equipment",
+							"entries": [
+								"Khalessa owns a {@item hat of disguise}, which she uses to appear as a female drow while in the company of drow."
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"N"
+			],
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Khalessa can innately cast the following spell, requiring no material components:"
+					],
+					"will": [
+						"{@spell dancing lights}"
+					],
+					"ability": "int"
+				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Kinyel Druu'giir",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 134,
+			"_copy": {
+				"name": "Assassin",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the assassin",
+						"with": "Kinyel",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Kurr",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 179,
+			"_copy": {
+				"name": "Gnoll Fang of Yeenoghu",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the gnoll",
+						"with": "Kurr",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
 			"name": "Lords' Alliance Guard",
 			"source": "OotA",
 			"page": 131,
@@ -1928,6 +2647,43 @@
 			]
 		},
 		{
+			"name": "Lorthuun",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 141,
+			"_copy": {
+				"name": "Beholder",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the beholder",
+						"with": "Lorthuun",
+						"flags": "i"
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Eye Rays",
+						"items": {
+							"name": "Eye Rays",
+							"entries": [
+								"The beholder shoots three of the following magical eye rays at random (reroll duplicates), choosing one to three targets it can see within 120 feet of it:",
+								"{@i 1. Charm Ray.} The targeted creature must succeed on a {@dc 16} Wisdom saving throw or be {@condition charmed} by the beholder for 1 hour, or until the beholder harms the creature.",
+								"{@i 2. Paralyzing Ray.} The targeted creature must succeed on a {@dc 16} Constitution saving throw or be {@condition paralyzed} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+								"{@i 3. Fear Ray.} The targeted creature must succeed on a {@dc 16} Wisdom saving throw or be {@condition frightened} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+								"{@i 4. Slowing Ray.} The targeted creature must succeed on a {@dc 16} Dexterity saving throw. On a failed save, the target's speed is halved for 1 minute. In addition, the creature can't take reactions, and it can take either an action or a bonus action on its turn, not both. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+								"{@i 5. Enervation Ray.} The targeted creature must make a {@dc 16} Constitution saving throw, taking 36 ({@damage 8d8}) necrotic damage on a failed save, or half as much damage on a successful one.",
+								"{@i 6. Telekinetic Ray.} If the target is a creature, it must succeed on a {@dc 16} Strength saving throw or the beholder moves it up to 30 feet in any direction. It is {@condition restrained} by the ray's telekinetic grip until the start of the beholder's next turn or until the beholder is {@condition incapacitated}.",
+								"If the target is an object weighing 300 pounds or less that isn't being worn or carried, it is moved up to 30 feet in any direction. The beholder can also exert fine control on objects with this ray, such as manipulating a simple tool or opening a door or a container."
+							]
+						}
+					}
+				}
+			},
+			"cr": "9",
+			"hasToken": true
+		},
+		{
 			"name": "Narrak",
 			"isNpc": true,
 			"source": "OotA",
@@ -2074,6 +2830,48 @@
 			]
 		},
 		{
+			"name": "Ougalop",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 142,
+			"_copy": {
+				"name": "Kuo-Toa",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the kuo-toa",
+						"with": "Ougalop",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Peebles",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 134,
+			"_copy": {
+				"name": "Spy",
+				"source": "MM",
+				"_trait": {
+					"name": "Deep Gnome",
+					"source": "DMG"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the spy",
+						"with": "Peebles",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
 			"name": "Prince Derendil",
 			"isNpc": true,
 			"source": "OotA",
@@ -2093,7 +2891,289 @@
 			"hasToken": true
 		},
 		{
+			"name": "Princess Ebonmire",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 111,
+			"_copy": {
+				"name": "Black Pudding",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the pudding",
+						"with": "Princess Ebonmire",
+						"flags": "i"
+					}
+				}
+			},
+			"int": 6,
+			"action": [
+				{
+					"name": "Pseudopod",
+					"entries": [
+						"{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or 30 ft., one target. {@h}6 ({@damage 1d6 + 3}) bludgeoning damage plus 18 ({@damage 4d8}) acid damage. In addition, nonmagical armor worn by the target is partly dissolved and takes a permanent and cumulative \u22121 penalty to the AC it offers. The armor is destroyed if the penalty reduces its AC to 10."
+					]
+				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Regenerating Black Pudding",
+			"source": "OotA",
+			"page": 211,
+			"_copy": {
+				"name": "Black Pudding",
+				"source": "MM",
+				"_mod": {
+					"trait": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Regeneration",
+							"entries": [
+								"The pudding regains 10 hit points at the start of its turn. If the pudding takes fire damage, this trait doesn't function at the start of the pudding's next turn. The pudding dies only if it starts its turn with 0 hit points and doesn't regenerate."
+							]
+						}
+					}
+				}
+			},
+			"int": 6,
+			"cr": "5",
+			"hasToken": true
+		},
+		{
+			"name": "Ront",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 7,
+			"_copy": {
+				"name": "Orc",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the orc",
+						"with": "Ront",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Rumpadump",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 72,
+			"_copy": {
+				"name": "Myconid Sprout",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the myconid",
+						"with": "Rumpadump",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Rystia Zav",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 135,
+			"_copy": {
+				"name": "Spy",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the spy",
+						"with": "Rystia",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"C",
+				"G"
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Sarith Kzekarit",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 7,
+			"_copy": {
+				"name": "Drow",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the drow",
+						"with": "Sarith",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Shedrak",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 176,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mage",
+						"with": "Shedrak",
+						"flags": "i"
+					}
+				}
+			},
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"trait": [
+				{
+					"name": "Eye Tattoos",
+					"entries": [
+						"Shedrak has ten small eyes tattooed on his bald head that allow him to see invisible creatures and objects as if they were visible."
+					]
+				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Shuushar the Awakened",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 7,
+			"_copy": {
+				"name": "Kuo-Toa",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the kuo-toa",
+						"with": "Shuushar",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Skriss",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 29,
+			"_copy": {
+				"name": "Troglodyte",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the troglodyte",
+						"with": "Skriss",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Sladis Vadir",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 135,
+			"_copy": {
+				"name": "Druid",
+				"source": "MM",
+				"_trait": {
+					"name": "High Elf",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the druid",
+						"with": "Sladis",
+						"flags": "i"
+					},
+					"languages": {
+						"mode": "appendIfNotExistsArr",
+						"items": "Undercommon"
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"G"
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Sloopidoop",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 29,
+			"_copy": {
+				"name": "Kuo-toa Archpriest",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the kuo-toa",
+						"with": "Sloopidoop",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Sovereign Basidia",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 88,
+			"_copy": {
+				"name": "Myconid Sovereign",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the myconid",
+						"with": "Basidia",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
 			"name": "Spider King",
+			"isNpc": true,
 			"source": "OotA",
 			"page": 74,
 			"size": "L",
@@ -2200,6 +3280,52 @@
 				"poisoned",
 				"restrained"
 			]
+		},
+		{
+			"name": "Spiderbait",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 31,
+			"_copy": {
+				"name": "Goblin",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the goblin",
+						"with": "Spiderbait",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"N"
+			],
+			"skill": {
+				"acrobatics": "+3",
+				"athletics": "+3",
+				"stealth": "+6"
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Stool",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 7,
+			"_copy": {
+				"name": "Myconid Sprout",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the myconid",
+						"with": "Stool",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
 		},
 		{
 			"name": "The Pudding King",
@@ -2408,6 +3534,44 @@
 			]
 		},
 		{
+			"name": "Themberchaud",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 53,
+			"_copy": {
+				"name": "Adult Red Dragon",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the dragon",
+						"with": "Themberchaud",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Topsy",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 8,
+			"_copy": {
+				"name": "Wererat",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the wererat",
+						"with": "Topsy",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
 			"name": "Troglodyte Champion of Laogzed",
 			"source": "OotA",
 			"page": 229,
@@ -2533,6 +3697,25 @@
 			"conditionInflict": [
 				"poisoned"
 			]
+		},
+		{
+			"name": "Turvy",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 8,
+			"_copy": {
+				"name": "Wererat",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the wererat",
+						"with": "Turvy",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
 		},
 		{
 			"name": "Vampiric Ixitxachitl",
@@ -2722,7 +3905,7 @@
 			]
 		},
 		{
-			"name": "Veteran Of The Gauntlet",
+			"name": "Veteran of the Gauntlet",
 			"source": "OotA",
 			"page": 130,
 			"size": "M",
@@ -2810,6 +3993,71 @@
 				"RNG",
 				"RW"
 			]
+		},
+		{
+			"name": "Vizeran DeVir",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 155,
+			"_copy": {
+				"name": "Archmage",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the archmage",
+						"with": "Vizeran",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Xazax the Eyemonger",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 142,
+			"_copy": {
+				"name": "Beholder",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the beholder",
+						"with": "Xazax",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Y",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 29,
+			"_copy": {
+				"name": "Derro Savant",
+				"source": "MTF",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the derro savant",
+						"with": "Y",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
 		},
 		{
 			"name": "Yestabrod",
@@ -2924,6 +4172,120 @@
 			]
 		},
 		{
+			"name": "Young Basilisk",
+			"source": "OotA",
+			"page": 100,
+			"_copy": {
+				"name": "Basilisk",
+				"source": "MM"
+			},
+			"size": "S",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 22,
+				"formula": "4d6 + 8"
+			},
+			"speed": {
+				"walk": 15
+			},
+			"str": 13,
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Petrifying Gaze",
+					"entries": [
+						"If a creature starts its turn within 15 feet of the basilisk and the two of them can see each other, the basilisk can force the creature to make a {@dc 12} Constitution saving throw if the basilisk isn't {@condition incapacitated}. On a failed save, the creature magically begins to turn to stone and is {@condition restrained}. It must repeat the saving throw at the end of its next turn. On a success, the effect ends. On a failure, the creature is {@condition petrified} until freed by the  {@spell greater restoration} spell or other magic.",
+						"A creature that isn't surprised can avert its eyes to avoid the saving throw at the start of its turn. If it does so, it can't see the basilisk until the start of its next turn, when it can avert its eyes again. If it looks at the basilisk in the meantime, it must immediately make the save.",
+						"If the basilisk sees its reflection within 30 feet of it in bright light, it mistakes itself for a rival and targets itself with its gaze."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage plus 2 ({@damage 1d4}) poison damage."
+					]
+				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Young Hook Horror",
+			"source": "OotA",
+			"page": 34,
+			"_copy": {
+				"name": "Hook Horror",
+				"source": "MM",
+				"_mod": {
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Hook",
+						"items": {
+							"name": "Hook",
+							"entries": [
+								"{@atk mw} {@hit 3} to hit, reach 5 ft., one target. {@h}3 ({@damage 1d4 + 1}) piercing damage."
+							]
+						}
+					}
+				}
+			},
+			"size": "S",
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 11,
+				"formula": "2d6 + 4"
+			},
+			"speed": {
+				"walk": 15,
+				"climb": 15
+			},
+			"str": 12,
+			"cr": "1/4",
+			"hasToken": true
+		},
+		{
+			"name": "Yuk Yuk",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 31,
+			"_copy": {
+				"name": "Goblin",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the goblin",
+						"with": "Yuk Yuk",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"N"
+			],
+			"skill": {
+				"acrobatics": "+3",
+				"athletics": "+3",
+				"stealth": "+6"
+			},
+			"hasToken": true
+		},
+		{
 			"name": "Zhentarim Thug",
 			"source": "OotA",
 			"page": 131,
@@ -3013,6 +4375,29 @@
 				"RNG",
 				"RW"
 			]
+		},
+		{
+			"name": "Zilchyn Q'Leptin",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 137,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_trait": {
+					"name": "Drow",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mage",
+						"with": "Zilchyn",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
 		}
 	]
 }

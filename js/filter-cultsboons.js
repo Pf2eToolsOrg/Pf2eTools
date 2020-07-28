@@ -4,7 +4,7 @@ class PageFilterCultsBoons extends PageFilter {
 	constructor () {
 		super();
 
-		this._sourceFilter = SourceFilter.getInstance();
+		this._sourceFilter = new SourceFilter();
 		this._typeFilter = new Filter({
 			header: "Type",
 			items: ["Boon, Demonic", "Cult"]

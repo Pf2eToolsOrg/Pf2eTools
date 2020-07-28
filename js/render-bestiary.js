@@ -124,7 +124,7 @@ class RenderBestiary {
 
 		<tr>${Parser.crToNumber(mon.cr) !== 100 ? $$`
 		<td colspan="6" style="position: relative;"><strong>Challenge</strong>
-			<span>${Parser.monCrToFull(mon.cr)}</span>
+			<span>${Parser.monCrToFull(mon.cr, {isMythic: !!mon.mythic})}</span>
 			${options.$btnScaleCr || ""}
 			${options.$btnResetScaleCr || ""}
 		</td>

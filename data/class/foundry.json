@@ -718,19 +718,23 @@
 			"subclassSource": "ERLW",
 			"level": 15,
 			"actorDataMod": {
-				"traits.dr.value": {
-					"mode": "appendIfNotExistsArr",
-					"items": [
-						"acid",
-						"poison"
-					]
-				},
-				"traits.ci.value": {
-					"mode": "appendIfNotExistsArr",
-					"items": [
-						"poisoned"
-					]
-				}
+				"traits.dr.value": [
+					{
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"acid",
+							"poison"
+						]
+					}
+				],
+				"traits.ci.value": [
+					{
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"poisoned"
+						]
+					}
+				]
 			}
 		},
 		{
@@ -926,12 +930,14 @@
 			"subclassSource": "XGE",
 			"level": 17,
 			"actorDataMod": {
-				"traits.di.value": {
-					"mode": "appendIfNotExistsArr",
-					"items": [
-						"fire"
-					]
-				}
+				"traits.di.value": [
+					{
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"fire"
+						]
+					}
+				]
 			}
 		},
 		{
@@ -1160,6 +1166,996 @@
 						"poison"
 					]
 				]
+			}
+		},
+		{
+			"name": "Balm of the Summer Court",
+			"source": "XGE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams",
+			"subclassSource": "XGE",
+			"level": 2,
+			"data": {
+				"target.value": 1,
+				"target.type": "creature",
+				"range.value": 120,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Hearth of Moonlight and Shadow",
+			"source": "XGE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams",
+			"subclassSource": "XGE",
+			"level": 6,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "sphere"
+			}
+		},
+		{
+			"name": "Hidden Paths",
+			"source": "XGE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams",
+			"subclassSource": "XGE",
+			"level": 10,
+			"data": {
+				"target.value": 1,
+				"target.type": "space",
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Nature's Ward",
+			"source": "PHB",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 10,
+			"actorDataMod": {
+				"traits.di.value": [
+					{
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"poison"
+						]
+					}
+				],
+				"traits.ci.value": [
+					{
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"diseased",
+							"poisoned"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Speech of the Woods",
+			"source": "XGE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 2,
+			"actorDataMod": {
+				"traits.languages.value": [
+					{
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"sylvan"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Spirit Totem",
+			"source": "XGE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 2,
+			"data": {
+				"target.value": 1,
+				"target.type": "space",
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Halo of Spores",
+			"source": "GGR",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "GGR",
+			"level": 2,
+			"data": {
+				"target.value": 10,
+				"target.units": "ft",
+				"target.type": "sphere",
+				"range.units": "self"
+			}
+		},
+		{
+			"name": "Spreading Spores",
+			"source": "GGR",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "GGR",
+			"level": 10,
+			"data": {
+				"target.value": 10,
+				"target.units": "ft",
+				"target.type": "cube",
+				"range.value": 30,
+				"range.units": "ft",
+				"duration.value": 1,
+				"duration.units": "minute"
+			}
+		},
+		{
+			"name": "Fungal Body",
+			"source": "GGR",
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "GGR",
+			"level": 14,
+			"actorDataMod": {
+				"traits.ci.value": [
+					{
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"blinded",
+							"deafened",
+							"frightened",
+							"poisoned"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Arcane Charge",
+			"source": "PHB",
+			"className": "Fighter",
+			"classSource": "PHB",
+			"subclassShortName": "Eldritch Knight",
+			"subclassSource": "PHB",
+			"level": 15,
+			"data": {
+				"target.value": 1,
+				"target.type": "space",
+				"range.value": 30,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Rallying Cry",
+			"source": "SCAG",
+			"className": "Fighter",
+			"classSource": "PHB",
+			"subclassShortName": "Purple Dragon Knight (Banneret)",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"data": {
+				"target.value": 3,
+				"target.type": "creature",
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Inspiring Surge",
+			"source": "SCAG",
+			"className": "Fighter",
+			"classSource": "PHB",
+			"subclassShortName": "Purple Dragon Knight (Banneret)",
+			"subclassSource": "SCAG",
+			"level": 10,
+			"data": {
+				"target.value": 1,
+				"target.type": "ally",
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Hour of Reaping",
+			"source": "SCAG",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Long Death",
+			"subclassSource": "SCAG",
+			"level": 6,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "sphere"
+			}
+		},
+		{
+			"name": "Shadow Step",
+			"source": "PHB",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Shadow",
+			"subclassSource": "PHB",
+			"level": 6,
+			"data": {
+				"target.value": 60,
+				"target.units": "ft",
+				"target.type": "space"
+			}
+		},
+		{
+			"name": "Searing Sunburst",
+			"source": "XGE",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Sun Soul",
+			"subclassSource": "XGE",
+			"level": 11,
+			"data": {
+				"target.value": 20,
+				"target.units": "ft",
+				"target.type": "sphere",
+				"range.value": 150,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Sun Shield",
+			"source": "XGE",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Sun Soul",
+			"subclassSource": "XGE",
+			"level": 17,
+			"data": {
+				"target.value": 60,
+				"target.units": "ft",
+				"target.type": "radius"
+			}
+		},
+		{
+			"name": "Channel Divinity: Nature's Wrath",
+			"source": "PHB",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 3,
+			"data": {
+				"target.value": 1,
+				"target.type": "creature",
+				"range.value": 10,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Channel Divinity: Turn the Faithless",
+			"source": "PHB",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 3,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "creature"
+			}
+		},
+		{
+			"name": "Channel Divinity: Conquering Presence",
+			"source": "XGE",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 3,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "creature"
+			}
+		},
+		{
+			"name": "Channel Divinity: Champion Challenge",
+			"source": "SCAG",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "creature"
+			}
+		},
+		{
+			"name": "Channel Divinity: Turn the Tide",
+			"source": "SCAG",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "creature"
+			}
+		},
+		{
+			"name": "Channel Divinity: Sacred Weapon",
+			"source": "PHB",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 3,
+			"data": {
+				"target.value": 40,
+				"target.units": "ft",
+				"target.type": "radius"
+			}
+		},
+		{
+			"name": "Channel Divinity: Turn the Unholy",
+			"source": "PHB",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 3,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "creature"
+			}
+		},
+		{
+			"name": "Holy Nimbus",
+			"source": "PHB",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 20,
+			"data": {
+				"target.value": 60,
+				"target.units": "ft",
+				"target.type": "radius"
+			}
+		},
+		{
+			"name": "Inspiring Smite",
+			"source": "MOT",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "MOT",
+			"level": 3,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "creature"
+			}
+		},
+		{
+			"name": "Glorious Defense",
+			"source": "MOT",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "MOT",
+			"level": 15,
+			"data": {
+				"range.value": 10,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Oathbreaker Channel Divinity: Control Undead",
+			"source": "DMG",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 3,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "creature"
+			}
+		},
+		{
+			"name": "Oathbreaker Channel Divinity: Dreadful Aspect",
+			"source": "DMG",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 3,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "creature"
+			}
+		},
+		{
+			"name": "Channel Divinity: Rebuke the Violent",
+			"source": "XGE",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 3,
+			"data": {
+				"range.value": 30,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Channel Divinity: Abjure Enemy",
+			"source": "PHB",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 3,
+			"data": {
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Channel Divinity: Vow of Enmity",
+			"source": "PHB",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 3,
+			"data": {
+				"range.value": 10,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Umbral Sight",
+			"source": "XGE",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Gloom Stalker",
+			"subclassSource": "XGE",
+			"level": 3,
+			"actorTokenMod": {
+				"_": [
+					{
+						"mode": "conditionals",
+						"conditionals": [
+							{
+								"condition": "!actor.data.token.dimSight",
+								"mod": {
+									"dimSight": [
+										{
+											"mode": "set",
+											"value": 60
+										}
+									]
+								}
+							},
+							{
+								"mod": {
+									"dimSight": [
+										{
+											"mode": "scalarAdd",
+											"scalar": 30
+										}
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Hunter's Sense",
+			"source": "XGE",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Monster Slayer",
+			"subclassSource": "XGE",
+			"level": 3,
+			"data": {
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Slayer's Prey",
+			"source": "XGE",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Monster Slayer",
+			"subclassSource": "XGE",
+			"level": 3,
+			"data": {
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Magic-User's Nemesis",
+			"source": "XGE",
+			"className": "Ranger",
+			"classSource": "PHB",
+			"subclassShortName": "Monster Slayer",
+			"subclassSource": "XGE",
+			"level": 11,
+			"data": {
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Master of Tactics",
+			"source": "XGE",
+			"className": "Rogue",
+			"classSource": "PHB",
+			"subclassShortName": "Mastermind",
+			"subclassSource": "XGE",
+			"level": 3,
+			"data": {
+				"range.value": 30,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Superior Mobility",
+			"source": "XGE",
+			"className": "Rogue",
+			"classSource": "PHB",
+			"subclassShortName": "Scout",
+			"subclassSource": "XGE",
+			"level": 9,
+			"actorDataMod": {
+				"attributes.speed.value": [
+					{
+						"mode": "scalarAddUnit",
+						"scalar": 10,
+						"unit": "feet",
+						"unitShort": "ft."
+					}
+				]
+			}
+		},
+		{
+			"name": "Draconic Presence",
+			"source": "PHB",
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"subclassShortName": "Draconic",
+			"subclassSource": "PHB",
+			"level": 18,
+			"data": {
+				"target.value": 60,
+				"target.units": "ft",
+				"target.type": "sphere"
+			}
+		},
+		{
+			"name": "Hound of Ill Omen",
+			"source": "XGE",
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"subclassShortName": "Shadow",
+			"subclassSource": "XGE",
+			"level": 6,
+			"data": {
+				"target.value": 1,
+				"target.type": "creature",
+				"range.value": 120,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Shadow Walk",
+			"source": "XGE",
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"subclassShortName": "Shadow",
+			"subclassSource": "XGE",
+			"level": 14,
+			"data": {
+				"target.value": 1,
+				"target.type": "space",
+				"range.value": 120,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Heart of the Storm",
+			"source": "XGE",
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"subclassShortName": "Storm",
+			"subclassSource": "XGE",
+			"level": 6,
+			"actorDataMod": {
+				"traits.dr.value": [
+					{
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"lightning",
+							"thunder"
+						]
+					}
+				]
+			},
+			"data": {
+				"target.value": 10,
+				"target.units": "ft",
+				"target.type": "sphere"
+			}
+		},
+		{
+			"name": "Wind Soul",
+			"source": "XGE",
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"subclassShortName": "Storm",
+			"subclassSource": "XGE",
+			"level": 18,
+			"actorDataMod": {
+				"traits.di.value": [
+					{
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"lightning",
+							"thunder"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Fey Presence",
+			"source": "PHB",
+			"className": "Warlock",
+			"classSource": "PHB",
+			"subclassShortName": "Archfey",
+			"subclassSource": "PHB",
+			"level": 1,
+			"data": {
+				"target.value": 10,
+				"target.units": "ft",
+				"target.type": "cube"
+			}
+		},
+		{
+			"name": "Misty Escape",
+			"source": "PHB",
+			"className": "Warlock",
+			"classSource": "PHB",
+			"subclassShortName": "Archfey",
+			"subclassSource": "PHB",
+			"level": 6,
+			"data": {
+				"target.value": 1,
+				"target.type": "space",
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Beguiling Defenses",
+			"source": "PHB",
+			"className": "Warlock",
+			"classSource": "PHB",
+			"subclassShortName": "Archfey",
+			"subclassSource": "PHB",
+			"level": 10,
+			"actorDataMod": {
+				"traits.ci.value": [
+					{
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"charmed"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Dark Delirium",
+			"source": "PHB",
+			"className": "Warlock",
+			"classSource": "PHB",
+			"subclassShortName": "Archfey",
+			"subclassSource": "PHB",
+			"level": 14,
+			"data": {
+				"target.value": 1,
+				"target.type": "creature",
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Radiant Soul",
+			"source": "XGE",
+			"className": "Warlock",
+			"classSource": "PHB",
+			"subclassShortName": "Celestial",
+			"subclassSource": "XGE",
+			"level": 6,
+			"actorDataMod": {
+				"traits.di.value": [
+					{
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"radiant"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Searing Vengeance",
+			"source": "XGE",
+			"className": "Warlock",
+			"classSource": "PHB",
+			"subclassShortName": "Celestial",
+			"subclassSource": "XGE",
+			"level": 14,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "sphere"
+			}
+		},
+		{
+			"name": "Awakened Mind",
+			"source": "PHB",
+			"className": "Warlock",
+			"classSource": "PHB",
+			"subclassShortName": "Great Old One",
+			"subclassSource": "PHB",
+			"level": 1,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "sphere"
+			}
+		},
+		{
+			"name": "Entropic Ward",
+			"source": "PHB",
+			"className": "Warlock",
+			"classSource": "PHB",
+			"subclassShortName": "Great Old One",
+			"subclassSource": "PHB",
+			"level": 6,
+			"actorDataMod": {
+				"traits.dr.value": [
+					{
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"psychic"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Projected Ward",
+			"source": "PHB",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Abjuration",
+			"subclassSource": "PHB",
+			"level": 6,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "sphere"
+			}
+		},
+		{
+			"name": "Chronal Shift",
+			"source": "EGW",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Chronurgy",
+			"subclassSource": "EGW",
+			"level": 2,
+			"data": {
+				"range.value": 30,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Momentary Stasis",
+			"source": "EGW",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Chronurgy",
+			"subclassSource": "EGW",
+			"level": 6,
+			"data": {
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Convergent Future",
+			"source": "EGW",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Chronurgy",
+			"subclassSource": "EGW",
+			"level": 14,
+			"data": {
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Benign Transposition",
+			"source": "PHB",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Conjuration",
+			"subclassSource": "PHB",
+			"level": 6,
+			"data": {
+				"target.value": 1,
+				"target.type": "space",
+				"range.value": 30,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Hypnotic Gaze",
+			"source": "PHB",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Enchantment",
+			"subclassSource": "PHB",
+			"level": 2,
+			"data": {
+				"target.value": 1,
+				"target.type": "creature",
+				"range.value": 5,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Instinctive Charm",
+			"source": "PHB",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Enchantment",
+			"subclassSource": "PHB",
+			"level": 6,
+			"data": {
+				"target.value": 1,
+				"target.type": "creature",
+				"range.value": 30,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Adjust Density",
+			"source": "EGW",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Graviturgy",
+			"subclassSource": "EGW",
+			"level": 2,
+			"data": {
+				"target.value": 1,
+				"target.type": "creature",
+				"range.value": 30,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Violent Attraction",
+			"source": "EGW",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Graviturgy",
+			"subclassSource": "EGW",
+			"level": 10,
+			"data": {
+				"target.value": 1,
+				"target.type": "creature",
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Event Horizon",
+			"source": "EGW",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Graviturgy",
+			"subclassSource": "EGW",
+			"level": 14,
+			"data": {
+				"target.value": 30,
+				"target.units": "ft",
+				"target.type": "sphere"
+			}
+		},
+		{
+			"name": "Inured to Undeath",
+			"source": "PHB",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Necromancy",
+			"subclassSource": "PHB",
+			"level": 10,
+			"actorDataMod": {
+				"traits.dr.value": [
+					{
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"necrotic"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Command Undead",
+			"source": "PHB",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Necromancy",
+			"subclassSource": "PHB",
+			"level": 14,
+			"data": {
+				"target.value": 1,
+				"target.type": "creature",
+				"range.value": 60,
+				"range.units": "ft"
+			}
+		},
+		{
+			"name": "Deflecting Shroud",
+			"source": "XGE",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "War",
+			"subclassSource": "XGE",
+			"level": 14,
+			"data": {
+				"target.value": 3,
+				"target.type": "creature",
+				"range.value": 60,
+				"range.units": "ft"
 			}
 		}
 	]

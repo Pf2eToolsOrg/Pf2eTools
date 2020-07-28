@@ -192,7 +192,7 @@ class PageFilterBestiary extends PageFilter {
 		});
 		const spellcastingTypeFilter = new Filter({
 			header: "Spellcasting Type",
-			items: ["F", "I", "P", "S", "CB", "CC", "CD", "CP", "CR", "CS", "CL", "CW"],
+			items: ["F", "I", "P", "S", "CA", "CB", "CC", "CD", "CP", "CR", "CS", "CL", "CW"],
 			displayFn: Parser.monSpellcastingTagToFull
 		});
 

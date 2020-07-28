@@ -455,7 +455,7 @@ class RendererMarkdown {
 >___${savePart}${skillPart}${damVulnPart}${damResPart}${damImmPart}${condImmPart}
 >- **Senses** ${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses, true)}, ` : ""}passive Perception ${mon.passive || "\u2014"}
 >- **Languages** ${Renderer.monster.getRenderedLanguages(mon.languages)}
->- **Challenge** ${mon.cr ? Parser.monCrToFull(mon.cr) : "\u2014"}
+>- **Challenge** ${mon.cr ? Parser.monCrToFull(mon.cr, {isMythic: !!mon.mythic}) : "\u2014"}
 >___`;
 
 		let breakablePart = `${traitsPart}${actionsPart}${reactionsPart}${legendaryActionsPart}${mythicActionsPart}${footerPart}`;

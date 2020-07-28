@@ -1087,6 +1087,7 @@ class SpellcastingTypeTag {
 	}
 }
 SpellcastingTypeTag.CLASSES = {
+	"CA": /(^|[^a-zA-Z])artificer([^a-zA-Z]|$)/gi,
 	"CB": /(^|[^a-zA-Z])bard([^a-zA-Z]|$)/gi,
 	"CC": /(^|[^a-zA-Z])cleric([^a-zA-Z]|$)/gi,
 	"CD": /(^|[^a-zA-Z])druid([^a-zA-Z]|$)/gi,
@@ -1689,7 +1690,6 @@ class DetectNamedCreature {
 	}
 }
 
-// FIXME this duplicates functionality in converter-item
 class EntryConvert {
 	static tryRun (stats, prop) {
 		if (!stats[prop]) return;
@@ -1738,9 +1738,108 @@ class EntryConvert {
 			}
 		)
 	}
+
+	static coalesceLines (ptrI, toConvert) {
+		let curLine = toConvert[ptrI._].trim();
+
+		const entries = [];
+		const stack = [
+			entries
+		];
+
+		const popList = () => { while (stack.last().type === "list") stack.pop(); }
+		const popNestedEntries = () => { while (stack.length > 1) stack.pop(); }
+
+		const addEntry = (entry, canCombine) => {
+			canCombine = canCombine && typeof entry === "string";
+
+			const target = stack.last();
+			if (target instanceof Array) {
+				if (canCombine && typeof target.last() === "string") {
+					target.last(`${target.last().trimRight()} ${entry.trimLeft()}`)
+				} else {
+					target.push(entry);
+				}
+			} else if (target.type === "list") {
+				if (canCombine && typeof target.items.last() === "string") {
+					target.items.last(`${target.items.last().trimRight()} ${entry.trimLeft()}`)
+				} else {
+					target.items.push(entry);
+				}
+			} else if (target.type === "entries") {
+				if (canCombine && typeof target.entries.last() === "string") {
+					target.entries.last(`${target.entries.last().trimRight()} ${entry.trimLeft()}`)
+				} else {
+					target.entries.push(entry);
+				}
+			}
+
+			if (typeof entry !== "string") stack.push(entry);
+		};
+
+		const getCurrentEntryArray = () => {
+			if (stack.last().type === "list") return stack.last().items;
+			if (stack.last().type === "entries") return stack.last().entries;
+			return stack.last();
+		};
+
+		while (ptrI._ < toConvert.length) {
+			if (BaseParser._isJsonLine(curLine)) {
+				popNestedEntries(); // this implicitly pops nested lists
+
+				addEntry(BaseParser._getJsonFromLine(curLine));
+			} else if (ConvertUtil.isListItemLine(curLine)) {
+				if (stack.last().type !== "list") {
+					const list = {
+						type: "list",
+						items: []
+					};
+					addEntry(list);
+				}
+
+				curLine = curLine.replace(/^\s*•\s*/, "");
+				addEntry(curLine.trim());
+			} else if (ConvertUtil.isNameLine(curLine)) {
+				popNestedEntries(); // this implicitly pops nested lists
+
+				const {name, entry} = ConvertUtil.splitNameLine(curLine);
+
+				const parentEntry = {
+					type: "entries",
+					name,
+					entries: [entry]
+				};
+
+				addEntry(parentEntry);
+			} else if (ConvertUtil.isTitleLine(curLine)) {
+				popNestedEntries(); // this implicitly pops nested lists
+
+				const entry = {
+					type: "entries",
+					name: curLine.trim(),
+					entries: []
+				};
+
+				addEntry(entry);
+			} else if (BaseParser._isContinuationLine(getCurrentEntryArray(), curLine)) {
+				addEntry(curLine.trim(), true);
+			} else {
+				popList();
+
+				addEntry(curLine.trim());
+			}
+
+			ptrI._++;
+			curLine = toConvert[ptrI._];
+		}
+
+		return entries;
+	}
 }
 
 class ConvertUtil {
+	static getTokens (str) { return str.split(/[ \n\u2013\u2014]/g).map(it => it.trim()).filter(Boolean); }
+
 	/**
 	 * (Inline titles)
 	 * Checks if a line of text starts with a name, e.g.

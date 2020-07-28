@@ -128,6 +128,7 @@ class ListPage {
 		if (!this._dataProps.some(prop => data[prop] && data[prop].length)) return;
 
 		this._dataProps.forEach(prop => {
+			if (!data[prop]) return;
 			data[prop].forEach(it => it.__prop = prop);
 			this._dataList.push(...data[prop]);
 		});

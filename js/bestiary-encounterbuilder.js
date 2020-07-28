@@ -87,7 +87,7 @@ class EncounterBuilder extends ProxyBase {
 		const $btnSvTxt = $(`.ecgen__sv_text`).click(() => {
 			let xpTotal = 0;
 			const toCopyCreatures = ListUtil.sublist.items
-				.map(it => it.values)
+				.map(it => ({name: it.name, ...it.values}))
 				.sort((a, b) => SortUtil.ascSortLower(a.name, b.name))
 				.map(it => {
 					xpTotal += Parser.crToXpNumber(it.cr) * it.count;

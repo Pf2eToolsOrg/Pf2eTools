@@ -4,7 +4,7 @@ class PageFilterVehicles extends PageFilter {
 	constructor () {
 		super();
 
-		this._sourceFilter = SourceFilter.getInstance();
+		this._sourceFilter = new SourceFilter();
 	}
 
 	mutateForFilters (it) {

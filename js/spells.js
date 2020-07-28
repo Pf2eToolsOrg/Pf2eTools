@@ -56,7 +56,7 @@ class SpellsPage {
 				level: spell.level,
 				time,
 				school: Parser.spSchoolAbvToFull(spell.school),
-				classes: Parser.spClassesToFull(spell.classes, true, SUBCLASS_LOOKUP),
+				classes: Parser.spClassesToFull(spell, true, SUBCLASS_LOOKUP),
 				concentration,
 				normalisedTime: spell._normalisedTime,
 				normalisedRange: spell._normalisedRange
@@ -211,7 +211,13 @@ async function pPostLoad () {
 			_school: {name: "School", transform: (sp) => `<span class="school_${sp.school}" ${Parser.spSchoolAbvToStyle(sp.school)}>${Parser.spSchoolAndSubschoolsAbvsToFull(sp.school, sp.subschools)}</span>`},
 			range: {name: "Range", transform: (it) => Parser.spRangeToFull(it)},
 			_components: {name: "Components", transform: (sp) => Parser.spComponentsToFull(sp.components, sp.level)},
-			classes: {name: "Classes", transform: (it) => Parser.spMainClassesToFull(it)},
+			_classes: {
+				name: "Classes",
+				transform: (sp) => {
+					const fromClassList = Renderer.spell.getCombinedClasses(sp, "fromClassList");
+					return Parser.spMainClassesToFull(fromClassList);
+				}
+			},
 			entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}, 1), flex: 3},
 			entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}, 1), flex: 2}
 		},
@@ -331,7 +337,7 @@ async function pPageInit (loadedSources) {
 	BrewUtil.bind({pHandleBrew: () => {}}); // temporarily bind "do nothing" brew handler
 	await BrewUtil.pAddLocalBrewData(); // load local homebrew, so we can add any local spell classes
 	BrewUtil.bind({pHandleBrew: null}); // unbind temporary handler
-	spellsPage._pageFilter.populateHomebrewClassLookup(homebrew);
+	Renderer.spell.populateHomebrewClassLookup(homebrew);
 }
 
 let spellList = [];

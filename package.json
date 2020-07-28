@@ -1,7 +1,7 @@
 {
 	"name": "5etools",
 	"author": "TheGiddyLimit",
-	"version": "1.106.13",
+	"version": "1.108.5",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
@@ -14,9 +14,10 @@
 		"test:styles": "stylelint scss/*.scss",
 		"test:data": "node test/test-all.js",
 		"test": "npm run test:js && npm run test:styles && npm run test:data",
-		"build:css": "npm run build:css:main && npm run build:css:classes && npm run build:css:misc",
-		"build:css:main": "node-sass --source-map=true --output-style=compressed scss/main.scss css/style.css && postcss ./css/style.css --use autoprefixer -r",
+		"build:css": "npm run build:css:main && npm run build:css:classes && npm run build:css:misc && npm run build:css:search",
+		"build:css:main": "node-sass --source-map=true --output-style=compressed scss/main.scss css/style.css",
 		"build:css:classes": "node-sass --source-map=true --output-style=compressed scss/classes.scss css/classes.css && postcss ./css/classes.css --use autoprefixer -r",
+		"build:css:search": "node-sass --source-map=true --output-style=compressed scss/search.scss css/search.css && postcss ./css/search.css --use autoprefixer -r",
 		"build:css:misc": "node-sass --source-map=true --output-style=compressed scss/list-page--grouped.scss css/list-page--grouped.css && postcss ./css/list-page--grouped.css --use autoprefixer -r",
 		"build:deploy:dev": "bash build/deploy-prep-dev.sh",
 		"build:deploy:prod": "bash build/deploy-prep-prod.sh",

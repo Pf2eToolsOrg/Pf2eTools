@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.1.2",
+	"version": "1.1.3",
 	"type": "object",
 	"definitions": {
 		"conditionDisease": {
@@ -47,6 +47,13 @@
 			}
 		},
 		"disease": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/definitions/conditionDisease"
+			}
+		},
+		"status": {
 			"type": "array",
 			"uniqueItems": true,
 			"items": {

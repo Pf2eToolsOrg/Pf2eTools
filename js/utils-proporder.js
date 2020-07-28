@@ -356,6 +356,7 @@ PropOrder._CLASS = [
 	"srd",
 	"isReprinted",
 
+	"requirements",
 	"hd",
 	"proficiency",
 
@@ -455,6 +456,15 @@ PropOrder._CONDITION = [
 	"entries"
 ];
 PropOrder._DISEASE = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"entries"
+];
+PropOrder._STATUS = [
 	"name",
 
 	"source",
@@ -595,6 +605,7 @@ PropOrder._VEHICLE = [
 	"other",
 
 	"trait",
+	"actionThresholds",
 	"action",
 	"actionStation",
 	"reaction",
@@ -703,9 +714,17 @@ PropOrder._ITEM = [
 
 	"axe",
 	"armor",
+	"bow",
+	"club",
+	"crossbow",
+	"dagger",
 	"firearm",
 	"focus",
+	"hammer",
+	"mace",
+	"net",
 	"poison",
+	"spear",
 	"staff",
 	"stealth",
 	"sword",
@@ -716,6 +735,7 @@ PropOrder._ITEM = [
 	"items",
 
 	"ammoType",
+	"poisonTypes",
 
 	"packContents",
 	"containerCapacity",
@@ -956,6 +976,7 @@ PropOrder._PROP_TO_LIST = {
 	"language": PropOrder._LANGUAGE,
 	"condition": PropOrder._CONDITION,
 	"disease": PropOrder._DISEASE,
+	"status": PropOrder._STATUS,
 	"cult": PropOrder._CULT,
 	"boon": PropOrder._BOON,
 	"deity": PropOrder._DEITY,

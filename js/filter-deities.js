@@ -3,7 +3,7 @@
 class PageFilterDeities extends PageFilter {
 	constructor () {
 		super();
-		this._sourceFilter = SourceFilter.getInstance();
+		this._sourceFilter = new SourceFilter();
 		this._pantheonFilter = new Filter({
 			header: "Pantheon",
 			items: [
@@ -23,7 +23,8 @@ class PageFilterDeities extends PageFilter {
 				"Halfling",
 				"Nonhuman",
 				"Norse",
-				"Orc"
+				"Orc",
+				"Theros"
 			]
 		});
 		this._categoryFilter = new Filter({
@@ -51,7 +52,7 @@ class PageFilterDeities extends PageFilter {
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: [STR_REPRINTED, "SRD"],
+			items: ["Has Info", STR_REPRINTED, "SRD"],
 			displayFn: StrUtil.uppercaseFirst,
 			deselFn: (it) => { return it === STR_REPRINTED }
 		});
@@ -65,12 +66,14 @@ class PageFilterDeities extends PageFilter {
 
 		g._fMisc = g.reprinted ? [STR_REPRINTED] : [];
 		if (g.srd) g._fMisc.push("SRD");
+		if (g.entries || g.symbolImg) g._fMisc.push("Has Info");
 	}
 
 	addToFilters (g, isExcluded) {
 		if (isExcluded) return;
 
 		this._sourceFilter.addItem(g.source);
+		this._domainFilter.addItem(g.domains);
 		this._pantheonFilter.addItem(g.pantheon);
 		this._categoryFilter.addItem(g.category);
 	}

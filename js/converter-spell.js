@@ -304,8 +304,10 @@ class SpellParser extends BaseParser {
 			case "minute":
 			case "action":
 			case "round":
-			case "bonus action":
 			case "reaction": return unit;
+
+			case "bonus action": return "bonus";
+
 			default:
 				options.cbWarning(`Unit part "${unit}" requires manual conversion`);
 				return unit;

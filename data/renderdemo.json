@@ -92,6 +92,14 @@
 						},
 						{
 							"type": "inset",
+							"name": "Area Tags and IDs",
+							"entries": [
+								"Adventure and book content supports \"area\" tags, which have the form `@area [area name]|[entry id]` or `@area [area name]|[entry id]|[modifiers]` where [modifiers] is a combination of \"x\" for e[x]act text, and \"u\" for [u]ppercase. The \"exact\" modifier removes the leading \"area \" which is prepended to the area name, and the \"uppercase\" modifier causes the prepended text to \"Area \".",
+								"A variety of entries blocks can have \"id\" fields (and may therefore be linked to with \"area\" tags), notable \"entries\"-type, \"section\"-type, and \"inset\"-type. These IDs are conventionally 3-digit hexadecimal numbers (allowing for a total of 4096 IDs per adventure/book), but any string which is unique within the document will suffice."
+							]
+						},
+						{
+							"type": "inset",
 							"name": "Book/Reference Tags",
 							"entries": [
 								"The following tags can be used to link specific sections of adventures/books. Note that chapters and headers are indexed from zero.",

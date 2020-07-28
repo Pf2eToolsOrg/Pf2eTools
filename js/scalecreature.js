@@ -218,6 +218,7 @@
 	},
 
 	_casterLevelAndClassCantrips: {
+		artificer: [2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4],
 		bard: [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
 		cleric: [3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
 		druid: [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
@@ -1754,13 +1755,14 @@
 
 	__initSpellCache (data) {
 		data.spell.forEach(s => {
-			s.classes.fromClassList.forEach(c => {
-				let it = (this._spells[c.source] = this._spells[c.source] || {});
-				const lowName = c.name.toLowerCase();
-				it = (it[lowName] = it[lowName] || {});
-				it = (it[s.level] = it[s.level] || {});
-				it[s.name] = 1;
-			})
+			Renderer.spell.getCombinedClasses(s, "fromClassList")
+				.forEach(c => {
+					let it = (this._spells[c.source] = this._spells[c.source] || {});
+					const lowName = c.name.toLowerCase();
+					it = (it[lowName] = it[lowName] || {});
+					it = (it[s.level] = it[s.level] || {});
+					it[s.name] = 1;
+				});
 		});
 	},
 
@@ -1809,10 +1811,10 @@
 						} else return m[0];
 					});
 
-					const mClasses = /(bard|cleric|druid|paladin|ranger|sorcerer|warlock|wizard) spell(?:s)?/i.exec(outStr);
+					const mClasses = /(artificer|bard|cleric|druid|paladin|ranger|sorcerer|warlock|wizard) spell(?:s)?/i.exec(outStr);
 					if (mClasses) spellsFromClass = mClasses[1];
 					else {
-						const mClasses2 = /(bard|cleric|druid|paladin|ranger|sorcerer|warlock|wizard)(?:'s)? spell list/i.exec(outStr);
+						const mClasses2 = /(artificer|bard|cleric|druid|paladin|ranger|sorcerer|warlock|wizard)(?:'s)? spell list/i.exec(outStr);
 						if (mClasses2) spellsFromClass = mClasses2[1]
 					}
 

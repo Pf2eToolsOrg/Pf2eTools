@@ -4,7 +4,7 @@ class PageFilterActions extends PageFilter {
 	constructor () {
 		super();
 
-		this._sourceFilter = SourceFilter.getInstance();
+		this._sourceFilter = new SourceFilter();
 		this._timeFilter = new Filter({
 			header: "Type",
 			displayFn: StrUtil.uppercaseFirst,

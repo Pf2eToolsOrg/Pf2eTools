@@ -40,7 +40,14 @@ class PageFilterItems extends PageFilter {
 		const costFilter = new RangeFilter({header: "Cost", min: 0, max: 100, isAllowGreater: true, suffix: "gp"});
 		const focusFilter = new Filter({header: "Spellcasting Focus", items: ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"]});
 		const attachedSpellsFilter = new Filter({header: "Attached Spells", displayFn: (it) => it.split("|")[0].toTitleCase(), itemSortFn: SortUtil.ascSortLower});
-		const lootTableFilter = new Filter({header: "Found On", items: ["Magic Item Table A", "Magic Item Table B", "Magic Item Table C", "Magic Item Table D", "Magic Item Table E", "Magic Item Table F", "Magic Item Table G", "Magic Item Table H", "Magic Item Table I"]});
+		const lootTableFilter = new Filter({
+			header: "Found On",
+			items: ["Magic Item Table A", "Magic Item Table B", "Magic Item Table C", "Magic Item Table D", "Magic Item Table E", "Magic Item Table F", "Magic Item Table G", "Magic Item Table H", "Magic Item Table I"],
+			displayFn: it => {
+				const [name, sourceJson] = it.split("|");
+				return `${name}${sourceJson ? ` (${Parser.sourceJsonToAbv(sourceJson)})` : ""}`
+			}
+		});
 		const rarityFilter = new Filter({
 			header: "Rarity",
 			items: [...Parser.ITEM_RARITIES],
@@ -57,11 +64,8 @@ class PageFilterItems extends PageFilter {
 		const bonusFilter = new Filter({header: "Bonus", items: ["Armor Class", "Spell Attacks", "Saving Throws", "Weapon Attack and Damage Rolls", "Weapon Attack Rolls", "Weapon Damage Rolls"]})
 		const damageTypeFilter = new Filter({header: "Damage Type", displayFn: it => Parser.dmgTypeToFull(it).uppercaseFirst(), itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.dmgTypeToFull(a), Parser.dmgTypeToFull(b))});
 		const miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Item Group", "Magic", "Mundane", "Sentient", "SRD"]});
-		const baseSourceFilter = new SourceFilter({
-			header: "Base Source",
-			displayFn: (item) => Parser.sourceJsonToFullCompactPrefix(item.item || item),
-			groupFn: SourceUtil.getFilterGroup
-		});
+		const baseSourceFilter = new SourceFilter({header: "Base Source", selFn: null});
+		const poisonTypeFilter = new Filter({header: "Poison Type", items: ["ingested", "injury", "inhaled", "contact"], displayFn: StrUtil.toTitleCase});
 
 		this._typeFilter = typeFilter;
 		this._tierFilter = tierFilter;
@@ -77,6 +81,7 @@ class PageFilterItems extends PageFilter {
 		this._bonusFilter = bonusFilter;
 		this._miscFilter = miscFilter;
 		this._baseSourceFilter = baseSourceFilter;
+		this._poisonTypeFilter = poisonTypeFilter;
 	}
 
 	mutateForFilters (item) {
@@ -138,6 +143,7 @@ class PageFilterItems extends PageFilter {
 		this._lootTableFilter.addItem(item.lootTables);
 		this._damageTypeFilter.addItem(item.dmgType);
 		this._baseSourceFilter.addItem(item._baseSource);
+		this._poisonTypeFilter.addItem(item.poisonTypes);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -156,6 +162,7 @@ class PageFilterItems extends PageFilter {
 			this._miscFilter,
 			this._lootTableFilter,
 			this._baseSourceFilter,
+			this._poisonTypeFilter,
 			this._attachedSpellsFilter
 		];
 	}
@@ -177,6 +184,7 @@ class PageFilterItems extends PageFilter {
 			it._fMisc,
 			it.lootTables,
 			it._baseSource,
+			it.poisonTypes,
 			it.attachedSpells
 		);
 	}

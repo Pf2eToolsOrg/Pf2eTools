@@ -42,23 +42,23 @@ class NavBar {
 		const ulBooks = addDropdown(ulRules, "Books", true);
 		addLi(ulBooks, "books.html", "View All/Homebrew");
 		addDivider(ulBooks);
-		addLi(ulBooks, "book.html", "Player's Handbook", {aHash: "PHB"});
-		addLi(ulBooks, "book.html", "Monster Manual", {aHash: "MM"});
-		addLi(ulBooks, "book.html", "Dungeon Master's Guide", {aHash: "DMG"});
+		addLi(ulBooks, "book.html", "Player's Handbook", {aHash: "PHB", date: "2014"});
+		addLi(ulBooks, "book.html", "Monster Manual", {aHash: "MM", date: null});
+		addLi(ulBooks, "book.html", "Dungeon Master's Guide", {aHash: "DMG", date: null});
 		addDivider(ulBooks);
-		addLi(ulBooks, "book.html", "Sword Coast Adventurer's Guide", {aHash: "SCAG"});
-		addLi(ulBooks, "book.html", "Volo's Guide to Monsters", {aHash: "VGM"});
-		addLi(ulBooks, "book.html", "Xanathar's Guide to Everything", {aHash: "XGE"});
-		addLi(ulBooks, "book.html", "Mordenkainen's Tome of Foes", {aHash: "MTF"});
-		addLi(ulBooks, "book.html", "Guildmasters' Guide to Ravnica", {aHash: "GGR"});
-		addLi(ulBooks, "book.html", "Acquisitions Incorporated", {aHash: "AI"});
-		addLi(ulBooks, "book.html", "Eberron: Rising from the Last War", {aHash: "ERLW"});
-		addLi(ulBooks, "book.html", "Dungeons & Dragons vs. Rick and Morty: Basic Rules", {aHash: "RMR"});
-		addLi(ulBooks, "book.html", "Explorer's Guide to Wildemount", {aHash: "EGW"});
-		addLi(ulBooks, "book.html", "Mythic Odysseys of Theros", {aHash: "MOT"});
+		addLi(ulBooks, "book.html", "Sword Coast Adventurer's Guide", {aHash: "SCAG", date: "2015"});
+		addLi(ulBooks, "book.html", "Volo's Guide to Monsters", {aHash: "VGM", date: "2016"});
+		addLi(ulBooks, "book.html", "Xanathar's Guide to Everything", {aHash: "XGE", date: "2017"});
+		addLi(ulBooks, "book.html", "Mordenkainen's Tome of Foes", {aHash: "MTF", date: "2018"});
+		addLi(ulBooks, "book.html", "Guildmasters' Guide to Ravnica", {aHash: "GGR", date: null});
+		addLi(ulBooks, "book.html", "Acquisitions Incorporated", {aHash: "AI", date: "2019"});
+		addLi(ulBooks, "book.html", "Eberron: Rising from the Last War", {aHash: "ERLW", date: null});
+		addLi(ulBooks, "book.html", "Dungeons & Dragons vs. Rick and Morty: Basic Rules", {aHash: "RMR", date: null});
+		addLi(ulBooks, "book.html", "Explorer's Guide to Wildemount", {aHash: "EGW", date: "2020"});
+		addLi(ulBooks, "book.html", "Mythic Odysseys of Theros", {aHash: "MOT", date: null});
 		addDivider(ulBooks);
-		addLi(ulBooks, "book.html", "Adventurers League", {aHash: "AL"});
-		addLi(ulBooks, "book.html", "Sage Advice Compendium", {aHash: "SAC"});
+		addLi(ulBooks, "book.html", "Adventurers League", {aHash: "AL", date: "2016"});
+		addLi(ulBooks, "book.html", "Sage Advice Compendium", {aHash: "SAC", date: "2019"});
 
 		const ulPlayers = addDropdown(navBar, "Player");
 		addLi(ulPlayers, "classes.html", "Classes");
@@ -77,42 +77,42 @@ class NavBar {
 		const ulAdventures = addDropdown(ulDms, "Adventures", true);
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
 		addDivider(ulAdventures);
-		addLi(ulAdventures, "adventure.html", "Lost Mines of Phandelver", {isSide: true, aHash: "LMoP"});
-		addLi(ulAdventures, "adventure.html", "Hoard of the Dragon Queen", {isSide: true, aHash: "HotDQ"});
-		addLi(ulAdventures, "adventure.html", "Rise of Tiamat", {isSide: true, aHash: "RoT"});
-		addLi(ulAdventures, "adventure.html", "Princes of the Apocalypse", {isSide: true, aHash: "PotA"});
-		addLi(ulAdventures, "adventure.html", "Out of the Abyss", {isSide: true, aHash: "OotA"});
-		addLi(ulAdventures, "adventure.html", "Curse of Strahd", {isSide: true, aHash: "CoS"});
-		addLi(ulAdventures, "adventure.html", "Storm King's Thunder", {isSide: true, aHash: "SKT"});
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Sunless Citadel", {isSide: true, aHash: "TftYP-TSC"});
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Forge of Fury", {isSide: true, aHash: "TftYP-TFoF"});
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Hidden Shrine of Tamoachan", {isSide: true, aHash: "TftYP-THSoT"});
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: White Plume Mountain", {isSide: true, aHash: "TftYP-WPM"});
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Dead in Thay", {isSide: true, aHash: "TftYP-DiT"});
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Against the Giants", {isSide: true, aHash: "TftYP-AtG"});
-		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Tomb of Horrors", {isSide: true, aHash: "TftYP-ToH"});
-		addLi(ulAdventures, "adventure.html", "Tomb of Annihilation", {isSide: true, aHash: "ToA"});
-		addLi(ulAdventures, "adventure.html", "The Tortle Package", {isSide: true, aHash: "TTP"});
-		addLi(ulAdventures, "adventure.html", "Waterdeep: Dragon Heist", {isSide: true, aHash: "WDH"});
-		addLi(ulAdventures, "adventure.html", "Lost Laboratory of Kwalish", {isSide: true, aHash: "LLK"});
-		addLi(ulAdventures, "adventure.html", "Waterdeep: Dungeon of the Mad Mage", {isSide: true, aHash: "WDMM"});
-		addLi(ulAdventures, "adventure.html", "Krenko's Way", {isSide: true, aHash: "KKW"});
-		addLi(ulAdventures, "adventure.html", "Ghosts of Saltmarsh", {isSide: true, aHash: "GoS"});
-		addLi(ulAdventures, "adventure.html", "Hunt for the Thessalhydra", {isSide: true, aHash: "HftT"});
-		addLi(ulAdventures, "adventure.html", "The Orrery of the Wanderer", {isSide: true, aHash: "OoW"});
-		addLi(ulAdventures, "adventure.html", "Essentials Kit: Dragon of Icespire Peak", {isSide: true, aHash: "DIP"});
-		addLi(ulAdventures, "adventure.html", "Essentials Kit: Storm Lord's Wrath", {isSide: true, aHash: "SLW"});
-		addLi(ulAdventures, "adventure.html", "Essentials Kit: Sleeping Dragon's Wake", {isSide: true, aHash: "SDW"});
-		addLi(ulAdventures, "adventure.html", "Essentials Kit: Divine Contention", {isSide: true, aHash: "DC"});
-		addLi(ulAdventures, "adventure.html", "Baldur's Gate: Descent Into Avernus", {isSide: true, aHash: "BGDIA"});
-		addLi(ulAdventures, "adventure.html", "Locathah Rising", {isSide: true, aHash: "LR"});
-		addLi(ulAdventures, "adventure.html", "Eberron: Forgotten Relics", {isSide: true, aHash: "EFR"});
-		addLi(ulAdventures, "adventure.html", "Rick and Morty: Big Rick Energy", {isSide: true, aHash: "RMBRE"});
-		addLi(ulAdventures, "adventure.html", "Infernal Machine Rebuild", {isSide: true, aHash: "IMR"});
-		addLi(ulAdventures, "adventure.html", "Wildemount: Tide of Retribution", {isSide: true, aHash: "ToR"});
-		addLi(ulAdventures, "adventure.html", "Wildemount: Dangerous Designs", {isSide: true, aHash: "DD"});
-		addLi(ulAdventures, "adventure.html", "Wildemount: Frozen Sick", {isSide: true, aHash: "FS"});
-		addLi(ulAdventures, "adventure.html", "Wildemount: Unwelcome Spirits", {isSide: true, aHash: "US"});
+		addLi(ulAdventures, "adventure.html", "Lost Mines of Phandelver", {isSide: true, aHash: "LMoP", date: "2014"});
+		addLi(ulAdventures, "adventure.html", "Hoard of the Dragon Queen", {isSide: true, aHash: "HotDQ", date: null});
+		addLi(ulAdventures, "adventure.html", "Rise of Tiamat", {isSide: true, aHash: "RoT", date: null});
+		addLi(ulAdventures, "adventure.html", "Princes of the Apocalypse", {isSide: true, aHash: "PotA", date: "2015"});
+		addLi(ulAdventures, "adventure.html", "Out of the Abyss", {isSide: true, aHash: "OotA", date: null});
+		addLi(ulAdventures, "adventure.html", "Curse of Strahd", {isSide: true, aHash: "CoS", date: "2016"});
+		addLi(ulAdventures, "adventure.html", "Storm King's Thunder", {isSide: true, aHash: "SKT", date: null});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Sunless Citadel", {isSide: true, aHash: "TftYP-TSC", date: "2017"});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Forge of Fury", {isSide: true, aHash: "TftYP-TFoF", date: null});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: The Hidden Shrine of Tamoachan", {isSide: true, aHash: "TftYP-THSoT", date: null});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: White Plume Mountain", {isSide: true, aHash: "TftYP-WPM", date: null});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Dead in Thay", {isSide: true, aHash: "TftYP-DiT", date: null});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Against the Giants", {isSide: true, aHash: "TftYP-AtG", date: null});
+		addLi(ulAdventures, "adventure.html", "Tales from the Yawning Portal: Tomb of Horrors", {isSide: true, aHash: "TftYP-ToH", date: null});
+		addLi(ulAdventures, "adventure.html", "Tomb of Annihilation", {isSide: true, aHash: "ToA", date: null});
+		addLi(ulAdventures, "adventure.html", "The Tortle Package", {isSide: true, aHash: "TTP", date: null});
+		addLi(ulAdventures, "adventure.html", "Waterdeep: Dragon Heist", {isSide: true, aHash: "WDH", date: "2018"});
+		addLi(ulAdventures, "adventure.html", "Lost Laboratory of Kwalish", {isSide: true, aHash: "LLK", date: null});
+		addLi(ulAdventures, "adventure.html", "Waterdeep: Dungeon of the Mad Mage", {isSide: true, aHash: "WDMM", date: null});
+		addLi(ulAdventures, "adventure.html", "Krenko's Way", {isSide: true, aHash: "KKW", date: null});
+		addLi(ulAdventures, "adventure.html", "Ghosts of Saltmarsh", {isSide: true, aHash: "GoS", date: "2019"});
+		addLi(ulAdventures, "adventure.html", "Hunt for the Thessalhydra", {isSide: true, aHash: "HftT", date: null});
+		addLi(ulAdventures, "adventure.html", "The Orrery of the Wanderer", {isSide: true, aHash: "OoW", date: null});
+		addLi(ulAdventures, "adventure.html", "Essentials Kit: Dragon of Icespire Peak", {isSide: true, aHash: "DIP", date: null});
+		addLi(ulAdventures, "adventure.html", "Essentials Kit: Storm Lord's Wrath", {isSide: true, aHash: "SLW", date: null});
+		addLi(ulAdventures, "adventure.html", "Essentials Kit: Sleeping Dragon's Wake", {isSide: true, aHash: "SDW", date: null});
+		addLi(ulAdventures, "adventure.html", "Essentials Kit: Divine Contention", {isSide: true, aHash: "DC", date: null});
+		addLi(ulAdventures, "adventure.html", "Baldur's Gate: Descent Into Avernus", {isSide: true, aHash: "BGDIA", date: null});
+		addLi(ulAdventures, "adventure.html", "Locathah Rising", {isSide: true, aHash: "LR", date: null});
+		addLi(ulAdventures, "adventure.html", "Eberron: Forgotten Relics", {isSide: true, aHash: "EFR", date: null});
+		addLi(ulAdventures, "adventure.html", "Rick and Morty: Big Rick Energy", {isSide: true, aHash: "RMBRE", date: null});
+		addLi(ulAdventures, "adventure.html", "Infernal Machine Rebuild", {isSide: true, aHash: "IMR", date: null});
+		addLi(ulAdventures, "adventure.html", "Wildemount: Tide of Retribution", {isSide: true, aHash: "ToR", date: "2020"});
+		addLi(ulAdventures, "adventure.html", "Wildemount: Dangerous Designs", {isSide: true, aHash: "DD", date: null});
+		addLi(ulAdventures, "adventure.html", "Wildemount: Frozen Sick", {isSide: true, aHash: "FS", date: null});
+		addLi(ulAdventures, "adventure.html", "Wildemount: Unwelcome Spirits", {isSide: true, aHash: "US", date: null});
 		addLi(ulDms, "cultsboons.html", "Cults & Supernatural Boons");
 		addLi(ulDms, "objects.html", "Objects");
 		addLi(ulDms, "trapshazards.html", "Traps & Hazards");
@@ -135,6 +135,8 @@ class NavBar {
 		addLi(ulReferences, "vehicles.html", "Vehicles");
 
 		const ulUtils = addDropdown(navBar, "Utilities");
+		addLi(ulUtils, "search.html", "Search");
+		addDivider(ulUtils);
 		addLi(ulUtils, "blacklist.html", "Content Blacklist");
 		addLi(ulUtils, "makebrew.html", "Homebrew Builder");
 		addLi(ulUtils, "managebrew.html", "Homebrew Manager");
@@ -335,6 +337,7 @@ class NavBar {
 		 * @param [opts.aHash] - Optional hash to be appended to the base href
 		 * @param [opts.isRoot] - If the item is a root navbar element.
 		 * @param [opts.isExternal] - If the item is an external link.
+		 * @param [opts.date] - A date to prefix the list item with.
 		 */
 		function addLi (appendTo, aHref, aText, opts) {
 			opts = opts || {};
@@ -357,7 +360,7 @@ class NavBar {
 
 			const a = document.createElement("a");
 			a.href = `${aHref}${hashPart}`;
-			a.innerHTML = aText;
+			a.innerHTML = `${opts.date !== undefined ? `<span class="ve-muted ve-small mr-2 page__nav-date inline-block text-right">${opts.date || ""}</span>` : ""}${aText}`;
 			a.classList.add("nav__link");
 
 			if (opts.isExternal) {

@@ -141,11 +141,6 @@ InitiativeTrackerUtil.CONDITIONS = [
 		color: Parser.CONDITION_TO_COLOR[k]
 	})),
 	{
-		name: "Concentrating",
-		color: "#009f7a",
-		condName: null
-	},
-	{
 		name: "Drunk",
 		color: "#ffcc00",
 		condName: null

@@ -70,10 +70,10 @@ class InitiativeTracker {
 		};
 
 		// initialise "upload" context menu
-		const contextId = ContextUtil.getNextGenericMenuId();
-		ContextUtil.doInitContextMenu(contextId, async (evt, ele, $invokedOn, $selectedMenu) => {
-			switch (Number($selectedMenu.data("ctx-id"))) {
-				case 0: {
+		const menu = ContextUtil.getMenu([
+			new ContextUtil.Action(
+				"From Current Bestiary Encounter",
+				async () => {
 					const savedState = await EncounterUtil.pGetInitialState();
 					if (savedState) await pConvertAndLoadBestiaryList(savedState.data);
 					else {
@@ -82,9 +82,11 @@ class InitiativeTracker {
 							type: "warning"
 						});
 					}
-					break;
 				}
-				case 1: {
+			),
+			new ContextUtil.Action(
+				"From Saved Bestiary Encounter",
+				async () => {
 					const allSaves = Object.values((await EncounterUtil.pGetSavedState()).savedEncounters || {});
 					if (!allSaves.length) return JqueryUtil.doToast({type: "warning", content: "No saved encounters were found! Go to the Bestiary and create some first."});
 					const selected = await InputUiUtil.pGetUserEnum({
@@ -93,18 +95,23 @@ class InitiativeTracker {
 						title: "Select Saved Encounter"
 					});
 					if (selected != null) await pConvertAndLoadBestiaryList(allSaves[selected].data);
-					break;
 				}
-				case 2: {
+			),
+			new ContextUtil.Action(
+				"From Bestiary Encounter File",
+				async () => {
 					const json = await DataUtil.pUserUpload();
 					if (json) await pConvertAndLoadBestiaryList(json);
-					break;
 				}
-				case 3:
+			),
+			null,
+			new ContextUtil.Action(
+				"Import Settings",
+				() => {
 					makeImportSettingsModal();
-					break;
-			}
-		}, ["From Current Bestiary Encounter", "From Saved Bestiary Encounter", "From Bestiary Encounter File", null, "Import Settings"]);
+				}
+			)
+		])
 
 		const $wrpTop = $(`<div class="dm-init-wrp-header-outer"/>`).appendTo($wrpTracker);
 		const $wrpHeader = $(`
@@ -471,7 +478,7 @@ class InitiativeTracker {
 		const $btnLoad = $(`<button title="Import an encounter from the Bestiary" class="btn btn-success btn-xs dm-init-lockable"><span class="glyphicon glyphicon-upload"/></button>`).appendTo($wrpLoadReset)
 			.click((evt) => {
 				if (cfg.isLocked) return;
-				ContextUtil.handleOpenContextMenu(evt, $btnLoad, contextId);
+				ContextUtil.pOpenMenu(evt, menu);
 			});
 		$(`<button title="Reset" class="btn btn-danger btn-xs dm-init-lockable"><span class="glyphicon glyphicon-trash"/></button>`).appendTo($wrpLoadReset)
 			.click(() => {

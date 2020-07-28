@@ -6,7 +6,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.106.13"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.108.5"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -119,8 +119,16 @@ String.prototype.escapeQuotes = String.prototype.escapeQuotes || function () {
 	return this.replace(/'/g, `&apos;`).replace(/"/g, `&quot;`);
 };
 
+String.prototype.qq = String.prototype.qq || function () {
+	return this.escapeQuotes();
+};
+
 String.prototype.unescapeQuotes = String.prototype.unescapeQuotes || function () {
 	return this.replace(/&apos;/g, `'`).replace(/&quot;/g, `"`);
+};
+
+String.prototype.uq = String.prototype.uq || function () {
+	return this.unescapeQuotes();
 };
 
 String.prototype.encodeApos = String.prototype.encodeApos || function () {
@@ -360,11 +368,14 @@ CurrencyUtil = {
 	 * @param obj Object of the form {cp: 123, sp: 456, ...} (values optional)
 	 * @param [opts]
 	 * @param [opts.currencyConversionId] Currency conversion table ID.
+	 * @param [opts.currencyConversionTable] Currency conversion table.
 	 */
 	doSimplifyCoins (obj, opts) {
 		opts = opts || {};
 
-		const conversionTable = Parser.getCurrencyConversionTable(opts.currencyConversionId);
+		const conversionTable = opts.currencyConversionTable || Parser.getCurrencyConversionTable(opts.currencyConversionId);
+		if (!conversionTable.length) return obj;
+
 		const normalized = conversionTable
 			.map(it => {
 				return {
@@ -387,7 +398,13 @@ CurrencyUtil = {
 			}
 		}
 
-		normalized.filter(coinMeta => obj[coinMeta.coin] === 0).forEach(coinMeta => delete obj[coinMeta.coin]);
+		normalized
+			.filter(coinMeta => obj[coinMeta.coin] === 0 || obj[coinMeta.coin] == null)
+			.forEach(coinMeta => {
+				// First set the value to null, in case we're dealing with a class instance that has setters
+				obj[coinMeta.coin] = null;
+				delete obj[coinMeta.coin];
+			});
 
 		return obj;
 	}
@@ -463,7 +480,7 @@ JqueryUtil = {
 		/**
 		 * Template strings which can contain jQuery objects.
 		 * Usage: $$`<div>Press this button: ${$btn}</div>`
-		 * @return jQuery
+		 * @return JQuery
 		 */
 		window.$$ = function (parts, ...args) {
 			if (parts instanceof jQuery) {
@@ -570,8 +587,6 @@ JqueryUtil = {
 	},
 
 	showCopiedEffect ($ele, text = "Copied!", bubble) {
-		const $temp = $(`<div class="copied-tip"><span>${text}</span></div>`).appendTo($(`body`));
-		const offset = $temp.width() / 2;
 		const top = $(window).scrollTop();
 		const pos = $ele.offset();
 
@@ -584,25 +599,30 @@ JqueryUtil = {
 		}
 		const seed = Math.random();
 		const duration = bubble ? 250 + seed * 200 : 250;
+		const offsetY = bubble ? 16 : 0;
 
-		$temp.css({
-			top: bubble ? (pos.top - 5) - top : (pos.top - 17) - top,
-			left: pos.left - offset + ($ele.width() / 2)
-		}).animate(
-			animationOptions,
-			{
-				easing: "linear",
-				duration,
-				complete: () => $temp.remove(),
-				progress: (_, progress) => { // progress is 0..1
-					if (bubble) {
-						const diffProgress = 0.5 - progress;
-						animationOptions.top = `${diffProgress > 0 ? "-" : "+"}=40`;
-						$temp.css("transform", `rotate(${seed > 0.5 ? "-" : ""}${seed * 500 * progress}deg)`);
+		const $dispCopied = $(`<div class="clp__disp-copied"></div>`);
+		$dispCopied
+			.html(text)
+			.css({
+				top: (pos.top - 24) + offsetY - top,
+				left: pos.left + ($ele.width() / 2)
+			})
+			.appendTo(document.body)
+			.animate(
+				animationOptions,
+				{
+					duration,
+					complete: () => $dispCopied.remove(),
+					progress: (_, progress) => { // progress is 0..1
+						if (bubble) {
+							const diffProgress = 0.5 - progress;
+							animationOptions.top = `${diffProgress > 0 ? "-" : "+"}=40`;
+							$dispCopied.css("transform", `rotate(${seed > 0.5 ? "-" : ""}${seed * 500 * progress}deg)`);
+						}
 					}
 				}
-			}
-		);
+			);
 	},
 
 	_dropdownInit: false,
@@ -707,12 +727,13 @@ MiscUtil = {
 	},
 
 	async pCopyTextToClipboard (text) {
-		function doCompatabilityCopy () {
-			const $temp = $(`<textarea id="copy-temp" style="position: fixed; top: -1000px; left: -1000px; width: 1px; height: 1px;">${text}</textarea>`);
-			$(`body`).append($temp);
-			$temp.select();
+		function doCompatibilityCopy () {
+			const $iptTemp = $(`<textarea class="clp__wrp-temp"></textarea>`)
+				.appendTo(document.body)
+				.val(text)
+				.select();
 			document.execCommand("Copy");
-			$temp.remove();
+			$iptTemp.remove();
 		}
 
 		if (navigator && navigator.permissions) {
@@ -720,9 +741,9 @@ MiscUtil = {
 				const access = await navigator.permissions.query({name: "clipboard-write"});
 				if (access.state === "granted" || access.state === "prompt") {
 					await navigator.clipboard.writeText(text);
-				} else doCompatabilityCopy();
-			} catch (e) { doCompatabilityCopy(); }
-		} else doCompatabilityCopy();
+				} else doCompatibilityCopy();
+			} catch (e) { doCompatibilityCopy(); }
+		} else doCompatibilityCopy();
 	},
 
 	checkProperty (object, ...path) {
@@ -909,7 +930,7 @@ MiscUtil = {
 	],
 	dateToStr (date, short) {
 		const month = MiscUtil.MONTH_NAMES[date.getMonth()];
-		return `${short ? month.substring(0, 3) : month} ${date.getDate()}, ${date.getFullYear()}`;
+		return `${short ? month.substring(0, 3) : month} ${Parser.getOrdinalForm(date.getDate())}, ${date.getFullYear()}`;
 	},
 
 	findCommonPrefix (strArr) {
@@ -1214,113 +1235,129 @@ if (typeof window !== "undefined") window.addEventListener("load", EventUtil.ini
 
 // CONTEXT MENUS =======================================================================================================
 ContextUtil = {
-	_ctxInit: {},
-	_ctxClick: {},
-	_ctxOpenRefsNextId: 1,
-	_ctxOpenRefs: {},
-	_handlePreInitContextMenu: (menuId) => {
-		if (ContextUtil._ctxInit[menuId]) return;
-		ContextUtil._ctxInit[menuId] = true;
-		const clickId = `click.${menuId}`;
-		$("body").off(clickId).on(clickId, (evt) => {
-			if ($(evt.target).data("ctx-id") != null) return; // ignore clicks on context menus
+	_isInit: false,
+	_menus: [],
 
-			Object.entries(ContextUtil._ctxOpenRefs[menuId] || {}).forEach(([k, v]) => {
-				v(false);
-				delete ContextUtil._ctxOpenRefs[menuId][k];
-			});
-			$(`#${menuId}`).hide();
-		});
+	_init () {
+		if (ContextUtil._isInit) return;
+		ContextUtil._isInit = true;
+
+		$(document.body).click(() => ContextUtil._menus.forEach(menu => menu.close()));
 	},
 
-	_getMenuPosition: (menuId, mouse, direction, scrollDir) => {
-		const win = $(window)[direction]();
-		const scroll = $(window)[scrollDir]();
-		const menu = $(`#${menuId}`)[direction]();
-		let position = mouse + scroll;
-		// opening menu would pass the side of the page
-		if (mouse + menu > win && menu < mouse) position -= menu;
-		return position;
+	getMenu (actions) {
+		ContextUtil._init();
+
+		const menu = new ContextUtil.Menu(actions);
+		ContextUtil._menus.push(menu);
+		return menu;
 	},
 
-	_lastMenuId: 1,
-	getNextGenericMenuId () { return `contextMenu_${ContextUtil._lastMenuId++}`; },
-
-	doInitContextMenu: (menuId, clickFn, labels) => {
-		ContextUtil._ctxClick[menuId] = clickFn;
-		ContextUtil._handlePreInitContextMenu(menuId);
-		let tempString = `<ul id="${menuId}" class="dropdown-menu ui-ctx" role="menu">`;
-		let i = 0;
-		labels.forEach(it => {
-			if (it === null) tempString += `<li class="divider"></li>`;
-			else if (typeof it === "object") {
-				tempString += `<li class="${it.isDisabled ? `disabled` : ``} ${it.style || ""}"><span ${!it.isDisabled ? `data-ctx-id="${i}"` : ""} ${it.title ? `title="${it.title.escapeQuotes()}"` : ""}>${it.text}</span></li>`;
-				if (!it.isDisabled) i++;
-			} else {
-				tempString += `<li><span data-ctx-id="${i}">${it}</span></li>`;
-				i++;
-			}
-		});
-		tempString += `</ul>`;
-		$(`#${menuId}`).remove();
-		$("body").append(tempString);
+	deleteMenu (menu) {
+		menu.remove();
+		const ix = ContextUtil._menus.findIndex(it => it === menu);
+		if (~ix) ContextUtil._menus.splice(ix, 1);
 	},
 
-	doInitActionContextMenu (contextId, actionOptions) {
-		ContextUtil.doInitContextMenu(contextId, (evt, ele, $invokedOn, $selectedMenu) => {
-			const val = Number($selectedMenu.data("ctx-id"));
-			actionOptions.filter(Boolean)[val].action(evt, $invokedOn);
-		}, actionOptions);
-	},
-
-	doTeardownContextMenu (menuId) {
-		delete ContextUtil._ctxInit[menuId];
-		delete ContextUtil._ctxClick[menuId];
-		delete ContextUtil._ctxOpenRefs[menuId];
-		$(`#${menuId}`).remove();
-	},
-
-	handleOpenContextMenu: (evt, ele, menuId, closeHandler, data) => {
-		// anything specified in "data" is passed through to the final handler(s)
+	pOpenMenu (evt, menu, userData) {
 		evt.preventDefault();
 		evt.stopPropagation();
-		const thisId = ContextUtil._ctxOpenRefsNextId++;
-		(ContextUtil._ctxOpenRefs[menuId] = ContextUtil._ctxOpenRefs[menuId] || {})[thisId] = closeHandler || (() => {});
-		const $menu = $(`#${menuId}`)
-			.show()
-			.css({
-				position: "absolute",
-				left: ContextUtil._getMenuPosition(menuId, evt.clientX, "width", "scrollLeft"),
-				top: ContextUtil._getMenuPosition(menuId, evt.clientY, "height", "scrollTop")
-			})
-			.off("click")
-			.on("click", "span", function (e) {
-				$menu.hide();
-				if (ContextUtil._ctxOpenRefs[menuId][thisId]) ContextUtil._ctxOpenRefs[menuId][thisId](true);
-				delete ContextUtil._ctxOpenRefs[menuId][thisId];
-				const $invokedOn = $(evt.target).closest(`li.row`);
-				const $selectedMenu = $(e.target);
-				const invokedOnId = Number($selectedMenu.data("ctx-id"));
-				ContextUtil._ctxClick[menuId](e, ele, $invokedOn, $selectedMenu, isNaN(invokedOnId) ? null : invokedOnId, data);
+
+		ContextUtil._init();
+
+		// Close any other open menus
+		ContextUtil._menus.filter(it => it !== menu).forEach(it => it.close());
+
+		return menu.pOpen(evt, userData);
+	},
+
+	Menu: function (actions) {
+		this._actions = actions;
+		this._pResult = null;
+		this._resolveResult = null;
+
+		this._userData = null;
+
+		const $elesAction = this._actions.map(it => {
+			if (it == null) return $(`<div class="my-1 w-100 ui-ctx__divider"></div>`);
+
+			const $row = $$`<div class="py-1 px-5 ui-ctx__row ${it.isDisabled ? "disabled" : ""} ${it.style || ""}">${it.text}</div>`
+				.click(async evt => {
+					if (it.isDisabled) return;
+
+					evt.preventDefault();
+					evt.stopPropagation();
+
+					this.close();
+
+					const result = await it.fnAction(evt, this._userData);
+					if (this._resolveResult) this._resolveResult(result);
+				});
+			if (it.title) $row.title(it.title);
+
+			return $row;
+		});
+
+		this._$ele = $$`<div class="flex-col ui-ctx__wrp py-2">${$elesAction}</div>`
+			.hideVe()
+			.appendTo(document.body);
+
+		this.remove = function () { this._$ele.remove(); }
+
+		this.width = function () { return this._$ele.width(); }
+		this.height = function () { return this._$ele.height(); }
+
+		this.pOpen = function (evt, userData) {
+			if (this._resolveResult) this._resolveResult(null);
+			this._pResult = new Promise(resolve => {
+				this._resolveResult = resolve;
 			});
+			this._userData = userData;
+
+			this._$ele
+				.css({
+					position: "absolute",
+					left: this._getMenuPosition(evt, "x"),
+					top: this._getMenuPosition(evt, "y")
+				})
+				.showVe();
+
+			return this._pResult;
+		}
+		this.close = function () { this._$ele.hideVe(); }
+
+		this._getMenuPosition = function (evt, axis) {
+			const {fnMenuSize, propMousePos, fnWindowSize, fnScrollDir} = axis === "x"
+				? {fnMenuSize: "width", propMousePos: "clientX", fnWindowSize: "width", fnScrollDir: "scrollLeft"}
+				: {fnMenuSize: "height", propMousePos: "clientY", fnWindowSize: "height", fnScrollDir: "scrollTop"};
+
+			const posMouse = evt[propMousePos];
+			const szWin = $(window)[fnWindowSize]();
+			const posScroll = $(window)[fnScrollDir]();
+			let position = posMouse + posScroll;
+			const szMenu = this[fnMenuSize]();
+			// opening menu would pass the side of the page
+			if (posMouse + szMenu > szWin && szMenu < posMouse) position -= szMenu;
+			return position;
+		}
 	},
 
 	/**
 	 * @param text
-	 * @param fnAction
+	 * @param fnAction Action, which is passed its triggering click event as an argument.
 	 * @param [opts] Options object.
 	 * @param [opts.isDisabled] If this action is disabled.
-	 * @param [opts.helpText] Help (title) text.
+	 * @param [opts.title] Help (title) text.
 	 * @param [opts.style] Additional CSS classes to add (e.g. `ctx-danger`).
 	 */
 	Action: function (text, fnAction, opts) {
 		opts = opts || {};
 
 		this.text = text;
-		this.action = fnAction;
+		this.fnAction = fnAction;
 
 		this.isDisabled = opts.isDisabled;
-		this.helpText = opts.helpText;
+		this.title = opts.title;
 		this.style = opts.style;
 	}
 };
@@ -2997,14 +3034,14 @@ DataUtil = {
 			return DataUtil.loadJSON(`${urlRoot}_generated/index-timestamps.json`);
 		},
 
-		async pLoadCollectionIndex (urlRoot) {
+		async pLoadPropIndex (urlRoot) {
 			urlRoot = DataUtil.brew._getCleanUrlRoot(urlRoot);
-			return DataUtil.loadJSON(`${urlRoot}collection/index.json`);
+			return DataUtil.loadJSON(`${urlRoot}_generated/index-props.json`);
 		},
 
-		getDirUrl (dir, urlRoot) {
+		getFileUrl (path, urlRoot) {
 			urlRoot = DataUtil.brew._getCleanUrlRoot(urlRoot);
-			return `${urlRoot}_generated/index-dir-${dir}.json?t=${(new Date()).getTime()}`;
+			return `${urlRoot}${path}`;
 		}
 	}
 };
@@ -3111,7 +3148,6 @@ StorageUtil = {
 		}
 
 		StorageUtil._init = true;
-
 		try {
 			window.localStorage.setItem("_test_storage", true);
 			return window.localStorage;
@@ -3120,15 +3156,9 @@ StorageUtil = {
 			StorageUtil.__fakeStorage = true;
 			StorageUtil._fakeStorage = {
 				isSyncFake: true,
-				getItem: (k) => {
-					return StorageUtil.__fakeStorage[k];
-				},
-				removeItem: (k) => {
-					delete StorageUtil.__fakeStorage[k];
-				},
-				setItem: (k, v) => {
-					StorageUtil.__fakeStorage[k] = v;
-				}
+				getItem: k => StorageUtil.__fakeStorage[k],
+				removeItem: k => delete StorageUtil.__fakeStorage[k],
+				setItem: (k, v) => StorageUtil.__fakeStorage[k] = v
 			};
 			return StorageUtil._fakeStorage;
 		}
@@ -3144,15 +3174,9 @@ StorageUtil = {
 			StorageUtil.__fakeStorageAsync = {};
 			StorageUtil._fakeStorageAsync = {
 				pIsAsyncFake: true,
-				async setItem (k, v) {
-					StorageUtil.__fakeStorageAsync[k] = v;
-				},
-				async getItem (k) {
-					return StorageUtil.__fakeStorageAsync[k];
-				},
-				async removeItem (k) {
-					delete StorageUtil.__fakeStorageAsync[k];
-				}
+				async setItem (k, v) { StorageUtil.__fakeStorageAsync[k] = v; },
+				async getItem (k) { return StorageUtil.__fakeStorageAsync[k]; },
+				async removeItem (k) { delete StorageUtil.__fakeStorageAsync[k]; }
 			};
 			return StorageUtil._fakeStorageAsync;
 		};
@@ -3175,8 +3199,7 @@ StorageUtil = {
 		} else return getInitFakeStorage();
 	},
 
-	// SYNC METHODS ////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Synchronous localStorage access, which should only be used for small amounts of data (metadata, config, etc)
+	// region Synchronous
 	syncGet (key) {
 		const rawOut = StorageUtil.getSyncStorage().getItem(key);
 		if (rawOut && rawOut !== "undefined" && rawOut !== "null") return JSON.parse(rawOut);
@@ -3217,8 +3240,9 @@ StorageUtil = {
 	syncSetFromDump (dump) {
 		Object.entries(dump).forEach(([k, v]) => StorageUtil.syncSet(k, v));
 	},
-	// END SYNC METHODS ////////////////////////////////////////////////////////////////////////////////////////////////
+	// endregion
 
+	// region Asynchronous
 	async pIsAsyncFake () {
 		const storage = await StorageUtil.getAsyncStorage();
 		return !!storage.pIsAsyncFake;
@@ -3251,7 +3275,7 @@ StorageUtil = {
 		const meta = (await StorageUtil.pGet(StorageUtil._META_KEY)) || {};
 		if (isRemove) delete meta[key];
 		else meta[key] = 1;
-		storage.setItem(StorageUtil._META_KEY, meta);
+		return storage.setItem(StorageUtil._META_KEY, meta);
 	},
 
 	async pGetDump () {
@@ -3264,6 +3288,7 @@ StorageUtil = {
 	async pSetFromDump (dump) {
 		return Promise.all(Object.entries(dump).map(([k, v]) => StorageUtil.pSet(k, v)));
 	}
+	// endregion
 };
 StorageUtil._META_KEY = "_STORAGE_META_STORAGE";
 
@@ -3498,38 +3523,6 @@ BrewUtil = {
 					${$ulRows}`;
 
 				// populate list
-				function getBrewDirs () {
-					switch (page) {
-						case UrlUtil.PG_SPELLS: return ["spell"];
-						case UrlUtil.PG_CLASSES: return ["class", "subclass", "classFeature", "subclassFeature"];
-						case UrlUtil.PG_BESTIARY: return ["creature"];
-						case UrlUtil.PG_BACKGROUNDS: return ["background"];
-						case UrlUtil.PG_FEATS: return ["feat"];
-						case UrlUtil.PG_OPT_FEATURES: return ["optionalfeature"];
-						case UrlUtil.PG_RACES: return ["race", "subrace"];
-						case UrlUtil.PG_OBJECTS: return ["object"];
-						case UrlUtil.PG_TRAPS_HAZARDS: return ["trap", "hazard"];
-						case UrlUtil.PG_DEITIES: return ["deity"];
-						case UrlUtil.PG_ITEMS: return ["item", "magicvariant"];
-						case UrlUtil.PG_REWARDS: return ["reward"];
-						case UrlUtil.PG_PSIONICS: return ["psionic"];
-						case UrlUtil.PG_VARIATNRULES: return ["variantrule"];
-						case UrlUtil.PG_CONDITIONS_DISEASES: return ["condition", "disease"];
-						case UrlUtil.PG_ADVENTURES: return ["adventure"];
-						case UrlUtil.PG_BOOKS: return ["book"];
-						case UrlUtil.PG_TABLES: return ["table"];
-						case UrlUtil.PG_MAKE_SHAPED: return ["spell", "creature"];
-						case UrlUtil.PG_MAKE_BREW: return ["spell", "creature", "makebrew"];
-						case UrlUtil.PG_MANAGE_BREW:
-						case UrlUtil.PG_DEMO_RENDER: return BrewUtil._DIRS;
-						case UrlUtil.PG_VEHICLES: return ["vehicle"];
-						case UrlUtil.PG_ACTIONS: return ["action"];
-						case UrlUtil.PG_CULTS_BOONS: return ["cult", "boon"];
-						case UrlUtil.PG_LANGUAGES: return ["language"];
-						default: throw new Error(`No homebrew directories defined for category ${page}`);
-					}
-				}
-
 				let dataList;
 				function fnSort (a, b, o) {
 					a = dataList[a.ix];
@@ -3546,32 +3539,30 @@ BrewUtil = {
 				}
 
 				const urlRoot = await StorageUtil.pGet(`HOMEBREW_CUSTOM_REPO_URL`);
-				const timestamps = await DataUtil.brew.pLoadTimestamps(urlRoot);
-				const collectionIndex = await DataUtil.brew.pLoadCollectionIndex(urlRoot);
-				const collectionFiles = (() => {
-					const dirs = new Set(getBrewDirs().map(dir => BrewUtil._pRenderBrewScreen_dirToCat(dir)));
-					return Object.keys(collectionIndex).filter(k => collectionIndex[k].find(it => dirs.has(it)));
-				})();
+				const [timestamps, propIndex] = await Promise.all([
+					DataUtil.brew.pLoadTimestamps(urlRoot),
+					DataUtil.brew.pLoadPropIndex(urlRoot)
+				]);
+				const props = BrewUtil.getPageProps();
 
-				const toLoads = getBrewDirs().map(it => ({url: DataUtil.brew.getDirUrl(it, urlRoot), _cat: BrewUtil._pRenderBrewScreen_dirToCat(it)}));
-				if (collectionFiles.length) toLoads.push({url: DataUtil.brew.getDirUrl("collection", urlRoot), _collection: true, _cat: "collection"});
+				const seenPaths = new Set();
 
-				const jsonStack = (await Promise.all(toLoads.map(async toLoad => {
-					let json;
-					// Avoid crashes on missing directories
-					try {
-						json = await DataUtil.loadJSON(toLoad.url);
-					} catch (e) {
-						setTimeout(() => { throw e; });
-						return [];
-					}
-					if (toLoad._collection) json.filter(it => it.name === "index.json" || !collectionFiles.includes(it.name)).forEach(it => it._brewSkip = true);
-					json.forEach(it => it._cat = toLoad._cat);
-					return json;
-				}))).flat();
+				dataList = [];
+				props.forEach(prop => {
+					Object.entries(propIndex[prop] || {})
+						.forEach(([path, dir]) => {
+							if (seenPaths.has(path)) return;
+							seenPaths.add(path);
+							dataList.push({
+								download_url: DataUtil.brew.getFileUrl(path, urlRoot),
+								path,
+								name: path.split("/").slice(1).join("/"),
+								_cat: BrewUtil.dirToProp(dir)
+							})
+						})
+				});
 
-				const all = jsonStack.flat();
-				all.forEach(it => {
+				dataList.forEach(it => {
 					const cleanFilename = it.name.trim().replace(/\.json$/, "");
 					const spl = cleanFilename.split(";").map(it => it.trim());
 					if (spl.length > 1) {
@@ -3582,7 +3573,7 @@ BrewUtil = {
 						it._brewAuthor = "";
 					}
 				});
-				all.sort((a, b) => SortUtil.ascSortLower(a._brewName, b._brewName));
+				dataList.sort((a, b) => SortUtil.ascSortLower(a._brewName, b._brewName));
 
 				const list = new List({
 					$iptSearch,
@@ -3592,11 +3583,10 @@ BrewUtil = {
 				});
 				SortUtil.initBtnSortHandlers($modalInner.find(".manbrew__filtertools"), list);
 
-				dataList = all.filter(it => !it._brewSkip);
 				dataList.forEach((it, i) => {
 					it._brewAdded = (timestamps[it.path] || {}).a || 0;
 					it._brewModified = (timestamps[it.path] || {}).m || 0;
-					it._brewCat = BrewUtil._pRenderBrewScreen_getDisplayCat(BrewUtil._pRenderBrewScreen_dirToCat(it._cat));
+					it._brewCat = BrewUtil._pRenderBrewScreen_getDisplayCat(BrewUtil.dirToProp(it._cat));
 
 					const timestampAdded = it._brewAdded ? MiscUtil.dateToStr(new Date(it._brewAdded * 1000), true) : "";
 					const timestampModified = it._brewModified ? MiscUtil.dateToStr(new Date(it._brewModified * 1000), true) : "";
@@ -3814,6 +3804,8 @@ BrewUtil = {
 					fnSort: SortUtil.listSort
 				});
 
+				ListUiUtil.bindSelectAllCheckbox($cbAll.off("change"), list);
+
 				function mapCategoryEntry (cat, bru) {
 					const out = {};
 					out.name = bru.name;
@@ -3858,11 +3850,14 @@ BrewUtil = {
 						.forEach((it, i) => {
 							const dispCat = BrewUtil._pRenderBrewScreen_getDisplayCat(cat, true);
 
-							const eleLi = $(`<li class="lst--border"><label class="mb-0 flex-v-center row">
-									<span class="col-6 bold">${it.name}</span>
-									<span class="col-5 text-center">${dispCat}${it.extraInfo}</span>
-									<span class="pr-0 col-1 text-center"><input type="checkbox"></span>
-								</label></li>`)[0];
+							const eleLi = document.createElement("li");
+							eleLi.className = "row px-0";
+
+							eleLi.innerHTML = `<label class="lst--border unselectable mb-0 flex-v-center">
+								<div class="col-6 bold">${it.name}</div>
+								<div class="col-5 flex-vh-center">${dispCat}${it.extraInfo}</div>
+								<div class="pr-0 col-1 flex-vh-center"><input type="checkbox" class="no-events"></div>
+							</label>`;
 
 							const listItem = new ListItem(
 								i,
@@ -3872,9 +3867,14 @@ BrewUtil = {
 									category: dispCat,
 									category_raw: cat
 								},
-								{uniqueId: it.uniqueId}
+								{
+									uniqueId: it.uniqueId,
+									cbSel: eleLi.firstElementChild.children[2].firstElementChild
+								}
 							);
 							list.addItem(listItem);
+
+							eleLi.addEventListener("click", evt => ListUiUtil.handleSelectClick(list, listItem, evt));
 						});
 				});
 				$ulRows.empty();
@@ -3885,15 +3885,11 @@ BrewUtil = {
 			}
 			populateList();
 
-			$cbAll.change(function () {
-				const val = this.checked;
-				list.items.forEach(it => $(it.ele).find(`input`).prop("checked", val));
-			});
 			$(`<button class="btn btn-danger btn-xs">Delete Selected</button>`).on("click", async () => {
 				const toDel = list.items.filter(it => $(it.ele).find(`input`).prop("checked")).map(it => ({...it.values, ...it.data}));
 
 				if (!toDel.length) return;
-				if (!window.confirm("Are you sure?")) return;
+				if (!window.confirm(`Are you sure you want to delete the ${toDel.length} selected item${toDel.length === 1 ? "" : "s"}?`)) return;
 
 				if (toDel.length === list.items.length) {
 					await BrewUtil._pRenderBrewScreen_pDeleteSource($brewList, source, false, false);
@@ -3952,52 +3948,8 @@ BrewUtil = {
 				</div>`.appendTo($row);
 			};
 
-			const page = UrlUtil.getCurrentPage();
-			const isSourceRelevantForCurrentPage = (source) => {
-				const _PG_SPELLS = ["spell"];
-				const _PG_BESTIARY = ["monster", "legendaryGroup", "monsterFluff"];
-
-				const getPageCats = () => {
-					switch (page) {
-						case UrlUtil.PG_SPELLS: return _PG_SPELLS;
-						case UrlUtil.PG_CLASSES: return ["class", "subclass", "classFeature", "subclassFeature"];
-						case UrlUtil.PG_BESTIARY: return _PG_BESTIARY;
-						case UrlUtil.PG_BACKGROUNDS: return ["background"];
-						case UrlUtil.PG_FEATS: return ["feat"];
-						case UrlUtil.PG_OPT_FEATURES: return ["optionalfeature"];
-						case UrlUtil.PG_RACES: return ["race", "raceFluff", "subrace"];
-						case UrlUtil.PG_OBJECTS: return ["object"];
-						case UrlUtil.PG_TRAPS_HAZARDS: return ["trap", "hazard"];
-						case UrlUtil.PG_DEITIES: return ["deity"];
-						case UrlUtil.PG_ITEMS: return ["item", "baseitem", "variant", "itemProperty", "itemType", "itemFluff"];
-						case UrlUtil.PG_REWARDS: return ["reward"];
-						case UrlUtil.PG_PSIONICS: return ["psionic"];
-						case UrlUtil.PG_VARIATNRULES: return ["variantrule"];
-						case UrlUtil.PG_CONDITIONS_DISEASES: return ["condition", "disease"];
-						case UrlUtil.PG_ADVENTURES: return ["adventure", "adventureData"];
-						case UrlUtil.PG_BOOKS: return ["book", "bookData"];
-						case UrlUtil.PG_TABLES: return ["table", "tableGroup"];
-						case UrlUtil.PG_MAKE_SHAPED: return ["spell", "monster"];
-						case UrlUtil.PG_MAKE_BREW: return [
-							..._PG_SPELLS,
-							..._PG_BESTIARY,
-							"makebrewCreatureTrait"
-						];
-						case UrlUtil.PG_MANAGE_BREW:
-						case UrlUtil.PG_DEMO_RENDER: return BrewUtil._STORABLE;
-						case UrlUtil.PG_VEHICLES: return ["vehicle"];
-						case UrlUtil.PG_ACTIONS: return ["action"];
-						case UrlUtil.PG_CULTS_BOONS: return ["cult", "boon"];
-						case UrlUtil.PG_LANGUAGES: return ["language"];
-						default: throw new Error(`No homebrew properties defined for category ${page}`);
-					}
-				};
-
-				const cats = getPageCats();
-				return !!cats.find(cat => !!(BrewUtil.homebrew[cat] || []).some(entry => entry.source === source));
-			};
-
-			const brewSources = MiscUtil.copy(BrewUtil.getJsonSources()).filter(src => isSourceRelevantForCurrentPage(src.json));
+			const brewSources = MiscUtil.copy(BrewUtil.getJsonSources())
+				.filter(src => BrewUtil._isSourceRelevantForCurrentPage(src.json));
 			brewSources.sort((a, b) => SortUtil.ascSort(a.full, b.full));
 
 			brewSources.forEach((src, i) => {
@@ -4039,7 +3991,53 @@ BrewUtil = {
 		}
 	},
 
-	_pRenderBrewScreen_dirToCat (dir) {
+	_isSourceRelevantForCurrentPage (source) {
+		const cats = BrewUtil.getPageProps();
+		return !!cats.find(cat => !!(BrewUtil.homebrew[cat] || []).some(entry => entry.source === source));
+	},
+
+	getPageProps (page) {
+		page = page || UrlUtil.getCurrentPage()
+
+		const _PG_SPELLS = ["spell"];
+		const _PG_BESTIARY = ["monster", "legendaryGroup", "monsterFluff"];
+
+		switch (page) {
+			case UrlUtil.PG_SPELLS: return _PG_SPELLS;
+			case UrlUtil.PG_CLASSES: return ["class", "subclass", "classFeature", "subclassFeature"];
+			case UrlUtil.PG_BESTIARY: return _PG_BESTIARY;
+			case UrlUtil.PG_BACKGROUNDS: return ["background"];
+			case UrlUtil.PG_FEATS: return ["feat"];
+			case UrlUtil.PG_OPT_FEATURES: return ["optionalfeature"];
+			case UrlUtil.PG_RACES: return ["race", "raceFluff", "subrace"];
+			case UrlUtil.PG_OBJECTS: return ["object"];
+			case UrlUtil.PG_TRAPS_HAZARDS: return ["trap", "hazard"];
+			case UrlUtil.PG_DEITIES: return ["deity"];
+			case UrlUtil.PG_ITEMS: return ["item", "baseitem", "variant", "itemProperty", "itemType", "itemFluff"];
+			case UrlUtil.PG_REWARDS: return ["reward"];
+			case UrlUtil.PG_PSIONICS: return ["psionic"];
+			case UrlUtil.PG_VARIATNRULES: return ["variantrule"];
+			case UrlUtil.PG_CONDITIONS_DISEASES: return ["condition", "disease"];
+			case UrlUtil.PG_ADVENTURES: return ["adventure", "adventureData"];
+			case UrlUtil.PG_BOOKS: return ["book", "bookData"];
+			case UrlUtil.PG_TABLES: return ["table", "tableGroup"];
+			case UrlUtil.PG_MAKE_SHAPED: return ["spell", "monster"];
+			case UrlUtil.PG_MAKE_BREW: return [
+				..._PG_SPELLS,
+				..._PG_BESTIARY,
+				"makebrewCreatureTrait"
+			];
+			case UrlUtil.PG_MANAGE_BREW:
+			case UrlUtil.PG_DEMO_RENDER: return BrewUtil._STORABLE;
+			case UrlUtil.PG_VEHICLES: return ["vehicle"];
+			case UrlUtil.PG_ACTIONS: return ["action"];
+			case UrlUtil.PG_CULTS_BOONS: return ["cult", "boon"];
+			case UrlUtil.PG_LANGUAGES: return ["language"];
+			default: throw new Error(`No homebrew properties defined for category ${page}`);
+		}
+	},
+
+	dirToProp (dir) {
 		if (!dir) return "";
 		else if (BrewUtil._STORABLE.includes(dir)) return dir;
 		else {
@@ -4228,7 +4226,7 @@ BrewUtil = {
 		} else throw new Error(`Could not find object with ID "${obj.uniqueId}" in "${prop}" list`);
 	},
 
-	getEntryIxByName (prop, obj) {
+	getEntryIxByEntry (prop, obj) {
 		return (BrewUtil.homebrew[prop] = BrewUtil.homebrew[prop] || []).findIndex(it => it.name === obj.name && it.source === obj.source);
 	},
 
@@ -4964,6 +4962,16 @@ Array.prototype.mergeMap = Array.prototype.mergeMap || function (fnMap) {
 	return this.map((...args) => fnMap(...args)).reduce((a, b) => Object.assign(a, b), {});
 };
 
+Array.prototype.unique = Array.prototype.unique || function (fnGetProp) {
+	const seen = new Set();
+	return this.filter((...args) => {
+		const val = fnGetProp ? fnGetProp(...args) : args[0];
+		if (seen.has(val)) return false;
+		seen.add(val);
+		return true;
+	});
+};
+
 // OVERLAY VIEW ========================================================================================================
 /**
  * Relies on:
@@ -5372,6 +5380,8 @@ if (!IS_VTT && typeof window !== "undefined") {
 	const ivsCancer = [];
 	if (location.origin === "https://5e.tools") {
 		window.addEventListener("load", () => {
+			let isPadded = false;
+			let anyFound = false;
 			[
 				"div-gpt-ad-5etools35927", // main banner
 				"div-gpt-ad-5etools35930", // side banner
@@ -5387,6 +5397,7 @@ if (!IS_VTT && typeof window !== "undefined") {
 					if ($wrp.children()[0].tagName === "SCRIPT") return;
 					const $tgt = $wrp.closest(".cancer__anchor").find(".cancer__disp-cancer");
 					if ($tgt.length) {
+						anyFound = true;
 						$tgt.css({display: "flex"}).text("Advertisements");
 						clearInterval(iv);
 					}
@@ -5395,8 +5406,14 @@ if (!IS_VTT && typeof window !== "undefined") {
 				ivsCancer.push(iv);
 			});
 
-			// Pad the bottom of the page so the adhesive unit doesn't overlap the content
-			$(`.view-col-group--cancer`).append(`<div class="w-100 no-shrink" style="height: 110px;"></div>`)
+			const ivPad = setInterval(() => {
+				if (!anyFound) return;
+				if (isPadded) return;
+				isPadded = true;
+				// Pad the bottom of the page so the adhesive unit doesn't overlap the content
+				$(`.view-col-group--cancer`).append(`<div class="w-100 no-shrink" style="height: 110px;"></div>`)
+			}, 300);
+			ivsCancer.push(ivPad);
 		});
 	}
 

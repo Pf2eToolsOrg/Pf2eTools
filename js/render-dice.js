@@ -174,8 +174,6 @@ Renderer.dice = {
 	// endregion
 
 	// region Event handling
-	_contextRollLabel: "rollChooser",
-	_contextPromptLabel: "rollPrompt",
 	async pRollerClickUseData (evt, ele) {
 		const $ele = $(ele);
 		const rollData = $ele.data("packed-dice");
@@ -187,28 +185,26 @@ Renderer.dice = {
 
 		let chosenRollData;
 		if (options.length > 1) {
-			chosenRollData = await new Promise(resolve => {
-				const cpy = MiscUtil.copy(rollData);
+			const cpyRollData = MiscUtil.copy(rollData);
+			const menu = ContextUtil.getMenu([
+				new ContextUtil.Action(
+					"Choose Roll",
+					null,
+					{isDisabled: true}
+				),
+				null,
+				...options.map(it => new ContextUtil.Action(
+					`Roll ${it}`,
+					evt => {
+						shiftKey = shiftKey || evt.shiftKey;
+						ctrlKey = ctrlKey || (evt.ctrlKey || evt.metaKey);
+						cpyRollData.toRoll = it;
+						return cpyRollData
+					}
+				))
+			]);
 
-				ContextUtil.doInitContextMenu(
-					Renderer.dice._contextRollLabel,
-					(mostRecentEvt, _1, _2, _3, invokedOnId) => {
-						shiftKey = shiftKey || mostRecentEvt.shiftKey;
-						ctrlKey = ctrlKey || (mostRecentEvt.ctrlKey || mostRecentEvt.metaKey);
-						cpy.toRoll = options[invokedOnId];
-						resolve(cpy);
-					},
-					[
-						new ContextUtil.Action("Choose Roll", null, {isDisabled: true}),
-						null,
-						...options.map(it => `Roll ${it}`)
-					]
-				);
-
-				ContextUtil.handleOpenContextMenu(evt, ele, Renderer.dice._contextRollLabel, (choseOption) => {
-					if (!choseOption) resolve();
-				});
-			});
+			chosenRollData = await ContextUtil.pOpenMenu(evt, menu);
 		} else chosenRollData = rollData;
 
 		if (!chosenRollData) return;
@@ -249,38 +245,37 @@ Renderer.dice = {
 		// If there's a prompt, prompt the user to select the dice
 		let rollDataCpyToRoll;
 		if (rollData.prompt) {
-			rollDataCpyToRoll = await new Promise(resolve => {
-				const sortedKeys = Object.keys(rollDataCpy.prompt.options).sort(SortUtil.ascSortLower);
+			const sortedKeys = Object.keys(rollDataCpy.prompt.options).sort(SortUtil.ascSortLower);
+			const menu = ContextUtil.getMenu([
+				new ContextUtil.Action(rollDataCpy.prompt.entry, null, {isDisabled: true}),
+				null,
+				...sortedKeys
+					.map(it => {
+						const title = rollDataCpy.prompt.mode === "psi"
+							? `${it} point${it === "1" ? "" : "s"}`
+							: `${Parser.spLevelToFull(it)} level`;
 
-				ContextUtil.doInitContextMenu(
-					Renderer.dice._contextPromptLabel,
-					(mostRecentEvt, _1, _2, _3, invokedOnId) => {
-						if (invokedOnId == null) resolve();
+						return new ContextUtil.Action(
+							title,
+							evt => {
+								shiftKey = shiftKey || evt.shiftKey;
+								ctrlKey = ctrlKey || (evt.ctrlKey || evt.metaKey);
 
-						shiftKey = shiftKey || mostRecentEvt.shiftKey;
-						ctrlKey = ctrlKey || (mostRecentEvt.ctrlKey || mostRecentEvt.metaKey);
-						const k = sortedKeys[invokedOnId];
-						const fromScaling = rollDataCpy.prompt.options[k];
-						if (!fromScaling) {
-							name = "";
-							resolve(rollDataCpy);
-						} else {
-							name = rollDataCpy.prompt.mode === "psi" ? `${k} psi activation` : `${Parser.spLevelToFull(k)}-level cast`;
-							rollDataCpy.toRoll += `+${fromScaling}`;
-							resolve(rollDataCpy);
-						}
-					},
-					[
-						new ContextUtil.Action(rollDataCpy.prompt.entry, null, {isDisabled: true}),
-						null,
-						...sortedKeys.map(it => rollDataCpy.prompt.mode === "psi" ? `${it} point${it === "1" ? "" : "s"}` : `${Parser.spLevelToFull(it)} level`)
-					]
-				);
+								const fromScaling = rollDataCpy.prompt.options[it];
+								if (!fromScaling) {
+									name = "";
+									return rollDataCpy;
+								} else {
+									name = rollDataCpy.prompt.mode === "psi" ? `${it} psi activation` : `${Parser.spLevelToFull(it)}-level cast`;
+									rollDataCpy.toRoll += `+${fromScaling}`;
+									return rollDataCpy;
+								}
+							}
+						)
+					})
+			]);
 
-				ContextUtil.handleOpenContextMenu(evt, ele, Renderer.dice._contextPromptLabel, (choseOption) => {
-					if (!choseOption) resolve();
-				});
-			});
+			rollDataCpyToRoll = await ContextUtil.pOpenMenu(evt, menu);
 		} else rollDataCpyToRoll = rollDataCpy;
 
 		if (!rollDataCpyToRoll) return;
@@ -1530,7 +1525,7 @@ Renderer.dice.parsed = {
 			while (view.length) {
 				if (Math.round(num) !== num) throw new Error(`Number of dice to roll (${num}) was not an integer!`);
 				const isLast = view.length === 1 || (view.length === 3 && view.slice(-2, -1)[0].isDiceModifier);
-				num = Math.floor(this._invoke_handlePart(fnName, meta, view, num, isLast));
+				num = this._invoke_handlePart(fnName, meta, view, num, isLast);
 			}
 			return num;
 		}

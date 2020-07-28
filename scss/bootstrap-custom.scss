@@ -36,7 +36,7 @@ input[type='radio']:checked {
 }
 
 .ve-muted {
-	color: #777 !important;
+	color: $rgb-font--muted !important;
 }
 
 .ve-small {
@@ -256,6 +256,10 @@ i > i {
 
 .min-h-100 {
 	min-height: 100% !important;
+}
+
+.max-w-80 {
+	min-width: 80% !important;
 }
 
 .grid {
@@ -1813,6 +1817,10 @@ body::-webkit-scrollbar {
 	}
 }
 
+.border-dotted {
+	border-style: dotted !important;
+}
+
 // redefine this here to ensure it overrides all the important display types above
 .hidden,
 // the namespaced Foundry alias
@@ -1832,9 +1840,30 @@ body::-webkit-scrollbar {
 			display: none !important;
 		}
 
+		&text-center {
+			text-align: center !important;
+		}
+
 		&flex-col {
 			display: flex !important;
 			flex-direction: column !important;
+		}
+
+		&flex-col-reverse {
+			display: flex !important;
+			flex-direction: column-reverse !important;
+		}
+
+		&flex-ai-start {
+			align-items: flex-start !important;
+		}
+
+		&w-100 {
+			width: 100% !important;
+		}
+
+		&max-w-100 {
+			max-width: 100% !important;
 		}
 
 		&m-1 {

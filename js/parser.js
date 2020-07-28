@@ -86,6 +86,23 @@ Parser.textToNumber = function (str) {
 		case "eight": return 8;
 		case "nine": return 9;
 		case "ten": return 10;
+		case "eleven": return 11;
+		case "twelve": return 12;
+		case "thirteen": return 13;
+		case "fourteen": return 14;
+		case "fifteen": return 15;
+		case "sixteen": return 16;
+		case "seventeen": return 17;
+		case "eighteen": return 18;
+		case "nineteen": return 19;
+		case "twenty": return 20;
+		case "thirty": return 30;
+		case "forty": return 40;
+		case "fifty": case "fiddy": return 50;
+		case "sixty": return 60;
+		case "seventy": return 70;
+		case "eighty": return 80;
+		case "ninety": return 90;
 	}
 	return NaN;
 };
@@ -192,16 +209,14 @@ Parser._addCommas = function (intNum) {
 	return `${intNum}`.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 };
 
-Parser.crToXp = function (cr) {
-	if (cr != null && cr.xp) return Parser._addCommas(cr.xp);
+Parser.crToXp = function (cr, {isDouble = false} = {}) {
+	if (cr != null && cr.xp) return Parser._addCommas(`${isDouble ? cr.xp * 2 : cr.xp}`);
 
 	const toConvert = cr ? (cr.cr || cr) : null;
-	if (toConvert === "Unknown" || toConvert == null) return "Unknown";
+	if (toConvert === "Unknown" || toConvert == null || !Parser.XP_CHART_ALT) return "Unknown";
 	if (toConvert === "0") return "0 or 10";
-	if (toConvert === "1/8") return "25";
-	if (toConvert === "1/4") return "50";
-	if (toConvert === "1/2") return "100";
-	return Parser._addCommas(Parser.XP_CHART[parseInt(toConvert) - 1]);
+	const xp = Parser.XP_CHART_ALT[toConvert];
+	return Parser._addCommas(`${isDouble ? 2 * xp : xp}`);
 };
 
 Parser.crToXpNumber = function (cr) {
@@ -374,7 +389,7 @@ Parser.acToFull = function (ac, renderer) {
 		const cur = ac[i];
 		const nxt = ac[i + 1];
 
-		if (cur.special) {
+		if (cur.special != null) {
 			if (inBraces) inBraces = false;
 
 			stack += cur.special;
@@ -445,6 +460,10 @@ Parser.numMonstersToXpMult = function (num, playerCount = 3) {
 
 Parser.armorFullToAbv = function (armor) {
 	return Parser._parse_bToA(Parser.ARMOR_ABV_TO_FULL, armor);
+};
+
+Parser.weaponFullToAbv = function (weapon) {
+	return Parser._parse_bToA(Parser.WEAPON_ABV_TO_FULL, weapon);
 };
 
 Parser._getSourceStringFromSource = function (source) {
@@ -569,6 +588,30 @@ Parser.DEFAULT_CURRENCY_CONVERSION_TABLE = [
 	{
 		coin: "gp",
 		mult: 0.01,
+		isFallback: true
+	}
+];
+Parser.FULL_CURRENCY_CONVERSION_TABLE = [
+	{
+		coin: "cp",
+		mult: 1
+	},
+	{
+		coin: "sp",
+		mult: 0.1
+	},
+	{
+		coin: "ep",
+		mult: 0.02
+	},
+	{
+		coin: "gp",
+		mult: 0.01,
+		isFallback: true
+	},
+	{
+		coin: "pp",
+		mult: 0.001,
 		isFallback: true
 	}
 ];
@@ -1019,24 +1062,24 @@ Parser.DURATION_AMOUNT_TYPES = [
 	"year"
 ];
 
-Parser.spClassesToFull = function (classes, textOnly, subclassLookup = {}) {
-	const fromSubclasses = Parser.spSubclassesToFull(classes, textOnly, subclassLookup);
-	return `${Parser.spMainClassesToFull(classes, textOnly)}${fromSubclasses ? `, ${fromSubclasses}` : ""}`
+Parser.spClassesToFull = function (sp, isTextOnly, subclassLookup = {}) {
+	const fromSubclassList = Renderer.spell.getCombinedClasses(sp, "fromSubclass");
+	const fromSubclasses = Parser.spSubclassesToFull(fromSubclassList, isTextOnly, subclassLookup);
+	const fromClassList = Renderer.spell.getCombinedClasses(sp, "fromClassList");
+	return `${Parser.spMainClassesToFull(fromClassList, isTextOnly)}${fromSubclasses ? `, ${fromSubclasses}` : ""}`
 };
 
-Parser.spMainClassesToFull = function (classes, textOnly = false, prop = "fromClassList") {
-	if (!classes) return "";
-	return (classes[prop] || [])
+Parser.spMainClassesToFull = function (fromClassList, textOnly = false) {
+	return fromClassList
 		.map(c => ({hash: UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c), c}))
 		.filter(it => !ExcludeUtil.isInitialised || !ExcludeUtil.isExcluded(it.hash, "class", it.c.source))
 		.sort((a, b) => SortUtil.ascSort(a.c.name, b.c.name))
 		.map(it => textOnly ? it.c.name : `<a title="Source: ${Parser.sourceJsonToFull(it.c.source)}" href="${UrlUtil.PG_CLASSES}#${it.hash}">${it.c.name}</a>`)
-		.join(", ");
+		.join(", ") || "";
 };
 
-Parser.spSubclassesToFull = function (classes, textOnly, subclassLookup = {}) {
-	if (!classes || !classes.fromSubclass) return "";
-	return classes.fromSubclass
+Parser.spSubclassesToFull = function (fromSubclassList, textOnly, subclassLookup = {}) {
+	return fromSubclassList
 		.filter(mt => {
 			if (!ExcludeUtil.isInitialised) return true;
 			const excludeClass = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](mt.class), "class", mt.class.source);
@@ -1055,7 +1098,7 @@ Parser.spSubclassesToFull = function (classes, textOnly, subclassLookup = {}) {
 			return byName || SortUtil.ascSort(a.subclass.name, b.subclass.name);
 		})
 		.map(c => Parser._spSubclassItem(c, textOnly, subclassLookup))
-		.join(", ");
+		.join(", ") || "";
 };
 
 Parser._spSubclassItem = function (fromSubclass, textOnly, subclassLookup) {
@@ -1160,14 +1203,17 @@ Parser.monTypeFromPlural = function (type) {
 	return Parser._parse_bToA(Parser.MON_TYPE_TO_PLURAL, type);
 };
 
-Parser.monCrToFull = function (cr, xp) {
+Parser.monCrToFull = function (cr, {xp = null, isMythic = false} = {}) {
 	if (cr == null) return "";
-	if (typeof cr === "string") return `${cr} (${xp != null ? Parser._addCommas(xp) : Parser.crToXp(cr)} XP)`;
-	else {
-		const stack = [Parser.monCrToFull(cr.cr, cr.xp)];
+
+	if (typeof cr === "string") {
+		xp = xp != null ? Parser._addCommas(xp) : Parser.crToXp(cr);
+		return `${cr} (${xp} XP${isMythic ? `, or ${Parser.crToXp(cr, {isDouble: true})} XP as a mythic encounter` : ""})`;
+	} else {
+		const stack = [Parser.monCrToFull(cr.cr, {xp: cr.xp, isMythic})];
 		if (cr.lair) stack.push(`${Parser.monCrToFull(cr.lair)} when encountered in lair`);
 		if (cr.coven) stack.push(`${Parser.monCrToFull(cr.coven)} when part of a coven`);
-		return stack.join(" or ");
+		return stack.joinConjunct(", ", " or ");
 	}
 };
 
@@ -1237,6 +1283,7 @@ Parser.MON_SPELLCASTING_TAG_TO_FULL = {
 	"I": "Innate",
 	"F": "Form Only",
 	"S": "Shared",
+	"CA": "Class, Artificer",
 	"CB": "Class, Bard",
 	"CC": "Class, Cleric",
 	"CD": "Class, Druid",
@@ -1611,10 +1658,10 @@ Parser.pageCategoryToProp = function (catId) {
 
 Parser.ABIL_ABVS = ["str", "dex", "con", "int", "wis", "cha"];
 
-Parser.spClassesToCurrentAndLegacy = function (classes) {
+Parser.spClassesToCurrentAndLegacy = function (fromClassList) {
 	const current = [];
 	const legacy = [];
-	classes.fromClassList.forEach(cls => {
+	fromClassList.forEach(cls => {
 		if ((cls.name === "Artificer" && cls.source === "UAArtificer") || (cls.name === "Artificer (Revisited)" && cls.source === "UAArtificerRevisited")) legacy.push(cls);
 		else current.push(cls);
 	});
@@ -1624,28 +1671,26 @@ Parser.spClassesToCurrentAndLegacy = function (classes) {
 /**
  * Build a pair of strings; one with all current subclasses, one with all legacy subclasses
  *
- * @param classes a spell.classes JSON item
+ * @param sp a spell
  * @param subclassLookup Data loaded from `generated/gendata-subclass-lookup.json`. Of the form: `{PHB: {Barbarian: {PHB: {Berserker: "Path of the Berserker"}}}}`
  * @returns {*[]} A two-element array. First item is a string of all the current subclasses, second item a string of
  * all the legacy/superceded subclasses
  */
-Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
+Parser.spSubclassesToCurrentAndLegacyFull = function (sp, subclassLookup) {
+	const fromSubclass = Renderer.spell.getCombinedClasses(sp, "fromSubclass");
+	if (!fromSubclass.length) return ["", ""];
+
 	const out = [[], []];
-	if (!classes.fromSubclass) return out;
 	const curNames = new Set();
 	const toCheck = [];
-	classes.fromSubclass
+	fromSubclass
 		.filter(c => {
 			const excludeClass = ExcludeUtil.isExcluded(c.class.name, "class", c.class.source);
-			if (excludeClass) {
-				return false;
-			}
+			if (excludeClass) return false;
+
 			const fromLookup = MiscUtil.get(subclassLookup, c.class.source, c.class.name, c.subclass.source, c.subclass.name);
 			const excludeSubclass = ExcludeUtil.isExcluded((fromLookup || {}).name || c.subclass.name, "subclass", c.subclass.source);
-			if (excludeSubclass) {
-				return false;
-			}
-			return true;
+			return !excludeSubclass;
 		})
 		.sort((a, b) => {
 			const byName = SortUtil.ascSort(a.subclass.name, b.subclass.name);
@@ -1925,8 +1970,6 @@ Parser.SIZE_ABV_TO_FULL[SZ_GARGANTUAN] = "Gargantuan";
 Parser.SIZE_ABV_TO_FULL[SZ_COLOSSAL] = "Colossal";
 Parser.SIZE_ABV_TO_FULL[SZ_VARIES] = "Varies";
 
-Parser.XP_CHART = [200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 33000, 41000, 50000, 62000, 75000, 90000, 105000, 120000, 135000, 155000];
-
 Parser.XP_CHART_ALT = {
 	"0": 10,
 	"1/8": 25,
@@ -1970,6 +2013,11 @@ Parser.ARMOR_ABV_TO_FULL = {
 	"h.": "heavy"
 };
 
+Parser.WEAPON_ABV_TO_FULL = {
+	"s.": "simple",
+	"m.": "martial"
+};
+
 Parser.CONDITION_TO_COLOR = {
 	"Blinded": "#525252",
 	"Charmed": "#f01789",
@@ -1985,7 +2033,9 @@ Parser.CONDITION_TO_COLOR = {
 	"Prone": "#5e60a0",
 	"Restrained": "#d98000",
 	"Stunned": "#a23bcb",
-	"Unconscious": "#3a40ad"
+	"Unconscious": "#3a40ad",
+
+	"Concentration": "#009f7a"
 };
 
 SRC_CoS = "CoS";
@@ -2123,12 +2173,15 @@ SRC_UACDW = `${SRC_UA_PREFIX}ClericDruidWizard`;
 SRC_UAFRR = `${SRC_UA_PREFIX}FighterRangerRogue`;
 SRC_UACFV = `${SRC_UA_PREFIX}ClassFeatureVariants`;
 SRC_UAFRW = `${SRC_UA_PREFIX}FighterRogueWizard`;
+SRC_UAPCRM = `${SRC_UA_PREFIX}PrestigeClassesRunMagic`;
+SRC_UAR = `${SRC_UA_PREFIX}Ranger`;
 SRC_UA2020SC1 = `${SRC_UA_PREFIX}2020SubclassesPt1`;
 SRC_UA2020SC2 = `${SRC_UA_PREFIX}2020SubclassesPt2`;
 SRC_UA2020SC3 = `${SRC_UA_PREFIX}2020SubclassesPt3`;
 SRC_UA2020SMT = `${SRC_UA_PREFIX}2020SpellsAndMagicTattoos`;
 SRC_UA2020POR = `${SRC_UA_PREFIX}2020PsionicOptionsRevisited`;
 SRC_UA2020SCR = `${SRC_UA_PREFIX}2020SubclassesRevisited`;
+SRC_UA2020F = `${SRC_UA_PREFIX}2020Feats`;
 
 SRC_3PP_SUFFIX = " 3pp";
 SRC_STREAM = "Stream";
@@ -2269,12 +2322,15 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UACDW] = `${UA_PREFIX}Cleric, Druid, and Wizard`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UAFRR] = `${UA_PREFIX}Fighter, Ranger, and Rogue`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UACFV] = `${UA_PREFIX}Class Feature Variants`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UAFRW] = `${UA_PREFIX}Fighter, Rogue, and Wizard`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAPCRM] = `${UA_PREFIX}Prestige Classes and Rune Magic`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UAR] = `${UA_PREFIX}Ranger`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC1] = `${UA_PREFIX}2020 Subclasses, Part 1`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC2] = `${UA_PREFIX}2020 Subclasses, Part 2`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC3] = `${UA_PREFIX}2020 Subclasses, Part 3`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SMT] = `${UA_PREFIX}2020 Spells and Magic Tattoos`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020POR] = `${UA_PREFIX}2020 Psionic Options Revisited`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SCR] = `${UA_PREFIX}2020 Subclasses Revisited`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UA2020F] = `${UA_PREFIX}2020 Feats`;
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 
@@ -2405,12 +2461,15 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UACDW] = "UACDW";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAFRR] = "UAFRR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UACFV] = "UACFV";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAFRW] = "UAFRW";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAPCRM] = "UAPCRM";
+Parser.SOURCE_JSON_TO_ABV[SRC_UAR] = "UAR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC1] = "UA2S1";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC2] = "UA2S2";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC3] = "UA2S3";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SMT] = "UA2SMT";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020POR] = "UA2POR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SCR] = "UA2SCR";
+Parser.SOURCE_JSON_TO_ABV[SRC_UA2020F] = "UA2F";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 
@@ -2539,12 +2598,15 @@ Parser.SOURCE_JSON_TO_DATE[SRC_UACDW] = "2019-10-03";
 Parser.SOURCE_JSON_TO_DATE[SRC_UAFRR] = "2019-10-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_UACFV] = "2019-11-04";
 Parser.SOURCE_JSON_TO_DATE[SRC_UAFRW] = "2019-11-25";
+Parser.SOURCE_JSON_TO_DATE[SRC_UAPCRM] = "2015-10-05";
+Parser.SOURCE_JSON_TO_DATE[SRC_UAR] = "2015-09-09";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC1] = "2020-01-14";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC2] = "2020-02-04";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC3] = "2020-02-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SMT] = "2020-03-26";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020POR] = "2020-04-14";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SCR] = "2020-05-12";
+Parser.SOURCE_JSON_TO_DATE[SRC_UA2020F] = "2020-07-13";
 
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_LMoP,
@@ -2715,6 +2777,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"M": "melee weapon",
 	"MA": "medium armor",
 	"MNT": "mount",
+	"MR": "master rune",
 	"GV": "generic variant",
 	"P": "potion",
 	"R": "ranged weapon",

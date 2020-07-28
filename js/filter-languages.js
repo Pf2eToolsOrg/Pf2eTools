@@ -4,7 +4,7 @@ class PageFilterLanguages extends PageFilter {
 	constructor () {
 		super();
 
-		this._sourceFilter = SourceFilter.getInstance();
+		this._sourceFilter = new SourceFilter();
 		this._typeFilter = new Filter({header: "Type", items: ["standard", "exotic", "secret"], itemSortFn: null, displayFn: StrUtil.uppercaseFirst});
 		this._scriptFilter = new Filter({header: "Script", displayFn: StrUtil.uppercaseFirst});
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Has Fonts", "SRD"]});

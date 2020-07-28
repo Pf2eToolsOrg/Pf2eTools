@@ -7,7 +7,7 @@ class PageFilterVariantRules extends PageFilter {
 	constructor () {
 		super();
 
-		this._sourceFilter = SourceFilter.getInstance();
+		this._sourceFilter = new SourceFilter();
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
 	}
 

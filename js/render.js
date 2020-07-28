@@ -21,6 +21,7 @@
 function Renderer () {
 	this.wrapperTag = "div";
 	this.baseUrl = "";
+	this.baseMediaUrls = {};
 
 	this._lazyImages = false;
 	this._subVariant = false;
@@ -61,6 +62,8 @@ function Renderer () {
 	 * @param url to use
 	 */
 	this.setBaseUrl = function (url) { this.baseUrl = url; return this; };
+
+	this.setBaseMediaUrl = function (mediaDir, url) { this.baseMediaUrls[mediaDir] = url; return this; }
 
 	/**
 	 * Other sections should be prefixed with a vertical divider
@@ -784,7 +787,7 @@ function Renderer () {
 		const hidden = new Set(entry.hidden || []);
 		const toRender = [{type: "entries", name: entry.name, entries: entry.headerEntries ? MiscUtil.copy(entry.headerEntries) : []}];
 
-		if (entry.constant || entry.will || entry.rest || entry.daily || entry.weekly) {
+		if (entry.constant || entry.will || entry.rest || entry.daily || entry.weekly || entry.ritual) {
 			const tempList = {type: "list", style: "list-hang-notitle", items: [], data: {isSpellList: true}};
 			if (entry.constant && !hidden.has("constant")) tempList.items.push({type: "itemSpell", name: `Constant:`, entry: entry.constant.join(", ")});
 			if (entry.will && !hidden.has("will")) tempList.items.push({type: "itemSpell", name: `At will:`, entry: entry.will.join(", ")});
@@ -812,6 +815,7 @@ function Renderer () {
 					if (weekly[lvlEach]) tempList.items.push({type: "itemSpell", name: `${lvl}/week each:`, entry: weekly[lvlEach].join(", ")});
 				}
 			}
+			if (entry.ritual && !hidden.has("ritual")) tempList.items.push({type: "itemSpell", name: `Rituals:`, entry: entry.ritual.join(", ")});
 			if (tempList.items.length) toRender[0].entries.push(tempList);
 		}
 
@@ -1510,7 +1514,7 @@ function Renderer () {
 				} else {
 					const area = BookUtil.curRender.headerMap[areaId] || {entry: {name: ""}}; // default to prevent rendering crash on bad tag
 					const hoverMeta = Renderer.hover.getMakePredefinedHover(area.entry, {isLargeBookContent: true, depth: area.depth});
-					textStack[0] += `<a href="#${BookUtil.curRender.curBookId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}" ${hoverMeta.html}>${renderText}</a>`;
+					textStack[0] += `<a href="#${BookUtil.curRender.curBookId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)},0" ${hoverMeta.html}>${renderText}</a>`;
 				}
 
 				break;
@@ -1711,14 +1715,8 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@condition":
-						fauxEntry.href.path = "conditionsdiseases.html";
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_CONDITIONS_DISEASES,
-							source
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
 					case "@disease":
+					case "@status":
 						fauxEntry.href.path = "conditionsdiseases.html";
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_CONDITIONS_DISEASES,
@@ -2471,7 +2469,7 @@ Renderer.utils = {
 	getAbilityRoller (statblock, ability) {
 		if (statblock[ability] == null) return "\u2014";
 		const mod = Parser.getAbilityModifier(statblock[ability]);
-		return Renderer.get().render(`{@d20 ${mod}|${statblock[ability]} (${mod})|${Parser.attAbvToFull(ability)}`);
+		return Renderer.get().render(`{@d20 ${mod}|${statblock[ability]} (${mod})|${Parser.attAbvToFull(ability)}}`);
 	},
 
 	tabButton: (label, funcChange, funcPopulate) => {
@@ -2797,17 +2795,23 @@ Renderer.utils = {
 							}
 						}
 						case "proficiency": {
-							// only handles armor proficiency requirements,
 							const parts = v.map(obj => {
 								return Object.entries(obj).map(([profType, prof]) => {
-									if (profType === "armor") {
-										return isListMode ? `Prof ${Parser.armorFullToAbv(prof)} armor` : `Proficiency with ${prof} armor`;
+									switch (profType) {
+										case "armor": {
+											return isListMode ? `Prof ${Parser.armorFullToAbv(prof)} armor` : `Proficiency with ${prof} armor`;
+										}
+										case "weapon": {
+											return isListMode ? `Prof ${Parser.weaponFullToAbv(prof)} weapon` : `Proficiency with a ${prof} weapon`;
+										}
+										default: throw new Error(`Unhandled proficiency type: "${profType}"`);
 									}
 								})
 							});
 							return isListMode ? parts.join("/") : parts.joinConjunct(", ", " or ");
 						}
 						case "spellcasting": return isListMode ? "Spellcasting" : "The ability to cast at least one spell";
+						case "spellcasting2020": return isListMode ? "Spellcasting" : "Spellcasting or Pact Magic feature";
 						case "psionics": return isListMode ? "Psionics" : Renderer.get().render("Psionic Talent feature or {@feat Wild Talent|UA2020PsionicOptionsRevisited} feat");
 						default: throw new Error(`Unhandled key: ${k}`);
 					}
@@ -2825,7 +2829,7 @@ Renderer.utils = {
 
 		let href = "";
 		if (entry[prop].type === "internal") {
-			const baseUrl = Renderer.get().baseUrl;
+			const baseUrl = Renderer.get().baseMediaUrls[mediaDir] || Renderer.get().baseUrl;
 			const mediaPart = `${mediaDir}/${entry[prop].path}`;
 			href = baseUrl !== "" ? `${baseUrl}${mediaPart}` : UrlUtil.link(mediaPart);
 		} else if (entry[prop].type === "external") {
@@ -2944,28 +2948,120 @@ Renderer.spell = {
 			const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
 			renderer.recursiveRender(higherLevelsEntryList, renderStack, {depth: 2});
 		}
-		if (spell.classes && spell.classes.fromClassList) {
-			const [current] = Parser.spClassesToCurrentAndLegacy(spell.classes);
-			renderStack.push(`<div><span class="bold">Classes: </span>${Parser.spMainClassesToFull({fromClassList: current})}</div>`);
+		const fromClassList = Renderer.spell.getCombinedClasses(spell, "fromClassList");
+		if (fromClassList.length) {
+			const [current] = Parser.spClassesToCurrentAndLegacy(fromClassList);
+			renderStack.push(`<div><span class="bold">Classes: </span>${Parser.spMainClassesToFull(current)}</div>`);
 		}
 		renderStack.push(`</td></tr>`);
 
 		return renderStack.join("");
 	},
 
-	initClasses (spell, brewSpellClasses) {
-		if (spell._isInitClasses) return;
-		spell._isInitClasses = true;
+	_isBrewSpellClassesInit: false,
+	brewSpellClasses: {},
+	populateHomebrewClassLookup (homebrew) {
+		if (Renderer.spell._isBrewSpellClassesInit) return;
+		Renderer.spell._isBrewSpellClassesInit = true;
 
-		// TODO make a `_tempClasses` object that mirrors `classes` and add this temp data to it instead, to avoid polluting the main data
+		// load homebrew class spell list addons
+		// Three formats are available. A string (shorthand for "spell" format with source "PHB"), "spell" format (object
+		//   with a `name` and a `source`), and "class" format (object with a `class` and a `source`).
+
+		const handleSpellListItem = (it, className, classSource, subclassShortName, subclassSource, subSubclassName) => {
+			const doAdd = (target) => {
+				if (subclassShortName) {
+					const toAdd = {
+						class: {name: className, source: classSource},
+						subclass: {name: subclassShortName, source: subclassSource}
+					};
+					if (subSubclassName) toAdd.subclass.subSubclass = subSubclassName;
+
+					target.fromSubclass = target.fromSubclass || [];
+					target.fromSubclass.push(toAdd);
+				} else {
+					const toAdd = {name: className, source: classSource};
+
+					target.fromClassList = target.fromClassList || [];
+					target.fromClassList.push(toAdd);
+				}
+			};
+
+			if (it.class) {
+				Renderer.spell.brewSpellClasses.class = Renderer.spell.brewSpellClasses.class || {};
+
+				const cls = it.class.toLowerCase();
+				const source = it.source || SRC_PHB;
+
+				Renderer.spell.brewSpellClasses.class[source] = Renderer.spell.brewSpellClasses.class[source] || {};
+				Renderer.spell.brewSpellClasses.class[source][cls] = Renderer.spell.brewSpellClasses.class[source][cls] || {};
+
+				doAdd(Renderer.spell.brewSpellClasses.class[source][cls]);
+			} else {
+				Renderer.spell.brewSpellClasses.spell = Renderer.spell.brewSpellClasses.spell || {};
+
+				const name = (typeof it === "string" ? it : it.name).toLowerCase();
+				const source = typeof it === "string" ? "PHB" : it.source;
+				Renderer.spell.brewSpellClasses.spell[source] = Renderer.spell.brewSpellClasses.spell[source] || {};
+				Renderer.spell.brewSpellClasses.spell[source][name] = Renderer.spell.brewSpellClasses.spell[source][name] || {fromClassList: [], fromSubclass: []};
+
+				doAdd(Renderer.spell.brewSpellClasses.spell[source][name]);
+			}
+		};
+
+		if (homebrew.class) {
+			homebrew.class.forEach(c => {
+				c.source = c.source || SRC_PHB;
+
+				if (c.classSpells) c.classSpells.forEach(it => handleSpellListItem(it, c.name, c.source));
+				if (c.subclasses) {
+					c.subclasses.forEach(sc => {
+						sc.shortName = sc.shortName || sc.name;
+						sc.source = sc.source || c.source;
+
+						if (sc.subclassSpells) sc.subclassSpells.forEach(it => handleSpellListItem(it, c.name, c.source, sc.shortName, sc.source));
+						if (sc.subSubclassSpells) Object.entries(sc.subSubclassSpells).forEach(([ssC, arr]) => arr.forEach(it => handleSpellListItem(it, c.name, c.source, sc.shortName, sc.source, ssC)));
+					});
+				}
+			})
+		}
+
+		if (homebrew.subclass) {
+			homebrew.subclass.forEach(sc => {
+				sc.classSource = sc.classSource || SRC_PHB;
+				sc.shortName = sc.shortName || sc.name;
+				sc.source = sc.source || sc.classSource;
+
+				if (sc.subclassSpells) sc.subclassSpells.forEach(it => handleSpellListItem(it, sc.className, sc.classSource, sc.shortName, sc.source));
+				if (sc.subSubclassSpells) Object.entries(sc.subSubclassSpells).forEach(([ssC, arr]) => arr.forEach(it => handleSpellListItem(it, sc.className, sc.classSource, sc.shortName, sc.source, ssC)));
+			});
+		}
+	},
+
+	prePopulateHover (data, opts) {
+		if (opts && opts.isBrew) Renderer.spell.populateHomebrewClassLookup(data);
+		(data.spell || []).forEach(sp => Renderer.spell.initClasses(sp));
+	},
+
+	getCombinedClasses (sp, prop) {
+		return [
+			...((sp.classes || {})[prop] || []),
+			...((sp._tmpClasses || {})[prop] || [])
+		];
+	},
+
+	initClasses (spell) {
+		if (spell._tmpClasses) return;
+		spell._tmpClasses = {};
+
 		// add eldritch knight and arcane trickster
 		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === Renderer.spell.STR_WIZARD && c.source === SRC_PHB).length) {
-			if (!spell.classes.fromSubclass) spell.classes.fromSubclass = [];
-			spell.classes.fromSubclass.push({
+			if (!spell._tmpClasses.fromSubclass) spell._tmpClasses.fromSubclass = [];
+			spell._tmpClasses.fromSubclass.push({
 				class: {name: Renderer.spell.STR_FIGHTER, source: SRC_PHB},
 				subclass: {name: Renderer.spell.STR_ELD_KNIGHT, source: SRC_PHB}
 			});
-			spell.classes.fromSubclass.push({
+			spell._tmpClasses.fromSubclass.push({
 				class: {name: Renderer.spell.STR_ROGUE, source: SRC_PHB},
 				subclass: {name: Renderer.spell.STR_ARC_TCKER, source: SRC_PHB}
 			});
@@ -2976,25 +3072,25 @@ Renderer.spell = {
 
 		// add divine soul, favored soul v2, favored soul v3
 		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === Renderer.spell.STR_CLERIC && c.source === SRC_PHB).length) {
+			spell._tmpClasses.fromSubclass = [];
 			if (!spell.classes.fromSubclass) {
-				spell.classes.fromSubclass = [];
-				spell.classes.fromSubclass.push({
+				spell._tmpClasses.fromSubclass.push({
 					class: {name: Renderer.spell.STR_SORCERER, source: SRC_PHB},
 					subclass: {name: Renderer.spell.STR_DIV_SOUL, source: SRC_XGE}
 				});
 			} else {
 				if (!spell.classes.fromSubclass.find(it => it.class.name === Renderer.spell.STR_SORCERER && it.class.source === SRC_PHB && it.subclass.name === Renderer.spell.STR_DIV_SOUL && it.subclass.source === SRC_XGE)) {
-					spell.classes.fromSubclass.push({
+					spell._tmpClasses.fromSubclass.push({
 						class: {name: Renderer.spell.STR_SORCERER, source: SRC_PHB},
 						subclass: {name: Renderer.spell.STR_DIV_SOUL, source: SRC_XGE}
 					});
 				}
 			}
-			spell.classes.fromSubclass.push({
+			spell._tmpClasses.fromSubclass.push({
 				class: {name: Renderer.spell.STR_SORCERER, source: SRC_PHB},
 				subclass: {name: Renderer.spell.STR_FAV_SOUL_V2, source: SRC_UAS}
 			});
-			spell.classes.fromSubclass.push({
+			spell._tmpClasses.fromSubclass.push({
 				class: {name: Renderer.spell.STR_SORCERER, source: SRC_PHB},
 				subclass: {name: Renderer.spell.STR_FAV_SOUL_V3, source: SRC_UARSC}
 			});
@@ -3010,7 +3106,7 @@ Renderer.spell = {
 					baseSource: SRC_PHB
 				});
 				// add arcana cleric
-				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
+				(spell._tmpClasses.fromSubclass = spell._tmpClasses.fromSubclass || []).push({
 					class: {name: Renderer.spell.STR_CLERIC, source: SRC_PHB},
 					subclass: {name: "Arcana", source: SRC_SCAG}
 				});
@@ -3018,7 +3114,7 @@ Renderer.spell = {
 
 			// add arcana cleric
 			if (spell.level >= 6) {
-				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
+				(spell._tmpClasses.fromSubclass = spell._tmpClasses.fromSubclass || []).push({
 					class: {name: Renderer.spell.STR_CLERIC, source: SRC_PHB},
 					subclass: {name: "Arcana", source: SRC_SCAG}
 				});
@@ -3028,7 +3124,7 @@ Renderer.spell = {
 		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Druid")) {
 			if (spell.level === 0) {
 				// add nature cleric
-				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
+				(spell._tmpClasses.fromSubclass = spell._tmpClasses.fromSubclass || []).push({
 					class: {name: Renderer.spell.STR_CLERIC, source: SRC_PHB},
 					subclass: {name: "Nature", source: SRC_PHB}
 				});
@@ -3036,27 +3132,28 @@ Renderer.spell = {
 		}
 
 		// add homebrew class/subclass
-		if (brewSpellClasses) {
+		if (Renderer.spell.brewSpellClasses) {
 			const lowName = spell.name.toLowerCase();
 
-			if (brewSpellClasses.spell) {
-				if (brewSpellClasses.spell[spell.source] && brewSpellClasses.spell[spell.source][lowName]) {
-					spell.classes = spell.classes || {};
-					if (brewSpellClasses.spell[spell.source][lowName].fromClassList.length) {
-						spell.classes.fromClassList = spell.classes.fromClassList || [];
-						spell.classes.fromClassList.push(...brewSpellClasses.spell[spell.source][lowName].fromClassList);
+			if (Renderer.spell.brewSpellClasses.spell) {
+				if (Renderer.spell.brewSpellClasses.spell[spell.source] && Renderer.spell.brewSpellClasses.spell[spell.source][lowName]) {
+					if (Renderer.spell.brewSpellClasses.spell[spell.source][lowName].fromClassList.length) {
+						spell._tmpClasses.fromClassList = spell._tmpClasses.fromClassList || [];
+						spell._tmpClasses.fromClassList.push(...Renderer.spell.brewSpellClasses.spell[spell.source][lowName].fromClassList);
 					}
-					if (brewSpellClasses.spell[spell.source][lowName].fromSubclass.length) {
-						spell.classes.fromSubclass = spell.classes.fromSubclass || [];
-						spell.classes.fromSubclass.push(...brewSpellClasses.spell[spell.source][lowName].fromSubclass);
+					if (Renderer.spell.brewSpellClasses.spell[spell.source][lowName].fromSubclass.length) {
+						spell._tmpClasses.fromSubclass = spell._tmpClasses.fromSubclass || [];
+						spell._tmpClasses.fromSubclass.push(...Renderer.spell.brewSpellClasses.spell[spell.source][lowName].fromSubclass);
 					}
 				}
 			}
 
-			if (brewSpellClasses.class && spell.classes && spell.classes.fromClassList) {
+			if (Renderer.spell.brewSpellClasses.class && spell.classes && spell.classes.fromClassList) {
+				(spell._tmpClasses = spell._tmpClasses || {}).fromClassList = spell._tmpClasses.fromClassList || [];
+
 				// speed over safety
-				outer: for (const src in brewSpellClasses.class) {
-					const searchForClasses = brewSpellClasses.class[src];
+				outer: for (const src in Renderer.spell.brewSpellClasses.class) {
+					const searchForClasses = Renderer.spell.brewSpellClasses.class[src];
 
 					for (const clsLowName in searchForClasses) {
 						const spellHasClass = spell.classes.fromClassList.some(cls => cls.source === src && cls.name.toLowerCase() === clsLowName);
@@ -3065,12 +3162,12 @@ Renderer.spell = {
 						const fromDetails = searchForClasses[clsLowName];
 
 						if (fromDetails.fromClassList) {
-							spell.classes.fromClassList.push(...fromDetails.fromClassList);
+							spell._tmpClasses.fromClassList.push(...fromDetails.fromClassList);
 						}
 
 						if (fromDetails.fromSubclass) {
-							spell.classes.fromSubclass = spell.classes.fromSubclass || [];
-							spell.classes.fromSubclass.push(...fromDetails.fromSubclass);
+							spell._tmpClasses.fromSubclass = spell._tmpClasses.fromSubclass || [];
+							spell._tmpClasses.fromSubclass.push(...fromDetails.fromSubclass);
 						}
 
 						// Only add it once regardless of how many classes match
@@ -3683,10 +3780,10 @@ Renderer.traphazard = {
 		return `
 			${Renderer.utils.getExcludedTr(it, it.__prop, UrlUtil.PG_TRAPS_HAZARDS)}
 			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_TRAPS_HAZARDS})}
-			${subtitle ? `<tr class="text"><td colspan="6"><i>${subtitle}</i></td></tr>
+			${subtitle ? `<tr class="text"><td colspan="6"><i>${subtitle}</i></td></tr>` : ""}
 			<tr class="text"><td colspan="6">
 			${renderer.render({entries: it.entries}, 2)}
-			${Renderer.traphazard.getSimplePart(renderer, it)}${Renderer.traphazard.getComplexPart(renderer, it)}` : ""}
+			${Renderer.traphazard.getSimplePart(renderer, it)}${Renderer.traphazard.getComplexPart(renderer, it)}
 			</td></tr>
 		`;
 	},
@@ -3971,7 +4068,7 @@ Renderer.monster = {
 						<td>${Parser.getSpeedString(mon)}</td>
 						${isCrHidden ? "" : `
 						<td>
-							${Parser.monCrToFull(mon.cr)}
+							${Parser.monCrToFull(mon.cr, {isMythic: !!mon.mythic})}
 							${options.showScaler && Parser.isValidCr(mon.cr ? (mon.cr.cr || mon.cr) : null) ? `
 							<button title="Scale Creature By CR (Highly Experimental)" class="mon__btn-scale-cr btn btn-xs btn-default">
 								<span class="glyphicon glyphicon-signal"></span>
@@ -4086,7 +4183,7 @@ Renderer.monster = {
 
 	getSkillsString (renderer, mon) {
 		function makeSkillRoller (name, mod) {
-			return Renderer.get().render(`{@d20 ${mod}|${mod}|${name}`);
+			return Renderer.get().render(`{@d20 ${mod}|${mod}|${name}}`);
 		}
 
 		function doSortMapJoinSkillKeys (obj, keys, joinWithOr) {
@@ -4108,7 +4205,7 @@ Renderer.monster = {
 	},
 
 	getTokenUrl (mon) {
-		return mon.tokenUrl || UrlUtil.link(`${Renderer.get().baseUrl}img/${Parser.sourceJsonToAbv(mon.source)}/${Parser.nameToTokenName(mon.name)}.png`);
+		return mon.tokenUrl || UrlUtil.link(`${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/${Parser.sourceJsonToAbv(mon.source)}/${Parser.nameToTokenName(mon.name)}.png`);
 	},
 
 	postProcessFluff (mon, fluff) {
@@ -4350,7 +4447,7 @@ Renderer.item = {
 			typeListText.push(item.age);
 		}
 		if (item.weaponCategory) {
-			typeListHtml.push(`${item.weaponCategory} weapon${item.baseItem ? ` (${Renderer.get().render(`{@item ${item.baseItem}`)})` : ""}`);
+			typeListHtml.push(`${item.weaponCategory} weapon${item.baseItem ? ` (${Renderer.get().render(`{@item ${item.baseItem}}`)})` : ""}`);
 			typeListText.push(`${item.weaponCategory} weapon`);
 			showingBase = true;
 		}
@@ -4360,12 +4457,12 @@ Renderer.item = {
 		}
 		if (item.type) {
 			const fullType = Renderer.item.getItemTypeName(item.type);
-			if (!showingBase && !!item.baseItem) typeListHtml.push(`${fullType} (${Renderer.get().render(`{@item ${item.baseItem}`)})`);
+			if (!showingBase && !!item.baseItem) typeListHtml.push(`${fullType} (${Renderer.get().render(`{@item ${item.baseItem}}`)})`);
 			else typeListHtml.push(fullType);
 			typeListText.push(fullType);
 		}
 		if (item.poison) {
-			typeListHtml.push("poison");
+			typeListHtml.push(`poison${item.poisonTypes ? ` (${item.poisonTypes.joinConjunct(", ", " or ")})` : ""}`);
 			typeListText.push("poison");
 		}
 		return [typeListText, typeListHtml.join(", ")];
@@ -4486,7 +4583,7 @@ Renderer.item = {
 		(brew.itemType || []).forEach(t => Renderer.item._addType(t));
 	},
 	_addBasePropertiesAndTypes (baseItemData) {
-		Object.entries(Parser.ITEM_TYPE_JSON_TO_ABV).forEach(([abv, name]) => Renderer.item._addType({abbreviation: abv, name}))
+		Object.entries(Parser.ITEM_TYPE_JSON_TO_ABV).forEach(([abv, name]) => Renderer.item._addType({abbreviation: abv, name}));
 		// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
 		baseItemData.itemProperty.forEach(p => Renderer.item._addProperty(p));
 		baseItemData.itemType.forEach(t => {
@@ -4791,7 +4888,7 @@ Renderer.item = {
 			}
 			if (item.stealth) {
 				Renderer.item._initFullEntries(item);
-				item._fullEntries.push("The wearer has disadvantage on Stealth (Dexterity) checks.");
+				item._fullEntries.push("The wearer has disadvantage on Dexterity ({@skill Stealth}) checks.");
 			}
 			if (item.type === "HA" && item.strength) {
 				Renderer.item._initFullEntries(item);
@@ -4809,7 +4906,7 @@ Renderer.item = {
 		}
 		if (item.type === "SCF") {
 			if (item._isItemGroup) {
-				if (item.scfType === "arcane") {
+				if (item.scfType === "arcane" && item.source !== SRC_ERLW) {
 					Renderer.item._initFullEntries(item);
 					item._fullEntries.push("An arcane focus is a special item\u2014an orb, a crystal, a rod, a specially constructed staff, a wand-like length of wood, or some similar item\u2014designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus.");
 				}
@@ -4937,6 +5034,7 @@ Renderer.item = {
 						resolve();
 					} else {
 						try {
+							Object.entries(Parser.ITEM_TYPE_JSON_TO_ABV).forEach(([abv, name]) => Renderer.item._addType({abbreviation: abv, name}));
 							data.itemProperty.forEach(p => Renderer.item._addProperty(p));
 							data.itemType.forEach(t => Renderer.item._addType(t));
 							data.itemTypeAdditionalEntries.forEach(e => Renderer.item._addAdditionalEntries(e));
@@ -5253,7 +5351,7 @@ Renderer.vehicle = {
 			${Renderer.utils.getNameTr(veh, {extraThClasses, page: UrlUtil.PG_VEHICLES})}
 			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle${veh.dimensions ? ` (${veh.dimensions.join(" by ")})` : ""}</i><br></td></tr>
 			<tr class="text"><td colspan="6">
-				<div><b>Creature Capacity</b> ${veh.capCrew} crew${veh.capPassenger ? `, ${veh.capPassenger} passengers` : ""}</div>
+				<div><b>Creature Capacity</b> ${Renderer.vehicle.getShipCreatureCapacity(veh)}</div>
 				${veh.capCargo ? `<div><b>Cargo Capacity</b> ${typeof veh.capCargo === "string" ? veh.capCargo : `${veh.capCargo} ton${veh.capCargo === 1 ? "" : "s"}`}</div>` : ""}
 				<div><b>Travel Pace</b> ${veh.pace} miles per hour (${veh.pace * 24} miles per day)</div>
 			</td></tr>
@@ -5295,6 +5393,8 @@ Renderer.vehicle = {
 		`;
 	},
 
+	getShipCreatureCapacity (veh) { return `${veh.capCrew} crew${veh.capPassenger ? `, ${veh.capPassenger} passengers` : ""}`; },
+
 	_getRenderedString_infwar (veh, opts) {
 		const renderer = Renderer.get();
 		const dexMod = Parser.getAbilityModNumber(veh.dex);
@@ -5307,7 +5407,7 @@ Renderer.vehicle = {
 			${Renderer.utils.getNameTr(veh, {extraThClasses, page: UrlUtil.PG_VEHICLES})}
 			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle (${veh.weight.toLocaleString()} lb.)</i><br></td></tr>
 			<tr class="text"><td colspan="6">
-				<div><b>Creature Capacity</b> ${veh.capCreature} Medium creatures</div>
+				<div><b>Creature Capacity</b> ${Renderer.vehicle.getInfwarCreatureCapacity(veh)}</div>
 				<div><b>Cargo Capacity</b> ${Parser.weightToFull(veh.capCargo)}</div>
 				<div><b>Armor Class</b> ${dexMod === 0 ? `19` : `${19 + dexMod} (19 while motionless)`}</div>
 				<div><b>Hit Points</b> ${veh.hp.hp} (damage threshold ${veh.hp.dt}, mishap threshold ${veh.hp.mt})</div>
@@ -5346,12 +5446,18 @@ Renderer.vehicle = {
 		`;
 	},
 
+	getInfwarCreatureCapacity (veh) { return `${veh.capCreature} Medium creatures`; },
+
 	pGetFluff (veh) {
 		return Renderer.utils.pGetFluff({
 			entity: veh,
 			fluffProp: "vehicleFluff",
 			fluffUrl: `data/fluff-vehicles.json`
 		});
+	},
+
+	getTokenUrl (veh) {
+		return veh.tokenUrl || UrlUtil.link(`${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/vehicles/tokens/${Parser.sourceJsonToAbv(veh.source)}/${Parser.nameToTokenName(veh.name)}.png`);
 	}
 };
 
@@ -5506,6 +5612,8 @@ Renderer.hover = {
 	_isInit: false,
 	_dmScreen: null,
 	_lastId: 0,
+	_contextMenu: null,
+	_contextMenuLastClickedHeader: null,
 
 	bindDmScreen (screen) { this._dmScreen = screen; },
 
@@ -5517,23 +5625,34 @@ Renderer.hover = {
 
 			$(document.body).on("click", () => Renderer.hover.cleanTempWindows());
 
-			ContextUtil.doInitContextMenu(
-				"hoverBorder",
-				(evt, ele, $invokedOn, $selectedMenu, _, windowMeta) => { // windowMeta for future use for more options
-					const $perms = $(`.hoverborder[data-perm="true"]`);
-					switch (Number($selectedMenu.data("ctx-id"))) {
-						case 0: $perms.attr("data-display-title", "false"); break;
-						case 1: $perms.attr("data-display-title", "true"); break;
-						case 2: {
-							const $thisHoverClose = $(ele).closest(`.hoverborder--top`).find(`.hvr__close`);
-							$(`.hvr__close`).not($thisHoverClose).click();
-							break;
-						}
-						case 3: $(`.hvr__close`).click(); break;
+			Renderer.hover._contextMenu = ContextUtil.getMenu([
+				new ContextUtil.Action(
+					"Maximize All",
+					() => {
+						const $permWindows = $(`.hoverborder[data-perm="true"]`);
+						$permWindows.attr("data-display-title", "false");
 					}
-				},
-				["Maximize All", "Minimize All", null, "Close Others", "Close All"]
-			);
+				),
+				new ContextUtil.Action(
+					"Minimize All",
+					() => {
+						const $permWindows = $(`.hoverborder[data-perm="true"]`);
+						$permWindows.attr("data-display-title", "true");
+					}
+				),
+				null,
+				new ContextUtil.Action(
+					"Close Others",
+					() => {
+						const $thisHoverClose = $(Renderer.hover._contextMenuLastClickedHeader).closest(`.hoverborder--top`).find(`.hvr__close`);
+						$(`.hvr__close`).not($thisHoverClose).click();
+					}
+				),
+				new ContextUtil.Action(
+					"Close All",
+					() => $(`.hvr__close`).click()
+				)
+			]);
 		}
 	},
 
@@ -5945,7 +6064,10 @@ Renderer.hover = {
 
 		const $brdrTop = $(`<div class="hoverborder hoverborder--top ${opts.isBookContent ? "hoverborder-book" : ""}" ${opts.isPermanent ? `data-perm="true"` : ""}></div>`)
 			.on("mousedown touchstart", (evt) => handleDragMousedown(evt, 9))
-			.on("contextmenu", (evt) => ContextUtil.handleOpenContextMenu(evt, $brdrTop[0], "hoverBorder", null, out));
+			.on("contextmenu", (evt) => {
+				Renderer.hover._contextMenuLastClickedHeader = $brdrTop[0];
+				ContextUtil.pOpenMenu(evt, Renderer.hover._contextMenu);
+			});
 
 		function isOverHoverTarget (evt, target) {
 			return EventUtil.getClientX(evt) >= target.left
@@ -6110,6 +6232,7 @@ Renderer.hover = {
 							<link rel="manifest" href="manifest.webmanifest">
 							${$(`link[rel="stylesheet"][href]`).map((i, e) => e.outerHTML).get().join("\n")}
 							<link rel="icon" href="favicon.png">
+							<link rel="apple-touch-icon" href="icon-320.png">
 
 							<style>
 								html, body { width: 100%; height: 100%; }
@@ -6368,7 +6491,7 @@ Renderer.hover = {
 			case "generic":
 			case "hover": return null;
 			case UrlUtil.PG_CLASSES: return Renderer.hover._pCacheAndGet_pLoadClasses(page, source, hash, opts);
-			case UrlUtil.PG_SPELLS: return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/spells/`, "spell");
+			case UrlUtil.PG_SPELLS: return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/spells/`, "spell", Renderer.spell.prePopulateHover);
 			case UrlUtil.PG_BESTIARY: return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/bestiary/`, "monster", data => DataUtil.monster.populateMetaReference(data));
 			case UrlUtil.PG_ITEMS: {
 				const loadKey = UrlUtil.PG_ITEMS;
@@ -6447,7 +6570,7 @@ Renderer.hover = {
 			case UrlUtil.PG_TRAPS_HAZARDS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "trapshazards.json", ["trap", "hazard"]);
 			case UrlUtil.PG_VARIATNRULES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "variantrules.json", "variantrule");
 			case UrlUtil.PG_CULTS_BOONS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "cultsboons.json", ["cult", "boon"], (listProp, item) => item.__prop = listProp);
-			case UrlUtil.PG_CONDITIONS_DISEASES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditionsdiseases.json", ["condition", "disease"], (listProp, item) => item.__prop = listProp);
+			case UrlUtil.PG_CONDITIONS_DISEASES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditionsdiseases.json", ["condition", "disease", "status"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_TABLES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_VEHICLES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "vehicles.json", "vehicle");
 			case UrlUtil.PG_ACTIONS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "actions.json", "action");
@@ -6600,7 +6723,7 @@ Renderer.hover = {
 			loadKey,
 			async () => {
 				const brewData = await BrewUtil.pAddBrewData();
-				if (fnPrePopulate) fnPrePopulate(brewData);
+				if (fnPrePopulate) fnPrePopulate(brewData, {isBrew: true});
 				if (brewData[listProp]) Renderer.hover._pCacheAndGet_populate(page, brewData, listProp, {fnGetHash: opts.fnGetHash});
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${baseUrl}${opts.isFluff ? "fluff-" : ""}index.json`);
 				const officialSources = {};
@@ -6609,7 +6732,7 @@ Renderer.hover = {
 				const officialSource = officialSources[source.toLowerCase()];
 				if (officialSource) {
 					const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${baseUrl}${officialSource}`);
-					if (fnPrePopulate) fnPrePopulate(data);
+					if (fnPrePopulate) fnPrePopulate(data, {isBrew: false});
 					Renderer.hover._pCacheAndGet_populate(page, data, listProp, {fnGetHash: opts.fnGetHash});
 				}
 				// (else source to load is 3rd party, which was already handled)
@@ -7275,6 +7398,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@reward":
 					case "@vehicle":
 					case "@spell":
+					case "@status":
 					case "@table":
 					case "@trap":
 					case "@variantrule": {

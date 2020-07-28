@@ -4,7 +4,7 @@
 
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.2.24",
+	"version": "1.2.26",
 
 	"definitions" : {
 		"_arrayOfString": {
@@ -523,7 +523,7 @@
 							"type": "array",
 							"items": {
 								"type": "string",
-								"enum": ["str", "dex", "con", "int", "wis", "cha"]
+								"enum": ["str", "dex", "con", "int", "wis", "cha", "spellcasting"]
 							}
 						}
 					},
@@ -545,7 +545,7 @@
 							"type": "array",
 							"items": {
 								"type": "string",
-								"enum": ["str", "dex", "con", "int", "wis", "cha"]
+								"enum": ["str", "dex", "con", "int", "wis", "cha", "spellcasting"]
 							}
 						}
 					},
@@ -1156,6 +1156,18 @@
 				"dataItem"
 			]
 		},
+		"entryRefClassFeature": {
+			"properties": {
+				"type": {"const": "refClassFeature"},
+				"classFeature": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"type",
+				"classFeature"
+			]
+		},
 		"entryRefSubclassFeature": {
 			"properties": {
 				"type": {"const": "refSubclassFeature"},
@@ -1171,7 +1183,7 @@
 		"entryRefOptionalfeature": {
 			"properties": {
 				"type": {"const": "refOptionalfeature"},
-				"subclassFeature": {
+				"optionalfeature": {
 					"type": "string"
 				}
 			},
@@ -1208,6 +1220,9 @@
 							"$ref": "#/definitions/_arrayOfString"
 						},
 						"will": {
+							"$ref": "#/definitions/_arrayOfString"
+						},
+						"ritual": {
 							"$ref": "#/definitions/_arrayOfString"
 						},
 						"rest": {
@@ -1279,6 +1294,7 @@
 									"rest",
 									"daily",
 									"weekly",
+									"ritual",
 									"spells"
 								]
 							}
@@ -1497,6 +1513,7 @@
 		{"$ref": "#/definitions/entryDataTrapHazard"},
 		{"$ref": "#/definitions/entryDataObject"},
 		{"$ref": "#/definitions/entryDataItem"},
+		{"$ref": "#/definitions/entryRefClassFeature"},
 		{"$ref": "#/definitions/entryRefSubclassFeature"},
 		{"$ref": "#/definitions/entryRefOptionalfeature"},
 		{"$ref": "#/definitions/entryHr"},

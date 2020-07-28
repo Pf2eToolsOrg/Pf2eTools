@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "2.0.0",
+	"version": "2.0.3",
 
 	"type": "object",
 
@@ -53,10 +53,13 @@
 			"properties": {
 				"name": {"type": "string"},
 				"source": {"type": "string"},
+				"srd": {"type": "boolean"},
 				"className":  {"type": "string"},
 				"classSource": {"type": "string"},
 				"level":  {"type": "integer"},
+				"header":  {"type": "integer"},
 				"page": {"type": "integer"},
+				"type": {"type": "string", "enum": ["inset"]},
 				"entries": {
 					"type": "array",
 					"items": {
@@ -69,21 +72,25 @@
 				"source",
 				"className",
 				"classSource",
-				"level,",
+				"level",
 				"entries"
 			],
 			"additionalProperties": false
 		},
 		"subclassFeature": {
+			"type": "object",
 			"properties": {
 				"name": {"type": "string"},
 				"source": {"type": "string"},
+				"srd": {"type": "boolean"},
 				"className":  {"type": "string"},
 				"classSource": {"type": "string"},
-				"subclassName":  {"type": "string"},
+				"subclassShortName":  {"type": "string"},
 				"subclassSource": {"type": "string"},
 				"level":  {"type": "integer"},
+				"header":  {"type": "integer"},
 				"page": {"type": "integer"},
+				"type": {"type": "string", "enum": ["inset"]},
 				"entries": {
 					"type": "array",
 					"items": {
@@ -96,7 +103,7 @@
 				"source",
 				"className",
 				"classSource",
-				"subclassName",
+				"subclassShortName",
 				"subclassSource",
 				"level",
 				"entries"
@@ -150,47 +157,6 @@
 				},
 				"skills": {
 					"$ref": "util.json#/definitions/skillProficiencies"
-				}
-			}
-		},
-
-		"multiclassing": {
-			"type": "object",
-			"properties": {
-				"requirements": {
-					"str": {"type": "int"},
-					"dex": {"type": "int"},
-					"con": {"type": "int"},
-					"int": {"type": "int"},
-					"wis": {"type": "int"},
-					"cha": {"type": "int"}
-				},
-				"requirementsSpecial": {
-					"description": "To be used in homebrew only.",
-					"type": "string"
-				},
-				"proficienciesGained": {
-					"armor": {
-						"type": "array",
-						"items": {
-							"type": "string"
-						}
-					},
-					"weapons": {
-						"type": "array",
-						"items": {
-							"type": "string"
-						}
-					},
-					"tools": {
-						"type": "array",
-						"items": {
-							"type": "string"
-						}
-					},
-					"skills": {
-						"$ref": "util.json#/definitions/skillProficiencies"
-					}
 				}
 			}
 		},
@@ -277,6 +243,55 @@
 			"additionalProperties": false
 		},
 
+		"requirements": {
+			"str": {
+				"type": "integer"
+			},
+			"dex": {
+				"type": "integer"
+			},
+			"con": {
+				"type": "integer"
+			},
+			"int": {
+				"type": "integer"
+			},
+			"wis": {
+				"type": "integer"
+			},
+			"cha": {
+				"type": "integer"
+			},
+			"or": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"properties": {
+						"str": {
+							"type": "integer"
+						},
+						"dex": {
+							"type": "integer"
+						},
+						"con": {
+							"type": "integer"
+						},
+						"int": {
+							"type": "integer"
+						},
+						"wis": {
+							"type": "integer"
+						},
+						"cha": {
+							"type": "integer"
+						}
+					},
+					"additionalProperties": false
+				}
+			}
+
+		},
+
 		"class": {
 			"description" : "A character class",
 
@@ -345,58 +360,17 @@
 					],
 					"additionalProperties": false
 				},
+				"requirements": {"$ref": "#/definitions/requirements"},
 				"multiclassing": {
 					"type": "object",
 					"properties": {
-						"requirements": {
-							"str": {
-								"type": "integer"
-							},
-							"dex": {
-								"type": "integer"
-							},
-							"con": {
-								"type": "integer"
-							},
-							"int": {
-								"type": "integer"
-							},
-							"wis": {
-								"type": "integer"
-							},
-							"cha": {
-								"type": "integer"
-							},
-							"or": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"str": {
-											"type": "integer"
-										},
-										"dex": {
-											"type": "integer"
-										},
-										"con": {
-											"type": "integer"
-										},
-										"int": {
-											"type": "integer"
-										},
-										"wis": {
-											"type": "integer"
-										},
-										"cha": {
-											"type": "integer"
-										}
-									},
-									"additionalProperties": false
-								}
-							}
-						},
+						"requirements": {"$ref": "#/definitions/requirements"},
 						"proficienciesGained": {
 							"$ref": "#/definitions/proficiencies"
+						},
+						"entries": {
+							"type": "array",
+							"items": {"$ref": "entry.json"}
 						}
 					},
 					"additionalProperties": false
@@ -511,16 +485,12 @@
 
 		"classFeature": {
 			"type": "array",
-			"items": {
-				"items": {"$ref": "#/definitions/classFeature"}
-			}
+			"items": {"$ref": "#/definitions/classFeature"}
 		},
 
 		"subclassFeature": {
 			"type": "array",
-			"items": {
-				"items": {"$ref": "#/definitions/subclassFeature"}
-			}
+			"items": {"$ref": "#/definitions/subclassFeature"}
 		}
 	},
 	"required": ["class", "classFeature"],

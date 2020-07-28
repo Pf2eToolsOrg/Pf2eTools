@@ -470,6 +470,60 @@ Once the Wreath of the Prism reaches an exalted state, it gains the following be
 • The save DC of the wreath’s spell increases to 17.`;
 // endregion
 
+class FeatConverter extends BaseConverter {
+	constructor (ui) {
+		super(
+			ui,
+			{
+				converterId: "Feat",
+				canSaveLocal: true,
+				modes: ["txt"],
+				hasPageNumbers: true,
+				titleCaseFields: ["name"],
+				hasSource: true,
+				prop: "feat"
+			}
+		);
+	}
+
+	_renderSidebar (parent, $wrpSidebar) {
+		$wrpSidebar.empty();
+	}
+
+	handleParse (input, cbOutput, cbWarning, isAppend) {
+		const opts = {
+			cbWarning,
+			cbOutput,
+			isAppend,
+			titleCaseFields: this._titleCaseFields,
+			isTitleCase: this._state.isTitleCase,
+			source: this._state.source,
+			page: this._state.page
+		};
+
+		switch (this._state.mode) {
+			case "txt": return FeatParser.doParseText(input, opts);
+			default: throw new Error(`Unimplemented!`);
+		}
+	}
+
+	_getSample (format) {
+		switch (format) {
+			case "txt": return FeatConverter.SAMPLE_TEXT;
+			default: throw new Error(`Unknown format "${format}"`);
+		}
+	}
+}
+// region sample
+FeatConverter.SAMPLE_TEXT = `Metamagic Adept
+Prerequisite: Spellcasting or Pact Magic feature
+You’ve learned how to exert your will on your spells to alter how they function. You gain the following benefits:
+• Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.
+• You learn two Metamagic options of your choice from the sorcerer class. You can use only one Metamagic option on a spell when you cast it, unless the option says otherwise. Whenever you gain a level, you can replace one of your Metamagic options with another one from the sorcerer class.
+• You gain 2 sorcery points to spend on Metamagic (these points are added to any sorcery points you have from another source but can be used only on Metamagic). You regain all spent sorcery points when you finish a long rest.
+`;
+// endregion
+
 class TableConverter extends BaseConverter {
 	constructor (ui) {
 		super(
@@ -794,6 +848,7 @@ class ConverterUi extends BaseComponent {
 			{
 				values: [
 					"Creature",
+					"Feat",
 					"Item",
 					"Spell",
 					"Table"
@@ -875,12 +930,14 @@ async function doPageInit () {
 
 	const statblockConverter = new CreatureConverter(ui)
 	const itemConverter = new ItemConverter(ui);
+	const featConverter = new FeatConverter(ui);
 	const spellConverter = new SpellConverter(ui);
 	const tableConverter = new TableConverter(ui);
 
 	ui.converters = {
 		[statblockConverter.converterId]: statblockConverter,
 		[itemConverter.converterId]: itemConverter,
+		[featConverter.converterId]: featConverter,
 		[spellConverter.converterId]: spellConverter,
 		[tableConverter.converterId]: tableConverter
 	};

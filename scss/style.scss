@@ -3,7 +3,7 @@
 .page__ {
 	&header {
 		padding: 0 15px 1px;
-		box-shadow: 0 1px 4px $rgb-shadow-grey-dark;
+		box-shadow: 0 1px 4px $rgb-shadow-grey--dark;
 		color: white;
 		background-color: rgb(0, 107, 196);
 		min-height: 0;
@@ -65,6 +65,11 @@
 			width: calc(100% - 6em);
 			flex-shrink: 0;
 		}
+	}
+
+	&nav-date {
+		margin-left: -16px;
+		width: 27px;
 	}
 
 	&wrp-download {
@@ -375,16 +380,6 @@ input[type=checkbox].sidemenu__row__label__cb {
 			right: 10px;
 		}
 
-		p {
-			margin: 0;
-			display: flex;
-			justify-content: space-between;
-
-			&:nth-child(odd) {
-				background: #f4f4f4;
-			}
-		}
-
 		@media only screen and (min-width: 320px) {
 			max-width: 300px;
 			min-width: 270px;
@@ -515,20 +510,6 @@ input[type=checkbox].sidemenu__row__label__cb {
 	}
 }
 
-.night-mode .omni__ {
-	&wrp-input {
-		&--scrolled {
-			.omni__input {
-				border-color: $rgb-border-grey--night;
-			}
-
-			.omni__submit {
-				border-color: $rgb-border-grey--night;
-			}
-		}
-	}
-}
-
 /* *** */
 
 .btn-name-pronounce,
@@ -573,24 +554,6 @@ input[type=checkbox].sidemenu__row__label__cb {
 	// FIXME: ID within ID
 	> #btn-popout {
 		margin-left: 0;
-	}
-}
-
-.copied-tip {
-	pointer-events: none;
-	position: fixed;
-	background: transparent;
-	user-select: none;
-	z-index: $z-temp-effect;
-	width: 80px;
-	height: 24px;
-	line-height: 24px;
-	white-space: nowrap;
-
-	> span {
-		display: inline-block;
-		width: 100%;
-		text-align: center;
 	}
 }
 
@@ -919,10 +882,10 @@ input[type=checkbox].sidemenu__row__label__cb {
 	li {
 		cursor: pointer;
 		line-height: 14px;
+	}
 
-		&.list-multi-selected {
-			@include row-glow-active();
-		}
+	.list-multi-selected {
+		@include row-glow-active();
 	}
 }
 
@@ -1245,7 +1208,7 @@ div#lootoutput {
 		justify-content: center;
 		width: 40px;
 		height: 40px;
-		background: $rgb-shadow-grey-dark;
+		background: $rgb-shadow-grey--dark;
 		cursor: pointer;
 		color: white;
 		border: 1px solid $rgb-border-grey--trans;
@@ -1285,7 +1248,7 @@ div#lootoutput {
 	}
 
 	&token-footer {
-		background: $rgb-shadow-grey-dark;
+		background: $rgb-shadow-grey--dark;
 		color: white;
 		font-family: 'Andada', serif;
 		font-variant: small-caps;
@@ -3010,35 +2973,32 @@ ul.list.books > li > a > span.name:hover {
 
 	.page__ {
 		&header {
-			color: white;
-			background-color: transparent;
-			box-shadow: none;
+			color: $rgb-font--night;
+			background: $rgb-off-black;
 		}
 
 		&title--home {
 			span {
-				color: dimgrey;
+				color: #909090;
 			}
 
 			&::after {
-				color: dimgrey;
+				color: #909090;
 			}
 		}
-	}
 
-	.nav > li > a {
-		@media (min-width: 992px) {
-			border-top-left-radius: 4px;
-			border-top-right-radius: 4px;
+		&title {
+			color: #d0d0d0;
 		}
 	}
 
 	.page__nav-inner > li.active > a,
 	.page__nav-inner > li.active > a:focus,
 	.page__nav-inner > li.active > a:hover {
-		background-color: $rgb-link-blue;
+		background-color: $rgb-off-black;
 		border-top: 0;
-		border-color: transparent;
+		border-color: $rgb-border-grey--night;
+		color: #d0d0d0;
 	}
 
 	.text-muted {
@@ -3194,7 +3154,7 @@ ul.list.books > li > a > span.name:hover {
 
 			&:focus,
 			&:hover {
-				background-color: #383838;
+				background-color: $rgb-bg--alt-night;
 				color: white;
 			}
 		}
@@ -3303,44 +3263,56 @@ ul.list.books > li > a > span.name:hover {
 	}
 
 	/* *** */
+	.omni__ {
+		&wrp-input {
+			&--scrolled {
+				.omni__input {
+					border-color: $rgb-border-grey--night;
+					background-color: $rgb-bg--night;
+					color: transparent;
 
-	.omni__wrp-input--scrolled .omni__input {
-		background-color: $rgb-bg--night;
-		color: transparent;
+					&:focus,
+					&:focus-within,
+					&:active,
+					&:hover {
+						color: $rgb-font--night;
+					}
+				}
 
-		&:focus,
-		&:focus-within,
-		&:active,
-		&:hover {
-			color: $rgb-font--night;
+				.omni__submit {
+					border-color: $rgb-border-grey--night;
+				}
+			}
+
+			@media (min-width: 992px) {
+				padding: 0 0 0 2px;
+			}
 		}
-	}
 
-	.omni__submit.btn-default:active:focus,
-	.omni__submit.btn-default:active:hover,
-	.omni__submit.btn-default {
-		background-color: $rgb-bg--night;
-		color: $rgb-font--night;
-	}
+		&input {
+			@media (min-width: 992px) {
+				border-top-color: transparent;
+			}
 
-	.omni__wrp-input {
-		@media (min-width: 992px) {
-			padding: 0 0 0 2px;
+			&:focus {
+				border-color: #66afe9;
+			}
 		}
 
-	}
+		&submit {
+			border-top-color: $rgb-border-grey--night;
 
-	.omni__input {
-		border-top-left-radius: 4px;
+			@media (min-width: 992px) {
+				border-top-color: transparent;
+			}
 
-		&:focus {
-			border-color: #66afe9;
+			&.btn-default:active:focus,
+			&.btn-default:active:hover,
+			&.btn-default {
+				background-color: $rgb-bg--night;
+				color: $rgb-font--night;
+			}
 		}
-	}
-
-	.omni__submit {
-		border-top-right-radius: 4px;
-		border-top-color: $rgb-border-grey--night;
 	}
 
 	#pointbuy {
@@ -3438,8 +3410,7 @@ ul.list.books > li > a > span.name:hover {
 		background: #303030;
 	}
 
-	.f-all-out > p:nth-child(odd),
-	.omni__output p:nth-child(odd) {
+	.f-all-out > p:nth-child(odd) {
 		background: #202020;
 	}
 
@@ -3930,7 +3901,7 @@ ul.list.books > li > a > span.name:hover {
 
 	/* generic UI */
 	.ui-modal__row--cb:hover {
-		background: #383838;
+		background: $rgb-bg--alt-night;
 	}
 	/* *** */
 }

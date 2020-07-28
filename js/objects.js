@@ -97,7 +97,7 @@ class ObjectsPage extends ListPage {
 
 		const hasToken = obj.tokenUrl || obj.hasToken;
 		if (hasToken) {
-			const imgLink = obj.tokenUrl || UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
+			const imgLink = obj.tokenUrl || UrlUtil.link(`${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/objects/${obj.name.replace(/"/g, "")}.png`);
 			$floatToken.append(`<a href="${imgLink}" target="_blank" rel="noopener noreferrer"><img src="${imgLink}" id="token_image" class="token" alt="${obj.name}"></a>`);
 		}
 

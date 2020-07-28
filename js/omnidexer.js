@@ -621,7 +621,11 @@ class IndexableFileOptFeatures_Other extends IndexableFile {
 			listProp: "optionalfeature",
 			baseUrl: "optionalfeatures.html",
 			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "OTH")
+			include: (it) => {
+				const asArray = it.featureType instanceof Array ? it.featureType : [it.featureType];
+				// Any optional features that don't have a known type (i.e. are custom homebrew types) get lumped into here
+				return Omnidexer.arrIncludesOrEquals(asArray, "OTH") || asArray.some(it => !Parser.OPT_FEATURE_TYPE_TO_FULL[it]);
+			}
 		});
 	}
 }
@@ -755,7 +759,6 @@ class IndexableFileOptFeatures_Maneuver extends IndexableFile {
 		});
 	}
 }
-
 // endregion
 
 class IndexableFilePsionics extends IndexableFile {
@@ -788,12 +791,26 @@ class IndexableFileRaces extends IndexableFile {
 	}
 
 	pGetDeepIndex (indexer, primary, it) {
+		const out = [];
+
+		// If there are subraces, add the base race
+		if (it.subraces) {
+			const r = MiscUtil.copy(it);
+			out.push({
+				n: r.name,
+				s: indexer.getMetaId("s", r.source),
+				u: UrlUtil.URL_TO_HASH_BUILDER["races.html"](r)
+			});
+		}
+
 		const subs = Renderer.race._mergeSubrace(it);
-		return subs.map(r => ({
+		out.push(...subs.map(r => ({
 			n: r.name,
 			s: indexer.getMetaId("s", r.source),
 			u: UrlUtil.URL_TO_HASH_BUILDER["races.html"](r)
-		}));
+		})));
+
+		return out;
 	}
 }
 

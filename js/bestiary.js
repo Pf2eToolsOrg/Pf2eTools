@@ -309,13 +309,6 @@ async function pPageInit (loadedSources) {
 			const renderCreature = (mon) => {
 				stack.push(`<div class="bkmv__wrp-item"><table class="stats stats--book stats--bkmv"><tbody>`);
 				stack.push(Renderer.monster.getCompactRenderedString(mon, renderer));
-				if (mon.legendaryGroup) {
-					const thisGroup = DataUtil.monster.getMetaGroup(mon);
-					if (thisGroup) {
-						stack.push(Renderer.monster.getCompactRenderedStringSection(thisGroup, renderer, "Lair Actions", "lairActions", 0));
-						stack.push(Renderer.monster.getCompactRenderedStringSection(thisGroup, renderer, "Regional Effects", "regionalEffects", 0));
-					}
-				}
 				stack.push(`</tbody></table></div>`);
 			};
 
@@ -869,8 +862,7 @@ function renderStatblock (mon, isScaled) {
 
 		// Add Markdown copy button
 		const $headerControls = isImageTab ? null : (() => {
-			const contextId = ContextUtil.getNextGenericMenuId();
-			const _CONTEXT_OPTIONS = [
+			const actions = [
 				new ContextUtil.Action(
 					"Copy as JSON",
 					async () => {
@@ -888,11 +880,11 @@ function renderStatblock (mon, isScaled) {
 						JqueryUtil.showCopiedEffect($btnOptions);
 					}
 				)
-			];
-			ContextUtil.doInitActionContextMenu(contextId, _CONTEXT_OPTIONS);
+			]
+			const menu = ContextUtil.getMenu(actions);
 
 			const $btnOptions = $(`<button class="btn btn-default btn-xs btn-stats-name"><span class="glyphicon glyphicon-option-vertical"/></button>`)
-				.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnOptions, contextId));
+				.click(evt => ContextUtil.pOpenMenu(evt, menu));
 
 			return $$`<div class="flex-v-center btn-group ml-2">${$btnOptions}</div>`;
 		})();

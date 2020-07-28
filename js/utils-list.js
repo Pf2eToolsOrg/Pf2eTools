@@ -145,12 +145,14 @@ const ListUtil = {
 			selection = [listItem]
 		}
 
-		ContextUtil.handleOpenContextMenu(evt, listItem.ele, "list", null, selection);
+		const menu = ListUtil.contextMenuPinnableList || ListUtil.contextMenuAddableList;
+		ContextUtil.pOpenMenu(evt, menu, {ele: listItem.ele, selection});
 	},
 
 	openSubContextMenu (evt, listItem) {
+		const menu = ListUtil.contextMenuPinnableListSub || ListUtil.contextMenuAddableListSub;
 		const ele = listItem.ele instanceof $ ? listItem.ele[0] : listItem.ele;
-		ContextUtil.handleOpenContextMenu(evt, ele, "listSub", null, [listItem]);
+		ContextUtil.pOpenMenu(evt, menu, {ele: ele, selection: [listItem]});
 	},
 
 	$sublistContainer: null,
@@ -526,123 +528,142 @@ const ListUtil = {
 		if (store && store.sources) return store.sources;
 	},
 
+	contextMenuPinnableList: null,
+	contextMenuPinnableListSub: null,
 	initGenericPinnable () {
-		ContextUtil.doInitContextMenu(
-			"list",
-			ListUtil.handleGenericContextMenuClick,
-			[
+		if (ListUtil.contextMenuPinnableList) return;
+
+		ListUtil.contextMenuPinnableList = ContextUtil.getMenu([
+			new ContextUtil.Action(
 				"Popout",
-				"Pin"
-			]
-		);
-		ContextUtil.doInitContextMenu(
-			"listSub",
-			ListUtil.handleGenericSubContextMenuClick,
-			[
+				(evt, userData) => {
+					const {ele, selection} = userData;
+					ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, selection);
+				}
+			),
+			new ContextUtil.Action(
+				"Pin",
+				async () => {
+					await Promise.all(
+						ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelectedWithDeslect(l, (it) => ListUtil.isSublisted(it) ? Promise.resolve() : ListUtil.pDoSublistAdd(it))))
+					);
+					await ListUtil._pFinaliseSublist();
+				}
+			)
+		]);
+
+		const subActions = [
+			new ContextUtil.Action(
 				"Popout",
+				(evt, userData) => {
+					const {ele, selection} = userData;
+					ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, selection);
+				}
+			),
+			new ContextUtil.Action(
 				"Unpin",
+				(evt, userData) => {
+					const {selection} = userData;
+					selection.forEach(item => ListUtil.pDoSublistRemove(item.ix));
+				}
+			),
+			new ContextUtil.Action(
 				"Clear Pins",
-				null,
+				() => ListUtil.pDoSublistRemoveAll()
+			),
+			null,
+			new ContextUtil.Action(
 				"Roll on List",
-				null,
+				() => ListUtil._rollSubListed()
+			),
+			null,
+			new ContextUtil.Action(
 				"Send to DM Screen",
-				null,
-				"Download JSON Data"
-			]
-		);
+				() => ListUtil._pDoSendSublistToDmScreen()
+			),
+			ExtensionUtil.ACTIVE
+				? new ContextUtil.Action(
+					"Send to Foundry",
+					() => ListUtil._pDoSendSublistToFoundry()
+				)
+				: undefined,
+			null,
+			new ContextUtil.Action(
+				"Download JSON Data",
+				() => ListUtil._handleJsonDownload()
+			)
+		].filter(it => it !== undefined);
+		ListUtil.contextMenuPinnableListSub = ContextUtil.getMenu(subActions);
 	},
 
+	contextMenuAddableList: null,
+	contextMenuAddableListSub: null,
 	initGenericAddable () {
-		ContextUtil.doInitContextMenu(
-			"list",
-			ListUtil.handleGenericMultiContextMenuClick,
-			[
+		ListUtil.contextMenuAddableList = ContextUtil.getMenu([
+			new ContextUtil.Action(
 				"Popout",
-				"Add"
-			]
-		);
-		ContextUtil.doInitContextMenu(
-			"listSub",
-			ListUtil.handleGenericMultiSubContextMenuClick,
-			[
+				(evt, userData) => {
+					const {ele, selection} = userData;
+					ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, selection);
+				}
+			),
+			new ContextUtil.Action(
+				"Add",
+				async () => {
+					await Promise.all(
+						ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelectedWithDeslect(l, (it) => ListUtil.pDoSublistAdd(it))))
+					);
+					await ListUtil._pFinaliseSublist();
+					ListUtil.updateSelected();
+				}
+			)
+		]);
+
+		const subActions = [
+			new ContextUtil.Action(
 				"Popout",
+				(evt, userData) => {
+					const {ele, selection} = userData;
+					ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, selection)
+				}
+			),
+			new ContextUtil.Action(
 				"Remove",
-				"Clear List",
-				null,
-				"Roll on List",
-				null,
-				"Send to DM Screen",
-				null,
-				"Download JSON Data"
-			]
-		);
-	},
-
-	handleGenericContextMenuClick: (evt, ele, $invokedOn, $selectedMenu, _, selection) => {
-		switch (Number($selectedMenu.data("ctx-id"))) {
-			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
-			case 1:
-				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelectedWithDeslect(l, (it) => ListUtil.isSublisted(it) ? Promise.resolve() : ListUtil.pDoSublistAdd(it)))))
-					.then(async () => ListUtil._pFinaliseSublist());
-				break;
-		}
-	},
-
-	handleGenericSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu, _, selection) => {
-		switch (Number($selectedMenu.data("ctx-id"))) {
-			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
-			case 1: selection.forEach(item => ListUtil.pDoSublistRemove(item.ix)); break;
-			case 2:
-				ListUtil.pDoSublistRemoveAll();
-				break;
-			case 3:
-				ListUtil._rollSubListed();
-				break;
-			case 4:
-				ListUtil._pDoSendSublistToDmScreen();
-				break;
-			case 5:
-				ListUtil._handleJsonDownload();
-				break;
-		}
-	},
-
-	handleGenericMultiContextMenuClick: (evt, ele, $invokedOn, $selectedMenu, _, selection) => {
-		switch (Number($selectedMenu.data("ctx-id"))) {
-			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
-			case 1:
-				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelectedWithDeslect(l, (it) => ListUtil.pDoSublistAdd(it)))))
-					.then(async () => {
-						await ListUtil._pFinaliseSublist();
-						ListUtil.updateSelected();
+				(evt, userData) => {
+					const {selection} = userData;
+					selection.forEach(item => {
+						if (item.data.customHashId) ListUtil.pDoSublistRemove(item.ix, {customHashId: item.data.customHashId});
+						else ListUtil.pDoSublistRemove(item.ix);
 					});
-				break;
-		}
-	},
-
-	handleGenericMultiSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu, _, selection) => {
-		switch (Number($selectedMenu.data("ctx-id"))) {
-			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
-			case 1: {
-				selection.forEach(item => {
-					if (item.data.customHashId) ListUtil.pDoSublistRemove(item.ix, {customHashId: item.data.customHashId});
-					else ListUtil.pDoSublistRemove(item.ix);
-				});
-				break;
-			}
-			case 2:
-				ListUtil.pDoSublistRemoveAll();
-				break;
-			case 3:
-				ListUtil._rollSubListed();
-				break;
-			case 4:
-				ListUtil._pDoSendSublistToDmScreen();
-				break;
-			case 5:
-				ListUtil._handleJsonDownload();
-				break;
-		}
+				}
+			),
+			new ContextUtil.Action(
+				"Clear List",
+				() => ListUtil.pDoSublistRemoveAll()
+			),
+			null,
+			new ContextUtil.Action(
+				"Roll on List",
+				() => ListUtil._rollSubListed()
+			),
+			null,
+			new ContextUtil.Action(
+				"Send to DM Screen",
+				() => ListUtil._pDoSendSublistToDmScreen()
+			),
+			ExtensionUtil.ACTIVE
+				? new ContextUtil.Action(
+					"Send to Foundry",
+					() => ListUtil._pDoSendSublistToFoundry()
+				)
+				: undefined,
+			null,
+			new ContextUtil.Action(
+				"Download JSON Data",
+				() => ListUtil._handleJsonDownload()
+			)
+		].filter(it => it !== undefined);
+		ListUtil.contextMenuAddableListSub = ContextUtil.getMenu(subActions);
 	},
 
 	async _pDoSendSublistToDmScreen () {
@@ -657,7 +678,31 @@ const ListUtil = {
 		}
 	},
 
-	async _handleGenericContextMenuClick_pDoMassPopout (evt, ele, $invokedOn, selection) {
+	async _pDoSendSublistToFoundry () {
+		const list = ListUtil.getExportableSublist();
+		const len = list.items.length;
+
+		const page = UrlUtil.getCurrentPage();
+
+		for (const it of list.items) {
+			let toSend = await Renderer.hover.pCacheAndGetHash(page, it.h);
+
+			switch (page) {
+				case UrlUtil.PG_BESTIARY: {
+					const scaleTo = it.customHashId ? Parser.numberToCr(Number(it.customHashId.split("_").last())) : null;
+					if (scaleTo != null) {
+						toSend = await ScaleCreature.scale(toSend, scaleTo);
+					}
+				}
+			}
+
+			await ExtensionUtil._doSend("entity", {page, entity: toSend});
+		}
+
+		JqueryUtil.doToast(`Attepmted to send ${len} item${len === 1 ? "" : "s"} to Foundry.`);
+	},
+
+	async _handleGenericContextMenuClick_pDoMassPopout (evt, ele, selection) {
 		const page = UrlUtil.getCurrentPage();
 
 		const elePos = ele.getBoundingClientRect();

@@ -83,7 +83,7 @@ class VehiclesPage extends ListPage {
 		function buildStatsTab () {
 			const hasToken = veh.tokenUrl || veh.hasToken;
 			if (hasToken) {
-				const imgLink = veh.tokenUrl || UrlUtil.link(`img/vehicles/tokens/${Parser.sourceJsonToAbv(veh.source)}/${veh.name.replace(/"/g, "")}.png`);
+				const imgLink = Renderer.vehicle.getTokenUrl(veh);
 				$floatToken.append(`<a href="${imgLink}" target="_blank" rel="noopener noreferrer"><img src="${imgLink}" id="token_image" class="token" alt="${veh.name}"></a>`);
 			}
 

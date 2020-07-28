@@ -411,7 +411,6 @@
 					"shortName": "Abjuration",
 					"source": "PHB",
 					"page": 115,
-					"srd": true,
 					"subclassFeatures": [
 						"School of Abjuration|Wizard||Abjuration||2",
 						"Projected Ward|Wizard||Abjuration||6",
@@ -436,7 +435,6 @@
 					"shortName": "Conjuration",
 					"source": "PHB",
 					"page": 116,
-					"srd": true,
 					"subclassFeatures": [
 						"School of Conjuration|Wizard||Conjuration||2",
 						"Benign Transposition|Wizard||Conjuration||6",
@@ -449,7 +447,6 @@
 					"shortName": "Divination",
 					"source": "PHB",
 					"page": 116,
-					"srd": true,
 					"subclassFeatures": [
 						"School of Divination|Wizard||Divination||2",
 						"Expert Divination|Wizard||Divination||6",
@@ -462,7 +459,6 @@
 					"shortName": "Enchantment",
 					"source": "PHB",
 					"page": 117,
-					"srd": true,
 					"subclassFeatures": [
 						"School of Enchantment|Wizard||Enchantment||2",
 						"Instinctive Charm|Wizard||Enchantment||6",
@@ -488,7 +484,15 @@
 					"shortName": "Illusion",
 					"source": "PHB",
 					"page": 118,
-					"srd": true,
+					"additionalSpells": [
+						{
+							"prepared": {
+								"1": [
+									"minor illusion"
+								]
+							}
+						}
+					],
 					"subclassFeatures": [
 						"School of Illusion|Wizard||Illusion||2",
 						"Malleable Illusions|Wizard||Illusion||6",
@@ -538,7 +542,6 @@
 					"shortName": "Transmutation",
 					"source": "PHB",
 					"page": 119,
-					"srd": true,
 					"subclassFeatures": [
 						"School of Transmutation|Wizard||Transmutation||2",
 						"Transmuter's Stone|Wizard||Transmutation||6",
@@ -551,7 +554,6 @@
 					"shortName": "Necromancy",
 					"source": "PHB",
 					"page": 118,
-					"srd": true,
 					"subclassFeatures": [
 						"School of Necromancy|Wizard||Necromancy||2",
 						"Undead Thralls|Wizard||Necromancy||6",
@@ -984,7 +986,7 @@
 			"classSource": "PHB",
 			"level": 1,
 			"entries": [
-				"As a student of arcane magic, you have a spellbook containing spells that show the first glimmerings of your true power. See {@book chapter 10|PHB|10} for the general rules of spellcasting and chapter 11 for the {@filter wizard spell list|spells|class=wizard}.",
+				"As a student of arcane magic, you have a spellbook containing spells that show the first glimmerings of your true power. See {@book chapter 10|PHB|10} for the general rules of spellcasting and {@book chapter 11|PHB|11} for the {@filter wizard spell list|spells|class=wizard}.",
 				{
 					"type": "entries",
 					"name": "Cantrips",
@@ -1338,7 +1340,6 @@
 			"subclassSource": "EGW",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"{@i 2nd-level Chronurgy Magic feature}",
 				"You can magically exert limited control over the flow of time around a creature. As a reaction, after you or a creature you can see within 30 feet of you makes an attack roll, an ability check, or a saving throw, you can force the creature to reroll. You make this decision after you see whether the roll succeeds or fails. The target must use the result of the second roll.",
@@ -1355,7 +1356,6 @@
 			"subclassSource": "EGW",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"{@i 2nd-level Chronurgy Magic feature}",
 				"You can add your Intelligence modifier to your initiative rolls."
@@ -1437,7 +1437,6 @@
 			"subclassSource": "EGW",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"{@i 2nd-level Graviturgy Magic feature}",
 				"As an action, you can magically alter the weight of one object or creature you can see within 30 feet of you. The object or creature must be Large or smaller. The target's weight is halved or doubled for up to 1 minute or until your concentration ends (as if you were concentrating on a spell).",
@@ -1497,7 +1496,6 @@
 			"name": "School of Abjuration",
 			"source": "PHB",
 			"page": 115,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Abjuration",
@@ -1520,14 +1518,12 @@
 			"name": "Abjuration Savant",
 			"source": "PHB",
 			"page": 115,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Abjuration",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Beginning when you select this school at 2nd level, the gold and time you must spend to copy an abjuration spell into your spellbook is halved."
 			]
@@ -1536,14 +1532,12 @@
 			"name": "Arcane Ward",
 			"source": "PHB",
 			"page": 115,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Abjuration",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Starting at 2nd level, you can weave magic around yourself for protection. When you cast an {@filter abjuration spell of 1st level or higher|spells|school=A|level=!0}, you can simultaneously use a strand of the spell's magic to create a magical ward on yourself that lasts until you finish a long rest. The ward has hit points equal to twice your wizard level + your Intelligence modifier. Whenever you take damage, the ward takes the damage instead. If this damage reduces the ward to 0 hit points, you take any remaining damage.",
 				"While the ward has 0 hit points, it can't absorb damage, but its magic remains. Whenever you cast an {@filter abjuration spell of 1st level or higher|spells|school=A|level=!0}, the ward regains a number of hit points equal to twice the level of the spell.",
@@ -1554,7 +1548,6 @@
 			"name": "Projected Ward",
 			"source": "PHB",
 			"page": 115,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Abjuration",
@@ -1569,7 +1562,6 @@
 			"name": "Improved Abjuration",
 			"source": "PHB",
 			"page": 115,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Abjuration",
@@ -1584,7 +1576,6 @@
 			"name": "Spell Resistance",
 			"source": "PHB",
 			"page": 115,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Abjuration",
@@ -1600,7 +1591,6 @@
 			"name": "School of Conjuration",
 			"source": "PHB",
 			"page": 116,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Conjuration",
@@ -1622,14 +1612,12 @@
 			"name": "Conjuration Savant",
 			"source": "PHB",
 			"page": 116,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Conjuration",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Beginning when you select this school at 2nd level, the gold and time you must spend to copy a conjuration spell into your spellbook is halved."
 			]
@@ -1638,14 +1626,12 @@
 			"name": "Minor Conjuration",
 			"source": "PHB",
 			"page": 116,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Conjuration",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Starting at 2nd level when you select this school, you can use your action to conjure up an inanimate object in your hand or on the ground in an unoccupied space that you can see within 10 feet of you. This object can be no larger than 3 feet on a side and weigh no more than 10 pounds, and its form must be that of a nonmagical object that you have seen. The object is visibly magical, radiating dim light out to 5 feet.",
 				"The object disappears after 1 hour, when you use this feature again, if it takes any damage, or if it deals any damage."
@@ -1655,7 +1641,6 @@
 			"name": "Benign Transposition",
 			"source": "PHB",
 			"page": 116,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Conjuration",
@@ -1671,7 +1656,6 @@
 			"name": "Focused Conjuration",
 			"source": "PHB",
 			"page": 116,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Conjuration",
@@ -1686,7 +1670,6 @@
 			"name": "Durable Summons",
 			"source": "PHB",
 			"page": 116,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Conjuration",
@@ -1701,7 +1684,6 @@
 			"name": "School of Divination",
 			"source": "PHB",
 			"page": 116,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Divination",
@@ -1723,14 +1705,12 @@
 			"name": "Divination Savant",
 			"source": "PHB",
 			"page": 116,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Divination",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Beginning when you select this school at 2nd level, the gold and time you must spend to copy a divination spell into your spellbook is halved."
 			]
@@ -1739,14 +1719,12 @@
 			"name": "Portent",
 			"source": "PHB",
 			"page": 116,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Divination",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Starting at 2nd level when you choose this school, glimpses of the future begin to press in on your awareness. When you finish a long rest, roll two {@dice d20}s and record the numbers rolled. You can replace any attack roll, saving throw, or ability check made by you or a creature that you can see with one of these foretelling rolls. You must choose to do so before the roll, and you can replace a roll in this way only once per turn.",
 				"Each foretelling roll can be used only once. When you finish a long rest, you lose any unused foretelling rolls."
@@ -1756,7 +1734,6 @@
 			"name": "Expert Divination",
 			"source": "PHB",
 			"page": 116,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Divination",
@@ -1771,7 +1748,6 @@
 			"name": "The Third Eye",
 			"source": "PHB",
 			"page": 116,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Divination",
@@ -1781,7 +1757,7 @@
 			"entries": [
 				"Starting at 10th level, you can use your action to increase your powers of perception. When you do so, choose one of the following benefits, which lasts until you are {@condition incapacitated} or you take a short or long rest. You can't use the feature again until you finish a rest.",
 				{
-					"type": "entries",
+					"type": "options",
 					"entries": [
 						{
 							"type": "entries",
@@ -1789,36 +1765,21 @@
 							"entries": [
 								"You gain {@sense darkvision} out to a range of 60 feet."
 							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+						},
 						{
 							"type": "entries",
 							"name": "Ethereal Sight",
 							"entries": [
 								"You can see into the Ethereal Plane within 60 feet of you."
 							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+						},
 						{
 							"type": "entries",
 							"name": "Greater Comprehension",
 							"entries": [
 								"You can read any language."
 							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+						},
 						{
 							"type": "entries",
 							"name": "See Invisibility",
@@ -1834,7 +1795,6 @@
 			"name": "Greater Portent",
 			"source": "PHB",
 			"page": 116,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Divination",
@@ -1849,7 +1809,6 @@
 			"name": "School of Enchantment",
 			"source": "PHB",
 			"page": 117,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Enchantment",
@@ -1871,14 +1830,12 @@
 			"name": "Enchantment Savant",
 			"source": "PHB",
 			"page": 117,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Enchantment",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Beginning when you select this school at 2nd level, the gold and time you must spend to copy an enchantment spell into your spellbook is halved."
 			]
@@ -1887,14 +1844,12 @@
 			"name": "Hypnotic Gaze",
 			"source": "PHB",
 			"page": 117,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Enchantment",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Starting at 2nd level when you choose this school, your soft words and enchanting gaze can magically enthrall another creature. As an action, choose one creature that you can see within 5 feet of you. If the target can see or hear you, it must succeed on a Wisdom saving throw against your wizard spell save DC or be {@condition charmed} by you until the end of your next turn. The {@condition charmed} creature's speed drops to 0, and the creature is {@condition incapacitated} and visibly dazed.",
 				"On subsequent turns, you can use your action to maintain this effect, extending its duration until the end of your next turn. However, the effect ends if you move more than 5 feet away from the creature, if the creature can neither see nor hear you, or if the creature takes damage.",
@@ -1905,7 +1860,6 @@
 			"name": "Instinctive Charm",
 			"source": "PHB",
 			"page": 117,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Enchantment",
@@ -1921,7 +1875,6 @@
 			"name": "Split Enchantment",
 			"source": "PHB",
 			"page": 117,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Enchantment",
@@ -1936,7 +1889,6 @@
 			"name": "Alter Memories",
 			"source": "PHB",
 			"page": 117,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Enchantment",
@@ -1981,7 +1933,6 @@
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Beginning when you select this school at 2nd level, the gold and time you must spend to copy an evocation spell into your spellbook is halved."
 			]
@@ -1997,7 +1948,6 @@
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Beginning at 2nd level, you can create pockets of relative safety within the effects of your evocation spells. When you cast an evocation spell that affects other creatures that you can see, you can choose a number of them equal to 1 + the spell's level. The chosen creatures automatically succeed on their saving throws against the spell, and they take no damage if they would normally take half damage on a successful save."
 			]
@@ -2052,7 +2002,6 @@
 			"name": "School of Illusion",
 			"source": "PHB",
 			"page": 118,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Illusion",
@@ -2074,14 +2023,12 @@
 			"name": "Illusion Savant",
 			"source": "PHB",
 			"page": 118,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Illusion",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Beginning when you select this school at 2nd level, the gold and time you must spend to copy an illusion spell into your spellbook is halved."
 			]
@@ -2090,14 +2037,12 @@
 			"name": "Improved Minor Illusion",
 			"source": "PHB",
 			"page": 118,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Illusion",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"When you choose this school at 2nd level, you learn the {@spell minor illusion} cantrip. If you already know this cantrip, you learn a different wizard cantrip of your choice. The cantrip doesn't count against your number of cantrips known.",
 				"When you cast {@spell minor illusion}, you can create both a sound and an image with a single casting of the spell."
@@ -2107,7 +2052,6 @@
 			"name": "Malleable Illusions",
 			"source": "PHB",
 			"page": 118,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Illusion",
@@ -2122,7 +2066,6 @@
 			"name": "Illusory Step",
 			"source": "PHB",
 			"page": 118,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Illusion",
@@ -2138,7 +2081,6 @@
 			"name": "Illusory Reality",
 			"source": "PHB",
 			"page": 118,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Illusion",
@@ -2154,7 +2096,6 @@
 			"name": "School of Necromancy",
 			"source": "PHB",
 			"page": 118,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Necromancy",
@@ -2177,14 +2118,12 @@
 			"name": "Grim Harvest",
 			"source": "PHB",
 			"page": 118,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Necromancy",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"At 2nd level, you gain the ability to reap life energy from creatures you kill with your spells. Once per turn when you kill one or more creatures with a spell of 1st level or higher, you regain hit points equal to twice the spell's level, or three times its level if the spell belongs to the {@filter School of Necromancy|spells|school=N}. You don't gain this benefit for killing constructs or undead."
 			]
@@ -2193,14 +2132,12 @@
 			"name": "Necromancy Savant",
 			"source": "PHB",
 			"page": 118,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Necromancy",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Beginning when you select this school at 2nd level, the gold and time you must spend to copy a necromancy spell into your spellbook is halved."
 			]
@@ -2209,7 +2146,6 @@
 			"name": "Undead Thralls",
 			"source": "PHB",
 			"page": 118,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Necromancy",
@@ -2232,7 +2168,6 @@
 			"name": "Inured to Undeath",
 			"source": "PHB",
 			"page": 118,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Necromancy",
@@ -2247,7 +2182,6 @@
 			"name": "Command Undead",
 			"source": "PHB",
 			"page": 118,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Necromancy",
@@ -2263,7 +2197,6 @@
 			"name": "School of Transmutation",
 			"source": "PHB",
 			"page": 119,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Transmutation",
@@ -2286,14 +2219,12 @@
 			"name": "Minor Alchemy",
 			"source": "PHB",
 			"page": 119,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Transmutation",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Starting at 2nd level when you select this school, you can temporarily alter the physical properties of one nonmagical object, changing it from one substance into another. You perform a special alchemical procedure on one object composed entirely of wood, stone (but not a gemstone), iron, copper, or silver, transforming it into a different one of those materials. For each 10 minutes you spend performing the procedure, you can transform up to 1 cubic foot of material. After 1 hour, or until you lose your concentration (as if you were concentrating on a spell), the material reverts to its original substance."
 			]
@@ -2302,14 +2233,12 @@
 			"name": "Transmutation Savant",
 			"source": "PHB",
 			"page": 119,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Transmutation",
 			"subclassSource": "PHB",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Beginning when you select this school at 2nd level, the gold and time you must spend to copy a transmutation spell into your spellbook is halved."
 			]
@@ -2318,7 +2247,6 @@
 			"name": "Transmuter's Stone",
 			"source": "PHB",
 			"page": 119,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Transmutation",
@@ -2344,7 +2272,6 @@
 			"name": "Shapechanger",
 			"source": "PHB",
 			"page": 119,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Transmutation",
@@ -2360,7 +2287,6 @@
 			"name": "Master Transmuter",
 			"source": "PHB",
 			"page": 119,
-			"srd": true,
 			"className": "Wizard",
 			"classSource": "PHB",
 			"subclassShortName": "Transmutation",
@@ -2370,7 +2296,7 @@
 			"entries": [
 				"Starting at 14th level, you can use your action to consume the reserve of transmutation magic stored within your transmuter's stone in a single burst. When you do so, choose one of the following effects. Your transmuter's stone is destroyed and can't be remade until you finish a long rest.",
 				{
-					"type": "entries",
+					"type": "options",
 					"entries": [
 						{
 							"type": "entries",
@@ -2378,36 +2304,21 @@
 							"entries": [
 								"You can transmute one nonmagical object\u2014no larger than a 5-foot cube\u2014into another nonmagical object of similar size and mass and of equal or lesser value. You must spend 10 minutes handling the object to transform it."
 							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+						},
 						{
 							"type": "entries",
 							"name": "Panacea",
 							"entries": [
 								"You remove all curses, diseases, and poisons affecting a creature that you touch with the transmuter's stone. The creature also regains all its hit points."
 							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+						},
 						{
 							"type": "entries",
 							"name": "Restore Life",
 							"entries": [
 								"You cast the {@spell raise dead} spell on a creature you touch with the transmuter's stone, without expending a spell slot or needing to have the spell in your spellbook."
 							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"entries": [
+						},
 						{
 							"type": "entries",
 							"name": "Restore Youth",
@@ -2495,7 +2406,6 @@
 			"subclassSource": "SCAG",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Starting at 2nd level, you can invoke a secret elven magic called the Bladesong, provided you aren't wearing medium or heavy armor or using a shield. It graces you with supernatural speed, agility, and focus.",
 				"You can use a bonus action to start the Bladesong, which lasts for 1 minute. It ends early if you are {@condition incapacitated}, if you don medium or heavy armor or a shield, or if you use two hands to make an attack with a weapon. You can also dismiss Bladesong at any time you choose (no action required).",
@@ -2522,7 +2432,6 @@
 			"subclassSource": "SCAG",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Only elves and half-elves can choose the bladesinger arcane tradition. In the world of Faerûn, elves closely guard the secrets of bladesinging.",
 				"Your DM can lift this restriction to better suit the campaign. The restriction reflects the story of bladesingers in the Forgotten Realms, but it might not apply to your DM's setting or your DM's version of the Realms."
@@ -2538,7 +2447,6 @@
 			"subclassSource": "SCAG",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"When you adopt this tradition at 2nd level, you gain proficiency with light armor, and you gain proficiency with one type of one-handed melee weapon of your choice.",
 				"You also gain proficiency in the {@skill Performance} skill if you don't already have it."
@@ -2618,7 +2526,6 @@
 			"subclassSource": "UA2020SubclassesRevisited",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"{@i 2nd-level Order of Scribes feature}",
 				"Using specially prepared inks and ancient incantations passed down by your wizardly order, you have awakened an arcane sentience within your spellbook.",
@@ -2644,7 +2551,6 @@
 			"subclassSource": "UA2020SubclassesRevisited",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"{@i 2nd-level Order of Scribes feature}",
 				"As a bonus action, you can magically create a Tiny quill in your free hand. The magic quill has the following properties:",
@@ -2751,7 +2657,6 @@
 			"subclassSource": "UAClericDruidWizard",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"{@i 2nd-level Onomancy feature}",
 				"You learn one language of your choice and gain proficiency with {@item calligrapher's supplies|phb}."
@@ -2767,7 +2672,6 @@
 			"subclassSource": "UAClericDruidWizard",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"{@i 2nd-level Onomancy feature}",
 				"You can magically compel a creature to divulge its true name. As a bonus action, you target one creature you can see within 60 feet of you. The target must make a Wisdom saving throw against your spell save DC. On a successful save, you discern that this magic failed, and you can't use this feature on the target again. On a failed save, the target is {@condition charmed} by you until the end of your next turn, and you mentally learn the {@condition charmed} target's name or the fact that the target lacks a name.",
@@ -2784,7 +2688,6 @@
 			"subclassSource": "UAClericDruidWizard",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"{@i 2nd-level Onomancy feature}",
 				"You can bend magic to assist or hinder creatures through the power of their true names, and even use those names as an anchor to affect others around them. The {@spell bane} and {@spell bless} spells are wizard spells for you, and you add them to your spellbook. You always have them prepared, yet they don't count against the number of spells you can prepare.",
@@ -2937,7 +2840,6 @@
 			"subclassSource": "UAEberron",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Starting at 2nd level, you can produce magic potions. You spend 10 minutes focusing your magic on a vial of mundane water and expend a spell slot to transform it into a potion. Once you have expended a spell slot to create a potion, you cannot regain that slot until the potion is consumed or after 1 week, at which time the potion loses its effectiveness. You can create up to three potions at a time; creating a fourth potion causes the oldest currently active one to immediately lose its potency. If that potion has been consumed, its effects immediately end.",
 				"The spell slot you expend determines the type of potion you can create.",
@@ -2983,7 +2885,6 @@
 			"subclassSource": "UAEberron",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"At 2nd level, you can also tap into your reserves of magical energy to create spell scrolls. You can use your Arcane Recovery ability to create a scroll instead of regaining expended spell slots.",
 				"You must finish a short rest, then spend 10 minutes with parchment, quill, and ink to create a spell scroll containing one spell chosen from those you know. Subtract the spell's level from the total levels worth of slots you regain using Arcane Recovery. This reduction to your Arcane Recovery applies until you use the scroll and then finish a long rest."
@@ -3308,7 +3209,6 @@
 			"subclassSource": "UAFighterRogueWizard",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"{@i 2nd-level Psionics feature}",
 				"Your study of psionics begins to unleash your mind's potential. When you gain this feature, choose one of the following cantrips: friends, mage hand, or message. You learn that cantrip if you don't already know it, and it doesn't count against the number of wizard cantrips you know. While your psionic focus is on your person, you can cast the chosen cantrip as a bonus action, requiring no components, and with the modification listed below:",
@@ -3345,7 +3245,6 @@
 			"subclassSource": "UAFighterRogueWizard",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"{@i 2nd-level Psionics feature}",
 				"You have learned to channel psionic energy through a special object: a psionic focus. You gain the object with this feature (see the \"Your Psionic Focus\" sidebar for how you might have acquired the item).",
@@ -3516,7 +3415,6 @@
 			"subclassSource": "UAModernMagic",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Beginning when you select this arcane tradition at 2nd level, you gain proficiency with sidearms and hacking tools."
 			]
@@ -3531,7 +3429,6 @@
 			"subclassSource": "UAModernMagic",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Also at 2nd level, you trade out your spellbook for a specially attuned storage device of your choosing, capable of recording magical data. The computing power of this device must be equal to or greater than a tablet computer. Only one storage device can be attuned to you at any given time. Spells can be copied into this device at half the cost of copying spells into a spellbook."
 			]
@@ -3620,7 +3517,6 @@
 			"subclassSource": "UAThreeSubclasses",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Innovation is a dangerous practice, at least as far as members of this school practice it. As a shield against this risk, you have developed a suit of arcane armor.",
 				"Starting at 2nd level, you gain proficiency with light armor and gain a suit of arcanomechanical armor\u2014a magic item that only you can attune to. While you are attuned to it and wearing it, it grants you resistance to force damage.",
@@ -3638,7 +3534,6 @@
 			"subclassSource": "UAThreeSubclasses",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Starting at 2nd level, you can attempt to cast a spell you don't have prepared. When you use this ability, you use your action and choose one of the following options:",
 				{
@@ -3980,7 +3875,6 @@
 			"subclassSource": "UAThreeSubclasses",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"At 2nd level, you gain proficiency with two tools of your choice."
 			]
@@ -4065,7 +3959,6 @@
 			"subclassSource": "UAWarlockAndWizard",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"While the Spell Secrets feature offers increased versatility, at the table its effects can be difficult to spot by the other players. If you're playing a savant, take a moment to describe how you alter your spells. Think of a signature change your character is particularly proud of. Be inventive, and make the game more fun for everyone by playing up the sudden, unexpected tricks you character can employ. For example, a {@spell fireball} transformed to require a Strength save might become a sphere of burning rock that shatters and slams into its target. A {@spell charm person} that requires a Constitution save might take the form of a vaporous narcotic that alters the target's mood."
 			]
@@ -4080,7 +3973,6 @@
 			"subclassSource": "UAWarlockAndWizard",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Starting at 2nd level, you become a compendium of knowledge on a vast array of topics. Your proficiency bonus is doubled for any ability check you make that uses the {@skill Arcana}, {@skill History}, {@skill Nature}, or {@skill Religion} skill if you are proficient in that skill.",
 				"In addition, your analytical abilities are so well-honed that your initiative in combat can be driven by mental agility, rather than physical agility. When you roll initiative, it is either an Intelligence check or a Dexterity check for you (your choice)."
@@ -4096,7 +3988,6 @@
 			"subclassSource": "UAWarlockAndWizard",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"At 2nd level, you master the first in a series of arcane secrets uncovered by your extensive studies.",
 				"When you cast a spell with a spell slot and the spell deals acid, cold, fire, force, lightning, necrotic, radiant, or thunder damage, you can substitute that damage type with one other type from that list (you can change only one damage type per casting of a spell). You replace one energy type for another by altering the spell's formula as you cast it.",
@@ -4189,7 +4080,6 @@
 			"subclassSource": "UAWizardRevisited",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Beginning when you select this tradition at 2nd level, whenever you gain a wizard level, you can replace one of the wizard spells you add to your spellbook with a cleric domain spell for your chosen domain. The spell must be of a level for which you have spell slots.",
 				"If you add all of your domain spells to your spellbook, you can subsequently add any spell from the cleric spell list instead. The spell must still be of a level for which you have spell slots.",
@@ -4206,7 +4096,6 @@
 			"subclassSource": "UAWizardRevisited",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"At 2nd level, you gain the ability to channel arcane energy directly from your deity, using that energy to fuel magical effects. You start with two such effects: Divine Arcana and the Channel Divinity option granted at 2nd level by your chosen domain. You employ that Channel Divinity option by using your Channel Arcana ability.",
 				"When you use your Channel Arcana, you choose which effect to create. You must then finish a short or long rest to use your Channel Arcana again.",
@@ -4225,7 +4114,6 @@
 			"subclassSource": "UAWizardRevisited",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"As a bonus action, you speak a prayer to control the flow of magic around you. The next spell you cast gains a +2 bonus to any attack roll you make for it or to its saving throw DC, as appropriate."
 			]
@@ -4240,7 +4128,6 @@
 			"subclassSource": "UAWizardRevisited",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"When you choose this tradition at 2nd level, choose a domain from your chosen deity's list of eligible domains (see appendix B, \"Gods of the Multiverse,\" in the Player's Handbook for examples). The Knowledge and Light domains are especially appropriate choices for a theurgist."
 			]
@@ -4319,7 +4206,6 @@
 			"subclassSource": "UAWizardRevisited",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"At 2nd level, you have learned to weave your magic to fortify yourself against harm. When you are hit by an attack or fail a Constitution saving throw, you can use your reaction to gain a +2 bonus to your AC against that attack or a +4 bonus to that saving throw.",
 				"When you use this feature, you can't cast spells other than cantrips until the end of your next turn."
@@ -4335,7 +4221,6 @@
 			"subclassSource": "UAWizardRevisited",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Starting at 2nd level, your ability to quickly assess tactical situations allows you to act quickly in battle. You gain a bonus to your initiative rolls equal to your Intelligence modifier."
 			]
@@ -4416,7 +4301,6 @@
 			"subclassSource": "XGE",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"At 2nd level, you have learned to weave your magic to fortify yourself against harm. When you are hit by an attack or you fail a saving throw, you can use your reaction to gain a +2 bonus to your AC against that attack or a +4 bonus to that saving throw.",
 				"When you use this feature, you can't cast spells other than cantrips until the end of your next turn."
@@ -4432,7 +4316,6 @@
 			"subclassSource": "XGE",
 			"level": 2,
 			"header": 1,
-			"type": "entries",
 			"entries": [
 				"Starting at 2nd level, your keen ability to assess tactical situations allows you to act quickly in battle. You can give yourself a bonus to your initiative rolls equal to your Intelligence modifier."
 			]

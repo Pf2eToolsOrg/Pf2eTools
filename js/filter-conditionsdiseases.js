@@ -2,17 +2,20 @@
 
 class PageFilterConditionsDiseases extends PageFilter {
 	// region static
+	static getDisplayProp (prop) {
+		return prop === "status" ? "Other" : prop.uppercaseFirst();
+	}
 	// endregion
 
 	constructor () {
 		super();
 
-		this._sourceFilter = SourceFilter.getInstance();
+		this._sourceFilter = new SourceFilter();
 		this._typeFilter = new Filter({
 			header: "Type",
-			items: ["condition", "disease"],
-			displayFn: StrUtil.uppercaseFirst,
-			deselFn: (it) => it === "disease"
+			items: ["condition", "disease", "status"],
+			displayFn: PageFilterConditionsDiseases.getDisplayProp,
+			deselFn: (it) => it === "disease" || it === "status"
 		});
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
 	}

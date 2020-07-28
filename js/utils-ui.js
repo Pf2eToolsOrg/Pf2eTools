@@ -56,12 +56,14 @@ class ProxyBase {
 	_getProxy (hookProp, toProxy) {
 		return new Proxy(toProxy, {
 			set: (object, prop, value) => {
+				if (object[prop] === value) return true;
 				object[prop] = value;
 				if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, value));
 				if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, value));
 				return true;
 			},
 			deleteProperty: (object, prop) => {
+				if (!(prop in object)) return true;
 				delete object[prop];
 				if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, null));
 				if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, null));
@@ -168,6 +170,10 @@ class ProxyBase {
 			if (this.__hooks[hookProp] && this.__hooks[hookProp][k]) this.__hooks[hookProp][k].forEach(hk => hk(k, this[underProp][k]));
 		});
 	}
+
+	_proxyAssignSimple (hookProp, toObj, isOverwrite) {
+		return this._proxyAssign(hookProp, `_${hookProp}`, `__${hookProp}`, toObj, isOverwrite);
+	}
 }
 
 class UiUtil {
@@ -269,7 +275,7 @@ class UiUtil {
 		}
 	}
 
-	/** TODO simplify sizing options
+	/**
 	 * @param {Object} [opts] Options object.
 	 * @param {string} [opts.title] Modal title.
 	 *
@@ -296,6 +302,7 @@ class UiUtil {
 		opts = opts || {};
 
 		UiUtil._initModalEscapeHandler();
+		UiUtil._initModalMouseupHandlers();
 		$(document.activeElement).blur(); // blur any active element as it will be behind the modal
 
 		// if the user closed the modal by clicking the "cancel" background, isDataEntered is false
@@ -342,16 +349,12 @@ class UiUtil {
 			.appendTo($overlay);
 
 		$overlay
-			.contextmenu(evt => {
+			.mouseup(evt => {
 				if (evt.target !== $overlay[0]) return;
+				if (evt.target !== UiUtil._MODAL_LAST_MOUSEDOWN) return;
+				if (opts.isPermanent) return;
 				evt.stopPropagation();
 				evt.preventDefault();
-				if (opts.isPermanent) return;
-				return pHandleCloseClick(false);
-			})
-			.click(evt => {
-				if (evt.target !== $overlay[0]) return;
-				if (opts.isPermanent) return;
 				return pHandleCloseClick(false);
 			});
 
@@ -405,6 +408,12 @@ class UiUtil {
 			if (!outerModalMeta) return;
 			evt.stopPropagation();
 			if (!outerModalMeta.isPermanent) return outerModalMeta.pHandleCloseClick(false);
+		});
+	}
+
+	static _initModalMouseupHandlers () {
+		document.addEventListener("mousedown", evt => {
+			UiUtil._MODAL_LAST_MOUSEDOWN = evt.target;
 		});
 	}
 
@@ -497,6 +506,128 @@ class UiUtil {
 UiUtil.SEARCH_RESULTS_CAP = 75;
 UiUtil.TYPE_TIMEOUT_MS = 100; // auto-search after 100ms
 UiUtil._MODAL_STACK = null;
+UiUtil._MODAL_LAST_MOUSEDOWN = null;
+
+class ListUiUtil {
+	/**
+	 * (Public method for Plutonium use)
+	 * Handle doing a checkbox-based selection toggle on a list.
+	 * @param list
+	 * @param item List item. Must have a "data" property with a "cbSel" (the checkbox).
+	 * @param evt Click event.
+	 * @param [opts] Options object.
+	 * @param [opts.isNoHighlightSelection] If highlighting selected rows should be skipped.
+	 * @param [opts.fnOnSelectionChange] Function to call when selection status of an item changes.
+	 * @param [opts.fnGetCb] Function which gets the checkbox from a list item.
+	 */
+	static handleSelectClick (list, item, evt, opts) {
+		opts = opts || {};
+		evt.preventDefault();
+		evt.stopPropagation();
+
+		if (evt && evt.shiftKey && list.__firstListSelection) {
+			if (list.__lastListSelection === item) {
+				// on double-tapping the end of the selection, toggle it on/off
+
+				const cb = this._getCb(item, opts);
+				this._updateCb(item, opts, !cb.checked);
+			} else if (list.__firstListSelection === item && list.__lastListSelection) {
+				// If the item matches the last clicked, clear all checkboxes from our last selection
+
+				const ix1 = list.visibleItems.indexOf(list.__firstListSelection);
+				const ix2 = list.visibleItems.indexOf(list.__lastListSelection);
+
+				const [ixStart, ixEnd] = [ix1, ix2].sort(SortUtil.ascSort);
+				for (let i = ixStart; i <= ixEnd; ++i) {
+					const it = list.visibleItems[i];
+					this._updateCb(it, opts, false);
+				}
+
+				this._updateCb(item, opts);
+			} else {
+				// on a shift-click, toggle all the checkboxes to true...
+
+				const ix1 = list.visibleItems.indexOf(list.__firstListSelection);
+				const ix2 = list.visibleItems.indexOf(item);
+				const ix2Prev = list.__lastListSelection ? list.visibleItems.indexOf(list.__lastListSelection) : null;
+
+				const [ixStart, ixEnd] = [ix1, ix2].sort(SortUtil.ascSort);
+				for (let i = ixStart; i <= ixEnd; ++i) {
+					const it = list.visibleItems[i];
+					this._updateCb(it, opts);
+				}
+
+				// ...except those between the last selection and this selection, set those to false
+				if (ix2Prev != null) {
+					if (ix2Prev > ixEnd) {
+						for (let i = ixEnd + 1; i <= ix2Prev; ++i) {
+							const it = list.visibleItems[i];
+							this._updateCb(it, opts, false);
+						}
+					} else if (ix2Prev < ixStart) {
+						for (let i = ix2Prev; i < ixStart; ++i) {
+							const it = list.visibleItems[i];
+							this._updateCb(it, opts, false);
+						}
+					}
+				}
+			}
+
+			list.__lastListSelection = item;
+		} else {
+			// on a normal click, or if there's been no initial selection, just toggle the checkbox
+
+			const cbMaster = this._getCb(item, opts);
+			if (cbMaster) {
+				cbMaster.checked = !cbMaster.checked;
+
+				if (opts.fnOnSelectionChange) opts.fnOnSelectionChange(item, cbMaster.checked);
+
+				if (!opts.isNoHighlightSelection) {
+					if (cbMaster.checked) item.ele.classList.add("list-multi-selected");
+					else item.ele.classList.remove("list-multi-selected");
+				}
+			} else {
+				if (!opts.isNoHighlightSelection) {
+					item.ele.classList.remove("list-multi-selected");
+				}
+			}
+
+			list.__firstListSelection = item;
+			list.__lastListSelection = null;
+		}
+	}
+
+	static _getCb (item, opts) { return opts.fnGetCb ? opts.fnGetCb(item) : item.data.cbSel; }
+
+	static _updateCb (item, opts, toVal = true) {
+		const cbSlave = this._getCb(item, opts);
+		if (cbSlave) {
+			cbSlave.checked = toVal;
+			if (opts.fnOnSelectionChange) opts.fnOnSelectionChange(item, toVal);
+		}
+
+		if (!opts.isNoHighlightSelection) {
+			if (toVal) item.ele.classList.add("list-multi-selected");
+			else item.ele.classList.remove("list-multi-selected");
+		}
+	}
+
+	/**
+	 * (Public method for Plutonium use)
+	 */
+	static bindSelectAllCheckbox ($cbAll, list) {
+		$cbAll.change(() => {
+			const isChecked = $cbAll.prop("checked");
+			list.visibleItems.forEach(it => {
+				if (it.data.cbSel) it.data.cbSel.checked = isChecked;
+
+				if (isChecked) it.ele.classList.add("list-multi-selected");
+				else it.ele.classList.remove("list-multi-selected");
+			});
+		});
+	}
+}
 
 class ProfUiUtil {
 	/**
@@ -818,7 +949,7 @@ class SearchWidget {
 	 * @param options.defaultCategory Default search category.
 	 * @param options.fnFilterResults Function which takes a document and returns false if it is to be filtered out of the results.
 	 * @param options.searchOptions Override for default elasticlunr search options.
-	 * @param options.fnTransform Function which transforms the document before passing it back to cbSearch/
+	 * @param options.fnTransform Function which transforms the document before passing it back to cbSearch.
 	 */
 	constructor (indexes, cbSearch, options) {
 		options = options || {};
@@ -2315,7 +2446,7 @@ class BaseComponent extends ProxyBase {
 	 * Asynchronous version available below.
 	 * @param opts Options object.
 	 * @param opts.prop The state property.
-	 * @param opts.fnDeleteExisting Function to run on deleted render meta. Arguments are `rendered, item`.
+	 * @param [opts.fnDeleteExisting] Function to run on deleted render meta. Arguments are `rendered, item`.
 	 * @param opts.fnUpdateExisting Function to run on existing render meta. Arguments are `rendered, item`.
 	 * @param opts.fnGetNew Function to run which generates existing render meta. Arguments are `item`.
 	 * @param [opts.isDiffMode] If a diff of the state should be taken/checked before updating renders.
@@ -2347,6 +2478,10 @@ class BaseComponent extends ProxyBase {
 				opts.fnUpdateExisting(meta, it, i);
 			} else {
 				const meta = opts.fnGetNew(it, i);
+
+				// If the "get new" function returns null, skip rendering this entity
+				if (meta == null) return;
+
 				meta.data = it;
 				if (!meta.$wrpRow) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
 
@@ -2516,6 +2651,97 @@ class BaseComponent extends ProxyBase {
 			if (v != null && v instanceof Array && v.every(it => it && it.id)) cpy[k] = BaseComponent._fromCollection(v);
 		});
 		return cpy;
+	}
+}
+
+class RenderableCollectionBase {
+	/**
+	 * @param comp
+	 * @param prop
+	 * @param [opts]
+	 * @param [opts.namespace]
+	 * @param [opts.isDiffMode]
+	 */
+	constructor (comp, prop, opts) {
+		opts = opts || {};
+		this._comp = comp;
+		this._prop = prop;
+		this._namespace = opts.namespace;
+		this._isDiffMode = opts.isDiffMode;
+	}
+
+	getNewRender (entity, i) {
+		throw new Error(`Unimplemented!`);
+	}
+
+	doUpdateExistingRender (renderedMeta, entity, i) {
+		throw new Error(`Unimplemented!`);
+	}
+
+	doDeleteExistingRender (renderedMeta) {
+		// No-op
+	}
+
+	/**
+	 * @param [opts] Temporary override options.
+	 * @param [opts.isDiffMode]
+	 */
+	render (opts) {
+		opts = opts || {};
+		this._comp._renderCollection({
+			prop: this._prop,
+			fnUpdateExisting: (rendered, source, i) => this.doUpdateExistingRender(rendered, source, i),
+			fnGetNew: (entity, i) => this.getNewRender(entity, i),
+			fnDeleteExisting: (rendered) => this.doDeleteExistingRender(rendered),
+			namespace: this._namespace,
+			isDiffMode: opts.isDiffMode != null ? opts.isDiffMode : this._isDiffMode
+		});
+	}
+}
+
+class RenderableCollectionAsyncBase {
+	/**
+	 * @param comp
+	 * @param prop
+	 * @param [opts]
+	 * @param [opts.namespace]
+	 * @param [opts.isDiffMode]
+	 * @param [opts.isMultiRender]
+	 * @param [opts.additionalCaches]
+	 */
+	constructor (comp, prop, opts) {
+		opts = opts || {};
+		this._comp = comp;
+		this._prop = prop;
+		this._namespace = opts.namespace;
+		this._isDiffMode = opts.isDiffMode;
+		this._isMultiRender = opts.isMultiRender;
+		this._additionalCaches = opts.additionalCaches;
+	}
+
+	pGetNewRender (entity, i) {
+		throw new Error(`Unimplemented!`);
+	}
+
+	pDoUpdateExistingRender (renderedMeta, entity, i) {
+		throw new Error(`Unimplemented!`);
+	}
+
+	/**
+	 * @param [opts] Temporary override options.
+	 * @param [opts.isDiffMode]
+	 */
+	render (opts) {
+		opts = opts || {};
+		this._comp._pRenderCollection({
+			prop: this._prop,
+			fnUpdateExisting: (rendered, source, i) => this.pGetNewRender(rendered, source, i),
+			fnGetNew: (entity, i) => this.pDoUpdateExistingRender(entity, i),
+			namespace: this._namespace,
+			isDiffMode: opts.isDiffMode != null ? opts.isDiffMode : this._isDiffMode,
+			isMultiRender: this._isMultiRender,
+			additionalCaches: this._additionalCaches
+		});
 	}
 }
 
@@ -2754,7 +2980,10 @@ class ComponentUiUtil {
 	 * @param [opts.padLength] Number of digits to pad the number to.
 	 * @param [opts.fallbackOnNaN] Return value if not a number.
 	 * @param [opts.isAllowNull] If an empty input should be treated as null.
+	 * @param [opts.asMeta] If a meta-object should be returned containing the hook and the checkbox.
 	 * @param [opts.hookTracker] Object in which to track hook.
+	 * @param [opts.decorationLeft] Decoration to be added to the left-hand-side of the input. Can be `"ticker"` or `"clear"`. REQUIRES `asMeta` TO BE SET.
+	 * @param [opts.decorationRight] Decoration to be added to the right-hand-side of the input. Can be `"ticker"` or `"clear"`. REQUIRES `asMeta` TO BE SET.
 	 * @return {JQuery}
 	 */
 	static $getIptInt (component, prop, fallbackEmpty = 0, opts) {
@@ -2774,6 +3003,9 @@ class ComponentUiUtil {
 	 * @param [opts.padLength] Number of digits to pad the number to.
 	 * @param [opts.fallbackOnNaN] Return value if not a number.
 	 * @param [opts.isAllowNull] If an empty input should be treated as null.
+	 * @param [opts.asMeta] If a meta-object should be returned containing the hook and the checkbox.
+	 * @param [opts.decorationLeft] Decoration to be added to the left-hand-side of the input. Can be `"ticker"` or `"clear"`. REQUIRES `asMeta` TO BE SET.
+	 * @param [opts.decorationRight] Decoration to be added to the right-hand-side of the input. Can be `"ticker"` or `"clear"`. REQUIRES `asMeta` TO BE SET.
 	 * @return {JQuery}
 	 */
 	static $getIptNumber (component, prop, fallbackEmpty = 0, opts) {
@@ -2818,7 +3050,9 @@ class ComponentUiUtil {
 		if (opts.hookTracker) ComponentUiUtil.trackHook(opts.hookTracker, prop, hook);
 		component._addHookBase(prop, hook);
 		hook();
-		return $ipt;
+
+		if (opts.asMeta) return this._getIptDecoratedMeta(component, prop, $ipt, hook, opts);
+		else return $ipt;
 	}
 
 	/**
@@ -2860,38 +3094,73 @@ class ComponentUiUtil {
 		component._addHookBase(prop, hook);
 		hook();
 
-		if (opts.asMeta) {
-			const out = {$ipt, unhook: () => component._removeHookBase(prop, hook)};
-
-			if (opts.decorationLeft || opts.decorationRight) {
-				let $decorLeft;
-				let $decorRight;
-
-				if (opts.decorationLeft) {
-					$ipt.addClass(`ui__ipt-decorated--left`);
-					$decorLeft = ComponentUiUtil._$getDecor($ipt, opts.decorationLeft, "left");
-				}
-
-				if (opts.decorationRight) {
-					$ipt.addClass(`ui__ipt-decorated--right`);
-					$decorRight = ComponentUiUtil._$getDecor($ipt, opts.decorationRight, "right");
-				}
-
-				out.$wrp = $$`<div class="relative w-100">${$ipt}${$decorLeft}${$decorRight}</div>`
-			}
-
-			return out;
-		} else return $ipt;
+		if (opts.asMeta) return this._getIptDecoratedMeta(component, prop, $ipt, hook, opts);
+		else return $ipt;
 	}
 
-	static _$getDecor ($ipt, decorType, side) {
+	static _getIptDecoratedMeta (component, prop, $ipt, hook, opts) {
+		const out = {$ipt, unhook: () => component._removeHookBase(prop, hook)};
+
+		if (opts.decorationLeft || opts.decorationRight) {
+			let $decorLeft;
+			let $decorRight;
+
+			if (opts.decorationLeft) {
+				$ipt.addClass(`ui-ideco__ipt ui-ideco__ipt--left`);
+				$decorLeft = ComponentUiUtil._$getDecor(component, prop, $ipt, opts.decorationLeft, "left", opts);
+			}
+
+			if (opts.decorationRight) {
+				$ipt.addClass(`ui-ideco__ipt ui-ideco__ipt--right`);
+				$decorRight = ComponentUiUtil._$getDecor(component, prop, $ipt, opts.decorationRight, "right", opts);
+			}
+
+			out.$wrp = $$`<div class="relative w-100">${$ipt}${$decorLeft}${$decorRight}</div>`
+		}
+
+		return out;
+	}
+
+	static _$getDecor (component, prop, $ipt, decorType, side, opts) {
 		switch (decorType) {
 			case "search": {
-				return $(`<div class="ui__ipt-decoration ui__ipt-decoration--${side} no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>`);
+				return $(`<div class="ui-ideco__wrp ui-ideco__wrp--${side} no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>`);
 			}
 			case "clear": {
-				return $(`<div class="ui__ipt-decoration ui__ipt-decoration--${side} flex-vh-center clickable" title="Clear"><span class="glyphicon glyphicon-remove"></span></div>`)
+				return $(`<div class="ui-ideco__wrp ui-ideco__wrp--${side} flex-vh-center clickable" title="Clear"><span class="glyphicon glyphicon-remove"></span></div>`)
 					.click(() => $ipt.val("").change().keydown().keyup());
+			}
+			case "ticker": {
+				const isValidValue = val => {
+					if (opts.max != null && val > opts.max) return false;
+					if (opts.min != null && val < opts.min) return false;
+					return true;
+				};
+
+				const handleClick = (delta) => {
+					// TODO(future) this should be run first to evaluate any lingering expressions in the input, but it
+					//  breaks when the number is negative, as we need to add a "=" to the front of the input before
+					//  evaluating
+					// $ipt.change();
+					const nxt = component._state[prop] + delta;
+					if (!isValidValue(nxt)) return;
+					component._state[prop] = nxt;
+					$ipt.focus();
+				};
+
+				const $btnUp = $(`<button class="btn btn-default ui-ideco__btn-ticker bold unselectable">+</button>`)
+					.click(() => handleClick(1));
+
+				const $btnDown = $(`<button class="btn btn-default ui-ideco__btn-ticker bold unselectable">\u2012</button>`)
+					.click(() => handleClick(-1));
+
+				return $$`<div class="ui-ideco__wrp ui-ideco__wrp--${side} flex-vh-center flex-col">
+					${$btnUp}
+					${$btnDown}
+				</div>`;
+			}
+			case "spacer": {
+				return "";
 			}
 			default: throw new Error(`Unimplemented!`);
 		}
@@ -2924,7 +3193,7 @@ class ComponentUiUtil {
 	static $getIptColor (component, prop, opts) {
 		opts = opts || {};
 
-		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal" type="color">`))
+		const $ipt = (opts.$ele || $(`<input class="form-control input-xs form-control--minimal ui__ipt-color" type="color">`))
 			.change(() => component._state[prop] = $ipt.val());
 		const hook = () => $ipt.val(component._state[prop]);
 		component._addHookBase(prop, hook);
@@ -3042,12 +3311,10 @@ class ComponentUiUtil {
 		const initialVals = opts.values
 			.mergeMap(v => ({[v]: component._state[prop] && component._state[prop].includes(v)}));
 
-		const contextId = ContextUtil.getNextGenericMenuId();
-		const contextOptions = opts.values.map(it => new ContextUtil.Action(
+		const menu = ContextUtil.getMenu(opts.values.map(it => new ContextUtil.Action(
 			opts.fnDisplay ? opts.fnDisplay(it) : it,
 			() => pickComp.getPod().set(it, true)
-		));
-		ContextUtil.doInitActionContextMenu(contextId, contextOptions);
+		)));
 
 		const pickComp = BaseComponent.fromObject(initialVals);
 		pickComp.render = function ($parent) {
@@ -3063,7 +3330,7 @@ class ComponentUiUtil {
 		};
 
 		const $btnAdd = $(`<button class="btn btn-xxs btn-default ui-pick__btn-add mb-1">+</button>`)
-			.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnAdd, contextId));
+			.click(evt => ContextUtil.pOpenMenu(evt, menu));
 
 		const $wrpPills = $(`<div class="flex flex-wrap w-100"></div>`);
 		const $wrp = $$`<div class="flex-v-center">${$btnAdd}${$wrpPills}</div>`;
@@ -3123,6 +3390,7 @@ if (typeof module !== "undefined") {
 	module.exports = {
 		ProxyBase,
 		UiUtil,
+		ListUiUtil,
 		ProfUiUtil,
 		TabUiUtil,
 		SearchUiUtil,
@@ -3131,6 +3399,7 @@ if (typeof module !== "undefined") {
 		DragReorderUiUtil,
 		SourceUiUtil,
 		BaseComponent,
-		ComponentUiUtil
+		ComponentUiUtil,
+		RenderableCollectionBase
 	}
 }

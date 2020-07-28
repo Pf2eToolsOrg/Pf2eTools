@@ -429,7 +429,7 @@ class Builder extends ProxyBase {
 		this._$sideMenuStageSaved.toggle(!!toList.length);
 
 		toList.forEach(entry => {
-			const ixBrew = BrewUtil.getEntryIxByName(this._prop, entry);
+			const ixBrew = BrewUtil.getEntryIxByEntry(this._prop, entry);
 
 			const $btnEdit = $(`<button class="btn btn-xs btn-default mr-2" title="Edit"><span class="glyphicon glyphicon-pencil"/></button>`)
 				.click(() => {
@@ -440,8 +440,7 @@ class Builder extends ProxyBase {
 					this.doUiSave();
 				});
 
-			const contextId = ContextUtil.getNextGenericMenuId();
-			const _CONTEXT_OPTIONS = [
+			const menu = ContextUtil.getMenu([
 				new ContextUtil.Action(
 					"Duplicate",
 					async () => {
@@ -486,11 +485,10 @@ class Builder extends ProxyBase {
 					it.name,
 					(evt) => it.pAction(evt, entry)
 				))
-			];
-			ContextUtil.doInitActionContextMenu(contextId, _CONTEXT_OPTIONS);
+			]);
 
 			const $btnBurger = $(`<button class="btn btn-xs btn-default mr-2" title="More Options"><span class="glyphicon glyphicon-option-vertical"/></button>`)
-				.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnBurger, contextId));
+				.click(evt => ContextUtil.pOpenMenu(evt, menu));
 
 			const $btnDelete = $(`<button class="btn btn-xs btn-danger" title="Delete"><span class="glyphicon glyphicon-trash"/></button>`)
 				.click(async () => {

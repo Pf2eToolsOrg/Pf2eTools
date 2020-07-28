@@ -13,7 +13,7 @@ class ConditionsDiseasesPage extends ListPage {
 
 			sublistClass: "subconditions",
 
-			dataProps: ["condition", "disease"]
+			dataProps: ["condition", "disease", "status"]
 		});
 	}
 
@@ -27,7 +27,7 @@ class ConditionsDiseasesPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="col-3 text-center pl-0">${StrUtil.uppercaseFirst(it.__prop)}</span>
+			<span class="col-3 text-center pl-0">${PageFilterConditionsDiseases.getDisplayProp(it.__prop)}</span>
 			<span class="bold col-7">${it.name}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
@@ -64,7 +64,7 @@ class ConditionsDiseasesPage extends ListPage {
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="col-2 pl-0 text-center">${it.__prop.uppercaseFirst()}</span>
+				<span class="col-2 pl-0 text-center">${PageFilterConditionsDiseases.getDisplayProp(it.__prop)}</span>
 				<span class="bold col-10 pr-0">${it.name}</span>
 			</a>
 		</li>`)

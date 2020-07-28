@@ -37,6 +37,7 @@
 $pct-darken-active: 10%;
 $pct-darken-border: 15%;
 $pct-darken-border--active: 20%;
+$pct-darken-hover: 5%;
 
 $sz-y-header: 73px;
 
@@ -71,15 +72,22 @@ $rgb-border-grey--trans-night: #555555a0;
 
 $rgb-modal-overlay-grey: #45454588;
 $rgb-shadow-grey: rgba(0, 0, 0, 0.175);
-$rgb-shadow-grey-dark: rgba(0, 0, 0, 0.475);
+$rgb-shadow-grey--dark: rgba(0, 0, 0, 0.475);
 
 $rgb-stripe-grey: #88888818;
 $rgb-stripe-grey--faint: #bbbbbb18;
 $rgb-stripe-grey--night: #aaa4;
 
-$rgb-font--night: #bbb;
+$rgb-bg: white;
+$rgb-bg--alt: whitesmoke;
+
 $rgb-bg--night: #222;
+$rgb-bg--alt-night: #383838;
+
 $rgb-bg-highlight--night: #cc0;
+$rgb-font: #333;
+$rgb-font--muted: #777;
+$rgb-font--night: #bbb;
 
 $rgb-form-control-bg--night: #222;
 
@@ -138,6 +146,8 @@ $z-rollerbox-active: 110;
 // Z-indices 200-300 reserved for hover windows
 $z-hwin: 200;
 
+$z-search: 900;
+
 $z-modal-wrapper: 1000;
 $z-modal-inner: 1001;
 $z-modal-legal: 1000;
@@ -156,8 +166,24 @@ $time-4-frames: 67ms;
 $time-5-frames: 84ms;
 /* endregion */
 
+// region Widths
+$w-ipt-number-1-digit: 24px;
+$w-ipt-number-1-5-digit: 30px;
+$w-ipt-number-2-digit: 40px;
+$w-ipt-number-3-digit: 60px;
+$w-ipt-number-4-digit: 80px;
+// endregion
+
 @mixin shadow-1 () {
 	box-shadow: 0 6px 12px $rgb-shadow-grey;
+}
+
+@mixin shadow-1--dark () {
+	box-shadow: 0 6px 12px $rgb-shadow-grey--dark;
+}
+
+@mixin shadow-2 () {
+	box-shadow: 0 3px 6px $rgb-shadow-grey;
 }
 
 @mixin shadow-active {

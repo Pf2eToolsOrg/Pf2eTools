@@ -177,7 +177,6 @@
 			"name": "Akmon, Hammer of Purphoros",
 			"source": "MOT",
 			"page": 198,
-			"srd": true,
 			"baseItem": "warhammer|PHB",
 			"type": "M",
 			"rarity": "artifact",
@@ -985,7 +984,7 @@
 			]
 		},
 		{
-			"name": "Assassin's Blood (Ingested)",
+			"name": "Assassin's Blood",
 			"source": "DMG",
 			"page": 258,
 			"srd": true,
@@ -995,6 +994,9 @@
 			"poison": true,
 			"entries": [
 				"A creature subjected to this poison must make a DC 10 Constitution saving throw. On a failed save, it takes 6 ({@dice 1d12}) poison damage and is {@condition poisoned} for 24 hours. On a successful save, the creature takes half damage and isn't {@condition poisoned}."
+			],
+			"poisonTypes": [
+				"ingested"
 			]
 		},
 		{
@@ -3028,7 +3030,7 @@
 			]
 		},
 		{
-			"name": "Blood of the Lycanthrope (Injury)",
+			"name": "Blood of the Lycanthrope",
 			"source": "IMR",
 			"page": 93,
 			"rarity": "none",
@@ -3061,6 +3063,9 @@
 						]
 					]
 				}
+			],
+			"poisonTypes": [
+				"injury"
 			]
 		},
 		{
@@ -4073,7 +4078,7 @@
 			]
 		},
 		{
-			"name": "Burnt Othur Fumes (Inhaled)",
+			"name": "Burnt Othur Fumes",
 			"source": "DMG",
 			"page": 258,
 			"srd": true,
@@ -4083,6 +4088,9 @@
 			"poison": true,
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or take 10 ({@dice 3d6}) poison damage, and must repeat the saving throw at the start of each of its turns. On each successive failed save, the character takes 3 ({@dice 1d6}) poison damage. After three successful saves, the poison ends."
+			],
+			"poisonTypes": [
+				"inhaled"
 			]
 		},
 		{
@@ -4342,6 +4350,9 @@
 			"rarity": "none",
 			"weight": 100,
 			"value": 5000,
+			"crew": 1,
+			"vehAc": 11,
+			"vehHp": 50,
 			"vehSpeed": 2,
 			"capPassenger": 6,
 			"entries": [
@@ -4562,7 +4573,7 @@
 			"value": 10000
 		},
 		{
-			"name": "Carrion Crawler Mucus (Contact)",
+			"name": "Carrion Crawler Mucus",
 			"source": "DMG",
 			"page": 258,
 			"srd": "Crawler Mucus (Contact)",
@@ -4573,6 +4584,9 @@
 			"poison": true,
 			"entries": [
 				"This poison must be harvested from a dead or {@condition incapacitated} {@creature carrion crawler}. A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or be {@condition poisoned} for 1 minute. The {@condition poisoned} creature is {@condition paralyzed}. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+			],
+			"poisonTypes": [
+				"contact"
 			]
 		},
 		{
@@ -6157,8 +6171,7 @@
 			"name": "Dancing Monkey Fruit",
 			"source": "ToA",
 			"page": 205,
-			"type": "G",
-			"rarity": "unknown",
+			"rarity": "unknown (magic)",
 			"value": 500,
 			"entries": [
 				"This rare magical fruit produces enough juice to fill a vial. Any humanoid that eats a dancing monkey fruit or drinks its juice must succeed on a DC 14 Constitution saving throw or begin a comic dance that lasts for 1 minute. Humanoids that can't be {@condition poisoned} are immune to this magical effect.",
@@ -7391,7 +7404,6 @@
 			"name": "Dekella, Bident of Thassa",
 			"source": "MOT",
 			"page": 199,
-			"srd": true,
 			"baseItem": "trident|PHB",
 			"type": "M",
 			"rarity": "artifact",
@@ -8253,7 +8265,7 @@
 			]
 		},
 		{
-			"name": "Drow Poison (Injury)",
+			"name": "Drow Poison",
 			"source": "DMG",
 			"page": 258,
 			"srd": true,
@@ -8263,6 +8275,9 @@
 			"poison": true,
 			"entries": [
 				"This poison is typically made only by the {@creature drow}, and only in a place far removed from sunlight. A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or be {@condition poisoned} for 1 hour. If the saving throw fails by 5 or more, the creature is also {@condition unconscious} while {@condition poisoned} in this way. The creature wakes up if it takes damage or if another creature takes an action to shake it awake."
+			],
+			"poisonTypes": [
+				"injury"
 			]
 		},
 		{
@@ -8474,13 +8489,16 @@
 			]
 		},
 		{
-			"name": "Dust of the Mummy (Inhaled)",
+			"name": "Dust of the Mummy",
 			"source": "IMR",
 			"page": 93,
 			"rarity": "none",
 			"poison": true,
 			"entries": [
 				"This poison is created during a mummy's embalming process, distilled from the dead creature's removed organs. A creature subjected to this poison must succeed on a DC 12 Constitution saving throw or be cursed with mummy rot. The cursed creature can't regain hit points, and its hit point maximum decreases by 10 (3d6) for every 24 hours that elapse. If the curse reduces the creature's hit point maximum to 0, the creature dies, and its body turns to dust. The curse lasts until removed by the {@spell remove curse} spell or similar magic."
+			],
+			"poisonTypes": [
+				"inhaled"
 			]
 		},
 		{
@@ -9033,7 +9051,6 @@
 			"name": "Ephixis, Bow of Nylea",
 			"source": "MOT",
 			"page": 200,
-			"srd": true,
 			"baseItem": "shortbow|PHB",
 			"type": "R",
 			"rarity": "artifact",
@@ -9147,7 +9164,7 @@
 			]
 		},
 		{
-			"name": "Essence of Ether (Inhaled)",
+			"name": "Essence of Ether",
 			"source": "DMG",
 			"page": 258,
 			"srd": true,
@@ -9157,6 +9174,9 @@
 			"poison": true,
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 15 Constitution saving throw or become {@condition poisoned} for 8 hours. The {@condition poisoned} creature is {@condition unconscious}. The creature wakes up if it takes damage or if another creature takes an action to shake it awake."
+			],
+			"poisonTypes": [
+				"inhaled"
 			]
 		},
 		{
@@ -13882,7 +13902,6 @@
 			"name": "Khrusor, Spear of Heliod",
 			"source": "MOT",
 			"page": 200,
-			"srd": true,
 			"baseItem": "spear|PHB",
 			"type": "M",
 			"rarity": "artifact",
@@ -14627,7 +14646,7 @@
 			"weight": 1,
 			"value": 1000,
 			"entries": [
-				"A key is provided with the lock. Without the key, a creature proficient with thieves' tools can pick this lock with a successful DC 15 Dexterity check. Your DM may decide that better locks are available for higher prices."
+				"A key is provided with the lock. Without the key, a creature proficient with {@item thieves' tools|phb} can pick this lock with a successful DC 15 Dexterity check. Your DM may decide that better locks are available for higher prices."
 			]
 		},
 		{
@@ -15020,7 +15039,7 @@
 			]
 		},
 		{
-			"name": "Malice (Inhaled)",
+			"name": "Malice",
 			"source": "DMG",
 			"page": 258,
 			"srd": true,
@@ -15030,6 +15049,9 @@
 			"poison": true,
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 15 Constitution saving throw or become {@condition poisoned} for 1 hour. The {@condition poisoned} creature is {@condition blinded}."
+			],
+			"poisonTypes": [
+				"inhaled"
 			]
 		},
 		{
@@ -15360,7 +15382,6 @@
 			"name": "Mastix, Whip of Erebos",
 			"source": "MOT",
 			"page": 201,
-			"srd": true,
 			"baseItem": "whip|PHB",
 			"type": "M",
 			"rarity": "artifact",
@@ -15526,7 +15547,7 @@
 			]
 		},
 		{
-			"name": "Midnight Tears (Ingested)",
+			"name": "Midnight Tears",
 			"source": "DMG",
 			"page": 258,
 			"srd": true,
@@ -15536,6 +15557,9 @@
 			"poison": true,
 			"entries": [
 				"A creature that ingests this poison suffers no effect until the stroke of midnight. If the poison has not been neutralized before then, the creature must succeed on a DC 17 Constitution saving throw, taking 31 ({@dice 9d6}) poison damage on a failed save, or half as much damage on a successful one."
+			],
+			"poisonTypes": [
+				"ingested"
 			]
 		},
 		{
@@ -16689,7 +16713,7 @@
 			]
 		},
 		{
-			"name": "Oil of Taggit (Contact)",
+			"name": "Oil of Taggit",
 			"source": "DMG",
 			"page": 258,
 			"srd": true,
@@ -16699,6 +16723,9 @@
 			"poison": true,
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 13 Constitution saving throw or become {@condition poisoned} for 24 hours. The {@condition poisoned} creature is {@condition unconscious}. The creature wakes up if it takes damage."
+			],
+			"poisonTypes": [
+				"contact"
 			]
 		},
 		{
@@ -16793,6 +16820,61 @@
 								}
 							]
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Opal of the Ild Rune",
+			"source": "UAPrestigeClassesRunMagic",
+			"page": 4,
+			"type": "MR",
+			"rarity": "rare",
+			"reqAttune": true,
+			"entries": [
+				"This triangular fire opal measures about three inches on each side and is half an inch thick. The ild rune\u2014the rune of fire\u2014shimmers within its core. Grasping this object causes a split second of searing, fiery pain to pass through you. That pain quickly fades, giving way to a warming glow.",
+				{
+					"type": "entries",
+					"name": "Ignite (Simple Property)",
+					"entries": [
+						"As an action, you scribe the ild rune using ash onto a flammable object. That object immediately bursts into flame. While it burns, the fire extends 1 foot out from the rune you scribed."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Fire Tamer (Simple Property)",
+					"entries": [
+						"As an action, you touch an open flame and scribe the ild rune within it with a hand motion. This causes the flame to immediately extinguish. For a large blaze, the fire is extinguished in a 10-foot radius around you. You can extend this distance by expending a spell slot when using the ild rune in this manner. The radius extends by 20 feet per level of the expended spell slot."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Fire's Friend (Simple Property)",
+					"entries": [
+						"While you are attuned to this rune, you have resistance to cold damage."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Combustion (Complex Property)",
+					"entries": [
+						"As an action, you scribe this rune using ash onto a creature within your reach as you expend a spell slot. The creature automatically takes {@damage 1d10} fire damage plus {@damage 1d10} fire damage per level of the expended spell slot."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Flame Brand (Complex Property)",
+					"entries": [
+						"Over the course of a short rest, you inscribe this rune using ash onto a melee or ranged weapon, or onto up to 20 pieces of ammunition. The weapon or ammunition gains a ghostly aura of yellow flame and deals fire damage instead of piercing, slashing, or bludgeoning damage.",
+						"In addition, you can expend a spell slot while using this property to grant the weapon or ammunition a bonus to attack rolls and damage rolls equal to the spell slot's level divided by three.",
+						"These effects last for 24 hours or until you use this property again."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Flame Stoker (Complex Property)",
+					"entries": [
+						"While you are attuned to this rune, your fire attacks are deadlier. Whenever you roll fire damage from an attack or a spell you cast, you can reroll that damage and use the higher result."
 					]
 				}
 			]
@@ -16940,6 +17022,61 @@
 			],
 			"attachedSpells": [
 				"meld into stone"
+			]
+		},
+		{
+			"name": "Orb of the Stein Rune",
+			"source": "UAPrestigeClassesRunMagic",
+			"page": 5,
+			"type": "MR",
+			"rarity": "rare",
+			"reqAttune": true,
+			"entries": [
+				"This spherical chunk of granite is about the size of a human fist. The stein rune\u2014the rune of stone\u2014appears on the orb as crystalline veins that play across its surface. When first grasped, the stone feels impossibly heavy, as if even a titan could not lift it. That feeling passes after a moment, allowing you to carry the stone with ease.",
+				{
+					"type": "entries",
+					"name": "Indomitable Stand (Simple Property)",
+					"entries": [
+						"As an action, you scribe the stein rune onto the ground at your feet. Until you move, you have advantage on all ability checks and saving throws to resist effects that would force you to move. In addition, any creature that moves within 10 feet of you must succeed on a DC 12 Strength saving throw or have its movement immediately end."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Stone Soul (Simple Property)",
+					"entries": [
+						"While you are attuned to this rune, you cannot be {@condition petrified}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Stone's Secrets (Simple Property)",
+					"entries": [
+						"As an action, you scribe this rune onto a stone wall or floor. You learn the location and size of all creatures standing on or touching that surface within 30 feet of you, though only for the moment when the property is used."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Crushing Brand (Complex Property)",
+					"entries": [
+						"Over the course of a short rest, you inscribe this rune using dirt or crushed stone onto one weapon that deals bludgeoning damage. The weapon gains a ghostly brown aura, and bludgeoning damage dealt by the weapon ignores resistance and immunity. If you roll the maximum on the weapon's damage die or dice, the target of your attack is knocked {@condition prone} if it is a creature.",
+						"In addition, you can expend a spell slot to grant the weapon a bonus to attack rolls and damage rolls equal to the spell slot's level divided by three.",
+						"These effects last for 24 hours or until you use this property again."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Earthen Step (Complex Property)",
+					"entries": [
+						"While you are attuned to this rune, you can cast meld into stone as a bonus action. You regain this ability after a short or long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Overwhelming Bolt (Complex Property)",
+					"entries": [
+						"As an action, you scribe this rune using dirt or crushed rock onto a creature within your reach as you expend a spell slot. The creature must succeed on a Strength saving throw (DC 12 + the level of the expended spell slot). On a failure, the creature takes {@damage 2d8} bludgeoning damage plus {@damage 1d8} bludgeoning damage per level of the expended spell slot and is knocked {@condition prone}. On a successful saving throw, the creature takes half as much damage and is not knocked {@condition prone}."
+					]
+				}
 			]
 		},
 		{
@@ -17292,7 +17429,7 @@
 			"value": 2500
 		},
 		{
-			"name": "Pale Tincture (Ingested)",
+			"name": "Pale Tincture",
 			"source": "DMG",
 			"page": 258,
 			"srd": true,
@@ -17302,6 +17439,9 @@
 			"poison": true,
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 16 Constitution saving throw or take 3 ({@dice 1d6}) poison damage and become {@condition poisoned}. The {@condition poisoned} creature must repeat the saving throw every 24 hours, taking 3 ({@dice 1d6}) poison damage on a failed save. Until this poison ends, the damage the poison deals can't be healed by any means. After seven successful saving throws, the effect ends and the creature can heal normally."
+			],
+			"poisonTypes": [
+				"ingested"
 			]
 		},
 		{
@@ -17489,6 +17629,61 @@
 			"attachedSpells": [
 				"levitate",
 				"feather fall"
+			]
+		},
+		{
+			"name": "Pennant of the Vind Rune",
+			"source": "UAPrestigeClassesRunMagic",
+			"page": 5,
+			"type": "MR",
+			"rarity": "rare",
+			"reqAttune": true,
+			"entries": [
+				"This five-foot-long blue pennant is crafted from silk and whips about as if buffeted by a strong breeze. The vind rune\u2014the rune of wind\u2014flickers across its surface like a shimmering cloud. Grasping the pennant causes you to feel a powerful gust of wind wash over you, tearing at your clothes and gear. Anyone watching you sees nothing out of the ordinary, and the sensation passes after a moment.",
+				{
+					"type": "entries",
+					"name": "Comforting Wind (Simple Property)",
+					"entries": [
+						"While you are attuned to this rune, you cannot suffocate or drown, and you gain advantage on saving throws against poisonous gases, inhaled poisons, and similar effects."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Wind Step (Simple Property)",
+					"entries": [
+						"As an action, you scribe the vind rune in the air around you and immediately fly 20 feet. If you do not land at the end of this flight, you fall."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Wind's Grasp (Simple Property)",
+					"entries": [
+						"As a reaction when you fall, you can scribe this rune in the air around you to take no damage from the fall."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Howling Brand (Complex Property)",
+					"entries": [
+						"Over the course of a short rest, you inscribe this rune in the air above one ranged weapon. The weapon gains a ghostly blue aura and has its normal and maximum range doubled. The weapon's attacks do not suffer disadvantage due to range.",
+						"In addition, you can expend a spell slot while using this property to grant the weapon a bonus to attack rolls and damage rolls equal to the spell slot's level divided by three.",
+						"These effects last for 24 hours or until you use this property again."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Shrieking Bolt (Complex Property)",
+					"entries": [
+						"As an action, you scribe this rune in the air between you and a creature you can see while you expend a spell slot. The creature must make a Strength saving throw (DC 12 + the spell slot's level). On a failure, it takes {@damage 2d8} bludgeoning damage plus {@damage 1d8} bludgeoning damage per level of the expended spell slot, and is pushed in a straight line directly away from you for 10 feet per level of the expended spell slot. On a successful saving throw, the creature takes half as much damage and is not pushed away from you."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Wind Walker (Complex Property)",
+					"entries": [
+						"While you are attuned to this rune, you can cast levitate as a bonus action. You regain this ability after a short or long rest."
+					]
+				}
 			]
 		},
 		{
@@ -19172,7 +19367,7 @@
 			]
 		},
 		{
-			"name": "Purple Worm Poison (Injury)",
+			"name": "Purple Worm Poison",
 			"source": "DMG",
 			"page": 258,
 			"srd": true,
@@ -19182,6 +19377,9 @@
 			"poison": true,
 			"entries": [
 				"This poison must be harvested from a dead or {@condition incapacitated} {@creature purple worm}. A creature subjected to this poison must make a DC 19 Constitution saving throw, taking 42 ({@dice 12d6}) poison damage on a failed save, or half as much damage on a successful one."
+			],
+			"poisonTypes": [
+				"injury"
 			]
 		},
 		{
@@ -21754,7 +21952,7 @@
 			]
 		},
 		{
-			"name": "Serpent Venom (Injury)",
+			"name": "Serpent Venom",
 			"source": "DMG",
 			"page": 258,
 			"srd": true,
@@ -21764,6 +21962,9 @@
 			"poison": true,
 			"entries": [
 				"This poison must be harvested from a dead or {@condition incapacitated} {@creature giant poisonous snake}. A creature subjected to this poison must succeed on a DC 11 Constitution saving throw, taking 10 ({@dice 3d6}) poison damage on a failed save, or half as much damage on a successful one."
+			],
+			"poisonTypes": [
+				"injury"
 			]
 		},
 		{
@@ -21867,6 +22068,61 @@
 			],
 			"attachedSpells": [
 				"sleet storm"
+			]
+		},
+		{
+			"name": "Shard of the Kalt Rune",
+			"source": "UAPrestigeClassesRunMagic",
+			"page": 6,
+			"type": "MR",
+			"rarity": "rare",
+			"reqAttune": true,
+			"entries": [
+				"This long, slender shard of ice is roughly the size of a dagger. The kalt rune\u2014the rune of ice\u2014glows within the shard. When first grasped, the shard emits a painful cold that leaves your hand and arm numb. That feeling passes after a moment, allowing the shard to be handled normally.",
+				{
+					"type": "entries",
+					"name": "Frigid Touch (Simple Property)",
+					"entries": [
+						"As an action, you scribe the kalt rune on the surface of  any volume of water. The water freezes in a 10-foot radius around the spot where you scribed the rune."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Frost Friend (Simple Property)",
+					"entries": [
+						"While you are attuned to this rune, you have resistance to fire damage."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Icy Mantle (Simple Property)",
+					"entries": [
+						"As an action, you scribe the kalt rune using water onto yourself or another creature. The water instantly freezes into a mantle of protective ice that does not hinder movement or action. The next time the creature takes bludgeoning, slashing, or piercing damage, that damage is reduced to zero and the icy mantle is destroyed."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Freezing Bolt (Complex Property)",
+					"entries": [
+						"As an action, you scribe this rune using water onto a creature within your reach as you expend a spell slot. The rune freezes in place, and the creature must make a Constitution saving throw (DC 12 + the level of the expended spell slot). On a failure, the creature takes {@damage 2d8} cold damage plus {@damage 1d8} cold damage per level of the expended spell slot, and its speed is reduced to 0 until the end of your next turn. On a successful saving throw, the creature takes half as much damage and its speed is not affected."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Ice Brand (Complex Property)",
+					"entries": [
+						"Over the course of a short rest, you inscribe this rune using water onto a melee or ranged weapon, or onto up to 20 pieces of ammunition. The weapon or ammunition gains a ghostly white aura and deals cold damage instead of piercing, slashing, or bludgeoning damage.",
+						"In addition, you can expend a spell slot while using this property to grant the weapon or ammunition a bonus to attack rolls and damage rolls equal to the spell slot's level divided by three.",
+						"These effects last for 24 hours or until you use this property again."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Winter's Howl (Complex Property)",
+					"entries": [
+						"While you are attuned to this rune, you can cast sleet storm as an action. You regain this ability after a short or long rest."
+					]
+				}
 			]
 		},
 		{
@@ -23071,7 +23327,7 @@
 			"tier": "minor",
 			"rarity": "common",
 			"entries": [
-				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without having to provide any of the spell's components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
+				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 11. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 13 and an attack bonus of {@hit 5}.",
@@ -23090,7 +23346,7 @@
 			"tier": "minor",
 			"rarity": "uncommon",
 			"entries": [
-				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without having to provide any of the spell's components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
+				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 12. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 13 and an attack bonus of {@hit 5}.",
@@ -23110,7 +23366,7 @@
 			"tier": "minor",
 			"rarity": "uncommon",
 			"entries": [
-				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without having to provide any of the spell's components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
+				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 13. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 15 and an attack bonus of {@hit 7}.",
@@ -23129,7 +23385,7 @@
 			"tier": "minor",
 			"rarity": "rare",
 			"entries": [
-				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without having to provide any of the spell's components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
+				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 14. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 15 and an attack bonus of {@hit 7}.",
@@ -23148,7 +23404,7 @@
 			"tier": "minor",
 			"rarity": "rare",
 			"entries": [
-				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without having to provide any of the spell's components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
+				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 15. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 17 and an attack bonus of {@hit 9}.",
@@ -23167,7 +23423,7 @@
 			"tier": "minor",
 			"rarity": "very rare",
 			"entries": [
-				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without having to provide any of the spell's components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
+				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 16. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 17 and an attack bonus of {@hit 9}.",
@@ -23186,7 +23442,7 @@
 			"tier": "minor",
 			"rarity": "very rare",
 			"entries": [
-				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without having to provide any of the spell's components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
+				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 17. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 18 and an attack bonus of {@hit 10}.",
@@ -23205,7 +23461,7 @@
 			"tier": "minor",
 			"rarity": "very rare",
 			"entries": [
-				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without having to provide any of the spell's components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
+				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 18. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 18 and an attack bonus of {@hit 10}.",
@@ -23225,7 +23481,7 @@
 			"tier": "minor",
 			"rarity": "legendary",
 			"entries": [
-				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without having to provide any of the spell's components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
+				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 19. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 19 and an attack bonus of {@hit 11}.",
@@ -23244,7 +23500,7 @@
 			"tier": "minor",
 			"rarity": "common",
 			"entries": [
-				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without having to provide any of the spell's components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
+				"A spell scroll bears the words of a single spell, written as a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost.",
 				"If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC is 10. On a failed check, the spell disappears from the scroll with no other effect.",
 				"Once the spell is cast, the words on the scroll fade, and the scroll itself crumbles to dust.",
 				"A spell cast from this scroll has a save DC of 13 and an attack bonus of {@hit 5}."
@@ -24687,7 +24943,7 @@
 			"source": "VGM",
 			"page": 81,
 			"type": "MA",
-			"rarity": "unknown (magic)",
+			"rarity": "unknown",
 			"weight": 40,
 			"ac": 15,
 			"stealth": true,
@@ -26253,13 +26509,17 @@
 			]
 		},
 		{
-			"name": "Thessaltoxin (Ingested or Injury)",
+			"name": "Thessaltoxin",
 			"source": "IMR",
 			"page": 93,
 			"rarity": "none",
 			"poison": true,
 			"entries": [
 				"This poison was first created using blood harvested from the artificer Thessalar. A creature subjected to the poison must succeed on a DC 15 Constitution saving throw or take on a new form as if affected by the {@spell polymorph} spell. The creature's new form is a random beast or a creature it has seen within the last 24 hours (as chosen by the DM). This transformation lasts until the end of the target's next long rest. This effect is not subject to {@spell dispel magic} or {@spell remove curse}, but a {@spell greater restoration} spell restores the creature to its original form."
+			],
+			"poisonTypes": [
+				"ingested",
+				"injury"
 			],
 			"attachedSpells": [
 				"polymorph"
@@ -26679,7 +26939,7 @@
 			]
 		},
 		{
-			"name": "Torpor (Ingested)",
+			"name": "Torpor",
 			"source": "DMG",
 			"page": 258,
 			"srd": true,
@@ -26689,6 +26949,9 @@
 			"poison": true,
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 15 Constitution saving throw or become {@condition poisoned} for {@dice 4d6} hours. The {@condition poisoned} creature is {@condition incapacitated}."
+			],
+			"poisonTypes": [
+				"ingested"
 			]
 		},
 		{
@@ -28270,7 +28533,7 @@
 			]
 		},
 		{
-			"name": "Truth Serum (Ingested)",
+			"name": "Truth Serum",
 			"source": "DMG",
 			"page": 258,
 			"srd": true,
@@ -28280,6 +28543,9 @@
 			"poison": true,
 			"entries": [
 				"A creature subjected to this poison must succeed on a DC 11 Constitution saving throw or become {@condition poisoned} for 1 hour. The {@condition poisoned} creature can't knowingly speak a lie, as if under the effect of a {@spell zone of truth} spell."
+			],
+			"poisonTypes": [
+				"ingested"
 			],
 			"attachedSpells": [
 				"zone of truth"
@@ -28300,7 +28566,6 @@
 			"name": "Two-Birds Sling",
 			"source": "MOT",
 			"page": 198,
-			"srd": true,
 			"baseItem": "sling|PHB",
 			"type": "R",
 			"rarity": "rare",
@@ -30335,7 +30600,7 @@
 			]
 		},
 		{
-			"name": "Wyvern Poison (Injury)",
+			"name": "Wyvern Poison",
 			"source": "DMG",
 			"page": 258,
 			"srd": true,
@@ -30345,6 +30610,9 @@
 			"poison": true,
 			"entries": [
 				"This poison must be harvested from a dead or {@condition incapacitated} {@creature wyvern}. A creature subjected to this poison must make a DC 15 Constitution saving throw, taking 24 ({@dice 7d6}) poison damage on a failed save, or half as much damage on a successful one."
+			],
+			"poisonTypes": [
+				"injury"
 			]
 		},
 		{

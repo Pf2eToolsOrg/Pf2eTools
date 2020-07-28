@@ -39,6 +39,7 @@ function getFnListSort (prop) {
 		case "language":
 		case "condition":
 		case "disease":
+		case "status":
 		case "cult":
 		case "boon":
 		case "feat":
