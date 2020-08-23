@@ -12698,7 +12698,7 @@
 							"rows": [
 								[
 									"1",
-									" I'm driven by a wanderlust that led me away from home"
+									" I'm driven by a wanderlust that led me away from home."
 								],
 								[
 									"2",
@@ -12722,7 +12722,7 @@
 								],
 								[
 									"7",
-									"I feel far more comfortable around animals than people"
+									"I feel far more comfortable around animals than people."
 								],
 								[
 									"8",
@@ -17989,33 +17989,51 @@
 				"name": "Entertainer",
 				"source": "PHB",
 				"_mod": {
-					"entries": {
-						"mode": "replaceArr",
-						"replace": {
-							"index": 0
+					"entries": [
+						{
+							"mode": "replaceArr",
+							"replace": {
+								"index": 0
+							},
+							"items": {
+								"type": "list",
+								"style": "list-hang-notitle",
+								"items": [
+									{
+										"type": "item",
+										"name": "Skill Proficiencies",
+										"entry": "{@skill Acrobatics}, {@skill Performance}"
+									},
+									{
+										"type": "item",
+										"name": "Tool Proficiencies",
+										"entry": "{@item Disguise kit|phb}, one type of {@filter musical instrument|items|source=phb|miscellaneous=mundane|type=instrument}"
+									},
+									{
+										"type": "item",
+										"name": "Equipment",
+										"entry": "An inexpensive but unusual weapon, such as a {@item trident|phb} or {@item net|phb} (one of your choice), the favor of an admirer (love letter, lock of hair, or trinket), {@item costume clothes|phb}, and a belt {@item pouch|phb} containing 15 gp"
+									}
+								]
+							}
 						},
-						"items": {
-							"type": "list",
-							"style": "list-hang-notitle",
-							"items": [
-								{
-									"type": "item",
-									"name": "Skill Proficiencies",
-									"entry": "{@skill Acrobatics}, {@skill Performance}"
-								},
-								{
-									"type": "item",
-									"name": "Tool Proficiencies",
-									"entry": "{@item Disguise kit|phb}, one type of {@filter musical instrument|items|source=phb|miscellaneous=mundane|type=instrument}"
-								},
-								{
-									"type": "item",
-									"name": "Equipment",
-									"entry": "An inexpensive but unusual weapon, such as a {@item trident|phb} or {@item net|phb} (one of your choice), the favor of an admirer (love letter, lock of hair, or trinket), {@item costume clothes|phb}, and a belt {@item pouch|phb} containing 15 gp"
+						{
+							"mode": "replaceArr",
+							"replace": {
+								"index": 1
+							},
+							"items": {
+								"name": "Feature: By Popular Demand",
+								"type": "entries",
+								"entries": [
+									"You can always find a place to perform in any place that features combat for entertainment\u2014perhaps a gladiatorial arena or secret pit fighting club. At such a place, you receive free lodging and food of a modest or comfortable standard (depending on the quality of the establishment), as long as you perform each night. In addition, your performance makes you something of a local figure. When strangers recognize you in a town where you have performed, they typically take a liking to you."
+								],
+								"data": {
+									"isFeature": true
 								}
-							]
+							}
 						}
-					}
+					]
 				}
 			}
 		},

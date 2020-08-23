@@ -56,7 +56,47 @@
 					"(a) a {@item burglar's pack|phb}, (b) a {@item dungeoneer's pack|phb}, or (c) an {@item explorer's pack|phb}",
 					"{@item Leather armor|phb}, two {@item dagger|phb|daggers}, and {@item thieves' tools|phb}"
 				],
-				"goldAlternative": "{@dice 4d4 × 10|4d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 4d4 × 10|4d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"rapier|phb"
+						],
+						"b": [
+							"shortsword|phb"
+						]
+					},
+					{
+						"a": [
+							"shortbow|phb",
+							"arrows (20)|phb"
+						],
+						"b": [
+							"shortsword|phb"
+						]
+					},
+					{
+						"a": [
+							"burglar's pack|phb"
+						],
+						"b": [
+							"dungeoneer's pack|phb"
+						],
+						"c": [
+							"explorer's pack|phb"
+						]
+					},
+					{
+						"_": [
+							"Leather armor|phb",
+							{
+								"item": "dagger|phb",
+								"count": 2
+							},
+							"thieves' tools|phb"
+						]
+					}
+				]
 			},
 			"multiclassing": {
 				"requirements": {
@@ -1509,7 +1549,7 @@
 					"items": [
 						"You can stow one object the hand is holding in a container worn or carried by another creature.",
 						"You can retrieve an object in a container worn or carried by another creature.",
-						"You can use {@item thieves' tools|phb} to pick lock and disarm traps at range."
+						"You can use {@item thieves' tools|phb} to pick locks and disarm traps at range."
 					]
 				},
 				"You can perform one of these tasks without being noticed by a creature if you succeed on a Dexterity ({@skill Sleight of Hand}) check contested by the creature's Wisdom ({@skill Perception}) check.",

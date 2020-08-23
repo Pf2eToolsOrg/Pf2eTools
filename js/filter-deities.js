@@ -1,6 +1,17 @@
 "use strict";
 
 class PageFilterDeities extends PageFilter {
+	static unpackAlignment (g) {
+		g.alignment.sort(SortUtil.alignmentSort);
+		if (g.alignment.length === 2 && g.alignment.includes("N")) {
+			const out = [...g.alignment];
+			if (out[0] === "N") out[0] = "NX";
+			else out[1] = "NY";
+			return out;
+		}
+		return MiscUtil.copy(g.alignment);
+	}
+
 	constructor () {
 		super();
 		this._sourceFilter = new SourceFilter();
@@ -52,19 +63,19 @@ class PageFilterDeities extends PageFilter {
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Has Info", STR_REPRINTED, "SRD"],
+			items: ["Has Info", PageFilterDeities._STR_REPRINTED, "SRD"],
 			displayFn: StrUtil.uppercaseFirst,
-			deselFn: (it) => { return it === STR_REPRINTED }
+			deselFn: (it) => { return it === PageFilterDeities._STR_REPRINTED }
 		});
 	}
 
 	mutateForFilters (g) {
-		g._fAlign = g.alignment ? unpackAlignment(g) : [];
+		g._fAlign = g.alignment ? PageFilterDeities.unpackAlignment(g) : [];
 		if (!g.category) g.category = VeCt.STR_NONE;
 		if (!g.domains) g.domains = [VeCt.STR_NONE];
 		g.domains.sort(SortUtil.ascSort);
 
-		g._fMisc = g.reprinted ? [STR_REPRINTED] : [];
+		g._fMisc = g.reprinted ? [PageFilterDeities._STR_REPRINTED] : [];
 		if (g.srd) g._fMisc.push("SRD");
 		if (g.entries || g.symbolImg) g._fMisc.push("Has Info");
 	}
@@ -101,3 +112,4 @@ class PageFilterDeities extends PageFilter {
 		)
 	}
 }
+PageFilterDeities._STR_REPRINTED = "reprinted";

@@ -65,7 +65,7 @@ class ClassesPage extends BaseComponent {
 
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
-			$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
+			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`)
 		});
 
@@ -1287,6 +1287,9 @@ class ClassesPage extends BaseComponent {
 				const renderStack = [];
 				const numScLvls = cls.subclasses[0].subclassFeatures.length;
 
+				const filterValues = this._pageFilter.filterBox.getValues();
+				const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST, isAllowDeleteObjects: true});
+
 				for (let ixLevel = 0; ixLevel < numScLvls; ++ixLevel) {
 					const isLastRow = ixLevel === numScLvls - 1;
 
@@ -1296,7 +1299,24 @@ class ClassesPage extends BaseComponent {
 						.forEach((sc, ixSubclass) => {
 							const mod = ClassesPage.getSubclassCssMod(cls, sc);
 							renderStack.push(`<div class="mx-2 no-shrink cls-comp__wrp-features cls-main__sc-feature ${mod ? `cls-main__sc-feature--${mod}` : ""}" data-cls-comp-sc-ix="${ixSubclass}">`);
-							sc.subclassFeatures[ixLevel].forEach(f => Renderer.get().recursiveRender(f, renderStack));
+							sc.subclassFeatures[ixLevel].forEach(f => {
+								const cpy = MiscUtil.copy(f);
+
+								// Note that this won't affect the root feature, only those nested inside it. The root
+								//   feature is filtered out elsewhere.
+								walker.walk(
+									cpy,
+									{
+										object: (obj) => {
+											if (!obj.source) return obj;
+											if (this._pageFilter.filterBox.toDisplay(filterValues, obj)) return obj;
+											return undefined; // If it shouldn't be displayed, delete it
+										}
+									}
+								)
+
+								Renderer.get().recursiveRender(cpy, renderStack);
+							});
 							renderStack.push(`</div>`);
 						});
 					renderStack.push(`</div>`);

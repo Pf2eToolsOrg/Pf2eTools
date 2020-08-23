@@ -76,18 +76,20 @@ class RenderMap {
 		const ctx = cvs.getContext("2d");
 
 		const zoomChange = (direction) => {
-			if ((mapData.ixZoom === 0 && direction === "out")
-				|| (mapData.ixZoom === RenderMap._ZOOM_LEVELS.length - 1 && direction === "in")) return;
+			if (direction != null) {
+				if ((mapData.ixZoom === 0 && direction === "out")
+					|| (mapData.ixZoom === RenderMap._ZOOM_LEVELS.length - 1 && direction === "in")) return;
 
-			const lastIxZoom = mapData.ixZoom;
+				const lastIxZoom = mapData.ixZoom;
 
-			switch (direction) {
-				case "in": mapData.ixZoom++; break;
-				case "out": mapData.ixZoom--; break;
-				case "reset": mapData.ixZoom = RenderMap._ZOOM_LEVELS.indexOf(1.0);
+				switch (direction) {
+					case "in": mapData.ixZoom++; break;
+					case "out": mapData.ixZoom--; break;
+					case "reset": mapData.ixZoom = RenderMap._ZOOM_LEVELS.indexOf(1.0);
+				}
+
+				if (lastIxZoom === mapData.ixZoom) return;
 			}
-
-			if (lastIxZoom === mapData.ixZoom) return;
 
 			const zoom = mapData.getZoom();
 
@@ -111,6 +113,8 @@ class RenderMap {
 			);
 			paint();
 		};
+
+		const zoomChangeDebounced = MiscUtil.debounce(zoomChange, 20);
 
 		const getZoomedPoint = (pt) => {
 			const zoom = mapData.getZoom();
@@ -187,7 +191,7 @@ class RenderMap {
 				// When in book mode, shift-click a region to navigate to it
 				if (evt.shiftKey && typeof BookUtil !== "undefined") {
 					const oldHash = location.hash;
-					location.hash = `#${BookUtil.curRender.curBookId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)}`;
+					location.hash = `#${BookUtil.curRender.curBookId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)},0`;
 					if (oldHash.toLowerCase() === location.hash.toLowerCase()) {
 						BookUtil.isHashReload = true;
 						BookUtil.booksHashChange();
@@ -296,13 +300,22 @@ class RenderMap {
 						<li>Left-click to open an area as a new window.</li>
 						<li><kbd>SHIFT</kbd>-left-click to jump to an area.</li>
 						<li>Right-click and drag to pan.</li>
+						<li><kbd>CTRL</kbd>-scroll to zoom.</li>
 					</ul>
 				`);
 			});
 
 		const $wrpCvs = $$`<div class="w-100 h-100 overflow-x-scroll overflow-y-scroll rd__scroller-viewer">
 			${$cvs}
-		</div>`;
+		</div>`
+			.on("mousewheel DOMMouseScroll", evt => {
+				if (!evt.ctrlKey) return;
+				evt.stopPropagation();
+				evt.preventDefault();
+				evt = evt.originalEvent; // Access the underlying properties
+				const direction = (evt.wheelDelta != null && evt.wheelDelta > 0) || (evt.deltaY != null && evt.deltaY < 0) ? "in" : "out";
+				zoomChangeDebounced(direction);
+			});
 
 		const $out = $$`<div class="flex-col w-100 h-100">
 			<div class="flex no-shrink p-2">
@@ -316,7 +329,7 @@ class RenderMap {
 			${$wrpCvs}
 		</div>`;
 
-		paint();
+		zoomChange();
 
 		return $out;
 	}

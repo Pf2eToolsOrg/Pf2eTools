@@ -1242,10 +1242,11 @@ class Panel {
 
 	doPopulate_TwitchChat (url, title = "Twitch Chat") {
 		const meta = {u: url};
+		const channelId = url.split("/").map(it => it.trim()).filter(Boolean).slice(-2)[0];
 		this.set$ContentTab(
 			PANEL_TYP_TWITCH_CHAT,
 			meta,
-			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no"/></div>`),
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?parent=${location.hostname}" frameborder="0" scrolling="no" id="${channelId}"/></div>`),
 			title,
 			true
 		);
@@ -2529,7 +2530,7 @@ class AddMenuVideoTab extends AddMenuTab {
 				let url = $iptUrlTwitch.val().trim();
 				const m = getTwitchM(url);
 				if (url && m) {
-					url = `http://www.twitch.tv/embed/${m[2]}/chat`;
+					url = `https://www.twitch.tv/embed/${m[2]}/chat`;
 					this.menu.pnl.doPopulate_TwitchChat(url);
 					this.menu.doClose();
 					$iptUrlTwitch.val("");

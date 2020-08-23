@@ -64,7 +64,36 @@
 					"(a) a {@item scimitar|phb} or (b) any {@filter simple melee weapon|items|source=phb|category=basic|type=simple weapon;melee weapon=sand}",
 					"{@item Leather armor|phb}, an {@item explorer's pack|phb}, and a {@item druidic focus|phb}"
 				],
-				"goldAlternative": "{@dice 2d4 × 10|2d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 2d4 × 10|2d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"shield|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"a": [
+							"scimitar|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimpleMelee"
+							}
+						]
+					},
+					{
+						"_": [
+							"Leather armor|phb",
+							"explorer's pack|phb",
+							"druidic focus|phb"
+						]
+					}
+				]
 			},
 			"multiclassing": {
 				"requirements": {
@@ -2233,7 +2262,7 @@
 					"type": "entries",
 					"name": "Cantrips",
 					"entries": [
-						"At 1st level, you know two cantrips of your choice from the druid spell list. You learn additional druid cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Druid table."
+						"At 1st level, you know two cantrips of your choice from the {@filter druid spell list|spells|level=0|class=druid}. You learn additional druid cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Druid table."
 					]
 				},
 				{
@@ -2278,7 +2307,7 @@
 					"type": "entries",
 					"name": "Spellcasting Focus",
 					"entries": [
-						"You can use a druidic focus (found in chapter 5) as a spellcasting focus for your druid spells"
+						"You can use a {@item druidic focus|phb} as a spellcasting focus for your druid spells"
 					]
 				}
 			]

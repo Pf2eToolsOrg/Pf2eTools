@@ -1620,7 +1620,7 @@ Renderer.dice.parsed = {
 			let val = view.pop()[fnName](meta);
 			while (view.length) {
 				this.addToMeta(meta, "^");
-				val = Math.pow(view.pop()[fnName](meta), val);
+				val = view.pop()[fnName](meta) ** val;
 			}
 			return val;
 		}

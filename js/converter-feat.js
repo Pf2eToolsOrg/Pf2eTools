@@ -121,10 +121,9 @@ class FeatParser extends BaseParser {
 			isNoModification: true
 		});
 		walker.walk(
-			"ability",
 			feat.entries,
 			{
-				object: (ident, obj) => {
+				object: (obj) => {
 					if (obj.type !== "list") return;
 
 					if (typeof obj.items[0] === "string" && /^increase your/i.test(obj.items[0])) {

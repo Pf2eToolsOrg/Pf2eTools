@@ -546,7 +546,7 @@ Ro_Parser._Exponent = class extends Ro_Parser._AbstractSymbol {
 		while (view.length) {
 			tmp = await view.pop().pEvl(ctx, resolver);
 			if (tmp.isCancelled) return tmp;
-			out.val = Math.pow(tmp.val, out.val);
+			out.val = tmp.val ** out.val;
 		}
 
 		return out;
@@ -555,7 +555,7 @@ Ro_Parser._Exponent = class extends Ro_Parser._AbstractSymbol {
 	toString (indent = 0) {
 		const view = this._nodes.slice();
 		let out = view.pop().toString(indent);
-		while (view.length) out = `Math.pow(${view.pop().toString(indent)}, ${out})`;
+		while (view.length) out = `${view.pop().toString(indent)} ** ${out}`;
 		return out;
 	}
 };

@@ -109,7 +109,6 @@ class ItemParser extends BaseParser {
 		SpellTag.tryRun(stats);
 		ChargeTag.tryRun(stats);
 		RechargeTypeTag.tryRun(stats, {cbMan: () => options.cbWarning(`${manName}Recharge type requires manual conversion`)});
-		QuantityTag.tryRun(stats);
 		BonusTag.tryRun(stats);
 		ItemMiscTag.tryRun(stats);
 

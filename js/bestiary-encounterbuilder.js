@@ -709,6 +709,41 @@ class EncounterBuilder extends ProxyBase {
 		this.updateDifficulty();
 	}
 
+	_getApproxTurnsToKill () {
+		const party = this.getParty();
+		const encounter = EncounterBuilderUtils.getSublistedEncounter();
+
+		const totalDpt = party
+			.map(it => this._getApproxDpt(it.level) * it.count)
+			.reduce((a, b) => a + b, 0);
+		const totalHp = encounter
+			.filter(it => it.approxHp != null && it.approxAc != null)
+			.map(it => (it.approxHp * it.approxAc / 10) * it.count)
+			.reduce((a, b) => a + b, 0);
+
+		return totalHp / totalDpt;
+	}
+
+	_getApproxDpt (pcLevel) {
+		const approxOutputFighterChampion = [
+			{hit: 0, dmg: 17.38}, {hit: 0, dmg: 17.38}, {hit: 0, dmg: 17.59}, {hit: 0, dmg: 33.34}, {hit: 1, dmg: 50.92}, {hit: 2, dmg: 53.92}, {hit: 2, dmg: 53.92}, {hit: 3, dmg: 56.92}, {hit: 4, dmg: 56.92}, {hit: 4, dmg: 56.92}, {hit: 4, dmg: 76.51}, {hit: 4, dmg: 76.51}, {hit: 5, dmg: 76.51}, {hit: 5, dmg: 76.51}, {hit: 5, dmg: 77.26}, {hit: 5, dmg: 77.26}, {hit: 6, dmg: 77.26}, {hit: 6, dmg: 77.26}, {hit: 6, dmg: 77.26}, {hit: 6, dmg: 97.06}
+		];
+		const approxOutputRogueTrickster = [
+			{hit: 5, dmg: 11.4}, {hit: 5, dmg: 11.4}, {hit: 10, dmg: 15.07}, {hit: 11, dmg: 16.07}, {hit: 12, dmg: 24.02}, {hit: 12, dmg: 24.02}, {hit: 12, dmg: 27.7}, {hit: 13, dmg: 28.7}, {hit: 14, dmg: 32.38}, {hit: 14, dmg: 32.38}, {hit: 14, dmg: 40.33}, {hit: 14, dmg: 40.33}, {hit: 15, dmg: 44}, {hit: 15, dmg: 44}, {hit: 15, dmg: 47.67}, {hit: 15, dmg: 47.67}, {hit: 16, dmg: 55.63}, {hit: 16, dmg: 55.63}, {hit: 16, dmg: 59.3}, {hit: 16, dmg: 59.3}
+		];
+		const approxOutputWizard = [
+			{hit: 5, dmg: 14.18}, {hit: 5, dmg: 14.18}, {hit: 5, dmg: 22.05}, {hit: 6, dmg: 22.05}, {hit: 2, dmg: 28}, {hit: 2, dmg: 28}, {hit: 2, dmg: 36}, {hit: 3, dmg: 36}, {hit: 6, dmg: 67.25}, {hit: 6, dmg: 67.25}, {hit: 4, dmg: 75}, {hit: 4, dmg: 75}, {hit: 5, dmg: 85.5}, {hit: 5, dmg: 85.5}, {hit: 5, dmg: 96}, {hit: 5, dmg: 96}, {hit: 6, dmg: 140}, {hit: 6, dmg: 140}, {hit: 6, dmg: 140}, {hit: 6, dmg: 140}
+		];
+		const approxOutputCleric = [
+			{hit: 5, dmg: 17.32}, {hit: 5, dmg: 17.32}, {hit: 5, dmg: 23.1}, {hit: 6, dmg: 23.1}, {hit: 7, dmg: 28.88}, {hit: 7, dmg: 28.88}, {hit: 7, dmg: 34.65}, {hit: 8, dmg: 34.65}, {hit: 9, dmg: 40.42}, {hit: 9, dmg: 40.42}, {hit: 9, dmg: 46.2}, {hit: 9, dmg: 46.2}, {hit: 10, dmg: 51.98}, {hit: 10, dmg: 51.98}, {hit: 11, dmg: 57.75}, {hit: 11, dmg: 57.75}, {hit: 11, dmg: 63.52}, {hit: 11, dmg: 63.52}, {hit: 11, dmg: 63.52}, {hit: 11, dmg: 63.52}
+		];
+
+		const approxOutputs = [approxOutputFighterChampion, approxOutputRogueTrickster, approxOutputWizard, approxOutputCleric];
+
+		const approxOutput = approxOutputs.map(it => it[pcLevel - 1]);
+		return Math.mean(...approxOutput.map(it => it.dmg * ((it.hit + 10.5) / 20))); // 10.5 = average d20
+	}
+
 	updateDifficulty () {
 		const xp = this.calculateXp();
 
@@ -716,7 +751,9 @@ class EncounterBuilder extends ProxyBase {
 		const $elmed = $(`.ecgen__medium`).removeClass("bold").text(`Medium: ${xp.party.medium.toLocaleString()} XP`);
 		const $elHard = $(`.ecgen__hard`).removeClass("bold").text(`Hard: ${xp.party.hard.toLocaleString()} XP`);
 		const $elDeadly = $(`.ecgen__deadly`).removeClass("bold").text(`Deadly: ${xp.party.deadly.toLocaleString()} XP`);
-		const $elAbsurd = $(`.ecgen__absurd`).removeClass("bold").text(`Absurd: ${xp.party.absurd.toLocaleString()} XP`);
+		const $elAbsurd = $(`.ecgen__absurd`).removeClass("bold").html(`<span class="help" title="Calculated as Deadly XP + the difference in XP between Hard and Deadly">Absurd:</span> ${xp.party.absurd.toLocaleString()} XP`);
+
+		$(`.ecgen__ttk`).html(`<span class="help" title="Time to Kill: the estimated number of turns the party will require to defeat the encounter. Assumes single-target damage only.">TTK:</span> ${this._getApproxTurnsToKill().toFixed(2)}`);
 
 		$(`.ecgen__daily_budget`).removeClass("bold").text(`Daily Budget: ${xp.party.daily.toLocaleString()} XP`);
 
@@ -739,7 +776,7 @@ class EncounterBuilder extends ProxyBase {
 		}
 
 		if (xp.encounter.relevantCount) {
-			$(`.ecgen__req_creatures`).show();
+			$(`.ecgen__req_creatures`).showVe();
 			$(`.ecgen__rating`).text(`Difficulty: ${difficulty}`);
 			$(`.ecgen__raw_total`).text(`Total XP: ${xp.encounter.baseXp.toLocaleString()}`);
 			$(`.ecgen__raw_per_player`).text(`(${Math.floor(xp.encounter.baseXp / xp.party.count).toLocaleString()} per player)`);
@@ -775,7 +812,7 @@ class EncounterBuilder extends ProxyBase {
 			$(`.ecgen__adjusted_total`).text(`Adjusted XP: ${xp.encounter.adjustedXp.toLocaleString()}`);
 			$(`.ecgen__adjusted_per_player`).text(`(${Math.floor(xp.encounter.adjustedXp / xp.party.count).toLocaleString()} per player)`);
 		} else {
-			$(`.ecgen__req_creatures`).hide();
+			$(`.ecgen__req_creatures`).hideVe();
 		}
 
 		this.doSaveState();
@@ -1033,19 +1070,19 @@ class EncounterBuilder extends ProxyBase {
 		count = Number(count) || 1;
 		level = Number(level) || 1;
 		return `
-			<div class="row mb-2 ecgen__player_group">
-				<div class="col-2">
+			<div class="flex-v-center mb-2 ecgen__player_group">
+				<div class="w-20">
 					<select class="ecgen__player_group__count form-control form-control--minimal input-xs" onchange="encounterBuilder.updateDifficulty()">
 					${[...new Array(12)].map((_, i) => `<option ${(count === i + 1) ? "selected" : ""}>${i + 1}</option>`).join("")}
 					</select>
 				</div>
-				<div class="col-2">
+				<div class="w-20">
 					<select class="ecgen__player_group__level form-control form-control--minimal input-xs" onchange="encounterBuilder.updateDifficulty()" >
 						${[...new Array(20)].map((_, i) => `<option ${(level === i + 1) ? "selected" : ""}>${i + 1}</option>`).join("")}
 					</select>
 				</div>
 				${!isFirst ? `
-				<div class="col-2 flex" style="margin-left: -10px; align-items: center; height: 20px;">
+				<div class="ml-2 flex-v-center" style="height: 20px;">
 					<button class="btn btn-danger btn-xs ecgen__del_players" onclick="encounterBuilder.removePlayerRow(this)" title="Remove Player Group">
 						<span class="glyphicon glyphicon-trash"></span>
 					</button>

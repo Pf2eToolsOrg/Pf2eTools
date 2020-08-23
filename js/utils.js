@@ -6,7 +6,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.108.5"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.110.1"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -40,7 +40,9 @@ VeCt = {
 	STORAGE_ENCOUNTER: "ENCOUNTER_STORAGE",
 	STORAGE_POINTBUY: "POINTBUY_STORAGE",
 
-	DUR_INLINE_NOTIFY: 500
+	DUR_INLINE_NOTIFY: 500,
+
+	PG_NONE: "NO_PAGE"
 };
 
 // STRING ==============================================================================================================
@@ -407,6 +409,16 @@ CurrencyUtil = {
 			});
 
 		return obj;
+	},
+
+	/**
+	 * Convert a collection of coins into an equivalent value in copper.
+	 * @param obj Object of the form {cp: 123, sp: 456, ...} (values optional)
+	 */
+	getAsCopper (obj) {
+		return Parser.FULL_CURRENCY_CONVERSION_TABLE
+			.map(currencyMeta => (obj[currencyMeta.coin] || 0) * (1 / currencyMeta.mult))
+			.reduce((a, b) => a + b, 0);
 	}
 };
 
@@ -430,44 +442,6 @@ Math.seed = Math.seed || function (s) {
 		return s - Math.floor(s);
 	};
 };
-
-function xor (a, b) {
-	return !a !== !b;
-}
-
-/**
- * >implying
- */
-function implies (a, b) {
-	return (!a) || b;
-}
-
-function noModifierKeys (e) {
-	return !e.ctrlKey && !e.altKey && !e.metaKey;
-}
-
-function isObject (obj) {
-	const type = typeof obj;
-	return (type === "function" || type === "object") && !!obj;
-}
-
-function isString (str) {
-	return typeof str === "string";
-}
-
-function isNumber (obj) {
-	return toString.call(obj) === "[object Number]";
-}
-
-function isEmpty (obj) {
-	if (obj == null) {
-		return true;
-	}
-	if (Array.isArray(obj) || isString(obj)) {
-		return obj.length === 0;
-	}
-	return Object.keys(obj).length === 0;
-}
 
 JqueryUtil = {
 	_isEnhancementsInit: false,
@@ -535,6 +509,8 @@ JqueryUtil = {
 			disableSpellcheck: function () { return this.attr("autocomplete", "new-password").attr("autocapitalize", "off").attr("spellcheck", "false"); },
 			tag: function () { return this.prop("tagName").toLowerCase(); },
 			title: function (...args) { return this.attr("title", ...args); },
+			placeholder: function (...args) { return this.attr("placeholder", ...args); },
+			disable: function () { return this.attr("disabled", true); },
 
 			/**
 			 * Quickly set the innerHTML of the innermost element, without parsing the whole thing with jQuery.
@@ -769,22 +745,19 @@ MiscUtil = {
 		const val = pathAndVal.pop();
 		if (!pathAndVal.length) return null;
 
-		for (let i = 0; i < pathAndVal.length; ++i) {
+		const len = pathAndVal.length;
+		for (let i = 0; i < len; ++i) {
 			const pathPart = pathAndVal[i];
-			if (i === pathAndVal.length - 1) {
-				object[pathPart] = val;
-			} else {
-				if (!object[pathPart]) object[pathPart] = {};
-				object = object[pathPart];
-			}
+			if (i === len - 1) object[pathPart] = val;
+			else object = (object[pathPart] = object[pathPart] || {});
 		}
 
 		return val;
 	},
 
-	getOrSet (object, orSet, ...path) {
-		const existing = MiscUtil.get(object, ...path);
-		return existing || MiscUtil.set(object, orSet, ...path);
+	getOrSet (object, ...pathAndVal) {
+		const existing = MiscUtil.get(object, ...pathAndVal);
+		return existing || MiscUtil.set(object, ...pathAndVal);
 	},
 
 	mix: (superclass) => new MiscUtil._MixinBuilder(superclass),
@@ -856,11 +829,6 @@ MiscUtil = {
 
 	scrollPageTop () {
 		document.body.scrollTop = document.documentElement.scrollTop = 0;
-	},
-
-	isInInput (event) {
-		return event.target.nodeName === "INPUT" || event.target.nodeName === "TEXTAREA"
-			|| event.target.getAttribute("contenteditable") === "true";
 	},
 
 	expEval (str) {
@@ -1092,18 +1060,23 @@ MiscUtil = {
 		opts = opts || {};
 		const keyBlacklist = opts.keyBlacklist || new Set();
 
-		function applyHandlers (handlers, ident, obj, lastKey, stack) {
+		function applyHandlers (handlers, obj, lastKey, stack) {
 			if (!(handlers instanceof Array)) handlers = [handlers];
 			handlers.forEach(h => {
-				const out = h(ident, obj, lastKey, stack);
+				const out = h(obj, lastKey, stack);
 				if (!opts.isNoModification) obj = out;
 			});
 			return obj;
 		}
 
-		const fn = (ident, obj, primitiveHandlers, lastKey, stack) => {
+		function runHandlers (handlers, obj, lastKey, stack) {
+			if (!(handlers instanceof Array)) handlers = [handlers];
+			handlers.forEach(h => h(obj, lastKey, stack));
+		}
+
+		const fn = (obj, primitiveHandlers, lastKey, stack) => {
 			if (obj == null) {
-				if (primitiveHandlers.null) return applyHandlers(primitiveHandlers.null, ident, obj, lastKey, stack);
+				if (primitiveHandlers.null) return applyHandlers(primitiveHandlers.null, obj, lastKey, stack);
 				return obj;
 			}
 
@@ -1111,7 +1084,7 @@ MiscUtil = {
 				Object.keys(obj).forEach(k => {
 					const v = obj[k];
 					if (!keyBlacklist.has(k)) {
-						const out = fn(ident, v, primitiveHandlers, k, stack);
+						const out = fn(v, primitiveHandlers, k, stack);
 						if (!opts.isNoModification) obj[k] = out;
 					}
 				});
@@ -1120,69 +1093,69 @@ MiscUtil = {
 			const to = typeof obj;
 			switch (to) {
 				case undefined:
-					if (primitiveHandlers.preUndefined) primitiveHandlers.preUndefined(ident, obj);
+					if (primitiveHandlers.preUndefined) runHandlers(primitiveHandlers.preUndefined, obj, lastKey, stack);
 					if (primitiveHandlers.undefined) {
-						const out = applyHandlers(primitiveHandlers.undefined, ident, obj, lastKey, stack);
+						const out = applyHandlers(primitiveHandlers.undefined, obj, lastKey, stack);
 						if (!opts.isNoModification) obj = out;
 					}
-					if (primitiveHandlers.postUndefined) primitiveHandlers.postUndefined(ident, obj);
+					if (primitiveHandlers.postUndefined) runHandlers(primitiveHandlers.postUndefined, obj, lastKey, stack);
 					return obj;
 				case "boolean":
-					if (primitiveHandlers.preBoolean) primitiveHandlers.preBoolean(ident, obj);
+					if (primitiveHandlers.preBoolean) runHandlers(primitiveHandlers.preBoolean, obj, lastKey, stack);
 					if (primitiveHandlers.boolean) {
-						const out = applyHandlers(primitiveHandlers.boolean, ident, obj, lastKey, stack);
+						const out = applyHandlers(primitiveHandlers.boolean, obj, lastKey, stack);
 						if (!opts.isNoModification) obj = out;
 					}
-					if (primitiveHandlers.postBoolean) primitiveHandlers.postBoolean(ident, obj);
+					if (primitiveHandlers.postBoolean) runHandlers(primitiveHandlers.postBoolean, obj, lastKey, stack);
 					return obj;
 				case "number":
-					if (primitiveHandlers.preNumber) primitiveHandlers.preNumber(ident, obj);
+					if (primitiveHandlers.preNumber) runHandlers(primitiveHandlers.preNumber, obj, lastKey, stack);
 					if (primitiveHandlers.number) {
-						const out = applyHandlers(primitiveHandlers.number, ident, obj, lastKey, stack);
+						const out = applyHandlers(primitiveHandlers.number, obj, lastKey, stack);
 						if (!opts.isNoModification) obj = out;
 					}
-					if (primitiveHandlers.postNumber) primitiveHandlers.postNumber(ident, obj);
+					if (primitiveHandlers.postNumber) runHandlers(primitiveHandlers.postNumber, obj, lastKey, stack);
 					return obj;
 				case "string":
-					if (primitiveHandlers.preString) primitiveHandlers.preString(ident, obj);
+					if (primitiveHandlers.preString) runHandlers(primitiveHandlers.preString, obj, lastKey, stack);
 					if (primitiveHandlers.string) {
-						const out = applyHandlers(primitiveHandlers.string, ident, obj, lastKey, stack);
+						const out = applyHandlers(primitiveHandlers.string, obj, lastKey, stack);
 						if (!opts.isNoModification) obj = out;
 					}
-					if (primitiveHandlers.postString) primitiveHandlers.postString(ident, obj);
+					if (primitiveHandlers.postString) runHandlers(primitiveHandlers.postString, obj, lastKey, stack);
 					return obj;
 				case "object": {
 					if (obj instanceof Array) {
-						if (primitiveHandlers.preArray) primitiveHandlers.preArray(ident, obj);
+						if (primitiveHandlers.preArray) runHandlers(primitiveHandlers.preArray, obj, lastKey, stack);
 						if (opts.isDepthFirst) {
 							if (stack) stack.push(obj);
-							const out = obj.map(it => fn(ident, it, primitiveHandlers, lastKey, stack));
+							const out = obj.map(it => fn(it, primitiveHandlers, lastKey, stack));
 							if (!opts.isNoModification) obj = out;
 							if (stack) stack.pop();
 
 							if (primitiveHandlers.array) {
-								const out = applyHandlers(primitiveHandlers.array, ident, obj, lastKey, stack);
+								const out = applyHandlers(primitiveHandlers.array, obj, lastKey, stack);
 								if (!opts.isNoModification) obj = out;
 							}
 						} else {
 							if (primitiveHandlers.array) {
-								const out = applyHandlers(primitiveHandlers.array, ident, obj, lastKey, stack);
+								const out = applyHandlers(primitiveHandlers.array, obj, lastKey, stack);
 								if (!opts.isNoModification) obj = out;
 							}
-							const out = obj.map(it => fn(ident, it, primitiveHandlers, lastKey, stack));
+							const out = obj.map(it => fn(it, primitiveHandlers, lastKey, stack));
 							if (!opts.isNoModification) obj = out;
 						}
-						if (primitiveHandlers.postArray) primitiveHandlers.postArray(ident, obj);
+						if (primitiveHandlers.postArray) runHandlers(primitiveHandlers.postArray, obj, lastKey, stack);
 						return obj;
 					} else {
-						if (primitiveHandlers.preObject) primitiveHandlers.preObject(ident, obj);
+						if (primitiveHandlers.preObject) runHandlers(primitiveHandlers.preObject, obj, lastKey, stack);
 						if (opts.isDepthFirst) {
 							if (stack) stack.push(obj);
 							doObjectRecurse();
 							if (stack) stack.pop();
 
 							if (primitiveHandlers.object) {
-								const out = applyHandlers(primitiveHandlers.object, ident, obj, lastKey, stack);
+								const out = applyHandlers(primitiveHandlers.object, obj, lastKey, stack);
 								if (!opts.isNoModification) obj = out;
 							}
 							if (obj == null) {
@@ -1190,7 +1163,7 @@ MiscUtil = {
 							}
 						} else {
 							if (primitiveHandlers.object) {
-								const out = applyHandlers(primitiveHandlers.object, ident, obj, lastKey, stack);
+								const out = applyHandlers(primitiveHandlers.object, obj, lastKey, stack);
 								if (!opts.isNoModification) obj = out;
 							}
 							if (obj == null) {
@@ -1199,7 +1172,7 @@ MiscUtil = {
 								doObjectRecurse();
 							}
 						}
-						if (primitiveHandlers.postObject) primitiveHandlers.postObject(ident, obj);
+						if (primitiveHandlers.postObject) runHandlers(primitiveHandlers.postObject, obj, lastKey, stack);
 						return obj;
 					}
 				}
@@ -1228,7 +1201,14 @@ EventUtil = {
 	},
 
 	getClientX (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientX : evt.clientX; },
-	getClientY (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientY : evt.clientY; }
+	getClientY (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientY : evt.clientY; },
+
+	isInInput (evt) {
+		return evt.target.nodeName === "INPUT" || evt.target.nodeName === "TEXTAREA"
+			|| evt.target.getAttribute("contenteditable") === "true";
+	},
+
+	noModifierKeys (evt) { return !evt.ctrlKey && !evt.altKey && !evt.metaKey; }
 };
 
 if (typeof window !== "undefined") window.addEventListener("load", EventUtil.init);
@@ -1385,6 +1365,7 @@ UrlUtil = {
 	},
 
 	getCurrentPage () {
+		if (typeof window === "undefined") return VeCt.PG_NONE;
 		const pSplit = window.location.pathname.split("/");
 		let out = pSplit[pSplit.length - 1];
 		if (!out.toLowerCase().endsWith(".html")) out += ".html";
@@ -1607,7 +1588,6 @@ UrlUtil.PG_CULTS_BOONS = "cultsboons.html";
 UrlUtil.PG_OBJECTS = "objects.html";
 UrlUtil.PG_TRAPS_HAZARDS = "trapshazards.html";
 UrlUtil.PG_QUICKREF = "quickreference.html";
-UrlUtil.PG_MAKE_SHAPED = "makeshaped.html";
 UrlUtil.PG_MANAGE_BREW = "managebrew.html";
 UrlUtil.PG_MAKE_BREW = "makebrew.html";
 UrlUtil.PG_DEMO_RENDER = "renderdemo.html";
@@ -1699,7 +1679,7 @@ UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_SUBCLASS_FEATURE] = "subclassfeature";
 if (!IS_DEPLOYED && !IS_VTT && typeof window !== "undefined") {
 	// for local testing, hotkey to get a link to the current page on the main site
 	window.addEventListener("keypress", (e) => {
-		if (noModifierKeys(e) && typeof d20 === "undefined") {
+		if (EventUtil.noModifierKeys(e) && typeof d20 === "undefined") {
 			if (e.key === "#") {
 				const spl = window.location.href.split("/");
 				window.prompt("Copy to clipboard: Ctrl+C, Enter", `https://noads.5e.tools/${spl[spl.length - 1]}`);
@@ -1927,6 +1907,24 @@ DataUtil = {
 		return DataUtil._merged[ident];
 	},
 
+	_pDoMetaMerge_handleCopyProp (prop, arr, entry, options) {
+		if (entry._copy) {
+			switch (prop) {
+				case "monster": return DataUtil.monster.pMergeCopy(arr, entry, options);
+				case "monsterFluff": return DataUtil.monsterFluff.pMergeCopy(arr, entry, options);
+				case "spell": return DataUtil.spell.pMergeCopy(arr, entry, options);
+				case "spellFluff": return DataUtil.spellFluff.pMergeCopy(arr, entry, options);
+				case "item": return DataUtil.item.pMergeCopy(arr, entry, options);
+				case "itemFluff": return DataUtil.itemFluff.pMergeCopy(arr, entry, options);
+				case "background": return DataUtil.background.pMergeCopy(arr, entry, options);
+				case "race": return DataUtil.race.pMergeCopy(arr, entry, options);
+				case "raceFluff": return DataUtil.raceFluff.pMergeCopy(arr, entry, options);
+				case "deity": return DataUtil.deity.pMergeCopy(arr, entry, options);
+				default: throw new Error(`No dependency _copy merge strategy specified for property "${prop}"`);
+			}
+		}
+	},
+
 	async _pDoMetaMerge (ident, data, options) {
 		if (data._meta) {
 			if (data._meta.dependencies) {
@@ -1936,16 +1934,7 @@ DataUtil = {
 					const toLoads = await Promise.all(sources.map(async source => DataUtil.pGetLoadableByMeta(prop, source)));
 					const dependencyData = await Promise.all(toLoads.map(toLoad => DataUtil.loadJSON(toLoad)));
 					const flatDependencyData = dependencyData.map(dd => dd[prop]).flat();
-					await Promise.all(data[prop].map(async entry => {
-						if (entry._copy) {
-							switch (prop) {
-								case "monster": return DataUtil.monster.pMergeCopy(flatDependencyData, entry, options);
-								case "monsterFluff": return DataUtil.monsterFluff.pMergeCopy(flatDependencyData, entry, options);
-								case "spell": return DataUtil.spell.pMergeCopy(flatDependencyData, entry, options);
-								default: throw new Error(`No dependency _copy merge strategy specified for property "${prop}"`);
-							}
-						}
-					}));
+					await Promise.all(data[prop].map(entry => DataUtil._pDoMetaMerge_handleCopyProp(prop, flatDependencyData, entry, options)));
 				}));
 				delete data._meta.dependencies;
 			}
@@ -1953,24 +1942,7 @@ DataUtil = {
 			if (data._meta.internalCopies) {
 				Promise.all(data._meta.internalCopies.map(async prop => {
 					if (!data[prop]) return;
-
-					await Promise.all(data[prop].map(async entry => {
-						if (entry._copy) {
-							switch (prop) {
-								case "monster": return DataUtil.monster.pMergeCopy(data[prop], entry, options);
-								case "monsterFluff": return DataUtil.monsterFluff.pMergeCopy(data[prop], entry, options);
-								case "spell": return DataUtil.spell.pMergeCopy(data[prop], entry, options);
-								case "spellFluff": return DataUtil.spellFluff.pMergeCopy(data[prop], entry, options);
-								case "item": return DataUtil.item.pMergeCopy(data[prop], entry, options);
-								case "itemFluff": return DataUtil.itemFluff.pMergeCopy(data[prop], entry, options);
-								case "background": return DataUtil.background.pMergeCopy(data[prop], entry, options);
-								case "race": return DataUtil.race.pMergeCopy(data[prop], entry, options);
-								case "raceFluff": return DataUtil.raceFluff.pMergeCopy(data[prop], entry, options);
-								case "deity": return DataUtil.deity.pMergeCopy(data[prop], entry, options);
-								default: throw new Error(`No internal _copy merge strategy specified for property "${prop}"`);
-							}
-						}
-					}));
+					await Promise.all(data[prop].map(entry => DataUtil._pDoMetaMerge_handleCopyProp(prop, data[prop], entry, options)));
 				}));
 				delete data._meta.internalCopies;
 			}
@@ -2071,23 +2043,46 @@ DataUtil = {
 	},
 
 	async pGetLoadableByMeta (key, value) {
-		// TODO in future, allow value to be e.g. a string (assumed to be an official data's source); an object e.g. `{type: external, url: <>}`,...
+		// TODO(future) allow value to be e.g. a string (assumed to be an official data's source); an object e.g. `{type: external, url: <>}`,...
+		// TODO(future) have this return the data, not a URL
+		// TODO(future) handle homebrew dependencies/refactor "monster" and "spell" + have this be the general form.
 		switch (key) {
 			case "monster": {
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`);
-				if (!index[value]) throw new Error(`Bestiary index did not contain source "${value}"`);
-				return `${Renderer.get().baseUrl}data/bestiary/${index[value]}`;
-			}
-			case "spell": {
-				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/index.json`);
-				if (!index[value]) throw new Error(`Spell index did not contain source "${value}"`);
-				return `${Renderer.get().baseUrl}data/spells/${index[value]}`;
+				if (index[value]) return `${Renderer.get().baseUrl}data/bestiary/${index[value]}`;
+				const brewIndex = await DataUtil.brew.pLoadSourceIndex();
+				if (!brewIndex[value]) throw new Error(`Bestiary index did not contain source "${value}"`);
+				const urlRoot = await StorageUtil.pGet(`HOMEBREW_CUSTOM_REPO_URL`);
+				const brewUrl = DataUtil.brew.getFileUrl(brewIndex[value], urlRoot);
+				await BrewUtil.pDoHandleBrewJson((await DataUtil.loadJSON(brewUrl)), UrlUtil.getCurrentPage());
+				return brewUrl;
 			}
 			case "monsterFluff": {
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/fluff-index.json`);
 				if (!index[value]) throw new Error(`Bestiary fluff index did not contain source "${value}"`);
 				return `${Renderer.get().baseUrl}data/bestiary/${index[value]}`;
 			}
+			case "spell": {
+				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/index.json`);
+				if (index[value]) return `${Renderer.get().baseUrl}data/spells/${index[value]}`;
+				const brewIndex = await DataUtil.brew.pLoadSourceIndex();
+				if (!brewIndex[value]) throw new Error(`Spell index did not contain source "${value}"`);
+				const urlRoot = await StorageUtil.pGet(`HOMEBREW_CUSTOM_REPO_URL`);
+				const brewUrl = DataUtil.brew.getFileUrl(brewIndex[value], urlRoot);
+				await BrewUtil.pDoHandleBrewJson((await DataUtil.loadJSON(brewUrl)), UrlUtil.getCurrentPage());
+				return brewUrl;
+			}
+			case "spellFluff": {
+				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/fluff-index.json`);
+				if (!index[value]) throw new Error(`Spell fluff index did not contain source "${value}"`);
+				return `${Renderer.get().baseUrl}data/spells/${index[value]}`;
+			}
+			// case "item":
+			// case "itemFluff":
+			case "background": return `${Renderer.get().baseUrl}data/backgrounds.json`;
+			// case "race":
+			case "raceFluff": return `${Renderer.get().baseUrl}data/fluff-races.json`;
+			// case "deity":
 			default: throw new Error(`Could not get loadable URL for \`${JSON.stringify({key, value})}\``);
 		}
 	},
@@ -2209,7 +2204,7 @@ DataUtil = {
 				const re = new RegExp(modInfo.replace, `g${modInfo.flags || ""}`);
 				const handlers = {
 					// TODO(Future) may need to have this handle replaces inside _some_ tags
-					string: (ident, str) => {
+					string: (str) => {
 						const split = Renderer.splitByTags(str);
 						const len = split.length;
 						for (let i = 0; i < len; ++i) {
@@ -2221,9 +2216,9 @@ DataUtil = {
 				};
 
 				copyTo[prop].forEach(it => {
-					if (it.entries) it.entries = DataUtil.generic._walker_replaceTxt.walk("replaceTxt", it.entries, handlers);
-					if (it.headerEntries) it.headerEntries = DataUtil.generic._walker_replaceTxt.walk("replaceTxt", it.headerEntries, handlers);
-					if (it.footerEntries) it.footerEntries = DataUtil.generic._walker_replaceTxt.walk("replaceTxt", it.footerEntries, handlers);
+					if (it.entries) it.entries = DataUtil.generic._walker_replaceTxt.walk(it.entries, handlers);
+					if (it.headerEntries) it.headerEntries = DataUtil.generic._walker_replaceTxt.walk(it.headerEntries, handlers);
+					if (it.footerEntries) it.footerEntries = DataUtil.generic._walker_replaceTxt.walk(it.footerEntries, handlers);
 				});
 			}
 
@@ -3039,6 +3034,11 @@ DataUtil = {
 			return DataUtil.loadJSON(`${urlRoot}_generated/index-props.json`);
 		},
 
+		async pLoadSourceIndex (urlRoot) {
+			urlRoot = DataUtil.brew._getCleanUrlRoot(urlRoot);
+			return DataUtil.loadJSON(`${urlRoot}_generated/index-sources.json`);
+		},
+
 		getFileUrl (path, urlRoot) {
 			urlRoot = DataUtil.brew._getCleanUrlRoot(urlRoot);
 			return `${urlRoot}${path}`;
@@ -3073,7 +3073,7 @@ RollerUtil = {
 		const range = max - min;
 		const bytesNeeded = Math.ceil(Math.log2(range) / 8);
 		const randomBytes = new Uint8Array(bytesNeeded);
-		const maximumRange = Math.pow(Math.pow(2, 8), bytesNeeded);
+		const maximumRange = (2 ** 8) ** bytesNeeded;
 		const extendedRange = Math.floor(maximumRange / range) * range;
 		let i;
 		let randomInteger;
@@ -3117,7 +3117,7 @@ RollerUtil = {
 			}
 		});
 
-		$(`#filter-search-input-group`).find(`#reset`).before($btnRoll);
+		$(`#filter-search-group`).find(`#reset`).before($btnRoll);
 	},
 
 	isRollCol (colLabel) {
@@ -3512,7 +3512,7 @@ BrewUtil = {
 					<hr class="manbrew__hr">
 					<div class="manbrew__load_all_wrp">${$btnAll}</div>
 					${$iptSearch}
-					<div class="filtertools manbrew__filtertools sortlabel btn-group lst__form-bottom">
+					<div class="filtertools manbrew__filtertools sortlabel btn-group input-group input-group--bottom flex no-shrink">
 						<button class="col-4 sort btn btn-default btn-xs" data-sort="name">Name</button>
 						<button class="col-3 sort btn btn-default btn-xs" data-sort="author">Author</button>
 						<button class="col-1-2 sort btn btn-default btn-xs" data-sort="category">Category</button>
@@ -3757,7 +3757,6 @@ BrewUtil = {
 		if (BrewUtil._lists) BrewUtil._lists.forEach(l => l.update());
 		BrewUtil._persistHomebrewDebounced();
 		BrewUtil.removeJsonSource(source);
-		if (UrlUtil.getCurrentPage() === UrlUtil.PG_MAKE_SHAPED) removeBrewSource(source);
 		// remove the source from the filters and re-render the filter box
 		if (BrewUtil._sourceFilter) BrewUtil._sourceFilter.removeItem(source);
 		if (BrewUtil._filterBox) BrewUtil._filterBox.render();
@@ -3921,8 +3920,8 @@ BrewUtil = {
 			const $lst = $$`
 				<div class="flex-col h-100">
 					${$iptSearch}
-					<div class="filtertools manbrew__filtertools sortlabel btn-group lst__form-bottom">
-						<button class="col-5 sort btn btn-default btn-xs" data-sort="source">Source</button>
+					<div class="filtertools manbrew__filtertools sortlabel btn-group input-group input-group--bottom flex no-shrink">
+						<button class="col-5 sort btn btn-default btn-xs ve-grow" data-sort="source">Source</button>
 						<button class="col-4 sort btn btn-default btn-xs" data-sort="authors">Authors</button>
 						<button class="col-1 btn btn-default btn-xs" disabled>Origin</button>
 						<button class="btn btn-default btn-xs" disabled>&nbsp;</button>
@@ -4021,7 +4020,6 @@ BrewUtil = {
 			case UrlUtil.PG_ADVENTURES: return ["adventure", "adventureData"];
 			case UrlUtil.PG_BOOKS: return ["book", "bookData"];
 			case UrlUtil.PG_TABLES: return ["table", "tableGroup"];
-			case UrlUtil.PG_MAKE_SHAPED: return ["spell", "monster"];
 			case UrlUtil.PG_MAKE_BREW: return [
 				..._PG_SPELLS,
 				..._PG_BESTIARY,
@@ -4379,7 +4377,6 @@ BrewUtil = {
 			case UrlUtil.PG_ADVENTURES:
 			case UrlUtil.PG_BOOK:
 			case UrlUtil.PG_BOOKS:
-			case UrlUtil.PG_MAKE_SHAPED:
 			case UrlUtil.PG_TABLES:
 			case UrlUtil.PG_VEHICLES:
 			case UrlUtil.PG_ACTIONS:
@@ -4392,7 +4389,7 @@ BrewUtil = {
 				break;
 			case UrlUtil.PG_MANAGE_BREW:
 			case UrlUtil.PG_DEMO_RENDER:
-			case "NO_PAGE":
+			case VeCt.PG_NONE:
 				// No-op
 				break;
 			default:
@@ -4970,6 +4967,31 @@ Array.prototype.unique = Array.prototype.unique || function (fnGetProp) {
 		seen.add(val);
 		return true;
 	});
+};
+
+Array.prototype.zip = Array.prototype.zip || function (otherArray) {
+	const out = [];
+	const len = Math.max(this.length, otherArray.length);
+	for (let i = 0; i < len; ++i) {
+		out.push([this[i], otherArray[i]]);
+	}
+	return out;
+};
+
+Array.prototype.nextWrap = Array.prototype.nextWrap || function (item) {
+	const ix = this.indexOf(item);
+	if (~ix) {
+		if (ix + 1 < this.length) return this[ix + 1];
+		else return this[0];
+	} else return this.last();
+};
+
+Array.prototype.prevWrap = Array.prototype.prevWrap || function (item) {
+	const ix = this.indexOf(item);
+	if (~ix) {
+		if (ix - 1 >= 0) return this[ix - 1];
+		else return this.last();
+	} else return this[0];
 };
 
 // OVERLAY VIEW ========================================================================================================

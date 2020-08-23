@@ -99,7 +99,7 @@ class TablePage {
 		let htmlText = `
 		<tr>
 			<td colspan="6">
-				<table class="striped-odd">
+				<table class="stripe-odd">
 					<caption>${tableName}</caption>
 					<thead>
 						<tr>

@@ -47,7 +47,44 @@
 					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"Two {@item dagger|phb|daggers}"
 				],
-				"goldAlternative": "{@dice 3d4 × 10|3d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 3d4 × 10|3d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"light crossbow|phb",
+							"crossbow bolts (20)|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"a": [
+							"component pouch|phb"
+						],
+						"b": [
+							"arcane focus|phb"
+						]
+					},
+					{
+						"a": [
+							"dungeoneer's pack|phb"
+						],
+						"b": [
+							"explorer's pack|phb"
+						]
+					},
+					{
+						"_": [
+							{
+								"item": "dagger|phb",
+								"count": 2
+							}
+						]
+					}
+				]
 			},
 			"multiclassing": {
 				"requirements": {
@@ -1305,7 +1342,7 @@
 					"type": "entries",
 					"name": "Spellcasting Focus",
 					"entries": [
-						"You can use an arcane focus (found in chapter 5) as a spellcasting focus for your sorcerer spells."
+						"You can use an {@item arcane focus|phb} as a spellcasting focus for your sorcerer spells."
 					]
 				}
 			]
@@ -1840,7 +1877,7 @@
 						]
 					]
 				},
-				"You can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your Proficiency bonus is doubled if it applies to the check."
+				"You can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check."
 			]
 		},
 		{
@@ -1960,7 +1997,7 @@
 						],
 						[
 							"05-06",
-							"A modron chosen and controlled by the DM appears in an unoccupied space within 5 feet of you, then disappears 1 minute later."
+							"A {@filter modron|bestiary|search=modron} chosen and controlled by the DM appears in an unoccupied space within 5 feet of you, then disappears 1 minute later."
 						],
 						[
 							"07-08",

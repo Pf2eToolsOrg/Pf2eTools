@@ -628,111 +628,130 @@ const BookUtil = {
 		}
 	},
 
-	_$body: null,
 	_$findAll: null,
 	_headerCounts: null,
 	_lastHighlight: null,
 	addSearch (indexData, bookId) {
-		BookUtil._$body = BookUtil._$body || $(`body`);
-
-		BookUtil._$body.on("click", () => {
+		$(document.body).on("click", () => {
 			if (BookUtil._$findAll) BookUtil._$findAll.remove();
 		});
 
-		BookUtil._$body.off("keypress");
-		BookUtil._$body.on("keypress", (e) => {
-			if (((e.key === "f" || e.key === "g") && noModifierKeys(e))) {
-				if (MiscUtil.isInInput(e)) return;
+		$(document.body)
+			.off("keypress")
+			.on("keypress", (e) => {
+				if (!((e.key === "f" || e.key === "g") && EventUtil.noModifierKeys(e))) return;
+				if (EventUtil.isInInput(e)) return;
 				e.preventDefault();
+				BookUtil._showSearchBox(indexData, bookId, e.key === "g");
+			});
 
-				const isPageMode = e.key === "g";
+		// region Mobile only "open find bar" buttons
+		const $btnOpenFind = $(`<button class="btn btn-default btn-sm bk__btn-find" title="Find">F</button>`)
+			.click(evt => {
+				evt.stopPropagation();
+				BookUtil._showSearchBox(indexData, bookId, false);
+			});
 
-				$(`span.temp`).contents().unwrap();
-				BookUtil._lastHighlight = null;
-				if (BookUtil._$findAll) BookUtil._$findAll.remove();
-				BookUtil._$findAll = $(`<div class="f-all-wrapper"/>`).on("click", (e) => {
-					e.stopPropagation();
-				});
+		const $btnOpenGoto = $(`<button class="btn btn-default btn-sm bk__btn-goto" title="Go to Page">G</button>`)
+			.click(evt => {
+				evt.stopPropagation();
+				BookUtil._showSearchBox(indexData, bookId, true);
+			});
 
-				const $results = $(`<div class="f-all-out">`);
-				const $srch = $(`<input class="form-control" placeholder="${isPageMode ? "Go to page number..." : "Find text..."}">`).on("keypress", (e) => {
-					e.stopPropagation();
+		$$`<div class="mobile__visible bk__wrp-btns-open-find btn-group">
+			${$btnOpenFind}${$btnOpenGoto}
+		</div>`.appendTo(document.body);
+	},
 
-					if (e.key === "Enter" && noModifierKeys(e)) {
-						const term = $srch.val();
-						if (isPageMode) {
-							if (!/^\d+$/.exec(term.trim())) {
-								return JqueryUtil.doToast({
-									content: `Please enter a valid page number.`,
-									type: "danger"
-								});
-							}
-						}
+	_showSearchBox (indexData, bookId, isPageMode) {
+		$(`span.temp`).contents().unwrap();
+		BookUtil._lastHighlight = null;
+		if (BookUtil._$findAll) BookUtil._$findAll.remove();
+		BookUtil._$findAll = $(`<div class="f-all-wrapper"/>`)
+			.on("click", (e) => {
+				e.stopPropagation();
+			});
 
-						$results.html("");
+		const $results = $(`<div class="f-all-out">`);
+		const $srch = $(`<input class="form-control" placeholder="${isPageMode ? "Go to page number..." : "Find text..."}">`)
+			.on("keydown", (e) => {
+				e.stopPropagation();
 
-						const found = BookUtil.search.doSearch(term, isPageMode);
-
-						if (found.length) {
-							$results.show();
-							found.forEach(f => {
-								const $row = $(`<p class="f-result"/>`);
-								const $ptLink = $(`<span/>`);
-								const isLitTitle = f.headerMatches && !f.page;
-								const $link = $(
-									`<a href="#${BookUtil.search.getResultHash(bookId, f)}">
-									<i>${Parser.bookOrdinalToAbv(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name}${f.header ? ` \u2013 ${isLitTitle ? `<span class="highlight">` : ""}${f.header}${isLitTitle ? `</span>` : ""}` : ""}</i>
-								</a>`
-								);
-								$ptLink.append($link);
-								$row.append($ptLink);
-
-								if (!isPageMode && f.previews) {
-									const $ptPreviews = $(`<a href="#${BookUtil.search.getResultHash(bookId, f)}"/>`);
-									const re = new RegExp(f.term.escapeRegexp(), "gi");
-
-									$ptPreviews.on("click", () => {
-										setTimeout(() => {
-											if (BookUtil._lastHighlight === null || BookUtil._lastHighlight !== f.term.toLowerCase()) {
-												BookUtil._lastHighlight = f.term;
-												$(`#pagecontent`)
-													.find(`p:containsInsensitive("${f.term}"), li:containsInsensitive("${f.term}"), td:containsInsensitive("${f.term}"), a:containsInsensitive("${f.term}")`)
-													.each((i, ele) => {
-														$(ele).html($(ele).html().replace(re, "<span class='temp highlight'>$&</span>"))
-													});
-											}
-										}, 15)
-									});
-
-									$ptPreviews.append(`<span>${f.previews[0]}</span>`);
-									if (f.previews[1]) {
-										$ptPreviews.append(" ... ");
-										$ptPreviews.append(`<span>${f.previews[1]}</span>`);
-									}
-									$row.append($ptPreviews);
-
-									$link.on("click", () => $ptPreviews.click());
-								} else {
-									if (f.page) {
-										const $ptPage = $(`<span>Page ${f.page}</span>`);
-										$row.append($ptPage);
-									}
-								}
-
-								$results.append($row);
+				if (e.key === "Enter" && EventUtil.noModifierKeys(e)) {
+					const term = $srch.val();
+					if (isPageMode) {
+						if (!/^\d+$/.exec(term.trim())) {
+							return JqueryUtil.doToast({
+								content: `Please enter a valid page number.`,
+								type: "danger"
 							});
-						} else {
-							$results.hide();
 						}
 					}
-				});
-				BookUtil._$findAll.append($srch).append($results);
 
-				BookUtil._$body.append(BookUtil._$findAll);
+					$results.html("");
 
-				$srch.focus();
-			}
-		});
+					const found = BookUtil.search.doSearch(term, isPageMode);
+
+					if (found.length) {
+						$results.show();
+						found.forEach(f => {
+							const $row = $(`<p class="f-result"/>`);
+							const $ptLink = $(`<span/>`);
+							const isLitTitle = f.headerMatches && !f.page;
+							const $link = $(
+								`<a href="#${BookUtil.search.getResultHash(bookId, f)}">
+									<i>${Parser.bookOrdinalToAbv(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name}${f.header ? ` \u2013 ${isLitTitle ? `<span class="highlight">` : ""}${f.header}${isLitTitle ? `</span>` : ""}` : ""}</i>
+								</a>`
+							);
+							$ptLink.append($link);
+							$row.append($ptLink);
+
+							if (!isPageMode && f.previews) {
+								const $ptPreviews = $(`<a href="#${BookUtil.search.getResultHash(bookId, f)}"/>`);
+								const re = new RegExp(f.term.escapeRegexp(), "gi");
+
+								$ptPreviews.on("click", () => {
+									setTimeout(() => {
+										if (BookUtil._lastHighlight === null || BookUtil._lastHighlight !== f.term.toLowerCase()) {
+											BookUtil._lastHighlight = f.term;
+											$(`#pagecontent`)
+												.find(`p:containsInsensitive("${f.term}"), li:containsInsensitive("${f.term}"), td:containsInsensitive("${f.term}"), a:containsInsensitive("${f.term}")`)
+												.each((i, ele) => {
+													$(ele).html($(ele).html().replace(re, "<span class='temp highlight'>$&</span>"))
+												});
+										}
+									}, 15)
+								});
+
+								$ptPreviews.append(`<span>${f.previews[0]}</span>`);
+								if (f.previews[1]) {
+									$ptPreviews.append(" ... ");
+									$ptPreviews.append(`<span>${f.previews[1]}</span>`);
+								}
+								$row.append($ptPreviews);
+
+								$link.on("click", () => $ptPreviews.click());
+							} else {
+								if (f.page) {
+									const $ptPage = $(`<span>Page ${f.page}</span>`);
+									$row.append($ptPage);
+								}
+							}
+
+							$results.append($row);
+						});
+					} else {
+						$results.hide();
+					}
+				} else if (e.key === "Escape" && EventUtil.noModifierKeys(e)) {
+					BookUtil._$findAll.remove();
+				}
+			});
+		BookUtil._$findAll.append($srch).append($results);
+
+		$(document.body).append(BookUtil._$findAll);
+
+		$srch.focus();
 	},
 
 	search: {
@@ -912,10 +931,9 @@ const BookUtil = {
 
 			const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
 			walker.walk(
-				"pageNumbers",
 				toSearch,
 				{
-					object: (ident, obj) => {
+					object: (obj) => {
 						if (obj.page) {
 							if (obj.page <= targetPage) closestBelow = Math.max(closestBelow, obj.page);
 							if (obj.page >= targetPage) closestAbove = Math.min(closestAbove, obj.page);

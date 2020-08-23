@@ -8207,7 +8207,7 @@
 						{
 							"name": "Feat",
 							"entries": [
-								"You gain one feat of your choice."
+								"You gain one {@5etools feat|feats.html} of your choice."
 							],
 							"type": "entries"
 						}
@@ -10827,11 +10827,37 @@
 									"Orcs stand easily 8 feet tall and corded with powerful muscles, weighing up to 280 pounds. Your size is Medium."
 								]
 							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Primal Intuition",
+							"items": {
+								"type": "entries",
+								"name": "Primal Intuition",
+								"entries": [
+									"You have proficiency in two of the following skills of your choice: {@skill Animal Handling}, {@skill Insight}, {@skill Intimidation}, {@skill Medicine}, {@skill Perception}, and {@skill Survival}."
+								]
+							}
 						}
 					]
 				}
 			},
-			"heightAndWeight": null
+			"heightAndWeight": null,
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"animal handling",
+							"insight",
+							"intimidation",
+							"medicine",
+							"perception",
+							"survival"
+						],
+						"count": 2
+					}
+				}
+			]
 		},
 		{
 			"name": "Orc",

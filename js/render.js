@@ -458,7 +458,7 @@ function Renderer () {
 			}
 		}
 
-		textStack[0] += `<table class="${entry.style || ""} ${entry.isStriped === false ? "" : "striped-odd"}">`;
+		textStack[0] += `<table class="${entry.style || ""} ${entry.isStriped === false ? "" : "stripe-odd"}">`;
 
 		const autoMkRoller = Renderer.isRollableTable(entry);
 
@@ -587,11 +587,16 @@ function Renderer () {
 		this._renderEntriesSubtypes(entry, textStack, meta, options, true);
 	};
 
+	this._getPagePart = function (entry, isInset) {
+		if (!Renderer.utils.isDisplayPage(entry.page)) return "";
+		return ` <span class="rd__title-link ${isInset ? `rd__title-link--inset` : ""}">${entry.source ? `<span class="help--subtle" title="${Parser.sourceJsonToFull(entry.source)}">${Parser.sourceJsonToAbv(entry.source)}</span> ` : ""}p${entry.page}</span>`;
+	};
+
 	this._inlineHeaderTerminators = new Set([".", ",", "!", "?", ";", ":"]);
 	this._renderEntriesSubtypes = function (entry, textStack, meta, options, incDepth) {
 		const isInlineTitle = meta.depth >= 2;
 		const isAddPeriod = isInlineTitle && entry.name && !this._inlineHeaderTerminators.has(entry.name[entry.name.length - 1]);
-		const pagePart = !isInlineTitle && Renderer.utils.isDisplayPage(entry.page) ? ` <span class="rd__title-link">${entry.source ? `<span class="help--subtle" title="${Parser.sourceJsonToFull(entry.source)}">${Parser.sourceJsonToAbv(entry.source)}</span> ` : ""}p${entry.page}</span>` : "";
+		const pagePart = !isInlineTitle ? this._getPagePart(entry) : "";
 		const nextDepth = incDepth && meta.depth < 2 ? meta.depth + 1 : meta.depth;
 		const styleString = this._renderEntriesSubtypes_getStyleString(entry, meta, isInlineTitle);
 		const dataString = this._renderEntriesSubtypes_getDataString(entry);
@@ -708,7 +713,7 @@ function Renderer () {
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
-			textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
+			textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span>${this._getPagePart(entry, true)}</span>`;
 		}
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -734,7 +739,7 @@ function Renderer () {
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
-			textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
+			textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span>${this._getPagePart(entry, true)}</span>`;
 		}
 		const len = entry.entries.length;
 		for (let i = 0; i < len; ++i) {
@@ -850,9 +855,9 @@ function Renderer () {
 	this._renderQuote = function (entry, textStack, meta, options) {
 		const len = entry.entries.length;
 		for (let i = 0; i < len; ++i) {
-			textStack[0] += `<p class="rd__quote-line ${i === len - 1 && entry.by ? `rd__quote-line--last` : ""}">`;
+			textStack[0] += `<p class="rd__quote-line ${i === len - 1 && entry.by ? `rd__quote-line--last` : ""}">${i === 0 ? "&ldquo;" : ""}`;
 			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<i>", suffix: "</i>"});
-			textStack[0] += `</p>`;
+			textStack[0] += `${i === len - 1 ? "&rdquo;" : ""}</p>`;
 		}
 		if (entry.by) {
 			textStack[0] += `<p>`;
@@ -916,7 +921,7 @@ function Renderer () {
 	};
 
 	this._renderBonusSpeed = function (entry, textStack, meta, options) {
-		textStack[0] += `${entry.value < 0 ? "" : "+"}${entry.value} ft.`;
+		textStack[0] += entry.value === 0 ? "\u2014" : `${entry.value < 0 ? "" : "+"}${entry.value} ft.`;
 	};
 
 	this._renderDice = function (entry, textStack, meta, options) {
@@ -1101,7 +1106,7 @@ function Renderer () {
 
 		if (entry.entries) {
 			const len = entry.entries.length;
-			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta)
+			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"})
 		} else if (entry.movedTo) {
 			textStack[0] += `<i>This content has been moved to ${entry.movedTo}.</i>`;
 		} else {
@@ -2008,8 +2013,8 @@ Renderer.applyProperties = function (entry, object) {
 Renderer.applyProperties._leadingAn = new Set(["a", "e", "i", "o", "u"]);
 
 Renderer.applyAllProperties = function (entries, object) {
-	const handlers = {string: (ident, str) => Renderer.applyProperties(str, object)};
-	return MiscUtil.getWalker().walk("applyAllProperties", entries, handlers);
+	const handlers = {string: (str) => Renderer.applyProperties(str, object)};
+	return MiscUtil.getWalker().walk(entries, handlers);
 };
 
 Renderer.attackTagToFull = function (tagStr) {
@@ -2916,7 +2921,7 @@ Renderer.spell = {
 			${Renderer.utils.getExcludedTr(spell, "spell", UrlUtil.PG_SPELLS)}
 			${Renderer.utils.getNameTr(spell, {page: UrlUtil.PG_SPELLS})}
 			<tr><td colspan="6">
-				<table class="summary striped-even">
+				<table class="summary stripe-even">
 					<tr>
 						<th colspan="1">Level</th>
 						<th colspan="1">School</th>
@@ -3345,7 +3350,7 @@ Renderer.race = {
 			${Renderer.utils.getNameTr(race, {page: UrlUtil.PG_RACES})}
 			${!race._isBaseRace ? `
 			<tr><td colspan="6">
-				<table class="summary striped-even">
+				<table class="summary stripe-even">
 					<tr>
 						<th class="col-4 text-center">Ability Scores</th>
 						<th class="col-4 text-center">Size</th>
@@ -3654,7 +3659,7 @@ Renderer.object = {
 			${Renderer.utils.getExcludedTr(obj, "object", UrlUtil.PG_OBJECTS)}
 			${Renderer.utils.getNameTr(obj, {page: UrlUtil.PG_OBJECTS})}
 			<tr><td colspan="6">
-				<table class="summary striped-even">
+				<table class="summary stripe-even">
 					<tr>
 						<th colspan="2" class="text-center">Type</th>
 						<th colspan="2" class="text-center">AC</th>
@@ -4086,7 +4091,7 @@ Renderer.monster = {
 			</td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
-				<table class="summary striped-even">
+				<table class="summary stripe-even">
 					<tr>
 						<th class="col-2 text-center">STR</th>
 						<th class="col-2 text-center">DEX</th>
@@ -4457,8 +4462,11 @@ Renderer.item = {
 		}
 		if (item.type) {
 			const fullType = Renderer.item.getItemTypeName(item.type);
+
 			if (!showingBase && !!item.baseItem) typeListHtml.push(`${fullType} (${Renderer.get().render(`{@item ${item.baseItem}}`)})`);
+			else if (item.type === "S") typeListHtml.push(Renderer.get().render(`armor ({@item shield|phb})`));
 			else typeListHtml.push(fullType);
+
 			typeListText.push(fullType);
 		}
 		if (item.poison) {
@@ -4472,7 +4480,7 @@ Renderer.item = {
 		const renderer = Renderer.get();
 
 		const handlers = {
-			string: (ident, str) => {
+			string: (str) => {
 				const stack = [];
 				let depth = 0;
 
@@ -4517,13 +4525,13 @@ Renderer.item = {
 		const renderStack = [];
 		if (item._fullEntries || (item.entries && item.entries.length)) {
 			const entryList = MiscUtil.copy({type: "entries", entries: item._fullEntries || item.entries});
-			const procEntryList = MiscUtil.getWalker({keyBlacklist: walkerKeyBlacklist}).walk("italiciseName", entryList, handlers);
+			const procEntryList = MiscUtil.getWalker({keyBlacklist: walkerKeyBlacklist}).walk(entryList, handlers);
 			renderer.recursiveRender(procEntryList, renderStack, {depth: 1});
 		}
 
 		if (item._fullAdditionalEntries || item.additionalEntries) {
 			const additionEntriesList = MiscUtil.copy({type: "entries", entries: item._fullAdditionalEntries || item.additionalEntries});
-			const procAdditionEntriesList = MiscUtil.getWalker({keyBlacklist: walkerKeyBlacklist}).walk("italiciseName", additionEntriesList, handlers);
+			const procAdditionEntriesList = MiscUtil.getWalker({keyBlacklist: walkerKeyBlacklist}).walk(additionEntriesList, handlers);
 			renderer.recursiveRender(procAdditionEntriesList, renderStack, {depth: 1});
 		}
 
@@ -4781,7 +4789,7 @@ Renderer.item = {
 			curBaseItem._category = "Basic";
 			if (curBaseItem.entries == null) curBaseItem.entries = [];
 
-			if (curBaseItem.quantity) return; // e.g. "Arrows (20)"
+			if (curBaseItem.packContents) return; // e.g. "Arrows (20)"
 
 			genericVariants.forEach((curGenericVariant) => {
 				if (!hasRequiredProperty(curBaseItem, curGenericVariant)) return;
@@ -5354,9 +5362,10 @@ Renderer.vehicle = {
 				<div><b>Creature Capacity</b> ${Renderer.vehicle.getShipCreatureCapacity(veh)}</div>
 				${veh.capCargo ? `<div><b>Cargo Capacity</b> ${typeof veh.capCargo === "string" ? veh.capCargo : `${veh.capCargo} ton${veh.capCargo === 1 ? "" : "s"}`}</div>` : ""}
 				<div><b>Travel Pace</b> ${veh.pace} miles per hour (${veh.pace * 24} miles per day)</div>
+				<div class="ve-muted ve-small help--subtle ml-2" title="Based on &quot;Special Travel Pace,&quot; DMG p242">[<b>Speed</b> ${veh.pace * 10} ft.]</div>
 			</td></tr>
 			<tr><td colspan="6">
-				<table class="summary striped-even">
+				<table class="summary stripe-even">
 					<tr>
 						<th class="col-2 text-center">STR</th>
 						<th class="col-2 text-center">DEX</th>
@@ -5412,9 +5421,10 @@ Renderer.vehicle = {
 				<div><b>Armor Class</b> ${dexMod === 0 ? `19` : `${19 + dexMod} (19 while motionless)`}</div>
 				<div><b>Hit Points</b> ${veh.hp.hp} (damage threshold ${veh.hp.dt}, mishap threshold ${veh.hp.mt})</div>
 				<div><b>Speed</b> ${veh.speed} ft.</div>
+				<div class="ve-muted ve-small help--subtle ml-2" title="Based on &quot;Special Travel Pace,&quot; DMG p242">[<b>Travel Pace</b> ${Math.floor(veh.speed / 10)} miles per hour (${Math.floor(veh.speed * 24 / 10)} miles per day)]</div>
 			</td></tr>
 			<tr><td colspan="6">
-				<table class="summary striped-even">
+				<table class="summary stripe-even">
 					<tr>
 						<th class="col-2 text-center">STR</th>
 						<th class="col-2 text-center">DEX</th>
@@ -5516,9 +5526,10 @@ Renderer.adventureBook = {
 	getEntryIdLookup (bookData, doThrowError = true) {
 		const out = {};
 
+		let chapIx;
 		const depthStack = [];
 		const handlers = {
-			object: (chapIx, obj) => {
+			object: (obj) => {
 				Renderer.ENTRIES_WITH_CHILDREN
 					.filter(meta => meta.key === "entries")
 					.forEach(meta => {
@@ -5545,7 +5556,7 @@ Renderer.adventureBook = {
 					});
 				return obj;
 			},
-			postObject: (chapIx, obj) => {
+			postObject: (obj) => {
 				Renderer.ENTRIES_WITH_CHILDREN
 					.filter(meta => meta.key === "entries")
 					.forEach(meta => {
@@ -5556,7 +5567,10 @@ Renderer.adventureBook = {
 			}
 		};
 
-		bookData.forEach((chap, chapIx) => MiscUtil.getWalker().walk(chapIx, chap, handlers));
+		bookData.forEach((chap, _chapIx) => {
+			chapIx = _chapIx;
+			MiscUtil.getWalker().walk(chap, handlers);
+		});
 
 		if (doThrowError) if (out.__BAD) throw new Error(`IDs were already in storage: ${out.__BAD.map(it => `"${it}"`).join(", ")}`);
 
@@ -6469,7 +6483,7 @@ Renderer.hover = {
 	 * @param [opts.isCopy] If a copy, rather than the original entity, should be returned.
 	 */
 	async pCacheAndGetHash (page, hash, opts) {
-		const source = hash.split(HASH_LIST_SEP).last();
+		const source = decodeURIComponent(hash.split(HASH_LIST_SEP).last());
 		return Renderer.hover.pCacheAndGet(page, source, hash, opts);
 	},
 
@@ -6486,6 +6500,9 @@ Renderer.hover = {
 		page = page.toLowerCase();
 		source = source.toLowerCase();
 		hash = hash.toLowerCase();
+
+		const existingOut = Renderer.hover._getFromCache(page, source, hash, opts);
+		if (existingOut) return existingOut;
 
 		switch (page) {
 			case "generic":
@@ -6892,7 +6909,7 @@ Renderer.hover = {
 			isNoModification: true
 		});
 		const handlers = {
-			object: (ident, obj) => {
+			object: (obj) => {
 				if (ptrHasRef._) return obj;
 				if (obj.type === "refClassFeature" || obj.type === "refSubclassFeature" || obj.type === "refOptionalfeature") ptrHasRef._ = true;
 				return obj;
@@ -6905,7 +6922,7 @@ Renderer.hover = {
 			Renderer.hover._addToCache(`raw_${page}`, ent.source, hash, ent);
 
 			ptrHasRef._ = false;
-			walker.walk("hover", ent.entries, handlers);
+			walker.walk(ent.entries, handlers);
 
 			(ptrHasRef._ ? entriesWithRefs : entriesWithoutRefs)[hash] = ptrHasRef._ ? MiscUtil.copy(ent) : ent;
 		});
@@ -6918,10 +6935,9 @@ Renderer.hover = {
 
 				const toReplaceMetas = [];
 				walker.walk(
-					"hover",
 					ent.entries,
 					{
-						array: (ident, arr) => {
+						array: (arr) => {
 							for (let i = 0; i < arr.length; ++i) {
 								const it = arr[i];
 								if (it.type === "refClassFeature" || it.type === "refSubclassFeature" || it.type === "refOptionalfeature") {
@@ -6955,9 +6971,13 @@ Renderer.hover = {
 								break;
 							}
 
-							if (entriesWithoutRefs[refHash]) {
+							// Homebrew can e.g. reference cross-file
+							const cpy = entriesWithoutRefs[refHash]
+								? MiscUtil.copy(entriesWithoutRefs[refHash])
+								: Renderer.hover._getFromCache(prop, refUnpacked.source, refHash, {isCopy: true});
+
+							if (cpy) {
 								cntReplaces++;
-								const cpy = MiscUtil.copy(entriesWithoutRefs[refHash]);
 								delete cpy.className;
 								delete cpy.classSource;
 								delete cpy.subclassShortName;

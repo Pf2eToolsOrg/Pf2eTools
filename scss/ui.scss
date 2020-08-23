@@ -97,6 +97,22 @@ Shared UI components
 		background: $rgb-border-grey;
 	}
 
+	&header {
+		border-bottom: 1px solid $rgb-border-grey--trans;
+
+		&--fullscreen {
+			@include shadow-2();
+		}
+	}
+
+	&footer {
+		border-top: 1px solid $rgb-border-grey--trans;
+
+		&--fullscreen {
+			@include shadow-2();
+		}
+	}
+
 	&overlay {
 		position: fixed;
 		z-index: $z-modal-wrapper;
@@ -108,6 +124,10 @@ Shared UI components
 		justify-content: center;
 		align-items: center;
 		background-color: $rgb-modal-overlay-grey;
+	}
+
+	&overlay-blind {
+		background-color: white;
 	}
 
 	&inner {
@@ -156,6 +176,16 @@ Shared UI components
 
 		&--max-width-640p {
 			max-width: 640px;
+		}
+
+		&--mode-fullscreen {
+			max-height: 0;
+			height: 100vh;
+			flex-shrink: 0;
+			min-height: 100vh;
+			border-radius: 0;
+			box-shadow: none;
+			border: 0;
 		}
 	}
 
@@ -225,6 +255,7 @@ Shared UI components
 	&ipt-search {
 		border-radius: 0;
 		width: 100%;
+		border-top: 0;
 	}
 
 	&ipt-search-sub-ipt[type=radio] {

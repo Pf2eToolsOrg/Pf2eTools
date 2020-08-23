@@ -14,8 +14,24 @@ Shared UI components
 
 /* region Modals */
 .night-mode .ui-modal__ {
+	&header {
+		border-color: $rgb-border-grey--trans-night;
+	}
+
+	&footer {
+		border-color: $rgb-border-grey--trans-night;
+	}
+
+	&overlay-blind {
+		background-color: $rgb-bg--night;
+	}
+
 	&row-sep {
 		border-color: $rgb-border-grey--night;
+	}
+
+	&inner--mode-fullscreen {
+		box-shadow: none;
 	}
 }
 /* endregion */

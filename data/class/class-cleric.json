@@ -48,7 +48,53 @@
 					"(a) a {@item priest's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"A {@item shield|phb} and a {@item holy symbol|phb}"
 				],
-				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"mace|phb"
+						],
+						"b": [
+							"warhammer|phb"
+						]
+					},
+					{
+						"a": [
+							"scale mail|phb"
+						],
+						"b": [
+							"leather armor|phb"
+						],
+						"c": [
+							"chain mail|phb"
+						]
+					},
+					{
+						"a": [
+							"light crossbow|phb",
+							"Crossbow Bolts (20)|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"a": [
+							"priest's pack|phb"
+						],
+						"b": [
+							"explorer's pack|phb"
+						]
+					},
+					{
+						"_": [
+							"shield|phb",
+							"holy symbol|phb"
+						]
+					}
+				]
 			},
 			"multiclassing": {
 				"requirements": {
@@ -1914,7 +1960,7 @@
 					"type": "entries",
 					"name": "Spellcasting Focus",
 					"entries": [
-						"You can use a holy symbol (found in chapter 5) as a spellcasting focus for your cleric spells."
+						"You can use a {@item holy symbol|phb} as a spellcasting focus for your cleric spells."
 					]
 				}
 			]
@@ -1933,13 +1979,23 @@
 				"Some Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals your cleric spell save DC.",
 				"Beginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level, you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.",
 				{
-					"type": "entries",
-					"name": "Turn Undead",
-					"entries": [
-						"As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.",
-						"A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the {@action Dash} action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the {@action Dodge} action."
-					]
+					"type": "refClassFeature",
+					"classFeature": "Turn Undead|Cleric||2"
 				}
+			]
+		},
+		{
+			"name": "Turn Undead",
+			"source": "PHB",
+			"page": 36,
+			"srd": true,
+			"className": "Cleric",
+			"classSource": "PHB",
+			"level": 2,
+			"header": 2,
+			"entries": [
+				"As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes any damage.",
+				"A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the {@action Dash} action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the {@action Dodge} action."
 			]
 		},
 		{

@@ -122,7 +122,7 @@ Parser._greatestCommonDivisor = function (a, b) {
 };
 Parser.numberToFractional = function (number) {
 	const len = number.toString().length - 2;
-	let denominator = Math.pow(10, len);
+	let denominator = 10 ** len;
 	let numerator = number * denominator;
 	const divisor = Parser._greatestCommonDivisor(numerator, denominator);
 	numerator = Math.floor(numerator / divisor);
@@ -611,8 +611,7 @@ Parser.FULL_CURRENCY_CONVERSION_TABLE = [
 	},
 	{
 		coin: "pp",
-		mult: 0.001,
-		isFallback: true
+		mult: 0.001
 	}
 ];
 Parser.getCurrencyConversionTable = function (currencyConversionId) {
@@ -1140,6 +1139,7 @@ Parser.spAreaTypeToFull = function (type) {
 
 Parser.SP_MISC_TAG_TO_FULL = {
 	HL: "Healing",
+	THP: "Grants Temporary Hit Points",
 	SGT: "Requires Sight",
 	PRM: "Permanent Effects",
 	SCL: "Scaling Effects",
@@ -1299,8 +1299,8 @@ Parser.monSpellcastingTagToFull = function (tag) {
 
 Parser.MON_MISC_TAG_TO_FULL = {
 	"AOE": "Has Areas of Effect",
-	"MW": "Has Melee Weapon Attacks",
-	"RW": "Has Ranged Weapon Attacks",
+	"MW": "Has Weapon Attacks, Melee",
+	"RW": "Has Weapon Attacks, Ranged",
 	"RNG": "Has Ranged Weapons",
 	"RCH": "Has Reach Attacks",
 	"THW": "Has Thrown Weapons"
@@ -1827,14 +1827,14 @@ SKL_ABV_CON = "C";
 SKL_ABV_PSI = "P";
 Parser.SKL_ABVS = [
 	SKL_ABV_ABJ,
-	SKL_ABV_EVO,
-	SKL_ABV_ENC,
-	SKL_ABV_ILL,
-	SKL_ABV_DIV,
-	SKL_ABV_NEC,
-	SKL_ABV_TRA,
 	SKL_ABV_CON,
-	SKL_ABV_PSI
+	SKL_ABV_DIV,
+	SKL_ABV_ENC,
+	SKL_ABV_EVO,
+	SKL_ABV_ILL,
+	SKL_ABV_NEC,
+	SKL_ABV_PSI,
+	SKL_ABV_TRA
 ];
 
 Parser.SP_TM_ACTION = "action";
@@ -2038,6 +2038,28 @@ Parser.CONDITION_TO_COLOR = {
 	"Concentration": "#009f7a"
 };
 
+Parser.RULE_TYPE_TO_FULL = {
+	"O": "Optional",
+	"V": "Variant",
+	"VO": "Variant Optional",
+	"VV": "Variant Variant",
+	"U": "Unknown"
+};
+
+Parser.ruleTypeToFull = function (ruleType) {
+	return Parser._parse_aToB(Parser.RULE_TYPE_TO_FULL, ruleType);
+};
+
+Parser.VEHICLE_TYPE_TO_FULL = {
+	"SHIP": "Ship",
+	"INFWAR": "Infernal War Machine",
+	"CREATURE": "Creature"
+};
+
+Parser.vehicleTypeToFull = function (vehicleType) {
+	return Parser._parse_aToB(Parser.VEHICLE_TYPE_TO_FULL, vehicleType);
+};
+
 SRC_CoS = "CoS";
 SRC_DMG = "DMG";
 SRC_EEPC = "EEPC";
@@ -2178,6 +2200,7 @@ SRC_UAR = `${SRC_UA_PREFIX}Ranger`;
 SRC_UA2020SC1 = `${SRC_UA_PREFIX}2020SubclassesPt1`;
 SRC_UA2020SC2 = `${SRC_UA_PREFIX}2020SubclassesPt2`;
 SRC_UA2020SC3 = `${SRC_UA_PREFIX}2020SubclassesPt3`;
+SRC_UA2020SC4 = `${SRC_UA_PREFIX}2020SubclassesPt4`;
 SRC_UA2020SMT = `${SRC_UA_PREFIX}2020SpellsAndMagicTattoos`;
 SRC_UA2020POR = `${SRC_UA_PREFIX}2020PsionicOptionsRevisited`;
 SRC_UA2020SCR = `${SRC_UA_PREFIX}2020SubclassesRevisited`;
@@ -2327,6 +2350,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UAR] = `${UA_PREFIX}Ranger`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC1] = `${UA_PREFIX}2020 Subclasses, Part 1`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC2] = `${UA_PREFIX}2020 Subclasses, Part 2`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC3] = `${UA_PREFIX}2020 Subclasses, Part 3`;
+Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC4] = `${UA_PREFIX}2020 Subclasses, Part 4`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SMT] = `${UA_PREFIX}2020 Spells and Magic Tattoos`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020POR] = `${UA_PREFIX}2020 Psionic Options Revisited`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SCR] = `${UA_PREFIX}2020 Subclasses Revisited`;
@@ -2466,6 +2490,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UAR] = "UAR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC1] = "UA2S1";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC2] = "UA2S2";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC3] = "UA2S3";
+Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC4] = "UA2S4";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SMT] = "UA2SMT";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020POR] = "UA2POR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SCR] = "UA2SCR";
@@ -2603,6 +2628,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_UAR] = "2015-09-09";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC1] = "2020-01-14";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC2] = "2020-02-04";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC3] = "2020-02-24";
+Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC4] = "2020-08-05";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SMT] = "2020-03-26";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020POR] = "2020-04-14";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SCR] = "2020-05-12";

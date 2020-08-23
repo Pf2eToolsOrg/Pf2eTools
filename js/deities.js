@@ -1,18 +1,5 @@
 "use strict";
 
-const STR_REPRINTED = "reprinted";
-
-function unpackAlignment (g) {
-	g.alignment.sort(SortUtil.alignmentSort);
-	if (g.alignment.length === 2 && g.alignment.includes("N")) {
-		const out = [...g.alignment];
-		if (out[0] === "N") out[0] = "NX";
-		else out[1] = "NY";
-		return out;
-	}
-	return MiscUtil.copy(g.alignment);
-}
-
 class DeitiesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterDeities();
@@ -55,6 +42,7 @@ class DeitiesPage extends ListPage {
 			{
 				hash,
 				source,
+				title: g.title || "",
 				pantheon: g.pantheon,
 				alignment,
 				domains

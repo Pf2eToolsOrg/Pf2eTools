@@ -90,7 +90,9 @@
 	<div class="row">
 		<div class="form-group col-12">
 			<button class="btn btn-default mr-2" onclick="Blacklist.addAllUa()">Exclude All UA/etc.</button>
-			<button class="btn btn-default help" onclick="Blacklist.removeAllUa()" title="Removes entries added by the &quot;Exclude All UA/etc.&quot; button.">Include All UA/etc.</button>
+			<button class="btn btn-default help mr-2" onclick="Blacklist.removeAllUa()" title="Removes entries added by the &quot;Exclude All UA/etc.&quot; button.">Include All UA/etc.</button>
+			<button class="btn btn-default mr-2" onclick="Blacklist.addAllSources()">Exclude All Sources</button>
+			<button class="btn btn-default help" onclick="Blacklist.removeAllSources()" title="Removes entries added by the &quot;Exclude All Sources&quot; button.">Include All Sources</button>
 		</div>
 	</div>
 
@@ -140,7 +142,7 @@
 	<div class="text-muted subtitle"><i>Rows marked with a star (*) in a field match everything in that field</i></div>
 	<div class="row" id="listcontainer">
 
-		<div class="lst__form-top" id="filter-search-input-group">
+		<div class="lst__form-top" id="filter-search-group">
 			<div class="w-100 relative">
 				<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
 				<div class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
@@ -149,8 +151,8 @@
 			<button class="btn btn-default" id="reset">Reset Search</button>
 		</div>
 
-		<div id="filtertools" class="sortlabel lst__form-bottom">
-			<button class="col-5 sort btn btn-default btn-xs" data-sort="source">Source</button>
+		<div id="filtertools" class="sortlabel input-group input-group--bottom flex no-shrink">
+			<button class="col-5 sort btn btn-default btn-xs ve-grow" data-sort="source">Source</button>
 			<button class="col-3 sort btn btn-default btn-xs" data-sort="category">Category</button>
 			<button class="col-3 sort btn btn-default btn-xs" data-sort="name">Name</button>
 			<button class="sort btn btn-default btn-xs" disabled>&nbsp;</button>

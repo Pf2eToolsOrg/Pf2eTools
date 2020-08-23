@@ -1,9 +1,10 @@
 "use strict";
 
 class SearchPage {
-	static pInit () {
+	static async pInit () {
 		ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 
+		SearchPage._isAllExpanded = (await StorageUtil.pGetForPage(SearchPage._STORAGE_KEY_IS_EXPANDED)) || false;
 		SearchPage._$wrp = $(`#main_content`).empty();
 		this._render();
 	}
@@ -18,7 +19,7 @@ class SearchPage {
 				if (evt.key !== "Enter") return;
 				$btnSearch.click();
 			})
-			.val(decodeURIComponent(location.search.slice(1)))
+			.val(decodeURIComponent(location.search.slice(1).replace(/\+/g, " ")))
 
 		const $btnSearch = $(`<button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>`)
 			.click(() => {
@@ -49,6 +50,9 @@ class SearchPage {
 		hkBlacklisted();
 
 		const handleMassExpandCollapse = mode => {
+			SearchPage._isAllExpanded = mode;
+			StorageUtil.pSetForPage("isExpanded", SearchPage._isAllExpanded);
+
 			if (!SearchPage._rowMetas) return;
 			SearchPage._rowMetas
 				.filter(meta => meta.setIsExpanded)
@@ -111,7 +115,7 @@ class SearchPage {
 			return;
 		}
 
-		Omnisearch.pGetResults(decodeURIComponent(location.search.slice(1)))
+		Omnisearch.pGetResults(decodeURIComponent(location.search.slice(1).replace(/\+/g, " ")))
 			.then(results => {
 				SearchPage._$wrpResults.empty();
 
@@ -158,7 +162,7 @@ class SearchPage {
 					</div>`.appendTo(SearchPage._$wrpResults);
 
 					if (isHoverable) {
-						out.isExpanded = false;
+						out.isExpanded = !!SearchPage._isAllExpanded;
 
 						const handleIsExpanded = () => {
 							$dispPreview.toggleVe(out.isExpanded);
@@ -227,10 +231,12 @@ class SearchPage {
 		return `<div class="my-2 py-2 px-3 pg-search__wrp-result flex-vh-center"><i>${message.qq()}</i></div>`
 	}
 }
+SearchPage._STORAGE_KEY_IS_EXPANDED = "isExpanded";
 SearchPage._$wrp = null;
 SearchPage._$wrpResults = null;
 SearchPage._rowMetas = null;
 SearchPage._observer = null;
 SearchPage._observed = new Map();
+SearchPage._isAllExpanded = false;
 
 window.addEventListener("load", () => SearchPage.pInit());

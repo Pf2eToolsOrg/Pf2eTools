@@ -57,6 +57,11 @@ class RenderSpells {
 			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Backgrounds: </span>${sp.backgrounds.map(r => `${SourceUtil.isNonstandardSource(r.source) ? `<span class="text-muted">` : ``}${renderer.render(`{@background ${r.name}|${r.source}}`)}${SourceUtil.isNonstandardSource(r.source) ? `</span>` : ``}`).join(", ")}</td></tr>`);
 		}
 
+		if (sp.eldritchInvocations) {
+			sp.eldritchInvocations.sort((a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source));
+			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Eldritch Invocations: </span>${sp.eldritchInvocations.map(r => `${SourceUtil.isNonstandardSource(r.source) ? `<span class="text-muted">` : ``}${renderer.render(`{@optfeature ${r.name}|${r.source}}`)}${SourceUtil.isNonstandardSource(r.source) ? `</span>` : ``}`).join(", ")}</td></tr>`);
+		}
+
 		if (sp._scrollNote) {
 			renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted">`);
 			renderer.recursiveRender(`{@italic Note: Both the {@class fighter||${Renderer.spell.STR_FIGHTER} (${Renderer.spell.STR_ELD_KNIGHT})|eldritch knight} and the {@class rogue||${Renderer.spell.STR_ROGUE} (${Renderer.spell.STR_ARC_TCKER})|arcane trickster} spell lists include all {@class ${Renderer.spell.STR_WIZARD}} spells. Spells of 5th level or higher may be cast with the aid of a spell scroll or similar.}`, renderStack, {depth: 2});
@@ -103,10 +108,10 @@ class RenderSpells {
 				sc.shortName = sc.shortName || sc.name;
 
 				(subclassLookup[clSrc] =
-					subclassLookup[clSrc] || {})[sc.class] =
-					subclassLookup[clSrc][sc.class] || {};
+					subclassLookup[clSrc] || {})[sc.className] =
+					subclassLookup[clSrc][sc.className] || {};
 
-				const target = subclassLookup[clSrc][sc.class];
+				const target = subclassLookup[clSrc][sc.className];
 				(target[sc.source] =
 					target[sc.source] || {})[sc.shortName] =
 					target[sc.source][sc.shortName] || {name: sc.name}

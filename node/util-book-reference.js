@@ -119,10 +119,9 @@ UtilBookReference = {
 		const walker = MiscUtil.getWalker();
 
 		walker.walk(
-			"cleanup",
 			outJson.data,
 			{
-				object: (ident, obj) => {
+				object: (obj) => {
 					delete obj.id; // Remove IDs to avoid duplicates
 					return obj;
 				}

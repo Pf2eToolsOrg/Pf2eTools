@@ -6,6 +6,114 @@
 	},
 	"item": [
 		{
+			"name": "+1 Rod of the Pact Keeper",
+			"source": "DMG",
+			"page": 197,
+			"type": "RD",
+			"tier": "major",
+			"rarity": "uncommon",
+			"reqAttune": "by a warlock",
+			"weight": 2,
+			"bonusSpellAttack": "+1",
+			"entries": [
+				"While holding this rod, you gain a +1 bonus to spell attack rolls and to the saving throw DCs of your warlock spells.",
+				"In addition, you can regain one warlock spell slot as an action while holding the rod. You can't use this property again until you finish a long rest."
+			],
+			"lootTables": [
+				"Magic Item Table F"
+			]
+		},
+		{
+			"name": "+1 Wand of the War Mage",
+			"source": "DMG",
+			"page": 212,
+			"srd": true,
+			"type": "WD",
+			"tier": "major",
+			"rarity": "uncommon",
+			"reqAttune": "by a spellcaster",
+			"weight": 1,
+			"bonusSpellAttack": "+1",
+			"entries": [
+				"While you are holding this wand, you gain a +1 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
+			],
+			"lootTables": [
+				"Magic Item Table F"
+			]
+		},
+		{
+			"name": "+2 Rod of the Pact Keeper",
+			"source": "DMG",
+			"page": 197,
+			"type": "RD",
+			"tier": "major",
+			"rarity": "rare",
+			"reqAttune": "by a warlock",
+			"weight": 2,
+			"bonusSpellAttack": "+2",
+			"entries": [
+				"While holding this rod, you gain a +2 bonus to spell attack rolls and to the saving throw DCs of your warlock spells.",
+				"In addition, you can regain one warlock spell slot as an action while holding the rod. You can't use this property again until you finish a long rest."
+			],
+			"lootTables": [
+				"Magic Item Table G"
+			]
+		},
+		{
+			"name": "+2 Wand of the War Mage",
+			"source": "DMG",
+			"page": 212,
+			"srd": true,
+			"type": "WD",
+			"tier": "major",
+			"rarity": "rare",
+			"reqAttune": "by a spellcaster",
+			"weight": 1,
+			"bonusSpellAttack": "+2",
+			"entries": [
+				"While you are holding this wand, you gain a +2 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
+			],
+			"lootTables": [
+				"Magic Item Table G"
+			]
+		},
+		{
+			"name": "+3 Rod of the Pact Keeper",
+			"source": "DMG",
+			"page": 197,
+			"type": "RD",
+			"tier": "major",
+			"rarity": "very rare",
+			"reqAttune": "by a warlock",
+			"weight": 2,
+			"bonusSpellAttack": "+3",
+			"entries": [
+				"While holding this rod, you gain a +3 bonus to spell attack rolls and to the saving throw DCs of your warlock spells.",
+				"In addition, you can regain one warlock spell slot as an action while holding the rod. You can't use this property again until you finish a long rest."
+			],
+			"lootTables": [
+				"Magic Item Table H"
+			]
+		},
+		{
+			"name": "+3 Wand of the War Mage",
+			"source": "DMG",
+			"page": 212,
+			"srd": true,
+			"type": "WD",
+			"tier": "major",
+			"rarity": "very rare",
+			"reqAttune": "by a spellcaster",
+			"weight": 1,
+			"bonusSpellAttack": "+3",
+			"entries": [
+				"While you are holding this wand, you gain a +3 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
+			],
+			"lootTables": [
+				"Magic Item Table H"
+			]
+		},
+		{
 			"name": "Abacus",
 			"source": "PHB",
 			"page": 150,
@@ -190,6 +298,7 @@
 			"dmg1": "1d8",
 			"dmgType": "B",
 			"dmg2": "1d10",
+			"grantsProficiency": true,
 			"bonusWeapon": "+3",
 			"weapon": true,
 			"entries": [
@@ -1018,6 +1127,7 @@
 			"dmg1": "1d8",
 			"dmgType": "S",
 			"dmg2": "1d10",
+			"grantsProficiency": true,
 			"bonusWeapon": "+3",
 			"entries": [
 				"Seeing the peril his people faced, a young dwarf prince came to believe that his people needed something to unite them. Thus, he set out to forge a weapon that would be such a symbol.",
@@ -1645,7 +1755,6 @@
 			"rarity": "none",
 			"weight": 2,
 			"value": 100,
-			"quantity": 1000,
 			"entries": [
 				"As an action, you can spill these tiny metal balls from their pouch to cover a level area 10 feet square. A creature moving across the covered area must succeed on a DC 10 Dexterity saving throw or fall {@condition prone}. A creature moving through the area at half speed doesn't need to make the saving throw."
 			],
@@ -2440,6 +2549,7 @@
 			"rarity": "legendary",
 			"reqAttune": true,
 			"wondrous": true,
+			"grantsProficiency": true,
 			"entries": [
 				"This horned mask of glossy ebony has horns and a skull-like mien. The mask reshapes to fit a wearer attuned to it. While you are wearing the mask and attuned to it, you can access the following properties.",
 				{
@@ -3146,6 +3256,7 @@
 			"rarity": "legendary",
 			"reqAttune": true,
 			"wondrous": true,
+			"grantsProficiency": true,
 			"entries": [
 				"This mask of glossy azure has spikes around its edges and a ridged horn in its center. The mask reshapes to fit a wearer attuned to it. While you are wearing the mask and attuned to it, you can access the following properties.",
 				{
@@ -3734,6 +3845,7 @@
 			"rarity": "uncommon",
 			"reqAttune": true,
 			"wondrous": true,
+			"grantsProficiency": true,
 			"bonusWeaponDamage": "+2",
 			"entries": [
 				"While wearing these bracers, you have proficiency with the longbow and shortbow, and you gain a +2 bonus to damage rolls on ranged attacks made with such weapons."
@@ -4210,7 +4322,6 @@
 			"rarity": "none",
 			"weight": 2,
 			"value": 100,
-			"quantity": 20,
 			"entries": [
 				"As an action, you can spread a single bag of caltrops to cover a 5-foot-square area. Any creature that enters the area must succeed on a DC 15 Dexterity saving throw or stop moving and take 1 piercing damage. Until the creature regains at least 1 hit point, its walking speed is reduced by 10 feet. A creature moving through the area at half speed doesn't need to make the saving throw."
 			],
@@ -5121,6 +5232,7 @@
 			"rarity": "rare",
 			"reqAttune": true,
 			"wondrous": true,
+			"grantsProficiency": true,
 			"entries": [
 				"These heavy gauntlets of brown iron are forged in the shape of an {@creature umber hulk||umber hulk's} claws, and they fit the wearer's hands and forearms all the way up to the elbow. While wearing both claws, you gain a burrowing speed of 20 feet, and you can tunnel through solid rock at a rate of 1 foot per round.",
 				"You can use a claw as a melee weapon while wearing it. You have proficiency with it, and it deals {@dice 1d8} slashing damage on a hit (your Strength modifier applies to the attack and damage rolls, as normal).",
@@ -6171,6 +6283,7 @@
 			"name": "Dancing Monkey Fruit",
 			"source": "ToA",
 			"page": 205,
+			"type": "OTH",
 			"rarity": "unknown (magic)",
 			"value": 500,
 			"entries": [
@@ -6701,6 +6814,7 @@
 				"count": 1,
 				"amount": 2
 			},
+			"grantsProficiency": true,
 			"entries": [
 				"Usually found in a box or pouch, this deck contains a number of cards made of ivory or vellum. Most (75 percent) of these decks have only thirteen cards, but the rest have twenty-two.",
 				"Before you draw a card, you must declare how many cards you intend to draw and then draw them randomly (you can use an altered deck of playing cards to simulate the deck). Any cards drawn in excess of this number have no effect. Otherwise, as soon as you draw a card from the deck, its magic takes effect. You must draw each card no more than 1 hour after the previous draw. If you fail to draw the chosen number, the remaining number of cards fly from the deck on their own and take effect all at once.",
@@ -7000,6 +7114,7 @@
 					}
 				]
 			},
+			"grantsProficiency": true,
 			"entries": [
 				"Stored in a leather pouch, this unique deck contains twenty-two colored cards made of some strong but unknown metal, each of which features a design printed as a mosaic of raised dots. Before you draw a card, you must declare how many cards you intend to draw and then draw them randomly (you can use an altered deck of playing cards to simulate the deck). Any cards drawn in excess of this number have no effect. Otherwise, as soon as you draw a card from the deck, its magic takes effect. You must draw each card no more than 1 hour after the previous draw. If you fail to draw the chosen number, the remaining number of cards fly from the deck on their own and take effect all at once.",
 				"Once a card is drawn, it fades from existence. Unless the card is the Fool or the Jester, the card reappears in the deck, making it possible to draw the same card twice.",
@@ -7878,6 +7993,7 @@
 			"rarity": "rare",
 			"reqAttune": "by a warforged",
 			"wondrous": true,
+			"sentient": true,
 			"entries": [
 				"A docent is a small metal sphere, about 2 inches across, studded with dragonshards. To attune to a docent, you must embed the item somewhere on your body, such as your chest or your eye socket.",
 				{
@@ -8114,6 +8230,7 @@
 			"name": "Dragon's Blood",
 			"source": "ERLW",
 			"page": 244,
+			"type": "OTH",
 			"rarity": "none",
 			"entries": [
 				"Introduced into Sharn by Daask, dragon's blood is a potent and highly addictive stimulant. In addition to inducing euphoria, it can enhance spellcasting ability or even temporarily imbue a user with the ability to cast sorcerer spells. The drug's effects are potentially dangerous and always unpredictable. This isn't something a player character should want to use; adventurers are more likely to interfere with Daask smugglers or deal with an addict who accidentally casts a {@spell fireball} in a crowded street. The specific effects of dragon's blood are up to you, but you can take inspiration from the {@class sorcerer|phb|Wild Magic Surge table|Wild|phb|0-1} in the {@book Player's Handbook|PHB}."
@@ -8164,6 +8281,7 @@
 			"ac": 14,
 			"bonusAc": "+1",
 			"entries": [
+				"You have a +1 bonus to AC while wearing this armor.",
 				"This +1 breastplate has a gold dragon motif worked into its design. Created for a human hero of Neverwinter named Tergon, it grants its wearer advantage on saving throws against the breath weapons of creatures that have the dragon type."
 			]
 		},
@@ -8238,6 +8356,7 @@
 			"name": "Dreamlily",
 			"source": "ERLW",
 			"page": 244,
+			"type": "OTH",
 			"rarity": "none",
 			"entries": [
 				"A psychoactive liquid that smells and tastes like your favorite beverage, essence of dreamlily is a Sarlonan opiate. First imported to help manage pain during the Last War, it's now the most commonly abused substance in Sharn. Though dreamlily isn't illegal if used for medicinal purposes, it's heavily taxed, and thus most dreamlily is smuggled in and sold on the black market. Dreamlily dens can be found across the lower wards. Consuming dreamlily causes disorienting euphoria and brings about remarkable resistance to pain. A creature under the effects of dreamlily is {@condition poisoned} for 1 hour. While {@condition poisoned} in this way, the creature is immune to fear, and the first time it drops to 0 hit points without being killed outright, it drops to 1 hit point instead. A dose of dreamlily costs around 1 gp, or up to ten times that if purchased through legal channels. There are many varieties of the drug, however, and the duration or the price might vary accordingly."
@@ -8298,6 +8417,7 @@
 			"dmg1": "1d6",
 			"dmgType": "P",
 			"dmg2": "1d8",
+			"grantsProficiency": true,
 			"bonusWeapon": "+1",
 			"entries": [
 				"A steel trident decorated with bronze barnacles along the upper part of its haft, Drown has a sea-green jewel just below the tines and a silver shell at the end of its haft. It floats on the surface if dropped onto water, and it floats in place if it is released underwater. The trident is always cool to the touch, and it is immune to any damage due to exposure to water. Drown contains a spark of {@creature Olhydra|pota}, the Princess of Evil Water.",
@@ -8872,6 +8992,7 @@
 			"rarity": "rare",
 			"weight": 20,
 			"ac": 13,
+			"grantsProficiency": true,
 			"bonusAc": "+1",
 			"entries": [
 				"You gain a +1 bonus to AC while you wear this armor. You are considered proficient with this armor even if you lack proficiency with medium armor."
@@ -10802,6 +10923,7 @@
 			"rarity": "legendary",
 			"reqAttune": true,
 			"wondrous": true,
+			"grantsProficiency": true,
 			"entries": [
 				"This mottled green mask is surmounted by a frilled crest and has leathery spiked plates along its jaw. The mask reshapes to fit a wearer attuned to it. While you are wearing the mask and attuned to it, you can access the following properties",
 				{
@@ -11167,6 +11289,7 @@
 			"name": "Hag Eye",
 			"source": "MM",
 			"page": 177,
+			"type": "OTH",
 			"rarity": "unknown",
 			"entries": [
 				"A hag coven can craft a magic item called a hag eye, which is made from a real eye coated in varnish and often fitted to a pendant or other wearable item. The hag eye is usually entrusted to a minion for safekeeping and transport. A hag in the coven can take an action to see what the hag eye sees if the hag eye is on the same plane of existence. A hag eye has AC 10, 1 hit point, and darkvision with a radius of 60 feet. If it is destroyed, each coven member takes {@dice 3d10} psychic damage and is {@condition blinded} for 24 hours.",
@@ -12424,6 +12547,7 @@
 			"rarity": "legendary",
 			"reqAttune": true,
 			"wondrous": true,
+			"grantsProficiency": true,
 			"bonusWeapon": "+1",
 			"entries": [
 				"This mithral skeleton key was forged using the blood of twelve master thieves executed for trying to steal magic items during the Age of Arcanum.",
@@ -12953,6 +13077,7 @@
 			"rarity": "rare",
 			"reqAttune": true,
 			"wondrous": true,
+			"grantsProficiency": true,
 			"entries": [
 				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
@@ -13066,6 +13191,7 @@
 			"rarity": "rare",
 			"reqAttune": true,
 			"wondrous": true,
+			"grantsProficiency": true,
 			"entries": [
 				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
@@ -13119,6 +13245,7 @@
 			"rarity": "rare",
 			"reqAttune": true,
 			"wondrous": true,
+			"grantsProficiency": true,
 			"entries": [
 				"An {@italic Ioun stone} is named after Ioun, a god of knowledge and prophecy revered on some worlds. Many types of {@italic Ioun stone} exist, each type a distinct combination of shape and color.",
 				"When you use an action to toss one of these stones into the air, the stone orbits your head at a distance of {@dice 1d3} feet and confers a benefit to you. Thereafter, another creature must use an action to grasp or net the stone to separate it from you, either by making a successful attack roll against AC 24 or a successful DC 24 Dexterity ({@skill Acrobatics}) check. You can use an action to seize and stow the stone, ending its effect.",
@@ -13429,7 +13556,6 @@
 			"rarity": "none",
 			"weight": 5,
 			"value": 100,
-			"quantity": 10,
 			"packContents": [
 				{
 					"item": "iron spike|phb",
@@ -13449,6 +13575,7 @@
 			"weaponCategory": "martial",
 			"dmg1": "1d8",
 			"dmgType": "P",
+			"grantsProficiency": true,
 			"bonusWeapon": "+2",
 			"recharge": "dawn",
 			"charges": 3,
@@ -13825,7 +13952,7 @@
 			]
 		},
 		{
-			"name": "Junky Dagger +1",
+			"name": "Junky +1 Dagger",
 			"source": "TftYP",
 			"page": 77,
 			"baseItem": "dagger|phb",
@@ -14486,6 +14613,7 @@
 			"rarity": "uncommon",
 			"reqAttune": true,
 			"wondrous": true,
+			"grantsProficiency": true,
 			"entries": [
 				"These symbiotic gloves\u2014made of thin chitin and sinew\u2014pulse with a life of their own. To attune to them, you must wear them for the entire attunement period, during which the gloves bond with your skin.",
 				"While attuned to these gloves, you gain one of the following proficiencies (your choice when you attune to the gloves):",
@@ -14757,7 +14885,7 @@
 			"dmgType": "P",
 			"bonusWeapon": "+1",
 			"entries": [
-				"The Lost Sword is a sentient lawful good {@item shortsword +1||+1 shortsword} (Intelligence 11, Wisdom 13, Charisma 13). It has hearing and normal vision out to a range of 120 feet. It communicates by transmitting emotion to the creature carrying or wielding it.",
+				"The Lost Sword is a sentient lawful good {@item +1 shortsword} (Intelligence 11, Wisdom 13, Charisma 13). It has hearing and normal vision out to a range of 120 feet. It communicates by transmitting emotion to the creature carrying or wielding it.",
 				"The sword's purpose is to fight evil. The sword has the following additional properties:",
 				{
 					"type": "list",
@@ -17166,7 +17294,7 @@
 			]
 		},
 		{
-			"name": "Order of the Silver Dragon Shield +2",
+			"name": "Order of the Silver Dragon +2 Shield",
 			"source": "CoS",
 			"page": 68,
 			"type": "S",
@@ -19740,6 +19868,7 @@
 			"rarity": "legendary",
 			"reqAttune": true,
 			"wondrous": true,
+			"grantsProficiency": true,
 			"entries": [
 				"This mask of glossy crimson has swept-back horns and spiked cheek ridges. The mask reshapes to fit a wearer attuned to it. While you are wearing the mask and attuned to it, you can access the following properties.",
 				{
@@ -21060,60 +21189,6 @@
 				"While holding this rod, you can use an action to activate it. The rod then instantly transports you and up to 199 other willing creatures you can see to a paradise that exists in an extraplanar space. You choose the form that the paradise takes. It could be a tranquil garden, lovely glade, cheery tavern, immense palace, tropical island, fantastic carnival, or whatever else you can imagine. Regardless of its nature, the paradise contains enough water and food to sustain its visitors. Everything else that can be interacted with inside the extraplanar space can exist only there. For example, a flower picked from a garden in the paradise disappears if it is taken outside the extraplanar space.",
 				"For each hour spent in the paradise, a visitor regains hit points as if it had spent 1 Hit Die. Also, creatures don't age while in the paradise, although time passes normally. Visitors can remain in the paradise for up to 200 days divided by the number of creatures present (round down).",
 				"When the time runs out or you use an action to end it, all visitors reappear in the location they occupied when you activated the rod, or an unoccupied space nearest that location. The rod can't be used again until ten days have passed."
-			],
-			"lootTables": [
-				"Magic Item Table H"
-			]
-		},
-		{
-			"name": "Rod of the Pact Keeper, +1",
-			"source": "DMG",
-			"page": 197,
-			"type": "RD",
-			"tier": "major",
-			"rarity": "uncommon",
-			"reqAttune": "by a warlock",
-			"weight": 2,
-			"bonusSpellAttack": "+1",
-			"entries": [
-				"While holding this rod, you gain a +1 bonus to spell attack rolls and to the saving throw DCs of your warlock spells.",
-				"In addition, you can regain one warlock spell slot as an action while holding the rod. You can't use this property again until you finish a long rest."
-			],
-			"lootTables": [
-				"Magic Item Table F"
-			]
-		},
-		{
-			"name": "Rod of the Pact Keeper, +2",
-			"source": "DMG",
-			"page": 197,
-			"type": "RD",
-			"tier": "major",
-			"rarity": "rare",
-			"reqAttune": "by a warlock",
-			"weight": 2,
-			"bonusSpellAttack": "+2",
-			"entries": [
-				"While holding this rod, you gain a +2 bonus to spell attack rolls and to the saving throw DCs of your warlock spells.",
-				"In addition, you can regain one warlock spell slot as an action while holding the rod. You can't use this property again until you finish a long rest."
-			],
-			"lootTables": [
-				"Magic Item Table G"
-			]
-		},
-		{
-			"name": "Rod of the Pact Keeper, +3",
-			"source": "DMG",
-			"page": 197,
-			"type": "RD",
-			"tier": "major",
-			"rarity": "very rare",
-			"reqAttune": "by a warlock",
-			"weight": 2,
-			"bonusSpellAttack": "+3",
-			"entries": [
-				"While holding this rod, you gain a +3 bonus to spell attack rolls and to the saving throw DCs of your warlock spells.",
-				"In addition, you can regain one warlock spell slot as an action while holding the rod. You can't use this property again until you finish a long rest."
 			],
 			"lootTables": [
 				"Magic Item Table H"
@@ -24631,6 +24706,7 @@
 			"rarity": "artifact",
 			"reqAttune": true,
 			"wondrous": true,
+			"sentient": true,
 			"recharge": "dawn",
 			"charges": 3,
 			"entries": [
@@ -25284,7 +25360,7 @@
 		{
 			"name": "Sword of Zariel",
 			"source": "BGDIA",
-			"page": 225,
+			"page": 226,
 			"baseItem": "longsword|phb",
 			"type": "M",
 			"rarity": "artifact",
@@ -25516,7 +25592,7 @@
 					"type": "entries",
 					"name": "Random Properties",
 					"entries": [
-						"The sword has 2 minor {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial properties}."
+						"The sword has 2 {@table Artifact Properties; Minor Beneficial Properties|dmg|minor beneficial properties}."
 					]
 				},
 				{
@@ -26695,6 +26771,7 @@
 			"range": "20/60",
 			"dmg1": "1d4",
 			"dmgType": "P",
+			"grantsProficiency": true,
 			"bonusWeapon": "+2",
 			"entries": [
 				"A flint dagger, Tinderstrike is uncommonly sharp, and sparks cascade off its edge whenever it strikes something solid. Its handle is always warm to the touch, and the blade smolders for {@dice 1d4} minutes after it is used to deal damage. It contains a spark of {@creature Imix|PotA}, Prince of Evil Fire.",
@@ -26981,6 +27058,7 @@
 			"page": 30,
 			"rarity": "uncommon",
 			"wondrous": true,
+			"grantsProficiency": true,
 			"entries": [
 				"Also at rank 3, Head Office provides you with a travel alchemical kit\u2014an uncommon magic item containing miniaturized versions of both {@item alchemist's supplies|phb} and a {@item poisoner's kit|phb} (glass vials, a mortar and pestle, chemicals, and a glass stirring rod). You gain proficiency with a {@item poisoner's kit|phb} as part of this upgrade.",
 				"You can use this magical kit as long as it is on your person, with no need to draw or stow it. If you are ever searched, finding your travel alchemical kit requires a successful DC 20 Intelligence ({@skill Investigation}) or Wisdom ({@skill Insight}) check."
@@ -29256,60 +29334,6 @@
 			]
 		},
 		{
-			"name": "Wand of the War Mage, +1",
-			"source": "DMG",
-			"page": 212,
-			"srd": true,
-			"type": "WD",
-			"tier": "major",
-			"rarity": "uncommon",
-			"reqAttune": "by a spellcaster",
-			"weight": 1,
-			"bonusSpellAttack": "+1",
-			"entries": [
-				"While you are holding this wand, you gain a +1 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
-			],
-			"lootTables": [
-				"Magic Item Table F"
-			]
-		},
-		{
-			"name": "Wand of the War Mage, +2",
-			"source": "DMG",
-			"page": 212,
-			"srd": true,
-			"type": "WD",
-			"tier": "major",
-			"rarity": "rare",
-			"reqAttune": "by a spellcaster",
-			"weight": 1,
-			"bonusSpellAttack": "+2",
-			"entries": [
-				"While you are holding this wand, you gain a +2 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
-			],
-			"lootTables": [
-				"Magic Item Table G"
-			]
-		},
-		{
-			"name": "Wand of the War Mage, +3",
-			"source": "DMG",
-			"page": 212,
-			"srd": true,
-			"type": "WD",
-			"tier": "major",
-			"rarity": "very rare",
-			"reqAttune": "by a spellcaster",
-			"weight": 1,
-			"bonusSpellAttack": "+3",
-			"entries": [
-				"While you are holding this wand, you gain a +3 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
-			],
-			"lootTables": [
-				"Magic Item Table H"
-			]
-		},
-		{
 			"name": "Wand of Viscid Globs",
 			"source": "OotA",
 			"page": 223,
@@ -30021,6 +30045,7 @@
 			"rarity": "legendary",
 			"reqAttune": true,
 			"wondrous": true,
+			"grantsProficiency": true,
 			"entries": [
 				"This gleaming mask is white with highlights of pale blue and is topped by a spined crest. The mask reshapes to fit a wearer attuned to it. While you are wearing the mask and attuned to it, you can access the following properties.",
 				{
@@ -30284,6 +30309,7 @@
 			"dmg1": "1d6",
 			"dmgType": "P",
 			"dmg2": "1d8",
+			"grantsProficiency": true,
 			"bonusWeapon": "+2",
 			"entries": [
 				"A silver spear, Windvane has dark sapphires on the filigreed surface of its polished head. Held by its shining haft, the weapon feels insubstantial, as if clutching a cool, gently flowing breeze. The spear contains a spark of {@creature Yan-C-Bin|PotA}, the Prince of Evil Air.",
@@ -31194,6 +31220,24 @@
 				"Potion of Hill Giant Strength",
 				"Potion of Stone Giant Strength",
 				"Potion of Storm Giant Strength"
+			]
+		},
+		{
+			"name": "Potion of Healing (*)",
+			"source": "DMG",
+			"page": 187,
+			"srd": true,
+			"type": "P",
+			"rarity": "varies",
+			"weight": 0.5,
+			"entries": [
+				"{@note * This item group has the same name and source as the item {@item potion of healing}}."
+			],
+			"items": [
+				"Potion of Healing",
+				"Potion of Greater Healing",
+				"Potion of Superior Healing",
+				"Potion of Supreme Healing"
 			]
 		},
 		{

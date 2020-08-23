@@ -53,6 +53,40 @@
 					"a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts}",
 					"(a) {@item scale mail|phb} or (b) {@item studded leather armor|phb}",
 					"{@item thieves' tools|phb} and a {@item dungeoneer's pack|phb}"
+				],
+				"defaultData": [
+					{
+						"a": [
+							"handaxe|phb",
+							"light hammer|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple",
+								"count": 2
+							}
+						]
+					},
+					{
+						"_": [
+							"light crossbow|phb",
+							"crossbow bolts (20)|phb"
+						]
+					},
+					{
+						"a": [
+							"scale mail|phb"
+						],
+						"b": [
+							"studded leather armor|phb"
+						]
+					},
+					{
+						"_": [
+							"thieves' tools|phb",
+							"dungeoneer's pack|phb"
+						]
+					}
 				]
 			},
 			"classTableGroups": [
@@ -385,7 +419,37 @@
 					"(a) {@item studded leather armor|phb} or (b) {@item scale mail|phb}",
 					"{@item thieves' tools|phb} and a {@item dungeoneer's pack|phb}"
 				],
-				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"_": [
+							{
+								"equipmentType": "weaponSimple",
+								"count": 2
+							}
+						]
+					},
+					{
+						"_": [
+							"light crossbow|phb",
+							"crossbow bolts (20)|phb"
+						]
+					},
+					{
+						"a": [
+							"studded leather armor|phb"
+						],
+						"b": [
+							"scale mail|phb"
+						]
+					},
+					{
+						"_": [
+							"thieves' tools|phb",
+							"dungeoneer's pack|phb"
+						]
+					}
+				]
 			},
 			"multiclassing": {
 				"requirements": {
@@ -889,7 +953,37 @@
 					"(a) {@item studded leather armor|phb} or (b) {@item scale mail|phb}",
 					"{@item thieves' tools|phb} and a {@item dungeoneer's pack|phb}"
 				],
-				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"_": [
+							{
+								"equipmentType": "weaponSimple",
+								"count": 2
+							}
+						]
+					},
+					{
+						"_": [
+							"light crossbow|phb",
+							"crossbow bolts (20)|phb"
+						]
+					},
+					{
+						"a": [
+							"studded leather armor|phb"
+						],
+						"b": [
+							"scale mail|phb"
+						]
+					},
+					{
+						"_": [
+							"thieves' tools|phb",
+							"dungeoneer's pack|phb"
+						]
+					}
+				]
 			},
 			"multiclassing": {
 				"requirements": {
@@ -1490,7 +1584,7 @@
 					"type": "entries",
 					"name": "Tools Required",
 					"entries": [
-						"You produce your artificer spell effects through your tools. You must have a spellcasting focus\u2014specifically {@item thieves' tools|phb} or some kind of artisan's tool\u2014in hand when you cast any spell with this Spellcasting feature. You must be proficient with the tool to use it in this way. See {@book chapter 5|PHB|4}, \"Equipment,\" in the {@book Player's Handbook|PHB} for descriptions of these tools.",
+						"You produce your artificer spell effects through your tools. You must have a spellcasting focus\u2014specifically {@item thieves' tools|phb} or some kind of {@item artisan's tools|phb|artisan's tool}\u2014in hand when you cast any spell with this Spellcasting feature. You must be proficient with the tool to use it in this way. See {@book chapter 5|PHB|4}, \"Equipment,\" in the {@book Player's Handbook|PHB} for descriptions of these tools.",
 						"After you gain the Infuse Item feature at 2nd level, you can also use any item bearing one of your infusions as a spellcasting focus.",
 						{
 							"type": "inset",
@@ -1741,7 +1835,7 @@
 			"classSource": "ERLW",
 			"level": 11,
 			"entries": [
-				"At 11th level, you learn how to store a spell in an object. Whenever you finish a long rest, you can touch one simple or martial weapon or one item that you can use as a spellcasting focus, and you store a spell in it, choosing a 1st- or 2nd-level spell from the {@filter artificer spell list|spells|class=Artificer|cast time=action|level=1;2} that requires 1 action to cast (you needn't have it prepared).",
+				"At 11th level, you learn how to store a spell in an object. Whenever you finish a long rest, you can touch one {@filter simple or martial weapon|items|source=phb|category=basic|type=martial weapon;simple weapon} or one item that you can use as a spellcasting focus, and you store a spell in it, choosing a 1st- or 2nd-level spell from the {@filter artificer spell list|spells|class=Artificer|cast time=action|level=1;2} that requires 1 action to cast (you needn't have it prepared).",
 				"While holding the object, a creature can take an action to produce the spell's effect from it, using your spellcasting ability modifier. If the spell requires concentration, the creature must concentrate. The spell stays in the object until it's been used a number of times equal to twice your Intelligence modifier (minimum of twice) or until you use this feature again to store a spell in an object."
 			]
 		},
@@ -2016,7 +2110,7 @@
 					"type": "entries",
 					"name": "Spellcasting Focus",
 					"entries": [
-						"You can use an arcane focus as a spellcasting focus for your artificer spells. See chapter 5, \"Equipment,\" in the Player's Handbook for various arcane focus options."
+						"You can use an {@item arcane focus|phb} as a spellcasting focus for your artificer spells. See chapter 5, \"Equipment,\" in the Player's Handbook for various arcane focus options."
 					]
 				}
 			]

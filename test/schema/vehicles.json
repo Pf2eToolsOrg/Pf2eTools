@@ -1,9 +1,17 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.2.3",
+	"version": "1.2.4",
 	"type": "object",
 
 	"definitions": {
+		"vehicleTerrain": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"enum": ["land", "sea", "air"]
+			}
+		},
+
 		"vehicle": {
 			"oneOf": [
 				{"$ref": "#/definitions/vehicleShip"},
@@ -24,6 +32,7 @@
 					"type": "integer"
 				},
 				"vehicleType": {"const": "SHIP"},
+				"terrain": {"$ref": "#/definitions/vehicleTerrain"},
 				"size": {
 					"type": "string",
 					"enum": [
@@ -282,6 +291,7 @@
 					"type": "integer"
 				},
 				"vehicleType": {"const": "INFWAR"},
+				"terrain": {"$ref": "#/definitions/vehicleTerrain"},
 				"size": {
 					"type": "string",
 					"enum": [
@@ -416,7 +426,8 @@
 
 		"vehicleCreature": {
 			"properties": {
-				"vehicleType": {"const": "CREATURE"}
+				"vehicleType": {"const": "CREATURE"},
+				"terrain": {"$ref": "#/definitions/vehicleTerrain"}
 			}
 		}
 	},

@@ -60,8 +60,10 @@ class PageFilterSpells extends PageFilter {
 		if ((s.miscTags && s.miscTags.includes("PRM")) || s.duration.filter(it => it.type === "permanent").length) out.push(Parser.spMiscTagToFull("PRM"));
 		if ((s.miscTags && s.miscTags.includes("SCL")) || s.entriesHigherLevel) out.push(Parser.spMiscTagToFull("SCL"));
 		if (s.miscTags && s.miscTags.includes("HL")) out.push(Parser.spMiscTagToFull("HL"));
+		if (s.miscTags && s.miscTags.includes("HL")) out.push(Parser.spMiscTagToFull("HL"));
 		if (s.miscTags && s.miscTags.includes("SMN")) out.push(Parser.spMiscTagToFull("SMN"));
 		if (s.miscTags && s.miscTags.includes("SGT")) out.push(Parser.spMiscTagToFull("SGT"));
+		if (s.miscTags && s.miscTags.includes("THP")) out.push(Parser.spMiscTagToFull("THP"));
 		if (s.srd) out.push("SRD");
 		return out;
 	}
@@ -335,6 +337,7 @@ class PageFilterSpells extends PageFilter {
 		this._classAndSubclassFilter = classAndSubclassFilter;
 		this._raceFilter = raceFilter;
 		this._backgroundFilter = backgroundFilter;
+		this._eldritchInvocationFilter = new Filter({header: "Eldritch Invocation"});
 		this._metaFilter = metaFilter;
 		this._schoolFilter = schoolFilter;
 		this._subSchoolFilter = subSchoolFilter;
@@ -381,13 +384,13 @@ class PageFilterSpells extends PageFilter {
 		spell._fVariantClasses = spell.classes && spell.classes.fromClassListVariant ? spell.classes.fromClassListVariant.map(PageFilterSpells.getClassFilterItem) : [];
 		spell._fRaces = spell.races ? spell.races.map(PageFilterSpells.getRaceFilterItem) : [];
 		spell._fBackgrounds = spell.backgrounds ? spell.backgrounds.map(bg => bg.name) : [];
+		spell._fEldritchInvocations = spell.eldritchInvocations ? spell.eldritchInvocations.map(ei => ei.name) : [];
 		spell._fTimeType = spell.time.map(t => t.unit);
 		spell._fDurationType = PageFilterSpells.getFilterDuration(spell);
 		spell._fRangeType = PageFilterSpells.getRangeType(spell.range);
-		if (!spell._fAreaTags && (spell.areaTags || spell.range.type === "line")) {
-			spell._fAreaTags = spell.areaTags || [];
-			if (spell.range.type === "line") spell._fAreaTags.push("L")
-		}
+
+		spell._fAreaTags = [...(spell.areaTags || [])];
+		if (spell.range.type === "line" && !spell._fAreaTags.includes("L")) spell._fAreaTags.push("L");
 	}
 
 	addToFilters (spell, isExcluded) {
@@ -398,6 +401,7 @@ class PageFilterSpells extends PageFilter {
 		this._sourceFilter.addItem(spell._fSources);
 		this._metaFilter.addItem(spell._fMeta);
 		this._backgroundFilter.addItem(spell._fBackgrounds);
+		this._eldritchInvocationFilter.addItem(spell._fEldritchInvocations);
 		spell._fClasses.forEach(c => this._classFilter.addItem(c));
 		spell._fSubclasses.forEach(sc => {
 			this._subclassFilter.addNest(sc.nest, {isHidden: true});
@@ -420,6 +424,7 @@ class PageFilterSpells extends PageFilter {
 			this._classAndSubclassFilter,
 			this._raceFilter,
 			this._backgroundFilter,
+			this._eldritchInvocationFilter,
 			this._metaFilter,
 			this._schoolFilter,
 			this._subSchoolFilter,
@@ -443,6 +448,7 @@ class PageFilterSpells extends PageFilter {
 			[s._fClasses, s._fSubclasses, s._fVariantClasses],
 			s._fRaces,
 			s._fBackgrounds,
+			s._fEldritchInvocations,
 			s._fMeta,
 			s.school,
 			s.subschools,

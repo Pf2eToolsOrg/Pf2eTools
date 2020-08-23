@@ -4786,7 +4786,7 @@
 							"page": 68,
 							"entries": [
 								"Demiplanes are extra dimensional spaces that come into being by a variety of means and boast their own physical laws. Some are created by spells. Others exist naturally, as folds of reality pinched off from the rest of the multiverse. Theoretically, a plane shift spell can carry travelers to a demiplane, but the proper frequency required for the tuning fork would be extremely hard to acquire. The gate spell is more reliable, assuming the caster knows of the demiplane.",
-								"A demiplane can be as small as a single chamber or large enough to contain an entire realm. For example, a Mordenkainen's magnificent mansion spell creates a demiplane consisting of a foyer with multiple adjoining rooms, while the land of Barovia (in the Ravenloft setting) exists entirely within a demiplane under the sway of its vampire lord, Strahd von Zarovich. When a demiplane is connected to the Material Plane or some other plane, entering it can be as simple as stepping through a portal or passing through a wall of mist."
+								"A demiplane can be as small as a single chamber or large enough to contain an entire realm. For example, a {@spell Mordenkainen's magnificent mansion} spell creates a demiplane consisting of a foyer with multiple adjoining rooms, while the land of Barovia (in the Ravenloft setting) exists entirely within a demiplane under the sway of its vampire lord, Strahd von Zarovich. When a demiplane is connected to the Material Plane or some other plane, entering it can be as simple as stepping through a portal or passing through a wall of mist."
 							],
 							"id": "119"
 						},
@@ -9057,7 +9057,7 @@
 												],
 												[
 													"20",
-													"Inside a Mordenkainen's magnificent mansion"
+													"Inside a {@spell Mordenkainen's magnificent mansion}"
 												]
 											]
 										}
@@ -12526,440 +12526,21 @@
 							"name": "More Downtime Activities",
 							"page": 128,
 							"entries": [
-								"Chapter 8, \"Adventuring,\" of the {@i Player's Handbook} describes a few downtime activities to fill the void between adventures. Depending on the style of your campaign and the particular backgrounds and interests of the adventurers, you can make some or all of the following additional activities available as options.",
+								"Chapter 8, \"{@book Adventuring|phb|8|downtime activities},\" of the {@i Player's Handbook} describes a few downtime activities to fill the void between adventures. Depending on the style of your campaign and the particular backgrounds and interests of the adventurers, you can make some or all of the following additional activities available as options.",
 								{
-									"type": "entries",
-									"name": "Building a Stronghold",
-									"page": 128,
-									"entries": [
-										"A character can spend time between adventures building a stronghold. Before work can begin, the character must acquire a plot of land. If the estate lies within a kingdom or similar domain, the character will need a royal charter (a legal document granting permission to oversee the estate in the name of the crown), a land grant (a legal document bequeathing custody of the land to the character for as long as he or she remains loyal to the crown), or a deed (a legal document that serves as proof of ownership). Land can also be acquired by inheritance or other means.",
-										"Royal charters and land grants are usually given by the crown as a reward for faithful service, although they can also be bought. Deeds can be bought or inherited. A small estate might sell for as little as 100 gp or as much as 1,000 gp. A large estate might cost 5,000 gp or more, if it can be bought at all.",
-										"Once the estate is secured, a character needs access to building materials and laborers. The Building a Stronghold table shows the cost of building the stronghold (including materials and labor) and the amount of time it takes, provided that the character is using downtime to oversee construction. Work can continue while the character is away, but each day the character is away adds 3 days to the construction time.",
-										{
-											"type": "table",
-											"caption": "Building a Stronghold",
-											"colLabels": [
-												"Stronghold",
-												"Construction Cost",
-												"Construction Time"
-											],
-											"colStyles": [
-												"col-4",
-												"col-4 text-right",
-												"col-4 text-right"
-											],
-											"rows": [
-												[
-													"Abbey",
-													"50,000 gp",
-													"400 days"
-												],
-												[
-													"Guildhall, town or city",
-													"5,000 gp",
-													"60 days"
-												],
-												[
-													"Keep or small castle",
-													"50,000 gp",
-													"400 days"
-												],
-												[
-													"Noble estate with manor",
-													"25,000 gp",
-													"150 days"
-												],
-												[
-													"Outpost or fort",
-													"15,000 gp",
-													"100 days"
-												],
-												[
-													"Palace or large castle",
-													"500,000 gp",
-													"1,200 days"
-												],
-												[
-													"Temple",
-													"50,000 gp",
-													"400 days"
-												],
-												[
-													"Tower, fortified",
-													"15,000 gp",
-													"100 days"
-												],
-												[
-													"Trading post",
-													"5,000 gp",
-													"60 days"
-												]
-											]
-										}
-									],
-									"id": "232"
-								},
-								{
-									"type": "entries",
-									"name": "Carousing",
-									"page": 128,
-									"entries": [
-										"Characters can spend their downtime engaged in a variety of hedonistic activities such as attending parties, binge drinking, gambling, or anything else that helps them cope with the perils they face on their adventures.",
-										"A carousing character spends money as though maintaining a wealthy lifestyle (see chapter 5, \"Equipment,\" of the {@i Player's Handbook}). At the end of the period spent carousing, the player rolls percentile dice and adds the character's level, then compares the total to the Carousing table to determine what happens to the character, or you choose.",
-										{
-											"type": "table",
-											"caption": "Carousing",
-											"colLabels": [
-												"d100 + Level",
-												"Result"
-											],
-											"colStyles": [
-												"col-2 text-center",
-												"col-10"
-											],
-											"rows": [
-												[
-													"01-10",
-													"You are jailed for {@dice 1d4} days at the end of the downtime period on charges of disorderly conduct and disturbing the peace. You can pay a fine of 10 gp to avoid jail time, or you can try to resist arrest."
-												],
-												[
-													"11-20",
-													"You regain consciousness in a strange place with no memory of how you got there, and you have been robbed of {@dice 3d6 × 5} gp."
-												],
-												[
-													"21-30",
-													"You make an enemy. This person, business, or organization is now hostile to you. The DM determines the offended party. You decide how you offended them."
-												],
-												[
-													"31-40",
-													"You are caught up in a whirlwind romance. Roll a d20. On a 1\u20135, the romance ends badly. On a 6\u201310, the romance ends amicably. On an 11\u201320, the romance is ongoing. You determine the identity of the love interest, subject to your DM's approval. If the romance ends badly, you might gain a new flaw. If it ends well or is ongoing, your new love interest might represent a new bond."
-												],
-												[
-													"41-80",
-													"You earn modest winnings from gambling and recuperate your lifestyle expenses for the time spent carousing."
-												],
-												[
-													"81-90",
-													"You earn modest winnings from gambling. You recuperate your lifestyle expenses for the time spent carousing and gain {@dice 1d20 × 4} gp."
-												],
-												[
-													"91-100",
-													"You make a small fortune gambling. You recuperate your lifestyle expenses for the time spent carousing and gain {@dice 4d6 × 10} gp. Your carousing becomes the stuff of local legend."
-												]
-											]
-										}
-									],
-									"id": "233"
-								},
-								{
-									"type": "entries",
-									"name": "Crafting a Magic Item",
-									"page": 128,
-									"entries": [
-										"Magic items are the DM's purview, so you decide how they fall into the party's possession. As an option, you can allow player characters to craft magic items.",
-										"The creation of a magic item is a lengthy, expensive task. To start, a character must have a formula that describes the construction of the item. The character must also be a spellcaster with spell slots and must be able to cast any spells that the item can produce.",
-										"Moreover, the character must meet a level minimum determined by the item's rarity, as shown in the Crafting Magic Items table. For example, a 3rd-level character could create a wand of magic missiles (an uncommon item), as long as the character has spell slots and can cast magic missile. That same character could make a +1 weapon (another uncommon item), no particular spell required.",
-										"You can decide that certain items also require special materials or locations to be created. For example, a character might need {@item alchemist's supplies|phb} to brew a particular potion, or the formula for a flame tongue might require that the weapon be forged with lava.",
-										{
-											"type": "table",
-											"caption": "Crafting Magic Items",
-											"colLabels": [
-												"Item Rarity",
-												"Creation Cost",
-												"Minimum Level"
-											],
-											"colStyles": [
-												"col-4",
-												"col-4 text-right",
-												"col-4 text-center"
-											],
-											"rows": [
-												[
-													"Common",
-													"100 gp",
-													"3rd"
-												],
-												[
-													"Uncommon",
-													"500 gp",
-													"3rd"
-												],
-												[
-													"Rare",
-													"5,000 gp",
-													"6th"
-												],
-												[
-													"Very rare",
-													"50,000 gp",
-													"11th"
-												],
-												[
-													"Legendary",
-													"500,000 gp",
-													"17th"
-												]
-											]
-										},
-										"An item has a creation cost specified in the Crafting Magic Items table (half that cost for a consumable, such as a potion or scroll). A character engaged in the crafting of a magic item makes progress in 25 gp increments, spending that amount for each day of work until the total cost is paid. The character is assumed to work for 8 hours each of those days. Thus, creating an uncommon magic item takes 20 days and 500 gp. You are free to adjust the costs to better suit your campaign.",
-										"If a spell will be produced by the item being created, the creator must expend one spell slot of the spell's level for each day of the creation process. The spell's material components must also be at hand throughout the process. If the spell normally consumes those components, they are consumed by the creation process.",
-										"If the item will be able to produce the spell only once, as with a spell scroll, the components are consumed only once by the process. Otherwise, the components are consumed once each day of the item's creation.",
-										"Multiple characters can combine their efforts to create a magic item if each of them meets the level prerequisite. Each character can contribute spells, spell slots, and components, as long as everyone participates during the entire crafting process. Each character can contribute 25 gp worth of effort for each day spent helping to craft the item.",
-										"Normally, a character who undertakes this activity creates a magic item described in chapter 7, \"Treasure.\" At your discretion, you can allow players to design their own magic items, using the guidelines in chapter 9, \"Dungeon Master's Workshop.\"",
-										"While crafting a magic item, a character can maintain a modest lifestyle without having to pay the 1 gp per day, or a comfortable lifestyle at half the normal cost (see chapter 5, \"Equipment,\" of the Player's Handbook)."
-									],
-									"id": "234"
-								},
-								{
-									"type": "entries",
-									"name": "Gaining Renown",
-									"page": 129,
-									"entries": [
-										"A character can spend downtime improving his or her renown within a particular organization (see \"Renown\" in chapter 1). Between adventures, a character undertakes minor tasks for the organization and socializes with its members. After pursuing these activities for a combined number of days equal to his or her current renown multiplied by 10, the character's renown increases by 1."
-									],
-									"id": "235"
-								},
-								{
-									"type": "entries",
-									"name": "Performing Sacred Rites",
-									"page": 129,
-									"entries": [
-										"A pious character can spend time between adventures performing sacred rites in a temple affiliated with a god he or she reveres. Between rites, the character spends time in meditation and prayer.",
-										"A character who is a priest in the temple can lead these rites, which might include weddings, funerals, and ordinations. A layperson can offer sacrifices in a temple or assist a priest with a rite.",
-										"A character who spends at least 10 days performing sacred rites gains inspiration (described in chapter 4 of the Player's Handbook) at the start of each day for the next {@dice 2d6} days."
-									],
-									"id": "236"
-								},
-								{
-									"type": "entries",
-									"name": "Running a Business",
-									"page": 129,
-									"entries": [
-										"Adventurers can end up owning businesses that have nothing to do with delving into dungeons or saving the world. A character might inherit a smithy, or the party might be given a parcel of farmland or a tavern as a reward. If they hold on to the business, they might feel obliged to spend time between adventures maintaining the venture and making sure it runs smoothly.",
-										"A character rolls percentile dice and adds the number of days spent on this downtime activity (maximum 30), then compares the total to the Running a Business table to determine what happens.",
-										"If the character is required to pay a cost as a result of rolling on this table but fails to do so, the business begins to fail. For each unpaid debt incurred in this manner, the character takes a -10 penalty to subsequent rolls made on this table.",
-										{
-											"type": "table",
-											"caption": "Running a Business",
-											"colLabels": [
-												"d100 + Days",
-												"Result"
-											],
-											"colStyles": [
-												"col-2 text-center",
-												"col-10"
-											],
-											"rows": [
-												[
-													"01-20",
-													"You must pay one and a half times the business's maintenance cost for each of the days."
-												],
-												[
-													"21-30",
-													"You must pay the business's full maintenance cost for each of the days."
-												],
-												[
-													"31-40",
-													"You must pay half the business's maintenance cost for each of the days. Profits cover the other half."
-												],
-												[
-													"41-60",
-													"The business covers its own maintenance cost for each of the days."
-												],
-												[
-													"61-80",
-													"The business covers its own maintenance cost for each of the days. It earns a profit of {@dice 1d6 × 5} gp."
-												],
-												[
-													"81-90",
-													"The business covers its own maintenance cost for each of the days. It earns a profit of {@dice 2d8 × 5} gp."
-												],
-												[
-													"91-100",
-													"The business covers its own maintenance cost for each of the days. It earns a profit of {@dice 3d10 × 5} gp."
-												]
-											]
-										}
-									],
-									"id": "237"
-								},
-								{
-									"type": "entries",
-									"name": "Selling Magic Items",
-									"page": 129,
-									"entries": [
-										"Few people can afford to buy a magic item, and fewer still know how to find one. Adventurers are exceptional in this regard due to the nature of their profession.",
-										"A character who comes into possession of a common, uncommon, rare, or very rare magic item that he or she wants to sell can spend downtime searching for a buyer. This downtime activity can be performed only in a city or another location where one can find wealthy individuals interested in buying magic items. Legendary magic items and priceless artifacts can't be sold during downtime. Finding someone to buy such an item can be the substance of an adventure or quest.",
-										"For each salable item, the character makes a DC 20 Intelligence (Investigation) check to find buyers. Another character can use his or her downtime to assist with the search, granting advantage on the checks. On a failed check, no buyer for the item is found after a search that lasts 10 days. On a successful check, a buyer for the item is found after a number of days based on the item's rarity, as shown in the Salable Magic Item table.",
-										"A character can attempt to find buyers for multiple magic items at once. Although this requires multiple Intelligence (Investigation) checks, the searches are occurring simultaneously, and the results of multiple failures or successes aren't added together. For example, if the character finds a buyer for a common magic item in 2 days and a buyer for an uncommon item in 5 days, but fails to find a buyer for a rare item up for grabs, the entire search takes 10 days.",
-										"For each item a character wishes to sell, the player rolls percentile dice and consults the Selling a Magic Item table, applying a modifier based on the item's rarity, as shown in the Salable Magic Items table. The character also makes a Charisma (Persuasion) check and adds that check's total to the roll. The subsequent total determines what a buyer offers to pay for the item.",
-										"You determine a buyer's identity. Buyers sometimes procure rare and very rare items through proxies to ensure that their identities remain unknown. If the buyer is shady, it's up to you whether the sale creates legal complications for the party later.",
-										{
-											"type": "table",
-											"caption": "Salable Magic Items",
-											"colLabels": [
-												"Rarity",
-												"Base Price",
-												"Days to Find Buyer",
-												"d100 Roll Modifier*"
-											],
-											"colStyles": [
-												"col-3",
-												"col-3 text-right",
-												"col-3 text-center",
-												"col-3 text-center"
-											],
-											"rows": [
-												[
-													"Common",
-													"100 gp",
-													"{@dice 1d4}",
-													"+10"
-												],
-												[
-													"Uncommon",
-													"500 gp",
-													"{@dice 1d6}",
-													"+0"
-												],
-												[
-													"Rare",
-													"5,000 gp",
-													"{@dice 1d8}",
-													"-10"
-												],
-												[
-													"Very rare",
-													"50,000 gp",
-													"{@dice 1d10}",
-													"-20"
-												]
-											],
-											"footnotes": [
-												"*Apply this modifier to rolls on the Selling a Magic Item table."
-											]
-										},
-										{
-											"type": "table",
-											"caption": "Selling a Magic Item",
-											"colLabels": [
-												"d100 + Mod",
-												"You Find..."
-											],
-											"colStyles": [
-												"col-2 text-center",
-												"col-10"
-											],
-											"rows": [
-												[
-													"20 or lower",
-													"A buyer offering a tenth of the base price"
-												],
-												[
-													"21-40",
-													"A buyer offering a quarter of the base price, and a shady buyer offering half the base price"
-												],
-												[
-													"41-80",
-													"A buyer offering half the base price, and a shady buyer offering the full base price"
-												],
-												[
-													"81-90",
-													"A buyer offering the full base price"
-												],
-												[
-													"91 or higher",
-													"A shady buyer offering one and a half times the base price, no questions asked"
-												]
-											]
-										}
-									],
-									"id": "238"
-								},
-								{
-									"type": "entries",
-									"name": "Sowing Rumors",
-									"page": 131,
-									"entries": [
-										"Swaying public opinion can be an effective way to bring down a villain or elevate a friend. Spreading rumors is an efficient, if underhanded, way to accomplish that goal. Well-placed rumors can increase the subject's standing in a community or embroil someone in scandal. A rumor needs to be simple, concrete, and hard to disprove. An effective rumor also has to be believable, playing off what people want to believe about the person in question.",
-										"Sowing a rumor about an individual or organization requires a number of days depending on the size of the community, as shown in the Sowing Rumors table. In a town or city, the time spent must be continuous. If the character spreads a rumor for ten days, disappears on an adventure for another few days and then returns, the rumor fades away without the benefit of constant repetition.",
-										{
-											"type": "table",
-											"caption": "Sowing Rumors",
-											"colLabels": [
-												"Settlement Size",
-												"Time Required"
-											],
-											"colStyles": [
-												"col-6 text-center",
-												"col-6 text-center"
-											],
-											"rows": [
-												[
-													"Village",
-													"{@dice 2d6} days"
-												],
-												[
-													"Town",
-													"{@dice 4d6} days"
-												],
-												[
-													"City",
-													"{@dice 6d6} days"
-												]
-											]
-										},
-										"The character must spend 1 gp per day to cover the cost of drinks, social appearances, and the like. At the end of the time spent sowing the rumor, the character must make a DC 15 Charisma (Deception or Persuasion) check. If the check succeeds, the community's prevailing attitude toward the subject shifts one step toward friendly or hostile, as the character wishes. If the check fails, the rumor gains no traction, and further attempts to propagate it fail.",
-										"Shifting a community's general attitude toward a person or organization doesn't affect everyone in the community. Individuals might hold to their own opinions, particularly if they have personal experience in dealing with the subject of the rumors."
-									],
-									"id": "239"
-								},
-								{
-									"type": "entries",
-									"name": "Training to Gain Levels",
-									"page": 131,
-									"entries": [
-										"As a variant rule, you can require characters to spend downtime training or studying before they gain the benefits of a new level. If you choose this option, once a character has earned enough experience points to attain a new level, he or she must train for a number of days before gaining any class features associated with the new level.",
-										"The training time required depends on the level to be gained, as shown on the Training to Gain Levels table.",
-										"The training cost is for the total training time.",
-										{
-											"type": "table",
-											"caption": "Training to Gain Levels",
-											"colLabels": [
-												"Level Attained",
-												"Training Time",
-												"Training Cost"
-											],
-											"colStyles": [
-												"col-3 text-center",
-												"col-3 text-center",
-												"col-3 text-center"
-											],
-											"rows": [
-												[
-													"2nd-4th",
-													"10 days",
-													"20 gp"
-												],
-												[
-													"5th-10th",
-													"20 days",
-													"40 gp"
-												],
-												[
-													"11th-16th",
-													"30 days",
-													"60 gp"
-												],
-												[
-													"17th-20th",
-													"40 days",
-													"80 gp"
-												]
-											]
-										}
-									],
-									"id": "23a"
+									"type": "list",
+									"columns": 3,
+									"items": [
+										"{@variantrule Downtime Activity; Building a Stronghold||Building a Stronghold}",
+										"{@variantrule Downtime Activity; Carousing||Carousing}",
+										"{@variantrule Downtime Activity; Crafting a Magic Item||Crafting a Magic Item}",
+										"{@variantrule Downtime Activity; Gaining Renown||Gaining Renown}",
+										"{@variantrule Downtime Activity; Performing Sacred Rites||Performing Sacred Rites}",
+										"{@variantrule Downtime Activity; Running a Business||Running a Business}",
+										"{@variantrule Downtime Activity; Selling Magic Items||Selling Magic Items}",
+										"{@variantrule Downtime Activity; Sowing Rumors||Sowing Rumors}",
+										"{@variantrule Downtime Activity; Training to Gain Levels||Training to Gain Levels}"
+									]
 								}
 							],
 							"id": "231"
@@ -15492,7 +15073,7 @@
 										],
 										[
 											"30-34",
-											"{@item Ammunition +1}"
+											"+1 ammunition"
 										],
 										[
 											"35-39",
@@ -15645,7 +15226,7 @@
 										],
 										[
 											"23-27",
-											"{@item Ammunition +2}"
+											"+2 ammunition"
 										],
 										[
 											"28-32",
@@ -15786,7 +15367,7 @@
 										],
 										[
 											"58-62",
-											"{@item Ammunition +3}"
+											"+3 ammunition"
 										],
 										[
 											"63-67",
@@ -15892,11 +15473,11 @@
 									"rows": [
 										[
 											"01-15",
-											"{@item Weapon +1}"
+											"+1 weapon"
 										],
 										[
 											"16-18",
-											"{@item Shield +1}"
+											"+1 shield"
 										],
 										[
 											"19-21",
@@ -15952,7 +15533,7 @@
 										],
 										[
 											"46-47",
-											"{@item Rod of the Pact Keeper, +1}"
+											"+1 rod of the pact keeper"
 										],
 										[
 											"48-49",
@@ -15980,7 +15561,7 @@
 										],
 										[
 											"60-61",
-											"{@item Wand of the War Mage, +1}"
+											"+1 wand of the war mage"
 										],
 										[
 											"62-63",
@@ -16149,7 +15730,7 @@
 									"rows": [
 										[
 											"01-11",
-											"{@item Weapon +2}"
+											"+2 weapon"
 										],
 										[
 											"12-14",
@@ -16261,7 +15842,7 @@
 										],
 										[
 											"30",
-											"{@item Chain Mail +1}"
+											"+1 chain mail"
 										],
 										[
 											"31",
@@ -16269,7 +15850,7 @@
 										],
 										[
 											"32",
-											"{@item Chain Shirt +1}"
+											"+1 chain shirt"
 										],
 										[
 											"33",
@@ -16365,7 +15946,7 @@
 										],
 										[
 											"56",
-											"{@item Leather Armor +1}"
+											"+1 leather armor"
 										],
 										[
 											"57",
@@ -16441,7 +16022,7 @@
 										],
 										[
 											"75",
-											"{@item Rod of the Pact Keeper, +2}"
+											"+2 rod of the pact keeper"
 										],
 										[
 											"76",
@@ -16449,7 +16030,7 @@
 										],
 										[
 											"77",
-											"{@item Scale Mail +1}"
+											"+1 scale mail"
 										],
 										[
 											"78",
@@ -16457,7 +16038,7 @@
 										],
 										[
 											"79",
-											"{@item Shield +2}"
+											"+2 shield"
 										],
 										[
 											"80",
@@ -16533,7 +16114,7 @@
 										],
 										[
 											"98",
-											"{@item Wand of the War Mage, +2}"
+											"+2 wand of the war mage"
 										],
 										[
 											"99",
@@ -16562,7 +16143,7 @@
 									"rows": [
 										[
 											"01-10",
-											"{@item Weapon +3}"
+											"+3 weapon"
 										],
 										[
 											"11-12",
@@ -16610,7 +16191,7 @@
 										],
 										[
 											"33-34",
-											"{@item Rod of the Pact Keeper, +3}"
+											"+3 rod of the pact keeper"
 										],
 										[
 											"35-36",
@@ -16618,7 +16199,7 @@
 										],
 										[
 											"37-38",
-											"{@item Shield +3}"
+											"+3 shield"
 										],
 										[
 											"39-40",
@@ -16650,7 +16231,7 @@
 										],
 										[
 											"53-54",
-											"{@item Wand of the War Mage, +3}"
+											"+3 wand of the war mage"
 										],
 										[
 											"55",
@@ -16674,7 +16255,7 @@
 										],
 										[
 											"60",
-											"{@item Breastplate +1}"
+											"+1 breastplate"
 										],
 										[
 											"61",
@@ -16686,11 +16267,11 @@
 										],
 										[
 											"63",
-											"{@item Chain Mail +2}"
+											"+2 chain mail"
 										],
 										[
 											"64",
-											"{@item Chain Shirt +2}"
+											"+2 chain shirt"
 										],
 										[
 											"65",
@@ -16770,7 +16351,7 @@
 										],
 										[
 											"84",
-											"{@item Leather Armor +2}"
+											"+2 leather armor"
 										],
 										[
 											"85",
@@ -16802,7 +16383,7 @@
 										],
 										[
 											"92",
-											"{@item Scale Mail +2}"
+											"+2 scale mail"
 										],
 										[
 											"93",
@@ -16810,7 +16391,7 @@
 										],
 										[
 											"94",
-											"{@item Splint Armor +1}"
+											"+1 splint armor"
 										],
 										[
 											"95",
@@ -16818,7 +16399,7 @@
 										],
 										[
 											"96",
-											"{@item Studded Leather Armor +1}"
+											"+1 studded leather armor"
 										],
 										[
 											"97",
@@ -16903,15 +16484,15 @@
 										],
 										[
 											"44-45",
-											"{@item Breastplate +2}"
+											"+2 breastplate"
 										],
 										[
 											"46-47",
-											"{@item Chain Mail +3}"
+											"+3 chain mail"
 										],
 										[
 											"48-49",
-											"{@item Chain Shirt +3}"
+											"+3 chain shirt"
 										],
 										[
 											"50-51",
@@ -16923,7 +16504,7 @@
 										],
 										[
 											"54-55",
-											"{@item Half Plate Armor +1}"
+											"+1 half plate armor"
 										],
 										[
 											"56-57",
@@ -16931,11 +16512,11 @@
 										],
 										[
 											"58-59",
-											"{@item Leather Armor +3}"
+											"+3 leather armor"
 										],
 										[
 											"60-61",
-											"{@item Plate Armor +1}"
+											"+1 plate armor"
 										],
 										[
 											"62-63",
@@ -16947,7 +16528,7 @@
 										],
 										[
 											"66-67",
-											"{@item Scale Mail +1}"
+											"+1 scale mail"
 										],
 										[
 											"68-69",
@@ -16955,11 +16536,11 @@
 										],
 										[
 											"70-71",
-											"{@item Splint Armor +2}"
+											"+2 splint armor"
 										],
 										[
 											"72-73",
-											"{@item Studded Leather Armor +2}"
+											"+2 studded leather armor"
 										],
 										[
 											"74-75",
@@ -16981,31 +16562,31 @@
 												"rows": [
 													[
 														"1-2",
-														"{@item Half Plate Armor +2}"
+														"+2 half plate armor"
 													],
 													[
 														"3-4",
-														"{@item Plate Armor +2}"
+														"+2 plate armor"
 													],
 													[
 														"5-6",
-														"{@item Studded Leather Armor +3}"
+														"+3 studded leather armor"
 													],
 													[
 														"7-8",
-														"{@item Breastplate +3}"
+														"+3 breastplate"
 													],
 													[
 														"9-10",
-														"{@item Splint Armor +3}"
+														"+3 splint armor"
 													],
 													[
 														"11",
-														"{@item Half Plate Armor +3}"
+														"+3 half plate armor"
 													],
 													[
 														"12",
-														"{@item Plate Armor +3}"
+														"+3 plate armor"
 													]
 												],
 												"data": {

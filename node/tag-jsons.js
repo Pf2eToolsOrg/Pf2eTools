@@ -76,10 +76,9 @@ class TagJsons {
 			Object.keys(json)
 				.forEach(k => {
 					json[k] = TagJsons.WALKER.walk(
-						"tagger",
 						json[k],
 						{
-							object: (ident, obj, lastKey) => {
+							object: (obj, lastKey) => {
 								if (lastKey != null && !LAST_KEY_WHITELIST.has(lastKey)) return obj
 
 								obj = TagCondition.tryRunBasic(obj);
@@ -123,10 +122,9 @@ class SpellTag {
 
 	static tryRun (it) {
 		return TagJsons.WALKER.walk(
-			"spellTagger",
 			it,
 			{
-				string: (ident, str) => {
+				string: (str) => {
 					const ptrStack = {_: ""};
 					TaggerUtils.walkerStringHandler(
 						["@spell"],
@@ -176,10 +174,9 @@ class ItemTag {
 
 	static tryRun (it) {
 		return TagJsons.WALKER.walk(
-			"itemTagger",
 			it,
 			{
-				string: (ident, str) => {
+				string: (str) => {
 					const ptrStack = {_: ""};
 					TaggerUtils.walkerStringHandler(
 						["@item"],

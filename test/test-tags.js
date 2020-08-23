@@ -663,7 +663,7 @@ class ClassDataCheck {
 		});
 
 		const handlersNestedRefsClass = {
-			array: (ident, arr) => {
+			array: (arr) => {
 				arr.forEach(it => {
 					if (it.type !== "refClassFeature") return;
 
@@ -677,7 +677,7 @@ class ClassDataCheck {
 			}
 		};
 		(data.classFeature || []).forEach(cf => {
-			walker.walk("nestedRefLookup", cf.entries, handlersNestedRefsClass);
+			walker.walk(cf.entries, handlersNestedRefsClass);
 		});
 		// endregion
 
@@ -692,7 +692,7 @@ class ClassDataCheck {
 			cls.subclasses.forEach(sc => this._doCheckSubclass(file, data, subclassFeatureLookup, cls, sc));
 
 			const handlersNestedRefsSubclass = {
-				array: (ident, arr) => {
+				array: (arr) => {
 					arr.forEach(it => {
 						if (it.type !== "refSubclassFeature") return;
 
@@ -706,14 +706,14 @@ class ClassDataCheck {
 				}
 			};
 			(data.subclassFeature || []).forEach(scf => {
-				walker.walk("nestedRefLookup", scf.entries, handlersNestedRefsSubclass);
+				walker.walk(scf.entries, handlersNestedRefsSubclass);
 			});
 		}
 		// endregion
 
 		// region Referenced optional features
 		const handlersNestedRefsOptionalFeatures = {
-			array: (ident, arr) => {
+			array: (arr) => {
 				arr.forEach(it => {
 					if (it.type !== "refOptionalfeature") return;
 
@@ -724,10 +724,10 @@ class ClassDataCheck {
 			}
 		};
 		(data.classFeature || []).forEach(cf => {
-			walker.walk("nestedRefLookup", cf.entries, handlersNestedRefsOptionalFeatures);
+			walker.walk(cf.entries, handlersNestedRefsOptionalFeatures);
 		});
 		(data.subclassFeature || []).forEach(scf => {
-			walker.walk("nestedRefLookup", scf.entries, handlersNestedRefsOptionalFeatures);
+			walker.walk(scf.entries, handlersNestedRefsOptionalFeatures);
 		});
 		// endregion
 	}

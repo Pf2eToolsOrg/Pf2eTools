@@ -58,62 +58,62 @@ const ListUtil = {
 
 	_initList_bindWindowHandlers () {
 		$(window).on("keypress", (e) => {
-			// K up; J down
-			if (noModifierKeys(e)) {
-				if (e.key === "k" || e.key === "j") {
-					// don't switch if the user is typing somewhere else
-					if (MiscUtil.isInInput(e)) return;
-					const it = Hist.getSelectedListElementWithLocation();
+			if (!EventUtil.noModifierKeys(e)) return;
 
-					if (it) {
-						if (e.key === "k") {
-							const prevLink = $(it.item.ele).prev().find("a").attr("href");
-							if (prevLink !== undefined) {
-								window.location.hash = prevLink;
-								ListUtil._initList_scrollToItem();
-							} else {
-								const lists = ListUtil.getPrimaryLists();
-								let x = it.x;
-								while (--x >= 0) {
-									const l = lists[x];
-									if (l.visibleItems.length) {
-										const goTo = $(l.visibleItems[l.visibleItems.length - 1].ele).find("a").attr("href");
-										if (goTo) {
-											window.location.hash = goTo;
-											ListUtil._initList_scrollToItem();
-										}
-										return;
+			// K up; J down
+			if (e.key === "k" || e.key === "j") {
+				// don't switch if the user is typing somewhere else
+				if (EventUtil.isInInput(e)) return;
+				const it = Hist.getSelectedListElementWithLocation();
+
+				if (it) {
+					if (e.key === "k") {
+						const prevLink = $(it.item.ele).prev().find("a").attr("href");
+						if (prevLink !== undefined) {
+							window.location.hash = prevLink;
+							ListUtil._initList_scrollToItem();
+						} else {
+							const lists = ListUtil.getPrimaryLists();
+							let x = it.x;
+							while (--x >= 0) {
+								const l = lists[x];
+								if (l.visibleItems.length) {
+									const goTo = $(l.visibleItems[l.visibleItems.length - 1].ele).find("a").attr("href");
+									if (goTo) {
+										window.location.hash = goTo;
+										ListUtil._initList_scrollToItem();
 									}
+									return;
 								}
 							}
-							const fromPrevSibling = $(it.item.ele).closest(`ul`).parent().prev(`li`).find(`ul li`).last().find("a").attr("href");
-							if (fromPrevSibling) {
-								window.location.hash = fromPrevSibling;
-							}
-						} else if (e.key === "j") {
-							const nextLink = $(it.item.ele).next().find("a").attr("href");
-							if (nextLink !== undefined) {
-								window.location.hash = nextLink;
-								ListUtil._initList_scrollToItem();
-							} else {
-								const lists = ListUtil.getPrimaryLists();
-								let x = it.x;
-								while (++x < lists.length) {
-									const l = lists[x];
-									if (l.visibleItems.length) {
-										const goTo = $(l.visibleItems[0].ele).find("a").attr("href");
-										if (goTo) {
-											window.location.hash = goTo;
-											ListUtil._initList_scrollToItem();
-										}
-										return;
+						}
+						const fromPrevSibling = $(it.item.ele).closest(`ul`).parent().prev(`li`).find(`ul li`).last().find("a").attr("href");
+						if (fromPrevSibling) {
+							window.location.hash = fromPrevSibling;
+						}
+					} else if (e.key === "j") {
+						const nextLink = $(it.item.ele).next().find("a").attr("href");
+						if (nextLink !== undefined) {
+							window.location.hash = nextLink;
+							ListUtil._initList_scrollToItem();
+						} else {
+							const lists = ListUtil.getPrimaryLists();
+							let x = it.x;
+							while (++x < lists.length) {
+								const l = lists[x];
+								if (l.visibleItems.length) {
+									const goTo = $(l.visibleItems[0].ele).find("a").attr("href");
+									if (goTo) {
+										window.location.hash = goTo;
+										ListUtil._initList_scrollToItem();
 									}
+									return;
 								}
 							}
-							const fromNxtSibling = $(it.item.ele).closest(`ul`).parent().next(`li`).find(`ul li`).first().find("a").attr("href");
-							if (fromNxtSibling) {
-								window.location.hash = fromNxtSibling;
-							}
+						}
+						const fromNxtSibling = $(it.item.ele).closest(`ul`).parent().next(`li`).find(`ul li`).first().find("a").attr("href");
+						if (fromNxtSibling) {
+							window.location.hash = fromNxtSibling;
 						}
 					}
 				}
@@ -885,7 +885,7 @@ const ListUtil = {
 	},
 
 	addListShowHide () {
-		$(`#filter-search-input-group`).find(`#reset`).before(`<button class="btn btn-default" id="hidesearch">Hide</button>`);
+		$(`#filter-search-group`).find(`#reset`).before(`<button class="btn btn-default" id="hidesearch">Hide</button>`);
 		$(`#contentwrapper`).prepend(`<div class="col-12" id="showsearch"><button class="btn btn-block btn-default btn-xs" type="button">Show Filter</button><br></div>`);
 
 		const $wrpList = $(`#listcontainer`);

@@ -9,6 +9,7 @@ class ItemsPage {
 
 		this._$totalWeight = null;
 		this._$totalValue = null;
+		this._$totalItems = null;
 
 		this._mundaneList = null;
 		this._magicList = null;
@@ -184,20 +185,24 @@ class ItemsPage {
 	onSublistChange () {
 		this._$totalwWeight = this._$totalWeight || $(`#totalweight`);
 		this._$totalValue = this._$totalValue || $(`#totalvalue`);
+		this._$totalItems = this._$totalItems || $(`#totalitems`);
 
 		let weight = 0;
 		let value = 0;
+		let cntItems = 0;
 
 		const availConversions = new Set();
 		ListUtil.sublist.items.forEach(it => {
 			const item = this._itemList[it.ix];
 			if (item.currencyConversion) availConversions.add(item.currencyConversion);
 			const count = it.values.count;
+			cntItems += it.values.count;
 			if (item.weight) weight += Number(item.weight) * count;
 			if (item.value) value += item.value * count;
 		});
 
 		this._$totalwWeight.text(`${weight.toLocaleString(undefined, {maximumFractionDigits: 5})} lb${weight !== 1 ? "s" : ""}.`);
+		this._$totalItems.text(cntItems);
 
 		if (availConversions.size) {
 			this._$totalValue
@@ -264,7 +269,7 @@ class ItemsPage {
 		await ExcludeUtil.pInitialise();
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
-			$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
+			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`)
 		});
 
@@ -286,11 +291,15 @@ class ItemsPage {
 
 		const $elesMundaneAndMagic = $(`.ele-mundane-and-magic`);
 		$(`.side-label--mundane`).click(() => {
-			itemsPage._pageFilter.filterBox.setFromValues({Miscellaneous: {Mundane: 1}});
+			const filterValues = itemsPage._pageFilter.filterBox.getValues();
+			const curValue = MiscUtil.get(filterValues, "Miscellaneous", "Mundane");
+			itemsPage._pageFilter.filterBox.setFromValues({Miscellaneous: {Mundane: curValue === 1 ? 0 : 1}});
 			itemsPage.handleFilterChange();
 		});
 		$(`.side-label--magic`).click(() => {
-			itemsPage._pageFilter.filterBox.setFromValues({Miscellaneous: {Magic: 1}});
+			const filterValues = itemsPage._pageFilter.filterBox.getValues();
+			const curValue = MiscUtil.get(filterValues, "Miscellaneous", "Magic");
+			itemsPage._pageFilter.filterBox.setFromValues({Miscellaneous: {Magic: curValue === 1 ? 0 : 1}});
 			itemsPage.handleFilterChange();
 		});
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);

@@ -243,7 +243,8 @@ PropOrder._SPELL = [
 
 	"classes",
 	"races",
-	"backgrounds"
+	"backgrounds",
+	"eldritchInvocations"
 ];
 PropOrder._ACTION = [
 	"name",
@@ -576,6 +577,7 @@ PropOrder._VEHICLE = [
 	"weight",
 
 	"type",
+	"terrain",
 
 	"capCreature",
 	"capCrew",
@@ -701,6 +703,7 @@ PropOrder._ITEM = [
 	"speed",
 
 	"ability",
+	"grantsProficiency",
 
 	"bonusWeapon",
 	"bonusWeaponAttack",
@@ -848,6 +851,8 @@ PropOrder._VARIANTRULE = [
 	"source",
 	"page",
 	"srd",
+
+	"additionalSources",
 
 	"ruleType",
 

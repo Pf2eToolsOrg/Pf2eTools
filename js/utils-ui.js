@@ -287,6 +287,7 @@ class UiUtil {
 	 * @param [opts.isWidth100] {boolean}
 	 * @param [opts.isMinHeight0] {boolean}
 	 * @param [opts.isMaxWidth640p] {boolean}
+	 * @param [opts.isFullscreenModal] {boolean} An alternate mode.
 	 *
 	 * @param {function} [opts.cbClose] Callback run when the modal is closed.
 	 * @param {JQuery} [opts.titleSplit] Element to have split alongside the title.
@@ -296,6 +297,7 @@ class UiUtil {
 	 * @param {boolean} [opts.isIndestructible] If the modal elements should be detached, not removed.
 	 * @param {boolean} [opts.isClosed] If the modal should start off closed.
 	 * @param {boolean} [opts.isEmpty] If the modal should contain no content.
+	 * @param {boolean} [opts.hasFooter] If the modal has a footer.
 	 * @returns {object}
 	 */
 	static getShowModal (opts) {
@@ -328,6 +330,12 @@ class UiUtil {
 		const $overlay = $(`<div class="ui-modal__overlay">`);
 		if (opts.zIndex != null) $overlay.css({zIndex: opts.zIndex});
 		if (opts.overlayColor != null) $overlay.css({backgroundColor: opts.overlayColor});
+
+		// In "fullscreen" mode, blank out the modal background
+		const $overlayBlind = opts.isFullscreenModal
+			? $(`<div class="ui-modal__overlay-blind w-100 h-100 flex-col"></div>`).appendTo($overlay)
+			: null;
+
 		const $scroller = $(`<div class="ui-modal__scroller flex-col"></div>`);
 
 		const modalWindowClasses = [
@@ -336,17 +344,28 @@ class UiUtil {
 			opts.isUncappedHeight ? "ui-modal__inner--uncap-height" : "",
 			opts.isUncappedWidth ? "ui-modal__inner--uncap-width" : "",
 			opts.isMinHeight0 ? `ui-modal__inner--no-min-height` : "",
-			opts.isMaxWidth640p ? `ui-modal__inner--max-width-640p` : ""
+			opts.isMaxWidth640p ? `ui-modal__inner--max-width-640p` : "",
+			opts.isFullscreenModal ? `ui-modal__inner--mode-fullscreen my-0 pt-0` : "",
+			opts.hasFooter ? `pb-0` : ""
 		].filter(Boolean);
 
+		const $btnCloseModal = opts.isFullscreenModal
+			? $(`<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>`)
+				.click(() => pHandleCloseClick(false))
+			: null;
+
+		const $modalFooter = opts.hasFooter ? $(`<div class="no-shrink w-100 flex-col ui-modal__footer ${opts.isFullscreenModal ? `ui-modal__footer--fullscreen mt-1` : ""}"></div>`) : null;
+
 		const $modal = $$`<div class="ui-modal__inner flex-col dropdown-menu ${modalWindowClasses.join(" ")}">
-			${!opts.isEmpty && opts.title ? $$`<div class="split-v-center no-shrink">
-				${opts.title ? `<h4>${opts.title.escapeQuotes()}</h4>` : ""}${opts.titleSplit || ""}
+			${!opts.isEmpty && opts.title ? $$`<div class="split-v-center no-shrink ui-modal__header ${opts.isFullscreenModal ? `ui-modal__header--fullscreen mb-1` : ""}">
+				${opts.title ? `<h4 class="my-2">${opts.title.escapeQuotes()}</h4>` : ""}${opts.titleSplit || ""}${$btnCloseModal}
 			</div>` : null}
 
 			${!opts.isEmpty ? $scroller : null}
+
+			${$modalFooter}
 		</div>`
-			.appendTo($overlay);
+			.appendTo(opts.isFullscreenModal ? $overlayBlind : $overlay);
 
 		$overlay
 			.mouseup(evt => {
@@ -370,6 +389,7 @@ class UiUtil {
 		const out = {
 			$modal,
 			$modalInner: $scroller,
+			$modalFooter,
 			doClose: pHandleCloseClick,
 			doTeardown
 		};
@@ -402,7 +422,7 @@ class UiUtil {
 		document.addEventListener("keydown", evt => {
 			if (evt.which !== 27) return;
 			if (!UiUtil._MODAL_STACK.length) return;
-			if (MiscUtil.isInInput(evt)) return;
+			if (EventUtil.isInInput(evt)) return;
 
 			const outerModalMeta = UiUtil._MODAL_STACK.last();
 			if (!outerModalMeta) return;
@@ -446,6 +466,9 @@ class UiUtil {
 		if (helpText) $row.title(helpText);
 		$row.append(`<span>${labelText}</span>`);
 		const $cb = $(`<input type="checkbox">`).appendTo($row)
+			.keydown(evt => {
+				if (evt.key === "Escape") $cb.blur();
+			})
 			.prop("checked", objectWithProp[propName])
 			.on("change", () => objectWithProp[propName] = $cb.prop("checked"));
 		return $cb;
@@ -1134,6 +1157,7 @@ class SearchWidget {
 
 			// On the first keypress, switch to loading dots
 			this._$iptSearch.keydown(evt => {
+				if (evt.key === "Escape") this._$iptSearch.blur();
 				if (evt.which !== 13) {
 					if (lastSearchTerm === "") this.__showMsgWait();
 					lastSearchTerm = this._$iptSearch.val();
@@ -1450,6 +1474,7 @@ class InputUiUtil {
 		return new Promise(resolve => {
 			const $iptNumber = $(`<input class="form-control mb-2 text-right" ${opts.min ? `min="${opts.min}"` : ""} ${opts.max ? `max="${opts.max}"` : ""} ${opts.default != null ? `value="${opts.default}"` : ""}>`)
 				.keydown(evt => {
+					if (evt.key === "Escape") { $iptNumber.blur(); return; }
 					// return key
 					if (evt.which === 13) doClose(true);
 					evt.stopPropagation();
@@ -1515,10 +1540,10 @@ class InputUiUtil {
 					}
 				}) : null;
 
-			const $btnTrue = $(`<button class="btn btn-primary flex-v-center mr-3"><span class="glyphicon glyphicon-ok mr-2"></span><span>${opts.textYes || "Yes"}</span></button>`)
+			const $btnTrue = $(`<button class="btn btn-primary flex-v-center mr-3"><span class="glyphicon glyphicon-ok mr-2"></span><span>${opts.textYes || "OK"}</span></button>`)
 				.click(() => doClose(true, true));
 
-			const $btnFalse = $(`<button class="btn btn-default btn-sm flex-v-center mr-2"><span class="glyphicon glyphicon-remove mr-2"></span><span>${opts.textNo || "No"}</span></button>`)
+			const $btnFalse = $(`<button class="btn btn-default btn-sm flex-v-center mr-2"><span class="glyphicon glyphicon-remove mr-2"></span><span>${opts.textNo || "Cancel"}</span></button>`)
 				.click(() => doClose(true, false));
 
 			const {$modalInner, doClose} = UiUtil.getShowModal({
@@ -1532,7 +1557,7 @@ class InputUiUtil {
 			});
 
 			if (opts.htmlDescription && opts.htmlDescription.trim()) $$`<div class="flex w-100 mb-1">${opts.htmlDescription}</div>`.appendTo($modalInner);
-			$$`<div class="flex-v-center flex-h-right py-1 px-1">${$btnFalse}${$btnTrue}${$btnTrueRemember}</div>`.appendTo($modalInner);
+			$$`<div class="flex-v-center flex-h-right py-1 px-1">${$btnTrueRemember}${$btnTrue}${$btnFalse}</div>`.appendTo($modalInner);
 			$btnTrue.focus();
 			$btnTrue.select();
 		});
@@ -1699,7 +1724,7 @@ class InputUiUtil {
 			//   will remove from the first element in visual order
 			ixsSelectionOrder.sort((a, b) => SortUtil.ascSort(a, b));
 
-			const $wrpList = $$`<div class="flex-col w-100 striped-even mb-1 overflow-y-auto">${$eles}</div>`;
+			const $wrpList = $$`<div class="flex-col w-100 stripe-even mb-1 overflow-y-auto">${$eles}</div>`;
 
 			let title = opts.title;
 			if (!title) {
@@ -1803,6 +1828,8 @@ class InputUiUtil {
 			const $iptStr = $(`<input class="form-control mb-2" type="text">`)
 				.val(opts.default)
 				.keydown(async evt => {
+					if (evt.key === "Escape") { $iptStr.blur(); return; }
+
 					if (opts.autocomplete) {
 						// prevent double-binding the return key if we have autocomplete enabled
 						await MiscUtil.pDelay(17); // arbitrary delay to allow dropdown to render (~1000/60, i.e. 1 60 FPS frame)
@@ -2042,6 +2069,7 @@ class InputUiUtil {
 				const $iptNum = ComponentUiUtil.$getIptInt(this, "num", 0, {$ele: $(`<input class="form-control input-xs form-control--minimal text-center mr-1">`)})
 					.appendTo($parent)
 					.keydown(evt => {
+						if (evt.key === "Escape") { $iptNum.blur(); return; }
 						// return key
 						if (evt.which === 13) doClose(true);
 						evt.stopPropagation();
@@ -2052,6 +2080,7 @@ class InputUiUtil {
 				const $iptBonus = $(`<input class="form-control input-xs form-control--minimal text-center">`)
 					.change(() => this._state.bonus = UiUtil.strToInt($iptBonus.val(), null, {fallbackOnNaN: null}))
 					.keydown(evt => {
+						if (evt.key === "Escape") { $iptBonus.blur(); return; }
 						// return key
 						if (evt.which === 13) doClose(true);
 						evt.stopPropagation();
@@ -2253,27 +2282,33 @@ class SourceUiUtil {
 
 		let jsonDirty = false;
 		const $iptName = $(`<input class="form-control ui-source__ipt-named">`)
+			.keydown(evt => { if (evt.key === "Escape") $iptName.blur(); })
 			.change(() => {
 				if (!jsonDirty && !isEditMode) $iptJson.val($iptName.val().replace(/[^-_a-zA-Z]/g, ""));
 				$iptName.removeClass("form-control--error");
 			});
 		if (options.source) $iptName.val(options.source.full);
 		const $iptAbv = $(`<input class="form-control ui-source__ipt-named">`)
+			.keydown(evt => { if (evt.key === "Escape") $iptAbv.blur(); })
 			.change(() => {
 				$iptAbv.removeClass("form-control--error");
 			});
 		if (options.source) $iptAbv.val(options.source.abbreviation);
 		const $iptJson = $(`<input class="form-control ui-source__ipt-named" ${isEditMode ? "disabled" : ""}>`)
+			.keydown(evt => { if (evt.key === "Escape") $iptJson.blur(); })
 			.change(() => {
 				jsonDirty = true;
 				$iptJson.removeClass("form-control--error");
 			});
 		if (options.source) $iptJson.val(options.source.json);
-		const $iptUrl = $(`<input class="form-control ui-source__ipt-named">`);
+		const $iptUrl = $(`<input class="form-control ui-source__ipt-named">`)
+			.keydown(evt => { if (evt.key === "Escape") $iptUrl.blur(); });
 		if (options.source) $iptUrl.val(options.source.url);
-		const $iptAuthors = $(`<input class="form-control ui-source__ipt-named">`);
+		const $iptAuthors = $(`<input class="form-control ui-source__ipt-named">`)
+			.keydown(evt => { if (evt.key === "Escape") $iptAuthors.blur(); });
 		if (options.source) $iptAuthors.val((options.source.authors || []).join(", "));
-		const $iptConverters = $(`<input class="form-control ui-source__ipt-named">`);
+		const $iptConverters = $(`<input class="form-control ui-source__ipt-named">`)
+			.keydown(evt => { if (evt.key === "Escape") $iptConverters.blur(); });
 		if (options.source) $iptConverters.val((options.source.convertedBy || []).join(", "));
 
 		const $btnOk = $(`<button class="btn btn-primary">OK</button>`)
@@ -2443,6 +2478,17 @@ class BaseComponent extends ProxyBase {
 	}
 
 	/**
+	 * @param opts Options object.
+	 * @param opts.prop The state property.
+	 * @param [opts.namespace] The render namespace.
+	 */
+	_getRenderedCollection (opts) {
+		opts = opts || {};
+		const renderedLookupProp = opts.namespace ? `${opts.namespace}.${opts.prop}` : opts.prop;
+		return (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
+	}
+
+	/**
 	 * Asynchronous version available below.
 	 * @param opts Options object.
 	 * @param opts.prop The state property.
@@ -2456,8 +2502,7 @@ class BaseComponent extends ProxyBase {
 	_renderCollection (opts) {
 		opts = opts || {};
 
-		const renderedLookupProp = opts.namespace ? `${opts.namespace}.${opts.prop}` : opts.prop;
-		const rendered = (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
+		const rendered = this._getRenderedCollection(opts);
 		const toDelete = new Set(Object.keys(rendered));
 
 		(this._state[opts.prop] || []).forEach((it, i) => {
@@ -2491,13 +2536,19 @@ class BaseComponent extends ProxyBase {
 			}
 		});
 
-		this._renderCollection_doDeletes(rendered, toDelete);
+		toDelete.forEach(id => {
+			const meta = rendered[id];
+			meta.$wrpRow.remove();
+			delete rendered[id];
+			if (opts.fnDeleteExisting) opts.fnDeleteExisting(meta);
+		});
 	}
 
 	/**
 	 * Synchronous version available above.
 	 * @param [opts] Options object.
 	 * @param opts.prop The state property.
+	 * @param [opts.pFnDeleteExisting] Function to run on deleted render meta. Arguments are `rendered, item`.
 	 * @param opts.pFnUpdateExisting Function to run on existing render meta. Arguments are `rendered, item`.
 	 * @param opts.pFnGetNew Function to run which generates existing render meta. Arguments are `item`.
 	 * @param [opts.isDiffMode] If updates should be run in "diff" mode (i.e. no update is run if nothing has changed).
@@ -2510,8 +2561,7 @@ class BaseComponent extends ProxyBase {
 	async _pRenderCollection (opts) {
 		opts = opts || {};
 
-		const renderedLookupProp = opts.namespace ? `${opts.namespace}.${opts.prop}` : opts.prop;
-		const rendered = (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
+		const rendered = this._getRenderedCollection(opts);
 		const entities = this._state[opts.prop];
 		return this._pRenderCollection_doRender(rendered, entities, opts);
 	}
@@ -2556,20 +2606,14 @@ class BaseComponent extends ProxyBase {
 			}
 		}
 
-		return this._renderCollection_doDeletes(rendered, toDelete, opts);
-	}
-
-	_renderCollection_doDeletes (rendered, toDelete, opts) {
-		opts = opts || {};
-
-		toDelete.forEach(id => {
+		for (const id of toDelete) {
 			const meta = rendered[id];
 			if (opts.isMultiRender) meta.forEach(it => it.$wrpRow.remove());
 			else meta.$wrpRow.remove();
 			if (opts.additionalCaches) opts.additionalCaches.forEach(it => delete it[id]);
 			delete rendered[id];
-			if (opts.fnDeleteExisting) opts.fnDeleteExisting(meta);
-		});
+			if (opts.pFnDeleteExisting) await opts.pFnDeleteExisting(meta);
+		}
 	}
 
 	/**
@@ -2644,6 +2688,8 @@ class BaseComponent extends ProxyBase {
 		});
 		return comp;
 	}
+
+	static fromObjectNoMod (obj) { return this.fromObject(obj, ...Object.keys(obj)); }
 
 	toObject () {
 		const cpy = MiscUtil.copy(this.__state);
@@ -3017,6 +3063,7 @@ class ComponentUiUtil {
 		opts.offset = opts.offset || 0;
 
 		const $ipt = (opts.$ele || $(opts.html || `<input class="form-control input-xs form-control--minimal text-right">`)).disableSpellcheck()
+			.keydown(evt => { if (evt.key === "Escape") $ipt.blur(); })
 			.change(() => {
 				const raw = $ipt.val().trim();
 
@@ -3074,7 +3121,9 @@ class ComponentUiUtil {
 		// Validate options
 		if ((opts.decorationLeft || opts.decorationRight) && !opts.asMeta) throw new Error(`Input must be created with "asMeta" option`);
 
-		const $ipt = (opts.$ele || $(opts.html || `<input class="form-control input-xs form-control--minimal">`)).disableSpellcheck()
+		const $ipt = (opts.$ele || $(opts.html || `<input class="form-control input-xs form-control--minimal">`))
+			.keydown(evt => { if (evt.key === "Escape") $ipt.blur(); })
+			.disableSpellcheck();
 		UiUtil.bindTypingEnd({
 			$ipt,
 			fnKeyup: () => {
@@ -3177,6 +3226,7 @@ class ComponentUiUtil {
 		opts = opts || {};
 
 		const $ipt = (opts.$ele || $(`<textarea class="form-control input-xs form-control--minimal resize-vertical"></textarea>`))
+			.keydown(evt => { if (evt.key === "Escape") $ipt.blur(); })
 			.change(() => component._state[prop] = UiUtil.getTextAsEntries($ipt.val().trim()));
 		const hook = () => $ipt.val(UiUtil.getEntriesAsText(component._state[prop]));
 		hook();
@@ -3251,6 +3301,9 @@ class ComponentUiUtil {
 		opts = opts || {};
 
 		const $cb = (opts.$ele || $(`<input type="checkbox">`))
+			.keydown(evt => {
+				if (evt.key === "Escape") $cb.blur();
+			})
 			.change(() => component._state[prop] = $cb.prop("checked"));
 		const hook = () => $cb.prop("checked", !!component._state[prop]);
 		component._addHookBase(prop, hook);
@@ -3359,6 +3412,9 @@ class ComponentUiUtil {
 		const $wrp = $(`<div class="flex-col w-100"></div>`);
 		const metas = opts.values.map(it => {
 			const $cb = $(`<input type="checkbox">`)
+				.keydown(evt => {
+					if (evt.key === "Escape") $cb.blur();
+				})
 				.change(() => {
 					let didUpdate = false;
 					const ix = (component._state[prop] || []).indexOf(it);

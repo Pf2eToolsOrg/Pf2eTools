@@ -148,11 +148,27 @@ class BestiaryPage {
 			{
 				uniqueId: data.uniqueId || "",
 				customHashId: getMonCustomHashId(mon),
-				$elesCount: [$eleCount1, $eleCount2]
+				$elesCount: [$eleCount1, $eleCount2],
+				approxHp: this._getApproxHp(mon),
+				approxAc: this._getApproxAc(mon)
 			}
 		);
 
 		return listItem;
+	}
+
+	_getApproxHp (mon) {
+		if (mon.hp && mon.hp.average && !isNaN(mon.hp.average)) return Number(mon.hp.average);
+		return null;
+	}
+
+	_getApproxAc (mon) {
+		// Use the first AC listed, as this is usually the "primary"
+		if (mon.ac && mon.ac[0] != null) {
+			if (mon.ac[0].ac) return mon.ac[0].ac;
+			if (typeof mon.ac[0] === "number") return mon.ac[0];
+		}
+		return null;
 	}
 
 	doLoadHash (id) {
@@ -189,7 +205,7 @@ class BestiaryPage {
 
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
-			$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
+			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`)
 		});
 
@@ -387,6 +403,9 @@ class EncounterBuilderUtils {
 					cr: it.values.cr,
 					count: Number(it.values.count),
 
+					approxHp: it.data.approxHp,
+					approxAc: it.data.approxAc,
+
 					// used for encounter adjuster
 					crScaled: crScaled,
 					customHashId: it.data.customHashId,
@@ -431,7 +450,7 @@ class EncounterBuilderUtils {
 			for (let i = 0; i < crValues.length; ++i) {
 				const crValueFilt = crValues.filter((_, j) => i !== j);
 				const crMean = Math.mean(...crValueFilt);
-				const crStdDev = Math.sqrt((1 / crValueFilt.length) * crValueFilt.map(it => Math.pow(it - crMean, 2)).reduce((a, b) => a + b, 0));
+				const crStdDev = Math.sqrt((1 / crValueFilt.length) * crValueFilt.map(it => (it - crMean) ** 2).reduce((a, b) => a + b, 0));
 				crMetas.push({mean: crMean, deviation: crStdDev});
 			}
 		}
@@ -472,7 +491,8 @@ let _$totalCr;
 function onSublistChange () {
 	_$totalCr = _$totalCr || $(`#totalcr`);
 	const xp = EncounterBuilderUtils.calculateListEncounterXp(encounterBuilder.lastPlayerCount);
-	_$totalCr.html(`${xp.baseXp.toLocaleString()} XP (<span class="help" title="Adjusted Encounter XP">Enc</span>: ${(xp.adjustedXp).toLocaleString()} XP)`);
+	const monCount = ListUtil.sublist.items.map(it => it.values.count).reduce((a, b) => a + b, 0);
+	_$totalCr.html(`${monCount} creature${monCount === 1 ? "" : "s"}; ${xp.baseXp.toLocaleString()} XP (<span class="help" title="Adjusted Encounter XP">Enc</span>: ${(xp.adjustedXp).toLocaleString()} XP)`);
 	if (encounterBuilder.isActive()) encounterBuilder.updateDifficulty();
 	else encounterBuilder.doSaveState();
 }
@@ -783,18 +803,19 @@ function renderStatblock (mon, isScaled) {
 				let fromAbility;
 				let ability;
 				if ($(this).parent().attr("data-mon-save")) {
-					const title = $(this).title();
-					ability = title.split(" ")[0].trim().toLowerCase().substring(0, 3);
+					const monSave = $(this).parent().attr("data-mon-save");
+					ability = monSave.split("|")[0].trim().toLowerCase();
 					fromAbility = Parser.getAbilityModNumber(mon[ability]);
 					pB = bonus - fromAbility;
 					expert = (pB === expectedPB * 2) ? 2 : 1;
 				} else if ($(this).parent().attr("data-mon-skill")) {
-					const title = $(this).title();
-					ability = Parser.skillToAbilityAbv(title.toLowerCase().trim());
+					const monSkill = $(this).parent().attr("data-mon-skill");
+					ability = Parser.skillToAbilityAbv(monSkill.split("|")[0].toLowerCase().trim());
 					fromAbility = Parser.getAbilityModNumber(mon[ability]);
 					pB = bonus - fromAbility;
 					expert = (pB === expectedPB * 2) ? 2 : 1;
-				}
+				} else if ($(this).data("packed-dice").successThresh !== null) return; // Ignore "recharge"
+
 				const withoutPB = bonus - pB;
 				try {
 					// if we have proficiency bonus, convert the roller

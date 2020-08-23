@@ -36,7 +36,7 @@ class NavBar {
 
 		const ulRules = addDropdown(navBar, "Rules");
 		addLi(ulRules, "quickreference.html", "Quick Reference");
-		addLi(ulRules, "variantrules.html", "Variant & Optional Rules/Misc");
+		addLi(ulRules, "variantrules.html", "Optional, Variant, and Expanded Rules");
 		addLi(ulRules, "tables.html", "Tables");
 		addDivider(ulRules);
 		const ulBooks = addDropdown(ulRules, "Books", true);
@@ -129,7 +129,7 @@ class NavBar {
 		addLi(ulReferences, "items.html", "Items");
 		addLi(ulReferences, "languages.html", "Languages");
 		addLi(ulReferences, "optionalfeatures.html", "Other Options and Features");
-		addLi(ulReferences, "rewards.html", "Other Rewards");
+		addLi(ulReferences, "rewards.html", "Supernatural Gifts & Rewards");
 		addLi(ulReferences, "psionics.html", "Psionics");
 		addLi(ulReferences, "spells.html", "Spells");
 		addLi(ulReferences, "vehicles.html", "Vehicles");
@@ -150,7 +150,6 @@ class NavBar {
 		addLi(ulUtils, "plutonium.html", "Plutonium (Foundry Module) Features");
 		addDivider(ulUtils);
 		addLi(ulUtils, "roll20.html", "Roll20 Script Help");
-		addLi(ulUtils, "makeshaped.html", "Roll20 Shaped Sheet JS Builder");
 		addDivider(ulUtils);
 		addLi(ulUtils, "changelog.html", "Changelog");
 		addLi(ulUtils, `https://wiki.5e.tools/index.php/Page:_${NavBar.getCurrentPage().replace(/.html$/i, "")}`, "Help", {isExternal: true});
@@ -345,7 +344,6 @@ class NavBar {
 
 			const li = document.createElement("li");
 			li.setAttribute("role", "presentation");
-			li.setAttribute("id", aText.toLowerCase().replace(/\s+/g, ""));
 			li.setAttribute("data-page", `${aHref}${hashPart}`);
 			if (opts.isRoot) {
 				li.classList.add("page__nav-hidden-mobile");

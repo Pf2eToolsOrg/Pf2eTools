@@ -564,12 +564,12 @@
 							acItem._enchTotal -= enchToGive;
 							f.ench += enchToGive;
 							acItem.ac += enchToGive;
-							f._ = `{@item ${f.name} +${f.ench}|dmg|+${f.ench} ${f.name}}`;
+							f._ = `{@item +${f.ench} ${f.name}}`;
 							if (acItem._enchTotal <= 0) handledEnchBonus = true;
 						} else if (out._gearBonus) {
 							const enchToGive = Math.min(3, acItem._enchTotal);
 							acItem._enchTotal -= enchToGive;
-							f._ = `{@item ${f.name} +${enchToGive}|dmg|+${enchToGive} ${f.name}}`;
+							f._ = `{@item +${enchToGive} ${f.name}}`;
 							if (acItem._enchTotal <= 0) handledEnchBonus = true;
 						}
 					});
@@ -582,7 +582,7 @@
 				const enchToGive = Math.min(3, acItem._enchTotal);
 				acItem._enchTotal -= enchToGive;
 				acItem.ac += enchToGive + 1;
-				(acItem.from = acItem.from || []).unshift(`{@item leather armor +${enchToGive}|dmg|+${enchToGive} leather armor}`);
+				(acItem.from = acItem.from || []).unshift(`{@item +${enchToGive} leather armor}`);
 
 				if (acItem._enchTotal > 0) acItem.ac += acItem._enchTotal; // as a fallback, add any remaining enchantment AC to the total
 			}
@@ -614,17 +614,7 @@
 				acItem.from = acItem.from.map(f => {
 					if (f._) f = f._; // if a previous loop modified it
 
-					// normalise to "true name" format
-					// e.g. {@item +1 chain mail} -> {@item chain mail +1||+1 chain mail}
-					const pre = /@item (\+\d+)([^+\d}]+)/gi.exec(f);
-					if (pre) {
-						const [_, bonus, name, rest] = pre.map(it => it.trim());
-						const restSpl = (rest || "").split("|");
-						const restPart = restSpl.length > 1 ? restSpl.last() : null;
-						f = `{@item ${name} ${bonus}||${restPart || `${bonus} ${name}`}}`;
-					}
-
-					const m = /@item ([^+\d]+)(\+\d+)\|([^|}]+)/gi.exec(f); // e.g. {@item chain mail +1|dmg|+1 chain mail}
+					const m = /@item (\+\d+) ([^+\d]+)\|([^|}]+)/gi.exec(f); // e.g. {@item +1 chain mail +1}
 					if (m) {
 						const [_, name, bonus, source] = m;
 

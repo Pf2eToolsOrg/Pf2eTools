@@ -91,13 +91,15 @@ const FILE_PREFIX_BLACKLIST = [
 /**
  * Recursively list all files in a directory.
  *
- * @param opts Options object.
- * @param opts.blacklistFilePrefixes Blacklisted filename prefixes (case sensitive).
- * @param opts.whitelistFileExts Whitelisted filename extensions (case sensitive).
- * @param opts.dir Directory to list.
- * @param opts.whitelistDirs Directory whitelist.
+ * @param [opts] Options object.
+ * @param [opts.blacklistFilePrefixes] Blacklisted filename prefixes (case sensitive).
+ * @param [opts.whitelistFileExts] Whitelisted filename extensions (case sensitive).
+ * @param [opts.dir] Directory to list.
+ * @param [opts.whitelistDirs] Directory whitelist.
  */
 function listFiles (opts) {
+	opts = opts || {};
+	opts.dir = opts.dir || "./data";
 	opts.blacklistFilePrefixes = opts.blacklistFilePrefixes || FILE_PREFIX_BLACKLIST;
 	opts.whitelistFileExts = opts.whitelistFileExts || FILE_EXTENSION_WHITELIST;
 	opts.whitelistDirs = opts.whitelistDirs || null;

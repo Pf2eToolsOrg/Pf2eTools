@@ -43,7 +43,7 @@ class DmMapper {
 			let cntChapImages = 0;
 
 			const handlers = {
-				object (ident, obj) {
+				object (obj) {
 					if (obj.mapRegions) {
 						const out = {
 							...Renderer.get().getMapRegionData(obj),
@@ -67,7 +67,6 @@ class DmMapper {
 			};
 
 			walker.walk(
-				"dynamicImages",
 				chap,
 				handlers
 			);

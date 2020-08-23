@@ -30,7 +30,7 @@ class AreaTagger {
 
 	_addNewTags () {
 		const handlers = {
-			object: (ident, obj) => {
+			object: (obj) => {
 				Renderer.ENTRIES_WITH_CHILDREN
 					.filter(meta => meta.key === "entries")
 					.forEach(meta => {
@@ -42,7 +42,7 @@ class AreaTagger {
 			}
 		};
 
-		this._data.data.forEach(chap => MiscUtil.getWalker().walk("addNewTags", chap, handlers));
+		this._data.data.forEach(chap => MiscUtil.getWalker().walk(chap, handlers));
 	}
 
 	_doWrite () {

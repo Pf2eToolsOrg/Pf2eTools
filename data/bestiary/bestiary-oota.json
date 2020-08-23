@@ -3905,6 +3905,44 @@
 			]
 		},
 		{
+			"name": "Veldyskar",
+			"isNpc": true,
+			"source": "OotA",
+			"page": 151,
+			"_copy": {
+				"name": "Basilisk",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the basilisk",
+						"with": "Veldyskar",
+						"flags": "i"
+					}
+				}
+			},
+			"int": 10,
+			"languages": [
+				"Common",
+				"Dwarvish",
+				"Giant",
+				"Undercommon"
+			],
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Veldyskar can innately cast the following spell, requiring no material components:"
+					],
+					"daily": {
+						"1": [
+							"{@spell greater restoration}"
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "Veteran of the Gauntlet",
 			"source": "OotA",
 			"page": 130,

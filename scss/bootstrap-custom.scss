@@ -45,6 +45,10 @@ input[type='radio']:checked {
 
 .clickable {
 	cursor: pointer !important;
+
+	&--link {
+		color: $rgb-link-blue !important;
+	}
 }
 
 .not-clickable {
@@ -641,7 +645,7 @@ body::-webkit-scrollbar {
 
 .nav > li {
 	> a {
-		padding: 5px 15px 6px;
+		padding: 5px 14px 6px;
 
 		@media (min-width: 992px) {
 			border-top-left-radius: 0;
@@ -662,6 +666,8 @@ body::-webkit-scrollbar {
 	border-top: 0;
 
 	@media (min-width: 992px) {
+		border-left: 1px solid transparent;
+		border-right: 1px solid transparent;
 		border-bottom: 1px solid #999;
 	}
 }
@@ -1820,6 +1826,90 @@ body::-webkit-scrollbar {
 .border-dotted {
 	border-style: dotted !important;
 }
+
+// region Override defaults to better implement filter UI
+.input-group {
+	> input.form-control,
+	> label,
+	> button,
+	> a.btn {
+		border-radius: 0;
+		border-right: 0;
+
+		&:first-child {
+			border-top-left-radius: 3px;
+			border-bottom-left-radius: 3px;
+		}
+
+		&:last-child {
+			border-top-right-radius: 3px;
+			border-bottom-right-radius: 3px;
+			border-right: 1px solid $rgb-border-grey;
+		}
+	}
+
+	// The first horizontal row in multiple vertically-stacked input-group rows
+	&--top {
+		input.form-control,
+		label,
+		button,
+		a.btn {
+			&:first-child {
+				border-bottom-left-radius: 0;
+			}
+
+			&:last-child {
+				border-bottom-right-radius: 0;
+			}
+		}
+	}
+
+	&--middle {
+		input.form-control,
+		label,
+		button,
+		a.btn {
+			border-top: 0;
+
+			&:first-child {
+				border-radius: 0;
+			}
+
+			&:last-child {
+				border-radius: 0;
+			}
+		}
+	}
+
+	&--bottom {
+		input.form-control,
+		label,
+		button,
+		a.btn {
+			border-top: 0;
+
+			&:first-child {
+				border-top-left-radius: 0;
+			}
+
+			&:last-child {
+				border-top-right-radius: 0;
+			}
+		}
+	}
+}
+
+.night-mode .input-group {
+	> input.form-control,
+	> label,
+	> button,
+	> a.btn {
+		&:last-child {
+			border-right-color: $rgb-border-grey--night;
+		}
+	}
+}
+// endregion
 
 // redefine this here to ensure it overrides all the important display types above
 .hidden,

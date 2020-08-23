@@ -1446,7 +1446,7 @@ class MarkdownConverter {
 
 	static _convertInlineStyling (buf) {
 		const handlers = {
-			object: (ident, obj) => {
+			object: (obj) => {
 				for (const meta of Renderer.ENTRIES_WITH_CHILDREN) {
 					if (obj.type !== meta.type) continue;
 					if (!obj[meta.key]) continue;
@@ -1479,23 +1479,23 @@ class MarkdownConverter {
 				return obj;
 			}
 		};
-		const nxtBuf = MiscUtil.getWalker().walk("convertInlineStyling", buf, handlers);
+		const nxtBuf = MiscUtil.getWalker().walk(buf, handlers);
 		while (buf.length) buf.pop();
 		buf.push(...nxtBuf);
 	}
 
 	static _cleanEmptyLines (buf) {
 		const handlersDoTrim = {
-			array: (ident, arr) => arr.map(it => typeof it === "string" ? it.trim() : it)
+			array: (arr) => arr.map(it => typeof it === "string" ? it.trim() : it)
 		};
-		const nxtBufTrim = MiscUtil.getWalker().walk("cleanEmptyLines", buf, handlersDoTrim);
+		const nxtBufTrim = MiscUtil.getWalker().walk(buf, handlersDoTrim);
 		while (buf.length) buf.pop();
 		buf.push(...nxtBufTrim);
 
 		const handlersRmEmpty = {
-			array: (ident, arr) => arr.filter(it => it && (typeof it !== "string" || it.trim()))
+			array: (arr) => arr.filter(it => it && (typeof it !== "string" || it.trim()))
 		};
-		const nxtBufRmEmpty = MiscUtil.getWalker().walk("cleanEmptyLines", buf, handlersRmEmpty);
+		const nxtBufRmEmpty = MiscUtil.getWalker().walk(buf, handlersRmEmpty);
 		while (buf.length) buf.pop();
 		buf.push(...nxtBufRmEmpty);
 	}

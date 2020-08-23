@@ -262,21 +262,44 @@ class Blacklist {
 
 			if (ExcludeUtil.addExclude("*", "*", "*", val)) {
 				Blacklist._addListItem("*", "*", "*", val);
-				Blacklist._list.update();
 			}
 		});
+		Blacklist._list.update();
 	}
 
 	static removeAllUa () {
 		$(`#bl-source`).find(`option`).each((i, e) => {
 			const val = $(e).val();
 			if (val === "*" || !SourceUtil.isNonstandardSource(val)) return;
+			this._removeSourceByOptionValue(val);
+		});
+	}
 
-			const item = Blacklist._list.items.find(it => it.data.hash === "*" && it.data.category === "*" && it.data.source === val);
-			if (item) {
-				Blacklist.remove(item.ix, "*", "*", val)
+	static addAllSources () {
+		$(`#bl-source`).find(`option`).each((i, e) => {
+			const val = $(e).val();
+			if (val === "*") return;
+
+			if (ExcludeUtil.addExclude("*", "*", "*", val)) {
+				Blacklist._addListItem("*", "*", "*", val);
 			}
 		});
+		Blacklist._list.update();
+	}
+
+	static removeAllSources () {
+		$(`#bl-source`).find(`option`).each((i, e) => {
+			const val = $(e).val();
+			if (val === "*") return;
+			this._removeSourceByOptionValue(val);
+		});
+	}
+
+	static _removeSourceByOptionValue (val) {
+		const item = Blacklist._list.items.find(it => it.data.hash === "*" && it.data.category === "*" && it.data.source === val);
+		if (item) {
+			Blacklist.remove(item.ix, "*", "*", val)
+		}
 	}
 
 	static remove (ix, hash, category, source) {

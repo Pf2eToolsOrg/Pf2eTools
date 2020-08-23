@@ -75,16 +75,18 @@ class SpellAttackTagger {
 
 class MiscTagsTagger {
 	static tryRun (sp, options) {
-		sp.miscTags = [];
+		const tags = new Set(sp.miscTags || []);
 
 		const strEntries = JSON.stringify([sp.entries, sp.entriesHigherLevel]);
 
-		if (/becomes permanent/ig.test(strEntries)) sp.miscTags.push("PRM");
-		if (/when you reach/ig.test(strEntries)) sp.miscTags.push("SCL");
-		if ((/regain|restore/ig.test(strEntries) && /hit point/ig.test(strEntries)) || /heal/ig.test(strEntries)) sp.miscTags.push("HL");
-		if (/you summon/ig.test(strEntries)) sp.miscTags.push("SMN");
-		if (/you can see/ig.test(strEntries)) sp.miscTags.push("SGT");
+		if (/becomes permanent/ig.test(strEntries)) tags.add("PRM");
+		if (/when you reach/ig.test(strEntries)) tags.add("SCL");
+		if ((/regain|restore/ig.test(strEntries) && /hit point/ig.test(strEntries)) || /heal/ig.test(strEntries)) tags.add("HL");
+		if (/temporary hit points/ig.test(strEntries)) tags.add("THP");
+		if (/you summon/ig.test(strEntries)) tags.add("SMN");
+		if (/you can see/ig.test(strEntries)) tags.add("SGT");
 
+		sp.miscTags = [...tags].sort(SortUtil.ascSortLower);
 		if (!sp.miscTags.length) delete sp.miscTags;
 	}
 }
@@ -102,12 +104,12 @@ class ScalingLevelDiceTagger {
 		const getLabel = () => {
 			let label;
 
-			const mDamageType = DamageTypeTag.TYPE_REGEX.exec(strEntries);
+			const mDamageType = ConverterConst.RE_DAMAGE_TYPE.exec(strEntries);
 			if (mDamageType) {
 				label = `${mDamageType[1]} damage`
 			}
 
-			DamageTypeTag.TYPE_REGEX.lastIndex = 0;
+			ConverterConst.RE_DAMAGE_TYPE.lastIndex = 0;
 
 			if (!label) options.cbWarning(`${sp.name ? `(${sp.name}) ` : ""}Could not create scalingLevelDice label!`);
 			return label || "NO_LABEL";

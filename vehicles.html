@@ -61,7 +61,7 @@
 	<div class="view-col-group--cancer h-100 mh-0">
 		<div class="container view-col-wrapper view-col-wrapper--cancer">
 			<div class="view-col" id="listcontainer">
-				<div class="lst__form-top" id="filter-search-input-group">
+				<div class="lst__form-top" id="filter-search-group">
 					<div class="w-100 relative">
 						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
 						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
@@ -69,9 +69,10 @@
 					</div>
 					<button class="btn btn-default" id="reset">Reset</button>
 				</div>
-				<div id="filtertools" class="sortlabel lst__form-bottom">
-					<button class="col-10 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-					<button class="sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
+				<div id="filtertools" class="sortlabel input-group input-group--bottom flex no-shrink">
+					<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+					<button class="col-4 sort btn btn-default btn-xs" data-sort="vehicleType">Type <span class="caret_wrp"></span></button>
+					<button class="sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span class="caret_wrp"></span></button>
 				</div>
 
 				<ul id="vehiclesList" class="list list--stats vehicles">
@@ -82,7 +83,8 @@
 			<div id="contentwrapper" class="view-col">
 				<div id="sublistcontainer" class="sublist sublist--resizable">
 					<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
-						<button class="col-12 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+						<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+						<button class="col-4 sort btn btn-default btn-xs" data-sort="vehicleType">Type <span class="caret_wrp"></span></button>
 					</div>
 					<ul class="list subvehicles">
 						<!-- populate with JS -->

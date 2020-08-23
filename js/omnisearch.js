@@ -77,9 +77,9 @@ class Omnisearch {
 		this._init_initScrollHandler();
 
 		$(document.body).on("keypress", (e) => {
-			if (!noModifierKeys(e) || MiscUtil.isInInput(e)) return;
+			if (!EventUtil.noModifierKeys(e) || EventUtil.isInInput(e)) return;
 			if (e.key === "f" || e.key === "F") {
-				const toSel = e.key === "F" ? this._$iptSearch : $(`#filter-search-input-group`).find(`.search`);
+				const toSel = e.key === "F" ? this._$iptSearch : $(`#filter-search-group`).find(`.search`);
 				// defer, otherwise the "f" will be input into the search field
 				setTimeout(() => toSel.select().focus(), 0);
 			}

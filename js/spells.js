@@ -172,7 +172,7 @@ class SpellsPage {
 
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
-			$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
+			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`)
 		});
 

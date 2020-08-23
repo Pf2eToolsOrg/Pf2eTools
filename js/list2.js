@@ -130,7 +130,12 @@ class List {
 	}
 
 	_doSort () {
-		const opts = {sortBy: this._sortBy};
+		const opts = {
+			sortBy: this._sortBy,
+			// The sort function should generally ignore this, as we do the reversing here. We expose it in case there
+			//   is specific functionality that requires it.
+			sortDir: this._sortDir
+		};
 		if (this._fnSort) this._filteredSortedItems.sort((a, b) => this._fnSort(a, b, opts));
 		if (this._sortDir === "desc") this._filteredSortedItems.reverse();
 

@@ -91,20 +91,24 @@ class CreatureBuilder extends Builder {
 		const result = await SearchWidget.pGetUserCreatureSearch();
 		if (result) {
 			const creature = MiscUtil.copy(await Renderer.hover.pCacheAndGet(result.page, result.source, result.hash));
-			creature.source = this._ui.source;
+			const cleanOrigin = window.location.origin.replace(/\/+$/, "");
 
+			// Get the token based on the original source
+			if (creature.tokenUrl || creature.hasToken) {
+				const rawTokenUrl = await pFetchToken(creature);
+				if (rawTokenUrl) {
+					creature.tokenUrl = /^[a-zA-Z0-9]+:\/\//.test(rawTokenUrl) ? rawTokenUrl : `${cleanOrigin}/${rawTokenUrl}`;
+				}
+			}
+
+			// Get the fluff based on the original source
 			if (this._bestiaryFluffIndex[creature.source] && !creature.fluff) {
 				const fluff = await Renderer.monster.pGetFluff(creature);
 
 				if (fluff) creature.fluff = MiscUtil.copy(fluff);
 			}
 
-			const cleanOrigin = window.location.origin.replace(/\/+$/, "");
-
-			const rawTokenUrl = await pFetchToken(creature);
-			if (rawTokenUrl) {
-				creature.tokenUrl = /^[a-zA-Z0-9]+:\/\//.test(rawTokenUrl) ? rawTokenUrl : `${cleanOrigin}/${rawTokenUrl}`;
-			}
+			creature.source = this._ui.source;
 
 			if (creature.soundClip && creature.soundClip.type === "internal") {
 				creature.soundClip = {
@@ -339,7 +343,7 @@ class CreatureBuilder extends Builder {
 
 		const _cb = () => {
 			// Prefer numerical pages if possible
-			if (isNumber(this._state.page)) this._state.page = Number(this._state.page);
+			if (!isNaN(this._state.page)) this._state.page = Number(this._state.page);
 
 			Renderer.monster.updateParsed(this._state);
 
@@ -2738,7 +2742,7 @@ class CreatureBuilder extends Builder {
 				const pageRaw = $iptPage.val();
 				const out = {
 					source: $selVariantSource.val().unescapeQuotes(),
-					page: isNumber(pageRaw) ? UiUtil.strToInt(pageRaw) : pageRaw
+					page: !isNaN(pageRaw) ? UiUtil.strToInt(pageRaw) : pageRaw
 				};
 				if (!out.source) return null;
 				if (!out.page) delete out.page;
@@ -2954,7 +2958,7 @@ class CreatureBuilder extends Builder {
 		const $btnRemove = $(`<button class="btn btn-xs btn-danger" title="Remove Image"><span class="glyphicon glyphicon-trash"/></button>`)
 			.click(() => {
 				imageRows.splice(imageRows.indexOf(out), 1);
-				$ele.empty().remove();
+				out.$ele.empty().remove();
 				doUpdateState();
 			});
 

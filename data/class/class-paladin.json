@@ -50,7 +50,50 @@
 					"(a) a {@item priest's pack|phb} or (b) an {@item explorer's pack|phb}",
 					"{@item Chain mail|phb} and a {@item holy symbol|phb}"
 				],
-				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}"
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							{
+								"equipmentType": "weaponMartial"
+							},
+							"shield|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponMartial",
+								"count": 2
+							}
+						]
+					},
+					{
+						"a": [
+							{
+								"item": "javelin|phb",
+								"count": 5
+							}
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimpleMelee"
+							}
+						]
+					},
+					{
+						"a": [
+							"priest's pack|phb"
+						],
+						"b": [
+							"explorer's pack|phb"
+						]
+					},
+					{
+						"_": [
+							"Chain mail|phb",
+							"holy symbol|phb"
+						]
+					}
+				]
 			},
 			"multiclassing": {
 				"requirements": {
@@ -1337,9 +1380,21 @@
 					"type": "entries",
 					"name": "Spellcasting Focus",
 					"entries": [
-						"You can use a holy symbol (found in chapter 5) as a spellcasting focus for your paladin spells."
+						"You can use a {@item holy symbol|phb} as a spellcasting focus for your paladin spells."
 					]
 				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Harness Divine Power",
+			"source": "UAClassFeatureVariants",
+			"page": 6,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"{@i 3rd-level paladin feature (enhances Channel Divinity)}",
+				"You can expend a use of your Channel Divinity to fuel your spells. As a bonus action, you touch your holy symbol, utter a prayer, and regain one expended 1st-level spell slot."
 			]
 		},
 		{
@@ -1383,14 +1438,8 @@
 					]
 				},
 				{
-					"type": "entries",
-					"name": "Channel Divinity: Harness Divine Power",
-					"entries": [
-						"{@i 3rd-level paladin feature (enhances Channel Divinity)}",
-						"You can expend a use of your Channel Divinity to fuel your spells. As a bonus action, you touch your holy symbol, utter a prayer, and regain one expended 1st-level spell slot."
-					],
-					"source": "UAClassFeatureVariants",
-					"page": 6
+					"type": "refClassFeature",
+					"classFeature": "Channel Divinity: Harness Divine Power|Paladin||3|UAClassFeatureVariants"
 				},
 				{
 					"name": "Breaking Your Oath",
