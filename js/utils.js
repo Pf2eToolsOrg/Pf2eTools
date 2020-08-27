@@ -126,11 +126,17 @@ String.prototype.encodeApos = String.prototype.encodeApos || function () {
  * https://gist.github.com/IceCreamYou/8396172
  */
 String.prototype.distance = String.prototype.distance || function (target) {
-	let source = this; let i; let j;
+	let source = this;
+	let i;
+	let j;
 	if (!source) return target ? target.length : 0;
 	else if (!target) return source.length;
 
-	const m = source.length; const n = target.length; const INF = m + n; const score = new Array(m + 2); const sd = {};
+	const m = source.length;
+	const n = target.length;
+	const INF = m + n;
+	const score = new Array(m + 2);
+	const sd = {};
 	for (i = 0; i < m + 2; i++) score[i] = new Array(n + 2);
 	score[0][0] = INF;
 	for (i = 0; i <= m; i++) {
@@ -147,7 +153,8 @@ String.prototype.distance = String.prototype.distance || function (target) {
 	for (i = 1; i <= m; i++) {
 		let DB = 0;
 		for (j = 1; j <= n; j++) {
-			const i1 = sd[target[j - 1]]; const j1 = DB;
+			const i1 = sd[target[j - 1]];
+			const j1 = DB;
 			if (source[i - 1] === target[j - 1]) {
 				score[i + 1][j + 1] = score[i][j];
 				DB = j;
@@ -216,7 +223,7 @@ StrUtil = {
 		return String(n).padStart(len, padder);
 	},
 
-	elipsisTruncate (str, atLeastPre = 5, atLeastSuff = 0, maxLen = 20) {
+	elipsisTruncate(str, atLeastPre = 5, atLeastSuff = 0, maxLen = 20) {
 		if (maxLen >= str.length) return str;
 
 		maxLen = Math.max(atLeastPre + atLeastSuff + 3, maxLen);
@@ -232,13 +239,13 @@ StrUtil = {
 		return out;
 	},
 
-	toTitleCase (str) {
+	toTitleCase(str) {
 		return str.toTitleCase();
 	}
 };
 
 CleanUtil = {
-	getCleanJson (data, minify = false) {
+	getCleanJson(data, minify = false) {
 		let str = minify ? JSON.stringify(data) : `${JSON.stringify(data, null, "\t")}\n`;
 		return CleanUtil.getCleanString(str);
 	},
@@ -247,7 +254,7 @@ CleanUtil = {
 	 * @param str
 	 * @param isJsonDump If the string is intended to be re-parsed by `JSON.parse`
 	 */
-	getCleanString (str, isJsonDump = true) {
+	getCleanString(str, isJsonDump = true) {
 		str = str
 			.replace(CleanUtil.SHARED_REPLACEMENTS_REGEX, (match) => CleanUtil.SHARED_REPLACEMENTS[match])
 			.replace(/\u00AD/g, "") // soft hyphens
@@ -332,60 +339,100 @@ Parser.numberToText = function (number) {
 	if (number == null) throw new TypeError(`undefined or null object passed to parser`);
 	if (Math.abs(number) >= 100) return `${number}`;
 
-	function getAsText (num) {
+	function getAsText(num) {
 		const abs = Math.abs(num);
 		switch (abs) {
-			case 0: return "zero";
-			case 1: return "one";
-			case 2: return "two";
-			case 3: return "three";
-			case 4: return "four";
-			case 5: return "five";
-			case 6: return "six";
-			case 7: return "seven";
-			case 8: return "eight";
-			case 9: return "nine";
-			case 10: return "ten";
-			case 11: return "eleven";
-			case 12: return "twelve";
-			case 13: return "thirteen";
-			case 14: return "fourteen";
-			case 15: return "fifteen";
-			case 16: return "sixteen";
-			case 17: return "seventeen";
-			case 18: return "eighteen";
-			case 19: return "nineteen";
-			case 20: return "twenty";
-			case 30: return "thirty";
-			case 40: return "forty";
-			case 50: return "fiddy"; // :^)
-			case 60: return "sixty";
-			case 70: return "seventy";
-			case 80: return "eighty";
-			case 90: return "ninety";
+			case 0:
+				return "zero";
+			case 1:
+				return "one";
+			case 2:
+				return "two";
+			case 3:
+				return "three";
+			case 4:
+				return "four";
+			case 5:
+				return "five";
+			case 6:
+				return "six";
+			case 7:
+				return "seven";
+			case 8:
+				return "eight";
+			case 9:
+				return "nine";
+			case 10:
+				return "ten";
+			case 11:
+				return "eleven";
+			case 12:
+				return "twelve";
+			case 13:
+				return "thirteen";
+			case 14:
+				return "fourteen";
+			case 15:
+				return "fifteen";
+			case 16:
+				return "sixteen";
+			case 17:
+				return "seventeen";
+			case 18:
+				return "eighteen";
+			case 19:
+				return "nineteen";
+			case 20:
+				return "twenty";
+			case 30:
+				return "thirty";
+			case 40:
+				return "forty";
+			case 50:
+				return "fiddy"; // :^)
+			case 60:
+				return "sixty";
+			case 70:
+				return "seventy";
+			case 80:
+				return "eighty";
+			case 90:
+				return "ninety";
 			default: {
 				const str = String(abs);
 				return `${getAsText(Number(`${str[0]}0`))}-${getAsText(Number(str[1]))}`;
 			}
 		}
 	}
+
 	return `${number < 0 ? "negative " : ""}${getAsText(number)}`;
 };
 
 Parser.textToNumber = function (str) {
 	str = str.trim().toLowerCase();
 	switch (str) {
-		case "zero": return 0;
-		case "one": return 1;
-		case "two": return 2;
-		case "three": return 3;
-		case "four": return 4;
-		case "five": return 5;
-		case "six": return 6;
-		case "seven": return 7;
-		case "eight": return 8;
-		case "nine": return 9;
-		case "ten": return 10;
+		case "zero":
+			return 0;
+		case "one":
+			return 1;
+		case "two":
+			return 2;
+		case "three":
+			return 3;
+		case "four":
+			return 4;
+		case "five":
+			return 5;
+		case "six":
+			return 6;
+		case "seven":
+			return 7;
+		case "eight":
+			return 8;
+		case "nine":
+			return 9;
+		case "ten":
+			return 10;
 	}
 	return NaN;
 };
@@ -441,8 +488,8 @@ Parser.getAbilityModifier = function (abilityScore) {
 Parser.getSpeedString = (it) => {
 	if (it.speed == null) return "\u2014";
 
-	function procSpeed (propName) {
-		function addSpeed (s) {
+	function procSpeed(propName) {
+		function addSpeed(s) {
 			stack.push(`${propName === "walk" ? "" : `${propName} `}${getVal(s)} ft.${getCond(s)}`);
 		}
 
@@ -450,11 +497,11 @@ Parser.getSpeedString = (it) => {
 		if (it.speed.alternate && it.speed.alternate[propName]) it.speed.alternate[propName].forEach(addSpeed);
 	}
 
-	function getVal (speedProp) {
+	function getVal(speedProp) {
 		return speedProp.number != null ? speedProp.number : speedProp;
 	}
 
-	function getCond (speedProp) {
+	function getCond(speedProp) {
 		return speedProp.condition ? ` ${Renderer.get().render(speedProp.condition)}` : "";
 	}
 
@@ -911,7 +958,7 @@ Parser.senseToExplanation = function (senseType) {
 };
 
 Parser.skillProficienciesToFull = function (skillProficiencies) {
-	function renderSingle (skProf) {
+	function renderSingle(skProf) {
 		const keys = Object.keys(skProf).sort(SortUtil.ascSortLower);
 
 		const ixChoose = keys.indexOf("choose");
@@ -977,7 +1024,8 @@ Parser.spSchoolAbvToStyle = function (school) { // For homebrew
 Parser.getOrdinalForm = function (i) {
 	i = Number(i);
 	if (isNaN(i)) return "";
-	const j = i % 10; const k = i % 100;
+	const j = i % 10;
+	const k = i % 100;
 	if (j === 1 && k !== 11) return `${i}st`;
 	if (j === 2 && k !== 12) return `${i}nd`;
 	if (j === 3 && k !== 13) return `${i}rd`;
@@ -1034,7 +1082,7 @@ Parser.spTimeListToFull = function (times, isStripTags) {
 };
 
 Parser.getTimeToFull = function (time) {
-	return `${time.number} ${time.unit === "bonus" ? "bonus action" : time.unit}${time.number > 1 ? "s" : ""}`;
+	return `${time.number} ${time.unit === "free" ? "free action" : time.unit}${time.number > 1 ? "s" : ""}`;
 };
 
 RNG_SPECIAL = "special";
@@ -1049,7 +1097,7 @@ RNG_CYLINDER = "cylinder"; // homebrew only
 RNG_SELF = "self";
 RNG_SIGHT = "sight";
 RNG_UNLIMITED = "unlimited";
-RNG_UNLIMITED_SAME_PLANE = "plane";
+RNG_UNLIMITED_SAME_PLANE = "planetary";
 RNG_TOUCH = "touch";
 Parser.SP_RANGE_TYPE_TO_FULL = {
 	[RNG_SPECIAL]: "Special",
@@ -1064,7 +1112,7 @@ Parser.SP_RANGE_TYPE_TO_FULL = {
 	[RNG_SELF]: "Self",
 	[RNG_SIGHT]: "Sight",
 	[RNG_UNLIMITED]: "Unlimited",
-	[RNG_UNLIMITED_SAME_PLANE]: "Unlimited on the same plane",
+	[RNG_UNLIMITED_SAME_PLANE]: "Planetary",
 	[RNG_TOUCH]: "Touch"
 };
 
@@ -1111,8 +1159,10 @@ Parser.spRangeTypeToIcon = function (range) {
 
 Parser.spRangeToShortHtml = function (range) {
 	switch (range.type) {
-		case RNG_SPECIAL: return `<span class="fas ${Parser.spRangeTypeToIcon(range.type)} help--subtle" title="Special"/>`;
-		case RNG_POINT: return Parser.spRangeToShortHtml._renderPoint(range);
+		case RNG_SPECIAL:
+			return `<span class="fas ${Parser.spRangeTypeToIcon(range.type)} help--subtle" title="Special"/>`;
+		case RNG_POINT:
+			return Parser.spRangeToShortHtml._renderPoint(range);
 		case RNG_LINE:
 		case RNG_CUBE:
 		case RNG_CONE:
@@ -1131,7 +1181,8 @@ Parser.spRangeToShortHtml._renderPoint = function (range) {
 		case RNG_UNLIMITED:
 		case RNG_UNLIMITED_SAME_PLANE:
 		case RNG_SPECIAL:
-		case RNG_TOUCH: return `<span class="fas ${Parser.spRangeTypeToIcon(dist.type)} help--subtle" title="${Parser.spRangeTypeToFull(dist.type)}"/>`;
+		case RNG_TOUCH:
+			return `<span class="fas ${Parser.spRangeTypeToIcon(dist.type)} help--subtle" title="${Parser.spRangeTypeToFull(dist.type)}"/>`;
 		case UNT_FEET:
 		case UNT_MILES:
 		default:
@@ -1148,8 +1199,10 @@ Parser.spRangeToShortHtml._getAreaStyleString = function (range) {
 
 Parser.spRangeToFull = function (range) {
 	switch (range.type) {
-		case RNG_SPECIAL: return Parser.spRangeTypeToFull(range.type);
-		case RNG_POINT: return Parser.spRangeToFull._renderPoint(range);
+		case RNG_SPECIAL:
+			return Parser.spRangeTypeToFull(range.type);
+		case RNG_POINT:
+			return Parser.spRangeToFull._renderPoint(range);
 		case RNG_LINE:
 		case RNG_CUBE:
 		case RNG_CONE:
@@ -1168,7 +1221,8 @@ Parser.spRangeToFull._renderPoint = function (range) {
 		case RNG_UNLIMITED:
 		case RNG_UNLIMITED_SAME_PLANE:
 		case RNG_SPECIAL:
-		case RNG_TOUCH: return Parser.spRangeTypeToFull(dist.type);
+		case RNG_TOUCH:
+			return Parser.spRangeTypeToFull(dist.type);
 		case UNT_FEET:
 		case UNT_MILES:
 		default:
@@ -1181,10 +1235,14 @@ Parser.spRangeToFull._renderArea = function (range) {
 };
 Parser.spRangeToFull._getAreaStyleString = function (range) {
 	switch (range.type) {
-		case RNG_SPHERE: return " radius";
-		case RNG_HEMISPHERE: return `-radius ${range.type}`;
-		case RNG_CYLINDER: return "-radius";
-		default: return ` ${range.type}`;
+		case RNG_SPHERE:
+			return " radius";
+		case RNG_HEMISPHERE:
+			return `-radius ${range.type}`;
+		case RNG_CYLINDER:
+			return "-radius";
+		default:
+			return ` ${range.type}`;
 	}
 };
 
@@ -1330,7 +1388,12 @@ Parser._spSubclassItem = function (fromSubclass, textOnly, subclassLookup) {
 	if (textOnly) return text;
 	const classPart = `<a href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}" title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</a>`;
 	const fromLookup = subclassLookup ? MiscUtil.get(subclassLookup, c.source, c.name, sc.source, sc.name) : null;
-	if (fromLookup) return `<a class="italic" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: {shortName: sc.name, source: sc.source}})}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
+	if (fromLookup) return `<a class="italic" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({
+		subclass: {
+			shortName: sc.name,
+			source: sc.source
+		}
+	})}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
 	else return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</span> ${classPart}`;
 };
 
@@ -1443,7 +1506,7 @@ Parser.monImmResToFull = function (toParse) {
 		return toParse.map(it => toString(it, -1)).join(maxDepth ? "; " : ", ");
 	}
 
-	function toString (it, depth = 0) {
+	function toString(it, depth = 0) {
 		maxDepth = Math.max(maxDepth, depth);
 		if (typeof it === "string") {
 			return it;
@@ -1461,7 +1524,7 @@ Parser.monImmResToFull = function (toParse) {
 		}
 	}
 
-	function serialJoin (arr) {
+	function serialJoin(arr) {
 		if (arr.length <= 1) return arr.join("");
 
 		let out = "";
@@ -1479,9 +1542,10 @@ Parser.monImmResToFull = function (toParse) {
 };
 
 Parser.monCondImmToFull = function (condImm, isPlainText) {
-	function render (condition) {
+	function render(condition) {
 		return isPlainText ? condition : Renderer.get().render(`{@condition ${condition}}`);
 	}
+
 	return condImm.map(it => {
 		if (it.special) return it.special;
 		if (it.conditionImmune) return `${it.preNote ? `${it.preNote} ` : ""}${it.conditionImmune.map(render).join(", ")}${it.note ? ` ${it.note}` : ""}`;
@@ -1951,7 +2015,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
 	/**
 	 * Get the most recent iteration of a subclass name
 	 */
-	function mapClassShortNameToMostRecent (shortName) {
+	function mapClassShortNameToMostRecent(shortName) {
 		switch (shortName) {
 			case "Favored Soul":
 				return "Divine Soul";
@@ -2019,12 +2083,18 @@ Parser.ATK_TYPE_TO_FULL["RW"] = "Ranged Weapon Attack";
 Parser.bookOrdinalToAbv = (ordinal, preNoSuff) => {
 	if (ordinal === undefined) return "";
 	switch (ordinal.type) {
-		case "part": return `${preNoSuff ? " " : ""}Part ${ordinal.identifier}${preNoSuff ? "" : " \u2014 "}`;
-		case "chapter": return `${preNoSuff ? " " : ""}Ch. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
-		case "episode": return `${preNoSuff ? " " : ""}Ep. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
-		case "appendix": return `${preNoSuff ? " " : ""}App. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
-		case "level": return `${preNoSuff ? " " : ""}Level ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
-		default: throw new Error(`Unhandled ordinal type "${ordinal.type}"`);
+		case "part":
+			return `${preNoSuff ? " " : ""}Part ${ordinal.identifier}${preNoSuff ? "" : " \u2014 "}`;
+		case "chapter":
+			return `${preNoSuff ? " " : ""}Ch. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
+		case "episode":
+			return `${preNoSuff ? " " : ""}Ep. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
+		case "appendix":
+			return `${preNoSuff ? " " : ""}App. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
+		case "level":
+			return `${preNoSuff ? " " : ""}Level ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
+		default:
+			throw new Error(`Unhandled ordinal type "${ordinal.type}"`);
 	}
 };
 
@@ -2057,17 +2127,21 @@ Parser.SKL_ABVS = [
 	SKL_ABV_PSI
 ];
 
-Parser.SP_TM_ACTION = "action";
-Parser.SP_TM_B_ACTION = "bonus";
-Parser.SP_TM_REACTION = "reaction";
+Parser.SP_TM_PF_A = "action";
+Parser.SP_TM_PF_AA = "action";
+Parser.SP_TM_PF_AAA = "action";
+Parser.SP_TM_PF_R = "reaction";
+Parser.SP_TM_PF_F = "free";
 Parser.SP_TM_ROUND = "round";
 Parser.SP_TM_MINS = "minute";
 Parser.SP_TM_HRS = "hour";
-Parser.SP_TIME_SINGLETONS = [Parser.SP_TM_ACTION, Parser.SP_TM_B_ACTION, Parser.SP_TM_REACTION, Parser.SP_TM_ROUND];
+Parser.SP_TIME_SINGLETONS = [Parser.SP_TM_PF_A, Parser.SP_TM_PF_AA, Parser.SP_TM_PF_AAA, Parser.SP_TM_PF_R, Parser.SP_TM_PF_F, Parser.SP_TM_ROUND];
 Parser.SP_TIME_TO_FULL = {
-	[Parser.SP_TM_ACTION]: "Action",
-	[Parser.SP_TM_B_ACTION]: "Bonus Action",
-	[Parser.SP_TM_REACTION]: "Reaction",
+	[Parser.SP_TM_PF_A]: "Single Action",
+	[Parser.SP_TM_PF_AA]: "Two Actions",
+	[Parser.SP_TM_PF_AAA]: "Three Actions",
+	[Parser.SP_TM_PF_R]: "Reaction",
+	[Parser.SP_TM_PF_F]: "Free Action",
 	[Parser.SP_TM_ROUND]: "Rounds",
 	[Parser.SP_TM_MINS]: "Minutes",
 	[Parser.SP_TM_HRS]: "Hours"
@@ -2077,9 +2151,11 @@ Parser.spTimeUnitToFull = function (timeUnit) {
 };
 
 Parser.SP_TIME_TO_ABV = {
-	[Parser.SP_TM_ACTION]: "A",
-	[Parser.SP_TM_B_ACTION]: "BA",
-	[Parser.SP_TM_REACTION]: "R",
+	[Parser.SP_TM_PF_A]: "A",
+	[Parser.SP_TM_PF_AA]: "AA",
+	[Parser.SP_TM_PF_AAA]: "AAA",
+	[Parser.SP_TM_PF_R]: "R",
+	[Parser.SP_TM_PF_F]: "F",
 	[Parser.SP_TM_ROUND]: "rnd",
 	[Parser.SP_TM_MINS]: "min",
 	[Parser.SP_TM_HRS]: "hr"
@@ -2104,6 +2180,19 @@ SKL_NEC = "Necromancy";
 SKL_TRA = "Transmutation";
 SKL_CON = "Conjuration";
 SKL_PSI = "Psionic";
+
+Parser.SP_SCHOOLS = [SKL_ABJ, SKL_EVO, SKL_ENC, SKL_ILL, SKL_DIV, SKL_NEC, SKL_TRA, SKL_CON, SKL_PSI];
+
+Parser.SP_SCHOOL_FULL_TO_ABV = {};
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_ABJ] = SKL_ABV_ABJ;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_EVO] = SKL_ABV_EVO;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_ENC] = SKL_ABV_ENC;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_ILL] = SKL_ABV_ILL;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_DIV] = SKL_ABV_DIV;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_NEC] = SKL_ABV_NEC;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_TRA] = SKL_ABV_TRA;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_CON] = SKL_ABV_CON;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_PSI] = SKL_ABV_PSI;
 
 Parser.SP_SCHOOL_ABV_TO_FULL = {};
 Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_ABJ] = SKL_ABJ;
@@ -2311,6 +2400,7 @@ SRC_IMR = "IMR";
 SRC_SADS = "SADS";
 SRC_EGW = "EGW";
 SRC_SCREEN = "Screen";
+SRC_CRB = "CRB";
 
 SRC_AL_PREFIX = "AL";
 
@@ -2657,6 +2747,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC3] = "UA2S3";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SMT] = "UA2SMT";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
+Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
 
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CoS] = "2016-03-15";
@@ -2973,34 +3064,34 @@ Parser.NUMBERS_TEENS = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fift
 // SOURCES =============================================================================================================
 SourceUtil = {
 	_subclassReprintLookup: {},
-	async pInitSubclassReprintLookup () {
+	async pInitSubclassReprintLookup() {
 		SourceUtil._subclassReprintLookup = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/generated/gendata-subclass-lookup.json`);
 	},
 
-	isSubclassReprinted (className, classSource, subclassShortName, subclassSource) {
+	isSubclassReprinted(className, classSource, subclassShortName, subclassSource) {
 		const fromLookup = MiscUtil.get(SourceUtil._subclassReprintLookup, classSource, className, subclassSource, subclassShortName);
 		return fromLookup ? fromLookup.isReprinted : false;
 	},
 
-	isAdventure (source) {
+	isAdventure(source) {
 		if (source instanceof FilterItem) source = source.item;
 		return Parser.SOURCES_ADVENTURES.has(source);
 	},
 
-	isCoreOrSupplement (source) {
+	isCoreOrSupplement(source) {
 		if (source instanceof FilterItem) source = source.item;
 		return Parser.SOURCES_CORE_SUPPLEMENTS.has(source);
 	},
 
-	isNonstandardSource (source) {
+	isNonstandardSource(source) {
 		return source != null && !BrewUtil.hasSourceJson(source) && SourceUtil._isNonstandardSourceWiz(source);
 	},
 
-	_isNonstandardSourceWiz (source) {
+	_isNonstandardSourceWiz(source) {
 		return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.startsWith(SRC_AL_PREFIX) || Parser.SOURCES_NON_STANDARD_WOTC.has(source);
 	},
 
-	getFilterGroup (source) {
+	getFilterGroup(source) {
 		if (source instanceof FilterItem) source = source.item;
 		if (BrewUtil.hasSourceJson(source)) return 2;
 		return Number(SourceUtil.isNonstandardSource(source));
@@ -3014,7 +3105,7 @@ CurrencyUtil = {
 	 * @param obj Object of the form {cp: 123, sp: 456, ...} (values optional)
 	 * @param [coinAbvs] List of allowed coin abbreviations e.g. `["cp", "gp"]`
 	 */
-	doSimplifyCoins (obj, coinAbvs) {
+	doSimplifyCoins(obj, coinAbvs) {
 		coinAbvs = coinAbvs || [];
 		// Simplify currencies
 		for (let i = 0; i < Parser.COIN_CONVERSIONS.length - 1; ++i) {
@@ -3068,35 +3159,35 @@ Math.seed = Math.seed || function (s) {
 	};
 };
 
-function xor (a, b) {
+function xor(a, b) {
 	return !a !== !b;
 }
 
 /**
  * > implying
  */
-function implies (a, b) {
+function implies(a, b) {
 	return (!a) || b;
 }
 
-function noModifierKeys (e) {
+function noModifierKeys(e) {
 	return !e.ctrlKey && !e.altKey && !e.metaKey;
 }
 
-function isObject (obj) {
+function isObject(obj) {
 	const type = typeof obj;
 	return (type === "function" || type === "object") && !!obj;
 }
 
-function isString (str) {
+function isString(str) {
 	return typeof str === "string";
 }
 
-function isNumber (obj) {
+function isNumber(obj) {
 	return toString.call(obj) === "[object Number]";
 }
 
-function isEmpty (obj) {
+function isEmpty(obj) {
 	if (obj == null) {
 		return true;
 	}
@@ -3108,7 +3199,7 @@ function isEmpty (obj) {
 
 JqueryUtil = {
 	_isEnhancementsInit: false,
-	initEnhancements () {
+	initEnhancements() {
 		if (JqueryUtil._isEnhancementsInit) return;
 		JqueryUtil._isEnhancementsInit = true;
 
@@ -3169,13 +3260,17 @@ JqueryUtil = {
 
 		$.fn.extend({
 			// avoid setting input type to "search" as it visually offsets the contents of the input
-			disableSpellcheck: function () { return this.attr("autocomplete", "new-password").attr("autocapitalize", "off").attr("spellcheck", "false"); },
+			disableSpellcheck: function () {
+				return this.attr("autocomplete", "new-password").attr("autocapitalize", "off").attr("spellcheck", "false");
+			},
 
 			tag: function () {
 				return this.prop("tagName").toLowerCase();
 			},
 
-			title: function (...args) { return this.attr("title", ...args); },
+			title: function (...args) {
+				return this.attr("title", ...args);
+			},
 
 			/**
 			 * Quickly set the innerHTML of the innermost element, wihtout parsing the whole thing with jQuery.
@@ -3197,9 +3292,15 @@ JqueryUtil = {
 				});
 			},
 
-			hideVe: function () { return this.addClass("ve-hidden"); },
-			showVe: function () { return this.removeClass("ve-hidden"); },
-			toggleVe: function (val) { return this.toggleClass("ve-hidden", !val); }
+			hideVe: function () {
+				return this.addClass("ve-hidden");
+			},
+			showVe: function () {
+				return this.removeClass("ve-hidden");
+			},
+			toggleVe: function (val) {
+				return this.toggleClass("ve-hidden", !val);
+			}
 		});
 
 		$.event.special.destroyed = {
@@ -3209,7 +3310,7 @@ JqueryUtil = {
 		}
 	},
 
-	addSelectors () {
+	addSelectors() {
 		// Add a selector to match exact text (case insensitive) to jQuery's arsenal
 		//   Note that the search text should be `trim().toLowerCase()`'d before being passed in
 		$.expr[":"].textEquals = (el, i, m) => $(el).text().toLowerCase().trim() === m[3];
@@ -3224,7 +3325,7 @@ JqueryUtil = {
 		};
 	},
 
-	showCopiedEffect ($ele, text = "Copied!", bubble) {
+	showCopiedEffect($ele, text = "Copied!", bubble) {
 		const $temp = $(`<div class="copied-tip"><span>${text}</span></div>`).appendTo($(`body`));
 		const offset = $temp.width() / 2;
 		const top = $(window).scrollTop();
@@ -3261,7 +3362,7 @@ JqueryUtil = {
 	},
 
 	_dropdownInit: false,
-	bindDropdownButton ($ele) {
+	bindDropdownButton($ele) {
 		if (!JqueryUtil._dropdownInit) {
 			JqueryUtil._dropdownInit = true;
 			document.addEventListener("click", () => [...document.querySelectorAll(`.open`)].filter(ele => !(ele.className || "").split(" ").includes(`dropdown--navbar`)).forEach(ele => ele.classList.remove("open")));
@@ -3275,7 +3376,7 @@ JqueryUtil = {
 	 * @param {(jQuery|string)} options.content Toast contents. Supports jQuery objects.
 	 * @param {string} options.type Toast type. Can be any Bootstrap alert type ("success", "info", "warning", or "danger").
 	 */
-	doToast (options) {
+	doToast(options) {
 		if (typeof options === "string") {
 			options = {
 				content: options,
@@ -3317,7 +3418,7 @@ JqueryUtil = {
 if (typeof window !== "undefined") window.addEventListener("load", JqueryUtil.initEnhancements);
 
 ObjUtil = {
-	mergeWith (source, target, fnMerge, options = {depth: 1}) {
+	mergeWith(source, target, fnMerge, options = {depth: 1}) {
 		if (!source || !target || typeof fnMerge !== "function") throw new Error("Must include a source, target and a fnMerge to handle merging");
 
 		const recursive = function (deepSource, deepTarget, depth = 1) {
@@ -3330,7 +3431,7 @@ ObjUtil = {
 		recursive(source, target, 1);
 	},
 
-	async pForEachDeep (source, pCallback, options = {depth: Infinity, callEachLevel: false}) {
+	async pForEachDeep(source, pCallback, options = {depth: Infinity, callEachLevel: false}) {
 		const path = [];
 		const pDiveDeep = async function (val, path, depth = 0) {
 			if (options.callEachLevel || typeof val !== "object" || options.depth === depth) {
@@ -3355,12 +3456,12 @@ MiscUtil = {
 	COLOR_BLOODIED: "#f7a100",
 	COLOR_DEFEATED: "#cc0000",
 
-	copy (obj) {
+	copy(obj) {
 		return JSON.parse(JSON.stringify(obj));
 	},
 
-	async pCopyTextToClipboard (text) {
-		function doCompatabilityCopy () {
+	async pCopyTextToClipboard(text) {
+		function doCompatabilityCopy() {
 			const $temp = $(`<textarea id="copy-temp" style="position: fixed; top: -1000px; left: -1000px; width: 1px; height: 1px;">${text}</textarea>`);
 			$(`body`).append($temp);
 			$temp.select();
@@ -3374,11 +3475,13 @@ MiscUtil = {
 				if (access.state === "granted" || access.state === "prompt") {
 					await navigator.clipboard.writeText(text);
 				} else doCompatabilityCopy();
-			} catch (e) { doCompatabilityCopy(); }
+			} catch (e) {
+				doCompatabilityCopy();
+			}
 		} else doCompatabilityCopy();
 	},
 
-	checkProperty (object, ...path) {
+	checkProperty(object, ...path) {
 		for (let i = 0; i < path.length; ++i) {
 			object = object[path[i]];
 			if (object == null) return false;
@@ -3386,7 +3489,7 @@ MiscUtil = {
 		return true;
 	},
 
-	get (object, ...path) {
+	get(object, ...path) {
 		if (object == null) return null;
 		for (let i = 0; i < path.length; ++i) {
 			object = object[path[i]];
@@ -3404,7 +3507,7 @@ MiscUtil = {
 		};
 	},
 
-	clearSelection () {
+	clearSelection() {
 		if (document.getSelection) {
 			document.getSelection().removeAllRanges();
 			document.getSelection().addRange(document.createRange());
@@ -3420,19 +3523,45 @@ MiscUtil = {
 		}
 	},
 
-	randomColor () {
-		let r; let g; let b;
+	randomColor() {
+		let r;
+		let g;
+		let b;
 		const h = RollerUtil.randomise(30, 0) / 30;
 		const i = ~~(h * 6);
 		const f = h * 6 - i;
 		const q = 1 - f;
 		switch (i % 6) {
-			case 0: r = 1; g = f; b = 0; break;
-			case 1: r = q; g = 1; b = 0; break;
-			case 2: r = 0; g = 1; b = f; break;
-			case 3: r = 0; g = q; b = 1; break;
-			case 4: r = f; g = 0; b = 1; break;
-			case 5: r = 1; g = 0; b = q; break;
+			case 0:
+				r = 1;
+				g = f;
+				b = 0;
+				break;
+			case 1:
+				r = q;
+				g = 1;
+				b = 0;
+				break;
+			case 2:
+				r = 0;
+				g = 1;
+				b = f;
+				break;
+			case 3:
+				r = 0;
+				g = q;
+				b = 1;
+				break;
+			case 4:
+				r = f;
+				g = 0;
+				b = 1;
+				break;
+			case 5:
+				r = 1;
+				g = 0;
+				b = q;
+				break;
 		}
 		return `#${`00${(~~(r * 255)).toString(16)}`.slice(-2)}${`00${(~~(g * 255)).toString(16)}`.slice(-2)}${`00${(~~(b * 255)).toString(16)}`.slice(-2)}`;
 	},
@@ -3444,7 +3573,7 @@ MiscUtil = {
 	 * @param [opts.dark] Color to return if a "dark" color would contrast best.
 	 * @param [opts.light] Color to return if a "light" color would contrast best.
 	 */
-	invertColor (hex, opts) {
+	invertColor(hex, opts) {
 		opts = opts || {};
 
 		hex = hex.slice(1); // remove #
@@ -3458,42 +3587,44 @@ MiscUtil = {
 		if (opts.dark && opts.light) return isDark ? opts.dark : opts.light;
 		else if (opts.bw) return isDark ? "#000000" : "#FFFFFF";
 
-		r = (255 - r).toString(16); g = (255 - g).toString(16); b = (255 - b).toString(16);
+		r = (255 - r).toString(16);
+		g = (255 - g).toString(16);
+		b = (255 - b).toString(16);
 		return `#${[r, g, b].map(it => it.padStart(2, "0")).join("")}`;
 	},
 
-	scrollPageTop () {
+	scrollPageTop() {
 		document.body.scrollTop = document.documentElement.scrollTop = 0;
 	},
 
-	isInInput (event) {
+	isInInput(event) {
 		return event.target.nodeName === "INPUT" || event.target.nodeName === "TEXTAREA"
 			|| event.target.getAttribute("contenteditable") === "true";
 	},
 
-	expEval (str) {
+	expEval(str) {
 		// eslint-disable-next-line no-new-func
 		return new Function(`return ${str.replace(/[^-()\d/*+.]/g, "")}`)();
 	},
 
-	parseNumberRange (input, min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
-		function errInvalid (input) {
+	parseNumberRange(input, min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
+		function errInvalid(input) {
 			throw new Error(`Could not parse range input "${input}"`);
 		}
 
-		function errOutOfRange () {
+		function errOutOfRange() {
 			throw new Error(`Number was out of range! Range was ${min}-${max} (inclusive).`);
 		}
 
-		function isOutOfRange (num) {
+		function isOutOfRange(num) {
 			return num < min || num > max;
 		}
 
-		function addToRangeVal (range, num) {
+		function addToRangeVal(range, num) {
 			range.add(num);
 		}
 
-		function addToRangeLoHi (range, lo, hi) {
+		function addToRangeLoHi(range, lo, hi) {
 			for (let i = lo; i <= hi; ++i) range.add(i);
 		}
 
@@ -3536,12 +3667,12 @@ MiscUtil = {
 		"January", "February", "March", "April", "May", "June",
 		"July", "August", "September", "October", "November", "December"
 	],
-	dateToStr (date, short) {
+	dateToStr(date, short) {
 		const month = MiscUtil.MONTH_NAMES[date.getMonth()];
 		return `${short ? month.substring(0, 3) : month} ${date.getDate()}, ${date.getFullYear()}`;
 	},
 
-	findCommonPrefix (strArr) {
+	findCommonPrefix(strArr) {
 		let prefix = null;
 		strArr.forEach(s => {
 			if (prefix == null) {
@@ -3566,7 +3697,7 @@ MiscUtil = {
 	 * @param fgOpacity Desired foreground transparency (0-1 inclusive)
 	 * @param bgHex Background color
 	 */
-	calculateBlendedColor (fgHexTarget, fgOpacity, bgHex) {
+	calculateBlendedColor(fgHexTarget, fgOpacity, bgHex) {
 		const fgDcTarget = CryptUtil.hex2Dec(fgHexTarget);
 		const bgDc = CryptUtil.hex2Dec(bgHex);
 		return ((fgDcTarget - ((1 - fgOpacity) * bgDc)) / fgOpacity).toString(16);
@@ -3580,8 +3711,17 @@ MiscUtil = {
 	 * @param options Options object.
 	 * @return {Function} The debounced function.
 	 */
-	debounce (func, wait, options) {
-		let lastArgs; let lastThis; let maxWait; let result; let timerId; let lastCallTime; let lastInvokeTime = 0; let leading = false; let maxing = false; let trailing = true;
+	debounce(func, wait, options) {
+		let lastArgs;
+		let lastThis;
+		let maxWait;
+		let result;
+		let timerId;
+		let lastCallTime;
+		let lastInvokeTime = 0;
+		let leading = false;
+		let maxing = false;
+		let trailing = true;
 
 		wait = Number(wait) || 0;
 		if (typeof options === "object") {
@@ -3591,8 +3731,9 @@ MiscUtil = {
 			trailing = "trailing" in options ? !!options.trailing : trailing;
 		}
 
-		function invokeFunc (time) {
-			let args = lastArgs; let thisArg = lastThis;
+		function invokeFunc(time) {
+			let args = lastArgs;
+			let thisArg = lastThis;
 
 			lastArgs = lastThis = undefined;
 			lastInvokeTime = time;
@@ -3600,24 +3741,27 @@ MiscUtil = {
 			return result;
 		}
 
-		function leadingEdge (time) {
+		function leadingEdge(time) {
 			lastInvokeTime = time;
 			timerId = setTimeout(timerExpired, wait);
 			return leading ? invokeFunc(time) : result;
 		}
 
-		function remainingWait (time) {
-			let timeSinceLastCall = time - lastCallTime; let timeSinceLastInvoke = time - lastInvokeTime; let result = wait - timeSinceLastCall;
+		function remainingWait(time) {
+			let timeSinceLastCall = time - lastCallTime;
+			let timeSinceLastInvoke = time - lastInvokeTime;
+			let result = wait - timeSinceLastCall;
 			return maxing ? Math.min(result, maxWait - timeSinceLastInvoke) : result;
 		}
 
-		function shouldInvoke (time) {
-			let timeSinceLastCall = time - lastCallTime; let timeSinceLastInvoke = time - lastInvokeTime;
+		function shouldInvoke(time) {
+			let timeSinceLastCall = time - lastCallTime;
+			let timeSinceLastInvoke = time - lastInvokeTime;
 
 			return (lastCallTime === undefined || (timeSinceLastCall >= wait) || (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
 		}
 
-		function timerExpired () {
+		function timerExpired() {
 			const time = Date.now();
 			if (shouldInvoke(time)) {
 				return trailingEdge(time);
@@ -3626,7 +3770,7 @@ MiscUtil = {
 			timerId = setTimeout(timerExpired, remainingWait(time));
 		}
 
-		function trailingEdge (time) {
+		function trailingEdge(time) {
 			timerId = undefined;
 
 			if (trailing && lastArgs) return invokeFunc(time);
@@ -3634,18 +3778,19 @@ MiscUtil = {
 			return result;
 		}
 
-		function cancel () {
+		function cancel() {
 			if (timerId !== undefined) clearTimeout(timerId);
 			lastInvokeTime = 0;
 			lastArgs = lastCallTime = lastThis = timerId = undefined;
 		}
 
-		function flush () {
+		function flush() {
 			return timerId === undefined ? result : trailingEdge(Date.now());
 		}
 
-		function debounced () {
-			let time = Date.now(); let isInvoking = shouldInvoke(time);
+		function debounced() {
+			let time = Date.now();
+			let isInvoking = shouldInvoke(time);
 			lastArgs = arguments;
 			lastThis = this;
 			lastCallTime = time;
@@ -3668,8 +3813,9 @@ MiscUtil = {
 	},
 
 	// from lodash
-	throttle (func, wait, options) {
-		let leading = true; let trailing = true;
+	throttle(func, wait, options) {
+		let leading = true;
+		let trailing = true;
 
 		if (typeof options === "object") {
 			leading = "leading" in options ? !!options.leading : leading;
@@ -3679,12 +3825,12 @@ MiscUtil = {
 		return this.debounce(func, wait, {leading, maxWait: wait, trailing});
 	},
 
-	pDelay (msecs, resolveAs) {
+	pDelay(msecs, resolveAs) {
 		return new Promise(resolve => setTimeout(() => resolve(resolveAs), msecs));
 	},
 
-	getWalker (keyBlacklist = new Set()) {
-		function applyHandlers (handlers, ident, obj, lastKey) {
+	getWalker(keyBlacklist = new Set()) {
+		function applyHandlers(handlers, ident, obj, lastKey) {
 			if (!(handlers instanceof Array)) handlers = [handlers];
 			handlers.forEach(h => obj = h(ident, obj, lastKey));
 			return obj;
@@ -3723,22 +3869,27 @@ MiscUtil = {
 						return obj;
 					}
 				}
-				default: throw new Error(`Unhandled type "${to}"`);
+				default:
+					throw new Error(`Unhandled type "${to}"`);
 			}
 		};
 
 		return {walk: fn};
 	},
 
-	pDefer (fn) {
+	pDefer(fn) {
 		return (async () => fn())();
 	}
 };
 
 // EVENT HANDLERS ======================================================================================================
 EventUtil = {
-	getClientX (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientX : evt.clientX; },
-	getClientY (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientY : evt.clientY; }
+	getClientX(evt) {
+		return evt.touches && evt.touches.length ? evt.touches[0].clientX : evt.clientX;
+	},
+	getClientY(evt) {
+		return evt.touches && evt.touches.length ? evt.touches[0].clientY : evt.clientY;
+	}
 };
 
 // CONTEXT MENUS =======================================================================================================
@@ -3773,7 +3924,9 @@ ContextUtil = {
 	},
 
 	_lastMenuId: 1,
-	getNextGenericMenuId () { return `contextMenu_${ContextUtil._lastMenuId++}`; },
+	getNextGenericMenuId() {
+		return `contextMenu_${ContextUtil._lastMenuId++}`;
+	},
 
 	doInitContextMenu: (menuId, clickFn, labels) => {
 		ContextUtil._ctxClick[menuId] = clickFn;
@@ -3795,14 +3948,14 @@ ContextUtil = {
 		$("body").append(tempString);
 	},
 
-	doInitActionContextMenu (contextId, actionOptions) {
+	doInitActionContextMenu(contextId, actionOptions) {
 		ContextUtil.doInitContextMenu(contextId, (evt, ele, $invokedOn, $selectedMenu) => {
 			const val = Number($selectedMenu.data("ctx-id"));
 			actionOptions.filter(Boolean)[val].action(evt, $invokedOn);
 		}, actionOptions);
 	},
 
-	doTeardownContextMenu (menuId) {
+	doTeardownContextMenu(menuId) {
 		delete ContextUtil._ctxInit[menuId];
 		delete ContextUtil._ctxClick[menuId];
 		delete ContextUtil._ctxOpenRefs[menuId];
@@ -3814,7 +3967,8 @@ ContextUtil = {
 		evt.preventDefault();
 		evt.stopPropagation();
 		const thisId = ContextUtil._ctxOpenRefsNextId++;
-		(ContextUtil._ctxOpenRefs[menuId] = ContextUtil._ctxOpenRefs[menuId] || {})[thisId] = closeHandler || (() => {});
+		(ContextUtil._ctxOpenRefs[menuId] = ContextUtil._ctxOpenRefs[menuId] || {})[thisId] = closeHandler || (() => {
+		});
 		const $menu = $(`#${menuId}`)
 			.show()
 			.css({
@@ -3856,7 +4010,7 @@ ContextUtil = {
 
 // LIST AND SEARCH =====================================================================================================
 SearchUtil = {
-	removeStemmer (elasticSearch) {
+	removeStemmer(elasticSearch) {
 		const stemmer = elasticlunr.Pipeline.getRegisteredFunction("stemmer");
 		elasticSearch.pipeline.remove(stemmer);
 	}
@@ -3865,7 +4019,7 @@ SearchUtil = {
 ListUtil = {
 	SUB_HASH_PREFIX: "sublistselected",
 
-	bindEscapeKey (list, $iptSearch, forceRebind) {
+	bindEscapeKey(list, $iptSearch, forceRebind) {
 		// Bind "ESC" when in search input to "clear input"
 		if (!list._isBoundEscape || forceRebind) {
 			if (forceRebind) $iptSearch.off("keydown.search5e");
@@ -3882,7 +4036,7 @@ ListUtil = {
 	},
 
 	_firstInit: true,
-	initList (listOpts) {
+	initList(listOpts) {
 		const $iptSearch = $("#lst__search");
 		const $wrpList = $(`ul.list.${listOpts.listClass}`);
 		const list = new List({$iptSearch, $wrpList, ...listOpts});
@@ -3917,7 +4071,7 @@ ListUtil = {
 		return list;
 	},
 
-	_initList_scrollToItem () {
+	_initList_scrollToItem() {
 		const toShow = Hist.getSelectedListElementWithLocation();
 
 		if (toShow) {
@@ -3936,7 +4090,7 @@ ListUtil = {
 		}
 	},
 
-	_initList_bindWindowHandlers () {
+	_initList_bindWindowHandlers() {
 		$(window).on("keypress", (e) => {
 			// K up; J down
 			if (noModifierKeys(e)) {
@@ -4001,12 +4155,12 @@ ListUtil = {
 		});
 	},
 
-	updateSelected () {
+	updateSelected() {
 		const curSelectedItem = Hist.getSelectedListItem();
 		ListUtil._primaryLists.forEach(l => l.updateSelected(curSelectedItem));
 	},
 
-	openContextMenu (evt, list, listItem) {
+	openContextMenu(evt, list, listItem) {
 		const listsWithSelections = ListUtil._primaryLists.map(l => ({l, selected: l.getSelected()}));
 
 		let selection;
@@ -4028,7 +4182,7 @@ ListUtil = {
 		ContextUtil.handleOpenContextMenu(evt, listItem.ele, "list", null, selection);
 	},
 
-	openSubContextMenu (evt, listItem) {
+	openSubContextMenu(evt, listItem) {
 		ContextUtil.handleOpenContextMenu(evt, listItem.ele, "listSub", null, [listItem]);
 	},
 
@@ -4039,13 +4193,19 @@ ListUtil = {
 	_allItems: null,
 	_primaryLists: [],
 	_pinned: {},
-	initSublist (options) {
-		if (options.itemList !== undefined) ListUtil._allItems = options.itemList; delete options.itemList;
-		if (options.getSublistRow !== undefined) ListUtil._getSublistRow = options.getSublistRow; delete options.getSublistRow;
-		if (options.onUpdate !== undefined) ListUtil._sublistChangeFn = options.onUpdate; delete options.onUpdate;
-		if (options.primaryLists !== undefined) ListUtil._primaryLists = options.primaryLists; delete options.primaryLists;
-		if (options.customHashHandler !== undefined) ListUtil._pCustomHashHandler = options.customHashHandler; delete options.customHashHandler;
-		if (options.customHashUnpacker !== undefined) ListUtil._customHashUnpackFn = options.customHashUnpacker; delete options.customHashUnpacker;
+	initSublist(options) {
+		if (options.itemList !== undefined) ListUtil._allItems = options.itemList;
+		delete options.itemList;
+		if (options.getSublistRow !== undefined) ListUtil._getSublistRow = options.getSublistRow;
+		delete options.getSublistRow;
+		if (options.onUpdate !== undefined) ListUtil._sublistChangeFn = options.onUpdate;
+		delete options.onUpdate;
+		if (options.primaryLists !== undefined) ListUtil._primaryLists = options.primaryLists;
+		delete options.primaryLists;
+		if (options.customHashHandler !== undefined) ListUtil._pCustomHashHandler = options.customHashHandler;
+		delete options.customHashHandler;
+		if (options.customHashUnpacker !== undefined) ListUtil._customHashUnpackFn = options.customHashUnpacker;
+		delete options.customHashUnpacker;
 
 		ListUtil.$sublistContainer = $("#sublistcontainer");
 		const $wrpSublist = $(`ul.${options.listClass}`);
@@ -4057,7 +4217,7 @@ ListUtil = {
 		return sublist;
 	},
 
-	setOptions (options) {
+	setOptions(options) {
 		if (options.itemList !== undefined) ListUtil._allItems = options.itemList;
 		if (options.getSublistRow !== undefined) ListUtil._getSublistRow = options.getSublistRow;
 		if (options.onUpdate !== undefined) ListUtil._sublistChangeFn = options.onUpdate;
@@ -4066,17 +4226,20 @@ ListUtil = {
 		if (options.customHashUnpacker !== undefined) ListUtil._customHashUnpackFn = options.customHashUnpacker;
 	},
 
-	getPrimaryLists () { return this._primaryLists; },
+	getPrimaryLists() {
+		return this._primaryLists;
+	},
 
 	__mouseMoveId: 1,
-	async _pBindSublistResizeHandlers ($ele) {
+	async _pBindSublistResizeHandlers($ele) {
 		const STORAGE_KEY = "SUBLIST_RESIZE";
 		const BORDER_SIZE = 3;
 		const MOUSE_MOVE_ID = ListUtil.__mouseMoveId++;
 		const $doc = $(document);
 
 		let mousePos;
-		function resize (evt) {
+
+		function resize(evt) {
 			const dx = evt.clientY - mousePos;
 			mousePos = evt.clientY;
 			$ele.css("height", parseInt($ele.css("height")) + dx);
@@ -4121,7 +4284,7 @@ ListUtil = {
 			.title("Pin (Toggle)");
 	},
 
-	genericAddButtonHandler (evt, options = {}) {
+	genericAddButtonHandler(evt, options = {}) {
 		if (evt.shiftKey) ListUtil.pDoSublistAdd(Hist.lastLoadedId, true, options.shiftCount || 20);
 		else ListUtil.pDoSublistAdd(Hist.lastLoadedId, true);
 	},
@@ -4132,7 +4295,7 @@ ListUtil = {
 			.on("click", handlerGenerator ? handlerGenerator() : ListUtil.genericAddButtonHandler);
 	},
 
-	genericSubtractButtonHandler (evt, options = {}) {
+	genericSubtractButtonHandler(evt, options = {}) {
 		if (evt.shiftKey) ListUtil.pDoSublistSubtract(Hist.lastLoadedId, options.shiftCount || 20);
 		else ListUtil.pDoSublistSubtract(Hist.lastLoadedId);
 	},
@@ -4159,7 +4322,7 @@ ListUtil = {
 			.title("Download Pinned List (SHIFT for Link)");
 	},
 
-	async pDoJsonLoad (json, additive) {
+	async pDoJsonLoad(json, additive) {
 		await ListUtil._pLoadSavedSublist(json.items, additive);
 		await ListUtil._pFinaliseSublist();
 	},
@@ -4168,7 +4331,7 @@ ListUtil = {
 		const $btn = ListUtil.getOrTabRightButton(`btn-sublist-upload`, `upload`);
 		$btn.off("click")
 			.on("click", (evt) => {
-				function pHandleIptChange (event, additive) {
+				function pHandleIptChange(event, additive) {
 					const input = event.target;
 
 					const reader = new FileReader();
@@ -4191,7 +4354,7 @@ ListUtil = {
 			.title("Upload Pinned List (SHIFT for Add Only)");
 	},
 
-	async pSetFromSubHashes (subHashes, pFnPreLoad) {
+	async pSetFromSubHashes(subHashes, pFnPreLoad) {
 		const unpacked = {};
 		subHashes.forEach(s => Object.assign(unpacked, UrlUtil.unpackSubHash(s, true)));
 		const setFrom = unpacked[ListUtil.SUB_HASH_PREFIX];
@@ -4217,21 +4380,21 @@ ListUtil = {
 		}
 	},
 
-	_getPinnedCount (index, data) {
+	_getPinnedCount(index, data) {
 		const base = ListUtil._pinned[index];
 		if (!base) return null;
 		if (data && data.customHashId) return base[data.customHashId];
 		return base._;
 	},
 
-	_setPinnedCount (index, count, data) {
+	_setPinnedCount(index, count, data) {
 		const base = ListUtil._pinned[index];
 		const key = data && data.customHashId ? data.customHashId : "_";
 		if (base) base[key] = count;
 		else (ListUtil._pinned[index] = {})[key] = count;
 	},
 
-	_deletePinnedCount (index, data) {
+	_deletePinnedCount(index, data) {
 		const base = ListUtil._pinned[index];
 		if (base) {
 			if (data && data.customHashId) delete base[data.customHashId];
@@ -4239,7 +4402,7 @@ ListUtil = {
 		}
 	},
 
-	async pDoSublistAdd (index, doFinalise, addCount, data) {
+	async pDoSublistAdd(index, doFinalise, addCount, data) {
 		if (index == null) {
 			return JqueryUtil.doToast({
 				content: "Please first view something from the list.",
@@ -4261,7 +4424,7 @@ ListUtil = {
 		}
 	},
 
-	async pDoSublistSubtract (index, subtractCount, data) {
+	async pDoSublistSubtract(index, subtractCount, data) {
 		const count = ListUtil._getPinnedCount(index, data);
 		subtractCount = subtractCount || 1;
 		if (count > subtractCount) {
@@ -4273,14 +4436,14 @@ ListUtil = {
 		} else if (count) await ListUtil.pDoSublistRemove(index, data);
 	},
 
-	getSublisted () {
+	getSublisted() {
 		const cpy = MiscUtil.copy(ListUtil._pinned);
 		const out = {};
 		Object.keys(cpy).filter(k => Object.keys(cpy[k]).length).forEach(k => out[k] = cpy[k]);
 		return out;
 	},
 
-	getSublistedIds () {
+	getSublistedIds() {
 		return Object.keys(ListUtil._pinned).filter(k => Object.keys(ListUtil._pinned[k]).length).map(it => Number(it));
 	},
 
@@ -4299,7 +4462,7 @@ ListUtil = {
 		})
 	},
 
-	async _pFinaliseSublist (noSave) {
+	async _pFinaliseSublist(noSave) {
 		ListUtil.sublist.update();
 		ListUtil._updateSublistVisibility();
 		if (!noSave) await ListUtil._pSaveSublist();
@@ -4311,12 +4474,16 @@ ListUtil = {
 		const toSave = ListUtil.sublist.items
 			.map(it => {
 				sources.add(ListUtil._allItems[it.ix].source);
-				return {h: it.values.hash.split(HASH_PART_SEP)[0], c: it.values.count || undefined, customHashId: it.data.customHashId};
+				return {
+					h: it.values.hash.split(HASH_PART_SEP)[0],
+					c: it.values.count || undefined,
+					customHashId: it.data.customHashId
+				};
 			});
 		return {items: toSave, sources: Array.from(sources)};
 	},
 
-	async _pSaveSublist () {
+	async _pSaveSublist() {
 		await StorageUtil.pSetForPage("sublist", ListUtil.getExportableSublist());
 	},
 
@@ -4325,7 +4492,7 @@ ListUtil = {
 		else ListUtil.$sublistContainer.removeClass("sublist--visible");
 	},
 
-	async pDoSublistRemove (index, data) {
+	async pDoSublistRemove(index, data) {
 		ListUtil._deletePinnedCount(index, data);
 		if (data && data.customHashId) ListUtil.sublist.removeItemBy("customHashId", data.customHashId);
 		else ListUtil.sublist.removeItem(index);
@@ -4335,7 +4502,7 @@ ListUtil = {
 		ListUtil._handleCallUpdateFn();
 	},
 
-	async pDoSublistRemoveAll (noSave) {
+	async pDoSublistRemoveAll(noSave) {
 		ListUtil._pinned = {};
 		ListUtil.sublist.removeAllItems();
 		ListUtil.sublist.update();
@@ -4348,7 +4515,7 @@ ListUtil = {
 		return ListUtil._getPinnedCount(index, data);
 	},
 
-	mapSelectedWithDeslect (list, mapFunc) {
+	mapSelectedWithDeslect(list, mapFunc) {
 		return list.getSelected()
 			.map(it => {
 				it.isSelected = false;
@@ -4361,7 +4528,7 @@ ListUtil = {
 	},
 
 	_hasLoadedState: false,
-	async pLoadState () {
+	async pLoadState() {
 		if (ListUtil._hasLoadedState) return;
 		ListUtil._hasLoadedState = true;
 		try {
@@ -4370,12 +4537,14 @@ ListUtil = {
 				await ListUtil._pLoadSavedSublist(store.items);
 			}
 		} catch (e) {
-			setTimeout(() => { throw e });
+			setTimeout(() => {
+				throw e
+			});
 			await StorageUtil.pRemoveForPage("sublist");
 		}
 	},
 
-	async _pLoadSavedSublist (items, additive) {
+	async _pLoadSavedSublist(items, additive) {
 		if (!additive) await ListUtil.pDoSublistRemoveAll(true);
 
 		const toLoad = items.map(it => {
@@ -4395,17 +4564,19 @@ ListUtil = {
 		await ListUtil._pFinaliseSublist(true);
 	},
 
-	async pGetSelectedSources () {
+	async pGetSelectedSources() {
 		let store;
 		try {
 			store = await StorageUtil.pGetForPage("sublist");
 		} catch (e) {
-			setTimeout(() => { throw e });
+			setTimeout(() => {
+				throw e
+			});
 		}
 		if (store && store.sources) return store.sources;
 	},
 
-	initGenericPinnable () {
+	initGenericPinnable() {
 		ContextUtil.doInitContextMenu(
 			"list",
 			ListUtil.handleGenericContextMenuClick,
@@ -4429,7 +4600,7 @@ ListUtil = {
 		);
 	},
 
-	initGenericAddable () {
+	initGenericAddable() {
 		ContextUtil.doInitContextMenu(
 			"list",
 			ListUtil.handleGenericMultiContextMenuClick,
@@ -4455,7 +4626,9 @@ ListUtil = {
 
 	handleGenericContextMenuClick: (evt, ele, $invokedOn, $selectedMenu, _, selection) => {
 		switch (Number($selectedMenu.data("ctx-id"))) {
-			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
+			case 0:
+				ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection);
+				break;
 			case 1:
 				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelectedWithDeslect(l, (it) => ListUtil.isSublisted(it) ? Promise.resolve() : ListUtil.pDoSublistAdd(it)))))
 					.then(async () => ListUtil._pFinaliseSublist());
@@ -4465,8 +4638,12 @@ ListUtil = {
 
 	handleGenericSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu, _, selection) => {
 		switch (Number($selectedMenu.data("ctx-id"))) {
-			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
-			case 1: selection.forEach(item => ListUtil.pDoSublistRemove(item.ix)); break;
+			case 0:
+				ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection);
+				break;
+			case 1:
+				selection.forEach(item => ListUtil.pDoSublistRemove(item.ix));
+				break;
 			case 2:
 				ListUtil.pDoSublistRemoveAll();
 				break;
@@ -4481,7 +4658,9 @@ ListUtil = {
 
 	handleGenericMultiContextMenuClick: (evt, ele, $invokedOn, $selectedMenu, _, selection) => {
 		switch (Number($selectedMenu.data("ctx-id"))) {
-			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
+			case 0:
+				ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection);
+				break;
 			case 1:
 				Promise.all(ListUtil._primaryLists.map(l => Promise.all(ListUtil.mapSelectedWithDeslect(l, (it) => ListUtil.pDoSublistAdd(it)))))
 					.then(async () => {
@@ -4494,7 +4673,9 @@ ListUtil = {
 
 	handleGenericMultiSubContextMenuClick: (evt, ele, $invokedOn, $selectedMenu, _, selection) => {
 		switch (Number($selectedMenu.data("ctx-id"))) {
-			case 0: ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection); break;
+			case 0:
+				ListUtil._handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection);
+				break;
 			case 1: {
 				selection.forEach(item => {
 					if (item.data.customHashId) ListUtil.pDoSublistRemove(item.ix, {customHashId: item.data.customHashId});
@@ -4514,7 +4695,7 @@ ListUtil = {
 		}
 	},
 
-	async _handleGenericContextMenuClick_pDoMassPopout (evt, ele, $invokedOn, selection) {
+	async _handleGenericContextMenuClick_pDoMassPopout(evt, ele, $invokedOn, selection) {
 		const page = UrlUtil.getCurrentPage();
 
 		const elePos = ele.getBoundingClientRect();
@@ -4544,13 +4725,13 @@ ListUtil = {
 	},
 
 	_isRolling: false,
-	_rollSubListed () {
+	_rollSubListed() {
 		const timerMult = RollerUtil.randomise(125, 75);
 		const timers = [0, 1, 1, 1, 1, 1, 1.5, 1.5, 1.5, 2, 2, 2, 2.5, 3, 4, -1] // last element is always sliced off
 			.map(it => it * timerMult)
 			.slice(0, -RollerUtil.randomise(4, 1));
 
-		function generateSequence (array, length) {
+		function generateSequence(array, length) {
 			const out = [RollerUtil.rollOnArray(array)];
 			for (let i = 0; i < length; ++i) {
 				let next = RollerUtil.rollOnArray(array);
@@ -4588,11 +4769,11 @@ ListUtil = {
 		}
 	},
 
-	_getDownloadName () {
+	_getDownloadName() {
 		return `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
 	},
 
-	genericPinKeyMapper (pMapUid = ListUtil._pCustomHashHandler) {
+	genericPinKeyMapper(pMapUid = ListUtil._pCustomHashHandler) {
 		return Object.entries(ListUtil.getSublisted()).map(([id, it]) => {
 			return Object.keys(it).map(k => {
 				const it = ListUtil._allItems[id];
@@ -4601,7 +4782,7 @@ ListUtil = {
 		}).reduce((a, b) => a.concat(b), []);
 	},
 
-	_handleJsonDownload () {
+	_handleJsonDownload() {
 		if (ListUtil._pCustomHashHandler) {
 			const promises = ListUtil.genericPinKeyMapper();
 
@@ -4619,15 +4800,18 @@ ListUtil = {
 		}
 	},
 
-	getCompleteFilterSources (it) {
-		return it.otherSources ? [it.source].concat(it.otherSources.map(src => new FilterItem({item: src.source, isIgnoreRed: true}))) : it.source;
+	getCompleteFilterSources(it) {
+		return it.otherSources ? [it.source].concat(it.otherSources.map(src => new FilterItem({
+			item: src.source,
+			isIgnoreRed: true
+		}))) : it.source;
 	},
 
-	bindShowTableButton (id, title, dataList, colTransforms, filter, sorter) {
+	bindShowTableButton(id, title, dataList, colTransforms, filter, sorter) {
 		$(`#${id}`).click("click", () => ListUtil.showTable(title, dataList, colTransforms, filter, sorter));
 	},
 
-	basicFilterGenerator () {
+	basicFilterGenerator() {
 		const slIds = ListUtil.getSublistedIds();
 		if (slIds.length) {
 			const slIdSet = new Set(slIds);
@@ -4638,12 +4822,12 @@ ListUtil = {
 		}
 	},
 
-	getVisibleIds () {
+	getVisibleIds() {
 		return ListUtil._primaryLists.map(l => l.visibleItems.map(it => it.ix)).flat();
 	},
 
 	// FIXME move this out
-	showTable (title, dataList, colTransforms, filter, sorter) {
+	showTable(title, dataList, colTransforms, filter, sorter) {
 		const $modal = $(`<div class="modal__outer dropdown-menu"/>`);
 		const $wrpModal = $(`<div class="modal__wrp">`).appendTo($(`body`)).click(() => $wrpModal.remove());
 		$modal.appendTo($wrpModal);
@@ -4665,13 +4849,15 @@ ListUtil = {
 				.appendTo($wrpCb);
 		});
 		const $pnlBtns = $(`<div/>`).appendTo($pnlControl);
-		function getAsCsv () {
+
+		function getAsCsv() {
 			const headers = $pnlCols.find(`input:checked`).map((i, e) => $(e).data("name")).get();
 			const rows = $modalInner.find(`.data-row`).map((i, e) => $(e)).get().map($e => {
 				return $e.children().filter(`td:visible`).map((j, d) => $(d).text().trim()).get();
 			});
 			return DataUtil.getCsv(headers, rows);
 		}
+
 		const $btnCsv = $(`<button class="btn btn-primary mr-3">Download CSV</button>`).click(() => {
 			DataUtil.userDownloadText(`${title}.csv`, getAsCsv());
 		}).appendTo($pnlBtns);
@@ -4698,7 +4884,7 @@ ListUtil = {
 		$modalInner.append(temp);
 	},
 
-	addListShowHide () {
+	addListShowHide() {
 		$(`#filter-search-input-group`).find(`#reset`).before(`<button class="btn btn-default" id="hidesearch">Hide</button>`);
 		$(`#contentwrapper`).prepend(`<div class="col-12" id="showsearch"><button class="btn btn-block btn-default btn-xs" type="button">Show Search</button><br></div>`);
 
@@ -4720,7 +4906,7 @@ ListUtil = {
 	}
 };
 
-function getAsiFilter (options) {
+function getAsiFilter(options) {
 	const baseOptions = {
 		header: "Ability Bonus",
 		items: [
@@ -4737,7 +4923,7 @@ function getAsiFilter (options) {
 	return getFilterWithMergedOptions(baseOptions, options);
 }
 
-function getFilterWithMergedOptions (baseOptions, addOptions) {
+function getFilterWithMergedOptions(baseOptions, addOptions) {
 	if (addOptions) Object.assign(baseOptions, addOptions); // merge in anything we get passed
 	return new Filter(baseOptions);
 }
@@ -4747,7 +4933,7 @@ function getFilterWithMergedOptions (baseOptions, addOptions) {
  * @param opts.filters Array of filters to be included in this box.
  * @param [opts.isCompact] True if this box should have a compact/reduced UI.
  */
-async function pInitFilterBox (opts) {
+async function pInitFilterBox(opts) {
 	opts.$iptSearch = $(`#lst__search`);
 	opts.$wrpFormTop = $(`#filter-search-input-group`).title("Hotkey: f");
 	opts.$btnReset = $(`#reset`);
@@ -4758,19 +4944,19 @@ async function pInitFilterBox (opts) {
 
 // ENCODING/DECODING ===================================================================================================
 UrlUtil = {
-	encodeForHash (toEncode) {
+	encodeForHash(toEncode) {
 		if (toEncode instanceof Array) return toEncode.map(it => `${it}`.toUrlified()).join(HASH_LIST_SEP);
 		else return `${toEncode}`.toUrlified();
 	},
 
-	autoEncodeHash (obj) {
+	autoEncodeHash(obj) {
 		const curPage = UrlUtil.getCurrentPage();
 		const encoder = UrlUtil.URL_TO_HASH_BUILDER[curPage];
 		if (!encoder) throw new Error(`No encoder found for page ${curPage}`);
 		return encoder(obj);
 	},
 
-	getCurrentPage () {
+	getCurrentPage() {
 		const pSplit = window.location.pathname.split("/");
 		let out = pSplit[pSplit.length - 1];
 		if (!out.toLowerCase().endsWith(".html")) out += ".html";
@@ -4782,8 +4968,8 @@ UrlUtil = {
 	 *
 	 * @param href the link
 	 */
-	link (href) {
-		function addGetParam (curr) {
+	link(href) {
+		function addGetParam(curr) {
 			if (href.includes("?")) return `${curr}&v=${VERSION_NUMBER}`;
 			else return `${curr}?v=${VERSION_NUMBER}`;
 		}
@@ -4793,7 +4979,7 @@ UrlUtil = {
 		return href;
 	},
 
-	unpackSubHash (subHash, unencode) {
+	unpackSubHash(subHash, unencode) {
 		// format is "key:value~list~sep~with~tilde"
 		if (subHash.includes(HASH_SUB_KV_SEP)) {
 			const keyValArr = subHash.split(HASH_SUB_KV_SEP).map(s => s.trim());
@@ -4819,16 +5005,18 @@ UrlUtil = {
 	 * @param [opts.isEncodeValues] If the values should be URL encoded.
 	 * @returns {string}
 	 */
-	packSubHash (key, values, opts) {
+	packSubHash(key, values, opts) {
 		opts = opts || {};
 		if (opts.isEncodeBoth || opts.isEncodeKey) key = key.toUrlified();
 		if (opts.isEncodeBoth || opts.isEncodeValues) values = values.map(it => it.toUrlified());
 		return `${key}${HASH_SUB_KV_SEP}${values.join(HASH_SUB_LIST_SEP)}`;
 	},
 
-	categoryToPage (category) { return UrlUtil.CAT_TO_PAGE[category]; },
+	categoryToPage(category) {
+		return UrlUtil.CAT_TO_PAGE[category];
+	},
 
-	bindLinkExportButton (filterBox, $btn) {
+	bindLinkExportButton(filterBox, $btn) {
 		$btn = $btn || ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
 		$btn.addClass("btn-copy-effect")
 			.off("click")
@@ -4851,31 +5039,40 @@ UrlUtil = {
 	},
 
 	mini: {
-		compress (primitive) {
+		compress(primitive) {
 			const type = typeof primitive;
 			if (primitive == null) return `x`;
 			switch (type) {
-				case "boolean": return `b${Number(primitive)}`;
-				case "number": return `n${primitive}`;
-				case "string": return `s${primitive.toUrlified()}`;
-				default: throw new Error(`Unhandled type "${type}"`);
+				case "boolean":
+					return `b${Number(primitive)}`;
+				case "number":
+					return `n${primitive}`;
+				case "string":
+					return `s${primitive.toUrlified()}`;
+				default:
+					throw new Error(`Unhandled type "${type}"`);
 			}
 		},
 
-		decompress (raw) {
+		decompress(raw) {
 			const [type, data] = [raw.slice(0, 1), raw.slice(1)];
 			switch (type) {
-				case "x": return null;
-				case "b": return !!Number(data);
-				case "n": return Number(data);
-				case "s": return String(data);
-				default: throw new Error(`Unhandled type "${type}"`);
+				case "x":
+					return null;
+				case "b":
+					return !!Number(data);
+				case "n":
+					return Number(data);
+				case "s":
+					return String(data);
+				default:
+					throw new Error(`Unhandled type "${type}"`);
 			}
 		}
 	},
 
 	class: {
-		getIndexedEntries (cls) {
+		getIndexedEntries(cls) {
 			const out = [];
 			let scFeatureI = 0;
 			(cls.classFeatures || []).forEach((lvlFeatureList, ixLvl) => {
@@ -4892,7 +5089,12 @@ UrlUtil = {
 							_type: "classFeature",
 							source: cls.source.source || cls.source,
 							name,
-							hash: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({feature: {ixLevel: ixLvl, ixFeature: ixFeature}})}`,
+							hash: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({
+								feature: {
+									ixLevel: ixLvl,
+									ixFeature: ixFeature
+								}
+							})}`,
 							entry: feature,
 							level: ixLvl + 1
 						})
@@ -4906,7 +5108,10 @@ UrlUtil = {
 						sc.source = sc.source || cls.source; // default to class source if required
 						const tempStack = [];
 						features.forEach(feature => {
-							const subclassFeatureHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: sc, feature: {ixLevel: ixLvl, ixFeature: ixGainSubclassFeatures}})}`;
+							const subclassFeatureHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({
+								subclass: sc,
+								feature: {ixLevel: ixLvl, ixFeature: ixGainSubclassFeatures}
+							})}`;
 							const name = Renderer.findName(feature);
 							if (!name) { // tolerate missing names in homebrew
 								if (BrewUtil.hasSourceJson(sc.source)) return;
@@ -4945,21 +5150,25 @@ UrlUtil = {
 					});
 					scFeatureI++;
 				} else if (ixGainSubclassFeatures.length > 1) {
-					setTimeout(() => { throw new Error(`Multiple subclass features gained at level ${ixLvl + 1} for class "${cls.name}" from source "${cls.source}"!`) });
+					setTimeout(() => {
+						throw new Error(`Multiple subclass features gained at level ${ixLvl + 1} for class "${cls.name}" from source "${cls.source}"!`)
+					});
 				}
 			});
 			return out;
 		}
 	},
 
-	getStateKeySubclass (sc) { return Parser.stringToSlug(`sub ${sc.shortName || sc.name} ${Parser.sourceJsonToAbv(sc.source)}`); },
+	getStateKeySubclass(sc) {
+		return Parser.stringToSlug(`sub ${sc.shortName || sc.name} ${Parser.sourceJsonToAbv(sc.source)}`);
+	},
 
 	/**
 	 * @param opts Options object.
 	 * @param [opts.subclass] Subclass (or object of the form `{shortName: "str", source: "str"}`)
 	 * @param [opts.feature] Object of the form `{ixLevel: 0, ixFeature: 0}`
 	 */
-	getClassesPageStatePart (opts) {
+	getClassesPageStatePart(opts) {
 		const stateParts = [
 			opts.subclass ? `${UrlUtil.getStateKeySubclass(opts.subclass)}=${UrlUtil.mini.compress(true)}` : null,
 			opts.feature ? `feature=${UrlUtil.mini.compress(`${opts.feature.ixLevel}-${opts.feature.ixFeature}`)}` : ""
@@ -5092,7 +5301,9 @@ SortUtil = {
 		return SortUtil._ascSort(a, b);
 	},
 
-	ascSortProp: (prop, a, b) => { return SortUtil.ascSort(a[prop], b[prop]); },
+	ascSortProp: (prop, a, b) => {
+		return SortUtil.ascSort(a[prop], b[prop]);
+	},
 
 	ascSortLower: (a, b) => {
 		if (typeof FilterItem !== "undefined") {
@@ -5103,18 +5314,22 @@ SortUtil = {
 		return SortUtil._ascSort(a.toLowerCase(), b.toLowerCase());
 	},
 
-	ascSortLowerSafe (a, b) { return SortUtil.ascSortLower(a || "", b || ""); },
+	ascSortLowerSafe(a, b) {
+		return SortUtil.ascSortLower(a || "", b || "");
+	},
 
-	ascSortLowerProp: (prop, a, b) => { return SortUtil.ascSortLower(a[prop], b[prop]); },
+	ascSortLowerProp: (prop, a, b) => {
+		return SortUtil.ascSortLower(a[prop], b[prop]);
+	},
 
 	// warning: slow
-	ascSortNumericalSuffix (a, b) {
+	ascSortNumericalSuffix(a, b) {
 		if (typeof FilterItem !== "undefined") {
 			if (a instanceof FilterItem) a = a.item;
 			if (b instanceof FilterItem) b = b.item;
 		}
 
-		function popEndNumber (str) {
+		function popEndNumber(str) {
 			const spl = str.split(" ");
 			return spl.last().isNumeric() ? [spl.slice(0, -1).join(" "), Number(spl.last().replace(Parser._numberCleanRegexp, ""))] : [spl.join(" "), 0];
 		}
@@ -5131,30 +5346,32 @@ SortUtil = {
 		return b < a ? 1 : -1;
 	},
 
-	ascSortDate (a, b) {
+	ascSortDate(a, b) {
 		return b.getTime() - a.getTime();
 	},
 
-	ascSortDateString (a, b) {
+	ascSortDateString(a, b) {
 		return SortUtil.ascSortDate(new Date(a || "1970-01-0"), new Date(b || "1970-01-0"));
 	},
 
-	compareListNames (a, b) { return SortUtil._ascSort(a.name.toLowerCase(), b.name.toLowerCase()); },
+	compareListNames(a, b) {
+		return SortUtil._ascSort(a.name.toLowerCase(), b.name.toLowerCase());
+	},
 
-	listSort (a, b, opts) {
+	listSort(a, b, opts) {
 		opts = opts || {sortBy: "name"};
 		if (opts.sortBy === "name") return SortUtil.compareListNames(a, b);
 		else return SortUtil._compareByOrDefault_compareByOrDefault(a, b, opts.sortBy);
 	},
 
-	_listSort_compareBy (a, b, sortBy) {
+	_listSort_compareBy(a, b, sortBy) {
 		const aValue = typeof a.values[sortBy] === "string" ? a.values[sortBy].toLowerCase() : a.values[sortBy];
 		const bValue = typeof b.values[sortBy] === "string" ? b.values[sortBy].toLowerCase() : b.values[sortBy];
 
 		return SortUtil._ascSort(aValue, bValue);
 	},
 
-	_compareByOrDefault_compareByOrDefault (a, b, sortBy) {
+	_compareByOrDefault_compareByOrDefault(a, b, sortBy) {
 		return SortUtil._listSort_compareBy(a, b, sortBy) || SortUtil.compareListNames(a, b);
 	},
 
@@ -5198,7 +5415,7 @@ SortUtil = {
 		return 0;
 	},
 
-	ascSortCr (a, b) {
+	ascSortCr(a, b) {
 		if (typeof FilterItem !== "undefined") {
 			if (a instanceof FilterItem) a = a.item;
 			if (b instanceof FilterItem) b = b.item;
@@ -5209,14 +5426,14 @@ SortUtil = {
 		return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b));
 	},
 
-	ascSortAtts (a, b) {
+	ascSortAtts(a, b) {
 		const aSpecial = a === "special";
 		const bSpecial = b === "special";
 		return aSpecial && bSpecial ? 0 : aSpecial ? 1 : bSpecial ? -1 : Parser.ABIL_ABVS.indexOf(a) - Parser.ABIL_ABVS.indexOf(b);
 	},
 
-	initBtnSortHandlers ($wrpBtnsSort, list) {
-		function addCaret ($btnSort, direction) {
+	initBtnSortHandlers($wrpBtnsSort, list) {
+		function addCaret($btnSort, direction) {
 			$wrpBtnsSort.find(".caret").removeClass("caret");
 			$btnSort.find(".caret_wrp").addClass("caret").toggleClass("caret--reverse", direction === "asc");
 		}
@@ -5243,7 +5460,7 @@ DataUtil = {
 	_merging: {},
 	_merged: {},
 
-	async _pLoad (url) {
+	async _pLoad(url) {
 		if (DataUtil._loading[url]) {
 			await DataUtil._loading[url];
 			return DataUtil._loaded[url];
@@ -5269,7 +5486,7 @@ DataUtil = {
 		return DataUtil._loaded[url];
 	},
 
-	async loadJSON (url, ...otherData) {
+	async loadJSON(url, ...otherData) {
 		const procUrl = UrlUtil.link(url);
 
 		let ident = procUrl;
@@ -5277,7 +5494,9 @@ DataUtil = {
 		try {
 			data = await DataUtil._pLoad(procUrl);
 		} catch (e) {
-			setTimeout(() => { throw e; })
+			setTimeout(() => {
+				throw e;
+			})
 		}
 
 		// Fallback to the un-processed URL
@@ -5291,13 +5510,13 @@ DataUtil = {
 		return data;
 	},
 
-	async pDoMetaMerge (ident, data, options) {
+	async pDoMetaMerge(ident, data, options) {
 		DataUtil._merging[ident] = DataUtil._merging[ident] || DataUtil._pDoMetaMerge(ident, data, options);
 		await DataUtil._merging[ident];
 		return DataUtil._merged[ident];
 	},
 
-	async _pDoMetaMerge (ident, data, options) {
+	async _pDoMetaMerge(ident, data, options) {
 		if (data._meta) {
 			if (data._meta.dependencies) {
 				await Promise.all(Object.entries(data._meta.dependencies).map(async ([prop, sources]) => {
@@ -5309,9 +5528,12 @@ DataUtil = {
 					await Promise.all(data[prop].map(async entry => {
 						if (entry._copy) {
 							switch (prop) {
-								case "monster": return DataUtil.monster.pMergeCopy(flatDependencyData, entry, options);
-								case "spell": return DataUtil.spell.pMergeCopy(flatDependencyData, entry, options);
-								default: throw new Error(`No dependency _copy merge strategy specified for property "${prop}"`);
+								case "monster":
+									return DataUtil.monster.pMergeCopy(flatDependencyData, entry, options);
+								case "spell":
+									return DataUtil.spell.pMergeCopy(flatDependencyData, entry, options);
+								default:
+									throw new Error(`No dependency _copy merge strategy specified for property "${prop}"`);
 							}
 						}
 					}));
@@ -5326,13 +5548,20 @@ DataUtil = {
 					await Promise.all(data[prop].map(async entry => {
 						if (entry._copy) {
 							switch (prop) {
-								case "monster": return DataUtil.monster.pMergeCopy(data[prop], entry, options);
-								case "spell": return DataUtil.spell.pMergeCopy(data[prop], entry, options);
-								case "item": return DataUtil.item.pMergeCopy(data[prop], entry, options);
-								case "background": return DataUtil.background.pMergeCopy(data[prop], entry, options);
-								case "race": return DataUtil.race.pMergeCopy(data[prop], entry, options);
-								case "deity": return DataUtil.deity.pMergeCopy(data[prop], entry, options);
-								default: throw new Error(`No internal _copy merge strategy specified for property "${prop}"`);
+								case "monster":
+									return DataUtil.monster.pMergeCopy(data[prop], entry, options);
+								case "spell":
+									return DataUtil.spell.pMergeCopy(data[prop], entry, options);
+								case "item":
+									return DataUtil.item.pMergeCopy(data[prop], entry, options);
+								case "background":
+									return DataUtil.background.pMergeCopy(data[prop], entry, options);
+								case "race":
+									return DataUtil.race.pMergeCopy(data[prop], entry, options);
+								case "deity":
+									return DataUtil.deity.pMergeCopy(data[prop], entry, options);
+								default:
+									throw new Error(`No internal _copy merge strategy specified for property "${prop}"`);
 							}
 						}
 					}));
@@ -5348,7 +5577,10 @@ DataUtil = {
 					url: await DataUtil.pGetLoadableByMeta(prop, source)
 				})));
 
-				const additionalData = await Promise.all(toLoads.map(async ({findWith, url}) => ({findWith, sourceData: await DataUtil.loadJSON(url)})));
+				const additionalData = await Promise.all(toLoads.map(async ({findWith, url}) => ({
+					findWith,
+					sourceData: await DataUtil.loadJSON(url)
+				})));
 
 				additionalData.forEach(dataAndSource => {
 					const findWith = dataAndSource.findWith;
@@ -5362,7 +5594,7 @@ DataUtil = {
 		DataUtil._merged[ident] = data;
 	},
 
-	userDownload (filename, data) {
+	userDownload(filename, data) {
 		if (typeof data !== "string") data = JSON.stringify(data, null, "\t");
 		const a = document.createElement("a");
 		const t = new Blob([data], {type: "text/json"});
@@ -5373,30 +5605,30 @@ DataUtil = {
 		document.body.removeChild(a);
 	},
 
-	getCleanFilename (filename) {
+	getCleanFilename(filename) {
 		return filename.replace(/[^-_a-zA-Z0-9]/g, "_");
 	},
 
-	getCsv (headers, rows) {
-		function escapeCsv (str) {
+	getCsv(headers, rows) {
+		function escapeCsv(str) {
 			return `"${str.replace(/"/g, `""`).replace(/ +/g, " ").replace(/\n\n+/gi, "\n\n")}"`;
 		}
 
-		function toCsv (row) {
+		function toCsv(row) {
 			return row.map(str => escapeCsv(str)).join(",");
 		}
 
 		return `${toCsv(headers)}\n${rows.map(r => toCsv(r)).join("\n")}`;
 	},
 
-	userDownloadText (filename, string) {
+	userDownloadText(filename, string) {
 		const $a = $(`<a href="data:text/plain;charset=utf-8,${encodeURIComponent(string)}" download="${filename}" style="display: none;">DL</a>`);
 		$(`body`).append($a);
 		$a[0].click();
 		$a.remove();
 	},
 
-	pUserUpload () {
+	pUserUpload() {
 		return new Promise(resolve => {
 			const $iptAdd = $(`<input type="file" accept=".json" style="position: fixed; top: -100px; left: -100px; display: none;">`).on("change", (evt) => {
 				const input = evt.target;
@@ -5414,13 +5646,13 @@ DataUtil = {
 		});
 	},
 
-	cleanJson (cpy) {
+	cleanJson(cpy) {
 		cpy.name = cpy._displayName || cpy.name;
 		DataUtil.__cleanJsonObject(cpy);
 		return cpy;
 	},
 
-	__cleanJsonObject (obj) {
+	__cleanJsonObject(obj) {
 		if (obj == null) return obj;
 		if (typeof obj === "object") {
 			if (obj instanceof Array) {
@@ -5434,7 +5666,7 @@ DataUtil = {
 		}
 	},
 
-	async pGetLoadableByMeta (key, value) {
+	async pGetLoadableByMeta(key, value) {
 		// TODO in future, allow value to be e.g. a string (assumed to be an official data's source); an object e.g. `{type: external, url: <>}`,...
 		switch (key) {
 			case "monster": {
@@ -5447,12 +5679,13 @@ DataUtil = {
 				if (!index[value]) throw new Error(`Spell index did not contain source "${value}"`);
 				return `${Renderer.get().baseUrl}data/spells/${index[value]}`;
 			}
-			default: throw new Error(`Could not get loadable URL for \`${JSON.stringify({key, value})}\``);
+			default:
+				throw new Error(`Could not get loadable URL for \`${JSON.stringify({key, value})}\``);
 		}
 	},
 
 	generic: {
-		async _pMergeCopy (impl, page, entryList, entry, options) {
+		async _pMergeCopy(impl, page, entryList, entry, options) {
 			if (entry._copy) {
 				const hash = UrlUtil.URL_TO_HASH_BUILDER[page](entry._copy);
 				const it = impl._mergeCache[hash] || DataUtil.generic._pMergeCopy_search(impl, page, entryList, entry, options);
@@ -5463,7 +5696,7 @@ DataUtil = {
 			}
 		},
 
-		_pMergeCopy_search (impl, page, entryList, entry, options) {
+		_pMergeCopy_search(impl, page, entryList, entry, options) {
 			const entryHash = UrlUtil.URL_TO_HASH_BUILDER[page](entry._copy);
 			return entryList.find(it => {
 				const hash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
@@ -5472,11 +5705,11 @@ DataUtil = {
 			});
 		},
 
-		async _pApplyCopy (impl, copyFrom, copyTo, options = {}) {
+		async _pApplyCopy(impl, copyFrom, copyTo, options = {}) {
 			if (options.doKeepCopy) copyTo.__copy = MiscUtil.copy(copyFrom);
 
 			// convert everything to arrays
-			function normaliseMods (obj) {
+			function normaliseMods(obj) {
 				Object.entries(obj._mod).forEach(([k, v]) => {
 					if (!(v instanceof Array)) obj._mod[k] = [v];
 				});
@@ -5528,16 +5761,16 @@ DataUtil = {
 			}
 
 			// mod helpers /////////////////
-			function doEnsureArray (obj, prop) {
+			function doEnsureArray(obj, prop) {
 				if (!(obj[prop] instanceof Array)) obj[prop] = [obj[prop]];
 			}
 
-			function doMod_appendStr (modInfo, prop) {
+			function doMod_appendStr(modInfo, prop) {
 				if (copyTo[prop]) copyTo[prop] = `${copyTo[prop]}${modInfo.joiner || ""}${modInfo.str}`;
 				else copyTo[prop] = modInfo.str;
 			}
 
-			function doMod_replaceTxt (modInfo, prop) {
+			function doMod_replaceTxt(modInfo, prop) {
 				const re = new RegExp(modInfo.replace, `g${modInfo.flags || ""}`);
 				if (copyTo[prop]) {
 					copyTo[prop].forEach(it => {
@@ -5548,23 +5781,23 @@ DataUtil = {
 				}
 			}
 
-			function doMod_prependArr (modInfo, prop) {
+			function doMod_prependArr(modInfo, prop) {
 				doEnsureArray(modInfo, "items");
 				copyTo[prop] = copyTo[prop] ? modInfo.items.concat(copyTo[prop]) : modInfo.items
 			}
 
-			function doMod_appendArr (modInfo, prop) {
+			function doMod_appendArr(modInfo, prop) {
 				doEnsureArray(modInfo, "items");
 				copyTo[prop] = copyTo[prop] ? copyTo[prop].concat(modInfo.items) : modInfo.items
 			}
 
-			function doMod_appendIfNotExistsArr (modInfo, prop) {
+			function doMod_appendIfNotExistsArr(modInfo, prop) {
 				doEnsureArray(modInfo, "items");
 				if (!copyTo[prop]) return copyTo[prop] = modInfo.items;
 				copyTo[prop] = copyTo[prop].concat(modInfo.items.filter(it => !copyTo[prop].some(x => CollectionUtil.deepEquals(it, x))));
 			}
 
-			function doMod_replaceArr (modInfo, prop, isThrow = true) {
+			function doMod_replaceArr(modInfo, prop, isThrow = true) {
 				doEnsureArray(modInfo, "items");
 
 				if (!copyTo[prop]) {
@@ -5589,18 +5822,18 @@ DataUtil = {
 				return false;
 			}
 
-			function doMod_replaceOrAppendArr (modInfo, prop) {
+			function doMod_replaceOrAppendArr(modInfo, prop) {
 				const didReplace = doMod_replaceArr(modInfo, prop, false);
 				if (!didReplace) doMod_appendArr(modInfo, prop);
 			}
 
-			function doMod_insertArr (modInfo, prop) {
+			function doMod_insertArr(modInfo, prop) {
 				doEnsureArray(modInfo, "items");
 				if (!copyTo[prop]) throw new Error(`Could not find "${prop}" array`);
 				copyTo[prop].splice(modInfo.index, 0, ...modInfo.items);
 			}
 
-			function doMod_removeArr (modInfo, prop) {
+			function doMod_removeArr(modInfo, prop) {
 				if (modInfo.names) {
 					doEnsureArray(modInfo, "names");
 					modInfo.names.forEach(nameToRemove => {
@@ -5620,21 +5853,24 @@ DataUtil = {
 				} else throw new Error(`One of "names" or "items" must be provided!`)
 			}
 
-			function doMod_calculateProp (modInfo, prop) {
+			function doMod_calculateProp(modInfo, prop) {
 				copyTo[prop] = copyTo[prop] || {};
 				const toExec = modInfo.formula.replace(/<\$([^$]+)\$>/g, (...m) => {
 					switch (m[1]) {
-						case "prof_bonus": return Parser.crToPb(copyTo.cr);
-						case "dex_mod": return Parser.getAbilityModNumber(copyTo.dex);
-						default: throw new Error(`Unknown variable "${m[1]}"`);
+						case "prof_bonus":
+							return Parser.crToPb(copyTo.cr);
+						case "dex_mod":
+							return Parser.getAbilityModNumber(copyTo.dex);
+						default:
+							throw new Error(`Unknown variable "${m[1]}"`);
 					}
 				});
 				// eslint-disable-next-line no-eval
 				copyTo[prop][modInfo.prop] = eval(toExec);
 			}
 
-			function doMod_scalarAddProp (modInfo, prop) {
-				function applyTo (k) {
+			function doMod_scalarAddProp(modInfo, prop) {
+				function applyTo(k) {
 					const out = Number(copyTo[prop][k]) + modInfo.scalar;
 					const isString = typeof copyTo[prop][k] === "string";
 					copyTo[prop][k] = isString ? `${out >= 0 ? "+" : ""}${out}` : out;
@@ -5645,8 +5881,8 @@ DataUtil = {
 				else applyTo(modInfo.prop);
 			}
 
-			function doMod_scalarMultProp (modInfo, prop) {
-				function applyTo (k) {
+			function doMod_scalarMultProp(modInfo, prop) {
+				function applyTo(k) {
 					let out = Number(copyTo[prop][k]) * modInfo.scalar;
 					if (modInfo.floor) out = Math.floor(out);
 					const isString = typeof copyTo[prop][k] === "string";
@@ -5658,7 +5894,7 @@ DataUtil = {
 				else applyTo(modInfo.prop);
 			}
 
-			function doMod_addSenses (modInfo) {
+			function doMod_addSenses(modInfo) {
 				doEnsureArray(modInfo, "senses");
 				copyTo.senses = copyTo.senses || [];
 				modInfo.senses.forEach(sense => {
@@ -5679,7 +5915,7 @@ DataUtil = {
 				});
 			}
 
-			function doMod_addSkills (modInfo) {
+			function doMod_addSkills(modInfo) {
 				copyTo.skill = copyTo.skill || [];
 				Object.entries(modInfo.skills).forEach(([skill, mode]) => {
 					// mode: 1 = proficient; 2 = expert
@@ -5692,7 +5928,7 @@ DataUtil = {
 				});
 			}
 
-			function doMod_addSpells (modInfo) {
+			function doMod_addSpells(modInfo) {
 				if (!copyTo.spellcasting) throw new Error(`Creature did not have a spellcasting property!`);
 
 				// TODO could accept a "position" or "name" parameter should spells need to be added to other spellcasting traits
@@ -5741,7 +5977,7 @@ DataUtil = {
 				}
 			}
 
-			function doMod_replaceSpells (modInfo) {
+			function doMod_replaceSpells(modInfo) {
 				if (!copyTo.spellcasting) throw new Error(`Creature did not have a spellcasting property!`);
 
 				// TODO could accept a "position" or "name" parameter should spells need to be added to other spellcasting traits
@@ -5784,25 +6020,25 @@ DataUtil = {
 				}
 			}
 
-			function doMod_scalarAddHit (modInfo, prop) {
+			function doMod_scalarAddHit(modInfo, prop) {
 				if (!copyTo[prop]) return;
 				copyTo[prop] = JSON.parse(JSON.stringify(copyTo[prop]).replace(/{@hit ([-+]?\d+)}/g, (m0, m1) => `{@hit ${Number(m1) + modInfo.scalar}}`))
 			}
 
-			function doMod_scalarAddDc (modInfo, prop) {
+			function doMod_scalarAddDc(modInfo, prop) {
 				if (!copyTo[prop]) return;
 				copyTo[prop] = JSON.parse(JSON.stringify(copyTo[prop]).replace(/{@dc (\d+)}/g, (m0, m1) => `{@dc ${Number(m1) + modInfo.scalar}}`));
 			}
 
-			function doMod_maxSize (modInfo) {
+			function doMod_maxSize(modInfo) {
 				const ixCur = Parser.SIZE_ABVS.indexOf(copyTo.size);
 				const ixMax = Parser.SIZE_ABVS.indexOf(modInfo.max);
 				if (ixCur < 0 || ixMax < 0) throw new Error(`Unhandled size!`);
 				copyTo.size = Parser.SIZE_ABVS[Math.min(ixCur, ixMax)]
 			}
 
-			function doMod_scalarMultXp (modInfo) {
-				function getOutput (input) {
+			function doMod_scalarMultXp(modInfo) {
+				function getOutput(input) {
 					let out = input * modInfo.scalar;
 					if (modInfo.floor) out = Math.floor(out);
 					return out;
@@ -5816,38 +6052,61 @@ DataUtil = {
 				}
 			}
 
-			function doMod (modInfos, ...properties) {
-				function handleProp (prop) {
+			function doMod(modInfos, ...properties) {
+				function handleProp(prop) {
 					modInfos.forEach(modInfo => {
 						if (typeof modInfo === "string") {
 							switch (modInfo) {
-								case "remove": return delete copyTo[prop];
-								default: throw new Error(`Unhandled mode: ${modInfo}`);
+								case "remove":
+									return delete copyTo[prop];
+								default:
+									throw new Error(`Unhandled mode: ${modInfo}`);
 							}
 						} else {
 							switch (modInfo.mode) {
-								case "appendStr": return doMod_appendStr(modInfo, prop);
-								case "replaceTxt": return doMod_replaceTxt(modInfo, prop);
-								case "prependArr": return doMod_prependArr(modInfo, prop);
-								case "appendArr": return doMod_appendArr(modInfo, prop);
-								case "replaceArr": return doMod_replaceArr(modInfo, prop);
-								case "replaceOrAppendArr": return doMod_replaceOrAppendArr(modInfo, prop);
-								case "appendIfNotExistsArr": return doMod_appendIfNotExistsArr(modInfo, prop);
-								case "insertArr": return doMod_insertArr(modInfo, prop);
-								case "removeArr": return doMod_removeArr(modInfo, prop);
-								case "calculateProp": return doMod_calculateProp(modInfo, prop);
-								case "scalarAddProp": return doMod_scalarAddProp(modInfo, prop);
-								case "scalarMultProp": return doMod_scalarMultProp(modInfo, prop);
+								case "appendStr":
+									return doMod_appendStr(modInfo, prop);
+								case "replaceTxt":
+									return doMod_replaceTxt(modInfo, prop);
+								case "prependArr":
+									return doMod_prependArr(modInfo, prop);
+								case "appendArr":
+									return doMod_appendArr(modInfo, prop);
+								case "replaceArr":
+									return doMod_replaceArr(modInfo, prop);
+								case "replaceOrAppendArr":
+									return doMod_replaceOrAppendArr(modInfo, prop);
+								case "appendIfNotExistsArr":
+									return doMod_appendIfNotExistsArr(modInfo, prop);
+								case "insertArr":
+									return doMod_insertArr(modInfo, prop);
+								case "removeArr":
+									return doMod_removeArr(modInfo, prop);
+								case "calculateProp":
+									return doMod_calculateProp(modInfo, prop);
+								case "scalarAddProp":
+									return doMod_scalarAddProp(modInfo, prop);
+								case "scalarMultProp":
+									return doMod_scalarMultProp(modInfo, prop);
 								// bestiary specific
-								case "addSenses": return doMod_addSenses(modInfo);
-								case "addSkills": return doMod_addSkills(modInfo);
-								case "addSpells": return doMod_addSpells(modInfo);
-								case "replaceSpells": return doMod_replaceSpells(modInfo);
-								case "scalarAddHit": return doMod_scalarAddHit(modInfo, prop);
-								case "scalarAddDc": return doMod_scalarAddDc(modInfo, prop);
-								case "maxSize": return doMod_maxSize(modInfo);
-								case "scalarMultXp": return doMod_scalarMultXp(modInfo);
-								default: throw new Error(`Unhandled mode: ${modInfo.mode}`);
+								case "addSenses":
+									return doMod_addSenses(modInfo);
+								case "addSkills":
+									return doMod_addSkills(modInfo);
+								case "addSpells":
+									return doMod_addSpells(modInfo);
+								case "replaceSpells":
+									return doMod_replaceSpells(modInfo);
+								case "scalarAddHit":
+									return doMod_scalarAddHit(modInfo, prop);
+								case "scalarAddDc":
+									return doMod_scalarAddDc(modInfo, prop);
+								case "maxSize":
+									return doMod_maxSize(modInfo);
+								case "scalarMultXp":
+									return doMod_scalarMultXp(modInfo);
+								default:
+									throw new Error(`Unhandled mode: ${modInfo.mode}`);
 							}
 						}
 					});
@@ -5868,7 +6127,8 @@ DataUtil = {
 								const parts = m[1].split("__");
 
 								switch (parts[0]) {
-									case "name": return copyTo.name;
+									case "name":
+										return copyTo.name;
 									case "short_name":
 									case "title_name": {
 										return copyTo.isNpc ? copyTo.name.split(" ")[0] : `${parts[0] === "title_name" ? "The " : "the "}${copyTo.name.toLowerCase()}`;
@@ -5893,7 +6153,8 @@ DataUtil = {
 										// eslint-disable-next-line no-eval
 										return Math.floor(eval(clean));
 									}
-									default: return m[0];
+									default:
+										return m[0];
 								}
 							})
 					);
@@ -5927,11 +6188,11 @@ DataUtil = {
 			srd: true
 		},
 		_mergeCache: {},
-		async pMergeCopy (monList, mon, options) {
+		async pMergeCopy(monList, mon, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.monster, UrlUtil.PG_BESTIARY, monList, mon, options);
 		},
 
-		async pPreloadMeta () {
+		async pPreloadMeta() {
 			if (DataUtil.monster._isMetaLoaded) return;
 
 			const legendaryGroups = await DataUtil.legendaryGroup.pLoadAll();
@@ -5939,7 +6200,7 @@ DataUtil = {
 			DataUtil.monster._isMetaLoaded = true;
 		},
 
-		async pLoadAll () {
+		async pLoadAll() {
 			const [index, legendaryGroups] = await Promise.all([
 				DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`),
 				DataUtil.legendaryGroup.pLoadAll()
@@ -5959,11 +6220,11 @@ DataUtil = {
 
 		_isMetaLoaded: false,
 		metaGroupMap: {},
-		getMetaGroup (mon) {
+		getMetaGroup(mon) {
 			if (!mon.legendaryGroup || !mon.legendaryGroup.source || !mon.legendaryGroup.name) return null;
 			return (DataUtil.monster.metaGroupMap[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name];
 		},
-		populateMetaReference (data) {
+		populateMetaReference(data) {
 			(data.legendaryGroup || []).forEach(it => {
 				(DataUtil.monster.metaGroupMap[it.source] =
 					DataUtil.monster.metaGroupMap[it.source] || {})[it.name] =
@@ -5979,11 +6240,11 @@ DataUtil = {
 			srd: true
 		},
 		_mergeCache: {},
-		async pMergeCopy (spellList, spell, options) {
+		async pMergeCopy(spellList, spell, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.spell, UrlUtil.PG_SPELLS, spellList, spell, options);
 		},
 
-		async pLoadAll () {
+		async pLoadAll() {
 			const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/index.json`);
 			const allData = await Promise.all(Object.entries(index).map(async ([source, file]) => {
 				const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/spells/${file}`);
@@ -6002,7 +6263,7 @@ DataUtil = {
 			srd: true
 		},
 		_mergeCache: {},
-		async pMergeCopy (itemList, item, options) {
+		async pMergeCopy(itemList, item, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.item, UrlUtil.PG_ITEMS, itemList, item, options);
 		}
 	},
@@ -6014,7 +6275,7 @@ DataUtil = {
 			srd: true
 		},
 		_mergeCache: {},
-		async pMergeCopy (bgList, bg, options) {
+		async pMergeCopy(bgList, bg, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.background, UrlUtil.PG_BACKGROUNDS, bgList, bg, options);
 		}
 	},
@@ -6027,7 +6288,7 @@ DataUtil = {
 			srd: true
 		},
 		_mergeCache: {},
-		async pMergeCopy (raceList, race, options) {
+		async pMergeCopy(raceList, race, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.race, UrlUtil.PG_RACES, raceList, race, options);
 		}
 	},
@@ -6056,7 +6317,7 @@ DataUtil = {
 			srd: true
 		},
 		_mergeCache: {},
-		async pMergeCopy (deityList, deity, options) {
+		async pMergeCopy(deityList, deity, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.deity, UrlUtil.PG_DEITIES, deityList, deity, options);
 		},
 
@@ -6105,7 +6366,7 @@ DataUtil = {
 	},
 
 	table: {
-		async pLoadAll (baseUrl = "") {
+		async pLoadAll(baseUrl = "") {
 			const datas = await Promise.all([`${baseUrl}data/generated/gendata-tables.json`, `${baseUrl}data/tables.json`].map(url => DataUtil.loadJSON(url)));
 			const combined = {};
 			datas.forEach(data => {
@@ -6120,13 +6381,13 @@ DataUtil = {
 	},
 
 	legendaryGroup: {
-		async pLoadAll () {
+		async pLoadAll() {
 			return (await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/legendarygroups.json`)).legendaryGroup;
 		}
 	},
 
 	brew: {
-		_getCleanUrlRoot (urlRoot) {
+		_getCleanUrlRoot(urlRoot) {
 			if (urlRoot && urlRoot.trim()) {
 				urlRoot = urlRoot.trim();
 				if (!urlRoot.endsWith("/")) urlRoot = `${urlRoot}/`;
@@ -6134,17 +6395,17 @@ DataUtil = {
 			return urlRoot;
 		},
 
-		async pLoadTimestamps (urlRoot) {
+		async pLoadTimestamps(urlRoot) {
 			urlRoot = DataUtil.brew._getCleanUrlRoot(urlRoot);
 			return DataUtil.loadJSON(`${urlRoot}_generated/index-timestamps.json`);
 		},
 
-		async pLoadCollectionIndex (urlRoot) {
+		async pLoadCollectionIndex(urlRoot) {
 			urlRoot = DataUtil.brew._getCleanUrlRoot(urlRoot);
 			return DataUtil.loadJSON(`${urlRoot}collection/index.json`);
 		},
 
-		getDirUrl (dir, urlRoot) {
+		getDirUrl(dir, urlRoot) {
 			urlRoot = DataUtil.brew._getCleanUrlRoot(urlRoot);
 			return `${urlRoot}_generated/index-dir-${dir}.json?t=${(new Date()).getTime()}`;
 		}
@@ -6153,11 +6414,11 @@ DataUtil = {
 
 // ROLLING =============================================================================================================
 RollerUtil = {
-	isCrypto () {
+	isCrypto() {
 		return typeof window !== "undefined" && typeof window.crypto !== "undefined";
 	},
 
-	randomise (max, min = 1) {
+	randomise(max, min = 1) {
 		if (min > max) return 0;
 		if (max === min) return max;
 		if (RollerUtil.isCrypto()) {
@@ -6167,7 +6428,7 @@ RollerUtil = {
 		}
 	},
 
-	rollOnArray (array) {
+	rollOnArray(array) {
 		return array[RollerUtil.randomise(array.length) - 1]
 	},
 
@@ -6203,11 +6464,11 @@ RollerUtil = {
 	 * @param fn funciton to call to generate random numbers
 	 * @returns {number} rolled
 	 */
-	roll (max, fn = Math.random) {
+	roll(max, fn = Math.random) {
 		return Math.floor(fn() * max);
 	},
 
-	addListRollButton (isCompact) {
+	addListRollButton(isCompact) {
 		const $btnRoll = $(`<button class="btn btn-default ${isCompact ? "px-2" : ""}" id="feelinglucky" title="Feeling Lucky?"><span class="glyphicon glyphicon-random"></span></button>`);
 		$btnRoll.on("click", () => {
 			const primaryLists = ListUtil.getPrimaryLists();
@@ -6225,7 +6486,7 @@ RollerUtil = {
 		$(`#filter-search-input-group`).find(`#reset`).before($btnRoll);
 	},
 
-	isRollCol (colLabel) {
+	isRollCol(colLabel) {
 		if (typeof colLabel !== "string") return false;
 		if (/^{@dice [^}]+}$/.test(colLabel.trim())) return true;
 		colLabel = Renderer.stripTags(colLabel);
@@ -6275,7 +6536,7 @@ StorageUtil = {
 		}
 	},
 
-	async getAsyncStorage () {
+	async getAsyncStorage() {
 		if (StorageUtil._initAsync) {
 			if (StorageUtil.__fakeStorageAsync) return StorageUtil._fakeStorageAsync;
 			else return localforage;
@@ -6287,13 +6548,13 @@ StorageUtil = {
 			StorageUtil.__fakeStorageAsync = {};
 			StorageUtil._fakeStorageAsync = {
 				pIsAsyncFake: true,
-				async setItem (k, v) {
+				async setItem(k, v) {
 					StorageUtil.__fakeStorageAsync[k] = v;
 				},
-				async getItem (k) {
+				async getItem(k) {
 					return StorageUtil.__fakeStorageAsync[k];
 				},
-				async removeItem (k) {
+				async removeItem(k) {
 					delete StorageUtil.__fakeStorageAsync[k];
 				}
 			};
@@ -6318,76 +6579,88 @@ StorageUtil = {
 
 	// SYNC METHODS ////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Synchronous localStorage access, which should only be used for small amounts of data (metadata, config, etc)
-	syncGet (key) {
+	syncGet(key) {
 		const rawOut = StorageUtil.getSyncStorage().getItem(key);
 		if (rawOut && rawOut !== "undefined" && rawOut !== "null") return JSON.parse(rawOut);
 		return null;
 	},
 
-	syncSet (key, value) {
+	syncSet(key, value) {
 		StorageUtil.getSyncStorage().setItem(key, JSON.stringify(value));
 		StorageUtil._syncTrackKey(key)
 	},
 
-	syncRemove (key) {
+	syncRemove(key) {
 		StorageUtil.getSyncStorage().removeItem(key);
 		StorageUtil._syncTrackKey(key, true);
 	},
 
-	syncGetForPage (key) { return StorageUtil.syncGet(`${key}_${UrlUtil.getCurrentPage()}`); },
-	syncSetForPage (key, value) { StorageUtil.syncSet(`${key}_${UrlUtil.getCurrentPage()}`, value); },
+	syncGetForPage(key) {
+		return StorageUtil.syncGet(`${key}_${UrlUtil.getCurrentPage()}`);
+	},
+	syncSetForPage(key, value) {
+		StorageUtil.syncSet(`${key}_${UrlUtil.getCurrentPage()}`, value);
+	},
 
-	isSyncFake () {
+	isSyncFake() {
 		return !!StorageUtil.getSyncStorage().isSyncFake
 	},
 
-	_syncTrackKey (key, isRemove) {
+	_syncTrackKey(key, isRemove) {
 		const meta = StorageUtil.syncGet(StorageUtil._META_KEY) || {};
 		if (isRemove) delete meta[key];
 		else meta[key] = 1;
 		StorageUtil.getSyncStorage().setItem(StorageUtil._META_KEY, JSON.stringify(meta));
 	},
 
-	syncGetDump () {
+	syncGetDump() {
 		const out = {};
 		const meta = StorageUtil.syncGet(StorageUtil._META_KEY) || {};
 		Object.entries(meta).filter(([key, isPresent]) => isPresent).forEach(([key]) => out[key] = StorageUtil.syncGet(key));
 		return out;
 	},
 
-	syncSetFromDump (dump) {
+	syncSetFromDump(dump) {
 		Object.entries(dump).forEach(([k, v]) => StorageUtil.syncSet(k, v));
 	},
 	// END SYNC METHODS ////////////////////////////////////////////////////////////////////////////////////////////////
 
-	async pIsAsyncFake () {
+	async pIsAsyncFake() {
 		const storage = await StorageUtil.getAsyncStorage();
 		return !!storage.pIsAsyncFake;
 	},
 
-	async pSet (key, value) {
+	async pSet(key, value) {
 		StorageUtil._pTrackKey(key);
 		const storage = await StorageUtil.getAsyncStorage();
 		return storage.setItem(key, value);
 	},
 
-	async pGet (key) {
+	async pGet(key) {
 		const storage = await StorageUtil.getAsyncStorage();
 		return storage.getItem(key);
 	},
 
-	async pRemove (key) {
+	async pRemove(key) {
 		StorageUtil._pTrackKey(key, true);
 		const storage = await StorageUtil.getAsyncStorage();
 		return storage.removeItem(key);
 	},
 
-	getPageKey (key, page) { return `${key}_${page || UrlUtil.getCurrentPage()}`; },
-	async pGetForPage (key) { return StorageUtil.pGet(StorageUtil.getPageKey(key)); },
-	async pSetForPage (key, value) { return StorageUtil.pSet(StorageUtil.getPageKey(key), value); },
-	async pRemoveForPage (key) { return StorageUtil.pRemove(StorageUtil.getPageKey(key)); },
+	getPageKey(key, page) {
+		return `${key}_${page || UrlUtil.getCurrentPage()}`;
+	},
+	async pGetForPage(key) {
+		return StorageUtil.pGet(StorageUtil.getPageKey(key));
+	},
+	async pSetForPage(key, value) {
+		return StorageUtil.pSet(StorageUtil.getPageKey(key), value);
+	},
+	async pRemoveForPage(key) {
+		return StorageUtil.pRemove(StorageUtil.getPageKey(key));
+	},
 
-	async _pTrackKey (key, isRemove) {
+	async _pTrackKey(key, isRemove) {
 		const storage = await StorageUtil.getAsyncStorage();
 		const meta = (await StorageUtil.pGet(StorageUtil._META_KEY)) || {};
 		if (isRemove) delete meta[key];
@@ -6395,14 +6668,14 @@ StorageUtil = {
 		storage.setItem(StorageUtil._META_KEY, meta);
 	},
 
-	async pGetDump () {
+	async pGetDump() {
 		const out = {};
 		const meta = (await StorageUtil.pGet(StorageUtil._META_KEY)) || {};
 		await Promise.all(Object.entries(meta).filter(([key, isPresent]) => isPresent).map(async ([key]) => out[key] = await StorageUtil.pGet(key)));
 		return out;
 	},
 
-	async pSetFromDump (dump) {
+	async pSetFromDump(dump) {
 		return Promise.all(Object.entries(dump).map(([k, v]) => StorageUtil.pSet(k, v)));
 	}
 };
@@ -6435,7 +6708,7 @@ SessionStorageUtil = {
 		}
 	},
 
-	isFake () {
+	isFake() {
 		return SessionStorageUtil.getStorage().isSyncFake
 	},
 
@@ -6443,7 +6716,7 @@ SessionStorageUtil = {
 		SessionStorageUtil.set(`${key}_${UrlUtil.getCurrentPage()}`, value);
 	},
 
-	set (key, value) {
+	set(key, value) {
 		SessionStorageUtil.getStorage().setItem(key, JSON.stringify(value));
 	},
 
@@ -6451,7 +6724,7 @@ SessionStorageUtil = {
 		return SessionStorageUtil.get(`${key}_${UrlUtil.getCurrentPage()}`);
 	},
 
-	get (key) {
+	get(key) {
 		const rawOut = SessionStorageUtil.getStorage().getItem(key);
 		if (rawOut && rawOut !== "undefined" && rawOut !== "null") return JSON.parse(rawOut);
 		return null;
@@ -6461,7 +6734,7 @@ SessionStorageUtil = {
 		SessionStorageUtil.remove(`${key}_${UrlUtil.getCurrentPage()}`)
 	},
 
-	remove (key) {
+	remove(key) {
 		SessionStorageUtil.getStorage().removeItem(key);
 	}
 };
@@ -6485,7 +6758,7 @@ BrewUtil = {
 	 * @param [options.sourceFilter] Source filter.
 	 * @param [options.pHandleBrew] Brew handling function.
 	 */
-	bind (options) {
+	bind(options) {
 		// provide ref to List.js instance
 		if (options.list) BrewUtil._lists = [options.list];
 		else if (options.lists) BrewUtil._lists = options.lists;
@@ -6496,7 +6769,7 @@ BrewUtil = {
 		if (options.pHandleBrew !== undefined) this._pHandleBrew = options.pHandleBrew;
 	},
 
-	async pAddBrewData () {
+	async pAddBrewData() {
 		if (BrewUtil.homebrew) {
 			return BrewUtil.homebrew;
 		} else {
@@ -6516,7 +6789,7 @@ BrewUtil = {
 		}
 	},
 
-	async pPurgeBrew (error) {
+	async pPurgeBrew(error) {
 		JqueryUtil.doToast({
 			content: "Error when loading homebrew! Purged homebrew data. (See the log for more information.)",
 			type: "danger"
@@ -6527,10 +6800,12 @@ BrewUtil = {
 		window.location.hash = "";
 		BrewUtil.homebrew = {};
 		BrewUtil.homebrewMeta = {sources: []};
-		if (error) setTimeout(() => { throw error; });
+		if (error) setTimeout(() => {
+			throw error;
+		});
 	},
 
-	async pAddLocalBrewData (callbackFn = async (d, page) => BrewUtil.pDoHandleBrewJson(d, page, null)) {
+	async pAddLocalBrewData(callbackFn = async (d, page) => BrewUtil.pDoHandleBrewJson(d, page, null)) {
 		if (!IS_VTT && !IS_DEPLOYED) {
 			const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${VeCt.JSON_HOMEBREW_INDEX}`);
 			// auto-load from `homebrew/`, for custom versions of the site
@@ -6542,7 +6817,7 @@ BrewUtil = {
 		}
 	},
 
-	async _pRenderBrewScreen ($appendTo, isModal, cbGetBrewOnClose) {
+	async _pRenderBrewScreen($appendTo, isModal, cbGetBrewOnClose) {
 		const page = UrlUtil.getCurrentPage();
 
 		const $brewList = $(`<div class="manbrew__current_brew flex-col h-100"/>`);
@@ -6637,40 +6912,67 @@ BrewUtil = {
 					${$ulRows}`;
 
 				// populate list
-				function getBrewDirs () {
+				function getBrewDirs() {
 					switch (page) {
-						case UrlUtil.PG_SPELLS: return ["spell"];
-						case UrlUtil.PG_CLASSES: return ["class", "subclass"];
-						case UrlUtil.PG_BESTIARY: return ["creature"];
-						case UrlUtil.PG_BACKGROUNDS: return ["background"];
-						case UrlUtil.PG_FEATS: return ["feat"];
-						case UrlUtil.PG_OPT_FEATURES: return ["optionalfeature"];
-						case UrlUtil.PG_RACES: return ["race", "subrace"];
-						case UrlUtil.PG_OBJECTS: return ["object"];
-						case UrlUtil.PG_TRAPS_HAZARDS: return ["trap", "hazard"];
-						case UrlUtil.PG_DEITIES: return ["deity"];
-						case UrlUtil.PG_ITEMS: return ["item", "magicvariant"];
-						case UrlUtil.PG_REWARDS: return ["reward"];
-						case UrlUtil.PG_PSIONICS: return ["psionic"];
-						case UrlUtil.PG_VARIATNRULES: return ["variantrule"];
-						case UrlUtil.PG_CONDITIONS_DISEASES: return ["condition", "disease"];
-						case UrlUtil.PG_ADVENTURES: return ["adventure"];
-						case UrlUtil.PG_BOOKS: return ["book"];
-						case UrlUtil.PG_TABLES: return ["table"];
-						case UrlUtil.PG_MAKE_SHAPED: return ["spell", "creature"];
-						case UrlUtil.PG_MAKE_BREW: return ["spell", "creature", "makebrew"];
+						case UrlUtil.PG_SPELLS:
+							return ["spell"];
+						case UrlUtil.PG_CLASSES:
+							return ["class", "subclass"];
+						case UrlUtil.PG_BESTIARY:
+							return ["creature"];
+						case UrlUtil.PG_BACKGROUNDS:
+							return ["background"];
+						case UrlUtil.PG_FEATS:
+							return ["feat"];
+						case UrlUtil.PG_OPT_FEATURES:
+							return ["optionalfeature"];
+						case UrlUtil.PG_RACES:
+							return ["race", "subrace"];
+						case UrlUtil.PG_OBJECTS:
+							return ["object"];
+						case UrlUtil.PG_TRAPS_HAZARDS:
+							return ["trap", "hazard"];
+						case UrlUtil.PG_DEITIES:
+							return ["deity"];
+						case UrlUtil.PG_ITEMS:
+							return ["item", "magicvariant"];
+						case UrlUtil.PG_REWARDS:
+							return ["reward"];
+						case UrlUtil.PG_PSIONICS:
+							return ["psionic"];
+						case UrlUtil.PG_VARIATNRULES:
+							return ["variantrule"];
+						case UrlUtil.PG_CONDITIONS_DISEASES:
+							return ["condition", "disease"];
+						case UrlUtil.PG_ADVENTURES:
+							return ["adventure"];
+						case UrlUtil.PG_BOOKS:
+							return ["book"];
+						case UrlUtil.PG_TABLES:
+							return ["table"];
+						case UrlUtil.PG_MAKE_SHAPED:
+							return ["spell", "creature"];
+						case UrlUtil.PG_MAKE_BREW:
+							return ["spell", "creature", "makebrew"];
 						case UrlUtil.PG_MANAGE_BREW:
-						case UrlUtil.PG_DEMO_RENDER: return BrewUtil._DIRS;
-						case UrlUtil.PG_VEHICLES: return ["vehicle"];
-						case UrlUtil.PG_ACTIONS: return ["action"];
-						case UrlUtil.PG_CULTS_BOONS: return ["cult", "boon"];
-						case UrlUtil.PG_LANGUAGES: return ["language"];
-						default: throw new Error(`No homebrew directories defined for category ${page}`);
+						case UrlUtil.PG_DEMO_RENDER:
+							return BrewUtil._DIRS;
+						case UrlUtil.PG_VEHICLES:
+							return ["vehicle"];
+						case UrlUtil.PG_ACTIONS:
+							return ["action"];
+						case UrlUtil.PG_CULTS_BOONS:
+							return ["cult", "boon"];
+						case UrlUtil.PG_LANGUAGES:
+							return ["language"];
+						default:
+							throw new Error(`No homebrew directories defined for category ${page}`);
 					}
 				}
 
 				let dataList;
-				function fnSort (a, b, o) {
+
+				function fnSort(a, b, o) {
 					a = dataList[a.ix];
 					b = dataList[b.ix];
 
@@ -6680,8 +6982,13 @@ BrewUtil = {
 					if (o.sortBy === "added") return orFallback(SortUtil.ascSort, "_brewAdded");
 					if (o.sortBy === "modified") return orFallback(SortUtil.ascSort, "_brewModified");
 
-					function byName () { return SortUtil.ascSortLower(a._brewName, b._brewName); }
-					function orFallback (func, prop) { return func(a[prop], b[prop]) || byName(); }
+					function byName() {
+						return SortUtil.ascSortLower(a._brewName, b._brewName);
+					}
+
+					function orFallback(func, prop) {
+						return func(a[prop], b[prop]) || byName();
+					}
 				}
 
 				const urlRoot = await StorageUtil.pGet(`HOMEBREW_CUSTOM_REPO_URL`);
@@ -6692,8 +6999,15 @@ BrewUtil = {
 					return Object.keys(collectionIndex).filter(k => collectionIndex[k].find(it => dirs.has(it)));
 				})();
 
-				const toLoads = getBrewDirs().map(it => ({url: DataUtil.brew.getDirUrl(it, urlRoot), _cat: BrewUtil._pRenderBrewScreen_dirToCat(it)}));
-				if (collectionFiles.length) toLoads.push({url: DataUtil.brew.getDirUrl("collection", urlRoot), _collection: true, _cat: "collection"});
+				const toLoads = getBrewDirs().map(it => ({
+					url: DataUtil.brew.getDirUrl(it, urlRoot),
+					_cat: BrewUtil._pRenderBrewScreen_dirToCat(it)
+				}));
+				if (collectionFiles.length) toLoads.push({
+					url: DataUtil.brew.getDirUrl("collection", urlRoot),
+					_collection: true,
+					_cat: "collection"
+				});
 
 				const jsonStack = (await Promise.all(toLoads.map(async toLoad => {
 					const json = await DataUtil.loadJSON(toLoad.url);
@@ -6864,7 +7178,7 @@ BrewUtil = {
 		};
 	},
 
-	_$getBtnDeleteAll (isModal) {
+	_$getBtnDeleteAll(isModal) {
 		return $(`<button class="btn ${isModal ? "btn-xs" : "btn-sm ml-2"} btn-danger">Delete All</button>`)
 			.click(async () => {
 				if (!window.confirm("Are you sure?")) return;
@@ -6875,7 +7189,7 @@ BrewUtil = {
 			});
 	},
 
-	async _pCleanSaveBrew () {
+	async _pCleanSaveBrew() {
 		const cpy = MiscUtil.copy(BrewUtil.homebrew);
 		BrewUtil._STORABLE.forEach(prop => {
 			(BrewUtil.homebrew[prop] || []).forEach(ent => {
@@ -6885,7 +7199,7 @@ BrewUtil = {
 		await StorageUtil.pSet(VeCt.STORAGE_HOMEBREW, cpy);
 	},
 
-	async _pRenderBrewScreen_pDeleteSource ($brewList, source, doConfirm, isAllSources) {
+	async _pRenderBrewScreen_pDeleteSource($brewList, source, doConfirm, isAllSources) {
 		if (doConfirm && !window.confirm(`Are you sure you want to remove all homebrew${!isAllSources ? ` with${source ? ` source "${Parser.sourceJsonToFull(source)}"` : `out a source`}` : ""}?`)) return;
 
 		const vetoolsSourceSet = new Set(BrewUtil._getActiveVetoolsSources().map(it => it.json));
@@ -6910,8 +7224,8 @@ BrewUtil = {
 		if (BrewUtil._filterBox) BrewUtil._filterBox.fireChangeEvent();
 	},
 
-	async _pRenderBrewScreen_pRefreshBrewList ($brewList) {
-		function showSourceManager (source, showAll) {
+	async _pRenderBrewScreen_pRefreshBrewList($brewList) {
+		function showSourceManager(source, showAll) {
 			const $wrpBtnDel = $(`<div class="flex-v-center"/>`);
 
 			const {$modalInner, doClose} = UiUtil.getShowModal({
@@ -6937,7 +7251,7 @@ BrewUtil = {
 			let list;
 
 			// populate list
-			function populateList () {
+			function populateList() {
 				$ulRows.empty();
 
 				list = new List({
@@ -6946,7 +7260,7 @@ BrewUtil = {
 					fnSort: SortUtil.listSort
 				});
 
-				function mapCategoryEntry (cat, bru) {
+				function mapCategoryEntry(cat, bru) {
 					const out = {};
 					out.name = bru.name;
 					out.uniqueId = bru.uniqueId;
@@ -7015,6 +7329,7 @@ BrewUtil = {
 				if (!list.items.length) $ulRows.append(`<h5 class="text-center">No results found.</h5>`);
 				ListUtil.bindEscapeKey(list, $iptSearch, true);
 			}
+
 			populateList();
 
 			$cbAll.change(function () {
@@ -7091,37 +7406,63 @@ BrewUtil = {
 
 				const getPageCats = () => {
 					switch (page) {
-						case UrlUtil.PG_SPELLS: return _PG_SPELLS;
-						case UrlUtil.PG_CLASSES: return ["class", "subclass"];
-						case UrlUtil.PG_BESTIARY: return _PG_BESTIARY;
-						case UrlUtil.PG_BACKGROUNDS: return ["background"];
-						case UrlUtil.PG_FEATS: return ["feat"];
-						case UrlUtil.PG_OPT_FEATURES: return ["optionalfeature"];
-						case UrlUtil.PG_RACES: return ["race", "raceFluff", "subrace"];
-						case UrlUtil.PG_OBJECTS: return ["object"];
-						case UrlUtil.PG_TRAPS_HAZARDS: return ["trap", "hazard"];
-						case UrlUtil.PG_DEITIES: return ["deity"];
-						case UrlUtil.PG_ITEMS: return ["item", "baseitem", "variant", "itemProperty", "itemType"];
-						case UrlUtil.PG_REWARDS: return ["reward"];
-						case UrlUtil.PG_PSIONICS: return ["psionic"];
-						case UrlUtil.PG_VARIATNRULES: return ["variantrule"];
-						case UrlUtil.PG_CONDITIONS_DISEASES: return ["condition", "disease"];
-						case UrlUtil.PG_ADVENTURES: return ["adventure", "adventureData"];
-						case UrlUtil.PG_BOOKS: return ["book", "bookData"];
-						case UrlUtil.PG_TABLES: return ["table", "tableGroup"];
-						case UrlUtil.PG_MAKE_SHAPED: return ["spell", "monster"];
-						case UrlUtil.PG_MAKE_BREW: return [
-							..._PG_SPELLS,
-							..._PG_BESTIARY,
-							"makebrewCreatureTrait"
-						];
+						case UrlUtil.PG_SPELLS:
+							return _PG_SPELLS;
+						case UrlUtil.PG_CLASSES:
+							return ["class", "subclass"];
+						case UrlUtil.PG_BESTIARY:
+							return _PG_BESTIARY;
+						case UrlUtil.PG_BACKGROUNDS:
+							return ["background"];
+						case UrlUtil.PG_FEATS:
+							return ["feat"];
+						case UrlUtil.PG_OPT_FEATURES:
+							return ["optionalfeature"];
+						case UrlUtil.PG_RACES:
+							return ["race", "raceFluff", "subrace"];
+						case UrlUtil.PG_OBJECTS:
+							return ["object"];
+						case UrlUtil.PG_TRAPS_HAZARDS:
+							return ["trap", "hazard"];
+						case UrlUtil.PG_DEITIES:
+							return ["deity"];
+						case UrlUtil.PG_ITEMS:
+							return ["item", "baseitem", "variant", "itemProperty", "itemType"];
+						case UrlUtil.PG_REWARDS:
+							return ["reward"];
+						case UrlUtil.PG_PSIONICS:
+							return ["psionic"];
+						case UrlUtil.PG_VARIATNRULES:
+							return ["variantrule"];
+						case UrlUtil.PG_CONDITIONS_DISEASES:
+							return ["condition", "disease"];
+						case UrlUtil.PG_ADVENTURES:
+							return ["adventure", "adventureData"];
+						case UrlUtil.PG_BOOKS:
+							return ["book", "bookData"];
+						case UrlUtil.PG_TABLES:
+							return ["table", "tableGroup"];
+						case UrlUtil.PG_MAKE_SHAPED:
+							return ["spell", "monster"];
+						case UrlUtil.PG_MAKE_BREW:
+							return [
+								..._PG_SPELLS,
+								..._PG_BESTIARY,
+								"makebrewCreatureTrait"
+							];
 						case UrlUtil.PG_MANAGE_BREW:
-						case UrlUtil.PG_DEMO_RENDER: return BrewUtil._STORABLE;
-						case UrlUtil.PG_VEHICLES: return ["vehicle"];
-						case UrlUtil.PG_ACTIONS: return ["action"];
-						case UrlUtil.PG_CULTS_BOONS: return ["cult", "boon"];
-						case UrlUtil.PG_LANGUAGES: return ["language"];
-						default: throw new Error(`No homebrew properties defined for category ${page}`);
+						case UrlUtil.PG_DEMO_RENDER:
+							return BrewUtil._STORABLE;
+						case UrlUtil.PG_VEHICLES:
+							return ["vehicle"];
+						case UrlUtil.PG_ACTIONS:
+							return ["action"];
+						case UrlUtil.PG_CULTS_BOONS:
+							return ["cult", "boon"];
+						case UrlUtil.PG_LANGUAGES:
+							return ["language"];
+						default:
+							throw new Error(`No homebrew properties defined for category ${page}`);
 					}
 				};
 
@@ -7172,21 +7513,25 @@ BrewUtil = {
 		}
 	},
 
-	_pRenderBrewScreen_dirToCat (dir) {
+	_pRenderBrewScreen_dirToCat(dir) {
 		if (!dir) return "";
 		else if (BrewUtil._STORABLE.includes(dir)) return dir;
 		else {
 			switch (dir) {
-				case "creature": return "monster";
-				case "collection": return dir;
-				case "magicvariant": return "variant";
-				case "makebrew": return "makebrewCreatureTrait";
+				case "creature":
+					return "monster";
+				case "collection":
+					return dir;
+				case "magicvariant":
+					return "variant";
+				case "makebrew":
+					return "makebrewCreatureTrait";
 			}
 			throw new Error(`Directory was not mapped to a category: "${dir}"`);
 		}
 	},
 
-	_pRenderBrewScreen_getDisplayCat (cat, isManager) {
+	_pRenderBrewScreen_getDisplayCat(cat, isManager) {
 		if (cat === "variantrule") return "Variant Rule";
 		if (cat === "legendaryGroup") return "Legendary Group";
 		if (cat === "optionalfeature") return "Optional Feature";
@@ -7216,8 +7561,8 @@ BrewUtil = {
 		setTimeout(() => $ele.html(cached).addClass("rd__wrp-loadbrew--ready").title(cachedTitle), 500);
 	},
 
-	async _pDoRemove (arrName, uniqueId, isChild) {
-		function getIndex (arrName, uniqueId, isChild) {
+	async _pDoRemove(arrName, uniqueId, isChild) {
+		function getIndex(arrName, uniqueId, isChild) {
 			return BrewUtil.homebrew[arrName].findIndex(it => isChild ? it.parentUniqueId : it.uniqueId === uniqueId);
 		}
 
@@ -7230,7 +7575,7 @@ BrewUtil = {
 		}
 	},
 
-	_getPDeleteFunction (category) {
+	_getPDeleteFunction(category) {
 		switch (category) {
 			case "spell":
 			case "monster":
@@ -7263,22 +7608,29 @@ BrewUtil = {
 			case "cult":
 			case "boon":
 			case "language":
-			case "makebrewCreatureTrait": return BrewUtil._genPDeleteGenericBrew(category);
-			case "subclass": return BrewUtil._pDeleteSubclassBrew;
-			case "class": return BrewUtil._pDeleteClassBrew;
+			case "makebrewCreatureTrait":
+				return BrewUtil._genPDeleteGenericBrew(category);
+			case "subclass":
+				return BrewUtil._pDeleteSubclassBrew;
+			case "class":
+				return BrewUtil._pDeleteClassBrew;
 			case "adventure":
-			case "book": return BrewUtil._genPDeleteGenericBookBrew(category);
+			case "book":
+				return BrewUtil._genPDeleteGenericBookBrew(category);
 			case "adventureData":
-			case "bookData": return () => {}; // Do nothing, handled by deleting the associated book/adventure
-			default: throw new Error(`No homebrew delete function defined for category ${category}`);
+			case "bookData":
+				return () => {
+				}; // Do nothing, handled by deleting the associated book/adventure
+			default:
+				throw new Error(`No homebrew delete function defined for category ${category}`);
 		}
 	},
 
-	async _pDeleteClassBrew (uniqueId) {
+	async _pDeleteClassBrew(uniqueId) {
 		await BrewUtil._pDoRemove("class", uniqueId);
 	},
 
-	async _pDeleteSubclassBrew (uniqueId) {
+	async _pDeleteSubclassBrew(uniqueId) {
 		let subClass;
 		let index = 0;
 		for (; index < BrewUtil.homebrew.subclass.length; ++index) {
@@ -7305,13 +7657,13 @@ BrewUtil = {
 		}
 	},
 
-	_genPDeleteGenericBrew (category) {
+	_genPDeleteGenericBrew(category) {
 		return async (uniqueId) => {
 			await BrewUtil._pDoRemove(category, uniqueId);
 		};
 	},
 
-	_genPDeleteGenericBookBrew (category) {
+	_genPDeleteGenericBookBrew(category) {
 		return async (uniqueId) => {
 			await BrewUtil._pDoRemove(category, uniqueId);
 			await BrewUtil._pDoRemove(`${category}Data`, uniqueId, true);
@@ -7329,14 +7681,14 @@ BrewUtil = {
 		BrewUtil._pRenderBrewScreen($modalInner, true);
 	},
 
-	async pAddEntry (prop, obj) {
+	async pAddEntry(prop, obj) {
 		BrewUtil._mutUniqueId(obj);
 		(BrewUtil.homebrew[prop] = BrewUtil.homebrew[prop] || []).push(obj);
 		BrewUtil._persistHomebrewDebounced();
 		return BrewUtil.homebrew[prop].length - 1;
 	},
 
-	async pRemoveEntry (prop, obj) {
+	async pRemoveEntry(prop, obj) {
 		const ix = (BrewUtil.homebrew[prop] = BrewUtil.homebrew[prop] || []).findIndex(it => it.uniqueId === obj.uniqueId);
 		if (~ix) {
 			BrewUtil.homebrew[prop].splice(ix, 1);
@@ -7344,11 +7696,11 @@ BrewUtil = {
 		} else throw new Error(`Could not find object with ID "${obj.uniqueId}" in "${prop}" list`);
 	},
 
-	getEntryIxByName (prop, obj) {
+	getEntryIxByName(prop, obj) {
 		return (BrewUtil.homebrew[prop] = BrewUtil.homebrew[prop] || []).findIndex(it => it.name === obj.name && it.source === obj.source);
 	},
 
-	async pUpdateEntryByIx (prop, ix, obj) {
+	async pUpdateEntryByIx(prop, ix, obj) {
 		if (~ix && ix < BrewUtil.homebrew[prop].length) {
 			BrewUtil._mutUniqueId(obj);
 			BrewUtil.homebrew[prop].splice(ix, 1, obj);
@@ -7356,14 +7708,14 @@ BrewUtil = {
 		} else throw new Error(`Index "${ix}" was not valid!`);
 	},
 
-	_mutUniqueId (obj) {
+	_mutUniqueId(obj) {
 		delete obj.uniqueId; // avoid basing the hash on the previous hash
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
 	_DIRS: ["action", "adventure", "background", "book", "boon", "class", "condition", "creature", "cult", "deity", "disease", "feat", "hazard", "item", "language", "magicvariant", "makebrew", "object", "optionalfeature", "psionic", "race", "reward", "spell", "subclass", "subrace", "table", "trap", "variantrule", "vehicle"],
 	_STORABLE: ["class", "subclass", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "raceFluff", "subrace", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle", "action", "cult", "boon", "language", "makebrewCreatureTrait"],
-	async pDoHandleBrewJson (json, page, pFuncRefresh) {
+	async pDoHandleBrewJson(json, page, pFuncRefresh) {
 		await BrewUtil._lockHandleBrewJson.pLock();
 		try {
 			return BrewUtil._pDoHandleBrewJson(json, page, pFuncRefresh);
@@ -7372,8 +7724,8 @@ BrewUtil = {
 		}
 	},
 
-	async _pDoHandleBrewJson (json, page, pFuncRefresh) {
-		function storePrep (arrName) {
+	async _pDoHandleBrewJson(json, page, pFuncRefresh) {
+		function storePrep(arrName) {
 			if (json[arrName]) {
 				json[arrName].forEach(it => BrewUtil._mutUniqueId(it));
 			} else json[arrName] = [];
@@ -7399,7 +7751,7 @@ BrewUtil = {
 		});
 
 		// store
-		async function pCheckAndAdd (prop) {
+		async function pCheckAndAdd(prop) {
 			if (!BrewUtil.homebrew[prop]) BrewUtil.homebrew[prop] = [];
 			if (IS_DEPLOYED) {
 				// in production mode, skip any existing brew
@@ -7432,7 +7784,7 @@ BrewUtil = {
 			}
 		}
 
-		function checkAndAddMetaGetNewSources () {
+		function checkAndAddMetaGetNewSources() {
 			const areNew = [];
 			if (json._meta) {
 				if (!BrewUtil.homebrewMeta) BrewUtil.homebrewMeta = {sources: []};
@@ -7537,13 +7889,13 @@ BrewUtil = {
 		$(`#${id}`).on("click", () => BrewUtil.manageBrew());
 	},
 
-	_getBrewCategories () {
+	_getBrewCategories() {
 		return Object.keys(BrewUtil.homebrew).filter(it => !it.startsWith("_"));
 	},
 
 	// region sources
-	_buildSourceCache () {
-		function doBuild () {
+	_buildSourceCache() {
+		function doBuild() {
 			if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.sources) {
 				BrewUtil.homebrewMeta.sources.forEach(src => BrewUtil._sourceCache[src.json.toLowerCase()] = ({...src}));
 			}
@@ -7563,11 +7915,11 @@ BrewUtil = {
 		}
 	},
 
-	_resetSourceCache () {
+	_resetSourceCache() {
 		BrewUtil._sourceCache = null;
 	},
 
-	removeJsonSource (source) {
+	removeJsonSource(source) {
 		if (!source) return;
 		source = source.toLowerCase();
 		BrewUtil._resetSourceCache();
@@ -7576,47 +7928,47 @@ BrewUtil = {
 		StorageUtil.syncSet(VeCt.STORAGE_HOMEBREW_META, BrewUtil.homebrewMeta);
 	},
 
-	getJsonSources () {
+	getJsonSources() {
 		BrewUtil._buildSourceCache();
 		return BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.sources ? BrewUtil.homebrewMeta.sources : [];
 	},
 
-	hasSourceJson (source) {
+	hasSourceJson(source) {
 		if (!source) return false;
 		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return !!BrewUtil._sourceCache[source];
 	},
 
-	sourceJsonToFull (source) {
+	sourceJsonToFull(source) {
 		if (!source) return "";
 		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].full || source : source;
 	},
 
-	sourceJsonToAbv (source) {
+	sourceJsonToAbv(source) {
 		if (!source) return "";
 		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].abbreviation || source : source;
 	},
 
-	sourceJsonToDate (source) {
+	sourceJsonToDate(source) {
 		if (!source) return "";
 		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].dateReleased || source : source;
 	},
 
-	sourceJsonToSource (source) {
+	sourceJsonToSource(source) {
 		if (!source) return null;
 		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source] : null;
 	},
 
-	sourceJsonToStyle (source) {
+	sourceJsonToStyle(source) {
 		if (!source) return "";
 		source = source.toLowerCase();
 		const color = BrewUtil.sourceJsonToColor(source);
@@ -7624,7 +7976,7 @@ BrewUtil = {
 		return "";
 	},
 
-	sourceJsonToColor (source) {
+	sourceJsonToColor(source) {
 		if (!source) return "";
 		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
@@ -7635,12 +7987,12 @@ BrewUtil = {
 		} else return "";
 	},
 
-	getValidColor (color) {
+	getValidColor(color) {
 		// Prevent any injection shenanigans
 		return color.replace(/[^a-fA-F0-9]/g, "").slice(0, 8);
 	},
 
-	addSource (sourceObj) {
+	addSource(sourceObj) {
 		BrewUtil._resetSourceCache();
 		const exists = BrewUtil.homebrewMeta.sources.some(it => it.json === sourceObj.json);
 		if (exists) throw new Error(`Source "${sourceObj.json}" already exists!`);
@@ -7648,7 +8000,7 @@ BrewUtil = {
 		StorageUtil.syncSet(VeCt.STORAGE_HOMEBREW_META, BrewUtil.homebrewMeta);
 	},
 
-	updateSource (sourceObj) {
+	updateSource(sourceObj) {
 		BrewUtil._resetSourceCache();
 		const ix = BrewUtil.homebrewMeta.sources.findIndex(it => it.json === sourceObj.json);
 		if (!~ix) throw new Error(`Source "${sourceObj.json}" does not exist!`);
@@ -7660,7 +8012,7 @@ BrewUtil = {
 		StorageUtil.syncSet(VeCt.STORAGE_HOMEBREW_META, BrewUtil.homebrewMeta);
 	},
 
-	_getActiveVetoolsSources () {
+	_getActiveVetoolsSources() {
 		if (BrewUtil.homebrew === null) throw new Error(`Homebrew was not initialized!`);
 
 		const allActiveSources = new Set();
@@ -7677,7 +8029,7 @@ BrewUtil = {
 	/**
 	 * Get data in a format similar to the main search index
 	 */
-	async pGetSearchIndex () {
+	async pGetSearchIndex() {
 		BrewUtil._buildSourceCache();
 		const indexer = new Omnidexer(Omnisearch.highestId + 1);
 
@@ -7702,7 +8054,7 @@ BrewUtil = {
 		return Omnidexer.decompressIndex(indexer.getIndex());
 	},
 
-	async pGetAdditionalSearchIndices (highestId, addiProp) {
+	async pGetAdditionalSearchIndices(highestId, addiProp) {
 		BrewUtil._buildSourceCache();
 		const indexer = new Omnidexer(highestId + 1);
 
@@ -7724,7 +8076,7 @@ BrewUtil = {
 		return Omnidexer.decompressIndex(indexer.getIndex());
 	},
 
-	async pGetAlternateSearchIndices (highestId, altProp) {
+	async pGetAlternateSearchIndices(highestId, altProp) {
 		BrewUtil._buildSourceCache();
 		const indexer = new Omnidexer(highestId + 1);
 
@@ -7748,7 +8100,7 @@ BrewUtil = {
 	},
 
 	__pPersistHomebrewDebounced: null,
-	_persistHomebrewDebounced () {
+	_persistHomebrewDebounced() {
 		if (BrewUtil.__pPersistHomebrewDebounced == null) {
 			BrewUtil.__pPersistHomebrewDebounced = MiscUtil.debounce(() => BrewUtil._pCleanSaveBrew(), 125);
 		}
@@ -7911,7 +8263,7 @@ CryptUtil = {
 		return x.join("");
 	},
 
-	hex2Dec (hex) {
+	hex2Dec(hex) {
 		return parseInt(`0x${hex}`);
 	},
 
@@ -7924,7 +8276,7 @@ CryptUtil = {
 	 * @param obj An object to hash.
 	 * @return {*} An integer hashcode for the object.
 	 */
-	hashCode (obj) {
+	hashCode(obj) {
 		if (typeof obj === "string") {
 			if (!obj) return 0;
 			let h = 0;
@@ -7934,7 +8286,7 @@ CryptUtil = {
 		else throw new Error(`No hashCode implementation for ${obj}`);
 	},
 
-	uid () { // https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+	uid() { // https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
 		if (RollerUtil.isCrypto()) {
 			return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
 		} else {
@@ -7954,32 +8306,33 @@ CryptUtil = {
 // COLLECTIONS =========================================================================================================
 CollectionUtil = {
 	ObjectSet: class ObjectSet {
-		constructor () {
+		constructor() {
 			this.map = new Map();
 			this[Symbol.iterator] = this.values;
 		}
+
 		// Each inserted element has to implement _toIdString() method that returns a string ID.
 		// Two objects are considered equal if their string IDs are equal.
-		add (item) {
+		add(item) {
 			this.map.set(item._toIdString(), item);
 		}
 
-		values () {
+		values() {
 			return this.map.values();
 		}
 	},
 
-	setEq (a, b) {
+	setEq(a, b) {
 		if (a.size !== b.size) return false;
 		for (const it of a) if (!b.has(it)) return false;
 		return true;
 	},
 
-	setDiff (set1, set2) {
+	setDiff(set1, set2) {
 		return new Set([...set1].filter(it => !set2.has(it)));
 	},
 
-	deepEquals (a, b) {
+	deepEquals(a, b) {
 		if (CollectionUtil._eq_sameValueZeroEqual(a, b)) return true;
 		if (a && b && typeof a === "object" && typeof b === "object") {
 			if (CollectionUtil._eq_isPlainObject(a) && CollectionUtil._eq_isPlainObject(b)) return CollectionUtil._eq_areObjectsEqual(a, b);
@@ -7998,7 +8351,7 @@ CollectionUtil = {
 	// eslint-disable-next-line no-self-compare
 	_eq_sameValueZeroEqual: (a, b) => a === b || (a !== a && b !== b),
 	_eq_isPlainObject: (value) => value.constructor === Object || value.constructor == null,
-	_eq_areObjectsEqual (a, b) {
+	_eq_areObjectsEqual(a, b) {
 		const keysA = Object.keys(a);
 		const {length} = keysA;
 		if (Object.keys(b).length !== length) return false;
@@ -8008,7 +8361,7 @@ CollectionUtil = {
 		}
 		return true;
 	},
-	_eq_areArraysEqual (a, b) {
+	_eq_areArraysEqual(a, b) {
 		const {length} = a;
 		if (b.length !== length) return false;
 		for (let i = 0; i < length; i++) if (!CollectionUtil.deepEquals(a[i], b[i])) return false;
@@ -8093,7 +8446,7 @@ Array.prototype.mergeMap = Array.prototype.mergeMap || function (fnMap) {
  * @param [opts.hasPrintColumns] True if the overlay should contain a dropdown for adjusting print columns.
  * @constructor
  */
-function BookModeView (opts) {
+function BookModeView(opts) {
 	opts = opts || {};
 	const {hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNumShown, isFlex, state, stateKey} = opts;
 
@@ -8239,6 +8592,7 @@ function BookModeView (opts) {
 		else this.teardown();
 	};
 }
+
 BookModeView._BOOK_VIEW_COLUMNS_K = "bookViewColumns";
 
 // CONTENT EXCLUSION ===================================================================================================
@@ -8246,7 +8600,7 @@ ExcludeUtil = {
 	isInitialised: false,
 	_excludes: null,
 
-	async pInitialise () {
+	async pInitialise() {
 		ExcludeUtil.pSave = MiscUtil.throttle(ExcludeUtil._pSave, 50);
 		try {
 			ExcludeUtil._excludes = await StorageUtil.pGet(VeCt.STORAGE_EXCLUDES) || [];
@@ -8258,26 +8612,30 @@ ExcludeUtil = {
 			try {
 				await StorageUtil.pRemove(VeCt.STORAGE_EXCLUDES);
 			} catch (e) {
-				setTimeout(() => { throw e });
+				setTimeout(() => {
+					throw e
+				});
 			}
 			ExcludeUtil._excludes = null;
 			window.location.hash = "";
-			setTimeout(() => { throw e });
+			setTimeout(() => {
+				throw e
+			});
 		}
 		ExcludeUtil.isInitialised = true;
 	},
 
-	getList () {
+	getList() {
 		return ExcludeUtil._excludes || [];
 	},
 
-	async pSetList (toSet) {
+	async pSetList(toSet) {
 		ExcludeUtil._excludes = toSet;
 		await ExcludeUtil.pSave();
 	},
 
 	_excludeCount: 0,
-	isExcluded (name, category, source) {
+	isExcluded(name, category, source) {
 		if (!ExcludeUtil._excludes || !ExcludeUtil._excludes.length) return false;
 		if (!source) throw new Error(`Entity had no source!`);
 
@@ -8287,7 +8645,7 @@ ExcludeUtil = {
 		return out;
 	},
 
-	checkShowAllExcluded (list, $pagecontent) {
+	checkShowAllExcluded(list, $pagecontent) {
 		if ((!list.length && ExcludeUtil._excludeCount) || (list.length > 0 && list.length === ExcludeUtil._excludeCount)) {
 			$pagecontent.html(`
 				<tr><th class="border" colspan="6"></th></tr>
@@ -8297,7 +8655,7 @@ ExcludeUtil = {
 		}
 	},
 
-	addExclude (name, category, source) {
+	addExclude(name, category, source) {
 		if (!ExcludeUtil._excludes.find(row => row.source === source && row.category === category && row.name === name)) {
 			ExcludeUtil._excludes.push({name, category, source});
 			ExcludeUtil.pSave();
@@ -8306,7 +8664,7 @@ ExcludeUtil = {
 		return false;
 	},
 
-	removeExclude (name, category, source) {
+	removeExclude(name, category, source) {
 		const ix = ExcludeUtil._excludes.findIndex(row => row.source === source && row.category === category && row.name === name);
 		if (~ix) {
 			ExcludeUtil._excludes.splice(ix, 1);
@@ -8314,14 +8672,15 @@ ExcludeUtil = {
 		}
 	},
 
-	async _pSave () {
+	async _pSave() {
 		return StorageUtil.pSet(VeCt.STORAGE_EXCLUDES, ExcludeUtil._excludes);
 	},
 
 	// The throttled version, available post-initialisation
-	async pSave () { /* no-op */ },
+	async pSave() { /* no-op */
+	},
 
-	resetExcludes () {
+	resetExcludes() {
 		ExcludeUtil._excludes = [];
 		ExcludeUtil.pSave();
 	}
@@ -8329,7 +8688,7 @@ ExcludeUtil = {
 
 // ENCOUNTERS ==========================================================================================================
 EncounterUtil = {
-	async pGetInitialState () {
+	async pGetInitialState() {
 		if (await EncounterUtil._pHasSavedStateLocal()) {
 			if (await EncounterUtil._hasSavedStateUrl()) {
 				return {
@@ -8345,11 +8704,11 @@ EncounterUtil = {
 		} else return null;
 	},
 
-	_hasSavedStateUrl () {
+	_hasSavedStateUrl() {
 		return window.location.hash.length && Hist.getSubHash(EncounterUtil.SUB_HASH_PREFIX) != null;
 	},
 
-	_getSavedStateUrl () {
+	_getSavedStateUrl() {
 		let out = null;
 		try {
 			out = JSON.parse(decodeURIComponent(Hist.getSubHash(EncounterUtil.SUB_HASH_PREFIX)));
@@ -8362,11 +8721,11 @@ EncounterUtil = {
 		return out;
 	},
 
-	async _pHasSavedStateLocal () {
+	async _pHasSavedStateLocal() {
 		return !!StorageUtil.pGet(VeCt.STORAGE_ENCOUNTER);
 	},
 
-	async _pGetSavedStateLocal () {
+	async _pGetSavedStateLocal() {
 		try {
 			return await StorageUtil.pGet(VeCt.STORAGE_ENCOUNTER);
 		} catch (e) {
@@ -8375,20 +8734,22 @@ EncounterUtil = {
 				type: "danger"
 			});
 			await StorageUtil.pRemove(VeCt.STORAGE_ENCOUNTER);
-			setTimeout(() => { throw e; });
+			setTimeout(() => {
+				throw e;
+			});
 		}
 	},
 
-	async pDoSaveState (toSave) {
+	async pDoSaveState(toSave) {
 		StorageUtil.pSet(VeCt.STORAGE_ENCOUNTER, toSave);
 	},
 
-	async pGetSavedState () {
+	async pGetSavedState() {
 		const saved = await StorageUtil.pGet(EncounterUtil.SAVED_ENCOUNTER_SAVE_LOCATION);
 		return saved || {};
 	},
 
-	getEncounterName (encounter) {
+	getEncounterName(encounter) {
 		if (encounter.l && encounter.l.items && encounter.l.items.length) {
 			const largestCount = encounter.l.items.sort((a, b) => SortUtil.ascSort(Number(b.c), Number(a.c)))[0];
 			const name = decodeURIComponent(largestCount.h.split(HASH_LIST_SEP)[0]).toTitleCase();
@@ -8403,12 +8764,12 @@ EncounterUtil.SAVED_ENCOUNTER_SAVE_LOCATION = "ENCOUNTER_SAVED_STORAGE";
 ExtensionUtil = {
 	ACTIVE: false,
 
-	_doSend (type, data) {
+	_doSend(type, data) {
 		const detail = MiscUtil.copy({type, data});
 		window.dispatchEvent(new CustomEvent("rivet.send", {detail}));
 	},
 
-	async pDoSendStats (evt, ele) {
+	async pDoSendStats(evt, ele) {
 		const $parent = $(ele).closest(`th.rnd-name`);
 		const page = $parent.attr("data-page");
 		const source = $parent.attr("data-source");
@@ -8420,18 +8781,20 @@ ExtensionUtil = {
 		}
 	},
 
-	doSendRoll (data) { ExtensionUtil._doSend("roll", data); }
+	doSendRoll(data) {
+		ExtensionUtil._doSend("roll", data);
+	}
 };
 if (typeof window !== "undefined") window.addEventListener("rivet.active", () => ExtensionUtil.ACTIVE = true);
 
 // TOKENS ==============================================================================================================
 TokenUtil = {
-	imgError (x) {
+	imgError(x) {
 		if (x) $(x).parent().remove();
 		$(`.rnd-name`).find(`span.stats-source`).css("margin-right", "0");
 	},
 
-	handleStatblockScroll (event, ele) {
+	handleStatblockScroll(event, ele) {
 		$(`#token_image`)
 			.toggle(ele.scrollTop < 32)
 			.css({
@@ -8523,17 +8886,20 @@ _Donate = {
 	*/
 
 	// region Test code, please ignore
-	cycleLeader (ele) {
-		const modes = [{width: 970, height: 90}, {width: 970, height: 250}, {width: 320, height: 50}, {width: 728, height: 90}];
+	cycleLeader(ele) {
+		const modes = [{width: 970, height: 90}, {width: 970, height: 250}, {width: 320, height: 50}, {
+			width: 728,
+			height: 90
+		}];
 		_Donate._cycleMode(ele, modes);
 	},
 
-	cycleSide (ele) {
+	cycleSide(ele) {
 		const modes = [{width: 300, height: 250}, {width: 300, height: 600}];
 		_Donate._cycleMode(ele, modes);
 	},
 
-	_cycleMode (ele, modes) {
+	_cycleMode(ele, modes) {
 		const $e = $(ele);
 		const pos = $e.data("pos") || 0;
 		const mode = modes[pos];

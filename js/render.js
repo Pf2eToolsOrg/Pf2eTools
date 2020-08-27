@@ -18,7 +18,7 @@
  * // render the final product by joining together all the collected strings
  * $("#myElement").html(toDisplay.join(""));
  */
-function Renderer () {
+function Renderer() {
 	this.wrapperTag = "div";
 	this.baseUrl = "";
 
@@ -53,38 +53,56 @@ function Renderer () {
 	 * Set the tag used to group rendered elements
 	 * @param tag to use
 	 */
-	this.setWrapperTag = function (tag) { this.wrapperTag = tag; return this; };
+	this.setWrapperTag = function (tag) {
+		this.wrapperTag = tag;
+		return this;
+	};
 
 	/**
 	 * Set the base url for rendered links.
 	 * Usage: `renderer.setBaseUrl("https://www.example.com/")` (note the "http" prefix and "/" suffix)
 	 * @param url to use
 	 */
-	this.setBaseUrl = function (url) { this.baseUrl = url; return this; };
+	this.setBaseUrl = function (url) {
+		this.baseUrl = url;
+		return this;
+	};
 
 	/**
 	 * Other sections should be prefixed with a vertical divider
 	 * @param bool
 	 */
-	this.setFirstSection = function (bool) { this._firstSection = bool; return this; };
+	this.setFirstSection = function (bool) {
+		this._firstSection = bool;
+		return this;
+	};
 
 	/**
 	 * Disable adding JS event handlers on elements.
 	 * @param bool
 	 */
-	this.setAddHandlers = function (bool) { this._isAddHandlers = bool; return this; };
+	this.setAddHandlers = function (bool) {
+		this._isAddHandlers = bool;
+		return this;
+	};
 
 	/**
 	 * Add a post-processing function which acts on the final rendered strings from a root call.
 	 * @param fn
 	 */
-	this.setFnPostProcess = function (fn) { this._fnPostProcess = fn; return this; };
+	this.setFnPostProcess = function (fn) {
+		this._fnPostProcess = fn;
+		return this;
+	};
 
 	/**
 	 * Specify a list of extra classes to be added to those rendered on entries with sources.
 	 * @param arr
 	 */
-	this.setExtraSourceClasses = function (arr) { this._extraSourceClasses = arr; return this; };
+	this.setExtraSourceClasses = function (arr) {
+		this._extraSourceClasses = arr;
+		return this;
+	};
 
 	/**
 	 * Headers are ID'd using the attribute `data-title-index` using an incrementing int. This resets it to 1.
@@ -103,7 +121,7 @@ function Renderer () {
 	 * 			{
 	 *				commoner_mm: {page: "bestiary.html", source: "MM", hash: "commoner_mm"},
 	 *				storm%20giant_mm: {page: "bestiary.html", source: "MM", hash: "storm%20giant_mm"},
- 	 *				detect%20magic_phb: {page: "spells.html", source: "PHB", hash: "detect%20magic_phb"}
+	 *				detect%20magic_phb: {page: "spells.html", source: "PHB", hash: "detect%20magic_phb"}
 	 *			}
 	 * 			These results intentionally match those used for hover windows, so can use the same cache/loading paths
 	 */
@@ -171,7 +189,13 @@ function Renderer () {
 	this._handleTrackDepth = function (entry, depth) {
 		if (entry.name && this._depthTracker) {
 			this._lastDepthTrackerSource = entry.source || this._lastDepthTrackerSource;
-			this._depthTracker.push({depth, name: entry.name, type: entry.type, ixHeader: this._headerIndex, source: this._lastDepthTrackerSource});
+			this._depthTracker.push({
+				depth,
+				name: entry.name,
+				type: entry.type,
+				ixHeader: this._headerIndex,
+				source: this._lastDepthTrackerSource
+			});
 		}
 	};
 
@@ -186,13 +210,18 @@ function Renderer () {
 		if (~ix) this._hooks[entryType][hookType].splice(ix, 1);
 	};
 
-	this._getHooks = function (entryType, hookType) { return (this._hooks[entryType] || {})[hookType] || []; };
+	this._getHooks = function (entryType, hookType) {
+		return (this._hooks[entryType] || {})[hookType] || [];
+	};
 
 	/**
 	 * Specify an array where the renderer will record rendered header depths.
 	 * Items added to the array are of the form: `{name: "Header Name", depth: 1, type: "entries"}`
 	 */
-	this.setDepthTracker = function (arr) { this._depthTracker = arr; return this; };
+	this.setDepthTracker = function (arr) {
+		this._depthTracker = arr;
+		return this;
+	};
 
 	/**
 	 * Recursively walk down a tree of "entry" JSON items, adding to a stack of strings to be finally rendered to the
@@ -209,7 +238,9 @@ function Renderer () {
 	this.recursiveRender = function (entry, textStack, meta, options) {
 		if (entry instanceof Array) {
 			entry.forEach(nxt => this.recursiveRender(nxt, textStack, meta, options));
-			setTimeout(() => { throw new Error(`Array passed to renderer! The renderer only guarantees support for primitives and basic objects.`); });
+			setTimeout(() => {
+				throw new Error(`Array passed to renderer! The renderer only guarantees support for primitives and basic objects.`);
+			});
 			return;
 		}
 
@@ -254,59 +285,133 @@ function Renderer () {
 
 			switch (type) {
 				// recursive
-				case "entries": this._renderEntries(entry, textStack, meta, options); break;
-				case "options": this._renderOptions(entry, textStack, meta, options); break;
-				case "list": this._renderList(entry, textStack, meta, options); break;
-				case "table": this._renderTable(entry, textStack, meta, options); break;
-				case "tableGroup": this._renderTableGroup(entry, textStack, meta, options); break;
-				case "inset": this._renderInset(entry, textStack, meta, options); break;
-				case "insetReadaloud": this._renderInsetReadaloud(entry, textStack, meta, options); break;
-				case "variant": this._renderVariant(entry, textStack, meta, options); break;
-				case "variantSub": this._renderVariantSub(entry, textStack, meta, options); break;
-				case "spellcasting": this._renderSpellcasting(entry, textStack, meta, options); break;
-				case "quote": this._renderQuote(entry, textStack, meta, options); break;
-				case "optfeature": this._renderOptfeature(entry, textStack, meta, options); break;
-				case "patron": this._renderPatron(entry, textStack, meta, options); break;
+				case "entries":
+					this._renderEntries(entry, textStack, meta, options);
+					break;
+				case "options":
+					this._renderOptions(entry, textStack, meta, options);
+					break;
+				case "list":
+					this._renderList(entry, textStack, meta, options);
+					break;
+				case "table":
+					this._renderTable(entry, textStack, meta, options);
+					break;
+				case "tableGroup":
+					this._renderTableGroup(entry, textStack, meta, options);
+					break;
+				case "inset":
+					this._renderInset(entry, textStack, meta, options);
+					break;
+				case "insetReadaloud":
+					this._renderInsetReadaloud(entry, textStack, meta, options);
+					break;
+				case "variant":
+					this._renderVariant(entry, textStack, meta, options);
+					break;
+				case "variantSub":
+					this._renderVariantSub(entry, textStack, meta, options);
+					break;
+				case "spellcasting":
+					this._renderSpellcasting(entry, textStack, meta, options);
+					break;
+				case "quote":
+					this._renderQuote(entry, textStack, meta, options);
+					break;
+				case "optfeature":
+					this._renderOptfeature(entry, textStack, meta, options);
+					break;
+				case "patron":
+					this._renderPatron(entry, textStack, meta, options);
+					break;
 
 				// block
-				case "abilityDc": this._renderAbilityDc(entry, textStack, meta, options); break;
-				case "abilityAttackMod": this._renderAbilityAttackMod(entry, textStack, meta, options); break;
-				case "abilityGeneric": this._renderAbilityGeneric(entry, textStack, meta, options); break;
+				case "abilityDc":
+					this._renderAbilityDc(entry, textStack, meta, options);
+					break;
+				case "abilityAttackMod":
+					this._renderAbilityAttackMod(entry, textStack, meta, options);
+					break;
+				case "abilityGeneric":
+					this._renderAbilityGeneric(entry, textStack, meta, options);
+					break;
 
 				// inline
-				case "inline": this._renderInline(entry, textStack, meta, options); break;
-				case "inlineBlock": this._renderInlineBlock(entry, textStack, meta, options); break;
-				case "bonus": this._renderBonus(entry, textStack, meta, options); break;
-				case "bonusSpeed": this._renderBonusSpeed(entry, textStack, meta, options); break;
-				case "dice": this._renderDice(entry, textStack, meta, options); break;
-				case "link": this._renderLink(entry, textStack, meta, options); break;
-				case "actions": this._renderActions(entry, textStack, meta, options); break;
-				case "attack": this._renderAttack(entry, textStack, meta, options); break;
+				case "inline":
+					this._renderInline(entry, textStack, meta, options);
+					break;
+				case "inlineBlock":
+					this._renderInlineBlock(entry, textStack, meta, options);
+					break;
+				case "bonus":
+					this._renderBonus(entry, textStack, meta, options);
+					break;
+				case "bonusSpeed":
+					this._renderBonusSpeed(entry, textStack, meta, options);
+					break;
+				case "dice":
+					this._renderDice(entry, textStack, meta, options);
+					break;
+				case "link":
+					this._renderLink(entry, textStack, meta, options);
+					break;
+				case "actions":
+					this._renderActions(entry, textStack, meta, options);
+					break;
+				case "attack":
+					this._renderAttack(entry, textStack, meta, options);
+					break;
 
 				// list items
-				case "item": this._renderItem(entry, textStack, meta, options); break;
-				case "itemSub": this._renderItemSub(entry, textStack, meta, options); break;
-				case "itemSpell": this._renderItemSpell(entry, textStack, meta, options); break;
+				case "item":
+					this._renderItem(entry, textStack, meta, options);
+					break;
+				case "itemSub":
+					this._renderItemSub(entry, textStack, meta, options);
+					break;
+				case "itemSpell":
+					this._renderItemSpell(entry, textStack, meta, options);
+					break;
 
 				// entire data records
-				case "dataCreature": this._renderDataCreature(entry, textStack, meta, options); break;
-				case "dataSpell": this._renderDataSpell(entry, textStack, meta, options); break;
-				case "dataTrapHazard": this._renderDataTrapHazard(entry, textStack, meta, options); break;
+				case "dataCreature":
+					this._renderDataCreature(entry, textStack, meta, options);
+					break;
+				case "dataSpell":
+					this._renderDataSpell(entry, textStack, meta, options);
+					break;
+				case "dataTrapHazard":
+					this._renderDataTrapHazard(entry, textStack, meta, options);
+					break;
 
 				// images
-				case "image": this._renderImage(entry, textStack, meta, options); break;
-				case "gallery": this._renderGallery(entry, textStack, meta, options); break;
+				case "image":
+					this._renderImage(entry, textStack, meta, options);
+					break;
+				case "gallery":
+					this._renderGallery(entry, textStack, meta, options);
+					break;
 
 				// flowchart
-				case "flowchart": this._renderFlowchart(entry, textStack, meta, options); break;
-				case "flowBlock": this._renderFlowBlock(entry, textStack, meta, options); break;
+				case "flowchart":
+					this._renderFlowchart(entry, textStack, meta, options);
+					break;
+				case "flowBlock":
+					this._renderFlowBlock(entry, textStack, meta, options);
+					break;
 
 				// homebrew changes
-				case "homebrew": this._renderHomebrew(entry, textStack, meta, options); break;
+				case "homebrew":
+					this._renderHomebrew(entry, textStack, meta, options);
+					break;
 
 				// misc
-				case "code": this._renderCode(entry, textStack, meta, options); break;
-				case "hr": this._renderHr(entry, textStack, meta, options); break;
+				case "code":
+					this._renderCode(entry, textStack, meta, options);
+					break;
+				case "hr":
+					this._renderHr(entry, textStack, meta, options);
+					break;
 			}
 
 			meta._typeStack.pop();
@@ -346,7 +451,7 @@ function Renderer () {
 	};
 
 	this._renderImage = function (entry, textStack, meta, options) {
-		function getStylePart () {
+		function getStylePart() {
 			return entry.maxWidth ? `style="max-width: ${entry.maxWidth}px"` : "";
 		}
 
@@ -372,8 +477,12 @@ function Renderer () {
 		const out = ["rd__wrp-image"];
 		if (entry.style) {
 			switch (entry.style) {
-				case "comic-speaker-left": out.push("rd__comic-img-speaker", "rd__comic-img-speaker--left"); break;
-				case "comic-speaker-right": out.push("rd__comic-img-speaker", "rd__comic-img-speaker--right"); break;
+				case "comic-speaker-left":
+					out.push("rd__comic-img-speaker", "rd__comic-img-speaker--left");
+					break;
+				case "comic-speaker-right":
+					out.push("rd__comic-img-speaker", "rd__comic-img-speaker--right");
+					break;
 			}
 		}
 		return out.join(" ");
@@ -383,7 +492,9 @@ function Renderer () {
 		const out = ["rd__image"];
 		if (entry.style) {
 			switch (entry.style) {
-				case "deity-symbol": out.push("rd__img-small"); break;
+				case "deity-symbol":
+					out.push("rd__img-small");
+					break;
 			}
 		}
 		return out.join(" ");
@@ -527,7 +638,7 @@ function Renderer () {
 	};
 
 	this._renderTable_getCellDataStr = function (ent) {
-		function convertZeros (num) {
+		function convertZeros(num) {
 			if (num === 0) return 100;
 			return num;
 		}
@@ -565,7 +676,10 @@ function Renderer () {
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, meta.depth);
 
-		const headerSpan = entry.name ? `<span class="rd__h ${headerClass}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}> <span class="entry-title-inner"${!pagePart && entry.source ? ` title="Source: ${Parser.sourceJsonToFull(entry.source)}${entry.page ? `, p${entry.page}` : ""}"` : ""}>${this.render({type: "inline", entries: [entry.name]})}${isInlineTitle ? "." : ""}</span>${pagePart}</span> ` : "";
+		const headerSpan = entry.name ? `<span class="rd__h ${headerClass}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}> <span class="entry-title-inner"${!pagePart && entry.source ? ` title="Source: ${Parser.sourceJsonToFull(entry.source)}${entry.page ? `, p${entry.page}` : ""}"` : ""}>${this.render({
+			type: "inline",
+			entries: [entry.name]
+		})}${isInlineTitle ? "." : ""}</span>${pagePart}</span> ` : "";
 
 		if (meta.depth === -1) {
 			if (!this._firstSection) textStack[0] += `<hr class="rd__hr rd__hr--section">`;
@@ -735,34 +849,70 @@ function Renderer () {
 
 	this._renderSpellcasting_getEntries = function (entry) {
 		const hidden = new Set(entry.hidden || []);
-		const toRender = [{type: "entries", name: entry.name, entries: entry.headerEntries ? MiscUtil.copy(entry.headerEntries) : []}];
+		const toRender = [{
+			type: "entries",
+			name: entry.name,
+			entries: entry.headerEntries ? MiscUtil.copy(entry.headerEntries) : []
+		}];
 
 		if (entry.constant || entry.will || entry.rest || entry.daily || entry.weekly) {
 			const tempList = {type: "list", style: "list-hang-notitle", items: [], data: {isSpellList: true}};
-			if (entry.constant && !hidden.has("constant")) tempList.items.push({type: "itemSpell", name: `Constant:`, entry: entry.constant.join(", ")});
-			if (entry.will && !hidden.has("will")) tempList.items.push({type: "itemSpell", name: `At will:`, entry: entry.will.join(", ")});
+			if (entry.constant && !hidden.has("constant")) tempList.items.push({
+				type: "itemSpell",
+				name: `Constant:`,
+				entry: entry.constant.join(", ")
+			});
+			if (entry.will && !hidden.has("will")) tempList.items.push({
+				type: "itemSpell",
+				name: `At will:`,
+				entry: entry.will.join(", ")
+			});
 			if (entry.rest && !hidden.has("rest")) {
 				for (let lvl = 9; lvl > 0; lvl--) {
 					const rest = entry.rest;
-					if (rest[lvl]) tempList.items.push({type: "itemSpell", name: `${lvl}/rest:`, entry: rest[lvl].join(", ")});
+					if (rest[lvl]) tempList.items.push({
+						type: "itemSpell",
+						name: `${lvl}/rest:`,
+						entry: rest[lvl].join(", ")
+					});
 					const lvlEach = `${lvl}e`;
-					if (rest[lvlEach]) tempList.items.push({type: "itemSpell", name: `${lvl}/rest each:`, entry: rest[lvlEach].join(", ")});
+					if (rest[lvlEach]) tempList.items.push({
+						type: "itemSpell",
+						name: `${lvl}/rest each:`,
+						entry: rest[lvlEach].join(", ")
+					});
 				}
 			}
 			if (entry.daily && !hidden.has("daily")) {
 				for (let lvl = 9; lvl > 0; lvl--) {
 					const daily = entry.daily;
-					if (daily[lvl]) tempList.items.push({type: "itemSpell", name: `${lvl}/day:`, entry: daily[lvl].join(", ")});
+					if (daily[lvl]) tempList.items.push({
+						type: "itemSpell",
+						name: `${lvl}/day:`,
+						entry: daily[lvl].join(", ")
+					});
 					const lvlEach = `${lvl}e`;
-					if (daily[lvlEach]) tempList.items.push({type: "itemSpell", name: `${lvl}/day each:`, entry: daily[lvlEach].join(", ")});
+					if (daily[lvlEach]) tempList.items.push({
+						type: "itemSpell",
+						name: `${lvl}/day each:`,
+						entry: daily[lvlEach].join(", ")
+					});
 				}
 			}
 			if (entry.weekly && !hidden.has("weekly")) {
 				for (let lvl = 9; lvl > 0; lvl--) {
 					const weekly = entry.weekly;
-					if (weekly[lvl]) tempList.items.push({type: "itemSpell", name: `${lvl}/week:`, entry: weekly[lvl].join(", ")});
+					if (weekly[lvl]) tempList.items.push({
+						type: "itemSpell",
+						name: `${lvl}/week:`,
+						entry: weekly[lvl].join(", ")
+					});
 					const lvlEach = `${lvl}e`;
-					if (weekly[lvlEach]) tempList.items.push({type: "itemSpell", name: `${lvl}/week each:`, entry: weekly[lvlEach].join(", ")});
+					if (weekly[lvlEach]) tempList.items.push({
+						type: "itemSpell",
+						name: `${lvl}/week each:`,
+						entry: weekly[lvlEach].join(", ")
+					});
 				}
 			}
 			if (tempList.items.length) toRender[0].entries.push(tempList);
@@ -781,7 +931,11 @@ function Renderer () {
 						levelCantrip = `${Parser.spLevelToFull(spells.lower)}-${levelCantrip}`;
 						if (slots >= 0) slotsAtWill = slots > 0 ? ` (${slots} ${Parser.spLevelToFull(lvl)}-level slot${slots > 1 ? "s" : ""})` : ``;
 					}
-					tempList.items.push({type: "itemSpell", name: `${levelCantrip}${slotsAtWill}:`, entry: spells.spells.join(", ")})
+					tempList.items.push({
+						type: "itemSpell",
+						name: `${levelCantrip}${slotsAtWill}:`,
+						entry: spells.spells.join(", ")
+					})
 				}
 			}
 			toRender[0].entries.push(tempList);
@@ -881,7 +1035,10 @@ function Renderer () {
 
 		textStack[0] += `<${this.wrapperTag} class="${Renderer.HEAD_2}" ${dataString}><span class="rd__h rd__h--3" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}.</span></span> `;
 		const len = entry.entries.length;
-		for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
+		for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta, {
+			prefix: "<p>",
+			suffix: "</p>"
+		});
 		textStack[0] += `</${this.wrapperTag}>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
@@ -904,7 +1061,10 @@ function Renderer () {
 		if (entry.entry) this._recursiveRender(entry.entry, textStack, meta);
 		else if (entry.entries) {
 			const len = entry.entries.length;
-			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta, {prefix: i > 0 ? `<span class="rd__p-cont-indent">` : "", suffix: i > 0 ? "</span>" : ""});
+			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta, {
+				prefix: i > 0 ? `<span class="rd__p-cont-indent">` : "",
+				suffix: i > 0 ? "</span>" : ""
+			});
 		}
 		textStack[0] += "</p>";
 		this._renderSuffix(entry, textStack, meta, options);
@@ -912,7 +1072,10 @@ function Renderer () {
 
 	this._renderItemSub = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		this._recursiveRender(entry.entry, textStack, meta, {prefix: `<p><span class="italic list-item-title">${entry.name}</span> `, suffix: "</p>"});
+		this._recursiveRender(entry.entry, textStack, meta, {
+			prefix: `<p><span class="italic list-item-title">${entry.name}</span> `,
+			suffix: "</p>"
+		});
 		this._renderSuffix(entry, textStack, meta, options);
 	};
 
@@ -1015,7 +1178,11 @@ function Renderer () {
 		this._renderPrefix(entry, textStack, meta, options);
 		textStack[0] += `<div class="homebrew-section">`;
 		if (entry.oldEntries) {
-			const hoverMeta = Renderer.hover.getMakePredefinedHover({type: "entries", name: "Homebrew", entries: entry.oldEntries});
+			const hoverMeta = Renderer.hover.getMakePredefinedHover({
+				type: "entries",
+				name: "Homebrew",
+				entries: entry.oldEntries
+			});
 			let markerText;
 			if (entry.movedTo) {
 				markerText = "(See moved content)";
@@ -1413,8 +1580,10 @@ function Renderer () {
 			case "@sense": {
 				const expander = (() => {
 					switch (tag) {
-						case "@skill": return Parser.skillToExplanation;
-						case "@sense": return Parser.senseToExplanation;
+						case "@skill":
+							return Parser.skillToExplanation;
+						case "@sense":
+							return Parser.senseToExplanation;
 					}
 				})();
 				const [name, displayText] = Renderer.splitTagByPipe(text);
@@ -1545,7 +1714,11 @@ function Renderer () {
 
 							// Don't include the feature part for hovers, as it is unsupported
 							const hoverSubhashObj = UrlUtil.unpackSubHash(UrlUtil.getClassesPageStatePart(classStateOpts));
-							fauxEntry.href.hover.subhashes = [{key: "state", value: hoverSubhashObj.state, preEncoded: true}];
+							fauxEntry.href.hover.subhashes = [{
+								key: "state",
+								value: hoverSubhashObj.state,
+								preEncoded: true
+							}];
 
 							if (others.length > 2) {
 								const featureParts = others[2].trim().split("-");
@@ -1745,7 +1918,9 @@ function Renderer () {
 		return {name, path};
 	};
 
-	this._renderPrimitive = function (entry, textStack, meta, options) { textStack[0] += entry; };
+	this._renderPrimitive = function (entry, textStack, meta, options) {
+		textStack[0] += entry;
+	};
 
 	this._renderLink = function (entry, textStack, meta, options) {
 		let href = this._renderLink_getHref(entry);
@@ -1843,13 +2018,13 @@ Renderer.ENTRIES_WITH_CHILDREN = [
 ];
 
 Renderer.events = {
-	handleClick_copyCode (evt, ele) {
+	handleClick_copyCode(evt, ele) {
 		const $e = $(ele).parent().next("pre");
 		MiscUtil.pCopyTextToClipboard($e.text());
 		JqueryUtil.showCopiedEffect($e);
 	},
 
-	handleClick_toggleCodeWrap (evt, ele) {
+	handleClick_toggleCodeWrap(evt, ele) {
 		const nxt = !StorageUtil.syncGet("rendererCodeWrap");
 		StorageUtil.syncSet("rendererCodeWrap", nxt);
 		const $btn = $(ele).toggleClass("active", nxt);
@@ -1879,9 +2054,15 @@ Renderer.applyProperties = function (entry, object) {
 							fromProp = Renderer.applyProperties._leadingAn.has(fromProp[0].toLowerCase()) ? "an" : "a";
 							break;
 
-						case "l": fromProp = fromProp.toLowerCase(); break; // convert text to lower case
-						case "t": fromProp = fromProp.toTitleCase(); break; // title-case text
-						case "u": fromProp = fromProp.toUpperCase(); break; // uppercase text
+						case "l":
+							fromProp = fromProp.toLowerCase();
+							break; // convert text to lower case
+						case "t":
+							fromProp = fromProp.toTitleCase();
+							break; // title-case text
+						case "u":
+							fromProp = fromProp.toUpperCase();
+							break; // uppercase text
 					}
 				}
 			}
@@ -1899,7 +2080,7 @@ Renderer.applyAllProperties = function (entries, object) {
 };
 
 Renderer.attackTagToFull = function (tagStr) {
-	function renderTag (tags) {
+	function renderTag(tags) {
 		return `${tags.includes("m") ? "Melee " : tags.includes("r") ? "Ranged " : tags.includes("g") ? "Magical " : tags.includes("a") ? "Area " : ""}${tags.includes("w") ? "Weapon " : tags.includes("s") ? "Spell " : ""}`;
 	}
 
@@ -1986,7 +2167,10 @@ Renderer._splitByTagsBase = function (leadingCharacter) {
 					break;
 				}
 
-				default: isLastOpen = false; curStr += char; break;
+				default:
+					isLastOpen = false;
+					curStr += char;
+					break;
 			}
 		}
 
@@ -2048,7 +2232,7 @@ Renderer._splitByPipeBase = function (leadingCharacter) {
 Renderer.splitTagByPipe = Renderer._splitByPipeBase("@");
 
 Renderer.getEntryDice = function (entry, name, isAddHandlers = true) {
-	function pack (obj) {
+	function pack(obj) {
 		return `'${JSON.stringify(obj).escapeQuotes()}'`;
 	}
 
@@ -2085,7 +2269,7 @@ Renderer.legacyDiceToString = function (array) {
 };
 
 Renderer.getEntryDiceDisplayText = function (entry) {
-	function getDiceAsStr () {
+	function getDiceAsStr() {
 		if (entry.successThresh) return `${entry.successThresh} percent`;
 		else if (typeof entry.toRoll === "string") return entry.toRoll;
 		else {
@@ -2144,7 +2328,7 @@ Renderer.parseScaleDice = function (tag, text) {
 };
 
 Renderer.getAbilityData = function (abArr) {
-	function doRenderOuter (abObj) {
+	function doRenderOuter(abObj) {
 		const mainAbs = [];
 		const asCollection = [];
 		const areNegative = [];
@@ -2159,13 +2343,13 @@ Renderer.getAbilityData = function (abArr) {
 
 		return new Renderer._AbilityData("", "", [], []);
 
-		function handleAllAbilities (abObj, targetList) {
+		function handleAllAbilities(abObj, targetList) {
 			MiscUtil.copy(Parser.ABIL_ABVS)
 				.sort((a, b) => SortUtil.ascSort(abObj[b] || 0, abObj[a] || 0))
 				.forEach(shortLabel => handleAbility(abObj, shortLabel, targetList));
 		}
 
-		function handleAbility (abObj, shortLabel, optToConvertToTextStorage) {
+		function handleAbility(abObj, shortLabel, optToConvertToTextStorage) {
 			if (abObj[shortLabel] != null) {
 				const isNegMod = abObj[shortLabel] < 0;
 				const toAdd = `${shortLabel.uppercaseFirst()} ${(isNegMod ? "" : "+")}${abObj[shortLabel]}`;
@@ -2183,7 +2367,7 @@ Renderer.getAbilityData = function (abArr) {
 			}
 		}
 
-		function handleAbilitiesChoose () {
+		function handleAbilitiesChoose() {
 			if (abObj.choose != null) {
 				const ch = abObj.choose;
 				let outStack = "";
@@ -2248,7 +2432,7 @@ Renderer.getAbilityData = function (abArr) {
 			}
 		}
 
-		function isAllAbilitiesWithParent (chooseAbs) {
+		function isAllAbilitiesWithParent(chooseAbs) {
 			const tempAbilities = [];
 			for (let i = 0; i < mainAbs.length; ++i) {
 				tempAbilities.push(mainAbs[i].toLowerCase());
@@ -2284,11 +2468,36 @@ Renderer.utils = {
 		return `<tr><th class="border" colspan="6">${optText || ""}</th></tr>`;
 	},
 
+	getDividerDiv: () => {
+		return `<div class="pf2-stat-line"></div>`
+	},
+
+	getTraitsDiv: (traits) => {
+		let traits_html = ``;
+		let trait;
+		for (trait of traits) {
+			let disgust = ``;
+			if (traits.indexOf(trait) === 0) {
+				disgust = ` pf2-trait-left`
+			} else if (traits.indexOf(trait) === traits.length - 1) {
+				disgust = ` pf2-trait-right`
+			}
+			if (trait === "Uncommon") {
+				traits_html += `<div class="pf2-trait pf2-trait-uncommon${disgust}">uncommon</div>`;
+			} else if (trait === "Rare") {
+				traits_html += `<div class="pf2-trait pf2-trait-rare${disgust}">rare</div>`;
+			} else {
+				traits_html += `<div class="pf2-trait${disgust}">${trait}</div>`;
+			}
+		}
+		return traits_html
+	},
+
 	getDividerTr: () => {
 		return `<tr><td class="divider" colspan="6"><div></div></td></tr>`;
 	},
 
-	getSourceSubText (it) {
+	getSourceSubText(it) {
 		return it.sourceSub ? ` \u2014 ${it.sourceSub}` : "";
 	},
 
@@ -2332,13 +2541,48 @@ Renderer.utils = {
 		else return $ele[0].outerHTML;
 	},
 
+	getNameDiv: (it, opts) => {
+		opts = opts || {};
+
+		let dataPart = "";
+		if (opts.page) {
+			const hash = UrlUtil.URL_TO_HASH_BUILDER[opts.page](it);
+			dataPart = `data-page="${opts.page}" data-source="${it.source.escapeQuotes()}" data-hash="${hash.escapeQuotes()}"`;
+		}
+		const $ele = $$`<div style="display: flex" class="${opts.extraThClasses ? opts.extraThClasses.join(" ") : ""}" ${dataPart}>
+			<p class="pf2-stat-name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</p>
+			${opts.controlRhs || ""}
+			<p class="pf2-stat-level">${it.type} ${it.type === "CANTRIP" ? 1 : it.level}</p>
+		</div>`;
+
+		if (opts.asJquery) return $ele;
+		else return $ele[0].outerHTML;
+	},
+
+	render_affliction (dict) {
+		let entry = ``
+		if (dict["note"] !== null) {
+			entry += dict["note"]
+		}
+		if (dict["onset"] !== null) {
+			entry += ` <strong>Onset</strong> ${dict["onset"]}`
+		}
+		if (dict["max duration"] !== null) {
+			entry += ` <strong>Maximum Duration</strong> ${dict["max duration"]}`
+		}
+		for (let stage of dict["stages"]) {
+			entry += ` <strong>Stage ${stage["stage"]} </strong>${stage["entry"]} (${stage["duration"]});`
+		}
+		return `<p class="pf-2-stat-indent-second-line"><strong>${dict["name"]} </strong>(${dict["type"]}); <strong>Level </strong>${dict["level"]}. ${entry}</p>`
+	},
+
 	getExcludedTr (it, dataProp) {
 		if (!ExcludeUtil.isInitialised) return "";
 		const isExcluded = ExcludeUtil.isExcluded(it.name, dataProp, it.source);
 		return isExcluded ? `<tr><td colspan="6" class="pt-3 text-center text-danger"><b><i>Warning: This content has been blacklisted.</i></b></td></tr>` : "";
 	},
 
-	async _pHandleNameClick (ele) {
+	async _pHandleNameClick(ele) {
 		await MiscUtil.pCopyTextToClipboard($(ele).text());
 		JqueryUtil.showCopiedEffect($(ele));
 	},
@@ -2348,7 +2592,7 @@ Renderer.utils = {
 	},
 
 	_getPageTrText: (it) => {
-		function getAltSourceText (prop, introText) {
+		function getAltSourceText(prop, introText) {
 			if (!it[prop] || !it[prop].length) return "";
 
 			return `${introText} ${it[prop].map(as => {
@@ -2369,7 +2613,7 @@ Renderer.utils = {
 		return `${[baseText, addSourceText, otherSourceText, srdText, externalSourceText].filter(it => it).join(". ")}${baseText && (addSourceText || otherSourceText || srdText || externalSourceText) ? "." : ""}`;
 	},
 
-	getAbilityRoller (statblock, ability) {
+	getAbilityRoller(statblock, ability) {
 		if (statblock[ability] == null) return "\u2014";
 		const mod = Parser.getAbilityModifier(statblock[ability]);
 		return Renderer.get().render(`{@d20 ${mod}|${statblock[ability]} (${mod})|${Parser.attAbvToFull(ability)}`);
@@ -2429,7 +2673,7 @@ Renderer.utils = {
 	},
 
 	_pronounceButtonsBound: false,
-	bindPronounceButtons () {
+	bindPronounceButtons() {
 		if (Renderer.utils._pronounceButtonsBound) return;
 		Renderer.utils._pronounceButtonsBound = true;
 		$(`body`).on("click", ".btn-name-pronounce", function () {
@@ -2443,7 +2687,7 @@ Renderer.utils = {
 	 * @param entry Data entry to search for fluff on, e.g. a monster
 	 * @param prop The fluff index reference prop, e.g. `"monsterFluff"`
 	 */
-	getPredefinedFluff (entry, prop) {
+	getPredefinedFluff(entry, prop) {
 		if (!entry.fluff) return null;
 
 		const mappedProp = `_${prop}`;
@@ -2486,7 +2730,7 @@ Renderer.utils = {
 	},
 
 	// TODO(fluff) ahve this pull together all fluff and handle e.g.  stitching subraces to races
-	async pGetFluff ({isImages, noInfoDisplay, noImagesDisplay, entity, fnFluffBuilder, fluffUrl, fluffBaseUrl, isNameAlreadyRendered} = {}) {
+	async pGetFluff({isImages, noInfoDisplay, noImagesDisplay, entity, fnFluffBuilder, fluffUrl, fluffBaseUrl, isNameAlreadyRendered} = {}) {
 		const fluffIndex = fluffBaseUrl ? await DataUtil.loadJSON(`${fluffBaseUrl}fluff-index.json`) : null;
 
 		const out = [];
@@ -2535,7 +2779,7 @@ Renderer.utils = {
 	 * @param {fluffUrl} Fluff data URL, for fluff types contained in one file.
 	 * @param {fluffBaseUrl} Fluff base URL, for fluff types which have an index and multiple files.
 	 */
-	async pBuildFluffTab ({isImageTab, $content, entity, fnFluffBuilder, fluffUrl, fluffBaseUrl, $headerControls} = {}) {
+	async pBuildFluffTab({isImageTab, $content, entity, fnFluffBuilder, fluffUrl, fluffBaseUrl, $headerControls} = {}) {
 		const renderer = Renderer.get();
 
 		$content.append(Renderer.utils.getBorderTr());
@@ -2595,7 +2839,7 @@ Renderer.utils = {
 		otherSummary: 11,
 		[undefined]: 12
 	},
-	_getPrerequisiteText_getShortClassName (className) {
+	_getPrerequisiteText_getShortClassName(className) {
 		// remove all the vowels except the first
 		const ixFirstVowel = /[aeiou]/.exec(className).index;
 		const start = className.slice(0, ixFirstVowel + 1);
@@ -2636,8 +2880,10 @@ Renderer.utils = {
 								return `${Parser.getOrdinalForm(v.level)} level${isClassVisible ? ` ${classPart}` : ""}`
 							}
 						}
-						case "pact": return Parser.prereqPactToFull(v);
-						case "patron": return isListMode ? `${Parser.prereqPatronToShort(v)} patron` : `${v} patron`;
+						case "pact":
+							return Parser.prereqPactToFull(v);
+						case "patron":
+							return isListMode ? `${Parser.prereqPatronToShort(v)} patron` : `${v} patron`;
 						case "spell":
 							return isListMode
 								? v.map(x => x.split("#")[0].split("|")[0].toTitleCase()).join("/")
@@ -2648,7 +2894,8 @@ Renderer.utils = {
 							return isListMode ? v.map(x => x.toTitleCase()).join("/") : v.joinConjunct(", ", " or ");
 						case "otherSummary":
 							return isListMode ? (v.entrySummary || Renderer.stripTags(v.entry)) : Renderer.get().render(v.entry);
-						case "other": return isListMode ? "Special" : Renderer.get().render(v);
+						case "other":
+							return isListMode ? "Special" : Renderer.get().render(v);
 						case "race": {
 							const parts = v.map((it, i) => {
 								if (isListMode) {
@@ -2733,8 +2980,10 @@ Renderer.utils = {
 							});
 							return isListMode ? parts.join("/") : parts.joinConjunct(", ", " or ");
 						}
-						case "spellcasting": return isListMode ? "Spellcasting" : "The ability to cast at least one spell";
-						default: throw new Error(`Unhandled key: ${k}`);
+						case "spellcasting":
+							return isListMode ? "Spellcasting" : "The ability to cast at least one spell";
+						default:
+							throw new Error(`Unhandled key: ${k}`);
 					}
 				})
 				.filter(Boolean)
@@ -2762,7 +3011,7 @@ Renderer.feat = {
 			}, 1);
 		}
 
-		function abilityObjToListItem (abilityObj) {
+		function abilityObjToListItem(abilityObj) {
 			const TO_MAX_OF_TWENTY = ", to a maximum of 20.";
 			const abbArr = [];
 			if (!abilityObj.choose) {
@@ -2790,7 +3039,7 @@ Renderer.feat = {
 		}
 	},
 
-	getCompactRenderedString (feat) {
+	getCompactRenderedString(feat) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
@@ -2815,7 +3064,7 @@ Renderer.get = () => {
 };
 
 Renderer.spell = {
-	getCompactRenderedString (spell) {
+	getCompactRenderedString(spell) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
@@ -2864,7 +3113,7 @@ Renderer.spell = {
 		return renderStack.join("");
 	},
 
-	initClasses (spell, brewSpellClasses) {
+	initClasses(spell, brewSpellClasses) {
 		if (spell._isInitClasses) return;
 		spell._isInitClasses = true;
 
@@ -3003,7 +3252,7 @@ Renderer.spell = {
 };
 
 Renderer.condition = {
-	getCompactRenderedString (cond) {
+	getCompactRenderedString(cond) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
@@ -3020,7 +3269,7 @@ Renderer.condition = {
 };
 
 Renderer.background = {
-	getCompactRenderedString (bg) {
+	getCompactRenderedString(bg) {
 		return `
 		${Renderer.utils.getExcludedTr(bg, "background")}
 		${Renderer.utils.getNameTr(bg, {page: UrlUtil.PG_BACKGROUNDS})}
@@ -3030,26 +3279,26 @@ Renderer.background = {
 		`;
 	},
 
-	getSkillSummary (skillProfsArr, short, collectIn) {
+	getSkillSummary(skillProfsArr, short, collectIn) {
 		return Renderer.background._summariseProfs(skillProfsArr, short, collectIn, `skill`);
 	},
 
-	getToolSummary (toolProfsArray, short, collectIn) {
+	getToolSummary(toolProfsArray, short, collectIn) {
 		return Renderer.background._summariseProfs(toolProfsArray, short, collectIn);
 	},
 
-	getLanguageSummary (toolProfsArray, short, collectIn) {
+	getLanguageSummary(toolProfsArray, short, collectIn) {
 		return Renderer.background._summariseProfs(toolProfsArray, short, collectIn);
 	},
 
-	_summariseProfs (profGroupArr, short, collectIn, hoverTag) {
+	_summariseProfs(profGroupArr, short, collectIn, hoverTag) {
 		if (!profGroupArr) return "";
 
-		function getEntry (s) {
+		function getEntry(s) {
 			return short ? s.toTitleCase() : hoverTag ? `{@${hoverTag} ${s.toTitleCase()}}` : s.toTitleCase();
 		}
 
-		function sortKeys (a, b) {
+		function sortKeys(a, b) {
 			if (a === b) return 0;
 			if (a === "choose") return 1;
 			if (b === "choose") return -1;
@@ -3078,17 +3327,17 @@ Renderer.background = {
 };
 
 Renderer.optionalfeature = {
-	getListPrerequisiteLevelText (prerequisites) {
+	getListPrerequisiteLevelText(prerequisites) {
 		if (!prerequisites || !prerequisites.some(it => it.level)) return "\u2014";
 		const levelPart = prerequisites.find(it => it.level).level;
 		return levelPart.level || levelPart;
 	},
 
-	getPreviouslyPrintedText (it) {
+	getPreviouslyPrintedText(it) {
 		return it.previousVersion ? `<tr><td colspan="6"><p>${Renderer.get().render(`{@i An earlier version of this ${Parser.optFeatureTypeToFull(it.featureType)} is available in }${Parser.sourceJsonToFull(it.previousVersion.source)} {@i as {@optfeature ${it.previousVersion.name}|${it.previousVersion.source}}.}`)}</p></td></tr>` : ""
 	},
 
-	getCompactRenderedString (it) {
+	getCompactRenderedString(it) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
@@ -3114,7 +3363,7 @@ Renderer.reward = {
 		return `<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>`;
 	},
 
-	getCompactRenderedString (reward) {
+	getCompactRenderedString(reward) {
 		return `
 			${Renderer.utils.getExcludedTr(reward, "reward")}
 			${Renderer.utils.getNameTr(reward, {page: UrlUtil.PG_REWARDS})}
@@ -3124,7 +3373,7 @@ Renderer.reward = {
 };
 
 Renderer.race = {
-	getCompactRenderedString (race) {
+	getCompactRenderedString(race) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
@@ -3162,7 +3411,7 @@ Renderer.race = {
 	 * @param [opts] Options object.
 	 * @param [opts.isAddBaseRaces] If an entity should be created for each base race.
 	 */
-	mergeSubraces (races, opts) {
+	mergeSubraces(races, opts) {
 		opts = opts || {};
 
 		const out = [];
@@ -3214,7 +3463,7 @@ Renderer.race = {
 		return out;
 	},
 
-	_mergeSubrace (race) {
+	_mergeSubrace(race) {
 		if (race.subraces) {
 			const srCopy = JSON.parse(JSON.stringify(race.subraces));
 			const out = [];
@@ -3301,7 +3550,7 @@ Renderer.race = {
 		}
 	},
 
-	adoptSubraces (allRaces, subraces) {
+	adoptSubraces(allRaces, subraces) {
 		const nxtData = [];
 
 		subraces.forEach(sr => {
@@ -3363,7 +3612,7 @@ Renderer.deity = {
 			prop: "symbol"
 		}
 	},
-	getOrderedParts (deity, prefix, suffix) {
+	getOrderedParts(deity, prefix, suffix) {
 		const parts = {};
 		Object.entries(Renderer.deity._basePartTranslators).forEach(([k, v]) => {
 			const val = deity[v.prop];
@@ -3377,11 +3626,14 @@ Renderer.deity = {
 		return allKeys.map(k => `${prefix}<b>${k}: </b>${Renderer.get().render(parts[k])}${suffix}`).join("");
 	},
 
-	getCompactRenderedString (deity) {
+	getCompactRenderedString(deity) {
 		const renderer = Renderer.get();
 		return `
 			${Renderer.utils.getExcludedTr(deity, "deity")}
-			${Renderer.utils.getNameTr(deity, {suffix: deity.title ? `, ${deity.title.toTitleCase()}` : "", page: UrlUtil.PG_DEITIES})}
+			${Renderer.utils.getNameTr(deity, {
+			suffix: deity.title ? `, ${deity.title.toTitleCase()}` : "",
+			page: UrlUtil.PG_DEITIES
+		})}
 			<tr><td colspan="6">
 				<div class="rd__compact-stat">${Renderer.deity.getOrderedParts(deity, `<p>`, `</p>`)}</div>
 			</td>
@@ -3391,7 +3643,7 @@ Renderer.deity = {
 };
 
 Renderer.object = {
-	getCompactRenderedString (obj) {
+	getCompactRenderedString(obj) {
 		const renderer = Renderer.get();
 		const row2Width = 12 / ((!!obj.resist + !!obj.vulnerable) || 1);
 		return `
@@ -3438,7 +3690,7 @@ Renderer.object = {
 };
 
 Renderer.traphazard = {
-	getSubtitle (it) {
+	getSubtitle(it) {
 		const type = it.trapHazType || "HAZ";
 		switch (type) {
 			case "GEN":
@@ -3451,7 +3703,7 @@ Renderer.traphazard = {
 		}
 	},
 
-	getSimplePart (renderer, it) {
+	getSimplePart(renderer, it) {
 		if (it.trapHazType === "SMPL") {
 			return renderer.render({
 				entries: [
@@ -3476,7 +3728,7 @@ Renderer.traphazard = {
 		return "";
 	},
 
-	getComplexPart (renderer, it) {
+	getComplexPart(renderer, it) {
 		if (it.trapHazType === "CMPX") {
 			return renderer.render({
 				entries: [
@@ -3516,7 +3768,7 @@ Renderer.traphazard = {
 		return "";
 	},
 
-	getCompactRenderedString (it) {
+	getCompactRenderedString(it) {
 		const renderer = Renderer.get();
 		const subtitle = Renderer.traphazard.getSubtitle(it);
 		return `
@@ -3528,13 +3780,13 @@ Renderer.traphazard = {
 	},
 
 	_trapTypes: new Set(["MECH", "MAG", "SMPL", "CMPX"]),
-	isTrap (trapHazType) {
+	isTrap(trapHazType) {
 		return Renderer.traphazard._trapTypes.has(trapHazType);
 	}
 };
 
 Renderer.cultboon = {
-	doRenderCultParts (it, renderer, renderStack) {
+	doRenderCultParts(it, renderer, renderStack) {
 		if (it.goal || it.cultists || it.signaturespells) {
 			const fauxList = {
 				type: "list",
@@ -3567,7 +3819,7 @@ Renderer.cultboon = {
 		}
 	},
 
-	doRenderBoonParts (it, renderer, renderStack) {
+	doRenderBoonParts(it, renderer, renderStack) {
 		const benefits = {type: "list", style: "list-hang-notitle", items: []};
 		if (it.ability) {
 			benefits.items.push({
@@ -3586,7 +3838,7 @@ Renderer.cultboon = {
 		if (benefits.items.length) renderer.recursiveRender(benefits, renderStack, {depth: 1});
 	},
 
-	getCompactRenderedString (it) {
+	getCompactRenderedString(it) {
 		const renderer = Renderer.get();
 
 		const renderStack = [];
@@ -3612,7 +3864,7 @@ Renderer.cultboon = {
 
 Renderer.monster = {
 	getLegendaryActionIntro: (mon, renderer = Renderer.get()) => {
-		function getCleanName () {
+		function getCleanName() {
 			if (mon.shortName === true) return mon.name;
 			else if (mon.shortName) return mon.shortName;
 			const base = mon.name.split(",")[0];
@@ -3630,16 +3882,16 @@ Renderer.monster = {
 		}
 	},
 
-	getSave (renderer, attr, mod) {
+	getSave(renderer, attr, mod) {
 		if (attr === "special") return renderer.render(mod);
 		else return renderer.render(`<span data-mon-save="${attr.uppercaseFirst()}|${mod}">${attr.uppercaseFirst()} {@d20 ${mod}|${mod}|${Parser.attAbvToFull([attr])} save}</span>`);
 	},
 
-	getDragonCasterVariant (renderer, dragon) {
+	getDragonCasterVariant(renderer, dragon) {
 		// if the dragon already has a spellcasting trait specified, don't add a note about adding a spellcasting trait
 		if (!dragon.dragonCastingColor || dragon.spellcasting) return null;
 
-		function getExampleSpells (maxSpellLevel, color) {
+		function getExampleSpells(maxSpellLevel, color) {
 			const LVL_TO_COLOR_TO_SPELLS = {
 				2: {
 					B: ["darkness", "Melf's acid arrow", "fog cloud", "scorching ray"],
@@ -3713,10 +3965,11 @@ Renderer.monster = {
 		return renderer.render(v);
 	},
 
-	getCrScaleTarget (win, $btnScaleCr, initialCr, cbRender, isCompact) {
+	getCrScaleTarget(win, $btnScaleCr, initialCr, cbRender, isCompact) {
 		const evtName = "click.cr-scaler";
 		const $body = $(win.document.body);
-		function cleanSliders () {
+
+		function cleanSliders() {
 			$body.find(`.mon__cr_slider_wrp`).remove();
 			$btnScaleCr.off(evtName);
 		}
@@ -3751,7 +4004,7 @@ Renderer.monster = {
 		$btnScaleCr.after($wrp);
 	},
 
-	getCompactRenderedStringSection (mon, renderer, title, key, depth) {
+	getCompactRenderedStringSection(mon, renderer, title, key, depth) {
 		if (!mon[key]) return "";
 
 		const noteKey = `${key}Note`;
@@ -3767,11 +4020,17 @@ Renderer.monster = {
 		</td></tr>`;
 	},
 
-	getTypeAlignmentPart (mon) { return `${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)}${mon.sizeNote ? ` ${mon.sizeNote}` : ""} ${Parser.monTypeToFullObj(mon.type).asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment)}` : ""}`; },
-	getSavesPart (mon) { return `${Object.keys(mon.save).sort(SortUtil.ascSortAtts).map(s => Renderer.monster.getSave(Renderer.get(), s, mon.save[s])).join(", ")}` },
-	getSensesPart (mon) { return `${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses)}, ` : ""}passive Perception ${mon.passive || "\u2014"}`; },
+	getTypeAlignmentPart(mon) {
+		return `${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)}${mon.sizeNote ? ` ${mon.sizeNote}` : ""} ${Parser.monTypeToFullObj(mon.type).asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment)}` : ""}`;
+	},
+	getSavesPart(mon) {
+		return `${Object.keys(mon.save).sort(SortUtil.ascSortAtts).map(s => Renderer.monster.getSave(Renderer.get(), s, mon.save[s])).join(", ")}`
+	},
+	getSensesPart(mon) {
+		return `${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses)}, ` : ""}passive Perception ${mon.passive || "\u2014"}`;
+	},
 
-	getCompactRenderedString (mon, renderer, options = {}) {
+	getCompactRenderedString(mon, renderer, options = {}) {
 		renderer = renderer || Renderer.get();
 
 		const renderStack = [];
@@ -3869,7 +4128,7 @@ Renderer.monster = {
 	},
 
 	getRenderedHp: (hp, isPlainText) => {
-		function getMaxStr () {
+		function getMaxStr() {
 			const mHp = /^(\d+)d(\d+)([-+]\d+)?$/i.exec(hp.formula);
 			if (mHp) {
 				const num = Number(mHp[1]);
@@ -3878,6 +4137,7 @@ Renderer.monster = {
 				return `Maximum: ${(num * faces) + mod}`;
 			} else return "";
 		}
+
 		if (hp.special != null) return hp.special;
 		if (/^\d+d1$/.exec(hp.formula)) {
 			return hp.average;
@@ -3909,12 +4169,12 @@ Renderer.monster = {
 		if (trait) return trait.sort((a, b) => SortUtil.monTraitSort(a, b));
 	},
 
-	getSkillsString (renderer, mon) {
-		function makeSkillRoller (name, mod) {
+	getSkillsString(renderer, mon) {
+		function makeSkillRoller(name, mod) {
 			return Renderer.get().render(`{@d20 ${mod}|${mod}|${name}`);
 		}
 
-		function doSortMapJoinSkillKeys (obj, keys, joinWithOr) {
+		function doSortMapJoinSkillKeys(obj, keys, joinWithOr) {
 			const toJoin = keys.sort(SortUtil.ascSort).map(s => `<span data-mon-skill="${s.toTitleCase()}|${obj[s]}">${renderer.render(`{@skill ${s.toTitleCase()}}`)} ${makeSkillRoller(s.toTitleCase(), obj[s])}</span>`);
 			return joinWithOr ? toJoin.joinConjunct(", ", " or ") : toJoin.join(", ")
 		}
@@ -3932,13 +4192,13 @@ Renderer.monster = {
 		} else return skills;
 	},
 
-	getTokenUrl (mon) {
+	getTokenUrl(mon) {
 		return mon.tokenUrl || UrlUtil.link(`${Renderer.get().baseUrl}img/${Parser.sourceJsonToAbv(mon.source)}/${Parser.nameToTokenName(mon.name)}.png`);
 	},
 
 	// TODO(fluff) refactor this to either use the generic data loading pipeline copy support, or be used everywhere for fluff
 	//   - at the same time, factor out the fluff schema to utils.json
-	getFluff (mon, fluffJson) {
+	getFluff(mon, fluffJson) {
 		const predefined = Renderer.utils.getPredefinedFluff(mon, "monsterFluff");
 
 		const rawFluff = predefined || (fluffJson || {monsterFluff: []}).monsterFluff.find(it => it.name === mon.name && it.source === mon.source);
@@ -3949,7 +4209,8 @@ Renderer.monster = {
 		// TODO is this good enough? Should additionally check for lair blocks which are not the last, and tag them with
 		//   "data": {"lairRegionals": true}, and insert the lair/regional text there if available (do the current "append" otherwise)
 		let hasAddedLegendary = false;
-		function addLegendaryGroup (fluff) {
+
+		function addLegendaryGroup(fluff) {
 			if (hasAddedLegendary) return;
 			hasAddedLegendary = true;
 			const thisGroup = DataUtil.monster.getMetaGroup(mon);
@@ -3976,7 +4237,7 @@ Renderer.monster = {
 			addLegendaryGroup(fluff);
 		}
 
-		function handleRecursive (ptrFluff) {
+		function handleRecursive(ptrFluff) {
 			const fluff = MiscUtil.copy(ptrFluff.fluff);
 			ptrFluff.fluff = fluff;
 
@@ -4055,7 +4316,7 @@ Renderer.monster = {
 		return ptrFluff.fluff;
 	},
 
-	getRenderedSenses (senses, isPlainText) {
+	getRenderedSenses(senses, isPlainText) {
 		if (typeof senses === "string") senses = [senses]; // handle legacy format
 		if (isPlainText) return senses.join(", ");
 		const senseStr = senses
@@ -4066,17 +4327,17 @@ Renderer.monster = {
 		return Renderer.get().render(senseStr);
 	},
 
-	getRenderedLanguages (languages) {
+	getRenderedLanguages(languages) {
 		if (typeof languages === "string") languages = [languages]; // handle legacy format
 		return languages ? languages.join(", ") : "\u2014";
 	},
 
-	initParsed (mon) {
+	initParsed(mon) {
 		mon._pTypes = mon._pTypes || Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon._pCr = mon._pCr || (mon.cr == null ? null : (mon.cr.cr || mon.cr));
 	},
 
-	updateParsed (mon) {
+	updateParsed(mon) {
 		delete mon._pTypes;
 		delete mon._pCr;
 		Renderer.monster.initParsed(mon);
@@ -4088,11 +4349,11 @@ Renderer.item = {
 	// default is general -> specific
 	LINK_SPECIFIC_TO_GENERIC_DIRECTION: 1,
 
-	_sortProperties (a, b) {
+	_sortProperties(a, b) {
 		return SortUtil.ascSort(Renderer.item.propertyMap[a].name, Renderer.item.propertyMap[b].name)
 	},
 
-	_getPropertiesText (item) {
+	_getPropertiesText(item) {
 		if (item.property) {
 			let renderedDmg2 = false;
 
@@ -4113,13 +4374,15 @@ Renderer.item = {
 
 							const spl = m[1].split(".");
 							switch (spl[0]) {
-								case "prop_name": return fullProp.name;
+								case "prop_name":
+									return fullProp.name;
 								case "item": {
 									const path = spl.slice(1);
 									if (!path.length) return `{@i missing key path}`;
 									return MiscUtil.get(item, ...path) || "";
 								}
-								default: return `{@i unknown template root: "${spl[0]}"}`;
+								default:
+									return `{@i unknown template root: "${spl[0]}"}`;
 							}
 						});
 						return Renderer.get().render(toRender);
@@ -4137,7 +4400,7 @@ Renderer.item = {
 		}
 	},
 
-	_renderDamage (dmg) {
+	_renderDamage(dmg) {
 		if (!dmg) return "";
 		const tagged = dmg.replace(RollerUtil.DICE_REGEX, (...m) => `{@damage ${m[1]}}`);
 		return Renderer.get().render(tagged);
@@ -4196,7 +4459,7 @@ Renderer.item = {
 		return [damage, damageType, propertiesTxt];
 	},
 
-	getTypeRarityAndAttunementText (item) {
+	getTypeRarityAndAttunementText(item) {
 		const typeRarity = [
 			item._typeHtml === "Other" ? "" : item._typeHtml,
 			[item.tier ? `${item.tier} tier` : "", (item.rarity && Renderer.item.doRenderRarity(item.rarity) ? item.rarity : "")].map(it => (it || "").trim()).filter(it => it).join(", ")
@@ -4204,7 +4467,7 @@ Renderer.item = {
 		return item.reqAttune ? `${typeRarity} ${item._attunement}` : typeRarity
 	},
 
-	getAttunementAndAttunementCatText (item) {
+	getAttunementAndAttunementCatText(item) {
 		let attunement = null;
 		let attunementCat = "No";
 		if (item.reqAttune != null && item.reqAttune !== false) {
@@ -4225,7 +4488,7 @@ Renderer.item = {
 		return [attunement, attunementCat]
 	},
 
-	getHtmlAndTextTypes (item) {
+	getHtmlAndTextTypes(item) {
 		const typeListHtml = [];
 		const typeListText = [];
 		let showingBase = false;
@@ -4270,7 +4533,7 @@ Renderer.item = {
 		return [typeListText, typeListHtml.join(", ")];
 	},
 
-	getRenderedEntries (item, isCompact) {
+	getRenderedEntries(item, isCompact) {
 		const renderer = Renderer.get();
 
 		const handlers = {
@@ -4298,7 +4561,9 @@ Renderer.item = {
 							stack.push(c);
 							break;
 						}
-						default: stack.push(c); break;
+						default:
+							stack.push(c);
+							break;
 					}
 
 					if (!depth) {
@@ -4324,7 +4589,10 @@ Renderer.item = {
 		}
 
 		if (item._fullAdditionalEntries || item.additionalEntries) {
-			const additionEntriesList = MiscUtil.copy({type: "entries", entries: item._fullAdditionalEntries || item.additionalEntries});
+			const additionEntriesList = MiscUtil.copy({
+				type: "entries",
+				entries: item._fullAdditionalEntries || item.additionalEntries
+			});
 			const procAdditionEntriesList = MiscUtil.getWalker(walkerKeyBlacklist).walk("italiciseName", additionEntriesList, handlers);
 			renderer.recursiveRender(procAdditionEntriesList, renderStack, {depth: 1});
 		}
@@ -4336,7 +4604,7 @@ Renderer.item = {
 		return renderStack.join("").trim();
 	},
 
-	getCompactRenderedString (item) {
+	getCompactRenderedString(item) {
 		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item);
 		const hasEntries = (item._fullEntries && item._fullEntries.length) || (item.entries && item.entries.length);
 
@@ -4352,7 +4620,7 @@ Renderer.item = {
 	},
 
 	_hiddenRarity: new Set(["none", "unknown", "unknown (magic)", "varies"]),
-	doRenderRarity (rarity) {
+	doRenderRarity(rarity) {
 		return !Renderer.item._hiddenRarity.has(rarity);
 	},
 
@@ -4360,7 +4628,7 @@ Renderer.item = {
 	propertyMap: {},
 	typeMap: {},
 	_additionalEntriesMap: {},
-	_addProperty (p) {
+	_addProperty(p) {
 		if (Renderer.item.propertyMap[p.abbreviation]) return;
 		Renderer.item.propertyMap[p.abbreviation] = p.name ? MiscUtil.copy(p) : {
 			name: p.entries[0].name.toLowerCase(),
@@ -4368,18 +4636,18 @@ Renderer.item = {
 			template: p.template
 		};
 	},
-	_addType (t) {
+	_addType(t) {
 		if (Renderer.item.typeMap[t.abbreviation]) return;
 		Renderer.item.typeMap[t.abbreviation] = t.name ? MiscUtil.copy(t) : {
 			name: t.entries[0].name.toLowerCase(),
 			entries: t.entries
 		};
 	},
-	_addAdditionalEntries (e) {
+	_addAdditionalEntries(e) {
 		if (Renderer.item._additionalEntriesMap[e.appliesTo]) return;
 		Renderer.item._additionalEntriesMap[e.appliesTo] = MiscUtil.copy(e.entries);
 	},
-	_pAddBrewPropertiesAndTypes () {
+	_pAddBrewPropertiesAndTypes() {
 		return new Promise(resolve => {
 			BrewUtil.pAddBrewData()
 				.then((brew) => {
@@ -4389,7 +4657,7 @@ Renderer.item = {
 				});
 		});
 	},
-	_addBasePropertiesAndTypes (baseItemData) {
+	_addBasePropertiesAndTypes(baseItemData) {
 		// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
 		baseItemData.itemProperty.forEach(p => Renderer.item._addProperty(p));
 		baseItemData.itemType.forEach(t => {
@@ -4405,7 +4673,7 @@ Renderer.item = {
 	},
 
 	_lockBuildList: null,
-	async _pLockBuildList () {
+	async _pLockBuildList() {
 		while (Renderer.item._lockBuildList) await Renderer.item._lockBuildList.lock;
 		let unlock = null;
 		const lock = new Promise(resolve => unlock = resolve);
@@ -4415,7 +4683,7 @@ Renderer.item = {
 		}
 	},
 
-	_unlockBuildList () {
+	_unlockBuildList() {
 		const lockMeta = Renderer.item._lockBuildList;
 		if (Renderer.item._lockBuildList) {
 			delete Renderer.item._lockBuildList;
@@ -4431,7 +4699,7 @@ Renderer.item = {
 	 * @param [opts.isAddGroups] Whether item groups should be included.
 	 * @param [opts.isBlacklistVariants] Whether the blacklist should be respected when applying magic variants.
 	 */
-	async pBuildList (opts) {
+	async pBuildList(opts) {
 		await Renderer.item._pLockBuildList();
 
 		opts = opts || {};
@@ -4464,7 +4732,7 @@ Renderer.item = {
 		if (opts.fnCallback) return opts.fnCallback(allItems);
 		return allItems;
 
-		async function pLoadItems () {
+		async function pLoadItems() {
 			const itemData = await DataUtil.loadJSON(itemUrl);
 			const items = itemData.item;
 			itemData.itemGroup.forEach(it => it._isItemGroup = true);
@@ -4472,13 +4740,13 @@ Renderer.item = {
 		}
 	},
 
-	async _pGetAndProcBaseItems (baseItemData) {
+	async _pGetAndProcBaseItems(baseItemData) {
 		Renderer.item._addBasePropertiesAndTypes(baseItemData);
 		await Renderer.item._pAddBrewPropertiesAndTypes();
 		return baseItemData.baseitem;
 	},
 
-	_getAndProcGenericVariants (variantData, isRespectBlacklist) {
+	_getAndProcGenericVariants(variantData, isRespectBlacklist) {
 		variantData.variant.forEach(Renderer.item._genericVariants_addInheritedPropertiesToSelf);
 		if (isRespectBlacklist) {
 			return [
@@ -4489,20 +4757,20 @@ Renderer.item = {
 		return [variantData.variant, variantData.linkedLootTables];
 	},
 
-	_initFullEntries (item) {
+	_initFullEntries(item) {
 		item._fullEntries = item._fullEntries || (item.entries ? MiscUtil.copy(item.entries) : []);
 	},
 
-	_initFullAdditionalEntries (item) {
+	_initFullAdditionalEntries(item) {
 		item._fullAdditionalEntries = item._fullAdditionalEntries || (item.additionalEntries ? MiscUtil.copy(item.additionalEntries) : []);
 	},
 
-	_createSpecificVariants (baseItems, genericVariants, linkedLootTables) {
-		function hasRequiredProperty (baseItem, genericVariant) {
+	_createSpecificVariants(baseItems, genericVariants, linkedLootTables) {
+		function hasRequiredProperty(baseItem, genericVariant) {
 			return genericVariant.requires.some(req => Object.entries(req).every(([k, v]) => baseItem[k] === v));
 		}
 
-		function hasExcludedProperty (baseItem, genericVariant) {
+		function hasExcludedProperty(baseItem, genericVariant) {
 			const curExcludes = genericVariant.excludes || {};
 			return !!Object.keys(curExcludes).find(key => {
 				if (curExcludes[key] instanceof Array) {
@@ -4512,7 +4780,7 @@ Renderer.item = {
 			});
 		}
 
-		function createSpecificVariant (baseItem, genericVariant) {
+		function createSpecificVariant(baseItem, genericVariant) {
 			const inherits = genericVariant.inherits;
 			const specificVariant = MiscUtil.copy(baseItem);
 			// Recent enhancements/entry cache
@@ -4533,8 +4801,12 @@ Renderer.item = {
 			specificVariant._category = "Specific Variant";
 			Object.keys(inherits).forEach((inheritedProperty) => {
 				switch (inheritedProperty) {
-					case "namePrefix": specificVariant.name = `${inherits.namePrefix}${specificVariant.name}`; break;
-					case "nameSuffix": specificVariant.name = `${specificVariant.name}${inherits.nameSuffix}`; break;
+					case "namePrefix":
+						specificVariant.name = `${inherits.namePrefix}${specificVariant.name}`;
+						break;
+					case "nameSuffix":
+						specificVariant.name = `${specificVariant.name}${inherits.nameSuffix}`;
+						break;
 					case "entries": {
 						Renderer.item._initFullEntries(specificVariant);
 
@@ -4542,7 +4814,8 @@ Renderer.item = {
 						appliedPropertyEntries.forEach((ent, i) => specificVariant._fullEntries.splice(i, 0, ent));
 						break;
 					}
-					default: specificVariant[inheritedProperty] = inherits[inheritedProperty];
+					default:
+						specificVariant[inheritedProperty] = inherits[inheritedProperty];
 				}
 			});
 
@@ -4581,12 +4854,12 @@ Renderer.item = {
 		return genericAndSpecificVariants;
 	},
 
-	_enhanceItems (allItems) {
+	_enhanceItems(allItems) {
 		allItems.forEach((item) => Renderer.item.enhanceItem(item));
 		return allItems;
 	},
 
-	async pGetGenericAndSpecificVariants (variants, opts) {
+	async pGetGenericAndSpecificVariants(variants, opts) {
 		opts = opts || {};
 		opts.baseItemsUrl = opts.baseItemsUrl || `${Renderer.get().baseUrl}data/items-base.json`;
 
@@ -4599,7 +4872,7 @@ Renderer.item = {
 		return Renderer.item._enhanceItems(genericAndSpecificVariants);
 	},
 
-	_getInjectableProps (baseItem, inherits) {
+	_getInjectableProps(baseItem, inherits) {
 		return {
 			baseName: baseItem.name,
 			dmgType: baseItem.dmgType ? Parser.dmgTypeToFull(baseItem.dmgType) : null,
@@ -4623,7 +4896,7 @@ Renderer.item = {
 		"namePrefix",
 		"nameSuffix"
 	]),
-	_genericVariants_addInheritedPropertiesToSelf (genericVariant) {
+	_genericVariants_addInheritedPropertiesToSelf(genericVariant) {
 		for (const prop in genericVariant.inherits) {
 			if (Renderer.item._INHERITED_PROPS_BLACKLIST.has(prop)) continue;
 
@@ -4642,7 +4915,7 @@ Renderer.item = {
 		if (genericVariant.requires.armor) genericVariant.armor = genericVariant.requires.armor;
 	},
 
-	enhanceItem (item) {
+	enhanceItem(item) {
 		if (item._isEnhanced) return;
 		item._isEnhanced = true;
 		if (item.noDisplay) return;
@@ -4725,9 +4998,15 @@ Renderer.item = {
 		// Add additional sources for all instruments and gaming sets
 		if (item.type === "INS" || item.type === "GS") item.additionalSources = item.additionalSources || [];
 		if (item.type === "INS") {
-			if (!item.additionalSources.find(it => it.source === "XGE" && it.page === 83)) item.additionalSources.push({"source": "XGE", "page": 83});
+			if (!item.additionalSources.find(it => it.source === "XGE" && it.page === 83)) item.additionalSources.push({
+				"source": "XGE",
+				"page": 83
+			});
 		} else if (item.type === "GS") {
-			if (!item.additionalSources.find(it => it.source === "XGE" && it.page === 81)) item.additionalSources.push({"source": "XGE", "page": 81});
+			if (!item.additionalSources.find(it => it.source === "XGE" && it.page === 81)) item.additionalSources.push({
+				"source": "XGE",
+				"page": 81
+			});
 		}
 
 		if (item.type && Renderer.item._additionalEntriesMap[item.type]) {
@@ -4758,10 +5037,10 @@ Renderer.item = {
 			);
 		}
 
-		(function addBaseItemList (item) {
+		(function addBaseItemList(item) {
 			// item.variants was added during generic variant creation
 			// TAG ITEM_VARIANTS
-			function createItemLink (item) {
+			function createItemLink(item) {
 				return `{@item ${item.name}|${item.source}}`;
 			}
 
@@ -4784,7 +5063,7 @@ Renderer.item = {
 		})(item);
 	},
 
-	async getItemsFromHomebrew (homebrew) {
+	async getItemsFromHomebrew(homebrew) {
 		(homebrew.itemProperty || []).forEach(p => Renderer.item._addProperty(p));
 		(homebrew.itemType || []).forEach(t => Renderer.item._addType(t));
 		let items = (homebrew.baseitem || []).concat(homebrew.item || []);
@@ -4800,7 +5079,7 @@ Renderer.item = {
 	},
 
 	// flip e.g. "longsword +1" to "+1 longsword"
-	modifierPostToPre (item) {
+	modifierPostToPre(item) {
 		const m = /^(.*)(?:,)? (\+\d+)$/.exec(item.name);
 		if (m) return Object.assign(MiscUtil.copy(item), {name: `${m[2]} ${m[1]}`});
 		else return null
@@ -4833,7 +5112,7 @@ Renderer.item = {
 	},
 
 	// fetch every possible indexable item from official data
-	async getAllIndexableItems (rawVariants, rawBaseItems) {
+	async getAllIndexableItems(rawVariants, rawBaseItems) {
 		Renderer.item.LINK_SPECIFIC_TO_GENERIC_DIRECTION = -1;
 
 		const basicItems = await Renderer.item._pGetAndProcBaseItems(rawBaseItems);
@@ -4867,7 +5146,7 @@ Renderer.psionic = {
 			mode.enhanced = true;
 		}
 
-		function getModeSuffix (mode, subMode) {
+		function getModeSuffix(mode, subMode) {
 			subMode = subMode == null ? false : subMode;
 			const modeTitleArray = [];
 			const bracketPart = getModeTitleBracketPart();
@@ -4875,7 +5154,7 @@ Renderer.psionic = {
 			if (subMode) return `${modeTitleArray.join(" ")}`;
 			else return `${modeTitleArray.join(" ")}`;
 
-			function getModeTitleBracketPart () {
+			function getModeTitleBracketPart() {
 				const modeTitleBracketArray = [];
 
 				if (mode.cost) modeTitleBracketArray.push(getModeTitleCost());
@@ -4884,21 +5163,21 @@ Renderer.psionic = {
 				if (modeTitleBracketArray.length === 0) return null;
 				return `(${modeTitleBracketArray.join("; ")})`;
 
-				function getModeTitleCost () {
+				function getModeTitleCost() {
 					const costMin = mode.cost.min;
 					const costMax = mode.cost.max;
 					const costString = costMin === costMax ? costMin : `${costMin}-${costMax}`;
 					return `${costString} psi`;
 				}
 
-				function getModeTitleConcentration () {
+				function getModeTitleConcentration() {
 					return `conc., ${mode.concentration.duration} ${mode.concentration.unit}.`
 				}
 			}
 		}
 	},
 
-	getBodyText (psi, renderer) {
+	getBodyText(psi, renderer) {
 		const renderStack = [];
 		if (psi.entries) Renderer.get().recursiveRender(({entries: psi.entries, type: "entries"}), renderStack);
 		if (psi.focus) renderStack.push(Renderer.psionic.getFocusString(psi, renderer));
@@ -4911,7 +5190,10 @@ Renderer.psionic = {
 	},
 
 	getFocusString: (psionic, renderer) => {
-		return `<p><span class="psi-focus-title">Psychic Focus.</span> ${renderer.render({type: "inline", entries: [psionic.focus]})}</p>`;
+		return `<p><span class="psi-focus-title">Psychic Focus.</span> ${renderer.render({
+			type: "inline",
+			entries: [psionic.focus]
+		})}</p>`;
 	},
 
 	getModeString: (mode, renderer) => {
@@ -4925,7 +5207,7 @@ Renderer.psionic = {
 		return `${modeString}${subModeString}`;
 	},
 
-	getSubModeString (subModes, renderer) {
+	getSubModeString(subModes, renderer) {
 		const fauxEntry = {
 			type: "list",
 			style: "list-hang-notitle",
@@ -4944,7 +5226,7 @@ Renderer.psionic = {
 		return renderStack.join("");
 	},
 
-	getTypeOrderString (psi) {
+	getTypeOrderString(psi) {
 		const typeMeta = Parser.psiTypeToMeta(psi.type);
 		// if "isAltDisplay" is true, render as e.g. "Greater Discipline (Awakened)" rather than "Awakened Greater Discipline"
 		return typeMeta.hasOrder
@@ -4952,7 +5234,7 @@ Renderer.psionic = {
 			: typeMeta.full;
 	},
 
-	getCompactRenderedString (psi) {
+	getCompactRenderedString(psi) {
 		return `
 			${Renderer.utils.getExcludedTr(psi, "psionic")}
 			${Renderer.utils.getNameTr(psi, {page: UrlUtil.PG_PSIONICS})}
@@ -4965,7 +5247,7 @@ Renderer.psionic = {
 };
 
 Renderer.rule = {
-	getCompactRenderedString (rule) {
+	getCompactRenderedString(rule) {
 		return `
 			<tr><td colspan="6">
 			${Renderer.get().setFirstSection(true).render(rule)}
@@ -4975,7 +5257,7 @@ Renderer.rule = {
 };
 
 Renderer.variantrule = {
-	getCompactRenderedString (rule) {
+	getCompactRenderedString(rule) {
 		const cpy = MiscUtil.copy(rule);
 		delete cpy.name;
 		return `
@@ -4989,7 +5271,7 @@ Renderer.variantrule = {
 };
 
 Renderer.table = {
-	getCompactRenderedString (it) {
+	getCompactRenderedString(it) {
 		it.type = it.type || "table";
 		const cpy = MiscUtil.copy(it);
 		delete cpy.name;
@@ -5004,33 +5286,41 @@ Renderer.table = {
 };
 
 Renderer.vehicle = {
-	getCompactRenderedString (veh) {
+	getCompactRenderedString(veh) {
 		return Renderer.vehicle.getRenderedString(veh, {isCompact: true});
 	},
 
-	getRenderedString (veh, opts) {
+	getRenderedString(veh, opts) {
 		opts = opts || {};
 		veh.vehicleType = veh.vehicleType || "SHIP";
 		switch (veh.vehicleType) {
-			case "SHIP": return Renderer.vehicle._getRenderedString_ship(veh, opts);
-			case "INFWAR": return Renderer.vehicle._getRenderedString_infwar(veh, opts);
-			case "CREATURE": return Renderer.monster.getCompactRenderedString(veh, null, {...opts, isHideLanguages: true, isHideSenses: true});
-			default: throw new Error(`Unhandled vehicle type "${veh.vehicleType}"`);
+			case "SHIP":
+				return Renderer.vehicle._getRenderedString_ship(veh, opts);
+			case "INFWAR":
+				return Renderer.vehicle._getRenderedString_infwar(veh, opts);
+			case "CREATURE":
+				return Renderer.monster.getCompactRenderedString(veh, null, {
+					...opts,
+					isHideLanguages: true,
+					isHideSenses: true
+				});
+			default:
+				throw new Error(`Unhandled vehicle type "${veh.vehicleType}"`);
 		}
 	},
 
-	_getRenderedString_ship (veh, opts) {
+	_getRenderedString_ship(veh, opts) {
 		const renderer = Renderer.get();
 
-		function getSectionTitle (title) {
+		function getSectionTitle(title) {
 			return `<tr class="mon__stat-header-underline"><td colspan="6"><span>${title}</span></td></tr>`
 		}
 
-		function getActionPart () {
+		function getActionPart() {
 			return renderer.render({entries: veh.action});
 		}
 
-		function getSectionHpPart (sect, each) {
+		function getSectionHpPart(sect, each) {
 			if (!sect.ac && !sect.hp) return "";
 			return `
 				<div><b>Armor Class</b> ${sect.ac}</div>
@@ -5038,7 +5328,7 @@ Renderer.vehicle = {
 			`;
 		}
 
-		function getControlSection (control) {
+		function getControlSection(control) {
 			if (!control) return "";
 			return `
 				<tr class="mon__stat-header-underline"><td colspan="6"><span>Control: ${control.name}</span></td></tr>
@@ -5049,10 +5339,10 @@ Renderer.vehicle = {
 			`;
 		}
 
-		function getMovementSection (move) {
+		function getMovementSection(move) {
 			if (!move) return "";
 
-			function getLocomotionSection (loc) {
+			function getLocomotionSection(loc) {
 				const asList = {
 					type: "list",
 					style: "list-hang-notitle",
@@ -5067,7 +5357,7 @@ Renderer.vehicle = {
 				return `<div>${renderer.render(asList)}</div>`;
 			}
 
-			function getSpeedSection (spd) {
+			function getSpeedSection(spd) {
 				const asList = {
 					type: "list",
 					style: "list-hang-notitle",
@@ -5092,7 +5382,7 @@ Renderer.vehicle = {
 			`;
 		}
 
-		function getWeaponSection (weap) {
+		function getWeaponSection(weap) {
 			return `
 				<tr class="mon__stat-header-underline"><td colspan="6"><span>Weapons: ${weap.name}${weap.count ? ` (${weap.count})` : ""}</span></td></tr>
 				<tr><td colspan="6">
@@ -5102,7 +5392,7 @@ Renderer.vehicle = {
 			`;
 		}
 
-		function getOtherSection (oth) {
+		function getOtherSection(oth) {
 			return `
 				<tr class="mon__stat-header-underline"><td colspan="6"><span>${oth.name}</span></td></tr>
 				<tr><td colspan="6">
@@ -5118,7 +5408,10 @@ Renderer.vehicle = {
 
 		return `
 			${Renderer.utils.getExcludedTr(veh, "vehicle")}
-			${Renderer.utils.getNameTr(veh, {extraThClasses: !opts.isCompact ? ["veh__name--token"] : null, page: UrlUtil.PG_VEHICLES})}
+			${Renderer.utils.getNameTr(veh, {
+			extraThClasses: !opts.isCompact ? ["veh__name--token"] : null,
+			page: UrlUtil.PG_VEHICLES
+		})}
 			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle${veh.dimensions ? ` (${veh.dimensions.join(" by ")})` : ""}</i><br></td></tr>
 			<tr class="text"><td colspan="6">
 				<div><b>Creature Capacity</b> ${veh.capCrew} crew${veh.capPassenger ? `, ${veh.capPassenger} passengers` : ""}</div>
@@ -5164,13 +5457,16 @@ Renderer.vehicle = {
 		`;
 	},
 
-	_getRenderedString_infwar (veh, opts) {
+	_getRenderedString_infwar(veh, opts) {
 		const renderer = Renderer.get();
 		const dexMod = Parser.getAbilityModNumber(veh.dex);
 
 		return `
 			${Renderer.utils.getExcludedTr(veh, "vehicle")}
-			${Renderer.utils.getNameTr(veh, {extraThClasses: !opts.isCompact ? ["veh__name--token"] : null, page: UrlUtil.PG_VEHICLES})}
+			${Renderer.utils.getNameTr(veh, {
+			extraThClasses: !opts.isCompact ? ["veh__name--token"] : null,
+			page: UrlUtil.PG_VEHICLES
+		})}
 			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle (${veh.weight.toLocaleString()} lb.)</i><br></td></tr>
 			<tr class="text"><td colspan="6">
 				<div><b>Creature Capacity</b> ${veh.capCreature} Medium creatures</div>
@@ -5215,7 +5511,7 @@ Renderer.vehicle = {
 };
 
 Renderer.action = {
-	getCompactRenderedString (it) {
+	getCompactRenderedString(it) {
 		const cpy = MiscUtil.copy(it);
 		delete cpy.name;
 		return `${Renderer.utils.getExcludedTr(it, "action")}${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_ACTIONS})}
@@ -5224,11 +5520,11 @@ Renderer.action = {
 };
 
 Renderer.language = {
-	getCompactRenderedString (it) {
+	getCompactRenderedString(it) {
 		return Renderer.language.getRenderedString(it);
 	},
 
-	getRenderedString (it) {
+	getRenderedString(it) {
 		const allEntries = [];
 
 		const hasMeta = it.typicalSpeakers || it.script;
@@ -5273,11 +5569,15 @@ Renderer.hover = {
 	_dmScreen: null,
 	_lastId: 0,
 
-	bindDmScreen (screen) { this._dmScreen = screen; },
+	bindDmScreen(screen) {
+		this._dmScreen = screen;
+	},
 
-	_getNextId () { return ++Renderer.hover._lastId; },
+	_getNextId() {
+		return ++Renderer.hover._lastId;
+	},
 
-	_doInit () {
+	_doInit() {
 		if (!Renderer.hover._isInit) {
 			Renderer.hover._isInit = true;
 
@@ -5288,9 +5588,15 @@ Renderer.hover = {
 				(evt, ele, $invokedOn, $selectedMenu, _, windowMeta) => { // windowMeta for future use for more options
 					const $perms = $(`.hoverborder[data-perm="true"]`);
 					switch (Number($selectedMenu.data("ctx-id"))) {
-						case 0: $perms.attr("data-display-title", "false"); break;
-						case 1: $perms.attr("data-display-title", "true"); break;
-						case 2: $(`.hvr__close`).click(); break;
+						case 0:
+							$perms.attr("data-display-title", "false");
+							break;
+						case 1:
+							$perms.attr("data-display-title", "true");
+							break;
+						case 2:
+							$(`.hvr__close`).click();
+							break;
 					}
 				},
 				["Maximize All", "Minimize All", null, "Close All"]
@@ -5298,7 +5604,7 @@ Renderer.hover = {
 		}
 	},
 
-	cleanTempWindows () {
+	cleanTempWindows() {
 		for (const [ele, meta] of Renderer.hover._eleCache.entries()) {
 			if (!meta.isPermanent && !document.body.contains(ele) && meta.windowMeta) {
 				meta.windowMeta.doClose();
@@ -5306,12 +5612,12 @@ Renderer.hover = {
 		}
 	},
 
-	_getSetMeta (ele) {
+	_getSetMeta(ele) {
 		if (!Renderer.hover._eleCache.has(ele)) Renderer.hover._eleCache.set(ele, new Renderer.hover.LinkMeta());
 		return Renderer.hover._eleCache.get(ele);
 	},
 
-	_handleGenericMouseOverStart (evt, ele) {
+	_handleGenericMouseOverStart(evt, ele) {
 		// Don't open on small screens unless forced
 		if (Renderer.hover.isSmallScreen(evt) && !evt.shiftKey) return;
 
@@ -5331,7 +5637,7 @@ Renderer.hover = {
 	},
 
 	// (Baked into render strings)
-	async pHandleLinkMouseOver (evt, ele, page, source, hash, preloadId) {
+	async pHandleLinkMouseOver(evt, ele, page, source, hash, preloadId) {
 		const meta = Renderer.hover._handleGenericMouseOverStart(evt, ele);
 		if (meta == null) return;
 
@@ -5425,7 +5731,7 @@ Renderer.hover = {
 	},
 
 	// (Baked into render strings)
-	handleLinkMouseLeave (evt, ele) {
+	handleLinkMouseLeave(evt, ele) {
 		const meta = Renderer.hover._eleCache.get(ele);
 		ele.style.cursor = "";
 
@@ -5445,7 +5751,7 @@ Renderer.hover = {
 	},
 
 	// (Baked into render strings)
-	handleLinkMouseMove (evt, ele) {
+	handleLinkMouseMove(evt, ele) {
 		const meta = Renderer.hover._eleCache.get(ele);
 		if (!meta || meta.isPermanent || !meta.windowMeta) return;
 
@@ -5458,7 +5764,7 @@ Renderer.hover = {
 	},
 
 	// (Baked into render strings)
-	handlePredefinedMouseOver (evt, ele, entryId, isBookContent) {
+	handlePredefinedMouseOver(evt, ele, entryId, isBookContent) {
 		const meta = Renderer.hover._handleGenericMouseOverStart(evt, ele);
 		if (meta == null) return;
 
@@ -5486,12 +5792,16 @@ Renderer.hover = {
 	},
 
 	// (Baked into render strings)
-	handlePredefinedMouseLeave (evt, ele) { return Renderer.hover.handleLinkMouseLeave(evt, ele) },
+	handlePredefinedMouseLeave(evt, ele) {
+		return Renderer.hover.handleLinkMouseLeave(evt, ele)
+	},
 
 	// (Baked into render strings)
-	handlePredefinedMouseMove (evt, ele) { return Renderer.hover.handleLinkMouseMove(evt, ele) },
+	handlePredefinedMouseMove(evt, ele) {
+		return Renderer.hover.handleLinkMouseMove(evt, ele)
+	},
 
-	getWindowPositionFromEvent (evt) {
+	getWindowPositionFromEvent(evt) {
 		const ele = evt.target;
 
 		const offset = $(ele).offset();
@@ -5526,7 +5836,7 @@ Renderer.hover = {
 	 * @param [sourceData] Source data which can be used to load the contents into the DM screen.
 	 * @param [sourceData.type]
 	 */
-	getShowWindow ($content, position, opts, sourceData) {
+	getShowWindow($content, position, opts, sourceData) {
 		Renderer.hover._doInit();
 
 		const $body = $(position.window.document.body);
@@ -5550,7 +5860,8 @@ Renderer.hover = {
 		};
 
 		let drag = {};
-		function handleDragMousedown (evt, type) {
+
+		function handleDragMousedown(evt, type) {
 			if (evt.which === 0 || evt.which === 1) evt.preventDefault();
 			$hov.css({
 				"z-index": 201, // temporarily display it on top
@@ -5568,7 +5879,8 @@ Renderer.hover = {
 				$hov.css("max-width", "initial");
 			}
 		}
-		function handleDragClick () {
+
+		function handleDragClick() {
 			$hov.css("z-index", ""); // remove the temporary z-boost...
 			$hov.parent().append($hov); // ...and properly bring it to the front
 		}
@@ -5610,14 +5922,14 @@ Renderer.hover = {
 			.on("click", handleDragClick)
 			.on("contextmenu", (evt) => ContextUtil.handleOpenContextMenu(evt, $brdrTop[0], "hoverBorder", null, out));
 
-		function isOverHoverTarget (evt, target) {
+		function isOverHoverTarget(evt, target) {
 			return EventUtil.getClientX(evt) >= target.left
 				&& EventUtil.getClientX(evt) <= target.left + target.width
 				&& EventUtil.getClientY(evt) >= target.top
 				&& EventUtil.getClientY(evt) <= target.top + target.height;
 		}
 
-		function handleNorthDrag (evt) {
+		function handleNorthDrag(evt) {
 			const diffY = Math.max(drag.startY - EventUtil.getClientY(evt), 80 - drag.baseHeight); // prevent <80 height, as this will cause the box to move downwards
 			$wrpStats.css("height", drag.baseHeight + diffY);
 			$hov.css("top", drag.baseTop - diffY);
@@ -5626,21 +5938,21 @@ Renderer.hover = {
 			drag.baseTop = parseFloat($hov.css("top"));
 		}
 
-		function handleEastDrag (evt) {
+		function handleEastDrag(evt) {
 			const diffX = drag.startX - EventUtil.getClientX(evt);
 			$hov.css("width", drag.baseWidth - diffX);
 			drag.startX = EventUtil.getClientX(evt);
 			drag.baseWidth = parseFloat($hov.css("width"));
 		}
 
-		function handleSouthDrag (evt) {
+		function handleSouthDrag(evt) {
 			const diffY = drag.startY - EventUtil.getClientY(evt);
 			$wrpStats.css("height", drag.baseHeight - diffY);
 			drag.startY = EventUtil.getClientY(evt);
 			drag.baseHeight = $wrpStats.height();
 		}
 
-		function handleWestDrag (evt) {
+		function handleWestDrag(evt) {
 			const diffX = Math.max(drag.startX - EventUtil.getClientX(evt), 150 - drag.baseWidth);
 			$hov.css("width", drag.baseWidth + diffX)
 				.css("left", drag.baseLeft - diffX);
@@ -5695,14 +6007,34 @@ Renderer.hover = {
 			})
 			.on(mouseMoveId, (evt) => {
 				switch (drag.type) {
-					case 1: handleNorthDrag(evt); handleEastDrag(evt); break;
-					case 2: handleEastDrag(evt); break;
-					case 3: handleSouthDrag(evt); handleEastDrag(evt); break;
-					case 4: handleSouthDrag(evt); break;
-					case 5: handleSouthDrag(evt); handleWestDrag(evt); break;
-					case 6: handleWestDrag(evt); break;
-					case 7: handleNorthDrag(evt); handleWestDrag(evt); break;
-					case 8: handleNorthDrag(evt); break;
+					case 1:
+						handleNorthDrag(evt);
+						handleEastDrag(evt);
+						break;
+					case 2:
+						handleEastDrag(evt);
+						break;
+					case 3:
+						handleSouthDrag(evt);
+						handleEastDrag(evt);
+						break;
+					case 4:
+						handleSouthDrag(evt);
+						break;
+					case 5:
+						handleSouthDrag(evt);
+						handleWestDrag(evt);
+						break;
+					case 6:
+						handleWestDrag(evt);
+						break;
+					case 7:
+						handleNorthDrag(evt);
+						handleWestDrag(evt);
+						break;
+					case 8:
+						handleNorthDrag(evt);
+						break;
 					case 9: {
 						const diffX = drag.startX - EventUtil.getClientX(evt);
 						const diffY = drag.startY - EventUtil.getClientY(evt);
@@ -5826,7 +6158,8 @@ Renderer.hover = {
 					$hov.css("left", pos.x);
 					break;
 				}
-				default: throw new Error(`Positiong mode unimplemented: "${pos.mode}"`);
+				default:
+					throw new Error(`Positiong mode unimplemented: "${pos.mode}"`);
 			}
 
 			adjustPosition(true);
@@ -5834,7 +6167,7 @@ Renderer.hover = {
 
 		setPosition(position);
 
-		function adjustPosition () {
+		function adjustPosition() {
 			const eleHov = $hov[0];
 			// use these pre-computed values instead of forcing redraws for speed (saves ~100ms)
 			const hvTop = parseFloat(eleHov.style.top);
@@ -5870,7 +6203,7 @@ Renderer.hover = {
 		return out;
 	},
 
-	getMakePredefinedHover (entry, isBookContent) {
+	getMakePredefinedHover(entry, isBookContent) {
 		const id = Renderer.hover._getNextId();
 		Renderer.hover._entryCache[id] = entry;
 		return {
@@ -5883,15 +6216,15 @@ Renderer.hover = {
 		};
 	},
 
-	updatePredefinedHover (id, entry) {
+	updatePredefinedHover(id, entry) {
 		Renderer.hover._entryCache[id] = entry;
 	},
 
-	getPreventTouchString () {
+	getPreventTouchString() {
 		return `ontouchstart="Renderer.hover.handleTouchStart(event, this)"`
 	},
 
-	handleTouchStart (evt, ele) {
+	handleTouchStart(evt, ele) {
 		// on large touchscreen devices only (e.g. iPads)
 		if (!Renderer.hover.isSmallScreen(evt)) {
 			// cache the link location and redirect it to void
@@ -5946,7 +6279,7 @@ Renderer.hover = {
 	 * @param [opts] Options object.
 	 * @param [opts.isCopy] If a copy, rather than the original entity, should be returned.
 	 */
-	async pCacheAndGet (page, source, hash, opts) {
+	async pCacheAndGet(page, source, hash, opts) {
 		opts = opts || {};
 
 		page = page.toLowerCase();
@@ -5958,7 +6291,7 @@ Renderer.hover = {
 		 * @param listProp list property in the data
 		 * @param [itemModifier] optional function to run per item; takes listProp and an item as parameters
 		 */
-		function populate (data, listProp, itemModifier) {
+		function populate(data, listProp, itemModifier) {
 			data[listProp].forEach(it => {
 				const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
 				if (itemModifier) itemModifier(listProp, it);
@@ -5966,7 +6299,7 @@ Renderer.hover = {
 			});
 		}
 
-		async function pLoadMultiSource (page, baseUrl, listProp, fnPrePopulate = null) {
+		async function pLoadMultiSource(page, baseUrl, listProp, fnPrePopulate = null) {
 			const loadKey = `${page}${source}`;
 
 			if (Renderer.hover._psCacheLoading[loadKey]) await Renderer.hover._psCacheLoading[loadKey];
@@ -5996,7 +6329,7 @@ Renderer.hover = {
 			return Renderer.hover._getFromCache(page, source, hash, opts);
 		}
 
-		async function _pLoadSingleBrew (listProps, itemModifier) {
+		async function _pLoadSingleBrew(listProps, itemModifier) {
 			const brewData = await BrewUtil.pAddBrewData();
 			listProps = listProps instanceof Array ? listProps : [listProps];
 			listProps.forEach(lp => {
@@ -6004,12 +6337,12 @@ Renderer.hover = {
 			});
 		}
 
-		function _handleSingleData (data, listProps, itemModifier) {
+		function _handleSingleData(data, listProps, itemModifier) {
 			if (listProps instanceof Array) listProps.forEach(p => populate(data, p, itemModifier));
 			else populate(data, listProps, itemModifier);
 		}
 
-		async function pLoadSimple (page, jsonFile, listProps, itemModifier) {
+		async function pLoadSimple(page, jsonFile, listProps, itemModifier) {
 			const loadKey = jsonFile;
 
 			if (Renderer.hover._psCacheLoading[loadKey]) await Renderer.hover._psCacheLoading[loadKey];
@@ -6028,7 +6361,7 @@ Renderer.hover = {
 			return Renderer.hover._getFromCache(page, source, hash, opts);
 		}
 
-		async function pLoadCustom (page, jsonFile, listProps, itemModifier, loader) {
+		async function pLoadCustom(page, jsonFile, listProps, itemModifier, loader) {
 			const loadKey = jsonFile;
 
 			if (Renderer.hover._psCacheLoading[loadKey]) await Renderer.hover._psCacheLoading[loadKey];
@@ -6049,7 +6382,8 @@ Renderer.hover = {
 
 		switch (page) {
 			case "generic":
-			case "hover": return null;
+			case "hover":
+				return null;
 			case UrlUtil.PG_CLASSES: {
 				const loadKey = UrlUtil.PG_CLASSES;
 
@@ -6060,13 +6394,21 @@ Renderer.hover = {
 						const addToIndex = (cls) => {
 							// add class
 							const clsHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls);
-							const clsEntries = {name: cls.name, type: "section", entries: MiscUtil.copy((cls.classFeatures || []).flat())};
+							const clsEntries = {
+								name: cls.name,
+								type: "section",
+								entries: MiscUtil.copy((cls.classFeatures || []).flat())
+							};
 							Renderer.hover._addToCache(UrlUtil.PG_CLASSES, cls.source || SRC_PHB, clsHash, clsEntries);
 
 							// add subclasses
 							(cls.subclasses || []).forEach(sc => {
 								const scHash = `${clsHash}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: sc})}`;
-								const scEntries = {name: `${sc.name} (${cls.name})`, type: "section", entries: MiscUtil.copy((sc.subclassFeatures || []).flat())};
+								const scEntries = {
+									name: `${sc.name} (${cls.name})`,
+									type: "section",
+									entries: MiscUtil.copy((sc.subclassFeatures || []).flat())
+								};
 								Renderer.hover._addToCache(UrlUtil.PG_CLASSES, cls.source || SRC_PHB, scHash, scEntries);
 							});
 
@@ -6086,8 +6428,10 @@ Renderer.hover = {
 
 				return Renderer.hover._getFromCache(page, source, hash, opts);
 			}
-			case UrlUtil.PG_SPELLS: return pLoadMultiSource(page, `data/spells/`, "spell");
-			case UrlUtil.PG_BESTIARY: return pLoadMultiSource(page, `data/bestiary/`, "monster", data => DataUtil.monster.populateMetaReference(data));
+			case UrlUtil.PG_SPELLS:
+				return pLoadMultiSource(page, `data/spells/`, "spell");
+			case UrlUtil.PG_BESTIARY:
+				return pLoadMultiSource(page, `data/bestiary/`, "monster", data => DataUtil.monster.populateMetaReference(data));
 			case UrlUtil.PG_ITEMS: {
 				const loadKey = UrlUtil.PG_ITEMS;
 
@@ -6123,11 +6467,16 @@ Renderer.hover = {
 
 				return Renderer.hover._getFromCache(page, source, hash, opts);
 			}
-			case UrlUtil.PG_BACKGROUNDS: return pLoadSimple(page, "backgrounds.json", "background");
-			case UrlUtil.PG_FEATS: return pLoadSimple(page, "feats.json", "feat");
-			case UrlUtil.PG_OPT_FEATURES: return pLoadSimple(page, "optionalfeatures.json", "optionalfeature");
-			case UrlUtil.PG_PSIONICS: return pLoadSimple(page, "psionics.json", "psionic");
-			case UrlUtil.PG_REWARDS: return pLoadSimple(page, "rewards.json", "reward");
+			case UrlUtil.PG_BACKGROUNDS:
+				return pLoadSimple(page, "backgrounds.json", "background");
+			case UrlUtil.PG_FEATS:
+				return pLoadSimple(page, "feats.json", "feat");
+			case UrlUtil.PG_OPT_FEATURES:
+				return pLoadSimple(page, "optionalfeatures.json", "optionalfeature");
+			case UrlUtil.PG_PSIONICS:
+				return pLoadSimple(page, "psionics.json", "psionic");
+			case UrlUtil.PG_REWARDS:
+				return pLoadSimple(page, "rewards.json", "reward");
 			case UrlUtil.PG_RACES: {
 				const loadKey = UrlUtil.PG_RACES;
 
@@ -6162,22 +6511,33 @@ Renderer.hover = {
 
 				return Renderer.hover._getFromCache(page, source, hash, opts);
 			}
-			case UrlUtil.PG_DEITIES: return pLoadCustom(page, "deities.json", "deity", null, "deity");
-			case UrlUtil.PG_OBJECTS: return pLoadSimple(page, "objects.json", "object");
-			case UrlUtil.PG_TRAPS_HAZARDS: return pLoadSimple(page, "trapshazards.json", ["trap", "hazard"]);
-			case UrlUtil.PG_VARIATNRULES: return pLoadSimple(page, "variantrules.json", "variantrule");
-			case UrlUtil.PG_CULTS_BOONS: return pLoadSimple(page, "cultsboons.json", ["cult", "boon"], (listProp, item) => item._type = listProp === "cult" ? "c" : "b");
-			case UrlUtil.PG_CONDITIONS_DISEASES: return pLoadSimple(page, "conditionsdiseases.json", ["condition", "disease"], (listProp, item) => item._type = listProp === "condition" ? "c" : "d");
-			case UrlUtil.PG_TABLES: return pLoadSimple(page, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item._type = listProp === "table" ? "t" : "g");
-			case UrlUtil.PG_VEHICLES: return pLoadSimple(page, "vehicles.json", "vehicle");
-			case UrlUtil.PG_ACTIONS: return pLoadSimple(page, "actions.json", "action");
-			case UrlUtil.PG_LANGUAGES: return pLoadSimple(page, "languages.json", "language");
-			default: throw new Error(`No load function defined for page ${page}`);
+			case UrlUtil.PG_DEITIES:
+				return pLoadCustom(page, "deities.json", "deity", null, "deity");
+			case UrlUtil.PG_OBJECTS:
+				return pLoadSimple(page, "objects.json", "object");
+			case UrlUtil.PG_TRAPS_HAZARDS:
+				return pLoadSimple(page, "trapshazards.json", ["trap", "hazard"]);
+			case UrlUtil.PG_VARIATNRULES:
+				return pLoadSimple(page, "variantrules.json", "variantrule");
+			case UrlUtil.PG_CULTS_BOONS:
+				return pLoadSimple(page, "cultsboons.json", ["cult", "boon"], (listProp, item) => item._type = listProp === "cult" ? "c" : "b");
+			case UrlUtil.PG_CONDITIONS_DISEASES:
+				return pLoadSimple(page, "conditionsdiseases.json", ["condition", "disease"], (listProp, item) => item._type = listProp === "condition" ? "c" : "d");
+			case UrlUtil.PG_TABLES:
+				return pLoadSimple(page, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item._type = listProp === "table" ? "t" : "g");
+			case UrlUtil.PG_VEHICLES:
+				return pLoadSimple(page, "vehicles.json", "vehicle");
+			case UrlUtil.PG_ACTIONS:
+				return pLoadSimple(page, "actions.json", "action");
+			case UrlUtil.PG_LANGUAGES:
+				return pLoadSimple(page, "languages.json", "language");
+			default:
+				throw new Error(`No load function defined for page ${page}`);
 		}
 	},
 	// endregion
 
-	getGenericCompactRenderedString (entry) {
+	getGenericCompactRenderedString(entry) {
 		return `
 			<tr class="text homebrew-hover"><td colspan="6">
 			${Renderer.get().setFirstSection(true).render(entry)}
@@ -6185,41 +6545,66 @@ Renderer.hover = {
 		`;
 	},
 
-	_pageToRenderFn (page) {
+	_pageToRenderFn(page) {
 		switch (page) {
 			case "generic":
-			case "hover": return Renderer.hover.getGenericCompactRenderedString;
-			case UrlUtil.PG_CLASSES: return Renderer.hover.getGenericCompactRenderedString;
-			case UrlUtil.PG_SPELLS: return Renderer.spell.getCompactRenderedString;
-			case UrlUtil.PG_ITEMS: return Renderer.item.getCompactRenderedString;
-			case UrlUtil.PG_BESTIARY: return (it) => Renderer.monster.getCompactRenderedString(it, null, {showScaler: true, isScaled: it._originalCr != null});
-			case UrlUtil.PG_CONDITIONS_DISEASES: return Renderer.condition.getCompactRenderedString;
-			case UrlUtil.PG_BACKGROUNDS: return Renderer.background.getCompactRenderedString;
-			case UrlUtil.PG_FEATS: return Renderer.feat.getCompactRenderedString;
-			case UrlUtil.PG_OPT_FEATURES: return Renderer.optionalfeature.getCompactRenderedString;
-			case UrlUtil.PG_PSIONICS: return Renderer.psionic.getCompactRenderedString;
-			case UrlUtil.PG_REWARDS: return Renderer.reward.getCompactRenderedString;
-			case UrlUtil.PG_RACES: return Renderer.race.getCompactRenderedString;
-			case UrlUtil.PG_DEITIES: return Renderer.deity.getCompactRenderedString;
-			case UrlUtil.PG_OBJECTS: return Renderer.object.getCompactRenderedString;
-			case UrlUtil.PG_TRAPS_HAZARDS: return Renderer.traphazard.getCompactRenderedString;
-			case UrlUtil.PG_VARIATNRULES: return Renderer.variantrule.getCompactRenderedString;
-			case UrlUtil.PG_CULTS_BOONS: return Renderer.cultboon.getCompactRenderedString;
-			case UrlUtil.PG_TABLES: return Renderer.table.getCompactRenderedString;
-			case UrlUtil.PG_VEHICLES: return Renderer.vehicle.getCompactRenderedString;
-			case UrlUtil.PG_ACTIONS: return Renderer.action.getCompactRenderedString;
-			case UrlUtil.PG_LANGUAGES: return Renderer.language.getCompactRenderedString;
-			default: return null;
+			case "hover":
+				return Renderer.hover.getGenericCompactRenderedString;
+			case UrlUtil.PG_CLASSES:
+				return Renderer.hover.getGenericCompactRenderedString;
+			case UrlUtil.PG_SPELLS:
+				return Renderer.spell.getCompactRenderedString;
+			case UrlUtil.PG_ITEMS:
+				return Renderer.item.getCompactRenderedString;
+			case UrlUtil.PG_BESTIARY:
+				return (it) => Renderer.monster.getCompactRenderedString(it, null, {
+					showScaler: true,
+					isScaled: it._originalCr != null
+				});
+			case UrlUtil.PG_CONDITIONS_DISEASES:
+				return Renderer.condition.getCompactRenderedString;
+			case UrlUtil.PG_BACKGROUNDS:
+				return Renderer.background.getCompactRenderedString;
+			case UrlUtil.PG_FEATS:
+				return Renderer.feat.getCompactRenderedString;
+			case UrlUtil.PG_OPT_FEATURES:
+				return Renderer.optionalfeature.getCompactRenderedString;
+			case UrlUtil.PG_PSIONICS:
+				return Renderer.psionic.getCompactRenderedString;
+			case UrlUtil.PG_REWARDS:
+				return Renderer.reward.getCompactRenderedString;
+			case UrlUtil.PG_RACES:
+				return Renderer.race.getCompactRenderedString;
+			case UrlUtil.PG_DEITIES:
+				return Renderer.deity.getCompactRenderedString;
+			case UrlUtil.PG_OBJECTS:
+				return Renderer.object.getCompactRenderedString;
+			case UrlUtil.PG_TRAPS_HAZARDS:
+				return Renderer.traphazard.getCompactRenderedString;
+			case UrlUtil.PG_VARIATNRULES:
+				return Renderer.variantrule.getCompactRenderedString;
+			case UrlUtil.PG_CULTS_BOONS:
+				return Renderer.cultboon.getCompactRenderedString;
+			case UrlUtil.PG_TABLES:
+				return Renderer.table.getCompactRenderedString;
+			case UrlUtil.PG_VEHICLES:
+				return Renderer.vehicle.getCompactRenderedString;
+			case UrlUtil.PG_ACTIONS:
+				return Renderer.action.getCompactRenderedString;
+			case UrlUtil.PG_LANGUAGES:
+				return Renderer.language.getCompactRenderedString;
+			default:
+				return null;
 		}
 	},
 
-	isSmallScreen (evt) {
+	isSmallScreen(evt) {
 		evt = evt || {};
 		const win = (evt.view || {}).window || window;
 		return win.innerWidth <= 768;
 	},
 
-	bindPopoutButton (toList, handlerGenerator, title) {
+	bindPopoutButton(toList, handlerGenerator, title) {
 		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`)
 			.off("click")
 			.title(title || "Popout Window (SHIFT for Source Data)");
@@ -6251,12 +6636,12 @@ Renderer.hover = {
 		);
 	},
 
-	$getHoverContent_stats (page, toRender) {
+	$getHoverContent_stats(page, toRender) {
 		const renderFn = Renderer.hover._pageToRenderFn(page);
 		return $$`<table class="stats">${renderFn(toRender)}</table>`;
 	},
 
-	$getHoverContent_statsCode (toRender) {
+	$getHoverContent_statsCode(toRender) {
 		const cleanCopy = DataUtil.cleanJson(MiscUtil.copy(toRender));
 		return Renderer.hover.$getHoverContent_miscCode(
 			`${cleanCopy.name} \u2014 Source Data`,
@@ -6264,7 +6649,7 @@ Renderer.hover = {
 		);
 	},
 
-	$getHoverContent_miscCode (name, code) {
+	$getHoverContent_miscCode(name, code) {
 		const toRenderCode = {
 			type: "code",
 			name,
@@ -6273,11 +6658,11 @@ Renderer.hover = {
 		return $$`<table class="stats stats--book">${Renderer.get().render(toRenderCode)}</table>`;
 	},
 
-	$getHoverContent_generic (toRender, isBookContent) {
+	$getHoverContent_generic(toRender, isBookContent) {
 		return $$`<table class="stats ${isBookContent ? "stats--book" : ""}">${Renderer.hover.getGenericCompactRenderedString(toRender)}</table>`;
 	},
 
-	doPopoutCurPage (evt, allEntries, index) {
+	doPopoutCurPage(evt, allEntries, index) {
 		const it = allEntries[index];
 		const $content = Renderer.hover.$getHoverContent_stats(UrlUtil.getCurrentPage(), it);
 		Renderer.hover.getShowWindow(
@@ -6312,13 +6697,13 @@ Renderer.dice = {
 
 	// region Utilities
 	DICE: [4, 6, 8, 10, 12, 20, 100],
-	getNextDice (faces) {
+	getNextDice(faces) {
 		const idx = Renderer.dice.DICE.indexOf(faces);
 		if (~idx) return Renderer.dice.DICE[idx + 1];
 		else return null;
 	},
 
-	getPreviousDice (faces) {
+	getPreviousDice(faces) {
 		const idx = Renderer.dice.DICE.indexOf(faces);
 		if (~idx) return Renderer.dice.DICE[idx - 1];
 		else return null;
@@ -6327,7 +6712,7 @@ Renderer.dice = {
 
 	// region DM Screen integration
 	_panel: null,
-	bindDmScreenPanel (panel, title) {
+	bindDmScreenPanel(panel, title) {
 		if (Renderer.dice._panel) { // there can only be one roller box
 			Renderer.dice.unbindDmScreenPanel();
 		}
@@ -6336,7 +6721,7 @@ Renderer.dice = {
 		panel.doPopulate_Rollbox(title);
 	},
 
-	unbindDmScreenPanel () {
+	unbindDmScreenPanel() {
 		if (Renderer.dice._panel) {
 			$(`body`).append(Renderer.dice._$wrpRoll);
 			Renderer.dice._panel.close$TabContent();
@@ -6346,13 +6731,13 @@ Renderer.dice = {
 		}
 	},
 
-	get$Roller () {
+	get$Roller() {
 		return Renderer.dice._$wrpRoll;
 	},
 	// endregion
 
 	/** Silently roll an expression and get the result. */
-	parseRandomise2 (str) {
+	parseRandomise2(str) {
 		if (!str || !str.trim()) return null;
 		const tree = Renderer.dice.lang.getTree3(str);
 		if (tree) return tree.evl({});
@@ -6360,7 +6745,7 @@ Renderer.dice = {
 	},
 
 	/** Silently get the average of an expression. */
-	parseAverage (str) {
+	parseAverage(str) {
 		if (!str || !str.trim()) return null;
 		const tree = Renderer.dice.lang.getTree3(str);
 		if (tree) return tree.avg({});
@@ -6368,7 +6753,7 @@ Renderer.dice = {
 	},
 
 	// region Roll box UI
-	_showBox () {
+	_showBox() {
 		if (Renderer.dice._$wrpRoll.css("display") !== "flex") {
 			Renderer.dice._$minRoll.hide();
 			Renderer.dice._$wrpRoll.css("display", "flex");
@@ -6376,12 +6761,12 @@ Renderer.dice = {
 		}
 	},
 
-	_hideBox () {
+	_hideBox() {
 		Renderer.dice._$minRoll.show();
 		Renderer.dice._$wrpRoll.css("display", "");
 	},
 
-	_getRandomPlaceholder () {
+	_getRandomPlaceholder() {
 		const count = RollerUtil.randomise(10);
 		const faces = Renderer.dice.DICE[RollerUtil.randomise(Renderer.dice.DICE.length - 1)];
 		const mod = (RollerUtil.randomise(3) - 2) * RollerUtil.randomise(10);
@@ -6392,7 +6777,7 @@ Renderer.dice = {
 	},
 
 	/** Initialise the roll box UI. */
-	async _pInit () {
+	async _pInit() {
 		const $wrpRoll = $(`<div class="rollbox"/>`);
 		const $minRoll = $(`<div class="rollbox-min"><span class="glyphicon glyphicon-chevron-up"></span></div>`).on("click", () => {
 			Renderer.dice._showBox();
@@ -6470,7 +6855,7 @@ Renderer.dice = {
 	// region Event handling
 	_contextRollLabel: "rollChooser",
 	_contextPromptLabel: "rollPrompt",
-	async pRollerClickUseData (evt, ele) {
+	async pRollerClickUseData(evt, ele) {
 		const $ele = $(ele);
 		const rollData = $ele.data("packed-dice");
 		let name = $ele.data("roll-name");
@@ -6520,9 +6905,11 @@ Renderer.dice = {
 					switch (k) {
 						case "min":
 						case "max":
-							opts[k] = Number(v); break;
+							opts[k] = Number(v);
+							break;
 						default:
-							opts[k] = v; break;
+							opts[k] = v;
+							break;
 					}
 				});
 			}
@@ -6581,24 +6968,27 @@ Renderer.dice = {
 		await Renderer.dice.pRollerClick({shiftKey, ctrlKey}, ele, JSON.stringify(rollDataCpyToRoll), name);
 	},
 
-	__rerollNextInlineResult (ele) {
+	__rerollNextInlineResult(ele) {
 		const $ele = $(ele);
 		const $result = $ele.next(`.result`);
 		const r = Renderer.dice.__rollPackedData($ele);
 		$result.text(r);
 	},
 
-	__rollPackedData ($ele) {
+	__rollPackedData($ele) {
 		const tree = Renderer.dice.lang.getTree3($ele.data("packed-dice").toRoll);
 		return tree.evl({});
 	},
 
-	_pRollerClick_getMsgBug (total) { return `<span class="message">No result found matching roll ${total}?! <span class="help--subtle" title="Bug!">🐛</span></span>`; },
+	_pRollerClick_getMsgBug(total) {
+		return `<span class="message">No result found matching roll ${total}?! <span class="help--subtle" title="Bug!">🐛</span></span>`;
+	},
 
-	async pRollerClick (evtMock, ele, packed, name) {
+	async pRollerClick(evtMock, ele, packed, name) {
 		const $ele = $(ele);
 		const entry = JSON.parse(packed);
-		function attemptToGetNameOfRoll () {
+
+		function attemptToGetNameOfRoll() {
 			// try use table caption
 			let titleMaybe = $(ele).closest(`table:not(.stats)`).children(`caption`).text();
 			if (titleMaybe) return titleMaybe.trim();
@@ -6627,7 +7017,7 @@ Renderer.dice = {
 			return titleMaybe;
 		}
 
-		function attemptToGetNameOfRoller () {
+		function attemptToGetNameOfRoller() {
 			const $hov = $ele.closest(`.hwin`);
 			if ($hov.length) return $hov.find(`.stats-name`).first().text();
 			const $roll = $ele.closest(`.out-roll-wrp`);
@@ -6638,7 +7028,7 @@ Renderer.dice = {
 			return name === "DM Screen" ? "Dungeon Master" : name;
 		}
 
-		function _$getTdsFromTotal (total) {
+		function _$getTdsFromTotal(total) {
 			const $table = $ele.closest(`table`);
 			const $tdRoll = $table.find(`td`).filter((i, e) => {
 				const $e = $(e);
@@ -6651,7 +7041,7 @@ Renderer.dice = {
 			return null;
 		}
 
-		function _rollInlineRollers ($ele) {
+		function _rollInlineRollers($ele) {
 			$ele.find(`.render-roller`).each((i, e) => {
 				const $e = $(e);
 				const r = Renderer.dice.__rollPackedData($e);
@@ -6660,7 +7050,7 @@ Renderer.dice = {
 			});
 		}
 
-		function fnGetMessageTable (total) {
+		function fnGetMessageTable(total) {
 			const elesTd = _$getTdsFromTotal(total);
 			if (elesTd) {
 				const tableRow = elesTd.map(ele => ele.innerHTML.trim()).filter(it => it).join(" | ");
@@ -6671,7 +7061,7 @@ Renderer.dice = {
 			return Renderer.dice._pRollerClick_getMsgBug(total);
 		}
 
-		function fnGetMessageGeneratorTable (ix, total) {
+		function fnGetMessageGeneratorTable(ix, total) {
 			const elesTd = _$getTdsFromTotal(total);
 			if (elesTd) {
 				const $row = $(`<span class="message">${elesTd[ix].innerHTML.trim()}</span>`);
@@ -6681,7 +7071,7 @@ Renderer.dice = {
 			return Renderer.dice._pRollerClick_getMsgBug(total);
 		}
 
-		async function pRollGeneratorTable () {
+		async function pRollGeneratorTable() {
 			Renderer.dice.addElement(rolledBy, `<i>${rolledBy.label}:</i>`);
 
 			const out = [];
@@ -6691,7 +7081,10 @@ Renderer.dice = {
 				const cpyRolledBy = MiscUtil.copy(rolledBy);
 				cpyRolledBy.label = $($ths.get(i + 1)).text().trim();
 
-				const result = await Renderer.dice.pRollEntry(modRollMeta.entry, cpyRolledBy, {fnGetMessage: fnGetMessageGeneratorTable.bind(null, i), rollCount: modRollMeta.rollCount});
+				const result = await Renderer.dice.pRollEntry(modRollMeta.entry, cpyRolledBy, {
+					fnGetMessage: fnGetMessageGeneratorTable.bind(null, i),
+					rollCount: modRollMeta.rollCount
+				});
 				const elesTd = _$getTdsFromTotal(result);
 
 				if (!elesTd) {
@@ -6722,12 +7115,15 @@ Renderer.dice = {
 			if (isRoller && $parent.attr("data-rd-namegeneratorrolls")) {
 				pRollGeneratorTable();
 			} else {
-				Renderer.dice.pRollEntry(modRollMeta.entry, rolledBy, {fnGetMessage: fnGetMessageTable, rollCount: modRollMeta.rollCount});
+				Renderer.dice.pRollEntry(modRollMeta.entry, rolledBy, {
+					fnGetMessage: fnGetMessageTable,
+					rollCount: modRollMeta.rollCount
+				});
 			}
 		} else Renderer.dice.pRollEntry(modRollMeta.entry, rolledBy, {rollCount: modRollMeta.rollCount});
 	},
 
-	getEventModifiedRollMeta (evt, entry) {
+	getEventModifiedRollMeta(evt, entry) {
 		// Change roll type/count depending on CTRL/SHIFT status
 		const out = {rollCount: 1, entry};
 
@@ -6771,7 +7167,7 @@ Renderer.dice = {
 	 * @param [opts] Options object.
 	 * @param [opts.isResultUsed] If an input box should be provided for the user to enter the result (manual mode only).
 	 */
-	async pRoll2 (str, rolledBy, opts) {
+	async pRoll2(str, rolledBy, opts) {
 		opts = opts || {};
 		str = str.trim();
 		if (!str) return;
@@ -6799,7 +7195,7 @@ Renderer.dice = {
 	 * @param [opts.isResultUsed] If an input box should be provided for the user to enter the result (manual mode only).
 	 * @param [opts.rollCount]
 	 */
-	async pRollEntry (entry, rolledBy, opts) {
+	async pRollEntry(entry, rolledBy, opts) {
 		opts = opts || {};
 
 		const rollCount = Math.round(opts.rollCount || 1);
@@ -6828,13 +7224,13 @@ Renderer.dice = {
 	 * @param [opts.fnGetMessage]
 	 * @param [opts.isResultUsed]
 	 */
-	_pHandleRoll2 (tree, rolledBy, opts) {
+	_pHandleRoll2(tree, rolledBy, opts) {
 		opts = opts || {};
 		if (Renderer.dice._isManualMode) return Renderer.dice._pHandleRoll2_manual(tree, rolledBy, opts);
 		else return Renderer.dice._pHandleRoll2_automatic(tree, rolledBy, opts);
 	},
 
-	_pHandleRoll2_automatic (tree, rolledBy, opts) {
+	_pHandleRoll2_automatic(tree, rolledBy, opts) {
 		opts = opts || {};
 
 		Renderer.dice._showBox();
@@ -6880,7 +7276,7 @@ Renderer.dice = {
 		}
 	},
 
-	_pHandleRoll2_manual (tree, rolledBy, opts) {
+	_pHandleRoll2_manual(tree, rolledBy, opts) {
 		opts = opts || {};
 
 		if (!tree) return JqueryUtil.doToast({type: "danger", content: `Invalid roll input!`});
@@ -6902,7 +7298,7 @@ Renderer.dice = {
 		}
 	},
 
-	_showMessage (message, rolledBy) {
+	_showMessage(message, rolledBy) {
 		Renderer.dice._showBox();
 		Renderer.dice._checkHandleName(rolledBy.name);
 		const $out = Renderer.dice._$lastRolledBy;
@@ -6911,18 +7307,19 @@ Renderer.dice = {
 	},
 
 	_validCommands: new Set(["/c", "/cls", "/clear"]),
-	_handleCommand (com, rolledBy) {
+	_handleCommand(com, rolledBy) {
 		Renderer.dice._showMessage(`<span class="out-roll-item-code">${com}</span>`, rolledBy); // parrot the user's command back to them
 		const PREF_MACRO = "/macro";
-		function showInvalid () {
+
+		function showInvalid() {
 			Renderer.dice._showMessage("Invalid input! Try &quot;/help&quot;", Renderer.dice.SYSTEM_USER);
 		}
 
-		function checkLength (arr, desired) {
+		function checkLength(arr, desired) {
 			return arr.length === desired;
 		}
 
-		async function pSave () {
+		async function pSave() {
 			await StorageUtil.pSet(VeCt.STORAGE_ROLLER_MACRO, Renderer.dice.storage);
 		}
 
@@ -7025,7 +7422,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 		} else showInvalid();
 	},
 
-	_pHandleSavedRoll (id, rolledBy, opts) {
+	_pHandleSavedRoll(id, rolledBy, opts) {
 		id = id.replace(/^#/, "");
 		const macro = Renderer.dice.storage[id];
 		if (macro) {
@@ -7035,7 +7432,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 		} else Renderer.dice._showMessage(`Macro <span class="out-roll-item-code">#${id}</span> not found`, Renderer.dice.SYSTEM_USER);
 	},
 
-	addRoll (rolledBy, msgText) {
+	addRoll(rolledBy, msgText) {
 		if (!msgText.trim()) return;
 		Renderer.dice._showBox();
 		Renderer.dice._checkHandleName(rolledBy.name);
@@ -7043,14 +7440,14 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 		Renderer.dice._scrollBottom();
 	},
 
-	addElement (rolledBy, $ele) {
+	addElement(rolledBy, $ele) {
 		Renderer.dice._showBox();
 		Renderer.dice._checkHandleName(rolledBy.name);
 		$$`<div class="out-roll-item out-roll-item--message">${$ele}</div>`.appendTo(Renderer.dice._$lastRolledBy);
 		Renderer.dice._scrollBottom();
 	},
 
-	_checkHandleName (name) {
+	_checkHandleName(name) {
 		if (!Renderer.dice._$lastRolledBy || Renderer.dice._$lastRolledBy.data("name") !== name) {
 			Renderer.dice._$outRoll.prepend(`<div class="ve-muted out-roll-id">${name}</div>`);
 			Renderer.dice._$lastRolledBy = $(`<div class="out-roll-wrp"/>`).data("name", name);
@@ -7060,7 +7457,7 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 };
 
 Renderer.dice.lang = {
-	validate3 (str) {
+	validate3(str) {
 		str = str.trim();
 
 		// region Lexing
@@ -7083,7 +7480,7 @@ Renderer.dice.lang = {
 		return null;
 	},
 
-	getTree3 (str, isSilent = true) {
+	getTree3(str, isSilent = true) {
 		str = str.trim();
 		if (isSilent) {
 			try {
@@ -7103,7 +7500,7 @@ Renderer.dice.lang = {
 	_M_SYMBOL_CHAR: /[-+/*^=><florceidhkxunavgs,]/,
 
 	_M_NUMBER: /^[\d.,]+$/,
-	_lex3 (str) {
+	_lex3(str) {
 		const self = {
 			tokenStack: [],
 			parenCount: 0,
@@ -7130,7 +7527,7 @@ Renderer.dice.lang = {
 		return self.tokenStack;
 	},
 
-	_lex3_lex (self, l) {
+	_lex3_lex(self, l) {
 		const len = l.length;
 
 		for (let i = 0; i < len; ++i) {
@@ -7164,7 +7561,12 @@ Renderer.dice.lang = {
 					this._lex3_outputToken(self);
 					break;
 				// single-character operators
-				case "+": case "-": case "*": case "/": case "^": case ",":
+				case "+":
+				case "-":
+				case "*":
+				case "/":
+				case "^":
+				case ",":
 					this._lex3_outputToken(self);
 					self.token += c;
 					this._lex3_outputToken(self);
@@ -7188,44 +7590,112 @@ Renderer.dice.lang = {
 		this._lex3_outputToken(self);
 	},
 
-	_lex3_outputToken (self) {
+	_lex3_outputToken(self) {
 		if (!self.token) return;
 
 		switch (self.token) {
-			case "(": self.tokenStack.push(Renderer.dice.tk.PAREN_OPEN); break;
-			case ")": self.tokenStack.push(Renderer.dice.tk.PAREN_CLOSE); break;
-			case "{": self.tokenStack.push(Renderer.dice.tk.BRACE_OPEN); break;
-			case "}": self.tokenStack.push(Renderer.dice.tk.BRACE_CLOSE); break;
-			case ",": self.tokenStack.push(Renderer.dice.tk.COMMA); break;
-			case "+": self.tokenStack.push(Renderer.dice.tk.ADD); break;
-			case "-": self.tokenStack.push(Renderer.dice.tk.SUB); break;
-			case "*": self.tokenStack.push(Renderer.dice.tk.MULT); break;
-			case "/": self.tokenStack.push(Renderer.dice.tk.DIV); break;
-			case "^": self.tokenStack.push(Renderer.dice.tk.POW); break;
-			case "floor": self.tokenStack.push(Renderer.dice.tk.FLOOR); break;
-			case "ceil": self.tokenStack.push(Renderer.dice.tk.CEIL); break;
-			case "round": self.tokenStack.push(Renderer.dice.tk.ROUND); break;
-			case "avg": self.tokenStack.push(Renderer.dice.tk.AVERAGE); break;
-			case "d": self.tokenStack.push(Renderer.dice.tk.DICE); break;
-			case "dh": self.tokenStack.push(Renderer.dice.tk.DROP_HIGHEST); break;
-			case "kh": self.tokenStack.push(Renderer.dice.tk.KEEP_HIGHEST); break;
-			case "dl": self.tokenStack.push(Renderer.dice.tk.DROP_LOWEST); break;
-			case "kl": self.tokenStack.push(Renderer.dice.tk.KEEP_LOWEST); break;
-			case "r": self.tokenStack.push(Renderer.dice.tk.REROLL_EXACT); break;
-			case "r>": self.tokenStack.push(Renderer.dice.tk.REROLL_GT); break;
-			case "r>=": self.tokenStack.push(Renderer.dice.tk.REROLL_GTEQ); break;
-			case "r<": self.tokenStack.push(Renderer.dice.tk.REROLL_LT); break;
-			case "r<=": self.tokenStack.push(Renderer.dice.tk.REROLL_LTEQ); break;
-			case "x": self.tokenStack.push(Renderer.dice.tk.EXPLODE_EXACT); break;
-			case "x>": self.tokenStack.push(Renderer.dice.tk.EXPLODE_GT); break;
-			case "x>=": self.tokenStack.push(Renderer.dice.tk.EXPLODE_GTEQ); break;
-			case "x<": self.tokenStack.push(Renderer.dice.tk.EXPLODE_LT); break;
-			case "x<=": self.tokenStack.push(Renderer.dice.tk.EXPLODE_LTEQ); break;
-			case "cs=": self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_EXACT); break;
-			case "cs>": self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_GT); break;
-			case "cs>=": self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_GTEQ); break;
-			case "cs<": self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_LT); break;
-			case "cs<=": self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_LTEQ); break;
+			case "(":
+				self.tokenStack.push(Renderer.dice.tk.PAREN_OPEN);
+				break;
+			case ")":
+				self.tokenStack.push(Renderer.dice.tk.PAREN_CLOSE);
+				break;
+			case "{":
+				self.tokenStack.push(Renderer.dice.tk.BRACE_OPEN);
+				break;
+			case "}":
+				self.tokenStack.push(Renderer.dice.tk.BRACE_CLOSE);
+				break;
+			case ",":
+				self.tokenStack.push(Renderer.dice.tk.COMMA);
+				break;
+			case "+":
+				self.tokenStack.push(Renderer.dice.tk.ADD);
+				break;
+			case "-":
+				self.tokenStack.push(Renderer.dice.tk.SUB);
+				break;
+			case "*":
+				self.tokenStack.push(Renderer.dice.tk.MULT);
+				break;
+			case "/":
+				self.tokenStack.push(Renderer.dice.tk.DIV);
+				break;
+			case "^":
+				self.tokenStack.push(Renderer.dice.tk.POW);
+				break;
+			case "floor":
+				self.tokenStack.push(Renderer.dice.tk.FLOOR);
+				break;
+			case "ceil":
+				self.tokenStack.push(Renderer.dice.tk.CEIL);
+				break;
+			case "round":
+				self.tokenStack.push(Renderer.dice.tk.ROUND);
+				break;
+			case "avg":
+				self.tokenStack.push(Renderer.dice.tk.AVERAGE);
+				break;
+			case "d":
+				self.tokenStack.push(Renderer.dice.tk.DICE);
+				break;
+			case "dh":
+				self.tokenStack.push(Renderer.dice.tk.DROP_HIGHEST);
+				break;
+			case "kh":
+				self.tokenStack.push(Renderer.dice.tk.KEEP_HIGHEST);
+				break;
+			case "dl":
+				self.tokenStack.push(Renderer.dice.tk.DROP_LOWEST);
+				break;
+			case "kl":
+				self.tokenStack.push(Renderer.dice.tk.KEEP_LOWEST);
+				break;
+			case "r":
+				self.tokenStack.push(Renderer.dice.tk.REROLL_EXACT);
+				break;
+			case "r>":
+				self.tokenStack.push(Renderer.dice.tk.REROLL_GT);
+				break;
+			case "r>=":
+				self.tokenStack.push(Renderer.dice.tk.REROLL_GTEQ);
+				break;
+			case "r<":
+				self.tokenStack.push(Renderer.dice.tk.REROLL_LT);
+				break;
+			case "r<=":
+				self.tokenStack.push(Renderer.dice.tk.REROLL_LTEQ);
+				break;
+			case "x":
+				self.tokenStack.push(Renderer.dice.tk.EXPLODE_EXACT);
+				break;
+			case "x>":
+				self.tokenStack.push(Renderer.dice.tk.EXPLODE_GT);
+				break;
+			case "x>=":
+				self.tokenStack.push(Renderer.dice.tk.EXPLODE_GTEQ);
+				break;
+			case "x<":
+				self.tokenStack.push(Renderer.dice.tk.EXPLODE_LT);
+				break;
+			case "x<=":
+				self.tokenStack.push(Renderer.dice.tk.EXPLODE_LTEQ);
+				break;
+			case "cs=":
+				self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_EXACT);
+				break;
+			case "cs>":
+				self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_GT);
+				break;
+			case "cs>=":
+				self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_GTEQ);
+				break;
+			case "cs<":
+				self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_LT);
+				break;
+			case "cs<=":
+				self.tokenStack.push(Renderer.dice.tk.COUNT_SUCCESS_LTEQ);
+				break;
 			default: {
 				if (Renderer.dice.lang._M_NUMBER.test(self.token)) {
 					if (self.token.split(Parser._decimalSeparator).length > 2) throw new Error(`Syntax error: too many decimal separators <code>${self.token}</code>`);
@@ -7239,7 +7709,7 @@ Renderer.dice.lang = {
 	// endregion
 
 	// region Parser
-	_parse3 (lexed) {
+	_parse3(lexed) {
 		const self = {
 			ixSym: -1,
 			syms: lexed,
@@ -7251,20 +7721,20 @@ Renderer.dice.lang = {
 		return this._parse3_expression(self);
 	},
 
-	_parse3_nextSym (self) {
+	_parse3_nextSym(self) {
 		const cur = self.syms[self.ixSym];
 		self.ixSym++;
 		self.sym = self.syms[self.ixSym];
 		return cur;
 	},
 
-	_parse3_match (self, symbol) {
+	_parse3_match(self, symbol) {
 		if (self.sym == null) return false;
 		if (symbol.type) symbol = symbol.type; // If it's a typed token, convert it to its underlying type
 		return self.sym.type === symbol;
 	},
 
-	_parse3_accept (self, symbol) {
+	_parse3_accept(self, symbol) {
 		if (this._parse3_match(self, symbol)) {
 			const out = self.sym;
 			this._parse3_nextSym(self);
@@ -7274,14 +7744,14 @@ Renderer.dice.lang = {
 		return false;
 	},
 
-	_parse3_expect (self, symbol) {
+	_parse3_expect(self, symbol) {
 		const accepted = this._parse3_accept(self, symbol);
 		if (accepted) return accepted;
 		if (self.sym) throw new Error(`Unexpected input: Expected <code>${symbol}</code> but found <code>${self.sym}</code>`);
 		else throw new Error(`Unexpected end of input: Expected <code>${symbol}</code>`);
 	},
 
-	_parse3_factor (self) {
+	_parse3_factor(self) {
 		if (this._parse3_accept(self, Renderer.dice.tk.TYP_NUMBER)) {
 			// Combine comma-separated parts
 			const syms = [self.lastAccepted];
@@ -7326,7 +7796,7 @@ Renderer.dice.lang = {
 		}
 	},
 
-	_parse3_dice (self) {
+	_parse3_dice(self) {
 		const children = [];
 
 		// if we've omitting the X in XdY, add it here
@@ -7341,7 +7811,7 @@ Renderer.dice.lang = {
 		return new Renderer.dice.parsed.Dice(children);
 	},
 
-	_parse3__dice_modifiers (self, children) { // used in both dice and dice pools
+	_parse3__dice_modifiers(self, children) { // used in both dice and dice pools
 		if (
 			this._parse3_match(self, Renderer.dice.tk.DROP_HIGHEST)
 			|| this._parse3_match(self, Renderer.dice.tk.KEEP_HIGHEST)
@@ -7368,7 +7838,7 @@ Renderer.dice.lang = {
 		}
 	},
 
-	_parse3_exponent (self) {
+	_parse3_exponent(self) {
 		const children = [];
 		children.push(this._parse3_dice(self));
 		while (this._parse3_match(self, Renderer.dice.tk.POW)) {
@@ -7378,7 +7848,7 @@ Renderer.dice.lang = {
 		return new Renderer.dice.parsed.Exponent(children);
 	},
 
-	_parse3_term (self) {
+	_parse3_term(self) {
 		const children = [];
 		children.push(this._parse3_exponent(self));
 		while (this._parse3_match(self, Renderer.dice.tk.MULT) || this._parse3_match(self, Renderer.dice.tk.DIV)) {
@@ -7388,7 +7858,7 @@ Renderer.dice.lang = {
 		return new Renderer.dice.parsed.Term(children);
 	},
 
-	_parse3_expression (self) {
+	_parse3_expression(self) {
 		const children = [];
 		if (this._parse3_match(self, Renderer.dice.tk.ADD) || this._parse3_match(self, Renderer.dice.tk.SUB)) children.push(this._parse3_nextSym(self));
 		children.push(this._parse3_term(self));
@@ -7411,7 +7881,7 @@ Renderer.dice.tk = {
 		 * @param [opts.isDiceModifier] If the token is a dice modifier, e.g. "dl"
 		 * @param [opts.isSuccessMode] If the token is a "success"-based dice modifier, e.g. "cs="
 		 */
-		constructor (type, value, asString, opts) {
+		constructor(type, value, asString, opts) {
 			opts = opts || {};
 			this.type = type;
 			this.value = value;
@@ -7420,23 +7890,31 @@ Renderer.dice.tk = {
 			if (opts.isSuccessMode) this.isSuccessMode = true;
 		}
 
-		eq (other) { return other && other.type === this.type; }
+		eq(other) {
+			return other && other.type === this.type;
+		}
 
-		toString () {
+		toString() {
 			if (this._asString) return this._asString;
 			return this.toDebugString();
 		}
 
-		toDebugString () { return `${this.type}${this.value ? ` :: ${this.value}` : ""}` }
+		toDebugString() {
+			return `${this.type}${this.value ? ` :: ${this.value}` : ""}`
+		}
 	},
 
-	_new (type, asString, opts) { return new Renderer.dice.tk.Token(type, null, asString, opts); },
+	_new(type, asString, opts) {
+		return new Renderer.dice.tk.Token(type, null, asString, opts);
+	},
 
 	TYP_NUMBER: "NUMBER",
 	TYP_DICE: "DICE",
 	TYP_SYMBOL: "SYMBOL", // Cannot be created by lexing, only parsing
 
-	NUMBER (val) { return new Renderer.dice.tk.Token(Renderer.dice.tk.TYP_NUMBER, val); }
+	NUMBER(val) {
+		return new Renderer.dice.tk.Token(Renderer.dice.tk.TYP_NUMBER, val);
+	}
 };
 Renderer.dice.tk.PAREN_OPEN = Renderer.dice.tk._new("PAREN_OPEN", "(");
 Renderer.dice.tk.PAREN_CLOSE = Renderer.dice.tk._new("PAREN_CLOSE", ")");
@@ -7467,21 +7945,55 @@ Renderer.dice.tk.EXPLODE_GT = Renderer.dice.tk._new("EXPLODE_GT", "x>", {isDiceM
 Renderer.dice.tk.EXPLODE_GTEQ = Renderer.dice.tk._new("EXPLODE_GTEQ", "x>=", {isDiceModifier: true});
 Renderer.dice.tk.EXPLODE_LT = Renderer.dice.tk._new("EXPLODE_LT", "x<", {isDiceModifier: true});
 Renderer.dice.tk.EXPLODE_LTEQ = Renderer.dice.tk._new("EXPLODE_LTEQ", "x<=", {isDiceModifier: true});
-Renderer.dice.tk.COUNT_SUCCESS_EXACT = Renderer.dice.tk._new("COUNT_SUCCESS_EXACT", "cs=", {isDiceModifier: true, isSuccessMode: true});
-Renderer.dice.tk.COUNT_SUCCESS_GT = Renderer.dice.tk._new("COUNT_SUCCESS_GT", "cs>", {isDiceModifier: true, isSuccessMode: true});
-Renderer.dice.tk.COUNT_SUCCESS_GTEQ = Renderer.dice.tk._new("COUNT_SUCCESS_GTEQ", "cs>=", {isDiceModifier: true, isSuccessMode: true});
-Renderer.dice.tk.COUNT_SUCCESS_LT = Renderer.dice.tk._new("COUNT_SUCCESS_LT", "cs<", {isDiceModifier: true, isSuccessMode: true});
-Renderer.dice.tk.COUNT_SUCCESS_LTEQ = Renderer.dice.tk._new("COUNT_SUCCESS_LTEQ", "cs<=", {isDiceModifier: true, isSuccessMode: true});
+Renderer.dice.tk.COUNT_SUCCESS_EXACT = Renderer.dice.tk._new("COUNT_SUCCESS_EXACT", "cs=", {
+	isDiceModifier: true,
+	isSuccessMode: true
+});
+Renderer.dice.tk.COUNT_SUCCESS_GT = Renderer.dice.tk._new("COUNT_SUCCESS_GT", "cs>", {
+	isDiceModifier: true,
+	isSuccessMode: true
+});
+Renderer.dice.tk.COUNT_SUCCESS_GTEQ = Renderer.dice.tk._new("COUNT_SUCCESS_GTEQ", "cs>=", {
+	isDiceModifier: true,
+	isSuccessMode: true
+});
+Renderer.dice.tk.COUNT_SUCCESS_LT = Renderer.dice.tk._new("COUNT_SUCCESS_LT", "cs<", {
+	isDiceModifier: true,
+	isSuccessMode: true
+});
+Renderer.dice.tk.COUNT_SUCCESS_LTEQ = Renderer.dice.tk._new("COUNT_SUCCESS_LTEQ", "cs<=", {
+	isDiceModifier: true,
+	isSuccessMode: true
+});
 
 Renderer.dice.AbstractSymbol = class {
-	constructor () { this.type = Renderer.dice.tk.TYP_SYMBOL; }
-	eq (symbol) { return symbol && this.type === symbol.type; }
-	evl () { throw new Error("Unimplemented!"); }
-	avg () { throw new Error("Unimplemented!"); }
-	min () { throw new Error("Unimplemented!"); } // minimum value of all _rolls_, not the minimum possible result
-	max () { throw new Error("Unimplemented!"); } // maximum value of all _rolls_, not the maximum possible result
-	toString () { throw new Error("Unimplemented!"); }
-	addToMeta (meta, html, text) {
+	constructor() {
+		this.type = Renderer.dice.tk.TYP_SYMBOL;
+	}
+
+	eq(symbol) {
+		return symbol && this.type === symbol.type;
+	}
+
+	evl() {
+		throw new Error("Unimplemented!");
+	}
+
+	avg() {
+		throw new Error("Unimplemented!");
+	}
+
+	min() {
+		throw new Error("Unimplemented!");
+	} // minimum value of all _rolls_, not the minimum possible result
+	max() {
+		throw new Error("Unimplemented!");
+	} // maximum value of all _rolls_, not the maximum possible result
+	toString() {
+		throw new Error("Unimplemented!");
+	}
+
+	addToMeta(meta, html, text) {
 		if (!meta) return;
 		text = text || html;
 		meta.html = meta.html || [];
@@ -7507,7 +8019,7 @@ Renderer.dice.parsed = {
 	 * @param [opts.fnGetRerolls] Function which takes a set of rolls to be rerolled and generates the next set of rolls.
 	 * @param [opts.fnGetExplosions] Function which takes a set of rolls to be exploded and generates the next set of rolls.
 	 */
-	_handleModifiers (fnName, meta, vals, modNodes, opts) {
+	_handleModifiers(fnName, meta, vals, modNodes, opts) {
 		opts = opts || {};
 
 		const displayVals = vals.slice(); // copy the array so we can sort the original
@@ -7538,7 +8050,8 @@ Renderer.dice.parsed = {
 					case Renderer.dice.tk.DROP_LOWEST.type:
 						lowSlice.forEach(val => val.isDropped = true);
 						break;
-					default: throw new Error(`Unimplemented!`);
+					default:
+						throw new Error(`Unimplemented!`);
 				}
 				break;
 			}
@@ -7550,12 +8063,23 @@ Renderer.dice.parsed = {
 			case Renderer.dice.tk.REROLL_LTEQ.type: {
 				let fnPartition;
 				switch (mod.type) {
-					case Renderer.dice.tk.REROLL_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
-					case Renderer.dice.tk.REROLL_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
-					case Renderer.dice.tk.REROLL_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
-					case Renderer.dice.tk.REROLL_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
-					case Renderer.dice.tk.REROLL_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
-					default: throw new Error(`Unimplemented!`);
+					case Renderer.dice.tk.REROLL_EXACT.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_EQ;
+						break;
+					case Renderer.dice.tk.REROLL_GT.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_GT;
+						break;
+					case Renderer.dice.tk.REROLL_GTEQ.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_GTEQ;
+						break;
+					case Renderer.dice.tk.REROLL_LT.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_LT;
+						break;
+					case Renderer.dice.tk.REROLL_LTEQ.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_LTEQ;
+						break;
+					default:
+						throw new Error(`Unimplemented!`);
 				}
 
 				const toReroll = vals.filter(val => fnPartition(val.val, modNum));
@@ -7575,12 +8099,23 @@ Renderer.dice.parsed = {
 			case Renderer.dice.tk.EXPLODE_LTEQ.type: {
 				let fnPartition;
 				switch (mod.type) {
-					case Renderer.dice.tk.EXPLODE_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
-					case Renderer.dice.tk.EXPLODE_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
-					case Renderer.dice.tk.EXPLODE_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
-					case Renderer.dice.tk.EXPLODE_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
-					case Renderer.dice.tk.EXPLODE_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
-					default: throw new Error(`Unimplemented!`);
+					case Renderer.dice.tk.EXPLODE_EXACT.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_EQ;
+						break;
+					case Renderer.dice.tk.EXPLODE_GT.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_GT;
+						break;
+					case Renderer.dice.tk.EXPLODE_GTEQ.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_GTEQ;
+						break;
+					case Renderer.dice.tk.EXPLODE_LT.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_LT;
+						break;
+					case Renderer.dice.tk.EXPLODE_LTEQ.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_LTEQ;
+						break;
+					default:
+						throw new Error(`Unimplemented!`);
 				}
 
 				let tries = 999; // limit the maximum explosions to a sane amount
@@ -7601,7 +8136,10 @@ Renderer.dice.parsed = {
 					displayVals.push(...nuVals);
 				} while (tries-- > 0 && vals.length !== lastLen);
 
-				if (!~tries) JqueryUtil.doToast({type: "warning", content: `Stopped exploding after 999 additional rolls.`});
+				if (!~tries) JqueryUtil.doToast({
+					type: "warning",
+					content: `Stopped exploding after 999 additional rolls.`
+				});
 
 				break;
 			}
@@ -7613,12 +8151,23 @@ Renderer.dice.parsed = {
 			case Renderer.dice.tk.COUNT_SUCCESS_LTEQ.type: {
 				let fnPartition;
 				switch (mod.type) {
-					case Renderer.dice.tk.COUNT_SUCCESS_EXACT.type: fnPartition = Renderer.dice.parsed._PARTITION_EQ; break;
-					case Renderer.dice.tk.COUNT_SUCCESS_GT.type: fnPartition = Renderer.dice.parsed._PARTITION_GT; break;
-					case Renderer.dice.tk.COUNT_SUCCESS_GTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_GTEQ; break;
-					case Renderer.dice.tk.COUNT_SUCCESS_LT.type: fnPartition = Renderer.dice.parsed._PARTITION_LT; break;
-					case Renderer.dice.tk.COUNT_SUCCESS_LTEQ.type: fnPartition = Renderer.dice.parsed._PARTITION_LTEQ; break;
-					default: throw new Error(`Unimplemented!`);
+					case Renderer.dice.tk.COUNT_SUCCESS_EXACT.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_EQ;
+						break;
+					case Renderer.dice.tk.COUNT_SUCCESS_GT.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_GT;
+						break;
+					case Renderer.dice.tk.COUNT_SUCCESS_GTEQ.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_GTEQ;
+						break;
+					case Renderer.dice.tk.COUNT_SUCCESS_LT.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_LT;
+						break;
+					case Renderer.dice.tk.COUNT_SUCCESS_LTEQ.type:
+						fnPartition = Renderer.dice.parsed._PARTITION_LTEQ;
+						break;
+					default:
+						throw new Error(`Unimplemented!`);
 				}
 
 				const successes = vals.filter(val => fnPartition(val.val, modNum));
@@ -7627,24 +8176,36 @@ Renderer.dice.parsed = {
 				break;
 			}
 
-			default: throw new Error(`Unimplemented!`);
+			default:
+				throw new Error(`Unimplemented!`);
 		}
 
 		return displayVals;
 	},
 
 	Function: class extends Renderer.dice.AbstractSymbol {
-		constructor (nodes) {
+		constructor(nodes) {
 			super();
 			this._nodes = nodes;
 		}
 
-		evl (meta) { return this._invoke("evl", meta); }
-		avg (meta) { return this._invoke("avg", meta); }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		evl(meta) {
+			return this._invoke("evl", meta);
+		}
 
-		_invoke (fnName, meta) {
+		avg(meta) {
+			return this._invoke("avg", meta);
+		}
+
+		min(meta) {
+			return this._invoke("min", meta);
+		}
+
+		max(meta) {
+			return this._invoke("max", meta);
+		}
+
+		_invoke(fnName, meta) {
 			const [symFunc, symExp] = this._nodes;
 			switch (symFunc.type) {
 				case Renderer.dice.tk.FLOOR.type: {
@@ -7668,19 +8229,29 @@ Renderer.dice.parsed = {
 				case Renderer.dice.tk.AVERAGE.type: {
 					return symExp.avg(meta);
 				}
-				default: throw new Error(`Unimplemented!`);
+				default:
+					throw new Error(`Unimplemented!`);
 			}
 		}
 
-		toString () {
+		toString() {
 			let out;
 			const [symFunc, symExp] = this._nodes;
 			switch (symFunc.type) {
-				case Renderer.dice.tk.FLOOR.type: out = "floor"; break;
-				case Renderer.dice.tk.CEIL.type: out = "ceil"; break;
-				case Renderer.dice.tk.ROUND.type: out = "round"; break;
-				case Renderer.dice.tk.AVERAGE.type: out = "avg"; break;
-				default: throw new Error(`Unimplemented!`);
+				case Renderer.dice.tk.FLOOR.type:
+					out = "floor";
+					break;
+				case Renderer.dice.tk.CEIL.type:
+					out = "ceil";
+					break;
+				case Renderer.dice.tk.ROUND.type:
+					out = "round";
+					break;
+				case Renderer.dice.tk.AVERAGE.type:
+					out = "avg";
+					break;
+				default:
+					throw new Error(`Unimplemented!`);
 			}
 			out += `(${symExp.toString()})`;
 			return out;
@@ -7688,18 +8259,29 @@ Renderer.dice.parsed = {
 	},
 
 	Pool: class extends Renderer.dice.AbstractSymbol {
-		constructor (nodesPool, nodesMod) {
+		constructor(nodesPool, nodesMod) {
 			super();
 			this._nodesPool = nodesPool;
 			this._nodesMod = nodesMod;
 		}
 
-		evl (meta) { return this._invoke("evl", meta) }
-		avg (meta) { return this._invoke("avg", meta) }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		evl(meta) {
+			return this._invoke("evl", meta)
+		}
 
-		_invoke (fnName, meta) {
+		avg(meta) {
+			return this._invoke("avg", meta)
+		}
+
+		min(meta) {
+			return this._invoke("min", meta);
+		}
+
+		max(meta) {
+			return this._invoke("max", meta);
+		}
+
+		_invoke(fnName, meta) {
 			const vals = this._nodesPool.map((it, i) => {
 				const subMeta = {};
 				return {node: it, val: it[fnName](subMeta), meta: subMeta};
@@ -7744,25 +8326,36 @@ Renderer.dice.parsed = {
 			}
 		}
 
-		toString () {
+		toString() {
 			return `{${this._nodesPool.map(it => it.toString()).join(", ")}}${this._nodesMod.map(it => it.toString()).join("")}`
 		}
 	},
 
 	Factor: class extends Renderer.dice.AbstractSymbol {
-		constructor (node, opts) {
+		constructor(node, opts) {
 			super();
 			opts = opts || {};
 			this._node = node;
 			this._hasParens = !!opts.hasParens;
 		}
 
-		evl (meta) { return this._invoke("evl", meta) }
-		avg (meta) { return this._invoke("avg", meta) }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		evl(meta) {
+			return this._invoke("evl", meta)
+		}
 
-		_invoke (fnName, meta) {
+		avg(meta) {
+			return this._invoke("avg", meta)
+		}
+
+		min(meta) {
+			return this._invoke("min", meta);
+		}
+
+		max(meta) {
+			return this._invoke("max", meta);
+		}
+
+		_invoke(fnName, meta) {
 			switch (this._node.type) {
 				case Renderer.dice.tk.TYP_NUMBER: {
 					this.addToMeta(meta, this.toString());
@@ -7774,42 +8367,63 @@ Renderer.dice.parsed = {
 					if (this._hasParens) this.addToMeta(meta, ")");
 					return out;
 				}
-				default: throw new Error(`Unimplemented!`);
+				default:
+					throw new Error(`Unimplemented!`);
 			}
 		}
 
-		toString () {
+		toString() {
 			let out;
 			switch (this._node.type) {
-				case Renderer.dice.tk.TYP_NUMBER: out = this._node.value; break;
-				case Renderer.dice.tk.TYP_SYMBOL: out = this._node.toString(); break;
-				default: throw new Error(`Unimplemented!`);
+				case Renderer.dice.tk.TYP_NUMBER:
+					out = this._node.value;
+					break;
+				case Renderer.dice.tk.TYP_SYMBOL:
+					out = this._node.toString();
+					break;
+				default:
+					throw new Error(`Unimplemented!`);
 			}
 			return this._hasParens ? `(${out})` : out;
 		}
 	},
 
 	Dice: class extends Renderer.dice.AbstractSymbol {
-		static _facesToValue (faces, fnName) {
+		static _facesToValue(faces, fnName) {
 			switch (fnName) {
-				case "evl": return RollerUtil.randomise(faces);
-				case "avg": return (faces + 1) / 2;
-				case "min": return 1;
-				case "max": return faces;
+				case "evl":
+					return RollerUtil.randomise(faces);
+				case "avg":
+					return (faces + 1) / 2;
+				case "min":
+					return 1;
+				case "max":
+					return faces;
 			}
 		}
 
-		constructor (nodes) {
+		constructor(nodes) {
 			super();
 			this._nodes = nodes;
 		}
 
-		evl (meta) { return this._invoke("evl", meta); }
-		avg (meta) { return this._invoke("avg", meta); }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		evl(meta) {
+			return this._invoke("evl", meta);
+		}
 
-		_invoke (fnName, meta) {
+		avg(meta) {
+			return this._invoke("avg", meta);
+		}
+
+		min(meta) {
+			return this._invoke("min", meta);
+		}
+
+		max(meta) {
+			return this._invoke("max", meta);
+		}
+
+		_invoke(fnName, meta) {
 			if (this._nodes.length === 1) return this._nodes[0][fnName](meta); // if it's just a factor
 
 			// N.B. we don't pass "meta" to symbol evaluation inside the dice expression--we therefore won't see
@@ -7829,7 +8443,7 @@ Renderer.dice.parsed = {
 			return num;
 		}
 
-		_invoke_handlePart (fnName, meta, view, num, isLast) {
+		_invoke_handlePart(fnName, meta, view, num, isLast) {
 			const facesSym = view.shift();
 			const faces = facesSym[fnName]();
 			if (Math.round(faces) !== faces) throw new Error(`Dice face count (${faces}) was not an integer!`);
@@ -7850,7 +8464,8 @@ Renderer.dice.parsed = {
 					displayRolls = Renderer.dice.parsed._handleModifiers(fnName, meta, rolls, view, modOpts);
 				}
 
-				view.shift(); view.shift();
+				view.shift();
+				view.shift();
 			} else displayRolls = rolls;
 
 			if (isLast) { // only display the dice for the final roll, e.g. in 2d3d4 show the Xd4
@@ -7888,7 +8503,7 @@ Renderer.dice.parsed = {
 			}
 		}
 
-		toString () {
+		toString() {
 			if (this._nodes.length === 1) return this._nodes[0].toString(); // if it's just a factor
 
 			const [numSym, facesSym] = this._nodes;
@@ -7904,17 +8519,28 @@ Renderer.dice.parsed = {
 	},
 
 	Exponent: class extends Renderer.dice.AbstractSymbol {
-		constructor (nodes) {
+		constructor(nodes) {
 			super();
 			this._nodes = nodes;
 		}
 
-		evl (meta) { return this._invoke("evl", meta) }
-		avg (meta) { return this._invoke("avg", meta) }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		evl(meta) {
+			return this._invoke("evl", meta)
+		}
 
-		_invoke (fnName, meta) {
+		avg(meta) {
+			return this._invoke("avg", meta)
+		}
+
+		min(meta) {
+			return this._invoke("min", meta);
+		}
+
+		max(meta) {
+			return this._invoke("max", meta);
+		}
+
+		_invoke(fnName, meta) {
 			const view = this._nodes.slice();
 			let val = view.pop()[fnName](meta);
 			while (view.length) {
@@ -7924,7 +8550,7 @@ Renderer.dice.parsed = {
 			return val;
 		}
 
-		toString () {
+		toString() {
 			const view = this._nodes.slice();
 			let out = view.pop().toString();
 			while (view.length) out = `${view.pop().toString()}^${out}`;
@@ -7933,17 +8559,28 @@ Renderer.dice.parsed = {
 	},
 
 	Term: class extends Renderer.dice.AbstractSymbol {
-		constructor (nodes) {
+		constructor(nodes) {
 			super();
 			this._nodes = nodes;
 		}
 
-		evl (meta) { return this._invoke("evl", meta) }
-		avg (meta) { return this._invoke("avg", meta) }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		evl(meta) {
+			return this._invoke("evl", meta)
+		}
 
-		_invoke (fnName, meta) {
+		avg(meta) {
+			return this._invoke("avg", meta)
+		}
+
+		min(meta) {
+			return this._invoke("min", meta);
+		}
+
+		max(meta) {
+			return this._invoke("max", meta);
+		}
+
+		_invoke(fnName, meta) {
 			let out = this._nodes[0][fnName](meta);
 
 			for (let i = 1; i < this._nodes.length; i += 2) {
@@ -7959,7 +8596,7 @@ Renderer.dice.parsed = {
 			return out;
 		}
 
-		toString () {
+		toString() {
 			let out = this._nodes[0].toString();
 			for (let i = 1; i < this._nodes.length; i += 2) {
 				if (this._nodes[i].eq(Renderer.dice.tk.MULT)) out += ` * ${this._nodes[i + 1].toString()}`;
@@ -7971,17 +8608,28 @@ Renderer.dice.parsed = {
 	},
 
 	Expression: class extends Renderer.dice.AbstractSymbol {
-		constructor (nodes) {
+		constructor(nodes) {
 			super();
 			this._nodes = nodes;
 		}
 
-		evl (meta) { return this._invoke("evl", meta) }
-		avg (meta) { return this._invoke("avg", meta) }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		evl(meta) {
+			return this._invoke("evl", meta)
+		}
 
-		_invoke (fnName, meta) {
+		avg(meta) {
+			return this._invoke("avg", meta)
+		}
+
+		min(meta) {
+			return this._invoke("min", meta);
+		}
+
+		max(meta) {
+			return this._invoke("max", meta);
+		}
+
+		_invoke(fnName, meta) {
 			const view = this._nodes.slice();
 
 			let isNeg = false;
@@ -8006,7 +8654,7 @@ Renderer.dice.parsed = {
 			return out;
 		}
 
-		toString (indent = 0) {
+		toString(indent = 0) {
 			let out = "";
 			const view = this._nodes.slice();
 
@@ -8077,7 +8725,7 @@ Renderer.getNumberedNames = function (entry) {
 
 // dig down until we find a name, as feature names can be nested
 Renderer.findName = function (entry) {
-	function search (it) {
+	function search(it) {
 		if (it instanceof Array) {
 			for (const child of it) {
 				const n = search(child);
@@ -8093,6 +8741,7 @@ Renderer.findName = function (entry) {
 			}
 		}
 	}
+
 	return search(entry);
 };
 
@@ -8123,11 +8772,14 @@ Renderer._stripTagLayer = function (str) {
 					case "@underline":
 						return text;
 
-					case "@h": return "Hit: ";
+					case "@h":
+						return "Hit: ";
 
-					case "@dc": return `DC ${text}`;
+					case "@dc":
+						return `DC ${text}`;
 
-					case "@atk": return Renderer.attackTagToFull(text);
+					case "@atk":
+						return Renderer.attackTagToFull(text);
 
 					case "@chance":
 					case "@d20":
@@ -8242,11 +8894,13 @@ Renderer._stripTagLayer = function (str) {
 						} else throw new Error(`Homebrew tag had neither old nor new text!`);
 					}
 
-					default: throw new Error(`Unhandled tag: "${tag}"`);
+					default:
+						throw new Error(`Unhandled tag: "${tag}"`);
 				}
 			} else return it;
 		}).join("");
-	} return str;
+	}
+	return str;
 };
 
 Renderer.isRollableTable = function (table) {
@@ -8306,12 +8960,14 @@ Renderer.getRollableRow = function (row, cbErr) {
 				}
 			};
 		}
-	} catch (e) { if (cbErr) cbErr(row[0], e); }
+	} catch (e) {
+		if (cbErr) cbErr(row[0], e);
+	}
 	return row;
 };
 
 Renderer.initLazyImageLoaders = function () {
-	function onIntersection (obsEntries) {
+	function onIntersection(obsEntries) {
 		obsEntries.forEach(entry => {
 			if (entry.intersectionRatio > 0) { // filter observed entries for those that intersect
 				Renderer._imageObserver.unobserve(entry.target);

@@ -32,16 +32,16 @@ class SpellsPage {
 
 		const hash = UrlUtil.autoEncodeHash(spell);
 		const source = Parser.sourceJsonToAbv(spell.source);
-		const time = PageFilterSpells.getTblTimeStr(spell.time[0]);
-		const school = Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools);
-		const concentration = spell._isConc ? "×" : "";
+		const time = PageFilterSpells.getTblTimeStr(spell.cast);
+		const school = Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschool);
+		const concentration = spell.sustain ? "×" : "";
 		const range = Parser.spRangeToFull(spell.range);
 
 		eleLi.innerHTML = `<a href="#${spHash}" class="lst--border">
 			<span class="bold col-2-9 pl-0">${spell.name}</span>
 			<span class="col-1-5 text-center">${Parser.spLevelToFull(spell.level)}${spell.meta && spell.meta.ritual ? " (rit.)" : ""}${spell.meta && spell.meta.technomagic ? " (tec.)" : ""}</span>
 			<span class="col-1-7 text-center">${time}</span>
-			<span class="col-1-2 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
+			<span class="col-1-2 school_${spell.school} text-center" title="School">${school}</span>
 			<span class="col-0-6 text-center" title="Concentration">${concentration}</span>
 			<span class="col-2-4 text-right">${range}</span>
 			<span class="col-1-7 text-center ${Parser.sourceJsonToColor(spell.source)} pr-0" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</span>
@@ -56,7 +56,7 @@ class SpellsPage {
 				source,
 				level: spell.level,
 				time,
-				school: Parser.spSchoolAbvToFull(spell.school),
+				school: "Parser.spSchoolAbvToFull(spell.school)",
 				classes: Parser.spClassesToFull(spell.classes, true, SUBCLASS_LOOKUP),
 				concentration,
 				normalisedTime: spell._normalisedTime,

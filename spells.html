@@ -14,10 +14,13 @@
 
 	<link rel="manifest" href="manifest.webmanifest">
 
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/pf2-style.css">
+
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/test3.css">
 	<link rel="icon" href="favicon.png">
 
 	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
@@ -101,11 +104,11 @@
 				</div>
 
 				<div class="wrp-stats-table">
-					<table id="pagecontent" class="stats">
-						<tr><th class="border" colspan="6"></th></tr>
-						<tr><td colspan="6" class="initial-message">Select a spell from the list to view it here</td></tr>
-						<tr><th class="border" colspan="6"></th></tr>
-					</table>
+					<div id="pagecontent" class="stats">
+						<div class="border"></div>
+						<div class="initial-message">Select a spell from the list to view it here</div>
+						<div class="border"></div>
+					</div>
 				</div>
 
 				<div class="text-center wrp-footer-buttons">
@@ -136,6 +139,43 @@
 <script type="text/javascript" src="js/spells.js"></script>
 <script type="text/javascript" src="js/list2.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
+
+<svg xmlns="http://www.w3.org/2000/svg">
+	<symbol id="A" viewBox="0 0 526.69 528.59">
+		<path d="M594.87,323.27,330.57,587.56,203,460,339.73,323.37q-68.79-68.79-136.82-136.81L330.55,59Z"
+			  transform="translate(-68.18 -58.96)"/>
+		<path d="M162.27,417.43,68.18,323.34l94.18-94.23,94.11,94.07Z" transform="translate(-68.18 -58.96)"/>
+	</symbol>
+
+	<symbol id="AA" viewBox="0 0 826.68 526.74">
+		<path d="M176.13,605.37Q112.47,542.44,48.4,479.08L185.33,342.29l-137.28-137L176.29,78.63,439.6,341.93Q308,473.45,176.13,605.37Z"
+			  transform="translate(85.66 -78.63)"/>
+		<path d="M508.84,568.72l-111-111L517.57,338.05,397.85,218.43q55.86-56.64,111-112.49L741,338.23Z"
+			  transform="translate(85.66 -78.63)"/>
+		<path d="M102.39,341.9,8.44,435.8l-94.1-94.2,93.9-93.91Z" transform="translate(85.66 -78.63)"/>
+	</symbol>
+
+	<symbol id="AAA" viewBox="0 0 1094.76 528.46">
+		<path d="M-58.73,456.35,77.79,319.87-59,183.1,68.8,55.33,333,319.54,68.74,583.79Z"
+			  transform="translate(193.45 -55.33)"/>
+		<path d="M413.44,316,294.7,195.74,405.54,83.26l233,233L405.65,547.51,294.49,434.88C333.77,395.61,373.84,355.54,413.44,316Z"
+			  transform="translate(193.45 -55.33)"/>
+		<path d="M714.11,500.41l-88.19-89.69,95.48-95.46-95.29-96.7c29.43-29.91,59.2-60.17,88.75-90.22L901.31,314.79Z"
+			  transform="translate(193.45 -55.33)"/>
+		<path d="M-193.45,319.43l93.82-93.74,93.76,93.74-93.79,93.79Z" transform="translate(193.45 -55.33)"/>
+	</symbol>
+
+	<symbol id="F" viewBox="0 0 530.03 529.02">
+		<path d="M549.15,293.37,282.24,560.3,19.11,298.73,285.5,31.28Zm-78.77-3.8L285.82,105l-64,64L349.48,295.13,219.37,425.21c19.44,19.45,38.79,38.79,58.46,58.46Zm-242.13-2.18-55.39-55.45-55.42,55.41,55.42,55.42Z"
+			  transform="translate(-19.11 -31.28)"/>
+	</symbol>
+
+	<symbol id="R" viewBox="0 0 529.88 428.23">
+		<path d="M359.5,356.15c-9,34.64-17.85,68.58-26.91,103.39,7.21-2.55,13.73-4.64,20.08-7.14,24.58-9.67,47.09-22.76,66.56-40.78,15.55-14.38,27.81-31.12,35.36-51,10.44-27.54,8-54.49-4.42-80.78C439,256,420.9,238.09,399.62,223.23c-27.53-19.24-58.31-30.79-91-37.77A302.64,302.64,0,0,0,230.91,179c-41.08,1.94-80.43,11-117.23,29.78-21.46,11-40.67,25-56.53,43.29a9.83,9.83,0,0,0-.8,1.28l-.92-.6c2.57-5.45,4.87-11.05,7.75-16.34,13-23.86,31.07-43.26,52.58-59.55,31.12-23.58,66.28-38.64,103.83-48.44a371.45,371.45,0,0,1,106.85-12c52.48,1.78,103.08,11.94,150.29,35.88,29.18,14.8,55.34,33.61,76,59.3,16.8,20.87,28,44.36,31.51,71.14,3.31,25.2-1.21,49.1-12.3,71.88-15.46,31.77-39.43,55.76-68.7,74.76a299.51,299.51,0,0,1-111.57,43.95c-16.69,3-33.63,4.51-50.46,6.7-.26,0-.52.14-1.24.34l46.36,63.41-.33.66-252.3-53.16Z"
+			  transform="translate(-55.43 -116.26)"/>
+	</symbol>
+</svg>
+
 </body>
 
 </html>

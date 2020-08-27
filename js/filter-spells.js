@@ -47,29 +47,19 @@ class PageFilterSpells extends PageFilter {
 				.sort(SortUtil.ascSort)
 				.forEach(([k]) => out.push(k.toTitleCase()));
 		}
-		if (s.duration.filter(d => d.concentration).length) {
-			out.push(PageFilterSpells._META_ADD_CONC);
-			s._isConc = true;
-		} else s._isConc = false;
 		if (s.components && s.components.v) out.push(PageFilterSpells._META_ADD_V);
 		if (s.components && s.components.s) out.push(PageFilterSpells._META_ADD_S);
 		if (s.components && s.components.m) out.push(PageFilterSpells._META_ADD_M);
 		if (s.components && s.components.r) out.push(PageFilterSpells._META_ADD_R);
 		if (s.components && s.components.m && s.components.m.cost) out.push(PageFilterSpells._META_ADD_M_COST);
 		if (s.components && s.components.m && s.components.m.consume) out.push(PageFilterSpells._META_ADD_M_CONSUMED);
-		if ((s.miscTags && s.miscTags.includes("PRM")) || s.duration.filter(it => it.type === "permanent").length) out.push(Parser.spMiscTagToFull("PRM"));
-		if ((s.miscTags && s.miscTags.includes("SCL")) || s.entriesHigherLevel) out.push(Parser.spMiscTagToFull("SCL"));
-		if (s.miscTags && s.miscTags.includes("HL")) out.push(Parser.spMiscTagToFull("HL"));
-		if (s.miscTags && s.miscTags.includes("SMN")) out.push(Parser.spMiscTagToFull("SMN"));
-		if (s.miscTags && s.miscTags.includes("SGT")) out.push(Parser.spMiscTagToFull("SGT"));
-		if (s.srd) out.push("SRD");
 		return out;
 	}
 
 	static getFilterDuration (spell) {
-		const fDur = spell.duration[0] || {type: "special"};
+		const fDur = spell.duration || {type: "special"};
 		switch (fDur.type) {
-			case "instant": return "Instant";
+			case null: return "Instant";
 			case "timed": {
 				if (!fDur.duration) return "Special";
 				switch (fDur.duration.type) {
@@ -98,25 +88,26 @@ class PageFilterSpells extends PageFilter {
 					default: return "Special";
 				}
 			}
-			case "permanent": return "Permanent";
+			case "unlimited": return "Unlimited";
 			case "special":
 			default: return "Special";
 		}
 	}
 
 	static getNormalisedTime (time) {
-		const firstTime = time[0];
 		let multiplier = 1;
 		let offset = 0;
-		switch (firstTime.unit) {
-			case Parser.SP_TM_B_ACTION: offset = 1; break;
-			case Parser.SP_TM_REACTION: offset = 2; break;
-			case Parser.SP_TM_ROUND: multiplier = 6; break;
-			case Parser.SP_TM_MINS: multiplier = 60; break;
-			case Parser.SP_TM_HRS: multiplier = 3600; break;
+		switch (time.unit) {
+			case Parser.SP_TM_PF_F: offset = 1; break;
+			case Parser.SP_TM_PF_R: offset = 2; break;
+			case Parser.SP_TM_PF_A: multiplier = 10; break;
+			case Parser.SP_TM_PF_AA: multiplier = 10; break;
+			case Parser.SP_TM_PF_AAA: multiplier = 10; break;
+			case Parser.SP_TM_ROUND: multiplier = 60; break;
+			case Parser.SP_TM_MINS: multiplier = 600; break;
+			case Parser.SP_TM_HRS: multiplier = 36000; break;
 		}
-		if (time.length > 1) offset += 0.5;
-		return (multiplier * firstTime.number) + offset;
+		return (multiplier * time.number) + offset;
 	}
 
 	static getNormalisedRange (range) {
@@ -142,13 +133,13 @@ class PageFilterSpells extends PageFilter {
 		function adjustForDistance () {
 			const dist = range.distance;
 			switch (dist.type) {
+				case null: distance = 0; break;
 				case UNT_FEET: multiplier = PageFilterSpells.INCHES_PER_FOOT; distance = dist.amount; break;
 				case UNT_MILES: multiplier = PageFilterSpells.INCHES_PER_FOOT * PageFilterSpells.FEET_PER_MILE; distance = dist.amount; break;
-				case RNG_SELF: distance = 0; break;
 				case RNG_TOUCH: distance = 1; break;
-				case RNG_SIGHT: multiplier = PageFilterSpells.INCHES_PER_FOOT * PageFilterSpells.FEET_PER_MILE; distance = 12; break; // assume sight range of person ~100 ft. above the ground
 				case RNG_UNLIMITED_SAME_PLANE: distance = 900000000; break; // from BolS (homebrew)
 				case RNG_UNLIMITED: distance = 900000001; break;
+				case "unknown": distance = 900000002; break;
 				default: {
 					// it's homebrew?
 					const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", dist.type);
@@ -193,8 +184,8 @@ class PageFilterSpells extends PageFilter {
 
 	static getTblTimeStr (time) {
 		return (time.number === 1 && Parser.SP_TIME_SINGLETONS.includes(time.unit))
-			? `${time.unit.uppercaseFirst()}${time.unit === Parser.SP_TM_B_ACTION ? " acn." : ""}`
-			: `${time.number} ${time.unit === Parser.SP_TM_B_ACTION ? "Bonus acn." : time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
+			? `${time.unit.uppercaseFirst()}${time.unit === Parser.SP_TM_PF_F ? " Action" : ""}`
+			: `${time.number} ${time.unit === Parser.SP_TM_PF_F ? "Free Action" : time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
 	}
 
 	static getClassFilterItem (c) {
@@ -296,9 +287,11 @@ class PageFilterSpells extends PageFilter {
 		const timeFilter = new Filter({
 			header: "Cast Time",
 			items: [
-				Parser.SP_TM_ACTION,
-				Parser.SP_TM_B_ACTION,
-				Parser.SP_TM_REACTION,
+				Parser.SP_TM_PF_A,
+				Parser.SP_TM_PF_AA,
+				Parser.SP_TM_PF_AAA,
+				Parser.SP_TM_PF_F,
+				Parser.SP_TM_PF_R,
 				Parser.SP_TM_ROUND,
 				Parser.SP_TM_MINS,
 				Parser.SP_TM_HRS
@@ -310,7 +303,7 @@ class PageFilterSpells extends PageFilter {
 			header: "Duration",
 			isLabelled: true,
 			labelSortFn: null,
-			labels: ["Instant", "1 Round", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "24+ Hours", "Permanent", "Special"]
+			labels: ["Instant", "1 Round", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "24+ Hours", "Unlimited", "Special"]
 		});
 		const rangeFilter = new Filter({
 			header: "Range",
@@ -432,7 +425,7 @@ class PageFilterSpells extends PageFilter {
 		Renderer.spell.initClasses(spell, this._brewSpellClasses);
 
 		// used for sorting
-		spell._normalisedTime = PageFilterSpells.getNormalisedTime(spell.time);
+		spell._normalisedTime = PageFilterSpells.getNormalisedTime(spell.cast);
 		spell._normalisedRange = PageFilterSpells.getNormalisedRange(spell.range);
 
 		// used for filtering
@@ -458,7 +451,7 @@ class PageFilterSpells extends PageFilter {
 		spell._fVariantClasses = spell.classes && spell.classes.fromClassListVariant ? spell.classes.fromClassListVariant.map(PageFilterSpells.getClassFilterItem) : [];
 		spell._fRaces = spell.races ? spell.races.map(PageFilterSpells.getRaceFilterItem) : [];
 		spell._fBackgrounds = spell.backgrounds ? spell.backgrounds.map(bg => bg.name) : [];
-		spell._fTimeType = spell.time.map(t => t.unit);
+		spell._fTimeType = [spell.cast["unit"]];
 		spell._fDurationType = PageFilterSpells.getFilterDuration(spell);
 		spell._fRangeType = PageFilterSpells.getRangeType(spell.range);
 		if (!spell._fAreaTags && (spell.areaTags || spell.range.type === "line")) {
