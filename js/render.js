@@ -2479,8 +2479,9 @@ Renderer.utils = {
 			let disgust = ``;
 			if (traits.indexOf(trait) === 0) {
 				disgust = ` pf2-trait-left`
-			} else if (traits.indexOf(trait) === traits.length - 1) {
-				disgust = ` pf2-trait-right`
+			}
+			if (traits.indexOf(trait) === traits.length - 1) {
+				disgust += ` pf2-trait-right`
 			}
 			if (trait === "Uncommon") {
 				traits_html += `<div class="pf2-trait pf2-trait-uncommon${disgust}">uncommon</div>`;
