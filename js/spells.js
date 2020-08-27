@@ -34,7 +34,7 @@ class SpellsPage {
 		const source = Parser.sourceJsonToAbv(spell.source);
 		const time = PageFilterSpells.getTblTimeStr(spell.cast);
 		const school = Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschool);
-		const sustain = spell.sustain ? "×" : "";
+		const concentration = spell.sustain ? "×" : "";
 		const range = Parser.spRangeToFull(spell.range);
 
 		eleLi.innerHTML = `<a href="#${spHash}" class="lst--border">
@@ -42,7 +42,7 @@ class SpellsPage {
 			<span class="col-1-5 text-center">${Parser.spLevelToFull(spell.level)}${spell.meta && spell.meta.ritual ? " (rit.)" : ""}${spell.meta && spell.meta.technomagic ? " (tec.)" : ""}</span>
 			<span class="col-1-7 text-center">${time}</span>
 			<span class="col-1-2 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
-			<span class="col-0-6 text-center" title="Concentration">${sustain}</span>
+			<span class="col-0-6 text-center" title="Concentration">${concentration}</span>
 			<span class="col-2-4 text-right">${range}</span>
 			<span class="col-1-7 text-center ${Parser.sourceJsonToColor(spell.source)} pr-0" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</span>
 		</a>`;
@@ -58,7 +58,7 @@ class SpellsPage {
 				time,
 				school: Parser.spSchoolAbvToFull(spell.school),
 				classes: Parser.spClassesToFull(spell.classes, true, SUBCLASS_LOOKUP),
-				sustain,
+				concentration,
 				normalisedTime: spell._normalisedTime,
 				normalisedRange: spell._normalisedRange
 			},
