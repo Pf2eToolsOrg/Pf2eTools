@@ -13,9 +13,7 @@ class PageFilterSpells extends PageFilter {
 			case "source": return SortUtil.ascSort(a.values.source, b.values.source) || SortUtil.compareListNames(a, b);
 			case "level": return SortUtil.ascSort(a.values.level, b.values.level) || SortUtil.compareListNames(a, b);
 			case "school": return SortUtil.ascSort(a.values.school, b.values.school) || SortUtil.compareListNames(a, b);
-			case "concentration": return SortUtil.ascSort(a.values.concentration, b.values.concentration) || SortUtil.compareListNames(a, b);
 			case "time": return SortUtil.ascSort(a.values.normalisedTime, b.values.normalisedTime) || SortUtil.compareListNames(a, b);
-			case "range": return SortUtil.ascSort(a.values.normalisedRange, b.values.normalisedRange) || SortUtil.compareListNames(a, b);
 		}
 	}
 
@@ -529,7 +527,6 @@ class PageFilterSpells extends PageFilter {
 	}
 }
 // toss these into the "Tags" section to save screen space
-PageFilterSpells._META_ADD_CONC = "Concentration";
 PageFilterSpells._META_ADD_V = "Verbal";
 PageFilterSpells._META_ADD_S = "Somatic";
 PageFilterSpells._META_ADD_M = "Material";
@@ -543,7 +540,7 @@ PageFilterSpells.F_RNG_SELF = "Self";
 PageFilterSpells.F_RNG_TOUCH = "Touch";
 PageFilterSpells.F_RNG_SPECIAL = "Special";
 
-PageFilterSpells._META_FILTER_BASE_ITEMS = [PageFilterSpells._META_ADD_CONC, PageFilterSpells._META_ADD_V, PageFilterSpells._META_ADD_S, PageFilterSpells._META_ADD_M, PageFilterSpells._META_ADD_R, PageFilterSpells._META_ADD_M_COST, PageFilterSpells._META_ADD_M_CONSUMED, ...Object.values(Parser.SP_MISC_TAG_TO_FULL)];
+PageFilterSpells._META_FILTER_BASE_ITEMS = [PageFilterSpells._META_ADD_V, PageFilterSpells._META_ADD_S, PageFilterSpells._META_ADD_M, PageFilterSpells._META_ADD_R, PageFilterSpells._META_ADD_M_COST, PageFilterSpells._META_ADD_M_CONSUMED, ...Object.values(Parser.SP_MISC_TAG_TO_FULL)];
 
 PageFilterSpells.INCHES_PER_FOOT = 12;
 PageFilterSpells.FEET_PER_MILE = 5280;
@@ -564,8 +561,6 @@ class ModalFilterSpells extends ModalFilter {
 			{sort: "level", text: "Level", width: "1-5"},
 			{sort: "time", text: "Time", width: "2"},
 			{sort: "school", text: "School", width: "1"},
-			{sort: "concentration", text: "C.", title: "Concentration", width: "0-5"},
-			{sort: "range", text: "Range", width: "2"},
 			{sort: "source", text: "Source", width: "1"}
 		];
 		return ModalFilter._$getFilterColumnHeaders(btnMeta);
@@ -590,9 +585,7 @@ class ModalFilterSpells extends ModalFilter {
 		const source = Parser.sourceJsonToAbv(spell.source);
 		const levelText = `${Parser.spLevelToFull(spell.level)}${spell.meta && spell.meta.ritual ? " (rit.)" : ""}${spell.meta && spell.meta.technomagic ? " (tec.)" : ""}`;
 		const time = PageFilterSpells.getTblTimeStr(spell.time[0]);
-		const school = Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools);
-		const concentration = spell._isConc ? "×" : "";
-		const range = Parser.spRangeToFull(spell.range);
+		const school = Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools);
 
 		eleLi.innerHTML = `<label class="lst--border unselectable">
 			<div class="lst__wrp-cells">
@@ -601,8 +594,6 @@ class ModalFilterSpells extends ModalFilter {
 				<div class="col-1-5 text-center">${levelText}</div>
 				<div class="col-2 text-center">${time}</div>
 				<div class="col-1 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</div>
-				<div class="col-0-5 text-center" title="Concentration">${concentration}</div>
-				<div class="col-2 text-right">${range}</div>
 				<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</div>
 			</div>
 		</label>`;
@@ -619,7 +610,6 @@ class ModalFilterSpells extends ModalFilter {
 				time,
 				school: Parser.spSchoolAbvToFull(spell.school),
 				classes: Parser.spClassesToFull(spell.classes, true),
-				concentration,
 				normalisedTime: spell._normalisedTime,
 				normalisedRange: spell._normalisedRange
 			},
