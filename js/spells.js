@@ -33,8 +33,7 @@ class SpellsPage {
 		const hash = UrlUtil.autoEncodeHash(spell);
 		const source = Parser.sourceJsonToAbv(spell.source);
 		const time = PageFilterSpells.getTblTimeStr(spell.cast);
-		const school = Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschool);
-		const range = Parser.spRangeToFull(spell.range);
+		const school = Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschool);
 
 		eleLi.innerHTML = `<a href="#${spHash}" class="lst--border">
 			<span class="bold col-3-9 pl-0">${spell.name}</span>
