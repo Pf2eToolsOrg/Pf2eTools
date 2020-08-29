@@ -196,6 +196,13 @@ class PageFilterSpells extends PageFilter {
 		});
 	}
 
+	static getTraditionFilterItem (t) {
+		return new FilterItem({
+			item: t,
+			userData: SourceUtil.getFilterGroup(SRC_CRB)
+		});
+	}
+
 	static getRaceFilterItem (r) {
 		const addSuffix = (r.source === SRC_DMG || SourceUtil.isNonstandardSource(r.source || SRC_PHB) || BrewUtil.hasSourceJson(r.source || SRC_PHB)) && !r.name.includes(Parser.sourceJsonToAbv(r.source));
 		const name = `${r.name}${addSuffix ? ` (${Parser.sourceJsonToAbv(r.source)})` : ""}`;
@@ -221,17 +228,29 @@ class PageFilterSpells extends PageFilter {
 			],
 			displayFn: PageFilterSpells.getFltrSpellLevelStr
 		});
-		const classFilter = new Filter({
-			header: "Class",
-			groupFn: it => it.userData
+		const traditionFilter = new Filter({
+			header: "Tradition & Focus Spells",
+			items: [...Parser.TRADITIONS, "Focus Spell"],
+			itemSortFn: null
 		});
-		const subclassFilter = new Filter({
-			header: "Subclass",
-			nests: {},
-			groupFn: (it) => SourceUtil.isSubclassReprinted(it.userData.class.name, it.userData.class.source, it.userData.subClass.name, it.userData.subClass.source) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(PS_PREFIX)
+
+		const generaltrtFilter = new Filter({
+			header: "General"});
+		const alignmentTrtFilter = new Filter({header: "Alignment"});
+		const elementalTrtFilter = new Filter({header: "Elemental"});
+		const energyTrtFilter = new Filter({header: "Energy"});
+		const rarityTrtFilter = new Filter({
+			header: "Rarity",
+			items: [...Parser.TRAITS_RARITY],
+			itemSortFn: null
 		});
+		const senseTrtFilter = new Filter({header: "Senses"});
+		const traitsFilter = new MultiFilter({
+			header: "Traits",
+			filters: [rarityTrtFilter, generaltrtFilter, alignmentTrtFilter, elementalTrtFilter, energyTrtFilter, senseTrtFilter]
+		});
+
 		const variantClassFilter = new Filter({header: "Variant Class"});
-		const classAndSubclassFilter = new MultiFilter({header: "Classes", mode: "or", filters: [classFilter, subclassFilter, variantClassFilter]});
 		const raceFilter = new Filter({
 			header: "Race",
 			nests: {},
@@ -321,11 +340,15 @@ class PageFilterSpells extends PageFilter {
 			itemSortFn: null
 		});
 
-		this._classFilter = classFilter;
-		this._subclassFilter = subclassFilter;
+		this._traditionFilter = traditionFilter;
+		this._traitFilter = traitsFilter;
+		this._generalTrtFilter = generaltrtFilter;
+		this._alignmentTrtFilter = alignmentTrtFilter;
+		this._elementalTrtFilter = elementalTrtFilter;
+		this._energyTrtFilter = energyTrtFilter;
+		this._rarityTrtFilter = rarityTrtFilter;
+		this._sensesTrtFilter = senseTrtFilter;
 		this._levelFilter = levelFilter;
-		this._variantClassFilter = variantClassFilter;
-		this._classAndSubclassFilter = classAndSubclassFilter;
 		this._raceFilter = raceFilter;
 		this._backgroundFilter = backgroundFilter;
 		this._metaFilter = metaFilter;
@@ -430,22 +453,13 @@ class PageFilterSpells extends PageFilter {
 		spell._fSources = ListUtil.getCompleteFilterSources(spell);
 		spell._fMeta = PageFilterSpells.getMetaFilterObj(spell);
 		spell._fClasses = spell.classes && spell.classes.fromClassList ? spell.classes.fromClassList.map(PageFilterSpells.getClassFilterItem) : [];
-		spell._fSubclasses = spell.classes && spell.classes.fromSubclass
-			? spell.classes.fromSubclass.map(c => new FilterItem({
-				item: `${c.class.name}: ${PageFilterSpells.getClassFilterItem(c.subclass).item}`,
-				nest: c.class.name,
-				userData: {
-					subClass: {
-						name: c.subclass.name,
-						source: c.subclass.source
-					},
-					class: {
-						name: c.class.name,
-						source: c.class.source
-					}
-				}
-			}))
-			: [];
+		spell._fTraditions = spell.traditions ? spell.traditions : spell.focus ? ["Focus Spell"] : [];
+		spell._fgeneralTrts = spell.traits.filter(t => Parser.TRAITS_GENERAL.concat("Arcane", "Nonlethal", "Plant", "Poison", "Shadow").includes(t)) || [];
+		spell._falignmentTrts = spell.traits.filter(t => Parser.TRAITS_ALIGN.includes(t)) || [];
+		spell._felementalTrts = spell.traits.filter(t => Parser.TRAITS_ELEMENTAL.includes(t)) || [];
+		spell._fenergyTrts = spell.traits.filter(t => Parser.TRAITS_ENERGY.includes(t)) || [];
+		spell._frarityTrts = spell.traits.concat("Common").filter(t => Parser.TRAITS_RARITY.includes(t))[0];
+		spell._fsenseTrts = spell.traits.filter(t => Parser.TRAITS_SENSE.includes(t)) || [];
 		spell._fVariantClasses = spell.classes && spell.classes.fromClassListVariant ? spell.classes.fromClassListVariant.map(PageFilterSpells.getClassFilterItem) : [];
 		spell._fRaces = spell.races ? spell.races.map(PageFilterSpells.getRaceFilterItem) : [];
 		spell._fBackgrounds = spell.backgrounds ? spell.backgrounds.map(bg => bg.name) : [];
@@ -466,11 +480,13 @@ class PageFilterSpells extends PageFilter {
 		this._sourceFilter.addItem(spell._fSources);
 		this._metaFilter.addItem(spell._fMeta);
 		this._backgroundFilter.addItem(spell._fBackgrounds);
-		spell._fClasses.forEach(c => this._classFilter.addItem(c));
-		spell._fSubclasses.forEach(sc => {
-			this._subclassFilter.addNest(sc.nest, {isHidden: true});
-			this._subclassFilter.addItem(sc);
-		});
+		this._traditionFilter.addItem(spell._fTraditions);
+		this._generalTrtFilter.addItem(spell._fgeneralTrts);
+		this._alignmentTrtFilter.addItem(spell._falignmentTrts);
+		this._elementalTrtFilter.addItem(spell._felementalTrts);
+		this._energyTrtFilter.addItem(spell._fenergyTrts);
+		this._rarityTrtFilter.addItem(spell._frarityTrts);
+		this._sensesTrtFilter.addItem(spell._fsenseTrts);
 		spell._fRaces.forEach(r => {
 			if (r.nest) this._raceFilter.addNest(r.nest, {isHidden: true});
 			this._raceFilter.addItem(r);
@@ -485,12 +501,10 @@ class PageFilterSpells extends PageFilter {
 		opts.filters = [
 			this._sourceFilter,
 			this._levelFilter,
-			this._classAndSubclassFilter,
-			this._raceFilter,
-			this._backgroundFilter,
+			this._traditionFilter,
+			this._traitFilter,
 			this._metaFilter,
 			this._schoolFilter,
-			this._subSchoolFilter,
 			this._damageFilter,
 			this._conditionFilter,
 			this._spellAttackFilter,
@@ -508,12 +522,17 @@ class PageFilterSpells extends PageFilter {
 			values,
 			s._fSources,
 			s.level,
-			[s._fClasses, s._fSubclasses, s._fVariantClasses],
-			s._fRaces,
-			s._fBackgrounds,
+			s._fTraditions,
+			[
+				s._frarityTrts,
+				s._fgeneralTrts,
+				s._falignmentTrts,
+				s._felementalTrts,
+				s._fenergyTrts,
+				s._fsenseTrts
+			],
 			s._fMeta,
 			s.school,
-			s.subschools,
 			s.damageInflict,
 			s.conditionInflict,
 			s.spellAttack,
