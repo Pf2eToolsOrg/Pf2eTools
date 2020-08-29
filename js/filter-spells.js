@@ -17,43 +17,6 @@ class PageFilterSpells extends PageFilter {
 		}
 	}
 
-	static sortMetaFilter (a, b) {
-		const ixA = PageFilterSpells._META_FILTER_BASE_ITEMS.indexOf(a.item);
-		const ixB = PageFilterSpells._META_FILTER_BASE_ITEMS.indexOf(b.item);
-
-		if (~ixA && ~ixB) return ixA - ixB;
-		if (~ixA) return -1;
-		if (~ixB) return 1;
-		if (a.item === "SRD") return 1;
-		if (b.item === "SRD") return -1;
-		return SortUtil.ascSortLower(a, b);
-	}
-
-	static getFilterAbilitySave (ability) {
-		return `${ability.uppercaseFirst().substring(0, 3)}. Save`;
-	}
-
-	static getFilterAbilityCheck (ability) {
-		return `${ability.uppercaseFirst().substring(0, 3)}. Check`;
-	}
-
-	static getMetaFilterObj (s) {
-		const out = [];
-		if (s.meta) {
-			Object.entries(s.meta)
-				.filter(([_, v]) => v)
-				.sort(SortUtil.ascSort)
-				.forEach(([k]) => out.push(k.toTitleCase()));
-		}
-		if (s.components && s.components.v) out.push(PageFilterSpells._META_ADD_V);
-		if (s.components && s.components.s) out.push(PageFilterSpells._META_ADD_S);
-		if (s.components && s.components.m) out.push(PageFilterSpells._META_ADD_M);
-		if (s.components && s.components.r) out.push(PageFilterSpells._META_ADD_R);
-		if (s.components && s.components.m && s.components.m.cost) out.push(PageFilterSpells._META_ADD_M_COST);
-		if (s.components && s.components.m && s.components.m.consume) out.push(PageFilterSpells._META_ADD_M_CONSUMED);
-		return out;
-	}
-
 	static getFilterDuration (spell) {
 		const fDur = spell.duration || {type: "special"};
 		switch (fDur.type) {
@@ -186,34 +149,6 @@ class PageFilterSpells extends PageFilter {
 			: `${time.number} ${time.unit === Parser.SP_TM_PF_F ? "Free Action" : time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
 	}
 
-	static getClassFilterItem (c) {
-		const nm = c.name.split("(")[0].trim();
-		const addSuffix = SourceUtil.isNonstandardSource(c.source || SRC_PHB) || BrewUtil.hasSourceJson(c.source || SRC_PHB);
-		const name = `${nm}${addSuffix ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
-		return new FilterItem({
-			item: name,
-			userData: SourceUtil.getFilterGroup(c.source || SRC_PHB)
-		});
-	}
-
-	static getTraditionFilterItem (t) {
-		return new FilterItem({
-			item: t,
-			userData: SourceUtil.getFilterGroup(SRC_CRB)
-		});
-	}
-
-	static getRaceFilterItem (r) {
-		const addSuffix = (r.source === SRC_DMG || SourceUtil.isNonstandardSource(r.source || SRC_PHB) || BrewUtil.hasSourceJson(r.source || SRC_PHB)) && !r.name.includes(Parser.sourceJsonToAbv(r.source));
-		const name = `${r.name}${addSuffix ? ` (${Parser.sourceJsonToAbv(r.source)})` : ""}`;
-		const opts = {
-			item: name,
-			userData: SourceUtil.getFilterGroup(r.source || SRC_PHB)
-		};
-		if (r.baseName) opts.nest = r.baseName;
-		else opts.nest = "(No Subraces)"
-		return new FilterItem(opts);
-	}
 	// endregion
 
 	constructor () {
@@ -247,60 +182,16 @@ class PageFilterSpells extends PageFilter {
 		const senseTrtFilter = new Filter({header: "Senses"});
 		const traitsFilter = new MultiFilter({
 			header: "Traits",
-			filters: [rarityTrtFilter, generaltrtFilter, alignmentTrtFilter, elementalTrtFilter, energyTrtFilter, senseTrtFilter]
+			filters: [rarityTrtFilter, alignmentTrtFilter, elementalTrtFilter, energyTrtFilter, senseTrtFilter, generaltrtFilter]
 		});
 
-		const variantClassFilter = new Filter({header: "Variant Class"});
-		const raceFilter = new Filter({
-			header: "Race",
-			nests: {},
-			groupFn: it => it.userData
-		});
-		const backgroundFilter = new Filter({header: "Background"});
-		const metaFilter = new Filter({
-			header: "Components & Miscellaneous",
-			items: [...PageFilterSpells._META_FILTER_BASE_ITEMS, "Ritual", "Technomagic", "SRD"],
-			itemSortFn: PageFilterSpells.sortMetaFilter
-		});
 		const schoolFilter = new Filter({
 			header: "School",
 			items: [...Parser.SKL_ABVS],
 			displayFn: Parser.spSchoolAbvToFull,
 			itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.spSchoolAbvToFull(a.item), Parser.spSchoolAbvToFull(b.item))
 		});
-		const subSchoolFilter = new Filter({
-			header: "Subschool",
-			items: [],
-			displayFn: Parser.spSchoolAbvToFull
-		});
-		const damageFilter = new Filter({
-			header: "Damage Type",
-			items: MiscUtil.copy(Parser.DMG_TYPES),
-			displayFn: StrUtil.uppercaseFirst
-		});
-		const conditionFilter = new Filter({
-			header: "Conditions Inflicted",
-			items: MiscUtil.copy(Parser.CONDITIONS),
-			displayFn: StrUtil.uppercaseFirst
-		});
-		const spellAttackFilter = new Filter({
-			header: "Spell Attack",
-			items: ["M", "R", "O"],
-			displayFn: Parser.spAttackTypeToFull,
-			itemSortFn: null
-		});
-		const saveFilter = new Filter({
-			header: "Saving Throw",
-			items: ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"],
-			displayFn: PageFilterSpells.getFilterAbilitySave,
-			itemSortFn: null
-		});
-		const checkFilter = new Filter({
-			header: "Opposed Ability Check",
-			items: ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"],
-			displayFn: PageFilterSpells.getFilterAbilityCheck,
-			itemSortFn: null
-		});
+
 		const timeFilter = new Filter({
 			header: "Cast Time",
 			items: [
@@ -322,24 +213,9 @@ class PageFilterSpells extends PageFilter {
 			labelSortFn: null,
 			labels: ["Instant", "1 Round", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "24+ Hours", "Unlimited", "Special"]
 		});
-		const rangeFilter = new Filter({
-			header: "Range",
-			items: [
-				PageFilterSpells.F_RNG_SELF,
-				PageFilterSpells.F_RNG_TOUCH,
-				PageFilterSpells.F_RNG_POINT,
-				PageFilterSpells.F_RNG_SELF_AREA,
-				PageFilterSpells.F_RNG_SPECIAL
-			],
-			itemSortFn: null
-		});
-		const areaTypeFilter = new Filter({
-			header: "Area Style",
-			items: ["ST", "MT", "R", "N", "C", "Y", "H", "L", "S", "Q", "W"],
-			displayFn: Parser.spAreaTypeToFull,
-			itemSortFn: null
-		});
 
+
+		this._levelFilter = levelFilter;
 		this._traditionFilter = traditionFilter;
 		this._traitFilter = traitsFilter;
 		this._generalTrtFilter = generaltrtFilter;
@@ -348,21 +224,9 @@ class PageFilterSpells extends PageFilter {
 		this._energyTrtFilter = energyTrtFilter;
 		this._rarityTrtFilter = rarityTrtFilter;
 		this._sensesTrtFilter = senseTrtFilter;
-		this._levelFilter = levelFilter;
-		this._raceFilter = raceFilter;
-		this._backgroundFilter = backgroundFilter;
-		this._metaFilter = metaFilter;
 		this._schoolFilter = schoolFilter;
-		this._subSchoolFilter = subSchoolFilter;
-		this._damageFilter = damageFilter;
-		this._conditionFilter = conditionFilter;
-		this._spellAttackFilter = spellAttackFilter;
-		this._saveFilter = saveFilter;
-		this._checkFilter = checkFilter;
 		this._timeFilter = timeFilter;
 		this._durationFilter = durationFilter;
-		this._rangeFilter = rangeFilter;
-		this._areaTypeFilter = areaTypeFilter;
 	}
 
 	populateHomebrewClassLookup (homebrew) {
@@ -451,8 +315,7 @@ class PageFilterSpells extends PageFilter {
 
 		// used for filtering
 		spell._fSources = ListUtil.getCompleteFilterSources(spell);
-		spell._fMeta = PageFilterSpells.getMetaFilterObj(spell);
-		spell._fClasses = spell.classes && spell.classes.fromClassList ? spell.classes.fromClassList.map(PageFilterSpells.getClassFilterItem) : [];
+		spell._fClasses = spell.traits.filter(t => Parser.TRAITS_CLASS.includes(t)) || [];
 		spell._fTraditions = spell.traditions ? spell.traditions : spell.focus ? ["Focus Spell"] : [];
 		spell._fgeneralTrts = spell.traits.filter(t => Parser.TRAITS_GENERAL.concat("Arcane", "Nonlethal", "Plant", "Poison", "Shadow").includes(t)) || [];
 		spell._falignmentTrts = spell.traits.filter(t => Parser.TRAITS_ALIGN.includes(t)) || [];
@@ -460,16 +323,8 @@ class PageFilterSpells extends PageFilter {
 		spell._fenergyTrts = spell.traits.filter(t => Parser.TRAITS_ENERGY.includes(t)) || [];
 		spell._frarityTrts = spell.traits.concat("Common").filter(t => Parser.TRAITS_RARITY.includes(t))[0];
 		spell._fsenseTrts = spell.traits.filter(t => Parser.TRAITS_SENSE.includes(t)) || [];
-		spell._fVariantClasses = spell.classes && spell.classes.fromClassListVariant ? spell.classes.fromClassListVariant.map(PageFilterSpells.getClassFilterItem) : [];
-		spell._fRaces = spell.races ? spell.races.map(PageFilterSpells.getRaceFilterItem) : [];
-		spell._fBackgrounds = spell.backgrounds ? spell.backgrounds.map(bg => bg.name) : [];
 		spell._fTimeType = [spell.cast["unit"]];
 		spell._fDurationType = PageFilterSpells.getFilterDuration(spell);
-		spell._fRangeType = PageFilterSpells.getRangeType(spell.range);
-		if (!spell._fAreaTags && (spell.areaTags || spell.range.type === "line")) {
-			spell._fAreaTags = spell.areaTags || [];
-			if (spell.range.type === "line") spell._fAreaTags.push("L")
-		}
 	}
 
 	addToFilters (spell, isExcluded) {
@@ -478,8 +333,6 @@ class PageFilterSpells extends PageFilter {
 		if (spell.level > 9) this._levelFilter.addItem(spell.level);
 		this._schoolFilter.addItem(spell.school);
 		this._sourceFilter.addItem(spell._fSources);
-		this._metaFilter.addItem(spell._fMeta);
-		this._backgroundFilter.addItem(spell._fBackgrounds);
 		this._traditionFilter.addItem(spell._fTraditions);
 		this._generalTrtFilter.addItem(spell._fgeneralTrts);
 		this._alignmentTrtFilter.addItem(spell._falignmentTrts);
@@ -487,12 +340,6 @@ class PageFilterSpells extends PageFilter {
 		this._energyTrtFilter.addItem(spell._fenergyTrts);
 		this._rarityTrtFilter.addItem(spell._frarityTrts);
 		this._sensesTrtFilter.addItem(spell._fsenseTrts);
-		spell._fRaces.forEach(r => {
-			if (r.nest) this._raceFilter.addNest(r.nest, {isHidden: true});
-			this._raceFilter.addItem(r);
-		});
-		spell._fVariantClasses.forEach(c => this._variantClassFilter.addItem(c));
-		this._subSchoolFilter.addItem(spell.subschools);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -503,17 +350,9 @@ class PageFilterSpells extends PageFilter {
 			this._levelFilter,
 			this._traditionFilter,
 			this._traitFilter,
-			this._metaFilter,
 			this._schoolFilter,
-			this._damageFilter,
-			this._conditionFilter,
-			this._spellAttackFilter,
-			this._saveFilter,
-			this._checkFilter,
 			this._timeFilter,
 			this._durationFilter,
-			this._rangeFilter,
-			this._areaTypeFilter
 		];
 	}
 
@@ -525,23 +364,15 @@ class PageFilterSpells extends PageFilter {
 			s._fTraditions,
 			[
 				s._frarityTrts,
-				s._fgeneralTrts,
 				s._falignmentTrts,
 				s._felementalTrts,
 				s._fenergyTrts,
-				s._fsenseTrts
+				s._fsenseTrts,
+				s._fgeneralTrts
 			],
-			s._fMeta,
 			s.school,
-			s.damageInflict,
-			s.conditionInflict,
-			s.spellAttack,
-			s.savingThrow,
-			s.opposedCheck,
 			s._fTimeType,
 			s._fDurationType,
-			s._fRangeType,
-			s._fAreaTags
 		)
 	}
 }
