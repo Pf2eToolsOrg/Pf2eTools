@@ -2510,19 +2510,20 @@ Parser.SKL_ABVS = [
 	SKL_ABV_PSI
 ];
 
-Parser.SP_TM_PF_A = "action";
-Parser.SP_TM_PF_AA = "action";
-Parser.SP_TM_PF_AAA = "action";
+Parser.SP_TM_PF_A = "single";
+Parser.SP_TM_PF_AA = "double";
+Parser.SP_TM_PF_AAA = "triple";
 Parser.SP_TM_PF_R = "reaction";
 Parser.SP_TM_PF_F = "free";
 Parser.SP_TM_ROUND = "round";
 Parser.SP_TM_MINS = "minute";
 Parser.SP_TM_HRS = "hour";
+Parser.SP_TIME_ACTIONS = [Parser.SP_TM_PF_A, Parser.SP_TM_PF_AA, Parser.SP_TM_PF_AAA, Parser.SP_TM_PF_R, Parser.SP_TM_PF_F]
 Parser.SP_TIME_SINGLETONS = [Parser.SP_TM_PF_A, Parser.SP_TM_PF_AA, Parser.SP_TM_PF_AAA, Parser.SP_TM_PF_R, Parser.SP_TM_PF_F, Parser.SP_TM_ROUND];
 Parser.SP_TIME_TO_FULL = {
 	[Parser.SP_TM_PF_A]: "Single Action",
-	[Parser.SP_TM_PF_AA]: "Two Actions",
-	[Parser.SP_TM_PF_AAA]: "Three Actions",
+	[Parser.SP_TM_PF_AA]: "Double Action",
+	[Parser.SP_TM_PF_AAA]: "Triple Action",
 	[Parser.SP_TM_PF_R]: "Reaction",
 	[Parser.SP_TM_PF_F]: "Free Action",
 	[Parser.SP_TM_ROUND]: "Rounds",

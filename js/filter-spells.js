@@ -23,12 +23,12 @@ class PageFilterSpells extends PageFilter {
 			case null: return "Instant";
 			case "timed": {
 				if (!fDur.duration) return "Special";
-				switch (fDur.duration.type) {
+				switch (fDur.duration.unit) {
 					case "turn":
 					case "round": return "1 Round";
 
 					case "minute": {
-						const amt = fDur.duration.amount || 0;
+						const amt = fDur.duration.number || 0;
 						if (amt <= 1) return "1 Minute";
 						if (amt <= 10) return "10 Minutes";
 						if (amt <= 60) return "1 Hour";
@@ -37,7 +37,7 @@ class PageFilterSpells extends PageFilter {
 					}
 
 					case "hour": {
-						const amt = fDur.duration.amount || 0;
+						const amt = fDur.duration.number || 0;
 						if (amt <= 1) return "1 Hour";
 						if (amt <= 8) return "8 Hours";
 						return "24+ Hours";
@@ -62,8 +62,8 @@ class PageFilterSpells extends PageFilter {
 			case Parser.SP_TM_PF_F: offset = 1; break;
 			case Parser.SP_TM_PF_R: offset = 2; break;
 			case Parser.SP_TM_PF_A: multiplier = 10; break;
-			case Parser.SP_TM_PF_AA: multiplier = 10; break;
-			case Parser.SP_TM_PF_AAA: multiplier = 10; break;
+			case Parser.SP_TM_PF_AA: multiplier = 20; break;
+			case Parser.SP_TM_PF_AAA: multiplier = 30; break;
 			case Parser.SP_TM_ROUND: multiplier = 60; break;
 			case Parser.SP_TM_MINS: multiplier = 600; break;
 			case Parser.SP_TM_HRS: multiplier = 36000; break;
@@ -123,30 +123,9 @@ class PageFilterSpells extends PageFilter {
 		return level === 0 ? Parser.spLevelToFull(level) : `${Parser.spLevelToFull(level)} level`;
 	}
 
-	static getRangeType (range) {
-		switch (range.type) {
-			case RNG_SPECIAL: return PageFilterSpells.F_RNG_SPECIAL;
-			case RNG_POINT:
-				switch (range.distance.type) {
-					case RNG_SELF: return PageFilterSpells.F_RNG_SELF;
-					case RNG_TOUCH: return PageFilterSpells.F_RNG_TOUCH;
-					default: return PageFilterSpells.F_RNG_POINT;
-				}
-			case RNG_LINE:
-			case RNG_CONE:
-			case RNG_RADIUS:
-			case RNG_HEMISPHERE:
-			case RNG_SPHERE:
-			case RNG_CYLINDER:
-			case RNG_CUBE:
-				return PageFilterSpells.F_RNG_SELF_AREA
-		}
-	}
-
 	static getTblTimeStr (time) {
-		return (time.number === 1 && Parser.SP_TIME_SINGLETONS.includes(time.unit))
-			? `${time.unit.uppercaseFirst()}${time.unit === Parser.SP_TM_PF_F ? " Action" : ""}`
-			: `${time.number} ${time.unit === Parser.SP_TM_PF_F ? "Free Action" : time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
+		return Parser.SP_TIME_ACTIONS.includes(time.unit) ? `${Parser.SP_TIME_TO_FULL[time.unit].uppercaseFirst()}`
+		: `${time.number} ${time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
 	}
 
 	// endregion
@@ -159,7 +138,7 @@ class PageFilterSpells extends PageFilter {
 		const levelFilter = new Filter({
 			header: "Level",
 			items: [
-				0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+				0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 			],
 			displayFn: PageFilterSpells.getFltrSpellLevelStr
 		});
@@ -330,7 +309,7 @@ class PageFilterSpells extends PageFilter {
 	addToFilters (spell, isExcluded) {
 		if (isExcluded) return;
 
-		if (spell.level > 9) this._levelFilter.addItem(spell.level);
+		if (spell.level > 10) this._levelFilter.addItem(spell.level);
 		this._schoolFilter.addItem(spell.school);
 		this._sourceFilter.addItem(spell._fSources);
 		this._traditionFilter.addItem(spell._fTraditions);
