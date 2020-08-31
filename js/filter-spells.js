@@ -143,9 +143,20 @@ class PageFilterSpells extends PageFilter {
 			displayFn: PageFilterSpells.getFltrSpellLevelStr
 		});
 		const traditionFilter = new Filter({
-			header: "Tradition & Focus Spells",
-			items: [...Parser.TRADITIONS, "Focus Spell"],
+			header: "Tradition",
+			items: [...Parser.TRADITIONS],
 			itemSortFn: null
+		});
+		const focusFilter = new Filter({
+			header: "Spell Type",
+			items: ["Focus Spell", "Spell"],
+			itemSortFn: null
+		});
+		const classFilter = new Filter({header: "Classes"});
+		const domainFilter = new Filter({header: "Domains"})
+		const multiFocusFilter = new MultiFilter({
+			header: "Focus Spells",
+			filters: [focusFilter, classFilter, domainFilter]
 		});
 
 		const generaltrtFilter = new Filter({
@@ -196,6 +207,10 @@ class PageFilterSpells extends PageFilter {
 
 		this._levelFilter = levelFilter;
 		this._traditionFilter = traditionFilter;
+		this._multiFocusFilter = multiFocusFilter;
+		this._focusFilter = focusFilter;
+		this._classFilter = classFilter;
+		this._domainFilter = domainFilter;
 		this._traitFilter = traitsFilter;
 		this._generalTrtFilter = generaltrtFilter;
 		this._alignmentTrtFilter = alignmentTrtFilter;
@@ -294,8 +309,9 @@ class PageFilterSpells extends PageFilter {
 
 		// used for filtering
 		spell._fSources = ListUtil.getCompleteFilterSources(spell);
+		spell._fTraditions = spell.traditions ? spell.traditions : [];
+		spell._fFocus = spell.focus ? ["Focus Spell"] : ["Spell"];
 		spell._fClasses = spell.traits.filter(t => Parser.TRAITS_CLASS.includes(t)) || [];
-		spell._fTraditions = spell.traditions ? spell.traditions : spell.focus ? ["Focus Spell"] : [];
 		spell._fgeneralTrts = spell.traits.filter(t => Parser.TRAITS_GENERAL.concat("Arcane", "Nonlethal", "Plant", "Poison", "Shadow").includes(t)) || [];
 		spell._falignmentTrts = spell.traits.filter(t => Parser.TRAITS_ALIGN.includes(t)) || [];
 		spell._felementalTrts = spell.traits.filter(t => Parser.TRAITS_ELEMENTAL.includes(t)) || [];
@@ -313,6 +329,9 @@ class PageFilterSpells extends PageFilter {
 		this._schoolFilter.addItem(spell.school);
 		this._sourceFilter.addItem(spell._fSources);
 		this._traditionFilter.addItem(spell._fTraditions);
+		this._focusFilter.addItem(spell._fFocus);
+		this._classFilter.addItem(spell._fClasses)
+		if (typeof(spell.domain)==="string") this._domainFilter.addItem(spell.domain);
 		this._generalTrtFilter.addItem(spell._fgeneralTrts);
 		this._alignmentTrtFilter.addItem(spell._falignmentTrts);
 		this._elementalTrtFilter.addItem(spell._felementalTrts);
@@ -328,6 +347,7 @@ class PageFilterSpells extends PageFilter {
 			this._sourceFilter,
 			this._levelFilter,
 			this._traditionFilter,
+			this._multiFocusFilter,
 			this._traitFilter,
 			this._schoolFilter,
 			this._timeFilter,
@@ -341,6 +361,11 @@ class PageFilterSpells extends PageFilter {
 			s._fSources,
 			s.level,
 			s._fTraditions,
+			[
+				s._fFocus,
+				s._fClasses,
+				s.domain
+			],
 			[
 				s._frarityTrts,
 				s._falignmentTrts,
