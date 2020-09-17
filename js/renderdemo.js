@@ -1,6 +1,6 @@
 "use strict";
 
-const JSON_URL = "data/renderdemo.json";
+const JSON_URL = "data/book-crb-ch1.json";
 const STORAGE_LOCATION = "demoInput";
 
 window.addEventListener("load", async () => {
