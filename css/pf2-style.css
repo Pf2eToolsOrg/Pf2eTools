@@ -144,3 +144,71 @@
     height: 1em;
     margin: 0 0 -0.1em -0.1em;
 }
+
+.pf2-inset {
+	margin: 25px 15px 7px 15px;
+	padding: 10px 10px;
+	background-color: #C8BCA5;
+	position: relative;
+	min-width: 120px;
+	border-radius: 2px;
+}
+
+.pf2-inset p:first-of-type {
+	text-indent: 0;
+}
+
+.pf2-inset > *:last-of-type {
+	margin-bottom: 0;
+}
+
+.pf2-inset > p {
+	font-family: "good-pro", sans-serif;
+	text-indent: 1em;
+	text-align: justify;
+	line-height: 120%;
+	margin: 0 0;
+}
+
+.pf2-inset-swirl {
+	display: flex;
+	fill: #c8bca5;
+	width: 4em;
+	height: 4em;
+	position: absolute;
+	z-index: 1;
+}
+
+.swirl-left {
+	left: -0.6107em;
+	top: -2em;
+}
+
+.swirl-right {
+	right: -0.6107em;
+	top: -2em;
+}
+
+.swirl-connection {
+	top: -0.476em;
+	right: 2em;
+	height: 2em;
+	width: calc(100% - 4em);
+	background: #c8bca5;
+}
+
+.pf2-h-inset {
+	display: block;
+	font-family: "good-pro", sans-serif;
+	font-weight: bold;
+	font-size: 1.22em;
+	text-transform: uppercase;
+	text-align: center;
+	width: calc(100% - 2em);
+	padding-left: 1em;
+	padding-right: 1em;
+	top: -0.36em;
+	left: 0;
+	position: relative;
+	z-index: 2;
+}

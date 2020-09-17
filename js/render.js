@@ -285,6 +285,9 @@ function Renderer() {
 
 			switch (type) {
 				// recursive
+				case "pf2-inset":
+					this._renderPf2Inset(entry, textStack, meta, options);
+					break;
 				case "entries":
 					this._renderEntries(entry, textStack, meta, options);
 					break;
@@ -761,6 +764,35 @@ function Renderer() {
 			}
 			textStack[0] += "</ul>";
 		}
+	};
+
+	this._renderPf2Inset = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<${this.wrapperTag} class="pf2-inset" ${dataString}>`;
+		textStack[0] += `<div class="pf2-inset-swirl swirl-left"><svg><use href="#inset-left"></use></svg></div>`
+		textStack[0] +=	`<div class="pf2-inset-swirl swirl-connection"></div>`
+		textStack[0] +=	`<div class="pf2-inset-swirl swirl-right"><svg><use href="#inset-right"></use></svg></div>`
+
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, 1);
+
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<span class="pf2-h-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `<div class="float-clear"></div>`;
+		textStack[0] += `</${this.wrapperTag}>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderInset = function (entry, textStack, meta, options) {
