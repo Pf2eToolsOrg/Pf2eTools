@@ -328,6 +328,17 @@ function Renderer() {
 					this._renderPatron(entry, textStack, meta, options);
 					break;
 
+				// pf2-statblock
+				case "affliction":
+					this._renderAffliction(entry, textStack, meta, options);
+					break;
+				case "success_degree":
+					this._renderSuccessDegree(entry, textStack, meta, options);
+					break;
+				case "leveled_effect":
+					this._renderLeveledEffect(entry, textStack, meta, options);
+					break;
+
 				// block
 				case "abilityDc":
 					this._renderAbilityDc(entry, textStack, meta, options);
@@ -724,7 +735,7 @@ function Renderer() {
 	};
 
 	this._renderEntriesSubtypes_getStyleString = function (entry, meta, isInlineTitle) {
-		const styleClasses = ["rd__b"];
+		const styleClasses = [""];
 		styleClasses.push(this._getStyleClass(entry.source));
 		if (isInlineTitle) {
 			if (this._subVariant) styleClasses.push(Renderer.HEAD_2_SUB_VARIANT);
@@ -766,12 +777,66 @@ function Renderer() {
 		}
 	};
 
+	this._renderLeveledEffect = function (entry, textStack, meta, options) {
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, 1);
+		const arr_effects = entry.entries;
+		arr_effects.forEach(x => {
+			textStack[0] += `<p class="pf-2-stat-text-indent-second-line"><strong>${x['range_str']} </strong>`;
+			this._recursiveRender(x['entry'], textStack, meta);
+			textStack[0] += `</p>`;
+		});
+
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	}
+
+
+	this._renderSuccessDegree = function (entry, textStack, meta, options) {
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, 1);
+
+		for (let key in entry.entries) {
+			textStack[0] += `<p class="pf-2-stat-text-indent-second-line"><strong>${key} </strong>`
+			this._recursiveRender(entry.entries[key], textStack, meta);
+			textStack[0] += `</p>`
+		}
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	}
+
+	this._renderAffliction = function (entry, textStack, meta, options) {
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, 1);
+
+		const dict = entry.entries;
+		textStack[0] += `<p class="pf-2-stat-text-indent-second-line"><strong>${dict["name"]} </strong>(${dict["type"]}); <strong>Level </strong>${dict["level"]}. `
+		if (dict["note"] !== null) {
+			textStack[0] += dict["note"]
+		}
+		if (dict["onset"] !== null) {
+			textStack[0] += ` <strong>Onset</strong> ${dict["onset"]}`
+		}
+		if (dict["max duration"] !== null) {
+			textStack[0] += ` <strong>Maximum Duration</strong> ${dict["max duration"]}`
+		}
+		for (let stage of dict["stages"]) {
+			textStack[0] += ` <strong>Stage ${stage["stage"]} </strong>`
+			this._recursiveRender(stage["entry"], textStack, meta);
+			textStack[0] += ` (${stage["duration"]});`
+		}
+		textStack[0] = textStack[0].replace(/;$/, ".")
+		textStack[0] += `</p>`
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
 	this._renderPf2Inset = function (entry, textStack, meta, options) {
 		const dataString = this._renderEntriesSubtypes_getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="pf2-inset" ${dataString}>`;
 		textStack[0] += `<div class="pf2-inset-swirl swirl-left"><svg><use href="#inset-left"></use></svg></div>`
-		textStack[0] +=	`<div class="pf2-inset-swirl swirl-connection"></div>`
-		textStack[0] +=	`<div class="pf2-inset-swirl swirl-right"><svg><use href="#inset-right"></use></svg></div>`
+		textStack[0] += `<div class="pf2-inset-swirl swirl-connection"></div>`
+		textStack[0] += `<div class="pf2-inset-swirl swirl-right"><svg><use href="#inset-right"></use></svg></div>`
 
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, 1);
@@ -1282,6 +1347,12 @@ function Renderer() {
 	this._renderString_renderTag = function (textStack, meta, options, tag, text) {
 		switch (tag) {
 			// BASIC STYLES/TEXT ///////////////////////////////////////////////////////////////////////////////
+			case "@as":
+			case "@actionsymbol":
+				textStack[0] += `<span class="pf2-action-icon">`;
+				this._recursiveRender(text, textStack, meta);
+				textStack[0] += `</span>`;
+				break;
 			case "@b":
 			case "@bold":
 				textStack[0] += `<b>`;
@@ -2592,24 +2663,7 @@ Renderer.utils = {
 		else return $ele[0].outerHTML;
 	},
 
-	render_affliction (dict) {
-		let entry = ``
-		if (dict["note"] !== null) {
-			entry += dict["note"]
-		}
-		if (dict["onset"] !== null) {
-			entry += ` <strong>Onset</strong> ${dict["onset"]}`
-		}
-		if (dict["max duration"] !== null) {
-			entry += ` <strong>Maximum Duration</strong> ${dict["max duration"]}`
-		}
-		for (let stage of dict["stages"]) {
-			entry += ` <strong>Stage ${stage["stage"]} </strong>${stage["entry"]} (${stage["duration"]});`
-		}
-		return `<p class="pf-2-stat-indent-second-line"><strong>${dict["name"]} </strong>(${dict["type"]}); <strong>Level </strong>${dict["level"]}. ${entry}</p>`
-	},
-
-	getExcludedTr (it, dataProp) {
+	getExcludedTr(it, dataProp) {
 		if (!ExcludeUtil.isInitialised) return "";
 		const isExcluded = ExcludeUtil.isExcluded(it.name, dataProp, it.source);
 		return isExcluded ? `<tr><td colspan="6" class="pt-3 text-center text-danger"><b><i>Warning: This content has been blacklisted.</i></b></td></tr>` : "";

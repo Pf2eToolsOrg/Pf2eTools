@@ -17,16 +17,16 @@ class RenderSpells {
 		}
 		let components = ``;
 		let components_list = [];
-		if (sp.components_focus) {
+		if (sp.components.F) {
 			components_list.push("focus")
 		}
-		if (sp.components_material) {
+		if (sp.components.M) {
 			components_list.push("material")
 		}
-		if (sp.components_somatic) {
+		if (sp.components.S) {
 			components_list.push("somatic")
 		}
-		if (sp.components_verbal) {
+		if (sp.components.V) {
 			components_list.push("verbal")
 		}
 		components = components_list.join(", ")
@@ -108,29 +108,24 @@ class RenderSpells {
 
 		renderStack.push(Renderer.utils.getDividerDiv());
 
-		let entry_html = ``;
-		entry_html = `<p class="pf2-stat-text">${sp.entry}</p>`;
-		if (sp.success_degree !== null) {
-			for (let key in sp.success_degree) {
-				entry_html += `<p class="pf-2-stat-indent-second-line"><strong>${key} </strong>${sp.success_degree[key]}</p>`
-			}
-		}
-		if (sp.affliction !== null) {
-			entry_html += Renderer.utils.render_affliction(sp.affliction)
-		}
-		renderStack.push(entry_html);
+		const entryList = {type: 'entries', entries: sp.entries};
+		renderStack.push(`<div class="pf2-stat-text">`)
+		renderer.recursiveRender(entryList, renderStack, {depth: 1});
+		renderStack.push(`</div>`)
 
 		if (sp.heightened) {
-			let heighten_html = ``
+			renderStack.push(Renderer.utils.getDividerDiv())
 			if (sp.heightened_plus_x !== null) {
-				heighten_html = `<p class="pf-2-stat-indent-second-line"><strong>Heightened (+${sp.heightened_plus_x[0]}) </strong>${sp.heightened_plus_x[1]}</p>`
+				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (+${sp.heightened_plus_x[0]}) </strong>`)
+				renderer.recursiveRender(sp.heightened_plus_x[1], renderStack, {depth: 1})
+				renderStack.push(`</p>`)
 			} else {
 				for (let plus_x of sp.heightened_x) {
-					heighten_html += `<p class="pf-2-stat-indent-second-line"><strong>Heightened (${Parser.getOrdinalForm(plus_x[0])}) </strong>${plus_x[1]}</p>`
+					renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (${Parser.getOrdinalForm(plus_x[0])}) </strong>`)
+					renderer.recursiveRender(plus_x[1], renderStack, {depth: 1})
+					renderStack.push(`</p>`)
 				}
 			}
-			renderStack.push(Renderer.utils.getDividerDiv())
-			renderStack.push(heighten_html);
 		}
 
 		return $(renderStack.join(""));
