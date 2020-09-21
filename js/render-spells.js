@@ -31,26 +31,11 @@ class RenderSpells {
 		}
 		components = components_list.join(", ")
 		let cast = ``
-		if (!Parser.SP_TIME_ACTIONS.includes(sp.cast.unit)) {
+		let castStack = []
+		renderer.recursiveRender(sp.cast.entry, castStack, {depth:1}, {prefix: `<span>`, suffix: `</span>`})
+		cast = castStack.join('')
+		if (!Parser.SP_TIME_ACTIONS.includes(sp.cast.unit) && components.length) {
 			components = `(` + components + `)`
-			cast = `${sp.cast.number} ${sp.cast.unit}${sp.cast.number > 1 ? "s" : ""}`
-		} else {
-			if (sp.cast.unit === Parser.SP_TM_PF_A) {
-				cast = `<span class="pf2-action-icon">1</span>`
-			}
-			if (sp.cast.unit === Parser.SP_TM_PF_AA) {
-				cast = `<span class="pf2-action-icon">2</span>`
-			}
-			if (sp.cast.unit === Parser.SP_TM_PF_AAA) {
-				cast = `<span class="pf2-action-icon">3</span>`
-			}
-			if (sp.cast.unit === Parser.SP_TM_PF_R) {
-				cast = `<span class="pf2-action-icon">R</span>`
-			}
-			if (sp.cast.unit === Parser.SP_TM_PF_F) {
-				cast = `<span class="pf2-action-icon">F</span>`
-			}
-
 		}
 
 		let cst_tr_req = ``;

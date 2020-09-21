@@ -1085,6 +1085,7 @@ Parser.getTimeToFull = function (time) {
 	return `${time.number} ${time.unit === "free" ? "free action" : time.unit}${time.number > 1 ? "s" : ""}`;
 };
 
+
 RNG_SPECIAL = "special";
 RNG_POINT = "point";
 RNG_LINE = "line";
