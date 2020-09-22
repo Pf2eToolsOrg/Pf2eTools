@@ -117,17 +117,17 @@ function listFiles (opts) {
 }
 
 const TAG_TO_DEFAULT_SOURCE = {
-	"spell": "phb",
-	"item": "dmg",
-	"class": "phb",
-	"creature": "mm",
-	"condition": "phb",
-	"disease": "dmg",
-	"background": "phb",
-	"race": "phb",
-	"optfeature": "phb",
+	"spell": "crb",
+	"item": "crb",
+	"class": "crb",
+	"creature": "bst",
+	"condition": "crb",
+	"disease": "crb",
+	"background": "crb",
+	"race": "crb",
+	"optfeature": "crb",
 	"reward": "dmg",
-	"feat": "phb",
+	"feat": "crb",
 	"psionic": "UATheMysticClass",
 	"object": "dmg",
 	"cult": "mtf",
@@ -137,7 +137,7 @@ const TAG_TO_DEFAULT_SOURCE = {
 	"deity": "phb",
 	"variantrule": "dmg",
 	"vehicle": "gos",
-	"action": "phb"
+	"action": "crb"
 };
 
 module.exports = {

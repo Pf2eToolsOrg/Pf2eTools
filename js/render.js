@@ -1864,10 +1864,10 @@ function Renderer() {
 						break;
 					case "@condition":
 						fauxEntry.href.path = "conditionsdiseases.html";
-						if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+						if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_CRB;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_CONDITIONS_DISEASES,
-							source: source || SRC_PHB
+							source: source || SRC_CRB
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
