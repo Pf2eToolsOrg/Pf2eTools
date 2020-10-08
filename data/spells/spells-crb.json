@@ -120,7 +120,7 @@
       ],
       "entries": [
         "You conjure an arrow of acid that continues corroding the target after it hits. Make a spell attack against the target.",
-        "On a hit, you deal {@dice 3d8} acid damage plus {@dice 1d6} {@condition Persistent Damage|CRB|persistent acid damage}. On a critical hit, double the initial damage, but not the {@condition persistent }damage."
+        "On a hit, you deal {@dice 3d8} acid damage plus {@dice 1d6} {@condition Persistent Damage|CRB|persistent acid damage}. On a critical hit, double the initial damage, but not the {@condition Persistent Damage|CRB|persistent damage}."
       ],
       "cast": {
         "number": 1,
@@ -213,19 +213,19 @@
         "x": [
           {
             "level": 3,
-            "entry": "The initial damage increases to {@dice 1d6} + your spellcasting ability modifier, and the {@condition persistent }damage increases to 2."
+            "entry": "The initial damage increases to {@dice 1d6} + your spellcasting ability modifier, and the {@condition Persistent Damage|CRB|persistent damage} increases to 2."
           },
           {
             "level": 5,
-            "entry": "The initial damage increases to {@dice 2d6} + your spellcasting ability modifier, the {@condition persistent }damage increases to 3, and the splash damage increases to 2."
+            "entry": "The initial damage increases to {@dice 2d6} + your spellcasting ability modifier, the {@condition Persistent Damage|CRB|persistent damage} increases to 3, and the splash damage increases to 2."
           },
           {
             "level": 7,
-            "entry": "The initial damage increases to {@dice 3d6} + your spellcasting ability modifier, the {@condition persistent }damage increases to 4, and the splash damage increases to 3."
+            "entry": "The initial damage increases to {@dice 3d6} + your spellcasting ability modifier, the {@condition Persistent Damage|CRB|persistent damage} increases to 4, and the splash damage increases to 3."
           },
           {
             "level": 9,
-            "entry": "The initial damage increases to {@dice 4d6} + your spellcasting ability modifier, the {@condition persistent }damage increases to 5, and the splash damage increases to 4."
+            "entry": "The initial damage increases to {@dice 4d6} + your spellcasting ability modifier, the {@condition Persistent Damage|CRB|persistent damage} increases to 5, and the splash damage increases to 4."
           }
         ],
         "no_x": null
@@ -307,7 +307,7 @@
           },
           {
             "level": 6,
-            "entry": "Your battle form is Huge, your fly Speed gains a +15-foot status bonus, and your attacks have 10-foot reach. You must have enough space to expand into or the spell is lost. You instead gain AC = 21 + your level, 15 temporary HP, attack modifier +21, damage bonus +4 and double damage dice (including {@condition persistent }damage), and Acrobatics +23."
+            "entry": "Your battle form is Huge, your fly Speed gains a +15-foot status bonus, and your attacks have 10-foot reach. You must have enough space to expand into or the spell is lost. You instead gain AC = 21 + your level, 15 temporary HP, attack modifier +21, damage bonus +4 and double damage dice (including {@condition Persistent Damage|CRB|persistent damage}), and Acrobatics +23."
           }
         ],
         "no_x": null
@@ -6799,7 +6799,7 @@
           },
           {
             "level": 7,
-            "entry": "Your battle form is Huge and your attacks have 15-foot reach. You must have space to expand or the spell is lost. You instead gain AC = 22 + your level, 20 temporary HP, an attack modifier of +25, a damage bonus of +11, double the number of damage dice (including {@condition persistent }damage), and Acrobatics or Athletics +25."
+            "entry": "Your battle form is Huge and your attacks have 15-foot reach. You must have space to expand or the spell is lost. You instead gain AC = 22 + your level, 20 temporary HP, an attack modifier of +25, a damage bonus of +11, double the number of damage dice (including {@condition Persistent Damage|CRB|persistent damage}), and Acrobatics or Athletics +25."
           }
         ],
         "no_x": null
@@ -11319,7 +11319,7 @@
           },
           {
             "level": 5,
-            "entry": "Your battle form is Huge, and your attacks have 15-foot reach. You must have enough space to expand into or the spell is lost. You instead gain 20 temporary HP, attack modifier +18, damage bonus +2 and double damage dice (including {@condition persistent }damage), and Athletics +20."
+            "entry": "Your battle form is Huge, and your attacks have 15-foot reach. You must have enough space to expand into or the spell is lost. You instead gain 20 temporary HP, attack modifier +18, damage bonus +2 and double damage dice (including {@condition Persistent Damage|CRB|persistent damage}), and Athletics +20."
           }
         ],
         "no_x": null
@@ -15163,8 +15163,8 @@
           "type": "success_degree",
           "entries": {
             "Critical Success": "The target is unaffected.",
-            "Success": "The target takes full initial damage but no {@condition persistent }damage, and the spell ends immediately.",
-            "Failure": "The target takes full initial and {@condition persistent }damage, and the target is {@condition sickened} 1. If the target recovers from being {@condition sickened}, the {@condition persistent }damage ends and the spell ends.",
+            "Success": "The target takes full initial damage but no {@condition Persistent Damage|CRB|persistent damage}, and the spell ends immediately.",
+            "Failure": "The target takes full initial and {@condition Persistent Damage|CRB|persistent damage}, and the target is {@condition sickened} 1. If the target recovers from being {@condition sickened}, the {@condition Persistent Damage|CRB|persistent damage} ends and the spell ends.",
             "Critical Failure": "As failure, but the target is {@condition sickened} 2."
           }
         }
@@ -15200,7 +15200,7 @@
         "heightened": true,
         "plus_x": {
           "level": 1,
-          "entry": "The damage increases by {@dice 2d4} and the {@condition persistent }damage by {@dice 1d4}."
+          "entry": "The damage increases by {@dice 2d4} and the {@condition Persistent Damage|CRB|persistent damage} by {@dice 1d4}."
         },
         "x": null,
         "no_x": null
@@ -16445,7 +16445,7 @@
         "heightened": true,
         "plus_x": {
           "level": 1,
-          "entry": "Increase the damage by {@dice 1d4} and the {@condition persistent }damage on a critical hit by {@dice 1d4}."
+          "entry": "Increase the damage by {@dice 1d4} and the {@condition Persistent Damage|CRB|persistent damage} on a critical hit by {@dice 1d4}."
         },
         "x": null,
         "no_x": null
@@ -19553,7 +19553,7 @@
         "Evocation"
       ],
       "entries": [
-        "You shroud your hands in a crackling field of lightning. Make a melee spell attack roll. On a hit, the target takes {@dice 2d12} electricity damage. If the target is wearing metal armor or is made of metal, you gain a +1 circumstance bonus to your attack roll with shocking grasp, and the target also takes {@dice 1d4} {@condition Persistent Damage|CRB|persistent electricity damage} on a hit. On a critical hit, double the initial damage, but not the {@condition persistent }damage."
+        "You shroud your hands in a crackling field of lightning. Make a melee spell attack roll. On a hit, the target takes {@dice 2d12} electricity damage. If the target is wearing metal armor or is made of metal, you gain a +1 circumstance bonus to your attack roll with shocking grasp, and the target also takes {@dice 1d4} {@condition Persistent Damage|CRB|persistent electricity damage} on a hit. On a critical hit, double the initial damage, but not the {@condition Persistent Damage|CRB|persistent damage}."
       ],
       "cast": {
         "number": 1,
@@ -20562,8 +20562,8 @@
           "type": "success_degree",
           "entries": {
             "Critical Success": "The target is unaffected.",
-            "Success": "Whenever the target becomes affected by a spell with a duration, the target takes {@dice 2d12} {@condition Persistent Damage|CRB|persistent force damage}. Each time it takes {@condition Persistent Damage|CRB|persistent force damage} from spellwrack, it reduces the remaining duration of spells affecting it by 1 round. Only a successful Arcana check against your spell DC can help the target recover from the {@condition persistent }damage; the curse and the {@condition persistent }damage end after 1 minute.",
-            "Failure": "As success, but the curse and {@condition persistent }damage do not end on their own.",
+            "Success": "Whenever the target becomes affected by a spell with a duration, the target takes {@dice 2d12} {@condition Persistent Damage|CRB|persistent force damage}. Each time it takes {@condition Persistent Damage|CRB|persistent force damage} from spellwrack, it reduces the remaining duration of spells affecting it by 1 round. Only a successful Arcana check against your spell DC can help the target recover from the {@condition Persistent Damage|CRB|persistent damage}; the curse and the {@condition Persistent Damage|CRB|persistent damage} end after 1 minute.",
+            "Failure": "As success, but the curse and {@condition Persistent Damage|CRB|persistent damage} do not end on their own.",
             "Critical Failure": "As failure, but the {@condition Persistent Damage|CRB|persistent force damage} is {@dice 4d12}."
           }
         }
@@ -30600,14 +30600,14 @@
         "Nonlethal"
       ],
       "entries": [
-        "You inflict pain upon the target and revel in their anguish. This deals {@dice 1d4} mental damage and {@dice 1d4} {@condition Persistent Damage|CRB|persistent mental damage}; the target must attempt a Will save. As long as the target is taking {@condition persistent }damage from this spell, you gain a +1 status bonus to attack rolls and skill checks against the target.",
+        "You inflict pain upon the target and revel in their anguish. This deals {@dice 1d4} mental damage and {@dice 1d4} {@condition Persistent Damage|CRB|persistent mental damage}; the target must attempt a Will save. As long as the target is taking {@condition Persistent Damage|CRB|persistent damage} from this spell, you gain a +1 status bonus to attack rolls and skill checks against the target.",
         {
           "type": "success_degree",
           "entries": {
             "Critical Success": "The target is unaffected.",
-            "Success": "The target takes half damage and no {@condition persistent }damage.",
-            "Failure": "The target takes full initial and {@condition persistent }damage.",
-            "Critical Failure": "The target takes double initial and {@condition persistent }damage."
+            "Success": "The target takes half damage and no {@condition Persistent Damage|CRB|persistent damage}.",
+            "Failure": "The target takes full initial and {@condition Persistent Damage|CRB|persistent damage}.",
+            "Critical Failure": "The target takes double initial and {@condition Persistent Damage|CRB|persistent damage}."
           }
         }
       ],
@@ -30637,7 +30637,7 @@
         "heightened": true,
         "plus_x": {
           "level": 1,
-          "entry": "The initial damage increases by {@dice 1d4} and the {@condition persistent }damage increases by {@dice 1d4}."
+          "entry": "The initial damage increases by {@dice 1d4} and the {@condition Persistent Damage|CRB|persistent damage} increases by {@dice 1d4}."
         },
         "x": null,
         "no_x": null
