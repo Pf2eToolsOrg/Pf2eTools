@@ -98,7 +98,7 @@ class RenderSpells {
 		renderer.recursiveRender(entryList, renderStack, {depth: 1});
 		renderStack.push(`</div>`)
 
-		if (sp.heightened.heigthened) {
+		if (sp.heightened.heightened) {
 			renderStack.push(Renderer.utils.getDividerDiv())
 			if (sp.heightened.plus_x !== null) {
 				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (+${sp.heightened.plus_x.level}) </strong>`)
