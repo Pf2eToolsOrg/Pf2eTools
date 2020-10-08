@@ -56,9 +56,9 @@ class RenderSpells {
 		}
 		if (sp.area !== null) {
 			if (rg_ar_tg === ``) {
-				rg_ar_tg = `<strong>Area </strong>${sp.area}`
+				rg_ar_tg = `<strong>Area </strong>${sp.area.entry}`
 			} else {
-				rg_ar_tg += `; <strong>Area </strong>${sp.area}`
+				rg_ar_tg += `; <strong>Area </strong>${sp.area.entry}`
 			}
 		}
 		if (sp.targets !== null) {
@@ -98,20 +98,27 @@ class RenderSpells {
 		renderer.recursiveRender(entryList, renderStack, {depth: 1});
 		renderStack.push(`</div>`)
 
-		if (sp.heightened) {
+		if (sp.heightened.heigthened) {
 			renderStack.push(Renderer.utils.getDividerDiv())
-			if (sp.heightened_plus_x !== null) {
-				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (+${sp.heightened_plus_x[0]}) </strong>`)
-				renderer.recursiveRender(sp.heightened_plus_x[1], renderStack, {depth: 1})
+			if (sp.heightened.plus_x !== null) {
+				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (+${sp.heightened.plus_x.level}) </strong>`)
+				renderer.recursiveRender(sp.heightened.plus_x.entry, renderStack, {depth: 1})
 				renderStack.push(`</p>`)
-			} else {
-				for (let plus_x of sp.heightened_x) {
-					renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (${Parser.getOrdinalForm(plus_x[0])}) </strong>`)
-					renderer.recursiveRender(plus_x[1], renderStack, {depth: 1})
+			}
+			if (sp.heightened.x !== null) {
+				for (let x of sp.heightened.x) {
+					renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>`)
+					renderer.recursiveRender(x.entry, renderStack, {depth: 1})
 					renderStack.push(`</p>`)
 				}
 			}
+			if (sp.heightened.no_x !== null) {
+				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened </strong>`)
+				renderer.recursiveRender(sp.heightened.no_x.entry, renderStack, {depth: 1})
+				renderStack.push(`</p>`)
+			}
 		}
+		renderStack.push(`<p class="pf-2-stat-source"><strong>${sp.source}</strong> page ${sp.page_nr}</p>`);
 
 		return $(renderStack.join(""));
 	}

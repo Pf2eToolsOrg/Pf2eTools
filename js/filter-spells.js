@@ -55,6 +55,39 @@ class PageFilterSpells extends PageFilter {
 		}
 	}
 
+	static getFilterRange (spell) {
+		const fRan = spell.range || {type: null};
+		if (fRan.type !== null) {
+			let norm_range = this.getNormalisedRange(fRan);
+			if (norm_range === 1) {
+				return "Touch"
+			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 10) {
+				return "5 feet"
+			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 25) {
+				return  "10 feet"
+			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 50) {
+				return  "25 feet"
+			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 100) {
+				return  "50 feet"
+			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 500) {
+				return  "100 feet"
+			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * PageFilterSpells.FEET_PER_MILE) {
+				return  "500 feet"
+			} else if (norm_range < 900000000) {
+				return  "1 mile"
+			} else if (norm_range < 900000001) {
+				return "Planetary"
+			} else if (norm_range < 900000002) {
+				return  "Unlimited"
+			} else {
+				return "Varies"
+			}
+
+		} else {
+			return null
+		}
+	}
+
 	static getNormalisedTime (time) {
 		let multiplier = 1;
 		let offset = 0;
@@ -124,7 +157,7 @@ class PageFilterSpells extends PageFilter {
 	}
 
 	static getTblTimeStr (time) {
-		return Parser.SP_TIME_ACTIONS.includes(time.unit) ? `${Parser.SP_TIME_TO_FULL[time.unit].uppercaseFirst()}`
+		return time.unit === `Varies` ? `Varies` : Parser.SP_TIME_ACTIONS.includes(time.unit) ? `${Parser.SP_TIME_TO_FULL[time.unit].uppercaseFirst()}`
 		: `${time.number} ${time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
 	}
 
@@ -158,7 +191,15 @@ class PageFilterSpells extends PageFilter {
 			header: "Focus Spells",
 			filters: [focusFilter, classFilter, domainFilter]
 		});
-
+		const componentsFilter = new Filter({
+			header: "Components",
+			items: ["Focus", "Material", "Somatic", "Verbal", "Cost"],
+			itemSortFn: null
+		});
+		const savingThrowFilter = new Filter({
+			header: "Saving Throw",
+			items: ["Basic", "Fortitude", "Reflex", "Will"]
+		});
 		const generaltrtFilter = new Filter({
 			header: "General"});
 		const alignmentTrtFilter = new Filter({header: "Alignment"});
@@ -174,14 +215,15 @@ class PageFilterSpells extends PageFilter {
 			header: "Traits",
 			filters: [rarityTrtFilter, alignmentTrtFilter, elementalTrtFilter, energyTrtFilter, senseTrtFilter, generaltrtFilter]
 		});
-
 		const schoolFilter = new Filter({
 			header: "School",
 			items: [...Parser.SKL_ABVS],
 			displayFn: Parser.spSchoolAbvToFull,
 			itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.spSchoolAbvToFull(a.item), Parser.spSchoolAbvToFull(b.item))
 		});
-
+		const areaFilter = new Filter({
+			header: "Area Types"
+		});
 		const timeFilter = new Filter({
 			header: "Cast Time",
 			items: [
@@ -192,7 +234,8 @@ class PageFilterSpells extends PageFilter {
 				Parser.SP_TM_PF_R,
 				Parser.SP_TM_ROUND,
 				Parser.SP_TM_MINS,
-				Parser.SP_TM_HRS
+				Parser.SP_TM_HRS,
+				"Varies"
 			],
 			displayFn: Parser.spTimeUnitToFull,
 			itemSortFn: null
@@ -204,6 +247,17 @@ class PageFilterSpells extends PageFilter {
 			labels: ["Instant", "1 Round", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "24+ Hours", "Unlimited", "Special"]
 		});
 
+		const rangeFilter = new RangeFilter({
+			header: "Range",
+			isLabelled: true,
+			labelSortFn: null,
+			labels: ["Touch", "5 feet", "10 feet", "25 feet", "50 feet", "100 feet", "500 feet", "1 mile", "Planetary", "Unlimited", "Varies"]
+		});
+		const miscFilter = new Filter({
+			header: "Miscellaneous",
+			items: ["Has Requirements", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained"]
+		})
+
 
 		this._levelFilter = levelFilter;
 		this._traditionFilter = traditionFilter;
@@ -211,6 +265,8 @@ class PageFilterSpells extends PageFilter {
 		this._focusFilter = focusFilter;
 		this._classFilter = classFilter;
 		this._domainFilter = domainFilter;
+		this._componentsFilter = componentsFilter;
+		this._savingThrowFilter = savingThrowFilter;
 		this._traitFilter = traitsFilter;
 		this._generalTrtFilter = generaltrtFilter;
 		this._alignmentTrtFilter = alignmentTrtFilter;
@@ -221,6 +277,9 @@ class PageFilterSpells extends PageFilter {
 		this._schoolFilter = schoolFilter;
 		this._timeFilter = timeFilter;
 		this._durationFilter = durationFilter;
+		this._areaFilter = areaFilter;
+		this._rangeFilter = rangeFilter;
+		this._miscFilter = miscFilter;
 	}
 
 	populateHomebrewClassLookup (homebrew) {
@@ -320,6 +379,21 @@ class PageFilterSpells extends PageFilter {
 		spell._fsenseTrts = spell.traits.filter(t => Parser.TRAITS_SENSE.includes(t)) || [];
 		spell._fTimeType = [spell.cast["unit"]];
 		spell._fDurationType = PageFilterSpells.getFilterDuration(spell);
+		spell._areaTypes = spell.area ? spell.area.types : [];
+		spell._fRange = PageFilterSpells.getFilterRange(spell)
+		spell._fSavingThrow = spell.saving_throw == null ? [] : spell.saving_throw_basic ? [spell.saving_throw, "Basic"] : [spell.saving_throw];
+		spell._fComponents = spell.cost==null ? [] : ["Cost"];
+		if (spell.components.F) spell._fComponents.push("Focus");
+		if (spell.components.M) spell._fComponents.push("Material");
+		if (spell.components.S) spell._fComponents.push("Somatic");
+		if (spell.components.V) spell._fComponents.push("Verbal");
+		spell._fMisc = [];
+		if (spell.requirements !== null) spell._fMisc.push("Has Requirements");
+		if (spell.trigger !== null) spell._fMisc.push("Has Trigger");
+		if (spell.heightened.heightened) spell._fMisc.push("Can be Heightened");
+		if (spell.sustain) spell._fMisc.push("Sustained");
+		if (spell.dismiss) spell._fMisc.push("Can be Dismissed");
+
 	}
 
 	addToFilters (spell, isExcluded) {
@@ -338,6 +412,8 @@ class PageFilterSpells extends PageFilter {
 		this._energyTrtFilter.addItem(spell._fenergyTrts);
 		this._rarityTrtFilter.addItem(spell._frarityTrts);
 		this._sensesTrtFilter.addItem(spell._fsenseTrts);
+		this._areaFilter.addItem(spell._areaTypes)
+		this._miscFilter.addItem(spell._fMisc)
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -347,11 +423,16 @@ class PageFilterSpells extends PageFilter {
 			this._sourceFilter,
 			this._levelFilter,
 			this._traditionFilter,
+			this._schoolFilter,
+			this._componentsFilter,
+			this._savingThrowFilter,
 			this._multiFocusFilter,
 			this._traitFilter,
-			this._schoolFilter,
 			this._timeFilter,
 			this._durationFilter,
+			this._areaFilter,
+			this._rangeFilter,
+			this._miscFilter
 		];
 	}
 
@@ -361,6 +442,9 @@ class PageFilterSpells extends PageFilter {
 			s._fSources,
 			s.level,
 			s._fTraditions,
+			s.school,
+			s._fComponents,
+			s._fSavingThrow,
 			[
 				s._fFocus,
 				s._fClasses,
@@ -374,9 +458,11 @@ class PageFilterSpells extends PageFilter {
 				s._fsenseTrts,
 				s._fgeneralTrts
 			],
-			s.school,
 			s._fTimeType,
 			s._fDurationType,
+			s._areaTypes,
+			s._fRange,
+			s._fMisc
 		)
 	}
 }
