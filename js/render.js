@@ -2579,6 +2579,18 @@ Renderer.utils = {
 		let traits_html = ``;
 		let trait;
 		for (trait of traits) {
+			let href = {
+				type: "internal",
+				path: "traits.html",
+				hash: `${trait}${HASH_LIST_SEP}${SRC_CRB}`,
+				hover: {
+					page: UrlUtil.PG_TRAITS,
+					source: SRC_CRB
+				}
+			}
+			let procHash = UrlUtil.encodeForHash(href.hash).replace(/'/g, "\\'");
+			const hoverMeta = `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this, '${href.hover.page}', '${href.hover.source}', '${procHash}', ${href.hover.preloadId ? `'${href.hover.preloadId}'` : "null"})" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)"  ${Renderer.hover.getPreventTouchString()}`
+
 			let disgust = ``;
 			if (traits.indexOf(trait) === 0) {
 				disgust = ` pf2-trait-left`
@@ -2587,11 +2599,11 @@ Renderer.utils = {
 				disgust += ` pf2-trait-right`
 			}
 			if (trait === "Uncommon") {
-				traits_html += `<div class="pf2-trait pf2-trait-uncommon${disgust}">uncommon</div>`;
+				traits_html += `<div class="pf2-trait pf2-trait-uncommon${disgust}" ${hoverMeta}>uncommon</div>`;
 			} else if (trait === "Rare") {
-				traits_html += `<div class="pf2-trait pf2-trait-rare${disgust}">rare</div>`;
+				traits_html += `<div class="pf2-trait pf2-trait-rare${disgust}" ${hoverMeta}>rare</div>`;
 			} else {
-				traits_html += `<div class="pf2-trait${disgust}">${trait}</div>`;
+				traits_html += `<div class="pf2-trait${disgust}" ${hoverMeta}>${trait}</div>`;
 			}
 		}
 		return traits_html
@@ -6636,6 +6648,8 @@ Renderer.hover = {
 				return pLoadSimple(page, "actions.json", "action");
 			case UrlUtil.PG_LANGUAGES:
 				return pLoadSimple(page, "languages.json", "language");
+			case UrlUtil.PG_TRAITS:
+				return pLoadSimple(page, "traits.json", "trait");
 			default:
 				throw new Error(`No load function defined for page ${page}`);
 		}
@@ -6698,6 +6712,8 @@ Renderer.hover = {
 				return Renderer.action.getCompactRenderedString;
 			case UrlUtil.PG_LANGUAGES:
 				return Renderer.language.getCompactRenderedString;
+			case UrlUtil.PG_TRAITS:
+				return Renderer.trait.getRenderedString;
 			default:
 				return null;
 		}
