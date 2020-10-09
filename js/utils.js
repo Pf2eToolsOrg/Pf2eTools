@@ -995,6 +995,7 @@ Parser.spSchoolAndSubschoolsAbvsToFull = function (school, subschools) {
 };
 
 Parser.spSchoolAbvToFull = function (schoolOrSubschool) {
+	if (schoolOrSubschool == null) return `N/A`
 	const out = Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, schoolOrSubschool);
 	if (Parser.SP_SCHOOL_ABV_TO_FULL[schoolOrSubschool]) return out;
 	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[schoolOrSubschool]) return BrewUtil.homebrewMeta.spellSchools[schoolOrSubschool].full;
@@ -2786,6 +2787,7 @@ SRC_SADS = "SADS";
 SRC_EGW = "EGW";
 SRC_SCREEN = "Screen";
 SRC_CRB = "CRB";
+SRC_APG = "APG";
 
 SRC_AL_PREFIX = "AL";
 
@@ -3004,6 +3006,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SMT] = `${UA_PREFIX}2020 Spells and Magic T
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
+Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CoS] = "CoS";
@@ -3134,6 +3137,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SMT] = "UA2SMT";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
+Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
 
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CoS] = "2016-03-15";
@@ -3260,6 +3264,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC2] = "2020-02-04";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC3] = "2020-02-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SMT] = "2020-03-26";
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
+Parser.SOURCE_JSON_TO_DATE[SRC_APG] = "2020-08-30";
 
 
 Parser.SOURCES_ADVENTURES = new Set([
@@ -6712,6 +6717,7 @@ DataUtil = {
 		doPostLoad: function (data) {
 			const PRINT_ORDER = [
 				SRC_CRB,
+				SRC_APG,
 				SRC_PHB,
 				SRC_DMG,
 				SRC_SCAG,
