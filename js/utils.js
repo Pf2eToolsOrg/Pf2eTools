@@ -1839,6 +1839,7 @@ Parser.CAT_ID_SUBCLASS = 40;
 Parser.CAT_ID_SUBCLASS_FEATURE = 41;
 Parser.CAT_ID_ACTION = 42;
 Parser.CAT_ID_LANGUAGE = 43;
+Parser.CAT_ID_TRAIT = 44;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1885,6 +1886,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS] = "Subclass";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS_FEATURE] = "Subclass Feature";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ACTION] = "Action";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LANGUAGE] = "Language";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TRAIT] = "Trait";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1935,6 +1937,8 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS] = "subclass";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS_FEATURE] = "subclass";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ACTION] = "action";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LANGUAGE] = "language";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TRAIT] = "trait";
+
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -5600,6 +5604,7 @@ UrlUtil.PG_VEHICLES = "vehicles.html";
 UrlUtil.PG_CHARACTERS = "characters.html";
 UrlUtil.PG_ACTIONS = "actions.html";
 UrlUtil.PG_LANGUAGES = "languages.html";
+UrlUtil.PG_TRAITS = "traits.html"
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -5624,6 +5629,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAITS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 
 UrlUtil.CAT_TO_PAGE = {};
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURE] = UrlUtil.PG_BESTIARY;

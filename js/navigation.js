@@ -127,6 +127,7 @@ class NavBar {
 		addLi(ulReferences, "psionics.html", "Psionics");
 		addLi(ulReferences, "spells.html", "Spells");
 		addLi(ulReferences, "vehicles.html", "Vehicles");
+		addLi(ulReferences, "traits.html", "Traits");
 
 		const ulUtils = addDropdown(navBar, "Utilities");
 		addLi(ulUtils, "blacklist.html", "Content Blacklist");

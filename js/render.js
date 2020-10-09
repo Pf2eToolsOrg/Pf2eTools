@@ -3355,6 +3355,24 @@ Renderer.condition = {
 	}
 };
 
+Renderer.trait = {
+	getRenderedString(trait) {
+		const renderer = Renderer.get();
+		const renderStack = [];
+		renderer.setFirstSection(true);
+		renderStack.push(`
+			${Renderer.utils.getNameDiv(trait, {page: UrlUtil.PG_TRAITS})}
+			${Renderer.utils.getDividerDiv()}
+		`);
+		renderStack.push(`<div class="pf2-stat-text">`)
+		renderer.recursiveRender({entries: trait.entries}, renderStack);
+		renderStack.push(`</div>`)
+
+		return renderStack.join("");
+	}
+};
+
+
 Renderer.background = {
 	getCompactRenderedString(bg) {
 		return `
