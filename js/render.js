@@ -3364,14 +3364,16 @@ Renderer.condition = {
 	getCompactRenderedString(cond) {
 		const renderer = Renderer.get();
 		const renderStack = [];
+		renderer.setFirstSection(true);
 
+		// TODO: renderStack.push(`${Renderer.utils.getExcludedTr(cond, cond.__prop || cond._type)}`)
 		renderStack.push(`
-			${Renderer.utils.getExcludedTr(cond, cond.__prop || cond._type)}
-			${Renderer.utils.getNameTr(cond, {page: UrlUtil.PG_CONDITIONS_DISEASES})}
-			<tr class="text"><td colspan="6">
+			${Renderer.utils.getNameDiv(cond, {page: UrlUtil.PG_CONDITIONS_DISEASES})}
+			${Renderer.utils.getDividerDiv()}
 		`);
+		renderStack.push(`<div class="pf2-stat-text">`)
 		renderer.recursiveRender({entries: cond.entries}, renderStack);
-		renderStack.push(`</td></tr>`);
+		renderStack.push(`</div>`)
 
 		return renderStack.join("");
 	}
@@ -3382,6 +3384,7 @@ Renderer.trait = {
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.setFirstSection(true);
+		// TODO: renderStack.push(`${Renderer.utils.getExcludedTr(trait, trait.__prop || trait._type)}`)
 		renderStack.push(`
 			${Renderer.utils.getNameDiv(trait, {page: UrlUtil.PG_TRAITS})}
 			${Renderer.utils.getDividerDiv()}
