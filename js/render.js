@@ -2008,6 +2008,15 @@ function Renderer() {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@trait":
+						fauxEntry.href.path = "traits.html";
+						if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_CRB;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_TRAITS,
+							source: source || SRC_CRB
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
 				}
 
 				break;
@@ -8994,6 +9003,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@spell":
 					case "@table":
 					case "@trap":
+					case "@trait":
 					case "@variantrule": {
 						const parts = Renderer.splitTagByPipe(text);
 						return parts.length >= 3 ? parts[2] : parts[0];
