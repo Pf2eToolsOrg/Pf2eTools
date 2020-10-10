@@ -4,9 +4,9 @@
 			"name": "Auditory",
 			"source": "CRB",
 			"entries": [
-				"This is a test. Auditory entries here."
+				"Auditory actions and effects rely on sound. An action with the auditory trait can be successfully performed only if the creature using the action can speak or otherwise produce the required sounds. A spell or effect with the auditory trait has its effect only if the target can hear it. This applies only to sound-based parts of the effect, as determined by the GM. This is different from a {@trait sonic|CRB} effect, which still affects targets who can't hear it (such as {@condition deaf|CRB} targets) as long as the effect itself makes sound."
 			],
-			"page": 619,
+			"page": 629,
 			"srd": true
 		},
 		{
@@ -16,6 +16,653 @@
 				"This is not a test."
 			],
 			"page": 619,
+			"srd": true
+		}
+	],
+	"spellTrait (do whatever you want), the traits inside use {@trait X|CRB} reference tags": [
+		{
+			"name": "Auditory",
+			"source": "CRB",
+			"entries": [
+				"Auditory actions and effects rely on sound. An action with the auditory trait can be successfully performed only if the creature using the action can speak or otherwise produce the required sounds. A spell or effect with the auditory trait has its effect only if the target can hear it. This applies only to sound-based parts of the effect, as determined by the GM. This is different from a {@trait sonic|CRB} effect, which still affects targets who can't hear it (such as {@condition deaf|CRB} targets) as long as the effect itself makes sound."
+			],
+			"page": 629,
+			"srd": true
+		},
+		{
+			"name": "Move",
+			"source": "CRB",
+			"entries": [
+				"An action with this trait involves moving from one space to another."
+			],
+			"page": 634,
+			"srd": true
+		},
+		{
+			"name": "Prediction",
+			"source": "CRB",
+			"entries": [
+				"Effects with this trait determine what is likely to happen in the near future. Most predictions are {@trait divination|CRB|divinations}."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Divination",
+			"source": "CRB",
+			"entries": [
+				"The divination school of magic typically involves obtaining or transferring information, or predicting events."
+			],
+			"page": 631,
+			"srd": true
+		},
+		{
+			"name": "Conjuration",
+			"source": "CRB",
+			"entries": [
+				"Effects and magic items with this trait are associated with the conjuration school of magic, typically involving summoning, creation, {@trait teleportation|CRB}, or moving things from place to place."
+			],
+			"page": 630,
+			"srd": true
+		},
+		{
+			"name": "Earth",
+			"source": "CRB",
+			"entries": [
+				"Effects with the earth trait either manipulate or conjure earth. Those that manipulate earth have no effect in an area without earth. Creatures with this trait consist primarily of earth or have a magical connection to that element. Planes with this trait are mostly solid, with caverns and other hollow pockets."
+			],
+			"page": 631,
+			"srd": true
+		},
+		{
+			"name": "Stance",
+			"source": "CRB",
+			"entries": [
+				"A stance is a general combat strategy that you enter by using an action with the stance trait, and that you remain in for some time. A stance lasts until you get knocked out, until its requirements (if any) are violated, until the encounter ends, or until you enter a new stance, whichever comes first. After you use an action with the stance trait, you can’t use another one for 1 round. You can enter or be in a stance only in encounter mode."
+			],
+			"page": 637,
+			"srd": true
+		},
+		{
+			"name": "Transmutation",
+			"source": "CRB",
+			"entries": [
+				"Effects and magic items with this trait are associated with the transmutation school of magic, typically changing something’s form."
+			],
+			"page": 637,
+			"srd": true
+		},
+		{
+			"name": "Necromancy",
+			"source": "CRB",
+			"entries": [
+				"Effects and magic items with this trait are associated with the necromancy school of magic, typically involving forces of life and death."
+			],
+			"page": 634,
+			"srd": true
+		},
+		{
+			"name": "Polymorph",
+			"source": "CRB",
+			"entries": [
+				"These effects transform the target into a new form. A target can’t be under the effect of more than one polymorph effect at a time. If it comes under the effect of a second polymorph effect, the second polymorph effect attempts to counteract the first. If it succeeds, it takes effect, and if it fails, the spell has no effect on that target. Any Strikes specifically granted by a polymorph effect are magical. Unless otherwise stated, polymorph spells don’t allow the target to take on the appearance of a specific individual creature, but rather just a generic creature of a general type or ancestry.",
+				"If you take on a battle form with a polymorph spell, the special statistics can be adjusted only by circumstance bonuses, status bonuses, and penalties. Unless otherwise noted, the battle form prevents you from casting spells, speaking, and using most manipulate actions that require hands. (If there’s doubt about whether you can use an action, the GM decides.) Your gear is absorbed into you; the constant abilities of your gear still function, but you can’t activate any items."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Aura",
+			"source": "CRB",
+			"entries": [
+				"An aura is an emanation that continually ebbs out from you, af ecting creatures within a certain radius. Aura can also refer to the magical signature of an item or a creature with a strong alignment."
+			],
+			"page": 629,
+			"srd": true
+		},
+		{
+			"name": "Enchantment",
+			"source": "CRB",
+			"entries": [
+				"Effects and magic items with this trait are associated with the enchantment school of magic, typically involving mind control, emotion alteration, and other mental effects."
+			],
+			"page": 631,
+			"srd": true
+		},
+		{
+			"name": "Cantrip",
+			"source": "CRB",
+			"entries": [
+				"A spell you can cast at will that is automatically heightened to half your level rounded up."
+			],
+			"page": 629,
+			"srd": true
+		},
+		{
+			"name": "Electricity",
+			"source": "CRB",
+			"entries": [
+				"Effects with this trait deal electricity damage. A creature with this trait has a magical connection to electricity."
+			],
+			"page": 631,
+			"srd": true
+		},
+		{
+			"name": "Sleep",
+			"source": "CRB",
+			"entries": [
+				"This effect can cause a creature to fall asleep or get drowsy."
+			],
+			"page": 636,
+			"srd": true
+		},
+		{
+			"name": "Fortune",
+			"source": "CRB",
+			"entries": [
+				"A fortune effect beneficially alters how you roll your dice. You can never have more than one fortune effect alter a single roll. If multiple fortune effects would apply, you have to pick which to use. If a fortune effect and a {@trait misfortune|CRB} effect would apply to the same roll, the two cancel each other out, and you roll normally."
+			],
+			"page": 632,
+			"srd": true
+		},
+		{
+			"name": "Scrying",
+			"source": "CRB",
+			"entries": [
+				"A scrying effect lets you see, hear, or otherwise get sensory information from a distance using a sensor or apparatus, rather than your own eyes and ears."
+			],
+			"page": 636,
+			"srd": true
+		},
+		{
+			"name": "Disease",
+			"source": "CRB",
+			"entries": [
+				"An effect with this trait applies one or more diseases. A disease is typically an affliction."
+			],
+			"page": 631,
+			"srd": true
+		},
+		{
+			"name": "Abjuration",
+			"source": "CRB",
+			"entries": [
+				"Effects and magic items with this trait are associated with the abjuration school of magic, typically involving protection or wards."
+			],
+			"page": 628,
+			"srd": true
+		},
+		{
+			"name": "Air",
+			"source": "CRB",
+			"entries": [
+				"Effects with the air trait either manipulate or conjure air. Those that manipulate air have no effect in a vacuum or an area without air. Creatures with this trait consist primarily of air or have a magical connection to that element. Planes with this trait consist mostly of open spaces and air with various degrees of turbulence, though they also contain rare islands of floating stone and other elements and energies."
+			],
+			"page": 628,
+			"srd": true
+		},
+		{
+			"name": "Plant",
+			"source": "CRB",
+			"entries": [
+				"Vegetable creatures have the plant trait. They are distinct from normal plants. Magical effects with this trait manipulate or conjure plants or plant matter in some way. Those that manipulate plants have no effect in an area with no plants."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Detection",
+			"source": "CRB",
+			"entries": [
+				"Effects with this trait attempt to determine the presence or location of a person, object, or aura."
+			],
+			"page": 630,
+			"srd": true
+		},
+		{
+			"name": "Composition",
+			"source": "CRB",
+			"entries": [
+				"To cast a composition cantrip or focus spell, you usually use a type of Performance. If the spell includes a verbal component, you must use an {@trait auditory|CRB} performance, and if it includes a somatic component, you must use a {@trait visual|CRB} one. The spell gains all the traits of the performance you used. You can cast only one composition spell each turn, and you can have only one active at a time. If you cast a new composition spell, any ongoing effects from your previous composition spell end immediately."
+			],
+			"page": 629,
+			"srd": true
+		},
+		{
+			"name": "Darkness",
+			"source": "CRB",
+			"entries": [
+				"Darkness effects extinguish non-magical light in the area, and can counteract less powerful magical light. You must usually target light magic with your darkness magic directly to counteract the light, but some darkness spells automatically attempt to counteract light."
+			],
+			"page": 630,
+			"srd": true
+		},
+		{
+			"name": "Force",
+			"source": "CRB",
+			"entries": [
+				"Effects with this trait deal force damage or create objects made of pure magical force."
+			],
+			"page": 632,
+			"srd": true
+		},
+		{
+			"name": "Positive",
+			"source": "CRB",
+			"entries": [
+				"Effects with this trait heal living creatures with positive energy, deal positive energy damage to undead, or manipulate positive energy. Planes with this trait are awash with life energy of such intensity that it can harm living creatures. Creatures with this trait are natives of the Positive Energy Plane. They can survive the basic environmental effects of the Positive Energy Plane."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Emotion",
+			"source": "CRB",
+			"entries": [
+				"This effect alters a creature's emotions. Effects with this trait always have the {@trait mental|CRB} trait as well. Creatures with special training or that have mechanical or artificial intelligence are immune to emotion effects."
+			],
+			"page": 631,
+			"srd": true
+		},
+		{
+			"name": "Good",
+			"source": "CRB",
+			"entries": [
+				"Good effects often manipulate energy from good-aligned Outer Planes and are antithetical to evil divine servants or divine servants of evil deities. A creature with this trait is good in alignment."
+			],
+			"page": 632,
+			"srd": true
+		},
+		{
+			"name": "Bard",
+			"source": "CRB",
+			"entries": [
+				"This indicates abilities from the {@class bard|CRB} class."
+			],
+			"page": 629,
+			"srd": true
+		},
+		{
+			"name": "Consecration",
+			"source": "CRB",
+			"entries": [
+				"A consecration spell enhances an area for an extended period of time. A given area can have only a single consecration effect at a time. The new effect attempts to counteract any existing one in areas of overlap."
+			],
+			"page": 630,
+			"srd": true
+		},
+		{
+			"name": "Possession",
+			"source": "CRB",
+			"entries": [
+				"Effects with this trait allow a creature to project its mind and spirit into a target. A creature immune to mental effects can’t use a possession effect. While possessing a target, a possessor’s true body is unconscious (and can’t wake up normally), unless the possession effect allows the creature to physically enter the target. Whenever the target takes damage, the possessor takes half that amount of damage as mental damage.",
+				"A possessor loses the benefits of any of its active spells or abilities that affect its physical body, though it gains the benefits of the target’s active spells and abilities that affect their body. A possessor can use any of the target’s abilities that are purely physical, and it can’t use any of its own abilities except spells and purely mental abilities. The GM decides whether an ability is purely physical or purely mental. A possessor uses the target’s attack modifier, AC, Fortitude save, Reflex save, Perception, and physical skills, and its own Will save, mental skills, spell attack roll, and spell DC; benefits of invested items apply where relevant (the possessor’s invested items apply when using its own values, and the target’s invested items apply when using the target’s values). A possessor gains no benefit from casting spells that normally affect only the caster, since it isn’t in its own body.",
+				"The possessor must use its own actions to make the possessed creature act.",
+				"If a possessor reaches 0 Hit Points through any combination of damage to its true body and mental damage from the possession, it is knocked out as normal and the possession immediately ends. If the target reaches 0 Hit Points first, the possessor can either fall unconscious with the body and continue the possession or end the effect as a free action and return to its body. If the target dies, the possession ends immediately and the possessor is stunned for 1 minute."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Uncommon",
+			"source": "CRB",
+			"entries": [
+				"Something of uncommon rarity requires special training or comes from a particular culture or part of the world. Some character choices give access to uncommon options, and the GM can choose to allow access for anyone. Less is known about uncommon creatures than common creatures. They typically can’t be summoned. The DC of Recall Knowledge checks related to these creature is increased by 2."
+			],
+			"page": 637,
+			"srd": true
+		},
+		{
+			"name": "Poison",
+			"source": "CRB",
+			"entries": [
+				"An effect with this trait delivers a poison or deals poison damage. An item with this trait is poisonous and might cause an affliction."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Attack",
+			"source": "CRB",
+			"entries": [
+				"An ability with this trait involves an attack. For each attack you make beyond the first on your turn, you take a multiple attack penalty."
+			],
+			"page": 629,
+			"srd": true
+		},
+		{
+			"name": "Acid",
+			"source": "CRB",
+			"entries": [
+				"Effects with this trait deal acid damage. Creatures with this trait have a magical connection to acid."
+			],
+			"page": 628,
+			"srd": true
+		},
+		{
+			"name": "Fear",
+			"source": "CRB",
+			"entries": [
+				"Fear effects evoke the emotion of fear. Effects with this trait always have the {@trait mental|CRB} and {@trait emotion|CRB} traits as well."
+			],
+			"page": 631,
+			"srd": true
+		},
+		{
+			"name": "Metamagic",
+			"source": "CRB",
+			"entries": [
+				"Actions with the metamagic trait, usually from metamagic feats, tweak the properties of your spells. You must use a metamagic action directly before Casting the Spell you want to alter. If you use any action (including free actions and reactions) other than Cast a Spell directly after, you waste the benefits of the metamagic action. Any additional effects added by a metamagic action are part of the spell’s effect, not of the metamagic action itself."
+			],
+			"page": 634,
+			"srd": true
+		},
+		{
+			"name": "Concentrate",
+			"source": "CRB",
+			"entries": [
+				"An action with this trait requires a degree of mental concentration and discipline."
+			],
+			"page": 630,
+			"srd": true
+		},
+		{
+			"name": "Rare",
+			"source": "CRB",
+			"entries": [
+				"This rarity indicates that a rules element is very difficult to find in the game world. A rare feat, spell, item or the like is available to players only if the GM decides to include it in the game, typically through discovery during play. Creatures with this trait are rare. They typically can’t be summoned. The DC of Recall Knowledge checks related to these creatures is increased by 5."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Light",
+			"source": "CRB",
+			"entries": [
+				"Light effects overcome non-magical darkness in the area, and can counteract magical {@trait darkness|CRB}. You must usually target darkness magic with your light magic directly to counteract the darkness, but some light spells automatically attempt to counteract darkness."
+			],
+			"page": 633,
+			"srd": true
+		},
+		{
+			"name": "Arcane",
+			"source": "CRB",
+			"entries": [
+				"This magic comes from the arcane tradition, which is built on logic and rationality. Anything with this trait is magical."
+			],
+			"page": 628,
+			"srd": true
+		},
+		{
+			"name": "Mental",
+			"source": "CRB",
+			"entries": [
+				"A mental effect can alter the target’s mind. It has no effect on an object or a mindless creature."
+			],
+			"page": 634,
+			"srd": true
+		},
+		{
+			"name": "Fire",
+			"source": "CRB",
+			"entries": [
+				"Effects with the fire trait deal fire damage or either conjure or manipulate fire. Those that manipulate fire have no effect in an area without fire. Creatures with this trait consist primarily of fire or have a magical connection to that element. Planes with this trait are composed of flames that continually burn with no fuel source. Fire planes are extremely hostile to non-fire creatures."
+			],
+			"page": 632,
+			"srd": true
+		},
+		{
+			"name": "Negative",
+			"source": "CRB",
+			"entries": [
+				"Effects with this trait heal undead creatures with negative energy, deal negative damage to living creatures, or manipulate negative energy. Planes with this trait are vast, empty reaches that suck the life from the living. Creatures with this trait are natives of the Negative Energy Plane. They can survive the basic environmental effects of the Negative Energy Plane."
+			],
+			"page": 630,
+			"srd": true
+		},
+		{
+			"name": "Revelation",
+			"source": "CRB",
+			"entries": [
+				"Effects with this trait see things as they truly are."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Evocation",
+			"source": "CRB",
+			"entries": [
+				"Effects and magic items with this trait are associated with the evocation school of magic, typically involving energy and elemental forces."
+			],
+			"page": 634,
+			"srd": true
+		},
+		{
+			"name": "Monk",
+			"source": "CRB",
+			"entries": [
+				"This indicates abilities from the {@class monk|CRB} class."
+			],
+			"page": 634,
+			"srd": true
+		},
+		{
+			"name": "Chaotic",
+			"source": "CRB",
+			"entries": [
+				"Chaotic effects often manipulate energy from chaos-aligned Outer Planes and are anathema to lawful divine servants or divine servants of lawful deities. A creature with this trait is chaotic in alignment. An ability with this trait can be selected or used only by chaotic creatures."
+			],
+			"page": 629,
+			"srd": true
+		},
+		{
+			"name": "Illusion",
+			"source": "CRB",
+			"entries": [
+				"Effects and magic items with this trait are associated with the illusion school of magic, typically involving false sensory stimuli."
+			],
+			"page": 633,
+			"srd": true
+		},
+		{
+			"name": "Curse",
+			"source": "CRB",
+			"entries": [
+				"A curse is an effect that places some long-term affliction on a creature. Curses are always magical and are typically the result of a spell or trap.",
+				"Afflictions with this trait are manifestations of potent ill will. A curse either lasts a specified amount of time or can be removed only by certain actions a character must perform or conditions they must meet. A curse with stages follows the rules for afflictions. (Gamemastery Guide pg. 251)"
+			],
+			"page": 630,
+			"srd": true
+		},
+		{
+			"name": "Teleportation",
+			"source": "CRB",
+			"entries": [
+				"Teleportation effects allow you to instantaneously move from one point in space to another. Teleportation does not usually trigger reactions based on movement."
+			],
+			"page": 637,
+			"srd": true
+		},
+		{
+			"name": "Morph",
+			"source": "CRB",
+			"entries": [
+				"Effects that slightly alter a creature’s form have the morph trait. Any Strikes specifically granted by a morph effect are magical. You can be affected by multiple morph spells at once, but if you morph the same body part more than once, the second morph effect attempts to counteract the first (in the same manner as two polymorph effects, described in that trait).",
+				"Your morph effects might also end if you are polymorphed and the polymorph effect invalidates or overrides your morph effect. The GM determines which morph effects can be used together and which can’t."
+			],
+			"page": 634,
+			"srd": true
+		},
+		{
+			"name": "Sonic",
+			"source": "CRB",
+			"entries": [
+				"An effect with the sonic trait functions only if it makes sound, meaning it has no effect in an area of silence or in a vacuum. This is different from an auditory spell, which is effective only if the target can hear it. A sonic effect might deal sonic damage. A creature with this trait has a magical connection to powerful sound."
+			],
+			"page": 636,
+			"srd": true
+		},
+		{
+			"name": "Extradimensional",
+			"source": "CRB",
+			"entries": [
+				"This effect or item creates an extradimensional space. An extradimensional effect placed inside another extradimensional space ceases to function until it is removed."
+			],
+			"page": 631,
+			"srd": true
+		},
+		{
+			"name": "Cleric",
+			"source": "CRB",
+			"entries": [
+				"This indicates abilities from the {@class cleric|CRB} class."
+			],
+			"page": 629,
+			"srd": true
+		},
+		{
+			"name": "Druid",
+			"source": "CRB",
+			"entries": [
+				"This indicates abilities from the {@class druid|CRB} class."
+			],
+			"page": 631,
+			"srd": true
+		},
+		{
+			"name": "Litany",
+			"source": "CRB",
+			"entries": [
+				"Litanies are special devotion spells, typically used by {@class champion|CRB|champions} and requiring a single action, that usually give temporary immunity to further litanies."
+			],
+			"page": 633,
+			"srd": true
+		},
+		{
+			"name": "Cold",
+			"source": "CRB",
+			"entries": [
+				"Effects with this trait deal cold damage. Creatures with this trait have a connection to magical cold."
+			],
+			"page": 629,
+			"srd": true
+		},
+		{
+			"name": "Sorcerer",
+			"source": "CRB",
+			"entries": [
+				"This indicates abilities from the {@class sorcerer|CRB} class."
+			],
+			"page": 636,
+			"srd": true
+		},
+		{
+			"name": "Healing",
+			"source": "CRB",
+			"entries": [
+				"A healing effect restores a creature's body, typically by restoring Hit Points, but sometimes by removing {@trait disease|CRB|diseases} or other debilitating effects."
+			],
+			"page": 632,
+			"srd": true
+		},
+		{
+			"name": "Champion",
+			"source": "CRB",
+			"entries": [
+				"This indicates abilities from the {@class champion|CRB} class."
+			],
+			"page": 629,
+			"srd": true
+		},
+		{
+			"name": "Shadow",
+			"source": "CRB",
+			"entries": [
+				"This magic involves shadows or the energy of the Shadow Plane."
+			],
+			"page": 636,
+			"srd": true
+		},
+		{
+			"name": "Death",
+			"source": "CRB",
+			"entries": [
+				"An effect with the death trait kills you immediately if it reduces you to 0 HP. Some death effects can bring you closer to death or slay you outright without reducing you to 0 HP."
+			],
+			"page": 630,
+			"srd": true
+		},
+		{
+			"name": "Incapacitation",
+			"source": "CRB",
+			"entries": [
+				"An ability with this trait can take a character completely out of the fight or even kill them, and it’s harder to use on a more powerful character. If a spell has the incapacitation trait, any creature of more than twice the spell’s level treats the result of their check to prevent being incapacitated by the spell as one degree of success better, or the result of any check the spellcaster made to incapacitate them as one degree of success worse. If any other effect has the incapacitation trait, a creature of higher level than the item, creature, or hazard generating the effect gains the same benefits."
+			],
+			"page": 633,
+			"srd": true
+		},
+		{
+			"name": "Linguistic",
+			"source": "CRB",
+			"entries": [
+				"An effect with this trait depends on language comprehension. A linguistic effect that targets a creature works only if the target understands the language you are using."
+			],
+			"page": 633,
+			"srd": true
+		},
+		{
+			"name": "Nonlethal",
+			"source": "CRB",
+			"entries": [
+				"Attacks with this weapon are nonlethal, and are used to knock creatures unconscious instead of kill them. You can use a nonlethal weapon to make a lethal attack with a –2 circumstance penalty."
+			],
+			"page": 283,
+			"srd": true
+		},
+		{
+			"name": "Evil",
+			"source": "CRB",
+			"entries": [
+				"Evil effects often manipulate energy from evil-aligned Outer Planes and are antithetical to good divine servants or divine servants of good deities. A creature with this trait is evil in alignment."
+			],
+			"page": 631,
+			"srd": true
+		},
+		{
+			"name": "Visual",
+			"source": "CRB",
+			"entries": [
+				"A visual effect can affect only creatures that can see it. This applies only to visible parts of the effect, as determined by the GM."
+			],
+			"page": 638,
+			"srd": true
+		},
+		{
+			"name": "Misfortune",
+			"source": "CRB",
+			"entries": [
+				"A misfortune effect detrimentally alters how you roll your dice. You can never have more than one misfortune effect alter a single roll. If multiple misfortune effects would apply, the GM decides which is worse and applies it. If a {@trait fortune|CRB} effect and a misfortune effect would apply to the same roll, the two cancel each other out, and you roll normally."
+			],
+			"page": 634,
+			"srd": true
+		},
+		{
+			"name": "Water",
+			"source": "CRB",
+			"entries": [
+				"Effects with the water trait either manipulate or conjure water. Those that manipulate water have no effect in an area without water. Creatures with this trait consist primarily of water or have a magical connection to the element. Planes with this trait are mostly liquid, perhaps with pockets of breathable air."
+			],
+			"page": 638,
+			"srd": true
+		},
+		{
+			"name": "Wizard",
+			"source": "CRB",
+			"entries": [
+				"This indicates abilities from the {@class wizard|CRB} class."
+			],
+			"page": 638,
 			"srd": true
 		}
 	]
