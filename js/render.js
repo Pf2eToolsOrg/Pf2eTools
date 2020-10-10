@@ -2588,13 +2588,14 @@ Renderer.utils = {
 		let traits_html = ``;
 		let trait;
 		for (trait of traits) {
+			let source = Parser.TRAITS_TO_TRAITS_SRC[trait]
 			let href = {
 				type: "internal",
 				path: "traits.html",
-				hash: `${trait}${HASH_LIST_SEP}${SRC_CRB}`,
+				hash: `${trait}${HASH_LIST_SEP}${source}`,
 				hover: {
 					page: UrlUtil.PG_TRAITS,
-					source: SRC_CRB
+					source: source
 				}
 			}
 			let procHash = UrlUtil.encodeForHash(href.hash).replace(/'/g, "\\'");
