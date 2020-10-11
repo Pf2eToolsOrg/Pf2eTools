@@ -185,7 +185,7 @@
 			"name": "Plant",
 			"source": "CRB",
 			"entries": [
-				"Vegetable creatures have the plant trait. They are distinct from normal plants. Magical effects with this trait manipulate or conjure plants or plant matter in some way. Those that manipulate plants have no effect in an area with no plants."
+				"Vegetable creatures have the plant trait. They are distinct from normal plants. magical effects with this trait manipulate or conjure plants or plant matter in some way. Those that manipulate plants have no effect in an area with no plants."
 			],
 			"page": 635,
 			"srd": true
@@ -644,9 +644,7 @@
 			],
 			"page": 638,
 			"srd": true
-		}
-	],
-	"creatureTrait (uses source: BST) (MAY REFERENCE SOURCES THAT DO NOT EXIST [missing Lost Omens for example])": [
+		},
 		{
 			"name": "Soulbound",
 			"source": "BST",
@@ -867,7 +865,7 @@
 		},
 		{
 			"name": "Orc",
-			"source": "BST",
+			"source": "CRB",
 			"entries": [
 				"A creature with this trait is a member of the orc ancestry. These green-skinned people tend to have darkvision. An ability with this trait can be used or selected only by orcs. An item with this trait is created and used by orcs."
 			],
@@ -1214,6 +1212,512 @@
 				"A creature with this trait can come from multiple tribes of creatures, including goblins, hobgoblins, and bugbears. Goblins tend to have darkvision. An ability with this trait can be used or chosen only by goblins. A weapon with this trait is created and used by goblins."
 			],
 			"page": 632,
+			"srd": true
+		},
+		{
+			"name": "Splash",
+			"source": "CRB",
+			"entries": [
+				"When you use a thrown weapon with the splash trait, you don’t add your Strength modifier to the damage roll. If an attack with a splash weapon fails, succeeds, or critically succeeds, all creatures within 5 feet of the target (including the target) take the listed splash damage. On a failure (but not a critical failure), the target of the attack still takes the splash damage. Add splash damage together with the initial damage against the target before applying the target’s weaknesses or resistances. You don’t multiply splash damage on a critical hit."
+			],
+			"page": 637,
+			"srd": true
+		},
+		{
+			"name": "Invested",
+			"source": "CRB",
+			"entries": [
+				"A character can wear only 10 magical items that have the invested trait. None of the magical effects of the item apply if the character hasn’t invested it, nor can it be activated, though the character still gains any normal benefits from wearing the physical item (like a hat keeping rain off their head)."
+			],
+			"page": 633,
+			"srd": true
+		},
+		{
+			"name": "Talisman",
+			"source": "CRB",
+			"entries": [
+				"A talisman is a small object affixed to armor, a shield, or a weapon (called the affixed item). You must be wielding or wearing an item to activate a talisman attached to it. Once activated, a talisman burns out permanently."
+			],
+			"page": 637,
+			"srd": true
+		},
+		{
+			"name": "Injury",
+			"source": "CRB",
+			"entries": [
+				"This {@trait poison|CRB} is delivered by damaging the recipient."
+			],
+			"page": 633,
+			"srd": true
+		},
+		{
+			"name": "Oil",
+			"source": "CRB",
+			"entries": [
+				"Oils are magical gels, ointments, pastes, or salves that are typically applied to an object and are used up in the process."
+			],
+			"page": 634,
+			"srd": true
+		},
+		{
+			"name": "Divine",
+			"source": "CRB",
+			"entries": [
+				"This magic comes from the divine tradition, drawing power from deities or similar sources. Anything with this trait is magical."
+			],
+			"page": 631,
+			"srd": true
+		},
+		{
+			"name": "Trap",
+			"source": "CRB",
+			"entries": [
+				"A hazard or item with this trait is constructed to hinder interlopers."
+			],
+			"page": 637,
+			"srd": true
+		},
+		{
+			"name": "Snare",
+			"source": "CRB",
+			"entries": [
+				"Traps typically made by rangers, snares follow special rules that allow them to be constructed quickly and used on the battlefield."
+			],
+			"page": 636,
+			"srd": true
+		},
+		{
+			"name": "Primal",
+			"source": "CRB",
+			"entries": [
+				"This magic comes from the primal tradition, connecting to the natural world and instinct. Anything with this trait is magical."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Poison",
+			"source": "CRB",
+			"entries": [
+				"An effect with this trait delivers a poison or deals poison damage. An item with this trait is poisonous and might cause an affliction."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Inhaled",
+			"source": "CRB",
+			"entries": [
+				"This {@trait poison|CHB} is delivered when breathed in."
+			],
+			"page": 633,
+			"srd": true
+		},
+		{
+			"name": "Bomb",
+			"source": "CRB",
+			"entries": [
+				"An alchemical bomb combines volatile alchemical components that explode when the bomb hits a creature or object. Most alchemical bombs deal damage, though some produce other effects."
+			],
+			"page": 629,
+			"srd": true
+		},
+		{
+			"name": "Contact",
+			"source": "CRB",
+			"entries": [
+				"This {@trait poison|CRB} is delivered by contact with the skin."
+			],
+			"page": 630,
+			"srd": true
+		},
+		{
+			"name": "Potion",
+			"source": "CRB",
+			"entries": [
+				"A potion is a magical liquid activated when you drink it."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Consumable",
+			"source": "CRB",
+			"entries": [
+				"An item with this trait can be used only once. Unless stated otherwise, it's destroyed after activation. Consumable items include alchemical items and magical consumables such as scrolls and talismans. When a character creates consumable items, they can make them in batches of four."
+			],
+			"page": 630,
+			"srd": true
+		},
+		{
+			"name": "Elixir",
+			"source": "CRB",
+			"entries": [
+				"Elixirs are alchemical liquids that are used by drinking them."
+			],
+			"page": 631,
+			"srd": true
+		},
+		{
+			"name": "Virulent",
+			"source": "CRB",
+			"entries": [
+				"Afflictions with the virulent trait are harder to remove. You must succeed at two consecutive saves to reduce a virulent affliction’s stage by 1. A critical success reduces a virulent affliction’s stage by only 1 instead of by 2."
+			],
+			"page": 638,
+			"srd": true
+		},
+		{
+			"name": "Mutagen",
+			"source": "CRB",
+			"entries": [
+				"An elixir with the mutagen trait temporarily transmogrifies the subject’s body and alters its mind. A mutagen always conveys one or more beneficial effects paired with one or more detrimental effects. Mutagens are polymorph effects, meaning you can benefit from only one at a time."
+			],
+			"page": 634,
+			"srd": true
+		},
+		{
+			"name": "Scroll",
+			"source": "CRB",
+			"entries": [
+				"A scroll contains a single spell you can cast without a spell slot."
+			],
+			"page": 636,
+			"srd": true
+		},
+		{
+			"name": "Lawful",
+			"source": "CRB",
+			"entries": [
+				"Lawful effects often manipulate energy from law-aligned Outer Planes and are antithetical to chaotic divine servants or divine servants of chaotic deities. A creature with this trait is lawful in alignment."
+			],
+			"page": 633,
+			"srd": true
+		},
+		{
+			"name": "Wand",
+			"source": "CRB",
+			"entries": [
+				"A wand contains a single spell which you can cast once per day."
+			],
+			"page": 638,
+			"srd": true
+		},
+		{
+			"name": "Mechanical",
+			"source": "CRB",
+			"entries": [
+				"A hazard with this trait is a constructed physical object."
+			],
+			"page": 634,
+			"srd": true
+		},
+		{
+			"name": "Structure",
+			"source": "CRB",
+			"entries": [
+				"An item with the structure trait creates a magical building or other structure when activated. The item must be activated on a plot of land free of other structures. The structure adapts to the natural terrain, adopting the structural requirements for being built there. The structure adjusts around small features such as ponds or spires of rock, but it can’t be created on water or other nonsolid surfaces. If activated on snow, sand dunes, or other soft surfaces with a solid surface underneath, the structure’s foundation (if any) reaches the solid ground. If an item with this trait is activated on a solid but unstable surface, such as a swamp or an area plagued by tremors, roll a DC 3 flat check each day; on a failure, the structure begins to sink or collapse.",
+				"The structure doesn’t harm creatures within the area when it appears, and it can’t be created within a crowd or in a densely populated area. Any creature inadvertently caught inside the structure when the item is activated ends up unharmed inside the complete structure and always has a clear path of escape. A creature inside the structure when the activation ends isn’t harmed, and it lands harmlessly on the ground if it was on an upper level of the structure."
+			],
+			"page": 596,
+			"srd": true
+		},
+		{
+			"name": "Staff",
+			"source": "CRB",
+			"entries": [
+				"This magic item holds spells of a particular theme and allows a spellcaster to cast additional spells by preparing the staff."
+			],
+			"page": 637,
+			"srd": true
+		},
+		{
+			"name": "Ingested",
+			"source": "CRB",
+			"entries": [
+				"This {@trait poison|CRB} is delivered when drunk or eaten."
+			],
+			"page": 633,
+			"srd": true
+		},
+		{
+			"name": "Focused",
+			"source": "CRB",
+			"entries": [
+				"An item with this trait can give you an additional Focus Point. This focus point is separate from your focus pool and doesn’t count toward the cap on your focus pool. You can gain this benefit only if you have a focus pool, and there might be restrictions on how the point can be used. You can’t gain more than 1 Focus Point per day from focused items."
+			],
+			"page": 632,
+			"srd": true
+		},
+		{
+			"name": "Companion",
+			"source": "CRB",
+			"entries": [
+				"An item with this trait can be worn by an animal companion or similar creature. A companion can have up to two items invested."
+			],
+			"page": 629,
+			"srd": true
+		},
+		{
+			"name": "Apex",
+			"source": "CRB",
+			"entries": [
+				"When you Invest an Item that has the apex trait, it improves one of your ability scores, either increasing it by 2 or to a total of 18, whichever grants the higher score. This gives you all the benefits of the new ability score until the investiture ends. An apex item grants this benefit only the first time it’s invested within a 24-hour period, and you can benefit from only one apex item at a time. If you attempt to invest an apex item when you already have one invested, you don’t gain the ability score increase, though you do gain any other effects of Investing the Item."
+			],
+			"page": 628,
+			"srd": true
+		},
+		{
+			"name": "Precious",
+			"source": "CRB",
+			"entries": [
+				"Valuable materials with special properties have the precious trait. They can be substituted for base materials when you Craft items."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Magical",
+			"source": "CRB",
+			"entries": [
+				"Something with the magical trait is imbued with magical energies not tied to a specific tradition of magic. A magical item radiates a magic aura infused with its dominant school of magic.",
+				"Some items or effects are closely tied to a particular tradition of magic. In these cases, the item has the arcane, divine, occult, or primal trait instead of the magical trait. Any of these traits indicate that the item is magical."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Occult",
+			"source": "CRB",
+			"entries": [
+				"This magic comes from the occult tradition, calling upon bizarre and ephemeral mysteries. Anything with this trait is magical."
+			],
+			"page": 634,
+			"srd": true
+		},
+		{
+			"name": "Rogue",
+			"source": "CRB",
+			"entries": [
+				"This indicates abilities from the {@class rogue|CRB} class."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Fighter",
+			"source": "CRB",
+			"entries": [
+				"This indicates abilities from the {@class fighter|CRB} class."
+			],
+			"page": 632,
+			"srd": true
+		},
+		{
+			"name": "Oath",
+			"source": "CRB",
+			"entries": [
+				"Oaths add an additional tenet to your code. You can usually have only one feat with this trait."
+			],
+			"page": 109,
+			"srd": true
+		},
+		{
+			"name": "Secret",
+			"source": "CRB",
+			"entries": [
+				"The GM rolls the check for this ability in secret."
+			],
+			"page": 636,
+			"srd": true
+		},
+		{
+			"name": "Downtime",
+			"source": "CRB",
+			"entries": [
+				"An activity with this trait takes a day or more, and can be used only during downtime."
+			],
+			"page": 631,
+			"srd": true
+		},
+		{
+			"name": "Additive",
+			"source": "CRB",
+			"entries": [
+				"Feats with the additive trait allow you to spend actions to add special substances to bombs or elixirs. You can add only one additive to a single alchemical item, and attempting to add another spoils the item. You can typically use actions with the additive trait only when you're creating an infused alchemical item, and some can be used only with the Quick Alchemy action. The additive trait is always followed by a level, such as additive 2. An additive adds its level to the level of the alchemical item you're modifying; the result is the new level of the mixture. The mixture's item level must be no higher than your advanced alchemy level."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Dedication",
+			"source": "CRB",
+			"entries": [
+				"You must select a feat with this trait to apply an archetype to your character."
+			],
+			"page": 630,
+			"srd": true
+		},
+		{
+			"name": "Multiclass",
+			"source": "CRB",
+			"entries": [
+				"Archetypes with the multiclass trait represent diversifying your training into another class’s specialties. You can’t select a multiclass archetype’s dedication feat if you are a member of the class of the same name."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Skill",
+			"source": "CRB",
+			"entries": [
+				"A general feat with the skill trait improves your skills and their actions or gives you new actions for a skill. A feat with this trait can be selected when a class grants a skill feat or general feat. Archetype feats with the skill trait can be selected in place of a skill feat if you have that archetype’s dedication feat."
+			],
+			"page": 636,
+			"srd": true
+		},
+		{
+			"name": "Flourish",
+			"source": "CRB",
+			"entries": [
+				"Flourish actions are actions that require too much exertion to perform a large number in a row. You can use only 1 action with the flourish trait per turn."
+			],
+			"page": 632,
+			"srd": true
+		},
+		{
+			"name": "General",
+			"source": "CRB",
+			"entries": [
+				"A type of feat that any character can select, regardless of ancestry and class, as long as they meet the prerequisites. You can select a feat with this trait when your class grants a general feat."
+			],
+			"page": 632,
+			"srd": true
+		},
+		{
+			"name": "Rage",
+			"source": "CRB",
+			"entries": [
+				"You must be raging to use abilities with the rage trait, and they end automatically when you stop raging."
+			],
+			"page": 87,
+			"srd": true
+		},
+		{
+			"name": "Alchemist",
+			"source": "CRB",
+			"entries": [
+				"This indicates abilities from the {@class alchemist|CRB} class."
+			],
+			"page": 628,
+			"srd": true
+		},
+		{
+			"name": "Half-Elf",
+			"source": "CRB",
+			"entries": [
+				"A creature with this trait is part human and part elf. An ability with this trait can be used or selected only by half-elves."
+			],
+			"page": 632,
+			"srd": true
+		},
+		{
+			"name": "Ranger",
+			"source": "CRB",
+			"entries": [
+				"This indicates abilities from the {@class ranger|CRB} class."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Open",
+			"source": "CRB",
+			"entries": [
+				"These maneuvers work only as the first salvo on your turn. You can use an open only if you haven’t used an action with the attack or open trait yet this turn."
+			],
+			"page": 634,
+			"srd": true
+		},
+		{
+			"name": "Human",
+			"source": "CRB",
+			"entries": [
+				"A creature with this trait is a member of the human ancestry. Humans are a diverse array of people known for their adaptability. An ability with this trait can be used or selected only by humans."
+			],
+			"page": 633,
+			"srd": true
+		},
+		{
+			"name": "Archetype",
+			"source": "CRB",
+			"entries": [
+				"This feat belongs to an archetype."
+			],
+			"page": 628,
+			"srd": true
+		},
+		{
+			"name": "Instinct",
+			"source": "CRB",
+			"entries": [
+				"Instinct abilities require a specific instinct; you lose access if you perform acts anathema to your instinct."
+			],
+			"page": 87,
+			"srd": true
+		},
+		{
+			"name": "Press",
+			"source": "CRB",
+			"entries": [
+				"Actions with this trait allow you to follow up earlier attacks. An action with the press trait can be used only if you are currently affected by a multiple attack penalty. Some actions with the press trait also grant an effect on a failure. The effects that are added on a failure don’t apply on a critical failure. If your press action succeeds, you can choose to apply the failure effect instead. (For example, you may wish to do this when an attack deals no damage due to resistance.) Because a press action requires a multiple attack penalty, you can’t use one when it’s not your turn, even if you use the Ready activity."
+			],
+			"page": 635,
+			"srd": true
+		},
+		{
+			"name": "Manipulate",
+			"source": "CRB",
+			"entries": [
+				"You must physically manipulate an item or make gestures to use an action with this trait. Creatures without a suitable appendage can’t perform actions with this trait. Manipulate actions often trigger reactions."
+			],
+			"page": 633,
+			"srd": true
+		},
+		{
+			"name": "Half-Orc",
+			"source": "CRB",
+			"entries": [
+				"A creature with this trait is part human and part orc. An ability with this trait can be used or selected only by half-orcs."
+			],
+			"page": 632,
+			"srd": true
+		},
+		{
+			"name": "Barbarian",
+			"source": "CRB",
+			"entries": [
+				"This indicates abilities from the {@class barbarian|CRB} class."
+			],
+			"page": 629,
+			"srd": true
+		},
+		{
+			"name": "Halfling",
+			"source": "CRB",
+			"entries": [
+				"A creature with this trait is a member of the halfling ancestry. These small people are friendly wanderers considered to be lucky. An ability with this trait can be used or selected only by halflings. A weapon with this trait is created and used by halflings."
+			],
+			"page": 632,
+			"srd": true
+		},
+		{
+			"name": "Exploration",
+			"source": "CRB",
+			"entries": [
+				"An activity with this trait takes more than a turn to use, and can usually be used only during exploration mode."
+			],
+			"page": 631,
 			"srd": true
 		}
 	]
