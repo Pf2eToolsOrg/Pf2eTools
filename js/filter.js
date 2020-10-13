@@ -1893,7 +1893,7 @@ class RangeFilter extends FilterBase {
 
 			if (this._hasPredefinedMin) {
 				const tgt = (toLoad.state || {});
-				tgt.min = Math.max(this._min, tgt.min == null ? Number.MAX_SAFE_INTEGER : tgt.min);
+				tgt.min = Math.min(this._min, tgt.min == null ? Number.MAX_SAFE_INTEGER : tgt.min);
 			}
 			// endregion
 

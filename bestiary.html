@@ -17,7 +17,9 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/test3.css">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/pf2-style.css">
 	<link rel="icon" href="favicon.png">
 
 	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
@@ -130,7 +132,7 @@
 		<div class="container">
 
 			<h1 class="page__title">Bestiary</h1>
-			<p class="page__subtitle">Search by name on the left, click monster name to display on the right.</p>
+			<p class="page__subtitle">Search by name on the left, click creature name to display on the right.</p>
 		</div>
 	</header>
 	<nav class="container page__nav" id="navigation">
@@ -156,7 +158,7 @@
 				<div id="filtertools" class="sortlabel lst__form-bottom">
 					<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name<span class="caret_wrp"></span></button>
 					<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type<span class="caret_wrp"></span></button>
-					<button class="col-1-7 sort btn btn-default btn-xs" data-sort="cr">CR<span class="caret_wrp"></span></button>
+					<button class="col-1-7 sort btn btn-default btn-xs" data-sort="cr">Level<span class="caret_wrp"></span></button>
 					<button class="sort btn btn-default btn-xs" data-sort="source">Source<span class="caret_wrp"></span></button>
 				</div>
 
@@ -224,11 +226,11 @@
 				<div id="float-token" class="ecgen__hidden relative"></div>
 
 				<div id="wrp-pagecontent" class="wrp-stats-table ecgen__hidden">
-					<table id="pagecontent" class="stats monster">
-						<tr><th class="border" colspan="6"></th></tr>
-						<tr><td colspan="6" class="initial-message">Loading...</td></tr>
-						<tr><th class="border" colspan="6"></th></tr>
-					</table>
+					<div id="pagecontent" class="stats monster">
+						<div class="border"></div>
+						<div class="initial-message">Loading...</div>
+						<div class="border"></div>
+					</div>
 				</div>
 
 				<div class="text-center wrp-footer-buttons ecgen__hidden">

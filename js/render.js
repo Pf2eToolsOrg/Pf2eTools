@@ -338,7 +338,9 @@ function Renderer() {
 				case "leveled_effect":
 					this._renderLeveledEffect(entry, textStack, meta, options);
 					break;
-
+				case "ability":
+					this._renderAction(entry, textStack, meta, options);
+					break;
 				// block
 				case "abilityDc":
 					this._renderAbilityDc(entry, textStack, meta, options);
@@ -791,6 +793,43 @@ function Renderer() {
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	}
 
+
+	this._renderAction = function (entry, textStack, meta, options) {
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, 1);
+
+		textStack[0] += `<div class="pf-2-stat-indent-second-line"><span><strong>${entry.name} </strong>`
+		if (entry.activity !== undefined) this._recursiveRender(entry.activity.entry + ' ', textStack, meta);
+		if (entry.traits !== undefined && entry.traits.length) {
+			let trts = []
+			entry.traits.forEach((t) => {
+				trts.push(Renderer.get().render(`{@trait ${t.uppercaseFirst()}|${Parser.TRAITS_TO_TRAITS_SRC[t.uppercaseFirst()]}|${t}}`))
+			});
+			textStack[0] += `(${trts.join(', ')}); `
+		}
+		let add_effect = false
+		if (entry.frequency !== undefined) {
+			add_effect = true
+			textStack[0] += `<strong>Frequency </strong>`
+			this._recursiveRender(entry.frequency + ' ', textStack, meta)
+		}
+		if (entry.requirements !== undefined) {
+			add_effect = true
+			textStack[0] += `<strong>Requirements </strong>`
+			this._recursiveRender(entry.requirements + ' ', textStack, meta)
+		}
+		if (entry.trigger !== undefined) {
+			add_effect = true
+			textStack[0] += `<strong>Trigger </strong>`
+			this._recursiveRender(entry.trigger + ' ', textStack, meta)
+		}
+		if (add_effect) textStack[0] += `<strong>Effect </strong>`
+		entry.entries.forEach((e) => {this._recursiveRender(e, textStack, meta)})
+
+		textStack[0] += `</span></div>`
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	}
 
 	this._renderSuccessDegree = function (entry, textStack, meta, options) {
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
@@ -2609,14 +2648,37 @@ Renderer.utils = {
 				disgust += ` pf2-trait-right`
 			}
 			if (trait === "Uncommon") {
-				traits_html += `<div class="pf2-trait pf2-trait-uncommon${disgust}" ${hoverMeta}>uncommon</div>`;
+				traits_html += `<div class="pf2-trait pf2-trait-uncommon${disgust}" ${hoverMeta}>${trait}</div>`;
 			} else if (trait === "Rare") {
-				traits_html += `<div class="pf2-trait pf2-trait-rare${disgust}" ${hoverMeta}>rare</div>`;
+				traits_html += `<div class="pf2-trait pf2-trait-rare${disgust}" ${hoverMeta}>${trait}</div>`;
+			} else if (trait === "Unique") {
+				traits_html += `<div class="pf2-trait pf2-trait-unique${disgust}" ${hoverMeta}>${trait}</div>`;
+			} else if (Parser.TRAITS_SIZE.includes(trait)) {
+				traits_html += `<div class="pf2-trait pf2-trait-size${disgust}" ${hoverMeta}>${trait}</div>`;
+			} else if (Parser.TRAITS_ALIGN_ABV.includes(trait)) {
+				traits_html += `<div class="pf2-trait pf2-trait-alignment${disgust}" ${hoverMeta}>${trait}</div>`;
 			} else {
 				traits_html += `<div class="pf2-trait${disgust}" ${hoverMeta}>${trait}</div>`;
 			}
 		}
 		return traits_html
+	},
+
+	getNotes: (dict, exclude, dice, dice_name) => {
+		if (Object.keys(dict).length > exclude.length) {
+			let notes = [` (`]
+			for (let key in dict) {
+				if (!exclude.includes(key)) {
+					if (dice) {
+						notes.push(Renderer.get().render(`{@d20 ${dict[key]}||${dice_name !== undefined ? dice_name : key}}`))
+					} else notes.push(`${dict[key]}`)
+					notes.push(` ${key}`)
+					notes.push(`, `)
+				}
+			}
+			notes[notes.length - 1] = ")"
+			return notes.join("")
+		} else return ""
 	},
 
 	getDividerTr: () => {
@@ -3176,188 +3238,127 @@ Renderer.spell = {
 	getCompactRenderedString(spell) {
 		const renderer = Renderer.get();
 		const renderStack = [];
+		renderer.setFirstSection(true);
 
 		renderStack.push(`
-			${Renderer.utils.getExcludedTr(spell, "spell")}
-			${Renderer.utils.getNameTr(spell, {page: UrlUtil.PG_SPELLS})}
-			<tr><td colspan="6">
-				<table class="summary striped-even">
-					<tr>
-						<th colspan="1">Level</th>
-						<th colspan="1">School</th>
-						<th colspan="2">Casting Time</th>
-						<th colspan="2">Range</th>
-					</tr>
-					<tr>
-						<td colspan="1">${Parser.spLevelToFull(spell.level)}${Parser.spMetaToFull(spell.meta)}</td>
-						<td colspan="1">${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}</td>
-						<td colspan="2">${Parser.spTimeListToFull(spell.time)}</td>
-						<td colspan="2">${Parser.spRangeToFull(spell.range)}</td>
-					</tr>
-					<tr>
-						<th colspan="4">Components</th>
-						<th colspan="2">Duration</th>
-					</tr>
-					<tr>
-						<td colspan="4">${Parser.spComponentsToFull(spell.components, spell.level)}</td>
-						<td colspan="2">${Parser.spDurationToFull(spell.duration)}</td>
-					</tr>
-				</table>
-			</td></tr>
-		`);
+		<div class="stats">
+		${Renderer.utils.getNameDiv(spell, {page: UrlUtil.PG_SPELLS})}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getTraitsDiv(spell.traits)}`);
 
-		renderStack.push(`<tr class="text"><td colspan="6" class="text">`);
-		const entryList = {type: "entries", entries: spell.entries};
+		if (spell.traditions !== null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Traditions </strong>${spell.traditions.join(", ").toLowerCase()}</p>`);
+		} else if (spell.domain !== null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Domain </strong>${spell.domain.toLowerCase()}</p>`);
+		}
+		let components = ``;
+		let components_list = [];
+		if (spell.components.F) {
+			components_list.push("focus")
+		}
+		if (spell.components.M) {
+			components_list.push("material")
+		}
+		if (spell.components.S) {
+			components_list.push("somatic")
+		}
+		if (spell.components.V) {
+			components_list.push("verbal")
+		}
+		components = components_list.join(", ")
+		let cast = ``
+		let castStack = []
+		renderer.recursiveRender(spell.cast.entry, castStack, {depth:1}, {prefix: `<span>`, suffix: `</span>`})
+		cast = castStack.join('')
+		if (!Parser.SP_TIME_ACTIONS.includes(spell.cast.unit) && components.length) {
+			components = `(` + components + `)`
+		}
+
+		let cst_tr_req = ``;
+		if (spell.cost !== null) {
+			cst_tr_req = `; <strong>Cost </strong>${spell.cost}`;
+		}
+		if (spell.trigger !== null) {
+			cst_tr_req += `; <strong>Trigger </strong>${spell.trigger}`;
+		}
+		if (spell.requirements !== null) {
+			cst_tr_req += `; <strong>Requirements </strong>${spell.requirements}`;
+		}
+		renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Cast </strong>${cast} ${components}${cst_tr_req}</p>`);
+
+		let rg_ar_tg = ``;
+		if (spell.range.type !== null) {
+			rg_ar_tg = `<strong>Range </strong>${spell.range.entry}`
+		}
+		if (spell.area !== null) {
+			if (rg_ar_tg === ``) {
+				rg_ar_tg = `<strong>Area </strong>${spell.area.entry}`
+			} else {
+				rg_ar_tg += `; <strong>Area </strong>${spell.area.entry}`
+			}
+		}
+		if (spell.targets !== null) {
+			if (rg_ar_tg === ``) {
+				rg_ar_tg = `<strong>Targets </strong>${spell.targets}`
+			} else {
+				rg_ar_tg += `; <strong>Targets </strong>${spell.targets}`
+			}
+		}
+		if (rg_ar_tg !== ``) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line">${rg_ar_tg}</p>`);
+		}
+
+		let st_dr = ``
+		let basic = ``
+		if (spell.saving_throw_basic) {
+			basic = `basic `
+		}
+		if (spell.saving_throw !== null) {
+			st_dr = `<strong>Saving Throw </strong>${basic}${spell.saving_throw}`
+		}
+		if (spell.duration["type"] !== null) {
+			if (st_dr === ``) {
+				st_dr = `<strong>Duration </strong>${spell.duration["entry"]}`
+			} else {
+				st_dr += `; <strong>Duration </strong>${spell.duration["entry"]}`
+			}
+		}
+		if (st_dr !== ``) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line">${st_dr}</p>`);
+		}
+
+		renderStack.push(Renderer.utils.getDividerDiv());
+
+		const entryList = {type: 'entries', entries: spell.entries};
+		renderStack.push(`<div class="pf2-stat-text">`)
 		renderer.recursiveRender(entryList, renderStack, {depth: 1});
-		if (spell.entriesHigherLevel) {
-			const higherLevelsEntryList = {type: "entries", entries: spell.entriesHigherLevel};
-			renderer.recursiveRender(higherLevelsEntryList, renderStack, {depth: 2});
-		}
-		if (spell.classes && spell.classes.fromClassList) {
-			const [current] = Parser.spClassesToCurrentAndLegacy(spell.classes);
-			renderStack.push(`<div><span class="bold">Classes: </span>${Parser.spMainClassesToFull({fromClassList: current})}</div>`);
-		}
-		renderStack.push(`</td></tr>`);
+		renderStack.push(`</div>`)
 
+		if (spell.heightened.heightened) {
+			renderStack.push(Renderer.utils.getDividerDiv())
+			if (spell.heightened.plus_x !== null) {
+				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (+${spell.heightened.plus_x.level}) </strong>`)
+				renderer.recursiveRender(spell.heightened.plus_x.entry, renderStack, {depth: 1})
+				renderStack.push(`</p>`)
+			}
+			if (spell.heightened.x !== null) {
+				for (let x of spell.heightened.x) {
+					renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>`)
+					renderer.recursiveRender(x.entry, renderStack, {depth: 1})
+					renderStack.push(`</p>`)
+				}
+			}
+			if (spell.heightened.no_x !== null) {
+				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened </strong>`)
+				renderer.recursiveRender(spell.heightened.no_x.entry, renderStack, {depth: 1})
+				renderStack.push(`</p>`)
+			}
+		}
+		renderStack.push(`<p class="pf-2-stat-source"><strong>${spell.source}</strong> page ${spell.page_nr}</p>`);
+		renderStack.push(`</div>`)
 		return renderStack.join("");
 	},
 
-	initClasses(spell, brewSpellClasses) {
-		if (spell._isInitClasses) return;
-		spell._isInitClasses = true;
-
-		// add eldritch knight and arcane trickster
-		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === Renderer.spell.STR_WIZARD && c.source === SRC_PHB).length) {
-			if (!spell.classes.fromSubclass) spell.classes.fromSubclass = [];
-			spell.classes.fromSubclass.push({
-				class: {name: Renderer.spell.STR_FIGHTER, source: SRC_PHB},
-				subclass: {name: Renderer.spell.STR_ELD_KNIGHT, source: SRC_PHB}
-			});
-			spell.classes.fromSubclass.push({
-				class: {name: Renderer.spell.STR_ROGUE, source: SRC_PHB},
-				subclass: {name: Renderer.spell.STR_ARC_TCKER, source: SRC_PHB}
-			});
-			if (spell.level > 4) {
-				spell._scrollNote = true;
-			}
-		}
-
-		// add divine soul, favored soul v2, favored soul v3
-		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.filter(c => c.name === Renderer.spell.STR_CLERIC && c.source === SRC_PHB).length) {
-			if (!spell.classes.fromSubclass) {
-				spell.classes.fromSubclass = [];
-				spell.classes.fromSubclass.push({
-					class: {name: Renderer.spell.STR_SORCERER, source: SRC_PHB},
-					subclass: {name: Renderer.spell.STR_DIV_SOUL, source: SRC_XGE}
-				});
-			} else {
-				if (!spell.classes.fromSubclass.find(it => it.class.name === Renderer.spell.STR_SORCERER && it.class.source === SRC_PHB && it.subclass.name === Renderer.spell.STR_DIV_SOUL && it.subclass.source === SRC_XGE)) {
-					spell.classes.fromSubclass.push({
-						class: {name: Renderer.spell.STR_SORCERER, source: SRC_PHB},
-						subclass: {name: Renderer.spell.STR_DIV_SOUL, source: SRC_XGE}
-					});
-				}
-			}
-			spell.classes.fromSubclass.push({
-				class: {name: Renderer.spell.STR_SORCERER, source: SRC_PHB},
-				subclass: {name: Renderer.spell.STR_FAV_SOUL_V2, source: SRC_UAS}
-			});
-			spell.classes.fromSubclass.push({
-				class: {name: Renderer.spell.STR_SORCERER, source: SRC_PHB},
-				subclass: {name: Renderer.spell.STR_FAV_SOUL_V3, source: SRC_UARSC}
-			});
-		}
-
-		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Wizard")) {
-			if (spell.level === 0) {
-				// add high elf
-				(spell.races || (spell.races = [])).push({
-					name: "Elf (High)",
-					source: SRC_PHB,
-					baseName: "Elf",
-					baseSource: SRC_PHB
-				});
-				// add arcana cleric
-				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
-					class: {name: Renderer.spell.STR_CLERIC, source: SRC_PHB},
-					subclass: {name: "Arcana", source: SRC_SCAG}
-				});
-			}
-
-			// add arcana cleric
-			if (spell.level >= 6) {
-				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
-					class: {name: Renderer.spell.STR_CLERIC, source: SRC_PHB},
-					subclass: {name: "Arcana", source: SRC_SCAG}
-				});
-			}
-		}
-
-		if (spell.classes && spell.classes.fromClassList && spell.classes.fromClassList.find(it => it.name === "Druid")) {
-			if (spell.level === 0) {
-				// add nature cleric
-				(spell.classes.fromSubclass = spell.classes.fromSubclass || []).push({
-					class: {name: Renderer.spell.STR_CLERIC, source: SRC_PHB},
-					subclass: {name: "Nature", source: SRC_PHB}
-				});
-			}
-		}
-
-		// add homebrew class/subclass
-		if (brewSpellClasses) {
-			const lowName = spell.name.toLowerCase();
-
-			if (brewSpellClasses.spell) {
-				if (brewSpellClasses.spell[spell.source] && brewSpellClasses.spell[spell.source][lowName]) {
-					spell.classes = spell.classes || {};
-					if (brewSpellClasses.spell[spell.source][lowName].fromClassList.length) {
-						spell.classes.fromClassList = spell.classes.fromClassList || [];
-						spell.classes.fromClassList.push(...brewSpellClasses.spell[spell.source][lowName].fromClassList);
-					}
-					if (brewSpellClasses.spell[spell.source][lowName].fromSubclass.length) {
-						spell.classes.fromSubclass = spell.classes.fromSubclass || [];
-						spell.classes.fromSubclass.push(...brewSpellClasses.spell[spell.source][lowName].fromSubclass);
-					}
-				}
-			}
-
-			if (brewSpellClasses.class && spell.classes && spell.classes.fromClassList) {
-				// speed over safety
-				outer: for (const src in brewSpellClasses.class) {
-					const searchForClasses = brewSpellClasses.class[src];
-
-					for (const clsLowName in searchForClasses) {
-						const spellHasClass = spell.classes.fromClassList.some(cls => cls.source === src && cls.name.toLowerCase() === clsLowName);
-						if (!spellHasClass) continue;
-
-						const fromDetails = searchForClasses[clsLowName];
-
-						if (fromDetails.fromClassList) {
-							spell.classes.fromClassList.push(...fromDetails.fromClassList);
-						}
-
-						if (fromDetails.fromSubclass) {
-							spell.classes.fromSubclass = spell.classes.fromSubclass || [];
-							spell.classes.fromSubclass.push(...fromDetails.fromSubclass);
-						}
-
-						// Only add it once regardless of how many classes match
-						break outer;
-					}
-				}
-			}
-		}
-	},
-	STR_WIZARD: "Wizard",
-	STR_FIGHTER: "Fighter",
-	STR_ROGUE: "Rogue",
-	STR_CLERIC: "Cleric",
-	STR_SORCERER: "Sorcerer",
-	STR_ELD_KNIGHT: "Eldritch Knight",
-	STR_ARC_TCKER: "Arcane Trickster",
-	STR_DIV_SOUL: "Divine Soul",
-	STR_FAV_SOUL_V2: "Favored Soul v2 (UA)",
-	STR_FAV_SOUL_V3: "Favored Soul v3 (UA)"
 };
 
 Renderer.condition = {
@@ -3993,106 +3994,288 @@ Renderer.cultboon = {
 };
 
 Renderer.monster = {
-	getLegendaryActionIntro: (mon, renderer = Renderer.get()) => {
-		function getCleanName() {
-			if (mon.shortName === true) return mon.name;
-			else if (mon.shortName) return mon.shortName;
-			const base = mon.name.split(",")[0];
-			const cleanDragons = base
-				.replace(/(?:adult|ancient|young) \w+ (dragon|dracolich)/gi, "$1");
-			return mon.isNamedCreature ? cleanDragons.split(" ")[0] : cleanDragons.toLowerCase();
+	getPerception(mon) {
+		const perception = mon.perception;
+		const senses = mon.senses;
+		let renderStack = [];
+		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+		renderStack.push(`<span><strong>Perception </strong></span>`)
+		renderStack.push(Renderer.get().render(`{@d20 ${perception.default}||Perception}`))
+		renderStack.push(`<span>`)
+		renderStack.push(Renderer.utils.getNotes(perception, ['default'], true, 'Perception'))
+		let sensesStack = []
+		sensesStack.push(senses.precise.concat(['']).join(' (precise), '))
+		sensesStack.push(senses.imprecise.concat(['']).join(' (imprecise), '))
+		sensesStack.push(senses.vague.concat(['']).join(' (vague), '))
+		sensesStack.push(senses.other.join(', '))
+		let sensesString = sensesStack.join('')
+		if (sensesString !== '') {
+			renderStack.push('; ')
+			renderStack.push(sensesString)
 		}
+		renderStack.push(`</span>`)
+		renderStack.push(`</div>`)
 
-		if (mon.legendaryHeader) {
-			return renderer.render({entries: mon.legendaryHeader});
-		} else {
-			const legendaryActions = mon.legendaryActions || 3;
-			const legendaryName = getCleanName();
-			return `${mon.isNamedCreature ? "" : "The "}${legendaryName} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${mon.isNamedCreature ? "" : "The "}${legendaryName} regains spent legendary actions at the start of its turn.`
-		}
+		return renderStack.join("")
 	},
 
-	getSave(renderer, attr, mod) {
-		if (attr === "special") return renderer.render(mod);
-		else return renderer.render(`<span data-mon-save="${attr.uppercaseFirst()}|${mod}">${attr.uppercaseFirst()} {@d20 ${mod}|${mod}|${Parser.attAbvToFull([attr])} save}</span>`);
+	getLanguages(mon) {
+		if (mon.languages !== null && (mon.languages.languages.length !== 0 || mon.languages.language_abilities.length !== 0)) {
+			let renderStack = [];
+
+			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+			renderStack.push(`<span><strong>Languages </strong></span>`)
+			renderStack.push(`<span>`)
+			renderStack.push(mon.languages.languages.join(', '))
+			if (mon.languages.language_abilities.length !== 0) {
+				renderStack.push('; ')
+				renderStack.push(mon.languages.language_abilities.join(', '))
+			}
+			renderStack.push(`</span>`)
+			renderStack.push(`</div>`)
+
+			return renderStack.join("")
+		} else return ""
+
 	},
 
-	getDragonCasterVariant(renderer, dragon) {
-		// if the dragon already has a spellcasting trait specified, don't add a note about adding a spellcasting trait
-		if (!dragon.dragonCastingColor || dragon.spellcasting) return null;
+	getSkills(mon) {
+		if (mon.skills !== null && (Object.keys(mon.skills).length !== 0)) {
+			let renderStack = [];
 
-		function getExampleSpells(maxSpellLevel, color) {
-			const LVL_TO_COLOR_TO_SPELLS = {
-				2: {
-					B: ["darkness", "Melf's acid arrow", "fog cloud", "scorching ray"],
-					G: ["ray of sickness", "charm person", "detect thoughts", "invisibility", "suggestion"],
-					W: ["ice knife|XGE", "Snilloc's snowball swarm|XGE"],
-					A: ["see invisibility", "magic mouth", "blindness/deafness", "sleep", "detect thoughts"],
-					Z: ["gust of wind", "misty step", "locate object", "blur", "witch bolt", "thunderwave", "shield"],
-					C: ["knock", "sleep", "detect thoughts", "blindness/deafness", "tasha's hideous laughter"]
-				},
-				3: {
-					U: ["wall of sand|XGE", "thunder step|XGE", "lightning bolt", "blink", "magic missile", "slow"],
-					R: ["fireball", "scorching ray", "haste", "erupting earth|XGE", "Aganazzar's scorcher|XGE"],
-					O: ["slow", "slow", "fireball", "dispel magic", "counterspell", "Aganazzar's scorcher|XGE", "shield"],
-					S: ["sleet storm", "protection from energy", "catnap|XGE", "locate object", "identify", "Leomund's tiny hut"]
-				},
-				4: {
-					B: ["vitriolic sphere|XGE", "sickening radiance|XGE", "Evard's black tentacles", "blight", "hunger of Hadar"],
-					W: ["fire shield", "ice storm", "sleet storm"],
-					A: ["charm monster|XGE", "sending", "wall of sand|XGE", "hypnotic pattern", "tongues"],
-					C: ["polymorph", "greater invisibility", "confusion", "stinking cloud", "major image", "charm monster|XGE"]
-				},
-				5: {
-					U: ["telekinesis", "hold monster", "dimension door", "wall of stone", "wall of force"],
-					G: ["cloudkill", "charm monster|XGE", "modify memory", "mislead", "hallucinatory terrain", "dimension door"],
-					Z: ["steel wind strike|XGE", "control weather", "control winds|XGE", "watery sphere|XGE", "storm sphere|XGE", "tidal wave|XGE"],
-					O: ["hold monster", "immolation|XGE", "wall of fire", "greater invisibility", "dimension door"],
-					S: ["cone of cold", "ice storm", "teleportation circle", "skill empowerment|XGE", "creation", "Mordenkainen's private sanctum"]
-				},
-				6: {
-					W: ["cone of cold", "wall of ice"],
-					A: ["scrying", "Rary's telepathic bond", "Otto's irresistible dance", "legend lore", "hold monster", "dream"]
-				},
-				7: {
-					B: ["power word pain|XGE", "finger of death", "disintegrate", "hold monster"],
-					U: ["chain lightning", "forcecage", "teleport", "etherealness"],
-					G: ["project image", "mirage arcane", "prismatic spray", "teleport"],
-					Z: ["whirlwind|XGE", "chain lightning", "scatter|XGE", "teleport", "disintegrate", "lightning bolt"],
-					C: ["symbol", "simulacrum", "reverse gravity", "project image", "Bigby's hand", "mental prison|XGE", "seeming"],
-					S: ["Otiluke's freezing sphere", "prismatic spray", "wall of ice", "contingency", "arcane gate"]
-				},
-				8: {
-					O: ["sunburst", "delayed blast fireball", "antimagic field", "teleport", "globe of invulnerability", "maze"]
+			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+			renderStack.push(`<span><strong>Skills </strong></span>`)
+			let skills = []
+			for (let key in mon.skills) {
+				let skill = `<span>${key} </span>`
+				skill += Renderer.get().render(`{@d20 ${mon.skills[key]['default']}||${key}`)
+				skill += Renderer.utils.getNotes(mon.skills[key], ['default'], true, key)
+				skills.push(skill)
+			}
+
+			renderStack.push(skills.sort().join('<span>, </span>'))
+			renderStack.push(`</div>`)
+
+			return renderStack.join("")
+		} else return ""
+
+	},
+
+	getAbilityMods(mon) {
+		let renderStack = [];
+		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+		renderStack.push(`<span><strong>Str </strong></span>`)
+		renderStack.push(Renderer.get().render(`{@d20 ${mon.ability_modifiers.Str}||Strength}`))
+		renderStack.push(`<span>, <strong>Dex </strong></span>`)
+		renderStack.push(Renderer.get().render(`{@d20 ${mon.ability_modifiers.Dex}||Dexterity}`))
+		renderStack.push(`<span>, <strong>Con </strong></span>`)
+		renderStack.push(Renderer.get().render(`{@d20 ${mon.ability_modifiers.Con}||Constitution}`))
+		renderStack.push(`<span>, <strong>Int </strong></span>`)
+		renderStack.push(Renderer.get().render(`{@d20 ${mon.ability_modifiers.Int}||Intelligence}`))
+		renderStack.push(`<span>, <strong>Wis </strong></span>`)
+		renderStack.push(Renderer.get().render(`{@d20 ${mon.ability_modifiers.Wis}||Wisdom}`))
+		renderStack.push(`<span>, <strong>Cha </strong></span>`)
+		renderStack.push(Renderer.get().render(`{@d20 ${mon.ability_modifiers.Cha}||Charisma}`))
+		renderStack.push(`</div>`)
+		return renderStack.join("")
+	},
+
+	getItems(mon) {
+		if (mon.items !== null) {
+			let renderStack = [];
+			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+			renderStack.push(`<span><strong>Items </strong></span>`)
+			renderStack.push(Renderer.get().render(mon.items.join(", ")))
+			renderStack.push(`</div>`)
+			return renderStack.join("")
+		} else return ""
+	},
+
+	getDefenses(mon) {
+		let renderStack = [];
+		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+		const ac = mon.armor_class
+		renderStack.push(`<span><strong>AC </strong>${ac.default}`)
+		renderStack.push(Renderer.utils.getNotes(ac, ['default', 'abilities'], false))
+		if (ac.abilities !== null) renderStack.push(ac.abilities.join(', '));
+		const st = mon.saving_throws
+		renderStack.push(`; <strong>Fort </strong>`)
+		renderStack.push(Renderer.get().render(`{@d20 ${st.Fort.default}||Fortitude Save}`))
+		renderStack.push(Renderer.utils.getNotes(st.Fort, ['default', 'abilities'], 'Fortitude Save'))
+		renderStack.push(`, <strong>Ref </strong>`)
+		renderStack.push(Renderer.get().render(`{@d20 ${st.Ref.default}||Reflex Save}`))
+		renderStack.push(Renderer.utils.getNotes(st.Ref, ['default', 'abilities'], 'Reflex Save'))
+		renderStack.push(`, <strong>Will </strong>`)
+		renderStack.push(Renderer.get().render(`{@d20 ${st.Will.default}||Will Save}`))
+		renderStack.push(Renderer.utils.getNotes(st.Will, ['default', 'abilities'], 'Will Save'))
+		if (st.abilities !== null) renderStack.push(', ' + st.abilities);
+		renderStack.push(`</span>`)
+		renderStack.push(`</div>`)
+
+		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+		const hp = mon.hit_points
+		for (i = 0; i < hp.length; i++) {
+			renderStack.push(`<span><strong>HP </strong>${hp[i].note !== null ? `${hp[i].note} ` : ``}${hp[i].HP}`)
+			renderStack.push(`${hp[i].abilities !== null ? `, ${hp[i].abilities}` : ``}`)
+			renderStack.push(`${(i === hp.length - 1) ? `` : ` `}`)
+		}
+		if (mon.hardness !== null) {
+			renderStack.push(`; <strong>Hardness </strong>${mon.hardness}`)
+		}
+		if (mon.immunities !== null) {
+			renderStack.push(`; <strong>Immunities </strong>${mon.immunities.damage.concat(mon.immunities.condition).sort().join(', ')}`)
+		}
+		if (mon.weaknesses !== null) {
+			renderStack.push(`; <strong>Weaknesses </strong>`)
+			let ws = []
+			for (let x of mon.weaknesses) {
+				if (typeof (x) === 'string') {
+					ws.push(x)
+				} else {
+					ws.push(`${x.name} ${x.amount}${x.note ? ` ${x.note}` : ``}`)
 				}
-			};
-
-			return (LVL_TO_COLOR_TO_SPELLS[maxSpellLevel] || {})[color];
+			}
+			renderStack.push(ws.join(', '))
 		}
-
-		const chaMod = Parser.getAbilityModNumber(dragon.cha);
-		const pb = Parser.crToPb(dragon.cr);
-		const maxSpellLevel = Math.floor(Parser.crToNumber(dragon.cr) / 3);
-		const exampleSpells = getExampleSpells(maxSpellLevel, dragon.dragonCastingColor);
-		const levelString = maxSpellLevel === 0 ? `${chaMod === 1 ? "This" : "These"} spells are Cantrips.` : `${chaMod === 1 ? "The" : "Each"} spell's level can be no higher than ${Parser.spLevelToFull(maxSpellLevel)}.`;
-		const v = {
-			type: "variant",
-			name: "Dragons as Innate Spellcasters",
-			entries: [
-				"Dragons are innately magical creatures that can master a few spells as they age, using this variant.",
-				`A young or older dragon can innately cast a number of spells equal to its Charisma modifier. Each spell can be cast once per day, requiring no material components, and the spell's level can be no higher than one-third the dragon's challenge rating (rounded down). The dragon's bonus to hit with spell attacks is equal to its proficiency bonus + its Charisma bonus. The dragon's spell save DC equals 8 + its proficiency bonus + its Charisma modifier.`,
-				`{@i This dragon can innately cast ${Parser.numberToText(chaMod)} spell${chaMod === 1 ? "" : "s"}, once per day${chaMod === 1 ? "" : " each"}, requiring no material components. ${levelString} The dragon's spell save DC is ${pb + chaMod + 8}, and it has {@hit ${pb + chaMod}} to hit with spell attacks. See the {@filter spell page|spells|level=${[...new Array(maxSpellLevel + 1)].map((it, i) => i).join(";")}} for a list of spells the dragon is capable of casting.${exampleSpells ? ` A selection of examples are shown below:` : ""}`
-			]
-		};
-		if (exampleSpells) {
-			const ls = {
-				type: "list",
-				style: "italic",
-				items: exampleSpells.map(it => `{@spell ${it}}`)
-			};
-			v.entries.push(ls);
+		if (mon.resistances !== null) {
+			renderStack.push(`; <strong>Resistances </strong>`)
+			let rs = []
+			for (let x of mon.resistances) {
+				if (typeof (x) === 'string') {
+					rs.push(x)
+				} else {
+					rs.push(`${x.name} ${x.amount}${x.note ? ` ${x.note}` : ``}`)
+				}
+			}
+			renderStack.push(rs.join(', '))
 		}
-		return renderer.render(v);
+		renderStack.push(`</span>`)
+		renderStack.push(`</div>`)
+
+		return renderStack.join("")
+	},
+
+	getSpeed(mon) {
+		let renderStack = [];
+		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+		renderStack.push(`<span><strong>Speed </strong>`)
+		let speeds = []
+		if (mon.speed.walk !== null) speeds.push(`${mon.speed.walk} feet`)
+		for (let key in mon.speed) {
+			if (key !== 'abilities' && key !== 'walk') {
+				speeds.push(`${key} ${mon.speed[key]} feet`)
+			}
+		}
+		renderStack.push(speeds.join(', '))
+		if (mon.speed.abilities !== null) {
+			renderStack.push('; ')
+			renderStack.push(mon.speed.abilities.join(', '))
+		}
+		renderStack.push(`</span>`)
+		renderStack.push(`</div>`)
+		return renderStack.join("")
+	},
+
+	getAttacks(mon) {
+		let renderStack = [];
+		for (let attack of mon.attacks) {
+			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+			renderStack.push(`<span><strong>${attack.range} </strong>`)
+			renderStack.push(Renderer.get().render(`{@as 1} `))
+			renderStack.push(`${attack.name} `)
+			renderStack.push(`</span>`)
+			renderStack.push(Renderer.get().render(`{@hit ${attack.attack}||${attack.name.uppercaseFirst()} `))
+			renderStack.push(`<span>`)
+			if (attack.traits !== null) {
+				let traits = []
+				attack.traits.forEach((t) => {
+					traits.push(`{@trait ${t.uppercaseFirst().split(' ')[0]}|${Parser.TRAITS_TO_TRAITS_SRC[t.uppercaseFirst()]}|${t}}`)
+				});
+				renderStack.push(Renderer.get().render(' (' + traits.join(', ') + ')'))
+			}
+			renderStack.push(`, <strong>Damage </strong>`)
+			renderStack.push(Renderer.get().render(attack.damage))
+
+			renderStack.push(`</span>`)
+			renderStack.push(`</div>`)
+		}
+		return renderStack.join("")
+	},
+
+	getSpellcasting(mon) {
+		if (mon.spellcasting !== null) {
+			const renderer = Renderer.get()
+			let renderStack = [];
+			for (let sc of mon.spellcasting) {
+				renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+				renderStack.push(`<span><strong>${sc.tradition} ${sc.type} Spells</strong> DC ${sc.DC}</span>`)
+				if (sc.attack !== undefined) {
+					renderStack.push(renderer.render(`<span>, attack </span>{@d20 ${sc.attack}||Spell attack}`))
+				}
+				Object.keys(sc.entry).sort().reverse().forEach((lvl) => {
+					if (lvl !== ' constant') {
+						renderStack.push(`<span>; <strong>${lvl === '0' ? 'Cantrips' : Parser.getOrdinalForm(lvl)} </strong>`)
+						if (sc.entry[lvl].level !== undefined) renderStack.push(`<strong>(${Parser.getOrdinalForm(sc.entry[lvl].level)}) </strong>`)
+						if (sc.entry[lvl].slots !== undefined) renderStack.push(`(${sc.entry[lvl].slots} slots) `)
+						renderStack.push(`</span>`)
+						let spells = []
+						for (let spell of sc.entry[lvl].spells) {
+							let amount = spell.amount !== undefined ? typeof (spell.amount) === 'number' ? [`×${spell.amount}`] : [spell.amount] : []
+							let notes = spell.notes !== undefined ? spell.notes : []
+							let bracket = ''
+							if (amount.length || notes.length) {
+								bracket = ' (' + amount.concat(notes).join(', ') + ')'
+							}
+							spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
+						}
+						renderStack.push(renderer.render(spells.join(', ')))
+					} else {
+						renderStack.push(`<span>; <strong>Constant </strong></span>`)
+						Object.keys(sc.entry[lvl]).sort().reverse().forEach((clvl) => {
+							renderStack.push(`<span><strong>(${Parser.getOrdinalForm(clvl)}) </strong></span>`)
+							let spells = []
+							for (let spell of sc.entry[lvl][clvl].spells) {
+								let notes = spell.notes !== undefined ? spell.notes : []
+								let bracket = ''
+								if (notes.length) {
+									bracket = ' (' + notes.join(', ') + ')'
+								}
+								spells.push(`{@spell ${spell.name}|${spell.source || SRC_CRB}|${spell.name}}${bracket}`)
+							}
+							renderStack.push(renderer.render(spells.join(', ') + '; '))
+						});
+						renderStack[renderStack.length-1]
+					}
+				});
+				renderStack.push(`</div>`)
+			}
+			return renderStack.join("")
+		} else return ""
+	},
+
+
+	getRituals(mon) {
+		if (mon.rituals !== null) {
+			const renderer = Renderer.get()
+			let renderStack = [];
+			mon.rituals.forEach((feature) => {
+				renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+				renderStack.push(`<span><strong>${feature.tradition} Rituals</strong> DC ${feature.DC}</span>; `)
+				let rituals = []
+				feature.rituals.forEach((ritual) => {
+					let bracket = ''
+					let notes = ritual.notes !== undefined ? ritual.notes : []
+					let level = ritual.level !== undefined ? [Parser.getOrdinalForm(ritual.level)] : []
+					if (level.length || notes.length) {
+						bracket = ' (' + level.concat(notes).join(', ') + ')'
+					}
+					rituals.push(`{@spell ${ritual.name}|${ritual.source || SRC_CRB}|${ritual.name}}${bracket}`)
+				});
+				renderStack.push(renderer.render(rituals.join(', ')))
+				renderStack.push(`</div>`)
+			})
+			return renderStack.join("")
+		} else return ""
 	},
 
 	getCrScaleTarget(win, $btnScaleCr, initialCr, cbRender, isCompact) {
@@ -4132,22 +4315,6 @@ Renderer.monster = {
 		});
 
 		$btnScaleCr.after($wrp);
-	},
-
-	getCompactRenderedStringSection(mon, renderer, title, key, depth) {
-		if (!mon[key]) return "";
-
-		const noteKey = `${key}Note`;
-
-		const toRender = key === "lairActions" || key === "regionalEffects"
-			? [{type: "entries", entries: mon[key]}]
-			: mon[key];
-
-		return `<tr class="mon__stat-header-underline"><td colspan="6"><span class="mon__sect-header-inner">${title}${mon[noteKey] ? ` (<span class="ve-small">${mon[noteKey]}</span>)` : ""}</span></td></tr>
-		<tr class="text compact"><td colspan="6">
-		${key === "legendary" && mon.legendary ? `<p>${Renderer.monster.getLegendaryActionIntro(mon)}</p>` : ""}
-		${toRender.map(it => it.rendered || renderer.render(it, depth)).join("")}
-		</td></tr>`;
 	},
 
 	getTypeAlignmentPart(mon) {
@@ -4446,32 +4613,6 @@ Renderer.monster = {
 		return ptrFluff.fluff;
 	},
 
-	getRenderedSenses(senses, isPlainText) {
-		if (typeof senses === "string") senses = [senses]; // handle legacy format
-		if (isPlainText) return senses.join(", ");
-		const senseStr = senses
-			.join(", ")
-			.replace(/(^| |\()(tremorsense|blindsight|truesight|darkvision)(\)| |$)/gi, (...m) => `${m[1]}{@sense ${m[2]}}${m[3]}`)
-			.replace(/(^| |\()(blind|blinded)(\)| |$)/gi, (...m) => `${m[1]}{@condition blinded||${m[2]}}${m[3]}`)
-		;
-		return Renderer.get().render(senseStr);
-	},
-
-	getRenderedLanguages(languages) {
-		if (typeof languages === "string") languages = [languages]; // handle legacy format
-		return languages ? languages.join(", ") : "\u2014";
-	},
-
-	initParsed(mon) {
-		mon._pTypes = mon._pTypes || Parser.monTypeToFullObj(mon.type); // store the parsed type
-		mon._pCr = mon._pCr || (mon.cr == null ? null : (mon.cr.cr || mon.cr));
-	},
-
-	updateParsed(mon) {
-		delete mon._pTypes;
-		delete mon._pCr;
-		Renderer.monster.initParsed(mon);
-	}
 };
 
 Renderer.item = {

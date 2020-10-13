@@ -360,8 +360,6 @@ class PageFilterSpells extends PageFilter {
 	}
 
 	mutateForFilters (spell) {
-		Renderer.spell.initClasses(spell, this._brewSpellClasses);
-
 		// used for sorting
 		spell._normalisedTime = PageFilterSpells.getNormalisedTime(spell.cast);
 		spell._normalisedRange = PageFilterSpells.getNormalisedRange(spell.range);

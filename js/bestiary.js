@@ -12,7 +12,7 @@ class BestiaryPage {
 		this._pageFilter = new PageFilterBestiary();
 		this._multiSource = new MultiSource({
 			fnHandleData: addMonsters,
-			prop: "monster"
+			prop: "creature"
 		});
 	}
 
@@ -21,7 +21,6 @@ class BestiaryPage {
 		if (!mon.uniqueId && _addedHashes.has(hash)) return null;
 		_addedHashes.add(hash);
 
-		Renderer.monster.updateParsed(mon);
 		const isExcluded = ExcludeUtil.isExcluded(mon.name, "monster", mon.source);
 
 		this._pageFilter.mutateAndAddToFilters(mon, isExcluded);
@@ -32,14 +31,14 @@ class BestiaryPage {
 		eleLi.addEventListener("contextmenu", (evt) => handleBestiaryLiContext(evt, listItem));
 
 		const source = Parser.sourceJsonToAbv(mon.source);
-		const type = mon._pTypes.asText.uppercaseFirst();
-		const cr = mon._pCr || "\u2014";
+		const type = mon.creature_type;
+		const level = mon.level;
 
 		eleLi.innerHTML += `<a href="#${hash}" onclick="handleBestiaryLinkClick(event)" class="lst--border">
 			${EncounterBuilder.getButtons(mI)}
 			<span class="ecgen__name bold col-4-2 pl-0">${mon.name}</span>
 			<span class="type col-4-1">${type}</span>
-			<span class="col-1-7 text-center">${cr}</span>
+			<span class="col-1-7 text-center">${level}</span>
 			<span title="${Parser.sourceJsonToFull(mon.source)}${Renderer.utils.getSourceSubText(mon)}" class="col-2 text-center ${Parser.sourceJsonToColor(mon.source)} pr-0" ${BrewUtil.sourceJsonToStyle(mon.source)}>${source}</span>
 		</a>`;
 
@@ -50,9 +49,6 @@ class BestiaryPage {
 			{
 				hash,
 				source,
-				type,
-				cr,
-				group: mon.group || "",
 				alias: (mon.alias || []).map(it => `"${it}"`).join(",")
 			},
 			{
