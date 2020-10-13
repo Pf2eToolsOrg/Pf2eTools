@@ -43,7 +43,7 @@ class RenderBestiary {
 			${Renderer.monster.getSpellcasting(mon)}
 			${Renderer.monster.getRituals(mon)}`)
 		mon.abilities_active.forEach((ab) => {renderer.recursiveRender(ab, renderStack, {depth: 1})})
-
+		renderStack.push(`<p class="pf-2-stat-source"><strong>${mon.source}</strong> page ${mon.page}</p>`);
 
 		return (renderStack.join(''))
 	}
