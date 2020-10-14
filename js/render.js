@@ -784,9 +784,9 @@ function Renderer() {
 		this._handleTrackDepth(entry, 1);
 		const arr_effects = entry.entries;
 		arr_effects.forEach(x => {
-			textStack[0] += `<p class="pf-2-stat-text-indent-second-line"><strong>${x['range_str']} </strong>`;
+			textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${x['range_str']} </strong>`;
 			this._recursiveRender(x['entry'], textStack, meta);
-			textStack[0] += `</p>`;
+			textStack[0] += `</div>`;
 		});
 
 
@@ -836,9 +836,9 @@ function Renderer() {
 		this._handleTrackDepth(entry, 1);
 
 		for (let key in entry.entries) {
-			textStack[0] += `<p class="pf-2-stat-text-indent-second-line"><strong>${key} </strong>`
+			textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${key} </strong>`
 			this._recursiveRender(entry.entries[key], textStack, meta);
-			textStack[0] += `</p>`
+			textStack[0] += `</div>`
 		}
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
@@ -849,7 +849,7 @@ function Renderer() {
 		this._handleTrackDepth(entry, 1);
 
 		const dict = entry.entries;
-		textStack[0] += `<p class="pf-2-stat-text-indent-second-line"><strong>${dict["name"]} </strong>(${dict["type"]}); <strong>Level </strong>${dict["level"]}. `
+		textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${dict["name"]} </strong>(${dict["type"]}); <strong>Level </strong>${dict["level"]}. `
 		if (dict["note"] !== null) {
 			textStack[0] += dict["note"]
 		}
@@ -865,7 +865,7 @@ function Renderer() {
 			textStack[0] += ` (${stage["duration"]});`
 		}
 		textStack[0] = textStack[0].replace(/;$/, ".")
-		textStack[0] += `</p>`
+		textStack[0] += `</div>`
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
