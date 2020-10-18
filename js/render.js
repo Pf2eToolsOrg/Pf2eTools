@@ -847,9 +847,12 @@ function Renderer() {
 	this._renderAffliction = function (entry, textStack, meta, options) {
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, 1);
+		const renderer = Renderer.get();
 
 		const dict = entry.entries;
-		textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${dict["name"]} </strong>(${dict["type"]}); <strong>Level </strong>${dict["level"]}. `
+		let traits = []
+		dict["traits"].forEach((t)=> {traits.push(`{@trait ${t}}`)})
+		textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${dict["name"]} </strong>(${renderer.render(traits.join(', '))}); <strong>Level </strong>${dict["level"]}. `
 		if (dict["note"] !== null) {
 			textStack[0] += dict["note"]
 		}
