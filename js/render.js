@@ -799,8 +799,8 @@ function Renderer() {
 		this._handleTrackDepth(entry, 1);
 
 		textStack[0] += `<div class="pf-2-stat-indent-second-line"><span><strong>${entry.name} </strong>`
-		if (entry.activity !== undefined) this._recursiveRender(entry.activity.entry + ' ', textStack, meta);
-		if (entry.traits !== undefined && entry.traits.length) {
+		if (entry.activity != null) this._recursiveRender(entry.activity.entry + ' ', textStack, meta);
+		if (entry.traits != null && entry.traits.length) {
 			let trts = []
 			entry.traits.forEach((t) => {
 				trts.push(Renderer.get().render(`{@trait ${t.uppercaseFirst()}|${Parser.TRAITS_TO_TRAITS_SRC[t.uppercaseFirst()]}|${t}}`))
@@ -808,17 +808,17 @@ function Renderer() {
 			textStack[0] += `(${trts.join(', ')}); `
 		}
 		let add_effect = false
-		if (entry.frequency !== undefined) {
+		if (entry.frequency != null) {
 			add_effect = true
 			textStack[0] += `<strong>Frequency </strong>`
 			this._recursiveRender(entry.frequency + ' ', textStack, meta)
 		}
-		if (entry.requirements !== undefined) {
+		if (entry.requirements != null) {
 			add_effect = true
 			textStack[0] += `<strong>Requirements </strong>`
 			this._recursiveRender(entry.requirements + ' ', textStack, meta)
 		}
-		if (entry.trigger !== undefined) {
+		if (entry.trigger != null) {
 			add_effect = true
 			textStack[0] += `<strong>Trigger </strong>`
 			this._recursiveRender(entry.trigger + ' ', textStack, meta)
@@ -852,20 +852,28 @@ function Renderer() {
 		const dict = entry.entries;
 		let traits = []
 		dict["traits"].forEach((t)=> {traits.push(`{@trait ${t}}`)})
-		textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${dict["name"]} </strong>(${renderer.render(traits.join(', '))}); <strong>Level </strong>${dict["level"]}. `
-		if (dict["note"] !== null) {
-			textStack[0] += dict["note"]
+		textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${dict["name"]} </strong>(${renderer.render(traits.join(', '))}); `
+		if (dict["level"] != null) {
+			textStack[0] += `<strong>Level </strong>${dict["level"]}. `
 		}
-		if (dict["onset"] !== null) {
+		if (dict["note"] != null) {
+			textStack[0] += dict["note"] + ' '
+		}
+		if (dict["DC"] != null) {
+			textStack[0] += `<strong>Saving Throw </strong>DC ${dict["DC"]} ${dict["saving throw"]}. `
+		}
+		if (dict["onset"] != null) {
 			textStack[0] += ` <strong>Onset</strong> ${dict["onset"]}`
 		}
-		if (dict["max duration"] !== null) {
+		if (dict["max duration"] != null) {
 			textStack[0] += ` <strong>Maximum Duration</strong> ${dict["max duration"]}`
 		}
 		for (let stage of dict["stages"]) {
 			textStack[0] += ` <strong>Stage ${stage["stage"]} </strong>`
 			this._recursiveRender(stage["entry"], textStack, meta);
-			textStack[0] += ` (${stage["duration"]});`
+			if (stage["duration"] != null) {
+				textStack[0] += ` (${stage["duration"]});`
+			}
 		}
 		textStack[0] = textStack[0].replace(/;$/, ".")
 		textStack[0] += `</div>`
@@ -2673,7 +2681,7 @@ Renderer.utils = {
 			for (let key in dict) {
 				if (!exclude.includes(key)) {
 					if (dice) {
-						notes.push(Renderer.get().render(`{@d20 ${dict[key]}||${dice_name !== undefined ? dice_name : key}}`))
+						notes.push(Renderer.get().render(`{@d20 ${dict[key]}||${dice_name != null ? dice_name : key}}`))
 					} else notes.push(`${dict[key]}`)
 					notes.push(` ${key}`)
 					notes.push(`, `)
@@ -4211,20 +4219,21 @@ Renderer.monster = {
 			let renderStack = [];
 			for (let sc of mon.spellcasting) {
 				renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
-				renderStack.push(`<span><strong>${sc.tradition} ${sc.type} Spells</strong> DC ${sc.DC}</span>`)
-				if (sc.attack !== undefined) {
+				renderStack.push(`<span><strong>${sc.name} Spells</strong> DC ${sc.DC}</span>`)
+				if (sc.attack != null) {
 					renderStack.push(renderer.render(`<span>, attack </span>{@d20 ${sc.attack}||Spell attack}`))
 				}
 				Object.keys(sc.entry).sort().reverse().forEach((lvl) => {
 					if (lvl !== ' constant') {
 						renderStack.push(`<span>; <strong>${lvl === '0' ? 'Cantrips' : Parser.getOrdinalForm(lvl)} </strong>`)
-						if (sc.entry[lvl].level !== undefined) renderStack.push(`<strong>(${Parser.getOrdinalForm(sc.entry[lvl].level)}) </strong>`)
-						if (sc.entry[lvl].slots !== undefined) renderStack.push(`(${sc.entry[lvl].slots} slots) `)
+						if (sc.entry[lvl].level != null) renderStack.push(`<strong>(${Parser.getOrdinalForm(sc.entry[lvl].level)}) </strong>`)
+						if (sc.entry[lvl].slots != null) renderStack.push(`(${sc.entry[lvl].slots} slots) `)
+						if (sc.entry[lvl].fp != null) renderStack.push(`${sc.entry[lvl].fp} `)
 						renderStack.push(`</span>`)
 						let spells = []
 						for (let spell of sc.entry[lvl].spells) {
-							let amount = spell.amount !== undefined ? typeof (spell.amount) === 'number' ? [`×${spell.amount}`] : [spell.amount] : []
-							let notes = spell.notes !== undefined ? spell.notes : []
+							let amount = spell.amount != null ? typeof (spell.amount) === 'number' ? [`×${spell.amount}`] : [spell.amount] : []
+							let notes = spell.notes != null ? spell.notes : []
 							let bracket = ''
 							if (amount.length || notes.length) {
 								bracket = ' (' + amount.concat(notes).join(', ') + ')'
@@ -4238,7 +4247,7 @@ Renderer.monster = {
 							renderStack.push(`<span><strong>(${Parser.getOrdinalForm(clvl)}) </strong></span>`)
 							let spells = []
 							for (let spell of sc.entry[lvl][clvl].spells) {
-								let notes = spell.notes !== undefined ? spell.notes : []
+								let notes = spell.notes != null ? spell.notes : []
 								let bracket = ''
 								if (notes.length) {
 									bracket = ' (' + notes.join(', ') + ')'
@@ -4267,8 +4276,8 @@ Renderer.monster = {
 				let rituals = []
 				feature.rituals.forEach((ritual) => {
 					let bracket = ''
-					let notes = ritual.notes !== undefined ? ritual.notes : []
-					let level = ritual.level !== undefined ? [Parser.getOrdinalForm(ritual.level)] : []
+					let notes = ritual.notes != null ? ritual.notes : []
+					let level = ritual.level != null ? [Parser.getOrdinalForm(ritual.level)] : []
 					if (level.length || notes.length) {
 						bracket = ' (' + level.concat(notes).join(', ') + ')'
 					}
