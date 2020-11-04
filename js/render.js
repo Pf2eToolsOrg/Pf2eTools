@@ -3691,6 +3691,7 @@ Renderer.deity = {
 		},
 		"Category": {
 			prop: "category",
+			displayFn: it => typeof it === "string" ? it : it.join(", "),
 		},
 		"Domains": {
 			prop: "domains",
