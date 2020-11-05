@@ -4108,7 +4108,8 @@ Renderer.monster = {
 		const ac = mon.armor_class
 		renderStack.push(`<span><strong>AC </strong>${ac.default}`)
 		renderStack.push(Renderer.utils.getNotes(ac, ['default', 'abilities'], false))
-		if (ac.abilities !== null) renderStack.push(ac.abilities.join(', '));
+		console.log(ac.abilities)
+		if (ac.abilities !== null) renderStack.push(`; ${ac.abilities}`);
 		const st = mon.saving_throws
 		renderStack.push(`; <strong>Fort </strong>`)
 		renderStack.push(Renderer.get().render(`{@d20 ${st.Fort.default}||Fortitude Save}`))

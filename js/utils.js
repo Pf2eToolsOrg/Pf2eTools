@@ -6203,6 +6203,17 @@ SortUtil = {
 		return 0;
 	},
 
+	ascSortLvl (a, b) {
+		if (typeof FilterItem !== "undefined") {
+			if (a instanceof FilterItem) a = a.item;
+			if (b instanceof FilterItem) b = b.item;
+		}
+		// always put unknown values last
+		if (a === "Unknown" || a === undefined) a = "999";
+		if (b === "Unknown" || b === undefined) b = "999";
+		return SortUtil.ascSort(a, b);
+	},
+
 	ascSortCr(a, b) {
 		if (typeof FilterItem !== "undefined") {
 			if (a instanceof FilterItem) a = a.item;

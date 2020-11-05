@@ -49,7 +49,8 @@ class BestiaryPage {
 			{
 				hash,
 				source,
-				alias: (mon.alias || []).map(it => `"${it}"`).join(",")
+				level: mon.level,
+				type: mon.creature_type
 			},
 			{
 				uniqueId: mon.uniqueId ? mon.uniqueId : mI,

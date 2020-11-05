@@ -7,6 +7,8 @@ class PageFilterBestiary extends PageFilter {
 		switch (o.sortBy) {
 			case "name": return SortUtil.compareListNames(a, b);
 			case "source": return SortUtil.ascSort(a.values.source, b.values.source) || SortUtil.compareListNames(a, b);
+			case "type": return SortUtil.ascSort(a.values.type, b.values.type) || SortUtil.compareListNames(a, b);
+			case "level": return SortUtil.ascSortLvl(a.values.level, b.values.level) || SortUtil.compareListNames(a, b);
 		}
 	}
 
@@ -75,7 +77,7 @@ class ModalFilterBestiary extends ModalFilter {
 		const btnMeta = [
 			{sort: "name", text: "Name", width: "4"},
 			{sort: "type", text: "Type", width: "4"},
-			{sort: "cr", text: "CR", width: "2"},
+			{sort: "level", text: "Level", width: "2"},
 			{sort: "source", text: "Source", width: "1"}
 		];
 		return ModalFilter._$getFilterColumnHeaders(btnMeta);
@@ -98,7 +100,7 @@ class ModalFilterBestiary extends ModalFilter {
 		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](mon);
 		const source = Parser.sourceJsonToAbv(mon.source);
 		const type = mon._pTypes.asText.uppercaseFirst();
-		const cr = mon._pCr || "\u2014";
+		const level = mon.level || "\u2014";
 
 		eleLi.innerHTML = `<label class="lst--border unselectable">
 			<div class="lst__wrp-cells">
@@ -117,7 +119,7 @@ class ModalFilterBestiary extends ModalFilter {
 				source,
 				sourceJson: mon.source,
 				type,
-				cr
+				level
 			},
 			{
 				cbSel: eleLi.firstElementChild.firstElementChild.firstElementChild.firstElementChild
