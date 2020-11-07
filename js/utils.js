@@ -1447,6 +1447,23 @@ Parser.spCasterProgressionToFull = function (type) {
 };
 
 // mon-prefix functions are for parsing monster data, and shared with the roll20 script
+Parser.monAlignToFull = function (align) {
+	switch (align) {
+		case null: return "";
+		case "ANY": return "Any";
+		case "LG": return "Lawful Good";
+		case "NG": return "Neutral Good";
+		case "CG": return "Chaotic Good";
+		case "LN": return "Lawful Neutral";
+		case "N": return "Neutral";
+		case "CN": return "Chaotic Neutral";
+		case "LE": return "Lawful Evil";
+		case "NE": return "Neutral Evil";
+		case "CE": return "Chaotic Evil";
+		default: return "Unknown";
+	}
+};
+
 Parser.monTypeToFullObj = function (type) {
 	const out = {type: "", tags: [], asText: ""};
 
@@ -6190,6 +6207,14 @@ SortUtil = {
 		else if (~ixA) return -1;
 		else if (~ixB) return 1;
 		else return SortUtil.ascSort(aClean, bClean);
+	},
+	monSkillSort: (a, b) => {
+		//console.log(a,b)
+		if (a===b) return 0;
+		if (a.item.toLowerCase().includes('lore') && b.item.toLowerCase().includes('lore')) return SortUtil.ascSort(a,b);
+		if (a.item.toLowerCase().includes('lore')) return 1;
+		if (b.item.toLowerCase().includes('lore')) return -1;
+		return SortUtil.ascSort(a,b);
 	},
 
 	_alignFirst: ["L", "C"],

@@ -4031,7 +4031,7 @@ Renderer.monster = {
 	},
 
 	getLanguages(mon) {
-		if (mon.languages !== null && (mon.languages.languages.length !== 0 || mon.languages.language_abilities.length !== 0)) {
+		if (mon.languages != null && (mon.languages.languages.length !== 0 || mon.languages.language_abilities.length !== 0)) {
 			let renderStack = [];
 
 			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
@@ -4051,7 +4051,7 @@ Renderer.monster = {
 	},
 
 	getSkills(mon) {
-		if (mon.skills !== null && (Object.keys(mon.skills).length !== 0)) {
+		if (mon.skills != null && (Object.keys(mon.skills).length !== 0)) {
 			let renderStack = [];
 
 			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
@@ -4092,7 +4092,7 @@ Renderer.monster = {
 	},
 
 	getItems(mon) {
-		if (mon.items !== null) {
+		if (mon.items != null) {
 			let renderStack = [];
 			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
 			renderStack.push(`<span><strong>Items </strong></span>`)
@@ -4108,8 +4108,7 @@ Renderer.monster = {
 		const ac = mon.armor_class
 		renderStack.push(`<span><strong>AC </strong>${ac.default}`)
 		renderStack.push(Renderer.utils.getNotes(ac, ['default', 'abilities'], false))
-		console.log(ac.abilities)
-		if (ac.abilities !== null) renderStack.push(`; ${ac.abilities}`);
+		if (ac.abilities != null) renderStack.push(`; ${ac.abilities}`);
 		const st = mon.saving_throws
 		renderStack.push(`; <strong>Fort </strong>`)
 		renderStack.push(Renderer.get().render(`{@d20 ${st.Fort.default}||Fortitude Save}`))
@@ -4120,24 +4119,24 @@ Renderer.monster = {
 		renderStack.push(`, <strong>Will </strong>`)
 		renderStack.push(Renderer.get().render(`{@d20 ${st.Will.default}||Will Save}`))
 		renderStack.push(Renderer.utils.getNotes(st.Will, ['default', 'abilities'], 'Will Save'))
-		if (st.abilities !== null) renderStack.push(', ' + st.abilities);
+		if (st.abilities != null) renderStack.push(', ' + st.abilities);
 		renderStack.push(`</span>`)
 		renderStack.push(`</div>`)
 
 		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
 		const hp = mon.hit_points
 		for (i = 0; i < hp.length; i++) {
-			renderStack.push(`<span><strong>HP </strong>${hp[i].note !== null ? `${hp[i].note} ` : ``}${hp[i].HP}`)
-			renderStack.push(`${hp[i].abilities !== null ? `, ${hp[i].abilities}` : ``}`)
+			renderStack.push(`<span><strong>HP </strong>${hp[i].note != null ? `${hp[i].note} ` : ``}${hp[i].HP}`)
+			renderStack.push(`${hp[i].abilities != null ? `, ${hp[i].abilities}` : ``}`)
 			renderStack.push(`${(i === hp.length - 1) ? `` : ` `}`)
 		}
-		if (mon.hardness !== null) {
+		if (mon.hardness != null) {
 			renderStack.push(`; <strong>Hardness </strong>${mon.hardness}`)
 		}
-		if (mon.immunities !== null) {
+		if (mon.immunities != null) {
 			renderStack.push(`; <strong>Immunities </strong>${mon.immunities.damage.concat(mon.immunities.condition).sort().join(', ')}`)
 		}
-		if (mon.weaknesses !== null) {
+		if (mon.weaknesses != null) {
 			renderStack.push(`; <strong>Weaknesses </strong>`)
 			let ws = []
 			for (let x of mon.weaknesses) {
@@ -4149,7 +4148,7 @@ Renderer.monster = {
 			}
 			renderStack.push(ws.join(', '))
 		}
-		if (mon.resistances !== null) {
+		if (mon.resistances != null) {
 			renderStack.push(`; <strong>Resistances </strong>`)
 			let rs = []
 			for (let x of mon.resistances) {
@@ -4172,14 +4171,14 @@ Renderer.monster = {
 		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
 		renderStack.push(`<span><strong>Speed </strong>`)
 		let speeds = []
-		if (mon.speed.walk !== null) speeds.push(`${mon.speed.walk} feet`)
+		if (mon.speed.walk != null) speeds.push(`${mon.speed.walk} feet`)
 		for (let key in mon.speed) {
 			if (key !== 'abilities' && key !== 'walk') {
 				speeds.push(`${key} ${mon.speed[key]} feet`)
 			}
 		}
 		renderStack.push(speeds.join(', '))
-		if (mon.speed.abilities !== null) {
+		if (mon.speed.abilities != null) {
 			renderStack.push('; ')
 			renderStack.push(mon.speed.abilities.join(', '))
 		}
@@ -4198,7 +4197,7 @@ Renderer.monster = {
 			renderStack.push(`</span>`)
 			renderStack.push(Renderer.get().render(`{@hit ${attack.attack}||${attack.name.uppercaseFirst()} `))
 			renderStack.push(`<span>`)
-			if (attack.traits !== null) {
+			if (attack.traits != null) {
 				let traits = []
 				attack.traits.forEach((t) => {
 					traits.push(`{@trait ${t.uppercaseFirst().split(' ')[0]}|${Parser.TRAITS_TO_TRAITS_SRC[t.uppercaseFirst()]}|${t}}`)
@@ -4215,7 +4214,7 @@ Renderer.monster = {
 	},
 
 	getSpellcasting(mon) {
-		if (mon.spellcasting !== null) {
+		if (mon.spellcasting != null) {
 			const renderer = Renderer.get()
 			let renderStack = [];
 			for (let sc of mon.spellcasting) {
@@ -4268,7 +4267,7 @@ Renderer.monster = {
 
 
 	getRituals(mon) {
-		if (mon.rituals !== null) {
+		if (mon.rituals != null) {
 			const renderer = Renderer.get()
 			let renderStack = [];
 			mon.rituals.forEach((feature) => {
