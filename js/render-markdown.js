@@ -1608,9 +1608,11 @@ class MarkdownConverter {
 
 				tbl.rows.forEach(r => {
 					r.forEach((cell, i) => {
-						if (cell.length > BASE_CHAR_CAP) isAllBelowCap = false;
-						outAvgWidths[i] += Math.min(BASE_CHAR_CAP, cell.length);
-						outMaxWidths[i] = Math.max(outMaxWidths[i], cell.length);
+						// This assumes the cells are always strings, which may be faulty
+						const cellStripped = Renderer.stripTags(cell);
+						if (cellStripped.length > BASE_CHAR_CAP) isAllBelowCap = false;
+						outAvgWidths[i] += Math.min(BASE_CHAR_CAP, cellStripped.length);
+						outMaxWidths[i] = Math.max(outMaxWidths[i], cellStripped.length);
 					});
 				});
 
@@ -1717,8 +1719,9 @@ class MarkdownConverter {
 				const counts = {short: 0, long: 0};
 
 				tbl.rows.forEach(r => {
-					if (typeof r[i] !== "string") return counts.long++;
-					const words = r[i].split(" ");
+					const cell = r[i];
+					if (typeof cell !== "string") return counts.long++;
+					const words = Renderer.stripTags(cell).split(" ");
 					counts[words.length <= 3 ? "short" : "long"]++
 				});
 

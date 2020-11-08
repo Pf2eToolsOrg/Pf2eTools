@@ -8,7 +8,7 @@ class PageFilterEquipment extends PageFilter {
 		this._propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});
 		this._costFilter = new RangeFilter({header: "Cost", min: 0, max: 100, isAllowGreater: true, suffix: " gp"});
 		this._weightFilter = new RangeFilter({header: "Weight", min: 0, max: 100, isAllowGreater: true, suffix: " lb."});
-		this._focusFilter = new Filter({header: "Spellcasting Focus", items: ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"]});
+		this._focusFilter = new Filter({header: "Spellcasting Focus", items: [...Parser.ITEM_SPELLCASTING_FOCUS_CLASSES]});
 		this._damageTypeFilter = new Filter({header: "Damage Type", displayFn: it => Parser.dmgTypeToFull(it).uppercaseFirst(), itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.dmgTypeToFull(a), Parser.dmgTypeToFull(b))});
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Item Group", "SRD"], isSrdFilter: true});
 		this._poisonTypeFilter = new Filter({header: "Poison Type", items: ["ingested", "injury", "inhaled", "contact"], displayFn: StrUtil.toTitleCase});
@@ -21,7 +21,7 @@ class PageFilterEquipment extends PageFilter {
 		if (item._isItemGroup) item._fMisc.push("Item Group");
 
 		if (item.focus || item.type === "INS" || item.type === "SCF") {
-			item._fFocus = item.focus ? item.focus === true ? ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"] : [...item.focus] : [];
+			item._fFocus = item.focus ? item.focus === true ? [...Parser.ITEM_SPELLCASTING_FOCUS_CLASSES] : [...item.focus] : [];
 			if (item.type === "INS" && !item._fFocus.includes("Bard")) item._fFocus.push("Bard");
 			if (item.type === "SCF") {
 				switch (item.scfType) {

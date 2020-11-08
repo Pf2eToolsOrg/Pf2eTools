@@ -77,6 +77,11 @@ class ItemParser extends BaseParser {
 			i = ptrI._;
 		}
 
+		const statsOut = this._getFinalState(item, options);
+		options.cbOutput(statsOut, options.isAppend);
+	}
+
+	static _getFinalState (item, options) {
 		if (!item.entries.length) delete item.entries;
 		else this._setWeight(item, options);
 
@@ -85,8 +90,7 @@ class ItemParser extends BaseParser {
 		this._doItemPostProcess(item, options);
 		this._setCleanTaglineInfo_handleGenericType(item, options);
 		this._doVariantPostProcess(item, options);
-		const statsOut = PropOrder.getOrdered(item, item.__prop || "item");
-		options.cbOutput(statsOut, options.isAppend);
+		return PropOrder.getOrdered(item, item.__prop || "item");
 	}
 
 	// SHARED UTILITY FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
@@ -111,9 +115,9 @@ class ItemParser extends BaseParser {
 		RechargeTypeTag.tryRun(stats, {cbMan: () => options.cbWarning(`${manName}Recharge type requires manual conversion`)});
 		BonusTag.tryRun(stats);
 		ItemMiscTag.tryRun(stats);
+		ItemSpellcastingFocusTag.tryRun(stats);
 
 		// TODO
-		//  - tag spellcasting focus type
 		//  - tag damage type?
 		//  - tag ability score adjustments
 	}

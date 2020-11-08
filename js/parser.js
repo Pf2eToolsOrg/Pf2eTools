@@ -528,6 +528,8 @@ Parser.stringToCasedSlug = function (str) {
 	return str.replace(/[^\w ]+/g, "").replace(/ +/g, "-");
 };
 
+Parser.ITEM_SPELLCASTING_FOCUS_CLASSES = ["Bard", "Cleric", "Druid", "Paladin", "Ranger", "Sorcerer", "Warlock", "Wizard"];
+
 Parser.itemValueToFull = function (item, opts = {isShortForm: false, isSmallUnits: false}) {
 	return Parser._moneyToFull(item, "value", "valueMult", opts);
 };
@@ -1164,6 +1166,7 @@ Parser.SP_MISC_TAG_TO_FULL = {
 	SCL: "Scaling Effects",
 	SMN: "Summons Creature",
 	MAC: "Modifies AC",
+	TP: "Teleportation",
 };
 Parser.spMiscTagToFull = function (type) {
 	return Parser._parse_aToB(Parser.SP_MISC_TAG_TO_FULL, type);

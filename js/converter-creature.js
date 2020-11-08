@@ -952,6 +952,7 @@ class CreatureParser extends BaseParser {
 		// split HP into average and formula
 		const m = /^(\d+)\s*\((.*?)\)$/.exec(rawHp.trim());
 		if (!m) stats.hp = {special: rawHp}; // for e.g. Avatar of Death
+		else if (!Renderer.dice.lang.getTree3(m[2])) stats.hp = {special: rawHp}; // for e.g. "x (see notes)"
 		else {
 			stats.hp = {
 				average: Number(m[1]),

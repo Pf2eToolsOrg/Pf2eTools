@@ -32,7 +32,6 @@ class ArgParser {
 			});
 	}
 }
-ArgParser.parse();
 
 const BLACKLIST_FILE_PREFIXES = [
 	...ut.FILE_PREFIX_BLACKLIST,
@@ -53,19 +52,24 @@ const LAST_KEY_WHITELIST = new Set([
 
 class TagJsons {
 	static async pInit () {
+		ut.patchLoadJson();
 		SpellTag.init();
 		await ItemTag.pInit();
 	}
 
-	static run () {
+	static teardown () {
+		ut.unpatchLoadJson();
+	}
+
+	static run (args = ARGS) {
 		let files;
-		if (ARGS.file) {
-			files = [ARGS.file];
+		if (args.file) {
+			files = [args.file];
 		} else {
 			files = ut.listFiles({dir: `./data`, blacklistFilePrefixes: BLACKLIST_FILE_PREFIXES});
-			if (ARGS.filePrefix) {
-				files = files.filter(f => f.startsWith(ARGS.filePrefix));
-				if (!files.length) throw new Error(`No file with prefix "${ARGS.filePrefix}" found!`);
+			if (args.filePrefix) {
+				files = files.filter(f => f.startsWith(args.filePrefix));
+				if (!files.length) throw new Error(`No file with prefix "${args.filePrefix}" found!`);
 			}
 		}
 
@@ -98,8 +102,8 @@ class TagJsons {
 					);
 				});
 
-			const outPath = ARGS.inplace ? file : file.replace("./data/", "./trash/");
-			if (!ARGS.inplace) {
+			const outPath = args.inplace ? file : file.replace("./data/", "./trash/");
+			if (!args.inplace) {
 				const dirPart = outPath.split("/").slice(0, -1).join("/");
 				fs.mkdirSync(dirPart, {recursive: true});
 			}
@@ -121,8 +125,9 @@ class SpellTag {
 			});
 		});
 
-		SpellTag._SPELL_NAME_REGEX = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).join("|")}) (spell)`, "gi");
-		SpellTag._SPELL_NAME_REGEX_AND = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).join("|")}) (and {@spell)`, "gi");
+		SpellTag._SPELL_NAME_REGEX = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")})`, "gi");
+		SpellTag._SPELL_NAME_REGEX_SPELL = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}) (spell)`, "gi");
+		SpellTag._SPELL_NAME_REGEX_AND = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}) (and {@spell)`, "gi");
 	}
 
 	static tryRun (it) {
@@ -149,7 +154,7 @@ class SpellTag {
 
 	static _fnTag (strMod) {
 		return strMod
-			.replace(SpellTag._SPELL_NAME_REGEX, (...m) => {
+			.replace(SpellTag._SPELL_NAME_REGEX_SPELL, (...m) => {
 				const spellMeta = SpellTag._SPELL_NAMES[m[1].toLowerCase()];
 				return `{@spell ${m[1]}${spellMeta.source !== SRC_PHB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
 			})
@@ -157,11 +162,19 @@ class SpellTag {
 				const spellMeta = SpellTag._SPELL_NAMES[m[1].toLowerCase()];
 				return `{@spell ${m[1]}${spellMeta.source !== SRC_PHB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
 			})
+			.replace(/(spells(?:|[^.!?:{]*): )([^.!?]+)/gi, (...m) => {
+				const spellPart = m[2].replace(SpellTag._SPELL_NAME_REGEX, (...n) => {
+					const spellMeta = SpellTag._SPELL_NAMES[n[1].toLowerCase()];
+					return `{@spell ${n[1]}${spellMeta.source !== SRC_PHB ? `|${spellMeta.source}` : ""}}`;
+				});
+				return `${m[1]}${spellPart}`;
+			})
 		;
 	}
 }
 SpellTag._SPELL_NAMES = {};
 SpellTag._SPELL_NAME_REGEX = null;
+SpellTag._SPELL_NAME_REGEX_SPELL = null;
 SpellTag._SPELL_NAME_REGEX_AND = null;
 
 class ItemTag {
@@ -174,7 +187,7 @@ class ItemTag {
 			ItemTag._ITEM_NAMES_TOOLS[tool.name.toLowerCase()] = {name: tool.name, source: tool.source};
 		});
 
-		ItemTag._ITEM_NAMES_REGEX_TOOLS = new RegExp(`(^|\\W)(${tools.map(it => it.name).join("|")})(\\W|$)`, "gi");
+		ItemTag._ITEM_NAMES_REGEX_TOOLS = new RegExp(`(^|\\W)(${tools.map(it => it.name.escapeRegexp()).join("|")})(\\W|$)`, "gi");
 	}
 
 	static tryRun (it) {
@@ -242,10 +255,14 @@ class TableTag {
 }
 
 async function main () {
-	ut.patchLoadJson();
+	ArgParser.parse();
 	await TagJsons.pInit();
 	TagJsons.run();
-	ut.unpatchLoadJson();
+	TagJsons.teardown();
 }
 
-main().then(() => console.log("Run complete.")).catch(e => { throw e; });
+if (require.main === module) {
+	main().then(() => console.log("Run complete.")).catch(e => { throw e; });
+} else {
+	module.exports = TagJsons;
+}

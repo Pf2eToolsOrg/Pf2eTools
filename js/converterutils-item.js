@@ -315,6 +315,54 @@ class ItemMiscTag {
 	}
 }
 
+class ItemSpellcastingFocusTag {
+	static tryRun (it, opts) {
+		const focusClasses = new Set(it.focus || []);
+		ItemSpellcastingFocusTag._RE_CLASS_NAMES = ItemSpellcastingFocusTag._RE_CLASS_NAMES || new RegExp(`(${Parser.ITEM_SPELLCASTING_FOCUS_CLASSES.join("|")})`, "gi")
+
+		let isMiscFocus = false;
+		if (it.entries || (it.inherits && it.inherits.entries)) {
+			const tgt = it.entries ? it : it.inherits;
+
+			const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST, isNoModification: true});
+			walker.walk(
+				tgt,
+				{
+					string: (str) => {
+						str
+							.replace(/spellcasting focus for your([^.?!:]*) spells/, (...m) => {
+								if (!m[1].trim()) {
+									isMiscFocus = true;
+									return;
+								}
+
+								m[1].trim().replace(ItemSpellcastingFocusTag._RE_CLASS_NAMES, (...n) => {
+									focusClasses.add(n[1].toTitleCase());
+								});
+							})
+						return str;
+					},
+				},
+			);
+		}
+
+		// The focus type may be implicitly specified by the attunement requirement
+		if (isMiscFocus && it.reqAttune && typeof it.reqAttune === "string" && /^by a /i.test(it.reqAttune)) {
+			const validClasses = new Set(Parser.ITEM_SPELLCASTING_FOCUS_CLASSES.map(it => it.toLowerCase()));
+			it.reqAttune
+				.replace(/^by a/i, "")
+				.split(/, | or /gi)
+				.map(it => it.trim().replace(/ or | a /gi, "").toLowerCase())
+				.filter(Boolean)
+				.filter(it => validClasses.has(it))
+				.forEach(it => focusClasses.add(it.toTitleCase()));
+		}
+
+		if (focusClasses.size) it.focus = [...focusClasses].sort(SortUtil.ascSortLower);
+	}
+}
+ItemSpellcastingFocusTag._RE_CLASS_NAMES = null;
+
 if (typeof module !== "undefined") {
 	module.exports = {
 		ConverterUtilsItem,
@@ -324,5 +372,6 @@ if (typeof module !== "undefined") {
 		BonusTag,
 		BasicTextClean,
 		ItemMiscTag,
+		ItemSpellcastingFocusTag,
 	};
 }

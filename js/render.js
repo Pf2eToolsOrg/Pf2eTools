@@ -4511,22 +4511,22 @@ Renderer.item = {
 		return item.reqAttune ? `${typeRarity} ${item._attunement}` : typeRarity
 	},
 
-	getAttunementAndAttunementCatText (item) {
+	getAttunementAndAttunementCatText (item, prop = "reqAttune") {
 		let attunement = null;
 		let attunementCat = "No";
-		if (item.reqAttune != null && item.reqAttune !== false) {
-			if (item.reqAttune === true) {
+		if (item[prop] != null && item[prop] !== false) {
+			if (item[prop] === true) {
 				attunementCat = "Yes";
 				attunement = "(requires attunement)"
-			} else if (item.reqAttune === "optional") {
+			} else if (item[prop] === "optional") {
 				attunementCat = "Optional";
 				attunement = "(attunement optional)"
-			} else if (item.reqAttune.toLowerCase().startsWith("by")) {
+			} else if (item[prop].toLowerCase().startsWith("by")) {
 				attunementCat = "By...";
-				attunement = `(requires attunement ${item.reqAttune})`;
+				attunement = `(requires attunement ${item[prop]})`;
 			} else {
 				attunementCat = "Yes"; // throw any weird ones in the "Yes" category (e.g. "outdoors at night")
-				attunement = `(requires attunement ${item.reqAttune})`;
+				attunement = `(requires attunement ${item[prop]})`;
 			}
 		}
 		return [attunement, attunementCat]
@@ -5073,6 +5073,34 @@ Renderer.item = {
 				Renderer.item._initFullEntries(item);
 				item._fullEntries.push(`You have resistance to ${item.resist} damage while wearing this ring.`);
 			}
+			if (!item.type && item.wondrous && item.tattoo) {
+				Renderer.item._initFullEntries(item);
+				item._fullEntries.push(
+					`Produced by a special needle, this magic tattoo features designs that emphasize one color (${item.color}).`,
+					{
+						type: "entries",
+						name: "Tattoo Attunement",
+						entries: [
+							"To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin.",
+							"If your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in your space.",
+						],
+					},
+					{
+						type: "entries",
+						name: "Damage Resistance",
+						entries: [
+							`While the tattoo is on your skin, you have resistance to ${item.resist} damage`,
+						],
+					},
+					{
+						type: "entries",
+						name: "Damage Absorption",
+						entries: [
+							`When you take ${item.resist} damage, you can use your reaction to gain immunity against that instance of the damage, and you regain a number of hit points equal to half the damage you would have taken. Once this reaction is used, it can't be used again until the next dawn.`,
+						],
+					},
+				);
+			}
 		}
 		if (item.type === "SCF") {
 			if (item._isItemGroup) {
@@ -5133,6 +5161,11 @@ Renderer.item = {
 		const [attune, attuneCat] = Renderer.item.getAttunementAndAttunementCatText(item);
 		item._attunement = attune;
 		item._attunementCategory = attuneCat;
+
+		if (item.reqAttuneAlt) {
+			const [attuneAlt, attuneCatAlt] = Renderer.item.getAttunementAndAttunementCatText(item, "reqAttuneAlt");
+			item._attunementCategory = [attuneCat, attuneCatAlt];
+		}
 
 		// handle item groups
 		if (item._isItemGroup) {

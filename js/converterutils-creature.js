@@ -301,7 +301,7 @@ class AlignmentConvert {
 			})
 		});
 
-		if (out.length === 1) m.alignment = out[0];
+		if (out.length === 1) m.alignment = out[0].alignment;
 		else if (out.length) m.alignment = out;
 		else if (cbMan) cbMan(m.alignment);
 	}

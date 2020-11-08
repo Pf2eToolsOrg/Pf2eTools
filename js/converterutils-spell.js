@@ -85,6 +85,7 @@ class MiscTagsTagger {
 		if (/temporary hit points/ig.test(strEntries)) tags.add("THP");
 		if (/you summon/ig.test(strEntries)) tags.add("SMN");
 		if (/you can see/ig.test(strEntries)) tags.add("SGT");
+		if (/you (?:can then )?teleport/i.test(strEntries) || /instantly (?:transports you|teleport)/i.test(strEntries) || /enters(?:[^.]+)portal instantly/i.test(strEntries) || /entering the portal exits from the other portal/i.test(strEntries)) tags.add("TP");
 
 		MiscTagsTagger._WALKER = MiscTagsTagger._WALKER || MiscUtil.getWalker({isNoModification: true, keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
 		MiscTagsTagger._WALKER.walk(
