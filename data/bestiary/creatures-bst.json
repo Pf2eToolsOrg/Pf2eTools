@@ -67,7 +67,8 @@
           "type": "ability",
           "name": "Locate Inevitable",
           "entries": [
-            "An arbiter can always sense the direction of the nearest non-arbiter inevitable on the plane, but it cannot sense the range of the inevitable."
+            "An arbiter can always sense the direction of the nearest non-arbiter inevitable on the plane, but it cannot sense the range of the inevitable.",
+            "Items shortsword."
           ]
         }
       ],
@@ -154,8 +155,8 @@
           "effects": [],
           "damage": "{@dice 1d6+1} piercing plus {@dice 1d4} lawful",
           "types": [
-            "piercing",
-            "lawful"
+            "lawful",
+            "piercing"
           ]
         }
       ],
@@ -350,8 +351,8 @@
           "effects": [],
           "damage": "{@dice 2d8+11} bludgeoning plus {@dice 1d6} lawful",
           "types": [
-            "lawful",
-            "bludgeoning"
+            "bludgeoning",
+            "lawful"
           ]
         },
         {
@@ -366,8 +367,8 @@
           "effects": [],
           "damage": "{@dice 1d8+5} bludgeoning plus {@dice 1d6} lawful",
           "types": [
-            "lawful",
-            "bludgeoning"
+            "bludgeoning",
+            "lawful"
           ]
         }
       ],
@@ -525,7 +526,8 @@
           "type": "ability",
           "name": "Truespeech",
           "entries": [
-            "A kolyarut can speak with and understand any creature that has a language."
+            "A kolyarut can speak with and understand any creature that has a language.",
+            "Items +1 striking bastard sword."
           ]
         }
       ],
@@ -588,8 +590,8 @@
           "effects": [],
           "damage": "{@dice 2d8+13} slashing plus {@dice 1d6} lawful",
           "types": [
-            "lawful",
-            "slashing"
+            "slashing",
+            "lawful"
           ]
         },
         {
@@ -604,8 +606,8 @@
           "effects": [],
           "damage": "{@dice 1d10+11} bludgeoning plus {@dice 1d6} lawful",
           "types": [
-            "lawful",
-            "bludgeoning"
+            "bludgeoning",
+            "lawful"
           ]
         }
       ],
@@ -869,8 +871,8 @@
           "effects": [],
           "damage": "{@dice 5d8+18} positive or negative damage plus {@dice 1d6} lawful",
           "types": [
-            "lawful",
-            "positive"
+            "positive",
+            "lawful"
           ]
         },
         {
@@ -2452,8 +2454,8 @@
           ],
           "damage": "{@dice 4d6} sonic damage plus {@dice 1d6} good and deafening aria",
           "types": [
-            "sonic",
-            "good"
+            "good",
+            "sonic"
           ]
         }
       ],
@@ -2755,9 +2757,9 @@
           "effects": [],
           "damage": "{@dice 2d6+8} slashing plus {@dice 1d6} fire and {@dice 1d6} good",
           "types": [
+            "slashing",
             "fire",
-            "good",
-            "slashing"
+            "good"
           ]
         }
       ],
@@ -4169,7 +4171,16 @@
             "mental"
           ],
           "entries": [
-            "The gorilla beats its chest in a terrifying display. Creatures within 30 feet must attempt a DC 20 Will save. While a creature is {@condition frightened} by this ability, it is {@condition flat-footed} to the gorilla."
+            "The gorilla beats its chest in a terrifying display. Creatures within 30 feet must attempt a DC 20 Will save. While a creature is {@condition frightened} by this ability, it is {@condition flat-footed} to the gorilla.",
+            {
+              "type": "success_degree",
+              "entries": {
+                "Critical Success": "No effect and temporarily immune for 1 minute.",
+                "Success": "The creature is unaffected.",
+                "Failure": "The creature is {@condition frightened} 1.",
+                "Critical Failure": "The creature is {@condition frightened} 2."
+              }
+            }
           ]
         }
       ],
@@ -4324,7 +4335,16 @@
             "mental"
           ],
           "entries": [
-            "The megaprimatus beats its chest in a terrifying display. Creatures within 50 feet must attempt a DC 27 Will save. While a creature is {@condition frightened} by this ability, it is {@condition flat-footed} to the megaprimatus and to gorillas."
+            "The megaprimatus beats its chest in a terrifying display. Creatures within 50 feet must attempt a DC 27 Will save. While a creature is {@condition frightened} by this ability, it is {@condition flat-footed} to the megaprimatus and to gorillas.",
+            {
+              "type": "success_degree",
+              "entries": {
+                "Critical Success": "No effect and temporarily immune for 1 minute.",
+                "Success": "The creature is unaffected.",
+                "Failure": "The creature is {@condition frightened} 1.",
+                "Critical Failure": "The creature is {@condition frightened} 2 and {@condition fleeing} until the end of its next turn."
+              }
+            }
           ]
         }
       ],
@@ -5103,8 +5123,8 @@
           "effects": [],
           "damage": "{@dice 1d4} fire plus {@dice 1d4} good",
           "types": [
-            "fire",
-            "good"
+            "good",
+            "fire"
           ]
         }
       ],
@@ -5326,8 +5346,8 @@
           ],
           "damage": "{@dice 2d8+3} piercing plus {@dice 1d6} good and Push",
           "types": [
-            "piercing",
-            "good"
+            "good",
+            "piercing"
           ]
         },
         {
@@ -5344,8 +5364,8 @@
           "effects": [],
           "damage": "{@dice 1d8+4} piercing plus {@dice 1d6} good",
           "types": [
-            "piercing",
-            "good"
+            "good",
+            "piercing"
           ]
         }
       ],
@@ -5582,9 +5602,9 @@
           "effects": [],
           "damage": "{@dice 2d10+5} slashing plus {@dice 1d6} fire and {@dice 1d6} good",
           "types": [
+            "slashing",
             "fire",
-            "good",
-            "slashing"
+            "good"
           ]
         },
         {
@@ -5599,9 +5619,9 @@
           "effects": [],
           "damage": "{@dice 2d10+5} slashing plus {@dice 1d6} fire and {@dice 1d6} good",
           "types": [
+            "slashing",
             "fire",
-            "good",
-            "slashing"
+            "good"
           ]
         }
       ],
@@ -5854,8 +5874,8 @@
           "effects": [],
           "damage": "{@dice 2d6+10} piercing plus {@dice 1d6} good",
           "types": [
-            "piercing",
-            "good"
+            "good",
+            "piercing"
           ]
         }
       ],
@@ -6316,8 +6336,8 @@
           "effects": [],
           "damage": "{@dice 1d6+7} piercing plus {@dice 1d4} good",
           "types": [
-            "piercing",
-            "good"
+            "good",
+            "piercing"
           ]
         }
       ],
@@ -6525,9 +6545,9 @@
           "effects": [],
           "damage": "{@dice 1d8+10} slashing plus {@dice 1d6} chaotic and {@dice 1d6} good",
           "types": [
-            "good",
+            "slashing",
             "chaotic",
-            "slashing"
+            "good"
           ]
         },
         {
@@ -6867,9 +6887,9 @@
           "effects": [],
           "damage": "{@dice 2d12+13} slashing plus {@dice 1d6} good and {@dice 1d6} other (see Choose Weakness)",
           "types": [
-            "good",
+            "slashing",
             "other",
-            "slashing"
+            "good"
           ]
         },
         {
@@ -6886,8 +6906,8 @@
           "damage": "{@dice 1d12} chaotic plus {@dice 1d12} good plus {@dice 2d6+6} other (see Choose Weakness)",
           "types": [
             "good",
-            "other",
-            "chaotic"
+            "chaotic",
+            "other"
           ]
         }
       ],
@@ -7045,8 +7065,8 @@
       "alignment": "CE",
       "size": "Medium",
       "creature_type": [
-        "Undead",
-        "Spirit"
+        "Spirit",
+        "Undead"
       ],
       "traits": [
         "Incorporeal"
@@ -7213,7 +7233,8 @@
             "occult"
           ],
           "entries": [
-            "The banshee unleashes a soul-chilling wail of the banshee (DC 38). This Wail overcomes silence and similar effects of 5th level or lower. The banshee can instead use Wail as a three-action activity to overcome such effects of up to 8th level."
+            "The banshee unleashes a soul-chilling wail of the banshee (DC 38). This Wail overcomes silence and similar effects of 5th level or lower. The banshee can instead use Wail as a three-action activity to overcome such effects of up to 8th level.",
+            "The banshee’s Wail resonates for 1 round, and any creature that comes within the area during that time must attempt a save against the effect. A creature can’t be affected more than once by the same Wail. The banshee can’t Wail again for {@dice 1d4} rounds."
           ]
         }
       ],
@@ -7866,8 +7887,23 @@
         {
           "type": "ability",
           "name": "Mutations",
+          "activity": {
+            "number": 1,
+            "unit": "double",
+            "entry": "{@as 2}"
+          },
+          "trigger": "The barghest completes a Strike.",
           "entries": [
-            "The process of consuming corpses to evolve into a greater barghest results in odd and unpredictable physiological changes. A greater barghest has one mutation, typically chosen from the following options."
+            "The process of consuming corpses to evolve into a greater barghest results in odd and unpredictable physiological changes. A greater barghest has one mutation, typically chosen from the following options.",
+            {
+              "type": "list",
+              "items": [
+                "{@bold Fangs} (poison) The barghest grows elongated fangs that seep poison. Its jaws deal {@dice 1d6} additional poison damage and {@dice 1d6} {@condition Persistent Damage|CRB|persistent poison damage}.",
+                "{@bold Toxic Breath} (divine, evocation, poison) The barghest breathes a cloud of toxic gas that deals {@dice 8d6} poison damage to all creatures in a 30-foot cone (DC 25 basic Fortitude save). It can’t use Toxic Breath again for {@dice 1d4} rounds.",
+                "{@bold Vestigial Arm} Strike {@as F} Frequency once per round; The barghest makes a claw Strike with a shriveled third arm hanging from its torso. This attack doesn’t count for the barghest’s multiple attack penalty, nor does that penalty apply on the attack.",
+                "{@bold Wings} The barghest has malformed wings extending from its back. It gains a fly Speed of 25 feet."
+              ]
+            }
           ]
         }
       ],
@@ -8070,7 +8106,8 @@
             "visual"
           ],
           "entries": [
-            "The basilisk stares at a creature it can see within 30 feet. That creature must attempt a DC 22 Fortitude save. If it fails and has not already been {@condition slowed} by Petrifying Glance or this ability, it becomes {@condition slowed} 1. If the creature was already {@condition slowed} by this ability or Petrifying Glance, a failed save causes the creature to be {@condition petrified} permanently."
+            "The basilisk stares at a creature it can see within 30 feet. That creature must attempt a DC 22 Fortitude save. If it fails and has not already been {@condition slowed} by Petrifying Glance or this ability, it becomes {@condition slowed} 1. If the creature was already {@condition slowed} by this ability or Petrifying Glance, a failed save causes the creature to be {@condition petrified} permanently.",
+            "A creature {@condition petrified} in this manner that is coated (not just splashed) with fresh basilisk blood (taken from a basilisk that has been dead no longer than 1 hour) is instantly restored to flesh. A single basilisk contains enough blood to coat {@dice 1d3} Medium creatures in this manner."
           ]
         }
       ],
@@ -8099,7 +8136,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "slowed"
+        "slowed",
+        "petrified"
       ]
     },
     {
@@ -8775,7 +8813,7 @@
             "light"
           ],
           "entries": [
-            "The flash beetle creates a brilliant flash of light. All creatures in its luminescent aura must succeed at a DC 17 then goes out, disabling its aura for 24 hours, during which time it cannot use Light Flash."
+            "The flash beetle creates a brilliant flash of light. All creatures in its luminescent aura must succeed at a DC 17 Fortitude save or be {@condition dazzled} for 1 minute. The flash beetle’s glow then goes out, disabling its aura for 24 hours, during which time it cannot use Light Flash."
           ]
         }
       ],
@@ -8802,10 +8840,13 @@
       "treasure": null,
       "named_npc": false,
       "misc_tags": [
-        "MA"
+        "MA",
+        "CC"
       ],
       "damage_types_inflicted": [],
-      "conditions_inflicted": []
+      "conditions_inflicted": [
+        "dazzled"
+      ]
     },
     {
       "source": "BST",
@@ -9031,7 +9072,7 @@
           "requirements": "The bloodseeker is attached to a creature.",
           "entries": [
             "The bloodseeker uses its proboscis to drain blood from the creature it’s attached to.",
-            "damage dealt. A creature that has its blood {@condition drained} by a bloodseeker is {@condition drained} 1 until it receives healing (of any kind or amount)."
+            "This deals {@dice 1d4} damage, and the bloodseeker gains temporary Hit Points equal to the damage dealt. A creature that has its blood {@condition drained} by a bloodseeker is {@condition drained} 1 until it receives healing (of any kind or amount)."
           ]
         }
       ],
@@ -9305,7 +9346,7 @@
           },
           "entries": [
             "The daeodon Strides twice and then makes a tusk Strike. As long as it moved at least 20 feet, it gains a +2 circumstance bonus to its attack roll.",
-            "save or be knocked {@condition prone} by the force of the blow."
+            "A medium or smaller creature struck by this attack must succeed at a DC 19 Reflex save or be knocked {@condition prone} by the force of the blow."
           ]
         }
       ],
@@ -9349,8 +9390,8 @@
         "Humanoid"
       ],
       "traits": [
-        "Boggard",
-        "Amphibious"
+        "Amphibious",
+        "Boggard"
       ],
       "perception": {
         "default": 7
@@ -9542,8 +9583,8 @@
         "Humanoid"
       ],
       "traits": [
-        "Boggard",
-        "Amphibious"
+        "Amphibious",
+        "Boggard"
       ],
       "perception": {
         "default": 8
@@ -9738,8 +9779,8 @@
         "Humanoid"
       ],
       "traits": [
-        "Boggard",
-        "Amphibious"
+        "Amphibious",
+        "Boggard"
       ],
       "perception": {
         "default": 11
@@ -9796,7 +9837,7 @@
           "type": "ability",
           "name": "Performance",
           "entries": [
-            "+8, Religion +9."
+            "+8, Religion +9 Str +3, Dex +0, Con +2, Int +0, Wis +4, Cha +3 Items staff."
           ]
         }
       ],
@@ -9911,11 +9952,9 @@
         {
           "type": "ability",
           "name": "Blue Dragonfly Poison",
-          "traits": [
-            "the"
-          ],
           "entries": [
-            "poison inspires crippling hallucinations in most other creatures."
+            "Boggards brew a potent toxin made from blue dragonflies.",
+            "Swampseers consume this mixture to awaken their divine powers, but the poison inspires crippling hallucinations in most other creatures."
           ]
         }
       ],
@@ -10079,7 +10118,7 @@
           "type": "ability",
           "name": "Occultism",
           "entries": [
-            "+21, Stealth +17."
+            "+21, Stealth +17 Str +6, Dex +3, Con +5, Int +4, Wis +4, Cha +3."
           ]
         }
       ],
@@ -10132,7 +10171,7 @@
           "type": "ability",
           "name": "Brain Loss",
           "entries": [
-            "If a brain collector takes 30 damage from a critical hit or takes damage or Will for mental damage) or one of its brain blisters is destroyed."
+            "If a brain collector takes 30 damage from a critical hit or takes 25 mental damage, it must succeed at a DC 26 save (Fortitude for critical damage or Will for mental damage) or one of its brain blisters is destroyed."
           ]
         }
       ],
@@ -10320,11 +10359,12 @@
         "CC"
       ],
       "damage_types_inflicted": [
-        "poison"
+        "poison",
+        "mental"
       ],
       "conditions_inflicted": [
-        "stupefied",
-        "enfeebled"
+        "enfeebled",
+        "stupefied"
       ]
     },
     {
@@ -11016,8 +11056,8 @@
           "effects": [],
           "damage": "{@dice 1d10+4} piercing plus {@dice 1d6} {@condition Persistent Damage|CRB|persistent bleed}",
           "types": [
-            "piercing",
-            "persistent"
+            "persistent",
+            "piercing"
           ]
         },
         {
@@ -11046,8 +11086,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "frightened",
-        "fatigued"
+        "fatigued",
+        "frightened"
       ]
     },
     {
@@ -11113,7 +11153,7 @@
           "type": "ability",
           "name": "Thievery",
           "entries": [
-            "+7."
+            "+7 Str +0, Dex +4, Con +2, Int –1, Wis +1, Cha +3 Items baton (light mace), dagger."
           ]
         }
       ],
@@ -11172,7 +11212,7 @@
           ],
           "entries": [
             "When the dancer dies, their body combusts in a flare of white light. All creatures in a 10-foot emanation must succeed at a DC 17 Fortitude save or be {@condition dazzled} for {@dice 1d4} rounds.",
-            "gear and treasure are left in a pile where they died. As this isn’t a magical effect, the light has no effect within magical darkness."
+            "Calignis that fail this save are also {@condition frightened} 1. The dancer’s gear and treasure are left in a pile where they died. As this isn’t a magical effect, the light has no effect within magical darkness."
           ]
         }
       ],
@@ -11288,9 +11328,10 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "clumsy",
+        "dazzled",
         "flat-footed",
-        "dazzled"
+        "frightened",
+        "clumsy"
       ]
     },
     {
@@ -11588,7 +11629,7 @@
           ],
           "entries": [
             "When the stalker dies, their body combusts in a flash of white-hot flame. All creatures in a 20-foot burst take {@dice 5d6} fire damage (DC 21 basic Reflex save)",
-            "are left in a pile where they died."
+            "The stalker’s gear and treasure are unaffected by the flames and are left in a pile where they died."
           ]
         }
       ],
@@ -11635,11 +11676,8 @@
         {
           "type": "ability",
           "name": "Black Smear Poison",
-          "traits": [
-            "fungi"
-          ],
           "entries": [
-            "."
+            "Many calignis use a debilitating poison crafted from subterranean fungi."
           ]
         }
       ],
@@ -12169,8 +12207,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "prone",
-        "flat-footed"
+        "flat-footed",
+        "prone"
       ]
     },
     {
@@ -12469,7 +12507,7 @@
             "entry": "{@as 2}"
           },
           "entries": [
-            "The catfolk pouncer Strides up to double their least one enemy, they can make a melee Strike against that enemy."
+            "The catfolk pouncer Strides up to double their Speed. If the catfolk ends their movement within melee reach of at least one enemy, they can make a melee Strike against that enemy."
           ]
         }
       ],
@@ -12638,9 +12676,9 @@
           "traits": [
             "move"
           ],
-          "trigger": "The cauthooj is the target of a melee reach of the melee Strike.",
+          "trigger": "The cauthooj is the target of a melee Strike and is adjacent to another enemy that is also within the reach of the melee Strike.",
           "entries": [
-            "Trigger The cauthooj is the target of a melee reach of the melee Strike. The cauthooj nimbly hops aside, redirecting the triggering Strike against the adjacent enemy. The cauthooj Strides up to half its Speed, and this movement does not trigger reactions."
+            "Trigger The cauthooj is the target of a melee Strike and is adjacent to another enemy that is also within the reach of the melee Strike. The cauthooj nimbly hops aside, redirecting the triggering Strike against the adjacent enemy. The cauthooj Strides up to half its Speed, and this movement does not trigger reactions."
           ]
         }
       ],
@@ -12682,7 +12720,15 @@
           ],
           "entries": [
             "The cauthooj gives a strange, ululating cry that causes nearby creatures to lash out violently and without control. Each creature within a 120-foot emanation that can hear the cauthooj must attempt a DC 32 Will save to resist the effect.",
-            "the normal fashion for attacking oneself while {@condition confused}). This Strike doesn’t give the creature a flat check to recover from the confusion."
+            {
+              "type": "success_degree",
+              "entries": {
+                "Critical Success": "The target is unaffected and is temporarily immune for 1 minute.",
+                "Success": "The target is unaffected.",
+                "Failure": "The target is {@condition confused} for 1 round.",
+                "Critical Failure": "The target is {@condition confused} for 1 round and immediately attacks itself (in the normal fashion for attacking oneself while {@condition confused}). This Strike doesn’t give the creature a flat check to recover from the confusion."
+              }
+            }
           ]
         }
       ],
@@ -12992,8 +13038,8 @@
         "poison"
       ],
       "conditions_inflicted": [
-        "paralyzed",
-        "enfeebled"
+        "enfeebled",
+        "paralyzed"
       ]
     },
     {
@@ -13898,8 +13944,8 @@
         "poison"
       ],
       "conditions_inflicted": [
-        "clumsy",
-        "flat-footed"
+        "flat-footed",
+        "clumsy"
       ]
     },
     {
@@ -14061,8 +14107,8 @@
         "poison"
       ],
       "conditions_inflicted": [
-        "clumsy",
-        "flat-footed"
+        "flat-footed",
+        "clumsy"
       ]
     },
     {
@@ -14077,8 +14123,8 @@
         "Humanoid"
       ],
       "traits": [
-        "Changeling",
-        "Human"
+        "Human",
+        "Changeling"
       ],
       "perception": {
         "default": 11
@@ -14443,8 +14489,8 @@
           "effects": [],
           "damage": "{@dice 2d6+9} piercing plus {@dice 2d6} energy damage (see draconic bite)",
           "types": [
-            "piercing",
-            "energy"
+            "energy",
+            "piercing"
           ]
         },
         {
@@ -14838,7 +14884,15 @@
             "mental"
           ],
           "entries": [
-            "The cloaker lets out an infrasonic moan that has one of the effects below. A creature that succeeds at a DC 22 Will save is unaffected. Any creature that attempts this save becomes temporarily immune for 1 hour. Because the moan is infrasonic, most humanoids don’t detect the source of their plight if they aren’t already aware of the cloaker."
+            "The cloaker lets out an infrasonic moan that has one of the effects below. A creature that succeeds at a DC 22 Will save is unaffected. Any creature that attempts this save becomes temporarily immune for 1 hour. Because the moan is infrasonic, most humanoids don’t detect the source of their plight if they aren’t already aware of the cloaker.",
+            {
+              "type": "list",
+              "items": [
+                "{@bold Fear} (fear, incapacitation) Each creature within a 30-foot emanation becomes {@condition frightened} 1 (or, on a critical failure, {@condition frightened} 2 and {@condition fleeing} until the end of its next turn).",
+                "{@bold Nausea} Each creature within a 30-foot emanation falls {@condition prone} and become {@condition sickened} 2.",
+                "{@bold Stupor} The cloaker targets a single creature within 30 feet. The creature becomes {@condition clumsy} 1 and {@condition stupefied} 1 for 1 minute."
+              ]
+            }
           ]
         }
       ],
@@ -14878,11 +14932,15 @@
       "misc_tags": [
         "MA",
         "RC",
+        "AC",
         "CC"
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "restrained"
+        "clumsy",
+        "restrained",
+        "frightened",
+        "prone"
       ]
     },
     {
@@ -14968,7 +15026,8 @@
             "transmutation"
           ],
           "entries": [
-            "A peck from a cockatrice hardens the flesh of the creature struck. The target must succeed at a DC 20 Fortitude save or become {@condition slowed} 1 (or {@condition slowed} 2 on a critical failure). Further failed saves against calcification increase the {@condition slowed} condition. Once a creature’s actions are reduced to 0 by calcification, that creature becomes {@condition petrified}."
+            "A peck from a cockatrice hardens the flesh of the creature struck. The target must succeed at a DC 20 Fortitude save or become {@condition slowed} 1 (or {@condition slowed} 2 on a critical failure). Further failed saves against calcification increase the {@condition slowed} condition. Once a creature’s actions are reduced to 0 by calcification, that creature becomes {@condition petrified}.",
+            "Every 24 hours after it was {@condition petrified}, the victim can attempt a DC 20 Fortitude save to recover. On a success, it becomes flesh again, but is {@condition slowed} 1 for the next 24 hours. On a critical success, the creature recovers and isn’t {@condition slowed}. On a failure, the creature remains {@condition petrified}, but can try again in 24 hours. On a critical failure, the petrification is permanent, and the creature can’t attempt any more saves."
           ]
         }
       ],
@@ -15002,7 +15061,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "slowed"
+        "slowed",
+        "petrified"
       ]
     },
     {
@@ -15335,8 +15395,8 @@
       "alignment": "NE",
       "size": "Large",
       "creature_type": [
-        "Humanoid",
-        "Giant"
+        "Giant",
+        "Humanoid"
       ],
       "traits": [],
       "perception": {
@@ -15524,8 +15584,8 @@
       "alignment": "CE",
       "size": "Huge",
       "creature_type": [
-        "Humanoid",
-        "Giant"
+        "Giant",
+        "Humanoid"
       ],
       "traits": [
         "Mutant"
@@ -15924,7 +15984,7 @@
           ],
           "entries": [
             "Once per day, a cacodaemon can ingest the soul of a sentient creature within 30 feet that died within the last minute. When it does, the cacodaemon grows a fist-sized soul gem (Hardness 2, HP 8) in its gut and can regurgitate it at any time as an Interact action. Destroying the gem frees the soul within but does not return the deceased creature to life. The caster of a spell to return a creature to life whose soul is trapped within a soul gem must succeed at a DC 30 Religion check. On a success, the soul gem shatters and the creature is returned to life as normal for the spell.",
-            "the soul to the fiend’s home plane. The fiend gains fast healing 5 for 1 minute."
+            "By using an Interact action, a fiend can ingest a soul gem it is holding, condemning the soul to the fiend’s home plane. The fiend gains fast healing 5 for 1 minute."
           ]
         }
       ],
@@ -15945,8 +16005,8 @@
           ],
           "damage": "{@dice 1d8} piercing plus {@dice 1d4} evil and cacodaemonia",
           "types": [
-            "piercing",
-            "evil"
+            "evil",
+            "piercing"
           ]
         }
       ],
@@ -16155,8 +16215,8 @@
           ],
           "damage": "{@dice 2d10+5} piercing plus {@dice 1d6} evil and vicious wounds",
           "types": [
-            "piercing",
-            "evil"
+            "evil",
+            "piercing"
           ]
         },
         {
@@ -16174,8 +16234,8 @@
           ],
           "damage": "{@dice 2d6+5} slashing plus {@dice 1d6} evil and vicious wounds",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         }
       ],
@@ -16478,8 +16538,8 @@
           ],
           "damage": "{@dice 2d12+9} piercing plus {@dice 1d6} evil and daemonic pestilence",
           "types": [
-            "piercing",
-            "evil"
+            "evil",
+            "piercing"
           ]
         },
         {
@@ -16498,8 +16558,8 @@
           ],
           "damage": "{@dice 2d8+9} slashing plus {@dice 1d6} evil and daemonic pestilence",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         },
         {
@@ -16521,8 +16581,8 @@
           ],
           "damage": "{@dice 2d8+9} piercing plus {@dice 1d6} evil and Daemonic Pestilence",
           "types": [
-            "piercing",
-            "evil"
+            "evil",
+            "piercing"
           ]
         }
       ],
@@ -16576,8 +16636,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "drained",
-        "sickened"
+        "sickened",
+        "drained"
       ]
     },
     {
@@ -16713,7 +16773,7 @@
             "visual"
           ],
           "entries": [
-            "An astradaemon bends light, appearing shifted from its true position, though still in the same space. Creatures targeting the astradaemon must attempt a DC 11 flat check, as if the astradaemon were {@condition hidden}, even though it remains {@condition observed}. s such as the {@condition hidden} creatures also apply against a displaced astradaemon."
+            "An astradaemon bends light, appearing shifted from its true position, though still in the same space. Creatures targeting the astradaemon must attempt a DC 11 flat check, as if the astradaemon were {@condition hidden}, even though it remains {@condition observed}. s such as the Blind-Fight feat and halfling’s keen eyes that apply on the flat check against {@condition hidden} creatures also apply against a displaced astradaemon."
           ]
         }
       ],
@@ -16751,7 +16811,7 @@
             "negative"
           ],
           "entries": [
-            "When an astradaemon hits with its claw, jaws, or tail, it drains the target’s spiritual and vital essences. The target takes {@dice 2d10} negative energy damage and the astradaemon regains an equal number of Hit Points. The target must succeed at a DC the target was already {@condition drained} or {@condition doomed}, it instead increases both conditions’ value by 1, to a maximum of 4."
+            "When an astradaemon hits with its claw, jaws, or tail, it drains the target’s spiritual and vital essences. The target takes {@dice 2d10} negative energy damage and the astradaemon regains an equal number of Hit Points. The target must succeed at a DC 37 Fortitude save or become {@condition doomed} 1 and {@condition drained} 1. If the target was already {@condition drained} or {@condition doomed}, it instead increases both conditions’ value by 1, to a maximum of 4."
           ]
         }
       ],
@@ -16771,8 +16831,8 @@
           ],
           "damage": "{@dice 3d8+9} piercing plus {@dice 1d6} evil, essence drain, and Grab",
           "types": [
-            "piercing",
-            "evil"
+            "evil",
+            "piercing"
           ]
         },
         {
@@ -16790,8 +16850,8 @@
           ],
           "damage": "{@dice 3d6+9} slashing plus {@dice 1d6} evil and Essence Drain",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         },
         {
@@ -16887,7 +16947,7 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "drained",
+        "doomed",
         "grabbed"
       ]
     },
@@ -17674,8 +17734,8 @@
           ],
           "damage": "{@dice 1d6-1} slashing plus {@dice 1d4} evil and quasit venom",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         }
       ],
@@ -17738,9 +17798,9 @@
         "CC"
       ],
       "damage_types_inflicted": [
-        "piercing",
         "poison",
-        "bludgeoning"
+        "bludgeoning",
+        "piercing"
       ],
       "conditions_inflicted": [
         "slowed"
@@ -17948,7 +18008,9 @@
           ],
           "frequency": "once per day.",
           "entries": [
-            "The succubus on can give a willing humanoid a profane gift. That creature gains a +1 status bonus to attack rolls, skill checks, and saving throws. As long as the gift persists, the succubus can communicate telepathically with the target at any distance, see through the creature’s senses, and target the creature with suggestion through the telepathic link. In addition, the creature uses an outcome one degree of success worse than it rolls on saving throws against the lust demon’s suggestions."
+            "The succubus on can give a willing humanoid a profane gift. That creature gains a +1 status bonus to attack rolls, skill checks, and saving throws. As long as the gift persists, the succubus can communicate telepathically with the target at any distance, see through the creature’s senses, and target the creature with suggestion through the telepathic link. In addition, the creature uses an outcome one degree of success worse than it rolls on saving throws against the lust demon’s suggestions.",
+            "A humanoid can’t have more than one profane gift at a time, and a succubus can’t grant more than one profane gift at a time. Removing the gift requires an atone ritual. The succubus can remove the gift as a free action to give the recipient a permanent {@condition stupefied} 3 condition. A 4th-level restoration spell is required to reduce this {@condition stupefied} condition by 1.",
+            "A summoned succubus can’t grant a profane gift."
           ]
         }
       ],
@@ -17966,8 +18028,8 @@
           "effects": [],
           "damage": "{@dice 2d8+8} slashing plus {@dice 1d6} evil",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         }
       ],
@@ -18061,6 +18123,7 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
+        "stupefied",
         "grabbed"
       ]
     },
@@ -18268,8 +18331,8 @@
           "effects": [],
           "damage": "{@dice 3d8+9} piercing plus {@dice 1d6} evil",
           "types": [
-            "piercing",
-            "evil"
+            "evil",
+            "piercing"
           ]
         },
         {
@@ -18285,8 +18348,8 @@
           "effects": [],
           "damage": "{@dice 3d6+9} slashing plus {@dice 1d6} evil",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         },
         {
@@ -18302,8 +18365,8 @@
           "effects": [],
           "damage": "{@dice 2d6+8} slashing plus {@dice 1d6} evil",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         }
       ],
@@ -18562,8 +18625,8 @@
           "effects": [],
           "damage": "{@dice 3d6+13} slashing plus {@dice 1d6} evil",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         },
         {
@@ -18578,8 +18641,8 @@
           "effects": [],
           "damage": "{@dice 3d12+13} piercing plus {@dice 1d6} evil",
           "types": [
-            "piercing",
-            "evil"
+            "evil",
+            "piercing"
           ]
         }
       ],
@@ -18891,8 +18954,8 @@
           ],
           "damage": "{@dice 3d12+17} piercing plus {@dice 1d6} evil and enfeebling bite",
           "types": [
-            "piercing",
-            "evil"
+            "evil",
+            "piercing"
           ]
         },
         {
@@ -18903,8 +18966,8 @@
           "effects": [],
           "damage": "{@dice 3d8+17} slashing plus {@dice 1d6} evil",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         },
         {
@@ -18929,8 +18992,8 @@
           "effects": [],
           "damage": "{@dice 3d6+17} slashing plus {@dice 1d6} evil",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         }
       ],
@@ -19245,8 +19308,8 @@
           "effects": [],
           "damage": "{@dice 3d8+16} slashing plus {@dice 1d6} evil",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         },
         {
@@ -19583,8 +19646,8 @@
           "effects": [],
           "damage": "{@dice 4d8+17} slashing plus {@dice 1d6} evil",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         },
         {
@@ -19605,8 +19668,8 @@
           ],
           "damage": "{@dice 4d6+17} fire plus {@dice 1d6} evil, Improved Grab, and whip reposition",
           "types": [
-            "fire",
-            "evil"
+            "evil",
+            "fire"
           ]
         }
       ],
@@ -20496,7 +20559,16 @@
           "type": "ability",
           "name": "Subservience",
           "entries": [
-            "Lemures have little drive of their own, but other devils can take command of them. A non-lemure devil can issue a command to all lemures within 60 feet of it with a single action, which has the auditory and concentrate traits. The devil picks one of the following orders lemures can understand, and the lemures follow that order. The command and its effects end once the commander is out of the lemure’s sight, a new command is issued by the same or another devil, or the lemure dies."
+            "Lemures have little drive of their own, but other devils can take command of them. A non-lemure devil can issue a command to all lemures within 60 feet of it with a single action, which has the auditory and concentrate traits. The devil picks one of the following orders lemures can understand, and the lemures follow that order. The command and its effects end once the commander is out of the lemure’s sight, a new command is issued by the same or another devil, or the lemure dies.",
+            {
+              "type": "list",
+              "items": [
+                "{@bold Kill} The lemure attacks one target the commander singles out and gains a +1 circumstance bonus to attack rolls against the target.",
+                "{@bold Defend} The lemure circles the commander and attacks any creature that comes near. It gains a +1 circumstance bonus to AC and saves.",
+                "{@bold Fetch} The lemure gains a +10–foot circumstance bonus to its Speed and attempts to get an object or person the commander singles out. It attacks anyone and anything that gets in the way.",
+                "{@bold Work} The lemure performs drudge work dictated by the commander."
+              ]
+            }
           ]
         }
       ],
@@ -20512,8 +20584,8 @@
           "effects": [],
           "damage": "{@dice 1d4+2} slashing plus 1 evil",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         }
       ],
@@ -20741,8 +20813,8 @@
           ],
           "damage": "{@dice 1d4-1} piercing plus {@dice 1d4} evil and imp venom",
           "types": [
-            "piercing",
-            "evil"
+            "evil",
+            "piercing"
           ]
         }
       ],
@@ -20806,8 +20878,8 @@
         "CC"
       ],
       "damage_types_inflicted": [
-        "piercing",
-        "poison"
+        "poison",
+        "piercing"
       ],
       "conditions_inflicted": [
         "clumsy"
@@ -21040,8 +21112,8 @@
           ],
           "damage": "{@dice 1d8+7} slashing plus {@dice 2d6} evil and infernal wound",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         },
         {
@@ -21056,8 +21128,8 @@
           "effects": [],
           "damage": "{@dice 2d6+7} slashing plus {@dice 1d6} evil",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         },
         {
@@ -21278,9 +21350,9 @@
           "effects": [],
           "damage": "{@dice 1d8+8} slashing plus {@dice 1d6} evil and {@dice 1d6} fire",
           "types": [
+            "slashing",
             "fire",
-            "evil",
-            "slashing"
+            "evil"
           ]
         },
         {
@@ -21299,9 +21371,9 @@
           "effects": [],
           "damage": "{@dice 2d8+4} piercing plus {@dice 1d6} evil and {@dice 1d6} fire",
           "types": [
+            "evil",
             "fire",
-            "piercing",
-            "evil"
+            "piercing"
           ]
         },
         {
@@ -21593,8 +21665,8 @@
           ],
           "damage": "{@dice 3d6+11} slashing plus {@dice 1d6} evil, Grab, and infernal wound",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         },
         {
@@ -21906,8 +21978,8 @@
           ],
           "damage": "{@dice 2d8+12} piercing plus {@dice 1d6} cold, {@dice 1d6} evil, and slowing frost",
           "types": [
-            "piercing",
             "evil",
+            "piercing",
             "cold"
           ]
         },
@@ -21928,8 +22000,8 @@
           "damage": "{@dice 2d6+12} bludgeoning plus {@dice 2d6} cold, {@dice 1d6} evil, and slowing frost",
           "types": [
             "evil",
-            "cold",
-            "bludgeoning"
+            "bludgeoning",
+            "cold"
           ]
         },
         {
@@ -22323,8 +22395,8 @@
           ],
           "damage": "{@dice 4d10+17} piercing plus {@dice 2d6} evil and pit fiend venom",
           "types": [
-            "piercing",
-            "evil"
+            "evil",
+            "piercing"
           ]
         },
         {
@@ -22340,8 +22412,8 @@
           "effects": [],
           "damage": "{@dice 4d6+17} slashing plus {@dice 2d6} evil",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         },
         {
@@ -22374,8 +22446,8 @@
           "effects": [],
           "damage": "{@dice 4d6+17} slashing plus {@dice 2d6} evil",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         }
       ],
@@ -22693,9 +22765,9 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "confused",
         "sickened",
-        "flat-footed"
+        "flat-footed",
+        "confused"
       ]
     },
     {
@@ -22710,8 +22782,8 @@
         "Humanoid"
       ],
       "traits": [
-        "Dhampir",
-        "Human"
+        "Human",
+        "Dhampir"
       ],
       "perception": {
         "default": 4
@@ -23161,8 +23233,8 @@
           "effects": [],
           "damage": "{@dice 1d6+3} slashing plus {@dice 1d4} bleed",
           "types": [
-            "bleed",
-            "slashing"
+            "slashing",
+            "bleed"
           ]
         }
       ],
@@ -24413,7 +24485,9 @@
         {
           "type": "ability",
           "name": "Chromatic Dragons of Golarion",
-          "entries": []
+          "entries": [
+            "The chromatic dragons that dwell around the Inner Sea region are cruel and sinister monsters who inspire as much fear as reverence. These terrible beasts are no mere myth, however, but a very real threat to the people with whom they share their lands. Most dwell in the wild places of the world, and only the most brazen of them regularly meddle in mortal affairs. The dragons of Golarion believe that they are descended from two original beings, Apsu and Tiamat, and their rich mythology attempts to explain the origins of the age-old war between chromatic and metallic dragons."
+          ]
         }
       ],
       "attacks": [
@@ -24475,8 +24549,8 @@
         "Dragon"
       ],
       "traits": [
-        "Acid",
-        "Amphibious"
+        "Amphibious",
+        "Acid"
       ],
       "perception": {
         "default": 15
@@ -24726,8 +24800,8 @@
         "Dragon"
       ],
       "traits": [
-        "Acid",
-        "Amphibious"
+        "Amphibious",
+        "Acid"
       ],
       "perception": {
         "default": 22
@@ -25018,8 +25092,8 @@
         "Dragon"
       ],
       "traits": [
-        "Acid",
-        "Amphibious"
+        "Amphibious",
+        "Acid"
       ],
       "perception": {
         "default": 30
@@ -25226,8 +25300,8 @@
           "effects": [],
           "damage": "{@dice 3d10+14} piercing plus {@dice 2d6} acid and {@dice 2d6} {@condition Persistent Damage|CRB|persistent acid}",
           "types": [
-            "piercing",
             "persistent",
+            "piercing",
             "acid"
           ]
         },
@@ -26518,8 +26592,8 @@
           "effects": [],
           "damage": "{@dice 2d10+8} piercing plus {@dice 2d4} poison",
           "types": [
-            "piercing",
-            "poison"
+            "poison",
+            "piercing"
           ]
         },
         {
@@ -26825,8 +26899,8 @@
           "effects": [],
           "damage": "{@dice 3d10+12} piercing plus {@dice 3d4} poison",
           "types": [
-            "piercing",
-            "poison"
+            "poison",
+            "piercing"
           ]
         },
         {
@@ -27157,8 +27231,8 @@
           "effects": [],
           "damage": "{@dice 3d12+15} piercing plus {@dice 4d4} poison",
           "types": [
-            "piercing",
-            "poison"
+            "poison",
+            "piercing"
           ]
         },
         {
@@ -29150,7 +29224,10 @@
         {
           "type": "ability",
           "name": "Metallic Dragons on Golarion",
-          "entries": []
+          "entries": [
+            "Metallic dragons are found throughout the Inner Sea region, especially in pockets of wilderness where they can carve a hideout and then take action on political and social issues, both in their local area and on a wider scale. Their everlasting war with chromatic dragons keeps them in close proximity to their evil brethren; in regions where metallic and chromatic dragons’ territories intersect, humanoid settlements get caught in the crossfire, and villagers and city-dwellers alike rightfully fear for their own safety.",
+            "Silver dragons lair in abundance around the cold wastes west of Mendev, as a consequence of the days when they joined thousands of crusaders who marched headlong into the demon-infested Worldwound. Bronze dragons are abundant in Taldor, and many copper dragons lair in the wilds of Andoran, where they wage war alongside other freedom fighters to overthrow devils in the neighboring empire of Cheliax. Perhaps the most extreme example of a metallic dragon taking part in human affairs is on the island nation of Hermea, where Mengkare—an ancient gold wyrm—has begun a grand social experiment he calls “the Glorious Endeavor.” Ostensibly intended to create a future utopia on Golarion, this highly controversial experiment is instead regarded by many as a cruel and unusual form of eugenics."
+          ]
         }
       ],
       "attacks": [
@@ -30016,8 +30093,8 @@
           "damage": "{@dice 3d10+15} piercing plus {@dice 3d6} fire and {@dice 2d6} {@condition Persistent Damage|CRB|persistent fire}",
           "types": [
             "fire",
-            "piercing",
-            "persistent"
+            "persistent",
+            "piercing"
           ]
         },
         {
@@ -30083,8 +30160,8 @@
         "Dragon"
       ],
       "traits": [
-        "Water",
-        "Amphibious"
+        "Amphibious",
+        "Water"
       ],
       "perception": {
         "default": 18
@@ -30275,7 +30352,9 @@
             "transmutation",
             "water"
           ],
-          "entries": []
+          "entries": [
+            "For up to 30 minutes per day, the dragon, along with allied creatures and vessels within 50 feet, can move at double their normal Speed in water."
+          ]
         }
       ],
       "attacks": [
@@ -30368,8 +30447,8 @@
         "Dragon"
       ],
       "traits": [
-        "Water",
-        "Amphibious"
+        "Amphibious",
+        "Water"
       ],
       "perception": {
         "default": 23
@@ -30575,7 +30654,9 @@
             "transmutation",
             "water"
           ],
-          "entries_as_xyz": []
+          "entries_as_xyz": [
+            "For up to 30 minutes per day, the dragon, along with allied creatures and vessels within 50 feet, can move at double their normal Speed in water."
+          ]
         }
       ],
       "attacks": [
@@ -30676,8 +30757,8 @@
         "Dragon"
       ],
       "traits": [
-        "Water",
-        "Amphibious"
+        "Amphibious",
+        "Water"
       ],
       "perception": {
         "default": 32
@@ -30916,7 +30997,9 @@
             "transmutation",
             "water"
           ],
-          "entries_as_xyz": []
+          "entries_as_xyz": [
+            "For up to 30 minutes per day, the dragon, along with allied creatures and vessels within 50 feet, can move at double their normal Speed in water."
+          ]
         }
       ],
       "attacks": [
@@ -34126,8 +34209,8 @@
         "Dragon"
       ],
       "traits": [
-        "Water",
-        "Amphibious"
+        "Amphibious",
+        "Water"
       ],
       "perception": {
         "default": 9
@@ -37387,7 +37470,16 @@
             "incapacitation"
           ],
           "entries": [
-            "A creature critically hit by the electric eel’s tail must attempt a DC 17 Fortitude save."
+            "A creature critically hit by the electric eel’s tail must attempt a DC 17 Fortitude save.",
+            {
+              "type": "success_degree",
+              "entries": {
+                "Critical Success": "The creature is unaffected.",
+                "Success": "The creature is {@condition stunned} 1.",
+                "Failure": "The creature is {@condition stunned} 2.",
+                "Critical Failure": "The creature is {@condition stunned} 3."
+              }
+            }
           ]
         }
       ],
@@ -37415,8 +37507,8 @@
           ],
           "damage": "{@dice 1d4+1} bludgeoning plus {@dice 1d4} electricity and stunning shock",
           "types": [
-            "electricity",
-            "bludgeoning"
+            "bludgeoning",
+            "electricity"
           ]
         }
       ],
@@ -37427,10 +37519,13 @@
       "treasure": null,
       "named_npc": false,
       "misc_tags": [
-        "MA"
+        "MA",
+        "CC"
       ],
       "damage_types_inflicted": [],
-      "conditions_inflicted": []
+      "conditions_inflicted": [
+        "stunned"
+      ]
     },
     {
       "source": "BST",
@@ -37744,7 +37839,9 @@
         {
           "type": "ability",
           "name": "Elemental, Air",
-          "entries": []
+          "entries": [
+            "Hailing from the Plane of Air, these beings appear in a variety of sizes and shapes."
+          ]
         }
       ],
       "attacks": [
@@ -38537,7 +38634,9 @@
         {
           "type": "ability",
           "name": "Elemental, Earth",
-          "entries": []
+          "entries": [
+            "Earth elementals make excellent bodyguards for adventuresome spelunkers and are ideal protectors of important subterranean locations such as vaults and treasuries."
+          ]
         }
       ],
       "attacks": [
@@ -39395,7 +39494,9 @@
         {
           "type": "ability",
           "name": "Elemental, Fire",
-          "entries": []
+          "entries": [
+            "Fire elementals are destructive manifestations of the scorching Plane of Fire."
+          ]
         }
       ],
       "attacks": [
@@ -40305,7 +40406,9 @@
         {
           "type": "ability",
           "name": "Elemental, Mephit",
-          "entries": []
+          "entries": [
+            "Mephits—sometimes known as elemental scamps—are little bipedal critters with bat-like wings who serve stronger elementals on the Elemental Planes or neophyte spellcasters who summon them to the Material Plane. All mephits have an inkling of magical power as well as a breath weapon."
+          ]
         }
       ],
       "attacks": [
@@ -40965,7 +41068,9 @@
         {
           "type": "ability",
           "name": "Elemental, Water",
-          "entries": []
+          "entries": [
+            "Water elementals can be very destructive, but often not intentionally so; just as water can bring life to those in need on the Material Plane, its waves can pound shores and rains can flood cities. Water elementals are similarly difficult to predict."
+          ]
         }
       ],
       "attacks": [
@@ -42173,8 +42278,8 @@
       "alignment": "N",
       "size": "Large",
       "creature_type": [
-        "Ethereal",
-        "Beast"
+        "Beast",
+        "Ethereal"
       ],
       "traits": [],
       "perception": {
@@ -42378,8 +42483,8 @@
       "alignment": "CE",
       "size": "Large",
       "creature_type": [
-        "Humanoid",
-        "Giant"
+        "Giant",
+        "Humanoid"
       ],
       "traits": [],
       "perception": {
@@ -42425,7 +42530,8 @@
           "type": "ability",
           "name": "Independent Brains",
           "entries": [
-            "Each of an ettin’s heads rolls its own initiative and has its own turn. Neither head can Delay. At the start of a head’s turn, that head gets 2 actions and 1 reaction. Each brain controls one of the ettin’s arms, but both can move the legs. Any ability that would sever an ettin’s head (such as the vorpal weapon property) doesn’t cause the ettin to die if it still has its other head, but does cause it to lose the turns, actions, and reactions of the severed head. Mental effects that target a single creature affect only one of the ettin’s heads."
+            "Each of an ettin’s heads rolls its own initiative and has its own turn. Neither head can Delay. At the start of a head’s turn, that head gets 2 actions and 1 reaction. Each brain controls one of the ettin’s arms, but both can move the legs. Any ability that would sever an ettin’s head (such as the vorpal weapon property) doesn’t cause the ettin to die if it still has its other head, but does cause it to lose the turns, actions, and reactions of the severed head. Mental effects that target a single creature affect only one of the ettin’s heads.",
+            "Items flail (2)"
           ]
         }
       ],
@@ -42865,8 +42971,8 @@
           "effects": [],
           "damage": "{@dice 2d6} acid damage plus {@dice 1d6} splash acid damage",
           "types": [
-            "acid",
-            "splash"
+            "splash",
+            "acid"
           ]
         }
       ],
@@ -44677,8 +44783,8 @@
           "effects": [],
           "damage": "{@dice 2d6+11} slashing plus {@dice 2d6} fire",
           "types": [
-            "fire",
-            "slashing"
+            "slashing",
+            "fire"
           ]
         },
         {
@@ -44744,8 +44850,8 @@
         "Elemental"
       ],
       "traits": [
-        "Water",
-        "Genie"
+        "Genie",
+        "Water"
       ],
       "perception": {
         "default": 18
@@ -45053,8 +45159,8 @@
       "alignment": "CE",
       "size": "Medium",
       "creature_type": [
-        "Undead",
-        "Spirit"
+        "Spirit",
+        "Undead"
       ],
       "traits": [
         "Ghost",
@@ -45226,8 +45332,8 @@
       "alignment": "CE",
       "size": "Medium",
       "creature_type": [
-        "Undead",
-        "Spirit"
+        "Spirit",
+        "Undead"
       ],
       "traits": [
         "Ghost",
@@ -45904,8 +46010,8 @@
       "alignment": "CE",
       "size": "Large",
       "creature_type": [
-        "Humanoid",
-        "Giant"
+        "Giant",
+        "Humanoid"
       ],
       "traits": [
         "Earth"
@@ -45947,7 +46053,9 @@
         {
           "type": "ability",
           "name": "Language Common, Jotun",
-          "entries": []
+          "entries": [
+            "Skills Athletics +19, Intimidation +11 Str +6, Dex +0, Con +4, Int –2, Wis +2, Cha +0 Items greatclub, hide armor, sack with 5 rocks."
+          ]
         }
       ],
       "armor_class": {
@@ -46095,8 +46203,8 @@
       "alignment": "N",
       "size": "Large",
       "creature_type": [
-        "Humanoid",
-        "Giant"
+        "Giant",
+        "Humanoid"
       ],
       "traits": [
         "Earth"
@@ -46293,8 +46401,8 @@
       "alignment": "CE",
       "size": "Large",
       "creature_type": [
-        "Humanoid",
-        "Giant"
+        "Giant",
+        "Humanoid"
       ],
       "traits": [
         "Cold"
@@ -46531,8 +46639,8 @@
       "alignment": "LE",
       "size": "Large",
       "creature_type": [
-        "Humanoid",
-        "Giant"
+        "Giant",
+        "Humanoid"
       ],
       "traits": [
         "Fire"
@@ -46758,8 +46866,8 @@
       "alignment": "N",
       "size": "Huge",
       "creature_type": [
-        "Humanoid",
-        "Giant"
+        "Giant",
+        "Humanoid"
       ],
       "traits": [
         "Air"
@@ -46905,7 +47013,16 @@
             "primal"
           ],
           "entries": [
-            "The cloud giant Strikes a creature with its ranseur, surrounded in a roar of rushing air. On a hit, the target takes an additional {@dice 4d8} bludgeoning damage and is {@condition deafened} for 1 minute. Whether or not the Strike hits, each non-cloud giant within a 20-foot emanation, including the target of the Strike, is buffeted by roaring winds and must attempt a DC 30 Fortitude saving throw."
+            "The cloud giant Strikes a creature with its ranseur, surrounded in a roar of rushing air. On a hit, the target takes an additional {@dice 4d8} bludgeoning damage and is {@condition deafened} for 1 minute. Whether or not the Strike hits, each non-cloud giant within a 20-foot emanation, including the target of the Strike, is buffeted by roaring winds and must attempt a DC 30 Fortitude saving throw.",
+            {
+              "type": "success_degree",
+              "entries": {
+                "Critical Success": "The creature is unaffected.",
+                "Success": "The creature takes {@dice 2d8} sonic damage.",
+                "Failure": "The creature takes {@dice 4d8} sonic damage and is {@condition deafened} until the end of its next turn.",
+                "Critical Failure": "As failure, but double damage and also knocked {@condition prone}."
+              }
+            }
           ]
         }
       ],
@@ -47002,7 +47119,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "deafened"
+        "deafened",
+        "prone"
       ]
     },
     {
@@ -47014,8 +47132,8 @@
       "alignment": "CG",
       "size": "Huge",
       "creature_type": [
-        "Humanoid",
-        "Giant"
+        "Giant",
+        "Humanoid"
       ],
       "traits": [
         "Amphibious"
@@ -47174,8 +47292,8 @@
           "effects": [],
           "damage": "{@dice 2d12+16} slashing plus {@dice 1d6} electricity",
           "types": [
-            "electricity",
-            "slashing"
+            "slashing",
+            "electricity"
           ]
         },
         {
@@ -47189,8 +47307,8 @@
           "effects": [],
           "damage": "{@dice 2d8+16} bludgeoning plus {@dice 1d6} electricity",
           "types": [
-            "electricity",
-            "bludgeoning"
+            "bludgeoning",
+            "electricity"
           ]
         },
         {
@@ -47274,8 +47392,8 @@
       "alignment": "LE",
       "size": "Gargantuan",
       "creature_type": [
-        "Humanoid",
-        "Giant"
+        "Giant",
+        "Humanoid"
       ],
       "traits": [
         "Evil"
@@ -47636,9 +47754,9 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "drained",
+        "blinded",
         "dazzled",
-        "blinded"
+        "drained"
       ]
     },
     {
@@ -47818,8 +47936,8 @@
           ],
           "damage": "{@dice 2d8+5} piercing plus {@dice 1d4} {@condition Persistent Damage|CRB|persistent bleed damage} and Grab",
           "types": [
-            "piercing",
-            "persistent"
+            "persistent",
+            "piercing"
           ]
         },
         {
@@ -47851,8 +47969,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "confused",
-        "dazzled"
+        "dazzled",
+        "confused"
       ]
     },
     {
@@ -47981,7 +48099,16 @@
           },
           "trigger": "A creature critically fails a melee attack to hit the gimmerling or moves into a space within the gimmerling’s treacherous aura.",
           "entries": [
-            "The triggering creature must attempt a DC 32 Reflex save."
+            "The triggering creature must attempt a DC 32 Reflex save.",
+            {
+              "type": "success_degree",
+              "entries": {
+                "Critical Success": "The target is unaffected.",
+                "Success": "The target is {@condition flat-footed} until the start of its next turn.",
+                "Failure": "The target takes {@dice 2d10} bludgeoning damage and is {@condition flat-footed} until the start of its next turn.",
+                "Critical Failure": "As failure, and the target is knocked {@condition prone}."
+              }
+            }
           ]
         }
       ],
@@ -48067,8 +48194,8 @@
           "effects": [],
           "damage": "{@dice 3d8+7} piercing plus {@dice 2d6} poison",
           "types": [
-            "piercing",
-            "poison"
+            "poison",
+            "piercing"
           ]
         },
         {
@@ -48082,8 +48209,8 @@
           "effects": [],
           "damage": "{@dice 2d6+3} piercing plus {@dice 2d6} poison",
           "types": [
-            "piercing",
-            "poison"
+            "poison",
+            "piercing"
           ]
         }
       ],
@@ -48101,7 +48228,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "flat-footed"
+        "flat-footed",
+        "prone"
       ]
     },
     {
@@ -49189,7 +49317,15 @@
             "entry": "{@as 1}"
           },
           "entries": [
-            "The war chanter sings annoying goblin songs, distracting foes with silly and repetitive lyrics. The chanter attempts a Performance check against the Will DCs of up to two enemies within 30 feet. This has the usual traits and restrictions for a Performance check."
+            "The war chanter sings annoying goblin songs, distracting foes with silly and repetitive lyrics. The chanter attempts a Performance check against the Will DCs of up to two enemies within 30 feet. This has the usual traits and restrictions for a Performance check.",
+            {
+              "type": "success_degree",
+              "entries": {
+                "Critical Success": "The target takes a –1 status penalty to Perception checks and Will saves for 1 minute.",
+                "Success": "As critical success, but the target is affected for only 1 round.",
+                "Critical Failure": "The target is temporarily immune to Goblin Song for 1 hour."
+              }
+            }
           ]
         }
       ],
@@ -49638,8 +49774,8 @@
         "Construct"
       ],
       "traits": [
-        "Mindless",
-        "Golem"
+        "Golem",
+        "Mindless"
       ],
       "perception": {
         "default": 12
@@ -49823,9 +49959,9 @@
         "Construct"
       ],
       "traits": [
-        "Mindless",
         "Alchemical",
-        "Golem"
+        "Golem",
+        "Mindless"
       ],
       "perception": {
         "default": 15
@@ -50033,8 +50169,8 @@
         "Construct"
       ],
       "traits": [
-        "Mindless",
-        "Golem"
+        "Golem",
+        "Mindless"
       ],
       "perception": {
         "default": 16
@@ -50237,8 +50373,8 @@
         "Construct"
       ],
       "traits": [
-        "Mindless",
-        "Golem"
+        "Golem",
+        "Mindless"
       ],
       "perception": {
         "default": 17
@@ -50419,8 +50555,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "paralyzed",
-        "slowed"
+        "slowed",
+        "paralyzed"
       ]
     },
     {
@@ -50435,8 +50571,8 @@
         "Construct"
       ],
       "traits": [
-        "Mindless",
-        "Golem"
+        "Golem",
+        "Mindless"
       ],
       "perception": {
         "default": 21
@@ -50662,8 +50798,8 @@
         "Construct"
       ],
       "traits": [
-        "Mindless",
-        "Golem"
+        "Golem",
+        "Mindless"
       ],
       "perception": {
         "default": 26
@@ -50949,7 +51085,8 @@
           "type": "ability",
           "name": "Vermin Empathy",
           "entries": [
-            "Mitflits can use Diplomacy to Make an Impression on and Request things of arthropods (insects, spiders, scorpions, crabs, and similar invertebrate animals). Most arthropods have a starting attitude of {@condition indifferent} to mitflits."
+            "Mitflits can use Diplomacy to Make an Impression on and Request things of arthropods (insects, spiders, scorpions, crabs, and similar invertebrate animals). Most arthropods have a starting attitude of {@condition indifferent} to mitflits.",
+            "Items dart (10), shortsword."
           ]
         }
       ],
@@ -52275,8 +52412,8 @@
           "effects": [],
           "damage": "{@dice 3d10+14} slashing plus {@dice 1d12} negative",
           "types": [
-            "negative",
-            "slashing"
+            "slashing",
+            "negative"
           ]
         }
       ],
@@ -52890,7 +53027,16 @@
             "occult"
           ],
           "entries": [
-            "The hag gazes upon a creature, afflicting it with intense distress and a gnawing sense of impending doom, with a result depending on its Will save (DC 20). The target does not need to be able to see the sea hag."
+            "The hag gazes upon a creature, afflicting it with intense distress and a gnawing sense of impending doom, with a result depending on its Will save (DC 20). The target does not need to be able to see the sea hag.",
+            {
+              "type": "success_degree",
+              "entries": {
+                "Critical Success": "No effect.",
+                "Success": "{@condition Frightened} 1.",
+                "Failure": "{@condition Frightened} 1 and {@condition slowed} 1 for 1 round. If the target was {@condition dying}, it remains {@condition unconscious} for 1 day. At the end of the day, it must attempt a Fortitude save against the same DC; if it fails, it dies.",
+                "Critical Failure": "{@condition Frightened} 2 and {@condition slowed} 1 for 1 minute. If the target was {@condition dying}, it remains {@condition unconscious} for 1 day. At the end of the day, it must attempt a Fortitude save against the same DC; if it fails, it dies."
+              }
+            }
           ]
         }
       ],
@@ -52917,10 +53063,13 @@
       "treasure": null,
       "named_npc": false,
       "misc_tags": [
-        "MA"
+        "MA",
+        "CC"
       ],
       "damage_types_inflicted": [],
-      "conditions_inflicted": []
+      "conditions_inflicted": [
+        "slowed"
+      ]
     },
     {
       "source": "BST",
@@ -53625,8 +53774,8 @@
           ],
           "damage": "{@dice 2d8+8} piercing plus {@dice 1d6} evil and Abyssal plague",
           "types": [
-            "piercing",
-            "evil"
+            "evil",
+            "piercing"
           ]
         },
         {
@@ -53640,8 +53789,8 @@
           "effects": [],
           "damage": "{@dice 2d10+8} slashing plus {@dice 1d6} evil",
           "types": [
-            "evil",
-            "slashing"
+            "slashing",
+            "evil"
           ]
         }
       ],
@@ -53866,7 +54015,15 @@
             "primal"
           ],
           "entries": [
-            "The harpy cries out an eerie, compelling melody. Each non-harpy creature within a 300-foot aura must attempt a DC 21 Will save to avoid becoming captivated by the harpy’s song. The effect lasts for 1 round, but if the harpy uses this ability again on subsequent rounds, it extends the duration by 1 round for all affected creatures. Once a creature succeeds at any save against Captivating Song, that creature is temporarily immune to Captivating Songs for 24 hours."
+            "The harpy cries out an eerie, compelling melody. Each non-harpy creature within a 300-foot aura must attempt a DC 21 Will save to avoid becoming captivated by the harpy’s song. The effect lasts for 1 round, but if the harpy uses this ability again on subsequent rounds, it extends the duration by 1 round for all affected creatures. Once a creature succeeds at any save against Captivating Song, that creature is temporarily immune to Captivating Songs for 24 hours.",
+            {
+              "type": "success_degree",
+              "entries": {
+                "Success": "The creature is unaffected.",
+                "Failure": "The creature is {@condition fascinated}, and it must spend each of its actions to move closer to the harpy as expediently as possible, while avoiding obvious dangers. If a captivated creature is adjacent to the harpy, it stays still and doesn’t act. If attacked by the harpy, the creature is freed from captivation at the end of the harpy’s turn.",
+                "Critical Failure": "As failure, but if attacked by the harpy, the creature can attempt a new save at the start of its next turn, rather than being freed at the end of the harpy’s turn."
+              }
+            }
           ]
         }
       ],
@@ -53919,10 +54076,13 @@
       "misc_tags": [
         "MA",
         "RA",
-        "TA"
+        "TA",
+        "CC"
       ],
       "damage_types_inflicted": [],
-      "conditions_inflicted": []
+      "conditions_inflicted": [
+        "fascinated"
+      ]
     },
     {
       "source": "BST",
@@ -53933,8 +54093,8 @@
       "alignment": "LE",
       "size": "Medium",
       "creature_type": [
-        "Beast",
-        "Fiend"
+        "Fiend",
+        "Beast"
       ],
       "traits": [
         "Fire"
@@ -54051,9 +54211,9 @@
           "effects": [],
           "damage": "{@dice 1d8+4} piercing plus {@dice 1d6} evil and {@dice 1d6} fire",
           "types": [
+            "evil",
             "fire",
-            "piercing",
-            "evil"
+            "piercing"
           ]
         }
       ],
@@ -54078,8 +54238,8 @@
       "alignment": "LE",
       "size": "Large",
       "creature_type": [
-        "Beast",
-        "Fiend"
+        "Fiend",
+        "Beast"
       ],
       "traits": [
         "Fire"
@@ -54215,9 +54375,9 @@
           "effects": [],
           "damage": "{@dice 2d8+6} piercing plus {@dice 1d6} evil and {@dice 2d6} fire",
           "types": [
+            "evil",
             "fire",
-            "piercing",
-            "evil"
+            "piercing"
           ]
         }
       ],
@@ -54869,7 +55029,9 @@
         {
           "type": "ability",
           "name": "Horse",
-          "entries": []
+          "entries": [
+            "Horses serve as mounts and beasts of burden in many societies. They are loyal and typically gentle creatures, and they are invaluable to those looking to travel long distances. Smaller folk, like gnomes and halflings, often utilize ponies as mounts, while horses are the favored steeds for humans and other Medium humanoids. Most horses that the average humanoid encounters are domesticated, though large herds of these powerful animals can be found in the wild."
+          ]
         }
       ],
       "attacks": [
@@ -58353,7 +58515,9 @@
         {
           "type": "ability",
           "name": "Bestiary",
-          "entries": []
+          "entries": [
+            "222."
+          ]
         }
       ],
       "attacks": [
@@ -58740,7 +58904,8 @@
           ],
           "frequency": "once per day per gem;",
           "entries": [
-            "Ten blight quartz gemstones on the demilich’s skull can trap the souls of the living. The Activated gem casts bind soul. This bind soul can target and affect a {@condition dying} creature instead of a corpse. The {@condition dying} creature can attempt a DC 38 Fortitude save; if it succeeds, it doesn’t die and its soul is not trapped but it’s enervated 2 (or is unaffected entirely on a critical success). When the soul of a creature gets trapped, the creature’s body swiftly turns to dust."
+            "Ten blight quartz gemstones on the demilich’s skull can trap the souls of the living. The Activated gem casts bind soul. This bind soul can target and affect a {@condition dying} creature instead of a corpse. The {@condition dying} creature can attempt a DC 38 Fortitude save; if it succeeds, it doesn’t die and its soul is not trapped but it’s enervated 2 (or is unaffected entirely on a critical success). When the soul of a creature gets trapped, the creature’s body swiftly turns to dust.",
+            "The gemstones work like the black sapphires used in bind soul, except that they can hold creatures of up to 17th level and have a value of 200 gp apiece. The demilich can Devour a Soul it has trapped."
           ]
         }
       ],
@@ -58757,8 +58922,8 @@
           "effects": [],
           "damage": "{@dice 1d4-3} piercing plus {@dice 6d6} negative",
           "types": [
-            "piercing",
-            "negative"
+            "negative",
+            "piercing"
           ]
         }
       ],
@@ -59443,8 +59608,8 @@
         "Dragon"
       ],
       "traits": [
-        "Acid",
-        "Amphibious"
+        "Amphibious",
+        "Acid"
       ],
       "perception": {
         "default": 35
@@ -59751,8 +59916,8 @@
         "acid"
       ],
       "conditions_inflicted": [
-        "drained",
-        "sickened"
+        "sickened",
+        "drained"
       ]
     },
     {
@@ -60070,8 +60235,8 @@
       ],
       "conditions_inflicted": [
         "slowed",
-        "drained",
-        "blinded"
+        "blinded",
+        "drained"
       ]
     },
     {
@@ -60933,12 +61098,12 @@
         "UW"
       ],
       "damage_types_inflicted": [
-        "piercing",
-        "poison"
+        "poison",
+        "piercing"
       ],
       "conditions_inflicted": [
-        "clumsy",
-        "flat-footed"
+        "flat-footed",
+        "clumsy"
       ]
     },
     {
@@ -61246,7 +61411,9 @@
         {
           "type": "ability",
           "name": "Mantis, Giant",
-          "entries": []
+          "entries": [
+            "These monstrously oversized insects are silent predators with lightning-quick forelegs and a bone-breaking bite."
+          ]
         }
       ],
       "attacks": [
@@ -62803,8 +62970,8 @@
         "CC"
       ],
       "damage_types_inflicted": [
-        "piercing",
-        "bludgeoning"
+        "bludgeoning",
+        "piercing"
       ],
       "conditions_inflicted": [
         "clumsy"
@@ -63268,8 +63435,8 @@
         "negative"
       ],
       "conditions_inflicted": [
-        "stupefied",
-        "frightened"
+        "frightened",
+        "stupefied"
       ]
     },
     {
@@ -63666,12 +63833,39 @@
         {
           "type": "ability",
           "name": "Dark Naga Venom",
-          "traits": [
-            "incapacitation",
-            "poison"
-          ],
           "entries": [
-            "Saving Throw."
+            {
+              "type": "affliction",
+              "entries": {
+                "name": "Dark Naga Venom",
+                "traits": [
+                  "incapacitation",
+                  "poison"
+                ],
+                "note": "",
+                "DC": "25",
+                "saving throw": "Fortitude",
+                "onset": null,
+                "max duration": "5 minutes",
+                "stages": [
+                  {
+                    "stage": 1,
+                    "entry": "slowed 1",
+                    "duration": "1 round"
+                  },
+                  {
+                    "stage": 2,
+                    "entry": "slowed 2",
+                    "duration": "1 round"
+                  },
+                  {
+                    "stage": 3,
+                    "entry": "unconscious with no Perception check to wake up",
+                    "duration": "1d4+1 minutes"
+                  }
+                ]
+              }
+            }
           ]
         }
       ],
@@ -63800,10 +63994,14 @@
       "treasure": null,
       "named_npc": false,
       "misc_tags": [
-        "MA"
+        "MA",
+        "CC"
       ],
       "damage_types_inflicted": [],
-      "conditions_inflicted": []
+      "conditions_inflicted": [
+        "slowed",
+        "unconscious"
+      ]
     },
     {
       "source": "BST",
@@ -64110,8 +64308,8 @@
       "alignment": "NE",
       "size": "Large",
       "creature_type": [
-        "Beast",
-        "Fiend"
+        "Fiend",
+        "Beast"
       ],
       "traits": [],
       "perception": {
@@ -64231,8 +64429,8 @@
           "effects": [],
           "damage": "{@dice 2d10+6} piercing plus {@dice 1d6} evil",
           "types": [
-            "piercing",
-            "evil"
+            "evil",
+            "piercing"
           ]
         },
         {
@@ -64248,8 +64446,8 @@
           "effects": [],
           "damage": "{@dice 1d8+6} bludgeoning plus {@dice 1d6} evil and {@dice 1d8} fire",
           "types": [
-            "fire",
             "evil",
+            "fire",
             "bludgeoning"
           ]
         }
@@ -64297,8 +64495,8 @@
       "alignment": "NE",
       "size": "Huge",
       "creature_type": [
-        "Beast",
-        "Fiend"
+        "Fiend",
+        "Beast"
       ],
       "traits": [],
       "perception": {
@@ -64437,8 +64635,8 @@
           "effects": [],
           "damage": "{@dice 2d10+11} piercing plus {@dice 1d6} evil",
           "types": [
-            "piercing",
-            "evil"
+            "evil",
+            "piercing"
           ]
         },
         {
@@ -64454,8 +64652,8 @@
           "effects": [],
           "damage": "{@dice 1d8+11} bludgeoning plus {@dice 1d6} evil and {@dice 2d8} fire",
           "types": [
-            "fire",
             "evil",
+            "fire",
             "bludgeoning"
           ]
         }
@@ -64743,9 +64941,9 @@
         "Fey"
       ],
       "traits": [
+        "Amphibious",
         "Nymph",
-        "Water",
-        "Amphibious"
+        "Water"
       ],
       "perception": {
         "default": 6
@@ -64954,8 +65152,8 @@
       "alignment": "CG",
       "size": "Medium",
       "creature_type": [
-        "Plant",
-        "Fey"
+        "Fey",
+        "Plant"
       ],
       "traits": [
         "Nymph"
@@ -65087,7 +65285,9 @@
             "transmutation"
           ],
           "entries": [
-            "The dryad touches a tree of enough volume to contain her and merges into it for as long as she wishes. She can Cast a Spell while inside as long as the spell doesn’t require a line of effect outside the tree. She can hear, but not see, what’s going on outside the tree. She can Dismiss this effect."
+            "The dryad touches a tree of enough volume to contain her and merges into it for as long as she wishes. She can Cast a Spell while inside as long as the spell doesn’t require a line of effect outside the tree. She can hear, but not see, what’s going on outside the tree. She can Dismiss this effect.",
+            "Significant physical damage dealt to the tree expels the dryad from the tree and deals {@dice 3d6} damage to her. Passwall expels the dryad without dealing damage.",
+            "If a dryad uses this ability on her bonded tree, she instead enters an extradimensional living space within the tree; Tree Meld gains the extradimensional trait. A dryad can bring up to two other creatures with her when entering her home within her bonded tree. The dryad can still be expelled from this space as above."
           ]
         }
       ],
@@ -65199,9 +65399,9 @@
         "Fey"
       ],
       "traits": [
+        "Amphibious",
         "Nymph",
-        "Water",
-        "Amphibious"
+        "Water"
       ],
       "perception": {
         "default": 18
@@ -65560,8 +65760,8 @@
       "alignment": "CG",
       "size": "Medium",
       "creature_type": [
-        "Plant",
-        "Fey"
+        "Fey",
+        "Plant"
       ],
       "traits": [
         "Nymph"
@@ -66253,8 +66453,8 @@
         "poison"
       ],
       "conditions_inflicted": [
-        "clumsy",
-        "flat-footed"
+        "flat-footed",
+        "clumsy"
       ]
     },
     {
@@ -66463,8 +66663,8 @@
       "alignment": "CE",
       "size": "Large",
       "creature_type": [
-        "Humanoid",
-        "Giant"
+        "Giant",
+        "Humanoid"
       ],
       "traits": [],
       "perception": {
@@ -66592,8 +66792,8 @@
       "alignment": "CE",
       "size": "Large",
       "creature_type": [
-        "Humanoid",
-        "Giant"
+        "Giant",
+        "Humanoid"
       ],
       "traits": [],
       "perception": {
@@ -66759,8 +66959,8 @@
       "alignment": "CE",
       "size": "Large",
       "creature_type": [
-        "Humanoid",
-        "Giant"
+        "Giant",
+        "Humanoid"
       ],
       "traits": [],
       "perception": {
@@ -68320,8 +68520,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "unconscious",
         "sickened",
+        "unconscious",
         "grabbed"
       ]
     },
@@ -68513,8 +68713,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "fleeing",
         "sickened",
+        "fleeing",
         "frightened",
         "grabbed"
       ]
@@ -68856,8 +69056,8 @@
           "damage": "{@dice 1d12+9} piercing plus {@dice 3d8} fire and {@dice 2d10} {@condition Persistent Damage|CRB|persistent fire}",
           "types": [
             "fire",
-            "piercing",
-            "persistent"
+            "persistent",
+            "piercing"
           ]
         },
         {
@@ -68875,8 +69075,8 @@
           "damage": "{@dice 1d6+6} piercing plus {@dice 3d8} fire and {@dice 2d10} {@condition Persistent Damage|CRB|persistent fire}",
           "types": [
             "fire",
-            "piercing",
-            "persistent"
+            "persistent",
+            "piercing"
           ]
         },
         {
@@ -69112,7 +69312,9 @@
         {
           "type": "ability",
           "name": "Duskwalker",
-          "entries": []
+          "entries": [
+            "Duskwalkers are infused with the same energies as psychopomps. These ashen scions are reborn on the Material Plane to serve as guardians of the cycle of life and death."
+          ]
         }
       ],
       "attacks": [
@@ -69255,8 +69457,8 @@
         "Humanoid"
       ],
       "traits": [
-        "Human",
-        "Duskwalker"
+        "Duskwalker",
+        "Human"
       ],
       "perception": {
         "default": 10
@@ -69689,8 +69891,8 @@
       "alignment": "LE",
       "size": "Medium",
       "creature_type": [
-        "Undead",
-        "Spirit"
+        "Spirit",
+        "Undead"
       ],
       "traits": [
         "Incorporeal"
@@ -69860,7 +70062,14 @@
             "occult"
           ],
           "entries": [
-            "The poltergeist telekinetically throws numerous small objects, such as dozens of pieces of silverware or books, either spreading them out among multiple foes or directing them at one target."
+            "The poltergeist telekinetically throws numerous small objects, such as dozens of pieces of silverware or books, either spreading them out among multiple foes or directing them at one target.",
+            {
+              "type": "list",
+              "items": [
+                "When this effect is spread out among multiple foes, the poltergeist makes a telekinetic object Strike at a –2 penalty against each creature within 30 feet. These count as one attack for the poltergeist’s multiple attack penalty, and the penalty doesn’t increase until after all the attacks.",
+                "When this effect has only one target, the poltergeist makes a telekinetic object Strike against the target, and the damage increases to {@dice 3d12}. It deals {@dice 1d12} damage on a failure, and no damage on a critical failure."
+              ]
+            }
           ]
         }
       ],
@@ -70219,7 +70428,8 @@
             "transmutation"
           ],
           "entries": [
-            "A voidworm’s vital organs shift and change shape and position constantly. Immediately after the voidworm takes acid, electricity, or sonic damage, it gains the listed amount of resistance to that damage type. This lasts for 1 hour or until the next time the protean takes damage of one of the other types (in which case its resistance changes to match that type), whichever comes first."
+            "A voidworm’s vital organs shift and change shape and position constantly. Immediately after the voidworm takes acid, electricity, or sonic damage, it gains the listed amount of resistance to that damage type. This lasts for 1 hour or until the next time the protean takes damage of one of the other types (in which case its resistance changes to match that type), whichever comes first.",
+            "The voidworm is immune to polymorph effects unless it is a willing target. If {@condition blinded} or {@condition deafened}, the voidworm automatically recovers at the end of its next turn as new sensory organs grow to replace the compromised ones."
           ]
         }
       ],
@@ -70295,8 +70505,8 @@
           ],
           "damage": "{@dice 1d4-1} slashing plus {@dice 1d4} chaotic and confounding lash",
           "types": [
-            "chaotic",
-            "slashing"
+            "slashing",
+            "chaotic"
           ]
         }
       ],
@@ -70374,6 +70584,7 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
+        "blinded",
         "stupefied"
       ]
     },
@@ -70505,7 +70716,8 @@
             "transmutation"
           ],
           "entries": [
-            "A voidworm’s vital organs shift and change shape and position constantly. Immediately after the voidworm takes acid, electricity, or sonic damage, it gains the listed amount of resistance to that damage type. This lasts for 1 hour or until the next time the protean takes damage of one of the other types (in which case its resistance changes to match that type), whichever comes first."
+            "A voidworm’s vital organs shift and change shape and position constantly. Immediately after the voidworm takes acid, electricity, or sonic damage, it gains the listed amount of resistance to that damage type. This lasts for 1 hour or until the next time the protean takes damage of one of the other types (in which case its resistance changes to match that type), whichever comes first.",
+            "The voidworm is immune to polymorph effects unless it is a willing target. If {@condition blinded} or {@condition deafened}, the voidworm automatically recovers at the end of its next turn as new sensory organs grow to replace the compromised ones."
           ]
         }
       ],
@@ -70851,7 +71063,8 @@
             "transmutation"
           ],
           "entries": [
-            "A voidworm’s vital organs shift and change shape and position constantly. Immediately after the voidworm takes acid, electricity, or sonic damage, it gains the listed amount of resistance to that damage type. This lasts for 1 hour or until the next time the protean takes damage of one of the other types (in which case its resistance changes to match that type), whichever comes first."
+            "A voidworm’s vital organs shift and change shape and position constantly. Immediately after the voidworm takes acid, electricity, or sonic damage, it gains the listed amount of resistance to that damage type. This lasts for 1 hour or until the next time the protean takes damage of one of the other types (in which case its resistance changes to match that type), whichever comes first.",
+            "The voidworm is immune to polymorph effects unless it is a willing target. If {@condition blinded} or {@condition deafened}, the voidworm automatically recovers at the end of its next turn as new sensory organs grow to replace the compromised ones."
           ]
         },
         {
@@ -70982,8 +71195,8 @@
           ],
           "damage": "{@dice 2d10+15} slashing plus {@dice 1d6} chaotic and warpwave strike",
           "types": [
-            "chaotic",
-            "slashing"
+            "slashing",
+            "chaotic"
           ]
         },
         {
@@ -71994,8 +72207,8 @@
           "effects": [],
           "damage": "{@dice 2d10+10} piercing plus {@dice 1d8} {@condition Persistent Damage|CRB|persistent bleed}",
           "types": [
-            "piercing",
-            "persistent"
+            "persistent",
+            "piercing"
           ]
         },
         {
@@ -72321,7 +72534,7 @@
           "type": "ability",
           "name": "Thievery",
           "entries": [
-            "+13."
+            "+13 Str +1, Dex +4, Con +3, Int +1, Wis +1, Cha +3."
           ]
         }
       ],
@@ -72410,8 +72623,8 @@
           "effects": [],
           "damage": "{@dice 2d6+4} piercing plus {@dice 1d6} {@condition Persistent Damage|CRB|persistent bleed}",
           "types": [
-            "piercing",
-            "persistent"
+            "persistent",
+            "piercing"
           ]
         },
         {
@@ -72569,7 +72782,7 @@
           "type": "ability",
           "name": "Stealth",
           "entries": [
-            "+20."
+            "+20 Str +4, Dex +6, Con +4, Int +2, Wis +1, Cha +5 Items +1 striking kukri."
           ]
         }
       ],
@@ -72652,7 +72865,7 @@
             "occult"
           ],
           "entries": [
-            "The raja rakshasa’s eyes flash green as it projects a telepathic wave in a 30-foot emanation. All creatures in the area are assailed by a vision of evil decadence from one of the rakshasa’s past lives. Each non-evil creature in the area must succeed at a DC 29 Will save or become {@condition sickened} 1 (and {@condition stunned} 1 on a critical failure). The visions last {@dice 1d4} rounds, and while they do, the raja rakshasa and all evil creatures in the area gain a use this ability again only once the previous visions end."
+            "The raja rakshasa’s eyes flash green as it projects a telepathic wave in a 30-foot emanation. All creatures in the area are assailed by a vision of evil decadence from one of the rakshasa’s past lives. Each non-evil creature in the area must succeed at a DC 29 Will save or become {@condition sickened} 1 (and {@condition stunned} 1 on a critical failure). The visions last {@dice 1d4} rounds, and while they do, the raja rakshasa and all evil creatures in the area gain a +1 status bonus to all checks. The raja rakshasa can use this ability again only once the previous visions end."
           ]
         }
       ],
@@ -72919,7 +73132,7 @@
             "disease"
           ],
           "entries": [
-            "The {@condition sickened} and {@condition unconscious} conditions from filth fever don't improve on their own until the disease is cured. Saving Throw DC 14 Fortitude; {@condition sickened} 1 and {@condition slowed} 1 (1 day), Stage 4 {@condition unconscious} (1 day), Stage 5 dead."
+            "The {@condition sickened} and {@condition unconscious} conditions from filth fever don't improve on their own until the disease is cured. Saving Throw DC 14 Fortitude; Stage 1 carrier with no ill effect ({@dice 1d4} hours), Stage 2 {@condition sickened} 1 (1 day), Stage 3 {@condition sickened} 1 and {@condition slowed} 1 (1 day), Stage 4 {@condition unconscious} (1 day), Stage 5 dead."
           ]
         }
       ],
@@ -73082,7 +73295,7 @@
             "disease"
           ],
           "entries": [
-            "The {@condition sickened} and {@condition unconscious} conditions from filth fever don't improve on their own until the disease is cured. Saving Throw DC 14 Fortitude; {@condition sickened} 1 and {@condition slowed} 1 (1 day), Stage 4 {@condition unconscious} (1 day), Stage 5 dead."
+            "The {@condition sickened} and {@condition unconscious} conditions from filth fever don't improve on their own until the disease is cured. Saving Throw DC 14 Fortitude; Stage 1 carrier with no ill effect ({@dice 1d4} hours), Stage 2 {@condition sickened} 1 (1 day), Stage 3 {@condition sickened} 1 and {@condition slowed} 1 (1 day), Stage 4 {@condition unconscious} (1 day), Stage 5 dead."
           ]
         }
       ],
@@ -73173,7 +73386,7 @@
           "type": "ability",
           "name": "Infused Items",
           "entries": [
-            "A ratfolk grenadier carries 2 infused moderate acid flasks, vials. These items last for 24 hours, or until the next time they make their daily preparations."
+            "A ratfolk grenadier carries 2 infused moderate acid flasks, 2 infused moderate alchemist’s fires, and 2 infused moderate frost vials. These items last for 24 hours, or until the next time they make their daily preparations."
           ]
         }
       ],
@@ -73389,7 +73602,7 @@
           ],
           "entries": [
             "A redcap’s woolen hat is dyed with the blood of its victims.",
-            "penalty to its damage rolls. It can create a new cap in 10 minutes, but that cap doesn’t grant its powers until the redcap has turned it red with Blood Soak. A cap has no benefit for creatures other than the redcap who made it."
+            "If the redcap loses its cap, it no longer benefits from fast healing and takes a –4 status penalty to its damage rolls. It can create a new cap in 10 minutes, but that cap doesn’t grant its powers until the redcap has turned it red with Blood Soak. A cap has no benefit for creatures other than the redcap who made it."
           ]
         }
       ],
@@ -73442,7 +73655,14 @@
           ],
           "entries": [
             "If a redcap sees a creature brandish a religious symbol of a good deity (which requires an interact action by that creature) or use one to cast a divine spell, the redcap must attempt a DC 19 Will save. It then becomes temporarily immune to all brandished religious symbols for 10 minutes.",
-            "is {@condition frightened} 4."
+            {
+              "type": "success_degree",
+              "entries": {
+                "Critical Success": "The redcap is unaffected.",
+                "Success": "The redcap is {@condition frightened} 2.",
+                "Failure": "The redcap gains the {@condition fleeing} condition for 1 round and is {@condition frightened} 4."
+              }
+            }
           ]
         }
       ],
@@ -73489,7 +73709,7 @@
             "entry": "{@as 1}"
           },
           "entries": [
-            "The redcap Strides up to half its Speed and makes a boot Strike at any point during that movement. If the boot bleed damage."
+            "The redcap Strides up to half its Speed and makes a boot Strike at any point during that movement. If the boot Strike hits a {@condition prone} creature, it deals an extra {@dice 2d6} {@condition Persistent Damage|CRB|persistent bleed damage}."
           ]
         }
       ],
@@ -73536,7 +73756,9 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "frightened"
+        "fleeing",
+        "frightened",
+        "prone"
       ]
     },
     {
@@ -73665,7 +73887,7 @@
           "type": "ability",
           "name": "Maximum Duration",
           "entries": [
-            "4 rounds; Stage 1 {@dice 1d6} poison damage and {@condition enfeebled} 1."
+            "4 rounds; Stage 1 {@dice 1d6} poison damage and {@condition enfeebled} 1 (1 round), Stage 2 {@dice 1d6} poison damage and {@condition enfeebled} 2 (1 round)."
           ]
         }
       ],
@@ -73699,8 +73921,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "dying",
-        "enfeebled"
+        "enfeebled",
+        "dying"
       ]
     },
     {
@@ -73866,7 +74088,7 @@
           },
           "entries": [
             "The remorhaz Strikes once with its jaws and once with its tail, each targeting a different creature.",
-            "remorhaz’s multiple attack penalty, but the multiple attack penalty doesn’t increase until after all the attacks have been made."
+            "Each attack counts toward the remorhaz’s multiple attack penalty, but the multiple attack penalty doesn’t increase until after all the attacks have been made."
           ]
         }
       ],
@@ -73996,7 +74218,7 @@
           },
           "trigger": "A creature moves from beyond the reach of the roc’s wing to within the reach of the roc’s wing.",
           "entries": [
-            "Trigger A creature moves from beyond the reach of the roc’s wing to within the reach of the roc’s wing. The roc makes a wing triggering move action."
+            "Trigger A creature moves from beyond the reach of the roc’s wing to within the reach of the roc’s wing. The roc makes a wing Strike against the triggering creature. If the roc Pushes the creature, it disrupts the triggering move action."
           ]
         }
       ],
@@ -74154,7 +74376,7 @@
           "type": "ability",
           "name": "Religion",
           "entries": [
-            "+19, Stealth +17 (+25 in stony or icy areas)"
+            "+19, Stealth +17 (+25 in stony or icy areas) Str +6, Dex +1, Con +6, Int +1, Wis +3, Cha +1."
           ]
         }
       ],
@@ -74864,8 +75086,18 @@
                 "DC": "18",
                 "saving throw": "Fortitude",
                 "onset": null,
-                "max duration": "damage and enfeebled 1 (1 round)",
+                "max duration": "6 rounds",
                 "stages": [
+                  {
+                    "stage": 1,
+                    "entry": "1d10 poison damage and enfeebled 1",
+                    "duration": "1 round"
+                  },
+                  {
+                    "stage": 2,
+                    "entry": "2d10 poison damage and enfeebled 1",
+                    "duration": "1 round"
+                  },
                   {
                     "stage": 3,
                     "entry": "2d10 poison damage and enfeebled 2",
@@ -75057,7 +75289,7 @@
             "entry": "{@as 1}"
           },
           "entries": [
-            "Each enemy in the swarm’s space takes {@dice 2d8} piercing damage scorpion venom."
+            "Each enemy in the swarm’s space takes {@dice 2d8} piercing damage (DC 21 basic Reflex save) and is exposed to scorpion venom."
           ]
         }
       ],
@@ -75090,9 +75322,9 @@
         "Humanoid"
       ],
       "traits": [
+        "Amphibious",
         "Sea",
-        "Devil",
-        "Amphibious"
+        "Devil"
       ],
       "perception": {
         "default": 9
@@ -75147,7 +75379,7 @@
             "telepathy"
           ],
           "entries": [
-            "telepathically with sharks within range. It can communicate only simple concepts like."
+            "The sea devil can communicate telepathically with sharks within range. It can communicate only simple concepts like “come,” “guard,” or “attack.”"
           ]
         }
       ],
@@ -75268,8 +75500,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "flat-footed",
-        "fatigued"
+        "fatigued",
+        "flat-footed"
       ]
     },
     {
@@ -75284,9 +75516,9 @@
         "Humanoid"
       ],
       "traits": [
+        "Amphibious",
         "Sea",
-        "Devil",
-        "Amphibious"
+        "Devil"
       ],
       "perception": {
         "default": 7
@@ -75340,7 +75572,7 @@
             "telepathy"
           ],
           "entries": [
-            "telepathically with sharks within range. It can communicate only simple concepts like."
+            "The sea devil can communicate telepathically with sharks within range. It can communicate only simple concepts like “come,” “guard,” or “attack.”"
           ]
         }
       ],
@@ -75486,10 +75718,10 @@
         "Humanoid"
       ],
       "traits": [
-        "Sea",
-        "Devil",
         "Amphibious",
-        "Mutant"
+        "Sea",
+        "Mutant",
+        "Devil"
       ],
       "perception": {
         "default": 13
@@ -75554,7 +75786,7 @@
             "telepathy"
           ],
           "entries": [
-            "telepathically with sharks within range. It can communicate only simple concepts like."
+            "The sea devil can communicate telepathically with sharks within range. It can communicate only simple concepts like “come,” “guard,” or “attack.”"
           ]
         }
       ],
@@ -76103,8 +76335,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "clumsy",
-        "enfeebled"
+        "enfeebled",
+        "clumsy"
       ]
     },
     {
@@ -76299,8 +76531,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "clumsy",
-        "enfeebled"
+        "enfeebled",
+        "clumsy"
       ]
     },
     {
@@ -76584,7 +76816,8 @@
           },
           "requirements": "The shark hit with a jaws Strike on its most recent action this turn.",
           "entries": [
-            "The creature the shark hit takes {@dice 1d12} slashing damage."
+            "The creature the shark hit takes {@dice 1d12} slashing damage.",
+            "Strafing Chomp {@as 1} The shark Swims up to half its swim Speed, makes a jaws Strike, and then Swims up to half its Speed further. The Strike deals half damage."
           ]
         }
       ],
@@ -76736,7 +76969,8 @@
           ],
           "requirements": "The shark hit with a jaws Strike on its most recent action this turn.",
           "entries_as_xyz": [
-            "The creature the shark hit takes {@dice 1d12} slashing damage."
+            "The creature the shark hit takes {@dice 1d12} slashing damage.",
+            "Strafing Chomp {@as 1} The shark Swims up to half its swim Speed, makes a jaws Strike, and then Swims up to half its Speed further. The Strike deals half damage."
           ]
         },
         {
@@ -77060,8 +77294,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "flat-footed",
-        "blinded"
+        "blinded",
+        "flat-footed"
       ]
     },
     {
@@ -77442,8 +77676,8 @@
         "poison"
       ],
       "conditions_inflicted": [
-        "paralyzed",
-        "slowed"
+        "slowed",
+        "paralyzed"
       ]
     },
     {
@@ -77654,8 +77888,8 @@
         "Undead"
       ],
       "traits": [
-        "Mindless",
-        "Skeleton"
+        "Skeleton",
+        "Mindless"
       ],
       "perception": {
         "default": 2
@@ -78020,8 +78254,8 @@
         "Undead"
       ],
       "traits": [
-        "Mindless",
-        "Skeleton"
+        "Skeleton",
+        "Mindless"
       ],
       "perception": {
         "default": 8
@@ -78157,8 +78391,8 @@
         "Undead"
       ],
       "traits": [
-        "Mindless",
-        "Skeleton"
+        "Skeleton",
+        "Mindless"
       ],
       "perception": {
         "default": 7
@@ -78321,8 +78555,8 @@
         "Undead"
       ],
       "traits": [
-        "Mindless",
-        "Skeleton"
+        "Skeleton",
+        "Mindless"
       ],
       "perception": {
         "default": 16
@@ -78415,8 +78649,8 @@
           ],
           "damage": "{@dice 2d6+11} slashing {@as 2} Broad Swipe As skeletal giant, but with its claw Strike. {@as 2} Massive Rush The hulk Strides and makes a claw Strike with a +4 circumstance bonus to damage. If the strike hits, the hulk automatically Shoves the target 10 feet.",
           "types": [
-            "circumstance",
-            "slashing"
+            "slashing",
+            "circumstance"
           ]
         }
       ],
@@ -78622,8 +78856,8 @@
           ],
           "damage": "{@dice 3d10+14} piercing plus {@dice 3d6} negative and energy drain",
           "types": [
-            "piercing",
-            "negative"
+            "negative",
+            "piercing"
           ]
         },
         {
@@ -78641,8 +78875,8 @@
           ],
           "damage": "{@dice 3d6+14} slashing plus {@dice 3d6} negative and energy drain",
           "types": [
-            "negative",
-            "slashing"
+            "slashing",
+            "negative"
           ]
         },
         {
@@ -78656,8 +78890,8 @@
           "effects": [],
           "damage": "{@dice 3d8+6} piercing plus {@dice 3d6} negative",
           "types": [
-            "piercing",
-            "negative"
+            "negative",
+            "piercing"
           ]
         }
       ],
@@ -78723,8 +78957,8 @@
         "piercing"
       ],
       "conditions_inflicted": [
-        "drained",
-        "controlled"
+        "controlled",
+        "drained"
       ]
     },
     {
@@ -78830,7 +79064,8 @@
           "type": "ability",
           "name": "Entangling Slime",
           "entries": [
-            "A creature struck by a slurk’s slime squirt becomes {@condition clumsy} 1 and takes a –5-foot penalty to Speed for 1 hour or until the slime is removed. The slime can be removed with a total of three Interact actions by the entangled creature or creatures adjacent to the creature. These actions don’t need to be consecutive or made by the same creature."
+            "A creature struck by a slurk’s slime squirt becomes {@condition clumsy} 1 and takes a –5-foot penalty to Speed for 1 hour or until the slime is removed. The slime can be removed with a total of three Interact actions by the entangled creature or creatures adjacent to the creature. These actions don’t need to be consecutive or made by the same creature.",
+            "A snake’s hide can be cleanly removed with a successful Crafting check or appropriate Lore check."
           ]
         }
       ],
@@ -80304,8 +80539,8 @@
         "poison"
       ],
       "conditions_inflicted": [
-        "clumsy",
         "flat-footed",
+        "clumsy",
         "immobilized"
       ]
     },
@@ -80489,8 +80724,8 @@
         "poison"
       ],
       "conditions_inflicted": [
-        "paralyzed",
-        "flat-footed"
+        "flat-footed",
+        "paralyzed"
       ]
     },
     {
@@ -80692,9 +80927,9 @@
         "poison"
       ],
       "conditions_inflicted": [
-        "paralyzed",
         "slowed",
-        "restrained"
+        "restrained",
+        "paralyzed"
       ]
     },
     {
@@ -80986,7 +81221,15 @@
             "primal"
           ],
           "entries": [
-            "A grig can rub its legs together to create a catchy fiddling tune that compels others within 30 feet to dance about, with varying effects depending on a DC 18 Will save. A listener is temporarily immune for 10 minutes on a success, but otherwise, if the grig continues to Fiddle each round, the creature receives no additional saves."
+            "A grig can rub its legs together to create a catchy fiddling tune that compels others within 30 feet to dance about, with varying effects depending on a DC 18 Will save. A listener is temporarily immune for 10 minutes on a success, but otherwise, if the grig continues to Fiddle each round, the creature receives no additional saves.",
+            {
+              "type": "success_degree",
+              "entries": {
+                "Success": "No effect.",
+                "Failure": "{@condition Flat-footed} and –10-foot status penalty to Speeds.",
+                "Critical Failure": "As failure, and also {@condition slowed} 1."
+              }
+            }
           ]
         }
       ],
@@ -81068,10 +81311,13 @@
       "named_npc": false,
       "misc_tags": [
         "MA",
-        "RA"
+        "RA",
+        "CC"
       ],
       "damage_types_inflicted": [],
-      "conditions_inflicted": []
+      "conditions_inflicted": [
+        "slowed"
+      ]
     },
     {
       "source": "BST",
@@ -81179,7 +81425,16 @@
             "manipulate"
           ],
           "entries": [
-            "The pixie sprinkles pixie dust onto one of its arrows. If the pixie hits a creature with that arrow before the pixie’s next turn, the arrow inflicts one of the following special effects instead of dealing damage. Each effect depends on the target’s DC 21 Will save. On a critical hit, the target treats its save result as one degree worse."
+            "The pixie sprinkles pixie dust onto one of its arrows. If the pixie hits a creature with that arrow before the pixie’s next turn, the arrow inflicts one of the following special effects instead of dealing damage. Each effect depends on the target’s DC 21 Will save. On a critical hit, the target treats its save result as one degree worse.",
+            {
+              "type": "list",
+              "items": [
+                "{@bold Charm} (emotion, enchantment, incapacitation, mental) The target suffers the effects of a charm spell, except it doesn’t gain a bonus to its save if the only {@condition hostile} act was the pixie firing its bow, and the pixie can choose to direct the target’s adoration toward another creature rather than itself.",
+                "{@bold Memory Loss} (divination, mental) On a failed Will save, the target loses the last 5 minutes of its memory.",
+                "{@bold Sleep} (enchantment, incapacitation, mental, sleep) The target suffers the effects of a 3rd-level sleep spell.",
+                "{@bold Subdual} (enchantment, mental, nonlethal) The target takes {@dice 4d6} mental damage, depending on its basic Will save."
+              ]
+            }
           ]
         }
       ],
@@ -81761,8 +82016,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "enfeebled",
         "controlled",
+        "enfeebled",
         "immobilized"
       ]
     },
@@ -81778,8 +82033,8 @@
         "Fiend"
       ],
       "traits": [
-        "Demon",
-        "Amphibious"
+        "Amphibious",
+        "Demon"
       ],
       "perception": {
         "default": 46
@@ -82001,10 +82256,10 @@
           "effects": [],
           "damage": "{@dice 4d12+15} slashing plus {@dice 1d6} acid, {@dice 1d6} chaotic, and {@dice 1d6} evil, and {@dice 2d6} slashing vs. plants",
           "types": [
+            "slashing",
             "evil",
             "chaotic",
-            "acid",
-            "slashing"
+            "acid"
           ]
         },
         {
@@ -82021,9 +82276,9 @@
           "effects": [],
           "damage": "{@dice 4d10+18} slashing plus {@dice 2d6} chaotic and {@dice 2d6} evil",
           "types": [
+            "slashing",
             "evil",
-            "chaotic",
-            "slashing"
+            "chaotic"
           ]
         }
       ],
@@ -82686,8 +82941,8 @@
           ],
           "damage": "{@dice 1d10+4} piercing plus {@dice 1d6} good and ghost touch",
           "types": [
-            "piercing",
-            "good"
+            "good",
+            "piercing"
           ]
         },
         {
@@ -84401,8 +84656,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "dying",
         "drained",
+        "dying",
         "prone"
       ]
     },
@@ -84600,9 +84855,9 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "paralyzed",
         "drained",
-        "clumsy"
+        "clumsy",
+        "paralyzed"
       ]
     },
     {
@@ -84916,7 +85171,9 @@
         {
           "type": "ability",
           "name": "Web Lurker Traps",
-          "entries": []
+          "entries": [
+            "The following traps are some used by web lurkers."
+          ]
         }
       ],
       "attacks": [
@@ -85416,8 +85673,8 @@
           ],
           "damage": "{@dice 3d8+12} slashing plus {@dice 2d6} cold and Grab",
           "types": [
-            "cold",
-            "slashing"
+            "slashing",
+            "cold"
           ]
         }
       ],
@@ -85488,8 +85745,8 @@
         "Humanoid"
       ],
       "traits": [
-        "Werecreature",
-        "Human"
+        "Human",
+        "Werecreature"
       ],
       "perception": {
         "default": 8
@@ -85747,8 +86004,8 @@
         "Humanoid"
       ],
       "traits": [
-        "Werecreature",
-        "Human"
+        "Human",
+        "Werecreature"
       ],
       "perception": {
         "default": 9
@@ -85992,8 +86249,8 @@
         "Humanoid"
       ],
       "traits": [
-        "Werecreature",
-        "Human"
+        "Human",
+        "Werecreature"
       ],
       "perception": {
         "default": 11
@@ -86421,8 +86678,8 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "clumsy",
-        "drained"
+        "drained",
+        "clumsy"
       ]
     },
     {
@@ -87072,9 +87329,9 @@
       ],
       "damage_types_inflicted": [],
       "conditions_inflicted": [
-        "clumsy",
+        "stunned",
         "drained",
-        "stunned"
+        "clumsy"
       ]
     },
     {
@@ -87576,7 +87833,8 @@
             "entry": "{@as 1}"
           },
           "entries": [
-            "The target must succeed at a DC 20 Fortitude save or become {@condition enfeebled} 1 (or {@condition enfeebled} 2 on a critical hit) for 1 round."
+            "The target must succeed at a DC 20 Fortitude save or become {@condition enfeebled} 1 (or {@condition enfeebled} 2 on a critical hit) for 1 round.",
+            "Lone exiles of yeti clans have little use for treasure and leave the gear of their slain victims behind where it is quickly covered by snowfall. Clan-based yetis, on the other hand, create beautifully carved stonework, some of which they shape into protective talismans of rare beauty."
           ]
         }
       ],
@@ -88023,7 +88281,16 @@
             "earth"
           ],
           "entries": [
-            "The zaramuun sprays a blast of sand that deals {@dice 11d10} slashing damage to all creatures in a 60‑foot line (Reflex DC 38). It can’t Sandblast again for {@dice 1d4} rounds."
+            "The zaramuun sprays a blast of sand that deals {@dice 11d10} slashing damage to all creatures in a 60‑foot line (Reflex DC 38). It can’t Sandblast again for {@dice 1d4} rounds.",
+            {
+              "type": "success_degree",
+              "entries": {
+                "Critical Success": "No effect.",
+                "Success": "Half damage.",
+                "Failure": "Full damage.",
+                "Critical Failure": "Full damage and {@condition blinded} for 1 round."
+              }
+            }
           ]
         }
       ],
@@ -88116,10 +88383,13 @@
       "named_npc": false,
       "misc_tags": [
         "MA",
-        "RA"
+        "RA",
+        "CC"
       ],
       "damage_types_inflicted": [],
-      "conditions_inflicted": []
+      "conditions_inflicted": [
+        "blinded"
+      ]
     },
     {
       "source": "BST",
@@ -88133,8 +88403,8 @@
         "Undead"
       ],
       "traits": [
-        "Mindless",
-        "Zombie"
+        "Zombie",
+        "Mindless"
       ],
       "perception": {
         "default": 0
@@ -88278,8 +88548,8 @@
         "Undead"
       ],
       "traits": [
-        "Mindless",
-        "Zombie"
+        "Zombie",
+        "Mindless"
       ],
       "perception": {
         "default": 3
@@ -88468,8 +88738,8 @@
         "Undead"
       ],
       "traits": [
-        "Mindless",
-        "Zombie"
+        "Zombie",
+        "Mindless"
       ],
       "perception": {
         "default": 4
@@ -88593,8 +88863,8 @@
         "Undead"
       ],
       "traits": [
-        "Mindless",
-        "Zombie"
+        "Zombie",
+        "Mindless"
       ],
       "perception": {
         "default": 8

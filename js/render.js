@@ -2748,10 +2748,12 @@ Renderer.utils = {
 			const hash = UrlUtil.URL_TO_HASH_BUILDER[opts.page](it);
 			dataPart = `data-page="${opts.page}" data-source="${it.source.escapeQuotes()}" data-hash="${hash.escapeQuotes()}"`;
 		}
+		const type = opts.type != null ? opts.type : it.type
+		const level = opts.level != null ? opts.level : isNaN(Number(it.level)) ? '' : ` ${Number(it.level)}`
 		const $ele = $$`<div style="display: flex" class="${opts.extraThClasses ? opts.extraThClasses.join(" ") : ""}" ${dataPart}>
 			<p class="pf2-stat-name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</p>
 			${opts.controlRhs || ""}
-			<p class="pf2-stat-level">${it.type} ${it.type === "CANTRIP" ? 1 : it.level}</p>
+			<p class="pf2-stat-level">${type}${type === "CANTRIP" ? ' 1' : level}</p>
 		</div>`;
 
 		if (opts.asJquery) return $ele;
@@ -2764,6 +2766,12 @@ Renderer.utils = {
 		return isExcluded ? `<tr><td colspan="6" class="pt-3 text-center text-danger"><b><i>Warning: This content has been blacklisted.</i></b></td></tr>` : "";
 	},
 
+	getExcludedDiv(it, dataProp) {
+		if (!ExcludeUtil.isInitialised) return "";
+		const isExcluded = ExcludeUtil.isExcluded(it.name, dataProp, it.source);
+		return isExcluded ? `<div class="pt-3 text-center text-danger"><b><i>Warning: This content has been blacklisted.</i></b></div>` : "";
+	},
+
 	async _pHandleNameClick(ele) {
 		await MiscUtil.pCopyTextToClipboard($(ele).text());
 		JqueryUtil.showCopiedEffect($(ele));
@@ -2771,6 +2779,10 @@ Renderer.utils = {
 
 	getPageTr: (it) => {
 		return `<tr><td colspan=6>${Renderer.utils._getPageTrText(it)}</td></tr>`;
+	},
+
+	getPageP: (it) => {
+		return `<p class="pf-2-stat-source"><strong>${it.source}</strong> page ${it.page}</p>`;
 	},
 
 	_getPageTrText: (it) => {
@@ -2964,11 +2976,9 @@ Renderer.utils = {
 	async pBuildFluffTab({isImageTab, $content, entity, fnFluffBuilder, fluffUrl, fluffBaseUrl, $headerControls} = {}) {
 		const renderer = Renderer.get();
 
-		$content.append(Renderer.utils.getBorderTr());
-		$content.append(Renderer.utils.getNameTr(entity, {controlRhs: $headerControls, asJquery: true}));
+		$content.append(Renderer.utils.getNameDiv(entity, {controlRhs: $headerControls, asJquery: true}));
 		const $td = $(`<td colspan="6" class="text"/>`);
-		$$`<tr class="text">${$td}</tr>`.appendTo($content);
-		$content.append(Renderer.utils.getBorderTr());
+		$$`<tr class="pf2-stat-text">${$td}</tr>`.appendTo($content);
 
 		const fluff = await Renderer.utils.pGetFluff({
 			isImages: isImageTab,

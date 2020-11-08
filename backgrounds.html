@@ -17,7 +17,10 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/test3.css">
+	<link rel="stylesheet" href="css/pf2-style.css">
+	<link rel="stylesheet" href="css/fonts.css">
+
 	<link rel="icon" href="favicon.png">
 
 	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
@@ -57,7 +60,7 @@
 				</div>
 				<div id="filtertools" class="sortlabel lst__form-bottom">
 					<button class="col-4 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-					<button class="col-6 sort btn btn-default btn-xs" data-sort="skills">Skill Proficiencies <span class="caret_wrp"></span></button>
+					<button class="col-6 sort btn btn-default btn-xs" data-sort="boosts">Ability Boosts <span class="caret_wrp"></span></button>
 					<button class="sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
 				</div>
 
@@ -69,7 +72,7 @@
 				<div id="sublistcontainer" class="sublist sublist--resizable">
 					<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
 						<button class="col-4 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-						<button class="col-8 sort btn btn-default btn-xs" data-sort="skills">Skills <span class="caret_wrp"></span></button>
+						<button class="col-8 sort btn btn-default btn-xs" data-sort="boosts">Ability Boosts <span class="caret_wrp"></span></button>
 					</div>
 					<ul class="list subbackgrounds">
 						<!-- populate with JS -->
@@ -81,11 +84,11 @@
 				</div>
 
 				<div class="wrp-stats-table">
-					<table id="pagecontent" class="stats">
+					<div id="pagecontent" class="stats">
 						<tr><th class="border" colspan="6"></th></tr>
 						<tr><td colspan="6" class="initial-message">Select a background from the list to view it here</td></tr>
 						<tr><th class="border" colspan="6"></th></tr>
-					</table>
+					</div>
 				</div>
 
 				<div class="text-center wrp-footer-buttons">
