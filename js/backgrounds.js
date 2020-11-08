@@ -24,6 +24,7 @@ class BackgroundPage extends ListPage {
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const hash = UrlUtil.autoEncodeHash(bg);
+		const name = bg.name
 		const source = Parser.sourceJsonToAbv(bg.source);
 		const boosts = bg.boosts.join(', ');
 
@@ -63,6 +64,7 @@ class BackgroundPage extends ListPage {
 	getSublistItem (bg, pinId) {
 		const hash = UrlUtil.autoEncodeHash(bg);
 		const boosts = bg.boosts.join(', ');
+		const name = bg.name
 
 		const $ele = $$`<li class="row">
 			<a href="#${hash}" class="lst--border">
