@@ -2750,8 +2750,9 @@ Renderer.utils = {
 		}
 		const type = opts.type != null ? opts.type : it.type
 		const level = opts.level != null ? opts.level : isNaN(Number(it.level)) ? '' : ` ${Number(it.level)}`
+		const activity = opts.activity ? ` ${it.activity != null ? Renderer.get().render(it.activity.entry): ``}` : ``
 		const $ele = $$`<div style="display: flex" class="${opts.extraThClasses ? opts.extraThClasses.join(" ") : ""}" ${dataPart}>
-			<p class="pf2-stat-name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</p>
+			<p class="pf2-stat-name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>${activity}</p>
 			${opts.controlRhs || ""}
 			<p class="pf2-stat-level">${type}${type === "CANTRIP" ? ' 1' : level}</p>
 		</div>`;
@@ -3188,63 +3189,49 @@ Renderer.utils = {
 };
 
 Renderer.feat = {
-	mergeAbilityIncrease: function (feat) {
-		if (!feat.ability || feat._hasMergedAbility) return;
-		feat._hasMergedAbility = true;
-		const targetList = feat.entries.find(e => e.type === "list");
-		if (targetList) {
-			feat.ability.forEach(abilObj => targetList.items.unshift(abilityObjToListItem(abilObj)));
-		} else {
-			// this should never happen, but display sane output anyway, and throw an out-of-order exception
-			feat.ability.forEach(abilObj => feat.entries.unshift(abilityObjToListItem(abilObj)));
-
-			setTimeout(() => {
-				throw new Error(`Could not find object of type "list" in "entries" for feat "${feat.name}" from source "${feat.source}" when merging ability scores! Reformat the feat to include a "list"-type entry.`);
-			}, 1);
+	getSubHead(feat) {
+		const renderStack = [];
+		if (feat.prerequisites != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Prerequisites </strong>${feat.prerequisites}</p>`);
 		}
-
-		function abilityObjToListItem(abilityObj) {
-			const TO_MAX_OF_TWENTY = ", to a maximum of 20.";
-			const abbArr = [];
-			if (!abilityObj.choose) {
-				Object.keys(abilityObj).forEach(ab => abbArr.push(`Increase your ${Parser.attAbvToFull(ab)} score by ${abilityObj[ab]}${TO_MAX_OF_TWENTY}`));
-			} else {
-				const choose = abilityObj.choose;
-				if (choose.from.length === 6) {
-					if (choose.textreference) { // only used in "Resilient"
-						abbArr.push(`Increase the chosen ability score by ${choose.amount}${TO_MAX_OF_TWENTY}`);
-					} else {
-						abbArr.push(`Increase one ability score of your choice by ${choose.amount}${TO_MAX_OF_TWENTY}`);
-					}
-				} else {
-					const from = choose.from;
-					const amount = choose.amount;
-					const abbChoices = [];
-					for (let j = 0; j < from.length; ++j) {
-						abbChoices.push(Parser.attAbvToFull(from[j]));
-					}
-					const abbChoicesText = abbChoices.joinConjunct(", ", " or ");
-					abbArr.push(`Increase your ${abbChoicesText} by ${amount}${TO_MAX_OF_TWENTY}`);
-				}
-			}
-			return abbArr.join(" ");
+		if (feat.frequency != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Frequency </strong>${feat.frequency}</p>`);
 		}
+		if (feat.trigger != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Trigger </strong>${feat.trigger}</p>`);
+		}
+		if (feat.cost != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Cost </strong>${feat.cost}</p>`);
+		}
+		if (feat.requirements != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Requirements </strong>${feat.requirements}</p>`);
+		}
+		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
+		return renderStack.join("");
+	},
+
+	getSpecial(feat) {
+		if (feat.special != null) {
+			return `<p><strong>Special </strong>${feat.special}</p>`
+		} else return ``
 	},
 
 	getCompactRenderedString(feat) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
-		const prerequisite = Renderer.utils.getPrerequisiteText(feat.prerequisite);
-		Renderer.feat.mergeAbilityIncrease(feat);
 		renderStack.push(`
-			${Renderer.utils.getExcludedTr(feat, "feat")}
-			${Renderer.utils.getNameTr(feat, {page: UrlUtil.PG_FEATS})}
-			<tr class="text"><td colspan="6" class="text">
-			${prerequisite ? `<p><i>${prerequisite}</i></p>` : ""}
+			${Renderer.utils.getExcludedDiv(feat, "feat")}
+			${Renderer.utils.getNameDiv(feat, {page: UrlUtil.PG_FEATS, type:'FEAT', activity: true})}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(feat.traits)}
+			${Renderer.feat.getSubHead(feat)}
 		`);
+		renderStack.push(`<div class="pf2-stat-text">`)
 		renderer.recursiveRender({entries: feat.entries}, renderStack, {depth: 2});
-		renderStack.push(`</td></tr>`);
+		renderStack.push(Renderer.feat.getSpecial(feat))
+		renderStack.push(`</div>`)
+		renderStack.push(Renderer.utils.getPageP(feat))
 
 		return renderStack.join("");
 	}
@@ -3388,7 +3375,7 @@ Renderer.condition = {
 		const renderStack = [];
 		renderer.setFirstSection(true);
 
-		// TODO: renderStack.push(`${Renderer.utils.getExcludedTr(cond, cond.__prop || cond._type)}`)
+		renderStack.push(`${Renderer.utils.getExcludedDiv(cond, cond.__prop || cond._type)}`)
 		renderStack.push(`
 			${Renderer.utils.getNameDiv(cond, {page: UrlUtil.PG_CONDITIONS_DISEASES})}
 			${Renderer.utils.getDividerDiv()}
@@ -3406,7 +3393,7 @@ Renderer.trait = {
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		// TODO: renderStack.push(`${Renderer.utils.getExcludedTr(trait, trait.__prop || trait._type)}`)
+		renderStack.push(`${Renderer.utils.getExcludedDiv(trait, trait.__prop || trait._type)}`)
 		renderStack.push(`
 			${Renderer.utils.getNameDiv(trait, {page: UrlUtil.PG_TRAITS})}
 			${Renderer.utils.getDividerDiv()}
@@ -3418,7 +3405,6 @@ Renderer.trait = {
 		return renderStack.join("");
 	}
 };
-
 
 Renderer.background = {
 	getCompactRenderedString(bg) {
@@ -4049,7 +4035,7 @@ Renderer.monster = {
 			renderStack.push(`<span>`)
 			renderStack.push(mon.languages.languages.join(', '))
 			if (mon.languages.language_abilities.length !== 0) {
-				renderStack.push('; ')
+				if (mon.languages.languages.length !== 0) renderStack.push('; ')
 				renderStack.push(mon.languages.language_abilities.join(', '))
 			}
 			renderStack.push(`</span>`)

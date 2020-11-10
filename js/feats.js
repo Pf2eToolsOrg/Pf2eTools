@@ -4,7 +4,7 @@ class FeatsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterFeats();
 		super({
-			dataSource: "data/feats.json",
+			dataSource: "data/feats/feats-crb.json",
 
 			pageFilter,
 
@@ -27,9 +27,10 @@ class FeatsPage extends ListPage {
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3-8 pl-0">${feat.name}</span>
-			<span class="col-3-5 ${feat._slAbility === VeCt.STR_NONE ? "list-entry-none " : ""}">${feat._slAbility}</span>
-			<span class="col-3 ${feat._slPrereq === VeCt.STR_NONE ? "list-entry-none " : ""}">${feat._slPrereq}</span>
-			<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
+			<span class="col-1-5 text-center">${feat._slType}</span>
+			<span class="col-1-3 text-center">${Parser.getOrdinalForm(feat.level)}</span>
+			<span class="col-4-1">${feat._slPrereq}</span>
+			<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -39,8 +40,9 @@ class FeatsPage extends ListPage {
 			{
 				hash,
 				source,
-				ability: feat._slAbility,
-				prerequisite: feat._slPrereq
+				level: feat.level,
+				type: feat._slType,
+				prerequisites: feat._slPrereq
 			},
 			{
 				uniqueId: feat.uniqueId ? feat.uniqueId : ftI,
@@ -62,12 +64,15 @@ class FeatsPage extends ListPage {
 
 	getSublistItem (feat, pinId) {
 		const hash = UrlUtil.autoEncodeHash(feat);
+		const source = Parser.sourceJsonToAbv(feat.source);
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-4 pl-0">${feat.name}</span>
-				<span class="col-4 ${feat._slAbility === VeCt.STR_NONE ? "list-entry-none" : ""}">${feat._slAbility}</span>
-				<span class="col-4 ${feat._slPrereq === VeCt.STR_NONE ? "list-entry-none" : ""} pr-0">${feat._slPrereq}</span>
+				<span class="bold col-3-8 pl-0">${feat.name}</span>
+				<span class="col-1-5 text-center">${feat._slType}</span>
+				<span class="col-1-3 text-center">${Parser.getOrdinalForm(feat.level)}</span>
+				<span class="col-4-1">${feat._slPrereq}</span>
+				<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -78,8 +83,10 @@ class FeatsPage extends ListPage {
 			feat.name,
 			{
 				hash,
-				ability: feat._slAbility,
-				prerequisite: feat._slPrereq
+				source,
+				level: feat.level,
+				type: feat._slType,
+				prerequisites: feat._slPrereq
 			}
 		);
 		return listItem;
