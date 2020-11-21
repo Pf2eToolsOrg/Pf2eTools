@@ -75,14 +75,14 @@ class BestiaryPage {
 
 	async pGetSublistItem (monRaw, pinId, addCount, data = {}) {
 		const mon = await (data.scaled ? ScaleCreature.scale(monRaw, data.scaled) : monRaw);
-		Renderer.monster.updateParsed(mon);
+		//Renderer.monster.updateParsed(mon);
 		const subHash = data.scaled ? `${HASH_PART_SEP}${VeCt.HASH_MON_SCALED}${HASH_SUB_KV_SEP}${data.scaled}` : "";
 
 		const name = mon._displayName || mon.name;
 		const hash = `${UrlUtil.autoEncodeHash(mon)}${subHash}`;
-		const type = mon._pTypes.asText.uppercaseFirst();
+		const type = mon.creature_type
 		const count = addCount || 1;
-		const cr = mon._pCr || "Unknown";
+		const cr = mon.level
 
 		const $hovStatblock = $(`<span class="col-1-4 help--hover ecgen__visible">Statblock</span>`)
 			.mouseover(evt => EncounterBuilder.doStatblockMouseOver(evt, $hovStatblock[0], pinId, mon._isScaledCr))

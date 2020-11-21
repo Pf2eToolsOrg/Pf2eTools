@@ -118,7 +118,7 @@ class RenderSpells {
 				renderStack.push(`</p>`)
 			}
 		}
-		renderStack.push(`<p class="pf-2-stat-source"><strong>${sp.source}</strong> page ${sp.page_nr}</p>`);
+		renderStack.push(Renderer.utils.getPageP(sp));
 
 		return $(renderStack.join(""));
 	}
