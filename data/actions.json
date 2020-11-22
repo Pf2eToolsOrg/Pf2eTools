@@ -350,7 +350,7 @@
 			"time": [
 				"Varies"
 			],
-			"requirements": "ou can Activate an Item with the invested trait only if it’s invested by you. If the item requires you to Interact with it, you must be wielding it (if it’s a held item) or touching it with a free hand (if it’s another type of item).",
+			"requirements": "You can Activate an Item with the invested trait only if it’s invested by you. If the item requires you to Interact with it, you must be wielding it (if it’s a held item) or touching it with a free hand (if it’s another type of item).",
 			"entries": [
 				"You call forth the effect of an item by properly activating it. This is a special activity that takes a variable number of actions, as listed in the item’s stat block.",
 				"Some items can be activated as a reaction or free action. In this case, you Activate the Item as a reaction or free action (as appropriate) instead of as an activity. Such cases are noted in the item’s Activate entry in its stat block—for example, “Activate {@as R} command.”",
@@ -437,11 +437,10 @@
 			]
 		},
 		{
-			"name": "Activate an Item",
+			"name": "Cast a Spell",
 			"source": "CRB",
 			"page": 302,
 			"srd": true,
-			"requirements": "ou can Activate an Item with the invested trait only if it’s invested by you. If the item requires you to Interact with it, you must be wielding it (if it’s a held item) or touching it with a free hand (if it’s another type of item).",
 			"entries": [
 				"You cast a spell you have prepared or in your repertoire. Casting a Spell is a special activity that takes a variable number of actions depending on the spell, as listed in each spell’s stat block. As soon as the spellcasting actions are complete, the spell effect occurs.",
 				"Some spells are cast as a reaction or free action. In those cases, you Cast the Spell as a reaction or free action (as appropriate) instead of as an activity. Such cases will be noted in the spell’s stat block—for example, “{@as R} verbal.”",
@@ -646,6 +645,430 @@
 			"trigger": "A creature within your reach uses a {@trait manipulate} action or a {@trait move} action, makes a ranged attack, or leaves a square during a move action it’s using.",
 			"entries": [
 				"You lash out at a foe that leaves an opening. Make a melee Strike against the triggering creature. If your attack is a critical hit and the trigger was a manipulate action, you disrupt that action. This Strike doesn’t count toward your multiple attack penalty, and your multiple attack penalty doesn’t apply to this Strike."
+			]
+		},
+		{
+			"name": "Refocus",
+			"source": "CRB",
+			"page": 300,
+			"srd": true,
+			"time": [
+				{
+					"number": 10,
+					"unit": "minutes"
+				}
+			],
+			"traits": [
+				"Concentrate",
+				"Exploration"
+			],
+			"requirements": "You have a focus pool, and you have spent at least 1 Focus Point since you last regained any Focus Points.",
+			"entries": [
+				"You spend 10 minutes performing deeds to restore your magical connection. This restores 1 Focus Point to your focus pool. The deeds you need to perform are specified in the class or ability that gives you your focus spells. These deeds can usually overlap with other tasks that relate to the source of your focus spells. For instance, a cleric with focus spells from a good deity can usually Refocus while tending the wounds of their allies, and a wizard of the illusionist school might be able to Refocus while attempting to Identify Magic of the illusion school."
+			]
+		},
+		{
+			"name": "Hustle",
+			"source": "CRB",
+			"page": 480,
+			"srd": true,
+			"traits": [
+				"Exploration",
+				"Move"
+			],
+			"entries": [
+				"You strain yourself to move at double your travel speed. You can Hustle only for a number of minutes equal to your Constitution modifier × 10 (minimum 10 minutes). If you are in a group that is Hustling, use the lowest Constitution modifier among everyone to determine how fast the group can Hustle together."
+			]
+		},
+		{
+			"name": "Investigate",
+			"source": "CRB",
+			"page": 480,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Exploration"
+			],
+			"entries": [
+				"You seek out information about your surroundings while traveling at half speed. You use Recall Knowledge as a secret check to discover clues among the various things you can see and engage with as you journey along. You can use any skill that has a {@action Recall Knowledge} action while Investigating, but the GM determines whether the skill is relevant to the clues you could find."
+			]
+		},
+		{
+			"name": "Repeat a Spell",
+			"source": "CRB",
+			"page": 480,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Exploration"
+			],
+			"entries": [
+				"You repeatedly cast the same spell while moving at half speed. Typically, this spell is a cantrip that you want to have in effect in the event a combat breaks out, and it must be one you can cast in 2 actions or fewer. In order to prevent fatigue due to repeated casting, you’ll likely use this activity only when something out of the ordinary occurs.",
+				"You can instead use this activity to continue {@action Sustain a Spell|CRB|Sustaining a Spell} or {@action Sustain an Activation|CRB|Activation} with a sustained duration. Most such spells or item effects can be sustained for 10 minutes, though some specify they can be sustained for a different duration."
+			]
+		},
+		{
+			"name": "Scout",
+			"source": "CRB",
+			"page": 480,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Exploration"
+			],
+			"entries": [
+				"You scout ahead and behind the group to watch danger, moving at half speed. At the start of the next encounter, every creature in your party gains a +1 circumstance bonus to their initiative rolls."
+			]
+		},
+		{
+			"name": "Search",
+			"source": "CRB",
+			"page": 480,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Exploration"
+			],
+			"entries": [
+				"You {@action Seek} meticulously for hidden doors, concealed hazards, and so on. You can usually make an educated guess as to which locations are best to check and move at half speed, but if you want to be thorough and guarantee you checked everything, you need to travel at a Speed of no more than 300 feet per minute, or 150 feet per minute to ensure you check everything before you walk into it. You can always move more slowly while Searching to cover the area more thoroughly, and the Expeditious Search feat increases these maximum Speeds. If you come across a secret door, item, or hazard while Searching, the GM will attempt a free secret check to Seek to see if you notice the hidden object or hazard. In locations with many objects to search, you have to stop and spend significantly longer to search thoroughly."
+			]
+		},
+		{
+			"name": "Decipher Writing",
+			"source": "CRB",
+			"page": 234,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Exploration",
+				"Secret"
+			],
+			"entries": [
+				"You attempt to decipher complicated writing or literature on an obscure topic. This usually takes 1 minute per page of text, but might take longer (typically an hour per page for decrypting ciphers or the like). The text must be in a language you can read, though the GM might allow you to attempt to decipher text written in an unfamiliar language using {@skill Society} instead.",
+				"The DC is determined by the GM based on the state or complexity of the document. The GM might have you roll one check for a short text or a check for each section of a larger text.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You understand the true meaning of the text.",
+						"Success": "You understand the true meaning of the text. If it was a coded document, you know the general meaning but might not have a word-for-word translation.",
+						"Failure": "You can’t understand the text and take a –2 circumstance penalty to further checks to decipher it.",
+						"Critical Failure": "You believe you understand the text on that page, but you have in fact misconstrued its message."
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Sample Decipher Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "entry-level philosophy treatise"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "complex code, such as a cipher"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "spymaster’s code or advanced research notes"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "esoteric planar text written in metaphor by an ancient celestial"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Earn Income",
+			"source": "CRB",
+			"page": 236,
+			"srd": true,
+			"traits": [
+				"Downtime"
+			],
+			"entries": [
+				"You use one of your skills to make money during downtime. The GM assigns a task level representing the most lucrative job available. You can search for lower-level tasks, with the GM determining whether you find any. Sometimes you can attempt to find better work than the initial offerings, though this takes time and requires using the {@skill Diplomacy} skill to {@action Gather Information}, doing some research, or socializing.",
+				"When you take on a job, the GM secretly sets the DC of your skill check. After your first day of work, you roll to determine your earnings. You gain an amount of income based on your result, the task’s level, and your proficiency rank (as listed on {@table Table 4–2: Income Earned|CRB}).",
+				"You can continue working at the task on subsequent days without needing to roll again. For each day you spend after the first, you earn the same amount as the first day, up until the task’s completion. The GM determines how long you can work at the task. Most tasks last a week or two, though some can take months or even years.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You do outstanding work. Gain the amount of currency listed for the task level + 1 and your proficiency rank.",
+						"Success": "You do competent work. Gain the amount of currency listed for the task level and your proficiency rank.",
+						"Failure": "You do shoddy work and get paid the bare minimum for your time. Gain the amount of currency listed in the failure column for the task level. The GM will likely reduce how long you can continue at the task.",
+						"Critical Failure": "You earn nothing for your work and are fired immediately. You can’t continue at the task. Your reputation suffers, potentially making it difficult for you to find rewarding jobs in that community in the future."
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Sample Earn Income Tasks",
+					"entries": [
+						"These examples use Alcohol Lore to work in a bar or Legal Lore to perform legal work.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "bartend, do legal research"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "curate drink selection, present minor court cases"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "run a large brewery, present important court cases"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "run an international brewing franchise, present a case in Hell’s courts"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Identify Magic",
+			"source": "CRB",
+			"page": 238,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Exploration",
+				"Secret"
+			],
+			"entries": [
+				"Once you discover that an item, location, or ongoing effect is magical, you can spend 10 minutes to try to identify the particulars of its magic. If your attempt is interrupted, you must start over. The GM sets the DC for your check. Cursed or esoteric subjects usually have higher DCs or might even be impossible to identify using this activity alone. Heightening a spell doesn’t increase the DC to identify it.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You learn all the attributes of the magic, including its name (for an effect), what it does, any means of activating it (for an item or location), and whether it is cursed.",
+						"Success": "For an item or location, you get a sense of what it does and learn any means of activating it. For an ongoing effect (such as a spell with a duration), you learn the effect’s name and what it does. You can’t try again in hopes of getting a critical success.",
+						"Failure": "You fail to identify the magic and can’t try again for 1 day.",
+						"Critical Failure": "You misidentify the magic as something else of the GM’s choice."
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Magical Traditions and Skills",
+					"entries": [
+						"Each magical tradition has a corresponding skill, as shown on the table below. You must have the trained proficiency rank in a skill to use it to Identify Magic or Learn a Spell. Something without a specific tradition, such as an item with the magical trait, can be identified using any of these skills.",
+						{
+							"type": "table",
+							"colLabels": [
+								"Magical Tradition",
+								"Corresponding Skill"
+							],
+							"colStyles": [
+								"col-6 text-center",
+								"col-6 text-center"
+							],
+							"rows": [
+								[
+									"{@filter Arcane|spells|tradition=arcane}",
+									"{@skill Arcana}"
+								],
+								[
+									"{@filter Divine|spells|tradition=divine}",
+									"{@skill Religion}"
+								],
+								[
+									"{@filter Occult|spells|tradition=occult}",
+									"{@skill Occultism}"
+								],
+								[
+									"{@filter Primal|spells|tradition=primal}",
+									"{@skill Nature}"
+								]
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Learn a Spell",
+			"source": "CRB",
+			"page": 238,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Exploration"
+			],
+			"requirements": "You have a spellcasting class feature, and the spell you want to learn is on your magical tradition’s spell list.",
+			"entries": [
+				"You can gain access to a new spell of your tradition from someone who knows that spell or from magical writing like a spellbook or scroll. If you can cast spells of multiple traditions, you can Learn a Spell of any of those traditions, but you must use the corresponding skill to do so. For example, if you were a {@class cleric} with the bard multiclass archetype, you couldn’t use {@skill Religion} to add an occult spell to your bardic spell repertoire.",
+				"To learn the spell, you must do the following:",
+				{
+					"type": "list",
+					"items": [
+						"Spend 1 hour per level of the spell, during which you must remain in conversation with a person who knows the spell or have the magical writing in your possession.",
+						"Have materials with the Price indicated in {@table Table 4-3: Learning a Spell|CRB|Table 4–3}.",
+						"Attempt a skill check for the skill corresponding to your tradition (DC determined by the GM, often close to the DC on {@table Table 4-3: Learning a Spell|CRB|Table 4–3}). Uncommon or rare spells have higher DCs; full guidelines for the GM appear on page 503."
+					]
+				},
+				"If you have a spellbook, Learning a Spell lets you add the spell to your spellbook; if you prepare spells from a list, it’s added to your list; if you have a spell repertoire, you can select it when you add or swap spells.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You expend half the materials and learn the spell.",
+						"Success": "You expend the materials and learn the spell.",
+						"Failure": "You fail to learn the spell but can try again after you gain a level. The materials aren’t expended.",
+						"Critical Failure": "As failure, plus you expend half the materials."
+					}
+				}
+			]
+		},
+		{
+			"name": "Recall Knowledge",
+			"source": "CRB",
+			"page": 239,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Secret"
+			],
+			"entries": [
+				"You attempt a skill check to try to remember a bit of knowledge regarding a topic related to that skill. The GM determines the DCs for such checks and which skills apply.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You recall the knowledge accurately and gain additional information or context.",
+						"Success": "You recall the knowledge accurately or gain a useful clue about your current situation.",
+						"Critical Failure": "You recall incorrect information or gain an erroneous or misleading clue."
+					}
+				},
+				"The following skills can be used to Recall Knowledge, getting information about the listed topics. In some cases, you can get the GM’s permission to use a different but related skill, usually against a higher DC than normal. Some topics might appear on multiple lists, but the skills could give different information. For example, {@skill Arcana} might tell you about the magical defenses of a golem, whereas {@skill Crafting} could tell you about its sturdy resistance to physical attacks.",
+				{
+					"type": "list",
+					"style": "list-hang",
+					"items": [
+						"{@b Arcana:} Arcane theories, magical traditions, creatures of arcane significance, and arcane planes.",
+						"{@b Crafting:} Alchemical reactions and creatures, item value, engineering, unusual materials, and constructs.",
+						"{@b Lore:} The subject of the Lore skill’s subcategory. • Medicine: Diseases, poisons, wounds, and forensics.",
+						"{@b Nature:} The environment, flora, geography, weather, creatures of natural origin, and natural planes.",
+						"{@b Occultism:} Ancient mysteries, obscure philosophy, creatures of occult significance, and esoteric planes.",
+						"{@b Religion:} Divine agents, divine planes, theology, obscure myths, and creatures of religious significance.",
+						"{@b Society:} Local history, key personalities, legal institutions, societal structure, and humanoid culture."
+					]
+				},
+				"The GM might allow checks to Recall Knowledge using other skills. For example, you might assess the skill of an acrobat using Acrobatics. If you’re using a physical skill (like in this example), the GM will most likely have you use a mental ability score—typically Intelligence— instead of the skill’s normal physical ability score.",
+				{
+					"type": "inset",
+					"name": "Recall Knowledge Tasks",
+					"entries": [
+						"These examples use {@skill Society} or {@skill Religion}.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "name of a ruler, key noble, or major deity"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "line of succession for a major noble family, core doctrines of a major deity"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "genealogy of a minor noble, teachings of an ancient priest"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "hierarchy of a genie noble court, major extraplanar temples of a deity"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "existence of a long-lost noble heir, secret doctrines of a religion"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Subsist",
+			"source": "CRB",
+			"page": 240,
+			"srd": true,
+			"traits": [
+				"Downtime"
+			],
+			"entries": [
+				"You try to provide food and shelter for yourself, and possibly others as well, with a standard of living described on page 294. The GM determines the DC based on the nature of the place where you’re trying to Subsist. You might need a minimum proficiency rank to Subsist in particularly strange environments. Unlike most downtime activities, you can Subsist after 8 hours or less of exploration, but if you do, you take a –5 penalty",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You either provide a subsistence living for yourself and one additional creature, or you improve your own food and shelter, granting yourself a comfortable living.",
+						"Success": "You find enough food and shelter with basic protection from the elements to provide you a subsistence living.",
+						"Failure": "You’re exposed to the elements and don’t get enough food, becoming fatigued until you attain sufficient food and shelter.",
+						"Critical Failure": "You attract trouble, eat something you shouldn’t, or otherwise worsen your situation. You take a –2 circumstance penalty to checks to Subsist for 1 week. You don’t find any food at all; if you don’t have any stored up, you’re in danger of starving or dying of thirst if you continue failing."
+					}
+				},
+				"The following skills can be used to Recall Knowledge, getting information about the listed topics. In some cases, you can get the GM’s permission to use a different but related skill, usually against a higher DC than normal. Some topics might appear on multiple lists, but the skills could give different information. For example, {@skill Arcana} might tell you about the magical defenses of a golem, whereas {@skill Crafting} could tell you about its sturdy resistance to physical attacks.",
+				{
+					"type": "inset",
+					"name": "Sample Subsist Tasks",
+					"entries": [
+						"These examples use {@skill Society} or {@skill Religion}.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "lush forest with calm weather or large city with plentiful resources"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "typical hillside or village"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "typical mountains or insular hamlet"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "typical desert or city under siege"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "barren wasteland or city of undead"
+								}
+							]
+						}
+					]
+				}
 			]
 		}
 	]
