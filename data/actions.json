@@ -1,9 +1,54 @@
 {
 	"action": [
 		{
-			"name": "Attack",
-			"source": "PHB",
-			"page": 192,
+			"name": "Aid",
+			"source": "CRB",
+			"page": 470,
+			"srd": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction"
+				}
+			],
+			"trigger": "An ally is about to use an action that requires a skill check or attack roll.",
+			"requirements": "The ally is willing to accept your aid, and you have prepared to help (see below).",
+			"entries": [
+				"You try to help your ally with a task. To use this reaction, you must first prepare to help, usually by using an action during your turn. You must explain to the GM exactly how you’re trying to help, and they determine whether you can Aid your ally.",
+				"When you use your Aid reaction, attempt a skill check or attack roll of a type decided by the GM. The typical DC is 20, but the GM might adjust this DC for particularly hard or easy tasks. The GM can add any relevant traits to your preparatory action or to your Aid reaction depending on the situation, or even allow you to Aid checks other than skill checks and attack rolls.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You grant your ally a +2 circumstance bonus to the triggering check. If you’re a master with the check you attempted, the bonus is +3, and if you’re legendary, it’s +4.",
+						"Success": "You grant your ally a +1 circumstance bonus to the triggering check.",
+						"Critical Failure": "Your ally takes a –1 circumstance penalty to the triggering check."
+					}
+				}
+			]
+		},
+		{
+			"name": "Crawl",
+			"source": "CRB",
+			"page": 470,
+			"srd": true,
+			"traits": [
+				"Move"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"requirements": "You are prone and your Speed is at least 10 feet.",
+			"entries": [
+				"You move 5 feet by crawling and continue to stay prone."
+			]
+		},
+		{
+			"name": "Delay",
+			"source": "CRB",
+			"page": 470,
 			"srd": true,
 			"time": [
 				{
@@ -11,45 +56,91 @@
 					"unit": "action"
 				}
 			],
+			"trigger": "Your turn begins.",
 			"entries": [
-				"The most common action to take in combat is the Attack action, whether you are swinging a sword, firing an arrow from a bow, or brawling with your fists.",
-				"With this action, you make one melee or ranged attack. See the \"{@book Making an Attack|phb|9|making an attack}\" section for the rules that govern attacks.",
-				"Certain features, such as the Extra Attack feature of the fighter, allow you to make more than one attack with this action."
+				"You wait for the right moment to act. The rest of your turn doesn’t happen yet. Instead, you’re removed from the initiative order. You can return to the initiative order as a free action triggered by the end of any other creature’s turn. This permanently changes your initiative to the new position. You can’t use reactions until you return to the initiative order. If you Delay an entire round without returning to the initiative order, the actions from the Delayed turn are lost, your initiative doesn’t change, and your next turn occurs at your original position in the initiative order.",
+				"When you Delay, any persistent damage or other negative effects that normally occur at the start or end of your turn occur immediately when you use the Delay action. Any beneficial effects that would end at any point during your turn also end. The GM might determine that other effects end when you Delay as well. Essentially, you can’t Delay to avoid negative consequences that would happen on your turn or to extend beneficial effects that would end on your turn."
 			]
 		},
 		{
-			"name": "Cast a Spell",
-			"source": "PHB",
-			"page": 192,
+			"name": "Drop Prone",
+			"source": "CRB",
+			"page": 470,
+			"srd": true,
+			"traits": [
+				"Move"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"You fall {@condition prone}."
+			]
+		},
+		{
+			"name": "Escape",
+			"source": "CRB",
+			"page": 470,
+			"srd": true,
+			"traits": [
+				"Attack"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"You attempt to escape from being grabbed, immobilized, or restrained. Choose one creature, object, spell effect, hazard, or other impediment imposing any of those conditions on you. Attempt a check using your unarmed attack modifier against the DC of the effect. This is typically the Athletics DC of a creature grabbing you, the Thievery DC of a creature who tied you up, the spell DC for a spell effect, or the listed Escape DC of an object, hazard, or other impediment. You can attempt an Acrobatics or Athletics check instead of using your attack modifier if you choose (but this action still has the attack trait).",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You get free and remove the {@condition grabbed}, {@condition immobilized}, and {@condition restrained} conditions imposed by your chosen target. You can then {@action Stride} up to 5 feet.",
+						"Success": "You get free and remove the {@condition grabbed}, {@condition immobilized}, and {@condition restrained} conditions imposed by your chosen target.",
+						"Critical Failure": "You don’t get free, and you can’t attempt to Escape again until your next turn."
+					}
+				}
+			]
+		},
+		{
+			"name": "Interact",
+			"source": "CRB",
+			"page": 470,
+			"srd": true,
+			"traits": [
+				"Manipulate"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction"
+				}
+			],
+			"entries": [
+				"You use your hand or hands to manipulate an object or the terrain. You can grab an unattended or stored object, open a door, or produce some similar effect. You might have to attempt a skill check to determine if your Interact action was successful."
+			]
+		},
+		{
+			"name": "Invest an Item",
+			"source": "CRB",
+			"page": 531,
 			"srd": true,
 			"time": [
 				"Varies"
 			],
 			"entries": [
-				"Spellcasters such as wizards and clerics, as well as many monsters, have access to spells and can use them to great effect in combat. Each spell has a casting time, which specifies whether the caster must use an action, a reaction, minutes, or even hours to cast the spell. Casting a spell is, therefore, not necessarily an action. Most spells do have a casting time of 1 action, so a spellcaster often uses his or her action in combat to cast such a spell. See {@book chapter 10|phb|10|casting a spell} for the rules on spellcasting."
+				"You invest your energy in an item with the {@trait invested} trait as you don it. This process requires 1 or more Interact actions, usually taking the same amount of time it takes to don the item. Once you’ve Invested the Item, you benefit from its constant magical abilities as long as you meet its other requirements (for most invested items, the only other requirement is that you must be wearing the item). This investiture lasts until you remove the item.",
+				"You can invest no more than 10 items per day. If you remove an invested item, it loses its investiture. The item still counts against your daily limit after it loses its investiture. You reset the limit during your daily preparations, at which point you Invest your Items anew. If you’re still wearing items you had invested the previous day, you can typically keep them invested on the new day, but they still count against your limit."
 			]
 		},
 		{
-			"name": "Climb onto a Bigger Creature",
-			"source": "DMG",
-			"page": 271,
-			"fromVariant": "Action Options",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"entries": [
-				"If one creature wants to jump onto another creature, it can do so by grappling. A small or Medium creature has little chance of making a successful grapple against a Huge or Gargantuan creature, however, unless magic has granted the grappler supernatural might.",
-				"As an alternative, a suitably large opponent can be treated as terrain for the purpose of jumping onto its back or clinging to a limb. After making any ability checks necessary to get into position and onto the larger creature, the smaller creature uses its action to make a Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check contested by the target's Dexterity ({@skill Acrobatics}) check. If it wins the contest, the smaller creature successfully moves into the target creature's space, the smaller creature moves with the target and has advantage on attack rolls against it.",
-				"The smaller creature can move around within the larger creature's space, treating the space as difficult terrain. The larger creature's ability to attack the smaller creature depends on the smaller creature's location, and is left to your discretion. The larger creature can dislodge the smaller creature as an action\u2014knocking it off, scraping it against a wall, or grabbing and throwing it\u2014by making a Strength ({@skill Athletics}) check contested by the smaller creature's Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check. The smaller creature chooses which ability to use."
-			]
-		},
-		{
-			"name": "Dash",
-			"source": "PHB",
-			"page": 192,
+			"name": "Leap",
+			"source": "CRB",
+			"page": 470,
 			"srd": true,
 			"time": [
 				{
@@ -58,15 +149,55 @@
 				}
 			],
 			"entries": [
-				"When you take the Dash action, you gain extra movement for the current turn. The increase equals your speed, after applying any modifiers. With a speed of 30 feet, for example, you can move up to 60 feet on your turn if you dash.",
-				"Any increase or decrease to your speed changes this additional movement by the same amount. If your speed of 30 feet is reduced to 15 feet, for instance, you can move up to 30 feet this turn if you dash."
+				"You take a careful, short jump. You can Leap up to 10 feet horizontally if your Speed is at least 15 feet, or up to 15 feet horizontally if your Speed is at least 30 feet. You land in the space where your Leap ends (meaning you can typically clear a 5-foot gap, or a 10-foot gap if your Speed is 30 feet or more).",
+				"If you Leap vertically, you can move up to 3 feet vertically and 5 feet horizontally onto an elevated surface.",
+				"Jumping a greater distance requires using the Athletics skill."
 			]
 		},
 		{
-			"name": "Disarm",
-			"source": "DMG",
-			"page": 271,
-			"fromVariant": "Action Options",
+			"name": "Ready",
+			"source": "CRB",
+			"page": 470,
+			"srd": true,
+			"traits": [
+				"Concentrate"
+			],
+			"time": [
+				{
+					"number": 2,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"You prepare to use an action that will occur outside your turn. Choose a single action or free action you can use, and designate a trigger. Your turn then ends. If the trigger you designated occurs before the start of your next turn, you can use the chosen action as a reaction (provided you still meet the requirements to use it). You can’t Ready a free action that already has a trigger.",
+				"If you have a multiple attack penalty and your readied action is an attack action, your readied attack takes the multiple attack penalty you had at the time you used Ready. This is one of the few times the multiple attack penalty applies when it’s not your turn."
+			]
+		},
+		{
+			"name": "Release",
+			"source": "CRB",
+			"page": 470,
+			"srd": true,
+			"traits": [
+				"Manipulate"
+			],
+			"time": [
+				"Free"
+			],
+			"entries": [
+				"You release something you’re holding in your hand or hands. This might mean dropping an item, removing one hand from your weapon while continuing to hold it in another hand, releasing a rope suspending a chandelier, or performing a similar action. Unlike most manipulate actions, Release does not trigger reactions that can be triggered by actions with the manipulate trait (such as {@action Attack of Opportunity}).",
+				"If you want to prepare to Release something outside of your turn, use the {@action Ready} activity."
+			]
+		},
+		{
+			"name": "Seek",
+			"source": "CRB",
+			"page": 471,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Secret"
+			],
 			"time": [
 				{
 					"number": 1,
@@ -74,14 +205,131 @@
 				}
 			],
 			"entries": [
-				"A creature can use a weapon attack to knock a weapon or another item from a target's grasp. The attacker makes an attack roll contested by the target's Strength ({@skill Athletics}) check or Dexterity ({@skill Acrobatics}) check. If the attacker wins the contest, the attack causes no damage or other ill effect, but the defender drops the item.",
-				"The attacker has disadvantage on its attack roll if the target is holding the item with two or more hands. The target has advantage on its ability check if it is larger than the attacking creature, or disadvantage if it is smaller."
+				"You scan an area for signs of creatures or objects. If you’re looking for creatures, choose an area you’re scanning. If precision is necessary, the GM can have you select a 30-foot cone or a 15-foot burst within line of sight. You might take a penalty if you choose an area that’s far away.",
+				"If you’re using Seek to search for objects (including secret doors and hazards), you search up to a 10-foot square adjacent to you. The GM might determine you need to Seek as an activity, taking more actions or even minutes or hours if you’re searching a particularly cluttered area.",
+				"The GM attempts a single secret Perception check for you and compares the result to the Stealth DCs of any undetected or hidden creatures in the area or the DC to detect each object in the area (as determined by the GM or by someone Concealing the Object). A creature you detect might remain hidden, rather than becoming observed, if you’re using an imprecise sense or if an effect (such as invisibility) prevents the subject from being observed.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "If you were searching for creatures, any undetected or hidden creature you critically succeeded against becomes {@condition observed} by you. If you were searching for an object, you learn its location.",
+						"Success": "If you were searching for creatures, any undetected creature you succeeded against becomes hidden from you instead of undetected, and any hidden creature you succeeded against becomes {@condition observed} by you. If you were searching for an object, you learn its location or get a clue to its whereabouts, as determined by the GM."
+					}
+				}
 			]
 		},
 		{
-			"name": "Disengage",
-			"source": "PHB",
-			"page": 192,
+			"name": "Sense Motive",
+			"source": "CRB",
+			"page": 471,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Secret"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"You try to tell whether a creature’s behavior is abnormal. Choose one creature, and assess it for odd body language, signs of nervousness, and other indicators that it might be trying to deceive someone. The GM attempts a single secret Perception check for you and compares the result to the Deception DC of the creature, the DC of a spell affecting the creature’s mental state, or another appropriate DC determined by the GM. You typically can’t try to Sense the Motive of the same creature again until the situation changes significantly.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You determine the creature’s true intentions and get a solid idea of any mental magic affecting it.",
+						"Success": "You can tell whether the creature is behaving normally, but you don’t know its exact intentions or what magic might be affecting it.",
+						"Failure": "You detect what a deceptive creature wants you to believe. If they’re not being deceptive, you believe they’re behaving normally.",
+						"Critical Failure": "You get a false sense of the creature’s intentions."
+					}
+				}
+			]
+		},
+		{
+			"name": "Stand",
+			"source": "CRB",
+			"page": 471,
+			"srd": true,
+			"traits": [
+				"Move"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"You stand up from {@condition prone}."
+			]
+		},
+		{
+			"name": "Step",
+			"source": "CRB",
+			"page": 471,
+			"srd": true,
+			"traits": [
+				"Move"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"requirements": "Your Speed is at least 10 feet.",
+			"entries": [
+				"You carefully move 5 feet. Unlike most types of movement, Stepping doesn’t trigger reactions, such as Attacks of Opportunity, that can be triggered by move actions or upon leaving or entering a square.",
+				"You can’t Step into difficult terrain, and you can’t Step using a Speed other than your land Speed."
+			]
+		},
+		{
+			"name": "Stride",
+			"source": "CRB",
+			"page": 471,
+			"srd": true,
+			"traits": [
+				"Move"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"You move up to your Speed."
+			]
+		},
+		{
+			"name": "Strike",
+			"source": "CRB",
+			"page": 471,
+			"srd": true,
+			"traits": [
+				"Attack"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"You attack with a weapon you're wielding or with an unarmed attack, targeting one creature within your reach (for a melee attack) or within range (for a ranged attack). Roll the attack roll for the weapon or unarmed attack you are using, and compare the result to the target creature's AC to determine the effect. See Attack Rolls and Damage for details on calculating your attack and damage rolls.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "As success, but you deal double damage.",
+						"Success": "You deal damage according to the weapon or unarmed attack, including any modifiers, bonuses, and penalties you have to damage."
+					}
+				}
+			]
+		},
+		{
+			"name": "Take Cover",
+			"source": "CRB",
+			"page": 471,
 			"srd": true,
 			"time": [
 				{
@@ -89,172 +337,52 @@
 					"unit": "action"
 				}
 			],
+			"requirements": "You are benefiting from cover, are near a feature that allows you to take cover, or are {@condition prone}.",
 			"entries": [
-				"If you take the Disengage action, your movement doesn't provoke opportunity attacks for the rest of the turn."
+				"You press yourself against a wall or duck behind an obstacle to take better advantage of cover. If you would have standard cover, you instead gain greater cover, which provides a +4 circumstance bonus to AC; to Reflex saves against area effects; and to Stealth checks to Hide, Sneak, or otherwise avoid detection. Otherwise, you gain the benefits of standard cover (a +2 circumstance bonus instead). This lasts until you move from your current space, use an attack action, become {@condition unconscious}, or end this effect as a free action."
 			]
 		},
 		{
-			"name": "Dodge",
-			"source": "PHB",
-			"page": 192,
+			"name": "Activate an Item",
+			"source": "CRB",
+			"page": 532,
 			"srd": true,
 			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
+				"Varies"
 			],
+			"requirements": "ou can Activate an Item with the invested trait only if it’s invested by you. If the item requires you to Interact with it, you must be wielding it (if it’s a held item) or touching it with a free hand (if it’s another type of item).",
 			"entries": [
-				"When you take the Dodge action, you focus entirely on avoiding attacks. Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Dexterity saving throws with advantage. You lose this benefit if you are incapacitated (as explained in the appendix) or if your speed drops to 0."
-			]
-		},
-		{
-			"name": "Don or Doff a Shield",
-			"source": "PHB",
-			"page": 146,
-			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"entries": [
-				"The time it takes to don or doff armor {@table Getting Into and Out of Armor; Donning and Doffing Armor|phb|depends on the armor's category}. A {@item shield|phb} can be donned or doffed as an action."
-			]
-		},
-		{
-			"name": "Escape a Grapple",
-			"source": "PHB",
-			"page": 195,
-			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"entries": [
-				"A {@condition grappled} creature can use its action to escape. To do so, it must succeed on a Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check contested by your Strength ({@skill Athletics}) check."
-			]
-		},
-		{
-			"name": "Grapple",
-			"source": "PHB",
-			"page": 195,
-			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"entries": [
-				"When you want to grab a creature or wrestle with it, you can use the {@action Attack} action to make a special melee attack, a grapple. If you're able to make multiple attacks with the {@action Attack} action, this attack replaces one of them. The target of your grapple must be no more than one size larger than you, and it must be within your reach.",
-				"Using at least one free hand, you try to seize the target by making a grapple check, a Strength ({@skill Athletics}) check contested by the target's Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check (the target chooses the ability to use). You succeed automatically if the target is {@condition incapacitated}. If you succeed, you subject the target to the {@condition grappled} condition (see the appendix). The condition specifies the things that end it, and you can release the target whenever you like (no action required).",
+				"You call forth the effect of an item by properly activating it. This is a special activity that takes a variable number of actions, as listed in the item’s stat block.",
+				"Some items can be activated as a reaction or free action. In this case, you Activate the Item as a reaction or free action (as appropriate) instead of as an activity. Such cases are noted in the item’s Activate entry in its stat block—for example, “Activate {@as R} command.”",
 				{
 					"type": "entries",
-					"name": "Moving a Grappled Target",
+					"name": "Long Activation Times",
 					"entries": [
-						"When you move, you can drag or carry the {@condition grappled} creature with you, but your speed is halved, unless the creature is two or more sizes smaller than you."
+						"Some items take minutes or hours to activate. The Activate an Item activity for these items includes a mix of the listed activation components, but it’s not necessary to break down which one you’re providing at a given time. You can’t use other actions or reactions while activating such an item, though at the GM’s discretion, you might be able to speak a few sentences. As with other activities that take a long time, these activations have the exploration trait, and you can’t activate them in an encounter. If combat breaks out while you’re activating one, your activation is disrupted (see the Disrupting Activations sidebar)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Activation Components",
+					"entries": [
+						"Each activation entry lists any components involved in the activation after the action icons or text, such as “{@as 1} command.” The activation components, described below, add traits (listed in parentheses) and requirements to the activation. If you can’t provide the components, you fail to Activate the Item.",
+						{
+							"type": "list",
+							"items": [
+							"Command ({@trait auditory}, {@trait concentrate})",
+							"Envision ({@trait concentrate})",
+							"Interact ({@trait manipulate})",
+							"{@action Cast a Spell}"
+							]
+						}
 					]
 				}
 			]
 		},
 		{
-			"name": "Healing Surge",
-			"source": "DMG",
-			"page": 266,
-			"fromVariant": "Healing",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"entries": [
-				"As an action, a character can use a healing surge and spend up to half his or her Hit Dice. For each Hit Die spent in this way, the player rolls the die and adds the character's Constitution modifier. The character regains hit points equal to the total. The player can decide to spend an additional Hit Die after each roll.",
-				"A character who uses a healing surge can't do so again until he or she finishes a short or long rest. Under this optional rule, a character regains all spent Hit Dice at the end of a long rest. With a short rest, a character regains Hit Dice equal to his or her level divided by four (minimum of one dice)."
-			]
-		},
-		{
-			"name": "Help",
-			"source": "PHB",
-			"page": 192,
-			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"entries": [
-				"You can lend your aid to another creature in the completion of a task. When you take the Help action, the creature you aid gains advantage on the next ability check it makes to perform the task you are helping with, provided that it makes the check before the start of your next turn.",
-				"Alternatively, you can aid a friendly creature in attacking a creature within 5 feet of you. You feint, distract the target, or in some other way team up to make your ally's attack more effective. If your ally attacks the target before your next turn, the first attack roll is made with advantage."
-			]
-		},
-		{
-			"name": "Hide",
-			"source": "PHB",
-			"page": 192,
-			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"entries": [
-				"When you take the Hide action, you make a Dexterity ({@skill Stealth}) check in an attempt to hide, following the rules in {@book chapter 7 |phb|7|hiding} for hiding. If you succeed, you gain certain benefits, as described in the \"{@book Unseen Attackers and Targets|PHB|9|unseen attackers and targets}\" section in the Player's Handbook."
-			]
-		},
-		{
-			"name": "Identify a Spell",
-			"source": "XGE",
-			"page": 85,
-			"fromVariant": "Spellcasting|XGE",
-			"time": [
-				{
-					"number": 1,
-					"unit": "reaction"
-				},
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"entries": [
-				"Sometimes a character wants to identify a spell that someone else is casting or that was already cast. To do so, a character can use their reaction to identify a spell as it's being cast, or they can use an action on their turn to identify a spell by its effect after it is cast.",
-				"If the character perceived the casting, the spell's effect, or both, the character can make an Intelligence ({@skill Arcana}) check with the reaction or action. The DC equals 15 + the spell's level. If the spell is cast as a class spell and the character is a member of that class, the check is made with advantage. For example, if the spellcaster casts a spell as a cleric, another cleric has advantage on the check to identify the spell. Some spells aren't associated with any class when they're cast, such as when a monster uses its Innate Spellcasting trait.",
-				"This Intelligence ({@skill Arcana}) check represents the fact that identifying a spell requires a quick mind and familiarity with the theory and practice of casting. This is true even for a character whose spellcasting ability is Wisdom or Charisma. Being able to cast spells doesn't by itself make you adept at deducing exactly what others are doing when they cast their spells."
-			]
-		},
-		{
-			"name": "Improvising an Action",
-			"source": "PHB",
-			"page": 193,
-			"time": [
-				"Varies"
-			],
-			"entries": [
-				"Your character can do things not covered by the actions in this chapter, such as breaking down doors, intimidating enemies, sensing weaknesses in magical defenses, or calling for a parley with a foe. The only limits to the actions you can attempt are your imagination and your character's ability scores. See the descriptions of the ability scores in {@book chapter 7|phb|7|Ability Scores and Modifiers} for inspiration as you improvise.",
-				"When you describe an action not detailed elsewhere in the rules, the DM tells you whether that action is possible and what kind of roll you need to make, if any, to determine success or failure."
-			]
-		},
-		{
-			"name": "Mark",
-			"source": "DMG",
-			"page": 271,
-			"fromVariant": "Action Options",
-			"entries": [
-				"This option makes it easier for melee combatants to harry each other with opportunity attacks.",
-				"When a creature makes a melee attack, it can also mark its target. Until the end of the attacker's next turn, any opportunity attack it makes against the marked target has advantage. The opportunity attack doesn't expend the attacker's reaction, but the attacker can't make the attack if anything, such as the {@condition incapacitated} condition or the shocking grasp spell, is preventing it from taking reactions. The attacker is limited to one opportunity attack per turn."
-			]
-		},
-		{
-			"name": "Opportunity Attack",
-			"source": "PHB",
-			"page": 195,
+			"name": "Arrest a Fall",
+			"source": "CRB",
+			"page": 472,
 			"srd": true,
 			"time": [
 				{
@@ -262,134 +390,97 @@
 					"unit": "reaction"
 				}
 			],
+			"trigger": "You fall.",
+			"requirements": "You have a fly Speed.",
 			"entries": [
-				"In a fight, everyone is constantly watching for enemies to drop their guard. You can rarely move heedlessly past your foes without putting yourself in danger; doing so provokes an opportunity attack.",
-				"You can make an opportunity attack when a hostile creature that you can see moves out of your reach. To make the opportunity attack, you use your reaction to make one melee attack against the provoking creature. The attack interrupts the provoking creature's movement, occurring right before the creature leaves your reach.",
-				"You can avoid provoking an opportunity attack by taking the {@action Disengage} action. You also don't provoke an opportunity attack when you teleport or when someone or something moves you without using your movement, action, or reaction. For example, you don't provoke an opportunity attack if an explosion hurls you out of a foe's reach or if gravity causes you to fall past an enemy."
+				"You attempt an Acrobatics check to slow your fall. The DC is typically 15, but it might be higher due to air turbulence or other circumstances.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "You fall gently, taking no damage from the fall."
+					}
+				}
 			]
 		},
 		{
-			"name": "Overrun",
-			"source": "DMG",
-			"page": 272,
-			"fromVariant": "Action Options",
+			"name": "Avert Gaze",
+			"source": "CRB",
+			"page": 472,
+			"srd": true,
 			"time": [
 				{
 					"number": 1,
 					"unit": "action"
+				}
+			],
+			"entries": [
+				"You avert your gaze from danger. You gain a +2 circumstance bonus to saves against visual abilities that require you to look at a creature or object, such as a medusa’s petrifying gaze. Your gaze remains averted until the start of your next turn."
+			]
+		},
+		{
+			"name": "Burrow",
+			"source": "CRB",
+			"page": 472,
+			"srd": true,
+			"traits": [
+				"Move"
+			],
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"requirements": "You have a burrow Speed",
+			"entries": [
+				"You dig your way through dirt, sand, or a similar loose material at a rate up to your burrow Speed. You can’t burrow through rock or other substances denser than dirt unless you have an ability that allows you to do so."
+			]
+		},
+		{
+			"name": "Activate an Item",
+			"source": "CRB",
+			"page": 302,
+			"srd": true,
+			"requirements": "ou can Activate an Item with the invested trait only if it’s invested by you. If the item requires you to Interact with it, you must be wielding it (if it’s a held item) or touching it with a free hand (if it’s another type of item).",
+			"entries": [
+				"You cast a spell you have prepared or in your repertoire. Casting a Spell is a special activity that takes a variable number of actions depending on the spell, as listed in each spell’s stat block. As soon as the spellcasting actions are complete, the spell effect occurs.",
+				"Some spells are cast as a reaction or free action. In those cases, you Cast the Spell as a reaction or free action (as appropriate) instead of as an activity. Such cases will be noted in the spell’s stat block—for example, “{@as R} verbal.”",
+				{
+					"type": "entries",
+					"name": "Long Casting Times",
+					"entries": [
+						"Some spells take minutes or hours to cast. The Cast a Spell activity for these spells includes a mix of the listed spell components, but it’s not necessary to break down which one you’re providing at a given time. You can’t use other actions or reactions while casting such a spell, though at the GM’s discretion, you might be able to speak a few sentences. As with other activities that take a long time, these spells have the {@trait exploration} trait, and you can’t cast them in an encounter. If combat breaks out while you’re casting one, your spell is disrupted (see Disrupted and Lost Spells below)."
+					]
 				},
 				{
-					"number": 1,
-					"unit": "bonus"
-				}
-			],
-			"entries": [
-				"When a creature tries to move through a hostile creature's space, the mover can try to force its way through by overrunning the hostile creature. As an action or a bonus action, the mover makes a Strength ({@skill Athletics}) check contested by the hostile creature's Strength ({@skill Athletics}) check. The creature attempting the overrun has advantage on this check if it is larger than the hostile creature, or disadvantage if it is smaller. If the mover wins the contest, it can move through the hostile creature's space once this turn."
-			]
-		},
-		{
-			"name": "Ready",
-			"source": "PHB",
-			"page": 193,
-			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"entries": [
-				"Sometimes you want to get the jump on a foe or wait for a particular circumstance before you act. To do so, you can take the Ready action on your turn, which lets you act using your reaction before the start of your next turn.",
-				"First, you decide what perceivable circumstance will trigger your reaction. Then, you choose the action you will take in response to that trigger, or you choose to move up to your speed in response to it. Examples include \"If the cultist steps on the trapdoor, I'll pull the lever that opens it,\" and \"If the goblin steps next to me, I move away.\"",
-				"When the trigger occurs, you can either take your reaction right after the trigger finishes or ignore the trigger. Remember that you can take only one reaction per round.",
-				"When you ready a spell, you cast it as normal but hold its energy, which you release with your reaction when the trigger occurs. To be readied, a spell must have a casting time of 1 action, and holding onto the spell's magic requires concentration (explained in {@book chapter 10|phb|10|concentration}). If your concentration is broken, the spell dissipates without taking effect. For example, if you are concentrating on the web spell and ready magic missile, your web spell ends, and if you take damage before you release magic missile with your reaction, your concentration might be broken.",
-				"You have until the start of your next turn to use a readied action."
-			]
-		},
-		{
-			"name": "Search",
-			"source": "PHB",
-			"page": 193,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"entries": [
-				"When you take the Search action, you devote your attention to finding something. Depending on the nature of your search, the DM might have you make a Wisdom ({@skill Perception}) check or an Intelligence ({@skill Investigation}) check."
-			]
-		},
-		{
-			"name": "Shove",
-			"source": "PHB",
-			"page": 195,
-			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"entries": [
-				"Using the {@action Attack} action, you can make a special melee attack to shove a creature, either to knock it {@condition prone} or push it away from you. If you're able to make multiple attacks with the {@action Attack} action, this attack replaces one of them.",
-				"The target of your shove must be no more than one size larger than you, and it must be within your reach. You make a Strength ({@skill Athletics}) check contested by the target's Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check (the target chooses the ability to use). You succeed automatically if the target is {@condition incapacitated}. If you succeed, you either knock the target {@condition prone} or push it 5 feet away from you."
-			]
-		},
-		{
-			"name": "Shove Aside",
-			"source": "DMG",
-			"page": 272,
-			"fromVariant": "Action Options",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
-			"entries": [
-				"With this option, a creature uses the special {@action shove} attack from the {@book Player's Handbook|9|Shoving a Creature} to force a target to the side, rather than away. The attacker has disadvantage on its Strength ({@skill Athletics}) check when it does so. If that check is successful, the attacker moves the target 5 feet to a different space within its reach."
-			]
-		},
-		{
-			"name": "Tumble",
-			"source": "DMG",
-			"page": 272,
-			"fromVariant": "Action Options",
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
+					"type": "entries",
+					"name": "Activation Components",
+					"entries": [
+						"Each spell lists the spell components required to cast it after the action icons or text, such as “{@as 3} material, somatic, verbal.“ The spell components, described in detail below, add traits and requirements to the Cast a Spell activity. If you can’t provide the components, you fail to Cast the Spell.",
+						{
+							"type": "list",
+							"items": [
+							"Material ({@trait manipulate})",
+							"Somatic ({@trait manipulate})",
+							"Verbal ({@trait concentrate})",
+							"Focus ({@trait manipulate})"
+							]
+						}
+					]
 				},
 				{
-					"number": 1,
-					"unit": "bonus"
+					"type": "entries",
+					"name": "Disrupted and Lost Spells",
+					"entries": [
+						"Some abilities and spells can disrupt a spell, causing it to have no effect and be lost. When you lose a spell, you’ve already expended the spell slot, spent the spell’s costs and actions, and used the Cast a Spell activity. If a spell is disrupted during a Sustain a Spell action, the spell immediately ends. The full rules for disrupting actions appear here."
+					]
 				}
-			],
-			"entries": [
-				"A creature can try to tumble through a hostile creature's space, ducking and weaving past the opponent. As an action or a bonus action, the tumbler makes a Dexterity ({@skill Acrobatics}) check contested by the hostile creature's Dexterity ({@skill Acrobatics}) check. If the tumbler wins the contest, it can move through the hostile creature's space once this turn."
 			]
 		},
 		{
-			"name": "Two-Weapon Fighting",
-			"source": "PHB",
-			"page": 195,
-			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "bonus"
-				}
-			],
-			"entries": [
-				"When you take the {@action Attack} action and attack with a light melee weapon that you're holding in one hand, you can use a bonus action to attack with a different light melee weapon that you're holding in the other hand. You don't add your ability modifier to the damage of the bonus attack, unless that modifier is negative.",
-				"If either weapon has the thrown property, you can throw the weapon, instead of making a melee attack with it."
-			]
-		},
-		{
-			"name": "Use an Object",
-			"source": "PHB",
-			"page": 193,
+			"name": "Dismiss",
+			"source": "CRB",
+			"page": 305,
 			"srd": true,
 			"time": [
 				{
@@ -397,8 +488,164 @@
 					"unit": "action"
 				}
 			],
+			"traits": [
+				"Concentrate"
+			],
 			"entries": [
-				"You normally interact with an object while doing something else, such as when you draw a sword as part of an attack. When an object requires your action for its use, you take the Use an Object action. This action is also useful when you want to interact with more than one object on your turn."
+				"You end one spell effect or magic item effect. This must be an effect you are allowed to dismiss, as defined by the spell or item. Dismissal might end the effect entirely or might end it just for a certain target or targets, depending on the spell or item."
+			]
+		},
+		{
+			"name": "Fly",
+			"source": "CRB",
+			"page": 305,
+			"srd": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"traits": [
+				"Move"
+			],
+			"requirements": "You have a fly Speed.",
+			"entries": [
+				"You move through the air up to your fly Speed. Moving upward (straight up or diagonally) uses the rules for moving through difficult terrain. You can move straight down 10 feet for every 5 feet of movement you spend. If you Fly to the ground, you don’t take falling damage. You can use an action to Fly 0 feet to hover in place. If you’re airborne at the end of your turn and didn’t use a Fly action this round, you fall."
+			]
+		},
+		{
+			"name": "Grab an Edge",
+			"source": "CRB",
+			"page": 472,
+			"srd": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction"
+				}
+			],
+			"trigger": "You fall from or past an edge or handhold.",
+			"requirements": "Your hands are not tied behind your back or otherwise restrained.",
+			"entries": [
+				"When you fall off or past an edge or other handhold, you can try to grab it, potentially stopping your fall. You must succeed at a Reflex save, usually at the Climb DC. If you grab the edge or handhold, you can then Climb up using Athletics.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You grab the edge or handhold, whether or not you have a hand free, typically by using a suitable held item to catch yourself (catching a battle axe on a ledge, for example). You still take damage from the distance fallen so far, but you treat the fall as though it were 30 feet shorter.",
+						"Success": "If you have at least one hand free, you grab the edge or handhold, stopping your fall. You still take damage from the distance fallen so far, but you treat the fall as though it were 20 feet shorter. If you have no hands free, you continue to fall as if you had failed the check.",
+						"Critical Failure": "You continue to fall, and if you’ve fallen 20 feet or more before you use this reaction, you take 10 bludgeoning damage from the impact for every 20 feet fallen."
+
+					}
+				}
+			]
+		},
+		{
+			"name": "Mount",
+			"source": "CRB",
+			"page": 472,
+			"srd": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"traits": [
+				"Move"
+			],
+			"entries": [
+				"You move onto the creature and ride it. If you’re already mounted, you can instead use this action to dismount, moving off the mount into a space adjacent to it."
+			]
+		},
+		{
+			"name": "Point Out",
+			"source": "CRB",
+			"page": 472,
+			"srd": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"traits": [
+				"Auditory",
+				"Manipulate",
+				"Visual"
+			],
+			"requirements": "A creature is {@condition undetected} by one or more of your allies but isn’t {@condition undetected} by you.",
+			"entries": [
+				"You indicate a creature that you can see to one or more allies, gesturing in a direction and describing the distance verbally. That creature is {@condition hidden} to your allies, rather than {@condition undetected}. This works only for allies who can see you and are in a position where they could potentially detect the target. If your allies can’t hear or understand you, they must succeed at a Perception check against the creature’s Stealth DC or they misunderstand and believe the target is in a different location."
+			]
+		},
+		{
+			"name": "Raise a Shield",
+			"source": "CRB",
+			"page": 472,
+			"srd": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"requirements": "You are wielding a shield.",
+			"entries": [
+				"You position your shield to protect yourself. When you have Raised a Shield, you gain its listed circumstance bonus to AC. Your shield remains raised until the start of your next turn."
+			]
+		},
+		{
+			"name": "Sustain a Spell",
+			"source": "CRB",
+			"page": 304,
+			"srd": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"traits": [
+				"Concentrate"
+			],
+			"requirements": "You have at least one spell active with a sustained duration, and you are not fatigued.",
+			"entries": [
+				"Choose one spell with a sustained duration you have in effect. The duration of that spell continues until the end of your next turn. Some spells might have slightly different or expanded effects if you sustain them. Sustaining a Spell for more than 10 minutes (100 rounds) ends the spell and makes you fatigued unless the spell lists a different maximum duration (such as “sustained up to 1 minute” or “sustained up to 1 hour”).",
+				"If your Sustain a Spell action is disrupted, the spell immediately ends."
+			]
+		},
+		{
+			"name": "Sustain an Activation",
+			"source": "CRB",
+			"page": 534,
+			"srd": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"requirements": "You have at least one magic item activation that you can sustain and you are not fatigued.",
+			"entries": [
+				"Choose one magic item activation with a sustained duration you have in effect. The duration of that activation continues until the end of your next turn. Some activations may have slightly different or expanded effects if you sustain them. Sustaining an Activation for more than 10 minutes (100 rounds) ends the activation and makes you fatigued unless the item’s description states a different maximum duration (such as “up to 1 minute” or “up to 1 hour”).",
+				"If your Sustain an Activation action is disrupted, the item’s effect immediately ends."
+			]
+		},
+		{
+			"name": "Attack of Opportunity",
+			"source": "CRB",
+			"page": 474,
+			"srd": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction"
+				}
+			],
+			"trigger": "A creature within your reach uses a {@trait manipulate} action or a {@trait move} action, makes a ranged attack, or leaves a square during a move action it’s using.",
+			"entries": [
+				"You lash out at a foe that leaves an opening. Make a melee Strike against the triggering creature. If your attack is a critical hit and the trigger was a manipulate action, you disrupt that action. This Strike doesn’t count toward your multiple attack penalty, and your multiple attack penalty doesn’t apply to this Strike."
 			]
 		}
 	]
