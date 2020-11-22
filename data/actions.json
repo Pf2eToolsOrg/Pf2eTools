@@ -185,7 +185,7 @@
 				"Free"
 			],
 			"entries": [
-				"You release something you’re holding in your hand or hands. This might mean dropping an item, removing one hand from your weapon while continuing to hold it in another hand, releasing a rope suspending a chandelier, or performing a similar action. Unlike most manipulate actions, Release does not trigger reactions that can be triggered by actions with the manipulate trait (such as Attack of Opportunity).",
+				"You release something you’re holding in your hand or hands. This might mean dropping an item, removing one hand from your weapon while continuing to hold it in another hand, releasing a rope suspending a chandelier, or performing a similar action. Unlike most manipulate actions, Release does not trigger reactions that can be triggered by actions with the manipulate trait (such as {@action Attack of Opportunity}).",
 				"If you want to prepare to Release something outside of your turn, use the {@action Ready} activity."
 			]
 		},
@@ -630,6 +630,22 @@
 			"entries": [
 				"Choose one magic item activation with a sustained duration you have in effect. The duration of that activation continues until the end of your next turn. Some activations may have slightly different or expanded effects if you sustain them. Sustaining an Activation for more than 10 minutes (100 rounds) ends the activation and makes you fatigued unless the item’s description states a different maximum duration (such as “up to 1 minute” or “up to 1 hour”).",
 				"If your Sustain an Activation action is disrupted, the item’s effect immediately ends."
+			]
+		},
+		{
+			"name": "Attack of Opportunity",
+			"source": "CRB",
+			"page": 474,
+			"srd": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction"
+				}
+			],
+			"trigger": "A creature within your reach uses a {@trait manipulate} action or a {@trait move} action, makes a ranged attack, or leaves a square during a move action it’s using.",
+			"entries": [
+				"You lash out at a foe that leaves an opening. Make a melee Strike against the triggering creature. If your attack is a critical hit and the trigger was a manipulate action, you disrupt that action. This Strike doesn’t count toward your multiple attack penalty, and your multiple attack penalty doesn’t apply to this Strike."
 			]
 		}
 	]
