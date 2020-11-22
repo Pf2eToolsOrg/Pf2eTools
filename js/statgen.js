@@ -462,16 +462,16 @@ class StatGen {
 	rollStats () {
 		const formula = $(`#stats-formula`).val();
 
-		const tree = Renderer.dice.lang.getTree3(formula);
+		const wrpTree = Renderer.dice.lang.getTree3(formula);
 
 		const $rolled = $("#rolled");
-		if (!tree) {
+		if (!wrpTree) {
 			$rolled.find("#rolls").prepend(`<p>Invalid dice formula!</p>`)
 		} else {
 			const rolls = [];
 			for (let i = 0; i < 6; i++) {
 				const meta = {};
-				meta.__total = tree.evl(meta);
+				meta.__total = wrpTree.tree.evl(meta);
 				rolls.push(meta);
 			}
 			rolls.sort((a, b) => SortUtil.ascSort(b.__total, a.__total));

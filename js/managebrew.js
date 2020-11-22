@@ -69,6 +69,7 @@ class ManageBrew {
 						case "skill": populateGenericSection("Skills"); break;
 						case "senses": populateGenericSection("Senses"); break;
 						case "optionalFeatureTypes": populateGenericSection("Optional Feature Types", (brew, metaType, k) => brew[metaType][k] || k); break;
+						case "charOption": populateGenericSection("Character Creation Option Types", (brew, metaType, k) => brew[metaType][k] || k); break;
 						case "psionicTypes": populateGenericSection("Psionic Types", (brew, metaType, k) => brew[metaType][k].full || k); break;
 					}
 					handleSecChange(i);

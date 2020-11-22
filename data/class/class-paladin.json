@@ -280,6 +280,7 @@
 				},
 				"Ability Score Improvement|Paladin||4",
 				"Proficiency Versatility|Paladin||4|UAClassFeatureVariants",
+				"Martial Versatility|Paladin||4|TCE",
 				"Extra Attack|Paladin||5",
 				"Aura of Protection|Paladin||6",
 				{
@@ -775,6 +776,7 @@
 					"shortName": "Watchers (UA)",
 					"source": "UA2020SubclassesPt1",
 					"page": 3,
+					"isReprinted": true,
 					"additionalSpells": [
 						{
 							"prepared": {
@@ -811,8 +813,14 @@
 				{
 					"name": "Oath of Glory",
 					"shortName": "Glory",
-					"source": "MOT",
-					"page": 29,
+					"source": "TCE",
+					"page": 53,
+					"otherSources": [
+						{
+							"source": "MOT",
+							"page": 29
+						}
+					],
 					"additionalSpells": [
 						{
 							"prepared": {
@@ -840,10 +848,48 @@
 						}
 					],
 					"subclassFeatures": [
-						"Oath of Glory|Paladin||Glory|MOT|3",
-						"Aura of Alacrity|Paladin||Glory|MOT|7",
-						"Glorious Defense|Paladin||Glory|MOT|15",
-						"Living Legend|Paladin||Glory|MOT|20"
+						"Oath of Glory|Paladin||Glory|TCE|3",
+						"Aura of Alacrity|Paladin||Glory|TCE|7",
+						"Glorious Defense|Paladin||Glory|TCE|15",
+						"Living Legend|Paladin||Glory|TCE|20"
+					]
+				},
+				{
+					"name": "Oath of the Watchers",
+					"shortName": "Watchers",
+					"source": "TCE",
+					"page": 54,
+					"additionalSpells": [
+						{
+							"prepared": {
+								"3": [
+									"alarm",
+									"detect magic"
+								],
+								"5": [
+									"moonbeam",
+									"see invisibility"
+								],
+								"9": [
+									"counterspell",
+									"nondetection"
+								],
+								"13": [
+									"aura of purity",
+									"banishment"
+								],
+								"17": [
+									"hold monster",
+									"scrying"
+								]
+							}
+						}
+					],
+					"subclassFeatures": [
+						"Oath of the Watchers|Paladin||Watchers|TCE|3",
+						"Aura of the Sentinel|Paladin||Watchers|TCE|7",
+						"Vigilant Rebuke|Paladin||Watchers|TCE|15",
+						"Mortal Bulwark|Paladin||Watchers|TCE|20"
 					]
 				}
 			],
@@ -1318,6 +1364,18 @@
 						{
 							"type": "refOptionalfeature",
 							"optionalfeature": "Blessed Warrior|UAClassFeatureVariants"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blessed Warrior|TCE"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blind Fighting|TCE"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Interception|TCE"
 						}
 					]
 				}
@@ -1330,6 +1388,7 @@
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 2,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 2nd-level feature (enhances Fighting Style)}",
 				"Whenever you gain a level in this class, you can replace a fighting style you know with another style available to your class. This change represents a shift of focus in your martial training and practice, causing you to lose the benefits of one style and gain the benefits of another style."
@@ -1387,11 +1446,25 @@
 		},
 		{
 			"name": "Channel Divinity: Harness Divine Power",
+			"source": "TCE",
+			"page": 52,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 3,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 3rd-level paladin {@variantrule optional class features|tce|optional feature}}",
+				"You can expend a use of your Channel Divinity to fuel your spells. As a bonus action, you touch your holy symbol, utter a prayer, and regain one expended spell slot, the level of which can be no higher than half your proficiency bonus (rounded up). The number of times you can use this feature is based on the level you've reached in this class: 3rd level, once; 7th level, twice; and 15th level, thrice. You regain all expended uses when you finish a long rest."
+			]
+		},
+		{
+			"name": "Channel Divinity: Harness Divine Power",
 			"source": "UAClassFeatureVariants",
 			"page": 6,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 3,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 3rd-level paladin feature (enhances Channel Divinity)}",
 				"You can expend a use of your Channel Divinity to fuel your spells. As a bonus action, you touch your holy symbol, utter a prayer, and regain one expended 1st-level spell slot."
@@ -1442,6 +1515,10 @@
 					"classFeature": "Channel Divinity: Harness Divine Power|Paladin||3|UAClassFeatureVariants"
 				},
 				{
+					"type": "refClassFeature",
+					"classFeature": "Channel Divinity: Harness Divine Power|Paladin||3|TCE"
+				},
+				{
 					"name": "Breaking Your Oath",
 					"type": "inset",
 					"entries": [
@@ -1466,12 +1543,26 @@
 			]
 		},
 		{
+			"name": "Martial Versatility",
+			"source": "TCE",
+			"page": 52,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level paladin {@variantrule optional class features|tce|optional feature}}",
+				"Whenever you reach a level in this class that grants the Ability Score Improvement feature, you can replace a {@filter fighting style|optionalfeatures|feature type=FS:P} you know with another fighting style available to paladins. This replacement represents a shift of focus in your martial practice."
+			]
+		},
+		{
 			"name": "Proficiency Versatility",
 			"source": "UAClassFeatureVariants",
 			"page": 1,
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 4,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 4th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1535,6 +1626,7 @@
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 8,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 8th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1586,6 +1678,7 @@
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 12,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 12th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1637,6 +1730,7 @@
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 16,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 16th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1675,6 +1769,7 @@
 			"className": "Paladin",
 			"classSource": "PHB",
 			"level": 19,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 19th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1769,8 +1864,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -1840,229 +1935,6 @@
 				"At 20th level, the paladin can, as an action, surround himself or herself with an aura of gloom that lasts for 1 minute. The aura reduces any bright light in a 30-foot radius around the paladin to dim light. Whenever an enemy that is {@condition frightened} by the paladin starts its turn in the aura, it takes {@damage 4d10} psychic damage. Additionally, the paladin and creatures he or she chooses in the aura are draped in deeper shadow. Creatures that rely on sight have disadvantage on attack rolls against creatures draped in this shadow.",
 				"While the aura lasts, the paladin can use a bonus action on his or her turn to cause the shadows in the aura to attack one creature. The paladin makes a melee spell attack against the target. If the attack hits, the target takes necrotic damage equal to {@dice 3d10} + the paladin's Charisma modifier.",
 				"After activating the aura, the paladin can't do so again until he or she finishes a long rest."
-			]
-		},
-		{
-			"name": "Oath of Glory",
-			"source": "MOT",
-			"page": 29,
-			"className": "Paladin",
-			"classSource": "PHB",
-			"subclassShortName": "Glory",
-			"subclassSource": "MOT",
-			"level": 3,
-			"entries": [
-				"Paladins who take the Oath of Glory believe they and their companions are destined to achieve glory through deeds of heroism. They train diligently and encourage their companions so they're all ready when destiny calls.",
-				{
-					"type": "refSubclassFeature",
-					"subclassFeature": "Tenets of Glory|Paladin||Glory|MOT|3"
-				},
-				{
-					"type": "refSubclassFeature",
-					"subclassFeature": "Oath Spells|Paladin||Glory|MOT|3"
-				},
-				{
-					"type": "refSubclassFeature",
-					"subclassFeature": "Channel Divinity|Paladin||Glory|MOT|3"
-				}
-			]
-		},
-		{
-			"name": "Channel Divinity",
-			"source": "MOT",
-			"page": 29,
-			"className": "Paladin",
-			"classSource": "PHB",
-			"subclassShortName": "Glory",
-			"subclassSource": "MOT",
-			"level": 3,
-			"header": 1,
-			"entries": [
-				"{@i 3rd-level Oath of Glory feature}",
-				"You gain the following two Channel Divinity options. See the Sacred Oath class feature for how Channel Divinity works.",
-				{
-					"type": "refSubclassFeature",
-					"subclassFeature": "Peerless Athlete|Paladin||Glory|MOT|3"
-				},
-				{
-					"type": "refSubclassFeature",
-					"subclassFeature": "Inspiring Smite|Paladin||Glory|MOT|3"
-				}
-			]
-		},
-		{
-			"name": "Oath Spells",
-			"source": "MOT",
-			"page": 29,
-			"className": "Paladin",
-			"classSource": "PHB",
-			"subclassShortName": "Glory",
-			"subclassSource": "MOT",
-			"level": 3,
-			"header": 1,
-			"entries": [
-				"{@i 3rd-level Oath of Glory feature}",
-				"You gain oath spells at the paladin levels listed in the Oath of Glory Spells table. See the Sacred Oath class feature for how oath spells work.",
-				{
-					"type": "table",
-					"caption": "Oath of Glory Spells",
-					"colLabels": [
-						"Paladin Level",
-						"Spells"
-					],
-					"colStyles": [
-						"col-3 text-center",
-						"col-9"
-					],
-					"rows": [
-						[
-							"3rd",
-							"{@spell guiding bolt}, {@spell heroism}"
-						],
-						[
-							"5th",
-							"{@spell enhance ability}, {@spell magic weapon}"
-						],
-						[
-							"9th",
-							"{@spell haste}, {@spell protection from energy}"
-						],
-						[
-							"13th",
-							"{@spell compulsion}, {@spell freedom of movement}"
-						],
-						[
-							"17th",
-							"{@spell commune}, {@spell flame strike}"
-						]
-					]
-				}
-			]
-		},
-		{
-			"name": "Tenets of Glory",
-			"source": "MOT",
-			"page": 29,
-			"className": "Paladin",
-			"classSource": "PHB",
-			"subclassShortName": "Glory",
-			"subclassSource": "MOT",
-			"level": 3,
-			"header": 1,
-			"entries": [
-				"The tenets of the Oath of Glory drive a paladin to attempt heroics that might one day shine in legend.",
-				{
-					"type": "entries",
-					"name": "Actions over Words",
-					"entries": [
-						"Strive to be known by glorious deeds, not words."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Challenges Are but Tests",
-					"entries": [
-						"Face hardships with courage, and encourage your allies to face them with you."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Hone the Body",
-					"entries": [
-						"Like raw stone, your body must be worked so its potential can be realized."
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Discipline the Soul",
-					"entries": [
-						"You must marshal the discipline to overcome failings within yourself that threaten to dim the glory of you and your friends."
-					]
-				}
-			]
-		},
-		{
-			"name": "Inspiring Smite",
-			"source": "MOT",
-			"page": 29,
-			"className": "Paladin",
-			"classSource": "PHB",
-			"subclassShortName": "Glory",
-			"subclassSource": "MOT",
-			"level": 3,
-			"header": 2,
-			"entries": [
-				"Immediately after you deal damage to a creature with your Divine Smite feature, you can use your Channel Divinity as a bonus action and distribute temporary hit points to creatures of your choice within 30 feet of you, which can include you. The total number of temporary hit points equals {@dice 2d8} + your level in this class, divided among the chosen creatures however you like."
-			]
-		},
-		{
-			"name": "Peerless Athlete",
-			"source": "MOT",
-			"page": 29,
-			"className": "Paladin",
-			"classSource": "PHB",
-			"subclassShortName": "Glory",
-			"subclassSource": "MOT",
-			"level": 3,
-			"header": 2,
-			"entries": [
-				"As a bonus action, you can use your Channel Divinity to augment your athleticism. For the next 10 minutes, you have advantage on Strength ({@skill Athletics}) and Dexterity ({@skill Acrobatics}) checks; you can carry, push, drag, and lift twice as much weight as normal; and the distance of your long and high jumps increases by 10 feet (this extra distance costs movement as normal)."
-			]
-		},
-		{
-			"name": "Aura of Alacrity",
-			"source": "MOT",
-			"page": 29,
-			"className": "Paladin",
-			"classSource": "PHB",
-			"subclassShortName": "Glory",
-			"subclassSource": "MOT",
-			"level": 7,
-			"header": 2,
-			"entries": [
-				"{@i 7th-level Oath of Glory feature}",
-				"You emanate an aura that fills you and your companions with supernatural speed, allowing you to race across a battlefield in formation. Your walking speed increases by 10 feet. In addition, if you aren't {@condition incapacitated}, the walking speed of any ally who starts their turn within 5 feet of you increases by 10 feet until the end of that turn.",
-				"When you reach 18th level in this class, the range of the aura increases to 10 feet."
-			]
-		},
-		{
-			"name": "Glorious Defense",
-			"source": "MOT",
-			"page": 29,
-			"className": "Paladin",
-			"classSource": "PHB",
-			"subclassShortName": "Glory",
-			"subclassSource": "MOT",
-			"level": 15,
-			"header": 2,
-			"entries": [
-				"{@i 15th-level Oath of Glory feature}",
-				"You can turn defense into a sudden strike. When you or another creature you can see within 10 feet of you is hit by an attack roll, you can use your reaction to grant a bonus to the target's AC against that attack, potentially causing it to miss. The bonus equals your Charisma modifier (minimum of +1). If the attack misses, you can make one weapon attack against the attacker as part of this reaction, provided the attacker is within your weapon's range.",
-				"You can use this feature a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a long rest."
-			]
-		},
-		{
-			"name": "Living Legend",
-			"source": "MOT",
-			"page": 29,
-			"className": "Paladin",
-			"classSource": "PHB",
-			"subclassShortName": "Glory",
-			"subclassSource": "MOT",
-			"level": 20,
-			"header": 2,
-			"entries": [
-				"{@i 20th-level Oath of Glory feature}",
-				"You can empower yourself with the legends\u2014whether true or exaggerated\u2014of your great deeds. As a bonus action, you gain the following benefits for 1 minute:",
-				{
-					"type": "list",
-					"items": [
-						"You are blessed with an otherworldly presence, gaining advantage on all Charisma checks.",
-						"Once on each of your turns when you make a weapon attack and miss, you can cause that attack to hit instead.",
-						"If you fail a saving throw, you can use your reaction to reroll it. You must use this new roll."
-					]
-				},
-				"Once you use this feature, you can't use it again until you finish a long rest, unless you expend a 5th-level spell slot to use it again."
 			]
 		},
 		{
@@ -2144,8 +2016,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2371,8 +2243,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2602,8 +2474,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2819,8 +2691,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2961,6 +2833,478 @@
 			]
 		},
 		{
+			"name": "Oath of Glory",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Paladins who take the Oath of Glory believe they and their companions are destined to achieve glory through deeds of heroism. They train diligently and encourage their companions so they're all ready when destiny calls.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Glory|Paladin||Glory|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Glory|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity|Paladin||Glory|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Oath of Glory feature}",
+				"You gain the following two Channel Divinity options. See the Sacred Oath class feature for how Channel Divinity works.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Peerless Athlete|Paladin||Glory|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Inspiring Smite|Paladin||Glory|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Oath of Glory feature}",
+				"You gain oath spells at the paladin levels listed in the Oath of Glory Spells table. See the Sacred Oath class feature for how oath spells work.",
+				{
+					"type": "table",
+					"caption": "Oath of Glory Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell guiding bolt}, {@spell heroism}"
+						],
+						[
+							"5th",
+							"{@spell enhance ability}, {@spell magic weapon}"
+						],
+						[
+							"9th",
+							"{@spell haste}, {@spell protection from energy}"
+						],
+						[
+							"13th",
+							"{@spell compulsion}, {@spell freedom of movement}"
+						],
+						[
+							"17th",
+							"{@spell commune}, {@spell flame strike}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Glory",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"The tenets of the Oath of Glory drive a paladin to attempt heroics that might one day shine in legend.",
+				{
+					"type": "entries",
+					"name": "Actions over Words",
+					"entries": [
+						"Strive to be known by glorious deeds, not words."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Challenges Are but Tests",
+					"entries": [
+						"Face hardships with courage, and encourage your allies to face them with you."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hone the Body",
+					"entries": [
+						"Like raw stone, your body must be worked so its potential can be realized."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Discipline the Soul",
+					"entries": [
+						"You must marshal the discipline to overcome failings within yourself that threaten to dim the glory of you and your friends."
+					]
+				}
+			]
+		},
+		{
+			"name": "Inspiring Smite",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Immediately after you deal damage to a creature with your Divine Smite feature, you can use your Channel Divinity as a bonus action and distribute temporary hit points to creatures of your choice within 30 feet of you, which can include you. The total number of temporary hit points equals {@dice 2d8} + your level in this class, divided among the chosen creatures however you like."
+			]
+		},
+		{
+			"name": "Peerless Athlete",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"As a bonus action, you can use your Channel Divinity to augment your athleticism. For the next 10 minutes, you have advantage on Strength ({@skill Athletics}) and Dexterity ({@skill Acrobatics}) checks; you can carry, push, drag, and lift twice as much weight as normal; and the distance of your long and high jumps increases by 10 feet (this extra distance costs movement as normal)."
+			]
+		},
+		{
+			"name": "Aura of Alacrity",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"{@i 7th-level Oath of Glory feature}",
+				"You emanate an aura that fills you and your companions with supernatural speed, allowing you to race across a battlefield in formation. Your walking speed increases by 10 feet. In addition, if you aren't {@condition incapacitated}, the walking speed of any ally who starts their turn within 5 feet of you increases by 10 feet until the end of that turn.",
+				"When you reach 18th level in this class, the range of the aura increases to 10 feet."
+			]
+		},
+		{
+			"name": "Glorious Defense",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Oath of Glory feature}",
+				"You can turn defense into a sudden strike. When you or another creature you can see within 10 feet of you is hit by an attack roll, you can use your reaction to grant a bonus to the target's AC against that attack, potentially causing it to miss. The bonus equals your Charisma modifier (minimum of +1). If the attack misses, you can make one weapon attack against the attacker as part of this reaction, provided the attacker is within your weapon's range.",
+				"You can use this feature a number of times equal to your Charisma modifier (minimum of once), and you regain all expended uses when you finish a long rest."
+			]
+		},
+		{
+			"name": "Living Legend",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"{@i 20th-level Oath of Glory feature}",
+				"You can empower yourself with the legends\u2014whether true or exaggerated\u2014of your great deeds. As a bonus action, you gain the following benefits for 1 minute:",
+				{
+					"type": "list",
+					"items": [
+						"You are blessed with an otherworldly presence, gaining advantage on all Charisma checks.",
+						"Once on each of your turns when you make a weapon attack and miss, you can cause that attack to hit instead.",
+						"If you fail a saving throw, you can use your reaction to reroll it. You must use this new roll."
+					]
+				},
+				"Once you use this feature, you can't use it again until you finish a long rest, unless you expend a 5th-level spell slot to use it again."
+			]
+		},
+		{
+			"name": "Oath of the Watchers",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"The Oath of the Watchers binds paladins to protect mortal realms from the predations of extraplanar creatures, many of which can lay waste to mortal soldiers. Thus, the Watchers hone their minds, spirits, and bodies to be the ultimate weapons against such threats.",
+				"Paladins who follow the Watchers' oath are ever vigilant in spotting the influence of extraplanar forces, often establishing a network of spies and informants to gather information on suspected cults. To a Watcher, keeping a healthy suspicion and awareness about one's surroundings is as natural as wearing armor in battle.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of the Watchers|Paladin||Watchers|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Watchers|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity|Paladin||Watchers|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Oath of the Watchers feature}",
+				"You gain the following Channel Divinity options. See the Sacred Oath class feature for how Channel Divinity works.",
+				{
+					"type": "entries",
+					"name": "Watcher's Will",
+					"entries": [
+						"You can use your Channel Divinity to invest your presence with the warding power of your faith. As an action, you can choose a number of creatures you can see within 30 feet of you, up to a number equal to your Charisma modifier (minimum of one creature). For 1 minute, you and the chosen creatures have advantage on Intelligence, Wisdom, and Charisma saving throws."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Abjure the Extraplanar",
+					"entries": [
+						"You can use your Channel Divinity to castigate unworldly beings. As an action, you present your holy symbol and each aberration, celestial, elemental, fey, or fiend within 30 feet of you that can hear you must make a Wisdom saving throw. On a failed save, the creature is turned for 1 minute or until it takes damage.",
+						"A turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly end its move in a space within 30 feet of you. For its action, it can use only the {@action Dash} action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can take the {@action Dodge} action."
+					]
+				}
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Oath of the Watchers feature}",
+				"You gain oath spells at the paladin levels listed in the Oath of the Watchers table. See the Sacred Oath class feature for how oath spells work.",
+				{
+					"type": "table",
+					"caption": "Oath of the Watchers Spells  Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell alarm}, {@spell detect magic}"
+						],
+						[
+							"5th",
+							"{@spell moonbeam}, {@spell see invisibility}"
+						],
+						[
+							"9th",
+							"{@spell counterspell}, {@spell nondetection}"
+						],
+						[
+							"13th",
+							"{@spell aura of purity}, {@spell banishment}"
+						],
+						[
+							"17th",
+							"{@spell hold monster}, {@spell scrying}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of the Watchers",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"A paladin who assumes the Oath of the Watchers swears to safeguard mortal realms from otherworldly threats.",
+				{
+					"type": "entries",
+					"name": "Vigilance",
+					"entries": [
+						"The threats you face are cunning, powerful, and subversive. Be ever alert for their corruption."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Loyalty",
+					"entries": [
+						"Never accept gifts or favors from fiends or those who truck with them. Stay true to your order, your comrades, and your duty."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Discipline",
+					"entries": [
+						"You are the shield against the endless terrors that lie beyond the stars. Your blade must be forever sharp and your mind keen to survive what lies beyond."
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of the Sentinel",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"{@i 7th-level Oath of the Watchers feature}",
+				"You emit an aura of alertness while you aren't {@condition incapacitated}. When you and any creatures of your choice within 10 feet of you roll initiative, you all gain a bonus to initiative equal to your proficiency bonus.",
+				"At 18th level, the range of this aura increases to 30 feet."
+			]
+		},
+		{
+			"name": "Vigilant Rebuke",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Oath of the Watchers feature}",
+				"You've learned how to chastise anyone who dares wield beguilements against you and your wards. Whenever you or a creature you can see within 30 feet of you succeeds on an Intelligence, a Wisdom, or a Charisma saving throw, you can use your reaction to deal {@damage 2d8} + your Charisma modifier force damage to the creature that forced the saving throw."
+			]
+		},
+		{
+			"name": "Mortal Bulwark",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"{@i 20th-level Oath of the Watchers feature}",
+				"You manifest a spark of divine power in defense of the mortal realms. As a bonus action, you gain the following benefits for 1 minute:",
+				{
+					"type": "list",
+					"items": [
+						"You gain {@sense truesight} with a range of 120 feet.",
+						"You have advantage on attack rolls against aberrations, celestials, elementals, fey, and fiends.",
+						"When you hit a creature with an attack roll and deal damage to it, you can also force it to make a Charisma saving throw against your spell save DC. On a failed save, the creature is magically banished to its native plane of existence if it's currently not there. On a successful save, the creature can't be banished by this feature for 24 hours."
+					]
+				},
+				"Once you use this bonus action, you can't use it again until you finish a long rest, unless you expend a 5th-level spell slot to use it again."
+			]
+		},
+		{
 			"name": "Oath of the Watchers",
 			"source": "UA2020SubclassesPt1",
 			"page": 3,
@@ -3037,8 +3381,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -3254,8 +3598,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -3483,8 +3827,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -3692,8 +4036,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -3900,8 +4244,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -4096,8 +4440,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -4304,8 +4648,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -4503,8 +4847,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[

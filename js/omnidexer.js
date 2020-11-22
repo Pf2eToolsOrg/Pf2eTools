@@ -683,32 +683,6 @@ class IndexableFileOptFeatures_ArtificerInfusion extends IndexableFile {
 	}
 }
 
-class IndexableFileOptFeatures_ShipUpgrade extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_SHIP_UPGRADE,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "SHP:H") || Omnidexer.arrIncludesOrEquals(it.featureType, "SHP:M") || Omnidexer.arrIncludesOrEquals(it.featureType, "SHP:W") || Omnidexer.arrIncludesOrEquals(it.featureType, "SHP:F"),
-		});
-	}
-}
-
-class IndexableFileOptFeatures_InfernalWarMachineUpgrade extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "IWM:W") || Omnidexer.arrIncludesOrEquals(it.featureType, "IWM:A") || Omnidexer.arrIncludesOrEquals(it.featureType, "IWM:G"),
-		});
-	}
-}
-
 class IndexableFileOptFeatures_OnomancyResonant extends IndexableFile {
 	constructor () {
 		super({
@@ -1059,6 +1033,32 @@ class IndexableFileVehicles extends IndexableFile {
 	}
 }
 
+class IndexableFileVehicles_ShipUpgrade extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_SHIP_UPGRADE,
+			file: "vehicles.json",
+			listProp: "vehicleUpgrade",
+			baseUrl: "vehicles.html",
+			isHover: true,
+			include: (it) => Omnidexer.arrIncludesOrEquals(it.upgradeType, "SHP:H") || Omnidexer.arrIncludesOrEquals(it.upgradeType, "SHP:M") || Omnidexer.arrIncludesOrEquals(it.upgradeType, "SHP:W") || Omnidexer.arrIncludesOrEquals(it.upgradeType, "SHP:F"),
+		});
+	}
+}
+
+class IndexableFileVehicles_InfernalWarMachineUpgrade extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE,
+			file: "vehicles.json",
+			listProp: "vehicleUpgrade",
+			baseUrl: "vehicles.html",
+			isHover: true,
+			include: (it) => Omnidexer.arrIncludesOrEquals(it.upgradeType, "IWM:W") || Omnidexer.arrIncludesOrEquals(it.upgradeType, "IWM:A") || Omnidexer.arrIncludesOrEquals(it.upgradeType, "IWM:G"),
+		});
+	}
+}
+
 class IndexableFileActions extends IndexableFile {
 	constructor () {
 		super({
@@ -1089,6 +1089,18 @@ class IndexableFileLanguages extends IndexableFile {
 	}
 }
 
+class IndexableFileCharCreationOptions extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_CHAR_CREATION_OPTIONS,
+			file: "charcreationoptions.json",
+			listProp: "charoption",
+			baseUrl: "charcreationoptions.html",
+			isHover: true,
+		});
+	}
+}
+
 Omnidexer.TO_INDEX = [
 	new IndexableFileBackgrounds(),
 	new IndexableFileConditions(),
@@ -1105,8 +1117,6 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileOptFeatures_PactBoon(),
 	new IndexableFileOptFeatures_ElementalDiscipline(),
 	new IndexableFileOptFeatures_ArtificerInfusion(),
-	new IndexableFileOptFeatures_ShipUpgrade(),
-	new IndexableFileOptFeatures_InfernalWarMachineUpgrade(),
 	new IndexableFileOptFeatures_OnomancyResonant(),
 	new IndexableFileOptFeatures_RuneKnightRune(),
 	new IndexableFileOptFeatures_AlchemicalFormula(),
@@ -1132,9 +1142,14 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileBoons(),
 	new IndexableFileTables(),
 	new IndexableFileTableGroups(),
+
 	new IndexableFileVehicles(),
+	new IndexableFileVehicles_ShipUpgrade(),
+	new IndexableFileVehicles_InfernalWarMachineUpgrade(),
+
 	new IndexableFileActions(),
 	new IndexableFileLanguages(),
+	new IndexableFileCharCreationOptions(),
 ];
 
 class IndexableSpecial {

@@ -30,7 +30,7 @@ class BackgroundPage extends ListPage {
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-4 pl-0">${name}</span>
 			<span class="col-6">${bg._skillDisplay}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(bg.source)}" title="${Parser.sourceJsonToFull(bg.source)} pr-0" ${BrewUtil.sourceJsonToStyle(bg.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(bg.source)} pr-0" title="${Parser.sourceJsonToFull(bg.source)}" ${BrewUtil.sourceJsonToStyle(bg.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(

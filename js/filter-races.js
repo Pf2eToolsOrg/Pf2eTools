@@ -131,6 +131,7 @@ class PageFilterRaces extends PageFilter {
 				"Damage Resistance",
 				"Darkvision", "Superior Darkvision",
 				"Dragonmark",
+				"Feat",
 				"Improved Resting",
 				"Monstrous Race",
 				"Natural Armor",

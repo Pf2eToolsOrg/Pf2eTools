@@ -57,19 +57,25 @@ Renderer.dice = {
 	},
 	// endregion
 
-	/** Silently roll an expression and get the result. */
+	/**
+	 * Silently roll an expression and get the result.
+	 * Note that this does not support dynamic variables (e.g. user proficiency bonus).
+	 */
 	parseRandomise2 (str) {
 		if (!str || !str.trim()) return null;
-		const tree = Renderer.dice.lang.getTree3(str);
-		if (tree) return tree.evl({});
+		const wrpTree = Renderer.dice.lang.getTree3(str);
+		if (wrpTree) return wrpTree.tree.evl({});
 		else return null;
 	},
 
-	/** Silently get the average of an expression. */
+	/**
+	 * Silently get the average of an expression.
+	 * Note that this does not support dynamic variables (e.g. user proficiency bonus).
+	 */
 	parseAverage (str) {
 		if (!str || !str.trim()) return null;
-		const tree = Renderer.dice.lang.getTree3(str);
-		if (tree) return tree.avg({});
+		const wrpTree = Renderer.dice.lang.getTree3(str);
+		if (wrpTree) return wrpTree.tree.avg({});
 		else return null;
 	},
 
@@ -290,8 +296,9 @@ Renderer.dice = {
 	},
 
 	__rollPackedData ($ele) {
-		const tree = Renderer.dice.lang.getTree3($ele.data("packed-dice").toRoll);
-		return tree.evl({});
+		// Note that this does not support dynamic variables (e.g. user proficiency bonus)
+		const wrpTree = Renderer.dice.lang.getTree3($ele.data("packed-dice").toRoll);
+		return wrpTree.tree.evl({});
 	},
 
 	_pRollerClick_getMsgBug (total) { return `<span class="message">No result found matching roll ${total}?! <span class="help--subtle" title="Bug!">🐛</span></span>`; },
@@ -489,8 +496,8 @@ Renderer.dice = {
 				str = tail.join(":");
 				rolledBy.label = head;
 			}
-			const tree = Renderer.dice.lang.getTree3(str);
-			return Renderer.dice._pHandleRoll2(tree, rolledBy, opts);
+			const wrpTree = Renderer.dice.lang.getTree3(str);
+			return Renderer.dice._pHandleRoll2(wrpTree, rolledBy, opts);
 		}
 	},
 
@@ -510,15 +517,15 @@ Renderer.dice = {
 		delete opts.rollCount;
 		if (rollCount <= 0) throw new Error(`Invalid roll count: ${rollCount} (must be a positive integer)`);
 
-		const tree = Renderer.dice.lang.getTree3(entry.toRoll);
-		tree.successThresh = entry.successThresh;
-		tree.successMax = entry.successMax;
+		const wrpTree = Renderer.dice.lang.getTree3(entry.toRoll);
+		wrpTree.tree.successThresh = entry.successThresh;
+		wrpTree.tree.successMax = entry.successMax;
 
 		// arbitrarily return the result of the highest roll if we roll multiple times
 		const results = [];
 		if (rollCount > 1) Renderer.dice._showMessage(`Rolling twice...`, rolledBy);
 		for (let i = 0; i < rollCount; ++i) {
-			const result = await Renderer.dice._pHandleRoll2(tree, rolledBy, opts);
+			const result = await Renderer.dice._pHandleRoll2(wrpTree, rolledBy, opts);
 			if (result == null) return null;
 			results.push(result);
 		}
@@ -526,18 +533,39 @@ Renderer.dice = {
 	},
 
 	/**
-	 * @param tree
+	 * @param wrpTree
 	 * @param rolledBy
 	 * @param [opts] Options object.
 	 * @param [opts.fnGetMessage]
 	 * @param [opts.isResultUsed]
 	 */
-	_pHandleRoll2 (tree, rolledBy, opts) {
+	async _pHandleRoll2 (wrpTree, rolledBy, opts) {
 		opts = opts || {};
-		if (Renderer.dice._isManualMode) return Renderer.dice._pHandleRoll2_manual(tree, rolledBy, opts);
-		else return Renderer.dice._pHandleRoll2_automatic(tree, rolledBy, opts);
+
+		if (wrpTree.meta && wrpTree.meta.hasPb) {
+			const userPb = await InputUiUtil.pGetUserNumber({
+				min: 0,
+				int: true,
+				title: "Enter Proficiency Bonus",
+				default: 2,
+				storageKey_default: "dice.playerProficiencyBonus",
+				isGlobal_default: true,
+			});
+			if (userPb == null) return null;
+			opts.pb = userPb;
+		}
+
+		if (Renderer.dice._isManualMode) return Renderer.dice._pHandleRoll2_manual(wrpTree.tree, rolledBy, opts);
+		else return Renderer.dice._pHandleRoll2_automatic(wrpTree.tree, rolledBy, opts);
 	},
 
+	/**
+	 * @param tree
+	 * @param rolledBy
+	 * @param [opts] Options object.
+	 * @param [opts.fnGetMessage]
+	 * @param [opts.pb] User-entered proficiency bonus, to be propagated to the meta.
+	 */
 	_pHandleRoll2_automatic (tree, rolledBy, opts) {
 		opts = opts || {};
 
@@ -547,6 +575,7 @@ Renderer.dice = {
 
 		if (tree) {
 			const meta = {};
+			if (opts.pb) meta.pb = opts.pb;
 			const result = tree.evl(meta);
 			const fullHtml = (meta.html || []).join("");
 			const allMax = meta.allMax && meta.allMax.length && !(meta.allMax.filter(it => !it).length);
@@ -736,8 +765,8 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 		const macro = Renderer.dice.storage[id];
 		if (macro) {
 			rolledBy.label = id;
-			const tree = Renderer.dice.lang.getTree3(macro);
-			return Renderer.dice._pHandleRoll2(tree, rolledBy, opts);
+			const wrpTree = Renderer.dice.lang.getTree3(macro);
+			return Renderer.dice._pHandleRoll2(wrpTree, rolledBy, opts);
 		} else Renderer.dice._showMessage(`Macro <span class="out-roll-item-code">#${id}</span> not found`, Renderer.dice.SYSTEM_USER);
 	},
 
@@ -773,7 +802,7 @@ Renderer.dice.lang = {
 		// region Lexing
 		let lexed;
 		try {
-			lexed = Renderer.dice.lang._lex3(str)
+			lexed = Renderer.dice.lang._lex3(str).lexed;
 		} catch (e) {
 			return e.message;
 		}
@@ -794,21 +823,21 @@ Renderer.dice.lang = {
 		str = str.trim();
 		if (isSilent) {
 			try {
-				const lexed = Renderer.dice.lang._lex3(str);
-				return Renderer.dice.lang._parse3(lexed);
+				const {lexed, lexedMeta} = Renderer.dice.lang._lex3(str);
+				return {tree: Renderer.dice.lang._parse3(lexed), meta: lexedMeta};
 			} catch (e) {
 				return null;
 			}
 		} else {
-			const lexed = Renderer.dice.lang._lex3(str);
-			return Renderer.dice.lang._parse3(lexed);
+			const {lexed, lexedMeta} = Renderer.dice.lang._lex3(str);
+			return {tree: Renderer.dice.lang._parse3(lexed), meta: lexedMeta};
 		}
 	},
 	// endregion
 
 	// region Lexer
 	_M_NUMBER_CHAR: /[0-9.]/,
-	_M_SYMBOL_CHAR: /[-+/*^=><florceidhkxunavgsm,]/,
+	_M_SYMBOL_CHAR: /[-+/*^=><florceidhkxunavgsmpb,]/,
 
 	_M_NUMBER: /^[\d.,]+$/,
 	_lex3 (str) {
@@ -818,11 +847,17 @@ Renderer.dice.lang = {
 			braceCount: 0,
 			mode: null,
 			token: "",
+			hasPb: false,
 		};
 
 		str = str
 			.trim()
 			.toLowerCase()
+			// region Convert some natural language
+			.replace(/\s+plus\s+/g, " + ")
+			.replace(/\s+minus\s+/g, " - ")
+			.replace(/\s+times\s+/g, " * ")
+			// endregion
 			.replace(/\s+/g, "")
 			.replace(/[×]/g, "*") // convert mult signs
 			.replace(/\*\*/g, "^") // convert ** to ^
@@ -831,11 +866,11 @@ Renderer.dice.lang = {
 			.replace(/\+-|-\+/g, "-") // convert negatives
 		;
 
-		if (!str) return [];
+		if (!str) return {lexed: [], lexedMeta: {}};
 
 		this._lex3_lex(self, str);
 
-		return self.tokenStack;
+		return {lexed: self.tokenStack, lexedMeta: {hasPb: self.hasPb}};
 	},
 
 	_lex3_lex (self, l) {
@@ -910,6 +945,7 @@ Renderer.dice.lang = {
 			case "*": self.tokenStack.push(Renderer.dice.tk.MULT); break;
 			case "/": self.tokenStack.push(Renderer.dice.tk.DIV); break;
 			case "^": self.tokenStack.push(Renderer.dice.tk.POW); break;
+			case "pb": self.tokenStack.push(Renderer.dice.tk.PB); self.hasPb = true; break;
 			case "floor": self.tokenStack.push(Renderer.dice.tk.FLOOR); break;
 			case "ceil": self.tokenStack.push(Renderer.dice.tk.CEIL); break;
 			case "round": self.tokenStack.push(Renderer.dice.tk.ROUND); break;
@@ -1017,6 +1053,8 @@ Renderer.dice.lang = {
 				const sym = Renderer.dice.tk.NUMBER(syms.map(it => it.value).join(""));
 				return new Renderer.dice.parsed.Factor(sym);
 			}
+		} else if (this._parse3_accept(self, Renderer.dice.tk.PB)) {
+			return new Renderer.dice.parsed.Factor(Renderer.dice.tk.PB);
 		} else if (
 			this._parse3_match(self, Renderer.dice.tk.FLOOR)
 			|| this._parse3_match(self, Renderer.dice.tk.CEIL)
@@ -1197,6 +1235,7 @@ Renderer.dice.tk.SUB = Renderer.dice.tk._new("SUB", "-");
 Renderer.dice.tk.MULT = Renderer.dice.tk._new("MULT", "*");
 Renderer.dice.tk.DIV = Renderer.dice.tk._new("DIV", "/");
 Renderer.dice.tk.POW = Renderer.dice.tk._new("POW", "^");
+Renderer.dice.tk.PB = Renderer.dice.tk._new("PB", "pb");
 Renderer.dice.tk.FLOOR = Renderer.dice.tk._new("FLOOR", "floor");
 Renderer.dice.tk.CEIL = Renderer.dice.tk._new("CEIL", "ceil");
 Renderer.dice.tk.ROUND = Renderer.dice.tk._new("ROUND", "round");
@@ -1230,10 +1269,14 @@ Renderer.dice.tk.MARGIN_SUCCESS_LTEQ = Renderer.dice.tk._new("MARGIN_SUCCESS_LTE
 Renderer.dice.AbstractSymbol = class {
 	constructor () { this.type = Renderer.dice.tk.TYP_SYMBOL; }
 	eq (symbol) { return symbol && this.type === symbol.type; }
-	evl () { throw new Error("Unimplemented!"); }
-	avg () { throw new Error("Unimplemented!"); }
-	min () { throw new Error("Unimplemented!"); } // minimum value of all _rolls_, not the minimum possible result
-	max () { throw new Error("Unimplemented!"); } // maximum value of all _rolls_, not the maximum possible result
+	evl (meta) { this.meta = meta; return this._evl(meta); }
+	avg (meta) { this.meta = meta; return this._avg(meta); }
+	min (meta) { this.meta = meta; return this._min(meta); } // minimum value of all _rolls_, not the minimum possible result
+	max (meta) { this.meta = meta; return this._max(meta); } // maximum value of all _rolls_, not the maximum possible result
+	_evl () { throw new Error("Unimplemented!"); }
+	_avg () { throw new Error("Unimplemented!"); }
+	_min () { throw new Error("Unimplemented!"); } // minimum value of all _rolls_, not the minimum possible result
+	_max () { throw new Error("Unimplemented!"); } // maximum value of all _rolls_, not the maximum possible result
 	toString () { throw new Error("Unimplemented!"); }
 	addToMeta (meta, html, text) {
 		if (!meta) return;
@@ -1443,10 +1486,10 @@ Renderer.dice.parsed = {
 			this._nodes = nodes;
 		}
 
-		evl (meta) { return this._invoke("evl", meta); }
-		avg (meta) { return this._invoke("avg", meta); }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		_evl (meta) { return this._invoke("evl", meta); }
+		_avg (meta) { return this._invoke("avg", meta); }
+		_min (meta) { return this._invoke("min", meta); }
+		_max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
 			const [symFunc, symExp] = this._nodes;
@@ -1498,10 +1541,10 @@ Renderer.dice.parsed = {
 			this._nodeMod = nodeMod;
 		}
 
-		evl (meta) { return this._invoke("evl", meta) }
-		avg (meta) { return this._invoke("avg", meta) }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		_evl (meta) { return this._invoke("evl", meta); }
+		_avg (meta) { return this._invoke("avg", meta); }
+		_min (meta) { return this._invoke("min", meta); }
+		_max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
 			const vals = this._nodesPool.map(it => {
@@ -1561,10 +1604,10 @@ Renderer.dice.parsed = {
 			this._hasParens = !!opts.hasParens;
 		}
 
-		evl (meta) { return this._invoke("evl", meta) }
-		avg (meta) { return this._invoke("avg", meta) }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		_evl (meta) { return this._invoke("evl", meta); }
+		_avg (meta) { return this._invoke("avg", meta); }
+		_min (meta) { return this._invoke("min", meta); }
+		_max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
 			switch (this._node.type) {
@@ -1578,15 +1621,20 @@ Renderer.dice.parsed = {
 					if (this._hasParens) this.addToMeta(meta, ")");
 					return out;
 				}
+				case Renderer.dice.tk.PB.type: {
+					this.addToMeta(meta, this.toString(meta));
+					return meta.pb == null ? 0 : meta.pb;
+				}
 				default: throw new Error(`Unimplemented!`);
 			}
 		}
 
-		toString () {
+		toString (indent) {
 			let out;
 			switch (this._node.type) {
 				case Renderer.dice.tk.TYP_NUMBER: out = this._node.value; break;
 				case Renderer.dice.tk.TYP_SYMBOL: out = this._node.toString(); break;
+				case Renderer.dice.tk.PB.type: out = this.meta ? (this.meta.pb || 0) : "PB"; break;
 				default: throw new Error(`Unimplemented!`);
 			}
 			return this._hasParens ? `(${out})` : out;
@@ -1608,10 +1656,10 @@ Renderer.dice.parsed = {
 			this._nodes = nodes;
 		}
 
-		evl (meta) { return this._invoke("evl", meta); }
-		avg (meta) { return this._invoke("avg", meta); }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		_evl (meta) { return this._invoke("evl", meta); }
+		_avg (meta) { return this._invoke("avg", meta); }
+		_min (meta) { return this._invoke("min", meta); }
+		_max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
 			if (this._nodes.length === 1) return this._nodes[0][fnName](meta); // if it's just a factor
@@ -1726,10 +1774,10 @@ Renderer.dice.parsed = {
 			this._nodes = nodes;
 		}
 
-		evl (meta) { return this._invoke("evl", meta) }
-		avg (meta) { return this._invoke("avg", meta) }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		_evl (meta) { return this._invoke("evl", meta); }
+		_avg (meta) { return this._invoke("avg", meta); }
+		_min (meta) { return this._invoke("min", meta); }
+		_max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
 			const view = this._nodes.slice();
@@ -1755,10 +1803,10 @@ Renderer.dice.parsed = {
 			this._nodes = nodes;
 		}
 
-		evl (meta) { return this._invoke("evl", meta) }
-		avg (meta) { return this._invoke("avg", meta) }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		_evl (meta) { return this._invoke("evl", meta); }
+		_avg (meta) { return this._invoke("avg", meta); }
+		_min (meta) { return this._invoke("min", meta); }
+		_max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
 			let out = this._nodes[0][fnName](meta);
@@ -1793,10 +1841,10 @@ Renderer.dice.parsed = {
 			this._nodes = nodes;
 		}
 
-		evl (meta) { return this._invoke("evl", meta) }
-		avg (meta) { return this._invoke("avg", meta) }
-		min (meta) { return this._invoke("min", meta); }
-		max (meta) { return this._invoke("max", meta); }
+		_evl (meta) { return this._invoke("evl", meta); }
+		_avg (meta) { return this._invoke("avg", meta); }
+		_min (meta) { return this._invoke("min", meta); }
+		_max (meta) { return this._invoke("max", meta); }
 
 		_invoke (fnName, meta) {
 			const view = this._nodes.slice();

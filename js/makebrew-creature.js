@@ -137,6 +137,9 @@ class CreatureBuilder extends Builder {
 		delete creature.hasToken;
 		delete creature.uniqueId;
 
+		// Semi-gracefully handle e.g. ERLW's Steel Defender
+		if (creature.passive != null && typeof creature.passive === "string") delete creature.passive;
+
 		if (Parser.crToNumber(creature.cr) !== 100 && !opts.isForce) {
 			const ixDefault = Parser.CRS.indexOf(creature.cr.cr || creature.cr);
 			const scaleTo = await InputUiUtil.pGetUserEnum({values: Parser.CRS, title: "At Challenge Rating...", default: ixDefault});
@@ -422,6 +425,7 @@ class CreatureBuilder extends Builder {
 		this.__$getSpellcastingInput(cb).appendTo(abilTab.$wrpTab);
 		this.__$getTraitInput(cb).appendTo(abilTab.$wrpTab);
 		this.__$getActionInput(cb).appendTo(abilTab.$wrpTab);
+		this.__$getBonusActionInput(cb).appendTo(abilTab.$wrpTab);
 		this.__$getReactionInput(cb).appendTo(abilTab.$wrpTab);
 		BuilderUi.$getStateIptNumber(
 			"Legendary Action Count",
@@ -2631,6 +2635,10 @@ class CreatureBuilder extends Builder {
 
 	__$getReactionInput (cb) {
 		return this.__$getGenericEntryInput(cb, {name: "Reactions", shortName: "Reaction", prop: "reaction"});
+	}
+
+	__$getBonusActionInput (cb) {
+		return this.__$getGenericEntryInput(cb, {name: "Bonus Actions", shortName: "Bonus Action", prop: "bonus"});
 	}
 
 	__$getLegendaryActionInput (cb) {

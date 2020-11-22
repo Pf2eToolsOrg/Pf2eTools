@@ -6,7 +6,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.115.0"/* 5ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.116.7"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -1590,6 +1590,7 @@ UrlUtil.PG_ENCOUNTERGEN = "encountergen.html";
 UrlUtil.PG_LOOTGEN = "encountergen.html";
 UrlUtil.PG_TEXT_CONVERTER = "converter.html";
 UrlUtil.PG_CHANGELOG = "changelog.html";
+UrlUtil.PG_CHAR_CREATION_OPTIONS = "charcreationoptions.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -1614,6 +1615,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CHAR_CREATION_OPTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 // region Fake pages (props)
 UrlUtil.URL_TO_HASH_BUILDER["subclass"] = it => {
 	const hashParts = [
@@ -1665,6 +1667,7 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_ENCOUNTERGEN] = "Encounter Generator";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_LOOTGEN] = "Loot Generator";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_TEXT_CONVERTER] = "Text Converter";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_CHANGELOG] = "Changelog";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_CHAR_CREATION_OPTIONS] = "Other Character Creation Options";
 
 UrlUtil.CAT_TO_PAGE = {};
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURE] = UrlUtil.PG_BESTIARY;
@@ -1703,8 +1706,8 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VEHICLE] = UrlUtil.PG_VEHICLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PACT_BOON] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARTIFICER_INFUSION] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SHIP_UPGRADE] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = UrlUtil.PG_OPT_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SHIP_UPGRADE] = UrlUtil.PG_VEHICLES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = UrlUtil.PG_VEHICLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ONOMANCY_RESONANT] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = UrlUtil.PG_OPT_FEATURES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ALCHEMICAL_FORMULA] = UrlUtil.PG_OPT_FEATURES;
@@ -1714,6 +1717,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOOK] = UrlUtil.PG_BOOK;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PAGE] = null;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LEGENDARY_GROUP] = null;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CHAR_CREATION_OPTIONS] = UrlUtil.PG_CHAR_CREATION_OPTIONS;
 
 UrlUtil.CAT_TO_HOVER_PAGE = {};
 UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_CLASS_FEATURE] = "classfeature";
@@ -2014,18 +2018,6 @@ DataUtil = {
 		DataUtil._merged[ident] = data;
 	},
 
-	userDownload (filename, data) {
-		if (typeof data !== "string") data = JSON.stringify(data, null, "\t");
-		const a = document.createElement("a");
-		const t = new Blob([data], {type: "text/json"});
-		a.href = URL.createObjectURL(t);
-		a.download = `${filename}.json`;
-		a.target = "_blank";
-		document.body.appendChild(a);
-		a.click();
-		document.body.removeChild(a);
-	},
-
 	getCleanFilename (filename) {
 		return filename.replace(/[^-_a-zA-Z0-9]/g, "_");
 	},
@@ -2042,11 +2034,25 @@ DataUtil = {
 		return `${toCsv(headers)}\n${rows.map(r => toCsv(r)).join("\n")}`;
 	},
 
+	userDownload (filename, data) {
+		if (typeof data !== "string") data = JSON.stringify(data, null, "\t");
+		return DataUtil._userDownload(`${filename}.json`, data, "text/json");
+	},
+
 	userDownloadText (filename, string) {
-		const $a = $(`<a href="data:text/plain;charset=utf-8,${encodeURIComponent(string)}" download="${filename}" style="display: none;">DL</a>`);
-		$(`body`).append($a);
-		$a[0].click();
-		$a.remove();
+		return DataUtil._userDownload(filename, string, "text/plain");
+	},
+
+	_userDownload (filename, data, mimeType) {
+		const a = document.createElement("a");
+		const t = new Blob([data], {type: mimeType});
+		a.href = URL.createObjectURL(t);
+		a.download = filename;
+		a.target = "_blank";
+		a.style.display = "none";
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
 	},
 
 	pUserUpload () {
@@ -2626,7 +2632,7 @@ DataUtil = {
 				});
 
 				Object.entries(copyMeta._mod).forEach(([prop, modInfos]) => {
-					if (prop === "*") doMod(modInfos, "action", "reaction", "trait", "legendary", "mythic", "variant", "spellcasting", "legendaryHeader");
+					if (prop === "*") doMod(modInfos, "action", "bonus", "reaction", "trait", "legendary", "mythic", "variant", "spellcasting", "legendaryHeader");
 					else if (prop === "_") doMod(modInfos);
 					else doMod(modInfos, prop);
 				});
@@ -2879,16 +2885,7 @@ DataUtil = {
 		_mutEntryNestLevel (feature) {
 			const depth = (feature.header == null ? 1 : feature.header) - 1;
 			for (let i = 0; i < depth; ++i) {
-				const nxt = {
-					name: feature.name,
-					page: feature.page,
-					source: feature.source,
-					type: "entries",
-					entries: feature.entries,
-				};
-				if (!nxt.name) delete nxt.name;
-				if (!nxt.page) delete nxt.page;
-				if (!nxt.source) delete nxt.source;
+				const nxt = MiscUtil.copy(feature);
 				feature.entries = [nxt];
 				delete feature.name;
 				delete feature.page;
@@ -2922,7 +2919,7 @@ DataUtil = {
 
 				if (classFeatureRef.gainSubclassFeature) classFeature.gainSubclassFeature = true;
 				// Remove sources to avoid colouring e.g. entire UA classes with the "spicy green" styling
-				if (classFeature.source === cls.source) delete classFeature.source;
+				if (classFeature.source === cls.source && SourceUtil.isNonstandardSource(classFeature.source)) delete classFeature.source;
 
 				DataUtil.class._mutEntryNestLevel(classFeature);
 
@@ -2960,7 +2957,6 @@ DataUtil = {
 				const uid = subclassFeatureRef.subclassFeature ? subclassFeatureRef.subclassFeature : subclassFeatureRef;
 				const {name, className, classSource, subclassShortName, subclassSource, level, source} = DataUtil.class.unpackUidSubclassFeature(uid);
 				if (!name || !className || !subclassShortName || !level || isNaN(level)) continue; // skip over broken links
-
 				const hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"]({name, className, classSource, subclassShortName, subclassSource, level, source});
 
 				// Skip blacklisted
@@ -2974,7 +2970,7 @@ DataUtil = {
 				}
 
 				// Remove sources to avoid colouring e.g. entire UA classes with the "spicy green" styling
-				if (subclassFeature.source === sc.source) delete subclassFeature.source;
+				if (subclassFeature.source === sc.source && SourceUtil.isNonstandardSource(subclassFeature.source)) delete subclassFeature.source;
 
 				DataUtil.class._mutEntryNestLevel(subclassFeature);
 
@@ -3216,7 +3212,7 @@ StorageUtil = {
 	_fakeStorage: {},
 	_fakeStorageAsync: {},
 
-	getSyncStorage: () => {
+	_getSyncStorage () {
 		if (StorageUtil._init) {
 			if (StorageUtil.__fakeStorage) return StorageUtil._fakeStorage;
 			else return window.localStorage;
@@ -3239,7 +3235,7 @@ StorageUtil = {
 		}
 	},
 
-	async getAsyncStorage () {
+	async _getAsyncStorage () {
 		if (StorageUtil._initAsync) {
 			if (StorageUtil.__fakeStorageAsync) return StorageUtil._fakeStorageAsync;
 			else return localforage;
@@ -3276,18 +3272,18 @@ StorageUtil = {
 
 	// region Synchronous
 	syncGet (key) {
-		const rawOut = StorageUtil.getSyncStorage().getItem(key);
+		const rawOut = StorageUtil._getSyncStorage().getItem(key);
 		if (rawOut && rawOut !== "undefined" && rawOut !== "null") return JSON.parse(rawOut);
 		return null;
 	},
 
 	syncSet (key, value) {
-		StorageUtil.getSyncStorage().setItem(key, JSON.stringify(value));
+		StorageUtil._getSyncStorage().setItem(key, JSON.stringify(value));
 		StorageUtil._syncTrackKey(key)
 	},
 
 	syncRemove (key) {
-		StorageUtil.getSyncStorage().removeItem(key);
+		StorageUtil._getSyncStorage().removeItem(key);
 		StorageUtil._syncTrackKey(key, true);
 	},
 
@@ -3295,14 +3291,14 @@ StorageUtil = {
 	syncSetForPage (key, value) { StorageUtil.syncSet(`${key}_${UrlUtil.getCurrentPage()}`, value); },
 
 	isSyncFake () {
-		return !!StorageUtil.getSyncStorage().isSyncFake
+		return !!StorageUtil._getSyncStorage().isSyncFake
 	},
 
 	_syncTrackKey (key, isRemove) {
 		const meta = StorageUtil.syncGet(StorageUtil._META_KEY) || {};
 		if (isRemove) delete meta[key];
 		else meta[key] = 1;
-		StorageUtil.getSyncStorage().setItem(StorageUtil._META_KEY, JSON.stringify(meta));
+		StorageUtil._getSyncStorage().setItem(StorageUtil._META_KEY, JSON.stringify(meta));
 	},
 
 	syncGetDump () {
@@ -3319,24 +3315,24 @@ StorageUtil = {
 
 	// region Asynchronous
 	async pIsAsyncFake () {
-		const storage = await StorageUtil.getAsyncStorage();
+		const storage = await StorageUtil._getAsyncStorage();
 		return !!storage.pIsAsyncFake;
 	},
 
 	async pSet (key, value) {
 		StorageUtil._pTrackKey(key);
-		const storage = await StorageUtil.getAsyncStorage();
+		const storage = await StorageUtil._getAsyncStorage();
 		return storage.setItem(key, value);
 	},
 
 	async pGet (key) {
-		const storage = await StorageUtil.getAsyncStorage();
+		const storage = await StorageUtil._getAsyncStorage();
 		return storage.getItem(key);
 	},
 
 	async pRemove (key) {
 		StorageUtil._pTrackKey(key, true);
-		const storage = await StorageUtil.getAsyncStorage();
+		const storage = await StorageUtil._getAsyncStorage();
 		return storage.removeItem(key);
 	},
 
@@ -3346,7 +3342,7 @@ StorageUtil = {
 	async pRemoveForPage (key) { return StorageUtil.pRemove(StorageUtil.getPageKey(key)); },
 
 	async _pTrackKey (key, isRemove) {
-		const storage = await StorageUtil.getAsyncStorage();
+		const storage = await StorageUtil._getAsyncStorage();
 		const meta = (await StorageUtil.pGet(StorageUtil._META_KEY)) || {};
 		if (isRemove) delete meta[key];
 		else meta[key] = 1;
@@ -4124,10 +4120,11 @@ BrewUtil = {
 			];
 			case UrlUtil.PG_MANAGE_BREW:
 			case UrlUtil.PG_DEMO_RENDER: return BrewUtil._STORABLE;
-			case UrlUtil.PG_VEHICLES: return ["vehicle"];
+			case UrlUtil.PG_VEHICLES: return ["vehicle", "vehicleUpgrade"];
 			case UrlUtil.PG_ACTIONS: return ["action"];
 			case UrlUtil.PG_CULTS_BOONS: return ["cult", "boon"];
 			case UrlUtil.PG_LANGUAGES: return ["language"];
+			case UrlUtil.PG_CHAR_CREATION_OPTIONS: return ["charoption"];
 			default: throw new Error(`No homebrew properties defined for category ${page}`);
 		}
 	},
@@ -4160,6 +4157,9 @@ BrewUtil = {
 		if (cat === "monsterFluff") return "Monster Fluff";
 		if (cat === "itemFluff") return "Item Fluff";
 		if (cat === "makebrewCreatureTrait") return "Homebrew Builder Creature Trait";
+		if (cat === "classFeature") return "Class Feature";
+		if (cat === "subclassFeature") return "Subclass Feature";
+		if (cat === "charoption") return "Other Character Creation Option";
 		return cat.uppercaseFirst();
 	},
 
@@ -4223,6 +4223,7 @@ BrewUtil = {
 			case "table":
 			case "tableGroup":
 			case "vehicle":
+			case "vehicleUpgrade":
 			case "action":
 			case "cult":
 			case "boon":
@@ -4230,7 +4231,10 @@ BrewUtil = {
 			case "class":
 			case "makebrewCreatureTrait":
 			case "classFeature":
-			case "subclassFeature": return BrewUtil._genPDeleteGenericBrew(category);
+			case "subclassFeature":
+			case "charoption":
+			case "charoptionFluff":
+				return BrewUtil._genPDeleteGenericBrew(category);
 			case "race": return BrewUtil._pDeleteRaceBrew;
 			case "subclass": return BrewUtil._pDeleteSubclassBrew;
 			case "adventure":
@@ -4340,8 +4344,8 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_DIRS: ["action", "adventure", "background", "book", "boon", "class", "condition", "creature", "cult", "deity", "disease", "feat", "hazard", "item", "language", "magicvariant", "makebrew", "object", "optionalfeature", "psionic", "race", "reward", "spell", /* "status", */ "subclass", "subrace", "table", "trap", "variantrule", "vehicle", "classFeature", "subclassFeature"],
-	_STORABLE: ["class", "subclass", "classFeature", "subclassFeature", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "raceFluff", "subrace", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "itemFluff", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "status", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle", "action", "cult", "boon", "language", "makebrewCreatureTrait"],
+	_DIRS: ["action", "adventure", "background", "book", "boon", "charoption", "class", "condition", "creature", "cult", "deity", "disease", "feat", "hazard", "item", "language", "magicvariant", "makebrew", "object", "optionalfeature", "psionic", "race", "reward", "spell", /* "status", */ "subclass", "subrace", "table", "trap", "variantrule", "vehicle", "classFeature", "subclassFeature"],
+	_STORABLE: ["class", "subclass", "classFeature", "subclassFeature", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "raceFluff", "subrace", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "itemFluff", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "status", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle", "vehicleUpgrade", "action", "cult", "boon", "language", "makebrewCreatureTrait", "charoption", "charoptionFluff"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		page = BrewUtil._PAGE || page;
 		await BrewUtil._lockHandleBrewJson.pLock();
@@ -4484,6 +4488,7 @@ BrewUtil = {
 			case UrlUtil.PG_ACTIONS:
 			case UrlUtil.PG_CULTS_BOONS:
 			case UrlUtil.PG_LANGUAGES:
+			case UrlUtil.PG_CHAR_CREATION_OPTIONS:
 				await (BrewUtil._pHandleBrew || handleBrew)(MiscUtil.copy(toAdd));
 				break;
 			case UrlUtil.PG_MAKE_BREW:

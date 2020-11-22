@@ -196,13 +196,27 @@ class PageFilterSpells extends PageFilter {
 	}
 
 	static getClassFilterItem (c) {
+		return this._getClassFilterItem(c);
+	}
+
+	static getOptionalVariantClassFilterItem (c) {
+		return this._getClassFilterItem(c, true);
+	}
+
+	static _getClassFilterItem (c, isVariantClass) {
 		const nm = c.name.split("(")[0].trim();
+		const variantSuffix = isVariantClass ? ` (${c.definedInSource ? Parser.sourceJsonToAbv(c.definedInSource) : "Unknown"})` : ""
 		const addSuffix = SourceUtil.isNonstandardSource(c.source || SRC_PHB) || BrewUtil.hasSourceJson(c.source || SRC_PHB);
-		const name = `${nm}${addSuffix ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
-		return new FilterItem({
+		const name = `${nm}${variantSuffix}${addSuffix ? ` (${Parser.sourceJsonToAbv(c.source)})` : ""}`;
+
+		const opts = {
 			item: name,
 			userData: SourceUtil.getFilterGroup(c.source || SRC_PHB),
-		});
+		};
+
+		if (isVariantClass) opts.nest = c.definedInSource ? Parser.sourceJsonToFull(c.definedInSource) : "Unknown";
+
+		return new FilterItem(opts);
 	}
 
 	static getRaceFilterItem (r) {
@@ -237,7 +251,11 @@ class PageFilterSpells extends PageFilter {
 			nests: {},
 			groupFn: (it) => SourceUtil.isSubclassReprinted(it.userData.class.name, it.userData.class.source, it.userData.subClass.name, it.userData.subClass.source) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(UA_PREFIX) || Parser.sourceJsonToFull(it.userData.subClass.source).startsWith(PS_PREFIX),
 		});
-		const variantClassFilter = new Filter({header: "Variant Class", headerHelp: `Source: ${Parser.sourceJsonToFull(SRC_UACFV)}`});
+		const variantClassFilter = new Filter({
+			header: "Optional/Variant Class",
+			nests: {},
+			groupFn: it => it.userData,
+		});
 		const classAndSubclassFilter = new MultiFilter({header: "Classes", mode: "or", filters: [classFilter, subclassFilter, variantClassFilter]});
 		const raceFilter = new Filter({
 			header: "Race",
@@ -360,7 +378,7 @@ class PageFilterSpells extends PageFilter {
 		// used for filtering
 		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
 		spell._fMeta = PageFilterSpells.getMetaFilterObj(spell);
-		spell._fClasses = Renderer.spell.getCombinedClasses(spell, "fromClassList").map(PageFilterSpells.getClassFilterItem);
+		spell._fClasses = Renderer.spell.getCombinedClasses(spell, "fromClassList").map(PageFilterSpells.getClassFilterItem.bind(this.constructor));
 		spell._fSubclasses = Renderer.spell.getCombinedClasses(spell, "fromSubclass")
 			.map(c => {
 				return new FilterItem({
@@ -378,7 +396,7 @@ class PageFilterSpells extends PageFilter {
 					},
 				});
 			});
-		spell._fVariantClasses = spell.classes && spell.classes.fromClassListVariant ? spell.classes.fromClassListVariant.map(PageFilterSpells.getClassFilterItem) : [];
+		spell._fVariantClasses = spell.classes && spell.classes.fromClassListVariant ? spell.classes.fromClassListVariant.map(PageFilterSpells.getOptionalVariantClassFilterItem.bind(this.constructor)) : [];
 		spell._fRaces = spell.races ? spell.races.map(PageFilterSpells.getRaceFilterItem) : [];
 		spell._fBackgrounds = spell.backgrounds ? spell.backgrounds.map(bg => bg.name) : [];
 		spell._fEldritchInvocations = spell.eldritchInvocations ? spell.eldritchInvocations.map(ei => ei.name) : [];
@@ -408,7 +426,10 @@ class PageFilterSpells extends PageFilter {
 			if (r.nest) this._raceFilter.addNest(r.nest, {isHidden: true});
 			this._raceFilter.addItem(r);
 		});
-		spell._fVariantClasses.forEach(c => this._variantClassFilter.addItem(c));
+		spell._fVariantClasses.forEach(c => {
+			this._variantClassFilter.addNest(c.nest, {isHidden: true});
+			this._variantClassFilter.addItem(c)
+		});
 		this._subSchoolFilter.addItem(spell.subschools);
 	}
 

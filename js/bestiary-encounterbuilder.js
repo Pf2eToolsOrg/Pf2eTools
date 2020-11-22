@@ -480,7 +480,12 @@ class EncounterBuilder extends ProxyBase {
 		 */
 		const _meta = Object.entries(Parser.XP_CHART_ALT).map(([cr, xp]) => ({cr, xp, crNum: Parser.crToNumber(cr)}))
 			.sort((a, b) => SortUtil.ascSort(b.crNum, a.crNum));
-		const getXps = budget => _xps.filter(it => it <= budget);
+		const standardXpValues = new Set(Object.values(Parser.XP_CHART_ALT));
+		const getXps = budget => _xps.filter(it => {
+			// Make TftYP values (i.e. those that are not real XP thresholds) get skipped 9/10 times
+			if (!standardXpValues.has(it) && RollerUtil.randomise(10) !== 10) return false;
+			return it <= budget;
+		});
 
 		const getCurrentEncounterMeta = (encounter) => {
 			const data = encounter.map(it => ({cr: Parser.crToNumber(it.mon.cr), count: it.count}));
@@ -826,7 +831,7 @@ class EncounterBuilder extends ProxyBase {
 				const level = $(e).find(`.ecgen__player_advanced__level`).val();
 				countByLevel[level] = (countByLevel[level] || 0) + 1;
 			});
-			rawPlayerArr = Object.entries(countByLevel).map(([level, count]) => ({level, count}));
+			rawPlayerArr = Object.entries(countByLevel).map(([level, count]) => ({level: Number(level), count}));
 		} else {
 			rawPlayerArr = $(`.ecgen__player_group`).map((i, e) => {
 				const $e = $(e);
@@ -1304,7 +1309,7 @@ class EncounterPartyMeta {
 
 		this.levelMetas.forEach(meta => {
 			this.cntPlayers += meta.count;
-			this.avgPlayerLevel += meta.level;
+			this.avgPlayerLevel += meta.level * meta.count;
 			this.maxPlayerLevel = Math.max(this.maxPlayerLevel, meta.level);
 
 			this.threshEasy += LEVEL_TO_XP_EASY[meta.level] * meta.count;
@@ -1314,7 +1319,7 @@ class EncounterPartyMeta {
 
 			this.dailyBudget += LEVEL_TO_XP_DAILY[meta.level] * meta.count;
 		});
-		this.avgPlayerLevel /= this.cntPlayers;
+		if (this.avgPlayerLevel) this.avgPlayerLevel /= this.cntPlayers;
 
 		this.threshAbsurd = this.threshDeadly + (this.threshDeadly - this.threshHard);
 	}

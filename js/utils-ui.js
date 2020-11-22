@@ -501,9 +501,9 @@ class UiUtil {
 	}
 
 	static _parseStrAsNumber (str, isInt) {
-		const tree = Renderer.dice.lang.getTree3(str);
-		if (!tree) return NaN;
-		const out = tree.evl({});
+		const wrpTree = Renderer.dice.lang.getTree3(str);
+		if (!wrpTree) return NaN;
+		const out = wrpTree.tree.evl({});
 		if (!isNaN(out) && isInt) return Math.round(out);
 		return out;
 	}
@@ -1513,18 +1513,29 @@ class InputUiUtil {
 	 * @param [opts.$elePost] Element to add after the number input.
 	 * @param [opts.isPermanent] If the prompt can only be closed by entering a number.
 	 * @param [opts.isSkippable] If the prompt is skippable.
+	 * @param [opts.storageKey_default] Storage key for a "default" value override using the user's last/previous input.
+	 * @param [opts.isGlobal_default] If the "default" storage key is global (rather than page-specific).
 	 * @return {Promise<number>} A promise which resolves to the number if the user entered one, or null otherwise.
 	 */
-	static pGetUserNumber (opts) {
+	static async pGetUserNumber (opts) {
 		opts = opts || {};
+
+		let defaultVal = opts.default !== undefined ? opts.default : null;
+		if (opts.storageKey_default) {
+			const prev = await (opts.isGlobal_default ? StorageUtil.pGet(opts.storageKey_default) : StorageUtil.pGetForPage(opts.storageKey_default));
+			if (prev != null) defaultVal = prev;
+		}
+
 		return new Promise(resolve => {
-			const $iptNumber = $(`<input class="form-control mb-2 text-right" ${opts.min ? `min="${opts.min}"` : ""} ${opts.max ? `max="${opts.max}"` : ""} ${opts.default != null ? `value="${opts.default}"` : ""}>`)
+			const $iptNumber = $(`<input class="form-control mb-2 text-right" ${opts.min ? `min="${opts.min}"` : ""} ${opts.max ? `max="${opts.max}"` : ""}>`)
 				.keydown(evt => {
 					if (evt.key === "Escape") { $iptNumber.blur(); return; }
 					// return key
 					if (evt.which === 13) doClose(true);
 					evt.stopPropagation();
 				});
+			if (defaultVal !== undefined) $iptNumber.val(defaultVal);
+
 			const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
 				.click(() => doClose(true));
 			const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
@@ -1544,8 +1555,15 @@ class InputUiUtil {
 					let num = UiUtil.strToInt(raw);
 					if (opts.min) num = Math.max(opts.min, num);
 					if (opts.max) num = Math.min(opts.max, num);
-					if (opts.int) return resolve(Math.round(num));
-					else resolve(num);
+					if (opts.int) num = Math.round(num);
+
+					if (opts.storageKey_default) {
+						opts.isGlobal_default
+							? StorageUtil.pSet(opts.storageKey_default, num)
+							: StorageUtil.pSetForPage(opts.storageKey_default, num);
+					}
+
+					resolve(num);
 				},
 			});
 

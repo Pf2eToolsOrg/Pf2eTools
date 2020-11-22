@@ -4,7 +4,7 @@
 
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.0.18",
+	"version": "1.1.0",
 
 	"definitions" : {
 		"metaBlock": {
@@ -1215,19 +1215,42 @@
 			"patternProperties": {
 				"^\\d+$": {
 					"description": "Spells keyed by character/class level.",
-					"type": "array",
-					"items": {
-						"type": "string"
-					},
-					"uniqueItems": true
+					"oneOf": [
+						{
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"uniqueItems": true
+						},
+						{
+							"$ref": "#/definitions/_additionalSpellLevelObject"
+						}
+					]
 				},
 				"^s\\d+$": {
 					"description": "Spells keyed by spell level, access to which is gated behind the character advancing to a point where they could cast those spells with e.g. a Spellcasting class feature (Mark spells from ERLW races)",
-					"type": "array",
-					"items": {
-						"type": "string"
-					},
-					"uniqueItems": true
+					"oneOf": [
+						{
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"uniqueItems": true
+						},
+						{
+							"$ref": "#/definitions/_additionalSpellLevelObject"
+						}
+					]
+				}
+			}
+		},
+
+		"_additionalSpellLevelObject": {
+			"type": "object",
+			"properties": {
+				"rest": {
+					"$ref": "entry.json#/definitions/entrySpellcasting_frequency"
 				}
 			}
 		},

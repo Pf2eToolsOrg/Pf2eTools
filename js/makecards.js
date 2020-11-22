@@ -452,6 +452,8 @@ class MakeCards extends BaseComponent {
 			...(allTraits ? this._ct_renderEntries(allTraits, 2) : []),
 			mon.action ? this._ct_section("Actions") : null,
 			...(mon.action ? this._ct_renderEntries(mon.action, 2) : []),
+			mon.bonus ? this._ct_section("Bonus Actions") : null,
+			...(mon.bonus ? this._ct_renderEntries(mon.bonus, 2) : []),
 			mon.reaction ? this._ct_section("Reactions") : null,
 			...(mon.reaction ? this._ct_renderEntries(mon.reaction, 2) : []),
 			mon.legendary ? this._ct_section("Legendary Actions") : null,

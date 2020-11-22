@@ -319,7 +319,7 @@ async function pPageInit (loadedSources) {
 	});
 
 	// filtering function
-	$(bestiaryPage._pageFilter.filterBox).on(
+	bestiaryPage._pageFilter.filterBox.on(
 		FilterBox.EVNT_VALCHANGE,
 		bestiaryPage.handleFilterChange.bind(bestiaryPage),
 	);
@@ -508,7 +508,7 @@ class EncounterBuilderUtils {
 		// "unless you think the weak monsters significantly contribute to the difficulty of the encounter"
 		// For player levels <5, always include every monster. We assume that levels 5> will have strong
 		//   AoE/multiattack, allowing trash to be quickly cleared.
-		if (!partyMeta.isPartyLevelFivePlus()) return crValues[0];
+		if (!partyMeta.isPartyLevelFivePlus()) return 0;
 
 		// Sort by descending CR -> ascending deviation
 		crMetas.sort((a, b) => SortUtil.ascSort(b.mean, a.mean) || SortUtil.ascSort(a.deviation, b.deviation));

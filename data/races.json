@@ -175,12 +175,20 @@
 						"1": [
 							"light"
 						],
-						"3": [
-							"lesser restoration"
-						],
-						"5": [
-							"daylight"
-						]
+						"3": {
+							"rest": {
+								"1": [
+									"lesser restoration"
+								]
+							}
+						},
+						"5": {
+							"rest": {
+								"1": [
+									"daylight"
+								]
+							}
+						}
 					},
 					"ability": "cha"
 				}
@@ -1223,8 +1231,7 @@
 							"dex",
 							"con",
 							"int",
-							"wis",
-							"cha"
+							"wis"
 						],
 						"count": 1
 					}
@@ -1460,6 +1467,103 @@
 						"You can speak, read, and write Common and two other languages of your choice."
 					],
 					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Custom Lineage",
+			"source": "TCE",
+			"page": 8,
+			"size": "V",
+			"speed": 30,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex",
+							"con",
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 2
+					}
+				}
+			],
+			"darkvision": 60,
+			"traitTags": [
+				"Skill Proficiency",
+				"Feat"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"anyStandard": 1
+				}
+			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"athletics",
+							"acrobatics",
+							"sleight of hand",
+							"stealth",
+							"arcana",
+							"history",
+							"investigation",
+							"nature",
+							"religion",
+							"animal handling",
+							"insight",
+							"medicine",
+							"perception",
+							"survival",
+							"deception",
+							"intimidation",
+							"performance",
+							"persuasion"
+						]
+					}
+				}
+			],
+			"entries": [
+				"Instead of choosing one of the game's races for your character at 1st level, you can use the following traits to represent your character's lineage, giving you full control over how your character's origin shaped them:",
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"You are a humanoid. You determine your appearance and whether you resemble any of your kin."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"You are Small or Medium (your choice)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Feat",
+					"entries": [
+						"You gain one {@5etools feat|feats.html} of your choice for which you qualify."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Variable Trait",
+					"entries": [
+						"You gain one of the following options of your choice: (a) darkvision with a range of 60 feet or (b) proficiency in one skill of your choice."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and one other language that you and your DM agree is appropriate for your character."
+					]
 				}
 			]
 		},
@@ -1990,12 +2094,20 @@
 					"additionalSpells": [
 						{
 							"innate": {
-								"3": [
-									"enlarge/reduce"
-								],
-								"5": [
-									"invisibility"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"enlarge/reduce"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"invisibility"
+										]
+									}
+								}
 							},
 							"ability": "int"
 						}
@@ -2455,12 +2567,20 @@
 								"1": [
 									"dancing lights"
 								],
-								"3": [
-									"faerie fire"
-								],
-								"5": [
-									"darkness"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"faerie fire"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -2856,9 +2976,13 @@
 								"1": [
 									"minor illusion"
 								],
-								"3": [
-									"invisibility"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"invisibility"
+										]
+									}
+								}
 							},
 							"expanded": {
 								"s1": [
@@ -2966,12 +3090,20 @@
 								"1": [
 									"light"
 								],
-								"3": [
-									"sleep"
-								],
-								"5": [
-									"invisibility"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"sleep"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"invisibility"
+										]
+									}
+								}
 							},
 							"ability": "wis"
 						}
@@ -3605,12 +3737,20 @@
 								"1": [
 									"chill touch"
 								],
-								"3": [
-									"hex"
-								],
-								"5": [
-									"darkness"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"hex"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
 							},
 							"ability": "wis"
 						}
@@ -3978,9 +4118,13 @@
 								"1": [
 									"produce flame"
 								],
-								"3": [
-									"burning hands"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"burning hands"
+										]
+									}
+								}
 							},
 							"ability": "con"
 						}
@@ -4034,9 +4178,13 @@
 								"1": [
 									"shape water|xge"
 								],
-								"3": [
-									"create or destroy water"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"create or destroy water"
+										]
+									}
+								}
 							},
 							"ability": "con"
 						}
@@ -4170,12 +4318,20 @@
 								"1": [
 									"mage hand"
 								],
-								"3": [
-									"jump"
-								],
-								"5": [
-									"misty step"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"jump"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"misty step"
+										]
+									}
+								}
 							},
 							"ability": "int"
 						}
@@ -4236,12 +4392,20 @@
 								"1": [
 									"mage hand"
 								],
-								"3": [
-									"shield"
-								],
-								"5": [
-									"detect thoughts"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"shield"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"detect thoughts"
+										]
+									}
+								}
 							},
 							"ability": "wis"
 						}
@@ -4363,12 +4527,20 @@
 								"1": [
 									"mage hand"
 								],
-								"3": [
-									"jump"
-								],
-								"5": [
-									"misty step"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"jump"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"misty step"
+										]
+									}
+								}
 							},
 							"ability": "int"
 						}
@@ -4423,12 +4595,20 @@
 								"1": [
 									"mage hand"
 								],
-								"3": [
-									"shield"
-								],
-								"5": [
-									"detect thoughts"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"shield"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"detect thoughts"
+										]
+									}
+								}
 							},
 							"ability": "wis"
 						}
@@ -4807,9 +4987,13 @@
 									"comprehend languages",
 									"message"
 								],
-								"3": [
-									"magic mouth"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"magic mouth"
+										]
+									}
+								}
 							},
 							"expanded": {
 								"s1": [
@@ -6001,10 +6185,7 @@
 					"name": "Aquatic Elf Descent",
 					"source": "SCAG",
 					"page": 116,
-					"speed": {
-						"walk": 30,
-						"swim": 30
-					},
+					"speed": 30,
 					"traitTags": [
 						"Skill Proficiency"
 					],
@@ -6112,12 +6293,20 @@
 								"1": [
 									"dancing lights"
 								],
-								"3": [
-									"faerie fire"
-								],
-								"5": [
-									"darkness"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"faerie fire"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -6194,9 +6383,13 @@
 									"detect magic",
 									"detect poison and disease"
 								],
-								"3": [
-									"see invisibility"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"see invisibility"
+										]
+									}
+								}
 							},
 							"expanded": {
 								"s1": [
@@ -6237,7 +6430,7 @@
 							"type": "entries",
 							"name": "Magical Detection",
 							"entries": [
-								"You can cast the {@spell detect magic} and {@spell detect poison and disease} spells with this trait. Starting at 3rd level, you can also cast the {@spell see invisibility} spell with it. Once you cast any of these spells with this trait, you can't cast that spell with it again until you finish a long rest. Intelligence is your spellcasting ability for these spells, and you don't require material components for them."
+								"You can cast the {@spell detect magic} and {@spell detect poison and disease} spells with this trait. Starting at 3rd level, you can also cast the {@spell see invisibility} spell with it. Once you cast any of these spells with this trait, you can't cast that spell with it again until you finish a long rest. Wisdom is your spellcasting ability for these spells, and you don't require material components for them."
 							]
 						},
 						{
@@ -6720,9 +6913,13 @@
 						"1": [
 							"hunter's mark"
 						],
-						"3": [
-							"locate object"
-						]
+						"3": {
+							"rest": {
+								"1": [
+									"locate object"
+								]
+							}
+						}
 					},
 					"expanded": {
 						"s1": [
@@ -6976,12 +7173,20 @@
 								"1": [
 									"druidcraft"
 								],
-								"3": [
-									"entangle"
-								],
-								"5": [
-									"spike growth"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"entangle"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"spike growth"
+										]
+									}
+								}
 							},
 							"ability": "wis"
 						}
@@ -7028,9 +7233,13 @@
 								"1": [
 									"cure wounds"
 								],
-								"3": [
-									"lesser restoration"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"lesser restoration"
+										]
+									}
+								}
 							},
 							"expanded": {
 								"s1": [
@@ -7599,9 +7808,13 @@
 								"1": [
 									"hunter's mark"
 								],
-								"3": [
-									"locate object"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"locate object"
+										]
+									}
+								}
 							},
 							"expanded": {
 								"s1": [
@@ -8219,7 +8432,8 @@
 						}
 					],
 					"traitTags": [
-						"Skill Proficiency"
+						"Skill Proficiency",
+						"Feat"
 					],
 					"skillProficiencies": [
 						{
@@ -8288,7 +8502,8 @@
 				}
 			],
 			"traitTags": [
-				"Skill Proficiency"
+				"Skill Proficiency",
+				"Feat"
 			],
 			"languageProficiencies": [
 				{
@@ -10619,8 +10834,7 @@
 							"int",
 							"wis"
 						],
-						"count": 1,
-						"amount": 1
+						"count": 1
 					}
 				}
 			],
@@ -12542,12 +12756,20 @@
 						"1": [
 							"thaumaturgy"
 						],
-						"3": [
-							"hellish rebuke"
-						],
-						"5": [
-							"darkness"
-						]
+						"3": {
+							"rest": {
+								"1": [
+									"hellish rebuke"
+								]
+							}
+						},
+						"5": {
+							"rest": {
+								"1": [
+									"darkness"
+								]
+							}
+						}
 					},
 					"ability": "cha"
 				}
@@ -12639,22 +12861,30 @@
 									"spare the dying",
 									"prestidigitation"
 								],
-								"3": [
-									"burning hands",
-									"charm person",
-									"magic missile",
-									"cure wounds",
-									"tasha's hideous laughter",
-									"thunderwave"
-								],
-								"5": [
-									"alter self",
-									"darkness",
-									"invisibility",
-									"levitate",
-									"mirror image",
-									"spider climb"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"burning hands",
+											"charm person",
+											"magic missile",
+											"cure wounds",
+											"tasha's hideous laughter",
+											"thunderwave"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"alter self",
+											"darkness",
+											"invisibility",
+											"levitate",
+											"mirror image",
+											"spider climb"
+										]
+									}
+								}
 							}
 						}
 					],
@@ -12772,12 +13002,20 @@
 								"1": [
 									"thaumaturgy"
 								],
-								"3": [
-									"ray of sickness"
-								],
-								"5": [
-									"crown of madness"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"ray of sickness"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"crown of madness"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -12805,12 +13043,20 @@
 								"1": [
 									"thaumaturgy"
 								],
-								"3": [
-									"ray of sickness"
-								],
-								"5": [
-									"crown of madness"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"ray of sickness"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"crown of madness"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -12844,12 +13090,20 @@
 								"1": [
 									"thaumaturgy"
 								],
-								"3": [
-									"disguise self"
-								],
-								"5": [
-									"detect thoughts"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"disguise self"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"detect thoughts"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -12886,12 +13140,20 @@
 								"1": [
 									"thaumaturgy"
 								],
-								"3": [
-									"disguise self"
-								],
-								"5": [
-									"invisibility"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"disguise self"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"invisibility"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -12928,12 +13190,20 @@
 								"1": [
 									"friends"
 								],
-								"3": [
-									"charm person"
-								],
-								"5": [
-									"suggestion"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"charm person"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"suggestion"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -12970,12 +13240,20 @@
 								"1": [
 									"friends"
 								],
-								"3": [
-									"charm person"
-								],
-								"5": [
-									"suggestion"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"charm person"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"suggestion"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13012,12 +13290,20 @@
 								"1": [
 									"minor illusion"
 								],
-								"3": [
-									"disguise self"
-								],
-								"5": [
-									"invisibility"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"disguise self"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"invisibility"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13054,12 +13340,20 @@
 								"1": [
 									"minor illusion"
 								],
-								"3": [
-									"disguise self"
-								],
-								"5": [
-									"invisibility"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"disguise self"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"invisibility"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13096,12 +13390,20 @@
 								"1": [
 									"ray of frost"
 								],
-								"3": [
-									"armor of agathys"
-								],
-								"5": [
-									"darkness"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"armor of agathys"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13141,12 +13443,20 @@
 								"1": [
 									"ray of frost"
 								],
-								"3": [
-									"armor of agathys"
-								],
-								"5": [
-									"darkness"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"armor of agathys"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13177,12 +13487,20 @@
 								"1": [
 									"mage hand"
 								],
-								"3": [
-									"tenser's floating disk"
-								],
-								"5": [
-									"arcane lock"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"tenser's floating disk"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"arcane lock"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13210,12 +13528,20 @@
 								"1": [
 									"mage hand"
 								],
-								"3": [
-									"tenser's floating disk"
-								],
-								"5": [
-									"arcane lock"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"tenser's floating disk"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"arcane lock"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13243,12 +13569,20 @@
 								"1": [
 									"mage hand"
 								],
-								"3": [
-									"burning hands"
-								],
-								"5": [
-									"flame blade"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"burning hands"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"flame blade"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13276,12 +13610,20 @@
 								"1": [
 									"mage hand"
 								],
-								"3": [
-									"magic missile"
-								],
-								"5": [
-									"web"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"magic missile"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"web"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13322,12 +13664,20 @@
 								"1": [
 									"vicious mockery"
 								],
-								"3": [
-									"charm person"
-								],
-								"5": [
-									"enthrall"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"charm person"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"enthrall"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13378,12 +13728,20 @@
 								"1": [
 									"thaumaturgy"
 								],
-								"3": [
-									"burning hands"
-								],
-								"5": [
-									"darkness"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"burning hands"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13434,12 +13792,20 @@
 								"1": [
 									"thaumaturgy"
 								],
-								"3": [
-									"hellish rebuke"
-								],
-								"5": [
-									"darkness"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"hellish rebuke"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13522,12 +13888,20 @@
 								"1": [
 									"thaumaturgy"
 								],
-								"3": [
-									"searing smite"
-								],
-								"5": [
-									"branding smite"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"searing smite"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"branding smite"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13564,12 +13938,20 @@
 								"1": [
 									"thaumaturgy"
 								],
-								"3": [
-									"searing smite"
-								],
-								"5": [
-									"branding smite"
-								]
+								"3": {
+									"rest": {
+										"1": [
+											"searing smite"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"branding smite"
+										]
+									}
+								}
 							},
 							"ability": "cha"
 						}
@@ -13768,12 +14150,20 @@
 						"1": [
 							"fog cloud"
 						],
-						"3": [
-							"gust of wind"
-						],
-						"5": [
-							"wall of water|xge"
-						]
+						"3": {
+							"rest": {
+								"1": [
+									"gust of wind"
+								]
+							}
+						},
+						"5": {
+							"rest": {
+								"1": [
+									"wall of water|xge"
+								]
+							}
+						}
 					},
 					"ability": "cha"
 				}
@@ -14598,8 +14988,8 @@
 							"type": "list",
 							"items": [
 								"You gain a +1 bonus to Armor Class.",
-								"You can don only armor with which you have proficiency. To don armor, you must incorporate it into your body over the course of 1 hour, during which you remain in contact with the armor. To doff armor, you must spend 1 hour removing it. You can rest while donning or doffing armor in this way.",
-								"While you live, your armor can't be removed from your body against your will."
+								"You can don only armor with which you have proficiency. To don armor other than a shield, you must incorporate it into your body over the course of 1 hour, during which you remain in contact with the armor. To doff armor, you must spend 1 hour removing it. You can rest while donning or doffing armor in this way.",
+								"While you live, the armor incorporated into your body can't be removed against your will."
 							]
 						}
 					]
@@ -14974,9 +15364,13 @@
 							"poison spray",
 							"animal friendship"
 						],
-						"3": [
-							"suggestion"
-						]
+						"3": {
+							"rest": {
+								"1": [
+									"suggestion"
+								]
+							}
+						}
 					},
 					"ability": "cha"
 				}

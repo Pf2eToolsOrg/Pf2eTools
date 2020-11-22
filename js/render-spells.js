@@ -26,40 +26,52 @@ class RenderSpells {
 		}
 		renderStack.push(`</td></tr>`);
 
+		const stackFroms = [];
+
 		const fromClassList = Renderer.spell.getCombinedClasses(sp, "fromClassList");
 		if (fromClassList.length) {
 			const [current, legacy] = Parser.spClassesToCurrentAndLegacy(fromClassList);
-			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Classes: </span>${Parser.spMainClassesToFull(current)}</td></tr>`);
-			if (legacy.length) renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted"><span class="bold">Classes (legacy): </span>${Parser.spMainClassesToFull(legacy)}</section></td></tr>`);
+			stackFroms.push(`<div><span class="bold">Classes: </span>${Parser.spMainClassesToFull(current)}</div>`);
+			if (legacy.length) stackFroms.push(`<div class="text-muted"><span class="bold">Classes (legacy): </span>${Parser.spMainClassesToFull(legacy)}</div>`);
 		}
 
 		const fromSubclass = Renderer.spell.getCombinedClasses(sp, "fromSubclass");
 		if (fromSubclass.length) {
 			const [current, legacy] = Parser.spSubclassesToCurrentAndLegacyFull(sp, subclassLookup);
-			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Subclasses: </span>${current}</td></tr>`);
+			stackFroms.push(`<div><span class="bold">Subclasses: </span>${current}</div>`);
 			if (legacy.length) {
-				renderStack.push(`<tr class="text"><td colspan="6"><section class="text-muted"><span class="bold">Subclasses (legacy): </span>${legacy}</section></td></tr>`);
+				stackFroms.push(`<div class="text-muted"><span class="bold">Subclasses (legacy): </span>${legacy}</div>`);
 			}
 		}
 
 		const fromClassListVariant = Renderer.spell.getCombinedClasses(sp, "fromClassListVariant");
 		if (fromClassListVariant.length) {
-			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold" title="Source: ${Parser.sourceJsonToFull(SRC_UACFV)}">Variant Classes: </span>${Parser.spMainClassesToFull(fromClassListVariant)}</td></tr>`);
+			const [current, legacy] = Parser.spVariantClassesToCurrentAndLegacy(fromClassListVariant);
+			if (current.length) {
+				stackFroms.push(`<div><span class="bold">Optional/Variant Classes: </span>${Parser.spMainClassesToFull(current)}</div>`);
+			}
+			if (legacy.length) {
+				stackFroms.push(`<div class="text-muted"><span class="bold">Optional/Variant Classes (legacy): </span>${Parser.spMainClassesToFull(legacy)}</div>`);
+			}
 		}
 
 		if (sp.races) {
 			sp.races.sort((a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source));
-			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Races: </span>${sp.races.map(r => `${SourceUtil.isNonstandardSource(r.source) ? `<span class="text-muted">` : ``}${renderer.render(`{@race ${r.name}|${r.source}}`)}${SourceUtil.isNonstandardSource(r.source) ? `</span>` : ``}`).join(", ")}</td></tr>`);
+			stackFroms.push(`<div><span class="bold">Races: </span>${sp.races.map(r => `${SourceUtil.isNonstandardSource(r.source) ? `<span class="text-muted">` : ``}${renderer.render(`{@race ${r.name}|${r.source}}`)}${SourceUtil.isNonstandardSource(r.source) ? `</span>` : ``}`).join(", ")}</div>`);
 		}
 
 		if (sp.backgrounds) {
 			sp.backgrounds.sort((a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source));
-			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Backgrounds: </span>${sp.backgrounds.map(r => `${SourceUtil.isNonstandardSource(r.source) ? `<span class="text-muted">` : ``}${renderer.render(`{@background ${r.name}|${r.source}}`)}${SourceUtil.isNonstandardSource(r.source) ? `</span>` : ``}`).join(", ")}</td></tr>`);
+			stackFroms.push(`<div><span class="bold">Backgrounds: </span>${sp.backgrounds.map(r => `${SourceUtil.isNonstandardSource(r.source) ? `<span class="text-muted">` : ``}${renderer.render(`{@background ${r.name}|${r.source}}`)}${SourceUtil.isNonstandardSource(r.source) ? `</span>` : ``}`).join(", ")}</div>`);
 		}
 
 		if (sp.eldritchInvocations) {
 			sp.eldritchInvocations.sort((a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source));
-			renderStack.push(`<tr class="text"><td colspan="6"><span class="bold">Eldritch Invocations: </span>${sp.eldritchInvocations.map(r => `${SourceUtil.isNonstandardSource(r.source) ? `<span class="text-muted">` : ``}${renderer.render(`{@optfeature ${r.name}|${r.source}}`)}${SourceUtil.isNonstandardSource(r.source) ? `</span>` : ``}`).join(", ")}</td></tr>`);
+			stackFroms.push(`<div><span class="bold">Eldritch Invocations: </span>${sp.eldritchInvocations.map(r => `${SourceUtil.isNonstandardSource(r.source) ? `<span class="text-muted">` : ``}${renderer.render(`{@optfeature ${r.name}|${r.source}}`)}${SourceUtil.isNonstandardSource(r.source) ? `</span>` : ``}`).join(", ")}</div>`);
+		}
+
+		if (stackFroms.length) {
+			renderStack.push(`<tr class="text"><td colspan="6">${stackFroms.join("")}</td></tr>`)
 		}
 
 		if (sp._scrollNote) {

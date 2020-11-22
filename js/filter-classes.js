@@ -12,11 +12,33 @@ class PageFilterClasses extends PageFilter {
 
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Reprinted", "SRD"],
-			deselFn: (it) => { return it === "Reprinted" },
+			items: ["Reprinted", "Sidekick", "SRD"],
+			deselFn: (it) => { return it === "Reprinted" || it === "Sidekick" },
 			displayFnMini: it => it === "Reprinted" ? "Repr." : it,
 			displayFnTitle: it => it === "Reprinted" ? it : "",
 			isSrdFilter: true,
+		});
+
+		this._optionsFilter = new OptionsFilter({
+			header: "Other/Text Options",
+			defaultState: {
+				isDisplayClassIfSubclassActive: false,
+				isClassFeatureVariant: true,
+			},
+			displayFn: k => {
+				switch (k) {
+					case "isClassFeatureVariant": return "Class Feature Options/Variants";
+					case "isDisplayClassIfSubclassActive": return "Display Class if Any Subclass is Visible";
+					default: throw new Error(`Unhandled key "${k}"`);
+				}
+			},
+			displayFnMini: k => {
+				switch (k) {
+					case "isClassFeatureVariant": return "C.F.O/V.";
+					case "isDisplayClassIfSubclassActive": return "Sc>C";
+					default: throw new Error(`Unhandled key "${k}"`);
+				}
+			},
 		});
 
 		// region source
@@ -30,13 +52,18 @@ class PageFilterClasses extends PageFilter {
 		// endregion
 	}
 
+	get optionsFilter () { return this._optionsFilter; }
+
 	mutateForFilters (cls) {
 		cls.source = cls.source || SRC_PHB;
 		cls.subclasses = cls.subclasses || [];
 
+		cls._fSourceSubclass = [cls.source, ...cls.subclasses.map(it => it.source)];
+
 		cls._fMisc = [];
 		if (cls.isReprinted) cls._fMisc.push("Reprinted");
 		if (cls.srd) cls._fMisc.push("SRD");
+		if (cls.isSidekick) cls._fMisc.push("Sidekick");
 
 		cls.subclasses.forEach(sc => {
 			sc.source = sc.source || cls.source; // default subclasses to same source as parent
@@ -79,14 +106,23 @@ class PageFilterClasses extends PageFilter {
 		opts.filters = [
 			this._sourceFilter,
 			this._miscFilter,
+			this._optionsFilter,
 		];
 		opts.isCompact = true;
 	}
 
 	toDisplay (values, it) {
+		const isAnySubclassDisplayed = values[this._optionsFilter.header].isDisplayClassIfSubclassActive && (it.subclasses || []).some(sc => {
+			return this._filterBox.toDisplay(
+				values,
+				sc.source,
+				sc._fMisc,
+			);
+		});
+
 		return this._filterBox.toDisplay(
 			values,
-			it.source,
+			isAnySubclassDisplayed ? it._fSourceSubclass : it.source,
 			it._fMisc,
 		)
 	}

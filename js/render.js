@@ -36,8 +36,10 @@ function Renderer () {
 	this._fnPostProcess = null;
 	this._extraSourceClasses = null;
 	this._depthTracker = null;
+	this._depthTrackerAdditionalProps = [];
 	this._lastDepthTrackerSource = null;
 	this._isInternalLinksDisabled = false;
+	this._fnsGetStyleClasses = {};
 
 	/**
 	 * Enables/disables lazy-load image rendering.
@@ -143,6 +145,12 @@ function Renderer () {
 		return !!this._isInternalLinksDisabled;
 	};
 
+	/** Bind function which apply exta CSS classes to entry/list renders.  */
+	this.setFnGetStyleClasses = function (identifier, fn) {
+		this._fnsGetStyleClasses[identifier] = fn;
+		return this;
+	};
+
 	/**
 	 * If enabled, titles with the same name will be given numerical identifiers.
 	 * This identifier is stored in `data-title-relative-index`
@@ -178,7 +186,11 @@ function Renderer () {
 	this._handleTrackDepth = function (entry, depth) {
 		if (entry.name && this._depthTracker) {
 			this._lastDepthTrackerSource = entry.source || this._lastDepthTrackerSource;
+			const additionalData = this._depthTrackerAdditionalProps.length
+				? this._depthTrackerAdditionalProps.mergeMap(it => ({[it]: entry[it]}))
+				: {};
 			this._depthTracker.push({
+				...additionalData,
 				depth,
 				name: entry.name,
 				type: entry.type,
@@ -209,7 +221,11 @@ function Renderer () {
 	 * Specify an array where the renderer will record rendered header depths.
 	 * Items added to the array are of the form: `{name: "Header Name", depth: 1, type: "entries", source: "PHB"}`
 	 */
-	this.setDepthTracker = function (arr) { this._depthTracker = arr; return this; };
+	this.setDepthTracker = function (arr, ...additionalProps) {
+		this._depthTracker = arr;
+		this._depthTrackerAdditionalProps = additionalProps || [];
+		return this;
+	};
 
 	/**
 	 * Recursively walk down a tree of "entry" JSON items, adding to a stack of strings to be finally rendered to the
@@ -653,6 +669,12 @@ function Renderer () {
 	this._renderEntriesSubtypes_getDataString = function (entry) {
 		let dataString = "";
 		if (entry.source) dataString += `data-source="${entry.source}"`;
+		if (entry.data) {
+			for (const k in entry.data) {
+				if (!k.startsWith("rd-")) continue;
+				dataString += ` data-${k}="${`${entry.data[k]}`.escapeQuotes()}"`;
+			}
+		}
 		return dataString;
 	};
 
@@ -666,7 +688,7 @@ function Renderer () {
 
 	this._renderEntriesSubtypes_getStyleString = function (entry, meta, isInlineTitle) {
 		const styleClasses = ["rd__b"];
-		styleClasses.push(this._getStyleClass(entry.source));
+		styleClasses.push(this._getStyleClass(entry));
 		if (isInlineTitle) {
 			if (this._subVariant) styleClasses.push(Renderer.HEAD_2_SUB_VARIANT);
 			else styleClasses.push(Renderer.HEAD_2);
@@ -705,7 +727,7 @@ function Renderer () {
 				const item = entry.items[i];
 				// Special case for child lists -- avoid wrapping in LI tags to avoid double-bullet
 				if (item.type !== "list") {
-					const className = `${this._getStyleClass(item.source)}${item.type === "itemSpell" ? " rd__li-spell" : ""}`;
+					const className = `${this._getStyleClass(item)}${item.type === "itemSpell" ? " rd__li-spell" : ""}`;
 					textStack[0] += `<li class="rd__li ${className}">`;
 				}
 				// If it's a raw string in a hanging list, wrap it in a div to allow for the correct styling
@@ -786,7 +808,7 @@ function Renderer () {
 			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
 			meta.depth = cacheDepth;
 		}
-		if (entry.variantSource) textStack[0] += Renderer.utils._getPageTrText(entry.variantSource);
+		if (entry.variantSource) textStack[0] += Renderer.utils.getSourceAndPageTrHtml(entry.variantSource);
 		textStack[0] += `</${this.wrapperTag}>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
@@ -808,7 +830,7 @@ function Renderer () {
 			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
 			meta.depth = cacheDepth;
 		}
-		if (entry.variantSource) textStack[0] += Renderer.utils._getPageTrText(entry.variantSource);
+		if (entry.variantSource) textStack[0] += Renderer.utils.getSourceAndPageTrHtml(entry.variantSource);
 		textStack[0] += `</${this.wrapperTag}>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
@@ -1172,11 +1194,15 @@ function Renderer () {
 		textStack[0] += `<hr class="rd__hr">`;
 	};
 
-	this._getStyleClass = function (source) {
+	this._getStyleClass = function (entry) {
 		const outList = [];
-		if (SourceUtil.isNonstandardSource(source)) outList.push("spicy-sauce");
-		if (BrewUtil.hasSourceJson(source)) outList.push("refreshing-brew");
+		if (SourceUtil.isNonstandardSource(entry.source)) outList.push("spicy-sauce");
+		if (BrewUtil.hasSourceJson(entry.source)) outList.push("refreshing-brew");
 		if (this._extraSourceClasses) outList.push(...this._extraSourceClasses);
+		for (const k in this._fnsGetStyleClasses) {
+			const fromFn = this._fnsGetStyleClasses[k](entry);
+			if (fromFn) outList.push(...fromFn);
+		}
 		return outList.join(" ");
 	};
 
@@ -1236,7 +1262,7 @@ function Renderer () {
 				const scrubbedColor = BrewUtil.getValidColor(color);
 
 				textStack[0] += `<span style="color: #${scrubbedColor}">`;
-				textStack[0] += toDisplay;
+				this._recursiveRender(toDisplay, textStack, meta);
 				textStack[0] += `</span>`;
 				break;
 			}
@@ -1321,8 +1347,11 @@ function Renderer () {
 					case "@d20":
 					case "@hit": {
 						// format: {@hit +1} or {@hit -2}
-						const n = Number(rollText);
-						const mod = `${n >= 0 ? "+" : ""}${n}`;
+						let mod;
+						if (!isNaN(rollText)) {
+							const n = Number(rollText);
+							mod = `${n >= 0 ? "+" : ""}${n}`;
+						} else mod = rollText;
 						fauxEntry.displayText = fauxEntry.displayText || mod;
 						fauxEntry.toRoll = `1d20${mod}`;
 						fauxEntry.subType = "d20";
@@ -1352,6 +1381,18 @@ function Renderer () {
 					}
 				}
 
+				break;
+			}
+
+			case "@hitYourSpellAttack": {
+				const fauxEntry = {
+					type: "dice",
+					rollable: true,
+					subType: "d20",
+					displayText: "your spell attack modifier",
+					toRoll: `1d20 + #$prompt_number:title=Enter your Spell Attack Modifier$#`,
+				};
+				this._recursiveRender(fauxEntry, textStack, meta);
 				break;
 			}
 
@@ -1712,7 +1753,10 @@ function Renderer () {
 							const classStateOpts = {
 								subclass: {
 									shortName: subclassShortName.trim(),
-									source: subclassSource ? subclassSource.trim() : SRC_PHB,
+									source: subclassSource
+										// Subclass state uses the abbreviated form of the source for URL shortness
+										? Parser.sourceJsonToAbv(subclassSource.trim())
+										: SRC_PHB,
 								},
 							};
 
@@ -1865,6 +1909,14 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@vehupgrade":
+						fauxEntry.href.path = UrlUtil.PG_VEHICLES;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_VEHICLES,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
 					case "@action":
 						fauxEntry.href.path = UrlUtil.PG_ACTIONS;
 						fauxEntry.href.hover = {
@@ -1877,6 +1929,14 @@ function Renderer () {
 						fauxEntry.href.path = UrlUtil.PG_LANGUAGES;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_LANGUAGES,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
+					case "@charoption":
+						fauxEntry.href.path = UrlUtil.PG_CHAR_CREATION_OPTIONS;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_CHAR_CREATION_OPTIONS,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -2497,35 +2557,41 @@ Renderer.utils = {
 		return isExcluded ? `<tr><td colspan="6" class="pt-3 text-center text-danger"><b><i>Warning: This content has been <a href="blacklist.html">blacklisted</a>.</i></b></td></tr>` : "";
 	},
 
+	getSourceAndPageTrHtml (it) {
+		const html = Renderer.utils.getSourceAndPageHtml(it);
+		return html ? `<b>Source:</b> ${html}` : "";
+	},
+
+	_getAltSourceHtmlOrText (it, prop, introText, isText) {
+		if (!it[prop] || !it[prop].length) return "";
+
+		return `${introText} ${it[prop].map(as => {
+			if (as.entry) return Renderer.get().render(isText ? Renderer.stripTags(as.entry) : as.entry);
+			return `${isText ? "" : `<i title="${Parser.sourceJsonToFull(as.source)}">`}${Parser.sourceJsonToAbv(as.source)}${isText ? "" : `</i>`}${Renderer.utils.isDisplayPage(as.page) ? `, page ${as.page}` : ""}`;
+		}).join("; ")}`;
+	},
+
+	getSourceAndPageHtml (it) { return this._getSourceAndPageHtmlOrText(it); },
+	getSourceAndPageText (it) { return this._getSourceAndPageHtmlOrText(it, true); },
+
+	_getSourceAndPageHtmlOrText (it, isText) {
+		const sourceSub = Renderer.utils.getSourceSubText(it);
+		const baseText = `${isText ? `` : `<i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">`}${Parser.sourceJsonToAbv(it.source)}${sourceSub}${isText ? "" : `</i>`}${Renderer.utils.isDisplayPage(it.page) ? `, page ${it.page}` : ""}`;
+		const addSourceText = Renderer.utils._getAltSourceHtmlOrText(it, "additionalSources", "Additional information from", isText);
+		const otherSourceText = Renderer.utils._getAltSourceHtmlOrText(it, "otherSources", "Also found in", isText);
+		const srdText = it.srd ? `Available in the ${isText ? "" : `<span title="Systems Reference Document">`}SRD${isText ? "" : `</span>`}${typeof it.srd === "string" ? ` (as &quot;${it.srd}&quot;)` : ""}` : "";
+		const externalSourceText = Renderer.utils._getAltSourceHtmlOrText(it, "externalSources", "External sources:", isText);
+
+		return `${[baseText, addSourceText, otherSourceText, srdText, externalSourceText].filter(it => it).join(". ")}${baseText && (addSourceText || otherSourceText || srdText || externalSourceText) ? "." : ""}`;
+	},
+
 	async _pHandleNameClick (ele) {
 		await MiscUtil.pCopyTextToClipboard($(ele).text());
 		JqueryUtil.showCopiedEffect($(ele));
 	},
 
-	getPageTr: (it) => {
-		return `<tr><td colspan=6>${Renderer.utils._getPageTrText(it)}</td></tr>`;
-	},
-
-	_getPageTrText: (it) => {
-		function getAltSourceText (prop, introText) {
-			if (!it[prop] || !it[prop].length) return "";
-
-			return `${introText} ${it[prop].map(as => {
-				if (as.entry) return Renderer.get().render(as.entry);
-				else {
-					return `<i title="${Parser.sourceJsonToFull(as.source)}">${Parser.sourceJsonToAbv(as.source)}</i>${Renderer.utils.isDisplayPage(as.page) ? `, page ${as.page}` : ""}`;
-				}
-			}).join("; ")}`
-		}
-
-		const sourceSub = Renderer.utils.getSourceSubText(it);
-		const baseText = Renderer.utils.isDisplayPage(it.page) ? `<b>Source:</b> <i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">${Parser.sourceJsonToAbv(it.source)}${sourceSub}</i>, page ${it.page}` : "";
-		const addSourceText = getAltSourceText("additionalSources", "Additional information from");
-		const otherSourceText = getAltSourceText("otherSources", "Also found in");
-		const srdText = it.srd ? `Available in the <span title="Systems Reference Document">SRD</span>${typeof it.srd === "string" ? ` (as &quot;${it.srd}&quot;)` : ""}` : "";
-		const externalSourceText = getAltSourceText("externalSources", "External sources:");
-
-		return `${[baseText, addSourceText, otherSourceText, srdText, externalSourceText].filter(it => it).join(". ")}${baseText && (addSourceText || otherSourceText || srdText || externalSourceText) ? "." : ""}`;
+	getPageTr (it) {
+		return `<tr><td colspan=6>${Renderer.utils.getSourceAndPageTrHtml(it)}</td></tr>`;
 	},
 
 	getAbilityRoller (statblock, ability) {
@@ -3995,7 +4061,7 @@ Renderer.monster = {
 
 	getSave (renderer, attr, mod) {
 		if (attr === "special") return renderer.render(mod);
-		else return renderer.render(`<span data-mon-save="${attr.uppercaseFirst()}|${mod}">${attr.uppercaseFirst()} {@d20 ${mod}|${mod}|${Parser.attAbvToFull([attr])} save}</span>`);
+		return renderer.render(`<span data-mon-save="${attr.uppercaseFirst()}|${mod}">${attr.uppercaseFirst()} {@d20 ${mod}|${mod}|${Parser.attAbvToFull([attr])} save}</span>`);
 	},
 
 	getDragonCasterVariant (renderer, dragon) {
@@ -4062,7 +4128,7 @@ Renderer.monster = {
 			entries: [
 				"Dragons are innately magical creatures that can master a few spells as they age, using this variant.",
 				`A young or older dragon can innately cast a number of spells equal to its Charisma modifier. Each spell can be cast once per day, requiring no material components, and the spell's level can be no higher than one-third the dragon's challenge rating (rounded down). The dragon's bonus to hit with spell attacks is equal to its proficiency bonus + its Charisma bonus. The dragon's spell save DC equals 8 + its proficiency bonus + its Charisma modifier.`,
-				`{@i This dragon can innately cast ${Parser.numberToText(chaMod)} spell${chaMod === 1 ? "" : "s"}, once per day${chaMod === 1 ? "" : " each"}, requiring no material components. ${levelString} The dragon's spell save DC is ${pb + chaMod + 8}, and it has {@hit ${pb + chaMod}} to hit with spell attacks. See the {@filter spell page|spells|level=${[...new Array(maxSpellLevel + 1)].map((it, i) => i).join(";")}} for a list of spells the dragon is capable of casting.${exampleSpells ? ` A selection of examples are shown below:` : ""}`,
+				`{@note This dragon can innately cast ${Parser.numberToText(chaMod)} spell${chaMod === 1 ? "" : "s"}, once per day${chaMod === 1 ? "" : " each"}, requiring no material components. ${levelString} The dragon's spell save DC is ${pb + chaMod + 8}, and it has {@hit ${pb + chaMod}} to hit with spell attacks. See the {@filter spell page|spells|level=${[...new Array(maxSpellLevel + 1)].map((it, i) => i).join(";")}} for a list of spells the dragon is capable of casting.${exampleSpells ? ` A selection of examples are shown below:` : ""}}`,
 			],
 		};
 		if (exampleSpells) {
@@ -4228,6 +4294,7 @@ Renderer.monster = {
 			${Renderer.monster.getOrderedTraits(mon, renderer).map(it => it.rendered || renderer.render(it, 2)).join("")}
 			</td></tr>` : ""}
 			${Renderer.monster.getCompactRenderedStringSection(mon, renderer, "Actions", "action", 2)}
+			${Renderer.monster.getCompactRenderedStringSection(mon, renderer, "Bonus Actions", "bonus", 2)}
 			${Renderer.monster.getCompactRenderedStringSection(mon, renderer, "Reactions", "reaction", 2)}
 			${Renderer.monster.getCompactRenderedStringSection(mon, renderer, "Legendary Actions", "legendary", 2)}
 			${Renderer.monster.getCompactRenderedStringSection(mon, renderer, "Mythic Actions", "mythic", 2)}
@@ -5470,6 +5537,9 @@ Renderer.vehicle = {
 
 	getRenderedString (veh, opts) {
 		opts = opts || {};
+
+		if (veh.upgradeType) return Renderer.vehicle._getRenderedString_upgrade(veh, opts);
+
 		veh.vehicleType = veh.vehicleType || "SHIP";
 		switch (veh.vehicleType) {
 			case "SHIP": return Renderer.vehicle._getRenderedString_ship(veh, opts);
@@ -5477,6 +5547,20 @@ Renderer.vehicle = {
 			case "CREATURE": return Renderer.monster.getCompactRenderedString(veh, null, {...opts, isHideLanguages: true, isHideSenses: true, isCompact: false});
 			default: throw new Error(`Unhandled vehicle type "${veh.vehicleType}"`);
 		}
+	},
+
+	_getRenderedString_upgrade (it, opts) {
+		const summaryParts = [
+			Parser.vehicleTypeToFull(it.upgradeType),
+			it.prerequisite ? Renderer.utils.getPrerequisiteText(it.prerequisite) : "",
+		].filter(Boolean);
+
+		return $$`${Renderer.utils.getBorderTr()}
+			${Renderer.utils.getExcludedTr(it, "vehicleUpgrade", UrlUtil.PG_VEHICLES)}
+			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_VEHICLES})}
+			<tr><td colspan="6"><i>${summaryParts.join(", ")}</i></td></tr>
+			<tr><td class="divider" colspan="6"><div></div></td></tr>
+			<tr><td colspan="6">${Renderer.get().render({entries: it.entries}, 1)}</td></tr>`;
 	},
 
 	_getRenderedString_ship (veh, opts) {
@@ -5813,6 +5897,26 @@ Renderer.adventureBook = {
 	},
 };
 
+Renderer.charoption = {
+	getCompactRenderedString (it) {
+		return `
+		${Renderer.utils.getExcludedTr(it, "charoption", UrlUtil.PG_CHAR_CREATION_OPTIONS)}
+		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CHAR_CREATION_OPTIONS})}
+		<tr class="text"><td colspan="6">
+		${Renderer.get().setFirstSection(true).render({type: "entries", entries: it.entries})}
+		</td></tr>
+		`;
+	},
+
+	pGetFluff (it) {
+		return Renderer.utils.pGetFluff({
+			entity: it,
+			fluffUrl: "data/fluff-charcreationoptions.json",
+			fluffProp: "charoptionFluff",
+		});
+	},
+};
+
 Renderer.generic = {
 	getCompactRenderedString (it) {
 		return `
@@ -5844,6 +5948,9 @@ Renderer.hover = {
 		"hazard": UrlUtil.PG_TRAPS_HAZARDS,
 		"deity": UrlUtil.PG_DEITIES,
 		"variantrule": UrlUtil.PG_VARIANTRULES,
+		"charoption": UrlUtil.PG_CHAR_CREATION_OPTIONS,
+		"vehicle": UrlUtil.PG_VEHICLES,
+		"vehupgrade": UrlUtil.PG_VEHICLES,
 	},
 
 	LinkMeta: function () {
@@ -6854,9 +6961,10 @@ Renderer.hover = {
 			case UrlUtil.PG_CULTS_BOONS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "cultsboons.json", ["cult", "boon"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_CONDITIONS_DISEASES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditionsdiseases.json", ["condition", "disease", "status"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_TABLES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
-			case UrlUtil.PG_VEHICLES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "vehicles.json", "vehicle");
+			case UrlUtil.PG_VEHICLES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "vehicles.json", ["vehicle", "vehicleUpgrade"]);
 			case UrlUtil.PG_ACTIONS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "actions.json", "action");
 			case UrlUtil.PG_LANGUAGES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "languages.json", "language");
+			case UrlUtil.PG_CHAR_CREATION_OPTIONS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "charcreationoptions.json", "charoption");
 
 			// region adventure/books/references
 			case UrlUtil.PG_QUICKREF: {
@@ -6951,6 +7059,7 @@ Renderer.hover = {
 			case `fluff__${UrlUtil.PG_RACES}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-races.json", "raceFluff");
 			case `fluff__${UrlUtil.PG_LANGUAGES}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-languages.json", "languageFluff");
 			case `fluff__${UrlUtil.PG_VEHICLES}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-vehicles.json", "vehicleFluff");
+			case `fluff__${UrlUtil.PG_CHAR_CREATION_OPTIONS}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-charcreationoptions.json", "charoptionFluff");
 			// endregion
 
 			// region props
@@ -7120,10 +7229,37 @@ Renderer.hover = {
 					UrlUtil.class.getIndexedEntries(cls).forEach(it => Renderer.hover._addToCache(UrlUtil.PG_CLASSES, it.source, it.hash, it.entry));
 				};
 
+				const pAddSubclassToIndex = async sc => {
+					const cls = classData.class.find(it => it.name === sc.className && it.source === (sc.classSource || SRC_PHB));
+					if (!cls) return;
+					const clsHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls);
+
+					// add subclasse
+					sc = await DataUtil.class.pGetDereferencedSubclassData(sc);
+					const scHash = `${clsHash}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: sc})}`;
+					const scEntries = {type: "section", entries: MiscUtil.copy((sc.subclassFeatures || []).flat())};
+					// Always use the class source where available, as these are all keyed as sub-hashes on the classes page
+					Renderer.hover._addToCache(UrlUtil.PG_CLASSES, cls.source || sc.source || SRC_PHB, scHash, scEntries);
+					// Add a copy using the subclass source, for omnisearch results
+					Renderer.hover._addToCache(UrlUtil.PG_CLASSES, sc.source || SRC_PHB, scHash, scEntries);
+
+					// Reduce the class down so we only have subclass features
+					const cpyClass = MiscUtil.copy(cls);
+					cpyClass.classFeatures = (cpyClass.classFeatures || []).map(lvlFeatureList => {
+						return lvlFeatureList.filter(feature => feature.gainSubclassFeature)
+					});
+
+					cpyClass.subclasses = [sc];
+
+					// add all class/subclass features
+					UrlUtil.class.getIndexedEntries(cpyClass).forEach(it => Renderer.hover._addToCache(UrlUtil.PG_CLASSES, it.source, it.hash, it.entry));
+				};
+
+				const classData = await DataUtil.class.loadJSON();
 				const brewData = await BrewUtil.pAddBrewData();
 				await Promise.all((brewData.class || []).map(cc => pAddToIndex(cc)));
-				const data = await DataUtil.class.loadJSON();
-				await Promise.all(data.class.map(cc => pAddToIndex(cc)));
+				for (const sc of (brewData.subclass || [])) await pAddSubclassToIndex(sc);
+				await Promise.all(classData.class.map(cc => pAddToIndex(cc)));
 			},
 		);
 
@@ -7364,6 +7500,7 @@ Renderer.hover = {
 			case UrlUtil.PG_VEHICLES: return Renderer.vehicle.getCompactRenderedString;
 			case UrlUtil.PG_ACTIONS: return Renderer.action.getCompactRenderedString;
 			case UrlUtil.PG_LANGUAGES: return Renderer.language.getCompactRenderedString;
+			case UrlUtil.PG_CHAR_CREATION_OPTIONS: return Renderer.charoption.getCompactRenderedString;
 			// region props
 			case "classfeature":
 			case "classFeature":
@@ -7386,6 +7523,7 @@ Renderer.hover = {
 			case UrlUtil.PG_BACKGROUNDS: return Renderer.background.pGetFluff;
 			case UrlUtil.PG_LANGUAGES: return Renderer.language.pGetFluff;
 			case UrlUtil.PG_VEHICLES: return Renderer.vehicle.pGetFluff;
+			case UrlUtil.PG_CHAR_CREATION_OPTIONS: return Renderer.charoption.pGetFluff;
 			default: return null;
 		}
 	},
@@ -7633,6 +7771,8 @@ Renderer._stripTagLayer = function (str) {
 						throw new Error(`Unhandled tag: ${tag}`);
 					}
 
+					case "@hitYourSpellAttack": return "your spell attack modifier";
+
 					case "@comic":
 					case "@comicH1":
 					case "@comicH2":
@@ -7671,6 +7811,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@action":
 					case "@background":
 					case "@boon":
+					case "@charoption":
 					case "@class":
 					case "@condition":
 					case "@creature":
@@ -7686,6 +7827,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@race":
 					case "@reward":
 					case "@vehicle":
+					case "@vehupgrade":
 					case "@spell":
 					case "@status":
 					case "@table":

@@ -435,6 +435,7 @@ class RendererMarkdown {
 		const traitsPart = traitArray && traitArray.length ? `\n${RendererMarkdown.monster._getRenderedSection(traitArray, 1, meta)}` : "";
 
 		const actionsPart = mon.action ? `\n>### Actions\n${RendererMarkdown.monster._getRenderedSection(mon.action, 1, meta)}` : "";
+		const bonusActionsPart = mon.bonus ? `\n>### Bonus Actions\n${RendererMarkdown.monster._getRenderedSection(mon.bonus, 1, meta)}` : "";
 		const reactionsPart = mon.reaction ? `\n>### Reactions\n${RendererMarkdown.monster._getRenderedSection(mon.reaction, 1, meta)}` : "";
 		const legendaryActionsPart = mon.legendary ? `\n>### Legendary Actions\n>${Renderer.monster.getLegendaryActionIntro(mon, RendererMarkdown.get())}\n>\n${RendererMarkdown.monster._getRenderedLegendarySection(mon.legendary, 1, meta)}` : "";
 		const mythicActionsPart = mon.mythic ? `\n>### Mythic Actions\n>${Renderer.monster.getMythicActionIntro(mon, RendererMarkdown.get())}\n>\n${RendererMarkdown.monster._getRenderedLegendarySection(mon.mythic, 1, meta)}` : "";
@@ -458,7 +459,7 @@ class RendererMarkdown {
 >- **Challenge** ${mon.cr ? Parser.monCrToFull(mon.cr, {isMythic: !!mon.mythic}) : "\u2014"}
 >___`;
 
-		let breakablePart = `${traitsPart}${actionsPart}${reactionsPart}${legendaryActionsPart}${mythicActionsPart}${footerPart}`;
+		let breakablePart = `${traitsPart}${actionsPart}${bonusActionsPart}${reactionsPart}${legendaryActionsPart}${mythicActionsPart}${footerPart}`;
 
 		if (RendererMarkdown._isAddColumnBreaks) {
 			let charAllowanceFirstCol = 2200 - unbreakablePart.length;

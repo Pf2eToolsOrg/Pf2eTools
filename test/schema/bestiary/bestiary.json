@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.15.3",
+	"version": "1.16.1",
 	"title": "Bestiary Schema",
 	"$id": "bestiary.json",
 	"type": "object",
@@ -442,7 +442,14 @@
 					]
 				},
 				"passive": {
-					"type": "integer"
+					"oneOf": [
+						{
+							"type": "integer"
+						},
+						{
+							"type": "string"
+						}
+					]
 				},
 				"languages": {
 					"oneOf": [
@@ -456,6 +463,9 @@
 							"type": "null"
 						}
 					]
+				},
+				"pbNote": {
+					"type": "string"
 				},
 				"cr": {
 					"oneOf": [
@@ -573,6 +583,28 @@
 							"type": "null"
 						}
 					]
+				},
+				"bonus": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							}
+						},
+						"required": [
+							"name",
+							"entries"
+						],
+						"additionalProperties": false
+					}
 				},
 				"reaction": {
 					"type": "array",

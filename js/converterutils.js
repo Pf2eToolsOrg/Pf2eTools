@@ -253,6 +253,7 @@ class TagCondition {
 
 		this._handleProp(m, "action", inflictedSet);
 		this._handleProp(m, "reaction", inflictedSet);
+		this._handleProp(m, "bonus", inflictedSet);
 		this._handleProp(m, "trait", inflictedSet);
 		this._handleProp(m, "legendary", inflictedSet);
 		this._handleProp(m, "mythic", inflictedSet);
@@ -478,7 +479,7 @@ class DiceConvert {
 		str = str.replace(/\d+ \({@dice (?:[-+0-9d ]*)}\)(?:\s+[-+]\s+[-+a-zA-Z0-9 ]*?)?(?: [a-z]+(?:(?:, |, or | or )[a-z]+)*)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
 
 		// tag @damage (spell/etc style)
-		str = str.replace(/{@dice (?:[-+0-9d ]*)}(?:\s+[-+]\s+[-+a-zA-Z0-9 ]*?)?(?: [a-z]+(?:(?:, |, or | or )[a-z]+)*)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
+		str = str.replace(/{@dice (?:[-+0-9d ]*)}(?:\s+[-+]\s+[-+a-zA-Z0-9 ]*?)?(?:\s+[-+]\s+the spell's level)?(?: [a-z]+(?:(?:, |, or | or )[a-z]+)*)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
 
 		return str;
 	}

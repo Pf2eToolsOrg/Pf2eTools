@@ -89,7 +89,7 @@ function run (isModificationMode) {
 						}
 						noPage
 							.forEach(it => {
-								const ident = `${k} ${(it.source || (it.inherits && it.inherits.source))} ${it.name}`;
+								const ident = `${k.padEnd(20, " ")} ${(it.source || (it.inherits && it.inherits.source)).padEnd(32, " ")} ${it.name}`;
 								if (isModificationMode) {
 									console.log(`  ${ident}`);
 									const page = rl.questionInt("  - Page = ");

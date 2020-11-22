@@ -393,6 +393,7 @@
 
 		handleGenericEntries("trait");
 		handleGenericEntries("action");
+		handleGenericEntries("bonus");
 		handleGenericEntries("reaction");
 		handleGenericEntries("legendary");
 		handleGenericEntries("mythic");
@@ -755,6 +756,7 @@
 							};
 							return mon._shieldRequired = checkShields("trait")
 								|| checkShields("action")
+								|| checkShields("bonus")
 								|| checkShields("reaction")
 								|| checkShields("legendary")
 								|| checkShields("mythic");
@@ -1387,6 +1389,7 @@
 
 		handleGenericEntries("trait");
 		handleGenericEntries("action");
+		handleGenericEntries("bonus");
 		handleGenericEntries("reaction");
 		handleGenericEntries("legendary");
 		handleGenericEntries("mythic");
@@ -1671,6 +1674,7 @@
 
 			if (!handleDpr("trait")) continue;
 			if (!handleDpr("action")) continue;
+			if (!handleDpr("bonus")) continue;
 			if (!handleDpr("reaction")) continue;
 			if (!handleDpr("legendary")) continue;
 			if (!handleDpr("mythic")) continue;
@@ -1733,7 +1737,12 @@
 				this._handleUpdateAbilityScoresSkillsSaves_handleSkills(mon.skill, abil, diff);
 
 				if (abil === "wis" && mon.passive != null) {
-					mon.passive = mon.passive + diff;
+					if (typeof mon.passive === "number") {
+						mon.passive = mon.passive + diff;
+					} else {
+						// Passive perception can be a string in e.g. the case of Artificer Steel Defender
+						delete mon.passive;
+					}
 				}
 			}
 		});

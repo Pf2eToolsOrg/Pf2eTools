@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.4.5",
+	"version": "1.4.7",
 	"type": "object",
 
 	"definitions": {
@@ -80,6 +80,125 @@
 			}
 		},
 
+		"subraceData": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"alias": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"source": {
+					"type": "string"
+				},
+				"page": {
+					"type": "integer"
+				},
+				"otherSources": {
+					"$ref": "util.json#/definitions/otherSources"
+				},
+				"ability": {
+					"$ref": "#/definitions/abilityScores"
+				},
+				"speed": {
+					"$ref": "util.json#/definitions/speed"
+				},
+				"entries": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					}
+				},
+				"darkvision": {
+					"type": "integer"
+				},
+				"traitTags": {
+					"oneOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/traitTag"
+							}
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"languageProficiencies": {
+					"$ref": "util.json#/definitions/languageProficiencies"
+				},
+				"skillProficiencies": {
+					"type": "array",
+					"items": {
+						"$ref": "util.json#/definitions/skillProficiencies"
+					}
+				},
+				"overwrite": {
+					"description": "Map of 'property' -> true where 'property' is a property on the base race which should be overwritten by that of the subrace",
+					"type": "object"
+				},
+				"srd": {
+					"$ref": "util.json#/definitions/srd"
+				},
+				"heightAndWeight": {
+					"oneOf": [
+						{
+							"$ref": "#/definitions/heightAndWeight"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"additionalSpells": {
+					"oneOf": [
+						{
+							"type": "null"
+						},
+						{
+							"$ref": "util.json#/definitions/additionalSpellsArray"
+						}
+					]
+				},
+				"resist": {
+					"oneOf": [
+						{
+							"$ref": "#/definitions/resist"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"immune": {
+					"oneOf": [
+						{
+							"$ref": "#/definitions/immune"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"conditionImmune": {
+					"oneOf": [
+						{
+							"$ref": "#/definitions/conditionImmune"
+						},
+						{
+							"type": "null"
+						}
+					]
+				}
+			},
+			"additionalProperties": false
+		},
+
 		"raceData": {
 			"type": "object",
 			"properties": {
@@ -126,122 +245,7 @@
 				"subraces": {
 					"type": "array",
 					"items": {
-						"type": "object",
-						"properties": {
-							"name": {
-								"type": "string"
-							},
-							"alias": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"source": {
-								"type": "string"
-							},
-							"page": {
-								"type": "integer"
-							},
-							"otherSources": {
-								"$ref": "util.json#/definitions/otherSources"
-							},
-							"ability": {
-								"$ref": "#/definitions/abilityScores"
-							},
-							"speed": {
-								"$ref": "util.json#/definitions/speed"
-							},
-							"entries": {
-								"type": "array",
-								"items": {
-									"$ref": "entry.json"
-								}
-							},
-							"darkvision": {
-								"type": "integer"
-							},
-							"traitTags": {
-								"oneOf": [
-									{
-										"type": "array",
-										"items": {
-											"$ref": "#/definitions/traitTag"
-										}
-									},
-									{
-										"type": "null"
-									}
-								]
-							},
-							"languageProficiencies": {
-								"$ref": "util.json#/definitions/languageProficiencies"
-							},
-							"skillProficiencies": {
-								"type": "array",
-								"items": {
-									"$ref": "util.json#/definitions/skillProficiencies"
-								}
-							},
-							"overwrite": {
-								"description": "Map of 'property' -> true where 'property' is a property on the base race which should be overwritten by that of the subrace",
-								"type": "object"
-							},
-							"srd": {
-								"$ref": "util.json#/definitions/srd"
-							},
-							"heightAndWeight": {
-								"oneOf": [
-									{
-										"$ref": "#/definitions/heightAndWeight"
-									},
-									{
-										"type": "null"
-									}
-								]
-							},
-							"additionalSpells": {
-								"oneOf": [
-									{
-										"type": "null"
-									},
-									{
-										"$ref": "util.json#/definitions/additionalSpellsArray"
-									}
-								]
-							},
-							"resist": {
-								"oneOf": [
-									{
-										"$ref": "#/definitions/resist"
-									},
-									{
-										"type": "null"
-									}
-								]
-							},
-							"immune": {
-								"oneOf": [
-									{
-										"$ref": "#/definitions/immune"
-									},
-									{
-										"type": "null"
-									}
-								]
-							},
-							"conditionImmune": {
-								"oneOf": [
-									{
-										"$ref": "#/definitions/conditionImmune"
-									},
-									{
-										"type": "null"
-									}
-								]
-							}
-						},
-						"additionalProperties": false
+						"$ref": "#/definitions/subraceData"
 					}
 				},
 				"darkvision": {
@@ -341,6 +345,7 @@
 				"Armor Proficiency",
 				"Blindsight",
 				"Dragonmark",
+				"Feat",
 				"Improved Resting",
 				"Magic Resistance",
 				"Monstrous Race",

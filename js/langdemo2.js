@@ -47,7 +47,7 @@ class LangDemoUi {
 		const $dispOutParsed = $(`#out_parsed`).html("");
 		const $dispOutResult = $(`#out_result`).html("");
 
-		const lexed = Renderer.dice.lang._lex3(ipt);
+		const {lexed} = Renderer.dice.lang._lex3(ipt);
 
 		$dispOutLexed.html(lexed.map(it => it ? it.toDebugString() : "").join("\n"));
 

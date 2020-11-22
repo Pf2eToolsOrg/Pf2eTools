@@ -155,11 +155,13 @@ PropOrder._MONSTER = [
 	"conditionImmune",
 	"languages",
 	"cr",
+	"pbNote",
 
 	"spellcasting",
 	"trait",
 	"actionNote",
 	"action",
+	"bonus",
 	"reaction",
 	"legendaryHeader",
 	"legendaryActions",
@@ -259,6 +261,8 @@ PropOrder._ACTION = [
 	"time",
 
 	"entries",
+
+	"seeAlsoAction",
 ];
 PropOrder._ADVENTURE = [
 	"name",
@@ -361,6 +365,8 @@ PropOrder._CLASS = [
 
 	"otherSources",
 
+	"isSidekick",
+
 	"requirements",
 	"hd",
 	"proficiency",
@@ -411,9 +417,13 @@ PropOrder._CLASS_FEATURE = [
 	"page",
 	"srd",
 
+	"otherSources",
+
 	"className",
 	"classSource",
 	"level",
+
+	"isClassFeatureVariant",
 
 	"header",
 	"type",
@@ -426,11 +436,15 @@ PropOrder._SUBCLASS_FEATURE = [
 	"page",
 	"srd",
 
+	"otherSources",
+
 	"className",
 	"classSource",
 	"subclassShortName",
 	"subclassSource",
 	"level",
+
+	"isClassFeatureVariant",
 
 	"header",
 	"type",
@@ -622,6 +636,18 @@ PropOrder._VEHICLE = [
 	"hasToken",
 	"tokenUrl",
 ];
+PropOrder._VEHICLE_UPGRADE = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+	"otherSources",
+
+	"upgradeType",
+
+	"entries",
+];
 PropOrder._RACE_FLUFF = [
 	"name",
 	"source",
@@ -662,6 +688,7 @@ PropOrder._ITEM = [
 	"type",
 	"scfType",
 	"resist",
+	"color",
 
 	"tier",
 	"rarity",
@@ -824,6 +851,7 @@ PropOrder._OPTIONALFEATURE = [
 	"srd",
 	"otherSources",
 
+	"isClassFeatureVariant",
 	"previousVersion",
 
 	"featureType",
@@ -974,6 +1002,29 @@ PropOrder._HAZARD = [
 
 	"entries",
 ];
+PropOrder._RECIPE = [
+	"name",
+
+	"source",
+	"page",
+
+	"fluff",
+
+	"makes",
+	"ingredients",
+	"instructions",
+	"noteCook",
+];
+PropOrder._CHAROPTION = [
+	"name",
+
+	"source",
+	"page",
+
+	"optionType",
+
+	"entries",
+];
 
 PropOrder._PROP_TO_LIST = {
 	"monster": PropOrder._MONSTER,
@@ -1003,6 +1054,7 @@ PropOrder._PROP_TO_LIST = {
 	"deity": PropOrder._DEITY,
 	"feat": PropOrder._FEAT,
 	"vehicle": PropOrder._VEHICLE,
+	"vehicleUpgrade": PropOrder._VEHICLE_UPGRADE,
 	"item": PropOrder._ITEM,
 	"baseitem": PropOrder._ITEM,
 	"variant": PropOrder._VARIANT,
@@ -1017,6 +1069,9 @@ PropOrder._PROP_TO_LIST = {
 	"table": PropOrder._TABLE,
 	"trap": PropOrder._TRAP,
 	"hazard": PropOrder._HAZARD,
+	"recipe": PropOrder._RECIPE,
+	"charoption": PropOrder._CHAROPTION,
+	"charoptionFluff": PropOrder._GENERIC_FLUFF,
 };
 
 if (typeof module !== "undefined") {

@@ -176,7 +176,7 @@ class PageFilterBestiary extends PageFilter {
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Lair Actions", "Legendary", "Mythic", "Adventure NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${PageFilterBestiary.MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Swarm", "Has Variants", "Modified Copy", "Has Alternate Token", "Has Token", "SRD", "AC from Item(s)", "AC from Natural Armor", "AC from Unarmored Defense"],
+			items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Bonus Actions", "Lair Actions", "Legendary", "Mythic", "Adventure NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${PageFilterBestiary.MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Swarm", "Has Variants", "Modified Copy", "Has Alternate Token", "Has Token", "SRD", "AC from Item(s)", "AC from Natural Armor", "AC from Unarmored Defense"],
 			displayFn: (it) => Parser.monMiscTagToFull(it).uppercaseFirst(),
 			deselFn: (it) => it === "Adventure NPC",
 			itemSortFn: PageFilterBestiary.ascSortMiscFilter,
@@ -240,6 +240,7 @@ class PageFilterBestiary extends PageFilter {
 			if (legGroup.regionalEffects) mon._fMisc.push("Regional Effects");
 		}
 		if (mon.reaction) mon._fMisc.push("Reactions");
+		if (mon.bonus) mon._fMisc.push("Bonus Actions");
 		if (mon.variant) mon._fMisc.push("Has Variants");
 		if (mon.miscTags) mon._fMisc.push(...mon.miscTags);
 		if (mon._isCopy) mon._fMisc.push("Modified Copy");

@@ -121,6 +121,15 @@
 		}
 	}
 	// endregion
+
+	&variant-feature:not(.subclass-feature):not(.subclass-feature--sub) {
+		.rd__h--0,
+		.rd__h--1,
+		.rd__h--2 {
+			color: $rgb-class-variant;
+			border-bottom-color: $rgb-class-variant;
+		}
+	}
 }
 
 .night-mode .cls__ {
@@ -231,6 +240,15 @@
 		}
 	}
 	// endregion
+
+	&variant-feature:not(.subclass-feature):not(.subclass-feature--sub) {
+		.rd__h--0,
+		.rd__h--1,
+		.rd__h--2 {
+			color: $rgb-class-variant--night;
+			border-bottom-color: $rgb-class-variant--night;
+		}
+	}
 }
 // endregion
 
@@ -632,10 +650,6 @@
 				color: #e0e0e0;
 			}
 
-			&--spicy {
-				color: $rgb-class-ua;
-			}
-
 			&--sc-fresh {
 				color: $rgb-subclass;
 			}
@@ -655,6 +669,20 @@
 			&--sc-brew {
 				color: $rgb-class-brew;
 			}
+
+			// region
+			// This takes precedence over others. Ideally, there should be a colour for "subclass variant feature," but
+			//   since those are so rare (e.g. Ranger's "Primal Companion"), this shall suffice. Additionally, this
+			//   matches the CSS rules of the renderer the closest. If we adjust this, we would have to then adjust
+			//   those.
+			&--spicy {
+				color: $rgb-class-ua;
+			}
+
+			&--variant-feature {
+				color: $rgb-class-variant;
+			}
+			// endregion
 
 			// Section name
 			&--depth-0 {
@@ -694,10 +722,6 @@
 			color: white;
 		}
 
-		&--spicy {
-			color: $rgb-class-ua--night;
-		}
-
 		&--sc-fresh {
 			color: $rgb-subclass--night;
 		}
@@ -717,6 +741,16 @@
 		&--sc-brew {
 			color: $rgb-class-brew--night;
 		}
+
+		// region (See day mode comments above)
+		&--spicy {
+			color: $rgb-class-ua--night;
+		}
+
+		&--variant-feature {
+			color: $rgb-class-variant--night;
+		}
+		// endregion
 	}
 }
 // endregion

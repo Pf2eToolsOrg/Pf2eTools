@@ -81,7 +81,7 @@ class RenderBestiary {
 			}
 			srcCpy.additionalSources = additional;
 
-			const pageTrInner = Renderer.utils._getPageTrText(srcCpy);
+			const pageTrInner = Renderer.utils.getSourceAndPageTrHtml(srcCpy);
 			if (mon.environment && mon.environment.length) {
 				return [pageTrInner, `<div class="mb-1 mt-2"><b>Environment:</b> ${mon.environment.sort(SortUtil.ascSortLower).map(it => it.toTitleCase()).join(", ")}</div>`];
 			} else {
@@ -131,9 +131,13 @@ class RenderBestiary {
 		</td>
 		` : ""}</tr>
 
+		${mon.pbNote ? `<tr><td colspan="6"><strong>Proficiency Bonus (PB)</strong> ${mon.pbNote}</td></tr>` : ""}
+
 		${allTraits ? `<tr><td class="divider" colspan="6"><div></div></td></tr>${RenderBestiary._getRenderedSection("trait", allTraits, 1)}` : ""}
 		${mon.action ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Actions${mon.actionNote ? ` (<span class="small">${mon.actionNote}</span>)` : ""}</span></td></tr>
 		${RenderBestiary._getRenderedSection("action", mon.action, 1)}` : ""}
+		${mon.bonus ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Bonus Actions</span></td></tr>
+		${RenderBestiary._getRenderedSection("bonus", mon.bonus, 1)}` : ""}
 		${mon.reaction ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Reactions</span></td></tr>
 		${RenderBestiary._getRenderedSection("reaction", mon.reaction, 1)}` : ""}
 		${mon.legendary ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Legendary Actions</span></td></tr>

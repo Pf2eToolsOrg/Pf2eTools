@@ -339,7 +339,7 @@ class ItemsPage {
 		});
 
 		// filtering function
-		$(itemsPage._pageFilter.filterBox).on(
+		itemsPage._pageFilter.filterBox.on(
 			FilterBox.EVNT_VALCHANGE,
 			itemsPage.handleFilterChange.bind(itemsPage),
 		);

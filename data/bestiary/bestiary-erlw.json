@@ -1440,9 +1440,6 @@
 			"page": 62,
 			"size": "T",
 			"type": "construct",
-			"alignment": [
-				"N"
-			],
 			"ac": [
 				{
 					"ac": 13,
@@ -1452,7 +1449,7 @@
 				}
 			],
 			"hp": {
-				"special": "equal the homunculus's Constitution modifier + your Intelligence modifier + your level in this class"
+				"special": "1 + your Intelligence modifier + your artificer level (the homunculus has a number of Hit Dice [d4s] equal to your artificer level)"
 			},
 			"speed": {
 				"walk": 20,
@@ -1465,16 +1462,16 @@
 			"wis": 10,
 			"cha": 7,
 			"save": {
-				"dex": "+4"
+				"dex": "+2 plus PB"
 			},
 			"skill": {
-				"perception": "+4",
-				"stealth": "+4"
+				"perception": "+0 plus PB × 2",
+				"stealth": "+2 plus PB"
 			},
 			"senses": [
 				"darkvision 60 ft."
 			],
-			"passive": 14,
+			"passive": "10 + (PB × 2)",
 			"immune": [
 				"poison"
 			],
@@ -1485,6 +1482,7 @@
 			"languages": [
 				"understands the languages you speak"
 			],
+			"pbNote": "equals your bonus",
 			"trait": [
 				{
 					"name": "Evasion",
@@ -1504,7 +1502,7 @@
 				{
 					"name": "Force Strike",
 					"entries": [
-						"{@atk rw} {@hit 4} to hit, range 30 ft., one target you can see. {@h}{@damage 1d4 + 2} force damage."
+						"{@atk rw} {@hitYourSpellAttack} to hit, range 30 ft., one target you can see. {@h}{@damage 1d4 + PB} force damage."
 					]
 				}
 			],
@@ -2610,7 +2608,7 @@
 			},
 			"str": 10,
 			"dex": 15,
-			"con": 14,
+			"con": 20,
 			"int": 3,
 			"wis": 11,
 			"cha": 6,
@@ -3516,9 +3514,6 @@
 			"page": 61,
 			"size": "M",
 			"type": "construct",
-			"alignment": [
-				"N"
-			],
 			"ac": [
 				{
 					"ac": 15,
@@ -3528,7 +3523,7 @@
 				}
 			],
 			"hp": {
-				"special": "equal the steel defender's Constitution modifier + your Intelligence modifier + five times your level in this class"
+				"special": "2 + your Intelligence modifier + five times your artificer level (the defender has a number of Hit Dice [ d8s] equal to your artificer level)"
 			},
 			"speed": {
 				"walk": 40
@@ -3540,17 +3535,17 @@
 			"wis": 10,
 			"cha": 6,
 			"save": {
-				"dex": "+3",
-				"con": "+4"
+				"dex": "+1 plus PB",
+				"con": "+2 plus PB"
 			},
 			"skill": {
-				"athletics": "+4",
-				"perception": "+4"
+				"athletics": "+2 plus PB",
+				"perception": "+0 plus PB × 2"
 			},
 			"senses": [
 				"darkvision 60 ft."
 			],
-			"passive": 14,
+			"passive": "10 + (PB × 2)",
 			"immune": [
 				"poison"
 			],
@@ -3562,13 +3557,8 @@
 			"languages": [
 				"understands the languages you speak"
 			],
+			"pbNote": "equals your bonus",
 			"trait": [
-				{
-					"name": "Might of the Master",
-					"entries": [
-						"The following numbers increase by 1 when your proficiency bonus increases by 1: the defender's skill and saving throw bonuses (above), the bonuses to hit and damage of its rend attack, and the number of hit points restored by its Repair action (below)."
-					]
-				},
 				{
 					"name": "Vigilant",
 					"entries": [
@@ -3581,13 +3571,13 @@
 				{
 					"name": "Force-Empowered Rend",
 					"entries": [
-						"{@atk mw} {@hit 4} to hit, reach 5 ft., one target you can see. {@h}{@damage 1d8 + 2} force damage."
+						"{@atk mw} {@hitYourSpellAttack} to hit, reach 5 ft., one target you can see. {@h}{@damage 1d8 + PB} force damage."
 					]
 				},
 				{
 					"name": "Repair (3/Day)",
 					"entries": [
-						"The magical mechanisms inside the defender restore {@dice 2d8 + 2} hit points to itself or to one construct or object within 5 feet of it."
+						"The magical mechanisms inside the defender restore {@dice 2d8 + PB} hit points to itself or to one construct or object within 5 feet of it."
 					]
 				}
 			],
@@ -4286,7 +4276,7 @@
 				{
 					"name": "Stinger",
 					"entries": [
-						"{@atk mw} {@hit 6} to hit, reach 10 ft., one creature. {@h}8 ({@damage 1d10 + 3}) piercing damage plus 10 ({@damage 3d10}) psychic damage, and the target must succeed on a {@dc 14} Wisdom saving throw or be {@condition frightened} of the quori for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+						"{@atk mw} {@hit 6} to hit, reach 10 ft., one creature. {@h}8 ({@damage 1d10 + 3}) piercing damage plus 10 ({@damage 3d6}) psychic damage, and the target must succeed on a {@dc 14} Wisdom saving throw or be {@condition frightened} of the quori for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 					]
 				},
 				{

@@ -154,9 +154,7 @@ class SpellsPage {
 			buildFluffTab.bind(null, true),
 		);
 
-		// only display the "Info" tab if there's some fluff text--currently (2020-03-20), no official spell has fluff text
-		if (spell.fluff && spell.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
-		else Renderer.utils.bindTabButtons(statTab, picTab);
+		Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
 
 		ListUtil.updateSelected();
 	}
@@ -288,7 +286,7 @@ async function pPageInit (loadedSources) {
 	});
 
 	// filtering function
-	$(spellsPage._pageFilter.filterBox).on(
+	spellsPage._pageFilter.filterBox.on(
 		FilterBox.EVNT_VALCHANGE,
 		spellsPage.handleFilterChange.bind(spellsPage),
 	);

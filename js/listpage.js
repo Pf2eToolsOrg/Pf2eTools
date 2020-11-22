@@ -64,7 +64,7 @@ class ListPage {
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
 		this._list.on("updated", () => $outVisibleResults.html(`${this._list.visibleItems.length}/${this._list.items.length}`));
 
-		$(this._filterBox).on(FilterBox.EVNT_VALCHANGE, this.handleFilterChange.bind(this));
+		this._filterBox.on(FilterBox.EVNT_VALCHANGE, this.handleFilterChange.bind(this));
 
 		this._listSub = ListUtil.initSublist({
 			listClass: this._sublistClass,

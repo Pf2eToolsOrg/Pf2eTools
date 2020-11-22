@@ -15,6 +15,21 @@ class PageFilterVehicles extends PageFilter {
 			displayFn: Parser.vehicleTypeToFull,
 			isSortByDisplayItems: true,
 		});
+		this._upgradeTypeFilter = new Filter({
+			header: "Upgrade Type",
+			items: [
+				"SHP:H",
+				"SHP:M",
+				"SHP:W",
+				"SHP:F",
+				"SHP:O",
+				"IWM:W",
+				"IWM:A",
+				"IWM:G",
+			],
+			displayFn: Parser.vehicleTypeToFull,
+			isSortByDisplayItems: true,
+		});
 		this._terrainFilter = new Filter({header: "Terrain", items: ["land", "sea", "air"], displayFn: StrUtil.uppercaseFirst});
 		this._speedFilter = new RangeFilter({header: "Speed"});
 		this._acFilter = new RangeFilter({header: "Armor Class"});
@@ -63,6 +78,7 @@ class PageFilterVehicles extends PageFilter {
 
 		this._sourceFilter.addItem(it.source);
 		this._vehicleTypeFilter.addItem(it.vehicleType);
+		this._upgradeTypeFilter.addItem(it.upgradeType)
 		this._speedFilter.addItem(it._fSpeed);
 		this._terrainFilter.addItem(it.terrain);
 		this._acFilter.addItem(it._fAc);
@@ -74,6 +90,7 @@ class PageFilterVehicles extends PageFilter {
 		opts.filters = [
 			this._sourceFilter,
 			this._vehicleTypeFilter,
+			this._upgradeTypeFilter,
 			this._terrainFilter,
 			this._speedFilter,
 			this._acFilter,
@@ -88,6 +105,7 @@ class PageFilterVehicles extends PageFilter {
 			values,
 			it.source,
 			it.vehicleType,
+			it.upgradeType,
 			it.terrain,
 			it._fSpeed,
 			it._fAc,

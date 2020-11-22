@@ -56,6 +56,7 @@ class NavBar {
 		addLi(ulBooks, "book.html", "Dungeons & Dragons vs. Rick and Morty: Basic Rules", {aHash: "RMR", date: null});
 		addLi(ulBooks, "book.html", "Explorer's Guide to Wildemount", {aHash: "EGW", date: "2020"});
 		addLi(ulBooks, "book.html", "Mythic Odysseys of Theros", {aHash: "MOT", date: null});
+		addLi(ulBooks, "book.html", "Tasha's Cauldron of Everything", {aHash: "TCE", date: null});
 		addDivider(ulBooks);
 		addLi(ulBooks, "book.html", "Adventurers League", {aHash: "AL", date: "2016"});
 		addLi(ulBooks, "book.html", "Sage Advice Compendium", {aHash: "SAC", date: "2019"});
@@ -65,6 +66,7 @@ class NavBar {
 		addLi(ulPlayers, "backgrounds.html", "Backgrounds");
 		addLi(ulPlayers, "feats.html", "Feats");
 		addLi(ulPlayers, "races.html", "Races");
+		addLi(ulPlayers, "charcreationoptions.html", "Other Character Creation Options");
 		addDivider(ulPlayers);
 		addLi(ulPlayers, "statgen.html", "Stat Generator");
 		addDivider(ulPlayers);
@@ -113,6 +115,7 @@ class NavBar {
 		addLi(ulAdventures, "adventure.html", "Wildemount: Dangerous Designs", {isSide: true, aHash: "DD", date: null});
 		addLi(ulAdventures, "adventure.html", "Wildemount: Frozen Sick", {isSide: true, aHash: "FS", date: null});
 		addLi(ulAdventures, "adventure.html", "Wildemount: Unwelcome Spirits", {isSide: true, aHash: "US", date: null});
+		addLi(ulAdventures, "adventure.html", "Theros: No Silent Secret", {isSide: true, aHash: "MOT-NSS", date: null});
 		addLi(ulAdventures, "adventure.html", "Icewind Dale: Rime of the Frostmaiden", {isSide: true, aHash: "IDRotF", date: null});
 		addLi(ulDms, "cultsboons.html", "Cults & Supernatural Boons");
 		addLi(ulDms, "objects.html", "Objects");

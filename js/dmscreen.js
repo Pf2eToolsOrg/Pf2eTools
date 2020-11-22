@@ -185,7 +185,7 @@ class Board {
 
 		await Promise.all([TIME_TRACKER_MOON_SPRITE_LOADER, this.pLoadIndex()]);
 		if (this.hasSavedStateUrl()) {
-			this.doLoadUrlState();
+			await this.pDoLoadUrlState();
 		} else if (await this.pHasSavedState()) {
 			await this.pDoLoadState();
 		} else {
@@ -198,7 +198,7 @@ class Board {
 	}
 
 	initGlobalHandlers () {
-		window.onhashchange = () => this.doLoadUrlState();
+		window.onhashchange = () => this.pDoLoadUrlState();
 	}
 
 	async _pLoadTempData () {
@@ -423,11 +423,11 @@ class Board {
 		return window.location.hash.length;
 	}
 
-	doLoadUrlState () {
+	async pDoLoadUrlState () {
 		if (window.location.hash.length) {
 			const toLoad = JSON.parse(decodeURIComponent(window.location.hash.slice(1)));
 			this.doReset();
-			this.doLoadStateFrom(toLoad);
+			await this.pDoLoadStateFrom(toLoad);
 		}
 		window.location.hash = "";
 	}
@@ -452,34 +452,36 @@ class Board {
 		this._pDoSaveStateDebounced();
 	}
 
-	doLoadStateFrom (toLoad) {
+	async pDoLoadStateFrom (toLoad) {
 		if (this.$cbConfirmTabClose) this.$cbConfirmTabClose.prop("checked", !!toLoad.ctc);
 		if (this.$btnFullscreen && (toLoad.fs !== !!this.isFullscreen)) this.$btnFullscreen.click();
 		if (this.$btnLockPanels && (toLoad.lk !== !!this.isLocked)) this.$btnLockPanels.click();
 
 		// re-exile
-		toLoad.ex.filter(Boolean).reverse().forEach(saved => {
-			const p = Panel.fromSavedState(this, saved);
+		const toReExile = toLoad.ex.filter(Boolean).reverse()
+		for (const saved of toReExile) {
+			const p = await Panel.fromSavedState(this, saved);
 			if (p) {
 				this.panels[p.id] = p;
 				p.exile();
 			}
-		});
+		}
 		this.setDimensions(toLoad.w, toLoad.h); // FIXME is this necessary?
 
 		// reload
 		// fill content first; empties can fill any remaining space
-		toLoad.ps.filter(Boolean).filter(saved => saved.t !== PANEL_TYP_EMPTY).forEach(saved => {
-			const p = Panel.fromSavedState(this, saved);
+		const toReload = toLoad.ps.filter(Boolean).filter(saved => saved.t !== PANEL_TYP_EMPTY);
+		for (const saved of toReload) {
+			const p = await Panel.fromSavedState(this, saved);
 			if (p) this.panels[p.id] = p;
-		});
+		}
 		this.setDimensions(toLoad.w, toLoad.h);
 	}
 
 	async pDoLoadState () {
 		try {
 			const toLoad = await StorageUtil.pGet(VeCt.STORAGE_DMSCREEN);
-			this.doLoadStateFrom(toLoad);
+			await this.pDoLoadStateFrom(toLoad);
 		} catch (e) {
 			// on error, purge saved data and reset
 			JqueryUtil.doToast({
@@ -609,7 +611,7 @@ class SideMenu {
 		$btnLoadFile.on("click", async () => {
 			const json = await DataUtil.pUserUpload();
 			this.board.doReset();
-			this.board.doLoadStateFrom(json);
+			await this.board.pDoLoadStateFrom(json);
 		});
 		const $wrpSaveLoadUrl = $(`<div class="sidemenu__row flex-vh-center-around"/>`).appendTo($wrpSaveLoad);
 		const $btnSaveLink = $(`<button class="btn btn-primary">Save to URL</button>`).appendTo($wrpSaveLoadUrl);
@@ -766,14 +768,14 @@ class Panel {
 		this.$pnlTabs = null;
 	}
 
-	static fromSavedState (board, saved) {
+	static async fromSavedState (board, saved) {
 		const existing = board.getPanels(saved.x, saved.y, saved.w, saved.h);
 		if (saved.t === PANEL_TYP_EMPTY && existing.length) return null; // cull empties
 		else if (existing.length) existing.forEach(p => p.destroy()); // prefer more recent panels
 		const p = new Panel(board, saved.x, saved.y, saved.w, saved.h);
 		p.render();
 
-		function loadState (saved, skipSetTab, ixTab) {
+		async function pLoadState (saved, skipSetTab, ixTab) {
 			function handleTabRenamed (p) {
 				if (saved.r != null) p.tabDatas[ixTab].tabRenamed = true;
 			}
@@ -785,7 +787,7 @@ class Panel {
 					const page = saved.c.p;
 					const source = saved.c.s;
 					const hash = saved.c.u;
-					p.doPopulate_Stats(page, source, hash, skipSetTab, saved.r);
+					await p.doPopulate_Stats(page, source, hash, skipSetTab, saved.r);
 					handleTabRenamed(p);
 					return p;
 				}
@@ -794,7 +796,7 @@ class Panel {
 					const source = saved.c.s;
 					const hash = saved.c.u;
 					const cr = saved.c.cr;
-					p.doPopulate_StatsScaledCr(page, source, hash, cr, skipSetTab, saved.r);
+					await p.doPopulate_StatsScaledCr(page, source, hash, cr, skipSetTab, saved.r);
 					handleTabRenamed(p);
 					return p;
 				}
@@ -802,21 +804,21 @@ class Panel {
 					const book = saved.c.b;
 					const chapter = saved.c.c;
 					const header = saved.c.h;
-					p.doPopulate_Rules(book, chapter, header, skipSetTab, saved.r);
+					await p.doPopulate_Rules(book, chapter, header, skipSetTab, saved.r);
 					handleTabRenamed(p);
 					return p;
 				}
 				case PANEL_TYP_ADVENTURES: {
 					const adventure = saved.c.a;
 					const chapter = saved.c.c;
-					p.doPopulate_Adventures(adventure, chapter, skipSetTab, saved.r);
+					await p.doPopulate_Adventures(adventure, chapter, skipSetTab, saved.r);
 					handleTabRenamed(p);
 					return p;
 				}
 				case PANEL_TYP_BOOKS: {
 					const book = saved.c.b;
 					const chapter = saved.c.c;
-					p.doPopulate_Books(book, chapter, skipSetTab, saved.r);
+					await p.doPopulate_Books(book, chapter, skipSetTab, saved.r);
 					handleTabRenamed(p);
 					return p;
 				}
@@ -888,11 +890,15 @@ class Panel {
 		if (saved.a) {
 			p.isTabs = true;
 			p.doRenderTabs();
-			saved.a.forEach((tab, ix) => loadState(tab, true, ix));
+			for (let ix = 0; ix < saved.a.length; ++ix) {
+				const tab = saved.a[ix];
+				await pLoadState(tab, true, ix);
+			}
 			p.setActiveTab(saved.b);
 		} else {
-			loadState(saved);
+			await pLoadState(saved);
 		}
+
 		return p;
 	}
 
@@ -962,7 +968,7 @@ class Panel {
 			PANEL_TYP_STATS,
 			meta,
 		);
-		Renderer.hover.pCacheAndGet(
+		return Renderer.hover.pCacheAndGet(
 			page,
 			source,
 			hash,
@@ -1044,7 +1050,7 @@ class Panel {
 			PANEL_TYP_CREATURE_SCALED_CR,
 			meta,
 		);
-		Renderer.hover.pCacheAndGet(
+		return Renderer.hover.pCacheAndGet(
 			page,
 			source,
 			hash,
@@ -1075,7 +1081,7 @@ class Panel {
 			PANEL_TYP_RULES,
 			meta,
 		);
-		RuleLoader.pFill(book).then(() => {
+		return RuleLoader.pFill(book).then(() => {
 			const rule = RuleLoader.getFromCache(book, chapter, header);
 			const it = Renderer.rule.getCompactRenderedString(rule);
 			this.set$Tab(
@@ -1096,7 +1102,7 @@ class Panel {
 			PANEL_TYP_ADVENTURES,
 			meta,
 		);
-		adventureLoader.pFill(adventure).then(() => {
+		return adventureLoader.pFill(adventure).then(() => {
 			const data = adventureLoader.getFromCache(adventure, chapter);
 			const view = new AdventureOrBookView("a", this, adventureLoader, ix, meta);
 			this.set$Tab(
@@ -1117,7 +1123,7 @@ class Panel {
 			PANEL_TYP_BOOKS,
 			meta,
 		);
-		bookLoader.pFill(book).then(() => {
+		return bookLoader.pFill(book).then(() => {
 			const data = bookLoader.getFromCache(book, chapter);
 			const view = new AdventureOrBookView("b", this, bookLoader, ix, meta);
 			this.set$Tab(
@@ -1768,14 +1774,15 @@ class Panel {
 					this.doCloseTab(ix);
 				}
 			})
-			.on("contextmenu", (evt) => {
+			.on("contextmenu", async (evt) => {
+				evt.stopPropagation();
+				evt.preventDefault();
 				if ($btnSelTab.hasClass("content-tab-can-rename")) {
-					const nuTitle = prompt("Rename tab to:");
+					const existingTitle = this.getTabTitle(ix) || "";
+					const nuTitle = await InputUiUtil.pGetUserString({default: existingTitle, title: "Rename Tab"});
 					if (nuTitle && nuTitle.trim()) {
 						this.setTabTitle(ix, nuTitle);
 					}
-					evt.stopPropagation();
-					evt.preventDefault();
 				}
 			});
 		const $btnCloseTab = $(`<span class="glyphicon glyphicon-remove content-tab-remove"/>`)
@@ -1786,6 +1793,10 @@ class Panel {
 				}
 			}).appendTo($btnSelTab);
 		return $btnSelTab;
+	}
+
+	getTabTitle (ix) {
+		return (this.tabDatas[ix] || {}).title;
 	}
 
 	setTabTitle (ix, nuTitle) {

@@ -215,6 +215,22 @@
 		},
 		{
 			"name": "Artificer Initiate",
+			"source": "TCE",
+			"page": 79,
+			"entries": [
+				"You've learned some of an artificer's inventiveness:",
+				{
+					"type": "list",
+					"items": [
+						"You learn one cantrip of your choice from the {@filter artificer spell list|spells|level=0;1|class=artificer}, and you learn one 1st-level spell of your choice from {@filter that list|spells|level=0;1|class=artificer}. Intelligence is your spellcasting ability for these spells.",
+						"You can cast this feat's 1st-level spell without a spell slot, and you must finish a long rest before you can cast it in this way again. You can also cast the spell using any spell slots you have.",
+						"You gain proficiency with one type of {@filter artisan's tools|items|type=artisan's tools} of your choice, and you can use that type of tool as a spellcasting focus for any spell you cast that uses Intelligence as its spellcasting ability."
+					]
+				}
+			]
+		},
+		{
+			"name": "Artificer Initiate",
 			"source": "UA2020Feats",
 			"page": 1,
 			"entries": [
@@ -393,6 +409,33 @@
 		},
 		{
 			"name": "Chef",
+			"source": "TCE",
+			"page": 79,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"con",
+							"wis"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Time spent mastering the culinary arts has paid off, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain proficiency with {@item cook's utensils|phb} if you don't already have it.",
+						"As part of a short rest, you can cook special food, provided you have ingredients and {@item cook's utensils|phb} on hand. You can prepare enough of this food for a number of creatures equal to 4 + your proficiency bonus. At the end of the short rest, any creature who eats the food and spends one or more Hit Dice to regain hit points regains an extra {@dice 1d8} hit points.",
+						"With one hour of work or when you finish a long rest, you can cook a number of treats equal to your proficiency bonus. These special treats last 8 hours after being made. A creature can use a bonus action to eat one of those treats to gain temporary hit points equal to your proficiency bonus."
+					]
+				}
+			]
+		},
+		{
+			"name": "Chef",
 			"source": "UA2020Feats",
 			"page": 1,
 			"ability": [
@@ -455,6 +498,32 @@
 						"You ignore the loading quality of crossbows with which you are proficient.",
 						"Being within 5 feet of a hostile creature doesn't impose disadvantage on your ranged attack rolls.",
 						"When you use the {@action Attack} action and attack with a one-handed weapon, you can use a bonus action to attack with a {@item hand crossbow|phb} you are holding."
+					]
+				}
+			]
+		},
+		{
+			"name": "Crusher",
+			"source": "TCE",
+			"page": 79,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"con"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You are practiced in the art of crushing your enemies, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"Once per turn, when you hit a creature with an attack that deals bludgeoning damage, you can move it 5 feet to an unoccupied space, provided the target is no more than one size larger than you.",
+						"When you score a critical hit that deals bludgeoning damage to a creature, attack rolls against that creature are made with advantage until the start of your next turn."
 					]
 				}
 			]
@@ -1296,6 +1365,20 @@
 		},
 		{
 			"name": "Eldritch Adept",
+			"source": "TCE",
+			"page": 79,
+			"prerequisite": [
+				{
+					"spellcasting2020": true
+				}
+			],
+			"entries": [
+				"Studying occult lore, you have unlocked eldritch power within yourself: you learn one {@filter Eldritch Invocation|optionalfeatures|Feature Type=EI} option of your choice from the warlock class. If the invocation has a prerequisite of any kind, you can choose that invocation only if you're a warlock who meets the prerequisite.",
+				"Whenever you gain a level, you can replace the invocation with another one from the warlock class."
+			]
+		},
+		{
+			"name": "Eldritch Adept",
 			"source": "UA2020Feats",
 			"page": 1,
 			"prerequisite": [
@@ -1587,6 +1670,32 @@
 		},
 		{
 			"name": "Fey Touched",
+			"source": "TCE",
+			"page": 79,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Your exposure to the Feywild's magic has changed you, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You learn the {@spell misty step} spell and one {@filter 1st-level spell|spells|level=1|school=E;D} of your choice. The 1st-level spell must be from the divination or enchantment school of magic. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat."
+					]
+				}
+			]
+		},
+		{
+			"name": "Fey Touched",
 			"source": "UA2020Feats",
 			"page": 2,
 			"ability": [
@@ -1609,6 +1718,24 @@
 						"You learn the {@spell misty step} spell and one {@filter 1st-level spell|spells|level=1|school=E;D} of your choice. The 1st-level spell must be from the divination or enchantment school of magic. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat."
 					]
 				}
+			]
+		},
+		{
+			"name": "Fighting Initiate",
+			"source": "TCE",
+			"page": 80,
+			"prerequisite": [
+				{
+					"proficiency": [
+						{
+							"weapon": "martial"
+						}
+					]
+				}
+			],
+			"entries": [
+				"Your martial training has helped you develop a particular style of fighting. As a result, you learn one {@filter Fighting Style|optionalfeatures|Feature Type=FS:F} option of your choice from the fighter class. If you already have a style, the one you choose must be different.",
+				"Whenever you reach a level that grants the Ability Score Improvement feature, you can replace this feat's fighting style with another one from the fighter class that you don't have."
 			]
 		},
 		{
@@ -1809,6 +1936,27 @@
 						"During the first round of any combat against your chosen foes, your attack rolls against any of them have advantage.",
 						"When any of your chosen foes makes an opportunity attack against you, it makes the attack roll with disadvantage.",
 						"Whenever you make an Intelligence ({@skill Arcana}, {@skill History}, {@skill Nature}, or {@skill Religion}) check to recall information about your chosen foes, you add double your proficiency bonus to the check, even if you're not normally proficient."
+					]
+				}
+			]
+		},
+		{
+			"name": "Gunner",
+			"source": "TCE",
+			"page": 80,
+			"ability": [
+				{
+					"dex": 1
+				}
+			],
+			"entries": [
+				"You have a quick hand and keen eye when employing firearms, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain proficiency with firearms (see \"{@variantrule Firearms|DMG}\" in the Dungeon Master's Guide).",
+						"You ignore the loading property of firearms.",
+						"Being within 5 feet of a hostile creature doesn't impose disadvantage on your ranged attack rolls."
 					]
 				}
 			]
@@ -2294,6 +2442,26 @@
 		},
 		{
 			"name": "Metamagic Adept",
+			"source": "TCE",
+			"page": 80,
+			"prerequisite": [
+				{
+					"spellcasting2020": true
+				}
+			],
+			"entries": [
+				"You've learned how to exert your will on your spells to alter how they function:",
+				{
+					"type": "list",
+					"items": [
+						"You learn two {@filter Metamagic|optionalfeatures|Feature Type=MM} options of your choice from the sorcerer class. You can use only one Metamagic option on a spell when you cast it, unless the option says otherwise. Whenever you reach a level that grants the Ability Score Improvement feature, you can replace one of these Metamagic options with another one from the sorcerer class.",
+						"You gain 2 sorcery points to spend on Metamagic (these points are added to any sorcery points you have from another source but can be used only on Metamagic). You regain all spent sorcery points when you finish a long rest."
+					]
+				}
+			]
+		},
+		{
+			"name": "Metamagic Adept",
 			"source": "UA2020Feats",
 			"page": 2,
 			"prerequisite": [
@@ -2553,6 +2721,32 @@
 		},
 		{
 			"name": "Piercer",
+			"source": "TCE",
+			"page": 80,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You have achieved a penetrating precision in combat, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"Once per turn, when you hit a creature with an attack that deals piercing damage, you can reroll one of the attack's damage dice, and you must use the new roll.",
+						"When you score a critical hit that deals piercing damage to a creature, you can roll one additional damage die when determining the extra piercing damage the target takes."
+					]
+				}
+			]
+		},
+		{
+			"name": "Piercer",
 			"source": "UA2020Feats",
 			"page": 2,
 			"ability": [
@@ -2573,6 +2767,22 @@
 					"items": [
 						"Once per turn, when you hit a creature with an attack that deals piercing damage, you can reroll one of the attack's damage dice, and you must use the new roll.",
 						"When you score a critical hit that deals piercing damage to a creature, you can roll one additional damage die when determining the extra piercing damage the target takes."
+					]
+				}
+			]
+		},
+		{
+			"name": "Poisoner",
+			"source": "TCE",
+			"page": 80,
+			"entries": [
+				"You can prepare and deliver deadly poisons, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"When you make a damage roll that deals poison damage, it ignores resistance to poison damage.",
+						"You can apply poison to a weapon or piece of ammunition as a bonus action, instead of an action.",
+						"You gain proficiency with the {@item poisoner's kit|phb} if you don't already have it. With one hour of work using a {@item poisoner's kit|phb} and expending 50 gp worth of materials, you can create a number of doses of potent poison equal to your proficiency bonus. Once applied to a weapon or piece of ammunition, the poison retains its potency for 1 minute or until you hit with the weapon or ammunition. When a creature takes damage from the coated weapon or ammunition, that creature must succeed on a DC 14 Constitution saving throw or take {@damage 2d8} poison damage and become {@condition poisoned} until the end of your next turn."
 					]
 				}
 			]
@@ -2979,6 +3189,32 @@
 		},
 		{
 			"name": "Shadow Touched",
+			"source": "TCE",
+			"page": 80,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Your exposure to the Shadowfell's magic has changed you, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You learn the {@spell invisibility} spell and one 1st-level spell of your choice. The {@filter 1st-level spell|spells|level=1|school=I;N} must be from the illusion or necromancy school of magic. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat."
+					]
+				}
+			]
+		},
+		{
+			"name": "Shadow Touched",
 			"source": "UA2020Feats",
 			"page": 3,
 			"ability": [
@@ -3084,6 +3320,36 @@
 			]
 		},
 		{
+			"name": "Skill Expert",
+			"source": "TCE",
+			"page": 80,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex",
+							"con",
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You have honed your proficiency with particular skills, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain proficiency in one skill of your choice.",
+						"Choose one skill in which you have proficiency. You gain expertise with that skill, which means your proficiency bonus is doubled for any ability check you make with it. The skill you choose must be one that isn't already benefiting from a feature, such as Expertise, that doubles your proficiency bonus."
+					]
+				}
+			]
+		},
+		{
 			"name": "Skilled",
 			"source": "PHB",
 			"page": 170,
@@ -3112,6 +3378,32 @@
 						"You can try to hide when you are lightly obscured from the creature from which you are hiding.",
 						"When you are hidden from a creature and miss it with a ranged weapon attack, making the attack doesn't reveal your position.",
 						"Dim light doesn't impose disadvantage on your Wisdom ({@skill Perception}) checks relying on sight."
+					]
+				}
+			]
+		},
+		{
+			"name": "Slasher",
+			"source": "TCE",
+			"page": 81,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You've learned where to cut to have the greatest results, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"Once per turn when you hit a creature with an attack that deals slashing damage, you can reduce the speed of the target by 10 feet until the start of your next turn.",
+						"When you score a critical hit that deals slashing damage to a creature, you grievously wound it. Until the start of your next turn, the target has disadvantage on all attack rolls."
 					]
 				}
 			]
@@ -3374,6 +3666,33 @@
 		},
 		{
 			"name": "Telekinetic",
+			"source": "TCE",
+			"page": 81,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You learn to move things with your mind, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You learn the {@spell mage hand} cantrip. You can cast it without verbal or somatic components, and you can make the spectral hand {@condition invisible}. If you already know this spell, its range increases by 30 feet when you cast it. Its spellcasting ability is the ability increased by this feat.",
+						"As a bonus action, you can try to telekinetically shove one creature you can see within 30 feet of you. When you do so, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + the ability modifier of the score increased by this feat) or be moved 5 feet toward you or away from you. A creature can willingly fail this save."
+					]
+				}
+			]
+		},
+		{
+			"name": "Telekinetic",
 			"source": "UA2020PsionicOptionsRevisited",
 			"page": 8,
 			"prerequisite": [
@@ -3420,6 +3739,33 @@
 					"items": [
 						"You learn the {@spell mage hand} cantrip. You can cast it without verbal or somatic components, and you can make the spectral hand invisible.",
 						"As a bonus action, you can try to shove one creature you can see within 5 feet of the spectral hand created by your {@spell mage hand} spell. When you do so, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + your Intelligence modifier) or be pushed 5 feet away from you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Telepathic",
+			"source": "TCE",
+			"page": 81,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You awaken the ability to mentally connect with others, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You can speak telepathically to any creature you can see within 60 feet of you. Your telepathic utterances are in a language you know, and the creature understands you only if it knows that language. Your communication doesn't give the creature the ability to respond to you telepathically.",
+						"You can cast the {@spell detect thoughts} spell, requiring no spell slot or components, and you must finish a long rest before you can cast it this way again. Your spellcasting ability for the spell is the ability increased by this feat. If you have spell slots of 2nd level or higher, you can cast this spell with them."
 					]
 				}
 			]

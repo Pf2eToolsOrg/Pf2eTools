@@ -219,6 +219,7 @@ class TagAttack {
 
 		handleProp("action");
 		handleProp("reaction");
+		handleProp("bonus");
 		handleProp("trait");
 		handleProp("legendary");
 		handleProp("mythic");
@@ -255,6 +256,7 @@ class TagHit {
 
 		handleProp("action");
 		handleProp("reaction");
+		handleProp("bonus");
 		handleProp("trait");
 		handleProp("legendary");
 		handleProp("mythic");
@@ -276,6 +278,7 @@ class TagDc {
 
 		handleProp("action");
 		handleProp("reaction");
+		handleProp("bonus");
 		handleProp("trait");
 		handleProp("legendary");
 		handleProp("mythic");
@@ -398,6 +401,7 @@ class TraitActionTag {
 		doTag("trait", "traitTags");
 		doTag("action", "actionTags");
 		doTag("reaction", "actionTags");
+		doTag("bonus", "actionTags");
 
 		doTagDeep("action", "actionTags");
 
@@ -498,6 +502,9 @@ TraitActionTag.tags = { // true = map directly; string = map to this string
 	},
 	reaction: {
 		"parry": "Parry",
+	},
+	bonus: {
+		// unused
 	},
 	legendary: {
 		// unused
@@ -746,6 +753,7 @@ class DamageTypeTag {
 		const typeSet = new Set();
 		DamageTypeTag._handleProp(m, "action", typeSet);
 		DamageTypeTag._handleProp(m, "reaction", typeSet);
+		DamageTypeTag._handleProp(m, "bonus", typeSet);
 		DamageTypeTag._handleProp(m, "trait", typeSet);
 		DamageTypeTag._handleProp(m, "legendary", typeSet);
 		DamageTypeTag._handleProp(m, "mythic", typeSet);
@@ -811,6 +819,7 @@ class MiscTag {
 		MiscTag._handleProp(m, "action", typeSet);
 		MiscTag._handleProp(m, "trait", typeSet);
 		MiscTag._handleProp(m, "reaction", typeSet);
+		MiscTag._handleProp(m, "bonus", typeSet);
 		MiscTag._handleProp(m, "legendary", typeSet);
 		MiscTag._handleProp(m, "mythic", typeSet);
 		if (typeSet.size) m.miscTags = [...typeSet];
@@ -1108,6 +1117,7 @@ class DetectNamedCreature {
 		const totals = {yes: 0, no: 0};
 		this._doCheckProp(mon, totals, "action");
 		this._doCheckProp(mon, totals, "reaction");
+		this._doCheckProp(mon, totals, "bonus");
 		this._doCheckProp(mon, totals, "legendary");
 		this._doCheckProp(mon, totals, "mythic");
 

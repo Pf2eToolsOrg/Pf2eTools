@@ -653,9 +653,32 @@ Parser.coinAbvToFull = function (coin) {
 };
 
 Parser.itemWeightToFull = function (item, isShortForm) {
-	return item.weight
-		? `${item.weight < 1 ? item.weight * 16 : item.weight} ${item.weight < 1 ? "oz" : "lb"}.${(item.weightNote ? ` ${item.weightNote}` : "")}`
-		: item.weightMult ? isShortForm ? `×${item.weightMult}` : `base weight ×${item.weightMult}` : "";
+	if (item.weight) {
+		// Handle pure integers
+		if (Math.round(item.weight) === item.weight) return `${item.weight} lb.${(item.weightNote ? ` ${item.weightNote}` : "")}`;
+
+		// Attempt to render the amount as (a number +) a vulgar
+		const weightOunces = item.weight * 16;
+		const integerPart = Math.floor(item.weight);
+		const vulgarPart = weightOunces % 16;
+
+		let vulgarGlyph;
+		switch (vulgarPart) {
+			case 2: vulgarGlyph = "⅛"; break;
+			case 4: vulgarGlyph = "¼"; break;
+			case 6: vulgarGlyph = "⅜"; break;
+			case 8: vulgarGlyph = "½"; break;
+			case 10: vulgarGlyph = "⅝"; break;
+			case 12: vulgarGlyph = "¾"; break;
+			case 14: vulgarGlyph = "⅞"; break;
+		}
+		if (vulgarGlyph) return `${integerPart || ""}${vulgarGlyph} lb.${(item.weightNote ? ` ${item.weightNote}` : "")}`
+
+		// Fall back on decimal pounds or ounces
+		return `${item.weight < 1 ? item.weight * 16 : item.weight} ${item.weight < 1 ? "oz" : "lb"}.${(item.weightNote ? ` ${item.weightNote}` : "")}`
+	}
+	if (item.weightMult) return isShortForm ? `×${item.weightMult}` : `base weight ×${item.weightMult}`;
+	return "";
 };
 
 Parser._decimalSeparator = (0.1).toLocaleString().substring(1, 2);
@@ -1094,7 +1117,7 @@ Parser.spMainClassesToFull = function (fromClassList, textOnly = false) {
 		.map(c => ({hash: UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c), c}))
 		.filter(it => !ExcludeUtil.isInitialised || !ExcludeUtil.isExcluded(it.hash, "class", it.c.source))
 		.sort((a, b) => SortUtil.ascSort(a.c.name, b.c.name))
-		.map(it => textOnly ? it.c.name : `<a title="Source: ${Parser.sourceJsonToFull(it.c.source)}" href="${UrlUtil.PG_CLASSES}#${it.hash}">${it.c.name}</a>`)
+		.map(it => textOnly ? it.c.name : `<a title="${it.c.definedInSource ? `Class source` : "Source"}: ${Parser.sourceJsonToFull(it.c.source)}${it.c.definedInSource ? `. Spell list defined in: ${Parser.sourceJsonToFull(it.c.definedInSource)}.` : ""}" href="${UrlUtil.PG_CLASSES}#${it.hash}">${it.c.name}</a>`)
 		.join(", ") || "";
 };
 
@@ -1431,14 +1454,6 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 	"FS:P": "Fighting Style; Paladin",
 	"FS:R": "Fighting Style; Ranger",
 	"PB": "Pact Boon",
-	"SHP:H": "Ship Upgrade, Hull",
-	"SHP:M": "Ship Upgrade, Movement",
-	"SHP:W": "Ship Upgrade, Weapon",
-	"SHP:F": "Ship Upgrade, Figurehead",
-	"SHP:O": "Ship Upgrade, Miscellaneous",
-	"IWM:W": "Infernal War Machine Variant, Weapon",
-	"IWM:A": "Infernal War Machine Upgrade, Armor",
-	"IWM:G": "Infernal War Machine Upgrade, Gadget",
 	"OR": "Onomancy Resonant",
 	"RN": "Rune Knight Rune",
 	"AF": "Alchemical Formula",
@@ -1447,6 +1462,17 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 Parser.optFeatureTypeToFull = function (type) {
 	if (Parser.OPT_FEATURE_TYPE_TO_FULL[type]) return Parser.OPT_FEATURE_TYPE_TO_FULL[type];
 	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.optionalFeatureTypes && BrewUtil.homebrewMeta.optionalFeatureTypes[type]) return BrewUtil.homebrewMeta.optionalFeatureTypes[type];
+	return type;
+};
+
+Parser.CHAR_OPTIONAL_FEATURE_TYPE_TO_FULL = {
+	SG: "Supernatural Gift",
+	OF: "Optional Feature",
+};
+
+Parser.charCreationOptionTypeToFull = function (type) {
+	if (Parser.CHAR_OPTIONAL_FEATURE_TYPE_TO_FULL[type]) return Parser.CHAR_OPTIONAL_FEATURE_TYPE_TO_FULL[type];
+	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.charOption && BrewUtil.homebrewMeta.charOption[type]) return BrewUtil.homebrewMeta.charOption[type];
 	return type;
 };
 
@@ -1578,6 +1604,7 @@ Parser.CAT_ID_LANGUAGE = 43;
 Parser.CAT_ID_BOOK = 44;
 Parser.CAT_ID_PAGE = 45;
 Parser.CAT_ID_LEGENDARY_GROUP = 46;
+Parser.CAT_ID_CHAR_CREATION_OPTIONS = 47;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1627,6 +1654,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LANGUAGE] = "Language";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOOK] = "Book";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PAGE] = "Page";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LEGENDARY_GROUP] = "Legendary Group";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CHAR_CREATION_OPTIONS] = "Character Creation Option";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1665,8 +1693,8 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PACT_BOON] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARTIFICER_INFUSION] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SHIP_UPGRADE] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "optionalfeature";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SHIP_UPGRADE] = "vehicleUpgrade";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "vehicleUpgrade";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ONOMANCY_RESONANT] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ALCHEMICAL_FORMULA] = "optionalfeature";
@@ -1680,6 +1708,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LANGUAGE] = "language";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOOK] = "book";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PAGE] = null;
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LEGENDARY_GROUP] = null;
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CHAR_CREATION_OPTIONS] = "charoption";
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -1772,6 +1801,16 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (sp, subclassLookup) {
 		return shortName;
 	}
 };
+
+Parser.spVariantClassesToCurrentAndLegacy = function (fromVariantClassList) {
+	const current = [];
+	const legacy = [];
+	fromVariantClassList.forEach(cls => {
+		if (cls.definedInSource === SRC_UACFV) legacy.push(cls);
+		else current.push(cls);
+	});
+	return [current, legacy];
+}
 
 Parser.attackTypeToFull = function (attackType) {
 	return Parser._parse_aToB(Parser.ATK_TYPE_TO_FULL, attackType);
@@ -2083,6 +2122,14 @@ Parser.VEHICLE_TYPE_TO_FULL = {
 	"SHIP": "Ship",
 	"INFWAR": "Infernal War Machine",
 	"CREATURE": "Creature",
+	"SHP:H": "Ship Upgrade, Hull",
+	"SHP:M": "Ship Upgrade, Movement",
+	"SHP:W": "Ship Upgrade, Weapon",
+	"SHP:F": "Ship Upgrade, Figurehead",
+	"SHP:O": "Ship Upgrade, Miscellaneous",
+	"IWM:W": "Infernal War Machine Variant, Weapon",
+	"IWM:A": "Infernal War Machine Upgrade, Armor",
+	"IWM:G": "Infernal War Machine Upgrade, Gadget",
 };
 
 Parser.vehicleTypeToFull = function (vehicleType) {
@@ -2754,6 +2801,7 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_RMR,
 	SRC_EGW,
 	SRC_MOT,
+	SRC_TCE,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
@@ -2823,11 +2871,13 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"deity": SRC_PHB,
 	"variantrule": SRC_DMG,
 	"vehicle": SRC_GoS,
+	"vehupgrade": SRC_GoS,
 	"action": SRC_PHB,
 	"classFeature": SRC_PHB,
 	"subclassFeature": SRC_PHB,
 	"table": SRC_DMG,
 	"language": SRC_PHB,
+	"charoption": SRC_MOT,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;
