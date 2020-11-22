@@ -188,6 +188,7 @@
 }
 
 .pf2-h1 {
+	clear: both;
 	color: #5E0000;
 	margin: 0;
 	padding: 0.3em 0 0;
@@ -200,6 +201,7 @@
 }
 
 .pf2-h1-flavor {
+	clear: both;
 	color: #5E0000;
 	margin: 0;
 	padding: 0;
@@ -212,6 +214,7 @@
 }
 
 .pf2-h2 {
+	clear: left;
 	color: #002664;
 	margin: 0;
 	padding: 0.8em 0 0 0;
@@ -223,6 +226,7 @@
 }
 
 .pf2-h3 {
+	clear: left;
 	color: #5E0000;
 	margin: 0;
 	padding: 0.6em 0 0;
@@ -255,6 +259,7 @@
 }
 
 .pf2-h5 {
+	clear: left;
 	background: #002664;
 	border-top-left-radius: 0.4em;
 	border-top-right-radius: 0.4em;
@@ -330,6 +335,7 @@
 
 .pf2-sidebar-left {
 	float: left;
+	clear: left;
 	border-right: solid 2px #5E0000;
 	width: 50%;
 	max-width: 150px;
@@ -337,10 +343,21 @@
 }
 .pf2-sidebar {
 	float: right;
+	clear: right;
 	border-left: solid 2px #5E0000;
 	width: 50%;
 	max-width: 150px;
 	margin: 0.9em -1em 0.9em 1em;
+}
+@media only screen and (max-width: 220px) {
+	.pf2-sidebar {
+		width: calc(100%);
+		max-width: none;
+	}
+	.pf2-sidebar-left {
+		width: calc(100%);
+		max-width: none;
+	}
 }
 .pf2-sidebar-title {
 	font-size: 1.1em;
@@ -505,7 +522,6 @@
 	font-size: 1.22em;
 	text-transform: uppercase;
 	text-align: center;
-	width: calc(100% - 2em);
 	padding-left: 1em;
 	padding-right: 1em;
 	top: -0.36em;
@@ -650,7 +666,6 @@
 	font-size: 1.22em;
 	text-transform: uppercase;
 	text-align: center;
-	width: calc(100% - 2em);
 	padding-left: 1em;
 	padding-right: 1em;
 	top: -0.36em;
