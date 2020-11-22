@@ -311,6 +311,8 @@ function Renderer() {
 					this._renderPf2TipsBox(entry, textStack, meta, options);
 					break;
 				case "pf2-sample-box":
+					this._renderPf2SampleBox(entry, textStack, meta, options);
+					break;
 				case "pf2-red-box":
 					this._renderPf2RedBox(entry, textStack, meta, options);
 					break;
@@ -1079,6 +1081,31 @@ function Renderer() {
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
+	this._renderPf2SampleBox = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<div class="pf2-sample-box" ${dataString}>`;
+
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, 1);
+
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<div class="pf2-sample-box-title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></div>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: '<p class="pf2-sample-box-text">', suffix: "</p>"});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `</div>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
 	this._renderPf2TipsBox = function (entry, textStack, meta, options) {
 		const dataString = this._renderEntriesSubtypes_getDataString(entry);
 		textStack[0] += `<div class="pf2-tips-box" ${dataString}>`;
@@ -1156,8 +1183,6 @@ function Renderer() {
 				meta.depth = cacheDepth;
 			}
 		}
-		//TODO table rendering
-		textStack[0] += `<div class="float-clear"></div>`;
 		textStack[0] += `</div>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
@@ -2314,7 +2339,7 @@ function Renderer() {
 					case "@trait":
 						fauxEntry.href = {
 							type: "internal",
-							hash: `${displayText.replace(/\s(?:\d|[A-Z]|\()(.+|$)/, '')}${source ? `${HASH_LIST_SEP}${source}` : ""}`
+							hash: `${text.replace(/\s(?:\d|[A-Z]|\()(.+|$)/, '')}${source ? `${HASH_LIST_SEP}${source}` : ""}`
 						}
 						fauxEntry.href.path = "traits.html";
 						if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_CRB;
