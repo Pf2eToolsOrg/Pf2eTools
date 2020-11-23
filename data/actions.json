@@ -1070,6 +1070,108 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Balance",
+			"source": "CRB",
+			"page": 240,
+			"srd": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"traits": [
+				"Move"
+			],
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Acrobatics"
+				}
+			],
+			"requirements": "You are in a square that contains a narrow surface, uneven ground, or another similar feature.",
+			"entries": [
+				"You move across a narrow surface or uneven ground, attempting an Acrobatics check against its Balance DC. You are flat-footed while on a narrow surface or uneven ground.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You move up to your Speed.",
+						"Success": "You move up to your Speed, treating it as difficult terrain (every 5 feet costs 10 feet of movement).",
+						"Failure": "You must remain stationary to keep your balance (wasting the action) or you fall. If you fall, your turn ends.",
+						"Critical Failure": "You fall and your turn ends."
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Sample Balance Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "tangled roots, uneven cobblestones"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "wooden beam"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "deep, loose gravel"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "tightrope, smooth sheet of ice"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "razor’s edge, chunks of floor falling in midair"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tumble Through",
+			"source": "CRB",
+			"page": 240,
+			"srd": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"traits": [
+				"Move"
+			],
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Acrobatics"
+				}
+			],
+			"entries": [
+				"You {@action Stride} up to your Speed. During this movement, you can try to move through the space of one enemy. Attempt an {@skill Acrobatics} check against the enemy’s Reflex DC as soon as you try to enter its space. You can Tumble Through using Climb, Fly, Swim, or another action instead of Stride in the appropriate environment.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "You move through the enemy’s space, treating the squares in its space as difficult terrain (every 5 feet costs 10 feet of movement). If you don’t have enough Speed to move all the way through its space, you get the same effect as a failure.",
+						"Failure": "Your movement ends, and you trigger reactions as if you had moved out of the square you started in."
+					}
+				}
+			]
 		}
 	]
 }
