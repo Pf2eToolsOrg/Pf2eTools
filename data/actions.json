@@ -5,12 +5,11 @@
 			"source": "CRB",
 			"page": 470,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "reaction"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as r}"
+			},
 			"trigger": "An ally is about to use an action that requires a skill check or attack roll.",
 			"requirements": "The ally is willing to accept your aid, and you have prepared to help (see below).",
 			"entries": [
@@ -34,12 +33,11 @@
 			"traits": [
 				"Move"
 			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"requirements": "You are prone and your Speed is at least 10 feet.",
 			"entries": [
 				"You move 5 feet by crawling and continue to stay prone."
@@ -50,12 +48,11 @@
 			"source": "CRB",
 			"page": 470,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"trigger": "Your turn begins.",
 			"entries": [
 				"You wait for the right moment to act. The rest of your turn doesn’t happen yet. Instead, you’re removed from the initiative order. You can return to the initiative order as a free action triggered by the end of any other creature’s turn. This permanently changes your initiative to the new position. You can’t use reactions until you return to the initiative order. If you Delay an entire round without returning to the initiative order, the actions from the Delayed turn are lost, your initiative doesn’t change, and your next turn occurs at your original position in the initiative order.",
@@ -70,12 +67,11 @@
 			"traits": [
 				"Move"
 			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"entries": [
 				"You fall {@condition prone}."
 			]
@@ -88,12 +84,11 @@
 			"traits": [
 				"Attack"
 			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"entries": [
 				"You attempt to escape from being grabbed, immobilized, or restrained. Choose one creature, object, spell effect, hazard, or other impediment imposing any of those conditions on you. Attempt a check using your unarmed attack modifier against the DC of the effect. This is typically the Athletics DC of a creature grabbing you, the Thievery DC of a creature who tied you up, the spell DC for a spell effect, or the listed Escape DC of an object, hazard, or other impediment. You can attempt an Acrobatics or Athletics check instead of using your attack modifier if you choose (but this action still has the attack trait).",
 				{
@@ -114,12 +109,11 @@
 			"traits": [
 				"Manipulate"
 			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "reaction"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as r}"
+			},
 			"entries": [
 				"You use your hand or hands to manipulate an object or the terrain. You can grab an unattended or stored object, open a door, or produce some similar effect. You might have to attempt a skill check to determine if your Interact action was successful."
 			]
@@ -129,9 +123,11 @@
 			"source": "CRB",
 			"page": 531,
 			"srd": true,
-			"time": [
-				"Varies"
-			],
+			"activity": {
+				"number": 1,
+				"unit": "Varies",
+				"entry": "Varies"
+			},
 			"entries": [
 				"You invest your energy in an item with the {@trait invested} trait as you don it. This process requires 1 or more Interact actions, usually taking the same amount of time it takes to don the item. Once you’ve Invested the Item, you benefit from its constant magical abilities as long as you meet its other requirements (for most invested items, the only other requirement is that you must be wearing the item). This investiture lasts until you remove the item.",
 				"You can invest no more than 10 items per day. If you remove an invested item, it loses its investiture. The item still counts against your daily limit after it loses its investiture. You reset the limit during your daily preparations, at which point you Invest your Items anew. If you’re still wearing items you had invested the previous day, you can typically keep them invested on the new day, but they still count against your limit."
@@ -142,12 +138,11 @@
 			"source": "CRB",
 			"page": 470,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"entries": [
 				"You take a careful, short jump. You can Leap up to 10 feet horizontally if your Speed is at least 15 feet, or up to 15 feet horizontally if your Speed is at least 30 feet. You land in the space where your Leap ends (meaning you can typically clear a 5-foot gap, or a 10-foot gap if your Speed is 30 feet or more).",
 				"If you Leap vertically, you can move up to 3 feet vertically and 5 feet horizontally onto an elevated surface.",
@@ -162,12 +157,11 @@
 			"traits": [
 				"Concentrate"
 			],
-			"time": [
-				{
-					"number": 2,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
 			"entries": [
 				"You prepare to use an action that will occur outside your turn. Choose a single action or free action you can use, and designate a trigger. Your turn then ends. If the trigger you designated occurs before the start of your next turn, you can use the chosen action as a reaction (provided you still meet the requirements to use it). You can’t Ready a free action that already has a trigger.",
 				"If you have a multiple attack penalty and your readied action is an attack action, your readied attack takes the multiple attack penalty you had at the time you used Ready. This is one of the few times the multiple attack penalty applies when it’s not your turn."
@@ -181,9 +175,11 @@
 			"traits": [
 				"Manipulate"
 			],
-			"time": [
-				"Free"
-			],
+			"activity": {
+				"number": 1,
+				"unit": "free",
+				"entry": "{@as f}"
+			},
 			"entries": [
 				"You release something you’re holding in your hand or hands. This might mean dropping an item, removing one hand from your weapon while continuing to hold it in another hand, releasing a rope suspending a chandelier, or performing a similar action. Unlike most manipulate actions, Release does not trigger reactions that can be triggered by actions with the manipulate trait (such as {@action Attack of Opportunity}).",
 				"If you want to prepare to Release something outside of your turn, use the {@action Ready} activity."
@@ -198,12 +194,11 @@
 				"Concentrate",
 				"Secret"
 			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"entries": [
 				"You scan an area for signs of creatures or objects. If you’re looking for creatures, choose an area you’re scanning. If precision is necessary, the GM can have you select a 30-foot cone or a 15-foot burst within line of sight. You might take a penalty if you choose an area that’s far away.",
 				"If you’re using Seek to search for objects (including secret doors and hazards), you search up to a 10-foot square adjacent to you. The GM might determine you need to Seek as an activity, taking more actions or even minutes or hours if you’re searching a particularly cluttered area.",
@@ -226,12 +221,11 @@
 				"Concentrate",
 				"Secret"
 			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"entries": [
 				"You try to tell whether a creature’s behavior is abnormal. Choose one creature, and assess it for odd body language, signs of nervousness, and other indicators that it might be trying to deceive someone. The GM attempts a single secret Perception check for you and compares the result to the Deception DC of the creature, the DC of a spell affecting the creature’s mental state, or another appropriate DC determined by the GM. You typically can’t try to Sense the Motive of the same creature again until the situation changes significantly.",
 				{
@@ -253,12 +247,11 @@
 			"traits": [
 				"Move"
 			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"entries": [
 				"You stand up from {@condition prone}."
 			]
@@ -271,12 +264,11 @@
 			"traits": [
 				"Move"
 			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"requirements": "Your Speed is at least 10 feet.",
 			"entries": [
 				"You carefully move 5 feet. Unlike most types of movement, Stepping doesn’t trigger reactions, such as Attacks of Opportunity, that can be triggered by move actions or upon leaving or entering a square.",
@@ -291,12 +283,11 @@
 			"traits": [
 				"Move"
 			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"entries": [
 				"You move up to your Speed."
 			]
@@ -309,12 +300,11 @@
 			"traits": [
 				"Attack"
 			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"entries": [
 				"You attack with a weapon you're wielding or with an unarmed attack, targeting one creature within your reach (for a melee attack) or within range (for a ranged attack). Roll the attack roll for the weapon or unarmed attack you are using, and compare the result to the target creature's AC to determine the effect. See Attack Rolls and Damage for details on calculating your attack and damage rolls.",
 				{
@@ -331,12 +321,11 @@
 			"source": "CRB",
 			"page": 471,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"requirements": "You are benefiting from cover, are near a feature that allows you to take cover, or are {@condition prone}.",
 			"entries": [
 				"You press yourself against a wall or duck behind an obstacle to take better advantage of cover. If you would have standard cover, you instead gain greater cover, which provides a +4 circumstance bonus to AC; to Reflex saves against area effects; and to Stealth checks to Hide, Sneak, or otherwise avoid detection. Otherwise, you gain the benefits of standard cover (a +2 circumstance bonus instead). This lasts until you move from your current space, use an attack action, become {@condition unconscious}, or end this effect as a free action."
@@ -347,9 +336,11 @@
 			"source": "CRB",
 			"page": 532,
 			"srd": true,
-			"time": [
-				"Varies"
-			],
+			"activity": {
+				"number": 1,
+				"unit": "Varies",
+				"entry": "Varies"
+			},
 			"requirements": "You can Activate an Item with the invested trait only if it’s invested by you. If the item requires you to Interact with it, you must be wielding it (if it’s a held item) or touching it with a free hand (if it’s another type of item).",
 			"entries": [
 				"You call forth the effect of an item by properly activating it. This is a special activity that takes a variable number of actions, as listed in the item’s stat block.",
@@ -369,10 +360,10 @@
 						{
 							"type": "list",
 							"items": [
-							"Command ({@trait auditory}, {@trait concentrate})",
-							"Envision ({@trait concentrate})",
-							"Interact ({@trait manipulate})",
-							"{@action Cast a Spell}"
+								"Command ({@trait auditory}, {@trait concentrate})",
+								"Envision ({@trait concentrate})",
+								"Interact ({@trait manipulate})",
+								"{@action Cast a Spell}"
 							]
 						}
 					]
@@ -384,12 +375,11 @@
 			"source": "CRB",
 			"page": 472,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "reaction"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as r}"
+			},
 			"trigger": "You fall.",
 			"requirements": "You have a fly Speed.",
 			"entries": [
@@ -407,12 +397,11 @@
 			"source": "CRB",
 			"page": 472,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"entries": [
 				"You avert your gaze from danger. You gain a +2 circumstance bonus to saves against visual abilities that require you to look at a creature or object, such as a medusa’s petrifying gaze. Your gaze remains averted until the start of your next turn."
 			]
@@ -425,12 +414,11 @@
 			"traits": [
 				"Move"
 			],
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"requirements": "You have a burrow Speed",
 			"entries": [
 				"You dig your way through dirt, sand, or a similar loose material at a rate up to your burrow Speed. You can’t burrow through rock or other substances denser than dirt unless you have an ability that allows you to do so."
@@ -459,10 +447,10 @@
 						{
 							"type": "list",
 							"items": [
-							"Material ({@trait manipulate})",
-							"Somatic ({@trait manipulate})",
-							"Verbal ({@trait concentrate})",
-							"Focus ({@trait manipulate})"
+								"Material ({@trait manipulate})",
+								"Somatic ({@trait manipulate})",
+								"Verbal ({@trait concentrate})",
+								"Focus ({@trait manipulate})"
 							]
 						}
 					]
@@ -481,12 +469,11 @@
 			"source": "CRB",
 			"page": 305,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"traits": [
 				"Concentrate"
 			],
@@ -499,12 +486,11 @@
 			"source": "CRB",
 			"page": 305,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"traits": [
 				"Move"
 			],
@@ -518,12 +504,11 @@
 			"source": "CRB",
 			"page": 472,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "reaction"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as r}"
+			},
 			"trigger": "You fall from or past an edge or handhold.",
 			"requirements": "Your hands are not tied behind your back or otherwise restrained.",
 			"entries": [
@@ -534,7 +519,6 @@
 						"Critical Success": "You grab the edge or handhold, whether or not you have a hand free, typically by using a suitable held item to catch yourself (catching a battle axe on a ledge, for example). You still take damage from the distance fallen so far, but you treat the fall as though it were 30 feet shorter.",
 						"Success": "If you have at least one hand free, you grab the edge or handhold, stopping your fall. You still take damage from the distance fallen so far, but you treat the fall as though it were 20 feet shorter. If you have no hands free, you continue to fall as if you had failed the check.",
 						"Critical Failure": "You continue to fall, and if you’ve fallen 20 feet or more before you use this reaction, you take 10 bludgeoning damage from the impact for every 20 feet fallen."
-
 					}
 				}
 			]
@@ -544,12 +528,11 @@
 			"source": "CRB",
 			"page": 472,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"traits": [
 				"Move"
 			],
@@ -562,12 +545,11 @@
 			"source": "CRB",
 			"page": 472,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"traits": [
 				"Auditory",
 				"Manipulate",
@@ -583,12 +565,11 @@
 			"source": "CRB",
 			"page": 472,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"requirements": "You are wielding a shield.",
 			"entries": [
 				"You position your shield to protect yourself. When you have Raised a Shield, you gain its listed circumstance bonus to AC. Your shield remains raised until the start of your next turn."
@@ -599,12 +580,11 @@
 			"source": "CRB",
 			"page": 304,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"traits": [
 				"Concentrate"
 			],
@@ -619,12 +599,11 @@
 			"source": "CRB",
 			"page": 534,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"requirements": "You have at least one magic item activation that you can sustain and you are not fatigued.",
 			"entries": [
 				"Choose one magic item activation with a sustained duration you have in effect. The duration of that activation continues until the end of your next turn. Some activations may have slightly different or expanded effects if you sustain them. Sustaining an Activation for more than 10 minutes (100 rounds) ends the activation and makes you fatigued unless the item’s description states a different maximum duration (such as “up to 1 minute” or “up to 1 hour”).",
@@ -636,12 +615,11 @@
 			"source": "CRB",
 			"page": 474,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "reaction"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as r}"
+			},
 			"trigger": "A creature within your reach uses a {@trait manipulate} action or a {@trait move} action, makes a ranged attack, or leaves a square during a move action it’s using.",
 			"entries": [
 				"You lash out at a foe that leaves an opening. Make a melee Strike against the triggering creature. If your attack is a critical hit and the trigger was a manipulate action, you disrupt that action. This Strike doesn’t count toward your multiple attack penalty, and your multiple attack penalty doesn’t apply to this Strike."
@@ -652,12 +630,11 @@
 			"source": "CRB",
 			"page": 300,
 			"srd": true,
-			"time": [
-				{
-					"number": 10,
-					"unit": "minutes"
-				}
-			],
+			"activity": {
+				"number": 10,
+				"unit": "minute",
+				"entry": "10 minutes"
+			},
 			"traits": [
 				"Concentrate",
 				"Exploration"
@@ -756,7 +733,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sample Decipher Tasks",
 					"entries": [
 						{
@@ -811,7 +788,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sample Earn Income Tasks",
 					"entries": [
 						"These examples use Alcohol Lore to work in a bar or Legal Lore to perform legal work.",
@@ -867,7 +844,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Magical Traditions and Skills",
 					"entries": [
 						"Each magical tradition has a corresponding skill, as shown on the table below. You must have the trained proficiency rank in a skill to use it to Identify Magic or Learn a Spell. Something without a specific tradition, such as an item with the magical trait, can be identified using any of these skills.",
@@ -963,7 +940,8 @@
 					"items": [
 						"{@b Arcana:} Arcane theories, magical traditions, creatures of arcane significance, and arcane planes.",
 						"{@b Crafting:} Alchemical reactions and creatures, item value, engineering, unusual materials, and constructs.",
-						"{@b Lore:} The subject of the Lore skill’s subcategory. • Medicine: Diseases, poisons, wounds, and forensics.",
+						"{@b Lore:} The subject of the Lore skill’s subcategory.",
+						"{@b Medicine:} Diseases, poisons, wounds, and forensics.",
 						"{@b Nature:} The environment, flora, geography, weather, creatures of natural origin, and natural planes.",
 						"{@b Occultism:} Ancient mysteries, obscure philosophy, creatures of occult significance, and esoteric planes.",
 						"{@b Religion:} Divine agents, divine planes, theology, obscure myths, and creatures of religious significance.",
@@ -972,7 +950,7 @@
 				},
 				"The GM might allow checks to Recall Knowledge using other skills. For example, you might assess the skill of an acrobat using Acrobatics. If you’re using a physical skill (like in this example), the GM will most likely have you use a mental ability score—typically Intelligence— instead of the skill’s normal physical ability score.",
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Recall Knowledge Tasks",
 					"entries": [
 						"These examples use {@skill Society} or {@skill Religion}.",
@@ -1032,7 +1010,7 @@
 				},
 				"The following skills can be used to Recall Knowledge, getting information about the listed topics. In some cases, you can get the GM’s permission to use a different but related skill, usually against a higher DC than normal. Some topics might appear on multiple lists, but the skills could give different information. For example, {@skill Arcana} might tell you about the magical defenses of a golem, whereas {@skill Crafting} could tell you about its sturdy resistance to physical attacks.",
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sample Subsist Tasks",
 					"entries": [
 						"These examples use {@skill Society} or {@skill Religion}.",
