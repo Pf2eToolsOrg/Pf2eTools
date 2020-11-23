@@ -284,10 +284,42 @@ function Renderer() {
 			meta._typeStack.push(type);
 
 			switch (type) {
-				// recursive
-				case "pf2-inset":
-					this._renderPf2Inset(entry, textStack, meta, options);
+				// pf2
+				case "pf2-h1":
+					this._renderPf2H1(entry, textStack, meta, options);
 					break;
+				case "pf2-h1-flavor":
+					this._renderPf2H1Flavor(entry, textStack, meta, options);
+					break;
+				case "pf2-h2":
+					this._renderPf2H2(entry, textStack, meta, options);
+					break;
+				case "pf2-h3":
+					this._renderPf2H3(entry, textStack, meta, options);
+					break;
+				case "pf2-h4":
+					this._renderPf2H4(entry, textStack, meta, options);
+					break;
+				case "pf2-h5":
+					this._renderPf2H5(entry, textStack, meta, options);
+					break;
+				case "pf2-sidebar":
+					this._renderPf2Sidebar(entry, textStack, meta, options);
+					break;
+				case "pf2-inset":
+				case "pf2-tips-box":
+					this._renderPf2TipsBox(entry, textStack, meta, options);
+					break;
+				case "pf2-sample-box":
+					this._renderPf2SampleBox(entry, textStack, meta, options);
+					break;
+				case "pf2-red-box":
+					this._renderPf2RedBox(entry, textStack, meta, options);
+					break;
+				case "pf2-brown-box":
+					this._renderPf2BrownBox(entry, textStack, meta, options);
+					break;
+				// recursive
 				case "entries":
 					this._renderEntries(entry, textStack, meta, options);
 					break;
@@ -799,8 +831,8 @@ function Renderer() {
 		this._handleTrackDepth(entry, 1);
 
 		textStack[0] += `<div class="pf-2-stat-indent-second-line"><span><strong>${entry.name} </strong>`
-		if (entry.activity !== undefined) this._recursiveRender(entry.activity.entry + ' ', textStack, meta);
-		if (entry.traits !== undefined && entry.traits.length) {
+		if (entry.activity != null) this._recursiveRender(entry.activity.entry + ' ', textStack, meta);
+		if (entry.traits != null && entry.traits.length) {
 			let trts = []
 			entry.traits.forEach((t) => {
 				trts.push(Renderer.get().render(`{@trait ${t.uppercaseFirst()}|${Parser.TRAITS_TO_TRAITS_SRC[t.uppercaseFirst()]}|${t}}`))
@@ -808,23 +840,25 @@ function Renderer() {
 			textStack[0] += `(${trts.join(', ')}); `
 		}
 		let add_effect = false
-		if (entry.frequency !== undefined) {
+		if (entry.frequency != null) {
 			add_effect = true
 			textStack[0] += `<strong>Frequency </strong>`
 			this._recursiveRender(entry.frequency + ' ', textStack, meta)
 		}
-		if (entry.requirements !== undefined) {
+		if (entry.requirements != null) {
 			add_effect = true
 			textStack[0] += `<strong>Requirements </strong>`
 			this._recursiveRender(entry.requirements + ' ', textStack, meta)
 		}
-		if (entry.trigger !== undefined) {
+		if (entry.trigger != null) {
 			add_effect = true
 			textStack[0] += `<strong>Trigger </strong>`
 			this._recursiveRender(entry.trigger + ' ', textStack, meta)
 		}
 		if (add_effect) textStack[0] += `<strong>Effect </strong>`
-		entry.entries.forEach((e) => {this._recursiveRender(e, textStack, meta)})
+		entry.entries.forEach((e) => {
+			this._recursiveRender(e, textStack, meta)
+		})
 
 		textStack[0] += `</span></div>`
 
@@ -847,22 +881,35 @@ function Renderer() {
 	this._renderAffliction = function (entry, textStack, meta, options) {
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, 1);
+		const renderer = Renderer.get();
 
 		const dict = entry.entries;
-		textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${dict["name"]} </strong>(${dict["type"]}); <strong>Level </strong>${dict["level"]}. `
-		if (dict["note"] !== null) {
-			textStack[0] += dict["note"]
+		let traits = []
+		dict["traits"].forEach((t) => {
+			traits.push(`{@trait ${t}}`)
+		})
+		textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${dict["name"]} </strong>(${renderer.render(traits.join(', '))}); `
+		if (dict["level"] != null) {
+			textStack[0] += `<strong>Level </strong>${dict["level"]}. `
 		}
-		if (dict["onset"] !== null) {
+		if (dict["note"] != null) {
+			textStack[0] += dict["note"] + ' '
+		}
+		if (dict["DC"] != null) {
+			textStack[0] += `<strong>Saving Throw </strong>DC ${dict["DC"]} ${dict["saving throw"]}. `
+		}
+		if (dict["onset"] != null) {
 			textStack[0] += ` <strong>Onset</strong> ${dict["onset"]}`
 		}
-		if (dict["max duration"] !== null) {
+		if (dict["max duration"] != null) {
 			textStack[0] += ` <strong>Maximum Duration</strong> ${dict["max duration"]}`
 		}
 		for (let stage of dict["stages"]) {
 			textStack[0] += ` <strong>Stage ${stage["stage"]} </strong>`
 			this._recursiveRender(stage["entry"], textStack, meta);
-			textStack[0] += ` (${stage["duration"]});`
+			if (stage["duration"] != null) {
+				textStack[0] += ` (${stage["duration"]});`
+			}
 		}
 		textStack[0] = textStack[0].replace(/;$/, ".")
 		textStack[0] += `</div>`
@@ -870,19 +917,234 @@ function Renderer() {
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
-	this._renderPf2Inset = function (entry, textStack, meta, options) {
+	this._renderPf2H1 = function (entry, textStack, meta, options) {
 		const dataString = this._renderEntriesSubtypes_getDataString(entry);
-		textStack[0] += `<${this.wrapperTag} class="pf2-inset" ${dataString}>`;
-		textStack[0] += `<div class="pf2-inset-swirl swirl-left"><svg><use href="#inset-left"></use></svg></div>`
-		textStack[0] += `<div class="pf2-inset-swirl swirl-connection"></div>`
-		textStack[0] += `<div class="pf2-inset-swirl swirl-right"><svg><use href="#inset-right"></use></svg></div>`
+		textStack[0] += `<${this.wrapperTag} class="" ${dataString}>`;
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, meta.depth);
+
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<p class="pf2-h1" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix:`</p>`});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `<div class="float-clear"></div>`;
+		textStack[0] += `</${this.wrapperTag}>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
+	this._renderPf2H1Flavor = function (entry, textStack, meta, options) {
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, meta.depth);
+
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				textStack[0] += `<p class="pf2-h1-flavor">${this.render(entry.entries[i])}</p>`;
+			}
+		}
+		textStack[0] +=  this._renderPf2ChapterSwirl()
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
+	this._renderPf2ChapterSwirl = function () {
+		return `<div style="display: flex">
+                <div class="pf2-chapter-line-l"></div>
+                <div class="pf2-chapter-swirl-l"></div>
+                <div class="pf2-chapter-swirl-r"></div>
+                <div class="pf2-chapter-line-r"></div>
+            	</div>`
+	};
+
+	this._renderPf2H2 = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<${this.wrapperTag} class="" ${dataString}>`;
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, meta.depth);
+
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<p class="pf2-h2" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix:`</p>`});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `</${this.wrapperTag}>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
+	this._renderPf2H3 = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<${this.wrapperTag} class="" ${dataString}>`;
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, meta.depth);
+
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<p class="pf2-h3" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix:`</p>`});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `</${this.wrapperTag}>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
+	this._renderPf2H4 = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<${this.wrapperTag} class="" ${dataString}>`;
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, meta.depth);
+
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<p class="pf2-h4" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix:`</p>`});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `</${this.wrapperTag}>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
+	this._renderPf2H5 = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<${this.wrapperTag} class="" ${dataString}>`;
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, meta.depth);
+
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<p class="pf2-h5" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix:`</p>`});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `</${this.wrapperTag}>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
+	this._renderPf2Sidebar = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<div class="pf2-sidebar" ${dataString}>`;
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, meta.depth);
+
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<p class="pf2-sidebar-title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-sidebar-text">`, suffix:`</p>`});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `</div>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
+	this._renderPf2SampleBox = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<div class="pf2-sample-box" ${dataString}>`;
 
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, 1);
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
-			textStack[0] += `<span class="pf2-h-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
+			textStack[0] += `<div class="pf2-sample-box-title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></div>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: '<p class="pf2-sample-box-text">', suffix: "</p>"});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `</div>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
+	this._renderPf2TipsBox = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<div class="pf2-tips-box" ${dataString}>`;
+
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, 1);
+
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<div class="pf2-tips-box-title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></div>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: '<p class="pf2-tips-box-text">', suffix: "</p>"});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `</div>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
+	this._renderPf2BrownBox = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<div ${dataString} style="display: flex; float: left">`;
+		textStack[0] += `<div class="pf2-brown-box">`;
+		textStack[0] += `<div class="swirl-left-brown"></div>`
+		textStack[0] += `<div class="swirl-connection-brown"></div>`
+		textStack[0] += `<div class="swirl-right-brown"></div>`
+
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, 1);
+
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<span class="pf2-brown-box-title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
 		}
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -893,8 +1155,35 @@ function Renderer() {
 				meta.depth = cacheDepth;
 			}
 		}
-		textStack[0] += `<div class="float-clear"></div>`;
-		textStack[0] += `</${this.wrapperTag}>`;
+		textStack[0] += `</div></div>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
+	this._renderPf2RedBox = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<div class="pf2-red-box" ${dataString}>`;
+		textStack[0] += `<div class="swirl-left-red"></div>`
+		textStack[0] += `<div class="swirl-connection-red"></div>`
+		textStack[0] += `<div class="swirl-right-red"></div>`
+
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, 1);
+
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<span class="pf2-red-box-title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p class='pf2-red-box-note'>", suffix: "</p>"});
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `</div>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
@@ -2048,6 +2337,10 @@ function Renderer() {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@trait":
+						fauxEntry.href = {
+							type: "internal",
+							hash: `${text.replace(/\s(?:\d|[A-Z]|\()(.+|$)/, '')}${source ? `${HASH_LIST_SEP}${source}` : ""}`
+						}
 						fauxEntry.href.path = "traits.html";
 						if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_CRB;
 						fauxEntry.href.hover = {
@@ -2619,6 +2912,10 @@ Renderer.utils = {
 		return `<tr><th class="border" colspan="6">${optText || ""}</th></tr>`;
 	},
 
+	getBorderDiv: (optText) => {
+		return `<div class="border">${optText || ""}</div>`;
+	},
+
 	getDividerDiv: () => {
 		return `<div class="pf2-stat-line"></div>`
 	},
@@ -2627,11 +2924,12 @@ Renderer.utils = {
 		let traits_html = ``;
 		let trait;
 		for (trait of traits) {
-			let source = Parser.TRAITS_TO_TRAITS_SRC[trait]
+			let traitname = trait.replace(/\s(?:\d|[A-Z]|\()(.+|$)/, '')
+			let source = Parser.TRAITS_TO_TRAITS_SRC[traitname]
 			let href = {
 				type: "internal",
 				path: "traits.html",
-				hash: `${trait}${HASH_LIST_SEP}${source}`,
+				hash: `${traitname}${HASH_LIST_SEP}${source}`,
 				hover: {
 					page: UrlUtil.PG_TRAITS,
 					source: source
@@ -2670,7 +2968,7 @@ Renderer.utils = {
 			for (let key in dict) {
 				if (!exclude.includes(key)) {
 					if (dice) {
-						notes.push(Renderer.get().render(`{@d20 ${dict[key]}||${dice_name !== undefined ? dice_name : key}}`))
+						notes.push(Renderer.get().render(`{@d20 ${dict[key]}||${dice_name != null ? dice_name : key}}`))
 					} else notes.push(`${dict[key]}`)
 					notes.push(` ${key}`)
 					notes.push(`, `)
@@ -2737,10 +3035,13 @@ Renderer.utils = {
 			const hash = UrlUtil.URL_TO_HASH_BUILDER[opts.page](it);
 			dataPart = `data-page="${opts.page}" data-source="${it.source.escapeQuotes()}" data-hash="${hash.escapeQuotes()}"`;
 		}
+		const type = opts.type != null ? opts.type : it.type
+		const level = opts.level != null ? opts.level : isNaN(Number(it.level)) ? '' : ` ${Number(it.level)}`
+		const activity = opts.activity ? ` ${it.activity != null ? Renderer.get().render(it.activity.entry) : ``}` : ``
 		const $ele = $$`<div style="display: flex" class="${opts.extraThClasses ? opts.extraThClasses.join(" ") : ""}" ${dataPart}>
-			<p class="pf2-stat-name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</p>
+			<p class="pf2-stat-name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>${activity}</p>
 			${opts.controlRhs || ""}
-			<p class="pf2-stat-level">${it.type} ${it.type === "CANTRIP" ? 1 : it.level}</p>
+			<p class="pf2-stat-level">${type}${type === "CANTRIP" ? ' 1' : level}</p>
 		</div>`;
 
 		if (opts.asJquery) return $ele;
@@ -2753,6 +3054,12 @@ Renderer.utils = {
 		return isExcluded ? `<tr><td colspan="6" class="pt-3 text-center text-danger"><b><i>Warning: This content has been blacklisted.</i></b></td></tr>` : "";
 	},
 
+	getExcludedDiv(it, dataProp) {
+		if (!ExcludeUtil.isInitialised) return "";
+		const isExcluded = ExcludeUtil.isExcluded(it.name, dataProp, it.source);
+		return isExcluded ? `<div class="pt-3 text-center text-danger"><b><i>Warning: This content has been blacklisted.</i></b></div>` : "";
+	},
+
 	async _pHandleNameClick(ele) {
 		await MiscUtil.pCopyTextToClipboard($(ele).text());
 		JqueryUtil.showCopiedEffect($(ele));
@@ -2760,6 +3067,10 @@ Renderer.utils = {
 
 	getPageTr: (it) => {
 		return `<tr><td colspan=6>${Renderer.utils._getPageTrText(it)}</td></tr>`;
+	},
+
+	getPageP: (it) => {
+		return `<p class="pf-2-stat-source"><strong>${it.source}</strong> page ${it.page}</p>`;
 	},
 
 	_getPageTrText: (it) => {
@@ -2953,11 +3264,9 @@ Renderer.utils = {
 	async pBuildFluffTab({isImageTab, $content, entity, fnFluffBuilder, fluffUrl, fluffBaseUrl, $headerControls} = {}) {
 		const renderer = Renderer.get();
 
-		$content.append(Renderer.utils.getBorderTr());
-		$content.append(Renderer.utils.getNameTr(entity, {controlRhs: $headerControls, asJquery: true}));
+		$content.append(Renderer.utils.getNameDiv(entity, {controlRhs: $headerControls, asJquery: true}));
 		const $td = $(`<td colspan="6" class="text"/>`);
-		$$`<tr class="text">${$td}</tr>`.appendTo($content);
-		$content.append(Renderer.utils.getBorderTr());
+		$$`<tr class="pf2-stat-text">${$td}</tr>`.appendTo($content);
 
 		const fluff = await Renderer.utils.pGetFluff({
 			isImages: isImageTab,
@@ -3167,63 +3476,49 @@ Renderer.utils = {
 };
 
 Renderer.feat = {
-	mergeAbilityIncrease: function (feat) {
-		if (!feat.ability || feat._hasMergedAbility) return;
-		feat._hasMergedAbility = true;
-		const targetList = feat.entries.find(e => e.type === "list");
-		if (targetList) {
-			feat.ability.forEach(abilObj => targetList.items.unshift(abilityObjToListItem(abilObj)));
-		} else {
-			// this should never happen, but display sane output anyway, and throw an out-of-order exception
-			feat.ability.forEach(abilObj => feat.entries.unshift(abilityObjToListItem(abilObj)));
-
-			setTimeout(() => {
-				throw new Error(`Could not find object of type "list" in "entries" for feat "${feat.name}" from source "${feat.source}" when merging ability scores! Reformat the feat to include a "list"-type entry.`);
-			}, 1);
+	getSubHead(feat) {
+		const renderStack = [];
+		if (feat.prerequisites != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Prerequisites </strong>${feat.prerequisites}</p>`);
 		}
-
-		function abilityObjToListItem(abilityObj) {
-			const TO_MAX_OF_TWENTY = ", to a maximum of 20.";
-			const abbArr = [];
-			if (!abilityObj.choose) {
-				Object.keys(abilityObj).forEach(ab => abbArr.push(`Increase your ${Parser.attAbvToFull(ab)} score by ${abilityObj[ab]}${TO_MAX_OF_TWENTY}`));
-			} else {
-				const choose = abilityObj.choose;
-				if (choose.from.length === 6) {
-					if (choose.textreference) { // only used in "Resilient"
-						abbArr.push(`Increase the chosen ability score by ${choose.amount}${TO_MAX_OF_TWENTY}`);
-					} else {
-						abbArr.push(`Increase one ability score of your choice by ${choose.amount}${TO_MAX_OF_TWENTY}`);
-					}
-				} else {
-					const from = choose.from;
-					const amount = choose.amount;
-					const abbChoices = [];
-					for (let j = 0; j < from.length; ++j) {
-						abbChoices.push(Parser.attAbvToFull(from[j]));
-					}
-					const abbChoicesText = abbChoices.joinConjunct(", ", " or ");
-					abbArr.push(`Increase your ${abbChoicesText} by ${amount}${TO_MAX_OF_TWENTY}`);
-				}
-			}
-			return abbArr.join(" ");
+		if (feat.frequency != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Frequency </strong>${feat.frequency}</p>`);
 		}
+		if (feat.trigger != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Trigger </strong>${feat.trigger}</p>`);
+		}
+		if (feat.cost != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Cost </strong>${feat.cost}</p>`);
+		}
+		if (feat.requirements != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Requirements </strong>${feat.requirements}</p>`);
+		}
+		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
+		return renderStack.join("");
+	},
+
+	getSpecial(feat) {
+		if (feat.special != null) {
+			return `<p><strong>Special </strong>${feat.special}</p>`
+		} else return ``
 	},
 
 	getCompactRenderedString(feat) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
-		const prerequisite = Renderer.utils.getPrerequisiteText(feat.prerequisite);
-		Renderer.feat.mergeAbilityIncrease(feat);
 		renderStack.push(`
-			${Renderer.utils.getExcludedTr(feat, "feat")}
-			${Renderer.utils.getNameTr(feat, {page: UrlUtil.PG_FEATS})}
-			<tr class="text"><td colspan="6" class="text">
-			${prerequisite ? `<p><i>${prerequisite}</i></p>` : ""}
+			${Renderer.utils.getExcludedDiv(feat, "feat")}
+			${Renderer.utils.getNameDiv(feat, {page: UrlUtil.PG_FEATS, type: 'FEAT', activity: true})}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(feat.traits)}
+			${Renderer.feat.getSubHead(feat)}
 		`);
+		renderStack.push(`<div class="pf2-stat-text">`)
 		renderer.recursiveRender({entries: feat.entries}, renderStack, {depth: 2});
-		renderStack.push(`</td></tr>`);
+		renderStack.push(Renderer.feat.getSpecial(feat))
+		renderStack.push(`</div>`)
+		renderStack.push(Renderer.utils.getPageP(feat))
 
 		return renderStack.join("");
 	}
@@ -3268,7 +3563,7 @@ Renderer.spell = {
 		components = components_list.join(", ")
 		let cast = ``
 		let castStack = []
-		renderer.recursiveRender(spell.cast.entry, castStack, {depth:1}, {prefix: `<span>`, suffix: `</span>`})
+		renderer.recursiveRender(spell.cast.entry, castStack, {depth: 1}, {prefix: `<span>`, suffix: `</span>`})
 		cast = castStack.join('')
 		if (!Parser.SP_TIME_ACTIONS.includes(spell.cast.unit) && components.length) {
 			components = `(` + components + `)`
@@ -3354,7 +3649,7 @@ Renderer.spell = {
 				renderStack.push(`</p>`)
 			}
 		}
-		renderStack.push(`<p class="pf-2-stat-source"><strong>${spell.source}</strong> page ${spell.page_nr}</p>`);
+		renderStack.push(Renderer.utils.getPageP(spell));
 		renderStack.push(`</div>`)
 		return renderStack.join("");
 	},
@@ -3367,7 +3662,7 @@ Renderer.condition = {
 		const renderStack = [];
 		renderer.setFirstSection(true);
 
-		// TODO: renderStack.push(`${Renderer.utils.getExcludedTr(cond, cond.__prop || cond._type)}`)
+		renderStack.push(`${Renderer.utils.getExcludedDiv(cond, cond.__prop || cond._type)}`)
 		renderStack.push(`
 			${Renderer.utils.getNameDiv(cond, {page: UrlUtil.PG_CONDITIONS_DISEASES})}
 			${Renderer.utils.getDividerDiv()}
@@ -3385,7 +3680,7 @@ Renderer.trait = {
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		// TODO: renderStack.push(`${Renderer.utils.getExcludedTr(trait, trait.__prop || trait._type)}`)
+		renderStack.push(`${Renderer.utils.getExcludedDiv(trait, trait.__prop || trait._type)}`)
 		renderStack.push(`
 			${Renderer.utils.getNameDiv(trait, {page: UrlUtil.PG_TRAITS})}
 			${Renderer.utils.getDividerDiv()}
@@ -3397,7 +3692,6 @@ Renderer.trait = {
 		return renderStack.join("");
 	}
 };
-
 
 Renderer.background = {
 	getCompactRenderedString(bg) {
@@ -4020,7 +4314,7 @@ Renderer.monster = {
 	},
 
 	getLanguages(mon) {
-		if (mon.languages !== null && (mon.languages.languages.length !== 0 || mon.languages.language_abilities.length !== 0)) {
+		if (mon.languages != null && (mon.languages.languages.length !== 0 || mon.languages.language_abilities.length !== 0)) {
 			let renderStack = [];
 
 			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
@@ -4028,7 +4322,7 @@ Renderer.monster = {
 			renderStack.push(`<span>`)
 			renderStack.push(mon.languages.languages.join(', '))
 			if (mon.languages.language_abilities.length !== 0) {
-				renderStack.push('; ')
+				if (mon.languages.languages.length !== 0) renderStack.push('; ')
 				renderStack.push(mon.languages.language_abilities.join(', '))
 			}
 			renderStack.push(`</span>`)
@@ -4040,7 +4334,7 @@ Renderer.monster = {
 	},
 
 	getSkills(mon) {
-		if (mon.skills !== null && (Object.keys(mon.skills).length !== 0)) {
+		if (mon.skills != null && (Object.keys(mon.skills).length !== 0)) {
 			let renderStack = [];
 
 			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
@@ -4081,7 +4375,7 @@ Renderer.monster = {
 	},
 
 	getItems(mon) {
-		if (mon.items !== null) {
+		if (mon.items != null) {
 			let renderStack = [];
 			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
 			renderStack.push(`<span><strong>Items </strong></span>`)
@@ -4097,7 +4391,7 @@ Renderer.monster = {
 		const ac = mon.armor_class
 		renderStack.push(`<span><strong>AC </strong>${ac.default}`)
 		renderStack.push(Renderer.utils.getNotes(ac, ['default', 'abilities'], false))
-		if (ac.abilities !== null) renderStack.push(ac.abilities.join(', '));
+		if (ac.abilities != null) renderStack.push(`; ${ac.abilities}`);
 		const st = mon.saving_throws
 		renderStack.push(`; <strong>Fort </strong>`)
 		renderStack.push(Renderer.get().render(`{@d20 ${st.Fort.default}||Fortitude Save}`))
@@ -4108,24 +4402,24 @@ Renderer.monster = {
 		renderStack.push(`, <strong>Will </strong>`)
 		renderStack.push(Renderer.get().render(`{@d20 ${st.Will.default}||Will Save}`))
 		renderStack.push(Renderer.utils.getNotes(st.Will, ['default', 'abilities'], 'Will Save'))
-		if (st.abilities !== null) renderStack.push(', ' + st.abilities);
+		if (st.abilities != null) renderStack.push(', ' + st.abilities);
 		renderStack.push(`</span>`)
 		renderStack.push(`</div>`)
 
 		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
 		const hp = mon.hit_points
 		for (i = 0; i < hp.length; i++) {
-			renderStack.push(`<span><strong>HP </strong>${hp[i].note !== null ? `${hp[i].note} ` : ``}${hp[i].HP}`)
-			renderStack.push(`${hp[i].abilities !== null ? `, ${hp[i].abilities}` : ``}`)
+			renderStack.push(`<span><strong>HP </strong>${hp[i].note != null ? `${hp[i].note} ` : ``}${hp[i].HP}`)
+			renderStack.push(`${hp[i].abilities != null ? `, ${hp[i].abilities}` : ``}`)
 			renderStack.push(`${(i === hp.length - 1) ? `` : ` `}`)
 		}
-		if (mon.hardness !== null) {
+		if (mon.hardness != null) {
 			renderStack.push(`; <strong>Hardness </strong>${mon.hardness}`)
 		}
-		if (mon.immunities !== null) {
+		if (mon.immunities != null) {
 			renderStack.push(`; <strong>Immunities </strong>${mon.immunities.damage.concat(mon.immunities.condition).sort().join(', ')}`)
 		}
-		if (mon.weaknesses !== null) {
+		if (mon.weaknesses != null) {
 			renderStack.push(`; <strong>Weaknesses </strong>`)
 			let ws = []
 			for (let x of mon.weaknesses) {
@@ -4137,7 +4431,7 @@ Renderer.monster = {
 			}
 			renderStack.push(ws.join(', '))
 		}
-		if (mon.resistances !== null) {
+		if (mon.resistances != null) {
 			renderStack.push(`; <strong>Resistances </strong>`)
 			let rs = []
 			for (let x of mon.resistances) {
@@ -4160,14 +4454,14 @@ Renderer.monster = {
 		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
 		renderStack.push(`<span><strong>Speed </strong>`)
 		let speeds = []
-		if (mon.speed.walk !== null) speeds.push(`${mon.speed.walk} feet`)
+		if (mon.speed.walk != null) speeds.push(`${mon.speed.walk} feet`)
 		for (let key in mon.speed) {
 			if (key !== 'abilities' && key !== 'walk') {
 				speeds.push(`${key} ${mon.speed[key]} feet`)
 			}
 		}
 		renderStack.push(speeds.join(', '))
-		if (mon.speed.abilities !== null) {
+		if (mon.speed.abilities != null) {
 			renderStack.push('; ')
 			renderStack.push(mon.speed.abilities.join(', '))
 		}
@@ -4186,7 +4480,7 @@ Renderer.monster = {
 			renderStack.push(`</span>`)
 			renderStack.push(Renderer.get().render(`{@hit ${attack.attack}||${attack.name.uppercaseFirst()} `))
 			renderStack.push(`<span>`)
-			if (attack.traits !== null) {
+			if (attack.traits != null) {
 				let traits = []
 				attack.traits.forEach((t) => {
 					traits.push(`{@trait ${t.uppercaseFirst().split(' ')[0]}|${Parser.TRAITS_TO_TRAITS_SRC[t.uppercaseFirst()]}|${t}}`)
@@ -4203,25 +4497,26 @@ Renderer.monster = {
 	},
 
 	getSpellcasting(mon) {
-		if (mon.spellcasting !== null) {
+		if (mon.spellcasting != null) {
 			const renderer = Renderer.get()
 			let renderStack = [];
 			for (let sc of mon.spellcasting) {
 				renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
-				renderStack.push(`<span><strong>${sc.tradition} ${sc.type} Spells</strong> DC ${sc.DC}</span>`)
-				if (sc.attack !== undefined) {
+				renderStack.push(`<span><strong>${sc.name} Spells</strong> DC ${sc.DC}</span>`)
+				if (sc.attack != null) {
 					renderStack.push(renderer.render(`<span>, attack </span>{@d20 ${sc.attack}||Spell attack}`))
 				}
 				Object.keys(sc.entry).sort().reverse().forEach((lvl) => {
 					if (lvl !== ' constant') {
 						renderStack.push(`<span>; <strong>${lvl === '0' ? 'Cantrips' : Parser.getOrdinalForm(lvl)} </strong>`)
-						if (sc.entry[lvl].level !== undefined) renderStack.push(`<strong>(${Parser.getOrdinalForm(sc.entry[lvl].level)}) </strong>`)
-						if (sc.entry[lvl].slots !== undefined) renderStack.push(`(${sc.entry[lvl].slots} slots) `)
+						if (sc.entry[lvl].level != null) renderStack.push(`<strong>(${Parser.getOrdinalForm(sc.entry[lvl].level)}) </strong>`)
+						if (sc.entry[lvl].slots != null) renderStack.push(`(${sc.entry[lvl].slots} slots) `)
+						if (sc.entry[lvl].fp != null) renderStack.push(`${sc.entry[lvl].fp} `)
 						renderStack.push(`</span>`)
 						let spells = []
 						for (let spell of sc.entry[lvl].spells) {
-							let amount = spell.amount !== undefined ? typeof (spell.amount) === 'number' ? [`×${spell.amount}`] : [spell.amount] : []
-							let notes = spell.notes !== undefined ? spell.notes : []
+							let amount = spell.amount != null ? typeof (spell.amount) === 'number' ? [`×${spell.amount}`] : [spell.amount] : []
+							let notes = spell.notes != null ? spell.notes : []
 							let bracket = ''
 							if (amount.length || notes.length) {
 								bracket = ' (' + amount.concat(notes).join(', ') + ')'
@@ -4235,7 +4530,7 @@ Renderer.monster = {
 							renderStack.push(`<span><strong>(${Parser.getOrdinalForm(clvl)}) </strong></span>`)
 							let spells = []
 							for (let spell of sc.entry[lvl][clvl].spells) {
-								let notes = spell.notes !== undefined ? spell.notes : []
+								let notes = spell.notes != null ? spell.notes : []
 								let bracket = ''
 								if (notes.length) {
 									bracket = ' (' + notes.join(', ') + ')'
@@ -4244,7 +4539,7 @@ Renderer.monster = {
 							}
 							renderStack.push(renderer.render(spells.join(', ') + '; '))
 						});
-						renderStack[renderStack.length-1]
+						renderStack[renderStack.length - 1]
 					}
 				});
 				renderStack.push(`</div>`)
@@ -4255,7 +4550,7 @@ Renderer.monster = {
 
 
 	getRituals(mon) {
-		if (mon.rituals !== null) {
+		if (mon.rituals != null) {
 			const renderer = Renderer.get()
 			let renderStack = [];
 			mon.rituals.forEach((feature) => {
@@ -4264,8 +4559,8 @@ Renderer.monster = {
 				let rituals = []
 				feature.rituals.forEach((ritual) => {
 					let bracket = ''
-					let notes = ritual.notes !== undefined ? ritual.notes : []
-					let level = ritual.level !== undefined ? [Parser.getOrdinalForm(ritual.level)] : []
+					let notes = ritual.notes != null ? ritual.notes : []
+					let level = ritual.level != null ? [Parser.getOrdinalForm(ritual.level)] : []
 					if (level.length || notes.length) {
 						bracket = ' (' + level.concat(notes).join(', ') + ')'
 					}

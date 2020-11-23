@@ -73,9 +73,7 @@ async function initDemo (data, rendererType) {
 		renderer.resetHeaderIndex();
 		renderer.recursiveRender(json, renderStack);
 		$out.html(`
-			<tr><th class="border" colspan="6"></th></tr>
-			<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>
-			<tr><th class="border" colspan="6"></th></tr>
+			<div class="text">${renderStack.join("")}</div>
 		`)
 	}
 

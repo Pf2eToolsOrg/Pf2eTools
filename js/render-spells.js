@@ -10,9 +10,9 @@ class RenderSpells {
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(sp.traits)}`);
 
-		if (sp.traditions !== null) {
+		if (sp.traditions != null) {
 			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Traditions </strong>${sp.traditions.join(", ").toLowerCase()}</p>`);
-		} else if (sp.domain !== null) {
+		} else if (sp.domain != null) {
 			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Domain </strong>${sp.domain.toLowerCase()}</p>`);
 		}
 		let components = ``;
@@ -39,29 +39,29 @@ class RenderSpells {
 		}
 
 		let cst_tr_req = ``;
-		if (sp.cost !== null) {
+		if (sp.cost != null) {
 			cst_tr_req = `; <strong>Cost </strong>${sp.cost}`;
 		}
-		if (sp.trigger !== null) {
+		if (sp.trigger != null) {
 			cst_tr_req += `; <strong>Trigger </strong>${sp.trigger}`;
 		}
-		if (sp.requirements !== null) {
+		if (sp.requirements != null) {
 			cst_tr_req += `; <strong>Requirements </strong>${sp.requirements}`;
 		}
 		renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Cast </strong>${cast} ${components}${cst_tr_req}</p>`);
 
 		let rg_ar_tg = ``;
-		if (sp.range.type !== null) {
+		if (sp.range.type != null) {
 			rg_ar_tg = `<strong>Range </strong>${sp.range.entry}`
 		}
-		if (sp.area !== null) {
+		if (sp.area != null) {
 			if (rg_ar_tg === ``) {
 				rg_ar_tg = `<strong>Area </strong>${sp.area.entry}`
 			} else {
 				rg_ar_tg += `; <strong>Area </strong>${sp.area.entry}`
 			}
 		}
-		if (sp.targets !== null) {
+		if (sp.targets != null) {
 			if (rg_ar_tg === ``) {
 				rg_ar_tg = `<strong>Targets </strong>${sp.targets}`
 			} else {
@@ -77,10 +77,10 @@ class RenderSpells {
 		if (sp.saving_throw_basic) {
 			basic = `basic `
 		}
-		if (sp.saving_throw !== null) {
+		if (sp.saving_throw != null) {
 			st_dr = `<strong>Saving Throw </strong>${basic}${sp.saving_throw}`
 		}
-		if (sp.duration["type"] !== null) {
+		if (sp.duration["type"] != null) {
 			if (st_dr === ``) {
 				st_dr = `<strong>Duration </strong>${sp.duration["entry"]}`
 			} else {
@@ -100,25 +100,25 @@ class RenderSpells {
 
 		if (sp.heightened.heightened) {
 			renderStack.push(Renderer.utils.getDividerDiv())
-			if (sp.heightened.plus_x !== null) {
+			if (sp.heightened.plus_x != null) {
 				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (+${sp.heightened.plus_x.level}) </strong>`)
 				renderer.recursiveRender(sp.heightened.plus_x.entry, renderStack, {depth: 1})
 				renderStack.push(`</p>`)
 			}
-			if (sp.heightened.x !== null) {
+			if (sp.heightened.x != null) {
 				for (let x of sp.heightened.x) {
 					renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>`)
 					renderer.recursiveRender(x.entry, renderStack, {depth: 1})
 					renderStack.push(`</p>`)
 				}
 			}
-			if (sp.heightened.no_x !== null) {
+			if (sp.heightened.no_x != null) {
 				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened </strong>`)
 				renderer.recursiveRender(sp.heightened.no_x.entry, renderStack, {depth: 1})
 				renderStack.push(`</p>`)
 			}
 		}
-		renderStack.push(`<p class="pf-2-stat-source"><strong>${sp.source}</strong> page ${sp.page_nr}</p>`);
+		renderStack.push(Renderer.utils.getPageP(sp));
 
 		return $(renderStack.join(""));
 	}

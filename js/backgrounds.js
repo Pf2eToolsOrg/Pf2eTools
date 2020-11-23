@@ -4,7 +4,7 @@ class BackgroundPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterBackgrounds();
 		super({
-			dataSource: "data/backgrounds.json",
+			dataSource: "data/backgrounds/backgrounds-crb.json",
 			dataSourceFluff: "data/fluff-backgrounds.json",
 
 			pageFilter,
@@ -23,13 +23,14 @@ class BackgroundPage extends ListPage {
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
-		const name = bg.name.replace("Variant ", "");
 		const hash = UrlUtil.autoEncodeHash(bg);
+		const name = bg.name
 		const source = Parser.sourceJsonToAbv(bg.source);
+		const boosts = bg.boosts.join(', ');
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="bold col-4 pl-0">${name}</span>
-			<span class="col-6">${bg._skillDisplay}</span>
+			<span class="bold col-4 pl-0">${bg.name}</span>
+			<span class="col-6">${boosts}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(bg.source)}" title="${Parser.sourceJsonToFull(bg.source)} pr-0" ${BrewUtil.sourceJsonToStyle(bg.source)}>${source}</span>
 		</a>`;
 
@@ -40,7 +41,7 @@ class BackgroundPage extends ListPage {
 			{
 				hash,
 				source,
-				skills: bg._skillDisplay
+				boosts
 			},
 			{
 				uniqueId: bg.uniqueId || bgI,
@@ -61,14 +62,14 @@ class BackgroundPage extends ListPage {
 	}
 
 	getSublistItem (bg, pinId) {
-		const name = bg.name.replace("Variant ", "");
 		const hash = UrlUtil.autoEncodeHash(bg);
-		const skills = Renderer.background.getSkillSummary(bg.skillProficiencies || [], true);
+		const boosts = bg.boosts.join(', ');
+		const name = bg.name
 
 		const $ele = $$`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-4 pl-0">${name}</span>
-				<span class="col-8 pr-0">${skills}</span>
+				<span class="bold col-4 pl-0">${bg.name}</span>
+				<span class="col-8 pr-0">${boosts}</span>
 			</a>
 		</li>`
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -80,7 +81,7 @@ class BackgroundPage extends ListPage {
 			{
 				hash,
 				source: Parser.sourceJsonToAbv(bg.source),
-				skills
+				boosts
 			}
 		);
 		return listItem;
@@ -111,17 +112,12 @@ class BackgroundPage extends ListPage {
 			buildStatsTab
 		);
 
-		const infoTab = Renderer.utils.tabButton(
-			"Info",
-			() => {},
-			buildFluffTab
-		);
 		const picTab = Renderer.utils.tabButton(
 			"Images",
 			() => {},
 			buildFluffTab.bind(null, true)
 		);
-		Renderer.utils.bindTabButtons(traitTab, infoTab, picTab);
+		Renderer.utils.bindTabButtons(traitTab, picTab);
 
 		ListUtil.updateSelected();
 	}

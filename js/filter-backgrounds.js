@@ -5,35 +5,32 @@ class PageFilterBackgrounds extends PageFilter {
 		super();
 
 		this._skillFilter = new Filter({header: "Skill Proficiencies", displayFn: StrUtil.toTitleCase});
-		this._toolFilter = new Filter({header: "Tool Proficiencies", displayFn: StrUtil.toTitleCase});
-		this._languageFilter = new Filter({header: "Language Proficiencies", displayFn: StrUtil.toTitleCase});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
+		this._loreFilter = new Filter({header: "Lore Proficiencies", displayFn: StrUtil.toTitleCase});
+		this._boostFilter = new Filter({
+			header: "Ability Boosts",
+			items: ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma', 'Free'],
+			itemSortFn: null
+		});
 	}
 
 	mutateForFilters (bg) {
-		const skillDisplay = Renderer.background.getSkillSummary(bg.skillProficiencies, true, bg._fSkills = []);
-		Renderer.background.getToolSummary(bg.toolProficiencies, true, bg._fTools = []);
-		Renderer.background.getLanguageSummary(bg.languageProficiencies, true, bg._fLangs = []);
-		bg._fMisc = bg.srd ? ["SRD"] : [];
-		bg._skillDisplay = skillDisplay;
 	}
 
 	addToFilters (bg, isExcluded) {
 		if (isExcluded) return;
 
 		this._sourceFilter.addItem(bg.source);
-		this._skillFilter.addItem(bg._fSkills);
-		this._toolFilter.addItem(bg._fTools);
-		this._languageFilter.addItem(bg._fLangs);
+		this._skillFilter.addItem(bg.skills);
+		this._loreFilter.addItem(bg.skill_lore);
+		this._boostFilter.addItem(bg.boosts);
 	}
 
 	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
+			this._boostFilter,
 			this._skillFilter,
-			this._toolFilter,
-			this._languageFilter,
-			this._miscFilter
+			this._loreFilter,
 		];
 	}
 
@@ -41,10 +38,9 @@ class PageFilterBackgrounds extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			bg.source,
-			bg._fSkills,
-			bg._fTools,
-			bg._fLangs,
-			bg._fMisc
+			bg.boosts,
+			bg.skills,
+			bg.skill_lore
 		)
 	}
 }

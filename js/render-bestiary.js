@@ -31,10 +31,10 @@ class RenderBestiary {
 			${Renderer.monster.getPerception(mon)}
 			${Renderer.monster.getLanguages(mon)}
 			${Renderer.monster.getSkills(mon)}
-			${Renderer.monster.getAbilityMods(mon)}
-			${Renderer.monster.getItems(mon)}`)
+			${Renderer.monster.getAbilityMods(mon)}`)
 		mon.abilities_interactive.forEach((ab) => {renderer.recursiveRender(ab, renderStack, {depth: 1})})
-		renderStack.push(`${Renderer.utils.getDividerDiv()}
+		renderStack.push(`${Renderer.monster.getItems(mon)}
+			${Renderer.utils.getDividerDiv()}
 			${Renderer.monster.getDefenses(mon)}`)
 		mon.abilities_automatic.forEach((ab) => {renderer.recursiveRender(ab, renderStack, {depth: 1})})
 		renderStack.push(`${Renderer.utils.getDividerDiv()}
