@@ -37,7 +37,7 @@ class ActionsPage extends ListPage {
 	constructor () {
 		const sourceFilter = SourceFilter.getInstance();
 		const timeFilter = new Filter({
-			header: "Type",
+			header: "Activity",
 			items: [
 				Parser.SP_TM_PF_A,
 				Parser.SP_TM_PF_AA,
@@ -51,6 +51,7 @@ class ActionsPage extends ListPage {
 			displayFn: Parser.spTimeUnitToFull,
 			itemSortFn: null
 		});
+		const traitFilter = new Filter({header: "Traits"})
 		const miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action", "SRD"]});
 
 		super({
@@ -59,6 +60,7 @@ class ActionsPage extends ListPage {
 			filters: [
 				sourceFilter,
 				timeFilter,
+				traitFilter,
 				miscFilter
 			],
 			filterSource: sourceFilter,
@@ -76,17 +78,18 @@ class ActionsPage extends ListPage {
 
 		this._sourceFilter = sourceFilter;
 		this._timeFilter = timeFilter;
+		this._traitFilter = traitFilter;
 		this._miscFilter = miscFilter;
 	}
 
 	getListItem (it, anI, isExcluded) {
 		it._fTime = it.activity ? it.activity.unit : null;
 		it._fMisc = it.srd ? ["SRD"] : [];
-		if (it.fromVariant) it._fMisc.push("Optional/Variant Action");
 
 		if (!isExcluded) {
 			// populate filters
 			this._sourceFilter.addItem(it.source);
+			this._traitFilter.addItem(it.traits)
 			this._timeFilter.addItem(it._fTime);
 		}
 
@@ -133,6 +136,7 @@ class ActionsPage extends ListPage {
 				f,
 				it.source,
 				it._fTime,
+				it.traits,
 				it._fMisc
 			);
 		});
