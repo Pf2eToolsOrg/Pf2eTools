@@ -1054,12 +1054,11 @@
 			"source": "CRB",
 			"page": 240,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"traits": [
 				"Move"
 			],
@@ -1125,12 +1124,11 @@
 			"source": "CRB",
 			"page": 240,
 			"srd": true,
-			"time": [
-				{
-					"number": 1,
-					"unit": "action"
-				}
-			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"traits": [
 				"Move"
 			],
@@ -1147,6 +1145,748 @@
 					"entries": {
 						"Success": "You move through the enemy’s space, treating the squares in its space as difficult terrain (every 5 feet costs 10 feet of movement). If you don’t have enough Speed to move all the way through its space, you get the same effect as a failure.",
 						"Failure": "Your movement ends, and you trigger reactions as if you had moved out of the square you started in."
+					}
+				}
+			]
+		},
+		{
+			"name": "Maneuver in Flight",
+			"source": "CRB",
+			"page": 240,
+			"srd": true,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"traits": [
+				"Move"
+			],
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Acrobatics"
+				}
+			],
+			"requirements": "You have a fly Speed.",
+			"entries": [
+				"You try a difficult maneuver while flying. Attempt an {@skill Acrobatics} check. The GM determines what maneuvers are possible, but they rarely allow you to move farther than your fly Speed.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "You succeed at the maneuver.",
+						"Failure": "Your maneuver fails. The GM chooses if you simply can’t move or if some other detrimental effect happens. The outcome should be appropriate for the maneuver you attempted (for instance, being blown off course if you were trying to fly against a strong wind).",
+						"Critical Failure": "As failure, but the consequence is more dire."
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Sample Maneuver in Flight Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "steep ascent or descent"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "fly against the wind, hover midair"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "reverse direction"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "fly through gale force winds"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Squeeze",
+			"source": "CRB",
+			"page": 241,
+			"srd": true,
+			"traits": [
+				"Exploration",
+				"Move"
+			],
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Acrobatics"
+				}
+			],
+			"entries": [
+				"You contort yourself to squeeze through a space so small you can barely fit through. This action is for exceptionally small spaces; many tight spaces are difficult terrain (page 475) that you can move through more quickly and without a check.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You squeeze through the tight space in 1 minute per 10 feet of squeezing.",
+						"Success": "You squeeze through in 1 minute per 5 feet.",
+						"Critical Failure": "You become stuck in the tight space. While you’re stuck, you can spend 1 minute attempting another Acrobatics check at the same DC. Any result on that check other than a critical failure causes you to become unstuck."
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Sample Squeeze Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "space barely fitting your shoulders"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "space barely fitting your head"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Borrow an Arcane Spell",
+			"source": "CRB",
+			"page": 241,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Exploration"
+			],
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Arcana"
+				}
+			],
+			"entries": [
+				"If you’re an arcane spellcaster who prepares from a spellbook, you can attempt to prepare a spell from someone else’s spellbook. The GM sets the DC for the check based on the spell’s level and rarity; it’s typically a bit easier than Learning the Spell.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "You prepare the borrowed spell as part of your normal spell preparation.",
+						"Failure": "You fail to prepare the spell, but the spell slot remains available for you to prepare a different spell. You can’t try to prepare this spell until the next time you prepare spells."
+					}
+				}
+			]
+		},
+		{
+			"name": "Climb",
+			"source": "CRB",
+			"page": 241,
+			"srd": true,
+			"traits": [
+				"Move"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Athletics"
+				}
+			],
+			"requirements": "You have both hands free.",
+			"entries": [
+				"You move up, down, or across an incline. Unless it’s particularly easy, you must attempt an {@skill Athletics} check. The GM determines the DC based on the nature of the incline and environmental circumstances. You’re {@condition flat-footed} unless you have a climb Speed.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You move up, across, or safely down the incline for 5 feet plus 5 feet per 20 feet of your land Speed (a total of 10 feet for most PCs).",
+						"Success": "You move up, across, or safely down the incline for 5 feet per 20 feet of your land Speed (a total of 5 feet for most PCs, minimum 5 feet if your Speed is below 20 feet).",
+						"Critical Failure": "You fall. If you began the climb on stable ground, you fall and land {@condition prone}."
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Sample Climb Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "ladder, steep slope, low-branched tree"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "rigging, rope, typical tree"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "wall with small handholds and footholds"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "ceiling with handholds and footholds, rock wall"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "smooth surface"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "inset",
+					"name": "Table 4–4: Climb and Swim Distance",
+					"entries": [
+						"This table provides a quick reference for how far you can move with a Climb or {@action Swim} action.",
+						{
+							"type": "table",
+							"colLabels": [
+								"",
+								"Climb Distance",
+								"Swim Distance"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-5 text-center",
+								"col-5 text-center"
+							],
+							"rows": [
+								[
+									"Speed",
+								  {
+      							"type": "table",
+      							"colLabels": [
+      								"Success",
+      								"Critical Success"
+      							],
+      							"colStyles": [
+      								"col-2 text-center",
+      								"col-10 text-center"
+      							],
+      							"rows": [
+      							  "",
+      							  ""
+      							]
+      						},
+									{
+      							"type": "table",
+      							"colLabels": [
+      								"Success",
+      								"Critical Success"
+      							],
+      							"colStyles": [
+      								"col-2 text-center",
+      								"col-10 text-center"
+      							],
+      							"rows": [
+      							  "",
+      							  ""
+      							]
+      						}
+								],
+								[
+									"5-15 feet",
+								  {
+      							"type": "table",
+      							"colLabels": [
+      								"5",
+      								"5"
+      							],
+      							"colStyles": [
+      								"col-2 text-center",
+      								"col-10 text-center"
+      							],
+      							"rows": [
+      							  "",
+      							  ""
+      							]
+      						},
+									{
+      							"type": "table",
+      							"colLabels": [
+      								"5",
+      								"10"
+      							],
+      							"colStyles": [
+      								"col-2 text-center",
+      								"col-10 text-center"
+      							],
+      							"rows": [
+      							  "",
+      							  ""
+      							]
+      						}
+								],
+								[
+									"20-35 feet",
+								  {
+      							"type": "table",
+      							"colLabels": [
+      								"5",
+      								"10"
+      							],
+      							"colStyles": [
+      								"col-2 text-center",
+      								"col-10 text-center"
+      							],
+      							"rows": [
+      							  "",
+      							  ""
+      							]
+      						},
+									{
+      							"type": "table",
+      							"colLabels": [
+      								"10",
+      								"15"
+      							],
+      							"colStyles": [
+      								"col-2 text-center",
+      								"col-10 text-center"
+      							],
+      							"rows": [
+      							  "",
+      							  ""
+      							]
+      						}
+								],
+								[
+									"45-55 feet",
+								  {
+      							"type": "table",
+      							"colLabels": [
+      								"10",
+      								"15"
+      							],
+      							"colStyles": [
+      								"col-2 text-center",
+      								"col-10 text-center"
+      							],
+      							"rows": [
+      							  "",
+      							  ""
+      							]
+      						},
+									{
+      							"type": "table",
+      							"colLabels": [
+      								"15",
+      								"20"
+      							],
+      							"colStyles": [
+      								"col-2 text-center",
+      								"col-10 text-center"
+      							],
+      							"rows": [
+      							  "",
+      							  ""
+      							]
+      						}
+								],
+								[
+									"60-65 feet",
+								  {
+      							"type": "table",
+      							"colLabels": [
+      								"15",
+      								"20"
+      							],
+      							"colStyles": [
+      								"col-2 text-center",
+      								"col-10 text-center"
+      							],
+      							"rows": [
+      							  "",
+      							  ""
+      							]
+      						},
+									{
+      							"type": "table",
+      							"colLabels": [
+      								"20",
+      								"25"
+      							],
+      							"colStyles": [
+      								"col-2 text-center",
+      								"col-10 text-center"
+      							],
+      							"rows": [
+      							  "",
+      							  ""
+      							]
+      						}
+								]
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Force Open",
+			"source": "CRB",
+			"page": 242,
+			"srd": true,
+			"traits": [
+				"Attack"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Athletics"
+				}
+			],
+			"entries": [
+				"Using your body, a lever, or some other tool, you attempt to forcefully open a door, window, container or heavy gate. With a high enough result, you can even smash through walls. Without a crowbar, prying something open takes a –2 item penalty to the {@skill Athletics} check to Force Open.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You open the door, window, container, or gate and can avoid damaging it in the process.",
+						"Success": "You break the door, window, container, or gate open, and the door, window, container, or gate gains the {@condition broken} condition. If it’s especially sturdy, the GM might have it take damage but not be broken.",
+						"Critical Failure": "Your attempt jams the door, window, container, or gate shut, imposing a –2 circumstance penalty on future attempts to Force it Open."
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Sample Force Open Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "fabric, flimsy glass"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "ice, sturdy glass"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "flimsy wooden door, wooden portcullis"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "sturdy wooden door, iron portcullis, metal bar"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "stone or iron door"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Grapple",
+			"source": "CRB",
+			"page": 242,
+			"srd": true,
+			"traits": [
+				"Attack"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Athletics"
+				}
+			],
+			"requirements": "You have at least one free hand. Your target cannot be more than one size larger than you.",
+			"entries": [
+				"You attempt to grab an opponent with your free hand. Attempt an {@skill Athletics} check against their Fortitude DC. You can also Grapple to keep your hold on a creature you already grabbed.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "Your opponent is {@condition restrained} until the end of your next turn unless you move or your opponent {@action Escape|CRB|Escapes} (page 470).",
+						"Success": "Your opponent is {@condition grabbed} until the end of your next turn unless you move or your opponent {@action Escape|CRB|Escapes}.",
+						"Failure": "You fail to grab your opponent. If you already had the opponent {@condition grabbed} or {@condition restrained} using a Grapple, those conditions on that creature end.",
+						"Critical Failure": "If you already had the opponent {@condition grabbed} or {@condition restrained}, it breaks free. Your target can either grab you, as if it succeeded at using the Grapple action against you, or force you to fall and land {@condition prone}."
+					}
+				}
+			]
+		},
+		{
+			"name": "High Jump",
+			"source": "CRB",
+			"page": 242,
+			"srd": true,
+
+			"activity": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Athletics"
+				}
+			],
+			"entries": [
+				"You Stride, then make a vertical Leap and attempt a DC 30 {@skill Athletics} check to increase the height of your jump. If you didn’t Stride at least 10 feet, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "Increase the maximum vertical distance to 8 feet, or increase the maximum vertical distance to 5 feet and maximum horizontal distance to 10 feet.",
+						"Success": "Increase the maximum vertical distance to 5 feet.",
+						"Failure": "You {@action Leap} normally.",
+						"Critical Failure": "You don’t {@action Leap} at all, and instead you fall {@condition prone} in your space."
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Leap",
+					"entries": [
+						"The {@action Leap} basic action is used for {@action High Jump} and {@action Long Jump}. {@action Leap} lets you take a careful, short jump. You can {@action Leap} up to 10 feet horizontally if your Speed is at least 15 feet, or up to 15 feet horizontally if your Speed is at least 30 feet. You land in the space where your {@action Leap} ends (meaning you can typically clear a 5-foot gap if your Speed is between 15 feet and 30 feet, or a 10-foot gap if your Speed is 30 feet or more). If you make a vertical {@action Leap}, you can move up to 3 feet vertically and 5 feet horizontally onto an elevated surface."
+					]
+				}
+			]
+		},
+		{
+			"name": "Long Jump",
+			"source": "CRB",
+			"page": 242,
+			"srd": true,
+			"activity": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Athletics"
+				}
+			],
+			"entries": [
+				"You {@action Stride}, then make a horizontal {@action Leap} and attempt an {@skill Athletics} check to increase the length of your jump. The DC of the Athletics check is equal to the total distance in feet you’re attempting to move during your Leap (so you’d need to succeed at a DC 20 check to {@action Leap} 20 feet). You can’t {@action Leap} farther than your Speed.",
+				"If you didn’t Stride at least 10 feet, or if you attempt to jump in a different direction than your {@action Stride}, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "Increase the maximum horizontal distance you {@action Leap} to the desired distance.",
+						"Failure": "You {@action Leap} normally.",
+						"Critical Failure": "You {@action Leap} normally, but then fall and land {@condition prone}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Shove",
+			"source": "CRB",
+			"page": 243,
+			"srd": true,
+			"traits": [
+				"Attack"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Athletics"
+				}
+			],
+			"requirements": "You have at least one hand free. The target can’t be more than one size larger than you.",
+			"entries": [
+				"You push an opponent away from you. Attempt an {@skill Athletics} check against your opponent’s Fortitude DC.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You push your opponent up to 10 feet away from you. You can {@action Stride} after it, but you must move the same distance and in the same direction.",
+						"Success": "You push your opponent back 5 feet. You can {@actionStride} after it, but you must move the same distance and in the same direction.",
+						"Critical Failure": "You lose your balance, fall, and land {@condition prone}."
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Forced Movement",
+					"entries": [
+						"The Shove action can force a creature to move. When an effect forces you to move, or if you start falling, the distance you move is defined by the effect that moved you, not by your Speed. Because you’re not acting to move, this doesn’t trigger reactions triggered by movement."
+					]
+				}
+			]
+		},
+		{
+			"name": "Swim",
+			"source": "CRB",
+			"page": 243,
+			"srd": true,
+			"traits": [
+				"Move"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Athletics"
+				}
+			],
+			"entries": [
+				"You propel yourself through water. In most calm water, you succeed at the action without needing to attempt a check. If you must breathe air and you’re submerged in water, you must hold your breath each round. If you fail to hold your breath, you begin to drown (as described on page 478). If the water you are swimming in is turbulent or otherwise dangerous, you might have to attempt an {@skill Athletics} check to Swim.",
+				"If you end your turn in water and haven’t succeeded at a Swim action that turn, you sink 10 feet or get moved by the current, as determined by the GM. However, if your last action on your turn was to enter the water, you don’t sink or move with the current that turn.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You move through the water 10 feet, plus 5 feet per 20 feet of your land Speed (a total of 15 feet for most PCs).",
+						"Success": "You move through the water 5 feet, plus 5 feet per 20 feet of your land Speed (a total of 10 feet for most PCs).",
+						"Critical Failure": "You make no progress, and if you’re holding your breath, you lose 1 round of air."
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Sample Swim Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "lake or other still water"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "flowing water, like a river"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "swiftly flowing river"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "stormy sea"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "maelstrom, waterfall"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Trip",
+			"source": "CRB",
+			"page": 243,
+			"srd": true,
+			"traits": [
+				"Attack"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Athletics"
+				}
+			],
+			"requirements": "You have at least one hand free. Your target can’t be more than one size larger than you.",
+			"entries": [
+				{
+					"type": "inset",
+					"name": "Falling",
+					"entries": [
+						"When you fall more than 5 feet, you take falling damage when you land, which is bludgeoning damage equal to half the distance you fell. If you take any damage from a fall, you’re knocked prone when you land.",
+						"If you fall into water, snow, or another soft substance, calculate the damage from the fall as though your fall were 20 feet shorter. The reduction can’t be greater than the depth of the water (so when falling into water that is only 10 feet deep, you treat the fall as 10 feet shorter). You can Grab an Edge as a reaction (page 472) to reduce or eliminate the damage from some falls. More detailed rules for falling damage appear on page 463."
+					]
+				},
+				"You try to knock an opponent to the ground. Attempt an {@skill Athletics} check against the target’s Reflex DC.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "The target falls and lands prone and takes {@dice 1d6} bludgeoning damage.",
+						"Success": "The target falls and lands {@condition prone}.",
+						"Critical Failure": "You lose your balance and fall and land {@condition prone}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Disarm",
+			"source": "CRB",
+			"page": 243,
+			"srd": true,
+			"traits": [
+				"Attack"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Athletics"
+				}
+			],
+			"requirements": "You have at least one hand free. The target can’t be more than one size larger than you.",
+			"entries": [
+				"You try to knock something out of an opponent’s grasp. Attempt an {@skill Athletics} check against the opponent’s Reflex DC.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You knock the item out of the opponent’s grasp. It falls to the ground in the opponent’s space.",
+						"Success": "You weaken your opponent’s grasp on the item. Until the start of that creature’s turn, attempts to Disarm the opponent of that item gain a +2 circumstance bonus, and the target takes a –2 circumstance penalty to attacks with the item or other checks requiring a firm grasp on the item.",
+						"Critical Failure": "You lose your balance and become {@condition flat-footed} until the start of your next turn."
 					}
 				}
 			]
