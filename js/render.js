@@ -2391,10 +2391,10 @@ function Renderer() {
 						break;
 					case "@action":
 						fauxEntry.href.path = UrlUtil.PG_ACTIONS;
-						if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+						if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_CRB;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_ACTIONS,
-							source: source || SRC_PHB
+							source: source || SRC_CRB
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
@@ -3106,9 +3106,9 @@ Renderer.utils = {
 			const hash = UrlUtil.URL_TO_HASH_BUILDER[opts.page](it);
 			dataPart = `data-page="${opts.page}" data-source="${it.source.escapeQuotes()}" data-hash="${hash.escapeQuotes()}"`;
 		}
-		const type = opts.type != null ? opts.type : it.type
+		const type = opts.type != null ? opts.type : it.type || ""
 		const level = opts.level != null ? opts.level : isNaN(Number(it.level)) ? '' : ` ${Number(it.level)}`
-		const activity = opts.activity ? ` ${it.activity != null ? Renderer.get().render(it.activity.entry) : ``}` : ``
+		const activity = opts.activity ? ` ${it.activity != null && it.activity.entry.includes('@as') ? Renderer.get().render(it.activity.entry) : ``}` : ``
 		const $ele = $$`<div style="display: flex" class="${opts.extraThClasses ? opts.extraThClasses.join(" ") : ""}" ${dataPart}>
 			<p class="pf2-stat-name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>${activity}</p>
 			${opts.controlRhs || ""}
@@ -6151,8 +6151,14 @@ Renderer.action = {
 	getCompactRenderedString(it) {
 		const cpy = MiscUtil.copy(it);
 		delete cpy.name;
-		return `${Renderer.utils.getExcludedTr(it, "action")}${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_ACTIONS})}
-		<tr><td colspan="6">${Renderer.get().setFirstSection(true).render(cpy)}</td></tr>`;
+		return `${Renderer.utils.getExcludedDiv(it, "action")}
+		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_ACTIONS, activity: true, type: ""})}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getTraitsDiv(it.traits || [])}
+		<div class="pf2-stat-text">
+		${Renderer.get().setFirstSection(true).render({entries: it.entries})}
+		</div>
+		${Renderer.utils.getPageP(it)}`;
 	}
 };
 

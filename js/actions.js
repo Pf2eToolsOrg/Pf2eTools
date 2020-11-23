@@ -1,16 +1,55 @@
 "use strict";
 
 class ActionsPage extends ListPage {
-	static _getTimeText (time) {
-		return typeof time === "string" ? time : Parser.getTimeToFull(time)
+	static sortActions(a,b,o) {
+		switch (o.sortBy) {
+			case "name": return SortUtil.compareListNames(a, b);
+			case "source": return SortUtil.ascSort(a.values.source, b.values.source) || SortUtil.compareListNames(a, b);
+			case "time": return SortUtil.ascSort(a.values.normalisedTime, b.values.normalisedTime) || SortUtil.compareListNames(a, b);
+		}
+	}
+
+	static getTblTimeStr (time) {
+		return time.unit === `Varies` ? `Varies` : Parser.SP_TIME_ACTIONS.includes(time.unit) ? `${Parser.SP_TIME_TO_FULL[time.unit].uppercaseFirst()}`
+			: `${time.number} ${time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
+	}
+
+	static getNormalisedTime (time) {
+		let multiplier = 1;
+		let offset = 0;
+		if (time == null) {
+			return 0
+		}
+		switch (time.unit) {
+			case Parser.SP_TM_PF_F: offset = 1; break;
+			case Parser.SP_TM_PF_R: offset = 2; break;
+			case Parser.SP_TM_PF_A: multiplier = 10; break;
+			case Parser.SP_TM_PF_AA: multiplier = 20; break;
+			case Parser.SP_TM_PF_AAA: multiplier = 30; break;
+			case Parser.SP_TM_ROUND: multiplier = 60; break;
+			case Parser.SP_TM_MINS: multiplier = 600; break;
+			case Parser.SP_TM_HRS: multiplier = 36000; break;
+			case "Varies": multiplier = 100; break;
+		}
+		return (multiplier * time.number) + offset;
 	}
 
 	constructor () {
 		const sourceFilter = SourceFilter.getInstance();
 		const timeFilter = new Filter({
 			header: "Type",
-			displayFn: StrUtil.uppercaseFirst,
-			itemSortFn: SortUtil.ascSortLower
+			items: [
+				Parser.SP_TM_PF_A,
+				Parser.SP_TM_PF_AA,
+				Parser.SP_TM_PF_AAA,
+				Parser.SP_TM_PF_F,
+				Parser.SP_TM_PF_R,
+				Parser.SP_TM_MINS,
+				Parser.SP_TM_HRS,
+				"Varies"
+			],
+			displayFn: Parser.spTimeUnitToFull,
+			itemSortFn: null
 		});
 		const miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action", "SRD"]});
 
@@ -26,6 +65,10 @@ class ActionsPage extends ListPage {
 
 			listClass: "actions",
 
+			listOptions: {
+				fnSort: ActionsPage.sortActions
+			},
+
 			sublistClass: "subactions",
 
 			dataProps: ["action"]
@@ -37,7 +80,7 @@ class ActionsPage extends ListPage {
 	}
 
 	getListItem (it, anI, isExcluded) {
-		it._fTime = it.time ? it.time.map(it => it.unit || it) : null;
+		it._fTime = it.activity ? it.activity.unit : null;
 		it._fMisc = it.srd ? ["SRD"] : [];
 		if (it.fromVariant) it._fMisc.push("Optional/Variant Action");
 
@@ -52,7 +95,7 @@ class ActionsPage extends ListPage {
 
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
-		const time = it.time ? it.time.map(tm => ActionsPage._getTimeText(tm)).join("/") : "\u2014";
+		const time = it.activity ? ActionsPage.getTblTimeStr(it.activity): "\u2014";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="col-6 bold pl-0">${it.name}</span>
@@ -67,7 +110,8 @@ class ActionsPage extends ListPage {
 			{
 				hash,
 				source,
-				time
+				time,
+				normalisedTime: ActionsPage.getNormalisedTime(it.activity)
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,
@@ -98,7 +142,7 @@ class ActionsPage extends ListPage {
 	getSublistItem (it, pinId) {
 		const hash = UrlUtil.autoEncodeHash(it);
 
-		const time = it.time ? it.time.map(tm => ActionsPage._getTimeText(tm)).join("/") : "\u2014";
+		const time = it.activity ? ActionsPage.getTblTimeStr(it.activity): "\u2014";
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
@@ -114,7 +158,8 @@ class ActionsPage extends ListPage {
 			it.name,
 			{
 				hash,
-				time
+				time,
+				normalisedTime: ActionsPage.getNormalisedTime(it.activity)
 			}
 		);
 		return listItem;
