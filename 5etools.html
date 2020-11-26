@@ -6,12 +6,11 @@
 	<!--5ETOOLS_ANALYTICS-->
 	<!--5ETOOLS_ADCODE-->
 	<meta charset="utf-8">
-	<meta name="description"
-		  content="A suite of browser-based tools for 5th Edition  Dungeons &amp; Dragons players and Dungeon Masters.">
+	<meta name="description" content="A suite of browser-based tools for 5th Edition  Dungeons &amp; Dragons players and Dungeon Masters.">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>PF2etools</title>
+	<title>PF2eTools</title>
 
 	<link rel="manifest" href="manifest.webmanifest">
 
@@ -20,7 +19,15 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="icon" href="favicon.png">
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
+	<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png">
+	<link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png">
+	<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 
 	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
 
@@ -283,10 +290,15 @@
 				<div class="fal fa-chess-queen home__icn-page"></div>
 				<h4 class="text-center home__lbl-page">Feats</h4>
 			</a>
-			<a class="home__btn-page btn btn-default home__btn-player" href="optionalfeatures.html"
+			<a class="home__btn-page btn btn-default mr-3 home__btn-player" href="optionalfeatures.html"
 			   title="A searchable, filterable list of feature choices, including Eldritch Invocations for the Warlock Class, and Maneuvers for the Fighter's Battlemaster subclass.">
 				<div class="fal fa-drafting-compass home__icn-page"></div>
 				<h4 class="text-center home__lbl-page">Options<br>&amp; Features</h4>
+			</a>
+			<a class="home__btn-page btn btn-default home__btn-player" href="actions.html"
+			   title="A searchable, filterable list of actions and activities you can take.">
+				<div class="fal fa-fist-raised home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Actions</h4>
 			</a>
 
 			<!-- mobile only -->
@@ -337,25 +349,35 @@
 			<div class="home__stripe-header home__h-rule">
 				<div class="w-100 text-center">Rules</div>
 			</div>
+			
 			<a class="home__btn-page btn btn-default mr-3 home__btn-rule" href="adventures.html"
 			   title="All the official adventures published by Wizards of the Coast.">
 				<div class="fal fa-dungeon home__icn-page"></div>
 				<h4 class="text-center home__lbl-page">Adventures</h4>
 			</a>
+			
 			<a class="home__btn-page btn btn-default mr-3 home__btn-rule" href="books.html"
 			   title="All the official sources published by Wizards of the Coast.">
 				<div class="fal fa-books home__icn-page"></div>
 				<h4 class="text-center home__lbl-page">Books</h4>
 			</a>
+			
 			<a class="home__btn-page btn btn-default mr-3 home__btn-rule" href="quickreference.html"
 			   title="A searchable selection of commonly used rules and tables.">
 				<div class="fal fa-info-square home__icn-page"></div>
 				<h4 class="text-center home__lbl-page">Quick<br>Reference</h4>
 			</a>
-			<a class="home__btn-page btn btn-default home__btn-rule" href="conditionsdiseases.html"
+			
+			<a class="home__btn-page btn btn-default mr-3 home__btn-rule" href="conditionsdiseases.html"
 			   title="A searchable, filterable list of the conditions found in the Player's Handbook, and the sample diseases found in the Dungeon Master's Guide.">
 				<div class="fal fa-skull-crossbones home__icn-page"></div>
 				<h4 class="text-center home__lbl-page">Conditions</h4>
+			</a>
+			
+			<a class="home__btn-page btn btn-default home__btn-rule" href="traits.html"
+			   title="A searchable, filterable list of the conditions found in the Core Rulebook.">
+				<div class="fal fa-tags home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Traits</h4>
 			</a>
 		</div>
 
@@ -416,10 +438,10 @@
 																		  style="width: 217px;"></a></p>
 
 			<h3>Use Discord?</h3>
-			<p>Join our <a href="https://discord.gg/nGvRCDs" target="_blank" rel="noopener noreferrer">server</a> for
+			<p>Join our <a href="https://discord.gg/2hzNxErtVu" target="_blank" rel="noopener noreferrer">server</a> for
 				announcements, updates, and feature voting.</p>
 
-			<h3>Use Roll20?</h3>
+			<!--	<h3>Use Roll20?</h3>
 			<p>Install <a href="https://ssstormy.github.io/roll20-enhancement-suite/">
 				Roll20 Enhancement Suite</a> and Tampermonkey (<a
 				href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo">Chrome</a>/<a
@@ -433,7 +455,7 @@
 				sure to open up NPC sheets after import to let them convert.)</p>
 			<p><b>Check the <a href="https://wiki.5e.tools/index.php/BetteRoll20_Install">installation guide</a> on the
 				wiki, and check the <a href="roll20.html">Help page</a> for some basic pointers on how to use the
-				script.</b></p>
+				script.</b></p> -->
 
 			<h3>FAQ</h3>
 			<p><b>Is there a wiki?</b> <a href="https://wiki.5e.tools/index.php/Main_Page">Here.</a> Contributions are
