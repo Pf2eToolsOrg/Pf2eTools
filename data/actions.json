@@ -1890,6 +1890,388 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Repair",
+			"source": "CRB",
+			"page": 243,
+			"srd": true,
+			"traits": [
+				"Exploration",
+				"Manipulate"
+			],
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Crafting"
+				}
+			],
+			"requirements": "You have a {@item repair kit|CRB} (page 291).",
+			"entries": [
+				"You spend 10 minutes attempting to fix a damaged item, placing the item on a stable surface and using the repair  kit with Skills 4 243 Introduction Ancestries & Backgrounds Classes Skills Feats Equipment Spells The Age of Lost OMENS Playing the Game Game mastering Crafting & Treasure Appendix both hands. The GM sets the DC, but it’s usually about the same DC to Repair a given item as it is to Craft it in the first place. You can’t Repair a destroyed item.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You restore 10 Hit Points to the item, plus an additional 10 Hit Points per proficiency rank you have in Crafting (a total of 20 HP if you’re trained, 30 HP if you’re an expert, 40 HP if you’re a master, or 50 HP if you’re legendary).",
+						"Success": "You restore 5 Hit Points to the item, plus an additional 5 per proficiency rank you have in Crafting (for a total of 10 HP if you are trained, 15 HP if you’re an expert, 20 HP if you’re a master, or 25 HP if you’re legendary).",
+						"Critical Failure": "You deal {@dice 2d6} damage to the item. Apply the item’s Hardness to this damage."
+					}
+				}
+			]
+		},
+		{
+			"name": "Craft",
+			"source": "CRB",
+			"page": 244,
+			"srd": true,
+			"traits": [
+				"Downtime",
+				"Manipulate"
+			],
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Crafting"
+				}
+			],
+			"entries": [
+				"You can make an item from raw materials. You need the {@feat Alchemical Crafting|CRB} skill feat to create alchemical items, the {@feat Magical Crafting|CRB} skill feat to create magic items, and the Snare Crafting feat to create snares.",
+				"To Craft an item, you must meet the following requirements:",
+				{
+					"type": "list",
+					"style": "list-hang",
+					"items": [
+						"The item is your level or lower. An item that doesn’t list a level is level 0. If the item is 9th level or higher, you must be a master in Crafting, and if it’s 16th or higher, you must be legendary.",
+						"You have the formula for the item; see Getting Formulas below for more information.",
+						"You have an appropriate set of tools and, in many cases, a workshop. For example, you need access to a smithy to forge a metal shield.",
+						"You must supply raw materials worth at least half the item’s Price. You always expend at least that amount of raw materials when you Craft successfully. If you’re in a settlement, you can usually spend currency to get the amount of raw materials you need, except in the case of rarer precious materials."
+					]
+				},
+				"You must spend 4 days at work, at which point you attempt a Crafting check. The GM determines the DC to Craft the item based on its level, rarity, and other circumstances.",
+				"If your attempt to create the item is successful, you expend the raw materials you supplied. You can pay the remaining portion of the item’s Price in materials to complete the item immediately, or you can spend additional downtime days working on it. For each additional day you spend, reduce the value of the materials you need to expend to complete the item. This amount is determined using Table 4–2: Income Earned (page 236), based on your proficiency rank in Crafting and using your own level instead of a task level. After any of these downtime days, you can complete the item by spending the remaining portion of its Price in materials. If the downtime Core Rulebook 244 days you spend are interrupted, you can return to finish the item later, continuing where you left off. An example of Crafting appears in the sidebar.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "Your attempt is successful. Each additional day spent Crafting reduces the materials needed to complete the item by an amount based on your level + 1 and your proficiency rank in Crafting.",
+						"Success": "Your attempt is successful. Each additional day spent Crafting reduces the materials needed to complete the item by an amount based on your level and your proficiency rank.",
+						"Failure": "You fail to complete the item. You can salvage the raw materials you supplied for their full value. If you want to try again, you must start over.",
+						"Critical Failure": "You fail to complete the item. You ruin 10% of the raw materials you supplied, but you can salvage the rest. If you want to try again, you must start over."
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Consumables and Ammunition",
+					"entries": [
+						"You can Craft items with the consumable trait in batches, making up to four of the same item at once with a single check. This requires you to include the raw materials for all the items in the batch at the start, and you must complete the batch all at once. You also Craft non-magical ammunition in batches, using the quantity listed in Table 6–8: Ranged Weapons (typically 10)."
+					]
+				},
+				{
+					"type": "inset",
+					"name": "Getting Formulas",
+					"entries": [
+						"You can gain access to the formulas for all common items in Chapter 6: Equipment by purchasing a basic crafter’s book (page 287). See the rules on page 293 for information on how to acquire other formulas."
+					]
+				}
+			]
+		},
+		{
+			"name": "Identify Alchemy",
+			"source": "CRB",
+			"page": 245,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Exploration",
+				"Secret"
+			],
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Crafting"
+				}
+			],
+			"requirements": "You have a {@item alchemist's tools|CRB} (page 287).",
+			"entries": [
+				"You can identify the nature of an alchemical item with 10 minutes of testing using alchemist’s tools. If your attempt is interrupted in any way, you must start over.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "You identify the item and the means of activating it.",
+						"Failure": "You fail to identify the item but can try again.",
+						"Critical Failure": "You misidentify the item as another item of the GM’s choice."
+					}
+				}
+			]
+		},
+		{
+			"name": "Create a Diversion",
+			"source": "CRB",
+			"page": 245,
+			"srd": true,
+			"traits": [
+				"Mental"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Deception"
+				}
+			],
+			"entries": [
+				"With a gesture, a trick, or some distracting words, you can create a diversion that draws creatures’ attention elsewhere. If you use a gesture or trick, this action gains the manipulate trait. If you use distracting words, it gains the auditory and linguistic traits.",
+				"Attempt a single Deception check and compare it to the Perception DCs of the creatures whose attention you’re trying to divert. Whether or not you succeed, creatures you attempt to divert gain a +4 circumstance bonus to their Perception DCs against your attempts to Create a Diversion for 1 minute.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "You become hidden to each creature whose Perception DC is less than or equal to your result. (The hidden condition allows you to Sneak away, as described on page 252.) This lasts until the end of your turn or until you do anything except Step or use the Hide or the Sneak action of the Stealth skill (pages 251 and 252). If you Strike a creature, the creature remains flat-footed against that attack, and you then become observed. If you do anything else, you become observed just before you act unless the GM determines otherwise.",
+						"Failure": "You don’t divert the attention of any creatures whose Perception DC exceeds your result, and those creatures are aware you were trying to trick them."
+					}
+				}
+			]
+		},
+		{
+			"name": "Impresonate",
+			"source": "CRB",
+			"page": 245,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Exploration",
+				"Manipulate",
+				"Secret"
+			],
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Deception"
+				}
+			],
+			"entries": [
+				"You create a disguise to pass yourself off as someone or something you are not. Assembling a convincing disguise takes 10 minutes and requires a disguise kit (found on page 290), but a simpler, quicker disguise might do the job if you’re not trying to imitate a specific individual, at the GM’s discretion.",
+				"In most cases, creatures have a chance to detect your deception only if they use the Seek action to attempt Perception checks against your Deception DC. If you attempt to directly interact with someone while disguised, the GM rolls a secret Deception check for you against that creature’s Perception DC instead. If you’re disguised as a specific individual, the GM might give creatures you interact with a circumstance bonus based on how well they know the person you’re imitating, or the GM might roll a secret Deception check even if you aren’t directly interacting with others.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "You trick the creature into thinking you’re the person you’re disguised as. You might have to attempt a new check if your behavior changes.",
+						"Failure": "The creature can tell you’re not who you claim to be.",
+						"Critical Failure": "The creature can tell you’re not who you claim to be, and it recognizes you if it would know you without a disguise."
+					}
+				}
+			]
+		},
+		{
+			"name": "Lie",
+			"source": "CRB",
+			"page": 246,
+			"srd": true,
+			"traits": [
+				"Auditory",
+				"Concentrate",
+				"Linguistic",
+				"Mental",
+				"Secret"
+			],
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Deception"
+				}
+			],
+			"entries": [
+				"You try to fool someone with an untruth. Doing so takes at least 1 round, or longer if the lie is elaborate. You roll a single Deception check and compare it against the Perception DC of every creature you are trying to fool. The GM might give them a circumstance bonus based on the situation and the nature of the lie you are trying to tell. Elaborate or highly unbelievable lies are much harder to get a creature to believe than simpler and more believable lies, and some lies are so big that it’s impossible to get anyone to believe them.",
+				"At the GM’s discretion, if a creature initially believes your lie, it might attempt a Perception check later to Sense Motive against your Deception DC to realize it’s a lie. This usually happens if the creature discovers enough evidence to counter your statements.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "The target believes your lie.",
+						"Failure": "The target doesn’t believe your lie and gains a +4 circumstance bonus against your attempts to Lie for the duration of your conversation. The target is also more likely to be suspicious of you in the future."
+					}
+				}
+			]
+		},
+		{
+			"name": "Feint",
+			"source": "CRB",
+			"page": 246,
+			"srd": true,
+			"traits": [
+				"Mental"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Deception"
+				}
+			],
+			"requirements": "You are within melee reach of the opponent you attempt to Feint.",
+			"entries": [
+				"With a misleading flourish, you leave an opponent unprepared for your real attack. Attempt a Deception check against that opponent’s Perception DC.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You throw your enemy’s defenses against you entirely off. The target is flat-footed against melee attacks that you attempt against it until the end of your next turn.",
+						"Success": "Your foe is fooled, but only momentarily. The target is flat-footed against the next melee attack that you attempt against it before the end of your current turn.",
+						"Critical Failure": "Your feint backfires. You are flat-footed against melee attacks the target attempts against you until the end of your next turn."
+					}
+				}
+			]
+		},
+		{
+			"name": "Gather Information",
+			"source": "CRB",
+			"page": 246,
+			"srd": true,
+			"traits": [
+				"Exploration",
+				"Secret"
+			],
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Diplomacy"
+				}
+			],
+			"entries": [
+				"You canvass local markets, taverns, and gathering places in an attempt to learn about a specific individual or topic. The GM determines the DC of the check and the amount of time it takes (typically 2 hours, but sometimes more), along with any benefit you might be able to gain by spending coin on bribes, drinks, or gifts.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "You collect information about the individual or topic. The GM determines the specifics.",
+						"Critical Failure": "You collect incorrect information about the individual or topic."
+					}
+				},
+				{
+					"type": "pf2-sample-box",
+					"name": "Sample Gather Information Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "talk of the town"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "common rumor"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "obscure rumor, poorly guarded secret"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "well-guarded or esoteric information"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "information known only to an incredibly select few, or only to extraordinary beings"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Make an Impression",
+			"source": "CRB",
+			"page": 246,
+			"srd": true,
+			"traits": [
+				"Auditory",
+				"Concentrate",
+				"Exploration",
+				"Linguistic",
+				"Mental"
+			],
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Diplomacy"
+				}
+			],
+			"entries": [
+				"With at least 1 minute of conversation, during which you engage in charismatic overtures, flattery, and other acts of goodwill, you seek to make a good impression on someone to make them temporarily agreeable. At the end of the conversation, attempt a Diplomacy check against the Will DC of one target, modified by any circumstances the GM sees fit. Good impressions (or bad impressions, on a critical failure) last for only the current social interaction unless the GM decides otherwise.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "The target’s attitude toward you improves by two steps.",
+						"Success": "The target’s attitude toward you improves by one step.",
+						"Critical Failure": "The target’s attitude toward you decreases by one step."
+					}
+				},
+				{
+					"type": "inset",
+					"name": "Changing Attitudes",
+					"entries": [
+						"Your influence on NPCs is measured with a set of attitudes that reflect how they view your character. These are only a brief summary of a creature’s disposition. The GM will supply additional nuance based on the history and beliefs of the characters you’re interacting with, and their attitudes can change in accordance with the story. The attitudes are detailed in the Conditions Appendix and are summarized here.",
+						{
+							"type": "list",
+							"style": "list-hang",
+							"items": [
+								"{@b Helpful:} Willing to help you and responds favorably to your requests.",
+								"{@b Friendly:} Has a good attitude toward you, but won’t necessarily stick their neck out to help you.",
+								"{@b Indifferent:} Doesn’t care about you either way. (Most NPCs start out indifferent.)",
+								"{@b Unfriendly:} Dislikes you and doesn’t want to help you.",
+								"{@b Hostile:} Actively works against you—and might attack you just because of their dislike."
+							]
+						},
+						"No one can ever change the attitude of a player character with these skills. You can roleplay interactions with player characters, and even use Diplomacy results if the player wants a mechanical sense of how convincing or charming a character is, but players make the ultimate decisions about how their characters respond."
+					]
+				}
+			]
+		},
+		{
+			"name": "Request",
+			"source": "CRB",
+			"page": 247,
+			"srd": true,
+			"traits": [
+				"Auditory",
+				"Concentrate",
+				"Linguistic",
+				"Mental"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Diplomacy"
+				}
+			],
+			"entries": [
+				"You can make a request of a creature that’s friendly or helpful to you. You must couch the request in terms that the target would accept given their current attitude toward you. The GM sets the DC based on the difficulty of the request. Some requests are unsavory or impossible, and even a helpful NPC would never agree to them.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "The target agrees to your request without qualifications.",
+						"Success": "The target agrees to your request, but they might demand added provisions or alterations to the request.",
+						"Failure": "The target refuses the request, though they might propose an alternative that is less extreme.",
+						"Critical Failure": "Not only does the target refuse the request, but their attitude toward you decreases by one step due to the temerity of the request."
+					}
+				}
+			]
 		}
 	]
 }
