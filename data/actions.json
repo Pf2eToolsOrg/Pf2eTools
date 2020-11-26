@@ -2272,6 +2272,725 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Coerce",
+			"source": "CRB",
+			"page": 247,
+			"srd": true,
+			"traits": [
+				"Auditory",
+				"Concentrate",
+				"Emotion",
+				"Exploration",
+				"Linguistic",
+				"Mental"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Intimidation"
+				}
+			],
+			"entries": [
+				"With a sudden shout, a well-timed taunt, or a cutting putdown, you can shake an enemy’s resolve. Choose a creature within 30 feet of you who you’re aware of. Attempt an Intimidation check against that target’s Will DC. If the target does not understand the language you are speaking, you’re not speaking a language, or they can’t hear you, you take a –4 circumstance penalty to the check. Regardless of your result, the target is temporarily immune to your attempts to Demoralize it for 10 minutes.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "s The target becomes {@condition frightened} 2.",
+						"Success": "The target becomes {@condition frightened} 1."
+					}
+				}
+			]
+		},
+		{
+			"name": "Demoralize",
+			"source": "CRB",
+			"page": 247,
+			"srd": true,
+			"traits": [
+				"Auditory",
+				"Concentrate",
+				"Emotion",
+				"Mental"
+			],
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Intimidation"
+				}
+			],
+			"entries": [
+				"With threats either veiled or overt, you attempt to bully a creature into doing what you want. You must spend at least 1 minute of conversation with a creature you can see and that can either see or sense you. At the end of the conversation, attempt an Intimidation check against the target’s Will DC, modified by any circumstances the GM determines. The attitudes referenced in the effects below are summarized in the Changing Attitudes sidebar on page 246 and described in full in the Conditions Appendix, starting on page 618.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "The target gives you the information you seek or agrees to follow your directives so long as they aren’t likely to harm the target in any way. The target continues to comply for an amount of time determined by the GM but not exceeding 1 day, at which point the target becomes unfriendly (if they weren’t already unfriendly or hostile). However, the target is too scared of you to retaliate—at least in the short term.",
+						"Success": "As critical success, but once the target becomes unfriendly, they might decide to act against you—for example, by reporting you to the authorities or assisting your enemies.",
+						"Failure": "The target doesn’t do what you say, and if they were not already unfriendly or hostile, they become unfriendly",
+						"Critical Failure": "The target refuses to comply, becomes hostile if they weren’t already, and can’t be Coerced by you for at least 1 week."
+					}
+				}
+			]
+		},
+		{
+			"name": "Administer First Aid",
+			"source": "CRB",
+			"page": 248,
+			"srd": true,
+			"traits": [
+				"Manipulate"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Medicine"
+				}
+			],
+			"requirements": "You have {@item healer's tools|CRB} (page 290).",
+			"entries": [
+				"You perform first aid on an adjacent creature that is dying or bleeding. If a creature is both dying and bleeding, choose which ailment you’re trying to treat before you roll. You can Administer First Aid again to attempt to remedy the other effect.",
+				{
+					"type": "list",
+					"style": "list-hang",
+					"items": [
+						{
+							"type": "entries",
+							"name": "Stabilize",
+							"entries": [
+							 "Attempt a Medicine check on a creature that has 0 Hit Points and the dying condition. The DC is equal to 5 + that creature’s recovery roll DC (typically 15 + its dying value)."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Stop Bleeding",
+							"entries": [
+							 "Attempt a Medicine check on a creature that is taking persistent bleed damage (page 452), giving them a chance to make another flat check to remove the persistent damage. The DC is usually the DC of the effect that caused the bleed."
+							]
+						}
+					]
+				},
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "If you’re trying to stabilize, the creature loses the dying condition (but remains unconscious). If you’re trying to stop bleeding, the creature attempts a flat check to end the bleeding.",
+						"Critical Failure": "If you were trying to stabilize, the creature’s dying value increases by 1. If you were trying to stop bleeding, it immediately takes an amount of damage equal to its persistent bleed damage."
+					}
+				}
+			]
+		},
+		{
+			"name": "Treat Disease",
+			"source": "CRB",
+			"page": 248,
+			"srd": true,
+			"traits": [
+				"Downtime",
+				"Manipulate"
+			],
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Medicine"
+				}
+			],
+			"requirements": "You have {@item healer's tools|CRB} (page 290).",
+			"entries": [
+				"You spend at least 8 hours caring for a diseased creature. Attempt a Medicine check against the disease’s DC. After you attempt to Treat a Disease for a creature, you can’t try again until after that creature’s next save against the disease.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You grant the creature a +4 circumstance bonus to its next saving throw against the disease.",
+						"Success": "You grant the creature a +2 circumstance bonus to its next saving throw against the disease.",
+						"Critical Failure": "Your efforts cause the creature to take a –2 circumstance penalty to its next save against the disease."
+					}
+				}
+			]
+		},
+		{
+			"name": "Treat Poison",
+			"source": "CRB",
+			"page": 248,
+			"srd": true,
+			"traits": [
+				"Manipulate"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Medicine"
+				}
+			],
+			"requirements": "You have {@item healer's tools|CRB} (page 290).",
+			"entries": [
+				"You treat a patient to prevent the spread of poison. Attempt a Medicine check against the poison’s DC. After you attempt to Core Rulebook 248 Treat a Poison for a creature, you can’t try again until after the next time that creature attempts a save against the poison.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You grant the creature a +4 circumstance bonus to its next saving throw against the poison.",
+						"Success": "You grant the creature a +2 circumstance bonus to its next saving throw against the poison.",
+						"Critical Failure": "Your efforts cause the creature to take a –2 circumstance penalty to its next save against the poison."
+					}
+				}
+			]
+		},
+		{
+			"name": "Treat Poison",
+			"source": "CRB",
+			"page": 248,
+			"srd": true,
+			"traits": [
+				"Exploration",
+				"Healing",
+				"Manipulate"
+			],
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Medicine"
+				}
+			],
+			"requirements": "You have {@item healer's tools|CRB} (page 290).",
+			"entries": [
+				"You spend 10 minutes treating one injured living creature (targeting yourself, if you so choose). The target is then temporarily immune to Treat Wounds actions for 1 hour, but this interval overlaps with the time you spent treating (so a patient can be treated once per hour, not once per 70 minutes).",
+				"The Medicine check DC is usually 15, though the GM might adjust it based on the circumstances, such as treating a patient outside in a storm, or treating magically cursed wounds. If you’re an expert in Medicine, you can instead attempt a DC 20 check to increase the Hit Points regained by 10; if you’re a master of Medicine, you can instead attempt a DC 30 check to increase the Hit Points regained by 30; and if you’re legendary, you can instead attempt a DC 40 check to increase the Hit Points regained by 50. The damage dealt on a critical failure remains the same.",
+				"If you succeed at your check, you can continue treating the target to grant additional healing. If you treat them for a total of 1 hour, double the Hit Points they regain from Treat Wounds.",
+				"The result of your Medicine check determines how many Hit Points the target regains.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "The target regains {@dice 4d8} Hit Points, and its wounded condition is removed.",
+						"Success": "The target regains {@dice 2d8} Hit Points, and its wounded condition is removed.",
+						"Critical Failure": "The target takes {@dice 1d8} damage"
+					}
+				}
+			]
+		},
+		{
+			"name": "Command an Animal",
+			"source": "CRB",
+			"page": 249,
+			"srd": true,
+			"traits": [
+				"Auditory",
+				"Concentrate"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Nature"
+				}
+			],
+			"entries": [
+				"You issue an order to an animal. Attempt a Nature check against the animal’s Will DC. The GM might adjust the DC if the animal has a good attitude toward you, you suggest a course of action it was predisposed toward, or you offer it a treat.",
+				"You automatically fail if the animal is hostile or unfriendly to you. If the animal is helpful to you, increase your degree of success by one step. You might be able to Command an Animal more easily with a feat like Ride (page 266).",
+				"Most animals know the Leap, Seek, Stand, Stride, and Strike basic actions. If an animal knows an activity, such as a horse’s Gallop, you can Command the Animal to perform the activity, but you must spend as many actions on Command an Animal as the activity’s number of actions. You can also spend multiple actions to Command the Animal to perform that number of basic actions on its next turn; for instance, you could spend 3 actions to Command an Animal to Stride three times or to Stride twice and then Strike.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "The animal does as you command on its next turn.",
+						"Failure": "The animal is hesitant or resistant, and it does nothing.",
+						"Critical Failure": "The animal misbehaves or misunderstands, and it takes some other action determined by the GM."
+					}
+				}
+			]
+		},
+		{
+			"name": "Perform",
+			"source": "CRB",
+			"page": 250,
+			"srd": true,
+			"traits": [
+				"Concentrate"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Performance"
+				}
+			],
+			"entries": [
+				"When making a brief performance—one song, a quick dance, or a few jokes—you use the Perform action. This action is most useful when you want to prove your capability or impress someone quickly. Performing rarely has an impact on its own, but it might influence the DCs of subsequent Diplomacy checks against the observers—or even change their attitudes— if the GM sees fit.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "Your performance impresses the observers, and they’re likely to share stories of your ability.",
+						"Success": "You prove yourself, and observers appreciate the quality of your performance.",
+						"Failure": "Your performance falls flat.",
+						"Critical Failure": "You demonstrate only incompetence."
+					}
+				},
+				{
+					"type": "pf2-sample-box",
+					"name": "Sample Perform Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "audience of commoners"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "audience of artisans"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "audience of merchants or minor nobles"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "audience of high nobility or minor royalty"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "audience of major royalty or otherworldly beings"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Create Forgery",
+			"source": "CRB",
+			"page": 251,
+			"srd": true,
+			"traits": [
+				"Donwtime",
+				"Secret"
+			],
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Society"
+				}
+			],
+			"entries": [
+				"You create a forged document, usually over the course of a day or a week. You must have the proper writing material to create a forgery. When you Create a Forgery, the GM rolls a secret DC 20 Society check. If you succeed, the forgery is of good enough quality that passive observers can’t notice the fake. Only those who carefully examine the document and attempt a Perception or Society check against your Society DC can do so.",
+				"If the document’s handwriting doesn’t need to be specific to a person, you need only to have seen a similar document before, and you gain up to a +4 circumstance bonus to your check, as well as to your DC (the GM determines the bonus). To forge a specific person’s handwriting, you need a sample of that person’s handwriting.",
+				"If your check result was below 20, the forgery has some obvious signs of being a fake, so the GM compares your result to each passive observer’s Perception DC or Society DC, whichever is higher, using the success or failure results below. Once the GM rolls your check for a document, that same result is used against all passive observers’ DCs no matter how many creatures passively observe that document.",
+				"An observer who was fooled on a passive glance can still choose to closely scrutinize the documents on the lookout for a forgery, using different techniques and analysis methods beyond the surface elements you successfully forged with your original check. In that case, the observer can attempt a Perception or Society check against your Society DC (if they succeed, they know your document is a forgery).",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "The observer does not detect the forgery.",
+						"Failure": "The observer knows your document is a forgery."
+					}
+				}
+			]
+		},
+		{
+			"name": "Conceal an Object",
+			"source": "CRB",
+			"page": 251,
+			"srd": true,
+			"traits": [
+				"Manipulate",
+				"Secret"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Stealth"
+				}
+			],
+			"entries": [
+				"You hide a small object on your person (such as a weapon of light Bulk). When you try to sneak a concealed object past someone who might notice it, the GM rolls your Stealth check and compares it to this passive observer’s Perception DC. Once the GM rolls your check for a concealed object, that same result is used no matter how many passive observers you try to sneak it past. If a creature is specifically searching you for an item, it can attempt a Perception check against your Stealth DC (finding the object on success).",
+				"You can also conceal an object somewhere other than your person, such as among undergrowth or in a secret compartment within a piece of furniture. In this case, characters Seeking in an area compare their Perception check results to your Stealth DC to determine whether they find the object.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "The object remains undetected.",
+						"Failure": "The searcher finds the object."
+					}
+				}
+			]
+		},
+		{
+			"name": "Hide",
+			"source": "CRB",
+			"page": 251,
+			"srd": true,
+			"traits": [
+				"Secret"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Stealth"
+				}
+			],
+			"entries": [
+				"You huddle behind cover or greater cover or deeper into concealment to become hidden, rather than observed. The GM rolls your Stealth check in secret and compares the result to the Perception DC of each creature you’re observed by but that you have cover or greater cover against or are concealed from. You gain the circumstance bonus from cover or greater cover to your check.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": [
+							"If the creature could see you, you’re now hidden from it instead of observed. If you were hidden from or undetected by the creature, you retain that condition.",
+							"If you successfully become hidden to a creature but then cease to have cover or greater cover against it or be concealed from it, you become observed again. You cease being hidden if you do anything except Hide, Sneak, or Step. Skills 4 251 Introduction Ancestries & Backgrounds Classes Skills Feats Equipment Spells The Age of Lost OMENS Playing the Game Game mastering Crafting & Treasure Appendix If you attempt to Strike a creature, the creature remains flatfooted against that attack, and you then become observed. If you do anything else, you become observed just before you act unless the GM determines otherwise. The GM might allow you to perform a particularly unobtrusive action without being noticed, possibly requiring another Stealth check.",
+							"If a creature uses Seek to make you observed by it, you must successfully Hide to become hidden from it again."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Sneak",
+			"source": "CRB",
+			"page": 252,
+			"srd": true,
+			"traits": [
+				"Move",
+				"Secret"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Stealth"
+				}
+			],
+			"entries": [
+				"You can attempt to move to another place while becoming or staying undetected. Stride up to half your Speed. (You can use Sneak while Burrowing, Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type; you must move at half that Speed.)",
+				"If you’re undetected by a creature and it’s impossible for that creature to observe you (for a typical creature, this includes when you’re invisible, the observer is blinded, or you’re in darkness and the creature can’t see in darkness), for any critical failure you roll on a check to Sneak, you get a failure instead. You also continue to be undetected if you lose cover or greater cover against or are no longer concealed from such a creature. At the end of your movement, the GM rolls your Stealth check in secret and compares the result to the Perception DC of each creature you were hidden from or undetected by at the start of your movement. If you have cover or greater cover from the creature throughout your Stride, you gain the +2 circumstance bonus from cover (or +4 from greater cover) to your Stealth check. Because you’re moving, the bonus increase from Taking Cover doesn’t apply. You don’t get to roll against a creature if, at the end of your movement, you neither are concealed from it nor have cover or greater cover against it. You automatically become observed by such a creature.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": [ 
+							"You’re undetected by the creature during your movement and remain undetected by the creature at the end of it.",
+							"If you successfully become hidden to a creature but then cease to have cover or greater cover against it or be concealed from it, you become observed again. You cease being hidden if you do anything except Hide, Sneak, or Step. Skills 4 251 Introduction Ancestries & Backgrounds Classes Skills Feats Equipment Spells The Age of Lost OMENS Playing the Game Game mastering Crafting & Treasure Appendix If you attempt to Strike a creature, the creature remains flatfooted against that attack, and you then become observed. If you do anything else, you become observed just before you act unless the GM determines otherwise. The GM might allow you to perform a particularly unobtrusive action without being noticed, possibly requiring another Stealth check.",
+							"If a creature uses Seek to make you observed by it, you must successfully Hide to become hidden from it again."
+						],
+						"Failure": "A telltale sound or other sign gives your position away, though you still remain unseen. You’re hidden from the creature throughout your movement and remain so.",
+						"Critical Failure": "You’re spotted! You’re observed by the creature throughout your movement and remain so. If you’re invisible and were hidden from the creature, instead of being observed you’re hidden throughout your movement and remain so."
+					}
+				}
+			]
+		},
+		{
+			"name": "Sense Direction",
+			"source": "CRB",
+			"page": 252,
+			"srd": true,
+			"traits": [
+				"Exploration",
+				"Secret"
+			],
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Survival"
+				}
+			],
+			"entries": [
+				"Using the stars, the position of the sun, traits of the geography or flora, or the behavior of fauna, you can stay oriented in the wild. Typically, you attempt a Survival check only once per day, but some environments or changes might necessitate rolling more often. The GM determines the DC and how long this activity takes (usually just a minute or so). More unusual locales or those you’re unfamiliar with might require you to have a minimum proficiency rank to Sense Direction. Without a compass, you take a –2 item penalty to checks to Sense Direction.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You get an excellent sense of where you are. If you are in an environment with cardinal directions, you know them exactly",
+						"Success": "You gain enough orientation to avoid becoming hopelessly lost. If you are in an environment with cardinal directions, you have a sense of those directions."
+					}
+				},
+				{
+					"type": "pf2-sample-box",
+					"name": "Sense Direction Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "determine a cardinal direction using the sun"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "find an overgrown path in a forest"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "navigate a hedge maze"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "navigate a byzantine labyrinth or relatively featureless desert"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "navigate an ever-changing dream realm"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cover Tracks",
+			"source": "CRB",
+			"page": 252,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Exploration",
+				"Move"
+			],
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Survival"
+				}
+			],
+			"entries": [
+				"You cover your tracks, moving up to half your travel Speed, using the rules on page 479). You don’t need to attempt a Survival check to cover your tracks, but anyone tracking you must succeed at a Survival check against your Survival DC if it is higher than the normal DC to Track.",
+				"In some cases, you might Cover Tracks in an encounter. In this case, Cover Tracks is a single action and doesn’t have the exploration trait."
+			]
+		},
+		{
+			"name": "Track",
+			"source": "CRB",
+			"page": 252,
+			"srd": true,
+			"traits": [
+				"Concentrate",
+				"Exploration",
+				"Move"
+			],
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Survival"
+				}
+			],
+			"entries": [
+				"You follow tracks, moving at up to half your travel Speed, using the rules on page 479). After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn’t have the exploration trait, but you might Core Rulebook 252 need to roll more often because you’re in a tense situation. The GM determines how often you must attempt this check.",
+				"You attempt your Survival check when you start Tracking, once every hour you continue tracking, and any time something significant changes in the trail. The GM determines the DCs for such checks, depending on the freshness of the trail, the weather, and the type of ground.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "You find the trail or continue to follow the one you’re already following.",
+						"Failure": "You lose the trail but can try again after a 1-hour delay.",
+						"Critical Failure": "You lose the trail and can’t try again for 24 hours."
+					}
+				},
+				{
+					"type": "pf2-sample-box",
+					"name": "Sense Track Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "the path of a large army following a road"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "relatively fresh tracks of a rampaging bear through the plains"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "a nimble panther’s tracks through a jungle, tracks after the rain"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "tracks after a winter snow, tracks of a mouse or smaller creature, tracks left on surfaces that can’t hold prints like bare rock"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "old tracks through a windy desert’s sands, tracks after a major blizzard or hurricane"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Palm an Object",
+			"source": "CRB",
+			"page": 253,
+			"srd": true,
+			"traits": [
+				"Manipulate"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Thievery"
+				}
+			],
+			"entries": [
+				"Palming a small, unattended object without being noticed requires you to roll a single Thievery check against the Perception DCs of all creatures who are currently observing you. You take the object whether or not you successfully conceal that you did so. You can typically only Palm Objects of negligible Bulk, though the GM might determine otherwise depending on the situation.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "The creature does not notice you Palming the Object.",
+						"Failure": "The creature notices you Palming the Object, and the GM determines the creature’s response."
+					}
+				}
+			]
+		},
+		{
+			"name": "Steal",
+			"source": "CRB",
+			"page": 253,
+			"srd": true,
+			"traits": [
+				"Manipulate"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"skills": [
+				{
+					"proficiency": "untrained", 
+					"skill": "Thievery"
+				}
+			],
+			"entries": [
+				"You try to take a small object from another creature without being noticed. Typically, you can Steal only an object of negligible Bulk, and you automatically fail if the creature who has the object is in combat or on guard.",
+				"Attempt a Thievery check to determine if you successfully Steal the object. The DC to Steal is usually the Perception DC of the creature wearing the object. This assumes the object is worn but not closely guarded (like a loosely carried pouch filled with coins, or an object within such a pouch). If the object is in a pocket or similarly protected, you take a –5 penalty to your Thievery check. The GM might increase the DC of your check if the nature of the object makes it harder to steal (such as a very small item in a large pack, or a sheet of parchment mixed in with other documents).",
+				"You might also need to compare your Thievery check result against the Perception DCs of observers other than the person wearing the object. The GM may increase the Perception DCs of these observers if they’re distracted.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Success": "You steal the item without the bearer noticing, or an observer doesn’t see you take or attempt to take the item.",
+						"Failure": "The item’s bearer notices your attempt before you can take the object, or an observer sees you take or attempt to take the item. The GM determines the response of any creature that notices your theft."
+					}
+				}
+			]
+		},
+		{
+			"name": "Disable a Device",
+			"source": "CRB",
+			"page": 253,
+			"srd": true,
+			"traits": [
+				"Manipulate"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Thievery"
+				}
+			],
+			"requirements": "Some devices require you to use {@item thieves' tools|CRB} (page 291) when disabling them.",
+			"entries": [
+				"This action allows you to disarm a trap or another complex device. Often, a device requires numerous successes before becoming disabled, depending on its construction and complexity. Thieves’ tools are helpful and sometimes even required to Disable a Device, as determined by the GM, and sometimes a device requires a higher proficiency rank in Thievery to disable it.",
+				"Your Thievery check result determines how much progress you make.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You disable the device, or you achieve two successes toward disabling a complex device. You leave no trace of your tampering, and you can rearm the device later, if that type of device can be rearmed.",
+						"Success": "You disable the device, or you achieve one success toward disabling a complex device.",
+						"Critical Failure": "You trigger the device."
+					}
+				}
+			]
+		},
+		{
+			"name": "Pick a Lock",
+			"source": "CRB",
+			"page": 253,
+			"srd": true,
+			"traits": [
+				"Manipulate"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"skills": [
+				{
+					"proficiency": "trained", 
+					"skill": "Thievery"
+				}
+			],
+			"requirements": "You have {@item thieves' tools|CRB} (page 291).",
+			"entries": [
+				"Opening a lock without a key is very similar to Disabling a Device, but the DC of the check is determined by the complexity and construction of the lock you are attempting to pick (locks and their DCs are found on page 290). Locks of higher qualities might require multiple successes to unlock, since otherwise even an unskilled burglar could easily crack the lock by attempting the check until they rolled a natural 20. If you lack the proper tools, the GM might let you used improvised picks, which are treated as shoddy tools, depending on the specifics of the lock.",
+				{
+					"type": "success_degree",
+					"entries": {
+						"Critical Success": "You unlock the lock, or you achieve two successes toward opening a complex lock. You leave no trace of your tampering.",
+						"Success": "You open the lock, or you achieve one success toward opening a complex lock.",
+						"Critical Failure": "You break your tools. Fixing them requires using Crafting to Repair them or else swapping in replacement picks (costing 3 sp, or 3 gp for infiltrator thieves’ tools)."
+					}
+				}
+			]
 		}
 	]
 }
