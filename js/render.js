@@ -876,7 +876,13 @@ function Renderer() {
 
 		for (let key in entry.entries) {
 			textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${key} </strong>`
-			this._recursiveRender(entry.entries[key], textStack, meta);
+			if (typeof(entry.entries[key]) === "string") {
+				this._recursiveRender(entry.entries[key], textStack, meta, {prefix: "<span>", suffix: "</span>"});
+			} else if (Array.isArray(entry.entries[key])) {
+				entry.entries[key].forEach((e) => {
+					this._recursiveRender(e, textStack, meta, {prefix: "<span>", suffix: "</span>"});
+				});
+			}
 			textStack[0] += `</div>`
 		}
 
