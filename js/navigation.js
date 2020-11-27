@@ -32,7 +32,7 @@ class NavBar {
 		};
 		document.getElementById("navigation").prepend(btnShowHide);
 
-		addLi(navBar, "5etools.html", "Home", {isRoot: true});
+		addLi(navBar, "PF2eTools.html", "Home", {isRoot: true});
 
 		const ulRules = addDropdown(navBar, "Rules");
 		addLi(ulRules, "quickreference.html", "Quick Reference");
@@ -442,7 +442,7 @@ class NavBar {
 		let currentPage = window.location.pathname;
 		currentPage = currentPage.substr(currentPage.lastIndexOf("/") + 1);
 
-		if (!currentPage) currentPage = "5etools.html";
+		if (!currentPage) currentPage = "PF2eTools.html";
 		return currentPage.trim();
 	}
 
