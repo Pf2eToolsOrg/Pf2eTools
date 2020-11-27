@@ -1,0 +1,456 @@
+{
+	"monster": [
+		{
+			"name": "Archon Of Redemption",
+			"source": "PSZ",
+			"page": 22,
+			"size": "L",
+			"type": "celestial",
+			"alignment": [
+				"L",
+				"N"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 136,
+				"formula": "16d8 + 64"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 90
+			},
+			"str": 18,
+			"dex": 18,
+			"con": 18,
+			"int": 17,
+			"wis": 20,
+			"cha": 20,
+			"save": {
+				"wis": "+9",
+				"cha": "+9"
+			},
+			"skill": {
+				"insight": "+9",
+				"perception": "+9"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 19,
+			"resist": [
+				"radiant",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened"
+			],
+			"languages": [
+				"all",
+				"telepathy 120 ft."
+			],
+			"cr": "10",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The archon's innate spellcasting ability is Charisma (spell save {@dc 17}). The archon can innately cast the following spells, requiring only verbal components:"
+					],
+					"will": [
+						"{@spell detect evil and good}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell destructive wave}",
+							"{@spell geas}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
+			"trait": [
+				{
+					"name": "Angelic Weapons",
+					"entries": [
+						"The archon's weapon attacks are magical. When the archon hits with any weapon, the weapon deals an extra {@dice 3d8} radiant damage (included in the attack)."
+					]
+				},
+				{
+					"name": "Axiomatic Mind",
+					"entries": [
+						"The archon can't be compelled to act in a manner contrary to its nature or its understanding of justice."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The archon has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "One Being",
+					"entries": [
+						"Though it appears as a humanoid creature riding a mount, an archon is a single being. The \"rider\" can't be dismounted, and no other means can separate the two portions of the archon's being short of its death."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The archon makes two attacks: one with its sword and one with its claws."
+					]
+				},
+				{
+					"name": "Sword",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) slashing damage plus 13 ({@damage 3d8}) radiant damage."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"{@atk mw} {@hit 8} to hit, reach 10 ft., one target. {@h}11 ({@damage 2d6 + 4}) piercing damage plus 13 ({@damage 3d8}) radiant damage."
+					]
+				}
+			],
+			"hasToken": true,
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"TP",
+				"XX"
+			],
+			"damageTags": [
+				"P",
+				"R",
+				"S"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			]
+		},
+		{
+			"name": "Felidar",
+			"source": "PSZ",
+			"page": 23,
+			"size": "L",
+			"type": "celestial",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 67,
+				"formula": "9d10 + 18"
+			},
+			"speed": {
+				"walk": 50
+			},
+			"str": 18,
+			"dex": 14,
+			"con": 15,
+			"int": 11,
+			"wis": 17,
+			"cha": 16,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 13,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"paralyzed",
+				"poisoned"
+			],
+			"languages": [
+				"Celestial",
+				"telepathy 60 ft."
+			],
+			"cr": "5",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The felidar's innate spellcasting ability is Charisma (spell save {@dc 14}). The felidar can innately cast the following spells, requiring no components:"
+					],
+					"will": [
+						"{@spell detect evil and good}",
+						"{@spell light}",
+						"{@spell thaumaturgy}"
+					],
+					"daily": {
+						"1e": [
+							"{@spell calm emotions}",
+							"{@spell daylight}",
+							"{@spell dispel evil and good}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
+			"trait": [
+				{
+					"name": "Pounce",
+					"entries": [
+						"If the felidar moves at least 20 feet straight toward a creature and then hits it with a claws attack on the same turn, the target must succeed on a {@dc 15} Strength saving throw or be knocked {@condition prone}. If the target is {@condition prone}, the felidar can make one bite attack against it as a bonus action."
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"The felidar has advantage on saving throws against spells and other magical effects."
+					]
+				},
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"The felidar's weapon attacks are magical."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The felidar makes two attacks with its claws."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) slashing damage."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}8 ({@damage 1d8 + 4}) piercing damage."
+					]
+				},
+				{
+					"name": "Healing Touch (3/Day)",
+					"entries": [
+						"The felidar touches another creature with its horns. The target magically regains 11 ({@dice 2d8 + 2}) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target"
+					]
+				},
+				{
+					"name": "Teleport (1/Day)",
+					"entries": [
+						"The felidar magically teleports itself and up to three willing creatures it can see within 5 feet of it, along with any equipment they are wearing or carrying, to a location the felidar is familiar with, up to 1 mile away."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Claws",
+					"entries": [
+						"The felidar makes one attack with its claws."
+					]
+				},
+				{
+					"name": "Shimmering Shield (Costs 2 Actions)",
+					"entries": [
+						"The felidar creates a shimmering magical field around itself or another creature it can see within 60 feet of it. The target gains a +2 bonus to AC until the end of the felidar's next turn."
+					]
+				},
+				{
+					"name": "Heal Self (Costs 3 Actions)",
+					"entries": [
+						"The felidar magically regains 11 ({@dice 2d8 + 2}) hit points."
+					]
+				}
+			],
+			"hasToken": true,
+			"traitTags": [
+				"Magic Resistance",
+				"Magic Weapons",
+				"Pounce"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Teleport"
+			],
+			"languageTags": [
+				"CE",
+				"TP"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"MW"
+			]
+		},
+		{
+			"name": "Kraken",
+			"source": "PSZ",
+			"page": 25,
+			"size": "H",
+			"type": "monstrosity",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 230,
+				"formula": "20d12 + 100"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 50
+			},
+			"str": 29,
+			"dex": 14,
+			"con": 20,
+			"int": 16,
+			"wis": 18,
+			"cha": 18,
+			"skill": {
+				"athletics": "+14",
+				"perception": "+9"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 19,
+			"resist": [
+				"cold"
+			],
+			"immune": [
+				"lightning",
+				"thunder"
+			],
+			"languages": [
+				"Common"
+			],
+			"cr": "13",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"The kraken's innate spellcasting ability is Charisma (spell save {@dc 17}). The kraken can innately cast the following spells, requiring no components:"
+					],
+					"daily": {
+						"3e": [
+							"{@spell control weather}",
+							"{@spell water breathing}"
+						]
+					},
+					"ability": "cha"
+				}
+			],
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"The kraken can breathe air and water."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"The kraken makes two attacks: one with its claw and one with its tentacles."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 14} to hit, reach 10 ft., one target. {@h}30 ({@damage 6d6 + 9}) slashing damage."
+					]
+				},
+				{
+					"name": "Tentacles",
+					"entries": [
+						"{@atk mw} {@hit 14} to hit, reach 20 ft., one target. {@h}30 ({@damage 6d6 + 9}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 17}). Until this grapple ends, the target is {@condition restrained}."
+					]
+				},
+				{
+					"name": "Lightning Strike {@recharge 5}",
+					"entries": [
+						"The kraken hurls a magical lightning bolt at a point it can see within 500 feet of it. Each creature within 10 feet of that point must make a {@dc 17} Dexterity saving throw, taking 54 ({@damage 12d8}) lightning damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"hasToken": true,
+			"soundClip": {
+				"type": "internal",
+				"path": "bestiary/kraken.mp3"
+			},
+			"traitTags": [
+				"Amphibious"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Tentacles"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"B",
+				"L",
+				"S"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			]
+		}
+	]
+}
