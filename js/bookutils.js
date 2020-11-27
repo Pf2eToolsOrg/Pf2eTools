@@ -288,8 +288,8 @@ const BookUtil = {
 			};
 
 			const renderNavButtons = (isTop) => {
-				const tdStyle = `padding-${isTop ? "top" : "bottom"}: 6px; padding-left: 9px; padding-right: 9px;`;
-				const $wrpControls = $(`<div class="split"/>`).appendTo($(`<td colspan="6" style="${tdStyle}"/>`).appendTo($(`<tr/>`).appendTo(BookUtil.renderArea)));
+				const divStyle = `padding: 9px;`;
+				const $wrpControls = $(`<div class="split"/>`).appendTo($(`<div style="${divStyle}"/>`).appendTo($(`<div/>`).appendTo(BookUtil.renderArea)));
 
 				const showPrev = ~chapter && chapter > 0;
 				BookUtil.curRender.controls.$btnsPrv = BookUtil.curRender.controls.$btnsPrv || [];
@@ -393,7 +393,6 @@ const BookUtil = {
 			};
 
 			BookUtil.curRender.controls = {};
-			BookUtil.renderArea.append(Renderer.utils.getBorderTr());
 			renderNavButtons(true);
 			const textStack = [];
 			BookUtil._renderer.setFirstSection(true);
@@ -401,12 +400,10 @@ const BookUtil = {
 			BookUtil._renderer.resetHeaderIndex();
 			if (chapter === -1) data.forEach(d => BookUtil._renderer.recursiveRender(d, textStack));
 			else BookUtil._renderer.recursiveRender(data[chapter], textStack);
-			BookUtil.renderArea.append(`<tr class="text"><td colspan="6" style="padding: 5px 20px;">${textStack.join("")}</td></tr>`);
+			BookUtil.renderArea.append(`<div class="text">${textStack.join("")}</div>`);
 			Renderer.initLazyImageLoaders();
 			BookUtil._renderer.setLazyImages(false);
 			renderNavButtons();
-
-			BookUtil.renderArea.append(Renderer.utils.getBorderTr());
 
 			if (scrollTo) {
 				let handled = false;
